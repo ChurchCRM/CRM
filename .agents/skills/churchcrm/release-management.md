@@ -10,7 +10,7 @@ complexity: "advanced"
 
 ## Purpose
 
-Run the ChurchCRM release process for the maintainer instead of asking the maintainer to operate a manual checklist.
+Run the ChurchCRM release process for the maintainer.
 
 Use this skill when asked to prepare, check, start, review, or complete a ChurchCRM release.
 
@@ -18,7 +18,7 @@ The agent owns routine investigation and orchestration. George remains the final
 
 ## Source of Truth
 
-Always inspect current GitHub/repository state. Never use memory as proof of release readiness.
+Inspect current GitHub and repository state as the proof of release readiness.
 
 The release candidate is identified by an exact commit SHA, not only by a version or branch name.
 
@@ -26,7 +26,7 @@ The release candidate is identified by an exact commit SHA, not only by a versio
 
 `candidate → validated → draft → reviewed → published → verified`
 
-Do not skip a state.
+Move through the states in order.
 
 ---
 
@@ -43,7 +43,7 @@ For unfinished items:
 - Propose the appropriate next milestone for non-blocking work.
 - If George has already decided an item should not ship, move it to the approved next milestone.
 - If deferral changes product scope or is ambiguous, ask George for the decision before changing the milestone.
-- Do not silently drop an issue or PR from release scope.
+- Report every issue or PR removed from release scope.
 
 The release scope is clean when no unintended open item remains in the target milestone.
 
@@ -64,7 +64,7 @@ Verify from the repository:
 
 Use the database, security, testing, and localization skills when those areas changed.
 
-Do not invent manual tests. Derive any required manual validation from the changes actually shipping, especially user-visible changes that automation does not adequately cover.
+Derive any required manual validation from the changes actually shipping, especially user-visible changes that automation does not adequately cover.
 
 ---
 
@@ -82,11 +82,11 @@ successful Nightly SHA
 
 Inspect the normal `master` Build/Test/Package result and the nightly workflow result.
 
-A previous green run is useful health evidence but is not sufficient if it tested a different commit.
+A green run on a different commit is health evidence only; the gate needs the current HEAD SHA.
 
 ### When both workflows are green on the current HEAD
 
-Do not rerun them merely for ceremony. Continue to release validation.
+Continue to release validation without rerunning them.
 
 ### When a required run is missing, stale, or failed
 
@@ -100,7 +100,7 @@ The nightly workflow is `.github/workflows/build-test-nightly.yml`. It supports 
 
 Its successful summary must represent success of all required groups, including build/package, root/subdirectory application tests, setup tests, locale smoke tests, and the configured upgrade matrix.
 
-The nightly's `release: published` trigger is post-release verification. It must not be substituted for the pre-release gate.
+The nightly's `release: published` trigger is post-release verification, separate from the pre-release gate.
 
 ---
 
@@ -124,7 +124,7 @@ Conclude with exactly one operational state:
 - **READY FOR DRAFT** — all required gates are satisfied.
 - **BLOCKED** — list the blockers and what is required to clear them.
 
-Do not start the release merely because an older build or nightly is green.
+Start the release only when the gates are green on the current SHA.
 
 ---
 
@@ -134,13 +134,13 @@ Starting the release is a maintainer approval point.
 
 When the release is READY FOR DRAFT, ask George to approve starting the draft release and confirm the next version if it has not already been decided.
 
-Do not publish a public release at this point.
+Keep the release a draft at this point.
 
 ---
 
 ## 6. Start the Release Through the Canonical Workflow
 
-The only normal path for starting a ChurchCRM GitHub release is:
+The path for starting a ChurchCRM GitHub release is:
 
 `.github/workflows/release-publish.yml` — **Release & Start Next**
 
@@ -161,9 +161,9 @@ The workflow:
 
 After the workflow completes, verify that the source build SHA is the SHA validated in the readiness gate. If it differs, stop and investigate before publication.
 
-### Safety warning
+### Existing release or tag
 
-The workflow stops if the release or tag already exists. To replace one, delete it by hand on GitHub with George's explicit approval; that discards the notes.
+The workflow stops if the release or tag already exists. Replacing one means deleting it by hand on GitHub with George's explicit approval; deleting discards the notes.
 
 ---
 
@@ -173,7 +173,7 @@ The GitHub-generated draft is the raw source material for user-facing release no
 
 Invoke `release-notes.md` after the draft exists. It reads the context artifact and, once George approves the text, writes the notes onto the draft with `gh release edit --notes-file`. No copy and paste is needed.
 
-The release-notes skill should transform and organize the draft, then fact-check the result against the actual shipped changes. It must not manufacture features, performance claims, security claims, localization counts, or user benefits.
+The release-notes skill should transform and organize the draft, then fact-check the result against the actual shipped changes. It states only features, performance, security, localization counts and benefits that the shipped changes support.
 
 Present the polished notes to George for review.
 
@@ -194,7 +194,7 @@ Before asking for approval, verify:
 
 Ask George for explicit approval before making the draft public.
 
-Never infer publication approval from approval to create the draft.
+Publication needs its own explicit approval; approval to create the draft does not cover it.
 
 ---
 
@@ -203,24 +203,24 @@ Never infer publication approval from approval to create the draft.
 After publication, verify:
 
 - Public GitHub release exists at the expected version.
-- Its tag is exactly the version (`gh release view <version> --json tagName`), never an `untagged-<hash>` placeholder. Installs read their update version from the tag.
+- Its tag is exactly the version (`gh release view <version> --json tagName`), not an `untagged-<hash>` placeholder. Installs read their update version from the tag.
 - Tag points to the intended release commit.
 - Release ZIP exists, has the expected version/name, and is non-empty.
 - Release-triggered nightly/post-release automation starts and completes as expected.
 - The next-version PR was created by `release-prepare.yml`.
 - Any release/version state that must be visible to ChurchCRM users is correct.
 
-Do not merge the next-version PR solely because the release was published; follow normal PR review/approval rules.
+Merge the next-version PR through normal PR review and approval.
 
 Once verified, report **RELEASE VERIFIED** with links/evidence and any remaining follow-up.
 
-Approved release communication can then be handed to the established community/communications workflow; do not create a competing communication process.
+Approved release communication can then be handed to the established community/communications workflow.
 
 ---
 
 ## Decision Boundaries
 
-The agent should perform routine release work without repeatedly asking George to operate individual checks.
+The agent performs routine release work without asking George to run individual checks.
 
 George's explicit decision is required for:
 

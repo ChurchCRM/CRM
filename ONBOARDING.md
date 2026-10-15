@@ -9,7 +9,7 @@ Claude Code helps you contribute more effectively. This guide walks you through 
 ### Essential Project Files
 - [ ] **[CLAUDE.md](CLAUDE.md)** — Start here. Code standards, git workflow, and how the project is structured
 - [ ] **[CONTRIBUTING.md](CONTRIBUTING.md)** — Ways to contribute (code, design, docs, testing, translation)
-- [ ] **[DEVELOPING.md](DEVELOPING.md)** — Dev environment setup (PHP 8.4+, Node 24, Docker, MySQL)
+- [ ] **[DEVELOPING.md](DEVELOPING.md)** — Dev environment setup (PHP, Node, Docker, MySQL; versions in `package.json` and `src/composer.json`)
 
 ### Claude-Specific Guidance
 - **[Skill cards](https://github.com/ChurchCRM/CRM/tree/master/.agents/skills/churchcrm)** — Load the card that matches your task (UI, API, i18n, tests, security, plugins). They guide you through the review gates and project expectations.

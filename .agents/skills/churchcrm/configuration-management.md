@@ -7,578 +7,124 @@ complexity: "beginner"
 ---
 # Configuration Management
 
-Guide to managing SystemConfig, asset paths, settings panels, and configuration best practices.
+`SystemConfig` (`src/ChurchCRM/dto/SystemConfig.php`) holds admin-editable settings and the debug switch. `SystemURLs` (`src/ChurchCRM/dto/SystemURLs.php`) resolves paths and asset URLs.
 
----
+## Where a New Setting Goes
 
-## Overview
+Define the `ConfigItem` in `SystemConfig::buildConfigs()` (that persists the value), leave it out of `buildCategories()`, and surface it in its area admin hub (`/admin/people` is the reference). `/SystemSettings.php` lists only what `buildCategories()` names; internal state keys (e.g. `sTelemetryAskedVersion`) stay out of it too. Placement and hub recipe: [settings-placement.md](./settings-placement.md).
 
-ChurchCRM uses a centralized `SystemConfig` class for:
-- **Application settings** - Database configuration, session timeouts, permissions
-- **Dynamic settings** - Admin-editable configuration values
-- **Debug mode** - Error display control
-- **Asset path resolution** - CSS/image references
+### Member Portal settings
 
----
+`/admin/member-portal` (`src/admin/routes/member-portal.php`, `src/admin/views/member-portal.php`) hosts the portal's settings on its **Settings** tab through the Settings Panel component. Its `ConfigItem`s (`sMemberPortalTheme`, `bPortalDeveloperMode`, `bPortalShowCalendar`, `bPortalShowVolunteer`, `bPortalAllowBirthdayEdit`) are declared in `buildConfigs()`.
 
-## HARD RULE — no new keys on the System Settings page
+The booleans save through `POST /admin/api/system/config/{name}`. `sMemberPortalTheme` saves through `POST /admin/api/member-portal/theme`, which runs `ThemeManager::validate()` and answers 409 with the findings when the theme cannot render.
 
-**Do not add a new key to `SystemConfig::buildCategories()`.** `/SystemSettings.php` is frozen and being retired. Define the `ConfigItem` in `buildConfigs()` (that is what persists the value), omit it from `buildCategories()`, and surface it in its area admin hub (`/admin/people` is the reference). Where a setting lives and how to move one: [settings-placement.md](./settings-placement.md).
+## SystemConfig
 
-### Admin → Member Portal owns the portal's settings
-
-The Member Portal (epic #8977) does not use a dashboard `settingsPanel` bolted
-onto an existing page: it has a page of its own, `/admin/member-portal`
-(`src/admin/routes/member-portal.php` + `src/admin/views/member-portal.php`,
-issue #9864), whose **Settings** tab hosts the Settings Panel component. Five
-`ConfigItem`s live there, all declared in `buildConfigs()` and all deliberately
-absent from `buildCategories()`:
-
-| Key | Type | Default | What it does |
-|-----|------|---------|--------------|
-| `sMemberPortalTheme` | text | `default` | folder name of the active theme under `Include/themes/` |
-| `bPortalDeveloperMode` | boolean | `0` | no Twig compile cache; template name in an HTML comment |
-| `bPortalShowCalendar` | boolean | `1` | show the church calendar in the portal |
-| `bPortalShowVolunteer` | boolean | `1` | show volunteering and team pages |
-| `bPortalAllowBirthdayEdit` | boolean | `0` | let members change birthdays |
-
-Four of the five save through the normal
-`POST /admin/api/system/config/{name}`. `sMemberPortalTheme` does **not**: it
-goes through `POST /admin/api/member-portal/theme`, because activation runs
-`ThemeManager::validate()` first and answers 409 with the findings when the
-theme cannot render — a plain config write would happily store a value that
-breaks the portal for every member.
-
----
-
-## SystemConfig Basics
-
-### Location
-
-```
-src/ChurchCRM/dto/SystemConfig.php
-```
-
-### Common Methods
-
-| Method | Purpose | Example |
-|--------|---------|---------|
-| `getValue($key)` | Get string value | `SystemConfig::getValue('sChurchName')` |
-| `getBooleanValue($key)` | Get boolean | `SystemConfig::getBooleanValue('bEnabledEmail')` |
-| `getIntValue($key)` | Get integer | `SystemConfig::getIntValue('iSessionTimeout')` |
-| `setValue($key, $value)` | Set value | `SystemConfig::setValue('sChurchName', 'My Church')` |
-| `getSettingsConfig($keys)` | Get structured config | `SystemConfig::getSettingsConfig(['timeout', 'maxFailed'])` |
-| `debugEnabled()` | Is debug mode on? | `SystemConfig::debugEnabled()` |
-| `getValueForHtml/Attr/Js($key)` | **Escaped** output getters — prefer these whenever emitting a config value | `SystemConfig::getValueForHtml('sChurchName')` |
-
-> ⚠️ There is **no** `integerValue()` and **no** `getAllSettings()` — the real methods are
-> `getIntValue()` and `getSettingsConfig()`. Calling the former names is a fatal.
-
-### Basic Usage
+| Method | Purpose |
+|--------|---------|
+| `getValue($key)` | String value |
+| `getBooleanValue($key)` | Boolean |
+| `getIntValue($key)` | Integer |
+| `setValue($key, $value)` | Set value |
+| `getSettingsConfig($keys)` | Structured config for settings panels |
+| `debugEnabled()` | Debug mode |
+| `getValueForHtml/Attr/Js($key)` | Escaped getters for output |
 
 ```php
-// ✅ CORRECT - Access settings through SystemConfig
-$churchName = SystemConfig::getValue('churchName', 'Default Church');
-$sessionTimeout = SystemConfig::getIntValue('iSessionTimeout');
+$churchName = SystemConfig::getValue('sChurchName');
+$timeout = SystemConfig::getIntValue('iSessionTimeout');
 
 if (SystemConfig::getBooleanValue('bEnableLostPassword')) {
-    // Show password recovery option
+    // show password recovery
 }
 
-// ❌ WRONG - Direct $_SESSION or $_CONFIG access
-$churchName = $_SESSION['churchName'];      // Bypasses config layer
-$direct = Config::CHURCH_NAME;               // No permission/security checks
+echo SystemConfig::getValueForHtml('sChurchName');
 ```
 
----
+Boolean keys use the `b` prefix (`bEmailMailto`, `bEnableLostPassword`). Always check them with `getBooleanValue()`: `getValue()` returns the string `"0"`, which is truthy and non-empty. Escape every config value you emit (`getValueForHtml()` or `InputUtils`).
 
-## Boolean Configuration
+### Removing a ConfigItem
 
-### Method: getBooleanValue()
+`getValue()` returns the default (or `''`) for an unregistered key and does not throw, so leftover references read the default. Pair the removal with `DELETE FROM config_cfg WHERE cfg_name = '...'` in the upgrade migration (`db-schema-migration.md`).
 
-Use `getBooleanValue()` for all boolean config checks:
+### Resetting to the default
 
-```php
-// ✅ CORRECT - Using getBooleanValue
-if (SystemConfig::getBooleanValue('bEmailMailto')) {
-    // Email functionality is enabled
-}
+`ConfigItem::setValue()` deletes the `config_cfg` row when the value equals the default and leaves the in-memory value untouched. Within that request `getValue()` still returns the previous value, and a `POST /admin/api/system/config/{name}` response echoes it. Assert with a separate `GET`.
 
-if (!SystemConfig::getBooleanValue('bEnableRegistration')) {
-    // Registration is disabled
-}
+### Cross-checking `buildCategories()`
 
-// ❌ WRONG - Direct evaluation
-if (SystemConfig::getValue('bEmailMailto')) {  // Returns string "0" or "1"
-    // "0" is truthy in PHP!
-}
-
-// ❌ WRONG - empty() check
-if (empty(SystemConfig::getValue('bEmailMailto'))) {
-    // Fails for "0" value
-}
-```
-
-### Key Naming Convention
-
-Boolean settings use `b` prefix:
-
-| Key | Purpose |
-|-----|---------|
-| `bEnableEmails` | Email system enabled |
-| `bEmailMailto` | Mailto links enabled |
-| `bEnableLostPassword` | Password recovery |
-| `bEditSelf` | Users can edit own records |
-| `bEditRecords` | Users can edit any record |
-| `bDeleteRecords` | Users can delete records |
-| `bAddRecords` | Users can add records |
-
----
+Every key in `buildCategories()` needs a matching `buildConfigs()` entry; a missing one raises a PHP error when the settings page iterates categories.
 
 ## Asset Paths (SystemURLs)
 
-Use `SystemURLs::getRootPath()` for all asset references:
+| Method | Returns |
+|--------|---------|
+| `getRootPath()` | Relative root URL (`/churchcrm` or empty) |
+| `getDocumentRoot()` | Filesystem root of `src/` |
+| `getImagesRoot()` | Filesystem path of the images directory |
+| `assetVersioned($path)` | Cache-busted asset URL, e.g. `SystemURLs::assetVersioned('/skin/v2/app.min.js')` |
+| `getCSPNonce()` | Nonce for inline `<script>` |
 
-### Location
-
-```
-src/ChurchCRM/dto/SystemURLs.php
-```
-
-### Common Methods
-
-| Method | Returns | Example |
-|--------|---------|---------|
-| `getRootPath()` | Relative root URL | `/churchcrm/` or `/` |
-| `getDocumentRoot()` | File system root | `/var/www/html/` |
-| `getImagesRoot()` | Image **filesystem** root | `/var/www/html/Images` |
-| `assetVersioned($path)` | Cache-busted asset URL | `SystemURLs::assetVersioned('skin/v2/app.min.js')` |
-| `getCSPNonce()` | Nonce for inline `<script>` | `SystemURLs::getCSPNonce()` |
-
-> ⚠️ There is **no** `getImagePath()` and **no** `getSkinPath()`. For image and skin **URLs**,
-> build them from `getRootPath()` (see the usage pattern below). `getImagesRoot()` is a
-> filesystem path, not a URL — do not emit it into HTML.
-
-### Usage Pattern
+Build image and skin URLs from `getRootPath()`. `getImagesRoot()` is a filesystem path.
 
 ```php
-// ✅ CORRECT - CSS/image references with getRootPath()
-?>
 <link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/churchcrm.min.css">
 <img src="<?= SystemURLs::getRootPath() ?>/images/logo.png" alt="Logo">
-<script src="<?= SystemURLs::getRootPath() ?>/skin/v2/app.min.js"></script>
 
-<?php
-
-// ✅ CORRECT - File system operations with getDocumentRoot()
 $photoPath = SystemURLs::getDocumentRoot() . '/photos/person_' . $personId . '.jpg';
-if (file_exists($photoPath)) {
-    // Process photo
-}
-
-// ❌ WRONG - Hardcoded paths (breaks in subdirectories)
-<link rel="stylesheet" href="/skin/v2/churchcrm.min.css">
-// If installed in /churchcrm/, this breaks because path should be /churchcrm/skin/...
-
-// ❌ WRONG - Relative paths
-<script src="../skin/v2/app.js"></script>
-// Fails in nested routes like /admin/system/debug
 ```
 
-### Why getRootPath() is Critical
+ChurchCRM installs at a site root or in a subdirectory (`/churchcrm/`), and routes nest (`/admin/system/debug`), so root-relative literals like `/skin/v2/...` and relative paths like `../skin/...` resolve wrongly. `getRootPath()` makes every URL correct.
 
-ChurchCRM can be installed in different ways:
+## Settings Panels
 
-```
-Installation 1: mysite.com/churchcrm/
-Root path: /churchcrm/
-Asset URL: /churchcrm/skin/v2/style.css
-
-Installation 2: churchsite.com/ (root)
-Root path: /
-Asset URL: /skin/v2/style.css
-
-Installation 3: mysite.com/ (subdirectory handler)
-Root path: /
-Asset URL: /skin/v2/style.css
-```
-
-Without `getRootPath()`, hardcoded paths like `/skin/v2/` break in installation #1.
-
----
-
-## Settings Panels (getSettingsConfig)
-
-### Purpose
-
-Get structured configuration data for admin UI panels. Automatically generates forms/panels.
-
-### Method Signature
+`SystemConfig::getSettingsConfig(array $keys)` returns one entry per key: `name`, `type` (`text`, `number`, `boolean`, `choice`, `password`), `label` (first line of the tooltip), `tooltip`, and `choices` for `choice` types. Services pass it to the view, and `window.CRM.SettingsPanel` renders and auto-saves each field to `POST /admin/api/system/config/{key}` (recipe in `settings-placement.md`).
 
 ```php
-public static function getSettingsConfig(array $settingKeys): array
-```
-
-**Returns:**
-```php
-[
-    [
-        'category' => 'System',
-        'name' => 'iSessionTimeout',
-        'value' => '1800',
-        'type' => 'number',
-        'label' => 'Session Timeout (seconds)',
-        'options' => null,
-        'help' => 'Seconds before idle session expires'
-    ],
-    // ... more settings
-]
-```
-
-### Usage in Service
-
-Extract settings for admin UI:
-
-```php
-<?php
-namespace ChurchCRM\Service;
-
-class UserService
-{
-    public function getUserSettingsConfig(): array
-    {
-        // Request structured config for these keys
-        $userSettingKeys = [
-            'iSessionTimeout',
-            'iMaxFailedLogins',
-            'bEnableLostPassword',
-            'bTwoFactorAuth'
-        ];
-        
-        // Get settings with type, label, help text
-        return SystemConfig::getSettingsConfig($userSettingKeys);
-    }
-}
-```
-
-### Usage in View
-
-Render settings panel dynamically:
-
-```php
-<?php
-// src/admin/views/user-settings.php
-$settingsConfig = $service->getUserSettingsConfig();
-?>
-
-<div class="card">
-    <div class="card-header">
-        <h3 class="card-title"><?= gettext('User Settings') ?></h3>
-    </div>
-    <div class="card-body">
-        <form id="settings-form">
-            <?php foreach ($settingsConfig as $setting): ?>
-                <div class="form-group">
-                    <label><?= InputUtils::escapeHTML($setting['label']) ?></label>
-                    
-                    <?php if ($setting['type'] === 'number'): ?>
-                        <input type="number" 
-                               name="<?= InputUtils::escapeAttribute($setting['name']) ?>"
-                               value="<?= InputUtils::escapeAttribute($setting['value']) ?>"
-                               class="form-control">
-                    <?php elseif ($setting['type'] === 'checkbox'): ?>
-                        <input type="checkbox"
-                               name="<?= InputUtils::escapeAttribute($setting['name']) ?>"
-                               <?= $setting['value'] ? 'checked' : '' ?>>
-                    <?php elseif ($setting['type'] === 'select' && !empty($setting['options'])): ?>
-                        <select name="<?= InputUtils::escapeAttribute($setting['name']) ?>" class="form-control">
-                            <?php foreach ($setting['options'] as $key => $label): ?>
-                                <option value="<?= $key ?>"
-                                    <?= $key === $setting['value'] ? 'selected' : '' ?>>
-                                    <?= InputUtils::escapeHTML($label) ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
-                    <?php endif; ?>
-                    
-                    <?php if (!empty($setting['help'])): ?>
-                        <small class="form-text text-muted">
-                            <?= InputUtils::escapeHTML($setting['help']) ?>
-                        </small>
-                    <?php endif; ?>
-                </div>
-            <?php endforeach; ?>
-            
-            <button type="submit" class="btn btn-primary"><?= gettext('Save Settings') ?></button>
-        </form>
-    </div>
-</div>
-
-<script>
-document.getElementById('settings-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const formData = new FormData(this);
-    const data = Object.fromEntries(formData);
-    
-    fetch(window.CRM.root + '/admin/api/system/settings', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .then(() => {
-        window.CRM.notify(i18next.t('Settings saved'), {type: 'success'});
-    })
-    .catch(error => {
-        window.CRM.notify(i18next.t('Error saving settings'), {type: 'error'});
-    });
-});
-</script>
-```
-
-### Benefits
-
-- ✅ Single method call gets all structured data
-- ✅ Type information for form validation
-- ✅ Help text and labels included
-- ✅ Dynamic form generation
-- ✅ No hardcoding of settings in views
-
----
-
-## Admin Settings Panel Pattern
-
-### Service Layer
-
-```php
-<?php
-namespace ChurchCRM\Service;
-
 class AdminDashboardService
 {
-    public function getSystemSettingsConfig(): array
-    {
-        $systemSettings = [
-            'sSoftwareTitle',
-            'iSessionTimeout',
-            'iMaxFailedLogins',
-            'bEnableUpdate'
-        ];
-        
-        return SystemConfig::getSettingsConfig($systemSettings);
-    }
-
     public function getSecuritySettingsConfig(): array
     {
-        $securitySettings = [
-            'bEnableLostPassword',
-            'bStrictSSL',
-            'iPasswordExpires',
-            'bTwoFactorAuth'
-        ];
-        
-        return SystemConfig::getSettingsConfig($securitySettings);
-    }
-
-    public function getEmailSettingsConfig(): array
-    {
-        $emailSettings = [
-            'sFromEmail',
-            'sFromName',
-            'bEmailMailto',
-            'bEnableEmails'
-        ];
-        
-        return SystemConfig::getSettingsConfig($emailSettings);
+        return SystemConfig::getSettingsConfig(['bEnableLostPassword', 'bStrictSSL', 'iPasswordExpires']);
     }
 }
 ```
 
-### Route Layer
-
 ```php
-<?php
-// src/admin/routes/system.php
-
-// Path is relative to the /admin base path set by MvcAppFactory::create()
+// src/admin/routes/<area>.php; paths are relative to the /admin base path
 $app->get('/system/settings', function (Request $request, Response $response) {
-    $service = new AdminDashboardService();   // no DI container — see service-layer.md
+    $service = new AdminDashboardService();
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
-    
+
     return $renderer->render($response, 'settings.php', [
         'sPageTitle' => gettext('System Settings'),
         'sRootPath' => SystemURLs::getRootPath(),
-        'systemSettings' => $service->getSystemSettingsConfig(),
         'securitySettings' => $service->getSecuritySettingsConfig(),
-        'emailSettings' => $service->getEmailSettingsConfig()
     ]);
 });
 ```
 
----
+Call `getSettingsConfig()` once per request and reuse the result.
 
-## Setting Types
+## Adding a Setting: Workflow
 
-### Common Setting Types
+1. Add the `ConfigItem` to `buildConfigs()` with a key, type, default, and tooltip; leave it out of `buildCategories()`
+2. Read it in a service: `SystemConfig::getValue('sSupportEmail')`
+3. Add the key to the area hub section's `getSettingsConfig()` list
+4. Render it with `SettingsPanel` in the hub view
 
-| Type | Example | Display |
-|------|---------|---------|
-| `text` | `'churchName'` | `<input type="text">` |
-| `email` | `'sFromEmail'` | `<input type="email">` |
-| `number` | `'iSessionTimeout'` | `<input type="number">` |
-| `checkbox` | `'bEnableUpdate'` | `<input type="checkbox">` |
-| `select` | `'sDefaultFamily'` | `<select>` with options |
-| `textarea` | `'sChurchDescription'` | `<textarea>` |
-| `password` | `'sBackupPassword'` | `<input type="password">` masked |
-
----
-
-## Best Practices
-
-### ✅ DO
-
-- Use `SystemConfig::getBooleanValue()` for all boolean checks (prevents "0" string truthy bug)
-- Call `SystemConfig::getSettingsConfig()` once per page load, cache the result
-- Use `SystemURLs::getRootPath()` for all asset paths
-- Create service methods to encapsulate setting logic
-- Group related settings into logical panels
-- Always escape `SystemConfig` values in templates with `InputUtils`
-
-### ❌ DON'T
-
-- Directly evaluate `SystemConfig::getValue()` as boolean
-- Hardcode paths like `/skin/v2/` (breaks in subdirectories)
-- Create separate `SystemConfig` calls in loops (N+1 performance issue)
-- Store config values in instance variables (query `SystemConfig` directly)
-- Assume `SystemConfig` values are safe for output (always escape)
-
----
-
-## Configuration Workflow Example
-
-### Scenario: Add "Support Email" Setting
-
-**Step 1** - Add to database/SystemConfig
-```php
-// Handled by ChurchCRM installation, not your code
-INSERT INTO config_cfg VALUES ('sSupportEmail', 'support@church.com');
-```
-
-**Step 2** - Use in Service
-```php
-<?php
-class EmailService
-{
-    public function getSupportEmail(): string
-    {
-        return SystemConfig::getValue('sSupportEmail', 'support@church.com');
-    }
-}
-```
-
-**Step 3** - Add to Admin Settings Panel
-```php
-<?php
-class AdminService
-{
-    public function getEmailSettingsConfig(): array
-    {
-        return SystemConfig::getSettingsConfig([
-            'sSupportEmail',
-            'sFromEmail',
-            'bEnableEmails'
-        ]);
-    }
-}
-```
-
-**Step 4** - Render in View
-```php
-<!-- View renders setings from service -->
-<?php foreach ($emailSettings as $setting): ?>
-    <input type="email" 
-           name="<?= InputUtils::escapeAttribute($setting['name']) ?>"
-           value="<?= InputUtils::escapeAttribute($setting['value']) ?>">
-<?php endforeach; ?>
-```
-
----
-
-## Debugging Configuration Issues
-
-### Check Current Values
+## Debugging
 
 ```bash
-# Via PHP CLI
-php -r "require 'src/Include/Config.php'; echo SystemConfig::getValue('churchName');"
-
-# Via MySQL
 mysql> SELECT cfg_name, cfg_value FROM config_cfg WHERE cfg_name = 'churchName';
 ```
 
-### Reset to Defaults
-
-```php
-// Only in development
-SystemConfig::setValue('churchName', 'Default Church');
-SystemConfig::setValue('bEnableUpdate', true);
-```
-
----
+In development, `SystemConfig::setValue('bEnableUpdate', true)` resets a value.
 
 ## Related Skills
 
-- [Routing & Project Architecture](./routing-architecture.md) - SystemConfig in admin pages
-- [PHP Best Practices](./php-best-practices.md) - Configuration patterns
-- [Security Best Practices](./security-best-practices.md) - Escaping config values
-
----
-
-Last updated: February 16, 2026
-
-### Removing a ConfigItem — Safe Even With Remaining Code References <!-- learned: 2026-03-27 -->
-
-`SystemConfig::getValue()` returns the item's default value (or `''`) if the key is not registered in `buildConfigs()`. It does **not** throw. So it is safe to remove a `ConfigItem` from `buildConfigs()` while legacy references remain in PHP/JS — they will silently get the default/empty value.
-
-```php
-// After removing ConfigItem for 'bHSTSEnable':
-// Header-Security.php still calls getBooleanValue('bHSTSEnable')
-// → returns false (empty default) → HSTS header is simply not sent. Safe.
-```
-
-Always pair a ConfigItem removal with a `DELETE FROM config_cfg WHERE cfg_name = '...'` in the upgrade migration.
-
-### Resetting a setting to its default echoes the OLD value in the same request <!-- learned: 2026-09-11 -->
-
-`ConfigItem::setValue()` deletes the `config_cfg` row when the new value equals the
-default, but it does **not** clear the already-populated `$this->value`. So within
-that one request `getValue()` still returns the previous value:
-
-```bash
-POST /admin/api/system/config/sVolunteerVersion {"value":"v2"}  → {"value":"v2"}
-POST /admin/api/system/config/sVolunteerVersion {"value":"v1"}  → {"value":"v2"}   # stale, v1 is the default
-GET  /admin/api/system/config/sVolunteerVersion                 → {"value":"v1"}   # correct on the next request
-```
-
-The stored value is right; only the echo in the same request is stale. Never
-assert on a `POST .../config/{name}` response body when the value being written is
-the item's default — do a separate `GET` instead. (Same reason a settings page
-that re-renders from the POST response shows the old value until reloaded.)
-
-### Verify buildCategories() After Editing SystemConfig <!-- learned: 2026-03-27 -->
-
-When adding or removing entries near `buildCategories()`, verify every key listed in every category still has a matching entry in `buildConfigs()`. Missing entries will silently produce PHP errors at runtime when the settings page iterates categories.
-
-```bash
-# Quick grep to cross-check
-grep -o "'[a-zA-Z_]*'" src/ChurchCRM/dto/SystemConfig.php | sort | uniq -d
-```
-
-### SystemSettings.php is deprecated — do not add new settings to it <!-- learned: 2026-05-13 -->
-
-`src/SystemSettings.php` is a legacy page that is being phased out. **Nothing new should be added to it.** New configuration UI belongs in the admin MVC app:
-
-- Per-feature settings → relevant admin MVC page or debug card (e.g. `/admin/system/debug`)
-- `buildCategories()` in `SystemConfig.php` drives the settings tabs on `SystemSettings.php` — omit new config items from that array so they never appear there
-- Internal / non-UI state keys (e.g. `sTelemetryAskedVersion`) must also be excluded from `buildCategories()`
+- [Settings Placement](./settings-placement.md)
+- [Routing & Project Architecture](./routing-architecture.md)
+- [PHP Best Practices](./php-best-practices.md)
+- [Security Best Practices](./security-best-practices.md)

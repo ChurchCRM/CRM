@@ -8,119 +8,70 @@ complexity: "intermediate"
 # Skill: Webpack & TypeScript Development
 
 ## Context
-ChurchCRM uses Webpack to bundle frontend JavaScript/TypeScript and CSS. This skill covers entry points, API utilities, type safety, and best practices for building modern webpack modules.
-
-**Exact versions drift — check `package.json` directly** (`devDependencies.typescript`,
-`webpack`, `webpack-cli`, `ts-loader`) rather than trusting a pinned number here.
-
-> [!NOTE]
-> React was removed in 7.2.0. All interactive UI uses vanilla JS + Bootstrap 5.
+Webpack bundles the frontend JavaScript/TypeScript and CSS. Interactive UI is vanilla JS/TS on Tabler 1.6 + Bootstrap 5 (see `tabler-components.md`). Custom `rem` values assume a 16px root. Versions: `package.json`.
 
 ---
 
-## Critical Issue: Window.CRM Initialization Timing
+## Window.CRM Initialization Timing
 
-**Webpack bundles load BEFORE `window.CRM` is initialized.**
-
-- ❌ **DON'T** assign `window.CRM.root` in constructors or module scope
-- ✅ **DO** use `api-utils.ts` functions which evaluate at runtime
+Webpack bundles load before `window.CRM` is initialized. Read `window.CRM` at run time (inside `window.CRM.onLocalesReady(...)` or an event handler), and build URLs with `api-utils.ts`.
 
 ```typescript
-// ❌ WRONG - window.CRM is undefined when module loads
-const API_ROOT = window.CRM.root + '/api';  // undefined + string!
-
-// ✅ CORRECT - Evaluates at runtime when CRM is ready
 import { buildAPIUrl } from './api-utils';
-const url = buildAPIUrl('person/123');  // Safe, evaluates later
+const url = buildAPIUrl('person/123');  // evaluated when called
 ```
 
-## Webpack API Utilities (`webpack/api-utils.ts`)
-
-### Safe API URL Construction
+## API Utilities (`webpack/api-utils.ts`)
 
 ```typescript
-import { buildAPIUrl, buildAdminAPIUrl, fetchAPIJSON } from './api-utils';
+import { buildAPIUrl, buildAdminAPIUrl, fetchAPI, fetchAPIJSON } from './api-utils';
 
-// Public API endpoints
-const personUrl = buildAPIUrl('person/123');           // → '/api/person/123'
-const photoUrl = buildAPIUrl('person/123/photo');     // → '/api/person/123/photo'
+buildAPIUrl('person/123');                 // '<root>/api/person/123'
+buildAdminAPIUrl('system/config/key');     // '<root>/admin/api/system/config/key'
 
-// Admin API endpoints
-const configUrl = buildAdminAPIUrl('system/config/key');  // → '/admin/api/system/config/key'
+interface Person { id: number; firstName: string; lastName: string; }
 
-// Dynamic root path (works with subdirectories)
-// If installed at /churchcrm/, buildAPIUrl('person/123') → '/churchcrm/api/person/123'
-```
-
-### Fetch with JSON Parsing
-
-```typescript
-interface Person {
-    id: number;
-    firstName: string;
-    lastName: string;
-}
-
-// ✅ Recommended - Type-safe JSON fetch
-const person = await fetchAPIJSON<Person>('person/123');
-console.log(person.firstName);  // IDE autocomplete works!
-
-// ✅ With error handling
 try {
-    const data = await fetchAPIJSON<Person>('person/123');
-    console.log('Success:', data);
+    const person = await fetchAPIJSON<Person>('person/123');
 } catch (error) {
-    console.error('API error:', error);
+    // show the error to the user
 }
 
-// ✅ With fetch options
-const response = await fetchAPI('person/123/photo', {
-    method: 'DELETE',
-    headers: { 'X-Custom': 'value' }
-});
+await fetchAPI('person/123/photo', { method: 'DELETE' });
 ```
 
-### Functions in api-utils.ts
+The root path comes from `window.CRM.root`, so URLs work under a subdirectory install. `webpack/api-utils.ts` is short and JSDoc'd; read it for the full export list. `fetchAPIJSON` throws on a non-OK response and returns the parsed body (no `{ success, data }` envelope), so wrap it in `try`/`catch`.
 
-`webpack/api-utils.ts` is short and every export is JSDoc'd — read it directly rather
-than trusting a transcribed table here. The one non-obvious behavior: `fetchAPIJSON`
-throws on a non-OK response rather than returning a `{ success, data }` envelope, so
-wrap the call in `try`/`catch`.
-
-## Skin Bundle Architecture (LTR + RTL) <!-- learned: 2026-03-28 -->
-
-The main CSS/JS bundles are split into three files:
+## Skin Bundles (LTR + RTL)
 
 | File | Purpose |
 |------|---------|
-| `webpack/skin-core-css.js` | **CSS only** — all shared component CSS (icons, DataTables, TomSelect, etc.) except Tabler core |
-| `webpack/skin-core.js` | **JS only** — jQuery, ApexCharts, Tabler JS, TomSelect bridge, Quill, etc. Imports `skin-core-css` |
-| `webpack/skin-main.js` | LTR entry — imports `tabler.min.css` then `skin-core` |
-| `webpack/skin-rtl.js` | RTL entry — imports `tabler.rtl.min.css` then `skin-core-css` (**no JS**) |
+| `webpack/skin-core-css.js` | Shared component CSS (icons, DataTables, TomSelect, ...) except Tabler core |
+| `webpack/skin-core.js` | Shared JS (jQuery, ApexCharts, Tabler JS, TomSelect bridge, Quill, ...); imports `skin-core-css` |
+| `webpack/skin-main.js` | LTR entry: `tabler.min.css` then `skin-core` |
+| `webpack/skin-rtl.js` | RTL entry: `tabler.rtl.min.css` then `skin-core-css`, CSS only |
 
-This structure ensures `churchcrm-rtl.min.js` is webpack-runtime-only (~2 KB) and not a full duplicate of `churchcrm.min.js`. RTL pages load `churchcrm.min.js` for JS and `churchcrm-rtl.min.css` for styles.
+RTL pages load `churchcrm.min.js` for JS and `churchcrm-rtl.min.css` for styles. Add shared CSS dependencies to `skin-core-css.js`, shared JS dependencies to `skin-core.js`, and keep `skin-rtl.js` CSS-only.
 
-**When adding a shared CSS dependency** → add to `skin-core-css.js`.
-**When adding a shared JS dependency** → add to `skin-core.js`.
-**Never add JS imports to `skin-rtl.js`** — it is intentionally CSS-only.
+Vendor libraries (DataTables, moment, date pickers, bootbox, i18next, JustValidate, bs-stepper) are imported by `webpack/vendor-globals.js` and ship in `churchcrm.min.js`; pages load no `<script>` tags for them. Leaflet comes from `webpack/leaflet-global.js` in the map entries. Locale files for moment, the datepicker and DataTables are dynamic `import()`s in `webpack/locale-loader.js`.
 
 ---
 
-## Entry Point Patterns
+## Entry Points
 
-### Basic JavaScript Entry Point
+### Plain JavaScript
 
 ```javascript
 // webpack/photo-uploader.js
-document.addEventListener('DOMContentLoaded', function() {
+import { buildAPIUrl } from './api-utils';
+
+document.addEventListener('DOMContentLoaded', () => {
     const uploadButton = document.getElementById('upload-photo');
-    
-    if (!uploadButton) return;  // Element doesn't exist yet
-    
-    uploadButton.addEventListener('click', async function() {
+    if (!uploadButton) return;
+
+    uploadButton.addEventListener('click', async () => {
         try {
-            const result = await fetch('/api/photo', { method: 'POST' });
-            console.log('Upload complete');
+            await fetch(buildAPIUrl('photo'), { method: 'POST' });
         } catch (error) {
             console.error('Upload failed:', error);
         }
@@ -128,292 +79,117 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 ```
 
-### TypeScript with Type Safety
+### TypeScript
 
 ```typescript
 // webpack/avatar-loader.ts
-import { buildAPIUrl, fetchAPIJSON } from './api-utils';
+import { fetchAPIJSON } from './api-utils';
 
-interface AvatarInfo {
-    id: number;
-    url: string;
-    exists: boolean;
-}
+interface AvatarInfo { id: number; url: string; exists: boolean; }
 
-class AvatarLoader {
-    async load(personId: number): Promise<void> {
-        try {
-            const path = `person/${personId}/avatar`;
-            const avatar = await fetchAPIJSON<AvatarInfo>(path);
-            
-            if (avatar.exists) {
-                this.displayAvatar(avatar);
-            }
-        } catch (error) {
-            console.error('Failed to load avatar:', error);
-        }
-    }
-    
-    private displayAvatar(avatar: AvatarInfo): void {
-        const img = document.querySelector('img.avatar') as HTMLImageElement;
-        if (img) {
+async function load(personId: number): Promise<void> {
+    try {
+        const avatar = await fetchAPIJSON<AvatarInfo>(`person/${personId}/avatar`);
+        const img = document.querySelector<HTMLImageElement>('img.avatar');
+        if (avatar.exists && img) {
             img.src = avatar.url;
         }
+    } catch (error) {
+        console.error('Failed to load avatar:', error);
     }
 }
 
-// Initialize on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
-    const loader = new AvatarLoader();
-    const personId = parseInt((document.getElementById('person-id') as HTMLElement)?.dataset.id || '0');
+    const personId = Number.parseInt(document.getElementById('person-id')?.dataset.id ?? '0', 10);
     if (personId > 0) {
-        loader.load(personId);
+        load(personId);
     }
 });
 ```
 
-### avatar-loader.ts Click Class Injection <!-- learned: 2026-03-30 -->
+### Avatar click classes
 
-`avatar-loader.ts` is the single source of truth for making avatars clickable.
-In `loadUploadedPhoto.onload`, it adds `.view-person-photo` / `.view-family-photo`
-plus `data-person-id` / `data-family-id` — but only after confirming the photo
-loaded successfully. It skips images inside `#uploadImageButton` / `#uploadImageTrigger`
-(profile upload buttons). **Do not add these classes in PHP templates** — avatar-loader
-handles it. See `frontend-development.md` → "Avatar Click-to-View Lightbox" for full rules.
+`avatar-loader.ts` makes avatars clickable: in `loadUploadedPhoto.onload` it adds `.view-person-photo` / `.view-family-photo` plus `data-person-id` / `data-family-id` after the photo loads, and skips images inside `#uploadImageButton` / `#uploadImageTrigger`. PHP templates leave those classes to it.
 
-## CSS Organization
+## CSS
 
-Each feature should have associated CSS:
+Import the feature's CSS or SCSS at the top of its entry:
 
 ```javascript
-// webpack/my-feature.js
-import './my-feature.css';  // Import at top
-import './my-feature.scss'; // SCSS also supported
-
-// TypeScript same pattern
-import './my-feature.css';  // In webpack/my-feature.ts
+import './my-feature.css';
+import './my-feature.scss';
 ```
 
-**Output Configuration (webpack.config.js):**
+## Entry Registration (`webpack.config.js`)
 
-> ⚠️ **Entry keys are flat — never prefix them with `skin/v2/`.**
-> `output.path` is already `src/skin/v2` and `output.filename` is `[name].min.js`
-> (`webpack.config.js:115-119`), so the key **is** the bundle's basename. A key of
-> `'skin/v2/my-feature'` emits `src/skin/v2/skin/v2/my-feature.min.js` — one directory too
-> deep, and no page can load it.
-
-See webpack.config.js's `entry` object directly for the current, complete list — don't
-transcribe it here, it changes often and a copy just goes stale. One example showing the
-pattern (a directory source resolves via `resolve.extensions: ['.ts', '.tsx', '.js']`,
-and a source may sit in a subdirectory — only the **key** must stay flat):
+Entry keys are flat. `output.path` is `src/skin/v2` and `output.filename` is `[name].min.js`, so the key is the bundle's basename (`'my-feature'` emits `src/skin/v2/my-feature.min.js`). The source may sit in a subdirectory and resolves with `resolve.extensions: ['.ts', '.tsx', '.js']`. Read the `entry` object in `webpack.config.js` for the current list.
 
 ```javascript
 entry: {
-    kiosk: './webpack/kiosk',                          // → webpack/kiosk/index.ts
+    kiosk: './webpack/kiosk',                          // webpack/kiosk/index.ts
     'people-list': './webpack/people/person-list',
-    'my-feature': './webpack/my-feature.js',           // → src/skin/v2/my-feature.min.js
+    'my-feature': './webpack/my-feature.js',
 },
 ```
 
-Load the result from a view with the emitted name:
+Load the bundle from a view with its emitted name:
 
 ```php
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/my-feature.min.js') ?>"></script>
 ```
 
-## Type Definitions & Reuse
+Use one entry per page or feature. Entries are plain `.ts` / `.js` modules.
 
-### Shared Types File
+## Types
 
-`webpack/types/` holds **ambient declaration files only** — `window.d.ts` (the global
-`window.CRM` namespace injected by PHP templates) and `avatar-initials.d.ts`. They are not
-importable modules; they declare globals. Do not add exported interfaces there.
-
-Put exported interfaces in a `types.ts` next to the feature that owns them, the way the kiosk
-entry does:
+`webpack/types/` holds ambient declaration files (`window.d.ts` for the global `window.CRM` namespace, plus `datatables.d.ts`, `styles.d.ts`, `avatar-initials.d.ts`). Put exported interfaces in a `types.ts` next to the feature that owns them:
 
 ```typescript
-// webpack/kiosk/types.ts (trimmed)
-export interface ClassMember {
-    displayName: string;
-    firstName: string;
-    classRole: string;
-    personId: number;
-    familyId: number | null;
-}
+// webpack/kiosk/types.ts
+export interface PersonApiData { Id: number; FirstName: string; }
 
-export interface PersonApiData {
-    Id: number;
-    FirstName: string;
-}
-```
-
-### Using Shared Types
-
-```typescript
-// webpack/kiosk/kiosk-jsom.ts:8-18 — sibling import of the feature's own types
-import type { ClassMember, PersonApiData } from './types';
-// webpack/people/geo-refresh.js:9 — the shared typed fetch helper
+// webpack/kiosk/kiosk-jsom.ts
+import type { PersonApiData } from './types';
 import { fetchAPIJSON } from '../api-utils';
 
-async function viewPerson(id: number): Promise<void> {
-    // fetchAPIJSON<T>() is generic — pass the interface as T, it returns Promise<T>
-    const person = await fetchAPIJSON<PersonApiData>(`person/${id}`);
-    console.log(`${person.FirstName} (#${person.Id})`);
-}
+const person = await fetchAPIJSON<PersonApiData>(`person/${id}`);
 ```
-
-`fetchAPIJSON` (`webpack/api-utils.ts:109`) throws on a non-OK response rather than returning
-a `{ success, data }` envelope, so wrap the call in `try`/`catch` — there is no `.success`
-flag to test.
 
 ## Best Practices
 
-### 1. Async Loading
-Always use async/await for API calls:
+- Use `async`/`await` for API calls and wrap them in `try`/`catch` that shows the error to the user
+- Build API URLs with `buildAPIUrl()` / `buildAdminAPIUrl()`
+- Check that an element exists before attaching handlers: `document.getElementById('x')?.addEventListener('click', handler)`
+- Use named ES imports (`import { buildAPIUrl } from './api-utils'`) so tree shaking works
+- Load heavy libraries on demand with `await import('...')`
+- Wrap user-facing text in `i18next.t()`: `window.CRM.notify(i18next.t('Settings saved'), { type: 'success' })`
 
-```typescript
-// ✅ CORRECT
-const data = await fetchAPIJSON('person/123');
+## Biome Lint
 
-// ❌ WRONG - No synchronous API calls
-const data = fetch('/api/person/123');  // Returns Promise immediately
-```
+Biome lints TypeScript/JS (`npm run lint`). Suppress with Biome syntax and a reason:
 
-### 2. Error Handling
-Always wrap async operations:
-
-```typescript
-// ✅ CORRECT
-try {
-    const data = await fetchAPIJSON('person/123');
-} catch (error) {
-    console.error('Failed:', error);
-    // Show error to user
-}
-
-// ❌ WRONG - Unhandled promise rejection
-const data = await fetchAPIJSON('person/123');  // Crash if fails
-```
-
-### 3. No Global State Assignment
-Avoid modifying `window.CRM`:
-
-```typescript
-// ✅ CORRECT - Use api-utils
-import { buildAPIUrl } from './api-utils';
-const url = buildAPIUrl('person/123');
-
-// ❌ WRONG - Assumes window.CRM exists
-const url = window.CRM.root + '/api/person/123';
-```
-
-### 4. DOM Ready Check
-Always verify elements exist:
-
-```typescript
-// ✅ CORRECT
-const button = document.getElementById('my-button');
-if (button) {
-    button.addEventListener('click', handler);
-}
-
-// ❌ WRONG - Crashes if element doesn't exist
-document.getElementById('my-button').addEventListener('click', handler);
-```
-
-### 5. Tree Shaking for Performance
-Use ES6 imports for better bundling:
-
-```typescript
-// ✅ CORRECT - Enables tree shaking
-import { buildAPIUrl } from './api-utils';
-
-// ❌ LESS EFFICIENT - Full module imported
-import * as utils from './api-utils';
-```
-
-### 6. Lazy Loading Heavy Libraries
-```typescript
-// ✅ Only load when needed
-async function openModal() {
-    const { Modal } = await import('bootstrap');
-    new Modal(element).show();
-}
-```
-
-### 7. i18n for User-Facing Text
-```typescript
-// ✅ Always use i18next.t()
-window.CRM.notify(i18next.t('Settings saved'), { type: 'success' });
-
-// ❌ WRONG - Untranslatable
-window.CRM.notify('Settings saved', { type: 'success' });
-```
-
-### 8. Code Splitting
-Separate concerns into different entry points — one per page or feature, with a **flat** key
-(see "Output Configuration" above; a `skin/v2/` prefix would double the output path):
-
-```javascript
-// illustrative — see webpack.config.js's entry object for the real, current list
-entry: {
-    'admin-dashboard': './webpack/admin-dashboard',      // Admin dashboard page
-    'photo-uploader': './webpack/photo-uploader-entry',  // Photo upload
-    kiosk: './webpack/kiosk',                            // Kiosk app (TypeScript)
-    'event-checkin': './webpack/event-checkin',          // Event check-in page
-}
-```
-
-There are no `.tsx` files in the repository — React was removed in #8513. TypeScript entries
-are plain `.ts` modules.
-
----
-
-## Biome Lint — Suppression Comments <!-- learned: 2026-03-03 -->
-
-This project uses **Biome** (not ESLint) for TypeScript/JS linting. ESLint suppression comments are silently ignored by Biome.
-
-### ✅ CORRECT — Biome suppression syntax
 ```js
 // biome-ignore lint/suspicious/noExplicitAny: <reason>
 const root = (window as any).CRM?.root;
 ```
 
-### Common rules to suppress
+Common suppressions: `lint/suspicious/noExplicitAny` (interop code), `lint/style/noNonNullAssertion` (null is structurally impossible), `lint/complexity/useOptionalChain` (optional chaining changes semantics).
 
-| Rule | When |
-|------|------|
-| `lint/suspicious/noExplicitAny` | Legitimate `any` in interop/legacy code |
-| `lint/style/noNonNullAssertion` | When null is structurally impossible |
-| `lint/complexity/useOptionalChain` | When optional chaining changes semantics |
+## JS or TypeScript
 
----
+Use TypeScript (`.ts`) for API calls (typed `api-utils.ts` helpers) and typed response shapes.
 
-## JS vs TypeScript: When to Use Each <!-- learned: 2026-03-15 -->
-
-Use **TypeScript** (`.ts`) when:
-- Making API calls (use `api-utils.ts` typed helpers)
-- Working with custom typed interfaces or response shapes
-
-Use **plain JavaScript** (`.js`) when:
-- The entry is primarily jQuery plugin initialization (DataTables, Select2, etc.)
-- The file is a thin DOM-ready event-handler wrapper with no API calls
-- The module renders HTML via template literals (no type benefit)
-
-**Why:** DataTables, moment, the date pickers, bootbox, i18next, JustValidate, and bs-stepper are imported by `webpack/vendor-globals.js` and shipped in `churchcrm.min.js`. Do not add `<script>` tags for them. Leaflet is imported from `webpack/leaflet-global.js` by the map entries. Locale files for moment, the datepicker, and DataTables are dynamic `import()`s in `webpack/locale-loader.js`, not files copied into `src/locale/vendor`. There is no Grunt copy step.
-
-Existing JS-only entries: `admin-dashboard.js`, `backup.js`, `restore.js`, `church-info.js`.
+Use plain JavaScript (`.js`) for jQuery plugin initialization (DataTables, Select2), thin DOM-ready handler wrappers with no API calls, and modules that render HTML through template literals.
 
 ```javascript
-// webpack/groups-sundayschool-dashboard.js — jQuery-heavy, plain JS
+// webpack/groups-sundayschool-dashboard.js
 document.addEventListener("DOMContentLoaded", () => {
   $(".data-table").DataTable(window.CRM.plugin.dataTable);
-  // ...
 });
 ```
 
-## Related Knowledge
-- **API Utilities**: See webpack/api-utils.ts source
-- **Bootstrap Build**: See `npm run build:frontend` documentation
-- **Admin API Calls**: See admin-api-development.md skill
+## Related
+
+- `webpack/api-utils.ts` source
+- `api-development.md` for the API routes these helpers call
+- `frontend-development.md`, `tabler-components.md`

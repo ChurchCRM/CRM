@@ -274,7 +274,7 @@ print(f\"fil: {len(d.get('fil', []))} terms\")
 
 ## Model selection & cost optimization
 
-**Use Haiku 4.5 for all runs.** See [`locale-translation-workflow.md`](../../.agents/skills/churchcrm/locale-translation-workflow.md#model-selection--cost-efficiency) for cross-provider comparison, cost matrix, and the Sept 2026 session results.
+**Use Haiku 4.5 for all runs.** Model guidance: [`locale-translation-workflow.md`](../../.agents/skills/churchcrm/locale-translation-workflow.md#model-selection--cost-efficiency).
 
 ---
 

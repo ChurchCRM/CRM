@@ -6,21 +6,21 @@ tags: [pr, review, process]
 
 # Maintainer PR review gates
 
-Draft the GitHub review in chat as **normal Markdown** (the same text we would post). Do not dump a label block. Do not post, approve, or merge until a maintainer says to post. Most reviews go out as the acting maintainer.
+Draft the GitHub review in chat as normal Markdown (the text that would be posted). Post only when a maintainer says to post; agents never approve or merge. Most reviews go out as the acting maintainer.
 
 If the PR author is the same GitHub user the agent is acting as, do not post a review comment. Fix the branch instead.
 
 Passing this checklist does not mean the PR should merge.
 
-Do not mention CI status in the review. Failed CI is never merged; branch protection already owns that.
+Leave CI status out of the review; branch protection owns it.
 
 ## Tone
 
-The author is a volunteer. Be thankful. Be specific. Do not nitpick.
+The author is a volunteer. Be thankful, specific, and focused on what matters.
 
 ## Comment Resolution
 
-**Always resolve addressed comments as part of PR review.** If a comment's concern is addressed in the current PR code (question answered, bug fixed, design decision made), mark/resolve that comment. This keeps threads clean and shows progress.
+Resolve addressed comments as part of PR review. If a comment's concern is addressed in the current PR code (question answered, bug fixed, design decision made), mark/resolve that comment. This keeps threads clean and shows progress.
 
 ## Review Format: No Hard Blocks
 
@@ -37,7 +37,7 @@ Thanks @author. One short paragraph of what the PR does.
 No hard blocks.
 ```
 
-**Why:** Checkboxes with all items checked causes confusion ("are these still open?"). The "Verified" + "No hard blocks" signal is unambiguous and actionable.
+The "Verified" + "No hard blocks" signal replaces an all-checked checkbox list.
 
 ## Hard blocks — Request changes
 
@@ -45,37 +45,36 @@ No hard blocks.
 2. Performance — extra queries or heavy work on login, people list, or other common paths, unless measured as fine.
 3. Existing installs — required new fields with no default, surprise behavior, destructive migration, surprise permission change.
 4. UI that does not match Tabler / Bootstrap 5, or a UI change with **no manual tablet/mobile pass stated**. Missing screenshots alone is not a hard block if the author (or reviewer) will still do that pass. Tiny tweaks can follow up.
-5. Localization wrap — new user-visible strings not in `gettext()` / `i18next.t()`. Do not require translations or `locale:build` in the feature PR.
+5. Localization wrap — new user-visible strings not in `gettext()` / `i18next.t()`. Translations and `locale:build` come after merge.
 6. Locale-sensitive values — dates, times, numbers, currency, or timezone that ignore ChurchCRM conventions. See below.
 7. Tests — feature or bug fix with no new or updated tests.
 8. Repo process — issue rule in `git-workflow.md` not met; title or body that describes different work than the diff.
-9. Query View freeze — any new feature or filter on `QueryView.php`, `QueryList.php`, or predefined `query_qry` / `queryparameters_qrp` rows for that UI. Raw SQL substitution, not ORM, leak history. Point the author at Slim/Tabler MVC + Propel (`src/v2/`), or a reports plugin (`src/plugins/`; `src/plugins/community/` to share). See #9921. Security-only patches on Query View need an explicit maintainer exception. See #9995.
+9. Query View freeze — any new feature or filter on `QueryView.php`, `QueryList.php`, or predefined `query_qry` / `queryparameters_qrp` rows for that UI. Point the author at Slim/Tabler MVC + Propel (`src/v2/`), or a reports plugin (`src/plugins/`; `src/plugins/community/` to share). Security-only patches on Query View need an explicit maintainer exception.
 
-Missing comments are not a hard block. Do not ask the author to add more comments. Wrong or essay comments can be deleted; that is not Request changes.
+Comment volume is not a review topic. Wrong or essay comments can be deleted; that is not Request changes.
 
 ### Locale-sensitive values
 
 Applies when the PR reads, writes, validates, or displays a date, time, number, currency, or timezone.
 
 - API and storage dates are ISO `Y-m-d`, or naive `Y-m-d H:i:s` wall-clock in `sTimeZone`. See `timezone-handling.md`.
-- Do not parse input with `sDateFormat*` or the browser timezone. Those settings are for **display**.
-- Do not store UTC in event DATETIME columns.
-- Do not invent a second calendar contract (locale `d/m/Y` in JSON, ISO `T` on a field typed as space-separated datetime, etc.) unless the route already uses that shape.
-- Display uses `sDateFormat*`, `sTimeZone`, and `sLanguage`.
+- Parse input as ISO or naive `sTimeZone` wall-clock. `sDateFormat*`, `sTimeZone`, and `sLanguage` drive **display** only.
+- Store event DATETIME columns as naive wall-clock in `sTimeZone`.
+- Keep one calendar contract per route (for example, space-separated datetime stays space-separated).
 
 ISO-only validation on an API field is **correct**. Parsing `23/09/2026` because the church display format is `d/m/Y` is a hard block.
 
-If hard blocks stay open and the author goes quiet, maintainers may close the PR for inactivity. Do not name a timeline.
+If hard blocks stay open and the author goes quiet, maintainers may close the PR for inactivity.
 
 ## Not blockers — Comment plus follow-up
 
-- Demo-import in `src/admin/demo/config.json`. Never Cypress seed if that would break tests.
+- Demo-import values belong in `src/admin/demo/config.json`, which keeps the Cypress seed stable.
 - User manual tracking issue on ChurchCRM/CRM. The docs pull request uses the same milestone and stays open until that release is published.
 - Docs and screenshots follow-up. A PR that adds or changes user-visible behavior gets one note in the review: the docs pull request on `ChurchCRM/docs.churchcrm.io` needs that release milestone, and screenshots or video for docs, blog, and marketing still have to land. Name which ones the PR already carries and which still need an issue. The docs pull request merges only after the release exists, its CI is green, and CodeRabbit has approved. Skip bug-fix, security, CI, locale, dependency, and refactor-only PRs. Not a blocker.
 - Playwright capture when the PR changes UI that belongs on a marketing or docs page. It ships in the same PR (the spec only; images are generated and published to cdn.churchcrm.io, not committed); ask the author to add it. If it cannot be taken yet, an issue linked from the PR is enough. Not a blocker.
-- Marketing / blog only on a full end-to-end feature. Ask George. Skip bug/security-only.
+- Marketing / blog only on a full end-to-end feature. Ask George; skip bug/security-only.
 - Member-facing consumer when this PR is storage-only.
-- Extra screenshots. If they have tablet/mobile shots, ask them to attach. Do not Request changes only because shots are missing.
+- Extra screenshots. If they have tablet/mobile shots, ask them to attach.
 
 ## Review shape
 
@@ -84,13 +83,13 @@ If hard blocks stay open and the author goes quiet, maintainers may close the PR
 3. Hard blocks first (Request changes).
 4. Then a **checkbox list of what is still open** (never CI).
 5. If there are no hard blocks, event is Comment.
-6. Never approve. Never merge. Never close unless the maintainer answers yes.
+6. Close only when the maintainer answers yes to a direct question.
 
 ## Draft format (chat + GitHub)
 
 Write headings and lists. One line at the top for the maintainer only:
 
-`Draft — Comment | Request changes. Title matches. Do not post until yes.`
+`Draft — Comment | Request changes. Title matches. Waiting for yes to post.`
 
 Then the body that would go on GitHub:
 
@@ -124,4 +123,4 @@ Thanks @author. One short paragraph of what the PR does.
 - [minor item or note]
 ```
 
-If there is a hard block, post with "Request changes" event. Ask George in chat whether to post. Do not approve.
+If there is a hard block, post with "Request changes" event. Ask George in chat whether to post.
