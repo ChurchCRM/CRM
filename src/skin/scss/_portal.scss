@@ -47,9 +47,11 @@
 }
 
 .portal-body {
+    margin: 0;
     background-color: var(--portal-surface-alt);
     color: var(--portal-text);
     font-family: var(--portal-font-body);
+    min-block-size: 100vh;
 }
 
 .portal-shell {
