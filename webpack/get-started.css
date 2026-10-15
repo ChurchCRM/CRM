@@ -1,61 +1,7 @@
-/* =========================================================
-   Get Started — onboarding wizard page
-   Bootstrap 4.6.2 / AdminLTE 3 context
-   ========================================================= */
-
-/* ── Constrain to a comfortable reading width ─────────────── */
 .gs-wrap {
   max-width: 900px;
 }
 
-/* ── Hero ─────────────────────────────────────────────────── */
-.gs-hero {
-  background: linear-gradient(135deg, #1565c0 0%, #1a73e8 100%);
-  border-radius: 0.75rem;
-  padding: 2.25rem 2rem;
-  margin-bottom: 2rem;
-  color: #fff;
-  position: relative;
-  overflow: hidden;
-}
-
-.gs-hero::before {
-  content: "";
-  position: absolute;
-  top: -60px;
-  right: -60px;
-  width: 260px;
-  height: 260px;
-  background: rgba(255, 255, 255, 0.07);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.gs-hero::after {
-  content: "";
-  position: absolute;
-  bottom: -40px;
-  right: 60px;
-  width: 140px;
-  height: 140px;
-  background: rgba(255, 255, 255, 0.04);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.gs-hero h2 {
-  font-size: 1.6rem;
-  font-weight: 700;
-  margin-bottom: 0.35rem;
-}
-
-.gs-hero p {
-  font-size: 0.95rem;
-  opacity: 0.85;
-  margin-bottom: 0;
-}
-
-/* ── Section label ────────────────────────────────────────── */
 .gs-section-label {
   font-size: 0.7rem;
   font-weight: 700;
@@ -65,7 +11,6 @@
   margin-bottom: 1rem;
 }
 
-/* ── Option cards ─────────────────────────────────────────── */
 .gs-card {
   background: #fff;
   border: 1px solid #e9ecef;
@@ -83,11 +28,6 @@
     border-top-color 0.2s ease,
     transform 0.2s ease;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
-  /* reset button defaults */
-  background-color: #fff;
-  width: 100%;
-  text-align: left;
-  -webkit-appearance: none;
 }
 
 .gs-card:hover {
@@ -108,7 +48,6 @@
     0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Colour top-border variants */
 .gs-card--green {
   border-top-color: #28a745;
 }
@@ -122,7 +61,6 @@
   border-top-color: #fd7e14;
 }
 
-/* Icon wrapper */
 .gs-card-icon {
   width: 3.5rem;
   height: 3.5rem;
@@ -152,7 +90,6 @@
   color: #fd7e14;
 }
 
-/* Title */
 .gs-card h5 {
   font-size: 1rem;
   font-weight: 700;
@@ -160,7 +97,6 @@
   color: #212529;
 }
 
-/* Body text */
 .gs-card p {
   font-size: 0.85rem;
   color: #6c757d;
@@ -169,7 +105,6 @@
   margin-bottom: 1.5rem;
 }
 
-/* CTA row */
 .gs-card-cta {
   margin-top: auto;
   display: inline-flex;
@@ -197,7 +132,6 @@
   gap: 0.65rem;
 }
 
-/* ── Divider ──────────────────────────────────────────────── */
 .gs-divider {
   display: flex;
   align-items: center;
@@ -216,7 +150,6 @@
   background: #e9ecef;
 }
 
-/* ── Plugin strip ─────────────────────────────────────────── */
 .gs-plugin-strip {
   background: #f8f9fa;
   border: 1px solid #e9ecef;
@@ -264,7 +197,6 @@
   padding: 0.15em 0.45em;
 }
 
-/* ── Skip row ─────────────────────────────────────────────── */
 .gs-skip {
   text-align: center;
   margin-top: 1.75rem;

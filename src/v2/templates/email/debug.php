@@ -187,10 +187,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 .debug-smtp-log {
     max-height: 400px;
     overflow-y: auto;
-    background: var(--tblr-bg-surface-secondary, #f1f5f9);
+    background: var(--tblr-bg-surface-secondary);
     padding: 0.75rem 1rem;
     border-radius: 6px;
-    font-family: var(--tblr-font-monospace, monospace);
+    font-family: var(--tblr-font-monospace);
     font-size: 0.82rem;
     line-height: 1.5;
 }

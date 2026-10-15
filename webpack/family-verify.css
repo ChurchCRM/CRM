@@ -44,12 +44,6 @@ body {
   margin-top: 0.5rem;
 }
 
-.contact-info .small {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .btn-close-white {
   opacity: 0.8;
 }

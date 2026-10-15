@@ -338,14 +338,13 @@ foreach ($monthlyData as $monthData):
 <?php endif; ?>
 
 <style>
-  /* Past events tbody is hidden by default; JS adds .expanded to show it. */
+  /* JS adds .expanded to open a past-events group */
   tbody.past-events-body {
     display: none;
   }
   tbody.past-events-body.expanded {
     display: table-row-group;
   }
-  /* Rotate chevron when the past-events section is open. */
   .past-events-chevron {
     display: inline-block;
     transition: transform 0.2s ease;

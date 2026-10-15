@@ -7,8 +7,6 @@
  *  - Client-side form validation (time ordering, date-range ordering)
  */
 
-import "./repeat-event-editor.css";
-
 document.addEventListener("DOMContentLoaded", () => {
   const t = window.i18next ? window.i18next.t.bind(window.i18next) : (s) => s;
 

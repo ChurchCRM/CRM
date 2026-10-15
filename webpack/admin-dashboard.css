@@ -1,4 +1,3 @@
-/* Quick Start Cards */
 .quick-start-card {
   display: flex;
   align-items: center;
@@ -34,10 +33,6 @@
   font-size: 1rem;
 }
 
-.quick-start-icon.bg-orange {
-  background-color: #fd7e14;
-}
-
 .quick-start-content {
   flex: 1;
   min-width: 0;
@@ -57,7 +52,6 @@
   line-height: 1.3;
 }
 
-/* Card improvements */
 .card {
   border: none;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
@@ -72,18 +66,14 @@
   font-weight: 600;
 }
 
-/* Badge styling */
 .badge {
   font-weight: 600;
   font-size: 0.75rem;
 }
 
-/* Button improvements */
 .btn-group .btn {
   border-radius: 0.25rem;
 }
-
-/* Setup progress checklist */
 
 .setup-progress-card .list-group-item:last-child {
   border-bottom: 0;

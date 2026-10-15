@@ -1,5 +1,3 @@
-/* ChurchCRM Family Registration Styles */
-
 .register-box {
   width: 90%;
   margin: 30px auto;
@@ -24,8 +22,7 @@
   margin: 0 -30px 30px -30px;
 }
 
-/* Stepper label: visually hide text on very small screens while keeping it
-   in the accessibility tree for screen readers */
+/* Visually hidden, still read by screen readers */
 @media (max-width: 400px) {
   .bs-stepper-label {
     position: absolute;
@@ -122,45 +119,7 @@
   transition: transform 0.2s ease;
 }
 
-/* Ensure form-row inside member cards behaves as a proper grid */
-.member-card .row {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.member-card .mb-3 {
-  margin-bottom: 1rem;
-}
-
-/* Column widths — only enforce at md breakpoint and above so they stack on mobile */
-@media (min-width: 768px) {
-  .member-card .row .col-md-6 {
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
-
-  .member-card .row .col-md-7 {
-    flex: 0 0 58.333333%;
-    max-width: 58.333333%;
-  }
-
-  .member-card .row .col-md-5 {
-    flex: 0 0 41.666667%;
-    max-width: 41.666667%;
-  }
-}
-
-/* Below md: stack all columns full-width */
-@media (max-width: 767.98px) {
-  .member-card .row > [class*="col-"] {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
-}
-
-/* Form control styling for member cards */
-.member-card .form-control,
-.member-card .custom-control-input {
+.member-card .form-control {
   border-radius: 4px;
   border: 1px solid #ced4da;
   padding: 0.375rem 0.75rem;
@@ -185,12 +144,6 @@
   margin-bottom: 0.5rem;
 }
 
-/* Ensure form-row spacing is proper */
-.member-card .row {
-  margin-bottom: 0;
-}
-
-/* Select dropdowns */
 .member-card select {
   appearance: none;
   background: white
@@ -200,77 +153,6 @@
   padding-right: 2rem;
 }
 
-/* Checkbox styling */
-.member-card .custom-control {
-  position: relative;
-  display: block;
-  padding-left: 1.5rem;
-}
-
-.member-card .custom-control-input {
-  position: absolute;
-  left: 0;
-  z-index: -1;
-  width: 1rem;
-  height: 1.25rem;
-  opacity: 0;
-}
-
-.member-card .custom-control-label {
-  position: relative;
-  margin-bottom: 0;
-  color: #666;
-  cursor: pointer;
-}
-
-.member-card .custom-control-label::before {
-  content: "";
-  position: absolute;
-  top: 0.25rem;
-  left: -1.5rem;
-  display: block;
-  width: 1rem;
-  height: 1rem;
-  pointer-events: none;
-  border: 1px solid #adb5bd;
-  border-radius: 0.25rem;
-}
-
-.member-card .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
-  border-color: #667eea;
-  background-color: #667eea;
-}
-
-/* Enabled checkbox styling */
-.member-card .custom-control-input:not(:disabled) ~ .custom-control-label {
-  color: #666;
-  cursor: pointer;
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.member-card .custom-control-input:not(:disabled) ~ .custom-control-label::before {
-  cursor: pointer;
-  pointer-events: auto;
-  background-color: white;
-}
-
-/* Disabled checkbox styling */
-.member-card .custom-control-input:disabled ~ .custom-control-label {
-  color: #999;
-  cursor: not-allowed;
-  opacity: 0.6;
-  pointer-events: none;
-}
-
-.member-card .custom-control-input:disabled ~ .custom-control-label::before {
-  border-color: #ccc;
-  background-color: #f5f5f5;
-  cursor: not-allowed;
-  pointer-events: none;
-}
-
-/* Invalid feedback styling */
 .member-card .invalid-feedback {
   display: block;
   color: #dc3545;
@@ -278,7 +160,6 @@
   margin-top: 0.25rem;
 }
 
-/* Focus state for inputs */
 .member-card .form-control.is-valid {
   border-color: #28a745;
 }
@@ -297,7 +178,6 @@
   box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
 }
 
-/* Add/Remove member buttons */
 #add-member-btn {
   margin-bottom: 20px;
   width: 100%;
@@ -332,91 +212,6 @@
   margin-left: 10px;
 }
 
-/* Review section styles */
-.review-section {
-  margin-bottom: 30px;
-  padding: 20px;
-  background-color: #f8f9fa;
-  border-radius: 6px;
-  border-left: 4px solid #667eea;
-}
-
-.review-section h5 {
-  color: #667eea;
-  font-weight: 600;
-  margin-bottom: 15px;
-  display: flex;
-  align-items: center;
-}
-
-.review-section h5 i {
-  margin-right: 10px;
-  font-size: 1.2em;
-}
-
-.review-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 0;
-  border-bottom: 1px solid #dee2e6;
-}
-
-.review-item:last-child {
-  border-bottom: none;
-}
-
-.review-item strong {
-  color: #333;
-}
-
-.review-item span {
-  color: #666;
-}
-
-.registration-success {
-  text-align: center;
-  padding: 40px 20px;
-}
-
-.registration-success i {
-  font-size: 4rem;
-  color: #28a745;
-  margin-bottom: 20px;
-}
-
-.registration-success h3 {
-  color: #28a745;
-  margin-bottom: 10px;
-}
-
-.registration-success p {
-  color: #666;
-  margin-bottom: 20px;
-}
-
-.registration-error {
-  text-align: center;
-  padding: 40px 20px;
-}
-
-.registration-error i {
-  font-size: 4rem;
-  color: #dc3545;
-  margin-bottom: 20px;
-}
-
-.registration-error h3 {
-  color: #dc3545;
-  margin-bottom: 10px;
-}
-
-.registration-error p {
-  color: #666;
-  margin-bottom: 20px;
-}
-
-/* ── Mobile Responsive Overrides ───────────────────────────────── */
 @media (max-width: 767.98px) {
   .register-box {
     width: 100%;
@@ -450,7 +245,6 @@
     font-size: 16px;
   }
 
-  /* Member card spacing */
   .member-card .card-header {
     padding: 10px 14px;
   }
@@ -478,7 +272,6 @@
     font-size: 0.8rem;
   }
 
-  /* Nav buttons: full-width stacked on mobile */
   .bs-stepper .content > .mb-3:last-child {
     display: flex;
     flex-direction: column-reverse;
@@ -490,18 +283,15 @@
     margin-right: 0;
   }
 
-  /* Family count badge */
   .family-count-badge {
     padding: 4px 10px;
     font-size: 12px;
   }
 
-  /* Review cards */
   .register-box .card-body {
     padding: 16px;
   }
 
-  /* Register logo */
   .register-logo {
     margin-bottom: 12px;
   }

@@ -136,7 +136,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         bottom: 0;
         width: 340px;
         max-width: 85%;
-        background: var(--tblr-bg-surface, #fff);
+        background: var(--tblr-bg-surface);
         z-index: 1002;
         overflow-y: auto;
         box-shadow: -2px 0 12px rgba(0, 0, 0, .15);
@@ -150,8 +150,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     }
     .neighbors-legend {
         padding: 8px 12px;
-        background: var(--tblr-bg-surface, #fff);
-        color: var(--tblr-body-color, #1a2234);
+        background: var(--tblr-bg-surface);
+        color: var(--tblr-body-color);
         border-radius: 6px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, .18);
         font-size: .8rem;
@@ -163,7 +163,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         font-size: .72rem;
         text-transform: uppercase;
         letter-spacing: .04em;
-        color: var(--tblr-secondary, #6c757d);
+        color: var(--tblr-secondary);
         margin-bottom: 4px;
     }
     .neighbors-legend-row {

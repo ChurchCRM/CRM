@@ -647,13 +647,10 @@ $fmtBytes = static function ($bytes): string {
     background-color: rgba(255, 193, 7, 0.1) !important;
 }
 
-/* Environment card sits full-width above the grid — its tabs + wide
-   code values (DSN, paths, Apache module list) need the whole row. */
 .debug-env {
     margin-bottom: 1rem;
 }
 
-/* Deterministic chevron placement on collapsible headers — no floats. */
 .debug-env .card-header h4[data-bs-toggle="collapse"],
 .debug-grid .card-header h4[data-bs-toggle="collapse"] {
     display: flex;
@@ -667,11 +664,8 @@ $fmtBytes = static function ($bytes): string {
     margin-left: auto;
 }
 
-/* Environment tabs wrap on narrow widths. */
 .debug-env .nav-tabs { flex-wrap: wrap; }
 
-/* Key/value reference tables — left column = label, right column = value.
-   Caps the label width so long values get room to breathe. */
 .debug-kv > tbody > tr > td:first-child {
     width: 220px;
     color: var(--tblr-secondary);
@@ -681,18 +675,15 @@ $fmtBytes = static function ($bytes): string {
     vertical-align: middle;
 }
 
-/* Inline code chip used for paths / DSN / values. */
 .debug-code {
-    background: var(--tblr-bg-surface-secondary, #f1f5f9);
+    background: var(--tblr-bg-surface-secondary);
     padding: 0.15rem 0.4rem;
     border-radius: 4px;
     font-size: 0.85rem;
-    font-family: var(--tblr-font-monospace, monospace);
+    font-family: var(--tblr-font-monospace);
     word-break: break-all;
 }
 
-/* Status-banner chips — roomier than a plain Bootstrap badge so icon +
-   label + count don't look cramped. */
 .debug-status-chip,
 .card-body .badge.bg-success-lt,
 .card-body .badge.bg-warning-lt {

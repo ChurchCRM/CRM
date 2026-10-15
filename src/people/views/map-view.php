@@ -48,7 +48,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div id="map-legend" class="d-none d-sm-block">
                 <?php if ($mapConfig['hasLocation']): ?>
                 <div class="legend-static">
-                    <img src="<?= $sRootPath ?>/skin/icons/church.png" width="14" height="14" alt="" class="legend-church-icon">
+                    <img src="<?= $sRootPath ?>/skin/icons/church.png" width="14" height="14" alt="" class="flex-shrink-0">
                     <span class="legend-label"><?= InputUtils::escapeHTML($mapConfig['churchName']) ?></span>
                 </div>
                 <?php endif; ?>
@@ -90,7 +90,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/people-map-view.min.js') ?>"></script>
 
 <style nonce="<?= SystemURLs::getCSPNonce() ?>">
-    /* ── Floating map legend (desktop) ──────────────────────────────── */
     #map-legend {
         padding: 8px 12px;
         background: #fff;
@@ -108,7 +107,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         margin-bottom: 6px;
     }
 
-    /* ── Fixed (non-toggle) legend row: the church ──────────────────── */
     .legend-static {
         display: flex;
         align-items: center;
@@ -119,11 +117,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         border-bottom: 1px solid rgba(0, 0, 0, .1);
         line-height: 1.6;
     }
-    .legend-church-icon {
-        flex-shrink: 0;
-    }
 
-    /* ── Legend rows use Tabler's .legend; only the strike-through and pill are ours ── */
     .legend-item.inactive .legend-label {
         text-decoration: line-through;
     }

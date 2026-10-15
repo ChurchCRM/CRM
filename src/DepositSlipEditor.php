@@ -300,10 +300,6 @@ require_once __DIR__ . '/Include/Header.php';
     border-bottom: 2px solid #e9ecef;
     padding: 1.25rem;
 }
-.card-header.bg-primary {
-    background-color: #0d6efd !important;
-    border-bottom: none;
-}
 #paymentsTable {
     margin-bottom: 0;
 }
@@ -350,12 +346,6 @@ require_once __DIR__ . '/Include/Header.php';
     padding: 0.35rem 0.65rem;
     font-weight: 500;
 }
-#paymentsTable .dropdown {
-    display: inline-block;
-}
-#paymentsTable .dropdown-menu {
-    min-width: auto;
-}
 .stat-card {
     padding: 1.25rem 1rem;
     background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
@@ -382,10 +372,6 @@ require_once __DIR__ . '/Include/Header.php';
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 600;
-}
-.row-select {
-    cursor: pointer;
-    margin: 0;
 }
 code {
     background-color: #f4f4f4;
