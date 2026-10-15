@@ -46,6 +46,12 @@
     --portal-border: #343a40;
 }
 
+// Reserve the scrollbar's width so the header stays put when a page grows past,
+// or shrinks below, the viewport height.
+html {
+    scrollbar-gutter: stable;
+}
+
 .portal-body {
     margin: 0;
     background-color: var(--portal-surface-alt);
