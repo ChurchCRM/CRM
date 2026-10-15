@@ -93,7 +93,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     }
 
     $sCountry = InputUtils::legacyFilterInput($_POST['Country']);
-    $iFamilyMemberRows = InputUtils::legacyFilterInput($_POST['FamCount']);
+    $iFamilyMemberRows = InputUtils::legacyFilterInput($_POST['FamCount'], 'int');
 
     $sState = InputUtils::legacyFilterInput($_POST[$_POST['stateType'] === 'dropDown' ? 'State' : 'StateTextbox']);
 
