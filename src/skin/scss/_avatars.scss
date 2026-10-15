@@ -14,8 +14,8 @@
   object-fit: cover;
   vertical-align: middle;
   overflow: hidden;
-  background-color: var(--tblr-gray-100, #f8f9fa);
-  color: var(--tblr-body-color, #212529);
+  background-color: var(--tblr-gray-100);
+  color: var(--tblr-body-color);
   /* A flex parent must not squash the circle into an oval. */
   flex-shrink: 0;
   aspect-ratio: 1 / 1;
@@ -35,8 +35,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--tblr-secondary, #6c757d);
-  color: var(--tblr-white, #fff);
+  background: var(--tblr-secondary);
+  color: var(--tblr-white);
   font-weight: 700;
 }
 

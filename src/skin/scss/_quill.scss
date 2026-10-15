@@ -2,8 +2,8 @@
 
 .quill-editor-container {
   border: 1px solid var(--tblr-border-color);
-  border-radius: var(--tblr-border-radius, 4px);
-  background-color: var(--tblr-bg-forms, #fff);
+  border-radius: var(--tblr-border-radius);
+  background-color: var(--tblr-bg-forms);
 
   // max-height stops Quill's `.ql-container { height: 100% }` from stretching to a flex-column parent.
   min-height: 200px;
@@ -14,28 +14,28 @@
   &[data-editor-size="tall"]    { min-height: 300px; max-height: 520px; }
 
   &:focus-within {
-    border-color: var(--tblr-primary, #206bc4);
-    box-shadow: 0 0 0 0.25rem rgba(var(--tblr-primary-rgb, 32, 107, 196), 0.25);
+    border-color: var(--tblr-primary);
+    box-shadow: 0 0 0 0.25rem rgba(var(--tblr-primary-rgb), 0.25);
   }
 }
 
 // The toolbar is a sibling above the container: drop its bottom border and
 // square the container's top corners so the two read as one control.
 .ql-toolbar.ql-snow {
-  border: 1px solid var(--tblr-border-color) !important;
-  border-bottom-width: 0 !important;
-  border-top-left-radius: var(--tblr-border-radius, 4px);
-  border-top-right-radius: var(--tblr-border-radius, 4px);
+  border: 1px solid var(--tblr-border-color);
+  border-bottom-width: 0;
+  border-top-left-radius: var(--tblr-border-radius);
+  border-top-right-radius: var(--tblr-border-radius);
 }
 
 .quill-editor-container.ql-container,
 .ql-container.ql-snow {
-  border-color: var(--tblr-border-color) !important;
-  height: auto !important;
+  border-color: var(--tblr-border-color);
+  height: auto;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-  border-bottom-left-radius: var(--tblr-border-radius, 4px);
-  border-bottom-right-radius: var(--tblr-border-radius, 4px);
+  border-bottom-left-radius: var(--tblr-border-radius);
+  border-bottom-right-radius: var(--tblr-border-radius);
   font-family: var(--tblr-font-sans-serif);
 }
 
@@ -58,13 +58,13 @@
 }
 
 @media print {
-  .ql-toolbar.ql-snow { display: none !important; }
+  .ql-toolbar.ql-snow { display: none; }
   .ql-container.ql-snow {
-    border: none !important;
-    border-radius: 0 !important;
+    border: none;
+    border-radius: 0;
   }
   .quill-editor-container {
-    border: none !important;
-    box-shadow: none !important;
+    border: none;
+    box-shadow: none !important; // beats the :focus-within ring
   }
 }

@@ -2,6 +2,7 @@
   line-height: 1.2;
 }
 
+// !important beats the .d-* display utilities and component display rules.
 @media print {
   button.btn,
   a.btn,

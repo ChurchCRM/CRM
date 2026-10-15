@@ -67,7 +67,7 @@
 
 // Kiosk Section Cards (Checked In / Not Checked In lists)
 .kiosk-section {
-  background: white;
+  background: var(--tblr-bg-surface);
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   height: calc(100vh - 220px);
@@ -115,13 +115,13 @@
   align-items: center;
   padding: 0.75rem 1rem;
   margin-bottom: 0.5rem;
-  background: #f8f9fa;
+  background: var(--tblr-bg-surface-secondary);
   border-radius: 8px;
   border-left: 4px solid transparent;
   transition: all 0.2s ease;
 
   &:hover {
-    background: #e9ecef;
+    background: var(--tblr-border-color);
   }
 
   &.checked-in {
@@ -143,8 +143,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #e9ecef;
-  border: 2px solid #dee2e6;
+  background: var(--tblr-border-color);
+  border: 2px solid var(--tblr-border-color);
   overflow: hidden;
 
   img {
@@ -170,7 +170,7 @@
 
 .kiosk-member-age {
   font-size: 0.85rem;
-  color: #6c757d;
+  color: var(--tblr-secondary-color);
 }
 
 .kiosk-member-actions {
@@ -267,7 +267,7 @@
 .kiosk-empty {
   text-align: center;
   padding: 2rem;
-  color: #6c757d;
+  color: var(--tblr-secondary-color);
 
   i {
     font-size: 2.5rem;
@@ -304,7 +304,7 @@
   display: flex;
   align-items: center;
   padding: 0.75rem 1rem;
-  background: white;
+  background: var(--tblr-bg-surface);
   border-radius: 8px;
   border-left: 4px solid #e83e8c;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -324,7 +324,7 @@
 
   &.recent {
     border-left-color: #6c757d;
-    background: #f8f9fa;
+    background: var(--tblr-bg-surface-secondary);
   }
 }
 
@@ -374,7 +374,7 @@
 
 .birthday-date {
   font-size: 0.75rem;
-  color: #6c757d;
+  color: var(--tblr-secondary-color);
 
   &.today {
     color: #ffc107;
@@ -459,10 +459,10 @@
 .kiosk-name {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #333;
+  color: var(--tblr-body-color);
   margin: 15px 0;
   padding: 10px 20px;
-  background: #f8f9fa;
+  background: var(--tblr-bg-surface-secondary);
   border-radius: 0.25rem;
   display: inline-block;
 }
@@ -471,7 +471,7 @@
   text-align: left;
   margin-top: 25px;
   padding: 20px;
-  background: #e9ecef;
+  background: var(--tblr-border-color);
   border-radius: 0.25rem;
 
   h5 {
@@ -486,7 +486,7 @@
 
   li {
     margin-bottom: 8px;
-    color: #6c757d;
+    color: var(--tblr-secondary-color);
   }
 }
 
@@ -522,8 +522,8 @@
   gap: 0.5rem;
   padding: 1rem;
   min-width: 120px;
-  background: #f8f9fa;
-  border: 2px solid #dee2e6;
+  background: var(--tblr-bg-surface-secondary);
+  border: 2px solid var(--tblr-border-color);
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -547,12 +547,12 @@
     height: 72px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #dee2e6;
+    border: 2px solid var(--tblr-border-color);
   }
 
   .fa-solid {
     font-size: 2.5rem;
-    color: #6c757d;
+    color: var(--tblr-secondary-color);
   }
 
   .checkin-by-name {

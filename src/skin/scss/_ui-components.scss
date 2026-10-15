@@ -1,8 +1,5 @@
-// Icon and label sit on one flex row; the gap is the only icon spacing,
-// so the margin reset beats .me-*/.ms-* utilities.
+// The gap is the only icon spacing; the margin reset beats the !important .me-*/.ms-* utilities.
 .btn {
-  display: inline-flex;
-  align-items: center;
   gap: 0.35em;
 
   > i,

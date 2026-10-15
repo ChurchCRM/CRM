@@ -1,3 +1,10 @@
+:root {
+  --register-accent: #667eea;
+  --register-input-border: #ced4da;
+  --register-danger: #dc3545;
+  --register-success: #28a745;
+}
+
 .register-box {
   width: 90%;
   margin: 30px auto;
@@ -44,7 +51,7 @@
 }
 
 .member-card {
-  border: 1px solid #dee2e6;
+  border: 1px solid var(--tblr-border-color);
   border-radius: 6px;
   margin-bottom: 20px;
   transition: box-shadow 0.3s ease;
@@ -69,8 +76,8 @@
 }
 
 .member-card .card-header {
-  background-color: #f8f9fa;
-  border-bottom: 1px solid #dee2e6;
+  background-color: var(--tblr-bg-surface-secondary);
+  border-bottom: 1px solid var(--tblr-border-color);
   padding: 12px 20px;
   flex-shrink: 0;
   z-index: 1;
@@ -105,13 +112,13 @@
 
 .member-toggle-btn {
   font-size: 0.875rem;
-  color: #667eea;
+  color: var(--register-accent);
   text-decoration: none;
   transition: transform 0.2s ease;
 }
 
 .member-toggle-btn:hover {
-  color: #667eea;
+  color: var(--register-accent);
   text-decoration: none;
 }
 
@@ -121,32 +128,32 @@
 
 .member-card .form-control {
   border-radius: 4px;
-  border: 1px solid #ced4da;
+  border: 1px solid var(--register-input-border);
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
 }
 
 .member-card .form-control:focus {
-  border-color: #667eea;
+  border-color: var(--register-accent);
   box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
 }
 
 .member-card .input-group-text {
-  background-color: #f8f9fa;
-  border: 1px solid #ced4da;
+  background-color: var(--tblr-bg-surface-secondary);
+  border: 1px solid var(--register-input-border);
   border-radius: 4px 0 0 4px;
-  color: #667eea;
+  color: var(--register-accent);
 }
 
 .member-card .mb-3 label {
   font-weight: 500;
-  color: #333;
+  color: var(--tblr-body-color);
   margin-bottom: 0.5rem;
 }
 
 .member-card select {
   appearance: none;
-  background: white
+  background: var(--tblr-bg-surface)
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23667eea' d='M6 9L1 4h10z'/%3E%3C/svg%3E")
     no-repeat right 0.75rem center;
   background-size: 12px;
@@ -155,26 +162,26 @@
 
 .member-card .invalid-feedback {
   display: block;
-  color: #dc3545;
+  color: var(--register-danger);
   font-size: 0.875rem;
   margin-top: 0.25rem;
 }
 
 .member-card .form-control.is-valid {
-  border-color: #28a745;
+  border-color: var(--register-success);
 }
 
 .member-card .form-control.is-valid:focus {
-  border-color: #28a745;
+  border-color: var(--register-success);
   box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
 }
 
 .member-card .form-control.is-invalid {
-  border-color: #dc3545;
+  border-color: var(--register-danger);
 }
 
 .member-card .form-control.is-invalid:focus {
-  border-color: #dc3545;
+  border-color: var(--register-danger);
   box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
 }
 
@@ -197,14 +204,14 @@
 }
 
 .remove-member-btn:hover {
-  background-color: #dc3545;
-  border-color: #dc3545;
+  background-color: var(--register-danger);
+  border-color: var(--register-danger);
   color: white;
 }
 
 .family-count-badge {
   display: inline-block;
-  background-color: #667eea;
+  background-color: var(--register-accent);
   color: white;
   padding: 8px 16px;
   border-radius: 20px;
@@ -265,8 +272,8 @@
   .member-card .input-group > .input-group-text:last-child {
     flex: 0 0 100%;
     width: 100%;
-    border-top: 1px solid #ced4da;
-    border-left: 1px solid #ced4da;
+    border-top: 1px solid var(--register-input-border);
+    border-left: 1px solid var(--register-input-border);
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     font-size: 0.8rem;

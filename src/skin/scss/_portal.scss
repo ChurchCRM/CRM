@@ -537,7 +537,7 @@
 }
 
 .portal-input.is-invalid {
-    border-color: #d63939;
+    border-color: var(--portal-danger);
 }
 
 textarea.portal-input {
@@ -552,7 +552,7 @@ textarea.portal-input {
 
 .portal-field-error {
     margin: 0.25rem 0 0;
-    color: #d63939;
+    color: var(--portal-danger);
     font-size: 0.8125rem;
 }
 

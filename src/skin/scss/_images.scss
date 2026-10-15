@@ -1,6 +1,6 @@
 // Lazy-loaded entity images (webpack/avatar-loader.ts toggles .loading/.loaded/.error)
 img[data-image-entity-type] {
-  background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 50%, #f8f9fa 100%);
+  background: linear-gradient(90deg, var(--tblr-bg-surface-secondary) 0%, var(--tblr-border-color) 50%, var(--tblr-bg-surface-secondary) 100%);
   background-size: 200% 100%;
   min-height: 50px;
   min-width: 50px;
