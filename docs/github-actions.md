@@ -4,9 +4,9 @@ What each workflow in `.github/workflows/` does, what starts it, and what it sta
 
 ## Rules every workflow follows
 
-- **No model calls.** Actions logs on a public repo are world-readable, and a model API key has to be handed to the job or action that calls it, where its steps, forked-PR runs and any leaked log could reach it. So AI agents (translation, reviews, release notes) run outside Actions with their own credentials. Workflows only do deterministic work.
-- **Name the stage.** A workflow's display name is `<Area>: <what>` (`Locale: sync`). Its file name is `<area>-<what>.yml`. Rename the older names below when you next touch them.
-- **Least privilege.** Every workflow except `marketing-capture-assets.yml` (see [Still to do](#still-to-do)) sets a top-level `permissions:` (default `contents: read`) and raises it per job only where needed.
+- **Deterministic work only.** Actions logs on a public repo are world-readable, and a model API key handed to a job is reachable from its steps, forked-PR runs and leaked logs. AI agents (translation, reviews, release notes) run outside Actions with their own credentials.
+- **Name the stage.** A workflow's display name is `<Area>: <what>` (`Locale: sync`). Its file name is `<area>-<what>.yml`.
+- **Least privilege.** Every workflow except `marketing-capture-assets.yml` (see [Planned](#planned)) sets a top-level `permissions:` (default `contents: read`) and raises it per job only where needed.
 - **One chain, no loops.** A workflow may start the next stage; nothing may start an earlier one. Triggers are scoped by `paths:` to what only the previous stage produces (see [Chains](#chains-and-why-they-do-not-loop)).
 - **Settle bursts.** A run started by a merge waits 30 minutes and restarts the wait on each newer merge, so several merges become one run (`Locale: sync`).
 - **Idempotent steps.** A re-run, a manual run and a scheduled run must be safe. A trigger decides *when* a workflow runs, not *what* it does.
@@ -43,7 +43,7 @@ The prefix says who made the branch and what it is for.
 | Workflow (file) | Starts on | Does |
 |---|---|---|
 | `Security: CodeQL` (`security-analysis.yml`) | push to `master`/`develop`, PR to `master`, Mondays 06:00 UTC, manual | CodeQL (JS/TS) and Semgrep (PHP/JS/config) |
-| `Dependabot: PR fact-check` (`dependabot-review.yml`) | Dependabot PRs opened, updated or reopened; manual | One facts-only comment: packages bumped, major or minor, backing alert, transitive changes. Never approves, merges or labels |
+| `Dependabot: PR fact-check` (`dependabot-review.yml`) | Dependabot PRs opened, updated or reopened; manual | One facts-only comment: packages bumped, major or minor, backing alert, transitive changes. Comments only; approval, merge and labels stay with maintainers |
 | `Validate Docker development boundaries` (`docker-security-check.yml`) | PR touching the compose files | Checks the development compose files keep their security boundaries |
 | `Validate production Docker images` (`docker-release-check.yml`) | PR touching `docker/**` or the docker release workflows | Archive validation and non-root startup of the production image |
 | `Build & Push Docker Images` (`docker-release.yml`) | release published, manual | Downloads and verifies the published release, builds and pushes the image to DockerHub (`DOCKERHUB_USERNAME`, `DOCKERHUB_TOKEN`) |
@@ -71,7 +71,7 @@ Publishing the draft is a person's click. That `release: published` event then s
 | Workflow (file) | Starts on | Does |
 |---|---|---|
 | `Issues: hygiene` (`issue-management.yml`) | issue opened, Mondays 02:00 UTC, manual | Security guard on new issues, stale marking, review of closed stale issues. After 45 quiet days it asks the reporter to reply (that keeps it open). No reply closes it 14 days later. Exempt: `Security`, `security-delete-required`, `Epic`, `good first issue`. At most 30 items per Monday. |
-| `Issues: stamp milestone on merge` (`pr-milestone-stamp.yml`) | PR merged, manual | Puts the merged PR and every issue it `Fixes` on the PR milestone, or on the `package.json` version when the PR has none, and closes those issues if they are still open. A mention does not count |
+| `Issues: stamp milestone on merge` (`pr-milestone-stamp.yml`) | PR merged, manual | Puts the merged PR and every issue it `Fixes` on the PR milestone, or on the `package.json` version when the PR has none, and closes those issues if they are still open. Only `Fixes` counts; a mention does not |
 | `Marketing: capture screenshots & videos` (`marketing-capture-assets.yml`) | manual | Captures 8 locales x 3 devices, merges them, and uploads the artifact `marketing-visuals-<run id>` (30 days). Opens no PR; `ChurchCRM/visuals` publishes it to https://cdn.churchcrm.io/ |
 
 ### Shared building blocks
@@ -99,12 +99,10 @@ Release         Release & Start Next ─► draft release + build/<next> PR
 | `Documentation` commits specs | nothing | itself | commit made with `GITHUB_TOKEN`, and `docs/openapi/generated/**` is excluded |
 | draft release created | nothing | docker, bookkeeping | `published` fires only when a person publishes |
 
-## Still to do
+## Planned
 
-Tracked in #10091:
-
-- Merge the terms and download PRs automatically behind a validity check, with a GitHub App token so the next stage starts (#10093).
-- Start the translation agent from the merged download PR (#10094). It must run outside Actions, or this page's first rule needs a decision.
-- One READY / BLOCKED report before releasing (#10095).
-- `Marketing: capture screenshots & videos` has no top-level `permissions:`; its `capture` and `merge` jobs inherit the repository default.
-- Older display names that do not follow `<Area>: <what>`: `Build, Test and Package` (and Nightly), `CI — Typecheck, Lint & Format`, `Documentation`, `Release & Start Next`, `Validate …`, `Build & Push Docker Images`.
+- Merge the terms and download PRs automatically behind a validity check, with a GitHub App token so the next stage starts.
+- Start the translation agent from the merged download PR; it runs outside Actions.
+- One READY / BLOCKED report before releasing.
+- Add a top-level `permissions:` block to `Marketing: capture screenshots & videos`.
+- Rename workflows whose display names lack the `<Area>: <what>` form (`Build, Test and Package`, `CI — Typecheck, Lint & Format`, `Documentation`, `Release & Start Next`, `Validate …`, `Build & Push Docker Images`) when you next touch them.

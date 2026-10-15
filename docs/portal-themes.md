@@ -26,9 +26,8 @@ it. Your theme survives every ChurchCRM update.
 The folder name **is** the theme: it is the id in the configuration and the name
 shown on the admin page, spelled exactly as you spelled it.
 
-> **Never edit `Include/themes/default/`.** That is the system theme; it ships
-> with the release and is overwritten on every upgrade. Copy it, rename the
-> copy, and edit that.
+> **Copy `Include/themes/default/` before editing.** It is the system theme; it ships
+> with the release and is overwritten on every upgrade. Rename the copy and edit that.
 
 ---
 
@@ -46,7 +45,7 @@ Every file is optional. A theme with only `theme.css` is a complete theme.
 
 **A theme never contains PHP.** Templates can only call what the portal exposes
 (see [`portal-templates.md`](./portal-templates.md)), which is what makes an
-uploaded theme safe to render. There is no PHP extension point, now or later.
+uploaded theme safe to render. A theme has no PHP extension point.
 
 ### The smallest possible theme
 
@@ -184,8 +183,7 @@ not block activation.
 
 ## When a theme is broken
 
-A theme fails loudly. There is no silent fall-back to the system theme, because
-that would hide the problem from the person who can fix it.
+A broken theme fails loudly: the portal does not fall back to the system theme, so the problem stays visible to the person who can fix it.
 
 | What happened | An administrator sees | A member sees | Where it is recorded |
 |---|---|---|---|
@@ -233,13 +231,11 @@ The portal runs under ChurchCRM's CSP, and your theme runs inside it:
 
 ### Writing a safe template
 
-- Never use Twig's `|raw` filter on anything a member typed. Twig escapes
-  everything by default; `|raw` turns that off, and that is how a name becomes
-  a script tag.
-- Do not try to reach ChurchCRM internals from a template. Templates can call
-  only the handful of functions listed in
-  [`portal-templates.md`](./portal-templates.md) — no PHP, no filesystem, no
-  database, no session.
+- Leave member-typed values to Twig's default escaping. `|raw` turns it off, and that is how a name becomes
+  a script tag, so keep it off anything a member typed.
+- Call only the functions listed in
+  [`portal-templates.md`](./portal-templates.md); templates have no PHP, filesystem,
+  database or session access.
 - Wrap text you add in `{{ gettext('…') }}` if your church uses more than one
   language.
 

@@ -2,304 +2,138 @@
 name: icon-management
 description: Standard patterns for Font Awesome icons across ChurchCRM. Use for icon selection, free-tier compliance, markup, accessibility, and validation.
 tags: ["frontend", "icons", "font-awesome", "ui"]
-learned: "2026-08-15"
 ---
 
-# Skill: Icon Management & Font Awesome Integration <!-- learned: 2026-08-15 -->
+# Skill: Icon Management & Font Awesome Integration
 
-## Context
+ChurchCRM uses Font Awesome Free (`@fortawesome/fontawesome-free`, version in `package.json`) for every icon.
 
-ChurchCRM uses **Font Awesome 7.3+ exclusively** for all icons. No other icon libraries (Tabler, Material Icons, etc.) are used or permitted. Font Awesome is a production dependency.
+## Variants
 
-**Package:** `@fortawesome/fontawesome-free` (free tier only)
+- `fa-solid`: filled, the default
+- `fa-regular`: outlined, for lighter weight
+- `fa-brands`: brand icons (GitHub, PayPal)
 
----
+Use only these three. `fa-light`, `fa-thin`, `fa-duotone` and `fa-sharp` are Pro-only.
 
-## Font Awesome Free Tier (Only Permitted Variants)
+## Markup
 
-ChurchCRM only uses **free** Font Awesome icons. Paid tier variants are **prohibited**.
-
-### Permitted variants
-
-- `fa-solid` — Solid filled icons (primary, most commonly used)
-- `fa-regular` — Outlined icons (used for contrast or lighter visual weight)
-- `fa-brands` — Brand/social icons (GitHub, Twitter, PayPal, etc.)
-
-### Prohibited variants (NEVER use these)
-
-- `fa-light` — Light weight (paid-only)
-- `fa-thin` — Thin weight (paid-only)
-- `fa-duotone` — Two-color (paid-only)
-- `fa-sharp` — Sharp variant (paid-only)
-
-**Verification:** Linting/auditing tools will scan for paid variants and block them at build time.
-
----
-
-## HTML Markup Pattern
+Every icon carries a variant class and an icon class:
 
 ```html
-<!-- ✅ CORRECT — solid icon with spacing -->
 <i class="fa-solid fa-pencil me-2"></i>Edit
-
-<!-- ✅ CORRECT — regular/outlined icon -->
-<i class="fa-regular fa-trash me-2"></i>
-
-<!-- ✅ CORRECT — brand icon -->
+<i class="fa-regular fa-trash-can me-2"></i>
 <i class="fa-brands fa-github me-2"></i>GitHub
-
-<!-- ❌ WRONG — missing variant class (ambiguous) -->
-<i class="fa-pencil"></i>
-
-<!-- ❌ WRONG — paid variant -->
-<i class="fa-light fa-pencil"></i>
 ```
 
-### Icon Classes Structure
+### Spacing and size
 
-Every Font Awesome icon requires **two classes**:
+- Icon before text: `me-2` (`me-1` small, `me-3` large). Icon after text: `ms-2`
+- Default size is ~1em. Use `fa-lg` for badges, `fa-2x` to `fa-4x` for centered callouts
+- Stat card avatars put the icon inside `<span class="avatar bg-primary text-white rounded-circle">`
 
-1. **Variant class** (required): `fa-solid`, `fa-regular`, or `fa-brands`
-2. **Icon class** (required): `fa-{icon-name}` (e.g. `fa-pencil`, `fa-trash`, `fa-users`)
+## Choosing an icon name
 
-Both classes must be present. The variant class determines visual weight; the icon class selects the specific glyph.
+Pick the obvious free-tier name (edit is `fa-pencil`, delete is `fa-trash`). Grep `src/` for the same concept to match existing usage. Row action menus use `fa-ellipsis-vertical` (`table-action-menu.md`).
 
----
-
-## Spacing & Sizing
-
-### Spacing with adjacent text
-
-```html
-<!-- Icon before text (most common) -->
-<i class="fa-solid fa-pencil me-2"></i><?= gettext('Edit') ?>
-<!--                            ↑ margin-end = space to the right -->
-
-<!-- Icon after text -->
-<?= gettext('Check') ?><i class="fa-solid fa-check ms-2"></i>
-<!--                                              ↑ margin-start = space to the left -->
-```
-
-Use Bootstrap margin utilities: `me-1` (small), `me-2` (standard), `me-3` (large).
-
-### Icon sizes
-
-| Use case | Class | Size |
-|----------|-------|------|
-| Inline with text | (none) | ~1em (default) |
-| Stat card avatar | (none) | ~1em in 44×44px circle |
-| Large badge/flag | `fa-lg` | 1.33em |
-| Toolbar button | (none) | ~1em in 38-44px btn |
-| Centered callout | `fa-2x` to `fa-4x` | 2–4× default |
-
-```html
-<!-- Stat card avatar (44×44px circle) -->
-<span class="avatar bg-primary text-white rounded-circle">
-    <i class="fa-solid fa-user"></i>
-</span>
-
-<!-- Large error callout (4× size) -->
-<i class="fa-solid fa-triangle-exclamation fa-4x text-danger mb-2"></i>
-```
-
----
-
-## Choosing an Icon Name
-
-Generic Font Awesome name choice (edit → `fa-pencil`, delete → `fa-trash`, and
-so on) is common icon-library knowledge, not a ChurchCRM convention — pick the
-obvious free-tier name and let `npm run lint:icons` catch anything that
-doesn't exist. Before introducing a new one, `grep` for existing usage of the
-same concept in `src/` to stay consistent with precedent already in the code.
-
-One real ChurchCRM-specific convention: row action menus always use
-`fa-ellipsis-vertical` (never `fa-ellipsis-v`) — see
-[`table-action-menu.md`](./table-action-menu.md).
-
-
-### Verify the target exists in the free tier <!-- learned: 2026-09-11 -->
-
-Font Awesome free has no slashed/“off” variants for several glyphs Tabler
-provides (`fa-calendar-slash`, `fa-house-plus`, `fa-map-pin-slash`,
-`fa-shield-check`, `fa-users-group` are all **Pro-only or nonexistent**), and a
-missing class renders as blank space with no console error. Before using a
-name that is not in the table above, confirm it is really shipped:
+Confirm a name ships in the free build:
 
 ```bash
 grep -E '^\.fa-<name>[ ,{]' node_modules/@fortawesome/fontawesome-free/css/all.css
 ```
 
-(FA 7 declares each icon as `.fa-<name> { --fa: "\eXXX"; }` — grepping for the
-old `:before` form gives a false negative for every icon.)
+Font Awesome 7 declares each icon as `.fa-<name> { --fa: "\eXXX"; }`. A missing class renders as blank space with no console error. `fa-calendar-slash`, `fa-house-plus`, `fa-map-pin-slash`, `fa-shield-check` and `fa-users-group` are not in the free build.
 
-### The guard that enforces this <!-- learned: 2026-09-11 -->
+## Tabler → Font Awesome Equivalents
 
-`npm run lint:icons` runs **two** checks (both also run in the `code-quality`
-CI job):
+The Tabler icon webfont is not shipped, so `ti` / `ti-*` classes render blank. Use these names:
+
+| Tabler | Font Awesome |
+|--------|--------------|
+| `ti-pencil` | `fa-pencil` |
+| `ti-trash` | `fa-trash` |
+| `ti-plus` | `fa-plus` |
+| `ti-check` | `fa-check` |
+| `ti-x` | `fa-xmark` |
+| `ti-search` | `fa-magnifying-glass` |
+| `ti-settings` | `fa-gear` |
+| `ti-home` | `fa-house` |
+| `ti-user` | `fa-user` |
+| `ti-user-plus` | `fa-user-plus` |
+| `ti-users` | `fa-users` |
+| `ti-alert-triangle` | `fa-triangle-exclamation` |
+| `ti-info-circle` | `fa-circle-info` |
+| `ti-circle-check` | `fa-circle-check` |
+| `ti-mail` | `fa-envelope` |
+| `ti-phone` | `fa-phone` |
+| `ti-calendar` | `fa-calendar` |
+| `ti-map-pin` | `fa-location-dot` |
+| `ti-download` / `ti-upload` | `fa-download` / `fa-upload` |
+| `ti-printer` | `fa-print` |
+| `ti-eye` | `fa-eye` |
+| `ti-lock` | `fa-lock` |
+| `ti-copy` | `fa-copy` |
+| `ti-device-floppy` | `fa-floppy-disk` |
+| `ti-dots-vertical` | `fa-ellipsis-vertical` |
+| `ti-refresh` | `fa-arrows-rotate` |
+| `ti-filter` | `fa-filter` |
+| `ti-file-text` | `fa-file-lines` |
+| `ti-shopping-cart` | `fa-cart-shopping` |
+| `ti-building-church` | `fa-church` |
+| `ti-tag` | `fa-tag` |
+
+## Guards
+
+`npm run lint:icons` runs both checks (also in the `code-quality` CI job):
 
 | Script | Rejects |
 |--------|---------|
-| `scripts/validate-no-tabler-icons.js` | any `ti` / `ti-*` class — the Tabler webfont is not shipped (#9752) |
-| `scripts/validate-fa-icons-exist.js` | any `fa-*` class with no `.fa-<name>` rule in the shipped `node_modules/@fortawesome/fontawesome-free/css/all.css` (#9753) |
+| `scripts/validate-no-tabler-icons.js` | any `ti` / `ti-*` class |
+| `scripts/validate-fa-icons-exist.js` | any `fa-*` class with no `.fa-<name>` rule in `all.css` |
 
-The second script needs no allow-list of style tokens: `fa-solid`, `fa-fw`,
-`fa-lg`, `fa-spin`, `fa-2x` and friends are themselves `.fa-*` rules in
-`all.css`, so they pass for free. Both scripts share
-`scripts/lib/icon-source-files.js` and scan `src/` + `webpack/`, skipping
-`node_modules/`, `vendor/`, Propel `Base/` and `Map/`, `src/skin/external/`
-and `src/skin/v2/` (the build output — note that the application's own
-`src/v2/` source tree *is* scanned).
+Both scan `src/` and `webpack/` through `scripts/lib/icon-source-files.js`.
 
-**Dynamic icon names must be complete.** A token that is only a prefix —
-`'fa-' . $icon`, `` `fa-${name}` ``, `fa-chevron-<?= $dir ?>` — cannot be
-verified statically and is silently ignored by the guard. So build lookup maps
-out of whole class names, never out of fragments:
+**Dynamic icon names are whole class names.** A prefix such as `'fa-' . $icon` or `` `fa-${name}` `` cannot be verified statically. Build lookup maps from complete names:
 
 ```php
-// Good — the guard can see and verify every name
 $icons = ['person' => 'fa-user', 'family' => 'fa-people-roof'];
-echo '<i class="fa-solid ' . $icons[$type] . '"></i>';
-
-// Bad — invisible to the guard, blank icons ship unnoticed
-echo '<i class="fa-solid fa-' . $suffix . '"></i>';
+echo '<i class="fa-solid ' . InputUtils::escapeAttribute($icons[$type]) . '"></i>';
 ```
 
-If a name really must be assembled at runtime, verify each possible result by
-hand against `all.css` before shipping.
-
----
-
-## PHP Usage (Server-Side Rendering)
-
-### In templates
-
-```php
-<?php
-// Render an edit button with icon
-?>
-<a href="<?= $editUrl ?>">
-    <i class="fa-solid fa-pencil me-2"></i><?= gettext('Edit') ?>
-</a>
-
-// Render a notification icon
-?>
-<i class="fa-solid fa-circle-info text-info me-1"></i>
-```
-
-### Dynamic icon selection
-
-```php
-$iconClass = match($status) {
-    'success' => 'fa-circle-check',
-    'error'   => 'fa-circle-xmark',
-    'warning' => 'fa-triangle-exclamation',
-    'info'    => 'fa-circle-info',
-    default   => 'fa-question-circle',
-};
-
-echo '<i class="fa-solid ' . InputUtils::escapeAttribute($iconClass) . '"></i>';
-```
-
----
-
-## JavaScript Usage (Client-Side Rendering)
-
-### In template literals / dynamic HTML
+## JavaScript
 
 ```javascript
-// ✅ CORRECT — Font Awesome class only
 const iconHtml = `<i class="fa-solid fa-pencil me-2"></i>`;
+elem.innerHTML = `<i class="fa-solid fa-check me-2"></i>${window.CRM.escapeHtml(apiData.status)}`;
 
-// ✅ CORRECT — With sanitization for dynamic content
-const userText = apiData.status; // untrusted input
-const html = `<i class="fa-solid fa-check me-2"></i>${window.CRM.escapeHtml(userText)}`;
-elem.innerHTML = html;
-
-// ❌ WRONG — Missing variant class
-const broken = `<i class="fa-pencil"></i>`;
-```
-
-### jQuery icon manipulation
-
-```javascript
-// Add Font Awesome icon to button
 $(button).html('<i class="fa-solid fa-spinner fa-spin me-2"></i>Loading...');
-
-// Change icon on state change
 $(elem).find('i').removeClass('fa-plus').addClass('fa-check');
-
-// Check for icon presence
-if ($(elem).find('i.fa-solid').length > 0) {
-    console.log('Has Font Awesome icon');
-}
 ```
 
----
-
-## DataTables Column Rendering
+DataTables column render:
 
 ```javascript
-{
-    title: i18next.t('Actions'),
-    data: null,
-    orderable: false,
-    render: function(data, type, row) {
-        return '<i class="fa-solid fa-pencil me-2"></i>' +
-               '<a href="#">' + i18next.t('Edit') + '</a>';
-    }
-}
+render: (data, type, row) =>
+    '<i class="fa-solid fa-pencil me-2"></i><a href="#">' + i18next.t('Edit') + '</a>'
 ```
 
----
+## Accessibility
 
-## Accessibility Considerations
+- Decorative icon next to text: `aria-hidden="true"`
+- Icon-only control: `aria-label="Close"` on the control, or `.visually-hidden` text
+- Reserve icon-only buttons for familiar glyphs (close, menu)
 
-### Decorative vs semantic icons
+## Checklist
 
-**Decorative icons** (visual enhancement only):
-```html
-<!-- Icon is decorative; text conveys meaning -->
-<i class="fa-solid fa-heart" aria-hidden="true"></i> Favorites
-```
+- [ ] Variants are `fa-solid`, `fa-regular` or `fa-brands`
+- [ ] Each icon has a variant class and an icon class
+- [ ] Spacing uses `me-*` / `ms-*`
+- [ ] `npm run lint:icons` passes
+- [ ] Dynamic values are escaped
+- [ ] Decorative icons have `aria-hidden="true"`; icon-only buttons have `aria-label`
 
-**Semantic icons** (icon conveys essential meaning):
-```html
-<!-- Icon is essential; add screen reader text -->
-<button>
-    <i class="fa-solid fa-times" aria-label="Close"></i>
-</button>
-```
+## Related
 
-### Screen reader guidance
-
-- Use `aria-hidden="true"` on decorative icons next to descriptive text
-- Use `aria-label` or `.visually-hidden` text when the icon alone must be understood
-- Avoid icon-only buttons unless they're well-known (close `×`, menu ≡)
-
----
-
-## Pre-Commit Checklist
-
-Before committing icon-related changes:
-
-- [ ] Only Font Awesome free tier icons used (`fa-solid`, `fa-regular`, `fa-brands`)
-- [ ] No paid Font Awesome variants (`fa-light`, `fa-thin`, `fa-duotone`, `fa-sharp`)
-- [ ] All icons have both variant class (e.g. `fa-solid`) and icon class (e.g. `fa-pencil`)
-- [ ] Icon spacing uses Bootstrap utilities (`me-2`, `ms-2`)
-- [ ] No Tabler icons (`ti`, `ti-*`) remain — `npm run lint:icons` enforces this
-- [ ] Every `fa-*` class exists in the shipped free build — `npm run lint:icons` enforces this too
-- [ ] Dynamic icons are escaped if sourced from untrusted input
-- [ ] Decorative icons use `aria-hidden="true"` when appropriate
-- [ ] Icon-only buttons have `aria-label` when not self-evident
-
----
-
-## Related Skills
-
-- `[[frontend-development.md]]` — General UI patterns and component structure
-- `[[table-action-menu.md]]` — Standard dropdown menu patterns with icon usage
-- `[[code-standards.md]]` — Pre-commit checklist includes icon usage rules
-
----
-
-Last updated: 2026-08-15
+- `frontend-development.md`
+- `table-action-menu.md`
+- `code-standards.md`
