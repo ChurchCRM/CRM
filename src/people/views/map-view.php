@@ -54,8 +54,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <?php endif; ?>
                 <div class="legend-title"><?= InputUtils::escapeHTML($mapConfig['legendTitle']) ?></div>
                 <?php foreach ($mapConfig['legendItems'] as $item): ?>
-                    <button type="button" class="legend legend-item d-flex active" data-legend-id="<?= (int) $item['id'] ?>"
-                            aria-pressed="true" style="--legend-color: <?= InputUtils::escapeAttribute($item['color']) ?>">
+                    <button type="button" class="legend legend-item d-flex" data-legend-id="<?= (int) $item['id'] ?>"
+                            aria-pressed="true" style="--tblr-legend-color: <?= InputUtils::escapeAttribute($item['color']) ?>">
                         <span class="legend-dot"></span>
                         <span class="legend-label"><?= InputUtils::escapeHTML($item['label']) ?></span>
                     </button>
@@ -70,8 +70,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="card-body py-2">
                     <div class="d-flex flex-wrap gap-2">
                         <?php foreach ($mapConfig['legendItems'] as $item): ?>
-                            <button type="button" class="legend legend-item legend-pill active" data-legend-id="<?= (int) $item['id'] ?>"
-                                    aria-pressed="true" style="--legend-color: <?= InputUtils::escapeAttribute($item['color']) ?>">
+                            <button type="button" class="legend legend-item legend-pill" data-legend-id="<?= (int) $item['id'] ?>"
+                                    aria-pressed="true" style="--tblr-legend-color: <?= InputUtils::escapeAttribute($item['color']) ?>">
                                 <span class="legend-dot"></span>
                                 <span class="legend-label"><?= InputUtils::escapeHTML($item['label']) ?></span>
                             </button>
