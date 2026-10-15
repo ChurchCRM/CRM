@@ -34,7 +34,8 @@ PluginManager::init($pluginsPath);
 // Resolve theme attributes from user settings
 $_themeUser = AuthenticationManager::getCurrentUser();
 $_themeMode = $_themeUser->getThemeMode(); // 'auto' | 'default' | 'dark'
-$_themeAttrs = ' data-theme-mode="' . InputUtils::escapeAttribute($_themeMode) . '"';
+// Tabler 1.6 defaults to a neutral grey scale; `gray` keeps the blue-tinted greys the app shipped with on 1.4.
+$_themeAttrs = ' data-bs-theme-base="gray" data-theme-mode="' . InputUtils::escapeAttribute($_themeMode) . '"';
 // Explicit dark: stamp data-bs-theme on <html> so first paint does not wait on theme.min.js.
 if ($_themeMode === 'dark') {
     $_themeAttrs .= ' data-bs-theme="dark"';
@@ -65,6 +66,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
 </head>
 
 <body class="antialiased">
+<a class="skip-link visually-hidden-focusable" href="#main-content"><?= gettext('Skip to main content') ?></a>
 <div class="page">
 
   <!-- Issue Report Modal -->
@@ -449,7 +451,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
       <div class="collapse mb-3" id="<?= $sSettingsCollapseId ?>"></div>
     </div>
     <?php endif; ?>
-    <div class="page-body">
+    <div class="page-body" id="main-content" tabindex="-1">
       <div class="container-xl">
 <?php
 // Hydrate registry from session-cached remote notifications (no HTTP calls)

@@ -61,7 +61,8 @@
 // Tabler custom styles — color overrides, DataTables skin
 @include meta.load-css("scss/_tabler-bridge");
 
-html,
-body {
-    font-size: 14px;
+:root {
+    // Tabler 1.4 pinned the root at 16px and 1.6 no longer does; every rem in
+    // Tabler and in this app's own SCSS assumes 16px. Body text is Tabler's 0.875rem (14px).
+    font-size: 16px;
 }
