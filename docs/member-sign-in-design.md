@@ -452,10 +452,10 @@ For each family whose email isn't empty (compared trimmed and in lower case):
 
 - **A moved address doesn't sign in yet.** It is unconfirmed (§9) until staff with Edit Records or an administrator confirm that it is that person's own, because everyone who reads the family's mailbox would get the sign-in code. Mail goes to it at once (§10.2).
   - **Except in a one-person family.** When the person who receives it is the family's only living, active member, it is an address on record before the first sign-in (§9) and can be used to sign in at once. Receiving the code is the accepted proof of identity.
-- The upgrade writes the counts (moved to a head, moved to a spouse, already held, noted) to the upgrade log. A one-time **Family emails not moved** list on the Member Portal Sign-in tab links to each family with a note.
+- A one-time **Family emails not moved** list on the Member Portal Sign-in tab links to each family with a note, with counts: moved to a head, moved to a spouse, already held, and noted.
 - The notes are ordinary family notes, written with `Family::createTimeLineNote()` (`Family.php:551`). Staff who can see the family's timeline can read them.
-- The move is a PHP upgrade step. `upgrade.json` already runs `.php` steps (`UpgradeService.php:93-96`).
-- **The upgrade log also counts the people who lose email:** people who were reached only through the family email, and who aren't the head or spouse who receives it. Most are children. The Sign-in tab's "Email needs attention" list shows them.
+- The move is plain SQL in the 7.9.0 upgrade script (`src/mysql/upgrade/7.9.0.sql`), the same file the other 7.9.0 work adds to. It uses no window functions, so it runs on every database ChurchCRM supports.
+- **Some people lose email:** those who were reached only through the family email, and who aren't the head or spouse who receives it. Most are children. The Sign-in tab's "Email needs attention" list shows them.
 - The `fam_Email` column stays empty for one release, then a later upgrade drops it. Any family email added during that release by an older import or API client can be moved by the same rule before the drop.
 
 ### 10.2 After the move
@@ -547,7 +547,7 @@ New tables. All are keyed by `per_ID` with `ON DELETE CASCADE`, except the capab
   - the office list;
   - `bAllowLoginAsUser` (off) and `bLoginAsUserCanWrite` (off).
 - **Capabilities** live in code (core, and plugins at boot), not in a table. Only given grants are stored.
-- **Migration:** one upgrade script for the tables and settings. A PHP step copies the portal data, deletes the self-service accounts and moves the family emails (§10, §12). `fam_Email` is dropped a release later.
+- **Migration:** everything is plain SQL in `src/mysql/upgrade/7.9.0.sql`: the new tables and settings, copying the portal data, deleting the self-service accounts and moving the family emails (§10, §12). `Install.sql` and `cypress/data/seed.sql` get the same tables. `fam_Email` is dropped a release later.
 
 ## 14. Security notes
 
@@ -607,7 +607,7 @@ This work does not wait for #10511's F0, as George said on 10-10. It is built so
 | 8 | Passkeys | 7 |
 | 9 | Admin lists, audit view, Statistics on the new tables, the Permissions tab, the person-page card and given grants | 2, 4, 5 |
 | 10 | Email-change rules (§9) | 1, 5 |
-| 11 | Family email moves to people (§10): the PHP upgrade step, every reader listed in §2, the directory, CSV, the API and docs | — |
+| 11 | Family email moves to people (§10): the SQL in the 7.9.0 upgrade, every reader listed in §2, the directory, CSV, the API and docs | — |
 | 12 | Login as User (§6.5), replacing #10392 | 1, 9 |
 | 13 | Cutover: upgrade script, staff-only Users list, removing "Self-service only", wording, release notes | 1–12 |
 | 14 | Documentation: a docs tracking issue and a docs PR on `release-docs/<version>` | 13 |
