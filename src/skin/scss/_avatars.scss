@@ -1,19 +1,9 @@
-/*
- * Avatar and profile image utilities
- * Central, Tabler-aligned avatar styles. Keep compatibility selectors
- * so existing templates continue to work while moving toward `.avatar`.
- */
-
-/* Avatar size tokens — prefer mapping to Tabler tokens where appropriate.
-   These provide a single source of truth for avatar sizes used across partials.
-*/
 :root {
   --avatar-sm: 40px;
   --avatar-md: 100px;
   --avatar-lg: 200px;
   --avatar-xlg: 250px;
-  --avatar-lg-mobile: 150px; /* reduced lg/xlg on small screens */
-  --avatar-md-max-photo: 130px; /* used by some photo thumbnails */
+  --avatar-lg-mobile: 150px;
 }
 
 .avatar,
@@ -26,7 +16,7 @@
   overflow: hidden;
   background-color: var(--tblr-gray-100, #f8f9fa);
   color: var(--tblr-body-color, #212529);
-  /* Lock the circle: never let a flex parent squash an avatar into an oval. */
+  /* A flex parent must not squash the circle into an oval. */
   flex-shrink: 0;
   aspect-ratio: 1 / 1;
 }
@@ -39,8 +29,6 @@
 
 .avatar-img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
-.avatar-initials { display: none; }
-
 .avatar-title { display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 100%; font-weight: 700; }
 
 .avatar-placeholder {
@@ -52,15 +40,10 @@
   font-weight: 700;
 }
 
-/* Use Bootstrap utility `user-select-none` on markup instead of CSS override */
-
 @media (max-width: 768px) {
   .avatar-lg,
   .avatar-xlg { width: var(--avatar-lg-mobile); height: var(--avatar-lg-mobile); }
-}
 
-/* Responsive typography for avatar titles to match reduced avatar sizes */
-@media (max-width: 768px) {
   .avatar-lg .avatar-title,
   .avatar-xlg .avatar-title { font-size: 1rem; }
   .avatar-md .avatar-title { font-size: 0.9rem; }

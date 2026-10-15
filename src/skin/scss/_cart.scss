@@ -1,9 +1,3 @@
-/**
- * Cart Module Styles
- * Animations and styles for cart interactions
- */
-
-// Cart icon pulse animation
 @keyframes cart-pulse {
   0%,
   100% {
@@ -18,21 +12,7 @@
   animation: cart-pulse 0.6s ease-in-out;
 }
 
-// Cart button states - modern classes
-.AddToCart {
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  &:hover {
-    opacity: 0.7;
-    transform: scale(1.05);
-  }
-
-  i {
-    transition: all 0.3s ease;
-  }
-}
-
+.AddToCart,
 .RemoveFromCart {
   cursor: pointer;
   transition: all 0.3s ease;
@@ -47,9 +27,8 @@
   }
 }
 
-// Cart dropdown specific styles
 .navbar .dropdown-menu {
-  z-index: 1050; // Ensure cart dropdown appears above page content
+  z-index: 1050; // above page content
 }
 
 #cart-dropdown-menu {
@@ -67,13 +46,4 @@
       text-align: center;
     }
   }
-
-  > li > ul {
-    max-height: none;
-  }
-}
-
-// Cart badge animation
-.navbar-badge {
-  transition: all 0.3s ease;
 }
