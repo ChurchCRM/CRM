@@ -36,7 +36,16 @@ function walk(dir, out = []) {
 }
 
 const files = [...walk(path.join(ROOT, 'src')), ...walk(path.join(ROOT, 'webpack'))];
-const baseline = fs.existsSync(BASELINE_FILE) ? JSON.parse(fs.readFileSync(BASELINE_FILE, 'utf8')) : { inlineStyles: {}, styleBlocks: {} };
+function readBaseline() {
+    try {
+        return JSON.parse(fs.readFileSync(BASELINE_FILE, 'utf8'));
+    } catch (error) {
+        if (error.code === 'ENOENT') return { inlineStyles: {}, styleBlocks: {} };
+        throw error;
+    }
+}
+
+const baseline = readBaseline();
 const update = process.argv.includes('--update-baseline');
 
 const dynamic = /<\?|\{\{|\{%|\$\{|\\\$|["'`]\s*\+|\+\s*["'`]/;
