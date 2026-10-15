@@ -51,7 +51,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
             <?php else: ?>
                 <div class="card">
-                    <div class="card-header bg-light">
+                    <div class="card-header bg-surface-secondary">
                         <h5 class="mb-0">
                             <?= gettext('Family Pledges') ?> 
                             <span class="badge bg-primary ms-2"><?= count($familyPledges) ?> <?= gettext('Families') ?></span>

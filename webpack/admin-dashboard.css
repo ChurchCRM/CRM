@@ -2,17 +2,17 @@
   display: flex;
   align-items: center;
   padding: 0.75rem;
-  background: #f8f9fa;
+  background: var(--tblr-bg-surface-secondary);
   border-radius: 0.5rem;
   text-decoration: none;
   color: inherit;
   transition: all 0.2s ease;
   height: 100%;
-  border: 1px solid #e9ecef;
+  border: 1px solid var(--tblr-border-color);
 }
 
 .quick-start-card:hover {
-  background: #fff;
+  background: var(--tblr-bg-surface);
   border-color: #0d6efd;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
   transform: translateY(-1px);
@@ -42,11 +42,11 @@
   margin: 0 0 0.125rem 0;
   font-weight: 600;
   font-size: 0.875rem;
-  color: #212529;
+  color: var(--tblr-body-color);
 }
 
 .quick-start-content small {
-  color: #6c757d;
+  color: var(--tblr-secondary-color);
   font-size: 0.75rem;
   display: block;
   line-height: 1.3;

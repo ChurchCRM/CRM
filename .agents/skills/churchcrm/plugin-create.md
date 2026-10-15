@@ -209,7 +209,7 @@ Add the entry to the root `approved-plugins.json` on the `External` branch of Ch
 
 The PR body carries:
 
-1. The capability inventory table ([`plugin-security-scan.md → Permission / capability inventory`](./plugin-security-scan.md#4-permission--capability-inventory)), every cell with evidence.
+1. The capability inventory table ([`plugin-security-scan.md → Permission / capability inventory`](./plugin-security-scan.md#4-permission-inventory)), every cell with evidence.
 2. The static-analysis summary from step 6.
 3. Runtime smoke test results: install, enable, and exercise every menu item, hook, and route in a Docker CRM instance.
 4. The Vulnerability Disclosure Policy URL on the plugin homepage (required).

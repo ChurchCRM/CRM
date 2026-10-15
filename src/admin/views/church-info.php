@@ -347,7 +347,7 @@ $socialPlaceholders = [
                     </p>
 
                     <h5 class="mb-2"><i class="fa-solid fa-eye me-2"></i><?= gettext('Preview') ?></h5>
-                    <div class="card-body bg-light rounded">
+                    <div class="card-body bg-surface-secondary rounded">
                         <address class="mb-0">
                             <div id="preview-name-line" class="<?= empty($churchInfo['sChurchName']) ? 'd-none' : '' ?>">
                             <strong id="preview-name"><?= InputUtils::escapeHTML($churchInfo['sChurchName']) ?></strong><br>

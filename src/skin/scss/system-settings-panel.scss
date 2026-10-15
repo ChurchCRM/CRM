@@ -13,7 +13,7 @@
 
     .form-label {
         margin-bottom: 0.25rem;
-        color: #495057;
+        color: var(--tblr-body-color);
     }
 
     .form-control {
@@ -32,7 +32,7 @@
     }
 
     hr {
-        border-color: #e9ecef;
+        border-color: var(--tblr-border-color);
     }
 
     .btn-outline-secondary {

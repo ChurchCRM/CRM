@@ -168,7 +168,10 @@ declare namespace Cypress {
     /** Run the browser in the church's time zone (sTimeZone), the zone the server counts days in. */
     useChurchTimeZone(): Chainable<void>;
 
-    /** Undo useChurchTimeZone. */
+    /** Run the browser in the given IANA time zone, e.g. one that differs from the church's. */
+    useBrowserTimeZone(timezoneId: string): Chainable<void>;
+
+    /** Undo useChurchTimeZone or useBrowserTimeZone. */
     useHostTimeZone(): Chainable<void>;
 
     /**

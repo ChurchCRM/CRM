@@ -25,7 +25,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <form method="POST" action="<?= $sRootPath ?>/event/repeat-editor" name="RepeatEventsForm">
             <!-- Event Template -->
             <div class="card mb-3">
-                <div class="card-header bg-light">
+                <div class="card-header bg-surface-secondary">
                     <h5 class="mb-0"><?= gettext('Event Template') ?></h5>
                 </div>
                 <div class="card-body">
@@ -89,7 +89,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                  they describe *when* each generated event occurs. The
                  recurrence pattern (what days/months to pick) is separate. -->
             <div class="card mb-3">
-                <div class="card-header bg-light">
+                <div class="card-header bg-surface-secondary">
                     <h5 class="mb-0"><?= gettext('Event Timing') ?></h5>
                 </div>
                 <div class="card-body">
@@ -131,7 +131,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
             <!-- Recurrence Pattern -->
             <div class="card mb-3">
-                <div class="card-header bg-light">
+                <div class="card-header bg-surface-secondary">
                     <h5 class="mb-0"><span class="text-danger">*</span> <?= gettext('Recurrence Pattern') ?></h5>
                 </div>
                 <div class="card-body">
@@ -184,7 +184,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
             <!-- Optional Settings -->
             <div class="card mb-3">
-                <div class="card-header bg-light">
+                <div class="card-header bg-surface-secondary">
                     <h5 class="mb-0"><?= gettext('Optional Settings') ?></h5>
                 </div>
                 <div class="card-body">

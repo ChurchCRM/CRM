@@ -124,11 +124,11 @@ function displayPersonDetails(element, person) {
 
     // Compact inline display with name and check icon
     const html =
-      '<div class="d-inline-flex align-items-center p-2 border border-success rounded" style="background-color: #d4edda;">' +
+      '<div class="d-inline-flex align-items-center p-2 border border-success rounded bg-success-subtle">' +
       '<i class="fa-solid fa-circle-check text-success me-2"></i>' +
       '<a href="' +
       personViewUrl +
-      '" class="text-dark fw-bold" target="_blank" rel="noopener noreferrer">' +
+      '" class="text-body fw-bold" target="_blank" rel="noopener noreferrer">' +
       escapeHtml(person.text) +
       "</a>" +
       "</div>";

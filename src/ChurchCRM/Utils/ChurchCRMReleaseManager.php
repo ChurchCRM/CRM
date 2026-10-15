@@ -582,6 +582,15 @@ class ChurchCRMReleaseManager
                 FileSystemUtils::moveDir($extractedChurchCRM, $docRoot);
                 $codeDeploySuccessful = true;
                 $logger->info('Move completed.  Took:' . $executionTime->getMilliseconds());
+
+                // The move replaces every routing .htaccess with the packaged copy,
+                // which has no RewriteBase. Stamp it from $sRootPath before the
+                // database migration runs. See #10563.
+                try {
+                    HtaccessGenerator::generateAll();
+                } catch (\Throwable $e) {
+                    $logger->error('Failed to regenerate .htaccess RewriteBase', ['exception' => $e]);
+                }
             } else {
                 // ZipArchive::open() failed - log the error code and throw
                 $logger->error('Failed to open upgrade archive', [

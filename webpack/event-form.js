@@ -959,13 +959,16 @@ export function renderEventEditor(container, event, calendars, eventTypes, optio
 
 export function saveEvent(event, apiRoot) {
   const url = `${apiRoot}/api/events${event.Id !== 0 ? `/${event.Id}` : ""}`;
-  const body = JSON.stringify(event, (_key, value) => {
+  const body = JSON.stringify(event, function (key, value) {
     // event.Start / event.End should already be wall-clock strings by this
     // point (see toWallClockString boundaries). Any leftover JS Date —
     // typically from a code path that hasn't been refactored — is converted
     // to church-tz wall-clock so we never send browser-tz components or UTC.
-    if (value instanceof Date) {
-      return formatJsDateInChurchTz(value, getChurchTz(), false);
+    // JSON.stringify runs Date#toJSON before the replacer, so `value` is
+    // already a UTC string; the Date itself is still at this[key].
+    const raw = this[key];
+    if (raw instanceof Date) {
+      return formatJsDateInChurchTz(raw, getChurchTz(), false);
     }
     return value;
   });

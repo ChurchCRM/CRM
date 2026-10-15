@@ -1,0 +1,81 @@
+{
+    "$comment": "Who may use raw SQL / cy.dbQuery() under cypress/ (#10377). approved: a dedicated schema spec or a fixture/reset utility, never an ordinary behavior spec. baseline: what each existing spec used when the guard arrived; it only goes down. Checked by npm run lint (scripts/validate-cypress-db-access.js).",
+    "approved": {
+        "cypress/configs/_shared.ts": {
+            "kind": "fixture",
+            "reason": "Defines the db:query task behind cy.dbQuery()."
+        },
+        "cypress/configs/row-count-guard.ts": {
+            "kind": "fixture",
+            "reason": "Read-only row counts for the test-database drift guard (#9769)."
+        },
+        "cypress/e2e/api/private/standard/private.volunteer.setup.spec.js": {
+            "kind": "schema",
+            "reason": "Volunteer v2 schema spec (#9705): columns, UNIQUE keys, foreign keys, ON DELETE rules and enum domains have no HTTP surface."
+        },
+        "cypress/support/api-commands.js": {
+            "kind": "fixture",
+            "reason": "Registers cy.dbQuery()."
+        }
+    },
+    "baseline": {
+        "cypress/e2e/api/private/admin/private.volunteer.rollout.spec.js": 19,
+        "cypress/e2e/api/private/people/families.envelope-search.spec.js": 4,
+        "cypress/e2e/api/private/people/people.email-history.spec.js": 4,
+        "cypress/e2e/api/private/standard/private.volunteer.anchored.spec.js": 90,
+        "cypress/e2e/api/private/standard/private.volunteer.assignment.spec.js": 67,
+        "cypress/e2e/api/private/standard/private.volunteer.authorization.spec.js": 45,
+        "cypress/e2e/api/private/standard/private.volunteer.calendar-grants.spec.js": 43,
+        "cypress/e2e/api/private/standard/private.volunteer.class-events.spec.js": 84,
+        "cypress/e2e/api/private/standard/private.volunteer.dashboard.spec.js": 54,
+        "cypress/e2e/api/private/standard/private.volunteer.default-team.spec.js": 22,
+        "cypress/e2e/api/private/standard/private.volunteer.e2e-coffee-bar.spec.js": 52,
+        "cypress/e2e/api/private/standard/private.volunteer.e2e-worship.spec.js": 49,
+        "cypress/e2e/api/private/standard/private.volunteer.event-audience.spec.js": 39,
+        "cypress/e2e/api/private/standard/private.volunteer.event-ministry.spec.js": 99,
+        "cypress/e2e/api/private/standard/private.volunteer.generate-guidance.spec.js": 24,
+        "cypress/e2e/api/private/standard/private.volunteer.horizon.spec.js": 82,
+        "cypress/e2e/api/private/standard/private.volunteer.ministry-calendar.spec.js": 51,
+        "cypress/e2e/api/private/standard/private.volunteer.ministry-events.spec.js": 55,
+        "cypress/e2e/api/private/standard/private.volunteer.ministry-group.spec.js": 38,
+        "cypress/e2e/api/private/standard/private.volunteer.ministry-page.spec.js": 58,
+        "cypress/e2e/api/private/standard/private.volunteer.notifications.spec.js": 147,
+        "cypress/e2e/api/private/standard/private.volunteer.pools-qualifications.spec.js": 32,
+        "cypress/e2e/api/private/standard/private.volunteer.recruiting.spec.js": 15,
+        "cypress/e2e/api/private/standard/private.volunteer.schedule-defaults.spec.js": 65,
+        "cypress/e2e/api/private/standard/private.volunteer.schedule.spec.js": 58,
+        "cypress/e2e/api/private/standard/private.volunteer.self-service.spec.js": 58,
+        "cypress/e2e/api/private/standard/private.volunteer.setup-api.spec.js": 65,
+        "cypress/e2e/api/private/standard/private.volunteer.staff-after-create.spec.js": 51,
+        "cypress/e2e/api/private/standard/private.volunteer.sunday-school-switch.spec.js": 32,
+        "cypress/e2e/api/private/standard/private.volunteer.swap.spec.js": 60,
+        "cypress/e2e/api/private/standard/private.volunteer.team-class.spec.js": 47,
+        "cypress/e2e/api/private/standard/private.volunteer.team-leader.spec.js": 37,
+        "cypress/e2e/ui-admin/admin.ministry-settings.spec.js": 6,
+        "cypress/e2e/ui-admin/admin.user-editor.spec.js": 11,
+        "cypress/e2e/ui-admin/admin.volunteer-v2.anchored.spec.js": 17,
+        "cypress/e2e/ui-admin/admin.volunteer-v2.calendar-grants.spec.js": 27,
+        "cypress/e2e/ui-admin/admin.volunteer-v2.generate-guidance.spec.js": 8,
+        "cypress/e2e/ui-admin/admin.volunteer-v2.horizon.spec.js": 6,
+        "cypress/e2e/ui-admin/admin.volunteer-v2.menu.spec.js": 4,
+        "cypress/e2e/ui-admin/admin.volunteer-v2.ministry-events.spec.js": 22,
+        "cypress/e2e/ui-admin/admin.volunteer-v2.ministry-page-2.spec.js": 11,
+        "cypress/e2e/ui-admin/admin.volunteer-v2.ministry-page-3.spec.js": 12,
+        "cypress/e2e/ui-admin/admin.volunteer-v2.ministry-page-4.spec.js": 7,
+        "cypress/e2e/ui-admin/admin.volunteer-v2.occurrence.spec.js": 10,
+        "cypress/e2e/ui-admin/admin.volunteer-v2.schedule-defaults.spec.js": 10,
+        "cypress/e2e/ui-admin/admin.volunteer-v2.staffing-labels.spec.js": 6,
+        "cypress/e2e/ui-admin/admin.volunteer-v2.staffing.spec.js": 18,
+        "cypress/e2e/ui-admin/admin.volunteer-v2.sunday-school.spec.js": 15,
+        "cypress/e2e/ui/groups/volunteer-v2.coordinator.spec.js": 44,
+        "cypress/e2e/ui/groups/volunteer-v2.e2e.spec.js": 45,
+        "cypress/e2e/ui/people/volunteer-v2.member.spec.js": 47,
+        "cypress/e2e/ui/portal/member.portal-calendar-legend.spec.js": 9,
+        "cypress/e2e/ui/portal/member.portal-opportunities-layout.spec.js": 31,
+        "cypress/e2e/ui/portal/member.portal-teams.spec.js": 39,
+        "cypress/e2e/ui/portal/member.portal-volunteer.spec.js": 46,
+        "cypress/e2e/ui/portal/portal.e2e-member-week.spec.js": 42,
+        "cypress/e2e/ui/portal/portal.e2e-team-leader.spec.js": 37,
+        "cypress/e2e/ui/session/session.empty-password.spec.js": 8
+    }
+}
