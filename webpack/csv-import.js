@@ -237,7 +237,9 @@ function showMappingStep(token, headers, mappings, fields, sample) {
           );
       } else {
         $row.addClass("table-secondary");
-        $row.find(".badge").replaceWith(`<span class="badge bg-secondary-lt text-secondary">${i18next.t("Ignored")}</span>`);
+        $row
+          .find(".badge")
+          .replaceWith(`<span class="badge bg-secondary-lt text-secondary">${i18next.t("Ignored")}</span>`);
       }
     });
 
