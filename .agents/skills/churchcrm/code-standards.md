@@ -16,6 +16,7 @@ PHP 8.4+. Versions: `package.json`, `composer.json`. Review: `maintainer-review-
 - JSON in `<script>`: `InputUtils::jsonEncodeForScript()`
 - Redirects: `RedirectUtils` — not raw `header('Location')`
 - UI: Tabler + Bootstrap 5. Wrap `gettext()` / `i18next.t()`
+- Styling: Tabler utilities, or a named class in `src/skin/scss/_page-<area>.scss`. `style=""` and `<style>` carry only data-driven or JS-toggled values. Tabler tokens for colour, Tabler's root size, every `@media` rule kept. `npm run lint:ui` enforces it (`tabler-components.md`)
 - JS: page logic goes in a `webpack/` entry, registered in `webpack.config.js` and loaded with one `<script src="<?= SystemURLs::assetVersioned('/skin/v2/NAME.min.js') ?>">`. No inline `<script>` blocks for page logic; a one-line config handoff with `InputUtils::jsonEncodeForScript()` is fine. Read `window.CRM` at run time (inside `onLocalesReady`), never at module load (`webpack-typescript.md`)
 - Reports: never extend `QueryView.php` / `QueryList.php` or add `query_qry` rows (#9921). Core reports → `src/v2/` route + controller + Twig. One church's needs → a plugin in `src/plugins/` (shareable in `src/plugins/community/`)
 - Tests with behavior changes

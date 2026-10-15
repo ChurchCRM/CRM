@@ -90,6 +90,9 @@ Apply only the sections that match the changed files. Hard-block items are also 
 The stack is **Tabler + Bootstrap 5**; Bootstrap 5 classes are correct.
 
 - [ ] BS5 / Tabler utilities (`ms-`/`me-`, `fw-bold`, `text-end`, `btn-close`, `data-bs-*`)
+- [ ] Styling is a utility or a class in `src/skin/scss/_page-<area>.scss`; no new static `style=""` or page `<style>` block
+- [ ] Colours are Tabler tokens (light and dark both render); no root font-size, palette or theme-base override
+- [ ] Every `@media` rule survives the restyle; Cypress selectors the change touches still match
 - [ ] Non-trivial UI has desktop, tablet, and mobile proof
 - [ ] Asset paths use `SystemURLs::getRootPath()`
 - [ ] UI text wrapped with `gettext()` or `i18next.t()`

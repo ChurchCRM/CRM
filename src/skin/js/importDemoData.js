@@ -13,7 +13,7 @@
           <div class="demo-import-confirm-modal">
             <div class="demo-import-confirm-content">
               <h2 class="mb-4">
-                <i class="fa fa-users mr-2 text-success"></i>
+                <i class="fa fa-users me-2 text-success"></i>
                 ${i18next.t("Import Demo Data")}
               </h2>
               
@@ -50,7 +50,7 @@
 
               <div class="demo-import-buttons">
                 <button type="button" class="btn btn-success" id="demoImportConfirmBtn">
-                  <i class="fa fa-users mr-2"></i>${i18next.t("Import Demo Data")}
+                  <i class="fa fa-users me-2"></i>${i18next.t("Import Demo Data")}
                 </button>
                 <button type="button" class="btn btn-secondary" id="demoImportCancelBtn">
                   ${i18next.t("Cancel")}
@@ -72,7 +72,7 @@
         <div id="demoImportSpinnerOverlay" class="demo-import-overlay spinner">
           <div class="demo-import-spinner">
             <div class="spinner-border text-primary mb-3" role="status">
-              <span class="sr-only">Loading...</span>
+              <span class="visually-hidden">Loading...</span>
             </div>
             <h3 class="text-white mb-0">Importing demo data...</h3>
             <p class="text-white-50 mt-2">Please do not refresh or navigate away</p>
@@ -150,7 +150,7 @@
     var warningHtml =
       '<div id="demoImportWarning" class="alert alert-warning mb-4 demo-import-warning">' +
       '<div class="demo-import-warning-title">' +
-      '<i class="fa fa-triangle-exclamation mr-2"></i>' +
+      '<i class="fa fa-triangle-exclamation me-2"></i>' +
       i18next.t("Your database already contains data") +
       "</div>" +
       '<div class="demo-import-warning-body">' +
@@ -160,7 +160,7 @@
       "</div>" +
       countsLine +
       '<div class="demo-import-warning-hint">' +
-      '<i class="fa fa-circle-info mr-1"></i>' +
+      '<i class="fa fa-circle-info me-1"></i>' +
       i18next.t(
         "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data.",
       ) +
@@ -170,7 +170,7 @@
     $("#demoImportConfirmBtn")
       .removeClass("btn-success")
       .addClass("btn-warning")
-      .html('<i class="fa fa-triangle-exclamation mr-2"></i>' + i18next.t("Import demo data anyway"));
+      .html('<i class="fa fa-triangle-exclamation me-2"></i>' + i18next.t("Import demo data anyway"));
   }
 
   function doImport($button, includeFinancial, includeEvents, includeSundaySchool, forceImport) {
@@ -276,14 +276,14 @@
     var warningHtml =
       '<div id="demoImportWarning" class="alert alert-danger mb-4 demo-import-warning">' +
       '<div class="demo-import-warning-title">' +
-      '<i class="fa fa-circle-exclamation mr-2"></i>' +
+      '<i class="fa fa-circle-exclamation me-2"></i>' +
       i18next.t("Import failed") +
       "</div>" +
       '<div class="demo-import-warning-body">' +
       (errorMessage || i18next.t("Unknown error")) +
       "</div>" +
       '<div class="demo-import-warning-hint">' +
-      '<i class="fa fa-circle-info mr-1"></i>' +
+      '<i class="fa fa-circle-info me-1"></i>' +
       i18next.t("Force Import will retry and may create duplicate data.") +
       "</div></div>";
     $(".demo-import-options").before(warningHtml);
@@ -291,7 +291,7 @@
     $("#demoImportConfirmBtn")
       .removeClass("btn-success")
       .addClass("btn-danger")
-      .html('<i class="fa fa-triangle-exclamation mr-2"></i>' + i18next.t("Force Import"));
+      .html('<i class="fa fa-triangle-exclamation me-2"></i>' + i18next.t("Force Import"));
   }
 
   function resetImportButton() {
@@ -299,7 +299,7 @@
     $("#demoImportConfirmBtn")
       .removeClass("btn-danger btn-warning")
       .addClass("btn-success")
-      .html('<i class="fa fa-users mr-2"></i>' + i18next.t("Import Demo Data"));
+      .html('<i class="fa fa-users me-2"></i>' + i18next.t("Import Demo Data"));
   }
 
   function attachHandlers() {

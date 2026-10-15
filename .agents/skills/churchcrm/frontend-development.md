@@ -16,6 +16,7 @@ Components: `tabler-components.md`. Breakpoints: `responsive-design-guidelines.m
 - API from webpack: `webpack/api-utils.ts` (`buildAPIUrl`, `buildAdminAPIUrl`, `fetchAPIJSON`). Take the root path from those helpers
 - Admin jQuery pages: `window.CRM.AdminAPIRequest()`; path `'database/reset'` → `/admin/api/database/reset`
 - DataTables page length: merge `window.CRM.plugin.dataTable` last so the user preference wins (`src/Include/Header.php`)
+- Styling: utility class or a class in `src/skin/scss/_page-<area>.scss`; inline `style` only for data-driven or JS-toggled values (`tabler-components.md`)
 - Row actions: `table-action-menu.md` before you add a table menu
 - Settings panel pattern: Finance dashboard — copy from that page, reuse it
 - i18n: wrap only. See `i18n-localization.md`

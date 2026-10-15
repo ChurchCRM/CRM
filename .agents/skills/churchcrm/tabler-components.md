@@ -25,6 +25,7 @@ Layout / breakpoints: `responsive-design-guidelines.md`.
 - Accessibility: `Header.php` carries Tabler's `.skip-link` to `#main-content`. Keep that id on the page body
 - Badges: Tabler `-lt` + matching `text-*` for labels (a bare `bg-info` / `bg-warning` needs a text class for contrast)
 - Modals: one `bootstrap.Modal` instance; destroy TomSelect/Quill before swapping `innerHTML`
-- No inline styles that fight Tabler theme tokens
+- `npm run lint:ui` (part of `npm run lint`) rejects a new static `style=""`, a page `<style>` block, a Bootstrap 4 class name, a root font-size, palette or theme-base override and a Bootstrap 4 selector. Remaining static inline styles are listed per file in `scripts/ui-conventions-baseline.json`; a JS-toggled one is added there in the same PR with a reviewer-visible reason, and the count only goes down
+- Bootstrap 5 names: `ms-`/`me-`/`ps-`/`pe-` (not `ml-`/`mr-`/`pl-`/`pr-`), `text-start`/`text-end`, `float-start`/`float-end`, `fw-bold`, `visually-hidden`, `g-0`, `mb-3` for a form row, `form-check`, `bg-<colour>-lt text-<colour>` for a badge
 
 If you need a component, open a nearby page that already has it and match that markup.
