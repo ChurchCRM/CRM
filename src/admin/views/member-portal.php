@@ -349,7 +349,7 @@ $themesDocUrl = 'https://github.com/ChurchCRM/CRM/blob/master/docs/portal-themes
 
             <div class="card">
                 <div class="table-responsive">
-                    <table class="table table-vcenter card-table" id="portalCalendarsTable">
+                    <table class="table table-vcenter card-table portal-calendars-table" id="portalCalendarsTable">
                         <thead>
                             <tr>
                                 <th><?= gettext('Calendar') ?></th>

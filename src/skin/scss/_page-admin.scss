@@ -97,3 +97,18 @@
 
 .mailchimp-icon { color: #ffe01b; }
 .admin-pre-line { white-space: pre-line; }
+
+// Phone width: the edge cells give up some padding so the four columns fit
+// whatever font the device falls back to.
+@media (max-width: 575.98px) {
+  .portal-calendars-table {
+    > :is(thead, tbody) > tr > :first-child {
+      padding-left: 0.75rem;
+    }
+
+    > :is(thead, tbody) > tr > :last-child {
+      padding-right: 0.75rem;
+    }
+  }
+}
+
