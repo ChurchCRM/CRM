@@ -502,7 +502,7 @@ window.calendarPropertiesModal = {
 function fieldError(inputField) {
   let p = $(inputField).parent().find("p .form-field-error");
   if (p.length === 0) {
-    p = $("<p class='form-field-error'>");
+    p = $("<p class='text-danger form-field-error'>");
     $(inputField).parent().append(p);
   }
   $(p).text(i18next.t("Invalid Entry"));

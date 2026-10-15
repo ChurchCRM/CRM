@@ -34,11 +34,6 @@
    CUSTOM INTERACTIVE & UTILITIES (Bootstrap-independent)
    ============================================ */
 
-/* Custom cursor pointer utility (not in Bootstrap) */
-.cursor-pointer {
-  cursor: pointer;
-}
-
 /* ============================================
    CUSTOM TYPOGRAPHY & SPACING
    ============================================ */
@@ -46,21 +41,6 @@
 /* Pre-formatted text with compact line height */
 .pre-compact {
   line-height: 1.2;
-}
-
-/* Line-height override: BS5 lh-lg uses 2.0 — keep as-is for consistency */
-.lh-lg {
-  line-height: 2;
-}
-
-/* ============================================
-   DEPRECATED/LEGACY CLASSES (Backward Compatibility)
-   ============================================ */
-
-/* Used in password change forms for inline validation errors.
-   Consider migrating to BS5 .text-danger in templates. */
-.form-field-error {
-  color: var(--tblr-danger, #d63939);
 }
 
 /* ============================================
@@ -101,9 +81,6 @@
 
 /* Hide view photo button when there is no uploaded photo or gravatar */
 /* NOTE: toggled by JS in FamilyView.js - do not remove or rename */
-.hide-if-no-photo {
-  display: none !important;
-}
 
 /* ============================================
    CURRENCY / MONEY DISPLAY

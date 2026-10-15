@@ -224,10 +224,10 @@ class AvatarLoader {
 
     if (viewBtn) {
       if (hasPhoto) {
-        viewBtn.classList.remove("hide-if-no-photo");
+        viewBtn.classList.remove("d-none");
         viewBtn.classList.remove("hide"); // Also remove 'hide' for PersonView compatibility
       } else {
-        viewBtn.classList.add("hide-if-no-photo");
+        viewBtn.classList.add("d-none");
       }
     }
     // No button found — normal on list/dashboard pages where no view-larger-image button exists

@@ -171,14 +171,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         align-items: center;
         gap: 6px;
     }
-    .neighbors-legend-dot {
-        display: inline-block;
-        width: 11px;
-        height: 11px;
-        border-radius: 50%;
-        border: 1px solid rgba(0, 0, 0, .25);
-        flex-shrink: 0;
-    }
 </style>
 
 
