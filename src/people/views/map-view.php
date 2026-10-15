@@ -54,11 +54,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <?php endif; ?>
                 <div class="legend-title"><?= InputUtils::escapeHTML($mapConfig['legendTitle']) ?></div>
                 <?php foreach ($mapConfig['legendItems'] as $item): ?>
-                    <div class="legend-item active" data-legend-id="<?= (int) $item['id'] ?>"
-                         role="button" tabindex="0" aria-pressed="true">
-                        <span class="legend-dot" style="background:<?= InputUtils::escapeAttribute($item['color']) ?>"></span>
+                    <button type="button" class="legend legend-item d-flex active" data-legend-id="<?= (int) $item['id'] ?>"
+                            aria-pressed="true" style="--legend-color: <?= InputUtils::escapeAttribute($item['color']) ?>">
+                        <span class="legend-dot"></span>
                         <span class="legend-label"><?= InputUtils::escapeHTML($item['label']) ?></span>
-                    </div>
+                    </button>
                 <?php endforeach; ?>
             </div>
 
@@ -70,10 +70,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="card-body py-2">
                     <div class="d-flex flex-wrap gap-2">
                         <?php foreach ($mapConfig['legendItems'] as $item): ?>
-                            <div class="legend-item active legend-pill" data-legend-id="<?= (int) $item['id'] ?>">
-                                <span class="legend-dot" style="background:<?= InputUtils::escapeAttribute($item['color']) ?>"></span>
+                            <button type="button" class="legend legend-item legend-pill active" data-legend-id="<?= (int) $item['id'] ?>"
+                                    aria-pressed="true" style="--legend-color: <?= InputUtils::escapeAttribute($item['color']) ?>">
+                                <span class="legend-dot"></span>
                                 <span class="legend-label"><?= InputUtils::escapeHTML($item['label']) ?></span>
-                            </div>
+                            </button>
                         <?php endforeach; ?>
                     </div>
                 </div>
@@ -122,46 +123,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         flex-shrink: 0;
     }
 
-    /* ── Shared legend item ─────────────────────────────────────────── */
-    .legend-item {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        padding: 3px 6px;
-        border-radius: 4px;
-        cursor: pointer;
-        user-select: none;
-        transition: opacity .15s, background .15s;
-        line-height: 1.6;
-    }
-    .legend-item:hover {
-        background: rgba(0, 0, 0, .05);
-    }
-    .legend-item.inactive {
-        opacity: .38;
-    }
+    /* ── Legend rows use Tabler's .legend; only the strike-through and pill are ours ── */
     .legend-item.inactive .legend-label {
         text-decoration: line-through;
     }
 
-    /* ── Mobile pill variant ────────────────────────────────────────── */
     .legend-pill {
-        border: 1px solid rgba(0, 0, 0, .12);
-        padding: 4px 10px;
-        background: #f8f9fa;
-    }
-    .legend-pill.inactive {
-        background: #f8f9fa;
-    }
-
-    /* ── Colour dot ─────────────────────────────────────────────────── */
-    .legend-dot {
-        display: inline-block;
-        width: 11px;
-        height: 11px;
-        border-radius: 50%;
-        border: 1px solid rgba(0, 0, 0, .2);
-        flex-shrink: 0;
+        border: 1px solid var(--tblr-border-color);
+        padding-inline: .625rem;
     }
 </style>
 
