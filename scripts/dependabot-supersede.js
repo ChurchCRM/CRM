@@ -3,13 +3,15 @@
  * Dependabot supersede — when a new Dependabot PR opens, close the older open
  * Dependabot PRs it replaces. No model call; the rules are below.
  *
- * A PR is superseded when an older open Dependabot PR:
- *   - bumps the same single package to the same or an older version, or
- *   - is for the same group (same title with the group name and directory,
- *     version counts removed) and was opened before the new one.
+ * An older open Dependabot PR is superseded when:
+ *   - it bumps the same single package to the same or a lower version, or
+ *   - it is for the same group (group name and directory), and every update it
+ *     carries is in the new PR at the same or a higher version.
  *
- * Grouped PRs are only closed by the same-group rule. A grouped PR can drop a
- * package the newer one no longer includes, so that case is left to a person.
+ * Versions compare only when every part is numeric (1.2.3, v1.2.3). A
+ * prerelease or other non-numeric part makes the pair not comparable, and the
+ * older PR stays open for a person, as does a group PR whose updates cannot be
+ * read from the PR body.
  *
  * Each closed PR gets a comment saying which PR replaced it. Closing a
  * Dependabot PR does not ignore its version (Dependabot says so in its own
@@ -40,36 +42,68 @@ function parseTitle(title) {
   return null;
 }
 
-/** Compare two version strings numerically on each dotted part. Returns <0, 0, >0. */
+/** Numeric parts of a version (`1.2.3`, `v1.2.3`), or null when any part is not a plain number. */
+function parseVersion(version) {
+  const v = String(version || '').replace(/^v/, '');
+  if (!/^\d+(\.\d+)*$/.test(v)) return null;
+  return v.split('.').map((x) => Number(x));
+}
+
+/** <0, 0 or >0 when both versions are numeric; null when either one is not comparable. */
 function compareVersions(a, b) {
-  const pa = String(a).replace(/^v/, '').split(/[.+-]/).map((x) => parseInt(x, 10));
-  const pb = String(b).replace(/^v/, '').split(/[.+-]/).map((x) => parseInt(x, 10));
+  const pa = parseVersion(a);
+  const pb = parseVersion(b);
+  if (!pa || !pb) return null;
   for (let i = 0; i < Math.max(pa.length, pb.length); i++) {
-    const x = Number.isNaN(pa[i]) ? 0 : pa[i] || 0;
-    const y = Number.isNaN(pb[i]) ? 0 : pb[i] || 0;
-    if (x !== y) return x - y;
+    const diff = (pa[i] || 0) - (pb[i] || 0);
+    if (diff !== 0) return diff;
   }
   return 0;
 }
 
+/** Map of package name to target version from the "Updates `x` from a to b" lines Dependabot writes in a PR body. */
+function parseUpdates(body) {
+  const updates = new Map();
+  const rx = /Updates `([^`]+)` from (\S+) to ([^\s`]+)/g;
+  let m;
+  while ((m = rx.exec(body || '')) !== null) {
+    updates.set(m[1], m[3]);
+  }
+  return updates;
+}
+
+/** True when the new update map carries every update in the old one at the same or a higher comparable version. */
+function coversUpdates(oldUpdates, newUpdates) {
+  if (oldUpdates.size === 0 || newUpdates.size === 0) return false;
+  for (const [name, oldTo] of oldUpdates) {
+    const cmp = compareVersions(oldTo, newUpdates.get(name));
+    if (cmp === null || cmp > 0) return false;
+  }
+  return true;
+}
+
 /**
- * newPr and openPrs use the GitHub shape: { number, title, created_at, user: { login } }.
+ * newPr and openPrs use the GitHub shape: { number, title, body, created_at, user: { login } }.
  * Returns [{ pr, replacedBy, reason }] for each older PR the new one supersedes.
  */
 function findSuperseded(newPr, openPrs) {
   const isDependabot = (p) => p.user && p.user.login === 'dependabot[bot]';
   const newInfo = parseTitle(newPr.title);
   if (!newInfo) return [];
+  const newUpdates = newInfo.kind === 'group' ? parseUpdates(newPr.body) : null;
   const superseded = [];
   for (const pr of openPrs) {
     if (pr.number === newPr.number || !isDependabot(pr)) continue;
     if (pr.created_at >= newPr.created_at) continue;
     const info = parseTitle(pr.title);
     if (!info || info.kind !== newInfo.kind) continue;
-    if (newInfo.kind === 'single' && info.name === newInfo.name && compareVersions(info.to, newInfo.to) <= 0) {
-      superseded.push({ pr, replacedBy: newPr.number, reason: `same package (${info.name}), older or equal target ${info.to}` });
-    } else if (newInfo.kind === 'group' && info.key === newInfo.key) {
-      superseded.push({ pr, replacedBy: newPr.number, reason: `same group (${info.key})` });
+    if (newInfo.kind === 'single') {
+      const cmp = compareVersions(info.to, newInfo.to);
+      if (info.name === newInfo.name && cmp !== null && cmp <= 0) {
+        superseded.push({ pr, replacedBy: newPr.number, reason: `same package (${info.name}), older or equal target ${info.to}` });
+      }
+    } else if (info.key === newInfo.key && coversUpdates(parseUpdates(pr.body), newUpdates)) {
+      superseded.push({ pr, replacedBy: newPr.number, reason: `same group (${info.key}), every update carried at the same or a higher version` });
     }
   }
   return superseded;
@@ -148,4 +182,4 @@ if (require.main === module) {
   });
 }
 
-module.exports = { parseTitle, compareVersions, findSuperseded };
+module.exports = { parseTitle, parseVersion, compareVersions, parseUpdates, coversUpdates, findSuperseded };
