@@ -9,6 +9,7 @@ use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Map\ListOptionTableMap;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Collection\ObjectCollection;
@@ -155,7 +156,7 @@ class GradeService
                 foreach (self::personIdsInGrade($level, $con) as $personId) {
                     self::addNote(
                         $personId,
-                        sprintf(gettext('Grade %s cleared when the grade names changed to %s'), $oldName, $preset['name']),
+                        sprintf(gettext('Grade %s cleared when the grade names changed to %s'), InputUtils::escapeHTML($oldName), InputUtils::escapeHTML($preset['name'])),
                         $authorId,
                         $con
                     );

@@ -107,6 +107,16 @@ describe("API Private Admin - School grades", () => {
         gradeNotes("deceased").should("have.length", 0);
     });
 
+    it("escapes grade names in the promotion's timeline notes", () => {
+        cy.makePrivateAdminAPICall("PATCH", `/admin/api/options/${GRADES_LIST}/6`, { name: "1st & 2nd" }, 200);
+        setGrade("first", 6);
+        status().then((body) => promoteNow(body.lastAt));
+        gradeNotes("first").then((notes) => {
+            expect(notes[0].text).to.eq("Grade changed from 1st &amp; 2nd to 2nd by the yearly promotion");
+        });
+        cy.makePrivateAdminAPICall("PATCH", `/admin/api/options/${GRADES_LIST}/6`, { name: "1st" }, 200);
+    });
+
     it("refuses a second Promote Now sent from the same page", () => {
         setGrade("first", 6);
         status().then((body) => {

@@ -9,6 +9,7 @@ use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\DateTimeUtils;
+use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Exception\PropelException;
@@ -181,8 +182,8 @@ class GradePromotionService
                 $nextId = $next[$gradeId];
                 PersonQuery::create()->filterById($personIds)->update(['GradeId' => $nextId], $con);
                 $text = $nextId === null
-                    ? sprintf(gettext('Finished %s, so the yearly promotion cleared the grade'), $names[$gradeId])
-                    : sprintf(gettext('Grade changed from %s to %s by the yearly promotion'), $names[$gradeId], $names[$nextId]);
+                    ? sprintf(gettext('Finished %s, so the yearly promotion cleared the grade'), InputUtils::escapeHTML($names[$gradeId]))
+                    : sprintf(gettext('Grade changed from %s to %s by the yearly promotion'), InputUtils::escapeHTML($names[$gradeId]), InputUtils::escapeHTML($names[$nextId]));
                 foreach ($personIds as $personId) {
                     GradeService::addNote($personId, $text, $authorId, $con);
                 }
