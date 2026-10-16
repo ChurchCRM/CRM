@@ -23,6 +23,10 @@ on:
         required: false
         type: boolean
         default: false
+      capture_run_id:
+        description: 'Publish the visuals from this "Marketing: capture screenshots & videos" run. Blank: the run on the release commit.'
+        required: false
+        type: string
 
 permissions:
   contents: read
@@ -115,10 +119,10 @@ jobs:
             exit 1
           fi
 
-          current_milestone=$(gh api "repos/$GH_REPO/milestones?state=all&per_page=100" \
+          current_milestone=$(gh api --paginate "repos/$GH_REPO/milestones?state=all&per_page=100" \
             --jq ".[] | select(.title == \"$CURRENT_TAG\") | .number" | head -n 1)
 
-          next_milestone=$(gh api "repos/$GH_REPO/milestones?state=all&per_page=100" \
+          next_milestone=$(gh api --paginate "repos/$GH_REPO/milestones?state=all&per_page=100" \
             --jq ".[] | select(.title == \"$NEXT_VERSION\") | .number" | head -n 1)
 
           if [ -z "$next_milestone" ]; then
@@ -181,7 +185,7 @@ jobs:
           ensure_milestone() {
             local version="$1"
             local number
-            number=$(gh api "repos/$DOCS_REPO/milestones?state=all&per_page=100" \
+            number=$(gh api --paginate "repos/$DOCS_REPO/milestones?state=all&per_page=100" \
               --jq ".[] | select(.title == \"$version\") | .number" | head -n 1)
             if [ -z "$number" ]; then
               number=$(gh api "repos/$DOCS_REPO/milestones" -f title="$version" --jq '.number')
@@ -233,8 +237,13 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
+          CAPTURE_RUN_ID: ${{ github.event.inputs.capture_run_id }}
         run: |
           set -euo pipefail
+          if [ -n "$CAPTURE_RUN_ID" ]; then
+            echo "run_id=$CAPTURE_RUN_ID" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
           target=$(gh release view "$CURRENT_TAG" --json targetCommitish --jq .targetCommitish)
           sha=$(gh api "repos/$GH_REPO/commits/$target" --jq .sha)
           run_id=$(gh run list --workflow marketing-capture-assets.yml --commit "$sha" --status success \
