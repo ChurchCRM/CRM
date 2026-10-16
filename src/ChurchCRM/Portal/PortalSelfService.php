@@ -404,7 +404,7 @@ class PortalSelfService
         $note->setEntered((int) $actor->getId());
         $note->setText(sprintf(
             gettext('Added through the Member Portal and waiting for review: %s'),
-            $person->getFullName()
+            InputUtils::escapeHTML(sprintf('%s (%s)', $person->getFullName(), $person->getFamilyRoleName()))
         ));
         $note->save();
 
@@ -685,22 +685,13 @@ class PortalSelfService
     }
 
     /**
-     * The submitted family role, kept only when it is one this installation
-     * actually offers and not a head or spouse role. Anything else falls back
-     * to the default above: an adult role would count the unreviewed entry in
-     * `Family::getAdults()` before staff have looked at it.
+     * The submitted family role, kept when this installation offers it, the
+     * same as public self-registration. Anything else falls back to the
+     * default above.
      */
     private static function resolveRoleId(mixed $role): int
     {
         $roleId = (int) $role;
-        $adultRoleIds = array_map(
-            'intval',
-            explode(',', SystemConfig::getValue('sDirRoleHead') . ',' . SystemConfig::getValue('sDirRoleSpouse'))
-        );
-        if (in_array($roleId, $adultRoleIds, true)) {
-            return self::getDefaultNewMemberRoleId();
-        }
-
         foreach (self::getFamilyRoles() as $option) {
             if ($option['id'] === $roleId) {
                 return $roleId;

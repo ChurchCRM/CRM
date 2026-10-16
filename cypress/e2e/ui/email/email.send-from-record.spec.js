@@ -6,8 +6,9 @@
  * The person view, family view and photo gallery carry a "Send email" button
  * (data-email-composer + data-email-person-id / data-email-family-id) that opens
  * the composer for that one record; the group view's Email button opens it for
- * the whole group. Both send through POST /api/email/send with ids, one message
- * per recipient, and the outcome is checked in the Mailpit sink.
+ * the whole group. Both queue through POST /api/email/send with ids, one message
+ * per recipient; the composer then sends the batch (#10356), and the outcome is
+ * checked in the Mailpit sink.
  *
  * Override Mailpit with `--env mailpitUrl=http://localhost:8070` on a stack with
  * non-default ports.
@@ -65,7 +66,7 @@ describe("Send email from a record", () => {
             expect(request.body).to.deep.include({ personIds: [2], familyIds: [] });
             expect(request.body).to.not.have.property("recipients");
             expect(response.statusCode).to.eq(200);
-            expect(response.body.counts).to.deep.equal({ sent: 1, skipped: 0, failed: 0 });
+            expect(response.body.counts).to.deep.equal({ queued: 1, sent: 0, skipped: 0, failed: 0 });
         });
         cy.get("#crm-email-compose-form .alert-success").should("contain.text", "Email sent to 1 recipient");
 
@@ -127,13 +128,50 @@ describe("Send email from a record", () => {
             const expected = response.body.recipients.length;
             composeAndSend(`Group ${tag}`, "Practice moves to 7pm.").then(({ request, response: sendResp }) => {
                 expect(request.body.personIds).to.have.length(expected);
-                expect(sendResp.body.counts.sent).to.equal(expected);
+                expect(sendResp.body.counts.queued).to.equal(expected);
             });
+            cy.get("#crm-email-compose-form .alert-success").should("contain.text", `Email sent to ${expected} recipient`);
             mailpitMessages(tag).then((messages) => {
                 expect(messages).to.have.length(expected);
                 for (const m of messages) expect(m.To).to.have.length(1);
             });
         });
+    });
+});
+
+describe("A send the composer cannot finish stays queued", () => {
+    beforeEach(() => {
+        cy.setupAdminSession();
+    });
+
+    it("tells the sender it is queued, shows it in the history, and the timer job sends it", () => {
+        const tag = `crm-10356-ui-${Date.now()}`;
+        cy.intercept("POST", "**/api/email/batches/*/send", { statusCode: 503, body: {} }).as("batchSend");
+        // The page footer runs the timer jobs too; keep it from sending the row before we look.
+        cy.intercept("POST", "**/api/background/timerjobs", { statusCode: 200, body: { ran: false } });
+        cy.visit("/people/view/2");
+        cy.get("[data-email-composer][data-email-person-id='2']").click();
+        composeAndSend(`Queued ${tag}`, "See you Sunday.");
+        cy.wait("@batchSend");
+
+        cy.get("#crm-email-compose-form .alert-info")
+            .should("contain.text", "Messages queued: 1. They will be sent in the background.")
+            .find("#crm-email-history-link")
+            .should("have.attr", "href")
+            .and("include", "/v2/email/dashboard#email-recent-sends");
+        cy.get("#crm-email-send-submit").should("contain.text", "Queued").and("be.disabled");
+
+        cy.visit("/v2/email/dashboard");
+        cy.get("#email-queued-count").should("be.visible");
+        cy.contains("#email-recent-sends tr", `Queued ${tag}`).should("have.attr", "data-email-status", "queued");
+
+        cy.request("POST", "/api/background/timerjobs", { force: true }).its("body.ran").should("eq", true);
+
+        cy.reload();
+        cy.contains("#email-recent-sends tr", `Queued ${tag}`)
+            .should("have.attr", "data-email-status", "sent")
+            .and("contain.text", "Sent");
+        mailpitMessages(tag).should("have.length", 1);
     });
 });
 
