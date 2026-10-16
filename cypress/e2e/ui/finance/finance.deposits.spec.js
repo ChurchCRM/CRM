@@ -53,7 +53,7 @@ describe("Finance Deposits", () => {
         cy.get("#depositComment").type(name);
         cy.get("#addNewDeposit").click();
 
-        cy.url().should("contain", "DepositSlipEditor.php");
+        cy.location("pathname").should("match", /\/finance\/deposit\/\d+$/);
 
         cy.get(".btn-success").click();
         cy.url().should("contain", "/finance/pledge/new");
@@ -64,11 +64,11 @@ describe("Finance Deposits", () => {
         cy.get("#FamilyID").invoke("val", "1");
 
         cy.get("#savePledgeBtn").click();
-        cy.url().should("contain", "DepositSlipEditor.php");
+        cy.location("pathname").should("match", /\/finance\/deposit\/\d+$/);
     });
 
     it("Open the Deposits page & Add Payment", () => {
-        cy.visit("/DepositSlipEditor.php?DepositSlipID=5");
+        cy.visit("/finance/deposit/5");
         cy.contains("Deposit Slip Number: 5");
         cy.contains("Payments");
 
@@ -81,17 +81,17 @@ describe("Finance Deposits", () => {
         cy.get("#FamilyID").invoke("val", "1");
 
         cy.get("#savePledgeBtn").click();
-        cy.url().should("contain", "DepositSlipEditor.php");
+        cy.location("pathname").should("match", /\/finance\/deposit\/\d+$/);
     });
 
-    it("Edit Deposit without an ID", () => {
-        cy.visit("/DepositSlipEditor.php?DepositSlipID=9999");
+    it("Unknown deposit id redirects to the search page", () => {
+        cy.visit("/finance/deposit/9999");
         cy.url().should("contain", "/finance/deposit/search");
         cy.contains("Deposits");
     });
 
-    it("Open Deposit with the Bad / deleted Deposits id", () => {
-        cy.visit("/DepositSlipEditor.php?");
+    it("Deposit id 0 redirects to the search page", () => {
+        cy.visit("/finance/deposit/0");
         cy.url().should("contain", "/finance/deposit/search");
         cy.contains("Deposits");
     });
@@ -120,7 +120,7 @@ describe("Finance Deposits", () => {
             expect(response.status).to.eq(200);
             const depositId = response.body.Id;
 
-            cy.visit(`/DepositSlipEditor.php?DepositSlipID=${depositId}`);
+            cy.visit(`/finance/deposit/${depositId}`);
 
             // Verify the comment field contains sanitized text (script tags stripped, quotes escaped)
             cy.get("#Comment").should("have.value", sanitizedComment);
@@ -128,8 +128,8 @@ describe("Finance Deposits", () => {
 
     });
 
-    it("Load DepositSlipEditor and verify DataTables loads without errors", () => {
-        cy.visit("/DepositSlipEditor.php?DepositSlipID=5");
+    it("Load the deposit editor and verify DataTables loads without errors", () => {
+        cy.visit("/finance/deposit/5");
 
         // Verify page loaded
         cy.contains("Deposit Slip Number: 5");
@@ -137,8 +137,36 @@ describe("Finance Deposits", () => {
 
     });
 
+    it("Payments table has row actions and bulk select enables Delete Selected", () => {
+        cy.visit("/finance/deposit/5");
+        cy.get("#paymentsTable tbody tr").should("have.length.greaterThan", 0);
+        cy.get("#paymentsTable tbody tr").first().find(".dropdown-menu").should("exist");
+
+        cy.get("#deleteSelectedRows").should("be.disabled");
+        cy.get("#paymentsTable tbody .row-select").first().check();
+        cy.get("#deleteSelectedRows").should("not.be.disabled");
+        cy.get("#paymentsTable tbody .row-select").first().uncheck();
+        cy.get("#deleteSelectedRows").should("be.disabled");
+
+        // Indeterminate select-all is not checked, so uncheck() would not clear rows.
+        cy.get("#selectAllPayments").check();
+        cy.get("#paymentsTable tbody .row-select:not(:checked)").should("have.length", 0);
+        cy.get("#deleteSelectedRows").should("not.be.disabled");
+        cy.get("#selectAllPayments").uncheck();
+        cy.get("#paymentsTable tbody .row-select:checked").should("have.length", 0);
+        cy.get("#deleteSelectedRows").should("be.disabled");
+    });
+
+    it("Previous and Next navigate between deposits", () => {
+        cy.visit("/finance/deposit/5");
+        cy.contains("a.btn", "Next").click();
+        cy.location("pathname").should("match", /\/finance\/deposit\/\d+$/).and("not.match", /\/finance\/deposit\/5$/);
+        cy.contains("a.btn", "Previous").click();
+        cy.location("pathname").should("match", /\/finance\/deposit\/5$/);
+    });
+
     it("Renders the Funds bar chart via ApexCharts", () => {
-        cy.visit("/DepositSlipEditor.php?DepositSlipID=5");
+        cy.visit("/finance/deposit/5");
 
         cy.contains("Deposit Slip Number: 5");
 
