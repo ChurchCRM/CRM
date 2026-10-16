@@ -4874,7 +4874,6 @@
   "Email non-attendees: %s": "Kirim email ke yang tidak hadir: %s",
   "Email not found": "Email tidak ditemukan",
   "Email preview": "Pratinjau email",
-  "Email sending is disabled": "Pengiriman email dinonaktifkan",
   "Email sending is not enabled. Configure SMTP settings and enable email before sending.": "Pengiriman email tidak diaktifkan. Atur pengaturan SMTP dan aktifkan email sebelum mengirim.",
   "Emails": "Email",
   "End time": "Waktu Selesai",

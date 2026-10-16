@@ -20108,10 +20108,6 @@ msgid "Email preview"
 msgstr "E-kirja eelvaade"
 
 #: 
-msgid "Email sending is disabled"
-msgstr "E-kirjade saatmine on keelatud"
-
-#: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
 msgstr "E-kirjade saatmine pole lubatud. Seadista enne saatmist SMTP-seaded ja luba e-post."
 

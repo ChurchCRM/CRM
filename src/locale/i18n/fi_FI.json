@@ -4900,7 +4900,6 @@
   "Email non-attendees: %s": "Lähetä sähköposti poissaolleille: %s",
   "Email not found": "Sähköpostia ei löytynyt",
   "Email preview": "Sähköpostin esikatselu",
-  "Email sending is disabled": "Sähköpostin lähetys on pois käytöstä",
   "Email sending is not enabled. Configure SMTP settings and enable email before sending.": "Sähköpostin lähetys ei ole käytössä. Määritä SMTP-asetukset ja ota sähköposti käyttöön ennen lähettämistä.",
   "Emails": "Sähköpostit",
   "End time": "Lopetusaika",

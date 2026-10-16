@@ -4900,7 +4900,6 @@
   "Email non-attendees: %s": "ഹാജരാകാത്തവർക്ക് ഇമെയിൽ അയയ്ക്കുക: %s",
   "Email not found": "ഇമെയിൽ കണ്ടെത്തിയില്ല",
   "Email preview": "ഇമെയിൽ പ്രിവ്യൂ",
-  "Email sending is disabled": "ഇമെയിൽ അയയ്ക്കൽ പ്രവർത്തനരഹിതമാണ്",
   "Email sending is not enabled. Configure SMTP settings and enable email before sending.": "ഇമെയിൽ അയയ്ക്കൽ പ്രവർത്തനക്ഷമമല്ല. അയയ്ക്കുന്നതിന് മുമ്പ് SMTP ക്രമീകരണങ്ങൾ ക്രമീകരിച്ച് ഇമെയിൽ പ്രവർത്തനക്ഷമമാക്കുക.",
   "Emails": "ഇമെയിലുകൾ",
   "End time": "അവസാന സമയം",

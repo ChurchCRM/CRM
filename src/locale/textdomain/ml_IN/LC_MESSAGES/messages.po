@@ -20074,10 +20074,6 @@ msgid "Email preview"
 msgstr "ഇമെയിൽ പ്രിവ്യൂ"
 
 #: 
-msgid "Email sending is disabled"
-msgstr "ഇമെയിൽ അയയ്ക്കൽ പ്രവർത്തനരഹിതമാണ്"
-
-#: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
 msgstr "ഇമെയിൽ അയയ്ക്കൽ പ്രവർത്തനക്ഷമമല്ല. അയയ്ക്കുന്നതിന് മുമ്പ് SMTP ക്രമീകരണങ്ങൾ ക്രമീകരിച്ച് ഇമെയിൽ പ്രവർത്തനക്ഷമമാക്കുക."
 

@@ -20109,10 +20109,6 @@ msgid "Email preview"
 msgstr "E-posta önizlemesi"
 
 #: 
-msgid "Email sending is disabled"
-msgstr "E-posta gönderimi devre dışı"
-
-#: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
 msgstr "E-posta gönderimi etkin değil. Göndermeden önce SMTP ayarlarını yapılandırın ve e-postayı etkinleştirin."
 

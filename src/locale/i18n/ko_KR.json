@@ -4874,7 +4874,6 @@
   "Email non-attendees: %s": "불참자에게 이메일: %s",
   "Email not found": "이메일을 찾을 수 없습니다",
   "Email preview": "이메일 미리보기",
-  "Email sending is disabled": "이메일 발송이 비활성화되어 있습니다",
   "Email sending is not enabled. Configure SMTP settings and enable email before sending.": "이메일 발송이 활성화되어 있지 않습니다. 보내기 전에 SMTP 설정을 구성하고 이메일을 활성화하세요.",
   "Emails": "이메일",
   "End time": "종료 시간",

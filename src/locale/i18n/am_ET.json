@@ -4900,7 +4900,6 @@
   "Email non-attendees: %s": "ያልተገኙትን ኢሜይል ላክ፦ %s",
   "Email not found": "ኢሜይሉ አልተገኘም",
   "Email preview": "የኢሜይል ቅድመ ዕይታ",
-  "Email sending is disabled": "ኢሜይል መላክ ተሰናክሏል",
   "Email sending is not enabled. Configure SMTP settings and enable email before sending.": "ኢሜይል መላክ አልነቃም። ከመላክዎ በፊት የSMTP ቅንብሮችን ያዋቅሩ እና ኢሜይልን ያንቁ።",
   "Emails": "ኢሜይሎች",
   "End time": "ማብቂያ ጊዜ",

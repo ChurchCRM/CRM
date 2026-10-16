@@ -20060,10 +20060,6 @@ msgid "Email preview"
 msgstr "ตัวอย่างอีเมล"
 
 #: 
-msgid "Email sending is disabled"
-msgstr "การส่งอีเมลถูกปิดอยู่"
-
-#: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
 msgstr "ยังไม่ได้เปิดการส่งอีเมล ตั้งค่า SMTP และเปิดใช้งานอีเมลก่อนส่ง"
 

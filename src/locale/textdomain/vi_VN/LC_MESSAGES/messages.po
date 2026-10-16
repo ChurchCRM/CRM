@@ -20087,10 +20087,6 @@ msgid "Email preview"
 msgstr "Xem trước email"
 
 #: 
-msgid "Email sending is disabled"
-msgstr "Việc gửi email đã bị tắt"
-
-#: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
 msgstr "Việc gửi email chưa được bật. Hãy cấu hình SMTP và bật email trước khi gửi."
 

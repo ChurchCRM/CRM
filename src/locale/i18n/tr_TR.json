@@ -4900,7 +4900,6 @@
   "Email non-attendees: %s": "Katılmayanlara e-posta gönder: %s",
   "Email not found": "E-posta bulunamadı",
   "Email preview": "E-posta önizlemesi",
-  "Email sending is disabled": "E-posta gönderimi devre dışı",
   "Email sending is not enabled. Configure SMTP settings and enable email before sending.": "E-posta gönderimi etkin değil. Göndermeden önce SMTP ayarlarını yapılandırın ve e-postayı etkinleştirin.",
   "Emails": "E-postalar",
   "End time": "Bitiş Saati",

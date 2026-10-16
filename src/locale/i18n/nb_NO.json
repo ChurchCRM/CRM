@@ -4900,7 +4900,6 @@
   "Email non-attendees: %s": "Send e-post til dem som ikke møtte: %s",
   "Email not found": "E-posten ble ikke funnet",
   "Email preview": "Forhåndsvisning av e-post",
-  "Email sending is disabled": "Sending av e-post er slått av",
   "Email sending is not enabled. Configure SMTP settings and enable email before sending.": "Sending av e-post er ikke aktivert. Sett opp SMTP-innstillingene og aktiver e-post før du sender.",
   "Emails": "E-poster",
   "End time": "Sluttid",

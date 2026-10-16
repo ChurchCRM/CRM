@@ -20135,10 +20135,6 @@ msgid "Email preview"
 msgstr "E-mail előnézete"
 
 #: 
-msgid "Email sending is disabled"
-msgstr "Az e-mail küldése le van tiltva"
-
-#: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
 msgstr "Az e-mail küldése nincs engedélyezve. Küldés előtt állítsd be az SMTP-beállításokat, és engedélyezd az e-mailt."
 

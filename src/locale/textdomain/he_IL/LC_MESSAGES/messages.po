@@ -20107,10 +20107,6 @@ msgid "Email preview"
 msgstr "תצוגה מקדימה של הדוא\"ל"
 
 #: 
-msgid "Email sending is disabled"
-msgstr "שליחת דוא\"ל מושבתת"
-
-#: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
 msgstr "שליחת דוא\"ל אינה מופעלת. יש להגדיר את SMTP ולהפעיל דוא\"ל לפני השליחה."
 

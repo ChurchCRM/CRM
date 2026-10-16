@@ -20192,10 +20192,6 @@ msgid "Email preview"
 msgstr "Podgląd e-maila"
 
 #: 
-msgid "Email sending is disabled"
-msgstr "Wysyłanie e-maili jest wyłączone"
-
-#: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
 msgstr "Wysyłanie e-maili nie jest włączone. Przed wysłaniem skonfiguruj ustawienia SMTP i włącz e-maile."
 

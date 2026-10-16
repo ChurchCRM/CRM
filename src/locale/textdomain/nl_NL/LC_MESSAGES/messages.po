@@ -20078,10 +20078,6 @@ msgid "Email preview"
 msgstr "E-mailvoorbeeld"
 
 #: 
-msgid "Email sending is disabled"
-msgstr "E-mailverzending is uitgeschakeld"
-
-#: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
 msgstr "E-mailverzending is niet ingeschakeld. Configureer de SMTP-instellingen en schakel e-mail in voordat u verstuurt."
 

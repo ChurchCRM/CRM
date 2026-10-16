@@ -20152,10 +20152,6 @@ msgid "Email preview"
 msgstr "邮件预览"
 
 #: 
-msgid "Email sending is disabled"
-msgstr "电子邮件发送已停用"
-
-#: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
 msgstr "电子邮件发送未启用。发送前请先配置 SMTP 设置并启用电子邮件。"
 
