@@ -23,3 +23,18 @@
     --fc-forma-highlight: #3788d859;
   }
 }
+
+// bootstrap-datepicker hovers with a fixed #eee while the dropdown text follows the theme.
+[data-bs-theme="dark"] .datepicker {
+  table tr td.day:hover,
+  table tr td.focused,
+  table tr td span:hover,
+  table tr td span.focused,
+  .datepicker-switch:hover,
+  .prev:hover,
+  .next:hover,
+  tfoot tr th:hover {
+    background: var(--tblr-bg-surface-tertiary);
+    color: var(--tblr-body-color);
+  }
+}

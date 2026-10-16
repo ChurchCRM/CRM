@@ -15,6 +15,7 @@
  *     Bootstrap 4 selectors (.custom-control, .form-group, .input-group-addon ...).
  *  5. Patterns Tabler 1.5/1.6 removed: .form-hint, tabler.getColor()/hexToRgba(),
  *     *-focus-box-shadow Sass variables, Bootstrap 4 data-toggle-style attributes.
+ *     Also the fixed-colour table-success/-warning/... variants, which keep black text in dark mode.
  */
 
 const fs = require('fs');
@@ -81,6 +82,7 @@ const removedMarkup = [
     { re: /class\s*=\s*(?:["'`]|\\")[^"'`]*\bform-hint\b/, what: '`.form-hint` (use `.form-text`)' },
     { re: /\btabler\.(?:getColor|hexToRgba)\s*\(/, what: 'removed Tabler JS helper' },
     { re: /\bdata-(?:toggle|dismiss|placement|parent|ride|slide|spy|trigger|backdrop|keyboard)\s*=/, what: 'Bootstrap 4 data attribute (use `data-bs-*`)' },
+    { re: /(?<![\w-])table-(?:primary|secondary|success|danger|warning|info|light|dark)(?![\w-])/, what: 'fixed-colour table variant (black text in dark mode); use `table-active` or a `bg-*-lt` utility' },
 ];
 const focusShadow = /\$[a-z-]*focus-box-shadow\b/;
 
