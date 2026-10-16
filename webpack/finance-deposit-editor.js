@@ -194,7 +194,11 @@
             setTimeout(() => window.location.reload(), 600);
             return;
           }
-          settled.filter((result) => result.ok).forEach((result) => selectedKeys.delete(result.key));
+          settled
+            .filter((result) => result.ok)
+            .forEach((result) => {
+              selectedKeys.delete(result.key);
+            });
           const message =
             failed.length === settled.length
               ? i18next.t("Error deleting payments")
@@ -218,7 +222,13 @@
     });
     $("#paymentsTable").on("change", "#selectAllPayments", function () {
       const checked = this.checked;
-      visibleGroupKeys().forEach((key) => (checked ? selectedKeys.add(key) : selectedKeys.delete(key)));
+      visibleGroupKeys().forEach((key) => {
+        if (checked) {
+          selectedKeys.add(key);
+        } else {
+          selectedKeys.delete(key);
+        }
+      });
       $("#paymentsTable tbody .row-select").prop("checked", checked);
       updateSelectionState();
     });

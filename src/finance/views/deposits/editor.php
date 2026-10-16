@@ -200,7 +200,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       </div>
       <?php endif; ?>
     </div>
-    <div style="overflow-x: clip; overflow-y: visible;">
+    <div class="table-clip-x">
       <table class="table table-vcenter table-hover card-table" id="paymentsTable"></table>
     </div>
   </div>
