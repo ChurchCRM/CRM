@@ -47,15 +47,6 @@ function adminApi(method, url, body, expectedStatus = 200) {
     return cy.makePrivateAdminAPICall(method, url, body, expectedStatus);
 }
 
-function dbOk(sql, params = []) {
-    return cy.dbQuery(sql, params).then((result) => {
-        if (result.error !== null) {
-            throw new Error(`Unexpected SQL failure.\n  SQL: ${sql}\n  ${result.error.code}: ${result.error.message}`);
-        }
-        return result.rows;
-    });
-}
-
 function isoDate(offsetDays) {
     const d = new Date();
     d.setHours(12, 0, 0, 0);
@@ -73,7 +64,9 @@ function cleanupFixtures() {
             }
         }
     });
-    dbOk(`DELETE FROM events_event WHERE event_title LIKE ?`, [`${PREFIX}%`]);
+    adminApi("GET", "/api/events").then((resp) => {
+        cy.cleanupEvents(resp.body.Events.filter((e) => e.Title.startsWith(PREFIX)).map((e) => e.Id));
+    });
 }
 
 before(() => {
@@ -127,11 +120,14 @@ describe("Volunteer v2 — the team-only ministry view (#10530)", () => {
             const first = (7 - new Date().getDay()) % 7 || 7;
             [0, 7, 14].forEach((week) => {
                 const day = isoDate(first + week);
-                dbOk(
-                    `INSERT INTO events_event (event_type, event_title, event_desc, event_text, event_start, event_end, inactive, event_ministry_id)
-                     VALUES (1, ?, '', '', ?, ?, 0, ?)`,
-                    [EVENT_TITLE, `${day} 09:00:00`, `${day} 10:00:00`, ministryId],
-                );
+                adminApi("POST", "/api/events", {
+                    Title: EVENT_TITLE,
+                    Type: 1,
+                    Start: `${day}T09:00:00`,
+                    End: `${day}T10:00:00`,
+                    MinistryId: ministryId,
+                    PinnedCalendars: [],
+                });
             });
         });
         cy.then(() => {
@@ -240,11 +236,8 @@ describe("Volunteer v2 — the team-only ministry view (#10530)", () => {
         cy.get(".volunteer-remove-volunteer").should("not.exist");
 
         cy.then(() => {
-            dbOk(
-                `SELECT vqal_ID FROM volunteer_qualification_vqal WHERE vqal_vpos_ID = ? AND vqal_per_ID = ? AND vqal_Active = 1`,
-                [posLed, POOL_MEMBER],
-            ).then((rows) => {
-                expect(rows).to.have.length(1);
+            adminApi("GET", `${VOLUNTEER_URL}/positions/${posLed}/qualifications?active=1`).then((resp) => {
+                expect(resp.body.qualifications.filter((q) => q.personId === POOL_MEMBER)).to.have.length(1);
             });
         });
     });

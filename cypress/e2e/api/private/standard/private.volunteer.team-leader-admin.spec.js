@@ -29,15 +29,6 @@ let scheduleOther = 0;
 let occurrenceOther = 0;
 let originalVersion = "v1";
 
-function dbOk(sql, params = []) {
-    return cy.dbQuery(sql, params).then((result) => {
-        if (result.error !== null) {
-            throw new Error(`Unexpected SQL failure.\n  SQL: ${sql}\n  ${result.error.code}: ${result.error.message}`);
-        }
-        return result.rows;
-    });
-}
-
 function api(key, method, url, body, expectedStatus = 200) {
     return cy.makePrivateAPICall(Cypress.testEnv(key), method, url, body, expectedStatus);
 }
@@ -51,77 +42,15 @@ function isoDate(offsetDays) {
 }
 
 function cleanupFixtures() {
-    const like = [`${PREFIX}%`];
-    const bySchedule = `JOIN volunteer_schedule_vsch vsch ON vsch.vsch_ID = vocc.vocc_vsch_ID
-           JOIN volunteer_ministry_vmin vmin ON vmin.vmin_ID = vsch.vsch_vmin_ID
-          WHERE vmin.vmin_Name LIKE ?`;
-
-    dbOk(
-        `DELETE vasg FROM volunteer_assignment_vasg vasg
-           JOIN volunteer_occurrence_vocc vocc ON vocc.vocc_ID = vasg.vasg_vocc_ID ${bySchedule}`,
-        like,
-    );
-    dbOk(
-        `DELETE vreq FROM volunteer_requirement_vreq vreq
-           JOIN volunteer_occurrence_vocc vocc ON vocc.vocc_ID = vreq.vreq_vocc_ID ${bySchedule}`,
-        like,
-    );
-    dbOk(`DELETE vocc FROM volunteer_occurrence_vocc vocc ${bySchedule}`, like);
-    dbOk(
-        `DELETE vreq FROM volunteer_requirement_vreq vreq
-           JOIN volunteer_schedule_vsch vsch ON vsch.vsch_ID = vreq.vreq_vsch_ID
-           JOIN volunteer_ministry_vmin vmin ON vmin.vmin_ID = vsch.vsch_vmin_ID
-          WHERE vmin.vmin_Name LIKE ?`,
-        like,
-    );
-    dbOk(
-        `DELETE vsch FROM volunteer_schedule_vsch vsch
-           JOIN volunteer_ministry_vmin vmin ON vmin.vmin_ID = vsch.vsch_vmin_ID
-          WHERE vmin.vmin_Name LIKE ?`,
-        like,
-    );
-    dbOk(
-        `DELETE vqal FROM volunteer_qualification_vqal vqal
-           JOIN volunteer_position_vpos vpos ON vpos.vpos_ID = vqal.vqal_vpos_ID
-           JOIN volunteer_ministry_vmin vmin ON vmin.vmin_ID = vpos.vpos_vmin_ID
-          WHERE vmin.vmin_Name LIKE ?`,
-        like,
-    );
-    dbOk(
-        `DELETE vpos FROM volunteer_position_vpos vpos
-           JOIN volunteer_ministry_vmin vmin ON vmin.vmin_ID = vpos.vpos_vmin_ID
-          WHERE vmin.vmin_Name LIKE ?`,
-        like,
-    );
-    dbOk(
-        `DELETE vscp FROM volunteer_scope_vscp vscp
-           JOIN volunteer_team_vtem vtem ON vtem.vtem_ID = vscp.vscp_ScopeId
-           JOIN volunteer_ministry_vmin vmin ON vmin.vmin_ID = vtem.vtem_vmin_ID
-          WHERE vscp.vscp_ScopeType = 'team' AND vmin.vmin_Name LIKE ?`,
-        like,
-    );
-    dbOk(
-        `DELETE r FROM person2group2role_p2g2r r
-           JOIN group_grp g ON g.grp_ID = r.p2g2r_grp_ID
-           JOIN volunteer_ministry_vmin m ON m.vmin_ID = g.grp_ministry_id
-          WHERE m.vmin_Name LIKE ?`,
-        like,
-    );
-    dbOk(
-        `DELETE g FROM group_grp g
-           JOIN volunteer_ministry_vmin m ON m.vmin_ID = g.grp_ministry_id
-          WHERE m.vmin_Name LIKE ?`,
-        like,
-    );
-    dbOk(
-        `DELETE vtem FROM volunteer_team_vtem vtem
-           JOIN volunteer_ministry_vmin vmin ON vmin.vmin_ID = vtem.vtem_vmin_ID
-          WHERE vmin.vmin_Name LIKE ?`,
-        like,
-    );
-    dbOk(`DELETE FROM calendars WHERE name LIKE ?`, like);
-    dbOk(`DELETE FROM volunteer_ministry_vmin WHERE vmin_Name LIKE ?`, like);
-    dbOk(`DELETE FROM events_event WHERE event_title LIKE ?`, like);
+    api(ADMIN_KEY, "GET", `${VOLUNTEER_URL}/ministries`).then((resp) => {
+        for (const ministry of resp.body.ministries.filter((m) => m.name.startsWith(PREFIX))) {
+            api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministry.id}`, { active: false }, [200, 404]);
+            api(ADMIN_KEY, "DELETE", `${VOLUNTEER_URL}/ministries/${ministry.id}`, null, [200, 404]);
+        }
+    });
+    api(ADMIN_KEY, "GET", "/api/events").then((resp) => {
+        cy.cleanupEvents(resp.body.Events.filter((e) => e.Title.startsWith(PREFIX)).map((e) => e.Id));
+    });
 }
 
 function schedulePayload(teamId, name) {
@@ -191,11 +120,14 @@ describe("Volunteer v2 — a Manage My Ministries team leader through the API (#
             const first = (7 - new Date().getDay()) % 7 || 7;
             [0, 7].forEach((week) => {
                 const day = isoDate(first + week);
-                dbOk(
-                    `INSERT INTO events_event (event_type, event_title, event_desc, event_text, event_start, event_end, inactive, event_ministry_id)
-                     VALUES (1, ?, '', '', ?, ?, 0, ?)`,
-                    [EVENT_TITLE, `${day} 09:00:00`, `${day} 10:00:00`, ministryId],
-                );
+                api(ADMIN_KEY, "POST", "/api/events", {
+                    Title: EVENT_TITLE,
+                    Type: 1,
+                    Start: `${day}T09:00:00`,
+                    End: `${day}T10:00:00`,
+                    MinistryId: ministryId,
+                    PinnedCalendars: [],
+                });
             });
         });
         cy.then(() => {
@@ -206,11 +138,11 @@ describe("Volunteer v2 — a Manage My Ministries team leader through the API (#
             );
         });
         cy.then(() => {
-            dbOk(`SELECT vocc_ID FROM volunteer_occurrence_vocc WHERE vocc_vsch_ID = ? ORDER BY vocc_ID LIMIT 1`, [
-                scheduleOther,
-            ]).then((rows) => {
-                occurrenceOther = rows[0].vocc_ID;
-            });
+            api(ADMIN_KEY, "GET", `${VOLUNTEER_URL}/occurrences?scheduleId=${scheduleOther}&from=${isoDate(0)}&to=${isoDate(28)}`).then(
+                (resp) => {
+                    occurrenceOther = resp.body.occurrences[0].id;
+                },
+            );
         });
     });
 
@@ -310,15 +242,11 @@ describe("Volunteer v2 — a Manage My Ministries team leader through the API (#
         });
 
         it("Wrote nothing it was refused", () => {
-            dbOk(`SELECT vmin_Name, vmin_Active FROM volunteer_ministry_vmin WHERE vmin_ID = ?`, [ministryId]).then((rows) => {
-                expect(rows[0].vmin_Name).to.eq(`${PREFIX} Hospitality`);
-                expect(Number(rows[0].vmin_Active)).to.eq(1);
-            });
-            dbOk(`SELECT vtem_ID FROM volunteer_team_vtem WHERE vtem_vmin_ID = ? ORDER BY vtem_ID`, [ministryId]).then((rows) => {
-                expect(rows.map((r) => r.vtem_ID)).to.include.members([teamLed, teamOther]);
-            });
-            dbOk(`SELECT vpos_Name FROM volunteer_position_vpos WHERE vpos_ID = ?`, [posOther]).then((rows) => {
-                expect(rows[0].vpos_Name).to.eq(`${PREFIX} Aisle`);
+            api(ADMIN_KEY, "GET", `${VOLUNTEER_URL}/ministries/${ministryId}`).then((resp) => {
+                expect(resp.body.ministry.name).to.eq(`${PREFIX} Hospitality`);
+                expect(resp.body.ministry.active).to.eq(true);
+                expect(resp.body.teams.map((t) => t.id)).to.include.members([teamLed, teamOther]);
+                expect(resp.body.positions.find((p) => p.id === posOther).name).to.eq(`${PREFIX} Aisle`);
             });
         });
     });
