@@ -20,12 +20,25 @@ updates:
       # Remove this entry when a newer 2.x release addresses them.
       - dependency-name: "quill"
         versions: ["2.0.3"]
+      # Major versions of these fail the build or the Cypress suite on arrival
+      # (TypeScript 7 breaks `build`; Cypress 16 fails the api and ui shards). The
+      # bot re-proposed each one weekly and people closed them, so majors are
+      # planned by hand on a branch instead. Remove an entry to let the bot open
+      # that major again.
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "cypress"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "@cypress/*"
+        update-types: ["version-update:semver-major"]
     groups:
-      # UI-critical libraries get their own PR each: a bad patch bump in one of
-      # these regresses visible behavior (tables, calendars, page chrome), so
-      # each needs its own build/lint/CI verification rather than riding along
-      # in the catch-all group below. Groups are matched in order, so these
-      # must be declared before npm-minor-patch to take packages out of it.
+      # The named groups are listed first, and the dev and runtime minor/patch
+      # groups come last. Some packages match two groups (cypress is in testing
+      # and is a dev dependency). Which group wins for a minor or patch bump is
+      # not verified here: after this merges, check which group a testing
+      # package's next minor PR lands in. UI-critical libraries get their own PR:
+      # a bad patch bump in one of them regresses visible behavior (tables,
+      # calendars, page chrome), so each needs its own build, lint and CI run.
       tabler:
         patterns:
           - "@tabler/*"
@@ -38,32 +51,20 @@ updates:
           - "@fullcalendar/*"
           - "@full-ui/*"
           - "temporal-polyfill"
-      # Group all remaining minor/patch updates together
-      npm-minor-patch:
-        patterns:
-          - "*"
-        update-types:
-          - "minor"
-          - "patch"
-      # Group dev dependencies separately
-      npm-dev-dependencies:
-        dependency-type: "development"
-        patterns:
-          - "*"
-      # Group TypeScript ecosystem together
+      # TypeScript ecosystem
       typescript:
         patterns:
           - "typescript"
           - "@types/*"
           - "ts-*"
-      # Group testing tools together
+      # Testing tools
       testing:
         patterns:
           - "cypress"
           - "@cypress/*"
           - "jest"
           - "@jest/*"
-      # Group build tools together
+      # Build tools
       build-tools:
         patterns:
           - "webpack"
@@ -71,6 +72,23 @@ updates:
           - "babel-*"
           - "@babel/*"
           - "@biomejs/biome"
+      # Dev-only minor and patch updates. Kept apart from runtime so a tooling
+      # bump never rides in a PR with a change that ships to churches.
+      npm-dev-minor-patch:
+        dependency-type: "development"
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+      # Runtime minor and patch updates (what ships in the release)
+      npm-runtime-minor-patch:
+        dependency-type: "production"
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
 
   # Composer packages in src directory
   - package-ecosystem: "composer"

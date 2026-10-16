@@ -1,0 +1,47 @@
+name: "Dependabot: close superseded PRs"
+
+# When a new Dependabot PR opens, close the older open Dependabot PRs it replaces
+# (same single package at an older or equal version, or the same group). Rules and
+# reasoning live in scripts/dependabot-supersede.js.
+#
+# Why pull_request_target: the job needs write access to close PRs, and Dependabot
+# runs get a read-only token. It is safe only because the job never checks out or
+# runs the PR head: the script is read from the base branch, and PR data comes
+# through the API.
+
+on:
+  pull_request_target:
+    types: [opened, reopened]
+  workflow_dispatch:
+    inputs:
+      pr:
+        description: 'Dependabot PR number to check for superseded PRs'
+        required: true
+        type: number
+
+permissions:
+  contents: read
+
+concurrency:
+  group: dependabot-supersede-${{ github.event.pull_request.number || inputs.pr }}
+  cancel-in-progress: false
+
+jobs:
+  supersede:
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.user.login == 'dependabot[bot]'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      # Base branch only. The script must come from master, never from the PR.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+
+      - name: Close PRs superseded by this one
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number || inputs.pr }}
+        run: node scripts/dependabot-supersede.js
