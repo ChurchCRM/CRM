@@ -20193,10 +20193,6 @@ msgid "Email preview"
 msgstr "Previzualizare e-mail"
 
 #: 
-msgid "Email sending is disabled"
-msgstr "Trimiterea de e-mailuri este dezactivată"
-
-#: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
 msgstr "Trimiterea de e-mailuri nu este activată. Configurați setările SMTP și activați e-mailul înainte de a trimite."
 

@@ -4952,7 +4952,6 @@
   "Email non-attendees: %s": "Написати відсутнім: %s",
   "Email not found": "Лист не знайдено",
   "Email preview": "Попередній перегляд листа",
-  "Email sending is disabled": "Надсилання листів вимкнено",
   "Email sending is not enabled. Configure SMTP settings and enable email before sending.": "Надсилання листів не ввімкнено. Налаштуйте параметри SMTP і ввімкніть пошту перед надсиланням.",
   "Emails": "Листи",
   "End time": "Час завершення",

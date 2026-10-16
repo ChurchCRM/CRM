@@ -20106,10 +20106,6 @@ msgid "Email preview"
 msgstr "Aperçu du courriel"
 
 #: 
-msgid "Email sending is disabled"
-msgstr "L'envoi de courriels est désactivé"
-
-#: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
 msgstr "L'envoi de courriels n'est pas activé. Configurez les paramètres SMTP et activez les courriels avant d'envoyer."
 

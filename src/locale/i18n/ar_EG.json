@@ -5004,7 +5004,6 @@
   "Email non-attendees: %s": "مراسلة غير الحاضرين: %s",
   "Email not found": "لم يتم العثور على الرسالة",
   "Email preview": "معاينة الرسالة",
-  "Email sending is disabled": "إرسال البريد الإلكتروني معطّل",
   "Email sending is not enabled. Configure SMTP settings and enable email before sending.": "إرسال البريد الإلكتروني غير مفعّل. اضبط إعدادات SMTP وفعّل البريد الإلكتروني قبل الإرسال.",
   "Emails": "رسائل البريد",
   "End time": "وقت الانتهاء",

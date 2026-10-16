@@ -4900,7 +4900,6 @@
   "Email non-attendees: %s": "Dërgo email jopjesëmarrësve: %s",
   "Email not found": "Email-i nuk u gjet",
   "Email preview": "Pamja paraprake e email-it",
-  "Email sending is disabled": "Dërgimi i email-eve është çaktivizuar",
   "Email sending is not enabled. Configure SMTP settings and enable email before sending.": "Dërgimi i email-eve nuk është aktivizuar. Konfiguroni cilësimet SMTP dhe aktivizoni email-in përpara se të dërgoni.",
   "Emails": "Email-et",
   "End time": "Koha e Mbarimit",

@@ -4900,7 +4900,6 @@
   "Email non-attendees: %s": "Enviar e-mail aos ausentes: %s",
   "Email not found": "E-mail não encontrado",
   "Email preview": "Pré-visualização do e-mail",
-  "Email sending is disabled": "O envio de e-mails está desativado",
   "Email sending is not enabled. Configure SMTP settings and enable email before sending.": "O envio de e-mails não está ativado. Configure o SMTP e ative o e-mail antes de enviar.",
   "Emails": "E-mails",
   "End time": "Hora de Fim",

@@ -4900,7 +4900,6 @@
   "Email non-attendees: %s": "E-mail a távolmaradóknak: %s",
   "Email not found": "Az e-mail nem található",
   "Email preview": "E-mail előnézete",
-  "Email sending is disabled": "Az e-mail küldése le van tiltva",
   "Email sending is not enabled. Configure SMTP settings and enable email before sending.": "Az e-mail küldése nincs engedélyezve. Küldés előtt állítsd be az SMTP-beállításokat, és engedélyezd az e-mailt.",
   "Emails": "E-mailek",
   "End time": "Befejezési idő",

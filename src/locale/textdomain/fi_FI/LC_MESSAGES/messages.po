@@ -20076,10 +20076,6 @@ msgid "Email preview"
 msgstr "Sähköpostin esikatselu"
 
 #: 
-msgid "Email sending is disabled"
-msgstr "Sähköpostin lähetys on pois käytöstä"
-
-#: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
 msgstr "Sähköpostin lähetys ei ole käytössä. Määritä SMTP-asetukset ja ota sähköposti käyttöön ennen lähettämistä."
 

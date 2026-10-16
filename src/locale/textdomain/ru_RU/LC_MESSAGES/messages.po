@@ -20215,10 +20215,6 @@ msgid "Email preview"
 msgstr "Предпросмотр письма"
 
 #: 
-msgid "Email sending is disabled"
-msgstr "Отправка писем отключена"
-
-#: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
 msgstr "Отправка писем не включена. Настройте параметры SMTP и включите отправку почты перед отправкой."
 

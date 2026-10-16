@@ -4900,7 +4900,6 @@
   "Email non-attendees: %s": "שליחת דוא\"ל למי שלא נכחו: %s",
   "Email not found": "הדוא\"ל לא נמצא",
   "Email preview": "תצוגה מקדימה של הדוא\"ל",
-  "Email sending is disabled": "שליחת דוא\"ל מושבתת",
   "Email sending is not enabled. Configure SMTP settings and enable email before sending.": "שליחת דוא\"ל אינה מופעלת. יש להגדיר את SMTP ולהפעיל דוא\"ל לפני השליחה.",
   "Emails": "הודעות דוא\"ל",
   "End time": "שעת סיום",

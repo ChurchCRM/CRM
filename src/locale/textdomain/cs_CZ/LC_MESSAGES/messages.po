@@ -20123,10 +20123,6 @@ msgid "Email preview"
 msgstr "Náhled e-mailu"
 
 #: 
-msgid "Email sending is disabled"
-msgstr "Odesílání e-mailů je vypnuto"
-
-#: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
 msgstr "Odesílání e-mailů není zapnuto. Před odesláním nastavte SMTP a zapněte e-mail."
 

@@ -20109,10 +20109,6 @@ msgid "Email preview"
 msgstr "E-posvoorskou"
 
 #: 
-msgid "Email sending is disabled"
-msgstr "E-posversending is gedeaktiveer"
-
-#: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
 msgstr "E-posversending is nie geaktiveer nie. Stel SMTP-instellings op en aktiveer e-pos voordat jy stuur."
 

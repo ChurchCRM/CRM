@@ -20227,10 +20227,6 @@ msgid "Email preview"
 msgstr "郵件預覽"
 
 #: 
-msgid "Email sending is disabled"
-msgstr "電子郵件傳送已停用"
-
-#: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
 msgstr "電子郵件傳送未啟用。傳送前請先配置 SMTP 設定並啟用電子郵件。"
 

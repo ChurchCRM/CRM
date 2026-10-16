@@ -20204,10 +20204,6 @@ msgid "Email preview"
 msgstr "معاينة الرسالة"
 
 #: 
-msgid "Email sending is disabled"
-msgstr "إرسال البريد الإلكتروني معطّل"
-
-#: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
 msgstr "إرسال البريد الإلكتروني غير مفعّل. اضبط إعدادات SMTP وفعّل البريد الإلكتروني قبل الإرسال."
 
