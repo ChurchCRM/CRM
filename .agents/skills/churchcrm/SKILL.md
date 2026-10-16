@@ -45,7 +45,6 @@ Row actions: [`table-action-menu.md`](./table-action-menu.md). Settings UI: copy
 | [Frontend Development](./frontend-development.md) | UI changes |
 | [Timezone Handling](./timezone-handling.md) | Event / kiosk time |
 | [Responsive Design Guidelines](./responsive-design-guidelines.md) | Layout |
-| [Tabler Components](./tabler-components.md) | Tabler markup |
 | [Webpack & TypeScript](./webpack-typescript.md) | Bundling |
 | [i18n & Localization](./i18n-localization.md) | Wrap UI strings |
 | [Locale Translation](./locale-translation-workflow.md) | Translation agents |

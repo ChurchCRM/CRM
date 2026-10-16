@@ -18,6 +18,5 @@
     "src/plugins/views/management.php": 2,
     "src/setup/templates/setup-steps.php": 3,
     "webpack/setup.js": 4
-  },
-  "styleBlocks": {}
+  }
 }

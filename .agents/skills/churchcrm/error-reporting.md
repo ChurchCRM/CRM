@@ -2,7 +2,7 @@
 title: "Error Reporting & Issue Filing"
 intent: "Shared Tabler-styled error pages wired to the Issue Reporter workflow for consistent UX and GitHub issue pre-fill"
 tags: ["frontend", "tabler", "error-handling", "testing"]
-prereqs: ["[[tabler-components]]"]
+prereqs: ["[[frontend-development]]"]
 complexity: "intermediate"
 ---
 # Error Reporting & Issue Filing

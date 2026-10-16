@@ -2,7 +2,7 @@
 title: "Responsive Design Guidelines"
 intent: "Canonical guidance for mobile, tablet, and laptop/desktop layouts across ChurchCRM"
 tags: ["frontend","responsive","bootstrap","tabler","mobile","tablet"]
-prereqs: ["[[frontend-development]]","[[tabler-components]]"]
+prereqs: ["[[frontend-development]]"]
 complexity: "intermediate"
 ---
 
@@ -10,7 +10,7 @@ complexity: "intermediate"
 
 ## Context
 
-Pastors and volunteers use ChurchCRM on phones, tablets and laptops. Every new or touched page works at three form factors. Stack: Bootstrap 5 + Tabler 1.6 (versions in `package.json`; markup rules in `tabler-components.md`). The root font size is 16px (`src/skin/churchcrm.scss`), so `rem` values in custom CSS are multiples of 16px.
+Pastors and volunteers use ChurchCRM on phones, tablets and laptops. Every new or touched page works at three form factors. Stack and all other UI rules (themes, markup, versions): `frontend-development.md`. The root font size is 16px (`src/skin/churchcrm.scss`), so `rem` values in custom CSS are multiples of 16px.
 
 ## The Three Form Factors
 

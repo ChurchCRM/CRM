@@ -2,7 +2,7 @@
 
 /**
  * Keeps the UI on stock Tabler/Bootstrap 5 and keeps styling in the pipeline.
- * Rules and rationale: .agents/skills/churchcrm/tabler-components.md
+ * Rules and rationale: .agents/skills/churchcrm/frontend-development.md
  *
  *  1. Static `style="..."` attributes: no new ones. A value computed from data
  *     (`<?=`, `{{ }}`, `${ }`) is fine. Per-file counts of the remaining static
@@ -13,6 +13,8 @@
  *     Bootstrap 5 ignores them, so they render unstyled.
  *  4. CSS: no root font-size, theme-base, palette or font overrides, and no
  *     Bootstrap 4 selectors (.custom-control, .form-group, .input-group-addon ...).
+ *  5. Patterns Tabler 1.5/1.6 removed: .form-hint, tabler.getColor()/hexToRgba(),
+ *     *-focus-box-shadow Sass variables, Bootstrap 4 data-toggle-style attributes.
  */
 
 const fs = require('fs');
@@ -23,12 +25,13 @@ const BASELINE_FILE = path.join(__dirname, 'ui-conventions-baseline.json');
 const SKIP = ['skin/v2/', 'skin/external', '/vendor/', 'node_modules', '/locale/', 'templates/email', '.min.'];
 const MARKUP = /\.(php|twig|js|ts|html)$/;
 const STYLES = /\.(css|scss)$/;
+const SKIP_DIR = /(?:^|\/)(?:Base|Map)\//;
 
 function walk(dir, out = []) {
     for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
         const full = path.join(dir, entry.name);
         const rel = path.relative(ROOT, full) + (entry.isDirectory() ? '/' : '');
-        if (SKIP.some((s) => rel.includes(s))) continue;
+        if (SKIP.some((s) => rel.includes(s)) || SKIP_DIR.test(rel)) continue;
         if (entry.isDirectory()) walk(full, out);
         else out.push(full);
     }
@@ -40,7 +43,7 @@ function readBaseline() {
     try {
         return JSON.parse(fs.readFileSync(BASELINE_FILE, 'utf8'));
     } catch (error) {
-        if (error.code === 'ENOENT') return { inlineStyles: {}, styleBlocks: {} };
+        if (error.code === 'ENOENT') return { inlineStyles: {} };
         throw error;
     }
 }
@@ -74,6 +77,13 @@ const stylePatterns = [
     { re: /\.(?:custom-control(?:-\w+)?|custom-checkbox|form-group|input-group-addon|btn-default|pull-(?:left|right)|panel(?:-\w+)?)(?![\w-])/, what: 'Bootstrap 4 selector' },
 ];
 
+const removedMarkup = [
+    { re: /class\s*=\s*(?:["'`]|\\")[^"'`]*\bform-hint\b/, what: '`.form-hint` (use `.form-text`)' },
+    { re: /\btabler\.(?:getColor|hexToRgba)\s*\(/, what: 'removed Tabler JS helper' },
+    { re: /\bdata-(?:toggle|dismiss|placement|parent|ride|slide|spy|trigger|backdrop|keyboard)\s*=/, what: 'Bootstrap 4 data attribute (use `data-bs-*`)' },
+];
+const focusShadow = /\$[a-z-]*focus-box-shadow\b/;
+
 const inline = {};
 const blocks = {};
 const problems = [];
@@ -90,6 +100,9 @@ for (const file of files) {
         if (n && !rel.endsWith('Include/Header.php') && !rel.endsWith('ChurchCRM/Bootstrapper.php')) blocks[rel] = n;
         text.split('\n').forEach((line, i) => {
             if (bs4Class.test(line)) problems.push(`${rel}:${i + 1} Bootstrap 4 class name\n    ${line.trim().slice(0, 140)}`);
+            for (const { re, what } of removedMarkup) {
+                if (re.test(line)) problems.push(`${rel}:${i + 1} ${what}\n    ${line.trim().slice(0, 140)}`);
+            }
         });
     }
     if (STYLES.test(file)) {
@@ -97,12 +110,13 @@ for (const file of files) {
         for (const { re, what } of stylePatterns) {
             if (re.test(stripped)) problems.push(`${rel} ${what}`);
         }
+        if (focusShadow.test(stripped)) problems.push(`${rel} deprecated Tabler Sass variable (*-focus-box-shadow)`);
     }
 }
 
 if (update) {
-    fs.writeFileSync(BASELINE_FILE, JSON.stringify({ inlineStyles: inline, styleBlocks: blocks }, null, 2) + '\n');
-    console.log(`Baseline written: ${Object.keys(inline).length} files with static inline styles, ${Object.keys(blocks).length} with <style> blocks.`);
+    fs.writeFileSync(BASELINE_FILE, JSON.stringify({ inlineStyles: inline }, null, 2) + '\n');
+    console.log(`Baseline written: ${Object.keys(inline).length} files with static inline styles.`);
     process.exit(0);
 }
 
@@ -111,15 +125,14 @@ for (const [rel, n] of Object.entries(inline)) {
     if (n > allowed) problems.push(`${rel} has ${n} static style="" attribute(s), baseline allows ${allowed}. Use a Tabler utility or a class in src/skin/scss/_page-<area>.scss`);
 }
 for (const [rel, n] of Object.entries(blocks)) {
-    const allowed = baseline.styleBlocks[rel] || 0;
-    if (n > allowed) problems.push(`${rel} has ${n} <style> block(s), baseline allows ${allowed}. Move the rules to src/skin/scss/_page-<area>.scss`);
+    problems.push(`${rel} has ${n} <style> block(s). Move the rules to src/skin/scss/_page-<area>.scss`);
 }
 
 console.log('UI conventions check');
 if (problems.length) {
     console.error(`\n❌ ${problems.length} problem(s):\n`);
     for (const p of problems) console.error('  ' + p);
-    console.error('\nRules: .agents/skills/churchcrm/tabler-components.md');
+    console.error('\nRules: .agents/skills/churchcrm/frontend-development.md');
     process.exit(1);
 }
 console.log('✨ Styling stays in utilities, page partials and stock Tabler.');

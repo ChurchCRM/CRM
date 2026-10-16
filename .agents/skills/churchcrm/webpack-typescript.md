@@ -8,7 +8,7 @@ complexity: "intermediate"
 # Skill: Webpack & TypeScript Development
 
 ## Context
-Webpack bundles the frontend JavaScript/TypeScript and CSS. Interactive UI is vanilla JS/TS on Tabler 1.6 + Bootstrap 5 (see `tabler-components.md`). Custom `rem` values assume a 16px root. Versions: `package.json`.
+Webpack bundles the frontend JavaScript/TypeScript and CSS. Interactive UI is vanilla JS/TS on Tabler (see `frontend-development.md`). Custom `rem` values assume a 16px root. Versions: `package.json`.
 
 ---
 
@@ -192,4 +192,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
 - `webpack/api-utils.ts` source
 - `api-development.md` for the API routes these helpers call
-- `frontend-development.md`, `tabler-components.md`
+- `frontend-development.md`
