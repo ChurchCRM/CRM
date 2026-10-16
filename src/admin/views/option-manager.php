@@ -31,7 +31,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </button>
             </div>
         </div>
-        <div class="form-hint mt-2"><?= gettext('Renames the grades to the names used in that country. People keep their grade, and grades you added yourself stay.') ?></div>
+        <div class="form-text mt-2"><?= gettext('Renames the grades to the names used in that country. People keep their grade, and grades you added yourself stay.') ?></div>
     </div>
 </div>
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/admin-grade-names.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
