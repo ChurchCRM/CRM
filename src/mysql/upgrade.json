@@ -108,6 +108,7 @@
     "versions": ["7.8.0"],
     "scripts": [
       "/mysql/upgrade/7.8.1-email-queue.sql",
+      "/mysql/upgrade/7.8.1-volunteer-default.sql",
       "/mysql/upgrade/7.8.1-person-grade.sql",
       "/mysql/upgrade/7.8.1-person-grade.php"
     ],
