@@ -4926,7 +4926,6 @@
   "Email non-attendees: %s": "Poslat e-mail nepřítomným: %s",
   "Email not found": "E-mail nenalezen",
   "Email preview": "Náhled e-mailu",
-  "Email sending is disabled": "Odesílání e-mailů je vypnuto",
   "Email sending is not enabled. Configure SMTP settings and enable email before sending.": "Odesílání e-mailů není zapnuto. Před odesláním nastavte SMTP a zapněte e-mail.",
   "Emails": "E-maily",
   "End time": "Čas ukončení",

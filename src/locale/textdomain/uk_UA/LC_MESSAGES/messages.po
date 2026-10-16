@@ -20161,10 +20161,6 @@ msgid "Email preview"
 msgstr "Попередній перегляд листа"
 
 #: 
-msgid "Email sending is disabled"
-msgstr "Надсилання листів вимкнено"
-
-#: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
 msgstr "Надсилання листів не ввімкнено. Налаштуйте параметри SMTP і ввімкніть пошту перед надсиланням."
 

@@ -4874,7 +4874,6 @@
   "Email non-attendees: %s": "欠席者にメール：%s",
   "Email not found": "メールが見つかりません",
   "Email preview": "メールのプレビュー",
-  "Email sending is disabled": "メール送信は無効です",
   "Email sending is not enabled. Configure SMTP settings and enable email before sending.": "メール送信が有効になっていません。送信する前に、SMTP設定を行ってメールを有効にしてください。",
   "Emails": "メール",
   "End time": "終了時刻",

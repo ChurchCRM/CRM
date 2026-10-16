@@ -4874,7 +4874,6 @@
   "Email non-attendees: %s": "ส่งอีเมลถึงผู้ที่ไม่ได้เข้าร่วม: %s",
   "Email not found": "ไม่พบอีเมล",
   "Email preview": "ตัวอย่างอีเมล",
-  "Email sending is disabled": "การส่งอีเมลถูกปิดอยู่",
   "Email sending is not enabled. Configure SMTP settings and enable email before sending.": "ยังไม่ได้เปิดการส่งอีเมล ตั้งค่า SMTP และเปิดใช้งานอีเมลก่อนส่ง",
   "Emails": "อีเมล",
   "End time": "เวลาสิ้นสุด",

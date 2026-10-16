@@ -4900,7 +4900,6 @@
   "Email non-attendees: %s": "Écrire aux absents : %s",
   "Email not found": "Courriel introuvable",
   "Email preview": "Aperçu du courriel",
-  "Email sending is disabled": "L'envoi de courriels est désactivé",
   "Email sending is not enabled. Configure SMTP settings and enable email before sending.": "L'envoi de courriels n'est pas activé. Configurez les paramètres SMTP et activez les courriels avant d'envoyer.",
   "Emails": "Courriels",
   "End time": "Heure de fin",

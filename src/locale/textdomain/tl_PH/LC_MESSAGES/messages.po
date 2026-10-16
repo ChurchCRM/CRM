@@ -20074,10 +20074,6 @@ msgid "Email preview"
 msgstr "Preview ng email"
 
 #: 
-msgid "Email sending is disabled"
-msgstr "Naka-disable ang pagpapadala ng email"
-
-#: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
 msgstr "Hindi naka-enable ang pagpapadala ng email. I-configure ang mga setting ng SMTP at i-enable ang email bago magpadala."
 

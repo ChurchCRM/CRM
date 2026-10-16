@@ -20075,10 +20075,6 @@ msgid "Email preview"
 msgstr "Vista previa de correo"
 
 #: 
-msgid "Email sending is disabled"
-msgstr "El envío de correos está deshabilitado"
-
-#: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
 msgstr "El envío de correos no está habilitado. Configura los ajustes SMTP y habilita el correo antes de enviar."
 

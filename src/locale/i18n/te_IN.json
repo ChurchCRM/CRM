@@ -4900,7 +4900,6 @@
   "Email non-attendees: %s": "హాజరు కాని వారికి ఇమెయిల్ పంపండి: %s",
   "Email not found": "ఇమెయిల్ కనుగొనబడలేదు",
   "Email preview": "ఇమెయిల్ ప్రివ్యూ",
-  "Email sending is disabled": "ఇమెయిల్ పంపడం నిలిపివేయబడింది",
   "Email sending is not enabled. Configure SMTP settings and enable email before sending.": "ఇమెయిల్ పంపడం ప్రారంభించబడలేదు. పంపే ముందు SMTP సెట్టింగ్‌లను కాన్ఫిగర్ చేసి ఇమెయిల్‌ను ప్రారంభించండి.",
   "Emails": "ఇమెయిల్‌లు",
   "End time": "ముగింపు సమయం",

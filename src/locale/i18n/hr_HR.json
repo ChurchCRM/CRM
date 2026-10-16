@@ -4926,7 +4926,6 @@
   "Email non-attendees: %s": "Pošalji e-poštu nenazočnima: %s",
   "Email not found": "E-pošta nije pronađena",
   "Email preview": "Pregled e-pošte",
-  "Email sending is disabled": "Slanje e-pošte je onemogućeno",
   "Email sending is not enabled. Configure SMTP settings and enable email before sending.": "Slanje e-pošte nije omogućeno. Prije slanja konfigurirajte SMTP postavke i omogućite e-poštu.",
   "Emails": "E-pošta",
   "End time": "Vrijeme završetka",

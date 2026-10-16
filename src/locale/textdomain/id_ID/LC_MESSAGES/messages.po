@@ -20077,10 +20077,6 @@ msgid "Email preview"
 msgstr "Pratinjau email"
 
 #: 
-msgid "Email sending is disabled"
-msgstr "Pengiriman email dinonaktifkan"
-
-#: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
 msgstr "Pengiriman email tidak diaktifkan. Atur pengaturan SMTP dan aktifkan email sebelum mengirim."
 

@@ -4900,7 +4900,6 @@
   "Email non-attendees: %s": "Saada e-kiri mitteosalenutele: %s",
   "Email not found": "E-kirja ei leitud",
   "Email preview": "E-kirja eelvaade",
-  "Email sending is disabled": "E-kirjade saatmine on keelatud",
   "Email sending is not enabled. Configure SMTP settings and enable email before sending.": "E-kirjade saatmine pole lubatud. Seadista enne saatmist SMTP-seaded ja luba e-post.",
   "Emails": "E-kirjad",
   "End time": "Lõpuaeg",

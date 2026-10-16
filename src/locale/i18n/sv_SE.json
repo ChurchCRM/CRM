@@ -4900,7 +4900,6 @@
   "Email non-attendees: %s": "Skicka e-post till de som inte närvarade: %s",
   "Email not found": "E-postmeddelandet hittades inte",
   "Email preview": "Förhandsvisning av e-post",
-  "Email sending is disabled": "E-postutskick är avstängt",
   "Email sending is not enabled. Configure SMTP settings and enable email before sending.": "E-postutskick är inte aktiverat. Konfigurera SMTP-inställningarna och aktivera e-post innan du skickar.",
   "Emails": "E-postmeddelanden",
   "End time": "Sluttid",

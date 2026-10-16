@@ -20099,10 +20099,6 @@ msgid "Email preview"
 msgstr "Pamja paraprake e email-it"
 
 #: 
-msgid "Email sending is disabled"
-msgstr "Dërgimi i email-eve është çaktivizuar"
-
-#: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
 msgstr "Dërgimi i email-eve nuk është aktivizuar. Konfiguroni cilësimet SMTP dhe aktivizoni email-in përpara se të dërgoni."
 
