@@ -98,6 +98,7 @@ Row actions: [`table-action-menu.md`](./table-action-menu.md). Settings UI: copy
 | [Release Management](./release-management.md) | Release preparation and verification |
 | [Maintainer Review Gates](./maintainer-review-gates.md) | Review a PR |
 | [PR Review](./pr-review.md) | Standards checklist |
+| [Dependabot PR Review (Composer)](./dependabot-review.md) | `/dependabot-review <PR>`: upgrade review, not a semver check |
 | [PR Review Fix](../pr-review-fix.md) | Address review comments |
 | [Skill architecture](./skill-architecture.md) | Edit a skill |
 | [PR Description Guidelines](../pr-description-guidelines.md) | Title / body |
