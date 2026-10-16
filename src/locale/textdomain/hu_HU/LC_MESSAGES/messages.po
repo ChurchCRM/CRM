@@ -14303,10 +14303,6 @@ msgid "Open in New Tab"
 msgstr "Megnyitás új lapon"
 
 #: 
-msgid "Open in new tab"
-msgstr "Megnyitás új lapon"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Nyissa meg a hitelesítő alkalmazást, és olvassa be a QR-kódot"
 
@@ -20133,10 +20129,6 @@ msgstr "Az e-mail nem található"
 #: 
 msgid "Email preview"
 msgstr "E-mail előnézete"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "Az e-mail küldése le van tiltva"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."

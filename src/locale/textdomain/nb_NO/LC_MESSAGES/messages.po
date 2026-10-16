@@ -14347,10 +14347,6 @@ msgid "Open in New Tab"
 msgstr "Åpne i ny fane"
 
 #: 
-msgid "Open in new tab"
-msgstr "Åpne i ny fane"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Åpne autentiseringsappen din og skann denne QR-koden"
 
@@ -20177,10 +20173,6 @@ msgstr "E-posten ble ikke funnet"
 #: 
 msgid "Email preview"
 msgstr "Forhåndsvisning av e-post"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "Sending av e-post er slått av"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."

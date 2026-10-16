@@ -14297,10 +14297,6 @@ msgid "Open in New Tab"
 msgstr "Відкрити в новій вкладці"
 
 #: 
-msgid "Open in new tab"
-msgstr "Відкрити в новій вкладці"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Відкрийте програму автентифікації та скануйте цей QR-код"
 
@@ -20159,10 +20155,6 @@ msgstr "Лист не знайдено"
 #: 
 msgid "Email preview"
 msgstr "Попередній перегляд листа"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "Надсилання листів вимкнено"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."

@@ -1,5 +1,7 @@
 /// <reference types="cypress" />
 
+import { contrastRatio, effectiveBackground } from "../../support/colour";
+
 /**
  * Issue #9724 — the admin dashboard warns when scheduled tasks stop running.
  *
@@ -39,31 +41,6 @@ describe("Admin Dashboard — scheduled task staleness warning", () => {
     // A timestamp comfortably past the 26-hour default threshold.
     const staleTimestamp = () => formatLocal(new Date(Date.now() - 72 * 60 * 60 * 1000));
     const freshTimestamp = () => formatLocal(new Date());
-
-    // WCAG relative-luminance contrast between two computed CSS colours.
-    // Chrome reports them as "rgb(r, g, b)" or, for colour-mix() results,
-    // "color(srgb r g b)" with 0..1 channels.
-    const parseColor = (css) => {
-        const rgb = css.match(/rgba?\(\s*([\d.]+)[,\s]+([\d.]+)[,\s]+([\d.]+)/);
-        if (rgb) {
-            return rgb.slice(1, 4).map((c) => Number(c) / 255);
-        }
-        const srgb = css.match(/color\(srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)/);
-        if (srgb) {
-            return srgb.slice(1, 4).map(Number);
-        }
-        throw new Error(`Unparsed colour: ${css}`);
-    };
-    const luminance = (css) => {
-        const [r, g, b] = parseColor(css).map((c) =>
-            c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4,
-        );
-        return 0.2126 * r + 0.7152 * g + 0.0722 * b;
-    };
-    const contrastRatio = (fg, bg) => {
-        const [hi, lo] = [luminance(fg), luminance(bg)].sort((a, b) => b - a);
-        return (hi + 0.05) / (lo + 0.05);
-    };
 
     const primeAndVisit = () => {
         // Stub first: an x-api-key request invalidates the browser's session
@@ -115,7 +92,7 @@ describe("Admin Dashboard — scheduled task staleness warning", () => {
             .should("be.visible")
             .then(($pre) => {
                 const style = $pre[0].ownerDocument.defaultView.getComputedStyle($pre[0]);
-                const ratio = contrastRatio(style.color, style.backgroundColor);
+                const ratio = contrastRatio(style.color, effectiveBackground($pre[0]));
                 expect(ratio, `contrast of ${style.color} on ${style.backgroundColor}`).to.be.at.least(4.5);
                 expect($pre[0].className, "no light-surface override on a Tabler <pre>").to.not.match(/\bbg-light\b/);
             });

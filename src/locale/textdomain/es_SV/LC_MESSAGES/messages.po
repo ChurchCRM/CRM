@@ -14243,10 +14243,6 @@ msgid "Open in New Tab"
 msgstr "Abrir en pestaña nueva"
 
 #: 
-msgid "Open in new tab"
-msgstr "Abrir en nueva pestaña"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Abra su aplicación autenticadora y escanee este código QR"
 
@@ -20073,10 +20069,6 @@ msgstr "Correo no encontrado"
 #: 
 msgid "Email preview"
 msgstr "Vista previa de correo"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "El envío de correos está deshabilitado"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."

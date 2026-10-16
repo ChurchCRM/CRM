@@ -14254,10 +14254,6 @@ msgid "Open in New Tab"
 msgstr "కొత్త ట్యాబ్లో తెరవండి"
 
 #: 
-msgid "Open in new tab"
-msgstr "కొత్త ట్యాబ్‌లో తెరవండి"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "మీ ప్రామాణీకరణ యాప్‌ను తెరిచి, ఈ QR కోడ్‌ను స్కాన్ చేయండి"
 
@@ -20084,10 +20080,6 @@ msgstr "ఇమెయిల్ కనుగొనబడలేదు"
 #: 
 msgid "Email preview"
 msgstr "ఇమెయిల్ ప్రివ్యూ"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "ఇమెయిల్ పంపడం నిలిపివేయబడింది"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."

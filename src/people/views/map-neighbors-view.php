@@ -93,7 +93,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div id="neighborsEmpty" class="p-4 text-secondary text-center">
                     <?= gettext('Select a family and click Find Neighbors to see results.') ?>
                 </div>
-                <div class="table-responsive" style="overflow: visible;">
+                <div class="table-responsive overflow-visible">
                     <table id="neighborsTable" class="table table-vcenter card-table d-none">
                         <thead>
                             <tr>
@@ -110,77 +110,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
     </div>
 </div>
-
-<style nonce="<?= SystemURLs::getCSPNonce() ?>">
-    .neighbors-map-wrap {
-        position: relative;
-        overflow: hidden;
-    }
-    #neighborsMap {
-        height: 600px;
-        width: 100%;
-    }
-    .neighbors-search-toggle {
-        position: absolute;
-        top: 16px;
-        right: 16px;
-        z-index: 1001;
-        font-weight: 600;
-        border: 2px solid #fff;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, .35);
-    }
-    .neighbors-search-panel {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        width: 340px;
-        max-width: 85%;
-        background: var(--tblr-bg-surface, #fff);
-        z-index: 1002;
-        overflow-y: auto;
-        box-shadow: -2px 0 12px rgba(0, 0, 0, .15);
-        transition: transform .25s ease;
-    }
-    .neighbors-search-panel.collapsed {
-        transform: translateX(100%);
-    }
-    #neighborsTableBody tr {
-        cursor: pointer;
-    }
-    .neighbors-legend {
-        padding: 8px 12px;
-        background: var(--tblr-bg-surface, #fff);
-        color: var(--tblr-body-color, #1a2234);
-        border-radius: 6px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, .18);
-        font-size: .8rem;
-        line-height: 1.5;
-        max-width: 220px;
-    }
-    .neighbors-legend-title {
-        font-weight: 600;
-        font-size: .72rem;
-        text-transform: uppercase;
-        letter-spacing: .04em;
-        color: var(--tblr-secondary, #6c757d);
-        margin-bottom: 4px;
-    }
-    .neighbors-legend-row {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-    }
-    .neighbors-legend-dot {
-        display: inline-block;
-        width: 11px;
-        height: 11px;
-        border-radius: 50%;
-        border: 1px solid rgba(0, 0, 0, .25);
-        flex-shrink: 0;
-    }
-</style>
-
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM.mapNeighborsConfig = <?= InputUtils::jsonEncodeForScript([

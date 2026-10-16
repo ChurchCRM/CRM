@@ -14273,10 +14273,6 @@ msgid "Open in New Tab"
 msgstr "Fungua kwenye Tabo Mpya"
 
 #: 
-msgid "Open in new tab"
-msgstr "Fungua katika kichupo kipya"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Fungua programu yako ya uthibitishaji na upige picha msimbo huu wa QR"
 
@@ -20103,10 +20099,6 @@ msgstr "Barua pepe haijapatikana"
 #: 
 msgid "Email preview"
 msgstr "Onyesho la awali la barua pepe"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "Kutuma barua pepe kumezimwa"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."

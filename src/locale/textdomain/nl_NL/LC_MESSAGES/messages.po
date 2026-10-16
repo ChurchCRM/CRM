@@ -14246,10 +14246,6 @@ msgid "Open in New Tab"
 msgstr "Open in Nieuw Tabblad"
 
 #: 
-msgid "Open in new tab"
-msgstr "Openen in nieuw tabblad"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Open uw authenticator-app en scan deze QR-code"
 
@@ -20076,10 +20072,6 @@ msgstr "E-mail niet gevonden"
 #: 
 msgid "Email preview"
 msgstr "E-mailvoorbeeld"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "E-mailverzending is uitgeschakeld"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."

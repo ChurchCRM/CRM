@@ -14242,10 +14242,6 @@ msgid "Open in New Tab"
 msgstr "പുതിയ ടാബിൽ തുറക്കുക"
 
 #: 
-msgid "Open in new tab"
-msgstr "പുതിയ ടാബിൽ തുറക്കുക"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "ഓതന്റിക്കേറ്റർ ആപ്പ് തുറന്ന് ഈ QR കോഡ് സ്കാൻ ചെയ്യൂ"
 
@@ -20072,10 +20068,6 @@ msgstr "ഇമെയിൽ കണ്ടെത്തിയില്ല"
 #: 
 msgid "Email preview"
 msgstr "ഇമെയിൽ പ്രിവ്യൂ"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "ഇമെയിൽ അയയ്ക്കൽ പ്രവർത്തനരഹിതമാണ്"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."

@@ -14308,10 +14308,6 @@ msgid "Open in New Tab"
 msgstr "فتح في علامة تبويب جديدة"
 
 #: 
-msgid "Open in new tab"
-msgstr "فتح في علامة تبويب جديدة"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "افتح تطبيق المصادقة وامسح رمز QR هذا"
 
@@ -20202,10 +20198,6 @@ msgstr "لم يتم العثور على الرسالة"
 #: 
 msgid "Email preview"
 msgstr "معاينة الرسالة"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "إرسال البريد الإلكتروني معطّل"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."

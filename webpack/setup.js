@@ -253,7 +253,7 @@ window.Stepper = Stepper;
     const detailCell = $("<td>", { colspan: 2 });
     const heading = $("<div>")
       .addClass("integrity-details-header")
-      .html('<i class="fa-solid fa-file-circle-exclamation mr-2"></i>Files with issues');
+      .html('<i class="fa-solid fa-file-circle-exclamation me-2"></i>Files with issues');
     const list = $("<ul>").addClass("integrity-files-list");
 
     items.forEach((fileName) => {
@@ -292,7 +292,7 @@ window.Stepper = Stepper;
     }
 
     // Update status badge
-    $(config.status).html(`<span class="badge badge-danger">${orphanedItems.length}</span>`);
+    $(config.status).html(`<span class="badge bg-danger-lt text-danger">${orphanedItems.length}</span>`);
 
     // Render orphaned files list
     const $table = $(config.table);
@@ -551,7 +551,7 @@ window.Stepper = Stepper;
     } else {
       const $row = $("<tr>").append(
         $("<td colspan='2'>").html(
-          `<i class='fa-solid fa-exclamation-triangle text-warning mr-2'></i>Unable to determine available locales`,
+          `<i class='fa-solid fa-exclamation-triangle text-warning me-2'></i>Unable to determine available locales`,
         ),
       );
       $table.append($row);
@@ -570,7 +570,7 @@ window.Stepper = Stepper;
 
     const $errorRow = $("<tr>").append(
       $("<td>").html(
-        `<i class='fa-solid fa-exclamation-circle text-danger mr-2'></i>Unable to load locale information`,
+        `<i class='fa-solid fa-exclamation-circle text-danger me-2'></i>Unable to load locale information`,
       ),
     );
     $table.append($errorRow);

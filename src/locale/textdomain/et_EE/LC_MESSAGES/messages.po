@@ -14276,10 +14276,6 @@ msgid "Open in New Tab"
 msgstr "Ava uuel vahekaardil"
 
 #: 
-msgid "Open in new tab"
-msgstr "Ava uuel vahelehel"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Avage autentimisrakendus ja skannige see QR-kood"
 
@@ -20106,10 +20102,6 @@ msgstr "E-kirja ei leitud"
 #: 
 msgid "Email preview"
 msgstr "E-kirja eelvaade"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "E-kirjade saatmine on keelatud"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."

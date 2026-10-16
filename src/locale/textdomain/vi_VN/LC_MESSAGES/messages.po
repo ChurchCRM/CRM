@@ -14271,10 +14271,6 @@ msgid "Open in New Tab"
 msgstr "Mở trong thẻ mới"
 
 #: 
-msgid "Open in new tab"
-msgstr "Mở trong tab mới"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Mở ứng dụng xác thực và quét mã QR này"
 
@@ -20085,10 +20081,6 @@ msgstr "Không tìm thấy email"
 #: 
 msgid "Email preview"
 msgstr "Xem trước email"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "Việc gửi email đã bị tắt"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."

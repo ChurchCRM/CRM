@@ -14261,10 +14261,6 @@ msgid "Open in New Tab"
 msgstr "Buka di Tab Baru"
 
 #: 
-msgid "Open in new tab"
-msgstr "Buka di tab baru"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Buka aplikasi autentikator Anda dan pindai kode QR ini"
 
@@ -20075,10 +20071,6 @@ msgstr "Email tidak ditemukan"
 #: 
 msgid "Email preview"
 msgstr "Pratinjau email"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "Pengiriman email dinonaktifkan"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."

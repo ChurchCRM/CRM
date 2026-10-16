@@ -10,6 +10,7 @@ This folder contains Node.js and shell scripts used for building, packaging, and
 | `generate-signatures-node.js` | Generate file integrity checksums | `npm run build:signatures` |
 | `validate-php-syntax.js` | Validate PHP syntax in build | `npm run build:php:validate` |
 | `package-release.js` | Create release ZIP package | `npm run package` |
+| `validate-ui-conventions.js` | Keep styling in utilities, page partials and stock Tabler | `npm run lint:ui` (part of `npm run lint`) |
 | `locale-check.js` | Lint locale files for issues | `npm run locale:lint` |
 | `startNewRelease.js` | Version bump for releases | Called only by `.github/workflows/release-prepare.yml` |
 | `create-plugin.php` | Scaffold a new community plugin (clones [community-plugin-hello-world](https://github.com/ChurchCRM/community-plugin-hello-world) from GitHub) | `php scripts/create-plugin.php <kebab-id> [--author="Name"]` |

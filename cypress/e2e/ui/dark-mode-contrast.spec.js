@@ -1,48 +1,18 @@
 /// <reference types="cypress" />
 
+import { contrastRatio, effectiveBackground, relativeLuminance } from "../../support/colour";
+
 const STYLE_URL = "/api/user/1/setting/ui.style";
 const RECOVERY_CODE = "0a1b2c3d-4e5f6a7b";
-
-function parseColour(colour) {
-    const srgb = colour.match(/^color\(srgb ([^)]+)\)$/);
-    const body = srgb ? srgb[1] : colour.match(/^rgba?\(([^)]+)\)$/)[1];
-    const parts = body.split(/[\s,/]+/).filter(Boolean).map(Number);
-    const scale = srgb ? 255 : 1;
-    return { rgb: parts.slice(0, 3).map((v) => v * scale), alpha: parts[3] ?? 1 };
-}
-
-function luminance({ rgb }) {
-    const [r, g, b] = rgb.map((v) => {
-        const c = v / 255;
-        return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
-    });
-    return 0.2126 * r + 0.7152 * g + 0.0722 * b;
-}
-
-function contrast(a, b) {
-    const [hi, lo] = [luminance(a), luminance(b)].sort((x, y) => y - x);
-    return (hi + 0.05) / (lo + 0.05);
-}
-
-function backgroundBehind(el) {
-    const win = el.ownerDocument.defaultView;
-    for (let node = el; node; node = node.parentElement) {
-        const bg = parseColour(win.getComputedStyle(node).backgroundColor);
-        if (bg.alpha > 0.5) {
-            return bg;
-        }
-    }
-    return parseColour(win.getComputedStyle(el.ownerDocument.body).backgroundColor);
-}
 
 function expectReadableInDarkMode($el, label) {
     const el = $el[0];
     const win = el.ownerDocument.defaultView;
     const text = win.getComputedStyle(el).color;
-    const background = backgroundBehind(el);
+    const background = effectiveBackground(el);
     expect(text, `${label} text colour`).to.eq(win.getComputedStyle(win.document.body).color);
-    expect(luminance(background), `${label} background luminance`).to.be.below(0.1);
-    expect(contrast(parseColour(text), background), `${label} contrast`).to.be.at.least(4.5);
+    expect(relativeLuminance(background), `${label} background luminance`).to.be.below(0.1);
+    expect(contrastRatio(text, background), `${label} contrast`).to.be.at.least(4.5);
 }
 
 describe("Signed-in pages stay readable in dark mode (#10593)", () => {
@@ -92,7 +62,7 @@ describe("Signed-in pages stay readable in dark mode (#10593)", () => {
         cy.window().its("CRM.theme").invoke("setMode", "default");
         cy.get("html").should("not.have.attr", "data-bs-theme");
         cy.get("#locale-preview").should(($el) => {
-            expect(luminance(backgroundBehind($el[0])), "light-mode preview background").to.be.above(0.9);
+            expect(relativeLuminance(effectiveBackground($el[0])), "light-mode preview background").to.be.above(0.9);
         });
     });
 

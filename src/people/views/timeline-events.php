@@ -95,11 +95,11 @@ if (empty($timeline)) { ?>
                                 </div>
                             </div>
                             <?php if (!empty($item['text'])) { ?>
-                                <div class="note-preview text-secondary" style="font-size:0.875rem;max-height:4.5em;overflow:hidden;" data-note-id="<?= htmlspecialchars((string)$noteId) ?>"><?= $item['text'] ?></div>
+                                <div class="note-preview text-secondary fs-4" data-note-id="<?= htmlspecialchars((string)$noteId) ?>"><?= $item['text'] ?></div>
                             <?php } ?>
                             <?php if ($hasActions || !empty($item['text'])) { ?>
                                 <div class="d-flex align-items-center justify-content-between mt-2">
-                                    <button type="button" class="btn btn-link btn-sm p-0 note-read-more d-none" style="font-size:0.8rem;">
+                                    <button type="button" class="btn btn-link btn-sm p-0 note-read-more d-none">
                                         <?= gettext('Read more') ?> <i class="fa-solid fa-chevron-down fa-xs"></i>
                                     </button>
                                     <div class="ms-auto d-flex gap-1">

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-16 13:13+0000\n"
+"POT-Creation-Date: 2026-10-16 16:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1196,6 +1196,9 @@ msgid "Afrikaans"
 msgstr ""
 
 msgid "After amount (100.00 ¤)"
+msgstr ""
+
+msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
 msgstr ""
 
 msgid "Age"
@@ -7845,6 +7848,9 @@ msgstr ""
 msgid "Imported from CSV"
 msgstr ""
 
+msgid "Importing demo data..."
+msgstr ""
+
 msgid "Importing..."
 msgstr ""
 
@@ -10819,9 +10825,6 @@ msgstr ""
 msgid "Open in calendar app"
 msgstr ""
 
-msgid "Open in new tab"
-msgstr ""
-
 msgid "Open opportunities could not be loaded."
 msgstr ""
 
@@ -11587,6 +11590,9 @@ msgid "Please detach this slip and mail with your next gift."
 msgstr ""
 
 msgid "Please do not close this window or refresh the page."
+msgstr ""
+
+msgid "Please do not refresh or navigate away"
 msgstr ""
 
 msgid "Please ensure this what you want to do."
@@ -13761,6 +13767,9 @@ msgstr ""
 msgid "Skip records with incomplete mail address"
 msgstr ""
 
+msgid "Skip to main content"
+msgstr ""
+
 msgid "Skip — go to Admin Dashboard"
 msgstr ""
 
@@ -15464,6 +15473,9 @@ msgid "This user must set a new password the next time they sign in."
 msgstr ""
 
 msgid "This version of ChurchCRM does not use a template at this path, so the override is never rendered."
+msgstr ""
+
+msgid "This will add sample families, people, and groups to your database."
 msgstr ""
 
 msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."

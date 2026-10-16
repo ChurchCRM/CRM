@@ -14275,10 +14275,6 @@ msgid "Open in New Tab"
 msgstr "פתח בלשונית חדשה"
 
 #: 
-msgid "Open in new tab"
-msgstr "פתח בכרטיסייה חדשה"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "פתח את אפליקציית האימות שלך וסרוק את קוד ה-QR הזה"
 
@@ -20105,10 +20101,6 @@ msgstr "הדוא\"ל לא נמצא"
 #: 
 msgid "Email preview"
 msgstr "תצוגה מקדימה של הדוא\"ל"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "שליחת דוא\"ל מושבתת"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."

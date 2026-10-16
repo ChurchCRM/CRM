@@ -117,13 +117,13 @@ $featureGroups = [
                                 <?php foreach ($features as $settingKey => $settingInfo): ?>
                                     <?php $isEnabled = SystemConfig::getBooleanValue($settingKey); ?>
                                     <tr data-setting="<?= $settingKey ?>">
-                                        <td style="width: 100%;">
+                                        <td class="w-100">
                                             <div class="font-weight-medium"><?= $settingInfo['label'] ?></div>
                                             <small class="text-muted"><?= $settingInfo['description'] ?></small>
                                         </td>
                                         <td class="text-end">
-                                            <div style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-end;">
-                                                <span class="status-badge" style="font-size: 0.75rem; display: none;"></span>
+                                            <div class="d-flex align-items-center gap-2 justify-content-end">
+                                                <span class="status-badge admin-status-badge-sm" style="display: none;"></span>
                                                 <label class="form-check form-switch form-check-single m-0">
                                                     <input class="form-check-input feature-toggle" type="checkbox"
                                                         aria-label="<?= InputUtils::escapeAttribute($settingInfo['label']) ?>"

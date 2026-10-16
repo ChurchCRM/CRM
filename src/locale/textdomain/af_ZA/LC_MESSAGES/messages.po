@@ -14277,10 +14277,6 @@ msgid "Open in New Tab"
 msgstr "Oopmaak in Nuwe Oortjie"
 
 #: 
-msgid "Open in new tab"
-msgstr "Maak oop in nuwe oortjie"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Open u verifikasie-app en skandeer hierdie QR-kode"
 
@@ -20107,10 +20103,6 @@ msgstr "E-pos nie gevind nie"
 #: 
 msgid "Email preview"
 msgstr "E-posvoorskou"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "E-posversending is gedeaktiveer"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."

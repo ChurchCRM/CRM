@@ -14261,10 +14261,6 @@ msgid "Open in New Tab"
 msgstr "새 탭에서 열기"
 
 #: 
-msgid "Open in new tab"
-msgstr "새 탭에서 열기"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "인증 앱을 열고 이 QR 코드를 스캔하세요"
 
@@ -20075,10 +20071,6 @@ msgstr "이메일을 찾을 수 없습니다"
 #: 
 msgid "Email preview"
 msgstr "이메일 미리보기"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "이메일 발송이 비활성화되어 있습니다"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."

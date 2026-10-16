@@ -14263,10 +14263,6 @@ msgid "Open in New Tab"
 msgstr "Otvoriť v novej karte"
 
 #: 
-msgid "Open in new tab"
-msgstr "Otvoriť v novej karte"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Otvorte autentifikačnú aplikáciu a naskenujte tento QR kód"
 
@@ -20125,10 +20121,6 @@ msgstr "E-mail sa nenašiel"
 #: 
 msgid "Email preview"
 msgstr "Náhľad e-mailu"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "Odosielanie e-mailov je vypnuté"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."

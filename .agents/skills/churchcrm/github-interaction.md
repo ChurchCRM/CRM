@@ -7,163 +7,113 @@ complexity: "beginner"
 ---
 # Skill: GitHub Interaction — concise checklist
 
-Purpose: practical, step-by-step actions for handling reviews, commits, and PRs. This file is an actionable companion to the canonical `git-workflow.md` (policy) and the `gh-cli` skill (commands).
+Actionable companion to `git-workflow.md` (policy). Full PR review workflow: [`pr-review.md`](./pr-review.md). PR body structure: `.agents/skills/pr-description-guidelines.md`.
 
-For a **full PR review workflow** (fetching changes, standards checklist, doc updates, manual validation, capturing learnings), see [`pr-review.md`](./pr-review.md).
+## Addressing reviews
 
-Quick checklist — Addressing reviews
-- Read comments and ask clarifying questions if needed.
-- Make one focused change per review thread; add tests where applicable.
-- Mark comments resolved and add a short reply summarizing the change.
-- Run relevant tests and clear logs before testing:
+- Read comments and ask clarifying questions where needed
+- Make one focused change per review thread and add tests where applicable
+- Reply with a short summary of the change and resolve the thread (`git-workflow.md` → After push)
+- Clear logs before running tests:
 
 ```bash
 rm -f src/logs/$(date +%Y-%m-%d)-*.log
 ```
 
-Quick checklist — Commit
-- Stage only intended files: `git add <files>`
-- Use the commit format from `git-workflow.md` (imperative, reference issue).
-- Verify staged diff: `git diff --staged`
+## Commit
 
-Quick checklist — Create PR (example using `gh`)
-- Push branch: `git push origin <branch>`
-- Create PR with a template body:
+- Stage by explicit path: `git add <files>`
+- Use the commit format from `git-workflow.md`
+- Verify the staged diff: `git diff --staged`
 
-```bash
-gh pr create --title "Fix issue #1234: Short title" --body-file .github/PULL_REQUEST_TEMPLATE.md --base master
-```
+## Create a PR
 
-- Add reviewers and link issues (`Fixes #1234`) in the PR description.
-- Wait for CI; respond to review comments and iterate.
-
-Best practices (short)
-- Keep commits small and focused.
-- One issue per PR.
-- Always run tests locally before pushing.
-- Do not merge without human review and passing CI.
-
-### Write PR descriptions from the branch diff, not the commit log <!-- learned: 2026-04-21 -->
-
-When drafting a PR body, **describe what changed between the branch and
-its merge base** — not the sequence of commits. Commits get rebased,
-squashed, reordered, or absorbed into merges; a description that lists
-"first I did X, then Y, then reverted Y" will be wrong the moment the
-branch is cleaned up, and a reviewer reading the final diff won't
-recognize the story.
-
-Use these commands instead:
+- Push the branch once the latest user message approves it (`git-workflow.md` → Commit freely, push only on approval): `git push origin <branch>`
+- Create the PR from the template:
 
 ```bash
-# Files changed and line counts vs merge base
-git diff --stat $(git merge-base HEAD master)..HEAD
-
-# Full diff vs merge base (pipe to head/less for large branches)
-git diff $(git merge-base HEAD master)..HEAD
-
-# Only the final state of each file (what a reviewer actually sees)
-git diff $(git merge-base HEAD master)..HEAD -- <path>
+gh pr create --title "Short imperative title" --body-file .github/PULL_REQUEST_TEMPLATE.md --base master
 ```
 
-Structure PR bodies as **was → now** for each affected area, grounded in
-what the final diff shows. Reference commits only as a debugging aid,
-not as narrative structure.
+- Add reviewers and link issues with `Fixes #1234` in the description
+- Wait for CI, respond to review comments and iterate
 
-When a branch is stacked on another open PR (e.g. follow-up work on a
-review branch), say so explicitly at the top of the PR body and note
-which commits belong to the base PR so reviewers know the auto-rebase
-will trim them when the base merges.
+Keep commits small and focused, one issue per PR, run tests locally before pushing, and merge after human review and passing CI.
 
-See also:
-- `git-workflow.md` for branching, commit message format, and the full pre-commit checklist.
-- `gh-cli` skill (local `.agents/skills/gh-cli/SKILL.md` or upstream) for concrete `gh` commands.
+### Write PR descriptions from the branch diff
 
-If you prefer, I can convert this into a checklist file that the CI or editors can surface (e.g., a JSON checklist or PR template snippet).
+Describe what changed between the branch and its merge base. Commits get rebased, squashed and reordered, so the description follows the final diff:
+
+```bash
+git diff --stat $(git merge-base HEAD master)..HEAD       # files and line counts
+git diff $(git merge-base HEAD master)..HEAD             # full diff
+git diff $(git merge-base HEAD master)..HEAD -- <path>   # one file's final state
+```
+
+Structure the body as was → now for each affected area. When a branch is stacked on another open PR, say so at the top of the body and name the commits that belong to the base PR.
 
 ---
 
-## Milestone = release that shipped it, not when it was closed <!-- learned: 2026-04-21 -->
+## Milestone = release that shipped it
 
-When assigning a milestone to a closed issue, use the **first release tag that contains the merge commit** of the closing PR — not the milestone that was "current" on the close date. Issues closed months after the fix shipped belong on the shipped release, so users can cross-reference the changelog for the version they are actually running.
-
-### How to find the shipped release
+A closed issue's milestone is the first release tag that contains the merge commit of the closing PR. Users running that version find the fix in its changelog.
 
 ```bash
-# 1. Find the closing PR (check timeline cross-references or grep the merge log)
+# 1. Find the merge commit of the closing PR
 git log --oneline master --grep="#<issue_number>" | head -5
 
-# 2. Find the first non-rc tag that contains the merge commit
+# 2. Find the first non-rc tag that contains it
 git tag --contains <merge_sha> | grep -v rc | sort -V | head -1
 ```
 
-### Moving an issue to the right milestone
+Move the issue with the milestone number (list numbers with `gh api "repos/{owner}/{repo}/milestones?state=all" --paginate`):
 
 ```bash
-# Milestone NUMBER (not title). Get the number from:
-#   gh api "repos/{owner}/{repo}/milestones?state=all" --paginate
 gh api --method PATCH "repos/{owner}/{repo}/issues/<n>" -F milestone=<milestone_number>
 ```
 
-### Why this matters
-
-- Users who installed 7.1.0 must see the fix in the 7.1.0 release notes — not in 7.4.0 where the GitHub issue happened to be closed weeks later.
-- Squashed / rebased merges: feature-branch commits may not appear on `master` at all. `git tag --contains <feature_sha>` will return empty. Use the **merge commit** (found via `git log --grep=#<pr>` on master) and run `git tag --contains` on that.
-- If the closing PR is still open, leave the milestone on the active development one; only finalize after merge + release.
-
-### Common trap
-
-An issue closed on `2026-04-18` with milestone `7.4.0 (in development)` is almost always wrong when the fix PR was merged weeks or months earlier. Always verify via `git tag --contains`.
+- Squashed or rebased merges can leave feature-branch SHAs off `master`; run `git tag --contains` on the merge commit found via `git log --grep=#<pr>` on master
+- While the closing PR is open, the issue stays on the active development milestone; finalize after merge and release
+- An issue closed weeks after its fix merged with the "in development" milestone is almost always wrong; check with `git tag --contains`
 
 ---
 
-## Epic Hygiene: Duplicate Subtasks, Milestones, Links <!-- learned: 2026-04-21 -->
+## Epic Hygiene
 
-Multi-subtask epics in this repo have consistently shown three drift patterns.
-Audit them together whenever you revisit an epic:
+Audit three things together whenever you revisit an epic.
 
 ### 1. Duplicate subtask issues
 
-Subtasks created in bulk (e.g. a templated `gh issue create` loop) can produce
-two issues for the same scope — usually when a prior draft was partially
-committed and the template ran again. Signal: two issues with nearly identical
-titles created the same day (e.g. `#8191 "Subtask: Routes & Template"` vs
-`#8192 "Subtask 1: Routes & Template"`).
+Bulk-created subtasks can produce two issues for one scope (nearly identical titles created the same day). Scan a range of issue numbers around a known one:
 
 ```bash
-# Scan a sequential range around a known issue to find siblings + dupes
-for n in 8188 8189 ... 8196; do
+for n in 8188 8189 8190; do
   gh issue view $n --json number,title,state,milestone,createdAt \
     --jq '"\(.number) [\(.state)] created=\(.createdAt[:10]) milestone=\(.milestone.title // "none") — \(.title)"'
 done
 ```
 
-Resolve: keep the one with the richer history (more cross-references, correct
-milestone). Close the other with a short comment pointing at the keeper:
+Keep the issue with the richer history (more cross-references, correct milestone) and close the other:
 
 ```bash
 gh issue comment <dup_n> --body "Closing as duplicate of #<keeper>. Work shipped via PR #NNNN in release X.Y.Z."
 gh issue close <dup_n> --reason "not planned"
 ```
 
-### 2. Milestones on the epic and its siblings drift apart
+### 2. Milestones agree
 
-Because subtasks and the epic are often closed weeks apart, they end up on
-different milestones. Apply the "milestone = release that shipped it" rule
-(section above) to every issue in the group — epic included. Then verify they
-all agree:
+Apply "milestone = release that shipped it" to every issue in the group, epic included, then verify:
 
 ```bash
-for n in <epic> <subtask1> <subtask2> ...; do
+for n in <epic> <subtask1> <subtask2>; do
   gh issue view $n --json number,milestone \
     --jq '"#\(.number) milestone=\(.milestone.title // "none")"'
 done
 ```
 
-### 3. Epic body has no links to subtasks
+### 3. The epic body links its subtasks
 
-Epics often get opened with a plan-in-prose body that never references the
-actual issue numbers. Add a `## Subtasks` section at the bottom so future
-readers (and `gh issue view`) can follow the trail:
+Add a `## Subtasks` section so readers can follow the trail:
 
 ```bash
 gh issue view <epic> --json body --jq .body > /tmp/epic.md
@@ -182,16 +132,11 @@ MD
 gh issue edit <epic> --body-file /tmp/epic.md
 ```
 
-Do all three together — fixing milestones without linking subtasks leaves the
-next reviewer rediscovering the same mess, and closing duplicates without
-fixing milestones just propagates the wrong release tag.
-
 ---
 
-## Security Advisory Management <!-- learned: 2026-04-05 -->
+## Security Advisory Management
 
-Use `gh api` to manage GitHub Security Advisories (GHSAs). The full lifecycle is:
-**draft → published → request CVE**.
+Lifecycle: draft → published → request CVE. Use `gh api`.
 
 ### Listing advisories
 
@@ -200,16 +145,16 @@ gh api /repos/{owner}/{repo}/security-advisories --paginate \
   --jq '.[] | "\(.ghsa_id) state=\(.state) cve=\(.cve_id // "none")"'
 ```
 
-### Re-opening a closed advisory (required before publishing)
+### Re-opening a closed advisory
 
-A closed advisory cannot be published directly — it must be moved to `draft` first:
+A closed advisory moves to `draft` before it can be published:
 
 ```bash
 gh api --method PATCH /repos/{owner}/{repo}/security-advisories/{ghsa_id} \
   --input - <<< '{"state": "draft"}'
 ```
 
-### Publishing with correct package metadata
+### Publishing with package metadata
 
 ```bash
 gh api --method PATCH /repos/{owner}/{repo}/security-advisories/{ghsa_id} \
@@ -225,7 +170,7 @@ gh api --method PATCH /repos/{owner}/{repo}/security-advisories/{ghsa_id} \
 
 ### Requesting a CVE ID
 
-The advisory must already be published. An empty `{}` response means the request was accepted (not an error):
+Publish first. An empty `{}` response means GitHub accepted the request:
 
 ```bash
 gh api --method POST /repos/{owner}/{repo}/security-advisories/{ghsa_id}/cve
@@ -233,45 +178,42 @@ gh api --method POST /repos/{owner}/{repo}/security-advisories/{ghsa_id}/cve
 
 ### Closing a blocking PR on a private fork
 
-If the advisory is linked to a private fork with open PRs, publishing will be blocked. Close them first:
+Open PRs on the advisory's private fork block publishing. Close them first:
 
 ```bash
 gh pr list --repo {owner}/{repo}-ghsa-{id}
 gh pr close 1 --repo {owner}/{repo}-ghsa-{id}
 ```
 
-### Known gotchas
+### Gotchas
 
-- **Ecosystem value**: PHP packages must use `"composer"` — `"php"` returns a 422 error.
-- **`request_cve` key in PATCH**: NOT supported — use the dedicated `/cve` POST endpoint instead.
-- **Closed → published requires draft step**: Direct `closed → published` fails; always go `closed → draft → published`.
-- **Empty ecosystem blocks publishing**: If the existing vulnerability entry has an empty `ecosystem`/`name`, PATCH the vulnerabilities array to fix it before attempting to publish.
-- **Empty `{}` CVE response is success**: GitHub returns `{}` when a CVE request is accepted — it is not an error.
-- **Batch publishing — sort by `created_at` ascending**: Always publish the oldest report first. If two reports cover the same vulnerability, the earliest one should receive the CVE. Publishing in the wrong order means the later duplicate gets the CVE and the original doesn't.
+- Ecosystem for PHP packages is `"composer"`; `"php"` returns 422
+- Request a CVE through the dedicated `/cve` POST endpoint; a `request_cve` key in PATCH is ignored
+- Go `closed → draft → published`
+- An existing vulnerability entry with an empty `ecosystem`/`name` gets fixed by PATCHing the `vulnerabilities` array before publishing
+- Batch publishing goes by `created_at` ascending, so the earliest report of a vulnerability receives the CVE
 
-### Handling duplicate advisories <!-- learned: 2026-04-05 -->
+### Handling duplicate advisories
 
-When two advisories describe the same root cause:
+When two advisories share a root cause:
 
-1. **Identify the original** — check `created_at` timestamp: `gh api /repos/ChurchCRM/CRM/security-advisories/{ghsa_id} --jq '.created_at'`
-2. **Publish the original first** — so it gets the CVE
-3. **If the duplicate already has a CVE** — contact GitHub Security at security@github.com, explain the duplication (include both GHSA IDs and creation timestamps), and request that the duplicate CVE be marked `REJECTED`. GitHub is the CNA for these CVEs and can reject duplicates.
-4. **Request CVE for the original** — `gh api --method POST /repos/{owner}/{repo}/security-advisories/{original_ghsa}/cve`
-5. **CVEs cannot be "un-assigned"** — only marked `REJECTED` by the CNA. Once a CVE is rejected, the NVD record shows `REJECTED` status and references the canonical CVE.
+1. Identify the original by `created_at`: `gh api /repos/ChurchCRM/CRM/security-advisories/{ghsa_id} --jq '.created_at'`
+2. Publish the original first
+3. When the duplicate already has a CVE, email security@github.com with both GHSA IDs and creation timestamps and ask that the duplicate CVE be marked `REJECTED` (GitHub is the CNA)
+4. Request the CVE for the original: `gh api --method POST /repos/{owner}/{repo}/security-advisories/{original_ghsa}/cve`
 
-### Notifying reporters via GitHub Discussion <!-- learned: 2026-04-05 -->
+A CVE is never un-assigned; the CNA marks it `REJECTED`, and the NVD record then references the canonical CVE.
 
-GitHub Security Advisory comments have **no REST or GraphQL API** — neither
-`POST .../security-advisories/{ghsa_id}/comments` (returns 404) nor any GraphQL
-mutation exposes them. To thank reporters, create a GitHub Discussion that @-mentions
-each reporter (they receive a notification automatically):
+### Notifying reporters via GitHub Discussion
+
+Advisory comments have no REST or GraphQL API. Create a Discussion that @-mentions each reporter; they are notified automatically:
 
 ```bash
-# Collect unique reporter logins from all published advisories
+# Unique reporter logins from published advisories
 gh api /repos/{owner}/{repo}/security-advisories --paginate \
   --jq '.[] | select(.state == "published") | .credits[].login' | sort -u
 
-# Then create a Discussion via GraphQL (get repositoryId + categoryId first)
+# Create the Discussion (look up repositoryId and categoryId first)
 gh api graphql -f query='
   mutation {
     createDiscussion(input: {
@@ -285,53 +227,27 @@ gh api graphql -f query='
 
 ---
 
-## Verify a fix is on master before closing an issue <!-- learned: 2026-04-21 -->
+## Verify a fix is on master before closing an issue
 
-A commit titled `Fix: X` in `git log --all` does **not** mean the fix has
-shipped. Copilot agents, stale branches, and abandoned PRs all produce
-fix-shaped commits that never merged. Before closing any issue on the
-claim "this is fixed":
+A commit titled `Fix: X` can sit on an unmerged branch. Before closing an issue as fixed:
 
-1. Grep the commit log (include `--all` to catch unmerged branches):
-   ```bash
-   git log --all --oneline --grep="<keyword from issue>"
-   ```
-2. For each candidate commit, **verify it reached master**:
-   ```bash
-   git branch --contains <sha>
-   # Must include "master" — not just "claude/check-issue-XXXX" or a feature branch.
-   ```
-3. Or check master directly for the closing PR:
-   ```bash
-   git log master --oneline --grep="closes #<issue>"
-   git log master --oneline -- <expected file path>
-   ```
-4. Read the current file on master and confirm the buggy code is actually
-   gone. A stale commit message on an unmerged branch is not evidence.
+1. Search all branches: `git log --all --oneline --grep="<keyword from issue>"`
+2. Confirm the candidate commit reached master: `git branch --contains <sha>` lists `master`
+3. Or check master directly: `git log master --oneline --grep="closes #<issue>"` and `git log master --oneline -- <expected file path>`
+4. Read the current file on master and confirm the buggy code is gone
 
-**Why:** Closed-when-actually-open issues confuse reporters and hide
-regressions. The only authoritative signal is "the fix is in a commit
-reachable from `master` and the bad code is gone from the working tree."
+When either check fails, leave the issue open and name the branch that holds the fix.
 
-**How to apply:** Whenever a user says *"I think this is fixed, close
-it"* — run `git branch --contains` on the candidate commit and read the
-file on master. If either check fails, leave the issue open and explain
-which branch holds the fix so it can be merged.
+### Closing issues as "won't do"
 
-### Closing Issues as "Won't Do" — Always Remove the Milestone <!-- learned: 2026-05-10 -->
-
-When closing an issue with `--reason "not planned"` (won't do / won't fix), **always remove it from its milestone** in the same step. Leaving closed won't-do issues on a milestone inflates the ticket count and misleads milestone burn-down tracking.
+Pair `--reason "not planned"` with removing the milestone in the same step, so milestone counts reflect release scope:
 
 ```bash
-# 1. Close with reason and explanation
 gh issue close 8056 --repo ChurchCRM/CRM \
   --reason "not planned" \
   --comment "Closing as won't do. <reason>."
 
-# 2. Remove from milestone immediately after
 gh issue edit 8056 --milestone "" --repo ChurchCRM/CRM
 ```
 
-**Why:** Milestone counts are used to assess release scope. A closed "not planned" ticket still inside a milestone makes the milestone appear larger than it actually is and confuses release planning.
-
-**How to apply:** Any time the user says "close as won't do / won't fix / not planned" — always pair the close with a milestone removal. Do both in sequence without prompting.
+Issue closure follows `CLAUDE.md`: close only when the maintainer answers yes to a direct question.

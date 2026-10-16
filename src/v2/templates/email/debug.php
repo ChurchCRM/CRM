@@ -81,7 +81,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <table class="table table-sm mb-0">
                     <tbody>
                         <tr>
-                            <td class="text-body-secondary" style="width: 80px;"><?= gettext('From') ?></td>
+                            <td class="text-body-secondary email-debug-label-col"><?= gettext('From') ?></td>
                             <td>
                                 <?php if (!empty($sendResult['fromName'])): ?>
                                     <strong><?= InputUtils::escapeHTML($sendResult['fromName']) ?></strong><br>
@@ -125,7 +125,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <table class="table table-sm mb-0">
                     <tbody>
                         <tr>
-                            <td class="text-body-secondary" style="width: 140px;"><?= gettext('Host') ?></td>
+                            <td class="text-body-secondary email-debug-label-col-wide"><?= gettext('Host') ?></td>
                             <td><code><?= InputUtils::escapeHTML($smtpSettings['host']) ?></code></td>
                         </tr>
                         <tr>
@@ -182,20 +182,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 </div>
 <?php endif; ?>
-
-<style nonce="<?= SystemURLs::getCSPNonce() ?>">
-.debug-smtp-log {
-    max-height: 400px;
-    overflow-y: auto;
-    background: var(--tblr-bg-surface-secondary, #f1f5f9);
-    padding: 0.75rem 1rem;
-    border-radius: 6px;
-    font-family: var(--tblr-font-monospace, monospace);
-    font-size: 0.82rem;
-    line-height: 1.5;
-}
-.debug-smtp-log br { line-height: 0; }
-</style>
 
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

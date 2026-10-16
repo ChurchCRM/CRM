@@ -14336,10 +14336,6 @@ msgid "Open in New Tab"
 msgstr "在新标签页中打开"
 
 #: 
-msgid "Open in new tab"
-msgstr "在新标签页中打开"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "打开您的验证器应用并扫描此QR码"
 
@@ -20150,10 +20146,6 @@ msgstr "找不到该电子邮件"
 #: 
 msgid "Email preview"
 msgstr "邮件预览"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "电子邮件发送已停用"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."

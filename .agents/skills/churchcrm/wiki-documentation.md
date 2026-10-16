@@ -7,37 +7,32 @@ complexity: "beginner"
 ---
 # Skill: Documentation Content Architecture
 
-## Three Audiences — Three Homes <!-- learned: 2026-08-20 -->
-
-ChurchCRM has three distinct documentation audiences, each with a dedicated home. **Never mix tiers.**
+## Three Audiences, Three Homes
 
 | Audience | Home | Tooling |
 |---|---|---|
-| **End users** (church staff, volunteers) | https://docs.churchcrm.io — `docs/user-guide/`, `docs/administration/`, installation | Docusaurus, plain Markdown |
-| **3rd-party app developers** (API consumers) | https://docs.churchcrm.io — `docs/api/` | OpenAPI specs from the published CRM tag in `crm-release.json`. Not from `master`. |
-| **ChurchCRM core developers** (contributors) | Skills in `.agents/skills/churchcrm/` and the CRM repo guides | Not the public docs site |
+| End users (church staff, volunteers) | https://docs.churchcrm.io: `docs/user-guide/`, `docs/administration/`, installation | Docusaurus, plain Markdown |
+| 3rd-party app developers (API consumers) | https://docs.churchcrm.io: `docs/api/` | OpenAPI specs from the published CRM tag in `crm-release.json` |
+| ChurchCRM core developers (contributors) | Skills in `.agents/skills/churchcrm/`, the CRM repo guides, and the GitHub Wiki | Not the public docs site |
 
 ### What goes where
 
 **End-user docs (`docs/user-guide/`, `docs/administration/`):**
-- How to use features (what buttons do, what screens mean)
-- Plain language — no HTTP endpoints, no JSON, no code
-- Admin docs may assume basic server knowledge but never developer knowledge
-- No raw API endpoint tables — link to `docs/api/` instead
+- How to use features: what buttons do, what screens mean
+- Plain language, with no HTTP endpoints, JSON, or code
+- Admin docs may assume basic server knowledge, not developer knowledge
+- Link to `docs/api/` for endpoint details instead of tabling them
 
 **3rd-party API docs (`docs/api/`):**
 - Built in CI from `docs/openapi/generated/*.yaml` at the ChurchCRM tag in `docs.churchcrm.io` `crm-release.json`
-- Do not copy specs into the docs repo and do not point the public site at `master`
-- Hand-written overview pages are allowed for authentication, API keys, and base URL
-- Never duplicate endpoint tables in user-guide pages
+- Maintain the OpenAPI spec; endpoint docs come from it, and the docs repo holds no copy of the specs
+- Hand-written overview pages cover authentication, API keys, and base URL
 
-**Core developer docs:**
-- Architecture, plugin internals, and release process stay in this repo's skills and guides
-- Do not add them to the public docs site
+**Core developer docs:** architecture, plugin internals, contributor/PR/dev-setup guides, and the release process live in this repo's skills and guides and the GitHub Wiki.
 
 ### Publishing a user-doc change
 
-The public site documents a **released** ChurchCRM version. A merged CRM pull request is not a release.
+The public site documents a released ChurchCRM version. A merged CRM pull request is not a release.
 
 | Change | Milestone on the docs pull request | Label |
 |---|---|---|
@@ -45,556 +40,63 @@ The public site documents a **released** ChurchCRM version. A merged CRM pull re
 | A correction for a version that is already published | That version, for example `7.7.1` | none |
 | CI, dependencies, or the docs site itself | none | `ci`, `repo-maintenance`, `infrastructure`, or `dependencies` |
 
-Do not use the latest product milestone for site or CI work. Do not leave a product pull request without a milestone. Do not mark product docs as drafts to hold them. The release gate fails until that version is a published stable GitHub Release, and that open pull request is the hold.
+Every product pull request carries a milestone. Site and CI work carries the label instead. The release gate fails until that version is a published stable GitHub Release, and the open pull request is the hold, so product docs are not marked as drafts.
 
-`main` also requires the docs build, the release gate, and a CodeRabbit approval. Do not merge past a red check.
+`main` requires the docs build, the release gate, and a CodeRabbit approval; merge only on green checks.
 
-When the CRM release is published, `release-publish.yml` and `release-bookkeeping.yml` dispatch `crm-released`. The docs workflow opens the API pin pull request and merges it, plus the product pull requests on that milestone, only when their CI is green and CodeRabbit has approved. Pull requests that fail either stay open. Help readers with Discord, then a GitHub issue on `ChurchCRM/CRM`. The agent guide in the docs repo is `.agents/DOCS_GUIDE.md`.
+When the CRM release is published, `release-publish.yml` and `release-bookkeeping.yml` dispatch `crm-released`. The docs workflow opens the API pin pull request and merges it, plus the product pull requests on that milestone, when their CI is green and CodeRabbit has approved; the rest stay open. Readers get help through Discord, then a GitHub issue on `ChurchCRM/CRM`. The agent guide in the docs repo is `.agents/DOCS_GUIDE.md`.
 
-### Anti-patterns to avoid
+## MDX: Escape `{variable}` in Headings and Prose
 
-- ❌ Adding an "API Reference" section to a user-guide page (e.g. `kiosk-devices.md`) — belongs in `docs/api/`
-- ❌ Documenting ChurchCRM architecture/internals on docs.churchcrm.io — belongs on GitHub Wiki
-- ❌ Putting contributor/PR/dev-setup guides in the docs site — belongs on GitHub Wiki
-- ❌ Hand-writing endpoint docs in Markdown instead of maintaining the OpenAPI spec
-
----
-
-## MDX Gotcha: `{variable}` in headings causes CI failure <!-- learned: 2026-08-20 -->
-
-Docs.churchcrm.io uses Docusaurus 3 / MDX 3. Bare `{...}` in headings or plain prose is treated as a JSX expression and raises `ReferenceError: id is not defined` during SSG, breaking CI.
+docs.churchcrm.io uses Docusaurus 3 / MDX 3, which reads bare `{...}` in headings or prose as a JSX expression (`ReferenceError: id is not defined` during SSG fails CI). Escape the braces; code spans and fenced code blocks need no escaping.
 
 ```md
-<!-- ❌ breaks CI -->
-### GET /api/groups/{id}/emails
-
-<!-- ✅ correct -->
 ### GET /api/groups/\{id\}/emails
 ```
 
-No escaping needed inside backtick code spans (`` `/api/{id}` ``) or fenced code blocks.
+## GitHub Wiki Articles
 
----
+Use the wiki for contributor-facing reference that outlives a single PR: multi-step workflows with edge cases, architecture decisions and trade-offs, troubleshooting, and integration guides. Put end-user and admin how-tos on docs.churchcrm.io.
 
-## Context
-End-user and admin how-tos belong on https://docs.churchcrm.io. The rest of this file is the old wiki article shape. Do not add a new public admin or user guide to the GitHub Wiki.
+Route other content elsewhere:
+- API patterns: [API Development](./api-development.md)
+- Code standards: [Code Standards](./code-standards.md)
+- Install steps and contributing guidelines: `README.md`, `CONTRIBUTING.md`
+- API reference: the OpenAPI spec
+- Single-method notes: code comments
 
----
+Article shape:
 
-## When to Create Wiki Documentation
-
-Create a wiki article when the topic is:
-
-### Complex & Reference-Heavy
-- Multi-step workflows with edge cases
-- Configuration guides with many options
-- Architecture decisions and trade-offs
-- Troubleshooting procedures
-
-### For Multiple Audiences
-- Administrators (setup, backup, permissions)
-- Developers (architecture, extending plugins)
-- End users (features, how-tos)
-- Integrators (API reference, webhooks)
-
-### Documentation That Evolves
-- Feature documentation as features change
-- Best practices that improve over time
-- Known issues and their workarounds
-- Installation guides for different environments
-
-### Too Large for In-Code Comments
-- Content > 500 lines
-- Requires diagrams or external links
-- Needs versioning history
-- Referenced from multiple places
-
----
-
-## When NOT to Use Wiki
-
-**Use the appropriate skill file instead for:**
-- API patterns → [API Development](./api-development.md) skill
-- Code standards → [Code Standards](./code-standards.md) skill
-- Job workflows → the relevant skill in `.agents/skills/`
-- Quick reference → Comments in the code itself
-
-**Use README or guide files for:**
-- Installation steps → Project README.md
-- Contributing guidelines → CONTRIBUTING.md
-- API documentation → API comments + OpenAPI spec
-- Architecture → ADR (Architectural Decision Records)
-
----
-
-## Wiki Article Structure
-
-Each wiki article should follow this structure:
-
-### Title + Metadata
 ```markdown
-# Topic Title (Clear, searchable)
+# Topic Title (clear, searchable)
 
-**Audience:** Admin | Developer | User | Integrator  
-**Last Updated:** YYYY-MM-DD  
-**Related:** [Other Wiki Article](link), [Skill File](link)  
+**Audience:** Admin | Developer | User | Integrator
+**Last Updated:** YYYY-MM-DD
+**Related:** [Other article](link), [Skill file](link)
 
 ## Overview
-1-2 sentence summary of what this covers and who should read it.
-```
+One or two sentences: what this covers and who should read it.
 
-### Table of Contents (if > 5 sections)
-```markdown
-## Table of Contents
-- [Section 1](#section-1)
-- [Section 2](#section-2)
-- [Troubleshooting](#troubleshooting)
-- [FAQ](#faq)
-```
-
-### Main Content Structure
-```markdown
 ## Prerequisites
-What knowledge or setup is needed before reading?
-
 ## Step-by-Step Process
-Numbered steps with examples.
-
 ## Configuration Options
-Table of settings with descriptions.
-
 ## Examples
-Real-world usage examples.
-
 ## Troubleshooting
-Common problems and solutions.
-
 ## Related
-Links to related wiki articles or documentation.
 ```
 
----
+Add a table of contents above five sections. Use Mermaid fenced blocks for diagrams.
 
-## Wiki Documentation Examples
+Style: direct and active ("Click Save"), terminology matched to the audience, paragraphs of at most four sentences, numbered steps for procedures, code in backticks, links to related articles and skills.
 
-### Example 1: Admin Guide
+Organize navigation by audience (Administrator, Developer, User) from a `Home.md` index with a short description of ChurchCRM, links by audience, and a getting-started section.
 
-```markdown
-# Setting Up Automated Backups
+Update the article in the same change that alters the feature, review links quarterly, and name the version when documenting behavior that depends on it.
 
-**Audience:** Administrator  
-**Last Updated:** 2026-02-15  
-**Difficulty:** Intermediate  
-
-## Overview
-This guide covers setting up automatic daily backups to cloud storage (NextCloud, ownCloud, or Dropbox).
-
-## Prerequisites
-- Admin access to ChurchCRM
-- WebDAV URL for your cloud storage
-- Cloud storage account with available space
-
-## Configuration Steps
-
-### 1. Install External Backup Plugin
-Navigate to **Admin System → Plugins** and enable the **External Backup** plugin.
-
-### 2. Add Cloud Storage Credentials
-Go to **Admin System → Backup Settings** and enter:
-- **WebDAV URL**: `https://your-nextcloud.com/remote.php/dav/files/your-username/backups/`
-- **Username**: Your cloud storage username
-- **Password**: Your cloud storage password
-
-### 3. Schedule Automatic Backups
-In **Admin System → Scheduled Tasks**, create a new task:
-- **Name**: Daily Database Backup
-- **Frequency**: Daily at 2:00 AM
-- **Action**: Execute backup.php
-
-### 4. Test the Backup
-Manually trigger a backup to verify it works:
-1. Go to **Admin System → Database**
-2. Click "Create Backup Now"
-3. Check cloud storage to verify file appeared
-
-## Backup Verification
-
-To verify backups are working:
-1. Check the **Backup Log** at **Admin System → Database → Backup History**
-2. Verify files appear in your cloud storage
-3. Monthly: Download and test restore a backup
-
-## Troubleshooting
-
-### Connection Failed
-**Error:** "Failed to connect to WebDAV server"
-
-**Solution:**
-- Verify WebDAV URL is correct (check cloud storage documentation)
-- Ensure SSL certificate is valid (self-signed certs need special configuration)
-- Verify firewall allows outbound HTTPS
-
-### Backup Takes Too Long
-**Problem:** Nightly backups are timing out
-
-**Solution:**
-- Schedule backup during off-peak hours (try 3-4 AM)
-- Consider weekly instead of daily
-- Check server resource usage with `top` command
-
-### Disk Space Full
-**Problem:** "Out of disk space after backup"
-
-**Solution:**
-- Configure automatic cleanup: keep only last 7 backups
-- Compress backups before upload: enable gzip compression
-- Delete old backups in **Admin System → Database → Cleanup**
-
-## Best Practices
-
-### Backup Frequency
-- **Small churches** (< 500 families): Weekly backup sufficient
-- **Medium churches** (500-2000 families): Daily backup recommended
-- **Large churches** (> 2000 families): Daily + weekly off-site archive
-
-### Retention Policy
-- Keep **last 30 days** of daily backups
-- Archive **monthly** backups for 1 year
-- Test restoration **quarterly**
-
-### Disaster Recovery
-Store at least one backup off-site:
-- Local storage (external drive at pastor's home)
-- Cloud storage (NextCloud, ownCloud, Dropbox)
-- Both (best practice)
-
-## FAQ
-
-**Q: Can I backup manually without scheduling?**  
-A: Yes. Go to **Admin System → Database** and click "Create Backup Now".
-
-**Q: How large are typical backups?**  
-A: 5-50 MB depending on photos and number of families. Most compress to 1-5 MB.
-
-**Q: Can I restore from backup?**  
-A: Yes, but it requires database administration. Contact ChurchCRM support or a system administrator.
-
-## Related
-- [Admin System Overview](./admin-overview)
-- [Database Management](./database-management)
-- [Plugin: External Backup](./plugins/external-backup)
-```
-
-### Example 2: Developer Architecture Guide
-
-```markdown
-# Plugin Architecture
-
-**Audience:** Developer  
-**Last Updated:** 2026-02-15  
-**Difficulty:** Advanced  
-
-## Overview
-This guide explains ChurchCRM's plugin system, how plugins are discovered and loaded, and how to extend ChurchCRM with custom functionality.
-
-## Architecture
-
-### Plugin Directory Structure
-```
-src/plugins/
-├── core/
-│   ├── mailchimp/
-│   │   ├── plugin.json
-│   │   └── src/MailChimpPlugin.php
-│   └── gravatar/
-└── community/
-    ├── my-custom-plugin/
-```
-
-### Plugin Lifecycle
-
-```
-Plugin Discovery → JSON Parse → Plugin Load → Hook Registration → Route Loading
-```
-
-1. **Discovery**: PluginManager scans `src/plugins/core/` and `src/plugins/community/`
-2. **Parsing**: `plugin.json` manifest is validated
-3. **Loading**: Plugin class is instantiated
-4. **Hooks**: Plugin registers event listeners
-5. **Routes**: Plugin routes are registered with Slim app
-
-### Configuration Isolation
-
-Each plugin's configuration is sandboxed:
-- Settings are stored with `plugin.{id}.{key}` prefix
-- Accessed via `$plugin->getConfigValue('key')`
-- Cannot access other plugins' configuration
-
-## Hook System
-
-Plugins can hook into application events:
-
-```php
-// In plugin's boot() method
-use ChurchCRM\Plugin\Hook\HookManager;
-use ChurchCRM\Plugin\Hooks;
-
-HookManager::addAction(Hooks::PERSON_UPDATED, [$this, 'onPersonUpdated']);
-
-// In plugin's action method
-public function onPersonUpdated(Person $person, array $oldData): void
-{
-    // React to person being updated
-    $this->syncToMailChimp($person);
-}
-```
-
-### Available Hooks
-- **People**: PERSON_CREATED, PERSON_UPDATED, PERSON_DELETED
-- **Families**: FAMILY_CREATED, FAMILY_UPDATED, FAMILY_DELETED
-- **Groups**: GROUP_MEMBER_ADDED, GROUP_MEMBER_REMOVED
-- **Financial**: DONATION_RECEIVED, DEPOSIT_CLOSED
-- **System**: SYSTEM_INIT, SYSTEM_UPGRADED, CRON_RUN
-
-## Extending ChurchCRM
-
-### Creating a Plugin
-
-1. Create directory: `src/plugins/core/my-plugin/`
-2. Create `plugin.json` manifest
-3. Create plugin class extending `AbstractPlugin`
-4. Register hooks or routes
-
-### Plugin Manifest (plugin.json)
-
-```json
-{
-    "id": "my-plugin",
-    "name": "My Custom Plugin",
-    "description": "Adds custom functionality",
-    "version": "1.0.0",
-    "type": "core",
-    "mainClass": "ChurchCRM\\Plugins\\MyPlugin\\MyPluginPlugin",
-    "settings": [
-        {
-            "key": "apiKey",
-            "label": "API Key",
-            "type": "password",
-            "required": true
-        }
-    ]
-}
-```
-
-### Plugin Class Example
-
-```php
-<?php
-namespace ChurchCRM\Plugins\MyPlugin;
-
-use ChurchCRM\Plugin\AbstractPlugin;
-use ChurchCRM\Plugin\Hook\HookManager;
-use ChurchCRM\Plugin\Hooks;
-
-class MyPluginPlugin extends AbstractPlugin
-{
-    public function getId(): string { return 'my-plugin'; }
-    public function getName(): string { return 'My Plugin'; }
-    public function getDescription(): string { return 'Custom functionality'; }
-
-    public function boot(): void
-    {
-        HookManager::addAction(Hooks::PERSON_CREATED, [$this, 'onPersonCreated']);
-    }
-
-    public function onPersonCreated(Person $person): void
-    {
-        // React to person creation
-    }
-}
-```
-
-## Best Practices
-
-### Security in Plugins
-- Always validate and sanitize input
-- Use prepared statements for database queries
-- Check user permissions before acting
-- Log security-relevant events
-
-### Performance Considerations
-- Avoid blocking operations in hooks
-- Queue long-running tasks using CRON_RUN hook
-- Cache external API responses
-- Use selective field loading: `->select(['field1', 'field2'])`
-
-### Configuration
-- Provide sensible defaults
-- Make API keys/secrets password fields
-- Document all configuration options
-- Validate configuration on boot
-
-## Troubleshooting
-
-### Plugin Not Loading
-1. Check `plugin.json` is valid JSON
-2. Verify `mainClass` path exists
-3. Check PHP syntax errors: `php -l src/plugins/core/my-plugin/src/MyPluginPlugin.php`
-
-### Plugin Routes Not Registered
-1. Ensure `routesFile` path is correct in `plugin.json`
-2. Routes file must call `global $app;` to access Slim app
-3. Check plugin is enabled in UI
-
-### Hook Not Firing
-1. Verify hook name exists in `Hooks.php`
-2. Check plugin is active/booted
-3. Add logging to verify hook is being called
-
-## Related
-- [Skill: Plugin Development](../skills/plugin-development.md)
-- [Skill: API Development](../skills/api-development.md)
-- [Plugin Repository](https://github.com/ChurchCRM/plugins)
-```
-
----
-
-## Using Diagrams & Mermaid
-
-Include diagrams for complex concepts:
-
-```markdown
-## Architecture Diagram
-
-```mermaid
-graph TB
-    User[User Request]
-    Router[Router/Dispatcher]
-    Service[Service Layer]
-    ORM[Perpl ORM]
-    DB[(Database)]
-    
-    User --> Router
-    Router --> Service
-    Service --> ORM
-    ORM --> DB
-    DB --> ORM
-    ORM --> Service
-    Service --> Router
-    Router --> User
-```
-```
-
----
-
-## Writing Style & Tone
-
-### Best Practices
-
-- **Clear & Direct**: "Navigate to Admin System" not "You should go to where the admin system is"
-- **Active Voice**: "Click the Save button" not "The Save button should be clicked"
-- **Audience Appropriate**: Admins ≠ Developers. Adjust terminology
-- **Short Paragraphs**: No paragraph > 4 sentences
-- **Numbered Steps**: Use for procedures, not prose
-- **Code Examples**: Show both correct and incorrect approaches
-- **Links**: Link to related wiki articles and skill files
-
-### Formatting Tips
-
-```markdown
-**Bold**: For emphasis and UI elements
-_Italic_: For technical terms on first mention
-`code`: For file names, commands, config keys
-> Blockquote: For important notes or warnings
-
-## Heading 2: Major sections
-### Heading 3: Subsections (avoid Heading 1 - that's the title)
-```
-
----
-
-## Wiki Navigation
-
-### Organize by Audience
-
-**Administrator Pages:**
-- Backup & Recovery
-- User Management
-- Database Maintenance
-- System Configuration
-
-**Developer Pages:**
-- Plugin Architecture
-- API Reference
-- Contributing
-- Architecture Decisions
-
-**User Pages:**
-- Getting Started
-- How-to Guides
-- Feature Overview
-- FAQ
-
-### Create a Home Page Index
-
-Create a `Home.md` in the wiki with:
-- Brief description of ChurchCRM
-- Links organized by audience
-- Quick links to popular articles
-- Getting started section
-
----
-
-## Maintenance
-
-### Keep Wiki Current
-
-- **After** features are added/changed → Update wiki
-- **Review** quarterly for broken links
-- **Archive** outdated versions using version history
-- **Note** when articles were last verified
-
-### Version Control
-
-GitHub Wiki articles can be cloned separately:
+The wiki is a separate git repo:
 
 ```bash
 git clone https://github.com/ChurchCRM/CRM.wiki.git
-cd CRM.wiki
-# Edit markdown files
-git add -A
-git commit -m "Update documentation for feature X"
-git push
 ```
 
-### Common Updates
-
-- Add troubleshooting sections when issues arise
-- Note breaking changes with **version added/changed**
-- Reference plugin versions when documenting plugins
-- Include links to related GitHub issues for context
-
----
-
-## Examples of Wiki Articles
-
-Good wiki candidates:
-- Multi-step admin procedures (Backup, User Setup, Plugin Configuration)
-- Troubleshooting guides (Database Issues, Performance Tuning)
-- Architecture decisions (Why we use Perpl ORM, Plugin system design)
-- Integration guides (Setting up OpenLP, Integrating with accounting software)
-- Frequently asked questions (FAQ by role: Admin, Developer, End User)
-
-Poor wiki candidates:
-- Single method documentation (use code comments instead)
-- Simple how-to guides (< 3 steps - use README)
-- API method reference (use OpenAPI spec or inline documentation)
-- Quick fixes (use GitHub issues instead)
-
----
-
-## Related Resources
-
-- [GitHub Wiki Markdown Guide](https://docs.github.com/en/communities/documenting-your-project-with-wikis/adding-or-editing-wiki-pages)
-- [ChurchCRM Wiki](https://github.com/ChurchCRM/CRM/wiki)
-- Create an issue with documentation questions: [ChurchCRM Issues](https://github.com/ChurchCRM/CRM/issues)
+Resources: [ChurchCRM Wiki](https://github.com/ChurchCRM/CRM/wiki), [GitHub Wiki guide](https://docs.github.com/en/communities/documenting-your-project-with-wikis/adding-or-editing-wiki-pages), [ChurchCRM Issues](https://github.com/ChurchCRM/CRM/issues).

@@ -182,7 +182,7 @@ $sRootPath = $sRootPath ?? SystemURLs::getRootPath();
               <?= gettext('Open a ministry from the Ministries menu, create a schedule and generate its dates, and the weeks to staff appear here.') ?>
             </p>
           </div>
-          <div style="overflow-x: clip; overflow-y: visible;" class=" d-none" id="volunteer-upcoming-content">
+          <div class="table-clip-x d-none" id="volunteer-upcoming-content">
             <table class="table table-hover table-vcenter" id="volunteer-upcoming-table">
               <thead>
                 <tr>
