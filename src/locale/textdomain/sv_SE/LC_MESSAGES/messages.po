@@ -20199,10 +20199,6 @@ msgid "Email preview"
 msgstr "Förhandsvisning av e-post"
 
 #: 
-msgid "Email sending is disabled"
-msgstr "E-postutskick är avstängt"
-
-#: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
 msgstr "E-postutskick är inte aktiverat. Konfigurera SMTP-inställningarna och aktivera e-post innan du skickar."
 

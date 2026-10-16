@@ -20121,10 +20121,6 @@ msgid "Email preview"
 msgstr "மின்னஞ்சல் முன்னோட்டம்"
 
 #: 
-msgid "Email sending is disabled"
-msgstr "மின்னஞ்சல் அனுப்புதல் முடக்கப்பட்டுள்ளது"
-
-#: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
 msgstr "மின்னஞ்சல் அனுப்புதல் இயக்கப்படவில்லை. அனுப்பும் முன் SMTP அமைப்புகளை உள்ளமைத்து மின்னஞ்சலை இயக்கவும்."
 

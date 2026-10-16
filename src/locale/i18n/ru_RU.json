@@ -4952,7 +4952,6 @@
   "Email non-attendees: %s": "Написать отсутствовавшим: %s",
   "Email not found": "Письмо не найдено",
   "Email preview": "Предпросмотр письма",
-  "Email sending is disabled": "Отправка писем отключена",
   "Email sending is not enabled. Configure SMTP settings and enable email before sending.": "Отправка писем не включена. Настройте параметры SMTP и включите отправку почты перед отправкой.",
   "Emails": "Письма",
   "End time": "Время окончания",

@@ -4926,7 +4926,6 @@
   "Email non-attendees: %s": "Napisz e-mail do nieobecnych: %s",
   "Email not found": "Nie znaleziono e-maila",
   "Email preview": "Podgląd e-maila",
-  "Email sending is disabled": "Wysyłanie e-maili jest wyłączone",
   "Email sending is not enabled. Configure SMTP settings and enable email before sending.": "Wysyłanie e-maili nie jest włączone. Przed wysłaniem skonfiguruj ustawienia SMTP i włącz e-maile.",
   "Emails": "E-maile",
   "End time": "Godzina zakończenia",

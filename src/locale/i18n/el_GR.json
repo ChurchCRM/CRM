@@ -4900,7 +4900,6 @@
   "Email non-attendees: %s": "Email προς όσους απουσίασαν: %s",
   "Email not found": "Το email δεν βρέθηκε",
   "Email preview": "Προεπισκόπηση email",
-  "Email sending is disabled": "Η αποστολή email είναι απενεργοποιημένη",
   "Email sending is not enabled. Configure SMTP settings and enable email before sending.": "Η αποστολή email δεν είναι ενεργοποιημένη. Ρυθμίστε το SMTP και ενεργοποιήστε το email πριν από την αποστολή.",
   "Emails": "Email",
   "End time": "Ώρα Λήξης",

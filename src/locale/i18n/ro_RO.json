@@ -4926,7 +4926,6 @@
   "Email non-attendees: %s": "Trimite e-mail celor absenți: %s",
   "Email not found": "E-mailul nu a fost găsit",
   "Email preview": "Previzualizare e-mail",
-  "Email sending is disabled": "Trimiterea de e-mailuri este dezactivată",
   "Email sending is not enabled. Configure SMTP settings and enable email before sending.": "Trimiterea de e-mailuri nu este activată. Configurați setările SMTP și activați e-mailul înainte de a trimite.",
   "Emails": "E-mailuri",
   "End time": "Ora de sfârșit",

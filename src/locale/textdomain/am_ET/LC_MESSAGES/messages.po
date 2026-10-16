@@ -20117,10 +20117,6 @@ msgid "Email preview"
 msgstr "የኢሜይል ቅድመ ዕይታ"
 
 #: 
-msgid "Email sending is disabled"
-msgstr "ኢሜይል መላክ ተሰናክሏል"
-
-#: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
 msgstr "ኢሜይል መላክ አልነቃም። ከመላክዎ በፊት የSMTP ቅንብሮችን ያዋቅሩ እና ኢሜይልን ያንቁ።"
 

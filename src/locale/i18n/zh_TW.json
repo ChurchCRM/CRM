@@ -4874,7 +4874,6 @@
   "Email non-attendees: %s": "給未出席者發電子郵件：%s",
   "Email not found": "找不到該電子郵件",
   "Email preview": "郵件預覽",
-  "Email sending is disabled": "電子郵件傳送已停用",
   "Email sending is not enabled. Configure SMTP settings and enable email before sending.": "電子郵件傳送未啟用。傳送前請先配置 SMTP 設定並啟用電子郵件。",
   "Emails": "電子郵件",
   "End time": "結束時間",

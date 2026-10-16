@@ -20097,10 +20097,6 @@ msgid "Email preview"
 msgstr "Pregled e-pošte"
 
 #: 
-msgid "Email sending is disabled"
-msgstr "Slanje e-pošte je onemogućeno"
-
-#: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
 msgstr "Slanje e-pošte nije omogućeno. Prije slanja konfigurirajte SMTP postavke i omogućite e-poštu."
 

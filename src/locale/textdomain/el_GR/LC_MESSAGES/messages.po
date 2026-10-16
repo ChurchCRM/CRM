@@ -20109,10 +20109,6 @@ msgid "Email preview"
 msgstr "Προεπισκόπηση email"
 
 #: 
-msgid "Email sending is disabled"
-msgstr "Η αποστολή email είναι απενεργοποιημένη"
-
-#: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
 msgstr "Η αποστολή email δεν είναι ενεργοποιημένη. Ρυθμίστε το SMTP και ενεργοποιήστε το email πριν από την αποστολή."
 
