@@ -1495,6 +1495,17 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
             dbOk("UPDATE volunteer_position_vpos SET vpos_Name = ? WHERE vpos_ID = ?", [ESPRESSO_NAME, posEspresso]);
         });
 
+        /** The delivered unfilled-position alerts addressed to `address`. */
+        function gapAlertMailTo(address) {
+            return listMail().then((messages) =>
+                messages.filter(
+                    (message) =>
+                        (message.To || []).some((to) => (to.Address || "").toLowerCase() === address) &&
+                        (message.Subject || "").toLowerCase().includes("still need to be filled"),
+                ),
+            );
+        }
+
         function gapAlerts(occurrenceId) {
             return dbOk(
                 `SELECT vntf_DedupeKey AS dedupeKey, vntf_per_ID AS personId, vntf_vasg_ID AS assignmentId,
@@ -1559,30 +1570,25 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
             });
         });
 
-        it("has a lead of its own: a reminder lead of 0 leaves the alerts on (#10526)", () => {
+        it("has a lead of its own: a reminder lead of 0 leaves the alerts on (#10526)", function () {
+            requireMailpit(this);
             setConfig(LEAD_HOURS_URL, "0");
             leadToOccurrenceOne();
             runJobsNow();
-            gapAlerts(occurrenceOne).then((rows) => {
-                expect(rows.map((row) => row.dedupeKey)).to.have.members([
-                    alertKey(occurrenceOne, posEspresso),
-                    alertKey(occurrenceOne, posMilk),
-                ]);
-            });
+            gapAlertMailTo(COORDINATOR_EMAIL).should("have.length", 2);
         });
 
-        it("sends none at a gap-alert lead of 0 while reminders are still scheduled (#10526)", () => {
+        it("sends none at a gap-alert lead of 0 while reminders are still scheduled (#10526)", function () {
+            requireMailpit(this);
             assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then((assignment) => {
                 setConfig(GAP_LEAD_HOURS_URL, "0");
                 leadToOccurrenceOne(LEAD_HOURS_URL);
                 runJobsNow();
-                gapAlerts(occurrenceOne).then((rows) => {
-                    expect(rows, "Milk Station is short, but gap alerts are off").to.have.length(0);
-                });
-                dbOk("SELECT vntf_ID FROM volunteer_notification_vntf WHERE vntf_DedupeKey = ?", [
-                    `reminder:${assignment.id}:${POOL_MEMBER_A}`,
-                ]).then((rows) => {
-                    expect(rows, "the reminder is still scheduled").to.have.length(1);
+                gapAlertMailTo(COORDINATOR_EMAIL).should("have.length", 0);
+                notifications(assignment.id).then((resp) => {
+                    expect(resp.body.notifications.map((n) => n.type), "the reminder is still scheduled").to.include(
+                        "reminder",
+                    );
                 });
             });
         });
