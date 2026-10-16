@@ -44,7 +44,6 @@ The prefix says who made the branch and what it is for.
 |---|---|---|
 | `Security: CodeQL` (`security-analysis.yml`) | push to `master`/`develop`, PR to `master`, Mondays 06:00 UTC, manual | CodeQL (JS/TS) and Semgrep (PHP/JS/config) |
 | `Dependabot: PR fact-check` (`dependabot-review.yml`) | Dependabot PRs opened, updated or reopened; manual | One facts-only comment: packages bumped, major or minor, backing alert, transitive changes. Comments only; approval, merge and labels stay with maintainers |
-| `Dependabot: close superseded PRs` (`dependabot-supersede.yml`) | Dependabot PRs opened or reopened; manual | Closes older open Dependabot PRs the new one replaces: the same package at a lower or equal version, or the same group with every update carried at a higher or equal version. Prerelease and unreadable cases stay open. Rules in `scripts/dependabot-supersede.js` |
 | `Validate Docker development boundaries` (`docker-security-check.yml`) | PR touching the compose files | Checks the development compose files keep their security boundaries |
 | `Validate production Docker images` (`docker-release-check.yml`) | PR touching `docker/**` or the docker release workflows | Archive validation and non-root startup of the production image |
 | `Build & Push Docker Images` (`docker-release.yml`) | release published, manual | Downloads and verifies the published release, builds and pushes the image to DockerHub (`DOCKERHUB_USERNAME`, `DOCKERHUB_TOKEN`) |
