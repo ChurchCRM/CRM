@@ -173,7 +173,7 @@ PortalSessionStarter::start(
 ```
 
 It does the following, in this order:
-1. **Checks.** It loads the person from the database and applies §4. `STAFF` skips the member rule. `ASSISTED` uses the checks in §6.5. If any check fails, it writes a "refused" audit row with the reason and throws. No session is started.
+1. **Checks.** It loads the person from the database and applies §4. `STAFF` skips the member rule. `ASSISTED` applies only the three checks listed in §6.5 and none of the others. If any check fails, it writes a "refused" audit row with the reason and throws. No session is started.
 2. **Starts the session.** It regenerates the session id. It stores the principal and the person's current **session version**: a number on their sign-in row that goes up whenever all their sessions must end.
 3. **Updates the sign-in row:** first and last sign-in time and the method. For an email method, it also records the address that was proven. `ASSISTED` changes none of these.
 4. **Audits.** It writes a "signed in" audit row with the method, and the actor for `ASSISTED`.
@@ -251,10 +251,19 @@ Requests over a limit get the same answer screen and no email. They are audited 
 Login as User lets an administrator see the Member Portal exactly as a member sees it, to help with a problem. It moves into this proposal, and #10392 closes in favour of its child issue.
 
 - **Where it is:** a **Login as User** item in the **Actions** menu on the person's page (`src/people/views/person-view.php:436-474`). The Make User, Edit User and View User buttons in the page header (`src/people/routes/view.php:96-106`) stay where they are.
-- **When it is grayed out**, with the reason on hover:
+- **When it is grayed out**, with the reason on hover. These are the only checks Login as User applies, at start and on every request:
   - the person is deceased;
   - the person's Disable sign-in is on;
   - the person has a user record (a staff account). Login as User never opens a staff account.
+- **Deliberately not checked.** The office uses Login as User to see what a person sees, including someone who can't sign in yet. So it still works when:
+  - the person is inactive;
+  - the person's family is deactivated;
+  - the person is awaiting review;
+  - the person falls outside the member rule (§4);
+  - the person has no usable sign-in email;
+  - member sign-in is off.
+
+  The session is still read-only by default and fully recorded.
 - **Who and when:** administrators only. The church turns it on in the setting *Allow Login as User*, which is off by default (#10392). While the setting is off, the item doesn't show and the routes answer 404.
 - **How it works:**
   - It calls the shared step with `ASSISTED`, the member as the subject and the administrator as the actor.
@@ -379,7 +388,7 @@ Today a plugin has no way into the portal (§2). This proposal adds one, built o
 ### 8.6 What administrators see
 
 - **Admin → Member Portal → Permissions:** every capability, core and plugin, with its description, its sources and how many people hold it. Opening one lists the holders and where each grant comes from.
-- **The person's page, "Portal sign-in" card:** the person's portal permissions with their source (for example "Everyone", "Adult of the Smith family", "Leader of Sunday Greeters", or "Given by Pat until 31 Dec"). Administrators add and remove given grants there.
+- **The person's page, "Portal sign-in" card:** the person's portal permissions with their source (for example "Everyone", "Adult of the Smith family", "Leader of Sunday Greeters", or "Given by Pat until 31 Dec"; dates follow the church's date format, time zone and language settings). Administrators add and remove given grants there.
 
 ### 8.7 Other ideas the model supports (not scheduled)
 
@@ -688,6 +697,7 @@ Row 11 doesn't depend on the sign-in work. It can be built first, and can ship o
   - the directory prints no family email.
 - **Login as User:**
   - grayed out for deceased, Disable sign-in and staff accounts;
+  - still starts for each case §6.5 deliberately doesn't check: an inactive person, a deactivated family, awaiting review, outside the member rule, no usable email, and member sign-in off;
   - hidden with the setting off;
   - read-only unless writes are allowed;
   - every write is recorded with both people;
