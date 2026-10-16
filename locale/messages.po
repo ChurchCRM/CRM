@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-14 15:48+0000\n"
+"POT-Creation-Date: 2026-10-16 13:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -213,6 +213,10 @@ msgstr[0] ""
 msgstr[1] ""
 
 #, php-format
+msgid "%d queued"
+msgstr ""
+
+#, php-format
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] ""
@@ -313,6 +317,10 @@ msgid "%s position"
 msgid_plural "%s positions"
 msgstr[0] ""
 msgstr[1] ""
+
+#, php-format
+msgid "%s queued: %s"
+msgstr ""
 
 #, php-format
 msgid "%s was the Head of this family and has been marked deceased. Please assign a new Head of Household."
@@ -3700,6 +3708,9 @@ msgstr ""
 msgid "Could not count the class's events"
 msgstr ""
 
+msgid "Could not delete the queue."
+msgstr ""
+
 msgid "Could not find coordinates for that address. Try entering them manually."
 msgstr ""
 
@@ -4430,6 +4441,9 @@ msgstr ""
 msgid "Delete Photo"
 msgstr ""
 
+msgid "Delete Queue"
+msgstr ""
+
 msgid "Delete Selected"
 msgstr ""
 
@@ -4451,6 +4465,9 @@ msgstr ""
 
 msgctxt "other"
 msgid "Delete events ({{count}})"
+msgstr ""
+
+msgid "Delete every queued message? They will not be sent. Queued messages: {{total}}"
 msgstr ""
 
 msgid "Delete failed"
@@ -4920,6 +4937,9 @@ msgstr ""
 msgid "Each default volunteer must name a person"
 msgstr ""
 
+msgid "Each message is recorded in the person's email history."
+msgstr ""
+
 msgid "Each person can have their own email and mobile number."
 msgstr ""
 
@@ -5149,6 +5169,9 @@ msgstr ""
 msgid "Email addresses copied to clipboard"
 msgstr ""
 
+msgid "Email batch not found. If it was still queued, an administrator deleted the queue and it will not be sent."
+msgstr ""
+
 msgid "Email content"
 msgstr ""
 
@@ -5187,9 +5210,6 @@ msgid "Email not found"
 msgstr ""
 
 msgid "Email preview"
-msgstr ""
-
-msgid "Email sending is disabled"
 msgstr ""
 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
@@ -5993,6 +6013,9 @@ msgstr ""
 msgid "Failed to delete role. Please try again."
 msgstr ""
 
+msgid "Failed to delete the email queue"
+msgstr ""
+
 msgid "Failed to delete volunteer opportunity"
 msgstr ""
 
@@ -6111,6 +6134,9 @@ msgid "Failed to move donations."
 msgstr ""
 
 msgid "Failed to open upgrade archive. The downloaded file may be corrupted."
+msgstr ""
+
+msgid "Failed to queue the email"
 msgstr ""
 
 msgid "Failed to refresh plugin registry"
@@ -6712,6 +6738,9 @@ msgid "Folder"
 msgstr ""
 
 msgid "Folder name of the Member Portal theme to use, from Include/themes/. \"default\" is the system theme that ships with ChurchCRM."
+msgstr ""
+
+msgid "Follow it in the email history"
 msgstr ""
 
 msgid "Follow these two steps to add your church members quickly and correctly."
@@ -9256,6 +9285,9 @@ msgid "Menu options access"
 msgstr ""
 
 msgid "Message"
+msgstr ""
+
+msgid "Messages queued: {{total}}. They will be sent in the background."
 msgstr ""
 
 msgid "Method"
@@ -12051,6 +12083,12 @@ msgstr ""
 msgid "Quarterly"
 msgstr ""
 
+msgid "Queued"
+msgstr ""
+
+msgid "Queued messages deleted: {{total}}"
+msgstr ""
+
 msgid "Quick Actions"
 msgstr ""
 
@@ -13339,6 +13377,9 @@ msgstr ""
 msgid "Send your answer"
 msgstr ""
 
+msgid "Sending"
+msgstr ""
+
 msgid "Sending to"
 msgstr ""
 
@@ -13350,10 +13391,16 @@ msgctxt "other"
 msgid "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}"
 msgstr ""
 
+msgid "Sending was interrupted before the server answered."
+msgstr ""
+
 msgid "Sending..."
 msgstr ""
 
 msgid "Sending…"
+msgstr ""
+
+msgid "Sending… {{done}} of {{total}}"
 msgstr ""
 
 #. Context: countries
@@ -13960,6 +14007,9 @@ msgid "Still Checked In"
 msgstr ""
 
 msgid "Still Owed"
+msgstr ""
+
+msgid "Still queued, to be sent automatically: {{total}}"
 msgstr ""
 
 msgid "Stop {{name}} coordinating {{ministry}}? Their login and their own assignments are untouched."
@@ -14871,6 +14921,9 @@ msgstr ""
 msgid "The qualified volunteers could not be loaded"
 msgstr ""
 
+msgid "The queue was cleared. Messages that will not be sent: {{total}}"
+msgstr ""
+
 msgid "The record could not be found."
 msgstr ""
 
@@ -15163,6 +15216,9 @@ msgid "This assignment is no longer active"
 msgstr ""
 
 msgid "This calendar link is invalid or has been revoked. Ask the church for a current link."
+msgstr ""
+
+msgid "This email batch was queued by another user"
 msgstr ""
 
 msgid "This email is not in your history."

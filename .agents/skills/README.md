@@ -27,7 +27,6 @@ All project-specific skills live in **[`churchcrm/`](./churchcrm/)**. See [`chur
 - [Slim 4 Best Practices](./churchcrm/slim-4-best-practices.md)
 - [Slim MVC Skill](./churchcrm/slim-mvc-skill.md)
 - [API Development](./churchcrm/api-development.md)
-- [API Compatibility & Deprecation](./churchcrm/api-compatibility-and-deprecation.md)
 - [Service Layer](./churchcrm/service-layer.md)
 - [Configuration Management](./churchcrm/configuration-management.md)
 
@@ -62,7 +61,6 @@ All project-specific skills live in **[`churchcrm/`](./churchcrm/)**. See [`chur
 ### Testing
 - [Testing](./churchcrm/testing.md)
 - [Cypress Testing](./churchcrm/cypress-testing.md)
-- [Testing Migration & E2E](./churchcrm/testing-migration-e2e.md)
 
 ### MVC Migration
 - [Admin MVC Migration](./churchcrm/admin-mvc-migration.md)
@@ -111,7 +109,7 @@ Generic language skills may live on a developer's own machine. ChurchCRM overrid
 
 - **Review a PR**: `maintainer-review-gates.md` → `pr-review.md` → `code-standards.md` → `security-best-practices.md`. Draft only. Never approve or merge.
 - **New API endpoint**: `api-development.md` → `service-layer.md` → `slim-4-best-practices.md` → `security-best-practices.md` → `cypress-testing.md` → `git-workflow.md`
-- **Migrate legacy page**: `routing-architecture.md` → `admin-mvc-migration.md` → `frontend-development.md` → `database-operations.md` → `git-workflow.md`
+- **Convert a page to MVC**: `routing-architecture.md` → `admin-mvc-migration.md` → `frontend-development.md` → `database-operations.md` → `git-workflow.md`
 - **Fix security issue**: `security-best-practices.md` → `authorization-security.md` → `php-best-practices.md` → `git-workflow.md`
 - **Add community plugin**: `plugin-system.md` → `plugin-development.md` → `plugin-create.md` → `plugin-security-scan.md` → `git-workflow.md`
 - **Update a core plugin**: `plugin-system.md` → `plugin-development.md` → `plugin-migration.md` → `git-workflow.md`

@@ -199,7 +199,8 @@ CREATE TABLE `event_types` (
 
 INSERT INTO `event_types` (`type_id`, `type_name`, `type_defstarttime`, `type_defrecurtype`, `type_defrecurDOW`, `type_defrecurDOM`, `type_defrecurDOY`, `type_active`) VALUES
   (1, 'Church Service', '10:30:00', 'weekly', 'Sunday', '', '2016-01-01', 1),
-  (2, 'Sunday School', '09:30:00', 'weekly', 'Sunday', '', '2016-01-01', 1);
+  (2, 'Sunday School', '09:30:00', 'weekly', 'Sunday', '', '2016-01-01', 1),
+  (3, 'Other', '00:00:00', 'none', 'Sunday', '', '2016-01-01', 1);
 
 -- --------------------------------------------------------
 

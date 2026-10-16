@@ -1,231 +1,95 @@
 ---
 title: "Refactor Patterns"
-intent: "Guidance for refactoring legacy code to services and MVC structure"
+intent: "Guidance for refactoring procedural pages to services and MVC structure"
 tags: ["refactor","service-layer","mvc"]
 prereqs: ["[[php-best-practices]]","[[service-layer]]"]
 complexity: "intermediate"
 ---
 
----
-title: Refactor & Migration Skill
-summary: |
-  Guidance and a per-feature checklist for migrating legacy PHP pages to
-  Admin MVC, converting inline SQL to Perpl ORM, adding service-layer logic,
-  and adding tests required before a refactor can be considered complete.
----
+# Refactor & Migration
 
-**Purpose**
+Move one feature at a time (People, Families, Groups, Events, Finance, Reports, Admin, Plugins) from a top-level `src/*.php` page to Admin MVC + Service + Perpl ORM. Page conversion steps: `admin-mvc-migration.md`.
 
-- **Goal:** Provide a repeatable, feature-focused checklist teams can follow
-  to migrate one CRM feature at a time (People, Families, Groups, Events,
-  Finance, Reports, Admin, Plugins) from legacy pages to the modern Admin MVC
-  + Service + ORM architecture used in ChurchCRM.
+## Workflow
 
-**Scope**
+1. Pick a feature and open an issue. Labels: `section:<feature>`, `type:mvc|orm|tests|i18n`, `difficulty:easy|medium|hard`
+2. Find candidates: `grep -rn "RunQuery" src/<feature pages>`
+3. Branch `fix/<feature>-refactor-<short-desc>`. Keep PRs small: one page becomes MVC + Service + tests
+4. Build in this order: Service, MVC route and view, query conversion, tests, i18n, then delete the page file and update every caller to the new route
 
-- **Per-feature:** Each feature migration contains coordinated tasks across PHP
-  (legacy page removal), Admin MVC view + route creation, Service layer
-  implementation, Perpl ORM conversions, tests (unit/API/Cypress), i18n, and
-  CI validation.
-- **Completion criteria:** All items in the feature checklist below satisfied
-  and tests passing locally and in CI; code reviewed and a PR opened against
-  `master` or the agreed integration branch.
+## Rules
 
-**How to use this skill**
+- Domain code lives in `src/ChurchCRM/Service/<Feature>Service.php`
+- Queries use Perpl `*Query::create()`; convert existing `RunQuery()` calls to ORM or Service methods
+- `withColumn()` takes TableMap `COL_` constants. `addForeignValueCondition()` takes `TABLE_NAME` and the column name string
+- Lifecycle overrides keep strict signatures: `preSave(?ConnectionInterface $con = null): bool`
+- Inputs go through `InputUtils::filterInt()` and the other `InputUtils` helpers
+- Redirects use `RedirectUtils::redirect()`, `securityRedirect()` or `absoluteRedirect()`
+- API errors use `SlimUtils::renderErrorJSON()`
+- Services log through `LoggerUtils::getAppLogger()`
+- Select only needed columns (`->select([...])`) and pre-fetch related data
+- Render initial UI state server-side
+- Routes live in `src/admin/routes/<feature>.php`, views in `src/admin/views/<feature>.php`. Permission checks use `AuthenticationManager::getCurrentUser()` and `RedirectUtils::securityRedirect()`
+- Moving `==` to `===`: cast `mysqli_fetch_array()` / `extract()` / `$_GET` / `$_POST` values first (`code-standards.md` → "Strict vs Loose Comparisons")
+- Deleted `Functions.php` helpers live in `ChurchCRM\Utils\*` (`php-best-practices.md`)
 
-- Tackle one feature at a time. For each feature, create a branch named:
-  `fix/<feature>-refactor-<short-desc>` and open incremental PRs.
-- Add issue cards to the migration project and tag with `section:<feature>`,
-  `type:mvc`, `type:orm`, `type:tests`, `difficulty:easy|medium|hard`.
+## Difficulty
 
-**Perpl ORM & Service Rules (always follow)**
+- **Easy:** read-only SELECTs, simple CRUD, reports without dynamic SQL or temporary tables
+- **Medium:** moderate joins, some business logic, several small queries to fold into one service call
+- **Hard:** dynamic SQL, DDL, destructive scripts, multi-step transactions with cross-domain side effects
 
-- **Use Query classes:** Replace `RunQuery()` with Perpl ORM `*Query` calls.
-- **withColumn():** Use TableMap `COL_` constants when calling `withColumn()`.
-- **addForeignValueCondition():** Pass `TABLE_NAME` + column name string
-  (NOT TableMap COL_ constant) to `addForeignValueCondition()`.
-- **Lifecycle signatures:** Keep strict type signatures on overrides
-  (e.g., `preSave(ConnectionInterface $con = null): bool`).
-- **Sanitize inputs:** Use `InputUtils::filterInt()` and other `InputUtils`
-  helpers instead of raw `$_POST`/`$_GET` access.
+## Core or plugin
 
-**General Coding Rules for All Feature Migrations**
+Build the feature as a plugin in `src/plugins/<name>/` when it:
 
-- **Service layer first:** Implement domain code in `src/ChurchCRM/Service/`.
-- **Use RedirectUtils:** For all redirects use `RedirectUtils::redirect(...)`,
-  `RedirectUtils::securityRedirect(...)` or `RedirectUtils::absoluteRedirect(...)`.
-- **API errors:** Use `SlimUtils::renderErrorJSON()` in API routes.
-- **No raw SQL:** Do not introduce new `RunQuery()` or raw SQL; refactor
-  existing ones into Perpl ORM queries or Service methods.
-- **i18n:** Add `gettext()` strings and after changes run `npm run locale:build`
-  and `npm run build` before opening a PR.
-- **Strict comparisons:** When converting `==`/`!=` to `===`/`!==`, always cast
-  `mysqli_fetch_array()` / `extract()` / `$_GET` / `$_POST` values to the expected
-  type first (e.g., `(int)$type_ID === 11`). See `code-standards.md` → "Strict vs Loose Comparisons".
+- couples to external APIs or vendor SDKs (payments, authentication providers)
+- is optional per site
+- carries its own compliance requirements
+- needs an independent release cycle
 
-**Per-Feature Checklist (apply to each feature)**
+Other features stay in `src/admin/` and `src/ChurchCRM/Service/`. Plugin rules: `plugin-system.md`.
 
-- **Planning & Inventory**
-  - **Inventory files:** List all legacy pages in `src/` for the feature.
-  - **RunQuery inventory:** Extract `RunQuery()` hits for those files (use the
-    existing `.github/triage/runquery-inventory.csv`).
-  - **Difficulty tag:** Mark each RunQuery entry `easy|medium|hard`.
+## Tests and i18n
 
-- **PHP (legacy) changes**
-  - **Identify public endpoints** currently served by top-level `src/*.php`.
-  - **Remove business logic** from templates: move to Service methods.
-  - **Migrate view state:** Ensure initial UI state is rendered server-side
-    (avoid flash state that JS must fetch on first paint).
+- Unit tests for Service methods where practical
+- Cypress API specs in `cypress/e2e/api/private/...`, UI specs in `cypress/e2e/ui/<feature>/`
+- Sign in with `cy.setupAdminSession()`
+- Wrap new strings in `gettext()`; locale terms are generated on merge (`i18n-localization.md`)
 
-- **Admin MVC**
-  - **Routes:** Add new admin routes under `src/admin/routes/<feature>.php`.
-  - **Views:** Create view templates in `src/admin/views/<feature>.php` and
-    render initial state with PhpRenderer.
-  - **Permissions:** Use `AuthenticationManager::getCurrentUser()` checks and
-    `RedirectUtils::securityRedirect()` where appropriate.
+## Done when
 
-- **Service Layer & ORM**
-  - **Service methods:** Create `src/ChurchCRM/Service/<Feature>Service.php`.
-  - **Query conversion:** Replace `RunQuery()` with `*Query::create()` calls.
-  - **Selective loading:** Use `->select([...])` to fetch only needed columns.
-  - **Avoid N+1:** Pre-fetch related data (joins or in-memory grouping).
+- The feature's old pages are deleted and every caller uses the MVC route
+- Service methods hold all business logic
+- Every `RunQuery()` in the feature is ORM, or a documented security-justified exception
+- Unit, API and UI tests pass locally and in CI
+- The PR body carries: files changed, service created or changed, queries converted, tests added, CI status
 
-- **Testing & QA**
-  - **Unit tests:** Add unit tests for Service methods where practical.
-  - **API tests:** Add Cypress API tests under `cypress/e2e/api/private/...`
-    for the endpoint(s) added.
-  - **UI tests:** Add Cypress UI tests under `cypress/e2e/ui/<feature>/`.
-  - **Session login:** Use `cy.setupAdminSession()` or other session helpers.
-  - **Run locally:** Clear logs and run `npx cypress run` for the new tests.
+## SQL upgrade files
 
-- **i18n & Locale**
-  - **Add gettext()** to all new strings and run `npm run locale:build`.
-  - **Commit** updated `locale/messages.po` and built assets.
+Edit only the `src/mysql/upgrade/` script for the release in preparation (named for the version in `package.json`). Published scripts for earlier releases are fixed. A DB change for the current release goes in `src/mysql/upgrade/<version>.sql`, registered in `src/mysql/upgrade.json`, and the release notes mention it.
 
-- **Docs & Review**
-  - **PR checklist:** Add a PR description with Summary, Changes, Why,
-    Files Changed (per guide). Include reviewer suggestions and test steps.
-  - **Logging:** Use `LoggerUtils::getAppLogger()` in services for important
-    events and errors.
+Upgrades run the installed release's code in memory while the new files land on disk, so earlier-release scripts define upgrade paths for existing installs. An emergency edit to an earlier script needs the risk written in the PR body and explicit maintainer approval.
 
-- **Acceptance Criteria (to mark feature refactor complete)**
-  - All legacy pages for the feature are **deleted** (not stubbed or shimmed). Every caller updated to use the new MVC route.
-  - Service methods cover all business logic previously in pages.
-  - All `RunQuery()` instances for the feature are replaced with ORM or
-    documented exceptions (with security justification).
-  - Unit/API/UI tests added and passing in CI.
-  - `npm run locale:build` executed and resulting `messages.po` committed.
-  - Documentation updated and a PR opened with proper branch naming.
+```bash
+ls -1 src/mysql/upgrade | sort
+git tag --list | sort --version-sort
+```
 
-**Heuristics for Difficulty Classification**
+## Removing methods that `doUpgrade()` calls
 
-- **Easy:** Read-only SELECT statements; simple CRUD pages; one-off reports
-  that don't use dynamic SQL or temporary tables.
-- **Medium:** Pages with moderate joins, some business logic, or multiple
-  small queries that need to be consolidated into one service call.
-- **Hard:** Dynamic SQL generation, DDL, destructive scripts, or pages that
-  embed multi-step transactions and cross-domain side effects.
+`ChurchCRMReleaseManager::doUpgrade()` runs in one PHP request:
 
-**Project & Issue Labels (recommendation)**
+1. The installed release's `ChurchCRMReleaseManager` is loaded into memory
+2. The new release's files are moved into place
+3. The in-memory `doUpgrade()` continues and autoloads every class it references from the new files
 
-- `section:<feature>` (e.g., `section:people`, `section:finance`)
-- `type:mvc`, `type:orm`, `type:tests`, `type:i18n`
-- `difficulty:easy|medium|hard`
+A method the in-memory code calls must therefore exist in the new release too. A removed method fails with `Call to undefined method` after the file moves and DB migrations have succeeded; the upgrade completed but the user sees an error banner.
 
-**Core vs Plugin Evaluation (required)**
+Before removing a public static method from `src/ChurchCRM/Service/*` or any class `ChurchCRMReleaseManager` touches:
 
-- **Evaluate integration needs:** For each feature/migration determine whether
-  it should remain a core feature or be implemented as a plugin. If the
-  feature interacts with third-party services (payments, external APIs,
-  authentication providers), or provides optional integrations, prefer
-  implementing it as a plugin to keep the core lean and maintainable.
-- **Decision criteria:** Consider the following when deciding:
-  - **Coupling:** High coupling to external APIs or vendor SDKs → Plugin.
-  - **Optionality:** If site instances may not use the feature → Plugin.
-  - **Security/Compliance:** External integrations with strict compliance
-    requirements may be isolated in a plugin.
-  - **Release cadence:** Features requiring independent release cycles →
-    Plugin.
-- **Implementation guidance:** When migrating to a plugin, place business
-  logic in `src/plugins/<plugin-name>/` and expose admin UI under the plugin
-  admin routes. For core features, continue under `src/admin/` and
-  `src/ChurchCRM/Service/`.
+```bash
+git grep -n "MyClass::myMethod\b" <tag-of-previous-release>
+```
 
-**Branching & PR Guidance**
-
-- Branch naming: `fix/<feature>-refactor-<short-desc>`.
-- Keep PRs small and reviewable; prefer incremental PRs that migrate small
-  areas (e.g., one legacy page → MVC + Service + tests) rather than giant
-  monolith PRs.
-
-**Checklist Template (copy into every issue/PR body)**
-
-1. Inventory files changed
-2. Service created/modified
-3. ORM conversions applied (list queries replaced)
-4. Tests added (unit/API/UI)
-5. i18n strings added & `locale:build` run
-6. CI green locally and in remote
-
-**Next steps (how to run this skill in the repo)**
-
-- Step 1: Pick a feature and create an issue using the labels above.
-- Step 2: Use `.github/triage/runquery-inventory.csv` to find candidate files.
-- Step 3: Classify entries `easy|medium|hard` and create issue cards.
-- Step 4: Implement Service first, then MVC route + view, convert queries,
-  then add tests and i18n, finally remove legacy pages or add redirects.
-
-**References**
-
-- `src/Include/Functions.php` **no longer exists** — its helpers now live in `ChurchCRM\Utils\*`
-  (`DateTimeUtils`, `MiscUtils`, `CustomFieldUtils`, `FiscalYearUtils`, `FunctionsUtils`).
-  See the migration map in `php-best-practices.md`.
-- Follow Propel ORM patterns described in the repository's standards docs.
-
-## SQL Upgrade Files — modification policy
-
-- **Do not modify historical upgrade scripts.** Only edit SQL files under `src/mysql/upgrade/` that correspond to the release you are preparing. Historical upgrade files (previous release numbers) must remain immutable once published to avoid altering upgrade paths for existing installations.
-- **How to determine the current release file to edit:** Use the project's release version (tag or CHANGELOG) to identify the target upgrade file (e.g., `src/mysql/upgrade/7.3.0.sql`). If you cannot find a matching file for the release you're preparing, create a new release-specific migration file instead of editing older ones.
-- **Why:** Upgrades run using the old release's in-memory code while new files are moved into place on disk. Changing prior-release SQL files can cause inconsistencies for users upgrading from older versions and may invalidate tested upgrade paths.
-- **Quick commands:**
-
-  - List existing upgrade files:
-
-    ```bash
-    ls -1 src/mysql/upgrade | sort
-    ```
-
-  - Find the release tag or changelog entry for the target release and match the filename (example using git tags):
-
-    ```bash
-    git tag --list | sort --version-sort
-    grep -i "^## \[" CHANGELOG.md | head -n 10
-    ```
-
-  - If you must introduce a DB change for the current release, add a new `src/mysql/upgrade/<new-version>.sql` migration and reference it in the release notes. Do not patch older `<x.y.z>.sql` files.
-
-If a genuine emergency requires modifying a historical upgrade script (very rare), document the change in the PR body, explain the risk, and get explicit approval from a maintainer before merging.
-
-## Removing Methods Called From `ChurchCRMReleaseManager::doUpgrade()` <!-- learned: 2026-04-22 -->
-
-`ChurchCRMReleaseManager::doUpgrade()` runs inside a single PHP request that:
-
-1. Loads the **old** `ChurchCRMReleaseManager` class from the installed version into PHP memory.
-2. Extracts and moves the **new** version's files into place on disk.
-3. Continues executing the **old** (in-memory) `doUpgrade()` method, which autoloads any class it references *from the new files on disk*.
-
-Consequence: if the old `doUpgrade()` calls `SomeService::someMethod()` and you have removed `someMethod()` from `SomeService` in the new release, the upgrade will throw a fatal `Call to undefined method` — *after* file moves and DB migrations already succeeded. The upgrade has actually completed; the user just sees a red banner.
-
-This hit issue #8729 (6.8.1 → 7.2.1): commit `9ab2326d7` removed `AppIntegrityService::clearIntegrityCache()` and the caller at `ChurchCRMReleaseManager.php:542`, but installs on 6.8.1 still held the old caller in memory during the jump, so they hit the fatal despite the upgrade succeeding.
-
-**Rules before removing a public static method from `src/ChurchCRM/Service/*` or any class `ChurchCRMReleaseManager` touches:**
-
-- Grep the *previous three minor release tags* for callers, not just current master:
-  ```bash
-  git grep -n "MyClass::myMethod\b" <tag-of-previous-release>
-  ```
-- If any older release's `ChurchCRMReleaseManager` calls it: **keep the method as a no-op shim** until all supported upgrade sources have moved past it, or explicitly test the upgrade path from the oldest supported version.
-- If keeping a shim is not viable, update release notes to warn that the upgrade will show a harmless error toast but did succeed, and that the user should reload.
-
----
-Generated: Refactor skill for feature-by-feature CRM migration.
+Search the previous three minor release tags. When an earlier release's `ChurchCRMReleaseManager` calls the method, keep it as a no-op shim until all supported upgrade sources have moved past it, or test the upgrade path from the oldest supported version. When a shim is not viable, the release notes say the upgrade shows a harmless error toast, that it succeeded, and that the user should reload.

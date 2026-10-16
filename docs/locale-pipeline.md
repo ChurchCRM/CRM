@@ -52,13 +52,11 @@ Each trigger is scoped to what only its own stage produces.
 
 Every step is idempotent: the terms upload does nothing when POEditor already matches `messages.po`, and the translation upload skips empty and already-accepted terms. So a manual, daily or dispatched run is always safe.
 
-A PR merged with `GITHUB_TOKEN` starts no workflows. Merge terms and download PRs as yourself (or a GitHub App, see #10093) or the next stage will not start.
-
-Legacy branches `locale/update-<timestamp>`, `locale/<version>` and `locales/<version>-…` predate these names. The branch manager still recognises the `locales/` form; none of them trigger a workflow.
+A PR merged with `GITHUB_TOKEN` starts no workflows. Merge terms and download PRs as yourself (or a GitHub App) so the next stage starts.
 
 ### Rules for translation agents
 
-- Start every session on a new `locale/translate/**` branch (`node locale/scripts/locale-branch-manager.js --init`). Never reuse one.
+- Start every session on a new `locale/translate/**` branch (`node locale/scripts/locale-branch-manager.js --init`).
 - Commit and push after **every** locale. The push is both the backup and the upload.
 - Push with your own credentials. Pushes made with the Actions `GITHUB_TOKEN` start no workflows, so nothing uploads; list those locales for a manual **Locale: upload translations** run instead.
 - Fill every key a plural entry has; never add, remove or `|`-join forms.
@@ -90,7 +88,7 @@ Two kinds, told apart by `locale/messages.po` (`locale/scripts/lib/poeditor-plur
 | gettext plural | PHP `ngettext`, `msgid_plural` | `{ "term": { "one": "…", "few": "…", "other": "…" } }`, one key per slot the language has in POEditor |
 | i18next pair | `{{count}}` keys, `msgctxt "one"` / `"other"` | `{ "one": { "term": "…" }, "other": { "term": "…" } }` |
 
-Never pipe-join forms: POEditor stores `"A|B"` whole in the first slot (gettext) or drops it (i18next). See #10062.
+Send each form under its own slot or context key; a pipe-joined `"A|B"` is stored whole in the first slot (gettext) or dropped (i18next).
 
 ## Planned
 

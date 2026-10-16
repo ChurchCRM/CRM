@@ -2,7 +2,7 @@
 title: "Responsive Design Guidelines"
 intent: "Canonical guidance for mobile, tablet, and laptop/desktop layouts across ChurchCRM"
 tags: ["frontend","responsive","bootstrap","tabler","mobile","tablet"]
-prereqs: ["[[frontend-development]]","[[bootstrap-5-migration]]","[[tabler-components]]"]
+prereqs: ["[[frontend-development]]","[[tabler-components]]"]
 complexity: "intermediate"
 ---
 
@@ -10,114 +10,53 @@ complexity: "intermediate"
 
 ## Context
 
-ChurchCRM ships to pastors and volunteers on every kind of device — phones in the
-pew, tablets on the welcome desk, laptops in the office. All new pages (and any
-page we touch) must work cleanly at **three canonical form factors**. This skill
-is the single source of truth for the breakpoints, grid patterns, navigation
-behavior, and touch-target rules each form factor requires.
+Pastors and volunteers use ChurchCRM on phones, tablets and laptops. Every new or touched page works at three form factors. Stack: Bootstrap 5 + Tabler 1.6 (versions in `package.json`; markup rules in `tabler-components.md`). The root font size is 16px (`src/skin/churchcrm.scss`), so `rem` values in custom CSS are multiples of 16px.
 
-Stack: **Bootstrap 5.3.8 + Tabler 1.4.0** (see `frontend-development.md`).
+## The Three Form Factors
 
-## The Three Canonical Form Factors <!-- learned: 2026-04-09 -->
-
-Bootstrap 5 defines six breakpoints; we group them into three form factors based
-on how the chrome (sidebar, navbar) and content grid actually behave in this
-codebase:
-
-| Form factor | Min width | Max width | BS breakpoints | Primary devices |
+| Form factor | Min width | Max width | BS breakpoints | Devices |
 |---|---|---|---|---|
-| **Mobile** | 0 | 767.98px | `xs`, `sm` | Phones (portrait & landscape) |
+| **Mobile** | 0 | 767.98px | `xs`, `sm` | Phones |
 | **Tablet** | 768px | 1199.98px | `md`, `lg` | Tablets, small laptops, split-screen windows |
-| **Laptop/Desktop** | 1200px | ∞ | `xl`, `xxl` | Laptops, desktop monitors, kiosks |
+| **Laptop/Desktop** | 1200px | no limit | `xl`, `xxl` | Laptops, monitors, kiosks |
 
-> [!NOTE] Why the split is at 768 and 1200 and not 576/992
-> The vertical Tabler
-> sidebar in `src/Include/Header.php:176` is `navbar-vertical navbar-expand-xl`,
-> which means the **permanent left sidebar only appears at ≥1200px**. Below that
-> the nav collapses to a hamburger. The 768px boundary is where column layouts
-> start splitting from stacked (mobile-style) into side-by-side (tablet-style).
-> Aligning our form-factor names to the actual chrome behavior removes
-> ambiguity.
+The Tabler sidebar in `src/Include/Header.php` is `navbar-vertical navbar-expand-xl`: the permanent left sidebar appears from 1200px and collapses to a hamburger below. Column layouts switch from stacked to side-by-side at 768px.
 
-### Form factor 1: Mobile (< 768px)
+### Mobile (< 768px)
 
-**Chrome:**
-- Hamburger nav (collapsed `#sidebar-menu`)
-- Sticky top header
-- Safe-area insets active (`viewport-fit=cover`)
+- Hamburger nav (collapsed `#sidebar-menu`), sticky top header, safe-area insets (`viewport-fit=cover`)
+- Stat cards `col-6` (two-up); main columns and form fields `col-12`
+- Tables: wrapper per "Table wrappers" below
+- Touch targets at least 44x44px
+- Page-header buttons are icon-only (global rule in `src/skin/scss/_tabler-bridge.scss`)
+- Multi-step form labels hide under 400px (`d-none d-sm-inline`)
+- Inputs take `width: 100%`; inline `width` styles stay overridable by a mobile media query
 
-**Content grid rules:**
-- Stat cards: `col-6` (two-up, never stack to one-up — looks empty on 375px)
-- Main columns: `col-12` (stack everything)
-- Form fields: `col-12`
-- Tables: **must** be wrapped in `.table-responsive` — UNLESS rows have action dropdowns, in which case [`table-action-menu.md`](./table-action-menu.md) → "Overflow / Dropdown Clipping" owns the rule (`overflow-x: clip; overflow-y: visible`; `data-bs-display="static"` alone does NOT prevent clipping)
-- Touch targets: minimum **44×44px** (Apple HIG)
-- Page headers: use icon-only buttons (`font-size: 0` trick, see `_tabler-bridge.scss`)
-- Labels on multi-step forms: hide under 400px (`d-none d-sm-inline`)
-- No fixed `width: *px` on inputs — override to `100%` if inherited
-- Inline styles with `width` must be overridable: use `!important` in a mobile media query if needed
+### Tablet (768px - 1199.98px)
 
-### Form factor 2: Tablet (768px – 1199.98px)
+- Nav stays a hamburger
+- Stat cards `col-md-4` or `col-md-3`
+- Main/sidebar content stacks, or uses balanced `col-md-6 + col-md-6`; the 8/4 split starts at `lg`
+- Paired form fields `col-md-6`
+- Tables: wrapper per "Table wrappers" below
+- Card header tabs use short labels: `<span class="d-none d-xl-inline">Latest Families</span><span class="d-xl-none">New</span>`
 
-**Chrome:**
-- Hamburger nav still collapsed (sidebar does NOT appear here)
-- Sticky top header
-- More horizontal room for card grids
+### Laptop / Desktop (>= 1200px)
 
-**Content grid rules:**
-- Stat cards: 3 or 4 columns (`col-md-4` or `col-md-3`)
-- Main/sidebar split: **keep stacked** or use `col-md-6 + col-md-6` for
-  balanced two-column layouts. Do NOT use the 8/4 split at md — it cramps the
-  narrow column.
-- Form fields: `col-md-6` for paired fields (name/email, date range)
-- Tables: wrap in `.table-responsive` — UNLESS rows have action dropdowns, in which case follow [`table-action-menu.md`](./table-action-menu.md) → "Overflow / Dropdown Clipping"
-- Card header tabs: keep visible but consider shorter labels
-  (`<span class="d-none d-xl-inline">Latest Families</span><span class="d-xl-none">New</span>`)
+- Full vertical sidebar (about 15rem), so the content area is narrower than the viewport
+- Stat cards `col-lg-3`, `col-lg` (auto-equal) or `col-lg-2`
+- Main + sidebar cards `col-lg-8` + `col-lg-4`
+- Full tab labels; multi-column forms `col-lg-4` or `col-lg-3`
 
-### Form factor 3: Laptop / Desktop (≥ 1200px)
-
-**Chrome:**
-- Full vertical Tabler sidebar on the left (`navbar-expand-xl`)
-- Content area is narrower than viewport — account for the ~15rem sidebar
-- Topbar becomes the page header bar
-
-**Content grid rules:**
-- Stat cards: 4, 5, or 6 columns (`col-lg-3`, `col-lg` auto-equal, `col-lg-2`)
-- Main + sidebar cards: `col-lg-8` + `col-lg-4` (the canonical 2/3–1/3 split)
-- Dense card tabs become full labels (`d-none d-xl-inline`)
-- Multi-column forms OK: `col-lg-4` or `col-lg-3`
-
-> [!NOTE]
-> We use `col-lg-*` at 992px (not 1200px) for the 8/4 split because
-> the 992–1199 band still benefits from side-by-side content even though the
-> sidebar hasn't appeared yet. `col-lg-*` = "start being wide at 992px".
+`col-lg-*` starts at 992px, inside the Tablet range, so the 8/4 split and 4-up stat cards begin at wide tablet. Use `col-xl-*` to start at the 1200px sidebar threshold.
 
 ## Canonical Patterns
 
-### Stat cards row <!-- learned: 2026-04-09 -->
+### Stat cards row
 
-The project standard is **`col-6 col-lg-3`** for 4 stat cards, or **`col-6 col-lg`**
-(auto-equal) for 5+ stat cards.
-
-> [!WARNING] Heads-up on the breakpoint vs the form-factor model
-> Bootstrap's `lg`
-> breakpoint activates at **992px**, which sits *inside* the Tablet form
-> factor (768–1199.98px) defined above — it is not the same as the 1200px
-> Laptop boundary. So `col-6 col-lg-3` actually goes:
-> - **2-up** on Mobile and narrow Tablet (`< 992px`)
-> - **4-up** from wide Tablet through Laptop/Desktop (`≥ 992px`)
->
-> This is intentional — by 992px there's enough width for 4 stat cards to
-> breathe, so we let them flow before the 1200px sidebar transition. If you
-> truly need to gate 4-up on the 1200px sidebar threshold, use `col-xl-3`
-> instead. Do **not** describe `col-lg-*` as "laptop and up" in narrative
-> text — it switches at 992px (wide tablet), not 1200px.
-
-**Do not use `col-sm-6`** — it stacks to one-up below 576px, which PR #8524
-explicitly rejected because 2-up looks better on 375px phones.
+Use `col-6 col-lg-3` for 4 cards, `col-6 col-lg` for 5 or more, and `col-6 col-md-4 col-lg-2` for 6. Cards stay two-up on phones, so `col-sm-*` is not used.
 
 ```html
-<!-- ✅ CORRECT — 4 stat cards: 2-up below lg (992px), 4-up at lg and above -->
 <div class="row mb-3">
     <div class="col-6 col-lg-3">
         <div class="card card-sm">
@@ -138,131 +77,48 @@ explicitly rejected because 2-up looks better on 375px phones.
     </div>
     <!-- three more col-6 col-lg-3 cards -->
 </div>
-
-<!-- ✅ CORRECT — 5 stat cards, auto-equal columns on laptop -->
-<div class="row mb-3">
-    <div class="col-6 col-lg"><!-- card --></div>
-    <div class="col-6 col-lg"><!-- card --></div>
-    <div class="col-6 col-lg"><!-- card --></div>
-    <div class="col-6 col-lg"><!-- card --></div>
-    <div class="col-6 col-lg"><!-- card --></div>
-</div>
-
-<!-- ✅ CORRECT — 6 stat cards, 2/3/6 progression -->
-<div class="row mb-3">
-    <div class="col-6 col-md-4 col-lg-2"><!-- card --></div>
-    <!-- five more -->
-</div>
-
-<!-- ❌ WRONG — legacy pattern, stacks to 1-up on small phones -->
-<div class="col-sm-6 col-lg-3"><!-- ... --></div>
 ```
 
-### Main content + sidebar layout
-
-Two-column card grids (main content + a narrower sidebar) use `col-lg-8 + col-lg-4`.
-On mobile and tablet they stack automatically (both become `col-12`).
+### Main content + sidebar
 
 ```html
 <div class="row">
-    <div class="col-lg-8">
-        <!-- People card, Recent Deposits, Tax Checklist — primary content -->
-    </div>
-    <div class="col-lg-4">
-        <!-- Birthdays, System Info, Deposit Statistics — sidebar cards -->
-    </div>
+    <div class="col-lg-8"><!-- primary cards --></div>
+    <div class="col-lg-4"><!-- sidebar cards --></div>
 </div>
 ```
 
-### Tables must be wrapped — but NOT with `.table-responsive` if the rows have action dropdowns <!-- learned: 2026-04-09 -->
+Both columns stack to `col-12` below `lg`.
 
-> [!NOTE] The wrapper rule lives in [`table-action-menu.md`](./table-action-menu.md)
-> `.table-responsive` sets `overflow-x: auto`, which (per CSS spec) forces
-> `overflow-y: auto` as well — and that **clips absolutely-positioned row
-> dropdowns on their last rows**. Tables with per-row action menus therefore need a
-> different wrapper. [`table-action-menu.md`](./table-action-menu.md) →
-> "Overflow / Dropdown Clipping" is the single source of truth for that wrapper, the
-> root cause, and the trigger markup. The summary below repeats its conclusion only —
-> if the two ever disagree, `table-action-menu.md` wins.
+### Table wrappers
 
-**Decision flow for every table in a card:**
+`.table-responsive` sets `overflow-x: auto`, which computes `overflow-y: auto` and clips row dropdowns. `table-action-menu.md` → "Overflow / Dropdown Clipping" owns the rule for tables with action menus; it wins on any disagreement.
 
 ```
-Does the table have per-row action dropdowns?
-├── YES → Use <div style="overflow-x: clip; overflow-y: visible;">
-│         Horizontal overflow stays clipped; the dropdown can still escape
-│         downward. (The older <div style="overflow: visible;"> also stops the
-│         clipping but drops horizontal containment — see table-action-menu.md.)
-└── NO  → Use .table-responsive (proper mobile horizontal scroll)
+Rows have action dropdowns?
+├── yes → <div style="overflow-x: clip; overflow-y: visible;">
+└── no  → <div class="table-responsive">
 ```
 
 ```html
-<!-- ✅ CORRECT — table with row action dropdowns -->
-<div class="card-body">
-    <div style="overflow-x: clip; overflow-y: visible;">
-        <table class="table table-vcenter table-hover card-table">
-            <!-- rows whose last <td> holds the fa-ellipsis-vertical dropdown -->
-        </table>
-    </div>
-</div>
-
-<!-- ✅ CORRECT — table with NO row actions (e.g. simple read-only list) -->
 <div class="card-body p-0">
     <div class="table-responsive">
-        <table class="table table-vcenter table-hover card-table mb-0">
-            <!-- ... -->
-        </table>
+        <table class="table table-vcenter table-hover card-table mb-0">...</table>
     </div>
 </div>
-
-<!-- ❌ WRONG — raw table in card body overflows on phones -->
-<div class="card-body">
-    <table class="table" id="groupsTable"></table>
-</div>
-
-<!-- ❌ WRONG — clips dropdowns on last row (very easy to miss!) -->
-<div class="table-responsive">
-    <table>
-        <tr><td>...<div class="dropdown"><!-- CLIPPED --></div></td></tr>
-    </table>
-</div>
 ```
 
-DataTables-generated tables (`$('#groupsTable').DataTable(...)`) should also
-sit inside the same wrapper rules (`overflow: visible` for action-menu rows,
-`.table-responsive` otherwise). The global config in
-[`src/Include/Header.php:136`](../../../src/Include/Header.php#L136) sets
-`window.CRM.plugin.dataTable.responsive = true`, so the responsive plugin is
-enabled by default — but `.table-responsive` (or the `overflow: visible`
-escape hatch) is still required to protect the *card layout* from
-extra-wide content the responsive plugin can't collapse.
-
-### Tab labels: show/hide by form factor
-
-For card header tabs where labels are long, show short labels on narrow screens
-and long labels on desktop:
-
-```html
-<a class="nav-link" ...>
-    <i class="fa-solid fa-house-plus me-1"></i>
-    <span class="d-none d-xl-inline"><?= gettext('Latest Families') ?></span>
-    <span class="d-xl-none"><?= gettext('New') ?></span>
-</a>
-```
+DataTables tables follow the same wrapper rules. `window.CRM.plugin.dataTable` enables the responsive plugin by default (`webpack/crm-bootstrap.js`); the wrapper still protects the card layout from content the plugin cannot collapse.
 
 ### Touch targets
 
-- Buttons and icon links: minimum **44×44px** on mobile. Tabler's `.btn` default
-  is ~38px — bump to `.btn-lg` or add `min-height: 44px` for mobile-only
-  contexts (check-in, kiosk, auth pages).
-- Social icons in footer: 44×44px (see `src/skin/scss/_authentication-pages.scss`
-  after PR #8555).
-- Form inputs: 44px tall is the BS5 default for `.form-control` — OK as-is.
+- Buttons and icon links reach 44x44px on mobile. Tabler's `.btn` is about 38px, so use `.btn-lg` or `min-height: 44px` in touch contexts (check-in, kiosk, auth pages)
+- Footer social icons are 44x44px (`src/skin/scss/_authentication-pages.scss`)
+- `.form-control` height is fine as is
 
-### Safe-area insets (notched devices)
+### Safe-area insets
 
-All logged-out templates include `viewport-fit=cover`. Inside their CSS, pad with
-the safe-area variables so content clears the notch/home indicator:
+Logged-out templates include `viewport-fit=cover`. Pad with the safe-area variables:
 
 ```scss
 .auth-footer {
@@ -272,119 +128,9 @@ the safe-area variables so content clears the notch/home indicator:
 }
 ```
 
-### Page headers — icon-only on mobile
+### Forms
 
-Page header button lists get too crowded on mobile. Hide the label text and show
-only the icon below `sm` (575.98px). This pattern is implemented globally in
-`src/skin/scss/_tabler-bridge.scss` for `.page-header .btn-list .btn`:
-
-```scss
-@media (max-width: 575.98px) {
-    .page-header .btn-list .btn {
-        font-size: 0;
-    }
-    .page-header .btn-list .btn i {
-        font-size: 1rem;
-    }
-}
-```
-
-## Form Factor Testing Checklist
-
-Before shipping any page change, verify at these widths:
-
-- **375×812** (iPhone X portrait) — tightest mobile
-- **414×896** (iPhone 11 Pro Max) — larger mobile
-- **768×1024** (iPad portrait) — tablet lower bound, nav still hamburger
-- **1024×768** (iPad landscape) — tablet upper band, nav still hamburger
-- **1200×800** (small laptop) — nav sidebar just appeared
-- **1440×900** (standard laptop) — typical working size
-- **1920×1080** (desktop) — wide monitor
-
-Cypress mobile tests live in `cypress/e2e/ui/mobile/` and default to 375×812
-(see `cypress/e2e/ui/mobile/mobile-ux.spec.js` from PR #8555). Add a new spec
-there when introducing a new page or fixing a responsive bug.
-
-## Anti-patterns to avoid
-
-| Anti-pattern | Fix |
-|---|---|
-| `col-sm-6 col-lg-3` stat cards | Use `col-6 col-lg-3` (don't stack on tiny phones) |
-| `col-lg-8 col-md-8` main content | Use `col-lg-8` only; stack on md |
-| Inline `width: 300px` on inputs | Use `col-md-*` wrappers + `w-100` |
-| Bare `<table class="table">` in card (no row dropdowns) | Wrap in `.table-responsive` |
-| Bare `<table class="table">` in card (WITH row dropdowns) | Wrap in `<div style="overflow-x: clip; overflow-y: visible;">` — `.table-responsive` clips dropdowns (see [`table-action-menu.md`](./table-action-menu.md)) |
-| `navbar-expand-lg` on vertical navbar | The canonical Tabler sidebar is `navbar-expand-xl` |
-| Hardcoded icon `font-size: 12px` on touch targets | Default (≥16px) or bigger for mobile |
-| Long labels crammed into card tabs | Use `d-none d-xl-inline` + `d-xl-none` short label pair |
-| Using `vh` for min heights of interactive content | Mobile browser chrome moves — use `min-height` with a pixel value |
-
-## Admin pages are laptop-optimized by design <!-- learned: 2026-04-09 -->
-
-Admin pages (`src/admin/**`, `SystemSettings.php`, Plugin Management,
-OptionManager, PropertyList, user management) are intentionally built for
-laptop/desktop use. They contain dense configuration tables, multi-column
-settings grids, and bulk operations that are **not expected to be usable on a
-phone**. When auditing responsive behaviour, treat admin pages as laptop-only
-and do not penalize them for lacking mobile stacking.
-
-Rule of thumb: if a page sits under the **Admin** menu item, it is laptop-first.
-All other top-level nav pages and their child pages must work on mobile (<768),
-tablet (768–1199) and laptop (≥1200).
-
-## Main nav page audit reference <!-- learned: 2026-04-09 -->
-
-The main sidebar destinations (from `src/ChurchCRM/Config/Menu/Menu.php`) and
-whether they follow the canonical patterns:
-
-| Nav item | File | Grid pattern | Status |
-|---|---|---|---|
-| Dashboard | `src/v2/templates/root/dashboard.php` | 5 stat cards `col-6 col-lg`, 8/4 split | ✅ |
-| People → Dashboard | `src/people/views/dashboard.php` | 4 stat `col-6 col-lg-3`, 6/6 split | ✅ |
-| Groups → Dashboard | `src/groups/views/dashboard.php` | 4 stat `col-6 col-lg-3`, DataTable with row dropdowns in `overflow:visible` wrapper | ✅ |
-| Sunday School → Dashboard | `src/groups/views/sundayschool/dashboard.php` | 6 stat `col-6 col-md-4 col-lg-2` | ✅ (md step added 2026-04-09) |
-| Finance → Dashboard | `src/finance/views/dashboard.php` | 4 stat `col-6 col-lg-3`, 8/4 split, `table-responsive` | ✅ |
-| Admin → Dashboard | `src/admin/views/dashboard.php` | 8/4 split, `col-md-6 col-lg-4` quick-start grid | ✅ (laptop-optimized) |
-
-## Next-level page audit (mobile/tablet-relevant) <!-- learned: 2026-04-09 -->
-
-Second-tier pages most likely to be used on a phone or tablet (field use,
-check-in kiosks, quick lookups). Admin pages intentionally excluded — see above.
-
-| Page | File | Issue found | Fix |
-|---|---|---|---|
-| Person List | `src/v2/templates/people/person-list.php` | Filter grid jumped `col-12` → `col-lg-*`, collapsed on tablets | `col-12 col-sm-6 col-lg-{3,4}` 2026-04-09 |
-| Family List | `src/v2/templates/people/family-list.php` | `#families` table has row dropdowns — already used `overflow:visible` wrapper | ✅ |
-| Events Dashboard | `src/event/views/list-events.php` | Hardcoded `<th style="width: NNNpx">` prevented column reflow | Removed inline widths 2026-04-09 (kept `overflow:visible` wrapper for row dropdowns) |
-| Event Check-in | `src/event/views/checkin.php` | Attendance table has row dropdowns — already used `overflow:visible` wrapper | ✅ |
-| Photo Directory | `src/v2/templates/people/photo-gallery.php` | Already uses `col-6 col-md-4 col-lg-3` grid | ✅ |
-| Family Map | `src/people/views/map-view.php` | Full-viewport map — intentionally desktop-ish but works on tablet | ✅ |
-| Person View | `src/people/views/person-view.php` | Uses `col-lg-8`/`col-lg-4` split, stacks cleanly | ✅ |
-| Calendar | `src/event/views/calendars.php` | FullCalendar handles its own responsive layout | ✅ |
-
-## Events / Groups / Sunday School audit <!-- learned: 2026-04-09 -->
-
-Third pass focused on pages used during services/check-in (phones and tablets
-at the back of the room):
-
-| Page | File | Issue found | Fix |
-|---|---|---|---|
-| Event Editor | `src/event/views/editor.php` | Form built as `<table>` with 9× `style="width:180px"` on `<td>` labels — broke mobile entirely | Converted to Bootstrap `row`/`col-md-3`+`col-md-9` form pattern 2026-04-09 |
-| Event Types List | `src/event/views/types-list.php` | Row action dropdowns hardcoded in PHP were wrapped in `table-responsive`, clipping them — doc previously claimed this was already `overflow:visible` (it wasn't) | Fixed to `overflow:visible` 2026-07-26 |
-| Event Type Edit | `src/event/views/types-edit.php` | `<th style="width: 200px;">` on Actions column | Replaced with `w-1` utility class 2026-04-09 |
-| Group View | `src/groups/views/group-view.php` | `#membersTable`'s hand-rolled dropdown (built client-side, not the shared `render*ActionMenu()` helper) was wrapped in `table-responsive` — doc previously claimed this was already `overflow:visible` (it wasn't) | Fixed to `overflow:visible` 2026-07-26 |
-| Sunday School Class View | `src/groups/views/sundayschool/class-view.php` | Student roster has row action dropdowns — `overflow:visible` wrapper is correct | ✅ (no change; must stay `overflow:visible` for dropdowns) |
-| Event Repeat Editor | `src/event/views/repeat-editor.php` | Small fixed-width inline selects (`w:auto`, `w:100px`) inside `flex-wrap` rows | ✅ (wraps cleanly, intentionally small) |
-| Event Types New | `src/event/views/types-new.php` | Narrow time-picker widths (70/100/150px) | ✅ (inline time-pickers, acceptable sizing) |
-
-## Form layout anti-pattern: `<table>` for form rows <!-- learned: 2026-04-09 -->
-
-Several legacy forms (e.g. the pre-fix `src/event/views/editor.php`) use a
-`<table class="table">` with `<td style="width:180px">` for the label column
-and `<td colspan="3">` for the input. This **cannot be made responsive** — the
-label column stays 180px on a 360px phone, leaving 180px for the input.
-
-**Fix**: replace with the Bootstrap horizontal form pattern:
+Lay out form rows with the Bootstrap horizontal pattern. A `<table>` with fixed-width label cells cannot reflow on a phone.
 
 ```html
 <div class="row mb-3">
@@ -397,9 +143,35 @@ label column stays 180px on a 360px phone, leaving 180px for the input.
 </div>
 ```
 
-On mobile (<768) this stacks label-above-input. On tablet/laptop the label
-sits right-aligned at 25% and the input fills 75%. Use `offset-md-3` for
-action rows that need to align with the input column.
+Labels stack above inputs below 768px. Use `offset-md-3` for action rows that align with the input column. Table column widths use utility classes (`w-1`), not inline `width`.
 
-When adding a new top-level or second-level nav destination, add it to the
-appropriate table as part of the same PR.
+## Testing Checklist
+
+Check every page change in a browser at:
+
+- 375x812 (phone, tightest)
+- 414x896 (large phone)
+- 768x1024 (tablet portrait, hamburger nav)
+- 1024x768 (tablet landscape, hamburger nav)
+- 1200x800 (sidebar appears)
+- 1440x900 (typical laptop)
+- 1920x1080 (wide desktop)
+
+Cypress mobile specs live in `cypress/e2e/ui/mobile/` and default to 375x812. Add a spec there for a new page or a responsive fix.
+
+## Layout Reference
+
+| Instead of | Use |
+|---|---|
+| `col-sm-6 col-lg-3` stat cards | `col-6 col-lg-3` |
+| `col-lg-8 col-md-8` main content | `col-lg-8`, stacked at `md` |
+| Inline `width: 300px` on inputs | `col-md-*` wrapper + `w-100` |
+| Bare `<table class="table">` in a card | `.table-responsive`, or the clip wrapper when rows have dropdowns |
+| `navbar-expand-lg` on the vertical navbar | `navbar-expand-xl` |
+| Icon `font-size: 12px` on touch targets | 16px or larger |
+| Long card tab labels | `d-none d-xl-inline` + `d-xl-none` short label pair |
+| `vh` for min-height of interactive content | `min-height` in px (mobile browser chrome moves) |
+
+## Admin Pages
+
+Admin pages (anything under the Admin menu: `src/admin/**`, `SystemSettings.php`, Plugin Management, OptionManager, PropertyList, user management) are built for laptop/desktop: dense configuration tables and bulk operations. All other nav pages and their children work at mobile, tablet and laptop widths.

@@ -8,41 +8,33 @@ complexity: "intermediate"
 
 # Skill: Testing with Cypress
 
-## Context
-This skill covers writing and running Cypress tests for API endpoints and UI workflows in ChurchCRM.
+Rules for where specs go, seeded data, secrets and time zones: `cypress-testing.md`. This card covers spec patterns, log review and the test stack.
 
-## Test Structure
+## Structure
 
-- **API Tests**: `cypress/e2e/api/private/[feature]/[endpoint].spec.js`
-- **UI Tests**: `cypress/e2e/ui/[feature]/`
-- **Configuration**: `cypress/configs/docker.config.ts` (standard runner used by `npm run test` / `test:open` / `test:api` / `test:ui` / the `test-root` + `test-subdir` CI jobs) and `cypress/configs/new-system.config.ts` (setup-wizard / fresh-install runner used by `npm run test:new-system` and the `test-new-system` CI job)
+- API specs: `cypress/e2e/api/private/{standard,admin,...}/`
+- UI specs: `cypress/e2e/ui/[feature]/`
+- Configs: `cypress/configs/docker.config.ts` (standard runner for `npm run test`, `test:open`, `test:api`, `test:ui` and the root/subdir CI jobs) and `cypress/configs/new-system.config.ts` (setup-wizard / fresh-install runner for `npm run test:new-system`). Every script passes `--config-file`; credentials live in these configs
+- Support: `cypress/support/ui-commands.js`, `cypress/support/api-commands.js` (imported from `cypress/support/e2e.js`)
+- CI logs: `cypress-terminal-report` captures browser console output into `cypress/logs/`, uploaded as GitHub Actions artifacts
 
-## Cypress Configuration & Logging
+## API Specs
 
-- **Enhanced logging**: `cypress-terminal-report` plugin captures browser console output
-- **CI artifacts**: Logs uploaded to `cypress/logs/`, accessible via GitHub Actions artifacts
-- **Log retention**: 30 days for debugging failed CI runs
-
-## API Testing
-
-### Helper Commands (NEVER use cy.request directly)
+Call endpoints through the helper commands in `cypress/support/api-commands.js` (`cy.makePrivateAdminAPICall`, `cy.makePrivateUserAPICall`, the role-specific `makePrivate*APICall` variants, and `cy.apiRequest` for non-failing requests):
 
 ```javascript
-// Use these helper commands instead of cy.request
 cy.makePrivateAdminAPICall("POST", "/api/payments", payload, 200)
 cy.makePrivateUserAPICall("GET", "/api/events", null, 200)
 cy.apiRequest({ method: "GET", url: "/api/events", failOnStatusCode: false })
 ```
 
-### Test Categories (Required for Each Endpoint)
+Cover each endpoint with:
 
-1. **Successful operations** - Valid payload, 200 response, check data structure
-2. **Validation tests** - Invalid inputs (bad dates, missing fields), 400 response
-3. **Type safety** - Verify type conversions don't cause runtime errors
-4. **Error handling** - 401/403 auth, 404 not found, 500 errors
-5. **Edge cases** - Null values, empty arrays, boundary conditions
-
-### Example API Test Structure
+1. Success: valid payload, 200, expected data structure and property types
+2. Validation: invalid input (bad dates, missing fields), 400
+3. Auth: 401 unauthenticated, 403 insufficient role
+4. Not found: 404
+5. Edge cases: null values, empty arrays, boundaries
 
 ```javascript
 describe('POST /api/payments', () => {
@@ -50,361 +42,136 @@ describe('POST /api/payments', () => {
         cy.setupAdminSession();
     });
 
-    it('should successfully create payment with valid data', () => {
-        const payload = {
-            familyId: 1,
-            amount: 100.00,
-            method: 'CHECK',
-            date: '2024-01-15'
-        };
-        
+    it('creates a payment with valid data', () => {
+        const payload = { familyId: 1, amount: 100.00, method: 'CHECK', date: '2024-01-15' };
+
         cy.makePrivateAdminAPICall("POST", "/api/payments", payload, 200)
             .then((response) => {
                 expect(response.body).to.have.property('success', true);
                 expect(response.body.data).to.have.property('paymentId');
-                expect(response.body.data.amount).to.equal(100.00);
             });
     });
 
-    it('should return 400 for invalid date format', () => {
-        const payload = {
-            familyId: 1,
-            amount: 100.00,
-            method: 'CHECK',
-            date: 'invalid-date'
-        };
-        
-        cy.makePrivateAdminAPICall("POST", "/api/payments", payload, 400);
+    it('returns 400 for an invalid date', () => {
+        cy.makePrivateAdminAPICall("POST", "/api/payments",
+            { familyId: 1, amount: 100.00, method: 'CHECK', date: 'invalid-date' }, 400);
     });
 
-    it('should return 401 when not authenticated', () => {
+    it('returns 401 when not authenticated', () => {
         cy.clearCookies();
-        cy.apiRequest({ 
-            method: "POST", 
-            url: "/api/payments", 
-            body: {},
-            failOnStatusCode: false 
-        }).then((response) => {
-            expect(response.status).to.equal(401);
-        });
+        cy.apiRequest({ method: "POST", url: "/api/payments", body: {}, failOnStatusCode: false })
+            .then((response) => {
+                expect(response.status).to.equal(401);
+            });
     });
 });
 ```
 
-## UI Testing
+## UI Specs
 
-### Session-Based Login Pattern (REQUIRED)
-
-**All UI tests MUST use modern session-based login.** This pattern uses `cy.session()` for efficient login caching across tests.
-
-**✅ CORRECT - Modern Pattern (REQUIRED for all new tests):**
+Log in with `cy.session()`-based commands in `beforeEach`:
 
 ```javascript
 describe('Feature X', () => {
     beforeEach(() => {
-        cy.setupAdminSession();  // OR cy.setupStandardSession() for standard users
+        cy.setupAdminSession();
         cy.visit('/path/to/page');
     });
 
-    it('should complete workflow', () => {
+    it('completes the workflow', () => {
         cy.get('#element-id').click();
-        cy.contains('Expected text').should('exist');
+        cy.get('#result').should('exist');
     });
 });
 ```
 
-**❌ WRONG - Old Pattern (DO NOT USE):**
+Session commands (credentials come from the config's `env`):
 
-```javascript
-describe('Feature X', () => {
-    it('should complete workflow', () => {
-        cy.loginAdmin('/path/to/page');  // ❌ DEPRECATED - removed
-        cy.get('#element-id').click();
-    });
-});
-```
+- `cy.setupAdminSession()` (`admin.*`)
+- `cy.setupStandardSession()` (`standard.*`)
+- `cy.setupNoFinanceSession()` (`nofinance.*`)
+- Other role sessions: `cypress/support/ui-commands.js`
 
-### Available Session Commands
+Add a credential needed by both runners to both `cypress/configs/docker.config.ts` and `cypress/configs/new-system.config.ts`. Credentials stay in config, never in spec files.
 
-- `cy.setupAdminSession()` - Authenticates as admin (reads `admin.username`, `admin.password` from config)
-- `cy.setupStandardSession()` - Authenticates as standard user (reads `standard.username`, `standard.password` from config)
-- `cy.setupNoFinanceSession()` - Authenticates as user without finance permission (reads `nofinance.username`, `nofinance.password` from config)
+Other helpers: `cy.typeInQuill(selector, text)`, `cy.tomSelect*`, `cy.waitForNotification()`.
 
-### Credentials Configuration
+Spec structure:
 
-Credentials live in the Cypress config files under `cypress/configs/` that
-`npm run test*` passes via `--config-file`:
+- Select by element id, `data-cy` or `name`; keep those ids stable in templates
+- Test complete user workflows end to end
+- Name tests for the behavior they check
+- Keep each test independent of state left by another
+- Delete commented-out code and TODOs
 
-- `cypress/configs/docker.config.ts` — standard CI/dev runner
-- `cypress/configs/new-system.config.ts` — setup-wizard / fresh-install runner
+## Debugging 500 Errors
 
-There is **no** root `cypress.config.ts` and no `docker/cypress.config.ts` —
-don't add one; every script passes `--config-file` explicitly.
+Find the root cause of every HTTP 500 in a spec.
 
-```typescript
-env: {
-    'admin.username': 'admin',
-    'admin.password': 'changeme',
-    'standard.username': 'tony.wade@example.com',
-    'standard.password': 'basicjoe',
-    'nofinance.username': 'judith.matthews@example.com',
-    'nofinance.password': 'noMoney$',
-}
-```
+1. Clear logs: `rm -f src/logs/$(date +%Y-%m-%d)-*.log`
+2. Run the failing spec
+3. Read `src/logs/$(date +%Y-%m-%d)-php.log` and `-app.log`
 
-**DO NOT:**
-- ❌ Hardcode credentials in test files
-- ❌ Add commented-out tests or TODO comments - remove them
-- ❌ Add new users to only one config — if the user is needed by both
-  runners, add the credential to BOTH `cypress/configs/docker.config.ts`
-  and `cypress/configs/new-system.config.ts`
+Common causes: `HttpNotFoundException` (wrong route path, e.g. `/api/family/` vs `/api/families/`), `PropelException` (ORM query, missing column, type mismatch), `TypeError` (null where an object is expected), missing middleware or wrong middleware order.
 
-### Other Available Commands
-
-- `cy.typeInQuill(selector, text)` - Rich text editor input
-
-### Test Structure Requirements
-
-- **Maintain element IDs** for test selectors (use `cy.get('#element-id')`)
-- **Avoid text-based selectors** (fragile across language changes)
-- **Test complete user workflows** end-to-end
-- **Clear test descriptions** (avoid generic names)
-- **Clean test files** (no commented code blocks)
-
-## Debugging 500 Errors (CRITICAL)
-
-**NEVER ignore or skip a test that returns HTTP 500.** Always investigate the root cause:
-
-### Debugging Workflow
-
-1. **Clear logs before reproducing**: `rm -f src/logs/$(date +%Y-%m-%d)-*.log`
-2. **Run the failing test** to reproduce the error
-3. **Check PHP logs**: `cat src/logs/$(date +%Y-%m-%d)-php.log`
-4. **Check app logs**: `cat src/logs/$(date +%Y-%m-%d)-app.log`
-
-**Common 500 error causes:**
-- `HttpNotFoundException: Not found` - Wrong route path (e.g., `/api/family/` vs `/api/families/`)
-- `PropelException` - ORM query issues, missing columns, type mismatches
-- `TypeError` - Null value passed where object expected
-- Missing middleware or incorrect middleware order
-
-**Example fix workflow:**
-
-```bash
-# 1. Clear logs
-rm -f src/logs/$(date +%Y-%m-%d)-*.log
-
-# 2. Run failing test
-npx cypress run --spec "cypress/e2e/api/path/to/test.spec.js"
-
-# 3. Check logs for error
-cat src/logs/$(date +%Y-%m-%d)-php.log | tail -50
-```
+Review both logs after every run, including passing runs, to catch silently logged exceptions.
 
 ## Running Tests
 
-### Local Development
-
 ```bash
-# Run all tests (headless)
-npm run test
-
-# Run specific test file
-npx cypress run --spec "cypress/e2e/ui/path/to/test.spec.js"
-
-# Interactive browser testing
-npm run test:ui
-
-# PHP-level regression tests (no Docker or database needed): /api error
-# redaction rules and the canonical error payload
-npm run test:php
-
-# CRITICAL: Clear logs before every test run
-rm -f src/logs/$(date +%Y-%m-%d)-*.log
-
-# CRITICAL: Review logs after tests (even if they pass)
-cat src/logs/$(date +%Y-%m-%d)-php.log      # PHP errors, ORM errors
-cat src/logs/$(date +%Y-%m-%d)-app.log      # App events
+npm run test                                          # all Cypress specs, headless
+npx cypress run --config-file cypress/configs/docker.config.ts --spec "cypress/e2e/ui/path/to/test.spec.js"
+npm run test:open                                     # interactive
+npm run test:php                                      # PHP regression tests, no Docker or database needed
 ```
 
-### CRITICAL Testing Workflow for Agents
-
-**BEFORE running any test:**
-1. Clear logs: `rm -f src/logs/$(date +%Y-%m-%d)-*.log`
-
-**AFTER test completion (pass OR fail):**
-2. Review PHP log: `cat src/logs/$(date +%Y-%m-%d)-php.log`
-3. Review App log: `cat src/logs/$(date +%Y-%m-%d)-app.log`
-
-**Even if tests pass**: Verify no 500 errors or exceptions were logged silently.
-
-### CI/CD Testing (GitHub Actions)
-
-**CI boundary rule:** push/PR CI is for validation that needs a clean-room,
-integrated, matrix, packaging, or GitHub environment. A deterministic check
-that can fail locally must be wired into the commit/pre-push checkpoint before
-it is added to CI. Do not add late CI feedback for something we can reject
-before the push.
-
-Exhaustive suites that are too expensive for every push (for example the full
-locale matrix) belong in `.github/workflows/build-test-nightly.yml`, not in
-the normal build/package dependency graph.
-
-- Docker profiles: `test`/`ci` in `docker/docker-compose.yaml`; `dev` is a separate file with no profiles (`docker/docker-compose.dev.yaml`); CI is actually split into `ci-root`/`ci-subdir`/`ci-new-system` profiles in `docker/docker-compose.parallel.yaml`
-- CI uses the exact `docker:ci:*` scripts defined in `package.json`
-- Artifacts uploaded: `cypress-artifacts-{run_id}` contains logs, screenshots, videos
-- Access via Actions → Workflow run → Artifacts section
-- Debugging: Download `cypress-reports-{branch}` for detailed failure analysis
-
-## Docker Test Management
+Test stack:
 
 ```bash
-# Development
-npm run docker:dev:start     # Start the Docker development stack
-npm run docker:dev:stop      # Stop containers
-npm run docker:dev:logs      # View logs
-
-# Testing
-npm run docker:test:start       # Start test containers
-npm run docker:test:stop        # Stop containers and keep volumes
-npm run docker:test:rebuild     # Full rebuild with new images
-npm run docker:test:down        # Remove containers and volumes
-npm run docker:test:reset:db    # Reload the seeded test database
+npm run docker:test:start       # start test containers
+npm run docker:test:stop        # stop, keep volumes
+npm run docker:test:rebuild     # rebuild images
+npm run docker:test:down        # remove containers and volumes
+npm run docker:test:reset:db    # reload the seeded test database
 ```
 
-## CRITICAL: Keep Tests in Sync with Code Changes
+Dev stack: `npm run docker:dev:start`, `docker:dev:stop`, `docker:dev:logs`.
 
-### Test Updates Are Part of the Commit
+## CI
 
-**Whenever you change code that has tests, update those tests in the same commit.** Tests are not optional follow-up work — they're part of the feature.
+- Push/PR CI validates what needs a clean-room, integrated, matrix, packaging or GitHub environment. A deterministic check that can run locally belongs in the commit/pre-push checkpoint first
+- Exhaustive suites too expensive for every push (e.g. the full locale matrix) run in `.github/workflows/build-test-nightly.yml`
+- Docker profiles: `test` and `ci` in `docker/docker-compose.yaml`; `docker/docker-compose.dev.yaml` is the dev stack; `ci-root` / `ci-subdir` / `ci-new-system` profiles in `docker/docker-compose.parallel.yaml`
+- CI runs the `docker:ci:*` scripts from `package.json`
+- Artifacts: `cypress-artifacts-{run_id}` (logs, screenshots, videos) and `cypress-reports-{branch}`, under Actions, workflow run, Artifacts
 
-**Examples of changes that REQUIRE test updates:**
+## Keep Tests in Sync with Code
 
-1. **Required fields added/removed** — Update validation tests
-   ```javascript
-   // ✅ CORRECT: When adding required field City to a form
-   it("should require City field", () => {
-       cy.get("#sChurchCity").should("have.attr", "required");
-   });
-   ```
+Update the specs in the same commit as the code change:
 
-2. **API response schema changed** — Update response assertion tests
-   ```javascript
-   // ✅ CORRECT: When API adds new 'status' field
-   cy.makeAdminAPICall("GET", "/api/users/1", null, 200).then((res) => {
-       expect(res.body).to.have.property('status');  // Updated
-   });
-   ```
+- Required field added or removed: update validation specs
+- API response schema changed: update response assertions
+- Form layout or labels moved: update element existence and navigation steps
+- Dropdown options changed: update selector assertions
 
-3. **Form field layout/labels changed** — Update element existence and positioning tests
-   ```javascript
-   // ✅ CORRECT: When moving form fields to a different tab or row
-   cy.get("#location-tab").click();
-   cy.get("#sChurchCity").should("exist");
-   ```
+Workflow: change the code, run the existing specs, update them to the new behavior with the same intent, rerun, review code and spec diffs together, commit both. Fix or rewrite failing specs; commit without `skip()` / `.only()` and without commented-out tests.
 
-4. **Dropdown/select options changed** — Update selector tests
-   ```javascript
-   // ✅ CORRECT: When dropdown now uses API instead of hardcoded data
-   cy.get("#sChurchState").find("option").should("have.length.greaterThan", 50);
-   ```
+New API endpoints ship with specs in `cypress/e2e/api/private/standard/` (standard-user endpoints) or `cypress/e2e/api/private/admin/` (admin-only), covering success, response shape and 401.
 
-### Workflow: Code Change → Test Update → Commit
+Before committing: clear logs, run the touched specs, read both logs, commit once specs pass and logs are clean.
 
-1. **Make the code change**
-2. **Run the existing tests** — They will likely fail
-3. **Update tests to match the new behavior** — Keep the test intent the same, just update assertions/selectors
-4. **Run tests again** — Verify they pass
-5. **Review both code AND test changes** before commit
-6. **Commit both together**
-
-**DO NOT:**
-- ❌ Commit code changes without updating failing tests
-- ❌ Add `skip()` or `.only()` to hide failing tests
-- ❌ Commit commented-out test code
-- ❌ Remove tests to make the build pass
-
-## Test Requirements Before Committing
-
-**ALWAYS add API tests when creating new API endpoints:**
-
-- **Test location**: `cypress/e2e/api/private/standard/` for standard user endpoints
-- **Test location**: `cypress/e2e/api/private/admin/` for admin-only endpoints
-- **Required test cases**:
-  1. Success case - Returns expected status code and data structure
-  2. Data validation - Response contains expected properties and types
-  3. Authentication - Returns 401 when not authenticated
-
-**Run tests before committing:**
-
-```bash
-# Clear logs
-rm -f src/logs/$(date +%Y-%m-%d)-*.log
-
-# Run relevant tests
-npx cypress run --e2e --spec "path/to/test.spec.js"
-
-# Review logs (even if tests pass)
-cat src/logs/$(date +%Y-%m-%d)-php.log
-cat src/logs/$(date +%Y-%m-%d)-app.log
-```
-
-**Only proceed to commit after:**
-- Tests pass successfully
-- Logs show no hidden errors
-
-## Pre-Commit Testing
-
-### Always Test Before Committing
-
-- **Run Relevant Tests**: Before committing any changes, ensure all Cypress tests related to the modified files are executed.
-- **Clear Logs**: Clear old logs before running tests to avoid confusion:
-  ```bash
-  rm -f src/logs/$(date +%Y-%m-%d)-*.log
-  ```
-- **Verify Results**: Ensure all tests pass successfully. Address any failures before proceeding.
-
-### Best Practices for Cypress Tests
-
-- **Test Isolation**: Ensure tests are independent and do not rely on the state left by other tests.
-- **Use Selectors**: Prefer element IDs or data attributes for selectors (e.g., `cy.get('#element-id')` or `cy.get('[data-cy=selector]')`). Avoid text-based selectors.
-- **Avoid Hardcoding**: Use configuration-driven credentials and dynamic data where possible.
-- **Clean State**: Reset application state between tests to ensure consistency.
-- **Descriptive Names**: Use clear and descriptive test names to indicate the purpose of each test.
-
-### Timing-Based Flakiness (REQUIRED) <!-- learned: 2026-04-07 -->
-
-Four patterns cause most timing-related flaky failures. Full detail and code examples are in `cypress-testing.md` under **Preventing Flaky Tests (Timing & State)**. Summary:
+## Timing-Based Flakiness
 
 | Pattern | Rule |
 |---------|------|
-| `cy.intercept()` placement | Register **before** `cy.visit()` or the triggering action — never after |
-| Missing `cy.wait()` on mutations | Every POST/PUT/DELETE must be awaited, including reset/cleanup calls |
-| `select()` on current value | Force a different baseline value first — same-value `select()` fires no `change` event |
-| Unscoped `cy.contains()` | Always scope to a container ID — bare `cy.contains("text")` matches sidebar nav |
+| `cy.intercept()` placement | Register before `cy.visit()` or the triggering action |
+| Mutations | `cy.wait("@alias")` on every POST/PUT/DELETE, including reset/cleanup calls |
+| `select()` | Start from a different baseline value; selecting the current value fires no `change` event |
+| `cy.contains()` | Scope to a container id; a bare `cy.contains("text")` can match sidebar nav |
 
-**Checklist for every new test that saves/loads state:**
-- [ ] All `cy.intercept()` before `cy.visit()` or the interaction
-- [ ] Every mutation has a `cy.wait("@alias")`
-- [ ] Reset calls also have `cy.wait()`
+Checklist for a spec that saves or loads state:
+
+- [ ] `cy.intercept()` registered before `cy.visit()` or the interaction
+- [ ] Every mutation has a `cy.wait("@alias")`, reset calls included
 - [ ] `select()` tests start from a known different value
 - [ ] `cy.contains()` scoped to a container
-
-### Running Tests
-
-- Use the following command to run specific tests:
-  ```bash
-  npx cypress run --spec "path/to/test.spec.js"
-  ```
-- For interactive testing, use:
-  ```bash
-  npx cypress open
-  ```
-
-## Files
-
-**API Tests:** `cypress/e2e/api/`
-**UI Tests:** `cypress/e2e/ui/`
-**Config:** `cypress/configs/docker.config.ts`, `cypress/configs/new-system.config.ts`
-**Support:** `cypress/support/ui-commands.js`, `cypress/support/api-commands.js` (both imported from `cypress/support/e2e.js`)
-**Logs:** `src/logs/`

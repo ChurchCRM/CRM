@@ -7,125 +7,53 @@ complexity: "beginner"
 ---
 # Skill: Database Operations with Perpl ORM
 
-## Context
-This skill covers all database access patterns using Perpl ORM (actively maintained fork of Propel2).
+Database access uses Perpl ORM Query classes (`perplorm/perpl`, a Propel2 fork). Propel patterns apply. Basic rules (null checks, getters, `(int)` casts, TableMap constants in `withColumn()`) are in `php-best-practices.md`.
 
 ## Core Rules
-- ALWAYS use Perpl ORM Query classes (perplorm/perpl - fork of Propel2)
-- NEVER use raw SQL or RunQuery()
-- Cast dynamic IDs to (int)
-- Check `=== null` not `empty()` for objects
-- Access properties as objects: `$obj->prop`, never `$obj['prop']`
-- **Legacy `mysqli_fetch_array()` / `extract()` values are always strings** — cast to `(int)` before strict comparison to int literals (see code-standards.md → "Strict vs Loose Comparisons")
 
-## Perpl ORM Critical Differences from Propel
+- Query classes for every read and write
+- Cast dynamic IDs to `(int)`
+- `=== null` for missing objects
+- Properties through getters: `$obj->getName()`
+- `mysqli_fetch_array()` / `extract()` values are strings: cast to `(int)` before strict comparison (`code-standards.md` → "Strict vs Loose Comparisons")
 
-ChurchCRM uses **Perpl ORM** (`perplorm/perpl`), an actively maintained fork of Propel2 with PHP 8.4+ support and 30-50% faster query building. All Propel patterns still apply, but note these **critical differences**:
+## Perpl Specifics
 
-### withColumn() - Use TableMap Constants (REQUIRED)
+### withColumn() takes column names
 
-In Perpl ORM, `withColumn()` requires **actual database column names**, not Propel phpNames. **Always use TableMap constants** for type safety and IDE support:
+Pass TableMap constants. Common ones: `FamilyTableMap::COL_FAM_NAME`, `PledgeTableMap::COL_PLG_AMOUNT`, `DonationFundTableMap::COL_FUN_NAME`, `DepositTableMap::COL_DEP_DATE`.
 
 ```php
-use ChurchCRM\model\ChurchCRM\Map\PledgeTableMap;
-use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
-use ChurchCRM\model\ChurchCRM\Map\DonationFundTableMap;
-use ChurchCRM\model\ChurchCRM\Map\DepositTableMap;
-
-// ✅ CORRECT - Use TableMap constants (REQUIRED)
 $query->withColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'totalAmount');
-$query->withColumn(FamilyTableMap::COL_FAM_NAME, 'FamilyName');
-$query->withColumn(DonationFundTableMap::COL_FUN_NAME, 'FundName');
-$query->withColumn(DepositTableMap::COL_DEP_DATE, 'DepositDate');
-
-// ❌ WRONG - phpNames don't work in withColumn()
-$query->withColumn('Family.Name', 'FamilyName');
-$query->withColumn('SUM(Pledge.Amount)', 'totalAmount');
 ```
 
-**Common TableMap Constants:**
+### addForeignValueCondition() takes table and column separately
 
-| TableMap Class | Constant | Resolves To |
-|----------------|----------|-------------|
-| `FamilyTableMap` | `COL_FAM_NAME` | `family_fam.fam_Name` |
-| `FamilyTableMap` | `COL_FAM_ADDRESS1` | `family_fam.fam_Address1` |
-| `PledgeTableMap` | `COL_PLG_AMOUNT` | `pledge_plg.plg_amount` |
-| `PledgeTableMap` | `COL_PLG_PLGID` | `pledge_plg.plg_plgID` |
-| `PledgeTableMap` | `COL_PLG_DEPID` | `pledge_plg.plg_depID` |
-| `DonationFundTableMap` | `COL_FUN_NAME` | `donationfund_fun.fun_Name` |
-| `DepositTableMap` | `COL_DEP_ID` | `deposit_dep.dep_ID` |
-| `DepositTableMap` | `COL_DEP_DATE` | `deposit_dep.dep_Date` |
-| `ListOptionTableMap` | `COL_LST_ID` | `list_lst.lst_ID` |
-| `Person2group2roleP2g2rTableMap` | `COL_P2G2R_PER_ID` | `person2group2role_p2g2r.p2g2r_per_ID` |
-
-### addForeignValueCondition() - Column Name Only (CRITICAL)
-
-**WARNING:** The `addForeignValueCondition()` method expects **table name and column name separately**, NOT TableMap COL_ constants:
+`COL_*` constants include the table prefix, so pass `TABLE_NAME` plus the bare column string:
 
 ```php
-use ChurchCRM\model\ChurchCRM\Map\ListOptionTableMap;
-
-// ✅ CORRECT - Use TABLE_NAME constant + column name string
 $join->addForeignValueCondition(ListOptionTableMap::TABLE_NAME, 'lst_ID', '', 3, self::EQUAL);
-
-// ❌ WRONG - COL_ constant includes table prefix, causing duplicate
-$join->addForeignValueCondition('list_lst', ListOptionTableMap::COL_LST_ID, '', 3, self::EQUAL);
-// This generates: list_lst.list_lst.lst_ID (BROKEN!)
 ```
 
-**Why this matters:** `ListOptionTableMap::COL_LST_ID` resolves to `'list_lst.lst_ID'` (includes table prefix). When passed to `addForeignValueCondition()` which already adds the table name, you get `list_lst.list_lst.lst_ID` causing SQL errors.
+### Method override signatures
 
-### Method Override Signatures (Strict Types Required)
-
-Perpl ORM enforces strict return types. When overriding base methods:
+Overrides match the base signatures, with return types:
 
 ```php
-// ❌ WRONG - Missing return types
-public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = [], $includeForeignObjects = false)
-
-// ✅ CORRECT - Full signature with types
 public function toArray(string $keyType = TableMap::TYPE_PHPNAME, bool $includeLazyLoadColumns = true, array $alreadyDumpedObjects = [], bool $includeForeignObjects = false): array
-```
 
-**Lifecycle Hooks** - must match base class signatures:
-
-```php
-// Pre-hooks return bool
-public function preSave(ConnectionInterface $con = null): bool
-public function preInsert(ConnectionInterface $con = null): bool
-public function preUpdate(ConnectionInterface $con = null): bool
-public function preDelete(ConnectionInterface $con = null): bool
-
-// Post-hooks return void
-public function postSave(ConnectionInterface $con = null): void
-public function postInsert(ConnectionInterface $con = null): void
-public function postUpdate(ConnectionInterface $con = null): void
-public function postDelete(ConnectionInterface $con = null): void
-```
-
-### preSelect Hook Signature
-
-```php
+public function preSave(?ConnectionInterface $con = null): bool      // preInsert, preUpdate, preDelete likewise
+public function postSave(?ConnectionInterface $con = null): void     // postInsert, postUpdate, postDelete likewise
 public function preSelect(ConnectionInterface $con): void
-{
-    // Custom query modifications here
-    parent::preSelect($con);
-}
 ```
 
-### Person / Family postInsert Auto-Writes a Timeline Note <!-- learned: 2026-04-18 -->
-<!-- updated: 2026-04-21 — PR #8685 removed manual Note creation from PersonEditor/FamilyEditor -->
+## Person / Family Model Hooks
 
-`Person::postInsert()` / `postUpdate()` and `Family::postInsert()` / `postUpdate()` (see `src/ChurchCRM/model/ChurchCRM/Person.php:144` and `Family.php`) are the **single source of truth** for timeline notes. They automatically call `createTimeLineNote('create'|'edit')`, which writes a `Note` row with:
+### Timeline notes
 
-- `nte_Type = 'create'` or `'edit'`
-- `nte_Text = gettext('Created')` or `gettext('Updated')`
-- `nte_EnteredBy` / `nte_DateEntered` copied from the Person/Family
-- attached via `nte_per_ID` or `nte_fam_ID`
+`Person::postInsert()` / `postUpdate()` and `Family::postInsert()` / `postUpdate()` call `createTimeLineNote('create'|'edit')`. They are the only place that writes `create`/`edit` notes (`nte_Text` = "Created"/"Updated"). Editors and services save the record and leave the note to the hook.
 
-**Rule: never manually `new Note()` with `type='create'`/`'edit'` after saving a Person or Family** — the hook has already written it. This rule is now enforced across the codebase: PR #8685 (commit 8ca2fcb75, closes #8695 / #8701) removed the legacy manual `Note` writes from `PersonEditor.php` and `FamilyEditor.php` that were producing duplicate timeline rows.
-
-**Suppressing the `postUpdate` 'edit' note** — When a specific action writes its own domain-specific note (e.g. `setImageFromBase64()` writes a *"Profile Image uploaded"* note) and then saves the Person/Family to bump `DateLastEdited`, set the transient `$skipPostUpdateNote` flag around the save to prevent a generic *"Updated"* note on top:
+When an action writes its own note and then saves to bump `DateLastEdited`, wrap the save in the private `$skipPostUpdateNote` flag (see `Family::setImageFromBase64()`):
 
 ```php
 $this->skipPostUpdateNote = true;
@@ -136,21 +64,9 @@ try {
 }
 ```
 
-See `Family::setImageFromBase64()` for the canonical example. The flag is a private model property and `postUpdate()` checks it before calling `createTimeLineNote('edit')`.
-
-### Person / Family preDelete Removes the Uploaded Photo from Disk <!-- learned: 2026-04-22 -->
-
-`Person::preDelete()` and `Family::preDelete()` call `$this->getPhoto()->delete()` so the uploaded image file under `src/Images/Person/` or `src/Images/Family/` is removed whenever the record is deleted — on **any** code path, not just the API route. This closes GH #1697 (orphaned image files after family/member delete).
-
-**Do NOT call `deletePhoto()` from inside `preDelete`** — it gates on `AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()` (which can silently skip the unlink for programmatic deletions) and writes a transient `Note` that the rest of `preDelete` deletes a few lines later anyway. Call `$this->getPhoto()->delete()` directly. The public `deletePhoto()` method is for the UI "delete photo only" action (keeps the record, writes an audit note).
-
-**Do NOT explicitly call `$family->deletePhoto()` (or `$person->deletePhoto()`) right before `$family->delete()` (or `$person->delete()`)** in controllers — the `preDelete` hook already handles it, and the explicit pre-call writes an audit `Note` for a record that is about to be deleted (the Family note even got the wrong FK via `setPerId`).
-
-**For bulk creators (importers, migrations, seeders)** that want custom text on the auto-created note: accept the default `"Created"`, or look up the auto-created note after save and mutate its text:
+Bulk creators (importers, seeders) accept the default "Created" text, or save and then edit the `create` note:
 
 ```php
-$person->save($con);  // postInsert hook writes the 'create' note
-
 $note = NoteQuery::create()
     ->filterByPerId($person->getId())
     ->filterByType('create')
@@ -162,106 +78,65 @@ if ($note !== null) {
 }
 ```
 
-Same hook also triggers `NewPersonOrFamilyEmail::sendIfConfigured()` when `SystemConfig::sNewPersonNotificationRecipientIDs` is non-empty — relevant for bulk importers (each imported person/family triggers a mail). After PR #8685, creating a family with N members sends 1 email (family-level), not N+1.
+The hook also calls `NewPersonOrFamilyEmail::sendIfConfigured()` when `SystemConfig::sNewPersonNotificationRecipientIDs` is set, so each imported person or family sends a mail. Creating a family with N members sends one family-level email.
 
-## Propel ORM Method Naming (CRITICAL)
+Other note types: `note`, `create`, `edit`, `verify`, `group`, `photo`, `user`, `cal`, `event`. A new type needs a case in `TimelineService::createTimeLineItem()` for icon and color.
 
-**NEVER guess ORM method names.** Propel uses strict column-to-method mapping. **Always check the Query class documentation comments** to verify exact method names before writing code.
+### Photos
 
-### Method Naming Pattern
+`Person::preDelete()` and `Family::preDelete()` call `$this->getPhoto()->delete()`, which removes the uploaded image on every delete path. Controllers call `$person->delete()` and the hook handles the file. `deletePhoto()` serves the UI "delete photo only" action (permission-gated, writes an audit note).
 
-Propel converts database column names to PHP method names using **phpName** (derived from table/column structure):
+## Method Naming
 
-| Database Column | Query Method | Accessor Method | Mutator Method |
-|---|---|---|---|
-| `custom_order` (renamed to `Order` in phpName) | `orderByOrder()`, `filterByOrder()` | `getOrder()` | `setOrder()` |
-| `custom_field` (renamed to `Id` in phpName) | `findOneById()`, `filterById()` | `getId()` | `setId()` |
-| `custom_name` (renamed to `Name` in phpName) | `orderByName()`, `filterByName()` | `getName()` | `setName()` |
-| `lst_ID` (renamed to `Id` in phpName) | `findOneById()`, `orderById()` | `getId()` | `setId()` |
-| `lst_OptionID` (renamed to `OptionId`) | `filterByOptionId()` | `getOptionId()` | `setOptionId()` |
-| `type_ID` (renamed to `TypeId` in phpName) | `filterByTypeId()` | `getTypeId()` | `setTypeId()` |
+Query, getter, and setter names derive from the schema `phpName`, not the DB column name. Read the `@method` PHPDoc at the top of `src/ChurchCRM/model/ChurchCRM/Base/*Query.php`, or `orm/schema.xml`.
 
-### How to Find Correct Method Names
+| Column | phpName | Methods |
+|--------|---------|---------|
+| `custom_Order` | `Order` | `orderByOrder()`, `getOrder()`, `setOrder()` |
+| `lst_ID`, `custom_Field` (primary keys) | `Id` | `findOneById()`, `filterById()`, `getId()` |
+| `lst_OptionID` | `OptionId` | `filterByOptionId()`, `getOptionId()` |
+| `type_ID` | `TypeId` | `filterByTypeId()`, `findOneByTypeId()` |
 
-1. **Check the Base Query class** at `src/ChurchCRM/model/ChurchCRM/Base/*Query.php`
-2. **Look for `@method` PHPDoc comments** at the top of the class - they list ALL available query methods
-3. **Common patterns to look for:**
-   - `findOneById()` - Find by primary key
-   - `findOneBy[ColumnName]()` - Find by any column
-   - `filterBy[ColumnName]()` - Add WHERE condition
-   - `orderBy[ColumnName]()` - Add ORDER BY
-   - `groupBy[ColumnName]()` - Add GROUP BY
-
-### Example: PersonCustomMasterQuery
+Patterns: `findOneById()`, `findOneBy[Column]()`, `filterBy[Column]()`, `orderBy[Column]()`, `groupBy[Column]()`.
 
 ```php
-// Check Base/PersonCustomMasterQuery.php for @method comments:
-// @method     ChildPersonCustomMasterQuery orderByOrder($order = Criteria::ASC)
-// @method     ChildPersonCustomMasterQuery orderByName($order = Criteria::ASC)
-// @method     ChildPersonCustomMaster|null findOneById(string $custom_Field)
-// @method     ChildPersonCustomMaster|null findOneByName(string $custom_Name)
-
-// CORRECT - These match the documented methods
-$field = PersonCustomMasterQuery::create()
-    ->findOneById($fieldName);
-$fields = PersonCustomMasterQuery::create()
-    ->orderByOrder()
-    ->find();
-
-// WRONG - These methods don't exist (will throw UnknownColumnException)
-$field = PersonCustomMasterQuery::create()
-    ->filterByCustomfield($fieldName);  // ❌ Should be findOneById()
-$fields = PersonCustomMasterQuery::create()
-    ->filterByCustomorder(1)  // ❌ Should be filterByOrder()
-    ->find();
+$field  = PersonCustomMasterQuery::create()->findOneById($fieldName);
+$fields = PersonCustomMasterQuery::create()->orderByOrder()->find();
 ```
 
-### Common Mistakes to Avoid
+### Reverse relation joins use the relation alias
 
-- ❌ `filterByCustomField()` → Use `findOneById()` for primary key lookups
-- ❌ `filterByLstId()` → Use `findOneById()` (Propel renames `lst_ID` to `Id`)
-- ❌ `filterByTypeId()` used with `findOne()` instead of `findOneByTypeId()` 
-- ❌ `orderByCustomOrder()` → Use `orderByOrder()` (Propel uses phpName, not database column)
-- ❌ `setCustomorder()` → Use `setOrder()` (consistent with getter/setter naming)
+From the "one" side, the generated join method is named after the relation alias in the schema: `EventTypeQuery::create()->useEventTypeQuery()->endUse()`. List them with `grep "public function use.*Query" Base/XxxQuery.php`.
 
-### When Migrating from Raw SQL
+### Role names for group memberships
 
-**Always consult the Query class before converting SQL to ORM:**
+`ListOptionQuery` resolves a role name from the group's role list and the membership's option ID:
 
 ```php
-// RAW SQL (find what to convert)
-$sSQL = "SELECT * FROM person_custom_master WHERE custom_Field = '" . $fieldName . "'";
-$record = RunQuery($sSQL);
-
-// CORRECT ORM (check Base Query class for method names)
-$record = PersonCustomMasterQuery::create()
-    ->findOneById($fieldName);  // ← primary key lookup method
-
-// Find column mappings in Base class:
-// @method ChildPersonCustomMaster|null findOneById(string $custom_Field)
-// This tells us custom_Field → Id in phpName
+$roleList = ListOptionQuery::create()
+    ->filterById($group->getRoleListId())
+    ->filterByOptionId($membership->getRoleId())
+    ->findOne();
 ```
 
-## Idempotent Writes: a UNIQUE key + `findOneOrCreate()` <!-- learned: 2026-09-12 -->
+### Custom master models
 
-To make a write safe to repeat — a generator that may run twice, an enqueue that may
-be retried, a grant that may be re-posted — put a `UNIQUE` key on the natural identity
-and reach it with `findOneOrCreate()` inside the caller's transaction. Do **not**
-pre-flight with a `SELECT` and then `INSERT`: two concurrent requests both pass the
-check. The index is the guarantee; the query is only the fast path.
+`PersonCustomMaster::getId()` returns the column name string (`"c3"`); build keys as `'pcustom_' . $cf->getId()`. `FamilyCustomMaster` has a numeric `getId()` and `getField()` for the column name. Confirm with `grep -nE "public function getId" src/ChurchCRM/model/ChurchCRM/Base/*CustomMaster.php`.
+
+## Idempotent Writes: UNIQUE key + `findOneOrCreate()`
+
+Put a `UNIQUE` key on the natural identity and call `findOneOrCreate($con)` inside the caller's transaction. The index is the guarantee; concurrent requests cannot both create the row.
 
 ```php
 $con = Propel::getWriteConnection(VolunteerOccurrenceTableMap::DATABASE_NAME);
 $con->beginTransaction();
 try {
-    // findOneOrCreate() ACCEPTS a connection, so it sees the transaction's own
-    // uncommitted rows — a default read connection would not.
     $row = VolunteerOccurrenceQuery::create()
         ->filterByScheduleId($scheduleId)
         ->filterByEventId($eventId)
-        ->findOneOrCreate($con);
+        ->findOneOrCreate($con);   // the connection sees the transaction's own uncommitted rows
 
-    if ($row->isNew()) {          // the only reliable "did I create it?" test
+    if ($row->isNew()) {           // the reliable "did I create it?" test
         $row->setGeneratedDate(DateTimeUtils::getNowDateTime());
         $row->save($con);
     }
@@ -272,380 +147,17 @@ try {
 }
 ```
 
-Three details that are easy to get wrong:
+- `filterByCol(null)` builds `IS NULL`, and the created object inherits it. A polymorphic "exactly one parent" upsert is `->filterByScheduleId($id)->filterByOccurrenceId(null)`
+- MySQL permits multiple `NULL`s in a `UNIQUE` index, so two unique keys over nullable columns dedupe independently (`volunteer_requirement_vreq`: `(schedule, position)` and `(occurrence, position)`)
+- Filter on the table's own columns; a joined query throws
 
-- **`filterByCol(null)` builds an `IS NULL` criterion, and the created object inherits
-  it.** That is what makes an upsert on a polymorphic "exactly one parent" table work:
-  `->filterByScheduleId($id)->filterByOccurrenceId(null)` finds the template row and, when
-  absent, creates one with the right parent already set.
-- **MySQL permits multiple `NULL`s in a `UNIQUE` index.** Two unique keys over the same
-  table, each with a nullable column, therefore do not collide with each other — rows that
-  are `NULL` in one key are deduplicated only by the other. `volunteer_requirement_vreq`
-  uses exactly this: `(schedule, position)` dedupes template rows and `(occurrence, position)`
-  dedupes override rows.
-- **`findOneOrCreate()` throws if the query has joins.** Filter on the table's own columns.
+Call sites: `Event::checkInPerson()` (`UNIQUE(event_id, person_id)`), `VolunteerAuthorizationService::grantScope()`.
 
-Existing call sites: `Event::checkInPerson()` (`Event.php:87-90`, `UNIQUE(event_id,
-person_id)`) and `VolunteerAuthorizationService::grantScope()`.
+## Upsert by Composite Key
 
-## Database Access Example
+`findPk()` takes composite keys in schema order; create the record when it is missing.
 
 ```php
-// CORRECT - Propel ORM
-$event = EventQuery::create()->findById((int)$eventId);
-if ($event === null) { 
-    // Handle not found
-}
-
-// WRONG
-$result = RunQuery("SELECT * FROM events WHERE eventid = ?", $eventId);
-$event['eventName'];  // TypeError: Cannot access offset on object
-```
-
-## Files
-
-**ORM Configuration:** `orm/schema.xml`, `orm/propel.php.dist`
-**Generated Models:** `src/ChurchCRM/model/ChurchCRM/` (don't edit directly)
-
-### There is no `Criteria::BETWEEN` <!-- learned: 2026-09-12 -->
-
-`Propel\Runtime\ActiveQuery\Criteria` has no `BETWEEN` constant. Writing one is a
-**runtime** `Error: Undefined constant`, not a lint or build failure, so it surfaces only
-when the code path actually runs — which for a background job can be days later, inside a
-`runTimerJob()` try/catch that logs and keeps going.
-
-```php
-// ❌ WRONG — fatal at runtime, and nothing catches it at build time
-->filterByOccurrenceDate(['min' => $from, 'max' => $to], Criteria::BETWEEN)
-
-// ✅ CORRECT — two filters, explicit and greppable
-->filterByOccurrenceDate($from, Criteria::GREATER_EQUAL)
-->filterByOccurrenceDate($to, Criteria::LESS_EQUAL)
-```
-
-The generated `filterBy*()` range form (`['min' => …, 'max' => …]` with **no** second
-argument) also works, but it reads like an `IN (…)` to anyone skimming, so prefer the two
-explicit filters.
-
-### MySQL 8.0 Strict Mode: DATE Comparisons <!-- learned: 2026-03-02 -->
-
-**CRITICAL:** MySQL 8.0+ strict mode rejects comparing DATE columns to empty strings (`''`), returning `SQLSTATE[HY000]: 1525 Incorrect DATE value: ''`.
-
-```php
-// ❌ WRONG - MySQL 8.0 strict mode rejects this
-->filterByWeddingdate('', Criteria::NOT_EQUAL)
-// Generates: WHERE wedding_date <> '' → SQL error in strict mode
-
-// ✅ CORRECT - Use IS NOT NULL for non-empty date checks
-->filterByWeddingdate(null, Criteria::ISNOTNULL)
-// Generates: WHERE wedding_date IS NOT NULL → Works on all MySQL versions
-```
-
-**Why this matters:** Empty string literals are invalid for DATE type in strict mode. Use `ISNOTNULL` criteria when filtering for non-empty dates; use `null` value with `ISNOTNULL` criterion (not an empty string).
-
-### Datetime Year-Range Filters — Use Full Timestamps <!-- learned: 2026-03-29 -->
-
-When filtering by a year range on a DATETIME column, using `YYYY-12-31` as the `max` boundary silently excludes events after midnight on Dec 31 (e.g., `2025-12-31 14:00:00` fails `<= '2025-12-31 00:00:00'`). Use explicit end-of-day timestamps.
-
-```php
-// ❌ WRONG — excludes Dec 31 events after midnight
-->filterByStart(['min' => $year . '-01-01', 'max' => $year . '-12-31'])
-
-// ✅ CORRECT — full year inclusive
-$yearMin = $year . '-01-01 00:00:00';
-$yearMax = $year . '-12-31 23:59:59';
-->filterByStart(['min' => $yearMin, 'max' => $yearMax])
-```
-
-This applies to any DATETIME column used as an annual boundary filter.
-
-### ObjectCollection Must Be Converted to Array for API Responses <!-- learned: 2026-03-03 -->
-
-`SlimUtils::renderJSON(array $obj)` requires a plain PHP array. Passing a Propel `ObjectCollection` directly causes a `TypeError` (HTTP 500) in PHP 8.4. Always call `->toArray()` before returning ORM results to the API.
-
-```php
-// ❌ WRONG — ObjectCollection passed to renderJSON(array) → TypeError → HTTP 500
-$events = $Calendar->getEvents($start, $end);
-return SlimUtils::renderJSON($response, $events);
-
-// ✅ CORRECT — convert to plain array first
-$events = $Calendar->getEvents($start, $end);
-return SlimUtils::renderJSON($response, $events->toArray());
-```
-
-This applies to any `->find()` result or relation collection returned by Perpl ORM.
-
-### `array_column()` Silently Returns Zeros on ObjectCollection <!-- learned: 2026-04-21 -->
-
-`array_column($collection, 'PersonId')` does **not** work on a Propel `ObjectCollection`. PHP's `array_column` reads public properties / array keys — it does not call ORM getters. With Propel objects it silently returns an array of nulls/zeros, and any downstream `in_array($id, $rosterIds, true)` check fails for every input.
-
-This was the root cause of the kiosk photo 403 bug (PR #8706): every roster membership check returned false, so every photo request was rejected.
-
-```php
-// ❌ WRONG — silently returns [0, 0, 0, ...] for Propel Person objects
-$rosterIds = array_map('intval', array_column($assignment->getActiveGroupMembers(), 'PersonId'));
-
-// ✅ CORRECT — iterate the collection and call the ORM getter
-$rosterIds = [];
-foreach ($assignment->getActiveGroupMembers() as $member) {
-    $rosterIds[] = $member->getId();
-}
-```
-
-Rule of thumb: any time you need "list of IDs from an ORM collection," write an explicit `foreach` with `->getId()` (or the relevant getter). Never `array_column` on Propel objects.
-
-### Looking Up ListOption Role Names for Group Memberships <!-- learned: 2026-03-30 -->
-
-`Group` has no `getListOptionById()` method. To resolve a role name from a group membership, query `ListOptionQuery` with both the group's role list ID and the membership's option ID.
-
-```php
-// ❌ WRONG — method does not exist, throws BadMethodCallException
-$roleList = $group->getListOptionById($membership->getRoleId());
-
-// ✅ CORRECT
-$roleList = ListOptionQuery::create()
-    ->filterById($group->getRoleListId())       // which list (the group's role list)
-    ->filterByOptionId($membership->getRoleId()) // which option within that list
-    ->findOne();
-if ($roleList !== null) {
-    $roleName = $roleList->getOptionName();
-}
-```
-
-### Propel Reverse Relation Query Methods — Named After Relation, Not Model <!-- learned: 2026-03-30 -->
-
-When Propel generates query methods for a **reverse** (one-to-many) relation, the method is named after the *relation alias in the schema*, not the foreign model class. For example, `Event` has a FK to `EventType` with the relation alias `"EventType"`. From `EventTypeQuery` (the "one" side), the generated reverse join method is `useEventTypeQuery()` — NOT `useEventQuery()`.
-
-```php
-// ❌ WRONG — throws "Undefined method Criteria::useEventQuery()"
-EventTypeQuery::create()
-    ->useEventQuery()
-    ->endUse()
-
-// ✅ CORRECT — use the relation alias name; method returns EventQuery internally
-EventTypeQuery::create()
-    ->useEventTypeQuery()
-    ->endUse()
-    ->distinct()
-    ->find();
-```
-
-When unsure of the method name, grep `public function use.*Query` in `Base/XxxQuery.php` to see all generated relation methods and their return types.
-
-### PersonCustomMaster::getId() Returns the Column Name String, Not a Numeric ID <!-- learned: 2026-04-21 -->
-
-The `PersonCustomMaster` model overrides Propel's default `getId()` to return
-the `custom_field` string (e.g. `"c3"`) — **not** a numeric primary key. This
-is easy to get wrong because every other Propel model's `getId()` returns an
-int, and Copilot / AI reviewers consistently assume int.
-
-```php
-// ✅ CORRECT — getId() returns "c3" already, don't prepend another 'c'
-foreach (PersonCustomMasterQuery::create()->find() as $cf) {
-    $typeMap[$cf->getId()] = (int) $cf->getTypeId();  // key = "c3"
-    $catalogKey = 'pcustom_' . $cf->getId();          // "pcustom_c3"
-}
-
-// ❌ WRONG — produces "cc3" / "pcustom_cc3", silently breaks everything
-$typeMap['c' . $cf->getId()] = ...;
-$catalogKey = 'pcustom_c' . $cf->getId();
-```
-
-`FamilyCustomMaster` is different — it still has a numeric `getId()`, and the
-column-name accessor is `getField()`. Always grep the Base class when unsure:
-
-```bash
-grep -nE "public function getId" src/ChurchCRM/model/ChurchCRM/Base/*CustomMaster.php
-```
-
-### People Without Families — Always Use leftJoinWithFamily() <!-- learned: 2026-03-29 -->
-
-Not every `Person` has a family (`per_fam_ID = 0` is valid). Using `joinWithFamily()` (inner join) silently excludes these people from results. **Always use `leftJoinWithFamily()`** when querying persons and family data together.
-
-When filtering out deactivated families, do it at the SQL level — `Family.DateDeactivated IS NULL` correctly handles all three cases with a LEFT JOIN:
-- Person with no family → `Family.DateDeactivated` is `NULL` (LEFT JOIN null row) → included ✓
-- Person in active family → `DateDeactivated` is `NULL` → included ✓
-- Person in deactivated family → `DateDeactivated` is set → excluded ✓
-
-```php
-// ❌ WRONG — excludes people with no family (per_fam_ID = 0)
-PersonQuery::create()->joinWithFamily()->find();
-
-// ✅ CORRECT — includes everyone; filters deactivated families at SQL level
-PersonQuery::create()
-    ->leftJoinWithFamily()
-    ->where('Family.DateDeactivated IS NULL')  // NULL family rows pass through correctly
-    ->find();
-```
-
-### Propel Temporal Getters Return DateTime Objects <!-- learned: 2026-04-03 -->
-
-Propel columns of type `TIMESTAMP`, `DATE`, or `TIME` return `DateTime` objects from
-their getters, not strings. This causes `TypeError` if you pass them to string functions
-like `DateTime::createFromFormat()`, `mb_substr()`, or string concatenation.
-
-```php
-// ❌ WRONG — getDefStartTime() returns DateTime, not string
-$startTime = $eventType->getDefStartTime();
-$dateTime = DateTime::createFromFormat('H:i:s', $startTime); // TypeError!
-
-// ❌ WRONG — getDefRecurDOY() returns DateTime, mb_substr expects string
-$doy = $eventType->getDefRecurDOY();
-$monthDay = mb_substr($doy, 5); // TypeError!
-
-// ✅ CORRECT — pass format string to get a string back
-$startTime = $eventType->getDefStartTime('H:i:s');
-
-// ✅ CORRECT — pass format to temporal getter
-$doy = $eventType->getDefRecurDOY('Y-m-d');
-$monthDay = mb_substr($doy, 5); // "MM-DD"
-
-// ✅ CORRECT — check instanceof when format may vary
-$startTime = $eventType->getDefStartTime();
-if ($startTime instanceof \DateTime) {
-    $display = $startTime->format('g:i A');
-} elseif (is_string($startTime) && $startTime !== '') {
-    $display = $startTime;
-} else {
-    $display = '';
-}
-```
-
-**Rule:** When converting raw SQL (`extract()` / `mysqli_fetch_array`) to ORM, always
-check the Base model's getter signature. Temporal columns accept an optional `$format`
-parameter — pass it to get a string, or handle the `DateTime` object explicitly.
-
-### Timezone-Naive DateTime Construction Is a Critical Bug <!-- learned: 2026-04-18 -->
-
-**Never use `new \DateTime($string)` without a `DateTimeZone` argument in code that
-handles user-facing times** (event start/end, reminders, audit timestamps, token
-expiry, iCal export). Without the zone, PHP falls back to the server's default
-timezone at the moment of construction, which may differ from `sTimeZone` and from
-the client's expectation. Result: times get silently shifted by the configured
-UTC offset (e.g. events entered at 10:00 are displayed as 08:00 for a Europe/Berlin
-install on a UTC server). Tracked in issue #8712.
-
-Use [`DateTimeUtils`](../../../src/ChurchCRM/utils/DateTimeUtils.php):
-
-```php
-use ChurchCRM\Utils\DateTimeUtils;
-
-// ❌ WRONG — uses server default timezone, silently drifts from sTimeZone
-$dt = new \DateTime($userInput);
-$dt->modify('+1 hour');
-
-// ❌ WRONG — 'c' emits the server offset, leaks to JS/ICS consumers
-$json = ['start' => $event->getStart('c')];
-
-// ✅ CORRECT — always zone-aware
-$dt = DateTimeUtils::createDateTime($userInput);
-
-// ✅ CORRECT — current wall-clock in the church's timezone
-$now = DateTimeUtils::getToday();
-
-// ✅ CORRECT — clone before setTimezone to avoid mutating the ORM object's
-// in-memory DateTime (setTimezone mutates in place; Propel may cache it)
-$tz = DateTimeUtils::getConfiguredTimezone();
-$start = clone $event->getStart();
-$json = ['start' => $start->setTimezone($tz)->format('c')];
-```
-
-Hotspots to double-check on any calendar/time PR:
-- `new \DateTime(`/`new \DateTimeImmutable(` with a single string argument
-- `strtotime(...)` feeding `date(...)` or `DateTime::setTimestamp()`
-- `->format('c'|'r'|DateTime::ATOM|DateTime::RFC3339)` on objects loaded from
-  `TIMESTAMP` columns — Propel hydrates these as zone-naive, so the emitted
-  offset is the server's, not the church's.
-
-### Null Guards on ORM findOne Results <!-- learned: 2026-04-03 -->
-
-`findOneByXxx()` and `findOne()` return `null` when no row matches. Always guard
-before calling methods on the result, especially when IDs come from user input.
-
-```php
-// ❌ WRONG — fatal error if ID doesn't exist
-$propertyType = PropertyTypeQuery::create()->findOneByPrtId($id);
-$propertyType->setPrtName($name); // TypeError if null
-
-// ✅ CORRECT — null guard with redirect
-$propertyType = PropertyTypeQuery::create()->findOneByPrtId($id);
-if ($propertyType === null) {
-    RedirectUtils::redirect('PropertyTypeList.php');
-}
-$propertyType->setPrtName($name);
-```
-
-### DDL Statements Cannot Use ORM <!-- learned: 2026-04-03 -->
-
-`ALTER TABLE`, `CREATE TABLE`, and `DROP` statements cannot be parameterized or
-expressed through Propel ORM. When converting raw SQL to ORM, DDL must remain as
-`RunQuery()` calls. Protect interpolated values with:
-
-1. `(int)` cast for table name suffixes (e.g., `groupprop_` . (int)$groupId)
-2. Regex validation for column names (e.g., `/^c\d+$/` for custom field columns)
-
-```php
-// Column names in ChurchCRM custom field tables follow pattern: c1, c2, c3, ...
-if (!preg_match('/^c\d+$/', $sField)) {
-    RedirectUtils::redirect('PersonCustomFieldsEditor.php');
-    exit;
-}
-// Now safe to use in DDL
-$sSQL = 'ALTER TABLE `person_custom` DROP IF EXISTS `' . $sField . '`';
-RunQuery($sSQL);
-```
-
-### Timeline Note Types for Event Check-in/out <!-- learned: 2026-04-07 -->
-
-The `Note` model supports a `type` field for filtering. Existing types: `note`, `create`, `edit`, `verify`, `group`, `photo`, `user`, `cal`. The `event` type is used for check-in/out timeline entries. Use `setType('event')` and add the type to `TimelineService::createTimeLineItem()` switch for icon/color mapping.
-
-```php
-$note = new Note();
-$note->setPerId($personId);
-$note->setFamId(0);
-$note->setText(sprintf(gettext('Checked in to event: %s'), $event->getTitle()));
-$note->setType('event');
-$note->setPrivate(0);
-$note->setEntered($currentUserId);
-$note->save();
-```
-
-### MySQL ENUM Columns Need Exact String Values <!-- learned: 2026-04-03 -->
-
-When a MySQL column uses `ENUM('Sunday','Monday',...)`, Propel setters require the
-exact enum string. HTML forms that post numeric values (1-7) must be mapped before
-calling the setter — MySQL's silent coercion of numbers to enum positions doesn't
-work through ORM.
-
-```php
-// ❌ WRONG — form posts "1", but column is ENUM('Sunday','Monday',...)
-$eventType->setDefRecurDOW($_POST['newEvtRecurDOW']); // Propel may reject "1"
-
-// ✅ CORRECT — map numeric form value to enum string
-$dayOfWeekMap = [
-    '1' => 'Sunday', '2' => 'Monday', '3' => 'Tuesday',
-    '4' => 'Wednesday', '5' => 'Thursday', '6' => 'Friday', '7' => 'Saturday',
-];
-$dowValue = $_POST['newEvtRecurDOW'];
-if (isset($dayOfWeekMap[$dowValue])) {
-    $dowValue = $dayOfWeekMap[$dowValue];
-}
-$eventType->setDefRecurDOW($dowValue);
-```
-
-### Replacing INSERT...ON DUPLICATE KEY UPDATE with findPk + Create-If-Missing <!-- learned: 2026-04-08 -->
-
-Propel has no direct equivalent to `INSERT ... ON DUPLICATE KEY UPDATE`. When migrating raw
-SQL upserts to ORM, use `findPk()` with the composite primary key and create the record if
-missing — do not hunt for a single "upsert" method.
-
-```php
-// ❌ Raw SQL
-// INSERT eventcounts_evtcnt (evtcnt_eventid, evtcnt_countid, evtcnt_countcount)
-// VALUES (1, 2, 5)
-// ON DUPLICATE KEY UPDATE evtcnt_countcount=5;
-
-// ✅ Propel ORM (works with composite primary keys)
 $eventCount = EventCountsQuery::create()->findPk([$eventId, $countId]);
 if ($eventCount === null) {
     $eventCount = new EventCounts();
@@ -656,113 +168,84 @@ $eventCount->setEvtcntCountcount($value);
 $eventCount->save();
 ```
 
-`findPk()` accepts an array for composite keys in the exact order declared in the schema.
+## Filtering Patterns
 
-### Replacing MONTH() / YEAR() SQL with Propel Date Range <!-- learned: 2026-04-08 -->
+### Ranges
 
-Don't try to translate `WHERE MONTH(date) = 4 AND YEAR(date) = 2026` directly — Propel has
-no helper for SQL date functions. Use a full date-range filter with `cal_days_in_month()` for
-the inclusive upper bound.
+`Criteria` has no `BETWEEN` constant. Use two filters:
 
 ```php
-$daysInMonth = cal_days_in_month(CAL_GREGORIAN, $month, $year);
-$monthMin = sprintf('%04d-%02d-01 00:00:00', $year, $month);
-$monthMax = sprintf('%04d-%02d-%02d 23:59:59', $year, $month, $daysInMonth);
-
-EventQuery::create()
-    ->filterByStart(['min' => $monthMin, 'max' => $monthMax])
-    ->find();
+->filterByOccurrenceDate($from, Criteria::GREATER_EQUAL)
+->filterByOccurrenceDate($to, Criteria::LESS_EQUAL)
 ```
 
-Always use full `HH:MM:SS` timestamps on the boundaries — see "Datetime Year-Range Filters"
-above for why a bare `YYYY-MM-DD` max silently drops same-day afternoon records.
+### DATE columns
 
-When the year must not matter (birthdays, anniversaries in any year) a date range cannot express it; bind the month into a raw clause on the TableMap constant: `->where('MONTH(' . FamilyTableMap::COL_FAM_WEDDINGDATE . ') = ?', $month, \PDO::PARAM_INT)` (`PeopleReportService`). The phpName form `Family.WeddingDate` is not rewritten inside a SQL function and fails with "Unknown column 'family_fam.WeddingDate'".
-
-### Shared Date Parser — `DateTimeUtils::parsePartialDate()` <!-- learned: 2026-04-21 -->
-
-`src/ChurchCRM/utils/DateTimeUtils.php` contains a static helper for parsing the partial-date formats accepted by CSV imports and person/family edit forms:
+MySQL 8 strict mode rejects `''` against DATE columns (`1525 Incorrect DATE value`). Filter non-empty dates with `IS NOT NULL`:
 
 ```php
-use ChurchCRM\utils\DateTimeUtils;
-
-// Accepts: YYYY-MM-DD, M/D/YYYY, 0000-MM-DD, M/D (month+day, no year)
-$dt = DateTimeUtils::parsePartialDate($rawString); // returns DateTime|null
+->filterByWeddingdate(null, Criteria::ISNOTNULL)
 ```
 
-Returns `null` for blank/unparseable input — always null-guard before calling ORM setters. Use this instead of `new \DateTime($userInput)` anywhere user-supplied date strings are accepted; it handles the year-less `0000-MM-DD` format that standard PHP date functions reject.
+### DATETIME boundaries
 
-### Always call `joinWith*()` at top level before `useXxxQuery()` with nested joins <!-- learned: 2026-06-11 -->
-
-`useEventQuery()` only adds a JOIN clause — it does NOT add the related table's columns to the SELECT.
-If you call `leftJoinWithYyy()` inside `useEventQuery()` without first calling `joinWithEvent()` at
-the top level, Yyy's columns are added to SELECT BEFORE the primary table's own columns, corrupting
-Propel's numeric hydration offsets (e.g. `type_defrecurtype = 'weekly'` lands at a TIMESTAMP offset
-→ `PropelException: Error parsing date/time value 'weekly'`).
-
-**Always prefix with `->joinWithRelated(Criteria::LEFT_JOIN)` at the top level:**
+Use full timestamps on both ends so the last day is inclusive:
 
 ```php
-// ✅ CORRECT — joinWithEvent at top ensures EventAttend cols come first
-EventAttendQuery::create()
-    ->joinWithEvent(Criteria::LEFT_JOIN)          // registers Event cols after EventAttend cols
-    ->useEventQuery(null, Criteria::LEFT_JOIN)
-        ->leftJoinWithEventType()                 // EventType cols come last
-        ->orderByStart(Criteria::DESC)            // orderBy inside is fine here
-    ->endUse()
-    ->find();
-
-// ❌ WRONG — no top-level joinWithEvent; EventType cols inserted BEFORE EventAttend cols
-EventAttendQuery::create()
-    ->useEventQuery(null, Criteria::LEFT_JOIN)
-        ->leftJoinWithEventType()                 // corrupts hydration offsets → PropelException
-    ->endUse()
-    ->find();
+$yearMin = $year . '-01-01 00:00:00';
+$yearMax = $year . '-12-31 23:59:59';
+->filterByStart(['min' => $yearMin, 'max' => $yearMax])
 ```
 
-This affects any `EventAttendQuery` (or similar) where `useXxxQuery()` contains a nested
-`leftJoinWithYyy()`. The bug only surfaces at runtime when the joined records exist.
+For a month, take the last day from `cal_days_in_month(CAL_GREGORIAN, $month, $year)`.
 
-### Raw `where()` with `OR` — always parenthesise or use `condition()`/`combine()` <!-- learned: 2026-09-16 -->
+To match a month regardless of year (birthdays, anniversaries), bind the TableMap constant in a raw clause: `->where('MONTH(' . FamilyTableMap::COL_FAM_WEDDINGDATE . ') = ?', $month, \PDO::PARAM_INT)`. The phpName form does not resolve inside SQL functions.
 
-Propel appends every criterion to the `WHERE` clause joined by `AND` and does **not** wrap a raw
-`where('...')` string in parentheses. Because `OR` binds looser than `AND`, a top-level `OR` inside a
-raw clause escapes every other filter on the query and silently widens the result set — a security
-bug when the escaped filter was the access-control one (this is how a public calendar access token
-came to return every calendar's events, including private ones).
+### Raw `where()` with `OR`
+
+Propel joins criteria with `AND` and leaves a raw `where()` string unparenthesised, so a top-level `OR` escapes every other filter (including access-control filters). Use `condition()` / `combine()`, or parenthesise the raw string:
 
 ```php
-// ❌ WRONG — becomes: calendar_id = ? AND event_end IS NULL OR event_end >= ?
-//            every event in the DB whose end is after the window start matches
-$events->where('events_event.event_end IS NULL OR events_event.event_end >= ?', $start);
-
-// ✅ CORRECT — combined criteria ARE parenthesised when the statement is built
 $events->condition('noEnd', EventTableMap::COL_EVENT_END . ' IS NULL');
 $events->condition('endsAfter', EventTableMap::COL_EVENT_END . ' >= ?', $start);
 $events->combine(['noEnd', 'endsAfter'], 'or', 'overlapsView');
 $events->where(['overlapsView']);
 
-// ✅ ALSO CORRECT — parenthesise the raw clause yourself when the parts are generated
 $families->where('(' . implode(' OR ', $conditions) . ')');
 ```
 
-`where($namedConditions, 'or')` (the array form) is safe for the same reason — Propel builds a
-combined criterion. The trap is only the single raw SQL string. Audit with:
-`grep -rn --include="*.php" -e "->where(" src | grep -i " or "`.
+Audit: `grep -rn --include="*.php" -e "->where(" src | grep -i " or "`.
 
-## Propel Cannot DELETE Through a Join <!-- learned: 2026-09-17 -->
+### People and families
 
-`ModelCriteria::delete()` throws `PropelException: ModelCriteria::delete is unable to delete.`
-(HTTP 500 through the API error handler) when the query carries a `useXxxQuery()` join.
-Resolve the ids through the join first, then delete by `IN`:
+`per_fam_ID = 0` is valid. Use `leftJoinWithFamily()` and filter deactivated families in SQL; `Family.DateDeactivated IS NULL` passes people with no family, and people in active families.
 
 ```php
-// ❌ 500 — a joined DELETE
-VolunteerAssignmentQuery::create()
-    ->useOccurrenceQuery()->useScheduleQuery()->filterByMinistryId($id)->endUse()->endUse()
-    ->delete($connection);
+PersonQuery::create()
+    ->leftJoinWithFamily()
+    ->where('Family.DateDeactivated IS NULL')
+    ->find();
+```
 
-// ✅ two steps
+### Nested joins hydrate in order
+
+`useXxxQuery()` adds a JOIN without adding columns to SELECT. Call `joinWith*()` at the top level first so the primary table's columns come first, then nest `leftJoinWith*()`:
+
+```php
+EventAttendQuery::create()
+    ->joinWithEvent(Criteria::LEFT_JOIN)
+    ->useEventQuery(null, Criteria::LEFT_JOIN)
+        ->leftJoinWithEventType()
+        ->orderByStart(Criteria::DESC)
+    ->endUse()
+    ->find();
+```
+
+### Deleting through a join
+
+`delete()` and `update()` throw on a query with a `useXxxQuery()` join. Resolve IDs through the join, then delete by `IN`:
+
+```php
 $occurrenceIds = VolunteerOccurrenceQuery::create()
     ->useScheduleQuery()->filterByMinistryId($id)->endUse()
     ->select('Id')->find()->toArray();
@@ -773,27 +256,93 @@ if ($occurrenceIds !== []) {
 }
 ```
 
-`count()` and `find()` through the same join are fine; only `delete()` (and `update()`) refuse it.
+## Object Handling
 
-## UPDATE on a freshly INSERTed object: run a Query first <!-- learned: 2026-09-18 -->
+### Collections
 
-Propel registers a model's table map lazily — a `XxxQuery` resolves it by PHP name and
-adds it to the `DatabaseMap`. `save()` on an existing row (an UPDATE) and `delete()` look
-the map up by TABLE name instead, which has no fallback. So an object that was only
-`new`ed and INSERTed in this request, never fetched, fails on its second `save()`:
-
-```
-Propel\Runtime\Map\Exception\TableNotFoundException: Cannot fetch TableMap for
-undefined table `volunteer_schedule_vsch` in database `default`.
-```
-
-Any Query for the model run earlier in the request (a `findPk()`, a `count()`) makes it
-work, which is why the ordinary edit paths never see it. When a service creates a row and
-then updates it, re-read it through the Query first:
+- API responses: `SlimUtils::renderJSON()` takes an array; pass `$collection->toArray()`
+- ID lists: `foreach` with `->getId()`. `array_column()` on ORM objects returns nulls/zeros
 
 ```php
-$created = $this->createSchedule($ministry, $fields, $actor);      // INSERT
-$schedule = VolunteerScheduleQuery::create()->findPk($created->getId()); // registers the map
-$schedule->setOneOff(true);
-$schedule->save();                                                 // UPDATE now works
+$rosterIds = [];
+foreach ($assignment->getActiveGroupMembers() as $member) {
+    $rosterIds[] = $member->getId();
+}
 ```
+
+### Temporal getters
+
+`TIMESTAMP`, `DATE`, `TIME` getters return `DateTime`. Pass a format string to get a string:
+
+```php
+$startTime = $eventType->getDefStartTime('H:i:s');
+$doy = $eventType->getDefRecurDOY('Y-m-d');
+```
+
+Without a format, branch on `instanceof \DateTime`.
+
+### Time zones
+
+Construct and emit times with `DateTimeUtils` (`src/ChurchCRM/Utils/DateTimeUtils.php`) so they follow `sTimeZone`:
+
+```php
+$dt = DateTimeUtils::createDateTime($userInput);
+$now = DateTimeUtils::getToday();
+
+$tz = DateTimeUtils::getConfiguredTimezone();
+$start = clone $event->getStart();            // setTimezone mutates in place
+$json = ['start' => $start->setTimezone($tz)->format('c')];
+```
+
+Review hotspots on calendar and time changes: `new \DateTime($string)` with one argument, `strtotime()` feeding `date()`, and `->format('c')` on `TIMESTAMP` columns (hydrated without a zone).
+
+`DateTimeUtils::parsePartialDate(string $raw)` parses user-entered partial dates (`YYYY-MM-DD`, `M/D/YYYY`, `0000-MM-DD`, `M/D`) and returns `array{month, day, year}` or `null`. Null-guard before calling setters.
+
+### Null guards
+
+`findOne*()` returns `null` on no match. Guard before calling methods, especially with IDs from user input:
+
+```php
+$propertyType = PropertyTypeQuery::create()->findOneByPrtId($id);
+if ($propertyType === null) {
+    RedirectUtils::redirect('PropertyTypeList.php');
+}
+```
+
+### ENUM columns
+
+Setters take the exact enum string. Map numeric form values first:
+
+```php
+$dayOfWeekMap = ['1' => 'Sunday', '2' => 'Monday', '3' => 'Tuesday', '4' => 'Wednesday', '5' => 'Thursday', '6' => 'Friday', '7' => 'Saturday'];
+$eventType->setDefRecurDOW($dayOfWeekMap[$_POST['newEvtRecurDOW']] ?? $_POST['newEvtRecurDOW']);
+```
+
+### Update after insert in one request
+
+`save()` on an existing row and `delete()` look up the TableMap by table name, which a `new`ed-and-INSERTed object has not registered. A second `save()` throws `TableNotFoundException`. Re-read through the Query first:
+
+```php
+$created = $this->createSchedule($ministry, $fields, $actor);
+$schedule = VolunteerScheduleQuery::create()->findPk($created->getId());
+$schedule->setOneOff(true);
+$schedule->save();
+```
+
+## DDL
+
+`ALTER TABLE`, `CREATE TABLE`, and `DROP` run through `FunctionsUtils::runQuery()`. Validate interpolated identifiers:
+
+```php
+if (!preg_match('/^c\d+$/', $sField)) {          // custom field columns: c1, c2, ...
+    RedirectUtils::redirect('PersonCustomFieldsEditor.php');
+}
+FunctionsUtils::runQuery('ALTER TABLE `person_custom` DROP IF EXISTS `' . $sField . '`');
+```
+
+Table name suffixes take an `(int)` cast (`'groupprop_' . (int)$groupId`). Schema changes: `db-schema-migration.md`.
+
+## Files
+
+- ORM configuration: `orm/schema.xml`, `orm/propel.php.dist`
+- Generated models: `src/ChurchCRM/model/ChurchCRM/`, edited through `schema.xml` and the subclass files

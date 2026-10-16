@@ -8,7 +8,7 @@ metadata:
 
 # ChurchCRM Development Skills
 
-These files apply to every agent family. Product floor is PHP 8.4+. Community plugins are current. Do not invent `/metrics` or SaaS hosting. Plugin registry URL is `CentralServices::PLUGIN_REGISTRY_URL` (External branch today).
+These files apply to every agent family. Product floor is PHP 8.4+. Community plugins ship in the product. The plugin registry URL is `CentralServices::PLUGIN_REGISTRY_URL`.
 
 Load `skill-architecture.md` only when adding or editing a skill.
 
@@ -18,15 +18,14 @@ Load `skill-architecture.md` only when adding or editing a skill.
 2. [Slim 4 Best Practices](./slim-4-best-practices.md)
 3. [API Development](./api-development.md)
 4. [Service Layer](./service-layer.md)
-5. [API Compatibility & Deprecation](./api-compatibility-and-deprecation.md)
 
 | Skill | When to Use |
 |-------|------------|
 | [Slim MVC Skill](./slim-mvc-skill.md) | Slim apps under `src/` |
 | [Configuration Management](./configuration-management.md) | SystemConfig |
 | [Settings Placement](./settings-placement.md) | Where a setting lives, area admin hub |
-| [Volunteer Management v2 Design](./volunteer-v2-design.md) | Ministries / Volunteer v2 (#9701) |
-| [Member Portal Design](./member-portal-design.md) | `/portal` and themes (#8977) |
+| [Volunteer Management v2 Design](./volunteer-v2-design.md) | Ministries / Volunteer v2 |
+| [Member Portal Design](./member-portal-design.md) | `/portal` and themes |
 
 ## Database
 
@@ -70,7 +69,7 @@ Row actions: [`table-action-menu.md`](./table-action-menu.md). Settings UI: copy
 | [Plugin Registry](./plugin-registry.md) | approved-plugins.json |
 | [Plugin Development](./plugin-development.md) | Author a plugin |
 | [Plugin Create (Community)](./plugin-create.md) | Submit a plugin |
-| [Plugin Migration (Core only)](./plugin-migration.md) | `src/plugins/core/*` |
+| [Plugin Migration](./plugin-migration.md) | Update `src/plugins/core/*` when core APIs change |
 | [Plugin Security Scan](./plugin-security-scan.md) | Intake |
 | [Plugin Compliance](./plugin-compliance.md) | Installed-plugin audit |
 
@@ -80,14 +79,13 @@ Row actions: [`table-action-menu.md`](./table-action-menu.md). Settings UI: copy
 |-------|------------|
 | [Testing](./testing.md) | Writing tests |
 | [Cypress Testing](./cypress-testing.md) | E2E |
-| [Testing Migration & E2E](./testing-migration-e2e.md) | Migrations |
 | [Marketing Visual-Media Pipeline](./marketing-visuals-pipeline.md) | Playwright captures |
 
 ## MVC / PHP
 
 | Skill | When to Use |
 |-------|------------|
-| [Admin MVC Migration](./admin-mvc-migration.md) | Legacy → MVC |
+| [Admin MVC Migration](./admin-mvc-migration.md) | Convert a page to Slim MVC |
 | [Groups MVC Guidelines](./groups-mvc-guidelines.md) | Groups |
 | [Refactor](./refactor.md) | Feature refactor |
 | [PHP Best Practices](./php-best-practices.md) | PHP / Perpl |
@@ -104,11 +102,11 @@ Row actions: [`table-action-menu.md`](./table-action-menu.md). Settings UI: copy
 | [PR Review Fix](../pr-review-fix.md) | Address review comments |
 | [Skill architecture](./skill-architecture.md) | Edit a skill |
 | [PR Description Guidelines](../pr-description-guidelines.md) | Title / body |
-| [Development Workflows](./development-workflows.md) | Setup |
+| [Development Workflows](./development-workflows.md) | Local setup commands |
 | [Code Standards](./code-standards.md) | Always-on floor |
 
 ## Example Workflows
 
 - **Review a PR**: `maintainer-review-gates.md` → `pr-review.md`. Draft only.
 - **Address PR comments**: `../pr-review-fix.md` → `git-workflow.md`
-- **Add UI text**: `i18n-localization.md`. Do not run `locale:build` in the PR.
+- **Add UI text**: `i18n-localization.md`. `locale:build` runs on merge to `master`.
