@@ -85,13 +85,8 @@ updates:
       prefix: "chore(deps)"
     open-pull-requests-limit: 5
     groups:
-      # Group all minor/patch updates together
-      composer-minor-patch:
-        patterns:
-          - "*"
-        update-types:
-          - "minor"
-          - "patch"
+      # Groups are matched in order. Slim and ORM stay as they were, so they are
+      # declared first and take their packages out of the groups below.
       # Group Slim framework packages
       slim:
         patterns:
@@ -102,6 +97,24 @@ updates:
         patterns:
           - "propel/*"
           - "perplorm/*"
+      # Dev-only minor/patch updates (phpstan, rector, swagger-php, ...). Kept
+      # apart from runtime so a tooling bump never rides in a PR that ships to
+      # churches, and so each runtime PR can be reviewed on its own.
+      composer-dev:
+        dependency-type: "development"
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+      # Runtime minor/patch updates (what ships in the release)
+      composer-runtime:
+        dependency-type: "production"
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
 
   # GitHub Actions workflows
   - package-ecosystem: "github-actions"
