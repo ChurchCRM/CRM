@@ -11,14 +11,12 @@ on:
       - 'docs/**'
       - 'LICENSE'
       - '.gitignore'
-      - '.ddev/**'
   pull_request:
     paths-ignore:
       - '**/*.md'
       - 'docs/**'
       - 'LICENSE'
       - '.gitignore'
-      - '.ddev/**'
 
 permissions:
   contents: read

@@ -9,7 +9,7 @@ info:
   license:
     name: MIT
     url: 'https://opensource.org/licenses/MIT'
-  version: 7.8.0
+  version: 7.8.1
 servers:
   -
     url: '{scheme}://{host}/api'
@@ -396,6 +396,7 @@ paths:
               schema:
                 properties:
                   success: { type: boolean, example: true }
+                  eventId: { description: 'ID of the new event', type: integer, example: 42 }
                 type: object
         '400':
           description: 'Invalid event type, calendar ID or volunteer ministry'
@@ -1766,7 +1767,7 @@ paths:
       tags:
         - System
       summary: 'Trigger background timer jobs (page-load fallback scheduler)'
-      description: 'Fallback trigger fired from the page footer on every authenticated page load, for installs that cannot run cron. The jobs are rate limited server-side by iTimerJobsMinIntervalMinutes, so a call inside that window returns ran=false without doing any work. The supported scheduler is the command-line runner (cli/timerjobs.php) driven by cron.'
+      description: 'Fallback trigger fired from the page footer on every authenticated page load, for installs that cannot run cron. The jobs are rate limited server-side by iTimerJobsMinIntervalMinutes, so a call inside that window returns ran=false without doing any work. The supported scheduler is the command-line runner (cli/timerjobs.php) driven by cron. Among the jobs, queued composer email is sent for up to 15 seconds per call.'
       requestBody:
         required: false
         content:
@@ -2592,8 +2593,8 @@ paths:
     post:
       tags:
         - Email
-      summary: 'Send a composer email, one message per recipient, through the configured SMTP server'
-      description: 'Recipients are given as person and family ids, never as addresses: the server resolves each id to its current email address, applies the do-not-email property, skips deceased people, inactive families and ids without an address, deduplicates addresses, and reports every skipped recipient by name. Each recipient receives their own message.'
+      summary: 'Queue a composer email, one message per recipient, for sending through the configured SMTP server'
+      description: 'Recipients are given as person and family ids, never as addresses: the server resolves each id to its current email address, applies the do-not-email property, skips deceased people, inactive families and ids without an address, deduplicates addresses, and reports every skipped recipient by name. Each recipient receives their own message. Nothing is sent inside this request: every message is queued (email history status `queued`) under one batch id and the call returns at once. POST /email/batches/{batch}/send sends the batch now in bounded steps; whatever is left goes out with the timer jobs (cron, or the page-load fallback). `sent` and `failed` are always empty here and are kept for older clients; follow the batch for outcomes.'
       requestBody:
         required: true
         content:
@@ -2621,15 +2622,17 @@ paths:
               type: object
       responses:
         '200':
-          description: 'Per-recipient outcome'
+          description: 'Per-recipient outcome of the queueing'
           content:
             application/json:
               schema:
                 properties:
-                  sent: { description: 'Recipients whose message the SMTP server accepted (acceptance is not delivery)', type: array, items: { properties: { personId: { type: integer, nullable: true }, familyId: { type: integer, nullable: true }, name: { type: string }, email: { type: string } }, type: object } }
+                  batch: { description: 'Batch id of the queued messages; null when nobody could be emailed', type: string, example: 3f2a9c0d4b6e8f1a2c3d4e5f60718293, nullable: true }
+                  queued: { description: 'Recipients whose message was queued', type: array, items: { properties: { personId: { type: integer, nullable: true }, familyId: { type: integer, nullable: true }, name: { type: string }, email: { type: string } }, type: object } }
                   skipped: { description: 'Requested recipients that were not emailed', type: array, items: { properties: { personId: { type: integer, nullable: true }, familyId: { type: integer, nullable: true }, name: { type: string }, reason: { type: string, enum: [not-found, no-email, do-not-email, deceased, inactive, duplicate-address] } }, type: object } }
-                  failed: { description: 'Recipients the SMTP server rejected', type: array, items: { properties: { personId: { type: integer, nullable: true }, familyId: { type: integer, nullable: true }, name: { type: string }, email: { type: string }, error: { type: string } }, type: object } }
-                  counts: { properties: { sent: { type: integer }, skipped: { type: integer }, failed: { type: integer } }, type: object }
+                  sent: { description: 'Always empty: sending happens after the request (kept for older clients)', type: array, items: { type: object } }
+                  failed: { description: 'Always empty: sending happens after the request (kept for older clients)', type: array, items: { type: object } }
+                  counts: { properties: { queued: { type: integer }, sent: { description: 'Always 0', type: integer }, skipped: { type: integer }, failed: { description: 'Always 0', type: integer } }, type: object }
                 type: object
         '400':
           description: 'Invalid request: raw addresses, no ids, bad ids, more than 500 ids, or empty subject/body'
@@ -2637,6 +2640,68 @@ paths:
           description: Unauthorized
         '403':
           description: 'Email permission required'
+        '422':
+          description: 'Email sending is disabled or SMTP is not configured'
+      security:
+        -
+          ApiKeyAuth: []
+  '/email/batches/{batch}':
+    get:
+      tags:
+        - Email
+      summary: 'Progress of a queued composer send'
+      description: "Counts of the batch's messages by email history status. Only the user who queued the batch, or an administrator, may read it."
+      parameters:
+        -
+          name: batch
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern: '^[0-9a-f]{32}$'
+      responses:
+        '200':
+          description: 'Batch progress'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailBatchProgress'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Email permission required, or the batch belongs to another user'
+        '404':
+          description: 'No such batch, or every message in it was still queued when an administrator deleted the queue'
+      security:
+        -
+          ApiKeyAuth: []
+  '/email/batches/{batch}/send':
+    post:
+      tags:
+        - Email
+      summary: 'Send the due messages of a queued composer send now'
+      description: "Sends the batch's due messages for up to 15 seconds or 100 messages, then returns its progress. The composer calls it until nothing is due; messages waiting for a retry, and anything left when the composer closes, go out with the timer jobs. Concurrent calls and timer-job runs never send the same message twice. Only the user who queued the batch, or an administrator, may call it."
+      parameters:
+        -
+          name: batch
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern: '^[0-9a-f]{32}$'
+      responses:
+        '200':
+          description: 'Batch progress after this step'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailBatchProgress'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Email permission required, or the batch belongs to another user'
+        '404':
+          description: 'No such batch, or every message in it was still queued when an administrator deleted the queue'
         '422':
           description: 'Email sending is disabled or SMTP is not configured'
       security:
@@ -6048,6 +6113,8 @@ paths:
               - sent
               - failed
               - skipped
+              - queued
+              - sending
         -
           name: page
           in: query
@@ -6068,7 +6135,7 @@ paths:
             application/json:
               schema:
                 properties:
-                  rows: { type: array, items: { properties: { id: { type: integer }, personId: { type: integer, nullable: true }, familyId: { type: integer, nullable: true }, sentByUserId: { type: integer, nullable: true }, sentBy: { description: 'Name of the user who wrote a composer message', type: string, nullable: true }, address: { type: string }, kind: { type: string }, kindLabel: { type: string }, subject: { type: string }, status: { type: string, enum: [sent, failed, skipped] }, error: { type: string, nullable: true }, dateSent: { type: string }, hasBody: { type: boolean } }, type: object } }
+                  rows: { type: array, items: { properties: { id: { type: integer }, personId: { type: integer, nullable: true }, familyId: { type: integer, nullable: true }, sentByUserId: { type: integer, nullable: true }, sentBy: { description: 'Name of the user who wrote a composer message', type: string, nullable: true }, address: { type: string }, kind: { type: string }, kindLabel: { type: string }, subject: { type: string }, status: { description: 'queued: waiting to be sent (a retry keeps the last error); sending: a run is sending it now', type: string, enum: [sent, failed, skipped, queued, sending] }, statusLabel: { type: string }, attempts: { description: 'Delivery attempts so far', type: integer }, error: { type: string, nullable: true }, dateSent: { type: string }, hasBody: { type: boolean } }, type: object } }
                   total: { type: integer }
                   page: { type: integer }
                   limit: { type: integer }
@@ -6174,7 +6241,7 @@ paths:
       tags:
         - 'Member Portal'
       summary: "A page of the signed-in member's own email history"
-      description: 'Newest first, in the same envelope GET /email/log answers with, but scoped to the acting member: only rows whose eml_per_ID is this person. There is no person id to pass. Rows never carry the body; GET /portal/me/emails/{id} does. Session only — API keys are refused.'
+      description: 'Newest first, in the same envelope GET /email/log answers with, but scoped to the acting member: only rows whose eml_per_ID is this person, and only mail that was sent. Queued, sending, failed and skipped mail is left out, and rows carry no delivery status. There is no person id to pass. Rows never carry the body; GET /portal/me/emails/{id} does. Session only — API keys are refused.'
       operationId: getPortalMyEmails
       parameters:
         -
@@ -6197,7 +6264,7 @@ paths:
             application/json:
               schema:
                 properties:
-                  rows: { type: array, items: { properties: { id: { type: integer }, personId: { type: integer, nullable: true }, address: { type: string }, kind: { type: string }, kindLabel: { type: string }, subject: { type: string }, status: { type: string, enum: [sent, failed, skipped] }, dateSent: { type: string }, hasBody: { type: boolean } }, type: object } }
+                  rows: { type: array, items: { properties: { id: { type: integer }, personId: { type: integer, nullable: true }, address: { type: string }, kind: { type: string }, kindLabel: { type: string }, subject: { type: string }, dateSent: { type: string }, hasBody: { type: boolean } }, type: object } }
                   total: { type: integer }
                   page: { type: integer }
                   limit: { type: integer }
@@ -6212,7 +6279,7 @@ paths:
       tags:
         - 'Member Portal'
       summary: "One email from the signed-in member's own history, with its body"
-      description: "The row is returned only when it was addressed to the acting member. Somebody else's row and an id that does not exist are the same 404, so a member cannot learn that an email exists by asking for it. The body is null for the email classes that never store one (account emails carrying a password or a one-time link)."
+      description: "The row is returned only when it was addressed to the acting member and was sent. Somebody else's row, an unsent row and an id that does not exist are the same 404, so a member cannot learn that an email exists by asking for it. No delivery status is included. The body is null for the email classes that never store one (account emails carrying a password or a one-time link)."
       operationId: getPortalMyEmail
       parameters:
         -
@@ -6923,23 +6990,7 @@ paths:
           content:
             application/json:
               schema:
-                properties:
-                  Id: { type: integer }
-                  Name: { type: string }
-                  Address: { description: 'Primary address, one line', type: string }
-                  SecondAddress1: { type: string, nullable: true }
-                  SecondAddress2: { type: string, nullable: true }
-                  SecondCity: { type: string, nullable: true }
-                  SecondState: { type: string, nullable: true }
-                  SecondZip: { type: string, nullable: true }
-                  SecondCountry: { type: string, nullable: true }
-                  SecondIsMailing: { type: boolean }
-                  HasSecondAddress: { type: boolean }
-                  SecondAddressIsMailing: { type: boolean }
-                  SecondAddress: { description: 'Second address, one line', type: string }
-                  MailingAddressLines: { description: 'Resolved mailing address, one line', type: string }
-                  MailingAddress: { description: 'Resolved mailing address parts', properties: { Address1: { type: string }, Address2: { type: string }, City: { type: string }, State: { type: string }, Zip: { type: string }, Country: { type: string } }, type: object }
-                type: object
+                $ref: '#/components/schemas/Family'
         '403':
           description: 'Access denied'
         '404':
@@ -7659,11 +7710,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-              example:
-                id: 42
-                firstName: John
-                lastName: Doe
+                $ref: '#/components/schemas/Person'
         '401':
           description: Unauthorized
         '404':
@@ -9980,6 +10027,29 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  /admin/api/email/queue:
+    delete:
+      tags:
+        - Admin
+      summary: 'Delete every queued composer message so it is never sent'
+      description: "Deletes the email history rows whose status is `queued`, in every batch. Messages being sent at that moment (`sending`) and the history of sent, failed and skipped mail are left alone. A composer still sending one of the deleted batches gets 404 for it. The deletion is written to the app log with the administrator's name."
+      operationId: deleteEmailQueue
+      responses:
+        '200':
+          description: 'The queue was emptied'
+          content:
+            application/json:
+              schema:
+                properties:
+                  deleted: { description: 'How many queued messages were deleted', type: integer, example: 12 }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden — Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
   /admin/api/import/csv/families:
     get:
       tags:
@@ -11294,7 +11364,7 @@ paths:
       tags:
         - Plugins
       summary: 'Install a community plugin from an approved download URL'
-      description: 'Downloads the zip, verifies its SHA-256 against approved-plugins.json, validates the archive, and extracts it into src/plugins/community/{id}. The plugin is NOT enabled automatically — admins must review and click Enable.'
+      description: 'Downloads the zip, verifies its SHA-256 against approved-plugins.json, validates the archive, and extracts it into src/plugins/community/{id}. A new install is NOT enabled automatically — admins must review and click Enable. If the plugin is already installed and the approved version is newer, it is upgraded in place and keeps its settings and enabled state.'
       operationId: installPluginFromUrl
       requestBody:
         required: true
@@ -11308,7 +11378,7 @@ paths:
               type: object
       responses:
         '200':
-          description: 'Plugin installed (not yet enabled)'
+          description: 'Plugin installed (not yet enabled) or upgraded in place'
         '400':
           description: 'Validation failure (unknown URL, checksum mismatch, unsafe zip)'
         '401':
@@ -11316,7 +11386,7 @@ paths:
         '403':
           description: 'Forbidden — Admin role required'
         '409':
-          description: 'Plugin already installed'
+          description: 'Plugin already installed at this version or newer'
         '500':
           description: 'Install failed'
       security:
@@ -11404,6 +11474,321 @@ paths:
           ApiKeyAuth: []
 components:
   schemas:
+    Person:
+      description: "A person record as returned by GET /person/{personId} (Person::exportTo('JSON') plus computed fields). Keys use the Propel PHP names. Related objects (e.g. Family) are embedded when the person has them."
+      properties:
+        Id:
+          type: integer
+          example: 42
+        Title:
+          type: string
+          example: Mr.
+          nullable: true
+        FirstName:
+          type: string
+          example: John
+        MiddleName:
+          type: string
+          nullable: true
+        LastName:
+          type: string
+          example: Doe
+        Suffix:
+          type: string
+          nullable: true
+        Address1:
+          type: string
+          nullable: true
+        Address2:
+          type: string
+          nullable: true
+        City:
+          type: string
+          nullable: true
+        State:
+          type: string
+          nullable: true
+        Zip:
+          type: string
+          nullable: true
+        Country:
+          type: string
+          nullable: true
+        HomePhone:
+          type: string
+          nullable: true
+        WorkPhone:
+          type: string
+          nullable: true
+        CellPhone:
+          type: string
+          nullable: true
+        Email:
+          type: string
+          nullable: true
+        WorkEmail:
+          type: string
+          nullable: true
+        BirthMonth:
+          description: '0 when unknown'
+          type: integer
+        BirthDay:
+          description: '0 when unknown'
+          type: integer
+        BirthYear:
+          type: integer
+          nullable: true
+        MembershipDate:
+          type: string
+          format: date
+          nullable: true
+        DateDeceased:
+          type: string
+          format: date
+          nullable: true
+        Gender:
+          description: '0 = unknown, 1 = male, 2 = female'
+          type: integer
+        FmrId:
+          description: 'Family role ID'
+          type: integer
+        ClsId:
+          description: 'Classification ID'
+          type: integer
+        FamId:
+          description: 'Family ID; 0 when the person has no family'
+          type: integer
+        Envelope:
+          type: integer
+          nullable: true
+        DateLastEdited:
+          type: string
+          format: date-time
+          nullable: true
+        DateEntered:
+          type: string
+          format: date-time
+        EnteredBy:
+          type: integer
+        EditedBy:
+          type: integer
+          nullable: true
+        FriendDate:
+          type: string
+          format: date
+          nullable: true
+        Flags:
+          type: integer
+        Facebook:
+          type: string
+          nullable: true
+        Twitter:
+          type: string
+          nullable: true
+        LinkedIn:
+          type: string
+          nullable: true
+        DateDeactivated:
+          description: 'Empty/null for an active person'
+          type: string
+          format: date
+          nullable: true
+        NeedsReview:
+          type: boolean
+        Address:
+          description: 'Computed one-line address (falls back to the family address)'
+          type: string
+        FullName:
+          description: 'Computed display name'
+          type: string
+        HasPhoto:
+          description: 'True when a photo has been uploaded'
+          type: boolean
+        Family:
+          $ref: '#/components/schemas/Family'
+        singlePersonCustom:
+          description: 'Custom field values the caller is allowed to see, keyed by custom field'
+          type: object
+          additionalProperties: true
+      type: object
+    Family:
+      description: 'A family record as returned by GET /family/{familyId} (Family::toArray()). Keys use the Propel PHP names. ScanCheck, ScanCredit and Envelope are only returned to users with the Finance role.'
+      properties:
+        Id:
+          type: integer
+          example: 7
+        Name:
+          type: string
+          example: Doe
+        Address1:
+          type: string
+          nullable: true
+        Address2:
+          type: string
+          nullable: true
+        City:
+          type: string
+          nullable: true
+        State:
+          type: string
+          nullable: true
+        Zip:
+          type: string
+          nullable: true
+        Country:
+          type: string
+          nullable: true
+        SecondAddress1:
+          type: string
+          nullable: true
+        SecondAddress2:
+          type: string
+          nullable: true
+        SecondCity:
+          type: string
+          nullable: true
+        SecondState:
+          type: string
+          nullable: true
+        SecondZip:
+          type: string
+          nullable: true
+        SecondCountry:
+          type: string
+          nullable: true
+        SecondIsMailing:
+          type: boolean
+        HomePhone:
+          type: string
+          nullable: true
+        Email:
+          type: string
+          nullable: true
+        Weddingdate:
+          type: string
+          format: date
+          nullable: true
+        DateEntered:
+          type: string
+          format: date-time
+          nullable: true
+        DateLastEdited:
+          type: string
+          format: date-time
+          nullable: true
+        EnteredBy:
+          type: integer
+          nullable: true
+        EditedBy:
+          type: integer
+          nullable: true
+        ScanCheck:
+          description: 'Finance role only'
+          type: string
+          nullable: true
+        ScanCredit:
+          description: 'Finance role only'
+          type: string
+          nullable: true
+        SendNewsletter:
+          type: string
+          nullable: true
+        DateDeactivated:
+          description: 'Empty/null for an active family'
+          type: string
+          format: date
+          nullable: true
+        Latitude:
+          type: number
+          format: double
+          nullable: true
+        Longitude:
+          type: number
+          format: double
+          nullable: true
+        Envelope:
+          description: 'Finance role only'
+          type: integer
+          nullable: true
+        NeedsReview:
+          type: boolean
+        Address:
+          description: 'Primary address, one line'
+          type: string
+        FamilyString:
+          description: 'Display string for the family'
+          type: string
+        HasSecondAddress:
+          type: boolean
+        SecondAddressIsMailing:
+          type: boolean
+        SecondAddress:
+          description: 'Second address, one line'
+          type: string
+        MailingAddressLines:
+          description: 'Resolved mailing address, one line'
+          type: string
+        MailingAddress:
+          description: 'Resolved mailing address parts'
+          properties:
+            Address1:
+              type: string
+            Address2:
+              type: string
+            City:
+              type: string
+            State:
+              type: string
+            Zip:
+              type: string
+            Country:
+              type: string
+          type: object
+      type: object
+    EmailBatchProgress:
+      properties:
+        batch:
+          type: string
+        total:
+          description: 'Messages in the batch; queued messages an administrator deleted are no longer counted'
+          type: integer
+        queued:
+          description: 'Waiting to be sent, due now or waiting for a retry'
+          type: integer
+        sending:
+          description: 'Being sent by a run right now'
+          type: integer
+        sent:
+          description: 'Accepted by the SMTP server (acceptance is not delivery)'
+          type: integer
+        failed:
+          description: 'Refused, or still failing after the last attempt'
+          type: integer
+        skipped:
+          description: "Email was switched off when the message's turn came"
+          type: integer
+        due:
+          description: 'Queued messages that may be sent now'
+          type: integer
+        nextAttempt:
+          description: 'When the earliest retry is due'
+          type: string
+          example: '2026-10-14 10:25:00'
+          nullable: true
+        done:
+          description: 'Nothing is queued or being sent'
+          type: boolean
+        failures:
+          description: "The failed messages and the server's answer"
+          type: array
+          items:
+            properties:
+              address:
+                type: string
+              error:
+                type: string
+            type: object
+      type: object
     PortalCalendarSubscription:
       properties:
         title:

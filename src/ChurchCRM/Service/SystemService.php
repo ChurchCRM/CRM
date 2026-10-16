@@ -157,6 +157,12 @@ class SystemService
             });
         }
 
+        // Composer email queued by POST /api/email/send that the composer did not finish
+        // sending, and retries that have come due (#10356).
+        self::runTimerJob('EmailQueueService', static function (): void {
+            EmailQueueService::runTimerJob();
+        });
+
         // Fire the CRON_RUN hook so plugins can register scheduled tasks.
         // Each active plugin registers a handler on Hooks::CRON_RUN in boot().
         // HookManager catches and logs any per-plugin errors so one failing

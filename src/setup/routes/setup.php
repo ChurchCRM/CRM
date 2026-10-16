@@ -126,6 +126,15 @@ $app->group('/', function (RouteCollectorProxy $group): void {
 
         file_put_contents($configFile, $template);
 
+        // Generate correct RewriteBase in all routing .htaccess files
+        // now that $sRootPath is known. See #10563.
+        try {
+            \ChurchCRM\Utils\HtaccessGenerator::generateAll($rootPath, $docRoot);
+        } catch (\Throwable $e) {
+            // Non-fatal during setup
+            error_log('HtaccessGenerator failed during setup: ' . $e->getMessage());
+        }
+
         return $response->withStatus(200);
     };
 
@@ -175,4 +184,3 @@ function is_valid_root_path($value)
     // Allow empty string OR a path starting with / (no trailing slash)
     return preg_match('#^(|\/[a-zA-Z0-9_\-\.\/]*)$#', $value);
 }
-

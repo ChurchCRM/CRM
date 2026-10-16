@@ -33,6 +33,39 @@ describe("Admin User Password", () => {
         cy.contains("Password Change Successful");
     });
 
+    it("Admin Change password stops a blank confirmation in the browser", () => {
+        cy.visit("/admin/system/user/99/changePassword");
+        cy.get("#NewPassword1").type("only-in-the-first-box");
+        cy.get("#NewPassword1").closest("form").submit();
+        cy.get("#NewPasswordError").should("have.text", "You must enter the same password in both boxes");
+        cy.get("#NewPassword1").should("have.value", "only-in-the-first-box");
+        cy.contains("Password Change Successful").should("not.exist");
+    });
+
+    it("Admin Change password refuses a confirmation that does not match", () => {
+        cy.visit("/admin/system/user/99/changePassword");
+        cy.get("input[name=csrf_token]")
+            .invoke("val")
+            .then((csrfToken) =>
+                cy.request({
+                    method: "POST",
+                    url: "/admin/system/user/99/changePassword",
+                    form: true,
+                    body: { csrf_token: csrfToken, NewPassword1: "first-box", NewPassword2: "second-box" },
+                }),
+            )
+            .its("body")
+            .should("contain", "You must enter the same password in both boxes")
+            .and("not.contain", "Password Change Successful");
+    });
+
+    it("Admin Change password refuses a blank password", () => {
+        cy.visit("/admin/system/user/99/changePassword");
+        cy.get("#NewPassword1").closest("form").submit();
+        cy.get("#NewPasswordError").should("have.text", "Enter a new password");
+        cy.contains("Password Change Successful").should("not.exist");
+    });
+
     it("Non-admin user denied access to change password page", () => {
         cy.setupStandardSession();
         cy.visit({ url: "admin/system/user/99/changePassword", failOnStatusCode: false });

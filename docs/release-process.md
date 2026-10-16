@@ -18,7 +18,7 @@ The order below is the process as it now runs, including the guards added after 
 
 1. **Locales clean:** `locale/terms/missing/` empty on `master` (Phase 1). New strings follow the count-neutral rule in `i18n-localization.md`.
 2. **Built and tested:** green Build/Test/Package and nightly on the same `master` HEAD; milestone `7.8.0` reviewed (Phase 2).
-3. **Release & Start Next** with `next_version` (3.1). It refuses to replace an existing release unless `replace_existing` is set (#10086). After #10090, `master` builds no longer create stray drafts, so there is nothing to delete first.
+3. **Release & Start Next** with `next_version` (3.1), the only input. It refuses to start unless Build/Test/Package, the Nightly and the marketing capture are green on the branch tip, and refuses to replace an existing release. After #10090, `master` builds no longer create stray drafts, so there is nothing to delete first.
 4. **Notes:** ask an agent to "write the 7.8.0 release notes". It reads the `release-notes-context-7.8.0` artifact and applies the approved text with `gh release edit 7.8.0 --tag 7.8.0 --notes-file …` (3.2).
 5. **Merge the `Start <next> release` PR before publishing** (3.3). Bookkeeping now stops if `master` still carries the released version.
 6. **Check the tag, then Publish** (3.4): `gh release view 7.8.0 -R ChurchCRM/CRM --json tagName,isDraft` must show `"tagName":"7.8.0"`.
@@ -109,7 +109,7 @@ Done when the final sync PR is merged and nothing is left to translate: `npm run
 | 1.3 | Upload `locale/messages.po` to POEditor and delete terms that no longer exist | **Since #10092:** merging the 1.2 PR changes `locale/messages.po` on `master`, which starts [`locale-sync-poeditor.yml`](../.github/workflows/locale-sync-poeditor.yml). After a 30 minute settle (a newer merge restarts it), its first step, `poeditor-upload-terms.js`, imports the terms with `sync_terms=1`, deletes the terms no longer in the file, verifies POEditor now matches it, and refuses when it would delete more than 2% of the project | 🤖 |
 | 1.4 | Run `Locale: sync` manually so the latest translations land before the release; it opens a `locale: update translations from POEditor - <date>` PR (e.g. [#10061](https://github.com/ChurchCRM/CRM/pull/10061)) | [`locale-sync-poeditor.yml`](../.github/workflows/locale-sync-poeditor.yml), `workflow_dispatch`. Manual runs: P50 7.3 min, **P90 8.1 min** (31 runs); scheduled: P90 7.7 min | ✋ trigger / 🤖 run |
 | 1.5 | Quick scan of the POEditor PR for bad files, then merge. Usually trusted as-is | Skim the file list | ✋ |
-| 1.6 | Translate every missing term in `locale/terms/missing/<locale>/` with Claude, using ChurchCRM/church-specific vocabulary | [`/locale-translate --all`](../.claude/commands/locale-translate.md) (via [`/locale-release`](../.claude/commands/locale-release.md)). Fresh `locale/translate/<version>-<date>-<time>` branch (was `locales/…` before #10065), one commit and push per locale. Measured from branch creation to last commit (7 runs, Aug–Sep 2026): 9 min to 3 h 13 min, median 37 min; scales with terms per locale (~10 → ~25 min, ~30 → ~40 min, ~155 → ~3 h) | 🧑‍💻 |
+| 1.6 | Translate every missing term in `locale/terms/missing/<locale>/` with Claude, using ChurchCRM/church-specific vocabulary | [Locale Translation skill](../.agents/skills/churchcrm/locale-translation-workflow.md) and [`/locale-translate --all`](../.claude/commands/locale-translate.md). Fresh `locale/translate/<version>-<date>-<time>` branch, one commit and push per locale. Measured from branch creation to last commit (7 runs, Aug–Sep 2026): 9 min to 3 h 13 min, median 37 min; scales with terms per locale (~10 → ~25 min, ~30 → ~40 min, ~155 → ~3 h) | 🧑‍💻 |
 | 1.7 | Upload the translated terms to POEditor | **Since #10065:** every push to `locale/translate/**` runs [`locale-upload-missing.yml`](../.github/workflows/locale-upload-missing.yml), which uploads the changed locales. Fallback: run that workflow manually (`locales` input), or `node locale/scripts/poeditor-upload-missing.js -y` locally with `POEDITOR_TOKEN`. ~22 s between locales | 🤖 (was ✋) |
 | 1.8 | `Locale: sync` runs again to download the new translations; scan and merge its PR (same as 1.4 → 1.5) | **Since #10065** the upload workflow dispatches [`locale-sync-poeditor.yml`](../.github/workflows/locale-sync-poeditor.yml) itself. **P90 8.1 min** | 🤖 trigger / 🤖 run / ✋ merge |
 
@@ -165,7 +165,7 @@ Goal: the exact commit being released is built, fully tested, and its scope is c
 | # | Step | How | Status |
 |---|------|-----|--------|
 | 3.0 | ~~Delete any stray `<version>` draft~~. Obsolete once #10090 merges: `master` builds no longer create drafts. Until then, check Releases for a stray draft | Releases | ✋ (until #10090) |
-| 3.1 | Run **Release & Start Next** with `next_version`. It creates the draft from the tested build's ZIP, uploads the `release-notes-context-<version>` artifact, bumps `master` to `next_version` and opens the `Start <next> release` PR. **It refuses to replace an existing release** unless `replace_existing` is set (#10086) | [`release-publish.yml`](../.github/workflows/release-publish.yml) → [`release-prepare.yml`](../.github/workflows/release-prepare.yml). ~2–3 min | ✋ trigger (judgment) / 🤖 run |
+| 3.1 | Run **Release & Start Next** with `next_version`. It creates the draft from the tested build's ZIP, uploads the `release-notes-context-<version>` artifact, bumps `master` to `next_version` and opens the `Start <next> release` PR. **It requires a green build, nightly and marketing capture on the branch tip and refuses to replace an existing release** (#10086) | [`release-publish.yml`](../.github/workflows/release-publish.yml) → [`release-prepare.yml`](../.github/workflows/release-prepare.yml). ~2–3 min | ✋ trigger (judgment) / 🤖 run |
 | 3.2 | Release notes: an agent reads the context artifact, writes user-facing notes following [`release-notes.md`](../.agents/skills/churchcrm/release-notes.md) (grouped by user impact, marketing alignment, verified language count), and after approval applies them with `gh release edit <tag> --tag <tag> --notes-file …` | Agent + skill; no Gemini hop or copy-paste since #10086 | 🧑‍💻 |
 | 3.3 | **Merge the `Start <next> release` PR before publishing.** Bookkeeping stops if `master` still carries the released version, and `pr-milestone-stamp.yml` then stamps new merges into the next milestone | PR from `build/<next>` | ✋ |
 | 3.4 | **Check the tag**, then **Publish**: `gh release view <tag> --json tagName,isDraft` must show the version, not `untagged-…` | GitHub release page | ✋ (approval) |
@@ -215,8 +215,8 @@ Starts after Publish (3.4). Runs over about a week. Order as practised:
 
 | # | Step | How | Status |
 |---|------|-----|--------|
-| 6.1 | Sync marketing visuals (screenshots/videos) to the website via a PR on `ChurchCRM/ChurchCRM.io`, and merge it | Run [`marketing-capture-assets.yml`](../.github/workflows/marketing-capture-assets.yml) on `master`; its last job opens the PR on `ChurchCRM.io` with only new and visibly changed files | ✋ (run workflow, merge PR) |
-| 6.2 | Once 6.1 is merged, merge the docs PRs held open for this release in `ChurchCRM/docs.churchcrm.io` (milestone `<version>` or label `docs-pending-release`) | `/release-announcement` step 3 lists them; maintainer merges | 🧑‍💻 list / ✋ merge |
+| 6.1 | Check the marketing visuals are published at https://cdn.churchcrm.io | [`marketing-capture-assets.yml`](../.github/workflows/marketing-capture-assets.yml) already ran on the release commit as a gate in step 3.1. On Publish, `release-bookkeeping` job `publish-visuals` starts `Publish visuals` in `ChurchCRM/visuals` with that capture run. No website PR. If it warned (no capture or no token), run `Publish visuals` in `ChurchCRM/visuals` by hand with the capture run id | 🤖 / ✋ (fallback) |
+| 6.2 | Release the docs. Docs PRs for the release were merged into `release-docs/<version>` as they were approved, and their CRM tracking issues were closed then. In `ChurchCRM/docs.churchcrm.io`: (1) set `crm-release.json` on `release-docs/<version>` to the released version and push, (2) merge the `docs: ChurchCRM <version>` pull request into `main`, (3) create `release-docs/<next version>` from `main` (the command is in the docs repo `DOCS_GUIDE.md`) | The docs workflow opens the release PR when the CRM release is published; it does not yet pin or create the next branch, so those are manual for now | ✋ |
 | 6.3 | Launch-day announcements: Discord, "shipped, please retest" comments on fixed issues, social posts | [`/release-announcement`](../.claude/commands/release-announcement.md) steps 1–2; [`social-media-release.md`](../.agents/skills/churchcrm/social-media-release.md). How posts are published: TBD | 🧑‍💻 / ❓ |
 | 6.4 | If the release has new features, write a blog post for them | Blog PR (repo TBD, likely `ChurchCRM.io`) | ✋ (judgment) |
 | 6.5 | A few days later, share the blog post on social media | TBD | ✋ |
@@ -225,7 +225,7 @@ Starts after Publish (3.4). Runs over about a week. Order as practised:
 
 ### Automation notes
 
-- 6.1 (**#10098**): runs from a local checkout of both repos. As a workflow on `release: published` (or on the marketing-visuals PR merging), it could check out `ChurchCRM.io`, run the same copy, and open the PR. That needs a token with write access to that repo, like `DOCS_RELEASE_TOKEN` for docs.
+- 6.1: automated. `DOCS_RELEASE_TOKEN` needs Actions: write on `ChurchCRM/visuals` for `publish-visuals` to start the publish.
 - 6.2: docs PRs are already tagged to the release by milestone. After Publish they could be marked ready or auto-merged, once the website sync lands if order matters.
 - 6.3–6.6: `scripts/release-marketing.js` used to generate copy on release; it was removed in #9960 in favour of the skills. What stays manual is judgment: which feature to lead with, whether a blog is warranted, and the week's cadence. An agent can draft the whole week's plan (launch posts, blog draft, day-3 blog share, follow-ups) from the final release notes in one pass. The maintainer approves, and a scheduler posts it.
 - 6.7 (**#10099**): most of the data already exists in four separate places. A scheduled agent run about 7 and 30 days after Publish could pull GA4 sessions by `utm_campaign`, ZIP `download_count` from the GitHub API, and PostHog installs by `crm_version`. It compares them with the previous release and appends a short scorecard to `changelog/<version>.md` or a tracking issue. Gaps: only Discord links carry a release-specific UTM tag, so social and blog links need `utm_campaign=release-<tag>` too. Telemetry defaults to `none`, so adoption counts cover only opted-in installs.
@@ -238,20 +238,20 @@ Earlier attempts to document and automate the release left overlapping and stale
 
 | File | Problem | Proposed action |
 |------|---------|-----------------|
-| `.agents/skills/churchcrm/release-management.md` | Good gate logic (SHA = build = nightly, approvals), but not linked to Phase 1 (locale) or the actual 3.0 / 3.2 / 5.1 practice. Not listed in the `SKILL.md` index | Keep. Trim to the agent's gate/report job and link here |
-| `release-notes.md` | Real process uses Gemini + last-10-releases tone + marketing strategy; skill has none of that. Says don't hard-code locale count; every release does | Add tone sampling + strategy link; make it the single notes tool (drop Gemini hop) |
-| `release-announcement.md` + `.claude/commands/release-announcement.md` | Refers to a "community agent" as the public voice; unclear if it still exists | Confirm; remove the reference if gone |
-| `social-media-release.md` | Says run after "changelog file is written (see release-notes.md)", which no longer happens there. Writes `social-media/<version>/`, which has never existed | Rewrite to match real 5.4 practice |
-| `locale-translation-workflow.md` (556 lines) + `.claude/commands/locale-release.md` + `locale-translate.md` + `locale-translate-agent-prompt.md` | Four overlapping locale docs. Per-locale upload rule wasn't followed (1.6/1.7). None described the 6-beat loop | **Partly done (#10063, #10065):** pipe-format guidance removed, "the push uploads it", dead links fixed, loop documented in `docs/locale-pipeline.md`. Still to do: collapse the four into one (#10100) |
+| `.agents/skills/churchcrm/release-management.md` | Gate logic duplicated the runbook and was missing from the `SKILL.md` index | **Done (#10100):** concise agent gates link to this runbook; indexed |
+| `release-notes.md` | Notes authoring was not clearly tied to the canonical process | **Done (#10100):** notes remain the step-specific skill and link to this runbook |
+| `release-announcement.md` + `.claude/commands/release-announcement.md` | Referred to a "community agent" as the public voice | **Done (#10100):** current instructions have the maintainer post directly; no separate agent handoff |
+| `social-media-release.md` | Referred to a changelog file as its input and wrote to a nonexistent `social-media/<version>/` directory | **Done (#10100):** draft from approved GitHub release notes and return copy-ready posts |
+| Locale translation skill and command aliases | Overlapping locale guidance duplicated the loop and exposed conflicting commit rules | **Done (#10100):** one concise translation skill holds agent rules; command aliases point to it and `docs/locale-pipeline.md` |
 | `marketing-visuals-pipeline.md` | Fine as a tool skill; has `<!-- learned: -->` essays that CLAUDE.md says not to add | Leave; tidy later |
-| `scripts/README.md` | Describes `startNewRelease.js` as "used by maintainers", but it's only called by `release-prepare.yml` | One-line fix |
+| `scripts/README.md` | Described `startNewRelease.js` as "used by maintainers", but only `release-prepare.yml` calls it | **Done (#10100)** |
 
 ### Workflows
 
 | File | Problem | Proposed action |
 |------|---------|-----------------|
 | `build-test-package.yml` `package` job | Creates/overwrites a `<version>` draft release on every `master` push (source of 3.0 and of the 7.7.1 placeholder tag) | **#10090** removes the step |
-| `release-publish.yml` | Deleted and recreated an existing release/tag even if published | **Done (#10086):** refuses unless `replace_existing` |
+| `release-publish.yml` | Deleted and recreated an existing release/tag even if published | **Done (#10086):** refuses to replace an existing release; the `replace_existing` input is gone |
 | `release-bookkeeping.yml` | First run (7.7.1) failed: empty tag, placeholder tag accepted, no `DOCS_RELEASE_TOKEN`. Rolls every open item forward, turning milestones into a growing backlog (2.3) | **Fixed in #10086**; token #10097; roll-forward policy still open |
 | `pr-milestone-stamp.yml` | Stamped into the shipped milestone between Publish and the Start-PR merge | Avoided by step 3.3 (merge the Start PR before Publish) |
 | `locale-generate-terms.yml`, `locale-sync-poeditor.yml` | Work; 1.7 done (#10065), 1.3 done (#10092) | Remaining link: merging the terms and sync PRs without a person (#10093) |
@@ -368,7 +368,6 @@ Phase 1 is done for a release when:
 ### 6. Known issues to fix along the way
 
 - Plural terms can't round-trip. See §7; this is the blocker for an all-locales gate.
-- `/locale-translate`, `locale-release.md` and `locale-translate-agent-prompt.md` all cite `.agents/skills/churchcrm/locale-ai-translation.md` as the "authoritative" church-vocabulary reference. **That file does not exist** (it was deprecated). The translation agent is working without its vocabulary guide.
 - `locale-branch-manager.js` documents `locale/{VERSION}-{DATE}` but creates `locales/…`. Replace it with the §2 names.
 - `locale-sync-poeditor.yml` runs `poeditor-upload-missing.js` without `--yes`. Today it never reaches the prompt, because `master` has nothing translated to upload. Once there is something to upload, it stops at an interactive `[Y/n]` prompt with no terminal. Pass `--yes` explicitly.
 

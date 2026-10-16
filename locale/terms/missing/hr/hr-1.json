@@ -1,88 +1,126 @@
 {
-  "Not authorized to change this event's audience group": "Nemate ovlasten za promenu grupe ovog dogadaja",
-  "Only a volunteer manager can change who coordinates a ministry": "Samo upravitelj volontera moze promeniti koordinatora sluzbene",
-  "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over.": "Odabir V1 pauzira email V2; sve sto je u redu se salje kada se V2 ponovo ukljuci, osim ako se dogadaj nije zavrsio.",
-  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them.": "Dodajte ovdje dogadaje ove sluzbene: radni dan, klasu koja se srutka svaku nedjelju. Idu na crkvenski kalendar, a nakon kreiranja od vas se trazi da li zelite popuniti radne snage.",
-  "Cancel occurrence": "Otkazite dogadaj",
-  "Cancel this occurrence": "Otkazite ovaj dogadaj",
-  "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored.": "Otkazivanje nikoga ne obavjestava: nema poslanih emaila. Dodjele su sacuvane, nema planiranih podsjeci dok je otkazano, i nitko ne moze biti dodijeljen dok se ne vrati.",
-  "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": "Izbrisani dogadaji napustaju svaki kalendar sa svojom pojavom i brojem osoba, a obsada ove sluzbene od njih cuva samo datum. Ovo se ne moze vratiti.",
-  "Events deleted: {{total}}": "Dogadaji izbrisani: {{total}}",
-  "Events to delete: {{total}}": "Dogadaji za brisanje: {{total}}",
-  "Occurrence cancelled": "Dogadaj otkaza",
-  "Occurrence restored": "Dogadaj obnovljen",
-  "Put this occurrence back on the schedule so it can be staffed again? Nobody is told: no email is sent.": "Vratiti ovaj dogadaj u raspored kako bi se mogao popuniti volonterima? Nitko nije obavisjen: nema poslanih emaila.",
-  "Restore occurrence": "Obnoviti dogadaj",
-  "Restore this occurrence": "Obnoviti ovaj dogadaj",
-  "The occurrence could not be cancelled": "Dogadaj se nije mogao otkazati",
-  "The occurrence could not be restored": "Dogadaj se nije mogao obnoviti",
-  "You may add events to every calendar, so all of them are listed. This ministry's own calendar is ticked to start with.": "Mozete dodati dogadaje svakom kalendaru, tako da su svi navedeni. Kalendar ove sluzbene je oznacen na pocetku.",
-  "A phone number or email address is required": "Potreban je telefonski broj ili email adresa",
-  "A phone number or email address is required.": "Potreban je telefonski broj ili email adresa.",
-  "Check-in has not opened for this event yet": "Prijava se jos nije otvorila za ovaj dogadaj",
-  "Classification given to walk-in guests registered on a kiosk": "Klasifikacija data gostima registriranim na kiosku",
-  "Failed to register guest. Please try again.": "Neuspjesna registracija gosta. Molimo pokusajte ponovno.",
-  "First name and last name are required": "Potrebno je ime i prezime",
-  "First name and last name must each be 50 characters or fewer": "Ime i prezime mora imati po 50 znakova ili manje",
-  "First name and last name must each be at least 2 characters": "Ime i prezime moraju imati najmanje 2 znaka",
-  "Guest": "Gost",
-  "Guest Classification": "Klasifikacija gosta",
-  "Invalid birth date": "Nevažeći datum rođenja.",
-  "Invalid email address": "Nevaljana email adresa",
-  "Kiosk Settings": "Postavke kioska",
-  "Please enter a check number": "Molimo unesite broj ceka",
-  "Register & Check In": "Registrirajte se i proverite",
-  "Register Walk-In Guest": "Registrirajte gosta",
-  "Register walk-in guest": "registrirajte gosta",
-  "Registered as a walk-in guest at the kiosk during event: %s": "Registriran kao gost na kiosku tijekom dogadaja: %s",
-  "Registering...": "Registracija...",
-  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "Zahtijevajte broj ceka pri zapisivanju cekova u zapise depozita.\nNapomena: onemogucavanjem se ujedno onemogucava otkrivanje duplikata - isti fizicki cek moze biti unesen vise puta.",
-  "This event has ended": "Ovaj dogadaj je zavrsio",
-  "This event has no group assigned, so guests cannot be registered": "Ovaj događaj nema dodijeljenu grupu pa se gosti ne mogu registrirati",
-  "This event has no start and end time": "Ovaj dogadaj nema vremena pocetka i kraja",
-  "{{name}} registered and checked in!": "{{name}} registriran i proveravan!",
-  "\"{{name}}\": {{count}} occurrences created": {
-    "one": "\"{{name}}\": {{count}} dogadaj kreiran",
-    "other": "\"{{name}}\": {{count}} dogadaja kreirana"
+  "A recurring event needs a last date, so it is back to {{date}}.": "",
+  "Add Everyone in Cart to {{ministry}}": "",
+  "Add Volunteer to {{ministry}}": "",
+  "Add the class's meetings as a recurring event with {{name}} as its class, then generate again.": "",
+  "Add them on the Calendar tab as a recurring event with {{name}} as its class.": "",
+  "Covered · {{more}} more welcome": "",
+  "Creates {{total}} events, every year on {{date}} from {{first}} to {{last}}": "",
+  "Creates {{total}} events, every {{day}} from {{first}} to {{last}}": "",
+  "Creates {{total}} events, on day {{day}} of each month from {{first}} to {{last}}": "",
+  "Default volunteer {{number}} for {{position}}": "",
+  "Default volunteers for {{position}}": "",
+  "Filling {{position}}": "",
+  "Full": "",
+  "Full · {{live}} of {{max}}": "",
+  "Headcount: {{total}}": "",
+  "Maximum allowed for {{position}}": "",
+  "Meetings of {{name}}": "",
+  "Minimum needed for {{position}}": "",
+  "Move them to {{className}}": "",
+  "Needs {{more}} more": "",
+  "New position: {{name}}": "",
+  "New recurring event for {{name}}": "",
+  "New recurring event titled {{title}}": "",
+  "No event was found between {{from}} and {{to}}.": "",
+  "No events on the calendar use {{name}} as their class between {{from}} and {{to}}.": "",
+  "No upcoming events titled {{title}} are on the calendar.": "",
+  "No {{type}} events between {{from}} and {{to}}.": "",
+  "No {{type}} events titled {{title}} between {{from}} and {{to}}.": "",
+  "Nobody is qualified for {{position}} yet": "",
+  "Not needed this time": "",
+  "Occurrences are created for events in the next week (through {{date}}).": "",
+  "Occurrences are created for events through {{date}}, when this schedule ends.": "",
+  "One event: {{title}}": "",
+  "Optional · up to {{max}} welcome": "",
+  "Optional · {{live}} of up to {{max}}": "",
+  "Plugin upgraded from %1$s to %2$s.": "",
+  "Select {{event}}": "",
+  "Select {{when}}": "",
+  "Substitute asked: {{name}}": "",
+  "Sunday School: {{name}}": "",
+  "Teachers to import: {{total}}": "",
+  "That is more than {{max}} events. Choose a shorter range.": "",
+  "This ministry's events titled {{title}}": "",
+  "Up to {{max}} welcome": "",
+  "Volunteer times must be whole minutes, at most {{max}} from the event": "",
+  "You are already helping that day as {{what}}.": "",
+  "already serving as {{position}}": "",
+  "last served {{date}}": "",
+  "{{live}} assigned, {{min}} needed, room for {{more}} more": "",
+  "{{live}} of up to {{max}}": "",
+  "{{live}} of {{max}}": "",
+  "{{live}} of {{min}}": "",
+  "{{live}} of {{min}}–{{max}}": "",
+  "{{ministry}} has no events between {{from}} and {{to}}.": "",
+  "{{ministry}} has no events titled {{title}} between {{from}} and {{to}}.": "",
+  "{{min}} to {{max}} needed": "",
+  "{{name}} (no longer qualified)": "",
+  "{{name}} (no upcoming meetings — add its meetings first)": "",
+  "{{name}} (no upcoming meetings)": "",
+  "{{name}} does not name the event it follows, so it has nothing to staff.": "",
+  "{{name}} ended on {{date}}, so there are no dates left to generate.": "",
+  "{{name}} has no upcoming meetings on the calendar, so this schedule has nothing to staff.": "",
+  "{{name}} is no longer qualified, so this place is left open on new occurrences.": "",
+  "{{name}} starts on {{date}}, after the dates generated now (through {{through}}).": "",
+  "{{pending}} not yet confirmed": "",
+  "{{position}}: Max is {{max}} but {{chosen}} default volunteers are chosen. Remove one or raise Max.": "",
+  "{{team}}: no staffing needs set": "",
+  "{{team}}: {{staffing}}": "",
+  "{{type}} events (no event chosen yet)": "",
+  "{{type}} events titled {{title}}": "",
+  "User must be a staff user": "",
+  "Enter a new password": "",
+  "Delete ({{count}})": {
+    "one": "",
+    "other": ""
   },
-  "Email sent to {{count}} recipient(s).": {
-    "one": "E-pošta poslana je {{count}} primatelju.",
-    "other": "E-pošta poslana je na {{count}} primatelja."
+  "Delete events ({{count}})": {
+    "one": "",
+    "other": ""
   },
-  "No new occurrences. All {{count}} events through {{through}} already have one.": {
-    "one": "Nema novih dogadaja. Svi {{count}} dogadaj do {{through}} vec ima jedan.",
-    "other": "Nema novih dogadaja. Svi {{count}} dogadaja do {{through}} vec imaju jedan."
+  "Delete {{count}} occurrences? Their assignments, the volunteers' responses, any substitutions and every queued reminder go with them. This cannot be undone.": {
+    "one": "",
+    "other": ""
   },
-  "Schedule \"{{name}}\" created: {{count}} occurrences": {
-    "one": "Raspored \"{{name}}\" kreiran: {{count}} dogadaj",
-    "other": "Raspored \"{{name}}\" kreiran: {{count}} dogadaja"
+  "Occurrences are created for events in the next {{count}} weeks (through {{date}}).": {
+    "one": "",
+    "other": ""
   },
-  "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
-    "one": "Slanje {{count}} primatelju. Adrese bez zapisa osobe nisu ukljucene: {{list}}",
-    "other": "Slanje {{count}} primalacima. Adrese bez zapisa osobe nisu ukljucene: {{list}}"
+  "They finish {{count}} minutes after the event ends.": {
+    "one": "",
+    "other": ""
   },
-  "{{count}} could not be assigned": {
-    "one": "{{count}} se nije mogao dodijeliti",
-    "other": "{{count}} se nisu mogli dodijeliti"
+  "They finish {{count}} minutes before the event ends.": {
+    "one": "",
+    "other": ""
   },
-  "{{count}} left open because the default is no longer qualified": {
-    "one": "{{count}} ostao otvoren jer zadana vrijednost vise nije kvalificirana",
-    "other": "{{count}} ostali otvoreni jer zadana vrijednost vise nije kvalificirana"
+  "Volunteers start {{count}} minutes after the event starts.": {
+    "one": "",
+    "other": ""
   },
-  "{{count}} volunteers assigned": {
-    "one": "{{count}} volonter dodijeljen",
-    "other": "{{count}} volontera dodijeljeno"
+  "Volunteers start {{count}} minutes before the event starts.": {
+    "one": "",
+    "other": ""
   },
-  "{{count}} waiting for your answer": {
-    "one": "{{count}} ceka na vasu odgovor",
-    "other": "{{count}} cekaju na vasu odgovor"
+  "{{count}} needed": {
+    "one": "",
+    "other": ""
   },
-  "{{count}} {{title}} events created. Staff them now?": {
-    "one": "{{count}} dogadaj {{title}} kreiran. Dodjeliti volontere sada?",
-    "other": "{{count}} dogadaja {{title}} kreirano. Dodjeliti volontere sada?"
+  "{{count}} occurrences deleted": {
+    "one": "",
+    "other": ""
   },
-  "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
-    "one": "{{names}} ce obsluživati ove dogadaje. Njihovi dogadaji se kreiraju u sljedecih {{count}} tjedna.",
-    "other": "{{names}} ce obsluživati ove dogadaje. Njihovi dogadaji se kreiraju u sljedecih {{count}} tjedana."
+  "{{failed}} of {{count}} occurrences could not be deleted": {
+    "one": "",
+    "other": ""
+  },
+  "{{name}} ({{count}} upcoming)": {
+    "one": "",
+    "other": ""
+  },
+  "{{title}} ({{count}} upcoming)": {
+    "one": "",
+    "other": ""
   }
 }

@@ -62,24 +62,30 @@ class PortalAccountPages
     /**
      * Apply a password change from a submitted form body.
      *
-     * The handler behind both routes, so `OldPassword` / `NewPassword1` are
-     * named once. `NewPassword2` is the confirmation box that
-     * `skin/js/PasswordChange.js` compares in the browser; the server has never
-     * read it and does not start here.
+     * The handler behind both routes, so `OldPassword` / `NewPassword1` /
+     * `NewPassword2` are named once. `skin/js/PasswordChange.js` compares the
+     * two new boxes in the browser too, but a form that skips it must not save.
      *
      * @param array<string, mixed>|object|null $body the parsed request body
      *
-     * @throws PasswordChangeException when the old password is wrong or the new
-     *                                 one is refused
+     * @throws PasswordChangeException when the new password is blank, the two
+     *                                 new boxes differ, the old password is
+     *                                 wrong or the new one is refused
      */
     public static function applyPasswordChange(User $user, array|object|null $body): void
     {
         $fields = is_array($body) ? $body : [];
+        $newPassword = (string) ($fields['NewPassword1'] ?? '');
 
-        $user->userChangePassword(
-            (string) ($fields['OldPassword'] ?? ''),
-            (string) ($fields['NewPassword1'] ?? '')
-        );
+        if (trim($newPassword) === '') {
+            throw new PasswordChangeException('New', gettext('Enter a new password'));
+        }
+
+        if ($newPassword !== (string) ($fields['NewPassword2'] ?? '')) {
+            throw new PasswordChangeException('New', gettext('You must enter the same password in both boxes'));
+        }
+
+        $user->userChangePassword((string) ($fields['OldPassword'] ?? ''), $newPassword);
     }
 
     /**

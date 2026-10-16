@@ -148,6 +148,7 @@ $_isImpersonating = ImpersonationService::isActive();
               'emailSignature' => \ChurchCRM\Service\EmailComposerService::defaultSignature($currentUser),
               'vonageEnabled' => PluginManager::getPlugin('vonage')?->isConfigured() ?? false,
               'defaultEmailToAddress' => $currentUser->isEmailEnabled() ? SystemConfig::getValue('sToEmailAddress') : '',
+              'emailHistoryURL' => $currentUser->isAdmin() ? SystemURLs::getRootPath() . '/v2/email/dashboard#email-recent-sends' : '',
           ],
           'plugins' => PluginManager::getPluginsClientConfig() ?: new stdClass(),
           'bEnableGravatarPhotos' => PluginManager::getPluginsClientConfig()['gravatar']['enabled'] ?? false,

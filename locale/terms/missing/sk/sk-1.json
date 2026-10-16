@@ -1,88 +1,126 @@
 {
-  "Not authorized to change this event's audience group": "Nemáte oprávnenie na zmenu skupiny tejto udalosti",
-  "Only a volunteer manager can change who coordinates a ministry": "Iba manažér dobrovoľníkov môže zmeniť koordinátora služby",
-  "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over.": "Výber V1 pozastaví e-mail V2; všetko zaradené do frontu sa odošle, keď je V2 opäť zapnuté, pokiaľ sa udalosť neskončila.",
-  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them.": "Sem pridajte udalosti tejto služby: pracovný deň, triedu, ktorá sa stretáva každú nedeľu. Idú do cirkevného kalendára a po vytvorení budete požiadaní, či ich chcete obsadiť dobrovoľníkmi.",
-  "Cancel occurrence": "Zrušiť udalosť",
-  "Cancel this occurrence": "Zrušiť túto udalosť",
-  "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored.": "Zrušenie nikohmu nepovedá: žiadne e-maily nie sú odoslané. Priradenia sú zachované, žiadne pripomenutia nie sú naplánované, pokiaľ je zrušené, a nikto nemôže byť priradený, pokiaľ nie je obnovené.",
-  "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": "Odstránené udalosti opúšťajú každý kalendár spolu s ich príchodmi a počtom osôb a obsluhujúci personál tejto služby si zachovávajú len dátum. Toto sa nedá vrátiť späť.",
-  "Events deleted: {{total}}": "Udalosti odstránené: {{total}}",
-  "Events to delete: {{total}}": "Udalosti na odstránenie: {{total}}",
-  "Occurrence cancelled": "Udalosť zrušená",
-  "Occurrence restored": "Udalosť obnovená",
-  "Put this occurrence back on the schedule so it can be staffed again? Nobody is told: no email is sent.": "Vrátiť túto udalosť do harmonogramu, aby sa mohla opäť obsluhovať dobrovoľníkmi? Nikto nie je informovaný: žiadne e-maily nie sú odoslané.",
-  "Restore occurrence": "Obnovit udalosť",
-  "Restore this occurrence": "Obnovit túto udalosť",
-  "The occurrence could not be cancelled": "Udalosť sa nepodarilo zrušiť",
-  "The occurrence could not be restored": "Udalosť sa nepodarilo obnoviť",
-  "You may add events to every calendar, so all of them are listed. This ministry's own calendar is ticked to start with.": "Môžete pridať udalosti do každého kalendára, aby boli všetky uvedené. Kalendár tejto služby je na začiatok zaškrtnutý.",
-  "A phone number or email address is required": "Vyžaduje sa telefónne číslo alebo e-mailová adresa",
-  "A phone number or email address is required.": "Vyžaduje sa telefónne číslo alebo e-mailová adresa.",
-  "Check-in has not opened for this event yet": "Príchod ešte nebol otvorený pre túto udalosť",
-  "Classification given to walk-in guests registered on a kiosk": "Klasifikácia priradená návštevníkom zaregistrovaným na kiosku",
-  "Failed to register guest. Please try again.": "Nepodarilo sa zaregistrovať hosta. Skúste znova.",
-  "First name and last name are required": "Vyžaduje sa meno a priezvisko",
-  "First name and last name must each be 50 characters or fewer": "Meno a priezvisko musia mať každé maximálne 50 znakov",
-  "First name and last name must each be at least 2 characters": "Meno a priezvisko musia mať každé minimálne 2 znaky",
-  "Guest": "Hosť",
-  "Guest Classification": "Klasifikácia hosta",
-  "Invalid birth date": "Neplatný dátum narodenia.",
-  "Invalid email address": "Neplatná e-mailová adresa",
-  "Kiosk Settings": "Nastavenia kiosku",
-  "Please enter a check number": "Prosím zadajte číslo šeku",
-  "Register & Check In": "Zaregistrujte sa a skontrolujte sa",
-  "Register Walk-In Guest": "Zaregistrujte hosta",
-  "Register walk-in guest": "zaregistrujte hosta",
-  "Registered as a walk-in guest at the kiosk during event: %s": "Zaregistrovaný ako hosť u kiosku počas udalosti: %s",
-  "Registering...": "Registrácia...",
-  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "Vyžadujte číslo šeku pri záznamu platieb šekmi v záznamoch vkladov.\nPozn.: vypnutie tohto tiež zakáže detekciu duplicitných čísel šekov — ten istý fyzický šek je možné zadať viackrát.",
-  "This event has ended": "Táto udalosť skončila",
-  "This event has no group assigned, so guests cannot be registered": "Táto udalosť nemá priradenú skupinu, takže hostí nie je možné zaregistrovať",
-  "This event has no start and end time": "Táto udalosť nemá čas začiatku a konca",
-  "{{name}} registered and checked in!": "{{name}} zaregistrovaný a kontrolovaný!",
-  "\"{{name}}\": {{count}} occurrences created": {
-    "one": "\"{{name}}\": {{count}} udalosť vytvorená",
-    "other": "\"{{name}}\": {{count}} udalostí vytvorených"
+  "A recurring event needs a last date, so it is back to {{date}}.": "",
+  "Add Everyone in Cart to {{ministry}}": "",
+  "Add Volunteer to {{ministry}}": "",
+  "Add the class's meetings as a recurring event with {{name}} as its class, then generate again.": "",
+  "Add them on the Calendar tab as a recurring event with {{name}} as its class.": "",
+  "Covered · {{more}} more welcome": "",
+  "Creates {{total}} events, every year on {{date}} from {{first}} to {{last}}": "",
+  "Creates {{total}} events, every {{day}} from {{first}} to {{last}}": "",
+  "Creates {{total}} events, on day {{day}} of each month from {{first}} to {{last}}": "",
+  "Default volunteer {{number}} for {{position}}": "",
+  "Default volunteers for {{position}}": "",
+  "Filling {{position}}": "",
+  "Full": "",
+  "Full · {{live}} of {{max}}": "",
+  "Headcount: {{total}}": "",
+  "Maximum allowed for {{position}}": "",
+  "Meetings of {{name}}": "",
+  "Minimum needed for {{position}}": "",
+  "Move them to {{className}}": "",
+  "Needs {{more}} more": "",
+  "New position: {{name}}": "",
+  "New recurring event for {{name}}": "",
+  "New recurring event titled {{title}}": "",
+  "No event was found between {{from}} and {{to}}.": "",
+  "No events on the calendar use {{name}} as their class between {{from}} and {{to}}.": "",
+  "No upcoming events titled {{title}} are on the calendar.": "",
+  "No {{type}} events between {{from}} and {{to}}.": "",
+  "No {{type}} events titled {{title}} between {{from}} and {{to}}.": "",
+  "Nobody is qualified for {{position}} yet": "",
+  "Not needed this time": "",
+  "Occurrences are created for events in the next week (through {{date}}).": "",
+  "Occurrences are created for events through {{date}}, when this schedule ends.": "",
+  "One event: {{title}}": "",
+  "Optional · up to {{max}} welcome": "",
+  "Optional · {{live}} of up to {{max}}": "",
+  "Plugin upgraded from %1$s to %2$s.": "",
+  "Select {{event}}": "",
+  "Select {{when}}": "",
+  "Substitute asked: {{name}}": "",
+  "Sunday School: {{name}}": "",
+  "Teachers to import: {{total}}": "",
+  "That is more than {{max}} events. Choose a shorter range.": "",
+  "This ministry's events titled {{title}}": "",
+  "Up to {{max}} welcome": "",
+  "Volunteer times must be whole minutes, at most {{max}} from the event": "",
+  "You are already helping that day as {{what}}.": "",
+  "already serving as {{position}}": "",
+  "last served {{date}}": "",
+  "{{live}} assigned, {{min}} needed, room for {{more}} more": "",
+  "{{live}} of up to {{max}}": "",
+  "{{live}} of {{max}}": "",
+  "{{live}} of {{min}}": "",
+  "{{live}} of {{min}}–{{max}}": "",
+  "{{ministry}} has no events between {{from}} and {{to}}.": "",
+  "{{ministry}} has no events titled {{title}} between {{from}} and {{to}}.": "",
+  "{{min}} to {{max}} needed": "",
+  "{{name}} (no longer qualified)": "",
+  "{{name}} (no upcoming meetings — add its meetings first)": "",
+  "{{name}} (no upcoming meetings)": "",
+  "{{name}} does not name the event it follows, so it has nothing to staff.": "",
+  "{{name}} ended on {{date}}, so there are no dates left to generate.": "",
+  "{{name}} has no upcoming meetings on the calendar, so this schedule has nothing to staff.": "",
+  "{{name}} is no longer qualified, so this place is left open on new occurrences.": "",
+  "{{name}} starts on {{date}}, after the dates generated now (through {{through}}).": "",
+  "{{pending}} not yet confirmed": "",
+  "{{position}}: Max is {{max}} but {{chosen}} default volunteers are chosen. Remove one or raise Max.": "",
+  "{{team}}: no staffing needs set": "",
+  "{{team}}: {{staffing}}": "",
+  "{{type}} events (no event chosen yet)": "",
+  "{{type}} events titled {{title}}": "",
+  "User must be a staff user": "",
+  "Enter a new password": "",
+  "Delete ({{count}})": {
+    "one": "",
+    "other": ""
   },
-  "Email sent to {{count}} recipient(s).": {
-    "one": "E-mail odoslaný {{count}} príjemcovi.",
-    "other": "E-maily odoslané {{count}} príjemcom."
+  "Delete events ({{count}})": {
+    "one": "",
+    "other": ""
   },
-  "No new occurrences. All {{count}} events through {{through}} already have one.": {
-    "one": "Žiadne nové udalosti. Všetky {{count}} udalosti do {{through}} už majú jednu.",
-    "other": "Žiadne nové udalosti. Všetky {{count}} udalostí do {{through}} už majú jednu."
+  "Delete {{count}} occurrences? Their assignments, the volunteers' responses, any substitutions and every queued reminder go with them. This cannot be undone.": {
+    "one": "",
+    "other": ""
   },
-  "Schedule \"{{name}}\" created: {{count}} occurrences": {
-    "one": "Harmonogram \"{{name}}\" vytvorený: {{count}} udalosť",
-    "other": "Harmonogram \"{{name}}\" vytvorený: {{count}} udalostí"
+  "Occurrences are created for events in the next {{count}} weeks (through {{date}}).": {
+    "one": "",
+    "other": ""
   },
-  "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
-    "one": "Posielanie {{count}} príjemcovi. Adresy bez záznamu osoby nie sú zahrnuté: {{list}}",
-    "other": "Posielanie {{count}} príjemcom. Adresy bez záznamu osoby nie sú zahrnuté: {{list}}"
+  "They finish {{count}} minutes after the event ends.": {
+    "one": "",
+    "other": ""
   },
-  "{{count}} could not be assigned": {
-    "one": "{{count}} sa nedala prideliť",
-    "other": "{{count}} sa nedali prideliť"
+  "They finish {{count}} minutes before the event ends.": {
+    "one": "",
+    "other": ""
   },
-  "{{count}} left open because the default is no longer qualified": {
-    "one": "{{count}} zostala otvorená, pretože predvolené nastavenie sa už nekvalifikuje",
-    "other": "{{count}} ostali otvorené, pretože predvolené nastavenie sa už nekvalifikuje"
+  "Volunteers start {{count}} minutes after the event starts.": {
+    "one": "",
+    "other": ""
   },
-  "{{count}} volunteers assigned": {
-    "one": "{{count}} dobrovoľník priradený",
-    "other": "{{count}} dobrovoľníkov pridelených"
+  "Volunteers start {{count}} minutes before the event starts.": {
+    "one": "",
+    "other": ""
   },
-  "{{count}} waiting for your answer": {
-    "one": "{{count}} čaká na vašu odpoveď",
-    "other": "{{count}} čakajú na vašu odpoveď"
+  "{{count}} needed": {
+    "one": "",
+    "other": ""
   },
-  "{{count}} {{title}} events created. Staff them now?": {
-    "one": "{{count}} udalosť {{title}} vytvorená. Prideliť dobrovoľníkov teraz?",
-    "other": "{{count}} udalostí {{title}} vytvorených. Prideliť dobrovoľníkov teraz?"
+  "{{count}} occurrences deleted": {
+    "one": "",
+    "other": ""
   },
-  "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
-    "one": "{{names}} bude obsluhovať tieto udalosti. Ich udalosti sa vytvárajú v priebehu nasledujúceho {{count}} týždňa.",
-    "other": "{{names}} budú obsluhovať tieto udalosti. Ich udalosti sa vytvárajú v priebehu nasledujúcich {{count}} týždňov."
+  "{{failed}} of {{count}} occurrences could not be deleted": {
+    "one": "",
+    "other": ""
+  },
+  "{{name}} ({{count}} upcoming)": {
+    "one": "",
+    "other": ""
+  },
+  "{{title}} ({{count}} upcoming)": {
+    "one": "",
+    "other": ""
   }
 }

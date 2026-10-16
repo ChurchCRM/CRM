@@ -124,7 +124,7 @@ Both are options of `captureScreen()` in the spec (Step 1). Guidelines:
 **Output:**
 ```
 playwright/artifacts/
-├── manifest.json (auto-generated, committed)
+├── manifest.json (auto-generated, gitignored)
 ├── screenshots/
 │   ├── desktop/workflow-name.png
 │   ├── tablet/workflow-name.png
@@ -133,29 +133,17 @@ playwright/artifacts/
 │   ├── desktop/workflow-name.webm
 │   ├── tablet/workflow-name.webm
 │   └── mobile/workflow-name.webm
-└── metadata/ (debug only, not committed)
+└── metadata/ (debug only)
     └── device/*.json
 ```
 
 ## Step 4: Commit
 
-**Files to commit:**
-```bash
-git add playwright/artifacts/manifest.json
-git add playwright/artifacts/screenshots/
-git add playwright/artifacts/videos/
-git commit -m "chore: add workflow-name screenshot and video"
-```
+Commit the spec (`playwright/workflows/*.spec.ts`) only. `playwright/artifacts/` is gitignored; never add the images, videos or manifest.
 
-**Manifest.json is committed** so:
-- It's preserved in git history
-- It's part of the PR review
-- The website can sync a known-good version
-- Diffs show what changed (file sizes, timestamps, new entries)
+## Step 5: Publish to the website
 
-## Step 5: Publish to Website
-
-Run the `Marketing: capture screenshots & videos` workflow on `master`. Its last job opens a PR on `ChurchCRM/ChurchCRM.io` with the new and visibly changed screenshots and videos plus `data/manifest.json`. Merge that PR to publish.
+Nothing to do in the PR. The `Marketing: capture screenshots & videos` workflow uploads the artifact `marketing-visuals-<run id>`. When a release is published, `release-bookkeeping.yml` job `publish-visuals` starts `Publish visuals` in `ChurchCRM/visuals`, which serves the set at https://cdn.churchcrm.io/ (`<relativePath from manifest.json>`). Manual fallback: run `Publish visuals` there with the capture run id. See `marketing-visuals-pipeline.md`.
 
 ## Validation
 
@@ -206,9 +194,8 @@ npm run marketing:manifest && cat playwright/artifacts/manifest.json | jq 'lengt
 - ✅ Re-run `npm run marketing:manifest`
 
 **Problem:** Website doesn't show new screenshot
-- ✅ Did the capture workflow's website PR merge?
-- ✅ Did website PR sync `data/manifest.json`?
-- ✅ Check Hugo build includes `data/` files
+- ✅ Was the release published and did `Publish visuals` in `ChurchCRM/visuals` succeed?
+- ✅ Is the file listed in https://cdn.churchcrm.io/manifest.json?
 
 ## When an Agent Develops a Workflow
 

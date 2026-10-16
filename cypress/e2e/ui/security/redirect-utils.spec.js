@@ -43,6 +43,8 @@ describe('RedirectUtils Security - linkBack Parameter', () => {
             // Backslash URLs (some browsers interpret as //)
             '\\\\evil.com',
             '\\evil.com',
+            '/\\evil.test',
+            '/\\\\evil.test',
             
             // URL-encoded variants
             '%68%74%74%70%73://evil.com', // https encoded

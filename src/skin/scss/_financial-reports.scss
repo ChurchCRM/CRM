@@ -61,9 +61,9 @@ input.date-picker {
 .card > .card-body .ts-wrapper.multi .ts-control .item {
   margin: 3px 6px 3px 0;
   padding: 0 8px;
-  background: #f0f0f0;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  color: #333;
+  background: var(--tblr-tertiary-bg);
+  border: 1px solid var(--tblr-border-color);
+  color: var(--tblr-body-color);
   border-radius: 3px;
   line-height: 1.8;
   max-width: 100%;

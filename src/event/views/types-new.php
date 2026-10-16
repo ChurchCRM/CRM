@@ -56,7 +56,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
       <div class="mb-3">
         <label class="fw-bold form-label"><?= gettext('Recurrence Pattern') ?></label>
-        <div class="event-recurrence-patterns border rounded p-3 bg-light">
+        <div class="event-recurrence-patterns border rounded p-3 bg-surface-secondary">
           <div class="form-check mb-2">
             <input class="form-check-input" type="radio" name="newEvtTypeRecur" id="recurNone" value="none" checked>
             <label class="form-check-label" for="recurNone"><?= gettext('None (one-time event)') ?></label>

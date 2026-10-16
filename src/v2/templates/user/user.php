@@ -430,7 +430,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
             <h4 class="mb-3"><?= gettext("Usage") ?></h4>
             <p class="text-body-secondary"><?= gettext("Include your API key in requests using the x-api-key header") ?>:</p>
-            <pre class="p-3 bg-light rounded"><code>curl -H "x-api-key: <?= InputUtils::escapeHTML(substr($user->getApiKey(), 0, 8)) ?>..." \
+            <pre class="p-3 rounded"><code>curl -H "x-api-key: <?= InputUtils::escapeHTML(substr($user->getApiKey(), 0, 8)) ?>..." \
      <?= SystemURLs::getURL() ?>/api/person/1</code></pre>
           </div>
 
@@ -467,7 +467,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
             <!-- People & Families group -->
             <div class="border rounded mb-3">
-              <div class="px-3 py-2 border-bottom bg-light">
+              <div class="px-3 py-2 border-bottom bg-surface-secondary">
                 <strong><i class="fa-solid fa-users me-2"></i><?= gettext("People &amp; Families") ?></strong>
                 <p class="text-body-secondary small mb-0 mt-1"><?= gettext("All users can view congregation members. This permission cannot be removed.") ?></p>
               </div>

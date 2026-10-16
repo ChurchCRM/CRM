@@ -92,7 +92,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     /* ── Floating map legend (desktop) ──────────────────────────────── */
     #map-legend {
         padding: 8px 12px;
-        background: #fff;
+        background: var(--tblr-bg-surface);
         border-radius: 6px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, .18);
         min-width: 150px;
@@ -148,10 +148,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     .legend-pill {
         border: 1px solid rgba(0, 0, 0, .12);
         padding: 4px 10px;
-        background: #f8f9fa;
+        background: var(--tblr-bg-surface-secondary);
     }
     .legend-pill.inactive {
-        background: #f8f9fa;
+        background: var(--tblr-bg-surface-secondary);
     }
 
     /* ── Colour dot ─────────────────────────────────────────────────── */
