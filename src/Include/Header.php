@@ -305,7 +305,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
             <div class="dropdown-divider"></div>
             <a href="<?= InputUtils::escapeAttribute(SystemURLs::attributed('https://docs.churchcrm.io/contributing', 'help_menu_contributing')) ?>" target="_blank" class="dropdown-item"
                title="<?= gettext('Contributing') ?>">
-              <i class="fa-brands fa-github me-2"></i><?= gettext('Documentation') ?>
+              <i class="fa-brands fa-github me-2"></i><?= gettext('Contributing') ?>
             </a>
           </div>
         </div>
