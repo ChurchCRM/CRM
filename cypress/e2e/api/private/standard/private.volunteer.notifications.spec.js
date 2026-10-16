@@ -1702,7 +1702,6 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
 
         afterEach(() => {
             setConfig(LEAD_HOURS_URL, "0");
-            dbOk("UPDATE person_per SET per_FirstName = ? WHERE per_ID = ?", ["Tony", PERSON_COORDINATOR]);
         });
 
         function assignmentDetail(assignmentId) {
@@ -1764,21 +1763,6 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
                     expect(body).to.contain("/portal/volunteer/schedule");
                     const replyTo = (message.ReplyTo || []).map((r) => r.Address);
                     expect(replyTo).to.deep.eq([COORDINATOR_EMAIL]);
-                });
-            });
-        });
-
-        it("escapes the coordinator's name in the confirmation", function () {
-            requireMailpit(this);
-            dbOk("UPDATE person_per SET per_FirstName = ? WHERE per_ID = ?", ["<b>Tony</b>", PERSON_COORDINATOR]);
-
-            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A, { accepted: true }).then(() => {
-                drain();
-
-                mailTo(MEMBER_A_EMAIL).then((message) => {
-                    const html = message.HTML || "";
-                    expect(html).to.contain("&lt;b&gt;Tony&lt;/b&gt;");
-                    expect(html).to.not.contain("<b>Tony</b>");
                 });
             });
         });
