@@ -6,82 +6,50 @@ prereqs: ["[[slim-4-best-practices]]","[[php-best-practices]]"]
 complexity: "intermediate"
 ---
 
-# Skill: API Development
+# API Development
 
-## Context
-This skill covers creating and managing REST API endpoints in ChurchCRM using Slim 4.
+REST endpoints in ChurchCRM use Slim 4 route files and the service layer ([`service-layer.md`](./service-layer.md)). Setup and middleware: [`slim-4-best-practices.md`](./slim-4-best-practices.md).
 
-## API Structure
+## Structure and placement
 
-- **Public/Private APIs**: `src/api/routes/` - General API endpoints (FinanceRoleAuth, etc.)
-- **Admin APIs**: `src/admin/routes/api/` - Admin-only endpoints (AdminRoleAuth)
-- **Finance APIs**: `src/api/routes/finance/` - Finance endpoints (FinanceRoleAuth)
-- **Entry Point**: `src/api/index.php` - Main API router
-- **Naming**: Prefer kebab-case endpoints (e.g., `/download-latest-release`)
-- **Methods**: GET for reads, POST for actions that change state
-
-### API Placement Rule <!-- learned: 2026-03-28 -->
-
-Non-admin APIs must live under `/api/` (`src/api/routes/`), not under module-specific `/{module}/api/` paths.
-Admin-only APIs go under `/admin/api/` or `/{module}/api/` (e.g., `/finance/api/funds` for admin fund CRUD).
+- Entry point: `src/api/index.php`
+- Non-admin APIs live under `/api/` in `src/api/routes/<domain>/` (finance routes use `FinanceRoleAuthMiddleware`)
+- Admin-only APIs live under `/admin/api/` (`src/admin/routes/api/`) or `/{module}/api/` (`src/{module}/routes/api/`) behind `AdminRoleAuthMiddleware`
+- Endpoints are kebab-case (`/download-latest-release`); GET reads, POST/PUT/DELETE change state
+- Create an endpoint for external clients, AJAX operations, or logic shared across pages. A page that needs a service method calls the service directly
 
 | API type | Location | Middleware |
 |----------|----------|-----------|
-| Public/role-based read | `src/api/routes/` | Role-specific (e.g., `FinanceRoleAuthMiddleware`) |
+| Role-based read/write | `src/api/routes/` | Role-specific (e.g. `FinanceRoleAuthMiddleware`) |
 | Admin CRUD | `src/admin/routes/api/` or `src/{module}/routes/api/` | `AdminRoleAuthMiddleware` |
 
-### OpenAPI Documentation <!-- learned: 2026-03-28 -->
+Use inline closures for handlers: `$group->post('/path', function (Request $request, Response $response): Response { ... });`
 
-All new API endpoints must include OpenAPI 3.0 annotations:
-- Path definitions with request/response schemas
-- Parameter descriptions and types
-- Error response codes (400, 401, 403, 404)
-- Example payloads
+## Error handling
 
-## Slim 4 Routes
+Return errors with `SlimUtils::renderErrorJSON()` (`src/ChurchCRM/Slim/SlimUtils.php`). Wrap operations in try/catch and return the sanitized response; `renderErrorJSON` owns all error logging.
 
 ```php
-// CORRECT - Inline closure
-$group->post('/path', function ($request, $response) {
-    return $response->withJson($data);
-});
-
-// WRONG - String reference doesn't work
-$group->post('/path', 'MyHandler::process');
-```
-
-## API Error Handling (CRITICAL)
-
-**ALWAYS use `SlimUtils::renderErrorJSON()` for API errors** — Located in `src/ChurchCRM/Slim/SlimUtils.php`
-
-Never throw exceptions in route handlers. Wrap operations in try/catch and return sanitized error responses.
-
-### Pattern
-
-```php
-use ChurchCRM\Slim\SlimUtils;
-use Psr\Http\Message\ResponseInterface as Response;
-use Psr\Http\Message\ServerRequestInterface as Request;
-
 $group->post('/endpoint', function (Request $request, Response $response, array $args): Response {
     try {
-        // Your operation here
         $result = doSomething();
         return SlimUtils::renderJSON($response, ['data' => $result]);
     } catch (\Throwable $e) {
-        // Determine appropriate status code
         $status = $e->getCode() >= 400 && $e->getCode() < 600 ? $e->getCode() : 500;
-        // Return sanitized error response with server-side logging
         return SlimUtils::renderErrorJSON($response, gettext('User-facing error message'), [], $status, $e, $request);
     }
 });
 ```
 
-### Canonical API Error Shape <!-- learned: 2026-09-11 -->
+Signature: `renderErrorJSON(Response $response, ?string $message = null, array $extra = [], int $status = 500, ?\Throwable $exception = null, ?Request $request = null)`. Pass the status as the `$status` argument and the message through `gettext()`.
 
-**Every `/api` error response uses one shape**, built by
-`SlimUtils::buildErrorPayload()` and emitted by `renderErrorJSON()`, the role
-and auth middleware, and the Slim error handlers (#9737):
+For a bad request, return `SlimUtils::renderErrorJSON($response, gettext('invalid event type id'), [], 400)`. `HttpNotFoundException` may be thrown; Slim handles it natively.
+
+Extra response data: `renderErrorJSON($response, gettext('Validation failed'), ['errors' => $errors], 400)`.
+
+### Canonical API error shape
+
+Every `/api` error response is built by `SlimUtils::buildErrorPayload()` and emitted by `renderErrorJSON()`, the role and auth middleware, and the Slim error handlers:
 
 ```json
 {
@@ -92,362 +60,130 @@ and auth middleware, and the Slim error handlers (#9737):
 }
 ```
 
-- **`message` is canonical** — read it in new client code.
-- **`error` is an alias** of `message`, kept so the pre-existing
-  `responseJSON.error` consumers (e.g. `DepositSlipEditor.js`) keep working.
-  Do not give it a different value.
-- **`code`** mirrors the HTTP status.
-- **`success: false`** lets a caller branch without inspecting the status.
-- Extra keys are merged on top: the Slim error handlers add
-  `request: {method, path}`; a route may pass `['errors' => [...]]` via the
-  `$extra` argument.
+- `message` is canonical; read it in client code
+- `error` is an alias of `message` for existing `responseJSON.error` consumers and always carries the same value
+- `code` mirrors the HTTP status
+- Extra keys merge on top: the Slim error handlers add `request: {method, path}`; a route passes `['errors' => [...]]` through `$extra`
 
-Emit it from anywhere that hand-rolls a JSON error:
+Middleware that builds its own JSON error uses the same builder:
 
 ```php
-use ChurchCRM\Slim\SlimUtils;
-
-$response->getBody()->write(json_encode(
-    SlimUtils::buildErrorPayload(gettext('Invalid API key'), 401)
-));
+$response->getBody()->write(json_encode(SlimUtils::buildErrorPayload(gettext('Invalid API key'), 401)));
 ```
 
-Known outliers still emitting `{"error": …}` only —
-`RequestParameterValidationMiddleware`, `InputSanitizationMiddleware`,
-`PublicCalendarMiddleware`. They call `renderJSON` directly (so they also skip
-redaction and error logging); convert them when you next touch them.
+Success responses are `{'success': true, 'data': ...}` or `{'success': true, 'message': ...}`. Client code tolerates both shapes: `error.message || error.error || error.msg || i18next.t("Unknown error")`.
 
-### renderErrorJSON Behavior
+### Redaction
 
-- **Server-side logs**: exception class, message, file, line, trace, request method/path/IP/user-agent
-- **Client receives**: sanitized message only (no traces, file paths, or credentials)
-- **Redacts secret *values*, not words**: see below
-- **Status passed as parameter**: `int $status` parameter (NOT via `response->withStatus(...)`)
+`renderErrorJSON` logs exception class, message, file, line, trace and request context server-side. The client receives a sanitized message only.
 
-### Redaction: Value-Shaped, Not Word-Shaped <!-- learned: 2026-09-11 -->
+`SlimUtils::containsSensitiveValue()` replaces a message with the generic "An error occurred..." only when it matches credential-shaped context: `name=value` assignments for credential names, DSN fragments (`host=`, `dbname=`, `user=`), credentials in a URL, PEM key material, JWTs, opaque runs of 40+ characters, and complete IPv4 addresses. Bare words such as "user" or "host" pass through, so `User not found` stays readable.
 
-`SlimUtils::containsSensitiveValue()` decides whether a message is replaced by
-the generic "An error occurred…". It matches credential-like **context** only —
-`name=value` / `name: value` assignments for credential names, DSN fragments
-(`host=`, `dbname=`, `user=`), credentials in a URL (`scheme://user:pass@host`),
-PEM key material, JWTs, opaque runs of 40+ characters, and complete IPv4
-addresses.
+`scripts/test-error-redaction.php` (`npm run test:php`, also in CI) covers both directions. Add a case there whenever `SENSITIVE_VALUE_PATTERNS` changes.
 
-It deliberately does **not** match bare English words. The previous rule was an
-unanchored word list, so `User not found` came back as "An error occurred…",
-`Ghostwriter field is required` was redacted for containing "host", and
-`Value must be between 1.5 and 3.5` for containing "1.5" (#9737).
+`sanitizeErrorMessage()` collapses ORM/PDO failures to "A database error occurred...". Detect them by exception class (`PropelException`, `PDOException`); the generated models live under `src/ChurchCRM/model/`, so a file-path check never matches.
 
-Regression coverage for both directions lives in
-`scripts/test-error-redaction.php` (`npm run test:php`, also run in CI). It
-calls the real `containsSensitiveValue()`, `sanitizeErrorMessage()`,
-`buildErrorPayload()` and `renderErrorJSON()` and asserts that quoted JSON keys
-(`{"password":"hunter2"}`), standard base64 with `/`, `+`, `=` and lowercase
-runs, DSNs, JWTs and PEM blocks are redacted while `User not found` and
-`password must be at least 8 characters` stay readable. Add a case there
-whenever you touch `SENSITIVE_VALUE_PATTERNS`.
+## Middleware order
 
-`sanitizeErrorMessage()` additionally collapses ORM/PDO failures to
-"A database error occurred…". Detect them by **exception class**
-(`PropelException`, `PDOException`) — the vendor directory is `perplorm/perpl`
-and a failing write is thrown from the generated model under
-`src/ChurchCRM/model/`, so a `stripos($file, 'propel')` check never fires and
-Propel leaks the whole `INSERT INTO … VALUES (:p0, …)` statement to the client.
+Slim 4 is LIFO; `addErrorMiddleware()` follows `addRoutingMiddleware()`. Reference: [`slim-4-best-practices.md`](./slim-4-best-practices.md) -> "Middleware Order".
 
-### Signature
+## HTTP headers
+
+Detect MIME type with `FILEINFO_MIME_TYPE` and trim it:
 
 ```php
-SlimUtils::renderErrorJSON(
-    Response $response,                    // Original $response (unmodified)
-    ?string $message = null,               // Localized user-facing message
-    array $extra = [],                     // Additional data to include in response
-    int $status = 500,                     // HTTP status code
-    ?\Throwable $exception = null,         // Exception for server-side logging
-    ?Request $request = null               // Request for context logging
-): Response
-```
-
-### Examples
-
-```php
-// Simple error with custom message
-return SlimUtils::renderErrorJSON($response, gettext('Database error'), [], 500);
-
-// Error with exception logging
-return SlimUtils::renderErrorJSON($response, gettext('Upload failed'), [], 400, $e, $request);
-
-// Error with dynamic status code
-$status = $e->getCode() >= 400 && $e->getCode() < 600 ? $e->getCode() : 500;
-return SlimUtils::renderErrorJSON($response, gettext('Operation failed'), [], $status, $e, $request);
-
-// Error with extra response data
-return SlimUtils::renderErrorJSON($response, gettext('Validation failed'), ['errors' => $errors], 400);
-```
-
-### DO NOT
-
-- ❌ Throw exceptions in API routes (caught by error handler, exposes details to clients)
-- ❌ Use `response->withStatus(500)` with renderErrorJSON (pass status as parameter)
-- ❌ Return raw exception messages (use gettext() for localization and sanitization)
-- ❌ Log exceptions separately in routes (renderErrorJSON handles all logging)
-
-### Never Throw HttpBadRequestException in Route Handlers <!-- learned: 2026-04-07 -->
-
-API route handlers must use `SlimUtils::renderErrorJSON()` instead of throwing `HttpBadRequestException`. Thrown exceptions can expose stack traces and bypass the custom error handler. `HttpNotFoundException` is fine to throw (Slim handles it natively), but `HttpBadRequestException` should return a JSON error response directly.
-
-```php
-// ✅ CORRECT
-return SlimUtils::renderErrorJSON($response, gettext('invalid event type id'), [], 400);
-
-// ❌ WRONG — can expose stack traces
-throw new HttpBadRequestException($request, gettext('invalid event type id'));
-```
-
-## API Response Standardization
-
-**Maintain consistent error response format across all APIs** to prevent client-side errors.
-
-**Key Pattern:**
-- **Success responses**: `{'success': true, 'data': ...}` or `{'success': true, 'message': ...}`
-- **Error responses**: build with `SlimUtils::buildErrorPayload()` / `renderErrorJSON()`; read `message` (see [Canonical API Error Shape](#canonical-api-error-shape))
-- **Security**: Return generic error messages to users, not specific validation details
-
-**Example:**
-
-```php
-// CORRECT - Uses 'message' field consistently
-return SlimUtils::renderErrorJSON($response, gettext('Upload failed'), [], 400, $e, $request);
-// Client receives: {success: false, message: "Upload failed"}
-
-// Client-side error handler resilience
-var errorText = error.message || error.error || error.msg || i18next.t("Unknown error");
-```
-
-## Middleware Order (CRITICAL - Slim 4 uses LIFO) <!-- learned: 2026-04-07 -->
-
-> [!NOTE] Full reference
-> [`slim-4-best-practices.md` → Middleware Order](./slim-4-best-practices.md)
-
-**TL;DR:** `addErrorMiddleware()` MUST be called AFTER `addRoutingMiddleware()`. Wrong order → raw 500 on 404s.
-
-```php
-$app->addBodyParsingMiddleware();
-$app->addRoutingMiddleware();
-$errorMiddleware = $app->addErrorMiddleware(true, true, true);  // AFTER routing
-SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
-$app->add(new CorsMiddleware());
-$app->add(AuthMiddleware::class);
-```
-
-## HTTP Headers (RFC 7230)
-
-Use FILEINFO_MIME_TYPE, not FILEINFO_MIME:
-
-```php
-// CORRECT
 $finfo = new \finfo(FILEINFO_MIME_TYPE);
 $contentType = $finfo->file($photoPath);  // "image/png"
-$response = $response->withHeader('Content-Type', trim($contentType));
-
-// WRONG
-$finfo = new \finfo(FILEINFO_MIME);  // Returns "image/png; charset=binary"
-$response = $response->withHeader('Content-Type', $contentType);  // ERROR!
+$contentType = is_string($contentType) && $contentType !== '' ? trim($contentType) : 'application/octet-stream';
+$response = $response->withHeader('Content-Type', $contentType);
 ```
 
-Always validate and trim header values:
+## Photo caching
 
-```php
-if ($contentType && is_string($contentType)) {
-    $response = $response->withHeader('Content-Type', trim($contentType));
-} else {
-    $response = $response->withHeader('Content-Type', 'application/octet-stream');
-}
-```
-
-## Photo Caching & HttpCache Middleware
-
-Route-level cache, not app-level:
+Attach the HttpCache middleware to the route:
 
 ```php
 use Slim\HttpCache\Cache;
-use ChurchCRM\Photo;
 
-// CORRECT - Route-level
 $group->get('/photo', function ($request, $response, $args) {
     $photo = new Photo('Person', $args['personId']);
     return SlimUtils::renderPhoto($response, $photo);
 })->add(new Cache('public', Photo::CACHE_DURATION_SECONDS));
-
-// In Photo.php
-class Photo {
-    public const CACHE_DURATION_SECONDS = 7200;
-}
-
-// WRONG - App-level applies to all routes
-$app->add(new Cache('public', 3600));
 ```
 
-## Composer Send Takes Ids, Never Addresses <!-- learned: 2026-09-16 -->
+`Photo::CACHE_DURATION_SECONDS` is in `src/ChurchCRM/dto/Photo.php`.
 
-`POST /api/email/send` (`src/api/routes/email.php`, `EmailComposerService`) accepts
-`personIds[]` / `familyIds[]` plus `subject` / `body` and refuses a `recipients` array of raw
-addresses with 400. The service resolves each id to its current address, applies the
-do-not-email property, skips deceased people, inactive families, ids without an address and
-duplicate addresses, and returns `{sent[], skipped[{name, reason}], failed[{name, error}],
-counts}`; one `ComposerEmail` is sent per recipient. Reasons for the contract: the church
-SMTP relay must never mail arbitrary addresses, every send must be attributable to a record
-(the email history log of #9877 hangs off it), and the caller gets "who was not emailed"
-by name instead of silently dropped strings.
+## Email composer send
 
-The list endpoints the composer reads (`/cart/emails`, `/people/emails`,
-`/groups/{id}/emails`, `/groups/{id}/sundayschool/emails`) return a `recipients` array
-(`{personId, familyId, name, email}`) next to `emails` — build it with
-`PersonService::mailingRecipient($person, $email)`. A page that wants a one-record send
-adds `data-email-composer data-email-person-id="N" data-email-address="…"
-data-email-name="…"` (or `data-email-family-id`) to a button and loads
-`/skin/v2/email-composer.min.js`; gate both on
-`AuthenticationManager::getCurrentUser()->isEmailEnabled() && SystemConfig::isEmailEnabled()`.
-The generated `docs/openapi/generated/*.yaml` is committed by the master workflow — never
-commit it from a branch.
+`POST /api/email/send` (`src/api/routes/email.php`, `EmailComposerService`) accepts `personIds[]` / `familyIds[]` plus `subject` / `body`, and answers a `recipients` array of raw addresses with 400. The service resolves each id to its current address, applies the do-not-email property, skips deceased people, inactive families, ids without an address and duplicate addresses, and returns `{sent[], skipped[{name, reason}], failed[{name, error}], counts}`. One `ComposerEmail` is sent per recipient, so every send traces to a record and the church SMTP relay mails only known addresses.
 
-## Email Handling in APIs
+List endpoints the composer reads (`/cart/emails`, `/people/emails`, `/groups/{id}/emails`, `/groups/{id}/sundayschool/emails`) return a `recipients` array (`{personId, familyId, name, email}`) next to `emails`, built with `PersonService::mailingRecipient($person, $email)`.
+
+A one-record send button carries `data-email-composer data-email-person-id="N" data-email-address="..." data-email-name="..."` (or `data-email-family-id`) and the page loads `/skin/v2/email-composer.min.js`. Gate both on `AuthenticationManager::getCurrentUser()->isEmailEnabled() && SystemConfig::isEmailEnabled()`.
+
+Email failures in any API log and continue:
 
 ```php
-// CORRECT - Log but don't crash
 if (!mail($to, $subject, $body)) {
-    error_log("Email failed: " . $to);
+    error_log('Email failed: ' . $to);
 }
-return $response->withJson(['data' => $result]);
-
-// WRONG
-if (!mail($to, $subject, $body)) {
-    throw new Exception("Email failed");  // Returns 500
-}
+return SlimUtils::renderJSON($response, ['data' => $result]);
 ```
 
-## Admin API Calls (JavaScript)
+## Admin API calls (JavaScript)
 
-**Recommended Approaches for `/admin/api/` calls:**
-
-1. **`window.CRM.AdminAPIRequest()`** - Preferred for jQuery-based code
-2. **Native `fetch()`** - Acceptable for modern JavaScript code
-
-### Option 1: AdminAPIRequest (jQuery-based)
+Use `window.CRM.AdminAPIRequest()` for jQuery code; it prepends `/admin/api/`, sets JSON content type, integrates with the CRM error handler, and returns a jQuery promise.
 
 ```javascript
-// Use for jQuery-heavy pages or when you need jQuery promise syntax
-window.CRM.AdminAPIRequest({
-    path: 'orphaned-files/delete-all',
-    method: 'POST'
-})
-.done(function(response) {
-    window.CRM.notify(i18next.t('Success'), { type: 'success' });
-})
-.fail(function(xhr) {
-    window.CRM.notify(i18next.t('Error'), { type: 'error' });
-});
+window.CRM.AdminAPIRequest({ path: 'orphaned-files/delete-all', method: 'POST' })
+    .done(() => window.CRM.notify(i18next.t('Success'), { type: 'success' }))
+    .fail(() => window.CRM.notify(i18next.t('Error'), { type: 'error' }));
 ```
 
-### Option 2: Native fetch (Modern JavaScript)
+Modern modules use `fetch()`:
 
 ```javascript
-// Use for modern JavaScript code or ES6+ modules
 fetch(window.CRM.root + '/admin/api/system/config/settingName', {
     method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ value: settingValue })
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ value: settingValue }),
 })
-.then(response => response.json())
-.then(data => {
-    window.CRM.notify(i18next.t('Settings saved'), { type: 'success' });
-})
-.catch(error => {
-    window.CRM.notify(i18next.t('Error saving settings'), { type: 'error' });
-});
+    .then((response) => response.json())
+    .then(() => window.CRM.notify(i18next.t('Settings saved'), { type: 'success' }));
 ```
 
-### AdminAPIRequest Details
+## Webpack TypeScript API utilities
 
-- Automatically prepends `/admin/api/` to the path
-- Sets proper `Content-Type: application/json` and `dataType: 'json'`
-- Integrates with CRM error handler for consistent error display
-- Returns jQuery promise (supports `.done()`, `.fail()`, `.always()`)
-- Path format: `'database/reset'` becomes `/admin/api/database/reset`
-
-## Webpack TypeScript API Utilities
-
-**For webpack TypeScript bundles, use `webpack/api-utils.ts`** - ensures safe API URL construction.
-
-**Critical Issue:** Webpack bundles load **before** `window.CRM` is initialized.
+Webpack bundles load before `window.CRM` is initialized. Build API URLs with `webpack/api-utils.ts`, which reads `window.CRM.root` at call time:
 
 ```typescript
 import { buildAPIUrl, buildAdminAPIUrl, fetchAPIJSON } from './api-utils';
 
-// URL construction (safe - evaluated at runtime)
-const url = buildAPIUrl('person/123/avatar');           // → '/api/person/123/avatar'
-const adminUrl = buildAdminAPIUrl('system/config/key'); // → '/admin/api/system/config/key'
-
-// Fetch with automatic error handling
+const url = buildAPIUrl('person/123/avatar');           // '/api/person/123/avatar'
+const adminUrl = buildAdminAPIUrl('system/config/key'); // '/admin/api/system/config/key'
 const data = await fetchAPIJSON<AvatarInfo>('person/123/avatar');
 ```
 
-**Available Functions:**
-- `getRootPath()` - Get `window.CRM.root` dynamically
-- `buildAPIUrl(path)` - Build `/api/` endpoint URL
-- `buildAdminAPIUrl(path)` - Build `/admin/api/` endpoint URL
-- `fetchAPI(path, options)` - Fetch with error logging
-- `fetchAPIJSON<T>(path, options)` - Fetch and parse JSON (recommended)
-- `fetchAdminAPI(path, options)` - Admin API fetch variant
-- `fetchAdminAPIJSON<T>(path, options)` - Admin API JSON variant
+The module also exports `getRootPath`, `fetchAPI`, `fetchAdminAPI`, `fetchAdminAPIJSON`.
 
-## Creating API Endpoints
+## Cypress API spec (every new endpoint)
 
-**Only create API endpoints when:**
-- Needed by external clients
-- Required for AJAX operations
-- Shared across multiple pages
+Every new endpoint ships with a Cypress API spec in the same PR, run locally before the push. Seed real data so the happy path exercises actual model hydration. Template: `cypress/e2e/api/private/people/people.attendance.spec.js`.
 
-**Do NOT create API endpoints** if a service method is only called from a legacy page - call the service directly instead.
+- Happy path with seeded data: seed through existing APIs in `before()`, clean up in `after()`, assert status 200 and response shape and values
+- Empty path, e.g. a person with no records
+- 401 with no API key or session
+- 403 for a role-restricted caller (the `limited.user` inline-key pattern when seeded users are too privileged)
+- 404 for a nonexistent entity id
 
-## Cypress API Spec (REQUIRED for every new endpoint) <!-- learned: 2026-07-18 -->
+Run: `npx cypress run --config-file cypress/configs/docker.config.ts --spec "<path>"`.
 
-**Every new API endpoint MUST ship with a Cypress API spec in the same PR.** A PR
-adding an endpoint without a spec is incomplete — reviewers must request one.
+## OpenAPI documentation
 
-Why this is mandatory: PR #8985 shipped `GET /api/attendance/person/{id}` with a
-Propel hydration bug that 500'd on every real record. The spec that would have
-caught it existed in the PR but had never been executed — an endpoint is only as
-tested as the spec that *runs* against it. Seed real data in the spec so the
-happy path exercises actual hydration, not just an empty result set.
+`zircote/swagger-php` generates OpenAPI 3.0 specs from `@OA\*` DocBlock annotations; the specs power the public API reference. Add or update the annotation for every API endpoint. `.github/workflows/docs.yml` regenerates and validates the spec on API-touching PRs. Required content: path, request/response schemas, parameter descriptions and types, error codes (400, 401, 403, 404), example payloads.
 
-Minimum coverage per endpoint (see
-`cypress/e2e/api/private/people/people.attendance.spec.js` as the template):
+Named functions take the DocBlock immediately above the `function`:
 
-- **Happy path with seeded data** — seed via existing APIs in `before()`, clean up
-  in `after()`; assert status 200 AND response shape/values (an empty-DB 200 can
-  hide hydration bugs)
-- **Empty/zero-data path** — e.g. person with no records
-- **401** — no API key / no session
-- **403** — a role-restricted caller (use `limited.user` inline-key pattern when
-  standard seeded users are too privileged)
-- **404** — nonexistent entity ID
-
-Run it before pushing: `npx cypress run --config-file cypress/configs/docker.config.ts --spec "<path>"` —
-never rely on CI to execute it first (bot-authored PRs may not trigger e2e jobs).
-
-## OpenAPI Documentation (REQUIRED for all API changes)
-
-ChurchCRM uses `zircote/swagger-php` 6.x to generate OpenAPI 3.0 specs from DocBlock annotations. The generated specs power the public API reference in the Documentation. <!-- learned: 2026-07-26 -->
-
-v6 kept full support for the legacy `@OA\*` DocBlock annotation style used throughout this codebase (it only *added* PHP 8 attribute syntax as an alternative) — no annotation rewrite was needed when upgrading from 4.x. See `.github/workflows/docs.yml` for the CI job that regenerates and validates the spec on every API-touching PR.
-
-**When adding or updating any API endpoint, you MUST add/update the `@OA\*` annotation.**
-
-### Annotation placement rules
-
-**Named functions** — DocBlock immediately above the `function` definition:
 ```php
 /**
  * @OA\Get(
@@ -463,7 +199,8 @@ v6 kept full support for the legacy `@OA\*` DocBlock annotation style used throu
 function getAllEvents(Request $request, Response $response, array $args): Response {
 ```
 
-**Closures / arrow functions** — standalone DocBlock immediately above the `$group->get(...)` call:
+Closures take a standalone DocBlock immediately above the `$group->get(...)` call:
+
 ```php
 /**
  * @OA\Get(
@@ -479,122 +216,58 @@ function getAllEvents(Request $request, Response $response, array $args): Respon
 $group->get('/search/{query}', function (Request $request, Response $response, array $args): Response {
 ```
 
-### Auth security by middleware
-
 | Middleware | OpenAPI security | Extra responses |
 |---|---|---|
-| None (`/public/*`) | omit `security` key | — |
+| None (`/public/*`) | omit `security` | none |
 | `AuthMiddleware` (global) | `security={{"ApiKeyAuth":{}}}` | 401 |
-| Role middleware (Finance, Admin, etc.) | `security={{"ApiKeyAuth":{}}}` | 401 + 403 |
+| Role middleware (Finance, Admin, ...) | `security={{"ApiKeyAuth":{}}}` | 401 + 403 |
 
-### Tags
+Tags are declared in `docs/openapi/openapi-public-info.php` and `docs/openapi/openapi-private-info.php`; add a new tag there first.
 
-Public spec: `Utility`, `Auth`, `Registration`, `Calendar`, `Lookups`
+### Regenerating the spec
 
-Private spec: `Calendar`, `People`, `Families`, `Groups`, `Properties`, `Finance`, `Users`, `2FA`, `System`, `Admin`, `Cart`, `Search`, `Map`
-
-### Regenerating the spec <!-- learned: 2026-09-12 -->
-
-`zircote/swagger-php` is a **dev dependency** (`require-dev` in `src/composer.json`) and
-`npm run build` runs `composer install --no-dev`, which removes it. On a freshly built tree the
-generator fatals on the missing class, so install the dev dependencies first:
+`zircote/swagger-php` is a `require-dev` dependency and `npm run build` installs with `--no-dev`, so install dev dependencies first:
 
 ```bash
 cd src
-composer install              # NOT --no-dev; swagger-php is require-dev
-composer run openapi:public   # → CRM/docs/openapi/generated/public-api.yaml
-composer run openapi:private  # → CRM/docs/openapi/generated/private-api.yaml
+composer install
+composer run openapi:public   # docs/openapi/generated/public-api.yaml
+composer run openapi:private  # docs/openapi/generated/private-api.yaml
 ```
 
-Each command prints `✓ OpenAPI spec written to: <path> (<bytes>, <n> file(s) scanned)` on
-stderr. **If the whole spec scrolls past on stdout instead, no file was written** — that was
-issue #9824: `generate.php` used `getopt()`, which stops at the first non-option argument, so the
-`--output` / `--format` / `--exclude` flags that came after the scan paths were discarded. The
-script now parses `$argv` itself and accepts flags anywhere (`--output=FILE`, `--output FILE`,
-`-o FILE`), and a missing info file, scan path or `--exclude` path is a hard error instead of a
-warning. Running it by hand:
+Each command prints `OpenAPI spec written to: <path> (...)` on stderr. When the whole spec scrolls past on stdout, no file was written; check the arguments. `docs/openapi/generate.php` accepts `--output=FILE`, `--output FILE` or `-o FILE`, `--format`, and `--exclude` anywhere, and a missing info file, scan path or exclude path is a hard error.
 
-```bash
-cd src
-php ../docs/openapi/generate.php --output=../docs/openapi/generated/private-api.yaml \
-    --format=yaml --exclude=api/routes/public \
-    ../docs/openapi/openapi-private-info.php api/routes/ admin/routes/api/ \
-    finance/routes/api/ kiosk/routes/api/ plugins/routes/api/
-```
+The master workflow commits `docs/openapi/generated/*.yaml`; a feature branch does not. The docs site (`docs.churchcrm.io`) reads those files from the tag named in `crm-release.json`. A published CRM release dispatches `crm-released`, and the docs workflow moves the pin after the release exists and merges the pin PR once CI and CodeRabbit pass.
 
-Commit the updated YAML files under `docs/openapi/generated/` in the CRM repo. The public docs site does not read `master`.
+## Nominatim geocoding
 
-- CI in `docs.churchcrm.io` downloads those files from the tag named in `crm-release.json`.
-- A published CRM release dispatches `crm-released`. The docs workflow moves that pin only after the release exists, and only merges the pin pull request when CI and CodeRabbit have passed.
-
-Do not copy the specs into `docs.churchcrm.io/openapi/` and do not regenerate the published API pages from `master`.
-
-### Global annotations / tags
-
-Defined in `docs/openapi/openapi-public-info.php` and `docs/openapi/openapi-private-info.php`. If you add a new tag, add it there first.
-
-## Calling External APIs: Nominatim Geocoding <!-- learned: 2026-03-08 -->
-
-When calling external APIs like Nominatim (OpenStreetMap geocoding), use **comma-separated address format** without country code in simple queries. Structured parameters work better for precise results.
-
-**Pattern: GeoUtils.getLatLong()**
+`GeoUtils.getLatLong()` calls Nominatim with comma-separated addresses and no country code, or with structured parameters when the components are available (more accurate):
 
 ```php
-// ✅ CORRECT - Comma-separated format (no country code)
-$params = [
-    'q' => '13216 NE 100th St, Kirkland, WA, 98033',
-    'format' => 'json',
-    'limit' => 1
-];
-$url = 'https://nominatim.openstreetmap.org/search?' . http_build_query($params);
+$params = ['q' => '13216 NE 100th St, Kirkland, WA, 98033', 'format' => 'json', 'limit' => 1];
 
-// ✅ PREFERRED - Structured parameters (better accuracy)
 $params = [
     'street' => '13216 NE 100th St',
     'city' => 'Kirkland',
     'state' => 'WA',
     'postalcode' => '98033',
     'format' => 'json',
-    'limit' => 1
-];
-
-// ❌ WRONG - Appending country code (causes matching to fail)
-$params = [
-    'q' => '13216 NE 100th St Kirkland WA 98033 US',  // Fails to match
-    'format' => 'json'
-];
-
-// ❌ WRONG - Space-separated without commas
-$params = [
-    'q' => implode(' ', [$street, $city, $state, $zip, $country]),
-    'format' => 'json'
+    'limit' => 1,
 ];
 ```
 
-**Key Points:**
-- Always use comma-separated format: `street, city, state, zip`
-- Omit country code from simple queries (causes matching failures)
-- Prefer structured parameters (street, city, state, postalcode) when components available
-- Include required Nominatim headers: `User-Agent: ChurchCRM/7.0 (+https://churchcrm.io)`
-- Log API calls and responses for debugging geocoding issues
+Send `User-Agent: ChurchCRM/7.0 (+https://churchcrm.io)` and log calls and responses for geocoding diagnosis.
 
-## CSV Exports from API Endpoints <!-- learned: 2026-03-29 -->
+## CSV exports
 
-Use `CsvExporter` (`src/ChurchCRM/utils/CsvExporter.php`) for all CSV downloads from Slim routes. Return via PSR-7 response — never `header()` + `exit`.
+Use `CsvExporter` (`src/ChurchCRM/Utils/CsvExporter.php`) for CSV downloads from Slim routes and return a PSR-7 response. Insert rows incrementally inside the loop so the result is never buffered in memory.
 
 ```php
 $exporter = new CsvExporter();
 $exporter->insertHeaders(['Col1', 'Col2']);
-
-// ✅ CORRECT — insert rows incrementally inside the loop (avoids buffering full result in memory)
 foreach ($source as $item) {
     $exporter->insertRow([$item['a'], $item['b']]);
 }
-
-// ❌ WRONG — building $rows[] array then calling insertRows() buffers everything in RAM
-$rows = [];
-foreach ($source as $item) { $rows[] = [...]; }
-$exporter->insertRows($rows);
 
 $response = $response
     ->withHeader('Content-Type', 'text/csv; charset=UTF-8')
@@ -603,57 +276,42 @@ $response->getBody()->write($exporter->getContent());
 return $response;
 ```
 
-**Feature-flag middleware on export routes** — Only add `SundaySchoolEnabledMiddleware` (or similar) to routes whose content is *exclusively* about that feature. General exports that merely enrich data with SS info should NOT be gated — block only the SS-specific logic inside the handler when the feature is off.
+Add a feature-flag middleware such as `SundaySchoolEnabledMiddleware` only to routes whose content is exclusively about that feature. A general export that enriches rows with Sunday School data gates only that logic inside the handler.
 
-### Route All Check-in/Check-out Through the Event Model <!-- learned: 2026-04-08 -->
+## Use the model's canonical mutator
 
-When migrating legacy pages, refactor **all** code paths to use the same model method
-instead of copy-pasting the persistence logic. For event check-in, the canonical entry
-points are `Event::checkInPerson()` and `Event::checkOutPerson()` — they set consistent
-timestamps, create the timeline Note (`type='event'`), and fire hooks.
-
-Even cart-to-event bulk check-in — which historically created `EventAttend` rows directly —
-should call the model method so every path produces identical side effects.
+When a model exposes a canonical mutator, every code path calls it. For event check-in, `Event::checkInPerson()` and `Event::checkOutPerson()` set consistent timestamps, create the timeline Note (`type='event'`), and fire hooks, including cart-to-event bulk check-in.
 
 ```php
-// ❌ Direct ORM bypasses model logic (no timeline note, inconsistent timestamps)
-$ea = new EventAttend();
-$ea->setEventId($eventId)->setPersonId($personId)->save();
-
-// ✅ Use model method — sets timestamps, writes timeline note, fires hooks
 $event = EventQuery::create()->findPk($eventId);
 if ($event !== null) {
     $event->checkInPerson($personId);
 }
 ```
 
-Same rule applies anywhere a "canonical" mutator method exists on a model — prefer the
-model method over hand-rolling the same sequence of ORM calls.
+## Notes REST API
 
-### Notes REST API — Full Route Set <!-- learned: 2026-04-29 -->
-
-Notes have a dedicated route file at `src/api/routes/people/notes.php` covering person notes, family notes, and single-note CRUD. All routes require `NotesRoleAuthMiddleware`.
+`src/api/routes/people/notes.php`; every route requires `NotesRoleAuthMiddleware`.
 
 ```
-GET    /person/{personId}/notes   — list type=note for person (visibility-filtered)
-POST   /person/{personId}/note    — create note for person
-GET    /family/{familyId}/notes   — list type=note for family (visibility-filtered)
-POST   /family/{familyId}/note    — create note for family
-GET    /note/{noteId}             — fetch single note (visibility check)
-PUT    /note/{noteId}             — update text/private (author or admin only)
-DELETE /note/{noteId}             — delete + write type=delete-note audit entry
+GET    /person/{personId}/notes   list type=note for person (visibility-filtered)
+POST   /person/{personId}/note    create note for person
+GET    /family/{familyId}/notes   list type=note for family (visibility-filtered)
+POST   /family/{familyId}/note    create note for family
+GET    /note/{noteId}             fetch single note (visibility check)
+PUT    /note/{noteId}             update text/private (author or admin only)
+DELETE /note/{noteId}             delete + write type=delete-note audit entry
 ```
 
-**Permission model (confirmed 2026-07-06):**
-- All routes require `NotesRoleAuthMiddleware` → `isNotesEnabled()` must be true.
-- `isAdmin()` → `isNotesEnabled()` always returns `true` (admin purity), so admins pass the middleware.
-- Notes=1 (non-admin): can view public notes and own private notes. Cannot view private notes authored by others (returns 404 to avoid existence leak).
-- Admin: can view all notes but private notes authored by others show full content via `canReadPrivateNotes()` = `isAdmin()`. The TimelineService still renders `[Private Note]` placeholders in the timeline view.
-- DELETE: checked by `isAdmin() OR note.getEnteredBy() === currentUser.getId()`. Admin can delete any note, non-admin can only delete their own. This works without a separate admin-bypass because admin purity already passes NotesRoleAuthMiddleware.
-- PUT: author or admin only (`isAdmin() OR isAuthor`).
-- **Without Notes permission**: zero access to Note API routes — all blocked at middleware.
+Permission model:
 
-**Delete audit trail pattern** — capture author name BEFORE deleting, then write a `type='delete-note'` Note so the timeline stays auditable:
+- `isAdmin()` always yields `isNotesEnabled()` true, so admins pass the middleware. A user without the Notes permission is blocked at the middleware
+- Notes=1 (non-admin) sees public notes and own private notes; another author's private note returns 404 so its existence stays hidden
+- `canReadPrivateNotes()` is `isAdmin()`; the TimelineService still renders `[Private Note]` placeholders
+- DELETE: `isAdmin() OR note.getEnteredBy() === currentUser.getId()`
+- PUT: `isAdmin() OR isAuthor`
+
+Delete audit trail: capture the author name before deleting, then write a `type='delete-note'` Note.
 
 ```php
 $authorPerson = PersonQuery::create()->findPk($note->getEnteredBy());
@@ -668,34 +326,23 @@ $audit->setEntered($currentUser->getId());
 $audit->save();
 ```
 
-### Note Privacy: nte_Private Is a Boolean Flag <!-- learned: 2026-04-28 -->
+### Note privacy
 
-`nte_Private` **is a boolean** — store `1` (private) or `0` (public). `Note::isPrivate()` checks `getPrivate() !== 0`. Visibility is determined by `Note::isVisible($userId)` which checks `getEnteredBy() === $userId` — not the value of `nte_Private`. Admins do **not** get API access to other users' private notes; the TimelineService shows admins a `[Private Note]` placeholder instead.
+`nte_Private` is a boolean flag: store `1` (private) or `0` (public). `Note::isPrivate()` checks `getPrivate() !== 0`. Visibility comes from `Note::isVisible($userId)`, which compares `getEnteredBy()` with the user id. Admins get no API access to other users' private notes.
 
 ```php
-// ✅ CORRECT — boolean 1/0
 $private = !empty($input['private']) ? 1 : 0;
-
-// ❌ WRONG — do not store personId in nte_Private; isVisible() uses getEnteredBy(), not getPrivate()
-$private = !empty($input['private']) ? (int) $currentUser->getId() : 0;
 ```
 
-### note_nte Requires utf8mb4 for Emoji Support <!-- learned: 2026-04-29 -->
+### utf8mb4 for user text
 
-MySQL `utf8`/`utf8mb3` is 3-byte max. Saving emoji in `nte_Text` causes `SQLSTATE[22007] Incorrect string value`. Fixed in `7.3.1-cleanup.sql` and `Install.sql`. Any new table storing user text should declare `utf8mb4_unicode_ci` from the start.
+`nte_Text` holds emoji, so the table is `utf8mb4` (`SQLSTATE[22007]` on `utf8mb3`). Declare `utf8mb4_unicode_ci` on any new table that stores user text.
 
-## DELETE Endpoints: Block-If-In-Use over Cascade <!-- learned: 2026-04-15 -->
+## DELETE endpoints: block if in use
 
-**Project convention for every new DELETE API endpoint:** return **409 Conflict**
-when the resource is still referenced by dependent data, rather than cascading
-the delete or silently orphaning the children. This is strictly safer than the
-legacy `*Delete.php` pages, which tend to cascade.
-
-### Pattern
+Every DELETE endpoint returns 409 Conflict when dependent data still references the resource. Callers clear the references first.
 
 ```php
-use ChurchCRM\model\ChurchCRM\<Child>Query;
-
 $group->delete('/{id:[0-9]+}', function (Request $request, Response $response, array $args): Response {
     try {
         $id = (int) $args['id'];
@@ -704,16 +351,11 @@ $group->delete('/{id:[0-9]+}', function (Request $request, Response $response, a
             return SlimUtils::renderErrorJSON($response, gettext('<Parent> not found'), [], 404);
         }
 
-        // Block deletion when any children still reference the parent.
-        // Callers must clear the references first — we do NOT cascade.
         $childCount = <Child>Query::create()->filterBy<ParentFkColumn>($id)->count();
         if ($childCount > 0) {
             return SlimUtils::renderErrorJSON(
                 $response,
-                sprintf(
-                    gettext('Cannot delete <parent>: %d <child-name> still reference it. Remove them first.'),
-                    $childCount
-                ),
+                sprintf(gettext('Cannot delete <parent>: %d <child-name> still reference it. Remove them first.'), $childCount),
                 [],
                 409
             );
@@ -727,125 +369,56 @@ $group->delete('/{id:[0-9]+}', function (Request $request, Response $response, a
 });
 ```
 
-### OpenAPI annotation
+Add the 409 to the OpenAPI annotation: `@OA\Response(response=409, description="<Parent> is in use by <child-name>")`.
 
-Every such DELETE route must add a `409` response:
-
-```php
- * @OA\Delete(
- *     ...
- *     @OA\Response(response=200, description="Deleted"),
- *     @OA\Response(response=404, description="Not found"),
- *     @OA\Response(response=409, description="<Parent> is in use by <child-name>"),
- *     ...
- * )
-```
-
-### Delegate to a service if one already blocks+renumbers
-
-Some resources have a service that already encapsulates the block-then-renumber
-behavior. **Prefer delegation over inlining the check**, so all callers get the
-same semantics. Canonical example:
+When a service already blocks the delete, delegate to it so every caller gets the same semantics, and localize the message through `gettext()` instead of passing the exception text to the client:
 
 ```php
-use ChurchCRM\Service\DonationFundService;
-
 $group->delete('/{id:[0-9]+}', function (Request $request, Response $response, array $args): Response {
     try {
-        // DonationFundService::deleteFund:
-        //   throws InvalidArgumentException if the fund is missing (→ 404)
-        //   throws RuntimeException if pledge_plg rows reference the fund (→ 409)
-        //   renumbers fun_Order on success
+        // DonationFundService::deleteFund throws InvalidArgumentException (missing, 404)
+        // and RuntimeException (pledges reference it, 409), and renumbers fun_Order on success
         (new DonationFundService())->deleteFund((int) $args['id']);
         return SlimUtils::renderSuccessJSON($response);
     } catch (\InvalidArgumentException $e) {
         return SlimUtils::renderErrorJSON($response, gettext('Donation fund not found'), [], 404);
     } catch (\RuntimeException $e) {
-        return SlimUtils::renderErrorJSON(
-            $response,
-            gettext('Cannot delete donation fund: it is still referenced by one or more pledges.'),
-            [],
-            409,
-            $e,
-            $request
-        );
+        return SlimUtils::renderErrorJSON($response, gettext('Cannot delete donation fund: it is still referenced by one or more pledges.'), [], 409, $e, $request);
     } catch (\Throwable $e) {
         return SlimUtils::renderErrorJSON($response, gettext('Failed to delete donation fund'), [], 500, $e, $request);
     }
 });
 ```
 
-**Do not** leak the service's raw exception message to the client — localize via
-`gettext()` and log the exception via `renderErrorJSON`'s 5th/6th arguments.
-`SlimUtils::renderErrorJSON` redacts messages that carry a secret *value* —
-see [Redaction: Value-Shaped, Not Word-Shaped](#redaction-value-shaped-not-word-shaped).
-A service message such as `"Cannot delete fund 'X': it has N associated pledge(s)."`
-survives even when the fund name contains the words `user` or `host`; it is
-redacted only if the name looks like a credential (`api_key=…`, a 40+ character
-opaque token, an IPv4 address).
+Reference implementations: `src/api/routes/finance/finance-donation-funds.php` (service-delegated), `finance-fundraisers.php`, `src/api/routes/system/property-types.php`, `src/admin/routes/api/system/volunteer-opportunities.php` (inline count), `src/event/routes/types.php` (event type, blocked while events use it).
 
-### Reference implementations in-tree
+### When cascade is correct
 
-| Resource | Route file | Pattern | Dependent table + FK |
-|---|---|---|---|
-| DonationFund | `src/api/routes/finance/finance-donation-funds.php` | Service-delegated | `pledge_plg.plg_fundID` |
-| FundRaiser | `src/api/routes/finance/finance-fundraisers.php` | Inline count | `donateditem_di.di_fr_ID` |
-| PropertyType | `src/api/routes/system/property-types.php` | Inline count | `property_pro.pro_prt_ID` |
-| VolunteerOpportunity | `src/api/routes/system/volunteer-opportunities.php` | Inline count | `person2volunteeropp_p2vo.p2vo_vol_ID` |
-| Event Type | `src/event/routes/types.php` | Block + cascade count-names | `events_event.event_type` |
+Cascade only where the children belong to the parent:
 
-### When cascade IS the right answer
+- Deposit -> Pledges: `Deposit::preDelete()` deletes the pledges; a deposit is a batch container
+- Family -> Notes + non-Payment pledges: `src/api/routes/people/people-family.php` cascades them and blocks non-finance users when `Payment` pledges exist
+- Property definition -> RecordProperty assignments: `src/api/routes/people/people-properties.php` deletes the assignments first
 
-Block-if-in-use is the default, but some FK relationships represent
-owner-owned composition where cascade is semantically correct. Known-good
-cascades in this codebase:
-
-- **Deposit → Pledges** — `Deposit::preDelete()` (`src/ChurchCRM/model/ChurchCRM/Deposit.php`)
-  calls `$this->getPledges()->delete()`. A deposit is a batch container; the
-  pledges inside it have no independent existence, so cascading is correct.
-- **Family → Notes + non-Payment pledges** — `src/api/routes/people/people-family.php`
-  deletes notes and non-`Payment` pledges but blocks the delete for
-  non-finance users if `Payment` pledges exist. This is a hybrid:
-  finance-protected data is blocked, the rest cascades.
-- **Property (definition) → RecordProperty assignments** —
-  `src/api/routes/people/people-properties.php` deletes the assignments
-  before deleting the definition. A property definition owns its assignments.
-
-When in doubt, **block**. Cascading is a one-way door and the legacy `*Delete.php`
-pages have a history of orphaning rows that the API shouldn't inherit.
+Otherwise block.
 
 ## Files
 
-**API Routes:** `src/api/routes/`, `src/admin/routes/api/`
-**Utilities:** `src/ChurchCRM/Slim/SlimUtils.php`
-**Middleware:** `src/ChurchCRM/Slim/Middleware/`
-**OpenAPI info:** `docs/openapi/openapi-public-info.php`, `docs/openapi/openapi-private-info.php`
-**Generated specs:** `docs/openapi/generated/public-api.yaml`, `docs/openapi/generated/private-api.yaml`
-**Documentation site:** `docs.churchcrm.io` API pages, generated at build time from the pinned CRM tag. Not a checked-in `openapi/` or `docs/public-api/` tree.
+- Routes: `src/api/routes/`, `src/admin/routes/api/`
+- Utilities: `src/ChurchCRM/Slim/SlimUtils.php`
+- Middleware: `src/ChurchCRM/Slim/Middleware/`
+- OpenAPI info: `docs/openapi/openapi-public-info.php`, `docs/openapi/openapi-private-info.php`
+- Generated specs: `docs/openapi/generated/public-api.yaml`, `docs/openapi/generated/private-api.yaml`
 
-### HTML + JSON Content Negotiation in Middleware <!-- learned: 2026-04-22 -->
+## HTML + JSON content negotiation in middleware
 
-Middleware that serves both a browser-facing HTML route and a JSON API
-route under the same auth/validation logic (e.g. `PublicCalendarMiddleware`
-gating both `/external/calendars/{token}` and `/api/public/calendar/{token}/...`)
-should centralise error-response rendering and pick the format by
-**path prefix first, Accept header as fallback** — never return a bare
-`$response->withStatus(403)` with no body, which produces a blank white
-screen for the HTML consumer.
+Middleware that serves a browser-facing HTML route and a JSON API route under the same logic (e.g. `PublicCalendarMiddleware` for `/external/calendars/{token}` and `/api/public/calendar/{token}/...`) centralizes error rendering and picks the format by path prefix first, Accept header second, and always returns a body.
 
 ```php
-private function renderError(
-    ServerRequestInterface $request,
-    ResponseInterface $response,
-    int $status,
-    string $title,
-    string $message,
-    string $icon = 'fa-calendar-slash',
-): ResponseInterface {
+private function renderError(ServerRequestInterface $request, ResponseInterface $response, int $status, string $title, string $message, string $icon = 'fa-calendar-slash'): ResponseInterface
+{
     if ($this->prefersJson($request)) {
-        return SlimUtils::renderJSON($response, [
-            'error' => $title, 'message' => $message,
-        ], $status);
+        return SlimUtils::renderJSON($response, ['error' => $title, 'message' => $message], $status);
     }
     $renderer = new PhpRenderer(SystemURLs::getDocumentRoot() . '/external/templates/calendar/');
     return $renderer->render($response->withStatus($status), 'error.php', [
@@ -855,33 +428,21 @@ private function renderError(
 
 private function prefersJson(ServerRequestInterface $request): bool
 {
-    $path = $request->getUri()->getPath();
-    if (str_contains($path, '/api/')) return true;
+    if (str_contains($request->getUri()->getPath(), '/api/')) {
+        return true;
+    }
     $accept = strtolower($request->getHeaderLine('Accept'));
     return str_contains($accept, 'application/json') && !str_contains($accept, 'text/html');
 }
 ```
 
-The HTML branch renders a branded template wrapped in `HeaderNotLoggedIn`
-/ `FooterNotLoggedIn` using `ChurchMetaData::getChurchLogoURL()` so the
-recipient of a shared link sees the church's identity, not a raw 4xx.
+The HTML branch renders a template wrapped in `HeaderNotLoggedIn` / `FooterNotLoggedIn` with `ChurchMetaData::getChurchLogoURL()`, so a recipient of a shared link sees the church's identity.
 
-### AttendanceCounts Round-trip Security <!-- learned: 2026-04-22 -->
+## Nested rows: AttendanceCounts round-trip
 
-API endpoints that accept nested `AttendanceCounts` arrays (e.g.
-`POST /api/events`, `POST /api/events/:id`) MUST NOT trust client-supplied
-`id`, `name`, or `notes`. The attack surface:
-
-1. `id` — writing counts for arbitrary category IDs not belonging to the
-   event's type, or overwriting unrelated rows.
-2. `name` — tampering with the displayed category label (potential
-   stored XSS if re-rendered unsanitized).
-3. `notes` — injecting raw HTML that renders in reports or dashboards.
-
-Defenses, applied in a shared helper (`applyEventExtendedFields()`):
+Endpoints that accept nested `AttendanceCounts` arrays (`POST /api/events`, `POST /api/events/:id`) treat client-supplied `id`, `name` and `notes` as untrusted: an `id` can target foreign rows, a `name` can tamper with the displayed label, and `notes` can carry HTML. The shared helper `applyEventExtendedFields()` whitelists by the event type's `EventCountName` rows:
 
 ```php
-// Whitelist countId by EventCountName rows for the event's type.
 $typeId = (int) $event->getType();
 $allowedNames = [];
 foreach (EventCountNameQuery::create()->filterByTypeId($typeId)->find() as $cn) {
@@ -891,54 +452,43 @@ foreach (EventCountNameQuery::create()->filterByTypeId($typeId)->find() as $cn) 
 foreach ($input['AttendanceCounts'] as $row) {
     $countId = (int) ($row['id'] ?? 0);
     if ($countId <= 0 || !array_key_exists($countId, $allowedNames)) {
-        continue; // silently drop foreign ids
+        continue;
     }
     $count = EventCountsQuery::create()->findPk([$eventId, $countId])
         ?? (new EventCounts())->setEvtcntEventid($eventId)->setEvtcntCountid($countId);
-    // Canonical name comes from the DB, not the payload.
     $count->setEvtcntCountname($allowedNames[$countId]);
     $count->setEvtcntCountcount((int) ($row['count'] ?? 0));
-    // Notes are plain text — strip tags server-side.
     $count->setEvtcntNotes(InputUtils::sanitizeText((string) ($row['notes'] ?? '')));
     $count->save();
 }
 ```
 
-Apply the same pattern for any other nested "rows belonging to a parent
-entity" API shape.
+Apply the same pattern to any nested "rows belonging to a parent entity" payload.
 
-### API-canonical Field Names, Shared `applyExtendedFields` Helper <!-- learned: 2026-04-22 -->
+## Shared extended-fields helper
 
-When unifying legacy form POST handlers into a single API endpoint, keep
-the API's field names canonical (`Title`, `Type`, `Start`, `End`) and
-extract the "extended fields" (InActive / LinkedGroupId / AttendanceCounts
-for events) into a helper that `newXxx()` and `updateXxx()` both call
-**after** saving the main entity. This keeps the two write paths
-idempotent and impossible to drift:
+Keep API field names canonical (`Title`, `Type`, `Start`, `End`). Extract the extended fields (InActive, LinkedGroupId, AttendanceCounts for events) into one helper that `newXxx()` and `updateXxx()` both call after saving the main entity, so the two write paths stay identical:
 
 ```php
 function newEvent(...) {
-    // ... create, setTitle, setEventType, setCalendars, save
+    // create, set fields, save
     applyEventExtendedFields($event, $input);
     return SlimUtils::renderSuccessJSON($response);
 }
 
 function updateEvent(...) {
-    $Event->fromArray($input); // copies Title/Desc/Start/End/InActive automatically
-    // ... setCalendars, save
+    $Event->fromArray($input);
+    // setCalendars, save
     applyEventExtendedFields($Event, $input);
     return SlimUtils::renderSuccessJSON($response);
 }
 ```
 
-Enrich the `GET /{id}` response to include the extended fields so the UI
-doesn't need extra round-trips — fall back to type defaults when the
-entity has no rows yet (e.g. for Attendance Counts, return the event
-type's `EventCountName` categories with `count: 0`).
+`GET /{id}` returns the extended fields too, with type defaults when the entity has no rows yet (event type `EventCountName` categories with `count: 0`).
 
-### League\Csv `SyntaxError` — Catch for Clean 400 on Duplicate Column Headers <!-- learned: 2026-04-21 -->
+## CSV import
 
-`League\Csv\Reader::getHeader()` throws `League\Csv\SyntaxError` when the CSV has duplicate column names. Without a catch this surfaces as an unhandled 500. Always wrap the upload endpoint's header read in a try/catch and return a 400 with a human-readable message:
+`League\Csv\Reader::getHeader()` throws `League\Csv\SyntaxError` on duplicate column names. Catch it in the upload endpoint and return a 400:
 
 ```php
 use League\Csv\Reader;
@@ -947,17 +497,15 @@ use League\Csv\SyntaxError;
 try {
     $csv = Reader::createFromPath($tmpPath, 'r');
     $csv->setHeaderOffset(0);
-    $headers = $csv->getHeader(); // throws SyntaxError on duplicates
+    $headers = $csv->getHeader();
 } catch (SyntaxError $e) {
-    return SlimUtils::renderErrorJSON($response, 'Your CSV has duplicate column names. Each column header must be unique.', 400);
+    return SlimUtils::renderErrorJSON($response, gettext('Your CSV has duplicate column names. Each column header must be unique.'), [], 400);
 }
 ```
 
-This is the only checked exception `League\Csv` throws for malformed headers; other parse errors surface as standard `Exception`.
+### CSV template column uniqueness
 
-### CSV Template Column Uniqueness — Category-Suffix Pattern <!-- learned: 2026-04-21 -->
-
-When generating a CSV template that includes custom fields and properties from multiple extension buckets (PersonCustom, FamilyCustom, PersonProperty, FamilyProperty), column name collisions are inevitable. Use a `"{name} ({category})"` suffix to keep headers unique and visible in Excel, and fall back to a `(2)`, `(3)` counter for residual duplicates within the same category:
+A template that combines custom fields and properties from several buckets (PersonCustom, FamilyCustom, PersonProperty, FamilyProperty) names columns `"{name} ({category})"` and appends `(2)`, `(3)` for residual duplicates within a category:
 
 ```php
 $seen = [];
@@ -969,8 +517,8 @@ foreach ($fields as &$field) {
     } else {
         $seen[$candidate] = 1;
     }
-    $field['header'] = $candidate; // stored in English — NOT gettext()
+    $field['header'] = $candidate;
 }
 ```
 
-Store the header in **English only** (never wrapped in `gettext()`). The header must be locale-stable: the same CSV downloaded in French and re-uploaded under English locale must still auto-map correctly. The category suffix (`Person Custom Fields`, `Family Properties`, etc.) lives in the PHP constant, not the translation layer.
+Store headers in English only, without `gettext()`, so a CSV downloaded in one locale auto-maps when uploaded under another.

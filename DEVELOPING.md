@@ -6,8 +6,8 @@ This guide is the starting point for contributors changing the ChurchCRM core ap
 
 Before running any ChurchCRM build, test, or Docker command, install:
 
-- PHP 8.4 or newer and Composer
-- Node.js 24, which includes npm
+- PHP and Composer (version in `src/composer.json`)
+- Node.js with npm (version in `package.json` `engines`, `.nvmrc`)
 - Docker Desktop or Docker Engine with Docker Compose v2
 - Git and Git LFS
 
@@ -42,11 +42,9 @@ npm run docker:test:start
 
 Open `http://localhost` and sign in with `admin` / `changeme`.
 
-The repository does not define an `npm run docker:test` script. Use `npm run docker:test:start` to start the test stack.
-
 ## Building Without a Local PHP/Composer/Node.js Toolchain
 
-The development Docker image already has PHP 8.4, Composer, and Node 24/npm installed, so none of that toolchain needs to exist on the host — only `docker`, `docker compose`, and `npm` itself (just to invoke the wrapper scripts below) are assumed. If even `npm` isn't available on the host, skip straight to the raw `docker compose exec` command at the end of this section.
+The development Docker image includes PHP, Composer, and Node/npm, so the host needs only `docker`, `docker compose`, and `npm` (to invoke the wrapper scripts below). Without `npm` on the host, use the raw `docker compose exec` command at the end of this section.
 
 ```bash
 npm run docker:dev:start   # bring up the development stack (builds the image on first run)
@@ -54,7 +52,7 @@ npm run docker:dev:build   # composer install + the full `npm run build`, inside
 npm run docker:dev:watch   # webpack --watch, inside the container, for an active edit session
 ```
 
-These mirror `npm install && npm run build` from the primary setup above, but executed inside the `webserver` container against the repository bind-mounted at `/home/ChurchCRM`. If `npm` itself is not available on the host either, run the equivalent directly:
+These run `npm install && npm run build` from the primary setup inside the `webserver` container, against the repository bind-mounted at `/home/ChurchCRM`. Without `npm` on the host, run the equivalent directly:
 
 ```bash
 docker compose -f docker/docker-compose.dev.yaml exec webserver bash -c \
@@ -70,7 +68,7 @@ After `npm run docker:test:start`, the test environment provides:
 | ChurchCRM | `http://localhost` | Application under development |
 | Mailpit | `http://localhost:8025` | Captured test email |
 
-The default ChurchCRM login is `admin` / `changeme`. Never use these credentials in a real deployment.
+The default ChurchCRM login is `admin` / `changeme`. Change it in any real deployment.
 
 ## Typical development loop
 
@@ -121,7 +119,7 @@ Use the smallest relevant test while developing, then run the broader required c
 | `npm run lint` | Run the repository's static checks |
 | `npm run test` | Run all Cypress tests |
 
-`package.json` is the source of truth for available commands. Do not copy the complete script list into documentation.
+`package.json` is the source of truth for available commands.
 
 ## Repository map
 
@@ -140,12 +138,12 @@ Use the smallest relevant test while developing, then run the broader required c
 
 - Use Propel ORM for application database access. Schema changes start in `orm/schema.xml` and require a versioned migration.
 - Put reusable business logic in service classes rather than route handlers or templates.
-- Use Slim 4 patterns for new routes and pages.
+- Use Slim patterns for new routes and pages.
 - Use Tabler and Bootstrap 5 components for UI work.
 - Wrap user-visible text with the project localization helpers.
 - Add or update tests with every behavior change.
 - Link pull requests to an open issue.
-- Never commit secrets, production data, or real personal information.
+- Keep secrets, production data, and real personal information out of commits.
 
 Detailed, task-specific guidance is indexed in [`.agents/skills/churchcrm/SKILL.md`](.agents/skills/churchcrm/SKILL.md). Load only the guidance relevant to the work being performed.
 
@@ -162,7 +160,7 @@ Detailed, task-specific guidance is indexed in [`.agents/skills/churchcrm/SKILL.
 4. Update test seed data when the schema changes.
 5. Test both an existing installation upgrade and a fresh installation.
 
-Never edit generated Propel model files as the source of a schema change.
+Make schema changes in `orm/schema.xml`; generated Propel model files are build output.
 
 ## Before opening a pull request
 

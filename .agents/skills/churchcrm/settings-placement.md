@@ -6,7 +6,7 @@ tags: [settings, admin, ux]
 
 # Where a setting lives
 
-`/SystemSettings.php` is being retired. Do not add to `buildCategories()`. Pick the home by what the setting does:
+`/SystemSettings.php` lists only the keys in `buildCategories()`, which stays as is. Define new items in `buildConfigs()` only. Pick the home by what the setting does:
 
 | Home | Belongs | Test |
 |------|---------|------|
@@ -38,16 +38,16 @@ No reporting app. A report lives in the module that owns its data and permission
 
 - Keep the `ConfigItem` in `buildConfigs()`. Removing it makes `scrapeDBConfigs()` delete the saved value.
 - Remove the key from `buildCategories()`. Check the diff: a regex that deletes one category line can take its neighbour with it.
-- Read the legacy help text before choosing the section (a "Family Editor" field belongs under Families).
-- Hub label: short, Title Case, new msgid. Keep the old sentence as the tooltip so its translation survives. A tooltip that no longer describes the control (CSV of IDs → picker) is reworded; that is a new msgid.
-- Panel chrome is addressed by class (`.settings-panel-fields`, `.settings-panel-save`), never id: several panels share a page.
+- Read the setting's current help text before choosing the section (a "Family Editor" field belongs under Families).
+- Hub label: short, Title Case, new msgid. Keep the existing sentence as the tooltip so its translation survives. Reword a tooltip that does not describe the new control (CSV of IDs → picker); that is a new msgid.
+- Panel chrome is addressed by class (`.settings-panel-fields`, `.settings-panel-save`) because several panels share a page.
 - Before replacing a setting with a flag column, grep every consumer and name the column for what the code does with it.
-- Update specs that reference the old location; add a spec that the old page no longer lists the key.
+- Update specs that reference the previous location; add a spec that `/SystemSettings.php` does not list the key.
 
 ## Done when
 
 - `npm run lint`, `npm run build:webpack`, `npm run build:php:validate` pass.
-- Specs: hub renders and saves, admin-only, old location empty, any new endpoint has happy and error cases.
+- Specs: hub renders and saves, admin-only, the key absent from `/SystemSettings.php`, any new endpoint has happy and error cases.
 - Tablet and mobile pass stated in the PR body.
 - PR body links the issue, lists new msgids with the reason, and notes follow-ups.
 - Playwright capture issue and docs issue opened after push (`CLAUDE.md` → Session hygiene).

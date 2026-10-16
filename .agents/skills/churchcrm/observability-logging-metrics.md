@@ -1,26 +1,19 @@
 ---
 title: "Observability, Logging & Metrics"
-intent: "Guidance for logging in new MVCs and APIs. Do not invent monitoring endpoints."
-tags: ["logging","monitoring","metrics","observability"]
+intent: "Logging in MVC pages and APIs"
+tags: ["logging","observability"]
 prereqs: ["[[code-standards]]","[[development-workflows]]"]
-complexity: "intermediate"
+complexity: "beginner"
 ---
 
-# Observability, Logging & Metrics
+# Logging
 
-## Current product (do this)
-
-- Use `LoggerUtils::getAppLogger()` for application logs.
-- Add useful context when you already have it: user id, route, operation (for example `group.enroll`).
-- Do not log secrets, donation amounts tied to a person in debug dumps, or raw request bodies that may contain passwords.
-
-## Not current product (do not add unless an issue asks)
-
-There is **no** Prometheus `/metrics` endpoint, **no** OpenTelemetry pipeline, and **no** first-party alerting stack in ChurchCRM today. Do not implement those as part of an unrelated feature and do not describe them as shipping capabilities.
-
-If a church or host needs metrics, that is a future issue, not a silent add-on.
+- Log with `LoggerUtils::getAppLogger()`.
+- Add context you already hold: user id, route, operation (for example `group.enroll`).
+- Keep secrets, donation amounts tied to a person, and raw request bodies out of logs.
+- ChurchCRM ships application logs only. Metrics endpoints and alerting stacks start from an issue.
 
 ## Tests
 
-- Prefer asserting user-visible behaviour over asserting log line shape.
-- If you add a log assertion, keep it on a stable message string, not a timestamp.
+- Assert user-visible behavior.
+- A log assertion matches a stable message string, not a timestamp.

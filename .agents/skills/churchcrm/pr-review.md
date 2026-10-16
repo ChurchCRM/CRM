@@ -12,7 +12,7 @@ complexity: "intermediate"
 
 This file is the mechanics checklist (fetch the PR, code standards, how to draft a review). When the two disagree, the gates file wins.
 
-Use this skill when asked to review a PR or branch, check standards, or triage manual testing. Draft in chat. Do not post until a maintainer says to post. Do not approve. Do not merge.
+Use this skill when asked to review a PR or branch, check standards, or triage manual testing. Draft in chat and post only when a maintainer says to post. Approve and merge are human-only.
 
 ---
 
@@ -30,9 +30,9 @@ Answer before reading code:
 - Bug fix, feature, refactor, or migration?
 - Does it meet the issue rule in `git-workflow.md`? Missing it is a hard block.
 - Does the goal belong in this milestone? Passing gates still does not mean merge if maintainers disagree with the goal.
-- Does it extend Query View / predefined `query_qry` reports? If yes, Request changes. New reports are MVC + Propel or a plugin (#9995).
+- Does it extend Query View / predefined `query_qry` reports? If yes, Request changes. New reports are MVC + Propel or a plugin.
 
-Do **not** merge `master` into a contributor branch, resolve their conflicts, or push to their branch unless the maintainer explicitly asks.
+Leave the contributor branch as it is: merge `master`, resolve conflicts, or push only when the maintainer asks.
 
 ---
 
@@ -49,9 +49,9 @@ git diff --name-status origin/master...origin/<branch-name>
 
 Look for:
 
-- Changes unrelated to the stated purpose
+- Changes outside the stated purpose
 - Debug leftovers
-- Scope that should be a second PR
+- Scope that belongs in a second PR
 - Commit messages vs `git-workflow.md`
 - `QueryView.php`, `QueryList.php`, or upgrade/seed edits that add predefined queries — hard block unless a maintainer excepted a security-only patch
 
@@ -63,47 +63,47 @@ Apply only the sections that match the changed files. Hard-block items are also 
 
 ### PHP & Architecture
 
-- [ ] PHP 8.4+ — no deprecated patterns
+- [ ] PHP 8.4+ patterns only
 - [ ] Explicit nullable params: `?int $param = null`
 - [ ] `use` statements at top of file
-- [ ] No deleted `Functions.php` globals (`\\MakeFYString()`, `\\FormatDate()`, …) — use `ChurchCRM\\Utils\\*`
-- [ ] ORM for DB work — no `RunQuery()` or raw SQL
-- [ ] Do not add features to Query View (frozen; #9995)
+- [ ] Helpers come from `ChurchCRM\\Utils\\*` (the `Functions.php` globals such as `\\MakeFYString()` and `\\FormatDate()` are deleted)
+- [ ] ORM for DB work (no new `RunQuery()` or raw SQL)
+- [ ] Query View stays frozen: no new features
 - [ ] Dynamic IDs cast to `(int)`
-- [ ] Object properties as `$obj->prop`, never `$obj['prop']`
+- [ ] Object properties read as `$obj->prop`
 - [ ] Services hold business logic
-- [ ] No obvious N+1 or O(N×M) on login, people list, or other common paths
+- [ ] Login, people list, and other common paths avoid N+1 and O(N×M) work
 - [ ] Email failures logged, not thrown
-- [ ] `LoggerUtils::getAppLogger()` — not `error_log()`
+- [ ] Logging uses `LoggerUtils::getAppLogger()`
 
 ### Security (hard block)
 
 - [ ] `InputUtils::escapeHTML()` / `escapeAttribute()`
-- [ ] `RedirectUtils::redirect()` — not raw `header()`
+- [ ] Redirects use `RedirectUtils::redirect()`
 - [ ] `SlimUtils::renderErrorJSON()` for API errors
 - [ ] TLS verification on outbound HTTPS
 - [ ] AuthZ on protected routes
-- [ ] No injection, XSS, open redirect, or member-data leak
+- [ ] Free of injection, XSS, open redirect, and member-data leaks
 
 ### Frontend & UI
 
-Current stack is **Tabler + Bootstrap 5**. Do not reject Bootstrap 5 classes.
+The stack is **Tabler + Bootstrap 5**; Bootstrap 5 classes are correct.
 
 - [ ] BS5 / Tabler utilities (`ms-`/`me-`, `fw-bold`, `text-end`, `btn-close`, `data-bs-*`)
 - [ ] Non-trivial UI has desktop, tablet, and mobile proof
 - [ ] Asset paths use `SystemURLs::getRootPath()`
 - [ ] UI text wrapped with `gettext()` or `i18next.t()`
-- [ ] No `alert()` / `confirm()` — `window.CRM.notify()` and bootbox or a Bootstrap modal
+- [ ] Messages and confirmations use `window.CRM.notify()` and bootbox or a Bootstrap modal
 - [ ] Server-side initial state where a JS-only flash would show
 - [ ] Page logic is a `webpack/` entry, not an inline `<script>` block in the view
 
 ### i18n
 
 - [ ] New user-visible strings wrapped in `gettext()` / `i18next.t()` (hard block if missing)
-- [ ] Do **not** require `npm run locale:build` or a `messages.po` commit — that job runs on every merge to `master`
+- [ ] `npm run locale:build` and `messages.po` stay out of the PR (that job runs on every merge to `master`)
 - [ ] Canonical terms: `People` not `Persons` in UI; `Active` / `Inactive` not `Deactivated`
-- [ ] Do not invent new verb+noun concatenations (`gettext('Delete') . ' ' . gettext('Group')`) — use a whole phrase or `sprintf(gettext('Delete %s'), …)`
-- [ ] ChurchCRM lists **49 locales** in `locales.json` — do not invent a different count
+- [ ] Verb+noun strings use a whole phrase or `sprintf(gettext('Delete %s'), …)`, not `gettext('Delete') . ' ' . gettext('Group')`
+- [ ] Locale counts match the entries in `src/locale/locales.json`
 
 ### Database / existing installs (hard block if upgrade is unsafe)
 
@@ -118,14 +118,14 @@ Current stack is **Tabler + Bootstrap 5**. Do not reject Bootstrap 5 classes.
 
 ### Testing (hard block if a feature or bug fix has none)
 
-- [ ] No `console.log`, `var_dump`, `dd()`, `.skip`, `.only`
+- [ ] Free of `console.log`, `var_dump`, `dd()`, `.skip`, `.only`
 - [ ] New API endpoints have Cypress API coverage when that is the project pattern
 - [ ] Critical UI flows have Cypress UI coverage
-- [ ] Do not put optional demo values in Cypress seed if that would break tests
+- [ ] Optional demo values stay out of the Cypress seed when they would break tests
 
 ### Git
 
-- [ ] No commented-out blocks, debug files, or drive-by refactors
+- [ ] Free of commented-out blocks, debug files, and drive-by refactors
 
 ---
 
@@ -138,7 +138,7 @@ Current stack is **Tabler + Bootstrap 5**. Do not reject Bootstrap 5 classes.
 | Full end-to-end feature | Flag "ask George if this is a campaign item". George decides. Skip for bug fixes and security-only PRs. |
 | Storage-only admin setting | Say so. Open a consumer follow-up. |
 
-Do not push docs.churchcrm.io to `main` as part of the feature PR.
+The docs PR stays separate from the feature PR and waits for the release.
 
 ---
 
@@ -158,10 +158,9 @@ Use the output block in `maintainer-review-gates.md`.
 
 - Hard blocks → `REQUEST_CHANGES`
 - Follow-ups only → `COMMENT`
-- Never `--approve`
-- Never merge
-- Be thankful. No nits that do not pay for themselves
-- You may say old PRs with blocking issues may be closed for inactivity. Do not name a timeline
+- Leave `--approve` and merge to maintainers
+- Be thankful and keep to comments that pay for themselves
+- You may say old PRs with blocking issues may be closed for inactivity, without naming a timeline
 
 ```bash
 # Only after a maintainer says to post:
@@ -175,10 +174,9 @@ gh pr review <NUMBER> --comment --body "..."
 
 **After posting a review or reviewing an author's fixes:**
 
-- If the author has pushed fixes addressing your comments, **resolve the threads** (GitHub UI or `gh pr` API)
-- Include a comment citing the commit SHA (e.g. "Fixed in abc123d")
-- Only leave threads open if the fix is incomplete or the concern still exists
-- This keeps PR conversations clean and shows progress through the review cycle
+- When the author has pushed fixes for your comments, resolve those threads (GitHub UI or GraphQL `resolveReviewThread`)
+- Cite the commit SHA ("Fixed in abc123d")
+- Leave a thread open when the fix is incomplete or the concern remains
 
 ---
 
@@ -194,6 +192,6 @@ When implementing review feedback on a branch you were asked to fix:
 
 ## Phase 8 — Skills follow-up
 
-If the review taught a durable rule, propose a skill edit in a follow-up. Do not silently rewrite skills on a feature branch.
+If the review taught a durable rule, propose a skill edit in a follow-up. Skill edits land in their own follow-up.
 
 Related: [maintainer-review-gates.md](./maintainer-review-gates.md), [git-workflow.md](./git-workflow.md), [github-interaction.md](./github-interaction.md), [code-standards.md](./code-standards.md), [i18n-localization.md](./i18n-localization.md), [frontend-development.md](./frontend-development.md).
