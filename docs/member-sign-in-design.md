@@ -67,6 +67,7 @@ This document puts those into one design and one delivery plan.
 | D10 | Login as User returns inside this work, in the person's Actions menu. #10392 closes in favour of it. | §6.5 |
 | D11 | **Release day:** each self-service account's portal data is copied, then the account is deleted. Member sign-in stays off until an administrator turns it on. | §12 |
 | D12 | Passkeys add one WebAuthn library. | §14 |
+| D13 | **Language:** each person chooses the Member Portal's language on their profile, and it is stored on their sign-in row. Unset, it is the church's language. Mail to the person uses it; the office notice uses the church's. | §5 |
 
 ## 2. Today
 
@@ -186,6 +187,12 @@ It does the following, in this order:
 
 So Disable sign-in, a change to the rule, a deactivated family or "sign out everywhere" all take effect on the person's next request (#10511 S5).
 
+**The session's language.** Each request picks one language for its pages and scripts.
+- **A member session** (email, device or passkey) and **Login as User** use the language the person chose on their profile (Profile → Update your details → Language). When they chose none, or chose one ChurchCRM no longer ships, they get the church's language.
+- **A `STAFF` session** keeps the staff account's own language setting, and its profile page has no Language field.
+- **Signed-out pages** use the church's language.
+- **Email to a member** (the sign-in code, the passkey notice and the email-change messages) is written in the member's language. The office notice is written in the church's.
+
 **A future mobile app** uses the same step. It gets a refresh token kept in the remembered-devices table (kind `app`), instead of a browser cookie. The app and its API are not part of this proposal.
 
 ## 6. Ways in
@@ -275,6 +282,7 @@ Login as User lets an administrator see the Member Portal exactly as a member se
   - Every write is recorded against both the administrator and the member, and so is every audit row (#10511 B1).
   - The history card shows on the person's page and on the administrator's user page.
 - **Activity stats:** Login as User doesn't update the member's last activity or their sign-in statistics.
+- **Language:** the portal opens in the member's language, so the administrator sees what the member sees. Read-only Login as User can't change it.
 - **Dropped from #10392:** the rule about the target's two-factor sign-in. Members have no two-factor, and staff accounts can't be targets.
 
 ### 6.6 Google and Microsoft (a later release)
@@ -525,7 +533,7 @@ For each family whose email isn't empty (compared trimmed and in lower case):
 ## 12. Release-day cutover
 
 - **Upgrade script.** For every self-service account (`usr_EditSelf = 1` and not admin, the same test as `isEditSelfExclusive()`), the script:
-  - copies the portal data to the person's sign-in row: the calendar feed token and selection (so calendar subscriptions keep working) and the last portal activity;
+  - copies the portal data to the person's sign-in row: the calendar feed token and selection (so calendar subscriptions keep working), the last portal activity, and the account's language when it is one ChurchCRM ships;
   - then deletes the account. The release notes say this, and the usual backup before an upgrade is the way back.
 - **The calendar feed** looks up the person by token in the new table. It stops working when the person may no longer sign in (§4), which today's feed never checks.
 - **Member sign-in stays off** until an administrator turns it on. If any self-service accounts were deleted, the dashboard shows "N people used to sign in to the Member Portal. Turn on member sign-in." The notice stays until member sign-in is on or an administrator dismisses it.
@@ -541,7 +549,7 @@ New tables. All are keyed by `per_ID` with `ON DELETE CASCADE`, except the capab
 
 | Table | Holds |
 |---|---|
-| `person_signin_psi` | one row per person who has signed in or has a setting: Disable sign-in (with who, when and why), session version, proven email and when, an unconfirmed email and why (§9), first and last sign-in, last activity, calendar feed token and selection (moved from `user_usr`) |
+| `person_signin_psi` | one row per person who has signed in or has a setting: Disable sign-in (with who, when and why), session version, proven email and when, an unconfirmed email and why (§9), first and last sign-in, last activity, calendar feed token and selection (moved from `user_usr`), and the portal language (empty for the church's) |
 | `person_signin_request_psr` | pending email requests: hashed link token, hashed code, browser binding hash, expiry, attempts, used at |
 | `person_device_pdv` | remembered devices, and later app tokens: hashed token, kind (`browser` or `app`), label, created, last used, expiry, revoked |
 | `person_passkey_ppk` | passkeys: credential id, public key, sign counter, label, created, last used |
@@ -620,7 +628,8 @@ This work does not wait for #10511's F0, as George said on 10-10. It is built so
 | 11 | Family email moves to people (§10): the SQL in the 7.9.0 upgrade, every reader listed in §2, the directory, CSV, the API and docs | — |
 | 12 | Login as User (§6.5), replacing #10392 | 1, 9 |
 | 13 | Cutover: upgrade script, staff-only Users list, removing "Self-service only", wording, release notes | 1–12 |
-| 14 | Documentation: a docs tracking issue and a docs PR on `release-docs/<version>` | 13 |
+| 14 | Documentation: a docs tracking issue and a docs PR on `release-docs/<version>` | 13, 15 |
+| 15 | A member's portal language: the profile's Language field, the language of portal pages and of mail to the member (§5), carried over from self-service accounts at the cutover (§12) | 2, 5, 13 |
 
 Row 11 doesn't depend on the sign-in work. It can be built first, and can ship one release earlier if that release comes sooner.
 
@@ -628,8 +637,8 @@ Row 11 doesn't depend on the sign-in work. It can be built first, and can ship o
 
 | # | Work | Needs |
 |---|---|---|
-| 15 | Google and Microsoft sign-in (§6.6) | 5 |
-| 16 | Drop `fam_Email` | 11, one release later |
+| 16 | Google and Microsoft sign-in (§6.6) | 5 |
+| 17 | Drop `fam_Email` | 11, one release later |
 
 **Separate proposals:**
 - the mobile app and its API (George);
@@ -704,10 +713,17 @@ Row 11 doesn't depend on the sign-in work. It can be built first, and can ship o
   - read-only unless writes are allowed;
   - every write is recorded with both people;
   - Stop returns to the staff session.
+- **Language:**
+  - a member picks a language, and the portal and the next page show it;
+  - Church default follows the church's language, and a language no longer shipped falls back to it;
+  - a staff session opening the portal keeps the staff account's language and shows no Language field;
+  - Login as User shows the member's language, and read-only Login as User can't change it;
+  - the sign-in code email arrives in the member's language, and the office notice in the church's.
 - **Cutover:**
   - an upgraded database with self-service accounts loses them, and their calendar feed URLs keep working;
   - an `EditSelf` user with dormant staff flags is treated the same way;
-  - administrators and read-only staff are untouched.
+  - administrators and read-only staff are untouched;
+  - a self-service account's language carries over to the person when ChurchCRM ships it.
 - **Audit:** no code, token or link appears in any row.
 
 ## 18. Not in scope
