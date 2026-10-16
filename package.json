@@ -141,7 +141,7 @@
         "daterangepicker": "^3.1.0",
         "dompurify": "^3.4.17",
         "flag-icons": "^7.5.0",
-        "fullcalendar": "^7.1.1",
+        "fullcalendar": "^7.1.2",
         "heic2any": "^0.0.4",
         "i18next": "^26.4.4",
         "inputmask": "^5.0.9",
