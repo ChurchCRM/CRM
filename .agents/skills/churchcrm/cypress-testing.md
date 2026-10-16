@@ -12,6 +12,8 @@ App under test: `DEVELOPING.md` (`npm run docker:test:start`).
 
 ## Where tests go
 
+Every new test is a Cypress E2E spec. Server logic is tested through its route with an API spec. The test stack has no PHPUnit and takes no new PHP test scripts; a PR that adds either is asked for a Cypress spec instead.
+
 - API: `cypress/e2e/api/`
 - UI: `cypress/e2e/ui/`
 - Helpers: `cypress/support/` — use `cy.setupAdminSession()` (or the current support helper) instead of inventing login. After `cy.request()`, the PHP session is dead: call `cy.freshAdminFormLogin(options)` from `cypress/support/test-env.js`. Pass the options directly instead of wrapping them.

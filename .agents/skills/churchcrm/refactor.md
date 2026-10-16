@@ -52,8 +52,7 @@ Other features stay in `src/admin/` and `src/ChurchCRM/Service/`. Plugin rules: 
 
 ## Tests and i18n
 
-- Unit tests for Service methods where practical
-- Cypress API specs in `cypress/e2e/api/private/...`, UI specs in `cypress/e2e/ui/<feature>/`
+- Cypress API specs in `cypress/e2e/api/private/...` cover Service methods through their routes; UI specs go in `cypress/e2e/ui/<feature>/` (`cypress-testing.md`)
 - Sign in with `cy.setupAdminSession()`
 - Wrap new strings in `gettext()`; locale terms are generated on merge (`i18n-localization.md`)
 

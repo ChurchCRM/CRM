@@ -1,6 +1,6 @@
 ---
 title: "Testing"
-intent: "Guidance for Cypress, unit/integration tests, and test workflows"
+intent: "Guidance for Cypress E2E tests and test workflows"
 tags: ["testing","cypress","ci"]
 prereqs: ["[[cypress-testing]]"]
 complexity: "intermediate"

@@ -244,7 +244,7 @@ if (!$email->send()) {
 - Applied in `send()`; the last `setReplyTo()` call wins and the message carries one header
 - An invalid address is logged and ignored; `getReplyTo()` returns `null` then
 
-Local verification: Mailpit (`http://localhost:8025`, compose `test` profile) lists messages with a `ReplyTo` array via `curl -sS 'http://localhost:8025/api/v1/messages?limit=50'`. The `ci-root` / `ci-subdir` profiles have no SMTP capture, so header assertions belong in PHPUnit or manual checks.
+Local verification: Mailpit (`http://localhost:8025`, compose `test` profile) lists messages with a `ReplyTo` array via `curl -sS 'http://localhost:8025/api/v1/messages?limit=50'`. The `ci-root` / `ci-subdir` profiles have no SMTP capture, so header assertions are a manual check in Mailpit.
 
 ## TLS Verification
 
