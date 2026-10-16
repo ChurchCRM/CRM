@@ -396,6 +396,7 @@ paths:
               schema:
                 properties:
                   success: { type: boolean, example: true }
+                  eventId: { description: 'ID of the new event', type: integer, example: 42 }
                 type: object
         '400':
           description: 'Invalid event type, calendar ID or volunteer ministry'
@@ -1766,7 +1767,7 @@ paths:
       tags:
         - System
       summary: 'Trigger background timer jobs (page-load fallback scheduler)'
-      description: 'Fallback trigger fired from the page footer on every authenticated page load, for installs that cannot run cron. The jobs are rate limited server-side by iTimerJobsMinIntervalMinutes, so a call inside that window returns ran=false without doing any work. The supported scheduler is the command-line runner (cli/timerjobs.php) driven by cron.'
+      description: 'Fallback trigger fired from the page footer on every authenticated page load, for installs that cannot run cron. The jobs are rate limited server-side by iTimerJobsMinIntervalMinutes, so a call inside that window returns ran=false without doing any work. The supported scheduler is the command-line runner (cli/timerjobs.php) driven by cron. Among the jobs, queued composer email is sent for up to 15 seconds per call.'
       requestBody:
         required: false
         content:
@@ -2592,8 +2593,8 @@ paths:
     post:
       tags:
         - Email
-      summary: 'Send a composer email, one message per recipient, through the configured SMTP server'
-      description: 'Recipients are given as person and family ids, never as addresses: the server resolves each id to its current email address, applies the do-not-email property, skips deceased people, inactive families and ids without an address, deduplicates addresses, and reports every skipped recipient by name. Each recipient receives their own message.'
+      summary: 'Queue a composer email, one message per recipient, for sending through the configured SMTP server'
+      description: 'Recipients are given as person and family ids, never as addresses: the server resolves each id to its current email address, applies the do-not-email property, skips deceased people, inactive families and ids without an address, deduplicates addresses, and reports every skipped recipient by name. Each recipient receives their own message. Nothing is sent inside this request: every message is queued (email history status `queued`) under one batch id and the call returns at once. POST /email/batches/{batch}/send sends the batch now in bounded steps; whatever is left goes out with the timer jobs (cron, or the page-load fallback). `sent` and `failed` are always empty here and are kept for older clients; follow the batch for outcomes.'
       requestBody:
         required: true
         content:
@@ -2621,15 +2622,17 @@ paths:
               type: object
       responses:
         '200':
-          description: 'Per-recipient outcome'
+          description: 'Per-recipient outcome of the queueing'
           content:
             application/json:
               schema:
                 properties:
-                  sent: { description: 'Recipients whose message the SMTP server accepted (acceptance is not delivery)', type: array, items: { properties: { personId: { type: integer, nullable: true }, familyId: { type: integer, nullable: true }, name: { type: string }, email: { type: string } }, type: object } }
+                  batch: { description: 'Batch id of the queued messages; null when nobody could be emailed', type: string, example: 3f2a9c0d4b6e8f1a2c3d4e5f60718293, nullable: true }
+                  queued: { description: 'Recipients whose message was queued', type: array, items: { properties: { personId: { type: integer, nullable: true }, familyId: { type: integer, nullable: true }, name: { type: string }, email: { type: string } }, type: object } }
                   skipped: { description: 'Requested recipients that were not emailed', type: array, items: { properties: { personId: { type: integer, nullable: true }, familyId: { type: integer, nullable: true }, name: { type: string }, reason: { type: string, enum: [not-found, no-email, do-not-email, deceased, inactive, duplicate-address] } }, type: object } }
-                  failed: { description: 'Recipients the SMTP server rejected', type: array, items: { properties: { personId: { type: integer, nullable: true }, familyId: { type: integer, nullable: true }, name: { type: string }, email: { type: string }, error: { type: string } }, type: object } }
-                  counts: { properties: { sent: { type: integer }, skipped: { type: integer }, failed: { type: integer } }, type: object }
+                  sent: { description: 'Always empty: sending happens after the request (kept for older clients)', type: array, items: { type: object } }
+                  failed: { description: 'Always empty: sending happens after the request (kept for older clients)', type: array, items: { type: object } }
+                  counts: { properties: { queued: { type: integer }, sent: { description: 'Always 0', type: integer }, skipped: { type: integer }, failed: { description: 'Always 0', type: integer } }, type: object }
                 type: object
         '400':
           description: 'Invalid request: raw addresses, no ids, bad ids, more than 500 ids, or empty subject/body'
@@ -2637,6 +2640,68 @@ paths:
           description: Unauthorized
         '403':
           description: 'Email permission required'
+        '422':
+          description: 'Email sending is disabled or SMTP is not configured'
+      security:
+        -
+          ApiKeyAuth: []
+  '/email/batches/{batch}':
+    get:
+      tags:
+        - Email
+      summary: 'Progress of a queued composer send'
+      description: "Counts of the batch's messages by email history status. Only the user who queued the batch, or an administrator, may read it."
+      parameters:
+        -
+          name: batch
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern: '^[0-9a-f]{32}$'
+      responses:
+        '200':
+          description: 'Batch progress'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailBatchProgress'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Email permission required, or the batch belongs to another user'
+        '404':
+          description: 'No such batch, or every message in it was still queued when an administrator deleted the queue'
+      security:
+        -
+          ApiKeyAuth: []
+  '/email/batches/{batch}/send':
+    post:
+      tags:
+        - Email
+      summary: 'Send the due messages of a queued composer send now'
+      description: "Sends the batch's due messages for up to 15 seconds or 100 messages, then returns its progress. The composer calls it until nothing is due; messages waiting for a retry, and anything left when the composer closes, go out with the timer jobs. Concurrent calls and timer-job runs never send the same message twice. Only the user who queued the batch, or an administrator, may call it."
+      parameters:
+        -
+          name: batch
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern: '^[0-9a-f]{32}$'
+      responses:
+        '200':
+          description: 'Batch progress after this step'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailBatchProgress'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Email permission required, or the batch belongs to another user'
+        '404':
+          description: 'No such batch, or every message in it was still queued when an administrator deleted the queue'
         '422':
           description: 'Email sending is disabled or SMTP is not configured'
       security:
@@ -6048,6 +6113,8 @@ paths:
               - sent
               - failed
               - skipped
+              - queued
+              - sending
         -
           name: page
           in: query
@@ -6068,7 +6135,7 @@ paths:
             application/json:
               schema:
                 properties:
-                  rows: { type: array, items: { properties: { id: { type: integer }, personId: { type: integer, nullable: true }, familyId: { type: integer, nullable: true }, sentByUserId: { type: integer, nullable: true }, sentBy: { description: 'Name of the user who wrote a composer message', type: string, nullable: true }, address: { type: string }, kind: { type: string }, kindLabel: { type: string }, subject: { type: string }, status: { type: string, enum: [sent, failed, skipped] }, error: { type: string, nullable: true }, dateSent: { type: string }, hasBody: { type: boolean } }, type: object } }
+                  rows: { type: array, items: { properties: { id: { type: integer }, personId: { type: integer, nullable: true }, familyId: { type: integer, nullable: true }, sentByUserId: { type: integer, nullable: true }, sentBy: { description: 'Name of the user who wrote a composer message', type: string, nullable: true }, address: { type: string }, kind: { type: string }, kindLabel: { type: string }, subject: { type: string }, status: { description: 'queued: waiting to be sent (a retry keeps the last error); sending: a run is sending it now', type: string, enum: [sent, failed, skipped, queued, sending] }, statusLabel: { type: string }, attempts: { description: 'Delivery attempts so far', type: integer }, error: { type: string, nullable: true }, dateSent: { type: string }, hasBody: { type: boolean } }, type: object } }
                   total: { type: integer }
                   page: { type: integer }
                   limit: { type: integer }
@@ -6174,7 +6241,7 @@ paths:
       tags:
         - 'Member Portal'
       summary: "A page of the signed-in member's own email history"
-      description: 'Newest first, in the same envelope GET /email/log answers with, but scoped to the acting member: only rows whose eml_per_ID is this person. There is no person id to pass. Rows never carry the body; GET /portal/me/emails/{id} does. Session only — API keys are refused.'
+      description: 'Newest first, in the same envelope GET /email/log answers with, but scoped to the acting member: only rows whose eml_per_ID is this person, and only mail that was sent. Queued, sending, failed and skipped mail is left out, and rows carry no delivery status. There is no person id to pass. Rows never carry the body; GET /portal/me/emails/{id} does. Session only — API keys are refused.'
       operationId: getPortalMyEmails
       parameters:
         -
@@ -6197,7 +6264,7 @@ paths:
             application/json:
               schema:
                 properties:
-                  rows: { type: array, items: { properties: { id: { type: integer }, personId: { type: integer, nullable: true }, address: { type: string }, kind: { type: string }, kindLabel: { type: string }, subject: { type: string }, status: { type: string, enum: [sent, failed, skipped] }, dateSent: { type: string }, hasBody: { type: boolean } }, type: object } }
+                  rows: { type: array, items: { properties: { id: { type: integer }, personId: { type: integer, nullable: true }, address: { type: string }, kind: { type: string }, kindLabel: { type: string }, subject: { type: string }, dateSent: { type: string }, hasBody: { type: boolean } }, type: object } }
                   total: { type: integer }
                   page: { type: integer }
                   limit: { type: integer }
@@ -6212,7 +6279,7 @@ paths:
       tags:
         - 'Member Portal'
       summary: "One email from the signed-in member's own history, with its body"
-      description: "The row is returned only when it was addressed to the acting member. Somebody else's row and an id that does not exist are the same 404, so a member cannot learn that an email exists by asking for it. The body is null for the email classes that never store one (account emails carrying a password or a one-time link)."
+      description: "The row is returned only when it was addressed to the acting member and was sent. Somebody else's row, an unsent row and an id that does not exist are the same 404, so a member cannot learn that an email exists by asking for it. No delivery status is included. The body is null for the email classes that never store one (account emails carrying a password or a one-time link)."
       operationId: getPortalMyEmail
       parameters:
         -
@@ -9960,6 +10027,29 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  /admin/api/email/queue:
+    delete:
+      tags:
+        - Admin
+      summary: 'Delete every queued composer message so it is never sent'
+      description: "Deletes the email history rows whose status is `queued`, in every batch. Messages being sent at that moment (`sending`) and the history of sent, failed and skipped mail are left alone. A composer still sending one of the deleted batches gets 404 for it. The deletion is written to the app log with the administrator's name."
+      operationId: deleteEmailQueue
+      responses:
+        '200':
+          description: 'The queue was emptied'
+          content:
+            application/json:
+              schema:
+                properties:
+                  deleted: { description: 'How many queued messages were deleted', type: integer, example: 12 }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden — Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
   /admin/api/import/csv/families:
     get:
       tags:
@@ -11654,6 +11744,50 @@ components:
             Country:
               type: string
           type: object
+      type: object
+    EmailBatchProgress:
+      properties:
+        batch:
+          type: string
+        total:
+          description: 'Messages in the batch; queued messages an administrator deleted are no longer counted'
+          type: integer
+        queued:
+          description: 'Waiting to be sent, due now or waiting for a retry'
+          type: integer
+        sending:
+          description: 'Being sent by a run right now'
+          type: integer
+        sent:
+          description: 'Accepted by the SMTP server (acceptance is not delivery)'
+          type: integer
+        failed:
+          description: 'Refused, or still failing after the last attempt'
+          type: integer
+        skipped:
+          description: "Email was switched off when the message's turn came"
+          type: integer
+        due:
+          description: 'Queued messages that may be sent now'
+          type: integer
+        nextAttempt:
+          description: 'When the earliest retry is due'
+          type: string
+          example: '2026-10-14 10:25:00'
+          nullable: true
+        done:
+          description: 'Nothing is queued or being sent'
+          type: boolean
+        failures:
+          description: "The failed messages and the server's answer"
+          type: array
+          items:
+            properties:
+              address:
+                type: string
+              error:
+                type: string
+            type: object
       type: object
     PortalCalendarSubscription:
       properties:
