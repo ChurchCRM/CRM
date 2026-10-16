@@ -4874,7 +4874,6 @@
   "Email non-attendees: %s": "Gửi email cho người vắng mặt: %s",
   "Email not found": "Không tìm thấy email",
   "Email preview": "Xem trước email",
-  "Email sending is disabled": "Việc gửi email đã bị tắt",
   "Email sending is not enabled. Configure SMTP settings and enable email before sending.": "Việc gửi email chưa được bật. Hãy cấu hình SMTP và bật email trước khi gửi.",
   "Emails": "Email",
   "End time": "Thời gian kết thúc",

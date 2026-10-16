@@ -5,7 +5,7 @@
  * identical between the two entry points.
  */
 
-import { deleteEvent, renderEventEditor, saveEvent } from "./event-form.js";
+import { deleteEvent, renderEventEditor, saveEvent, toWallClockString } from "./event-form.js";
 import { escapeHtml } from "./utils/escape-html";
 
 const CRMRoot = window.CRM.root;
@@ -79,8 +79,8 @@ document.addEventListener("DOMContentLoaded", () => {
         LinkedGroupId: 0,
         AttendanceCounts: [],
       };
-      if (event.Start && !(event.Start instanceof Date)) event.Start = new Date(event.Start);
-      if (event.End && !(event.End instanceof Date)) event.End = new Date(event.End);
+      if (event.Start) event.Start = toWallClockString(event.Start);
+      if (event.End) event.End = toWallClockString(event.End);
 
       // Seed Type for brand-new events: the first available type is the
       // sensible default and ensures the save payload never submits Type:0.

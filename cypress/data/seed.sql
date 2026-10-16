@@ -108,7 +108,7 @@ CREATE TABLE `config_cfg` (
 LOCK TABLES `config_cfg` WRITE;
 /*!40000 ALTER TABLE `config_cfg` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `config_cfg` VALUES ('bAllowPrereleaseUpgrade',''),('bEnableExternalCalendarAPI',''),('bEnableNonDeductible',''),('bEnableSelfRegistration','1'),('bForceUppercaseZip',''),('bHideFamilyNewsletter',''),('bHideFriendDate',''),('bHideLatLon',''),('bHideWeddingDate',''),('bPHPMailerAutoTLS',''),('bRequire2FA',''),('bSearchIncludeFamilyCustomProperties',''),('bSendUserDeletedEmail',''),('bSMTPAuth','0'),('bUseDonationEnvelopes',''),('bUseScannedChecks',''),('iChurchLatitude','39.1111974'),('iChurchLongitude','-94.5838009'),('IncludeDataInNewPersonNotifications',''),('plugin.external-backup.enabled','0'),('plugin.holidays.categories','official,religious'),('plugin.holidays.countries','USA'),('plugin.holidays.enabled','1'),('sChurchAddress','123 Main St'),('sChurchChkAcctNum','111111111'),('sChurchCity','Kansas City'),('sChurchCountry','United States'),('sChurchEmail','demo@churchcrm.io'),('sChurchName','Main St. Cathedral'),('sChurchPhone','555 123 4234'),('sChurchState','MO'),('sChurchZip','64106'),('sConfirmSigner','Elder Joe Smith'),('sDefaultCity','Kansas City'),('sDefaultCountry','United States'),('sDefaultState','MO'),('sDirectoryDisclaimer1','Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.This directory is for the use of the people of'),('sLogLevel','100'),('sPHPMailerSMTPSecure',''),('sPledgeSummary2','as of'),('sReminderSigner','Elder Joe Smith'),('sSMTPHost','mailserver:1025'),('sSMTPPass',''),('sSMTPUser',''),('sTaxSigner','Elder Joe Smith'),('sTimeZone','America/Detroit'),('sTwoFASecretKey','ChangeThisToASecureRandomStringBeforeUse');
+INSERT INTO `config_cfg` VALUES ('bAllowPrereleaseUpgrade',''),('bEnableExternalCalendarAPI',''),('bEnableNonDeductible',''),('bEnableSelfRegistration','1'),('bForceUppercaseZip',''),('bHideFamilyNewsletter',''),('bHideFriendDate',''),('bHideLatLon',''),('bHideWeddingDate',''),('bPHPMailerAutoTLS',''),('bRequire2FA',''),('bSearchIncludeFamilyCustomProperties',''),('bSendUserDeletedEmail',''),('bSMTPAuth','0'),('bUseDonationEnvelopes',''),('bUseScannedChecks',''),('iChurchLatitude','39.1111974'),('iChurchLongitude','-94.5838009'),('IncludeDataInNewPersonNotifications',''),('plugin.external-backup.enabled','0'),('plugin.holidays.categories','official,religious'),('plugin.holidays.countries','USA'),('plugin.holidays.enabled','1'),('sChurchAddress','123 Main St'),('sChurchChkAcctNum','111111111'),('sChurchCity','Kansas City'),('sChurchCountry','United States'),('sChurchEmail','demo@churchcrm.io'),('sChurchName','Main St. Cathedral'),('sChurchPhone','555 123 4234'),('sChurchState','MO'),('sChurchZip','64106'),('sConfirmSigner','Elder Joe Smith'),('sDefaultCity','Kansas City'),('sDefaultCountry','United States'),('sDefaultState','MO'),('sDirectoryDisclaimer1','Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.This directory is for the use of the people of'),('sLogLevel','100'),('sPHPMailerSMTPSecure',''),('sPledgeSummary2','as of'),('sReminderSigner','Elder Joe Smith'),('sSMTPHost','mailserver:1025'),('sSMTPPass',''),('sSMTPUser',''),('sTaxSigner','Elder Joe Smith'),('sTimeZone','America/Detroit'),('sTwoFASecretKey','ChangeThisToASecureRandomStringBeforeUse'),('sVolunteerVersion','v1');
 /*!40000 ALTER TABLE `config_cfg` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -2579,21 +2579,27 @@ CREATE TABLE `email_log_eml` (
   `eml_Error`     text                  DEFAULT NULL,
   `eml_MessageID` varchar(255)          DEFAULT NULL,
   `eml_DateSent`  datetime              NOT NULL,
+  `eml_Batch`       varchar(32)         DEFAULT NULL,
+  `eml_Attempts`    tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `eml_NextAttempt` datetime            DEFAULT NULL,
   PRIMARY KEY (`eml_ID`),
   KEY `idx_eml_per_ID`   (`eml_per_ID`),
   KEY `idx_eml_fam_ID`   (`eml_fam_ID`),
   KEY `idx_eml_DateSent` (`eml_DateSent`),
-  KEY `idx_eml_Status`   (`eml_Status`)
+  KEY `idx_eml_Status`   (`eml_Status`),
+  KEY `idx_eml_Batch`    (`eml_Batch`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 INSERT INTO `email_log_eml` VALUES
-(1,2,NULL,1,'mathew.campbell@example.com','composer','Welcome to the choir','<p>Dear Mathew,</p><p>Practice is on Thursdays at 7pm.</p>','sent',NULL,'<seed-1@churchcrm.test>','2026-08-01 10:00:00'),
-(2,2,NULL,NULL,'mathew.campbell@example.com','birthday','Happy Birthday from Main St. Cathedral',NULL,'sent',NULL,'<seed-2@churchcrm.test>','2026-06-15 06:00:00'),
-(3,2,1,NULL,'mathew.campbell@example.com','verify','Please confirm your family details',NULL,'sent',NULL,'<seed-3@churchcrm.test>','2026-05-02 09:30:00'),
-(4,2,NULL,1,'mathew.campbell@example.com','composer','Potluck this Sunday','<p>Dear Mathew,</p><p>Bring a dish to share.</p>','failed','SMTP Error: Could not connect to SMTP host.',NULL,'2026-04-20 14:15:00'),
-(5,2,NULL,1,'mathew.campbell@example.com','composer','Thank you for serving','<p>Dear Mathew,</p><p>Thank you for helping on Sunday.</p>','sent',NULL,'<seed-5@churchcrm.test>','2026-03-10 08:45:00'),
-(6,2,NULL,1,'mathew.campbell@example.com','composer','Oldest message','<p>Dear Mathew,</p><p>This is the sixth and oldest seeded message.</p>','sent',NULL,'<seed-6@churchcrm.test>','2026-02-01 08:00:00'),
-(7,3,NULL,NULL,'tony.wade@example.com','account.reset-token','Reset your ChurchCRM password',NULL,'sent',NULL,'<seed-7@churchcrm.test>','2026-07-04 12:00:00');
+(1,2,NULL,1,'mathew.campbell@example.com','composer','Welcome to the choir','<p>Dear Mathew,</p><p>Practice is on Thursdays at 7pm.</p>','sent',NULL,'<seed-1@churchcrm.test>','2026-08-01 10:00:00',NULL,1,NULL),
+(2,2,NULL,NULL,'mathew.campbell@example.com','birthday','Happy Birthday from Main St. Cathedral',NULL,'sent',NULL,'<seed-2@churchcrm.test>','2026-06-15 06:00:00',NULL,1,NULL),
+(3,2,1,NULL,'mathew.campbell@example.com','verify','Please confirm your family details',NULL,'sent',NULL,'<seed-3@churchcrm.test>','2026-05-02 09:30:00',NULL,1,NULL),
+(4,2,NULL,1,'mathew.campbell@example.com','composer','Potluck this Sunday','<p>Dear Mathew,</p><p>Bring a dish to share.</p>','failed','SMTP Error: Could not connect to SMTP host.',NULL,'2026-04-20 14:15:00',NULL,1,NULL),
+(5,2,NULL,1,'mathew.campbell@example.com','composer','Thank you for serving','<p>Dear Mathew,</p><p>Thank you for helping on Sunday.</p>','sent',NULL,'<seed-5@churchcrm.test>','2026-03-10 08:45:00',NULL,1,NULL),
+(6,2,NULL,1,'mathew.campbell@example.com','composer','Oldest message','<p>Dear Mathew,</p><p>This is the sixth and oldest seeded message.</p>','sent',NULL,'<seed-6@churchcrm.test>','2026-02-01 08:00:00',NULL,1,NULL),
+(7,3,NULL,NULL,'tony.wade@example.com','account.reset-token','Reset your ChurchCRM password',NULL,'sent',NULL,'<seed-7@churchcrm.test>','2026-07-04 12:00:00',NULL,1,NULL),
+(8,100,NULL,1,'lena.walker@example.com','composer','Seeded failed message for Lena','<p>Dear Lena,</p><p>This one never went out.</p>','failed','SMTP Error: Could not connect to SMTP host.',NULL,'2026-03-01 09:00:00',NULL,1,NULL),
+(9,100,NULL,NULL,'lena.walker@example.com','birthday','Seeded skipped birthday greeting for Lena',NULL,'skipped',NULL,NULL,'2026-03-02 06:00:00',NULL,0,NULL);
 
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 /*!40101 SET AUTOCOMMIT=@OLD_AUTOCOMMIT */;

@@ -4900,7 +4900,6 @@
   "Email non-attendees: %s": "Tuma barua pepe kwa wasiohudhuria: %s",
   "Email not found": "Barua pepe haijapatikana",
   "Email preview": "Onyesho la awali la barua pepe",
-  "Email sending is disabled": "Kutuma barua pepe kumezimwa",
   "Email sending is not enabled. Configure SMTP settings and enable email before sending.": "Kutuma barua pepe hakujawashwa. Weka mipangilio ya SMTP na uwashe barua pepe kabla ya kutuma.",
   "Emails": "Barua pepe",
   "End time": "Wakati wa Mwisho",

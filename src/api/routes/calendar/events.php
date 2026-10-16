@@ -699,7 +699,10 @@ function getEventAudience(Request $request, Response $response, array $args): Re
  *         @OA\Property(property="LinkedGroupId", type="integer", nullable=true, description="Audience group (the event's non-attendee list is built from it). Without the global AddEvent right: only the event ministry's own pool group or a class linked to one of its teams. Omit the key to leave it unchanged; 0 clears it.")
  *     )),
  *     @OA\Response(response=200, description="Event created",
- *         @OA\JsonContent(@OA\Property(property="success", type="boolean", example=true))
+ *         @OA\JsonContent(
+ *             @OA\Property(property="success", type="boolean", example=true),
+ *             @OA\Property(property="eventId", type="integer", example=42, description="ID of the new event")
+ *         )
  *     ),
  *     @OA\Response(response=400, description="Invalid event type, calendar ID or volunteer ministry"),
  *     @OA\Response(response=401, description="Unauthorized"),
@@ -768,7 +771,7 @@ function newEvent(Request $request, Response $response, array $args): Response
 
     applyEventExtendedFields($event, $input);
 
-    return SlimUtils::renderSuccessJSON($response);
+    return SlimUtils::renderJSON($response, ['success' => true, 'eventId' => (int) $event->getId()]);
 }
 
 /**

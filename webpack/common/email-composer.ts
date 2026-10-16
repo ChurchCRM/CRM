@@ -25,7 +25,9 @@
  * - "Copy Addresses" — clipboard (works for any list size)
  * - "Send" (server-side via SMTP) when window.CRM.comm.emailSendingEnabled is true —
  *   expands an inline subject + body form and POSTs person/family ids (never addresses)
- *   to POST /api/email/send, which sends one message per recipient
+ *   to POST /api/email/send, which queues one message per recipient; the composer then
+ *   sends the batch in steps (POST /api/email/batches/{batch}/send) while it stays open,
+ *   and the timer jobs send whatever is left
  * - "Open in Email Client" — always available as a fallback (mailto:); limited to
  *   ≤50 recipients due to URL-length constraints in most mail clients
  */
@@ -54,12 +56,25 @@ interface EmailSendOutcome {
 
 /** Response shape from POST /api/email/send */
 interface EmailSendResponse {
-  sent?: EmailSendOutcome[];
+  batch?: string | null;
+  queued?: EmailSendOutcome[];
   skipped?: EmailSendOutcome[];
-  failed?: EmailSendOutcome[];
-  counts?: { sent: number; skipped: number; failed: number };
+  counts?: { queued?: number; skipped: number };
   message?: string;
   error?: string;
+}
+
+/** Response shape from POST /api/email/batches/{batch}/send */
+interface EmailBatchProgress {
+  total: number;
+  queued: number;
+  sending: number;
+  sent: number;
+  failed: number;
+  skipped: number;
+  due: number;
+  done: boolean;
+  failures?: { address: string; error: string }[];
 }
 
 const MAX_MAILTO_RECIPIENTS = 50;
@@ -388,7 +403,7 @@ function ensurePreviewModal(): void {
     "    </div>",
     '    <div class="modal-body">',
     '      <div class="alert alert-danger d-none" id="crm-email-preview-error"></div>',
-    `      <iframe id="crm-email-preview-frame" class="w-100 border rounded" sandbox="" title="${escapeHtml(i18next.t("Email preview"))}" style="min-height: 520px; background: #fff;"></iframe>`,
+    `      <iframe id="crm-email-preview-frame" class="w-100 border rounded email-preview-frame" sandbox="" title="${escapeHtml(i18next.t("Email preview"))}"></iframe>`,
     "    </div>",
     '    <div class="modal-footer">',
     `      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">${escapeHtml(i18next.t("Back to editing"))}</button>`,
@@ -446,6 +461,113 @@ async function doPreviewEmail(previewBtn: HTMLButtonElement): Promise<void> {
   }
 }
 
+/** Result banner under the compose form; replaces any previous one. Returns its body, where details go. */
+function showSendBanner(kind: "info" | "success" | "warning" | "danger", text: string): HTMLElement {
+  composeFormEl?.querySelector(".crm-send-result")?.remove();
+  const icons = {
+    info: "fa-paper-plane",
+    success: "fa-circle-check",
+    warning: "fa-triangle-exclamation",
+    danger: "fa-triangle-exclamation",
+  };
+  const banner = document.createElement("div");
+  banner.className = `alert alert-${kind} crm-send-result d-flex align-items-start mt-2 mb-0`;
+  banner.setAttribute("role", "status");
+  const icon = document.createElement("i");
+  icon.className = `fa-solid ${icons[kind]} me-2 mt-1`;
+  banner.appendChild(icon);
+  const body = document.createElement("div");
+  body.className = "flex-fill";
+  const message = document.createElement("div");
+  message.className = "crm-send-result-text";
+  message.textContent = text;
+  body.appendChild(message);
+  banner.appendChild(body);
+  composeFormEl?.appendChild(banner);
+  return body;
+}
+
+/** "Follow it in the email history" link for administrators; others see each person's history. */
+function appendHistoryLink(banner: HTMLElement): void {
+  const url = window.CRM?.comm?.emailHistoryURL;
+  const note = document.createElement("div");
+  note.className = "small mt-2";
+  if (url) {
+    const link = document.createElement("a");
+    link.href = url;
+    link.id = "crm-email-history-link";
+    link.textContent = i18next.t("Follow it in the email history");
+    note.appendChild(link);
+  } else {
+    note.textContent = i18next.t("Each message is recorded in the person's email history.");
+  }
+  banner.appendChild(note);
+}
+
+function setSendingProgress(banner: HTMLElement, done: number, total: number): void {
+  const text = banner.querySelector(".crm-send-result-text");
+  if (text) text.textContent = i18next.t("Sending… {{done}} of {{total}}", { done, total });
+  let bar = banner.querySelector<HTMLElement>(".progress-bar");
+  if (!bar) {
+    const track = document.createElement("div");
+    track.className = "progress mt-2";
+    track.style.height = "6px";
+    bar = document.createElement("div");
+    bar.className = "progress-bar";
+    bar.setAttribute("role", "progressbar");
+    bar.setAttribute("aria-valuemin", "0");
+    track.appendChild(bar);
+    banner.appendChild(track);
+  }
+  bar.setAttribute("aria-valuemax", String(total));
+  bar.setAttribute("aria-valuenow", String(done));
+  bar.style.width = `${total > 0 ? Math.round((done / total) * 100) : 0}%`;
+}
+
+/** Where the composer's steps through a batch ended. */
+interface BatchOutcome {
+  /** The last progress, or null when no step answered. */
+  progress: EmailBatchProgress | null;
+  /** 404: an administrator deleted the queue while every message in the batch was waiting. */
+  cleared: boolean;
+}
+
+/**
+ * Sends the queued batch in steps until nothing is due. The timer jobs send whatever
+ * is left either way.
+ */
+async function sendQueuedBatch(
+  batch: string,
+  total: number,
+  banner: HTMLElement,
+  signal: AbortSignal,
+): Promise<BatchOutcome> {
+  let progress: EmailBatchProgress | null = null;
+  setSendingProgress(banner, 0, total);
+  for (;;) {
+    const res = await fetch(buildAPIUrl(`email/batches/${encodeURIComponent(batch)}/send`), {
+      method: "POST",
+      credentials: "same-origin",
+      signal,
+    });
+    if (!res.ok) return { progress, cleared: res.status === 404 };
+    const previous = progress;
+    progress = (await res.json()) as EmailBatchProgress;
+    const finished = progress.sent + progress.failed + progress.skipped;
+    setSendingProgress(banner, finished, total);
+    if (progress.done || progress.due === 0) return { progress, cleared: false };
+    // Another run holds the rest, or nothing moved: leave it to the background.
+    if (previous && finished === previous.sent + previous.failed + previous.skipped && progress.due >= previous.due) {
+      return { progress, cleared: false };
+    }
+  }
+}
+
+/** "The queue was cleared" line for messages an administrator deleted before they went out. */
+function clearedText(total: number): string {
+  return i18next.t("The queue was cleared. Messages that will not be sent: {{total}}", { total });
+}
+
 async function doSendEmail(submitBtn: HTMLButtonElement): Promise<void> {
   const payload = composePayload();
   if (!payload) return;
@@ -454,7 +576,8 @@ async function doSendEmail(submitBtn: HTMLButtonElement): Promise<void> {
 
   // Abort any previous send
   sendController?.abort();
-  sendController = new AbortController();
+  const controller = new AbortController();
+  sendController = controller;
 
   // Show spinner on submit button
   submitBtn.disabled = true;
@@ -462,17 +585,19 @@ async function doSendEmail(submitBtn: HTMLButtonElement): Promise<void> {
   if (submitIcon) submitIcon.className = "spinner-border spinner-border-sm me-1";
   const submitLabel = submitBtn.lastChild;
   if (submitLabel instanceof Text) submitLabel.nodeValue = i18next.t("Sending…");
+  const resetSubmit = () => {
+    submitBtn.disabled = false;
+    if (submitIcon) submitIcon.className = "fa-solid fa-paper-plane me-1";
+    if (submitLabel instanceof Text) submitLabel.nodeValue = i18next.t("Send Email");
+  };
 
-  // Remove any previous result banner
-  const oldBanner = composeFormEl?.querySelector(".crm-send-result");
-  oldBanner?.remove();
+  composeFormEl?.querySelector(".crm-send-result")?.remove();
 
   try {
-    const url = buildAPIUrl("email/send");
-    const res = await fetch(url, {
+    const res = await fetch(buildAPIUrl("email/send"), {
       method: "POST",
       credentials: "same-origin",
-      signal: sendController.signal,
+      signal: controller.signal,
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         personIds,
@@ -483,69 +608,94 @@ async function doSendEmail(submitBtn: HTMLButtonElement): Promise<void> {
     });
 
     const data = (await res.json().catch(() => ({}))) as EmailSendResponse;
-    const sentCount = data.counts?.sent ?? data.sent?.length ?? 0;
-    const notSent = [...(data.skipped ?? []), ...(data.failed ?? [])];
+    const queuedCount = data.counts?.queued ?? data.queued?.length ?? 0;
+    const skipped = data.skipped ?? [];
 
-    if (res.ok && sentCount > 0) {
-      // ── Success (possibly partial) ───────────────────────────────── //
-      const banner = document.createElement("div");
-      banner.className = `alert ${notSent.length > 0 ? "alert-warning" : "alert-success"} crm-send-result mt-2 mb-0`;
-      const bannerIcon = document.createElement("i");
-      bannerIcon.className = `fa-solid ${notSent.length > 0 ? "fa-triangle-exclamation" : "fa-circle-check"} me-2`;
-      banner.appendChild(bannerIcon);
-      banner.appendChild(
-        document.createTextNode(i18next.t("Email sent to {{count}} recipient(s).", { count: sentCount })),
-      );
-      appendNotSentList(banner, notSent);
-      composeFormEl?.appendChild(banner);
-
-      // Disable form so user can't accidentally re-send
-      if (subjectInputEl) subjectInputEl.disabled = true;
-      if (bodyTextareaEl) bodyTextareaEl.disabled = true;
-      submitBtn.disabled = true;
-      if (submitIcon) submitIcon.className = "fa-solid fa-check me-1";
-      if (submitLabel instanceof Text) submitLabel.nodeValue = i18next.t("Sent");
-    } else {
-      // ── Failure, or nothing could be sent ────────────────────────── //
+    if (!res.ok || !data.batch || queuedCount === 0) {
       const errMsg =
         data.message ??
         data.error ??
-        data.failed?.[0]?.error ??
         (res.ok
           ? i18next.t("No email was sent.")
           : i18next.t("Failed to send email. Please try again or use 'Open in Email Client'."));
-      const banner = document.createElement("div");
-      banner.className = "alert alert-danger crm-send-result mt-2 mb-0";
-      const bannerIcon = document.createElement("i");
-      bannerIcon.className = "fa-solid fa-triangle-exclamation me-2";
-      banner.appendChild(bannerIcon);
-      banner.appendChild(document.createTextNode(errMsg));
-      appendNotSentList(banner, notSent);
-      composeFormEl?.appendChild(banner);
-
-      // Re-enable submit so user can retry
-      submitBtn.disabled = false;
-      if (submitIcon) submitIcon.className = "fa-solid fa-paper-plane me-1";
-      if (submitLabel instanceof Text) submitLabel.nodeValue = i18next.t("Send Email");
+      appendNotSentList(showSendBanner("danger", errMsg), skipped);
+      resetSubmit();
+      return;
     }
+
+    // Queued: the messages go out whether or not this window stays open, so lock the form.
+    if (subjectInputEl) subjectInputEl.disabled = true;
+    if (bodyTextareaEl) bodyTextareaEl.disabled = true;
+    const banner = showSendBanner("info", "");
+    const { progress, cleared } = await sendQueuedBatch(data.batch, queuedCount, banner, controller.signal).catch(
+      (err): BatchOutcome => {
+        if (err instanceof DOMException && err.name === "AbortError") throw err;
+        console.error("[email-composer] batch send failed:", err);
+        return { progress: null, cleared: false };
+      },
+    );
+
+    if (cleared) {
+      appendNotSentList(showSendBanner("warning", clearedText(queuedCount)), skipped);
+      if (submitIcon) submitIcon.className = "fa-solid fa-ban me-1";
+      if (submitLabel instanceof Text) submitLabel.nodeValue = i18next.t("Not sent");
+      return;
+    }
+
+    if (!progress) {
+      const queuedBanner = showSendBanner(
+        "info",
+        i18next.t("Messages queued: {{total}}. They will be sent in the background.", { total: queuedCount }),
+      );
+      appendNotSentList(queuedBanner, skipped);
+      appendHistoryLink(queuedBanner);
+      if (submitIcon) submitIcon.className = "fa-solid fa-hourglass-half me-1";
+      if (submitLabel instanceof Text) submitLabel.nodeValue = i18next.t("Queued");
+      return;
+    }
+
+    const waiting = progress.queued + progress.sending;
+    const failures: EmailSendOutcome[] = (progress.failures ?? []).map((f) => ({
+      personId: null,
+      familyId: null,
+      name: f.address,
+      error: f.error,
+    }));
+    const removed = Math.max(0, queuedCount - progress.total);
+    const clean = waiting === 0 && failures.length === 0 && skipped.length === 0 && removed === 0;
+    const nothingSent = progress.sent === 0 && waiting === 0;
+    let headline = i18next.t("Email sent to {{count}} recipient(s).", { count: progress.sent });
+    if (nothingSent) {
+      headline = removed > 0 ? clearedText(removed) : i18next.t("No email was sent.");
+    } else if (progress.sent === 0) {
+      headline = i18next.t("Messages queued: {{total}}. They will be sent in the background.", { total: waiting });
+    }
+    const finalBanner = showSendBanner(clean ? "success" : nothingSent ? "danger" : "warning", headline);
+    if (removed > 0 && !nothingSent) {
+      const clearedLine = document.createElement("div");
+      clearedLine.className = "mt-2 small";
+      clearedLine.id = "crm-email-queue-cleared";
+      clearedLine.textContent = clearedText(removed);
+      finalBanner.appendChild(clearedLine);
+    }
+    if (waiting > 0 && progress.sent > 0) {
+      const pending = document.createElement("div");
+      pending.className = "mt-2 small";
+      pending.id = "crm-email-still-queued";
+      pending.textContent = i18next.t("Still queued, to be sent automatically: {{total}}", { total: waiting });
+      finalBanner.appendChild(pending);
+    }
+    appendNotSentList(finalBanner, [...skipped, ...failures]);
+    if (waiting > 0 || failures.length > 0) appendHistoryLink(finalBanner);
+    if (submitIcon) submitIcon.className = waiting > 0 ? "fa-solid fa-hourglass-half me-1" : "fa-solid fa-check me-1";
+    if (submitLabel instanceof Text) submitLabel.nodeValue = waiting > 0 ? i18next.t("Queued") : i18next.t("Sent");
   } catch (err) {
     if (err instanceof DOMException && err.name === "AbortError") return;
     console.error("[email-composer] send failed:", err);
-    const banner = document.createElement("div");
-    banner.className = "alert alert-danger crm-send-result mt-2 mb-0";
-    const bannerIcon = document.createElement("i");
-    bannerIcon.className = "fa-solid fa-triangle-exclamation me-2";
-    banner.appendChild(bannerIcon);
-    banner.appendChild(
-      document.createTextNode(i18next.t("Failed to send email. Please try again or use 'Open in Email Client'.")),
-    );
-    composeFormEl?.appendChild(banner);
-
-    submitBtn.disabled = false;
-    if (submitIcon) submitIcon.className = "fa-solid fa-paper-plane me-1";
-    if (submitLabel instanceof Text) submitLabel.nodeValue = i18next.t("Send Email");
+    showSendBanner("danger", i18next.t("Failed to send email. Please try again or use 'Open in Email Client'."));
+    resetSubmit();
   } finally {
-    sendController = null;
+    if (sendController === controller) sendController = null;
   }
 }
 
@@ -704,8 +854,7 @@ function showCopyFeedback(success: boolean): void {
 function legacyCopy(text: string): void {
   const ta = document.createElement("textarea");
   ta.value = text;
-  ta.style.position = "fixed";
-  ta.style.opacity = "0";
+  ta.className = "position-fixed opacity-0";
   document.body.appendChild(ta);
   ta.select();
   try {
@@ -1067,9 +1216,7 @@ function renderRecipients(
   details.appendChild(summary);
 
   const listWrapper = document.createElement("div");
-  listWrapper.style.maxHeight = "200px";
-  listWrapper.style.overflowY = "auto";
-  listWrapper.className = "mt-2 border rounded p-2 small font-monospace";
+  listWrapper.className = "mt-2 border rounded p-2 small font-monospace email-recipient-list";
   recipientListWrapperEl = listWrapper;
 
   if (hasRoles) {

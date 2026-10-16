@@ -20073,10 +20073,6 @@ msgid "Email preview"
 msgstr "ईमेल पूर्वावलोकन"
 
 #: 
-msgid "Email sending is disabled"
-msgstr "ईमेल भेजना अक्षम है"
-
-#: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
 msgstr "ईमेल भेजना सक्षम नहीं है। भेजने से पहले SMTP सेटिंग कॉन्फ़िगर करें और ईमेल सक्षम करें।"
 

@@ -56,7 +56,7 @@ Each is a separate file, so a theme can replace one without touching the others:
 
 ### What the layout already loads
 
-You do not need to add any of it, and you should not load a second copy:
+The layout supplies all of this; load nothing a second time:
 
 - ChurchCRM's core CSS and JS bundle (Tabler, Bootstrap 5, jQuery), the RTL
   variant when the locale is right-to-left
@@ -152,7 +152,7 @@ The church's identity, from **Admin → Church Information**.
 | `website` | string | |
 | `logoUrl` | string | The uploaded church logo, or ChurchCRM's stock image when none is set |
 | `logoOnDarkUrl` | string | The same church logo, but when none is set ChurchCRM's light-on-dark mark instead of the stock image. The default header, which is dark, uses this one |
-| `socialLinks` | list | The church's social accounts (#9907), already filtered to the ones that are set and ordered X, YouTube, Facebook, Instagram. Each entry is `{id, label, url, icon}` — `icon` is a Font Awesome Free brand class such as `fa-brands fa-facebook`. Empty when the church has configured none, so `{% if church.socialLinks is not empty %}` is the whole guard you need. |
+| `socialLinks` | list | The church's social accounts, already filtered to the ones that are set and ordered X, YouTube, Facebook, Instagram. Each entry is `{id, label, url, icon}` — `icon` is a Font Awesome Free brand class such as `fa-brands fa-facebook`. Empty when the church has configured none, so `{% if church.socialLinks is not empty %}` is the whole guard you need. |
 
 ### `member`
 
@@ -495,7 +495,9 @@ Every page the epic promised is in this table now.
 
 `email/index.html.twig` is a paginated list of what the church has emailed this
 member — reached from the header's account menu, not from the main navigation,
-so **no nav entry is active while it is open**.
+so **no nav entry is active while it is open**. Only mail that was sent is
+listed, and rows carry no delivery status: queued, failed and skipped mail is
+for staff, and an unsent row's detail URL is the same 404 as somebody else's.
 
 `emails` is the page's rows, newest first. Every field is a finished string;
 nothing here needs formatting or reasoning about in a template:
@@ -505,8 +507,6 @@ nothing here needs formatting or reasoning about in a template:
 | `id` | int | Use it to build the detail URL |
 | `subject` | string | Empty for an email that was sent without one — print `(no subject)` |
 | `kindLabel` | string | The kind in words: `Message`, `Birthday greeting`, `Password reset link`, … |
-| `status` | string | `sent`, `failed` or `skipped` — for a CSS class, not for reading |
-| `statusLabel` | string | The same, in words, already translated |
 | `address` | string | The address the message went to |
 | `dateSent` | string | Formatted in the installation's date format, with the time |
 | `hasBody` | bool | False for the account emails, whose content is never stored |

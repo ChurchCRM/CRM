@@ -4900,7 +4900,6 @@
   "Email non-attendees: %s": "I-email ang mga hindi dumalo: %s",
   "Email not found": "Hindi nahanap ang email",
   "Email preview": "Preview ng email",
-  "Email sending is disabled": "Naka-disable ang pagpapadala ng email",
   "Email sending is not enabled. Configure SMTP settings and enable email before sending.": "Hindi naka-enable ang pagpapadala ng email. I-configure ang mga setting ng SMTP at i-enable ang email bago magpadala.",
   "Emails": "Mga Email",
   "End time": "Oras ng Pagtatapos",

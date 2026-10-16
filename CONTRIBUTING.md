@@ -36,7 +36,7 @@ Clear, accurate content helps congregations understand what ChurchCRM can do and
 - Tutorial articles for common workflows
 - Evaluation guides based on verified ChurchCRM workflows and current product behavior
 
-**Where to contribute:** Open an issue on [GitHub](https://github.com/ChurchCRM/CRM/issues) with the `documentation` label, or share your draft on [Discord](https://discord.gg/tuWyFzj3Nj). Keep public claims aligned with the current application and approved website messaging.
+**Where to contribute:** Open an issue on [GitHub](https://github.com/ChurchCRM/CRM/issues) with the `Documentation` label, or share your draft on [Discord](https://discord.gg/tuWyFzj3Nj). Keep public claims aligned with the current application and approved website messaging.
 
 ---
 
@@ -48,7 +48,7 @@ The [official documentation site](https://docs.churchcrm.io) covers every featur
 - Clearer how-to steps for existing guides
 - New guides for features that lack documentation
 - Correcting outdated information after releases
-- Adding screenshots showing the current Tabler UI (7.1+)
+- Adding screenshots showing the current Tabler UI
 
 **No GitHub experience required** — you can [edit pages directly in the browser](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files) on GitHub.
 
@@ -56,7 +56,7 @@ The [official documentation site](https://docs.churchcrm.io) covers every featur
 
 ### Translate
 
-ChurchCRM currently lists 49 supported locales in its generated locale audit. Translation coverage varies by locale, and every improvement helps more churches use the application in a familiar language.
+The supported locales are listed in `src/locale/locales.json`. Translation coverage varies by locale, and every improvement helps more churches use the application in a familiar language.
 
 **Translate via POEditor (no Git required):**
 1. Join the [ChurchCRM POEditor project](https://poeditor.com/join/project/RABdnDSqAt)
@@ -93,7 +93,7 @@ ChurchCRM's marketing site, documentation, and social presence all need visual a
 - UI/UX feedback on the application — what feels confusing, what could be clearer
 - Logo usage and brand asset improvements
 
-**Share your work** on [Discord](https://discord.gg/tuWyFzj3Nj) in the `#design` channel or open a GitHub issue with the `design` label.
+**Share your work** on [Discord](https://discord.gg/tuWyFzj3Nj) in the `#design` channel or open a GitHub issue with the `UI` label.
 
 ---
 
@@ -150,7 +150,7 @@ Add a feature ChurchCRM doesn't include yet — a third-party API integration, a
 
 **Start here:** [Creating Community Plugins](https://github.com/ChurchCRM/CRM/wiki/Creating-Community-Plugins)
 
-> **Upgrade safety:** Direct modifications to ChurchCRM source files are overwritten when you upgrade. All custom features must live in plugins to survive releases.
+> **Upgrade safety:** Upgrades overwrite changes to ChurchCRM source files. Keep custom features in plugins so they survive releases.
 
 ---
 
@@ -158,7 +158,7 @@ Add a feature ChurchCRM doesn't include yet — a third-party API integration, a
 
 Follow [DEVELOPING.md](DEVELOPING.md) for the primary local-tool setup, Docker-based testing, current requirements, build commands, architecture rules, and the pull-request checklist.
 
-The default development login is `admin` / `changeme`. Never use these credentials in a real deployment.
+The default development login is `admin` / `changeme`. Change it in any real deployment.
 
 ---
 

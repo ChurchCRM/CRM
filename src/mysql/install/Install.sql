@@ -199,7 +199,8 @@ CREATE TABLE `event_types` (
 
 INSERT INTO `event_types` (`type_id`, `type_name`, `type_defstarttime`, `type_defrecurtype`, `type_defrecurDOW`, `type_defrecurDOM`, `type_defrecurDOY`, `type_active`) VALUES
   (1, 'Church Service', '10:30:00', 'weekly', 'Sunday', '', '2016-01-01', 1),
-  (2, 'Sunday School', '09:30:00', 'weekly', 'Sunday', '', '2016-01-01', 1);
+  (2, 'Sunday School', '09:30:00', 'weekly', 'Sunday', '', '2016-01-01', 1),
+  (3, 'Other', '00:00:00', 'none', 'Sunday', '', '2016-01-01', 1);
 
 -- --------------------------------------------------------
 
@@ -1428,11 +1429,15 @@ CREATE TABLE `email_log_eml` (
   `eml_Error`     text                  DEFAULT NULL,
   `eml_MessageID` varchar(255)          DEFAULT NULL,
   `eml_DateSent`  datetime              NOT NULL,
+  `eml_Batch`       varchar(32)         DEFAULT NULL,
+  `eml_Attempts`    tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `eml_NextAttempt` datetime            DEFAULT NULL,
   PRIMARY KEY (`eml_ID`),
   KEY `idx_eml_per_ID`   (`eml_per_ID`),
   KEY `idx_eml_fam_ID`   (`eml_fam_ID`),
   KEY `idx_eml_DateSent` (`eml_DateSent`),
-  KEY `idx_eml_Status`   (`eml_Status`)
+  KEY `idx_eml_Status`   (`eml_Status`),
+  KEY `idx_eml_Batch`    (`eml_Batch`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 update version_ver set ver_update_end = now();

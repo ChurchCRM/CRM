@@ -106,7 +106,7 @@
   },
   "current": {
     "versions": ["7.8.0"],
-    "scripts": [],
+    "scripts": ["/mysql/upgrade/7.8.1-email-queue.sql", "/mysql/upgrade/7.8.1-volunteer-default.sql"],
     "dbVersion": "7.8.1"
   }
 }

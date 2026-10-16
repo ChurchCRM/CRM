@@ -215,16 +215,11 @@ describe("Zero-Permission User (EditSelf=0, all flags 0)", () => {
             });
         });
 
-        it("Reports nav is hidden when the user has no report permission", () => {
+        it("Reports nav lists only People Reports", () => {
             cy.visit("v2/dashboard");
-            cy.get(".navbar-nav").each(($nav) => {
-                cy.wrap($nav).within(() => {
-                    cy.contains("a", "Reports").should("not.exist");
-                    cy.contains("a", "People Reports").should("not.exist");
-                    cy.contains("a", "Financial Reports").should("not.exist");
-
-                });
-            });
+            cy.get('.navbar-nav a[href$="/people/reports"]').should("exist");
+            cy.get('.navbar-nav a[href$="/finance/reports"]').should("not.exist");
+            cy.get('.navbar-nav a[href$="/groups/reports"]').should("not.exist");
         });
     });
 

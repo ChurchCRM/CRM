@@ -47,6 +47,9 @@ function getEmailDashboardMVC(Request $request, Response $response, array $args)
         'failedEmailCount' => AuthenticationManager::getCurrentUser()->isAdmin()
             ? (new EmailLogService())->getRecent(EmailLogService::STATUS_FAILED, 1, 1)['total']
             : 0,
+        'queuedEmailCount' => AuthenticationManager::getCurrentUser()->isAdmin()
+            ? (new EmailLogService())->getRecent(EmailLogService::STATUS_QUEUED, 1, 1)['total']
+            : 0,
     ];
 
     return $renderer->render($response, 'dashboard.php', $pageArgs);

@@ -1,15 +1,27 @@
 # ChurchCRM Docker release images
 
+This file is the release engineering reference. For running the images, see
+the [Docker installation guide](https://docs.churchcrm.io/installation/docker)
+and `docker/production/compose.yaml`.
+
 Stable releases publish `churchcrm/crm:<version>-php8-apache` and
 `churchcrm/crm:<version>-php8-fpm`. Only the release currently marked latest on
-GitHub updates `latest-php8-apache` / `latest-php8-fpm`. Prefer a version tag or
-image digest for production deployments. Re-running a build can replace a
-version tag; DockerHub tag immutability is a separate registry policy.
+GitHub updates `latest-php8-apache` / `latest-php8-fpm`, and `latest`, which is
+the Apache image. Prefer a version tag or image digest for production
+deployments. Re-running a build can replace a version tag; DockerHub tag
+immutability is a separate registry policy.
+
+Apache is the supported variant. The FPM tags are published, but they require a
+web server in front and ChurchCRM's routing depends on Apache's rewrite rules,
+so reproducing it elsewhere is the operator's responsibility. CI builds the FPM
+image but only smoke-tests it — no HTTP request ever reaches PHP-FPM — and no
+browser suite runs against it.
 
 ## Runtime and ports
 
-- Apache serves HTTP on **8080** and runs as `www-data` (UID/GID 33).
-  This changes the initial PR's production port 80. Test/dev stages retain 80.
+- Apache serves HTTP on **8080** and runs as `www-data` (UID/GID 33). The
+  test/dev stages retain 80. `EXPOSE 80` in the prod image is inherited from the
+  PHP base image and is not served.
 - FPM runs as UID/GID 33 and speaks **FastCGI on 9000**, not HTTP. Never publish
   9000 to an untrusted network. A separate web server must serve the matching
   static assets and forward PHP requests to FPM on the private container network.
@@ -22,23 +34,30 @@ To preview the Apache setup page locally:
 
 ```bash
 docker run --rm --cap-drop ALL --security-opt no-new-privileges \
-  -p 127.0.0.1:8080:8080 churchcrm/crm:latest-php8-apache
+  -p 127.0.0.1:8080:8080 churchcrm/crm:7.8.0-php8-apache
 ```
 
-This preview does not configure a database or persist application data. A real
-installation needs a reachable MariaDB/MySQL service, a configured
-`Include/Config.php`, persistent uploaded images, and backups. Place a TLS reverse
-proxy in front for remote access. Configure memory, CPU and PID limits according
-to deployment size.
+Replace the version with the one you are checking. This preview does not
+configure a database or persist application data — it only confirms the image
+boots and serves the setup page. For a real installation use
+`docker/production/compose.yaml`, which pairs the image with MariaDB, persistent
+photo volumes and health checks. Place a TLS reverse proxy in front for remote
+access.
 
-The files under `docker/examples/` illustrate alternative architectures; they
-are not working release-image recipes. In particular, the nginx example refers
-to an absent `nginx/default.conf` and needs an explicit static-asset deployment.
-Removing its shared volume without provisioning nginx's files will break it.
+The files under `docker/examples/` illustrate alternative architectures. They
+are **not** working release-image recipes: they build from local Dockerfiles
+rather than the published tags, and the nginx example's build context is wrong
+for the directory it lives in. Its nginx config at `docker/examples/nginx/
+default.conf` has two known defects — every `/Images/*` request returns 403
+because `deny all` is inherited into the allowlist block, and `/setup` without a
+trailing slash returns a JSON 404, which is where a fresh install first lands.
 An empty named volume normally receives image contents on first mount; a bind
 mount obscures the contents, and a reused named volume keeps stale application
 code across image upgrades. Do not persist the whole document root as an upgrade
 strategy. Keep nginx and FPM on the same application version.
+
+The FrankenPHP Dockerfile and example are unsupported: no image is published and
+no workflow builds them, so their base image can break without anything noticing.
 
 ## Writable files and upgrades
 
@@ -50,8 +69,23 @@ setup, upload, plugin and upgrade testing before it can become the default.
 Mount an existing production `Include/Config.php` read-only where possible, keep
 credentials out of images, and provision volume ownership for UID/GID 33.
 Use image replacement for container upgrades; back up the database, configuration
-and uploaded data first. A full persistence/restore acceptance test remains a
-prerequisite for a production deployment recipe.
+and uploaded data first.
+
+The persistence and restore behaviour has now been exercised against
+`7.8.0-php8-apache`, and `docker/production/compose.yaml` is the result. What was
+verified: the database and photo volumes survive `--force-recreate` and `down`
+followed by `up`; a `mariadb-dump --single-transaction` round trip restores into
+a fresh volume (all 59 tables are InnoDB); and re-running the setup wizard
+against a populated database is non-destructive, because the wizard route only
+writes the config file and the schema installer is gated on an empty database —
+a before/after fingerprint of the table list, row counts, person rows, admin
+password hash and schema version came back byte-identical.
+
+Two caveats remain. A cross-version upgrade has not been tested, since 7.8.0 is
+the first release with images and there is nothing newer to upgrade to. And
+`read_only: true` silently breaks the setup wizard: the route returns HTTP 200
+without checking whether `file_put_contents` succeeded, so the operator loops
+back to `/setup` with no error shown.
 
 ## Publishing
 

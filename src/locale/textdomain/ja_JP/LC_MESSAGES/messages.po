@@ -20048,10 +20048,6 @@ msgid "Email preview"
 msgstr "メールのプレビュー"
 
 #: 
-msgid "Email sending is disabled"
-msgstr "メール送信は無効です"
-
-#: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
 msgstr "メール送信が有効になっていません。送信する前に、SMTP設定を行ってメールを有効にしてください。"
 

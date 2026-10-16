@@ -4952,7 +4952,6 @@
   "Email non-attendees: %s": "Poslať e-mail neprítomným: %s",
   "Email not found": "E-mail sa nenašiel",
   "Email preview": "Náhľad e-mailu",
-  "Email sending is disabled": "Odosielanie e-mailov je vypnuté",
   "Email sending is not enabled. Configure SMTP settings and enable email before sending.": "Odosielanie e-mailov nie je zapnuté. Pred odoslaním nastavte SMTP a zapnite e-mail.",
   "Emails": "E-maily",
   "End time": "Čas ukončenia",

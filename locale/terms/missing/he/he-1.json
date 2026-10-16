@@ -1,0 +1,145 @@
+{
+  "A recurring event needs a last date, so it is back to {{date}}.": "",
+  "Add Everyone in Cart to {{ministry}}": "",
+  "Add Volunteer to {{ministry}}": "",
+  "Add the class's meetings as a recurring event with {{name}} as its class, then generate again.": "",
+  "Add them on the Calendar tab as a recurring event with {{name}} as its class.": "",
+  "Covered · {{more}} more welcome": "",
+  "Creates {{total}} events, every year on {{date}} from {{first}} to {{last}}": "",
+  "Creates {{total}} events, every {{day}} from {{first}} to {{last}}": "",
+  "Creates {{total}} events, on day {{day}} of each month from {{first}} to {{last}}": "",
+  "Default volunteer {{number}} for {{position}}": "",
+  "Default volunteers for {{position}}": "",
+  "Filling {{position}}": "",
+  "Full": "",
+  "Full · {{live}} of {{max}}": "",
+  "Headcount: {{total}}": "",
+  "Maximum allowed for {{position}}": "",
+  "Meetings of {{name}}": "",
+  "Minimum needed for {{position}}": "",
+  "Move them to {{className}}": "",
+  "Needs {{more}} more": "",
+  "New position: {{name}}": "",
+  "New recurring event for {{name}}": "",
+  "New recurring event titled {{title}}": "",
+  "No event was found between {{from}} and {{to}}.": "",
+  "No events on the calendar use {{name}} as their class between {{from}} and {{to}}.": "",
+  "No upcoming events titled {{title}} are on the calendar.": "",
+  "No {{type}} events between {{from}} and {{to}}.": "",
+  "No {{type}} events titled {{title}} between {{from}} and {{to}}.": "",
+  "Nobody is qualified for {{position}} yet": "",
+  "Not needed this time": "",
+  "Occurrences are created for events in the next week (through {{date}}).": "",
+  "Occurrences are created for events through {{date}}, when this schedule ends.": "",
+  "One event: {{title}}": "",
+  "Optional · up to {{max}} welcome": "",
+  "Optional · {{live}} of up to {{max}}": "",
+  "Plugin upgraded from %1$s to %2$s.": "",
+  "Select {{event}}": "",
+  "Select {{when}}": "",
+  "Substitute asked: {{name}}": "",
+  "Sunday School: {{name}}": "",
+  "Teachers to import: {{total}}": "",
+  "That is more than {{max}} events. Choose a shorter range.": "",
+  "This ministry's events titled {{title}}": "",
+  "Up to {{max}} welcome": "",
+  "Volunteer times must be whole minutes, at most {{max}} from the event": "",
+  "You are already helping that day as {{what}}.": "",
+  "already serving as {{position}}": "",
+  "last served {{date}}": "",
+  "{{live}} assigned, {{min}} needed, room for {{more}} more": "",
+  "{{live}} of up to {{max}}": "",
+  "{{live}} of {{max}}": "",
+  "{{live}} of {{min}}": "",
+  "{{live}} of {{min}}–{{max}}": "",
+  "{{ministry}} has no events between {{from}} and {{to}}.": "",
+  "{{ministry}} has no events titled {{title}} between {{from}} and {{to}}.": "",
+  "{{min}} to {{max}} needed": "",
+  "{{name}} (no longer qualified)": "",
+  "{{name}} (no upcoming meetings — add its meetings first)": "",
+  "{{name}} (no upcoming meetings)": "",
+  "{{name}} does not name the event it follows, so it has nothing to staff.": "",
+  "{{name}} ended on {{date}}, so there are no dates left to generate.": "",
+  "{{name}} has no upcoming meetings on the calendar, so this schedule has nothing to staff.": "",
+  "{{name}} is no longer qualified, so this place is left open on new occurrences.": "",
+  "{{name}} starts on {{date}}, after the dates generated now (through {{through}}).": "",
+  "{{pending}} not yet confirmed": "",
+  "{{position}}: Max is {{max}} but {{chosen}} default volunteers are chosen. Remove one or raise Max.": "",
+  "{{team}}: no staffing needs set": "",
+  "{{team}}: {{staffing}}": "",
+  "{{type}} events (no event chosen yet)": "",
+  "{{type}} events titled {{title}}": "",
+  "User must be a staff user": "",
+  "Enter a new password": "",
+  "%d queued": "",
+  "%s queued: %s": "",
+  "Could not delete the queue.": "",
+  "Delete Queue": "",
+  "Delete every queued message? They will not be sent. Queued messages: {{total}}": "",
+  "Each message is recorded in the person's email history.": "",
+  "Email batch not found. If it was still queued, an administrator deleted the queue and it will not be sent.": "",
+  "Failed to delete the email queue": "",
+  "Failed to queue the email": "",
+  "Follow it in the email history": "",
+  "Messages queued: {{total}}. They will be sent in the background.": "",
+  "Queued": "",
+  "Queued messages deleted: {{total}}": "",
+  "Sending": "",
+  "Sending was interrupted before the server answered.": "",
+  "Sending… {{done}} of {{total}}": "",
+  "Still queued, to be sent automatically: {{total}}": "",
+  "The queue was cleared. Messages that will not be sent: {{total}}": "",
+  "This email batch was queued by another user": "",
+  "Delete ({{count}})": {
+    "one": "",
+    "other": ""
+  },
+  "Delete events ({{count}})": {
+    "one": "",
+    "other": ""
+  },
+  "Delete {{count}} occurrences? Their assignments, the volunteers' responses, any substitutions and every queued reminder go with them. This cannot be undone.": {
+    "one": "",
+    "other": ""
+  },
+  "Occurrences are created for events in the next {{count}} weeks (through {{date}}).": {
+    "one": "",
+    "other": ""
+  },
+  "They finish {{count}} minutes after the event ends.": {
+    "one": "",
+    "other": ""
+  },
+  "They finish {{count}} minutes before the event ends.": {
+    "one": "",
+    "other": ""
+  },
+  "Volunteers start {{count}} minutes after the event starts.": {
+    "one": "",
+    "other": ""
+  },
+  "Volunteers start {{count}} minutes before the event starts.": {
+    "one": "",
+    "other": ""
+  },
+  "{{count}} needed": {
+    "one": "",
+    "other": ""
+  },
+  "{{count}} occurrences deleted": {
+    "one": "",
+    "other": ""
+  },
+  "{{failed}} of {{count}} occurrences could not be deleted": {
+    "one": "",
+    "other": ""
+  },
+  "{{name}} ({{count}} upcoming)": {
+    "one": "",
+    "other": ""
+  },
+  "{{title}} ({{count}} upcoming)": {
+    "one": "",
+    "other": ""
+  }
+}

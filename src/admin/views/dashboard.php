@@ -51,23 +51,23 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                 </h4>
                 
                 <div class="card border-0 mb-3">
-                    <div class="card-body bg-white">
+                    <div class="card-body bg-surface">
                         <h6 class="text-danger mb-2"><strong><?= gettext('Error') ?>:</strong></h6>
-                        <p class="mb-0 text-dark"><strong><?= $urlError['message'] ?></strong></p>
+                        <p class="mb-0 text-body"><strong><?= $urlError['message'] ?></strong></p>
                     </div>
                 </div>
 
                 <div class="mb-3">
                     <h6 class="mb-2"><?= gettext('Current $URL[0] value') ?>:</h6>
-                    <div class="p-3 bg-dark rounded" style="font-family: 'Courier New', monospace; word-break: break-all;">
-                        <code class="text-warning" style="font-size: 1.1em;"><?= InputUtils::escapeHTML($urlError['url']) ?></code>
+                    <div class="p-3 bg-dark rounded admin-url-box">
+                        <code class="text-warning admin-code-lg"><?= InputUtils::escapeHTML($urlError['url']) ?></code>
                     </div>
                 </div>
 
                 <div class="card border-0 mb-3">
-                    <div class="card-body bg-white">
-                        <h6 class="text-dark mb-3"><strong><?= gettext('How to Fix') ?>:</strong></h6>
-                        <ol class="mb-2 ps-3 text-dark">
+                    <div class="card-body bg-surface">
+                        <h6 class="text-body mb-3"><strong><?= gettext('How to Fix') ?>:</strong></h6>
+                        <ol class="mb-2 ps-3 text-body">
                             <li class="mb-2"><?= gettext('Connect to your server via SSH, FTP, or your hosting control panel') ?></li>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             <li class="mb-2"><?= gettext('Find the line') ?>: <code>$URL[0] = '...';</code></li>
@@ -87,17 +87,17 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                     <div class="card-header">
                         <h6 class="mb-0"><i class="fa-solid fa-circle-check me-2"></i><?= gettext('Valid Examples') ?>:</h6>
                     </div>
-                    <div class="card-body bg-white">
+                    <div class="card-body bg-surface">
                         <div class="mb-2">
                             <small class="text-body-secondary"><?= gettext('Local development') ?>:</small><br>
-                            <code class="text-success" style="font-size: 1em;">$URL[0] = 'http://localhost/';</code>
+                            <code class="text-success admin-code-inherit">$URL[0] = 'http://localhost/';</code>
                         </div>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            <code class="text-success" style="font-size: 1em;">$URL[0] = 'https://www.yourdomain.com/churchcrm/';</code>
+                            <code class="text-success admin-code-inherit">$URL[0] = 'https://www.yourdomain.com/churchcrm/';</code>
                         </div>
                         <div>
                             <small class="text-body-secondary"><?= gettext('Custom port') ?>:</small><br>
-                            <code class="text-success" style="font-size: 1em;">$URL[0] = 'https://www.yourdomain.com:8080/app/';</code>
+                            <code class="text-success admin-code-inherit">$URL[0] = 'https://www.yourdomain.com:8080/app/';</code>
                         </div>
                     </div>
                 </div>
@@ -206,7 +206,7 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                 </div>
                 <div class="card-body p-0">
                     <!-- Progress bar -->
-                    <div class="progress" style="height: 4px; border-radius: 0;">
+                    <div class="progress admin-progress-thin">
                         <div class="progress-bar bg-success" role="progressbar"
                              style="width: <?= round(($completedSteps / $totalSteps) * 100) ?>%"
                              aria-valuenow="<?= round(($completedSteps / $totalSteps) * 100) ?>"
@@ -217,7 +217,7 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                         <?php foreach ($setupChecklist as $step): ?>
                         <li class="list-group-item px-3 py-2">
                             <div class="d-flex align-items-center">
-                                <div class="me-3" style="width: 1.5rem; text-align: center; flex-shrink: 0;">
+                                <div class="me-3 admin-step-icon-box">
                                     <?php if ($step['done']): ?>
                                         <i class="fa-solid fa-circle-check text-success"></i>
                                     <?php else: ?>
@@ -225,7 +225,7 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                                     <?php endif; ?>
                                 </div>
                                 <div class="flex-grow-1 <?= $step['done'] ? 'text-body-secondary' : '' ?>">
-                                    <span class="fw-semibold <?= $step['done'] ? '' : 'text-dark' ?>" style="font-size: 0.875rem;">
+                                    <span class="fw-semibold <?= $step['done'] ? '' : 'text-body' ?> fs-4">
                                         <?= $step['label'] ?>
                                     </span>
                                     <?php if (!$step['done']): ?>

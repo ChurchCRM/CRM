@@ -392,6 +392,13 @@ describe("Member Portal — #9869 scenario 2, \"a team leader on a member login\
                 .first()
                 .click();
 
+            // The box is disabled while the grant is saved and enabled again once the
+            // server confirms it, so wait for that before reading the database.
+            cy.get("#volunteerQualificationsTable tbody .volunteer-qual-toggle")
+                .first()
+                .should("be.checked")
+                .and("not.be.disabled");
+
             // The tick is a write; read it back from the database rather than the cell
             // it was made in. The position is this team's only one, so any row against
             // it is the one that was just granted.

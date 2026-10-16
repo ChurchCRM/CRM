@@ -4900,7 +4900,6 @@
   "Email non-attendees: %s": "अनुपस्थित लोगों को ईमेल करें: %s",
   "Email not found": "ईमेल नहीं मिला",
   "Email preview": "ईमेल पूर्वावलोकन",
-  "Email sending is disabled": "ईमेल भेजना अक्षम है",
   "Email sending is not enabled. Configure SMTP settings and enable email before sending.": "ईमेल भेजना सक्षम नहीं है। भेजने से पहले SMTP सेटिंग कॉन्फ़िगर करें और ईमेल सक्षम करें।",
   "Emails": "ईमेल",
   "End time": "समाप्ति समय",

@@ -172,6 +172,68 @@ describe("Event Editor page", () => {
         });
     });
 
+    describe("in a browser on neither UTC nor the church's time zone", () => {
+        before(() => {
+            cy.useBrowserTimeZone("America/Los_Angeles");
+        });
+
+        after(() => {
+            cy.useHostTimeZone();
+        });
+
+        it("saves an existing event without moving its start or end", () => {
+            const title = `Unchanged Times ${Date.now()}`;
+            createdEventTitles.push(title);
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/events",
+                {
+                    Title: title,
+                    Type: 1,
+                    Start: "2030-01-15T19:00:00",
+                    End: "2030-01-15T20:00:00",
+                    PinnedCalendars: [1],
+                },
+                200,
+            );
+            cy.makePrivateAdminAPICall("GET", "/api/events", null, 200).then((resp) => {
+                const eventId = resp.body.Events.find((e) => e.Title === title).Id;
+
+                cy.visit(`/event/editor/${eventId}`);
+                cy.get("#eventStartDate").should("have.value", "2030-01-15T19:00");
+                cy.get("#eventEndDate").should("have.value", "2030-01-15T20:00");
+                cy.get("#event-editor-save").should("not.be.disabled").click();
+                cy.url().should("not.include", "/event/editor");
+
+                cy.makePrivateAdminAPICall("GET", `/api/events/${eventId}`, null, 200)
+                    .its("body")
+                    .should((event) => {
+                        expect(event.Start).to.match(/^2030-01-15 19:00:00/);
+                        expect(event.End).to.match(/^2030-01-15 20:00:00/);
+                    });
+            });
+        });
+
+        it("sends a new event's default start and end as shown", () => {
+            cy.intercept("POST", "**/api/events").as("createEvent");
+
+            visitNewEditorForFirstType();
+
+            const title = `Default Times Page ${Date.now()}`;
+            createdEventTitles.push(title);
+            cy.get("#event-title-input").type(title);
+
+            cy.get("#eventStartDate").invoke("val").as("start");
+            cy.get("#eventEndDate").invoke("val").as("end");
+            cy.get("#event-editor-save").click();
+
+            cy.wait("@createEvent").then(function ({ request }) {
+                expect(request.body.Start).to.eq(`${this.start}:00`);
+                expect(request.body.End).to.eq(`${this.end}:00`);
+            });
+        });
+    });
+
     it("editing an existing event pre-fills Title and Type", () => {
         // Most installs already have a calendar and at least one event from
         // the seed data. Just use the first event returned from /api/events.
