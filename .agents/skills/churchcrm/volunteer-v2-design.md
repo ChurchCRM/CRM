@@ -2842,6 +2842,11 @@ the rollout spec is under `.../admin/`), `admin.volunteer-v2.<area>.spec.js` (`u
 `cypress/data/seed.sql` carries no volunteer rows. **V2 specs create everything they need through the API and clean
 up after themselves.**
 
+V2 sample data lives in the demo import instead (#10354): `src/admin/demo/volunteers.json` builds
+Worship, Hospitality and Children's Ministry through the services, with the events option, and
+records every message it would queue as `skipped` (`README-events.md`).
+`cypress/e2e/new-system/02-demo-import.spec.js` covers it.
+
 Reusable seed objects (verified in `seed.sql`):
 
 | Object | Id | Use |
