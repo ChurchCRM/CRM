@@ -121,9 +121,15 @@
         '<div class="demo-import-count-line">' +
         i18next.t("Current database") +
         ": " +
-        "<strong>" + personCount + "</strong> " + i18next.t("people") +
+        "<strong>" +
+        personCount +
+        "</strong> " +
+        i18next.t("people") +
         ", " +
-        "<strong>" + familyCount + "</strong> " + i18next.t("families") +
+        "<strong>" +
+        familyCount +
+        "</strong> " +
+        i18next.t("families") +
         "</div>";
     }
 
