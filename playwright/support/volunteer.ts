@@ -5,10 +5,11 @@ import { BASE_URL } from './env';
 import { humanClick, humanSelect } from './human';
 
 /**
- * Volunteer Management v2 fixture for the volunteer captures. V2 is off on a
- * fresh install, so the seed turns it on in Admin → Ministry Settings and
- * builds a "Hospitality" ministry through the volunteer API; removeVolunteerSeed()
- * takes both back out, because every workflow shares one database.
+ * Volunteer Management v2 fixture for the volunteer captures. The demo import
+ * turns V2 on and brings a "Hospitality" ministry of its own; the seed replaces it
+ * with this one, built through the volunteer API, because the recording changes its
+ * staffing and the screenshots need it as seeded. removeVolunteerSeed() takes it
+ * back out, because every workflow shares one database.
  *
  * Volunteers are demo people looked up by their demo email, from families no
  * other spec uses. Emily Evans gets a self-service login for the Member Portal.
@@ -325,7 +326,7 @@ export async function seedVolunteerFixture(browser: Browser): Promise<VolunteerS
   }
 }
 
-/** Removes the ministry, its events and Emily's login, and turns V2 back off. */
+/** Removes the ministry, its events and Emily's login. V2 stays on, as the demo import left it. */
 export async function removeVolunteerSeed(browser: Browser): Promise<void> {
   const context = await browser.newContext({ baseURL: BASE_URL, storageState: STORAGE_STATE_PATH });
   const page = await context.newPage();
@@ -333,7 +334,6 @@ export async function removeVolunteerSeed(browser: Browser): Promise<void> {
     await setVolunteerVersion(page, 'v2');
     await deleteMemberLogin(page);
     await deleteHospitality(page);
-    await setVolunteerVersion(page, 'v1');
   } finally {
     seed = null;
     memberLoginCreated = false;
