@@ -174,10 +174,13 @@ describe("CSV Export Page", () => {
 
     it("exports each person's grade name in the Grade column (#10189)", () => {
         cy.get("#EnterDate2").invoke("val").should("match", /^\d{4}-\d{2}-\d{2}$/).as("serverToday", { type: "static" });
-        cy.dbQuery(
-            "INSERT INTO person_per (per_FirstName, per_LastName, per_DateEntered, per_grd_ID) VALUES ('Greta', 'CsvGrade', NOW(), 8)",
-        ).then((result) => {
-            const personId = result.rows.insertId;
+        cy.visit("/PersonEditor.php");
+        cy.get("#FirstName").type("Greta");
+        cy.get("#LastName").type("CsvGrade");
+        cy.get("#Grade").select("8");
+        cy.get("button[name='PersonSubmit']").click();
+        cy.url().should("match", /\/people\/view\/\d+/).then((url) => {
+            const personId = Number(url.match(/\/people\/view\/(\d+)/)[1]);
             cy.get("@serverToday").then((today) => cy.request({
                 method: "POST",
                 url: "/CSVCreateFile.php",

@@ -396,10 +396,17 @@ describe(
             cy.get("#execute-import").click();
             cy.get("#summary-card").should("be.visible");
 
-            cy.dbQuery(
-                "SELECT per_FirstName AS firstName, per_grd_ID AS grade FROM person_per WHERE per_LastName = 'GradeImportTest' ORDER BY per_ID DESC LIMIT 2",
-            ).then((result) => {
-                const grades = Object.fromEntries(result.rows.map((row) => [row.firstName, row.grade]));
+            const grades = {};
+            cy.makePrivateAdminAPICall("GET", "/api/persons/search/GradeImportTest", null, 200).then((resp) => {
+                resp.body
+                    .filter((hit) => hit.objid)
+                    .forEach((hit) => {
+                        cy.makePrivateAdminAPICall("GET", `/api/person/${hit.objid}`, null, 200).then(({ body }) => {
+                            grades[body.FirstName] = body.GradeId;
+                        });
+                    });
+            });
+            cy.then(() => {
                 expect(grades.Gary).to.eq(8);
                 expect(grades.Gwen).to.be.null;
             });

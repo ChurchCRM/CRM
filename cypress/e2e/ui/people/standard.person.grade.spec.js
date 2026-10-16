@@ -6,20 +6,20 @@ describe("Standard person grade", () => {
     let familyId;
     let personId;
 
-    const gradeOf = () =>
-        cy.dbQuery("SELECT per_grd_ID AS grade FROM person_per WHERE per_ID = ?", [personId]).then((result) => result.rows[0].grade);
+    const gradeOf = () => cy.request(`/api/person/${personId}`).its("body.GradeId");
 
     before(() => {
-        cy.dbQuery("INSERT INTO family_fam (fam_Name, fam_DateEntered) VALUES ('Gradefam', NOW())").then((result) => {
-            familyId = result.rows.insertId;
-            cy.dbQuery("INSERT INTO family_custom (fam_ID) VALUES (?)", [familyId]);
-            cy.dbQuery(
-                "INSERT INTO person_per (per_FirstName, per_LastName, per_fam_ID, per_fmr_ID, per_Gender, per_DateEntered) VALUES ('Gina', 'Gradefam', ?, 3, 2, NOW())",
-                [familyId],
-            ).then((personResult) => {
-                personId = personResult.rows.insertId;
-                cy.dbQuery("INSERT INTO person_custom (per_ID) VALUES (?)", [personId]);
-            });
+        cy.setupStandardSession();
+        cy.visit("/FamilyEditor.php");
+        cy.get("#FamilyName").type("Gradefam");
+        cy.get('input[name="FirstName1"]').type("Gina");
+        cy.get('button[name="FamilySubmit"]').click();
+        cy.location("pathname").should("include", "/people/family/");
+        cy.location("pathname").then((pathname) => {
+            familyId = Number(pathname.split("/").pop());
+        });
+        cy.request("/api/persons/search/Gradefam").then((response) => {
+            personId = response.body.find((hit) => hit.objid).objid;
         });
     });
 
@@ -40,7 +40,10 @@ describe("Standard person grade", () => {
     });
 
     it("filters the People list by grade", () => {
-        cy.dbQuery("UPDATE person_per SET per_grd_ID = 6 WHERE per_ID = ?", [personId]);
+        cy.visit(`/PersonEditor.php?PersonID=${personId}`);
+        cy.get("#Grade").select("6");
+        cy.get("button[name='PersonSubmit']").click();
+        cy.url().should("include", `/people/view/${personId}`);
         cy.visit("/people/list?Grade=6");
         cy.get("select.filter-Grade").invoke("val").should("deep.equal", ["6"]);
         cy.get("#members tbody").should("contain", "Gina Gradefam");

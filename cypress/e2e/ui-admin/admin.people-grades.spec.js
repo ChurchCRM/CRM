@@ -6,27 +6,35 @@ describe("School grades", () => {
     const SETTINGS = ["iGradePromotionMonth", "iGradePromotionDay", "sLastGradePromotionAt", "sLastGradePromotionResult", "sGradePromotionSetDate"];
     const saved = {};
     const people = {};
-    let membershipClassId;
 
-    const gradeOf = (key) =>
-        cy.dbQuery("SELECT per_grd_ID AS grade FROM person_per WHERE per_ID = ?", [people[key]]).then((result) => result.rows[0].grade);
+    const gradeOf = (key) => cy.request(`/api/person/${people[key]}`).its("body.GradeId");
     const reportRows = () => cy.get("#reportResults tbody tr").filter((_, row) => row.innerText.includes("Gradeling"));
+    const editGrade = (level) => {
+        cy.get("#Grade").select(String(level));
+        cy.get("button[name='PersonSubmit']").click();
+        cy.url().should("match", /\/people\/view\/\d+/);
+    };
     const setGrades = (levels) =>
-        Object.entries(levels).forEach(([key, level]) =>
-            cy.dbQuery("UPDATE person_per SET per_grd_ID = ? WHERE per_ID = ?", [level, people[key]]),
-        );
+        Object.entries(levels).forEach(([key, level]) => {
+            cy.visit(`/PersonEditor.php?PersonID=${people[key]}`);
+            editGrade(level);
+        });
 
     before(() => {
         SETTINGS.forEach((name) => cy.getSystemConfig(name).then((value) => (saved[name] = value)));
+        cy.setupAdminSession();
         [
             ["kinder", "Kim", 5],
             ["second", "Sam", 7],
             ["seventh", "Sev", 12],
         ].forEach(([key, firstName, level]) => {
-            cy.dbQuery(
-                "INSERT INTO person_per (per_FirstName, per_LastName, per_DateEntered, per_grd_ID) VALUES (?, 'Gradeling', NOW(), ?)",
-                [firstName, level],
-            ).then((result) => (people[key] = result.rows.insertId));
+            cy.visit("/PersonEditor.php");
+            cy.get("#FirstName").type(firstName);
+            cy.get("#LastName").type("Gradeling");
+            editGrade(level);
+            cy.url().then((url) => {
+                people[key] = Number(url.match(/\/people\/view\/(\d+)/)[1]);
+            });
         });
     });
 
@@ -35,12 +43,7 @@ describe("School grades", () => {
             cy.makePrivateAdminAPICall("POST", "/admin/api/grades/presets/us", { expectedState: resp.body.state }, 200),
         );
         SETTINGS.forEach((name) => cy.restoreSystemConfig(name, saved[name]));
-        cy.then(() => {
-            if (membershipClassId) {
-                cy.dbQuery("DELETE FROM person2group2role_p2g2r WHERE p2g2r_per_ID = ?", [people.second]);
-            }
-            cy.cleanupPeople(Object.values(people));
-        });
+        cy.then(() => cy.cleanupPeople(Object.values(people)));
     });
 
     beforeEach(() => cy.setupAdminSession());
@@ -60,7 +63,7 @@ describe("School grades", () => {
     });
 
     it("Promote Now asks first, then moves everyone up one grade", () => {
-        cy.dbQuery("UPDATE person_per SET per_grd_ID = 5 WHERE per_ID = ?", [people.kinder]);
+        setGrades({ kinder: 5 });
         cy.visit("/admin/people");
         cy.get("#gradePromoteNow").click();
         cy.get(".bootbox").should("be.visible").and("contain", "Moving up").and("contain", "Finishing the last grade (grade will be cleared)");
@@ -128,15 +131,10 @@ describe("School grades", () => {
     });
 
     it("the Sunday School class roster shows each student's grade", () => {
-        cy.dbQuery(
-            `SELECT g.grp_ID AS classId, l.lst_OptionID AS studentRole FROM group_grp g
-             JOIN list_lst l ON l.lst_ID = g.grp_RoleListID AND l.lst_OptionName = 'Student'
-             WHERE g.grp_Type = 4 ORDER BY g.grp_ID LIMIT 1`,
-        ).then((result) => {
-            const { classId, studentRole } = result.rows[0];
-            membershipClassId = classId;
-            setGrades({ second: 7 });
-            cy.dbQuery("INSERT INTO person2group2role_p2g2r (p2g2r_per_ID, p2g2r_grp_ID, p2g2r_rle_ID) VALUES (?, ?, ?)", [people.second, classId, studentRole]);
+        setGrades({ second: 7 });
+        cy.request("/api/groups/").then((response) => {
+            const classId = response.body.find((group) => group.Type === 4).Id;
+            cy.makePrivateAdminAPICall("POST", `/api/groups/${classId}/addperson/${people.second}`, {}, 200);
             cy.visit(`/groups/sundayschool/class/${classId}`);
             cy.get("#sundayschool thead th").eq(1).should("contain", "Grade");
             cy.get(`#sundayschool tr[data-person-id='${people.second}'] td`).eq(1).should("have.text", "2nd");

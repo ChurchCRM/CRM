@@ -1,10 +1,10 @@
 /// <reference types="cypress" />
 
 // School grades (#10189). The seed holds the US grades at list 6, option ID = level:
-// Pre-K 4, Kindergarten 5, 1st 6 ... 12th 17.
+// Pre-K 4, Kindergarten 5, 1st 6 ... 12th 17. People are created and graded in the
+// person editor and read back through the API.
 describe("API Private Admin - School grades", () => {
     const GRADES_LIST = 6;
-    const SCHEDULED_TASK = -3;
     const SETTINGS = ["iGradePromotionMonth", "iGradePromotionDay", "sLastGradePromotionAt", "sLastGradePromotionResult", "sGradePromotionSetDate"];
     const saved = {};
     const people = {};
@@ -24,14 +24,35 @@ describe("API Private Admin - School grades", () => {
             cy.makePrivateAdminAPICall("POST", `/admin/api/grades/presets/${key}`, { expectedState: plan.state }, expectedStatus),
         );
 
-    const setGrade = (key, level) =>
-        cy.dbQuery("UPDATE person_per SET per_grd_ID = ? WHERE per_ID = ?", [level, people[key]]);
-    const gradeOf = (key) =>
-        cy.dbQuery("SELECT per_grd_ID AS grade FROM person_per WHERE per_ID = ?", [people[key]]).then((result) => result.rows[0].grade);
+    const createPerson = (key, level, deceased = false) => {
+        cy.visit("/PersonEditor.php");
+        cy.get("#FirstName").type("Cypress");
+        cy.get("#LastName").type(`Grade ${key}`);
+        if (level !== null) {
+            cy.get("#Grade").select(String(level));
+        }
+        if (deceased) {
+            cy.get("#IsDeceased").check();
+            cy.get("#DateDeceased").clear().type("2020-01-01");
+        }
+        cy.get("button[name='PersonSubmit']").click();
+        cy.url()
+            .should("match", /\/people\/view\/\d+/)
+            .then((url) => {
+                people[key] = Number(url.match(/\/people\/view\/(\d+)/)[1]);
+            });
+    };
+    const setGrade = (key, level) => {
+        cy.visit(`/PersonEditor.php?PersonID=${people[key]}`);
+        cy.get("#Grade").select(level === null ? "" : String(level));
+        cy.get("button[name='PersonSubmit']").click();
+        cy.url().should("include", `/people/view/${people[key]}`);
+    };
+    const gradeOf = (key) => cy.makePrivateAdminAPICall("GET", `/api/person/${people[key]}`, null, 200).its("body.GradeId");
     const gradeNotes = (key) =>
         cy
-            .dbQuery("SELECT nte_Text AS text, nte_EnteredBy AS author FROM note_nte WHERE nte_per_ID = ? AND nte_Type = 'grade' ORDER BY nte_ID", [people[key]])
-            .then((result) => result.rows);
+            .makePrivateAdminAPICall("GET", `/api/timeline/person/${people[key]}`, null, 200)
+            .then((resp) => resp.body.timeline.filter((item) => item.type === "grade"));
 
     const today = () => {
         const parts = new Intl.DateTimeFormat("en-CA", { timeZone, year: "numeric", month: "numeric", day: "numeric" }).formatToParts(new Date());
@@ -42,18 +63,14 @@ describe("API Private Admin - School grades", () => {
     before(() => {
         SETTINGS.forEach((name) => cy.getSystemConfig(name).then((value) => (saved[name] = value)));
         cy.getSystemConfig("sTimeZone").then((value) => (timeZone = value || "America/Detroit"));
-        [
-            ["first", 6, null],
-            ["last", 17, null],
-            ["deceased", 6, "2020-01-01"],
-            ["none", null, null],
-        ].forEach(([key, level, deceased]) => {
-            cy.dbQuery(
-                "INSERT INTO person_per (per_FirstName, per_LastName, per_DateEntered, per_grd_ID, per_DateDeceased) VALUES ('Cypress', ?, NOW(), ?, ?)",
-                [`Grade ${key}`, level, deceased],
-            ).then((result) => (people[key] = result.rows.insertId));
-        });
+        cy.setupAdminSession();
+        createPerson("first", 6);
+        createPerson("last", 17);
+        createPerson("deceased", 6, true);
+        createPerson("none", null);
     });
+
+    beforeEach(() => cy.setupAdminSession());
 
     after(() => {
         applyPreset("us");
@@ -83,10 +100,10 @@ describe("API Private Admin - School grades", () => {
         gradeOf("deceased").should("eq", 6);
         gradeOf("none").should("be.null");
         gradeNotes("first").then((notes) => {
-            expect(notes.at(-1).text).to.eq("Grade changed from 1st to 2nd by the yearly promotion");
-            expect(notes.at(-1).author).to.eq(1);
+            expect(notes[0].text).to.eq("Grade changed from 1st to 2nd by the yearly promotion");
+            expect(notes[0].header).to.contain("Church Admin");
         });
-        gradeNotes("last").then((notes) => expect(notes.at(-1).text).to.eq("Finished 12th, so the yearly promotion cleared the grade"));
+        gradeNotes("last").then((notes) => expect(notes[0].text).to.eq("Finished 12th, so the yearly promotion cleared the grade"));
         gradeNotes("deceased").should("have.length", 0);
     });
 
@@ -108,7 +125,7 @@ describe("API Private Admin - School grades", () => {
 
         runTimerJobs();
         gradeOf("first").should("eq", 7);
-        gradeNotes("first").then((notes) => expect(notes.at(-1).author).to.eq(SCHEDULED_TASK));
+        gradeNotes("first").then((notes) => expect(notes[0].header).to.contain("Scheduled Task"));
         status().its("lastResult.trigger").should("eq", "automatic");
 
         runTimerJobs();
@@ -195,7 +212,7 @@ describe("API Private Admin - School grades", () => {
         });
 
         gradeOf("none").should("be.null");
-        gradeNotes("none").then((notes) => expect(notes.at(-1).text).to.eq("Grade Nursery cleared when the grade names changed to United States"));
+        gradeNotes("none").then((notes) => expect(notes[0].text).to.eq("Grade Nursery cleared when the grade names changed to United States"));
         gradeOptions().then((options) => {
             expect(options[0].optionName).to.eq("Pre-K");
             expect(options.at(-1)).to.include({ optionId: customId, optionName: "Cypress College" });
@@ -220,7 +237,8 @@ describe("API Private Admin - School grades", () => {
 
     it("clears a deleted grade from the people who had it", () => {
         cy.makePrivateAdminAPICall("POST", `/admin/api/options/${GRADES_LIST}`, { name: `Cypress Temp ${Date.now()}` }, 200).then((resp) => {
-            cy.dbQuery("UPDATE person_per SET per_grd_ID = ? WHERE per_ID = ?", [resp.body.optionId, people.none]);
+            setGrade("none", resp.body.optionId);
+            gradeOf("none").should("eq", resp.body.optionId);
             cy.makePrivateAdminAPICall("DELETE", `/admin/api/options/${GRADES_LIST}/${resp.body.optionId}`, null, 200);
         });
         gradeOf("none").should("be.null");
