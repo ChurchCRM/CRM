@@ -14243,10 +14243,6 @@ msgid "Open in New Tab"
 msgstr "Abrir em nova aba"
 
 #: 
-msgid "Open in new tab"
-msgstr "Abrir em nova aba"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Abra seu aplicativo autenticador e escaneie este código QR"
 

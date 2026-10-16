@@ -14276,10 +14276,6 @@ msgid "Open in New Tab"
 msgstr "Ava uuel vahekaardil"
 
 #: 
-msgid "Open in new tab"
-msgstr "Ava uuel vahelehel"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Avage autentimisrakendus ja skannige see QR-kood"
 

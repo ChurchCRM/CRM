@@ -14347,10 +14347,6 @@ msgid "Open in New Tab"
 msgstr "Åpne i ny fane"
 
 #: 
-msgid "Open in new tab"
-msgstr "Åpne i ny fane"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Åpne autentiseringsappen din og skann denne QR-koden"
 

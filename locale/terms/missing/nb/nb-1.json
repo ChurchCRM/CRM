@@ -90,6 +90,11 @@
   "Still queued, to be sent automatically: {{total}}": "",
   "The queue was cleared. Messages that will not be sent: {{total}}": "",
   "This email batch was queued by another user": "",
+  "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved.": "",
+  "Importing demo data...": "",
+  "Please do not refresh or navigate away": "",
+  "Skip to main content": "",
+  "This will add sample families, people, and groups to your database.": "",
   "Delete ({{count}})": {
     "one": "",
     "other": ""

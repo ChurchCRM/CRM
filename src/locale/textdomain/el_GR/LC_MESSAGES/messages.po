@@ -14277,10 +14277,6 @@ msgid "Open in New Tab"
 msgstr "Άνοιγμα σε νέα καρτέλα"
 
 #: 
-msgid "Open in new tab"
-msgstr "Άνοιγμα σε νέα καρτέλα"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Ανοίξτε την εφαρμογή ελέγχου ταυτότητας και σαρώστε αυτόν τον κωδικό QR"
 

@@ -14273,10 +14273,6 @@ msgid "Open in New Tab"
 msgstr "Fungua kwenye Tabo Mpya"
 
 #: 
-msgid "Open in new tab"
-msgstr "Fungua katika kichupo kipya"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Fungua programu yako ya uthibitishaji na upige picha msimbo huu wa QR"
 

@@ -14244,10 +14244,6 @@ msgid "Open in New Tab"
 msgstr "เปิดในแท็บใหม่"
 
 #: 
-msgid "Open in new tab"
-msgstr "เปิดในแท็บใหม่"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "เปิดแอปตรวจสอบความถูกต้องและสแกนรหัส QR นี้"
 

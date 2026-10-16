@@ -14275,10 +14275,6 @@ msgid "Open in New Tab"
 msgstr "Otevřít v nové záložce"
 
 #: 
-msgid "Open in new tab"
-msgstr "Otevřít na nové kartě"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Otevřete ověřovací aplikaci a naskenujte tento QR kód"
 

@@ -14285,10 +14285,6 @@ msgid "Open in New Tab"
 msgstr "በአዲስ ታብ ክፈት"
 
 #: 
-msgid "Open in new tab"
-msgstr "በአዲስ ትር ክፈት"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "ማረጋገጫ ትግበራዎን ክፈቱ እና ይህን QR ኮድ ቃኙ"
 

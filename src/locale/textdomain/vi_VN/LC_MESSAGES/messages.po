@@ -14271,10 +14271,6 @@ msgid "Open in New Tab"
 msgstr "Mở trong thẻ mới"
 
 #: 
-msgid "Open in new tab"
-msgstr "Mở trong tab mới"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Mở ứng dụng xác thực và quét mã QR này"
 

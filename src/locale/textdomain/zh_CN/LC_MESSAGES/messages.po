@@ -14336,10 +14336,6 @@ msgid "Open in New Tab"
 msgstr "在新标签页中打开"
 
 #: 
-msgid "Open in new tab"
-msgstr "在新标签页中打开"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "打开您的验证器应用并扫描此QR码"
 
