@@ -25,9 +25,7 @@ $isMailChimpActive = PluginManager::isPluginActive('mailchimp');
                class="gs-card gs-card--green"
                data-has-existing-data="<?= !empty($hasExistingData) ? 'true' : 'false' ?>"
                data-person-count="<?= (int)($personCount ?? 0) ?>"
-               data-family-count="<?= (int)($familyCount ?? 0) ?>"
-               data-person-list-url="<?= SystemURLs::getRootPath() ?>/people/list"
-               data-family-list-url="<?= SystemURLs::getRootPath() ?>/family/">
+               data-family-count="<?= (int)($familyCount ?? 0) ?>">
                 <div class="gs-card-icon">
                     <i class="fa-solid fa-flask"></i>
                 </div>

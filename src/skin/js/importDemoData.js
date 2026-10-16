@@ -10,15 +10,15 @@
     if ($("#demoImportConfirmOverlay").length === 0) {
       $("body").append(`
         <div id="demoImportConfirmOverlay" class="demo-import-overlay confirm">
-          <div class="demo-import-confirm-modal">
+          <div class="demo-import-confirm-modal" role="dialog" aria-modal="true" aria-labelledby="demoImportTitle">
             <div class="demo-import-confirm-content">
-              <h2 class="mb-4">
+              <h2 class="mb-4" id="demoImportTitle">
                 <i class="fa fa-users me-2 text-success"></i>
                 ${i18next.t("Import Demo Data")}
               </h2>
               
               <div class="alert alert-info mb-4">
-                <strong>This will add sample families, people, and groups to your database.</strong>
+                <strong>${i18next.t("This will add sample families, people, and groups to your database.")}</strong>
               </div>
 
               <div class="demo-import-options mb-4">
@@ -45,7 +45,7 @@
 
               <div class="demo-import-instructions mb-4">
                 <h4 class="mb-3">${i18next.t("Need to remove this data later?")}</h4>
-                <p>After importing, you can visit the <strong>Admin Dashboard</strong> and click the <strong>Reset Database</strong> button to clear all data and start fresh. Your application configuration will be preserved.</p>
+                <p>${i18next.t("After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved.")}</p>
               </div>
 
               <div class="demo-import-buttons">
@@ -72,10 +72,10 @@
         <div id="demoImportSpinnerOverlay" class="demo-import-overlay spinner">
           <div class="demo-import-spinner">
             <div class="spinner-border text-primary mb-3" role="status">
-              <span class="visually-hidden">Loading...</span>
+              <span class="visually-hidden">${i18next.t("Loading...")}</span>
             </div>
-            <h3 class="text-white mb-0">Importing demo data...</h3>
-            <p class="text-white-50 mt-2">Please do not refresh or navigate away</p>
+            <h3 class="text-white mb-0">${i18next.t("Importing demo data...")}</h3>
+            <p class="text-white-50 mt-2">${i18next.t("Please do not refresh or navigate away")}</p>
           </div>
         </div>
       `);
@@ -86,6 +86,7 @@
     ensureConfirmOverlay();
     $("body").addClass("demo-import-open");
     $("#demoImportConfirmOverlay").addClass("show");
+    $("#demoImportCancelBtn").trigger("focus");
   }
 
   function hideConfirmOverlay() {
@@ -111,29 +112,8 @@
   // fresh install, so we preemptively switch into "force import" mode and
   // tell the user what's about to happen instead of letting them discover
   // a 403 after clicking through the overlay.
-  function setExistingDataWarning(personCount, familyCount, personListUrl, familyListUrl) {
+  function setExistingDataWarning(personCount, familyCount) {
     $("#demoImportWarning").remove();
-
-    // Render the counts as links so the user can jump straight to the
-    // people or family list from the warning dialog. Open in a new tab so
-    // they don't lose the import overlay state.
-    function countChip(count, label, url) {
-      var inner = "<strong>" + count + "</strong> " + label;
-      if (url) {
-        return (
-          '<a href="' +
-          url +
-          '" target="_blank" rel="noopener" ' +
-          'class="demo-import-chip-link" ' +
-          'title="' +
-          i18next.t("Open in new tab") +
-          '">' +
-          inner +
-          ' <i class="fa fa-arrow-up-right-from-square fa-xs"></i></a>'
-        );
-      }
-      return inner;
-    }
 
     var countsLine = "";
     if (personCount > 0 || familyCount > 0) {
@@ -141,9 +121,9 @@
         '<div class="demo-import-count-line">' +
         i18next.t("Current database") +
         ": " +
-        countChip(personCount, i18next.t("people"), personListUrl) +
+        "<strong>" + personCount + "</strong> " + i18next.t("people") +
         ", " +
-        countChip(familyCount, i18next.t("families"), familyListUrl) +
+        "<strong>" + familyCount + "</strong> " + i18next.t("families") +
         "</div>";
     }
 
@@ -166,6 +146,7 @@
       ) +
       "</div></div>";
     $(".demo-import-options").before(warningHtml);
+    $(".demo-import-instructions").addClass("d-none");
 
     $("#demoImportConfirmBtn")
       .removeClass("btn-success")
@@ -296,6 +277,7 @@
 
   function resetImportButton() {
     $("#demoImportWarning").remove();
+    $(".demo-import-instructions").removeClass("d-none");
     $("#demoImportConfirmBtn")
       .removeClass("btn-danger btn-warning")
       .addClass("btn-success")
@@ -321,9 +303,7 @@
             forceImportMode = true;
             var personCount = parseInt($(this).data("person-count"), 10) || 0;
             var familyCount = parseInt($(this).data("family-count"), 10) || 0;
-            var personListUrl = $(this).data("person-list-url") || "";
-            var familyListUrl = $(this).data("family-list-url") || "";
-            setExistingDataWarning(personCount, familyCount, personListUrl, familyListUrl);
+            setExistingDataWarning(personCount, familyCount);
           } else {
             forceImportMode = false;
             resetImportButton();
@@ -356,6 +336,22 @@
         e.preventDefault();
         console.log("Cancel button clicked");
         hideConfirmOverlay();
+      });
+
+    // Esc or a click on the dimmed backdrop closes the dialog
+    $(document)
+      .off("keydown.demoImport")
+      .on("keydown.demoImport", function (e) {
+        if (e.key === "Escape" && $("#demoImportConfirmOverlay").hasClass("show")) {
+          hideConfirmOverlay();
+        }
+      });
+    $(document)
+      .off("click", "#demoImportConfirmOverlay")
+      .on("click", "#demoImportConfirmOverlay", function (e) {
+        if (e.target === this) {
+          hideConfirmOverlay();
+        }
       });
   }
 
