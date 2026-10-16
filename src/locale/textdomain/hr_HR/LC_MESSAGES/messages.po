@@ -14249,10 +14249,6 @@ msgid "Open in New Tab"
 msgstr "Otvori u novoj kartici"
 
 #: 
-msgid "Open in new tab"
-msgstr "Otvori u novoj kartici"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Otvorite vašu autentifikacijsku aplikaciju i skenirajte ovaj QR kod"
 

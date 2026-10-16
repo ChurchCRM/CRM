@@ -14303,10 +14303,6 @@ msgid "Open in New Tab"
 msgstr "Megnyitás új lapon"
 
 #: 
-msgid "Open in new tab"
-msgstr "Megnyitás új lapon"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Nyissa meg a hitelesítő alkalmazást, és olvassa be a QR-kódot"
 

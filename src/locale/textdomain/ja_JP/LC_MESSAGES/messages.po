@@ -14232,10 +14232,6 @@ msgid "Open in New Tab"
 msgstr "新しいタブで開く"
 
 #: 
-msgid "Open in new tab"
-msgstr "新しいタブで開く"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "認証アプリを開いてこの QR コードをスキャンしてください"
 

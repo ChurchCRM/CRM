@@ -14275,10 +14275,6 @@ msgid "Open in New Tab"
 msgstr "פתח בלשונית חדשה"
 
 #: 
-msgid "Open in new tab"
-msgstr "פתח בכרטיסייה חדשה"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "פתח את אפליקציית האימות שלך וסרוק את קוד ה-QR הזה"
 

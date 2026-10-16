@@ -14289,10 +14289,6 @@ msgid "Open in New Tab"
 msgstr "புதிய தாவலில் திறக்கவும்"
 
 #: 
-msgid "Open in new tab"
-msgstr "புதிய தாவலில் திறக்கவும்"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "உங்கள் அங்கீகரிப்பான் செயலியைத் திறந்து இந்த QR குறியீட்டை ஸ்கேன் செய்யவும்"
 

@@ -14277,10 +14277,6 @@ msgid "Open in New Tab"
 msgstr "Yeni Sekmede Aç"
 
 #: 
-msgid "Open in new tab"
-msgstr "Yeni sekmede aç"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Kimlik doğrulayıcı uygulamanızı açın ve bu QR kodunu tarayın"
 

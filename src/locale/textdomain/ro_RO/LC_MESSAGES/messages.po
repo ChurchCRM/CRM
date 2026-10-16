@@ -14345,10 +14345,6 @@ msgid "Open in New Tab"
 msgstr "Deschide în filă nouă"
 
 #: 
-msgid "Open in new tab"
-msgstr "Deschide în filă nouă"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Deschideți aplicația de autentificare și scanați acest cod QR"
 

@@ -14308,10 +14308,6 @@ msgid "Open in New Tab"
 msgstr "فتح في علامة تبويب جديدة"
 
 #: 
-msgid "Open in new tab"
-msgstr "فتح في علامة تبويب جديدة"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "افتح تطبيق المصادقة وامسح رمز QR هذا"
 

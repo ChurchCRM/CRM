@@ -14267,10 +14267,6 @@ msgid "Open in New Tab"
 msgstr "Hape në skedë të re"
 
 #: 
-msgid "Open in new tab"
-msgstr "Hap në skedë të re"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Hapni aplikacionin tuaj të vërtetimit dhe skanoni këtë kod QR"
 

@@ -14261,10 +14261,6 @@ msgid "Open in New Tab"
 msgstr "새 탭에서 열기"
 
 #: 
-msgid "Open in new tab"
-msgstr "새 탭에서 열기"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "인증 앱을 열고 이 QR 코드를 스캔하세요"
 

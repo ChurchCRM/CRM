@@ -14242,10 +14242,6 @@ msgid "Open in New Tab"
 msgstr "Buksan sa Bagong Tab"
 
 #: 
-msgid "Open in new tab"
-msgstr "Buksan sa bagong tab"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Buksan ang iyong authenticator app at i-scan ang QR code na ito"
 

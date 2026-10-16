@@ -14367,10 +14367,6 @@ msgid "Open in New Tab"
 msgstr "Öppna i ny flik"
 
 #: 
-msgid "Open in new tab"
-msgstr "Öppna i ny flik"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Öppna din autentiseringsapp och skanna denna QR-kod"
 
