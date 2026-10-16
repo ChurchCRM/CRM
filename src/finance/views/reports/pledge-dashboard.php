@@ -191,7 +191,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </tbody>
                 <?php if (!empty($overallTotals)): ?>
                 <tfoot>
-                    <tr class="fw-bold table-secondary">
+                    <tr class="fw-bold table-active">
                         <td><?= gettext('Total') ?></td>
                         <td class="text-end" data-order="<?= InputUtils::escapeAttribute($overallTotals['total_pledged']) ?>">
                             <?= CurrencyFormatter::formatHtml($overallTotals['total_pledged']) ?>

@@ -188,7 +188,7 @@ function showMappingStep(token, headers, mappings, fields, sample) {
   headers.forEach((header) => {
     const mapped = mappings[header] || null;
     const sampleValue = sample ? (sample[header] ?? "") : "";
-    const rowClass = mapped ? "table-success" : "table-warning";
+    const rowClass = mapped ? "bg-success-lt" : "bg-warning-lt";
     const badge = mapped
       ? `<span class="badge bg-success-lt text-success"><i class="fa-solid fa-check me-1"></i>${i18next.t("Auto-mapped")}</span>`
       : `<span class="badge bg-warning-lt text-warning"><i class="fa-solid fa-triangle-exclamation me-1"></i>${i18next.t("Unmapped")}</span>`;
@@ -226,17 +226,17 @@ function showMappingStep(token, headers, mappings, fields, sample) {
     .off("change", ".mapping-select")
     .on("change", ".mapping-select", function () {
       const $row = $(this).closest("tr");
-      $row.removeClass("table-success table-warning table-secondary");
+      $row.removeClass("bg-success-lt bg-warning-lt bg-secondary-lt");
       const val = $(this).val();
       if (val) {
-        $row.addClass("table-success");
+        $row.addClass("bg-success-lt");
         $row
           .find(".badge")
           .replaceWith(
             `<span class="badge bg-primary-lt text-primary"><i class="fa-solid fa-pen me-1"></i>${i18next.t("Manual")}</span>`,
           );
       } else {
-        $row.addClass("table-secondary");
+        $row.addClass("bg-secondary-lt");
         $row
           .find(".badge")
           .replaceWith(`<span class="badge bg-secondary-lt text-secondary">${i18next.t("Ignored")}</span>`);
