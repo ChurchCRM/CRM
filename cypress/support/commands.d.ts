@@ -612,6 +612,23 @@ declare namespace Cypress {
       error: { code: string; errno: number; sqlState: string; message: string } | null;
     }>;
 
+    // ---------------------------------------------------------------
+    // Account fixtures (cypress/support/account-fixtures.js): states no
+    // route sets on an existing user. Approved in cypress/db-access.json.
+    // ---------------------------------------------------------------
+
+    /** Store an already encrypted TOTP secret for a user (null removes 2FA). */
+    setTwoFactorSecret(userName: string, encryptedSecret: string | null): Chainable<void>;
+
+    /** Set or clear a user's must-change-password flag. */
+    setNeedPasswordChange(userId: number, needed: boolean): Chainable<void>;
+
+    /** Grant or remove a user's administrator flag. */
+    setUserAdmin(userId: number, isAdmin: boolean): Chainable<void>;
+
+    /** Clear a user's Member Portal activity stamp. */
+    clearLastPortalActivity(userId: number): Chainable<void>;
+
     /**
      * Wait for a Notyf notification with specific text
      * Ensures locales are loaded first (for i18next translations) and verifies notification content

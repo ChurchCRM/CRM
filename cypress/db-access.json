@@ -13,6 +13,10 @@
             "kind": "schema",
             "reason": "Volunteer v2 schema spec (#9705): columns, UNIQUE keys, foreign keys, ON DELETE rules and enum domains have no HTTP surface."
         },
+        "cypress/support/account-fixtures.js": {
+            "kind": "fixture",
+            "reason": "Account states no route sets on an existing user: a known TOTP secret (enrollment hands the secret out only inside a QR image), the must-change-password and administrator flags, and a cleared Member Portal activity stamp."
+        },
         "cypress/support/api-commands.js": {
             "kind": "fixture",
             "reason": "Registers cy.dbQuery()."

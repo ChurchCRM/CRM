@@ -78,10 +78,7 @@ function formLogin(userName, password) {
 }
 
 function setTwoFactorAdminSecret(encryptedSecret) {
-    cy.dbQuery(
-        "UPDATE user_usr SET usr_TwoFactorAuthSecret = ?, usr_TwoFactorAuthLastKeyTimestamp = NULL, usr_FailedLogins = 0 WHERE usr_UserName = ?",
-        [encryptedSecret, TWOFA_ADMIN_LOGIN],
-    ).then((r) => expect(r.error).to.eq(null));
+    cy.setTwoFactorSecret(TWOFA_ADMIN_LOGIN, encryptedSecret);
 }
 
 function setAllowLoginAsUser(value) {
@@ -89,11 +86,15 @@ function setAllowLoginAsUser(value) {
     cy.makePrivateAdminAPICall("POST", "admin/api/system/config/bAllowLoginAsUser", { value }, 200);
 }
 
-/** The newest Login as User session row. */
-function latestMasqueradeSession() {
-    return cy
-        .dbQuery("SELECT * FROM user_masquerade_session_ums ORDER BY ums_ID DESC LIMIT 1")
-        .then((r) => r.rows[0]);
+/** The newest Login as User session on a user's page, read as the administrator. */
+function latestHistorySession(userId = TARGET_USER_ID) {
+    cy.setupAdminSession({ forceLogin: true });
+    cy.visit(`/v2/user/${userId}`);
+    return cy.get('#loginAsUserHistory [data-cy="login-as-user-session"]').first();
+}
+
+function endReasonOfLatestSession() {
+    return latestHistorySession().find('[data-cy="login-as-user-end-reason"]');
 }
 
 /** Today's date in the rotating log filename format ({Y-m-d}-auth.log). */
@@ -261,9 +262,7 @@ describe("Admin Login as User (masquerade)", () => {
         // first login. That obligation is the account owner's, not the
         // masquerading administrator's: it used to bounce every request —
         // including the banner's Exit — to the change-password page.
-        cy.dbQuery("UPDATE user_usr SET usr_NeedPasswordChange = 1 WHERE usr_per_ID = ?", [SELF_SERVICE_USER_ID]).then((r) => {
-            expect(r.error).to.eq(null);
-        });
+        cy.setNeedPasswordChange(SELF_SERVICE_USER_ID, true);
 
         cy.visit(`/v2/user/${SELF_SERVICE_USER_ID}`);
         cy.get("#loginAsUser").click();
@@ -283,10 +282,8 @@ describe("Admin Login as User (masquerade)", () => {
         cy.get(".navbar").should("contain.text", "Church Admin");
 
         // The flag itself is untouched: the owner still has to change it.
-        cy.dbQuery("SELECT usr_NeedPasswordChange AS f FROM user_usr WHERE usr_per_ID = ?", [SELF_SERVICE_USER_ID]).then((r) => {
-            expect(Number(r.rows[0].f)).to.eq(1);
-        });
-        cy.dbQuery("UPDATE user_usr SET usr_NeedPasswordChange = 0 WHERE usr_per_ID = ?", [SELF_SERVICE_USER_ID]);
+        cy.contains(".alert-warning", "Password change required").should("be.visible");
+        cy.setNeedPasswordChange(SELF_SERVICE_USER_ID, false);
     });
 
     [
@@ -542,10 +539,7 @@ describe("Masquerade record does not survive its session", () => {
         cy.get("#impersonationBanner").should("not.exist");
         cy.visit("/v2/dashboard");
         cy.url().should("include", "/session/begin");
-        latestMasqueradeSession().then((row) => {
-            expect(row.ums_EndReason).to.eq("signout");
-            expect(row.ums_Ended).to.not.eq(null);
-        });
+        endReasonOfLatestSession().should("have.text", "Signed out");
     });
 
     it("a real login in the same browser discards the record", () => {
@@ -566,13 +560,13 @@ describe("Masquerade record does not survive its session", () => {
         cy.visit("/v2/dashboard");
         cy.get("#impersonationBanner").should("not.exist");
         cy.get("body").should("not.have.class", "impersonating");
-        latestMasqueradeSession().its("ums_EndReason").should("eq", "signout");
 
         // Signing out now ends the session; it must not restore the administrator
         cy.visit("/session/end");
         cy.url().should("include", "/session/begin");
         cy.visit("/v2/dashboard");
         cy.url().should("include", "/session/begin");
+        endReasonOfLatestSession().should("have.text", "Signed out");
     });
 
     describe("after a session timeout", () => {
@@ -605,13 +599,19 @@ describe("Masquerade record does not survive its session", () => {
 
             cy.visit("/v2/dashboard");
             cy.url().should("include", "/session/begin");
-            latestMasqueradeSession().its("ums_EndReason").should("eq", "timeout");
 
             cy.visit("/session/end");
             cy.url().should("include", "/session/begin");
             cy.get("#impersonationBanner").should("not.exist");
             cy.visit("/v2/dashboard");
             cy.url().should("include", "/session/begin");
+
+            // Long enough to read the history page, then back for the next test.
+            cy.clearCookies();
+            cy.makePrivateAdminAPICall("POST", "admin/api/system/config/iSessionTimeout", { value: "3600" }, 200);
+            endReasonOfLatestSession().should("have.text", "Session timed out");
+            cy.clearCookies();
+            cy.makePrivateAdminAPICall("POST", "admin/api/system/config/iSessionTimeout", { value: "3" }, 200);
         });
 
         it("does not come back as the user when the timeout is raised again", () => {
@@ -713,8 +713,18 @@ describe("Allow Login as User setting", () => {
         cy.get(".bootbox.modal .btn-warning").click();
         cy.get("#impersonationBanner").should("be.visible");
 
-        cy.dbQuery("UPDATE config_cfg SET cfg_value = '0' WHERE cfg_name = 'bAllowLoginAsUser'").then((r) =>
-            expect(r.error).to.eq(null),
+        // Another administrator turns it off: a request in this browser's session made by
+        // someone else would discard the masquerade record.
+        cy.readEnv("admin.api.key").then((key) =>
+            cy
+                .task("http:request", {
+                    url: `${Cypress.config("baseUrl").replace(/\/$/, "")}/admin/api/system/config/bAllowLoginAsUser`,
+                    method: "POST",
+                    headers: { "x-api-key": key, "Content-Type": "application/json" },
+                    body: { value: "0" },
+                })
+                .its("status")
+                .should("eq", 200),
         );
         cy.get("#impersonationExit").click();
         cy.url().should("include", `/v2/user/${TARGET_USER_ID}`);
@@ -808,7 +818,7 @@ describe("Login as User two-factor rule", () => {
 
 describe("Login as User when the administrator is demoted during it", () => {
     afterEach(() => {
-        cy.dbQuery("UPDATE user_usr SET usr_Admin = 1 WHERE usr_per_ID = ?", [PEER_ADMIN_USER_ID]);
+        cy.setUserAdmin(PEER_ADMIN_USER_ID, true);
     });
 
     it("ends the whole session on exit and still records the session as exited", () => {
@@ -820,18 +830,16 @@ describe("Login as User when the administrator is demoted during it", () => {
         cy.get(".bootbox.modal .btn-warning").click();
         cy.get("#impersonationBanner").should("be.visible");
 
-        cy.dbQuery("UPDATE user_usr SET usr_Admin = 0 WHERE usr_per_ID = ?", [PEER_ADMIN_USER_ID]).then((r) =>
-            expect(r.error).to.eq(null),
-        );
+        cy.setUserAdmin(PEER_ADMIN_USER_ID, false);
         cy.get("#impersonationExit").click();
         cy.url().should("include", "/session/begin");
 
-        latestMasqueradeSession().then((session) => {
-            expect(session.ums_admin_usr_ID).to.eq(PEER_ADMIN_USER_ID);
-            expect(session.ums_EndReason).to.eq("exit");
-        });
         cy.visit("/v2/dashboard");
         cy.url().should("include", "/session/begin");
+        latestHistorySession().within(() => {
+            cy.contains(`Locale Admin logged in as ${TARGET_USER_NAME}`);
+            cy.get('[data-cy="login-as-user-end-reason"]').should("have.text", "Exited");
+        });
     });
 });
 
@@ -857,9 +865,7 @@ describe("Login as User history", () => {
         }).then((response) => {
             expect(response.status).to.eq(201);
             createdNoteIds.push(response.body.note.id);
-            cy.dbQuery("SELECT nte_EnteredBy FROM note_nte WHERE nte_ID = ?", [response.body.note.id])
-                .its("rows.0.nte_EnteredBy")
-                .should("eq", TARGET_USER_ID);
+            expect(response.body.note.enteredBy).to.eq(TARGET_USER_ID);
         });
         cy.request({
             method: "POST",
@@ -871,33 +877,21 @@ describe("Login as User history", () => {
         cy.get("#impersonationExit").click();
         cy.url().should("include", `/v2/user/${TARGET_USER_ID}`);
 
-        latestMasqueradeSession().then((session) => {
-            expect(session.ums_admin_usr_ID).to.eq(ADMIN_USER_ID);
-            expect(session.ums_target_usr_ID).to.eq(TARGET_USER_ID);
-            expect(session.ums_EndReason).to.eq("exit");
-            cy.dbQuery(
-                "SELECT uma_Method, uma_Path, uma_Status FROM user_masquerade_action_uma WHERE uma_ums_ID = ? ORDER BY uma_ID",
-                [session.ums_ID],
-            ).then((r) => {
-                expect(r.rows).to.deep.equal([
-                    { uma_Method: "POST", uma_Path: "/api/person/2/note", uma_Status: 201 },
-                    { uma_Method: "POST", uma_Path: "/PersonEditor.php", uma_Status: 200 },
-                ]);
-            });
-
-            for (const userId of [TARGET_USER_ID, ADMIN_USER_ID]) {
-                cy.visit(`/v2/user/${userId}`);
-                cy.get(`#loginAsUserHistory [data-session-id="${session.ums_ID}"]`).within(() => {
+        for (const userId of [TARGET_USER_ID, ADMIN_USER_ID]) {
+            cy.visit(`/v2/user/${userId}`);
+            cy.get('#loginAsUserHistory [data-cy="login-as-user-session"]')
+                .first()
+                .within(() => {
                     cy.contains(`Church Admin logged in as ${TARGET_USER_NAME}`);
                     cy.get('[data-cy="login-as-user-end-reason"]').should("have.text", "Exited");
                     cy.get('[data-cy="login-as-user-action"]').should("have.length", 2);
                     cy.get('[data-cy="login-as-user-action"]').eq(0).should("contain.text", "POST /api/person/2/note");
                     cy.get('[data-cy="login-as-user-action"]').eq(0).should("contain.text", "201");
                     cy.get('[data-cy="login-as-user-action"]').eq(1).should("contain.text", "POST /PersonEditor.php");
+                    cy.get('[data-cy="login-as-user-action"]').eq(1).should("contain.text", "200");
                     cy.root().should("not.contain.text", "not-recorded");
                 });
-            }
-        });
+        }
     });
 
     it("is not shown to the user themselves", () => {

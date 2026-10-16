@@ -153,6 +153,11 @@ describe("Member Portal e2e — #9869 scenario 3, staff in the portal", () => {
         });
     });
 
+    /** Members active in the portal right now. An API key authenticates only its own request. */
+    function portalActiveNow() {
+        return cy.makePrivateAdminAPICall("GET", "admin/api/member-portal/stats", null, 200).its("body.activeNow");
+    }
+
     describe("an administrator, being somebody else", () => {
         let savedAllowLoginAsUser;
 
@@ -216,14 +221,12 @@ describe("Member Portal e2e — #9869 scenario 3, staff in the portal", () => {
         });
 
         it("leaves the member's last portal activity alone", () => {
-            cy.dbQuery("UPDATE user_usr SET usr_LastPortalActivity = NULL WHERE usr_per_ID = ?", [MEMBER_USER_ID]).then((r) =>
-                expect(r.error).to.eq(null),
-            );
-            cy.visit("/portal/profile");
-            assertMasqueradeBanner();
-            cy.dbQuery("SELECT usr_LastPortalActivity AS last FROM user_usr WHERE usr_per_ID = ?", [MEMBER_USER_ID]).then((r) =>
-                expect(r.rows[0].last).to.eq(null),
-            );
+            cy.clearLastPortalActivity(MEMBER_USER_ID);
+            portalActiveNow().then((activeBefore) => {
+                cy.visit("/portal/profile");
+                assertMasqueradeBanner();
+                portalActiveNow().should("eq", activeBefore);
+            });
         });
 
         it("keeps the banner on every page, because it is the only way back", () => {

@@ -20,6 +20,7 @@ require("cy-verify-downloads").addCustomCommand();
 import "./test-env";
 import "./ui-commands";
 import "./api-commands";
+import "./account-fixtures";
 import "./church-time-zone";
 
 // Alternatively you can use CommonJS syntax:

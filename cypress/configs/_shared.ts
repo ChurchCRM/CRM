@@ -136,6 +136,32 @@ export const htaccessTasks = {
 };
 
 /**
+ * A request from a client other than the browser under test, such as a second
+ * administrator. cy.request() always carries the browser's cookies, so it cannot
+ * stand in for one.
+ */
+export const httpTasks = {
+  async 'http:request'({
+    url,
+    method = 'GET',
+    headers = {},
+    body,
+  }: {
+    url: string;
+    method?: string;
+    headers?: Record<string, string>;
+    body?: unknown;
+  }) {
+    const response = await fetch(url, {
+      method,
+      headers,
+      body: body === undefined ? undefined : JSON.stringify(body),
+    });
+    return { status: response.status, body: await response.text() };
+  },
+};
+
+/**
  * Node-side Mailpit tasks.
  *
  * The `test` docker profile runs Mailpit (`docker/docker-compose.yaml`), so a
@@ -315,7 +341,7 @@ export function setupCommonNodeEvents(on: any, config: any) {
 
   // Every task must be registered in a single on('task', ...) call — a second
   // registration replaces the first rather than merging with it.
-  const tasks: Record<string, any> = { ...dbTasks, ...mailTasks, ...htaccessTasks, ...pluginFixtureTasks };
+  const tasks: Record<string, any> = { ...dbTasks, ...mailTasks, ...htaccessTasks, ...pluginFixtureTasks, ...httpTasks };
 
   // Register download verification tasks if available
   try {
