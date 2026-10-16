@@ -87,7 +87,7 @@ $pageArgs = [
 ];
 ```
 
-See `tabler-components.md` -> "Unified Page Header".
+See `code-standards.md` -> "Admin Page Headers".
 
 ## Finance module (`/finance/*`)
 
@@ -260,4 +260,4 @@ cy.visit('/admin/system/dashboard');
 cy.url().should('include', 'access-denied');
 ```
 
-Related: [`slim-4-best-practices.md`](./slim-4-best-practices.md), [`php-best-practices.md`](./php-best-practices.md), [`tabler-components.md`](./tabler-components.md).
+Related: [`slim-4-best-practices.md`](./slim-4-best-practices.md), [`php-best-practices.md`](./php-best-practices.md), [`frontend-development.md`](./frontend-development.md).

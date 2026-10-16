@@ -410,7 +410,7 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
     if (list) {
       list.innerHTML =
         (calendars ?? []).length === 0
-          ? `<div class="form-hint" id="ministry-event-form-no-calendars">${escapeHtml(
+          ? `<div class="form-text" id="ministry-event-form-no-calendars">${escapeHtml(
               i18next.t("No calendar is open to this ministry, so the events will not show on any calendar."),
             )}</div>`
           : (calendars ?? [])

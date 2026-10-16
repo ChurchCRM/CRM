@@ -238,7 +238,7 @@ require_once __DIR__ . '/Include/Header.php';
                   <option value="<?= $lst_OptionID ?>"><?= $lst_OptionName ?></option>
                 <?php } ?>
               </select>
-              <small class="form-hint"><?= gettext('Use Ctrl Key to select multiple') ?></small>
+              <small class="form-text"><?= gettext('Use Ctrl Key to select multiple') ?></small>
             </div>
 
             <div class="col-lg-4">
@@ -250,7 +250,7 @@ require_once __DIR__ . '/Include/Header.php';
                   <option value="<?= $lst_OptionID ?>"><?= $lst_OptionName ?></option>
                 <?php } ?>
               </select>
-              <small class="form-hint"><?= gettext('Use Ctrl Key to select multiple') ?></small>
+              <small class="form-text"><?= gettext('Use Ctrl Key to select multiple') ?></small>
             </div>
 
             <div class="col-lg-4">
@@ -271,7 +271,7 @@ require_once __DIR__ . '/Include/Header.php';
                     echo '<option value="' . $grp_ID . '">' . $grp_Name . '</option>';
                 } ?>
               </select>
-              <small class="form-hint"><?= gettext('Use Ctrl Key to select multiple') ?></small>
+              <small class="form-text"><?= gettext('Use Ctrl Key to select multiple') ?></small>
             </div>
 
             <div class="col-lg-4">
@@ -343,7 +343,7 @@ require_once __DIR__ . '/Include/Header.php';
         <div class="card-body">
           <div class="mb-3">
             <label class="form-label"><?= gettext('Format') ?>:</label>
-            <select name="Format" class="form-select" style="max-width:300px">
+            <select name="Format" class="form-select field-max-w-300">
               <option value="Default"><?= gettext('CSV Individual Records') ?></option>
               <option value="Rollup"><?= gettext('CSV Combine Families') ?></option>
               <option value="AddToCart"><?= gettext('Add Individuals to Cart') ?></option>

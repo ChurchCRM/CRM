@@ -33,7 +33,7 @@ import "../src/skin/scss/system-settings-panel.scss";
                     <div class="col-md-6 col-lg-4 mb-3">
                         <div class="form-label small fw-bold mb-1">
                             ${escapeHtml(resolve(setting.label))}
-                            ${setting.tooltip ? `<i class="fa-solid fa-circle-question text-muted ms-1" data-bs-toggle="tooltip" data-placement="top" title="${escapeHtml(resolve(setting.tooltip))}"></i>` : ""}
+                            ${setting.tooltip ? `<i class="fa-solid fa-circle-question text-muted ms-1" data-bs-toggle="tooltip" data-bs-placement="top" title="${escapeHtml(resolve(setting.tooltip))}"></i>` : ""}
                         </div>
                         <div class="form-selectgroup form-selectgroup-pills">
                             <label class="form-selectgroup-item">

@@ -50,7 +50,7 @@ $missingLabels = array_map(static fn (string $key): string => $report['params'][
                     </select>
                     <?php endif; ?>
                     <?php if (!empty($param['help'])) : ?>
-                    <div class="form-hint"><?= InputUtils::escapeHTML($param['help']) ?></div>
+                    <div class="form-text"><?= InputUtils::escapeHTML($param['help']) ?></div>
                     <?php endif; ?>
                 </div>
                 <?php endforeach; ?>
@@ -90,7 +90,7 @@ $missingLabels = array_map(static fn (string $key): string => $report['params'][
             </a>
         </div>
     </div>
-    <div style="overflow-x: clip; overflow-y: visible;">
+    <div class="table-clip-x">
         <table id="reportResults" class="table table-vcenter table-hover card-table">
             <thead>
                 <tr>

@@ -94,7 +94,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     }
 
     $sCountry = InputUtils::legacyFilterInput($_POST['Country']);
-    $iFamilyMemberRows = InputUtils::legacyFilterInput($_POST['FamCount']);
+    $iFamilyMemberRows = InputUtils::legacyFilterInput($_POST['FamCount'], 'int');
 
     $sState = InputUtils::legacyFilterInput($_POST[$_POST['stateType'] === 'dropDown' ? 'State' : 'StateTextbox']);
 
@@ -693,10 +693,7 @@ require_once __DIR__ . '/Include/Header.php';
                 </div>
                 <div class="mb-3 col-12 col-sm-6 col-md-2">
                     <label for="Zip"><?= gettext('Zip') ?>:</label>
-                    <input type="text" id="Zip" name="Zip" class="form-control" <?php
-                    if (SystemConfig::getBooleanValue('bForceUppercaseZip')) {
-                        echo 'style="text-transform:uppercase" ';
-                    }
+                    <input type="text" id="Zip" name="Zip" class="form-control<?= SystemConfig::getBooleanValue('bForceUppercaseZip') ? ' text-uppercase' : '' ?>" <?php
                     echo 'value="' . InputUtils::escapeAttribute($sZip) . '" '; ?> maxlength="10">
                 </div>
                 <div class="mb-3 col-12 col-sm-6 col-md-3">
@@ -786,10 +783,7 @@ require_once __DIR__ . '/Include/Header.php';
                     </div>
                     <div class="mb-3 col-12 col-sm-6 col-md-2">
                         <label for="SecondZip"><?= gettext('Zip') ?>:</label>
-                        <input type="text" id="SecondZip" name="SecondZip" class="form-control" <?php
-                        if (SystemConfig::getBooleanValue('bForceUppercaseZip')) {
-                            echo 'style="text-transform:uppercase" ';
-                        }
+                        <input type="text" id="SecondZip" name="SecondZip" class="form-control<?= SystemConfig::getBooleanValue('bForceUppercaseZip') ? ' text-uppercase' : '' ?>" <?php
                         echo 'value="' . $sSecondZipAttr . '" '; ?> maxlength="10">
                     </div>
                     <div class="mb-3 col-12 col-sm-6 col-md-3">

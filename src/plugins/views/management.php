@@ -54,7 +54,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
          data-plugin-verified="<?= $isVerified ? '1' : '0' ?>"
          data-plugin-quarantined="<?= $isQuarantined ? '1' : '0' ?>"
          <?php if ($hasHelp): ?>data-plugin-help="<?= $helpData ?>"<?php endif; ?>>
-        <div class="card-header d-flex align-items-center plugin-card-header" style="cursor: pointer;">
+        <div class="card-header d-flex align-items-center plugin-card-header cursor-pointer">
             <h3 class="card-title">
                 <?php if ($isQuarantined): ?>
                     <i class="fa-solid fa-shield-halved text-warning me-3" title="<?= gettext('Quarantined') ?>"></i>
@@ -627,7 +627,7 @@ $(document).ready(function() {
             helpData.sections.forEach(function(section) {
                 contentHtml += '<div class="card-secondary mb-3">';
                 contentHtml += '<div class="card-header"><h6 class="mb-0">' + escapeHtml(i18next.t(section.title)) + '</h6></div>';
-                contentHtml += '<div class="card-body"><p class="mb-0" style="white-space: pre-line;">' + escapeHtml(i18next.t(section.content)) + '</p></div>';
+                contentHtml += '<div class="card-body"><p class="mb-0 admin-pre-line">' + escapeHtml(i18next.t(section.content)) + '</p></div>';
                 contentHtml += '</div>';
             });
         }

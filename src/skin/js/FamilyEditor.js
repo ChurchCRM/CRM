@@ -105,7 +105,7 @@ $(document).ready(function () {
                     </td>
                     <td><input name="MiddleName${rowCount}" type="text" value="" class="form-control form-control-sm"></td>
                     <td><input name="LastName${rowCount}" type="text" value="" class="form-control form-control-sm"></td>
-                    <td><input name="Suffix${rowCount}" type="text" value="" class="form-control form-control-sm" style="width: 60px;"></td>
+                    <td><input name="Suffix${rowCount}" type="text" value="" class="form-control form-control-sm family-suffix-input"></td>
                     <td>
                         <select name="Gender${rowCount}" class="form-control form-control-sm">
                             <option value="0">${window.CRM.i18n.selectGender}</option>
@@ -116,7 +116,7 @@ $(document).ready(function () {
                     <td><select name="Role${rowCount}" class="form-control form-control-sm">${roleOptions}</select></td>
                     <td><select name="BirthMonth${rowCount}" class="form-control form-control-sm">${monthOptions}</select></td>
                     <td><select name="BirthDay${rowCount}" class="form-control form-control-sm">${dayOptions}</select></td>
-                    <td><input name="BirthYear${rowCount}" type="text" value="" class="form-control form-control-sm" style="width: 70px;" maxlength="4"></td>
+                    <td><input name="BirthYear${rowCount}" type="text" value="" class="form-control form-control-sm family-birth-year-input" maxlength="4"></td>
                     <td><select name="Classification${rowCount}" class="form-control form-control-sm">${classOptions}</select></td>
                 </tr>
             `;

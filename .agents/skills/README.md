@@ -36,7 +36,6 @@ All project-specific skills live in **[`churchcrm/`](./churchcrm/)**. See [`chur
 
 ### Frontend & UI
 - [Frontend Development](./churchcrm/frontend-development.md)
-- [Tabler Components](./churchcrm/tabler-components.md)
 - [Webpack & TypeScript](./churchcrm/webpack-typescript.md)
 - [i18n & Localization](./churchcrm/i18n-localization.md)
 - [Locale Translation Workflow](./churchcrm/locale-translation-workflow.md)
@@ -87,7 +86,7 @@ All project-specific skills live in **[`churchcrm/`](./churchcrm/)**. See [`chur
 - Read `churchcrm/SKILL.md` first. That index is the source of truth.
 - Also in this folder (not under `churchcrm/`): `milestone-sweep.md`, `pr-description-guidelines.md`, `pr-review-fix.md`.
 - Product floor is **PHP 8.4+**. Do not document older PHP as supported.
-- UI stack is **Tabler + Bootstrap 5**. Do not enforce Bootstrap 4 class names.
+- UI rules live only in `churchcrm/frontend-development.md` (Tabler, light and dark, desktop/tablet/phone). Do not enforce Bootstrap 4 class names.
 - Never invent install counts, SaaS hosting, native apps, payment processing, or endpoints that are not in `src/`.
 - Locale count is **49** from `locales.json`. Wrap new UI strings; do not run `locale:build` in a feature PR.
 - Push only after the maintainer approves the diff. See `churchcrm/git-workflow.md`.

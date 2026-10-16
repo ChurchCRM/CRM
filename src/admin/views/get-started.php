@@ -25,9 +25,7 @@ $isMailChimpActive = PluginManager::isPluginActive('mailchimp');
                class="gs-card gs-card--green"
                data-has-existing-data="<?= !empty($hasExistingData) ? 'true' : 'false' ?>"
                data-person-count="<?= (int)($personCount ?? 0) ?>"
-               data-family-count="<?= (int)($familyCount ?? 0) ?>"
-               data-person-list-url="<?= SystemURLs::getRootPath() ?>/people/list"
-               data-family-list-url="<?= SystemURLs::getRootPath() ?>/family/">
+               data-family-count="<?= (int)($familyCount ?? 0) ?>">
                 <div class="gs-card-icon">
                     <i class="fa-solid fa-flask"></i>
                 </div>
@@ -111,7 +109,7 @@ $isMailChimpActive = PluginManager::isPluginActive('mailchimp');
                class="gs-plugin-badge"
                data-bs-toggle="tooltip"
                title="<?= gettext('Enable the MailChimp plugin to sync contacts') ?>">
-                <i class="fa-brands fa-mailchimp" style="color: #ffe01b;"></i>
+                <i class="fa-brands fa-mailchimp mailchimp-icon"></i>
                 MailChimp
                 <span class="badge bg-light text-dark border"><?= gettext('Enable') ?></span>
             </a>

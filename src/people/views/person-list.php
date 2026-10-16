@@ -445,7 +445,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                                     echo '<span class="badge bg-info-lt text-info me-1">' . InputUtils::escapeHTML($group) . '</span>';
                                 }
                                 // Add hidden span with JSON for DataTables filtering
-                                echo '<span style="display:none;">' . InputUtils::escapeHTML(json_encode($columnData, JSON_UNESCAPED_UNICODE)) . '</span>';
+                                echo '<span class="d-none">' . InputUtils::escapeHTML(json_encode($columnData, JSON_UNESCAPED_UNICODE)) . '</span>';
                             } else {
                                 echo '<span class="text-body-secondary">—</span>';
                             }

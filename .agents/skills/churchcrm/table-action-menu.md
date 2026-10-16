@@ -6,7 +6,7 @@ tags: ["frontend", "tabler", "tables", "dropdowns", "cart", "ux"]
 
 # Skill: Table Action Menu
 
-This file owns row action menus: trigger markup, trigger icon, and the wrapper that keeps the dropdown from clipping. `responsive-design-guidelines.md`, `tabler-components.md` and `icon-management.md` defer to it.
+This file owns row action menus: trigger markup, trigger icon, and the wrapper that keeps the dropdown from clipping. `responsive-design-guidelines.md`, `frontend-development.md` and `icon-management.md` defer to it.
 
 ## Rule
 
