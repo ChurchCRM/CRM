@@ -19,8 +19,8 @@ Start with `/dependabot-review <PR number>`. This card is the process only. It d
 
 ## Steps
 
-1. **Read the PR.** `gh pr view <N> --repo ChurchCRM/CRM --json title,body,files,headRefOid`. Save the body and diff to the scratchpad, because grouped PRs have long bodies.
-2. **Get the exact lock changes.** Fetch `src/composer.lock` at `master` and at the PR head, then compare the `packages` and `packages-dev` entries by name. Include transitive packages; grouped PRs move them too.
+1. **Read the PR.** `gh pr view <N> --repo ChurchCRM/CRM --json title,body,files,baseRefOid,headRefOid`. Save the body and diff to the scratchpad, because grouped PRs have long bodies.
+2. **Get the exact lock changes.** Fetch `src/composer.lock` at `baseRefOid` (not the current tip of `master`, which may have moved since the PR opened) and at `headRefOid`, then compare the `packages` and `packages-dev` entries by name. Include transitive packages; grouped PRs move them too.
 3. **Read the changes for each package.** Start with the release notes in the PR body. For anything missing, use `gh api repos/<owner>/<repo>/releases/tags/<version>` or the changelog file. Read every release between the two versions.
 4. **Map each package to its use in this repo.** Grep `src/` (excluding `vendor/`) for the public API the package provides. Note the file paths in the review. Do not change vendored code.
 5. **Check CI and committed output.** For each package, does a CI job run it? Does any job write files back to the repo or publish them? Regenerate and diff any committed output the bump could change, before merge.
