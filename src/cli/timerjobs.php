@@ -20,6 +20,12 @@
  *   - **volunteer schedules are topped up** once a day: each gets occurrences for
  *     the events it follows up to the scheduling horizon on Admin → Ministry
  *     Settings (`iVolunteerSchedulingHorizonWeeks`, default 8 weeks);
+ *   - **queued composer email** — "Send Email" in the composer queues one
+ *     message per recipient and sends them while the composer stays open; any
+ *     left over (the window was closed, or a send is waiting for a retry) go
+ *     out here, up to 1000 messages or 5 minutes per run. Without cron they go
+ *     out on page loads instead: the first one after iTimerJobsMinIntervalMinutes
+ *     (15 by default) sends for up to 15 seconds;
  *   - every plugin listening on the CRON_RUN hook.
  *
  * Install a cron entry that runs it hourly, as the same user your web server

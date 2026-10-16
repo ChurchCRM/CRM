@@ -510,7 +510,7 @@ $fmtBytes = static function ($bytes): string {
             <div id="collapseTimezone" class="collapse" aria-labelledby="headingTimezone">
                 <div class="card-body p-0">
                     <!-- System Config (Baseline) -->
-                    <div class="p-3 bg-light border-bottom">
+                    <div class="p-3 bg-surface-secondary border-bottom">
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <small class="text-body-secondary d-block"><?= gettext('System Config') ?> (sTimeZone)</small>

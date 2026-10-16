@@ -16,17 +16,21 @@ namespace ChurchCRM\Emails;
  */
 class ComposerEmail extends BaseEmail
 {
+    /**
+     * @param ?string $renderedHtml the message as queued (EmailQueueService); sent as is instead of rendering $body
+     */
     public function __construct(
         string $toAddress,
         string $toName,
         string $subject,
         private readonly string $body,
+        ?string $renderedHtml = null,
     ) {
         parent::__construct([]);
         $this->mail->addAddress($toAddress, $toName);
         $this->mail->Subject = $subject;
         $this->mail->isHTML(true);
-        $this->mail->msgHTML($this->buildMessage());
+        $this->mail->msgHTML($renderedHtml ?? $this->buildMessage());
     }
 
     public function getTokens(): array

@@ -242,7 +242,7 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
                         <?php endif; ?>
                         <?php if (strlen($per_Twitter) > 0) : ?>
                         <li class="mb-2">
-                            <i class="fa-brands fa-x-twitter me-2 text-dark"></i>
+                            <i class="fa-brands fa-x-twitter me-2 text-body"></i>
                             <a href="https://www.twitter.com/<?= InputUtils::escapeAttribute($per_Twitter) ?>" target="_blank">@<?= InputUtils::escapeHTML($per_Twitter) ?></a>
                         </li>
                         <?php endif; ?>
@@ -502,7 +502,7 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
                             $tmpPersonId = $familyMember->getId();
                             $isSelf = ($tmpPersonId === $iPersonID);
                         ?>
-                            <tr<?= $isSelf ? ' class="bg-light"' : '' ?>>
+                            <tr<?= $isSelf ? ' class="bg-surface-secondary"' : '' ?>>
                                 <td>
                                     <div class="d-flex align-items-center">
                                         <img data-image-entity-type="person" data-image-entity-id="<?= $familyMember->getId() ?>" class="avatar avatar-sm me-2">

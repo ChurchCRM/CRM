@@ -9,7 +9,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <div class="row mb-3">
     <div class="col-12 d-flex align-items-center">
         <nav aria-label="breadcrumb" class="flex-grow-1">
-            <ol class="breadcrumb mb-0 bg-light">
+            <ol class="breadcrumb mb-0">
                 <li class="breadcrumb-item"><a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard"><i class="fa-solid fa-home"></i></a></li>
                 <li class="breadcrumb-item"><a href="<?= SystemURLs::getRootPath() ?>/plugins/management"><?= gettext('Plugins') ?></a></li>
                 <li class="breadcrumb-item"><a href="<?= SystemURLs::getRootPath() ?>/plugins/mailchimp/dashboard">Mailchimp</a></li>

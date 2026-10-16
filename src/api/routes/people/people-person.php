@@ -178,7 +178,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer", example=42)),
      *     @OA\Response(response=200, description="Person object",
-     *         @OA\JsonContent(type="object", example={"id":42,"firstName":"John","lastName":"Doe"})
+     *         @OA\JsonContent(ref="#/components/schemas/Person")
      *     ),
      *     @OA\Response(response=401, description="Unauthorized"),
      *     @OA\Response(response=404, description="Person not found")

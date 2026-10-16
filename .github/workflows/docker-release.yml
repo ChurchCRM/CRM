@@ -104,6 +104,10 @@ jobs:
           LATEST_TAG=$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)
           if [[ "$RELEASE_TAG" == "$LATEST_TAG" ]]; then
             echo "tag=$REGISTRY/$IMAGE_NAME:latest-$TAG_SUFFIX" >> "$GITHUB_OUTPUT"
+            # Also update plain :latest for the Apache image (the default people expect)
+            if [[ "$TAG_SUFFIX" == "php8-apache" ]]; then
+              echo "plain_latest=$REGISTRY/$IMAGE_NAME:latest" >> "$GITHUB_OUTPUT"
+            fi
           fi
 
       - name: Build and push
@@ -119,3 +123,4 @@ jobs:
           tags: |
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.version.outputs.version }}-${{ matrix.tag-suffix }}
             ${{ steps.latest.outputs.tag }}
+            ${{ steps.latest.outputs.plain_latest }}

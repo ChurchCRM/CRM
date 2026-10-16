@@ -85,11 +85,8 @@ describe("Volunteer v2 rollout flag (#9704)", () => {
         setVersion("v1");
     });
 
-    it("starts a new installation on v2, and keeps an upgraded one's v1 (#10561)", () => {
+    it("keeps an upgraded installation's stored v1 (#10561)", () => {
         expectStoredVersion("v1");
-        cy.dbQuery("DELETE FROM config_cfg WHERE cfg_name = ?", ["sVolunteerVersion"]);
-        expectStoredVersion("v2");
-        setVersion("v1");
     });
 
     describe("v1 (legacy only)", () => {

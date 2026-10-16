@@ -11,7 +11,7 @@ This folder contains Node.js and shell scripts used for building, packaging, and
 | `validate-php-syntax.js` | Validate PHP syntax in build | `npm run build:php:validate` |
 | `package-release.js` | Create release ZIP package | `npm run package` |
 | `locale-check.js` | Lint locale files for issues | `npm run locale:lint` |
-| `startNewRelease.js` | Version bump for releases | Used by maintainers |
+| `startNewRelease.js` | Version bump for releases | Called only by `.github/workflows/release-prepare.yml` |
 | `create-plugin.php` | Scaffold a new community plugin (clones [community-plugin-hello-world](https://github.com/ChurchCRM/community-plugin-hello-world) from GitHub) | `php scripts/create-plugin.php <kebab-id> [--author="Name"]` |
 | `plugin-scan.php` | Self-audit a community plugin directory against the maintainer review checklist | `php scripts/plugin-scan.php [--json] <plugin-dir>` |
 
@@ -90,18 +90,13 @@ npm run locale:lint
 
 ### startNewRelease.js
 
-**Version management for releases.** Used by maintainers to bump version numbers.
-
-```bash
-node scripts/startNewRelease.js <new-version>
-```
+**Version management for releases.** Only `.github/workflows/release-prepare.yml` calls this script.
 
 **What it updates:**
 - `package.json` version
 - Database upgrade configuration
 - Creates git tag
 
-**Note:** This script is for maintainers only. Contributors should not modify version numbers.
 
 ---
 
