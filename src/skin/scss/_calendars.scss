@@ -4,3 +4,22 @@
 .bootstrap-datepicker {
   z-index: 2000 !important; // beats the plugin's inline z-index
 }
+
+// FullCalendar's Forma palette only switches on [data-color-scheme="dark"]; map its neutrals to Tabler tokens under the app's data-bs-theme.
+@media not print {
+  :root[data-bs-theme="dark"] {
+    --fc-forma-background: var(--tblr-bg-surface);
+    --fc-forma-foreground: var(--tblr-body-color);
+    --fc-forma-muted-foreground: var(--tblr-secondary-color);
+    --fc-forma-faint-foreground: color-mix(in srgb, var(--tblr-body-color) 40%, transparent);
+    --fc-forma-faint: #ffffff0a;
+    --fc-forma-muted: #ffffff14;
+    --fc-forma-strong: #ffffff1f;
+    --fc-forma-stronger: #ffffff29;
+    --fc-forma-strongest: #ffffff33;
+    --fc-forma-border: var(--tblr-border-color);
+    --fc-forma-muted-border: var(--tblr-border-color);
+    --fc-forma-strong-border: var(--tblr-border-color-active, #707070);
+    --fc-forma-highlight: #3788d859;
+  }
+}
