@@ -265,7 +265,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     <td class="text-end text-body-secondary"><?= $pct ?>%</td>
                                 </tr>
                             <?php endforeach; ?>
-                            <tr class="table-light">
+                            <tr class="bg-surface-secondary">
                                 <td colspan="2"><strong><?= gettext('Total') ?></strong></td>
                                 <td class="text-end"><strong><?= $totalGender ?></strong></td>
                                 <td class="text-end"><strong>100%</strong></td>

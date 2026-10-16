@@ -957,10 +957,19 @@ function adminChangeUserPassword(Request $request, Response $response, array $ar
     ];
 
     if ($request->getMethod() === 'POST') {
-        $loginRequestBody = $request->getParsedBody();
+        $loginRequestBody = (array) $request->getParsedBody();
+        $newPassword = (string) ($loginRequestBody['NewPassword1'] ?? '');
 
         try {
-            $user->adminSetUserPassword($loginRequestBody['NewPassword1']);
+            if (trim($newPassword) === '') {
+                throw new PasswordChangeException('New', gettext('Enter a new password'));
+            }
+
+            if ($newPassword !== (string) ($loginRequestBody['NewPassword2'] ?? '')) {
+                throw new PasswordChangeException('New', gettext('You must enter the same password in both boxes'));
+            }
+
+            $user->adminSetUserPassword($newPassword);
 
             $pageArgs['sPasswordChangeSuccess'] = true;
 

@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Classification;
 use ChurchCRM\model\ChurchCRM\EventAttendQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
@@ -39,6 +40,7 @@ class PeopleReportService
     /**
      * A report with 'labelGrouping' addresses its labels itself (each row carries a LabelMode);
      * on the others the user picks one label per person or per household.
+     * Missing People reads event attendance, so only users who can open Events get it.
      *
      * @return array<string, array{name: string, description: string, params: array<string, array<string, mixed>>, columns: array<string, string>, labelGrouping?: string}>
      */
@@ -47,7 +49,7 @@ class PeopleReportService
         $month = ['type' => 'month', 'label' => gettext('Month')];
         $classification = ['type' => 'classification', 'label' => gettext('Classification')];
 
-        return [
+        $reports = [
             'person-by-property' => [
                 'name' => gettext('Person by Property'),
                 'description' => gettext('Returns person records which are assigned the given property.'),
@@ -131,6 +133,12 @@ class PeopleReportService
                 'labelGrouping' => gettext('Birthdays are addressed to the person and anniversaries to the couple.'),
             ],
         ];
+
+        if (!AuthenticationManager::getCurrentUser()->canViewEvents()) {
+            unset($reports['missing-people']);
+        }
+
+        return $reports;
     }
 
     public function getReport(string $slug): ?array

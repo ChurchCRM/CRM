@@ -108,16 +108,3 @@ describe("People Reports: Print Labels (#10343)", () => {
         });
     });
 });
-
-describe("People Reports labels access", () => {
-    it("sends non-admins to access denied", () => {
-        cy.setupStandardSession();
-        cy.request({
-            url: `/Reports/PDFLabel.php?report=birthdays&month=7&${LABEL_OPTIONS}`,
-            followRedirect: false,
-        }).then((response) => {
-            expect(response.status).to.eq(302);
-            expect(response.headers.location).to.include("access-denied");
-        });
-    });
-});

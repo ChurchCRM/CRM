@@ -14,18 +14,15 @@ GitHub, run on demand by the maintainer ("announce 7.7.0"). Three parts, each
 independently runnable and safe to re-run — every step checks for its own
 earlier output before writing.
 
-This used to be a scheduled poll in the community agent. It is a skill now
-because the maintainer already knows when a release happened; polling for it
-cost wakes and occasionally announced late.
+The previous scheduled poll is retired. The maintainer invokes this skill after
+publication; it does not depend on a separate community agent.
 
 **Not covered here:**
 - CHANGELOG sync and closing/moving the milestone — automated by
   [`release-bookkeeping.yml`](../../../.github/workflows/release-bookkeeping.yml)
   on `release: published`. Deterministic, no model call.
-- Social media post drafts — a maintainer runs `social-media-release.md`
-  directly (via the community agent or Claude Code); drafting them needs
-  judgment about tone and which feature to lead with, so it is never done
-  from Actions.
+- Social media post drafts — run `social-media-release.md` separately; choosing
+  the lead feature and tone requires judgment.
 
 ---
 
@@ -58,9 +55,9 @@ from them verbatim except the version, contributor names, and links on
 
 ## Step 1 — Discord announcement
 
-Post to the community announcements channel (or hand the finished text to the
-community agent if you cannot post yourself — it is the single public voice
-and will post it verbatim).
+Post to the community announcements channel when you have access. If you
+cannot post, return the approved text for the maintainer to publish; do not
+assume a separate community-agent handoff.
 
 Format:
 - Release name/version in the first line.
@@ -142,8 +139,12 @@ One short Markdown block back to the maintainer:
 
 ```
 ## Release <tag> — community actions
-- Discord: posted | already posted | handed to community agent
+- Discord: posted | already posted | awaiting maintainer publication
 - Reporters notified: N issues (skipped M already marked) | none completed under milestone | awaiting go
 - Docs repo convention: present | label missing | milestone missing
 - Docs PRs ready to merge: #… #… | none | ⚠ #… has no milestone
 ```
+
+See [the release process](../../../docs/release-process.md) for the complete
+release sequence and [the locale pipeline](../../../docs/locale-pipeline.md)
+for localization status.

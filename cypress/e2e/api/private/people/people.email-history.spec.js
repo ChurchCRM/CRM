@@ -110,11 +110,11 @@ describe("API GET /api/email/log", () => {
 describe("Every send writes history rows", () => {
     it("a composer send logs one row per recipient, with the body and the sending user", () => {
         const tag = `crm-9877-${Date.now()}`;
-        cy.makePrivateAdminAPICall("POST", "/api/email/send", {
+        cy.sendComposerEmailNow({
             personIds: [2],
             subject: `Logged ${tag}`,
             body: "First line\nSecond line",
-        }).then((resp) => expect(resp.body.counts.sent).to.eq(1));
+        }).then((result) => expect(result.progress.sent).to.eq(1));
 
         adminGet("/api/email/log?personId=2&limit=1").then((resp) => {
             const row = resp.body.rows[0];

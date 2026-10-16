@@ -212,11 +212,3 @@ describe("People Reports (#9914, #9915)", () => {
         });
     });
 });
-
-describe("People Reports access", () => {
-    it("redirects non-admins to access denied", () => {
-        cy.setupStandardSession();
-        cy.visit("/people/reports", { failOnStatusCode: false });
-        cy.url().should("include", "/v2/access-denied");
-    });
-});

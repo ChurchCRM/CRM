@@ -109,7 +109,7 @@ Done when the final sync PR is merged and nothing is left to translate: `npm run
 | 1.3 | Upload `locale/messages.po` to POEditor and delete terms that no longer exist | **Since #10092:** merging the 1.2 PR changes `locale/messages.po` on `master`, which starts [`locale-sync-poeditor.yml`](../.github/workflows/locale-sync-poeditor.yml). After a 30 minute settle (a newer merge restarts it), its first step, `poeditor-upload-terms.js`, imports the terms with `sync_terms=1`, deletes the terms no longer in the file, verifies POEditor now matches it, and refuses when it would delete more than 2% of the project | 🤖 |
 | 1.4 | Run `Locale: sync` manually so the latest translations land before the release; it opens a `locale: update translations from POEditor - <date>` PR (e.g. [#10061](https://github.com/ChurchCRM/CRM/pull/10061)) | [`locale-sync-poeditor.yml`](../.github/workflows/locale-sync-poeditor.yml), `workflow_dispatch`. Manual runs: P50 7.3 min, **P90 8.1 min** (31 runs); scheduled: P90 7.7 min | ✋ trigger / 🤖 run |
 | 1.5 | Quick scan of the POEditor PR for bad files, then merge. Usually trusted as-is | Skim the file list | ✋ |
-| 1.6 | Translate every missing term in `locale/terms/missing/<locale>/` with Claude, using ChurchCRM/church-specific vocabulary | [`/locale-translate --all`](../.claude/commands/locale-translate.md) (via [`/locale-release`](../.claude/commands/locale-release.md)). Fresh `locale/translate/<version>-<date>-<time>` branch (was `locales/…` before #10065), one commit and push per locale. Measured from branch creation to last commit (7 runs, Aug–Sep 2026): 9 min to 3 h 13 min, median 37 min; scales with terms per locale (~10 → ~25 min, ~30 → ~40 min, ~155 → ~3 h) | 🧑‍💻 |
+| 1.6 | Translate every missing term in `locale/terms/missing/<locale>/` with Claude, using ChurchCRM/church-specific vocabulary | [Locale Translation skill](../.agents/skills/churchcrm/locale-translation-workflow.md) and [`/locale-translate --all`](../.claude/commands/locale-translate.md). Fresh `locale/translate/<version>-<date>-<time>` branch, one commit and push per locale. Measured from branch creation to last commit (7 runs, Aug–Sep 2026): 9 min to 3 h 13 min, median 37 min; scales with terms per locale (~10 → ~25 min, ~30 → ~40 min, ~155 → ~3 h) | 🧑‍💻 |
 | 1.7 | Upload the translated terms to POEditor | **Since #10065:** every push to `locale/translate/**` runs [`locale-upload-missing.yml`](../.github/workflows/locale-upload-missing.yml), which uploads the changed locales. Fallback: run that workflow manually (`locales` input), or `node locale/scripts/poeditor-upload-missing.js -y` locally with `POEDITOR_TOKEN`. ~22 s between locales | 🤖 (was ✋) |
 | 1.8 | `Locale: sync` runs again to download the new translations; scan and merge its PR (same as 1.4 → 1.5) | **Since #10065** the upload workflow dispatches [`locale-sync-poeditor.yml`](../.github/workflows/locale-sync-poeditor.yml) itself. **P90 8.1 min** | 🤖 trigger / 🤖 run / ✋ merge |
 
@@ -238,13 +238,13 @@ Earlier attempts to document and automate the release left overlapping and stale
 
 | File | Problem | Proposed action |
 |------|---------|-----------------|
-| `.agents/skills/churchcrm/release-management.md` | Good gate logic (SHA = build = nightly, approvals), but not linked to Phase 1 (locale) or the actual 3.0 / 3.2 / 5.1 practice. Not listed in the `SKILL.md` index | Keep. Trim to the agent's gate/report job and link here |
-| `release-notes.md` | Real process uses Gemini + last-10-releases tone + marketing strategy; skill has none of that. Says don't hard-code locale count; every release does | Add tone sampling + strategy link; make it the single notes tool (drop Gemini hop) |
-| `release-announcement.md` + `.claude/commands/release-announcement.md` | Refers to a "community agent" as the public voice; unclear if it still exists | Confirm; remove the reference if gone |
-| `social-media-release.md` | Says run after "changelog file is written (see release-notes.md)", which no longer happens there. Writes `social-media/<version>/`, which has never existed | Rewrite to match real 5.4 practice |
-| `locale-translation-workflow.md` (556 lines) + `.claude/commands/locale-release.md` + `locale-translate.md` + `locale-translate-agent-prompt.md` | Four overlapping locale docs. Per-locale upload rule wasn't followed (1.6/1.7). None described the 6-beat loop | **Partly done (#10063, #10065):** pipe-format guidance removed, "the push uploads it", dead links fixed, loop documented in `docs/locale-pipeline.md`. Still to do: collapse the four into one (#10100) |
+| `.agents/skills/churchcrm/release-management.md` | Gate logic duplicated the runbook and was missing from the `SKILL.md` index | **Done (#10100):** concise agent gates link to this runbook; indexed |
+| `release-notes.md` | Notes authoring was not clearly tied to the canonical process | **Done (#10100):** notes remain the step-specific skill and link to this runbook |
+| `release-announcement.md` + `.claude/commands/release-announcement.md` | Referred to a "community agent" as the public voice | **Done (#10100):** current instructions have the maintainer post directly; no separate agent handoff |
+| `social-media-release.md` | Referred to a changelog file as its input and wrote to a nonexistent `social-media/<version>/` directory | **Done (#10100):** draft from approved GitHub release notes and return copy-ready posts |
+| Locale translation skill and command aliases | Overlapping locale guidance duplicated the loop and exposed conflicting commit rules | **Done (#10100):** one concise translation skill holds agent rules; command aliases point to it and `docs/locale-pipeline.md` |
 | `marketing-visuals-pipeline.md` | Fine as a tool skill; has `<!-- learned: -->` essays that CLAUDE.md says not to add | Leave; tidy later |
-| `scripts/README.md` | Describes `startNewRelease.js` as "used by maintainers", but it's only called by `release-prepare.yml` | One-line fix |
+| `scripts/README.md` | Described `startNewRelease.js` as "used by maintainers", but only `release-prepare.yml` calls it | **Done (#10100)** |
 
 ### Workflows
 
@@ -368,7 +368,6 @@ Phase 1 is done for a release when:
 ### 6. Known issues to fix along the way
 
 - Plural terms can't round-trip. See §7; this is the blocker for an all-locales gate.
-- `/locale-translate`, `locale-release.md` and `locale-translate-agent-prompt.md` all cite `.agents/skills/churchcrm/locale-ai-translation.md` as the "authoritative" church-vocabulary reference. **That file does not exist** (it was deprecated). The translation agent is working without its vocabulary guide.
 - `locale-branch-manager.js` documents `locale/{VERSION}-{DATE}` but creates `locales/…`. Replace it with the §2 names.
 - `locale-sync-poeditor.yml` runs `poeditor-upload-missing.js` without `--yes`. Today it never reaches the prompt, because `master` has nothing translated to upload. Once there is something to upload, it stops at an interactive `[Y/n]` prompt with no terminal. Pass `--yes` explicitly.
 
