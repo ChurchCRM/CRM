@@ -1,6 +1,6 @@
 # /dependabot-review
 
-Review a Dependabot Composer PR on ChurchCRM/CRM: what each upgrade changes, whether it is compatible, what to verify, and whether we need code changes.
+Review a Dependabot npm or Composer PR on ChurchCRM/CRM: what each upgrade changes, whether it is compatible, what to verify, and whether we need code changes.
 
 **Arguments:** the PR number, for example `/dependabot-review 10553`
 

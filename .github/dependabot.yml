@@ -20,25 +20,18 @@ updates:
       # Remove this entry when a newer 2.x release addresses them.
       - dependency-name: "quill"
         versions: ["2.0.3"]
-      # Major versions of these fail the build or the Cypress suite on arrival
-      # (TypeScript 7 breaks `build`; Cypress 16 fails the api and ui shards). The
-      # bot re-proposed each one weekly and people closed them, so majors are
-      # planned by hand on a branch instead. Remove an entry to let the bot open
-      # that major again.
+      # Majors of these are planned upgrades on their own branch, because the
+      # build and the Cypress suite need changes first. Remove an entry to let
+      # Dependabot propose that major.
       - dependency-name: "typescript"
         update-types: ["version-update:semver-major"]
       - dependency-name: "cypress"
         update-types: ["version-update:semver-major"]
-      - dependency-name: "@cypress/*"
-        update-types: ["version-update:semver-major"]
     groups:
-      # The named groups are listed first, and the dev and runtime minor/patch
-      # groups come last. Some packages match two groups (cypress is in testing
-      # and is a dev dependency). Which group wins for a minor or patch bump is
-      # not verified here: after this merges, check which group a testing
-      # package's next minor PR lands in. UI-critical libraries get their own PR:
-      # a bad patch bump in one of them regresses visible behavior (tables,
-      # calendars, page chrome), so each needs its own build, lint and CI run.
+      # Named groups come first; the dev and runtime minor/patch groups take the
+      # rest. UI-critical libraries each get their own PR, because a patch bump
+      # in one of them changes visible behavior (tables, calendars, page chrome)
+      # and needs its own build, lint and CI run.
       tabler:
         patterns:
           - "@tabler/*"
@@ -72,8 +65,7 @@ updates:
           - "babel-*"
           - "@babel/*"
           - "@biomejs/biome"
-      # Dev-only minor and patch updates. Kept apart from runtime so a tooling
-      # bump never rides in a PR with a change that ships to churches.
+      # Dev-only minor and patch updates, in a PR apart from what ships.
       npm-dev-minor-patch:
         dependency-type: "development"
         patterns:
@@ -103,8 +95,8 @@ updates:
       prefix: "chore(deps)"
     open-pull-requests-limit: 5
     groups:
-      # Groups are matched in order. Slim and ORM stay as they were, so they are
-      # declared first and take their packages out of the groups below.
+      # Named groups come first; the dev and runtime minor/patch groups take the
+      # rest.
       # Group Slim framework packages
       slim:
         patterns:
@@ -115,9 +107,8 @@ updates:
         patterns:
           - "propel/*"
           - "perplorm/*"
-      # Dev-only minor/patch updates (phpstan, rector, swagger-php, ...). Kept
-      # apart from runtime so a tooling bump never rides in a PR that ships to
-      # churches, and so each runtime PR can be reviewed on its own.
+      # Dev-only minor and patch updates (`require-dev`), in a PR apart from
+      # what ships.
       composer-dev:
         dependency-type: "development"
         patterns:
