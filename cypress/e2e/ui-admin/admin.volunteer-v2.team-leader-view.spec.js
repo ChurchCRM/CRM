@@ -261,12 +261,9 @@ describe("Volunteer v2 — the team-only ministry view (#10530)", () => {
             timeout: 15000,
         }).should("be.checked");
         cy.then(() => {
-            dbOk(
-                `SELECT r.p2g2r_per_ID FROM person2group2role_p2g2r r
-                   JOIN group_grp g ON g.grp_ID = r.p2g2r_grp_ID
-                  WHERE g.grp_ministry_id = ? AND r.p2g2r_per_ID = ?`,
-                [ministryId, ADDED_PERSON],
-            ).then((rows) => expect(rows).to.have.length(1));
+            adminApi("GET", `${VOLUNTEER_URL}/ministries/${ministryId}/pool`).then((resp) => {
+                expect(resp.body.members.filter((m) => m.personId === ADDED_PERSON)).to.have.length(1);
+            });
         });
     });
 

@@ -47,33 +47,19 @@ let posSibling = 0;
 let originalVersion = "v1";
 let mailpitAvailable = false;
 
-function dbOk(sql, params = []) {
-    return cy.dbQuery(sql, params).then((result) => {
-        if (result.error !== null) {
-            throw new Error(`Unexpected SQL failure.\n  SQL: ${sql}\n  ${result.error.code}: ${result.error.message}`);
-        }
-        return result.rows;
-    });
-}
-
 function api(key, method, url, body, expectedStatus = 200) {
     return cy.makePrivateAPICall(Cypress.testEnv(key), method, url, body, expectedStatus);
 }
 
 function poolMembers(id) {
-    return dbOk(
-        `SELECT r.p2g2r_per_ID AS personId FROM person2group2role_p2g2r r
-           JOIN group_grp g ON g.grp_ID = r.p2g2r_grp_ID
-          WHERE g.grp_ministry_id = ?`,
-        [id],
-    ).then((rows) => rows.map((row) => Number(row.personId)));
+    return api(ADMIN_KEY, "GET", `${VOLUNTEER_URL}/ministries/${id}/pool`).then((resp) =>
+        resp.body.members.map((member) => member.personId),
+    );
 }
 
-function poolAddRows() {
-    return dbOk(
-        `SELECT vntf_per_ID AS personId, vntf_Context AS context FROM volunteer_notification_vntf
-          WHERE vntf_Type = 'pool_add' AND vntf_DedupeKey LIKE ?`,
-        [`pool_add:${ministryId}:%`],
+function qualifications(positionId, query = "") {
+    return api(ADMIN_KEY, "GET", `${VOLUNTEER_URL}/positions/${positionId}/qualifications${query}`).then(
+        (resp) => resp.body.qualifications,
     );
 }
 
@@ -90,61 +76,31 @@ function mailTo(address) {
     );
 }
 
+function poolAddMail(personName) {
+    return cy.task("mail:list", { limit: 100 }).then((result) =>
+        (result.ok ? result.body.messages || [] : []).filter((message) =>
+            (message.Subject || "").includes(`added ${personName} to the ${PREFIX} Hospitality volunteers`),
+        ),
+    );
+}
+
+function recipients(messages) {
+    return messages.flatMap((message) => (message.To || []).map((to) => (to.Address || "").toLowerCase()));
+}
+
+function requireMailpit(ctx) {
+    if (!mailpitAvailable) {
+        ctx.skip();
+    }
+}
+
 function cleanupFixtures() {
-    const like = [`${PREFIX}%`];
-    dbOk(
-        `DELETE n FROM volunteer_notification_vntf n
-           JOIN volunteer_ministry_vmin m ON n.vntf_DedupeKey LIKE CONCAT('pool_add:', m.vmin_ID, ':%')
-          WHERE m.vmin_Name LIKE ?`,
-        like,
-    );
-    dbOk(
-        `DELETE vqal FROM volunteer_qualification_vqal vqal
-           JOIN volunteer_position_vpos vpos ON vpos.vpos_ID = vqal.vqal_vpos_ID
-           JOIN volunteer_ministry_vmin vmin ON vmin.vmin_ID = vpos.vpos_vmin_ID
-          WHERE vmin.vmin_Name LIKE ?`,
-        like,
-    );
-    dbOk(
-        `DELETE vpos FROM volunteer_position_vpos vpos
-           JOIN volunteer_ministry_vmin vmin ON vmin.vmin_ID = vpos.vpos_vmin_ID
-          WHERE vmin.vmin_Name LIKE ?`,
-        like,
-    );
-    dbOk(
-        `DELETE vscp FROM volunteer_scope_vscp vscp
-           JOIN volunteer_team_vtem vtem ON vtem.vtem_ID = vscp.vscp_ScopeId AND vscp.vscp_ScopeType = 'team'
-           JOIN volunteer_ministry_vmin vmin ON vmin.vmin_ID = vtem.vtem_vmin_ID
-          WHERE vmin.vmin_Name LIKE ?`,
-        like,
-    );
-    dbOk(
-        `DELETE vscp FROM volunteer_scope_vscp vscp
-           JOIN volunteer_ministry_vmin vmin ON vmin.vmin_ID = vscp.vscp_ScopeId AND vscp.vscp_ScopeType = 'ministry'
-          WHERE vmin.vmin_Name LIKE ?`,
-        like,
-    );
-    dbOk(
-        `DELETE r FROM person2group2role_p2g2r r
-           JOIN group_grp g ON g.grp_ID = r.p2g2r_grp_ID
-           JOIN volunteer_ministry_vmin m ON m.vmin_ID = g.grp_ministry_id
-          WHERE m.vmin_Name LIKE ?`,
-        like,
-    );
-    dbOk(
-        `DELETE g FROM group_grp g
-           JOIN volunteer_ministry_vmin m ON m.vmin_ID = g.grp_ministry_id
-          WHERE m.vmin_Name LIKE ?`,
-        like,
-    );
-    dbOk(
-        `DELETE vtem FROM volunteer_team_vtem vtem
-           JOIN volunteer_ministry_vmin vmin ON vmin.vmin_ID = vtem.vtem_vmin_ID
-          WHERE vmin.vmin_Name LIKE ?`,
-        like,
-    );
-    dbOk(`DELETE FROM calendars WHERE name LIKE ?`, like);
-    dbOk(`DELETE FROM volunteer_ministry_vmin WHERE vmin_Name LIKE ?`, like);
+    api(ADMIN_KEY, "GET", `${VOLUNTEER_URL}/ministries`).then((resp) => {
+        for (const ministry of resp.body.ministries.filter((m) => m.name.startsWith(PREFIX))) {
+            api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministry.id}`, { active: false }, [200, 404]);
+            api(ADMIN_KEY, "DELETE", `${VOLUNTEER_URL}/ministries/${ministry.id}`, null, [200, 404]);
+        }
+    });
 }
 
 before(() => {
@@ -272,40 +228,32 @@ describe("Volunteer v2 — a team leader adds someone to the pool (#10531)", () 
                 expect(resp.body.qualified).to.deep.eq([]);
             });
             poolMembers(ministryId).then((ids) => expect(ids).to.include(PERSON_ADDED));
-            poolAddRows().then((rows) => {
-                expect(rows.map((row) => Number(row.personId))).to.deep.eq([PERSON_COORDINATOR]);
-                expect(JSON.parse(rows[0].context)).to.include({ personId: PERSON_ADDED, addedBy: PERSON_LEADER, teamId: teamLed });
-            });
-        });
-
-        it("Emails the coordinator who added whom, and nothing to the added person", function () {
-            if (!mailpitAvailable) {
-                this.skip();
-            }
-            dbOk("UPDATE volunteer_team_vtem SET vtem_Name = ? WHERE vtem_ID = ?", [`${PREFIX} <b>Greeters</b>`, teamLed]);
-            drain();
-            dbOk("UPDATE volunteer_team_vtem SET vtem_Name = ? WHERE vtem_ID = ?", [`${PREFIX} Greeters`, teamLed]);
-            mailTo(COORDINATOR_EMAIL).then((messages) => {
-                const about = messages.filter((message) => (message.Subject || "").includes("added Connor Newman to the"));
-                expect(about, "one email to the coordinator").to.have.length(1);
-                expect(about[0].Subject).to.include(`${PREFIX} Hospitality volunteers`);
-                return cy.task("mail:get", { id: about[0].ID });
-            }).then((result) => {
-                expect(result.body.Text).to.include(`who leads ${PREFIX}`);
-                expect(result.body.Text).to.include("Only a coordinator can take someone out of the pool.");
-                expect(result.body.HTML).to.include(`${PREFIX} &lt;b&gt;Greeters&lt;/b&gt;`);
-                expect(result.body.HTML).to.not.include("<b>Greeters</b>");
-            });
-            mailTo(ADDED_EMAIL).then((messages) => {
-                expect(messages, "nothing to the person who was added").to.have.length(0);
-            });
         });
 
         it("Answers 200 for somebody already in the pool and tells nobody again", () => {
             api(LEADER_KEY, "POST", `${VOLUNTEER_URL}/teams/${teamLed}/pool/${PERSON_ADDED}`, {}, 200).then((resp) => {
                 expect(resp.body).to.include({ added: false, notified: 0 });
             });
-            poolAddRows().then((rows) => expect(rows).to.have.length(1));
+        });
+
+        it("Emails the coordinator once who added whom, and nothing to the added person", function () {
+            requireMailpit(this);
+            api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/teams/${teamLed}`, { name: `${PREFIX} Greeters & Friends` });
+            drain();
+            api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/teams/${teamLed}`, { name: `${PREFIX} Greeters` });
+            poolAddMail("Connor Newman").then((messages) => {
+                expect(recipients(messages), "one email, to the coordinator").to.deep.eq([COORDINATOR_EMAIL]);
+                expect(messages[0].Subject).to.include("Tony Campbell added Connor Newman");
+                return cy.task("mail:get", { id: messages[0].ID });
+            }).then((result) => {
+                expect(result.body.Text).to.include(`who leads ${PREFIX}`);
+                expect(result.body.Text).to.include("Only a coordinator can take someone out of the pool.");
+                expect(result.body.HTML).to.include(`${PREFIX} Greeters &amp; Friends`);
+                expect(result.body.HTML).to.not.include("Greeters & Friends");
+            });
+            mailTo(ADDED_EMAIL).then((messages) => {
+                expect(messages, "nothing to the person who was added").to.have.length(0);
+            });
         });
 
         it("Qualifies them for positions of the leader's own team", () => {
@@ -314,19 +262,16 @@ describe("Volunteer v2 — a team leader adds someone to the pool (#10531)", () 
                     expect(resp.body.qualified).to.deep.eq([posLed]);
                 },
             );
-            dbOk(
-                `SELECT vqal_ID FROM volunteer_qualification_vqal WHERE vqal_vpos_ID = ? AND vqal_per_ID = ? AND vqal_Active = 1`,
-                [posLed, PERSON_QUALIFIED],
-            ).then((rows) => expect(rows).to.have.length(1));
+            qualifications(posLed, "?active=1").then((rows) =>
+                expect(rows.filter((row) => row.personId === PERSON_QUALIFIED)).to.have.length(1),
+            );
         });
 
         it("Refuses a position of another team, and writes nothing", () => {
             api(LEADER_KEY, "POST", `${VOLUNTEER_URL}/teams/${teamLed}/pool/${PERSON_BY_COORDINATOR}`, { positionIds: [posSibling] }, 400);
             api(LEADER_KEY, "POST", `${VOLUNTEER_URL}/teams/${teamLed}/pool/${PERSON_BY_COORDINATOR}`, { positionIds: ["door"] }, 400);
             poolMembers(ministryId).then((ids) => expect(ids).to.not.include(PERSON_BY_COORDINATOR));
-            dbOk(`SELECT vqal_ID FROM volunteer_qualification_vqal WHERE vqal_vpos_ID = ?`, [posSibling]).then((rows) =>
-                expect(rows).to.have.length(0),
-            );
+            qualifications(posSibling).then((rows) => expect(rows).to.have.length(0));
         });
 
         it("Refuses people the search would not offer", () => {
@@ -365,28 +310,35 @@ describe("Volunteer v2 — a team leader adds someone to the pool (#10531)", () 
 
             grant(PERSON_GRANTED, [200, 201]);
             poolMembers(ministryId).then((ids) => expect(ids).to.include(PERSON_GRANTED));
-            poolAddRows().then((rows) => {
-                const about = rows.filter((row) => JSON.parse(row.context).personId === PERSON_GRANTED);
-                expect(about.map((row) => Number(row.personId)), "the coordinator is told").to.deep.eq([PERSON_COORDINATOR]);
-                expect(JSON.parse(about[0].context)).to.include({ addedBy: PERSON_LEADER, teamId: teamLed });
+        });
+
+        it("Emails the coordinator who a team leader's grant added", function () {
+            requireMailpit(this);
+            drain();
+            poolAddMail("Jon Olson").then((messages) => {
+                expect(recipients(messages), "the coordinator is told").to.deep.eq([COORDINATOR_EMAIL]);
+                expect(messages[0].Subject).to.include("Tony Campbell added Jon Olson");
+                return cy.task("mail:get", { id: messages[0].ID });
+            }).then((result) => {
+                expect(result.body.Text).to.include(`who leads ${PREFIX} Greeters`);
             });
         });
 
-        it("Leaves a coordinator's qualification grant as it was: no email", () => {
+        it("Leaves a coordinator's qualification grant as it was: no email", function () {
+            requireMailpit(this);
             api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/positions/${posLed}/qualifications`, {
                 personId: PERSON_GRANTED_BY_COORDINATOR,
             }, [200, 201]);
             poolMembers(ministryId).then((ids) => expect(ids).to.include(PERSON_GRANTED_BY_COORDINATOR));
-            poolAddRows().then((rows) => {
-                expect(rows.map((row) => JSON.parse(row.context).personId)).to.not.include(PERSON_GRANTED_BY_COORDINATOR);
-            });
+            drain();
+            poolAddMail("Sandra Olson").then((messages) => expect(messages).to.have.length(0));
         });
 
-        it("Leaves the coordinator path as it was: no email for a coordinator's own add", () => {
+        it("Leaves the coordinator path as it was: no email for a coordinator's own add", function () {
+            requireMailpit(this);
             api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministryId}/pool/${PERSON_BY_COORDINATOR}`, null, 201);
-            poolAddRows().then((rows) => {
-                expect(rows.map((row) => JSON.parse(row.context).personId)).to.not.include(PERSON_BY_COORDINATOR);
-            });
+            drain();
+            poolAddMail("Herminia Hart").then((messages) => expect(messages).to.have.length(0));
         });
     });
 });
