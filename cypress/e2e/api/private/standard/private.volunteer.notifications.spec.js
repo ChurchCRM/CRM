@@ -1492,8 +1492,8 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
     });
 
     describe("Volunteer v2 — the alert about positions never filled (#10372, §3.6)", () => {
+        beforeEach(resetWorkflow);
         beforeEach(() => {
-            resetWorkflow();
             setConfig(BATCH_DATE_URL, isoDate(0));
         });
 
@@ -1759,9 +1759,13 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
     describe("Volunteer v2 — the daily batch of unfilled positions (#10529, §3.6)", () => {
         const SUMMARY_SUBJECT = "Volunteer positions to fill in the coming days";
         const MILK_NAME = `${FIXTURE_PREFIX} Milk Station`;
+        let plainScopeId = null;
 
+        beforeEach(function () {
+            requireMailpit(this);
+        });
+        beforeEach(resetWorkflow);
         beforeEach(() => {
-            resetWorkflow();
             setConfig(BATCH_DATE_URL, isoDate(-1));
         });
 
@@ -1770,10 +1774,15 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
             setConfig(BATCH_TIME_URL, "07:00");
             setConfig(BATCH_DATE_URL, "");
             restoreConfig(SMTP_HOST_URL, originalSmtpHost);
-            dbOk("UPDATE volunteer_position_vpos SET vpos_Name = ? WHERE vpos_ID = ?", [ESPRESSO_NAME, posEspresso]);
+            renamePosition(posEspresso, ESPRESSO_NAME);
             api(ADMIN_KEY, "DELETE", `${VOLUNTEER_URL}/occurrences/${occurrenceOne}/requirements`);
             api(ADMIN_KEY, "DELETE", `${VOLUNTEER_URL}/occurrences/${occurrenceTwo}/requirements`);
-            dbOk("DELETE FROM volunteer_scope_vscp WHERE vscp_per_ID = ?", [PERSON_PLAIN]);
+            cy.then(() => {
+                if (plainScopeId !== null) {
+                    api(ADMIN_KEY, "DELETE", `${VOLUNTEER_URL}/scopes/${plainScopeId}`);
+                    plainScopeId = null;
+                }
+            });
         });
 
         function minuteOfDay() {
@@ -1813,26 +1822,8 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
             }, [200, 201]);
         }
 
-        function alertKey(occurrenceId, positionId, personId = PERSON_COORDINATOR) {
-            return `gap_alert:${occurrenceId}:${positionId}:${personId}`;
-        }
-
-        /** Every gap alert on the fixture schedule; `batch` is the day of the batch that listed it, or null. */
-        function gapRows() {
-            return dbOk(
-                `SELECT vntf.vntf_DedupeKey AS dedupeKey, vntf.vntf_Context AS context,
-                        vntf.vntf_Status AS status, vntf.vntf_LastError AS lastError
-                   FROM volunteer_notification_vntf vntf
-                   JOIN volunteer_occurrence_vocc vocc ON vocc.vocc_ID = vntf.vntf_vocc_ID
-                  WHERE vntf.vntf_Type = 'gap_alert' AND vocc.vocc_vsch_ID = ?`,
-                [scheduleA],
-            ).then((rows) =>
-                rows.map((row) => ({ ...row, batch: JSON.parse(row.context || "{}").batch ?? null })),
-            );
-        }
-
-        function keysOf(rows, batched) {
-            return rows.filter((row) => (row.batch !== null) === batched).map((row) => row.dedupeKey);
+        function renamePosition(positionId, name) {
+            return api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/positions/${positionId}`, { name });
         }
 
         function summariesTo(address) {
@@ -1862,6 +1853,22 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
             });
         }
 
+        /** The HTML of every daily email to `address`. */
+        function summaryHtml(address) {
+            const pages = [];
+            return summariesTo(address)
+                .then((mail) => {
+                    for (const message of mail) {
+                        body(message).then((full) => pages.push(full.HTML || ""));
+                    }
+                })
+                .then(() => pages);
+        }
+
+        function linksOccurrence(html, occurrenceId) {
+            return new RegExp(`/ministries/occurrences/${occurrenceId}(?!\\d)`).test(html);
+        }
+
         it("queues the batch at the first run at or after the batch time, never before, and once a day", function () {
             if (minuteOfDay() >= 23 * 60 + 58) {
                 this.skip();
@@ -1871,61 +1878,41 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
             setConfig(BATCH_TIME_URL, batchTime(60));
             setConfig(BATCH_DATE_URL, isoDate(-3));
             runJobsNow();
-            gapRows().then((rows) => {
-                expect(keysOf(rows, true), "no batch before the batch time, not even a missed day's").to.have.length(0);
-                expect(keysOf(rows, false), "inside the lead, one by one").to.have.members([
-                    alertKey(occurrenceOne, posEspresso),
-                    alertKey(occurrenceOne, posMilk),
-                ]);
-            });
+            summariesTo(COORDINATOR_EMAIL).then((mail) =>
+                expect(mail, "no batch before the batch time, not even a missed day's").to.have.length(0),
+            );
+            singleAlertsTo(COORDINATOR_EMAIL).then((mail) => expect(mail, "inside the lead, one by one").to.have.length(2));
 
             batchDue();
             runJobsNow();
-            gapRows().then((rows) => {
-                expect(keysOf(rows, true)).to.deep.eq([alertKey(occurrenceTwo, posEspresso)]);
-                expect(rows.find((row) => row.batch !== null).batch).to.eq(isoDate(0));
+            summaryHtml(COORDINATOR_EMAIL).then((pages) => {
+                expect(pages).to.have.length(1);
+                expect(pages[0]).to.contain(`${ESPRESSO_NAME} — still needed: 1`);
+                expect(pages[0]).to.not.contain(MILK_NAME);
+                expect(linksOccurrence(pages[0], occurrenceOne), "the first Sunday went out one by one").to.be.false;
             });
             readConfig(BATCH_DATE_URL).should("eq", isoDate(0));
 
             raiseNeed(occurrenceTwo, posMilk, 2);
             runJobsNow();
-            gapRows().then((rows) => {
-                expect(keysOf(rows, true), "no second batch today").to.have.length(1);
-            });
+            summariesTo(COORDINATOR_EMAIL).then((mail) => expect(mail, "no second batch today").to.have.length(1));
 
             setConfig(BATCH_DATE_URL, isoDate(-1));
             runJobsNow();
-            gapRows().then((rows) => {
-                expect(keysOf(rows, true), "the next batch").to.have.members([
-                    alertKey(occurrenceTwo, posEspresso),
-                    alertKey(occurrenceTwo, posMilk),
-                ]);
+            summaryHtml(COORDINATOR_EMAIL).then((pages) => {
+                expect(pages, "the next batch").to.have.length(2);
+                const next = pages.find((html) => html.includes(MILK_NAME));
+                expect(next, "the next batch lists Milk Station").to.not.eq(undefined);
+                expect(next).to.contain(`${MILK_NAME} — still needed: 1`);
+                expect(next, "Espresso was listed yesterday").to.not.contain(ESPRESSO_NAME);
             });
-
-            cy.then(() => {
-                if (mailpitAvailable) {
-                    summariesTo(COORDINATOR_EMAIL).then((mail) => expect(mail, "one email per batch").to.have.length(2));
-                    singleAlertsTo(COORDINATOR_EMAIL).then((mail) => expect(mail).to.have.length(2));
-                }
-            });
+            singleAlertsTo(COORDINATOR_EMAIL).then((mail) => expect(mail).to.have.length(2));
         });
 
-        it("lists every position starting within the lead + 24 hours in one email, and nothing beyond", function () {
-            requireMailpit(this);
+        it("lists every position starting within the lead + 24 hours in one email, and nothing beyond", () => {
             leadShortOfOccurrenceTwo();
             batchDue();
             runJobsNow();
-
-            gapRows().then((rows) => {
-                expect(keysOf(rows, true)).to.have.members([
-                    alertKey(occurrenceOne, posEspresso),
-                    alertKey(occurrenceOne, posMilk),
-                    alertKey(occurrenceTwo, posEspresso),
-                    alertKey(occurrenceTwo, posMilk),
-                ]);
-                expect(keysOf(rows, false), "the batch covered the lead window too").to.have.length(0);
-                expect(rows.map((row) => row.status)).to.deep.eq(["sent", "sent", "sent", "sent"]);
-            });
 
             summariesTo(COORDINATOR_EMAIL).then((mail) => {
                 expect(mail).to.have.length(1);
@@ -1943,15 +1930,13 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
                     expect(html).to.contain("/ministries/dashboard");
                 });
             });
-            singleAlertsTo(COORDINATOR_EMAIL).then((mail) => expect(mail).to.have.length(0));
+            singleAlertsTo(COORDINATOR_EMAIL).then((mail) =>
+                expect(mail, "the batch covered the lead window too").to.have.length(0),
+            );
         });
 
-        it("escapes the position name in the daily email", function () {
-            requireMailpit(this);
-            dbOk("UPDATE volunteer_position_vpos SET vpos_Name = ? WHERE vpos_ID = ?", [
-                `${FIXTURE_PREFIX} <b>Espresso</b>`,
-                posEspresso,
-            ]);
+        it("escapes the position name in the daily email", () => {
+            renamePosition(posEspresso, `${FIXTURE_PREFIX} Tea & "Espresso"`);
             leadShortOfOccurrenceTwo();
             batchDue();
             runJobsNow();
@@ -1960,8 +1945,8 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
                 expect(mail).to.have.length(1);
                 body(mail[0]).then((message) => {
                     const html = message.HTML || "";
-                    expect(html).to.contain("&lt;b&gt;Espresso&lt;/b&gt;");
-                    expect(html).to.not.contain("<b>Espresso</b>");
+                    expect(html).to.contain("Tea &amp; &quot;Espresso&quot;");
+                    expect(html).to.not.contain('Tea & "Espresso"');
                 });
             });
         });
@@ -1971,71 +1956,39 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
             leadShortOfOccurrenceTwo();
             batchDue();
             runJobsNow();
-            gapRows().then((rows) => {
-                expect(keysOf(rows, true)).to.have.members([
-                    alertKey(occurrenceOne, posMilk),
-                    alertKey(occurrenceTwo, posEspresso),
-                    alertKey(occurrenceTwo, posMilk),
-                ]);
+            summaryHtml(COORDINATOR_EMAIL).then((pages) => {
+                expect(pages).to.have.length(1);
+                expect(pages[0]).to.contain("Volunteers still needed for these upcoming occurrences: 3");
             });
 
             drain();
-            gapRows().then((rows) => {
-                expect(keysOf(rows, false), "Milk Station is short inside the lead, but was listed").to.have.length(0);
-            });
+            singleAlertsTo(COORDINATOR_EMAIL).then((mail) =>
+                expect(mail, "Milk Station is short inside the lead, but was listed").to.have.length(0),
+            );
 
             raiseNeed(occurrenceOne, posEspresso, 2);
             drain();
-            gapRows().then((rows) => {
-                expect(keysOf(rows, false)).to.deep.eq([alertKey(occurrenceOne, posEspresso)]);
-                expect(keysOf(rows, true)).to.have.length(3);
+            singleAlertsTo(COORDINATOR_EMAIL).then((mail) => {
+                expect(mail).to.have.length(1);
+                body(mail[0]).then((message) => expect(message.HTML || "").to.contain(ESPRESSO_NAME));
             });
-
-            cy.then(() => {
-                if (mailpitAvailable) {
-                    summariesTo(COORDINATOR_EMAIL).then((mail) => expect(mail).to.have.length(1));
-                    singleAlertsTo(COORDINATOR_EMAIL).then((mail) => {
-                        expect(mail).to.have.length(1);
-                        body(mail[0]).then((message) => expect(message.HTML || "").to.contain(ESPRESSO_NAME));
-                    });
-                }
-            });
+            summariesTo(COORDINATOR_EMAIL).then((mail) => expect(mail).to.have.length(1));
         });
 
-        it("drops a position filled before the batch could be sent", function () {
+        it("drops a position filled before the batch could be sent", () => {
             setConfig(SMTP_HOST_URL, "127.0.0.1:2");
             leadToOccurrenceOne();
             batchDue();
             runJobsNow();
-            gapRows().then((rows) => {
-                expect(keysOf(rows, true)).to.have.members([
-                    alertKey(occurrenceOne, posEspresso),
-                    alertKey(occurrenceOne, posMilk),
-                ]);
-                expect(rows.map((row) => row.status)).to.deep.eq(["pending", "pending"]);
-            });
+            summariesTo(COORDINATOR_EMAIL).then((mail) => expect(mail, "the SMTP server refused it").to.have.length(0));
 
             assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A);
             cy.then(() => restoreConfig(SMTP_HOST_URL, originalSmtpHost));
             drain();
-            outboxRow(alertKey(occurrenceOne, posEspresso)).then((row) => {
-                expect(row.vntf_Status).to.eq("skipped");
-                expect(row.vntf_LastError).to.contain("filled");
-            });
-            outboxRow(alertKey(occurrenceOne, posMilk)).then((row) => {
-                expect(row.vntf_Status).to.eq("sent");
-            });
-
-            cy.then(() => {
-                if (mailpitAvailable) {
-                    summariesTo(COORDINATOR_EMAIL).then((mail) => {
-                        expect(mail).to.have.length(1);
-                        body(mail[0]).then((message) => {
-                            expect(message.HTML || "").to.contain(`${MILK_NAME} — still needed: 1`);
-                            expect(message.HTML || "").to.not.contain(ESPRESSO_NAME);
-                        });
-                    });
-                }
+            summaryHtml(COORDINATOR_EMAIL).then((pages) => {
+                expect(pages).to.have.length(1);
+                expect(pages[0]).to.contain(`${MILK_NAME} — still needed: 1`);
+                expect(pages[0]).to.not.contain(ESPRESSO_NAME);
             });
         });
 
@@ -2051,15 +2004,8 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
             clearMail();
             drain();
 
-            gapRows().then((rows) => {
-                expect(rows).to.have.length(2);
-                expect(rows.map((row) => row.status)).to.deep.eq(["skipped", "skipped"]);
-            });
-            cy.then(() => {
-                if (mailpitAvailable) {
-                    summariesTo(COORDINATOR_EMAIL).then((mail) => expect(mail, "no empty batch").to.have.length(0));
-                }
-            });
+            summariesTo(COORDINATOR_EMAIL).then((mail) => expect(mail, "no empty batch").to.have.length(0));
+            singleAlertsTo(COORDINATOR_EMAIL).then((mail) => expect(mail).to.have.length(0));
         });
 
         it("lists nothing on an occurrence whose decline already alerted the coordinator", () => {
@@ -2071,21 +2017,22 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
             leadShortOfOccurrenceTwo();
             batchDue();
             runJobsNow();
-            gapRows().then((rows) => {
-                expect(keysOf(rows, true)).to.have.members([
-                    alertKey(occurrenceTwo, posEspresso),
-                    alertKey(occurrenceTwo, posMilk),
-                ]);
+            summaryHtml(COORDINATOR_EMAIL).then((pages) => {
+                expect(pages).to.have.length(1);
+                expect(pages[0]).to.contain("Volunteers still needed for these upcoming occurrences: 2");
+                expect(linksOccurrence(pages[0], occurrenceTwo)).to.be.true;
+                expect(linksOccurrence(pages[0], occurrenceOne), "the decline's alert covered it").to.be.false;
             });
         });
 
-        it("links a team leader without Manage My Ministries to the portal", function () {
-            requireMailpit(this);
+        it("links a team leader without Manage My Ministries to the portal", () => {
             api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/scopes`, {
                 personId: PERSON_PLAIN,
                 scopeType: "team",
                 scopeId: teamA,
-            }, [200, 201]);
+            }, [200, 201]).then((resp) => {
+                plainScopeId = resp.body.scope.id;
+            });
             leadToOccurrenceOne();
             batchDue();
             runJobsNow();
