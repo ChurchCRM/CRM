@@ -21,6 +21,13 @@
   aspect-ratio: 1 / 1;
 }
 
+.avatar:not(img) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.avatar > i[class*="fa-"] { font-size: 1.4em; line-height: 1; }
+
 .avatar-sm { width: var(--avatar-sm); height: var(--avatar-sm); font-size: 0.875rem; }
 .avatar-md { width: var(--avatar-md); height: var(--avatar-md); font-size: 1rem; }
 .avatar-lg { width: var(--avatar-lg); height: var(--avatar-lg); font-size: 1.25rem; }

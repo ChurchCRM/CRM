@@ -18,6 +18,23 @@
   }
 }
 
+// Tabler 1.6 sets no text colour on a solid badge, so a bare `badge bg-*` falls back to a muted grey. A text-* utility still wins.
+.badge {
+  &.bg-primary,
+  &.bg-secondary,
+  &.bg-success,
+  &.bg-danger,
+  &.bg-dark {
+    color: var(--tblr-white);
+  }
+
+  &.bg-warning,
+  &.bg-info,
+  &.bg-light {
+    color: var(--tblr-dark);
+  }
+}
+
 .error-page-logo { margin: 72px auto 0; }
 
 .email-debug-label-col { width: 80px; }
