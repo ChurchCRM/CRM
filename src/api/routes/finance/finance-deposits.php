@@ -133,11 +133,19 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
     $group->post('/{id:[0-9]+}', function (Request $request, Response $response, array $args): Response {
         $input = $request->getParsedBody();
         $deposit = $request->getAttribute('deposit');
+        // Type is not part of setDeposit(); save it first so closing a card or
+        // draft deposit still runs that method's uncleared-payment cleanup.
         $deposit->setType($input['depositType']);
-        $deposit->setComment($input['depositComment'] ?? '');
-        $deposit->setDate($input['depositDate']);
-        $deposit->setClosed($input['depositClosed']);
         $deposit->save();
+        $depositService = new DepositService();
+        $depositService->setDeposit(
+            (string) $input['depositType'],
+            (string) ($input['depositComment'] ?? ''),
+            (string) $input['depositDate'],
+            (int) $deposit->getId(),
+            filter_var($input['depositClosed'] ?? false, FILTER_VALIDATE_BOOLEAN)
+        );
+        $deposit->reload();
         return SlimUtils::renderJSON($response, $deposit->toArray());
     })->add(new InputSanitizationMiddleware(['depositComment' => 'text']))
       ->add(DepositMiddleware::class);

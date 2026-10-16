@@ -1,0 +1,22 @@
+{
+  "inlineStyles": {
+    "src/ChurchCRM/Bootstrapper.php": 2,
+    "src/PersonEditor.php": 1,
+    "src/admin/views/feature-toggles.php": 1,
+    "src/admin/views/localization.php": 1,
+    "src/admin/views/user-editor.php": 2,
+    "src/external/templates/404.php": 1,
+    "src/external/templates/calendar/calendar.php": 1,
+    "src/external/templates/calendar/error.php": 3,
+    "src/external/templates/registration/family-register.php": 4,
+    "src/external/templates/system-db-update.php": 1,
+    "src/external/templates/verify/verify-family-info.php": 1,
+    "src/finance/views/deposits/search.php": 1,
+    "src/kiosk/templates/kioskDevices/sunday-school-class-view.php": 1,
+    "src/kiosk/views/manager.php": 1,
+    "src/people/views/timeline-events.php": 1,
+    "src/plugins/views/management.php": 2,
+    "src/setup/templates/setup-steps.php": 3,
+    "webpack/setup.js": 4
+  }
+}

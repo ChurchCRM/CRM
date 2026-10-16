@@ -15,6 +15,7 @@ import type {
   KioskAssignment,
   KioskJSOM,
   PersonApiData,
+  RegisterGuestResponse,
 } from "./types";
 
 // Declare moment as global (loaded via CDN in header)
@@ -83,7 +84,7 @@ function renderClassMember(classMember: ClassMember): void {
     // Create member row
     const memberRow = $("<div>", {
       id: `personId-${classMember.personId}`,
-      class: "kiosk-member",
+      class: `kiosk-member${classMember.isGuest ? " kiosk-member-guest" : ""}`,
       "data-familyId": classMember.familyId || null,
     });
 
@@ -127,6 +128,15 @@ function renderClassMember(classMember: ClassMember): void {
           class: "fa-solid fa-cake-candles ms-2",
           style: "color: #e83e8c;",
           title: classMember.birthdayUpcoming ? "Birthday coming up!" : "Recent birthday!",
+        }),
+      );
+    }
+    // Guest badge
+    if (classMember.isGuest) {
+      nameDiv.append(
+        $("<span>", {
+          class: "badge bg-orange-lt text-orange ms-2 kiosk-guest-badge",
+          text: i18next.t("Guest"),
         }),
       );
     }
@@ -344,6 +354,9 @@ function updateActiveClassMembers(): void {
     path: "activeClassMembers",
   })
     .done((data: ActiveClassMembersResponse) => {
+      // Walk-in guests need a linked group and an open event; the server enforces it too.
+      $("#registerGuestBtn").toggleClass("d-none", !data?.GroupName);
+
       if (!data?.People || data.People.length === 0) {
         // No members found - show helpful debug info
         $("#classMemberContainer").html(renderNoMembersMessage());
@@ -385,6 +398,7 @@ function updateActiveClassMembers(): void {
           birthDay: d.birthDay,
           birthMonth: d.birthMonth,
           familyId: d.familyId,
+          isGuest: d.isGuest ?? false,
         };
 
         renderClassMember(memberData);
@@ -403,7 +417,7 @@ function updateActiveClassMembers(): void {
     })
     .fail((xhr: JQuery.jqXHR) => {
       // API error - show debug info
-      let errorMessage = "Unable to load class members";
+      let errorMessage = "Unable to load group members";
       if (xhr.responseJSON?.message) {
         errorMessage = xhr.responseJSON.message;
       } else if (xhr.status === 500) {
@@ -421,7 +435,7 @@ function renderNoMembersMessage(): string {
     '<div class="kiosk-status-container">' +
     '<div class="card kiosk-status-card card-warning">' +
     '<div class="card-header">' +
-    '<h3 class="card-title"><i class="fa-solid fa-users-slash me-2"></i>No Class Members Found</h3>' +
+    '<h3 class="card-title"><i class="fa-solid fa-users-slash me-2"></i>No Group Members Found</h3>' +
     "</div>" +
     '<div class="card-body">' +
     '<div class="kiosk-status-icon text-warning">' +
@@ -431,7 +445,7 @@ function renderNoMembersMessage(): string {
     '<div class="kiosk-instructions">' +
     '<h5><i class="fa-solid fa-circle-info me-2"></i>Possible Causes</h5>' +
     "<ol>" +
-    "<li><strong>Event not linked to a Group:</strong> Edit the event and associate it with a Sunday School or other group</li>" +
+    "<li><strong>Event not linked to a Group:</strong> Edit the event and associate it with a group</li>" +
     "<li><strong>Group has no members:</strong> Add people to the group that is linked to this event</li>" +
     "<li><strong>Event timing:</strong> The event may not be currently active (check start/end times)</li>" +
     "</ol>" +
@@ -570,6 +584,7 @@ function heartbeat(): void {
           $("#noEvent").hide();
           $("#event").show();
           $("#timeRemaining").addClass("d-none");
+          $("#registerGuestBtn").addClass("d-none");
           $("#classMemberContainer").html(renderCountdown(checkInOpensAt, Assignment.Event.Title, data.Name));
           startCountdown(checkInOpensAt);
         } else if (now.isAfter(eventEnd)) {
@@ -577,6 +592,7 @@ function heartbeat(): void {
           $("#noEvent").hide();
           $("#event").show();
           $("#timeRemaining").addClass("d-none");
+          $("#registerGuestBtn").addClass("d-none");
           $("#classMemberContainer").html(renderEventEnded(Assignment.Event.Title));
         } else {
           // Event is active - show class members + time-remaining badge so
@@ -1341,6 +1357,162 @@ function cancelScheduledRefresh(): void {
 }
 
 /**
+ * Show the guest registration modal, resetting any previous form state.
+ */
+function showGuestRegistrationModal(): void {
+  const modalEl = document.getElementById("guestRegistrationModal");
+  if (!modalEl) return;
+
+  // Reset all form fields in one call
+  const form = document.getElementById("guestRegistrationForm") as HTMLFormElement | null;
+  form?.reset();
+
+  // Clear validation state
+  modalEl.querySelectorAll(".is-invalid").forEach((el) => {
+    el.classList.remove("is-invalid");
+  });
+  const errorDiv = document.getElementById("guestFormError");
+  if (errorDiv) {
+    errorDiv.textContent = "";
+    errorDiv.style.display = "none";
+  }
+
+  // Re-enable submit button
+  const submitBtn = document.getElementById("guestRegisterSubmitBtn") as HTMLButtonElement | null;
+  if (submitBtn) {
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = `<i class="fa-solid fa-user-plus me-1"></i>${i18next.t("Register & Check In")}`;
+  }
+
+  window.bootstrap.Modal.getOrCreateInstance(modalEl).show();
+}
+
+/**
+ * Submit the guest registration form
+ */
+function submitGuestRegistration(): void {
+  const firstNameEl = document.getElementById("guestFirstName") as HTMLInputElement;
+  const lastNameEl = document.getElementById("guestLastName") as HTMLInputElement;
+  const phoneEl = document.getElementById("guestPhone") as HTMLInputElement;
+  const emailEl = document.getElementById("guestEmail") as HTMLInputElement;
+  const birthYearEl = document.getElementById("guestBirthYear") as HTMLInputElement;
+  const birthMonthEl = document.getElementById("guestBirthMonth") as HTMLSelectElement;
+  const birthDayEl = document.getElementById("guestBirthDay") as HTMLInputElement;
+  const errorDiv = document.getElementById("guestFormError");
+  const submitBtn = document.getElementById("guestRegisterSubmitBtn") as HTMLButtonElement | null;
+
+  // The Enter key bypasses the disabled button, so guard here too
+  if (submitBtn?.disabled) return;
+
+  // Clear previous validation
+  [firstNameEl, lastNameEl, phoneEl, emailEl].forEach((el) => {
+    el.classList.remove("is-invalid");
+  });
+  if (errorDiv) {
+    errorDiv.textContent = "";
+    errorDiv.style.display = "none";
+  }
+
+  // Validate required fields
+  let valid = true;
+  if (!firstNameEl.value.trim()) {
+    firstNameEl.classList.add("is-invalid");
+    valid = false;
+  }
+  if (!lastNameEl.value.trim()) {
+    lastNameEl.classList.add("is-invalid");
+    valid = false;
+  }
+  if (!phoneEl.value.trim() && !emailEl.value.trim()) {
+    phoneEl.classList.add("is-invalid");
+    emailEl.classList.add("is-invalid");
+    if (errorDiv) {
+      errorDiv.textContent = i18next.t("A phone number or email address is required");
+      errorDiv.style.display = "block";
+    }
+    valid = false;
+  }
+  if (!valid) return;
+
+  // Disable submit button to prevent double-submit
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin me-1"></i>${i18next.t("Registering...")}`;
+  }
+
+  const payload: Record<string, string | number> = {
+    FirstName: firstNameEl.value.trim(),
+    LastName: lastNameEl.value.trim(),
+  };
+  if (phoneEl.value.trim()) payload.Phone = phoneEl.value.trim();
+  if (emailEl.value.trim()) payload.Email = emailEl.value.trim();
+  if (birthYearEl.value) payload.BirthYear = parseInt(birthYearEl.value, 10);
+  if (birthMonthEl.value) payload.BirthMonth = parseInt(birthMonthEl.value, 10);
+  if (birthDayEl.value) payload.BirthDay = parseInt(birthDayEl.value, 10);
+
+  APIRequest({
+    path: "registerGuest",
+    method: "POST",
+    data: JSON.stringify(payload),
+  })
+    .done((data: RegisterGuestResponse) => {
+      // Close modal
+      const modalEl = document.getElementById("guestRegistrationModal");
+      if (modalEl) window.bootstrap.Modal.getOrCreateInstance(modalEl).hide();
+
+      // An empty group (or a countdown/ended screen) replaced the roster markup, so there is no
+      // list to add to: reload and let the server's roster, which includes guests, render it.
+      if ($("#checkedInList").length === 0) {
+        window.location.reload();
+        return;
+      }
+
+      // Render the guest directly in the Checked In list
+      const guestMember: ClassMember = {
+        displayName: `${data.FirstName} ${data.LastName}`,
+        firstName: data.FirstName,
+        classRole: "",
+        personId: data.Id,
+        status: data.status, // 1 = checked in (server confirmed check-in)
+        gender: data.Gender,
+        hasPhoto: data.hasPhoto,
+        age: data.age,
+        birthdayThisMonth: false,
+        birthdayUpcoming: false,
+        birthdayRecent: false,
+        birthdayToday: false,
+        birthDay: null,
+        birthMonth: null,
+        familyId: data.familyId,
+        isGuest: true,
+      };
+      renderClassMember(guestMember);
+      updateMemberCounts();
+
+      showKioskNotification(
+        i18next.t("{{name}} registered and checked in!", {
+          name: `${data.FirstName} ${data.LastName}`,
+        }),
+        "success",
+      );
+    })
+    .fail((xhr: JQuery.jqXHR) => {
+      // Re-enable submit button on failure
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = `<i class="fa-solid fa-user-plus me-1"></i>${i18next.t("Register & Check In")}`;
+      }
+      const message =
+        (xhr.responseJSON as { message?: string } | undefined)?.message ||
+        i18next.t("Failed to register guest. Please try again.");
+      if (errorDiv) {
+        errorDiv.textContent = message;
+        errorDiv.style.display = "block";
+      }
+    });
+}
+
+/**
  * Start the event loop
  */
 function startEventLoop(): void {
@@ -1411,6 +1583,8 @@ export const kiosk: KioskJSOM = {
   resolveCheckinByModal,
   cancelCheckinByModal,
   cancelScheduledRefresh,
+  showGuestRegistrationModal,
+  submitGuestRegistration,
 };
 
 // Attach to window.CRM.kiosk for global access (for external use)

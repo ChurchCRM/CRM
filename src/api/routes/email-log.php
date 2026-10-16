@@ -9,7 +9,8 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
 /**
- * Email history (email_log_eml): read-only. Rows are written only by BaseEmail::send().
+ * Email history (email_log_eml): read-only. Rows are written by BaseEmail::send() and, for
+ * queued composer messages, by EmailQueueService.
  *
  * @OA\Get(
  *     path="/email/log",
@@ -19,7 +20,7 @@ use Slim\Routing\RouteCollectorProxy;
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="personId", in="query", @OA\Schema(type="integer")),
  *     @OA\Parameter(name="familyId", in="query", @OA\Schema(type="integer"), description="Rows for the family address and its current members"),
- *     @OA\Parameter(name="status", in="query", @OA\Schema(type="string", enum={"sent","failed","skipped"}), description="Only honoured on the unscoped (admin) list"),
+ *     @OA\Parameter(name="status", in="query", @OA\Schema(type="string", enum={"sent","failed","skipped","queued","sending"}), description="Only honoured on the unscoped (admin) list"),
  *     @OA\Parameter(name="page", in="query", @OA\Schema(type="integer", default=1)),
  *     @OA\Parameter(name="limit", in="query", @OA\Schema(type="integer", default=25, maximum=100)),
  *     @OA\Response(response=200, description="A page of history rows",
@@ -34,7 +35,9 @@ use Slim\Routing\RouteCollectorProxy;
  *                 @OA\Property(property="kind", type="string"),
  *                 @OA\Property(property="kindLabel", type="string"),
  *                 @OA\Property(property="subject", type="string"),
- *                 @OA\Property(property="status", type="string", enum={"sent","failed","skipped"}),
+ *                 @OA\Property(property="status", type="string", enum={"sent","failed","skipped","queued","sending"}, description="queued: waiting to be sent (a retry keeps the last error); sending: a run is sending it now"),
+ *                 @OA\Property(property="statusLabel", type="string"),
+ *                 @OA\Property(property="attempts", type="integer", description="Delivery attempts so far"),
  *                 @OA\Property(property="error", type="string", nullable=true),
  *                 @OA\Property(property="dateSent", type="string"),
  *                 @OA\Property(property="hasBody", type="boolean"))),
@@ -95,7 +98,7 @@ $app->group('/email/log', function (RouteCollectorProxy $group): void {
                 return SlimUtils::renderErrorJSON($response, gettext('Administrator permission required'), [], 403, null, $request);
             }
             $status = isset($q['status']) ? (string) $q['status'] : null;
-            if ($status !== null && !in_array($status, [EmailLogService::STATUS_SENT, EmailLogService::STATUS_FAILED, EmailLogService::STATUS_SKIPPED], true)) {
+            if ($status !== null && !in_array($status, EmailLogService::STATUSES, true)) {
                 return SlimUtils::renderErrorJSON($response, gettext('Invalid status'), [], 400, null, $request);
             }
 

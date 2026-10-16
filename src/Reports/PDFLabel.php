@@ -761,10 +761,10 @@ function GenerateLabels(&$pdf, array $aEntries, $iBulkMailPresort, $bToParents, 
     return $zipLabels ?? $sLabelList;
 }
 
-// Labels for a People Report's rows (#10343) instead of the cart. The reports are admin only.
+// Labels for a People Report's rows (#10343) instead of the cart, with the permission of Letters & Labels.
 $sReportSlug = (string) ($_GET['report'] ?? '');
 if ($sReportSlug !== '') {
-    AuthenticationManager::redirectHomeIfNotAdmin();
+    AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled(), 'MenuOptions');
 }
 
 // Standard format

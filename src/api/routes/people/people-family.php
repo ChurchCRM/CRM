@@ -224,33 +224,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
      *         The optional second address (#9743) is exposed additively as `SecondAddress1`, `SecondAddress2`,
      *         `SecondCity`, `SecondState`, `SecondZip`, `SecondCountry` and `SecondIsMailing`, alongside the
      *         resolved `MailingAddress` object (the flagged second address when set, the primary otherwise).",
-     *         @OA\JsonContent(
-     *             @OA\Property(property="Id", type="integer"),
-     *             @OA\Property(property="Name", type="string"),
-     *             @OA\Property(property="Address", type="string", description="Primary address, one line"),
-     *             @OA\Property(property="SecondAddress1", type="string", nullable=true),
-     *             @OA\Property(property="SecondAddress2", type="string", nullable=true),
-     *             @OA\Property(property="SecondCity", type="string", nullable=true),
-     *             @OA\Property(property="SecondState", type="string", nullable=true),
-     *             @OA\Property(property="SecondZip", type="string", nullable=true),
-     *             @OA\Property(property="SecondCountry", type="string", nullable=true),
-     *             @OA\Property(property="SecondIsMailing", type="boolean"),
-     *             @OA\Property(property="HasSecondAddress", type="boolean"),
-     *             @OA\Property(property="SecondAddressIsMailing", type="boolean"),
-     *             @OA\Property(property="SecondAddress", type="string", description="Second address, one line"),
-     *             @OA\Property(property="MailingAddressLines", type="string", description="Resolved mailing address, one line"),
-     *             @OA\Property(
-     *                 property="MailingAddress",
-     *                 type="object",
-     *                 description="Resolved mailing address parts",
-     *                 @OA\Property(property="Address1", type="string"),
-     *                 @OA\Property(property="Address2", type="string"),
-     *                 @OA\Property(property="City", type="string"),
-     *                 @OA\Property(property="State", type="string"),
-     *                 @OA\Property(property="Zip", type="string"),
-     *                 @OA\Property(property="Country", type="string")
-     *             )
-     *         )
+     *         @OA\JsonContent(ref="#/components/schemas/Family")
      *     ),
      *     @OA\Response(response=403, description="Access denied"),
      *     @OA\Response(response=404, description="Family not found")
@@ -541,13 +515,17 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         $familyId = $family->getId();
         $deleteMembers = filter_var($request->getQueryParams()['deleteMembers'] ?? 'false', FILTER_VALIDATE_BOOLEAN);
 
-        // Check for donations — cannot delete a family with payment records unless finance-authorized
-        $pledgeCount = \ChurchCRM\model\ChurchCRM\PledgeQuery::create()
+        // Never delete a family that has pledges or payments — it would orphan or distort church finance records.
+        $financeCount = \ChurchCRM\model\ChurchCRM\PledgeQuery::create()
             ->filterByFamId($familyId)
-            ->filterByPledgeOrPayment('Payment')
             ->count();
-        if ($pledgeCount > 0 && !AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
-            return SlimUtils::renderErrorJSON($response, gettext('Cannot delete a family with donation records. Contact a finance administrator.'), [], 403);
+        if ($financeCount > 0) {
+            return SlimUtils::renderErrorJSON(
+                $response,
+                gettext('Cannot delete a family that has pledges or payments. Move or remove the finance records first.'),
+                [],
+                403
+            );
         }
 
         if ($deleteMembers) {
@@ -565,12 +543,6 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         // Delete associated notes
         \ChurchCRM\model\ChurchCRM\NoteQuery::create()
             ->filterByFamId($familyId)
-            ->delete();
-
-        // Delete family pledges (non-payment)
-        \ChurchCRM\model\ChurchCRM\PledgeQuery::create()
-            ->filterByFamId($familyId)
-            ->filterByPledgeOrPayment('Pledge')
             ->delete();
 
         // Remove family property assignments

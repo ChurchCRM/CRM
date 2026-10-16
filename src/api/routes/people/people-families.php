@@ -1,5 +1,7 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\model\ChurchCRM\Map\TokenTableMap;
@@ -115,7 +117,7 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
     /**
      * @OA\Get(
      *     path="/families/search/{query}",
-     *     summary="Search families by name (max 15 results)",
+     *     summary="Search families by name, or by envelope number for finance users (max 15 results)",
      *     tags={"Families"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="query", in="path", required=true, @OA\Schema(type="string")),
@@ -127,12 +129,19 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
     $group->get('/search/{query}', function (Request $request, Response $response, array $args): Response {
         $query = $args['query'];
         $results = [];
-        $q = FamilyQuery::create()
-            ->filterByName("%$query%", Criteria::LIKE)
-            ->limit(15)
-            ->find();
-        foreach ($q as $family) {
-            $results[] = $family->toSearchArray();
+        $q = FamilyQuery::create()->filterByName("%$query%", Criteria::LIKE);
+        $byEnvelope = ctype_digit($query)
+            && SystemConfig::getBooleanValue('bUseDonationEnvelopes')
+            && AuthenticationManager::getCurrentUser()->isFinanceEnabled();
+        if ($byEnvelope) {
+            $q->_or()->filterByEnvelope((int) $query);
+        }
+        foreach ($q->limit(15)->find() as $family) {
+            $row = $family->toSearchArray();
+            if ($byEnvelope && $family->getEnvelope()) {
+                $row['displayName'] .= ' (' . gettext('Envelope') . ' #' . $family->getEnvelope() . ')';
+            }
+            $results[] = $row;
         }
 
         return SlimUtils::renderJSON($response, ['Families' => $results]);

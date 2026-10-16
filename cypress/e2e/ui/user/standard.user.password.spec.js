@@ -63,6 +63,55 @@ describe("Standard User Password", () => {
         cy.contains("Your new password is too similar to your old one");
     });
 
+    it("Change with a confirmation that does not match", () => {
+        cy.visit("/v2/user/current/changepassword");
+        cy.get("#OldPassword").type("ILikePancakes");
+        cy.get("#NewPassword1").type("changeyou");
+        cy.get("#NewPassword2").type("changeyou2");
+        cy.get("#passwordChangeForm").submit();
+        cy.get("#NewPasswordError").should("have.text", "You must enter the same password in both boxes");
+        cy.get("#NewPassword1").should("have.value", "changeyou");
+    });
+
+    it("Server refuses a confirmation that does not match", () => {
+        cy.visit("/v2/user/current/changepassword");
+        cy.get("input[name=csrf_token]")
+            .invoke("val")
+            .then((csrfToken) =>
+                cy.request({
+                    method: "POST",
+                    url: "/v2/user/current/changepassword",
+                    form: true,
+                    body: {
+                        csrf_token: csrfToken,
+                        OldPassword: "ILikePancakes",
+                        NewPassword1: "changeyou",
+                        NewPassword2: "changeyou2",
+                    },
+                }),
+            )
+            .its("body")
+            .should("contain", "You must enter the same password in both boxes")
+            .and("not.contain", "Incorrect password supplied for current user");
+    });
+
+    it("Server refuses a blank new password", () => {
+        cy.visit("/v2/user/current/changepassword");
+        cy.get("input[name=csrf_token]")
+            .invoke("val")
+            .then((csrfToken) =>
+                cy.request({
+                    method: "POST",
+                    url: "/v2/user/current/changepassword",
+                    form: true,
+                    body: { csrf_token: csrfToken, OldPassword: "ILikePancakes", NewPassword1: " ", NewPassword2: " " },
+                }),
+            )
+            .its("body")
+            .should("contain", "Enter a new password")
+            .and("not.contain", "Incorrect password supplied for current user");
+    });
+
 });
 
 /**

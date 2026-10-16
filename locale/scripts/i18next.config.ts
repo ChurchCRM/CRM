@@ -30,7 +30,7 @@ export default defineConfig({
     keySeparator: false,
     nsSeparator: false,
     contextSeparator: '_',
-    functions: ['t', '*.t'],
+    functions: ['t', '*.t', 'tText'],
     transComponents: ['Trans']
   },
   plugins: [phpInlineI18nextPlugin()]

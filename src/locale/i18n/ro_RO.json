@@ -2926,7 +2926,6 @@
   "An error occurred while moving donations.": "A apărut o eroare la mutarea donațiilor.",
   "At least one family member is required": "Este necesar cel puțin un membru al familiei",
   "Back to Users": "Înapoi la utilizatori",
-  "Cannot delete a family with donation records. Contact a finance administrator.": "Nu se poate șterge o familie cu înregistrări de donații. Contactați un administrator financiar.",
   "Cannot move property in that direction": "Nu se poate muta proprietatea în acea direcție",
   "Confirm Family Info": "Confirmați informațiile despre familie",
   "Delete failed": "Ștergerea a eșuat",
@@ -3420,7 +3419,6 @@
   "Not pinned to any calendar": "Neataşat niciunui calendar",
   "One-Time Code": "Cod de Unică Folosință",
   "Open in New Tab": "Deschide în filă nouă",
-  "Open in new tab": "Deschide în filă nouă",
   "Open your authenticator app and scan this QR code": "Deschideți aplicația de autentificare și scanați acest cod QR",
   "Optional Data to Include": "Date opționale de inclus",
   "Optional — record who is checking this person out (e.g. a parent picking up a child).": "Opțional — înregistrați cine preia această persoană (ex. un părinte care ridică un copil).",
@@ -4752,7 +4750,6 @@
   "Add them on the Calendar tab, then generate again.": "Adăugați-le în fila Calendar, apoi generați din nou.",
   "Add them on the Calendar tab.": "Adăugați-le în fila Calendar.",
   "Add this address to your calendar app. It updates on its own when the church calendar changes.": "Adăugați această adresă în aplicația dumneavoastră de calendar. Se actualizează singură când calendarul bisericii se schimbă.",
-  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them.": "Adăugați aici evenimentele acestei slujiri: o zi de lucru, o clasă care se întâlnește în fiecare duminică. Ele ajung în calendarul bisericii și le puteți asigura cu personal pe măsură ce le creați.",
   "Added through the Member Portal and waiting for review: %s": "Adăugat prin Portalul comunității și în așteptarea verificării: %s",
   "Added — now tick the positions they can serve": "Adăugat — acum bifați posturile în care pot sluji",
   "Address Line 2": "Adresa, linia 2",
@@ -4928,7 +4925,6 @@
   "Email non-attendees: %s": "Trimite e-mail celor absenți: %s",
   "Email not found": "E-mailul nu a fost găsit",
   "Email preview": "Previzualizare e-mail",
-  "Email sending is disabled": "Trimiterea de e-mailuri este dezactivată",
   "Email sending is not enabled. Configure SMTP settings and enable email before sending.": "Trimiterea de e-mailuri nu este activată. Configurați setările SMTP și activați e-mailul înainte de a trimite.",
   "Emails": "E-mailuri",
   "End time": "Ora de sfârșit",
@@ -5751,5 +5747,95 @@
   "{{position}}: {{name}} no longer qualified": "{{position}}: {{name}} nu mai este calificat",
   "{{position}}: {{name}} qualified": "{{position}}: {{name}} calificat",
   "{{proposer}} asks {{substitute}} to take their place": "{{proposer}} îi cere lui {{substitute}} să-i ia locul",
-  "{{title}} on {{date}} created. Staff it now?": "{{title}} din {{date}} a fost creat. Asigurați-i personal acum?"
+  "{{title}} on {{date}} created. Staff it now?": "{{title}} din {{date}} a fost creat. Asigurați-i personal acum?",
+  "Not authorized to change this event's audience group": "Nu este autorizat să modifice grupul de public al acestui eveniment",
+  "Only a volunteer manager can change who coordinates a ministry": "Doar un coordonator de voluntari poate modifica cine coordonează un ministeriu",
+  "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over.": "Alegerea V1 suspendă emailul de voluntar V2; orice este în coadă este trimis când V2 se reactivează, cu excepția cazului în care apariția sa s-a încheiat.",
+  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them.": "Adăugați aici evenimentele acestui ministeriu: o zi de lucru, o clasă care se întrunește în fiecare duminică. Merg în calendarul bisericii, și odată create vi se cere dacă doriți să le dotați cu personal.",
+  "Cancel occurrence": "Anulează apariție",
+  "Cancel this occurrence": "Anulează această apariție",
+  "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored.": "Anularea nu anunță pe nimeni: niciun email nu este trimis. Atribuțiile sunt păstrate, niciun memento nu este programat în timp ce este anulat, și nimeni nu poate fi atribuit până când nu este restaurat.",
+  "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": "Evenimentele șterse lipsesc din fiecare calendar, cu înregistrările lor și numărătorile, iar personalul acestui ministeriu păstrează doar data. Aceasta nu poate fi anulată.",
+  "Events deleted: {{total}}": "Evenimente șterse: {{total}}",
+  "Events to delete: {{total}}": "Evenimente de șters: {{total}}",
+  "Occurrence cancelled": "Apariție anulată",
+  "Occurrence restored": "Apariție restaurată",
+  "Put this occurrence back on the schedule so it can be staffed again? Nobody is told: no email is sent.": "Puneți această apariție înapoi în program pentru a putea fi dotată din nou? Nimeni nu este informat: niciun email nu este trimis.",
+  "Restore occurrence": "Restaurează apariție",
+  "Restore this occurrence": "Restaurează această apariție",
+  "The occurrence could not be cancelled": "Apariția nu a putut fi anulată",
+  "The occurrence could not be restored": "Apariția nu a putut fi restaurată",
+  "You may add events to every calendar, so all of them are listed. This ministry's own calendar is ticked to start with.": "Puteți adăuga evenimente la fiecare calendar, deci toate sunt listate. Calendarul acestui ministeriu este bifat pentru a începe.",
+  "A phone number or email address is required": "Un număr de telefon sau o adresă de email este necesar",
+  "A phone number or email address is required.": "Un număr de telefon sau o adresă de email este necesar.",
+  "Check-in has not opened for this event yet": "Check-in nu s-a deschis încă pentru acest eveniment",
+  "Classification given to walk-in guests registered on a kiosk": "Clasificare acordată oaspeților care se înregistrează pe un chioșc",
+  "Failed to register guest. Please try again.": "Eșec la înregistrarea oaspete. Vă rugăm încercați din nou.",
+  "First name and last name are required": "Prenumele și numele sunt obligatorii",
+  "First name and last name must each be 50 characters or fewer": "Prenumele și numele trebuie să conțină fiecare 50 de caractere sau mai puțin",
+  "First name and last name must each be at least 2 characters": "Prenumele și numele trebuie să conțină fiecare cel puțin 2 caractere",
+  "Guest": "Oaspete",
+  "Guest Classification": "Clasificarea Oaspeților",
+  "Invalid birth date": "Data Nasterii invalid.",
+  "Invalid email address": "Adresă de email nevalidă",
+  "Kiosk Settings": "Setări Chioșc",
+  "Please enter a check number": "Vă rugăm introduceți un număr de cec",
+  "Register & Check In": "Înregistrare și Check-in",
+  "Register Walk-In Guest": "Înregistrați Oaspele care Sosesc",
+  "Register walk-in guest": "Înregistrați oaspete care sosesc",
+  "Registered as a walk-in guest at the kiosk during event: %s": "Înregistrat ca oaspete care sosește la chioșc în timpul evenimentului: %s",
+  "Registering...": "Înregistrare în curs...",
+  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "Solicitați un număr de cec la înregistrarea plăților cu cecul în intrări de depozit.\nNota: dezactivarea aceasta dezactivează și detectarea numerelor de cec duplicate — acelaș cec fizic poate fi introdus mai mult de o dată.",
+  "This event has ended": "Acest eveniment s-a încheiat",
+  "This event has no group assigned, so guests cannot be registered": "Acest eveniment nu are un grup atribuit, deci oaspeții nu pot fi înregistrați",
+  "This event has no start and end time": "Acest eveniment nu are o oră de început și sfărșit",
+  "{{name}} registered and checked in!": "{{name}} s-a înregistrat și a făcut check-in!",
+  "Search by family name": "Caută după numele familiei",
+  "Search by family name or envelope #": "Caută după numele familiei sau nr. plicului",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Nu se poate șterge o familie care are angajamente sau plăți. Mutați sau eliminați mai întâi înregistrările financiare.",
+  "You cannot delete your own account.": "Nu vă puteți șterge propriul cont.",
+  "\"{{name}}\": {{count}} occurrences created": {
+    "one": "\"{{name}}\": {{count}} apariție creată",
+    "other": "\"{{name}}\": {{count}} apariții create"
+  },
+  "Email sent to {{count}} recipient(s).": {
+    "one": "Email trimis către {{count}} destinatar.",
+    "other": "Email trimis către {{count}} destinatari."
+  },
+  "No new occurrences. All {{count}} events through {{through}} already have one.": {
+    "one": "Nicio apariție nouă. Evenimentul {{count}} prin {{through}} are deja una.",
+    "other": "Nicio apariție nouă. Evenimentele {{count}} prin {{through}} au deja una."
+  },
+  "Schedule \"{{name}}\" created: {{count}} occurrences": {
+    "one": "Calendar \"{{name}}\" creat: {{count}} apariție",
+    "other": "Calendar \"{{name}}\" creat: {{count}} apariții"
+  },
+  "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
+    "one": "Trimitere către {{count}} destinatar. Adresele fără înregistrare de persoană nu sunt incluse: {{list}}",
+    "other": "Trimitere către {{count}} destinatari. Adresele fără înregistrare de persoană nu sunt incluse: {{list}}"
+  },
+  "{{count}} could not be assigned": {
+    "one": "{{count}} nu a putut fi atribuit",
+    "other": "{{count}} nu au putut fi atribuiți"
+  },
+  "{{count}} left open because the default is no longer qualified": {
+    "one": "{{count}} lăsat deschis deoarece implicit nu mai este calificat",
+    "other": "{{count}} lăsați deschișiți deoarece implicit nu mai este calificat"
+  },
+  "{{count}} volunteers assigned": {
+    "one": "{{count}} voluntar atribuit",
+    "other": "{{count}} voluntari atribuiți"
+  },
+  "{{count}} waiting for your answer": {
+    "one": "{{count}} așteptând răspunsul dvs.",
+    "other": "{{count}} așteptând răspunsul dvs."
+  },
+  "{{count}} {{title}} events created. Staff them now?": {
+    "one": "{{count}} eveniment {{title}} creat. Le dotațiți cu personal acum?",
+    "other": "{{count}} evenimente {{title}} create. Le dotațiți cu personal acum?"
+  },
+  "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
+    "one": "{{names}} va dota cu personal aceste evenimente. Aparițiile lor sunt create pe măsură ce vin în următoarea {{count}} săptămână.",
+    "other": "{{names}} va dota cu personal aceste evenimente. Aparițiile lor sunt create pe măsură ce vin în următoarele {{count}} săptămâni."
+  }
 }

@@ -21,18 +21,7 @@ describe("API Event Hooks - dispatch path regression", () => {
     // No browser login — pure API spec using x-api-key auth.
     const eventTypeId = 1; // seeded "Church Service" type, as the other event specs use
 
-    /** Find a created event by title (POST /events returns only {success:true}). */
-    const findEventIdByTitle = (title) =>
-        cy.makePrivateAdminAPICall("GET", "/api/events", null, 200).then((response) => {
-            const match = response.body.Events.find((e) => e.Title === title);
-            expect(match, `event "${title}" is listed after creation`).to.exist;
-            return match.Id;
-        });
-
-    it("Creates, updates, retimes, restatuses and deletes an event", () => {
-        const title = `HookSpec Event ${Date.now()}`;
-        const renamed = `${title} (renamed)`;
-
+    const createEvent = (title) =>
         cy.makePrivateAdminAPICall(
             "POST",
             "/api/events",
@@ -48,7 +37,25 @@ describe("API Event Hooks - dispatch path regression", () => {
             200,
         );
 
-        findEventIdByTitle(title).then((eventId) => {
+    it("POST /api/events returns the new event's id next to success", () => {
+        const title = `HookSpec Created ${Date.now()}`;
+
+        createEvent(title).then((response) => {
+            expect(response.body).to.have.property("success", true);
+            expect(response.body.eventId).to.be.a("number").and.be.greaterThan(0);
+
+            cy.makePrivateAdminAPICall("GET", `/api/events/${response.body.eventId}`, null, 200)
+                .its("body.Title")
+                .should("equal", title);
+            cy.cleanupEvents([response.body.eventId]);
+        });
+    });
+
+    it("Creates, updates, retimes, restatuses and deletes an event", () => {
+        const title = `HookSpec Event ${Date.now()}`;
+        const renamed = `${title} (renamed)`;
+
+        createEvent(title).its("body.eventId").then((eventId) => {
             // POST /events/{id} — the main update path (Event::postUpdate()).
             cy.makePrivateAdminAPICall(
                 "POST",

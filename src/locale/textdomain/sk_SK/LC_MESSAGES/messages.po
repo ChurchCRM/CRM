@@ -12282,10 +12282,6 @@ msgid "Back to Users"
 msgstr "Späť na používateľov"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "Nie je možné odstrániť rodinu so záznamami darovania. Kontaktujte finančného správcu."
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "Nie je možné presunúť vlastnosť v tomto smere"
 
@@ -14264,10 +14260,6 @@ msgstr "Jednorazový kód"
 
 #: 
 msgid "Open in New Tab"
-msgstr "Otvoriť v novej karte"
-
-#: 
-msgid "Open in new tab"
 msgstr "Otvoriť v novej karte"
 
 #: 
@@ -18957,6 +18949,16 @@ msgid "\"%s\" is not a kind of calendar this page knows about."
 msgstr "„%s“ nie je druh kalendára, ktorý táto stránka pozná."
 
 #: 
+msgctxt "one"
+msgid "\"{{name}}\": {{count}} occurrences created"
+msgstr "\"{{name}}\": {{count}} udalosť vytvorená"
+
+#: 
+msgctxt "other"
+msgid "\"{{name}}\": {{count}} occurrences created"
+msgstr "\"{{name}}\": {{count}} udalostí vytvorených"
+
+#: 
 msgid "%1$s cannot serve and has proposed %2$s as a substitute."
 msgstr "%1$s nemôže slúžiť a ako náhradu navrhol(a) %2$s."
 
@@ -19419,10 +19421,6 @@ msgstr "Pridajte ich na karte Kalendár."
 #: 
 msgid "Add this address to your calendar app. It updates on its own when the church calendar changes."
 msgstr "Pridajte túto adresu do svojej kalendárovej aplikácie. Aktualizuje sa sama, keď sa zmení kalendár cirkvi."
-
-#: 
-msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
-msgstr "Pridávajte sem udalosti tejto služby: pracovný deň, triedu, ktorá sa stretáva každú nedeľu. Idú do kalendára cirkvi a môžete ich obsadiť hneď pri vytváraní."
 
 #: 
 msgid "Added through the Member Portal and waiting for review: %s"
@@ -20125,12 +20123,18 @@ msgid "Email preview"
 msgstr "Náhľad e-mailu"
 
 #: 
-msgid "Email sending is disabled"
-msgstr "Odosielanie e-mailov je vypnuté"
-
-#: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
 msgstr "Odosielanie e-mailov nie je zapnuté. Pred odoslaním nastavte SMTP a zapnite e-mail."
+
+#: 
+msgctxt "one"
+msgid "Email sent to {{count}} recipient(s)."
+msgstr "E-mail odoslaný {{count}} príjemcovi."
+
+#: 
+msgctxt "other"
+msgid "Email sent to {{count}} recipient(s)."
+msgstr "E-maily odoslané {{count}} príjemcom."
 
 #: 
 msgid "Emails"
@@ -20723,6 +20727,16 @@ msgstr "Do Portálu členov sa zatiaľ neprihlásil žiadny člen."
 #: 
 msgid "No ministry"
 msgstr "Žiadna služba"
+
+#: 
+msgctxt "one"
+msgid "No new occurrences. All {{count}} events through {{through}} already have one."
+msgstr "Žiadne nové udalosti. Všetky {{count}} udalosti do {{through}} už majú jednu."
+
+#: 
+msgctxt "other"
+msgid "No new occurrences. All {{count}} events through {{through}} already have one."
+msgstr "Žiadne nové udalosti. Všetky {{count}} udalostí do {{through}} už majú jednu."
 
 #: 
 msgid "No past events"
@@ -21473,6 +21487,16 @@ msgid "Schedule \"{{name}}\" created. It is inactive, so it makes no occurrences
 msgstr "Rozpis „{{name}}“ bol vytvorený. Je neaktívny, takže nevytvára žiadne termíny, kým nebude aktívny."
 
 #: 
+msgctxt "one"
+msgid "Schedule \"{{name}}\" created: {{count}} occurrences"
+msgstr "Harmonogram \"{{name}}\" vytvorený: {{count}} udalosť"
+
+#: 
+msgctxt "other"
+msgid "Schedule \"{{name}}\" created: {{count}} occurrences"
+msgstr "Harmonogram \"{{name}}\" vytvorený: {{count}} udalostí"
+
+#: 
 msgid "Schedule deactivated"
 msgstr "Rozpis deaktivovaný"
 
@@ -21587,6 +21611,16 @@ msgstr "Odoslať cirkevnej kancelárii"
 #: 
 msgid "Send your answer"
 msgstr "Odoslať vašu odpoveď"
+
+#: 
+msgctxt "one"
+msgid "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}"
+msgstr "Posielanie {{count}} príjemcovi. Adresy bez záznamu osoby nie sú zahrnuté: {{list}}"
+
+#: 
+msgctxt "other"
+msgid "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}"
+msgstr "Posielanie {{count}} príjemcom. Adresy bez záznamu osoby nie sú zahrnuté: {{list}}"
 
 #: 
 msgid "Sent"
@@ -23293,6 +23327,56 @@ msgid "{{added}} added, {{alreadyMembers}} were already volunteers here"
 msgstr "{{added}} pridaných, {{alreadyMembers}} už tu boli dobrovoľníkmi"
 
 #: 
+msgctxt "one"
+msgid "{{count}} could not be assigned"
+msgstr "{{count}} sa nedala prideliť"
+
+#: 
+msgctxt "other"
+msgid "{{count}} could not be assigned"
+msgstr "{{count}} sa nedali prideliť"
+
+#: 
+msgctxt "one"
+msgid "{{count}} left open because the default is no longer qualified"
+msgstr "{{count}} zostala otvorená, pretože predvolené nastavenie sa už nekvalifikuje"
+
+#: 
+msgctxt "other"
+msgid "{{count}} left open because the default is no longer qualified"
+msgstr "{{count}} ostali otvorené, pretože predvolené nastavenie sa už nekvalifikuje"
+
+#: 
+msgctxt "one"
+msgid "{{count}} volunteers assigned"
+msgstr "{{count}} dobrovoľník priradený"
+
+#: 
+msgctxt "other"
+msgid "{{count}} volunteers assigned"
+msgstr "{{count}} dobrovoľníkov pridelených"
+
+#: 
+msgctxt "one"
+msgid "{{count}} waiting for your answer"
+msgstr "{{count}} čaká na vašu odpoveď"
+
+#: 
+msgctxt "other"
+msgid "{{count}} waiting for your answer"
+msgstr "{{count}} čakajú na vašu odpoveď"
+
+#: 
+msgctxt "one"
+msgid "{{count}} {{title}} events created. Staff them now?"
+msgstr "{{count}} udalosť {{title}} vytvorená. Prideliť dobrovoľníkov teraz?"
+
+#: 
+msgctxt "other"
+msgid "{{count}} {{title}} events created. Staff them now?"
+msgstr "{{count}} udalostí {{title}} vytvorených. Prideliť dobrovoľníkov teraz?"
+
+#: 
 msgid "{{created}} occurrences created, {{existing}} were already there"
 msgstr "{{created}} termínov vytvorených, {{existing}} tam už bolo"
 
@@ -23303,6 +23387,16 @@ msgstr "Služba {{ministry}} vytvorila {{total}} udalostí pre {{className}} (na
 #: 
 msgid "{{names}} also staff some of them."
 msgstr "{{names}} tiež obsadzujú niektoré z nich."
+
+#: 
+msgctxt "one"
+msgid "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks."
+msgstr "{{names}} bude obsluhovať tieto udalosti. Ich udalosti sa vytvárajú v priebehu nasledujúceho {{count}} týždňa."
+
+#: 
+msgctxt "other"
+msgid "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks."
+msgstr "{{names}} budú obsluhovať tieto udalosti. Ich udalosti sa vytvárajú v priebehu nasledujúcich {{count}} týždňov."
 
 #: 
 msgid "{{name}} already coordinates this ministry"
@@ -23347,4 +23441,190 @@ msgstr "{{proposer}} žiada {{substitute}}, aby ho/ju zastúpil(a)"
 #: 
 msgid "{{title}} on {{date}} created. Staff it now?"
 msgstr "{{title}} dňa {{date}} bolo vytvorené. Obsadiť teraz?"
+
+#: 
+msgid "Not authorized to change this event's audience group"
+msgstr "Nemáte oprávnenie na zmenu skupiny tejto udalosti"
+
+#: 
+msgid "Only a volunteer manager can change who coordinates a ministry"
+msgstr "Iba manažér dobrovoľníkov môže zmeniť koordinátora služby"
+
+#: 
+msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
+msgstr "Výber V1 pozastaví e-mail V2; všetko zaradené do frontu sa odošle, keď je V2 opäť zapnuté, pokiaľ sa udalosť neskončila."
+
+#: 
+msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
+msgstr "Sem pridajte udalosti tejto služby: pracovný deň, triedu, ktorá sa stretáva každú nedeľu. Idú do cirkevného kalendára a po vytvorení budete požiadaní, či ich chcete obsadiť dobrovoľníkmi."
+
+#: 
+msgid "Cancel occurrence"
+msgstr "Zrušiť udalosť"
+
+#: 
+msgid "Cancel this occurrence"
+msgstr "Zrušiť túto udalosť"
+
+#: 
+msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
+msgstr "Zrušenie nikohmu nepovedá: žiadne e-maily nie sú odoslané. Priradenia sú zachované, žiadne pripomenutia nie sú naplánované, pokiaľ je zrušené, a nikto nemôže byť priradený, pokiaľ nie je obnovené."
+
+#: 
+msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
+msgstr "Odstránené udalosti opúšťajú každý kalendár spolu s ich príchodmi a počtom osôb a obsluhujúci personál tejto služby si zachovávajú len dátum. Toto sa nedá vrátiť späť."
+
+#: 
+msgid "Events deleted: {{total}}"
+msgstr "Udalosti odstránené: {{total}}"
+
+#: 
+msgid "Events to delete: {{total}}"
+msgstr "Udalosti na odstránenie: {{total}}"
+
+#: 
+msgid "Occurrence cancelled"
+msgstr "Udalosť zrušená"
+
+#: 
+msgid "Occurrence restored"
+msgstr "Udalosť obnovená"
+
+#: 
+msgid "Put this occurrence back on the schedule so it can be staffed again? Nobody is told: no email is sent."
+msgstr "Vrátiť túto udalosť do harmonogramu, aby sa mohla opäť obsluhovať dobrovoľníkmi? Nikto nie je informovaný: žiadne e-maily nie sú odoslané."
+
+#: 
+msgid "Restore occurrence"
+msgstr "Obnovit udalosť"
+
+#: 
+msgid "Restore this occurrence"
+msgstr "Obnovit túto udalosť"
+
+#: 
+msgid "The occurrence could not be cancelled"
+msgstr "Udalosť sa nepodarilo zrušiť"
+
+#: 
+msgid "The occurrence could not be restored"
+msgstr "Udalosť sa nepodarilo obnoviť"
+
+#: 
+msgid "You may add events to every calendar, so all of them are listed. This ministry's own calendar is ticked to start with."
+msgstr "Môžete pridať udalosti do každého kalendára, aby boli všetky uvedené. Kalendár tejto služby je na začiatok zaškrtnutý."
+
+#: 
+msgid "A phone number or email address is required"
+msgstr "Vyžaduje sa telefónne číslo alebo e-mailová adresa"
+
+#: 
+msgid "A phone number or email address is required."
+msgstr "Vyžaduje sa telefónne číslo alebo e-mailová adresa."
+
+#: 
+msgid "Check-in has not opened for this event yet"
+msgstr "Príchod ešte nebol otvorený pre túto udalosť"
+
+#: 
+msgid "Classification given to walk-in guests registered on a kiosk"
+msgstr "Klasifikácia priradená návštevníkom zaregistrovaným na kiosku"
+
+#: 
+msgid "Failed to register guest. Please try again."
+msgstr "Nepodarilo sa zaregistrovať hosta. Skúste znova."
+
+#: 
+msgid "First name and last name are required"
+msgstr "Vyžaduje sa meno a priezvisko"
+
+#: 
+msgid "First name and last name must each be 50 characters or fewer"
+msgstr "Meno a priezvisko musia mať každé maximálne 50 znakov"
+
+#: 
+msgid "First name and last name must each be at least 2 characters"
+msgstr "Meno a priezvisko musia mať každé minimálne 2 znaky"
+
+#: 
+msgid "Guest"
+msgstr "Hosť"
+
+#: 
+msgid "Guest Classification"
+msgstr "Klasifikácia hosta"
+
+#: 
+msgid "Invalid birth date"
+msgstr "Neplatný dátum narodenia."
+
+#: 
+msgid "Invalid email address"
+msgstr "Neplatná e-mailová adresa"
+
+#: 
+msgid "Kiosk Settings"
+msgstr "Nastavenia kiosku"
+
+#: 
+msgid "Please enter a check number"
+msgstr "Prosím zadajte číslo šeku"
+
+#: 
+msgid "Register & Check In"
+msgstr "Zaregistrujte sa a skontrolujte sa"
+
+#: 
+msgid "Register Walk-In Guest"
+msgstr "Zaregistrujte hosta"
+
+#: 
+msgid "Register walk-in guest"
+msgstr "zaregistrujte hosta"
+
+#: 
+msgid "Registered as a walk-in guest at the kiosk during event: %s"
+msgstr "Zaregistrovaný ako hosť u kiosku počas udalosti: %s"
+
+#: 
+msgid "Registering..."
+msgstr "Registrácia..."
+
+#: 
+msgid "Require a check number when recording check payments on deposit entries.\n"
+"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
+msgstr "Vyžadujte číslo šeku pri záznamu platieb šekmi v záznamoch vkladov.\n"
+"Pozn.: vypnutie tohto tiež zakáže detekciu duplicitných čísel šekov — ten istý fyzický šek je možné zadať viackrát."
+
+#: 
+msgid "This event has ended"
+msgstr "Táto udalosť skončila"
+
+#: 
+msgid "This event has no group assigned, so guests cannot be registered"
+msgstr "Táto udalosť nemá priradenú skupinu, takže hostí nie je možné zaregistrovať"
+
+#: 
+msgid "This event has no start and end time"
+msgstr "Táto udalosť nemá čas začiatku a konca"
+
+#: 
+msgid "{{name}} registered and checked in!"
+msgstr "{{name}} zaregistrovaný a kontrolovaný!"
+
+#: 
+msgid "Search by family name"
+msgstr "Hľadať podľa mena rodiny"
+
+#: 
+msgid "Search by family name or envelope #"
+msgstr "Hľadať podľa mena rodiny alebo čísla obálky"
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
+msgstr "Nie je možné odstrániť rodinu, ktorá má záväzky alebo platby. Najprv presuňte alebo odstráňte finančné záznamy."
+
+#: 
+msgid "You cannot delete your own account."
+msgstr "Nemôžete odstrániť svoj vlastný účet."
 

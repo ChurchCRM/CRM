@@ -8,6 +8,7 @@ const {
     loadSourceTermKinds,
     repairJoinedPlural,
     buildPoeditorPayload,
+    buildPluralPo,
 } = require('./poeditor-plurals');
 
 const SOURCE_PO = `msgid ""
@@ -85,7 +86,7 @@ test('repairJoinedPlural leaves normal values alone', () => {
 });
 
 test('buildPoeditorPayload never pipe-joins plurals', () => {
-    const { payload, skipped } = buildPoeditorPayload(
+    const { payload, pluralEntries, skipped } = buildPoeditorPayload(
         {
             Save: 'Speichern',
             'Email sent to %d family.': { one: 'E-Mail an %d Familie gesendet.', other: 'E-Mail an %d Familien gesendet.' },
@@ -94,23 +95,33 @@ test('buildPoeditorPayload never pipe-joins plurals', () => {
         kinds,
     );
     assert.deepEqual(skipped, []);
-    assert.deepEqual(payload, {
-        Save: 'Speichern',
-        'Email sent to %d family.': { one: 'E-Mail an %d Familie gesendet.', other: 'E-Mail an %d Familien gesendet.' },
-        one: { 'Copied {{count}} members': '{{count}} Mitglied kopiert' },
-        other: { 'Copied {{count}} members': '{{count}} Mitglieder kopiert' },
-    });
+    assert.deepEqual(payload, { Save: 'Speichern' });
+    assert.deepEqual(pluralEntries, [
+        { msgid: 'Email sent to %d family.', msgidPlural: 'Emails sent to %d families.', forms: { one: 'E-Mail an %d Familie gesendet.', other: 'E-Mail an %d Familien gesendet.' } },
+        { msgctxt: 'one', msgid: 'Copied {{count}} members', forms: { other: '{{count}} Mitglied kopiert' } },
+        { msgctxt: 'other', msgid: 'Copied {{count}} members', forms: { other: '{{count}} Mitglieder kopiert' } },
+    ]);
     assert.ok(!JSON.stringify(payload).includes('|'));
+});
+
+test('buildPluralPo writes msgctxt pairs and msgid_plural forms', () => {
+    const po = buildPluralPo('ru', [
+        { msgctxt: 'one', msgid: 'A "{{count}}"', forms: { other: 'x' } },
+        { msgid: '%d day', msgidPlural: '%d days', forms: { one: 'a', few: 'b', many: 'c', other: 'd' } },
+    ]);
+    assert.match(po, /nplurals=4/);
+    assert.match(po, /msgctxt "one"\nmsgid "A \\"\{\{count\}\}\\""\nmsgstr "x"/);
+    assert.match(po, /msgid "%d day"\nmsgid_plural "%d days"\nmsgstr\[0\] "a"\nmsgstr\[1\] "b"\nmsgstr\[2\] "c"\nmsgstr\[3\] "d"/);
 });
 
 test('buildPoeditorPayload keeps every gettext form the language has', () => {
     const ru = { one: 'А', few: 'Б', many: 'В', other: 'Г' };
-    const { payload } = buildPoeditorPayload({ 'Email sent to %d family.': ru }, kinds);
-    assert.deepEqual(payload['Email sent to %d family.'], ru);
+    const { pluralEntries } = buildPoeditorPayload({ 'Email sent to %d family.': ru }, kinds);
+    assert.deepEqual(pluralEntries[0].forms, ru);
 });
 
 test('buildPoeditorPayload skips plurals it cannot place', () => {
-    const { payload, skipped } = buildPoeditorPayload(
+    const { payload, pluralEntries, skipped } = buildPoeditorPayload(
         {
             'Unknown {{count}} thing': { one: 'x', other: 'y' },
             'Copied {{count}} members': { one: 'a', few: 'b', other: 'c' },
@@ -119,6 +130,7 @@ test('buildPoeditorPayload skips plurals it cannot place', () => {
     );
     assert.deepEqual(skipped.sort(), ['Copied {{count}} members', 'Unknown {{count}} thing']);
     assert.deepEqual(payload, {});
+    assert.deepEqual(pluralEntries, []);
 });
 
 test('every plural in the real messages.po is classified', () => {

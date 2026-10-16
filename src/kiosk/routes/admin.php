@@ -1,6 +1,9 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\ManageGroupRoleAuthMiddleware;
 use ChurchCRM\view\PageHeader;
@@ -23,6 +26,21 @@ $app->group('/admin', function (RouteCollectorProxy $group): void {
                 [gettext('Kiosk Manager')],
             ]),
         ];
+
+        // The settings API is admin-only, so ManageGroups users get no settings card.
+        $pageArgs['kioskSettings'] = [];
+        if (AuthenticationManager::getCurrentUser()->isAdmin()) {
+            $classificationChoices = array_map(
+                static fn ($option): array => ['value' => (string) $option->getOptionId(), 'label' => $option->getOptionName()],
+                iterator_to_array(ListOptionQuery::create()->filterById(1)->orderByOptionSequence()->find()),
+            );
+            $pageArgs['kioskSettings'] = array_map(function (array $setting) use ($classificationChoices): array {
+                $setting['label'] = gettext('Guest Classification');
+                $setting['choices'] = $classificationChoices;
+
+                return $setting;
+            }, SystemConfig::getSettingsConfig(['iKioskGuestClassification']));
+        }
 
         return $renderer->render($response, 'manager.php', $pageArgs);
     };

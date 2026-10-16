@@ -266,7 +266,7 @@ $sManagedTitle = $bIsMinistryPool
                 <?php endif; ?>
 
                 <!-- DataTable -->
-                <div style="overflow: visible;">
+                <div class="overflow-visible">
                     <table class="table table-hover table-vcenter table-sm" id="membersTable"></table>
                 </div>
             </div>

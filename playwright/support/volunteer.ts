@@ -325,7 +325,7 @@ export async function seedVolunteerFixture(browser: Browser): Promise<VolunteerS
   }
 }
 
-/** Removes the ministry, its events and Emily's login, and turns V2 back off. */
+/** Removes the ministry, its events and Emily's login. V2 stays on: a new installation starts there (#10561). */
 export async function removeVolunteerSeed(browser: Browser): Promise<void> {
   const context = await browser.newContext({ baseURL: BASE_URL, storageState: STORAGE_STATE_PATH });
   const page = await context.newPage();
@@ -333,7 +333,6 @@ export async function removeVolunteerSeed(browser: Browser): Promise<void> {
     await setVolunteerVersion(page, 'v2');
     await deleteMemberLogin(page);
     await deleteHospitality(page);
-    await setVolunteerVersion(page, 'v1');
   } finally {
     seed = null;
     memberLoginCreated = false;

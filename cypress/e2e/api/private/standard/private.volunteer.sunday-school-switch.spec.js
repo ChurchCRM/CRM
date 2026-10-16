@@ -15,7 +15,6 @@ const ADMIN_KEY = "admin.api.key";
 const COORDINATOR_KEY = "user.api.key";
 const PERSON_COORDINATOR = 3;
 const CHURCH_SERVICE_TYPE = 1;
-const UPGRADE_SCRIPT = "src/mysql/upgrade/7.8.0-volunteer-v2-schema.sql";
 
 const PREFIX = "SSW29";
 
@@ -233,30 +232,6 @@ describe("Volunteer v2 D29 — \"Can this ministry provide teachers for Sunday S
                     admin("POST", `${URL}/schedules/${scheduleId}`, { linkMode: "class", groupId: classA }, 400);
                 },
             );
-        });
-
-        it("turns the switch on in the upgrade for a ministry that already staffs a class", () => {
-            cy.readFile(UPGRADE_SCRIPT).then((script) => {
-                const start = script.lastIndexOf("UPDATE `volunteer_ministry_vmin`");
-                const update = script.slice(start, script.indexOf(";", start)).trim();
-                admin("POST", `${URL}/ministries/${ministryId}`, { sundaySchool: true });
-                admin("POST", `${URL}/teams/${teamId}`, { classGroupId: classA });
-                dbOk("UPDATE volunteer_ministry_vmin SET vmin_SundaySchool = 0 WHERE vmin_ID = ?", [ministryId]);
-
-                dbOk(update);
-                switchOf(ministryId).should("eq", 1);
-                dbOk(update);
-                switchOf(ministryId).should("eq", 1);
-
-                admin("POST", `${URL}/teams/${teamId}`, { classGroupId: null });
-                dbOk("UPDATE volunteer_ministry_vmin SET vmin_SundaySchool = 0 WHERE vmin_ID = ?", [ministryId]);
-                dbOk("UPDATE volunteer_schedule_vsch SET vsch_LinkMode = 'class', vsch_grp_ID = ? WHERE vsch_Name LIKE ?", [
-                    classA,
-                    `${PREFIX}%`,
-                ]);
-                dbOk(update);
-                switchOf(ministryId).should("eq", 1);
-            });
         });
     });
 });

@@ -197,12 +197,12 @@ class Event extends BaseEvent
         $this->editable = $editable;
     }
 
-    public function checkInPerson(int $PersonId, ?int $CheckedInById = null): array
+    public function checkInPerson(int $PersonId, ?int $CheckedInById = null, ?ConnectionInterface $con = null): array
     {
         $AttendanceRecord = EventAttendQuery::create()
             ->filterByEvent($this)
             ->filterByPersonId($PersonId)
-            ->findOneOrCreate();
+            ->findOneOrCreate($con);
 
         $AttendanceRecord->setEvent($this)
         ->setPersonId($PersonId)
@@ -213,13 +213,15 @@ class Event extends BaseEvent
             $AttendanceRecord->setCheckinId($CheckedInById);
         }
 
-        $AttendanceRecord->save();
+        $AttendanceRecord->save($con);
         HookManager::doAction(Hooks::EVENT_CHECKIN, $AttendanceRecord, $this, $PersonId);
 
         $this->addTimelineNote(
             $PersonId,
             sprintf(gettext('Checked in to event: %s'), $this->getTitle()),
-            $CheckedInById
+            $CheckedInById,
+            'event',
+            $con
         );
 
         return ['status' => 'success'];
@@ -267,7 +269,7 @@ class Event extends BaseEvent
      * is logged in, fall back to the recorded person themself so the note
      * still gets created without a fatal error.
      */
-    private function addTimelineNote(int $personId, string $text, ?int $actionById, string $type = 'event'): void
+    private function addTimelineNote(int $personId, string $text, ?int $actionById, string $type = 'event', ?ConnectionInterface $con = null): void
     {
         if ($actionById === null) {
             if (AuthenticationManager::isUserAuthenticated()) {
@@ -286,7 +288,7 @@ class Event extends BaseEvent
         $note->setType($type);
         $note->setPrivate(0);
         $note->setEntered($actionById);
-        $note->save();
+        $note->save($con);
     }
 
     public function getViewURI(): string

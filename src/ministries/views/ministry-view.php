@@ -208,7 +208,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <?= gettext('Teams are the groups of people who serve in this ministry.') ?>
             </p>
           </div>
-          <div style="overflow-x: clip; overflow-y: visible;" class=" d-none" id="teams-table-wrapper">
+          <div class="table-clip-x d-none" id="teams-table-wrapper">
             <table class="table table-hover table-vcenter" id="volunteerTeamsTable">
               <thead>
                 <tr>
@@ -281,7 +281,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <?= gettext('A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well.') ?>
               </p>
             </div>
-            <div style="overflow-x: clip; overflow-y: visible;" class=" d-none" id="scopes-coordinators-wrapper">
+            <div class="table-clip-x d-none" id="scopes-coordinators-wrapper">
               <table class="table table-hover table-vcenter" id="volunteerCoordinatorsTable">
                 <thead>
                   <tr>
@@ -410,7 +410,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <?= gettext('A position is a role someone serves in, such as Espresso or Song Leader.') ?>
         </p>
       </div>
-      <div style="overflow-x: clip; overflow-y: visible;" class=" d-none" id="positions-table-wrapper">
+      <div class="table-clip-x d-none" id="positions-table-wrapper">
         <table class="table table-hover table-vcenter" id="volunteerPositionsTable">
           <thead>
             <tr>
@@ -462,7 +462,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <?= gettext('A schedule says which calendar events a team staffs: a type of church service, a class\'s meetings, or this ministry\'s own events. Add one and generate its occurrences.') ?>
         </p>
       </div>
-      <div style="overflow-x: clip; overflow-y: visible;" class=" d-none" id="schedules-table-wrapper">
+      <div class="table-clip-x d-none" id="schedules-table-wrapper">
         <table class="table table-hover table-vcenter" id="volunteerSchedulesTable">
           <thead>
             <tr>
@@ -559,7 +559,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <?= gettext('Create a schedule and generate its occurrences, and the weeks to staff appear here.') ?>
         </p>
       </div>
-      <div style="overflow-x: clip; overflow-y: visible;" class=" d-none" id="occurrences-table-wrapper">
+      <div class="table-clip-x d-none" id="occurrences-table-wrapper">
         <table class="table table-hover table-vcenter" id="volunteerOccurrencesTable">
           <thead>
             <tr>

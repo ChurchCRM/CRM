@@ -137,7 +137,7 @@ describe("Mobile UX — Authenticated Pages", () => {
         // #groupsTable has per-row action dropdowns so it is intentionally NOT
         // wrapped in .table-responsive — that would set overflow:auto on the
         // wrapper and clip absolutely-positioned dropdown menus on the last
-        // rows. The card-body uses `style="overflow: visible;"` instead, and
+        // rows. The card-body uses `.overflow-visible` instead, and
         // the documented trade-off is to accept some horizontal overflow on
         // phones rather than break the action menus.
         // See `.agents/skills/churchcrm/responsive-design-guidelines.md` →
@@ -159,8 +159,8 @@ describe("Mobile UX — Authenticated Pages", () => {
         // overflow:visible so dropdowns can escape the card boundary
         cy.get("#groupsTable")
             .closest(".card-body")
-            .should("have.attr", "style")
-            .and("match", /overflow:\s*visible/);
+            .should("have.css", "overflow-x", "visible")
+            .and("have.css", "overflow-y", "visible");
     });
 
     it("family view stacks columns on mobile", () => {

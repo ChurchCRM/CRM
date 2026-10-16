@@ -80,6 +80,8 @@ export async function captureScreen(page: Page, testInfo: TestInfo, opts: Captur
   }
 
   // For screenshot tests, capture all viewports in a single test run (3x faster)
+  // The kiosk goes fullscreen on its first tap, and Chrome refuses to resize a fullscreen window.
+  await page.evaluate(() => document.fullscreenElement && document.exitFullscreen());
   for (const vp of VIEWPORTS) {
     await page.setViewportSize({ width: vp.width, height: vp.height });
     await captureAtViewport(page, testInfo, opts, vp.device);

@@ -584,9 +584,15 @@ class User extends BaseUser
      * Also rotates the API key so that any previously-stolen key is revoked
      * (GHSA-f2fq-4rmp-9x8c: password reset must invalidate compromised API keys).
      * Callers are responsible for calling save() to persist both changes.
+     *
+     * @throws PasswordChangeException when the password is blank
      */
     public function updatePassword(string $password): void
     {
+        if (mb_trim($password) === '') {
+            throw new PasswordChangeException('New', gettext('Enter a new password'));
+        }
+
         $this->setPassword($this->hashPassword($password));
         $this->setApiKey(self::randomApiKey());
     }
@@ -599,6 +605,12 @@ class User extends BaseUser
      */
     public function isPasswordValid(string $password): bool
     {
+        // An account may already hold a hash of a blank password, saved before
+        // updatePassword() refused blanks. It must not sign in with nothing.
+        if (mb_trim($password) === '') {
+            return false;
+        }
+
         $storedHash = $this->getPassword();
 
         // Check if this is a bcrypt hash (starts with $2y$)

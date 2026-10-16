@@ -100,7 +100,6 @@ class UpgradeService
                         }
                         $version->setUpdateEnd(new \DateTimeImmutable());
                         $version->save();
-                        sleep(2);
 
                         // increment the number of scripts executed.
                         // If no scripts run, then there is no supported upgrade path defined in the JSON file

@@ -30,9 +30,9 @@
  *   - Max ≥ Min and "no duplicate position" are refused with 400, and every route is
  *     scoped: a coordinator of another ministry gets 403.
  *
- * Fixtures follow `private.volunteer.schedule.spec.js`: rows in through `cy.dbQuery()`,
- * scopes through the #9706 API, cleanup in `before` as well as `after` because an
- * `after` hook does not run when the runner crashes mid-spec.
+ * Fixtures go in and out through the API, so each ministry comes with the team, pool
+ * group and calendar the service gives it (#10377). Cleanup runs in `before` as well as
+ * `after` because an `after` hook does not run when the runner crashes mid-spec.
  */
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
@@ -55,17 +55,6 @@ let originalVersion = "v1";
 
 // ── helpers ────────────────────────────────────────────────────────────────
 
-function dbOk(sql, params = []) {
-    return cy.dbQuery(sql, params).then((result) => {
-        if (result.error !== null) {
-            throw new Error(
-                `Unexpected SQL failure.\n  SQL: ${sql}\n  ${result.error.code}: ${result.error.message}`,
-            );
-        }
-        return result.rows;
-    });
-}
-
 function api(key, method, url, body, expectedStatus = 200) {
     return cy.makePrivateAPICall(Cypress.testEnv(key), method, url, body, expectedStatus);
 }
@@ -82,79 +71,48 @@ function isoDate(offsetDays) {
     return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 }
 
+/** Deleting a ministry takes its teams, positions, schedules and scopes with it. */
 function cleanupFixtures() {
-    dbOk(
-        `DELETE vreq FROM volunteer_requirement_vreq vreq
-           JOIN volunteer_schedule_vsch vsch ON vsch.vsch_ID = vreq.vreq_vsch_ID
-           JOIN volunteer_ministry_vmin vmin ON vmin.vmin_ID = vsch.vsch_vmin_ID
-          WHERE vmin.vmin_Name LIKE ?`,
-        [`${FIXTURE_PREFIX}%`],
-    );
-    dbOk(
-        `DELETE vreq FROM volunteer_requirement_vreq vreq
-           JOIN volunteer_occurrence_vocc vocc ON vocc.vocc_ID = vreq.vreq_vocc_ID
-           JOIN volunteer_schedule_vsch vsch ON vsch.vsch_ID = vocc.vocc_vsch_ID
-           JOIN volunteer_ministry_vmin vmin ON vmin.vmin_ID = vsch.vsch_vmin_ID
-          WHERE vmin.vmin_Name LIKE ?`,
-        [`${FIXTURE_PREFIX}%`],
-    );
-    dbOk(
-        `DELETE vocc FROM volunteer_occurrence_vocc vocc
-           JOIN volunteer_schedule_vsch vsch ON vsch.vsch_ID = vocc.vocc_vsch_ID
-           JOIN volunteer_ministry_vmin vmin ON vmin.vmin_ID = vsch.vsch_vmin_ID
-          WHERE vmin.vmin_Name LIKE ?`,
-        [`${FIXTURE_PREFIX}%`],
-    );
-    dbOk(
-        `DELETE vsch FROM volunteer_schedule_vsch vsch
-           JOIN volunteer_ministry_vmin vmin ON vmin.vmin_ID = vsch.vsch_vmin_ID
-          WHERE vmin.vmin_Name LIKE ?`,
-        [`${FIXTURE_PREFIX}%`],
-    );
-    dbOk(
-        `DELETE vpos FROM volunteer_position_vpos vpos
-           JOIN volunteer_ministry_vmin vmin ON vmin.vmin_ID = vpos.vpos_vmin_ID
-          WHERE vmin.vmin_Name LIKE ?`,
-        [`${FIXTURE_PREFIX}%`],
-    );
-    dbOk(
-        `DELETE vtem FROM volunteer_team_vtem vtem
-           JOIN volunteer_ministry_vmin vmin ON vmin.vmin_ID = vtem.vtem_vmin_ID
-          WHERE vmin.vmin_Name LIKE ?`,
-        [`${FIXTURE_PREFIX}%`],
-    );
-    dbOk(`DELETE FROM volunteer_scope_vscp WHERE vscp_per_ID = ?`, [PERSON_COORDINATOR]);
-    // #9869: a ministry created through the API now comes with its own calendar,
-    // named after the ministry. `calendars.ministry_id` is ON DELETE SET NULL, so
-    // deleting the ministry row directly would leave the calendar behind as an
-    // unowned church calendar. It goes first, matched on the same prefix.
-    dbOk(`DELETE FROM calendars WHERE name LIKE ?`, [`${FIXTURE_PREFIX}%`]);
-    dbOk(`DELETE FROM volunteer_ministry_vmin WHERE vmin_Name LIKE ?`, [`${FIXTURE_PREFIX}%`]);
-    dbOk(`DELETE FROM events_event WHERE event_title LIKE ?`, [`${FIXTURE_PREFIX}%`]);
+    api(ADMIN_KEY, "GET", "/api/ministries/ministries").then((resp) => {
+        for (const ministry of resp.body.ministries.filter((m) => m.name.startsWith(FIXTURE_PREFIX))) {
+            // An active ministry cannot be deleted (409).
+            api(ADMIN_KEY, "POST", `/api/ministries/ministries/${ministry.id}`, { active: false }, [200, 404]);
+            api(ADMIN_KEY, "DELETE", `/api/ministries/ministries/${ministry.id}`, null, [200, 404]);
+        }
+    });
+    api(ADMIN_KEY, "GET", "/api/events").then((resp) => {
+        cy.cleanupEvents(resp.body.Events.filter((e) => e.Title.startsWith(FIXTURE_PREFIX)).map((e) => e.Id));
+    });
 }
 
 function createMinistry(suffix) {
-    return dbOk(
-        `INSERT INTO volunteer_ministry_vmin (vmin_Name, vmin_Description, vmin_Active, vmin_CreatedDate)
-         VALUES (?, 'volunteer v2 staffing-needs fixture', 1, NOW())`,
-        [`${FIXTURE_PREFIX} ${suffix}`],
-    ).then((rows) => rows.insertId);
+    return api(
+        ADMIN_KEY,
+        "POST",
+        "/api/ministries/ministries",
+        { name: `${FIXTURE_PREFIX} ${suffix}`, description: "volunteer v2 staffing-needs fixture" },
+        201,
+    ).then((resp) => resp.body.ministry.id);
 }
 
 function createTeam(ministryId, suffix) {
-    return dbOk(
-        `INSERT INTO volunteer_team_vtem (vtem_vmin_ID, vtem_Name, vtem_Description, vtem_Active)
-         VALUES (?, ?, 'volunteer v2 staffing-needs fixture', 1)`,
-        [ministryId, `${FIXTURE_PREFIX} ${suffix}`],
-    ).then((rows) => rows.insertId);
+    return api(
+        ADMIN_KEY,
+        "POST",
+        `/api/ministries/ministries/${ministryId}/teams`,
+        { name: `${FIXTURE_PREFIX} ${suffix}`, description: "volunteer v2 staffing-needs fixture" },
+        201,
+    ).then((resp) => resp.body.team.id);
 }
 
 function createPosition(ministryId, teamId, name, order) {
-    return dbOk(
-        `INSERT INTO volunteer_position_vpos (vpos_vmin_ID, vpos_vtem_ID, vpos_Name, vpos_Description, vpos_Active, vpos_Order)
-         VALUES (?, ?, ?, 'volunteer v2 staffing-needs fixture', 1, ?)`,
-        [ministryId, teamId, `${FIXTURE_PREFIX} ${name}`, order],
-    ).then((rows) => rows.insertId);
+    return api(
+        ADMIN_KEY,
+        "POST",
+        `/api/ministries/ministries/${ministryId}/positions`,
+        { name: `${FIXTURE_PREFIX} ${name}`, description: "volunteer v2 staffing-needs fixture", teamId, order },
+        201,
+    ).then((resp) => resp.body.position.id);
 }
 
 /** The weekly Wednesday events every schedule here follows (the seed's calendar is all 2016/2017). */
@@ -165,11 +123,13 @@ function createWednesdayEvents() {
     const first = ((3 - new Date().getDay() + 7) % 7) || 7;
     [0, 7, 14, 21, 28].forEach((week) => {
         const day = isoDate(first + week);
-        dbOk(
-            `INSERT INTO events_event (event_type, event_title, event_desc, event_text, event_start, event_end, inactive)
-             VALUES (1, ?, '', '', ?, ?, 0)`,
-            [EVENT_TITLE, `${day} 19:00:00`, `${day} 20:30:00`],
-        );
+        api(ADMIN_KEY, "POST", "/api/events", {
+            Title: EVENT_TITLE,
+            Type: 1,
+            Start: `${day}T19:00:00`,
+            End: `${day}T20:30:00`,
+            PinnedCalendars: [],
+        });
     });
 }
 
@@ -253,10 +213,8 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
         });
         createMinistry("Other Ministry").then((id) => {
             ministryB = id;
-            // "Foreign" means "another ministry's", which is still exactly what this
-            // position is — it just lives in a team of that ministry now, because
-            // `vpos_vtem_ID` is NOT NULL. The ministry row is inserted with raw SQL,
-            // which bypasses the service and so the team it would have created.
+            // "Foreign" means "another ministry's": a position always lives in a team
+            // of its ministry (`vpos_vtem_ID` is NOT NULL).
             createTeam(ministryB, "Other Team").then((teamId) => {
                 createPosition(ministryB, teamId, "Foreign Position", 1).then((p) => {
                     posForeign = p;
@@ -690,17 +648,17 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
             });
         });
 
-        it("stores exactly one parent per override row (vreq_one_parent_chk)", () => {
+        // The CHECK constraint itself (vreq_one_parent_chk) is asserted in the schema spec.
+        it("stores an override against the occurrence alone, not the schedule", () => {
             api(ADMIN_KEY, "POST", `/api/ministries/occurrences/${occurrenceId}/requirements/replace`, {
                 requirements: [{ positionId: posLead, minCount: 2, maxCount: 2 }],
-            }).then(() => {
-                dbOk(`SELECT vreq_vsch_ID, vreq_vocc_ID FROM volunteer_requirement_vreq WHERE vreq_vocc_ID = ?`, [
-                    occurrenceId,
-                ]).then((rows) => {
-                    expect(rows).to.have.length(1);
-                    expect(rows[0].vreq_vsch_ID).to.eq(null);
-                    expect(rows[0].vreq_vocc_ID).to.eq(occurrenceId);
-                });
+            });
+
+            api(ADMIN_KEY, "GET", `/api/ministries/occurrences/${occurrenceId}/requirements`).then((resp) => {
+                const overrides = resp.body.requirements.filter((r) => r.source === "occurrence");
+                expect(overrides).to.have.length(1);
+                expect(overrides[0].scheduleId).to.eq(null);
+                expect(overrides[0].occurrenceId).to.eq(occurrenceId);
             });
         });
 

@@ -22,11 +22,7 @@ describe("Admin Get Started", () => {
         // verify the server rendered the attributes here so future regressions
         // (e.g. dropping the counts in dashboard.php) are caught.
         cy.visit("admin/get-started");
-        cy.get("#importDemoDataV2")
-            .should("have.attr", "data-has-existing-data", "true")
-            .and("have.attr", "data-person-list-url")
-            .and("match", /\/people\/list$/);
-        cy.get("#importDemoDataV2").should("have.attr", "data-family-list-url").and("match", /\/family\/?$/);
+        cy.get("#importDemoDataV2").should("have.attr", "data-has-existing-data", "true");
         cy.get("#importDemoDataV2").invoke("attr", "data-person-count").then((val) => {
             expect(Number(val)).to.be.greaterThan(1);
         });
@@ -51,14 +47,8 @@ describe("Admin Get Started", () => {
             .should("have.class", "btn-warning")
             .and("contain", "Import demo data anyway");
 
-        // The people/families counts in the warning should be rendered as
-        // clickable links to the list pages.
-        cy.get("#demoImportWarning a[href*='/people/list']")
-            .should("have.attr", "target", "_blank")
-            .and("have.attr", "rel")
-            .and("match", /noopener/);
-        cy.get("#demoImportWarning a[href*='/family/']")
-            .should("have.attr", "target", "_blank");
+        cy.get("#demoImportWarning .demo-import-count-line").should("contain", "people").and("contain", "families");
+        cy.get("#demoImportWarning a").should("not.exist");
 
         // And no API call has fired yet — just opening the overlay must
         // not trigger /api/demo/load.
