@@ -180,7 +180,8 @@ It does the following, in this order:
 
 **On every portal request**, `PortalSessionMiddleware`:
 - reloads the person and their sign-in row;
-- ends the session when §4 no longer holds, when the session version has changed, or when the idle time has passed;
+- applies the checks for the session's sign-in method again: all of §4 for the member methods, §4 without the member rule for `STAFF`, and only the three checks in §6.5 for `ASSISTED`;
+- ends the session when one of those checks fails, when the session version has changed, or when the idle time has passed;
 - records last activity, except during Login as User.
 
 So Disable sign-in, a change to the rule, a deactivated family or "sign out everywhere" all take effect on the person's next request (#10511 S5).
@@ -697,7 +698,8 @@ Row 11 doesn't depend on the sign-in work. It can be built first, and can ship o
   - the directory prints no family email.
 - **Login as User:**
   - grayed out for deceased, Disable sign-in and staff accounts;
-  - still starts for each case §6.5 deliberately doesn't check: an inactive person, a deactivated family, awaiting review, outside the member rule, no usable email, and member sign-in off;
+  - still starts, and stays open across later pages, for each case §6.5 deliberately doesn't check: an inactive person, a deactivated family, awaiting review, outside the member rule, no usable email, and member sign-in off;
+  - each of the three checks refuses a start, and ends an open session on the next request;
   - hidden with the setting off;
   - read-only unless writes are allowed;
   - every write is recorded with both people;
