@@ -22,6 +22,10 @@
   const selectedKeys = new Set();
   let fundChart;
 
+  function fundColumnIndex() {
+    return config.canDelete ? 3 : 2;
+  }
+
   function paymentUrl(groupKey, suffix) {
     return `${window.CRM.root}/finance/pledge/${encodeURIComponent(groupKey)}${suffix}`;
   }
@@ -298,7 +302,7 @@
     });
 
     $("#clearFundFilter").on("click", function () {
-      paymentsTable.search("").columns().search("").draw();
+      paymentsTable.search("").column(fundColumnIndex()).search("").draw();
       $(this).addClass("d-none");
     });
   }
@@ -319,7 +323,7 @@
             // Match whole fund names in the Fund column only, so other columns can't leak in.
             const label = $.fn.dataTable.util.escapeRegex(config.fundLabels[opts.dataPointIndex]);
             paymentsTable
-              .column(config.canDelete ? 3 : 2)
+              .column(fundColumnIndex())
               .search(`(^|, )${label}(,|$)`, true, false)
               .draw();
             $("#clearFundFilter").removeClass("d-none");
