@@ -36,6 +36,14 @@ Apply the existing label when design is settled, scope is bounded and low-risk, 
 - Remember the intended audience: churches that need to get organized, especially budget-conscious or underserved churches and those that value owning and hosting their data. Do not assume ChurchCRM is only for small churches or that it fits every church.
 - For user-visible changes, check the actual workflow, responsive behavior, accessibility, and localization impact. Verify product claims against current application behavior and documentation.
 
+## Documentation and feature content
+
+- Documentation, screenshots/video, and marketing content are valuable follow-ups for user-visible features, not routine code-PR merge gates.
+- During review, note the useful follow-up and link or create one focused issue when it needs tracking. Keep it proportional; bug fixes and security-only changes may not need marketing.
+- User documentation must describe released behavior and follow the docs repository's release process. Prepare screenshots/video from the real product with safe demo data.
+- Invite non-code contributors to help with how-to guides, screenshots, short walkthroughs, blog posts, and translations. Give them the user problem, confirmed behavior, and a clear destination to contribute.
+- Marketing should explain the church outcome and when the feature is available. Do not turn planned or proposed work into a current-product claim.
+
 ## Write for the human first
 
 - Lead issues, PRs, docs, and review comments with a short **BLUF/TL;DR** when the work needs context; state the goal and outcome first.
