@@ -3,7 +3,7 @@
 /**
  * Volunteer v2 — the coordinator dashboard aggregate (#9711, epic #9701).
  *
- * Normative sections of `.agents/skills/churchcrm/volunteer-v2-design.md`:
+ * Normative sections of `docs/design/volunteer-v2.md`:
  * §3.3.2 (`GET /api/ministries/dashboard?days=28` →
  * `{upcoming, gaps, pendingResponses, proposedSwaps, failedNotifications}`),
  * §4.4 (read scoping happens in the QUERY — a global manager sees everything, a

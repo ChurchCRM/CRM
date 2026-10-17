@@ -3,7 +3,7 @@
 /**
  * Volunteer v2 — the member self-service surface (#9712, epic #9701).
  *
- * Normative sections of `.agents/skills/churchcrm/volunteer-v2-design.md`:
+ * Normative sections of `docs/design/volunteer-v2.md`:
  * §3.3.3 (the member API — `/me/opportunities`, `/me/signup`,
  * `/me/qualifications`, and the substitute picker S5 needs), §4.7 (the
  * `AuthMiddleware` exemption that makes an EditSelf-exclusive user able to

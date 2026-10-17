@@ -10,7 +10,7 @@ complexity: "advanced"
 
 The Member Portal is a member-facing area of the installation at `/portal`, with its own layout and navigation. Product principle: a member never sees the admin shell. Everything a member may do is inside the portal, and a page that would bounce a member to an admin page is unfinished.
 
-Theme authors: `docs/portal-themes.md`. Template variables and hooks: `docs/portal-templates.md`.
+Theme authors: https://docs.churchcrm.io/administration/member-portal-theme-guide. Template variables and hooks: https://docs.churchcrm.io/administration/member-portal-template-reference.
 
 ## Design rules
 
@@ -34,7 +34,7 @@ Theme authors: `docs/portal-themes.md`. Template variables and hooks: `docs/port
 | P16 | Member-facing volunteer functionality exists only in the portal; the admin shell keeps "Ministries". |
 | P17 | Volunteer scopes count for self-service accounts: team leaders manage their own team. Coordinators and managers are staff accounts. |
 
-Out of scope: contribution history and online giving, per-event visibility flags, member directory search (needs a privacy model), personal-device check-in, theme editor or upload UI, theming the admin shell.
+Out of scope: contribution history and online giving, per-event visibility flags, member directory search (needs a privacy model; the team leader's name-only Add Volunteer picker, #10531, is not that), personal-device check-in, theme editor or upload UI, theming the admin shell.
 
 ## Layout on disk
 
@@ -142,7 +142,7 @@ Templates get no PHP includes, no filesystem or network functions, and no `$_SES
 }
 ```
 
-Notice colours are `--portal-success`, `--portal-warning`, `--portal-danger`, `--portal-info` (each with a `-contrast` twin) plus `--portal-toast-width`. The full list is `docs/portal-themes.md` -> "Design tokens".
+Notice colours are `--portal-success`, `--portal-warning`, `--portal-danger`, `--portal-info` (each with a `-contrast` twin) plus `--portal-toast-width`.
 
 Every portal notice is a toast in the fixed `#portal-toasts` container (rendered by `partials/flash.html.twig`, filled by server `flash` messages and `window.CRM.portalToast(message, type)`), so the page never shifts under the member. `.portal-container` appears in the header, the nav and `<main>`; a bundle that places a notice by that selector lands in the header.
 
@@ -150,7 +150,7 @@ Dark mode: the default `theme.css` has a `[data-bs-theme="dark"]` block that a t
 
 ### Template contract
 
-`layout.html.twig` defines blocks `head_extra`, `header`, `nav`, `hero`, `content`, `sidebar`, `footer`, `scripts_extra`. Page templates fill `content` and optionally `hero` and `sidebar`. Partials are named, so a theme can override `partials/nav.html.twig` alone. Variables, ids and `data-` hooks per template are in `docs/portal-templates.md`.
+`layout.html.twig` defines blocks `head_extra`, `header`, `nav`, `hero`, `content`, `sidebar`, `footer`, `scripts_extra`. Page templates fill `content` and optionally `hero` and `sidebar`. Partials are named, so a theme can override `partials/nav.html.twig` alone. Variables, ids and `data-` hooks per template are in https://docs.churchcrm.io/administration/member-portal-template-reference.
 
 A bundle treats a missing hook as "this theme does without the feature". Adding a variable or block is compatible; renaming or removing one is a release-note item and keeps the old name as an alias for one release. The validator's "not used by this version" warning tells a theme author that an overridden template moved.
 
@@ -208,11 +208,13 @@ Twig templates (`volunteer/schedule.html.twig`, `volunteer/opportunities.html.tw
 
 ### My Teams (`/portal/teams`, `/portal/teams/{teamId}`, `/portal/teams/{teamId}/occurrences/{id}`)
 
-For team leaders and staff who lead a team. The team page is the ministry page's Positions, Volunteers, Schedules and Occurrences tabs narrowed to one team, rendered by `webpack/portal/teams.ts`. Team leaders create, edit and generate schedules for their own team. Omitted: Teams card, Ministry Coordinators, Help Wanted, Remove Volunteer, team delete/rename.
+For team leaders and staff who lead a team. The team page is the ministry page's Positions, Volunteers, Schedules and Occurrences tabs narrowed to one team, rendered by `webpack/portal/teams.ts`. Team leaders create, edit and generate schedules for their own team. Omitted: Teams card, Ministry Coordinators, Help Wanted, Add from Cart, Remove Volunteer, team delete/rename.
+
+**Add Volunteer (#10531).** The Volunteers tab offers a team leader **Add Volunteer**: an existing person, found with `GET /api/ministries/people/search?q=` (active people only, at least two characters, at most 20 results, each `{id, name, familyName}` and nothing else), joins the ministry's volunteer pool, optionally ticked for positions of this team, through `POST /api/ministries/teams/{teamId}/pool/{personId}`. The ministry's coordinators are emailed; the added person is not. A member login reaches the search only while it leads a team, so it can list directory names twenty at a time: the product owner's accepted trade-off (2026-10-11), kept narrow by the fields and the cap. The admin team-only view (#10530) offers the same dialog.
 
 - No `/api/portal/teams/*` namespace: the index is server-rendered from `PortalTeams`; the other pages call volunteer endpoints that authorize per record, including the team-keyed `GET /volunteer/teams/{id}/qualification-matrix` and `GET /volunteer/teams/{id}/schedules` (behind `VolunteerTeamMiddleware`).
 - `VolunteerCoordinatorRoleAuthMiddleware` admits `isVolunteerCoordinatorEnabled() || isVolunteerTeamLeaderEnabled()`. `isVolunteerCoordinatorEnabled()` stays false for self-service logins, which keeps the Ministries menu heading hidden for them.
-- `teams/occurrence.html.twig` reproduces the ids `occurrence.ts` expects and loads `ministries-occurrence.min.js`; the linked calendar event is named, not linked, because `/event/view/{id}` is an admin-shell page.
+- `teams/occurrence.html.twig` reproduces the ids `occurrence.ts` expects and loads `ministries-occurrence.min.js`; the linked calendar event is named, not linked, because `/event/view/{id}` is an admin-shell page. Its Assign dialog is the admin one, *Record they accepted* box included (#10528).
 - The nav shows `My Teams` only with an explicit `team` grant (`isVolunteerTeamLeaderEnabled()`); `/portal/teams` also admits a coordinator, manager or administrator opening the portal as themselves.
 - Shared components live in `webpack/ministries/components/` (`ui.ts`, `positions-table.ts`, `qualification-matrix.ts`, `schedules-table.ts`, `occurrences-table.ts`) and take a context object. Each looks up its controls by id and is inert when one is absent. `webpack/common/crm-helpers.ts` installs `window.CRM.escapeHtml`, `escapeAttribute` and `buildActionMenu` when absent; the portal has no DataTables, so its tables are plain tables.
 
