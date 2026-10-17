@@ -186,6 +186,10 @@ export function createQualificationMatrix(options: QualificationMatrixOptions): 
     // coordinator and above and to nobody else. The flag is the server's opinion and
     // is advisory: the API refuses a team leader with 403 whatever this says (D5).
     const canRemove = options.canRemoveVolunteer() && options.removeVolunteer !== undefined;
+    // The admin shell offers the standard person menu (View, Edit, Cart); the Member
+    // Portal has no person pages and loads no renderer, so it gets Remove Volunteer or nothing.
+    const personMenu = window.CRM?.renderPersonActionMenu;
+    const showActions = canRemove || personMenu !== undefined;
 
     // "Elementary · Lead Teacher", not a bare "Lead Teacher", whenever the columns
     // come from more than one team — two teams under one ministry may own a position
@@ -200,7 +204,7 @@ export function createQualificationMatrix(options: QualificationMatrixOptions): 
       ...data.positions.map(
         (position: VolunteerPosition) => `<th class="text-center">${escapeHtml(columnLabel(position))}</th>`,
       ),
-      canRemove ? `<th class="text-center no-export w-1">${i18next.t("Actions")}</th>` : "",
+      showActions ? `<th class="text-center no-export w-1">${i18next.t("Actions")}</th>` : "",
     ].join("");
 
     body.innerHTML = data.people
@@ -241,17 +245,23 @@ export function createQualificationMatrix(options: QualificationMatrixOptions): 
               i18next.t("Not in the pool"),
             )}</span>`;
 
-        const menu = canRemove
-          ? `<td class="text-center w-1">${actionMenu([
-              {
-                type: "button",
-                icon: "fa-solid fa-user-minus",
-                label: i18next.t("Remove Volunteer"),
-                className: "volunteer-remove-volunteer",
-                danger: true,
-                data: { "person-id": person.personId, "person-name": person.displayName },
-              },
-            ])}</td>`
+        const removeItem: CRMActionMenuItem = {
+          type: "button",
+          icon: "fa-solid fa-user-minus",
+          label: i18next.t("Remove Volunteer"),
+          className: "volunteer-remove-volunteer",
+          danger: true,
+          data: { "person-id": person.personId, "person-name": person.displayName },
+        };
+        const menu = showActions
+          ? `<td class="text-center w-1">${
+              personMenu
+                ? personMenu(person.personId, person.displayName, {
+                    omitDelete: true,
+                    extraItems: canRemove ? [removeItem] : [],
+                  })
+                : actionMenu([removeItem])
+            }</td>`
           : "";
 
         return `<tr data-person-name="${escapeAttribute(person.displayName.toLowerCase())}">

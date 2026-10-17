@@ -228,7 +228,7 @@ describe("Volunteer v2 — the Ministries sidebar heading", () => {
                 // Ministries group's own toggle is a collapse anchor, not a link.
                 cy.get("a.nav-link:not([data-bs-toggle])").each(($link) => {
                     expect($link.attr("href")).to.match(
-                        /\/ministries\/(dashboard|\d+)$/,
+                        /\/(ministries\/(dashboard|\d+)|admin\/ministry-settings)$/,
                     );
                 });
             });

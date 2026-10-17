@@ -382,9 +382,15 @@ class Menu
         foreach ((new VolunteerAuthorizationService())->getTeamLedMinistries($currentUser) as $ministryId => $name) {
             $ministriesMenu->addSubMenu(new MenuItem($name, 'ministries/' . $ministryId, true, 'fa-people-group'));
         }
-        // Last under the heading: the nested Deactivated Ministries group, which
-        // MenuItem::isVisible() drops whenever it would be empty.
+        // The nested Deactivated Ministries group, which MenuItem::isVisible() drops
+        // whenever it would be empty.
         $ministriesMenu->addSubMenu(self::getDeactivatedMinistriesMenu($currentUser));
+
+        if ($currentUser->isAdmin()) {
+            $adminMenu = new MenuItem(gettext('Admin'), '', true);
+            $adminMenu->addSubMenu(new MenuItem(gettext('Ministry Settings'), 'admin/ministry-settings', true, 'fa-sliders'));
+            $ministriesMenu->addSubMenu($adminMenu);
+        }
 
         return $ministriesMenu;
     }
@@ -557,7 +563,6 @@ class Menu
         $menu->addSubMenu(new MenuItem(gettext('Get Started'), 'admin/get-started', $isAdmin, 'fa-rocket'));
         $menu->addSubMenu(new MenuItem(gettext('System Users'), 'admin/system/users', $isAdmin, 'fa-user-gear'));
         $menu->addSubMenu(new MenuItem(gettext('Member Portal'), 'admin/member-portal', $isAdmin, 'fa-house-user'));
-        $menu->addSubMenu(new MenuItem(gettext('Ministry Settings'), 'admin/ministry-settings', $isAdmin, 'fa-handshake-angle'));
         $menu->addSubMenu(new MenuItem(gettext('System Settings'), 'SystemSettings.php', $isAdmin, 'fa-gear'));
         $menu->addSubMenu(new MenuItem(gettext('Feature Toggles'), 'admin/system/feature-toggles', $isAdmin, 'fa-toggle-on'));
         $menu->addSubMenu(new MenuItem(gettext('Plugins'), 'plugins/management', $isAdmin, 'fa-plug'));

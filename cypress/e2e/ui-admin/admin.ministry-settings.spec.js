@@ -109,16 +109,9 @@ describe("Admin → Ministry Settings", () => {
 
         cy.get('a[href$="/admin/ministry-settings"]').should("exist");
         cy.get(".page-title, h2").should("contain", "Ministry Settings");
-        cy.get("#ministrySettingsPanel select[name='sVolunteerVersion']").should("have.value", "v2");
+        cy.get("#ministrySettingsPanel select[name='sVolunteerVersion']").should("not.exist");
         cy.get("#ministrySettingsPanel input[name='iVolunteerReminderLeadHours']").should("have.value", originalLead);
         cy.get("#ministrySettingsPanel input[name='iVolunteerGapAlertLeadHours']").should("have.value", originalGapLead);
-
-        cy.get("#ministry-experience-card")
-            .should("contain", "V1")
-            .and("contain", "Volunteer Opportunities")
-            .and("contain", "V2")
-            .and("contain", "Ministries")
-            .and("contain", "Both");
 
         cy.get("#ministry-delivery-card").should("be.visible");
         cy.get("#ministry-failed-count").should("exist");
@@ -295,19 +288,34 @@ describe("Admin → Ministry Settings", () => {
         cy.dbQuery("DELETE FROM config_cfg WHERE cfg_name = 'sLastVolunteerTopUpResult'");
     });
 
-    it("is reachable while V1 is active, and switching to V2 here makes Ministries appear", () => {
+    it("sends the administrator to Feature Toggles while V2 is off, where the switch lives", () => {
         adminApi("POST", SETTING_URL, { value: "v1" }, 200);
         freshAdminLogin();
         cy.visit(PAGE_URL);
+        cy.url().should("include", "/admin/system/feature-toggles");
 
-        // No Ministries heading and no dashboard button in V1 — this page is the way in.
-        cy.get('a[href$="/ministries/dashboard"]').should("not.exist");
-        cy.get("#ministrySettingsPanel select[name='sVolunteerVersion']").should("be.enabled").and("have.value", "v1").select("v2");
-        cy.get("#ministrySettingsPanel .settings-panel-save").click();
+        cy.get("select.feature-choice[data-setting='sVolunteerVersion']").should("be.enabled").and("have.value", "v1").select("v2");
 
-        // onSave reloads the page; the sidebar and the header button follow.
+        // The change saves and reloads the page; Ministries and its Ministry Settings page follow.
         cy.get('a[href$="/ministries/dashboard"]', { timeout: 10000 }).should("exist");
-        cy.get("#ministrySettingsPanel select[name='sVolunteerVersion']").should("have.value", "v2");
+        cy.get("select.feature-choice[data-setting='sVolunteerVersion']").should("have.value", "v2");
+        cy.visit(PAGE_URL);
+        cy.url().should("include", "/admin/ministry-settings");
+    });
+
+    it("explains each volunteer experience in a side panel on Feature Toggles", () => {
+        adminApi("POST", SETTING_URL, { value: "v2" }, 200);
+        freshAdminLogin();
+        cy.visit("/admin/system/feature-toggles");
+        cy.get("#ministry-experience-help").should("not.be.visible");
+        cy.get('a[data-bs-target="#ministry-experience-help"]').click();
+        cy.get("#ministry-experience-help")
+            .should("have.class", "show")
+            .and("contain", "V1")
+            .and("contain", "Volunteer Opportunities")
+            .and("contain", "V2")
+            .and("contain", "Ministries")
+            .and("contain", "Both");
     });
 
     it("has taken both settings off the System Settings page", () => {

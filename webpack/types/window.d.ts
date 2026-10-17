@@ -142,6 +142,10 @@ interface CRMPersonActionMenuOptions {
   inCart?: boolean;
   /** When set, adds a "View Family" item after Edit. */
   familyId?: number | null;
+  /** Page-specific items added after Cart. */
+  extraItems?: CRMActionMenuItem[];
+  /** Leave out Delete, for lists that manage a relationship rather than the person. */
+  omitDelete?: boolean;
 }
 
 interface CRMFamilyActionMenuOptions {

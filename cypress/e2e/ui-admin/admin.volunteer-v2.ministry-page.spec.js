@@ -438,6 +438,14 @@ describe("Volunteer v2 ministry page (#9701)", () => {
                 .click();
             cy.get(
                 `#volunteerQualificationsTable .volunteer-remove-volunteer[data-person-id="${POOL_REMOVED}"]`,
+            )
+                .parents(".dropdown-menu")
+                .should("contain", "View")
+                .and("contain", "Edit")
+                .and("contain", "Add to Cart")
+                .and("not.contain", "Delete");
+            cy.get(
+                `#volunteerQualificationsTable .volunteer-remove-volunteer[data-person-id="${POOL_REMOVED}"]`,
             ).click();
 
             cy.get(".bootbox")

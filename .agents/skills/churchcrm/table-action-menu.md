@@ -50,6 +50,7 @@ window.CRM.renderEventActionMenu(eventId, eventTitle, { inactive })
 ```
 
 - `familyId` adds "View Family" after Edit; `inCart` flips the cart button to RemoveFromCart.
+- `extraItems` adds page-specific items after Cart; `omitDelete` drops Delete for lists that manage a relationship (the ministry Volunteers grid adds *Remove Volunteer* this way).
 - The `.delete-person` handler is delegated in `CRMJSOM.js`; pages add no copy.
 - The renderers call `i18next.t()` at render time, after locales load.
 
