@@ -322,10 +322,7 @@
           dataPointSelection: (_event, _chart, opts) => {
             // Match whole fund names in the Fund column only, so other columns can't leak in.
             const label = $.fn.dataTable.util.escapeRegex(config.fundLabels[opts.dataPointIndex]);
-            paymentsTable
-              .column(fundColumnIndex())
-              .search(`(^|, )${label}(,|$)`, true, false)
-              .draw();
+            paymentsTable.column(fundColumnIndex()).search(`(^|, )${label}(,|$)`, true, false).draw();
             $("#clearFundFilter").removeClass("d-none");
             document.getElementById("paymentsTable").scrollIntoView({ behavior: "smooth", block: "start" });
           },
