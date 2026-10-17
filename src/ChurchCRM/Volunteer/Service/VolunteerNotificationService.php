@@ -345,8 +345,12 @@ class VolunteerNotificationService
      * them to answer — would be nonsense. The dedupe key is per assignment per
      * person, so re-signing up after a decline (I8 re-uses the same row) produces no
      * second confirmation.
+     *
+     * `$recordedByPersonId` is the coordinator who assigned them already accepted
+     * (#10528); the row's context carries it, so the message says who put them on
+     * the schedule instead of thanking them for signing up.
      */
-    public function enqueueSignupConfirm(VolunteerAssignment $assignment): VolunteerNotification
+    public function enqueueSignupConfirm(VolunteerAssignment $assignment, ?int $recordedByPersonId = null): VolunteerNotification
     {
         return $this->enqueue(
             self::TYPE_SIGNUP_CONFIRM,
@@ -354,7 +358,8 @@ class VolunteerNotificationService
             (int) $assignment->getId(),
             (int) $assignment->getOccurrenceId(),
             DateTimeUtils::getToday(),
-            $this->signupConfirmKey((int) $assignment->getId(), (int) $assignment->getPersonId())
+            $this->signupConfirmKey((int) $assignment->getId(), (int) $assignment->getPersonId()),
+            $recordedByPersonId === null ? null : ['recordedBy' => $recordedByPersonId]
         );
     }
 
@@ -1401,7 +1406,16 @@ class VolunteerNotificationService
                 return new VolunteerReminderEmail($to, $recipientName, $context);
 
             case self::TYPE_SIGNUP_CONFIRM:
-                return new VolunteerSignupConfirmEmail($to, $recipientName, $context);
+                $recordedBy = (int) ($this->rowContext($row)['recordedBy'] ?? 0);
+
+                return new VolunteerSignupConfirmEmail(
+                    $to,
+                    $recipientName,
+                    $context,
+                    $recordedBy > 0
+                        ? (PersonQuery::create()->findPk($recordedBy)?->getFullName() ?? gettext('Your coordinator'))
+                        : null
+                );
 
             case self::TYPE_DECLINE_ALERT:
                 $assignment = $this->assignmentFor($row);

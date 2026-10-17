@@ -1087,6 +1087,10 @@ Legal transitions, and nothing else:
 | `accepted` | `completed` | system | set when the occurrence's end has passed; if linked and the person has an `event_attend` check-in, `completed` is recorded with attendance, otherwise it is recorded without. Never blocks on attendance. |
 | anything | anything else | — | rejected with `409` and the current status in the body |
 
+A coordinator can also create the row already `accepted` — an accepted default (D32) or the
+Assign dialog's *Record they accepted* (#10528) — which writes the same `coordinator`-channel
+response row by the coordinator and sets `vasg_RespondedDate`.
+
 "On their behalf" is deliberate, not a loophole: a volunteer who phones the coordinator to say they
 cannot make it is the common case, and the coordinator records it. The response row then carries
 the **coordinator** as `vrsp_per_ID` and `vrsp_Channel = 'coordinator'` (§2.12), so the audit trail
@@ -1667,7 +1671,7 @@ error contract that E-18 (#9737) establishes; see M5 for why there is no phrasin
 | GET | `/api/ministries/occurrences/{occurrenceId}` | detail | scope | `VolunteerOccurrenceMiddleware` |
 | GET | `/api/ministries/occurrences/{occurrenceId}/staffing` | **the workhorse** | scope | `{occurrence, requirements:[{positionId,positionName,minCount,maxCount,liveCount,gapCount,assignments:[{id,personId,displayName,status,source,respondedDate,attendance}]}]}` — `attendance` is present only for linked occurrences (E10) |
 | GET | `/api/ministries/occurrences/{occurrenceId}/eligible` | who may be assigned | scope | `?positionId=&q=` → `{people:[{personId,displayName,inPool,lastServedDate,conflictPositionId}]}`, ordered by `lastServedDate ASC NULLS FIRST` (the rotation, §2.17) |
-| POST | `/api/ministries/occurrences/{occurrenceId}/assignments` | assign | scope | `{positionId,personId,requirementId?,allowOutsidePool?}` → `201 {assignment}`; `403` I2, `409` I1/I3/I5 |
+| POST | `/api/ministries/occurrences/{occurrenceId}/assignments` | assign | scope | `{positionId,personId,requirementId?,allowOutsidePool?,accepted?}` → `201 {assignment}`; `403` I2, `409` I1/I3/I5. `accepted: true` (*Record they accepted*, #10528) creates it `accepted` with a coordinator-channel response row by the caller, as an accepted default is (D32), and queues `signup_confirm` instead of `assignment` (§3.6) |
 | ~~GET~~ | ~~`/api/ministries/occurrences/{occurrenceId}/emails`~~ | **RETIRED** (2026-10-01, product owner), never built. A ministry's volunteers are emailed from its pool Group (`/groups/view/{id}` → *Email*), or a position's volunteers go to the Cart (Positions tab → *Add Volunteers to Cart*) and are emailed from `/people/cart` → *Email* | — | — |
 | ~~GET~~ | ~~`/api/ministries/occurrences/{occurrenceId}/roster/csv`~~ | **RETIRED** with it, never built; the cart page's list exports CSV (R1) | — | — |
 | POST | `/api/ministries/assignments/{assignmentId}/status` | coordinator status change, incl. recording a response on the volunteer's behalf (§2.11.1) | scope | `{status:'cancelled'\|'accepted'\|'declined', comment?}` → `{assignment}`; `accepted`/`declined` write a response row with `Channel='coordinator'` and the coordinator as `vrsp_per_ID`; `409` on an illegal transition |
@@ -1958,10 +1962,11 @@ Naming note: `drainOutbox()` is `static` to match the `BirthdayEmailService::run
 
 | Trigger | Type | Recipient | `ScheduledFor` |
 |---|---|---|---|
-| `assign()`, and a pending default a run assigns (D32) | `assignment` | the volunteer | now |
+| `assign()`, and a pending default a run assigns (D32) | `assignment` | the volunteer | now — not for an assignment created already accepted (an accepted default, *Record they accepted*) |
 | `assign()` / `selfSignup()` accepted | `reminder` | the volunteer | occurrence start − `iVolunteerReminderLeadHours` |
 | `respond('declined')` **by the volunteer** (`Channel='web'`) | `decline_alert` | `getCoordinatorPersonIds(ministry, team)` | now — a coordinator-recorded decline (`Channel='coordinator'`) enqueues nothing |
 | `selfSignup()` | `signup_confirm` | the volunteer | now |
+| `assign()` with *Record they accepted* (`accepted: true`, #10528) | `signup_confirm`, `vntf_Context = {"recordedBy": …}` (the coordinator's person id), so the message names who put them on the schedule instead of thanking them for signing up | the volunteer | now. An accepted default (D32) sends none |
 | `proposeSubstitute()` | `swap_proposed` | coordinators | now |
 | `approveSwap()` / `rejectSwap()` | `swap_resolved` | proposer **and** substitute | now |
 | `respond('declined')`, when the occurrence is left short (`notifyGapOpened()`) | `gap_alert` | `getCoordinatorPersonIds(ministry, team)` | now (dedupe key includes the date, so at most one per coordinator per occurrence per day) |
@@ -2691,9 +2696,11 @@ entries: one cheap id-and-name query per request, memoised in
   Ministries** (`fa-box-archive`, the Groups heading's per-type sub-groups are the precedent),
   which `MenuItem::isVisible()` drops whenever it would be empty. Same memoised query, split by
   the `active` flag it now carries;
-- **team leader on a STAFF account** — *Dashboard* alone. Leading a team is not administering
-  the ministry above it, and `/ministries/{id}` would refuse them. Their teams are
-  named on the dashboard's "My ministries and teams" card, which is their entry point;
+- **team leader on a STAFF account** — *Dashboard*, then one entry per active ministry they lead a
+  team in (`VolunteerAuthorizationService::getTeamLedMinistries()`, `fa-people-group`), each opening
+  `/ministries/{id}`'s **team-only view** (§5.4, #10530). Leading a team is not administering the
+  ministry above it, so these are not `getManageableMinistries()` entries. The dashboard's "My
+  ministries and teams" card links the same view;
 - **team leader on a SELF-SERVICE account** (the D14 revision, #9867) — no sidebar at all: that
   login never sees the admin shell. Their team pages are in the Member Portal (MP7), reached
   from its own navigation;
@@ -2718,7 +2725,7 @@ Sunday.
 | S1 | Coordinator dashboard — "what needs my attention" | `/ministries/dashboard` | Coordinator | `ministries-dashboard` |
 | S2 | ~~Setup flow (guided)~~ **removed** — see §5.3 | — | — | — |
 | S2b | ~~My ministries and teams (the module index)~~ **removed** — the sidebar's **Ministries** heading lists the same ministries (§5.0), and `/ministries` 302s to S1. Its "New ministry" button lives on S1 | — | — | — |
-| S3 | Ministry detail — overview, volunteers, positions, schedules, occurrences, calendar, help wanted | `/ministries/{id}` | scope | `ministries-ministry` |
+| S3 | Ministry detail — overview, volunteers, positions, schedules, occurrences, calendar, help wanted | `/ministries/{id}` | scope | `ministries-ministry`; a team leader's team-only view loads `ministries-team-view` (#10530) |
 | S4 | Occurrence / staffing view | `/ministries/occurrences/{id}` | scope | `ministries-occurrence` |
 | S5 | My schedule (member) | `/portal/volunteer/schedule` | authenticated person | `portal-volunteer-schedule` |
 | S6 | Open opportunities (member) | `/portal/volunteer/opportunities` | authenticated person | `portal-volunteer-opportunities` |
@@ -2760,6 +2767,12 @@ Answers, in this order, top to bottom:
 
 The dashboard makes exactly **one** API call (`GET /api/ministries/dashboard`) and renders all five
 panels from it. Do not fan out to five endpoints.
+
+The **My ministries and teams** card links every ministry to `/ministries/{id}` and every team to
+`/ministries/{ministryId}?team={teamId}` (#10530). A ministry the viewer reaches only through a team
+(`manageable: false`) carries a **Team leader** badge — it opens the team-only view (§5.4) — where it
+used to be plain text marked *View only*. The Upcoming table's *Open the ministry* row action is
+offered for every ministry on the card.
 
 ### 5.3 S2 — Setup flow — **removed**
 
@@ -2905,10 +2918,22 @@ carries the **lifecycle buttons** *(product-owner decision, 2026-09-17)*:
   grid so the new rows appear with no ticks, which is the prompt to make the second
   statement.
 
-  Because the last column holds an action menu, the wrapper is the mandatory
-  `overflow-x: clip; overflow-y: visible` pair rather than `.table-responsive`: a
-  horizontal scroller would clip the dropdown (table-action-menu.md). A ministry with very
-  many positions therefore wraps its columns rather than scrolling them.
+  Position names and counts are unlimited, so the grid scrolls sideways in
+  `.volunteer-scroll-x`, and the open row menu is re-anchored with `position: fixed` so the
+  scroller cannot clip it (table-action-menu.md, "A menu inside a horizontally SCROLLING
+  table").
+
+  **The position headings stay in view (#10527).** With a long pool the heading row used
+  to scroll away. A sticky cell inside the scroller cannot follow the page — the scroller
+  is its scroll container — so `wireStickyHead()` (`components/ui.ts`) copies the row into
+  a strip just above the scroller. The strip sticks below the page's sticky top bar (the
+  admin topbar; the portal header scrolls away, so there it sticks at the top of the
+  window), follows the grid's sideways scroll both ways, and takes every column width from
+  the real row, which stays in the table, collapsed, for screen readers. The cells keep
+  Tabler's opaque heading background in light and dark mode. On a phone `_tabler-bridge.scss`
+  makes every `.card-body` scroll sideways, which would capture the strip too, so the card
+  around an active Volunteers tab is set back to `overflow-x: visible`. Admin ministry page
+  and portal team page alike.
 
 - **Schedules** lists each schedule with a **Which events** column saying, in words, where its
   dates come from (D22) — *"Church Service events titled {title}"*, *"Sunday School: {class}"*
@@ -3065,6 +3090,31 @@ carries the **lifecycle buttons** *(product-owner decision, 2026-09-17)*:
   reaches Open Opportunities by having a recruiting position, so a coordinator who has
   named the roles they need never has to find this tab as well.
 
+**The team-only view (#10530).** A team leader whose login has Manage My Ministries — and so passes
+`VolunteerAdminAreaRoleAuthMiddleware` — opens `/ministries/{id}` for a ministry in which they lead a
+team. The route renders the same view in team mode when `canManageMinistry()` is false and the
+viewer's `getManagedTeamIds()` holds at least one team of this ministry; with none it still sends them
+to access-denied. The page subtitle is *"Your teams: {names}"*, and the page has the
+portal team page's abilities and no more (Member Portal §5.5):
+
+- four tabs — **Positions · Volunteers · Schedules · Occurrences** — opening on Positions, each
+  showing only the teams of this ministry the viewer leads;
+- no Edit / Deactivate / Reactivate / Delete, no Overview (counts, Teams card, Ministry
+  Coordinators), no Calendar, no Help Wanted, no Add Volunteer / Add from Cart, no Remove Volunteer,
+  and none of their dialogs — they are left out of the markup, not hidden;
+- the Volunteers and Occurrences team selects only when the viewer leads more than one team here;
+  `?team={id}` puts that team first, so the grid and the dialogs start on it.
+
+The page's bundle is `ministries-team-view` (`webpack/ministries/team-view.ts`), a third adapter over
+the same components, and every call it makes is team-scoped: `GET /teams/{id}` (team and positions),
+`GET /teams/{id}/qualification-matrix`, `GET /teams/{id}/schedules`, and `GET /occurrences`, which
+scopes its rows to the caller's teams in the query (§4.4). Writes go to the position, qualification,
+schedule, staffed-event and occurrence routes, each of which authorizes its own record (§4.6). No API
+check was widened for it: the ministry-level routes — the ministry document, its ministry-wide lists,
+rename/deactivate/delete, teams, the pool, Remove Volunteer, events, scopes — still answer `403`. The
+occurrence page (S4) already authorized by `canManageOccurrence()`; its *Back to Occurrences* returns
+to the team view.
+
 **There is no Teams tab and no volunteer-pool panel.** The teams moved to the Overview
 card above; the pool panel is gone from this page entirely. The V2 pool endpoints and the
 Groups module still own the roster, and qualifying somebody still brings them into the
@@ -3107,6 +3157,12 @@ The single most important coordinator screen.
   `GET /occurrences/{id}/eligible?positionId=` — so the picker can only ever offer qualified people.
   In-pool members are listed first; an out-of-pool qualified person appears under a
   "Not in the pool" divider and assigning them requires the `allowOutsidePool` confirm (I3).
+  A **Record they accepted** box (#10528), off each time the dialog opens, is for somebody
+  who already said yes in person or by phone: the assignment is created `accepted` through the
+  coordinator channel, recorded as answered by the coordinator on the volunteer's behalf as an
+  accepted default is (D32), with no "please respond" email; the volunteer gets the short
+  `signup_confirm` "you're on the schedule" message, and reminders go out as usual. The portal's
+  team occurrence page has the same dialog.
 - **Double-duty warning (I7, D16)**: a qualified person who already holds *another* position on
   this occurrence still appears in the picker — never filtered out, never disabled — annotated with
   the position they already hold. Choosing them renders a non-blocking inline caution ("Already
@@ -3326,6 +3382,8 @@ Only three globs are wired into a Cypress config (F32):
 | `volunteer-v2.member.spec.js` | `cypress/e2e/ui/people/` | S5/S6 as a member: accept, decline, sign up, propose a sub; mobile viewport; empty states |
 | `volunteer-v2.coordinator.spec.js` | `cypress/e2e/ui/groups/` | S1 → S4 coordinator path; gap visible; assign from the eligible picker; localized strings present |
 | `admin.volunteer-v2.ministry-page.spec.js` | `cypress/e2e/ui-admin/` | S3 end to end as admin: tab order, Overview counts + Teams card, Volunteers tab and Remove Volunteer, Help Wanted tab, the removed pool panel, `/volunteer/setup` 404, the "New ministry" modal |
+| `admin.volunteer-v2.team-leader-view.spec.js` | `cypress/e2e/ui-admin/` | #10530: the dashboard links, the team-only view's four tabs and missing controls, adding a position, a tick, a schedule and an assignment as a Manage My Ministries team leader, the Back link, access-denied on another ministry, the administrator's view unchanged |
+| `private.volunteer.team-leader-admin.spec.js` | `cypress/e2e/api/private/standard/` | #10530: the same persona through the API — own team `2xx`, another team's records and every ministry-level action `403`, nothing written |
 | `admin.volunteer-v2.event-ministry.spec.js` | `cypress/e2e/ui-admin/` | the ministry field on the event editor; authorization on set/clear |
 | `private.volunteer.team-class.spec.js` | `cypress/e2e/api/private/standard/` | D23: link validation (`400`/`409`/`403`), the teacher import, grant/revoke/position-delete projection, the Student `409`, the groups API's `409`s for Teacher writes, student writes, rollout `v1`, unlink and class deletion |
 | `admin.volunteer-v2.team-class.spec.js` | `cypress/e2e/ui-admin/` | D23 on screen: the team dialog's class select and import, the teams card's class link, the class page and group view notes and hidden teacher controls, the role editor's refusal |
@@ -3972,7 +4030,7 @@ subclass and V2 does not start.
 | `VolunteerDeclineAlertEmail` | outbox type `decline_alert` | coordinators in scope | the volunteer who declined | `/ministries/occurrences/{id}` | *Fill this gap* |
 | `VolunteerGapAlertEmail` | outbox type `gap_alert` | coordinators in scope | none (no single volunteer) | `/ministries/occurrences/{id}` | *Fill this gap* |
 | `VolunteerGapAlertBatchEmail` | a recipient's batched `gap_alert` rows (#10529), one message a day | coordinators in scope | none | `/ministries/dashboard` (a team leader without Manage My Ministries: `/portal/teams`) | *Open the Ministry Dashboard* / *My Teams* |
-| `VolunteerSignupConfirmEmail` | outbox type `signup_confirm` | the volunteer | responsible coordinator | `/portal/volunteer/schedule` | *View my schedule* |
+| `VolunteerSignupConfirmEmail` | outbox type `signup_confirm`: self sign-up, or an assignment recorded as accepted in the Assign dialog (#10528), whose `recordedBy` context switches the wording to *"{coordinator} recorded that you will serve. You are on the schedule."* | the volunteer | responsible coordinator | `/portal/volunteer/schedule` | *View my schedule* |
 | `VolunteerSwapProposedEmail` | outbox type `swap_proposed` | coordinators in scope | the proposing volunteer | `/ministries/dashboard` | *Review this request* |
 | `VolunteerSwapResolvedEmail` | outbox type `swap_resolved` | proposer **and** substitute | responsible coordinator | `/portal/volunteer/schedule` | *View my schedule* |
 | `VolunteerHelpOfferEmail` | outbox type `help_offer` (D19, *I'd like to help*) | the ministry's coordinators, one message each per day | the volunteer who offered | `/ministries/{id}#qualifications` | *Qualify them for a position* |

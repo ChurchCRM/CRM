@@ -296,6 +296,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <select class="form-select" id="assign-person-select"></select>
           <div class="form-hint"><?= gettext('Whoever served least recently is listed first.') ?></div>
         </div>
+        <label class="form-check mb-3">
+          <input class="form-check-input" type="checkbox" id="assign-accepted">
+          <span class="form-check-label"><?= gettext('Record they accepted') ?></span>
+          <span class="form-check-description"><?= gettext('They already said yes. They get a short confirmation instead of a request to respond.') ?></span>
+        </label>
         <div class="empty d-none" id="assign-empty">
           <div class="empty-icon"><i class="fa-solid fa-user-slash fa-2x text-muted"></i></div>
           <p class="empty-title"><?= gettext('Nobody is qualified for this position yet') ?></p>

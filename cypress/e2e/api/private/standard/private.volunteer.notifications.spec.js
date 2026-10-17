@@ -2049,6 +2049,107 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
         });
     });
 
+    describe("Volunteer v2 — Record they accepted (#10528)", () => {
+        beforeEach(resetWorkflow);
+
+        afterEach(() => {
+            setConfig(LEAD_HOURS_URL, "0");
+        });
+
+        function assignmentDetail(assignmentId) {
+            return api(ADMIN_KEY, "GET", `${VOLUNTEER_URL}/assignments/${assignmentId}`).then((resp) => resp.body);
+        }
+
+        it("creates it accepted, answered by the coordinator, with a confirmation instead of the please-respond message", () => {
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A, { accepted: true }).then(
+                (assignment) => {
+                    expect(assignment).to.include({
+                        status: "accepted",
+                        source: "coordinator",
+                        assignedByPersonId: PERSON_COORDINATOR,
+                    });
+                    expect(assignment.respondedDate).to.not.be.null;
+
+                    assignmentDetail(assignment.id).then((detail) => {
+                        expect(detail.responses).to.have.length(1);
+                        expect(detail.responses[0]).to.include({
+                            response: "accepted",
+                            channel: "coordinator",
+                            personId: PERSON_COORDINATOR,
+                        });
+                        expect(detail.notifications.map((n) => n.type)).to.deep.eq(["signup_confirm"]);
+                    });
+                },
+            );
+        });
+
+        it("still schedules the reminder before the date", () => {
+            assign(COORDINATOR_KEY, occurrenceTwo, posEspresso, POOL_MEMBER_A, { accepted: true }).then(
+                (assignment) => {
+                    setConfig(LEAD_HOURS_URL, String(21 * 24));
+                    drain();
+
+                    notifications(assignment.id).then((resp) => {
+                        expect(resp.body.notifications.map((n) => n.type)).to.have.members([
+                            "signup_confirm",
+                            "reminder",
+                        ]);
+                    });
+                },
+            );
+        });
+
+        it("mails the volunteer one short confirmation that names the coordinator", function () {
+            requireMailpit(this);
+
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A, { accepted: true }).then(() => {
+                drain();
+
+                mailTo(MEMBER_A_EMAIL).then((message) => {
+                    expect(message.Subject).to.contain("You are on the schedule");
+                    const body = `${message.Text || ""}\n${message.HTML || ""}`;
+                    expect(body).to.contain("Tony");
+                    expect(body).to.contain("recorded that you will serve");
+                    expect(body).to.not.contain("signing up");
+                    expect(body).to.contain(ESPRESSO_NAME);
+                    expect(body).to.contain("/portal/volunteer/schedule");
+                    const replyTo = (message.ReplyTo || []).map((r) => r.Address);
+                    expect(replyTo).to.deep.eq([COORDINATOR_EMAIL]);
+                });
+            });
+        });
+
+        it("leaves an unticked assignment pending, asking for an answer, with no confirmation", () => {
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A, { accepted: false }).then(
+                (assignment) => {
+                    expect(assignment.status).to.eq("pending");
+                    expect(assignment.respondedDate).to.be.null;
+
+                    assignmentDetail(assignment.id).then((detail) => {
+                        expect(detail.responses).to.have.length(0);
+                        expect(detail.notifications.map((n) => n.type)).to.deep.eq(["assignment"]);
+                    });
+                },
+            );
+        });
+
+        it("is refused to a team leader of another ministry's team", () => {
+            defaultTeam(ministryB).then((otherTeam) => {
+                api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/scopes`, {
+                    personId: PERSON_PLAIN,
+                    scopeType: "team",
+                    scopeId: otherTeam,
+                }, [200, 201]);
+            });
+            assign(PLAINAUTH_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A, { accepted: true }, 403);
+
+            api(ADMIN_KEY, "GET", `${VOLUNTEER_URL}/occurrences/${occurrenceOne}/staffing`).then((resp) => {
+                const assigned = resp.body.requirements.flatMap((r) => r.assignments);
+                expect(assigned.filter((a) => a.personId === POOL_MEMBER_A)).to.have.length(0);
+            });
+        });
+    });
+
     describe("Volunteer v2 — GET /assignments/{id}/notifications is scoped (§4.8)", () => {
         let assignmentId = 0;
 
