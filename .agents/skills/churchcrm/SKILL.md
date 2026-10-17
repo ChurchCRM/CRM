@@ -90,7 +90,7 @@ Row actions: [`table-action-menu.md`](./table-action-menu.md). Settings UI: copy
 | [PHP Best Practices](./php-best-practices.md) | PHP / Perpl |
 | [Performance Optimization](./performance-optimization.md) | Queries |
 
-Proposed RFC and prioritization governance (pending maintainer review): [`docs/contributing-rfc-community-prioritization.md`](../../../docs/contributing-rfc-community-prioritization.md). Do not treat this proposal as binding until approved and merged. For issue intake, architecture proposals, voting candidates, contributor task handoffs and milestone choices, consult it alongside the existing issue-quality RFC PR #10539.
+Proposed RFC and prioritization governance (pending approval): [`docs/decisions/0003-rfc-community-prioritization.md`](../../../docs/decisions/0003-rfc-community-prioritization.md).
 
 ## Process
 
