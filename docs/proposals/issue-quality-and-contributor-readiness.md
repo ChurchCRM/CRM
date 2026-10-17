@@ -104,7 +104,7 @@ Q1–Q8 are approved. This RFC records those decisions; it does not itself updat
 
 | Order | Accountable role | Follow-up change / verification |
 | --- | --- | --- |
-| 1 | Maintainer / rollout owner | Establish and maintain implementation tracking in [#10634](https://github.com/ChurchCRM/CRM/issues/10634); name an accountable CRM pilot owner before starting the pilot. |
+| 1 | George / maintainers | Name an accountable CRM pilot owner in [#10634](https://github.com/ChurchCRM/CRM/issues/10634) before starting the pilot. |
 | 2 | Contributor author; maintainer reviewer | Extend existing `docs/contributing-pr-review.md` only where gaps exist; add one issue-readiness guide, link both from **root** `CONTRIBUTING.md` and reconcile `.github/CONTRIBUTING.md` → docs-site contributing page. |
 | 3 | Contributor author; maintainer reviewer | Update `.github/ISSUE_TEMPLATE/` and PR template lightly; update `AGENTS.md`, `CLAUDE.md` where relevant, `.agents/` skill links, `github-interaction.md`, `maintainer-review-gates.md`, and review CodeRabbit config for contradictions. |
 | 4 | Maintainer triage owner | Audit existing labels and frozen-area references. No new labels/CI checks unless separately approved. Verify claiming, supersession and stale-process guidance. |
