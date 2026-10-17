@@ -121,7 +121,7 @@ Rules live in `frontend-development.md`; check the diff against it.
 
 - [ ] Free of `console.log`, `var_dump`, `dd()`, `.skip`, `.only`
 - [ ] New API endpoints have Cypress API coverage when that is the project pattern
-- [ ] Critical UI flows have Cypress UI coverage
+- [ ] UI specs follow a role's workflow (`cypress-testing.md`): save, delete, filter, export and the denied user, not CRUD or page-renders
 - [ ] Optional demo values stay out of the Cypress seed when they would break tests
 
 ### Git
