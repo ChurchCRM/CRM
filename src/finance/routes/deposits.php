@@ -21,7 +21,7 @@ $app->group('/deposit', function (RouteCollectorProxy $group): void {
     /**
      * GET /finance/deposit/search
      *
-     * Deposit search page — replaces legacy FindDepositSlip.php.
+     * Deposit search page.
      * Accepts filter query parameters; results are rendered server-side into a
      * DataTable so the URL always reflects current filter state.
      *
@@ -109,7 +109,7 @@ $app->group('/deposit', function (RouteCollectorProxy $group): void {
     /**
      * GET /finance/deposit/{id}
      *
-     * Deposit editor — replaces legacy DepositSlipEditor.php. Unknown ids go
+     * Deposit editor. Unknown ids go
      * back to the search page. Date, comment and status are saved through
      * POST /api/deposits/{id}.
      */

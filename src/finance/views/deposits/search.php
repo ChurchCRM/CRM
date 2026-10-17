@@ -271,6 +271,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 </div><!-- /.container-xl -->
 
-<script src="<?= SystemURLs::assetVersioned('/skin/js/finance-deposit-search.js') ?>"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/finance-deposit-search.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

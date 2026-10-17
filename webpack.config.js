@@ -158,6 +158,7 @@ module.exports = {
     'telemetry': './webpack/telemetry',
     'debug': './webpack/debug',
     'finance-deposit-editor': './webpack/finance-deposit-editor',
+    'finance-deposit-search': './webpack/finance-deposit-search',
   },
   output: {
     path: path.resolve('./src/skin/v2'),
