@@ -129,7 +129,7 @@ describe("Family editor country and state (#10418, #10566)", () => {
         });
     });
 
-    it("does not carry a state the list does not know over to another country", () => {
+    it("does not carry a state the list does not know over to another country, and restores it on the way back", () => {
         createFamilyStoredAs("United States", "Mo.").then((familyId) => {
             cy.visit(`/FamilyEditor.php?FamilyID=${familyId}`);
             cy.get("#State", { timeout: 10000 }).should("have.value", "Mo.");
@@ -137,6 +137,10 @@ describe("Family editor country and state (#10418, #10566)", () => {
 
             cy.get("#State option[value='ON']", { timeout: 10000 }).should("exist");
             cy.get("#State option[value='Mo.']").should("not.exist");
+
+            cy.get("#Country").then(($select) => $select.val("US").trigger("change"));
+            cy.get("#State option[value='MO']", { timeout: 10000 }).should("exist");
+            cy.get("#State").should("have.value", "Mo.");
         });
     });
 
