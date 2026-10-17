@@ -3,6 +3,8 @@
 
 Fixes #
 
+Related issue / existing work (if applicable):
+
 ## Type
 <!-- Check one -->
 - [ ] ✨ Feature
@@ -13,6 +15,9 @@ Fixes #
 
 ## Testing
 <!-- How to verify this works -->
+
+## Risk / compatibility notes
+<!-- Mention affected subsystems, permissions/data/schema, or upgrade impact when relevant. Omit for trivial changes. -->
 
 ## Screenshots
 <!-- Only for UI changes - drag & drop images here -->
