@@ -14,18 +14,15 @@ GitHub, run on demand by the maintainer ("announce 7.7.0"). Three parts, each
 independently runnable and safe to re-run — every step checks for its own
 earlier output before writing.
 
-This used to be a scheduled poll in the community agent. It is a skill now
-because the maintainer already knows when a release happened; polling for it
-cost wakes and occasionally announced late.
+The previous scheduled poll is retired. The maintainer invokes this skill after
+publication; it does not depend on a separate community agent.
 
 **Not covered here:**
 - CHANGELOG sync and closing/moving the milestone — automated by
   [`release-bookkeeping.yml`](../../../.github/workflows/release-bookkeeping.yml)
   on `release: published`. Deterministic, no model call.
-- Social media post drafts — a maintainer runs `social-media-release.md`
-  directly (via the community agent or Claude Code); drafting them needs
-  judgment about tone and which feature to lead with, so it is never done
-  from Actions.
+- Social media post drafts — run `social-media-release.md` separately; choosing
+  the lead feature and tone requires judgment.
 
 ---
 
@@ -58,9 +55,9 @@ from them verbatim except the version, contributor names, and links on
 
 ## Step 1 — Discord announcement
 
-Post to the community announcements channel (or hand the finished text to the
-community agent if you cannot post yourself — it is the single public voice
-and will post it verbatim).
+Post to the community announcements channel when you have access. If you
+cannot post, return the approved text for the maintainer to publish; do not
+assume a separate community-agent handoff.
 
 Format:
 - Release name/version in the first line.
@@ -72,7 +69,7 @@ Format:
 - Links are **cards with buttons, never bare or markdown URLs** (they render
   as dead text through the bot). Primary button: the install/getting-started
   page with UTM params —
-  `?utm_source=discord&utm_medium=announcement&utm_campaign=release-<tag>`.
+  `?utm_source=discord&utm_medium=social&utm_campaign=release_<tag>` (snake_case, e.g. `release_7_8_0`).
   Second button: the GitHub release (`url`).
 
 Before posting, search the channel for an earlier announcement *from the bot
@@ -122,30 +119,17 @@ maintainer rather than silently under-covering release after release.
 
 ## Step 3 — Docs PRs held for this release
 
-Docs describing an unreleased fix are wrong for everyone reading them today,
-so docs PRs in **`ChurchCRM/docs.churchcrm.io`** are held as drafts until the
-code ships — tagged with the source PR's milestone when it had one, or the
-`docs-pending-release` label when it didn't. On release, list both:
+Product docs live in **`ChurchCRM/docs.churchcrm.io`** on a pull request whose milestone is this tag. They are not drafts, and there is no `docs-pending-release` label. The release gate keeps them off `main` until the release exists. Publishing the release dispatches `crm-released`. The docs workflow then merges a pull request on that milestone only when every CI check succeeded and the latest CodeRabbit review is `APPROVED`.
 
 ```bash
 DOCS=ChurchCRM/docs.churchcrm.io
-# Precheck: an absent label or milestone returns [] with exit 0, which reads
-# exactly like "nothing held". Distinguish the two before querying.
-gh label list -R "$DOCS" --json name --jq '.[].name' | grep -qx docs-pending-release \
-  || echo "docs repo has no docs-pending-release label — convention not set up"
-gh api -X GET "repos/$DOCS/milestones" -f state=all --jq '.[].title' | grep -qx "$TAG" \
-  || echo "docs repo has no milestone $TAG"
-gh pr list -R "$DOCS" --state open --search "milestone:$TAG" --json number,title,url,isDraft
-gh pr list -R "$DOCS" --state open --label docs-pending-release --json number,title,url,isDraft
+gh pr list -R "$DOCS" --state open --search "milestone:$TAG" \
+  --json number,title,url,reviewDecision
+gh pr list -R "$DOCS" --state open --json number,title,url,milestone \
+  --jq '.[] | select(.milestone == null) | "#\(.number) \(.title)"'
 ```
 
-If either precheck prints, report **"convention not set up in the docs repo"**
-for that half instead of a clean "none" — the maintainer needs to know the
-hold process is not wired, not that nothing is waiting.
-
-Hand the maintainer the list with the release note — they are ready to merge
-now. **Do not merge them yourself.** Call out any open docs PR with neither a
-milestone nor the label: that is the one case that never gets swept up.
+Report the open milestone pull requests. The ones still open after the dispatch were skipped because CI or CodeRabbit did not pass. Also report product pull requests with no milestone: those are never picked up. **Do not merge them yourself.**
 
 ---
 
@@ -155,8 +139,12 @@ One short Markdown block back to the maintainer:
 
 ```
 ## Release <tag> — community actions
-- Discord: posted | already posted | handed to community agent
+- Discord: posted | already posted | awaiting maintainer publication
 - Reporters notified: N issues (skipped M already marked) | none completed under milestone | awaiting go
 - Docs repo convention: present | label missing | milestone missing
 - Docs PRs ready to merge: #… #… | none | ⚠ #… has no milestone
 ```
+
+See [the release process](../../../docs/maintainers/release-process.md) for the complete
+release sequence and [the locale pipeline](../../../docs/maintainers/locale-pipeline.md)
+for localization status.

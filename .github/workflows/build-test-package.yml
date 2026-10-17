@@ -23,12 +23,13 @@ on:
       - develop
       - 'hotfix/**'
     paths-ignore:
+      # Docs-only PRs do not need an application build or Cypress rerun.
       - '**/*.md'
+      - '.github/PULL_REQUEST_TEMPLATE.md'
       - 'docs/**'
       - 'LICENSE'
       - '.gitignore'
       - '.gitattributes'
-      - '.ddev/**'
       - '.githooks/**'
       - '.agents/**'
       - '.claude/**'
@@ -52,12 +53,13 @@ on:
       - 'hotfix/**'
       - 'release/**'
     paths-ignore:
+      # Docs-only PRs do not need an application build or Cypress rerun.
       - '**/*.md'
+      - '.github/PULL_REQUEST_TEMPLATE.md'
       - 'docs/**'
       - 'LICENSE'
       - '.gitignore'
       - '.gitattributes'
-      - '.ddev/**'
       - '.githooks/**'
       - '.agents/**'
       - '.claude/**'
@@ -77,28 +79,21 @@ on:
   workflow_dispatch:
 
 jobs:
-  # Determine which PHP versions to test based on trigger
-  # matrix decision:
-  #   workflow_dispatch → ["8.4","8.5"]  (manual full-matrix sweep)
-  #   everything else   → ["8.4"]        (push/PR — 8.5 and exhaustive
-  #                                        coverage live in build-test-nightly.yml)
+  # PHP 8.4 only. PHP 8.5 runs in build-test-nightly.yml.
   configure:
-    # Locale sync PRs only touch translations; every job below needs this one, so they skip too.
-    if: ${{ !startsWith(github.head_ref, 'locale/') }}
     runs-on: ubuntu-24.04
     outputs:
       php-versions: ${{ steps.set-matrix.outputs.php-versions }}
     steps:
     - id: set-matrix
-      run: |
-        case "${{ github.event_name }}" in
-          workflow_dispatch) echo 'php-versions=["8.4","8.5"]' >> $GITHUB_OUTPUT ;;
-          *)                         echo 'php-versions=["8.4"]'        >> $GITHUB_OUTPUT ;;
-        esac
+      run: echo 'php-versions=["8.4"]' >> "$GITHUB_OUTPUT"
 
   build:
+    # Locale PRs only touch translations. Skip here, not in `configure`: a skipped
+    # `configure` leaves the test jobs' fromJSON(php-versions) matrix empty, which fails the run.
+    if: ${{ !startsWith(github.head_ref, 'locale/') }}
     needs: configure
-    timeout-minutes: 30
+    timeout-minutes: 40
     permissions:
       contents: read
     runs-on: ubuntu-24.04
@@ -160,7 +155,7 @@ jobs:
 
   test-root:
     needs: [configure, build]
-    timeout-minutes: 30
+    timeout-minutes: 40
     permissions:
       contents: read
       checks: write
@@ -244,12 +239,10 @@ jobs:
         shard-total: ${{ matrix.test-type.name != 'api' && (matrix.shard-total || 1) || '' }}
         shard-index: ${{ matrix.split-index || '0' }}
         docker-compose-profile: ci-root
-      env:
-        # Test-database drift guard (#9769): the ci-root database is published on
-        # 3306 (docker-compose.parallel.yaml). Required, so a guard that cannot
-        # reach the database fails the job instead of silently switching off.
-        ROW_GUARD_DB_PORT: "3306"
-        ROW_GUARD_REQUIRED: "1"
+        # ci-root publishes MySQL on 3306. The guard reads this inside the action.
+        extra-env: |
+          ROW_GUARD_DB_PORT=3306
+          ROW_GUARD_REQUIRED=1
 
     - name: Stop Docker
       if: always()
@@ -257,7 +250,7 @@ jobs:
 
   test-subdir:
     needs: [configure, build]
-    timeout-minutes: 30
+    timeout-minutes: 40
     permissions:
       contents: read
       checks: write
@@ -341,11 +334,11 @@ jobs:
         shard-index: ${{ matrix.split-index || '0' }}
         base-url: http://127.0.0.1:8080/churchcrm/
         docker-compose-profile: ci-subdir
-      env:
-        # Test-database drift guard (#9769): the ci-subdir database is published on
-        # DATABASE_SUBDIR_PORT (3307), not the 3306 default the guard would try.
-        ROW_GUARD_DB_PORT: "3307"
-        ROW_GUARD_REQUIRED: "1"
+        # ci-subdir publishes MySQL on 3307. db:query and the row guard both read it.
+        extra-env: |
+          DATABASE_PORT=3307
+          ROW_GUARD_DB_PORT=3307
+          ROW_GUARD_REQUIRED=1
 
     - name: Stop Docker
       if: always()
@@ -353,7 +346,7 @@ jobs:
 
   test-new-system:
     needs: [configure, build]
-    timeout-minutes: 30
+    timeout-minutes: 40
     permissions:
       contents: read
       checks: write
@@ -414,7 +407,7 @@ jobs:
 
   test-new-system-subdir:
     needs: [configure, build]
-    timeout-minutes: 30
+    timeout-minutes: 40
     permissions:
       contents: read
       checks: write
@@ -475,6 +468,17 @@ jobs:
     - name: Stop Docker
       if: always()
       run: npm run docker:ci:new-system:subdir:down
+
+  test-summary:
+    needs: [build, test-root, test-subdir, test-new-system, test-new-system-subdir]
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+    - name: Test overview
+      uses: ./.github/actions/test-run-summary
 
   package:
     needs: [build, test-root, test-subdir, test-new-system, test-new-system-subdir]

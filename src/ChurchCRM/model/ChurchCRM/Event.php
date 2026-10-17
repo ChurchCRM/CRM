@@ -13,6 +13,7 @@ use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\KioskAssignmentQuery;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
+use ChurchCRM\Volunteer\Service\VolunteerScheduleService;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Connection\ConnectionInterface;
 use Propel\Runtime\Map\TableMap;
@@ -95,10 +96,14 @@ class Event extends BaseEvent
      * /event/dashboard MVC action, and the kiosk flows. Propel calls
      * postUpdate() exactly once per save() of an existing row, so dispatching
      * here means every path fires the hook exactly once and no future caller
-     * can forget to.
+     * can forget to. For the same reason the Volunteer v2 occurrences anchored
+     * to this event are moved to its new day here, in the save's transaction,
+     * rather than from a hook listener: core registers no listeners of its own.
      */
     public function postUpdate(?ConnectionInterface $con = null): void
     {
+        (new VolunteerScheduleService())->followEventDates((int) $this->getId(), $con);
+
         HookManager::doAction(Hooks::EVENT_UPDATED, $this, $this->hookDataSnapshot ?? []);
         $this->hookDataSnapshot = null;
     }
@@ -119,6 +124,21 @@ class Event extends BaseEvent
      *  - eventattend_event_attend (attendance records)
      *  - kioskassignment_kasm    (kiosk → event pins)
      *  - eventcounts_evtcnt      (attendance summary — no FK at DB level)
+     *
+     * DELIBERATELY NOT handled here: Volunteer v2's `volunteer_occurrence_vocc` (#9713,
+     * design §2.9/E12). A volunteer occurrence is NOT owned by the event — several
+     * occurrences from different ministries may point at the same service (UC3), and the
+     * assignments, responses and swaps hanging off one are the church's record of who
+     * actually served. Deleting the calendar entry must not erase that history.
+     *
+     * `fk_vocc_event` is declared `ON DELETE SET NULL`, so the database nulls
+     * `vocc_event_id` on its own and the occurrence survives on `vocc_OccurrenceDate`
+     * (which is populated for linked rows precisely to be that anchor). There is nothing
+     * for this method to do, and adding a `VolunteerOccurrenceQuery::...->delete()` line
+     * to the list above would destroy exactly the data the SET NULL exists to keep.
+     *
+     * `events_event.event_ministry_id` points the other way — at a ministry, not at a
+     * child row — and is likewise not this method's business.
      *
      * See #8670.
      */
@@ -177,12 +197,12 @@ class Event extends BaseEvent
         $this->editable = $editable;
     }
 
-    public function checkInPerson(int $PersonId, ?int $CheckedInById = null): array
+    public function checkInPerson(int $PersonId, ?int $CheckedInById = null, ?ConnectionInterface $con = null): array
     {
         $AttendanceRecord = EventAttendQuery::create()
             ->filterByEvent($this)
             ->filterByPersonId($PersonId)
-            ->findOneOrCreate();
+            ->findOneOrCreate($con);
 
         $AttendanceRecord->setEvent($this)
         ->setPersonId($PersonId)
@@ -193,13 +213,15 @@ class Event extends BaseEvent
             $AttendanceRecord->setCheckinId($CheckedInById);
         }
 
-        $AttendanceRecord->save();
+        $AttendanceRecord->save($con);
         HookManager::doAction(Hooks::EVENT_CHECKIN, $AttendanceRecord, $this, $PersonId);
 
         $this->addTimelineNote(
             $PersonId,
             sprintf(gettext('Checked in to event: %s'), $this->getTitle()),
-            $CheckedInById
+            $CheckedInById,
+            'event',
+            $con
         );
 
         return ['status' => 'success'];
@@ -247,7 +269,7 @@ class Event extends BaseEvent
      * is logged in, fall back to the recorded person themself so the note
      * still gets created without a fatal error.
      */
-    private function addTimelineNote(int $personId, string $text, ?int $actionById, string $type = 'event'): void
+    private function addTimelineNote(int $personId, string $text, ?int $actionById, string $type = 'event', ?ConnectionInterface $con = null): void
     {
         if ($actionById === null) {
             if (AuthenticationManager::isUserAuthenticated()) {
@@ -266,7 +288,7 @@ class Event extends BaseEvent
         $note->setType($type);
         $note->setPrivate(0);
         $note->setEntered($actionById);
-        $note->save();
+        $note->save($con);
     }
 
     public function getViewURI(): string

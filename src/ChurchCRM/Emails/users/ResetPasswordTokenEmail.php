@@ -34,4 +34,9 @@ class ResetPasswordTokenEmail extends BaseUserEmail
     {
         return gettext('Reset Password');
     }
+
+    protected function getLogKind(): string
+    {
+        return 'account.reset-token';
+    }
 }

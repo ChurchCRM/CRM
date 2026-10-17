@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Emails\users\AccountDeletedEmail;
 use ChurchCRM\Emails\users\ResetPasswordEmail;
@@ -127,6 +128,13 @@ $app->group('/api/user/{userId:[0-9]+}', function (RouteCollectorProxy $group): 
      */
     $group->delete('/', function (Request $request, Response $response, array $args): Response {
         $user = $request->getAttribute('user');
+        $currentUser = AuthenticationManager::getCurrentUser();
+
+        // Never allow a user to delete themselves
+        if ($currentUser !== null && $currentUser->getId() === $user->getId()) {
+            return SlimUtils::renderErrorJSON($response, gettext('You cannot delete your own account.'), [], 403);
+        }
+
         $userName = $user->getName();
         UserConfigQuery::create()->filterByPeronId($user->getId())->delete();
 

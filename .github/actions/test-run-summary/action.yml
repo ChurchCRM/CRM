@@ -1,0 +1,26 @@
+name: 'Test run overview'
+description: 'Writes a job and Cypress-artifact table to the workflow summary. Run actions/checkout first.'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Write test overview
+      shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        {
+          echo "## Test overview"
+          echo ""
+          echo "Each Cypress job summary lists failed tests. Download \`cypress-junit-*\` for the XML. On a failure, \`cypress-artifacts-*\` has screenshots, videos, and Docker logs."
+          echo ""
+          echo "| Job | Result |"
+          echo "|-----|--------|"
+          gh api --paginate "/repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/jobs?per_page=100" \
+            --jq '.jobs[] | select(.name != "test-summary" and .name != "nightly-summary" and .name != "package") | "| \(.name) | \(.conclusion // .status) |"'
+          echo ""
+          echo "| Cypress artifact | Bytes |"
+          echo "|------------------|------:|"
+          gh api --paginate "/repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/artifacts?per_page=100" \
+            --jq '.artifacts[] | select(.name | startswith("cypress-")) | "| `\(.name)` | \(.size_in_bytes) |"'
+        } >> "$GITHUB_STEP_SUMMARY"

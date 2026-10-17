@@ -39,7 +39,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
           </div>
           <div class="col-12 col-lg-auto mt-3 mt-lg-0">
             <?= gettext('Copyright') ?> &copy; <?= SystemService::getCopyrightDate() ?>
-            <a href="https://churchcrm.io" target="_blank" rel="noopener noreferrer">Church<b>CRM</b></a>.
+            <a href="<?= InputUtils::escapeAttribute(SystemURLs::attributed('https://churchcrm.io', 'footer')) ?>" target="_blank" rel="noopener noreferrer">Church<b>CRM</b></a>.
             <?= gettext('All rights reserved') ?>.
           </div>
         </div>

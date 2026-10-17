@@ -5,6 +5,8 @@ require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Bootstrapper;
+use ChurchCRM\data\Countries;
+use ChurchCRM\data\States;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Family;
@@ -93,7 +95,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     }
 
     $sCountry = InputUtils::legacyFilterInput($_POST['Country']);
-    $iFamilyMemberRows = InputUtils::legacyFilterInput($_POST['FamCount']);
+    $iFamilyMemberRows = InputUtils::legacyFilterInput($_POST['FamCount'], 'int');
 
     $sState = InputUtils::legacyFilterInput($_POST[$_POST['stateType'] === 'dropDown' ? 'State' : 'StateTextbox']);
 
@@ -278,15 +280,15 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             ->setAddress1($sAddress1)
             ->setAddress2($sAddress2)
             ->setCity($sCity)
-            ->setState($sState)
+            ->setState(States::keepStoredIfSame($sCountry, $family->getState(), $sState))
             ->setZip($sZip)
-            ->setCountry($sCountry)
+            ->setCountry(Countries::keepStoredIfSame($family->getCountry(), $sCountry))
             ->setSecondAddress1($sSecondAddress1)
             ->setSecondAddress2($sSecondAddress2)
             ->setSecondCity($sSecondCity)
-            ->setSecondState($sSecondState)
+            ->setSecondState(States::keepStoredIfSame($sSecondCountry, $family->getSecondState(), $sSecondState))
             ->setSecondZip($sSecondZip)
-            ->setSecondCountry($sSecondCountry)
+            ->setSecondCountry(Countries::keepStoredIfSame($family->getSecondCountry(), $sSecondCountry))
             ->setSecondIsMailing($bSecondIsMailing)
             ->setHomePhone($sHomePhone)
             ->setSendNewsletter($bSendNewsLetterString)
@@ -579,18 +581,13 @@ $aBreadcrumbs = PageHeader::breadcrumbs([
     [gettext('Families'), '/people/family'],
     [($iFamilyID > 0) ? gettext('Edit Family') : gettext('New Family')],
 ]);
-// Attribute-safe copies of the second-address values for the form below.
-// InputUtils::escapeAttribute() makes the same htmlspecialchars() call, but
-// Semgrep's echoed-request taint rule only recognises htmlspecialchars() and
-// htmlentities() as sanitisers, and GitHub code scanning still counts a
-// finding suppressed in the source as an open alert. Spelling the escape out
-// here keeps the scan green without a suppression comment.
-$sSecondAddress1Attr = htmlspecialchars(stripslashes($sSecondAddress1 ?? ''), ENT_QUOTES, 'UTF-8');
-$sSecondAddress2Attr = htmlspecialchars(stripslashes($sSecondAddress2 ?? ''), ENT_QUOTES, 'UTF-8');
-$sSecondCityAttr = htmlspecialchars(stripslashes($sSecondCity ?? ''), ENT_QUOTES, 'UTF-8');
-$sSecondStateAttr = htmlspecialchars(stripslashes($sSecondState ?? ''), ENT_QUOTES, 'UTF-8');
-$sSecondZipAttr = htmlspecialchars(stripslashes($sSecondZip ?? ''), ENT_QUOTES, 'UTF-8');
-$sSecondCountryAttr = htmlspecialchars(stripslashes($sSecondCountry ?? ''), ENT_QUOTES, 'UTF-8');
+$sSecondAddress1Attr = InputUtils::escapeAttribute($sSecondAddress1 ?? '');
+$sSecondAddress2Attr = InputUtils::escapeAttribute($sSecondAddress2 ?? '');
+$sSecondCityAttr = InputUtils::escapeAttribute($sSecondCity ?? '');
+$sSecondStateAttr = InputUtils::escapeAttribute($sSecondState ?? '');
+$sSecondZipAttr = InputUtils::escapeAttribute($sSecondZip ?? '');
+$sSecondCountryAttr = InputUtils::escapeAttribute(Countries::toISO($sSecondCountry));
+$sCountry = Countries::toISO($sCountry);
 
 require_once __DIR__ . '/Include/Header.php';
 ?>
@@ -691,10 +688,7 @@ require_once __DIR__ . '/Include/Header.php';
                 </div>
                 <div class="mb-3 col-12 col-sm-6 col-md-2">
                     <label for="Zip"><?= gettext('Zip') ?>:</label>
-                    <input type="text" id="Zip" name="Zip" class="form-control" <?php
-                    if (SystemConfig::getBooleanValue('bForceUppercaseZip')) {
-                        echo 'style="text-transform:uppercase" ';
-                    }
+                    <input type="text" id="Zip" name="Zip" class="form-control<?= SystemConfig::getBooleanValue('bForceUppercaseZip') ? ' text-uppercase' : '' ?>" <?php
                     echo 'value="' . InputUtils::escapeAttribute($sZip) . '" '; ?> maxlength="10">
                 </div>
                 <div class="mb-3 col-12 col-sm-6 col-md-3">
@@ -784,10 +778,7 @@ require_once __DIR__ . '/Include/Header.php';
                     </div>
                     <div class="mb-3 col-12 col-sm-6 col-md-2">
                         <label for="SecondZip"><?= gettext('Zip') ?>:</label>
-                        <input type="text" id="SecondZip" name="SecondZip" class="form-control" <?php
-                        if (SystemConfig::getBooleanValue('bForceUppercaseZip')) {
-                            echo 'style="text-transform:uppercase" ';
-                        }
+                        <input type="text" id="SecondZip" name="SecondZip" class="form-control<?= SystemConfig::getBooleanValue('bForceUppercaseZip') ? ' text-uppercase' : '' ?>" <?php
                         echo 'value="' . $sSecondZipAttr . '" '; ?> maxlength="10">
                     </div>
                     <div class="mb-3 col-12 col-sm-6 col-md-3">

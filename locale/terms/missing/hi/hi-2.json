@@ -1,0 +1,59 @@
+{
+  "Your coordinator": "",
+  "Your teams: %s": "",
+  "positionIds must be a list of position ids": "",
+  "{{name}} ({{family}} family)": "",
+  "{{name}} assigned and recorded as accepted": "",
+  "Delete ({{count}})": {
+    "one": "",
+    "other": ""
+  },
+  "Delete events ({{count}})": {
+    "one": "",
+    "other": ""
+  },
+  "Delete {{count}} occurrences? Their assignments, the volunteers' responses, any substitutions and every queued reminder go with them. This cannot be undone.": {
+    "one": "",
+    "other": ""
+  },
+  "Occurrences are created for events in the next {{count}} weeks (through {{date}}).": {
+    "one": "",
+    "other": ""
+  },
+  "They finish {{count}} minutes after the event ends.": {
+    "one": "",
+    "other": ""
+  },
+  "They finish {{count}} minutes before the event ends.": {
+    "one": "",
+    "other": ""
+  },
+  "Volunteers start {{count}} minutes after the event starts.": {
+    "one": "",
+    "other": ""
+  },
+  "Volunteers start {{count}} minutes before the event starts.": {
+    "one": "",
+    "other": ""
+  },
+  "{{count}} needed": {
+    "one": "",
+    "other": ""
+  },
+  "{{count}} occurrences deleted": {
+    "one": "",
+    "other": ""
+  },
+  "{{failed}} of {{count}} occurrences could not be deleted": {
+    "one": "",
+    "other": ""
+  },
+  "{{name}} ({{count}} upcoming)": {
+    "one": "",
+    "other": ""
+  },
+  "{{title}} ({{count}} upcoming)": {
+    "one": "",
+    "other": ""
+  }
+}

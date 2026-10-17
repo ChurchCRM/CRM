@@ -1,0 +1,137 @@
+{% extends "layout.html.twig" %}
+
+{#
+  Profile → Update your details.
+
+  The form posts to POST /api/portal/me with fetch (webpack/portal/portal-profile.ts),
+  so a failed field can be reported next to the field instead of losing the page.
+  It still carries csrf_field(); the bundle reads the token out of the form and
+  sends it in X-CSRF-Token.
+
+  Variables: `profile` (see docs/portal-templates.md).
+#}
+
+{% block content %}
+<div class="portal-profile-edit">
+
+    <section class="portal-card">
+        <h1 class="portal-page-title">{{ gettext('Update your details') }}</h1>
+        <p class="portal-card-text">
+            {{ gettext('These are the details the church has on file for you. Changes are saved straight away.') }}
+        </p>
+    </section>
+
+    <section class="portal-card">
+        <h2 class="portal-card-title">
+            <i class="fa-solid fa-camera" aria-hidden="true"></i>
+            <span>{{ gettext('Your photo') }}</span>
+        </h2>
+        <div class="portal-photo-editor">
+            {% if profile.hasPhoto %}
+            <img class="portal-avatar portal-avatar-lg" id="portal-photo-preview"
+                 src="{{ profile.photoUrl }}" alt="{{ gettext('Your photo') }}">
+            {% else %}
+            <span class="portal-avatar portal-avatar-lg portal-avatar-initials" id="portal-photo-preview" aria-hidden="true">
+                {{ profile.firstName|first }}{{ profile.lastName|first }}
+            </span>
+            {% endif %}
+            <div>
+                <label class="portal-field-label" for="portal-photo-input">{{ gettext('Choose a new photo') }}</label>
+                <input class="portal-input" type="file" id="portal-photo-input" accept="image/*">
+                <p class="portal-field-hint">{{ gettext('A square picture of your face works best.') }}</p>
+                <p class="portal-field-error" id="portal-photo-error" role="alert"></p>
+            </div>
+        </div>
+    </section>
+
+    <form class="portal-card portal-form" id="portal-profile-form" method="post"
+          action="{{ url('/api/portal/me') }}" novalidate>
+        {{ csrf_field() }}
+
+        <h2 class="portal-card-title">
+            <i class="fa-solid fa-address-card" aria-hidden="true"></i>
+            <span>{{ gettext('Your details') }}</span>
+        </h2>
+
+        <div class="portal-field-grid">
+            <div class="portal-field">
+                <label class="portal-field-label" for="portal-title">{{ gettext('Title') }}</label>
+                <input class="portal-input" type="text" id="portal-title" name="title" value="{{ profile.title }}" autocomplete="honorific-prefix">
+                <p class="portal-field-error" data-error-for="title" role="alert"></p>
+            </div>
+
+            <div class="portal-field">
+                <label class="portal-field-label" for="portal-firstName">{{ gettext('First Name') }}</label>
+                <input class="portal-input" type="text" id="portal-firstName" name="firstName" value="{{ profile.firstName }}" autocomplete="given-name" required>
+                <p class="portal-field-error" data-error-for="firstName" role="alert"></p>
+            </div>
+
+            <div class="portal-field">
+                <label class="portal-field-label" for="portal-middleName">{{ gettext('Middle Name') }}</label>
+                <input class="portal-input" type="text" id="portal-middleName" name="middleName" value="{{ profile.middleName }}" autocomplete="additional-name">
+                <p class="portal-field-error" data-error-for="middleName" role="alert"></p>
+            </div>
+
+            <div class="portal-field">
+                <label class="portal-field-label" for="portal-lastName">{{ gettext('Last Name') }}</label>
+                <input class="portal-input" type="text" id="portal-lastName" name="lastName" value="{{ profile.lastName }}" autocomplete="family-name" required>
+                <p class="portal-field-error" data-error-for="lastName" role="alert"></p>
+            </div>
+
+            <div class="portal-field">
+                <label class="portal-field-label" for="portal-suffix">{{ gettext('Suffix') }}</label>
+                <input class="portal-input" type="text" id="portal-suffix" name="suffix" value="{{ profile.suffix }}" autocomplete="honorific-suffix">
+                <p class="portal-field-error" data-error-for="suffix" role="alert"></p>
+            </div>
+
+            {% if profile.canEditBirthday %}
+            <div class="portal-field">
+                <label class="portal-field-label" for="portal-birthday">{{ gettext('Birthday') }}</label>
+                <input class="portal-input" type="date" id="portal-birthday" name="birthday" value="{{ profile.birthday }}" autocomplete="bday">
+                <p class="portal-field-error" data-error-for="birthday" role="alert"></p>
+            </div>
+            {% endif %}
+
+            <div class="portal-field">
+                <label class="portal-field-label" for="portal-email">{{ gettext('Email') }}</label>
+                <input class="portal-input" type="email" id="portal-email" name="email" value="{{ profile.email }}" autocomplete="email" inputmode="email">
+                <p class="portal-field-error" data-error-for="email" role="alert"></p>
+            </div>
+
+            <div class="portal-field">
+                <label class="portal-field-label" for="portal-workEmail">{{ gettext('Work Email') }}</label>
+                <input class="portal-input" type="email" id="portal-workEmail" name="workEmail" value="{{ profile.workEmail }}" inputmode="email">
+                <p class="portal-field-error" data-error-for="workEmail" role="alert"></p>
+            </div>
+
+            <div class="portal-field">
+                <label class="portal-field-label" for="portal-cellPhone">{{ gettext('Mobile Phone') }}</label>
+                <input class="portal-input" type="tel" id="portal-cellPhone" name="cellPhone" value="{{ profile.cellPhone }}" autocomplete="tel" inputmode="tel">
+                <p class="portal-field-error" data-error-for="cellPhone" role="alert"></p>
+            </div>
+
+            <div class="portal-field">
+                <label class="portal-field-label" for="portal-homePhone">{{ gettext('Home Phone') }}</label>
+                <input class="portal-input" type="tel" id="portal-homePhone" name="homePhone" value="{{ profile.homePhone }}" inputmode="tel">
+                <p class="portal-field-error" data-error-for="homePhone" role="alert"></p>
+            </div>
+
+            <div class="portal-field">
+                <label class="portal-field-label" for="portal-workPhone">{{ gettext('Work Phone') }}</label>
+                <input class="portal-input" type="tel" id="portal-workPhone" name="workPhone" value="{{ profile.workPhone }}" inputmode="tel">
+                <p class="portal-field-error" data-error-for="workPhone" role="alert"></p>
+            </div>
+        </div>
+
+        <div class="portal-form-actions">
+            <button class="portal-button" type="submit" id="portal-profile-save">{{ gettext('Save changes') }}</button>
+            <a class="portal-button portal-button-quiet" href="{{ url('/portal/profile') }}">{{ gettext('Cancel') }}</a>
+        </div>
+    </form>
+
+</div>
+{% endblock %}
+
+{% block scripts_extra %}
+<script src="{{ asset('/skin/v2/portal-profile.min.js') }}"></script>
+{% endblock %}

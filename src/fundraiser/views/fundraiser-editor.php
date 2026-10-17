@@ -134,7 +134,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   <div class="card-header">
     <h3 class="card-title"><?= gettext('Donated items for this fundraiser') ?></h3>
   </div>
-  <div class="card-body" style="overflow: visible;">
+  <div class="card-body overflow-visible">
     <table class="table table-vcenter table-hover w-100">
       <thead>
         <tr>

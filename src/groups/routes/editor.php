@@ -29,6 +29,15 @@ $app->get('/editor/{groupID:[0-9]+}', function (Request $request, Response $resp
         return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/groups/dashboard');
     }
 
+    // Volunteer v2 (D19): a ministry's volunteer pool group is renamed and retyped from
+    // that ministry, and `POST /api/groups/{id}` answers 409 — so the editor would be a
+    // form whose Save can only fail. Send the user back to the group, where the banner
+    // says where to go instead. A redirect rather than a read-only editor: there is
+    // nothing on this page that is still editable.
+    if ($thisGroup->getMinistryId() !== null) {
+        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/groups/view/' . $iGroupID);
+    }
+
     // Group types for the type drop-down (list option ID = 3).
     $rsGroupTypes = ListOptionQuery::create()->filterById('3')->find();
 

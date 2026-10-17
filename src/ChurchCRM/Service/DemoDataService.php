@@ -2,6 +2,9 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\model\ChurchCRM\Calendar;
+use ChurchCRM\model\ChurchCRM\CalendarQuery;
 use ChurchCRM\model\ChurchCRM\Deposit;
 use ChurchCRM\model\ChurchCRM\DonationFund;
 use ChurchCRM\model\ChurchCRM\DonationFundQuery;
@@ -20,7 +23,32 @@ use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\Pledge;
+use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\model\ChurchCRM\VolunteerAssignment;
+use ChurchCRM\model\ChurchCRM\VolunteerAssignmentQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerMinistry;
+use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerNotification;
+use ChurchCRM\model\ChurchCRM\VolunteerNotificationQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerOccurrence;
+use ChurchCRM\model\ChurchCRM\VolunteerOccurrenceQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerPosition;
+use ChurchCRM\model\ChurchCRM\VolunteerPositionQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerResponse;
+use ChurchCRM\model\ChurchCRM\VolunteerSchedule;
+use ChurchCRM\model\ChurchCRM\VolunteerScheduleQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerScope;
+use ChurchCRM\model\ChurchCRM\VolunteerTeam;
+use ChurchCRM\model\ChurchCRM\Map\VolunteerMinistryTableMap;
+use ChurchCRM\Portal\PortalCalendarService;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Volunteer\Service\VolunteerAssignmentService;
+use ChurchCRM\Volunteer\Service\VolunteerEventService;
+use ChurchCRM\Volunteer\Service\VolunteerMinistryService;
+use ChurchCRM\Volunteer\Service\VolunteerNotificationService;
+use ChurchCRM\Volunteer\Service\VolunteerQualificationService;
+use ChurchCRM\Volunteer\VolunteerException;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\FileSystemUtils;
 use ChurchCRM\dto\SystemURLs;
@@ -33,6 +61,10 @@ use Propel\Runtime\Propel;
 class DemoDataService
 {
     private const DATA_PATH = __DIR__ . '/../../admin/demo';
+
+    private const DEMO_TOGGLES = ['bEnabledSundaySchool', 'bEnabledFinance', 'bEnabledEvents', 'bPortalShowCalendar', 'bPortalShowVolunteer'];
+
+    private const DEMO_NOTIFICATION_REASON = 'demo data import';
 
     private array $importResult = [
         'success' => false,
@@ -50,6 +82,13 @@ class DemoDataService
             'pledges' => 0,
             'deposits' => 0,
             'payments' => 0,
+            'calendars' => 0,
+            'ministries' => 0,
+            'teams' => 0,
+            'positions' => 0,
+            'schedules' => 0,
+            'occurrences' => 0,
+            'assignments' => 0,
         ],
         'warnings' => [],
         'errors' => [],
@@ -70,31 +109,27 @@ class DemoDataService
         $this->logger = LoggerUtils::getAppLogger();
     }
 
-    public function importDemoData(bool $includeFinancial = false, bool $includeEvents = false, bool $includeSundaySchool = false, bool $force = false): array
+    public function importDemoData(bool $force = false): array
     {
         $this->importResult['startTime'] = microtime(true);
 
         try {
-            $this->logger->info('Demo data import started', [
-                'includeFinancial' => $includeFinancial,
-                'includeEvents' => $includeEvents,
-                'includeSundaySchool' => $includeSundaySchool
-            ]);
+            $this->logger->info('Demo data import started');
 
             // Load demo system configuration (if present) before importing data
-            $this->importSystemConfig($includeSundaySchool, $includeFinancial, $force);
+            $this->importSystemConfig($force);
+
+            // config.json turns Volunteer v2 on; the config API adds its "Other" event type when that happens.
+            if (User::isVolunteerV2Enabled()) {
+                VolunteerEventService::addOtherEventType();
+            }
 
             $emailMap = $this->importCongregation();
 
-            $this->importGroups($includeSundaySchool, $emailMap);
-
-            if ($includeEvents) {
-                $this->importEvents();
-            }
-
-            if ($includeFinancial) {
-                $this->importFinancial();
-            }
+            $this->importGroups($emailMap);
+            $this->importEvents($this->importCalendars());
+            $this->importVolunteers($emailMap);
+            $this->importFinancial();
 
             $this->importResult['success'] = true;
             $this->importResult['endTime'] = microtime(true);
@@ -137,12 +172,13 @@ class DemoDataService
 
     /**
      * Load `config.json` from the demo data path and write values into SystemConfig.
-     * The `bEnabledSundaySchool` value will be set according to the flag passed to the API.
+     * `bEnabledSundaySchool`, `bEnabledFinance`, `bEnabledEvents` (ministry events) and the Member Portal's
+     * calendar and volunteering pages are always switched on.
      * `sTelemetryLevel` is only applied when `$force` is set: ordinary onboarding imports
      * (fresh installs, no `force`) must not silently opt a real self-hosted install into
      * telemetry — only the controlled, `force`-driven reseed used by demo.churchcrm.io does.
      */
-    private function importSystemConfig(bool $includeSundaySchool, bool $includeFinancial, bool $force = false): void
+    private function importSystemConfig(bool $force = false): void
     {
         $logger = LoggerUtils::getAppLogger();
         $filePath = self::DATA_PATH . '/config.json';
@@ -166,9 +202,9 @@ class DemoDataService
         }
 
         foreach ($json as $key => $value) {
-            // Skip bEnabledSundaySchool and bEnabledFinance here; we'll set them explicitly from the API flags.
+            // The toggles in DEMO_TOGGLES are switched on below.
             // Skip sTelemetryLevel here too; it's only ever applied below, and only when $force is set.
-            if ($key === 'bEnabledSundaySchool' || $key === 'bEnabledFinance' || $key === 'sTelemetryLevel') {
+            if (in_array($key, self::DEMO_TOGGLES, true) || $key === 'sTelemetryLevel') {
                 continue;
             }
 
@@ -180,19 +216,13 @@ class DemoDataService
             }
         }
 
-        // Ensure the Sunday School and Finance feature toggles are set according to the API flags
-        try {
-            SystemConfig::setValue('bEnabledSundaySchool', $includeSundaySchool ? '1' : '0');
-        } catch (Exception $e) {
-            $this->addWarning('Failed to set bEnabledSundaySchool from API flag', ['error' => $e->getMessage()]);
-            $logger->warning('Failed to set bEnabledSundaySchool from API flag', ['error' => $e->getMessage()]);
-        }
-
-        try {
-            SystemConfig::setValue('bEnabledFinance', $includeFinancial ? '1' : '0');
-        } catch (Exception $e) {
-            $this->addWarning('Failed to set bEnabledFinance from API flag', ['error' => $e->getMessage()]);
-            $logger->warning('Failed to set bEnabledFinance from API flag', ['error' => $e->getMessage()]);
+        foreach (self::DEMO_TOGGLES as $toggle) {
+            try {
+                SystemConfig::setValue($toggle, '1');
+            } catch (Exception $e) {
+                $this->addWarning("Failed to enable {$toggle}", ['error' => $e->getMessage()]);
+                $logger->warning("Failed to enable {$toggle}", ['error' => $e->getMessage()]);
+            }
         }
 
         // sTelemetryLevel from config.json is only ever applied on a forced reseed (e.g. the
@@ -589,7 +619,7 @@ class DemoDataService
      * Uses Propel ORM only - no external service dependencies.
      * IMPORTANT: Only creates roles that are explicitly defined in peopleTypes. Does NOT auto-create undefined roles.
      */
-    private function importGroups(bool $includeSundaySchool, array $emailMap): void
+    private function importGroups(array $emailMap): void
     {
 
 
@@ -603,10 +633,6 @@ class DemoDataService
         foreach ($data as $groupData) {
             try {
                 $isSS = !empty($groupData['isSundaySchool']);
-                // If includeSundaySchool flag is false, skip Sunday School groups; otherwise import all groups.
-                if (!$includeSundaySchool && $isSS) {
-                    continue;
-                }
 
                 $group = new Group();
                 // Use Group convenience helpers for Sunday School to set type 4
@@ -639,11 +665,6 @@ class DemoDataService
         // IMPORTANT: Only use roles defined in the group's peopleTypes array
         foreach ($data as $groupData) {
             try {
-                $isSS = !empty($groupData['isSundaySchool']);
-                if (!$includeSundaySchool && $isSS) {
-                    continue;
-                }
-
                 $groupName = trim((string)($groupData['name'] ?? ''));
                 if ($groupName === '' || !isset($this->groupNameToId[$groupName])) {
                     $this->addWarning("Group '{$groupName}' not found in created groups, skipping memberships", ['group_name' => $groupName]);
@@ -858,12 +879,69 @@ class DemoDataService
     // Legacy membership import removed - memberships are created from `groups.json` during import.
 
     /**
+     * Import calendars.csv, reusing a church calendar of the same name, and share the rows marked `portal`.
+     *
+     * @return array<string, Calendar> calendars.csv id → calendar
+     */
+    private function importCalendars(): array
+    {
+        $filepath = self::DATA_PATH . '/calendars.csv';
+        $handle = file_exists($filepath) ? fopen($filepath, 'r') : false;
+        if ($handle === false) {
+            $this->addWarning('Calendar import skipped: could not open calendars.csv');
+
+            return [];
+        }
+
+        $header = fgetcsv($handle) ?: [];
+
+        $calendars = [];
+        $shared = [];
+        while (($row = fgetcsv($handle)) !== false) {
+            if (count($row) !== count($header)) {
+                continue;
+            }
+            $data = array_combine($header, $row);
+
+            try {
+                $calendar = CalendarQuery::create()
+                    ->filterByMinistryId(null, Criteria::ISNULL)
+                    ->findOneByName($data['name']);
+                if ($calendar === null) {
+                    $calendar = new Calendar();
+                    $calendar->setName($data['name']);
+                    $calendar->setBackgroundColor($data['background_color']);
+                    $calendar->setForegroundColor($data['foreground_color']);
+                    $calendar->save();
+                    $this->importResult['imported']['calendars']++;
+                }
+                $calendars[$data['id']] = $calendar;
+                if ($data['portal'] === 'true') {
+                    $shared[] = ['type' => PortalCalendarService::TYPE_CALENDAR, 'id' => (int) $calendar->getId()];
+                }
+            } catch (Exception $e) {
+                $this->addWarning("Calendar import failed for '{$data['name']}': {$e->getMessage()}");
+            }
+        }
+        fclose($handle);
+
+        if ($shared !== []) {
+            PortalCalendarService::setVisible($shared);
+        }
+
+        return $calendars;
+    }
+
+    /**
      * Import demo events from events.csv.
      *
      * Each CSV row becomes an Event record. The `category` column is mapped
      * to an EventType — reusing existing types by name or creating new ones.
+     * The `calendars` column pins it to calendars.csv rows by their `id`.
+     *
+     * @param array<string, Calendar> $calendars calendars.csv id → calendar
      */
-    private function importEvents(): void
+    private function importEvents(array $calendars = []): void
     {
         $filepath = self::DATA_PATH . '/events.csv';
         if (!file_exists($filepath)) {
@@ -929,6 +1007,10 @@ class DemoDataService
                     if ($offsetDays !== 0) {
                         $start->modify(($offsetDays > 0 ? '+' : '') . $offsetDays . ' days');
                     }
+                    $weekday = ucfirst(strtolower(trim($data['weekday'] ?? '')));
+                    if (in_array($weekday, ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], true)) {
+                        $start->modify('-1 day')->modify('next ' . $weekday);
+                    }
                     // Parse HH:MM:SS (or HH:MM) start time
                     $timeParts = array_pad(explode(':', $startTime), 3, '0');
                     $start->setTime((int) $timeParts[0], (int) $timeParts[1], (int) $timeParts[2]);
@@ -960,6 +1042,13 @@ class DemoDataService
                 $event->setEnd($end->format('Y-m-d H:i:s'));
                 $event->setInActive(($data['inactive'] ?? 'false') === 'true' ? 1 : 0);
                 $event->setURL($data['external_url'] ?? '');
+                foreach (array_filter(array_map('trim', explode(';', $data['calendars'] ?? ''))) as $calendarKey) {
+                    if (isset($calendars[$calendarKey])) {
+                        $event->addCalendar($calendars[$calendarKey]);
+                    } else {
+                        $this->addWarning("Event '{$event->getTitle()}': calendar '{$calendarKey}' not found — skipping");
+                    }
+                }
                 $event->save();
 
                 // Wire group links (event_audience) and seed attendance
@@ -1001,8 +1090,7 @@ class DemoDataService
      *
      * For each group name, looks up the group in the in-memory map built by
      * importGroups(). Emits a warning (not an error) and skips gracefully when
-     * a group was not imported (e.g. Sunday-School group when includeSundaySchool
-     * is false).
+     * a group was not imported.
      *
      * @param string[] $groupNames Trimmed group name strings from the CSV
      */
@@ -1017,7 +1105,7 @@ class DemoDataService
             $gid = $this->groupNameToId[$gname] ?? null;
             if ($gid === null) {
                 $this->addWarning(
-                    "Event '{$event->getTitle()}': linked group '{$gname}' not found — skipping (import it or enable Sunday School)"
+                    "Event '{$event->getTitle()}': linked group '{$gname}' not found — skipping (import it)"
                 );
                 continue;
             }
@@ -1102,6 +1190,273 @@ class DemoDataService
         }
         // Remaining members: intentionally NO event_attend row
         // → they surface as "Did Not Attend" in PR #8994's IS NULL query
+    }
+
+    /**
+     * Volunteer v2 sample data from volunteers.json, built through the volunteer services as the
+     * importing administrator in one transaction. An existing ministry is left as it is.
+     */
+    private function importVolunteers(array $emailMap): void
+    {
+        if (!User::isVolunteerV2Enabled()) {
+            return;
+        }
+
+        $data = $this->loadJsonFile('volunteers.json');
+        if ($data === null) {
+            $this->addWarning('Volunteer import skipped: volunteers.json missing or invalid');
+
+            return;
+        }
+
+        $ministries = new VolunteerMinistryService();
+        $qualifications = new VolunteerQualificationService($ministries->getAuthorizationService(), $ministries);
+        $assignments = new VolunteerAssignmentService($ministries->getAuthorizationService(), $ministries, $qualifications);
+        $countsBefore = $this->importResult['imported'];
+        $lastNotificationId = (int) VolunteerNotificationQuery::create()->select('Id')->orderById(Criteria::DESC)->findOne();
+
+        $connection = Propel::getWriteConnection(VolunteerMinistryTableMap::DATABASE_NAME);
+        $connection->beginTransaction();
+
+        try {
+            $actor = AuthenticationManager::getCurrentUser();
+            $occurrenceIds = [];
+            foreach ($data['ministries'] ?? [] as $ministryData) {
+                if (VolunteerMinistryQuery::create()->filterByName($ministryData['name'])->exists()) {
+                    continue;
+                }
+                $occurrenceIds = [
+                    ...$occurrenceIds,
+                    ...$this->importMinistry($ministryData, $emailMap, $actor, $ministries, $qualifications, $assignments),
+                ];
+            }
+            $this->silenceVolunteerNotifications($lastNotificationId, $occurrenceIds, $assignments);
+            $connection->commit();
+        } catch (\Throwable $e) {
+            $connection->rollBack();
+            $this->importResult['imported'] = $countsBefore;
+            $this->addWarning("Volunteer demo data was not imported: {$e->getMessage()}", ['exception' => $e::class]);
+        }
+    }
+
+    /**
+     * @return int[] the ids of the occurrences its schedules generated
+     */
+    private function importMinistry(
+        array $data,
+        array $emailMap,
+        User $actor,
+        VolunteerMinistryService $ministries,
+        VolunteerQualificationService $qualifications,
+        VolunteerAssignmentService $assignments
+    ): array {
+        $ministry = $ministries->createMinistry($data['name'], $data['description'] ?? null, $actor, !empty($data['sundaySchool']));
+        $ministryId = (int) $ministry->getId();
+        $this->importResult['imported']['ministries']++;
+
+        if (!empty($data['helpWanted'])) {
+            $ministries->updateMinistry($ministry, ['helpWanted' => true, 'helpWantedText' => $data['helpWantedText'] ?? null], $actor);
+        }
+        foreach ($data['coordinators'] ?? [] as $email) {
+            $this->grantVolunteerScope($ministries, $ministryId, $this->volunteerPersonId($emailMap, $email), VolunteerScope::TYPE_MINISTRY, $ministryId, $actor);
+        }
+        foreach ($data['pool'] ?? [] as $email) {
+            $ministries->addPoolMember($ministryId, $this->volunteerPersonId($emailMap, $email), $actor);
+        }
+
+        $occurrenceIds = [];
+        $firstTeam = $ministries->listTeams($ministryId)[0];
+        foreach ($data['teams'] ?? [] as $index => $teamData) {
+            $classLink = isset($teamData['class']) ? [
+                'classGroupId' => $this->groupNameToId[$teamData['class']] ?? throw new \RuntimeException("Class '{$teamData['class']}' was not imported"),
+                'importPositionName' => $teamData['teacherPosition'],
+            ] : [];
+            $team = $index === 0
+                ? $ministries->updateTeam($firstTeam, ['name' => $teamData['name'], 'description' => $teamData['description'] ?? null] + $classLink, $actor)
+                : $ministries->createTeam($ministry, $teamData['name'], $teamData['description'] ?? null, $actor, $classLink);
+            $this->importResult['imported']['teams']++;
+
+            foreach ($teamData['leaders'] ?? [] as $email) {
+                $this->grantVolunteerScope($ministries, $ministryId, $this->volunteerPersonId($emailMap, $email), VolunteerScope::TYPE_TEAM, (int) $team->getId(), $actor);
+            }
+            foreach ($teamData['positions'] ?? [] as $order => $positionData) {
+                $position = $ministries->createPosition($ministry, $team, $positionData['name'], $positionData['description'] ?? null, $order + 1, $actor, !empty($positionData['recruiting']));
+                foreach ($positionData['qualified'] ?? [] as $email) {
+                    $qualifications->grantQualification($this->volunteerPersonId($emailMap, $email), $position, $actor);
+                }
+            }
+
+            $positions = [];
+            foreach (VolunteerPositionQuery::create()->filterByTeamId((int) $team->getId())->find() as $position) {
+                $positions[$position->getName()] = $position;
+            }
+            $this->importResult['imported']['positions'] += count($positions);
+
+            foreach ($teamData['schedules'] ?? [] as $scheduleData) {
+                $occurrenceIds = [
+                    ...$occurrenceIds,
+                    ...$this->importSchedule($scheduleData, $ministry, $team, $positions, $emailMap, $actor, $assignments),
+                ];
+            }
+        }
+
+        return $occurrenceIds;
+    }
+
+    /**
+     * A schedule saved the way the schedule dialog saves one, then its planned assignments
+     * (`occurrence` counts from 1).
+     *
+     * @param array<string, VolunteerPosition> $positions the team's positions by name
+     *
+     * @return int[] the ids of its occurrences
+     */
+    private function importSchedule(
+        array $data,
+        VolunteerMinistry $ministry,
+        VolunteerTeam $team,
+        array $positions,
+        array $emailMap,
+        User $actor,
+        VolunteerAssignmentService $assignments
+    ): array {
+        $needs = [];
+        foreach ($data['needs'] as $need) {
+            $defaults = array_map(fn (array $default): array => [
+                'personId' => $this->volunteerPersonId($emailMap, $default['email']),
+                'accepted' => !empty($default['accepted']),
+            ], $need['defaults'] ?? []);
+            $needs[] = [
+                'positionId' => (int) $positions[$need['position']]->getId(),
+                'minCount' => (int) $need['min'],
+                'maxCount' => $need['max'] ?? null,
+            ] + ($defaults === [] ? [] : ['defaults' => $defaults]);
+        }
+
+        $follows = isset($data['class'])
+            ? ['linkMode' => VolunteerSchedule::LINK_MODE_CLASS, 'groupId' => $this->groupNameToId[$data['class']]]
+            : [
+                'linkMode' => VolunteerSchedule::LINK_MODE_EVENT_TYPE,
+                'eventTypeId' => (int) EventTypeQuery::create()->findOneByName($data['eventType'])?->getId(),
+                'titleFilter' => $data['title'],
+            ];
+
+        $result = $assignments->createScheduleWithOccurrences($ministry, $follows + [
+            'name' => $data['name'],
+            'teamId' => (int) $team->getId(),
+            'windowStart' => DateTimeUtils::getToday()->format('Y-m-d'),
+            'startOffsetMinutes' => (int) ($data['startOffsetMinutes'] ?? 0),
+            'endOffsetMinutes' => (int) ($data['endOffsetMinutes'] ?? 0),
+            'requirements' => $needs,
+        ], $actor);
+        $this->importResult['imported']['schedules']++;
+        $this->importResult['imported']['occurrences'] += (int) ($result['generated']['created'] ?? 0);
+        $this->importResult['imported']['assignments'] += (int) ($result['generated']['assigned'] ?? 0);
+
+        $occurrences = VolunteerOccurrenceQuery::create()
+            ->filterByScheduleId((int) $result['schedule']->getId())
+            ->orderByOccurrenceDate()
+            ->find()
+            ->getData();
+
+        foreach ($data['assignments'] ?? [] as $plan) {
+            $occurrence = $occurrences[(int) $plan['occurrence'] - 1] ?? null;
+            if ($occurrence === null) {
+                $this->addWarning("Schedule '{$data['name']}' of {$team->getName()} has no occurrence {$plan['occurrence']}; assignment skipped");
+                continue;
+            }
+
+            $assignment = $assignments->assign(
+                $occurrence,
+                $positions[$plan['position']],
+                $this->volunteerPersonId($emailMap, $plan['email']),
+                $actor,
+                $plan['status'] === VolunteerAssignment::STATUS_ACCEPTED ? ['status' => VolunteerAssignment::STATUS_ACCEPTED] : []
+            );
+            if ($plan['status'] === VolunteerAssignment::STATUS_DECLINED) {
+                $assignments->respond($assignment, VolunteerAssignment::STATUS_DECLINED, $actor, null, VolunteerResponse::CHANNEL_COORDINATOR);
+            }
+            $this->importResult['imported']['assignments']++;
+        }
+
+        return array_map(static fn (VolunteerOccurrence $occurrence): int => (int) $occurrence->getId(), $occurrences);
+    }
+
+    /** A coordinator or team leader is one of the ministry's volunteers, as the scopes API makes them. */
+    private function grantVolunteerScope(
+        VolunteerMinistryService $ministries,
+        int $ministryId,
+        int $personId,
+        string $scopeType,
+        int $scopeId,
+        User $actor
+    ): void {
+        $authz = $ministries->getAuthorizationService();
+        if (!$authz->canGrantScope($actor, $scopeType, $scopeId)) {
+            throw VolunteerException::forbidden(gettext('Not authorized to grant this scope'));
+        }
+        $authz->grantScope($personId, $scopeType, $scopeId, (int) $actor->getId());
+        $ministries->joinPoolGroup($ministries->requirePoolGroup($ministryId), $personId);
+    }
+
+    private function volunteerPersonId(array $emailMap, string $email): int
+    {
+        return $emailMap[strtolower($email)] ?? throw new \RuntimeException("Volunteer '{$email}' is not in people.json");
+    }
+
+    /**
+     * Demo people have real-looking addresses, so the messages the import queued, and the
+     * reminders and alerts the background jobs would queue for it, are recorded as skipped.
+     *
+     * @param int[] $occurrenceIds
+     */
+    private function silenceVolunteerNotifications(int $lastNotificationId, array $occurrenceIds, VolunteerAssignmentService $assignments): void
+    {
+        $notifications = $assignments->getNotificationService();
+        $now = DateTimeUtils::getToday();
+
+        $live = VolunteerAssignmentQuery::create()
+            ->filterByOccurrenceId($occurrenceIds, Criteria::IN)
+            ->filterByStatus(VolunteerAssignmentService::LIVE_STATUSES, Criteria::IN)
+            ->find();
+        foreach ($live as $assignment) {
+            $assignmentId = (int) $assignment->getId();
+            $personId = (int) $assignment->getPersonId();
+            $notifications->enqueue(
+                VolunteerNotificationService::TYPE_REMINDER,
+                $personId,
+                $assignmentId,
+                (int) $assignment->getOccurrenceId(),
+                $now,
+                $notifications->reminderKey($assignmentId, $personId)
+            );
+        }
+
+        $coordinators = [];
+        foreach (VolunteerScheduleQuery::create()->useVolunteerOccurrenceQuery()->filterById($occurrenceIds, Criteria::IN)->endUse()->distinct()->find() as $schedule) {
+            $recipients = $assignments->getAuthorizationService()->getCoordinatorPersonIds((int) $schedule->getMinistryId(), (int) $schedule->getTeamId());
+            foreach ($schedule->getVolunteerOccurrences() as $occurrence) {
+                $coordinators[(int) $occurrence->getId()] = $recipients;
+            }
+        }
+        foreach ($assignments->getOpenGaps($occurrenceIds) as $gap) {
+            foreach ($coordinators[$gap['occurrenceId']] ?? [] as $coordinatorId) {
+                $notifications->enqueue(
+                    VolunteerNotificationService::TYPE_GAP_ALERT,
+                    $coordinatorId,
+                    null,
+                    $gap['occurrenceId'],
+                    $now,
+                    $notifications->unfilledGapAlertKey($gap['occurrenceId'], $gap['positionId'], $coordinatorId),
+                    ['positionId' => $gap['positionId']]
+                );
+            }
+        }
+
+        VolunteerNotificationQuery::create()
+            ->filterById($lastNotificationId, Criteria::GREATER_THAN)
+            ->filterByStatus(VolunteerNotification::STATUS_PENDING)
+            ->update(['Status' => VolunteerNotification::STATUS_SKIPPED, 'LastError' => self::DEMO_NOTIFICATION_REASON]);
     }
 
     private function loadJsonFile(string $filename): ?array

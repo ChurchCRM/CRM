@@ -88,6 +88,36 @@ describe("User Editor - ORM Migration Tests", () => {
         deleteUser2();
     });
 
+    it("Should persist Manage My Ministries for a Custom user, and show it on the user page (2026-09-18)", () => {
+        // Person 10 has no seeded user account; a different row from the other tests
+        // so parallel workers never race on it.
+        const personId = 10;
+        cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${personId}`, null, [200, 204, 404]);
+        cy.then(() => Cypress.session.clearAllSavedSessions());
+        cy.setupAdminSession();
+        cy.intercept("POST", `**/admin/system/users/new*`).as("saveUser");
+        cy.visit(`admin/system/users/new?personId=${personId}`);
+        cy.contains("User Editor");
+        cy.get("#customPermissions").should("be.visible");
+
+        // Both switches exist, side by side, and only the coordinator's one is set.
+        cy.get("label[for='ManageMinistries']").should("contain.text", "Manage Ministries");
+        cy.get("label[for='ManageMyMinistries']").should("contain.text", "Manage My Ministries");
+        cy.get("#ManageMyMinistries").check();
+        cy.get("#ManageMinistries").should("not.be.checked");
+        cy.get("#SaveButton").click();
+        cy.wait("@saveUser");
+
+        cy.visit(`admin/system/users/${personId}/edit`);
+        cy.contains("User Editor");
+        cy.get("#customPermissions").should("be.visible");
+        cy.get("#ManageMyMinistries").should("be.checked");
+        cy.get("#ManageMinistries").should("not.be.checked");
+
+        cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${personId}`, null, [200, 204, 404]);
+        cy.then(() => Cypress.session.clearAllSavedSessions());
+    });
+
     it("Should update username via ORM", () => {
         // The username field is independent of access level, so exercising it on
         // the admin user (PersonID 1) is safe — its mode/permissions are untouched.
@@ -187,5 +217,56 @@ describe("User Editor - Person picker (no ?personId)", () => {
         cy.get('input[name="accessMode"]').should("have.length", 3);
         // Save button present
         cy.get("#SaveButton").should("exist");
+    });
+});
+
+describe("User Editor - Manage My Ministries on an existing user (#10370)", () => {
+    const personId = 901; // noperm.user: Custom access, every permission off
+
+    const storedManageMyMinistries = () =>
+        cy
+            .dbQuery("SELECT usr_ManageMyMinistries AS v FROM user_usr WHERE usr_per_ID = ?", [personId])
+            .then(({ rows }) => Number(rows[0].v));
+
+    const saveAndReopen = () => {
+        cy.intercept("POST", `**/admin/system/users/${personId}/edit*`).as("editUser");
+        cy.get("#SaveButton").click();
+        cy.wait("@editUser").its("response.statusCode").should("eq", 302);
+        cy.visit(`/admin/system/users/${personId}/edit`);
+        cy.contains("User Editor");
+    };
+
+    before(() => {
+        storedManageMyMinistries().should("eq", 0);
+        cy.dbQuery("SELECT COUNT(*) AS n FROM userconfig_ucfg WHERE ucfg_per_id = ?", [personId])
+            .then(({ rows }) => Number(rows[0].n))
+            .should("eq", 0);
+    });
+
+    after(() => {
+        cy.dbQuery("UPDATE user_usr SET usr_ManageMyMinistries = 0 WHERE usr_per_ID = ?", [personId]);
+        cy.dbQuery("DELETE FROM userconfig_ucfg WHERE ucfg_per_id = ?", [personId]);
+    });
+
+    beforeEach(() => {
+        cy.setupAdminSession();
+    });
+
+    it("grants and then revokes Manage My Ministries", () => {
+        cy.visit(`/admin/system/users/${personId}/edit`);
+        cy.contains("User Editor");
+        cy.get('input[name="accessMode"][value="custom"]').check({ force: true });
+        cy.get("#customPermissions").should("be.visible");
+        cy.get("#ManageMyMinistries").should("not.be.checked").check();
+        saveAndReopen();
+        cy.get("#ManageMyMinistries").should("be.checked");
+        cy.get("#ManageMinistries").should("not.be.checked");
+        storedManageMyMinistries().should("eq", 1);
+
+        cy.get('input[name="accessMode"][value="custom"]').should("be.checked");
+        cy.get("#ManageMyMinistries").uncheck();
+        saveAndReopen();
+        cy.get("#ManageMyMinistries").should("not.be.checked");
+        storedManageMyMinistries().should("eq", 0);
     });
 });

@@ -28,7 +28,7 @@ $accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom
         <strong><?= gettext('Email is disabled') ?></strong>
         <div class="text-secondary"><?= gettext('New users will not receive a welcome email, and the generated password is never displayed. After creating the account, set one from System Users using Change Password — or configure email first.') ?></div>
     </div>
-    <a href="<?= SystemURLs::getRootPath() ?>/v2/email/dashboard?settings=open" class="btn btn-warning ms-3">
+    <a href="<?= SystemURLs::getRootPath() ?>/admin/email" class="btn btn-warning ms-3">
         <i class="fa-solid fa-envelope me-1"></i><?= gettext('Set up Email') ?>
     </a>
 </div>
@@ -110,7 +110,7 @@ $accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom
 
         <!-- People & Families panel: shown only in Custom mode -->
         <div id="pfPanel" class="border rounded mb-3"<?= $accessMode === 'custom' ? '' : ' style="display:none;"' ?>>
-            <div class="px-3 py-2 border-bottom bg-light">
+            <div class="px-3 py-2 border-bottom bg-surface-secondary">
                 <strong><i class="fa-solid fa-users me-2"></i><?= gettext('People &amp; Families') ?></strong>
                 <p class="text-body-secondary small mb-0 mt-1"><?= gettext('All users can view congregation members. This permission cannot be removed.') ?></p>
             </div>
@@ -164,6 +164,15 @@ $accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom
                 ['name' => 'ManageGroups', 'label' => gettext('Manage Groups and Roles'),               'checked' => $perms['manageGroups']],
                 ['name' => 'Finance',            'label' => gettext('Manage Donations and Finance'),  'checked' => $perms['finance']],
                 ['name' => 'ManageFundraisers', 'label' => gettext('Manage Fundraisers'),              'checked' => $perms['manageFundraisers']],
+                // Volunteer Management v2 (#9706). Rendered in every rollout state, matching
+                // ManageFundraisers rather than the AddEvent row below: a checkbox that
+                // disappears with a system setting would be silently cleared by the next save,
+                // because extractModulePerms() reads every permission from the posted form.
+                ['name' => 'ManageMinistries', 'label' => gettext('Manage Ministries'),                'checked' => $perms['manageMinistries']],
+                // Manage My Ministries (2026-09-18): the coordinator's permission. Opens the
+                // Ministries heading for the ministries the person is made a coordinator of
+                // (on the ministry page), and grants nothing over any other ministry.
+                ['name' => 'ManageMyMinistries', 'label' => gettext('Manage My Ministries'),          'checked' => $perms['manageMyMinistries']],
             ];
             if ($eventsEnabled) {
                 $permissions[] = ['name' => 'AddEvent', 'label' => gettext('Manage Events'), 'checked' => !empty($perms['addEvent'])];

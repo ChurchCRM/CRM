@@ -3,7 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\PeopleReportService;
-use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Auth\StaffRoleAuthMiddleware;
 use ChurchCRM\Utils\CsvExporter;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -13,13 +13,14 @@ use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
 // Reports -> People Reports: the people queries of the frozen Query View
-// (issue #9995) rebuilt as an MVC page on Propel. Admin only, like QueryList.php.
+// (issue #9995) rebuilt as an MVC page on Propel. Open to every staff user, who can
+// already read and export the person list (#9003).
 $app->group('/reports', function (RouteCollectorProxy $group): void {
     $group->get('', 'getPeopleReportsIndex');
     $group->get('/', 'getPeopleReportsIndex');
     $group->get('/{slug:[a-z-]+}', 'getPeopleReport');
     $group->get('/{slug:[a-z-]+}/csv', 'getPeopleReportCsv');
-})->add(AdminRoleAuthMiddleware::class);
+})->add(StaffRoleAuthMiddleware::class);
 
 /**
  * @return array<int, array{href: string, title: string, description: string}>
@@ -87,6 +88,7 @@ function getPeopleReport(Request $request, Response $response, array $args): Res
     }
 
     $rows = $missing === [] ? $service->run($slug, $values) : null;
+    $reportParams = peopleReportQueryParams($report, $values);
 
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
@@ -104,7 +106,8 @@ function getPeopleReport(Request $request, Response $response, array $args): Res
         'missing' => $missing,
         'options' => $options,
         'rows' => $rows,
-        'csvQuery' => http_build_query(peopleReportQueryParams($report, $values)),
+        'reportParams' => $reportParams,
+        'csvQuery' => http_build_query($reportParams),
     ]);
 }
 
@@ -133,8 +136,8 @@ function getPeopleReportCsv(Request $request, Response $response, array $args): 
 }
 
 /**
- * The resolved parameters as query-string values, so the CSV link runs the
- * same report the page shows.
+ * The resolved parameters as query-string values, so the CSV link and the
+ * labels run the same report the page shows.
  *
  * @return array<string, mixed>
  */

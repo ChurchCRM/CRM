@@ -36,6 +36,14 @@ inputs:
     description: Docker compose files (comma-separated) used to collect logs
     required: false
     default: 'docker/docker-compose.yaml,docker/docker-compose.parallel.yaml'
+  cypress-env:
+    description: Optional value for Cypress --env, for example LOCALE_TIER=full
+    required: false
+    default: ''
+  extra-env:
+    description: Extra KEY=VALUE lines exported for the Cypress process
+    required: false
+    default: ''
 runs:
   using: composite
   steps:
@@ -43,14 +51,28 @@ runs:
       id: cypress
       shell: bash
       run: |
-        report_file="cypress/reports/junit-php${PHP_VERSION}-${DEPLOYMENT}-${TEST_NAME}-[suiteName]-[hash].xml"
+        report_file="cypress/reports/junit-php${PHP_VERSION}-${DEPLOYMENT}-${TEST_NAME}-[hash].xml"
         spec_args=()
         if [[ -z "$SPLIT" ]]; then
           spec_args+=(--spec "$TEST_SPEC")
         fi
+        env_args=()
+        if [[ -n "$CYPRESS_ENV_ARG" ]]; then
+          env_args+=(--env "$CYPRESS_ENV_ARG")
+        fi
+        if [[ -n "$EXTRA_ENV" ]]; then
+          while IFS= read -r line; do
+            [[ -z "${line// }" ]] && continue
+            case "$line" in
+              [A-Za-z_]*=*) export "$line" ;;
+              *) echo "Ignoring extra-env line: $line" >&2 ;;
+            esac
+          done <<< "$EXTRA_ENV"
+        fi
         npx cypress run \
           --config-file "$CONFIG_FILE" \
           "${spec_args[@]}" \
+          "${env_args[@]}" \
           --headless --browser electron \
           --reporter junit \
           --reporter-options "mochaFile=$report_file"
@@ -70,6 +92,8 @@ runs:
         SPLIT: ${{ inputs.shard-total }}
         SPLIT_INDEX: ${{ inputs.shard-index }}
         CYPRESS_BASE_URL: ${{ inputs.base-url }}
+        CYPRESS_ENV_ARG: ${{ inputs.cypress-env }}
+        EXTRA_ENV: ${{ inputs.extra-env }}
 
     - name: Collect Docker logs on failure
       if: failure() && inputs.docker-compose-profile != ''
@@ -98,7 +122,7 @@ runs:
           cypress/logs
           cypress/screenshots
           cypress/videos
-        retention-days: 15
+        retention-days: 1
         if-no-files-found: ignore
 
     - name: Test Report

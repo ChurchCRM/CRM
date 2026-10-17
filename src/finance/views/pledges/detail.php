@@ -203,7 +203,7 @@ $methodLabel = $methodLabels[$pledge['method']] ?? InputUtils::escapeHTML($pledg
     </div>
 
     <!-- Toast feedback -->
-    <div id="pledge-toast-container" class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index:9999;">
+    <div id="pledge-toast-container" class="toast-container position-fixed bottom-0 end-0 p-3 toast-container-top">
         <div id="pledge-toast" class="toast align-items-center text-white border-0" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="d-flex">
                 <div class="toast-body" id="pledge-toast-body"></div>

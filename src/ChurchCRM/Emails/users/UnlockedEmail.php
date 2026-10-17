@@ -13,4 +13,9 @@ class UnlockedEmail extends BaseUserEmail
     {
         return gettext('Your ChurchCRM account was unlocked.');
     }
+
+    protected function getLogKind(): string
+    {
+        return 'account.unlocked';
+    }
 }

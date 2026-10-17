@@ -19,6 +19,22 @@ function privateApiCall(keyName) {
 
 Cypress.Commands.add("makePrivateAdminAPICall", privateApiCall("admin.api.key"));
 
+// POST /api/email/send only queues (#10356). Send the batch through the way the composer does
+// and yield the send response with the batch's final progress as `progress`.
+const sendEmailBatch = (batch) =>
+    cy.makePrivateAdminAPICall("POST", `/api/email/batches/${batch}/send`, null, 200).then((resp) =>
+        resp.body.done || resp.body.due === 0 ? resp.body : sendEmailBatch(batch),
+    );
+
+Cypress.Commands.add("sendComposerEmailNow", (body) =>
+    cy.makePrivateAdminAPICall("POST", "/api/email/send", body, 200).then((resp) => {
+        if (!resp.body.batch) {
+            return { ...resp.body, progress: null };
+        }
+        return sendEmailBatch(resp.body.batch).then((progress) => ({ ...resp.body, progress }));
+    }),
+);
+
 // Effective value of a SystemConfig key (the default when no config_cfg row exists).
 Cypress.Commands.add("getSystemConfig", (name) => {
     return cy
@@ -158,6 +174,18 @@ Cypress.Commands.add(
         });
     },
 );
+
+// -- Direct database access (node-side `db:query` task) --
+//
+// Schema-level guarantees — UNIQUE keys, foreign keys and their ON DELETE
+// rules, enum domains — have no HTTP surface, so the Volunteer v2 schema specs
+// assert them against the database itself (#9705). The task resolves with
+// `{ rows, error }` rather than rejecting, so a spec can assert that a write
+// was refused (ER_DUP_ENTRY, ER_NO_REFERENCED_ROW_2, ...) without failing the
+// test run.
+Cypress.Commands.add("dbQuery", (sql, params = []) => {
+    return cy.task("db:query", { sql, params }, { log: false });
+});
 
 // ---------------------------------------------------------------------------
 // Cleanup helpers (#9769)

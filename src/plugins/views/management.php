@@ -54,7 +54,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
          data-plugin-verified="<?= $isVerified ? '1' : '0' ?>"
          data-plugin-quarantined="<?= $isQuarantined ? '1' : '0' ?>"
          <?php if ($hasHelp): ?>data-plugin-help="<?= $helpData ?>"<?php endif; ?>>
-        <div class="card-header d-flex align-items-center plugin-card-header" style="cursor: pointer;">
+        <div class="card-header d-flex align-items-center plugin-card-header cursor-pointer">
             <h3 class="card-title">
                 <?php if ($isQuarantined): ?>
                     <i class="fa-solid fa-shield-halved text-warning me-3" title="<?= gettext('Quarantined') ?>"></i>
@@ -627,7 +627,7 @@ $(document).ready(function() {
             helpData.sections.forEach(function(section) {
                 contentHtml += '<div class="card-secondary mb-3">';
                 contentHtml += '<div class="card-header"><h6 class="mb-0">' + escapeHtml(i18next.t(section.title)) + '</h6></div>';
-                contentHtml += '<div class="card-body"><p class="mb-0" style="white-space: pre-line;">' + escapeHtml(i18next.t(section.content)) + '</p></div>';
+                contentHtml += '<div class="card-body"><p class="mb-0 admin-pre-line">' + escapeHtml(i18next.t(section.content)) + '</p></div>';
                 contentHtml += '</div>';
             });
         }
@@ -961,6 +961,20 @@ $(document).ready(function() {
     // ─────────────────────────────────────────────────────────────
     //  Browse Approved Plugins
     // ─────────────────────────────────────────────────────────────
+    function approvedActionHtml(entry) {
+        const installed = entry.installedVersion;
+        const id = $('<div>').text(entry.id || '').html();
+        const url = $('<div>').text(entry.downloadUrl || '').html();
+        if (installed && !entry.upgradeAvailable) {
+            return '<span class="badge bg-green-lt text-green"><?= addslashes(gettext('Installed')) ?></span>';
+        }
+        const upgrading = !!installed;
+        return '<button type="button" class="btn btn-primary btn-sm btn-install-approved" data-upgrade="' + (upgrading ? '1' : '0') + '"' +
+            ' data-plugin-id="' + id + '" data-download-url="' + url + '">' +
+            '<i class="fa-solid fa-' + (upgrading ? 'arrow-up' : 'download') + ' me-1"></i>' +
+            (upgrading ? '<?= addslashes(gettext('Update')) ?>' : '<?= addslashes(gettext('Install')) ?>') + '</button>';
+    }
+
     function renderApprovedList(entries) {
         const $list = $('#approvedPluginsList');
         if (!Array.isArray(entries) || entries.length === 0) {
@@ -1005,12 +1019,7 @@ $(document).ready(function() {
                 metaHtml +
                 notesHtml +
                 '      </div>' +
-                '      <div class="flex-shrink-0">' +
-                '        <button type="button" class="btn btn-primary btn-sm btn-install-approved"' +
-                '                data-plugin-id="' + $('<div>').text(entry.id || '').html() + '"' +
-                '                data-download-url="' + $('<div>').text(entry.downloadUrl || '').html() + '">' +
-                '          <i class="fa-solid fa-download me-1"></i><?= addslashes(gettext('Install')) ?>' +
-                '        </button>' +
+                '      <div class="flex-shrink-0">' + approvedActionHtml(entry) +
                 '      </div>' +
                 '    </div>' +
                 '  </div>' +
@@ -1079,7 +1088,9 @@ $(document).ready(function() {
                     ? xhr.responseJSON.message
                     : "<?= addslashes(gettext('Install failed')) ?>";
                 window.CRM.notify(msg, { type: 'danger', delay: 0 });
-                $btn.prop('disabled', false).html('<i class="fa-solid fa-download me-1"></i><?= addslashes(gettext('Install')) ?>');
+                $btn.prop('disabled', false).html($btn.data('upgrade') === 1
+                    ? '<i class="fa-solid fa-arrow-up me-1"></i><?= addslashes(gettext('Update')) ?>'
+                    : '<i class="fa-solid fa-download me-1"></i><?= addslashes(gettext('Install')) ?>');
             }
         });
     });

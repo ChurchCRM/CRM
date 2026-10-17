@@ -157,9 +157,7 @@ if (geocodeAllBtn) {
     const scroller = document.createElement("div");
     const isScrolling = data.failures.length > 6;
     if (isScrolling) {
-      scroller.className = "border rounded px-2 py-1 mt-1";
-      scroller.style.maxHeight = "260px";
-      scroller.style.overflowY = "auto";
+      scroller.className = "border rounded px-2 py-1 mt-1 map-failures-scroll";
     }
     body.appendChild(scroller);
 
@@ -478,7 +476,7 @@ if (cfg && document.getElementById("map")) {
   });
 
   // -- Legend item click/keyboard interaction ---------------------------------
-  // .legend-item elements replace raw checkboxes; toggle .inactive class.
+  // Tabler .legend buttons replace raw checkboxes; toggle .inactive (our hook) and .legend-off (Tabler styling).
   // Desktop and mobile share the same legendId so both stay in sync.
   // aria-pressed is kept in sync so screen readers report the toggled state.
   const toggleLegendItem = (item) => {
@@ -488,6 +486,7 @@ if (cfg && document.getElementById("map")) {
     // Toggle all items with the same legendId (desktop + mobile)
     for (const sibling of document.querySelectorAll(`.legend-item[data-legend-id="${legendId}"]`)) {
       sibling.classList.toggle("inactive", isActive);
+      sibling.classList.toggle("legend-off", isActive);
       sibling.setAttribute("aria-pressed", isActive ? "false" : "true");
     }
 
@@ -503,11 +502,5 @@ if (cfg && document.getElementById("map")) {
 
   for (const item of document.querySelectorAll(".legend-item")) {
     item.addEventListener("click", () => toggleLegendItem(item));
-    item.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        toggleLegendItem(item);
-      }
-    });
   }
 }

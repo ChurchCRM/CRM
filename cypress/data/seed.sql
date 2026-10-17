@@ -30,23 +30,32 @@ CREATE TABLE `calendars` (
   `accesstoken` varchar(99) DEFAULT NULL,
   `foregroundColor` varchar(6) DEFAULT NULL,
   `backgroundColor` varchar(6) DEFAULT NULL,
-  PRIMARY KEY (`calendar_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=93 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+  `ministry_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`calendar_id`),
+  KEY `calendars_ministry_idx` (`ministry_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `calendars`
 --
+-- Calendar 6, "Youth Ministry", used to carry `ministry_id = 1` even though this seed
+-- contains no `volunteer_ministry_vmin` rows at all. That was harmless while the column
+-- had no foreign key; #9869 adds one, and the seed loads with FOREIGN_KEY_CHECKS=0, so
+-- the dangling value survived the load and was then silently nulled the first time a
+-- spec created and deleted a ministry that happened to take id 1. The column is NULL
+-- here now and `standard.calendar.spec.js` builds its own ministry + calendar pair.
+--
 
 LOCK TABLES `calendars` WRITE;
 /*!40000 ALTER TABLE `calendars` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `calendars` VALUES (1,'Public Calendar',NULL,'FFFFFF','00AA00'),(2,'Private Calendar',NULL,'FFFFFF','0000AA'),(3,'C',NULL,'FA8072','212F3D'),(4,'Ca',NULL,'FA8072','212F3D'),(5,'Ca',NULL,'FA8072','212F3D');
+INSERT INTO `calendars` VALUES (1,'Public Calendar',NULL,'FFFFFF','00AA00',NULL),(2,'Private Calendar',NULL,'FFFFFF','0000AA',NULL),(3,'C',NULL,'FA8072','212F3D',NULL),(4,'Ca',NULL,'FA8072','212F3D',NULL),(5,'Ca',NULL,'FA8072','212F3D',NULL),(6,'Youth Ministry',NULL,'FFFFFF','795548',NULL);
 /*!40000 ALTER TABLE `calendars` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `calendars` with 5 row(s)
+-- Dumped table `calendars` with 6 row(s)
 --
 
 --
@@ -99,7 +108,7 @@ CREATE TABLE `config_cfg` (
 LOCK TABLES `config_cfg` WRITE;
 /*!40000 ALTER TABLE `config_cfg` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `config_cfg` VALUES ('bAllowPrereleaseUpgrade',''),('bEnableExternalCalendarAPI',''),('bEnableNonDeductible',''),('bEnableSelfRegistration','1'),('bForceUppercaseZip',''),('bHideFamilyNewsletter',''),('bHideFriendDate',''),('bHideLatLon',''),('bHideWeddingDate',''),('bPHPMailerAutoTLS',''),('bRequire2FA',''),('bSearchIncludeFamilyCustomProperties',''),('bSendUserDeletedEmail',''),('bSMTPAuth','0'),('bUseDonationEnvelopes',''),('bUseScannedChecks',''),('iChurchLatitude','39.1111974'),('iChurchLongitude','-94.5838009'),('IncludeDataInNewPersonNotifications',''),('plugin.external-backup.enabled','0'),('plugin.holidays.categories','official,religious'),('plugin.holidays.countries','USA'),('plugin.holidays.enabled','1'),('sChurchAddress','123 Main St'),('sChurchChkAcctNum','111111111'),('sChurchCity','Kansas City'),('sChurchCountry','United States'),('sChurchEmail','demo@churchcrm.io'),('sChurchName','Main St. Cathedral'),('sChurchPhone','555 123 4234'),('sChurchState','MO'),('sChurchZip','64106'),('sConfirmSigner','Elder Joe Smith'),('sDefaultCity','Kansas City'),('sDefaultCountry','United States'),('sDefaultState','MO'),('sDirectoryDisclaimer1','Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.This directory is for the use of the people of'),('sLogLevel','100'),('sPHPMailerSMTPSecure',''),('sPledgeSummary2','as of'),('sReminderSigner','Elder Joe Smith'),('sSMTPHost','mailserver:1025'),('sSMTPPass',''),('sSMTPUser',''),('sTaxSigner','Elder Joe Smith'),('sTimeZone','America/Detroit'),('sTwoFASecretKey','ChangeThisToASecureRandomStringBeforeUse');
+INSERT INTO `config_cfg` VALUES ('bAllowPrereleaseUpgrade',''),('bEnableExternalCalendarAPI',''),('bEnableNonDeductible',''),('bEnableSelfRegistration','1'),('bForceUppercaseZip',''),('bHideFamilyNewsletter',''),('bHideFriendDate',''),('bHideLatLon',''),('bHideWeddingDate',''),('bPHPMailerAutoTLS',''),('bRequire2FA',''),('bSearchIncludeFamilyCustomProperties',''),('bSendUserDeletedEmail',''),('bSMTPAuth','0'),('bUseDonationEnvelopes',''),('bUseScannedChecks',''),('iChurchLatitude','39.1111974'),('iChurchLongitude','-94.5838009'),('IncludeDataInNewPersonNotifications',''),('plugin.external-backup.enabled','0'),('plugin.holidays.categories','official,religious'),('plugin.holidays.countries','USA'),('plugin.holidays.enabled','1'),('sChurchAddress','123 Main St'),('sChurchChkAcctNum','111111111'),('sChurchCity','Kansas City'),('sChurchCountry','United States'),('sChurchEmail','demo@churchcrm.io'),('sChurchName','Main St. Cathedral'),('sChurchPhone','555 123 4234'),('sChurchState','MO'),('sChurchZip','64106'),('sConfirmSigner','Elder Joe Smith'),('sDefaultCity','Kansas City'),('sDefaultCountry','United States'),('sDefaultState','MO'),('sDirectoryDisclaimer1','Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.This directory is for the use of the people of'),('sLogLevel','100'),('sPHPMailerSMTPSecure',''),('sPledgeSummary2','as of'),('sReminderSigner','Elder Joe Smith'),('sSMTPHost','mailserver:1025'),('sSMTPPass',''),('sSMTPUser',''),('sTaxSigner','Elder Joe Smith'),('sTimeZone','America/Detroit'),('sTwoFASecretKey','ChangeThisToASecureRandomStringBeforeUse'),('sVolunteerVersion','v1');
 /*!40000 ALTER TABLE `config_cfg` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -296,9 +305,11 @@ CREATE TABLE `events_event` (
   `inactive` int(1) NOT NULL DEFAULT 0,
   `location_id` int(11) DEFAULT NULL,
   `secondary_contact_person_id` int(11) DEFAULT NULL,
+  `event_ministry_id` int(11) DEFAULT NULL,
   `primary_contact_person_id` int(11) DEFAULT NULL,
   `event_url` text DEFAULT NULL,
-  PRIMARY KEY (`event_id`)
+  PRIMARY KEY (`event_id`),
+  KEY `event_ministry_idx` (`event_ministry_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -309,7 +320,7 @@ CREATE TABLE `events_event` (
 LOCK TABLES `events_event` WRITE;
 /*!40000 ALTER TABLE `events_event` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `events_event` VALUES (1,2,'Sunday School Class Changes','This is when the students move to new classes','','2016-11-20 12:30:00','2016-11-20 13:30:00',0,NULL,NULL,NULL,NULL),(2,1,'Christmas Service','christmas service','','2016-12-24 22:30:00','2016-12-25 01:30:00',0,NULL,NULL,NULL,NULL),(3,2,'Summer Camp','Summer Camp','','2017-06-06 09:30:00','2017-06-11 09:30:00',0,NULL,2,1,NULL);
+INSERT INTO `events_event` VALUES (1,2,'Sunday School Class Changes','This is when the students move to new classes','','2016-11-20 12:30:00','2016-11-20 13:30:00',0,NULL,NULL,NULL,NULL,NULL),(2,1,'Christmas Service','christmas service','','2016-12-24 22:30:00','2016-12-25 01:30:00',0,NULL,NULL,NULL,NULL,NULL),(3,2,'Summer Camp','Summer Camp','','2017-06-06 09:30:00','2017-06-11 09:30:00',0,NULL,2,NULL,1,NULL);
 /*!40000 ALTER TABLE `events_event` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -408,12 +419,12 @@ CREATE TABLE `event_types` (
 LOCK TABLES `event_types` WRITE;
 /*!40000 ALTER TABLE `event_types` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `event_types` VALUES (1,'Church Service','10:30:00','weekly','Sunday','','2016-01-01',1,NULL),(2,'Sunday School','09:30:00','weekly','Sunday','','2016-01-01',1,NULL);
+INSERT INTO `event_types` VALUES (1,'Church Service','10:30:00','weekly','Sunday','','2016-01-01',1,NULL),(2,'Sunday School','09:30:00','weekly','Sunday','','2016-01-01',1,NULL),(3,'Other','00:00:00','none','Sunday','','2016-01-01',1,NULL);
 /*!40000 ALTER TABLE `event_types` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `event_types` with 2 row(s)
+-- Dumped table `event_types` with 3 row(s)
 --
 
 --
@@ -1039,7 +1050,9 @@ CREATE TABLE `group_grp` (
   `grp_hasSpecialProps` tinyint(1) NOT NULL DEFAULT 0,
   `grp_active` tinyint(1) NOT NULL DEFAULT 1,
   `grp_include_email_export` tinyint(1) NOT NULL DEFAULT 1,
-  PRIMARY KEY (`grp_ID`)
+  `grp_ministry_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`grp_ID`),
+  KEY `grp_ministry_idx` (`grp_ministry_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1050,7 +1063,7 @@ CREATE TABLE `group_grp` (
 LOCK TABLES `group_grp` WRITE;
 /*!40000 ALTER TABLE `group_grp` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `group_grp` VALUES (1,4,13,2,'Angels class',NULL,0,1,1),(2,4,14,2,'Class 1-3',NULL,0,1,1),(3,4,15,2,'Class 4-5',NULL,0,1,1),(4,4,16,2,'Class 6-7',NULL,0,1,1),(5,4,17,2,'High School Class',NULL,0,1,1),(6,4,18,2,'Youth Meeting',NULL,0,1,1),(7,0,19,1,'Boys Scouts',NULL,0,1,1),(8,0,20,1,'Girl Scouts',NULL,0,0,0),(9,0,21,1,'Church Board',NULL,0,1,0),(10,1,22,1,'Worship Service','',0,1,1),(11,0,23,1,'Clergy',NULL,0,1,1),(12,0,26,1,'New Test Group',NULL,0,1,1),(13,0,27,1,'New Test Group',NULL,0,1,1),(14,0,28,1,'New Test Group',NULL,0,1,1),(15,0,29,1,'New Test Group',NULL,0,1,1),(16,0,30,1,'New Test Group',NULL,0,1,1),(17,0,31,1,'New Test Group',NULL,0,1,1),(18,0,32,1,'New Test Group',NULL,0,1,1),(19,0,33,1,'New Test Group',NULL,0,1,1),(20,0,34,1,'New Test Group',NULL,0,1,1),(21,0,35,1,'New Test Group',NULL,0,1,1),(22,0,36,1,'New Test Group',NULL,0,1,1),(23,0,37,1,'sdfsdfsdf',NULL,1,1,1);
+INSERT INTO `group_grp` VALUES (1,4,13,2,'Angels class',NULL,0,1,1,NULL),(2,4,14,2,'Class 1-3',NULL,0,1,1,NULL),(3,4,15,2,'Class 4-5',NULL,0,1,1,NULL),(4,4,16,2,'Class 6-7',NULL,0,1,1,NULL),(5,4,17,2,'High School Class',NULL,0,1,1,NULL),(6,4,18,2,'Youth Meeting',NULL,0,1,1,NULL),(7,0,19,1,'Boys Scouts',NULL,0,1,1,NULL),(8,0,20,1,'Girl Scouts',NULL,0,0,0,NULL),(9,0,21,1,'Church Board',NULL,0,1,0,NULL),(10,1,22,1,'Worship Service','',0,1,1,NULL),(11,0,23,1,'Clergy',NULL,0,1,1,NULL),(12,0,26,1,'New Test Group',NULL,0,1,1,NULL),(13,0,27,1,'New Test Group',NULL,0,1,1,NULL),(14,0,28,1,'New Test Group',NULL,0,1,1,NULL),(15,0,29,1,'New Test Group',NULL,0,1,1,NULL),(16,0,30,1,'New Test Group',NULL,0,1,1,NULL),(17,0,31,1,'New Test Group',NULL,0,1,1,NULL),(18,0,32,1,'New Test Group',NULL,0,1,1,NULL),(19,0,33,1,'New Test Group',NULL,0,1,1,NULL),(20,0,34,1,'New Test Group',NULL,0,1,1,NULL),(21,0,35,1,'New Test Group',NULL,0,1,1,NULL),(22,0,36,1,'New Test Group',NULL,0,1,1,NULL),(23,0,37,1,'sdfsdfsdf',NULL,1,1,1,NULL);
 /*!40000 ALTER TABLE `group_grp` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -1842,6 +1855,8 @@ CREATE TABLE `user_usr` (
   `usr_ManageGroups` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `usr_Finance` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `usr_ManageFundraisers` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `usr_ManageMinistries` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `usr_ManageMyMinistries` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `usr_Notes` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `usr_Admin` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `usr_SearchLimit` tinyint(4) DEFAULT 10,
@@ -1869,9 +1884,13 @@ CREATE TABLE `user_usr` (
   `usr_TwoFactorAuthLastKeyTimestamp` int(11) DEFAULT NULL,
   `usr_TwoFactorAuthRecoveryCodes` text DEFAULT NULL,
   `usr_TwoFactorAuthGracePeriodStart` timestamp NULL DEFAULT NULL,
+  `usr_LastPortalActivity` datetime DEFAULT NULL,
+  `usr_PortalCalendarToken` varchar(64) DEFAULT NULL,
+  `usr_PortalCalendarSelection` text DEFAULT NULL,
   PRIMARY KEY (`usr_per_ID`),
   UNIQUE KEY `usr_UserName` (`usr_UserName`),
-  UNIQUE KEY `usr_apiKey_unique` (`usr_apiKey`)
+  UNIQUE KEY `usr_apiKey_unique` (`usr_apiKey`),
+  UNIQUE KEY `usr_PortalCalendarToken` (`usr_PortalCalendarToken`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1882,29 +1901,29 @@ CREATE TABLE `user_usr` (
 LOCK TABLES `user_usr` WRITE;
 /*!40000 ALTER TABLE `user_usr` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `user_usr` VALUES (1,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2026-04-10 12:28:02',375,0,0,0,0,0,0,0,0,0,1,10,'skin-red',1,1,'2016-01-01',23,1,'Admin','ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL),(3,'$2y$12$uWQcp6KU7C4JCTaVH.0hiekfpga36yBVhXG8.M/w9u3MmvHt/NWi2',0,'2025-11-30 02:08:31',2,0,1,1,1,1,1,1,1,1,0,10,'skin-yellow-light',0,0,'2016-01-01',26,0,'tony.wade@example.com','JZJApQ9XOnF7nvupWZlTWBRrqMtHE9eNcWBTUzEWGqL4Sdqp6C',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(95,'$2y$12$7R0MqgyidzOqzXPrGbYdkO.y/decFpwSJM..fznzzvT4wiZqaJE4q',0,'2022-12-29 21:01:30',0,0,1,1,0,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'judith.matthews@example.com','judithMatthewsEditRecordsNoNotesApiKey1234',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(99,'$2y$12$cGFZFitpCTIFEVwcsvNRZOOXuebt8Tl6smvKCBNJnp9YRci31OJHG',0,'2025-12-01 20:26:05',0,0,0,0,0,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',29,0,'amanda.black@example.com','amandaBlackEditSelfOnlyApiKey12345678901',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(4,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2016-01-01 00:00:00',0,0,0,0,0,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'limited.user','limitedUserApiKeyForTesting123456789012345678',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(27,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2016-01-01 00:00:00',0,0,0,0,0,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'twofa_user',NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'def50200923f831141edcddb9e69c79f4ef68b1f0cdd9acf4223f286f2c6ab7e0f09d397cabc831fdaa5bee117f409a50090ae4ea6ff51203508d29b59869396f303d5fd3cf14fe76cf85dba9c85735750aa4f312e1ab29caa60a15bb1b76aecb4a7be50423d2867e49a69ec',NULL,NULL,NULL),(7,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2016-01-01 00:00:00',0,99,1,1,0,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'locked.user',NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(8,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',1,'2016-01-01 00:00:00',0,0,1,1,0,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'mustchange.user',NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(900,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,0,0,0,1,0,10,'skin-blue',0,0,'2016-01-01',26,0,'john.plainauth@example.com','plainAuthReadOnlyApiKeyForTesting12345678901',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(100,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,0,0,0,1,0,10,'skin-blue',0,0,'2016-01-01',26,0,'lena.black.editself.notes@example.com','editSelfPlusNotesApiKeyForTesting12345678901',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(96,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2016-01-01 00:00:00',0,0,0,0,1,0,0,1,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'finance.nofundraiser','financeNoFundraiserApiKeyForTesting12345',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(901,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'noperm.user','noPermUserApiKeyForTesting123456789012345678',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `user_usr` VALUES (1,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2026-04-10 12:28:02',375,0,0,0,0,0,0,0,0,0,0,0,1,10,'skin-red',1,1,'2016-01-01',23,1,'Admin','ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(3,'$2y$12$uWQcp6KU7C4JCTaVH.0hiekfpga36yBVhXG8.M/w9u3MmvHt/NWi2',0,'2025-11-30 02:08:31',2,0,1,1,1,1,1,1,1,0,1,1,0,10,'skin-yellow-light',0,0,'2016-01-01',26,0,'tony.wade@example.com','JZJApQ9XOnF7nvupWZlTWBRrqMtHE9eNcWBTUzEWGqL4Sdqp6C',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(95,'$2y$12$7R0MqgyidzOqzXPrGbYdkO.y/decFpwSJM..fznzzvT4wiZqaJE4q',0,'2022-12-29 21:01:30',0,0,1,1,0,0,0,0,0,0,1,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'judith.matthews@example.com','judithMatthewsEditRecordsNoNotesApiKey1234',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(99,'$2y$12$cGFZFitpCTIFEVwcsvNRZOOXuebt8Tl6smvKCBNJnp9YRci31OJHG',0,'2025-12-01 20:26:05',0,0,0,0,0,0,0,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',29,0,'amanda.black@example.com','amandaBlackEditSelfOnlyApiKey12345678901',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(4,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2016-01-01 00:00:00',0,0,0,0,0,0,0,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'limited.user','limitedUserApiKeyForTesting123456789012345678',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(27,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2016-01-01 00:00:00',0,0,0,0,0,0,0,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'twofa_user',NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'def50200923f831141edcddb9e69c79f4ef68b1f0cdd9acf4223f286f2c6ab7e0f09d397cabc831fdaa5bee117f409a50090ae4ea6ff51203508d29b59869396f303d5fd3cf14fe76cf85dba9c85735750aa4f312e1ab29caa60a15bb1b76aecb4a7be50423d2867e49a69ec',NULL,NULL,NULL,NULL,NULL,NULL),(7,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2016-01-01 00:00:00',0,99,1,1,0,0,0,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'locked.user',NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(8,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',1,'2016-01-01 00:00:00',0,0,1,1,0,0,0,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'mustchange.user',NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(900,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,0,0,0,0,0,1,0,10,'skin-blue',0,0,'2016-01-01',26,0,'john.plainauth@example.com','plainAuthReadOnlyApiKeyForTesting12345678901',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(100,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,0,0,0,0,0,1,0,10,'skin-blue',0,0,'2016-01-01',26,0,'lena.black.editself.notes@example.com','editSelfPlusNotesApiKeyForTesting12345678901',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(96,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2016-01-01 00:00:00',0,0,0,0,1,0,0,1,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'finance.nofundraiser','financeNoFundraiserApiKeyForTesting12345',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(901,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,0,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'noperm.user','noPermUserApiKeyForTesting123456789012345678',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
 -- MenuOptions-only user (usr_MenuOptions=1, all other permission flags 0, non-admin, non-EditSelf).
 -- Used by people.properties.security.spec.js (GHSA-4wmp-3v34-g7q8).
-INSERT INTO `user_usr` VALUES (902,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,1,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'menuoptions.user','menuOptionsOnlyApiKeyForTesting12345678901',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `user_usr` VALUES (902,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,1,0,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'menuoptions.user','menuOptionsOnlyApiKeyForTesting12345678901',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 -- Dedicated 2FA lockout test user (GHSA-f2fq-4rmp-9x8c).
 -- Same TOTP secret (JBSWY3DPEBLW64TMMQ======) as twofa_user; starts unlocked (FailedLogins=0)
 -- so the lockout test exhausts iMaxFailedLogins with wrong OTPs and asserts the account locks.
-INSERT INTO `user_usr` VALUES (903,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'twofa_lockout_user',NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'def50200923f831141edcddb9e69c79f4ef68b1f0cdd9acf4223f286f2c6ab7e0f09d397cabc831fdaa5bee117f409a50090ae4ea6ff51203508d29b59869396f303d5fd3cf14fe76cf85dba9c85735750aa4f312e1ab29caa60a15bb1b76aecb4a7be50423d2867e49a69ec',NULL,NULL,NULL);
+INSERT INTO `user_usr` VALUES (903,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,0,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'twofa_lockout_user',NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'def50200923f831141edcddb9e69c79f4ef68b1f0cdd9acf4223f286f2c6ab7e0f09d397cabc831fdaa5bee117f409a50090ae4ea6ff51203508d29b59869396f303d5fd3cf14fe76cf85dba9c85735750aa4f312e1ab29caa60a15bb1b76aecb4a7be50423d2867e49a69ec',NULL,NULL,NULL,NULL,NULL,NULL);
 -- Dedicated password-lockout test user (API account-lockout test in public.user.spec.js).
 -- No module permissions, no 2FA, usr_FailedLogins starts at 0; the test locks it by design, so no other spec may log in as it.
-INSERT INTO `user_usr` VALUES (907,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'login_lockout_user',NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `user_usr` VALUES (907,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,0,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'login_lockout_user',NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 -- finance.only (id=904): Finance=1, non-admin — used to assert Finance role (not Admin) can access fund CRUD and dashboard
-INSERT INTO `user_usr` VALUES (904,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,0,1,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'grace.financeonly@example.com','financeOnlyApiKeyForTesting12345678901234',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `user_usr` VALUES (904,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,0,1,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'grace.financeonly@example.com','financeOnlyApiKeyForTesting12345678901234',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 -- managegroups.only (id=905): ManageGroups=1, non-admin — used to assert ManageGroups role can access kiosk manager
-INSERT INTO `user_usr` VALUES (905,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,1,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'kyle.kioskonly@example.com','manageGroupsOnlyApiKeyForTesting12345678901',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `user_usr` VALUES (905,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,1,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'kyle.kioskonly@example.com','manageGroupsOnlyApiKeyForTesting12345678901',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 -- Locale-admin: dedicated admin user for locale smoke tests (usr_per_ID 906)
 -- Password: changeme (shared test hash). Locale changed per-test; never touches system-wide sLanguage.
-INSERT INTO `user_usr` VALUES (906,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,0,0,0,0,1,10,'skin-blue',0,0,'2016-01-01',10,0,'locale-admin@churchcrm.test','localeAdminApiKeyForTesting1234567890',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `user_usr` VALUES (906,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,0,0,0,0,0,0,1,10,'skin-blue',0,0,'2016-01-01',10,0,'locale-admin@churchcrm.test','localeAdminApiKeyForTesting1234567890',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 -- Sign-in block fixtures (issue #10193): non-admin, zero permissions; the person rows carry the deceased / inactive dates.
-INSERT INTO `user_usr` VALUES (910,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'deceased.user','deceasedUserApiKeyForTesting1234567890123',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO `user_usr` VALUES (911,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'inactive.user','inactiveUserApiKeyForTesting1234567890123',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO `user_usr` VALUES (912,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'deactivate.target',NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `user_usr` VALUES (910,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,0,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'deceased.user','deceasedUserApiKeyForTesting1234567890123',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `user_usr` VALUES (911,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,0,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'inactive.user','inactiveUserApiKeyForTesting1234567890123',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `user_usr` VALUES (912,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,0,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'deactivate.target',NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `user_usr` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -1936,7 +1955,7 @@ CREATE TABLE `version_ver` (
 LOCK TABLES `version_ver` WRITE;
 /*!40000 ALTER TABLE `version_ver` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `version_ver` VALUES (1,'3.5.0','2019-02-10 20:14:23',NULL),(2,'3.5.2','2019-09-10 22:54:56','2019-09-10 22:54:56'),(3,'3.5.4','2019-10-11 22:45:35','2019-10-11 22:45:35'),(4,'4.0.0','2020-06-16 13:11:20','2020-06-16 13:11:20'),(5,'4.1.0','2020-06-16 13:11:20','2020-06-16 13:11:21'),(6,'4.2.3','2020-10-17 01:46:16','2020-10-17 01:46:16'),(7,'4.3.1','2020-11-23 18:55:02','2020-11-23 18:55:02'),(8,'4.3.2','2020-12-10 01:57:09','2020-12-10 01:57:09'),(9,'4.4.0','2021-03-21 17:44:23','2021-03-21 17:44:23'),(10,'4.4.1','2021-05-09 13:58:09','2021-04-27 13:58:09'),(11,'4.4.2','2021-05-09 13:58:09','2021-04-27 13:58:09'),(12,'4.4.3','2021-05-09 13:58:09','2021-04-27 13:58:09'),(13,'4.4.4','2021-07-08 13:58:09','2021-07-08 13:58:09'),(14,'4.4.5','2021-07-09 13:58:09','2021-07-09 13:58:09'),(15,'4.5.0','2021-07-09 13:58:09','2021-09-03 13:58:09'),(16,'4.5.1','2022-12-03 14:02:00','2022-12-03 14:02:00'),(17,'4.5.2','2022-12-28 21:42:20','2022-12-28 21:42:20'),(18,'4.5.3','2023-01-01 20:32:08','2023-01-01 20:32:08'),(19,'5.0.0','2023-05-06 17:29:55','2023-05-06 17:29:55'),(20,'5.0.5','2023-10-21 19:04:42','2023-10-21 19:04:42'),(21,'5.1.0','2023-10-31 23:33:49','2023-10-31 23:33:49'),(22,'5.2.2','2023-11-05 12:28:43','2023-11-05 12:28:43'),(23,'5.2.3','2023-11-16 12:39:14','2023-11-16 12:39:14'),(24,'5.3.0','2023-11-18 11:10:21','2023-11-18 11:10:21'),(25,'5.3.1','2023-11-21 02:04:10','2023-11-21 02:04:10'),(27,'5.4.0','2023-12-03 20:27:58','2023-12-03 20:27:58'),(29,'5.4.3','2024-01-03 23:24:10','2024-01-03 23:24:10'),(30,'5.5.0','2024-01-03 23:43:18','2024-01-03 23:43:18'),(31,'5.6.0','2024-03-07 20:35:26','2024-03-07 20:35:26'),(32,'5.7.0','2024-03-08 11:58:40','2024-03-08 11:58:40'),(33,'5.8.0','2024-04-25 14:50:41','2024-04-25 14:50:41'),(35,'5.9.0','2024-07-13 17:23:00','2024-07-13 17:23:00'),(36,'5.17.0','2024-07-13 17:23:02','2025-03-28 17:23:02'),(37,'5.18.0','2025-05-10 20:09:48','2025-05-10 20:09:48'),(38,'5.19.0','2025-09-01 13:44:08','2025-09-01 13:44:08'),(39,'5.20.0','2025-10-11 15:27:51','2025-10-11 15:27:51'),(40,'5.21.0','2025-10-13 02:54:08','2025-10-13 02:54:08'),(41,'5.22.0','2025-10-20 00:31:20','2025-10-20 00:31:20'),(42,'6.0.0','2025-11-01 21:56:03','2025-11-01 21:56:03'),(43,'6.0.1','2025-11-15 20:47:13','2025-11-15 20:47:13'),(44,'6.0.2','2025-11-16 01:28:56','2025-11-16 01:28:56'),(45,'6.1.0','2025-11-21 02:25:12','2025-11-21 02:25:12'),(46,'6.2.0','2025-11-21 04:32:38','2025-11-21 04:32:38'),(47,'6.3.0','2025-11-27 02:22:39','2025-11-27 02:22:39'),(48,'6.4.0','2025-12-06 02:24:41','2025-12-06 02:24:41'),(49,'6.5.0','2025-12-13 00:20:35','2025-12-13 00:20:35'),(50,'6.5.1','2025-12-14 17:34:29','2025-12-14 17:34:29'),(51,'6.5.2','2025-12-15 00:59:49','2025-12-15 00:59:49'),(52,'6.5.3','2025-12-15 01:26:13','2025-12-15 01:26:13'),(53,'6.5.4','2025-12-15 01:31:56','2025-12-15 01:31:56'),(55,'6.6.0','2025-12-21 00:24:18','2025-12-21 00:24:18'),(56,'6.6.1','2025-12-26 17:36:40','2025-12-26 17:36:40'),(57,'6.7.0','2025-12-29 16:58:20','2025-12-29 16:58:20'),(58,'6.7.1','2026-01-19 18:05:17','2026-01-19 18:05:17'),(59,'6.7.2','2026-01-25 21:24:56','2026-01-25 21:24:56'),(60,'6.7.3','2026-01-30 02:27:27','2026-01-30 02:27:27'),(61,'6.8.0','2026-01-31 16:57:37','2026-01-31 16:57:37'),(62,'6.8.1','2026-02-01 21:22:06','2026-02-01 21:22:06'),(63,'7.0.0','2026-02-07 18:19:35','2026-02-07 18:19:35'),(64,'7.0.1','2026-02-28 01:03:43','2026-02-28 01:03:43'),(65,'7.0.2','2026-03-05 00:33:03','2026-03-05 00:33:03'),(66,'7.0.3','2026-03-10 00:56:16','2026-03-10 00:56:16'),(67,'7.0.4','2026-03-18 17:06:40','2026-03-18 17:06:40'),(68,'7.0.5','2026-03-18 19:28:55','2026-03-18 19:28:55'),(69,'7.1.0','2026-03-19 19:04:36','2026-03-19 19:04:36'),(70,'7.1.1','2026-04-05 14:36:43','2026-04-05 14:36:43'),(71,'7.1.2','2026-04-06 18:47:07','2026-04-06 18:47:07'),(72,'7.2.0','2026-04-10 12:27:54','2026-04-10 12:27:54'),(73,'7.2.1','2026-04-13 21:25:56','2026-04-13 21:25:56'),(74,'7.2.2','2026-04-17 00:16:04','2026-04-17 00:16:04'),(75,'7.2.3','2026-04-23 05:18:45','2026-04-23 05:18:45'),(76,'7.3.0','2026-04-25 15:27:48','2026-04-25 15:27:48'),(77,'7.3.1','2026-04-26 16:11:39','2026-04-26 16:11:39'),(78,'7.3.2','2026-04-30 19:48:51','2026-04-30 19:48:51'),(79,'7.3.3','2026-05-03 16:08:58','2026-05-03 16:08:58'),(80,'7.4.0','2026-05-11 02:55:53','2026-05-11 02:55:53'),(81,'7.4.1','2026-07-14 00:00:00','2026-07-14 00:00:00'),(82,'7.4.3','2026-07-14 00:00:00','2026-07-14 00:00:00'),(83,'7.5.0','2026-07-18 00:15:21','2026-07-18 00:15:21'),(84,'7.5.1','2026-07-19 20:21:34','2026-07-19 20:21:34'),(85,'7.6.0','2026-07-26 20:10:55','2026-07-26 20:10:55'),(86,'7.6.1','2026-08-09 23:38:27','2026-08-09 23:38:27'),(87,'7.6.2','2026-08-17 15:46:03','2026-08-17 15:46:03'),(88,'7.6.3','2026-08-25 18:13:07','2026-08-25 18:13:07'),(89,'7.6.4','2026-09-01 03:49:05','2026-09-01 03:49:05'),(90,'7.7.0','2026-09-01 18:33:45','2026-09-01 18:33:45'),(91,'7.7.1','2026-09-19 05:49:02','2026-09-19 05:49:02'),(92,'7.8.0','2026-09-26 19:44:44','2026-09-26 19:44:44');
+INSERT INTO `version_ver` VALUES (1,'3.5.0','2019-02-10 20:14:23',NULL),(2,'3.5.2','2019-09-10 22:54:56','2019-09-10 22:54:56'),(3,'3.5.4','2019-10-11 22:45:35','2019-10-11 22:45:35'),(4,'4.0.0','2020-06-16 13:11:20','2020-06-16 13:11:20'),(5,'4.1.0','2020-06-16 13:11:20','2020-06-16 13:11:21'),(6,'4.2.3','2020-10-17 01:46:16','2020-10-17 01:46:16'),(7,'4.3.1','2020-11-23 18:55:02','2020-11-23 18:55:02'),(8,'4.3.2','2020-12-10 01:57:09','2020-12-10 01:57:09'),(9,'4.4.0','2021-03-21 17:44:23','2021-03-21 17:44:23'),(10,'4.4.1','2021-05-09 13:58:09','2021-04-27 13:58:09'),(11,'4.4.2','2021-05-09 13:58:09','2021-04-27 13:58:09'),(12,'4.4.3','2021-05-09 13:58:09','2021-04-27 13:58:09'),(13,'4.4.4','2021-07-08 13:58:09','2021-07-08 13:58:09'),(14,'4.4.5','2021-07-09 13:58:09','2021-07-09 13:58:09'),(15,'4.5.0','2021-07-09 13:58:09','2021-09-03 13:58:09'),(16,'4.5.1','2022-12-03 14:02:00','2022-12-03 14:02:00'),(17,'4.5.2','2022-12-28 21:42:20','2022-12-28 21:42:20'),(18,'4.5.3','2023-01-01 20:32:08','2023-01-01 20:32:08'),(19,'5.0.0','2023-05-06 17:29:55','2023-05-06 17:29:55'),(20,'5.0.5','2023-10-21 19:04:42','2023-10-21 19:04:42'),(21,'5.1.0','2023-10-31 23:33:49','2023-10-31 23:33:49'),(22,'5.2.2','2023-11-05 12:28:43','2023-11-05 12:28:43'),(23,'5.2.3','2023-11-16 12:39:14','2023-11-16 12:39:14'),(24,'5.3.0','2023-11-18 11:10:21','2023-11-18 11:10:21'),(25,'5.3.1','2023-11-21 02:04:10','2023-11-21 02:04:10'),(27,'5.4.0','2023-12-03 20:27:58','2023-12-03 20:27:58'),(29,'5.4.3','2024-01-03 23:24:10','2024-01-03 23:24:10'),(30,'5.5.0','2024-01-03 23:43:18','2024-01-03 23:43:18'),(31,'5.6.0','2024-03-07 20:35:26','2024-03-07 20:35:26'),(32,'5.7.0','2024-03-08 11:58:40','2024-03-08 11:58:40'),(33,'5.8.0','2024-04-25 14:50:41','2024-04-25 14:50:41'),(35,'5.9.0','2024-07-13 17:23:00','2024-07-13 17:23:00'),(36,'5.17.0','2024-07-13 17:23:02','2025-03-28 17:23:02'),(37,'5.18.0','2025-05-10 20:09:48','2025-05-10 20:09:48'),(38,'5.19.0','2025-09-01 13:44:08','2025-09-01 13:44:08'),(39,'5.20.0','2025-10-11 15:27:51','2025-10-11 15:27:51'),(40,'5.21.0','2025-10-13 02:54:08','2025-10-13 02:54:08'),(41,'5.22.0','2025-10-20 00:31:20','2025-10-20 00:31:20'),(42,'6.0.0','2025-11-01 21:56:03','2025-11-01 21:56:03'),(43,'6.0.1','2025-11-15 20:47:13','2025-11-15 20:47:13'),(44,'6.0.2','2025-11-16 01:28:56','2025-11-16 01:28:56'),(45,'6.1.0','2025-11-21 02:25:12','2025-11-21 02:25:12'),(46,'6.2.0','2025-11-21 04:32:38','2025-11-21 04:32:38'),(47,'6.3.0','2025-11-27 02:22:39','2025-11-27 02:22:39'),(48,'6.4.0','2025-12-06 02:24:41','2025-12-06 02:24:41'),(49,'6.5.0','2025-12-13 00:20:35','2025-12-13 00:20:35'),(50,'6.5.1','2025-12-14 17:34:29','2025-12-14 17:34:29'),(51,'6.5.2','2025-12-15 00:59:49','2025-12-15 00:59:49'),(52,'6.5.3','2025-12-15 01:26:13','2025-12-15 01:26:13'),(53,'6.5.4','2025-12-15 01:31:56','2025-12-15 01:31:56'),(55,'6.6.0','2025-12-21 00:24:18','2025-12-21 00:24:18'),(56,'6.6.1','2025-12-26 17:36:40','2025-12-26 17:36:40'),(57,'6.7.0','2025-12-29 16:58:20','2025-12-29 16:58:20'),(58,'6.7.1','2026-01-19 18:05:17','2026-01-19 18:05:17'),(59,'6.7.2','2026-01-25 21:24:56','2026-01-25 21:24:56'),(60,'6.7.3','2026-01-30 02:27:27','2026-01-30 02:27:27'),(61,'6.8.0','2026-01-31 16:57:37','2026-01-31 16:57:37'),(62,'6.8.1','2026-02-01 21:22:06','2026-02-01 21:22:06'),(63,'7.0.0','2026-02-07 18:19:35','2026-02-07 18:19:35'),(64,'7.0.1','2026-02-28 01:03:43','2026-02-28 01:03:43'),(65,'7.0.2','2026-03-05 00:33:03','2026-03-05 00:33:03'),(66,'7.0.3','2026-03-10 00:56:16','2026-03-10 00:56:16'),(67,'7.0.4','2026-03-18 17:06:40','2026-03-18 17:06:40'),(68,'7.0.5','2026-03-18 19:28:55','2026-03-18 19:28:55'),(69,'7.1.0','2026-03-19 19:04:36','2026-03-19 19:04:36'),(70,'7.1.1','2026-04-05 14:36:43','2026-04-05 14:36:43'),(71,'7.1.2','2026-04-06 18:47:07','2026-04-06 18:47:07'),(72,'7.2.0','2026-04-10 12:27:54','2026-04-10 12:27:54'),(73,'7.2.1','2026-04-13 21:25:56','2026-04-13 21:25:56'),(74,'7.2.2','2026-04-17 00:16:04','2026-04-17 00:16:04'),(75,'7.2.3','2026-04-23 05:18:45','2026-04-23 05:18:45'),(76,'7.3.0','2026-04-25 15:27:48','2026-04-25 15:27:48'),(77,'7.3.1','2026-04-26 16:11:39','2026-04-26 16:11:39'),(78,'7.3.2','2026-04-30 19:48:51','2026-04-30 19:48:51'),(79,'7.3.3','2026-05-03 16:08:58','2026-05-03 16:08:58'),(80,'7.4.0','2026-05-11 02:55:53','2026-05-11 02:55:53'),(81,'7.4.1','2026-07-14 00:00:00','2026-07-14 00:00:00'),(82,'7.4.3','2026-07-14 00:00:00','2026-07-14 00:00:00'),(83,'7.5.0','2026-07-18 00:15:21','2026-07-18 00:15:21'),(84,'7.5.1','2026-07-19 20:21:34','2026-07-19 20:21:34'),(85,'7.6.0','2026-07-26 20:10:55','2026-07-26 20:10:55'),(86,'7.6.1','2026-08-09 23:38:27','2026-08-09 23:38:27'),(87,'7.6.2','2026-08-17 15:46:03','2026-08-17 15:46:03'),(88,'7.6.3','2026-08-25 18:13:07','2026-08-25 18:13:07'),(89,'7.6.4','2026-09-01 03:49:05','2026-09-01 03:49:05'),(90,'7.7.0','2026-09-01 18:33:45','2026-09-01 18:33:45'),(91,'7.7.1','2026-09-19 05:49:02','2026-09-19 05:49:02'),(92,'7.8.0','2026-09-26 19:44:44','2026-09-26 19:44:44'),(93,'7.8.1','2026-10-10 20:13:31','2026-10-10 20:13:31');
 /*!40000 ALTER TABLE `version_ver` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -2068,6 +2087,519 @@ CREATE TABLE `pledge_denominations_pdem` (
   UNIQUE KEY `pdem_groupkey_denom_uidx` (`pdem_plg_GroupKey`, `pdem_denominationID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `volunteer_ministry_vmin`
+-- Volunteer Management v2 (#9705); mirrors src/mysql/install/Install.sql
+--
+
+DROP TABLE IF EXISTS `volunteer_ministry_vmin`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `volunteer_ministry_vmin` (
+  `vmin_ID`               int(11)               NOT NULL AUTO_INCREMENT,
+  `vmin_Name`             varchar(100)          NOT NULL,
+  `vmin_Description`      varchar(255)                   DEFAULT NULL,
+  `vmin_Active`           tinyint(1) unsigned   NOT NULL DEFAULT 1,
+  `vmin_CreatedDate`      datetime              NOT NULL,
+  `vmin_CreatedBy_per_ID` mediumint(9) unsigned          DEFAULT NULL,
+  `vmin_HelpWanted`       tinyint(1)            NOT NULL DEFAULT 0,
+  `vmin_HelpWantedText`   text                           DEFAULT NULL,
+  `vmin_SundaySchool`     tinyint(1) unsigned   NOT NULL DEFAULT 0,
+  PRIMARY KEY (`vmin_ID`),
+  UNIQUE KEY `vmin_name_uidx`  (`vmin_Name`),
+  KEY `vmin_active_idx`        (`vmin_Active`),
+  KEY `vmin_created_by_idx`    (`vmin_CreatedBy_per_ID`),
+  CONSTRAINT `fk_vmin_created_by` FOREIGN KEY (`vmin_CreatedBy_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `volunteer_team_vtem`
+-- Volunteer Management v2 (#9705); mirrors src/mysql/install/Install.sql
+--
+
+DROP TABLE IF EXISTS `volunteer_team_vtem`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `volunteer_team_vtem` (
+  `vtem_ID`          int(11)             NOT NULL AUTO_INCREMENT,
+  `vtem_vmin_ID`     int(11)             NOT NULL,
+  `vtem_Name`        varchar(100)        NOT NULL,
+  `vtem_Description` varchar(255)                 DEFAULT NULL,
+  `vtem_Active`      tinyint(1) unsigned NOT NULL DEFAULT 1,
+  -- D23: the Sunday School class this team staffs; qualifications write its Teacher role.
+  `vtem_grp_ID`      mediumint(8) unsigned          DEFAULT NULL,
+  PRIMARY KEY (`vtem_ID`),
+  UNIQUE KEY `vtem_ministry_name_uidx` (`vtem_vmin_ID`, `vtem_Name`),
+  UNIQUE KEY `vtem_class_group_uidx`   (`vtem_grp_ID`),
+  KEY `vtem_ministry_idx`              (`vtem_vmin_ID`),
+  CONSTRAINT `fk_vtem_ministry` FOREIGN KEY (`vtem_vmin_ID`)
+      REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vtem_class_group` FOREIGN KEY (`vtem_grp_ID`)
+      REFERENCES `group_grp` (`grp_ID`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `volunteer_position_vpos`
+-- Volunteer Management v2 (#9705); mirrors src/mysql/install/Install.sql
+--
+
+DROP TABLE IF EXISTS `volunteer_position_vpos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `volunteer_position_vpos` (
+  `vpos_ID`          int(11)             NOT NULL AUTO_INCREMENT,
+  `vpos_vmin_ID`     int(11)             NOT NULL,
+  `vpos_vtem_ID`     int(11)             NOT NULL,
+  `vpos_Name`        varchar(100)        NOT NULL,
+  `vpos_Description` varchar(255)                 DEFAULT NULL,
+  `vpos_Active`      tinyint(1) unsigned NOT NULL DEFAULT 1,
+  `vpos_Recruiting`  tinyint(1)          NOT NULL DEFAULT 0,
+  `vpos_SelfAssignable` tinyint(1)        NOT NULL DEFAULT 1,
+  `vpos_Order`       int(11)             NOT NULL DEFAULT 0,
+  PRIMARY KEY (`vpos_ID`),
+  UNIQUE KEY `vpos_ministry_team_name_uidx` (`vpos_vmin_ID`, `vpos_vtem_ID`, `vpos_Name`),
+  KEY `vpos_ministry_active_idx`            (`vpos_vmin_ID`, `vpos_Active`),
+  KEY `vpos_team_idx`                       (`vpos_vtem_ID`),
+  CONSTRAINT `fk_vpos_ministry` FOREIGN KEY (`vpos_vmin_ID`)
+      REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vpos_team` FOREIGN KEY (`vpos_vtem_ID`)
+      REFERENCES `volunteer_team_vtem` (`vtem_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `volunteer_qualification_vqal`
+-- Volunteer Management v2 (#9705); mirrors src/mysql/install/Install.sql
+--
+
+DROP TABLE IF EXISTS `volunteer_qualification_vqal`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `volunteer_qualification_vqal` (
+  `vqal_ID`               int(11)               NOT NULL AUTO_INCREMENT,
+  `vqal_per_ID`           mediumint(9) unsigned NOT NULL,
+  `vqal_vpos_ID`          int(11)               NOT NULL,
+  `vqal_Active`           tinyint(1) unsigned   NOT NULL DEFAULT 1,
+  `vqal_GrantedDate`      datetime              NOT NULL,
+  `vqal_GrantedBy_per_ID` mediumint(9) unsigned          DEFAULT NULL,
+  `vqal_Notes`            varchar(255)                   DEFAULT NULL,
+  PRIMARY KEY (`vqal_ID`),
+  UNIQUE KEY `vqal_person_position_uidx` (`vqal_per_ID`, `vqal_vpos_ID`),
+  KEY `vqal_position_active_idx`         (`vqal_vpos_ID`, `vqal_Active`),
+  KEY `vqal_person_idx`                  (`vqal_per_ID`),
+  KEY `vqal_granted_by_idx`              (`vqal_GrantedBy_per_ID`),
+  CONSTRAINT `fk_vqal_person` FOREIGN KEY (`vqal_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vqal_position` FOREIGN KEY (`vqal_vpos_ID`)
+      REFERENCES `volunteer_position_vpos` (`vpos_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vqal_granted_by` FOREIGN KEY (`vqal_GrantedBy_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `volunteer_schedule_vsch`
+-- Volunteer Management v2 (#9705); mirrors src/mysql/install/Install.sql
+--
+
+DROP TABLE IF EXISTS `volunteer_schedule_vsch`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `volunteer_schedule_vsch` (
+  `vsch_ID`                int(11)                                        NOT NULL AUTO_INCREMENT,
+  `vsch_vmin_ID`           int(11)                                        NOT NULL,
+  `vsch_vtem_ID`           int(11)                                        NOT NULL,
+  `vsch_Name`              varchar(100)                                   NOT NULL,
+  `vsch_LinkMode`          enum('event_type','class','ministry','event')  NOT NULL,
+  `vsch_event_type_id`     int(11)                                                 DEFAULT NULL,
+  `vsch_TitleFilter`       varchar(255)                                            DEFAULT NULL,
+  `vsch_grp_ID`            mediumint(8) unsigned                                   DEFAULT NULL,
+  `vsch_event_id`          int(11)                                                 DEFAULT NULL,
+  `vsch_StartOffsetMinutes` int(11)                                       NOT NULL DEFAULT 0,
+  `vsch_EndOffsetMinutes`  int(11)                                        NOT NULL DEFAULT 0,
+  `vsch_WindowStart`       date                                           NOT NULL,
+  `vsch_WindowEnd`         date                                                    DEFAULT NULL,
+  `vsch_Active`            tinyint(1) unsigned                            NOT NULL DEFAULT 1,
+  `vsch_OneOff`            tinyint(1) unsigned                            NOT NULL DEFAULT 0,
+  PRIMARY KEY (`vsch_ID`),
+  KEY `vsch_ministry_idx`      (`vsch_vmin_ID`),
+  KEY `vsch_team_idx`          (`vsch_vtem_ID`),
+  KEY `vsch_type_idx`          (`vsch_event_type_id`),
+  KEY `vsch_group_idx`         (`vsch_grp_ID`),
+  KEY `vsch_event_idx`         (`vsch_event_id`),
+  KEY `vsch_active_window_idx` (`vsch_Active`, `vsch_WindowStart`),
+  CONSTRAINT `fk_vsch_ministry` FOREIGN KEY (`vsch_vmin_ID`)
+      REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vsch_team` FOREIGN KEY (`vsch_vtem_ID`)
+      REFERENCES `volunteer_team_vtem` (`vtem_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vsch_event_type` FOREIGN KEY (`vsch_event_type_id`)
+      REFERENCES `event_types` (`type_id`) ON DELETE SET NULL,
+  CONSTRAINT `fk_vsch_group` FOREIGN KEY (`vsch_grp_ID`)
+      REFERENCES `group_grp` (`grp_ID`) ON DELETE SET NULL,
+  CONSTRAINT `fk_vsch_event` FOREIGN KEY (`vsch_event_id`)
+      REFERENCES `events_event` (`event_id`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `volunteer_occurrence_vocc`
+-- Volunteer Management v2 (#9705); mirrors src/mysql/install/Install.sql
+--
+
+DROP TABLE IF EXISTS `volunteer_occurrence_vocc`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `volunteer_occurrence_vocc` (
+  `vocc_ID`             int(11)                          NOT NULL AUTO_INCREMENT,
+  `vocc_vsch_ID`        int(11)                          NOT NULL,
+  `vocc_event_id`       int(11)                                   DEFAULT NULL,
+  `vocc_OccurrenceDate` date                             NOT NULL,
+  `vocc_Status`         enum('scheduled','cancelled')    NOT NULL DEFAULT 'scheduled',
+  `vocc_Notes`          varchar(255)                              DEFAULT NULL,
+  `vocc_GeneratedDate`  datetime                         NOT NULL,
+  PRIMARY KEY (`vocc_ID`),
+  UNIQUE KEY `vocc_schedule_event_uidx` (`vocc_vsch_ID`, `vocc_event_id`),
+  KEY `vocc_date_idx`  (`vocc_OccurrenceDate`),
+  KEY `vocc_event_idx` (`vocc_event_id`),
+  CONSTRAINT `fk_vocc_schedule` FOREIGN KEY (`vocc_vsch_ID`)
+      REFERENCES `volunteer_schedule_vsch` (`vsch_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vocc_event` FOREIGN KEY (`vocc_event_id`)
+      REFERENCES `events_event` (`event_id`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `volunteer_requirement_vreq`
+-- Volunteer Management v2 (#9705); mirrors src/mysql/install/Install.sql
+--
+
+DROP TABLE IF EXISTS `volunteer_requirement_vreq`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `volunteer_requirement_vreq` (
+  `vreq_ID`       int(11)      NOT NULL AUTO_INCREMENT,
+  `vreq_vsch_ID`  int(11)               DEFAULT NULL,
+  `vreq_vocc_ID`  int(11)               DEFAULT NULL,
+  `vreq_vpos_ID`  int(11)      NOT NULL,
+  `vreq_MinCount` int(11)      NOT NULL DEFAULT 1,
+  `vreq_MaxCount` int(11)               DEFAULT NULL,
+  `vreq_Notes`    varchar(255)          DEFAULT NULL,
+  PRIMARY KEY (`vreq_ID`),
+  UNIQUE KEY `vreq_schedule_position_uidx`   (`vreq_vsch_ID`, `vreq_vpos_ID`),
+  UNIQUE KEY `vreq_occurrence_position_uidx` (`vreq_vocc_ID`, `vreq_vpos_ID`),
+  KEY `vreq_position_idx`                    (`vreq_vpos_ID`),
+  CONSTRAINT `fk_vreq_schedule` FOREIGN KEY (`vreq_vsch_ID`)
+      REFERENCES `volunteer_schedule_vsch` (`vsch_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vreq_occurrence` FOREIGN KEY (`vreq_vocc_ID`)
+      REFERENCES `volunteer_occurrence_vocc` (`vocc_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vreq_position` FOREIGN KEY (`vreq_vpos_ID`)
+      REFERENCES `volunteer_position_vpos` (`vpos_ID`) ON DELETE CASCADE,
+  -- Exactly one parent: a template requirement belongs to a schedule, an
+  -- override to an occurrence, never both and never neither. Enforced on
+  -- MariaDB 10.2.1+ / MySQL 8.0.16+; parsed and ignored by MySQL 5.7.
+  CONSTRAINT `vreq_one_parent_chk`
+      CHECK ((`vreq_vsch_ID` IS NULL) <> (`vreq_vocc_ID` IS NULL))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `volunteer_requirement_default_vrdf`
+-- Volunteer Management v2 (D35); mirrors src/mysql/install/Install.sql
+--
+
+DROP TABLE IF EXISTS `volunteer_requirement_default_vrdf`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `volunteer_requirement_default_vrdf` (
+  `vrdf_ID`           int(11)               NOT NULL AUTO_INCREMENT,
+  `vrdf_vreq_ID`      int(11)               NOT NULL,
+  `vrdf_per_ID`       mediumint(9) unsigned NOT NULL,
+  `vrdf_Accepted`     tinyint(1) unsigned   NOT NULL DEFAULT 0,
+  `vrdf_SetBy_per_ID` mediumint(9) unsigned          DEFAULT NULL,
+  `vrdf_Sort`         smallint(6)           NOT NULL DEFAULT 0,
+  PRIMARY KEY (`vrdf_ID`),
+  UNIQUE KEY `vrdf_requirement_person_uidx` (`vrdf_vreq_ID`, `vrdf_per_ID`),
+  KEY `vrdf_person_idx`                     (`vrdf_per_ID`),
+  KEY `vrdf_set_by_idx`                     (`vrdf_SetBy_per_ID`),
+  CONSTRAINT `fk_vrdf_requirement` FOREIGN KEY (`vrdf_vreq_ID`)
+      REFERENCES `volunteer_requirement_vreq` (`vreq_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vrdf_person` FOREIGN KEY (`vrdf_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vrdf_set_by` FOREIGN KEY (`vrdf_SetBy_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `volunteer_assignment_vasg`
+-- Volunteer Management v2 (#9705); mirrors src/mysql/install/Install.sql
+--
+
+DROP TABLE IF EXISTS `volunteer_assignment_vasg`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `volunteer_assignment_vasg` (
+  `vasg_ID`                int(11)               NOT NULL AUTO_INCREMENT,
+  `vasg_vocc_ID`           int(11)               NOT NULL,
+  `vasg_vpos_ID`           int(11)               NOT NULL,
+  `vasg_per_ID`            mediumint(9) unsigned NOT NULL,
+  `vasg_vreq_ID`           int(11)                        DEFAULT NULL,
+  `vasg_Status`            enum('pending','accepted','declined','cancelled','substituted','completed')
+                                                 NOT NULL DEFAULT 'pending',
+  `vasg_Source`            enum('coordinator','self_signup','substitute')
+                                                 NOT NULL DEFAULT 'coordinator',
+  `vasg_AssignedDate`      datetime              NOT NULL,
+  `vasg_AssignedBy_per_ID` mediumint(9) unsigned          DEFAULT NULL,
+  `vasg_RespondedDate`     datetime                       DEFAULT NULL,
+  `vasg_Replaces_vasg_ID`  int(11)                        DEFAULT NULL,
+  `vasg_Notes`             varchar(255)                   DEFAULT NULL,
+  PRIMARY KEY (`vasg_ID`),
+  UNIQUE KEY `vasg_occ_pos_per_uidx` (`vasg_vocc_ID`, `vasg_vpos_ID`, `vasg_per_ID`),
+  KEY `vasg_occurrence_idx`     (`vasg_vocc_ID`, `vasg_Status`),
+  KEY `vasg_person_status_idx`  (`vasg_per_ID`, `vasg_Status`),
+  KEY `vasg_position_idx`       (`vasg_vpos_ID`),
+  KEY `vasg_requirement_idx`    (`vasg_vreq_ID`),
+  KEY `vasg_assigned_by_idx`    (`vasg_AssignedBy_per_ID`),
+  KEY `vasg_replaces_idx`       (`vasg_Replaces_vasg_ID`),
+  CONSTRAINT `fk_vasg_occurrence` FOREIGN KEY (`vasg_vocc_ID`)
+      REFERENCES `volunteer_occurrence_vocc` (`vocc_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vasg_position` FOREIGN KEY (`vasg_vpos_ID`)
+      REFERENCES `volunteer_position_vpos` (`vpos_ID`) ON DELETE RESTRICT,
+  CONSTRAINT `fk_vasg_person` FOREIGN KEY (`vasg_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vasg_requirement` FOREIGN KEY (`vasg_vreq_ID`)
+      REFERENCES `volunteer_requirement_vreq` (`vreq_ID`) ON DELETE SET NULL,
+  CONSTRAINT `fk_vasg_assigned_by` FOREIGN KEY (`vasg_AssignedBy_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE SET NULL,
+  CONSTRAINT `fk_vasg_replaces` FOREIGN KEY (`vasg_Replaces_vasg_ID`)
+      REFERENCES `volunteer_assignment_vasg` (`vasg_ID`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `volunteer_response_vrsp`
+-- Volunteer Management v2 (#9705); mirrors src/mysql/install/Install.sql
+--
+
+DROP TABLE IF EXISTS `volunteer_response_vrsp`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `volunteer_response_vrsp` (
+  `vrsp_ID`           int(11)               NOT NULL AUTO_INCREMENT,
+  `vrsp_vasg_ID`      int(11)               NOT NULL,
+  `vrsp_per_ID`       mediumint(9) unsigned NOT NULL,
+  `vrsp_Response`     enum('accepted','declined','cancelled','substitute_proposed','substitute_approved','substitute_rejected','substitute_withdrawn')
+                                            NOT NULL,
+  `vrsp_ResponseDate` datetime              NOT NULL,
+  `vrsp_Channel`      enum('web','coordinator') NOT NULL DEFAULT 'web',
+  `vrsp_Comment`      varchar(255)                   DEFAULT NULL,
+  PRIMARY KEY (`vrsp_ID`),
+  KEY `vrsp_assignment_idx` (`vrsp_vasg_ID`, `vrsp_ResponseDate`),
+  KEY `vrsp_person_idx`     (`vrsp_per_ID`),
+  CONSTRAINT `fk_vrsp_assignment` FOREIGN KEY (`vrsp_vasg_ID`)
+      REFERENCES `volunteer_assignment_vasg` (`vasg_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vrsp_person` FOREIGN KEY (`vrsp_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `volunteer_swap_vswp`
+-- Volunteer Management v2 (#9705); mirrors src/mysql/install/Install.sql
+--
+
+DROP TABLE IF EXISTS `volunteer_swap_vswp`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `volunteer_swap_vswp` (
+  `vswp_ID`               int(11)               NOT NULL AUTO_INCREMENT,
+  `vswp_vasg_ID`          int(11)               NOT NULL,
+  `vswp_ProposedBy_per_ID` mediumint(9) unsigned NOT NULL,
+  `vswp_Proposed_per_ID`  mediumint(9) unsigned NOT NULL,
+  `vswp_Status`           enum('proposed','approved','rejected','withdrawn') NOT NULL DEFAULT 'proposed',
+  `vswp_ProposedDate`     datetime              NOT NULL,
+  `vswp_DecidedDate`      datetime                       DEFAULT NULL,
+  `vswp_DecidedBy_per_ID` mediumint(9) unsigned          DEFAULT NULL,
+  `vswp_Comment`          varchar(255)                   DEFAULT NULL,
+  PRIMARY KEY (`vswp_ID`),
+  KEY `vswp_assignment_status_idx` (`vswp_vasg_ID`, `vswp_Status`),
+  KEY `vswp_proposed_person_idx`   (`vswp_Proposed_per_ID`),
+  KEY `vswp_proposed_by_idx`       (`vswp_ProposedBy_per_ID`),
+  KEY `vswp_decided_by_idx`        (`vswp_DecidedBy_per_ID`),
+  CONSTRAINT `fk_vswp_assignment` FOREIGN KEY (`vswp_vasg_ID`)
+      REFERENCES `volunteer_assignment_vasg` (`vasg_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vswp_proposed_by` FOREIGN KEY (`vswp_ProposedBy_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vswp_proposed_person` FOREIGN KEY (`vswp_Proposed_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vswp_decided_by` FOREIGN KEY (`vswp_DecidedBy_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `volunteer_notification_vntf`
+-- Volunteer Management v2 (#9705); mirrors src/mysql/install/Install.sql
+--
+
+DROP TABLE IF EXISTS `volunteer_notification_vntf`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `volunteer_notification_vntf` (
+  `vntf_ID`              int(11)               NOT NULL AUTO_INCREMENT,
+  `vntf_Type`            enum('assignment','reminder','decline_alert','gap_alert','signup_confirm','swap_proposed','swap_resolved','help_offer','pool_add')
+                                               NOT NULL,
+  `vntf_Channel`         enum('email')         NOT NULL DEFAULT 'email',
+  `vntf_per_ID`          mediumint(9) unsigned NOT NULL,
+  `vntf_vasg_ID`         int(11)                        DEFAULT NULL,
+  `vntf_vocc_ID`         int(11)                        DEFAULT NULL,
+  -- D19: opaque, type-specific context for a row that hangs off NEITHER an assignment
+  -- nor an occurrence. `help_offer` is the first such type — it is about a ministry and
+  -- a person, and the one fact the message needs ("were they already in the pool?") is
+  -- true only at the moment of the click and cannot be recomputed at delivery time.
+  -- JSON, read only by the type that wrote it.
+  `vntf_Context`         varchar(190)                   DEFAULT NULL,
+  `vntf_DedupeKey`       varchar(190)          NOT NULL,
+  `vntf_ScheduledFor`    datetime              NOT NULL,
+  `vntf_Status`          enum('pending','sent','failed','skipped') NOT NULL DEFAULT 'pending',
+  `vntf_Attempts`        int(11)               NOT NULL DEFAULT 0,
+  `vntf_LastAttemptDate` datetime                       DEFAULT NULL,
+  `vntf_SentDate`        datetime                       DEFAULT NULL,
+  `vntf_LastError`       varchar(255)                   DEFAULT NULL,
+  PRIMARY KEY (`vntf_ID`),
+  UNIQUE KEY `vntf_dedupe_uidx` (`vntf_DedupeKey`),
+  KEY `vntf_due_idx`            (`vntf_Status`, `vntf_ScheduledFor`),
+  KEY `vntf_assignment_idx`     (`vntf_vasg_ID`),
+  KEY `vntf_person_idx`         (`vntf_per_ID`),
+  KEY `vntf_occurrence_idx`     (`vntf_vocc_ID`),
+  CONSTRAINT `fk_vntf_person` FOREIGN KEY (`vntf_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vntf_assignment` FOREIGN KEY (`vntf_vasg_ID`)
+      REFERENCES `volunteer_assignment_vasg` (`vasg_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vntf_occurrence` FOREIGN KEY (`vntf_vocc_ID`)
+      REFERENCES `volunteer_occurrence_vocc` (`vocc_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `volunteer_scope_vscp`
+-- Volunteer Management v2 (#9705); mirrors src/mysql/install/Install.sql
+--
+
+DROP TABLE IF EXISTS `volunteer_scope_vscp`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `volunteer_scope_vscp` (
+  `vscp_ID`               int(11)                 NOT NULL AUTO_INCREMENT,
+  `vscp_per_ID`           mediumint(9) unsigned   NOT NULL,
+  `vscp_ScopeType`        enum('ministry','team') NOT NULL,
+  `vscp_ScopeId`          int(11)                 NOT NULL,
+  `vscp_GrantedDate`      datetime                NOT NULL,
+  `vscp_GrantedBy_per_ID` mediumint(9) unsigned            DEFAULT NULL,
+  PRIMARY KEY (`vscp_ID`),
+  UNIQUE KEY `vscp_person_scope_uidx` (`vscp_per_ID`, `vscp_ScopeType`, `vscp_ScopeId`),
+  KEY `vscp_person_idx`               (`vscp_per_ID`),
+  KEY `vscp_scope_idx`                (`vscp_ScopeType`, `vscp_ScopeId`),
+  KEY `vscp_granted_by_idx`           (`vscp_GrantedBy_per_ID`),
+  CONSTRAINT `fk_vscp_person` FOREIGN KEY (`vscp_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vscp_granted_by` FOREIGN KEY (`vscp_GrantedBy_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Volunteer v2 (#9713): the events_event -> volunteer_ministry_vmin ownership link.
+-- Added after volunteer_ministry_vmin exists; events_event is dumped far earlier.
+--
+ALTER TABLE `events_event`
+    ADD CONSTRAINT `events_event_FK_ministry` FOREIGN KEY (`event_ministry_id`)
+    REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE SET NULL;
+
+--
+-- Volunteer v2 (D19): the group_grp -> volunteer_ministry_vmin ownership link.
+--
+-- Declared here rather than inside the group_grp CREATE TABLE because that table is
+-- created long before volunteer_ministry_vmin exists. ON DELETE SET NULL so a cascade
+-- can never remove a church group; the ministry-deletion path removes the pool group
+-- explicitly instead (design D19).
+--
+ALTER TABLE `group_grp`
+    ADD CONSTRAINT `group_grp_FK_ministry` FOREIGN KEY (`grp_ministry_id`)
+    REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE SET NULL;
+
+--
+-- Member Portal (#9866 / #9869): the calendars -> volunteer_ministry_vmin ownership link.
+--
+-- Declared here rather than inside the calendars CREATE TABLE because that table is created
+-- long before volunteer_ministry_vmin exists. ON DELETE SET NULL so a cascade can never remove
+-- a church calendar; the ministry-deletion path removes the ministry's own calendar explicitly
+-- instead (design §5.3).
+--
+ALTER TABLE `calendars`
+    ADD CONSTRAINT `calendars_ministry_fk` FOREIGN KEY (`ministry_id`)
+    REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE SET NULL;
+
+--
+-- Table structure for table `volunteer_calendar_vcal`
+-- Volunteer v2 (D25); mirrors src/mysql/install/Install.sql. Empty: specs create their own grants.
+--
+
+DROP TABLE IF EXISTS `volunteer_calendar_vcal`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `volunteer_calendar_vcal` (
+  `vcal_calendar_id` int(11) NOT NULL,
+  `vcal_vmin_ID`     int(11) NOT NULL,
+  PRIMARY KEY (`vcal_calendar_id`, `vcal_vmin_ID`),
+  KEY `vcal_ministry_idx` (`vcal_vmin_ID`),
+  CONSTRAINT `fk_vcal_calendar` FOREIGN KEY (`vcal_calendar_id`)
+      REFERENCES `calendars` (`calendar_id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vcal_ministry` FOREIGN KEY (`vcal_vmin_ID`)
+      REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `email_log_eml`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `email_log_eml` (
+  `eml_ID`        int(10) unsigned      NOT NULL AUTO_INCREMENT,
+  `eml_per_ID`    mediumint(8) unsigned DEFAULT NULL,
+  `eml_fam_ID`    mediumint(8) unsigned DEFAULT NULL,
+  `eml_usr_ID`    mediumint(9) unsigned DEFAULT NULL,
+  `eml_Address`   varchar(255)          NOT NULL,
+  `eml_Kind`      varchar(50)           NOT NULL,
+  `eml_Subject`   varchar(255)          NOT NULL DEFAULT '',
+  `eml_Body`      longtext              DEFAULT NULL,
+  `eml_Status`    varchar(20)           NOT NULL,
+  `eml_Error`     text                  DEFAULT NULL,
+  `eml_MessageID` varchar(255)          DEFAULT NULL,
+  `eml_DateSent`  datetime              NOT NULL,
+  `eml_Batch`       varchar(32)         DEFAULT NULL,
+  `eml_Attempts`    tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `eml_NextAttempt` datetime            DEFAULT NULL,
+  PRIMARY KEY (`eml_ID`),
+  KEY `idx_eml_per_ID`   (`eml_per_ID`),
+  KEY `idx_eml_fam_ID`   (`eml_fam_ID`),
+  KEY `idx_eml_DateSent` (`eml_DateSent`),
+  KEY `idx_eml_Status`   (`eml_Status`),
+  KEY `idx_eml_Batch`    (`eml_Batch`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+INSERT INTO `email_log_eml` VALUES
+(1,2,NULL,1,'mathew.campbell@example.com','composer','Welcome to the choir','<p>Dear Mathew,</p><p>Practice is on Thursdays at 7pm.</p>','sent',NULL,'<seed-1@churchcrm.test>','2026-08-01 10:00:00',NULL,1,NULL),
+(2,2,NULL,NULL,'mathew.campbell@example.com','birthday','Happy Birthday from Main St. Cathedral',NULL,'sent',NULL,'<seed-2@churchcrm.test>','2026-06-15 06:00:00',NULL,1,NULL),
+(3,2,1,NULL,'mathew.campbell@example.com','verify','Please confirm your family details',NULL,'sent',NULL,'<seed-3@churchcrm.test>','2026-05-02 09:30:00',NULL,1,NULL),
+(4,2,NULL,1,'mathew.campbell@example.com','composer','Potluck this Sunday','<p>Dear Mathew,</p><p>Bring a dish to share.</p>','failed','SMTP Error: Could not connect to SMTP host.',NULL,'2026-04-20 14:15:00',NULL,1,NULL),
+(5,2,NULL,1,'mathew.campbell@example.com','composer','Thank you for serving','<p>Dear Mathew,</p><p>Thank you for helping on Sunday.</p>','sent',NULL,'<seed-5@churchcrm.test>','2026-03-10 08:45:00',NULL,1,NULL),
+(6,2,NULL,1,'mathew.campbell@example.com','composer','Oldest message','<p>Dear Mathew,</p><p>This is the sixth and oldest seeded message.</p>','sent',NULL,'<seed-6@churchcrm.test>','2026-02-01 08:00:00',NULL,1,NULL),
+(7,3,NULL,NULL,'tony.wade@example.com','account.reset-token','Reset your ChurchCRM password',NULL,'sent',NULL,'<seed-7@churchcrm.test>','2026-07-04 12:00:00',NULL,1,NULL),
+(8,100,NULL,1,'lena.walker@example.com','composer','Seeded failed message for Lena','<p>Dear Lena,</p><p>This one never went out.</p>','failed','SMTP Error: Could not connect to SMTP host.',NULL,'2026-03-01 09:00:00',NULL,1,NULL),
+(9,100,NULL,NULL,'lena.walker@example.com','birthday','Seeded skipped birthday greeting for Lena',NULL,'skipped',NULL,NULL,'2026-03-02 06:00:00',NULL,0,NULL);
 
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 /*!40101 SET AUTOCOMMIT=@OLD_AUTOCOMMIT */;

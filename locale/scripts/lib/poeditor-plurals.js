@@ -8,8 +8,10 @@
  *     key_value_json: { "term": { "one": "...", "few": "...", "other": "..." } }
  *
  *   context plurals (i18next `{{count}}` keys, `msgctxt "one"` / `msgctxt "other"`)
- *     Separate POEditor terms, one per context.
- *     key_value_json: { "one": { "term": "..." }, "other": { "term": "..." } }
+ *     Separate POEditor terms, one per context. projects/upload's key_value_json
+ *     import ignores them (parsed count excludes them), so they go through
+ *     a PO import (msgctxt) -- translations/update also returns success
+ *     without applying them.
  *
  * The missing-terms batch files show both kinds with the same shape
  * ({ term: { form: text } }), so messages.po decides which payload shape each
@@ -67,15 +69,15 @@ function parsePoEntries(text) {
 
 /**
  * Classifies source terms from locale/messages.po.
- * Returns { gettextPlurals: Set<msgid>, contextForms: Map<msgid, Set<context>> }.
+ * Returns { gettextPlurals: Map<msgid, msgid_plural>, contextForms: Map<msgid, Set<context>> }.
  */
 function loadSourceTermKinds(messagesPoText) {
-    const gettextPlurals = new Set();
+    const gettextPlurals = new Map();
     const contextForms = new Map();
 
     for (const { msgctxt, msgid, msgidPlural } of parsePoEntries(messagesPoText)) {
         if (!msgid) continue;
-        if (msgidPlural !== undefined) gettextPlurals.add(msgid);
+        if (msgidPlural !== undefined) gettextPlurals.set(msgid, msgidPlural);
         if (msgctxt !== undefined && CLDR_PLURAL_FORMS.includes(msgctxt)) {
             if (!contextForms.has(msgid)) contextForms.set(msgid, new Set());
             contextForms.get(msgid).add(msgctxt);
@@ -126,11 +128,13 @@ function repairJoinedPlural(value) {
  * Builds the key_value_json object for projects/upload.
  * Only pass terms whose plural objects are complete (see hasIncompleteForms).
  *
- * Returns { payload, skipped } where skipped lists plural terms that could not
+ * Returns { payload, pluralEntries, skipped }: payload is the plain-string
+ * key_value_json, pluralEntries are every plural for buildPluralPo, and skipped lists plural terms that could not
  * be matched to messages.po, or that carried a form messages.po does not define.
  */
 function buildPoeditorPayload(terms, { gettextPlurals, contextForms }) {
     const payload = {};
+    const pluralEntries = [];
     const skipped = [];
 
     for (const [term, value] of Object.entries(terms)) {
@@ -144,7 +148,7 @@ function buildPoeditorPayload(terms, { gettextPlurals, contextForms }) {
         }
 
         if (gettextPlurals.has(term)) {
-            payload[term] = { ...value };
+            pluralEntries.push({ msgid: term, msgidPlural: gettextPlurals.get(term), forms: { ...value } });
             continue;
         }
 
@@ -159,12 +163,36 @@ function buildPoeditorPayload(terms, { gettextPlurals, contextForms }) {
             continue;
         }
         for (const form of forms) {
-            if (typeof payload[form] !== 'object' || payload[form] === null) payload[form] = {};
-            payload[form][term] = value[form];
+            pluralEntries.push({ msgctxt: form, msgid: term, forms: { other: value[form] } });
         }
     }
 
-    return { payload, skipped };
+    return { payload, pluralEntries, skipped };
+}
+
+/**
+ * PO file for pluralEntries. POEditor's key_value_json import and
+ * translations/update report success without applying plurals (parsed counts
+ * leave them out); PO import is the one that stores them, with msgctxt for
+ * {{count}} pairs and msgid_plural/msgstr[n] for gettext plurals. Forms are in
+ * CLDR order, which is the msgstr index order.
+ */
+function buildPluralPo(language, entries) {
+    const q = JSON.stringify;
+    const maxForms = Math.max(1, ...entries.map(({ msgidPlural, forms }) => (msgidPlural ? Object.keys(forms).length : 1)));
+    const header = `msgid ""\nmsgstr ""\n"Content-Type: text/plain; charset=UTF-8\\n"\n"Language: ${language}\\n"\n"Plural-Forms: nplurals=${maxForms}; plural=0;\\n"\n\n`;
+    return header + entries.map(({ msgctxt, msgid, msgidPlural, forms }) => {
+        const lines = [];
+        if (msgctxt !== undefined) lines.push(`msgctxt ${q(msgctxt)}`);
+        lines.push(`msgid ${q(msgid)}`);
+        if (msgidPlural === undefined) {
+            lines.push(`msgstr ${q(Object.values(forms)[0])}`);
+        } else {
+            lines.push(`msgid_plural ${q(msgidPlural)}`);
+            CLDR_PLURAL_FORMS.filter((f) => f in forms).forEach((f, i) => lines.push(`msgstr[${i}] ${q(forms[f])}`));
+        }
+        return lines.join('\n') + '\n';
+    }).join('\n');
 }
 
 module.exports = {
@@ -173,4 +201,5 @@ module.exports = {
     loadSourceTermKinds,
     repairJoinedPlural,
     buildPoeditorPayload,
+    buildPluralPo,
 };

@@ -72,6 +72,15 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   </div>
 </div>
 
+<?php if (!empty($kioskSettings)) : ?>
+<div id="kioskSettings" class="mb-4"
+     data-title="<?= InputUtils::escapeAttribute(gettext('Kiosk Settings')) ?>"
+     data-settings="<?= InputUtils::escapeAttribute(json_encode($kioskSettings)) ?>"></div>
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/kiosk-settings.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+<?php endif; ?>
+
 <div class="card mb-3" id="eventsOverviewCard" style="display:none;">
   <div class="card-header d-flex align-items-center">
     <h3 class="card-title">
@@ -459,9 +468,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               return '<span class="badge bg-warning text-dark">' + i18next.t('Pending') + '</span>';
             }
             if (isOnline) {
-              return '<span class="badge bg-success">' + i18next.t('Online') + '</span>';
+              return '<span class="badge bg-success-lt text-success">' + i18next.t('Online') + '</span>';
             }
-            return '<span class="badge bg-secondary-lt">' + i18next.t('Offline') + '</span>';
+            return '<span class="badge bg-secondary-lt text-secondary">' + i18next.t('Offline') + '</span>';
           }
         },
         {
@@ -502,7 +511,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             // out. Use data-* attributes (HTML-attr context, safely escaped)
             // and a delegated click handler attached after the DataTable is
             // built. Also CSP-clean (no inline JS), per project rule.
-            var nameAttr = window.CRM.escapeHtml(full.Name);
+            var nameAttr = window.CRM.escapeAttribute(full.Name);
             var buttons = '<div class="btn-group btn-group-sm" role="group">';
             if (!full.Accepted) {
               buttons += '<button class="btn btn-success" data-kiosk-action="accept" data-kiosk-id="' + full.Id + '" title="' + i18next.t('Accept') + '"><i class="fa-solid fa-check me-1"></i>' + i18next.t('Accept') + '</button>';

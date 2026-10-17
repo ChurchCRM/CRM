@@ -1,0 +1,30 @@
+{#
+  The secondary navigation of the Volunteering section (MP6, #9867).
+
+  The two member pages used to be two sidebar entries; inside the portal they are
+  one nav entry with two tabs, so a member who opens "Volunteering" can see at a
+  glance that there is a second page and what it is for. `activeTab` is set by the
+  route: 'schedule' or 'opportunities'.
+#}
+<nav class="portal-subnav" aria-label="{{ gettext('Volunteering') }}">
+    <ul class="portal-subnav-list">
+        <li class="portal-subnav-item">
+            <a class="portal-subnav-link{% if activeTab == 'schedule' %} is-active{% endif %}"
+               id="portal-volunteer-tab-schedule"
+               href="{{ url('/portal/volunteer/schedule') }}"
+               {% if activeTab == 'schedule' %}aria-current="page"{% endif %}>
+                <i class="fa-solid fa-calendar-check" aria-hidden="true"></i>
+                <span>{{ gettext('My schedule') }}</span>
+            </a>
+        </li>
+        <li class="portal-subnav-item">
+            <a class="portal-subnav-link{% if activeTab == 'opportunities' %} is-active{% endif %}"
+               id="portal-volunteer-tab-opportunities"
+               href="{{ url('/portal/volunteer/opportunities') }}"
+               {% if activeTab == 'opportunities' %}aria-current="page"{% endif %}>
+                <i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i>
+                <span>{{ gettext('Find something to do') }}</span>
+            </a>
+        </li>
+    </ul>
+</nav>

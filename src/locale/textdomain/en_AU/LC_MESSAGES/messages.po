@@ -190,10 +190,6 @@ msgid "Foreground Color"
 msgstr "Foreground Colour"
 
 #: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "Include Sunday School classes and enrolments"
-
-#: 
 msgid "Two Factor Enrollment Error"
 msgstr "Two Factor Enrolment Error"
 

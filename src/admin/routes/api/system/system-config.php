@@ -1,8 +1,10 @@
 <?php
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Volunteer\Service\VolunteerEventService;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -90,8 +92,15 @@ function setConfigValueByNameAPI(Request $request, Response $response, array $ar
         return SlimUtils::renderErrorJSON($response, gettext('This setting must be a number'), [], 400, null, $request);
     }
 
+    $volunteerV2WasOn = User::isVolunteerV2Enabled();
+
     // Sanitization is applied centrally in SystemConfig::setValue() — no duplicate call here.
     SystemConfig::setValue($configName, $value);
+
+    // #10357: V2's default type for ministry events arrives when V2 is turned on, not on upgrade.
+    if ($configName === 'sVolunteerVersion' && !$volunteerV2WasOn && User::isVolunteerV2Enabled()) {
+        VolunteerEventService::addOtherEventType();
+    }
 
     // Never return the saved value for password types
     return SlimUtils::renderJSON($response, ['value' => $isPassword ? '' : SystemConfig::getValue($configName)]);

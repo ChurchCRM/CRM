@@ -2,7 +2,7 @@
 # Production Apache Dockerfile for ChurchCRM
 # Includes compiled ChurchCRM release code (no rebuild needed)
 #
-# Build with: docker build --target prod -f Dockerfile.churchcrm-apache-php8 -t churchcrm/crm:7.7.0-php8-apache .
+# Build with: docker build --target prod -f Dockerfile.churchcrm-apache-php8 -t churchcrm/crm:7.8.0-php8-apache .
 #
 # The release code is copied into the image during build.
 # When container starts, ChurchCRM is ready to serve.

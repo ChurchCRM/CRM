@@ -1,7 +1,5 @@
-/* Styles for financial report forms (src/FinancialReports.php).
-   TODO: Scope these under a parent class (e.g. .financial-report) to avoid
-   global element selectors leaking into other pages.
-*/
+// Financial report forms (src/FinancialReports.php, LabelFunctions.php).
+// The element selectors below apply site-wide.
 
 td.LabelColumn {
   width: 220px;
@@ -26,7 +24,6 @@ select[name="method[]"],
 select#family {
   width: 100%;
 }
-
 
 select[multiple] {
   min-height: 90px;
@@ -61,9 +58,9 @@ input.date-picker {
 .card > .card-body .ts-wrapper.multi .ts-control .item {
   margin: 3px 6px 3px 0;
   padding: 0 8px;
-  background: #f0f0f0;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  color: #333;
+  background: var(--tblr-tertiary-bg);
+  border: 1px solid var(--tblr-border-color);
+  color: var(--tblr-body-color);
   border-radius: 3px;
   line-height: 1.8;
   max-width: 100%;

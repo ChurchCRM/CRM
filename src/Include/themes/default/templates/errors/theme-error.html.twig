@@ -1,0 +1,31 @@
+{#
+  What an administrator sees when the active theme fails to render: the theme,
+  the file, the line and the message, so the designer can fix it immediately
+  (design §3.3). Members never reach this page — they get errors/unavailable.
+#}
+{% extends "@default/layout.html.twig" %}
+
+{% block header %}{% endblock %}
+{% block nav %}{% endblock %}
+
+{% block content %}
+<section class="portal-card portal-theme-error">
+    <h1 class="portal-error-title">{{ gettext('The Member Portal theme could not be rendered') }}</h1>
+    <p class="portal-error-text">
+        {{ gettext('Members are seeing a "temporarily unavailable" page until this is fixed. The same details were written to the application log and to the web server error log.') }}
+    </p>
+    <dl class="portal-theme-error-details">
+        <dt>{{ gettext('Theme') }}</dt>
+        <dd class="portal-theme-error-theme">{{ themeName }}</dd>
+        {% if file %}
+        <dt>{{ gettext('File') }}</dt>
+        <dd class="portal-theme-error-file">{{ file }}{% if line %} ({{ gettext('line %d')|format(line) }}){% endif %}</dd>
+        {% endif %}
+        <dt>{{ gettext('Message') }}</dt>
+        <dd class="portal-theme-error-message">{{ message }}</dd>
+    </dl>
+    <p>
+        <a class="portal-button" href="{{ url('/admin/member-portal') }}">{{ gettext('Go to the Member Portal settings') }}</a>
+    </p>
+</section>
+{% endblock %}

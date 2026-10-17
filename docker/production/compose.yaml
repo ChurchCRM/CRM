@@ -1,0 +1,87 @@
+# Production stack for the published ChurchCRM release image.
+#
+# Copy this directory somewhere of your own, copy .env.example to .env and
+# fill it in, then `docker compose up -d`. It is not run from the repository
+# and shares nothing with the dev/test/CI stacks in the parent directory.
+#
+# Full instructions, backup and upgrade procedure, and the traps worth
+# knowing: https://docs.churchcrm.io/installation/docker
+
+name: churchcrm
+
+services:
+  db:
+    image: mariadb:11.4.5
+    restart: unless-stopped
+    environment:
+      MARIADB_DATABASE: ${CHURCHCRM_DB_NAME:?set CHURCHCRM_DB_NAME in .env}
+      MARIADB_USER: ${CHURCHCRM_DB_USER:?set CHURCHCRM_DB_USER in .env}
+      MARIADB_PASSWORD: ${CHURCHCRM_DB_PASSWORD:?set CHURCHCRM_DB_PASSWORD in .env}
+      MARIADB_ROOT_PASSWORD: ${CHURCHCRM_DB_ROOT_PASSWORD:?set CHURCHCRM_DB_ROOT_PASSWORD in .env}
+    volumes:
+      - db-data:/var/lib/mysql
+    # Deliberately no `ports:` - the database is reachable only on the
+    # compose network, never from the host.
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      start_period: 30s
+      retries: 10
+    cap_drop:
+      - ALL
+    cap_add:
+      # MariaDB's entrypoint starts as root and drops to the mysql user,
+      # so it needs these four. Verified: the container reaches `healthy`.
+      - CHOWN
+      - SETGID
+      - SETUID
+      - DAC_OVERRIDE
+    security_opt:
+      - no-new-privileges:true
+
+  web:
+    image: churchcrm/crm:7.8.0-php8-apache
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      # Loopback only. Put a TLS reverse proxy in front for anything public.
+      # Apache inside the image listens on 8080, NOT 80.
+      - "${CHURCHCRM_HTTP_ADDR:-127.0.0.1:8080}:8080"
+    volumes:
+      # Only the two directories that are EMPTY in the image are mounted.
+      # Mounting all of Images/ would freeze the shipped logos, letterhead
+      # and login photo; mounting Include/ would shadow the application code.
+      - person-photos:/var/www/html/Images/Person
+      - family-photos:/var/www/html/Images/Family
+      #
+      # OPTIONAL - keeps Include/Config.php across container replacement so
+      # you are not sent back to /setup. Complete the wizard once, then:
+      #   docker compose cp web:/var/www/html/Include/Config.php ./config/Config.php
+      #   chmod 600 ./config/Config.php      # it contains the DB password
+      # then uncomment the next line and `docker compose up -d`.
+      # - ./config/Config.php:/var/www/html/Include/Config.php:ro
+    healthcheck:
+      # The image ships curl but no wget, and defines no HEALTHCHECK of its own.
+      # `GET /` answers 302 before setup and 302 after it; curl without -L
+      # treats a 302 as success, so this works in both states.
+      test: ["CMD", "curl", "-fsS", "-o", "/dev/null", "http://127.0.0.1:8080/"]
+      interval: 15s
+      timeout: 5s
+      start_period: 30s
+      retries: 5
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    # NOTE: `read_only: true` works only AFTER setup is complete and only with
+    # the Config.php bind-mount above. Enabling it before setup makes the
+    # wizard silently fail (it answers HTTP 200 and writes nothing).
+    # See QUICKSTART-VERIFIED.md, "Trap 5".
+
+volumes:
+  db-data:
+  person-photos:
+  family-photos:

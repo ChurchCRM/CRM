@@ -1,0 +1,111 @@
+{% extends "layout.html.twig" %}
+
+{#
+  S5 — my volunteer schedule, in the Member Portal (MP6, #9867; Member Portal
+  design §5.4, volunteer design §5.6).
+
+  Markup only, and deliberately the SAME markup the retired PHP view carried:
+  every id below is one `webpack/portal/volunteer-schedule.ts` looks for
+  (`#volunteer-my-schedule` is its init guard, `assignments-*` is the §5.8 state
+  machine, and the `substitute-*` ids are the "Find a sub" dialog). The bundle is
+  unchanged by this move — that is the whole point of P15 — so nothing here may be
+  renamed without changing it too.
+
+  §5.6 is emphatic that this screen is **plain**: a volunteer must never read the
+  words *ministry hierarchy*, *requirement*, *occurrence* or *schedule*. They read
+  a day, a time, what they are doing, and three buttons.
+
+  Every user-visible string the bundle renders lives in the bundle, as `i18next.t()`:
+  a `.php` view could not be extracted (volunteer design §5.10, F31), and a Twig
+  template cannot be either — the extractor reads `gettext()` from templates and
+  `i18next.t()` from `webpack/`, and never the other way round.
+#}
+
+{% block content %}
+<div class="portal-volunteer">
+
+    {% include 'volunteer/partials/tabs.html.twig' %}
+
+    <div id="volunteer-my-schedule">
+
+        <div class="card mb-3">
+            <div class="card-body d-flex flex-wrap gap-2 align-items-center justify-content-between">
+                <div class="form-check form-switch mb-0">
+                    <input class="form-check-input" type="checkbox" id="show-past">
+                    <label class="form-check-label" for="show-past">{{ gettext('Show what I have already done') }}</label>
+                </div>
+                <a class="btn btn-outline-primary volunteer-touch-target" href="{{ url('/portal/volunteer/opportunities') }}">
+                    <i class="fa-solid fa-hand-holding-heart me-1" aria-hidden="true"></i>{{ gettext('Find something to help with') }}
+                </a>
+            </div>
+        </div>
+
+        <div class="volunteer-loading text-center py-4" id="assignments-loading">
+            <span class="spinner-border spinner-border-sm text-secondary me-2" role="status" aria-hidden="true"></span>
+            {{ gettext('Loading') }}
+        </div>
+
+        <div class="alert alert-danger d-none" role="alert" id="assignments-error">
+            <i class="fa-solid fa-circle-exclamation me-1" aria-hidden="true"></i>
+            <span class="volunteer-error-text"></span>
+            <button type="button" class="btn btn-sm btn-outline-danger ms-2" id="assignments-retry">{{ gettext('Retry') }}</button>
+        </div>
+
+        <div class="empty d-none" id="assignments-empty">
+            <div class="empty-icon"><i class="fa-solid fa-calendar-check fa-2x text-muted" aria-hidden="true"></i></div>
+            <p class="empty-title">{{ gettext('Nothing on your list yet') }}</p>
+            <p class="empty-subtitle text-body-secondary">
+                {{ gettext('When someone puts you on a team, or you sign up yourself, it will show up here.') }}
+            </p>
+            <div class="empty-action">
+                <a class="btn btn-primary volunteer-touch-target" href="{{ url('/portal/volunteer/opportunities') }}">
+                    <i class="fa-solid fa-hand-holding-heart me-1" aria-hidden="true"></i>{{ gettext('See what needs filling') }}
+                </a>
+            </div>
+        </div>
+
+        {# One column at every width (§5.9): no grid, just a stack of cards. #}
+        <div class="d-none" id="assignments-content"></div>
+
+        {#
+          "Find a sub" (§5.6). The list comes from
+          `GET /api/ministries/me/assignments/{id}/substitutes`, which has already
+          removed the volunteer themselves and anyone already on that slot, so the
+          picker cannot offer a name the server will then refuse.
+        #}
+        <div class="modal fade" id="substitute-modal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">{{ gettext('Ask someone to cover for you') }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ gettext('Close') }}"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="text-body-secondary">
+                            {{ gettext('Pick someone who has already agreed to take your place. Your coordinator will confirm it.') }}
+                        </p>
+                        <div class="mb-3">
+                            <label class="form-label" for="substitute-select">{{ gettext('Who is covering') }}</label>
+                            <select class="form-select" id="substitute-select"></select>
+                            <div class="form-text" id="substitute-hint"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="substitute-comment">{{ gettext('Anything your coordinator should know') }}</label>
+                            <textarea class="form-control" id="substitute-comment" rows="2"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link" data-bs-dismiss="modal">{{ gettext('Cancel') }}</button>
+                        <button type="button" class="btn btn-primary volunteer-touch-target" id="substitute-save">{{ gettext('Ask them') }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block scripts_extra %}
+<script nonce="{{ nonce() }}" src="{{ asset('/skin/v2/portal-volunteer-schedule.min.js') }}"></script>
+{% endblock %}
