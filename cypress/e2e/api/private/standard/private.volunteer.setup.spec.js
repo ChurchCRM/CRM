@@ -15,7 +15,7 @@
  * with the setup endpoints once they exist.
  *
  * Fixture data is the §2.17 worked example from the design document
- * (.agents/skills/churchcrm/volunteer-v2-design.md): UC1 Coffee Bar and UC2
+ * (docs/design/volunteer-v2.md): UC1 Coffee Bar and UC2
  * Sunday Worship, including the two cases the schema is deliberately shaped
  * around — one person holding several qualifications in one team, and one
  * person serving two different positions on a single occurrence (I7 / D16).

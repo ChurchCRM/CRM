@@ -9374,10 +9374,6 @@ msgid "Manage donations, pledges, and financial records"
 msgstr "Spravovat dary, závazky a finanční záznamy"
 
 #: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "Spravovat nástroje pro e-mail a konfiguraci SMTP"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Spravovat rodiny, osoby a demografické údaje"
 
@@ -10353,10 +10349,6 @@ msgid "Distance Unit"
 msgstr "Jednotka vzdálenosti"
 
 #: 
-msgid "Email Dashboard"
-msgstr "Přístrojová deska e-mailu"
-
-#: 
 msgid "Email Integrations"
 msgstr "Integrace e-mailu"
 
@@ -10371,10 +10363,6 @@ msgstr "Odkazy e-mailu v zobrazeních skupin a osob"
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "Seznamy e-mailů jsou synchronizovány s Mailchimp."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "Povolte e-mail v níže uvedeném panelu nastavení a pak nakonfigurujte server SMTP."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10516,10 +10504,6 @@ msgstr "Systémové kalendáře"
 #: 
 msgid "System language for the church."
 msgstr "Systémový jazyk pro církev."
-
-#: 
-msgid "Text Dashboard"
-msgstr "Textový řídicí panel"
 
 #: 
 msgid "Text Settings"
@@ -12440,10 +12424,6 @@ msgstr "E-mail je zakázán"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "E-mail je zakázán. Před resetováním hesel nakonfigurujte e-mail nebo použijte Změnit heslo."
-
-#: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "E-mail je zakázán. Před testováním jej povolte v nastavení řídicího panelu e-mailu."
 
 #: 
 msgid "Enter one of your backup recovery codes"

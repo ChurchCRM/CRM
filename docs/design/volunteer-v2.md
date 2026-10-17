@@ -87,7 +87,7 @@ These are settled. A PR does not reopen them.
 | D16 | **A person may hold multiple qualifications within the same team and the same ministry**, and may be assigned to different positions on different occurrences. Multi-position on one occurrence is allowed, with a UI warning and no server-side block — one person can lead singing and serve communion in the same service (§2.7, §2.11.2 I7). |
 | D17 | **Release target is 7.8.0.** The rollout flag defaults to `v1` and V1 stays fully compatible. V2 migration scripts are named `7.8.0-volunteer-v2-*.sql`; fresh installs get the schema from `Install.sql` and the test database from `seed.sql`. |
 | D18 | **Every ministry has at least one team, and positions and schedules belong to a team.** Creating a ministry auto-creates its first team, named `"{Ministry name} Team"`, in the same transaction; it is an ordinary team and can be renamed. `vpos_vtem_ID` and `vsch_vtem_ID` are `NOT NULL` with `ON DELETE CASCADE` foreign keys, and the API answers `400` to a position or schedule with no `teamId`. A ministry's only team cannot be deleted (`409`, *"A ministry needs at least one team. Rename it instead."*); deleting the ministry takes its teams with it. A ministry coordinator manages every team of their ministry, a team leader their own. Where a screen shows positions from more than one team (the qualification matrix on *All teams*, a cross-team "still needed" line, a dashboard gap list), a position is labelled `"{Team} · {Position}"`; where the context is one team, the bare name stands. |
-| D19 | **A ministry owns exactly one core Group — its volunteer pool — and coordinators may write it.** Creating a ministry creates that Group in the same transaction: named after the ministry, typed "Ministry", carrying the nullable core column `group_grp.grp_ministry_id` (FK → `vmin_ID`, `ON DELETE SET NULL`). Renaming the ministry renames the Group; deleting the ministry deletes it. **(a)** The `bManageGroups` model hooks have one exception: a write to a Group carrying a ministry id is allowed when the caller coordinates that ministry — decided by `VolunteerAuthorizationService` reading `volunteer_scope_vscp`, never `$_SESSION`, so API-key callers are judged identically — or when a V2 service has opened an explicit managed-write context (`VolunteerPoolWriter::run()`) after authorizing the write itself. A Group with a NULL ministry id takes the core path. **(b)** Qualification does not require pool membership: the picker may name anyone, qualifying somebody outside the pool adds them to it, revoking a qualification leaves them in the pool, and the qualification matrix's rows are the pool ∪ everyone qualified. Self-signup and `GET /me/opportunities` test qualification only. **(c)** A ministry can advertise: `vmin_HelpWanted` / `vmin_HelpWantedText` put it on the Open Opportunities page with an "I'd like to help" button that joins the pool and mails the coordinators (outbox type `help_offer`, one per coordinator per day). A ministry also advertises when **any active position has `vpos_Recruiting` on**, which lists those positions by name under "New volunteers needed for the following positions" (§5.6). Either alone is enough, and `recordHelpOffer()` shares the same test, so the button is never rendered over a `403`. The Groups module shows the Group and keeps its membership fully editable; its identity belongs to the ministry — `POST`/`DELETE /api/groups/{id}` answer `409`, the editor redirects, and the page says whose pool it is. |
+| D19 | **A ministry owns exactly one core Group — its volunteer pool — and coordinators may write it.** Creating a ministry creates that Group in the same transaction: named after the ministry, typed "Ministry", carrying the nullable core column `group_grp.grp_ministry_id` (FK → `vmin_ID`, `ON DELETE SET NULL`). Renaming the ministry renames the Group; deleting the ministry deletes it. **(a)** The `bManageGroups` model hooks have one exception: a write to a Group carrying a ministry id is allowed when the caller coordinates that ministry — decided by `VolunteerAuthorizationService` reading `volunteer_scope_vscp`, never `$_SESSION`, so API-key callers are judged identically — or when a V2 service has opened an explicit managed-write context (`VolunteerPoolWriter::run()`) after authorizing the write itself. A Group with a NULL ministry id takes the core path. **(b)** Qualification does not require pool membership: the picker may name anyone, qualifying somebody outside the pool adds them to it, revoking a qualification leaves them in the pool, and the qualification matrix's rows are the pool ∪ everyone qualified. Self-signup and `GET /me/opportunities` test qualification only. **(c)** A ministry can advertise: `vmin_HelpWanted` / `vmin_HelpWantedText` put it on the Open Opportunities page with an "I'd like to help" button that joins the pool and mails the coordinators (outbox type `help_offer`, one per coordinator per day). A ministry also advertises when **any active position has `vpos_Recruiting` on**, which lists those positions by name under "New volunteers needed for the following positions" (§5.6). Either alone is enough, and `recordHelpOffer()` shares the same test, so the button is never rendered over a `403`. **(d)** A team leader may add an existing person to the pool of their team's ministry (#10531): from the admin team view and the portal team page, through a person search limited to active people, optionally ticking positions of their own team; the ministry's coordinators are emailed who added whom (outbox type `pool_add`). Removing stays a coordinator's: it ends someone's part in every team of the ministry. The Groups module shows the Group and keeps its membership fully editable; its identity belongs to the ministry — `POST`/`DELETE /api/groups/{id}` answer `409`, the editor redirects, and the page says whose pool it is. |
 | D20–D35 | **Core-reuse decisions.** Every occurrence anchored to an event, with optional time offsets; four ways for a schedule to find its events; teams linked to Sunday School classes with V2 writing the Teacher role; coordinators create one-off and recurring ministry events from the ministry page; administrators open church calendars to ministries; class meetings are events with core headcounts; portal legend toggles; a class's events change only as the coordinator chooses; the Sunday School switch; empty Generate runs explained; schedules follow existing events up to a church-wide scheduling horizon, topped up daily; default volunteers; events, schedules and occurrences created separately; staffing status words; several default volunteers per position. Full text in §0.8. |
 
 #### D14 — rationale and the alternatives
@@ -993,6 +993,10 @@ Legal transitions, and nothing else:
 | `accepted` | `completed` | system | set when the occurrence's end has passed; if linked and the person has an `event_attend` check-in, `completed` is recorded with attendance, otherwise it is recorded without. Never blocks on attendance. |
 | anything | anything else | — | rejected with `409` and the current status in the body |
 
+A coordinator can also create the row already `accepted` — an accepted default (D32) or the
+Assign dialog's *Record they accepted* (#10528) — which writes the same `coordinator`-channel
+response row by the coordinator and sets `vasg_RespondedDate`.
+
 "On their behalf" is deliberate, not a loophole: a volunteer who phones the coordinator to say they
 cannot make it is the common case, and the coordinator records it. The response row then carries
 the **coordinator** as `vrsp_per_ID` and `vrsp_Channel = 'coordinator'` (§2.12), so the audit trail
@@ -1104,7 +1108,7 @@ row (`substitute_proposed` / `_approved` / `_rejected` / `_withdrawn`).
 | Column | phpName | Type | Notes |
 |---|---|---|---|
 | `vntf_ID` | `Id` | `INTEGER` PK autoinc | |
-| `vntf_Type` | `Type` | `enum('assignment','reminder','decline_alert','gap_alert','signup_confirm','swap_proposed','swap_resolved')` required | matches Appendix C |
+| `vntf_Type` | `Type` | `enum('assignment','reminder','decline_alert','gap_alert','signup_confirm','swap_proposed','swap_resolved','help_offer','pool_add')` required | matches Appendix C; `help_offer` (D19) and `pool_add` (#10531) are about a ministry, so their facts ride in `vntf_Context` |
 | `vntf_Channel` | `Channel` | `enum('email')` required default `'email'` | D10/N5 — the extension point. Adding `'sms'` later is one enum value and one branch. |
 | `vntf_per_ID` | `PersonId` | `mediumint(9) unsigned` required | recipient. FK → `person_per.per_ID`, `ON DELETE CASCADE` |
 | `vntf_vasg_ID` | `AssignmentId` | `INTEGER` null | FK → assignment, `ON DELETE CASCADE` |
@@ -1127,11 +1131,20 @@ assignment:{assignmentId}:{personId}
 reminder:{assignmentId}:{personId}
 decline_alert:{assignmentId}:{coordinatorPersonId}
 gap_alert:{occurrenceId}:{coordinatorPersonId}:{yyyy-mm-dd}     ← a decline's gap: one per coordinator per occurrence per day
-gap_alert:{occurrenceId}:{positionId}:{coordinatorPersonId}      ← the unfilled-position alert: one per position per coordinator, no date
+gap_alert:{occurrenceId}:{positionId}:{coordinatorPersonId}      ← the unfilled-position alert (#10372): one per position per coordinator, no date, single or batched (#10529)
 signup_confirm:{assignmentId}:{personId}
 swap_proposed:{swapId}:{coordinatorPersonId}
 swap_resolved:{swapId}:{personId}
+help_offer:{ministryId}:{personId}:{yyyy-mm-dd}:{coordinatorPersonId}
+pool_add:{ministryId}:{addedPersonId}:{yyyy-mm-dd}:{coordinatorPersonId}   ← #10531
 ```
+
+**The daily batch (#10529) is rows, not a type.** A position the daily batch reports is an ordinary
+unfilled-position `gap_alert` row under the key above, its `vntf_Context` carrying the batch day as
+well: `{"positionId": …, "batch": "yyyy-mm-dd"}`. The drain sends a recipient's due batched rows as one
+message. Sharing the key is what makes a position reported to a coordinator once, batch or single; no
+`vntf_Type` value and no column were added. The batch day is claimed in `config_cfg`
+(`sLastVolunteerGapAlertBatchDate`, Appendix B).
 
 **Invariants:**
 
@@ -1530,6 +1543,8 @@ error contract (M5).
 | POST | `/api/ministries/ministries/{ministryId}/pool/{personId}` | add to the pool | Coordinator of it — **no `ManageGroups` needed** (§4.6) | `201 {personId,added:true}`; `200 {added:false}` when already there. Writes through the Propel membership model, so `Hooks::GROUP_MEMBER_ADDED` fires (G3) |
 | POST | `/api/ministries/ministries/{ministryId}/pool/from-cart` | **cart sink** (P5/P6): put everyone in the session cart in the pool | Coordinator of it | no body — the people come from `Cart::getCartPeople()` → `200 {added:int, alreadyMembers:int}`; `400` when the cart is empty. Idempotent per person; grants **no** qualification, and the cart is not emptied. This is what "Add from Cart" on S3 calls |
 | DELETE | `/api/ministries/ministries/{ministryId}/pool/{personId}` | remove from the pool | Coordinator of it | `200`; `404` when they are not in it. Qualifications are **not** revoked (D19), and schedule defaults are kept (D32) |
+| POST | `/api/ministries/teams/{teamId}/pool/{personId}` | a team leader adds an existing person to the pool of the team's ministry (#10531) | Team Leader of it, or anyone above | `{positionIds?: int[]}` (positions of THIS team, `400` otherwise) → `201`/`200 {personId, added, qualified, notified}`; `404` for a person the search would not offer; emails the coordinators (`pool_add`) |
+| GET | `/api/ministries/people/search` | the team-leader Add Volunteer picker (#10531) | Coordinator / Team Leader (any login) | `?q=` (≥ 2 characters) → `[{id, name, familyName}]`, at most 20, active people only |
 | DELETE | `/api/ministries/ministries/{ministryId}/volunteers/{personId}` | "Remove Volunteer": revoke every qualification for a position of this ministry, cancel every live assignment on a still-to-come occurrence of it, remove them from the pool, and delete every schedule default of the ministry that names them (D32, D35) — one transaction | Coordinator of it (**ministry-level**: a team leader gets `403`) | `200 {personId,qualifications,assignments,removedFromPool,defaults}`; `404` for an unknown person. Idempotent: a second call reports zeroes. Past assignments are untouched — §5.4 |
 | GET | `/api/ministries/ministries/{ministryId}/members` | the qualification matrix's rows | Coordinator of it | pool ∪ everyone qualified for a position in view (D19): `{members:[{personId,displayName,inPool,groupIds[],qualifications:[positionId],qualificationIds{}}]}` |
 | GET | `/api/ministries/teams/{teamId}/members` | the same, narrowed to one team's positions | Coordinator / Team Leader | as above |
@@ -1571,7 +1586,7 @@ error contract (M5).
 | GET | `/api/ministries/occurrences/{occurrenceId}` | detail | scope | `VolunteerOccurrenceMiddleware` |
 | GET | `/api/ministries/occurrences/{occurrenceId}/staffing` | **the workhorse** | scope | `{occurrence, requirements:[{positionId,positionName,minCount,maxCount,liveCount,gapCount,assignments:[{id,personId,displayName,status,source,respondedDate,attendance}]}]}` — `attendance` is present only for linked occurrences (E10) |
 | GET | `/api/ministries/occurrences/{occurrenceId}/eligible` | who may be assigned | scope | `?positionId=&q=` → `{people:[{personId,displayName,inPool,lastServedDate,conflictPositionId}]}`, ordered by `lastServedDate ASC NULLS FIRST` (the rotation, §2.17) |
-| POST | `/api/ministries/occurrences/{occurrenceId}/assignments` | assign | scope | `{positionId,personId,requirementId?,allowOutsidePool?}` → `201 {assignment}`; `403` I2, `409` I1/I3/I5 |
+| POST | `/api/ministries/occurrences/{occurrenceId}/assignments` | assign | scope | `{positionId,personId,requirementId?,allowOutsidePool?,accepted?}` → `201 {assignment}`; `403` I2, `409` I1/I3/I5. `accepted: true` (*Record they accepted*, #10528) creates it `accepted` with a coordinator-channel response row by the caller, as an accepted default is (D32), and queues `signup_confirm` instead of `assignment` (§3.6) |
 | POST | `/api/ministries/assignments/{assignmentId}/status` | coordinator status change, incl. recording a response on the volunteer's behalf (§2.11.1) | scope | `{status:'cancelled'\|'accepted'\|'declined', comment?}` → `{assignment}`; `accepted`/`declined` write a response row with `Channel='coordinator'` and the coordinator as `vrsp_per_ID`; `409` on an illegal transition |
 | DELETE | `/api/ministries/assignments/{assignmentId}` | cancel (never hard-deletes once responded) | scope | sets `cancelled`; hard-deletes only a `pending`, never-notified row |
 | POST | `/api/ministries/assignments/{assignmentId}/notify` | re-enqueue the assignment mail | scope | `{}` → `{notification:{status}}`; idempotent via the dedupe key unless `?force=1` |
@@ -1667,14 +1682,16 @@ are the contract; read the class for signatures.
 
 | Trigger | Type | Recipient | `ScheduledFor` |
 |---|---|---|---|
-| `assign()`, and a pending default a run assigns (D32) | `assignment` | the volunteer | now |
+| `assign()`, and a pending default a run assigns (D32) | `assignment` | the volunteer | now — not for an assignment created already accepted (an accepted default, *Record they accepted*) |
 | `assign()` / `selfSignup()` accepted | `reminder` | the volunteer | occurrence start − `iVolunteerReminderLeadHours` |
 | `respond('declined')` **by the volunteer** (`Channel='web'`) | `decline_alert` | `getCoordinatorPersonIds(ministry, team)` | now — a coordinator-recorded decline (`Channel='coordinator'`) enqueues nothing |
 | `selfSignup()` | `signup_confirm` | the volunteer | now |
+| `assign()` with *Record they accepted* (`accepted: true`, #10528) | `signup_confirm`, `vntf_Context = {"recordedBy": …}` (the coordinator's person id), so the message names who put them on the schedule instead of thanking them for signing up | the volunteer | now. An accepted default (D32) sends none |
 | `proposeSubstitute()` | `swap_proposed` | coordinators | now |
 | `approveSwap()` / `rejectSwap()` | `swap_resolved` | proposer **and** substitute | now |
 | `respond('declined')`, when the occurrence is left short (`notifyGapOpened()`) | `gap_alert` | `getCoordinatorPersonIds(ministry, team)` | now (dedupe key includes the date, so at most one per coordinator per occurrence per day) |
-| every timer pass, a position still short on an occurrence starting within the lead window | `gap_alert`, one per position, naming only that position | `getCoordinatorPersonIds(ministry, team)` | now (dedupe key per occurrence, position and coordinator, no date: an open gap is alerted once; none to a coordinator who already has the occurrence's decline `gap_alert`) |
+| every timer pass, a position still short on an occurrence starting within `iVolunteerGapAlertLeadHours` (#10372, #10526) | `gap_alert`, one per position, naming only that position | `getCoordinatorPersonIds(ministry, team)` | now (dedupe key per occurrence, position and coordinator, no date: an open gap is alerted once; none to a coordinator who already has the occurrence's decline `gap_alert`) |
+| once a day, the first timer pass at or after `sVolunteerGapAlertBatchTime`: a position still short on an occurrence starting within the lead + 24 hours (#10529) | `gap_alert`, one row per position with `"batch"` in its context; the drain sends a recipient's batched rows as ONE message | `getCoordinatorPersonIds(ministry, team)` | now (the same key as the single alert, so a position is reported once, batch or single; the same decline rule) |
 
 `cancelPendingFor()` deletes `pending` outbox rows when an assignment stops being live, so a
 cancelled assignment never produces a reminder.
@@ -1733,8 +1750,12 @@ asked not to be mailed at, so the opt-out is honoured here too.
 2. For each: if `!SystemConfig::isEmailEnabled()` → `skipped` (N2). If the recipient is in
    `buildDoNotEmailSet()` → `skipped` (N3). If the person has no email → `skipped`. If the row is
    about an occurrence that has already ended → `skipped`.
-3. Otherwise build the `BaseEmail` subclass (Appendix C) and `send()`. On success record `sent`
-   and `SentDate`. On failure record `Attempts + 1`, `LastAttemptDate` and `LastError`, and set
+3. Otherwise build the `BaseEmail` subclass (Appendix C) and `send()`. A batched `gap_alert` row
+   (#10529) is taken with every due batched row of its recipient, whatever the batch size: the
+   recipient rules apply to all of them, each row whose occurrence is gone or over or whose position
+   has been filled since is `skipped` on its own, and the rest go out as one
+   `VolunteerGapAlertBatchEmail` and share its outcome; nothing left means nothing sent. On success
+   record `sent` and `SentDate`. On failure record `Attempts + 1`, `LastAttemptDate` and `LastError`, and set
    `Status` to `failed` **only if `Attempts` is now 5**; otherwise leave it `pending` so step 1
    picks it up on the next drain. Each send is wrapped in its own `try/catch (\Throwable)` with a
    structured log, copying `dto\Notification::send()`'s per-channel isolation (N4) so one bad
@@ -1762,8 +1783,10 @@ the same day; the command-line runner and the page-load trigger run it at most o
 before the drain, so a gap is reported soon after it comes inside the window (a new event, a
 shorter lead). `VolunteerNotificationService::scheduleGapAlerts()` takes every scheduled
 occurrence of an active ministry whose start (`resolveOccurrenceWindow()`) is after now and within
-`iVolunteerReminderLeadHours` — there is no lead setting of its own, so a lead of 0 turns it off
-with the reminders — and enqueues one `gap_alert` per position `getOpenGaps()` reports short (D34's
+`iVolunteerGapAlertLeadHours` — its own lead (#10526, default 48 like the reminders'; the
+`7.8.1-volunteer-v2-gap-alerts-pool-add.sql` upgrade script copies a church's own reminder lead into it, so an upgrade changes
+nothing); 0 turns it off and leaves the reminders alone, and a reminder lead of 0 no longer
+turns it off — and enqueues one `gap_alert` per position `getOpenGaps()` reports short (D34's
 *Needs N more*), per coordinator, with `vntf_Context = {"positionId": …}` so the message names that
 position alone. Its dedupe key carries no date, so an open gap is alerted once however often the
 scan runs. A coordinator who already has the occurrence-wide `gap_alert` of a decline
@@ -1771,6 +1794,23 @@ scan runs. A coordinator who already has the occurrence-wide `gap_alert` of a de
 position. A position filled and later reopened by a decline is reported by `notifyGapOpened()`
 under its own dated key. The drain skips one of these rows when its position was filled after it
 was queued, and applies the usual email-off, do-not-email and no-address rules.
+
+**The daily batch (#10529, built).** So a ministry with many open positions does not send a
+coordinator a burst of separate emails, the scan first queues a daily batch. Once a day, at the
+first timer pass at or after `sVolunteerGapAlertBatchTime` (default `07:00`, church time, Admin →
+Ministry Settings), it claims the day in `config_cfg` (`sLastVolunteerGapAlertBatchDate`; the
+`VolunteerScheduleTopUp` claim, except that only a later day wins, so moving the time back cannot
+send a day twice) and queues every short position on the occurrences starting within the gap-alert
+lead + 24 hours, so a position that would come inside the lead before tomorrow's batch arrives in
+this one. A batch is claimed only for today and only at or after its time, so a coordinator never
+gets two on one day: a day with no pass after its batch time has no batch (its gaps still go out
+one by one, and the next day's batch covers the 24 hours after it). The
+forced **Run background jobs now** does not send a second batch. The single alert then runs within
+the lead alone, so between batches it reports what something changed: a new event, a decline, a
+raised count. Both write the same key, so each position is reported to a coordinator once, and the
+decline rule covers both. The drain groups a coordinator's batched rows into one
+`VolunteerGapAlertBatchEmail` (step 3), dropping the positions filled since; a batch left with
+nothing is never sent. A lead of 0 turns off the batch as well.
 
 **Punctuality.** Because the drain runs on page loads (F9), reminders are best-effort by default.
 Installations that need them on time add a real cron with **no code change**:
@@ -1953,7 +1993,8 @@ V2 models carry no `pre*` authorization hooks (A12/F21); Propel lifecycle hooks 
 | Keep / remove / move / delete the ministry's own events of a team's class on class change or team delete (D28) | ✓ | ✓ | scope | ✗ | ✗ |
 | Teacher-role write on a linked class outside V2 (Groups module, `/api/groups`, cart) while V2 is on | ✗ | ✗ | ✗ | ✗ | ✗ |
 | Student-role write on a linked class | Manage Groups, unchanged | | | | |
-| **Add/remove people in the pool Group** | ✓ | ✓ | scope | ✗ (ministry-level route) | ✗ |
+| **Add people to the pool Group** | ✓ | ✓ | scope | scope — their team's ministry, an active person, coordinators emailed (#10531) | ✗ |
+| **Remove people from the pool Group** | ✓ | ✓ | scope | ✗ (ministry-level route) | ✗ |
 | Edit / delete the pool Group itself | ✗ — it is the ministry's | ✗ | ✗ | ✗ | ✗ |
 | Set "Help wanted" on a ministry | ✓ | ✓ | scope | ✗ | ✗ |
 | Offer to help a ministry that is asking | ✓ | ✓ | ✓ | ✓ | **✓** |
@@ -2046,6 +2087,31 @@ exactly the silent bypass `GroupService::addUserToGroupInternal()` is.
 Coordinators hold no global `ManageGroups` flag (it grants edit rights over every group in the
 church), and V2 services write membership through the managed-write context, never through
 `addUserToGroupInternal()` (auth-free).
+
+**A team leader adds to the pool (#10531).** `POST /ministries/teams/{teamId}/pool/{personId}` is
+gated by `VolunteerTeamMiddleware`, and `VolunteerMinistryService::addPoolMemberForTeam()` asks
+`canManageTeam()` again: the leader of the team, or anyone above it. The ministry is the TEAM's, never a
+parameter, so a team leader reaches exactly the ministry their team belongs to. The person must be one
+the team-leader person search would offer (not deceased, not deactivated, not in a deactivated family:
+`404` otherwise). Optional `positionIds` must be positions of that team (`400` otherwise) and go through
+`VolunteerQualificationService::grantQualification()` with its own `canManagePosition()` check, all in
+one transaction with the pool write and the outbox rows. When the person was not in the pool already,
+each coordinator of the ministry — or, with none, each global volunteer manager, as for `help_offer` — gets
+a `pool_add` email; the actor, the added person and the team's other leaders get nothing. Removing is
+untouched: `DELETE …/pool/{personId}` and Remove Volunteer stay ministry-level.
+
+The older way in follows the same rules. A qualification grant joins the pool as a side effect (D19), and
+a team leader may grant on their own team's positions. So `grantQualification()` by someone who does not
+administer the ministry, for a person not yet in its pool, accepts only a person the search would offer
+(`404` otherwise) and sends the same `pool_add` email (`notifyPoolAddedByTeam()`). A coordinator's grant is
+unchanged.
+
+The person search, `GET /ministries/people/search?q=`, sits behind the module's role gate, which admits a
+team leader on any kind of login (the Member Portal's My Teams) and everyone with more authority. It
+returns `[{id, name, familyName}]` and nothing else — no email, phone, address, photo or age — needs two
+characters, matches every word against a first or last name with the ORM (LIKE wildcards escaped), and
+stops at 20. It does let a member who leads a team list names from the church directory, twenty at a
+time; that is the product owner's accepted trade-off (2026-10-11), kept narrow by the fields and the cap.
 
 **Deleting** a managed group is nobody's: `Group::preDelete()` throws for a group with a ministry
 id unless the managed-write context is open, so `VolunteerMinistryService::deleteMinistry()` is the
@@ -2258,9 +2324,11 @@ entries: one cheap id-and-name query per request, memoised in
   Ministries** (`fa-box-archive`, the Groups heading's per-type sub-groups are the precedent),
   which `MenuItem::isVisible()` drops whenever it would be empty. Same memoised query, split by
   the `active` flag it now carries;
-- **team leader on a STAFF account** — *Dashboard* alone. Leading a team is not administering
-  the ministry above it, and `/ministries/{id}` would refuse them. Their teams are
-  named on the dashboard's "My ministries and teams" card, which is their entry point;
+- **team leader on a STAFF account** — *Dashboard*, then one entry per active ministry they lead a
+  team in (`VolunteerAuthorizationService::getTeamLedMinistries()`, `fa-people-group`), each opening
+  `/ministries/{id}`'s **team-only view** (§5.4, #10530). Leading a team is not administering the
+  ministry above it, so these are not `getManageableMinistries()` entries. The dashboard's "My
+  ministries and teams" card links the same view;
 - **team leader on a SELF-SERVICE account** (D14) — no sidebar at all: that
   login never sees the admin shell. Their team pages are in the Member Portal (MP7), reached
   from its own navigation;
@@ -2283,7 +2351,7 @@ Sunday.
 | # | Screen | Route | Gate | Bundle |
 |---|---|---|---|---|
 | S1 | Coordinator dashboard — "what needs my attention" | `/ministries/dashboard` | Coordinator | `ministries-dashboard` |
-| S3 | Ministry detail — overview, volunteers, positions, schedules, occurrences, calendar, help wanted | `/ministries/{id}` | scope | `ministries-ministry` |
+| S3 | Ministry detail — overview, volunteers, positions, schedules, occurrences, calendar, help wanted | `/ministries/{id}` | scope | `ministries-ministry`; a team leader's team-only view loads `ministries-team-view` (#10530) |
 | S4 | Occurrence / staffing view | `/ministries/occurrences/{id}` | scope | `ministries-occurrence` |
 | S5 | My schedule (member) | `/portal/volunteer/schedule` | authenticated person | `portal-volunteer-schedule` |
 | S6 | Open opportunities (member) | `/portal/volunteer/opportunities` | authenticated person | `portal-volunteer-opportunities` |
@@ -2318,10 +2386,16 @@ Answers, in this order, top to bottom:
    columns `Date · Time · Ministry/Team · Schedule · Staffed · Status · Actions`. Staffed is the
    occurrence's rollup in D34's words (*"Needs 2 more"*, *"Covered · 1 more welcome"*, *"Full"*), green
    when met, amber when `pending` meets it, red when short, grey for an optional slot nobody took.
-5. **Notification-health card**: the failed-send count for every viewer, with a link to **Admin → Ministry Settings** for an administrator and an "ask an administrator" hint for anyone else. The settings themselves — `sVolunteerVersion`, `iVolunteerReminderLeadHours`, `iVolunteerSchedulingHorizonWeeks` and `iVolunteerDefaultEventTypeId` — the cron hint, the queued count, the last timer-job run, the last schedule top-up and the recent-failure list live on that admin page (`src/admin/routes/ministry-settings.php`, `src/admin/views/ministry-settings.php`; the `ministries-settings` bundle puts its times in ChurchCRM's locale, §5.10), which exists in every rollout state and is the one home of those settings (they are absent from `buildCategories()`). The page also explains V1, V2 and Both in prose.
+5. **Notification-health card**: the failed-send count for every viewer, with a link to **Admin → Ministry Settings** for an administrator and an "ask an administrator" hint for anyone else. The settings themselves — `sVolunteerVersion`, `iVolunteerReminderLeadHours`, `iVolunteerGapAlertLeadHours` (#10526), `sVolunteerGapAlertBatchTime` (#10529), `iVolunteerSchedulingHorizonWeeks` and `iVolunteerDefaultEventTypeId` — the cron hint, the queued count, the last timer-job run, the last schedule top-up and the recent-failure list live on that admin page (`src/admin/routes/ministry-settings.php`, `src/admin/views/ministry-settings.php`; the `ministries-settings` bundle puts its times in ChurchCRM's locale, §5.10), which exists in every rollout state and is the one home of those settings (they are absent from `buildCategories()`). The page also explains V1, V2 and Both in prose.
 
 The dashboard makes exactly **one** API call (`GET /api/ministries/dashboard`) and renders all five
 panels from it.
+
+The **My ministries and teams** card links every ministry to `/ministries/{id}` and every team to
+`/ministries/{ministryId}?team={teamId}` (#10530). A ministry the viewer reaches only through a team
+(`manageable: false`) carries a **Team leader** badge — it opens the team-only view (§5.4) — where it
+used to be plain text marked *View only*. The Upcoming table's *Open the ministry* row action is
+offered for every ministry on the card.
 
 ### 5.3 Creating a ministry
 
@@ -2450,10 +2524,22 @@ carries the **lifecycle buttons**:
   grid so the new rows appear with no ticks, which is the prompt to make the second
   statement.
 
-  Because the last column holds an action menu, the wrapper is the mandatory
-  `overflow-x: clip; overflow-y: visible` pair rather than `.table-responsive`: a
-  horizontal scroller would clip the dropdown (table-action-menu.md). A ministry with very
-  many positions therefore wraps its columns rather than scrolling them.
+  Position names and counts are unlimited, so the grid scrolls sideways in
+  `.volunteer-scroll-x`, and the open row menu is re-anchored with `position: fixed` so the
+  scroller cannot clip it (table-action-menu.md, "A menu inside a horizontally SCROLLING
+  table").
+
+  **The position headings stay in view (#10527).** With a long pool the heading row used
+  to scroll away. A sticky cell inside the scroller cannot follow the page — the scroller
+  is its scroll container — so `wireStickyHead()` (`components/ui.ts`) copies the row into
+  a strip just above the scroller. The strip sticks below the page's sticky top bar (the
+  admin topbar; the portal header scrolls away, so there it sticks at the top of the
+  window), follows the grid's sideways scroll both ways, and takes every column width from
+  the real row, which stays in the table, collapsed, for screen readers. The cells keep
+  Tabler's opaque heading background in light and dark mode. On a phone `_tabler-bridge.scss`
+  makes every `.card-body` scroll sideways, which would capture the strip too, so the card
+  around an active Volunteers tab is set back to `overflow-x: visible`. Admin ministry page
+  and portal team page alike.
 
 - **Schedules** lists each schedule with a **Which events** column saying, in words, where its
   dates come from (D22) — *"Church Service events titled {title}"*, *"Sunday School: {class}"*
@@ -2599,6 +2685,36 @@ carries the **lifecycle buttons**:
   button. A ministry also reaches Open Opportunities by having a recruiting position, so a
   coordinator who has named the roles they need does not need this tab as well.
 
+**The team-only view (#10530).** A team leader whose login has Manage My Ministries — and so passes
+`VolunteerAdminAreaRoleAuthMiddleware` — opens `/ministries/{id}` for a ministry in which they lead a
+team. The route renders the same view in team mode when `canManageMinistry()` is false and the
+viewer's `getManagedTeamIds()` holds at least one team of this ministry; with none it still sends them
+to access-denied. The page subtitle is *"Your teams: {names}"*, and the page has the
+portal team page's abilities and no more (Member Portal §5.5):
+
+- four tabs — **Positions · Volunteers · Schedules · Occurrences** — opening on Positions, each
+  showing only the teams of this ministry the viewer leads;
+- no Edit / Deactivate / Reactivate / Delete, no Overview (counts, Teams card, Ministry
+  Coordinators), no Calendar, no Help Wanted, no Add Volunteer / Add from Cart, no Remove Volunteer,
+  and none of their dialogs — they are left out of the markup, not hidden;
+- the Volunteers and Occurrences team selects only when the viewer leads more than one team here;
+  `?team={id}` puts that team first, so the grid and the dialogs start on it;
+- **Add Volunteer** (#10531), as on the portal team page: the person picker searches
+  `GET /ministries/people/search` and shows *"{name} ({family} family)"*, the dialog lists the grid
+  team's active positions to tick, and Add calls `POST /teams/{teamId}/pool/{personId}`. Its text says
+  the person joins the ministry's volunteers, its coordinators are emailed, and only a coordinator can
+  take someone out. There is no Add from Cart and no Remove Volunteer.
+
+The page's bundle is `ministries-team-view` (`webpack/ministries/team-view.ts`), a third adapter over
+the same components, and every call it makes is team-scoped: `GET /teams/{id}` (team and positions),
+`GET /teams/{id}/qualification-matrix`, `GET /teams/{id}/schedules`, and `GET /occurrences`, which
+scopes its rows to the caller's teams in the query (§4.4). Writes go to the position, qualification,
+schedule, staffed-event and occurrence routes, each of which authorizes its own record (§4.6). No API
+check was widened for it: the ministry-level routes — the ministry document, its ministry-wide lists,
+rename/deactivate/delete, teams, the pool, Remove Volunteer, events, scopes — still answer `403`. The
+occurrence page (S4) already authorized by `canManageOccurrence()`; its *Back to Occurrences* returns
+to the team view.
+
 **Teams live on the Overview card and the page has no pool panel.** The V2 pool endpoints and
 the Groups module own the roster, and qualifying somebody brings them into the pool —
 "Remove Volunteer" is the only place membership ends from this screen.
@@ -2640,6 +2756,12 @@ The single most important coordinator screen.
   `GET /occurrences/{id}/eligible?positionId=` — so the picker can only ever offer qualified people.
   In-pool members are listed first; an out-of-pool qualified person appears under a
   "Not in the pool" divider and assigning them requires the `allowOutsidePool` confirm (I3).
+  A **Record they accepted** box (#10528), off each time the dialog opens, is for somebody
+  who already said yes in person or by phone: the assignment is created `accepted` through the
+  coordinator channel, recorded as answered by the coordinator on the volunteer's behalf as an
+  accepted default is (D32), with no "please respond" email; the volunteer gets the short
+  `signup_confirm` "you're on the schedule" message, and reminders go out as usual. The portal's
+  team occurrence page has the same dialog.
 - **Double-duty warning (I7, D16)**: a qualified person who already holds *another* position on
   this occurrence still appears in the picker — never filtered out, never disabled — annotated with
   the position they already hold. Choosing them renders a non-blocking inline caution ("Already
@@ -2841,6 +2963,11 @@ the rollout spec is under `.../admin/`), `admin.volunteer-v2.<area>.spec.js` (`u
 
 `cypress/data/seed.sql` carries no volunteer rows. **V2 specs create everything they need through the API and clean
 up after themselves.**
+
+V2 sample data lives in the demo import instead (#10354): `src/admin/demo/volunteers.json` builds
+Worship, Hospitality and Children's Ministry through the services, with the events option, and
+records every message it would queue as `skipped` (`README-events.md`).
+`cypress/e2e/new-system/02-demo-import.spec.js` covers it.
 
 Reusable seed objects (verified in `seed.sql`):
 
@@ -3211,14 +3338,17 @@ The items are `ConfigItem`s in `SystemConfig::buildConfigs()`; `getVolunteerVers
 |---|---|---|---|
 | `sVolunteerVersion` | `choice` | `v1` | The rollout state. `s` = string, matching the `sTimeZone`/`sLogLevel`/`sTelemetryLevel` convention. The default stays `v1`: changing a default changes behaviour on every install that never overrode it. |
 | `iVolunteerReminderLeadHours` | `number` | `48` | D11: system-level, administrator-adjustable, **not** per volunteer. Read with `SystemConfig::getIntValue()`. |
+| `iVolunteerGapAlertLeadHours` | `number` | `48` | #10526: how far ahead the unfilled-position alert (§3.6) looks. Its own setting because coordinators want warning of an open slot earlier than a volunteer needs a reminder. 0 turns gap alerts off without touching reminders; the decline's `gap_alert` (`notifyGapOpened()`) has no lead and is unaffected. Read with `SystemConfig::getIntValue()`. |
 | `iVolunteerSchedulingHorizonWeeks` | `number` | `8` | D31: how many weeks ahead every schedule is generated, church-wide. Read through `VolunteerScheduleService::horizonWeeks()`: the config API refuses a blank or non-number (D32), but the row can be written other ways, so a blank or non-numeric value reads as 8 and a number is held within 1–52. |
 | `iVolunteerDefaultEventTypeId` | `number` | `''` | D31: the event type a ministry's new event starts with. Unset, inactive or deleted falls back to the active type named "Other", else none (`VolunteerEventService::defaultEventTypeId()`). |
+| `sVolunteerGapAlertBatchTime` | `text` | `07:00` | #10529: the time of day (`HH:MM`, `sTimeZone`) of the daily unfilled-position batch (§3.6). A time input on Ministry Settings (the settings panel's `time` type); a value that is not a time of day reads as 07:00 (`VolunteerNotificationService::gapAlertBatchTime()`). |
+| `sLastVolunteerGapAlertBatchDate` | `text` | `''` | #10529, internal: the batch day (`Y-m-d`) last queued — its once-a-day claim; only a later day can take it. Not on any settings page. |
 | `sLastVolunteerTopUpRunDate` | `text` | `''` | D31, internal: the day (`Y-m-d`, in `sTimeZone`) the daily top-up last ran — its once-a-day claim. Not on any settings page. |
 | `sLastVolunteerTopUpResult` | `text` | `''` | D31, internal: JSON `{ranAt, schedules, created, failed, assigned, skipped, unqualified}` of the last top-up (the last three D32's default assignments), which Ministry Settings shows. |
 
 `sVolunteerVersion` is the only rollout flag; code that wants a boolean calls `User::isVolunteerV2Enabled()`.
 
-The four user-facing settings are surfaced through `window.CRM.settingsPanel` (U8) on **Admin →
+The six user-facing settings are surfaced through `window.CRM.settingsPanel` (U8) on **Admin →
 Ministry Settings** (`src/admin/views/ministry-settings.php`), backed by
 `POST /admin/api/system/config/{name}`; the default event type is a choice of the active event
 types, its empty entry saying what it falls back to. None is in a `buildCategories()` category, so that page — which exists in every rollout state — is their one home. The panel
@@ -3234,7 +3364,7 @@ qualification revoked"* apart from the rest.
 
 ## Appendix C — Email templates
 
-Eight `BaseEmail` subclasses (through `BaseVolunteerEmail`) under `src/ChurchCRM/Volunteer/Email/`. Every one of them reuses the
+Nine `BaseEmail` subclasses (through `BaseVolunteerEmail`) under `src/ChurchCRM/Volunteer/Email/`. Every one of them reuses the
 single Twig template `src/templates/email/BaseEmail.html.twig` and the branding tokens from
 `BaseEmail::getCommonTokens()`; `getTemplateName()` is not overridden.
 
@@ -3244,10 +3374,12 @@ single Twig template `src/templates/email/BaseEmail.html.twig` and the branding 
 | `VolunteerReminderEmail` | outbox type `reminder` | the volunteer | responsible coordinator | `/portal/volunteer/schedule` | *View my schedule* |
 | `VolunteerDeclineAlertEmail` | outbox type `decline_alert` | coordinators in scope | the volunteer who declined | `/ministries/occurrences/{id}` | *Fill this gap* |
 | `VolunteerGapAlertEmail` | outbox type `gap_alert` | coordinators in scope | none (no single volunteer) | `/ministries/occurrences/{id}` | *Fill this gap* |
-| `VolunteerSignupConfirmEmail` | outbox type `signup_confirm` | the volunteer | responsible coordinator | `/portal/volunteer/schedule` | *View my schedule* |
+| `VolunteerGapAlertBatchEmail` | a recipient's batched `gap_alert` rows (#10529), one message a day | coordinators in scope | none | `/ministries/dashboard` (a team leader without Manage My Ministries: `/portal/teams`) | *Open the Ministry Dashboard* / *My Teams* |
+| `VolunteerSignupConfirmEmail` | outbox type `signup_confirm`: self sign-up, or an assignment recorded as accepted in the Assign dialog (#10528), whose `recordedBy` context switches the wording to *"{coordinator} recorded that you will serve. You are on the schedule."* | the volunteer | responsible coordinator | `/portal/volunteer/schedule` | *View my schedule* |
 | `VolunteerSwapProposedEmail` | outbox type `swap_proposed` | coordinators in scope | the proposing volunteer | `/ministries/dashboard` | *Review this request* |
 | `VolunteerSwapResolvedEmail` | outbox type `swap_resolved` | proposer **and** substitute | responsible coordinator | `/portal/volunteer/schedule` | *View my schedule* |
 | `VolunteerHelpOfferEmail` | outbox type `help_offer` (D19, *I'd like to help*) | the ministry's coordinators, one message each per day | the volunteer who offered | `/ministries/{id}#qualifications` | *Qualify them for a position* |
+| `VolunteerPoolAddEmail` | outbox type `pool_add` (#10531): a team leader added someone to the pool — *"{Leader} added {Person} to the {Ministry} volunteers"*, the body naming the leader's team and saying only a coordinator can take someone out | the ministry's coordinators (else the global volunteer managers), never the actor, the added person or the team's other leaders | the team leader who added them | `/ministries/{id}` | *Open the ministry* |
 
 The `Reply-To` column is set by the **drain** (§3.6), never by the subclass constructor: the drain
 resolves the person, then calls `setReplyTo($person->getEmail(), $person->getFullName())` on the
@@ -3266,7 +3398,10 @@ subclass in the tree and gain no email-routing logic of their own.
   `BaseEmail::getCommonTokens()`).
 
 Gap and decline alerts additionally carry the number still needed and the list of positions short;
-the unfilled-position alert's list is its one position.
+the unfilled-position alert's list is its one position. The daily batch (subject *Volunteer positions
+to fill in the coming days*) gives the total still needed, then one paragraph per occurrence in date
+order: when, the ministry and team, each position with *{position}: needs {n} more*, and the
+occurrence's link (the portal's copy of the date for a team leader without Manage My Ministries).
 Swap messages carry both names and the decision.
 
 **Constraints:**
@@ -3300,7 +3435,7 @@ Deliberately left open. Each has a working default so implementation is not bloc
 | D-4 | **Does V2 need tokenized accept/decline links for volunteers without logins?** D14 says no for the first release; the `tokens` table + `/external/` would support it (`Token.php`, one new `switch` case). The `vrsp_Channel` enum already reserves `email_token`. | Out of scope; the extension point exists. |
 | D-5 | **Should V2 propose introducing PHPUnit?** Authorization and idempotency logic can only be proven through E2E today (F12). | No — V2 proves everything through Cypress API specs; raising PHPUnit is a project-level decision. |
 | D-6 | **Volunteer check-in / hours.** #9701 lists "Serve" as the last workflow step but no child issue covers hours. `event_attend` + `Hooks::EVENT_CHECKIN` would carry it for linked occurrences; position attribution has no home there. | Out of scope (§0.6); the read-only attendance join is in place for when it is picked up. |
-| D-7 | **Where should this document live long-term?** `docs/` contains only `openapi/`; `.agents/skills/churchcrm/` is where architectural knowledge lives. | `.agents/skills/churchcrm/volunteer-v2-design.md`, indexed from `SKILL.md`. |
+| D-7 | **Where should this document live long-term?** The full design is a reference record, so it lives in `docs/design/`; the durable rules an agent needs on every volunteer change live on the card `.agents/skills/churchcrm/volunteer-v2.md`. | `docs/design/volunteer-v2.md`, summarized by the `volunteer-v2.md` card. |
 | D-8 | **Should a `Hooks::PERSON_VIEW_TABS` filter be added** so V2 (and plugins) can contribute a person-view tab without editing `person-view.php`? | Not now — V2 edits the view directly (F15), the established pattern. A candidate follow-up issue if the maintainer wants the extension point. |
 
 ---

@@ -5,7 +5,7 @@
  * end-to-end run.
  *
  * Epic #8977, issue #9869, design `.agents/skills/churchcrm/member-portal-design.md`
- * §5.5 and P17; `volunteer-v2-design.md` §4.4, §4.6 and the D14 revision.
+ * §5.5 and P17; `docs/design/volunteer-v2.md` §4.4, §4.6 and the D14 revision.
  *
  * `member.portal-teams.spec.js` (MP7) proves each control on the team page works. This
  * run proves the **claim the epic makes about people**: that a church can hand the
@@ -332,7 +332,7 @@ describe("Member Portal — #9869 scenario 2, \"a team leader on a member login\
                 "#volunteer-teams-card",
                 "#volunteer-scope-panel",
                 "#volunteer-help-wanted",
-                "#qualification-add-person",
+                "#qualification-cart-btn",
                 "#qualification-team-filter",
                 "#occurrence-team-filter",
                 "#team-add-btn",
@@ -386,11 +386,13 @@ describe("Member Portal — #9869 scenario 2, \"a team leader on a member login\
             cy.visit(`${TEAMS_URL}/${teamLed}`);
 
             cy.get("#nav-item-volunteers").click();
+            cy.intercept("POST", "**/positions/*/qualifications").as("grantQualification");
             cy.get("#volunteerQualificationsTable tbody .volunteer-qual-toggle", {
                 timeout: 15000,
             })
                 .first()
                 .click();
+            cy.wait("@grantQualification").its("response.statusCode").should("be.oneOf", [200, 201]);
 
             // The box is disabled while the grant is saved and enabled again once the
             // server confirms it, so wait for that before reading the database.

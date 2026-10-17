@@ -133,14 +133,14 @@ describe("Zero-Permission User (EditSelf=0, all flags 0)", () => {
             cy.url().should("include", "/v2/access-denied");
         });
 
-        // EmailMailto=0 — /v2/email and /v2/text are behind EmailRoleAuthMiddleware.
+        // EmailMailto=0 — /people/email and /people/text are behind EmailRoleAuthMiddleware.
         it("Email dashboard is denied", () => {
-            cy.visit("v2/email/dashboard", { failOnStatusCode: false });
+            cy.visit("people/email", { failOnStatusCode: false });
             cy.url().should("include", "/v2/access-denied");
         });
 
         it("Text dashboard is denied", () => {
-            cy.visit("v2/text/dashboard", { failOnStatusCode: false });
+            cy.visit("people/text", { failOnStatusCode: false });
             cy.url().should("include", "/v2/access-denied");
         });
     });

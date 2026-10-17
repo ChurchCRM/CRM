@@ -9377,10 +9377,6 @@ msgid "Manage donations, pledges, and financial records"
 msgstr "Bestuur donasies, verbintenisse, en finansiële rekords"
 
 #: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "Bestuur e-pos-gereedskap en SMTP-konfigurasie"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Bestuur families, mense, en demografiese inligting"
 
@@ -10356,10 +10352,6 @@ msgid "Distance Unit"
 msgstr "Afstand Eenheid"
 
 #: 
-msgid "Email Dashboard"
-msgstr "E-pos Dashboard"
-
-#: 
 msgid "Email Integrations"
 msgstr "E-pos Integrasies"
 
@@ -10374,10 +10366,6 @@ msgstr "E-pos skakels in groep en menseuitsigte"
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "E-poslys word met Mailchimp gesinkroniseer."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "Skakel e-pos in die instellingspaneel hieronder in, maak dan u SMTP bediener op."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10519,10 +10507,6 @@ msgstr "Stelsel Kalenders"
 #: 
 msgid "System language for the church."
 msgstr "Stelsel taal vir die kerk."
-
-#: 
-msgid "Text Dashboard"
-msgstr "Teks Dashboard"
 
 #: 
 msgid "Text Settings"
@@ -12442,10 +12426,6 @@ msgstr "E-pos is gedeaktiveer"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "E-pos is gedeaktiveer. Stel e-pos op voor wagwoordterugstelling, of gebruik Verander wagwoord."
-
-#: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "E-pos is gedeaktiveer. Aktiveer dit in die E-pos-paneelbord-instellings voor toetsing."
 
 #: 
 msgid "Enter one of your backup recovery codes"

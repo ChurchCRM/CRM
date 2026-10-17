@@ -9404,10 +9404,6 @@ msgid "Manage donations, pledges, and financial records"
 msgstr "إدارة المساهمات والتعهدات والسجلات المالية"
 
 #: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "إدارة أدوات البريد الإلكتروني وتكوين SMTP"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "إدارة العائلات والأشخاص والمعلومات الديموغرافية"
 
@@ -10383,10 +10379,6 @@ msgid "Distance Unit"
 msgstr "وحدة المسافة"
 
 #: 
-msgid "Email Dashboard"
-msgstr "لوحة معلومات البريد الإلكتروني"
-
-#: 
 msgid "Email Integrations"
 msgstr "تكاملات البريد الإلكتروني"
 
@@ -10401,10 +10393,6 @@ msgstr "روابط البريد الإلكتروني في طرق عرض المج
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "تتم مزامنة قوائم البريد الإلكتروني مع Mailchimp."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "قم بتمكين البريد الإلكتروني في لوحة الإعدادات أدناه، ثم قم بتكوين خادم SMTP الخاص بك."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10546,10 +10534,6 @@ msgstr "تقويمات النظام"
 #: 
 msgid "System language for the church."
 msgstr "لغة النظام للكنيسة."
-
-#: 
-msgid "Text Dashboard"
-msgstr "لوحة التحكم النصية"
 
 #: 
 msgid "Text Settings"
@@ -12473,10 +12457,6 @@ msgstr "البريد الإلكتروني معطّل"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "البريد الإلكتروني معطّل. قم بتكوين البريد الإلكتروني قبل إعادة تعيين كلمات المرور، أو استخدم تغيير كلمة المرور."
-
-#: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "البريد الإلكتروني معطّل. قم بتفعيله في إعدادات لوحة البريد الإلكتروني قبل الاختبار."
 
 #: 
 msgid "Enter one of your backup recovery codes"

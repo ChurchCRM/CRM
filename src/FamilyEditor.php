@@ -6,6 +6,7 @@ require_once __DIR__ . '/Include/PageInit.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\data\Countries;
+use ChurchCRM\data\States;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Family;
@@ -281,13 +282,13 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             ->setAddress1($sAddress1)
             ->setAddress2($sAddress2)
             ->setCity($sCity)
-            ->setState($sState)
+            ->setState(States::keepStoredIfSame($sCountry, $family->getState(), $sState))
             ->setZip($sZip)
             ->setCountry(Countries::keepStoredIfSame($family->getCountry(), $sCountry))
             ->setSecondAddress1($sSecondAddress1)
             ->setSecondAddress2($sSecondAddress2)
             ->setSecondCity($sSecondCity)
-            ->setSecondState($sSecondState)
+            ->setSecondState(States::keepStoredIfSame($sSecondCountry, $family->getSecondState(), $sSecondState))
             ->setSecondZip($sSecondZip)
             ->setSecondCountry(Countries::keepStoredIfSame($family->getSecondCountry(), $sSecondCountry))
             ->setSecondIsMailing($bSecondIsMailing)

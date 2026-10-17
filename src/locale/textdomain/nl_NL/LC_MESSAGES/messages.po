@@ -9346,10 +9346,6 @@ msgid "Manage donations, pledges, and financial records"
 msgstr "Giften, toezeggingen en financiële dossiers beheren"
 
 #: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "E-mailhulpmiddelen en SMTP-configuratie beheren"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Gezinnen, personen en demografische informatie beheren"
 
@@ -10325,10 +10321,6 @@ msgid "Distance Unit"
 msgstr "Afstandseenheid"
 
 #: 
-msgid "Email Dashboard"
-msgstr "E-maildashboard"
-
-#: 
 msgid "Email Integrations"
 msgstr "E-mailintegraties"
 
@@ -10343,10 +10335,6 @@ msgstr "E-mailkoppelingen in groeps- en persoonweergaven"
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "E-maillijsten zijn gesynchroniseerd met Mailchimp."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "Schakel e-mail in het onderstaande instellingenpaneel in en configureer uw SMTP-server."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10488,10 +10476,6 @@ msgstr "Systeemkalenders"
 #: 
 msgid "System language for the church."
 msgstr "Systeemtaal voor de kerk."
-
-#: 
-msgid "Text Dashboard"
-msgstr "Tekstdashboard"
 
 #: 
 msgid "Text Settings"
@@ -12411,10 +12395,6 @@ msgstr "E-mail is uitgeschakeld"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "E-mail is uitgeschakeld. Configureer e-mail voordat u wachtwoorden opnieuw instelt, of gebruik Wachtwoord wijzigen."
-
-#: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "E-mail is uitgeschakeld. Schakel het in via de instellingen van het e-maildashboard voordat u test."
 
 #: 
 msgid "Enter one of your backup recovery codes"

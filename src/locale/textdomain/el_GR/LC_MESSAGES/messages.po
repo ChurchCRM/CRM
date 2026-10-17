@@ -9377,10 +9377,6 @@ msgid "Manage donations, pledges, and financial records"
 msgstr "Διαχείριση προσφορών, οικονομικών δεσμεύσεων και οικονομικών εγγραφών"
 
 #: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "Διαχείριση εργαλείων email και ρυθμίσεων SMTP"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Διαχείριση οικογενειών, ατόμων και δημογραφικών στοιχείων"
 
@@ -10356,10 +10352,6 @@ msgid "Distance Unit"
 msgstr "Μονάδα απόστασης"
 
 #: 
-msgid "Email Dashboard"
-msgstr "Πίνακας εργαλείων ηλεκτρονικής αλληλογραφίας"
-
-#: 
 msgid "Email Integrations"
 msgstr "Ενσωματώσεις ηλεκτρονικής αλληλογραφίας"
 
@@ -10374,10 +10366,6 @@ msgstr "Σύνδεσμοι ηλεκτρονικής αλληλογραφίας �
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "Οι λίστες ηλεκτρονικής αλληλογραφίας συγχρονίζονται με το Mailchimp."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "Ενεργοποιήστε την ηλεκτρονική αλληλογραφία στο παρακάτω πάνελ ρυθμίσεων, στη συνέχεια διαμορφώστε τον διακομιστή SMTP σας."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10519,10 +10507,6 @@ msgstr "Ημερολόγια συστήματος"
 #: 
 msgid "System language for the church."
 msgstr "Γλώσσα συστήματος για την εκκλησία."
-
-#: 
-msgid "Text Dashboard"
-msgstr "Ταμπλό κειμένου"
 
 #: 
 msgid "Text Settings"
@@ -12442,10 +12426,6 @@ msgstr "Το email είναι απενεργοποιημένο"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "Το email είναι απενεργοποιημένο. Ρυθμίστε το email πριν επαναφέρετε κωδικούς πρόσβασης ή χρησιμοποιήστε Αλλαγή κωδικού πρόσβασης."
-
-#: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "Το email είναι απενεργοποιημένο. Ενεργοποιήστε το στις ρυθμίσεις του πίνακα ελέγχου email πριν από τη δοκιμή."
 
 #: 
 msgid "Enter one of your backup recovery codes"

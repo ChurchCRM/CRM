@@ -142,6 +142,10 @@ interface CRMPersonActionMenuOptions {
   inCart?: boolean;
   /** When set, adds a "View Family" item after Edit. */
   familyId?: number | null;
+  /** Page-specific items added after Cart. */
+  extraItems?: CRMActionMenuItem[];
+  /** Leave out Delete, for lists that manage a relationship rather than the person. */
+  omitDelete?: boolean;
 }
 
 interface CRMFamilyActionMenuOptions {
@@ -213,6 +217,14 @@ interface CRMPortalTeamConfig {
   ministryId: number;
 }
 
+/** The ministry page's team-only view: the teams of this ministry the viewer leads. */
+interface CRMVolunteerTeamViewConfig {
+  ministryId: number;
+  ministryName: string;
+  teams: Array<{ id: number; name: string }>;
+  sundaySchool: boolean;
+}
+
 /**
  * The slice of `window.CRM.groups` (src/skin/js/CRMJSOM.js) that V2 calls.
  *
@@ -282,6 +294,8 @@ interface CRMNamespace {
   volunteerOccurrence?: CRMVolunteerOccurrenceConfig;
   /** Set by the Member Portal's teams/team.html.twig (issue #9868). */
   portalTeam?: CRMPortalTeamConfig;
+  /** Set by src/ministries/views/ministry-view.php for a team leader. */
+  volunteerTeamView?: CRMVolunteerTeamViewConfig;
   /** The Groups helpers, including the shared group picker (G4). */
   groups?: CRMGroupsNamespace;
   bEnableGravatarPhotos?: boolean;
@@ -326,7 +340,7 @@ interface CRMNamespace {
     vonageEnabled?: boolean;
     /** Church default "to" address (sToEmailAddress); "" when unset or user lacks email permission. */
     defaultEmailToAddress?: string;
-    /** Recent Sends on the Email Dashboard (administrators); "" for everyone else. */
+    /** Recent Sends on Email Settings (administrators); "" for everyone else. */
     emailHistoryURL?: string;
     [key: string]: unknown;
   };

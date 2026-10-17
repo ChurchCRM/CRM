@@ -9362,10 +9362,6 @@ msgid "Manage donations, pledges, and financial records"
 msgstr "헌금, 서약 및 재정 기록 관리"
 
 #: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "이메일 도구 및 SMTP 구성 관리"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "가족, 사람 및 인구통계 정보 관리"
 
@@ -10341,10 +10337,6 @@ msgid "Distance Unit"
 msgstr "거리 단위"
 
 #: 
-msgid "Email Dashboard"
-msgstr "이메일 대시보드"
-
-#: 
 msgid "Email Integrations"
 msgstr "이메일 통합"
 
@@ -10359,10 +10351,6 @@ msgstr "그룹 및 사람 보기의 이메일 링크"
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "이메일 목록이 Mailchimp과 동기화됩니다."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "아래 설정 패널에서 이메일을 활성화한 다음 SMTP 서버를 구성합니다."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10504,10 +10492,6 @@ msgstr "시스템 캘린더"
 #: 
 msgid "System language for the church."
 msgstr "교회의 시스템 언어."
-
-#: 
-msgid "Text Dashboard"
-msgstr "텍스트 대시보드"
 
 #: 
 msgid "Text Settings"
@@ -12426,10 +12410,6 @@ msgstr "이메일이 비활성화되어 있습니다"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "이메일이 비활성화되어 있습니다. 비밀번호를 재설정하려면 먼저 이메일을 설정하거나 비밀번호 변경을 사용하세요."
-
-#: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "이메일이 비활성화되어 있습니다. 테스트하기 전에 이메일 대시보드 설정에서 활성화하세요."
 
 #: 
 msgid "Enter one of your backup recovery codes"

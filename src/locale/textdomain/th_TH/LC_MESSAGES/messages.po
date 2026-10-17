@@ -9345,10 +9345,6 @@ msgid "Manage donations, pledges, and financial records"
 msgstr "จัดการการถวาย คำปฏิญาณถวาย และบันทึกทางการเงิน"
 
 #: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "จัดการเครื่องมืออีเมลและการกำหนดค่า SMTP"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "จัดการข้อมูลครอบครัว บุคคล และข้อมูลประชากร"
 
@@ -10324,10 +10320,6 @@ msgid "Distance Unit"
 msgstr "หน่วยระยะทาง"
 
 #: 
-msgid "Email Dashboard"
-msgstr "แดชบอร์ดอีเมล"
-
-#: 
 msgid "Email Integrations"
 msgstr "การรวมอีเมล"
 
@@ -10342,10 +10334,6 @@ msgstr "ลิงก์อีเมลในมุมมองกลุ่มแ
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "รายการอีเมลซิงค์กับ Mailchimp"
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "เปิดใช้งานอีเมลในแผงการตั้งค่าด้านล่าง จากนั้นกำหนดค่าเซิร์ฟเวอร์ SMTP ของคุณ"
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10487,10 +10475,6 @@ msgstr "ปฏิทินระบบ"
 #: 
 msgid "System language for the church."
 msgstr "ภาษาระบบสำหรับโบสถ์"
-
-#: 
-msgid "Text Dashboard"
-msgstr "แดชบอร์ดข้อความ"
 
 #: 
 msgid "Text Settings"
@@ -12409,10 +12393,6 @@ msgstr "อีเมลถูกปิดใช้งาน"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "อีเมลถูกปิดใช้งาน โปรดตั้งค่าอีเมลก่อนรีเซ็ตรหัสผ่าน หรือใช้เปลี่ยนรหัสผ่าน"
-
-#: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "อีเมลถูกปิดใช้งาน โปรดเปิดใช้งานในการตั้งค่าแดชบอร์ดอีเมลก่อนทดสอบ"
 
 #: 
 msgid "Enter one of your backup recovery codes"

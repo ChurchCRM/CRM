@@ -42,7 +42,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <?= gettext('If the message doesn\'t arrive within a few minutes, check the spam/junk folder and the SMTP debug log below.') ?>
                     </p>
                 </div>
-                <a href="<?= SystemURLs::getRootPath() ?>/admin/system/debug/email" class="btn btn-outline-primary ms-3">
+                <a href="<?= SystemURLs::getRootPath() ?>/admin/email/debug" class="btn btn-outline-primary ms-3">
                     <i class="fa fa-rotate me-1"></i><?= gettext('Send Again') ?>
                 </a>
             </div>

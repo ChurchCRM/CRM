@@ -9353,10 +9353,6 @@ msgid "Manage donations, pledges, and financial records"
 msgstr "Gestionar donaciones, compromisos de donación y registros financieros"
 
 #: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "Gestionar herramientas de correo electrónico y configuración SMTP"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Gestionar familias, personas e información demográfica"
 
@@ -10332,10 +10328,6 @@ msgid "Distance Unit"
 msgstr "Unidad de distancia"
 
 #: 
-msgid "Email Dashboard"
-msgstr "Panel de correo electrónico"
-
-#: 
 msgid "Email Integrations"
 msgstr "Integraciones de correo electrónico"
 
@@ -10350,10 +10342,6 @@ msgstr "Enlaces de correo electrónico en vistas de grupo y personas"
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "Las listas de correo electrónico se sincronizan con Mailchimp."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "Habilita el correo electrónico en el panel de configuración inferior y luego configura tu servidor SMTP."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10495,10 +10483,6 @@ msgstr "Calendarios del Sistema"
 #: 
 msgid "System language for the church."
 msgstr "Idioma del sistema para la iglesia."
-
-#: 
-msgid "Text Dashboard"
-msgstr "Panel de Mensajes"
 
 #: 
 msgid "Text Settings"
@@ -12419,10 +12403,6 @@ msgstr "El correo electrónico está desactivado"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "El correo electrónico está desactivado. Configure el correo antes de restablecer contraseñas o use Cambiar contraseña."
-
-#: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "El correo electrónico está desactivado. Actívelo en la configuración del Panel de correo antes de realizar pruebas."
 
 #: 
 msgid "Enter one of your backup recovery codes"

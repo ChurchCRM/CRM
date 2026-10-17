@@ -9362,10 +9362,6 @@ msgid "Manage donations, pledges, and financial records"
 msgstr "Kelola persembahan, janji persembahan, dan catatan keuangan"
 
 #: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "Kelola alat email dan konfigurasi SMTP"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Kelola keluarga, orang, dan informasi demografi"
 
@@ -10341,10 +10337,6 @@ msgid "Distance Unit"
 msgstr "Unit Jarak"
 
 #: 
-msgid "Email Dashboard"
-msgstr "Dashboard Email"
-
-#: 
 msgid "Email Integrations"
 msgstr "Integrasi Email"
 
@@ -10359,10 +10351,6 @@ msgstr "Tautan email dalam tampilan grup dan orang"
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "Daftar email disinkronkan dengan Mailchimp."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "Aktifkan email di panel pengaturan di bawah, kemudian konfigurasikan server SMTP Anda."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10504,10 +10492,6 @@ msgstr "Kalender Sistem"
 #: 
 msgid "System language for the church."
 msgstr "Bahasa sistem untuk gereja."
-
-#: 
-msgid "Text Dashboard"
-msgstr "Dasbor Teks"
 
 #: 
 msgid "Text Settings"
@@ -12426,10 +12410,6 @@ msgstr "Email dinonaktifkan"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "Email dinonaktifkan. Konfigurasikan email sebelum mengatur ulang kata sandi, atau gunakan Ubah Kata Sandi."
-
-#: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "Email dinonaktifkan. Aktifkan di pengaturan Dasbor Email sebelum pengujian."
 
 #: 
 msgid "Enter one of your backup recovery codes"

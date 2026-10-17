@@ -298,7 +298,7 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
 
                         <!-- 3. Configure Email -->
                         <div class="col-md-6 col-lg-4 mb-3">
-                            <a href="<?= SystemURLs::getRootPath() ?>/v2/email/dashboard?settings=open" class="quick-start-card">
+                            <a href="<?= SystemURLs::getRootPath() ?>/admin/email" class="quick-start-card">
                                 <div class="quick-start-icon bg-info">
                                     <i class="fa-solid fa-envelope"></i>
                                 </div>

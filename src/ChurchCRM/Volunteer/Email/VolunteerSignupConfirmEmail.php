@@ -3,23 +3,41 @@
 namespace ChurchCRM\Volunteer\Email;
 
 /**
- * Outbox type `signup_confirm` — the volunteer signed themselves up (design
- * Appendix C, UC1's self-service half).
- *
- * Enqueued by `selfSignup()`, which #9712 exposes; the mail exists here so that
- * issue adds a caller rather than a message type.
+ * Outbox type `signup_confirm`: the volunteer is on the schedule and has already said yes.
+ * Sent after a self-signup, or after a coordinator recorded the acceptance, in which case it
+ * names who did.
  */
 class VolunteerSignupConfirmEmail extends BaseVolunteerEmail
 {
+    private ?string $recordedByName;
+
+    /**
+     * @param string[] $toAddresses
+     */
+    public function __construct(
+        array $toAddresses,
+        string $recipientName,
+        VolunteerEmailContext $context,
+        ?string $recordedByName = null
+    ) {
+        $this->recordedByName = $recordedByName;
+
+        parent::__construct($toAddresses, $recipientName, $context);
+    }
+
     protected function getSubSubject(): string
     {
-        return gettext('Thank you for signing up to serve');
+        return $this->recordedByName === null
+            ? gettext('Thank you for signing up to serve')
+            : gettext('You are on the schedule');
     }
 
     protected function buildMessageBody(): string
     {
         return $this->composeBody(
-            gettext('Thank you for signing up to serve. You are on the schedule.'),
+            $this->recordedByName === null
+                ? gettext('Thank you for signing up to serve. You are on the schedule.')
+                : sprintf(gettext('%s recorded that you will serve. You are on the schedule.'), $this->recordedByName),
             gettext('You can review or change this on your volunteer schedule.')
         );
     }

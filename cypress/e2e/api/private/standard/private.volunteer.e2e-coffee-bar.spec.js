@@ -3,7 +3,7 @@
 /**
  * Volunteer v2 — #9714 scenario 1, "Coffee Bar", as ONE end-to-end run.
  *
- * Epic #9701, issue #9714, design `.agents/skills/churchcrm/volunteer-v2-design.md`
+ * Epic #9701, issue #9714, design `docs/design/volunteer-v2.md`
  * §0.4 UC1, §2.17 (the worked example this fixture is), §6.5 row 1.
  *
  * The per-issue specs each prove one seam. This spec proves the *seams hold

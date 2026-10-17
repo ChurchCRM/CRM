@@ -485,7 +485,7 @@ function listVolunteerEligiblePeople(Request $request, Response $response): Resp
  *     path="/ministries/occurrences/{occurrenceId}/assignments",
  *     operationId="createVolunteerAssignment",
  *     summary="Assign a qualified person to a position on this occurrence",
- *     description="Enforces design section 2.11.2: I4 the position belongs to this schedule's ministry (400), I5 the occurrence is neither cancelled nor past (409), I2 an active qualification (403), I3 membership of the ministry's volunteer pool Group unless allowOutsidePool is passed (409) - NOT applied to self sign-up, which tests qualification only (design D19), I1 one row per person per position per occurrence (409). I8 re-uses a declined or cancelled row rather than inserting a second one. I7/D16 - a person already holding ANOTHER position on this occurrence - is allowed unconditionally and returns 201.",
+ *     description="Enforces design section 2.11.2: I4 the position belongs to this schedule's ministry (400), I5 the occurrence is neither cancelled nor past (409), I2 an active qualification (403), I3 membership of the ministry's volunteer pool Group unless allowOutsidePool is passed (409) - NOT applied to self sign-up, which tests qualification only (design D19), I1 one row per person per position per occurrence (409). I8 re-uses a declined or cancelled row rather than inserting a second one. I7/D16 - a person already holding ANOTHER position on this occurrence - is allowed unconditionally and returns 201. accepted=true (Record they accepted) creates the assignment accepted, with a response row on channel 'coordinator' recorded by the caller, the way an accepted default is (D32); instead of the please-respond 'assignment' message the volunteer gets a 'signup_confirm' confirmation. Reminders are scheduled as for any live assignment. Only a caller who may manage this occurrence can assign at all, so the flag needs no check of its own.",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="occurrenceId", in="path", required=true, @OA\Schema(type="integer")),
@@ -495,6 +495,7 @@ function listVolunteerEligiblePeople(Request $request, Response $response): Resp
  *         @OA\Property(property="personId", type="integer"),
  *         @OA\Property(property="requirementId", type="integer", nullable=true),
  *         @OA\Property(property="allowOutsidePool", type="boolean"),
+ *         @OA\Property(property="accepted", type="boolean", default=false, description="Record that the volunteer already said yes"),
  *         @OA\Property(property="notes", type="string", nullable=true)
  *     )),
  *     @OA\Response(response=400, description="The position does not belong to this occurrence's schedule"),
@@ -519,6 +520,7 @@ function createVolunteerAssignment(Request $request, Response $response): Respon
     $requirementId = isset($input['requirementId']) && $input['requirementId'] !== '' && $input['requirementId'] !== null
         ? (int) $input['requirementId']
         : null;
+    $accepted = filter_var($input['accepted'] ?? false, FILTER_VALIDATE_BOOLEAN);
 
     try {
         $assignment = (new VolunteerAssignmentService())->assign(
@@ -530,6 +532,8 @@ function createVolunteerAssignment(Request $request, Response $response): Respon
                 'requirementId' => $requirementId,
                 'allowOutsidePool' => filter_var($input['allowOutsidePool'] ?? false, FILTER_VALIDATE_BOOLEAN),
                 'notes' => $input['notes'] ?? null,
+                'status' => $accepted ? VolunteerAssignment::STATUS_ACCEPTED : VolunteerAssignment::STATUS_PENDING,
+                'confirmAccepted' => $accepted,
             ]
         );
     } catch (\Throwable $e) {

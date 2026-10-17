@@ -4,13 +4,13 @@ describe("Email Pages", () => {
     beforeEach(() => cy.setupStandardSession());
 
     it("Email Dashboard", () => {
-        cy.visit("v2/email/dashboard");
-        cy.contains("Email Dashboard");
+        cy.visit("people/email");
+        cy.contains("h2", "Email");
         cy.contains("People Without Emails");
     });
 
     it("Duplicate Emails", () => {
-        cy.visit("v2/email/duplicate");
+        cy.visit("people/email/duplicate");
         cy.contains("Duplicate Emails");
         // Wait for the DataTable AJAX call to complete before asserting row content
         cy.get("#dupEmails tbody tr", { timeout: 10000 }).should("have.length.greaterThan", 0);
@@ -18,7 +18,7 @@ describe("Email Pages", () => {
     });
 
     it("People Without Emails page loads with breadcrumb and table", () => {
-        cy.visit("v2/email/missing");
+        cy.visit("people/email/missing");
 
         // Page header
         cy.contains("h2", "People Without Emails").should("exist");
@@ -38,7 +38,7 @@ describe("Email Pages", () => {
     });
 
     it("People Without Emails age filter pills work", () => {
-        cy.visit("v2/email/missing");
+        cy.visit("people/email/missing");
         cy.get("#noEmails tbody tr", { timeout: 10000 }).should("have.length.greaterThan", 0);
 
         // Adults filter

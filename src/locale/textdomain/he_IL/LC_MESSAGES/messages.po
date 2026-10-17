@@ -9375,10 +9375,6 @@ msgid "Manage donations, pledges, and financial records"
 msgstr "ניהול תרומות, התחייבויות כספיות ורשומות כספיות"
 
 #: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "ניהול כלי דוא\"ל והגדרות SMTP"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "ניהול משפחות, אנשים ומידע דמוגרפי"
 
@@ -10354,10 +10350,6 @@ msgid "Distance Unit"
 msgstr "יחידת מרחק"
 
 #: 
-msgid "Email Dashboard"
-msgstr "לוח בקרה של דוא\"ל"
-
-#: 
 msgid "Email Integrations"
 msgstr "אינטגרציות דוא\"ל"
 
@@ -10372,10 +10364,6 @@ msgstr "קישורי דוא\"ל בתצוגות קבוצה ואנשים"
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "רשימות דוא\"ל סונכרנו עם Mailchimp."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "הפוך דוא\"ל בפאנל ההגדרות להלן ואז הגדר את שרת SMTP שלך."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10517,10 +10505,6 @@ msgstr "לוחות שנה של המערכת"
 #: 
 msgid "System language for the church."
 msgstr "שפת מערכת לכנסייה."
-
-#: 
-msgid "Text Dashboard"
-msgstr "לוח בקרה של הודעות"
 
 #: 
 msgid "Text Settings"
@@ -12440,10 +12424,6 @@ msgstr "הדואר האלקטרוני מושבת"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "הדואר האלקטרוני מושבת. הגדרו דואר אלקטרוני לפני איפוס סיסמאות, או השתמשו בשנה סיסמה."
-
-#: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "הדואר האלקטרוני מושבת. הפעילו אותו בהגדרות לוח המחוונים של הדואר האלקטרוני לפני הבדיקה."
 
 #: 
 msgid "Enter one of your backup recovery codes"

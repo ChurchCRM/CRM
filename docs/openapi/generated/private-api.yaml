@@ -4530,7 +4530,7 @@ paths:
       tags:
         - Volunteer
       summary: 'Assign a qualified person to a position on this occurrence'
-      description: "Enforces design section 2.11.2: I4 the position belongs to this schedule's ministry (400), I5 the occurrence is neither cancelled nor past (409), I2 an active qualification (403), I3 membership of the ministry's volunteer pool Group unless allowOutsidePool is passed (409) - NOT applied to self sign-up, which tests qualification only (design D19), I1 one row per person per position per occurrence (409). I8 re-uses a declined or cancelled row rather than inserting a second one. I7/D16 - a person already holding ANOTHER position on this occurrence - is allowed unconditionally and returns 201."
+      description: "Enforces design section 2.11.2: I4 the position belongs to this schedule's ministry (400), I5 the occurrence is neither cancelled nor past (409), I2 an active qualification (403), I3 membership of the ministry's volunteer pool Group unless allowOutsidePool is passed (409) - NOT applied to self sign-up, which tests qualification only (design D19), I1 one row per person per position per occurrence (409). I8 re-uses a declined or cancelled row rather than inserting a second one. I7/D16 - a person already holding ANOTHER position on this occurrence - is allowed unconditionally and returns 201. accepted=true (Record they accepted) creates the assignment accepted, with a response row on channel 'coordinator' recorded by the caller, the way an accepted default is (D32); instead of the please-respond 'assignment' message the volunteer gets a 'signup_confirm' confirmation. Reminders are scheduled as for any live assignment. Only a caller who may manage this occurrence can assign at all, so the flag needs no check of its own."
       operationId: createVolunteerAssignment
       parameters:
         -
@@ -4557,6 +4557,10 @@ paths:
                   nullable: true
                 allowOutsidePool:
                   type: boolean
+                accepted:
+                  description: 'Record that the volunteer already said yes'
+                  type: boolean
+                  default: false
                 notes:
                   type: string
                   nullable: true
@@ -5698,6 +5702,97 @@ paths:
           description: 'No such ministry, or that person is not in the pool'
         '200':
           description: Removed
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/teams/{teamId}/pool/{personId}':
+    post:
+      tags:
+        - Volunteer
+      summary: "A team leader puts an existing person in the volunteer pool of their team's ministry"
+      description: "Allowed to a leader of this team and to anyone who may manage it (its ministry's coordinators, global volunteer managers, administrators). The person must be one GET /ministries/people/search can return: not deceased, not deactivated, not in a deactivated family. positionIds optionally qualifies them for positions of THIS team through the ordinary qualification grant, in the same transaction. When the person was not in the pool already, each of the ministry's coordinators (or, when it has none, each global volunteer manager) is emailed who added whom - outbox type pool_add; the added person and the team's other leaders are not. Removing somebody from the pool is not offered here: it stays DELETE /ministries/ministries/{ministryId}/pool/{personId}, which is ministry-level."
+      operationId: addVolunteerTeamPoolMember
+      parameters:
+        -
+          name: teamId
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              properties:
+                positionIds:
+                  description: 'Positions of this team to qualify them for'
+                  type: array
+                  items: { type: integer }
+              type: object
+      responses:
+        '400':
+          description: 'positionIds is not a list of ids, or names a position of another team'
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this team, or V2 is not enabled'
+        '404':
+          description: 'No such team or pool group, or the person cannot be added (not found, deceased, deactivated, or in a deactivated family)'
+        '409':
+          description: 'A ticked position is on a team linked to a class in which the person is a Student'
+        '200':
+          description: 'They were already in the pool'
+          content:
+            application/json:
+              schema:
+                properties:
+                  personId: { type: integer }
+                  added: { type: boolean }
+                  qualified: { type: array, items: { type: integer } }
+                  notified: { description: 'How many coordinators were emailed', type: integer }
+                type: object
+        '201':
+          description: 'Added; same body'
+      security:
+        -
+          ApiKeyAuth: []
+  /ministries/people/search:
+    get:
+      tags:
+        - Volunteer
+      summary: 'Find people a team leader may add to a volunteer pool'
+      description: 'The Add Volunteer picker of the admin team view and the Member Portal team page. Reachable by a team leader on any kind of login and by coordinators, volunteer managers and administrators. Only people who are not deceased, not deactivated and not in a deactivated family; every word of q must match a first or last name. Returns id, name and family name ONLY - no email, phone, address, photo or age - and at most 20 people, so a team leader cannot page through the directory. Fewer than two characters returns an empty list.'
+      operationId: searchVolunteerPoolCandidates
+      parameters:
+        -
+          name: q
+          in: query
+          required: true
+          schema:
+            type: string
+            maxLength: 100
+            minLength: 2
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'No team to lead and no ministry to coordinate, or V2 is not enabled'
+        '200':
+          description: 'Up to 20 people, by last then first name'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties: { id: { type: integer }, name: { type: string }, familyName: { type: string } }
+                  type: object
       security:
         -
           ApiKeyAuth: []
@@ -10563,15 +10658,6 @@ paths:
           application/json:
             schema:
               properties:
-                includeFinancial:
-                  type: boolean
-                  default: false
-                includeEvents:
-                  type: boolean
-                  default: false
-                includeSundaySchool:
-                  type: boolean
-                  default: false
                 force:
                   description: 'Skip the fresh-install guard'
                   type: boolean

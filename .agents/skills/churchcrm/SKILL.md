@@ -24,7 +24,7 @@ Load `skill-architecture.md` only when adding or editing a skill.
 | [Slim MVC Skill](./slim-mvc-skill.md) | Slim apps under `src/` |
 | [Configuration Management](./configuration-management.md) | SystemConfig |
 | [Settings Placement](./settings-placement.md) | Where a setting lives, area admin hub |
-| [Volunteer Management v2 Design](./volunteer-v2-design.md) | Ministries / Volunteer v2 |
+| [Volunteer Management v2](./volunteer-v2.md) | Ministries / Volunteer v2 (full design: `docs/design/volunteer-v2.md`) |
 | [Member Portal Design](./member-portal-design.md) | `/portal` and themes |
 
 ## Database

@@ -9437,10 +9437,6 @@ msgid "Manage donations, pledges, and financial records"
 msgstr "管理奉献、奉献承诺和财务记录"
 
 #: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "管理邮件工具和 SMTP 配置"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "管理家庭、人员和人口统计信息"
 
@@ -10416,10 +10412,6 @@ msgid "Distance Unit"
 msgstr "距离单位"
 
 #: 
-msgid "Email Dashboard"
-msgstr "电子邮件仪表板"
-
-#: 
 msgid "Email Integrations"
 msgstr "电子邮件集成"
 
@@ -10434,10 +10426,6 @@ msgstr "小组和人员视图中的电子邮件链接"
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "电子邮件列表与Mailchimp同步。"
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "在下面的设置面板中启用电子邮件,然后配置SMTP服务器。"
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10579,10 +10567,6 @@ msgstr "系统日历"
 #: 
 msgid "System language for the church."
 msgstr "教会的系统语言。"
-
-#: 
-msgid "Text Dashboard"
-msgstr "文本仪表板"
 
 #: 
 msgid "Text Settings"
@@ -12501,10 +12485,6 @@ msgstr "电子邮件已禁用"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "电子邮件已禁用。请先配置电子邮件再重置密码，或使用更改密码功能。"
-
-#: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "电子邮件已禁用。请在电子邮件仪表盘设置中启用后再进行测试。"
 
 #: 
 msgid "Enter one of your backup recovery codes"

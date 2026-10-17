@@ -5,7 +5,7 @@
  *
  * Epic #8977 / #9701, design `.agents/skills/churchcrm/member-portal-design.md` §5.3
  * (the "Scope split between this epic and the Volunteer v2 branch" table) and
- * `volunteer-v2-design.md` D19, §2.16.
+ * `docs/design/volunteer-v2.md` D19, §2.16.
  *
  * #9866 shipped the half that stands without `volunteer_ministry_vmin`: the
  * `calendars.ministry_id` column, the "Ministry Calendars" heading, `aPortalCalendars`

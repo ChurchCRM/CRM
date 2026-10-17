@@ -36,6 +36,7 @@ class DropdownManager {
     };
 
     const config = { ...defaults, ...options };
+    let loadedCountry = null;
 
     // Fetch and populate countries
     $.ajax({
@@ -68,6 +69,8 @@ class DropdownManager {
         countrySelect.prepend(new Option(config.userSelected, config.userSelected, true, true));
       }
 
+      loadedCountry = countrySelect.val();
+
       // Trigger change to cascade to state if needed
       countrySelect.change();
 
@@ -91,6 +94,7 @@ class DropdownManager {
           stateTextboxId: config.stateTextboxId,
           stateOptionDivId: config.stateOptionDivId,
           stateInputDivId: config.stateInputDivId,
+          keepUnknownState: this.value === loadedCountry,
         });
 
         if (config.onCountryChange) {
@@ -111,6 +115,7 @@ class DropdownManager {
    * @param {string} options.stateTextboxId - Optional ID of textbox fallback for countries without states
    * @param {string} options.stateOptionDivId - Optional ID of div to show/hide for state dropdown
    * @param {string} options.stateInputDivId - Optional ID of div to show/hide for state textbox
+   * @param {boolean} options.keepUnknownState - Keep a stored state the list does not know as its own option
    */
   static initializeState(stateSelectId, countryCode, options = {}) {
     const stateSelect = $(`#${stateSelectId}`);
@@ -123,6 +128,7 @@ class DropdownManager {
       stateTextboxId: null,
       stateOptionDivId: null,
       stateInputDivId: null,
+      keepUnknownState: false,
     };
 
     const config = { ...defaults, ...options };
@@ -154,6 +160,7 @@ class DropdownManager {
           // Country has states - populate dropdown
           stateSelect.empty();
 
+          let userSelectedMatched = false;
           $.each(data, function (code, name) {
             let selected = false;
 
@@ -161,10 +168,17 @@ class DropdownManager {
               selected = config.systemDefault === name || config.systemDefault === code;
             } else {
               selected = config.userSelected === name || config.userSelected === code;
+              userSelectedMatched = userSelectedMatched || selected;
             }
 
             stateSelect.append(new Option(name, code, selected, selected));
           });
+
+          // Same as the country select: a stored state the list does not know stays selected,
+          // but only for the country it was stored with, not after the user picks another country.
+          if (config.keepUnknownState && config.userSelected !== "" && !userSelectedMatched) {
+            stateSelect.prepend(new Option(config.userSelected, config.userSelected, true, true));
+          }
 
           stateSelect.change();
 
