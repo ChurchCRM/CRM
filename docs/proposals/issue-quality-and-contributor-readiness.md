@@ -28,7 +28,7 @@ The companion community RFC governs **maintainer-authored, plain-language Featur
 | --- | --- | --- |
 | Q1 | **Reuse** `docs/contributing-pr-review.md` for PR standards; create one concise **issue readiness** page in `docs/`; link both from root CONTRIBUTING and the GitHub/docs entry point. Treat this RFC as decision history. | **Accept** existing-rules critique; no new competing all-in-one PR guide |
 | Q2 | Size primarily by **review burden**: touched subsystems, permission/schema/data risk, handoffs, test surface and non-generated diff size. Effort estimates are optional hints, never acceptance gates. | **Accept**; replaces hour/day classification |
-| Q3 | Create an **Epic** for multiple independently shippable outcomes, significant cross-subsystem work or unresolved design/permissions/schema decisions; use GitHub **sub-issues**, not only hand-maintained checkboxes. Prefer *vertical end-to-end user outcomes*; allow strictly necessary additive infrastructure slices with explicit consumers and safety gates. | **Accept with safety exception**; audit #5238 children before using them as a model |
+| Q3 | Create an **Epic** for multiple independently shippable outcomes, significant cross-subsystem work or unresolved design/permissions/schema decisions; use GitHub **sub-issues**, not only hand-maintained checkboxes. Prefer *vertical end-to-end user outcomes*; allow strictly necessary additive infrastructure slices with explicit consumers and safety gates. | **Accept with safety exception**; validate decomposition against the agreed criteria |
 | Q4 | `good first issue` is **maintainer certification**, not difficulty guess: settled design, low-risk bounded task, existing test pattern, actionable paths and checks, owner available to review; no automatic size/time guarantee. | **Accept** |
 | Q5 | Reuse existing `Design Decision`, `Epic`, and `good first issue` labels. Do **not** add `needs-design`, `ready-for-dev`, a Projects status or sizing taxonomy merely for this RFC. An issue is ready if it meets the contract and has no unresolved `Design Decision` blocker. | **Accept**; no label changes without separate audit |
 | Q6 | Work is **claimed** only after checking open issues and PRs, commenting or being assigned on the issue, and posting an early draft PR for substantial work. On supersession/closure of **both issues and PRs**, comment early and cross-link replacement; protect actively reviewed pilot tickets from stale automation by checked, reversible action, not blanket exemptions. | **Accept** |
@@ -53,9 +53,9 @@ The agreed model is:
 
 ## Pilot scope
 
-The first pilot is limited to Events and Kiosk. Review issues #8821, #8822, #8825, #9525, #5238, #8575–#8583, #8826, #8650, #8647, #3902, and #8978 against current code and released behavior. Avoid conflating reporting #10538, messaging #8693, and PDF modernization #8151.
+Begin with an evidence-based pilot in the Events and Kiosk areas of ChurchCRM. Apply the readiness and decomposition criteria to the current backlog, verify issues against current code and released behavior, and record issue-specific dispositions only in the implementation tracker.
 
-Use evidence-based keep/update/split/supersede/close dispositions. Do not automatically recreate closed children or rewrite the wider backlog. Inspect Event Locations #5238 for safe vertical outcomes and inspect stale automation before it can close active pilot work. Certify up to 3–5 beginner issues only if they genuinely meet the guide; if none qualify, record that honestly. Validate the flow with a contributor and maintainer before expanding beyond CRM.
+Prefer independently testable, vertical user outcomes when regrouping work; allow bounded foundation work where required for safety or dependencies. Do not automatically recreate closed work or rewrite the wider backlog. Check stale automation before it can close active pilot work. Certify a small set of beginner issues only when they genuinely meet the guide and a human reviewer is available; if none qualify, record that honestly. Validate the workflow with a contributor and maintainer before expanding beyond CRM.
 
 ## Implementation tracking
 
