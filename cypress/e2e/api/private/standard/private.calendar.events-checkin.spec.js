@@ -652,6 +652,64 @@ describe("API Event Check-in Endpoints", () => {
             ).then((response) => {
                 expect(response.body.success).to.be.true;
             });
+
+            cy.request(`/event/checkin/${eventId}`).then((response) => {
+                const row = response.body.match(/<tr data-person-id="4">[\s\S]*?<\/tr>/);
+                expect(row, "person 4 attendance row").to.not.equal(null);
+                expect(row[0]).to.include('data-checkin-id="1"');
+            });
+        });
+
+        it("Clears a previous checker when the next check-in names nobody", () => {
+            expect(eventId, "before() must have populated eventId").to.be.a("number");
+
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/events/${eventId}/checkin`,
+                { personId: 4 },
+                200,
+            );
+
+            cy.request(`/event/checkin/${eventId}`).then((response) => {
+                const row = response.body.match(/<tr data-person-id="4">[\s\S]*?<\/tr>/);
+                expect(row, "person 4 attendance row").to.not.equal(null);
+                expect(row[0]).to.not.include("data-checkin-id");
+            });
+        });
+
+        it("Clears a previous checkout person when the next checkout names nobody", () => {
+            expect(eventId, "before() must have populated eventId").to.be.a("number");
+
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/events/${eventId}/checkin`,
+                { personId: 5 },
+                200,
+            );
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/events/${eventId}/checkout`,
+                { personId: 5, checkedOutById: 1 },
+                200,
+            );
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/events/${eventId}/checkin`,
+                { personId: 5 },
+                200,
+            );
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/events/${eventId}/checkout`,
+                { personId: 5 },
+                200,
+            );
+
+            cy.request(`/event/checkin/${eventId}`).then((response) => {
+                const row = response.body.match(/<tr data-person-id="5">[\s\S]*?<\/tr>/);
+                expect(row, "person 5 attendance row").to.not.equal(null);
+                expect(row[0]).to.include('<td class="checkout-by"></td>');
+            });
         });
 
         it("Returns 400 when personIds is empty", () => {
