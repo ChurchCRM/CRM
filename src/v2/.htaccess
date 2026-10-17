@@ -1,7 +1,7 @@
 RewriteEngine On
 
 # Block direct access to PHP files in templates/ (must go through index.php Slim app)
-RewriteRule ^templates/.*\.php$ - [F,L]
+RewriteRule ^templates/.*\.php(/|$) - [F,L]
 
 # Automatically handle subdirectory installations
 # The RewriteRule will pass the matched path to index.php
