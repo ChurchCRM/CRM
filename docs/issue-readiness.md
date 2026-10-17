@@ -28,6 +28,14 @@ Use an epic when work has multiple meaningful outcomes, crosses subsystems, or n
 
 Apply the existing label when design is settled, scope is bounded and low-risk, relevant paths and validation guidance are clear, acceptance criteria are observable, and a human reviewer is available.
 
+## Review for church value and simple UX
+
+- Start with the real job a church staff member or volunteer is trying to do. Prefer outcomes and complete workflows over feature lists or implementation-led explanations.
+- Keep the experience understandable and predictable, especially on mobile. Avoid extra steps, settings, or concepts unless they solve a real user problem.
+- Write in plain, respectful language that works across roles, technical skill levels, and locales. Explain necessary technical terms; remove hype, jargon, and generic AI-sounding copy.
+- Remember the intended audience: churches that need to get organized, especially budget-conscious or underserved churches and those that value owning and hosting their data. Do not assume ChurchCRM is only for small churches or that it fits every church.
+- For user-visible changes, check the actual workflow, responsive behavior, accessibility, and localization impact. Verify product claims against current application behavior and documentation.
+
 ## Write for the human first
 
 - Lead issues, PRs, docs, and review comments with a short **BLUF/TL;DR** when the work needs context; state the goal and outcome first.
