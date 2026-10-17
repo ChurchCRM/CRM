@@ -872,7 +872,7 @@ export function listEligiblePeople(
 
 export function createAssignment(
   occurrenceId: number,
-  payload: { positionId: number; personId: number; allowOutsidePool?: boolean; notes?: string },
+  payload: { positionId: number; personId: number; allowOutsidePool?: boolean; accepted?: boolean; notes?: string },
 ): Promise<{ assignment: VolunteerAssignment }> {
   return request(`/occurrences/${occurrenceId}/assignments`, {
     method: "POST",

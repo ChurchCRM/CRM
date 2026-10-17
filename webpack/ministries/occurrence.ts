@@ -585,6 +585,10 @@ function openAssignModal(positionId: number, positionName: string): void {
   show(byId("assign-conflict-warning"), false);
   show(byId("assign-outside-pool-warning"), false);
   show(byId("assign-empty"), false);
+  const accepted = byId<HTMLInputElement>("assign-accepted");
+  if (accepted) {
+    accepted.checked = false;
+  }
 
   assignModalHidePending = false;
   modal("volunteer-assign-modal")?.show();
@@ -652,6 +656,8 @@ function saveAssignment(): void {
     return;
   }
 
+  const accepted = byId<HTMLInputElement>("assign-accepted")?.checked ?? false;
+
   createAssignment(occurrenceId, {
     positionId: assigningPositionId,
     personId: person.personId,
@@ -659,10 +665,15 @@ function saveAssignment(): void {
     // chose them anyway — so the override is carried rather than bouncing them off a 409
     // they cannot act on from here (I3).
     allowOutsidePool: !person.inPool,
+    accepted,
   })
     .then(() => {
       hideAssignModal();
-      notifySuccess(i18next.t("{{name}} assigned", { name: person.displayName }));
+      notifySuccess(
+        accepted
+          ? i18next.t("{{name}} assigned and recorded as accepted", { name: person.displayName })
+          : i18next.t("{{name}} assigned", { name: person.displayName }),
+      );
 
       return loadStaffing();
     })
