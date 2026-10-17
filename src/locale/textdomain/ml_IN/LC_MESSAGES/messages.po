@@ -9342,10 +9342,6 @@ msgid "Manage donations, pledges, and financial records"
 msgstr "ദാനങ്ങൾ, സാമ്പത്തിക പ്രതിബദ്ധതകൾ, സാമ്പത്തിക രേഖകൾ നിയന്ത്രിക്കുക"
 
 #: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "ഇമെയിൽ ഉപകരണങ്ങളും SMTP കോൺഫിഗറേഷനും നിയന്ത്രിക്കുക"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "കുടുംബങ്ങൾ, വ്യക്തികൾ, ജനസംഖ്യാ വിവരങ്ങൾ നിയന്ത്രിക്കുക"
 
@@ -10321,10 +10317,6 @@ msgid "Distance Unit"
 msgstr "ദൂര ഏകകം"
 
 #: 
-msgid "Email Dashboard"
-msgstr "ഇമെയിൽ ഡാഷ്‌ബോർഡ്"
-
-#: 
 msgid "Email Integrations"
 msgstr "ഇമെയിൽ സംയോജനങ്ങൾ"
 
@@ -10339,10 +10331,6 @@ msgstr "ഗ്രൂപ്പ്, ആളുകൾ കാഴ്ചകളിൽ �
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "ഇമെയിൽ ലിസ്‌റ്റുകൾ Mailchimp-മായി സമന്വയിക്കുന്നു."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "ചുവടെ ഉള്ള ക്രമീകരണ പാനലിൽ ഇമെയിൽ പ്രവർത്തനക്ഷമമാക്കുക, തുടർന്ന് SMTP സർവ്വർ ക്രമീകരിക്കുക."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10484,10 +10472,6 @@ msgstr "സിസ്റ്റം കലണ്ടറുകൾ"
 #: 
 msgid "System language for the church."
 msgstr "സഭയ്ക്കുള്ള സിസ്റ്റം ഭാഷ."
-
-#: 
-msgid "Text Dashboard"
-msgstr "ടെക്സ്റ്റ് ഡാഷ്ബോർഡ്"
 
 #: 
 msgid "Text Settings"
@@ -12407,10 +12391,6 @@ msgstr "ഇമെയിൽ നിഷ്ക്രിയമാക്കിയി�
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "ഇമെയിൽ നിഷ്ക്രിയമാക്കിയിരിക്കുന്നു. പാസ്‌വേഡ് റീസെറ്റ് ചെയ്യുന്നതിന് മുൻപ് ഇമെയിൽ കോൺഫിഗർ ചെയ്യുക, അല്ലെങ്കിൽ പാസ്‌വേഡ് മാറ്റുക ഉപയോഗിക്കുക."
-
-#: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "ഇമെയിൽ നിഷ്ക്രിയമാക്കിയിരിക്കുന്നു. പരീക്ഷണത്തിന് മുൻപ് ഇമെയിൽ ഡാഷ്ബോർഡ് ക്രമീകരണങ്ങളിൽ സജീവമാക്കുക."
 
 #: 
 msgid "Enter one of your backup recovery codes"

@@ -9333,10 +9333,6 @@ msgid "Manage donations, pledges, and financial records"
 msgstr "献金、誓約、財務記録を管理"
 
 #: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "メールツールとSMTP設定を管理"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "家族、個人、人口統計情報を管理"
 
@@ -10312,10 +10308,6 @@ msgid "Distance Unit"
 msgstr "距離単位"
 
 #: 
-msgid "Email Dashboard"
-msgstr "メールダッシュボード"
-
-#: 
 msgid "Email Integrations"
 msgstr "メール統合"
 
@@ -10330,10 +10322,6 @@ msgstr "グループおよび人ビューのメールリンク"
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "メールリストはMailchimpと同期されます。"
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "以下の設定パネルでメールを有効にしてから、SMTPサーバーを構成します。"
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10475,10 +10463,6 @@ msgstr "システムカレンダー"
 #: 
 msgid "System language for the church."
 msgstr "教会のシステム言語。"
-
-#: 
-msgid "Text Dashboard"
-msgstr "テキストダッシュボード"
 
 #: 
 msgid "Text Settings"
@@ -12397,10 +12381,6 @@ msgstr "メールは無効です"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "メールは無効です。パスワードをリセットする前にメールを設定するか、パスワード変更をご使用ください。"
-
-#: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "メールは無効です。テストを行う前に、メールダッシュボードの設定で有効にしてください。"
 
 #: 
 msgid "Enter one of your backup recovery codes"

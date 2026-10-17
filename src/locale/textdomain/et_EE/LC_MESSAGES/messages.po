@@ -9376,10 +9376,6 @@ msgid "Manage donations, pledges, and financial records"
 msgstr "Hallake annetusi, lubadusi ja finantskirjeid"
 
 #: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "Hallake e-posti tööriistu ja SMTP seadistust"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Hallake perekondi, isikuid ja demograafilist teavet"
 
@@ -10355,10 +10351,6 @@ msgid "Distance Unit"
 msgstr "Vahemaa ühik"
 
 #: 
-msgid "Email Dashboard"
-msgstr "E-posti armatuurlaud"
-
-#: 
 msgid "Email Integrations"
 msgstr "E-posti integratsioonid"
 
@@ -10373,10 +10365,6 @@ msgstr "E-posti lingid rühma ja inimeste vaadetes"
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "E-posti loendid on Mailchimpiga sünkroonitud."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "Lubake e-post alltoodud seadete paneelil ja seejärel konfigureerige SMTP-server."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10518,10 +10506,6 @@ msgstr "Süsteemi kalendrid"
 #: 
 msgid "System language for the church."
 msgstr "Kirikule süsteemne keel."
-
-#: 
-msgid "Text Dashboard"
-msgstr "Teksti armatuurlaud"
 
 #: 
 msgid "Text Settings"
@@ -12441,10 +12425,6 @@ msgstr "E-post on keelatud"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "E-post on keelatud. Seadistage e-post enne paroolide lähtestamist või kasutage Muuda parooli."
-
-#: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "E-post on keelatud. Lubage see enne testimist e-posti armatuurlaua seadetes."
 
 #: 
 msgid "Enter one of your backup recovery codes"

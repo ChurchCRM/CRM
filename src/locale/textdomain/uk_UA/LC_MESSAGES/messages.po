@@ -9395,10 +9395,6 @@ msgid "Manage donations, pledges, and financial records"
 msgstr "Керуйте пожертвами, обіцянками та фінансовими записами"
 
 #: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "Керуйте інструментами електронної пошти та конфігурацією SMTP"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Керуйте сім'ями, людьми та демографічною інформацією"
 
@@ -10374,10 +10370,6 @@ msgid "Distance Unit"
 msgstr "Одиниця відстані"
 
 #: 
-msgid "Email Dashboard"
-msgstr "Панель управління електронною поштою"
-
-#: 
 msgid "Email Integrations"
 msgstr "Інтеграція електронної пошти"
 
@@ -10392,10 +10384,6 @@ msgstr "Посилання на електронну пошту в групов�
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "Списки електронної пошти синхронізовані з Mailchimp."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "Увімкніть електронну пошту на панелі параметрів нижче, а потім налаштуйте сервер SMTP."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10537,10 +10525,6 @@ msgstr "Системні календарі"
 #: 
 msgid "System language for the church."
 msgstr "Мова системи для церкви."
-
-#: 
-msgid "Text Dashboard"
-msgstr "Інформаційна панель текстів"
 
 #: 
 msgid "Text Settings"
@@ -12462,10 +12446,6 @@ msgstr "Електронна пошта вимкнена"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "Електронна пошта вимкнена. Налаштуйте електронну пошту перед скиданням паролів або скористайтеся Зміна пароля."
-
-#: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "Електронна пошта вимкнена. Увімкніть її в налаштуваннях панелі керування поштою перед тестуванням."
 
 #: 
 msgid "Enter one of your backup recovery codes"

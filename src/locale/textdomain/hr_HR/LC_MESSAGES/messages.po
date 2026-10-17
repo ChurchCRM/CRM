@@ -9348,10 +9348,6 @@ msgid "Manage donations, pledges, and financial records"
 msgstr "Upravljajte darovima, zavjetima i financijskim zapisima"
 
 #: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "Upravljajte alatima za e-poštu i SMTP konfiguracijom"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Upravljajte obiteljima, vjernicima i demografskim informacijama"
 
@@ -10327,10 +10323,6 @@ msgid "Distance Unit"
 msgstr "Jedinica udaljenosti"
 
 #: 
-msgid "Email Dashboard"
-msgstr "Nadzorna ploča e-pošte"
-
-#: 
 msgid "Email Integrations"
 msgstr "Integracije e-pošte"
 
@@ -10345,10 +10337,6 @@ msgstr "Veze e-pošte u prikazima skupini i vjernika"
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "Popisi e-pošte su sinkronizirani s Mailchimpom."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "Omogućite e-poštu u ploči postavki u nastavku, a zatim konfigurirajte vaš SMTP poslužitelj."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10490,10 +10478,6 @@ msgstr "Sistemski kalendari"
 #: 
 msgid "System language for the church."
 msgstr "Sistemski jezik za župu."
-
-#: 
-msgid "Text Dashboard"
-msgstr "Nadzorna ploča tekstualnih poruka"
 
 #: 
 msgid "Text Settings"
@@ -12414,10 +12398,6 @@ msgstr "E-pošta je onemogućena"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "E-pošta je onemogućena. Konfigurirajte e-poštu prije resetiranja lozinki ili koristite Promijeni lozinku."
-
-#: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "E-pošta je onemogućena. Omogućite je u postavkama nadzorne ploče e-pošte prije testiranja."
 
 #: 
 msgid "Enter one of your backup recovery codes"

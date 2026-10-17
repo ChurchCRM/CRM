@@ -9354,10 +9354,6 @@ msgid "Manage donations, pledges, and financial records"
 msgstr "విరాళాలు, ప్రతిజ్ఞలు మరియు ఆర్థిక రికార్డులను నిర్వహించండి"
 
 #: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "ఇమెయిల్ సాధనాలు మరియు SMTP కాన్ఫిగరేషన్ నిర్వహించండి"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "కుటుంబాలు, వ్యక్తులు మరియు జనాభా సమాచారాన్ని నిర్వహించండి"
 
@@ -10333,10 +10329,6 @@ msgid "Distance Unit"
 msgstr "దూర యూనిట్"
 
 #: 
-msgid "Email Dashboard"
-msgstr "ఇమెయిల్ డ్యాష్‌బోర్డ్"
-
-#: 
 msgid "Email Integrations"
 msgstr "ఇమెయిల్ ఇంటిగ్రేషన్‌లు"
 
@@ -10351,10 +10343,6 @@ msgstr "సమూహ మరియు ప్రజల దృశ్యాలలో
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "ఇమెయిల్ జాబితాలు Mailchimp తో సమకాలీకృతం చేయబడ్డాయి."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "దిగువ సెట్టింగ్‌ల ప్యానెల్‌లో ఇమెయిల్‌ను ఎనేబల్ చేయండి, ఆపై మీ SMTP సర్వర్‌ను కాన్ఫిగర్ చేయండి."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10496,10 +10484,6 @@ msgstr "సిస్టమ్ క్యాలెండర్లు"
 #: 
 msgid "System language for the church."
 msgstr "చర్చి కోసం సిస్టమ్ భాష."
-
-#: 
-msgid "Text Dashboard"
-msgstr "టెక్స్ట్ డాష్‌బోర్డ్"
 
 #: 
 msgid "Text Settings"
@@ -12419,10 +12403,6 @@ msgstr "ఇమెయిల్ నిలిపివేయబడింది"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "ఇమెయిల్ నిలిపివేయబడింది. పాస్‌వర్డ్‌లు రీసెట్ చేయడానికి ముందు ఇమెయిల్‌ను కాన్ఫిగర్ చేయండి, లేదా పాస్‌వర్డ్ మార్చు ఉపయోగించండి."
-
-#: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "ఇమెయిల్ నిలిపివేయబడింది. పరీక్షించే ముందు ఇమెయిల్ డాష్‌బోర్డ్ సెట్టింగ్‌లలో దీన్ని ప్రారంభించండి."
 
 #: 
 msgid "Enter one of your backup recovery codes"

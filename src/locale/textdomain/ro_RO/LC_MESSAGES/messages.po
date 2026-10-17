@@ -9444,10 +9444,6 @@ msgid "Manage donations, pledges, and financial records"
 msgstr "Gestionează ofertele, angajamentele și înregistrările financiare"
 
 #: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "Gestionează instrumentele de e-mail și configurația SMTP"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Gestionează familiile, persoanele și informațiile demografice"
 
@@ -10423,10 +10419,6 @@ msgid "Distance Unit"
 msgstr "Unitate de distanță"
 
 #: 
-msgid "Email Dashboard"
-msgstr "Tablou de bord e-mail"
-
-#: 
 msgid "Email Integrations"
 msgstr "Integrări e-mail"
 
@@ -10441,10 +10433,6 @@ msgstr "Linkuri de e-mail în vizualizări de grup și persoane"
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "Listele de e-mailuri sunt sincronizate cu Mailchimp."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "Activați e-mailul în panoul de setări de mai jos, apoi configurați serverul SMTP."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10586,10 +10574,6 @@ msgstr "Calendare de sistem"
 #: 
 msgid "System language for the church."
 msgstr "Limbă de sistem pentru biserică."
-
-#: 
-msgid "Text Dashboard"
-msgstr "Tablou de bord text"
 
 #: 
 msgid "Text Settings"
@@ -12510,10 +12494,6 @@ msgstr "E-mailul este dezactivat"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "E-mailul este dezactivat. Configurați e-mailul înainte de a reseta parolele sau utilizați Schimbați parola."
-
-#: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "E-mailul este dezactivat. Activați-l în setările Tabloului de bord e-mail înainte de testare."
 
 #: 
 msgid "Enter one of your backup recovery codes"

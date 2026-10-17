@@ -9344,10 +9344,6 @@ msgid "Manage donations, pledges, and financial records"
 msgstr "Hallitse lahjoituksia, lupauksia ja taloustietueita"
 
 #: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "Hallitse sähköpostityökaluja ja SMTP-asetuksia"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Hallitse perheitä, henkilöitä ja väestötietoja"
 
@@ -10323,10 +10319,6 @@ msgid "Distance Unit"
 msgstr "Etäisyysyksikkö"
 
 #: 
-msgid "Email Dashboard"
-msgstr "Sähköpostin kojelauta"
-
-#: 
 msgid "Email Integrations"
 msgstr "Sähköpostin integraatiot"
 
@@ -10341,10 +10333,6 @@ msgstr "Sähköpostilinkit ryhmä- ja ihmisten näkymissä"
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "Sähköpostiluettelot synkronoidaan Mailchimpin kanssa."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "Ota sähköposti käyttöön alla olevassa asetuspaneelissa ja määritä sitten SMTP-palvelimesi."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10486,10 +10474,6 @@ msgstr "Järjestelmän kalenterit"
 #: 
 msgid "System language for the church."
 msgstr "Kirkon järjestelmäkieli."
-
-#: 
-msgid "Text Dashboard"
-msgstr "Teksti-kojelauta"
 
 #: 
 msgid "Text Settings"
@@ -12409,10 +12393,6 @@ msgstr "Sähköposti on poistettu käytöstä"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "Sähköposti on poistettu käytöstä. Määritä sähköposti ennen salasanojen nollaamista tai käytä Vaihda salasana -toimintoa."
-
-#: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "Sähköposti on poistettu käytöstä. Ota se käyttöön sähköpostin koontinäytön asetuksissa ennen testausta."
 
 #: 
 msgid "Enter one of your backup recovery codes"

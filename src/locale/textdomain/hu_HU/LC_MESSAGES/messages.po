@@ -9403,10 +9403,6 @@ msgid "Manage donations, pledges, and financial records"
 msgstr "Adományok, felajánlások és pénzügyi nyilvántartások kezelése"
 
 #: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "E-mail eszközök és SMTP konfiguráció kezelése"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Családok, személyek és demográfiai adatok kezelése"
 
@@ -10382,10 +10378,6 @@ msgid "Distance Unit"
 msgstr "Távolság egység"
 
 #: 
-msgid "Email Dashboard"
-msgstr "E-mail műszerfal"
-
-#: 
 msgid "Email Integrations"
 msgstr "E-mail integrációk"
 
@@ -10400,10 +10392,6 @@ msgstr "E-mail linkek csoport- és személy nézetekben"
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "Az e-mail listák szinkronizálva vannak a Mailchimpel."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "Engedélyezze az e-mailt az alábbi beállítások panelen, majd állítsa be az SMTP-kiszolgálót."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10545,10 +10533,6 @@ msgstr "Rendszer naptárak"
 #: 
 msgid "System language for the church."
 msgstr "Rendszer nyelve az egyházhoz."
-
-#: 
-msgid "Text Dashboard"
-msgstr "Szöveg irányítópult"
 
 #: 
 msgid "Text Settings"
@@ -12468,10 +12452,6 @@ msgstr "Az e-mail le van tiltva"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "Az e-mail le van tiltva. A jelszavak visszaállítása előtt konfigurálja az e-mailt, vagy használja a Jelszó módosítása funkciót."
-
-#: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "Az e-mail le van tiltva. A tesztelés előtt engedélyezze az E-mail irányítópult beállításaiban."
 
 #: 
 msgid "Enter one of your backup recovery codes"
