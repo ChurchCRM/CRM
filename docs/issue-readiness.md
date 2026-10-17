@@ -1,54 +1,40 @@
-# Issue readiness, sizing, and contributor handoff
+# Issue readiness and contributor handoff
 
-This guide defines how ChurchCRM turns community reports into actionable work. Keep intake friendly: reporters should describe the problem or desired outcome, not solve architecture before maintainers have triaged it.
+> **TL;DR / BLUF**
+> Maintainers make work ready; contributors report the problem. Before coding, check for existing work, confirm the outcome and acceptance checks, resolve blocking design/security decisions, and claim the issue visibly. Split by independently reviewable user outcomes when that reduces risk. Humans own decisions and approval; agents execute. Use the existing labels and rules—do not invent new process.
 
-Related: [How to Contribute](../CONTRIBUTING.md) · [PR review gates](./contributing-pr-review.md)
+**Use this page for issue readiness and decomposition.** For merge blockers, follow the [PR review gates](./contributing-pr-review.md). See [How to Contribute](../CONTRIBUTING.md) for onboarding.
 
-## Intake and maintainer readiness
+## The fast path
 
-An issue is ready for implementation when a contributor can understand the outcome, boundaries, relevant evidence, and how to verify the change without guessing at unresolved product or security decisions. Maintainers own readiness; reporters are not expected to complete every item at intake.
+1. **Find existing work.** Search open issues and PRs before creating or starting anything. Update or link existing work instead of duplicating it.
+2. **Define the outcome.** State the user problem, expected behavior, scope, and non-goals where scope could drift.
+3. **Make it verifiable.** Add evidence or reproduction steps and observable acceptance criteria/tests. Include upgrade compatibility when relevant.
+4. **Resolve blockers.** Settle product, design, security, permissions, and schema decisions before implementation. Use the existing `Design Decision` label only for a real unresolved decision.
+5. **Assess risk and size.** Consider touched subsystems, handoffs, authorization/privacy, data/schema changes, upgrade safety, test breadth, and non-generated diff—not estimated hours.
+6. **Claim and coordinate.** Comment, claim, or assign using the normal workflow. For substantial work, open an early draft PR. Keep a human maintainer accountable for decisions, review, and approval.
 
-For implementation-ready issues, record what applies:
+Maintainers refine readiness; reporters do not need to complete this checklist at intake. Scale detail to risk: trivial fixes need little ceremony; risky or cross-cutting changes need explicit scope, dependencies, verification, and ownership.
 
-- **Outcome and scope:** user problem, expected behavior, boundaries, and explicit non-goals when scope could drift.
-- **Evidence:** reproduction steps, affected workflow, current behavior, relevant code or released behavior, and links to related issues or PRs.
-- **Verification:** expected tests or observable acceptance criteria, including upgrade compatibility when relevant.
-- **Risk:** affected subsystems and handoffs; permissions/security, data exposure, schema/data migration, upgrade compatibility, performance, and test implications.
-- **Decision status:** resolve blocking design questions before implementation. Use the existing `Design Decision` label when a real decision is pending; do not use it as a generic status.
-- **Ownership and coordination:** check for existing work first. Before starting, comment, claim, or assign the issue using the repository's normal workflow. For substantial work, open an early draft PR to align on direction.
+## When to use an epic
 
-## Size work by review burden and risk
+Use an epic when work has multiple meaningful outcomes, crosses subsystems, or needs coordinated design/security decisions. Use GitHub's native sub-issues and the existing `Epic` label.
 
-Do not size issues by estimated hours. Consider the size and risk of the diff a maintainer must understand: number of subsystems, cross-component handoffs, authorization or privacy implications, schema/data changes, upgrade safety, test breadth, and non-generated code.
+- Prefer vertical, end-to-end outcomes that can be tested and reviewed independently.
+- Use a bounded foundation-only task only when required for safety or to unblock later outcomes; state its consumers and safety gates.
+- Keep work together if splitting would create unsafe or misleading intermediate states.
+- Do not split by arbitrary file counts or add a new sizing taxonomy.
 
-Create an epic when work contains multiple meaningful outcomes, crosses subsystems, or has unresolved design/security decisions that need coordination. Prefer vertical, end-to-end child issues that deliver useful outcomes. A bounded foundation-only issue is appropriate when it is required to make later work safe or possible. Use GitHub's native sub-issues and the existing `Epic` label; do not introduce a new sizing taxonomy.
+## `good first issue` means ready for a beginner
 
-A large change is not automatically wrong. Keep work together when splitting would create unsafe or misleading intermediate states. Otherwise split by independently reviewable outcomes, not arbitrary file counts.
+Apply the existing label only when design is settled, scope is bounded and low-risk, relevant paths and validation guidance are clear, acceptance criteria are observable, and a human reviewer is available. Otherwise, improve the issue first or leave it unlabelled.
 
-## PR expectations
+## Pull requests
 
-A PR should have one coherent purpose and a title/body that match the current diff. Link an issue when required by [the PR review rules](./contributing-pr-review.md). Explain the implementation, tests and results, risks, and any migration or compatibility effect. Include UI validation for desktop, tablet, and phone where applicable.
+Keep each PR focused and its title/body aligned with the actual diff. Explain changes, tests/results, risks, and migration or compatibility effects; include desktop/tablet/phone UI validation where applicable. Exclude unrelated refactors and speculative cleanup. The [PR review gates](./contributing-pr-review.md) remain authoritative and are not weakened by this guide.
 
-Keep generated files, unrelated refactors, and speculative cleanup out of the diff. If scope changes materially, update the issue/PR description or split the work. Existing hard blocks in the PR review guide remain authoritative; this page does not weaken them.
+## Triage, automation, and accountability
 
-## `good first issue` is a maintainer certification
+Verify current code and released behavior before declaring work obsolete. Explain supersession and link replacement work. Protect actively discussed, claimed, assigned, or reviewed work from stale automation with narrow, reversible safeguards—not blanket exemptions.
 
-Apply the existing `good first issue` label only when all of these are true:
-
-- The design and expected behavior are settled; no blocking architecture, product, or security decision remains.
-- Scope is bounded and low risk for a first contribution.
-- Relevant files/paths and a test pattern or concrete validation instructions are identified.
-- Acceptance criteria describe an observable result.
-- A human reviewer is available to help and review the contribution.
-
-If an issue does not meet these conditions, improve it first or leave it unlabelled. Do not label issues merely because they look small or because a contributor needs something to work on.
-
-## Triage and automation
-
-Before creating work, search existing issues and PRs. Prefer updating, splitting, superseding, or closing an existing issue with a clear explanation over creating duplicates. Verify the current code and released behavior before declaring work obsolete.
-
-Stale automation must not close actively discussed, claimed, assigned, or reviewed pilot work by accident. Use narrow, reversible safeguards for specific cases; do not create blanket exemptions. Agents may research, draft, implement, and test, but a human maintainer remains accountable for product decisions, review, and approval. An agent must not approve its own work.
-
-## Keep the process lightweight
-
-Use existing labels and GitHub capabilities. Do not add new labels, mandatory project statuses, subjective CI quality scores, or lengthy intake forms for trivial fixes. A reporter-friendly issue can be accepted and then refined by maintainers before implementation.
+Agents may research, draft, implement, and test; they must not replace human accountability or approve their own work. Use existing labels and GitHub capabilities. Do not add mandatory project statuses, subjective CI quality scores, automatic issue closure, or lengthy intake forms for trivial fixes.
