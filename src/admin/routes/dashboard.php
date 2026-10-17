@@ -93,7 +93,7 @@ $app->get('/', function (Request $request, Response $response) {
             'done'  => $hasEmail,
             'label' => gettext('Configure Email'),
             'desc'  => gettext('Connect an SMTP server so ChurchCRM can send emails'),
-            'link'  => SystemURLs::getRootPath() . '/admin/email?settings=open',
+            'link'  => SystemURLs::getRootPath() . '/admin/email',
             'icon'  => 'fa-envelope',
         ],
             [

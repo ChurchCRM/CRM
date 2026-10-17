@@ -456,7 +456,7 @@ $fmtBytes = static function ($bytes): string {
          actionable "does the system support your chosen locale?" state
          remains as a chip in the top status banner. -->
     <!-- Email — extracted from the old "System & Configuration" card so the
-         SMTP status is discoverable at a glance and the /admin/system/debug/email
+         SMTP status is discoverable at a glance and the /admin/email/debug
          page has an inbound entry point. -->
     <?php $mailOk = SystemConfig::hasValidMailServerSettings(); ?>
     <div class="col-12 col-lg-6">
@@ -466,7 +466,7 @@ $fmtBytes = static function ($bytes): string {
             <h4 class="mb-0">
                 <i class="fa fa-envelope me-2"></i><?= gettext('Email') ?>
             </h4>
-            <a href="<?= SystemURLs::getRootPath() ?>/admin/system/debug/email" class="btn btn-sm <?= $mailOk ? 'btn-outline-secondary' : 'btn-warning' ?> ms-auto" title="<?= gettext('Open the email debug tester') ?>">
+            <a href="<?= SystemURLs::getRootPath() ?>/admin/email/debug" class="btn btn-sm <?= $mailOk ? 'btn-outline-secondary' : 'btn-warning' ?> ms-auto" title="<?= gettext('Open the email debug tester') ?>">
                 <i class="fa fa-vial me-1"></i><?= gettext('Test') ?>
             </a>
         </div>

@@ -39,21 +39,18 @@ describe("Communication Menu and Dashboards", () => {
             cy.contains("Mailchimp");
         });
 
-        it("admin can open settings panel", () => {
+        it("shows the settings form", () => {
             cy.visit("admin/email");
-            cy.contains("button", "Email Settings").click();
-            cy.get("#emailSettings").should("be.visible");
-            cy.get("#emailSettings").within(() => {
+            cy.get("#email-settings-form").within(() => {
                 cy.contains("Enable Email");
                 cy.contains("SMTP Host");
             });
         });
 
-        it("settings panel has Do Not Email property dropdown", () => {
+        it("has a Do Not Email property dropdown", () => {
             cy.visit("admin/email");
-            cy.contains("button", "Email Settings").click();
-            cy.get("#emailSettings", { timeout: 10000 }).should("be.visible");
-            cy.get("#emailSettings").contains("Do Not Email Property");
+            cy.get("#iDoNotEmailPropertyId").should("exist");
+            cy.contains("label", "Do Not Email Property");
         });
     });
 

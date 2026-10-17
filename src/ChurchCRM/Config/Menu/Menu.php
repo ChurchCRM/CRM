@@ -234,7 +234,9 @@ class Menu
 
         if ($isAdmin) {
             $adminMenu = new MenuItem(gettext('Admin'), '', true);
-            $adminMenu->addSubMenu(new MenuItem(gettext('Email Settings'), 'admin/email', true, 'fa-envelope'));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Email Settings'), 'admin/email', true, 'fa-sliders'));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Email Log'), 'admin/email/log', true, 'fa-envelope-open-text'));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Email Debug'), 'admin/email/debug', true, 'fa-stethoscope'));
             $commMenu->addSubMenu($adminMenu);
         }
 
