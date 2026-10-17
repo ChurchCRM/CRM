@@ -2,13 +2,15 @@
 
 **Status:** Accepted by George Dawoud on 2026-10-17 — implementation rollout tracked separately  
 **Scope:** Pilot in `ChurchCRM/CRM`, then evaluate other repositories  
-**Decision owner:** ChurchCRM maintainers; final approval and merge by George  
+**Decision owner:** ChurchCRM maintainers; Q1–Q8 approved by George Dawoud on 2026-10-17  
 **Review input:** [cwhorton's review of PR #10539](https://github.com/ChurchCRM/CRM/pull/10539#issuecomment-6127612100)  
 **Related but distinct:** [RFC portfolio/community feedback #10550](https://github.com/ChurchCRM/CRM/issues/10550) and [governance PR #10551](https://github.com/ChurchCRM/CRM/pull/10551). This RFC governs **implementation issue/PR quality**, not public feature voting, RFC stages, or release priorities.
 
-## Goal and current authorities
+## Purpose and current authorities
 
-Keep reporting easy for churches, but require maintainers to make an implementation task clear, safe and reviewable before asking volunteers or agents to build it. Design approval does not mean an implementation issue is scheduled or release-bound.
+Keep reporting easy for churches, while requiring maintainers to make implementation tasks clear, safe and reviewable before asking volunteers or agents to build them. Design approval does not mean an implementation issue is scheduled or release-bound.
+
+**Decision record:** George approved Q1–Q8 on 2026-10-17. This RFC is the final record of those policy decisions. It is not the implementation itself: existing operating rules remain authoritative until the follow-up work is reviewed and merged. The implementation tracker is [#10634](https://github.com/ChurchCRM/CRM/issues/10634).
 
 **Extend existing rules; do not create parallel policies.** Current source-of-truth surfaces (until follow-up PRs change them):
 - [`docs/contributing-pr-review.md`](../../docs/contributing-pr-review.md) — existing canonical PR merge/review requirements, linked from the **root** [`CONTRIBUTING.md`](../../CONTRIBUTING.md).
@@ -98,11 +100,11 @@ Review #8821, #8822, #8825, #9525, #5238, #8575–#8583, #8826, #8650, #8647, #3
 
 ## Single rollout and acceptance checklist
 
-Approval of this RFC records the accepted design decisions only; it does not itself update project-wide rules or schedule contributor tasks. Execution is separately tracked and reviewed.
+Q1–Q8 are approved. This RFC records those decisions; it does not itself update project-wide rules or schedule contributor tasks. Execution is tracked in [#10634](https://github.com/ChurchCRM/CRM/issues/10634) and reviewed separately.
 
 | Order | Accountable role | Follow-up change / verification |
 | --- | --- | --- |
-| 1 | George / maintainers | Select the CRM pilot owner and track the rollout work separately from this RFC. |
+| 1 | Maintainer / rollout owner | Establish and maintain implementation tracking in [#10634](https://github.com/ChurchCRM/CRM/issues/10634); name an accountable CRM pilot owner before starting the pilot. |
 | 2 | Contributor author; maintainer reviewer | Extend existing `docs/contributing-pr-review.md` only where gaps exist; add one issue-readiness guide, link both from **root** `CONTRIBUTING.md` and reconcile `.github/CONTRIBUTING.md` → docs-site contributing page. |
 | 3 | Contributor author; maintainer reviewer | Update `.github/ISSUE_TEMPLATE/` and PR template lightly; update `AGENTS.md`, `CLAUDE.md` where relevant, `.agents/` skill links, `github-interaction.md`, `maintainer-review-gates.md`, and review CodeRabbit config for contradictions. |
 | 4 | Maintainer triage owner | Audit existing labels and frozen-area references. No new labels/CI checks unless separately approved. Verify claiming, supersession and stale-process guidance. |
@@ -111,4 +113,4 @@ Approval of this RFC records the accepted design decisions only; it does not its
 
 **Done only when:** approved guidance is findable from actual GitHub and docs entry points; templates and agents link it rather than fork it; existing labels and freeze rules are reconciled; representative bug/feature/epic/PR/beginner cases are tested; and the pilot records verifiable issue dispositions and independent review.
 
-**Not authorized by this RFC:** automatic issue closure; automatic new milestones; force-applying labels; subjective CI quality scoring; broad backlog rewrites; any merge, release or public policy publication without George's approval.
+**Explicitly out of scope:** automatic issue closure; automatic new milestones; force-applying labels; subjective CI quality scoring; broad backlog rewrites; blanket stale-job exemptions. Any such expansion requires separate maintainer review and George's approval.
