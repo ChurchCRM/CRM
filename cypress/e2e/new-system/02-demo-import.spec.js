@@ -59,12 +59,13 @@ describe('02 - Demo Data Import', () => {
             cy.get('#importDemoDataV2').click();
             
             // Should see confirmation overlay
-            cy.get('#demoImportConfirmOverlay', { timeout: 5000 }).should('be.visible');
+            cy.get('#demoImportModal', { timeout: 5000 }).should('be.visible');
             
             // Should see the confirmation content
             cy.contains('Import Demo Data').should('be.visible');
             
             // Should have confirm and cancel buttons
+            cy.get('#demoImportCancelBtn').should('be.focused');
             cy.get('#demoImportConfirmBtn').should('be.visible');
             cy.get('#demoImportCancelBtn').should('be.visible');
         });
@@ -77,22 +78,13 @@ describe('02 - Demo Data Import', () => {
             cy.get('#importDemoDataV2', { timeout: 10000 }).click();
             
             // Wait for confirmation overlay
-            cy.get('#demoImportConfirmOverlay', { timeout: 5000 }).should('be.visible');
-            
-            // Optional: Enable Sunday School data (if checkbox exists and is not disabled)
-            cy.get('#includeDemoSundaySchool').then($cb => {
-                if (!$cb.is(':disabled') && !$cb.is(':checked')) {
-                    cy.get('#includeDemoSundaySchool').check();
-                }
-            });
+            cy.get('#demoImportModal', { timeout: 5000 }).should('be.visible');
             
             // Click confirm to start import
             cy.get('#demoImportConfirmBtn').click();
             
-            // Wait for import to complete - spinner overlay gets .show class when active
-            // Note: The spinner might appear very briefly or not at all if import is fast
-            // Just wait for the overlay to not have the show class (import done)
-            cy.get('#demoImportSpinnerOverlay', { timeout: 120000 }).should('not.have.class', 'show');
+            // The modal closes when the import succeeds and stays open with an error when it fails
+            cy.get('#demoImportModal', { timeout: 120000 }).should('not.be.visible');
         });
     });
 
@@ -365,7 +357,7 @@ describe('02 - Demo Data Import', () => {
             cy.request({
                 method: 'POST',
                 url: '/admin/api/demo/load',
-                body: { includeFinancial: false, includeEvents: true, includeSundaySchool: true, force: true },
+                body: { force: true },
                 timeout: 300000,
             }).its('body.success').should('eq', true);
 

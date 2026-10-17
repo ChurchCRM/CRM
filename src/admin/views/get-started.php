@@ -30,7 +30,7 @@ $isMailChimpActive = PluginManager::isPluginActive('mailchimp');
                     <i class="fa-solid fa-flask"></i>
                 </div>
                 <h5><?= gettext('Explore with Demo Data') ?></h5>
-                <p><?= gettext('Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data.') ?></p>
+                <p><?= gettext('Load sample families, people, groups, events, volunteer ministries and giving records. The safest way to learn ChurchCRM before committing your real data.') ?></p>
                 <span class="gs-card-cta">
                     <?= gettext('Load demo data') ?>
                     <i class="fa-solid fa-arrow-right fa-sm"></i>

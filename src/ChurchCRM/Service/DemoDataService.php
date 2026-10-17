@@ -107,19 +107,15 @@ class DemoDataService
         $this->logger = LoggerUtils::getAppLogger();
     }
 
-    public function importDemoData(bool $includeFinancial = false, bool $includeEvents = false, bool $includeSundaySchool = false, bool $force = false): array
+    public function importDemoData(bool $force = false): array
     {
         $this->importResult['startTime'] = microtime(true);
 
         try {
-            $this->logger->info('Demo data import started', [
-                'includeFinancial' => $includeFinancial,
-                'includeEvents' => $includeEvents,
-                'includeSundaySchool' => $includeSundaySchool
-            ]);
+            $this->logger->info('Demo data import started');
 
             // Load demo system configuration (if present) before importing data
-            $this->importSystemConfig($includeSundaySchool, $includeFinancial, $force);
+            $this->importSystemConfig($force);
 
             // config.json turns Volunteer v2 on; the config API adds its "Other" event type when that happens.
             if (User::isVolunteerV2Enabled()) {
@@ -128,16 +124,10 @@ class DemoDataService
 
             $emailMap = $this->importCongregation();
 
-            $this->importGroups($includeSundaySchool, $emailMap);
-
-            if ($includeEvents) {
-                $this->importEvents($this->importCalendars());
-                $this->importVolunteers($emailMap, $includeSundaySchool);
-            }
-
-            if ($includeFinancial) {
-                $this->importFinancial();
-            }
+            $this->importGroups($emailMap);
+            $this->importEvents($this->importCalendars());
+            $this->importVolunteers($emailMap);
+            $this->importFinancial();
 
             $this->importResult['success'] = true;
             $this->importResult['endTime'] = microtime(true);
@@ -180,12 +170,12 @@ class DemoDataService
 
     /**
      * Load `config.json` from the demo data path and write values into SystemConfig.
-     * The `bEnabledSundaySchool` value will be set according to the flag passed to the API.
+     * `bEnabledSundaySchool` and `bEnabledFinance` are always switched on.
      * `sTelemetryLevel` is only applied when `$force` is set: ordinary onboarding imports
      * (fresh installs, no `force`) must not silently opt a real self-hosted install into
      * telemetry — only the controlled, `force`-driven reseed used by demo.churchcrm.io does.
      */
-    private function importSystemConfig(bool $includeSundaySchool, bool $includeFinancial, bool $force = false): void
+    private function importSystemConfig(bool $force = false): void
     {
         $logger = LoggerUtils::getAppLogger();
         $filePath = self::DATA_PATH . '/config.json';
@@ -209,7 +199,7 @@ class DemoDataService
         }
 
         foreach ($json as $key => $value) {
-            // Skip bEnabledSundaySchool and bEnabledFinance here; we'll set them explicitly from the API flags.
+            // bEnabledSundaySchool and bEnabledFinance are switched on below.
             // Skip sTelemetryLevel here too; it's only ever applied below, and only when $force is set.
             if ($key === 'bEnabledSundaySchool' || $key === 'bEnabledFinance' || $key === 'sTelemetryLevel') {
                 continue;
@@ -223,19 +213,13 @@ class DemoDataService
             }
         }
 
-        // Ensure the Sunday School and Finance feature toggles are set according to the API flags
-        try {
-            SystemConfig::setValue('bEnabledSundaySchool', $includeSundaySchool ? '1' : '0');
-        } catch (Exception $e) {
-            $this->addWarning('Failed to set bEnabledSundaySchool from API flag', ['error' => $e->getMessage()]);
-            $logger->warning('Failed to set bEnabledSundaySchool from API flag', ['error' => $e->getMessage()]);
-        }
-
-        try {
-            SystemConfig::setValue('bEnabledFinance', $includeFinancial ? '1' : '0');
-        } catch (Exception $e) {
-            $this->addWarning('Failed to set bEnabledFinance from API flag', ['error' => $e->getMessage()]);
-            $logger->warning('Failed to set bEnabledFinance from API flag', ['error' => $e->getMessage()]);
+        foreach (['bEnabledSundaySchool', 'bEnabledFinance'] as $toggle) {
+            try {
+                SystemConfig::setValue($toggle, '1');
+            } catch (Exception $e) {
+                $this->addWarning("Failed to enable {$toggle}", ['error' => $e->getMessage()]);
+                $logger->warning("Failed to enable {$toggle}", ['error' => $e->getMessage()]);
+            }
         }
 
         // sTelemetryLevel from config.json is only ever applied on a forced reseed (e.g. the
@@ -632,7 +616,7 @@ class DemoDataService
      * Uses Propel ORM only - no external service dependencies.
      * IMPORTANT: Only creates roles that are explicitly defined in peopleTypes. Does NOT auto-create undefined roles.
      */
-    private function importGroups(bool $includeSundaySchool, array $emailMap): void
+    private function importGroups(array $emailMap): void
     {
 
 
@@ -646,10 +630,6 @@ class DemoDataService
         foreach ($data as $groupData) {
             try {
                 $isSS = !empty($groupData['isSundaySchool']);
-                // If includeSundaySchool flag is false, skip Sunday School groups; otherwise import all groups.
-                if (!$includeSundaySchool && $isSS) {
-                    continue;
-                }
 
                 $group = new Group();
                 // Use Group convenience helpers for Sunday School to set type 4
@@ -682,11 +662,6 @@ class DemoDataService
         // IMPORTANT: Only use roles defined in the group's peopleTypes array
         foreach ($data as $groupData) {
             try {
-                $isSS = !empty($groupData['isSundaySchool']);
-                if (!$includeSundaySchool && $isSS) {
-                    continue;
-                }
-
                 $groupName = trim((string)($groupData['name'] ?? ''));
                 if ($groupName === '' || !isset($this->groupNameToId[$groupName])) {
                     $this->addWarning("Group '{$groupName}' not found in created groups, skipping memberships", ['group_name' => $groupName]);
@@ -1112,8 +1087,7 @@ class DemoDataService
      *
      * For each group name, looks up the group in the in-memory map built by
      * importGroups(). Emits a warning (not an error) and skips gracefully when
-     * a group was not imported (e.g. Sunday-School group when includeSundaySchool
-     * is false).
+     * a group was not imported.
      *
      * @param string[] $groupNames Trimmed group name strings from the CSV
      */
@@ -1128,7 +1102,7 @@ class DemoDataService
             $gid = $this->groupNameToId[$gname] ?? null;
             if ($gid === null) {
                 $this->addWarning(
-                    "Event '{$event->getTitle()}': linked group '{$gname}' not found — skipping (import it or enable Sunday School)"
+                    "Event '{$event->getTitle()}': linked group '{$gname}' not found — skipping (import it)"
                 );
                 continue;
             }
@@ -1219,7 +1193,7 @@ class DemoDataService
      * Volunteer v2 sample data from volunteers.json, built through the volunteer services as the
      * importing administrator in one transaction. An existing ministry is left as it is.
      */
-    private function importVolunteers(array $emailMap, bool $includeSundaySchool): void
+    private function importVolunteers(array $emailMap): void
     {
         if (!User::isVolunteerV2Enabled()) {
             return;
@@ -1245,9 +1219,6 @@ class DemoDataService
             $actor = AuthenticationManager::getCurrentUser();
             $occurrenceIds = [];
             foreach ($data['ministries'] ?? [] as $ministryData) {
-                if (!empty($ministryData['sundaySchool']) && !$includeSundaySchool) {
-                    continue;
-                }
                 if (VolunteerMinistryQuery::create()->filterByName($ministryData['name'])->exists()) {
                     continue;
                 }

@@ -37,7 +37,7 @@ describe("Admin Get Started", () => {
         cy.intercept("POST", "**/api/demo/load").as("demoLoad");
 
         cy.get("#importDemoDataV2").click();
-        cy.get("#demoImportConfirmOverlay").should("be.visible");
+        cy.get("#demoImportModal").should("be.visible");
 
         // The warning block and the amber "Import demo data anyway" button
         // should both be present because the DB has data.
@@ -47,15 +47,15 @@ describe("Admin Get Started", () => {
             .should("have.class", "btn-warning")
             .and("contain", "Import demo data anyway");
 
-        cy.get("#demoImportWarning .demo-import-count-line").should("contain", "people").and("contain", "families");
+        cy.get("#demoImportWarning").should("contain", "people").and("contain", "families");
         cy.get("#demoImportWarning a").should("not.exist");
 
         // And no API call has fired yet — just opening the overlay must
         // not trigger /api/demo/load.
         cy.get("@demoLoad.all").should("have.length", 0);
 
-        cy.get("#demoImportCancelBtn").click();
-        cy.get("#demoImportConfirmOverlay").should("not.be.visible");
+        cy.get("#demoImportCancelBtn").should("be.focused").click();
+        cy.get("#demoImportModal").should("not.be.visible");
     });
 
     it("should show skip link back to Admin Dashboard", () => {
