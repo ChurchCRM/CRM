@@ -85,9 +85,8 @@ class VolunteerQualificationService
             throw VolunteerException::notFound(gettext('Person not found'));
         }
 
-        // #10531: a grant that puts somebody new in the pool on a team's authority follows
-        // the team leader's own add path: only a person the pool search would offer, and
-        // the ministry's coordinators are told.
+        // A grant on a team's authority that adds someone to the pool follows the team leader's
+        // add path: only a person the pool search would offer, and the coordinators are told.
         $ministryId = (int) $position->getMinistryId();
         $byTeam = !$this->authz->canManageMinistry($actor, $ministryId);
         if ($byTeam && !$this->ministries->isInPool($ministryId, $personId) && !$this->ministries->isPoolCandidate($personId)) {

@@ -87,7 +87,6 @@ use Psr\Log\LoggerInterface;
  */
 class VolunteerMinistryService
 {
-    /** #10531: the person search behind a team leader's Add Volunteer picker. */
     public const POOL_SEARCH_MIN_LENGTH = 2;
     public const POOL_SEARCH_LIMIT = 20;
 
@@ -1407,18 +1406,10 @@ class VolunteerMinistryService
     }
 
     /**
-     * #10531: a team leader puts an existing person in the pool of their team's
-     * ministry, optionally qualifies them for positions of that team, and the
-     * ministry's coordinators are emailed who added whom. The added person is not.
-     *
-     * `canManageTeam()` admits the team's leaders and everyone above them, and the
-     * ministry is the team's own, so a team leader reaches no other ministry's pool.
-     * Taking somebody out of the pool stays `removePoolMember()`'s, which is
-     * ministry-level. The person must be one `searchPoolCandidates()` could offer.
-     *
-     * Coordinators are told only when the person was not in the pool already; with no
-     * coordinator the global volunteer managers are told, as for `help_offer`. The
-     * team's other leaders are not told.
+     * A team leader puts an existing person in the pool of their team's ministry and
+     * optionally qualifies them for positions of that team. The ministry is the team's own,
+     * and the person must be one `searchPoolCandidates()` could offer. Coordinators are
+     * emailed only when the person was not in the pool already.
      *
      * @param int[] $positionIds
      *
@@ -1487,9 +1478,8 @@ class VolunteerMinistryService
     }
 
     /**
-     * #10531: tell the ministry's coordinators that a team leader put somebody in its
-     * pool; with no coordinator the global volunteer managers are told, as for
-     * `help_offer`. Never the leader, never the person added.
+     * Tell the ministry's coordinators (else the global volunteer managers) that a team
+     * leader added somebody to its pool. Never the leader or the person added.
      *
      * @return int how many people were told
      */
@@ -1508,10 +1498,8 @@ class VolunteerMinistryService
     }
 
     /**
-     * #10531: the people a team leader may find and add — not deceased, not
-     * deactivated, not in a deactivated family — matched on first or last name, every
-     * word of the text somewhere in either. Id, name and family name only, at most
-     * `$limit` of them, never fewer than two characters asked for.
+     * Active people (not deceased, deactivated or in a deactivated family) whose first or
+     * last name matches every word of `$text`; id, name and family name only, at most `$limit`.
      *
      * @return array<int, array{id: int, name: string, familyName: string}>
      */

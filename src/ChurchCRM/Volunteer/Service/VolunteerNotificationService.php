@@ -94,12 +94,10 @@ class VolunteerNotificationService
      */
     public const MAX_ATTEMPTS = 5;
 
-    /** `HH:MM` in `sTimeZone` of the daily unfilled-position batch (#10529). */
     public const GAP_ALERT_BATCH_TIME_CONFIG = 'sVolunteerGapAlertBatchTime';
 
     public const DEFAULT_GAP_ALERT_BATCH_TIME = '07:00';
 
-    /** The day (Y-m-d) whose batch was last queued: claimed before it is, like the top-up. */
     public const GAP_ALERT_BATCH_DATE_CONFIG = 'sLastVolunteerGapAlertBatchDate';
 
     private LoggerInterface $logger;
@@ -325,11 +323,7 @@ class VolunteerNotificationService
         );
     }
 
-    /**
-     * `pool_add:{ministryId}:{personId}:{Y-m-d}:{recipientPersonId}` (#10531): one message
-     * per coordinator for each person a team leader adds, and again on a later day if
-     * they are removed and added back.
-     */
+    /** `pool_add:{ministryId}:{personId}:{Y-m-d}:{recipientPersonId}`: dated so a re-add on a later day notifies again. */
     public function poolAddKey(
         int $ministryId,
         int $personId,
@@ -369,9 +363,8 @@ class VolunteerNotificationService
      * person, so re-signing up after a decline (I8 re-uses the same row) produces no
      * second confirmation.
      *
-     * `$recordedByPersonId` is the coordinator who assigned them already accepted
-     * (#10528); the row's context carries it, so the message says who put them on
-     * the schedule instead of thanking them for signing up.
+     * `$recordedByPersonId` is the coordinator who recorded the acceptance; the message
+     * then says who put them on the schedule instead of thanking them for signing up.
      */
     public function enqueueSignupConfirm(VolunteerAssignment $assignment, ?int $recordedByPersonId = null): VolunteerNotification
     {
@@ -527,10 +520,6 @@ class VolunteerNotificationService
     }
 
     /**
-     * A team leader added somebody to the ministry's volunteer pool (#10531). Ministry
-     * scoped like `help_offer`: who was added, by whom, and from which team ride in
-     * `vntf_Context`.
-     *
      * @param int[] $recipientPersonIds
      *
      * @return VolunteerNotification[]
@@ -668,15 +657,11 @@ class VolunteerNotificationService
      * every position still short (`getOpenGaps()`, D34's *Needs N more*) on a scheduled
      * occurrence of an active ministry.
      *
-     * Once a day, at the first pass at or after `sVolunteerGapAlertBatchTime` (#10529),
-     * the positions starting within `iVolunteerGapAlertLeadHours` + 24 hours are queued
-     * as the daily batch, which the drain sends as one message per coordinator. Every
-     * pass then queues the positions starting within the lead alone, one message each:
-     * in practice the gaps that opened since the batch. Each position is reported to each
-     * recipient once, batch or not (the dedupe key is the same), and not at all to a
-     * recipient who already has the occurrence-wide alert a decline sends
-     * (`notifyGapOpened()`), because that one lists every short position. A lead of 0
-     * turns both off and leaves the reminders alone (#10526).
+     * Once a day, at the first pass at or after `sVolunteerGapAlertBatchTime`, positions
+     * starting within the lead + 24 hours are queued as the daily batch (one message per
+     * coordinator). Every pass queues positions within the lead alone, one message each.
+     * A position is reported to a recipient once, and not to one who already has the
+     * occurrence-wide alert a decline sends (`notifyGapOpened()`). A lead of 0 turns both off.
      *
      * @return int rows enqueued (existing rows are not counted)
      */
@@ -690,8 +675,7 @@ class VolunteerNotificationService
         $now = DateTimeUtils::getToday();
         $enqueued = 0;
 
-        // The claim and the batch's rows commit together: a batch that fails part-way
-        // gives its day back for the next run instead of leaving the day sent.
+        // The claim and the batch's rows commit together, so a failed batch gives its day back.
         $batchDay = $this->gapAlertBatchDayDue($now);
         if ($batchDay !== null) {
             $connection = Propel::getWriteConnection(VolunteerNotificationTableMap::DATABASE_NAME);
@@ -719,9 +703,6 @@ class VolunteerNotificationService
         return $enqueued;
     }
 
-    /**
-     * `HH:MM` of the daily batch: the setting, or 07:00 when it is not a time of day.
-     */
     public static function gapAlertBatchTime(): string
     {
         $value = trim((string) SystemConfig::getValue(self::GAP_ALERT_BATCH_TIME_CONFIG));
@@ -732,11 +713,7 @@ class VolunteerNotificationService
         return sprintf('%02d:%02d', (int) $match[1], (int) $match[2]);
     }
 
-    /**
-     * Today, once its batch time has passed; null before it. A day with no pass after its
-     * batch time has no batch, so a coordinator never gets two on one day: its gaps still
-     * go out one by one, and the next day's batch covers the 24 hours after it.
-     */
+    /** Today once its batch time has passed, else null. */
     private function gapAlertBatchDayDue(\DateTimeInterface $now): ?string
     {
         [$hour, $minute] = array_map('intval', explode(':', self::gapAlertBatchTime()));
@@ -745,11 +722,7 @@ class VolunteerNotificationService
         return $now < $batchTime ? null : $batchTime->format('Y-m-d');
     }
 
-    /**
-     * True for exactly one caller per batch day: `VolunteerScheduleTopUp::claimToday()`'s
-     * single-statement claim, except that only a LATER day wins, so moving the batch time
-     * back past now cannot send a second batch for a day already sent.
-     */
+    /** True for one caller per batch day; only a later day wins, so moving the batch time back cannot resend a day. */
     private function claimGapAlertBatchDay(string $day): bool
     {
         $existing = ConfigQuery::create()->findOneByName(self::GAP_ALERT_BATCH_DATE_CONFIG);
@@ -780,9 +753,7 @@ class VolunteerNotificationService
     }
 
     /**
-     * Queue a `gap_alert` per short position, per coordinator not yet told, on the
-     * occurrences starting within `$hours` from now. `$batchDay` marks the rows as that
-     * day's batch, which the drain sends together.
+     * Queue a `gap_alert` per short position and coordinator not yet told; `$batchDay` marks the day's batch.
      *
      * @return int rows enqueued
      */
@@ -926,9 +897,6 @@ class VolunteerNotificationService
      * 4. retry is implicit — a row below the cap is still `pending` and still due, so the
      *    next drain picks it up. `failed` is terminal and never re-selected.
      *
-     * A row of the daily gap-alert batch (#10529) is delivered with every other due
-     * batched row of its recipient, as one message (`deliverGapAlertBatch()`).
-     *
      * Every row is wrapped in its own `try/catch (\Throwable)` — the per-channel
      * isolation pattern from `dto\Notification::send()` (N4) — so one unreachable SMTP
      * server, one deleted person or one malformed address cannot stop the batch. Nothing
@@ -997,9 +965,8 @@ class VolunteerNotificationService
     }
 
     /**
-     * `pending` rows due now. A row about a cancelled occurrence is held, not skipped
-     * (#10387): restoring the occurrence sends it as planned, while a skipped row's dedupe
-     * key would stop the reminder scan from ever queuing it again.
+     * `pending` rows due now. A row about a cancelled occurrence is held, not skipped: a
+     * skipped row's dedupe key would stop the reminder scan from queuing it again.
      */
     private function dueRowsQuery(): VolunteerNotificationQuery
     {
@@ -1019,8 +986,7 @@ class VolunteerNotificationService
     }
 
     /**
-     * Every due batched `gap_alert` of this row's recipient, the row included, however
-     * many the drain's own limit left out: they go in one message or the batch is split.
+     * Every due batched `gap_alert` of this row's recipient, past the drain's limit, so the batch stays one message.
      *
      * @return VolunteerNotification[]
      */
@@ -1040,12 +1006,8 @@ class VolunteerNotificationService
     }
 
     /**
-     * Deliver one recipient's batched `gap_alert` rows as ONE message (#10529).
-     *
-     * `deliver()`'s recipient rules apply to the whole batch. Then each row whose
-     * occurrence is gone or over, or whose position has been filled since it was queued,
-     * is skipped on its own; the rest are sent together and share the outcome. A batch
-     * left with nothing sends nothing.
+     * Deliver one recipient's batched `gap_alert` rows as one message. Rows whose
+     * occurrence is gone or whose position has been filled are skipped; the rest share the outcome.
      *
      * @param VolunteerNotification[] $rows
      * @param array<int, bool>        $doNotEmail
@@ -1305,7 +1267,6 @@ class VolunteerNotificationService
                 // Reply and reach Ann. The message goes TO the coordinator, so
                 // coordinatorPersonId() would point it back at the recipient.
                 self::TYPE_HELP_OFFER => (int) ($this->rowContext($row)['personId'] ?? 0) ?: null,
-                // #10531: replies reach the team leader who added the person.
                 self::TYPE_POOL_ADD => (int) ($this->rowContext($row)['addedBy'] ?? 0) ?: null,
                 default => $this->coordinatorPersonId($row),
             };

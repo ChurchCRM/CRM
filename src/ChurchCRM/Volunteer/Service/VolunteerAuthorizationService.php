@@ -362,8 +362,7 @@ class VolunteerAuthorizationService
      *     ministries list page was retired the sidebar is the only way in;
      *   - a pure **team leader** holds only `team` scopes, so the list is
      *     empty. Leading a team is not administering the ministry above it
-     *     (§4.6); the dashboard links them to `/ministries/{id}`'s team-only
-     *     view instead (#10530).
+     *     (§4.6); the dashboard links them to `/ministries/{id}`'s team-only view.
      *
      * Ids and names only — this runs on **every** page of the application, so
      * it never hydrates a model object.
@@ -408,9 +407,7 @@ class VolunteerAuthorizationService
     }
 
     /**
-     * #10530: the active ministries this user reaches only as a team leader, id => name,
-     * ordered by name: the sidebar lists them beside the ones they administer, each
-     * opening the ministry page's team-only view.
+     * The active ministries this user reaches only as a team leader, id => name, by name.
      *
      * @return array<int, string>
      */

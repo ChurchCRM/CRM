@@ -3,12 +3,9 @@
 namespace ChurchCRM\Volunteer\Email;
 
 /**
- * Outbox type `signup_confirm` — the volunteer is on the schedule and has already
- * said yes (design Appendix C).
- *
- * Enqueued by `selfSignup()`, which #9712 exposes, and by an assignment a
- * coordinator recorded as accepted in the Assign dialog (#10528). The second
- * names who recorded it, because the volunteer did not sign themselves up.
+ * Outbox type `signup_confirm`: the volunteer is on the schedule and has already said yes.
+ * Sent after a self-signup, or after a coordinator recorded the acceptance, in which case it
+ * names who did.
  */
 class VolunteerSignupConfirmEmail extends BaseVolunteerEmail
 {

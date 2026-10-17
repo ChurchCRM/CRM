@@ -351,13 +351,11 @@ export function wireUnclippedRowMenus(wrapperId: string): void {
 }
 
 /**
- * Keep a sideways-scrolling table's heading row in view while the page scrolls (#10527).
+ * Keep a sideways-scrolling table's heading row in view while the page scrolls.
  *
- * `position: sticky` sticks to the nearest scrolling ancestor, and the wrapper that lets
- * the table scroll sideways is one, so a sticky cell inside it never follows the page.
- * The row is copied into a strip just above the wrapper instead: the strip sticks below
- * the page's sticky top bar, follows the wrapper's sideways scroll, and takes every
- * column width from the real row, which stays in the table, collapsed, for screen readers.
+ * A sticky cell inside the sideways-scrolling wrapper sticks to the wrapper, not the page, so
+ * the row is copied into a strip above the wrapper that sticks below the page's top bar. The
+ * real row stays in the table, collapsed, for column widths and screen readers.
  *
  * Returns the function that copies the row again after the table is re-rendered.
  */

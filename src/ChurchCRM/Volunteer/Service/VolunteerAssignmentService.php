@@ -302,9 +302,8 @@ class VolunteerAssignmentService
             // `signup_confirm` receipt on that path instead — inside this same
             // transaction (§2.14), so a rolled-back signup leaves no confirmation
             // behind. A pre-accepted assignment is answered too, so it asks nothing;
-            // the Assign dialog's "Record they accepted" (#10528) sends the same
-            // receipt in the coordinator's name. The reminder before the date still
-            // goes out like any other.
+            // "Record they accepted" sends the same receipt in the coordinator's name.
+            // The reminder before the date still goes out like any other.
             if ($selfSignup) {
                 $this->notifications->enqueueSignupConfirm($assignment);
             } elseif (!$preAccepted) {

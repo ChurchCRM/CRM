@@ -54,9 +54,7 @@ $app->group('', function (RouteCollectorProxy $group): void {
         // that independently, with the ministry-level entity middleware (D5, §4.5).
         $bIsMinistryCoordinator = $authz->canManageMinistry($currentUser, $ministryId);
 
-        // #10530: a team leader of this ministry gets the team-only view — their own
-        // teams' positions, Volunteers grid, schedules and occurrences, the same as
-        // the portal's My Teams page. Every call it makes is a team-scoped API.
+        // A team leader of this ministry gets the team-only view, like the portal's My Teams page.
         $aTeams = [];
         if (!$bIsMinistryCoordinator) {
             $managedTeamIds = $authz->getManagedTeamIds($currentUser);

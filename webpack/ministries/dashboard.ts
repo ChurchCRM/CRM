@@ -443,7 +443,7 @@ function renderUpcoming(rows: VolunteerDashboardOccurrence[], openableMinistryId
  * ministry list is scoped to ministries they coordinate, which is empty for them, so
  * without this they pass the role gate and find nothing to open. The server marks a
  * ministry they only reach through a team as `manageable: false`; it opens the ministry
- * page's team-only view (#10530), and so does each team.
+ * page's team-only view, and so does each team.
  */
 function renderScope(scope: VolunteerDashboard["scope"]): void {
   const ministries = byId("volunteer-scope-ministries");

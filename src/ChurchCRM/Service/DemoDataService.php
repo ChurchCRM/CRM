@@ -62,7 +62,6 @@ class DemoDataService
 {
     private const DATA_PATH = __DIR__ . '/../../admin/demo';
 
-    /** `vntf_LastError` of the volunteer messages the import records as not sent. */
     private const DEMO_NOTIFICATION_REASON = 'demo data import';
 
     private array $importResult = [
@@ -122,7 +121,7 @@ class DemoDataService
             // Load demo system configuration (if present) before importing data
             $this->importSystemConfig($includeSundaySchool, $includeFinancial, $force);
 
-            // config.json turns Volunteer v2 on; the config API adds its "Other" event type when that happens (#10357).
+            // config.json turns Volunteer v2 on; the config API adds its "Other" event type when that happens.
             if (User::isVolunteerV2Enabled()) {
                 VolunteerEventService::addOtherEventType();
             }
@@ -902,8 +901,7 @@ class DemoDataService
     // Legacy membership import removed - memberships are created from `groups.json` during import.
 
     /**
-     * Import calendars.csv, reusing a church calendar of the same name, and share the rows
-     * marked `portal` in the Member Portal in place of whatever it shared before.
+     * Import calendars.csv, reusing a church calendar of the same name, and share the rows marked `portal`.
      *
      * @return array<string, Calendar> calendars.csv id → calendar
      */
@@ -1218,14 +1216,8 @@ class DemoDataService
     }
 
     /**
-     * Volunteer v2 sample data from volunteers.json: ministries with their teams, positions,
-     * qualified volunteers, coordinators and team leaders, schedules that follow the demo
-     * events, and accepted, pending and declined assignments on their occurrences.
-     *
-     * Everything goes through the volunteer services as the administrator running the import,
-     * in one transaction. A ministry that already exists is left as it is, so a forced re-run
-     * adds nothing. A Children's ministry is built only with the Sunday School classes it
-     * teaches.
+     * Volunteer v2 sample data from volunteers.json, built through the volunteer services as the
+     * importing administrator in one transaction. An existing ministry is left as it is.
      */
     private function importVolunteers(array $emailMap, bool $includeSundaySchool): void
     {
@@ -1338,9 +1330,8 @@ class DemoDataService
     }
 
     /**
-     * A schedule saved the way the schedule dialog saves one — its occurrences generated to the
-     * scheduling horizon and its default volunteers assigned — then the planned assignments,
-     * `occurrence` counting the schedule's occurrences from 1.
+     * A schedule saved the way the schedule dialog saves one, then its planned assignments
+     * (`occurrence` counts from 1).
      *
      * @param array<string, VolunteerPosition> $positions the team's positions by name
      *
@@ -1440,10 +1431,8 @@ class DemoDataService
     }
 
     /**
-     * The demo's people have real-looking addresses, so nothing the import sets up is ever
-     * mailed, whatever the email settings become: what it queued, and the reminders and
-     * unfilled-position alerts the background jobs would queue for its assignments and gaps,
-     * are recorded as skipped. Their dedupe keys stop the background jobs queuing them again.
+     * Demo people have real-looking addresses, so the messages the import queued, and the
+     * reminders and alerts the background jobs would queue for it, are recorded as skipped.
      *
      * @param int[] $occurrenceIds
      */

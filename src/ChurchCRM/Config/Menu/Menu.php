@@ -350,7 +350,7 @@ class Menu
      * A pure **team leader** passes that predicate. `getManageableMinistries()`
      * returns nothing for them, because leading a team is not administering the
      * ministry above it (§4.6), so their entries come from `getTeamLedMinistries()`
-     * and open the ministry page's team-only view (#10530). A manager who
+     * and open the ministry page's team-only view. A manager who
      * has not created a ministry yet sees the same Dashboard-only heading, and the
      * dashboard's "New ministry" action is right there. Only ACTIVE ministries are
      * listed here; deactivated ones move to the Deactivated Ministries heading.

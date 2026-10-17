@@ -20,7 +20,7 @@
 }
 
 // The heading row of a `.volunteer-scroll-x` table, kept in view while the page
-// scrolls (#10527). The wrapper scrolls sideways, which makes it the scroll
+// scrolls. The wrapper scrolls sideways, which makes it the scroll
 // container a sticky cell inside it would stick to, so `wireStickyHead()` in
 // ui.ts copies the row into this strip just above the wrapper. The strip sticks
 // below the page's sticky top bar and follows the wrapper's sideways scroll; the

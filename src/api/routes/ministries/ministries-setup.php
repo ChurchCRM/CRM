@@ -197,13 +197,9 @@ $app->group('/ministries', function (RouteCollectorProxy $group): void {
         $setup->delete('/ministries/{ministryId:[0-9]+}/pool/{personId:[0-9]+}', 'removeVolunteerPoolMember')
             ->add(new VolunteerMinistryMiddleware());
 
-        // #10531: a team leader adds somebody to the pool of their team's ministry, and
-        // may tick positions of that team as they do. Removing stays ministry-level.
         $setup->post('/teams/{teamId:[0-9]+}/pool/{personId:[0-9]+}', 'addVolunteerTeamPoolMember')
             ->add(new VolunteerTeamMiddleware());
 
-        // #10531: who that route may add, for the Add Volunteer picker. Behind this
-        // group's role gate, which admits a team leader on any kind of login.
         $setup->get('/people/search', 'searchVolunteerPoolCandidates');
 
         // "Remove Volunteer" on the ministry page's Volunteers tab: qualifications,
@@ -1816,7 +1812,7 @@ function addVolunteerPoolMember(Request $request, Response $response): Response
  *     path="/ministries/teams/{teamId}/pool/{personId}",
  *     operationId="addVolunteerTeamPoolMember",
  *     summary="A team leader puts an existing person in the volunteer pool of their team's ministry",
- *     description="#10531. Allowed to a leader of this team and to anyone who may manage it (its ministry's coordinators, global volunteer managers, administrators). The person must be one GET /ministries/people/search can return: not deceased, not deactivated, not in a deactivated family. positionIds optionally qualifies them for positions of THIS team through the ordinary qualification grant, in the same transaction. When the person was not in the pool already, each of the ministry's coordinators (or, when it has none, each global volunteer manager) is emailed who added whom - outbox type pool_add; the added person and the team's other leaders are not. Removing somebody from the pool is not offered here: it stays DELETE /ministries/ministries/{ministryId}/pool/{personId}, which is ministry-level.",
+ *     description="Allowed to a leader of this team and to anyone who may manage it (its ministry's coordinators, global volunteer managers, administrators). The person must be one GET /ministries/people/search can return: not deceased, not deactivated, not in a deactivated family. positionIds optionally qualifies them for positions of THIS team through the ordinary qualification grant, in the same transaction. When the person was not in the pool already, each of the ministry's coordinators (or, when it has none, each global volunteer manager) is emailed who added whom - outbox type pool_add; the added person and the team's other leaders are not. Removing somebody from the pool is not offered here: it stays DELETE /ministries/ministries/{ministryId}/pool/{personId}, which is ministry-level.",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="teamId", in="path", required=true, @OA\Schema(type="integer")),
@@ -1871,7 +1867,7 @@ function addVolunteerTeamPoolMember(Request $request, Response $response): Respo
  *     path="/ministries/people/search",
  *     operationId="searchVolunteerPoolCandidates",
  *     summary="Find people a team leader may add to a volunteer pool",
- *     description="#10531, the Add Volunteer picker of the admin team view and the Member Portal team page. Reachable by a team leader on any kind of login and by coordinators, volunteer managers and administrators. Only people who are not deceased, not deactivated and not in a deactivated family; every word of q must match a first or last name. Returns id, name and family name ONLY - no email, phone, address, photo or age - and at most 20 people, so a team leader cannot page through the directory. Fewer than two characters returns an empty list.",
+ *     description="The Add Volunteer picker of the admin team view and the Member Portal team page. Reachable by a team leader on any kind of login and by coordinators, volunteer managers and administrators. Only people who are not deceased, not deactivated and not in a deactivated family; every word of q must match a first or last name. Returns id, name and family name ONLY - no email, phone, address, photo or age - and at most 20 people, so a team leader cannot page through the directory. Fewer than two characters returns an empty list.",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="q", in="query", required=true, @OA\Schema(type="string", minLength=2, maxLength=100)),

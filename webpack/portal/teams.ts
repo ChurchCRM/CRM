@@ -133,8 +133,6 @@ function buildComponents(): void {
     teams,
     ensureContext: ensureTeam,
     fetch: () => getTeamQualificationMatrix(teamId),
-    // #10531: a team leader adds an existing person to the ministry's pool, ticking
-    // this team's positions; the coordinators are told and only they may remove.
     teamAdd: true,
     addPoolMember: (personId, positionIds) => addTeamPoolMember(teamId, personId, positionIds),
     ministryName: () => byId("portal-team")?.dataset.ministryName ?? "",

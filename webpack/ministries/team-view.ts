@@ -1,19 +1,9 @@
 /**
- * The ministry page's team-only view (#10530): what a team leader with Manage My
- * Ministries sees at `/ministries/{id}` — Positions · Volunteers · Schedules ·
- * Occurrences for the teams of this ministry they lead, and nothing ministry-wide.
- *
- * A third adapter over `./components/*`, beside `ministry.ts` (the whole ministry)
- * and `../portal/teams.ts` (one team in the portal). It gives a team leader exactly
- * the portal's abilities, through the same team-scoped endpoints:
- *
- *   GET  /api/ministries/teams/{id}                       team + its positions
- *   GET  /api/ministries/teams/{id}/qualification-matrix  the grid
- *   GET  /api/ministries/teams/{id}/schedules             the schedules
- *   GET  /api/ministries/occurrences?ministryId=…         the dates, scoped to their teams
- *
- * The ministry-wide controls are not in the markup the route renders for this view,
- * and the API refuses them to a team leader whatever the page shows (D5).
+ * The ministry page's team-only view: Positions · Volunteers · Schedules · Occurrences for the
+ * teams of this ministry the team leader leads. A third adapter over `./components/*`, beside
+ * `ministry.ts` (the whole ministry) and `../portal/teams.ts` (one team in the portal), calling
+ * the same team-scoped endpoints. Ministry-wide controls are not in its markup, and the API
+ * refuses them to a team leader regardless.
  */
 
 import {

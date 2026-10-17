@@ -31,8 +31,8 @@ use ChurchCRM\Utils\InputUtils;
  *     Team · Event · From · To above the table, every field live.
  *
  * A team leader who does not coordinate the ministry gets the team-only view
- * (#10530): Positions · Volunteers · Schedules · Occurrences for their own teams,
- * driven by webpack/ministries/team-view.ts, and none of the ministry-wide markup.
+ * (webpack/ministries/team-view.ts): Positions · Volunteers · Schedules · Occurrences
+ * for their own teams, and none of the ministry-wide markup.
  *
  * Every string is `gettext()`. The JS strings live in
  * webpack/ministries/ministry.ts, because an `i18next.t()` call inside a .php file
@@ -48,7 +48,7 @@ use ChurchCRM\Utils\InputUtils;
 /** @var bool $bIsMinistryCoordinator */
 /** @var bool $bCanPinAnyCalendar the viewer holds Add Events, so every calendar is offered */
 /** @var string|null $sClassUrlBase where a linked class opens, or null when the viewer cannot open groups */
-/** @var bool $bTeamView a team leader's view (#10530): their teams only, nothing ministry-wide */
+/** @var bool $bTeamView a team leader's view: their teams only, nothing ministry-wide */
 /** @var array<int, array{id: int, name: string}> $aTeams the teams of this ministry the team leader runs */
 /** @var bool $bSundaySchool the ministry provides teachers for Sunday School (D29) */
 
@@ -984,7 +984,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                   data-placeholder="<?= InputUtils::escapeAttribute(gettext('Start typing a name')) ?>"></select>
         </div>
 <?php if ($bTeamView): ?>
-        <!-- #10531: positions of the grid's team, ticked through the ordinary grant. -->
         <div class="d-none" id="add-volunteer-positions-row">
           <div class="form-label"><?= gettext('Qualify them for') ?></div>
           <div id="add-volunteer-positions"></div>

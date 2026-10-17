@@ -4,12 +4,7 @@ namespace ChurchCRM\Volunteer\Email;
 
 use ChurchCRM\dto\SystemURLs;
 
-/**
- * Outbox type `pool_add` (#10531): a team leader added somebody to the ministry's
- * volunteer pool, and each of the ministry's coordinators is told who added whom.
- * Removing someone from the pool stays a coordinator's act, so the button opens the
- * ministry page where that is done.
- */
+/** Outbox type `pool_add`: tells a ministry's coordinators who a team leader added to its pool. */
 class VolunteerPoolAddEmail extends BaseVolunteerEmail
 {
     /**

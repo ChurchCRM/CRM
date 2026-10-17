@@ -3,13 +3,9 @@
 namespace ChurchCRM\Volunteer\Email;
 
 /**
- * Outbox type `gap_alert`, the daily batch (#10529, design §3.6, Appendix C): every
- * position still short on the occurrences of the coming lead + 24 hours that this
- * coordinator has not been told about yet, in one message.
- *
- * One `gap_alert` row per position stands behind it; the drain groups a recipient's
- * batched rows and drops the positions filled since they were queued. Like the single
- * alert it names no volunteer, so it carries no Reply-To.
+ * Outbox type `gap_alert`, the daily batch: every position still short in the coming lead + 24
+ * hours that this coordinator has not been told about, in one message. It names no volunteer,
+ * so it carries no Reply-To.
  */
 class VolunteerGapAlertBatchEmail extends BaseVolunteerEmail
 {
@@ -45,8 +41,7 @@ class VolunteerGapAlertBatchEmail extends BaseVolunteerEmail
 
         $paragraphs = [sprintf(gettext('Volunteers still needed for these upcoming occurrences: %d'), $total)];
 
-        // One paragraph per occurrence: when, whose, which positions and the link, as
-        // prose, because the shared template has one body slot (Appendix C).
+        // One paragraph per occurrence: the shared template has one body slot.
         foreach ($this->occurrences as $occurrence) {
             $context = $occurrence['context'];
             $lines = [];

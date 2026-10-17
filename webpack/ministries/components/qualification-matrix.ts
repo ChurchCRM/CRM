@@ -17,9 +17,8 @@
  * Controls a caller does not want are simply left out of ITS markup: every
  * `byId()` below returns null for an absent element and the wiring is inert. That
  * is how the portal hides "Add from Cart" and "Remove Volunteer" — ministry-level
- * acts the API refuses a team leader anyway (D5). A team leader's "Add Volunteer"
- * (#10531) is the same dialog with `teamAdd`: its own person search and the grid
- * team's positions to tick.
+ * acts the API refuses a team leader anyway (D5). A team leader's "Add Volunteer" is the
+ * same dialog with `teamAdd`.
  */
 
 import { attachToModal } from "../../common/person-select";
@@ -80,10 +79,7 @@ export interface QualificationMatrixOptions {
     positionIds: number[],
     teamId: number | null,
   ): Promise<{ added: boolean; qualified?: number[] }>;
-  /**
-   * #10531: a team leader's Add Volunteer — the picker searches the active people a
-   * team leader may add, and the dialog offers the grid team's positions to tick.
-   */
+  /** A team leader's Add Volunteer: searches the people a team leader may add and offers the grid team's positions. */
   teamAdd?: boolean;
   addPoolFromCart?(): Promise<{ added: number; alreadyMembers: number }>;
   removeVolunteer?(personId: number): Promise<{ qualifications: number; assignments: number; defaults: number }>;
@@ -414,7 +410,7 @@ export function createQualificationMatrix(options: QualificationMatrixOptions): 
     });
   }
 
-  /** #10531: the grid team's positions, unticked, for the Add Volunteer dialog. */
+  /** The grid team's positions, unticked, for the Add Volunteer dialog. */
   function renderAddPositions(): void {
     const container = byId("add-volunteer-positions");
     if (!container) {
