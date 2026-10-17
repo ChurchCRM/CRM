@@ -90,7 +90,7 @@ Row actions: [`table-action-menu.md`](./table-action-menu.md). Settings UI: copy
 | [PHP Best Practices](./php-best-practices.md) | PHP / Perpl |
 | [Performance Optimization](./performance-optimization.md) | Queries |
 
-Proposed RFC and prioritization governance (pending approval): [`docs/decisions/0003-rfc-community-prioritization.md`](../../../docs/decisions/0003-rfc-community-prioritization.md).
+Proposed community feedback policy (pending approval): [`docs/decisions/0003-rfc-community-prioritization.md`](../../../docs/decisions/0003-rfc-community-prioritization.md).
 
 ## Process
 
