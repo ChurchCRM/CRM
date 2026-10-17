@@ -1,7 +1,7 @@
 /**
  * Admin → Member Portal (#9864) — the page's behaviour.
  *
- * Four tabs are rendered server-side (Settings, Themes, Statistics, Calendars);
+ * Four tabs are rendered server-side (Statistics, Settings, Themes, Calendars);
  * this bundle adds the five things that need the browser:
  *
  *   1. the Settings Panel component for the four portal ConfigItems, which

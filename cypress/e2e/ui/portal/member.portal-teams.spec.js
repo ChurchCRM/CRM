@@ -340,7 +340,7 @@ describe("Member Portal (MP7, #9868) — My Teams", () => {
                 // The open menu is lifted out of the wrapper's overflow box and sits
                 // entirely inside the viewport, every item reachable.
                 cy.get("#positions-table-wrapper .dropdown-menu.show")
-                    .should("have.class", "volunteer-menu-fixed")
+                    .should("have.class", "dropdown-menu-fixed")
                     .then(($menu) => {
                         const rect = $menu[0].getBoundingClientRect();
                         expect(rect.left, "menu left edge").to.be.at.least(0);

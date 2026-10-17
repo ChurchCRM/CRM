@@ -50,7 +50,6 @@ import {
   tText,
   wireModalFadeGuard,
   wireStickyHead,
-  wireUnclippedRowMenus,
 } from "./ui";
 
 export interface QualificationMatrixOptions {
@@ -657,7 +656,6 @@ export function createQualificationMatrix(options: QualificationMatrixOptions): 
 
     wireRemoveVolunteer();
     // The qualification grid is the one table that scrolls sideways.
-    wireUnclippedRowMenus("volunteers-table-wrapper");
   }
 
   wire();

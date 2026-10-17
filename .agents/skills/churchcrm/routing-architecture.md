@@ -230,7 +230,7 @@ $group->get('/profile', function (Request $request, Response $response): Respons
 });
 ```
 
-The template contract (blocks, partials, globals) is in `docs/portal-templates.md`. Adding a variable or block is compatible; renaming or removing one is breaking.
+The template contract (blocks, partials, globals) is in https://docs.churchcrm.io/administration/member-portal-template-reference. Adding a variable or block is compatible; renaming or removing one is breaking.
 
 `MvcAppFactory` takes `'errorHandler' => callable` for modules whose users must not see the admin shell that the shared Tabler error page renders.
 

@@ -2,8 +2,6 @@
 
 // Qualification grid: one column per position, so the table scrolls sideways.
 // nowrap keeps cells from squeezing their text instead of overflowing.
-// The row menu is clipped by overflow-x:auto; ministry.ts re-anchors it with
-// .volunteer-menu-fixed (see table-action-menu.md).
 .volunteer-scroll-x {
     overflow-x: auto;
     overflow-y: visible;
@@ -64,13 +62,4 @@
 // would make it the strip's scroll container. The grid scrolls sideways by itself.
 .card-body:has(> .tab-pane.active > .volunteer-sticky-head) {
     overflow-x: visible;
-}
-
-// Added alongside .show; ministry.ts writes inline top/left from the trigger position.
-.volunteer-menu-fixed {
-    position: fixed;
-    inset: auto;
-    margin: 0;
-    transform: none;
-    z-index: 1055; // above a Tabler card and its sticky headers, below a modal backdrop
 }

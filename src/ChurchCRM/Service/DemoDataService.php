@@ -62,6 +62,8 @@ class DemoDataService
 {
     private const DATA_PATH = __DIR__ . '/../../admin/demo';
 
+    private const DEMO_TOGGLES = ['bEnabledSundaySchool', 'bEnabledFinance', 'bEnabledEvents', 'bPortalShowCalendar', 'bPortalShowVolunteer'];
+
     private const DEMO_NOTIFICATION_REASON = 'demo data import';
 
     private array $importResult = [
@@ -170,7 +172,8 @@ class DemoDataService
 
     /**
      * Load `config.json` from the demo data path and write values into SystemConfig.
-     * `bEnabledSundaySchool` and `bEnabledFinance` are always switched on.
+     * `bEnabledSundaySchool`, `bEnabledFinance`, `bEnabledEvents` (ministry events) and the Member Portal's
+     * calendar and volunteering pages are always switched on.
      * `sTelemetryLevel` is only applied when `$force` is set: ordinary onboarding imports
      * (fresh installs, no `force`) must not silently opt a real self-hosted install into
      * telemetry — only the controlled, `force`-driven reseed used by demo.churchcrm.io does.
@@ -199,9 +202,9 @@ class DemoDataService
         }
 
         foreach ($json as $key => $value) {
-            // bEnabledSundaySchool and bEnabledFinance are switched on below.
+            // The toggles in DEMO_TOGGLES are switched on below.
             // Skip sTelemetryLevel here too; it's only ever applied below, and only when $force is set.
-            if ($key === 'bEnabledSundaySchool' || $key === 'bEnabledFinance' || $key === 'sTelemetryLevel') {
+            if (in_array($key, self::DEMO_TOGGLES, true) || $key === 'sTelemetryLevel') {
                 continue;
             }
 
@@ -213,7 +216,7 @@ class DemoDataService
             }
         }
 
-        foreach (['bEnabledSundaySchool', 'bEnabledFinance'] as $toggle) {
+        foreach (self::DEMO_TOGGLES as $toggle) {
             try {
                 SystemConfig::setValue($toggle, '1');
             } catch (Exception $e) {

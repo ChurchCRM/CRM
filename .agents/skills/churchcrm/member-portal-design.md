@@ -10,7 +10,7 @@ complexity: "advanced"
 
 The Member Portal is a member-facing area of the installation at `/portal`, with its own layout and navigation. Product principle: a member never sees the admin shell. Everything a member may do is inside the portal, and a page that would bounce a member to an admin page is unfinished.
 
-Theme authors: `docs/portal-themes.md`. Template variables and hooks: `docs/portal-templates.md`.
+Theme authors: https://docs.churchcrm.io/administration/member-portal-theme-guide. Template variables and hooks: https://docs.churchcrm.io/administration/member-portal-template-reference.
 
 ## Design rules
 
@@ -142,7 +142,7 @@ Templates get no PHP includes, no filesystem or network functions, and no `$_SES
 }
 ```
 
-Notice colours are `--portal-success`, `--portal-warning`, `--portal-danger`, `--portal-info` (each with a `-contrast` twin) plus `--portal-toast-width`. The full list is `docs/portal-themes.md` -> "Design tokens".
+Notice colours are `--portal-success`, `--portal-warning`, `--portal-danger`, `--portal-info` (each with a `-contrast` twin) plus `--portal-toast-width`.
 
 Every portal notice is a toast in the fixed `#portal-toasts` container (rendered by `partials/flash.html.twig`, filled by server `flash` messages and `window.CRM.portalToast(message, type)`), so the page never shifts under the member. `.portal-container` appears in the header, the nav and `<main>`; a bundle that places a notice by that selector lands in the header.
 
@@ -150,7 +150,7 @@ Dark mode: the default `theme.css` has a `[data-bs-theme="dark"]` block that a t
 
 ### Template contract
 
-`layout.html.twig` defines blocks `head_extra`, `header`, `nav`, `hero`, `content`, `sidebar`, `footer`, `scripts_extra`. Page templates fill `content` and optionally `hero` and `sidebar`. Partials are named, so a theme can override `partials/nav.html.twig` alone. Variables, ids and `data-` hooks per template are in `docs/portal-templates.md`.
+`layout.html.twig` defines blocks `head_extra`, `header`, `nav`, `hero`, `content`, `sidebar`, `footer`, `scripts_extra`. Page templates fill `content` and optionally `hero` and `sidebar`. Partials are named, so a theme can override `partials/nav.html.twig` alone. Variables, ids and `data-` hooks per template are in https://docs.churchcrm.io/administration/member-portal-template-reference.
 
 A bundle treats a missing hook as "this theme does without the feature". Adding a variable or block is compatible; renaming or removing one is a release-note item and keeps the old name as an alias for one release. The validator's "not used by this version" warning tells a theme author that an overridden template moved.
 
