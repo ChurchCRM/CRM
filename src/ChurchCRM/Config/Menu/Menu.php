@@ -51,7 +51,7 @@ class Menu
             'People'       => self::getPeopleMenu($isAdmin, $isMenuOptions, $currentUser->isAddRecordsEnabled(), $isVolunteerV1Enabled),
             'Groups'       => self::getGroupMenu($isAdmin, $isMenuOptions, $isManageGroups),
             'SundaySchool' => self::getSundaySchoolMenu($isAdmin, $isManageGroups),
-            'Communication' => self::getCommunicationMenu($currentUser->isEmailEnabled()),
+            'Communication' => self::getCommunicationMenu($currentUser->isEmailEnabled(), $isAdmin),
             'Events'       => self::getEventsMenu($currentUser->isAddEventEnabled(), $canViewEvents, $currentUser->canWriteEvents()),
             // No "Volunteer" heading: the member surface lives only in the
             // Member Portal now (#9867, Member Portal design P16). "Ministries"
@@ -226,11 +226,17 @@ class Menu
         return $sundaySchoolMenu;
     }
 
-    private static function getCommunicationMenu(bool $isEmailEnabled): MenuItem
+    private static function getCommunicationMenu(bool $isEmailEnabled, bool $isAdmin): MenuItem
     {
         $commMenu = new MenuItem(gettext('Communication'), '', $isEmailEnabled, 'fa-comments');
         $commMenu->addSubMenu(new MenuItem(gettext('Email'), 'people/email', $isEmailEnabled, 'fa-envelope'));
         $commMenu->addSubMenu(new MenuItem(gettext('Text'), 'people/text', $isEmailEnabled, 'fa-comment-sms'));
+
+        if ($isAdmin) {
+            $adminMenu = new MenuItem(gettext('Admin'), '', true);
+            $adminMenu->addSubMenu(new MenuItem(gettext('Email Settings'), 'admin/email', true, 'fa-envelope'));
+            $commMenu->addSubMenu($adminMenu);
+        }
 
         return $commMenu;
     }
@@ -546,7 +552,6 @@ class Menu
         $menu->addSubMenu(new MenuItem(gettext('Localization & Formats'), 'admin/system/localization', $isAdmin, 'fa-globe'));
         $menu->addSubMenu(new MenuItem(gettext('Get Started'), 'admin/get-started', $isAdmin, 'fa-rocket'));
         $menu->addSubMenu(new MenuItem(gettext('System Users'), 'admin/system/users', $isAdmin, 'fa-user-gear'));
-        $menu->addSubMenu(new MenuItem(gettext('Email Settings'), 'admin/email', $isAdmin, 'fa-envelope'));
         $menu->addSubMenu(new MenuItem(gettext('Member Portal'), 'admin/member-portal', $isAdmin, 'fa-house-user'));
         $menu->addSubMenu(new MenuItem(gettext('Ministry Settings'), 'admin/ministry-settings', $isAdmin, 'fa-handshake-angle'));
         $menu->addSubMenu(new MenuItem(gettext('System Settings'), 'SystemSettings.php', $isAdmin, 'fa-gear'));
