@@ -9364,10 +9364,6 @@ msgid "Load demo data"
 msgstr "تحميل بيانات العرض التوضيحي"
 
 #: 
-msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
-msgstr "تحميل عينات من العائلات والأشخاص والمجموعات وسجلات المساهمات. الطريقة الأكثر أمانا لتعلم ChurchCRM قبل إرسال بيانات حقيقية."
-
-#: 
 msgid "Log Files"
 msgstr "ملفات السجل"
 
@@ -14104,18 +14100,6 @@ msgid "Importing..."
 msgstr "جاري الاستيراد..."
 
 #: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "تضمين فصول مدرسة الأحد والتسجيلات"
-
-#: 
-msgid "Include events and calendars"
-msgstr "تضمين الأحداث والتقاويم"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "تضمين البيانات المالية (صناديق التبرعات والتعهدات)"
-
-#: 
 msgid "Invalid Entry"
 msgstr "دخول غير صالح"
 
@@ -14290,10 +14274,6 @@ msgstr "فتح في علامة تبويب جديدة"
 #: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "افتح تطبيق المصادقة وامسح رمز QR هذا"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "بيانات اختيارية للتضمين"
 
 #: 
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
@@ -19816,10 +19796,6 @@ msgid "Choose where the schedule's dates come from"
 msgstr "اختر مصدر تواريخ الجدول"
 
 #: 
-msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
-msgstr "اختر تجربة التطوع التي تستخدمها هذه الكنيسة، ومدى الأيام المقبلة التي تُملأ فيها الجداول ووقت إرسال التذكيرات، وتحقق من أن المهام الخلفية تعمل."
-
-#: 
 msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
 msgstr "اختر من يشغل كل مهمة افتراضيًا. يُحفظ الاختيار في الجدول: يُكلَّفون في كل موعد يُنشأ الآن وفي المواعيد التي يُنشئها التعبئة اليومية لاحقًا ما داموا مؤهلين، ويُطلب منهم الرد ما لم تحدد أنهم قبلوا. اترك المهمة مفتوحة لتكليفها أسبوعًا بأسبوع."
 
@@ -19850,10 +19826,6 @@ msgstr "تُضاف فعاليات الكنيسة من نوع معين إلى ت�
 #: 
 msgid "Church website"
 msgstr "موقع الكنيسة الإلكتروني"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "لدى ChurchCRM طريقتان لإدارة المتطوعين. المقصود استخدام واحدة فقط في كل مرة؛ والإعداد على اليسار يحدد التي تراها هذه الكنيسة. يؤدي التبديل إلى إخفاء الصفحات وعناصر القائمة أو إظهارها — ولا يحذف أي بيانات، فيمكنك العودة."
 
 #: 
 msgid "Close event details"
@@ -22924,10 +22896,6 @@ msgid "View my schedule"
 msgstr "عرض جدولي"
 
 #: 
-msgid "View only"
-msgstr "للعرض فقط"
-
-#: 
 msgid "View person"
 msgstr "عرض الشخص"
 
@@ -22958,10 +22926,6 @@ msgstr "تكليف متطوع"
 #: 
 msgid "Volunteer declined"
 msgstr "اعتذر المتطوع"
-
-#: 
-msgid "Volunteer experience"
-msgstr "تجربة التطوع"
 
 #: 
 msgid "Volunteer positions still need to be filled"
@@ -23110,10 +23074,6 @@ msgstr "أي تجربة لإدارة المتطوعين نشطة. V1 هي ميز
 #: 
 msgid "Which events"
 msgstr "أي الفعاليات"
-
-#: 
-msgid "Which volunteer experience this church uses. The card on the right explains each choice."
-msgstr "أي تجربة تطوع تستخدمها هذه الكنيسة. تشرح البطاقة على اليمين كل خيار."
 
 #: 
 msgid "Who is covering"

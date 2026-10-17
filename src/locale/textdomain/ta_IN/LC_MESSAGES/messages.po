@@ -9343,10 +9343,6 @@ msgid "Load demo data"
 msgstr "டெமோ தரவை ஏற்று"
 
 #: 
-msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
-msgstr "மாதிரி குடும்பங்கள், நபர்கள், குழுக்கள் மற்றும் காணிக்கை பதிவுகளை ஏற்றவும். உங்கள் உண்மையான தரவை சேர்ப்பதற்கு முன் ChurchCRM ஐ கற்றுக்கொள்ள மிகவும் பாதுகாப்பான வழி."
-
-#: 
 msgid "Log Files"
 msgstr "பதிவு கோப்புகள்"
 
@@ -14083,18 +14079,6 @@ msgid "Importing..."
 msgstr "இறக்குமதி செய்யப்படுகிறது..."
 
 #: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "ஞாயிறு பள்ளி வகுப்புகள் மற்றும் சேர்க்கைகளைச் சேர்க்கவும்"
-
-#: 
-msgid "Include events and calendars"
-msgstr "நிகழ்வுகள் மற்றும் நாட்காட்டிகளைச் சேர்க்கவும்"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "நிதித் தரவுகளைச் சேர்க்கவும் (நன்கொடை நிதிகள், உறுதிமொழிகள்)"
-
-#: 
 msgid "Invalid Entry"
 msgstr "தவறான உள்ளீடு"
 
@@ -14271,10 +14255,6 @@ msgstr "புதிய தாவலில் திறக்கவும்"
 #: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "உங்கள் அங்கீகரிப்பான் செயலியைத் திறந்து இந்த QR குறியீட்டை ஸ்கேன் செய்யவும்"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "சேர்க்க வேண்டிய விருப்பத் தரவு"
 
 #: 
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
@@ -19733,10 +19713,6 @@ msgid "Choose where the schedule's dates come from"
 msgstr "அட்டவணையின் தேதிகள் எங்கிருந்து வருகின்றன என்பதைத் தேர்ந்தெடுக்கவும்"
 
 #: 
-msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
-msgstr "இந்தத் திருச்சபை எந்தத் தன்னார்வப் பணி முறையைப் பயன்படுத்துகிறது, அட்டவணைகள் எவ்வளவு முன்கூட்டியே நிரப்பப்படுகின்றன, நினைவூட்டல்கள் எப்போது செல்கின்றன என்பதைத் தேர்ந்தெடுக்கவும், பின்னணிப் பணிகள் இயங்குகின்றனவா என்று சரிபார்க்கவும்."
-
-#: 
 msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
 msgstr "ஒவ்வொரு பொறுப்பையும் இயல்பாக யார் நிரப்புவார்கள் என்பதைத் தேர்ந்தெடுக்கவும். இந்தத் தேர்வு அட்டவணையில் சேமிக்கப்படும்: அவர்கள் தகுதியுடன் இருக்கும் வரை, இப்போது உருவாக்கப்பட்ட ஒவ்வொரு நிகழ்வுக்கும் தினசரி கூடுதல் நிரப்பல் பின்னர் உருவாக்குபவற்றுக்கும் நியமிக்கப்படுவார்கள், நீங்கள் அவர்களை ஏற்றுக்கொண்டவராக அமைத்தாலன்றி பதிலளிக்கக் கேட்கப்படுவார்கள். வாரந்தோறும் நியமிக்க பொறுப்பைத் திறந்தே விடவும்."
 
@@ -19767,10 +19743,6 @@ msgstr "ஒரு வகை திருச்சபை நிகழ்ச்ச
 #: 
 msgid "Church website"
 msgstr "திருச்சபை இணையதளம்"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "தன்னார்வலர்களை நிர்வகிக்க ChurchCRM இல் இரண்டு வழிகள் உள்ளன. ஒரே நேரத்தில் ஒன்று மட்டுமே பயன்பாட்டில் இருக்க வேண்டும்; இடதுபுறத்திலுள்ள அமைப்பு இந்தத் திருச்சபை எதைக் காண்கிறது என்பதைத் தீர்மானிக்கிறது. மாற்றுவது பக்கங்களையும் மெனு உள்ளீடுகளையும் மறைக்கும் அல்லது காட்டும் — தரவை ஒருபோதும் நீக்காது, எனவே நீங்கள் திரும்ப மாறலாம்."
 
 #: 
 msgid "Close event details"
@@ -22825,10 +22797,6 @@ msgid "View my schedule"
 msgstr "எனது அட்டவணையைக் காண்க"
 
 #: 
-msgid "View only"
-msgstr "பார்க்க மட்டும்"
-
-#: 
 msgid "View person"
 msgstr "நபரைப் பார்க்கவும்"
 
@@ -22859,10 +22827,6 @@ msgstr "தன்னார்வப் பணி நியமனம்"
 #: 
 msgid "Volunteer declined"
 msgstr "தன்னார்வலர் நிராகரித்தார்"
-
-#: 
-msgid "Volunteer experience"
-msgstr "தன்னார்வப் பணி முறை"
 
 #: 
 msgid "Volunteer positions still need to be filled"
@@ -23003,10 +22967,6 @@ msgstr "தன்னார்வப் பணி மேலாண்மையி�
 #: 
 msgid "Which events"
 msgstr "எந்த நிகழ்ச்சிகள்"
-
-#: 
-msgid "Which volunteer experience this church uses. The card on the right explains each choice."
-msgstr "இந்தத் திருச்சபை எந்தத் தன்னார்வப் பணி முறையைப் பயன்படுத்துகிறது. வலதுபுறத்திலுள்ள அட்டை ஒவ்வொரு தேர்வையும் விளக்குகிறது."
 
 #: 
 msgid "Who is covering"
