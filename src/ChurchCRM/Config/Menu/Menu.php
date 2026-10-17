@@ -51,7 +51,7 @@ class Menu
             'People'       => self::getPeopleMenu($isAdmin, $isMenuOptions, $currentUser->isAddRecordsEnabled(), $isVolunteerV1Enabled),
             'Groups'       => self::getGroupMenu($isAdmin, $isMenuOptions, $isManageGroups),
             'SundaySchool' => self::getSundaySchoolMenu($isAdmin, $isManageGroups),
-            'Communication' => self::getCommunicationMenu($currentUser->isEmailEnabled()),
+            'Communication' => self::getCommunicationMenu($currentUser->isEmailEnabled(), $isAdmin),
             'Events'       => self::getEventsMenu($currentUser->isAddEventEnabled(), $canViewEvents, $currentUser->canWriteEvents()),
             // No "Volunteer" heading: the member surface lives only in the
             // Member Portal now (#9867, Member Portal design P16). "Ministries"
@@ -226,11 +226,19 @@ class Menu
         return $sundaySchoolMenu;
     }
 
-    private static function getCommunicationMenu(bool $isEmailEnabled): MenuItem
+    private static function getCommunicationMenu(bool $isEmailEnabled, bool $isAdmin): MenuItem
     {
         $commMenu = new MenuItem(gettext('Communication'), '', $isEmailEnabled, 'fa-comments');
-        $commMenu->addSubMenu(new MenuItem(gettext('Email'), 'v2/email/dashboard', $isEmailEnabled, 'fa-envelope'));
-        $commMenu->addSubMenu(new MenuItem(gettext('Text'), 'v2/text/dashboard', $isEmailEnabled, 'fa-comment-sms'));
+        $commMenu->addSubMenu(new MenuItem(gettext('Email'), 'people/email', $isEmailEnabled, 'fa-envelope'));
+        $commMenu->addSubMenu(new MenuItem(gettext('Text'), 'people/text', $isEmailEnabled, 'fa-comment-sms'));
+
+        if ($isAdmin) {
+            $adminMenu = new MenuItem(gettext('Admin'), '', true);
+            $adminMenu->addSubMenu(new MenuItem(gettext('Email Settings'), 'admin/email', true, 'fa-sliders'));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Email Log'), 'admin/email/log', true, 'fa-envelope-open-text'));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Email Debug'), 'admin/email/debug', true, 'fa-stethoscope'));
+            $commMenu->addSubMenu($adminMenu);
+        }
 
         return $commMenu;
     }

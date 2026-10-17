@@ -26,7 +26,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </ul>
         </div>
     </div>
-    <div style="overflow: visible;">
+    <div class="overflow-visible">
         <table id="noEmails" class="table table-vcenter table-hover card-table">
             <tbody></tbody>
         </table>
