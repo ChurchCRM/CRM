@@ -1,13 +1,26 @@
-id,category,title,description,event_text,start_offset_days,start_time,duration_minutes,link_groups,attended_fraction,inactive,external_url
-evt-past-worship,Church Service,Sunday Worship Service,Weekly worship and sermon,"<h2>Sermon: Faith in Action</h2><p>Congregational worship, hymns, and message.</p>",-7,10:30:00,90,Worship Service,0.6,false,
-evt-past-ss,Sunday School,Sunday School - Angels Class,Pre-K class (ages 3-5),<p>Bible story circle and craft.</p>,-7,09:30:00,45,Angels class,0.5,false,
-evt-past-youth,Youth,Youth Group Night,"Games, worship, small groups (grades 6-12)",<p>Youth ministry weekly gathering.</p>,-3,18:30:00,90,Youth Meeting,0.4,false,
-evt-past-outreach,Outreach,Neighborhood Food Drive,Volunteer food collection and distribution,<p>Community outreach event.</p>,-14,09:00:00,240,Boys Scouts;Girl Scouts,0.5,false,
-evt-today-prayer,Prayer,Midweek Prayer Meeting,Midday prayer,<p>Come as you are.</p>,0,12:00:00,45,,0,false,
-evt-today-study,Study,Adult Bible Study,"Book of Romans, week 3",<p>Small-group discussion.</p>,0,19:00:00,90,Church Board,0,false,
-evt-future-service,Church Service,Sunday Worship Service,Weekly worship and sermon,"<h2>Upcoming Sermon</h2><p>Join us this Sunday.</p>",+4,10:30:00,90,Worship Service,0,false,
-evt-future-choir,Music,Choir Rehearsal,Practice for Sunday service,<p>All voices welcome.</p>,+5,19:00:00,120,,0,false,
-evt-future-outreach,Outreach,Community Outreach Day,Volunteer outreach and food drive,<p>Serving our neighbors.</p>,+10,09:00:00,240,Boys Scouts;Girl Scouts,0,false,
-evt-future-board,Meeting,Church Board Meeting,Monthly leadership meeting,<p>Agenda circulated in advance.</p>,+12,19:00:00,120,Church Board;Clergy,0,false,
-evt-future-retreat,Retreat,Spring Volunteer Retreat,Weekend retreat for volunteers,"<p>Rest, training, and planning.</p>",+21,15:00:00,1260,,0,true,
-evt-future-vbs,Program,Vacation Bible School,Kids summer program (Mon-Fri),"<p>Songs, games, and lessons.</p>",+30,09:00:00,180,,0,false,
+id,category,title,description,event_text,start_offset_days,start_time,duration_minutes,link_groups,attended_fraction,inactive,external_url,calendars,weekday
+evt-past-worship,Church Service,Sunday Worship Service,Weekly worship and sermon,"<h2>Sermon: Faith in Action</h2><p>Congregational worship, hymns, and message.</p>",-7,10:30:00,90,Worship Service,0.6,false,,cal-1,Sunday
+evt-past-ss,Sunday School,Sunday School - Angels Class,Pre-K class (ages 3-5),<p>Bible story circle and craft.</p>,-7,09:30:00,45,Angels class,0.5,false,,cal-3,Sunday
+evt-past-youth,Youth,Youth Group Night,"Games, worship, small groups (grades 6-12)",<p>Youth ministry weekly gathering.</p>,-3,18:30:00,90,Youth Meeting,0.4,false,,cal-2,
+evt-past-outreach,Outreach,Neighborhood Food Drive,Volunteer food collection and distribution,<p>Community outreach event.</p>,-14,09:00:00,240,Boys Scouts;Girl Scouts,0.5,false,,cal-1,
+evt-today-prayer,Prayer,Midweek Prayer Meeting,Midday prayer,<p>Come as you are.</p>,0,12:00:00,45,,0,false,,cal-1,
+evt-today-study,Study,Adult Bible Study,"Book of Romans, week 3",<p>Small-group discussion.</p>,0,19:00:00,90,Church Board,0,false,,cal-1,
+evt-future-service,Church Service,Sunday Worship Service,Weekly worship and sermon,"<h2>Upcoming Sermon</h2><p>Join us this Sunday.</p>",+4,10:30:00,90,Worship Service,0,false,,cal-1,Sunday
+evt-future-choir,Music,Choir Rehearsal,Practice for Sunday service,<p>All voices welcome.</p>,+5,19:00:00,120,,0,false,,cal-1,
+evt-future-outreach,Outreach,Community Outreach Day,Volunteer outreach and food drive,<p>Serving our neighbors.</p>,+10,09:00:00,240,Boys Scouts;Girl Scouts,0,false,,cal-1,
+evt-future-board,Meeting,Church Board Meeting,Monthly leadership meeting,<p>Agenda circulated in advance.</p>,+12,19:00:00,120,Church Board;Clergy,0,false,,,
+evt-future-retreat,Retreat,Spring Volunteer Retreat,Weekend retreat for volunteers,"<p>Rest, training, and planning.</p>",+21,15:00:00,1260,,0,true,,cal-1,
+evt-future-vbs,Program,Vacation Bible School,Kids summer program (Mon-Fri),"<p>Songs, games, and lessons.</p>",+30,09:00:00,180,,0,false,,cal-1,
+evt-future-service-2,Church Service,Sunday Worship Service,Weekly worship and sermon,"<h2>Upcoming Sermon</h2><p>Join us this Sunday.</p>",+11,10:30:00,90,Worship Service,0,false,,cal-1,Sunday
+evt-future-service-3,Church Service,Sunday Worship Service,Weekly worship and sermon,"<h2>Upcoming Sermon</h2><p>Join us this Sunday.</p>",+18,10:30:00,90,Worship Service,0,false,,cal-1,Sunday
+evt-future-service-4,Church Service,Sunday Worship Service,Weekly worship and sermon,"<h2>Upcoming Sermon</h2><p>Join us this Sunday.</p>",+25,10:30:00,90,Worship Service,0,false,,cal-1,Sunday
+evt-future-ss-angels-1,Sunday School,Sunday School - Angels Class,Pre-K class (ages 3-5),<p>Bible story circle and craft.</p>,+4,09:30:00,45,Angels class,0,false,,cal-3,Sunday
+evt-future-ss-angels-2,Sunday School,Sunday School - Angels Class,Pre-K class (ages 3-5),<p>Bible story circle and craft.</p>,+11,09:30:00,45,Angels class,0,false,,cal-3,Sunday
+evt-future-ss-angels-3,Sunday School,Sunday School - Angels Class,Pre-K class (ages 3-5),<p>Bible story circle and craft.</p>,+18,09:30:00,45,Angels class,0,false,,cal-3,Sunday
+evt-future-ss-angels-4,Sunday School,Sunday School - Angels Class,Pre-K class (ages 3-5),<p>Bible story circle and craft.</p>,+25,09:30:00,45,Angels class,0,false,,cal-3,Sunday
+evt-future-ss-class13-1,Sunday School,Sunday School - Class 1-3,Elementary class (grades 1-3),<p>Bible lesson and memory verse.</p>,+4,09:30:00,45,Class 1-3,0,false,,cal-3,Sunday
+evt-future-ss-class13-2,Sunday School,Sunday School - Class 1-3,Elementary class (grades 1-3),<p>Bible lesson and memory verse.</p>,+11,09:30:00,45,Class 1-3,0,false,,cal-3,Sunday
+evt-future-ss-class13-3,Sunday School,Sunday School - Class 1-3,Elementary class (grades 1-3),<p>Bible lesson and memory verse.</p>,+18,09:30:00,45,Class 1-3,0,false,,cal-3,Sunday
+evt-future-ss-class13-4,Sunday School,Sunday School - Class 1-3,Elementary class (grades 1-3),<p>Bible lesson and memory verse.</p>,+25,09:30:00,45,Class 1-3,0,false,,cal-3,Sunday
+evt-future-youth-1,Youth,Youth Group Night,"Games, worship, small groups (grades 6-12)",<p>Youth ministry weekly gathering.</p>,+4,18:30:00,90,Youth Meeting,0,false,,cal-2,
+evt-future-youth-2,Youth,Youth Group Night,"Games, worship, small groups (grades 6-12)",<p>Youth ministry weekly gathering.</p>,+11,18:30:00,90,Youth Meeting,0,false,,cal-2,

@@ -1962,7 +1962,7 @@ Naming note: `drainOutbox()` is `static` to match the `BirthdayEmailService::run
 | `proposeSubstitute()` | `swap_proposed` | coordinators | now |
 | `approveSwap()` / `rejectSwap()` | `swap_resolved` | proposer **and** substitute | now |
 | `respond('declined')`, when the occurrence is left short (`notifyGapOpened()`) | `gap_alert` | `getCoordinatorPersonIds(ministry, team)` | now (dedupe key includes the date, so at most one per coordinator per occurrence per day) |
-| every timer pass, a position still short on an occurrence starting within the lead window (#10372) | `gap_alert`, one per position, naming only that position | `getCoordinatorPersonIds(ministry, team)` | now (dedupe key per occurrence, position and coordinator, no date: an open gap is alerted once; none to a coordinator who already has the occurrence's decline `gap_alert`) |
+| every timer pass, a position still short on an occurrence starting within `iVolunteerGapAlertLeadHours` (#10372, #10526) | `gap_alert`, one per position, naming only that position | `getCoordinatorPersonIds(ministry, team)` | now (dedupe key per occurrence, position and coordinator, no date: an open gap is alerted once; none to a coordinator who already has the occurrence's decline `gap_alert`) |
 
 `cancelPendingFor()` deletes `pending` outbox rows when an assignment stops being live, so a
 cancelled assignment never produces a reminder.
@@ -2050,8 +2050,10 @@ the same day; the command-line runner and the page-load trigger run it at most o
 before the drain, so a gap is reported soon after it comes inside the window (a new event, a
 shorter lead). `VolunteerNotificationService::scheduleGapAlerts()` takes every scheduled
 occurrence of an active ministry whose start (`resolveOccurrenceWindow()`) is after now and within
-`iVolunteerReminderLeadHours` — there is no lead setting of its own, so a lead of 0 turns it off
-with the reminders — and enqueues one `gap_alert` per position `getOpenGaps()` reports short (D34's
+`iVolunteerGapAlertLeadHours` — its own lead (#10526, default 48 like the reminders'; the
+`7.9.0.sql` upgrade script copies a church's own reminder lead into it, so an upgrade changes
+nothing); 0 turns it off and leaves the reminders alone, and a reminder lead of 0 no longer
+turns it off — and enqueues one `gap_alert` per position `getOpenGaps()` reports short (D34's
 *Needs N more*), per coordinator, with `vntf_Context = {"positionId": …}` so the message names that
 position alone. Its dedupe key carries no date, so an open gap is alerted once however often the
 scan runs. A coordinator who already has the occurrence-wide `gap_alert` of a decline
@@ -2755,7 +2757,7 @@ Answers, in this order, top to bottom:
    columns `Date · Time · Ministry/Team · Schedule · Staffed · Status · Actions`. Staffed is the
    occurrence's rollup in D34's words (*"Needs 2 more"*, *"Covered · 1 more welcome"*, *"Full"*), green
    when met, amber when `pending` meets it, red when short, grey for an optional slot nobody took.
-5. **Notification-health card** *(revised 2026-09-18 — was the admin-only settings strip)*: the failed-send count for every viewer, with a link to **Admin → Ministry Settings** for an administrator and an "ask an administrator" hint for anyone else. The settings themselves — `sVolunteerVersion`, `iVolunteerReminderLeadHours` and, since D31, `iVolunteerSchedulingHorizonWeeks` and `iVolunteerDefaultEventTypeId` — the cron hint, the queued count, the last timer-job run, the last schedule top-up and the recent-failure list live on that admin page (`src/admin/routes/ministry-settings.php`, `src/admin/views/ministry-settings.php`; the `ministries-settings` bundle puts its times in ChurchCRM's locale, §5.10), which exists in every rollout state; it follows the Member Portal admin page, and both settings were removed from `buildCategories()` so they have one home. The page also explains V1, V2 and Both in prose. *Original text:* **Admin-only settings strip** — `window.CRM.settingsPanel` (U8) with `sVolunteerVersion` and
+5. **Notification-health card** *(revised 2026-09-18 — was the admin-only settings strip)*: the failed-send count for every viewer, with a link to **Admin → Ministry Settings** for an administrator and an "ask an administrator" hint for anyone else. The settings themselves — `sVolunteerVersion`, `iVolunteerReminderLeadHours`, `iVolunteerGapAlertLeadHours` (#10526) and, since D31, `iVolunteerSchedulingHorizonWeeks` and `iVolunteerDefaultEventTypeId` — the cron hint, the queued count, the last timer-job run, the last schedule top-up and the recent-failure list live on that admin page (`src/admin/routes/ministry-settings.php`, `src/admin/views/ministry-settings.php`; the `ministries-settings` bundle puts its times in ChurchCRM's locale, §5.10), which exists in every rollout state; it follows the Member Portal admin page, and both settings were removed from `buildCategories()` so they have one home. The page also explains V1, V2 and Both in prose. *Original text:* **Admin-only settings strip** — `window.CRM.settingsPanel` (U8) with `sVolunteerVersion` and
    `iVolunteerReminderLeadHours`, plus the failed-notification count with a link, inside
    `if ($isAdmin)`.
 
@@ -3383,6 +3385,11 @@ Both V1 volunteer tables (`person2volunteeropp_p2vo`, `volunteeropportunity_vol`
 there is no V2 fixture data either. **V2 specs create everything they need through the API and clean
 up after themselves.**
 
+V2 sample data lives in the demo import instead (#10354): `src/admin/demo/volunteers.json` builds
+Worship, Hospitality and Children's Ministry through the services, with the events option, and
+records every message it would queue as `skipped` (`README-events.md`).
+`cypress/e2e/new-system/02-demo-import.spec.js` covers it.
+
 Reusable seed objects (verified in `seed.sql`):
 
 | Object | Id | Use |
@@ -3964,6 +3971,7 @@ public static function getVolunteerVersionChoices(): array
 |---|---|---|---|
 | `sVolunteerVersion` | `choice` | `v1` | The rollout state (#9704). `s` = string, matching the `sTimeZone`/`sLogLevel`/`sTelemetryLevel` convention. **Pick `v1` deliberately and never change the default** — changing a default retroactively changes behaviour on every install that never overrode it. |
 | `iVolunteerReminderLeadHours` | `number` | `48` | D11: system-level, administrator-adjustable, **not** per volunteer. Read with `SystemConfig::getIntValue()`. |
+| `iVolunteerGapAlertLeadHours` | `number` | `48` | #10526: how far ahead the unfilled-position alert (§3.6) looks. Its own setting because coordinators want warning of an open slot earlier than a volunteer needs a reminder. 0 turns gap alerts off without touching reminders; the decline's `gap_alert` (`notifyGapOpened()`) has no lead and is unaffected. Read with `SystemConfig::getIntValue()`. |
 | `iVolunteerSchedulingHorizonWeeks` | `number` | `8` | D31: how many weeks ahead every schedule is generated, church-wide; replaces the per-schedule `vsch_GenerateAheadDays`. Read through `VolunteerScheduleService::horizonWeeks()`: the config API refuses a blank or non-number (#10217, D32), but the row can be written other ways, so a blank or non-numeric value reads as 8 and a number is held within 1–52. |
 | `iVolunteerDefaultEventTypeId` | `number` | `''` | D31: the event type a ministry's new event starts with. Unset, inactive or deleted falls back to the active type named "Other", else none (`VolunteerEventService::defaultEventTypeId()`). |
 | `sLastVolunteerTopUpRunDate` | `text` | `''` | D31, internal: the day (`Y-m-d`, in `sTimeZone`) the daily top-up last ran — its once-a-day claim. Not on any settings page. |
@@ -3973,7 +3981,7 @@ public static function getVolunteerVersionChoices(): array
 it, and two flags would inevitably drift. Anywhere a boolean reads better in code, use
 `User::isVolunteerV2Enabled()`.
 
-The four user-facing settings are surfaced through `window.CRM.settingsPanel` (U8) on **Admin →
+The five user-facing settings are surfaced through `window.CRM.settingsPanel` (U8) on **Admin →
 Ministry Settings** (`src/admin/views/ministry-settings.php`), backed by
 `POST /admin/api/system/config/{name}`; the default event type is a choice of the active event
 types, its empty entry saying what it falls back to. None is in a `buildCategories()` category

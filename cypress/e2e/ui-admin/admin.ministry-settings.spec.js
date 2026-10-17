@@ -16,7 +16,8 @@
  *      notification card with a link back here;
  *   5. a non-administrator is turned away (the admin app's own gate);
  *   6. D31: the scheduling horizon and the default event type are set here,
- *      and the last schedule top-up is shown with what it made.
+ *      and the last schedule top-up is shown with what it made;
+ *   7. the unfilled-position alert has a lead time of its own (#10526).
  *
  * Order inside every hook is API setup → fresh login → cy.visit(), because
  * cy.request() rotates the PHP session cookie (cypress-testing.md).
@@ -24,12 +25,14 @@
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const LEAD_URL = "/admin/api/system/config/iVolunteerReminderLeadHours";
+const GAP_LEAD_URL = "/admin/api/system/config/iVolunteerGapAlertLeadHours";
 const HORIZON_URL = "/admin/api/system/config/iVolunteerSchedulingHorizonWeeks";
 const DEFAULT_TYPE_URL = "/admin/api/system/config/iVolunteerDefaultEventTypeId";
 const PAGE_URL = "/admin/ministry-settings";
 
 let originalVersion = "v1";
 let originalLead = "48";
+let originalGapLead = "48";
 
 function freshAdminLogin() {
     cy.clearCookies();
@@ -79,11 +82,15 @@ describe("Admin → Ministry Settings", () => {
         adminApi("GET", LEAD_URL, null, 200).then((resp) => {
             originalLead = String(resp.body.value ?? resp.body.Value ?? "48");
         });
+        adminApi("GET", GAP_LEAD_URL, null, 200).then((resp) => {
+            originalGapLead = String(resp.body.value ?? resp.body.Value ?? "48");
+        });
     });
 
     after(() => {
         adminApi("POST", SETTING_URL, { value: originalVersion }, 200);
         adminApi("POST", LEAD_URL, { value: originalLead }, 200);
+        adminApi("POST", GAP_LEAD_URL, { value: originalGapLead }, 200);
         adminApi("POST", HORIZON_URL, { value: "8" }, 200);
         adminApi("POST", DEFAULT_TYPE_URL, { value: "" }, 200);
     });
@@ -97,6 +104,7 @@ describe("Admin → Ministry Settings", () => {
         cy.get(".page-title, h2").should("contain", "Ministry Settings");
         cy.get("#ministrySettingsPanel select[name='sVolunteerVersion']").should("have.value", "v2");
         cy.get("#ministrySettingsPanel input[name='iVolunteerReminderLeadHours']").should("have.value", originalLead);
+        cy.get("#ministrySettingsPanel input[name='iVolunteerGapAlertLeadHours']").should("have.value", originalGapLead);
 
         cy.get("#ministry-experience-card")
             .should("contain", "V1")
@@ -159,6 +167,28 @@ describe("Admin → Ministry Settings", () => {
         cy.wait("@forcedRun").its("response.body.ran").should("eq", true);
         cy.get("#ministry-topup-last-run", { timeout: 10000 }).should("not.have.text", "never");
         cy.get("#ministry-topup-created").invoke("text").should("match", /— \d+ new occurrences?$/);
+    });
+
+    it("sets the unfilled-position alert lead time apart from the reminder lead (#10526)", () => {
+        adminApi("POST", SETTING_URL, { value: "v2" }, 200);
+        adminApi("POST", LEAD_URL, { value: "48" }, 200);
+        adminApi("POST", GAP_LEAD_URL, { value: "48" }, 200);
+        freshAdminLogin();
+        cy.visit(PAGE_URL);
+
+        cy.get("#ministrySettingsPanel input[name='iVolunteerGapAlertLeadHours']")
+            .should("have.value", "48")
+            .and("have.attr", "min", "0")
+            .closest(".mb-3")
+            .should("contain", "Unfilled-position alert lead time (hours)")
+            .and("contain", "reminders are not affected");
+
+        cy.intercept("POST", "**/admin/api/system/config/iVolunteerGapAlertLeadHours").as("saveGapLead");
+        cy.get("#ministrySettingsPanel input[name='iVolunteerGapAlertLeadHours']").should("be.enabled").clear().type("168");
+        cy.get("#ministrySettingsPanel .settings-panel-save").click();
+        cy.wait("@saveGapLead").its("response.statusCode").should("eq", 200);
+        adminApi("GET", GAP_LEAD_URL, null, 200).its("body.value").should("eq", "168");
+        adminApi("GET", LEAD_URL, null, 200).its("body.value").should("eq", "48");
     });
 
     /** The reminder lead time arrives late, as on a slow connection. */
@@ -258,6 +288,7 @@ describe("Admin → Ministry Settings", () => {
         cy.visit("/SystemSettings.php");
         cy.get('select[name="new_value[sVolunteerVersion]"]').should("not.exist");
         cy.get('input[name="new_value[iVolunteerReminderLeadHours]"]').should("not.exist");
+        cy.get('input[name="new_value[iVolunteerGapAlertLeadHours]"]').should("not.exist");
     });
 
     it("leaves the Ministry Dashboard with the notification card and a link here, not a settings strip", () => {
