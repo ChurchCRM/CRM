@@ -9409,10 +9409,6 @@ msgid "Load demo data"
 msgstr "Загрузить демо-данные"
 
 #: 
-msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
-msgstr "Загрузить образцы семей, людей, групп и записей о пожертвованиях. Самый безопасный способ изучить ChurchCRM перед вводом реальных данных."
-
-#: 
 msgid "Log Files"
 msgstr "Файлы журналов"
 
@@ -14147,18 +14143,6 @@ msgid "Importing..."
 msgstr "Импортирование..."
 
 #: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "Включить классы Воскресной школы"
-
-#: 
-msgid "Include events and calendars"
-msgstr "Включить события и календари"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "Включить финансовые данные"
-
-#: 
 msgid "Invalid Entry"
 msgstr "Некорректная запись"
 
@@ -14333,10 +14317,6 @@ msgstr "Открыть в новой вкладке"
 #: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Откройте приложение аутентификатора и отсканируйте этот QR-код"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "Дополнительные данные для включения"
 
 #: 
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
@@ -19827,10 +19807,6 @@ msgid "Choose where the schedule's dates come from"
 msgstr "Выберите, откуда берутся даты расписания"
 
 #: 
-msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
-msgstr "Выберите, какой режим работы с волонтёрами использует церковь, насколько вперёд заполняются расписания и когда отправляются напоминания, а также проверьте, что фоновые задания работают."
-
-#: 
 msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
 msgstr "Выберите, кто по умолчанию занимает каждую позицию. Выбор сохраняется в расписании: этих людей назначают на каждое создаваемое сейчас проведение и на те, что ежедневное пополнение создаст позже, пока они остаются квалифицированными, и просят ответить, если вы не отметили их как принявших. Оставьте позицию свободной, чтобы назначать на неё каждую неделю отдельно."
 
@@ -19861,10 +19837,6 @@ msgstr "Церковные события определённого типа д
 #: 
 msgid "Church website"
 msgstr "Сайт церкви"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "В ChurchCRM есть два способа управления волонтёрами. Одновременно предполагается использовать только один; настройка слева определяет, какой из них видит эта церковь. Переключение скрывает или показывает страницы и пункты меню — данные никогда не удаляются, так что можно переключиться обратно."
 
 #: 
 msgid "Close event details"
@@ -22927,10 +22899,6 @@ msgid "View my schedule"
 msgstr "Посмотреть моё расписание"
 
 #: 
-msgid "View only"
-msgstr "Только просмотр"
-
-#: 
 msgid "View person"
 msgstr "Просмотр прихожанина"
 
@@ -22961,10 +22929,6 @@ msgstr "Волонтёрское назначение"
 #: 
 msgid "Volunteer declined"
 msgstr "Волонтёр отказался"
-
-#: 
-msgid "Volunteer experience"
-msgstr "Режим работы с волонтёрами"
 
 #: 
 msgid "Volunteer positions still need to be filled"
@@ -23109,10 +23073,6 @@ msgstr "Какой режим управления волонтёрами акт
 #: 
 msgid "Which events"
 msgstr "Какие события"
-
-#: 
-msgid "Which volunteer experience this church uses. The card on the right explains each choice."
-msgstr "Какой режим работы с волонтёрами использует эта церковь. Карточка справа объясняет каждый вариант."
 
 #: 
 msgid "Who is covering"

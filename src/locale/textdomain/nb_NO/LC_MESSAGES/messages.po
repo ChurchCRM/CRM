@@ -9407,10 +9407,6 @@ msgid "Load demo data"
 msgstr "Last inn demodata"
 
 #: 
-msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
-msgstr "Last inn eksempelfamilier, personer, grupper og gaveregistreringer. Den tryggeste måten å lære ChurchCRM på før du legger inn ekte data."
-
-#: 
 msgid "Log Files"
 msgstr "Loggfiler"
 
@@ -14143,18 +14139,6 @@ msgid "Importing..."
 msgstr "Importerer..."
 
 #: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "Inkluder søndagsskoleklasser og påmeldinger"
-
-#: 
-msgid "Include events and calendars"
-msgstr "Inkluder hendelser og kalendere"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "Inkluder økonomiske data (fond, løfter)"
-
-#: 
 msgid "Invalid Entry"
 msgstr "Ugyldig oppføring"
 
@@ -14329,10 +14313,6 @@ msgstr "Åpne i ny fane"
 #: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Åpne autentiseringsappen din og skann denne QR-koden"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "Valgfrie data å inkludere"
 
 #: 
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
@@ -19791,10 +19771,6 @@ msgid "Choose where the schedule's dates come from"
 msgstr "Velg hvor planens datoer kommer fra"
 
 #: 
-msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
-msgstr "Velg hvilken frivilligopplevelse denne menigheten bruker, hvor langt frem planene fylles og når påminnelser sendes, og kontroller at bakgrunnsjobbene kjører."
-
-#: 
 msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
 msgstr "Velg hvem som fyller hver oppgave som standard. Valget lagres i planen: de tildeles ved hver gjennomføring som opprettes nå og ved dem den daglige påfyllingen oppretter senere, så lenge de forblir kvalifisert, og de blir bedt om å svare med mindre du setter dem som godtatt. La en oppgave stå åpen for å tildele den uke for uke."
 
@@ -19825,10 +19801,6 @@ msgstr "Menighetsarrangementer av en type legges til i menighetskalenderen. Kont
 #: 
 msgid "Church website"
 msgstr "Menighetens nettsted"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM har to måter å administrere frivillige på. Bare én er ment å være i bruk om gangen; innstillingen til venstre avgjør hvilken denne menigheten ser. Når du bytter, skjules eller vises sider og menyvalg — data slettes aldri, så du kan bytte tilbake."
 
 #: 
 msgid "Close event details"
@@ -22883,10 +22855,6 @@ msgid "View my schedule"
 msgstr "Se min plan"
 
 #: 
-msgid "View only"
-msgstr "Bare visning"
-
-#: 
 msgid "View person"
 msgstr "Vis person"
 
@@ -22917,10 +22885,6 @@ msgstr "Frivillig-tildeling"
 #: 
 msgid "Volunteer declined"
 msgstr "Frivillig takket nei"
-
-#: 
-msgid "Volunteer experience"
-msgstr "Frivilligopplevelse"
 
 #: 
 msgid "Volunteer positions still need to be filled"
@@ -23061,10 +23025,6 @@ msgstr "Hvilken frivilligadministrasjonsopplevelse som er aktiv. V1 er den eldre
 #: 
 msgid "Which events"
 msgstr "Hvilke arrangementer"
-
-#: 
-msgid "Which volunteer experience this church uses. The card on the right explains each choice."
-msgstr "Hvilken frivilligopplevelse denne menigheten bruker. Kortet til høyre forklarer hvert valg."
 
 #: 
 msgid "Who is covering"

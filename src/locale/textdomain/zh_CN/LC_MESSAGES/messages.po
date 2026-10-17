@@ -9397,10 +9397,6 @@ msgid "Load demo data"
 msgstr "加载演示数据"
 
 #: 
-msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
-msgstr "加载示例家庭、人员、小组和奉献记录。这是在提交真实数据之前学习 ChurchCRM 最安全的方式。"
-
-#: 
 msgid "Log Files"
 msgstr "日志文件"
 
@@ -14132,18 +14128,6 @@ msgid "Importing..."
 msgstr "正在导入..."
 
 #: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "包含主日学班级和报名"
-
-#: 
-msgid "Include events and calendars"
-msgstr "包含活动和日历"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "包含财务数据（捐赠基金、认献）"
-
-#: 
 msgid "Invalid Entry"
 msgstr "输入无效"
 
@@ -14318,10 +14302,6 @@ msgstr "在新标签页中打开"
 #: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "打开您的验证器应用并扫描此QR码"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "可选包含的数据"
 
 #: 
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
@@ -19764,10 +19744,6 @@ msgid "Choose where the schedule's dates come from"
 msgstr "选择排班日期的来源"
 
 #: 
-msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
-msgstr "选择教会使用哪种志愿者体验、提前多久安排排班、何时发出提醒，并检查后台任务是否在运行。"
-
-#: 
 msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
 msgstr "选择默认由谁担任每个职位。此选择保存在排班中：只要他们仍具备资格，就会被分配到现在生成的每一场活动，以及之后每日补充生成的活动，并会被要求回应，除非您将其设为已接受。职位留空则可逐周分配。"
 
@@ -19798,10 +19774,6 @@ msgstr "某一类型的教会活动会添加到教会日历。请检查排班的
 #: 
 msgid "Church website"
 msgstr "教会网站"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM 有两种管理志愿者的方式。同一时间只应使用其中一种；左侧的设置决定本教会看到哪一种。切换只会隐藏或显示页面和菜单项，不会删除任何数据，因此可以随时切换回来。"
 
 #: 
 msgid "Close event details"
@@ -22852,10 +22824,6 @@ msgid "View my schedule"
 msgstr "查看我的排班"
 
 #: 
-msgid "View only"
-msgstr "仅查看"
-
-#: 
 msgid "View person"
 msgstr "查看人员"
 
@@ -22886,10 +22854,6 @@ msgstr "志愿者分配"
 #: 
 msgid "Volunteer declined"
 msgstr "志愿者已拒绝"
-
-#: 
-msgid "Volunteer experience"
-msgstr "志愿者体验"
 
 #: 
 msgid "Volunteer positions still need to be filled"
@@ -23028,10 +22992,6 @@ msgstr "启用哪种志愿者管理体验。V1 是旧版志愿者机会功能；
 #: 
 msgid "Which events"
 msgstr "哪些活动"
-
-#: 
-msgid "Which volunteer experience this church uses. The card on the right explains each choice."
-msgstr "本教会使用哪种志愿者体验。右侧的卡片说明了每个选项。"
 
 #: 
 msgid "Who is covering"

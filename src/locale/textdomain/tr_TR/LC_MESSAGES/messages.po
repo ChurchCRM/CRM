@@ -9337,10 +9337,6 @@ msgid "Load demo data"
 msgstr "Demo verileri yükle"
 
 #: 
-msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
-msgstr "Örnek aileler, kişiler, gruplar ve bağış kayıtları yükleyin. Gerçek verilerinizi girmeden önce ChurchCRM'i öğrenmenin en güvenli yolu."
-
-#: 
 msgid "Log Files"
 msgstr "Günlük Dosyaları"
 
@@ -14073,18 +14069,6 @@ msgid "Importing..."
 msgstr "İçe aktarılıyor..."
 
 #: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "Pazar Okulu sınıflarını ve kayıtlarını dahil et"
-
-#: 
-msgid "Include events and calendars"
-msgstr "Etkinlikleri ve takvimleri dahil et"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "Finansal verileri dahil et (bağış fonları, taahhütler)"
-
-#: 
 msgid "Invalid Entry"
 msgstr "Geçersiz Girdi"
 
@@ -14259,10 +14243,6 @@ msgstr "Yeni Sekmede Aç"
 #: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Kimlik doğrulayıcı uygulamanızı açın ve bu QR kodunu tarayın"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "Dahil Edilecek İsteğe Bağlı Veriler"
 
 #: 
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
@@ -19721,10 +19701,6 @@ msgid "Choose where the schedule's dates come from"
 msgstr "Programın tarihlerinin nereden geldiğini seçin"
 
 #: 
-msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
-msgstr "Bu kilisenin hangi gönüllü deneyimini kullanacağını, programların ne kadar önceden doldurulacağını ve hatırlatmaların ne zaman gideceğini seçin; arka plan işlerinin çalıştığını kontrol edin."
-
-#: 
 msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
 msgstr "Her pozisyonu varsayılan olarak kimin dolduracağını seçin. Seçim programa kaydedilir: şimdi oluşturulan her oluşuma ve günlük tamamlamanın sonradan oluşturduklarına, yetkili kaldıkları sürece atanırlar ve kabul edilmiş olarak ayarlamadığınız sürece yanıt vermeleri istenir. Bir pozisyonu hafta hafta atamak için açık bırakın."
 
@@ -19755,10 +19731,6 @@ msgstr "Bir türdeki kilise etkinlikleri kilise takvimine eklenir. Programın et
 #: 
 msgid "Church website"
 msgstr "Kilise web sitesi"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM'in gönüllüleri yönetmek için iki yolu vardır. Aynı anda yalnızca birinin kullanılması amaçlanır; soldaki ayar bu kilisenin hangisini göreceğini belirler. Geçiş yapmak sayfaları ve menü girdilerini gizler veya gösterir — hiçbir zaman veri silmez, böylece geri dönebilirsiniz."
 
 #: 
 msgid "Close event details"
@@ -22813,10 +22785,6 @@ msgid "View my schedule"
 msgstr "Programımı görüntüle"
 
 #: 
-msgid "View only"
-msgstr "Yalnızca görüntüleme"
-
-#: 
 msgid "View person"
 msgstr "Kişiyi Görüntüle"
 
@@ -22847,10 +22815,6 @@ msgstr "Gönüllü görevlendirmesi"
 #: 
 msgid "Volunteer declined"
 msgstr "Gönüllü reddetti"
-
-#: 
-msgid "Volunteer experience"
-msgstr "Gönüllülük deneyimi"
 
 #: 
 msgid "Volunteer positions still need to be filled"
@@ -22991,10 +22955,6 @@ msgstr "Hangi Gönüllü Yönetimi deneyiminin etkin olduğu. V1 eski Gönüllü
 #: 
 msgid "Which events"
 msgstr "Hangi etkinlikler"
-
-#: 
-msgid "Which volunteer experience this church uses. The card on the right explains each choice."
-msgstr "Bu kilisenin hangi gönüllülük deneyimini kullandığı. Sağdaki kart her seçeneği açıklar."
 
 #: 
 msgid "Who is covering"
