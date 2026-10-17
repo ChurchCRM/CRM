@@ -140,6 +140,8 @@ Fix bugs, add features, improve performance, and expand test coverage in the mai
 
 **PRs that change user-visible behavior (features, bug fixes) must link an open issue.** CI, docs, tooling, dependency, and trivial PRs don't; say why in the description.
 
+**Quick rule:** Check for existing work, agree on the outcome and how to verify it, resolve blocking design/security questions, and claim the issue before coding. Keep the PR focused; a human maintainer owns approval and merge.
+
 Before starting work, read the [issue readiness and sizing guide](docs/issue-readiness.md) to check for existing work, understand when to split an epic, and see what qualifies as a `good first issue`. Before opening a PR, read [What maintainers look for](docs/contributing-pr-review.md), which defines hard blocks versus follow-ups. Matching the guides does not guarantee merge. Approve and merge are always a human maintainer decision.
 
 ### Build a Community Plugin
