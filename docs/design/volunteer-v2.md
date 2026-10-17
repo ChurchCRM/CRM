@@ -8,6 +8,8 @@ complexity: "advanced"
 
 # Volunteer Management v2 — Architecture & Reuse Design
 
+**Status:** Active
+
 Technical design for the Volunteer Management v2 epic ([#9701](https://github.com/ChurchCRM/CRM/issues/9701)).
 Moving V1 data to V2 and retiring V1 is epic [#9702](https://github.com/ChurchCRM/CRM/issues/9702) and is out of scope here.
 
@@ -29,7 +31,7 @@ the authorization model and the reuse decisions here.
 3. Copy the "reuse decisions to document in the PR" bullets for your issue into the PR
    description. Every PR answers: what existing capability was evaluated, why it is reused as-is or
    extended, and why a new implementation is necessary.
-4. Where this document and a skill file disagree, this document wins for V2 work. The reliable
+4. Where this document and a skill file disagree, the skill (`.agents/skills/churchcrm/volunteer-v2.md`) is the current rule; fix this document in the same PR. The reliable
    references are `groups-mvc-guidelines.md`, `db-schema-migration.md`, `cypress-testing.md`,
    `timezone-handling.md`, and the source files cited here.
 5. Claims about existing code cite the file and the symbol. Re-grep the symbol to find its current location.

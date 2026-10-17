@@ -3,7 +3,7 @@
 > **TL;DR / BLUF**
 > Maintainers make work ready; contributors report the problem. Before coding, check existing work, agree on the outcome and acceptance checks, resolve blocking design/security decisions, and claim the issue visibly. Split by independently reviewable user outcomes when that reduces risk. Humans own decisions and approval; agents execute.
 
-**Use this page for issue readiness and decomposition.** For merge requirements, follow the [PR review gates](./contributing-pr-review.md). See [How to Contribute](../CONTRIBUTING.md) for onboarding.
+**Use this page for issue readiness and decomposition.** For merge requirements, follow the [PR review gates](./pr-review.md). See [How to Contribute](../../CONTRIBUTING.md) for onboarding.
 
 ## The fast path
 
@@ -56,7 +56,7 @@ Apply the existing label when design is settled, scope is bounded and low-risk, 
 
 ## Pull requests
 
-Keep each PR focused and its title/body aligned with the actual diff. Summarize the goal, outcome, and relevant validation. Include migration, security, permissions, compatibility, or responsive UI details when they matter to review. The [PR review gates](./contributing-pr-review.md) remain authoritative.
+Keep each PR focused and its title/body aligned with the actual diff. Summarize the goal, outcome, and relevant validation. Include migration, security, permissions, compatibility, or responsive UI details when they matter to review. The [PR review gates](./pr-review.md) remain authoritative.
 
 ## Triage, automation, and accountability
 

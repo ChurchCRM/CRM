@@ -121,7 +121,7 @@ Generic language skills may live on a developer's own machine. ChurchCRM overrid
 - **Quick reference** — Jump to the skill in `churchcrm/` covering your current task
 - **Learning guide** — Read skills to understand ChurchCRM patterns
 - **Quality check** — Use skills to verify your code follows standards
-- **Pre-commit review** — Check relevant skills before submitting PRs. Contributors should also read [What maintainers look for](../../docs/contributing-pr-review.md).
+- **Pre-commit review** — Check relevant skills before submitting PRs. Contributors should also read [What maintainers look for](../../docs/contributing/pr-review.md).
 
 ## Maintaining These Skills
 

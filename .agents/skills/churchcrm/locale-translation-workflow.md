@@ -6,8 +6,8 @@ intent: Translate missing ChurchCRM UI terms without losing work or bypassing th
 # Locale Translation
 
 Translate missing UI terms for ChurchCRM. The complete locale loop, branches,
-uploads, and plural handling live in [the locale pipeline](../../../docs/locale-pipeline.md);
-the release checklist is in [the release process](../../../docs/release-process.md#phase-1-localization-sync).
+uploads, and plural handling live in [the locale pipeline](../../../docs/maintainers/locale-pipeline.md);
+the release checklist is in [the release process](../../../docs/maintainers/release-process.md#phase-1-localization-sync).
 
 ## Agent rules
 

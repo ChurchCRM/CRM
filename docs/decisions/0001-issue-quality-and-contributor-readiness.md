@@ -1,11 +1,14 @@
 # RFC: Issue Quality, Epic Sizing, PR Scope, and Good First Issue Readiness
 
 > **BLUF**
-> This RFC sets the durable rules for making ChurchCRM work clear, reviewable, and safe. Maintainers own readiness and decisions; agents execute, not approve. Size by review burden and risk, split epics by independently testable user outcomes, and use existing labels and review gates. The canonical [issue-readiness guide](../issue-readiness.md) is the short operational checklist; this RFC preserves the accepted decisions. Current pilot work and issue-by-issue findings belong only in the [implementation tracker](https://github.com/ChurchCRM/CRM/issues/10634).
+> This RFC sets the durable rules for making ChurchCRM work clear, reviewable, and safe. Maintainers own readiness and decisions; agents execute, not approve. Size by review burden and risk, split epics by independently testable user outcomes, and use existing labels and review gates. The canonical [issue-readiness guide](../contributing/issue-readiness.md) is the short operational checklist; this RFC preserves the accepted decisions. Current pilot work and issue-by-issue findings belong only in the [implementation tracker](https://github.com/ChurchCRM/CRM/issues/10634).
 
-**Status:** Accepted by George Dawoud on 2026-10-17 — implementation rollout tracked separately  
+**Status:** Accepted  
+**Date:** 2026-10-17  
+**Owner:** George Dawoud  
+**Rollout:** [#10634](https://github.com/ChurchCRM/CRM/issues/10634)  
 **Scope:** Pilot in `ChurchCRM/CRM`, then evaluate other repositories  
-**Decision owner:** ChurchCRM maintainers; Q1–Q8 approved by George Dawoud on 2026-10-17  
+**Decision owner:** ChurchCRM maintainers; Q1–Q8 approved by the owner on the date above  
 **Review input:** [cwhorton's review of PR #10539](https://github.com/ChurchCRM/CRM/pull/10539#issuecomment-6127612100)  
 **Related but distinct:** [RFC portfolio/community feedback #10550](https://github.com/ChurchCRM/CRM/issues/10550) and [governance PR #10551](https://github.com/ChurchCRM/CRM/pull/10551). This RFC governs **implementation issue/PR quality**, not public feature voting, RFC stages, or release priorities.
 
@@ -16,12 +19,12 @@ Keep reporting easy for churches, while requiring maintainers to make implementa
 **Decision record:** George approved Q1–Q8 on 2026-10-17. This RFC is the final record of those policy decisions. It is not the implementation itself: existing operating rules remain authoritative until the follow-up work is reviewed and merged. The implementation tracker is [#10634](https://github.com/ChurchCRM/CRM/issues/10634).
 
 **Extend existing rules; do not create parallel policies.** Current source-of-truth surfaces (until follow-up PRs change them):
-- [`docs/contributing-pr-review.md`](../../docs/contributing-pr-review.md) — existing canonical PR merge/review requirements, linked from the **root** [`CONTRIBUTING.md`](../../CONTRIBUTING.md).
+- [`docs/contributing/pr-review.md`](../contributing/pr-review.md) — existing canonical PR merge/review requirements, linked from the **root** [`CONTRIBUTING.md`](../../CONTRIBUTING.md).
 - [`.agents/skills/churchcrm/maintainer-review-gates.md`](../../.agents/skills/churchcrm/maintainer-review-gates.md), [`git-workflow.md`](../../.agents/skills/churchcrm/git-workflow.md) and [`github-interaction.md`](../../.agents/skills/churchcrm/github-interaction.md) — existing agent and epic guidance; reference the canonical guides rather than repeat their content.
 - [`.coderabbit.yaml`](../../.coderabbit.yaml) — existing automated review configuration, not a human-approval substitute.
 - [`.github/CONTRIBUTING.md`](../../.github/CONTRIBUTING.md) — GitHub-facing entry point linking to **docs.churchcrm.io/contributing**, distinct from root `CONTRIBUTING.md`. The docs-site contributor page and its beginner-issue promises must be aligned during rollout.
 - [`AGENTS.md`](../../AGENTS.md), `CLAUDE.md`, and relevant skills — the discoverable agent entry points.
-- The current freeze on adding features to Query View is documented in `docs/contributing-pr-review.md`. The authoritative inventory of frozen/replacement areas will live in a **Frozen areas** section of that same file; triage must consult that section rather than invent a second contradictory list.
+- The current freeze on adding features to Query View is documented in `docs/contributing/pr-review.md`. The authoritative inventory of frozen/replacement areas will live in a **Frozen areas** section of that same file; triage must consult that section rather than invent a second contradictory list.
 
 The companion community RFC governs **maintainer-authored, plain-language Feature Proposal Discussions** and **technical RFCs reviewed in draft PRs**. This RFC starts where a request becomes an implementation candidate.
 
@@ -29,7 +32,7 @@ The companion community RFC governs **maintainer-authored, plain-language Featur
 
 | ID | Accepted decision | Reviewer disposition |
 | --- | --- | --- |
-| Q1 | **Reuse** `docs/contributing-pr-review.md` for PR standards; create one concise **issue readiness** page in `docs/`; link both from root CONTRIBUTING and the GitHub/docs entry point. Treat this RFC as decision history. | **Accept** existing-rules critique; no new competing all-in-one PR guide |
+| Q1 | **Reuse** `docs/contributing/pr-review.md` for PR standards; create one concise **issue readiness** page in `docs/`; link both from root CONTRIBUTING and the GitHub/docs entry point. Treat this RFC as decision history. | **Accept** existing-rules critique; no new competing all-in-one PR guide |
 | Q2 | Size primarily by **review burden**: touched subsystems, permission/schema/data risk, handoffs, test surface and non-generated diff size. Effort estimates are optional hints, never acceptance gates. | **Accept**; replaces hour/day classification |
 | Q3 | Create an **Epic** for multiple independently shippable outcomes, significant cross-subsystem work or unresolved design/permissions/schema decisions; use GitHub **sub-issues**, not only hand-maintained checkboxes. Prefer *vertical end-to-end user outcomes*; allow strictly necessary additive infrastructure slices with explicit consumers and safety gates. | **Accept with safety exception**; validate decomposition against the agreed criteria |
 | Q4 | `good first issue` is **maintainer certification**, not difficulty guess: settled design, low-risk bounded task, existing test pattern, actionable paths and checks, owner available to review; no automatic size/time guarantee. | **Accept** |
@@ -42,7 +45,7 @@ George approved Q1–Q8 on 2026-10-17. This RFC records the accepted decisions; 
 
 ## How the decisions are applied
 
-The operational rules are in the canonical [issue readiness guide](../issue-readiness.md), together with the existing [PR review gates](../contributing-pr-review.md). Keep those guides actionable and avoid copying the full checklist into this RFC.
+The operational rules are in the canonical [issue readiness guide](../contributing/issue-readiness.md), together with the existing [PR review gates](../contributing/pr-review.md). Keep those guides actionable and avoid copying the full checklist into this RFC.
 
 The agreed model is:
 
@@ -54,16 +57,8 @@ The agreed model is:
 - **Coordination:** check existing issues and PRs before starting; claim work visibly; use early draft PRs for substantial changes; explain supersession and link replacements. Protect active pilot work with narrow, reversible safeguards, not blanket stale-job exemptions.
 - **Accountability:** agents may help research, draft, implement, and test, but humans remain accountable for decisions, review, and approval.
 
-## Pilot scope
+## Rollout
 
-Use the Member Portal and RBAC work as the initial pilot areas. They represent current, meaningful product and security work: Member Portal exercises the boundary between member self-service and staff access; RBAC exercises authorization policy, role assignment, middleware, and migration from legacy permissions.
-
-Apply the readiness and decomposition criteria to the current work, verify each candidate against current code and released behavior, and record issue-specific dispositions only in the implementation tracker. Keep this RFC and the canonical guide free of individual issue/epic examples so they remain durable as the backlog changes.
-
-Prefer independently testable, vertical user outcomes when regrouping work; allow bounded foundation work where required for safety or dependencies. Do not automatically recreate closed work or rewrite the wider backlog. Check stale automation before it can close active pilot work. Certify beginner issues only when they genuinely meet the guide and a human reviewer is available; if none qualify, record that honestly. Validate the workflow with a contributor and maintainer before expanding beyond CRM.
-
-## Implementation tracking
-
-The single execution checklist, ownership, and implementation evidence live in [#10634](https://github.com/ChurchCRM/CRM/issues/10634). Link focused implementation PRs and validation results there. This RFC remains the decision record; it does not duplicate the execution checklist or activate unmerged operational changes.
+Pilot scope (Member Portal and RBAC), the execution checklist, ownership and evidence live in [#10634](https://github.com/ChurchCRM/CRM/issues/10634). This RFC does not duplicate them or activate unmerged operational changes.
 
 Explicitly out of scope: automatic issue closure, automatic milestones, forced labels, subjective CI quality scoring, broad backlog rewrites, and blanket stale-job exemptions. Expanding scope requires a separate maintainer decision.

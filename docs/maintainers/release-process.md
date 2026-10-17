@@ -27,13 +27,13 @@ Done when `npm run locale:translate:list` on `master` lists no locales (`locale/
 
 | # | Step | How | Status |
 |---|------|-----|--------|
-| 1.1 | `Locale: terms` extracts new strings on every merge to `master` touching `src/**` | [`locale-generate-terms.yml`](../.github/workflows/locale-generate-terms.yml), about 4 min | 🤖 |
+| 1.1 | `Locale: terms` extracts new strings on every merge to `master` touching `src/**` | [`locale-generate-terms.yml`](../../.github/workflows/locale-generate-terms.yml), about 4 min | 🤖 |
 | 1.2 | Merge the `Update locale strings` PR it opens (branch `locale/terms/<version>-<timestamp>`, label `Localization`). No PR means no new strings | Review and merge | ✋ |
-| 1.3 | Upload `locale/messages.po` to POEditor and delete terms that no longer exist | Merging the 1.2 PR changes `locale/messages.po` on `master`, which starts [`locale-sync-poeditor.yml`](../.github/workflows/locale-sync-poeditor.yml). After a 30 minute settle (a newer merge restarts it), `poeditor-upload-terms.js` imports the terms with `sync_terms=1`, deletes terms missing from the file, verifies POEditor matches it, and refuses a deletion above 2% of the project | 🤖 |
+| 1.3 | Upload `locale/messages.po` to POEditor and delete terms that no longer exist | Merging the 1.2 PR changes `locale/messages.po` on `master`, which starts [`locale-sync-poeditor.yml`](../../.github/workflows/locale-sync-poeditor.yml). After a 30 minute settle (a newer merge restarts it), `poeditor-upload-terms.js` imports the terms with `sync_terms=1`, deletes terms missing from the file, verifies POEditor matches it, and refuses a deletion above 2% of the project | 🤖 |
 | 1.4 | Run `Locale: sync` manually so the latest translations land before the release; it opens a `locale: update translations from POEditor - <date>` PR | `workflow_dispatch`, about 8 min | ✋ trigger / 🤖 run |
 | 1.5 | Skim the POEditor PR's file list for unexpected files, then merge | The PR touches only `locale/`, `locale/terms/missing/<locale>/`, `src/locale/`, `src/locale/i18n/*.json` and `src/locale/textdomain/<locale>/LC_MESSAGES/*` | ✋ |
-| 1.6 | Translate every missing term in `locale/terms/missing/<locale>/` with Claude, using church vocabulary | [Locale Translation skill](../.agents/skills/churchcrm/locale-translation-workflow.md) and [`/locale-translate --all`](../.claude/commands/locale-translate.md) on a fresh `locale/translate/<version>-<date>-<time>` branch, one commit and push per locale. Runtime scales with terms per locale: about 25 min for ~10 terms, about 3 h for ~155 | 🧑‍💻 |
-| 1.7 | Upload the translated terms to POEditor | Every push to `locale/translate/**` runs [`locale-upload-missing.yml`](../.github/workflows/locale-upload-missing.yml). Fallback: run that workflow manually (`locales` input), or `node locale/scripts/poeditor-upload-missing.js -y` with `POEDITOR_TOKEN` | 🤖 |
+| 1.6 | Translate every missing term in `locale/terms/missing/<locale>/` with Claude, using church vocabulary | [Locale Translation skill](../../.agents/skills/churchcrm/locale-translation-workflow.md) and [`/locale-translate --all`](../../.claude/commands/locale-translate.md) on a fresh `locale/translate/<version>-<date>-<time>` branch, one commit and push per locale. Runtime scales with terms per locale: about 25 min for ~10 terms, about 3 h for ~155 | 🧑‍💻 |
+| 1.7 | Upload the translated terms to POEditor | Every push to `locale/translate/**` runs [`locale-upload-missing.yml`](../../.github/workflows/locale-upload-missing.yml). Fallback: run that workflow manually (`locales` input), or `node locale/scripts/poeditor-upload-missing.js -y` with `POEDITOR_TOKEN` | 🤖 |
 | 1.8 | `Locale: sync` downloads the new translations; scan and merge its PR (as 1.4 → 1.5) | The upload workflow dispatches the sync itself | 🤖 run / ✋ merge |
 
 Notes:
@@ -56,9 +56,9 @@ Goal: the exact commit being released is built, fully tested, and its scope is c
 
 | # | Step | How | Status |
 |---|------|-----|--------|
-| 2.1 | Compare the latest successful nightly run's SHA with `master` HEAD. If they differ, run the nightly manually and wait for green | [`build-test-nightly.yml`](../.github/workflows/build-test-nightly.yml): build, root and subdir suites, setup wizard, locale smoke, upgrade matrix. A manual run takes about 30 to 48 min | ✋ check and trigger / 🤖 run |
-| 2.2 | Confirm `Build, Test and Package` on `master` HEAD is completed and green; its `ChurchCRM-<version>.zip` artifact is the released file | [`build-test-package.yml`](../.github/workflows/build-test-package.yml) runs on every push to `master`, about 36 min | 🤖 run / ✋ check |
-| 2.3 | Review the GitHub milestone matching the `package.json` version on `master`; remove any open issue or PR that will not ship | Milestones → `<version>`. [`pr-milestone-stamp.yml`](../.github/workflows/pr-milestone-stamp.yml) stamps merged PRs and `release-bookkeeping.yml` rolls open items to the next milestone, so the review looks for blockers | ✋ |
+| 2.1 | Compare the latest successful nightly run's SHA with `master` HEAD. If they differ, run the nightly manually and wait for green | [`build-test-nightly.yml`](../../.github/workflows/build-test-nightly.yml): build, root and subdir suites, setup wizard, locale smoke, upgrade matrix. A manual run takes about 30 to 48 min | ✋ check and trigger / 🤖 run |
+| 2.2 | Confirm `Build, Test and Package` on `master` HEAD is completed and green; its `ChurchCRM-<version>.zip` artifact is the released file | [`build-test-package.yml`](../../.github/workflows/build-test-package.yml) runs on every push to `master`, about 36 min | 🤖 run / ✋ check |
+| 2.3 | Review the GitHub milestone matching the `package.json` version on `master`; remove any open issue or PR that will not ship | Milestones → `<version>`. [`pr-milestone-stamp.yml`](../../.github/workflows/pr-milestone-stamp.yml) stamps merged PRs and `release-bookkeeping.yml` rolls open items to the next milestone, so the review looks for blockers | ✋ |
 | 2.4 | Check for draft High-severity GHSA advisories at https://github.com/ChurchCRM/CRM/security/advisories (state=draft, severity=High). Fix and publish first, or defer the release | | ✋ |
 
 Notes:
@@ -73,8 +73,8 @@ Notes:
 
 | # | Step | How | Status |
 |---|------|-----|--------|
-| 3.1 | Run **Release & Start Next** with `next_version`. It creates the draft from the tested build's ZIP, uploads the `release-notes-context-<version>` artifact, bumps `master` to `next_version` and opens the `Start <next> release` PR. It requires green build, nightly and marketing capture on the branch tip and refuses to replace an existing release | [`release-publish.yml`](../.github/workflows/release-publish.yml) → [`release-prepare.yml`](../.github/workflows/release-prepare.yml), about 2 to 3 min | ✋ trigger / 🤖 run |
-| 3.2 | Release notes: an agent reads the context artifact, writes user-facing notes following [`release-notes.md`](../.agents/skills/churchcrm/release-notes.md) (grouped by user impact, verified language count), and after approval applies them with `gh release edit <tag> --tag <tag> --notes-file …` | Agent and skill | 🧑‍💻 |
+| 3.1 | Run **Release & Start Next** with `next_version`. It creates the draft from the tested build's ZIP, uploads the `release-notes-context-<version>` artifact, bumps `master` to `next_version` and opens the `Start <next> release` PR. It requires green build, nightly and marketing capture on the branch tip and refuses to replace an existing release | [`release-publish.yml`](../../.github/workflows/release-publish.yml) → [`release-prepare.yml`](../../.github/workflows/release-prepare.yml), about 2 to 3 min | ✋ trigger / 🤖 run |
+| 3.2 | Release notes: an agent reads the context artifact, writes user-facing notes following [`release-notes.md`](../../.agents/skills/churchcrm/release-notes.md) (grouped by user impact, verified language count), and after approval applies them with `gh release edit <tag> --tag <tag> --notes-file …` | Agent and skill | 🧑‍💻 |
 | 3.3 | Merge the `Start <next> release` PR before publishing. Bookkeeping stops if `master` still carries the released version, and `pr-milestone-stamp.yml` stamps new merges into the next milestone | PR from `build/<next>` | ✋ |
 | 3.4 | Check the tag, then Publish: `gh release view <tag> --json tagName,isDraft` shows the version | GitHub release page | ✋ (approval) |
 
@@ -95,7 +95,7 @@ Notes:
 | 4.1 | GitHub notifies everyone watching releases on `ChurchCRM/CRM` | GitHub release notifications | 🤖 |
 | 4.2 | Every admin is told an upgrade is available on their next login | `AuthenticationManager::checkSystemUpdates()` → `ChurchCRMReleaseManager::checkSystemUpdateAvailable()` (admins only, stable releases only, cached per session) | 🤖 |
 | 4.3 | The upgrade wizard ("What you'll gain") shows the release body from GitHub and links `changelog/<version>.md` on `master` | `ChurchCRMReleaseManager::getUpgradePreviewData()` | 🤖 |
-| 4.4 | Changelog: writes `changelog/<version>.md` from the release body and adds a row to `CHANGELOG.md`, committed to `master` as `chore(changelog): sync <version> release notes` | [`release-bookkeeping.yml`](../.github/workflows/release-bookkeeping.yml) job `sync` → `scripts/release-changelog.js` | 🤖 |
+| 4.4 | Changelog: writes `changelog/<version>.md` from the release body and adds a row to `CHANGELOG.md`, committed to `master` as `chore(changelog): sync <version> release notes` | [`release-bookkeeping.yml`](../../.github/workflows/release-bookkeeping.yml) job `sync` → `scripts/release-changelog.js` | 🤖 |
 | 4.5 | Milestones: closes `<version>`, creates the next milestone (from `master`'s `package.json`) if missing, and moves every still-open issue/PR into it. Skipped for pre-releases | job `manage-milestones` | 🤖 |
 | 4.6 | Docs milestones: ensures `<version>` and next exist in `ChurchCRM/docs.churchcrm.io`, keeping held docs PRs on the released one | job `sync-docs-milestones`; needs the `DOCS_RELEASE_TOKEN` secret | 🤖 |
 | 4.7 | Post-release nightly: the full suite, including the upgrade matrix, runs against the published release | `build-test-nightly.yml` on `release: published` | 🤖 |
@@ -120,9 +120,9 @@ Starts after Publish (3.4) and runs about a week.
 
 | # | Step | How | Status |
 |---|------|-----|--------|
-| 6.1 | Check the marketing visuals are published at https://cdn.churchcrm.io | [`marketing-capture-assets.yml`](../.github/workflows/marketing-capture-assets.yml) runs on the release commit as a gate in 3.1. On Publish, `release-bookkeeping` job `publish-visuals` starts `Publish visuals` in `ChurchCRM/visuals` with that capture run (`DOCS_RELEASE_TOKEN` needs Actions: write there). If it warned, run `Publish visuals` by hand with the capture run id | 🤖 / ✋ fallback |
+| 6.1 | Check the marketing visuals are published at https://cdn.churchcrm.io | [`marketing-capture-assets.yml`](../../.github/workflows/marketing-capture-assets.yml) runs on the release commit as a gate in 3.1. On Publish, `release-bookkeeping` job `publish-visuals` starts `Publish visuals` in `ChurchCRM/visuals` with that capture run (`DOCS_RELEASE_TOKEN` needs Actions: write there). If it warned, run `Publish visuals` by hand with the capture run id | 🤖 / ✋ fallback |
 | 6.2 | Release the docs. In `ChurchCRM/docs.churchcrm.io`: (1) set `crm-release.json` on `release-docs/<version>` to the released version and push, (2) merge the `docs: ChurchCRM <version>` pull request into `main`, (3) create `release-docs/<next version>` from `main` (command in the docs repo `DOCS_GUIDE.md`) | Docs PRs for the release were merged into `release-docs/<version>` as approved, and their CRM tracking issues closed then | ✋ |
-| 6.3 | Launch-day announcements: Discord, "shipped, please retest" comments on fixed issues, social posts | [Release Announcement skill](../.agents/skills/churchcrm/release-announcement.md) steps 1 and 2; [`social-media-release.md`](../.agents/skills/churchcrm/social-media-release.md) | 🧑‍💻 |
+| 6.3 | Launch-day announcements: Discord, "shipped, please retest" comments on fixed issues, social posts | [Release Announcement skill](../../.agents/skills/churchcrm/release-announcement.md) steps 1 and 2; [`social-media-release.md`](../../.agents/skills/churchcrm/social-media-release.md) | 🧑‍💻 |
 | 6.4 | For a release with new features, write a blog post | Blog PR in `ChurchCRM.io` | ✋ |
 | 6.5 | A few days later, share the blog post on social media | | ✋ |
 | 6.6 | Week-long marketing push | | ✋ |
