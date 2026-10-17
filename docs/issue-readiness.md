@@ -36,6 +36,7 @@ Apply the existing label when design is settled, scope is bounded and low-risk, 
 - Prefer concrete, direct language over boilerplate, repeated summaries, generic assurances, and exhaustive inventories.
 - Add code comments for intent or non-obvious constraints. Let clear names, structure, and tests explain straightforward code.
 - Report the relevant validation and its result. Test the changed behavior and important security/error boundaries; keep CI focused on meaningful, reproducible checks rather than duplicating locally detectable checks.
+- Docs-only PRs skip application build, typecheck/lint, and Cypress workflows. Mixed or application/configuration changes still run the relevant CI.
 
 ## Pull requests
 
