@@ -587,19 +587,19 @@ class VolunteerNotificationService
     /**
      * The unfilled-position alert (#10372, §3.6): a `gap_alert` to the coordinators for
      * every position still short (`getOpenGaps()`, D34's *Needs N more*) on a scheduled
-     * occurrence of an active ministry that starts inside `iVolunteerReminderLeadHours`.
+     * occurrence of an active ministry that starts inside `iVolunteerGapAlertLeadHours`.
      *
      * Runs on every timer pass, so a gap is reported soon after it comes inside the
      * window. Each position is reported to each recipient once, and not at all to a
      * recipient who already has the occurrence-wide alert a decline sends
-     * (`notifyGapOpened()`), because that one lists every short position. There is no
-     * lead setting of its own, so a lead of 0 turns this off with the reminders.
+     * (`notifyGapOpened()`), because that one lists every short position. A lead of 0
+     * turns this off and leaves the reminders alone (#10526).
      *
      * @return int rows enqueued (existing rows are not counted)
      */
     public function scheduleGapAlerts(): int
     {
-        $leadHours = SystemConfig::getIntValue('iVolunteerReminderLeadHours');
+        $leadHours = SystemConfig::getIntValue('iVolunteerGapAlertLeadHours');
         if ($leadHours <= 0) {
             return 0;
         }

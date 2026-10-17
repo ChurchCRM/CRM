@@ -7,7 +7,7 @@
  * §2.14 (the outbox columns, the dedupe keys, the amended retry rule and what
  * `skipped` means), §3.4 (`VolunteerNotificationService`), §3.6 (the trigger
  * table, Reply-To resolution and the four-step drain), Appendix B
- * (`iVolunteerReminderLeadHours`), Appendix C (the seven `BaseEmail`
+ * (`iVolunteerReminderLeadHours`, `iVolunteerGapAlertLeadHours`), Appendix C (the seven `BaseEmail`
  * subclasses) and §6.6 ("duplicate notification enqueue", which is what
  * `GET /api/ministries/assignments/{id}/notifications` exists for).
  *
@@ -49,6 +49,7 @@ const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const EMAIL_ENABLED_URL = "/admin/api/system/config/bEnabledEmail";
 const SMTP_HOST_URL = "/admin/api/system/config/sSMTPHost";
 const LEAD_HOURS_URL = "/admin/api/system/config/iVolunteerReminderLeadHours";
+const GAP_LEAD_HOURS_URL = "/admin/api/system/config/iVolunteerGapAlertLeadHours";
 const DO_NOT_EMAIL_URL = "/admin/api/system/config/iDoNotEmailPropertyId";
 /**
  * Read, never assumed (#9714). Every `BaseEmail` subject is prefixed with
@@ -108,6 +109,7 @@ let occurrenceTwoStart = "";
 let originalVersion = null;
 let originalSmtpHost = null;
 let originalLeadHours = null;
+let originalGapLeadHours = null;
 let originalDoNotEmail = null;
 let churchName = "";
 let seriesStart = "";
@@ -574,6 +576,9 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
         readConfig(LEAD_HOURS_URL).then((value) => {
             originalLeadHours = value;
         });
+        readConfig(GAP_LEAD_HOURS_URL).then((value) => {
+            originalGapLeadHours = value;
+        });
         readConfig(DO_NOT_EMAIL_URL).then((value) => {
             originalDoNotEmail = value;
         });
@@ -583,10 +588,11 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
 
         setConfig(SETTING_URL, "v2");
         setConfig(EMAIL_ENABLED_URL, "1");
-        // Reminders are opt-in per test: a lead of 0 means "schedule none", so a
-        // fixture occurrence that happens to fall inside the default 48 hours
-        // cannot seed reminder rows into an unrelated assertion.
+        // Reminders and gap alerts are opt-in per test: a lead of 0 means "schedule
+        // none", so a fixture occurrence that happens to fall inside the default 48
+        // hours cannot seed rows into an unrelated assertion.
         setConfig(LEAD_HOURS_URL, "0");
+        setConfig(GAP_LEAD_HOURS_URL, "0");
         setConfig(DO_NOT_EMAIL_URL, String(DO_NOT_EMAIL_PROPERTY));
 
         cleanupFixtures();
@@ -724,6 +730,7 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
         restoreConfig(SETTING_URL, originalVersion);
         restoreConfig(SMTP_HOST_URL, originalSmtpHost);
         restoreConfig(LEAD_HOURS_URL, originalLeadHours);
+        restoreConfig(GAP_LEAD_HOURS_URL, originalGapLeadHours);
         restoreConfig(DO_NOT_EMAIL_URL, originalDoNotEmail);
         clearMail();
     });
@@ -1482,10 +1489,22 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
             setConfig(SETTING_URL, "v2");
             setConfig(EMAIL_ENABLED_URL, "1");
             setConfig(LEAD_HOURS_URL, "0");
+            setConfig(GAP_LEAD_HOURS_URL, "0");
             restoreConfig(SMTP_HOST_URL, originalSmtpHost);
             dbOk(`UPDATE volunteer_occurrence_vocc SET vocc_Status = 'scheduled' WHERE vocc_ID = ?`, [occurrenceOne]);
             dbOk("UPDATE volunteer_position_vpos SET vpos_Name = ? WHERE vpos_ID = ?", [ESPRESSO_NAME, posEspresso]);
         });
+
+        /** The delivered unfilled-position alerts addressed to `address`. */
+        function gapAlertMailTo(address) {
+            return listMail().then((messages) =>
+                messages.filter(
+                    (message) =>
+                        (message.To || []).some((to) => (to.Address || "").toLowerCase() === address) &&
+                        (message.Subject || "").toLowerCase().includes("still need to be filled"),
+                ),
+            );
+        }
 
         function gapAlerts(occurrenceId) {
             return dbOk(
@@ -1502,8 +1521,12 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
         }
 
         /** A lead that reaches the first Sunday and stops a week short of the second. */
-        function leadToOccurrenceOne() {
-            return cy.then(() => setConfig(LEAD_HOURS_URL, String(Math.ceil(hoursUntil(occurrenceOneStart)) + 1)));
+        function hoursToOccurrenceOne() {
+            return String(Math.ceil(hoursUntil(occurrenceOneStart)) + 1);
+        }
+
+        function leadToOccurrenceOne(url = GAP_LEAD_HOURS_URL) {
+            return cy.then(() => setConfig(url, hoursToOccurrenceOne()));
         }
 
         it("queues one alert per unfilled position inside the lead window, and a second run adds none", () => {
@@ -1547,6 +1570,29 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
             });
         });
 
+        it("has a lead of its own: a reminder lead of 0 leaves the alerts on (#10526)", function () {
+            requireMailpit(this);
+            setConfig(LEAD_HOURS_URL, "0");
+            leadToOccurrenceOne();
+            runJobsNow();
+            gapAlertMailTo(COORDINATOR_EMAIL).should("have.length", 2);
+        });
+
+        it("sends none at a gap-alert lead of 0 while reminders are still scheduled (#10526)", function () {
+            requireMailpit(this);
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then((assignment) => {
+                setConfig(GAP_LEAD_HOURS_URL, "0");
+                leadToOccurrenceOne(LEAD_HOURS_URL);
+                runJobsNow();
+                gapAlertMailTo(COORDINATOR_EMAIL).should("have.length", 0);
+                notifications(assignment.id).then((resp) => {
+                    expect(resp.body.notifications.map((n) => n.type), "the reminder is still scheduled").to.include(
+                        "reminder",
+                    );
+                });
+            });
+        });
+
         it("skips a cancelled occurrence", () => {
             dbOk(`UPDATE volunteer_occurrence_vocc SET vocc_Status = 'cancelled' WHERE vocc_ID = ?`, [occurrenceOne]);
             leadToOccurrenceOne();
@@ -1557,7 +1603,7 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
         });
 
         it("alerts a gap at the next ordinary run once it comes inside the window", () => {
-            setConfig(LEAD_HOURS_URL, "1");
+            setConfig(GAP_LEAD_HOURS_URL, "1");
             drain();
             gapAlerts(occurrenceOne).then((rows) => {
                 expect(rows, "outside a one-hour window").to.have.length(0);
