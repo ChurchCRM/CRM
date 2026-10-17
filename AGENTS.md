@@ -50,8 +50,9 @@ Before triaging or implementing an issue, read [`docs/issue-readiness.md`](docs/
 - Do not merge or close issues unless the maintainer answers yes to a direct question
 - User-visible behavior: open a docs tracking issue on ChurchCRM/CRM. It does not block feature merge. Docs PRs wait for the release. See `docs/contributing-pr-review.md`
 - UI that belongs on a marketing or docs page: one PR carries the code, the Cypress specs, and the Playwright capture (the `playwright/workflows/` spec, the `en` PNGs, and the `manifest.json` entries; `marketing-visuals-pipeline.md`). Run the pipeline in a git worktree on its own compose project, never on the dev checkout: it deletes `src/Include/Config.php`. Open a separate Playwright issue only when the capture cannot be taken yet
+- Follow the human-first writing rules in [`docs/issue-readiness.md`](docs/issue-readiness.md): BLUF first, concise goals and outcomes, details only when they help a decision.
 - Write the current state: positive instructions, no history, no negating comments, migrate a legacy page when you touch it (`skill-architecture.md`)
-- Write little. Names and tests carry intent. Do not narrate the next line in a comment.
+- Write little. Names and tests carry intent. Comment only to explain intent or a non-obvious constraint; do not narrate the code.
 - If the PR author is the same GitHub user the agent is acting as, do not post a review comment. Fix the branch.
 
 ## Tests
