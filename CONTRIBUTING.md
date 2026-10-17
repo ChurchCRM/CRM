@@ -146,7 +146,7 @@ Before starting work, read the [issue readiness and sizing guide](docs/contribut
 
 ### Propose a feature, review an RFC, or help set priorities
 
-ChurchCRM can **accept a design without scheduling its implementation**. Ideas, architecture reviews, community demand and ready-to-code tasks have different statuses. Before opening a large feature proposal, read the [RFC, community feedback and prioritization guide](docs/decisions/0003-rfc-community-prioritization.md) (currently proposed).
+ChurchCRM can **accept a design without scheduling its implementation**. Ideas, architecture reviews, community demand and ready-to-code tasks have different statuses. Before opening a large feature proposal, read the [community feedback policy](docs/decisions/0003-rfc-community-prioritization.md).
 
 - Explain the real church problem and link any existing issue rather than opening duplicates.
 - Join an RFC discussion when user workflows, privacy, security, data structures or cross-module choices need decisions.

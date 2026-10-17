@@ -2,9 +2,9 @@
 
 Loaded by Codex every session. Other agents should follow the same files.
 
-## Community feedback (proposed)
+## Community feedback
 
-Feature Proposals and RFC Reviews Discussions: [`docs/decisions/0003-rfc-community-prioritization.md`](docs/decisions/0003-rfc-community-prioritization.md). Pending approval; current repository rules apply.
+Feature Proposals and RFC Reviews Discussions: [`docs/decisions/0003-rfc-community-prioritization.md`](docs/decisions/0003-rfc-community-prioritization.md).
 
 ## Skills
 

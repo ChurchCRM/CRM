@@ -3,13 +3,11 @@
 > **BLUF**
 > Church users give feedback in two GitHub Discussions categories that maintainers fill: **Feature Proposals** (the church outcome, in plain language) and **RFC Reviews** (an invitation to review a technical design in its pull request). A reaction or comment shows demand. Maintainers approve designs and set the schedule. Issue readiness, sizing and PR gates stay in [RFC 0001](0001-issue-quality-and-contributor-readiness.md) and the [issue-readiness guide](../contributing/issue-readiness.md).
 
-**Status:** Proposed  
+**Status:** Accepted  
 **Date:** 2026-10-17  
 **Owner:** George Dawoud  
 **Index:** [#10550](https://github.com/ChurchCRM/CRM/issues/10550) lists each proposal and its status. Decisions live in the RFC.  
 **Rollout:** [#10545](https://github.com/ChurchCRM/CRM/issues/10545), [#10546](https://github.com/ChurchCRM/CRM/issues/10546), [#10544](https://github.com/ChurchCRM/CRM/issues/10544)
-
-Until George accepts this RFC, current repository rules apply.
 
 ## The two categories
 
@@ -24,7 +22,13 @@ Until George accepts this RFC, current repository rules apply.
 
 Both categories use Announcement format: maintainers create posts, and signed-in GitHub users comment and react. Each post says GitHub sign-in is required.
 
-Community ideas arrive through issues or Discord and are triaged first. Maintainers post the proposals they authorize.
+## Workflow
+
+1. Anyone files an issue, recommendation or PR. Maintainers triage it.
+2. When it is ready for feedback, a maintainer posts it to the matching category. The issue holds the draft post, written to the templates below, so agents and contributors can prepare it and a maintainer publishes it.
+3. The maintainer shares the Discussion link on Discord and asks for comments there. Useful Discord feedback is copied into the Discussion.
+4. The Discussion URL goes into the issue and the [#10550](https://github.com/ChurchCRM/CRM/issues/10550) entry; the post links the issue.
+5. Feedback is summarized in the issue or RFC, and the post's status is updated. Discord hears about status changes only: opened, accepted, shipped.
 
 ### A Feature Proposals post
 
