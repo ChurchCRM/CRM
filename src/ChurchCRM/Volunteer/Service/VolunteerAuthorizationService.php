@@ -362,7 +362,8 @@ class VolunteerAuthorizationService
      *     ministries list page was retired the sidebar is the only way in;
      *   - a pure **team leader** holds only `team` scopes, so the list is
      *     empty. Leading a team is not administering the ministry above it
-     *     (§4.6), and `/ministries/{id}` would refuse them.
+     *     (§4.6); the dashboard links them to `/ministries/{id}`'s team-only
+     *     view instead (#10530).
      *
      * Ids and names only — this runs on **every** page of the application, so
      * it never hydrates a model object.
@@ -404,6 +405,44 @@ class VolunteerAuthorizationService
         }
 
         return self::$manageableMinistryMemo[$personId] = $ministries;
+    }
+
+    /**
+     * #10530: the active ministries this user reaches only as a team leader, id => name,
+     * ordered by name: the sidebar lists them beside the ones they administer, each
+     * opening the ministry page's team-only view.
+     *
+     * @return array<int, string>
+     */
+    public function getTeamLedMinistries(User $user): array
+    {
+        $teamIds = $this->getOwnTeamScopeIds($user);
+        if ($teamIds === []) {
+            return [];
+        }
+
+        $ministryIds = array_map('intval', VolunteerTeamQuery::create()
+            ->filterById($teamIds, Criteria::IN)
+            ->select('MinistryId')
+            ->find()
+            ->toArray());
+        $ministryIds = array_values(array_diff(array_unique($ministryIds), array_keys($this->getManageableMinistries($user))));
+        if ($ministryIds === []) {
+            return [];
+        }
+
+        $ministries = [];
+        foreach (VolunteerMinistryQuery::create()
+            ->filterById($ministryIds, Criteria::IN)
+            ->filterByActive(true)
+            ->orderByName()
+            ->select(['Id', 'Name'])
+            ->find()
+            ->toArray() as $row) {
+            $ministries[(int) $row['Id']] = (string) $row['Name'];
+        }
+
+        return $ministries;
     }
 
     /**
