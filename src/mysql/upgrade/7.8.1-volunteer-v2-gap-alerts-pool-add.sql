@@ -1,4 +1,4 @@
--- ChurchCRM 7.9.0 upgrade script
+-- ChurchCRM 7.8.1 upgrade script
 
 -- #10526: unfilled-position alerts used the reminder lead time until they got a
 -- setting of their own. A church that changed the reminder lead keeps the alerts
