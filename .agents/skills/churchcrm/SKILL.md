@@ -90,6 +90,8 @@ Row actions: [`table-action-menu.md`](./table-action-menu.md). Settings UI: copy
 | [PHP Best Practices](./php-best-practices.md) | PHP / Perpl |
 | [Performance Optimization](./performance-optimization.md) | Queries |
 
+Community feedback policy (Feature Proposals and RFC Reviews Discussions): [`docs/decisions/0003-rfc-community-prioritization.md`](../../../docs/decisions/0003-rfc-community-prioritization.md).
+
 ## Process
 
 | Skill | When to Use |

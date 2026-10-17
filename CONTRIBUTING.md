@@ -144,6 +144,18 @@ Fix bugs, add features, improve performance, and expand test coverage in the mai
 
 Before starting work, read the [issue readiness and sizing guide](docs/contributing/issue-readiness.md) to check for existing work, understand when to split an epic, and see what qualifies as a `good first issue`. Before opening a PR, read [What maintainers look for](docs/contributing/pr-review.md), which defines hard blocks versus follow-ups. Matching the guides does not guarantee merge. Approve and merge are always a human maintainer decision.
 
+### Propose a feature, review an RFC, or help set priorities
+
+ChurchCRM can **accept a design without scheduling its implementation**. Ideas, architecture reviews, community demand and ready-to-code tasks have different statuses. Before opening a large feature proposal, read the [community feedback policy](docs/decisions/0003-rfc-community-prioritization.md).
+
+- Explain the real church problem and link any existing issue rather than opening duplicates.
+- Join an RFC discussion when user workflows, privacy, security, data structures or cross-module choices need decisions.
+- A community vote may help indicate demand, but does not make the design approved, promise a release, or override maintainer review.
+- Volunteer to implement or test **focused, scoped child issues** when ready; unplanned proposals are not automatically available as implementation tasks.
+- The [RFC portfolio](https://github.com/ChurchCRM/CRM/issues/10550) indexes active proposals and their review stages; decisions remain in the linked GitHub issues or PRs.
+
+---
+
 ### Build a Community Plugin
 
 Add a feature ChurchCRM doesn't include yet — a third-party API integration, a custom workflow, a specialized report — without modifying core code. Plugins survive upgrades and can be shared in the community registry.
