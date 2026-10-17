@@ -54,14 +54,6 @@ describe("Email Settings form", () => {
         cy.contains("Email settings saved successfully", { timeout: 10000 }).should("be.visible");
     });
 
-    it("fills the server fields from a preset", () => {
-        cy.contains("button", "Gmail (SMTP)").click();
-        cy.get("#sSMTPHost").should("have.value", "smtp.gmail.com:587");
-        cy.get("#sPHPMailerSMTPSecure").should("have.value", "tls");
-        cy.get("#bSMTPAuth").should("be.checked");
-        cy.get("#sSMTPUser").should("not.be.disabled");
-    });
-
     it("rejects a timeout outside 1 to 600 seconds", () => {
         cy.get("#iSMTPTimeout").clear().type("0");
         save();

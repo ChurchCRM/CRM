@@ -7,7 +7,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
 <?php if (!empty($recentEmails)) : ?>
-<div class="card mt-3" id="email-recent-sends">
+<div class="card mt-3">
     <div class="card-header d-flex flex-wrap align-items-center gap-2">
         <h3 class="card-title m-0"><i class="fa-solid fa-envelope-open-text me-2"></i><?= gettext('Recent Sends') ?>
             <span class="badge bg-secondary-lt text-secondary ms-2"><?= (int) $recentEmails['total'] ?></span>
