@@ -1,5 +1,8 @@
 # RFC: Issue Quality, Epic Sizing, PR Scope, and Good First Issue Readiness
 
+> **BLUF**
+> This RFC sets the durable rules for making ChurchCRM work clear, reviewable, and safe. Maintainers own readiness and decisions; agents execute, not approve. Size by review burden and risk, split epics by independently testable user outcomes, and use existing labels and review gates. The canonical [issue-readiness guide](../issue-readiness.md) is the short operational checklist; this RFC preserves the accepted decisions. Current pilot work and issue-by-issue findings belong only in the [implementation tracker](https://github.com/ChurchCRM/CRM/issues/10634).
+
 **Status:** Accepted by George Dawoud on 2026-10-17 — implementation rollout tracked separately  
 **Scope:** Pilot in `ChurchCRM/CRM`, then evaluate other repositories  
 **Decision owner:** ChurchCRM maintainers; Q1–Q8 approved by George Dawoud on 2026-10-17  
