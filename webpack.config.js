@@ -120,6 +120,7 @@ module.exports = {
     'email-history-modal': './webpack/people/email-history-modal',
     'email-delete-queue': './webpack/people/email-delete-queue',
     'error': './webpack/error',
+    'feature-toggles': './webpack/feature-toggles',
     'groups-group-view': './webpack/groups/group-view',
     'groups-sundayschool-dashboard': './webpack/groups-sundayschool-dashboard',
     'groups-sundayschool-class-view': './webpack/groups-sundayschool-class-view',
