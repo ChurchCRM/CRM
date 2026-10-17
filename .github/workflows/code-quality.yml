@@ -7,13 +7,17 @@ on:
       - develop
       - 'hotfix/**'
     paths-ignore:
+      # App lint/typecheck is unnecessary when a PR changes documentation only.
       - '**/*.md'
+      - '.github/PULL_REQUEST_TEMPLATE.md'
       - 'docs/**'
       - 'LICENSE'
       - '.gitignore'
   pull_request:
     paths-ignore:
+      # App lint/typecheck is unnecessary when a PR changes documentation only.
       - '**/*.md'
+      - '.github/PULL_REQUEST_TEMPLATE.md'
       - 'docs/**'
       - 'LICENSE'
       - '.gitignore'
