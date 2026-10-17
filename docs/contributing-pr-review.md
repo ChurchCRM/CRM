@@ -35,11 +35,15 @@ Missing screenshots alone is not a hard block. If you already captured tablet or
 
 Fix failing CI before asking for review; a PR merges only with green CI.
 
-## Not merge blockers (Comment + follow-up)
+## Follow-ups, not code-PR merge blockers
 
-- Demo-import data in `src/admin/demo/config.json` (not Cypress seed if tests would break)
-- User manual issue on ChurchCRM/CRM. Docs PRs merge after that release ships. For a PR that adds or changes user-visible behavior, the review ends with a short note that the docs PR and the screenshots or video for docs, blog and marketing still need a follow-up after merge.
-- Blog or marketing (maintainer decides; skip for bug/security-only)
-- A later member-facing consumer for storage-only admin work
+Do not hold a feature or bug-fix PR solely because user documentation, screenshots/video, blog, or marketing content is missing. Review and merge the code when its actual safety, behavior, tests, and CI gates pass; record useful content work as a follow-up.
 
-Reviews will list what is still open as checkboxes on the PR. CI is not one of those boxes.
+- User manual updates belong in the docs repository and describe released behavior. Merge/publish them according to that repository's release process.
+- For useful user-visible changes, leave a concise follow-up note and link or create one focused issue for the relevant docs, screenshots/video, or content. Do not require every feature to have every asset.
+- Invite non-code contributors to write how-to guides, capture real-product screenshots, make short walkthroughs, improve translations, or explain a feature's value to churches. Provide a clear issue, confirmed product behavior, and contribution path.
+- Marketing should explain the church problem or outcome and accurately state when the feature is available. Bug/security-only fixes usually need no marketing follow-up.
+- Demo-import data in `src/admin/demo/config.json` can be followed up separately (not Cypress seed if tests would break).
+- A later member-facing consumer for storage-only admin work can be tracked separately.
+
+Reviews should keep any remaining follow-ups visible without turning them into merge gates. CI is not a content checklist.
