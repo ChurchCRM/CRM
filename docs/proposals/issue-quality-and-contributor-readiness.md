@@ -37,80 +37,28 @@ The companion community RFC governs **maintainer-authored, plain-language Featur
 
 George approved Q1–Q8 on 2026-10-17. This RFC records the accepted decisions; implementation remains a separate, tracked rollout. No templates, labels, CI, milestones, or backlog automation are changed by merging this RFC alone.
 
-## Workflow: church request → maintainer triage → ready issue → PR
+## How the decisions are applied
 
-### Friendly intake
+The operational rules are in the canonical [issue readiness guide](../issue-readiness.md), together with the existing [PR review gates](../contributing-pr-review.md). Keep those guides actionable and avoid copying the full checklist into this RFC.
 
-A church user can describe a problem, current workflow, expected improvement, version and optional screenshots. Do **not** demand technical architecture, PR knowledge, code paths, migration plans or acceptance tests from reporters. Maintainers curate Feature Proposal Discussions per the separate community RFC.
+The agreed model is:
 
-### Evidence-based maintainer triage
+- **Friendly intake:** reporters describe the church problem or desired outcome; maintainers refine scope, evidence, risk, and acceptance criteria before implementation.
+- **Readiness:** resolve blocking product, design, security, permission, and schema decisions before implementation begins. Tiny fixes need proportionate detail; nontrivial work needs verifiable outcomes, scope/non-goals, dependencies, test guidance, risk notes, and human review ownership.
+- **Sizing and epics:** size by review burden and risk rather than estimated hours. Use native GitHub sub-issues for multiple meaningful outcomes or cross-subsystem work, preferring vertical end-to-end outcomes while permitting safe, bounded foundation work where needed.
+- **PRs:** retain the existing review gates. Keep the diff focused and describe tests, risks, and compatibility implications. Existing hard blocks are authoritative.
+- **Beginner issues:** `good first issue` is a maintainer certification against settled design, bounded low risk, actionable starting paths, test guidance, and available human review.
+- **Coordination:** check existing issues and PRs before starting; claim work visibly; use early draft PRs for substantial changes; explain supersession and link replacements. Protect active pilot work with narrow, reversible safeguards, not blanket stale-job exemptions.
+- **Accountability:** agents may help research, draft, implement, and test, but humans remain accountable for decisions, review, and approval.
 
-1. Verify current code/released behavior, existing issue(s), pending PR(s), frozen areas and cross-repository requirements. **Do not reimplement a fix already on master or reject a report just because its template is incomplete.**
-2. Classify normal issue, epic/children, or unresolved `Design Decision`/RFC. Technical design approval must precede implementation work that depends on it.
-3. Keep/update/split/supersede/complete/decline with a concise explanation and links. When superseding a PR, comment on the original PR promptly and link the replacement before the author spends time fixing it.
-4. Define the intended user outcome, scope/non-goals, acceptance criteria, dependencies, review risks and how to test.
-5. Remove unplanned/stale release promises and milestones; verify that the project/label workflow will not accidentally close pilot issues while they are being reviewed.
-6. Specify an accountable person/maintainer role; no self-assigned work without coordination.
+## Pilot scope
 
-### Ready-for-development contract
+The first pilot is limited to Events and Kiosk. Review issues #8821, #8822, #8825, #9525, #5238, #8575–#8583, #8826, #8650, #8647, #3902, and #8978 against current code and released behavior. Avoid conflating reporting #10538, messaging #8693, and PDF modernization #8151.
 
-For a nontrivial issue, maintainers provide:
-- Problem, impacted church workflow and **verified baseline** (with relevant version/source).
-- Expected independently verifiable outcome; scope and non-goals.
-- Approved decisions and code entry points/patterns; links to canonical design RFC if needed.
-- Dependencies, existing related PRs, frozen/obsolete areas, security/privacy/schema implications.
-- Tests and evidence expected (unit/E2E, mobile, accessibility, localization, upgrade safety, screenshots where relevant).
-- Review ownership and any real release gate; **a milestone only if scheduled**.
+Use evidence-based keep/update/split/supersede/close dispositions. Do not automatically recreate closed children or rewrite the wider backlog. Inspect Event Locations #5238 for safe vertical outcomes and inspect stale automation before it can close active pilot work. Certify up to 3–5 beginner issues only if they genuinely meet the guide; if none qualify, record that honestly. Validate the flow with a contributor and maintainer before expanding beyond CRM.
 
-For a tiny bug or copy fix, a linked issue, clear reproduction/location, intended change and quick validation are enough. Reporters never have to fill the full maintainer contract.
+## Implementation tracking
 
-### Reviewability and epic decomposition
+The single execution checklist, ownership, and implementation evidence live in [#10634](https://github.com/ChurchCRM/CRM/issues/10634). Link focused implementation PRs and validation results there. This RFC remains the decision record; it does not duplicate the execution checklist or activate unmerged operational changes.
 
-**Judge review cost first**, not elapsed coding time: independently reviewable change, number of modules, risk to existing installs, migration coupling, and tests matter more than raw LOC. Ignore generated/localization churn when estimating diff size. A large atomic transaction/security fix may justify a larger PR **if splitting would introduce insecure intermediate states**.
-
-An epic is a coordination object, **not one ticket to hand to an agent**. Use native GitHub sub-issues with independently testable acceptance criteria, owner, dependencies, order and explicit closure criteria. Prefer vertical user-visible slices, e.g. “an administrator can add and list an event location” with relevant backend, UI and tests. Allow foundation-only work only when required, bounded, independently verifiable, and safe without a consumer.
-
-Before anyone starts an issue: search for open PRs, ask to be assigned or leave an intent comment, then open a draft PR early to avoid duplicated effort. Stacked PRs clearly state base and merge order.
-
-### Maintainer-certified `good first issue`
-
-Apply only if **all** are true:
-- [ ] Design, permissions and data choices are settled; no unresolved sensitive decision.
-- [ ] One low-risk, clearly bounded, independently testable result; realistic for a newcomer with guidance.
-- [ ] Exact starting paths/repro and an **existing test to copy** or explicit lightweight test recipe.
-- [ ] Clear acceptance checks and i18n/mobile/docs needs as relevant.
-- [ ] No dangerous schema migration, new authentication boundary, sensitive data exposure or hidden dependency.
-- [ ] No active duplicate PR and an identified human reviewer is available.
-
-If an issue becomes design-heavy, remove the label with explanation. Do not promise a fixed number of hours, assume a volunteer's environment is already configured, or claim there are available beginner issues without verifying the actual open list.
-
-### PR requirements
-
-Continue to apply **`docs/contributing-pr-review.md` and existing merge gates**. PRs link the issue when user-visible behavior changes; explain what/why, scope, tests, migration/privacy/security/i18n/mobile effects and any limitations. Distinguish code and RFC/doc PRs. Human maintainers approve/merge; automated review cannot substitute for that. Avoid parallel descriptions of hard-block rules here.
-
-## Pilot: Events and Kiosk only
-
-Review #8821, #8822, #8825, #9525, #5238, #8575–#8583, #8826, #8650, #8647, #3902, #8978 against current code and releases. Avoid conflating reporting #10538, messaging #8693, and PDF modernization #8151.
-
-- Record keep/update/split/supersede/close dispositions with evidence; **do not automatically recreate** closed children or the entire epic.
-- Inspect Event Locations #5238 for horizontal schema/API/UI waves. Where feasible, regroup remaining work into complete church-facing outcomes without introducing breaking or unsafe intermediate states.
-- Check the stale workflow and any currently flagged tickets (including #8825) **before** they close. Protect specific active pilot issues through maintainer-approved, reversible triage; do not globally disable cleanup.
-- Curate at most **3–5 truly qualified** `good first issue` candidates only after assessing actual readiness; if none qualify, say so.
-- Have a contributor/maintainer validate the example issue and PR flow before adopting rules across docs/website.
-
-## Single rollout and acceptance checklist
-
-Q1–Q8 are approved. This RFC records those decisions; it does not itself update project-wide rules or schedule contributor tasks. Execution is tracked in [#10634](https://github.com/ChurchCRM/CRM/issues/10634) and reviewed separately.
-
-| Order | Accountable role | Follow-up change / verification |
-| --- | --- | --- |
-| 1 | George / maintainers | Name an accountable CRM pilot owner in [#10634](https://github.com/ChurchCRM/CRM/issues/10634) before starting the pilot. |
-| 2 | Contributor author; maintainer reviewer | Extend existing `docs/contributing-pr-review.md` only where gaps exist; add one issue-readiness guide, link both from **root** `CONTRIBUTING.md` and reconcile `.github/CONTRIBUTING.md` → docs-site contributing page. |
-| 3 | Contributor author; maintainer reviewer | Update `.github/ISSUE_TEMPLATE/` and PR template lightly; update `AGENTS.md`, `CLAUDE.md` where relevant, `.agents/` skill links, `github-interaction.md`, `maintainer-review-gates.md`, and review CodeRabbit config for contradictions. |
-| 4 | Maintainer triage owner | Audit existing labels and frozen-area references. No new labels/CI checks unless separately approved. Verify claiming, supersession and stale-process guidance. |
-| 5 | Maintainer pilot owner; contributor reviewer | Evidence-based Events/Kiosk backlog review, GitHub sub-issue hygiene, and 3–5 beginner tickets only if certified. |
-| 6 | George / maintainers | Review pilot outcomes with contributors before other repositories adopt rules. |
-
-**Done only when:** approved guidance is findable from actual GitHub and docs entry points; templates and agents link it rather than fork it; existing labels and freeze rules are reconciled; representative bug/feature/epic/PR/beginner cases are tested; and the pilot records verifiable issue dispositions and independent review.
-
-**Explicitly out of scope:** automatic issue closure; automatic new milestones; force-applying labels; subjective CI quality scoring; broad backlog rewrites; blanket stale-job exemptions. Any such expansion requires separate maintainer review and George's approval.
+Explicitly out of scope: automatic issue closure, automatic milestones, forced labels, subjective CI quality scoring, broad backlog rewrites, and blanket stale-job exemptions. Expanding scope requires a separate maintainer decision.
