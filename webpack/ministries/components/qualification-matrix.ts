@@ -50,6 +50,7 @@ import {
   showModalError,
   tText,
   wireModalFadeGuard,
+  wireStickyHead,
   wireUnclippedRowMenus,
 } from "./ui";
 
@@ -120,6 +121,7 @@ export function createQualificationMatrix(options: QualificationMatrixOptions): 
    * before the first team is known.
    */
   let teamId: number | null = null;
+  const refreshStickyHead = wireStickyHead("volunteers-table-wrapper");
 
   /**
    * The team the grid is showing, by name — the two Add dialogs put it in their
@@ -269,6 +271,7 @@ export function createQualificationMatrix(options: QualificationMatrixOptions): 
     // hidden with the empty and error states.
     show(byId("volunteers-save-hint"), true);
     applyFilter();
+    refreshStickyHead();
   }
 
   /**
