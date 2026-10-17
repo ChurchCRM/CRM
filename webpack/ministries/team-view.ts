@@ -17,6 +17,7 @@
  */
 
 import {
+  addTeamPoolMember,
   createStaffedEvent,
   errorMessage,
   getTeam,
@@ -34,6 +35,7 @@ import { byId, renderState } from "./components/ui";
 type TabName = "positions" | "volunteers" | "schedules" | "occurrences";
 
 let ministryId = 0;
+let ministryName = "";
 let sundaySchool = false;
 /** The led teams in the order the page offers them; `?team=` puts that one first. */
 let teamIds: number[] = [];
@@ -104,6 +106,9 @@ function buildComponents(): void {
     ensureContext: ensureTeams,
     fetch: (teamId) => getTeamQualificationMatrix(teamId ?? teamIds[0]),
     canRemoveVolunteer: () => false,
+    teamAdd: true,
+    addPoolMember: (personId, positionIds, teamId) => addTeamPoolMember(teamId ?? teamIds[0], personId, positionIds),
+    ministryName: () => ministryName,
     reload: () => load(true),
   });
 
@@ -186,10 +191,12 @@ function restoreOccurrenceSearch(params: URLSearchParams): void {
 function init(): void {
   const config: CRMVolunteerTeamViewConfig = window.CRM?.volunteerTeamView ?? {
     ministryId: 0,
+    ministryName: "",
     teams: [],
     sundaySchool: false,
   };
   ministryId = config.ministryId;
+  ministryName = config.ministryName;
   sundaySchool = config.sundaySchool;
   teamIds = config.teams.map((team) => team.id);
   if (ministryId === 0 || teamIds.length === 0) {

@@ -1108,7 +1108,7 @@ row (`substitute_proposed` / `_approved` / `_rejected` / `_withdrawn`).
 | Column | phpName | Type | Notes |
 |---|---|---|---|
 | `vntf_ID` | `Id` | `INTEGER` PK autoinc | |
-| `vntf_Type` | `Type` | `enum('assignment','reminder','decline_alert','gap_alert','signup_confirm','swap_proposed','swap_resolved')` required | matches Appendix C |
+| `vntf_Type` | `Type` | `enum('assignment','reminder','decline_alert','gap_alert','signup_confirm','swap_proposed','swap_resolved','help_offer','pool_add')` required | matches Appendix C; `help_offer` (D19) and `pool_add` (#10531) are about a ministry, so their facts ride in `vntf_Context` |
 | `vntf_Channel` | `Channel` | `enum('email')` required default `'email'` | D10/N5 — the extension point. Adding `'sms'` later is one enum value and one branch. |
 | `vntf_per_ID` | `PersonId` | `mediumint(9) unsigned` required | recipient. FK → `person_per.per_ID`, `ON DELETE CASCADE` |
 | `vntf_vasg_ID` | `AssignmentId` | `INTEGER` null | FK → assignment, `ON DELETE CASCADE` |
@@ -1135,6 +1135,8 @@ gap_alert:{occurrenceId}:{positionId}:{coordinatorPersonId}      ← the unfille
 signup_confirm:{assignmentId}:{personId}
 swap_proposed:{swapId}:{coordinatorPersonId}
 swap_resolved:{swapId}:{personId}
+help_offer:{ministryId}:{personId}:{yyyy-mm-dd}:{coordinatorPersonId}
+pool_add:{ministryId}:{addedPersonId}:{yyyy-mm-dd}:{coordinatorPersonId}   ← #10531
 ```
 
 **Invariants:**
@@ -1534,6 +1536,8 @@ error contract (M5).
 | POST | `/api/ministries/ministries/{ministryId}/pool/{personId}` | add to the pool | Coordinator of it — **no `ManageGroups` needed** (§4.6) | `201 {personId,added:true}`; `200 {added:false}` when already there. Writes through the Propel membership model, so `Hooks::GROUP_MEMBER_ADDED` fires (G3) |
 | POST | `/api/ministries/ministries/{ministryId}/pool/from-cart` | **cart sink** (P5/P6): put everyone in the session cart in the pool | Coordinator of it | no body — the people come from `Cart::getCartPeople()` → `200 {added:int, alreadyMembers:int}`; `400` when the cart is empty. Idempotent per person; grants **no** qualification, and the cart is not emptied. This is what "Add from Cart" on S3 calls |
 | DELETE | `/api/ministries/ministries/{ministryId}/pool/{personId}` | remove from the pool | Coordinator of it | `200`; `404` when they are not in it. Qualifications are **not** revoked (D19), and schedule defaults are kept (D32) |
+| POST | `/api/ministries/teams/{teamId}/pool/{personId}` | a team leader adds an existing person to the pool of the team's ministry (#10531) | Team Leader of it, or anyone above | `{positionIds?: int[]}` (positions of THIS team, `400` otherwise) → `201`/`200 {personId, added, qualified, notified}`; `404` for a person the search would not offer; emails the coordinators (`pool_add`) |
+| GET | `/api/ministries/people/search` | the team-leader Add Volunteer picker (#10531) | Coordinator / Team Leader (any login) | `?q=` (≥ 2 characters) → `[{id, name, familyName}]`, at most 20, active people only |
 | DELETE | `/api/ministries/ministries/{ministryId}/volunteers/{personId}` | "Remove Volunteer": revoke every qualification for a position of this ministry, cancel every live assignment on a still-to-come occurrence of it, remove them from the pool, and delete every schedule default of the ministry that names them (D32, D35) — one transaction | Coordinator of it (**ministry-level**: a team leader gets `403`) | `200 {personId,qualifications,assignments,removedFromPool,defaults}`; `404` for an unknown person. Idempotent: a second call reports zeroes. Past assignments are untouched — §5.4 |
 | GET | `/api/ministries/ministries/{ministryId}/members` | the qualification matrix's rows | Coordinator of it | pool ∪ everyone qualified for a position in view (D19): `{members:[{personId,displayName,inPool,groupIds[],qualifications:[positionId],qualificationIds{}}]}` |
 | GET | `/api/ministries/teams/{teamId}/members` | the same, narrowed to one team's positions | Coordinator / Team Leader | as above |
@@ -1960,7 +1964,8 @@ V2 models carry no `pre*` authorization hooks (A12/F21); Propel lifecycle hooks 
 | Keep / remove / move / delete the ministry's own events of a team's class on class change or team delete (D28) | ✓ | ✓ | scope | ✗ | ✗ |
 | Teacher-role write on a linked class outside V2 (Groups module, `/api/groups`, cart) while V2 is on | ✗ | ✗ | ✗ | ✗ | ✗ |
 | Student-role write on a linked class | Manage Groups, unchanged | | | | |
-| **Add/remove people in the pool Group** | ✓ | ✓ | scope | ✗ (ministry-level route) | ✗ |
+| **Add people to the pool Group** | ✓ | ✓ | scope | scope — their team's ministry, an active person, coordinators emailed (#10531) | ✗ |
+| **Remove people from the pool Group** | ✓ | ✓ | scope | ✗ (ministry-level route) | ✗ |
 | Edit / delete the pool Group itself | ✗ — it is the ministry's | ✗ | ✗ | ✗ | ✗ |
 | Set "Help wanted" on a ministry | ✓ | ✓ | scope | ✗ | ✗ |
 | Offer to help a ministry that is asking | ✓ | ✓ | ✓ | ✓ | **✓** |
@@ -2053,6 +2058,31 @@ exactly the silent bypass `GroupService::addUserToGroupInternal()` is.
 Coordinators hold no global `ManageGroups` flag (it grants edit rights over every group in the
 church), and V2 services write membership through the managed-write context, never through
 `addUserToGroupInternal()` (auth-free).
+
+**A team leader adds to the pool (#10531).** `POST /ministries/teams/{teamId}/pool/{personId}` is
+gated by `VolunteerTeamMiddleware`, and `VolunteerMinistryService::addPoolMemberForTeam()` asks
+`canManageTeam()` again: the leader of the team, or anyone above it. The ministry is the TEAM's, never a
+parameter, so a team leader reaches exactly the ministry their team belongs to. The person must be one
+the team-leader person search would offer (not deceased, not deactivated, not in a deactivated family:
+`404` otherwise). Optional `positionIds` must be positions of that team (`400` otherwise) and go through
+`VolunteerQualificationService::grantQualification()` with its own `canManagePosition()` check, all in
+one transaction with the pool write and the outbox rows. When the person was not in the pool already,
+each coordinator of the ministry — or, with none, each global volunteer manager, as for `help_offer` — gets
+a `pool_add` email; the actor, the added person and the team's other leaders get nothing. Removing is
+untouched: `DELETE …/pool/{personId}` and Remove Volunteer stay ministry-level.
+
+The older way in follows the same rules. A qualification grant joins the pool as a side effect (D19), and
+a team leader may grant on their own team's positions. So `grantQualification()` by someone who does not
+administer the ministry, for a person not yet in its pool, accepts only a person the search would offer
+(`404` otherwise) and sends the same `pool_add` email (`notifyPoolAddedByTeam()`). A coordinator's grant is
+unchanged.
+
+The person search, `GET /ministries/people/search?q=`, sits behind the module's role gate, which admits a
+team leader on any kind of login (the Member Portal's My Teams) and everyone with more authority. It
+returns `[{id, name, familyName}]` and nothing else — no email, phone, address, photo or age — needs two
+characters, matches every word against a first or last name with the ORM (LIKE wildcards escaped), and
+stops at 20. It does let a member who leads a team list names from the church directory, twenty at a
+time; that is the product owner's accepted trade-off (2026-10-11), kept narrow by the fields and the cap.
 
 **Deleting** a managed group is nobody's: `Group::preDelete()` throws for a group with a ministry
 id unless the managed-write context is open, so `VolunteerMinistryService::deleteMinistry()` is the
@@ -2639,7 +2669,12 @@ portal team page's abilities and no more (Member Portal §5.5):
   Coordinators), no Calendar, no Help Wanted, no Add Volunteer / Add from Cart, no Remove Volunteer,
   and none of their dialogs — they are left out of the markup, not hidden;
 - the Volunteers and Occurrences team selects only when the viewer leads more than one team here;
-  `?team={id}` puts that team first, so the grid and the dialogs start on it.
+  `?team={id}` puts that team first, so the grid and the dialogs start on it;
+- **Add Volunteer** (#10531), as on the portal team page: the person picker searches
+  `GET /ministries/people/search` and shows *"{name} ({family} family)"*, the dialog lists the grid
+  team's active positions to tick, and Add calls `POST /teams/{teamId}/pool/{personId}`. Its text says
+  the person joins the ministry's volunteers, its coordinators are emailed, and only a coordinator can
+  take someone out. There is no Add from Cart and no Remove Volunteer.
 
 The page's bundle is `ministries-team-view` (`webpack/ministries/team-view.ts`), a third adapter over
 the same components, and every call it makes is team-scoped: `GET /teams/{id}` (team and positions),
@@ -3297,7 +3332,7 @@ qualification revoked"* apart from the rest.
 
 ## Appendix C — Email templates
 
-Eight `BaseEmail` subclasses (through `BaseVolunteerEmail`) under `src/ChurchCRM/Volunteer/Email/`. Every one of them reuses the
+Nine `BaseEmail` subclasses (through `BaseVolunteerEmail`) under `src/ChurchCRM/Volunteer/Email/`. Every one of them reuses the
 single Twig template `src/templates/email/BaseEmail.html.twig` and the branding tokens from
 `BaseEmail::getCommonTokens()`; `getTemplateName()` is not overridden.
 
@@ -3311,6 +3346,7 @@ single Twig template `src/templates/email/BaseEmail.html.twig` and the branding 
 | `VolunteerSwapProposedEmail` | outbox type `swap_proposed` | coordinators in scope | the proposing volunteer | `/ministries/dashboard` | *Review this request* |
 | `VolunteerSwapResolvedEmail` | outbox type `swap_resolved` | proposer **and** substitute | responsible coordinator | `/portal/volunteer/schedule` | *View my schedule* |
 | `VolunteerHelpOfferEmail` | outbox type `help_offer` (D19, *I'd like to help*) | the ministry's coordinators, one message each per day | the volunteer who offered | `/ministries/{id}#qualifications` | *Qualify them for a position* |
+| `VolunteerPoolAddEmail` | outbox type `pool_add` (#10531): a team leader added someone to the pool — *"{Leader} added {Person} to the {Ministry} volunteers"*, the body naming the leader's team and saying only a coordinator can take someone out | the ministry's coordinators (else the global volunteer managers), never the actor, the added person or the team's other leaders | the team leader who added them | `/ministries/{id}` | *Open the ministry* |
 
 The `Reply-To` column is set by the **drain** (§3.6), never by the subclass constructor: the drain
 resolves the person, then calls `setReplyTo($person->getEmail(), $person->getFullName())` on the

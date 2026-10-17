@@ -87,6 +87,10 @@ use Psr\Log\LoggerInterface;
  */
 class VolunteerMinistryService
 {
+    /** #10531: the person search behind a team leader's Add Volunteer picker. */
+    public const POOL_SEARCH_MIN_LENGTH = 2;
+    public const POOL_SEARCH_LIMIT = 20;
+
     /** `list_lst.lst_ID` of the group-type list (F11). */
     private const GROUP_TYPE_LIST_ID = 3;
 
@@ -1400,6 +1404,165 @@ class VolunteerMinistryService
         ]);
 
         return ['added' => $added, 'alreadyMembers' => $alreadyMembers];
+    }
+
+    /**
+     * #10531: a team leader puts an existing person in the pool of their team's
+     * ministry, optionally qualifies them for positions of that team, and the
+     * ministry's coordinators are emailed who added whom. The added person is not.
+     *
+     * `canManageTeam()` admits the team's leaders and everyone above them, and the
+     * ministry is the team's own, so a team leader reaches no other ministry's pool.
+     * Taking somebody out of the pool stays `removePoolMember()`'s, which is
+     * ministry-level. The person must be one `searchPoolCandidates()` could offer.
+     *
+     * Coordinators are told only when the person was not in the pool already; with no
+     * coordinator the global volunteer managers are told, as for `help_offer`. The
+     * team's other leaders are not told.
+     *
+     * @param int[] $positionIds
+     *
+     * @return array{added: bool, qualified: int[], notified: int}
+     *
+     * @throws VolunteerException 403 outside scope, 404 for a person this path may not
+     *                            add, 400 for a position of another team
+     */
+    public function addPoolMemberForTeam(VolunteerTeam $team, int $personId, array $positionIds, User $actor): array
+    {
+        $teamId = (int) $team->getId();
+        $ministryId = (int) $team->getMinistryId();
+        $this->assertCanManageTeam($actor, $teamId);
+
+        if (!$this->isPoolCandidate($personId)) {
+            throw VolunteerException::notFound(gettext('Person not found'));
+        }
+
+        $positions = [];
+        foreach (array_unique(array_map('intval', $positionIds)) as $positionId) {
+            $position = VolunteerPositionQuery::create()->findPk($positionId);
+            if ($position === null || (int) $position->getTeamId() !== $teamId) {
+                throw VolunteerException::invalid(gettext('Only positions of this team can be ticked'));
+            }
+            $positions[] = $position;
+        }
+
+        $group = $this->requirePoolGroup($ministryId);
+        $qualifications = new VolunteerQualificationService($this->authz, $this);
+        $actorId = (int) $actor->getId();
+        $notified = 0;
+
+        $connection = Propel::getWriteConnection(VolunteerMinistryTableMap::DATABASE_NAME);
+        $connection->beginTransaction();
+
+        try {
+            $added = $this->joinPoolGroup($group, $personId);
+            foreach ($positions as $position) {
+                $qualifications->grantQualification($personId, $position, $actor);
+            }
+
+            if ($added) {
+                $notified = $this->notifyPoolAddedByTeam($ministryId, $teamId, $personId, $actorId);
+            }
+
+            $connection->commit();
+        } catch (\Throwable $e) {
+            $connection->rollBack();
+
+            throw $e;
+        }
+
+        $qualified = array_map(static fn (VolunteerPosition $position): int => (int) $position->getId(), $positions);
+
+        $this->logger->info('Volunteer pool member added by a team', [
+            'ministryId' => $ministryId,
+            'teamId' => $teamId,
+            'personId' => $personId,
+            'added' => $added,
+            'qualified' => $qualified,
+            'notified' => $notified,
+            'actor' => $actorId,
+        ]);
+
+        return ['added' => $added, 'qualified' => $qualified, 'notified' => $notified];
+    }
+
+    /**
+     * #10531: tell the ministry's coordinators that a team leader put somebody in its
+     * pool; with no coordinator the global volunteer managers are told, as for
+     * `help_offer`. Never the leader, never the person added.
+     *
+     * @return int how many people were told
+     */
+    public function notifyPoolAddedByTeam(int $ministryId, int $teamId, int $personId, int $actorId): int
+    {
+        $recipients = $this->authz->getCoordinatorPersonIds($ministryId);
+        if ($recipients === []) {
+            $recipients = $this->authz->getGlobalManagerPersonIds();
+        }
+        $recipients = array_values(array_diff($recipients, [$actorId, $personId]));
+        if ($recipients !== []) {
+            (new VolunteerNotificationService())->enqueuePoolAdd($ministryId, $teamId, $personId, $actorId, $recipients);
+        }
+
+        return count($recipients);
+    }
+
+    /**
+     * #10531: the people a team leader may find and add — not deceased, not
+     * deactivated, not in a deactivated family — matched on first or last name, every
+     * word of the text somewhere in either. Id, name and family name only, at most
+     * `$limit` of them, never fewer than two characters asked for.
+     *
+     * @return array<int, array{id: int, name: string, familyName: string}>
+     */
+    public function searchPoolCandidates(string $text, int $limit = self::POOL_SEARCH_LIMIT): array
+    {
+        $text = trim($text);
+        if (mb_strlen($text) < self::POOL_SEARCH_MIN_LENGTH) {
+            return [];
+        }
+
+        $query = $this->poolCandidateQuery()->with('Family');
+        $words = preg_split('/\s+/u', $text) ?: [];
+        $names = [];
+        foreach ($words as $index => $word) {
+            $like = '%' . addcslashes($word, '%_\\') . '%';
+            $query->condition("first$index", 'Person.FirstName LIKE ?', $like)
+                ->condition("last$index", 'Person.LastName LIKE ?', $like)
+                ->combine(["first$index", "last$index"], Criteria::LOGICAL_OR, "word$index");
+            $names[] = "word$index";
+        }
+
+        $people = $query->where($names)
+            ->orderByLastName()
+            ->orderByFirstName()
+            ->limit($limit)
+            ->find();
+
+        $rows = [];
+        foreach ($people as $person) {
+            $rows[] = [
+                'id' => (int) $person->getId(),
+                'name' => (string) $person->getFullName(),
+                'familyName' => (string) ($person->getFamily()?->getName() ?? ''),
+            ];
+        }
+
+        return $rows;
+    }
+
+    public function isPoolCandidate(int $personId): bool
+    {
+        return $this->poolCandidateQuery()->filterById($personId)->count() > 0;
+    }
+
+    private function poolCandidateQuery(): PersonQuery
+    {
+        return PersonQuery::create()
+            ->filterByLiving()
+            ->filterByDateDeactivated(null, Criteria::ISNULL)
+            ->leftJoinFamily()
+            ->where('Family.DateDeactivated IS NULL');
     }
 
     /**

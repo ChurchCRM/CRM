@@ -48,6 +48,8 @@ const PLAIN_PASSWORD = "changeme";
 
 /** Seeded member of group 1 "Angels class" — the person to qualify and assign. */
 const POOL_MEMBER = 8;
+/** Norman Newman, whom the leader adds to the pool (#10531). */
+const ADDED_PERSON = 56;
 
 const PREFIX = "MP9868";
 
@@ -310,7 +312,6 @@ describe("Member Portal (MP7, #9868) — My Teams", () => {
                 cy.get("#volunteer-teams-card").should("not.exist");
                 cy.get("#volunteer-scope-panel").should("not.exist");
                 cy.get("#volunteer-help-wanted").should("not.exist");
-                cy.get("#qualification-add-person").should("not.exist");
                 cy.get("#qualification-cart-btn").should("not.exist");
                 cy.get("#qualification-team-filter").should("not.exist");
                 cy.get("#occurrence-team-filter").should("not.exist");
@@ -378,6 +379,26 @@ describe("Member Portal (MP7, #9868) — My Teams", () => {
                         expect(rows.length, "the qualification was written").to.eq(1);
                     });
                 });
+            });
+
+            it("Adds an existing person to the ministry's volunteers from the Volunteers tab (#10531)", () => {
+                login(LEADER_USERNAME, LEADER_PASSWORD);
+                cy.visit(`${TEAMS_URL}/${teamLed}`);
+
+                cy.get("#nav-item-volunteers").click();
+                cy.get("#volunteerQualificationsTable tbody tr", { timeout: 15000 }).should("have.length.greaterThan", 0);
+                cy.get("#qualification-add-person").click();
+                cy.get("#addVolunteerModal").should("be.visible").and("contain.text", `${PREFIX} Hospitality`);
+                cy.get("#addVolunteerModal .ts-control").click();
+                cy.get("#addVolunteerModal .ts-control input").type("Norman New");
+                cy.get("body > .ts-dropdown .option", { timeout: 10000 }).contains("Norman Newman (Newman family)").click();
+                cy.get(`#add-volunteer-positions .add-volunteer-position[value="${posDoor}"]`).check();
+                cy.get("#add-volunteer-save").click();
+
+                cy.get(`.volunteer-qual-toggle[data-person-id="${ADDED_PERSON}"][data-position-id="${posDoor}"]`, {
+                    timeout: 15000,
+                }).should("be.checked");
+                cy.get("#sidebar").should("not.exist");
             });
 
             it("Creates a schedule for the team, whose Save generates its dates, and staffs one", () => {

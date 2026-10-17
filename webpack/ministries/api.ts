@@ -416,6 +416,28 @@ export function addPoolMember(ministryId: number, personId: number): Promise<{ p
   return request(`/ministries/${ministryId}/pool/${personId}`, { method: "POST" });
 }
 
+/** #10531: who a team leader may add to a pool — id, name and family name, nothing else. */
+export interface VolunteerPoolCandidate {
+  id: number;
+  name: string;
+  familyName: string;
+}
+
+/** The person search behind a team leader's Add Volunteer picker; the query is appended. */
+export const POOL_CANDIDATE_SEARCH_ENDPOINT = "/api/ministries/people/search?q=";
+
+/**
+ * #10531: a team leader puts somebody in the pool of their team's ministry, ticking
+ * positions of that team as they do. The ministry's coordinators are emailed.
+ */
+export function addTeamPoolMember(
+  teamId: number,
+  personId: number,
+  positionIds: number[],
+): Promise<{ personId: number; added: boolean; qualified: number[]; notified: number }> {
+  return request(`/teams/${teamId}/pool/${personId}`, { method: "POST", body: JSON.stringify({ positionIds }) });
+}
+
 /**
  * The Cart sink for the pool (P5/P6): the people come from the session cart, not
  * the body, so this takes no payload.

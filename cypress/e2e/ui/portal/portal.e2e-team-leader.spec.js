@@ -332,7 +332,7 @@ describe("Member Portal — #9869 scenario 2, \"a team leader on a member login\
                 "#volunteer-teams-card",
                 "#volunteer-scope-panel",
                 "#volunteer-help-wanted",
-                "#qualification-add-person",
+                "#qualification-cart-btn",
                 "#qualification-team-filter",
                 "#occurrence-team-filter",
                 "#team-add-btn",
@@ -386,11 +386,13 @@ describe("Member Portal — #9869 scenario 2, \"a team leader on a member login\
             cy.visit(`${TEAMS_URL}/${teamLed}`);
 
             cy.get("#nav-item-volunteers").click();
+            cy.intercept("POST", "**/positions/*/qualifications").as("grantQualification");
             cy.get("#volunteerQualificationsTable tbody .volunteer-qual-toggle", {
                 timeout: 15000,
             })
                 .first()
                 .click();
+            cy.wait("@grantQualification").its("response.statusCode").should("be.oneOf", [200, 201]);
 
             // The box is disabled while the grant is saved and enabled again once the
             // server confirms it, so wait for that before reading the database.

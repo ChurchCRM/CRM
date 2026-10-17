@@ -14,6 +14,8 @@ const DASHBOARD_URL = "/ministries/dashboard";
 
 const PERSON_LEADER = 3;
 const POOL_MEMBER = 8;
+/** Norman Newman, not in the pool until the leader adds him (#10531). */
+const ADDED_PERSON = 56;
 
 const PREFIX = "UI10530";
 const MINISTRY_NAME = `${PREFIX} Hospitality`;
@@ -198,13 +200,11 @@ describe("Volunteer v2 — the team-only ministry view (#10530)", () => {
             "#volunteer-teams-card",
             "#volunteer-scope-panel",
             "#volunteer-help-wanted",
-            "#qualification-add-person",
             "#qualification-cart-btn",
             "#qualification-team-filter",
             "#occurrence-team-filter",
             "#teamModal",
             "#ministryEditModal",
-            "#addVolunteerModal",
             "#addFromCartModal",
             "#ministryEventModal",
         ].forEach((selector) => {
@@ -238,6 +238,31 @@ describe("Volunteer v2 — the team-only ministry view (#10530)", () => {
         cy.then(() => {
             adminApi("GET", `${VOLUNTEER_URL}/positions/${posLed}/qualifications?active=1`).then((resp) => {
                 expect(resp.body.qualifications.filter((q) => q.personId === POOL_MEMBER)).to.have.length(1);
+            });
+        });
+    });
+
+    it("Adds an existing person to the ministry's volunteers, ticking a position of their team (#10531)", () => {
+        leaderLogin();
+        cy.visit(`/ministries/${ministryId}`);
+        cy.get("#nav-item-volunteers").click();
+        cy.get("#volunteerQualificationsTable tbody tr", { timeout: 15000 }).should("have.length.greaterThan", 0);
+
+        cy.get("#qualification-add-person").click();
+        cy.get("#addVolunteerModal").should("be.visible");
+        cy.get("#addVolunteerModal .ts-control").click();
+        cy.get("#addVolunteerModal .ts-control input").type("Norman New");
+        cy.get("body > .ts-dropdown .option", { timeout: 10000 }).contains("Norman Newman (Newman family)").click();
+        cy.get(`#add-volunteer-positions .add-volunteer-position[value="${posLed}"]`).check();
+        cy.get("#add-volunteer-positions .add-volunteer-position").should("have.length", 2);
+        cy.get("#add-volunteer-save").click();
+
+        cy.get(`.volunteer-qual-toggle[data-person-id="${ADDED_PERSON}"][data-position-id="${posLed}"]`, {
+            timeout: 15000,
+        }).should("be.checked");
+        cy.then(() => {
+            adminApi("GET", `${VOLUNTEER_URL}/ministries/${ministryId}/pool`).then((resp) => {
+                expect(resp.body.members.filter((m) => m.personId === ADDED_PERSON)).to.have.length(1);
             });
         });
     });
