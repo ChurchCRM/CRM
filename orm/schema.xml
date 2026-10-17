@@ -64,6 +64,7 @@
         <column name="per_LinkedIn" phpName="LinkedIn" type="VARCHAR" size="50" Description="LinkedIn name" />
         <column name="per_DateDeactivated" phpName="DateDeactivated" type="DATE"/>
         <column name="per_NeedsReview" phpName="NeedsReview" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0" description="True when this self-registered person is awaiting admin review/approval"/>
+        <column name="per_grd_ID" phpName="GradeId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" description="School grade: lst_OptionID in the grades list (GradeService::listId()); NULL means no grade"/>
         <index name="per_ID">
             <index-column name="per_ID"/>
         </index>
@@ -75,6 +76,9 @@
         </index>
         <index name="idx_per_fmr_ID">
             <index-column name="per_fmr_ID"/>
+        </index>
+        <index name="idx_per_grd_ID">
+            <index-column name="per_grd_ID"/>
         </index>
         <foreign-key foreignTable="family_fam">
             <reference local="per_fam_ID" foreign="fam_ID"/>

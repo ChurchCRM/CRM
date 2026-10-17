@@ -25,6 +25,30 @@ describe("Admin API Database Endpoints", () => {
                 expect(resp.body.split("\n")[0]).to.include('"First Name"');
             });
         });
+
+        it("fills the Grade column with each person's grade name (#10189)", () => {
+            const cells = (line) => line.match(/("([^"]|"")*"|[^,]*)(,|$)/g).map((cell) => cell.replace(/,$/, "").replace(/^"|"$/g, ""));
+            let personId;
+            cy.setupAdminSession();
+            cy.visit("/PersonEditor.php");
+            cy.get("#FirstName").type("Gil");
+            cy.get("#LastName").type("ChmGrade");
+            cy.get("#Grade").select("9");
+            cy.get("button[name='PersonSubmit']").click();
+            cy.url()
+                .should("match", /\/people\/view\/\d+/)
+                .then((url) => {
+                    personId = Number(url.match(/\/people\/view\/(\d+)/)[1]);
+                });
+            cy.makePrivateAdminAPICall("GET", "/admin/api/database/people/export/chmeetings", null, 200).then((resp) => {
+                const lines = resp.body.trim().split(/\r?\n/);
+                const header = cells(lines[0]);
+                const row = lines.find((line) => line.includes("ChmGrade"));
+                expect(row, "exported row for the graded person").to.exist;
+                expect(cells(row)[header.indexOf("Grade")]).to.eq("4th");
+            });
+            cy.then(() => cy.cleanupPeople([personId]));
+        });
     });
 
     describe("POST /admin/api/database/backupRemote", () => {

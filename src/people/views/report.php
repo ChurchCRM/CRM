@@ -25,7 +25,7 @@ $missingLabels = array_map(static fn (string $key): string => $report['params'][
                     $id = InputUtils::escapeAttribute($key);
                     $value = $values[$key] ?? null;
                     $isMissing = in_array($key, $missing, true);
-                    $invalid = $isMissing ? ' is-invalid' : '';
+                    $invalid = $isMissing && $submitted ? ' is-invalid' : '';
                     ?>
                 <div class="<?= in_array($param['type'], ['classification', 'events'], true) ? 'col-md-6 col-lg-4' : 'col-md-4 col-lg-3' ?>">
                     <label class="form-label" for="<?= $id ?>"><?= InputUtils::escapeHTML($param['label']) ?></label>
@@ -183,6 +183,10 @@ if ($canPrintLabels) {
                 hidePlaceholder: true,
                 placeholder: select.dataset.placeholder
             });
+        });
+
+        $('#reportFilters').on('change', 'select', function () {
+            this.classList.remove('is-invalid');
         });
 
         $('#addAllToCart').on('click', function () {

@@ -153,6 +153,10 @@ require_once __DIR__ . '/Include/Header.php';
               <span class="form-selectgroup-label"><?= gettext('Family Role') ?></span>
             </label>
             <label class="form-selectgroup-item">
+              <input type="checkbox" class="form-selectgroup-input" name="PrintGrade" value="1">
+              <span class="form-selectgroup-label"><?= gettext('Grade') ?></span>
+            </label>
+            <label class="form-selectgroup-item">
               <input type="checkbox" class="form-selectgroup-input" name="PrintGender" value="1">
               <span class="form-selectgroup-label"><?= gettext('Gender') ?></span>
             </label>

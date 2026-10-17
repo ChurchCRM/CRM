@@ -1,10 +1,41 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
+
+<?php if ($mode === 'grades'): ?>
+<div class="card mb-4" id="gradeNamesCard">
+    <div class="card-header">
+        <h5 class="mb-0">
+            <i class="fa-solid fa-earth-americas me-2"></i>
+            <?= gettext('Grade Names') ?>
+        </h5>
+    </div>
+    <div class="card-body">
+        <div class="row g-2 align-items-end">
+            <div class="col-md-6">
+                <label for="gradePreset" class="form-label"><?= gettext('Country') ?></label>
+                <select id="gradePreset" class="form-select">
+                    <?php foreach ($gradePresets as $presetKey => $presetName): ?>
+                    <option value="<?= InputUtils::escapeAttribute($presetKey) ?>"<?= $presetKey === $currentGradePreset ? ' selected' : '' ?>><?= InputUtils::escapeHTML($presetName) ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="col-auto">
+                <button type="button" class="btn btn-primary" id="applyGradePreset" data-csrf-token="<?= InputUtils::escapeAttribute(CSRFUtils::generateToken()) ?>">
+                    <i class="fa-solid fa-check me-1"></i><?= gettext('Apply') ?>
+                </button>
+            </div>
+        </div>
+        <div class="form-text mt-2"><?= gettext('Renames the grades to the names used in that country. People keep their grade, and grades you added yourself stay.') ?></div>
+    </div>
+</div>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/admin-grade-names.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+<?php endif; ?>
 
 <!-- Add New Option -->
 <div class="card mb-4">
@@ -12,7 +43,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="card-header">
         <h5 class="mb-0">
             <i class="fa-solid fa-plus"></i>
-            <?= gettext('Add New') . ' ' . InputUtils::escapeHTML($noun) ?>
+            <?= InputUtils::escapeHTML($addLabel) ?>
         </h5>
     </div>
     <div class="card-body">
@@ -26,7 +57,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="text-center mt-3">
             <button type="button" class="btn btn-success" id="addOptionBtn">
                 <i class="fa-solid fa-plus"></i>
-                <?= gettext('Add New') . ' ' . InputUtils::escapeHTML($noun) ?>
+                <?= InputUtils::escapeHTML($addLabel) ?>
             </button>
         </div>
     </div>

@@ -97,6 +97,11 @@ $(document).ready(function () {
         classOptions += '<option value="' + cls.id + '">' + cls.name + "</option>";
       });
 
+      let gradeOptions = '<option value="">' + window.CRM.i18n.unassigned + "</option>";
+      (window.CRM.grades || []).forEach(function (grade) {
+        gradeOptions += '<option value="' + Number(grade.id) + '">' + window.CRM.escapeHtml(grade.name) + "</option>";
+      });
+
       let newRow = `
                 <tr>
                     <td>
@@ -118,6 +123,7 @@ $(document).ready(function () {
                     <td><select name="BirthDay${rowCount}" class="form-control form-control-sm">${dayOptions}</select></td>
                     <td><input name="BirthYear${rowCount}" type="text" value="" class="form-control form-control-sm family-birth-year-input" maxlength="4"></td>
                     <td><select name="Classification${rowCount}" class="form-control form-control-sm">${classOptions}</select></td>
+                    <td><select name="Grade${rowCount}" class="form-control form-control-sm">${gradeOptions}</select></td>
                 </tr>
             `;
 

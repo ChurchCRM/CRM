@@ -9,6 +9,7 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\ClassificationService;
 use ChurchCRM\Service\ConfirmReportEmailResult;
 use ChurchCRM\Service\ConfirmReportService;
+use ChurchCRM\Service\GradeService;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use ChurchCRM\Slim\SlimUtils;
@@ -236,6 +237,14 @@ function listPeople(Request $request, Response $response, array $args): Response
         }
     }
 
+    $filterByGradeId = '';
+    if (isset($_GET['Grade'])) {
+        $id = InputUtils::filterInt($_GET['Grade']);
+        if ($id === 0 || GradeService::isValid($id)) {
+            $filterByGradeId = (string) $id;
+        }
+    }
+
     $filterByGender = '';
     if (isset($_GET['Gender'])) {
         $id = InputUtils::filterInt($_GET['Gender']);
@@ -274,6 +283,7 @@ function listPeople(Request $request, Response $response, array $args): Response
         'filterByFmrId'                   => $filterByFmrId,
         'filterByFmrOptionId'             => $filterByFmrOptionId,
         'filterByGender'                  => $filterByGender,
+        'filterByGradeId'                 => $filterByGradeId,
         'familyActiveStatus'              => $familyActiveStatus,
         'genderDataCheckCount'            => $personService->getMissingGenderDataCount(),
         'roleDataCheckCount'              => $personService->getMissingRoleDataCount(),
