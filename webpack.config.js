@@ -132,6 +132,7 @@ module.exports = {
     'event-cart-to-event': './webpack/event-cart-to-event',
     'ministries-dashboard': './webpack/ministries/dashboard',
     'ministries-ministry': './webpack/ministries/ministry',
+    'ministries-team-view': './webpack/ministries/team-view',
     'ministries-occurrence': './webpack/ministries/occurrence',
     'ministries-settings': './webpack/ministries/settings',
     // The core event view's Volunteers card, worded like every V2 screen (D34).

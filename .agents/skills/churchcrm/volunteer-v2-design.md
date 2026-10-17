@@ -2265,9 +2265,11 @@ entries: one cheap id-and-name query per request, memoised in
   Ministries** (`fa-box-archive`, the Groups heading's per-type sub-groups are the precedent),
   which `MenuItem::isVisible()` drops whenever it would be empty. Same memoised query, split by
   the `active` flag it now carries;
-- **team leader on a STAFF account** — *Dashboard* alone. Leading a team is not administering
-  the ministry above it, and `/ministries/{id}` would refuse them. Their teams are
-  named on the dashboard's "My ministries and teams" card, which is their entry point;
+- **team leader on a STAFF account** — *Dashboard*, then one entry per active ministry they lead a
+  team in (`VolunteerAuthorizationService::getTeamLedMinistries()`, `fa-people-group`), each opening
+  `/ministries/{id}`'s **team-only view** (§5.4, #10530). Leading a team is not administering the
+  ministry above it, so these are not `getManageableMinistries()` entries. The dashboard's "My
+  ministries and teams" card links the same view;
 - **team leader on a SELF-SERVICE account** (D14) — no sidebar at all: that
   login never sees the admin shell. Their team pages are in the Member Portal (MP7), reached
   from its own navigation;
@@ -2290,7 +2292,7 @@ Sunday.
 | # | Screen | Route | Gate | Bundle |
 |---|---|---|---|---|
 | S1 | Coordinator dashboard — "what needs my attention" | `/ministries/dashboard` | Coordinator | `ministries-dashboard` |
-| S3 | Ministry detail — overview, volunteers, positions, schedules, occurrences, calendar, help wanted | `/ministries/{id}` | scope | `ministries-ministry` |
+| S3 | Ministry detail — overview, volunteers, positions, schedules, occurrences, calendar, help wanted | `/ministries/{id}` | scope | `ministries-ministry`; a team leader's team-only view loads `ministries-team-view` (#10530) |
 | S4 | Occurrence / staffing view | `/ministries/occurrences/{id}` | scope | `ministries-occurrence` |
 | S5 | My schedule (member) | `/portal/volunteer/schedule` | authenticated person | `portal-volunteer-schedule` |
 | S6 | Open opportunities (member) | `/portal/volunteer/opportunities` | authenticated person | `portal-volunteer-opportunities` |
@@ -2329,6 +2331,12 @@ Answers, in this order, top to bottom:
 
 The dashboard makes exactly **one** API call (`GET /api/ministries/dashboard`) and renders all five
 panels from it.
+
+The **My ministries and teams** card links every ministry to `/ministries/{id}` and every team to
+`/ministries/{ministryId}?team={teamId}` (#10530). A ministry the viewer reaches only through a team
+(`manageable: false`) carries a **Team leader** badge — it opens the team-only view (§5.4) — where it
+used to be plain text marked *View only*. The Upcoming table's *Open the ministry* row action is
+offered for every ministry on the card.
 
 ### 5.3 Creating a ministry
 
@@ -2605,6 +2613,31 @@ carries the **lifecycle buttons**:
 - **Help Wanted** is a tab of its own (D19, §5.6): a switch and a textarea saved with one
   button. A ministry also reaches Open Opportunities by having a recruiting position, so a
   coordinator who has named the roles they need does not need this tab as well.
+
+**The team-only view (#10530).** A team leader whose login has Manage My Ministries — and so passes
+`VolunteerAdminAreaRoleAuthMiddleware` — opens `/ministries/{id}` for a ministry in which they lead a
+team. The route renders the same view in team mode when `canManageMinistry()` is false and the
+viewer's `getManagedTeamIds()` holds at least one team of this ministry; with none it still sends them
+to access-denied. The page subtitle is *"Your teams: {names}"*, and the page has the
+portal team page's abilities and no more (Member Portal §5.5):
+
+- four tabs — **Positions · Volunteers · Schedules · Occurrences** — opening on Positions, each
+  showing only the teams of this ministry the viewer leads;
+- no Edit / Deactivate / Reactivate / Delete, no Overview (counts, Teams card, Ministry
+  Coordinators), no Calendar, no Help Wanted, no Add Volunteer / Add from Cart, no Remove Volunteer,
+  and none of their dialogs — they are left out of the markup, not hidden;
+- the Volunteers and Occurrences team selects only when the viewer leads more than one team here;
+  `?team={id}` puts that team first, so the grid and the dialogs start on it.
+
+The page's bundle is `ministries-team-view` (`webpack/ministries/team-view.ts`), a third adapter over
+the same components, and every call it makes is team-scoped: `GET /teams/{id}` (team and positions),
+`GET /teams/{id}/qualification-matrix`, `GET /teams/{id}/schedules`, and `GET /occurrences`, which
+scopes its rows to the caller's teams in the query (§4.4). Writes go to the position, qualification,
+schedule, staffed-event and occurrence routes, each of which authorizes its own record (§4.6). No API
+check was widened for it: the ministry-level routes — the ministry document, its ministry-wide lists,
+rename/deactivate/delete, teams, the pool, Remove Volunteer, events, scopes — still answer `403`. The
+occurrence page (S4) already authorized by `canManageOccurrence()`; its *Back to Occurrences* returns
+to the team view.
 
 **Teams live on the Overview card and the page has no pool panel.** The V2 pool endpoints and
 the Groups module own the roster, and qualifying somebody brings them into the pool —

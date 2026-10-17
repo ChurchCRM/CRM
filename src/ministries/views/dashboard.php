@@ -208,9 +208,9 @@ $sRootPath = $sRootPath ?? SystemURLs::getRootPath();
     <div class="col-12 col-xl-4">
 
       <!-- My ministries and teams. For a team leader this is the ONLY entry
-           point into the module: /ministries/{id} is ministry-scoped
-           (design §4.6), so the sidebar's Ministries heading offers them no
-           ministry entry and this card is where their teams are named. -->
+           point into the module: the sidebar's Ministries heading offers them no
+           ministry entry, and this card links their ministries and teams to
+           /ministries/{id}'s team-only view (#10530). -->
       <div class="card mb-3" id="volunteer-scope-card">
         <div class="card-header">
           <h3 class="card-title mb-0">

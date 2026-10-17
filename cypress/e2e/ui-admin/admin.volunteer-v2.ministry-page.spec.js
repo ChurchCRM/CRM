@@ -463,11 +463,7 @@ describe("Volunteer v2 ministry page (#9701)", () => {
             );
         });
 
-        it("is out of reach for a team leader, who cannot open the page at all", () => {
-            // A team scope does not reach the ministry page — it is ministry-scoped
-            // (§4.6), so a pure team leader is sent to access-denied and never sees
-            // the menu item. The API refuses them independently; that 403 is pinned
-            // in private.volunteer.ministry-page.spec.js.
+        it("is not offered to a team leader, whose team-only view has no row menu (#10530)", () => {
             adminApi(
                 "POST",
                 `${VOLUNTEER_URL}/scopes`,
@@ -477,7 +473,9 @@ describe("Volunteer v2 ministry page (#9701)", () => {
 
             freshLeaderLogin();
             cy.visit(ministryUrl());
-            cy.url().should("include", "access-denied");
+            cy.url().should("not.include", "access-denied");
+            cy.get("#nav-item-volunteers").click();
+            cy.get("#volunteerQualificationsTable tbody tr", { timeout: 15000 }).should("have.length.greaterThan", 0);
             cy.get(".volunteer-remove-volunteer").should("not.exist");
         });
     });
