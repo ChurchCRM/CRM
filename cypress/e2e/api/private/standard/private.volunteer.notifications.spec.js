@@ -7,7 +7,8 @@
  * §2.14 (the outbox columns, the dedupe keys, the amended retry rule and what
  * `skipped` means), §3.4 (`VolunteerNotificationService`), §3.6 (the trigger
  * table, Reply-To resolution and the four-step drain), Appendix B
- * (`iVolunteerReminderLeadHours`, `iVolunteerGapAlertLeadHours`), Appendix C (the seven `BaseEmail`
+ * (`iVolunteerReminderLeadHours`, `iVolunteerGapAlertLeadHours`,
+ * `sVolunteerGapAlertBatchTime`), Appendix C (the seven `BaseEmail`
  * subclasses) and §6.6 ("duplicate notification enqueue", which is what
  * `GET /api/ministries/assignments/{id}/notifications` exists for).
  *
@@ -50,6 +51,8 @@ const EMAIL_ENABLED_URL = "/admin/api/system/config/bEnabledEmail";
 const SMTP_HOST_URL = "/admin/api/system/config/sSMTPHost";
 const LEAD_HOURS_URL = "/admin/api/system/config/iVolunteerReminderLeadHours";
 const GAP_LEAD_HOURS_URL = "/admin/api/system/config/iVolunteerGapAlertLeadHours";
+const BATCH_TIME_URL = "/admin/api/system/config/sVolunteerGapAlertBatchTime";
+const BATCH_DATE_URL = "/admin/api/system/config/sLastVolunteerGapAlertBatchDate";
 const DO_NOT_EMAIL_URL = "/admin/api/system/config/iDoNotEmailPropertyId";
 /**
  * Read, never assumed (#9714). Every `BaseEmail` subject is prefixed with
@@ -110,6 +113,7 @@ let originalVersion = null;
 let originalSmtpHost = null;
 let originalLeadHours = null;
 let originalGapLeadHours = null;
+let originalBatchTime = null;
 let originalDoNotEmail = null;
 let churchName = "";
 let seriesStart = "";
@@ -579,6 +583,9 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
         readConfig(GAP_LEAD_HOURS_URL).then((value) => {
             originalGapLeadHours = value;
         });
+        readConfig(BATCH_TIME_URL).then((value) => {
+            originalBatchTime = value;
+        });
         readConfig(DO_NOT_EMAIL_URL).then((value) => {
             originalDoNotEmail = value;
         });
@@ -731,6 +738,8 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
         restoreConfig(SMTP_HOST_URL, originalSmtpHost);
         restoreConfig(LEAD_HOURS_URL, originalLeadHours);
         restoreConfig(GAP_LEAD_HOURS_URL, originalGapLeadHours);
+        restoreConfig(BATCH_TIME_URL, originalBatchTime);
+        setConfig(BATCH_DATE_URL, "");
         restoreConfig(DO_NOT_EMAIL_URL, originalDoNotEmail);
         clearMail();
     });
@@ -1484,12 +1493,16 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
 
     describe("Volunteer v2 — the alert about positions never filled (#10372, §3.6)", () => {
         beforeEach(resetWorkflow);
+        beforeEach(() => {
+            setConfig(BATCH_DATE_URL, isoDate(0));
+        });
 
         afterEach(() => {
             setConfig(SETTING_URL, "v2");
             setConfig(EMAIL_ENABLED_URL, "1");
             setConfig(LEAD_HOURS_URL, "0");
             setConfig(GAP_LEAD_HOURS_URL, "0");
+            setConfig(BATCH_DATE_URL, "");
             restoreConfig(SMTP_HOST_URL, originalSmtpHost);
             dbOk(`UPDATE volunteer_occurrence_vocc SET vocc_Status = 'scheduled' WHERE vocc_ID = ?`, [occurrenceOne]);
             dbOk("UPDATE volunteer_position_vpos SET vpos_Name = ? WHERE vpos_ID = ?", [ESPRESSO_NAME, posEspresso]);
@@ -1738,6 +1751,299 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
                     expect(espresso, "the Espresso alert").to.have.length(1);
                     expect(espresso[0]).to.contain("&lt;b&gt;Espresso&lt;/b&gt;");
                     expect(espresso[0]).to.not.contain("<b>Espresso</b>");
+                });
+            });
+        });
+    });
+
+    describe("Volunteer v2 — the daily batch of unfilled positions (#10529, §3.6)", () => {
+        const SUMMARY_SUBJECT = "Volunteer positions to fill in the coming days";
+        const MILK_NAME = `${FIXTURE_PREFIX} Milk Station`;
+        let plainScopeId = null;
+
+        beforeEach(function () {
+            requireMailpit(this);
+        });
+        beforeEach(resetWorkflow);
+        beforeEach(() => {
+            setConfig(BATCH_DATE_URL, isoDate(-1));
+        });
+
+        afterEach(() => {
+            setConfig(GAP_LEAD_HOURS_URL, "0");
+            setConfig(BATCH_TIME_URL, "07:00");
+            setConfig(BATCH_DATE_URL, "");
+            restoreConfig(SMTP_HOST_URL, originalSmtpHost);
+            renamePosition(posEspresso, ESPRESSO_NAME);
+            api(ADMIN_KEY, "DELETE", `${VOLUNTEER_URL}/occurrences/${occurrenceOne}/requirements`);
+            api(ADMIN_KEY, "DELETE", `${VOLUNTEER_URL}/occurrences/${occurrenceTwo}/requirements`);
+            cy.then(() => {
+                if (plainScopeId !== null) {
+                    api(ADMIN_KEY, "DELETE", `${VOLUNTEER_URL}/scopes/${plainScopeId}`);
+                    plainScopeId = null;
+                }
+            });
+        });
+
+        function minuteOfDay() {
+            const now = new Date();
+            return now.getHours() * 60 + now.getMinutes();
+        }
+
+        /** Church wall-clock `HH:MM`, `minutes` from now, kept inside today. */
+        function batchTime(minutes) {
+            const at = Math.min(23 * 60 + 59, Math.max(0, minuteOfDay() + minutes));
+            const pad = (n) => String(n).padStart(2, "0");
+            return `${pad(Math.floor(at / 60))}:${pad(at % 60)}`;
+        }
+
+        /** The batch is due now: its time has passed and yesterday's went out. */
+        function batchDue() {
+            setConfig(BATCH_TIME_URL, batchTime(-60));
+        }
+
+        /** A lead that holds the first Sunday and leaves the second 12 hours outside it, inside lead + 24 h. */
+        function leadShortOfOccurrenceTwo() {
+            return cy.then(() =>
+                setConfig(GAP_LEAD_HOURS_URL, String(Math.floor(hoursUntil(occurrenceTwoStart)) - 12)),
+            );
+        }
+
+        /** A lead whose lead + 24 h holds the first Sunday and stops a week short of the second. */
+        function leadToOccurrenceOne() {
+            return cy.then(() => setConfig(GAP_LEAD_HOURS_URL, String(Math.ceil(hoursUntil(occurrenceOneStart)) + 1)));
+        }
+
+        function raiseNeed(occurrenceId, positionId, count) {
+            return api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/occurrences/${occurrenceId}/requirements`, {
+                positionId,
+                minCount: count,
+                maxCount: count,
+            }, [200, 201]);
+        }
+
+        function renamePosition(positionId, name) {
+            return api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/positions/${positionId}`, { name });
+        }
+
+        function summariesTo(address) {
+            return listMail().then((messages) =>
+                messages.filter(
+                    (message) =>
+                        (message.To || []).some((to) => (to.Address || "").toLowerCase() === address) &&
+                        (message.Subject || "").includes(SUMMARY_SUBJECT),
+                ),
+            );
+        }
+
+        function singleAlertsTo(address) {
+            return listMail().then((messages) =>
+                messages.filter(
+                    (message) =>
+                        (message.To || []).some((to) => (to.Address || "").toLowerCase() === address) &&
+                        (message.Subject || "").includes("still need to be filled"),
+                ),
+            );
+        }
+
+        function body(message) {
+            return cy.task("mail:get", { id: message.ID }).then((result) => {
+                expect(result.ok).to.be.true;
+                return result.body;
+            });
+        }
+
+        /** The HTML of every daily email to `address`. */
+        function summaryHtml(address) {
+            const pages = [];
+            return summariesTo(address)
+                .then((mail) => {
+                    for (const message of mail) {
+                        body(message).then((full) => pages.push(full.HTML || ""));
+                    }
+                })
+                .then(() => pages);
+        }
+
+        function linksOccurrence(html, occurrenceId) {
+            return new RegExp(`/ministries/occurrences/${occurrenceId}(?!\\d)`).test(html);
+        }
+
+        it("queues the batch at the first run at or after the batch time, never before, and once a day", function () {
+            if (minuteOfDay() >= 23 * 60 + 58) {
+                this.skip();
+            }
+            assign(COORDINATOR_KEY, occurrenceTwo, posMilk, POOL_MEMBER_B);
+            leadShortOfOccurrenceTwo();
+            setConfig(BATCH_TIME_URL, batchTime(60));
+            setConfig(BATCH_DATE_URL, isoDate(-3));
+            runJobsNow();
+            summariesTo(COORDINATOR_EMAIL).then((mail) =>
+                expect(mail, "no batch before the batch time, not even a missed day's").to.have.length(0),
+            );
+            singleAlertsTo(COORDINATOR_EMAIL).then((mail) => expect(mail, "inside the lead, one by one").to.have.length(2));
+
+            batchDue();
+            runJobsNow();
+            summaryHtml(COORDINATOR_EMAIL).then((pages) => {
+                expect(pages).to.have.length(1);
+                expect(pages[0]).to.contain(`${ESPRESSO_NAME} — still needed: 1`);
+                expect(pages[0]).to.not.contain(MILK_NAME);
+                expect(linksOccurrence(pages[0], occurrenceOne), "the first Sunday went out one by one").to.be.false;
+            });
+            readConfig(BATCH_DATE_URL).should("eq", isoDate(0));
+
+            raiseNeed(occurrenceTwo, posMilk, 2);
+            runJobsNow();
+            summariesTo(COORDINATOR_EMAIL).then((mail) => expect(mail, "no second batch today").to.have.length(1));
+
+            setConfig(BATCH_DATE_URL, isoDate(-1));
+            runJobsNow();
+            summaryHtml(COORDINATOR_EMAIL).then((pages) => {
+                expect(pages, "the next batch").to.have.length(2);
+                const next = pages.find((html) => html.includes(MILK_NAME));
+                expect(next, "the next batch lists Milk Station").to.not.eq(undefined);
+                expect(next).to.contain(`${MILK_NAME} — still needed: 1`);
+                expect(next, "Espresso was listed yesterday").to.not.contain(ESPRESSO_NAME);
+            });
+            singleAlertsTo(COORDINATOR_EMAIL).then((mail) => expect(mail).to.have.length(2));
+        });
+
+        it("lists every position starting within the lead + 24 hours in one email, and nothing beyond", () => {
+            leadShortOfOccurrenceTwo();
+            batchDue();
+            runJobsNow();
+
+            summariesTo(COORDINATOR_EMAIL).then((mail) => {
+                expect(mail).to.have.length(1);
+                body(mail[0]).then((message) => {
+                    expect(message.ReplyTo || []).to.have.length(0);
+                    const html = message.HTML || "";
+                    expect(html).to.contain(MINISTRY_NAME);
+                    expect(html).to.contain(`${ESPRESSO_NAME} — still needed: 1`);
+                    expect(html).to.contain(`${MILK_NAME} — still needed: 1`);
+                    expect(html).to.contain("Volunteers still needed for these upcoming occurrences: 4");
+                    const first = html.search(new RegExp(`/ministries/occurrences/${occurrenceOne}(?!\\d)`));
+                    const second = html.search(new RegExp(`/ministries/occurrences/${occurrenceTwo}(?!\\d)`));
+                    expect(first, "the first Sunday's link").to.be.greaterThan(-1);
+                    expect(second, "after it, the second Sunday's").to.be.greaterThan(first);
+                    expect(html).to.contain("/ministries/dashboard");
+                });
+            });
+            singleAlertsTo(COORDINATOR_EMAIL).then((mail) =>
+                expect(mail, "the batch covered the lead window too").to.have.length(0),
+            );
+        });
+
+        it("escapes the position name in the daily email", () => {
+            renamePosition(posEspresso, `${FIXTURE_PREFIX} Tea & "Espresso"`);
+            leadShortOfOccurrenceTwo();
+            batchDue();
+            runJobsNow();
+
+            summariesTo(COORDINATOR_EMAIL).then((mail) => {
+                expect(mail).to.have.length(1);
+                body(mail[0]).then((message) => {
+                    const html = message.HTML || "";
+                    expect(html).to.contain("Tea &amp; &quot;Espresso&quot;");
+                    expect(html).to.not.contain('Tea & "Espresso"');
+                });
+            });
+        });
+
+        it("alerts a gap that opens after the batch on its own, and never one the batch listed", () => {
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A);
+            leadShortOfOccurrenceTwo();
+            batchDue();
+            runJobsNow();
+            summaryHtml(COORDINATOR_EMAIL).then((pages) => {
+                expect(pages).to.have.length(1);
+                expect(pages[0]).to.contain("Volunteers still needed for these upcoming occurrences: 3");
+            });
+
+            drain();
+            singleAlertsTo(COORDINATOR_EMAIL).then((mail) =>
+                expect(mail, "Milk Station is short inside the lead, but was listed").to.have.length(0),
+            );
+
+            raiseNeed(occurrenceOne, posEspresso, 2);
+            drain();
+            singleAlertsTo(COORDINATOR_EMAIL).then((mail) => {
+                expect(mail).to.have.length(1);
+                body(mail[0]).then((message) => expect(message.HTML || "").to.contain(ESPRESSO_NAME));
+            });
+            summariesTo(COORDINATOR_EMAIL).then((mail) => expect(mail).to.have.length(1));
+        });
+
+        it("drops a position filled before the batch could be sent", () => {
+            setConfig(SMTP_HOST_URL, "127.0.0.1:2");
+            leadToOccurrenceOne();
+            batchDue();
+            runJobsNow();
+            summariesTo(COORDINATOR_EMAIL).then((mail) => expect(mail, "the SMTP server refused it").to.have.length(0));
+
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A);
+            cy.then(() => restoreConfig(SMTP_HOST_URL, originalSmtpHost));
+            drain();
+            summaryHtml(COORDINATOR_EMAIL).then((pages) => {
+                expect(pages).to.have.length(1);
+                expect(pages[0]).to.contain(`${MILK_NAME} — still needed: 1`);
+                expect(pages[0]).to.not.contain(ESPRESSO_NAME);
+            });
+        });
+
+        it("sends nothing when every position in the batch was filled first", () => {
+            setConfig(SMTP_HOST_URL, "127.0.0.1:2");
+            leadToOccurrenceOne();
+            batchDue();
+            runJobsNow();
+
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A);
+            assign(COORDINATOR_KEY, occurrenceOne, posMilk, POOL_MEMBER_B);
+            cy.then(() => restoreConfig(SMTP_HOST_URL, originalSmtpHost));
+            clearMail();
+            drain();
+
+            summariesTo(COORDINATOR_EMAIL).then((mail) => expect(mail, "no empty batch").to.have.length(0));
+            singleAlertsTo(COORDINATOR_EMAIL).then((mail) => expect(mail).to.have.length(0));
+        });
+
+        it("lists nothing on an occurrence whose decline already alerted the coordinator", () => {
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, PERSON_VOLUNTEER).then((assignment) => {
+                api(SELFEDIT_KEY, "POST", `${VOLUNTEER_URL}/me/assignments/${assignment.id}/respond`, {
+                    response: "declined",
+                });
+            });
+            leadShortOfOccurrenceTwo();
+            batchDue();
+            runJobsNow();
+            summaryHtml(COORDINATOR_EMAIL).then((pages) => {
+                expect(pages).to.have.length(1);
+                expect(pages[0]).to.contain("Volunteers still needed for these upcoming occurrences: 2");
+                expect(linksOccurrence(pages[0], occurrenceTwo)).to.be.true;
+                expect(linksOccurrence(pages[0], occurrenceOne), "the decline's alert covered it").to.be.false;
+            });
+        });
+
+        it("links a team leader without Manage My Ministries to the portal", () => {
+            api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/scopes`, {
+                personId: PERSON_PLAIN,
+                scopeType: "team",
+                scopeId: teamA,
+            }, [200, 201]).then((resp) => {
+                plainScopeId = resp.body.scope.id;
+            });
+            leadToOccurrenceOne();
+            batchDue();
+            runJobsNow();
+
+            summariesTo("john.plainauth@example.com").then((mail) => {
+                expect(mail).to.have.length(1);
+                body(mail[0]).then((message) => {
+                    const html = message.HTML || "";
+                    expect(html).to.contain(`/portal/teams/${teamA}/occurrences/${occurrenceOne}`);
+                    expect(html).to.contain("/portal/teams\"");
+                    expect(html).to.not.contain("/ministries/occurrences/");
                 });
             });
         });

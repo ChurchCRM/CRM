@@ -1131,13 +1131,20 @@ assignment:{assignmentId}:{personId}
 reminder:{assignmentId}:{personId}
 decline_alert:{assignmentId}:{coordinatorPersonId}
 gap_alert:{occurrenceId}:{coordinatorPersonId}:{yyyy-mm-dd}     ← a decline's gap: one per coordinator per occurrence per day
-gap_alert:{occurrenceId}:{positionId}:{coordinatorPersonId}      ← the unfilled-position alert: one per position per coordinator, no date
+gap_alert:{occurrenceId}:{positionId}:{coordinatorPersonId}      ← the unfilled-position alert (#10372): one per position per coordinator, no date, single or batched (#10529)
 signup_confirm:{assignmentId}:{personId}
 swap_proposed:{swapId}:{coordinatorPersonId}
 swap_resolved:{swapId}:{personId}
 help_offer:{ministryId}:{personId}:{yyyy-mm-dd}:{coordinatorPersonId}
 pool_add:{ministryId}:{addedPersonId}:{yyyy-mm-dd}:{coordinatorPersonId}   ← #10531
 ```
+
+**The daily batch (#10529) is rows, not a type.** A position the daily batch reports is an ordinary
+unfilled-position `gap_alert` row under the key above, its `vntf_Context` carrying the batch day as
+well: `{"positionId": …, "batch": "yyyy-mm-dd"}`. The drain sends a recipient's due batched rows as one
+message. Sharing the key is what makes a position reported to a coordinator once, batch or single; no
+`vntf_Type` value and no column were added. The batch day is claimed in `config_cfg`
+(`sLastVolunteerGapAlertBatchDate`, Appendix B).
 
 **Invariants:**
 
@@ -1684,6 +1691,7 @@ are the contract; read the class for signatures.
 | `approveSwap()` / `rejectSwap()` | `swap_resolved` | proposer **and** substitute | now |
 | `respond('declined')`, when the occurrence is left short (`notifyGapOpened()`) | `gap_alert` | `getCoordinatorPersonIds(ministry, team)` | now (dedupe key includes the date, so at most one per coordinator per occurrence per day) |
 | every timer pass, a position still short on an occurrence starting within `iVolunteerGapAlertLeadHours` (#10372, #10526) | `gap_alert`, one per position, naming only that position | `getCoordinatorPersonIds(ministry, team)` | now (dedupe key per occurrence, position and coordinator, no date: an open gap is alerted once; none to a coordinator who already has the occurrence's decline `gap_alert`) |
+| once a day, the first timer pass at or after `sVolunteerGapAlertBatchTime`: a position still short on an occurrence starting within the lead + 24 hours (#10529) | `gap_alert`, one row per position with `"batch"` in its context; the drain sends a recipient's batched rows as ONE message | `getCoordinatorPersonIds(ministry, team)` | now (the same key as the single alert, so a position is reported once, batch or single; the same decline rule) |
 
 `cancelPendingFor()` deletes `pending` outbox rows when an assignment stops being live, so a
 cancelled assignment never produces a reminder.
@@ -1742,8 +1750,12 @@ asked not to be mailed at, so the opt-out is honoured here too.
 2. For each: if `!SystemConfig::isEmailEnabled()` → `skipped` (N2). If the recipient is in
    `buildDoNotEmailSet()` → `skipped` (N3). If the person has no email → `skipped`. If the row is
    about an occurrence that has already ended → `skipped`.
-3. Otherwise build the `BaseEmail` subclass (Appendix C) and `send()`. On success record `sent`
-   and `SentDate`. On failure record `Attempts + 1`, `LastAttemptDate` and `LastError`, and set
+3. Otherwise build the `BaseEmail` subclass (Appendix C) and `send()`. A batched `gap_alert` row
+   (#10529) is taken with every due batched row of its recipient, whatever the batch size: the
+   recipient rules apply to all of them, each row whose occurrence is gone or over or whose position
+   has been filled since is `skipped` on its own, and the rest go out as one
+   `VolunteerGapAlertBatchEmail` and share its outcome; nothing left means nothing sent. On success
+   record `sent` and `SentDate`. On failure record `Attempts + 1`, `LastAttemptDate` and `LastError`, and set
    `Status` to `failed` **only if `Attempts` is now 5**; otherwise leave it `pending` so step 1
    picks it up on the next drain. Each send is wrapped in its own `try/catch (\Throwable)` with a
    structured log, copying `dto\Notification::send()`'s per-channel isolation (N4) so one bad
@@ -1782,6 +1794,23 @@ scan runs. A coordinator who already has the occurrence-wide `gap_alert` of a de
 position. A position filled and later reopened by a decline is reported by `notifyGapOpened()`
 under its own dated key. The drain skips one of these rows when its position was filled after it
 was queued, and applies the usual email-off, do-not-email and no-address rules.
+
+**The daily batch (#10529, built).** So a ministry with many open positions does not send a
+coordinator a burst of separate emails, the scan first queues a daily batch. Once a day, at the
+first timer pass at or after `sVolunteerGapAlertBatchTime` (default `07:00`, church time, Admin →
+Ministry Settings), it claims the day in `config_cfg` (`sLastVolunteerGapAlertBatchDate`; the
+`VolunteerScheduleTopUp` claim, except that only a later day wins, so moving the time back cannot
+send a day twice) and queues every short position on the occurrences starting within the gap-alert
+lead + 24 hours, so a position that would come inside the lead before tomorrow's batch arrives in
+this one. A batch is claimed only for today and only at or after its time, so a coordinator never
+gets two on one day: a day with no pass after its batch time has no batch (its gaps still go out
+one by one, and the next day's batch covers the 24 hours after it). The
+forced **Run background jobs now** does not send a second batch. The single alert then runs within
+the lead alone, so between batches it reports what something changed: a new event, a decline, a
+raised count. Both write the same key, so each position is reported to a coordinator once, and the
+decline rule covers both. The drain groups a coordinator's batched rows into one
+`VolunteerGapAlertBatchEmail` (step 3), dropping the positions filled since; a batch left with
+nothing is never sent. A lead of 0 turns off the batch as well.
 
 **Punctuality.** Because the drain runs on page loads (F9), reminders are best-effort by default.
 Installations that need them on time add a real cron with **no code change**:
@@ -2357,7 +2386,7 @@ Answers, in this order, top to bottom:
    columns `Date · Time · Ministry/Team · Schedule · Staffed · Status · Actions`. Staffed is the
    occurrence's rollup in D34's words (*"Needs 2 more"*, *"Covered · 1 more welcome"*, *"Full"*), green
    when met, amber when `pending` meets it, red when short, grey for an optional slot nobody took.
-5. **Notification-health card**: the failed-send count for every viewer, with a link to **Admin → Ministry Settings** for an administrator and an "ask an administrator" hint for anyone else. The settings themselves — `sVolunteerVersion`, `iVolunteerReminderLeadHours`, `iVolunteerGapAlertLeadHours` (#10526), `iVolunteerSchedulingHorizonWeeks` and `iVolunteerDefaultEventTypeId` — the cron hint, the queued count, the last timer-job run, the last schedule top-up and the recent-failure list live on that admin page (`src/admin/routes/ministry-settings.php`, `src/admin/views/ministry-settings.php`; the `ministries-settings` bundle puts its times in ChurchCRM's locale, §5.10), which exists in every rollout state and is the one home of those settings (they are absent from `buildCategories()`). The page also explains V1, V2 and Both in prose.
+5. **Notification-health card**: the failed-send count for every viewer, with a link to **Admin → Ministry Settings** for an administrator and an "ask an administrator" hint for anyone else. The settings themselves — `sVolunteerVersion`, `iVolunteerReminderLeadHours`, `iVolunteerGapAlertLeadHours` (#10526), `sVolunteerGapAlertBatchTime` (#10529), `iVolunteerSchedulingHorizonWeeks` and `iVolunteerDefaultEventTypeId` — the cron hint, the queued count, the last timer-job run, the last schedule top-up and the recent-failure list live on that admin page (`src/admin/routes/ministry-settings.php`, `src/admin/views/ministry-settings.php`; the `ministries-settings` bundle puts its times in ChurchCRM's locale, §5.10), which exists in every rollout state and is the one home of those settings (they are absent from `buildCategories()`). The page also explains V1, V2 and Both in prose.
 
 The dashboard makes exactly **one** API call (`GET /api/ministries/dashboard`) and renders all five
 panels from it.
@@ -3311,12 +3340,14 @@ The items are `ConfigItem`s in `SystemConfig::buildConfigs()`; `getVolunteerVers
 | `iVolunteerReminderLeadHours` | `number` | `48` | D11: system-level, administrator-adjustable, **not** per volunteer. Read with `SystemConfig::getIntValue()`. |
 | `iVolunteerSchedulingHorizonWeeks` | `number` | `8` | D31: how many weeks ahead every schedule is generated, church-wide. Read through `VolunteerScheduleService::horizonWeeks()`: the config API refuses a blank or non-number (D32), but the row can be written other ways, so a blank or non-numeric value reads as 8 and a number is held within 1–52. |
 | `iVolunteerDefaultEventTypeId` | `number` | `''` | D31: the event type a ministry's new event starts with. Unset, inactive or deleted falls back to the active type named "Other", else none (`VolunteerEventService::defaultEventTypeId()`). |
+| `sVolunteerGapAlertBatchTime` | `text` | `07:00` | #10529: the time of day (`HH:MM`, `sTimeZone`) of the daily unfilled-position batch (§3.6). A time input on Ministry Settings (the settings panel's `time` type); a value that is not a time of day reads as 07:00 (`VolunteerNotificationService::gapAlertBatchTime()`). |
+| `sLastVolunteerGapAlertBatchDate` | `text` | `''` | #10529, internal: the batch day (`Y-m-d`) last queued — its once-a-day claim; only a later day can take it. Not on any settings page. |
 | `sLastVolunteerTopUpRunDate` | `text` | `''` | D31, internal: the day (`Y-m-d`, in `sTimeZone`) the daily top-up last ran — its once-a-day claim. Not on any settings page. |
 | `sLastVolunteerTopUpResult` | `text` | `''` | D31, internal: JSON `{ranAt, schedules, created, failed, assigned, skipped, unqualified}` of the last top-up (the last three D32's default assignments), which Ministry Settings shows. |
 
 `sVolunteerVersion` is the only rollout flag; code that wants a boolean calls `User::isVolunteerV2Enabled()`.
 
-The five user-facing settings are surfaced through `window.CRM.settingsPanel` (U8) on **Admin →
+The six user-facing settings are surfaced through `window.CRM.settingsPanel` (U8) on **Admin →
 Ministry Settings** (`src/admin/views/ministry-settings.php`), backed by
 `POST /admin/api/system/config/{name}`; the default event type is a choice of the active event
 types, its empty entry saying what it falls back to. None is in a `buildCategories()` category, so that page — which exists in every rollout state — is their one home. The panel
@@ -3342,6 +3373,7 @@ single Twig template `src/templates/email/BaseEmail.html.twig` and the branding 
 | `VolunteerReminderEmail` | outbox type `reminder` | the volunteer | responsible coordinator | `/portal/volunteer/schedule` | *View my schedule* |
 | `VolunteerDeclineAlertEmail` | outbox type `decline_alert` | coordinators in scope | the volunteer who declined | `/ministries/occurrences/{id}` | *Fill this gap* |
 | `VolunteerGapAlertEmail` | outbox type `gap_alert` | coordinators in scope | none (no single volunteer) | `/ministries/occurrences/{id}` | *Fill this gap* |
+| `VolunteerGapAlertBatchEmail` | a recipient's batched `gap_alert` rows (#10529), one message a day | coordinators in scope | none | `/ministries/dashboard` (a team leader without Manage My Ministries: `/portal/teams`) | *Open the Ministry Dashboard* / *My Teams* |
 | `VolunteerSignupConfirmEmail` | outbox type `signup_confirm`: self sign-up, or an assignment recorded as accepted in the Assign dialog (#10528), whose `recordedBy` context switches the wording to *"{coordinator} recorded that you will serve. You are on the schedule."* | the volunteer | responsible coordinator | `/portal/volunteer/schedule` | *View my schedule* |
 | `VolunteerSwapProposedEmail` | outbox type `swap_proposed` | coordinators in scope | the proposing volunteer | `/ministries/dashboard` | *Review this request* |
 | `VolunteerSwapResolvedEmail` | outbox type `swap_resolved` | proposer **and** substitute | responsible coordinator | `/portal/volunteer/schedule` | *View my schedule* |
@@ -3365,7 +3397,10 @@ subclass in the tree and gain no email-routing logic of their own.
   `BaseEmail::getCommonTokens()`).
 
 Gap and decline alerts additionally carry the number still needed and the list of positions short;
-the unfilled-position alert's list is its one position.
+the unfilled-position alert's list is its one position. The daily batch (subject *Volunteer positions
+to fill in the coming days*) gives the total still needed, then one paragraph per occurrence in date
+order: when, the ministry and team, each position with *{position}: needs {n} more*, and the
+occurrence's link (the portal's copy of the date for a team leader without Manage My Ministries).
 Swap messages carry both names and the decision.
 
 **Constraints:**
