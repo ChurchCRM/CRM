@@ -581,18 +581,12 @@ $aBreadcrumbs = PageHeader::breadcrumbs([
     [gettext('Families'), '/people/family'],
     [($iFamilyID > 0) ? gettext('Edit Family') : gettext('New Family')],
 ]);
-// Attribute-safe copies of the second-address values for the form below.
-// InputUtils::escapeAttribute() makes the same htmlspecialchars() call, but
-// Semgrep's echoed-request taint rule only recognises htmlspecialchars() and
-// htmlentities() as sanitisers, and GitHub code scanning still counts a
-// finding suppressed in the source as an open alert. Spelling the escape out
-// here keeps the scan green without a suppression comment.
-$sSecondAddress1Attr = htmlspecialchars(stripslashes($sSecondAddress1 ?? ''), ENT_QUOTES, 'UTF-8');
-$sSecondAddress2Attr = htmlspecialchars(stripslashes($sSecondAddress2 ?? ''), ENT_QUOTES, 'UTF-8');
-$sSecondCityAttr = htmlspecialchars(stripslashes($sSecondCity ?? ''), ENT_QUOTES, 'UTF-8');
-$sSecondStateAttr = htmlspecialchars(stripslashes($sSecondState ?? ''), ENT_QUOTES, 'UTF-8');
-$sSecondZipAttr = htmlspecialchars(stripslashes($sSecondZip ?? ''), ENT_QUOTES, 'UTF-8');
-$sSecondCountryAttr = htmlspecialchars(stripslashes(Countries::toISO($sSecondCountry)), ENT_QUOTES, 'UTF-8');
+$sSecondAddress1Attr = InputUtils::escapeAttribute($sSecondAddress1 ?? '');
+$sSecondAddress2Attr = InputUtils::escapeAttribute($sSecondAddress2 ?? '');
+$sSecondCityAttr = InputUtils::escapeAttribute($sSecondCity ?? '');
+$sSecondStateAttr = InputUtils::escapeAttribute($sSecondState ?? '');
+$sSecondZipAttr = InputUtils::escapeAttribute($sSecondZip ?? '');
+$sSecondCountryAttr = InputUtils::escapeAttribute(Countries::toISO($sSecondCountry));
 $sCountry = Countries::toISO($sCountry);
 
 require_once __DIR__ . '/Include/Header.php';

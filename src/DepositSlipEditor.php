@@ -224,7 +224,7 @@ require_once __DIR__ . '/Include/Header.php';
             <div class="mb-2">
               <i class="fa-solid fa-receipt fa-2x text-primary mb-2"></i>
             </div>
-            <div class="stat-value stat-value-lg text-dark"><?= htmlspecialchars((string) ($thisDeposit->getCountChecks() + $thisDeposit->getCountCash()), ENT_QUOTES, 'UTF-8') ?></div>
+            <div class="stat-value stat-value-lg text-dark"><?= (int) ($thisDeposit->getCountChecks() + $thisDeposit->getCountCash()) ?></div>
             <div class="stat-label"><?= gettext('Total Payments'); ?></div>
           </div>
         </div>
