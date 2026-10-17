@@ -9341,10 +9341,6 @@ msgid "Manage donations, pledges, and financial records"
 msgstr "दान, प्रतिज्ञाएँ और वित्तीय रिकॉर्ड प्रबंधित करें"
 
 #: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "ईमेल उपकरण और SMTP कॉन्फ़िगरेशन प्रबंधित करें"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "परिवार, लोग और जनसांख्यिकीय जानकारी प्रबंधित करें"
 
@@ -10320,10 +10316,6 @@ msgid "Distance Unit"
 msgstr "दूरी इकाई"
 
 #: 
-msgid "Email Dashboard"
-msgstr "ईमेल डैशबोर्ड"
-
-#: 
 msgid "Email Integrations"
 msgstr "ईमेल एकीकरण"
 
@@ -10338,10 +10330,6 @@ msgstr "समूह और लोगों के विचार में ई
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "ईमेल सूचियां Mailchimp के साथ सिंक की जाती हैं।"
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "नीचे दिए गए सेटिंग्स पैनल में ईमेल सक्षम करें, फिर अपने SMTP सर्वर को कॉन्फ़िगर करें।"
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10483,10 +10471,6 @@ msgstr "सिस्टम कैलेंडर"
 #: 
 msgid "System language for the church."
 msgstr "चर्च के लिए सिस्टम भाषा।"
-
-#: 
-msgid "Text Dashboard"
-msgstr "पाठ डैशबोर्ड"
 
 #: 
 msgid "Text Settings"
@@ -12406,10 +12390,6 @@ msgstr "ईमेल अक्षम है"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "ईमेल अक्षम है। पासवर्ड रीसेट करने से पहले ईमेल कॉन्फ़िगर करें, या पासवर्ड बदलें का उपयोग करें।"
-
-#: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "ईमेल अक्षम है। परीक्षण करने से पहले ईमेल डैशबोर्ड सेटिंग में इसे सक्षम करें।"
 
 #: 
 msgid "Enter one of your backup recovery codes"

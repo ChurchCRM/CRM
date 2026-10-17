@@ -9367,10 +9367,6 @@ msgid "Manage donations, pledges, and financial records"
 msgstr "Administro dhuratat, premtimet dhe regjestrat financiare"
 
 #: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "Administro mjetet e email-it dhe konfigurimin SMTP"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Administro familjet, njerëzit dhe informacionin demografik"
 
@@ -10346,10 +10342,6 @@ msgid "Distance Unit"
 msgstr "Njësia e Distancës"
 
 #: 
-msgid "Email Dashboard"
-msgstr "Tabela Instrumentesh për Email"
-
-#: 
 msgid "Email Integrations"
 msgstr "Integrimi i Email-it"
 
@@ -10364,10 +10356,6 @@ msgstr "Lidhjet e email-it në shikime grupe dhe njerëzish"
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "Listat e email-it sinkronizohen me Mailchimp."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "Aktivizoni email në panelin e cilësimeve më poshtë, pastaj konfiguroni serverin tuaj SMTP."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10509,10 +10497,6 @@ msgstr "Kalendarë të Sistemit"
 #: 
 msgid "System language for the church."
 msgstr "Gjuha e sistemit për kishën."
-
-#: 
-msgid "Text Dashboard"
-msgstr "Teksti i Armataturës"
 
 #: 
 msgid "Text Settings"
@@ -12432,10 +12416,6 @@ msgstr "Emaili është i çaktivizuar"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "Emaili është i çaktivizuar. Konfiguroni emailin para rivendosjes së fjalëkalimeve, ose përdorni Ndrysho Fjalëkalimin."
-
-#: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "Emaili është i çaktivizuar. Aktivizojeni në cilësimet e Panelit të Emailit para testimit."
 
 #: 
 msgid "Enter one of your backup recovery codes"

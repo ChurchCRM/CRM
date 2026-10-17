@@ -9384,10 +9384,6 @@ msgid "Manage donations, pledges, and financial records"
 msgstr "ጋብ ተቀባይነት እና ገንዘብ መያዝ ይሸፍኑ"
 
 #: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "ኢሜል መሳሪያዎች እና SMTP ዋና ይሸፍኑ"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "ቤተሰቦች ሰውነት እና ተወልደ መረጃ ይሸፍኑ"
 
@@ -10363,10 +10359,6 @@ msgid "Distance Unit"
 msgstr "የርቀት አሃድ"
 
 #: 
-msgid "Email Dashboard"
-msgstr "ኢሜይል ዳሽቦርድ"
-
-#: 
 msgid "Email Integrations"
 msgstr "ኢሜይል ውህደቶች"
 
@@ -10381,10 +10373,6 @@ msgstr "በቡድን እና በሰዎች ዓሣ ውስጥ ኢሜይል ግንኙ
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "ኢሜይል ዝርዝር ከ Mailchimp ጋር ተመሳሳይ ነው።"
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "ከስር በቅንብር ፓነል ውስጥ ኢሜይል ዋ, ከዚያ በሌላ SMTP ሰርቨር ያዋቅሩ።"
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10526,10 +10514,6 @@ msgstr "የስርዓት የቀን መቁጠሪያ"
 #: 
 msgid "System language for the church."
 msgstr "ለቤተ ክርስቲያን የስርዓት ቋንቋ።"
-
-#: 
-msgid "Text Dashboard"
-msgstr "ጽሑፍ ሳሙና"
 
 #: 
 msgid "Text Settings"
@@ -12449,10 +12433,6 @@ msgstr "ኢሜይል ተሰናክሏል"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "ኢሜይል ተሰናክሏል። ይለፍ ቃሎችን ከዳግም ማስጀመርዎ በፊት ኢሜይልን ያዋቅሩ፣ ወይም ይለፍ ቃል ቀይር ይጠቀሙ።"
-
-#: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "ኢሜይል ተሰናክሏል። ከፈተና በፊት በኢሜይል ዳሽቦርድ ቅንብሮች ውስጥ ያብሩት።"
 
 #: 
 msgid "Enter one of your backup recovery codes"

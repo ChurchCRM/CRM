@@ -9447,10 +9447,6 @@ msgid "Manage donations, pledges, and financial records"
 msgstr "Administrer gaver, giverløfter og økonomiske poster"
 
 #: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "Administrer e-postverktøy og SMTP-konfigurasjon"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Administrer familier, personer og demografisk informasjon"
 
@@ -10426,10 +10422,6 @@ msgid "Distance Unit"
 msgstr "Avstandsenhet"
 
 #: 
-msgid "Email Dashboard"
-msgstr "E-postdashbord"
-
-#: 
 msgid "Email Integrations"
 msgstr "E-postintegrering"
 
@@ -10444,10 +10436,6 @@ msgstr "E-postlenker i gruppe- og menneskevisninger"
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "E-postlister er synkronisert med Mailchimp."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "Aktiver e-post i innstillingspanelet nedenfor, og konfigurer deretter SMTP-serveren."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10589,10 +10577,6 @@ msgstr "Systemkalendar"
 #: 
 msgid "System language for the church."
 msgstr "Systemspråk for kirken."
-
-#: 
-msgid "Text Dashboard"
-msgstr "Tekstinstrumentpanel"
 
 #: 
 msgid "Text Settings"
@@ -12512,10 +12496,6 @@ msgstr "E-post er deaktivert"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "E-post er deaktivert. Konfigurer e-post før du tilbakestiller passord, eller bruk Endre passord."
-
-#: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "E-post er deaktivert. Aktiver det i innstillingene for e-postpanelet før testing."
 
 #: 
 msgid "Enter one of your backup recovery codes"

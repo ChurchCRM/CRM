@@ -9373,10 +9373,6 @@ msgid "Manage donations, pledges, and financial records"
 msgstr "Simamia sadaka, ahadi, na rekodi za fedha"
 
 #: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "Simamia zana za barua pepe na usanidi wa SMTP"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Simamia familia, watu, na taarifa za idadi ya watu"
 
@@ -10352,10 +10348,6 @@ msgid "Distance Unit"
 msgstr "Kitengo cha Umbali"
 
 #: 
-msgid "Email Dashboard"
-msgstr "Dashibodi ya Barua pepe"
-
-#: 
 msgid "Email Integrations"
 msgstr "Ujumuishaji wa Barua Pepe"
 
@@ -10370,10 +10362,6 @@ msgstr "Viungo vya barua pepe katika mifumo ya kundi na watu"
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "Orodha za barua pepe zinasambazwa na Mailchimp."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "Wezesha barua pepe katika paneli la mipangilio hapa chini, kisha sanidi seva yako ya SMTP."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10515,10 +10503,6 @@ msgstr "Kalenda za Mfumo"
 #: 
 msgid "System language for the church."
 msgstr "Lugha ya mfumo kwa kanisa."
-
-#: 
-msgid "Text Dashboard"
-msgstr "Dashibodi ya Ujumbe"
 
 #: 
 msgid "Text Settings"
@@ -12438,10 +12422,6 @@ msgstr "Barua pepe imezimwa"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "Barua pepe imezimwa. Sanidi barua pepe kabla ya kuweka upya nywila, au tumia Badilisha Nywila."
-
-#: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "Barua pepe imezimwa. Iwezesha katika mipangilio ya Dashibodi ya Barua Pepe kabla ya kujaribu."
 
 #: 
 msgid "Enter one of your backup recovery codes"
