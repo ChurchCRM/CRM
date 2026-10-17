@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-16 16:23+0000\n"
+"POT-Creation-Date: 2026-10-17 02:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2954,6 +2954,9 @@ msgstr ""
 msgid "Choose %s to run this report."
 msgstr ""
 
+msgid "Choose None, TLS or SSL for encryption."
+msgstr ""
+
 msgid "Choose a class"
 msgstr ""
 
@@ -2988,6 +2991,9 @@ msgid "Choose an event..."
 msgstr ""
 
 msgid "Choose an existing event type"
+msgstr ""
+
+msgid "Choose an existing person property for Do Not Email."
 msgstr ""
 
 msgid "Choose at least one calendar to subscribe to."
@@ -3656,6 +3662,9 @@ msgid "Copy All Numbers"
 msgstr ""
 
 msgid "Copy Church Email"
+msgstr ""
+
+msgid "Copy Church Email must be a valid email address."
 msgstr ""
 
 msgid "Copy Members to Group"
@@ -5130,9 +5139,6 @@ msgstr ""
 msgid "Email Cart Members"
 msgstr ""
 
-msgid "Email Dashboard"
-msgstr ""
-
 msgid "Email Debug"
 msgstr ""
 
@@ -5149,6 +5155,9 @@ msgid "Email History"
 msgstr ""
 
 msgid "Email Integrations"
+msgstr ""
+
+msgid "Email Log"
 msgstr ""
 
 msgid "Email PDF"
@@ -5193,7 +5202,7 @@ msgstr ""
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr ""
 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
+msgid "Email is disabled. Enable it in Email Settings before testing."
 msgstr ""
 
 msgid "Email is not configured. Please configure SMTP settings in System Settings."
@@ -5230,6 +5239,9 @@ msgstr ""
 
 msgctxt "other"
 msgid "Email sent to {{count}} recipient(s)."
+msgstr ""
+
+msgid "Email settings saved successfully"
 msgstr ""
 
 msgid "Email/Username"
@@ -5295,7 +5307,7 @@ msgstr ""
 msgid "Enable Two-Factor Authentication"
 msgstr ""
 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
+msgid "Enable email below, then configure your SMTP server."
 msgstr ""
 
 msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
@@ -5725,6 +5737,9 @@ msgid "Events to delete: {{total}}"
 msgstr ""
 
 msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr ""
+
+msgid "Every email ChurchCRM sent, newest first"
 msgstr ""
 
 msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
@@ -6635,6 +6650,9 @@ msgstr ""
 msgid "Find an event"
 msgstr ""
 
+msgid "Find duplicate addresses and people with no email"
+msgstr ""
+
 msgid "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID"
 msgstr ""
 
@@ -6981,6 +6999,9 @@ msgid "Gender"
 msgstr ""
 
 msgid "Gender Demographics"
+msgstr ""
+
+msgid "General"
 msgstr ""
 
 msgid "Generate"
@@ -9006,9 +9027,6 @@ msgid "Manage donation funds for financial tracking"
 msgstr ""
 
 msgid "Manage donations, pledges, and financial records"
-msgstr ""
-
-msgid "Manage email tools and SMTP configuration"
 msgstr ""
 
 msgid "Manage event names, recurrence patterns, and attendance counts"
@@ -12802,6 +12820,9 @@ msgstr ""
 msgid "SMTP Password"
 msgstr ""
 
+msgid "SMTP Server"
+msgstr ""
+
 msgid "SMTP Server Address (mail.server.com:25)"
 msgstr ""
 
@@ -12814,6 +12835,9 @@ msgstr ""
 msgid "SMTP Username"
 msgstr ""
 
+msgid "SMTP and delivery settings"
+msgstr ""
+
 msgid "SMTP configuration test — if this arrived, your setup works."
 msgstr ""
 
@@ -12821,6 +12845,12 @@ msgid "SMTP server for sending emails"
 msgstr ""
 
 msgid "SMTP test"
+msgstr ""
+
+msgid "SMTP timeout must be a whole number of seconds between 1 and 600."
+msgstr ""
+
+msgid "SMTP username is required when authentication is on."
 msgstr ""
 
 msgid "SQL Only"
@@ -12896,6 +12926,9 @@ msgid "Save Changes"
 msgstr ""
 
 msgid "Save Church Information"
+msgstr ""
+
+msgid "Save Email Settings"
 msgstr ""
 
 msgid "Save Event Type"
@@ -14438,9 +14471,6 @@ msgstr ""
 msgid "Text All"
 msgstr ""
 
-msgid "Text Dashboard"
-msgstr ""
-
 msgid "Text Field (100 char)"
 msgstr ""
 
@@ -15835,6 +15865,9 @@ msgid "Turn off the Member Portal template cache and print the name of each temp
 msgstr ""
 
 msgid "Turn this on for a ministry whose teams teach Sunday School classes. Its teams can then be linked to a class, and its schedules and events can use one."
+msgstr ""
+
+msgid "Turning this off clears the saved username and password."
 msgstr ""
 
 msgid "Turns off the portal template cache and prints the name of each template in an HTML comment. For theme designers; leave this off in normal use."
