@@ -993,6 +993,10 @@ Legal transitions, and nothing else:
 | `accepted` | `completed` | system | set when the occurrence's end has passed; if linked and the person has an `event_attend` check-in, `completed` is recorded with attendance, otherwise it is recorded without. Never blocks on attendance. |
 | anything | anything else | — | rejected with `409` and the current status in the body |
 
+A coordinator can also create the row already `accepted` — an accepted default (D32) or the
+Assign dialog's *Record they accepted* (#10528) — which writes the same `coordinator`-channel
+response row by the coordinator and sets `vasg_RespondedDate`.
+
 "On their behalf" is deliberate, not a loophole: a volunteer who phones the coordinator to say they
 cannot make it is the common case, and the coordinator records it. The response row then carries
 the **coordinator** as `vrsp_per_ID` and `vrsp_Channel = 'coordinator'` (§2.12), so the audit trail
@@ -1571,7 +1575,7 @@ error contract (M5).
 | GET | `/api/ministries/occurrences/{occurrenceId}` | detail | scope | `VolunteerOccurrenceMiddleware` |
 | GET | `/api/ministries/occurrences/{occurrenceId}/staffing` | **the workhorse** | scope | `{occurrence, requirements:[{positionId,positionName,minCount,maxCount,liveCount,gapCount,assignments:[{id,personId,displayName,status,source,respondedDate,attendance}]}]}` — `attendance` is present only for linked occurrences (E10) |
 | GET | `/api/ministries/occurrences/{occurrenceId}/eligible` | who may be assigned | scope | `?positionId=&q=` → `{people:[{personId,displayName,inPool,lastServedDate,conflictPositionId}]}`, ordered by `lastServedDate ASC NULLS FIRST` (the rotation, §2.17) |
-| POST | `/api/ministries/occurrences/{occurrenceId}/assignments` | assign | scope | `{positionId,personId,requirementId?,allowOutsidePool?}` → `201 {assignment}`; `403` I2, `409` I1/I3/I5 |
+| POST | `/api/ministries/occurrences/{occurrenceId}/assignments` | assign | scope | `{positionId,personId,requirementId?,allowOutsidePool?,accepted?}` → `201 {assignment}`; `403` I2, `409` I1/I3/I5. `accepted: true` (*Record they accepted*, #10528) creates it `accepted` with a coordinator-channel response row by the caller, as an accepted default is (D32), and queues `signup_confirm` instead of `assignment` (§3.6) |
 | POST | `/api/ministries/assignments/{assignmentId}/status` | coordinator status change, incl. recording a response on the volunteer's behalf (§2.11.1) | scope | `{status:'cancelled'\|'accepted'\|'declined', comment?}` → `{assignment}`; `accepted`/`declined` write a response row with `Channel='coordinator'` and the coordinator as `vrsp_per_ID`; `409` on an illegal transition |
 | DELETE | `/api/ministries/assignments/{assignmentId}` | cancel (never hard-deletes once responded) | scope | sets `cancelled`; hard-deletes only a `pending`, never-notified row |
 | POST | `/api/ministries/assignments/{assignmentId}/notify` | re-enqueue the assignment mail | scope | `{}` → `{notification:{status}}`; idempotent via the dedupe key unless `?force=1` |
@@ -1667,10 +1671,11 @@ are the contract; read the class for signatures.
 
 | Trigger | Type | Recipient | `ScheduledFor` |
 |---|---|---|---|
-| `assign()`, and a pending default a run assigns (D32) | `assignment` | the volunteer | now |
+| `assign()`, and a pending default a run assigns (D32) | `assignment` | the volunteer | now — not for an assignment created already accepted (an accepted default, *Record they accepted*) |
 | `assign()` / `selfSignup()` accepted | `reminder` | the volunteer | occurrence start − `iVolunteerReminderLeadHours` |
 | `respond('declined')` **by the volunteer** (`Channel='web'`) | `decline_alert` | `getCoordinatorPersonIds(ministry, team)` | now — a coordinator-recorded decline (`Channel='coordinator'`) enqueues nothing |
 | `selfSignup()` | `signup_confirm` | the volunteer | now |
+| `assign()` with *Record they accepted* (`accepted: true`, #10528) | `signup_confirm`, `vntf_Context = {"recordedBy": …}` (the coordinator's person id), so the message names who put them on the schedule instead of thanking them for signing up | the volunteer | now. An accepted default (D32) sends none |
 | `proposeSubstitute()` | `swap_proposed` | coordinators | now |
 | `approveSwap()` / `rejectSwap()` | `swap_resolved` | proposer **and** substitute | now |
 | `respond('declined')`, when the occurrence is left short (`notifyGapOpened()`) | `gap_alert` | `getCoordinatorPersonIds(ministry, team)` | now (dedupe key includes the date, so at most one per coordinator per occurrence per day) |
@@ -2642,6 +2647,12 @@ The single most important coordinator screen.
   `GET /occurrences/{id}/eligible?positionId=` — so the picker can only ever offer qualified people.
   In-pool members are listed first; an out-of-pool qualified person appears under a
   "Not in the pool" divider and assigning them requires the `allowOutsidePool` confirm (I3).
+  A **Record they accepted** box (#10528), off each time the dialog opens, is for somebody
+  who already said yes in person or by phone: the assignment is created `accepted` through the
+  coordinator channel, recorded as answered by the coordinator on the volunteer's behalf as an
+  accepted default is (D32), with no "please respond" email; the volunteer gets the short
+  `signup_confirm` "you're on the schedule" message, and reminders go out as usual. The portal's
+  team occurrence page has the same dialog.
 - **Double-duty warning (I7, D16)**: a qualified person who already holds *another* position on
   this occurrence still appears in the picker — never filtered out, never disabled — annotated with
   the position they already hold. Choosing them renders a non-blocking inline caution ("Already
@@ -3251,7 +3262,7 @@ single Twig template `src/templates/email/BaseEmail.html.twig` and the branding 
 | `VolunteerReminderEmail` | outbox type `reminder` | the volunteer | responsible coordinator | `/portal/volunteer/schedule` | *View my schedule* |
 | `VolunteerDeclineAlertEmail` | outbox type `decline_alert` | coordinators in scope | the volunteer who declined | `/ministries/occurrences/{id}` | *Fill this gap* |
 | `VolunteerGapAlertEmail` | outbox type `gap_alert` | coordinators in scope | none (no single volunteer) | `/ministries/occurrences/{id}` | *Fill this gap* |
-| `VolunteerSignupConfirmEmail` | outbox type `signup_confirm` | the volunteer | responsible coordinator | `/portal/volunteer/schedule` | *View my schedule* |
+| `VolunteerSignupConfirmEmail` | outbox type `signup_confirm`: self sign-up, or an assignment recorded as accepted in the Assign dialog (#10528), whose `recordedBy` context switches the wording to *"{coordinator} recorded that you will serve. You are on the schedule."* | the volunteer | responsible coordinator | `/portal/volunteer/schedule` | *View my schedule* |
 | `VolunteerSwapProposedEmail` | outbox type `swap_proposed` | coordinators in scope | the proposing volunteer | `/ministries/dashboard` | *Review this request* |
 | `VolunteerSwapResolvedEmail` | outbox type `swap_resolved` | proposer **and** substitute | responsible coordinator | `/portal/volunteer/schedule` | *View my schedule* |
 | `VolunteerHelpOfferEmail` | outbox type `help_offer` (D19, *I'd like to help*) | the ministry's coordinators, one message each per day | the volunteer who offered | `/ministries/{id}#qualifications` | *Qualify them for a position* |

@@ -457,6 +457,32 @@ describe("Member Portal (MP7, #9868) — My Teams", () => {
                     });
                 });
             });
+
+            it("Records the volunteer as accepted from the Assign dialog (#10528)", () => {
+                adminApi(
+                    "GET",
+                    `${VOLUNTEER_URL}/occurrences?from=${isoDate(0)}&to=${isoDate(28)}&ministryId=${ministryId}`,
+                ).then((resp) => {
+                    const occurrences = resp.body.occurrences;
+                    expect(occurrences.length, "the schedule made more than one date").to.be.greaterThan(1);
+
+                    login(LEADER_USERNAME, LEADER_PASSWORD);
+                    cy.visit(`${TEAMS_URL}/${teamLed}/occurrences/${occurrences[occurrences.length - 1].id}`);
+                });
+
+                cy.get(`.volunteer-assign-btn[data-position-id="${posDoor}"]`, { timeout: 15000 }).click();
+                cy.get("#volunteer-assign-modal", { timeout: 10000 }).should("be.visible");
+                cy.get("#assign-accepted").should("not.be.checked");
+                cy.get("#assign-person-select option", { timeout: 10000 }).should("have.length.greaterThan", 1);
+                cy.get("#assign-person-select").select(String(POOL_MEMBER), { force: true });
+                cy.get("#assign-accepted").check();
+                cy.get("#assign-save").click();
+
+                cy.get(
+                    `.volunteer-requirement[data-position-id="${posDoor}"] .volunteer-assignment-row[data-status="accepted"]`,
+                    { timeout: 15000 },
+                ).should("contain.text", "Herminia");
+            });
         });
 
         describe("Refusals", () => {
