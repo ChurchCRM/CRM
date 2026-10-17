@@ -14,7 +14,7 @@ describe("Settings Panel — load and Save", () => {
     beforeEach(() => cy.setupAdminSession());
 
     const openSettings = () => {
-        cy.contains("Email Settings").click();
+        cy.contains("button", "Email Settings").click();
         cy.get("#emailSettings", { timeout: 10000 }).should("have.class", "show").and("not.have.class", "collapsing");
         cy.get("#emailSettings .settings-panel-fields", { timeout: 10000 }).should("not.be.disabled");
     };
@@ -28,8 +28,8 @@ describe("Settings Panel — load and Save", () => {
         );
         cy.intercept("POST", "**/admin/api/system/config/*").as("saveConfig");
 
-        cy.visit("v2/email/dashboard");
-        cy.contains("Email Settings").click();
+        cy.visit("admin/email");
+        cy.contains("button", "Email Settings").click();
         cy.get("#emailSettings", { timeout: 10000 }).should("have.class", "show").and("not.have.class", "collapsing");
         cy.wrap(held).should("have.length", 1);
 
@@ -52,8 +52,8 @@ describe("Settings Panel — load and Save", () => {
             body: { message: "simulated failure" },
         });
 
-        cy.visit("v2/email/dashboard");
-        cy.contains("Email Settings").click();
+        cy.visit("admin/email");
+        cy.contains("button", "Email Settings").click();
         cy.get("#emailSettings .settings-panel-load-error", { timeout: 10000 })
             .should("be.visible")
             .and("contain.text", "Could not load the current settings");
@@ -64,7 +64,7 @@ describe("Settings Panel — load and Save", () => {
     it("Email Settings: Save re-enables the button after a successful save", () => {
         cy.intercept("POST", "**/admin/api/system/config/*").as("saveConfig");
 
-        cy.visit("v2/email/dashboard");
+        cy.visit("admin/email");
         openSettings();
 
         cy.get("#emailSettings .settings-panel-save").click();
@@ -90,7 +90,7 @@ describe("Settings Panel — load and Save", () => {
             body: { message: "simulated failure" },
         }).as("saveConfigFail");
 
-        cy.visit("v2/email/dashboard");
+        cy.visit("admin/email");
         openSettings();
 
         cy.get("#emailSettings .settings-panel-save").click();

@@ -16,32 +16,32 @@ describe("Communication Menu and Dashboards", () => {
         cy.get("#sidebar-menu").contains("Text").should("be.visible");
     });
 
-    describe("Email Dashboard", () => {
-        it("loads email dashboard", () => {
-            cy.visit("v2/email/dashboard");
-            cy.contains("Email Dashboard");
-        });
-
-        it("shows integration status cards", () => {
-            cy.visit("v2/email/dashboard");
-            cy.contains("Email Integrations");
-            // SMTP status card
-            cy.contains("SMTP");
-            // Mailchimp status card
-            cy.contains("Mailchimp");
-        });
-
-        it("shows email tools", () => {
-            cy.visit("v2/email/dashboard");
+    describe("Email page", () => {
+        it("loads the email tools", () => {
+            cy.visit("people/email");
+            cy.contains("h2", "Email");
             cy.contains("Email Tools");
             cy.contains("Duplicates");
             cy.contains("People Without Emails");
         });
 
+        it("links an administrator to Email Settings", () => {
+            cy.visit("people/email");
+            cy.contains("a", "Email Settings").should("have.attr", "href").and("include", "/admin/email");
+        });
+    });
+
+    describe("Email Settings", () => {
+        it("shows integration status cards", () => {
+            cy.visit("admin/email");
+            cy.contains("Email Integrations");
+            cy.contains("SMTP");
+            cy.contains("Mailchimp");
+        });
+
         it("admin can open settings panel", () => {
-            cy.visit("v2/email/dashboard");
-            cy.contains("Email Settings").click();
-            // Settings panel should appear with SMTP fields
+            cy.visit("admin/email");
+            cy.contains("button", "Email Settings").click();
             cy.get("#emailSettings").should("be.visible");
             cy.get("#emailSettings").within(() => {
                 cy.contains("Enable Email");
@@ -50,34 +50,32 @@ describe("Communication Menu and Dashboards", () => {
         });
 
         it("settings panel has Do Not Email property dropdown", () => {
-            cy.visit("v2/email/dashboard");
-            cy.contains("Email Settings").click();
+            cy.visit("admin/email");
+            cy.contains("button", "Email Settings").click();
             cy.get("#emailSettings", { timeout: 10000 }).should("be.visible");
-            // The ajax-type dropdown for Do Not Email property
             cy.get("#emailSettings").contains("Do Not Email Property");
         });
     });
 
-    describe("Text Dashboard", () => {
-        it("loads text dashboard", () => {
-            cy.visit("v2/text/dashboard");
-            cy.contains("Text Dashboard");
+    describe("Text page", () => {
+        it("loads the text page", () => {
+            cy.visit("people/text");
+            cy.contains("h2", "Text");
         });
 
         it("shows Vonage integration status", () => {
-            cy.visit("v2/text/dashboard");
+            cy.visit("people/text");
             cy.contains("SMS Integration");
-            // Either configured or not configured status
             cy.get(".alert").should("exist");
         });
 
         it("shows text tools info", () => {
-            cy.visit("v2/text/dashboard");
+            cy.visit("people/text");
             cy.contains("Text Tools");
         });
 
         it("admin can open settings panel", () => {
-            cy.visit("v2/text/dashboard");
+            cy.visit("people/text");
             cy.contains("Text Settings").click();
             cy.get("#textSettings").should("be.visible");
             cy.get("#textSettings").contains("Do Not SMS Property");

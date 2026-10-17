@@ -1,5 +1,5 @@
 /**
- * "Delete Queue" on the Email Dashboard's Recent Sends (administrators, #10356).
+ * "Delete Queue" on Email Settings Recent Sends (administrators, #10356).
  *
  * Deletes every queued composer message through DELETE /admin/api/email/queue after a
  * confirmation that names the count, then reloads so Recent Sends shows what is left.

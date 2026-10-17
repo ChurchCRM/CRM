@@ -229,8 +229,8 @@ class Menu
     private static function getCommunicationMenu(bool $isEmailEnabled): MenuItem
     {
         $commMenu = new MenuItem(gettext('Communication'), '', $isEmailEnabled, 'fa-comments');
-        $commMenu->addSubMenu(new MenuItem(gettext('Email'), 'v2/email/dashboard', $isEmailEnabled, 'fa-envelope'));
-        $commMenu->addSubMenu(new MenuItem(gettext('Text'), 'v2/text/dashboard', $isEmailEnabled, 'fa-comment-sms'));
+        $commMenu->addSubMenu(new MenuItem(gettext('Email'), 'people/email', $isEmailEnabled, 'fa-envelope'));
+        $commMenu->addSubMenu(new MenuItem(gettext('Text'), 'people/text', $isEmailEnabled, 'fa-comment-sms'));
 
         return $commMenu;
     }
@@ -546,6 +546,7 @@ class Menu
         $menu->addSubMenu(new MenuItem(gettext('Localization & Formats'), 'admin/system/localization', $isAdmin, 'fa-globe'));
         $menu->addSubMenu(new MenuItem(gettext('Get Started'), 'admin/get-started', $isAdmin, 'fa-rocket'));
         $menu->addSubMenu(new MenuItem(gettext('System Users'), 'admin/system/users', $isAdmin, 'fa-user-gear'));
+        $menu->addSubMenu(new MenuItem(gettext('Email Settings'), 'admin/email', $isAdmin, 'fa-envelope'));
         $menu->addSubMenu(new MenuItem(gettext('Member Portal'), 'admin/member-portal', $isAdmin, 'fa-house-user'));
         $menu->addSubMenu(new MenuItem(gettext('Ministry Settings'), 'admin/ministry-settings', $isAdmin, 'fa-handshake-angle'));
         $menu->addSubMenu(new MenuItem(gettext('System Settings'), 'SystemSettings.php', $isAdmin, 'fa-gear'));

@@ -326,7 +326,7 @@ interface CRMNamespace {
     vonageEnabled?: boolean;
     /** Church default "to" address (sToEmailAddress); "" when unset or user lacks email permission. */
     defaultEmailToAddress?: string;
-    /** Recent Sends on the Email Dashboard (administrators); "" for everyone else. */
+    /** Recent Sends on Email Settings (administrators); "" for everyone else. */
     emailHistoryURL?: string;
     [key: string]: unknown;
   };

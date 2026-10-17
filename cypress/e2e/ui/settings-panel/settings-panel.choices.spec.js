@@ -13,8 +13,8 @@ describe("Settings Panel — Choice Dropdowns", () => {
 
     describe("Email Dashboard — SMTP Encryption", () => {
         it("encryption dropdown has None, TLS, and SSL options", () => {
-            cy.visit("v2/email/dashboard");
-            cy.contains("Email Settings").click();
+            cy.visit("admin/email");
+            cy.contains("button", "Email Settings").click();
             cy.get("#emailSettings", { timeout: 10000 }).should("be.visible");
 
             cy.get("#emailSettings").within(() => {

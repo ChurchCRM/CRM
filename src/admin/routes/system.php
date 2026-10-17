@@ -256,20 +256,20 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
     // Email Debug page — sends a test message to the church's own email
     // address so an admin can confirm the SMTP settings work end-to-end.
     $group->get('/debug/email', function (Request $request, Response $response): Response {
-        $renderer = new PhpRenderer(__DIR__ . '/../../v2/templates/email/');
+        $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
         $configError = null;
         $configErrorFixUrl = null; // page where the setting actually lives
         $churchEmail = ChurchMetaData::getChurchEmail();
         if (!SystemConfig::getBooleanValue('bEnabledEmail')) {
-            $configError = gettext('Email is disabled. Enable it in the Email Dashboard settings before testing.');
-            $configErrorFixUrl = SystemURLs::getRootPath() . '/v2/email/dashboard?settings=open';
+            $configError = gettext('Email is disabled. Enable it in Email Settings before testing.');
+            $configErrorFixUrl = SystemURLs::getRootPath() . '/admin/email?settings=open';
         } elseif (empty(SystemConfig::getValue('sSMTPHost'))) {
             $configError = gettext('SMTP Host is not configured.');
-            $configErrorFixUrl = SystemURLs::getRootPath() . '/v2/email/dashboard?settings=open';
+            $configErrorFixUrl = SystemURLs::getRootPath() . '/admin/email?settings=open';
         } elseif (empty($churchEmail)) {
             // Church email is configured on the Church Information page, not
-            // the Email Dashboard — point the admin at the right page.
+            // Church Information, where the church email is set.
             $configError = gettext('Church Email address is not set — the test email has nowhere to go.');
             $configErrorFixUrl = SystemURLs::getRootPath() . '/admin/system/church-info';
         }
@@ -326,7 +326,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             'sPageSubtitle' => gettext('Send a test message to verify your SMTP configuration'),
             'aBreadcrumbs' => PageHeader::breadcrumbs([
                 [gettext('Admin'), '/admin/'],
-                [gettext('Email Dashboard'), '/v2/email/dashboard'],
+                [gettext('Email Settings'), '/admin/email'],
                 [gettext('Debug')],
             ]),
             'configError'  => $configError,
@@ -336,10 +336,10 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             // ?settings=open matches the dashboard tile behavior — opens the
             // settings panel so the admin lands directly on the fields they
             // need to edit, not the dashboard landing view.
-            'emailDashboardUrl' => SystemURLs::getRootPath() . '/v2/email/dashboard?settings=open',
+            'emailDashboardUrl' => SystemURLs::getRootPath() . '/admin/email?settings=open',
         ];
 
-        return $renderer->render($response, 'debug.php', $pageArgs);
+        return $renderer->render($response, 'email-debug.php', $pageArgs);
     });
 
     // Orphaned Files Management page
