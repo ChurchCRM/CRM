@@ -110,9 +110,9 @@ describe("Email history on the email dashboard", () => {
     });
 
     it("admin email dashboard shows recent sends with a failed count", () => {
-        cy.visit("/v2/email/dashboard");
-        cy.get("#email-recent-sends").should("be.visible").and("contain.text", "failed");
-        cy.get("#email-recent-sends [data-email-history-table] tbody tr").should("have.length.at.least", 7);
+        cy.visit("/admin/email/log");
+        cy.get("[data-email-history-table]").should("be.visible").and("contain.text", "failed");
+        cy.get("[data-email-history-table] tbody tr").should("have.length.at.least", 7);
     });
 
     it("Delete Queue deletes the queued messages after a confirmation that names the count", () => {
@@ -123,8 +123,8 @@ describe("Email history on the email dashboard", () => {
             .its("body.counts.queued")
             .should("eq", 1);
 
-        cy.visit("/v2/email/dashboard");
-        cy.contains("#email-recent-sends tr", subject).should("have.attr", "data-email-status", "queued");
+        cy.visit("/admin/email/log");
+        cy.contains("[data-email-history-table] tr", subject).should("have.attr", "data-email-status", "queued");
         cy.get("#email-delete-queue")
             .should("be.visible")
             .invoke("attr", "data-queued-count")
@@ -140,13 +140,13 @@ describe("Email history on the email dashboard", () => {
 
         cy.get("#email-delete-queue").should("not.exist");
         cy.get("#email-queued-count").should("not.exist");
-        cy.get("#email-recent-sends").should("not.contain.text", subject);
+        cy.get("[data-email-history-table]").should("not.contain.text", subject);
     });
 
     it("hides Delete Queue when nothing is queued", () => {
         cy.request("DELETE", "/admin/api/email/queue");
-        cy.visit("/v2/email/dashboard");
-        cy.get("#email-recent-sends").should("be.visible");
+        cy.visit("/admin/email/log");
+        cy.get("[data-email-history-table]").should("be.visible");
         cy.get("#email-delete-queue").should("not.exist");
     });
 });
@@ -159,8 +159,8 @@ describe("Delete Queue is for administrators", () => {
             .should("eq", 1);
 
         cy.setupStandardSession();
-        cy.visit("/v2/email/dashboard");
-        cy.get("#email-recent-sends").should("not.exist");
+        cy.visit("/people/email");
+        cy.contains("Recent Sends").should("not.exist");
         cy.get("#email-delete-queue").should("not.exist");
 
         cy.setupAdminSession();

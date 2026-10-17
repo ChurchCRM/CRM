@@ -5,7 +5,7 @@ namespace ChurchCRM\Emails;
 use ChurchCRM\dto\ChurchMetaData;
 
 /**
- * Diagnostic email fired from /admin/system/debug/email to verify SMTP
+ * Diagnostic email fired from /admin/email/debug to verify SMTP
  * settings end-to-end. Uses the shared BaseEmail.html.twig chrome so the
  * test message looks identical to every other transactional email — same
  * church logo, same header, same footer — rather than being an orphan

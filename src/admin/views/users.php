@@ -29,7 +29,7 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
             <strong><?= gettext('Email is disabled') ?></strong>
             <div class="text-secondary"><?= gettext('Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically.') ?></div>
         </div>
-        <a href="<?= SystemURLs::getRootPath() ?>/v2/email/dashboard?settings=open" class="btn btn-warning ms-3">
+        <a href="<?= SystemURLs::getRootPath() ?>/admin/email" class="btn btn-warning ms-3">
             <i class="fa-solid fa-envelope me-1"></i><?= gettext('Set up Email') ?>
         </a>
     </div>
