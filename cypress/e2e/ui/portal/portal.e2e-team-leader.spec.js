@@ -5,7 +5,7 @@
  * end-to-end run.
  *
  * Epic #8977, issue #9869, design `.agents/skills/churchcrm/member-portal-design.md`
- * §5.5 and P17; `volunteer-v2-design.md` §4.4, §4.6 and the D14 revision.
+ * §5.5 and P17; `docs/design/volunteer-v2.md` §4.4, §4.6 and the D14 revision.
  *
  * `member.portal-teams.spec.js` (MP7) proves each control on the team page works. This
  * run proves the **claim the epic makes about people**: that a church can hand the

@@ -3,7 +3,7 @@
 /**
  * Volunteer v2 — the notification outbox and its drain (#9710, epic #9701).
  *
- * Normative sections of `.agents/skills/churchcrm/volunteer-v2-design.md`:
+ * Normative sections of `docs/design/volunteer-v2.md`:
  * §2.14 (the outbox columns, the dedupe keys, the amended retry rule and what
  * `skipped` means), §3.4 (`VolunteerNotificationService`), §3.6 (the trigger
  * table, Reply-To resolution and the four-step drain), Appendix B

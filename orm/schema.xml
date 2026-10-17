@@ -1035,7 +1035,7 @@
          qualification, schedule, occurrence, staffing requirement,
          assignment, response, swap, notification outbox and scope.
 
-         Conventions (design .agents/skills/churchcrm/volunteer-v2-design.md
+         Conventions (design docs/design/volunteer-v2.md
          §2.0): InnoDB, utf8mb4 in SQL, `<prefix>_ID` primary keys named
          phpName="Id", enums as CHAR + sqlType, BOOLEAN as tinyint(1)
          unsigned, index names `_idx` / `_uidx`, and foreign-key column types
