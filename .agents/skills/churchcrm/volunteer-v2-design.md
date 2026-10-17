@@ -3343,6 +3343,11 @@ Both V1 volunteer tables (`person2volunteeropp_p2vo`, `volunteeropportunity_vol`
 there is no V2 fixture data either. **V2 specs create everything they need through the API and clean
 up after themselves.**
 
+V2 sample data lives in the demo import instead (#10354): `src/admin/demo/volunteers.json` builds
+Worship, Hospitality and Children's Ministry through the services, with the events option, and
+records every message it would queue as `skipped` (`README-events.md`).
+`cypress/e2e/new-system/02-demo-import.spec.js` covers it.
+
 Reusable seed objects (verified in `seed.sql`):
 
 | Object | Id | Use |
