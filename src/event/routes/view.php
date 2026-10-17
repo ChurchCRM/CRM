@@ -7,7 +7,14 @@ use ChurchCRM\model\ChurchCRM\EventAttendQuery;
 use ChurchCRM\model\ChurchCRM\EventCountsQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\Service\EventAttendanceRosterService;
+use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerOccurrenceQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerScheduleQuery;
+use ChurchCRM\Volunteer\Service\VolunteerAssignmentService;
 use ChurchCRM\Utils\LoggerUtils;
+use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -25,40 +32,9 @@ $app->get('/view/{id}', function (Request $request, Response $response, array $a
     }
 
     // Build attendance roster
-    $attendees = [];
-    $eventAttendees = EventAttendQuery::create()
-        ->filterByEventId($eventId)
-        ->find();
-
-    foreach ($eventAttendees as $att) {
-        $person = PersonQuery::create()->findOneById($att->getPersonId());
-        if ($person === null) {
-            continue;
-        }
-
-        $checkinByName = '';
-        if ($att->getCheckinId()) {
-            $checkinBy = PersonQuery::create()->findOneById($att->getCheckinId());
-            $checkinByName = $checkinBy ? $checkinBy->getFullName() : '';
-        }
-
-        $checkoutByName = '';
-        if ($att->getCheckoutId()) {
-            $checkoutBy = PersonQuery::create()->findOneById($att->getCheckoutId());
-            $checkoutByName = $checkoutBy ? $checkoutBy->getFullName() : '';
-        }
-
-        $attendees[] = [
-            'personId'     => $att->getPersonId(),
-            'fullName'     => $person->getFullName(),
-            'familyId'     => $person->getFamId(),
-            'checkinDate'  => $att->getCheckinDate() ? date_format($att->getCheckinDate(), SystemConfig::getValue('sDateTimeFormat')) : null,
-            'checkinBy'    => $checkinByName,
-            'checkoutDate' => $att->getCheckoutDate() ? date_format($att->getCheckoutDate(), SystemConfig::getValue('sDateTimeFormat')) : null,
-            'checkoutBy'   => $checkoutByName,
-            'isCheckedOut' => $att->getCheckoutDate() !== null,
-        ];
-    }
+    $attendees = EventAttendanceRosterService::build(
+        EventAttendQuery::create()->filterByEventId($eventId)->find()
+    );
 
     // Attendance counts
     $eventCounts = EventCountsQuery::create()
@@ -111,6 +87,60 @@ $app->get('/view/{id}', function (Request $request, Response $response, array $a
         usort($nonAttendees, fn ($a, $b) => strcmp($a['fullName'], $b['fullName']));
     }
 
+    // Volunteer v2 staffing for this event (#9713, design §3.5).
+    //
+    // Gated twice: on the rollout flag, and on scope — `getEventStaffingSummary()` returns
+    // nothing at all unless the caller may manage at least one occurrence linked to this
+    // event, so a volunteer, a plain member or an events administrator with no ministry
+    // scope simply never sees the card. Read-only; the edit affordance is the link to
+    // /ministries/occurrences/{id}.
+    $volunteerOccurrences = [];
+    if (User::isVolunteerV2Enabled()) {
+        $assignments = new VolunteerAssignmentService();
+        $summary = $assignments->getEventStaffingSummary([$eventId], AuthenticationManager::getCurrentUser());
+        $occurrenceIds = $summary[$eventId]['occurrenceIds'] ?? [];
+
+        if ($occurrenceIds !== []) {
+            // One getGaps() call for every occurrence at once — §2.11.3's single gap
+            // implementation, never re-derived here.
+            $gaps = $assignments->getGaps($occurrenceIds);
+
+            $occurrences = VolunteerOccurrenceQuery::create()
+                ->filterById($occurrenceIds, Criteria::IN)
+                ->orderByOccurrenceDate()
+                ->find();
+
+            // A handful of rows at most — an event carries one occurrence per ministry
+            // scheduling it (UC3), not one per volunteer.
+            foreach ($occurrences as $occurrence) {
+                $schedule = VolunteerScheduleQuery::create()->findPk((int) $occurrence->getScheduleId());
+                $ministry = $schedule === null
+                    ? null
+                    : VolunteerMinistryQuery::create()->findPk((int) $schedule->getMinistryId());
+                $summaryRow = $gaps[(int) $occurrence->getId()] ?? [];
+
+                $volunteerOccurrences[] = [
+                    'occurrenceId'  => (int) $occurrence->getId(),
+                    'ministryName'  => $ministry === null ? gettext('Volunteer') : $ministry->getName(),
+                    'scheduleName'  => $schedule === null ? '' : $schedule->getName(),
+                    // The rollup the shared staffing formatter words (D34).
+                    'staffing'      => [
+                        'requiredCount' => (int) ($summaryRow['requiredCount'] ?? 0),
+                        'capacity'      => (int) ($summaryRow['capacity'] ?? 0),
+                        'liveCount'     => (int) ($summaryRow['liveCount'] ?? 0),
+                        'gapCount'      => (int) ($summaryRow['gapCount'] ?? 0),
+                        'openCount'     => (int) ($summaryRow['openCount'] ?? 0),
+                        'pendingCount'  => (int) ($summaryRow['pendingCount'] ?? 0),
+                    ],
+                    // How many positions the plan names at all. Zero means nobody has
+                    // said what this occurrence needs, which must never render as
+                    // "Fully staffed" (§2.10).
+                    'requirementCount' => (int) ($summaryRow['requirementCount'] ?? 0),
+                ];
+            }
+        }
+    }
+
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
     return $renderer->render($response, 'view.php', [
@@ -129,5 +159,6 @@ $app->get('/view/{id}', function (Request $request, Response $response, array $a
         'eventEnded'     => $eventEnded,
         'nonAttendees'   => $nonAttendees,
         'emailEnabled'   => SystemConfig::isEmailEnabled(),
+        'volunteerOccurrences' => $volunteerOccurrences,
     ]);
 });

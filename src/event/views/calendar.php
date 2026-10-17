@@ -42,7 +42,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 </div>
 
 <!-- Calendar Sidebar Offcanvas -->
-<div class="offcanvas offcanvas-end" tabindex="-1" id="calendarSidebar" aria-labelledby="calendarSidebarLabel" style="width: 320px;">
+<div class="offcanvas offcanvas-end calendar-sidebar" tabindex="-1" id="calendarSidebar" aria-labelledby="calendarSidebarLabel">
     <div class="offcanvas-header border-bottom">
         <h5 class="offcanvas-title" id="calendarSidebarLabel">
             <i class="fa-solid fa-layer-group me-2 text-body-secondary"></i><?= _('Calendars') ?>
@@ -50,11 +50,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="<?= _('Close') ?>"></button>
     </div>
     <div class="offcanvas-body p-0">
-        <!-- User Calendars -->
+        <!-- Church Calendars. Named "My Calendars" until #9866: the table has no
+             owner column, so every calendar here is one the whole church sees. -->
         <div class="px-3 pt-3 pb-1">
             <div class="d-flex align-items-center justify-content-between">
-                <span class="text-uppercase text-body-secondary small fw-bold" style="letter-spacing:.05em;">
-                    <i class="fa-solid fa-user me-1"></i><?= _('My Calendars') ?>
+                <span class="text-uppercase text-body-secondary small fw-bold letter-spacing-wide">
+                    <i class="fa-solid fa-church me-1"></i><?= _('Church Calendars') ?>
                 </span>
             </div>
         </div>
@@ -65,11 +66,24 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </button>
         </div>
 
+        <!-- Ministry Calendars: calendars that belong to a volunteer ministry
+             (calendars.ministry_id). Hidden entirely when there are none, which
+             is every installation until the Volunteer v2 epic creates them. -->
+        <div class="d-none" id="calendarMinistrySection">
+            <hr class="my-0">
+            <div class="px-3 pt-3 pb-1">
+                <span class="text-uppercase text-body-secondary small fw-bold letter-spacing-wide">
+                    <i class="fa-solid fa-handshake-angle me-1"></i><?= _('Ministry Calendars') ?>
+                </span>
+            </div>
+            <div class="list-group list-group-flush" id="calendarMinistryList"></div>
+        </div>
+
         <hr class="my-0">
 
         <!-- System Calendars -->
         <div class="px-3 pt-3 pb-1">
-            <span class="text-uppercase text-body-secondary small fw-bold" style="letter-spacing:.05em;">
+            <span class="text-uppercase text-body-secondary small fw-bold letter-spacing-wide">
                 <i class="fa-solid fa-cog me-1"></i><?= _('System Calendars') ?>
             </span>
         </div>

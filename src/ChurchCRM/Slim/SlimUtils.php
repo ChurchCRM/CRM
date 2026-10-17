@@ -451,7 +451,7 @@ class SlimUtils
                     $extraHtml = '<div class="mb-4"><details class="card card-outline border-secondary">'
                         . '<summary class="card-header cursor-pointer d-flex justify-content-between align-items-center">'
                         . '<span><i class="fa-solid fa-code"></i> ' . gettext('Technical Details') . ' (Development Mode)</span>'
-                        . '<button type="button" class="btn btn-sm btn-outline-secondary copy-error-btn" style="border: none; padding: 0.25rem 0.5rem;" title="' . gettext('Copy error message') . '">'
+                        . '<button type="button" class="btn btn-sm btn-outline-secondary copy-error-btn border-0 px-2 py-1" title="' . gettext('Copy error message') . '">'
                         . '<i class="fa-solid fa-copy"></i></button></summary>'
                         . '<div class="card-body"><pre class="mb-0"><code id="errorMessage">' . $escaped . '</code></pre></div>'
                         . '</details></div>'

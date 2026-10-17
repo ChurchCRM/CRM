@@ -9,6 +9,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 $reportUrl = $sRootPath . '/people/reports/' . InputUtils::escapeAttribute($slug);
 $canEdit = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled();
+$canDelete = AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled();
+$canPrintLabels = AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled();
 $cart = $_SESSION['aPeopleCart'] ?? [];
 $missingLabels = array_map(static fn (string $key): string => $report['params'][$key]['label'], $missing);
 ?>
@@ -47,10 +49,8 @@ $missingLabels = array_map(static fn (string $key): string => $report['params'][
                         <?php endforeach; ?>
                     </select>
                     <?php endif; ?>
-                    <?php if ($param['type'] === 'classification') : ?>
-                    <div class="form-hint"><?= gettext('Leave empty for all classifications.') ?></div>
-                    <?php elseif (!empty($param['help'])) : ?>
-                    <div class="form-hint"><?= InputUtils::escapeHTML($param['help']) ?></div>
+                    <?php if (!empty($param['help'])) : ?>
+                    <div class="form-text"><?= InputUtils::escapeHTML($param['help']) ?></div>
                     <?php endif; ?>
                 </div>
                 <?php endforeach; ?>
@@ -80,12 +80,17 @@ $missingLabels = array_map(static fn (string $key): string => $report['params'][
             <button type="button" id="addAllToCart" class="btn btn-sm btn-outline-primary"<?= $rows === [] ? ' disabled' : '' ?>>
                 <i class="fa-solid fa-cart-plus me-1"></i><?= gettext('Add All to Cart') ?>
             </button>
+            <?php if ($canPrintLabels) : ?>
+            <button type="button" id="printLabels" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#labelsModal"<?= $rows === [] ? ' disabled' : '' ?>>
+                <i class="fa-solid fa-tags me-1"></i><?= gettext('Print Labels') ?>
+            </button>
+            <?php endif; ?>
             <a id="downloadCsv" class="btn btn-sm btn-outline-secondary" href="<?= $reportUrl ?>/csv<?= $csvQuery !== '' ? '?' . InputUtils::escapeAttribute($csvQuery) : '' ?>">
                 <i class="fa-solid fa-file-csv me-1"></i><?= gettext('Download CSV') ?>
             </a>
         </div>
     </div>
-    <div style="overflow-x: clip; overflow-y: visible;">
+    <div class="table-clip-x">
         <table id="reportResults" class="table table-vcenter table-hover card-table">
             <thead>
                 <tr>
@@ -142,12 +147,14 @@ $missingLabels = array_map(static fn (string $key): string => $report['params'][
                                     <i class="<?= $inCart ? 'fa-solid fa-box-open' : 'fa-solid fa-cart-shopping' ?> me-2"></i>
                                     <span class="cart-label"><?= $inCart ? gettext('Remove from Cart') : gettext('Add to Cart') ?></span>
                                 </button>
+                                <?php if ($canDelete) : ?>
                                 <div class="dropdown-divider"></div>
                                 <button type="button" class="dropdown-item text-danger delete-person"
                                         data-person_id="<?= $personId ?>"
                                         data-person_name="<?= InputUtils::escapeAttribute($row['Name']) ?>"<?= PersonDeleteGuard::attributes((int) $personId) ?>>
                                     <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
                                 </button>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </td>
@@ -157,6 +164,14 @@ $missingLabels = array_map(static fn (string $key): string => $report['params'][
         </table>
     </div>
 </div>
+<?php
+if ($canPrintLabels) {
+    $labelsIntro = gettext('Mailing labels for the people in this report. A person with no address of their own is addressed at their family address.');
+    $labelsHiddenFields = ['report' => $slug] + $reportParams;
+    $labelsGrouping = $report['labelGrouping'] ?? null;
+    require __DIR__ . '/partials/labels-modal.php';
+}
+?>
 <?php endif; ?>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
@@ -165,6 +180,7 @@ $missingLabels = array_map(static fn (string $key): string => $report['params'][
             new window.TomSelect(select, {
                 plugins: ['remove_button'],
                 hideSelected: true,
+                hidePlaceholder: true,
                 placeholder: select.dataset.placeholder
             });
         });

@@ -1,15 +1,23 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Dashboard\EventsMenuItems;
 use ChurchCRM\dto\FullCalendarEvent;
 use ChurchCRM\dto\SystemCalendars;
 use ChurchCRM\model\ChurchCRM\Calendar;
 use ChurchCRM\model\ChurchCRM\CalendarQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
+use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\Volunteer\Middleware\VolunteerV2EnabledMiddleware;
+use ChurchCRM\Volunteer\Service\VolunteerAssignmentService;
+use ChurchCRM\Volunteer\Service\VolunteerCalendarService;
+use ChurchCRM\Volunteer\VolunteerException;
 use ChurchCRM\Slim\Middleware\Api\CalendarMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Auth\CalendarWriteRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
 use Propel\Runtime\Collection\ObjectCollection;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -26,12 +34,19 @@ $app->group('/calendars', function (RouteCollectorProxy $group): void {
     $group->post('', 'NewCalendar')->add(new InputSanitizationMiddleware(['Name' => 'text']))->add(AddEventsRoleAuthMiddleware::class);
     $group->get('/', 'getUserCalendars');
     $group->post('/', 'NewCalendar')->add(new InputSanitizationMiddleware(['Name' => 'text']))->add(AddEventsRoleAuthMiddleware::class);
+    $group->get('/pinnable', 'getPinnableCalendars');
     $group->get('/{id}', 'getUserCalendars');
     $group->delete('/{id}', 'deleteUserCalendar')->add(CalendarMiddleware::class)->add(AddEventsRoleAuthMiddleware::class);
     $group->get('/{id}/events', 'getUserCalendarEvents')->add(CalendarMiddleware::class);
     $group->get('/{id}/fullcalendar', 'getUserCalendarFullCalendarEvents')->add(CalendarMiddleware::class);
-    $group->post('/{id}/NewAccessToken', 'NewAccessToken')->add(CalendarMiddleware::class)->add(AddEventsRoleAuthMiddleware::class);
-    $group->delete('/{id}/AccessToken', 'DeleteAccessToken')->add(CalendarMiddleware::class)->add(AddEventsRoleAuthMiddleware::class);
+    // Administering ONE existing calendar is a per-row question once a ministry can own a
+    // calendar (§5.3), so these two use CalendarWriteRoleAuthMiddleware rather than the
+    // global Add Events gate. It is listed FIRST so Slim runs it LAST — after
+    // CalendarMiddleware has put the row it needs on the request.
+    $group->post('/{id}/NewAccessToken', 'NewAccessToken')->add(CalendarWriteRoleAuthMiddleware::class)->add(CalendarMiddleware::class);
+    $group->delete('/{id}/AccessToken', 'DeleteAccessToken')->add(CalendarWriteRoleAuthMiddleware::class)->add(CalendarMiddleware::class);
+    $group->get('/{id}/ministries', 'getCalendarMinistryGrants')->add(CalendarMiddleware::class)->add(AddEventsRoleAuthMiddleware::class)->add(new VolunteerV2EnabledMiddleware());
+    $group->put('/{id}/ministries', 'putCalendarMinistryGrants')->add(CalendarMiddleware::class)->add(AddEventsRoleAuthMiddleware::class)->add(new VolunteerV2EnabledMiddleware());
 });
 
 $app->group('/systemcalendars', function (RouteCollectorProxy $group): void {
@@ -258,9 +273,29 @@ function getUserCalendarEvents(Request $request, Response $response, array $args
 
 function EventsObjectCollectionToFullCalendar(ObjectCollection $events, Calendar $calendar): array
 {
+    // Volunteer v2 staffing for the whole feed in ONE call (#9713, design §3.5). Resolving
+    // it per event would turn a month of calendar into one query per row, and the scoping
+    // — which events' staffing this caller may see at all — belongs in one place.
+    $eventIds = [];
+    foreach ($events as $event) {
+        $eventIds[] = (int) $event->getId();
+    }
+
+    $staffing = [];
+    if (User::isVolunteerV2Enabled() && AuthenticationManager::isUserAuthenticated()) {
+        $staffing = (new VolunteerAssignmentService())->getEventStaffingSummary(
+            $eventIds,
+            AuthenticationManager::getCurrentUser()
+        );
+    }
+
     $formattedEvents = [];
     foreach ($events as $event) {
-        $fce = FullCalendarEvent::createFromEvent($event, $calendar);
+        $fce = FullCalendarEvent::createFromEvent(
+            $event,
+            $calendar,
+            $staffing[(int) $event->getId()] ?? null
+        );
         $formattedEvents[] = $fce;
     }
 
@@ -311,6 +346,125 @@ function DeleteAccessToken(Request $request, Response $response, array $args): R
     $Calendar->save();
 
     return SlimUtils::renderJSON($response, $Calendar->toArray());
+}
+
+/**
+ * @OA\Get(
+ *     path="/calendars/pinnable",
+ *     operationId="getPinnableCalendars",
+ *     summary="Calendars the caller may pin an event of a ministry to",
+ *     description="Volunteer v2 (D25). With the global AddEvent right, every calendar. Without it, the ministry's own calendar and the church calendars an administrator opened to that ministry, when the caller manages the ministry; otherwise none. The event editor offers exactly these.",
+ *     tags={"Calendar"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="ministryId", in="query", required=false, description="The event's volunteer ministry; omit it for an event with none", @OA\Schema(type="integer", example=3)),
+ *     @OA\Response(response=200, description="The calendar ids",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="ministryId", type="integer", nullable=true, example=3),
+ *             @OA\Property(property="calendarIds", type="array", @OA\Items(type="integer"), example={7,12})
+ *         )
+ *     ),
+ *     @OA\Response(response=401, description="Unauthorized")
+ * )
+ */
+function getPinnableCalendars(Request $request, Response $response, array $args): Response
+{
+    $ministryId = InputUtils::filterInt($request->getQueryParams()['ministryId'] ?? null);
+    $ministryId = $ministryId > 0 ? $ministryId : null;
+
+    return SlimUtils::renderJSON($response, [
+        'ministryId' => $ministryId,
+        'calendarIds' => (new VolunteerCalendarService())->pinnableCalendarIds(
+            AuthenticationManager::getCurrentUser(),
+            $ministryId
+        ),
+    ]);
+}
+
+/**
+ * @OA\Get(
+ *     path="/calendars/{id}/ministries",
+ *     operationId="getCalendarMinistryGrants",
+ *     summary="The volunteer ministries a church calendar is opened to",
+ *     description="Volunteer v2 (D25). A coordinator of one of these ministries may pin that ministry's events to the calendar without the AddEvent right.",
+ *     tags={"Calendar"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Response(response=200, description="The grants",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="calendarId", type="integer", example=7),
+ *             @OA\Property(property="ministries", type="array", @OA\Items(type="object",
+ *                 @OA\Property(property="id", type="integer", example=3),
+ *                 @OA\Property(property="name", type="string", example="Children's Ministry"),
+ *                 @OA\Property(property="active", type="boolean", example=true)
+ *             ))
+ *         )
+ *     ),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="AddEvents role required, or Volunteer Management V2 is not enabled"),
+ *     @OA\Response(response=404, description="Calendar not found")
+ * )
+ */
+function getCalendarMinistryGrants(Request $request, Response $response, array $args): Response
+{
+    $calendar = $request->getAttribute('calendar');
+
+    return SlimUtils::renderJSON($response, [
+        'calendarId' => (int) $calendar->getId(),
+        'ministries' => (new VolunteerCalendarService())->getGrantedMinistries($calendar),
+    ]);
+}
+
+/**
+ * @OA\Put(
+ *     path="/calendars/{id}/ministries",
+ *     operationId="putCalendarMinistryGrants",
+ *     summary="Open a church calendar to exactly these volunteer ministries",
+ *     description="Volunteer v2 (D25). Replaces the calendar's grants; an empty list closes it to every ministry. Managing the calendar itself (name, colours, public link) is unaffected.",
+ *     tags={"Calendar"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\RequestBody(required=true, @OA\JsonContent(
+ *         required={"ministryIds"},
+ *         @OA\Property(property="ministryIds", type="array", @OA\Items(type="integer"), example={3,5})
+ *     )),
+ *     @OA\Response(response=200, description="The grants now in force, shaped like GET /calendars/{id}/ministries"),
+ *     @OA\Response(response=400, description="ministryIds missing or not a list of ids, or an unknown ministry"),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="AddEvents role required, or Volunteer Management V2 is not enabled"),
+ *     @OA\Response(response=404, description="Calendar not found"),
+ *     @OA\Response(response=409, description="The calendar belongs to a ministry; only church calendars are opened to ministries")
+ * )
+ */
+function putCalendarMinistryGrants(Request $request, Response $response, array $args): Response
+{
+    $calendar = $request->getAttribute('calendar');
+    $body = (array) $request->getParsedBody();
+
+    $ministryIds = $body['ministryIds'] ?? null;
+    if (!is_array($ministryIds)) {
+        return SlimUtils::renderErrorJSON($response, gettext('ministryIds must be a list of ministry ids'), [], 400, null, $request);
+    }
+    foreach ($ministryIds as $ministryId) {
+        $isId = (is_int($ministryId) || (is_string($ministryId) && ctype_digit($ministryId))) && (int) $ministryId > 0;
+        if (!$isId) {
+            return SlimUtils::renderErrorJSON($response, gettext('ministryIds must be a list of ministry ids'), [], 400, null, $request);
+        }
+    }
+
+    try {
+        $ministries = (new VolunteerCalendarService())->replaceGrants(
+            $calendar,
+            array_map('intval', $ministryIds),
+            AuthenticationManager::getCurrentUser()
+        );
+    } catch (VolunteerException $e) {
+        return SlimUtils::renderErrorJSON($response, $e->getMessage(), $e->getExtra(), $e->getStatusCode(), null, $request);
+    }
+
+    return SlimUtils::renderJSON($response, [
+        'calendarId' => (int) $calendar->getId(),
+        'ministries' => $ministries,
+    ]);
 }
 
 /**

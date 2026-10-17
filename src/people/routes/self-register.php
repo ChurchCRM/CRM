@@ -5,7 +5,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Person;
-use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Service\PersonService;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -15,8 +15,8 @@ $app->get('/self-register', function (Request $request, Response $response): Res
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
     $familyQuery = fn () => FamilyQuery::create()->filterByEnteredBy(Person::SELF_REGISTER);
-    // Standalone individuals only (no family): family members count under their family.
-    $individualQuery = fn () => PersonQuery::create()->filterByEnteredBy(Person::SELF_REGISTER)->filterByFamId(0);
+    // Members of a self-registered family count under their family.
+    $individualQuery = fn () => PersonService::selfRegisteredPersonQuery();
 
     $pendingCount = $familyQuery()->filterByNeedsReview(true)->count()
         + $individualQuery()->filterByNeedsReview(true)->count();

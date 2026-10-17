@@ -6,9 +6,8 @@ require_once __DIR__ . '/../Include/Config.php';
 require_once __DIR__ . '/../Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Emails\BaseEmail;
+use ChurchCRM\Emails\GivingStatementEmail;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\CSRFUtils;
@@ -321,30 +320,7 @@ $safeName  = preg_replace('/[^a-zA-Z0-9._-]/u', '_', $family->getName());
 $filename  = 'TaxStatement-' . $safeName . '-' . $year . '.pdf';
 $pdfString = $pdf->Output($filename, 'S');
 
-$mail = new class($emailList) extends BaseEmail {
-    /**
-     * Initialize email handler with family addresses.
-     *
-     * @param array $emails List of recipient email addresses
-     */
-    public function __construct(array $emails)
-    {
-        parent::__construct($emails);
-    }
-};
-$mail->addStringAttachment($pdfString, $filename);
-$mail->mail->Subject = sprintf(
-    gettext('%s %d Giving Statement'),
-    ChurchMetaData::getChurchName(),
-    $year
-);
-$mail->mail->isHTML(false);
-$mail->mail->Body = sprintf(
-    gettext("Dear %s Family,\n\nPlease find your %d giving statement from %s attached to this email.\n\nIf you have any questions, please contact the church office.\n\nThank you for your generosity."),
-    $family->getName(),
-    $year,
-    ChurchMetaData::getChurchName()
-);
+$mail = new GivingStatementEmail($emailList, (string) $family->getName(), $year, $pdfString, $filename);
 
 if ($mail->send()) {
     RedirectUtils::redirect('people/family/' . $familyId . '?TaxEmailSent=' . $year);

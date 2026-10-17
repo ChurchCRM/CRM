@@ -1,8 +1,7 @@
 /**
  * Shared AJAX person-search TomSelect — issue #9819.
  *
- * Before this module the same widget was hand-rolled three times
- * (`src/skin/js/GroupView.js`, and twice in `webpack/event-checkin.js`) with
+ * Before this module the same widget was hand-rolled three times with
  * three different option sets: the `valueField`/`labelField`/`searchField`
  * triple and the `load` callback were byte-for-byte identical, while
  * `dropdownParent`, `placeholder`, `render` and `maxOptions` had all drifted.

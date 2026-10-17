@@ -134,4 +134,9 @@ class NewPersonOrFamilyEmail extends BaseEmail
     {
         return $this->getSubSubject();
     }
+
+    protected function getLogKind(): string
+    {
+        return 'notification.new-record';
+    }
 }

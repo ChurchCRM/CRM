@@ -7,9 +7,11 @@ use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
+use ChurchCRM\Volunteer\Service\VolunteerClassLinkService;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
@@ -132,6 +134,23 @@ function viewGroup(Request $request, Response $response, array $args): Response
     $bEmailEnabled    = $currentUser->isEmailEnabled();
 
     // ------------------------------------------------------------------ //
+    // Volunteer v2 (D19): is this group a ministry's volunteer pool?
+    //
+    // The group stays fully visible and its MEMBERSHIP stays fully editable here —
+    // adding and removing people is the Groups module's job whoever owns the group.
+    // What moves to the ministry is the group's own identity: its name, its type and
+    // its existence, which the API answers 409 for. The banner and the disabled
+    // controls below are the screen saying so before the click rather than after.
+    // ------------------------------------------------------------------ //
+    $iMinistryId    = $thisGroup->getMinistryId() === null ? 0 : (int) $thisGroup->getMinistryId();
+    $sMinistryName  = '';
+    if ($iMinistryId > 0) {
+        $ministry      = VolunteerMinistryQuery::create()->findPk($iMinistryId);
+        $sMinistryName = $ministry === null ? '' : (string) $ministry->getName();
+    }
+    $bIsMinistryPool = $iMinistryId > 0;
+
+    // ------------------------------------------------------------------ //
     // Flash message from the previous request (e.g. cart-to-group success)
     // ------------------------------------------------------------------ //
     $sGlobalMessage      = '';
@@ -171,7 +190,7 @@ function viewGroup(Request $request, Response $response, array $args): Response
     ]);
 
     $headerButtons = [];
-    if ($bCanManageGroups) {
+    if ($bCanManageGroups && !$bIsMinistryPool) {
         $headerButtons[] = [
             'label' => gettext('Edit Group'),
             'url'   => SystemURLs::getRootPath() . '/groups/editor/' . $iGroupID,
@@ -192,6 +211,9 @@ function viewGroup(Request $request, Response $response, array $args): Response
         'sGroupType'         => $sGroupType,
         'defaultRole'        => $defaultRole,
         'bCanManageGroups'   => $bCanManageGroups,
+        'bIsMinistryPool'    => $bIsMinistryPool,
+        'iMinistryId'        => $iMinistryId,
+        'sMinistryName'      => $sMinistryName,
         'bEmailEnabled'      => $bEmailEnabled,
         'rsAssignedRows'     => $rsAssignedRows,
         'rsAssignedPropertyIds' => $rsAssignedPropertyIds,
@@ -200,6 +222,10 @@ function viewGroup(Request $request, Response $response, array $args): Response
         'aPropTypes'            => $aPropTypes,
         'sGlobalMessage'        => $sGlobalMessage,
         'sGlobalMessageClass'   => $sGlobalMessageClass,
+        // Volunteer v2 (D23): null unless a volunteer team writes this class's teachers.
+        'aTeacherLink'          => $thisGroup->isSundaySchool()
+            ? VolunteerClassLinkService::describeLink($iGroupID, $currentUser)
+            : null,
     ];
 
     $renderer = new PhpRenderer(__DIR__ . '/../views/');

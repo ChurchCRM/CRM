@@ -117,6 +117,16 @@ describe("People Reports (#9914, #9915)", () => {
         cy.get("#reportResults tbody").should("not.contain", "Austin Robertson");
     });
 
+    it("shows the classification placeholder only while no classification is chosen", () => {
+        cy.visit("/people/reports/birthdays?month=7");
+        cy.get("#classification + .ts-wrapper").should("not.have.class", "input-hidden");
+        cy.get("#classification + .ts-wrapper input").should("have.attr", "placeholder", "All classifications");
+
+        cy.visit("/people/reports/birthdays?month=7&classification[]=1");
+        cy.get("#classification + .ts-wrapper .item").should("contain", "Member");
+        cy.get("#classification + .ts-wrapper").should("have.class", "input-hidden");
+    });
+
     it("Unassigned selects people with no classification", () => {
         cy.visit("/people/reports/birthdays?month=7&classification[]=0");
         rows().should("have.length.at.least", 6);
@@ -199,13 +209,5 @@ describe("People Reports (#9914, #9915)", () => {
             expect(lines).to.have.length(2);
             expect(lines[1]).to.include("Constance Hart");
         });
-    });
-});
-
-describe("People Reports access", () => {
-    it("redirects non-admins to access denied", () => {
-        cy.setupStandardSession();
-        cy.visit("/people/reports", { failOnStatusCode: false });
-        cy.url().should("include", "/v2/access-denied");
     });
 });

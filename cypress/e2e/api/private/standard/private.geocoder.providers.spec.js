@@ -12,9 +12,10 @@
  * default/church country settings decide. They use a stable public address (the
  * Empire State Building) that both services resolve and assert the result lands
  * within ~1 km. Every lookup that reaches a service is a live call; the settings
- * are restored afterwards.
+ * are restored afterwards. Retried twice: the public services occasionally time out
+ * or rate-limit a CI runner.
  */
-describe("API Private Geocoder — provider chain (#9848)", () => {
+describe("API Private Geocoder — provider chain (#9848)", { retries: 2 }, () => {
     const CONFIG = (name) => `/admin/api/system/config/${name}`;
     const SETTINGS = ["sGeocoderProviders", "sDefaultCountry", "sChurchCountry"];
     const DEFAULT_RANKING = "Nominatim";

@@ -10,7 +10,7 @@
  *
  * Business rule under test (read-default policy, #9003):
  *  - A zero-permission user CAN log in and READ people and family records.
- *    They are NOT redirected to /external/limited-access — that flow is now
+ *    They are NOT redirected to the Member Portal — that confinement is
  *    reserved for EditSelf-only users (see limited-access.spec.js).
  *  - They CANNOT write anything: no add/edit/delete of person or family, and no
  *    access to finance, notes, admin, or menu-option pages.
@@ -19,9 +19,8 @@
  * User::isEditSelfExclusive(), replacing the removed hasNoAdminPermissions().
  * Zero-permission users fall through it; EditSelf-only users do not.
  *
- * Contrast: limited.user (EditSelf=1, person 4, family 1) IS confined to
- * /external/limited-access and gets the "Verify Family Info" button — see
- * limited-access.spec.js.
+ * Contrast: limited.user (EditSelf=1, person 4, family 1) IS confined to the
+ * Member Portal at /portal — see limited-access.spec.js.
  */
 describe("Zero-Permission User (EditSelf=0, all flags 0)", () => {
     const noPermUser = "noperm.user";
@@ -39,20 +38,21 @@ describe("Zero-Permission User (EditSelf=0, all flags 0)", () => {
     describe("Can log in and read people/families", () => {
         beforeEach(login);
 
-        it("Login lands in the CRM, NOT on limited-access", () => {
-            cy.url().should("not.include", "/external/limited-access");
+        it("Login lands in the admin shell, NOT in the Member Portal", () => {
+            cy.url().should("include", "/v2/dashboard");
+            cy.url().should("not.include", "/portal");
         });
 
         it("Can view the main dashboard", () => {
             cy.visit("v2/dashboard");
             cy.url().should("include", "/v2/dashboard");
-            cy.url().should("not.include", "/external/limited-access");
+            cy.url().should("not.include", "/portal");
         });
 
         it("Can view the people dashboard", () => {
             cy.visit("people/dashboard");
             cy.url().should("include", "/people/dashboard");
-            cy.url().should("not.include", "/external/limited-access");
+            cy.url().should("not.include", "/portal");
         });
 
         it("Can view the person listing", () => {
@@ -133,14 +133,14 @@ describe("Zero-Permission User (EditSelf=0, all flags 0)", () => {
             cy.url().should("include", "/v2/access-denied");
         });
 
-        // EmailMailto=0 — /v2/email and /v2/text are behind EmailRoleAuthMiddleware.
+        // EmailMailto=0 — /people/email and /people/text are behind EmailRoleAuthMiddleware.
         it("Email dashboard is denied", () => {
-            cy.visit("v2/email/dashboard", { failOnStatusCode: false });
+            cy.visit("people/email", { failOnStatusCode: false });
             cy.url().should("include", "/v2/access-denied");
         });
 
         it("Text dashboard is denied", () => {
-            cy.visit("v2/text/dashboard", { failOnStatusCode: false });
+            cy.visit("people/text", { failOnStatusCode: false });
             cy.url().should("include", "/v2/access-denied");
         });
     });
@@ -215,16 +215,11 @@ describe("Zero-Permission User (EditSelf=0, all flags 0)", () => {
             });
         });
 
-        it("Reports nav is hidden when the user has no report permission", () => {
+        it("Reports nav lists only People Reports", () => {
             cy.visit("v2/dashboard");
-            cy.get(".navbar-nav").each(($nav) => {
-                cy.wrap($nav).within(() => {
-                    cy.contains("a", "Reports").should("not.exist");
-                    cy.contains("a", "People Reports").should("not.exist");
-                    cy.contains("a", "Financial Reports").should("not.exist");
-
-                });
-            });
+            cy.get('.navbar-nav a[href$="/people/reports"]').should("exist");
+            cy.get('.navbar-nav a[href$="/finance/reports"]').should("not.exist");
+            cy.get('.navbar-nav a[href$="/groups/reports"]').should("not.exist");
         });
     });
 

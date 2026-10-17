@@ -69,7 +69,7 @@ $sGithubIssueUrl = 'https://github.com/ChurchCRM/CRM/issues/new'
               <span class="h1 fw-bold text-<?= ($code >= 500) ? 'danger' : 'warning' ?>"><?= htmlspecialchars($code) ?></span>
             </div>
             <div class="mb-3">
-              <i class="fa-solid fa-circle-exclamation" style="font-size:3rem;"></i>
+              <i class="fa-solid fa-circle-exclamation status-icon-lg"></i>
             </div>
             <h3 class="mb-2"><?= htmlspecialchars($title) ?></h3>
             <p class="text-body-secondary mb-4"><?= htmlspecialchars($message) ?></p>

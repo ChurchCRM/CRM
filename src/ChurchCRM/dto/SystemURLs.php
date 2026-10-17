@@ -10,6 +10,7 @@
 namespace ChurchCRM\dto;
 
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Utils\VersionUtils;
 
 class SystemURLs
 {
@@ -50,7 +51,21 @@ class SystemURLs
         return self::$urls;
     }
 
-    public static function getSupportURL($topic = ''): string
+    public static function attributed(string $url, string $content): string
+    {
+        $parts = explode('#', $url, 2);
+        $query = http_build_query([
+            'utm_source'   => 'churchcrm_app',
+            'utm_medium'   => 'product',
+            'utm_campaign' => 'in_app_links',
+            'utm_content'  => $content,
+            'crm_version'  => VersionUtils::getInstalledVersion(),
+        ]);
+
+        return $parts[0] . (str_contains($parts[0], '?') ? '&' : '?') . $query . (isset($parts[1]) ? '#' . $parts[1] : '');
+    }
+
+    public static function getSupportURL($topic = '', string $search = ''): string
     {
         $supportURLs = [
             // User-facing guidance moved to the Documentation site
@@ -63,12 +78,12 @@ class SystemURLs
             'CheckUploadSizeTask'           => 'https://docs.churchcrm.io/installation/system-requirements#file-uploads',
         ];
 
-        if (array_key_exists($topic, $supportURLs)) {
-            return $supportURLs[$topic];
+        $url = $supportURLs[$topic] ?? 'https://docs.churchcrm.io';
+        if (!isset($supportURLs[$topic]) && $search !== '') {
+            $url .= '/search?' . http_build_query(['q' => $search]);
         }
 
-        // Default to the public user documentation site
-        return 'https://docs.churchcrm.io';
+        return self::attributed($url, 'support_' . ($topic ?: 'default'));
     }
 
     public static function getURL($index = 0)

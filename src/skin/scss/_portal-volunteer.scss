@@ -1,0 +1,70 @@
+// Member Portal: the volunteering pages.
+//
+// `.volunteer-touch-target` / `.volunteer-card-actions` give the accept, decline
+// and sign-up controls a 44px target and a full-width stack below `sm`; the
+// markup is rendered by `webpack/portal/volunteer-{schedule,opportunities}.ts`.
+// `.portal-subnav` is the "My schedule" / "Find something to do" tab row.
+// Logical properties only: this file is not RTL-flipped.
+
+.volunteer-touch-target {
+    min-block-size: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+// Below `sm` the actions are a full-width stack; above it they sit in a row.
+.volunteer-card-actions .volunteer-touch-target {
+    inline-size: 100%;
+}
+
+@media (min-width: 576px) {
+    .volunteer-card-actions .volunteer-touch-target {
+        inline-size: auto;
+    }
+}
+
+// Secondary navigation ---------------------------------------------------------
+
+.portal-subnav {
+    margin-block-end: var(--portal-gap);
+    border-block-end: 1px solid var(--portal-border);
+}
+
+.portal-subnav-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.portal-subnav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-block-size: 44px;
+    padding-inline: 0.875rem;
+    border-block-end: 2px solid transparent;
+    color: var(--portal-muted);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.portal-subnav-link:hover,
+.portal-subnav-link:focus-visible {
+    color: var(--portal-text);
+    text-decoration: none;
+}
+
+.portal-subnav-link.is-active {
+    color: var(--portal-primary);
+    border-block-end-color: var(--portal-primary);
+}
+
+.portal-volunteering-pending {
+    margin-block: 0.25rem 0.5rem;
+    font-weight: 600;
+    color: var(--portal-text);
+}

@@ -2,7 +2,7 @@
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\EventQuery;
-use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsOrMinistryRoleAuthMiddleware;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -54,4 +54,8 @@ $app->get('/editor[/{id}]', function (Request $request, Response $response, arra
         'eventExists'  => $eventExists,
         'iTypeID'      => $iTypeID,
     ]);
-})->add(new AddEventsRoleAuthMiddleware());
+// Volunteer v2 (#9713, §4.6): a ministry coordinator without the global AddEvent right needs
+// to reach this page to create and edit their own ministry's events. The page is a shell —
+// every write goes through POST/DELETE /api/events/*, where the per-row rule is enforced — so
+// widening the gate here grants nothing the API would not already allow.
+})->add(new AddEventsOrMinistryRoleAuthMiddleware());

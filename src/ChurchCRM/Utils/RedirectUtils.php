@@ -141,8 +141,8 @@ class RedirectUtils
             return $fallback;
         }
 
-        // Check for protocol-relative URLs (//example.com)
-        if (preg_match('#^//#', $decodedUrl)) {
+        // Check for protocol-relative URLs (//example.com); browsers also treat /\ and \/ the same way
+        if (preg_match('#^[/\\\\]{2}#', $decodedUrl)) {
             LoggerUtils::getAppLogger()->warning('Rejected protocol-relative redirect URL', ['url' => $url]);
 
             return $fallback;

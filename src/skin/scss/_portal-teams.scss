@@ -1,0 +1,59 @@
+// Member Portal: the My Teams pages. Logical properties only: this file is not
+// RTL-flipped.
+
+// The "← My Teams" line above a page title: one back link reads better on a
+// phone than a wrapping breadcrumb trail.
+.portal-breadcrumb {
+    margin-block-end: var(--portal-gap);
+    font-size: 0.875rem;
+
+    a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        min-block-size: 44px;
+    }
+}
+
+.portal-team-ministry {
+    color: var(--tblr-secondary-color);
+    margin-block-end: var(--portal-gap);
+}
+
+// Stacked facts on a team card; `.portal-detail-list` is too wide a grid for it.
+.portal-team-facts {
+    list-style: none;
+    margin: 0 0 var(--portal-gap);
+    padding: 0;
+
+    li {
+        display: flex;
+        align-items: baseline;
+        gap: 0.5rem;
+        padding-block: 0.15rem;
+    }
+
+    i {
+        inline-size: 1rem;
+        text-align: center;
+        color: var(--tblr-secondary-color);
+    }
+}
+
+// Keeps the "Open this team" link at the bottom of every card in a row.
+.portal-team-card {
+    display: flex;
+    flex-direction: column;
+
+    .portal-card-link {
+        margin-block-start: auto;
+    }
+}
+
+
+// The shared volunteer components render `btn-sm`, fine on admin pages; the
+// portal is opened on phones, so its buttons get the 44px target. Scoped to
+// `.portal-body`, which only the portal layout sets.
+.portal-body .btn {
+    min-block-size: 44px;
+}

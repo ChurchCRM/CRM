@@ -1,0 +1,6 @@
+{# A message written by a user in the in-app composer. The author writes the greeting and the
+   closing themselves (the composer pre-fills the closing), so neither the "Dear …" heading nor
+   the "Sincerely, signer" block of the base template is rendered. #}
+{% extends "BaseEmail.html.twig" %}
+{% block greeting %}{% endblock %}
+{% block closing %}{% endblock %}

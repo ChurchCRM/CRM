@@ -29,18 +29,23 @@ class MvcAppFactory
      *     dashboardText?:       string,
      *     roleMiddleware?:      class-string|null,
      *     displayErrorDetails?: bool,
+     *     errorHandler?:        callable|null,
      * } $config Module-specific configuration:
      *   - dashboardUrl:  path (relative to root) for the error-page "go back" button
      *   - dashboardText: label for the "go back" button
      *   - roleMiddleware: FQCN of a role-auth middleware (e.g. AdminRoleAuthMiddleware::class)
      *   - displayErrorDetails: override the debug-driven default; omit to follow
      *     SystemConfig::debugEnabled()
+     *   - errorHandler: a module-specific error handler, used instead of the
+     *     shared Tabler error page. The Member Portal needs one because the
+     *     shared page renders the admin shell, which a member must never see.
      */
     public static function create(string $endpoint, array $config = []): App
     {
         $dashboardUrl = $config['dashboardUrl'] ?? $endpoint . '/';
         $dashboardText = $config['dashboardText'] ?? gettext('Return to Dashboard');
         $roleMiddleware = $config['roleMiddleware'] ?? null;
+        $errorHandler = $config['errorHandler'] ?? null;
         // Mirrors src/api/index.php: technical error details are shown only when
         // debug logging is enabled, so production installs never leak raw exception
         // messages on the MVC error page.
@@ -55,7 +60,11 @@ class MvcAppFactory
 
         // Error middleware — added AFTER routing so it wraps routing in LIFO order
         $errorMiddleware = $app->addErrorMiddleware($displayErrorDetails, true, true);
-        SlimUtils::registerDefaultHtmlErrorHandler($errorMiddleware, $dashboardUrl, $dashboardText);
+        if ($errorHandler !== null) {
+            $errorMiddleware->setDefaultErrorHandler($errorHandler);
+        } else {
+            SlimUtils::registerDefaultHtmlErrorHandler($errorMiddleware, $dashboardUrl, $dashboardText);
+        }
 
         // Standard middleware stack (LIFO — last added runs first)
         // Execution order: AuthMiddleware → ChurchInfoRequiredMiddleware → [RoleAuth] → CorsMiddleware

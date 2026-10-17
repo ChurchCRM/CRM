@@ -26,6 +26,8 @@ export interface ClassMember {
   birthMonth: number | null;
   familyId: number | null;
   checkedInBy?: CheckinByPerson | null;
+  /** True for walk-in guests registered directly on the kiosk */
+  isGuest?: boolean;
 }
 
 export interface PersonApiData {
@@ -45,6 +47,21 @@ export interface PersonApiData {
   birthMonth: number | null;
   familyId: number | null;
   checkedInBy?: CheckinByPerson | null;
+  /** True for walk-in guests registered directly on the kiosk */
+  isGuest?: boolean;
+}
+
+/** API response shape for POST /kiosk/device/registerGuest */
+export interface RegisterGuestResponse {
+  Id: number;
+  FirstName: string;
+  LastName: string;
+  Gender: number;
+  age: number | null;
+  hasPhoto: boolean;
+  isGuest: boolean;
+  familyId: number | null;
+  status: number;
 }
 
 export interface ActiveClassMembersResponse {
@@ -134,4 +151,6 @@ export interface KioskJSOM {
   resolveCheckinByModal: (checkedByPersonId: number | null) => void;
   cancelCheckinByModal: () => void;
   cancelScheduledRefresh: () => void;
+  showGuestRegistrationModal: () => void;
+  submitGuestRegistration: () => void;
 }

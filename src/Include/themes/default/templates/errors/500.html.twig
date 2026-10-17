@@ -1,0 +1,11 @@
+{% extends "@default/layout.html.twig" %}
+
+{% block content %}
+<section class="portal-card portal-error portal-error-500">
+    <h1 class="portal-error-title">{{ gettext('Something went wrong') }}</h1>
+    <p class="portal-error-text">
+        {{ gettext('The Member Portal could not finish what you asked for. Please try again in a few minutes.') }}
+    </p>
+    <p><a class="portal-button" href="{{ url('/portal/') }}">{{ gettext('Back to the Member Portal') }}</a></p>
+</section>
+{% endblock %}

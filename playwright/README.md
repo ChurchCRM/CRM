@@ -95,9 +95,11 @@ inspect it — `docker:ci:new-system:down` tears it down explicitly.
   timestamp, seed version, and artifact filenames. `npm run marketing`
   rolls every sidecar into one `playwright/artifacts/manifest.json` for a
   quick look at a whole run (see "How to run" above).
-- **Artifacts**: screenshots, videos, and `manifest.json` are committed;
-  everything else (the metadata JSON sidecars, `report.json`) is
-  gitignored — see `.gitignore`.
+- **Artifacts**: everything under `playwright/artifacts/` (screenshots,
+  videos, `manifest.json`, metadata sidecars, `report.json`) is generated
+  and gitignored. The capture workflow uploads it as the artifact
+  `marketing-visuals-<run id>`; `ChurchCRM/visuals` publishes it to
+  https://cdn.churchcrm.io/ on release.
 
 ## How to add a workflow
 
@@ -119,6 +121,10 @@ inspect it — `docker:ci:new-system:down` tears it down explicitly.
 4. That's it — the three device projects in `playwright/playwright.config.ts`
    run every spec automatically, so one new test yields three screenshots,
    three videos, and three metadata files (one per device).
+
+Files a workflow uploads live in `playwright/fixtures/`, for example the
+made-up Main St. Cathedral logo (`main-st-cathedral-logo.png`) that the
+church logo captures upload and then remove.
 
 ## How to update seed data
 
@@ -202,8 +208,8 @@ Each screenshot test captures desktop 1440×900, tablet 1024×768 and mobile
   #9663 for what was deliberately descoped there (closed not-planned).
   `manifest.json` (above) is a rollup of the existing sidecars, not that.
 - CI wiring (`.github/workflows/marketing-capture-assets.yml`,
-  `workflow_dispatch`) and its automated update-PR on `master` both exist
-  now — this is no longer a gap.
+  `workflow_dispatch`) exists and uploads the visuals artifact; it opens no
+  PR — this is no longer a gap.
 - Media-quality passes so far only cover what was actually visually
   inspected in this milestone (the system-update banner, timezone warning,
   inactive-record filtering). A new workflow should get the same visual

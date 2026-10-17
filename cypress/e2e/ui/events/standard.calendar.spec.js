@@ -23,6 +23,14 @@ function openNewEventModal() {
     cy.get("#event-title-input", { timeout: 15000 }).should("exist");
 }
 
+before(() => {
+    cy.useChurchTimeZone();
+});
+
+after(() => {
+    cy.useHostTimeZone();
+});
+
 describe("Standard Calendar", () => {
     beforeEach(() => cy.setupStandardSession());
 
@@ -462,6 +470,101 @@ describe("Standard Calendar — save (admin-session)", () => {
             expect(intercepted.request.body.InActive).to.eq(1);
             expect(intercepted.request.body).to.have.property("LinkedGroupId");
             expect(intercepted.response.statusCode).to.eq(200);
+        });
+    });
+});
+
+/**
+ * The calendar sidebar's three lists (MP5, #9866).
+ *
+ * The `calendars` table has no owner column, so "My Calendars" told staff
+ * something that was never true; the heading now reads "Church Calendars".
+ * Calendars that name an owning ministry (`calendars.ministry_id`) are listed
+ * under their own heading between the church and system lists.
+ *
+ * The fixture is built here rather than seeded. #9869 gave `calendars.ministry_id` a
+ * real foreign key to `volunteer_ministry_vmin`, so a seeded calendar pointing at a
+ * ministry the seed does not contain is no longer a harmless fiction. So this block
+ * creates its own ministry through the API, which gives it its calendar, and deletes
+ * both the same way afterwards.
+ */
+describe("Calendar sidebar — church, ministry and system lists", () => {
+    const MINISTRY_NAME = "CALSIDEBAR Youth Ministry";
+    const VOLUNTEER_VERSION = "sVolunteerVersion";
+    let ministryId = 0;
+    let originalVolunteerVersion;
+
+    // The ministries API answers only while Volunteer v2 is on; the sidebar is tested as the seed has it.
+    const withVolunteerV2 = (work) => {
+        cy.getSystemConfig(VOLUNTEER_VERSION).then((value) => {
+            originalVolunteerVersion = value;
+        });
+        cy.makePrivateAdminAPICall("POST", `/admin/api/system/config/${VOLUNTEER_VERSION}`, { value: "v2" }, 200);
+        work();
+        cy.then(() => cy.restoreSystemConfig(VOLUNTEER_VERSION, originalVolunteerVersion));
+    };
+
+    const removeFixture = () =>
+        cy.makePrivateAdminAPICall("GET", "/api/ministries/ministries", null, 200).then((resp) => {
+            for (const ministry of resp.body.ministries.filter((m) => m.name === MINISTRY_NAME)) {
+                cy.makePrivateAdminAPICall("POST", `/api/ministries/ministries/${ministry.id}`, { active: false }, 200);
+                cy.makePrivateAdminAPICall("DELETE", `/api/ministries/ministries/${ministry.id}`, null, 200);
+            }
+        });
+
+    before(() => {
+        withVolunteerV2(() => {
+            removeFixture();
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/ministries/ministries",
+                { name: MINISTRY_NAME, description: "calendar sidebar fixture" },
+                201,
+            ).then((resp) => {
+                ministryId = resp.body.ministry.id;
+            });
+        });
+    });
+
+    after(() => {
+        withVolunteerV2(removeFixture);
+    });
+
+    beforeEach(() => cy.setupStandardSession());
+
+    const openSidebar = () => {
+        cy.visit("event/calendars");
+        cy.get('[data-bs-target="#calendarSidebar"]').click();
+        cy.get("#calendarSidebar").should("be.visible");
+    };
+
+    it('The church calendar heading reads "Church Calendars", not "My Calendars"', () => {
+        openSidebar();
+        cy.get("#calendarSidebar").should("contain", "Church Calendars");
+        cy.get("#calendarSidebar").should("not.contain", "My Calendars");
+    });
+
+    it("A calendar with an owning ministry is listed under Ministry Calendars", () => {
+        openSidebar();
+
+        cy.get("#calendarMinistrySection", { timeout: 10000 }).should("not.have.class", "d-none");
+        cy.get("#calendarMinistrySection").should("contain", "Ministry Calendars");
+        cy.get("#calendarMinistryList").should("contain", MINISTRY_NAME);
+
+        // It is not also in the church list.
+        cy.get("#calendarUserList").should("not.contain", MINISTRY_NAME);
+        cy.get("#calendarUserList").should("contain", "Public Calendar");
+    });
+
+    it("GET /api/calendars carries the owning ministry", () => {
+        cy.request("/api/calendars").then((response) => {
+            const calendars = response.body.Calendars;
+            const ministryCalendar = calendars.find((calendar) => calendar.Name === MINISTRY_NAME);
+            expect(ministryCalendar, "the ministry calendar").to.exist;
+            expect(ministryCalendar.MinistryId).to.eq(ministryId);
+
+            const churchCalendar = calendars.find((calendar) => calendar.Name === "Public Calendar");
+            expect(churchCalendar.MinistryId).to.eq(null);
         });
     });
 });

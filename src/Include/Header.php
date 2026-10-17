@@ -65,6 +65,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
 </head>
 
 <body class="antialiased">
+<a class="skip-link visually-hidden-focusable" href="#main-content"><?= gettext('Skip to main content') ?></a>
 <div class="page">
 
   <!-- Issue Report Modal -->
@@ -138,9 +139,11 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
               'sDateTimeFormat' => json_decode(DateTimeUtils::getDateTimeFormatForJs(), true),
           ],
           'comm' => [
-              'smtpConfigured' => SystemConfig::hasValidMailServerSettings(),
+              'emailSendingEnabled' => SystemConfig::isEmailEnabled(),
+              'emailSignature' => \ChurchCRM\Service\EmailComposerService::defaultSignature($currentUser),
               'vonageEnabled' => PluginManager::getPlugin('vonage')?->isConfigured() ?? false,
               'defaultEmailToAddress' => $currentUser->isEmailEnabled() ? SystemConfig::getValue('sToEmailAddress') : '',
+              'emailHistoryURL' => $currentUser->isAdmin() ? SystemURLs::getRootPath() . '/admin/email/log' : '',
           ],
           'plugins' => PluginManager::getPluginsClientConfig() ?: new stdClass(),
           'bEnableGravatarPhotos' => PluginManager::getPluginsClientConfig()['gravatar']['enabled'] ?? false,
@@ -285,7 +288,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
             <i class="fa-solid fa-headphones"></i>
           </a>
           <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-            <a href="<?= SystemURLs::getSupportURL() ?>" target="help" class="dropdown-item"
+            <a href="<?= InputUtils::escapeAttribute(SystemURLs::getSupportURL('', (string) ($sPageTitle ?? ''))) ?>" target="help" class="dropdown-item"
                title="<?= gettext('Documentation') ?>">
               <i class="fa-solid fa-book me-2"></i><?= gettext('Documentation') ?>
             </a>
@@ -300,9 +303,9 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
               <i class="fa-brands fa-discord me-2"></i><?= gettext('Discord Chat') ?>
             </a>
             <div class="dropdown-divider"></div>
-            <a href="https://docs.churchcrm.io/contributing" target="_blank" class="dropdown-item"
+            <a href="<?= InputUtils::escapeAttribute(SystemURLs::attributed('https://docs.churchcrm.io/contributing', 'help_menu_contributing')) ?>" target="_blank" class="dropdown-item"
                title="<?= gettext('Contributing') ?>">
-              <i class="fa-brands fa-github me-2"></i><?= gettext('Documentation') ?>
+              <i class="fa-brands fa-github me-2"></i><?= gettext('Contributing') ?>
             </a>
           </div>
         </div>
@@ -339,7 +342,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
             <?php if ($hasUploadedPhoto) { ?>
               <img src="<?= $avatarApiUrl ?>" class="avatar photo-small rounded-circle" alt="<?= htmlspecialchars($currentUserName) ?>">
             <?php } else { ?>
-              <span class="avatar avatar-sm" style="background-color: <?= $avatarColor ?>; color: #fff; flex-shrink: 0;">
+              <span class="avatar avatar-sm text-white flex-shrink-0" style="background-color: <?= $avatarColor ?>;">
                 <span class="avatar-title"><?= htmlspecialchars($userInitials) ?></span>
               </span>
             <?php } ?>
@@ -361,6 +364,10 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
               <i class="fa-solid fa-cog me-2"></i><?= gettext('Change Settings') ?>
             </a>
             <div class="dropdown-divider"></div>
+            <a href="<?= SystemURLs::getRootPath() ?>/portal/" class="dropdown-item">
+              <i class="fa-solid fa-church me-2"></i><?= gettext('Member Portal') ?>
+            </a>
+            <div class="dropdown-divider"></div>
             <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/manage2fa" class="dropdown-item">
               <i class="fa-solid fa-shield me-2"></i><?= gettext("Manage Two-Factor Authentication") ?>
             </a>
@@ -375,7 +382,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
 
       <!-- Search -->
       <div class="collapse navbar-collapse" id="navbar-menu">
-        <div style="position: relative; width: min(480px, 100%);">
+        <div class="global-search">
           <div class="input-icon">
             <span class="input-icon-addon">
               <i class="fa-solid fa-search"></i>
@@ -387,8 +394,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
               <kbd title="<?= gettext('Press ? to focus search') ?>">?</kbd>
             </span>
           </div>
-          <div id="globalSearchDropdown" class="dropdown-menu w-100"
-               style="top: calc(100% + 2px); left: 0; position: absolute;"></div>
+          <div id="globalSearchDropdown" class="dropdown-menu w-100 global-search-dropdown"></div>
         </div>
       </div>
 
@@ -444,7 +450,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
       <div class="collapse mb-3" id="<?= $sSettingsCollapseId ?>"></div>
     </div>
     <?php endif; ?>
-    <div class="page-body">
+    <div class="page-body" id="main-content" tabindex="-1">
       <div class="container-xl">
 <?php
 // Hydrate registry from session-cached remote notifications (no HTTP calls)

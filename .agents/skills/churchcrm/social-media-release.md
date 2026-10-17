@@ -29,7 +29,11 @@ Post to **all four public platforms** for every release. GitHub releases are han
 
 ## When to Use This Skill
 
-Run this skill **after** the changelog file is written (see `release-notes.md`), using the release notes as your source of truth for facts and features.
+Run this skill after the release notes have been approved and applied to the
+GitHub release with `gh release edit`. Use those published notes as the source
+of truth for facts and features; social posts can be generated directly from
+them. See [the release process](../../../docs/maintainers/release-process.md) for the full
+sequence.
 
 ---
 
@@ -48,7 +52,7 @@ The tone and length of posts scales with the significance of the release:
 
 ## Step 2 — Extract the Key Message
 
-Before writing, identify from the changelog:
+Before writing, identify from the approved release notes:
 
 1. **The single biggest user benefit** (not the biggest technical change)
 2. **2–3 supporting features** worth mentioning
@@ -336,38 +340,11 @@ Download: https://github.com/ChurchCRM/CRM/releases/tag/X.Y.Z
 
 ---
 
-## Step 5 — Save to Files
+## Step 5 — Deliver the Posts
 
-Write each platform post to a separate file under `social-media/X.Y.Z/` so they can be opened and copy-pasted directly into each platform.
-
-**Directory:** `social-media/X.Y.Z/` (create it if it doesn't exist)
-
-**Files to create:**
-
-| File | Contents |
-|------|----------|
-| `social-media/X.Y.Z/twitter.txt` | X / Twitter post text only |
-| `social-media/X.Y.Z/facebook.txt` | Facebook post text only |
-| `social-media/X.Y.Z/instagram.txt` | Instagram caption + image brief at top |
-| `social-media/X.Y.Z/linkedin.txt` | LinkedIn post text only |
-
-**Instagram file format** — put the image brief as the first line so it's visible when the file is opened:
-
-```
-📸 Suggested image: [describe the graphic/screenshot to use]
-
-[caption text]
-```
-
-After writing all four files, output a short confirmation listing the files created, e.g.:
-
-```
-Social media posts saved to social-media/X.Y.Z/:
-  twitter.txt   — X / Twitter
-  facebook.txt  — Facebook
-  instagram.txt — Instagram (image brief included at top)
-  linkedin.txt  — LinkedIn
-```
+Return four clearly labeled, copy-ready posts in the response. Include the
+Instagram image brief before its caption. Do not create a `social-media/`
+directory or write files to the repository.
 
 ---
 
@@ -377,18 +354,19 @@ Before finalizing:
 
 - [ ] Version number correct in all posts
 - [ ] X post is under 280 characters (count carefully)
-- [ ] All facts sourced from the changelog file — no invention
+- [ ] All facts sourced from the approved GitHub release notes — no invention
 - [ ] No developer jargon in any post
 - [ ] Church-appropriate vocabulary used (congregation, not users; offerings, not payments)
 - [ ] Security patches marked as urgent in all posts
 - [ ] PHP version requirement called out on Facebook and LinkedIn if applicable
 - [ ] Instagram suggests a specific image/graphic
 - [ ] Release notes link correct: `https://github.com/ChurchCRM/CRM/releases/tag/X.Y.Z`
-- [ ] All four files written to `social-media/X.Y.Z/` (twitter.txt, facebook.txt, instagram.txt, linkedin.txt)
+- [ ] Four platform-specific posts are ready to copy and publish
 
 ---
 
 ## Related Skills
 
-- [Release Notes](./release-notes.md) — write the changelog file first, then use this skill
+- [Release Notes](./release-notes.md) — approved notes on the GitHub release are the source for post facts
 - [GitHub Interaction](./github-interaction.md) — publishing the GitHub release itself
+- [Release Process](../../../docs/maintainers/release-process.md) — the canonical release sequence

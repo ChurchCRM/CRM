@@ -24,6 +24,11 @@ class ResetPasswordEmail extends BaseUserEmail
         return gettext('Your ChurchCRM password has been changed') . ':';
     }
 
+    protected function getLogKind(): string
+    {
+        return 'account.reset';
+    }
+
     public function getTokens(): array
     {
         $parentTokens = parent::getTokens();

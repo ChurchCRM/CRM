@@ -43,6 +43,13 @@ src/plugins/community/*
 # ...except the checked-in .htaccess deny block (GHSA-37mf-vq43-5qp9)
 !src/plugins/community/.htaccess
 
+# Member Portal themes are uploaded by the church and live in their own repo;
+# only the system theme that ships with the release is committed here.
+src/Include/themes/*
+!src/Include/themes/default
+# Twig's compile cache for the portal (created at runtime)
+src/Include/cache/
+
 src/admin/data/signatures.json
 src/ChurchCRM/model/ChurchCRM/Base
 src/ChurchCRM/model/ChurchCRM/Map
@@ -56,19 +63,15 @@ cypress/downloads
 cypress.config.ts
 cypress.env.json
 
-playwright/artifacts/metadata/**/*.json
-playwright/artifacts/manifest.csv
+playwright/artifacts/
 playwright/.auth
 playwright/.playwright-output
 playwright-report
 test-results
-
-# DDEV — Composer credentials (not covered by .ddev/.gitignore)
-# See https://ddev.readthedocs.io/en/stable/users/extend/in-container-configuration/
-.ddev/**/auth.json
 
 .claude/settings.json
 cy.log
 
 /.obsidian
 .claude/settings.local.json
+cypress/fixtures/plugin-registry

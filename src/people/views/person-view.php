@@ -32,7 +32,11 @@ $fam_Latitude       = (float) ($personData['fam_Latitude'] ?? 0);
 $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
 ?>
 
-<?php $currentUserId = AuthenticationManager::getCurrentUser()->getId(); ?>
+<?php
+$currentUserId = AuthenticationManager::getCurrentUser()->getId();
+// Server-side "Send email" needs the Email permission and a working, enabled SMTP setup.
+$canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && SystemConfig::isEmailEnabled();
+?>
 
 <div id="person-deactivated" class="alert alert-warning d-none">
     <strong><?= gettext("This Person is Inactive") ?> </strong>
@@ -45,7 +49,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
             <!-- Photo (top) — full card width, responsive square; click to upload -->
             <div class="position-relative">
                 <a href="#" id="uploadImageButton" class="d-block" title="<?= $bOkToEdit ? gettext("Click to upload photo") : gettext("View Photo") ?>">
-                    <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" alt="" class="photo-profile card-img-top w-100 object-fit-cover" style="aspect-ratio: 1 / 1; max-height: 400px;">
+                    <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" alt="" class="photo-profile card-img-top w-100 object-fit-cover profile-photo-square">
                 </a>
                 <button type="button"
                         class="photo-view-overlay btn btn-sm position-absolute bottom-0 end-0 m-2 d-none"
@@ -53,7 +57,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                         data-entity-id="<?= $person->getId() ?>"
                         title="<?= gettext('View full photo') ?>"
                         aria-label="<?= gettext('View full photo') ?>">
-                    <i class="fa-solid fa-magnifying-glass" aria-hidden="true" style="color:white; text-shadow: 0 1px 3px rgba(0,0,0,.8);"></i>
+                    <i class="fa-solid fa-magnifying-glass photo-zoom-icon" aria-hidden="true"></i>
                 </button>
             </div>
             <!-- Attributes (below photo) -->
@@ -87,16 +91,16 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                         </span>
                     </li>
                     <?php endif; ?>
-                    <li class="mb-1"><i class="fa <?= $genderClass ?> me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= $genderText ?></li>
-                    <li class="mb-1"><i class="fa-solid fa-id-card me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= InputUtils::escapeHTML(gettext($sClassName)) ?></li>
+                    <li class="mb-1"><i class="fa <?= $genderClass ?> me-2 text-body-secondary icon-fixed-width"></i><?= $genderText ?></li>
+                    <li class="mb-1"><i class="fa-solid fa-id-card me-2 text-body-secondary icon-fixed-width"></i><?= InputUtils::escapeHTML(gettext($sClassName)) ?></li>
                     <?php if (!empty($sFamRole)) : ?>
-                    <li class="mb-1"><i class="fa-solid fa-users me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= InputUtils::escapeHTML(gettext($sFamRole)) ?></li>
+                    <li class="mb-1"><i class="fa-solid fa-users me-2 text-body-secondary icon-fixed-width"></i><?= InputUtils::escapeHTML(gettext($sFamRole)) ?></li>
                     <?php endif; ?>
                     <?php if ($per_MembershipDate) : ?>
-                    <li class="mb-1"><i class="fa-solid fa-calendar-check me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= gettext('Since') ?> <?= DateTimeUtils::formatDate($per_MembershipDate, false) ?></li>
+                    <li class="mb-1"><i class="fa-solid fa-calendar-check me-2 text-body-secondary icon-fixed-width"></i><?= gettext('Since') ?> <?= DateTimeUtils::formatDate($per_MembershipDate, false) ?></li>
                     <?php endif; ?>
                     <?php if ($sEnvelope !== gettext('Not assigned')) : ?>
-                    <li class="mb-1"><i class="fa-solid fa-envelope me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= gettext('Envelope') ?> #<?= $sEnvelope ?></li>
+                    <li class="mb-1"><i class="fa-solid fa-envelope me-2 text-body-secondary icon-fixed-width"></i><?= gettext('Envelope') ?> #<?= $sEnvelope ?></li>
                     <?php endif; ?>
                 </ul>
             </div>
@@ -196,6 +200,17 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                                     title="<?= gettext('Copy to clipboard') ?>">
                                 <i class="fa-solid fa-copy"></i>
                             </button>
+                            <?php if ($canSendEmail) : ?>
+                            <button class="btn btn-sm btn-ghost-primary ms-1" type="button"
+                                    data-email-composer
+                                    data-email-person-id="<?= (int) $iPersonID ?>"
+                                    data-email-address="<?= InputUtils::escapeAttribute($sUnformattedEmail) ?>"
+                                    data-email-name="<?= InputUtils::escapeAttribute($person->getFullName()) ?>"
+                                    data-email-title="<?= InputUtils::escapeAttribute(sprintf(gettext('Email %s'), $person->getFullName())) ?>"
+                                    title="<?= gettext('Send email from ChurchCRM') ?>">
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                            <?php endif; ?>
                         </li>
                         <?php endif; ?>
                         <?php if (!empty($per_WorkEmail)) : ?>
@@ -227,7 +242,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                         <?php endif; ?>
                         <?php if (strlen($per_Twitter) > 0) : ?>
                         <li class="mb-2">
-                            <i class="fa-brands fa-x-twitter me-2 text-dark"></i>
+                            <i class="fa-brands fa-x-twitter me-2 text-body"></i>
                             <a href="https://www.twitter.com/<?= InputUtils::escapeAttribute($per_Twitter) ?>" target="_blank">@<?= InputUtils::escapeHTML($per_Twitter) ?></a>
                         </li>
                         <?php endif; ?>
@@ -384,11 +399,11 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                 <div id="giving-history-content" class="d-none">
                     <ul class="list-unstyled mb-0 px-3 py-2">
                         <li class="mb-2">
-                            <i class="fa-solid fa-calendar-check me-2 text-muted" style="width:1rem;text-align:center;"></i>
+                            <i class="fa-solid fa-calendar-check me-2 text-muted icon-fixed-width"></i>
                             <strong><?= gettext("YTD Paid") ?>:</strong> <span id="person-giving-ytd" class="text-success fw-bold">$0.00</span>
                         </li>
                         <li class="mb-2" id="person-last-gift-row">
-                            <i class="fa-solid fa-hand-holding-dollar me-2 text-muted" style="width:1rem;text-align:center;"></i>
+                            <i class="fa-solid fa-hand-holding-dollar me-2 text-muted icon-fixed-width"></i>
                             <strong><?= gettext("Last Gift") ?>:</strong> <span id="person-last-gift">—</span>
                         </li>
                     </ul>
@@ -471,7 +486,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                     <a href="<?= $person->getFamily()->getViewURI() ?>" class="btn btn-sm btn-ghost-primary"><i class="fa-solid fa-arrow-up-right-from-square me-1"></i><?= gettext('View') ?></a>
                 </div>
             </div>
-            <div style="overflow-x: clip; overflow-y: visible;">
+            <div class="table-clip-x">
                 <table class="table table-vcenter card-table">
                     <thead>
                         <tr>
@@ -487,7 +502,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                             $tmpPersonId = $familyMember->getId();
                             $isSelf = ($tmpPersonId === $iPersonID);
                         ?>
-                            <tr<?= $isSelf ? ' class="bg-light"' : '' ?>>
+                            <tr<?= $isSelf ? ' class="bg-surface-secondary"' : '' ?>>
                                 <td>
                                     <div class="d-flex align-items-center">
                                         <img data-image-entity-type="person" data-image-entity-id="<?= $familyMember->getId() ?>" class="avatar avatar-sm me-2">
@@ -507,6 +522,17 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                                     <?php $tmpEmail = $familyMember->getEmail();
                                     if ($tmpEmail !== '') { ?>
                                         <a href="mailto:<?= InputUtils::escapeAttribute($tmpEmail) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($tmpEmail) ?></a>
+                                        <?php if ($canSendEmail && !$isSelf) { // the person's own line above already has the button ?>
+                                        <button class="btn btn-sm btn-ghost-primary ms-1 py-0 px-1" type="button"
+                                                data-email-composer
+                                                data-email-person-id="<?= (int) $familyMember->getId() ?>"
+                                                data-email-address="<?= InputUtils::escapeAttribute($tmpEmail) ?>"
+                                                data-email-name="<?= InputUtils::escapeAttribute($familyMember->getFullName()) ?>"
+                                                data-email-title="<?= InputUtils::escapeAttribute(sprintf(gettext('Email %s'), $familyMember->getFullName())) ?>"
+                                                title="<?= gettext('Send email from ChurchCRM') ?>">
+                                            <i class="fa-solid fa-paper-plane"></i>
+                                        </button>
+                                        <?php } ?>
                                     <?php } ?>
                                 </td>
                                 <td>
@@ -614,7 +640,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                 <?php endif; ?>
                 <?php if ($personMapConfig !== null) : ?>
                 <div class="mt-2 rounded overflow-hidden">
-                    <div id="person-map" style="height: 200px;"></div>
+                    <div id="person-map" class="map-canvas-sm"></div>
                 </div>
                 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
                     window.CRM = window.CRM || {};
@@ -635,6 +661,34 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
         -->
 
         <script src="<?= SystemURLs::assetVersioned('/skin/v2/people-person-view.min.js') ?>"></script>
+        <?php if ($canSendEmail) : ?>
+        <script src="<?= SystemURLs::assetVersioned('/skin/v2/email-composer.min.js') ?>" defer nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+        <?php endif; ?>
+
+        <!-- Email history: 5 most recent, full list on its own page -->
+        <?php $emailHistory = $emailHistory ?? ['rows' => [], 'total' => 0]; ?>
+        <div class="card mb-3" id="email-history-card">
+            <div class="card-header d-flex align-items-center">
+                <h3 class="card-title m-0"><i class="fa-solid fa-envelope-open-text me-1"></i> <?= gettext('Recent Emails') ?>
+                    <span class="badge bg-secondary-lt text-secondary ms-2"><?= (int) $emailHistory['total'] ?></span>
+                </h3>
+            </div>
+            <div class="card-body p-0">
+                <?php
+                $emailHistoryRows = $emailHistory['rows'];
+                $emailHistoryShowTo = false;
+                include __DIR__ . '/partials/email-history-table.php';
+                ?>
+            </div>
+            <?php if ((int) $emailHistory['total'] > 0) : ?>
+            <div class="card-footer text-end py-2">
+                <a href="<?= $sRootPath ?>/people/view/<?= (int) $iPersonID ?>/emails" id="email-history-show-all">
+                    <?= gettext('Show all') ?> (<?= (int) $emailHistory['total'] ?>) <i class="fa-solid fa-chevron-right fa-xs ms-1"></i>
+                </a>
+            </div>
+            <?php endif; ?>
+        </div>
+        <?php include __DIR__ . '/partials/email-history-modal.php'; ?>
 
         <!-- Tabbed Content -->
         <div class="card">
@@ -650,11 +704,28 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                             <i class="fa-solid fa-users me-1"></i><?= gettext('Groups') ?>
                         </a>
                     </li>
+                    <?php
+                    // Volunteer rollout (#9704). 'both' shows two clearly labelled
+                    // tabs so the active experience is never ambiguous during the
+                    // migration; the legacy tab keeps its id and pane id.
+                    $volunteerVersion = $volunteerVersion ?? 'v1';
+                    $showVolunteerV1  = in_array($volunteerVersion, ['v1', 'both'], true);
+                    $showVolunteerV2  = in_array($volunteerVersion, ['v2', 'both'], true);
+                    ?>
+                    <?php if ($showVolunteerV1) : ?>
                     <li class="nav-item">
                         <a class="nav-link" id="nav-item-volunteer" href="#volunteer" data-bs-toggle="tab">
+                            <i class="fa-solid fa-handshake-angle me-1"></i><?= $volunteerVersion === 'both' ? gettext('Volunteer (Legacy)') : gettext('Volunteer') ?>
+                        </a>
+                    </li>
+                    <?php endif; ?>
+                    <?php if ($showVolunteerV2) : ?>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav-item-volunteer-v2" href="#volunteer-v2" data-bs-toggle="tab">
                             <i class="fa-solid fa-handshake-angle me-1"></i><?= gettext('Volunteer') ?>
                         </a>
                     </li>
+                    <?php endif; ?>
                     <li class="nav-item">
                         <a class="nav-link" id="nav-item-attendance" href="#attendance" data-bs-toggle="tab">
                             <i class="fa-solid fa-calendar-check me-1"></i><?= gettext('Attendance') ?>
@@ -750,6 +821,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                             </div>
                         <?php } ?>
                     </div>
+                    <?php if ($showVolunteerV1) : ?>
                     <div class="tab-pane" id="volunteer">
                         <?php
                         $assignedVolIDs = [];
@@ -832,6 +904,105 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                             </div>
                         <?php endif; ?>
                     </div>
+                    <?php endif; ?>
+                    <?php if ($showVolunteerV2) : ?>
+                    <?php
+                    /*
+                     * The Volunteer v2 pane (#9711, design §3.5 / §3.8 surface 2).
+                     *
+                     * Read-only by design: what this person is qualified for and what
+                     * they are committed to next, each linking into /ministries where
+                     * the change is actually made. Nothing here writes, and the V1
+                     * pane above — including every one of its ids — is untouched.
+                     *
+                     * The route prepared both arrays; there are no queries in views.
+                     */
+                    $volunteerV2Qualifications = $volunteerV2Qualifications ?? [];
+                    $volunteerV2Assignments    = $volunteerV2Assignments ?? [];
+                    $volunteerV2Empty          = count($volunteerV2Qualifications) === 0
+                                              && count($volunteerV2Assignments) === 0;
+                    $volunteerV2StatusBadges   = [
+                        'pending'  => 'bg-yellow-lt text-yellow',
+                        'accepted' => 'bg-green-lt text-green',
+                    ];
+                    ?>
+                    <div class="tab-pane" id="volunteer-v2">
+                        <?php if ($volunteerV2Empty) : ?>
+                            <div class="empty" id="person-volunteer-v2-empty">
+                                <div class="empty-icon"><i class="fa-solid fa-handshake-angle fa-2x text-muted"></i></div>
+                                <p class="empty-title"><?= gettext('Not volunteering yet') ?></p>
+                                <p class="empty-subtitle text-body-secondary">
+                                    <?= gettext('Once this person is qualified for a position they appear here, along with the dates they are scheduled to serve.') ?>
+                                </p>
+                            </div>
+                        <?php else : ?>
+                            <div class="row g-3">
+                                <div class="col-12 col-lg-6">
+                                    <h4 class="mb-2">
+                                        <i class="fa-solid fa-award me-2"></i><?= gettext('Qualified for') ?>
+                                    </h4>
+                                    <?php if (count($volunteerV2Qualifications) === 0) : ?>
+                                        <p class="text-body-secondary" id="person-volunteer-v2-qualifications">
+                                            <?= gettext('No qualifications yet.') ?>
+                                        </p>
+                                    <?php else : ?>
+                                        <div class="list-group list-group-flush" id="person-volunteer-v2-qualifications">
+                                            <?php foreach ($volunteerV2Qualifications as $aQualification) : ?>
+                                                <div class="list-group-item">
+                                                    <span class="fw-bold"><?= InputUtils::escapeHTML($aQualification['positionName'] ?? '') ?></span>
+                                                    <?php if (!empty($aQualification['ministryName'])) : ?>
+                                                        <div class="text-body-secondary small">
+                                                            <?php if (!empty($aQualification['ministryId'])) : ?>
+                                                                <a href="<?= SystemURLs::getRootPath() ?>/ministries/<?= (int) $aQualification['ministryId'] ?>">
+                                                                    <?= InputUtils::escapeHTML($aQualification['ministryName']) ?>
+                                                                </a>
+                                                            <?php else : ?>
+                                                                <?= InputUtils::escapeHTML($aQualification['ministryName']) ?>
+                                                            <?php endif; ?>
+                                                        </div>
+                                                    <?php endif; ?>
+                                                </div>
+                                            <?php endforeach; ?>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+
+                                <div class="col-12 col-lg-6">
+                                    <h4 class="mb-2">
+                                        <i class="fa-solid fa-calendar-check me-2"></i><?= gettext('Serving next') ?>
+                                    </h4>
+                                    <?php if (count($volunteerV2Assignments) === 0) : ?>
+                                        <p class="text-body-secondary" id="person-volunteer-v2-assignments">
+                                            <?= gettext('Nothing scheduled.') ?>
+                                        </p>
+                                    <?php else : ?>
+                                        <div class="list-group list-group-flush" id="person-volunteer-v2-assignments">
+                                            <?php foreach ($volunteerV2Assignments as $aAssignment) : ?>
+                                                <a class="list-group-item list-group-item-action"
+                                                   href="<?= SystemURLs::getRootPath() ?>/ministries/occurrences/<?= (int) $aAssignment['occurrenceId'] ?>">
+                                                    <div class="d-flex flex-wrap gap-2 align-items-center justify-content-between">
+                                                        <div>
+                                                            <span class="fw-bold"><?= InputUtils::escapeHTML($aAssignment['positionName'] ?? '') ?></span>
+                                                            <div class="text-body-secondary small">
+                                                                <time datetime="<?= InputUtils::escapeAttribute($aAssignment['occurrenceDate'] ?? '') ?>" data-format="date"><?= InputUtils::escapeHTML($aAssignment['occurrenceDate'] ?? '') ?></time>
+                                                                <?php if (!empty($aAssignment['ministryName'])) : ?>
+                                                                    &middot; <?= InputUtils::escapeHTML($aAssignment['ministryName']) ?>
+                                                                <?php endif; ?>
+                                                            </div>
+                                                        </div>
+                                                        <span class="badge <?= $volunteerV2StatusBadges[$aAssignment['status']] ?? 'bg-secondary-lt text-secondary' ?>">
+                                                            <?= $aAssignment['status'] === 'accepted' ? gettext('Accepted') : gettext('Awaiting reply') ?>
+                                                        </span>
+                                                    </div>
+                                                </a>
+                                            <?php endforeach; ?>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                    <?php endif; ?>
                     <?php if (!empty($person->getEmail()) || !empty($person->getWorkEmail())) : ?>
                     <div class="tab-pane d-none" id="mailchimp">
                         <table class="table">

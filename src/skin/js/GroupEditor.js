@@ -199,9 +199,11 @@ function initializeGroupEditor() {
       .done((data) => {
         dataT.clear();
         dataT.rows.add(data);
-        // If we delete the default group role, set the default group role to 1 before re-rendering
+        // Deleting the default role makes the first remaining role the default.
         if (roleID == defaultRoleID) {
-          defaultRoleID = 1;
+          defaultRoleID = data.reduce((first, role) =>
+            Number(role.lst_OptionSequence) < Number(first.lst_OptionSequence) ? role : first,
+          ).lst_OptionID;
         }
         roleCount = data.length;
         dataT.rows().invalidate().draw(true);

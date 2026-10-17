@@ -93,14 +93,14 @@ $app->get('/', function (Request $request, Response $response) {
             'done'  => $hasEmail,
             'label' => gettext('Configure Email'),
             'desc'  => gettext('Connect an SMTP server so ChurchCRM can send emails'),
-            'link'  => SystemURLs::getRootPath() . '/v2/email/dashboard?settings=open',
+            'link'  => SystemURLs::getRootPath() . '/admin/email',
             'icon'  => 'fa-envelope',
         ],
             [
                 'done'  => $hasHttps,
                 'label' => gettext('Enable HTTPS'),
                 'desc'  => gettext('Install a TLS/SSL certificate for secure connections'),
-                'link'  => 'https://docs.churchcrm.io/installation/ssl-https',
+                'link'  => SystemURLs::attributed('https://docs.churchcrm.io/installation/ssl-https', 'admin_checklist_https'),
                 'icon'  => 'fa-lock',
             ],
             [

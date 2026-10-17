@@ -6,7 +6,7 @@ import { settle } from '../support/human';
 /**
  * One shot per module dashboard, all populated by the demo data import —
  * distinct from dashboard-hero (`/v2/dashboard`, the main landing page).
- * `/v2/email/dashboard` and `/v2/text/dashboard` are deliberately excluded:
+ * `/people/email` and `/people/text` are deliberately excluded:
  * both only ever show a "disabled" warning banner on this demo instance
  * (no real SMTP/SMS server configured — see communication.spec.ts's
  * comment), which isn't a usable dashboard shot.

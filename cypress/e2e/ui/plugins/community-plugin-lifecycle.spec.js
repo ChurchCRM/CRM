@@ -11,7 +11,7 @@
  * No local files are required — the plugin is downloaded from GitHub during the test.
  * before() cleans up any leftover install from a previous run via the API.
  */
-describe('Community Plugin Lifecycle', () => {
+describe('Community Plugin Lifecycle', { retries: 2 }, () => {
     const PLUGIN_ID = 'hello-world';
     const uniqueSeed = Date.now().toString();
     let createdPersonId = null;
@@ -54,6 +54,23 @@ describe('Community Plugin Lifecycle', () => {
             const plugin = response.body.data.find((p) => p.id === PLUGIN_ID);
             expect(plugin, 'hello-world in plugin list').to.exist;
             expect(plugin.isActive, 'not yet enabled after install').to.be.false;
+        });
+    });
+
+    // ─────────────────────────────────────────────────────────────────────────
+    it('offers no install or update for a plugin already at the approved version', () => {
+        cy.setupAdminSession({ forceLogin: true });
+        cy.visit('/plugins/management');
+        cy.get('#btn-browse-approved').click();
+        cy.get('#approvedPluginsList [data-approved-plugin-id]', { timeout: 15000 }).should('be.visible');
+        cy.get(`#approvedPluginsList [data-approved-plugin-id="${PLUGIN_ID}"]`).within(() => {
+            cy.get('.btn-install-approved').should('not.exist');
+            cy.contains('.badge', 'Installed').should('be.visible');
+        });
+
+        cy.makePrivateAdminAPICall('GET', '/plugins/api/approved').then((response) => {
+            const entry = response.body.data.find((p) => p.id === PLUGIN_ID);
+            cy.makePrivateAdminAPICall('POST', '/plugins/api/plugins/install', { downloadUrl: entry.downloadUrl }, 409);
         });
     });
 

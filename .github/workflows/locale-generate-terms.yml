@@ -1,6 +1,6 @@
 name: "Locale: terms"
 
-# Terms stage of the locale pipeline (docs/locale-pipeline.md): extract new source strings into
+# Terms stage of the locale pipeline: extract new source strings into
 # locale/messages.po and open a PR on branch locale/terms/<version>-<timestamp>.
 # Merging that PR starts locale-sync-poeditor.yml, which uploads the terms and downloads the result.
 #
@@ -209,7 +209,7 @@ jobs:
         run: |
           # Get the commit SHA that triggered this
           TRIGGER_SHA="${{ github.sha }}"
-          TRIGGER_COMMIT_MSG=$(git log --format=%B -n 1 $TRIGGER_SHA)
+          TRIGGER_COMMIT_MSG=$(git log --format=%s -n 1 $TRIGGER_SHA)
           
           gh pr create \
             --title "Update locale strings" \

@@ -6,7 +6,10 @@ const picomatch = require('picomatch');
 
 const root = process.cwd();
 const IGNORE_DIRS = ['node_modules', '.git', 'vendor', 'src/vendor', 'src/locale/vendor', 'src/skin/external', 'src/skin/v2', 'src/skin/icons', 'dist', 'build', 'src/locale/i18n', 'src/locale/textdomain', 'locale/locales', 'locale/messages.po'];
-const FILE_EXTS = ['.php', '.js', '.jsx', '.ts', '.tsx', '.vue', '.po', '.json', '.html', '.phtml'];
+// .twig is here for the Member Portal's theme templates: their gettext()
+// calls go into messages.po through locale-build.js, so the same i18n rules
+// (no trailing colon, no markup, no decorative wrapper) apply to them.
+const FILE_EXTS = ['.php', '.js', '.jsx', '.ts', '.tsx', '.vue', '.po', '.json', '.html', '.phtml', '.twig'];
 
 // ---- i18next extractor coverage -------------------------------------------
 //

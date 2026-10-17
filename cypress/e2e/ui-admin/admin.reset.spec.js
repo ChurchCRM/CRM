@@ -15,6 +15,6 @@ describe('Admin System Reset', () => {
         cy.get('.card').should('exist');
         
         // Should have warning indicators for dangerous operations
-        cy.get('.btn-danger, .text-danger, .alert-danger, .badge-danger').should('exist');
+        cy.get('.btn-danger, .text-danger, .alert-danger').should('exist');
     });
 });

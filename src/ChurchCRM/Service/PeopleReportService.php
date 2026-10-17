@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Classification;
 use ChurchCRM\model\ChurchCRM\EventAttendQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
@@ -29,18 +30,26 @@ class PeopleReportService
 {
     public const UNASSIGNED_CLASSIFICATION = 0;
 
+    /** Mailing-label modes, as Reports/PDFLabel.php names them: by person, or one per household. */
+    public const LABEL_PERSON = 'indiv';
+    public const LABEL_HOUSEHOLD = 'fam';
+
     private const FAMILY_ROLE_HEAD = 1;
     private const FAMILY_ROLE_SPOUSE = 2;
 
     /**
-     * @return array<string, array{name: string, description: string, params: array<string, array<string, mixed>>, columns: array<string, string>}>
+     * A report with 'labelGrouping' addresses its labels itself (each row carries a LabelMode);
+     * on the others the user picks one label per person or per household.
+     * Missing People reads event attendance, so only users who can open Events get it.
+     *
+     * @return array<string, array{name: string, description: string, params: array<string, array<string, mixed>>, columns: array<string, string>, labelGrouping?: string}>
      */
     public function getReports(): array
     {
         $month = ['type' => 'month', 'label' => gettext('Month')];
         $classification = ['type' => 'classification', 'label' => gettext('Classification')];
 
-        return [
+        $reports = [
             'person-by-property' => [
                 'name' => gettext('Person by Property'),
                 'description' => gettext('Returns person records which are assigned the given property.'),
@@ -104,14 +113,22 @@ class PeopleReportService
                 'description' => gettext('People with wedding anniversaries in a particular month'),
                 'params' => ['month' => $month, 'classification' => $classification],
                 'columns' => ['Day' => gettext('Day'), 'Date' => gettext('Date'), 'Name' => gettext('Name')],
+                'labelGrouping' => gettext('One label for each couple.'),
             ],
             'birthdays-anniversaries' => [
                 'name' => gettext('Birthdays & Anniversaries'),
                 'description' => gettext('People with birthdays or wedding anniversaries in a particular month'),
                 'params' => ['month' => $month, 'classification' => $classification],
                 'columns' => ['Type' => gettext('Type'), 'Day' => gettext('Day'), 'Name' => gettext('Name')],
+                'labelGrouping' => gettext('Birthdays are addressed to the person and anniversaries to the couple.'),
             ],
         ];
+
+        if (!AuthenticationManager::getCurrentUser()->canViewEvents()) {
+            unset($reports['missing-people']);
+        }
+
+        return $reports;
     }
 
     public function getReport(string $slug): ?array
@@ -277,6 +294,52 @@ class PeopleReportService
     }
 
     /**
+     * Who gets a mailing label when a report is printed as labels (#10343): person id =>
+     * label modes. A row keeps its own LabelMode; other rows get $defaultMode. Someone in
+     * the report twice, such as a birthday and an anniversary in the same month, gets both.
+     * An anniversary's household label lists both spouses (heads and spouses of the family).
+     * Empty when the report is unknown or a required filter is missing.
+     *
+     * @param array<string, mixed> $input query-string values, as for resolveParams()
+     * @return array<int, string[]>
+     */
+    public function labelEntries(string $slug, array $input, string $defaultMode): array
+    {
+        if ($this->getReport($slug) === null) {
+            return [];
+        }
+        ['values' => $values, 'missing' => $missing] = $this->resolveParams($slug, $input);
+        if ($missing !== []) {
+            return [];
+        }
+
+        $entries = [];
+        $anniversaryFamilies = [];
+        foreach ($this->run($slug, $values) as $row) {
+            $mode = $row['LabelMode'] ?? $defaultMode;
+            $entries[(int) $row['Id']][$mode] = $mode;
+            if (($row['LabelMode'] ?? null) === self::LABEL_HOUSEHOLD) {
+                $anniversaryFamilies[(int) $row['FamilyId']] = true;
+            }
+        }
+
+        // The classification filter picks the couples; the label names both spouses even
+        // when the filter matched only one of them.
+        if ($anniversaryFamilies !== []) {
+            $couple = PersonQuery::create()
+                ->filterByFamId(array_keys($anniversaryFamilies), Criteria::IN)
+                ->filterByFmrId([self::FAMILY_ROLE_HEAD, self::FAMILY_ROLE_SPOUSE])
+                ->select(['Id'])
+                ->find();
+            foreach ($couple as $personId) {
+                $entries[(int) $personId][self::LABEL_HOUSEHOLD] = self::LABEL_HOUSEHOLD;
+            }
+        }
+
+        return array_map('array_values', $entries);
+    }
+
+    /**
      * @param int[] $classifications
      */
     private function personByProperty(int $propertyId, array $classifications): array
@@ -407,7 +470,7 @@ class PeopleReportService
         $rows = [];
         $query = PersonQuery::create()->filterByBirthMonth($month)->filterByBirthDay(0, Criteria::GREATER_THAN);
         foreach ($this->applyClassification($query, $classifications)->find() as $person) {
-            $rows[] = $this->row($person, ['Type' => gettext('Birthday'), 'Day' => (int) $person->getBirthDay(), 'SortName' => $person->getLastName() . ' ' . $person->getFirstName()]);
+            $rows[] = $this->row($person, ['Type' => gettext('Birthday'), 'Day' => (int) $person->getBirthDay(), 'SortName' => $person->getLastName() . ' ' . $person->getFirstName(), 'LabelMode' => self::LABEL_PERSON]);
         }
         foreach ($this->anniversaryRows($month, $classifications) as $row) {
             $rows[] = ['Type' => gettext('Anniversary')] + $row;
@@ -439,6 +502,7 @@ class PeopleReportService
                 'Day' => (int) $date->format('j'),
                 'Date' => $date->format('Y-m-d'),
                 'SortName' => $person->getLastName() . ' ' . $person->getFirstName(),
+                'LabelMode' => self::LABEL_HOUSEHOLD,
             ]);
         }
 

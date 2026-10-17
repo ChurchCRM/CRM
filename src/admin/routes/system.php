@@ -7,7 +7,6 @@ use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\LocaleInfo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Emails\TestEmail;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
@@ -248,95 +247,6 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
                 [gettext('Admin'), '/admin/'],
                 [gettext('Debug')],
             ]),
-        ];
-
-        return $renderer->render($response, 'debug.php', $pageArgs);
-    });
-
-    // Email Debug page — sends a test message to the church's own email
-    // address so an admin can confirm the SMTP settings work end-to-end.
-    $group->get('/debug/email', function (Request $request, Response $response): Response {
-        $renderer = new PhpRenderer(__DIR__ . '/../../v2/templates/email/');
-
-        $configError = null;
-        $configErrorFixUrl = null; // page where the setting actually lives
-        $churchEmail = ChurchMetaData::getChurchEmail();
-        if (!SystemConfig::getBooleanValue('bEnabledEmail')) {
-            $configError = gettext('Email is disabled. Enable it in the Email Dashboard settings before testing.');
-            $configErrorFixUrl = SystemURLs::getRootPath() . '/v2/email/dashboard?settings=open';
-        } elseif (empty(SystemConfig::getValue('sSMTPHost'))) {
-            $configError = gettext('SMTP Host is not configured.');
-            $configErrorFixUrl = SystemURLs::getRootPath() . '/v2/email/dashboard?settings=open';
-        } elseif (empty($churchEmail)) {
-            // Church email is configured on the Church Information page, not
-            // the Email Dashboard — point the admin at the right page.
-            $configError = gettext('Church Email address is not set — the test email has nowhere to go.');
-            $configErrorFixUrl = SystemURLs::getRootPath() . '/admin/system/church-info';
-        }
-
-        // Gather SMTP settings up-front so the page can render them even when
-        // we abort before the send (config errors) — admins still get the
-        // summary of what IS configured.
-        $smtpSettings = [
-            'host'     => SystemConfig::getValue('sSMTPHost') ?: '(not set)',
-            'secure'   => SystemConfig::getValue('sPHPMailerSMTPSecure') ?: gettext('(none)'),
-            'auth'     => SystemConfig::getBooleanValue('bSMTPAuth') ? gettext('Yes') : gettext('No'),
-            'username' => SystemConfig::getBooleanValue('bSMTPAuth') ? SystemConfig::getValue('sSMTPUser') : null,
-            'autoTLS'  => SystemConfig::getBooleanValue('bPHPMailerAutoTLS') ? gettext('Yes') : gettext('No'),
-            'timeout'  => SystemConfig::getIntValue('iSMTPTimeout') . 's',
-        ];
-
-        $sendResult = [
-            'attempted' => false,
-            'success'   => false,
-            'error'     => null,
-            'debugLog'  => '',
-            'from'      => null,
-            'fromName'  => null,
-            'to'        => null,
-        ];
-
-        if ($configError === null) {
-            $email = new TestEmail([$churchEmail]);
-            $sendResult['attempted'] = true;
-            $sendResult['from']     = $churchEmail;
-            $sendResult['fromName'] = ChurchMetaData::getChurchName();
-            $sendResult['to']       = $churchEmail;
-
-            // Capture PHPMailer's HTML debug output (Debugoutput='html' echoes
-            // directly during send) so we can show it inline instead of bleeding
-            // into the rendered page.
-            ob_start();
-            try {
-                $sendResult['success'] = $email->send();
-            } catch (\Throwable $e) {
-                $sendResult['success'] = false;
-                $sendResult['error']   = $e->getMessage();
-            }
-            $sendResult['debugLog'] = ob_get_clean() ?: '';
-
-            if (!$sendResult['success'] && empty($sendResult['error'])) {
-                $sendResult['error'] = $email->getError();
-            }
-        }
-
-        $pageArgs = [
-            'sRootPath'    => SystemURLs::getRootPath(),
-            'sPageTitle'   => gettext('Email Debug'),
-            'sPageSubtitle' => gettext('Send a test message to verify your SMTP configuration'),
-            'aBreadcrumbs' => PageHeader::breadcrumbs([
-                [gettext('Admin'), '/admin/'],
-                [gettext('Email Dashboard'), '/v2/email/dashboard'],
-                [gettext('Debug')],
-            ]),
-            'configError'  => $configError,
-            'configErrorFixUrl' => $configErrorFixUrl,
-            'smtpSettings' => $smtpSettings,
-            'sendResult'   => $sendResult,
-            // ?settings=open matches the dashboard tile behavior — opens the
-            // settings panel so the admin lands directly on the fields they
-            // need to edit, not the dashboard landing view.
-            'emailDashboardUrl' => SystemURLs::getRootPath() . '/v2/email/dashboard?settings=open',
         ];
 
         return $renderer->render($response, 'debug.php', $pageArgs);
@@ -949,10 +859,19 @@ function adminChangeUserPassword(Request $request, Response $response, array $ar
     ];
 
     if ($request->getMethod() === 'POST') {
-        $loginRequestBody = $request->getParsedBody();
+        $loginRequestBody = (array) $request->getParsedBody();
+        $newPassword = (string) ($loginRequestBody['NewPassword1'] ?? '');
 
         try {
-            $user->adminSetUserPassword($loginRequestBody['NewPassword1']);
+            if (trim($newPassword) === '') {
+                throw new PasswordChangeException('New', gettext('Enter a new password'));
+            }
+
+            if ($newPassword !== (string) ($loginRequestBody['NewPassword2'] ?? '')) {
+                throw new PasswordChangeException('New', gettext('You must enter the same password in both boxes'));
+            }
+
+            $user->adminSetUserPassword($newPassword);
 
             $pageArgs['sPasswordChangeSuccess'] = true;
 
@@ -1022,7 +941,8 @@ function adminUserEditorNew(Request $request, Response $response): Response
             $pageArgs['perms']            = ['admin' => 0, 'editSelf' => 0, 'addRecords' => 0,
                                              'editRecords' => 0, 'deleteRecords' => 0,
                                              'menuOptions' => 0, 'manageGroups' => 0,
-                                             'finance' => 0, 'manageFundraisers' => 0, 'notes' => 0,
+                                             'finance' => 0, 'manageFundraisers' => 0,
+                                             'manageMinistries' => 0, 'manageMyMinistries' => 0, 'notes' => 0,
                                              'addEvent' => 0];
             return $renderer->render($response, 'user-editor.php', $pageArgs);
         }
@@ -1073,7 +993,7 @@ function adminUserEditorNew(Request $request, Response $response): Response
         'admin' => 0, 'editSelf' => 0, 'addRecords' => 0,
         'editRecords' => 0, 'deleteRecords' => 0,
         'menuOptions' => 0, 'manageGroups' => 0,
-        'finance' => 0, 'manageFundraisers' => 0, 'notes' => 0,
+        'finance' => 0, 'manageFundraisers' => 0, 'manageMinistries' => 0, 'manageMyMinistries' => 0, 'notes' => 0,
         'addEvent' => 0,
     ];
     $pageArgs['formAction'] = SystemURLs::getRootPath() . '/admin/system/users/new';
@@ -1164,6 +1084,8 @@ function adminUserEditorEdit(Request $request, Response $response, array $args):
         'manageGroups'       => $user->getManageGroups(),
         'finance'            => $user->getFinance(),
         'manageFundraisers'  => $user->getManageFundraisers(),
+        'manageMinistries'   => $user->getManageMinistries(),
+        'manageMyMinistries' => $user->getManageMyMinistries(),
         'notes'              => $user->getNotes(),
         'addEvent'           => $userService->getAddEventPermission($personId),
     ];
