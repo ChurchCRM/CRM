@@ -9337,10 +9337,6 @@ msgid "Load demo data"
 msgstr "Φόρτωση δοκιμαστικών δεδομένων"
 
 #: 
-msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
-msgstr "Φόρτωση δειγματικών οικογενειών, ατόμων, ομάδων και εγγραφών προσφορών. Ο ασφαλέστερος τρόπος να μάθετε το ChurchCRM πριν καταχωρίσετε πραγματικά δεδομένα."
-
-#: 
 msgid "Log Files"
 msgstr "Αρχεία καταγραφής"
 
@@ -9375,10 +9371,6 @@ msgstr "Διαχείριση ταμείων προσφορών για οικον
 #: 
 msgid "Manage donations, pledges, and financial records"
 msgstr "Διαχείριση προσφορών, οικονομικών δεσμεύσεων και οικονομικών εγγραφών"
-
-#: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "Διαχείριση εργαλείων email και ρυθμίσεων SMTP"
 
 #: 
 msgid "Manage families, people, and demographic information"
@@ -10356,10 +10348,6 @@ msgid "Distance Unit"
 msgstr "Μονάδα απόστασης"
 
 #: 
-msgid "Email Dashboard"
-msgstr "Πίνακας εργαλείων ηλεκτρονικής αλληλογραφίας"
-
-#: 
 msgid "Email Integrations"
 msgstr "Ενσωματώσεις ηλεκτρονικής αλληλογραφίας"
 
@@ -10374,10 +10362,6 @@ msgstr "Σύνδεσμοι ηλεκτρονικής αλληλογραφίας �
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "Οι λίστες ηλεκτρονικής αλληλογραφίας συγχρονίζονται με το Mailchimp."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "Ενεργοποιήστε την ηλεκτρονική αλληλογραφία στο παρακάτω πάνελ ρυθμίσεων, στη συνέχεια διαμορφώστε τον διακομιστή SMTP σας."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10519,10 +10503,6 @@ msgstr "Ημερολόγια συστήματος"
 #: 
 msgid "System language for the church."
 msgstr "Γλώσσα συστήματος για την εκκλησία."
-
-#: 
-msgid "Text Dashboard"
-msgstr "Ταμπλό κειμένου"
 
 #: 
 msgid "Text Settings"
@@ -12444,10 +12424,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "Το email είναι απενεργοποιημένο. Ρυθμίστε το email πριν επαναφέρετε κωδικούς πρόσβασης ή χρησιμοποιήστε Αλλαγή κωδικού πρόσβασης."
 
 #: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "Το email είναι απενεργοποιημένο. Ενεργοποιήστε το στις ρυθμίσεις του πίνακα ελέγχου email πριν από τη δοκιμή."
-
-#: 
 msgid "Enter one of your backup recovery codes"
 msgstr "Εισαγάγετε έναν από τους εφεδρικούς κωδικούς ανάκτησής σας"
 
@@ -14093,18 +14069,6 @@ msgid "Importing..."
 msgstr "Εισαγωγή..."
 
 #: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "Συμπερίληψη τμημάτων Κατηχητικού και εγγραφών"
-
-#: 
-msgid "Include events and calendars"
-msgstr "Συμπερίληψη συμβάντων και ημερολογίων"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "Συμπερίληψη οικονομικών δεδομένων (δωρεές, υποσχέσεις)"
-
-#: 
 msgid "Invalid Entry"
 msgstr "Μη έγκυρη καταχώρηση"
 
@@ -14277,16 +14241,8 @@ msgid "Open in New Tab"
 msgstr "Άνοιγμα σε νέα καρτέλα"
 
 #: 
-msgid "Open in new tab"
-msgstr "Άνοιγμα σε νέα καρτέλα"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Ανοίξτε την εφαρμογή ελέγχου ταυτότητας και σαρώστε αυτόν τον κωδικό QR"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "Προαιρετικά δεδομένα προς συμπερίληψη"
 
 #: 
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
@@ -19745,10 +19701,6 @@ msgid "Choose where the schedule's dates come from"
 msgstr "Επιλέξτε από πού προέρχονται οι ημερομηνίες του προγράμματος"
 
 #: 
-msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
-msgstr "Επιλέξτε ποια εμπειρία εθελοντισμού χρησιμοποιεί αυτή η εκκλησία, πόσο νωρίς συμπληρώνονται τα προγράμματα και πότε στέλνονται οι υπενθυμίσεις, και ελέγξτε ότι οι εργασίες παρασκηνίου εκτελούνται."
-
-#: 
 msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
 msgstr "Επιλέξτε ποιος καλύπτει κάθε θέση από προεπιλογή. Η επιλογή αποθηκεύεται στο πρόγραμμα: ανατίθενται σε κάθε πραγματοποίηση που δημιουργείται τώρα και σε όσες δημιουργεί αργότερα η ημερήσια συμπλήρωση, όσο παραμένουν κατάλληλοι, και τους ζητείται να απαντήσουν εκτός αν τους ορίσετε ως αποδεκτούς. Αφήστε μια θέση ανοιχτή για να την αναθέτετε εβδομάδα με την εβδομάδα."
 
@@ -19779,10 +19731,6 @@ msgstr "Οι εκδηλώσεις εκκλησίας ενός είδους πρ�
 #: 
 msgid "Church website"
 msgstr "Ιστότοπος εκκλησίας"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "Το ChurchCRM έχει δύο τρόπους διαχείρισης εθελοντών. Προορίζεται να χρησιμοποιείται μόνο ο ένας κάθε φορά· η ρύθμιση στα αριστερά αποφασίζει ποιον βλέπει αυτή η εκκλησία. Η εναλλαγή κρύβει ή εμφανίζει σελίδες και στοιχεία μενού — δεν διαγράφει ποτέ δεδομένα, ώστε να μπορείτε να επιστρέψετε."
 
 #: 
 msgid "Close event details"
@@ -20107,10 +20055,6 @@ msgstr "Το email δεν βρέθηκε"
 #: 
 msgid "Email preview"
 msgstr "Προεπισκόπηση email"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "Η αποστολή email είναι απενεργοποιημένη"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
@@ -22841,10 +22785,6 @@ msgid "View my schedule"
 msgstr "Προβολή του προγράμματός μου"
 
 #: 
-msgid "View only"
-msgstr "Μόνο προβολή"
-
-#: 
 msgid "View person"
 msgstr "Προβολή Μέλους"
 
@@ -22875,10 +22815,6 @@ msgstr "Ανάθεση εθελοντή"
 #: 
 msgid "Volunteer declined"
 msgstr "Ο εθελοντής αρνήθηκε"
-
-#: 
-msgid "Volunteer experience"
-msgstr "Εμπειρία εθελοντισμού"
 
 #: 
 msgid "Volunteer positions still need to be filled"
@@ -23019,10 +22955,6 @@ msgstr "Ποια εμπειρία Διαχείρισης εθελοντών εί
 #: 
 msgid "Which events"
 msgstr "Ποιες εκδηλώσεις"
-
-#: 
-msgid "Which volunteer experience this church uses. The card on the right explains each choice."
-msgstr "Ποια εμπειρία εθελοντισμού χρησιμοποιεί αυτή η εκκλησία. Η κάρτα δεξιά εξηγεί κάθε επιλογή."
 
 #: 
 msgid "Who is covering"

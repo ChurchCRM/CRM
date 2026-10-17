@@ -9363,10 +9363,6 @@ msgid "Load demo data"
 msgstr "Demó adatok betöltése"
 
 #: 
-msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
-msgstr "Minta családok, személyek, csoportok és adományi adatok betöltése. A legbiztonságosabb módja a ChurchCRM megismerésének a valódi adatok megadása előtt."
-
-#: 
 msgid "Log Files"
 msgstr "Naplófájlok"
 
@@ -9401,10 +9397,6 @@ msgstr "Adományalapok kezelése pénzügyi nyilvántartáshoz"
 #: 
 msgid "Manage donations, pledges, and financial records"
 msgstr "Adományok, felajánlások és pénzügyi nyilvántartások kezelése"
-
-#: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "E-mail eszközök és SMTP konfiguráció kezelése"
 
 #: 
 msgid "Manage families, people, and demographic information"
@@ -10382,10 +10374,6 @@ msgid "Distance Unit"
 msgstr "Távolság egység"
 
 #: 
-msgid "Email Dashboard"
-msgstr "E-mail műszerfal"
-
-#: 
 msgid "Email Integrations"
 msgstr "E-mail integrációk"
 
@@ -10400,10 +10388,6 @@ msgstr "E-mail linkek csoport- és személy nézetekben"
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "Az e-mail listák szinkronizálva vannak a Mailchimpel."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "Engedélyezze az e-mailt az alábbi beállítások panelen, majd állítsa be az SMTP-kiszolgálót."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10545,10 +10529,6 @@ msgstr "Rendszer naptárak"
 #: 
 msgid "System language for the church."
 msgstr "Rendszer nyelve az egyházhoz."
-
-#: 
-msgid "Text Dashboard"
-msgstr "Szöveg irányítópult"
 
 #: 
 msgid "Text Settings"
@@ -12470,10 +12450,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "Az e-mail le van tiltva. A jelszavak visszaállítása előtt konfigurálja az e-mailt, vagy használja a Jelszó módosítása funkciót."
 
 #: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "Az e-mail le van tiltva. A tesztelés előtt engedélyezze az E-mail irányítópult beállításaiban."
-
-#: 
 msgid "Enter one of your backup recovery codes"
 msgstr "Adja meg az egyik mentési helyreállítási kódját"
 
@@ -14119,18 +14095,6 @@ msgid "Importing..."
 msgstr "Importálás..."
 
 #: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "Vasárnapi iskola osztályok és beiratkozások belefoglalása"
-
-#: 
-msgid "Include events and calendars"
-msgstr "Események és naptárak belefoglalása"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "Pénzügyi adatok belefoglalása (adományi alapok, ígéretek)"
-
-#: 
 msgid "Invalid Entry"
 msgstr "Érvénytelen bejegyzés"
 
@@ -14303,16 +14267,8 @@ msgid "Open in New Tab"
 msgstr "Megnyitás új lapon"
 
 #: 
-msgid "Open in new tab"
-msgstr "Megnyitás új lapon"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Nyissa meg a hitelesítő alkalmazást, és olvassa be a QR-kódot"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "Opcionális Adatok Belefoglalásához"
 
 #: 
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
@@ -19771,10 +19727,6 @@ msgid "Choose where the schedule's dates come from"
 msgstr "Válaszd ki, honnan származnak az ütemezés dátumai"
 
 #: 
-msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
-msgstr "Válaszd ki, melyik önkéntes-élményt használja ez a gyülekezet, milyen messze előre töltődnek az ütemezések, és mikor mennek ki az emlékeztetők, valamint ellenőrizd, hogy futnak-e a háttérfeladatok."
-
-#: 
 msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
 msgstr "Válaszd ki, ki tölti be alapértelmezetten az egyes pozíciókat. A választás az ütemezésen mentődik: most létrehozott alkalmakra és azokra, amelyeket a napi kiegészítés később hoz létre, beosztásra kerülnek, amíg képesítettek, és választ kérünk tőlük, hacsak nem állítod őket elfogadottra. Hagyd nyitva a pozíciót, ha hétről hétre szeretnéd beosztani."
 
@@ -19805,10 +19757,6 @@ msgstr "Az adott típusú gyülekezeti események a gyülekezeti naptárra kerü
 #: 
 msgid "Church website"
 msgstr "Gyülekezeti weboldal"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "A ChurchCRM kétféleképpen kezeli az önkénteseket. Egyszerre csak az egyiket érdemes használni; a bal oldali beállítás dönti el, melyiket látja ez a gyülekezet. A váltás oldalakat és menüpontokat rejt el vagy mutat – soha nem töröl adatot, így visszaválthatsz."
 
 #: 
 msgid "Close event details"
@@ -20133,10 +20081,6 @@ msgstr "Az e-mail nem található"
 #: 
 msgid "Email preview"
 msgstr "E-mail előnézete"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "Az e-mail küldése le van tiltva"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
@@ -22867,10 +22811,6 @@ msgid "View my schedule"
 msgstr "Ütemezésem megtekintése"
 
 #: 
-msgid "View only"
-msgstr "Csak megtekintés"
-
-#: 
 msgid "View person"
 msgstr "Személy megtekintése"
 
@@ -22901,10 +22841,6 @@ msgstr "Önkéntes beosztás"
 #: 
 msgid "Volunteer declined"
 msgstr "Az önkéntes elutasította"
-
-#: 
-msgid "Volunteer experience"
-msgstr "Önkéntes-élmény"
 
 #: 
 msgid "Volunteer positions still need to be filled"
@@ -23045,10 +22981,6 @@ msgstr "Melyik Önkéntes-kezelési élmény aktív. A V1 a régi Önkéntes leh
 #: 
 msgid "Which events"
 msgstr "Mely események"
-
-#: 
-msgid "Which volunteer experience this church uses. The card on the right explains each choice."
-msgstr "Melyik önkéntes-élményt használja ez a gyülekezet. A jobb oldali kártya elmagyarázza az egyes lehetőségeket."
 
 #: 
 msgid "Who is covering"

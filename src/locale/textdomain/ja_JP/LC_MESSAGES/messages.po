@@ -9293,10 +9293,6 @@ msgid "Load demo data"
 msgstr "デモデータを読み込む"
 
 #: 
-msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
-msgstr "サンプルの家族、個人、グループ、献金記録を読み込みます。実際のデータを入力する前にChurchCRMを学ぶ最も安全な方法です。"
-
-#: 
 msgid "Log Files"
 msgstr "ログファイル"
 
@@ -9331,10 +9327,6 @@ msgstr "財務管理用の献金基金を管理"
 #: 
 msgid "Manage donations, pledges, and financial records"
 msgstr "献金、誓約、財務記録を管理"
-
-#: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "メールツールとSMTP設定を管理"
 
 #: 
 msgid "Manage families, people, and demographic information"
@@ -10312,10 +10304,6 @@ msgid "Distance Unit"
 msgstr "距離単位"
 
 #: 
-msgid "Email Dashboard"
-msgstr "メールダッシュボード"
-
-#: 
 msgid "Email Integrations"
 msgstr "メール統合"
 
@@ -10330,10 +10318,6 @@ msgstr "グループおよび人ビューのメールリンク"
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "メールリストはMailchimpと同期されます。"
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "以下の設定パネルでメールを有効にしてから、SMTPサーバーを構成します。"
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10475,10 +10459,6 @@ msgstr "システムカレンダー"
 #: 
 msgid "System language for the church."
 msgstr "教会のシステム言語。"
-
-#: 
-msgid "Text Dashboard"
-msgstr "テキストダッシュボード"
 
 #: 
 msgid "Text Settings"
@@ -12399,10 +12379,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "メールは無効です。パスワードをリセットする前にメールを設定するか、パスワード変更をご使用ください。"
 
 #: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "メールは無効です。テストを行う前に、メールダッシュボードの設定で有効にしてください。"
-
-#: 
 msgid "Enter one of your backup recovery codes"
 msgstr "バックアップ回復コードのいずれかを入力してください"
 
@@ -14048,18 +14024,6 @@ msgid "Importing..."
 msgstr "インポート中..."
 
 #: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "日曜学校のクラスと登録を含める"
-
-#: 
-msgid "Include events and calendars"
-msgstr "イベントとカレンダーを含める"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "財務データ（寄付基金、誓約）を含める"
-
-#: 
 msgid "Invalid Entry"
 msgstr "無効なエントリ"
 
@@ -14232,16 +14196,8 @@ msgid "Open in New Tab"
 msgstr "新しいタブで開く"
 
 #: 
-msgid "Open in new tab"
-msgstr "新しいタブで開く"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "認証アプリを開いてこの QR コードをスキャンしてください"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "含めるオプションデータ"
 
 #: 
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
@@ -19684,10 +19640,6 @@ msgid "Choose where the schedule's dates come from"
 msgstr "スケジュールの日付の基準を選択してください"
 
 #: 
-msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
-msgstr "このミニストリーで使用するボランティア体験、スケジュールを何週間先まで埋めるか、リマインダーを送る時期を選び、バックグラウンドジョブが動いているか確認します。"
-
-#: 
 msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
 msgstr "各役割の既定の担当者を選びます。この選択はスケジュールに保存され、今作られるすべての開催回と、のちに毎日の補充で作られる開催回に、資格が続く限り割り当てられます。承諾済みに設定しない限り、本人に応答が求められます。役割を空けておけば、週ごとに割り当てられます。"
 
@@ -19718,10 +19670,6 @@ msgstr "種類別の教会行事は、教会カレンダーに追加されます
 #: 
 msgid "Church website"
 msgstr "教会のウェブサイト"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM には奉仕者を管理する方法が2つあります。同時に使うのは1つだけで、左の設定でこの教会に表示される方が決まります。切り替えるとページやメニュー項目が非表示・表示になるだけで、データは削除されないため、いつでも元に戻せます。"
 
 #: 
 msgid "Close event details"
@@ -20046,10 +19994,6 @@ msgstr "メールが見つかりません"
 #: 
 msgid "Email preview"
 msgstr "メールのプレビュー"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "メール送信は無効です"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
@@ -22776,10 +22720,6 @@ msgid "View my schedule"
 msgstr "自分のスケジュールを見る"
 
 #: 
-msgid "View only"
-msgstr "閲覧のみ"
-
-#: 
 msgid "View person"
 msgstr "人物を表示"
 
@@ -22810,10 +22750,6 @@ msgstr "奉仕者の割り当て"
 #: 
 msgid "Volunteer declined"
 msgstr "奉仕者が辞退しました"
-
-#: 
-msgid "Volunteer experience"
-msgstr "ボランティア体験"
 
 #: 
 msgid "Volunteer positions still need to be filled"
@@ -22952,10 +22888,6 @@ msgstr "有効なボランティア管理の体験を選びます。V1 は従来
 #: 
 msgid "Which events"
 msgstr "対象の行事"
-
-#: 
-msgid "Which volunteer experience this church uses. The card on the right explains each choice."
-msgstr "この教会が使うボランティア体験を選びます。右のカードで各選択肢を説明しています。"
 
 #: 
 msgid "Who is covering"

@@ -5,8 +5,9 @@
  *
  * Contract: recipients are person / family ids, never addresses. The server
  * resolves each id, skips the deceased, do-not-email, address-less and
- * duplicate addresses (reporting each by name and reason), and sends one
- * message per remaining recipient through the configured SMTP server.
+ * duplicate addresses (reporting each by name and reason), and queues one
+ * message per remaining recipient (#10356); the queue is covered by
+ * people.email-queue.spec.js.
  *
  * Delivery is verified against the Mailpit sink the test stack ships with.
  * Override its URL with `--env mailpitUrl=http://localhost:8070` when the
@@ -45,21 +46,24 @@ describe("API POST /api/email/send", () => {
             clearMailpit();
         });
 
-        it("sends one message per resolvable recipient and reports every skipped one by name", () => {
-            send({
+        it("queues one message per resolvable recipient and reports every skipped one by name", () => {
+            cy.sendComposerEmailNow({
                 personIds: [2, 105, 19, 3, 35, 2],
                 familyIds: [1],
                 subject: `Hello <b>there</b> ${tag}`,
                 body: "Line one\nLine two <script>alert(1)</script>",
-            }).then((resp) => {
-                expect(resp.body.counts).to.deep.equal({ sent: 2, skipped: 4, failed: 0 });
-                expect(resp.body.failed).to.deep.equal([]);
+            }).then((result) => {
+                expect(result.counts).to.deep.equal({ queued: 2, sent: 0, skipped: 4, failed: 0 });
+                expect(result.batch).to.match(/^[0-9a-f]{32}$/);
+                expect(result.sent).to.deep.equal([]);
+                expect(result.failed).to.deep.equal([]);
+                expect(result.progress).to.include({ total: 2, sent: 2, failed: 0, done: true });
 
-                expect(resp.body.sent.map((r) => r.personId)).to.deep.equal([2, 3]);
-                expect(resp.body.sent[0]).to.include({ name: "Mathew Campbell", email: "mathew.campbell@example.com" });
+                expect(result.queued.map((r) => r.personId)).to.deep.equal([2, 3]);
+                expect(result.queued[0]).to.include({ name: "Mathew Campbell", email: "mathew.campbell@example.com" });
 
                 const skipped = Object.fromEntries(
-                    resp.body.skipped.map((r) => [r.personId ?? `family-${r.familyId}`, r]),
+                    result.skipped.map((r) => [r.personId ?? `family-${r.familyId}`, r]),
                 );
                 expect(skipped[105]).to.include({ name: "Mary Smith", reason: "no-email" });
                 expect(skipped[19]).to.include({ name: "Laurie Ray", reason: "deceased" });
@@ -146,7 +150,8 @@ describe("API POST /api/email/send", () => {
 
         it("reports unknown ids as skipped rather than failing the request", () => {
             send({ personIds: [999999], subject: "s", body: "b" }).then((resp) => {
-                expect(resp.body.counts).to.deep.equal({ sent: 0, skipped: 1, failed: 0 });
+                expect(resp.body.counts).to.deep.equal({ queued: 0, sent: 0, skipped: 1, failed: 0 });
+                expect(resp.body.batch).to.be.null;
                 expect(resp.body.skipped[0]).to.include({ personId: 999999, reason: "not-found" });
             });
         });

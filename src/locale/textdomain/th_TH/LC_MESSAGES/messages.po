@@ -9305,10 +9305,6 @@ msgid "Load demo data"
 msgstr "โหลดข้อมูลตัวอย่าง"
 
 #: 
-msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
-msgstr "โหลดข้อมูลตัวอย่างครอบครัว บุคคล กลุ่ม และบันทึกการถวาย วิธีที่ปลอดภัยที่สุดในการเรียนรู้ ChurchCRM ก่อนใส่ข้อมูลจริง"
-
-#: 
 msgid "Log Files"
 msgstr "ไฟล์บันทึก"
 
@@ -9343,10 +9339,6 @@ msgstr "จัดการกองทุนถวายสำหรับกา
 #: 
 msgid "Manage donations, pledges, and financial records"
 msgstr "จัดการการถวาย คำปฏิญาณถวาย และบันทึกทางการเงิน"
-
-#: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "จัดการเครื่องมืออีเมลและการกำหนดค่า SMTP"
 
 #: 
 msgid "Manage families, people, and demographic information"
@@ -10324,10 +10316,6 @@ msgid "Distance Unit"
 msgstr "หน่วยระยะทาง"
 
 #: 
-msgid "Email Dashboard"
-msgstr "แดชบอร์ดอีเมล"
-
-#: 
 msgid "Email Integrations"
 msgstr "การรวมอีเมล"
 
@@ -10342,10 +10330,6 @@ msgstr "ลิงก์อีเมลในมุมมองกลุ่มแ
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "รายการอีเมลซิงค์กับ Mailchimp"
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "เปิดใช้งานอีเมลในแผงการตั้งค่าด้านล่าง จากนั้นกำหนดค่าเซิร์ฟเวอร์ SMTP ของคุณ"
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10487,10 +10471,6 @@ msgstr "ปฏิทินระบบ"
 #: 
 msgid "System language for the church."
 msgstr "ภาษาระบบสำหรับโบสถ์"
-
-#: 
-msgid "Text Dashboard"
-msgstr "แดชบอร์ดข้อความ"
 
 #: 
 msgid "Text Settings"
@@ -12411,10 +12391,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "อีเมลถูกปิดใช้งาน โปรดตั้งค่าอีเมลก่อนรีเซ็ตรหัสผ่าน หรือใช้เปลี่ยนรหัสผ่าน"
 
 #: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "อีเมลถูกปิดใช้งาน โปรดเปิดใช้งานในการตั้งค่าแดชบอร์ดอีเมลก่อนทดสอบ"
-
-#: 
 msgid "Enter one of your backup recovery codes"
 msgstr "ป้อนรหัสกู้คืนสำรองของคุณหนึ่งรหัส"
 
@@ -14060,18 +14036,6 @@ msgid "Importing..."
 msgstr "กำลังนำเข้า..."
 
 #: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "รวมชั้นเรียนโรงเรียนวันอาทิตย์และการลงทะเบียน"
-
-#: 
-msgid "Include events and calendars"
-msgstr "รวมกิจกรรมและปฏิทิน"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "รวมข้อมูลการเงิน (กองทุนบริจาค คำมั่นสัญญา)"
-
-#: 
 msgid "Invalid Entry"
 msgstr "รายการไม่ถูกต้อง"
 
@@ -14244,16 +14208,8 @@ msgid "Open in New Tab"
 msgstr "เปิดในแท็บใหม่"
 
 #: 
-msgid "Open in new tab"
-msgstr "เปิดในแท็บใหม่"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "เปิดแอปตรวจสอบความถูกต้องและสแกนรหัส QR นี้"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "ข้อมูลเสริมที่จะรวม"
 
 #: 
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
@@ -19696,10 +19652,6 @@ msgid "Choose where the schedule's dates come from"
 msgstr "เลือกว่าวันที่ของตารางเวลามาจากที่ใด"
 
 #: 
-msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
-msgstr "เลือกว่าคริสตจักรนี้ใช้ระบบอาสาสมัครแบบใด ล่วงหน้านานเท่าใดที่ตารางจะถูกเติม เมื่อใดที่ส่งการแจ้งเตือน และตรวจสอบว่างานเบื้องหลังทำงานอยู่"
-
-#: 
 msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
 msgstr "เลือกว่าใครมาเติมแต่ละตำแหน่งโดยค่าเริ่มต้น ตัวเลือกนี้บันทึกไว้ในตารางเวลา: เขาจะถูกมอบหมายในทุกรอบที่สร้างตอนนี้และที่การเติมประจำวันสร้างภายหลัง ตราบที่ยังมีคุณสมบัติ และจะถูกขอให้ตอบกลับ เว้นแต่คุณตั้งเป็นตอบรับแล้ว ปล่อยตำแหน่งว่างไว้เพื่อมอบหมายเป็นรายสัปดาห์"
 
@@ -19730,10 +19682,6 @@ msgstr "กิจกรรมคริสตจักรประเภทหน
 #: 
 msgid "Church website"
 msgstr "เว็บไซต์คริสตจักร"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM มีสองวิธีในการจัดการอาสาสมัคร ควรใช้เพียงวิธีเดียวในเวลาเดียวกัน การตั้งค่าทางซ้ายกำหนดว่าคริสตจักรนี้เห็นวิธีใด การสลับจะซ่อนหรือแสดงหน้าและเมนู แต่ไม่ลบข้อมูล จึงสลับกลับได้"
 
 #: 
 msgid "Close event details"
@@ -20058,10 +20006,6 @@ msgstr "ไม่พบอีเมล"
 #: 
 msgid "Email preview"
 msgstr "ตัวอย่างอีเมล"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "การส่งอีเมลถูกปิดอยู่"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
@@ -22788,10 +22732,6 @@ msgid "View my schedule"
 msgstr "ดูตารางของฉัน"
 
 #: 
-msgid "View only"
-msgstr "ดูได้อย่างเดียว"
-
-#: 
 msgid "View person"
 msgstr "ดูข้อมูลบุคคล"
 
@@ -22822,10 +22762,6 @@ msgstr "การมอบหมายอาสาสมัคร"
 #: 
 msgid "Volunteer declined"
 msgstr "อาสาสมัครปฏิเสธ"
-
-#: 
-msgid "Volunteer experience"
-msgstr "ระบบอาสาสมัคร"
 
 #: 
 msgid "Volunteer positions still need to be filled"
@@ -22964,10 +22900,6 @@ msgstr "ระบบการจัดการอาสาสมัครใด
 #: 
 msgid "Which events"
 msgstr "กิจกรรมใด"
-
-#: 
-msgid "Which volunteer experience this church uses. The card on the right explains each choice."
-msgstr "คริสตจักรนี้ใช้ระบบอาสาสมัครแบบใด การ์ดทางขวาอธิบายแต่ละตัวเลือก"
 
 #: 
 msgid "Who is covering"

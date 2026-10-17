@@ -9336,10 +9336,6 @@ msgid "Load demo data"
 msgstr "Laadi demo andmed"
 
 #: 
-msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
-msgstr "Laadige näidisperekonnad, isikud, grupid ja annetuste kirjed. Kõige turvalisem viis ChurchCRM-i õppida enne oma tegelike andmete sisestamist."
-
-#: 
 msgid "Log Files"
 msgstr "Logifailid"
 
@@ -9374,10 +9370,6 @@ msgstr "Hallake annetuste fonde finantsarvestuse jaoks"
 #: 
 msgid "Manage donations, pledges, and financial records"
 msgstr "Hallake annetusi, lubadusi ja finantskirjeid"
-
-#: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "Hallake e-posti tööriistu ja SMTP seadistust"
 
 #: 
 msgid "Manage families, people, and demographic information"
@@ -10355,10 +10347,6 @@ msgid "Distance Unit"
 msgstr "Vahemaa ühik"
 
 #: 
-msgid "Email Dashboard"
-msgstr "E-posti armatuurlaud"
-
-#: 
 msgid "Email Integrations"
 msgstr "E-posti integratsioonid"
 
@@ -10373,10 +10361,6 @@ msgstr "E-posti lingid rühma ja inimeste vaadetes"
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "E-posti loendid on Mailchimpiga sünkroonitud."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "Lubake e-post alltoodud seadete paneelil ja seejärel konfigureerige SMTP-server."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10518,10 +10502,6 @@ msgstr "Süsteemi kalendrid"
 #: 
 msgid "System language for the church."
 msgstr "Kirikule süsteemne keel."
-
-#: 
-msgid "Text Dashboard"
-msgstr "Teksti armatuurlaud"
 
 #: 
 msgid "Text Settings"
@@ -12443,10 +12423,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "E-post on keelatud. Seadistage e-post enne paroolide lähtestamist või kasutage Muuda parooli."
 
 #: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "E-post on keelatud. Lubage see enne testimist e-posti armatuurlaua seadetes."
-
-#: 
 msgid "Enter one of your backup recovery codes"
 msgstr "Sisestage üks oma varundamise taastekoodidest"
 
@@ -14092,18 +14068,6 @@ msgid "Importing..."
 msgstr "Importimine..."
 
 #: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "Lisage pühapäevakooli klassid ja registreerimised"
-
-#: 
-msgid "Include events and calendars"
-msgstr "Lisa sündmused ja kalendrid"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "Kaasata finantsteave (annetuse rahastamine, lubadused)"
-
-#: 
 msgid "Invalid Entry"
 msgstr "Vale sisestus"
 
@@ -14276,16 +14240,8 @@ msgid "Open in New Tab"
 msgstr "Ava uuel vahekaardil"
 
 #: 
-msgid "Open in new tab"
-msgstr "Ava uuel vahelehel"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Avage autentimisrakendus ja skannige see QR-kood"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "Kaasamiseks valikulised andmed"
 
 #: 
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
@@ -19744,10 +19700,6 @@ msgid "Choose where the schedule's dates come from"
 msgstr "Vali, kust ajakava kuupäevad tulevad"
 
 #: 
-msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
-msgstr "Vali, millist vabatahtlike kogemust see kogudus kasutab, kui kaugele ajakavad täidetakse ja millal meeldetuletused lähevad, ning kontrolli, et taustatööd käivad."
-
-#: 
 msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
 msgstr "Vali, kes iga ülesande vaikimisi täidab. Valik salvestatakse ajakavale: nad määratakse igale praegu loodud toimumiskorrale ja neile, mille päevane täiendus hiljem loob, kuni nad on kvalifitseeritud, ning neilt küsitakse vastust, kui sa ei sea neid nõustunuks. Jäta ülesanne lahtiseks, kui soovid seda nädal-nädalalt määrata."
 
@@ -19778,10 +19730,6 @@ msgstr "Liigi järgi koguduse sündmused lisatakse koguduse kalendrisse. Kontrol
 #: 
 msgid "Church website"
 msgstr "Koguduse veebileht"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM-is on kaks viisi vabatahtlike haldamiseks. Korraga on mõeldud kasutada ainult ühte; vasakpoolne seade otsustab, kumba see kogudus näeb. Lülitamine peidab või näitab lehti ja menüükirjeid – see ei kustuta kunagi andmeid, nii et saad tagasi lülitada."
 
 #: 
 msgid "Close event details"
@@ -20106,10 +20054,6 @@ msgstr "E-kirja ei leitud"
 #: 
 msgid "Email preview"
 msgstr "E-kirja eelvaade"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "E-kirjade saatmine on keelatud"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
@@ -22840,10 +22784,6 @@ msgid "View my schedule"
 msgstr "Vaata minu ajakava"
 
 #: 
-msgid "View only"
-msgstr "Ainult vaatamine"
-
-#: 
 msgid "View person"
 msgstr "Vaata isikut"
 
@@ -22874,10 +22814,6 @@ msgstr "Vabatahtliku määramine"
 #: 
 msgid "Volunteer declined"
 msgstr "Vabatahtlik keeldus"
-
-#: 
-msgid "Volunteer experience"
-msgstr "Vabatahtliku kogemus"
 
 #: 
 msgid "Volunteer positions still need to be filled"
@@ -23018,10 +22954,6 @@ msgstr "Milline Vabatahtlike halduse kogemus on aktiivne. V1 on vana Vabatahtlik
 #: 
 msgid "Which events"
 msgstr "Millised sündmused"
-
-#: 
-msgid "Which volunteer experience this church uses. The card on the right explains each choice."
-msgstr "Millist vabatahtlike kogemust see kogudus kasutab. Parempoolne kaart selgitab iga valikut."
 
 #: 
 msgid "Who is covering"

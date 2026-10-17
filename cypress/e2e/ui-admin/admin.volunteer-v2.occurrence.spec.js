@@ -556,6 +556,26 @@ describe("Volunteer v2 — occurrence / staffing view (#9709)", () => {
                 .should("have.attr", "href")
                 .and("include", `/people/view/${POOL_MEMBER_A}`);
         });
+
+        it("records the volunteer as accepted when Record they accepted is ticked (#10528)", () => {
+            cy.intercept("POST", "**/api/ministries/occurrences/*/assignments").as("assign");
+            cy.visit(occurrenceUrl());
+
+            openAssignPicker(posEspresso);
+            cy.get("#assign-accepted").should("not.be.checked");
+            cy.get(`.ts-dropdown .option[data-value="${POOL_MEMBER_A}"]`).should("be.visible").click();
+            cy.get("#assign-accepted").check();
+            cy.get("#assign-save").click();
+
+            cy.wait("@assign").its("request.body").should("include", { personId: POOL_MEMBER_A, accepted: true });
+            cy.get(`.volunteer-requirement[data-position-id="${posEspresso}"] .volunteer-assignment-row[data-status="accepted"]`)
+                .should("have.length", 1);
+            cy.get(`.volunteer-requirement[data-position-id="${posEspresso}"] .volunteer-status-badge`)
+                .should("contain", "Accepted");
+
+            openAssignPicker(posMilk);
+            cy.get("#assign-accepted").should("not.be.checked");
+        });
     });
 
     describe("row actions (§5.5, CR2)", () => {

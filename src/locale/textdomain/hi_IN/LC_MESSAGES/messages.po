@@ -9301,10 +9301,6 @@ msgid "Load demo data"
 msgstr "डेमो डेटा लोड करें"
 
 #: 
-msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
-msgstr "नमूना परिवार, लोग, समूह और दान रिकॉर्ड लोड करें। अपना वास्तविक डेटा डालने से पहले ChurchCRM सीखने का सबसे सुरक्षित तरीका।"
-
-#: 
 msgid "Log Files"
 msgstr "लॉग फ़ाइलें"
 
@@ -9339,10 +9335,6 @@ msgstr "वित्तीय ट्रैकिंग के लिए दा�
 #: 
 msgid "Manage donations, pledges, and financial records"
 msgstr "दान, प्रतिज्ञाएँ और वित्तीय रिकॉर्ड प्रबंधित करें"
-
-#: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "ईमेल उपकरण और SMTP कॉन्फ़िगरेशन प्रबंधित करें"
 
 #: 
 msgid "Manage families, people, and demographic information"
@@ -10320,10 +10312,6 @@ msgid "Distance Unit"
 msgstr "दूरी इकाई"
 
 #: 
-msgid "Email Dashboard"
-msgstr "ईमेल डैशबोर्ड"
-
-#: 
 msgid "Email Integrations"
 msgstr "ईमेल एकीकरण"
 
@@ -10338,10 +10326,6 @@ msgstr "समूह और लोगों के विचार में ई
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "ईमेल सूचियां Mailchimp के साथ सिंक की जाती हैं।"
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "नीचे दिए गए सेटिंग्स पैनल में ईमेल सक्षम करें, फिर अपने SMTP सर्वर को कॉन्फ़िगर करें।"
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10483,10 +10467,6 @@ msgstr "सिस्टम कैलेंडर"
 #: 
 msgid "System language for the church."
 msgstr "चर्च के लिए सिस्टम भाषा।"
-
-#: 
-msgid "Text Dashboard"
-msgstr "पाठ डैशबोर्ड"
 
 #: 
 msgid "Text Settings"
@@ -12408,10 +12388,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "ईमेल अक्षम है। पासवर्ड रीसेट करने से पहले ईमेल कॉन्फ़िगर करें, या पासवर्ड बदलें का उपयोग करें।"
 
 #: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "ईमेल अक्षम है। परीक्षण करने से पहले ईमेल डैशबोर्ड सेटिंग में इसे सक्षम करें।"
-
-#: 
 msgid "Enter one of your backup recovery codes"
 msgstr "अपने बैकअप पुनर्प्राप्ति कोड में से एक दर्ज करें"
 
@@ -14057,18 +14033,6 @@ msgid "Importing..."
 msgstr "आयात हो रहा है..."
 
 #: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "संडे स्कूल कक्षाएं और नामांकन शामिल करें"
-
-#: 
-msgid "Include events and calendars"
-msgstr "ईवेंट और कैलेंडर शामिल करें"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "वित्तीय डेटा शामिल करें (दान फंड, प्रतिज्ञाएं)"
-
-#: 
 msgid "Invalid Entry"
 msgstr "अमान्य प्रविष्टि"
 
@@ -14241,16 +14205,8 @@ msgid "Open in New Tab"
 msgstr "नए टैब में खोलें"
 
 #: 
-msgid "Open in new tab"
-msgstr "नए टैब में खोलें"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "अपना प्रमाणीकरण ऐप खोलें और इस QR कोड को स्कैन करें"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "शामिल करने के लिए वैकल्पिक डेटा"
 
 #: 
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
@@ -19709,10 +19665,6 @@ msgid "Choose where the schedule's dates come from"
 msgstr "चुनें कि अनुसूची की तारीख़ें कहाँ से आती हैं"
 
 #: 
-msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
-msgstr "चुनें कि यह कलीसिया कौन-सा स्वयंसेवक अनुभव उपयोग करती है, अनुसूचियाँ कितने आगे तक भरी जाती हैं और अनुस्मारक कब जाते हैं, और जाँचें कि पृष्ठभूमि कार्य चल रहे हैं।"
-
-#: 
 msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
 msgstr "चुनें कि हर पद को डिफ़ॉल्ट रूप से कौन भरता है। चयन अनुसूची में सहेजा जाता है: वे अभी बने हर अवसर पर और दैनिक पूर्ति द्वारा बाद में बने अवसरों पर नियुक्त होते हैं, जब तक वे योग्य रहें, और उनसे उत्तर माँगा जाता है जब तक आप उन्हें स्वीकृत न मानें। किसी पद को सप्ताह-दर-सप्ताह नियुक्त करने के लिए उसे खुला छोड़ें।"
 
@@ -19743,10 +19695,6 @@ msgstr "किसी प्रकार के कलीसिया आयो�
 #: 
 msgid "Church website"
 msgstr "कलीसिया की वेबसाइट"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM में स्वयंसेवकों को प्रबंधित करने के दो तरीके हैं। एक समय में केवल एक का उपयोग अपेक्षित है; बाईं ओर की सेटिंग तय करती है कि यह कलीसिया कौन-सा देखती है। बदलने से पृष्ठ और मेनू प्रविष्टियाँ छिप या दिख जाती हैं — यह कभी डेटा नहीं हटाता, इसलिए आप वापस जा सकते हैं।"
 
 #: 
 msgid "Close event details"
@@ -20071,10 +20019,6 @@ msgstr "ईमेल नहीं मिला"
 #: 
 msgid "Email preview"
 msgstr "ईमेल पूर्वावलोकन"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "ईमेल भेजना अक्षम है"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
@@ -22805,10 +22749,6 @@ msgid "View my schedule"
 msgstr "मेरी अनुसूची देखें"
 
 #: 
-msgid "View only"
-msgstr "केवल देखें"
-
-#: 
 msgid "View person"
 msgstr "व्यक्ति देखें"
 
@@ -22839,10 +22779,6 @@ msgstr "स्वयंसेवक नियुक्ति"
 #: 
 msgid "Volunteer declined"
 msgstr "स्वयंसेवक ने अस्वीकार किया"
-
-#: 
-msgid "Volunteer experience"
-msgstr "स्वयंसेवक अनुभव"
 
 #: 
 msgid "Volunteer positions still need to be filled"
@@ -22983,10 +22919,6 @@ msgstr "कौन-सा स्वयंसेवक प्रबंधन अ�
 #: 
 msgid "Which events"
 msgstr "कौन-से आयोजन"
-
-#: 
-msgid "Which volunteer experience this church uses. The card on the right explains each choice."
-msgstr "यह कलीसिया कौन-सा स्वयंसेवक अनुभव उपयोग करती है। दाईं ओर का कार्ड हर विकल्प समझाता है।"
 
 #: 
 msgid "Who is covering"

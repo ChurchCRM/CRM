@@ -13,8 +13,8 @@ intent: How agents commit and push on ChurchCRM.
 - Milestone for a PR is the `version` in `package.json` (7.8.0 → milestone `7.8.0`). Do not guess from the open milestone list or the latest release. When the PR finishes an issue, the body says `Fixes #N` (not `refs`). On merge, `.github/workflows/pr-milestone-stamp.yml` copies that milestone onto those issues and closes them if they are still open
 - A bug uses the GitHub issue type Bug. Do not add a `bug` label. Other issue labels are one of `enhancement`, `question`, `Documentation`, `Epic`, `refactor`, or `cleanup`, plus the area labels that fit (`Feature: ...`, `UI`, `API`, `Security`, `Platform: ...`). Copy exact names from `gh label list --repo ChurchCRM/CRM`. Never invent a label. Do not use `feature` (use `enhancement`), `volunteer` (use `Feature: Volunteer`), or `translation` (use `Localization`). `Epic` is only for a parent that tracks child issues. Do not add `Stale` by hand. The Monday hygiene workflow asks for a reply after 45 quiet days and closes 14 days later if nobody answers. `Security`, `security-delete-required`, `Epic`, and `good first issue` stay open. `dependencies` is Dependabot only; human dependency work uses `Package Dependencies`
 - `npm run lint` and the matching build before you ask to commit
-- UI change: check the pages in a real browser before you ask to commit, at desktop, tablet (about 820px), and phone width (browsers stop near 500px). Look for column widths, wrapping, horizontal scroll, and working menus. Fix what is off, then look again
-- UI PR: attach screenshots of the important pages (desktop, plus tablet or phone) to the PR description. Take them in that browser pass on seeded data, never real names or emails. State in the PR body that the tablet/mobile pass was done
+- UI change: check the pages in a real browser before you ask to commit, in light and dark themes, at desktop, tablet (about 820px), and phone width (browsers stop near 500px). Look for column widths, wrapping, horizontal scroll, and working menus. Fix what is off, then look again
+- UI PR: attach screenshots of the important pages (desktop, plus tablet or phone) to the PR description. Take them in that browser pass on seeded data, never real names or emails. State in the PR body that the light/dark and tablet/mobile pass was done
 - Before you ask to push, run every Cypress spec the change touches (new and existing) against the seeded test stack: `npm run docker:test:reset:db`, then `npx cypress run --config-file cypress/configs/docker.config.ts --spec "a.spec.js,b.spec.js"`. Report the pass counts. Push CI is not where a spec first fails
 - Stage files by explicit path, never `git add -A` / `.`. Before commit, `git status --short` and `git diff --cached --name-status` must list only files the task expects; unstage or delete strays (editor/`sed -i` backups like `*-E`, generated files, symlinks) first
 - Show the diff. Wait for yes before commit
@@ -31,7 +31,7 @@ intent: How agents commit and push on ChurchCRM.
 - Push only when the **latest** user message says push ("push", "push it", "go ahead and push"). "lgtm" on a diff is commit-only
 - Exception: no new approval to push a fix for failing CI or for a merge conflict on a branch you already pushed with approval. A conflict fixed by rebase pushes with `--force-with-lease`. Run `npm run lint` first, and push only the fix. New work still waits for "push"
 
-Every push runs the full GitHub CI matrix. A `PreToolUse` hook in `.claude/settings.json` prompts on `git push`. If that prompt appears and the user did not just ask to push, stop, unless it is a push the exception above allows.
+Every push runs the full GitHub CI matrix (about 15-20 billable minutes).
 
 ## Mandatory Pre-Push Biome Check
 

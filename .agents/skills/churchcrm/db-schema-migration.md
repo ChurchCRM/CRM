@@ -8,39 +8,41 @@ complexity: "advanced"
 
 # Database Schema Migration
 
-Guidelines:
-- Avoid unnecessary schema changes when moving routes; prefer new tables for group metadata if needed.
-- Use Perpl ORM migrations (`orm/schema.xml` and propel config) and generate migration SQL via tooling.
+Schema source: `orm/schema.xml` (Perpl ORM). Upgrade scripts: `src/mysql/upgrade/`, registered in `src/mysql/upgrade.json`.
 
 Process:
-1. Create migration script and review with DB team.
-2. Run migration on staging and smoke-test application.
-3. Backup production DB before applying changes; have rollback scripts ready.
-4. Apply migrations during maintenance windows; monitor for errors.
+1. Write the upgrade script and update `orm/schema.xml`, `Install.sql`, and (after asking) `seed.sql`
+2. Run the migration on a staging copy and smoke-test the app
+3. Back up the production DB before applying; keep a rollback script and a snapshot
+4. Apply in a maintenance window and watch for errors
 
-Backward compatibility:
-- Add new nullable columns or new tables initially; populate via background jobs; make fields non-null in a step-change.
+Backward compatibility: add nullable columns or new tables first, populate them (background job if large), then tighten to non-null in a later step.
 
-Rollback strategy:
-- Have explicit down-migration scripts; snapshot DB; monitor replication lag.
+## Registering a Script in upgrade.json
 
-### Adding a New Version with DB Changes <!-- learned: 2026-04-27 -->
+`UpgradeService` reads `VersionUtils::getDBVersion()` fresh on every iteration. An install walks the blocks in order: each block whose `versions` list contains the current DB version runs its `scripts` and sets the DB version to its `dbVersion`.
 
-When a new release ships with a DB migration SQL file, use a **two-block pattern** in `upgrade.json`:
+`current` is the version in development (`package.json` `version` and the `current` block's `dbVersion` are the reference). Add every script for that release to its `scripts` array, with the file named for the `dbVersion`:
 
-1. **Rename `current` → `pre-X.Y.Z`** where X.Y.Z is the version being released. Set `dbVersion` to the intermediate stepping-stone version (the version just before the new release):
+```json
+"current": {
+  "versions": ["7.5.1"],
+  "scripts": [
+    "/mysql/upgrade/7.6.0-remove-orphaned-query-parameters.sql",
+    "/mysql/upgrade/7.6.0-remove-custom-search-query.sql"
+  ],
+  "dbVersion": "7.6.0"
+}
+```
+
+At release, the shipped `current` becomes `pre-X.Y.Z` (no scripts, `dbVersion` set to the version just before the release) and a new `current` carries the SQL:
 
 ```json
 "pre-7.3.1": {
   "versions": ["7.2.0", "7.2.1", "7.2.2", "7.2.3"],
   "scripts": [],
   "dbVersion": "7.3.0"
-}
-```
-
-2. **Create a new `current` block** that runs the SQL file and sets `dbVersion` to the new release:
-
-```json
+},
 "current": {
   "versions": ["7.3.0"],
   "scripts": ["/mysql/upgrade/7.3.1-cleanup.sql"],
@@ -48,129 +50,62 @@ When a new release ships with a DB migration SQL file, use a **two-block pattern
 }
 ```
 
-**Why this works:** `UpgradeService` calls `VersionUtils::getDBVersion()` fresh on every iteration (live DB query). So a 7.2.x install first matches `pre-7.3.1` (no scripts → DB set to 7.3.0), then on the next iteration matches `current` (runs the SQL → DB set to 7.3.1). Installs already on 7.3.0 skip `pre-7.3.1` entirely and go straight to `current`.
+A 7.2.x install matches `pre-7.3.1` (DB set to 7.3.0), then `current` (runs the SQL, DB set to 7.3.1). An install on 7.3.0 goes straight to `current`. Use full paths: `/mysql/upgrade/7.3.1-<description>.sql`.
 
-Name SQL files after the target version: `7.3.1-<description>.sql`. Use full paths: `/mysql/upgrade/7.3.1-cleanup.sql`.
+## Files to Change Together
 
-### When to Add to "current" vs Create a New Version Block <!-- learned: 2026-08-08 -->
-
-**`current` block rules:**
-
-- `current` represents the **ongoing development version** currently in development
-- Multiple cleanup/fix scripts in the same release go into the same `scripts` array — **do not bump the version**, keep all scripts targeting the same `dbVersion`:
-  ```json
-  "current": {
-    "versions": ["7.5.1"],
-    "scripts": [
-      "/mysql/upgrade/7.6.0-remove-orphaned-query-parameters.sql",
-      "/mysql/upgrade/7.6.0-remove-legacy-custom-search-query.sql"
-    ],
-    "dbVersion": "7.6.0"
-  }
-  ```
-- **Add to the existing `current` block** when:
-  - You're adding a cleanup/fix script to the version currently in development
-  - The script targets the same `dbVersion` the `current` block is building toward
-  - Keep `dbVersion` unchanged — all scripts for a release target the same version
-  - Name the script file to match that version (e.g., `7.6.0-description.sql`)
-
-- **Create a new `pre-X.Y.Z` block** only when:
-  - Shipping a new release — moving `current` to `pre-X.Y.Z` and creating a new `current` for the next version
-  - Do NOT create intermediate blocks — the upgrade path is: old version → `pre-X.Y.Z` → new `current`
-
-**Example flow:**
-1. Developing 7.6.0: add multiple cleanup scripts to `current`, all target `dbVersion: 7.6.0`
-2. Release 7.6.0 ships → rename old `current` to `pre-7.5.1` with `dbVersion: 7.6.0`, create new `current` for 7.7.0
-3. Developing 7.7.0: add cleanup scripts to the new `current`, all target `dbVersion: 7.7.0`
-
-### Removing a Dead Table: Full Checklist <!-- learned: 2026-04-27 -->
-
-When removing an unused DB table, touch **all four locations** — missing any leaves dead schema or broken installs:
-
-| File | Action |
+| File | Change |
 |------|--------|
-| `src/mysql/install/Install.sql` | Delete the `CREATE TABLE` block (new installs must not create it) |
-| `cypress/data/seed.sql` | Delete the `DROP/CREATE TABLE` + data block (Cypress resets must not recreate it) |
-| `orm/schema.xml` | Delete the `<table>` element (or its commented-out wrapper if already disabled) |
-| `src/mysql/upgrade/X.Y.Z-cleanup.sql` | Add `DROP TABLE IF EXISTS` (existing installs need the cleanup on upgrade) |
+| `src/mysql/upgrade/X.Y.Z-<desc>.sql` | The `ALTER` / `CREATE` / `DROP` |
+| `src/mysql/install/Install.sql` | Same change in the `CREATE TABLE` block, so fresh installs match upgraded ones |
+| `cypress/data/seed.sql` | Same change; ask the user first (it holds Cypress test data) |
+| `orm/schema.xml` | Column/table attributes |
 
-Register the cleanup script in `upgrade.json` `current` block using the two-block pattern above. Use `DROP TABLE IF EXISTS` so the script is idempotent on fresh installs.
+### Removing a table
 
-### Keep Install.sql in Sync with Every Migration <!-- learned: 2026-04-29 -->
+Delete its `CREATE TABLE` from `Install.sql`, its `DROP/CREATE` plus data from `seed.sql`, its `<table>` from `schema.xml`, and add `DROP TABLE IF EXISTS` to the upgrade script (idempotent on fresh installs).
 
-`src/mysql/install/Install.sql` is the canonical schema for **new installs**. Whenever you add an upgrade SQL that alters a table (charset, new column, dropped column, index change), you **must also apply the same change in Install.sql** so fresh installations are identical to upgraded ones.
+### Adding a column to seed.sql
 
-**Always update Install.sql. Ask the user before editing seed.sql** — it contains Cypress test data that may need regeneration.
+`seed.sql` is a `mysqldump`: its `INSERT` statements are positional (no column list). A new column in `CREATE TABLE` needs a value at the matching ordinal in every tuple of every `INSERT` for that table, or the load fails with `Column count doesn't match value count`. Do it mechanically: split tuples on top-level commas outside single-quoted strings, insert the default, then verify the `CREATE TABLE` column count equals the value count in every tuple. `Install.sql` inserts for `user_usr` name their columns, so a new column with a `DEFAULT` needs no edit there.
 
-Checklist for any `ALTER TABLE` migration:
+Match each file's local column types (`seed.sql` uses `tinyint(3)` for permission booleans where `Install.sql` uses `tinyint(1)`); nothing validates the files against each other.
 
-| File | Action |
-|------|--------|
-| `src/mysql/upgrade/X.Y.Z-<desc>.sql` | The `ALTER TABLE` statement |
-| `src/mysql/install/Install.sql` | Apply the same change to the `CREATE TABLE` block — required |
-| `cypress/data/seed.sql` | Update the `CREATE TABLE` block — **ask user first** |
-| `orm/schema.xml` | Update column/table attributes if Propel schema tracks this |
+### Adding a table
 
-### Adding a column to `seed.sql` means editing its INSERTs too <!-- learned: 2026-09-12 -->
+After adding a `<table>` to `orm/schema.xml`, generate the model and commit only the two skeleton subclasses (`<PhpName>.php`, `<PhpName>Query.php`); `Base/` and `Map/` are gitignored and CI regenerates them:
 
-`cypress/data/seed.sql` is a `mysqldump`, so its `INSERT` statements are **positional** —
-`INSERT INTO \`user_usr\` VALUES (1,'…',0,…)` with no column list. Adding a column to the
-`CREATE TABLE` block alone makes every one of those statements fail with
-`Column count doesn't match value count`, and the whole seed load aborts. You must insert a
-value at the matching ordinal in **every** tuple of **every** `INSERT` for that table
-(`user_usr` has ~17 tuples spread over 6 statements).
-
-Do it mechanically, not by hand: split each tuple on top-level commas while honouring
-single-quoted strings, insert the default at the right index, and verify afterwards that
-the column count in `CREATE TABLE` equals the value count in every tuple. `Install.sql` is
-the opposite case — its `user_usr` insert *does* name its columns, so a new column with a
-`DEFAULT` needs no edit there.
-
-Column ordinal drift is also real: `seed.sql` types the permission booleans `tinyint(3)`
-where `Install.sql` types them `tinyint(1)`. Match each file's local convention rather than
-making them agree; nothing validates the three files against each other.
-
-### MySQL-Compatible Conditional Column Changes <!-- learned: 2026-07-27, corrected/expanded: 2026-09-16 -->
-
-**Column-level `IF EXISTS` / `IF NOT EXISTS` is a MariaDB-only extension on
-`ADD COLUMN`, `DROP COLUMN`, `CHANGE COLUMN`, and `MODIFY COLUMN` alike** —
-not just `DROP COLUMN` as an earlier version of this note said. MySQL (any
-version including 9.x) rejects all four with `SQLSTATE[42000] error 1064`.
-This breaks upgrade paths on MySQL while silently passing on MariaDB, since
-`docker/docker-compose.mysql.yaml`'s nightly matrix is the only CI job that
-catches it — the default MariaDB-based test/CI jobs never will.
-
-**Confirmed the hard way:** `src/mysql/upgrade/7.7.0-2fa-grace-period.sql`
-shipped with `ADD COLUMN IF NOT EXISTS` (#5169) and broke every nightly
-"Build, Test and Package" MySQL-matrix run (`churchcrm-mysql`, `v6-mysql`,
-both PHP 8.4/8.5) from 2026-09-10 onward — the upgrade script threw a 1064,
-`UpgradeService::upgradeDatabaseVersion()` caught it, and the app was
-permanently parked on `/external/system/db-upgrade`. Fixed by removing the
-guard (the version-gated runner already guarantees the column doesn't exist
-yet — see below) and adding `scripts/validate-mysql-upgrade-syntax.js`,
-which now runs in CI (`.github/workflows/code-quality.yml`) and in
-`.githooks/pre-commit` (`--staged` mode) to catch this class of mistake
-before it ships again.
-
-**Wrong (MariaDB-only, all four forms):**
-```sql
-ALTER TABLE my_table ADD COLUMN IF NOT EXISTS new_col INT;
-ALTER TABLE my_table DROP COLUMN IF EXISTS old_col;
-ALTER TABLE my_table CHANGE COLUMN IF EXISTS old_col new_col INT;
-ALTER TABLE my_table MODIFY COLUMN IF EXISTS some_col INT;
+```bash
+cp -n orm/propel.php.dist orm/propel.php
+cd src && composer run orm-gen
 ```
 
-**Correct (MySQL 8.0+ and MariaDB 10.2+):**
+Add the table to `cypress/data/seed.sql` too (with seeded rows if specs read it); the test DB loads only from that file. Reference: `email_log_eml`.
+
+### Regenerating the ORM
+
+```bash
+cp orm/propel.php.dist orm/propel.php     # orm/propel.php is gitignored
+npm run build:orm
+npm run build:php:validate:orm
+```
+
+`scripts/validate-orm-base-classes.js` passes silently when `Base/` is absent, so run `composer install` first.
+
+## MySQL-Compatible SQL
+
+Column-level `IF EXISTS` / `IF NOT EXISTS` on `ADD COLUMN`, `DROP COLUMN`, `CHANGE COLUMN`, and `MODIFY COLUMN` is MariaDB-only. MySQL rejects it with `SQLSTATE[42000] 1064`, and only the nightly MySQL matrix (`docker/docker-compose.mysql.yaml`) runs against MySQL. `scripts/validate-mysql-upgrade-syntax.js` checks this in CI (`.github/workflows/code-quality.yml`) and in `.githooks/pre-commit`.
+
+Use plain DDL when version gating guarantees the column's state (a script that ADDs a column runs only on installs that lack it):
+
 ```sql
--- When version-gating GUARANTEES the column's existence state: just plain DDL,
--- no guard. mysql/upgrade.json gates every script by its exact starting
--- dbVersion, so a script that ADDs a column can assume it doesn't exist yet,
--- and a script that DROPs one can assume it still does.
 ALTER TABLE my_table ADD COLUMN new_col INT;
 ALTER TABLE my_table DROP COLUMN old_col;
+```
 
--- When the column might not exist (e.g. reachable via more than one upgrade
--- path) — use an information_schema guard instead of IF EXISTS:
+When more than one upgrade path can reach the script, guard with `information_schema`:
+
+```sql
 SET @_sql = IF(
     (SELECT COUNT(*) FROM information_schema.COLUMNS
      WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='my_table' AND COLUMN_NAME='old_col')>0,
@@ -182,97 +117,32 @@ EXECUTE _s;
 DEALLOCATE PREPARE _s;
 ```
 
-Also note: `CREATE TABLE IF NOT EXISTS`, `DROP TABLE IF EXISTS`,
-`ADD INDEX IF NOT EXISTS`, and `DROP INDEX IF EXISTS` all work fine on both
-MySQL and MariaDB (confirmed: `src/mysql/upgrade/7.6.2-add-missing-fk-indexes.sql`
-uses `ADD INDEX IF NOT EXISTS` and passes the MySQL nightly matrix). Only the
-**column-level** variant is MariaDB-only.
+Table- and index-level guards work on both: `CREATE TABLE IF NOT EXISTS`, `DROP TABLE IF EXISTS`, `ADD INDEX IF NOT EXISTS`, `DROP INDEX IF EXISTS`.
 
-Similarly, `@var:=expr` assignments inside DML (UPDATE SET, SELECT) are deprecated since MySQL 8.0.22 and may cause warnings; prefer `ROW_NUMBER() OVER (ORDER BY ...)` for row numbering in migrations.
+For row numbering use `ROW_NUMBER() OVER (ORDER BY ...)`; `@var:=expr` inside DML is deprecated since MySQL 8.0.22.
 
-### Use utf8mb4 for All User-Content Tables <!-- learned: 2026-04-29 -->
+## Charset
 
-MySQL `utf8` / `utf8mb3` is 3-byte max and silently fails on emoji and other 4-byte Unicode (`SQLSTATE[22007] Incorrect string value`). Any table that stores user-generated text must use `utf8mb4_unicode_ci`.
+Tables storing user text use `utf8mb4_unicode_ci` (3-byte `utf8` fails on emoji with `SQLSTATE[22007]`).
 
 ```sql
--- ✅ New tables
 ) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
--- ✅ Upgrading existing tables
 ALTER TABLE `note_nte` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
 
-### The Schema Has No Foreign Keys Yet — New Tables Are the First <!-- learned: 2026-09-12 -->
+## Foreign Keys
 
-`SELECT COUNT(*) FROM information_schema.REFERENTIAL_CONSTRAINTS WHERE CONSTRAINT_SCHEMA = DATABASE()` returns **0** on a stock install: `orm/schema.xml` declares `<foreign-key>` elements, but `Install.sql` and `cypress/data/seed.sql` contain no `FOREIGN KEY` clause at all, so nothing is enforced at the database level. Consequences when you add a table that *does* declare them (the `volunteer_*` tables in #9705 are the first):
+`<foreign-key onDelete="cascade|setnull|restrict">` in `schema.xml` declares the relation for Propel. `Install.sql` and `seed.sql` enforce a constraint only where a `FOREIGN KEY` clause is written there by hand, exactly as in the upgrade script; no tooling compares the three files.
 
-- The constraints are real, so `ON DELETE CASCADE` / `SET NULL` / `RESTRICT` actually fire, and an orphan insert is rejected with `ER_NO_REFERENCED_ROW_2`. That is worth having, but it is new behaviour for this codebase — do not assume existing code is prepared for a `RESTRICT`.
-- `<foreign-key onDelete="cascade|setnull|restrict">` is supported by Propel and was previously unused anywhere in `schema.xml`.
-- **The clauses must be written into `Install.sql` and `seed.sql` by hand**, exactly as in the upgrade script. Mirroring only the columns leaves a fresh install and the Cypress database without the constraints the upgrade path has, and no tooling compares the three files.
-- MariaDB needs an index on every foreign-key column; declare one explicitly (or make the column the leftmost part of a composite key) or the server invents an auto-named one that breaks an `_idx` / `_uidx` naming check.
-- Order matters inside one script: create the parent table before anything references it.
-
-### `npm run build:orm` Works Again <!-- learned: 2026-09-12 -->
-
-`package.json` now runs `cd src/ && composer run orm-gen`; the old broken `./vendor/bin/propel build --config-dir=propel` invocation is gone (#9722). Copy the config first — `orm/propel.php` is gitignored and absent from a fresh checkout:
-
-```bash
-cp orm/propel.php.dist orm/propel.php
-npm run build:orm
-npm run build:php:validate:orm
-```
-
-`src/ChurchCRM/model/ChurchCRM/Base/` and `Map/` are gitignored, so nothing from the regeneration is committed — only the hand-written subclasses. Note that `scripts/validate-orm-base-classes.js` passes silently when `Base/` is absent, so run `composer install` before trusting it.
-
-### Adding a Column Silently Widens Every `fromArray($input)` Write Endpoint <!-- learned: 2026-09-12 -->
-
-Several API write handlers hydrate an entity straight from the request body:
-
-```php
-$Event->fromArray($input);   // src/api/routes/calendar/events.php, updateEvent()
-```
-
-Propel's generated `fromArray()` copies **every** column whose phpName appears in the array.
-So the moment a migration adds a column to that table, the column becomes writable by anyone
-who can reach that endpoint — with no validation, no type check and no authorization — even
-though nothing in the route or the handler was touched. Nothing in the build catches it, and
-the diff that introduces the hole contains no PHP at all.
-
-Before merging a migration on a table an API writes, grep for the entity's `fromArray(` call
-sites. If the new column carries any rule at all (a foreign key that must exist, an
-authorization decision, an enum domain), resolve it explicitly and overwrite whatever
-`fromArray()` copied, on the next line:
-
-```php
-$ministryId = resolveEventMinistryId($response, $input, $currentMinistryId); // validates + authorizes
-if ($ministryId instanceof Response) { return $ministryId; }
-
-$Event->fromArray($input);
-$Event->setId($id);
-$Event->setMinistryId($ministryId);   // authoritative — never what fromArray() copied
-```
-
-Resolve **before** the save, not in a post-save helper: a refused value must leave no row
-behind, which a helper that runs after `save()` cannot guarantee. (#9713 added
-`events_event.event_ministry_id`, which carries a per-row authorization rule; without the
-overwrite above, any caller who could reach `POST /api/events/{id}` could have assigned an
-event to any ministry.)
-
-### A `<foreign-key>` May Point Forward in `schema.xml` — but Not in `Install.sql` / `seed.sql` <!-- learned: 2026-09-12 -->
-
-Propel resolves `<foreign-key foreignTable="…">` across the whole document, so a table
-declared early may reference one declared hundreds of lines later and `npm run build:orm`
-is happy. Raw SQL is not: MySQL rejects a `FOREIGN KEY` whose parent table does not exist
-yet.
-
-When you add an FK from an *old* table to a *new* one, the column goes in the existing
-`CREATE TABLE` (with its `KEY`) and the constraint goes in a trailing `ALTER TABLE`, placed
-after the parent table is created, in **both** `Install.sql` and `cypress/data/seed.sql`:
+- Constraints that exist fire: `ON DELETE CASCADE` / `SET NULL` / `RESTRICT` act, and an orphan insert fails with `ER_NO_REFERENCED_ROW_2`
+- MariaDB needs an index on every FK column; declare it explicitly (or lead a composite key with the column) so the server does not create an auto-named one that breaks an `_idx` / `_uidx` naming check
+- Create the parent table before anything references it within one script
+- `schema.xml` may reference a table declared later in the file; raw SQL may not. For an FK from an existing table to a new one, put the column and its `KEY` in the existing `CREATE TABLE` and the constraint in a trailing `ALTER TABLE` after the parent is created, in both `Install.sql` and `seed.sql`:
 
 ```sql
--- inside the existing CREATE TABLE, far above the parent
+-- inside the existing CREATE TABLE
   `event_ministry_id` int(11) DEFAULT NULL,
-  ...
   KEY `event_ministry_idx` (`event_ministry_id`)
 
 -- at the end of the file, after volunteer_ministry_vmin exists
@@ -281,14 +151,21 @@ ALTER TABLE `events_event`
     REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE SET NULL;
 ```
 
-Verify by loading `Install.sql` into a scratch database and diffing
-`SHOW CREATE TABLE` against the upgrade path's result — that comparison catches a constraint
-present on one path and missing on the other, which nothing else does.
-### Adding a New Table: Generate the Propel Model Too <!-- learned: 2026-09-16 -->
+Verify by loading `Install.sql` into a scratch database and diffing `SHOW CREATE TABLE` against the upgrade path's result.
 
-`src/ChurchCRM/model/ChurchCRM/Base/` and `Map/` are git-ignored: after adding a `<table>` to
-`orm/schema.xml`, run `cp -n orm/propel.php.dist orm/propel.php && cd src && composer run orm-gen`
-and commit only the two skeleton subclasses it creates (`<PhpName>.php`, `<PhpName>Query.php`).
-CI regenerates the Base classes. The test DB comes solely from `cypress/data/seed.sql`, so a new
-table must be added there as well (with a few seeded rows if specs read it) or every request
-touching it 500s in Cypress. Reference: `email_log_eml` (#9877).
+## A New Column and `fromArray($input)`
+
+Several API write handlers hydrate an entity from the request body (`$Event->fromArray($input)` in `src/api/routes/calendar/events.php`). Propel's `fromArray()` copies every column whose phpName appears in the array, so a migration that adds a column makes it writable by anyone who reaches that endpoint, without validation or authorization.
+
+Before merging a migration on a table an API writes, grep for the entity's `fromArray(` call sites. When the new column carries a rule (a foreign key that must exist, an authorization decision, an enum domain), resolve it before saving and overwrite what `fromArray()` copied:
+
+```php
+$ministryId = resolveEventMinistryId($response, $input, $currentMinistryId); // validates + authorizes
+if ($ministryId instanceof Response) { return $ministryId; }
+
+$Event->fromArray($input);
+$Event->setId($id);
+$Event->setMinistryId($ministryId);   // authoritative
+```
+
+Resolve before `save()` so a refused value leaves no row behind.

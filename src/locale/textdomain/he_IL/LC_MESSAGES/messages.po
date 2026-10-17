@@ -9335,10 +9335,6 @@ msgid "Load demo data"
 msgstr "טעינת נתוני הדגמה"
 
 #: 
-msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
-msgstr "טעינת משפחות, אנשים, קבוצות ורשומות תרומות לדוגמה. הדרך הבטוחה ביותר ללמוד את ChurchCRM לפני הכנסת נתונים אמיתיים."
-
-#: 
 msgid "Log Files"
 msgstr "קבצי יומן"
 
@@ -9373,10 +9369,6 @@ msgstr "ניהול קרנות תרומה למעקב כספי"
 #: 
 msgid "Manage donations, pledges, and financial records"
 msgstr "ניהול תרומות, התחייבויות כספיות ורשומות כספיות"
-
-#: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "ניהול כלי דוא\"ל והגדרות SMTP"
 
 #: 
 msgid "Manage families, people, and demographic information"
@@ -10354,10 +10346,6 @@ msgid "Distance Unit"
 msgstr "יחידת מרחק"
 
 #: 
-msgid "Email Dashboard"
-msgstr "לוח בקרה של דוא\"ל"
-
-#: 
 msgid "Email Integrations"
 msgstr "אינטגרציות דוא\"ל"
 
@@ -10372,10 +10360,6 @@ msgstr "קישורי דוא\"ל בתצוגות קבוצה ואנשים"
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "רשימות דוא\"ל סונכרנו עם Mailchimp."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "הפוך דוא\"ל בפאנל ההגדרות להלן ואז הגדר את שרת SMTP שלך."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10517,10 +10501,6 @@ msgstr "לוחות שנה של המערכת"
 #: 
 msgid "System language for the church."
 msgstr "שפת מערכת לכנסייה."
-
-#: 
-msgid "Text Dashboard"
-msgstr "לוח בקרה של הודעות"
 
 #: 
 msgid "Text Settings"
@@ -12442,10 +12422,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "הדואר האלקטרוני מושבת. הגדרו דואר אלקטרוני לפני איפוס סיסמאות, או השתמשו בשנה סיסמה."
 
 #: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "הדואר האלקטרוני מושבת. הפעילו אותו בהגדרות לוח המחוונים של הדואר האלקטרוני לפני הבדיקה."
-
-#: 
 msgid "Enter one of your backup recovery codes"
 msgstr "הזינו אחד מקודי השחזור לגיבוי שלכם"
 
@@ -14091,18 +14067,6 @@ msgid "Importing..."
 msgstr "מייבא..."
 
 #: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "כלול כיתות ורישומי בית ספר של יום ראשון"
-
-#: 
-msgid "Include events and calendars"
-msgstr "כלול אירועים ולוחות שנה"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "כלול נתונים פיננסיים (קרנות תרומה, התחייבויות)"
-
-#: 
 msgid "Invalid Entry"
 msgstr "קלט לא תקין"
 
@@ -14275,16 +14239,8 @@ msgid "Open in New Tab"
 msgstr "פתח בלשונית חדשה"
 
 #: 
-msgid "Open in new tab"
-msgstr "פתח בכרטיסייה חדשה"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "פתח את אפליקציית האימות שלך וסרוק את קוד ה-QR הזה"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "נתונים אופציונליים להכללה"
 
 #: 
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
@@ -19743,10 +19699,6 @@ msgid "Choose where the schedule's dates come from"
 msgstr "בחרו מהיכן מגיעים תאריכי לוח הזמנים"
 
 #: 
-msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
-msgstr "בחרו באיזו חוויית התנדבות הקהילה משתמשת, כמה מראש ממלאים לוחות זמנים ומתי נשלחות תזכורות, ובדקו שמשימות הרקע פועלות."
-
-#: 
 msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
 msgstr "בחרו מי ממלא כל תפקיד כברירת מחדל. הבחירה נשמרת בלוח הזמנים: הם משובצים בכל מופע שנוצר עכשיו ובאלה שהמילוי היומי יוצר בהמשך, כל עוד הם מוסמכים, ויתבקשו להשיב אלא אם תגדירו אותם כמאושרים. השאירו תפקיד פתוח כדי לשבץ אותו משבוע לשבוע."
 
@@ -19777,10 +19729,6 @@ msgstr "אירועי קהילה מסוג מסוים מתווספים ללוח ה
 #: 
 msgid "Church website"
 msgstr "אתר הקהילה"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ל-ChurchCRM שתי דרכים לנהל מתנדבים. מיועדת לשימוש רק אחת מהן בכל פעם; ההגדרה משמאל קובעת איזו מהן הקהילה רואה. המעבר מסתיר או מציג דפים ופריטי תפריט — הוא לעולם לא מוחק נתונים, ולכן אפשר לחזור."
 
 #: 
 msgid "Close event details"
@@ -20105,10 +20053,6 @@ msgstr "הדוא\"ל לא נמצא"
 #: 
 msgid "Email preview"
 msgstr "תצוגה מקדימה של הדוא\"ל"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "שליחת דוא\"ל מושבתת"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
@@ -22839,10 +22783,6 @@ msgid "View my schedule"
 msgstr "צפייה בלוח הזמנים שלי"
 
 #: 
-msgid "View only"
-msgstr "צפייה בלבד"
-
-#: 
 msgid "View person"
 msgstr "הצג אדם"
 
@@ -22873,10 +22813,6 @@ msgstr "שיבוץ מתנדב"
 #: 
 msgid "Volunteer declined"
 msgstr "מתנדב דחה"
-
-#: 
-msgid "Volunteer experience"
-msgstr "חוויית התנדבות"
 
 #: 
 msgid "Volunteer positions still need to be filled"
@@ -23017,10 +22953,6 @@ msgstr "באיזו חוויית ניהול מתנדבים משתמשים. V1 ה�
 #: 
 msgid "Which events"
 msgstr "אילו אירועים"
-
-#: 
-msgid "Which volunteer experience this church uses. The card on the right explains each choice."
-msgstr "באיזו חוויית התנדבות הקהילה משתמשת. הכרטיס מימין מסביר כל בחירה."
 
 #: 
 msgid "Who is covering"

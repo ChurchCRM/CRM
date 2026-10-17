@@ -9327,10 +9327,6 @@ msgid "Load demo data"
 msgstr "Ngarko të dhëna demo"
 
 #: 
-msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
-msgstr "Ngarko familjet, njerëzit, grupet dhe regjestrat e jepies të mostrës. Mënyra më e sigurt për të mësuar ChurchCRM përpara se të angazhohet të dhënat tuaja të vërteta."
-
-#: 
 msgid "Log Files"
 msgstr "Skedarët e Regjistrimit"
 
@@ -9365,10 +9361,6 @@ msgstr "Administro fondet e dhuratave për ndjekjen financiare"
 #: 
 msgid "Manage donations, pledges, and financial records"
 msgstr "Administro dhuratat, premtimet dhe regjestrat financiare"
-
-#: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "Administro mjetet e email-it dhe konfigurimin SMTP"
 
 #: 
 msgid "Manage families, people, and demographic information"
@@ -10346,10 +10338,6 @@ msgid "Distance Unit"
 msgstr "Njësia e Distancës"
 
 #: 
-msgid "Email Dashboard"
-msgstr "Tabela Instrumentesh për Email"
-
-#: 
 msgid "Email Integrations"
 msgstr "Integrimi i Email-it"
 
@@ -10364,10 +10352,6 @@ msgstr "Lidhjet e email-it në shikime grupe dhe njerëzish"
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "Listat e email-it sinkronizohen me Mailchimp."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "Aktivizoni email në panelin e cilësimeve më poshtë, pastaj konfiguroni serverin tuaj SMTP."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10509,10 +10493,6 @@ msgstr "Kalendarë të Sistemit"
 #: 
 msgid "System language for the church."
 msgstr "Gjuha e sistemit për kishën."
-
-#: 
-msgid "Text Dashboard"
-msgstr "Teksti i Armataturës"
 
 #: 
 msgid "Text Settings"
@@ -12434,10 +12414,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "Emaili është i çaktivizuar. Konfiguroni emailin para rivendosjes së fjalëkalimeve, ose përdorni Ndrysho Fjalëkalimin."
 
 #: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "Emaili është i çaktivizuar. Aktivizojeni në cilësimet e Panelit të Emailit para testimit."
-
-#: 
 msgid "Enter one of your backup recovery codes"
 msgstr "Vendosni një nga kodet tuaja rezervë të rikuperimit"
 
@@ -14083,18 +14059,6 @@ msgid "Importing..."
 msgstr "Importimi..."
 
 #: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "Përfshi klasat dhe regjistrimet e shkollës së dielës"
-
-#: 
-msgid "Include events and calendars"
-msgstr "Përfshi ngjarjet dhe kalendarët"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "Përfshi të dhënat financiare (fondet e dhurimit, zotimet)"
-
-#: 
 msgid "Invalid Entry"
 msgstr "Hyrje e pavlefshme"
 
@@ -14267,16 +14231,8 @@ msgid "Open in New Tab"
 msgstr "Hape në skedë të re"
 
 #: 
-msgid "Open in new tab"
-msgstr "Hap në skedë të re"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Hapni aplikacionin tuaj të vërtetimit dhe skanoni këtë kod QR"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "Të dhëna opsionale për t'u përfshirë"
 
 #: 
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
@@ -19735,10 +19691,6 @@ msgid "Choose where the schedule's dates come from"
 msgstr "Zgjidhni nga vijnë datat e orarit"
 
 #: 
-msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
-msgstr "Zgjidhni cilën përvojë vullnetarësh përdor kjo kishë, sa përpara plotësohen orarët dhe kur dërgohen kujtesat, dhe kontrolloni nëse punët në sfond po ekzekutohen."
-
-#: 
 msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
 msgstr "Zgjidhni kush e plotëson çdo pozicion si parazgjedhje. Zgjedhja ruhet te orari: ata caktohen në çdo zhvillim të krijuar tani dhe në ato që plotësimi ditor i krijon më vonë, për sa kohë mbeten të kualifikuar, dhe u kërkohet të përgjigjen përveç nëse i caktoni si të pranuar. Lëreni një pozicion të hapur për ta caktuar javë pas jave."
 
@@ -19769,10 +19721,6 @@ msgstr "Ngjarjet kishtare të një lloji shtohen te kalendari i kishës. Kontrol
 #: 
 msgid "Church website"
 msgstr "Faqja e internetit e kishës"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM ka dy mënyra për menaxhimin e vullnetarëve. Vetëm njëra duhet të jetë në përdorim në të njëjtën kohë; cilësimi në të majtë vendos cilën e sheh kjo kishë. Ndërrimi fsheh ose shfaq faqe dhe zëra menuje – nuk fshin kurrë të dhëna, ndaj mund të ktheheni."
 
 #: 
 msgid "Close event details"
@@ -20097,10 +20045,6 @@ msgstr "Email-i nuk u gjet"
 #: 
 msgid "Email preview"
 msgstr "Pamja paraprake e email-it"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "Dërgimi i email-eve është çaktivizuar"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
@@ -22831,10 +22775,6 @@ msgid "View my schedule"
 msgstr "Shiko orarin tim"
 
 #: 
-msgid "View only"
-msgstr "Vetëm shikim"
-
-#: 
 msgid "View person"
 msgstr "Shiko Personin"
 
@@ -22865,10 +22805,6 @@ msgstr "Caktimi i vullnetarit"
 #: 
 msgid "Volunteer declined"
 msgstr "Vullnetari refuzoi"
-
-#: 
-msgid "Volunteer experience"
-msgstr "Përvoja e vullnetarëve"
 
 #: 
 msgid "Volunteer positions still need to be filled"
@@ -23009,10 +22945,6 @@ msgstr "Cila përvojë e menaxhimit të vullnetarëve është aktive. V1 është
 #: 
 msgid "Which events"
 msgstr "Cilat ngjarje"
-
-#: 
-msgid "Which volunteer experience this church uses. The card on the right explains each choice."
-msgstr "Cilën përvojë vullnetarësh përdor kjo kishë. Karta në të djathtë shpjegon çdo zgjedhje."
 
 #: 
 msgid "Who is covering"

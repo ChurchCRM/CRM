@@ -4,6 +4,8 @@ require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\data\Countries;
+use ChurchCRM\data\States;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
@@ -403,9 +405,9 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             ->setAddress1($sAddress1)
             ->setAddress2($sAddress2)
             ->setCity($sCity)
-            ->setState($sState)
+            ->setState(States::keepStoredIfSame($sCountry, $person->getState(), $sState))
             ->setZip($sZip)
-            ->setCountry($sCountry)
+            ->setCountry(Countries::keepStoredIfSame($person->getCountry(), $sCountry))
             ->setHomePhone($sHomePhone)
             ->setWorkPhone($sWorkPhone)
             ->setCellPhone($sCellPhone)
@@ -590,6 +592,8 @@ $rsFamilies = RunQuery($sSQL);
 //Get Family Roles for the drop-down
 $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 2 ORDER BY lst_OptionSequence';
 $rsFamilyRoles = RunQuery($sSQL);
+
+$sCountry = Countries::toISO($sCountry);
 
 $aBreadcrumbs = PageHeader::breadcrumbs([
     [gettext('People'), '/people/dashboard'],
@@ -818,8 +822,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <?= gettext('Zip Code') ?>:
                         <?= $bFamilyZip ? '</span>' : '' ?>
                     </label>
-                    <input type="text" name="Zip" id="Zip" class="form-control"
-                           <?= SystemConfig::getBooleanValue('bForceUppercaseZip') ? 'style="text-transform:uppercase"' : '' ?>
+                    <input type="text" name="Zip" id="Zip" class="form-control<?= SystemConfig::getBooleanValue('bForceUppercaseZip') ? ' text-uppercase' : '' ?>"
                            value="<?= InputUtils::escapeAttribute(stripslashes($sZip)) ?>"
                            maxlength="10">
                 </div>

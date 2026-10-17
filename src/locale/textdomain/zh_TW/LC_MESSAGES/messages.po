@@ -9472,10 +9472,6 @@ msgid "Load demo data"
 msgstr "載入示範資料"
 
 #: 
-msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
-msgstr "載入範例家庭、人員、小組和奉獻記錄。這是在提交真實資料前學習 ChurchCRM 最安全的方式。"
-
-#: 
 msgid "Log Files"
 msgstr "日誌檔案"
 
@@ -9510,10 +9506,6 @@ msgstr "管理奉獻基金以進行財務追蹤"
 #: 
 msgid "Manage donations, pledges, and financial records"
 msgstr "管理奉獻、奉獻承諾和財務記錄"
-
-#: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "管理電子郵件工具和 SMTP 設定"
 
 #: 
 msgid "Manage families, people, and demographic information"
@@ -10491,10 +10483,6 @@ msgid "Distance Unit"
 msgstr "距離單位"
 
 #: 
-msgid "Email Dashboard"
-msgstr "電子郵件儀表板"
-
-#: 
 msgid "Email Integrations"
 msgstr "電子郵件整合"
 
@@ -10509,10 +10497,6 @@ msgstr "群組和人員檢視中的電子郵件連結"
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "電子郵件清單與Mailchimp同步。"
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "在下方的設定面板中啟用電子郵件,然後設定SMTP伺服器。"
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10654,10 +10638,6 @@ msgstr "系統日曆"
 #: 
 msgid "System language for the church."
 msgstr "教會的系統語言。"
-
-#: 
-msgid "Text Dashboard"
-msgstr "文本儀表板"
 
 #: 
 msgid "Text Settings"
@@ -12578,10 +12558,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "電子郵件已停用。請在重設密碼前設定電子郵件，或使用「變更密碼」功能。"
 
 #: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "電子郵件已停用。請在電子郵件儀表板設定中啟用後再進行測試。"
-
-#: 
 msgid "Enter one of your backup recovery codes"
 msgstr "請輸入您的其中一個備用恢復碼"
 
@@ -14227,18 +14203,6 @@ msgid "Importing..."
 msgstr "正在匯入..."
 
 #: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "包含主日學班級和報名"
-
-#: 
-msgid "Include events and calendars"
-msgstr "包含活動和日曆"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "包含財務數據（捐贈基金、認獻）"
-
-#: 
 msgid "Invalid Entry"
 msgstr "輸入無效"
 
@@ -14411,16 +14375,8 @@ msgid "Open in New Tab"
 msgstr "在新分頁中打開"
 
 #: 
-msgid "Open in new tab"
-msgstr "在新分頁中開啟"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "開啟您的驗證器應用程式並掃描此QR碼"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "可選包含的數據"
 
 #: 
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
@@ -19863,10 +19819,6 @@ msgid "Choose where the schedule's dates come from"
 msgstr "選擇排班日期的來源"
 
 #: 
-msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
-msgstr "選擇教會使用哪種志工體驗、提前多久安排排班、何時發出提醒，並檢查後臺任務是否在執行。"
-
-#: 
 msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
 msgstr "選擇預設由誰擔任每個職位。此選擇儲存在排班中：只要他們仍具備資格，就會被分配到現在生成的每一場活動，以及之後每日補充生成的活動，並會被要求回應，除非您將其設為已接受。職位留空則可逐周分配。"
 
@@ -19897,10 +19849,6 @@ msgstr "某一型別的教會活動會新增到教會日曆。請檢查排班的
 #: 
 msgid "Church website"
 msgstr "教會網站"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM 有兩種管理志工的方式。同一時間只應使用其中一種；左側的設定決定本教會看到哪一種。切換隻會隱藏或顯示頁面和選單項，不會刪除任何資料，因此可以隨時切換回來。"
 
 #: 
 msgid "Close event details"
@@ -20225,10 +20173,6 @@ msgstr "找不到該電子郵件"
 #: 
 msgid "Email preview"
 msgstr "郵件預覽"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "電子郵件傳送已停用"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
@@ -22955,10 +22899,6 @@ msgid "View my schedule"
 msgstr "檢視我的排班"
 
 #: 
-msgid "View only"
-msgstr "僅檢視"
-
-#: 
 msgid "View person"
 msgstr "檢視成員"
 
@@ -22989,10 +22929,6 @@ msgstr "志工分配"
 #: 
 msgid "Volunteer declined"
 msgstr "志工已拒絕"
-
-#: 
-msgid "Volunteer experience"
-msgstr "志工體驗"
 
 #: 
 msgid "Volunteer positions still need to be filled"
@@ -23131,10 +23067,6 @@ msgstr "啟用哪種志工管理體驗。V1 是舊版志工機會功能；V2 是
 #: 
 msgid "Which events"
 msgstr "哪些活動"
-
-#: 
-msgid "Which volunteer experience this church uses. The card on the right explains each choice."
-msgstr "本教會使用哪種志工體驗。右側的卡片說明了每個選項。"
 
 #: 
 msgid "Who is covering"

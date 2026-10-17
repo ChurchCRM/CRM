@@ -9304,10 +9304,6 @@ msgid "Load demo data"
 msgstr "Cargar datos de demostración"
 
 #: 
-msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
-msgstr "Cargue familias, personas, grupos y registros de ofrendas de muestra. La forma más segura de aprender ChurchCRM antes de introducir sus datos reales."
-
-#: 
 msgid "Log Files"
 msgstr "Archivos de registro"
 
@@ -9342,10 +9338,6 @@ msgstr "Gestionar fondos de donaciones para el seguimiento financiero"
 #: 
 msgid "Manage donations, pledges, and financial records"
 msgstr "Gestionar donaciones, compromisos de donación y registros financieros"
-
-#: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "Gestionar herramientas de correo electrónico y configuración SMTP"
 
 #: 
 msgid "Manage families, people, and demographic information"
@@ -10323,10 +10315,6 @@ msgid "Distance Unit"
 msgstr "Unidad de distancia"
 
 #: 
-msgid "Email Dashboard"
-msgstr "Panel de correo electrónico"
-
-#: 
 msgid "Email Integrations"
 msgstr "Integraciones de correo electrónico"
 
@@ -10341,10 +10329,6 @@ msgstr "Enlaces de correo electrónico en vistas de grupo y personas"
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "Las listas de correo electrónico se sincronizan con Mailchimp."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "Habilita el correo electrónico en el panel de configuración inferior y luego configura tu servidor SMTP."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10486,10 +10470,6 @@ msgstr "Calendarios del Sistema"
 #: 
 msgid "System language for the church."
 msgstr "Idioma del sistema para la iglesia."
-
-#: 
-msgid "Text Dashboard"
-msgstr "Panel de Mensajes"
 
 #: 
 msgid "Text Settings"
@@ -12411,10 +12391,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "El correo electrónico está desactivado. Configurá el correo antes de restablecer contraseñas o usá Cambiar contraseña."
 
 #: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "El correo electrónico está desactivado. Activalo en la configuración del Panel de correo antes de hacer pruebas."
-
-#: 
 msgid "Enter one of your backup recovery codes"
 msgstr "Ingresá uno de tus códigos de recuperación de respaldo"
 
@@ -14061,18 +14037,6 @@ msgid "Importing..."
 msgstr "Importando..."
 
 #: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "Incluye clases de escuela dominical e inscripciones"
-
-#: 
-msgid "Include events and calendars"
-msgstr "Incluir eventos y calendarios"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "Incluir datos financieros (fondos de donación, promesas)"
-
-#: 
 msgid "Invalid Entry"
 msgstr "Entrada Inválida"
 
@@ -14245,16 +14209,8 @@ msgid "Open in New Tab"
 msgstr "Abrir en pestaña nueva"
 
 #: 
-msgid "Open in new tab"
-msgstr "Abrir en nueva pestaña"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Abrí tu aplicación de autenticación y escaneá este código QR"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "Datos opcionales a incluir"
 
 #: 
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
@@ -19713,10 +19669,6 @@ msgid "Choose where the schedule's dates come from"
 msgstr "Elija de dónde provienen las fechas del horario"
 
 #: 
-msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
-msgstr "Elige qué experiencia de voluntariado usa esta iglesia, cuán lejos se llenan los horarios y cuándo se envían recordatorios, y verifica que los trabajos de fondo se están ejecutando."
-
-#: 
 msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
 msgstr "Elige quién llena cada posición por defecto. La elección se guarda en el horario: se les asigna en cada ocurrencia hecha ahora y en las que el top-up diario hace más tarde, mientras permanezcan calificados, y se les pide que respondan a menos que los establezca como aceptados. Deja una posición abierta para asignarla semana por semana."
 
@@ -19747,10 +19699,6 @@ msgstr "Los eventos de la iglesia de un tipo se añaden en el calendario de la i
 #: 
 msgid "Church website"
 msgstr "Sitio web de la iglesia"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM tiene dos formas de gestionar voluntarios. Solo una debe estar en uso a la vez; la configuración de la izquierda decide cuál ve esta iglesia. Cambiar oculta o muestra páginas y entradas de menú, nunca elimina datos, por lo que puedes volver atrás."
 
 #: 
 msgid "Close event details"
@@ -20075,10 +20023,6 @@ msgstr "Correo no encontrado"
 #: 
 msgid "Email preview"
 msgstr "Vista previa de correo"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "El envío de correos está deshabilitado"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
@@ -22809,10 +22753,6 @@ msgid "View my schedule"
 msgstr "Ver mi horario"
 
 #: 
-msgid "View only"
-msgstr "Solo lectura"
-
-#: 
 msgid "View person"
 msgstr "Ver persona"
 
@@ -22843,10 +22783,6 @@ msgstr "Asignación de voluntario"
 #: 
 msgid "Volunteer declined"
 msgstr "El voluntario rechazó"
-
-#: 
-msgid "Volunteer experience"
-msgstr "Experiencia de voluntariado"
 
 #: 
 msgid "Volunteer positions still need to be filled"
@@ -22987,10 +22923,6 @@ msgstr "Qué experiencia de Gestión del voluntariado está activa. V1 es la fun
 #: 
 msgid "Which events"
 msgstr "Qué eventos"
-
-#: 
-msgid "Which volunteer experience this church uses. The card on the right explains each choice."
-msgstr "Qué experiencia de voluntariado usa esta parroquia. La tarjeta de la derecha explica cada opción."
 
 #: 
 msgid "Who is covering"

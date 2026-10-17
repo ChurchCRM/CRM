@@ -9333,10 +9333,6 @@ msgid "Load demo data"
 msgstr "Pakia data ya maonyesho"
 
 #: 
-msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
-msgstr "Pakia familia, watu, vikundi, na rekodi za michango za mfano. Njia salama zaidi ya kujifunza ChurchCRM kabla ya kuingiza data yako halisi."
-
-#: 
 msgid "Log Files"
 msgstr "Faili za Kumbukumbu"
 
@@ -9371,10 +9367,6 @@ msgstr "Simamia mifuko ya sadaka kwa ufuatiliaji wa fedha"
 #: 
 msgid "Manage donations, pledges, and financial records"
 msgstr "Simamia sadaka, ahadi, na rekodi za fedha"
-
-#: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "Simamia zana za barua pepe na usanidi wa SMTP"
 
 #: 
 msgid "Manage families, people, and demographic information"
@@ -10352,10 +10344,6 @@ msgid "Distance Unit"
 msgstr "Kitengo cha Umbali"
 
 #: 
-msgid "Email Dashboard"
-msgstr "Dashibodi ya Barua pepe"
-
-#: 
 msgid "Email Integrations"
 msgstr "Ujumuishaji wa Barua Pepe"
 
@@ -10370,10 +10358,6 @@ msgstr "Viungo vya barua pepe katika mifumo ya kundi na watu"
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "Orodha za barua pepe zinasambazwa na Mailchimp."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "Wezesha barua pepe katika paneli la mipangilio hapa chini, kisha sanidi seva yako ya SMTP."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10515,10 +10499,6 @@ msgstr "Kalenda za Mfumo"
 #: 
 msgid "System language for the church."
 msgstr "Lugha ya mfumo kwa kanisa."
-
-#: 
-msgid "Text Dashboard"
-msgstr "Dashibodi ya Ujumbe"
 
 #: 
 msgid "Text Settings"
@@ -12440,10 +12420,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "Barua pepe imezimwa. Sanidi barua pepe kabla ya kuweka upya nywila, au tumia Badilisha Nywila."
 
 #: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "Barua pepe imezimwa. Iwezesha katika mipangilio ya Dashibodi ya Barua Pepe kabla ya kujaribu."
-
-#: 
 msgid "Enter one of your backup recovery codes"
 msgstr "Ingiza moja ya nambari zako za urejeshaji wa hifadhi nakala"
 
@@ -14089,18 +14065,6 @@ msgid "Importing..."
 msgstr "Inaingiza..."
 
 #: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "Jumuisha madarasa ya Shule ya Jumapili na usajili"
-
-#: 
-msgid "Include events and calendars"
-msgstr "Jumuisha matukio na kalenda"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "Jumuisha data za kifedha (mifuko ya michango, ahadi)"
-
-#: 
 msgid "Invalid Entry"
 msgstr "Ingizo Batili"
 
@@ -14273,16 +14237,8 @@ msgid "Open in New Tab"
 msgstr "Fungua kwenye Tabo Mpya"
 
 #: 
-msgid "Open in new tab"
-msgstr "Fungua katika kichupo kipya"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Fungua programu yako ya uthibitishaji na upige picha msimbo huu wa QR"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "Data za Hiari za Kujumuisha"
 
 #: 
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
@@ -19741,10 +19697,6 @@ msgid "Choose where the schedule's dates come from"
 msgstr "Chagua tarehe za ratiba zinatoka wapi"
 
 #: 
-msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
-msgstr "Chagua uzoefu wa kujitolea ambao kanisa hili linatumia, ratiba zinajazwa mbele kwa umbali gani na vikumbusho vinatoka lini, na uhakikishe kuwa kazi za nyuma zinaendelea."
-
-#: 
 msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
 msgstr "Chagua nani anajaza kila nafasi kwa chaguo-msingi. Chaguo huhifadhiwa kwenye ratiba: wanapangwa kwenye kila tukio linaloundwa sasa na kwenye yale ambayo uongezaji wa kila siku huunda baadaye, maadamu wana sifa, na huombwa kujibu isipokuwa uwaweke kama waliokubali. Acha nafasi wazi ili kuipanga wiki kwa wiki."
 
@@ -19775,10 +19727,6 @@ msgstr "Matukio ya kanisa ya aina fulani huongezwa kwenye kalenda ya kanisa. Ang
 #: 
 msgid "Church website"
 msgstr "Tovuti ya kanisa"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM ina njia mbili za kusimamia watu wa kujitolea. Moja tu ndiyo inayokusudiwa kutumika kwa wakati mmoja; mpangilio ulio upande wa kushoto huamua kanisa hili linaona ipi. Kubadilisha huficha au kuonyesha kurasa na vipengee vya menyu — hakufuti data kamwe, kwa hiyo unaweza kurudi."
 
 #: 
 msgid "Close event details"
@@ -20103,10 +20051,6 @@ msgstr "Barua pepe haijapatikana"
 #: 
 msgid "Email preview"
 msgstr "Onyesho la awali la barua pepe"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "Kutuma barua pepe kumezimwa"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
@@ -22837,10 +22781,6 @@ msgid "View my schedule"
 msgstr "Tazama ratiba yangu"
 
 #: 
-msgid "View only"
-msgstr "Kutazama tu"
-
-#: 
 msgid "View person"
 msgstr "Ona Mtu"
 
@@ -22871,10 +22811,6 @@ msgstr "Upangaji wa mtu wa kujitolea"
 #: 
 msgid "Volunteer declined"
 msgstr "Mtu wa kujitolea amekataa"
-
-#: 
-msgid "Volunteer experience"
-msgstr "Uzoefu wa kujitolea"
 
 #: 
 msgid "Volunteer positions still need to be filled"
@@ -23015,10 +22951,6 @@ msgstr "Uzoefu gani wa Usimamizi wa Watu wa Kujitolea unatumika. V1 ni kipengele
 #: 
 msgid "Which events"
 msgstr "Matukio gani"
-
-#: 
-msgid "Which volunteer experience this church uses. The card on the right explains each choice."
-msgstr "Uzoefu gani wa kujitolea kanisa hili linatumia. Kadi iliyo upande wa kulia inaeleza kila chaguo."
 
 #: 
 msgid "Who is covering"

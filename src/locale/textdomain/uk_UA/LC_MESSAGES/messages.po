@@ -9355,10 +9355,6 @@ msgid "Load demo data"
 msgstr "Завантажити демо-дані"
 
 #: 
-msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
-msgstr "Завантажте зразки сімей, людей, груп та записів про пожертви. Найбезпечніший спосіб навчитися ChurchCRM перед завантаженням реальних даних."
-
-#: 
 msgid "Log Files"
 msgstr "Файли журналу"
 
@@ -9393,10 +9389,6 @@ msgstr "Керуйте фондами пожертв для фінансовог
 #: 
 msgid "Manage donations, pledges, and financial records"
 msgstr "Керуйте пожертвами, обіцянками та фінансовими записами"
-
-#: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "Керуйте інструментами електронної пошти та конфігурацією SMTP"
 
 #: 
 msgid "Manage families, people, and demographic information"
@@ -10374,10 +10366,6 @@ msgid "Distance Unit"
 msgstr "Одиниця відстані"
 
 #: 
-msgid "Email Dashboard"
-msgstr "Панель управління електронною поштою"
-
-#: 
 msgid "Email Integrations"
 msgstr "Інтеграція електронної пошти"
 
@@ -10392,10 +10380,6 @@ msgstr "Посилання на електронну пошту в групов�
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "Списки електронної пошти синхронізовані з Mailchimp."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "Увімкніть електронну пошту на панелі параметрів нижче, а потім налаштуйте сервер SMTP."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10537,10 +10521,6 @@ msgstr "Системні календарі"
 #: 
 msgid "System language for the church."
 msgstr "Мова системи для церкви."
-
-#: 
-msgid "Text Dashboard"
-msgstr "Інформаційна панель текстів"
 
 #: 
 msgid "Text Settings"
@@ -12464,10 +12444,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "Електронна пошта вимкнена. Налаштуйте електронну пошту перед скиданням паролів або скористайтеся Зміна пароля."
 
 #: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "Електронна пошта вимкнена. Увімкніть її в налаштуваннях панелі керування поштою перед тестуванням."
-
-#: 
 msgid "Enter one of your backup recovery codes"
 msgstr "Введіть один із резервних кодів відновлення"
 
@@ -14113,18 +14089,6 @@ msgid "Importing..."
 msgstr "Імпорт ..."
 
 #: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "Включити класи Недільної школи та реєстрації"
-
-#: 
-msgid "Include events and calendars"
-msgstr "Включити події та календарі"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "Включити фінансові дані (фонди пожертвувань, обіцяні внески)"
-
-#: 
 msgid "Invalid Entry"
 msgstr "Недійсний запис"
 
@@ -14297,16 +14261,8 @@ msgid "Open in New Tab"
 msgstr "Відкрити в новій вкладці"
 
 #: 
-msgid "Open in new tab"
-msgstr "Відкрити в новій вкладці"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Відкрийте програму автентифікації та скануйте цей QR-код"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "Додаткові дані для включення"
 
 #: 
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
@@ -19797,10 +19753,6 @@ msgid "Choose where the schedule's dates come from"
 msgstr "Виберіть, звідки беруться дати розкладу"
 
 #: 
-msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
-msgstr "Виберіть, який режим роботи з волонтерами використовує церква, наскільки наперед заповнюються розклади та коли надсилаються нагадування, а також перевірте, що фонові завдання працюють."
-
-#: 
 msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
 msgstr "Виберіть, хто за замовчуванням обіймає кожну позицію. Вибір зберігається в розкладі: цих людей призначають на кожне проведення, створене зараз, і на ті, що щоденне поповнення створить пізніше, доки вони залишаються кваліфікованими, і просять відповісти, якщо ви не позначили їх як тих, що прийняли. Залиште позицію вільною, щоб призначати на неї щотижня окремо."
 
@@ -19831,10 +19783,6 @@ msgstr "Церковні події певного типу додаються �
 #: 
 msgid "Church website"
 msgstr "Сайт церкви"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "У ChurchCRM є два способи керування волонтерами. Одночасно передбачається використовувати лише один; налаштування ліворуч визначає, який із них бачить ця церква. Перемикання приховує або показує сторінки та пункти меню — дані ніколи не видаляються, тож можна перемкнутися назад."
 
 #: 
 msgid "Close event details"
@@ -20159,10 +20107,6 @@ msgstr "Лист не знайдено"
 #: 
 msgid "Email preview"
 msgstr "Попередній перегляд листа"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "Надсилання листів вимкнено"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
@@ -22901,10 +22845,6 @@ msgid "View my schedule"
 msgstr "Переглянути мій розклад"
 
 #: 
-msgid "View only"
-msgstr "Лише перегляд"
-
-#: 
 msgid "View person"
 msgstr "Переглянути особу"
 
@@ -22935,10 +22875,6 @@ msgstr "Волонтерське призначення"
 #: 
 msgid "Volunteer declined"
 msgstr "Волонтер відмовився"
-
-#: 
-msgid "Volunteer experience"
-msgstr "Режим роботи з волонтерами"
 
 #: 
 msgid "Volunteer positions still need to be filled"
@@ -23083,10 +23019,6 @@ msgstr "Який режим керування волонтерами актив
 #: 
 msgid "Which events"
 msgstr "Які події"
-
-#: 
-msgid "Which volunteer experience this church uses. The card on the right explains each choice."
-msgstr "Який режим роботи з волонтерами використовує ця церква. Картка праворуч пояснює кожен варіант."
 
 #: 
 msgid "Who is covering"

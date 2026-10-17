@@ -183,7 +183,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <h3 class="card-title"><i class="fa-solid fa-bolt me-2"></i><?= gettext('Quick Actions') ?></h3>
     </div>
     <div class="card-body">
-        <div class="d-flex flex-wrap" style="gap:.5rem;">
+        <div class="d-flex flex-wrap gap-2">
             <?php if ($canManageGroups) { ?>
                 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-class">
                     <i class="fa-solid fa-plus me-1"></i><?= gettext('Add New Class') ?>
@@ -210,7 +210,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fa-solid fa-xmark"></i></button>
         </div>
     </div>
-    <div class="card-body" style="overflow: visible;">
+    <div class="card-body overflow-visible">
         <table id="sundayschoolClasses" class="table table-bordered data-table w-100">
             <thead>
                 <tr>
@@ -297,7 +297,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fa-solid fa-xmark"></i></button>
         </div>
     </div>
-    <div class="card-body" style="overflow: visible;">
+    <div class="card-body overflow-visible">
         <table id="sundayschoolMissing" class="table table-bordered data-table w-100">
             <thead>
                 <tr>

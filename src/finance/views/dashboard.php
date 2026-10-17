@@ -291,7 +291,7 @@ $sRootPath = SystemURLs::getRootPath();
                     <!-- Fiscal Year selector -->
                     <form method="GET" class="ms-3 d-inline-flex align-items-center gap-2">
                         <label for="deposit-fyid" class="form-label mb-0 small text-body-secondary fw-semibold"><?= gettext('Fiscal Year') ?>:</label>
-                        <select name="fyid" id="deposit-fyid" class="form-select form-select-sm" style="width: auto;" onchange="this.form.submit();">
+                        <select name="fyid" id="deposit-fyid" class="form-select form-select-sm w-auto" onchange="this.form.submit();">
                             <option value="0" <?= $selectedFyid === $currentFyid ? '' : ($selectedFyid === 0 ? 'selected' : '') ?>><?= gettext('All Time') ?></option>
                             <?php foreach ($availableYears as $year): ?>
                             <option value="<?= (int) $year['id'] ?>" <?= (int) $year['id'] === $selectedFyid ? 'selected' : '' ?>>
@@ -429,7 +429,7 @@ $sRootPath = SystemURLs::getRootPath();
                     </div>
 
                     <?php if ($totalDeposits > 0): ?>
-                    <div class="progress" style="height: 20px;">
+                    <div class="progress progress-h-20">
                         <div class="progress-bar bg-success" role="progressbar" style="width: <?= ($closedDeposits / $totalDeposits) * 100 ?>%">
                             <?= round(($closedDeposits / $totalDeposits) * 100) ?>%
                         </div>

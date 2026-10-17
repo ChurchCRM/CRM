@@ -174,9 +174,11 @@ class TimelineService
         foreach ($rows as $row) {
             $label = EmailLogService::kindLabel((string) $row->getKind());
             $status = (string) $row->getStatus();
-            $header = $status === EmailLogService::STATUS_SENT
-                ? sprintf('%s: %s', $label, $row->getSubject())
-                : sprintf(gettext('%s not sent (%s): %s'), $label, $status, $row->getSubject());
+            $header = match ($status) {
+                EmailLogService::STATUS_SENT => sprintf('%s: %s', $label, $row->getSubject()),
+                EmailLogService::STATUS_QUEUED, EmailLogService::STATUS_SENDING => sprintf(gettext('%s queued: %s'), $label, $row->getSubject()),
+                default => sprintf(gettext('%s not sent (%s): %s'), $label, $status, $row->getSubject()),
+            };
             $item = $this->createTimeLineItem(
                 'email-' . $row->getId(),
                 'email',

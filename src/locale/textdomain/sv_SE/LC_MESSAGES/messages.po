@@ -9427,10 +9427,6 @@ msgid "Load demo data"
 msgstr "Ladda demodata"
 
 #: 
-msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
-msgstr "Ladda exempelfamiljer, personer, grupper och gåvoposter. Det säkraste sättet att lära sig ChurchCRM innan du lägger in dina verkliga data."
-
-#: 
 msgid "Log Files"
 msgstr "Loggfiler"
 
@@ -9465,10 +9461,6 @@ msgstr "Hantera gåvofonder för ekonomisk uppföljning"
 #: 
 msgid "Manage donations, pledges, and financial records"
 msgstr "Hantera gåvor, givarlöften och ekonomiska poster"
-
-#: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "Hantera e-postverktyg och SMTP-konfiguration"
 
 #: 
 msgid "Manage families, people, and demographic information"
@@ -10446,10 +10438,6 @@ msgid "Distance Unit"
 msgstr "Maŋŋel gielda"
 
 #: 
-msgid "Email Dashboard"
-msgstr "Poastas borratahtu"
-
-#: 
 msgid "Email Integrations"
 msgstr "Poastas vahkkahusat"
 
@@ -10464,10 +10452,6 @@ msgstr "Poastas liŋka joavku ja seavvi boahtosiin"
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "Poastas listu synkroniseret Mailchimp."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "Ahte poastas sajádusat panela maŋŋel, maŋŋel sadji SMTP serbvi."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10609,10 +10593,6 @@ msgstr "Systemkalendrar"
 #: 
 msgid "System language for the church."
 msgstr "Systemspråk för kyrkan."
-
-#: 
-msgid "Text Dashboard"
-msgstr "Textinstrumentpanel"
 
 #: 
 msgid "Text Settings"
@@ -12534,10 +12514,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "E-post är inaktiverad. Konfigurera e-post innan du återställer lösenord eller använd Ändra lösenord."
 
 #: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "E-post är inaktiverad. Aktivera det i inställningarna för e-postpanelen innan du testar."
-
-#: 
 msgid "Enter one of your backup recovery codes"
 msgstr "Ange en av dina säkerhetskopierade återställningskoder"
 
@@ -14183,18 +14159,6 @@ msgid "Importing..."
 msgstr "Importerar..."
 
 #: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "Inkludera söndagsskolklasser och inskrivningar"
-
-#: 
-msgid "Include events and calendars"
-msgstr "Inkludera händelser och kalendrar"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "Inkludera finansiell data (donationsfonder, löften)"
-
-#: 
 msgid "Invalid Entry"
 msgstr "Ogiltig post"
 
@@ -14367,16 +14331,8 @@ msgid "Open in New Tab"
 msgstr "Öppna i ny flik"
 
 #: 
-msgid "Open in new tab"
-msgstr "Öppna i ny flik"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Öppna din autentiseringsapp och skanna denna QR-kod"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "Valfri data att inkludera"
 
 #: 
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
@@ -19835,10 +19791,6 @@ msgid "Choose where the schedule's dates come from"
 msgstr "Välj varifrån schemats datum kommer"
 
 #: 
-msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
-msgstr "Välj vilken volontärupplevelse kyrkan använder, hur långt i förväg scheman fylls och när påminnelser skickas, och kontrollera att bakgrundsjobben körs."
-
-#: 
 msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
 msgstr "Välj vem som fyller varje uppgift som standard. Valet sparas i schemat: de tilldelas varje tillfälle som skapas nu och de som den dagliga påfyllningen skapar senare, så länge de är kvalificerade, och ombeds svara om du inte anger dem som accepterade. Lämna en uppgift öppen för att tilldela den vecka för vecka."
 
@@ -19869,10 +19821,6 @@ msgstr "Kyrkans aktiviteter av en typ läggs till i kyrkokalendern. Kontrollera 
 #: 
 msgid "Church website"
 msgstr "Kyrkans webbplats"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM har två sätt att hantera volontärer. Bara ett är tänkt att användas åt gången; inställningen till vänster avgör vilket den här kyrkan ser. Att byta döljer eller visar sidor och menyval, men tar aldrig bort data, så du kan byta tillbaka."
 
 #: 
 msgid "Close event details"
@@ -20197,10 +20145,6 @@ msgstr "E-postmeddelandet hittades inte"
 #: 
 msgid "Email preview"
 msgstr "Förhandsvisning av e-post"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "E-postutskick är avstängt"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
@@ -22931,10 +22875,6 @@ msgid "View my schedule"
 msgstr "Visa mitt schema"
 
 #: 
-msgid "View only"
-msgstr "Endast visning"
-
-#: 
 msgid "View person"
 msgstr "Visa person"
 
@@ -22965,10 +22905,6 @@ msgstr "Volontärtilldelning"
 #: 
 msgid "Volunteer declined"
 msgstr "Volontären tackade nej"
-
-#: 
-msgid "Volunteer experience"
-msgstr "Volontärupplevelse"
 
 #: 
 msgid "Volunteer positions still need to be filled"
@@ -23109,10 +23045,6 @@ msgstr "Vilken upplevelse av Volontärhantering som är aktiv. V1 är den äldre
 #: 
 msgid "Which events"
 msgstr "Vilka händelser"
-
-#: 
-msgid "Which volunteer experience this church uses. The card on the right explains each choice."
-msgstr "Vilken volontärupplevelse denna församling använder. Kortet till höger förklarar varje val."
 
 #: 
 msgid "Who is covering"

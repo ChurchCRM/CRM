@@ -17,18 +17,15 @@ export function showPhotoLightbox(entityType: string, entityId: number | string)
   // Create lightbox overlay
   const lightbox = document.createElement("div");
   lightbox.id = "photo-lightbox";
-  lightbox.style.cssText =
-    "position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);display:flex;align-items:center;justify-content:center;z-index:9999;cursor:pointer;";
+  lightbox.className = "photo-lightbox";
 
   const closeBtn = document.createElement("button");
   closeBtn.innerHTML = '<i class="fa-solid fa-times"></i>';
-  closeBtn.style.cssText =
-    "position:absolute;top:20px;right:20px;background:transparent;border:none;color:white;font-size:30px;cursor:pointer;z-index:10000;";
+  closeBtn.className = "photo-lightbox-close";
 
   const img = document.createElement("img");
   img.src = imageSrc;
-  img.style.cssText =
-    "max-width:90%;max-height:90%;object-fit:contain;border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,0.5);";
+  img.className = "photo-lightbox-image";
 
   lightbox.appendChild(closeBtn);
   lightbox.appendChild(img);

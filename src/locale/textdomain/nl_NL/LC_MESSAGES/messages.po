@@ -9306,10 +9306,6 @@ msgid "Load demo data"
 msgstr "Demogegevens laden"
 
 #: 
-msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
-msgstr "Voorbeeldgezinnen, personen, groepen en giftenregistraties laden. De veiligste manier om ChurchCRM te leren kennen voordat u uw echte gegevens invoert."
-
-#: 
 msgid "Log Files"
 msgstr "Logbestanden"
 
@@ -9344,10 +9340,6 @@ msgstr "Donatiefondsen beheren voor financieel toezicht"
 #: 
 msgid "Manage donations, pledges, and financial records"
 msgstr "Giften, toezeggingen en financiële dossiers beheren"
-
-#: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "E-mailhulpmiddelen en SMTP-configuratie beheren"
 
 #: 
 msgid "Manage families, people, and demographic information"
@@ -10325,10 +10317,6 @@ msgid "Distance Unit"
 msgstr "Afstandseenheid"
 
 #: 
-msgid "Email Dashboard"
-msgstr "E-maildashboard"
-
-#: 
 msgid "Email Integrations"
 msgstr "E-mailintegraties"
 
@@ -10343,10 +10331,6 @@ msgstr "E-mailkoppelingen in groeps- en persoonweergaven"
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "E-maillijsten zijn gesynchroniseerd met Mailchimp."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "Schakel e-mail in het onderstaande instellingenpaneel in en configureer uw SMTP-server."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10488,10 +10472,6 @@ msgstr "Systeemkalenders"
 #: 
 msgid "System language for the church."
 msgstr "Systeemtaal voor de kerk."
-
-#: 
-msgid "Text Dashboard"
-msgstr "Tekstdashboard"
 
 #: 
 msgid "Text Settings"
@@ -12413,10 +12393,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "E-mail is uitgeschakeld. Configureer e-mail voordat u wachtwoorden opnieuw instelt, of gebruik Wachtwoord wijzigen."
 
 #: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "E-mail is uitgeschakeld. Schakel het in via de instellingen van het e-maildashboard voordat u test."
-
-#: 
 msgid "Enter one of your backup recovery codes"
 msgstr "Voer een van uw back-upherstelcodes in"
 
@@ -14062,18 +14038,6 @@ msgid "Importing..."
 msgstr "Bezig met importeren..."
 
 #: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "Voeg zondagsschoollessen en inschrijvingen in"
-
-#: 
-msgid "Include events and calendars"
-msgstr "Voeg gebeurtenissen en agenda's in"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "Voeg financiële gegevens in (donatiefondsen, beloften)"
-
-#: 
 msgid "Invalid Entry"
 msgstr "Verkeerde invoer"
 
@@ -14246,16 +14210,8 @@ msgid "Open in New Tab"
 msgstr "Open in Nieuw Tabblad"
 
 #: 
-msgid "Open in new tab"
-msgstr "Openen in nieuw tabblad"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Open uw authenticator-app en scan deze QR-code"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "Optionele gegevens om op te nemen"
 
 #: 
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
@@ -19714,10 +19670,6 @@ msgid "Choose where the schedule's dates come from"
 msgstr "Kies waar de data van het rooster vandaan komen"
 
 #: 
-msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
-msgstr "Kies welke vrijwilligerservaring deze kerk gebruikt, hoe ver vooruit roosters worden gevuld en wanneer herinneringen worden verstuurd, en controleer of de achtergrondtaken draaien."
-
-#: 
 msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
 msgstr "Kies wie standaard elke functie vervult. De keuze wordt in het rooster opgeslagen: die personen worden ingeroosterd op elk moment dat nu wordt gemaakt en op die welke de dagelijkse aanvulling later maakt, zolang ze gekwalificeerd blijven, en krijgen het verzoek te antwoorden tenzij u ze als aanvaard instelt. Laat een functie open om hem week na week in te vullen."
 
@@ -19748,10 +19700,6 @@ msgstr "Kerkactiviteiten van een soort worden aan de kerkagenda toegevoegd. Cont
 #: 
 msgid "Church website"
 msgstr "Website van de kerk"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM heeft twee manieren om vrijwilligers te beheren. Er is maar één bedoeld om tegelijk te gebruiken; de instelling links bepaalt welke deze kerk ziet. Wisselen verbergt of toont pagina's en menu-items, maar verwijdert nooit gegevens, dus u kunt terugschakelen."
 
 #: 
 msgid "Close event details"
@@ -20076,10 +20024,6 @@ msgstr "E-mail niet gevonden"
 #: 
 msgid "Email preview"
 msgstr "E-mailvoorbeeld"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "E-mailverzending is uitgeschakeld"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
@@ -22810,10 +22754,6 @@ msgid "View my schedule"
 msgstr "Mijn rooster bekijken"
 
 #: 
-msgid "View only"
-msgstr "Alleen bekijken"
-
-#: 
 msgid "View person"
 msgstr "Persoon bekijken"
 
@@ -22844,10 +22784,6 @@ msgstr "Vrijwilligersinroostering"
 #: 
 msgid "Volunteer declined"
 msgstr "Vrijwilliger heeft afgewezen"
-
-#: 
-msgid "Volunteer experience"
-msgstr "Vrijwilligerservaring"
 
 #: 
 msgid "Volunteer positions still need to be filled"
@@ -22988,10 +22924,6 @@ msgstr "Welke ervaring van Vrijwilligersbeheer actief is. V1 is de verouderde fu
 #: 
 msgid "Which events"
 msgstr "Welke activiteiten"
-
-#: 
-msgid "Which volunteer experience this church uses. The card on the right explains each choice."
-msgstr "Welke vrijwilligerservaring deze kerk gebruikt. De kaart rechts legt elke keuze uit."
 
 #: 
 msgid "Who is covering"

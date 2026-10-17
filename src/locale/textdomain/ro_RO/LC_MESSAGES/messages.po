@@ -9404,10 +9404,6 @@ msgid "Load demo data"
 msgstr "Încarcă date demonstrative"
 
 #: 
-msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
-msgstr "Încarcă familii, persoane, grupuri și înregistrări de contribuții de exemplu. Cea mai sigură modalitate de a învăța ChurchCRM înainte de a introduce datele reale."
-
-#: 
 msgid "Log Files"
 msgstr "Fișiere jurnal"
 
@@ -9442,10 +9438,6 @@ msgstr "Gestionează fondurile de ofertă pentru urmărirea financiară"
 #: 
 msgid "Manage donations, pledges, and financial records"
 msgstr "Gestionează ofertele, angajamentele și înregistrările financiare"
-
-#: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "Gestionează instrumentele de e-mail și configurația SMTP"
 
 #: 
 msgid "Manage families, people, and demographic information"
@@ -10423,10 +10415,6 @@ msgid "Distance Unit"
 msgstr "Unitate de distanță"
 
 #: 
-msgid "Email Dashboard"
-msgstr "Tablou de bord e-mail"
-
-#: 
 msgid "Email Integrations"
 msgstr "Integrări e-mail"
 
@@ -10441,10 +10429,6 @@ msgstr "Linkuri de e-mail în vizualizări de grup și persoane"
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "Listele de e-mailuri sunt sincronizate cu Mailchimp."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "Activați e-mailul în panoul de setări de mai jos, apoi configurați serverul SMTP."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10586,10 +10570,6 @@ msgstr "Calendare de sistem"
 #: 
 msgid "System language for the church."
 msgstr "Limbă de sistem pentru biserică."
-
-#: 
-msgid "Text Dashboard"
-msgstr "Tablou de bord text"
 
 #: 
 msgid "Text Settings"
@@ -12512,10 +12492,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "E-mailul este dezactivat. Configurați e-mailul înainte de a reseta parolele sau utilizați Schimbați parola."
 
 #: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "E-mailul este dezactivat. Activați-l în setările Tabloului de bord e-mail înainte de testare."
-
-#: 
 msgid "Enter one of your backup recovery codes"
 msgstr "Introduceți unul dintre codurile de recuperare de rezervă"
 
@@ -14161,18 +14137,6 @@ msgid "Importing..."
 msgstr "Se importă..."
 
 #: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "Include clasele de Școală duminicală și înscrierile"
-
-#: 
-msgid "Include events and calendars"
-msgstr "Include evenimente și calendare"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "Include date financiare (fonduri donații, angajamente)"
-
-#: 
 msgid "Invalid Entry"
 msgstr "Intrare nevalidă"
 
@@ -14345,16 +14309,8 @@ msgid "Open in New Tab"
 msgstr "Deschide în filă nouă"
 
 #: 
-msgid "Open in new tab"
-msgstr "Deschide în filă nouă"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Deschideți aplicația de autentificare și scanați acest cod QR"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "Date opționale de inclus"
 
 #: 
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
@@ -19829,10 +19785,6 @@ msgid "Choose where the schedule's dates come from"
 msgstr "Alegeți de unde provin datele programului"
 
 #: 
-msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
-msgstr "Alegeți ce experiență de voluntariat folosește această biserică, cu cât timp înainte se completează programele și când se trimit reamintirile, și verificați dacă procesele de fundal rulează."
-
-#: 
 msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
 msgstr "Alegeți cine ocupă implicit fiecare post. Alegerea este salvată în program: persoanele sunt repartizate la fiecare ocurență creată acum și la cele create mai târziu de completarea zilnică, cât timp rămân calificate, și sunt rugate să răspundă dacă nu le setați ca acceptate. Lăsați un post deschis pentru a-l repartiza săptămână de săptămână."
 
@@ -19863,10 +19815,6 @@ msgstr "Evenimentele bisericii de un anumit tip se adaugă în calendarul biseri
 #: 
 msgid "Church website"
 msgstr "Site-ul bisericii"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM are două moduri de a gestiona voluntarii. Doar unul trebuie folosit la un moment dat; setarea din stânga decide pe care îl vede această biserică. Comutarea ascunde sau arată pagini și intrări de meniu — nu șterge niciodată date, deci puteți reveni."
 
 #: 
 msgid "Close event details"
@@ -20191,10 +20139,6 @@ msgstr "E-mailul nu a fost găsit"
 #: 
 msgid "Email preview"
 msgstr "Previzualizare e-mail"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "Trimiterea de e-mailuri este dezactivată"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
@@ -22929,10 +22873,6 @@ msgid "View my schedule"
 msgstr "Vezi programul meu"
 
 #: 
-msgid "View only"
-msgstr "Doar vizualizare"
-
-#: 
 msgid "View person"
 msgstr "Vizualizare persoană"
 
@@ -22963,10 +22903,6 @@ msgstr "Repartizare voluntar"
 #: 
 msgid "Volunteer declined"
 msgstr "Voluntar a refuzat"
-
-#: 
-msgid "Volunteer experience"
-msgstr "Experiența de voluntariat"
 
 #: 
 msgid "Volunteer positions still need to be filled"
@@ -23109,10 +23045,6 @@ msgstr "Care experiență de gestionare a voluntarilor este activă. V1 este vec
 #: 
 msgid "Which events"
 msgstr "Ce evenimente"
-
-#: 
-msgid "Which volunteer experience this church uses. The card on the right explains each choice."
-msgstr "Ce experiență de voluntariat folosește această biserică. Cardul din dreapta explică fiecare alegere."
 
 #: 
 msgid "Who is covering"

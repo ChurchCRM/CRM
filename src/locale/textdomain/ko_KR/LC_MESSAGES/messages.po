@@ -9322,10 +9322,6 @@ msgid "Load demo data"
 msgstr "데모 데이터 로드"
 
 #: 
-msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
-msgstr "샘플 가족, 사람, 그룹 및 헌금 기록을 로드합니다. 실제 데이터를 입력하기 전에 ChurchCRM을 배우는 가장 안전한 방법입니다."
-
-#: 
 msgid "Log Files"
 msgstr "로그 파일"
 
@@ -9360,10 +9356,6 @@ msgstr "재정 추적을 위한 헌금 기금 관리"
 #: 
 msgid "Manage donations, pledges, and financial records"
 msgstr "헌금, 서약 및 재정 기록 관리"
-
-#: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "이메일 도구 및 SMTP 구성 관리"
 
 #: 
 msgid "Manage families, people, and demographic information"
@@ -10341,10 +10333,6 @@ msgid "Distance Unit"
 msgstr "거리 단위"
 
 #: 
-msgid "Email Dashboard"
-msgstr "이메일 대시보드"
-
-#: 
 msgid "Email Integrations"
 msgstr "이메일 통합"
 
@@ -10359,10 +10347,6 @@ msgstr "그룹 및 사람 보기의 이메일 링크"
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "이메일 목록이 Mailchimp과 동기화됩니다."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "아래 설정 패널에서 이메일을 활성화한 다음 SMTP 서버를 구성합니다."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10504,10 +10488,6 @@ msgstr "시스템 캘린더"
 #: 
 msgid "System language for the church."
 msgstr "교회의 시스템 언어."
-
-#: 
-msgid "Text Dashboard"
-msgstr "텍스트 대시보드"
 
 #: 
 msgid "Text Settings"
@@ -12428,10 +12408,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "이메일이 비활성화되어 있습니다. 비밀번호를 재설정하려면 먼저 이메일을 설정하거나 비밀번호 변경을 사용하세요."
 
 #: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "이메일이 비활성화되어 있습니다. 테스트하기 전에 이메일 대시보드 설정에서 활성화하세요."
-
-#: 
 msgid "Enter one of your backup recovery codes"
 msgstr "백업 복구 코드 중 하나를 입력하세요"
 
@@ -14077,18 +14053,6 @@ msgid "Importing..."
 msgstr "가져오는 중..."
 
 #: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "주일학교 클래스 및 등록 포함"
-
-#: 
-msgid "Include events and calendars"
-msgstr "행사 및 캘린더 포함"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "재정 데이터 포함 (헌금 기금, 서약)"
-
-#: 
 msgid "Invalid Entry"
 msgstr "잘못된 입력"
 
@@ -14261,16 +14225,8 @@ msgid "Open in New Tab"
 msgstr "새 탭에서 열기"
 
 #: 
-msgid "Open in new tab"
-msgstr "새 탭에서 열기"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "인증 앱을 열고 이 QR 코드를 스캔하세요"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "포함할 선택적 데이터"
 
 #: 
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
@@ -19713,10 +19669,6 @@ msgid "Choose where the schedule's dates come from"
 msgstr "일정의 날짜를 어디서 가져올지 선택하세요"
 
 #: 
-msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
-msgstr "이 교회에서 사용할 봉사 방식, 일정을 몇 주 앞까지 채울지, 알림을 언제 보낼지를 선택하고 백그라운드 작업이 실행 중인지 확인합니다."
-
-#: 
 msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
 msgstr "각 직책을 기본으로 맡을 사람을 선택합니다. 이 선택은 일정에 저장되며, 자격이 유지되는 동안 지금 만들어진 모든 회차와 이후 매일 자동 보충으로 만들어지는 회차에 배정됩니다. 수락됨으로 지정하지 않으면 응답을 요청받습니다. 직책을 비워 두면 주마다 배정할 수 있습니다."
 
@@ -19747,10 +19699,6 @@ msgstr "종류별 교회 행사는 교회 캘린더에 추가됩니다. 일정�
 #: 
 msgid "Church website"
 msgstr "교회 웹사이트"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM에는 봉사자를 관리하는 방법이 두 가지 있습니다. 한 번에 하나만 사용하도록 되어 있으며, 왼쪽 설정에 따라 이 교회에 보이는 방식이 정해집니다. 전환하면 페이지와 메뉴 항목이 숨겨지거나 표시될 뿐 데이터는 삭제되지 않으므로 언제든 되돌릴 수 있습니다."
 
 #: 
 msgid "Close event details"
@@ -20075,10 +20023,6 @@ msgstr "이메일을 찾을 수 없습니다"
 #: 
 msgid "Email preview"
 msgstr "이메일 미리보기"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "이메일 발송이 비활성화되어 있습니다"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
@@ -22805,10 +22749,6 @@ msgid "View my schedule"
 msgstr "내 일정 보기"
 
 #: 
-msgid "View only"
-msgstr "보기 전용"
-
-#: 
 msgid "View person"
 msgstr "교인 보기"
 
@@ -22839,10 +22779,6 @@ msgstr "봉사자 배정"
 #: 
 msgid "Volunteer declined"
 msgstr "봉사자가 거절했습니다"
-
-#: 
-msgid "Volunteer experience"
-msgstr "봉사 방식"
 
 #: 
 msgid "Volunteer positions still need to be filled"
@@ -22981,10 +22917,6 @@ msgstr "어떤 봉사 관리 방식을 사용할지 정합니다. V1은 기존 �
 #: 
 msgid "Which events"
 msgstr "대상 행사"
-
-#: 
-msgid "Which volunteer experience this church uses. The card on the right explains each choice."
-msgstr "이 교회에서 사용할 봉사 방식입니다. 오른쪽 카드에서 각 선택지를 설명합니다."
 
 #: 
 msgid "Who is covering"

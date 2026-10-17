@@ -3,6 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\EmailComposerService;
+use ChurchCRM\Service\EmailQueueService;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\EmailRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
@@ -13,8 +14,8 @@ use Slim\Routing\RouteCollectorProxy;
 /**
  * @OA\Post(
  *     path="/email/send",
- *     summary="Send a composer email, one message per recipient, through the configured SMTP server",
- *     description="Recipients are given as person and family ids, never as addresses: the server resolves each id to its current email address, applies the do-not-email property, skips deceased people, inactive families and ids without an address, deduplicates addresses, and reports every skipped recipient by name. Each recipient receives their own message.",
+ *     summary="Queue a composer email, one message per recipient, for sending through the configured SMTP server",
+ *     description="Recipients are given as person and family ids, never as addresses: the server resolves each id to its current email address, applies the do-not-email property, skips deceased people, inactive families and ids without an address, deduplicates addresses, and reports every skipped recipient by name. Each recipient receives their own message. Nothing is sent inside this request: every message is queued (email history status `queued`) under one batch id and the call returns at once. POST /email/batches/{batch}/send sends the batch now in bounded steps; whatever is left goes out with the timer jobs (cron, or the page-load fallback). `sent` and `failed` are always empty here and are kept for older clients; follow the batch for outcomes.",
  *     tags={"Email"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\RequestBody(
@@ -29,9 +30,10 @@ use Slim\Routing\RouteCollectorProxy;
  *             @OA\Property(property="body", type="string", description="Plain-text body; newlines are preserved")
  *         )
  *     ),
- *     @OA\Response(response=200, description="Per-recipient outcome",
+ *     @OA\Response(response=200, description="Per-recipient outcome of the queueing",
  *         @OA\JsonContent(
- *             @OA\Property(property="sent", type="array", description="Recipients whose message the SMTP server accepted (acceptance is not delivery)",
+ *             @OA\Property(property="batch", type="string", nullable=true, example="3f2a9c0d4b6e8f1a2c3d4e5f60718293", description="Batch id of the queued messages; null when nobody could be emailed"),
+ *             @OA\Property(property="queued", type="array", description="Recipients whose message was queued",
  *                 @OA\Items(type="object",
  *                     @OA\Property(property="personId", type="integer", nullable=true),
  *                     @OA\Property(property="familyId", type="integer", nullable=true),
@@ -43,22 +45,63 @@ use Slim\Routing\RouteCollectorProxy;
  *                     @OA\Property(property="familyId", type="integer", nullable=true),
  *                     @OA\Property(property="name", type="string"),
  *                     @OA\Property(property="reason", type="string", enum={"not-found","no-email","do-not-email","deceased","inactive","duplicate-address"}))),
- *             @OA\Property(property="failed", type="array", description="Recipients the SMTP server rejected",
- *                 @OA\Items(type="object",
- *                     @OA\Property(property="personId", type="integer", nullable=true),
- *                     @OA\Property(property="familyId", type="integer", nullable=true),
- *                     @OA\Property(property="name", type="string"),
- *                     @OA\Property(property="email", type="string"),
- *                     @OA\Property(property="error", type="string"))),
+ *             @OA\Property(property="sent", type="array", @OA\Items(type="object"), description="Always empty: sending happens after the request (kept for older clients)"),
+ *             @OA\Property(property="failed", type="array", @OA\Items(type="object"), description="Always empty: sending happens after the request (kept for older clients)"),
  *             @OA\Property(property="counts", type="object",
- *                 @OA\Property(property="sent", type="integer"),
+ *                 @OA\Property(property="queued", type="integer"),
+ *                 @OA\Property(property="sent", type="integer", description="Always 0"),
  *                 @OA\Property(property="skipped", type="integer"),
- *                 @OA\Property(property="failed", type="integer"))
+ *                 @OA\Property(property="failed", type="integer", description="Always 0"))
  *         )
  *     ),
  *     @OA\Response(response=400, description="Invalid request: raw addresses, no ids, bad ids, more than 500 ids, or empty subject/body"),
  *     @OA\Response(response=401, description="Unauthorized"),
  *     @OA\Response(response=403, description="Email permission required"),
+ *     @OA\Response(response=422, description="Email sending is disabled or SMTP is not configured")
+ * )
+ *
+ * @OA\Schema(
+ *     schema="EmailBatchProgress",
+ *     @OA\Property(property="batch", type="string"),
+ *     @OA\Property(property="total", type="integer", description="Messages in the batch; queued messages an administrator deleted are no longer counted"),
+ *     @OA\Property(property="queued", type="integer", description="Waiting to be sent, due now or waiting for a retry"),
+ *     @OA\Property(property="sending", type="integer", description="Being sent by a run right now"),
+ *     @OA\Property(property="sent", type="integer", description="Accepted by the SMTP server (acceptance is not delivery)"),
+ *     @OA\Property(property="failed", type="integer", description="Refused, or still failing after the last attempt"),
+ *     @OA\Property(property="skipped", type="integer", description="Email was switched off when the message's turn came"),
+ *     @OA\Property(property="due", type="integer", description="Queued messages that may be sent now"),
+ *     @OA\Property(property="nextAttempt", type="string", nullable=true, example="2026-10-14 10:25:00", description="When the earliest retry is due"),
+ *     @OA\Property(property="done", type="boolean", description="Nothing is queued or being sent"),
+ *     @OA\Property(property="failures", type="array", description="The failed messages and the server's answer",
+ *         @OA\Items(type="object",
+ *             @OA\Property(property="address", type="string"),
+ *             @OA\Property(property="error", type="string")))
+ * )
+ *
+ * @OA\Get(
+ *     path="/email/batches/{batch}",
+ *     summary="Progress of a queued composer send",
+ *     description="Counts of the batch's messages by email history status. Only the user who queued the batch, or an administrator, may read it.",
+ *     tags={"Email"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="batch", in="path", required=true, @OA\Schema(type="string", pattern="^[0-9a-f]{32}$")),
+ *     @OA\Response(response=200, description="Batch progress", @OA\JsonContent(ref="#/components/schemas/EmailBatchProgress")),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="Email permission required, or the batch belongs to another user"),
+ *     @OA\Response(response=404, description="No such batch, or every message in it was still queued when an administrator deleted the queue")
+ * )
+ *
+ * @OA\Post(
+ *     path="/email/batches/{batch}/send",
+ *     summary="Send the due messages of a queued composer send now",
+ *     description="Sends the batch's due messages for up to 15 seconds or 100 messages, then returns its progress. The composer calls it until nothing is due; messages waiting for a retry, and anything left when the composer closes, go out with the timer jobs. Concurrent calls and timer-job runs never send the same message twice. Only the user who queued the batch, or an administrator, may call it.",
+ *     tags={"Email"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="batch", in="path", required=true, @OA\Schema(type="string", pattern="^[0-9a-f]{32}$")),
+ *     @OA\Response(response=200, description="Batch progress after this step", @OA\JsonContent(ref="#/components/schemas/EmailBatchProgress")),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="Email permission required, or the batch belongs to another user"),
+ *     @OA\Response(response=404, description="No such batch, or every message in it was still queued when an administrator deleted the queue"),
  *     @OA\Response(response=422, description="Email sending is disabled or SMTP is not configured")
  * )
  */
@@ -133,27 +176,63 @@ $app->group('/email', function (RouteCollectorProxy $group): void {
         try {
             $service = new EmailComposerService();
             $resolved = $service->resolveRecipients($personIds, $familyIds);
-            $result = $service->send(
-                $resolved['recipients'],
-                $subject,
-                $body,
-                AuthenticationManager::getCurrentUser(),
-            );
+            $queued = $resolved['recipients'];
+            $batch = $queued !== []
+                ? $service->queue($queued, $subject, $body, AuthenticationManager::getCurrentUser())
+                : null;
 
             return SlimUtils::renderJSON($response, [
-                'sent'    => $result['sent'],
+                'batch'   => $batch,
+                'queued'  => $queued,
                 'skipped' => $resolved['skipped'],
-                'failed'  => $result['failed'],
+                'sent'    => [],
+                'failed'  => [],
                 'counts'  => [
-                    'sent'    => count($result['sent']),
+                    'queued'  => count($queued),
+                    'sent'    => 0,
                     'skipped' => count($resolved['skipped']),
-                    'failed'  => count($result['failed']),
+                    'failed'  => 0,
                 ],
             ]);
         } catch (\Throwable $e) {
-            return SlimUtils::renderErrorJSON($response, gettext('Failed to send email'), [], 500, $e, $request);
+            return SlimUtils::renderErrorJSON($response, gettext('Failed to queue the email'), [], 500, $e, $request);
         }
     })->add(new InputSanitizationMiddleware(['subject' => 'text', 'body' => 'text']));
+
+    $group->get('/batches/{batch:[0-9a-f]{32}}', function (Request $request, Response $response, array $args): Response {
+        $denied = emailBatchAccessError($request, $response, $args['batch']);
+        if ($denied !== null) {
+            return $denied;
+        }
+
+        return SlimUtils::renderJSON($response, (new EmailQueueService())->getBatchProgress($args['batch']));
+    });
+
+    $group->post('/batches/{batch:[0-9a-f]{32}}/send', function (Request $request, Response $response, array $args): Response {
+        $denied = emailBatchAccessError($request, $response, $args['batch']);
+        if ($denied !== null) {
+            return $denied;
+        }
+        if (!SystemConfig::isEmailEnabled()) {
+            return SlimUtils::renderErrorJSON(
+                $response,
+                gettext('Email sending is not enabled. Configure SMTP settings and enable email before sending.'),
+                [],
+                422,
+                null,
+                $request,
+            );
+        }
+
+        try {
+            $queue = new EmailQueueService();
+            $queue->drain($args['batch'], EmailQueueService::WEB_MAX_SECONDS, EmailQueueService::WEB_MAX_MESSAGES);
+
+            return SlimUtils::renderJSON($response, $queue->getBatchProgress($args['batch']));
+        } catch (\Throwable $e) {
+            return SlimUtils::renderErrorJSON($response, gettext('Failed to send email'), [], 500, $e, $request);
+        }
+    });
 
     /**
      * @OA\Post(
@@ -215,3 +294,18 @@ $app->group('/email', function (RouteCollectorProxy $group): void {
         }
     })->add(new InputSanitizationMiddleware(['subject' => 'text', 'body' => 'text']));
 })->add(EmailRoleAuthMiddleware::class);
+
+/** 404 for an unknown batch, 403 for someone else's (administrators may follow any batch), null when allowed. */
+function emailBatchAccessError(Request $request, Response $response, string $batch): ?Response
+{
+    $first = (new EmailQueueService())->findBatch($batch);
+    if ($first === null) {
+        return SlimUtils::renderErrorJSON($response, gettext('Email batch not found. If it was still queued, an administrator deleted the queue and it will not be sent.'), [], 404, null, $request);
+    }
+    $user = AuthenticationManager::getCurrentUser();
+    if (!$user->isAdmin() && (int) $first->getUsrId() !== (int) $user->getId()) {
+        return SlimUtils::renderErrorJSON($response, gettext('This email batch was queued by another user'), [], 403, null, $request);
+    }
+
+    return null;
+}

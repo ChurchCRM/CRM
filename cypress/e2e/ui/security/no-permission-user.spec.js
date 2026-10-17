@@ -133,14 +133,14 @@ describe("Zero-Permission User (EditSelf=0, all flags 0)", () => {
             cy.url().should("include", "/v2/access-denied");
         });
 
-        // EmailMailto=0 — /v2/email and /v2/text are behind EmailRoleAuthMiddleware.
+        // EmailMailto=0 — /people/email and /people/text are behind EmailRoleAuthMiddleware.
         it("Email dashboard is denied", () => {
-            cy.visit("v2/email/dashboard", { failOnStatusCode: false });
+            cy.visit("people/email", { failOnStatusCode: false });
             cy.url().should("include", "/v2/access-denied");
         });
 
         it("Text dashboard is denied", () => {
-            cy.visit("v2/text/dashboard", { failOnStatusCode: false });
+            cy.visit("people/text", { failOnStatusCode: false });
             cy.url().should("include", "/v2/access-denied");
         });
     });
@@ -215,16 +215,11 @@ describe("Zero-Permission User (EditSelf=0, all flags 0)", () => {
             });
         });
 
-        it("Reports nav is hidden when the user has no report permission", () => {
+        it("Reports nav lists only People Reports", () => {
             cy.visit("v2/dashboard");
-            cy.get(".navbar-nav").each(($nav) => {
-                cy.wrap($nav).within(() => {
-                    cy.contains("a", "Reports").should("not.exist");
-                    cy.contains("a", "People Reports").should("not.exist");
-                    cy.contains("a", "Financial Reports").should("not.exist");
-
-                });
-            });
+            cy.get('.navbar-nav a[href$="/people/reports"]').should("exist");
+            cy.get('.navbar-nav a[href$="/finance/reports"]').should("not.exist");
+            cy.get('.navbar-nav a[href$="/groups/reports"]').should("not.exist");
         });
     });
 

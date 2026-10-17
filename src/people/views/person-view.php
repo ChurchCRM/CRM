@@ -49,7 +49,7 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
             <!-- Photo (top) — full card width, responsive square; click to upload -->
             <div class="position-relative">
                 <a href="#" id="uploadImageButton" class="d-block" title="<?= $bOkToEdit ? gettext("Click to upload photo") : gettext("View Photo") ?>">
-                    <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" alt="" class="photo-profile card-img-top w-100 object-fit-cover" style="aspect-ratio: 1 / 1; max-height: 400px;">
+                    <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" alt="" class="photo-profile card-img-top w-100 object-fit-cover profile-photo-square">
                 </a>
                 <button type="button"
                         class="photo-view-overlay btn btn-sm position-absolute bottom-0 end-0 m-2 d-none"
@@ -57,7 +57,7 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
                         data-entity-id="<?= $person->getId() ?>"
                         title="<?= gettext('View full photo') ?>"
                         aria-label="<?= gettext('View full photo') ?>">
-                    <i class="fa-solid fa-magnifying-glass" aria-hidden="true" style="color:white; text-shadow: 0 1px 3px rgba(0,0,0,.8);"></i>
+                    <i class="fa-solid fa-magnifying-glass photo-zoom-icon" aria-hidden="true"></i>
                 </button>
             </div>
             <!-- Attributes (below photo) -->
@@ -91,16 +91,16 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
                         </span>
                     </li>
                     <?php endif; ?>
-                    <li class="mb-1"><i class="fa <?= $genderClass ?> me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= $genderText ?></li>
-                    <li class="mb-1"><i class="fa-solid fa-id-card me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= InputUtils::escapeHTML(gettext($sClassName)) ?></li>
+                    <li class="mb-1"><i class="fa <?= $genderClass ?> me-2 text-body-secondary icon-fixed-width"></i><?= $genderText ?></li>
+                    <li class="mb-1"><i class="fa-solid fa-id-card me-2 text-body-secondary icon-fixed-width"></i><?= InputUtils::escapeHTML(gettext($sClassName)) ?></li>
                     <?php if (!empty($sFamRole)) : ?>
-                    <li class="mb-1"><i class="fa-solid fa-users me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= InputUtils::escapeHTML(gettext($sFamRole)) ?></li>
+                    <li class="mb-1"><i class="fa-solid fa-users me-2 text-body-secondary icon-fixed-width"></i><?= InputUtils::escapeHTML(gettext($sFamRole)) ?></li>
                     <?php endif; ?>
                     <?php if ($per_MembershipDate) : ?>
-                    <li class="mb-1"><i class="fa-solid fa-calendar-check me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= gettext('Since') ?> <?= DateTimeUtils::formatDate($per_MembershipDate, false) ?></li>
+                    <li class="mb-1"><i class="fa-solid fa-calendar-check me-2 text-body-secondary icon-fixed-width"></i><?= gettext('Since') ?> <?= DateTimeUtils::formatDate($per_MembershipDate, false) ?></li>
                     <?php endif; ?>
                     <?php if ($sEnvelope !== gettext('Not assigned')) : ?>
-                    <li class="mb-1"><i class="fa-solid fa-envelope me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= gettext('Envelope') ?> #<?= $sEnvelope ?></li>
+                    <li class="mb-1"><i class="fa-solid fa-envelope me-2 text-body-secondary icon-fixed-width"></i><?= gettext('Envelope') ?> #<?= $sEnvelope ?></li>
                     <?php endif; ?>
                 </ul>
             </div>
@@ -242,7 +242,7 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
                         <?php endif; ?>
                         <?php if (strlen($per_Twitter) > 0) : ?>
                         <li class="mb-2">
-                            <i class="fa-brands fa-x-twitter me-2 text-dark"></i>
+                            <i class="fa-brands fa-x-twitter me-2 text-body"></i>
                             <a href="https://www.twitter.com/<?= InputUtils::escapeAttribute($per_Twitter) ?>" target="_blank">@<?= InputUtils::escapeHTML($per_Twitter) ?></a>
                         </li>
                         <?php endif; ?>
@@ -399,11 +399,11 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
                 <div id="giving-history-content" class="d-none">
                     <ul class="list-unstyled mb-0 px-3 py-2">
                         <li class="mb-2">
-                            <i class="fa-solid fa-calendar-check me-2 text-muted" style="width:1rem;text-align:center;"></i>
+                            <i class="fa-solid fa-calendar-check me-2 text-muted icon-fixed-width"></i>
                             <strong><?= gettext("YTD Paid") ?>:</strong> <span id="person-giving-ytd" class="text-success fw-bold">$0.00</span>
                         </li>
                         <li class="mb-2" id="person-last-gift-row">
-                            <i class="fa-solid fa-hand-holding-dollar me-2 text-muted" style="width:1rem;text-align:center;"></i>
+                            <i class="fa-solid fa-hand-holding-dollar me-2 text-muted icon-fixed-width"></i>
                             <strong><?= gettext("Last Gift") ?>:</strong> <span id="person-last-gift">—</span>
                         </li>
                     </ul>
@@ -486,7 +486,7 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
                     <a href="<?= $person->getFamily()->getViewURI() ?>" class="btn btn-sm btn-ghost-primary"><i class="fa-solid fa-arrow-up-right-from-square me-1"></i><?= gettext('View') ?></a>
                 </div>
             </div>
-            <div style="overflow-x: clip; overflow-y: visible;">
+            <div class="table-clip-x">
                 <table class="table table-vcenter card-table">
                     <thead>
                         <tr>
@@ -502,7 +502,7 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
                             $tmpPersonId = $familyMember->getId();
                             $isSelf = ($tmpPersonId === $iPersonID);
                         ?>
-                            <tr<?= $isSelf ? ' class="bg-light"' : '' ?>>
+                            <tr<?= $isSelf ? ' class="bg-surface-secondary"' : '' ?>>
                                 <td>
                                     <div class="d-flex align-items-center">
                                         <img data-image-entity-type="person" data-image-entity-id="<?= $familyMember->getId() ?>" class="avatar avatar-sm me-2">
@@ -640,7 +640,7 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
                 <?php endif; ?>
                 <?php if ($personMapConfig !== null) : ?>
                 <div class="mt-2 rounded overflow-hidden">
-                    <div id="person-map" style="height: 200px;"></div>
+                    <div id="person-map" class="map-canvas-sm"></div>
                 </div>
                 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
                     window.CRM = window.CRM || {};

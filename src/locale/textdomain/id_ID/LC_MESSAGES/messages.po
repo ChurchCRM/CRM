@@ -9322,10 +9322,6 @@ msgid "Load demo data"
 msgstr "Muat data demo"
 
 #: 
-msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
-msgstr "Muat contoh keluarga, orang, grup, dan catatan persembahan. Cara paling aman untuk mempelajari ChurchCRM sebelum memasukkan data nyata Anda."
-
-#: 
 msgid "Log Files"
 msgstr "File Log"
 
@@ -9360,10 +9356,6 @@ msgstr "Kelola dana persembahan untuk pelacakan keuangan"
 #: 
 msgid "Manage donations, pledges, and financial records"
 msgstr "Kelola persembahan, janji persembahan, dan catatan keuangan"
-
-#: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "Kelola alat email dan konfigurasi SMTP"
 
 #: 
 msgid "Manage families, people, and demographic information"
@@ -10341,10 +10333,6 @@ msgid "Distance Unit"
 msgstr "Unit Jarak"
 
 #: 
-msgid "Email Dashboard"
-msgstr "Dashboard Email"
-
-#: 
 msgid "Email Integrations"
 msgstr "Integrasi Email"
 
@@ -10359,10 +10347,6 @@ msgstr "Tautan email dalam tampilan grup dan orang"
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "Daftar email disinkronkan dengan Mailchimp."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "Aktifkan email di panel pengaturan di bawah, kemudian konfigurasikan server SMTP Anda."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10504,10 +10488,6 @@ msgstr "Kalender Sistem"
 #: 
 msgid "System language for the church."
 msgstr "Bahasa sistem untuk gereja."
-
-#: 
-msgid "Text Dashboard"
-msgstr "Dasbor Teks"
 
 #: 
 msgid "Text Settings"
@@ -12428,10 +12408,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "Email dinonaktifkan. Konfigurasikan email sebelum mengatur ulang kata sandi, atau gunakan Ubah Kata Sandi."
 
 #: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "Email dinonaktifkan. Aktifkan di pengaturan Dasbor Email sebelum pengujian."
-
-#: 
 msgid "Enter one of your backup recovery codes"
 msgstr "Masukkan salah satu kode pemulihan cadangan Anda"
 
@@ -14077,18 +14053,6 @@ msgid "Importing..."
 msgstr "Sedang mengimpor..."
 
 #: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "Sertakan kelas Sekolah Minggu dan pendaftaran"
-
-#: 
-msgid "Include events and calendars"
-msgstr "Sertakan kegiatan dan kalender"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "Sertakan data keuangan (dana donasi, janji iman)"
-
-#: 
 msgid "Invalid Entry"
 msgstr "Entri Tidak Valid"
 
@@ -14261,16 +14225,8 @@ msgid "Open in New Tab"
 msgstr "Buka di Tab Baru"
 
 #: 
-msgid "Open in new tab"
-msgstr "Buka di tab baru"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Buka aplikasi autentikator Anda dan pindai kode QR ini"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "Data Opsional untuk Disertakan"
 
 #: 
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
@@ -19713,10 +19669,6 @@ msgid "Choose where the schedule's dates come from"
 msgstr "Pilih dari mana tanggal jadwal berasal"
 
 #: 
-msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
-msgstr "Pilih pengalaman relawan yang digunakan gereja ini, seberapa jauh jadwal diisi lebih awal dan kapan pengingat dikirim, serta pastikan tugas latar belakang berjalan."
-
-#: 
 msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
 msgstr "Pilih siapa yang mengisi setiap posisi secara bawaan. Pilihan disimpan pada jadwal: mereka ditugaskan pada setiap kejadian yang dibuat sekarang dan yang dibuat oleh pengisian harian nanti, selama mereka masih memenuhi syarat, dan diminta menanggapi kecuali Anda menetapkannya sebagai sudah menerima. Biarkan posisi kosong untuk ditugaskan minggu demi minggu."
 
@@ -19747,10 +19699,6 @@ msgstr "Acara gereja dengan jenis tertentu ditambahkan di kalender gereja. Perik
 #: 
 msgid "Church website"
 msgstr "Situs web gereja"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM memiliki dua cara mengelola relawan. Hanya satu yang dimaksudkan digunakan pada satu waktu; pengaturan di sebelah kiri menentukan mana yang dilihat gereja ini. Berpindah hanya menyembunyikan atau menampilkan halaman dan menu — tidak pernah menghapus data, sehingga Anda dapat kembali."
 
 #: 
 msgid "Close event details"
@@ -20075,10 +20023,6 @@ msgstr "Email tidak ditemukan"
 #: 
 msgid "Email preview"
 msgstr "Pratinjau email"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "Pengiriman email dinonaktifkan"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
@@ -22805,10 +22749,6 @@ msgid "View my schedule"
 msgstr "Lihat jadwal saya"
 
 #: 
-msgid "View only"
-msgstr "Hanya lihat"
-
-#: 
 msgid "View person"
 msgstr "Lihat Anggota"
 
@@ -22839,10 +22779,6 @@ msgstr "Penugasan relawan"
 #: 
 msgid "Volunteer declined"
 msgstr "Relawan menolak"
-
-#: 
-msgid "Volunteer experience"
-msgstr "Pengalaman relawan"
 
 #: 
 msgid "Volunteer positions still need to be filled"
@@ -22981,10 +22917,6 @@ msgstr "Pengalaman Manajemen Relawan mana yang aktif. V1 adalah fitur Peluang Re
 #: 
 msgid "Which events"
 msgstr "Acara yang mana"
-
-#: 
-msgid "Which volunteer experience this church uses. The card on the right explains each choice."
-msgstr "Pengalaman relawan mana yang digunakan gereja ini. Kartu di sebelah kanan menjelaskan setiap pilihan."
 
 #: 
 msgid "Who is covering"

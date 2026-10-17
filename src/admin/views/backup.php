@@ -65,7 +65,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <input type="radio" id="archiveType2" name="archiveType" value="2" class="form-selectgroup-input" checked>
                         <div class="form-selectgroup-label d-flex align-items-center p-3">
                             <div class="me-3">
-                                <i class="fa-solid fa-file-code" style="font-size: 1.5rem;"></i>
+                                <i class="fa-solid fa-file-code admin-icon-sm"></i>
                             </div>
                             <div>
                                 <strong><?= gettext('Database Only') ?></strong>
@@ -78,7 +78,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <input type="radio" id="archiveType3" name="archiveType" value="3" class="form-selectgroup-input">
                         <div class="form-selectgroup-label d-flex align-items-center p-3">
                             <div class="me-3">
-                                <i class="fa-solid fa-file-zipper" style="font-size: 1.5rem;"></i>
+                                <i class="fa-solid fa-file-zipper admin-icon-sm"></i>
                             </div>
                             <div>
                                 <strong><?= gettext('Full Backup') ?></strong>
@@ -135,7 +135,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div id="statusIdle">
             <div class="empty py-4">
                 <div class="empty-icon">
-                    <i class="fa-solid fa-cloud-download-alt" style="font-size: 2.5rem;"></i>
+                    <i class="fa-solid fa-cloud-download-alt admin-icon-md"></i>
                 </div>
                 <p class="empty-title"><?= gettext('Ready to back up') ?></p>
                 <p class="empty-subtitle text-secondary"><?= gettext('Select your options above and click a backup button.') ?></p>
@@ -144,7 +144,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div id="statusRunning" class="d-none">
             <div class="empty py-4">
                 <div class="empty-icon">
-                    <div class="spinner-border text-primary" role="status" style="width: 2.5rem; height: 2.5rem;">
+                    <div class="spinner-border text-primary admin-spinner-md" role="status">
                         <span class="visually-hidden"><?= gettext('Loading...') ?></span>
                     </div>
                 </div>
@@ -155,7 +155,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div id="statusComplete" class="d-none">
             <div class="empty py-4">
                 <div class="empty-icon">
-                    <i class="fa-solid fa-circle-check text-success" style="font-size: 2.5rem;"></i>
+                    <i class="fa-solid fa-circle-check text-success admin-icon-md"></i>
                 </div>
                 <p class="empty-title text-success" id="statusCompleteMessage"><?= gettext('Backup completed successfully!') ?></p>
                 <div id="resultFiles" class="mt-3"></div>
@@ -164,7 +164,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div id="statusError" class="d-none">
             <div class="empty py-4">
                 <div class="empty-icon">
-                    <i class="fa-solid fa-circle-xmark text-danger" style="font-size: 2.5rem;"></i>
+                    <i class="fa-solid fa-circle-xmark text-danger admin-icon-md"></i>
                 </div>
                 <p class="empty-title text-danger"><?= gettext('Backup failed. Please try again.') ?></p>
             </div>

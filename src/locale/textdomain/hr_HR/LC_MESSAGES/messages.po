@@ -9308,10 +9308,6 @@ msgid "Load demo data"
 msgstr "Učitaj demo podatke"
 
 #: 
-msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
-msgstr "Učitajte uzorke obitelji, vjernika, skupini i zapisa o darivanju. Najsigurniji način učenja ChurchCRM-a prije unosa vaših stvarnih podataka."
-
-#: 
 msgid "Log Files"
 msgstr "Datoteke dnevnika"
 
@@ -9346,10 +9342,6 @@ msgstr "Upravljajte fondovima darivanja za financijsko praćenje"
 #: 
 msgid "Manage donations, pledges, and financial records"
 msgstr "Upravljajte darovima, zavjetima i financijskim zapisima"
-
-#: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "Upravljajte alatima za e-poštu i SMTP konfiguracijom"
 
 #: 
 msgid "Manage families, people, and demographic information"
@@ -10327,10 +10319,6 @@ msgid "Distance Unit"
 msgstr "Jedinica udaljenosti"
 
 #: 
-msgid "Email Dashboard"
-msgstr "Nadzorna ploča e-pošte"
-
-#: 
 msgid "Email Integrations"
 msgstr "Integracije e-pošte"
 
@@ -10345,10 +10333,6 @@ msgstr "Veze e-pošte u prikazima skupini i vjernika"
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "Popisi e-pošte su sinkronizirani s Mailchimpom."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "Omogućite e-poštu u ploči postavki u nastavku, a zatim konfigurirajte vaš SMTP poslužitelj."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10490,10 +10474,6 @@ msgstr "Sistemski kalendari"
 #: 
 msgid "System language for the church."
 msgstr "Sistemski jezik za župu."
-
-#: 
-msgid "Text Dashboard"
-msgstr "Nadzorna ploča tekstualnih poruka"
 
 #: 
 msgid "Text Settings"
@@ -12416,10 +12396,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "E-pošta je onemogućena. Konfigurirajte e-poštu prije resetiranja lozinki ili koristite Promijeni lozinku."
 
 #: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "E-pošta je onemogućena. Omogućite je u postavkama nadzorne ploče e-pošte prije testiranja."
-
-#: 
 msgid "Enter one of your backup recovery codes"
 msgstr "Unesite jedan od vaših rezervnih kodova za oporavak"
 
@@ -14065,18 +14041,6 @@ msgid "Importing..."
 msgstr "Uvoz..."
 
 #: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "Uključi razrede nedjeljne škole i upise"
-
-#: 
-msgid "Include events and calendars"
-msgstr "Uključi događaje i kalendare"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "Uključi financijske podatke (fondovi darivanja, zavjeti)"
-
-#: 
 msgid "Invalid Entry"
 msgstr "Nevažeći unos"
 
@@ -14249,16 +14213,8 @@ msgid "Open in New Tab"
 msgstr "Otvori u novoj kartici"
 
 #: 
-msgid "Open in new tab"
-msgstr "Otvori u novoj kartici"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Otvorite vašu autentifikacijsku aplikaciju i skenirajte ovaj QR kod"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "Neobavezni podaci za uključivanje"
 
 #: 
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
@@ -19733,10 +19689,6 @@ msgid "Choose where the schedule's dates come from"
 msgstr "Odaberite odakle dolaze datumi rasporeda"
 
 #: 
-msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
-msgstr "Odaberite koju verziju volonterskog iskustva ova crkva koristi, koliko se unaprijed popunjavaju rasporedi i kada se šalju podsjetnici te provjerite rade li pozadinski poslovi."
-
-#: 
 msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
 msgstr "Odaberite tko prema zadanim postavkama popunjava svaku poziciju. Izbor se sprema u rasporedu: oni su dodijeljeni na svaki termin stvoren sada i na one koje dnevno nadopunjavanje stvori kasnije, dok su kvalificirani, te se od njih traži odgovor osim ako ih postavite kao prihvaćene. Ostavite poziciju otvorenom da je dodjeljujete iz tjedna u tjedan."
 
@@ -19767,10 +19719,6 @@ msgstr "Crkveni događaji određene vrste dodaju se u kalendar crkve. Provjerite
 #: 
 msgid "Church website"
 msgstr "Web-stranica crkve"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM ima dva načina upravljanja volonterima. Treba koristiti samo jedan odjednom; postavka s lijeve strane određuje koji će vidjeti ova crkva. Prebacivanje skriva ili prikazuje stranice i stavke izbornika – podaci se nikada ne brišu pa se možete vratiti."
 
 #: 
 msgid "Close event details"
@@ -20095,10 +20043,6 @@ msgstr "E-pošta nije pronađena"
 #: 
 msgid "Email preview"
 msgstr "Pregled e-pošte"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "Slanje e-pošte je onemogućeno"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
@@ -22833,10 +22777,6 @@ msgid "View my schedule"
 msgstr "Prikaži moj raspored"
 
 #: 
-msgid "View only"
-msgstr "Samo pregled"
-
-#: 
 msgid "View person"
 msgstr "Pregled osobe"
 
@@ -22867,10 +22807,6 @@ msgstr "Dodjela volontera"
 #: 
 msgid "Volunteer declined"
 msgstr "Volonter je odbio"
-
-#: 
-msgid "Volunteer experience"
-msgstr "Volontersko iskustvo"
 
 #: 
 msgid "Volunteer positions still need to be filled"
@@ -23013,10 +22949,6 @@ msgstr "Koje je iskustvo upravljanja volonterima aktivno. V1 je stara značajka 
 #: 
 msgid "Which events"
 msgstr "Koji događaji"
-
-#: 
-msgid "Which volunteer experience this church uses. The card on the right explains each choice."
-msgstr "Koje volontersko iskustvo ova crkva koristi. Kartica s desne objašnjava svaku mogućnost."
 
 #: 
 msgid "Who is covering"

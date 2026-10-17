@@ -4,7 +4,6 @@
  */
 
 import ApexCharts from "apexcharts";
-import "./groups-sundayschool-class-view.css";
 
 document.addEventListener("DOMContentLoaded", () => {
   const dataTable = $(".data-table").DataTable(window.CRM.plugin.dataTable);

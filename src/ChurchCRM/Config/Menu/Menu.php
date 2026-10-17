@@ -51,7 +51,7 @@ class Menu
             'People'       => self::getPeopleMenu($isAdmin, $isMenuOptions, $currentUser->isAddRecordsEnabled(), $isVolunteerV1Enabled),
             'Groups'       => self::getGroupMenu($isAdmin, $isMenuOptions, $isManageGroups),
             'SundaySchool' => self::getSundaySchoolMenu($isAdmin, $isManageGroups),
-            'Communication' => self::getCommunicationMenu($currentUser->isEmailEnabled()),
+            'Communication' => self::getCommunicationMenu($currentUser->isEmailEnabled(), $isAdmin),
             'Events'       => self::getEventsMenu($currentUser->isAddEventEnabled(), $canViewEvents, $currentUser->canWriteEvents()),
             // No "Volunteer" heading: the member surface lives only in the
             // Member Portal now (#9867, Member Portal design P16). "Ministries"
@@ -124,6 +124,7 @@ class Menu
         if ($isAdmin || $isMenuOptions) {
             $adminMenu = new MenuItem(gettext('Admin'), '', true);
             $adminMenu->addSubMenu(new MenuItem(gettext('People Settings'), 'admin/people', $isAdmin, 'fa-sliders'));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Member Portal'), 'admin/member-portal', $isAdmin, 'fa-house-user'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Family Roles'), 'admin/system/options?mode=famroles', $isAdmin, 'fa-people-roof'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Family Properties'), 'PropertyList.php?Type=f', $isMenuOptions, 'fa-people-roof'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Family Custom Fields'), 'FamilyCustomFieldsEditor.php', $isAdmin, 'fa-sliders'));
@@ -226,11 +227,19 @@ class Menu
         return $sundaySchoolMenu;
     }
 
-    private static function getCommunicationMenu(bool $isEmailEnabled): MenuItem
+    private static function getCommunicationMenu(bool $isEmailEnabled, bool $isAdmin): MenuItem
     {
         $commMenu = new MenuItem(gettext('Communication'), '', $isEmailEnabled, 'fa-comments');
-        $commMenu->addSubMenu(new MenuItem(gettext('Email'), 'v2/email/dashboard', $isEmailEnabled, 'fa-envelope'));
-        $commMenu->addSubMenu(new MenuItem(gettext('Text'), 'v2/text/dashboard', $isEmailEnabled, 'fa-comment-sms'));
+        $commMenu->addSubMenu(new MenuItem(gettext('Email'), 'people/email', $isEmailEnabled, 'fa-envelope'));
+        $commMenu->addSubMenu(new MenuItem(gettext('Text'), 'people/text', $isEmailEnabled, 'fa-comment-sms'));
+
+        if ($isAdmin) {
+            $adminMenu = new MenuItem(gettext('Admin'), '', true);
+            $adminMenu->addSubMenu(new MenuItem(gettext('Email Settings'), 'admin/email', true, 'fa-sliders'));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Email Log'), 'admin/email/log', true, 'fa-envelope-open-text'));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Email Debug'), 'admin/email/debug', true, 'fa-stethoscope'));
+            $commMenu->addSubMenu($adminMenu);
+        }
 
         return $commMenu;
     }
@@ -347,11 +356,10 @@ class Menu
      * carries the rollout state, the administrator bypass, the global-manager flag,
      * the EditSelf-exclusive short-circuit and the ministry/team scope lookup.
      *
-     * A pure **team leader** passes that predicate and gets the heading with
-     * Dashboard alone: `getManageableMinistries()` returns nothing for them,
-     * because leading a team is not administering the ministry above it (§4.6) and
-     * the ministry page would refuse them. The dashboard is their entry point, and
-     * its "My ministries and teams" card names the teams they lead. A manager who
+     * A pure **team leader** passes that predicate. `getManageableMinistries()`
+     * returns nothing for them, because leading a team is not administering the
+     * ministry above it (§4.6), so their entries come from `getTeamLedMinistries()`
+     * and open the ministry page's team-only view. A manager who
      * has not created a ministry yet sees the same Dashboard-only heading, and the
      * dashboard's "New ministry" action is right there. Only ACTIVE ministries are
      * listed here; deactivated ones move to the Deactivated Ministries heading.
@@ -372,9 +380,18 @@ class Menu
 
         $ministriesMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'ministries/dashboard', true, 'fa-gauge'));
         self::addMinistryEntries($ministriesMenu, $currentUser, true);
-        // Last under the heading: the nested Deactivated Ministries group, which
-        // MenuItem::isVisible() drops whenever it would be empty.
+        foreach ((new VolunteerAuthorizationService())->getTeamLedMinistries($currentUser) as $ministryId => $name) {
+            $ministriesMenu->addSubMenu(new MenuItem($name, 'ministries/' . $ministryId, true, 'fa-people-group'));
+        }
+        // The nested Deactivated Ministries group, which MenuItem::isVisible() drops
+        // whenever it would be empty.
         $ministriesMenu->addSubMenu(self::getDeactivatedMinistriesMenu($currentUser));
+
+        if ($currentUser->isAdmin()) {
+            $adminMenu = new MenuItem(gettext('Admin'), '', true);
+            $adminMenu->addSubMenu(new MenuItem(gettext('Ministry Settings'), 'admin/ministry-settings', true, 'fa-sliders'));
+            $ministriesMenu->addSubMenu($adminMenu);
+        }
 
         return $ministriesMenu;
     }
@@ -546,8 +563,6 @@ class Menu
         $menu->addSubMenu(new MenuItem(gettext('Localization & Formats'), 'admin/system/localization', $isAdmin, 'fa-globe'));
         $menu->addSubMenu(new MenuItem(gettext('Get Started'), 'admin/get-started', $isAdmin, 'fa-rocket'));
         $menu->addSubMenu(new MenuItem(gettext('System Users'), 'admin/system/users', $isAdmin, 'fa-user-gear'));
-        $menu->addSubMenu(new MenuItem(gettext('Member Portal'), 'admin/member-portal', $isAdmin, 'fa-house-user'));
-        $menu->addSubMenu(new MenuItem(gettext('Ministry Settings'), 'admin/ministry-settings', $isAdmin, 'fa-handshake-angle'));
         $menu->addSubMenu(new MenuItem(gettext('System Settings'), 'SystemSettings.php', $isAdmin, 'fa-gear'));
         $menu->addSubMenu(new MenuItem(gettext('Feature Toggles'), 'admin/system/feature-toggles', $isAdmin, 'fa-toggle-on'));
         $menu->addSubMenu(new MenuItem(gettext('Plugins'), 'plugins/management', $isAdmin, 'fa-plug'));

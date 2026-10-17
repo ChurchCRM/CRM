@@ -9344,10 +9344,6 @@ msgid "Load demo data"
 msgstr "ምሳሌ መረጃ ጫኑ"
 
 #: 
-msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
-msgstr "ምሳሌ ቤተሰቦች ሰውነት ቡድን እና ጋብ መያዝ ጫኑ። ለ ስፍ ሁኔታ ተዋጽኦ ChurchCRM ስኖ ይህ ነጣ ነገር።"
-
-#: 
 msgid "Log Files"
 msgstr "ጊዜ ፋይሎች"
 
@@ -9382,10 +9378,6 @@ msgstr "ጋብ ገንዘብ ለገንዘብ ሕሙም ይሸፍኑ"
 #: 
 msgid "Manage donations, pledges, and financial records"
 msgstr "ጋብ ተቀባይነት እና ገንዘብ መያዝ ይሸፍኑ"
-
-#: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "ኢሜል መሳሪያዎች እና SMTP ዋና ይሸፍኑ"
 
 #: 
 msgid "Manage families, people, and demographic information"
@@ -10363,10 +10355,6 @@ msgid "Distance Unit"
 msgstr "የርቀት አሃድ"
 
 #: 
-msgid "Email Dashboard"
-msgstr "ኢሜይል ዳሽቦርድ"
-
-#: 
 msgid "Email Integrations"
 msgstr "ኢሜይል ውህደቶች"
 
@@ -10381,10 +10369,6 @@ msgstr "በቡድን እና በሰዎች ዓሣ ውስጥ ኢሜይል ግንኙ
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "ኢሜይል ዝርዝር ከ Mailchimp ጋር ተመሳሳይ ነው።"
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "ከስር በቅንብር ፓነል ውስጥ ኢሜይል ዋ, ከዚያ በሌላ SMTP ሰርቨር ያዋቅሩ።"
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10526,10 +10510,6 @@ msgstr "የስርዓት የቀን መቁጠሪያ"
 #: 
 msgid "System language for the church."
 msgstr "ለቤተ ክርስቲያን የስርዓት ቋንቋ።"
-
-#: 
-msgid "Text Dashboard"
-msgstr "ጽሑፍ ሳሙና"
 
 #: 
 msgid "Text Settings"
@@ -12451,10 +12431,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "ኢሜይል ተሰናክሏል። ይለፍ ቃሎችን ከዳግም ማስጀመርዎ በፊት ኢሜይልን ያዋቅሩ፣ ወይም ይለፍ ቃል ቀይር ይጠቀሙ።"
 
 #: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "ኢሜይል ተሰናክሏል። ከፈተና በፊት በኢሜይል ዳሽቦርድ ቅንብሮች ውስጥ ያብሩት።"
-
-#: 
 msgid "Enter one of your backup recovery codes"
 msgstr "ከምትኬ መልሶ ማግኛ ኮዶቾ አንዱን ያስገቡ"
 
@@ -14101,18 +14077,6 @@ msgid "Importing..."
 msgstr "ሞግ..."
 
 #: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "የሰንበት ትምህርት ቤት ክፍሎችን እና ምዝገባዎችን አካትት"
-
-#: 
-msgid "Include events and calendars"
-msgstr "ኩነቶችን እና የቀን መቁጠሪያዎችን አካትት"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "የፋይናንስ መረጃዎችን አካትት (የልገሳ ፈንዶች፣ ቃል ኪዳኖች)"
-
-#: 
 msgid "Invalid Entry"
 msgstr "ያስገቡት ተቀባይነት የለውም"
 
@@ -14285,16 +14249,8 @@ msgid "Open in New Tab"
 msgstr "በአዲስ ታብ ክፈት"
 
 #: 
-msgid "Open in new tab"
-msgstr "በአዲስ ትር ክፈት"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "ማረጋገጫ ትግበራዎን ክፈቱ እና ይህን QR ኮድ ቃኙ"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "ሊካተቱ የሚችሉ አማራጭ መረጃዎች"
 
 #: 
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
@@ -19753,10 +19709,6 @@ msgid "Choose where the schedule's dates come from"
 msgstr "የመርሐ ግብሩ ቀኖች ከየት እንደሚመጡ ይምረጡ"
 
 #: 
-msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
-msgstr "ይህ ቤተ ክርስቲያን የትኛውን የበጎ ፈቃድ አገልግሎት ሥርዓት እንደሚጠቀም፣ መርሐ ግብሮች ምን ያህል ቀደም ብለው እንደሚሞሉ እና ማስታወሻዎች መቼ እንደሚላኩ ይምረጡ፣ እንዲሁም የጀርባ ሥራዎች እየሠሩ መሆናቸውን ያረጋግጡ።"
-
-#: 
 msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
 msgstr "እያንዳንዱን የአገልግሎት ቦታ በነባሪ ማን እንደሚሞላ ይምረጡ። ምርጫው በመርሐ ግብሩ ላይ ይቀመጣል፦ ብቁ ሆነው እስከቆዩ ድረስ አሁን በተፈጠሩ እና ዕለታዊው ማሟያ በኋላ በሚፈጥራቸው የአገልግሎት ቀናት ሁሉ ይመደባሉ፣ እንደተቀበሉ ካላደረጓቸው በስተቀር ምላሽ እንዲሰጡ ይጠየቃሉ። ሳምንት በሳምንት ለመመደብ የአገልግሎት ቦታውን ክፍት ይተውት።"
 
@@ -19787,10 +19739,6 @@ msgstr "የአንድ ዓይነት የቤተ ክርስቲያን ዝግጅቶች �
 #: 
 msgid "Church website"
 msgstr "የቤተ ክርስቲያን ድረ ገጽ"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM በጎ ፈቃደኞችን ለማስተዳደር ሁለት መንገዶች አሉት። በአንድ ጊዜ አንዱ ብቻ ጥቅም ላይ መዋል አለበት፤ በግራ በኩል ያለው ቅንብር ይህ ቤተ ክርስቲያን የትኛውን እንደሚያይ ይወስናል። መቀየር ገጾችን እና የምናሌ ግቤቶችን ይደብቃል ወይም ያሳያል — መረጃ በፍጹም አያጠፋም፣ ስለዚህ ተመልሰው መቀየር ይችላሉ።"
 
 #: 
 msgid "Close event details"
@@ -20115,10 +20063,6 @@ msgstr "ኢሜይሉ አልተገኘም"
 #: 
 msgid "Email preview"
 msgstr "የኢሜይል ቅድመ ዕይታ"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "ኢሜይል መላክ ተሰናክሏል"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
@@ -22849,10 +22793,6 @@ msgid "View my schedule"
 msgstr "መርሐ ግብሬን ተመልከት"
 
 #: 
-msgid "View only"
-msgstr "ማየት ብቻ"
-
-#: 
 msgid "View person"
 msgstr "ሰው ይመልከቱ"
 
@@ -22883,10 +22823,6 @@ msgstr "የበጎ ፈቃደኛ ምደባ"
 #: 
 msgid "Volunteer declined"
 msgstr "በጎ ፈቃደኛው አልተቀበለም"
-
-#: 
-msgid "Volunteer experience"
-msgstr "የበጎ ፈቃድ አገልግሎት ሥርዓት"
 
 #: 
 msgid "Volunteer positions still need to be filled"
@@ -23027,10 +22963,6 @@ msgstr "የትኛው የበጎ ፈቃደኞች አስተዳደር ሥርዓት �
 #: 
 msgid "Which events"
 msgstr "የትኞቹ ዝግጅቶች"
-
-#: 
-msgid "Which volunteer experience this church uses. The card on the right explains each choice."
-msgstr "ይህ ቤተ ክርስቲያን የትኛውን የበጎ ፈቃድ አገልግሎት ሥርዓት እንደሚጠቀም። በቀኝ በኩል ያለው ካርድ እያንዳንዱን ምርጫ ያብራራል።"
 
 #: 
 msgid "Who is covering"

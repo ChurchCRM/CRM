@@ -9334,10 +9334,6 @@ msgid "Load demo data"
 msgstr "Načíst ukázková data"
 
 #: 
-msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
-msgstr "Načtěte ukázkové rodiny, osoby, skupiny a záznamy o darech. Nejbezpečnější způsob, jak se naučit ChurchCRM před zadáním skutečných dat."
-
-#: 
 msgid "Log Files"
 msgstr "Soubory protokolů"
 
@@ -9372,10 +9368,6 @@ msgstr "Spravovat fondy darů pro finanční sledování"
 #: 
 msgid "Manage donations, pledges, and financial records"
 msgstr "Spravovat dary, závazky a finanční záznamy"
-
-#: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "Spravovat nástroje pro e-mail a konfiguraci SMTP"
 
 #: 
 msgid "Manage families, people, and demographic information"
@@ -10353,10 +10345,6 @@ msgid "Distance Unit"
 msgstr "Jednotka vzdálenosti"
 
 #: 
-msgid "Email Dashboard"
-msgstr "Přístrojová deska e-mailu"
-
-#: 
 msgid "Email Integrations"
 msgstr "Integrace e-mailu"
 
@@ -10371,10 +10359,6 @@ msgstr "Odkazy e-mailu v zobrazeních skupin a osob"
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "Seznamy e-mailů jsou synchronizovány s Mailchimp."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "Povolte e-mail v níže uvedeném panelu nastavení a pak nakonfigurujte server SMTP."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10516,10 +10500,6 @@ msgstr "Systémové kalendáře"
 #: 
 msgid "System language for the church."
 msgstr "Systémový jazyk pro církev."
-
-#: 
-msgid "Text Dashboard"
-msgstr "Textový řídicí panel"
 
 #: 
 msgid "Text Settings"
@@ -12442,10 +12422,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "E-mail je zakázán. Před resetováním hesel nakonfigurujte e-mail nebo použijte Změnit heslo."
 
 #: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "E-mail je zakázán. Před testováním jej povolte v nastavení řídicího panelu e-mailu."
-
-#: 
 msgid "Enter one of your backup recovery codes"
 msgstr "Zadejte jeden ze záložních kódů pro obnovení"
 
@@ -14091,18 +14067,6 @@ msgid "Importing..."
 msgstr "Importování..."
 
 #: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "Zahrnout třídy nedělky a zápisy"
-
-#: 
-msgid "Include events and calendars"
-msgstr "Zahrnout události a kalendáře"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "Zahrnout finanční údaje (darované prostředky, přísliby)"
-
-#: 
 msgid "Invalid Entry"
 msgstr "Neplatné zadání"
 
@@ -14275,16 +14239,8 @@ msgid "Open in New Tab"
 msgstr "Otevřít v nové záložce"
 
 #: 
-msgid "Open in new tab"
-msgstr "Otevřít na nové kartě"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Otevřete ověřovací aplikaci a naskenujte tento QR kód"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "Zahrnout volitelná data"
 
 #: 
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
@@ -19759,10 +19715,6 @@ msgid "Choose where the schedule's dates come from"
 msgstr "Vyberte, odkud pocházejí data rozvrhu"
 
 #: 
-msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
-msgstr "Vyberte, jaké dobrovolnické prostředí tato církev používá, jak daleko dopředu se rozvrhy plní a kdy se posílají připomínky, a zkontrolujte, zda běží úlohy na pozadí."
-
-#: 
 msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
 msgstr "Vyberte, kdo ve výchozím stavu obsazuje každou pozici. Volba se uloží do rozvrhu: dotyční jsou přiřazeni ke každému výskytu vytvořenému nyní i k těm, které později vytvoří denní doplňování, dokud zůstávají kvalifikovaní, a jsou požádáni o odpověď, pokud je nenastavíte jako přijaté. Pozici nechte otevřenou, chcete-li ji přiřazovat týden po týdnu."
 
@@ -19793,10 +19745,6 @@ msgstr "Církevní události určitého typu se přidávají do kalendáře cír
 #: 
 msgid "Church website"
 msgstr "Webové stránky církve"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM nabízí dva způsoby správy dobrovolníků. Používat by se měl vždy jen jeden; nastavení vlevo určuje, který uvidí tato církev. Přepnutí skryje nebo zobrazí stránky a položky nabídky — nikdy nesmaže data, takže se můžete vrátit."
 
 #: 
 msgid "Close event details"
@@ -20121,10 +20069,6 @@ msgstr "E-mail nenalezen"
 #: 
 msgid "Email preview"
 msgstr "Náhled e-mailu"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "Odesílání e-mailů je vypnuto"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
@@ -22859,10 +22803,6 @@ msgid "View my schedule"
 msgstr "Zobrazit můj rozvrh"
 
 #: 
-msgid "View only"
-msgstr "Pouze k zobrazení"
-
-#: 
 msgid "View person"
 msgstr "Zobrazit osobu"
 
@@ -22893,10 +22833,6 @@ msgstr "Přiřazení dobrovolníka"
 #: 
 msgid "Volunteer declined"
 msgstr "Dobrovolník odmítl"
-
-#: 
-msgid "Volunteer experience"
-msgstr "Dobrovolnické prostředí"
 
 #: 
 msgid "Volunteer positions still need to be filled"
@@ -23039,10 +22975,6 @@ msgstr "Který režim Správy dobrovolníků je aktivní. V1 je starší funkce 
 #: 
 msgid "Which events"
 msgstr "Které události"
-
-#: 
-msgid "Which volunteer experience this church uses. The card on the right explains each choice."
-msgstr "Které dobrovolnické prostředí tato církev používá. Karta vpravo vysvětluje jednotlivé možnosti."
 
 #: 
 msgid "Who is covering"

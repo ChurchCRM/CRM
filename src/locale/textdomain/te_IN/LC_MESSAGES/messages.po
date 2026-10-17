@@ -9314,10 +9314,6 @@ msgid "Load demo data"
 msgstr "డెమో డేటా లోడ్ చేయండి"
 
 #: 
-msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
-msgstr "నమూనా కుటుంబాలు, వ్యక్తులు, సమూహాలు మరియు అర్పణ రికార్డులు లోడ్ చేయండి. మీ నిజమైన డేటా జోడించే ముందు ChurchCRM నేర్చుకోవడానికి అత్యంత సురక్షితమైన మార్గం."
-
-#: 
 msgid "Log Files"
 msgstr "లాగ్ ఫైళ్ళు"
 
@@ -9352,10 +9348,6 @@ msgstr "ఆర్థిక ట్రాకింగ్ కోసం దాన �
 #: 
 msgid "Manage donations, pledges, and financial records"
 msgstr "విరాళాలు, ప్రతిజ్ఞలు మరియు ఆర్థిక రికార్డులను నిర్వహించండి"
-
-#: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "ఇమెయిల్ సాధనాలు మరియు SMTP కాన్ఫిగరేషన్ నిర్వహించండి"
 
 #: 
 msgid "Manage families, people, and demographic information"
@@ -10333,10 +10325,6 @@ msgid "Distance Unit"
 msgstr "దూర యూనిట్"
 
 #: 
-msgid "Email Dashboard"
-msgstr "ఇమెయిల్ డ్యాష్‌బోర్డ్"
-
-#: 
 msgid "Email Integrations"
 msgstr "ఇమెయిల్ ఇంటిగ్రేషన్‌లు"
 
@@ -10351,10 +10339,6 @@ msgstr "సమూహ మరియు ప్రజల దృశ్యాలలో
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "ఇమెయిల్ జాబితాలు Mailchimp తో సమకాలీకృతం చేయబడ్డాయి."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "దిగువ సెట్టింగ్‌ల ప్యానెల్‌లో ఇమెయిల్‌ను ఎనేబల్ చేయండి, ఆపై మీ SMTP సర్వర్‌ను కాన్ఫిగర్ చేయండి."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10496,10 +10480,6 @@ msgstr "సిస్టమ్ క్యాలెండర్లు"
 #: 
 msgid "System language for the church."
 msgstr "చర్చి కోసం సిస్టమ్ భాష."
-
-#: 
-msgid "Text Dashboard"
-msgstr "టెక్స్ట్ డాష్‌బోర్డ్"
 
 #: 
 msgid "Text Settings"
@@ -12421,10 +12401,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "ఇమెయిల్ నిలిపివేయబడింది. పాస్‌వర్డ్‌లు రీసెట్ చేయడానికి ముందు ఇమెయిల్‌ను కాన్ఫిగర్ చేయండి, లేదా పాస్‌వర్డ్ మార్చు ఉపయోగించండి."
 
 #: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "ఇమెయిల్ నిలిపివేయబడింది. పరీక్షించే ముందు ఇమెయిల్ డాష్‌బోర్డ్ సెట్టింగ్‌లలో దీన్ని ప్రారంభించండి."
-
-#: 
 msgid "Enter one of your backup recovery codes"
 msgstr "మీ బ్యాకప్ రికవరీ కోడ్‌లలో ఒకదాన్ని నమోదు చేయండి"
 
@@ -14070,18 +14046,6 @@ msgid "Importing..."
 msgstr "దిగుమతి చేస్తున్నారు..."
 
 #: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "సండే స్కూల్ తరగతులు మరియు నమోదులను చేర్చండి"
-
-#: 
-msgid "Include events and calendars"
-msgstr "ఈవెంట్‌లు మరియు క్యాలెండర్‌లను చేర్చండి"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "ఆర్థిక డేటాను చేర్చండి (విరాళ నిధులు, వాగ్దానాలు)"
-
-#: 
 msgid "Invalid Entry"
 msgstr "చెల్లని ఎంట్రీ"
 
@@ -14254,16 +14218,8 @@ msgid "Open in New Tab"
 msgstr "కొత్త ట్యాబ్లో తెరవండి"
 
 #: 
-msgid "Open in new tab"
-msgstr "కొత్త ట్యాబ్‌లో తెరవండి"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "మీ ప్రామాణీకరణ యాప్‌ను తెరిచి, ఈ QR కోడ్‌ను స్కాన్ చేయండి"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "చేర్చడానికి ఐచ్ఛిక డేటా"
 
 #: 
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
@@ -19722,10 +19678,6 @@ msgid "Choose where the schedule's dates come from"
 msgstr "షెడ్యూల్ తేదీలు ఎక్కడి నుండి రావాలో ఎంచుకోండి"
 
 #: 
-msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
-msgstr "ఈ చర్చి ఏ స్వచ్ఛంద సేవా అనుభవాన్ని ఉపయోగిస్తుందో, షెడ్యూల్‌లు ఎంత ముందుగా నింపబడతాయో, రిమైండర్‌లు ఎప్పుడు వెళ్తాయో ఎంచుకోండి, మరియు నేపథ్య పనులు నడుస్తున్నాయో లేదో తనిఖీ చేయండి."
-
-#: 
 msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
 msgstr "ప్రతి స్థానాన్ని డిఫాల్ట్‌గా ఎవరు నింపాలో ఎంచుకోండి. ఈ ఎంపిక షెడ్యూల్‌లో సేవ్ చేయబడుతుంది: వారు అర్హులుగా ఉన్నంత వరకు, ఇప్పుడు తయారైన ప్రతి సందర్భానికి మరియు రోజువారీ అదనపు జోడింపు తరువాత తయారుచేసే వాటికి నియమించబడతారు, మరియు మీరు వారిని అంగీకరించినట్లు సెట్ చేస్తే తప్ప స్పందించమని అడగబడతారు. వారం వారీగా నియమించడానికి స్థానాన్ని ఖాళీగా ఉంచండి."
 
@@ -19756,10 +19708,6 @@ msgstr "ఒక రకమైన చర్చి కార్యక్రమాల
 #: 
 msgid "Church website"
 msgstr "చర్చి వెబ్‌సైట్"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "స్వచ్ఛంద సేవకులను నిర్వహించడానికి ChurchCRM లో రెండు విధానాలు ఉన్నాయి. ఒకేసారి ఒకటి మాత్రమే వాడాలి; ఎడమవైపున ఉన్న సెట్టింగ్ ఈ చర్చి ఏది చూస్తుందో నిర్ణయిస్తుంది. మార్చడం వల్ల పేజీలు మరియు మెనూ ఎంట్రీలు దాచబడతాయి లేదా చూపబడతాయి — ఇది డేటాను ఎప్పుడూ తొలగించదు, కాబట్టి మీరు తిరిగి మారవచ్చు."
 
 #: 
 msgid "Close event details"
@@ -20084,10 +20032,6 @@ msgstr "ఇమెయిల్ కనుగొనబడలేదు"
 #: 
 msgid "Email preview"
 msgstr "ఇమెయిల్ ప్రివ్యూ"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "ఇమెయిల్ పంపడం నిలిపివేయబడింది"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
@@ -22818,10 +22762,6 @@ msgid "View my schedule"
 msgstr "నా షెడ్యూల్‌ను చూడండి"
 
 #: 
-msgid "View only"
-msgstr "చూడటం మాత్రమే"
-
-#: 
 msgid "View person"
 msgstr "వ్యక్తిని చూడండి"
 
@@ -22852,10 +22792,6 @@ msgstr "స్వచ్ఛంద సేవా నియామకం"
 #: 
 msgid "Volunteer declined"
 msgstr "స్వచ్ఛంద సేవకుడు తిరస్కరించారు"
-
-#: 
-msgid "Volunteer experience"
-msgstr "స్వచ్ఛంద సేవా విధానం"
 
 #: 
 msgid "Volunteer positions still need to be filled"
@@ -22996,10 +22932,6 @@ msgstr "స్వచ్ఛంద సేవా నిర్వహణ యొక్
 #: 
 msgid "Which events"
 msgstr "ఏ కార్యక్రమాలు"
-
-#: 
-msgid "Which volunteer experience this church uses. The card on the right explains each choice."
-msgstr "ఈ చర్చి ఏ స్వచ్ఛంద సేవా విధానాన్ని ఉపయోగిస్తుంది. కుడివైపున ఉన్న కార్డ్ ప్రతి ఎంపికను వివరిస్తుంది."
 
 #: 
 msgid "Who is covering"

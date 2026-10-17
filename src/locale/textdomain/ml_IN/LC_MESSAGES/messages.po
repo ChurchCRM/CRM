@@ -9302,10 +9302,6 @@ msgid "Load demo data"
 msgstr "ഡെമോ ഡേറ്റ ലോഡ് ചെയ്യുക"
 
 #: 
-msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
-msgstr "സാമ്പിൾ കുടുംബങ്ങൾ, വ്യക്തികൾ, ഗ്രൂപ്പുകൾ, ദാന രേഖകൾ ലോഡ് ചെയ്യുക. യഥാർത്ഥ ഡേറ്റ ചേർക്കുന്നതിന് മുൻപ് ChurchCRM പഠിക്കാൻ ഏറ്റവും സുരക്ഷിതമായ മാർഗ്ഗം."
-
-#: 
 msgid "Log Files"
 msgstr "ലോഗ് ഫയലുകൾ"
 
@@ -9340,10 +9336,6 @@ msgstr "സാമ്പത്തിക ട്രാക്കിംഗിനാ�
 #: 
 msgid "Manage donations, pledges, and financial records"
 msgstr "ദാനങ്ങൾ, സാമ്പത്തിക പ്രതിബദ്ധതകൾ, സാമ്പത്തിക രേഖകൾ നിയന്ത്രിക്കുക"
-
-#: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "ഇമെയിൽ ഉപകരണങ്ങളും SMTP കോൺഫിഗറേഷനും നിയന്ത്രിക്കുക"
 
 #: 
 msgid "Manage families, people, and demographic information"
@@ -10321,10 +10313,6 @@ msgid "Distance Unit"
 msgstr "ദൂര ഏകകം"
 
 #: 
-msgid "Email Dashboard"
-msgstr "ഇമെയിൽ ഡാഷ്‌ബോർഡ്"
-
-#: 
 msgid "Email Integrations"
 msgstr "ഇമെയിൽ സംയോജനങ്ങൾ"
 
@@ -10339,10 +10327,6 @@ msgstr "ഗ്രൂപ്പ്, ആളുകൾ കാഴ്ചകളിൽ �
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "ഇമെയിൽ ലിസ്‌റ്റുകൾ Mailchimp-മായി സമന്വയിക്കുന്നു."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "ചുവടെ ഉള്ള ക്രമീകരണ പാനലിൽ ഇമെയിൽ പ്രവർത്തനക്ഷമമാക്കുക, തുടർന്ന് SMTP സർവ്വർ ക്രമീകരിക്കുക."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10484,10 +10468,6 @@ msgstr "സിസ്റ്റം കലണ്ടറുകൾ"
 #: 
 msgid "System language for the church."
 msgstr "സഭയ്ക്കുള്ള സിസ്റ്റം ഭാഷ."
-
-#: 
-msgid "Text Dashboard"
-msgstr "ടെക്സ്റ്റ് ഡാഷ്ബോർഡ്"
 
 #: 
 msgid "Text Settings"
@@ -12409,10 +12389,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "ഇമെയിൽ നിഷ്ക്രിയമാക്കിയിരിക്കുന്നു. പാസ്‌വേഡ് റീസെറ്റ് ചെയ്യുന്നതിന് മുൻപ് ഇമെയിൽ കോൺഫിഗർ ചെയ്യുക, അല്ലെങ്കിൽ പാസ്‌വേഡ് മാറ്റുക ഉപയോഗിക്കുക."
 
 #: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "ഇമെയിൽ നിഷ്ക്രിയമാക്കിയിരിക്കുന്നു. പരീക്ഷണത്തിന് മുൻപ് ഇമെയിൽ ഡാഷ്ബോർഡ് ക്രമീകരണങ്ങളിൽ സജീവമാക്കുക."
-
-#: 
 msgid "Enter one of your backup recovery codes"
 msgstr "നിങ്ങളുടെ ബാക്കപ്പ് റിക്കവറി കോഡുകളിൽ ഒന്ന് നൽകുക"
 
@@ -14058,18 +14034,6 @@ msgid "Importing..."
 msgstr "ഇറക്കുമതി ചെയ്യുന്നു..."
 
 #: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "സൺഡേ സ്‌കൂൾ ക്ലാസ്സുകളും ചേർക്കലും ഉൾപ്പെടുത്തുക"
-
-#: 
-msgid "Include events and calendars"
-msgstr "ഇവന്റുകളും കലണ്ടറുകളും ഉൾപ്പെടുത്തുക"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "സാമ്പത്തിക ഡേറ്റ ഉൾപ്പെടുത്തുക (സംഭാവന ഫണ്ടുകൾ, സംഭാവന പ്രതിജ്ഞകൾ)"
-
-#: 
 msgid "Invalid Entry"
 msgstr "അസാധുവായ എൻട്രി"
 
@@ -14242,16 +14206,8 @@ msgid "Open in New Tab"
 msgstr "പുതിയ ടാബിൽ തുറക്കുക"
 
 #: 
-msgid "Open in new tab"
-msgstr "പുതിയ ടാബിൽ തുറക്കുക"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "ഓതന്റിക്കേറ്റർ ആപ്പ് തുറന്ന് ഈ QR കോഡ് സ്കാൻ ചെയ്യൂ"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "ഉൾപ്പെടുത്തേണ്ട ഐഛിക ഡേറ്റ"
 
 #: 
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
@@ -19710,10 +19666,6 @@ msgid "Choose where the schedule's dates come from"
 msgstr "ഷെഡ്യൂളിന്റെ തീയതികൾ എവിടെ നിന്ന് വരണമെന്ന് തിരഞ്ഞെടുക്കുക"
 
 #: 
-msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
-msgstr "ഈ ചർച്ച് ഏത് സന്നദ്ധസേവന രീതിയാണ് ഉപയോഗിക്കുന്നതെന്നും, ഷെഡ്യൂളുകൾ എത്ര മുൻകൂട്ടി നിറയ്ക്കണമെന്നും, ഓർമ്മപ്പെടുത്തലുകൾ എപ്പോൾ അയയ്ക്കണമെന്നും തിരഞ്ഞെടുക്കുക, പശ്ചാത്തല ജോലികൾ പ്രവർത്തിക്കുന്നുണ്ടോ എന്ന് പരിശോധിക്കുക."
-
-#: 
 msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
 msgstr "ഓരോ സ്ഥാനവും സ്ഥിരമായി ആര് നിറയ്ക്കണമെന്ന് തിരഞ്ഞെടുക്കുക. ആ തിരഞ്ഞെടുപ്പ് ഷെഡ്യൂളിൽ സേവ് ചെയ്യപ്പെടുന്നു: അവർ യോഗ്യരായി തുടരുന്നിടത്തോളം ഇപ്പോൾ സൃഷ്ടിക്കുന്ന എല്ലാ തീയതികളിലും ദിവസേനയുള്ള പൂരണം പിന്നീട് സൃഷ്ടിക്കുന്നവയിലും അവരെ നിയോഗിക്കും, നിങ്ങൾ അവരെ സ്വീകരിച്ചതായി സജ്ജമാക്കിയില്ലെങ്കിൽ പ്രതികരിക്കാൻ ആവശ്യപ്പെടും. ആഴ്ചതോറും നിയോഗിക്കാൻ ഒരു സ്ഥാനം ഒഴിച്ചിടുക."
 
@@ -19744,10 +19696,6 @@ msgstr "ഒരു തരത്തിലുള്ള ചർച്ച് പരി
 #: 
 msgid "Church website"
 msgstr "ചർച്ച് വെബ്സൈറ്റ്"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "സന്നദ്ധസേവകരെ നിയന്ത്രിക്കാൻ ChurchCRM ന് രണ്ട് വഴികളുണ്ട്. ഒരേ സമയം ഒന്ന് മാത്രമേ ഉപയോഗിക്കാവൂ; ഈ ചർച്ച് ഏതാണ് കാണുന്നതെന്ന് ഇടതുവശത്തെ ക്രമീകരണം തീരുമാനിക്കുന്നു. മാറുന്നത് പേജുകളും മെനു എൻട്രികളും മറയ്ക്കുകയോ കാണിക്കുകയോ ചെയ്യുന്നു — ഇത് ഒരിക്കലും ഡാറ്റ ഇല്ലാതാക്കുന്നില്ല, അതിനാൽ നിങ്ങൾക്ക് തിരികെ മാറാം."
 
 #: 
 msgid "Close event details"
@@ -20072,10 +20020,6 @@ msgstr "ഇമെയിൽ കണ്ടെത്തിയില്ല"
 #: 
 msgid "Email preview"
 msgstr "ഇമെയിൽ പ്രിവ്യൂ"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "ഇമെയിൽ അയയ്ക്കൽ പ്രവർത്തനരഹിതമാണ്"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
@@ -22806,10 +22750,6 @@ msgid "View my schedule"
 msgstr "എന്റെ ഷെഡ്യൂൾ കാണുക"
 
 #: 
-msgid "View only"
-msgstr "കാണാൻ മാത്രം"
-
-#: 
 msgid "View person"
 msgstr "വ്യക്തിയെ കാണുക"
 
@@ -22840,10 +22780,6 @@ msgstr "സന്നദ്ധസേവക നിയമനം"
 #: 
 msgid "Volunteer declined"
 msgstr "സന്നദ്ധസേവകൻ നിരസിച്ചു"
-
-#: 
-msgid "Volunteer experience"
-msgstr "സന്നദ്ധസേവന രീതി"
 
 #: 
 msgid "Volunteer positions still need to be filled"
@@ -22984,10 +22920,6 @@ msgstr "ഏത് സന്നദ്ധസേവന നിയന്ത്രണ 
 #: 
 msgid "Which events"
 msgstr "ഏത് പരിപാടികൾ"
-
-#: 
-msgid "Which volunteer experience this church uses. The card on the right explains each choice."
-msgstr "ഈ ചർച്ച് ഏത് സന്നദ്ധസേവന രീതിയാണ് ഉപയോഗിക്കുന്നത്. വലതുവശത്തെ കാർഡ് ഓരോ തിരഞ്ഞെടുപ്പും വിശദീകരിക്കുന്നു."
 
 #: 
 msgid "Who is covering"

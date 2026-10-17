@@ -5,6 +5,16 @@ intent: How ChurchCRM skills stay small. Load this only when adding or editing a
 
 # Skill architecture
 
+## Write the current state
+
+Cards, `CLAUDE.md`, `AGENTS.md`, docs and code comments describe how the code works now.
+
+- State the current pattern as a positive instruction: "Use `InputUtils::escapeHTML()`", not "do not echo raw values". Keep a prohibition only for a destructive or security-critical action that has no positive form, and keep it to one short sentence
+- Leave out history: no "legacy", "formerly", "previously", "no longer", "replaces", "migrated from", "old way", "v6 added", incident stories, issue or PR numbers as narrative, dated `learned:` notes
+- Name a version only where behavior depends on it and the source of truth is `package.json` / `composer.json`
+- Code comments say what the code does or why in positive terms. Skip comments that negate ("not X", "no longer Y", "instead of Z")
+- A page that still follows an earlier pattern is migrated to the current pattern in the PR that touches it, and the old file is deleted (`admin-mvc-migration.md`). The card for a pattern shows only the current form
+
 One rule lives in one file. Other files link. Do not copy catalogs from `src/`.
 
 - Router: `SKILL.md`

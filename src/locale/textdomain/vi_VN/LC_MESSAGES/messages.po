@@ -9332,10 +9332,6 @@ msgid "Load demo data"
 msgstr "Tai du lieu mau"
 
 #: 
-msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
-msgstr "Tai cac gia dinh, nguoi, nhom va ban ghi dang hien mau. Cach an toan nhat de hoc ChurchCRM truoc khi nhap du lieu thuc."
-
-#: 
 msgid "Log Files"
 msgstr "Tep nhat ky"
 
@@ -9370,10 +9366,6 @@ msgstr "Quan ly quy dang hien de theo doi tai chinh"
 #: 
 msgid "Manage donations, pledges, and financial records"
 msgstr "Quan ly dang hien, cam ket va ho so tai chinh"
-
-#: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "Quan ly cong cu email va cau hinh SMTP"
 
 #: 
 msgid "Manage families, people, and demographic information"
@@ -10351,10 +10343,6 @@ msgid "Distance Unit"
 msgstr "Đơn vị khoảng cách"
 
 #: 
-msgid "Email Dashboard"
-msgstr "Bảng điều khiển Email"
-
-#: 
 msgid "Email Integrations"
 msgstr "Tích hợp Email"
 
@@ -10369,10 +10357,6 @@ msgstr "Các liên kết email trong chế độ xem nhóm và mọi người"
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "Danh sách email được đồng bộ hóa với Mailchimp."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "Bật email trong bảng cài đặt bên dưới, sau đó cấu hình máy chủ SMTP của bạn."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10514,10 +10498,6 @@ msgstr "Lịch Hệ thống"
 #: 
 msgid "System language for the church."
 msgstr "Ngôn ngữ hệ thống cho nhà thờ."
-
-#: 
-msgid "Text Dashboard"
-msgstr "Bảng điều khiển văn bản"
 
 #: 
 msgid "Text Settings"
@@ -12438,10 +12418,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "Email đã bị tắt. Hãy cấu hình email trước khi đặt lại mật khẩu, hoặc sử dụng Đổi mật khẩu."
 
 #: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "Email đã bị tắt. Hãy bật trong cài đặt Bảng điều khiển Email trước khi kiểm tra."
-
-#: 
 msgid "Enter one of your backup recovery codes"
 msgstr "Nhập một trong các mã khôi phục dự phòng của bạn"
 
@@ -14087,18 +14063,6 @@ msgid "Importing..."
 msgstr "Dang nhap..."
 
 #: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "Bao gồm các lớp Trường Chúa Nhật và danh sách đăng ký"
-
-#: 
-msgid "Include events and calendars"
-msgstr "Bao gồm sự kiện và lịch"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "Bao gồm dữ liệu tài chính (quỹ dâng hiến, hứa dâng)"
-
-#: 
 msgid "Invalid Entry"
 msgstr "Entry không hợp lệ"
 
@@ -14271,16 +14235,8 @@ msgid "Open in New Tab"
 msgstr "Mở trong thẻ mới"
 
 #: 
-msgid "Open in new tab"
-msgstr "Mở trong tab mới"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Mở ứng dụng xác thực và quét mã QR này"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "Dữ liệu tùy chọn để bao gồm"
 
 #: 
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
@@ -19723,10 +19679,6 @@ msgid "Choose where the schedule's dates come from"
 msgstr "Chọn nguồn ngày của lịch phục vụ"
 
 #: 
-msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
-msgstr "Chọn trải nghiệm tình nguyện mà Hội thánh này dùng, lịch được điền trước bao xa và khi nào gửi nhắc nhở, và kiểm tra các tác vụ nền đang chạy."
-
-#: 
 msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
 msgstr "Chọn ai đảm nhận mỗi vị trí theo mặc định. Lựa chọn được lưu trong lịch phục vụ: họ được phân công cho mọi lần diễn ra tạo ngay bây giờ và những lần do việc bổ sung hằng ngày tạo sau này, khi họ vẫn đủ điều kiện, và được yêu cầu phản hồi trừ khi bạn đặt là đã chấp nhận. Để trống vị trí để phân công theo từng tuần."
 
@@ -19757,10 +19709,6 @@ msgstr "Các sự kiện Hội thánh thuộc một loại được thêm vào l
 #: 
 msgid "Church website"
 msgstr "Trang web Hội thánh"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM có hai cách quản lý tình nguyện viên. Chỉ nên dùng một cách tại một thời điểm; cài đặt bên trái quyết định Hội thánh này thấy cách nào. Việc chuyển đổi ẩn hoặc hiện các trang và mục menu — không bao giờ xóa dữ liệu, nên bạn có thể chuyển lại."
 
 #: 
 msgid "Close event details"
@@ -20085,10 +20033,6 @@ msgstr "Không tìm thấy email"
 #: 
 msgid "Email preview"
 msgstr "Xem trước email"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "Việc gửi email đã bị tắt"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
@@ -22815,10 +22759,6 @@ msgid "View my schedule"
 msgstr "Xem lịch phục vụ của tôi"
 
 #: 
-msgid "View only"
-msgstr "Chỉ xem"
-
-#: 
 msgid "View person"
 msgstr "Xem thông tin cá nhân"
 
@@ -22849,10 +22789,6 @@ msgstr "Phân công tình nguyện"
 #: 
 msgid "Volunteer declined"
 msgstr "Tình nguyện viên đã từ chối"
-
-#: 
-msgid "Volunteer experience"
-msgstr "Trải nghiệm tình nguyện"
 
 #: 
 msgid "Volunteer positions still need to be filled"
@@ -22991,10 +22927,6 @@ msgstr "Trải nghiệm Quản lý Tình nguyện viên nào đang hoạt độn
 #: 
 msgid "Which events"
 msgstr "Những sự kiện nào"
-
-#: 
-msgid "Which volunteer experience this church uses. The card on the right explains each choice."
-msgstr "Hội thánh này dùng trải nghiệm tình nguyện nào. Thẻ bên phải giải thích từng lựa chọn."
 
 #: 
 msgid "Who is covering"

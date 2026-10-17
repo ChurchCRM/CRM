@@ -9337,10 +9337,6 @@ msgid "Load demo data"
 msgstr "Demo verileri yükle"
 
 #: 
-msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
-msgstr "Örnek aileler, kişiler, gruplar ve bağış kayıtları yükleyin. Gerçek verilerinizi girmeden önce ChurchCRM'i öğrenmenin en güvenli yolu."
-
-#: 
 msgid "Log Files"
 msgstr "Günlük Dosyaları"
 
@@ -9375,10 +9371,6 @@ msgstr "Mali takip için bağış fonlarını yönet"
 #: 
 msgid "Manage donations, pledges, and financial records"
 msgstr "Bağışları, taahhütleri ve mali kayıtları yönet"
-
-#: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "E-posta araçlarını ve SMTP yapılandırmasını yönet"
 
 #: 
 msgid "Manage families, people, and demographic information"
@@ -10356,10 +10348,6 @@ msgid "Distance Unit"
 msgstr "Mesafe Birimi"
 
 #: 
-msgid "Email Dashboard"
-msgstr "E-posta Panosu"
-
-#: 
 msgid "Email Integrations"
 msgstr "E-posta Entegrasyonları"
 
@@ -10374,10 +10362,6 @@ msgstr "Grup ve kişi görünümlerindeki e-posta bağlantıları"
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "E-posta listeleri Mailchimp ile senkronize edilir."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "Aşağıdaki ayarlar panelinde e-postayı etkinleştirin, ardından SMTP sunucunuzu yapılandırın."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10519,10 +10503,6 @@ msgstr "Sistem Takvimleri"
 #: 
 msgid "System language for the church."
 msgstr "Kilise için sistem dili."
-
-#: 
-msgid "Text Dashboard"
-msgstr "Metin Panosu"
 
 #: 
 msgid "Text Settings"
@@ -12444,10 +12424,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "E-posta devre dışı. Şifreleri sıfırlamadan önce e-postayı yapılandırın veya Şifre Değiştir'i kullanın."
 
 #: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "E-posta devre dışı. Test etmeden önce E-posta Panosu ayarlarından etkinleştirin."
-
-#: 
 msgid "Enter one of your backup recovery codes"
 msgstr "Yedek kurtarma kodlarınızdan birini girin"
 
@@ -14093,18 +14069,6 @@ msgid "Importing..."
 msgstr "İçe aktarılıyor..."
 
 #: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "Pazar Okulu sınıflarını ve kayıtlarını dahil et"
-
-#: 
-msgid "Include events and calendars"
-msgstr "Etkinlikleri ve takvimleri dahil et"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "Finansal verileri dahil et (bağış fonları, taahhütler)"
-
-#: 
 msgid "Invalid Entry"
 msgstr "Geçersiz Girdi"
 
@@ -14277,16 +14241,8 @@ msgid "Open in New Tab"
 msgstr "Yeni Sekmede Aç"
 
 #: 
-msgid "Open in new tab"
-msgstr "Yeni sekmede aç"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Kimlik doğrulayıcı uygulamanızı açın ve bu QR kodunu tarayın"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "Dahil Edilecek İsteğe Bağlı Veriler"
 
 #: 
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
@@ -19745,10 +19701,6 @@ msgid "Choose where the schedule's dates come from"
 msgstr "Programın tarihlerinin nereden geldiğini seçin"
 
 #: 
-msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
-msgstr "Bu kilisenin hangi gönüllü deneyimini kullanacağını, programların ne kadar önceden doldurulacağını ve hatırlatmaların ne zaman gideceğini seçin; arka plan işlerinin çalıştığını kontrol edin."
-
-#: 
 msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
 msgstr "Her pozisyonu varsayılan olarak kimin dolduracağını seçin. Seçim programa kaydedilir: şimdi oluşturulan her oluşuma ve günlük tamamlamanın sonradan oluşturduklarına, yetkili kaldıkları sürece atanırlar ve kabul edilmiş olarak ayarlamadığınız sürece yanıt vermeleri istenir. Bir pozisyonu hafta hafta atamak için açık bırakın."
 
@@ -19779,10 +19731,6 @@ msgstr "Bir türdeki kilise etkinlikleri kilise takvimine eklenir. Programın et
 #: 
 msgid "Church website"
 msgstr "Kilise web sitesi"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM'in gönüllüleri yönetmek için iki yolu vardır. Aynı anda yalnızca birinin kullanılması amaçlanır; soldaki ayar bu kilisenin hangisini göreceğini belirler. Geçiş yapmak sayfaları ve menü girdilerini gizler veya gösterir — hiçbir zaman veri silmez, böylece geri dönebilirsiniz."
 
 #: 
 msgid "Close event details"
@@ -20107,10 +20055,6 @@ msgstr "E-posta bulunamadı"
 #: 
 msgid "Email preview"
 msgstr "E-posta önizlemesi"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "E-posta gönderimi devre dışı"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
@@ -22841,10 +22785,6 @@ msgid "View my schedule"
 msgstr "Programımı görüntüle"
 
 #: 
-msgid "View only"
-msgstr "Yalnızca görüntüleme"
-
-#: 
 msgid "View person"
 msgstr "Kişiyi Görüntüle"
 
@@ -22875,10 +22815,6 @@ msgstr "Gönüllü görevlendirmesi"
 #: 
 msgid "Volunteer declined"
 msgstr "Gönüllü reddetti"
-
-#: 
-msgid "Volunteer experience"
-msgstr "Gönüllülük deneyimi"
 
 #: 
 msgid "Volunteer positions still need to be filled"
@@ -23019,10 +22955,6 @@ msgstr "Hangi Gönüllü Yönetimi deneyiminin etkin olduğu. V1 eski Gönüllü
 #: 
 msgid "Which events"
 msgstr "Hangi etkinlikler"
-
-#: 
-msgid "Which volunteer experience this church uses. The card on the right explains each choice."
-msgstr "Bu kilisenin hangi gönüllülük deneyimini kullandığı. Sağdaki kart her seçeneği açıklar."
 
 #: 
 msgid "Who is covering"

@@ -19,6 +19,9 @@ services:
     # every send in CI fails and nothing can assert delivery. Specs read the sink at :8025.
     profiles: [test, ci-root, ci-subdir]
     image: axllent/mailpit:latest
+    environment:
+      # Lets a spec make the SMTP server refuse mail (PUT /api/v1/chaos); off until a spec asks.
+      MP_ENABLE_CHAOS: "true"
     ports:
       - ${DOCKER_BIND_ADDRESS:-127.0.0.1}:${MAILSERVER_PORT:-1025}:1025
       - ${DOCKER_BIND_ADDRESS:-127.0.0.1}:${MAILSERVER_GUI_PORT:-8025}:8025
@@ -41,6 +44,8 @@ services:
     hostname: crm-webserver
     env_file:
       - .env
+    environment:
+      CHURCHCRM_PLUGIN_FIXTURES: /home/ChurchCRM/cypress/fixtures/plugin-registry
     depends_on:
       database:
         condition: service_healthy

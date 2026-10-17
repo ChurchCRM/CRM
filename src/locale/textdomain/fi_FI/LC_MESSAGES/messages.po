@@ -9304,10 +9304,6 @@ msgid "Load demo data"
 msgstr "Lataa demotiedot"
 
 #: 
-msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
-msgstr "Lataa esimerkkiperheitä, henkilöitä, ryhmiä ja lahjoitustietueita. Turvallisin tapa oppia ChurchCRM:ää ennen oikeiden tietojen syöttämistä."
-
-#: 
 msgid "Log Files"
 msgstr "Lokitiedostot"
 
@@ -9342,10 +9338,6 @@ msgstr "Hallitse lahjoitusrahastoja taloudellista seurantaa varten"
 #: 
 msgid "Manage donations, pledges, and financial records"
 msgstr "Hallitse lahjoituksia, lupauksia ja taloustietueita"
-
-#: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "Hallitse sähköpostityökaluja ja SMTP-asetuksia"
 
 #: 
 msgid "Manage families, people, and demographic information"
@@ -10323,10 +10315,6 @@ msgid "Distance Unit"
 msgstr "Etäisyysyksikkö"
 
 #: 
-msgid "Email Dashboard"
-msgstr "Sähköpostin kojelauta"
-
-#: 
 msgid "Email Integrations"
 msgstr "Sähköpostin integraatiot"
 
@@ -10341,10 +10329,6 @@ msgstr "Sähköpostilinkit ryhmä- ja ihmisten näkymissä"
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "Sähköpostiluettelot synkronoidaan Mailchimpin kanssa."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "Ota sähköposti käyttöön alla olevassa asetuspaneelissa ja määritä sitten SMTP-palvelimesi."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10486,10 +10470,6 @@ msgstr "Järjestelmän kalenterit"
 #: 
 msgid "System language for the church."
 msgstr "Kirkon järjestelmäkieli."
-
-#: 
-msgid "Text Dashboard"
-msgstr "Teksti-kojelauta"
 
 #: 
 msgid "Text Settings"
@@ -12411,10 +12391,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "Sähköposti on poistettu käytöstä. Määritä sähköposti ennen salasanojen nollaamista tai käytä Vaihda salasana -toimintoa."
 
 #: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "Sähköposti on poistettu käytöstä. Ota se käyttöön sähköpostin koontinäytön asetuksissa ennen testausta."
-
-#: 
 msgid "Enter one of your backup recovery codes"
 msgstr "Anna yksi varmuuskopion palautuskoodeistasi"
 
@@ -14060,18 +14036,6 @@ msgid "Importing..."
 msgstr "Tuodaan..."
 
 #: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "Sisällytä pyhäkoululuokat ja ilmoittautumiset"
-
-#: 
-msgid "Include events and calendars"
-msgstr "Sisällytä tapahtumat ja kalenterit"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "Sisällytä taloustiedot (rahastot, lupaukset)"
-
-#: 
 msgid "Invalid Entry"
 msgstr "Virheellinen merkintä"
 
@@ -14244,16 +14208,8 @@ msgid "Open in New Tab"
 msgstr "Avaa uudessa välilehdessä"
 
 #: 
-msgid "Open in new tab"
-msgstr "Avaa uudessa välilehdessä"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Avaa todennussovelluksesi ja skannaa tämä QR-koodi"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "Valinnainen sisällytettävä tieto"
 
 #: 
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
@@ -19712,10 +19668,6 @@ msgid "Choose where the schedule's dates come from"
 msgstr "Valitse, mistä aikataulun päivämäärät tulevat"
 
 #: 
-msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
-msgstr "Valitse, mitä vapaaehtoiskokemusta tämä seurakunta käyttää, kuinka pitkälle eteenpäin aikataulut täytetään ja milloin muistutukset lähtevät, sekä tarkista, että taustatyöt ovat käynnissä."
-
-#: 
 msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
 msgstr "Valitse, kuka täyttää kunkin tehtävän oletuksena. Valinta tallennetaan aikatauluun: heidät määrätään jokaiselle nyt luotavalle tapahtumakerralle ja niille, jotka päivittäinen täydennys luo myöhemmin, niin kauan kuin he ovat kelpuutettuja, ja heiltä pyydetään vastaus, ellet aseta heitä hyväksytyiksi. Jätä tehtävä avoimeksi, jos haluat määrätä sen viikko kerrallaan."
 
@@ -19746,10 +19698,6 @@ msgstr "Tietyn tyypin seurakunnan tapahtumat lisätään seurakunnan kalenteriin
 #: 
 msgid "Church website"
 msgstr "Seurakunnan verkkosivusto"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM:ssä on kaksi tapaa hallita vapaaehtoisia. Vain toista on tarkoitus käyttää kerrallaan; vasemmalla oleva asetus ratkaisee, kumman tämä seurakunta näkee. Vaihtaminen piilottaa tai näyttää sivuja ja valikkokohtia – se ei koskaan poista tietoja, joten voit vaihtaa takaisin."
 
 #: 
 msgid "Close event details"
@@ -20074,10 +20022,6 @@ msgstr "Sähköpostia ei löytynyt"
 #: 
 msgid "Email preview"
 msgstr "Sähköpostin esikatselu"
-
-#: 
-msgid "Email sending is disabled"
-msgstr "Sähköpostin lähetys on pois käytöstä"
 
 #: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
@@ -22808,10 +22752,6 @@ msgid "View my schedule"
 msgstr "Näytä aikatauluni"
 
 #: 
-msgid "View only"
-msgstr "Vain katselu"
-
-#: 
 msgid "View person"
 msgstr "Tarkastele henkilöä"
 
@@ -22842,10 +22782,6 @@ msgstr "Vapaaehtoisen tehtävämääritys"
 #: 
 msgid "Volunteer declined"
 msgstr "Vapaaehtoinen kieltäytyi"
-
-#: 
-msgid "Volunteer experience"
-msgstr "Vapaaehtoiskokemus"
 
 #: 
 msgid "Volunteer positions still need to be filled"
@@ -22986,10 +22922,6 @@ msgstr "Mikä Vapaaehtoishallinnan kokemus on käytössä. V1 on vanha Vapaaehto
 #: 
 msgid "Which events"
 msgstr "Mitkä tapahtumat"
-
-#: 
-msgid "Which volunteer experience this church uses. The card on the right explains each choice."
-msgstr "Mitä vapaaehtoiskokemusta tämä seurakunta käyttää. Oikealla oleva kortti selittää kunkin vaihtoehdon."
 
 #: 
 msgid "Who is covering"
