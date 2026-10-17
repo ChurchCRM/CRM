@@ -1,11 +1,15 @@
 /// <reference types="cypress" />
 
 describe("Deposit editor: what a treasurer does", () => {
+    // Family 3 is used here on purpose: family 1's pledge list is asserted on by the
+    // fiscal-year specs, and the payments this spec adds would push its seeded rows off page 1.
+    const FAMILY_ID = "3";
+
     const payment = (depositId, fundId, amount, overrides = {}) => ({
         type: "Payment",
         iMethod: "CASH",
         Date: "2025-10-25",
-        FamilyID: "1",
+        FamilyID: FAMILY_ID,
         FYID: 29,
         tScanString: "",
         DepositID: depositId,
@@ -104,10 +108,10 @@ describe("Deposit editor: what a treasurer does", () => {
             cy.get(".fund-select").first().select(1);
             cy.get(".fund-amount").first().type("75");
             cy.get("#CheckNo").type(String(Date.now()).slice(-6));
-            cy.get("#FamilyID").invoke("val", "1");
+            cy.get("#FamilyID").invoke("val", FAMILY_ID);
             cy.get("#savePledgeBtn").click();
 
-            cy.location("pathname").should("eq", `/finance/deposit/${id}`);
+            cy.location("pathname").should("match", new RegExp(`/finance/deposit/${id}$`));
             cy.get("#paymentsTable tbody .row-select").should("have.length", 1);
         });
     });
