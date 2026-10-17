@@ -1,6 +1,6 @@
 # RFC: Issue Quality, Epic Sizing, PR Scope, and Good First Issue Readiness
 
-**Status:** Proposed decisions for maintainer approval — **not active policy**  
+**Status:** Accepted by George Dawoud on 2026-10-17 — implementation rollout tracked separately  
 **Scope:** Pilot in `ChurchCRM/CRM`, then evaluate other repositories  
 **Decision owner:** ChurchCRM maintainers; final approval and merge by George  
 **Review input:** [cwhorton's review of PR #10539](https://github.com/ChurchCRM/CRM/pull/10539#issuecomment-6127612100)  
@@ -20,9 +20,9 @@ Keep reporting easy for churches, but require maintainers to make an implementat
 
 The companion community RFC governs **maintainer-authored, plain-language Feature Proposal Discussions** and **technical RFCs reviewed in draft PRs**. This RFC starts where a request becomes an implementation candidate.
 
-## Proposed decisions — explicit review disposition
+## Accepted decisions — Q1–Q8 approved by George Dawoud
 
-| ID | Decision proposed for George's approval | Disposition of reviewer comment |
+| ID | Accepted decision | Reviewer disposition |
 | --- | --- | --- |
 | Q1 | **Reuse** `docs/contributing-pr-review.md` for PR standards; create one concise **issue readiness** page in `docs/`; link both from root CONTRIBUTING and the GitHub/docs entry point. Treat this RFC as decision history. | **Accept** existing-rules critique; no new competing all-in-one PR guide |
 | Q2 | Size primarily by **review burden**: touched subsystems, permission/schema/data risk, handoffs, test surface and non-generated diff size. Effort estimates are optional hints, never acceptance gates. | **Accept**; replaces hour/day classification |
@@ -33,7 +33,7 @@ The companion community RFC governs **maintainer-authored, plain-language Featur
 | Q7 | Name **human maintainers or accountable roles** as owners; coding agents are executors, not final approvers or accountable issue owners. Begin with CRM and update cross-repo guidance only after a successful pilot. | **Accept** |
 | Q8 | Keep **one** rollout plan, **one** checklist, and a compact RFC. Use already existing PR hard-block guidance instead of restating it. | **Accept** |
 
-These are **proposed dispositions**, not final product-policy approvals. If George rejects a row, record the reason and the replacement decision here before marking the RFC accepted.
+George approved Q1–Q8 on 2026-10-17. This RFC records the accepted decisions; implementation remains a separate, tracked rollout. No templates, labels, CI, milestones, or backlog automation are changed by merging this RFC alone.
 
 ## Workflow: church request → maintainer triage → ready issue → PR
 
@@ -98,11 +98,11 @@ Review #8821, #8822, #8825, #9525, #5238, #8575–#8583, #8826, #8650, #8647, #3
 
 ## Single rollout and acceptance checklist
 
-Approval of this RFC records a **design decision only**; it does not yet update the project-wide rules or schedule contributor tasks. Execution is separately approved and tracked.
+Approval of this RFC records the accepted design decisions only; it does not itself update project-wide rules or schedule contributor tasks. Execution is separately tracked and reviewed.
 
 | Order | Accountable role | Follow-up change / verification |
 | --- | --- | --- |
-| 1 | George / maintainers | Explicitly approve/amend Q1–Q8 and select the CRM pilot owner. |
+| 1 | George / maintainers | Select the CRM pilot owner and track the rollout work separately from this RFC. |
 | 2 | Contributor author; maintainer reviewer | Extend existing `docs/contributing-pr-review.md` only where gaps exist; add one issue-readiness guide, link both from **root** `CONTRIBUTING.md` and reconcile `.github/CONTRIBUTING.md` → docs-site contributing page. |
 | 3 | Contributor author; maintainer reviewer | Update `.github/ISSUE_TEMPLATE/` and PR template lightly; update `AGENTS.md`, `CLAUDE.md` where relevant, `.agents/` skill links, `github-interaction.md`, `maintainer-review-gates.md`, and review CodeRabbit config for contradictions. |
 | 4 | Maintainer triage owner | Audit existing labels and frozen-area references. No new labels/CI checks unless separately approved. Verify claiming, supersession and stale-process guidance. |
