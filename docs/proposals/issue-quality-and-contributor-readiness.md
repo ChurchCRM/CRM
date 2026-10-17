@@ -53,9 +53,11 @@ The agreed model is:
 
 ## Pilot scope
 
-Begin with an evidence-based pilot in the Events and Kiosk areas of ChurchCRM. Apply the readiness and decomposition criteria to the current backlog, verify issues against current code and released behavior, and record issue-specific dispositions only in the implementation tracker.
+Use the Member Portal and RBAC work as the initial pilot areas. They represent current, meaningful product and security work: Member Portal exercises the boundary between member self-service and staff access; RBAC exercises authorization policy, role assignment, middleware, and migration from legacy permissions.
 
-Prefer independently testable, vertical user outcomes when regrouping work; allow bounded foundation work where required for safety or dependencies. Do not automatically recreate closed work or rewrite the wider backlog. Check stale automation before it can close active pilot work. Certify a small set of beginner issues only when they genuinely meet the guide and a human reviewer is available; if none qualify, record that honestly. Validate the workflow with a contributor and maintainer before expanding beyond CRM.
+Apply the readiness and decomposition criteria to the current work, verify each candidate against current code and released behavior, and record issue-specific dispositions only in the implementation tracker. Keep this RFC and the canonical guide free of individual issue/epic examples so they remain durable as the backlog changes.
+
+Prefer independently testable, vertical user outcomes when regrouping work; allow bounded foundation work where required for safety or dependencies. Do not automatically recreate closed work or rewrite the wider backlog. Check stale automation before it can close active pilot work. Certify beginner issues only when they genuinely meet the guide and a human reviewer is available; if none qualify, record that honestly. Validate the workflow with a contributor and maintainer before expanding beyond CRM.
 
 ## Implementation tracking
 
