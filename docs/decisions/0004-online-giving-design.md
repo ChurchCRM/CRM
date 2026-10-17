@@ -1,4 +1,12 @@
-# Online Giving and Payment Gateways — design (proposed, target 7.8.0)
+# RFC: Online Giving and Payment Gateways
+
+> **BLUF**
+> A core gateway contract with Stripe, PayPal and BTCPay Server as core plugins. Every gift lands once in the existing `pledge_plg` / `deposit_dep` tables, with hosted checkout so no card data reaches ChurchCRM. Six decisions are open for maintainers (below). No release is committed and no implementation issues are filed until the direction is accepted.
+
+**Status:** Proposed, open for review; no release commitment  
+**Owner:** @cwhorton  
+**Proposal issue:** [#10033](https://github.com/ChurchCRM/CRM/issues/10033) · **Related:** [#9313](https://github.com/ChurchCRM/CRM/issues/9313), [#10550](https://github.com/ChurchCRM/CRM/issues/10550)  
+**Numbering:** `0004` is provisional; a maintainer assigns the final number on merge.
 
 ## Summary
 - Members give once or on a schedule (weekly, monthly, annually) from a new **Giving** page in the Member Portal (#8977), and see their giving by calendar year.
@@ -12,7 +20,7 @@
 1. A core gateway contract plus core gateway plugins, revising #8178's adapter plugin (§2.1)?
 2. Public webhook routes inside plugin folders, dispatched before `LoadConfigs.php` (§2.5)? Fallback: a core `POST /api/public/giving/webhook/{gatewayId}`.
 3. Plugin-local `vendor/` built at release (D10, §2.6), or `stripe/stripe-php` in `src/composer.json`?
-4. Target 7.8.0, with `7.8.0-*.sql` scripts added to `upgrade.json` only when you open that block (§3)?
+4. Migration scripts are written as `<next-version>-*.sql` (shown below as `7.8.0-*.sql`) and added to `upgrade.json` only when a maintainer schedules the work (§3)?
 5. Phases A–D, F and GIV-50 before #8977, and the portal children after #8977 and #9843 (§7)?
 6. Should the per-person attribution here (GIV-05, GIV-06, GIV-07, GIV-43) replace #9313's scope, or should #9313 stay separate?
 
