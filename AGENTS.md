@@ -38,6 +38,10 @@ Do not append `<!-- learned: -->` essays. Do not paste catalogs from `src/`.
 
 Plugin registry URL: `CentralServices::PLUGIN_REGISTRY_URL` (External branch today).
 
+## Issue and PR readiness
+
+Before triaging or implementing an issue, read [`docs/issue-readiness.md`](docs/issue-readiness.md). Check existing issues/PRs first, size work by review burden and risk, use epics for independently meaningful outcomes or cross-subsystem work, and treat `good first issue` as a maintainer certification. Keep issue intake friendly and PRs focused. Human maintainers remain accountable for decisions and approvals.
+
 ## Session hygiene
 
 - Confirm `git branch --show-current` before committing docs
