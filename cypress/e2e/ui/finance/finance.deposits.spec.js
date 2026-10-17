@@ -11,14 +11,20 @@ describe("Finance Deposits", () => {
         cy.contains("Envelope Manager");
     });
 
-    it("Navigate to deposits from Finance Dashboard", () => {
+    it("Create Deposit on the Finance Dashboard opens the new-deposit form and lands on the editor", () => {
+        const comment = "From dashboard " + Date.now();
         cy.visit("/finance/");
         cy.contains("Finance Dashboard");
-        
-        // Click Create Deposit from Quick Actions
+
         cy.contains("a", "Create Deposit").click();
-        cy.url().should("contain", "/finance/deposit/search");
-        cy.contains("Deposits");
+        cy.url().should("contain", "/finance/deposit/search").and("not.contain", "new=1");
+        cy.get("#newDepositModal").should("be.visible");
+        // Typing races the modal's fade-in and drops characters; the handler reads .val().
+        cy.get("#depositComment").invoke("val", comment);
+        cy.get("#addNewDeposit").click();
+
+        cy.location("pathname").should("match", /\/finance\/deposit\/\d+$/);
+        cy.get("#Comment").should("have.value", comment);
     });
 
     it("Navigate to deposits from Finance Menu", () => {

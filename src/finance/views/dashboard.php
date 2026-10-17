@@ -131,7 +131,7 @@ $sRootPath = SystemURLs::getRootPath();
         </div>
         <div class="card-body">
             <div class="d-flex flex-wrap gap-2">
-                <a href="<?= $sRootPath ?>/finance/deposit/search" class="btn btn-success">
+                <a href="<?= $sRootPath ?>/finance/deposit/search?new=1" class="btn btn-success">
                     <i class="fa-solid fa-circle-plus me-1"></i><?= gettext('Create Deposit') ?>
                 </a>
                 <a href="<?= $sRootPath ?>/finance/pledge/new?type=Pledge" class="btn btn-primary">
@@ -347,7 +347,7 @@ $sRootPath = SystemURLs::getRootPath();
                     <div class="empty">
                         <div class="empty-icon"><i class="fa-solid fa-inbox fa-3x text-body-secondary"></i></div>
                         <p class="empty-title"><?= gettext('No deposits found.') ?></p>
-                        <a href="<?= $sRootPath ?>/finance/deposit/search" class="btn btn-primary">
+                        <a href="<?= $sRootPath ?>/finance/deposit/search?new=1" class="btn btn-primary">
                             <i class="fa-solid fa-plus me-1"></i><?= gettext('Create First Deposit') ?>
                         </a>
                     </div>
@@ -401,7 +401,7 @@ $sRootPath = SystemURLs::getRootPath();
                     <div class="empty">
                         <div class="empty-icon"><i class="fa-solid fa-circle-plus fa-3x text-body-secondary"></i></div>
                         <p class="empty-title"><?= gettext('Create or select a deposit to get started.') ?></p>
-                        <a href="<?= $sRootPath ?>/finance/deposit/search" class="btn btn-success">
+                        <a href="<?= $sRootPath ?>/finance/deposit/search?new=1" class="btn btn-success">
                             <i class="fa-solid fa-plus me-1"></i><?= gettext('Create Deposit') ?>
                         </a>
                     </div>

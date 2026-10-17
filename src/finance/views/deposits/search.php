@@ -20,6 +20,14 @@ use ChurchCRM\Utils\InputUtils;
  * @var int      $currentFyid     Current fiscal-year ID
  */
 
+ob_start();
+?>
+<a href="#" class="btn btn-success" id="newDepositButton" data-bs-toggle="modal" data-bs-target="#newDepositModal">
+  <i class="fa-solid fa-circle-plus me-1"></i><?= gettext('New Deposit') ?>
+</a>
+<?php
+$sPageHeaderButtons = ob_get_clean();
+
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
@@ -182,9 +190,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <button type="button" id="btnExportPDF" class="btn btn-sm btn-success" disabled data-export-type="pdf">
           <i class="fa-solid fa-file-pdf me-1"></i>PDF
         </button>
-        <a href="#" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#newDepositModal">
-          <i class="fa-solid fa-plus me-1"></i><?= gettext('New Deposit') ?>
-        </a>
       </div>
     </div>
     <div class="card-body p-0">
