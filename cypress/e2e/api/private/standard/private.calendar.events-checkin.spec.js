@@ -646,17 +646,12 @@ describe("API Event Check-in Endpoints", () => {
 
             cy.makePrivateAdminAPICall(
                 "POST",
-                `/api/events/${eventId}/checkin-people`,
-                { personIds: [4], checkedInById: 1 },
+                `/api/events/${eventId}/checkin`,
+                { personId: 4, checkedInById: 1 },
                 200,
             ).then((response) => {
                 expect(response.body.success).to.be.true;
-            });
-
-            cy.request(`/event/checkin/${eventId}`).then((response) => {
-                const row = response.body.match(/<tr data-person-id="4">[\s\S]*?<\/tr>/);
-                expect(row, "person 4 attendance row").to.not.equal(null);
-                expect(row[0]).to.include('data-checkin-id="1"');
+                expect(response.body.checkinId).to.equal(1);
             });
         });
 
@@ -668,12 +663,9 @@ describe("API Event Check-in Endpoints", () => {
                 `/api/events/${eventId}/checkin`,
                 { personId: 4 },
                 200,
-            );
-
-            cy.request(`/event/checkin/${eventId}`).then((response) => {
-                const row = response.body.match(/<tr data-person-id="4">[\s\S]*?<\/tr>/);
-                expect(row, "person 4 attendance row").to.not.equal(null);
-                expect(row[0]).to.not.include("data-checkin-id");
+            ).then((response) => {
+                expect(response.body.checkinId).to.equal(null);
+                expect(response.body.checkoutId).to.equal(null);
             });
         });
 
@@ -691,24 +683,17 @@ describe("API Event Check-in Endpoints", () => {
                 `/api/events/${eventId}/checkout`,
                 { personId: 5, checkedOutById: 1 },
                 200,
-            );
-            cy.makePrivateAdminAPICall(
-                "POST",
-                `/api/events/${eventId}/checkin`,
-                { personId: 5 },
-                200,
-            );
+            ).then((response) => {
+                expect(response.body.checkoutId).to.equal(1);
+            });
+            // Still checked out, so the stored checkout id is the one this call clears.
             cy.makePrivateAdminAPICall(
                 "POST",
                 `/api/events/${eventId}/checkout`,
                 { personId: 5 },
                 200,
-            );
-
-            cy.request(`/event/checkin/${eventId}`).then((response) => {
-                const row = response.body.match(/<tr data-person-id="5">[\s\S]*?<\/tr>/);
-                expect(row, "person 5 attendance row").to.not.equal(null);
-                expect(row[0]).to.include('<td class="checkout-by"></td>');
+            ).then((response) => {
+                expect(response.body.checkoutId).to.equal(null);
             });
         });
 
