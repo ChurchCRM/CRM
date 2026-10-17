@@ -31,7 +31,7 @@ intent: How agents commit and push on ChurchCRM.
 - Push only when the **latest** user message says push ("push", "push it", "go ahead and push"). "lgtm" on a diff is commit-only
 - Exception: no new approval to push a fix for failing CI or for a merge conflict on a branch you already pushed with approval. A conflict fixed by rebase pushes with `--force-with-lease`. Run `npm run lint` first, and push only the fix. New work still waits for "push"
 
-Every push runs the full GitHub CI matrix. A `PreToolUse` hook in `.claude/settings.json` prompts on `git push`. If that prompt appears and the user did not just ask to push, stop, unless it is a push the exception above allows.
+Every push runs the full GitHub CI matrix (about 15-20 billable minutes).
 
 ## Mandatory Pre-Push Biome Check
 

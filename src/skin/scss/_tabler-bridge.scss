@@ -243,3 +243,12 @@ select {
     max-width: 100% !important;
   }
 }
+
+// Set by dropdown-overflow.ts on an open menu whose toggle sits in an overflow container.
+.dropdown-menu-fixed {
+    position: fixed;
+    inset: auto;
+    margin: 0;
+    transform: none;
+    z-index: 1055; // above a Tabler card and sticky headers, below a modal backdrop
+}

@@ -99,6 +99,21 @@ import "../src/skin/scss/system-settings-panel.scss";
                 `,
       getValue: (el) => el.value,
     },
+    time: {
+      render: (setting, value) => `
+                    <div class="col-md-6 col-lg-4 mb-3">
+                        <label for="${setting.name}" class="form-label small fw-bold mb-1">
+                            ${escapeHtml(resolve(setting.label))}
+                        </label>
+                        <input type="time" class="form-control setting-input"
+                               id="${setting.name}" name="${setting.name}"
+                               data-type="time"
+                               value="${escapeHtml(value || "")}">
+                        ${setting.tooltip ? `<small class="form-text text-muted">${escapeHtml(resolve(setting.tooltip))}</small>` : ""}
+                    </div>
+                `,
+      getValue: (el) => el.value,
+    },
     textarea: {
       render: (setting) => `
                     <div class="col-12 col-lg-6 mb-3">
@@ -350,6 +365,7 @@ import "../src/skin/scss/system-settings-panel.scss";
      * @param {Function} options.onSave - Callback after successful save; receives {name: value} of the saved settings
      * @param {boolean} options.showAllSettingsLink - Show link to System Settings page
      * @param {string} options.headerClass - CSS class for header (default: bg-primary-lt)
+     * @param {number} options.columns - Fields per row from the lg breakpoint up: 3 (default) or 2
      */
     init(options) {
       this.options = Object.assign(
@@ -365,6 +381,7 @@ import "../src/skin/scss/system-settings-panel.scss";
           allSettingsUrl: "/SystemSettings.php",
           configApiPath: "/admin/api/system/config",
           headerClass: "bg-primary-lt",
+          columns: 3,
         },
         options,
       );
@@ -660,6 +677,9 @@ import "../src/skin/scss/system-settings-panel.scss";
             `;
 
       this.container.innerHTML = html;
+      if (this.options.columns === 2) {
+        this.container.querySelectorAll(".col-lg-4").forEach((el) => el.classList.replace("col-lg-4", "col-lg-6"));
+      }
     }
 
     // Get merged setting configuration from the caller-supplied object.

@@ -2451,7 +2451,7 @@ DROP TABLE IF EXISTS `volunteer_notification_vntf`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `volunteer_notification_vntf` (
   `vntf_ID`              int(11)               NOT NULL AUTO_INCREMENT,
-  `vntf_Type`            enum('assignment','reminder','decline_alert','gap_alert','signup_confirm','swap_proposed','swap_resolved','help_offer')
+  `vntf_Type`            enum('assignment','reminder','decline_alert','gap_alert','signup_confirm','swap_proposed','swap_resolved','help_offer','pool_add')
                                                NOT NULL,
   `vntf_Channel`         enum('email')         NOT NULL DEFAULT 'email',
   `vntf_per_ID`          mediumint(9) unsigned NOT NULL,

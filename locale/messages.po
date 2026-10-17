@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-16 16:23+0000\n"
+"POT-Creation-Date: 2026-10-17 14:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,6 +47,14 @@ msgid "% Paid"
 msgstr ""
 
 #, php-format
+msgid "%1$s added %2$s to the %3$s volunteer pool."
+msgstr ""
+
+#, php-format
+msgid "%1$s added %2$s to the %3$s volunteers"
+msgstr ""
+
+#, php-format
 msgid "%1$s cannot serve and has proposed %2$s as a substitute."
 msgstr ""
 
@@ -80,6 +88,14 @@ msgstr ""
 
 #, php-format
 msgid "%1$s wants to help with %2$s and has been added to its volunteer pool."
+msgstr ""
+
+#, php-format
+msgid "%1$s — still needed: %2$d"
+msgstr ""
+
+#, php-format
+msgid "%1$s, who leads %2$s, added %3$s to the %4$s volunteer pool."
 msgstr ""
 
 #, php-format
@@ -320,6 +336,10 @@ msgstr[1] ""
 
 #, php-format
 msgid "%s queued: %s"
+msgstr ""
+
+#, php-format
+msgid "%s recorded that you will serve. You are on the schedule."
 msgstr ""
 
 #, php-format
@@ -1086,6 +1106,9 @@ msgid "Add to Group"
 msgstr ""
 
 msgid "Added"
+msgstr ""
+
+msgid "Added and qualified"
 msgstr ""
 
 #, php-format
@@ -2954,6 +2977,9 @@ msgstr ""
 msgid "Choose %s to run this report."
 msgstr ""
 
+msgid "Choose None, TLS or SSL for encryption."
+msgstr ""
+
 msgid "Choose a class"
 msgstr ""
 
@@ -2990,6 +3016,9 @@ msgstr ""
 msgid "Choose an existing event type"
 msgstr ""
 
+msgid "Choose an existing person property for Do Not Email."
+msgstr ""
+
 msgid "Choose at least one calendar to subscribe to."
 msgstr ""
 
@@ -2999,6 +3028,9 @@ msgstr ""
 msgid "Choose family"
 msgstr ""
 
+msgid "Choose how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
+msgstr ""
+
 msgid "Choose how you'd like to populate your database. You can always use a different method later."
 msgstr ""
 
@@ -3006,6 +3038,9 @@ msgid "Choose map provider"
 msgstr ""
 
 msgid "Choose opportunities..."
+msgstr ""
+
+msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr ""
 
 msgid "Choose specific permissions below."
@@ -3070,9 +3105,6 @@ msgid ""
 msgstr ""
 
 msgid "Choose where the schedule's dates come from"
-msgstr ""
-
-msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
 msgstr ""
 
 msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
@@ -3176,7 +3208,7 @@ msgstr ""
 msgid "ChurchCRM can send emails directly."
 msgstr ""
 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
 msgstr ""
 
 msgid "ChurchCRM supports a plugin architecture for extending functionality."
@@ -3658,6 +3690,9 @@ msgstr ""
 msgid "Copy Church Email"
 msgstr ""
 
+msgid "Copy Church Email must be a valid email address."
+msgstr ""
+
 msgid "Copy Members to Group"
 msgstr ""
 
@@ -4100,6 +4135,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Côte d’Ivoire"
+msgstr ""
+
+msgid "Daily unfilled-position email time"
 msgstr ""
 
 msgid "Dark"
@@ -4831,6 +4869,9 @@ msgstr ""
 msgid "Donation fund not found"
 msgstr ""
 
+msgid "Donation funds, pledges and giving records"
+msgstr ""
+
 msgid "Donations and giving records are tracked at the family level. If you plan to record giving for an individual who lives alone, create a single-person family for them."
 msgstr ""
 
@@ -5130,9 +5171,6 @@ msgstr ""
 msgid "Email Cart Members"
 msgstr ""
 
-msgid "Email Dashboard"
-msgstr ""
-
 msgid "Email Debug"
 msgstr ""
 
@@ -5149,6 +5187,9 @@ msgid "Email History"
 msgstr ""
 
 msgid "Email Integrations"
+msgstr ""
+
+msgid "Email Log"
 msgstr ""
 
 msgid "Email PDF"
@@ -5193,7 +5234,7 @@ msgstr ""
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr ""
 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
+msgid "Email is disabled. Enable it in Email Settings before testing."
 msgstr ""
 
 msgid "Email is not configured. Please configure SMTP settings in System Settings."
@@ -5230,6 +5271,9 @@ msgstr ""
 
 msgctxt "other"
 msgid "Email sent to {{count}} recipient(s)."
+msgstr ""
+
+msgid "Email settings saved successfully"
 msgstr ""
 
 msgid "Email/Username"
@@ -5295,7 +5339,7 @@ msgstr ""
 msgid "Enable Two-Factor Authentication"
 msgstr ""
 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
+msgid "Enable email below, then configure your SMTP server."
 msgstr ""
 
 msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
@@ -5718,6 +5762,9 @@ msgstr ""
 msgid "Events Today"
 msgstr ""
 
+msgid "Events and calendars, including the Member Portal calendars"
+msgstr ""
+
 msgid "Events deleted: {{total}}"
 msgstr ""
 
@@ -5725,6 +5772,9 @@ msgid "Events to delete: {{total}}"
 msgstr ""
 
 msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr ""
+
+msgid "Every email ChurchCRM sent, newest first"
 msgstr ""
 
 msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
@@ -6299,6 +6349,9 @@ msgstr ""
 msgid "Families to receive confirmation emails: {{total}}"
 msgstr ""
 
+msgid "Families, people and groups"
+msgstr ""
+
 msgid "Family"
 msgstr ""
 
@@ -6633,6 +6686,9 @@ msgid "Find a volunteer"
 msgstr ""
 
 msgid "Find an event"
+msgstr ""
+
+msgid "Find duplicate addresses and people with no email"
 msgstr ""
 
 msgid "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID"
@@ -6981,6 +7037,9 @@ msgid "Gender"
 msgstr ""
 
 msgid "Gender Demographics"
+msgstr ""
+
+msgid "General"
 msgstr ""
 
 msgid "Generate"
@@ -7619,7 +7678,13 @@ msgstr ""
 msgid "How many checks to print per deposit slip page"
 msgstr ""
 
+msgid "How many hours before a volunteer occurrence its coordinators are told about positions still unfilled. Set to 0 to send no such alerts; reminders are not affected."
+msgstr ""
+
 msgid "How many hours before a volunteer occurrence the reminder email is sent. Set to 0 to send no reminders at all. Delivery depends on background jobs running; see the Volunteer documentation for the recommended cron setup."
+msgstr ""
+
+msgid "How many hours before an occurrence its coordinators are told about positions still unfilled. Set to 0 to send no such alerts; reminders are not affected."
 msgstr ""
 
 msgid "How many hours before an occurrence the reminder email is sent. Set to 0 to send no reminders at all."
@@ -7884,9 +7949,6 @@ msgstr ""
 msgid "Include Details in Notifications"
 msgstr ""
 
-msgid "Include Sunday School classes and enrollments"
-msgstr ""
-
 msgid "Include addresses in quick global search"
 msgstr ""
 
@@ -7905,16 +7967,10 @@ msgstr ""
 msgid "Include deposits in quick global search"
 msgstr ""
 
-msgid "Include events and calendars"
-msgstr ""
-
 msgid "Include families in quick global search"
 msgstr ""
 
 msgid "Include family custom properties in global search."
-msgstr ""
-
-msgid "Include financial data (donation funds, pledges)"
 msgstr ""
 
 msgid "Include groups in quick global search"
@@ -8029,6 +8085,9 @@ msgid "Internal: last date and time the background timer jobs completed (YYYY-MM
 msgstr ""
 
 msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
+msgstr ""
+
+msgid "Internal: last date the daily email listing unfilled volunteer positions was sent (YYYY-MM-DD). Do not edit manually."
 msgstr ""
 
 msgid "Internal: last date the volunteer schedules were topped up to the scheduling horizon (YYYY-MM-DD). Do not edit manually."
@@ -8692,7 +8751,7 @@ msgstr ""
 msgid "Load demo data"
 msgstr ""
 
-msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
+msgid "Load sample families, people, groups, events, volunteer ministries and giving records. The safest way to learn ChurchCRM before committing your real data."
 msgstr ""
 
 msgid "Loaded php.ini"
@@ -9006,9 +9065,6 @@ msgid "Manage donation funds for financial tracking"
 msgstr ""
 
 msgid "Manage donations, pledges, and financial records"
-msgstr ""
-
-msgid "Manage email tools and SMTP configuration"
 msgstr ""
 
 msgid "Manage event names, recurrence patterns, and attendance counts"
@@ -10419,6 +10475,9 @@ msgstr ""
 msgid "Not authorized to create an event without a volunteer ministry you manage"
 msgstr ""
 
+msgid "Not authorized to grant this scope"
+msgstr ""
+
 msgid "Not authorized to modify this event"
 msgstr ""
 
@@ -10660,6 +10719,9 @@ msgstr ""
 msgid "Once"
 msgstr ""
 
+msgid "Once a day at this time (church time zone), coordinators get one email listing the unfilled positions that start within the alert lead time plus 24 hours. A gap that opens later in the day is sent on its own."
+msgstr ""
+
 #, php-format
 msgid "Once a day every active schedule gets occurrences for the events it follows, up to %d week ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
 msgid_plural "Once a day every active schedule gets occurrences for the events it follows, up to %d weeks ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
@@ -10732,6 +10794,9 @@ msgstr ""
 msgid "Only a Sunday School class can be linked to a team"
 msgstr ""
 
+msgid "Only a coordinator can take someone out of the pool."
+msgstr ""
+
 msgid "Only a coordinator may record a response on someone else's behalf"
 msgstr ""
 
@@ -10763,6 +10828,9 @@ msgid "Only http and https schemes are allowed."
 msgstr ""
 
 msgid "Only people trained for this are listed."
+msgstr ""
+
+msgid "Only positions of this team can be ticked"
 msgstr ""
 
 msgid "Only the assigned volunteer may propose a substitute"
@@ -10808,6 +10876,9 @@ msgid "Open a ministry from the Ministries menu, create a schedule and generate 
 msgstr ""
 
 msgid "Open a ministry to make someone its coordinator, or a leader of one of its teams."
+msgstr ""
+
+msgid "Open each occurrence to assign the people you need."
 msgstr ""
 
 msgid "Open in Apple Maps"
@@ -10895,9 +10966,6 @@ msgstr ""
 msgid "Optional - only required if OpenLP authentication is enabled"
 msgstr ""
 
-msgid "Optional Data to Include"
-msgstr ""
-
 msgid "Optional Settings"
 msgstr ""
 
@@ -10935,6 +11003,9 @@ msgid "Optional. The class becomes the Linked Group: its roster is who checks in
 msgstr ""
 
 msgid "Optional. URL for your church website."
+msgstr ""
+
+msgid "Optional. You can tick positions on the grid later too."
 msgstr ""
 
 msgid "Options"
@@ -12077,6 +12148,9 @@ msgstr ""
 msgid "Qualify its current teachers for"
 msgstr ""
 
+msgid "Qualify them for"
+msgstr ""
+
 msgid "Qualify them for a position"
 msgstr ""
 
@@ -12087,6 +12161,9 @@ msgid "Quarantined"
 msgstr ""
 
 msgid "Quarterly"
+msgstr ""
+
+msgid "Queue"
 msgstr ""
 
 msgid "Queued"
@@ -12229,6 +12306,9 @@ msgid "Record that {{name}} said no? The response is saved as coming from you, a
 msgstr ""
 
 msgid "Record that {{name}} said yes? The response is saved as coming from you, not from them."
+msgstr ""
+
+msgid "Record they accepted"
 msgstr ""
 
 msgid "Record why attendees visited your church"
@@ -12802,6 +12882,9 @@ msgstr ""
 msgid "SMTP Password"
 msgstr ""
 
+msgid "SMTP Server"
+msgstr ""
+
 msgid "SMTP Server Address (mail.server.com:25)"
 msgstr ""
 
@@ -12814,6 +12897,9 @@ msgstr ""
 msgid "SMTP Username"
 msgstr ""
 
+msgid "SMTP and delivery settings"
+msgstr ""
+
 msgid "SMTP configuration test — if this arrived, your setup works."
 msgstr ""
 
@@ -12821,6 +12907,12 @@ msgid "SMTP server for sending emails"
 msgstr ""
 
 msgid "SMTP test"
+msgstr ""
+
+msgid "SMTP timeout must be a whole number of seconds between 1 and 600."
+msgstr ""
+
+msgid "SMTP username is required when authentication is on."
 msgstr ""
 
 msgid "SQL Only"
@@ -12896,6 +12988,9 @@ msgid "Save Changes"
 msgstr ""
 
 msgid "Save Church Information"
+msgstr ""
+
+msgid "Save Email Settings"
 msgstr ""
 
 msgid "Save Event Type"
@@ -14154,6 +14249,9 @@ msgstr ""
 msgid "Sunday School Reports"
 msgstr ""
 
+msgid "Sunday School classes"
+msgstr ""
+
 msgid "Sunday School group can't be modified, only in this two cases"
 msgstr ""
 
@@ -14436,9 +14534,6 @@ msgid "Text"
 msgstr ""
 
 msgid "Text All"
-msgstr ""
-
-msgid "Text Dashboard"
 msgstr ""
 
 msgid "Text Field (100 char)"
@@ -15050,6 +15145,9 @@ msgstr ""
 msgid "The theme folder was not found."
 msgstr ""
 
+msgid "The time of day (HH:MM, in the church's time zone) the daily email listing unfilled volunteer positions is sent to coordinators."
+msgstr ""
+
 msgid "The type a new event on a ministry's Calendar tab starts with. It can still be changed for each event, for example for a class that needs headcount categories."
 msgstr ""
 
@@ -15156,6 +15254,9 @@ msgstr ""
 msgid "These teams of %1$s are linked to a Sunday School class: %2$s. Unlink them first."
 msgstr ""
 
+msgid "They already said yes. They get a short confirmation instead of a request to respond."
+msgstr ""
+
 msgid "They could not be added"
 msgstr ""
 
@@ -15191,6 +15292,9 @@ msgid "They finish {{count}} minutes before the event ends."
 msgstr ""
 
 msgid "They were already a volunteer here"
+msgstr ""
+
+msgid "They were already a volunteer here, and are now qualified"
 msgstr ""
 
 msgid "Third-party extensions."
@@ -15475,7 +15579,7 @@ msgstr ""
 msgid "This version of ChurchCRM does not use a template at this path, so the override is never rendered."
 msgstr ""
 
-msgid "This will add sample families, people, and groups to your database."
+msgid "This will add sample data to your database"
 msgstr ""
 
 msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."
@@ -15837,6 +15941,9 @@ msgstr ""
 msgid "Turn this on for a ministry whose teams teach Sunday School classes. Its teams can then be linked to a class, and its schedules and events can use one."
 msgstr ""
 
+msgid "Turning this off clears the saved username and password."
+msgstr ""
+
 msgid "Turns off the portal template cache and prints the name of each template in an HTML comment. For theme designers; leave this off in normal use."
 msgstr ""
 
@@ -15994,6 +16101,9 @@ msgid "Unexpected error. Please try again."
 msgstr ""
 
 msgid "Unfilled Positions"
+msgstr ""
+
+msgid "Unfilled-position alert lead time (hours)"
 msgstr ""
 
 msgid "Unfocus"
@@ -16642,9 +16752,6 @@ msgstr ""
 msgid "View my schedule"
 msgstr ""
 
-msgid "View only"
-msgstr ""
-
 msgid "View person"
 msgstr ""
 
@@ -16675,6 +16782,9 @@ msgstr ""
 msgid "Volunteer (Legacy)"
 msgstr ""
 
+msgid "Volunteer Management"
+msgstr ""
+
 msgid "Volunteer Management V2 is not enabled"
 msgstr ""
 
@@ -16699,13 +16809,16 @@ msgstr ""
 msgid "Volunteer declined"
 msgstr ""
 
-msgid "Volunteer experience"
+msgid "Volunteer ministries, teams, schedules and assignments"
 msgstr ""
 
 msgid "Volunteer opportunity not found"
 msgstr ""
 
 msgid "Volunteer positions still need to be filled"
+msgstr ""
+
+msgid "Volunteer positions to fill in the coming days"
 msgstr ""
 
 msgid "Volunteer reminder"
@@ -16780,6 +16893,10 @@ msgstr ""
 
 msgctxt "other"
 msgid "Volunteers start {{count}} minutes before the event starts."
+msgstr ""
+
+#, php-format
+msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr ""
 
 msgid "Vonage API Key"
@@ -16983,6 +17100,9 @@ msgstr ""
 msgid "What do these codes mean?"
 msgstr ""
 
+msgid "What do these mean?"
+msgstr ""
+
 msgid "What does this find?"
 msgstr ""
 
@@ -17097,7 +17217,7 @@ msgstr ""
 msgid "Which role is the spouse?"
 msgstr ""
 
-msgid "Which volunteer experience this church uses. The card on the right explains each choice."
+msgid "Which volunteer experience this church uses"
 msgstr ""
 
 msgid "Who is bringing in {{name}}?"
@@ -17253,6 +17373,9 @@ msgid "You are not part of a family record yet."
 msgstr ""
 
 msgid "You are on the list — thank you."
+msgstr ""
+
+msgid "You are on the schedule"
 msgstr ""
 
 msgid "You are running a pre-release version."
@@ -17466,6 +17589,9 @@ msgstr ""
 msgid "Your child"
 msgstr ""
 
+msgid "Your coordinator"
+msgstr ""
+
 msgid "Your current access levels (read-only)"
 msgstr ""
 
@@ -17531,6 +17657,10 @@ msgid "Your substitute request was approved"
 msgstr ""
 
 msgid "Your substitute request was not approved"
+msgstr ""
+
+#, php-format
+msgid "Your teams: %s"
 msgstr ""
 
 msgid "Your verification request has been received. Thank you for keeping your information up to date."
@@ -17956,6 +18086,9 @@ msgstr ""
 msgid "pick"
 msgstr ""
 
+msgid "positionIds must be a list of position ids"
+msgstr ""
+
 msgid "properties"
 msgstr ""
 
@@ -18226,10 +18359,16 @@ msgctxt "other"
 msgid "{{name}} ({{count}} upcoming)"
 msgstr ""
 
+msgid "{{name}} ({{family}} family)"
+msgstr ""
+
 msgid "{{name}} already coordinates this ministry"
 msgstr ""
 
 msgid "{{name}} assigned"
+msgstr ""
+
+msgid "{{name}} assigned and recorded as accepted"
 msgstr ""
 
 msgid "{{name}} does not name the event it follows, so it has nothing to staff."

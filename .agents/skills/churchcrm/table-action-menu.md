@@ -6,7 +6,7 @@ tags: ["frontend", "tabler", "tables", "dropdowns", "cart", "ux"]
 
 # Skill: Table Action Menu
 
-This file owns row action menus: trigger markup, trigger icon, and the wrapper that keeps the dropdown from clipping. `responsive-design-guidelines.md`, `frontend-development.md` and `icon-management.md` defer to it.
+This file owns row action menus: trigger markup, trigger icon, and the global behaviour that keeps the dropdown from clipping. `responsive-design-guidelines.md`, `frontend-development.md` and `icon-management.md` defer to it.
 
 ## Rule
 
@@ -50,6 +50,7 @@ window.CRM.renderEventActionMenu(eventId, eventTitle, { inactive })
 ```
 
 - `familyId` adds "View Family" after Edit; `inCart` flips the cart button to RemoveFromCart.
+- `extraItems` adds page-specific items after Cart; `omitDelete` drops Delete for lists that manage a relationship (the ministry Volunteers grid adds *Remove Volunteer* this way).
 - The `.delete-person` handler is delegated in `CRMJSOM.js`; pages add no copy.
 - The renderers call `i18next.t()` at render time, after locales load.
 
@@ -124,44 +125,16 @@ Any table that lists people includes this standard menu. Domain actions (Check O
 
 ## Overflow / Dropdown Clipping
 
-`.table-responsive` sets `overflow-x: auto`, which the CSS spec computes into `overflow-y: auto`, clipping absolutely-positioned descendants such as dropdown menus. `data-bs-display="static"` does not change that.
+`.table-responsive` and any `overflow: auto|scroll|hidden` ancestor clip an absolutely-positioned dropdown menu. `webpack/common/dropdown-overflow.ts`, loaded by `skin-core.js` into `churchcrm.min.js` (admin shell and Member Portal), handles every dropdown menu automatically.
 
-Wrap a table whose rows contain a dropdown in:
+- On `shown.bs.dropdown`, a toggle with an ancestor whose computed `overflow-x` or `overflow-y` is not `visible` (up to `body`) gets `.dropdown-menu-fixed` on its menu (`position: fixed`, defined in `_tabler-bridge.scss`).
+- `top`/`left` come from the toggle's `getBoundingClientRect()`: right-aligned for `dropdown-menu-end`, flipped above the toggle when the menu would pass the viewport bottom.
+- The menu is re-placed on `scroll` (capture) and `resize` while open, and released on `hide.bs.dropdown`.
+- The DOM does not change, so Bootstrap focus handling and delegated click handlers keep working. No ancestor may set `transform`, `filter` or `perspective`.
 
-```html
-<div style="overflow-x: clip; overflow-y: visible;">
-    <table class="table table-vcenter card-table">...</table>
-</div>
-```
+Pages add nothing: wrap tables in plain `.table-responsive`, keep `data-bs-display="static"` on each trigger, and put no inline `overflow` styles on wrappers. A table that scrolls sideways (the Volunteer grids use `.volunteer-scroll-x`) works the same way.
 
-`overflow-x: clip` contains horizontal overflow without creating a scroll container, so `overflow-y` stays `visible` and the menu escapes downward. Reference: `src/people/views/self-register.php`.
-
-Keep `data-bs-display="static"` on each trigger inside the wrapper; it stops Popper miscalculating in scrollable ancestors.
-
-Convert `overflow: visible;` wrappers (`grep -rn "overflow: visible" src/ --include="*.php"`) to `overflow-x: clip; overflow-y: visible;` when you touch the table, because `overflow: visible` lets a wide table spill out of its card.
-
-### A menu inside a horizontally scrolling table
-
-A table that must scroll sideways (the Volunteer qualification grid has one column per position) keeps `overflow-x: auto`. The open menu is re-anchored to the viewport with `position: fixed`, which no ancestor overflow clips (provided no ancestor sets `transform`, `filter` or `perspective`). The DOM does not change, so Bootstrap focus handling, `dropdown-menu-end` and delegated click handlers keep working.
-
-```scss
-// src/skin/scss/_volunteer.scss
-.volunteer-scroll-x {
-    overflow-x: auto;
-    overflow-y: visible;
-    > .table { width: auto; min-width: 100%; }
-    > .table th, > .table td { white-space: nowrap; }
-}
-.volunteer-menu-fixed { position: fixed; inset: auto; margin: 0; transform: none; z-index: 1055; }
-```
-
-`wireUnclippedRowMenus()` in `webpack/ministries/` adds `.volunteer-menu-fixed` and sets `top`/`left` from `toggle.getBoundingClientRect()`:
-
-- Listen to `shown.bs.dropdown`; a closed menu is `display: none` and measures 0 wide. Bootstrap fires the event on the toggle button, so resolve the menu from `event.target`.
-- Strip the class and coordinates on `hide.bs.dropdown`.
-- Re-place on `scroll` (registered with `capture: true`, because the wrapper's scroll does not bubble) and `resize` while the menu is open.
-
-Cypress check: at `cy.viewport(900, 800)` assert `wrapper.scrollWidth > wrapper.clientWidth`, open the menu, assert `getComputedStyle(menu).position === "fixed"`, that its rectangle is inside the viewport, and that `document.elementFromPoint()` at its centre lands inside the menu.
+Cypress check: at `cy.viewport(900, 800)` open a row menu in a scrolling wrapper and assert the menu has `dropdown-menu-fixed`, its rectangle is inside the viewport, and `document.elementFromPoint()` at its centre lands inside the menu.
 
 ## Cart Button in a Dropdown Item
 
@@ -222,4 +195,3 @@ echo '</div>';
 - [ ] Divider separates primary from destructive actions; destructive items use `text-danger`
 - [ ] Icons have `me-2`
 - [ ] Actions `<th>` has `w-1 text-center no-export`
-- [ ] Wrapper uses `overflow-x: clip; overflow-y: visible;`

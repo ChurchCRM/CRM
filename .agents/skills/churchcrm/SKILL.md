@@ -24,7 +24,7 @@ Load `skill-architecture.md` only when adding or editing a skill.
 | [Slim MVC Skill](./slim-mvc-skill.md) | Slim apps under `src/` |
 | [Configuration Management](./configuration-management.md) | SystemConfig |
 | [Settings Placement](./settings-placement.md) | Where a setting lives, area admin hub |
-| [Volunteer Management v2 Design](./volunteer-v2-design.md) | Ministries / Volunteer v2 |
+| [Volunteer Management v2](./volunteer-v2.md) | Ministries / Volunteer v2 (full design: `docs/design/volunteer-v2.md`) |
 | [Member Portal Design](./member-portal-design.md) | `/portal` and themes |
 
 ## Database
@@ -89,6 +89,8 @@ Row actions: [`table-action-menu.md`](./table-action-menu.md). Settings UI: copy
 | [Refactor](./refactor.md) | Feature refactor |
 | [PHP Best Practices](./php-best-practices.md) | PHP / Perpl |
 | [Performance Optimization](./performance-optimization.md) | Queries |
+
+Community feedback policy (Feature Proposals and RFC Reviews Discussions): [`docs/decisions/0003-rfc-community-prioritization.md`](../../../docs/decisions/0003-rfc-community-prioritization.md).
 
 ## Process
 

@@ -158,17 +158,17 @@ describe("A send the composer cannot finish stays queued", () => {
             .should("contain.text", "Messages queued: 1. They will be sent in the background.")
             .find("#crm-email-history-link")
             .should("have.attr", "href")
-            .and("include", "/v2/email/dashboard#email-recent-sends");
+            .and("include", "/admin/email/log");
         cy.get("#crm-email-send-submit").should("contain.text", "Queued").and("be.disabled");
 
-        cy.visit("/v2/email/dashboard");
+        cy.visit("/admin/email/log");
         cy.get("#email-queued-count").should("be.visible");
-        cy.contains("#email-recent-sends tr", `Queued ${tag}`).should("have.attr", "data-email-status", "queued");
+        cy.contains("[data-email-history-table] tr", `Queued ${tag}`).should("have.attr", "data-email-status", "queued");
 
         cy.request("POST", "/api/background/timerjobs", { force: true }).its("body.ran").should("eq", true);
 
         cy.reload();
-        cy.contains("#email-recent-sends tr", `Queued ${tag}`)
+        cy.contains("[data-email-history-table] tr", `Queued ${tag}`)
             .should("have.attr", "data-email-status", "sent")
             .and("contain.text", "Sent");
         mailpitMessages(tag).should("have.length", 1);

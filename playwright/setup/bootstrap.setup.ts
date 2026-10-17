@@ -135,17 +135,12 @@ setup('demo-data-import', async ({ page }, testInfo) => {
   await importCard.waitFor({ state: 'visible', timeout: 10000 });
   await humanClick(importCard);
 
-  await page.locator('#demoImportConfirmOverlay').waitFor({ state: 'visible', timeout: 5000 });
+  await page.locator('#demoImportModal').waitFor({ state: 'visible', timeout: 5000 });
   await humanPause(page, 500);
   await humanClick(page.locator('#demoImportConfirmBtn'));
 
-  // The spinner overlay gains the "show" class while the import runs and
-  // loses it when done. It may never visibly appear if the import is fast.
-  await page
-    .locator('#demoImportSpinnerOverlay')
-    .waitFor({ state: 'visible', timeout: 5000 })
-    .catch(() => undefined);
-  await page.locator('#demoImportSpinnerOverlay:not(.show)').waitFor({ state: 'attached', timeout: 120000 });
+  // The modal shows its progress state while the import runs and closes when done.
+  await page.locator('#demoImportModal').waitFor({ state: 'hidden', timeout: 120000 });
   await humanPause(page, 800);
 
   // Show the payoff, not just the click — end on the People (members)

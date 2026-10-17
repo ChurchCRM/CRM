@@ -53,7 +53,6 @@ import {
   showModalError,
   tText,
   wireModalFadeGuard,
-  wireUnclippedRowMenus,
 } from "./ui";
 
 /** EventService::MAX_REPEAT_OCCURRENCES — the server refuses a larger series. */
@@ -880,7 +879,6 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
   }
 
   function wire(): void {
-    wireUnclippedRowMenus("ministry-events-table-wrapper");
     wireModalFadeGuard("ministryEventModal");
 
     byId("ministry-events-past")?.addEventListener("change", () => {

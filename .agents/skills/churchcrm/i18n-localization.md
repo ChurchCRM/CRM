@@ -6,7 +6,7 @@ intent: How to add UI strings. Extraction is CI on merge to master.
 # i18n
 
 Locale list: `src/locale/locales.json`.
-Locale loop: [docs/locale-pipeline.md](../../../docs/locale-pipeline.md).
+Locale loop: [docs/maintainers/locale-pipeline.md](../../../docs/maintainers/locale-pipeline.md).
 Translation-agent rules: [Locale Translation](./locale-translation-workflow.md).
 Feature localization guidance: `locale/README.md`.
 Extract job: `.github/workflows/locale-generate-terms.yml` (`npm run locale:build` on merge to `master`).

@@ -94,57 +94,59 @@
   "Importing demo data...": "",
   "Please do not refresh or navigate away": "",
   "Skip to main content": "",
-  "This will add sample families, people, and groups to your database.": "",
-  "Delete ({{count}})": {
-    "one": "",
-    "other": ""
-  },
-  "Delete events ({{count}})": {
-    "one": "",
-    "other": ""
-  },
-  "Delete {{count}} occurrences? Their assignments, the volunteers' responses, any substitutions and every queued reminder go with them. This cannot be undone.": {
-    "one": "",
-    "other": ""
-  },
-  "Occurrences are created for events in the next {{count}} weeks (through {{date}}).": {
-    "one": "",
-    "other": ""
-  },
-  "They finish {{count}} minutes after the event ends.": {
-    "one": "",
-    "other": ""
-  },
-  "They finish {{count}} minutes before the event ends.": {
-    "one": "",
-    "other": ""
-  },
-  "Volunteers start {{count}} minutes after the event starts.": {
-    "one": "",
-    "other": ""
-  },
-  "Volunteers start {{count}} minutes before the event starts.": {
-    "one": "",
-    "other": ""
-  },
-  "{{count}} needed": {
-    "one": "",
-    "other": ""
-  },
-  "{{count}} occurrences deleted": {
-    "one": "",
-    "other": ""
-  },
-  "{{failed}} of {{count}} occurrences could not be deleted": {
-    "one": "",
-    "other": ""
-  },
-  "{{name}} ({{count}} upcoming)": {
-    "one": "",
-    "other": ""
-  },
-  "{{title}} ({{count}} upcoming)": {
-    "one": "",
-    "other": ""
-  }
+  "Choose None, TLS or SSL for encryption.": "",
+  "Choose an existing person property for Do Not Email.": "",
+  "Copy Church Email must be a valid email address.": "",
+  "Email Log": "",
+  "Email is disabled. Enable it in Email Settings before testing.": "",
+  "Email settings saved successfully": "",
+  "Enable email below, then configure your SMTP server.": "",
+  "Every email ChurchCRM sent, newest first": "",
+  "Find duplicate addresses and people with no email": "",
+  "General": "",
+  "SMTP Server": "",
+  "SMTP and delivery settings": "",
+  "SMTP timeout must be a whole number of seconds between 1 and 600.": "",
+  "SMTP username is required when authentication is on.": "",
+  "Save Email Settings": "",
+  "Turning this off clears the saved username and password.": "",
+  "%1$s added %2$s to the %3$s volunteer pool.": "",
+  "%1$s added %2$s to the %3$s volunteers": "",
+  "%1$s — still needed: %2$d": "",
+  "%1$s, who leads %2$s, added %3$s to the %4$s volunteer pool.": "",
+  "%s recorded that you will serve. You are on the schedule.": "",
+  "Added and qualified": "",
+  "Choose how far ahead schedules are filled and when reminders go out, and check that the background jobs are running.": "",
+  "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out.": "",
+  "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back.": "",
+  "Daily unfilled-position email time": "",
+  "Donation funds, pledges and giving records": "",
+  "Events and calendars, including the Member Portal calendars": "",
+  "Families, people and groups": "",
+  "How many hours before a volunteer occurrence its coordinators are told about positions still unfilled. Set to 0 to send no such alerts; reminders are not affected.": "",
+  "How many hours before an occurrence its coordinators are told about positions still unfilled. Set to 0 to send no such alerts; reminders are not affected.": "",
+  "Internal: last date the daily email listing unfilled volunteer positions was sent (YYYY-MM-DD). Do not edit manually.": "",
+  "Load sample families, people, groups, events, volunteer ministries and giving records. The safest way to learn ChurchCRM before committing your real data.": "",
+  "Not authorized to grant this scope": "",
+  "Once a day at this time (church time zone), coordinators get one email listing the unfilled positions that start within the alert lead time plus 24 hours. A gap that opens later in the day is sent on its own.": "",
+  "Only a coordinator can take someone out of the pool.": "",
+  "Only positions of this team can be ticked": "",
+  "Open each occurrence to assign the people you need.": "",
+  "Optional. You can tick positions on the grid later too.": "",
+  "Qualify them for": "",
+  "Queue": "",
+  "Record they accepted": "",
+  "Sunday School classes": "",
+  "The time of day (HH:MM, in the church's time zone) the daily email listing unfilled volunteer positions is sent to coordinators.": "",
+  "They already said yes. They get a short confirmation instead of a request to respond.": "",
+  "They were already a volunteer here, and are now qualified": "",
+  "This will add sample data to your database": "",
+  "Unfilled-position alert lead time (hours)": "",
+  "Volunteer Management": "",
+  "Volunteer ministries, teams, schedules and assignments": "",
+  "Volunteer positions to fill in the coming days": "",
+  "Volunteers still needed for these upcoming occurrences: %d": "",
+  "What do these mean?": "",
+  "Which volunteer experience this church uses": "",
+  "You are on the schedule": ""
 }

@@ -320,10 +320,11 @@ class Countries
     /**
      * Normalize a stored country value to an ISO 3166-1 alpha-2 code.
      *
-     * Legacy data may contain aliases like 'USA' or full names like 'United States'
-     * instead of the canonical 2-letter code ('US'). This method resolves those
-     * variants so callers can compare consistently against sDefaultCountry (which
-     * always stores an ISO code).
+     * Legacy data may contain aliases like 'USA', full names like 'United States',
+     * or English names without the list's native suffix ('Germany' for
+     * 'Germany (Deutschland)', in any case) instead of the canonical 2-letter code.
+     * This method resolves those variants so callers can compare consistently
+     * against sDefaultCountry (which always stores an ISO code).
      *
      * Returns the original value unchanged when it cannot be resolved, so display
      * code can still render something meaningful for truly unknown values.
@@ -354,6 +355,13 @@ class Countries
             }
         } catch (\Exception $e) {
             // Unknown name — fall through to return original value
+        }
+
+        $englishName = mb_strtolower($value);
+        foreach (self::$countries as $code => $country) {
+            if (mb_strtolower(self::withoutNativeName($country->getCountryName())) === $englishName) {
+                return $code;
+            }
         }
 
         return $value;

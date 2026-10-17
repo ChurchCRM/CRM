@@ -1035,7 +1035,7 @@
          qualification, schedule, occurrence, staffing requirement,
          assignment, response, swap, notification outbox and scope.
 
-         Conventions (design .agents/skills/churchcrm/volunteer-v2-design.md
+         Conventions (design docs/design/volunteer-v2.md
          §2.0): InnoDB, utf8mb4 in SQL, `<prefix>_ID` primary keys named
          phpName="Id", enums as CHAR + sqlType, BOOLEAN as tinyint(1)
          unsigned, index names `_idx` / `_uidx`, and foreign-key column types
@@ -1560,7 +1560,7 @@
            description="Volunteer v2: the notification outbox. Idempotent enqueue keyed by vntf_DedupeKey, a due time, and a retry-safe send log drained by the background timer jobs">
         <column name="vntf_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
         <column name="vntf_Type" phpName="Type" type="CHAR"
-                sqlType="enum('assignment','reminder','decline_alert','gap_alert','signup_confirm','swap_proposed','swap_resolved','help_offer')"
+                sqlType="enum('assignment','reminder','decline_alert','gap_alert','signup_confirm','swap_proposed','swap_resolved','help_offer','pool_add')"
                 required="true"/>
         <column name="vntf_Channel" phpName="Channel" type="CHAR" sqlType="enum('email')" required="true"
                 defaultValue="email" description="The delivery extension point; email is the only channel in the first release"/>

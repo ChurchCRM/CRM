@@ -2,7 +2,7 @@
 
 /**
  * scripts/test-countries.php — how a stored country is shown and when an editor
- * save keeps it (#10418).
+ * save keeps a stored country or state (#10418, #10566).
  *
  * Usage:
  *   php scripts/test-countries.php
@@ -11,8 +11,10 @@
  * Records hold the country as a code ("US"), an alias ("USA") or a name
  * ("United States"). Countries::toName() must show a code or alias as the English
  * name without the native name the list labels carry, and show a stored name or
- * an unknown value as stored. Countries::keepStoredIfSame() must keep the stored
- * value when the posted code names the same country. No database is needed.
+ * an unknown value as stored. Countries::toISO() must resolve an English name
+ * without the native suffix ("Germany"). Countries::keepStoredIfSame() and
+ * States::keepStoredIfSame() must keep the stored value when the posted code names
+ * the same country or state. No database is needed.
  *
  * Exit codes:
  *   0  — every case passed
@@ -23,6 +25,8 @@
 declare(strict_types=1);
 
 use ChurchCRM\data\Countries;
+use ChurchCRM\data\States;
+use ChurchCRM\dto\SystemURLs;
 
 $autoload = __DIR__ . '/../src/vendor/autoload.php';
 if (!is_file($autoload)) {
@@ -30,6 +34,8 @@ if (!is_file($autoload)) {
     exit(2);
 }
 require $autoload;
+
+SystemURLs::init('', [], dirname(__DIR__) . '/src');
 
 $passed = 0;
 $failed = 0;
@@ -65,7 +71,22 @@ foreach ($toName as $label => [$value, $expected]) {
     $check($actual === $expected, "toName: {$label}", var_export($value, true) . ' gave ' . var_export($actual, true));
 }
 
+$toISO = [
+    'English name without the native suffix' => ['Germany', 'DE'],
+    'English name in another case'           => ['GERMANY', 'DE'],
+    'English name of an accented label'      => ['Mexico', 'MX'],
+    'English name with its own parentheses'  => ['Congo (DRC)', 'CD'],
+    'full list label'                        => ['Germany (Deutschland)', 'DE'],
+    'unknown value'                          => ['Atlantis', 'Atlantis'],
+];
+
+foreach ($toISO as $label => [$value, $expected]) {
+    $actual = Countries::toISO($value);
+    $check($actual === $expected, "toISO: {$label}", var_export($value, true) . ' gave ' . var_export($actual, true));
+}
+
 $keep = [
+    'English name kept when the code matches' => ['Germany', 'DE', 'Germany'],
     'name kept when the code matches'  => ['United States', 'US', 'United States'],
     'alias kept when the code matches' => ['USA', 'US', 'USA'],
     'code kept when the code matches'  => ['US', 'US', 'US'],
@@ -77,6 +98,24 @@ $keep = [
 foreach ($keep as $label => [$stored, $submitted, $expected]) {
     $actual = Countries::keepStoredIfSame($stored, $submitted);
     $check($actual === $expected, "keepStoredIfSame: {$label}", var_export($actual, true));
+}
+
+$keepState = [
+    'name kept when the code matches'           => ['US', 'Missouri', 'MO', 'Missouri'],
+    'code kept when the code matches'           => ['US', 'MO', 'MO', 'MO'],
+    'unknown state kept when posted back'       => ['US', 'Mo.', 'Mo.', 'Mo.'],
+    'real change saves the new code'            => ['US', 'Missouri', 'KS', 'KS'],
+    'country stored by name'                    => ['United States', 'Missouri', 'MO', 'Missouri'],
+    'country stored by English name'            => ['Germany', 'Bayern', 'BY', 'Bayern'],
+    'country without a state list, unchanged'   => ['Atlantis', 'North', 'North', 'North'],
+    'country without a state list, changed'     => ['Atlantis', 'North', 'South', 'South'],
+    'blank stays blank'                         => ['US', null, '', null],
+    'first state on a new record'               => ['US', null, 'MO', 'MO'],
+];
+
+foreach ($keepState as $label => [$country, $stored, $submitted, $expected]) {
+    $actual = States::keepStoredIfSame($country, $stored, $submitted);
+    $check($actual === $expected, "States::keepStoredIfSame: {$label}", var_export($actual, true));
 }
 
 $total = $passed + $failed;

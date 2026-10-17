@@ -70,13 +70,19 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Install Semgrep
+        run: pip install semgrep
+      - name: Test local PHP XSS rule
+        run: semgrep --test .semgrep/
       - name: Run Semgrep
         run: |
-          pip install semgrep
           semgrep scan \
             --config p/security-audit \
             --config p/owasp-top-ten \
             --config p/php \
+            --config .semgrep/echoed-request.yml \
+            --exclude-rule php.lang.security.injection.echoed-request.echoed-request \
+            --exclude .semgrep/echoed-request.php \
             --sarif \
             --output semgrep.sarif \
             --error

@@ -120,7 +120,7 @@ reviews:
   path_instructions:
     - path: "**/*"
       instructions: |
-        Apply maintainer-review-gates.md. Hard blocks only.
+        Apply maintainer-review-gates.md and docs/contributing/issue-readiness.md. Review issue/PR scope and linked work by evidence; hard blocks only.
         Do not ask for locale:build or messages.po.
     - path: "**/*.{lock,json}"
       instructions: |

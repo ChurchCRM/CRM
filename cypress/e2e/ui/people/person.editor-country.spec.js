@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe("Person editor country (#10418)", () => {
+describe("Person editor country and state (#10418, #10566)", () => {
     const createdPersonIds = [];
     let originalHideAddress;
 
@@ -20,7 +20,7 @@ describe("Person editor country (#10418)", () => {
         cy.restoreSystemConfig("bHidePersonAddress", originalHideAddress);
     });
 
-    const createUnassignedPersonStoredAs = (country) => {
+    const createUnassignedPersonStoredAs = (country, state = "MO") => {
         cy.visit("/PersonEditor.php");
         return cy.get("#personEditor").then(($form) => {
             const body = new URLSearchParams(new FormData($form[0]));
@@ -31,7 +31,7 @@ describe("Person editor country (#10418)", () => {
                 Family: "0",
                 Address1: "10418 Country Test Way",
                 City: "Kansas City",
-                State: "MO",
+                State: state,
                 Zip: "64111",
                 Country: country,
                 PersonSubmit: "",
@@ -62,6 +62,23 @@ describe("Person editor country (#10418)", () => {
                 cy.location("pathname").should("match", new RegExp(`/people/view/${personId}$`));
                 cy.request(`/api/person/${personId}`).its("body.Country").should("equal", storedCountry);
             });
+        });
+    });
+
+    it("keeps a country stored by its English name and a stored state name on an unchanged save", () => {
+        createUnassignedPersonStoredAs("Germany", "Bayern").then((personId) => {
+            cy.visit(`/PersonEditor.php?PersonID=${personId}`);
+            cy.get("#Country", { timeout: 10000 }).should("have.value", "DE");
+            cy.get("#State", { timeout: 10000 }).should("have.value", "BY");
+            cy.get('button[name="PersonSubmit"]').click();
+
+            cy.location("pathname").should("match", new RegExp(`/people/view/${personId}$`));
+            cy.request(`/api/person/${personId}`)
+                .its("body")
+                .then((person) => {
+                    expect(person.Country).to.equal("Germany");
+                    expect(person.State).to.equal("Bayern");
+                });
         });
     });
 });

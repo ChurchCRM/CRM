@@ -197,6 +197,7 @@ describe("Admin → Member Portal page", () => {
             activateTheme("default");
             cy.setupAdminSession();
             cy.visit("/admin/member-portal");
+            cy.get("#portal-settings-tab").click();
             cy.get("#portalThemeSelect").select(BROKEN_THEME);
             cy.get("#portalThemeActivateButton").click();
             cy.get("#portalThemeFindings", { timeout: 10000 }).should("contain.text", "home.html.twig");
@@ -211,6 +212,7 @@ describe("Admin → Member Portal page", () => {
             cy.visit("/admin/member-portal");
             cy.get(`#portalThemesTable tr[data-theme="${WARNING_THEME}"]`).should("contain.text", "Warnings");
             expectReadableBadgesInBothModes();
+            cy.get("#portal-settings-tab").click();
 
             for (const [theme, template] of [
                 [GOOD_THEME, "This theme has no problems."],
@@ -226,6 +228,7 @@ describe("Admin → Member Portal page", () => {
 
         it("The Check button re-runs the validator for the selected theme", () => {
             cy.visit("/admin/member-portal");
+            cy.get("#portal-settings-tab").click();
             cy.get("#portalThemeSelect").select(GOOD_THEME);
             cy.get("#portalThemeCheckButton").click();
             cy.get("#portalThemeFindings", { timeout: 10000 }).should("contain.text", "This theme has no problems.");

@@ -36,7 +36,7 @@ Agent cards: `.agents/skills/churchcrm/hosted-remote-config.md`, `plugin-registr
 
 ## Release notes and publishing
 
-The how-to is in `.agents/skills/churchcrm/release-notes.md`; the runbook is `docs/release-process.md`.
+The how-to is in `.agents/skills/churchcrm/release-notes.md`; the runbook is `docs/maintainers/release-process.md`.
 
 - Edit a draft release with `--tag`: `gh release edit <tag> --tag <version> --notes-file …`. A draft has no git tag yet, and installs read the version from `tag_name` (`ChurchCRMRelease.php`). Check `gh release view <version> --json tagName,isDraft` before publishing.
 - To repair a release stuck on a placeholder `untagged-<hash>` tag: create the real tag on the release commit, move the release with `gh release edit untagged-… --tag <version>`, verify, then delete the stray tag. Re-run `release-bookkeeping.yml` with `tag=<version>`.
