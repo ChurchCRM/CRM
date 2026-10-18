@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 01:22+0000\n"
+"POT-Creation-Date: 2026-10-18 03:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2021,9 +2021,6 @@ msgid "Back to Dashboard"
 msgstr ""
 
 msgid "Back to Debug Info"
-msgstr ""
-
-msgid "Back to Deposits"
 msgstr ""
 
 msgid "Back to Email History"
@@ -4652,9 +4649,6 @@ msgstr ""
 msgid "Deposit ID"
 msgstr ""
 
-msgid "Deposit Navigation"
-msgstr ""
-
 msgid "Deposit Reports"
 msgstr ""
 
@@ -6984,7 +6978,7 @@ msgstr ""
 msgid "Fund saved successfully."
 msgstr ""
 
-msgid "Fund(s)"
+msgid "Fund totals appear here once payments are added."
 msgstr ""
 
 msgid "Fundraiser"
@@ -8744,9 +8738,6 @@ msgstr ""
 msgid "Living"
 msgstr ""
 
-msgid "Load Authorized"
-msgstr ""
-
 msgid "Load demo data"
 msgstr ""
 
@@ -9910,16 +9901,10 @@ msgstr ""
 msgid "No Birthdays"
 msgstr ""
 
-msgid "No Cash"
-msgstr ""
-
 msgid "No Changes"
 msgstr ""
 
 msgid "No Check-ins"
-msgstr ""
-
-msgid "No Checks"
 msgstr ""
 
 msgid "No Data Found"
@@ -10183,6 +10168,9 @@ msgid "No payments found for the selected deposits"
 msgstr ""
 
 msgid "No payments on this deposit"
+msgstr ""
+
+msgid "No payments yet"
 msgstr ""
 
 msgid "No payments yet. Click \"Add Payment\" to get started."
@@ -11668,9 +11656,6 @@ msgstr ""
 msgid "Please do not refresh or navigate away"
 msgstr ""
 
-msgid "Please ensure this what you want to do."
-msgstr ""
-
 msgid "Please enter a check number"
 msgstr ""
 
@@ -11767,9 +11752,6 @@ msgid "Please select another family with whom to associate these donations"
 msgstr ""
 
 msgid "Please select at least one buyer to generate statements."
-msgstr ""
-
-msgid "Please select rows to delete"
 msgstr ""
 
 msgid "Please tell us what needs changing."
@@ -12812,9 +12794,6 @@ msgid "Run"
 msgstr ""
 
 msgid "Run Report"
-msgstr ""
-
-msgid "Run Transactions"
 msgstr ""
 
 msgid "Run background jobs now"
@@ -13918,6 +13897,9 @@ msgid "Some of your details could not be saved. Please check the highlighted fie
 msgstr ""
 
 msgid "Some of your family details could not be saved. Please check the highlighted fields."
+msgstr ""
+
+msgid "Some payments could not be deleted"
 msgstr ""
 
 msgid "Some settings could not be reset"
@@ -18048,9 +18030,6 @@ msgid "past"
 msgstr ""
 
 msgid "payment(s)?"
-msgstr ""
-
-msgid "payments?"
 msgstr ""
 
 msgid "people"
