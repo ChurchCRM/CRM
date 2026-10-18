@@ -5,6 +5,7 @@
 describe("Role IDs must belong to the destination role list", () => {
     const personId = 2;
     let groupId;
+    let extendedGroupId;
     let validGroupRoleId;
     let familyOnlyRoleId;
     let groupOnlyRoleId;
@@ -35,9 +36,10 @@ describe("Role IDs must belong to the destination role list", () => {
                 });
         });
 
+        // Extend a separate group: adding options to groupId would make family IDs valid in it.
         const addUntilForeign = () =>
             cy.makePrivateAdminAPICall(
-                "POST", "/api/groups/" + groupId + "/roles",
+                "POST", "/api/groups/" + extendedGroupId + "/roles",
                 { roleName: "Boundary option " + Date.now() }, 200
             ).then((resp) => {
                 const optionId = Number(resp.body.newRole.roleID);
@@ -48,12 +50,20 @@ describe("Role IDs must belong to the destination role list", () => {
                     return addUntilForeign();
                 }
             });
+        cy.makePrivateAdminAPICall(
+            "POST", "/api/groups/",
+            { groupName: "Role list boundary ext " + Date.now() }, 200
+        ).then((resp) => {
+            extendedGroupId = resp.body.Id;
+        });
         cy.then(addUntilForeign);
     });
 
     after(() => {
-        if (groupId) {
-            cy.makePrivateAdminAPICall("DELETE", "/api/groups/" + groupId, null, [200, 404]);
+        for (const id of [groupId, extendedGroupId]) {
+            if (id) {
+                cy.makePrivateAdminAPICall("DELETE", "/api/groups/" + id, null, [200, 404]);
+            }
         }
     });
 
