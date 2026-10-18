@@ -1,62 +1,62 @@
 {
-  "Your coordinator": "",
-  "Your teams: %s": "",
-  "positionIds must be a list of position ids": "",
-  "{{name}} ({{family}} family)": "",
-  "{{name}} assigned and recorded as accepted": "",
-  "Ask an administrator to change your sign-in email.": "",
-  "Email changed by an administrator from %1$s to %2$s": "",
-  "Only an administrator can change the email of a person with a user account.": "",
+  "Your coordinator": "담당 조정자",
+  "Your teams: %s": "내 팀: %s",
+  "positionIds must be a list of position ids": "positionIds는 역할 번호의 목록이어야 합니다",
+  "{{name}} ({{family}} family)": "{{name}} ({{family}} 가정)",
+  "{{name}} assigned and recorded as accepted": "{{name}}을(를) 배정하고 수락으로 기록했습니다",
+  "Ask an administrator to change your sign-in email.": "로그인 이메일 변경은 관리자에게 요청하세요.",
+  "Email changed by an administrator from %1$s to %2$s": "관리자가 이메일을 %1$s에서 %2$s(으)로 변경했습니다",
+  "Only an administrator can change the email of a person with a user account.": "사용자 계정이 있는 사람의 이메일은 관리자만 바꿀 수 있습니다.",
   "Delete ({{count}})": {
-    "one": "",
-    "other": ""
+    "one": "삭제 ({{count}})",
+    "other": "삭제 ({{count}})"
   },
   "Delete events ({{count}})": {
-    "one": "",
-    "other": ""
+    "one": "일정 삭제 ({{count}})",
+    "other": "일정 삭제 ({{count}})"
   },
   "Delete {{count}} occurrences? Their assignments, the volunteers' responses, any substitutions and every queued reminder go with them. This cannot be undone.": {
-    "one": "",
-    "other": ""
+    "one": "{{count}}개 회차를 삭제할까요? 배정, 봉사자의 응답, 대체, 대기 중인 알림이 모두 함께 삭제됩니다. 되돌릴 수 없습니다.",
+    "other": "{{count}}개 회차를 삭제할까요? 배정, 봉사자의 응답, 대체, 대기 중인 알림이 모두 함께 삭제됩니다. 되돌릴 수 없습니다."
   },
   "Occurrences are created for events in the next {{count}} weeks (through {{date}}).": {
-    "one": "",
-    "other": ""
+    "one": "앞으로 {{count}}주({{date}}까지)의 일정에 대해 각 회차가 만들어집니다.",
+    "other": "앞으로 {{count}}주({{date}}까지)의 일정에 대해 각 회차가 만들어집니다."
   },
   "They finish {{count}} minutes after the event ends.": {
-    "one": "",
-    "other": ""
+    "one": "일정이 끝난 뒤 {{count}}분 후에 마칩니다.",
+    "other": "일정이 끝난 뒤 {{count}}분 후에 마칩니다."
   },
   "They finish {{count}} minutes before the event ends.": {
-    "one": "",
-    "other": ""
+    "one": "일정이 끝나기 {{count}}분 전에 마칩니다.",
+    "other": "일정이 끝나기 {{count}}분 전에 마칩니다."
   },
   "Volunteers start {{count}} minutes after the event starts.": {
-    "one": "",
-    "other": ""
+    "one": "봉사자는 일정이 시작한 뒤 {{count}}분 후에 시작합니다.",
+    "other": "봉사자는 일정이 시작한 뒤 {{count}}분 후에 시작합니다."
   },
   "Volunteers start {{count}} minutes before the event starts.": {
-    "one": "",
-    "other": ""
+    "one": "봉사자는 일정이 시작하기 {{count}}분 전에 시작합니다.",
+    "other": "봉사자는 일정이 시작하기 {{count}}분 전에 시작합니다."
   },
   "{{count}} needed": {
-    "one": "",
-    "other": ""
+    "one": "{{count}}명 필요",
+    "other": "{{count}}명 필요"
   },
   "{{count}} occurrences deleted": {
-    "one": "",
-    "other": ""
+    "one": "{{count}}개 회차를 삭제했습니다",
+    "other": "{{count}}개 회차를 삭제했습니다"
   },
   "{{failed}} of {{count}} occurrences could not be deleted": {
-    "one": "",
-    "other": ""
+    "one": "{{count}}개 회차 중 {{failed}}개를 삭제할 수 없었습니다",
+    "other": "{{count}}개 회차 중 {{failed}}개를 삭제할 수 없었습니다"
   },
   "{{name}} ({{count}} upcoming)": {
-    "one": "",
-    "other": ""
+    "one": "{{name}} (예정 {{count}})",
+    "other": "{{name}} (예정 {{count}})"
   },
   "{{title}} ({{count}} upcoming)": {
-    "one": "",
-    "other": ""
+    "one": "{{title}} (예정 {{count}})",
+    "other": "{{title}} (예정 {{count}})"
   }
 }
