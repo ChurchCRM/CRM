@@ -30,16 +30,15 @@
 - Proposed. No code yet. The child issues in §7 are opened only if this direction is accepted.
 - Related: #9313 (per-person gifts), #8178, #8180 (plugin gateways), #9600, #9472, #9575, #8977 (Member Portal), #9225, #8181.
 - Depends on RFC 0004 (prerequisites GIV-02 to GIV-07 and the Giving page GIV-83). RFC 0004 does not depend on this RFC.
-- Depends on unreleased work: #8977 Member Portal, #9843 masquerade, #9876 email log.
-- Citations are `path:line` on upstream `master` `7881b01a2`. Code that exists only on those unreleased branches is marked **[portal branch]**.
+- Builds on the Member Portal (`src/portal/`, epic #8977) and the email log (`EmailLogService`, #9876), both on master. Login as User (#9843) was rolled back in #10352; the masquerade guards below apply only if it returns.
+- Code is cited by symbol on upstream `master` as of 2026-10-17.
 
-**Today:** no gateway code (removed in #4566; dead callers at `src/DepositSlipEditor.php:55-58, 268-276`). Per-person credit comes from RFC 0004.
+**Today:** no gateway code (removed in #4566; dead Load Authorized and Run Transactions buttons in `DepositSlipEditor.php`). Per-person credit comes from RFC 0004.
 
 **How to read this**
 - Ids: **D** proposed product choice; **A** proposed technical choice; **F** flow (§4); **I** invariant (§3.3); **Q** open question (§8.1); **T** threat (§6); **R** requirement (Appendix A); **GIV-nn** a proposed child PR (§7), not filed.
 - Ids are shared with RFC 0004. Items that moved there keep their numbers and are marked "Moved to RFC 0004" here: D3, D11, A10, A14, A21, A31, A32, I5, I6, F8 (office entry), GIV-02 to GIV-07, GIV-43. This RFC refers to them by the same id.
 - Table short names (§3.2): `gint` = `giving_intent_gint`, `gtxn` = `giving_transaction_gtxn`, `grec` = `giving_recurring_grec`, `gcus` = `giving_customer_gcus`, `gwhe` = `giving_webhook_event_gwhe`, `gntf` = `giving_notification_gntf`, `gnc` = `giving_noncash_gnc`, `srl` = `system_ratelimit_srl`; `faud` = `finance_audit_faud` (RFC 0004).
-- Tags: **[portal branch]** = code only on the unreleased branches above; **[#NNNN]** = needs that unmerged work (#8977, #9843 or #9876).
 - Terms: HoH = head of household; UQ = unique key; PI = Stripe PaymentIntent; FMV = fair market value of goods the donor received; ACH = US bank debit; TOTP = authenticator-app code; SAQ-A = the shortest PCI DSS self-assessment, for merchants that hand all card entry to a provider; FAQ 1588 = the PCI Security Standards Council FAQ on SAQ-A script criteria.
 
 ---
@@ -73,7 +72,7 @@
 | D7 | PayPal recurring uses **Subscriptions v1 REST**, the current replacement for PayPal's older NVP "Recurring Payment profiles". |
 | D8 | Give, public and return pages **stay overridable** by themes like any portal template. With hosted redirect the PCI SAQ-A script criterion does not apply (FAQ 1588 covers embedded iframes, not redirects). Remaining control: the server builds the redirect URL and accepts only the gateway's hosts. Stricter script controls come only with GIV-60 and cover only a small payment partial, not the layout. |
 | D9 | Deposits get **one new `dep_Type`, 'Online'**, no 'Crypto'. `dep_Gateway` separates BTCPay deposits. Crypto handling (non-cash, excluded from cash totals, no value on receipts) follows from `plg_method = 'CRYPTO'` and the row's `giving_noncash_gnc` record. |
-| D10 | **Gateway SDKs live inside the plugin.** The loader optionally loads `src/plugins/<core\|community>/<id>/vendor/autoload.php`. Stripe's own `composer.json` holds `stripe/stripe-php`, which needs no other Composer package, so no version conflicts. The release build runs `composer install` in each plugin with a `composer.json`; Dependabot gets one entry per plugin. PayPal and BTCPay use core's Guzzle (`php-http/guzzle7-adapter`, `src/composer.json:46`). Why not `stripe/stripe-php` in `src/composer.json`: every install would ship and update a payment SDK even if it never takes online gifts, and a community gateway plugin could not bring its own SDK the same way. Cost: a loader change, a per-plugin install step in the release build, a CI duplicate-package check and one Dependabot entry per plugin (GIV-09). If this is refused, the fallback is `stripe/stripe-php` in `src/composer.json` (question 3). |
+| D10 | **Gateway SDKs live inside the plugin.** The loader optionally loads `src/plugins/<core\|community>/<id>/vendor/autoload.php`. Stripe's own `composer.json` holds `stripe/stripe-php`, which needs no other Composer package, so no version conflicts. The release build runs `composer install` in each plugin with a `composer.json`; Dependabot gets one entry per plugin. PayPal and BTCPay use core's Guzzle (`php-http/guzzle7-adapter` in `src/composer.json`). Why not `stripe/stripe-php` in `src/composer.json`: every install would ship and update a payment SDK even if it never takes online gifts, and a community gateway plugin could not bring its own SDK the same way. Cost: a loader change, a per-plugin install step in the release build, a CI duplicate-package check and one Dependabot entry per plugin (GIV-09). If this is refused, the fallback is `stripe/stripe-php` in `src/composer.json` (question 3). |
 | D11 | Moved to RFC 0004 (adult child who starts a family). This RFC adds: new and recurring gifts go to the new family from the next charge, because the family is looked up at charge time. |
 | D12 | This design is posted for feedback only, with one proposal issue. No epic or child issues are filed until the maintainer accepts the direction. |
 | D22 | **Pay my pledge.** A pledge card from RFC 0004 offers Pay my pledge when the Give tab is available. It opens the Give tab with the pledge's fund and amount per gift: one-time, or recurring when the gateway supports the pledge's schedule (weekly or monthly). Each recorded row of that fund carries the pledge id. The pledge stays the member's editable intent and the recurring gift stays a separate thing (A22): editing or ending the pledge never changes the subscription, and cancelling the subscription never ends the pledge. |
@@ -85,7 +84,7 @@
 | A1 | Hosted redirect in v1 (D5); embedded modes via per-gateway `CheckoutMode` in GIV-60. | SAQ-A; no CSP change in v1. |
 | A2 | `giving_intent_gint` (attempt; source of truth for the fund split) and `giving_transaction_gtxn` (ledger). | Abandoned attempts stay out of the ledger. |
 | A3 | Pledge rows link by `plg_gtxn_ID`; gateway GroupKeys start `gtxn{id}`. | Trivial immutability guard; GroupKey is never parsed. |
-| A4 | Pledge columns stay `decimal(8,2)` (`Install.sql:557,572`; `orm/schema.xml:506,521`); new tables use wider `decimal(10,2)`; every entry point caps a gift at 999,999.99; integer cents; 2-decimal currencies only. | No overflow when split into pledge rows. |
+| A4 | Pledge columns stay `decimal(8,2)` (`plg_amount`, `plg_NonDeductible`); new tables use wider `decimal(10,2)`; every entry point caps a gift at 999,999.99; integer cents; 2-decimal currencies only. | No overflow when split into pledge rows. |
 | A5 | One Stripe "ChurchCRM Gift" product per mode, priced inline; split kept locally. | No product per fund. |
 | A6 | Weekly batch deposit per gateway; Stripe payout mode opt-in later (GIV-42). | Needs no payout event, so it works when webhooks arrive late or only through catch-up (F14). |
 | A7 | `plg_method` adds only 'CRYPTO' (card, wallets, PayPal = CREDITCARD; ACH = BANKDRAFT); `dep_Type` adds only 'Online' (D9). | Payouts mix methods; smallest enum change. |
@@ -96,11 +95,11 @@
 | A12 | Covered fee spread by largest remainder (leftover cents go to the lines with the largest fractional parts; ties to the larger line, then the lower fund id); designated fund optional. Each row stores its share in `plg_FeeCovered`. | Fund shares stay honest, and a covered fee stays a gift on top: it never pays down a fundraiser balance or counts toward the price of an item (F12). |
 | A13 | Separate `gntf`, `gcus`, `gnc` tables. | Own lifecycles and retention. |
 | A14 | Moved to RFC 0004 (core append-only `finance_audit_faud`). This RFC adds `faud_IpHash` (GIV-13). | |
-| A15 | Encrypted `secret` type (Defuse, `src/composer.json:38`), key from `Include/Config.php` or env; live blocked without it. | A DB-stored key like `sTwoFASecretKey` (`src/Include/LoadConfigs.php:57-62`) protects nothing in a dump. |
+| A15 | Encrypted `secret` type (Defuse, `defuse/php-encryption` in `src/composer.json`), key from `Include/Config.php` or env; live blocked without it. | A DB-stored key like `sTwoFASecretKey` (read in `Include/LoadConfigs.php`) protects nothing in a dump. |
 | A16 | `RateLimitService` + `ClientIp` (trusted proxies); per-session, per-email, circuit breaker; high per-IP ceiling; Turnstile deferred to GIV-60. | Sunday Wi-Fi shares an IP; Turnstile needs the GIV-60 CSP builder. |
-| A17 | Automatic deposits `dep_EnteredBy` NULL (unsigned, `Install.sql:36`); system rows `plg_EditedBy = Person::ONLINE_GIVING (-3)` (signed, `Install.sql:562`). | −3 sits beside the existing system ids `SELF_REGISTER`/`SELF_VERIFY` (`Person.php:31-32`), so system writes are recognisable. |
+| A17 | Automatic deposits `dep_EnteredBy` NULL (the column is unsigned); system rows `plg_EditedBy = Person::ONLINE_GIVING (-3)` (the column is signed). | −3 sits beside the existing system ids `Person::SELF_REGISTER`/`Person::SELF_VERIFY`, so system writes are recognisable. |
 | A18 | Default fees = standard published domestic rates. | International or currency-converted cards cost more (Stripe adds about 1.5% for international cards and 1% for conversion); any shortfall is the church's (F9). |
-| A19 | Refunds and staff cancels need Finance + a **TOTP re-prompt** (`User::isTwoFACodeValid()`, `User.php:860`). | Enrolment is not presence. |
+| A19 | Refunds and staff cancels need Finance + a **TOTP re-prompt** (`User::isTwoFACodeValid()`). | Enrolment is not presence. |
 | A20 | `PaymentGatewayRegistry::register(PluginInterface $owner, PaymentGatewayInterface $g)`, not an open filter, verified after plugin loading ends; "core" decided by path; `payments.process` tag; CI flag `CHURCHCRM_GIVING_SANDBOX` for `FakeGateway` (§2.4). | A filter lets any plugin replace or impersonate a gateway. |
 | A21 | Moved to RFC 0004 (`GIFT_RECORDED` from `PledgeWriter`). | |
 | A22 | Recurring change/pause and biweekly deferred. | The donor cancels and sets up a new gift instead, which avoids per-gateway proration and price-change rules. |
@@ -137,11 +136,11 @@ Portal /portal/giving/give|history* Public /portal/give*   Finance /finance/onli
         ▲ register($this, $gateway) in each plugin's boot()
  PLUGINS src/plugins/core/{stripe,paypal,btcpay}/: routes/routes.php (admin tools), routes/webhook.php (§2.5)
 ```
-\* Portal routes depend on #8977 [portal branch].
+\* Portal routes are tabs on RFC 0004's Giving page (GIV-83).
 
 `PledgeWriter`, `GivingScope`, `GivingStatementService` and `FinanceAuditService` come from RFC 0004 (GIV-03, GIV-04, GIV-07). `PledgeWriter` is the only writer of pledge rows, for office entry and gateways alike, and runs without a session; `GivingRecorder` calls it.
 
-**Why the contract is in core (revising #8178's adapter plugin):** plugins are discovered core-first then community, unsorted within each directory (`discoverPlugins()`, `src/ChurchCRM/Plugin/PluginManager.php:71-109`, `DirectoryIterator` `:84`), booted in that order (`loadActivePlugins()`, `:114-148`), and autoloadable only once loaded (`:202-229`), so a gateway could boot before a plugin holding the interface. The callers are core. Precedent: `SystemCalendar` + `SYSTEM_CALENDARS_REGISTER` + `HolidaysPlugin` (`Hooks.php:83-87`, `src/ChurchCRM/dto/SystemCalendars.php:42`, `src/plugins/core/holidays/src/HolidaysPlugin.php:36-41`), with an explicit registry call instead of a filter (A20).
+**Why the contract is in core (revising #8178's adapter plugin):** plugins are discovered core-first then community, unsorted within each directory (`PluginManager::discoverPlugins()`, one `DirectoryIterator` per directory), booted in that order (`PluginManager::loadActivePlugins()`), and autoloadable only once loaded (`PluginManager::registerPluginAutoloader()`), so a gateway could boot before a plugin holding the interface. The callers are core. Precedent: `SystemCalendar` + `SYSTEM_CALENDARS_REGISTER` + `HolidaysPlugin` (`Hooks::SYSTEM_CALENDARS_REGISTER`, applied in `SystemCalendars::getCalendars()`, filled in `HolidaysPlugin::boot()`), with an explicit registry call instead of a filter (A20).
 
 **Why the Giving domain is core, not a plugin (revising #8180):** much of the work needs no gateway at all, which is why per-person attribution (#9313), statements, the audit log and the admin editor are their own RFC (0004). The flow writes core tables (`pledge_plg`, `deposit_dep`) inside core transactions, and the portal and finance pages that call it are core. #8180's on/off property is kept: nothing online shows unless `bEnableOnlineGiving` is on and a gateway plugin is active.
 
@@ -224,16 +223,16 @@ interface PaymentGatewayInterface
 
 ### 2.4 Registration, release gate, hooks
 
-- Each gateway plugin's `boot()` calls `PaymentGatewayRegistry::register($this, $this->gateway())`. `boot()` runs before `PluginManager` stores the instance (`loadPlugin()`, `src/ChurchCRM/Plugin/PluginManager.php:190-192`), so `register()` only records the entry. `forGiving()` and `get()` verify entries lazily, after loading ends, and drop (logged, red on readiness):
-  - an owner that is not the loaded instance (`PluginManager::getPlugin()`, `:538-541`);
+- Each gateway plugin's `boot()` calls `PaymentGatewayRegistry::register($this, $this->gateway())`. `boot()` runs before `PluginManager` stores the instance (`PluginManager::loadPlugin()`), so `register()` only records the entry. `forGiving()` and `get()` verify entries lazily, after loading ends, and drop (logged, red on readiness):
+  - an owner that is not the loaded instance (`PluginManager::getPlugin()`);
   - `getGatewayId() !== $owner->getId()`;
   - a class outside the owner's `mainClass` namespace;
-  - an owner neither core nor approved with `payments.process` (new in `KNOWN_PERMISSIONS`, `src/ChurchCRM/Plugin/ApprovedPluginRegistry.php:40-57`), except `fake-gateway` under `CHURCHCRM_GIVING_SANDBOX=1`;
+  - an owner neither core nor approved with `payments.process` (new in `ApprovedPluginRegistry::KNOWN_PERMISSIONS`), except `fake-gateway` under `CHURCHCRM_GIVING_SANDBOX=1`;
   - a taken id.
-- **"Core" is decided by path:** the realpath of `PluginMetadata::getPath()` must lie under `src/plugins/core/`. The `plugin.json` `type` is self-declared (`src/ChurchCRM/Plugin/PluginMetadata.php:37`) and trusted by `getVerificationStatus()` (`PluginManager.php:359`); only URL installs check it (`src/ChurchCRM/Plugin/PluginInstaller.php:775-777`); `AbstractPlugin::getType()` returns 'community' for every plugin (`src/ChurchCRM/Plugin/AbstractPlugin.php:188-191`). `discoverPlugins()` scans community after core and keys by id (`PluginManager.php:75,94`), so a community plugin with id `stripe` would replace core Stripe; GIV-10 makes `discoverPlugins()` and `PluginInstaller` refuse a community id equal to a core id.
+- **"Core" is decided by path:** the realpath of `PluginMetadata::getPath()` must lie under `src/plugins/core/`. The `plugin.json` `type` is self-declared (read in `PluginMetadata::__construct()`) and trusted by `PluginManager::getVerificationStatus()`; only URL installs check it (`PluginInstaller::extractAndValidate()`); `AbstractPlugin::getType()` returns 'community' for every plugin. `discoverPlugins()` scans community after core and keys by id, so a community plugin with id `stripe` would replace core Stripe; GIV-10 makes `discoverPlugins()` and `PluginInstaller` refuse a community id equal to a core id.
 - Entries are bound to owners, so load order is irrelevant.
-- **`FakeGateway` in CI:** `discoverPlugins()` scans only `src/plugins/core` and `src/plugins/community` (`PluginManager.php:75-84`), so CI setup copies `cypress/fixtures/plugins/fake-gateway/` into `src/plugins/community/fake-gateway/` (git-ignored) and the test seed activates it.
-- `forGiving()` returns gateways that are ready, accept new gifts and support `sGivingCurrency`, ordered by `sGivingGatewayOrder`. Calls into each gateway are wrapped in try/catch, so a broken one drops out; the registry does not rely on `HookManager::applyFilters()` swallowing errors (`src/ChurchCRM/Plugin/Hook/HookManager.php:194-223`, try/catch `:209-216`).
+- **`FakeGateway` in CI:** `discoverPlugins()` scans only `src/plugins/core` and `src/plugins/community`, so CI setup copies `cypress/fixtures/plugins/fake-gateway/` into `src/plugins/community/fake-gateway/` (git-ignored) and the test seed activates it.
+- `forGiving()` returns gateways that are ready, accept new gifts and support `sGivingCurrency`, ordered by `sGivingGatewayOrder`. Calls into each gateway are wrapped in try/catch, so a broken one drops out; the registry does not rely on `HookManager::applyFilters()` swallowing errors.
 - **Release gate (D1):** `GivingFeature::isAvailable()` hides every online-giving surface until GIV-20–24 are merged (the last gateway PR flips it; the sandbox flag bypasses it in CI).
 
 | Hook (`src/ChurchCRM/Plugin/Hooks.php`) | Value | Fires |
@@ -241,28 +240,28 @@ interface PaymentGatewayInterface
 | `GIFT_RECORDED` | `giving.gift.recorded` | once per new payment group from `PledgeWriter`, after commit |
 | `GIFT_REFUNDED` | `giving.gift.refunded` | refund recorded |
 | `RECURRING_GIFT_CREATED`/`_CANCELLED`/`_FAILED` | `giving.recurring.*` | lifecycle |
-| `DEPOSIT_CLOSED` (`:70`) | `deposit.closed` | wired into `POST /api/deposits/{id}` on 0→1; today only in dead `setDeposit` (`FinancialService.php:120-122`) |
-| `DONATION_RECEIVED` (`:64`) | `donation.received` | unchanged: per row, again on edits (`FinancialService.php:438`) |
+| `DEPOSIT_CLOSED` | `deposit.closed` | wired into `POST /api/deposits/{id}` on 0→1; today only in dead `FinancialService::setDeposit()` |
+| `DONATION_RECEIVED` | `donation.received` | unchanged: per row, again on edits (`FinancialService::insertPledgeorPayment()`) |
 
 Payloads never carry secrets. Listeners receiving donor data need `hooks.financial`.
 
 ### 2.5 Webhook route in the plugin's folder
 
 **Why a change is needed**
-- All `/plugins` routes run behind `AuthMiddleware` (`src/plugins/index.php:114`); an unmatched route answers 302 (`:90-95`).
-- `src/plugins/index.php:16` requires `LoadConfigs.php` → `Bootstrapper::init()` (`src/Include/LoadConfigs.php:54`), which may redirect via `checkAllowedURL()` under `bLockURL` (`src/ChurchCRM/Bootstrapper.php:112`), always starts a session with private cache headers (`:119`, `:487-489`), and **auto-upgrades the DB when code is newer** (`:130-168`).
-- `.agents/skills/churchcrm/plugin-development.md:296-298` forbids public POST routes.
+- All `/plugins` routes run behind `AuthMiddleware`, added globally in `src/plugins/index.php`; an unmatched route answers 302 (its `HttpNotFoundException` handler).
+- `src/plugins/index.php` first requires `Include/LoadConfigs.php`, which calls `Bootstrapper::init()`. `init()` may redirect via `SystemURLs::checkAllowedURL()` under `bLockURL`, always starts a session with private cache headers (`Bootstrapper::initSession()`), and **auto-upgrades the DB when code is newer** (when `isDBCurrent()` is false).
+- `.agents/skills/churchcrm/plugin-development.md` (What a Plugin Can and Cannot Do → Forbidden) forbids unauthenticated write routes.
 
 **Changes (GIV-12)**
 1. `plugin.json` key `"webhookRoutesFile": "routes/webhook.php"`, parsed by `PluginMetadata`.
 2. The first lines of `src/plugins/index.php` match `/plugins/([a-z0-9-]{2,20})/webhook$`; on a match they select a `Bootstrapper` **webhook boot mode**, require `LoadConfigs.php`, run `PluginWebhookApp`, return.
-3. Webhook boot mode skips the `checkAllowedURL()` redirect, `initSession()`, `configureUserEnvironment()` and the auto-upgrade. While `Bootstrapper::isDBCurrent()` (`:642`) is false the app answers **503**; the next normal page load upgrades.
+3. Webhook boot mode skips the `checkAllowedURL()` redirect, `initSession()`, `configureUserEnvironment()` and the auto-upgrade. While `Bootstrapper::isDBCurrent()` is false the app answers **503**; the next normal page load upgrades.
 4. `PluginWebhookApp`: no Auth/CSRF/Cors/ChurchInfo/Version middleware, session or cookies; `Cache-Control: no-store`; POST only (405), body ≤ 1 MB (413), high per-IP ceiling; generic JSON errors, never a 302. It loads `webhookRoutesFile` only for an active, registered gateway, giving it a pre-guarded `$webhook` group that may register only `POST ''` (stock: `$webhook->post('', fn($q,$s) => (new WebhookProcessor())->handle($q,$s,$gateway))`); a `routesFile` route at `/{id}/webhook` is unreachable. Logs gateway, event id and outcome, never the body.
 5. Body parsing is not a reason for the separate app: Slim's `BodyParsingMiddleware` adds a parsed copy and `Stream::__toString()` rewinds, so raw-body HMAC works either way.
 6. Unloaded plugin that still owns `giving_*` rows → **503** + admin alert (gateways retry ~3 days); else JSON 404.
-7. Lifecycle guard: optional `AbstractPlugin::canDeactivate(): ?string`, checked by `PluginManager::disablePlugin()` (`:483-515`) and uninstall. Gateways refuse while `grec_Status IN ('pending','active','past_due','review')` (pending gifts expire within 24 h, F14); the UI offers "Switch to receive-only" or "Cancel all N at the gateway and email donors" (audited, TOTP).
-8. Webhooks never reach `AuthMiddleware`, so its public-path exemption (inline `/api/public` check upstream, `src/ChurchCRM/Slim/Middleware/AuthMiddleware.php:25-27`; `isPublicPath()` [portal branch]) is not widened by GIV-12. GIV-33 later adds exactly the `/portal/give` segment (F2).
-9. `plugin-development.md:296-298` changes to: public POST only through `webhookRoutesFile` on a registered gateway, with raw-body signature verification and re-fetch.
+7. Lifecycle guard: optional `AbstractPlugin::canDeactivate(): ?string`, checked by `PluginManager::disablePlugin()` and uninstall. Gateways refuse while `grec_Status IN ('pending','active','past_due','review')` (pending gifts expire within 24 h, F14); the UI offers "Switch to receive-only" or "Cancel all N at the gateway and email donors" (audited, TOTP).
+8. Webhooks never reach `AuthMiddleware`, so its public-path exemption (`AuthMiddleware::isPublicPath()`: `/api/public` and `/portal/theme`) is not widened by GIV-12. GIV-33 later adds exactly the `/portal/give` segment (F2).
+9. That `plugin-development.md` rule changes to: unauthenticated POST only through `webhookRoutesFile` on a registered gateway, with raw-body signature verification and re-fetch.
 10. If you would rather not allow public routes in plugin folders, the fallback is a core `POST /api/public/giving/webhook/{gatewayId}` that calls the same processor.
 
 **`WebhookProcessor::handle()`**
@@ -282,14 +281,14 @@ Payloads never carry secrets. Listeners receiving donor data need `hooks.financi
 | 6 | permanent problem (unknown intent with our install id, amount mismatch, crypto edge cases) | 200 | `review` |
 | | transient problem (timeout, deadlock, SQLSTATE 42S02) | 503 | `failed` |
 
-- **Telemetry:** the app logger sends Warning and above to PostHog (`PostHogLogHandler`, `src/ChurchCRM/Utils/LoggerUtils.php:182`) with a synchronous 1 s POST (`src/ChurchCRM/Service/TelemetryService.php:97-125`), and core code on the webhook path logs there (for example a failing hook listener, `src/ChurchCRM/Plugin/Hook/HookManager.php:212`). Webhook boot mode builds the app logger without `PostHogLogHandler`, so no telemetry call runs inside the 10 s budget. The `giving` channel never goes to PostHog.
+- **Telemetry:** the app logger sends Warning and above to PostHog (`PostHogLogHandler`, pushed in `LoggerUtils::getAppLogger()`) with a synchronous 1 s POST (`TelemetryService::capture()`), and core code on the webhook path logs there (for example a failing hook listener in `HookManager::applyFilters()`). Webhook boot mode builds the app logger without `PostHogLogHandler`, so no telemetry call runs inside the 10 s budget. The `giving` channel never goes to PostHog.
 - Stripe endpoints omit `invoice.created` (a failing subscriber delays renewals up to 72 h).
 
 ### 2.6 Plugin layout and packaging
 
 ```
 src/plugins/core/stripe/
-  plugin.json  id "stripe", type core, minimumCRMVersion "7.8.0", mainClass ChurchCRM\Plugins\Stripe\StripePlugin,
+  plugin.json  id "stripe", type core, minimumCRMVersion <next>, mainClass ChurchCRM\Plugins\Stripe\StripePlugin,
                routesFile routes/routes.php, webhookRoutesFile routes/webhook.php, hasTest true,
                permissions network.outbound network.inbound secrets.store payments.process,
                settings: mode publishableKey secretKey(secret, rk_) webhookSecret(+Previous, secret) acceptNewGifts
@@ -302,8 +301,8 @@ src/plugins/core/stripe/
 ```
 - PayPal: `mode`, `clientId`, `clientSecret` (secret), `webhookId`, fees. BTCPay: `serverUrl`, `storeId`, `apiKey` (secret, least privilege), `webhookSecret` (secret), `speedPolicy`, `enableLightning`. Neither has a `composer.json`.
 - Caches: `plugin.stripe.productId_{mode}`, `plugin.paypal.plan.{mode}.{freq}.{ccy}`.
-- Stored keys are `plugin.{id}.{key}` (`PluginManager.php:774,789`) in `cfg_name varchar(50)` (`Install.sql:21`): the whole string must be ≤ 50 characters (`plugin.paypal.plan.live.annually.USD` is 36).
-- **Plugin-local vendor (GIV-09):** `PluginManager::loadPlugin()` requires `{plugin}/vendor/autoload.php` if present, before the PSR-4 autoloader (`:202-229`). `composer:install` (`package.json:35`) also installs each `src/plugins/core/*/composer.json` (`--no-dev`), and `build:signatures` moves after it (`build` runs PHP and frontend in parallel today, `package.json:25-26`) so `signatures.json` covers plugin vendor. CI fails if a plugin lock duplicates a core or other-plugin package. One Dependabot `composer` entry per plugin. New `src/plugins/core/.htaccess` mirrors `community/.htaccess` (deny direct PHP); Caddy already blocks both (`docker/examples/frankenphp/Caddyfile:63-64`).
+- Stored keys are `plugin.{id}.{key}` (`PluginManager::getPluginConfigKeyMap()`, `updatePluginSetting()`) in `config_cfg.cfg_name varchar(50)`: the whole string must be ≤ 50 characters (`plugin.paypal.plan.live.annually.USD` is 36).
+- **Plugin-local vendor (GIV-09):** `PluginManager::loadPlugin()` requires `{plugin}/vendor/autoload.php` if present, before the PSR-4 autoloader (`registerPluginAutoloader()`). The `composer:install` script in `package.json` also installs each `src/plugins/core/*/composer.json` (`--no-dev`), and `build:signatures` moves after it (`build` runs PHP and frontend in parallel today) so `signatures.json` covers plugin vendor. CI fails if a plugin lock duplicates a core or other-plugin package. One Dependabot `composer` entry per plugin. New `src/plugins/core/.htaccess` mirrors `community/.htaccess` (deny direct PHP); Caddy already blocks both (the `@pluginPhp` matcher in `docker/examples/frankenphp/Caddyfile`).
 
 ---
 
@@ -318,9 +317,9 @@ src/plugins/core/stripe/
 | `pledge_plg` | Moved to RFC 0004: anonymous = both ids NULL (GIV-02); `plg_PerID` (GIV-05); `plg_EndDate` (GIV-82) | |
 | `pledge_plg` | `plg_gtxn_ID int NULL` + index; `plg_method` + 'CRYPTO'; `plg_schedule` + 'Annually' | `<next>-giving-columns.sql` / GIV-14 |
 | `pledge_plg` | `plg_PledgeID mediumint(9) NULL` + index: on a `Payment` row, the RFC 0004 pledge row it fulfils (A40, D22); no DB FK, set NULL in code if that pledge is deleted | `<next>-giving-columns.sql` / GIV-14 |
-| `pledge_plg` | `plg_fr_ID mediumint(9) unsigned NULL` + index (fundraiser); `plg_pn_ID mediumint(9) unsigned NULL` + index (paddle, `paddlenum_pn.pn_ID`, `Install.sql:990`) | `<next>-giving-columns.sql` / GIV-14 (the recorder writes them; GIV-50 uses them) |
+| `pledge_plg` | `plg_fr_ID mediumint(9) unsigned NULL` + index (fundraiser); `plg_pn_ID mediumint(9) unsigned NULL` + index (paddle, `paddlenum_pn.pn_ID`) | `<next>-giving-columns.sql` / GIV-14 (the recorder writes them; GIV-50 uses them) |
 | `pledge_plg` | `plg_FeeCovered decimal(8,2) NOT NULL DEFAULT 0`: the row's share of a fee the donor chose to cover (A12), included in `plg_amount` | `<next>-giving-columns.sql` / GIV-14 |
-| `pledge_plg`, `deposit_dep` | utf8 → utf8mb4 (`Install.sql:40,579`), as `7.7.0-events-utf8mb4.sql` did | `<next>-giving-utf8mb4.sql` / GIV-14 |
+| `pledge_plg`, `deposit_dep` | utf8 → utf8mb4 (both are `CHARACTER SET utf8` in `Install.sql`), as 7.7.0 did for the events tables | `<next>-giving-utf8mb4.sql` / GIV-14 |
 | `deposit_dep` | `dep_Type` + 'Online'; `dep_Gateway varchar(32) NULL`; `dep_PayoutRef varchar(191) NULL`, UNIQUE(gateway, ref); `dep_FeeAmount decimal(10,2) DEFAULT 0`; `dep_NetAmount decimal(10,2) NULL`; `dep_ReconStatus enum('none','balanced','discrepancy')`; INDEX(gateway, closed, date) | GIV-14 |
 | `donationfund_fun` | Moved to RFC 0004: `fun_OnlineGiving` (D14, GIV-80). The Give tab offers the same funds. | |
 
@@ -382,7 +381,7 @@ utf8mb4 InnoDB, `int(11)` ids, real FKs between new tables; `person_per`/`family
 **Others**
 - `giving_customer_gcus`: gateway, mode, customer ref, `gcus_per_ID` (NULL once the person is deleted); UQ(gateway, mode, ref) and UQ(gateway, mode, per_ID).
 - `giving_webhook_event_gwhe`: `gwhe_ID bigint`, gateway, mode, `gwhe_EventRef` (UQ with gateway), `gwhe_Source` (webhook, reconcile, return), type, object ref, `gwhe_Status` (received, held, processed, ignored, failed, review), attempts, sanitised last error, payload hash, `gwhe_Payload` (encrypted, 90 days), timestamps.
-- `giving_notification_gntf` (outbox): `gntf_Type` (receipt, refund, recurring_created/cancelled/failed, fundraiser_receipt, admin_alert), `gntf_DedupeKey varchar(190) UQ` (`receipt:{gtxn}`), to-email, per/fam/gtxn/grec ids, scheduled-for, `gntf_Status` (pending, sent, failed, skipped), attempts, last error, sent-at. Standalone (Volunteer v2's `vntf` is similar [portal branch]).
+- `giving_notification_gntf` (outbox): `gntf_Type` (receipt, refund, recurring_created/cancelled/failed, fundraiser_receipt, admin_alert), `gntf_DedupeKey varchar(190) UQ` (`receipt:{gtxn}`), to-email, per/fam/gtxn/grec ids, scheduled-for, `gntf_Status` (pending, sent, failed, skipped), attempts, last error, sent-at. Standalone (Volunteer v2's `volunteer_notification_vntf` is similar).
 - `giving_noncash_gnc` (1:1 with a crypto charge `gtxn`, shared by all its rows): `gnc_gtxn_ID` PK/FK, `gnc_Asset`, `gnc_Quantity decimal(24,12)`, `gnc_Network enum('onchain','lightning')`, `gnc_Rate decimal(20,8)`, `gnc_RateSource`, `gnc_TxIds`, `gnc_AppraisalFlag` (> $5,000, Form 8283 Section B), `gnc_DisposedDate`, `gnc_DisposalProceeds`, `gnc_Form8282FiledDate`.
 - `finance_audit_faud`: moved to RFC 0004 (GIV-03). GIV-13 adds `faud_IpHash` (HMAC, keyed outside the DB, §3.4).
 - `system_ratelimit_srl`: `srl_Key varchar(191) PK` (hashed bucket), window start, count; one atomic UPDATE per hit.
@@ -406,7 +405,7 @@ utf8mb4 InnoDB, `int(11)` ids, real FKs between new tables; `person_per`/`family
 | Key | Default | Meaning |
 |---|---|---|
 | `bEnableOnlineGiving`, `bEnablePublicGiving` | 0, 0 | master (plus D1 gate); public page. The portal Giving page itself is RFC 0004's `bPortalShowGiving` |
-| `sGivingCurrency` | USD | ISO 4217, 2-decimal; replaces hard-coded `<CURDEF>USD` in OFX (`src/ChurchCRM/model/ChurchCRM/Deposit.php:65`) |
+| `sGivingCurrency` | USD | ISO 4217, 2-decimal; replaces hard-coded `<CURDEF>USD` in OFX (`Deposit::getOFX()`) |
 | `sGivingGatewayOrder`, `sGivingDepositBatching`, `aGivingAmountPresets` | stripe,paypal,btcpay; weekly; 25,50,100,250 | batching: daily, weekly, monthly |
 | `iGivingMinPublic`, `iGivingMaxPublic`, `iGivingMinMember`, `iGivingMaxMember` | 5, 10,000; 1, 25,000 | whole currency units; hard cap 999,999.99 |
 | `sGivingCoverFeeDefault`, `iGivingFeeCoverFund` | unchecked, 0 | 0 = spread |
@@ -422,7 +421,7 @@ The HMAC key for IP hashes and return tokens is not a setting. It is derived fro
 
 ## 4. Flows
 
-**F0. Recording (`GivingRecorder::recordCharge()`).** Every path ends here, on `Propel::getWriteConnection()` only; nothing uses the mysqli connection behind `FunctionsUtils::genGroupKey()`/`runQuery()` (`src/ChurchCRM/Utils/FunctionsUtils.php:108-125`).
+**F0. Recording (`GivingRecorder::recordCharge()`).** Every path ends here, on `Propel::getWriteConnection()` only; nothing uses the mysqli connection behind `FunctionsUtils::genGroupKey()`/`runQuery()`.
 1. `BEGIN`; upsert `gtxn` by (gateway, mode, kind, ref); `SELECT … FOR UPDATE`; already succeeded → commit, return.
 2. Resolve the owner by intent UUID or subscription ref. Stripe sessions set `payment_intent_data.metadata`, `subscription_data.metadata` and `client_reference_id`, so PaymentIntent, invoice and subscription objects carry the ids.
 3. Check the `fetchPayment()` snapshot: succeeded, same currency, amount = `gint_Gross`/`grec_Gross`; else `review`, no rows. A one-fund recurring charge records the actual amount; several funds are scaled and flagged. A BTCPay overpayment goes to review with no rows (F11).
@@ -436,23 +435,23 @@ The HMAC key for IP hashes and return tokens is not a setting. It is derived fro
 
 **Install identity (A29).** `sGivingInstallId` is created when giving is first configured (so test gifts carry it) and fixed at go-live, with a fingerprint of `$URL` and DB name. When the fingerprint changes, the admin page asks "Moved this install" (keep id) or "This is a copy" (new id, test mode, keys re-entered); live mode is off until answered. Webhooks that arrive meanwhile are verified and stored as `gwhe` `held` (§2.5); "Moved this install" processes them, "This is a copy" marks them ignored. A 200-ignored live event would never be resent.
 
-**F1. Portal gift, one-time** [portal branch, #8977]
-1. `GET /portal/giving/give` (the Give tab on RFC 0004's Giving page) with the actor from `PortalAccessMiddleware` (`src/ChurchCRM/Portal/PortalAccessMiddleware.php:50-58` [portal branch]): funds with `fun_Active='true' AND fun_OnlineGiving=1` in `fun_Order`, `forGiving()` capabilities and fee models, recurring notices, fundraiser balances.
+**F1. Portal gift, one-time**
+1. `GET /portal/giving/give` (the Give tab on RFC 0004's Giving page) with the actor that `PortalAccessMiddleware` sets (`PortalSelfService::ACTOR_ATTRIBUTE`): funds with `fun_Active='true' AND fun_OnlineGiving=1` in `fun_Order`, `forGiving()` capabilities and fee models, recurring notices, fundraiser balances.
 2. Fund lines (up to 5, or presets), gateway and method, optional fee cover; the HoH also sees "Give as: Me / Our household". **Pay my pledge** (D22) arrives as `?pledge={id}`: one fund line locked to the pledge's fund, amount = its amount per gift (editable), and recurring preset to its schedule when the gateway supports it; the pledge must be in the actor's scope (else 404) and is sent on as `gint_plg_ID`.
-3. `POST /api/portal/giving/intents` (`Idempotency-Key`; `CSRFMiddleware`, `PortalApiMiddleware` [portal branch], giving no-masquerade middleware §5.1). No person or family ids accepted. The server validates funds and limits, recomputes the fee (> 1¢ difference → 409 "Total changed, please review"), creates `gint` (per = actor, fam = `familyOf(actor)`), calls `beginCheckout()`, checks the URL's host against `getRedirectHosts()`, returns `{redirectUrl}`. For `kind=recurring` it answers **422** when the gateway lacks `supportsRecurring()`, the frequency is not in `frequencies`, or day = last and the gateway lacks `monthEnd`, so a crafted POST cannot create a `grec` the gateway cannot honour.
-4. The `portal-giving` bundle re-checks the host, then `location.assign()`. No form post: `form-action 'self'` (`src/Include/Header-Security.php:32-46`) covers redirect targets.
+3. `POST /api/portal/giving/intents` (`Idempotency-Key`; `CSRFMiddleware`, `PortalApiMiddleware`, and the giving no-masquerade middleware if Login as User returns, §5.1). No person or family ids accepted. The server validates funds and limits, recomputes the fee (> 1¢ difference → 409 "Total changed, please review"), creates `gint` (per = actor, fam = `familyOf(actor)`), calls `beginCheckout()`, checks the URL's host against `getRedirectHosts()`, returns `{redirectUrl}`. For `kind=recurring` it answers **422** when the gateway lacks `supportsRecurring()`, the frequency is not in `frequencies`, or day = last and the gateway lacks `monthEnd`, so a crafted POST cannot create a `grec` the gateway cannot honour.
+4. The `portal-giving` bundle re-checks the host, then `location.assign()`. No form post: the CSP's `form-action 'self'` (`Include/Header-Security.php`) covers redirect targets.
 5. Return: `GET /portal/giving/return?intent={uuid}` (top-level GET keeps the Lax cookie); `gint_per_ID` must equal the actor (else 404); `completeReturn()` → F0; shows succeeded with receipt, pending (ACH, PayPal PENDING, on-chain; polls `GET /api/portal/giving/intents/{uuid}`), or failed.
 6. Webhook before or after the return: F0 makes order irrelevant.
 
-**F2. Public anonymous gift (D4)** [#8977]
-1. **`GET /portal/give[?fund=&amount=]`**, outside `PortalAccessMiddleware`. The AuthMiddleware public-path list gains exactly `/portal/give`, matched on whole segments (`isPublicPath()`, `AuthMiddleware.php:138-151` [portal branch]), so `/portal/giving` stays private. `PublicGivingEnabledMiddleware` answers 404 when `bEnablePublicGiving` is off, except for a request carrying a valid `fundraiserPayment` token (the page and its `POST /api/public/giving/intents`), so fundraiser pay links (F12) work without a public page; the D1 gate and `bEnableOnlineGiving` still apply.
-   - **Anonymous-safe Twig:** `PortalExtension::getGlobals()` always builds `member` (`:262`), `nav` (`PortalNav.php:167`) and color mode (`:210`), and each calls `AuthenticationManager::getCurrentUser()`, which throws without a session provider (`src/ChurchCRM/Portal/PortalExtension.php:208-216,260-266`; `AuthenticationManager.php:24-35,42-56` [portal branch]). GIV-33 adds `AuthenticationManager::tryGetCurrentUser(): ?User` and makes these globals return null or defaults. The route calls `PortalTwig::preparePage()` (`PortalTwig.php:56-63` [portal branch]) for the CSP nonce.
+**F2. Public anonymous gift (D4)**
+1. **`GET /portal/give[?fund=&amount=]`**, outside `PortalAccessMiddleware`. The AuthMiddleware public-path list gains exactly `/portal/give`, matched on whole segments (`AuthMiddleware::isPublicPath()`), so `/portal/giving` stays private. `PublicGivingEnabledMiddleware` answers 404 when `bEnablePublicGiving` is off, except for a request carrying a valid `fundraiserPayment` token (the page and its `POST /api/public/giving/intents`), so fundraiser pay links (F12) work without a public page; the D1 gate and `bEnableOnlineGiving` still apply.
+   - **Anonymous-safe Twig:** `PortalExtension::getGlobals()` always builds `member` (`getMember()`), `nav` (`PortalNav::build()`) and color mode (`getColorMode()`), and each calls `AuthenticationManager::getCurrentUser()`, which throws without a session provider (`getAuthenticationProvider()`). GIV-33 adds `AuthenticationManager::tryGetCurrentUser(): ?User` and makes these globals return null or defaults. The route calls `PortalTwig::preparePage()` for the CSP nonce.
    - `giving/public.html.twig` extends `layout-public.html.twig` (logo, no nav or account menu); both overridable (D8). CSRF token from the anonymous session.
 2. **Form:** fund, amount, gateway/method, fee cover; optional "Email me a receipt" (prompt at $250+); honeypot, minimum fill time; privacy and refund links; **"If you are a member, click here"** → `/portal/giving/give?fund=&amount=`; "No login yet? Contact the church office"; "Members can sign in to give monthly"; signed-in visitors see "give from your account". The member link and "sign in to give monthly" render only when the portal Give tab is available (portal on, `bEnabledFinance`, `bPortalShowGiving`, the D1 gate, `bEnableOnlineGiving`, a gateway); otherwise the page shows only "Contact the church office", so members never log in to a hidden section.
-3. **`POST /api/public/giving/intents`** behind `StrictCSRFMiddleware` (rejects the `X-API-Key` bypass, `src/ChurchCRM/Slim/Middleware/CSRFMiddleware.php:38-44`), `RateLimitMiddleware` and the circuit breaker. Creates `gint` (channel public, ids NULL, email). Always rejects `kind=recurring` (422). Stripe gets `customer_email` as prefill only, not `receipt_email`.
+3. **`POST /api/public/giving/intents`** behind `StrictCSRFMiddleware` (rejects the `X-API-Key` bypass in `CSRFMiddleware::process()`), `RateLimitMiddleware` and the circuit breaker. Creates `gint` (channel public, ids NULL, email). Always rejects `kind=recurring` (422). Stripe gets `customer_email` as prefill only, not `receipt_email`.
 4. **Return** carries an HMAC token (uuid + 7-day expiry, giving HMAC key, §3.4): `GET /portal/give/return?t=…` needs no session. Valid → status, amount, fund, printable receipt. Invalid/expired → "Thank you. If you entered an email, your receipt is on its way." Never a 404 after paying.
 5. **F0 writes** both ids NULL, EditedBy −3; receipt to the email if given.
-6. **Member link** works on upstream as is: `AuthMiddleware::redirectToLogin()` stores path and query in `$_SESSION['location']` (`AuthMiddleware.php:197-215`, write `:208`, called `:109`); `AuthenticationManager::authenticate()` returns there (`AuthenticationManager.php:136-149`), after any 2FA step (`:131-134`). `/portal/giving` must stay behind the global `AuthMiddleware`, which runs before `PortalAccessMiddleware` (`src/ChurchCRM/Slim/MvcAppFactory.php:61-67`; `src/portal/index.php:34-42` [portal branch]), whose own redirect stores no location (`PortalAccessMiddleware.php:39-43` [portal branch]).
+6. **Member link** works on upstream as is: `AuthMiddleware::redirectToLogin()` stores path and query in `$_SESSION['location']`; `AuthenticationManager::authenticate()` returns there through `validateRedirectPath()`, after any 2FA step. `/portal/giving` must stay behind the global `AuthMiddleware`, which `MvcAppFactory::create()` adds to every MVC app, `src/portal/index.php` included, and which runs before `PortalAccessMiddleware`, whose own redirect to `getSessionBeginURL()` stores no location.
 7. Never auto-matched to a person, including through the email log (§6). No recurring on this page.
 
 **F3. Recurring setup** (portal only)
@@ -529,19 +528,19 @@ Receipts and statements show asset, quantity, date and invoice/tx id, **no value
 
 **F12. Fundraisers**
 - **Balance:** `FundraiserBalanceService::forPaddle(pnId)` = Σ `di_sellprice` won + Σ `mb_count × di_sellprice` − Σ (`plg_amount` − `plg_FeeCovered`) with `plg_pn_ID` = that paddle; FMV = matching Σ `di_estprice`. Household view sums the family's paddles. Keying on the paddle, not on `plg_PerID`, means a payment entered as family-level (the only mode when `bFinanceShowGivenBy` = 0) or paid by the HoH still lowers the right balance.
-- **Paying:** portal card "Spring Auction: you owe $180 [Pay now]" (own paddle; the HoH sees one card per household paddle, each with its own Pay now, so one payment covers one paddle). Staff "Send payment link" (Manage Fundraisers, `User.php:189`, or Finance): `Token` type `fundraiserPayment` with `reference_id` = `paddlenum_pn.pn_ID` (fixes fundraiser and buyer); `Token::build()` (`src/ChurchCRM/model/ChurchCRM/Token.php:21-35`) sets 30 days, 5 uses. It opens the public page locked (fund `fr_fund_ID`, amount = balance or less, no recurring, "Paying for {name}"), attributed to the buyer, and works even when the public page is off (F2.1). The buyer statement's "Credit card __ Exp __" line (`src/fundraiser/routes/reports.php:602`) becomes "Pay online" + QR.
+- **Paying:** portal card "Spring Auction: you owe $180 [Pay now]" (own paddle; the HoH sees one card per household paddle, each with its own Pay now, so one payment covers one paddle). Staff "Send payment link" (`User::isManageFundraisersEnabled()`, or Finance): `Token` type `fundraiserPayment` with `reference_id` = `paddlenum_pn.pn_ID` (fixes fundraiser and buyer); a new `fundraiserPayment` case in `Token::build()` sets 30 days, 5 uses. It opens the public page locked (fund `fr_fund_ID`, amount = balance or less, no recurring, "Paying for {name}"), attributed to the buyer, and works even when the public page is off (F2.1). The buyer statement's "Credit card __ Exp __" line (`/fundraiser/{fundraiserId}/reports/statement`) becomes "Pay online" + QR.
 - **Recording:** `plg_fr_ID` and `plg_pn_ID` from `gint_fr_ID`/`gint_pn_ID` (set from the token or the portal card); `plg_NonDeductible = min(payment − covered fee, FMV not yet covered)`; over $75 the receipt has the quid-pro-quo statement.
 - **Fee cover:** offered on fundraiser payments like any gift, and treated as a gift on top. A buyer who owes $180 and covers the fee pays about $185.40; the balance goes to $0, not −$5.40, and the receipt says "includes $5.40 you gave to cover processing fees", which is deductible. Donation-style fundraisers use `?fundraiser={id}` (no paddle).
-- **Admin:** editor Fundraiser select for cash/check; when a fundraiser is chosen a Paddle picker is required and sets `plg_pn_ID`, and "Given by" defaults to the paddle's buyer; **Collected** (Σ `plg_amount` − `plg_FeeCovered`, with covered fees shown beside it) beside **Raised**, which stays sell-price based (`getViewModel()`, `src/ChurchCRM/Service/FundRaiserService.php:139-168`, sum `:161-163`; list page `getListSummaries()`, `:52-73`).
+- **Admin:** editor Fundraiser select for cash/check; when a fundraiser is chosen a Paddle picker is required and sets `plg_pn_ID`, and "Given by" defaults to the paddle's buyer; **Collected** (Σ `plg_amount` − `plg_FeeCovered`, with covered fees shown beside it) beside **Raised**, which stays sell-price based (`FundRaiserService::getViewModel()`; list page `getListSummaries()`).
 
 **F13. Deposits**
 - **Batch (v1):** under `GET_LOCK`, find the open `dep_Type='Online'` deposit for the gateway and period (`sGivingDepositBatching`, `sTimeZone`) or create "{Gateway} online gifts, week of {date}", `dep_EnteredBy` NULL. A closed period's gift goes to a new open deposit (also late ACH and refunds). Test mode uses "[TEST] …" deposits.
 - **Payout (Stripe, GIV-42):** rows wait with `plg_depID` NULL; `payout.reconciliation_completed` → `listPayoutLines()` → deposit on UQ(gateway, payout ref), date = arrival; attach only NULL-deposit rows (else discrepancy); set fee, net, recon status (I7).
-- Closing fires `DEPOSIT_CLOSED`. `Deposit::preDelete` (`Deposit.php:29-34`, which deletes all pledges today) refuses closed deposits (GIV-01) and gateway or gateway-row deposits (GIV-16). Gateway deposit type is fixed; reopening is audited; staff cannot create 'Online' deposits (`finance-deposits.php:50`).
-- **Test purge (Go live, GIV-15):** `GivingTestPurgeService` runs in one transaction, audited. It deletes only `gtxn` with `gtxn_Mode = 'test'`, their pledge rows, `gint`, `grec`, `gnc` and `gntf` rows, and deposits that hold only test-mode rows (the "[TEST] …" deposits), closed or not. It bypasses the delete guards above and `Pledge::preDelete` (`Pledge.php:33-41`) on purpose; no other path does.
+- Closing fires `DEPOSIT_CLOSED`. `Deposit::preDelete()` (which deletes every row on the deposit today) refuses closed deposits (GIV-01) and gateway or gateway-row deposits (GIV-16). Gateway deposit type is fixed; reopening is audited; staff cannot create 'Online' deposits (the `depositType` enum on `POST /api/deposits`).
+- **Test purge (Go live, GIV-15):** `GivingTestPurgeService` runs in one transaction, audited. It deletes only `gtxn` with `gtxn_Mode = 'test'`, their pledge rows, `gint`, `grec`, `gnc` and `gntf` rows, and deposits that hold only test-mode rows (the "[TEST] …" deposits), closed or not. It bypasses the delete guards above and `Pledge::preDelete()` on purpose; no other path does.
 - The slip shows CRYPTO under "Non-cash property" at bookkeeping value, outside the cash total (D9).
 
-**F14. Reconcile.** `GivingReconcileService` is a `SystemService::runTimerJobs()` step (`src/ChurchCRM/Service/SystemService.php:105-131`), a **Sync now** action, and a 2-call step after each webhook. Per run, ≤ 20 API calls:
+**F14. Reconcile.** `GivingReconcileService` is a `SystemService::runTimerJobs()` step, a **Sync now** action, and a 2-call step after each webhook. Per run, ≤ 20 API calls:
 1. Intents: `created` > 24 h → expired. `redirected` > 2 h with no processing event → `completeReturn()` → completed, processing or abandoned. `processing` intents wait for the gateway (never abandoned, not counted by the circuit breaker, not purged). When a recurring `gint` becomes abandoned or expired, its `pending` `grec` → expired (F3.6).
 2. Re-fetch pending `gtxn`.
 3. Catch up with `gwhe_Source=reconcile`: Stripe `GET /v1/events` (30-day window), PayPal `GET /v1/billing/subscriptions/{id}/transactions` and `GET /v1/notifications/webhooks-events`, BTCPay invoice search by `orderId`.
@@ -551,31 +550,31 @@ Receipts and statements show asset, quantity, date and invoice/tx id, **no value
 7. Check I1–I4 and I6–I11 (I5 is enforced at write time).
 8. Purge per retention.
 
-Cron is the supported scheduler (`src/cli/timerjobs.php:57`). Admin page loads are a fallback (`src/skin/js/Footer.js:178` → `src/api/routes/background.php:10,29-31`), rate-limited by `iTimerJobsMinIntervalMinutes` (`SystemConfig.php:276`); portal pages do not load `Footer.js`. Readiness reuses `sLastTimerJobsRunDateTime` (`SystemService.php:81`) and `iTimerJobsStaleHours` (`SystemConfig.php:275`, dashboard `src/admin/routes/dashboard.php:150-153`): stale cron blocks live mode.
+Cron is the supported scheduler (`src/cli/timerjobs.php`). Admin page loads are a fallback (`Footer.js` → `POST /api/background/timerjobs`), rate-limited by `iTimerJobsMinIntervalMinutes`; portal pages do not load `Footer.js`. Readiness reuses `sLastTimerJobsRunDateTime` (`SystemService::TIMER_JOBS_LAST_RUN_CONFIG`) and `iTimerJobsStaleHours` (`SystemService::isTimerJobsRunStale()`, shown on the admin dashboard): stale cron blocks live mode.
 
 ---
 
 ## 5. UI and reports
 
-### 5.1 Portal Giving [portal branch, #8977]
+### 5.1 Portal Giving tabs
 - **Nav and page:** the Giving page, its nav entry and `bPortalShowGiving` come from RFC 0004 (GIV-83), with its Pledges view. This RFC adds two tabs, URL per tab, with a `giving/partials/tabs.html.twig` partial like volunteer's. The Give tab needs the D1 gate, `bEnableOnlineGiving` and a gateway; History needs none. Portal home gets a Give card.
 - **Routes:** `/portal/giving/give[?pledge=]`, `/portal/giving/history[?year=]`, `/portal/giving/history/{year}/statement.pdf|.csv`, `/portal/giving/return`, `/portal/give`, `/portal/give/return`.
-- **Templates:** `giving/{give,history,return,public,public-return}.html.twig`; partials `tabs, recurring-notice, more-info-dialog, receipt, fund-lines`; all overridable (D8), documented in `docs/portal-templates.md` [portal branch]. New `PortalExtension::getFilters()` `money` filter over `CurrencyFormatter` (`src/ChurchCRM/Utils/CurrencyFormatter.php`). Dates preformatted in PHP per `docs/portal-templates.md:378-379,495` [portal branch].
-- **API** `src/api/routes/portal/portal-giving.php` [portal branch]: `quote, intents, intents/{uuid}, recurring/{uuid}, …/cancel, …/manage` behind `CSRFMiddleware` + `PortalApiMiddleware` (`PortalApiMiddleware.php:27-52`); no person or family ids (`portal-me.php:16-36` invariant). Writes use a giving no-masquerade middleware: 409 "Giving is not available while viewing as another person" (`NoActiveMasqueradeMiddleware`, `:21-41` [#9843], has a nested-masquerade message). Bundle `portal-giving` with `portal-forms.ts`, `portal-toast.ts`, native `<dialog>`.
+- **Templates:** `giving/{give,history,return,public,public-return}.html.twig`; partials `tabs, recurring-notice, more-info-dialog, receipt, fund-lines`; all overridable (D8), documented with the portal template contract (`member-portal-design.md`). A `money` filter in `PortalExtension::getFilters()` over `CurrencyFormatter`. Dates preformatted in PHP.
+- **API** `src/api/routes/portal/portal-giving.php` (created by RFC 0004): `quote, intents, intents/{uuid}, recurring/{uuid}, …/cancel, …/manage` behind `CSRFMiddleware` + `PortalApiMiddleware`; no person or family ids (the `portal-me.php` invariant). If Login as User returns, writes use a giving no-masquerade middleware: 409 "Giving is not available while viewing as another person". Bundle `portal-giving` with `portal-forms.ts`, `portal-toast.ts`, native `<dialog>`.
 - **Give tab order:** recurring notices; fundraiser balance card; presets and fund lines (+ Add another fund, ≤ 5; `fun_Description` help); Give as (HoH); gateway/method (hidden if one); recurring panel with live sentence; fee cover with `aria-live` estimate; button "Give $103.30" (one-time) or "Give $104.05 monthly" (recurring, F9); non-HoH note "Gifts you make are also visible to your head of household"; privacy and refund links; TEST banner.
-- **Giving History (D3):** RFC 0004's `GivingScope::forPortalActor()` (GIV-07): HoH (actor in `Family::getHeadPeople()`, list-aware, `src/ChurchCRM/model/ChurchCRM/Family.php:227-230,274-285`) → `plg_FamID = fam OR plg_PerID = actor`; others → `plg_PerID = actor`. Payments, online or office. Heading "Giving for the Smith household" or "Gifts credited to you — household gifts appear in the head of household's history". Calendar-year sections, newest first: total and per-fund subtotals; Date | Given by (HoH) | For | Method ("Online" badge) | Amount | Status; pending marked and excluded from totals; refunds negative; "Non-cash gifts" block without value or total.
+- **Giving History (D3):** RFC 0004's `GivingScope::forPortalActor()` (GIV-07): HoH (actor in `Family::getHeadPeople()`, which reads the `sDirRoleHead` list) → `plg_FamID = fam OR plg_PerID = actor`; others → `plg_PerID = actor`. Payments, online or office. Heading "Giving for the Smith household" or "Gifts credited to you — household gifts appear in the head of household's history". Calendar-year sections, newest first: total and per-fund subtotals; Date | Given by (HoH) | For | Method ("Online" badge) | Amount | Status; pending marked and excluded from totals; refunds negative; "Non-cash gifts" block without value or total.
 - **Download:** "{year} statement" (PDF/CSV) is what `GivingStatementService` would mail that person under `sGivingStatementMode`; if the mode gives them none (non-HoH in Household) it is a "Giving summary (not a tax statement)". Current year is year-to-date.
-- **Masquerade** [#9843]: reads only if the impersonator `isFinanceEnabled()` (`User.php:181`); writes 409; audited with `ImpersonationService::getImpersonatorUserId()` (`:54` [portal branch]).
+- **Masquerade** (only if Login as User returns): reads only if the impersonator `User::isFinanceEnabled()`; writes 409; audited with the impersonator in `faud_ImpersonatorPerId`.
 
 ### 5.2 Public page
-See F2. Framing stays forbidden (`X-Frame-Options: SAMEORIGIN`; cross-site iframes also lose the Lax cookie), so churches link to it, with `?fund=`/`?amount=` deep links and a QR builder. The Caddy example needs a `/portal/*` handle if #8977 lacks one.
+See F2. Framing stays forbidden (`X-Frame-Options: SAMEORIGIN`; cross-site iframes also lose the Lax cookie), so churches link to it, with `?fund=`/`?amount=` deep links and a QR builder. The Caddy example (`docker/examples/frankenphp/Caddyfile`) has no `/portal/*` handle on master, so portal paths fall to the root `index.php`; GIV-33 adds one if it is still missing.
 
 ### 5.3 Admin, finance, statements
 - **`/admin/online-giving`** (admin): settings; webhook URLs; plugin settings links; Go live (test purge, F13); QR builder; install-identity prompt.
-  - **Readiness, blocking live:** HTTPS from the configured `$URL`, not `X-Forwarded-Proto` (trusted blindly at `Bootstrapper.php:470`); HTTPS for the BTCPay `serverUrl`; ISO currency matches `sCurrencySymbol` (`SystemConfig.php:178`) and the gateway account where exposed; ≥ 1 online fund; email enabled (`SystemConfig::isEmailEnabled()`, `:583`); fresh cron; secrets key outside the DB; DB current; install identity confirmed; keys match mode.
+  - **Readiness, blocking live:** HTTPS from the configured `$URL`, not `X-Forwarded-Proto` (trusted blindly by `Bootstrapper::initSession()`); HTTPS for the BTCPay `serverUrl`; ISO currency matches `sCurrencySymbol` and the gateway account where exposed; ≥ 1 online fund; email enabled (`SystemConfig::isEmailEnabled()`); fresh cron; secrets key outside the DB; DB current; install identity confirmed; keys match mode.
   - **Warnings:** plugin head/footer scripts on giving pages (D8); no webhook in 7 days; privacy or refund URL empty.
-- **Admin → Member Portal:** `bPortalShowGiving` [portal branch] (GIV-30).
-- **`/finance/online-giving`** (`FinanceRoleAuthMiddleware`; Finance menu `getDepositsMenu()`, `src/ChurchCRM/Config/Menu/Menu.php:282-310`, shown only when available). Built by GIV-40; later issues add their actions:
+- **Admin → Member Portal:** `bPortalShowGiving` is RFC 0004's (GIV-83).
+- **`/finance/online-giving`** (`FinanceRoleAuthMiddleware`; Finance menu `Menu::getDepositsMenu()`, shown only when available). Built by GIV-40; later issues add their actions:
   - **KPIs:** 30-day gross, fees, net, count; active recurring count and monthly total.
   - **Transactions:** re-attribute; resend receipt (GIV-17); refund and erase guest PII (GIV-41).
   - **Recurring:** list; alerts for deceased or deactivated owners; staff cancel with TOTP, `CancelSource=staff`, donor emailed, and Resume from review (GIV-41).
@@ -583,14 +582,14 @@ See F2. Framing stays forbidden (`X-Frame-Options: SAMEORIGIN`; cross-site ifram
   - **Undeposited.**
   - **Gateways:** health, mode, last webhook/sync, receive-only switch, Sync now.
   - **Households:** families with gifts but no living, active head.
-- Finance dashboard card; `/finance/funds` "Offer online" toggle; `person-view.php` Finance-only Giving card (`GET /api/payments/person/{id}/list`); family view Given by and Source columns (card `src/people/views/family-view.php:651-695`; columns are DataTable definitions in `src/skin/js/FamilyView.js:141-175`, fed at `:105`); `DepositSlipEditor.php` gross/fees/net; `PledgeDetails.php` "Online transaction" panel; paddle list Send payment link, Paid, Balance.
+- Finance dashboard card; family view Source column (the pledges and payments DataTable in `FamilyView.js`; the "Given by" column, the person Giving card and the fund toggle are RFC 0004's GIV-06 and GIV-80); `DepositSlipEditor.php` gross/fees/net; `PledgeDetails.php` "Online transaction" panel; paddle list Send payment link, Paid, Balance.
 
 **Statements.** Moved to RFC 0004 §5 (`GivingStatementService`, the Household, Individual and Both modes, the tax-statements view and the head-list fixes). This RFC adds: crypto in a non-cash section without value (GIV-24); covered fees included; refunds netted; the same service behind the portal downloads (GIV-30).
 
 ### 5.4 Reports
 - Moved to RFC 0004 §5: the "Anonymous" label, the LEFT JOINs and refund netting in the pledge summaries (GIV-02), and the donor count (GIV-05). They are what make this RFC's negative rows net.
-- Deposit PDF totals CREDITCARD, BANKDRAFT and CRYPTO (non-cash) besides CHECK and CASH (`Deposit.php:428-470`), plus an Online gross/fees/net summary. CSV adds person, source, gateway, external ref, fee. OFX uses `sGivingCurrency`.
-- Advanced Deposit: CRYPTO label in all three method blocks (`AdvancedDeposit.php:371-379, 539-547, 707-715`); Given by, Source, Gateway filters.
+- Deposit PDF totals CREDITCARD, BANKDRAFT and CRYPTO (non-cash) beside the CHECK and CASH totals (`Deposit::getTotalChecks()`, `getTotalCash()` and the counts), plus an Online gross/fees/net summary. CSV adds person, source, gateway, external ref, fee. OFX uses `sGivingCurrency`.
+- Advanced Deposit: CRYPTO label in the method blocks of all three sort layouts (deposit, fund, family) of `Reports/AdvancedDeposit.php`; Given by, Source, Gateway filters.
 - **New (GIV-44):** online by gateway (gross, covered, fees, net); recurring forecast; past-due; disputes; non-cash register (8283/8282). #9313's per-person reports are RFC 0004's GIV-43.
 - **Families:** RFC 0004 §5 covers family delete and the family donation move. This RFC adds: the move is refused while the family owns a pending, active, past_due or review recurring gift.
 
@@ -607,7 +606,7 @@ See F2. Framing stays forbidden (`X-Frame-Options: SAMEORIGIN`; cross-site ifram
 | T5 | IDOR, masquerade | UUIDs; actor-scoped queries; no id params; 409 on writes; impersonator audited | GIV-31, 32 |
 | T6 | Card testing | Stripe's hosted checks; per-session 3 failures/15 min; per-email 5 intents/h; per-IP 60/10 min via `ClientIp`; honeypot; $5 minimum; generic declines; circuit breaker emails admins; Turnstile in GIV-60 | GIV-11, 33 |
 | T7 | CSRF bypass via `X-API-Key` | `StrictCSRFMiddleware` | GIV-11 |
-| T8 | Secret leak | Encrypted, write-only; never in `getPluginsClientConfig()` (`PluginManager.php:880`), hooks, audit, logs; writes checked against the manifest (`src/plugins/routes/api/management.php:268-274`); `rk_` keys; key outside DB | GIV-13, 15 |
+| T8 | Secret leak | Encrypted, write-only; never in `PluginManager::getPluginsClientConfig()`, hooks, audit, logs; writes checked against the manifest (`POST /plugins/{pluginId}/settings` in `src/plugins/routes/api/management.php`); `rk_` keys; key outside DB | GIV-13, 15 |
 | T9 | Gateway disabled mid-subscription | `canDeactivate()`, receive-only, 503 + alert, catch-up | GIV-12 |
 | T10 | Test money in books | Mode on rows; go-live purge; clone detection | GIV-15 |
 | T11 | Insider fraud | I4; original-method refunds; TOTP step-up; audit; alert | GIV-03, 41 |
@@ -623,12 +622,12 @@ See F2. Framing stays forbidden (`X-Frame-Options: SAMEORIGIN`; cross-site ifram
 
 **Idempotency roots:** Stripe `gint-{uuid}-create`, `cancel:{uuid}`, `refund:{id}:{n}`; PayPal `PayPal-Request-Id` `capture:{uuid}` (capture on return and on `CHECKOUT.ORDER.APPROVED`); BTCPay `orderId`.
 
-**Logging.** New `LoggerUtils::getGivingLogger()` like the auth logger (`LoggerUtils.php:205`, no PostHog `:237`; the app logger feeds PostHog, `:182`); no names, emails or amounts in messages or context. Giving tables hold IPs only as HMACs, keyed outside the DB (§3.4); app and Slim logs keep plaintext `REMOTE_ADDR` (`LoggerUtils.php:175,231`; `src/ChurchCRM/Slim/SlimUtils.php:161,275`) for 3 days.
+**Logging.** New `LoggerUtils::getGivingLogger()` like the auth logger (`LoggerUtils::getAuthLogger()`, which adds no PostHog handler; `getAppLogger()` does); no names, emails or amounts in messages or context. Giving tables hold IPs only as HMACs, keyed outside the DB (§3.4); app and Slim logs keep plaintext `REMOTE_ADDR` (the request context in `LoggerUtils`; `SlimUtils::renderErrorJSON()` and `registerDefaultJsonErrorHandler()`) for 3 days.
 
 **Privacy**
 - No auto-matching of anonymous gifts; staff re-attribute only on request, audited.
-- A guest's email sits on `gint_DonorEmail`, `gntf_ToEmail`, and the email log once #9876 lands. Anonymous receipts log with a "do not resolve" context, because `EmailLogService::logSend()` otherwise matches the address to a person or family (`src/ChurchCRM/Service/EmailLogService.php:42-75`, `:65-67` [portal branch, #9876]); upstream `BaseEmail` does not log (`src/ChurchCRM/Emails/BaseEmail.php:52-59`).
-- **Erase guest donor PII** (Finance, audited) redacts email and name on `gint`, `gntf`, email-log rows [#9876] and stored `gwhe` payloads; money stays.
+- A guest's email sits on `gint_DonorEmail`, `gntf_ToEmail` and the email log. `BaseEmail` logs every send through `EmailLogService::logSend()`, which matches an address sent with no person or family id to one (`resolveAddress()`). Anonymous receipts pass a "do not resolve" flag, so the log never links a guest to a person.
+- **Erase guest donor PII** (Finance, audited) redacts email and name on `gint`, `gntf`, email-log rows and stored `gwhe` payloads; money stays.
 - **Person delete:** RFC 0004 (GIV-05) clears `plg_PerID` and refuses while a payment of theirs has `plg_FamID` NULL. This RFC also clears `gtxn_per_ID`, `gint_per_ID`, `grec_per_ID` and `gcus_per_ID` (audited), and refuses while the person owns a pending, active, past_due or review recurring gift. Family delete: §5.4.
 - **Retention:** pledge rows, `gtxn`, `gnc`, `faud` permanent · `gwhe_Payload` 90 days · IP hashes 30 days · abandoned `gint` 180 days · sent `gntf` 1 year.
 
@@ -755,7 +754,7 @@ Each requirement and each proposed product choice (D1–D12, D22), with the sect
 |---|---|---|---|
 | R1 | Payment gateway plugin design | §2.1–2.6, A20, GIV-10 | |
 | R2 | Anonymous giving, admin entry | Moved to RFC 0004 | |
-| R3 | Anonymous giving, unauthenticated portal page | F2, §5.2, GIV-33 | Needs #8977 |
+| R3 | Anonymous giving, unauthenticated portal page | F2, §5.2, GIV-33 | `/portal/give`, outside `PortalAccessMiddleware` |
 | R4 | Giving by persons, admin entry | Moved to RFC 0004 | |
 | R5 | Giving by families, admin entry | Moved to RFC 0004 | |
 | R6 | Giving by persons, portal | F1 | PerID = actor |
@@ -804,7 +803,7 @@ Each requirement and each proposed product choice (D1–D12, D22), with the sect
 | R49 | Optional receipt email on the public page | F2.2, F2.4, GIV-17 | Signed return token |
 | R50 | Removed 2026-10-05: no newsletter sign-up | D4 | |
 | R51 | "If you are a member, click here" link | F2.2 | Shown only when the portal Give tab is available; plus "Contact the church office" |
-| R52 | Login returns to the Give page | F2.6 | `AuthMiddleware.php:197-215` |
+| R52 | Login returns to the Give page | F2.6 | `AuthMiddleware::redirectToLogin()` |
 | R53 | `<next>-*.sql`, not in `upgrade.json` until scheduled | §3 | Question 4 |
 | D1 | Three gateways; release gate | §2.4, §7 | |
 | D2 | Upstream; core contract; core plugins | §2.1, §2.6 | |
