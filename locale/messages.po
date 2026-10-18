@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 07:02+0000\n"
+"POT-Creation-Date: 2026-10-18 15:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -155,7 +155,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #, php-format
-msgid "%d failed"
+msgid "%d failed (all time)"
 msgstr ""
 
 #, php-format
@@ -5827,9 +5827,6 @@ msgstr ""
 msgid "Every email ChurchCRM sent, newest first"
 msgstr ""
 
-msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
-msgstr ""
-
 msgid "Every matching occurrence between From and To will get its own event at the same Start/End time."
 msgstr ""
 
@@ -5984,7 +5981,13 @@ msgstr ""
 msgid "Failed Logins"
 msgstr ""
 
+msgid "Failed email history pages"
+msgstr ""
+
 msgid "Failed login attempts"
+msgstr ""
+
+msgid "Failed sends across all email history, including automated messages"
 msgstr ""
 
 msgid "Failed to add family to cart"
@@ -10344,6 +10347,9 @@ msgstr ""
 msgid "No schedules yet"
 msgstr ""
 
+msgid "No server error recorded"
+msgstr ""
+
 msgid "No settings provided"
 msgstr ""
 
@@ -13813,6 +13819,9 @@ msgstr ""
 msgid "Show all"
 msgstr ""
 
+msgid "Show all recent sends"
+msgstr ""
+
 msgid "Show in Member Portal"
 msgstr ""
 
@@ -13872,6 +13881,9 @@ msgstr ""
 
 #. plugin:holidays:section:2:title
 msgid "Showing and hiding individual countries"
+msgstr ""
+
+msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
 msgstr ""
 
 msgid "Showing inactive persons only."
@@ -15240,6 +15252,9 @@ msgid "The substitution could not be decided"
 msgstr ""
 
 msgid "The substitution requests could not be loaded"
+msgstr ""
+
+msgid "The table shows only the latest 20 sends. Open a person to see their full history."
 msgstr ""
 
 msgid "The teacher sent this alert at"
@@ -16788,6 +16803,10 @@ msgid "Vietnamese"
 msgstr ""
 
 msgid "View"
+msgstr ""
+
+#, php-format
+msgid "View %d failed sends across all email history"
 msgstr ""
 
 msgid "View All"
