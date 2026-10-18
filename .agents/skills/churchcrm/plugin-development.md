@@ -21,6 +21,8 @@ complexity: "intermediate"
 >
 > Run the scan's static-analysis commands against your plugin before opening the PR.
 
+Plugin views must follow [Frontend Development](./frontend-development.md): use theme-aware Tabler classes/tokens (not fixed light-only classes such as `bg-light`, `alert-light` or `table-success`) and verify **light and dark** at **desktop, tablet and phone** sizes before submitting.
+
 ## Architecture
 
 A WordPress-style plugin system adds functionality without touching core code.
