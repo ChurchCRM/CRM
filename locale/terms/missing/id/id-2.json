@@ -1,62 +1,62 @@
 {
-  "Your coordinator": "",
-  "Your teams: %s": "",
-  "positionIds must be a list of position ids": "",
-  "{{name}} ({{family}} family)": "",
-  "{{name}} assigned and recorded as accepted": "",
-  "Ask an administrator to change your sign-in email.": "",
-  "Email changed by an administrator from %1$s to %2$s": "",
-  "Only an administrator can change the email of a person with a user account.": "",
+  "Your coordinator": "Koordinator Anda",
+  "Your teams: %s": "Tim Anda: %s",
+  "positionIds must be a list of position ids": "positionIds harus berupa daftar id posisi",
+  "{{name}} ({{family}} family)": "{{name}} (keluarga {{family}})",
+  "{{name}} assigned and recorded as accepted": "{{name}} ditugaskan dan dicatat sebagai menerima",
+  "Ask an administrator to change your sign-in email.": "Minta administrator mengubah surel masuk Anda.",
+  "Email changed by an administrator from %1$s to %2$s": "Surel diubah oleh administrator dari %1$s menjadi %2$s",
+  "Only an administrator can change the email of a person with a user account.": "Hanya administrator yang dapat mengubah surel orang yang memiliki akun pengguna.",
   "Delete ({{count}})": {
-    "one": "",
-    "other": ""
+    "one": "Hapus",
+    "other": "Hapus ({{count}})"
   },
   "Delete events ({{count}})": {
-    "one": "",
-    "other": ""
+    "one": "Hapus acara",
+    "other": "Hapus acara ({{count}})"
   },
   "Delete {{count}} occurrences? Their assignments, the volunteers' responses, any substitutions and every queued reminder go with them. This cannot be undone.": {
-    "one": "",
-    "other": ""
+    "one": "Hapus {{count}} sesi? Penugasannya, tanggapan relawan, penggantian apa pun, dan setiap pengingat dalam antrean ikut terhapus. Ini tidak dapat dibatalkan.",
+    "other": "Hapus {{count}} sesi? Penugasannya, tanggapan relawan, penggantian apa pun, dan setiap pengingat dalam antrean ikut terhapus. Ini tidak dapat dibatalkan."
   },
   "Occurrences are created for events in the next {{count}} weeks (through {{date}}).": {
-    "one": "",
-    "other": ""
+    "one": "Sesi dibuat untuk acara dalam {{count}} minggu ke depan (sampai {{date}}).",
+    "other": "Sesi dibuat untuk acara dalam {{count}} minggu ke depan (sampai {{date}})."
   },
   "They finish {{count}} minutes after the event ends.": {
-    "one": "",
-    "other": ""
+    "one": "Mereka selesai {{count}} menit setelah acara berakhir.",
+    "other": "Mereka selesai {{count}} menit setelah acara berakhir."
   },
   "They finish {{count}} minutes before the event ends.": {
-    "one": "",
-    "other": ""
+    "one": "Mereka selesai {{count}} menit sebelum acara berakhir.",
+    "other": "Mereka selesai {{count}} menit sebelum acara berakhir."
   },
   "Volunteers start {{count}} minutes after the event starts.": {
-    "one": "",
-    "other": ""
+    "one": "Relawan mulai {{count}} menit setelah acara dimulai.",
+    "other": "Relawan mulai {{count}} menit setelah acara dimulai."
   },
   "Volunteers start {{count}} minutes before the event starts.": {
-    "one": "",
-    "other": ""
+    "one": "Relawan mulai {{count}} menit sebelum acara dimulai.",
+    "other": "Relawan mulai {{count}} menit sebelum acara dimulai."
   },
   "{{count}} needed": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} dibutuhkan",
+    "other": "{{count}} dibutuhkan"
   },
   "{{count}} occurrences deleted": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} sesi dihapus",
+    "other": "{{count}} sesi dihapus"
   },
   "{{failed}} of {{count}} occurrences could not be deleted": {
-    "one": "",
-    "other": ""
+    "one": "{{failed}} dari {{count}} sesi tidak dapat dihapus",
+    "other": "{{failed}} dari {{count}} sesi tidak dapat dihapus"
   },
   "{{name}} ({{count}} upcoming)": {
-    "one": "",
-    "other": ""
+    "one": "{{name}} ({{count}} mendatang)",
+    "other": "{{name}} ({{count}} mendatang)"
   },
   "{{title}} ({{count}} upcoming)": {
-    "one": "",
-    "other": ""
+    "one": "{{title}} ({{count}} mendatang)",
+    "other": "{{title}} ({{count}} mendatang)"
   }
 }
