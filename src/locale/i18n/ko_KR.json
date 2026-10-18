@@ -1953,8 +1953,6 @@
   "manifest.": "매니페스트.",
   "subscribers": "구독자",
   "API Key is required.": "API 키는 필수입니다.",
-  "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running.": "%s의 OpenLP에 연결할 수 없습니다. 서버 URL과 OpenLP 실행 여부를 확인해 주세요.",
-  "Cannot connect to OpenLP at %s. Server returned HTTP %d.": "%s의 OpenLP에 연결할 수 없습니다. 서버가 HTTP %d를 반환했습니다.",
   "Congregation Map": "회중 지도",
   "Connected to MailChimp! Account: %s (%d subscribers)": "MailChimp에 연결되었습니다! 계정: %s (%d명의 구독자)",
   "Connected to OpenLP server successfully.": "OpenLP 서버에 성공적으로 연결되었습니다.",

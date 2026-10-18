@@ -1961,8 +1961,6 @@
   "manifest.": "manifest.",
   "subscribers": "iscritti",
   "API Key is required.": "La chiave API è obbligatoria.",
-  "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running.": "Impossibile connettersi a OpenLP su %s. Verifica l'URL del server e che OpenLP sia in esecuzione.",
-  "Cannot connect to OpenLP at %s. Server returned HTTP %d.": "Impossibile connettersi a OpenLP su %s. Il server ha restituito HTTP %d.",
   "Congregation Map": "Mappa dei Fedeli",
   "Connected to MailChimp! Account: %s (%d subscribers)": "Connesso a MailChimp! Account: %s (%d iscritti)",
   "Connected to OpenLP server successfully.": "Connesso al server OpenLP con successo.",

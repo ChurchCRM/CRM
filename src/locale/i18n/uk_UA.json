@@ -1977,8 +1977,6 @@
   "manifest.": "manifest.",
   "subscribers": "підписники",
   "API Key is required.": "API-ключ обов'язковий.",
-  "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running.": "Неможливо підключитися до OpenLP за адресою %s. Перевірте URL сервера та чи запущено OpenLP.",
-  "Cannot connect to OpenLP at %s. Server returned HTTP %d.": "Неможливо підключитися до OpenLP за адресою %s. Сервер повернув HTTP %d.",
   "Congregation Map": "Карта парафії",
   "Connected to MailChimp! Account: %s (%d subscribers)": "Підключено до MailChimp! Обліковий запис: %s (%d підписників)",
   "Connected to OpenLP server successfully.": "Успішно підключено до сервера OpenLP.",

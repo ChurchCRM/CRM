@@ -8133,14 +8133,6 @@ msgid "API Key is required."
 msgstr "Kunci API diperlukan."
 
 #: 
-msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
-msgstr "Tidak dapat terhubung ke OpenLP di %s. Periksa URL server dan pastikan OpenLP berjalan."
-
-#: 
-msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
-msgstr "Tidak dapat terhubung ke OpenLP di %s. Server mengembalikan HTTP %d."
-
-#: 
 msgid "Congregation Map"
 msgstr "Peta Jemaat"
 

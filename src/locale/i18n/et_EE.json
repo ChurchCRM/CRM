@@ -1961,8 +1961,6 @@
   "manifest.": "manifest.",
   "subscribers": "tellijad",
   "API Key is required.": "API võti on kohustuslik.",
-  "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running.": "Ei saa ühendust luua OpenLP-ga aadressil %s. Kontrollige serveri URL-i ja et OpenLP töötab.",
-  "Cannot connect to OpenLP at %s. Server returned HTTP %d.": "Ei saa ühendust luua OpenLP-ga aadressil %s. Server tagastas HTTP %d.",
   "Congregation Map": "Koguduse Kaart",
   "Connected to MailChimp! Account: %s (%d subscribers)": "Ühendatud MailChimpiga! Konto: %s (%d tellijat)",
   "Connected to OpenLP server successfully.": "Ühendus OpenLP serveriga loodud edukalt.",

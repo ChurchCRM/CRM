@@ -1953,8 +1953,6 @@
   "manifest.": "manifest.",
   "subscribers": "người đăng ký",
   "API Key is required.": "Khóa API là bắt buộc.",
-  "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running.": "Không thể kết nối đến OpenLP tại %s. Kiểm tra URL máy chủ và đảm bảo OpenLP đang chạy.",
-  "Cannot connect to OpenLP at %s. Server returned HTTP %d.": "Không thể kết nối đến OpenLP tại %s. Máy chủ trả về HTTP %d.",
   "Congregation Map": "Bản Đồ Hội Thánh",
   "Connected to MailChimp! Account: %s (%d subscribers)": "Đã kết nối MailChimp! Tài khoản: %s (%d người đăng ký)",
   "Connected to OpenLP server successfully.": "Đã kết nối đến máy chủ OpenLP thành công.",

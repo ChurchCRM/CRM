@@ -8217,14 +8217,6 @@ msgid "API Key is required."
 msgstr "API-ключ обязателен."
 
 #: 
-msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
-msgstr "Не удалось подключиться к OpenLP по адресу %s. Проверьте URL сервера и убедитесь, что OpenLP запущен."
-
-#: 
-msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
-msgstr "Не удалось подключиться к OpenLP по адресу %s. Сервер вернул HTTP %d."
-
-#: 
 msgid "Congregation Map"
 msgstr "Карта прихода"
 

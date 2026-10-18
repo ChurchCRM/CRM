@@ -8104,14 +8104,6 @@ msgid "API Key is required."
 msgstr "API キーは必須です。"
 
 #: 
-msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
-msgstr "%s の OpenLP に接続できません。サーバー URL と OpenLP が起動していることをご確認ください。"
-
-#: 
-msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
-msgstr "%s の OpenLP に接続できません。サーバーが HTTP %d を返しました。"
-
-#: 
 msgid "Congregation Map"
 msgstr "会衆マップ"
 

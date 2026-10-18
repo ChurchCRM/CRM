@@ -8170,14 +8170,6 @@ msgid "API Key is required."
 msgstr "مفتاح API مطلوب."
 
 #: 
-msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
-msgstr "لا يمكن الاتصال بـ OpenLP على %s. تحقق من عنوان URL للخادم وتأكد من تشغيل OpenLP."
-
-#: 
-msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
-msgstr "لا يمكن الاتصال بـ OpenLP على %s. أعاد الخادم HTTP %d."
-
-#: 
 msgid "Congregation Map"
 msgstr "خريطة الجماعة"
 

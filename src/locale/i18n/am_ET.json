@@ -1961,8 +1961,6 @@
   "manifest.": "ዝርዝር።",
   "subscribers": "ምዝጋቢዎች",
   "API Key is required.": "API ቁልፍ ያስፈልጋል።",
-  "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running.": "ወደ OpenLP በ %s ሊገናኝ አልቻለም። የአገልጋዩ URL እና OpenLP እየሄደ እንደሆነ ያረጋግጡ።",
-  "Cannot connect to OpenLP at %s. Server returned HTTP %d.": "ወደ OpenLP በ %s ሊገናኝ አልቻለም። አገልጋዩ HTTP %d ተመለሰ።",
   "Congregation Map": "የምዕመናን ካርታ",
   "Connected to MailChimp! Account: %s (%d subscribers)": "ወደ MailChimp ተገናኝቷል! ሂሳብ: %s (%d ምዝጋቢዎች)",
   "Connected to OpenLP server successfully.": "ወደ OpenLP አገልጋይ በተሳካ ሁኔታ ተገናኝቷል።",

@@ -1953,8 +1953,6 @@
   "manifest.": "manifest.",
   "subscribers": "ผู้สมัครสมาชิก",
   "API Key is required.": "ต้องระบุ API Key",
-  "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running.": "ไม่สามารถเชื่อมต่อ OpenLP ที่ %s ตรวจสอบ URL เซิร์ฟเวอร์และให้แน่ใจว่า OpenLP กำลังทำงาน",
-  "Cannot connect to OpenLP at %s. Server returned HTTP %d.": "ไม่สามารถเชื่อมต่อ OpenLP ที่ %s เซิร์ฟเวอร์ตอบกลับ HTTP %d",
   "Congregation Map": "แผนที่สมาชิกโบสถ์",
   "Connected to MailChimp! Account: %s (%d subscribers)": "เชื่อมต่อกับ MailChimp แล้ว! บัญชี: %s (%d ผู้สมัครสมาชิก)",
   "Connected to OpenLP server successfully.": "เชื่อมต่อกับเซิร์ฟเวอร์ OpenLP สำเร็จ",
