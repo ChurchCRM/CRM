@@ -90,6 +90,7 @@ Apply only the sections that match the changed files. Hard-block items are also 
 Rules live in `frontend-development.md`; check the diff against it.
 
 - [ ] Tabler/Bootstrap classes and tokens, no new static `style=""` or page `<style>` block, no root font-size, palette or theme-base override
+- [ ] The page is built around a role's task (`frontend-development.md`): primary action in the page header, table above the fold, entry buttons land in the task
 - [ ] Renders in **light and dark**, at **desktop, tablet and phone**: the author states the pass; screenshots if they exist
 - [ ] Every `@media` rule survives the restyle; Cypress selectors the change touches still match
 - [ ] Asset paths use `SystemURLs::getRootPath()`
@@ -121,7 +122,7 @@ Rules live in `frontend-development.md`; check the diff against it.
 
 - [ ] Free of `console.log`, `var_dump`, `dd()`, `.skip`, `.only`
 - [ ] New API endpoints have Cypress API coverage when that is the project pattern
-- [ ] Critical UI flows have Cypress UI coverage
+- [ ] UI specs follow a role's workflow (`cypress-testing.md`): save, delete, filter, export and the denied user, not CRUD or page-renders
 - [ ] Optional demo values stay out of the Cypress seed when they would break tests
 
 ### Git

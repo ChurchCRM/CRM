@@ -1953,8 +1953,6 @@
   "manifest.": "マニフェスト。",
   "subscribers": "購読者",
   "API Key is required.": "API キーは必須です。",
-  "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running.": "%s の OpenLP に接続できません。サーバー URL と OpenLP が起動していることをご確認ください。",
-  "Cannot connect to OpenLP at %s. Server returned HTTP %d.": "%s の OpenLP に接続できません。サーバーが HTTP %d を返しました。",
   "Congregation Map": "会衆マップ",
   "Connected to MailChimp! Account: %s (%d subscribers)": "MailChimp に接続しました！アカウント：%s（%d名の購読者）",
   "Connected to OpenLP server successfully.": "OpenLP サーバーに正常に接続しました。",

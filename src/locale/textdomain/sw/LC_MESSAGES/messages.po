@@ -8143,14 +8143,6 @@ msgid "API Key is required."
 msgstr "Ufunguo wa API unahitajika."
 
 #: 
-msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
-msgstr "Haiwezekani kuunganika na OpenLP kwenye %s. Angalia URL ya seva na hakikisha OpenLP inaendesha."
-
-#: 
-msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
-msgstr "Haiwezekani kuunganika na OpenLP kwenye %s. Seva ilirudisha HTTP %d."
-
-#: 
 msgid "Congregation Map"
 msgstr "Ramani ya Wanachama"
 

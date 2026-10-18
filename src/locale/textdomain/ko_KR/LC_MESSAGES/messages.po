@@ -8133,14 +8133,6 @@ msgid "API Key is required."
 msgstr "API 키는 필수입니다."
 
 #: 
-msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
-msgstr "%s의 OpenLP에 연결할 수 없습니다. 서버 URL과 OpenLP 실행 여부를 확인해 주세요."
-
-#: 
-msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
-msgstr "%s의 OpenLP에 연결할 수 없습니다. 서버가 HTTP %d를 반환했습니다."
-
-#: 
 msgid "Congregation Map"
 msgstr "회중 지도"
 

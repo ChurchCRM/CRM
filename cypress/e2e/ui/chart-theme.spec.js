@@ -3,7 +3,7 @@
 const STYLE_URL = "/api/user/1/setting/ui.style";
 const APEX_DEFAULT_TEXT = "rgb(55, 61, 63)";
 const AGE_AXIS_LABEL = "#age-stats-bar .apexcharts-xaxis-label";
-const FUNDS_LEGEND = "#fund-bar .apexcharts-legend-text";
+const FUNDS_AXIS_LABEL = "#fund-bar .apexcharts-yaxis-label";
 
 const bodyColour = (win) => win.getComputedStyle(win.document.body).color;
 
@@ -47,9 +47,9 @@ describe("ApexCharts colours follow the theme (#10569)", () => {
         expectColour(AGE_AXIS_LABEL, "fill", () => APEX_DEFAULT_TEXT);
     });
 
-    it("draws the deposit slip Funds legend in the body colour in dark mode", () => {
-        cy.visit("/DepositSlipEditor.php?DepositSlipID=5");
+    it("draws the deposit slip Funds chart labels in the body colour in dark mode", () => {
+        cy.visit("/finance/deposit/5");
         cy.get("html").should("have.attr", "data-bs-theme", "dark");
-        expectColour(FUNDS_LEGEND, "color", bodyColour);
+        expectColour(FUNDS_AXIS_LABEL, "fill", bodyColour);
     });
 });

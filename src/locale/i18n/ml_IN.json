@@ -1961,8 +1961,6 @@
   "manifest.": "manifest.",
   "subscribers": "സബ്‌സ്‌ക്രൈബർ",
   "API Key is required.": "API Key ആവശ്യമാണ്.",
-  "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running.": "OpenLP-ൽ %s ൽ ബന്ധിക്കാൻ കഴിഞ്ഞില്ല. സർവ്വർ URL, OpenLP പ്രവർത്തിക്കുന്നോ എന്ന് പരിശോധിക്കൂ.",
-  "Cannot connect to OpenLP at %s. Server returned HTTP %d.": "OpenLP-ൽ %s ൽ ബന്ധിക്കാൻ കഴിഞ്ഞില്ല. HTTP %d ലഭിച്ചു.",
   "Congregation Map": "ഭക്തർ മാപ്പ്",
   "Connected to MailChimp! Account: %s (%d subscribers)": "MailChimp-ലേക്ക് ബന്ധിച്ചു! Account: %s (%d subscribers)",
   "Connected to OpenLP server successfully.": "OpenLP സർവ്വറിലേക്ക് വിജയകരമായി ബന്ധിച്ചു.",

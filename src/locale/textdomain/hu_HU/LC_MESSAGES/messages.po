@@ -8173,14 +8173,6 @@ msgid "API Key is required."
 msgstr "Az API-kulcs megadása kötelező."
 
 #: 
-msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
-msgstr "Nem sikerült csatlakozni az OpenLP-hez (%s). Ellenőrizze a kiszolgáló URL-jét, és hogy az OpenLP fut-e."
-
-#: 
-msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
-msgstr "Nem sikerült csatlakozni az OpenLP-hez (%s). A kiszolgáló HTTP %d választ adott."
-
-#: 
 msgid "Congregation Map"
 msgstr "Gyülekezeti térkép"
 

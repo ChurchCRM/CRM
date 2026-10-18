@@ -8112,14 +8112,6 @@ msgid "API Key is required."
 msgstr "API Key ആവശ്യമാണ്."
 
 #: 
-msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
-msgstr "OpenLP-ൽ %s ൽ ബന്ധിക്കാൻ കഴിഞ്ഞില്ല. സർവ്വർ URL, OpenLP പ്രവർത്തിക്കുന്നോ എന്ന് പരിശോധിക്കൂ."
-
-#: 
-msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
-msgstr "OpenLP-ൽ %s ൽ ബന്ധിക്കാൻ കഴിഞ്ഞില്ല. HTTP %d ലഭിച്ചു."
-
-#: 
 msgid "Congregation Map"
 msgstr "ഭക്തർ മാപ്പ്"
 

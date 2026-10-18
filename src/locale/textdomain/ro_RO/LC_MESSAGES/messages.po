@@ -8213,14 +8213,6 @@ msgid "API Key is required."
 msgstr "Cheia API este obligatorie."
 
 #: 
-msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
-msgstr "Nu se poate conecta la OpenLP la %s. Verificați URL-ul serverului și că OpenLP rulează."
-
-#: 
-msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
-msgstr "Nu se poate conecta la OpenLP la %s. Serverul a returnat HTTP %d."
-
-#: 
 msgid "Congregation Map"
 msgstr "Harta Parohiei"
 

@@ -8117,14 +8117,6 @@ msgid "API Key is required."
 msgstr "API ključ je obavezan."
 
 #: 
-msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
-msgstr "Nije moguće povezati se s OpenLP-om na %s. Provjerite URL poslužitelja i je li OpenLP pokrenut."
-
-#: 
-msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
-msgstr "Nije moguće povezati se s OpenLP-om na %s. Poslužitelj je vratio HTTP %d."
-
-#: 
 msgid "Congregation Map"
 msgstr "Karta zajednice"
 

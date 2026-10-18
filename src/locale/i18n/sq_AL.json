@@ -1961,8 +1961,6 @@
   "manifest.": "manifest.",
   "subscribers": "abonentë",
   "API Key is required.": "Çelësi API është i nevojshëm.",
-  "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running.": "Nuk mund të lidheni me OpenLP në %s. Kontrolloni URL-në e serverit dhe nëse OpenLP po ekzekutohet.",
-  "Cannot connect to OpenLP at %s. Server returned HTTP %d.": "Nuk mund të lidheni me OpenLP në %s. Serveri ktheu HTTP %d.",
   "Congregation Map": "Harta e Kongregacionit",
   "Connected to MailChimp! Account: %s (%d subscribers)": "Lidhur me MailChimp! Llogari: %s (%d abonentë)",
   "Connected to OpenLP server successfully.": "U lidh me sukses me serverin OpenLP.",

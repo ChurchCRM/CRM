@@ -1961,8 +1961,6 @@
   "manifest.": "మ్యానిఫెస్ట్.",
   "subscribers": "చందాదారులు",
   "API Key is required.": "API కీ అవసరం.",
-  "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running.": "%s వద్ద OpenLPకి కనెక్ట్ చేయలేకపోయాము. సర్వర్ URLని మరియు OpenLP నడుస్తుందని తనిఖీ చేయండి.",
-  "Cannot connect to OpenLP at %s. Server returned HTTP %d.": "%s వద్ద OpenLPకి కనెక్ట్ చేయలేకపోయాము. సర్వర్ HTTP %dని తిరిగి ఇచ్చింది.",
   "Congregation Map": "సమావేశ పటం",
   "Connected to MailChimp! Account: %s (%d subscribers)": "MailChimpకి కనెక్ట్ చేయబడింది! ఖాతా: %s (%d చందాదారులు)",
   "Connected to OpenLP server successfully.": "OpenLP సర్వర్‌కు విజయవంతంగా కనెక్ట్ చేయబడింది.",

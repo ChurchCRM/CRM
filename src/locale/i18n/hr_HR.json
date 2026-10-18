@@ -1969,8 +1969,6 @@
   "manifest.": "manifest.",
   "subscribers": "pretplatnika",
   "API Key is required.": "API ključ je obavezan.",
-  "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running.": "Nije moguće povezati se s OpenLP-om na %s. Provjerite URL poslužitelja i je li OpenLP pokrenut.",
-  "Cannot connect to OpenLP at %s. Server returned HTTP %d.": "Nije moguće povezati se s OpenLP-om na %s. Poslužitelj je vratio HTTP %d.",
   "Congregation Map": "Karta zajednice",
   "Connected to MailChimp! Account: %s (%d subscribers)": "Povezano s MailChimpom! Račun: %s (%d pretplatnika)",
   "Connected to OpenLP server successfully.": "Uspješno spojeno na OpenLP poslužitelj.",

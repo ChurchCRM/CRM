@@ -1953,8 +1953,6 @@
   "manifest.": "清单。",
   "subscribers": "订阅者",
   "API Key is required.": "API密钥为必填项。",
-  "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running.": "无法连接到 %s 的OpenLP。请检查服务器URL以及OpenLP是否正在运行。",
-  "Cannot connect to OpenLP at %s. Server returned HTTP %d.": "无法连接到 %s 的OpenLP。服务器返回HTTP %d。",
   "Congregation Map": "会众地图",
   "Connected to MailChimp! Account: %s (%d subscribers)": "已连接到MailChimp！账户：%s（%d个订阅者）",
   "Connected to OpenLP server successfully.": "已成功连接到OpenLP服务器。",

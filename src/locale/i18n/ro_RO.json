@@ -1969,8 +1969,6 @@
   "manifest.": "manifest.",
   "subscribers": "abonați",
   "API Key is required.": "Cheia API este obligatorie.",
-  "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running.": "Nu se poate conecta la OpenLP la %s. Verificați URL-ul serverului și că OpenLP rulează.",
-  "Cannot connect to OpenLP at %s. Server returned HTTP %d.": "Nu se poate conecta la OpenLP la %s. Serverul a returnat HTTP %d.",
   "Congregation Map": "Harta Parohiei",
   "Connected to MailChimp! Account: %s (%d subscribers)": "Conectat la MailChimp! Cont: %s (%d abonați)",
   "Connected to OpenLP server successfully.": "Conectat cu succes la serverul OpenLP.",

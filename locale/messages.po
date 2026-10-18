@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-17 14:32+0000\n"
+"POT-Creation-Date: 2026-10-18 01:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1776,6 +1776,9 @@ msgstr ""
 msgid "Ask a volunteer manager to create a ministry and make you its coordinator."
 msgstr ""
 
+msgid "Ask an administrator to change your sign-in email."
+msgstr ""
+
 msgid "Ask someone to cover for you"
 msgstr ""
 
@@ -2609,14 +2612,6 @@ msgid "Cannot Delete Event Type"
 msgstr ""
 
 msgid "Cannot check in to an inactive event. Activate the event first."
-msgstr ""
-
-#, php-format
-msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
-msgstr ""
-
-#, php-format
-msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
 msgstr ""
 
 msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
@@ -5214,6 +5209,10 @@ msgid "Email addresses copied to clipboard"
 msgstr ""
 
 msgid "Email batch not found. If it was still queued, an administrator deleted the queue and it will not be sent."
+msgstr ""
+
+#, php-format
+msgid "Email changed by an administrator from %1$s to %2$s"
 msgstr ""
 
 msgid "Email content"
@@ -10813,6 +10812,9 @@ msgid "Only a volunteer manager can change whether a ministry provides teachers 
 msgstr ""
 
 msgid "Only a volunteer manager can change who coordinates a ministry"
+msgstr ""
+
+msgid "Only an administrator can change the email of a person with a user account."
 msgstr ""
 
 msgid "Only an administrator can delete a person who has a login."

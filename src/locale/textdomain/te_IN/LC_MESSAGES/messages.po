@@ -8124,14 +8124,6 @@ msgid "API Key is required."
 msgstr "API కీ అవసరం."
 
 #: 
-msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
-msgstr "%s వద్ద OpenLPకి కనెక్ట్ చేయలేకపోయాము. సర్వర్ URLని మరియు OpenLP నడుస్తుందని తనిఖీ చేయండి."
-
-#: 
-msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
-msgstr "%s వద్ద OpenLPకి కనెక్ట్ చేయలేకపోయాము. సర్వర్ HTTP %dని తిరిగి ఇచ్చింది."
-
-#: 
 msgid "Congregation Map"
 msgstr "సమావేశ పటం"
 

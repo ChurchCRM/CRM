@@ -1961,8 +1961,6 @@
   "manifest.": "manifest.",
   "subscribers": "abonnenter",
   "API Key is required.": "API-nøkkel er påkrevd.",
-  "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running.": "Kan ikke koble til OpenLP på %s. Sjekk server-URL og at OpenLP kjører.",
-  "Cannot connect to OpenLP at %s. Server returned HTTP %d.": "Kan ikke koble til OpenLP på %s. Serveren returnerte HTTP %d.",
   "Congregation Map": "Menighetskart",
   "Connected to MailChimp! Account: %s (%d subscribers)": "Koblet til MailChimp! Konto: %s (%d abonnenter)",
   "Connected to OpenLP server successfully.": "Koblet til OpenLP-server.",
