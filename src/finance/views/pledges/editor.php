@@ -483,7 +483,7 @@ $familySearchHint = SystemConfig::getBooleanValue('bUseDonationEnvelopes')
         const date     = document.getElementById('Date').value;
         const fyid     = parseInt(fyEl ? fyEl.value : '0', 10);
         const methodEl2 = document.getElementById('Method');
-        // Pledges have no Method dropdown; default to CASH so genGroupKey never receives null iCheckNo
+        // Pledges have no Method dropdown; default to CASH so generateGroupKey never receives null iCheckNo
         const method   = methodEl2 ? methodEl2.value : (PLEDGE_TYPE === 'Pledge' ? 'CASH' : 'CHECK');
         const checkEl  = document.getElementById('CheckNo');
         const checkNo  = checkEl ? checkEl.value : '';
