@@ -7,7 +7,8 @@ test.describe('Events & Attendance', () => {
   test('events-calendar-overview', async ({ page }, testInfo) => {
     // A church user checking the event calendar.
     await page.goto('/event/calendars');
-    await expect(page.getByRole('grid')).toBeVisible({ timeout: 20000 });
+    // FullCalendar v7 hashes its class names and sets no grid role; its toolbar labels are stable.
+    await expect(page.locator('#calendar [aria-label="Month view"]')).toBeVisible({ timeout: 20000 });
     await settle(page, 800);
 
     await captureScreen(page, testInfo, {
