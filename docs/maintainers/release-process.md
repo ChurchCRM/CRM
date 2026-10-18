@@ -52,14 +52,14 @@ Goal: the exact commit being released is built, fully tested, and its scope is c
 - [ ] Latest green nightly SHA = `master` HEAD (2.1)
 - [ ] Build/Test/Package green on `master` HEAD, ZIP artifact present (2.2)
 - [ ] Milestone `<version>` has no open issue or PR that should ship (2.3)
-- [ ] No High-severity GHSA advisory is in draft state (2.4, blocks release)
+- [ ] Every draft High-severity GHSA is fixed on the release commit, or the maintainer has overridden it by ID (2.4)
 
 | # | Step | How | Status |
 |---|------|-----|--------|
 | 2.1 | Compare the latest successful nightly run's SHA with `master` HEAD. If they differ, run the nightly manually and wait for green | [`build-test-nightly.yml`](../../.github/workflows/build-test-nightly.yml): build, root and subdir suites, setup wizard, locale smoke, upgrade matrix. A manual run takes about 30 to 48 min | ✋ check and trigger / 🤖 run |
 | 2.2 | Confirm `Build, Test and Package` on `master` HEAD is completed and green; its `ChurchCRM-<version>.zip` artifact is the released file | [`build-test-package.yml`](../../.github/workflows/build-test-package.yml) runs on every push to `master`, about 36 min | 🤖 run / ✋ check |
 | 2.3 | Review the GitHub milestone matching the `package.json` version on `master`; remove any open issue or PR that will not ship | Milestones → `<version>`. [`pr-milestone-stamp.yml`](../../.github/workflows/pr-milestone-stamp.yml) stamps merged PRs and `release-bookkeeping.yml` rolls open items to the next milestone, so the review looks for blockers | ✋ |
-| 2.4 | Check for draft High-severity GHSA advisories at https://github.com/ChurchCRM/CRM/security/advisories (state=draft, severity=High). Fix and publish first, or defer the release | | ✋ |
+| 2.4 | List draft advisories (`gh api 'repos/ChurchCRM/CRM/security-advisories?state=draft'`). For each High, read the description and check the code on the release commit: a High that is still exploitable blocks. Medium and Low never block. Fix it, defer the release, or have the maintainer override it by GHSA ID. Set `patched_versions` only on a fixed advisory and clear it on any other | [Security Advisory Review](../../.agents/skills/churchcrm/security-advisory-review.md) | ✋ |
 
 Notes:
 
