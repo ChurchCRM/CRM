@@ -6602,10 +6602,6 @@ msgid "Tax Report Verbiage"
 msgstr "ถ้อยคำรายงานภาษี"
 
 #: 
-msgid "Tax Statements (Giving Report)"
-msgstr "ใบแจ้งภาษี (รายงานการให้)"
-
-#: 
 msgid "Tax Year Reporting Checklist"
 msgstr "รายการตรวจสอบการรายงานปีภาษี"
 
@@ -9112,10 +9108,6 @@ msgid "Generate and download confirmation letters"
 msgstr "สร้างและดาวน์โหลดจดหมายยืนยัน"
 
 #: 
-msgid "Generate annual giving statements for tax purposes"
-msgstr "สร้างใบแจ้งยอดการถวายประจำปีเพื่อวัตถุประสงค์ทางภาษี"
-
-#: 
 msgid "Generate directory listings and printed materials"
 msgstr "สร้างสมุดรายชื่อและสิ่งพิมพ์"
 
@@ -9760,10 +9752,6 @@ msgstr "ข้อมูลวินิจฉัยระบบและการ
 #: 
 msgid "Tags"
 msgstr "แท็ก"
-
-#: 
-msgid "Tax Statements"
-msgstr "ใบแจ้งยอดภาษี"
 
 #: 
 msgid "Teacher"

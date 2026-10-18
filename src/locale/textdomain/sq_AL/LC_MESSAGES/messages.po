@@ -6618,10 +6618,6 @@ msgid "Tax Report Verbiage"
 msgstr "Gjuha e raportit të taksave"
 
 #: 
-msgid "Tax Statements (Giving Report)"
-msgstr "Deklaratat e taksave (Raporti i dhurimit)"
-
-#: 
 msgid "Tax Year Reporting Checklist"
 msgstr "Lista kontrolli e raportimit të vitit tatimor"
 
@@ -9133,10 +9129,6 @@ msgid "Generate and download confirmation letters"
 msgstr "Gjenero dhe shkarko letrat e konfirmimit"
 
 #: 
-msgid "Generate annual giving statements for tax purposes"
-msgstr "Gjenero deklarata vjetore të jepies për qëllime tatimore"
-
-#: 
 msgid "Generate directory listings and printed materials"
 msgstr "Gjenero rendimet e drejtorisë dhe materialet e shtypura"
 
@@ -9781,10 +9773,6 @@ msgstr "Informacion diagnostikues i sistemit dhe konfigurimi"
 #: 
 msgid "Tags"
 msgstr "Etiketat"
-
-#: 
-msgid "Tax Statements"
-msgstr "Pasqyrat Tatimore"
 
 #: 
 msgid "Teacher"

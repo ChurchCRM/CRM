@@ -6631,10 +6631,6 @@ msgid "Tax Report Verbiage"
 msgstr "வரி அறிக்கை வாசகங்கள்"
 
 #: 
-msgid "Tax Statements (Giving Report)"
-msgstr "வரி அறிக்கைகள் (நன்கொடை அறிக்கை)"
-
-#: 
 msgid "Tax Year Reporting Checklist"
 msgstr "வரி ஆண்டு அறிக்கை சரிபார்ப்புப் பட்டியல்"
 
@@ -9149,10 +9145,6 @@ msgid "Generate and download confirmation letters"
 msgstr "உறுதிப்படுத்தல் கடிதங்களை உருவாக்கி பதிவிறக்கவும்"
 
 #: 
-msgid "Generate annual giving statements for tax purposes"
-msgstr "வரி நோக்கங்களுக்காக வருடாந்திர காணிக்கை அறிக்கைகளை உருவாக்கவும்"
-
-#: 
 msgid "Generate directory listings and printed materials"
 msgstr "அடைவு பட்டியல்கள் மற்றும் அச்சிடப்பட்ட பொருட்களை உருவாக்கவும்"
 
@@ -9797,10 +9789,6 @@ msgstr "கணினி கண்டறிதல் தகவல் மற்ற
 #: 
 msgid "Tags"
 msgstr "குறிச்சொற்கள்"
-
-#: 
-msgid "Tax Statements"
-msgstr "வரி அறிக்கைகள்"
 
 #: 
 msgid "Teacher"

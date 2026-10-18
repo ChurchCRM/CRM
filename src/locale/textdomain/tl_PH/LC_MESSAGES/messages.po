@@ -6594,10 +6594,6 @@ msgid "Tax Report Verbiage"
 msgstr "Teksto ng Ulat sa Buwis"
 
 #: 
-msgid "Tax Statements (Giving Report)"
-msgstr "Mga Pahayag sa Buwis (Ulat ng Pagbibigay)"
-
-#: 
 msgid "Tax Year Reporting Checklist"
 msgstr "Checklist ng Pag-uulat ng Taon ng Buwis"
 
@@ -9109,10 +9105,6 @@ msgid "Generate and download confirmation letters"
 msgstr "Gumawa at i-download ang mga sulat ng kumpirmasyon"
 
 #: 
-msgid "Generate annual giving statements for tax purposes"
-msgstr "Gumawa ng mga taunang pahayag ng pagbibigay para sa mga layunin ng buwis"
-
-#: 
 msgid "Generate directory listings and printed materials"
 msgstr "Gumawa ng mga listahan ng direktoryo at mga naka-print na materyales"
 
@@ -9757,10 +9749,6 @@ msgstr "Impormasyon ng diagnostic ng sistema at konfigurasyong"
 #: 
 msgid "Tags"
 msgstr "Mga Tag"
-
-#: 
-msgid "Tax Statements"
-msgstr "Mga Pahayag sa Buwis"
 
 #: 
 msgid "Teacher"

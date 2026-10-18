@@ -6635,10 +6635,6 @@ msgid "Tax Report Verbiage"
 msgstr "صياغة تقرير الضريبة"
 
 #: 
-msgid "Tax Statements (Giving Report)"
-msgstr "بيانات الضرائب (تقرير الإعطاء)"
-
-#: 
 msgid "Tax Year Reporting Checklist"
 msgstr "قائمة تحقق من تقارير السنة الضريبية"
 
@@ -9170,10 +9166,6 @@ msgid "Generate and download confirmation letters"
 msgstr "إنشاء وتحميل رسائل التأكيد"
 
 #: 
-msgid "Generate annual giving statements for tax purposes"
-msgstr "إنشاء بيانات المساهمات السنوية لأغراض ضريبية"
-
-#: 
 msgid "Generate directory listings and printed materials"
 msgstr "إنشاء قوائم الدليل والمواد المطبوعة"
 
@@ -9818,10 +9810,6 @@ msgstr "معلومات التشخيص النظامي والتكوين"
 #: 
 msgid "Tags"
 msgstr "الوسوم"
-
-#: 
-msgid "Tax Statements"
-msgstr "البيانات الضريبية"
 
 #: 
 msgid "Teacher"

@@ -6635,10 +6635,6 @@ msgid "Tax Report Verbiage"
 msgstr "የቀረጥ ሪፖርት አገላለጽ"
 
 #: 
-msgid "Tax Statements (Giving Report)"
-msgstr "የቀረጥ መግለጫዎች (የልገሳ ሪፖርት)"
-
-#: 
 msgid "Tax Year Reporting Checklist"
 msgstr "የቀረጥ ዓመት ሪፖርት ዝርዝር"
 
@@ -9150,10 +9146,6 @@ msgid "Generate and download confirmation letters"
 msgstr "ለስለሳ ደብዳቤዎች ስ ዝርዝር"
 
 #: 
-msgid "Generate annual giving statements for tax purposes"
-msgstr "ለጋብ ዓመታዊ ተለቃቃሚ ቤተ ስናት"
-
-#: 
 msgid "Generate directory listings and printed materials"
 msgstr "ማውቂያ ዝርዝሮች እና የተቀበለ ቁሳቁስ ስ"
 
@@ -9798,10 +9790,6 @@ msgstr "ስርዓት ምርመራ መረጃ እና ዋና"
 #: 
 msgid "Tags"
 msgstr "ሌብለቶች"
-
-#: 
-msgid "Tax Statements"
-msgstr "ገንዘብ መግለጫ"
 
 #: 
 msgid "Teacher"

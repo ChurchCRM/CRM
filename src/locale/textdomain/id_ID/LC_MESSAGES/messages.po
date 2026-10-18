@@ -6618,10 +6618,6 @@ msgid "Tax Report Verbiage"
 msgstr "Redaksi Laporan Donasi"
 
 #: 
-msgid "Tax Statements (Giving Report)"
-msgstr "Laporan Donasi"
-
-#: 
 msgid "Tax Year Reporting Checklist"
 msgstr "Daftar Periksa Laporan Tahun Pajak"
 
@@ -9128,10 +9124,6 @@ msgid "Generate and download confirmation letters"
 msgstr "Buat dan unduh surat konfirmasi"
 
 #: 
-msgid "Generate annual giving statements for tax purposes"
-msgstr "Buat laporan persembahan tahunan untuk keperluan pajak"
-
-#: 
 msgid "Generate directory listings and printed materials"
 msgstr "Buat daftar direktori dan materi cetak"
 
@@ -9776,10 +9768,6 @@ msgstr "Informasi diagnostik sistem dan konfigurasi"
 #: 
 msgid "Tags"
 msgstr "Tag"
-
-#: 
-msgid "Tax Statements"
-msgstr "Laporan Pajak"
 
 #: 
 msgid "Teacher"

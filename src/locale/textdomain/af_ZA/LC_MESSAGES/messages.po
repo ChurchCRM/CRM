@@ -6628,10 +6628,6 @@ msgid "Tax Report Verbiage"
 msgstr "Belasting Verslag Taal"
 
 #: 
-msgid "Tax Statements (Giving Report)"
-msgstr "Belasting State (Gawing Verslag)"
-
-#: 
 msgid "Tax Year Reporting Checklist"
 msgstr "Belastingjaar Verslagontwerp Kontrolelys"
 
@@ -9143,10 +9139,6 @@ msgid "Generate and download confirmation letters"
 msgstr "Genereer en laai bevestigingsbriefe af"
 
 #: 
-msgid "Generate annual giving statements for tax purposes"
-msgstr "Genereer jaarlikse gawingverklarings vir belastingdoeleindes"
-
-#: 
 msgid "Generate directory listings and printed materials"
 msgstr "Genereer adresboekaanlyste en gedrukte materiale"
 
@@ -9791,10 +9783,6 @@ msgstr "Stelseldiagnostiese inligting en konfigurasie"
 #: 
 msgid "Tags"
 msgstr "Etikette"
-
-#: 
-msgid "Tax Statements"
-msgstr "Belastingstate"
 
 #: 
 msgid "Teacher"

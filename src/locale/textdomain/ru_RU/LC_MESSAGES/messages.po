@@ -6690,10 +6690,6 @@ msgid "Tax Report Verbiage"
 msgstr "Текст налогового отчета"
 
 #: 
-msgid "Tax Statements (Giving Report)"
-msgstr "Налоговые отчеты (отчет по дарам)"
-
-#: 
 msgid "Tax Year Reporting Checklist"
 msgstr "Чек-лист отчетности за год"
 
@@ -9215,10 +9211,6 @@ msgid "Generate and download confirmation letters"
 msgstr "Создать и скачать письма-подтверждения"
 
 #: 
-msgid "Generate annual giving statements for tax purposes"
-msgstr "Создать годовые отчёты о пожертвованиях для налоговых целей"
-
-#: 
 msgid "Generate directory listings and printed materials"
 msgstr "Создать списки справочника и печатные материалы"
 
@@ -9863,10 +9855,6 @@ msgstr "Системная диагностическая информация �
 #: 
 msgid "Tags"
 msgstr "Теги"
-
-#: 
-msgid "Tax Statements"
-msgstr "Налоговые справки"
 
 #: 
 msgid "Teacher"
