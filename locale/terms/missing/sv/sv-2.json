@@ -1,62 +1,62 @@
 {
-  "Your coordinator": "",
-  "Your teams: %s": "",
-  "positionIds must be a list of position ids": "",
-  "{{name}} ({{family}} family)": "",
-  "{{name}} assigned and recorded as accepted": "",
-  "Ask an administrator to change your sign-in email.": "",
-  "Email changed by an administrator from %1$s to %2$s": "",
-  "Only an administrator can change the email of a person with a user account.": "",
+  "Your coordinator": "Din samordnare",
+  "Your teams: %s": "Dina team: %s",
+  "positionIds must be a list of position ids": "positionIds måste vara en lista med uppgifts-id",
+  "{{name}} ({{family}} family)": "{{name}} (familjen {{family}})",
+  "{{name}} assigned and recorded as accepted": "{{name}} tilldelad och registrerad som godtagen",
+  "Ask an administrator to change your sign-in email.": "Be en administratör ändra din inloggningsadress.",
+  "Email changed by an administrator from %1$s to %2$s": "E-post ändrad av en administratör från %1$s till %2$s",
+  "Only an administrator can change the email of a person with a user account.": "Bara en administratör kan ändra e-postadressen för en person med ett användarkonto.",
   "Delete ({{count}})": {
-    "one": "",
-    "other": ""
+    "one": "Ta bort (en)",
+    "other": "Ta bort ({{count}})"
   },
   "Delete events ({{count}})": {
-    "one": "",
-    "other": ""
+    "one": "Ta bort ett evenemang",
+    "other": "Ta bort evenemang ({{count}})"
   },
   "Delete {{count}} occurrences? Their assignments, the volunteers' responses, any substitutions and every queued reminder go with them. This cannot be undone.": {
-    "one": "",
-    "other": ""
+    "one": "Ta bort ett tillfälle? Tilldelningarna, volontärernas svar, eventuella vikarier och varje köad påminnelse följer med. Det går inte att ångra.",
+    "other": "Ta bort {{count}} tillfällen? Tilldelningarna, volontärernas svar, eventuella vikarier och varje köad påminnelse följer med. Det går inte att ångra."
   },
   "Occurrences are created for events in the next {{count}} weeks (through {{date}}).": {
-    "one": "",
-    "other": ""
+    "one": "Tillfällen skapas för evenemang under nästa vecka (till och med {{date}}).",
+    "other": "Tillfällen skapas för evenemang under de närmaste {{count}} veckorna (till och med {{date}})."
   },
   "They finish {{count}} minutes after the event ends.": {
-    "one": "",
-    "other": ""
+    "one": "De slutar en minut efter att evenemanget slutar.",
+    "other": "De slutar {{count}} minuter efter att evenemanget slutar."
   },
   "They finish {{count}} minutes before the event ends.": {
-    "one": "",
-    "other": ""
+    "one": "De slutar en minut innan evenemanget slutar.",
+    "other": "De slutar {{count}} minuter innan evenemanget slutar."
   },
   "Volunteers start {{count}} minutes after the event starts.": {
-    "one": "",
-    "other": ""
+    "one": "Volontärerna börjar en minut efter att evenemanget börjar.",
+    "other": "Volontärerna börjar {{count}} minuter efter att evenemanget börjar."
   },
   "Volunteers start {{count}} minutes before the event starts.": {
-    "one": "",
-    "other": ""
+    "one": "Volontärerna börjar en minut innan evenemanget börjar.",
+    "other": "Volontärerna börjar {{count}} minuter innan evenemanget börjar."
   },
   "{{count}} needed": {
-    "one": "",
-    "other": ""
+    "one": "En behövs",
+    "other": "{{count}} behövs"
   },
   "{{count}} occurrences deleted": {
-    "one": "",
-    "other": ""
+    "one": "Ett tillfälle borttaget",
+    "other": "{{count}} tillfällen borttagna"
   },
   "{{failed}} of {{count}} occurrences could not be deleted": {
-    "one": "",
-    "other": ""
+    "one": "{{failed}} av ett tillfälle kunde inte tas bort",
+    "other": "{{failed}} av {{count}} tillfällen kunde inte tas bort"
   },
   "{{name}} ({{count}} upcoming)": {
-    "one": "",
-    "other": ""
+    "one": "{{name}} (en kommande)",
+    "other": "{{name}} ({{count}} kommande)"
   },
   "{{title}} ({{count}} upcoming)": {
-    "one": "",
-    "other": ""
+    "one": "{{title}} (en kommande)",
+    "other": "{{title}} ({{count}} kommande)"
   }
 }
