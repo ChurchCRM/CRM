@@ -7,12 +7,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for sharing your idea! 💡
-
-        Filing it as a GitHub issue is the right move — that's how we triage, track, and ship. Please fill out the form below.
-
-        **Want to talk about the idea first?** Join Discord. Use it when you want a conversation instead of only filing an issue. Open the issue when you want the idea tracked:
-        👉 <https://discord.gg/tuWyFzj3Nj>
+        Thanks for sharing your idea! 💡 Want to talk it through first? [Join Discord](https://discord.gg/tuWyFzj3Nj).
 
   - type: textarea
     id: feature
@@ -25,26 +20,11 @@ body:
   - type: textarea
     id: problem
     attributes:
-      label: Why does it matter?
-      description: What problem does it solve, or how would it help?
-    validations:
-      required: true
+      label: Why does it matter? (optional)
+      description: What problem would it solve for you or your church?
 
   - type: textarea
-    id: alternatives
+    id: extra
     attributes:
-      label: Alternatives you've considered (optional)
-      description: Any workarounds, plugins, or other approaches you've tried?
-
-  - type: textarea
-    id: screenshots
-    attributes:
-      label: Mockups / screenshots (optional)
-      description: Drag & drop images, or paste a Cypress Recorder export if you've prototyped a workflow.
-
-  - type: markdown
-    attributes:
-      value: |
-        ---
-        💬 **Want to discuss in real time?** <https://discord.gg/tuWyFzj3Nj>
-        📚 **Documentation:** <https://docs.churchcrm.io/?utm_source=github&utm_medium=referral&utm_campaign=github_issue_templates&utm_content=feature_request_docs>
+      label: Anything else? (optional)
+      description: Mockups, screenshots, or workarounds you use today.
