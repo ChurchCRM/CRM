@@ -1,62 +1,62 @@
 {
-  "Your coordinator": "",
-  "Your teams: %s": "",
-  "positionIds must be a list of position ids": "",
-  "{{name}} ({{family}} family)": "",
-  "{{name}} assigned and recorded as accepted": "",
-  "Ask an administrator to change your sign-in email.": "",
-  "Email changed by an administrator from %1$s to %2$s": "",
-  "Only an administrator can change the email of a person with a user account.": "",
+  "Your coordinator": "הרכז שלך",
+  "Your teams: %s": "הצוותים שלך: %s",
+  "positionIds must be a list of position ids": "positionIds חייב להיות רשימה של מזהי תפקידים",
+  "{{name}} ({{family}} family)": "{{name}} (משפחת {{family}})",
+  "{{name}} assigned and recorded as accepted": "{{name}} שובץ ונרשם כמי שאישר",
+  "Ask an administrator to change your sign-in email.": "בקש ממנהל לשנות את דוא״ל הכניסה שלך.",
+  "Email changed by an administrator from %1$s to %2$s": "מנהל שינה את הדוא״ל מ־%1$s אל %2$s",
+  "Only an administrator can change the email of a person with a user account.": "רק מנהל יכול לשנות את הדוא״ל של אדם עם חשבון משתמש.",
   "Delete ({{count}})": {
-    "one": "",
-    "other": ""
+    "one": "מחק",
+    "other": "מחק ({{count}})"
   },
   "Delete events ({{count}})": {
-    "one": "",
-    "other": ""
+    "one": "מחק אירוע",
+    "other": "מחק אירועים ({{count}})"
   },
   "Delete {{count}} occurrences? Their assignments, the volunteers' responses, any substitutions and every queued reminder go with them. This cannot be undone.": {
-    "one": "",
-    "other": ""
+    "one": "למחוק את המופע? השיבוצים שלו, תשובות המתנדבים, החלפות וכל תזכורת בתור נמחקים יחד איתו. אי אפשר לבטל.",
+    "other": "למחוק {{count}} מופעים? השיבוצים שלהם, תשובות המתנדבים, החלפות וכל תזכורת בתור נמחקים יחד איתם. אי אפשר לבטל."
   },
   "Occurrences are created for events in the next {{count}} weeks (through {{date}}).": {
-    "one": "",
-    "other": ""
+    "one": "מופעים נוצרים לאירועים בשבוע הקרוב (עד {{date}}).",
+    "other": "מופעים נוצרים לאירועים ב־{{count}} השבועות הבאים (עד {{date}})."
   },
   "They finish {{count}} minutes after the event ends.": {
-    "one": "",
-    "other": ""
+    "one": "הם מסיימים דקה אחרי שהאירוע נגמר.",
+    "other": "הם מסיימים {{count}} דקות אחרי שהאירוע נגמר."
   },
   "They finish {{count}} minutes before the event ends.": {
-    "one": "",
-    "other": ""
+    "one": "הם מסיימים דקה לפני שהאירוע נגמר.",
+    "other": "הם מסיימים {{count}} דקות לפני שהאירוע נגמר."
   },
   "Volunteers start {{count}} minutes after the event starts.": {
-    "one": "",
-    "other": ""
+    "one": "המתנדבים מתחילים דקה אחרי שהאירוע מתחיל.",
+    "other": "המתנדבים מתחילים {{count}} דקות אחרי שהאירוע מתחיל."
   },
   "Volunteers start {{count}} minutes before the event starts.": {
-    "one": "",
-    "other": ""
+    "one": "המתנדבים מתחילים דקה לפני שהאירוע מתחיל.",
+    "other": "המתנדבים מתחילים {{count}} דקות לפני שהאירוע מתחיל."
   },
   "{{count}} needed": {
-    "one": "",
-    "other": ""
+    "one": "נדרש אחד",
+    "other": "נדרשים {{count}}"
   },
   "{{count}} occurrences deleted": {
-    "one": "",
-    "other": ""
+    "one": "מופע אחד נמחק",
+    "other": "נמחקו {{count}} מופעים"
   },
   "{{failed}} of {{count}} occurrences could not be deleted": {
-    "one": "",
-    "other": ""
+    "one": "לא ניתן היה למחוק {{failed}} מהמופעים",
+    "other": "לא ניתן היה למחוק {{failed}} מתוך {{count}} מופעים"
   },
   "{{name}} ({{count}} upcoming)": {
-    "one": "",
-    "other": ""
+    "one": "{{name}} (אחד קרוב)",
+    "other": "{{name}} ({{count}} קרובים)"
   },
   "{{title}} ({{count}} upcoming)": {
-    "one": "",
-    "other": ""
+    "one": "{{title}} (אחד קרוב)",
+    "other": "{{title}} ({{count}} קרובים)"
   }
 }
