@@ -24193,3 +24193,291 @@ msgstr "Järjestelmänvalvoja vaihtoi sähköpostin osoitteesta %1$s osoitteesee
 msgid "Only an administrator can change the email of a person with a user account."
 msgstr "Vain järjestelmänvalvoja voi vaihtaa käyttäjätilin omaavan henkilön sähköpostin."
 
+#: 
+msgid "Fund totals appear here once payments are added."
+msgstr "Rahastojen yhteissummat näkyvät tässä, kun maksuja on lisätty."
+
+#: 
+msgid "No payments yet"
+msgstr "Ei vielä maksuja"
+
+#: 
+msgid "Some payments could not be deleted"
+msgstr "Joitakin maksuja ei voitu poistaa"
+
+#: 
+msgid "A string value is required"
+msgstr "Tekstiarvo vaaditaan"
+
+#: 
+msgid "Administrator permission required for this setting"
+msgstr "Tämä asetus vaatii järjestelmänvalvojan oikeudet"
+
+#: 
+msgid "Alerts sent: {{sent}}, failed: {{failed}}"
+msgstr "Ilmoituksia lähetetty: {{sent}}, epäonnistui: {{failed}}"
+
+#: 
+msgid "Alerts sent: {{total}}"
+msgstr "Ilmoituksia lähetetty: {{total}}"
+
+#: 
+msgid "Assign an event to the kiosk using the dropdown"
+msgstr "Liitä tapahtuma kioskiin pudotusvalikon avulla"
+
+#: 
+msgid "Awaiting Acceptance"
+msgstr "Odottaa hyväksyntää"
+
+#: 
+msgid "Birthday coming up!"
+msgstr "Syntymäpäivä lähestyy!"
+
+#: 
+msgid "Check that the event start/end times are correct"
+msgstr "Tarkista, että tapahtuman alkamis- ja päättymisajat ovat oikein"
+
+#: 
+msgid "Check the server logs for more details"
+msgstr "Lisätietoja löytyy palvelimen lokeista"
+
+#: 
+msgid "Check-in Opens Soon"
+msgstr "Sisäänkirjautuminen avautuu pian"
+
+#: 
+msgid "Checked-in-by person is not an adult family member"
+msgstr "Sisäänkirjaaja ei ole aikuinen perheenjäsen"
+
+#: 
+msgid "Checked-out-by person is not an adult family member"
+msgstr "Uloskirjaaja ei ole aikuinen perheenjäsen"
+
+#: 
+msgid "Checkout all students"
+msgstr "Kirjaa kaikki oppilaat ulos"
+
+#: 
+msgid "Days"
+msgstr "Päivää"
+
+#: 
+msgid "Ensure the group has members"
+msgstr "Varmista, että ryhmässä on jäseniä"
+
+#: 
+msgid "Ensure the group has members assigned"
+msgstr "Varmista, että ryhmään on määritetty jäseniä"
+
+#: 
+msgid "Error Loading Members"
+msgstr "Virhe jäsenten latauksessa"
+
+#: 
+msgid "Event Has Ended"
+msgstr "Tapahtuma on päättynyt"
+
+#: 
+msgid "Event not linked to a Group"
+msgstr "Tapahtumaa ei ole liitetty ryhmään"
+
+#: 
+msgid "Event timing"
+msgstr "Tapahtuman ajoitus"
+
+#: 
+msgid "Everyone is here!"
+msgstr "Kaikki ovat paikalla!"
+
+#: 
+msgid "Failed to send all alerts: {{total}}"
+msgstr "Kaikkien ilmoitusten lähetys epäonnistui: {{total}}"
+
+#: 
+msgid "Failed to send parent alert"
+msgstr "Huoltajan ilmoituksen lähetys epäonnistui"
+
+#: 
+msgid "Find this kiosk in the device list"
+msgstr "Etsi tämä kioski laiteluettelosta"
+
+#: 
+msgid "Group has no members"
+msgstr "Ryhmässä ei ole jäseniä"
+
+#: 
+msgid "HTTP Status: {{status}}"
+msgstr "HTTP-tila: {{status}}"
+
+#: 
+msgid "Hours"
+msgstr "Tuntia"
+
+#: 
+msgid "How to Accept This Kiosk"
+msgstr "Näin hyväksyt tämän kioskin"
+
+#: 
+msgid "Kiosk Identification"
+msgstr "Kioskin tunnistus"
+
+#: 
+msgid "Kiosk Ready"
+msgstr "Kioski valmis"
+
+#: 
+msgid "Log in to ChurchCRM as an administrator"
+msgstr "Kirjaudu ChurchCRM:ään järjestelmänvalvojana"
+
+#: 
+msgid "Member is not an adult family member of the roster child"
+msgstr "Jäsen ei ole luettelossa olevan lapsen aikuinen perheenjäsen"
+
+#: 
+msgid "Next Steps"
+msgstr "Seuraavat vaiheet"
+
+#: 
+msgid "No Group Members Found"
+msgstr "Ryhmän jäseniä ei löytynyt"
+
+#: 
+msgid "No checked-in students with families to alert"
+msgstr "Ei sisäänkirjattuja oppilaita, joiden perheille voisi ilmoittaa"
+
+#: 
+msgid "Parent Alert"
+msgstr "Ilmoitus huoltajille"
+
+#: 
+msgid "Parent alert sent for {{name}}"
+msgstr "Ilmoitus huoltajille lähetetty: {{name}}"
+
+#: 
+msgid "Photo not found"
+msgstr "Kuvaa ei löytynyt"
+
+#: 
+msgid "Possible Causes"
+msgstr "Mahdolliset syyt"
+
+#: 
+msgid "Processing..."
+msgstr "Käsitellään..."
+
+#: 
+msgid "Recent birthday!"
+msgstr "Syntymäpäivä äskettäin!"
+
+#: 
+msgid "Refresh member list"
+msgstr "Päivitä jäsenluettelo"
+
+#: 
+msgid "Refresh this kiosk page"
+msgstr "Päivitä tämän kioskin sivu"
+
+#: 
+msgid "Seconds"
+msgstr "Sekuntia"
+
+#: 
+msgid "Send alert to all families"
+msgstr "Lähetä ilmoitus kaikille perheille"
+
+#: 
+msgid "Server error - the event may not be linked to a group"
+msgstr "Palvelinvirhe – tapahtumaa ei ehkä ole liitetty ryhmään"
+
+#: 
+msgid "Student"
+msgstr "Oppilas"
+
+#: 
+msgid "System timeline entries cannot be deleted"
+msgstr "Aikajanan järjestelmämerkintöjä ei voi poistaa"
+
+#: 
+msgid "System timeline entries cannot be edited"
+msgstr "Aikajanan järjestelmämerkintöjä ei voi muokata"
+
+#: 
+msgid "Thank you for attending!"
+msgstr "Kiitos osallistumisesta!"
+
+#: 
+msgid "This kiosk has registered but needs to be accepted by an administrator before it can be used."
+msgstr "Tämä kioski on rekisteröity, mutta järjestelmänvalvojan on hyväksyttävä se ennen käyttöä."
+
+#: 
+msgid "This kiosk is accepted but has no active event assignment."
+msgstr "Tämä kioski on hyväksytty, mutta sille ei ole määritetty aktiivista tapahtumaa."
+
+#: 
+msgid "This kiosk is assigned to an event, but no members are available for check-in."
+msgstr "Tälle kioskille on määritetty tapahtuma, mutta sisäänkirjautumiseen ei ole saatavilla jäseniä."
+
+#: 
+msgid "This page will automatically refresh when check-in opens."
+msgstr "Tämä sivu päivittyy automaattisesti, kun sisäänkirjautuminen avautuu."
+
+#: 
+msgid "This page will automatically update once the kiosk is accepted."
+msgstr "Tämä sivu päivittyy automaattisesti, kun kioski on hyväksytty."
+
+#: 
+msgid "Today!"
+msgstr "Tänään"
+
+#: 
+msgid "Turning {{age}}"
+msgstr "Täyttää {{age}}"
+
+#: 
+msgid "Unable to load group members"
+msgstr "Ryhmän jäseniä ei voi ladata"
+
+#: 
+msgid "Unknown user configuration key"
+msgstr "Tuntematon käyttäjäasetuksen avain"
+
+#: 
+msgid "this person"
+msgstr "tämä henkilö"
+
+#: 
+msgid "{{name}} has no family on record"
+msgstr "Henkilöllä {{name}} ei ole perhettä tiedoissa"
+
+#: 
+msgid "%d failed (all time)"
+msgstr "%d epäonnistui (yhteensä)"
+
+#: 
+msgid "Failed email history pages"
+msgstr "Epäonnistuneiden sähköpostien historiasivut"
+
+#: 
+msgid "Failed sends across all email history, including automated messages"
+msgstr "Epäonnistuneet lähetykset koko sähköpostihistoriassa, myös automaattiset viestit"
+
+#: 
+msgid "No server error recorded"
+msgstr "Palvelinvirhettä ei tallennettu"
+
+#: 
+msgid "Show all recent sends"
+msgstr "Näytä kaikki viimeaikaiset lähetykset"
+
+#: 
+msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
+msgstr "Näytetään epäonnistuneet lähetykset koko sähköpostihistoriassa, myös automaattiset viestit. Valitse aihe nähdäksesi tiedot."
+
+#: 
+msgid "The table shows only the latest 20 sends. Open a person to see their full history."
+msgstr "Taulukko näyttää vain viimeiset 20 lähetystä. Avaa henkilö nähdäksesi koko historian."
+
+#: 
+msgid "View %d failed sends across all email history"
+msgstr "Näytä %d epäonnistunutta lähetystä koko sähköpostihistoriassa"
+

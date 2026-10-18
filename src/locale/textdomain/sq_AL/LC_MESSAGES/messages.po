@@ -24216,3 +24216,291 @@ msgstr "Emaili u ndryshua nga një administrator nga %1$s në %2$s"
 msgid "Only an administrator can change the email of a person with a user account."
 msgstr "Vetëm një administrator mund të ndryshojë emailin e një personi me llogari përdoruesi."
 
+#: 
+msgid "Fund totals appear here once payments are added."
+msgstr "Totalet e fondeve do të shfaqen këtu pasi të shtohen pagesat."
+
+#: 
+msgid "No payments yet"
+msgstr "Ende nuk ka pagesa"
+
+#: 
+msgid "Some payments could not be deleted"
+msgstr "Disa pagesa nuk mund të fshiheshin"
+
+#: 
+msgid "A string value is required"
+msgstr "Kërkohet një vlerë teksti"
+
+#: 
+msgid "Administrator permission required for this setting"
+msgstr "Për këtë cilësim kërkohet leje administratori"
+
+#: 
+msgid "Alerts sent: {{sent}}, failed: {{failed}}"
+msgstr "Njoftime të dërguara: {{sent}}, të dështuara: {{failed}}"
+
+#: 
+msgid "Alerts sent: {{total}}"
+msgstr "Njoftime të dërguara: {{total}}"
+
+#: 
+msgid "Assign an event to the kiosk using the dropdown"
+msgstr "Cakto një ngjarje për kioskun duke përdorur menunë rënëse"
+
+#: 
+msgid "Awaiting Acceptance"
+msgstr "Në pritje të pranimit"
+
+#: 
+msgid "Birthday coming up!"
+msgstr "Ditëlindja po afrohet!"
+
+#: 
+msgid "Check that the event start/end times are correct"
+msgstr "Kontrollo që orari i fillimit dhe i mbarimit të ngjarjes është i saktë"
+
+#: 
+msgid "Check the server logs for more details"
+msgstr "Shiko regjistrat e serverit për më shumë detaje"
+
+#: 
+msgid "Check-in Opens Soon"
+msgstr "Regjistrimi hapet së shpejti"
+
+#: 
+msgid "Checked-in-by person is not an adult family member"
+msgstr "Personi që bëri regjistrimin nuk është anëtar i rritur i familjes"
+
+#: 
+msgid "Checked-out-by person is not an adult family member"
+msgstr "Personi që bëri çregjistrimin nuk është anëtar i rritur i familjes"
+
+#: 
+msgid "Checkout all students"
+msgstr "Çregjistro të gjithë nxënësit"
+
+#: 
+msgid "Days"
+msgstr "Ditë"
+
+#: 
+msgid "Ensure the group has members"
+msgstr "Sigurohu që grupi ka anëtarë"
+
+#: 
+msgid "Ensure the group has members assigned"
+msgstr "Sigurohu që grupit i janë caktuar anëtarë"
+
+#: 
+msgid "Error Loading Members"
+msgstr "Gabim gjatë ngarkimit të anëtarëve"
+
+#: 
+msgid "Event Has Ended"
+msgstr "Ngjarja ka përfunduar"
+
+#: 
+msgid "Event not linked to a Group"
+msgstr "Ngjarja nuk është lidhur me një grup"
+
+#: 
+msgid "Event timing"
+msgstr "Koha e Eventit"
+
+#: 
+msgid "Everyone is here!"
+msgstr "Të gjithë janë këtu!"
+
+#: 
+msgid "Failed to send all alerts: {{total}}"
+msgstr "Dërgimi i të gjitha njoftimeve dështoi: {{total}}"
+
+#: 
+msgid "Failed to send parent alert"
+msgstr "Dërgimi i njoftimit për prindin dështoi"
+
+#: 
+msgid "Find this kiosk in the device list"
+msgstr "Gjeje këtë kiosk në listën e pajisjeve"
+
+#: 
+msgid "Group has no members"
+msgstr "Grupi nuk ka anëtarë"
+
+#: 
+msgid "HTTP Status: {{status}}"
+msgstr "Statusi HTTP: {{status}}"
+
+#: 
+msgid "Hours"
+msgstr "Orë"
+
+#: 
+msgid "How to Accept This Kiosk"
+msgstr "Si ta pranosh këtë kiosk"
+
+#: 
+msgid "Kiosk Identification"
+msgstr "Identifikimi i kioskut"
+
+#: 
+msgid "Kiosk Ready"
+msgstr "Kioski është gati"
+
+#: 
+msgid "Log in to ChurchCRM as an administrator"
+msgstr "Hyr në ChurchCRM si administrator"
+
+#: 
+msgid "Member is not an adult family member of the roster child"
+msgstr "Anëtari nuk është anëtar i rritur i familjes së fëmijës në listë"
+
+#: 
+msgid "Next Steps"
+msgstr "Hapat e ardhshëm"
+
+#: 
+msgid "No Group Members Found"
+msgstr "Nuk u gjetën anëtarë të grupit"
+
+#: 
+msgid "No checked-in students with families to alert"
+msgstr "Nuk ka nxënës të regjistruar me familje për t'u njoftuar"
+
+#: 
+msgid "Parent Alert"
+msgstr "Njoftim për prindërit"
+
+#: 
+msgid "Parent alert sent for {{name}}"
+msgstr "Njoftimi për prindërit u dërgua për {{name}}"
+
+#: 
+msgid "Photo not found"
+msgstr "Fotoja nuk u gjet"
+
+#: 
+msgid "Possible Causes"
+msgstr "Shkaqet e mundshme"
+
+#: 
+msgid "Processing..."
+msgstr "Po përpunohet..."
+
+#: 
+msgid "Recent birthday!"
+msgstr "Ditëlindje së fundmi!"
+
+#: 
+msgid "Refresh member list"
+msgstr "Rifresko listën e anëtarëve"
+
+#: 
+msgid "Refresh this kiosk page"
+msgstr "Rifresko faqen e këtij kioski"
+
+#: 
+msgid "Seconds"
+msgstr "Sekonda"
+
+#: 
+msgid "Send alert to all families"
+msgstr "Dërgo njoftim te të gjitha familjet"
+
+#: 
+msgid "Server error - the event may not be linked to a group"
+msgstr "Gabim serveri - ngjarja mund të mos jetë e lidhur me një grup"
+
+#: 
+msgid "Student"
+msgstr "Nxënës"
+
+#: 
+msgid "System timeline entries cannot be deleted"
+msgstr "Regjistrimet e sistemit në kronologji nuk mund të fshihen"
+
+#: 
+msgid "System timeline entries cannot be edited"
+msgstr "Regjistrimet e sistemit në kronologji nuk mund të modifikohen"
+
+#: 
+msgid "Thank you for attending!"
+msgstr "Faleminderit që erdhët!"
+
+#: 
+msgid "This kiosk has registered but needs to be accepted by an administrator before it can be used."
+msgstr "Ky kiosk është regjistruar, por duhet pranuar nga një administrator përpara se të përdoret."
+
+#: 
+msgid "This kiosk is accepted but has no active event assignment."
+msgstr "Ky kiosk është pranuar, por nuk ka asnjë ngjarje aktive të caktuar."
+
+#: 
+msgid "This kiosk is assigned to an event, but no members are available for check-in."
+msgstr "Këtij kioski i është caktuar një ngjarje, por nuk ka anëtarë të disponueshëm për regjistrim."
+
+#: 
+msgid "This page will automatically refresh when check-in opens."
+msgstr "Kjo faqe do të rifreskohet automatikisht kur të hapet regjistrimi."
+
+#: 
+msgid "This page will automatically update once the kiosk is accepted."
+msgstr "Kjo faqe do të përditësohet automatikisht sapo kioski të pranohet."
+
+#: 
+msgid "Today!"
+msgstr "Sot"
+
+#: 
+msgid "Turning {{age}}"
+msgstr "Mbush {{age}} vjeç"
+
+#: 
+msgid "Unable to load group members"
+msgstr "Anëtarët e grupit nuk mund të ngarkohen"
+
+#: 
+msgid "Unknown user configuration key"
+msgstr "Çelës i panjohur i konfigurimit të përdoruesit"
+
+#: 
+msgid "this person"
+msgstr "ky person"
+
+#: 
+msgid "{{name}} has no family on record"
+msgstr "{{name}} nuk ka familje në regjistër"
+
+#: 
+msgid "%d failed (all time)"
+msgstr "%d të dështuara (gjithsej)"
+
+#: 
+msgid "Failed email history pages"
+msgstr "Faqet e historikut të emailave të dështuar"
+
+#: 
+msgid "Failed sends across all email history, including automated messages"
+msgstr "Dërgimet e dështuara në të gjithë historikun e emailave, përfshirë mesazhet automatike"
+
+#: 
+msgid "No server error recorded"
+msgstr "Nuk u regjistrua asnjë gabim serveri"
+
+#: 
+msgid "Show all recent sends"
+msgstr "Shfaq të gjitha dërgimet e fundit"
+
+#: 
+msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
+msgstr "Po shfaqen dërgimet e dështuara në të gjithë historikun e emailave, përfshirë mesazhet automatike. Zgjidh një subjekt për detaje."
+
+#: 
+msgid "The table shows only the latest 20 sends. Open a person to see their full history."
+msgstr "Tabela shfaq vetëm 20 dërgimet e fundit. Hap një person për të parë historikun e plotë."
+
+#: 
+msgid "View %d failed sends across all email history"
+msgstr "Shiko %d dërgimet e dështuara në të gjithë historikun e emailave"
+

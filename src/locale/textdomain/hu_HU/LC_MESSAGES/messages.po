@@ -24253,3 +24253,291 @@ msgstr "Egy adminisztrátor módosította az e-mailt erről: %1$s erre: %2$s"
 msgid "Only an administrator can change the email of a person with a user account."
 msgstr "Csak adminisztrátor módosíthatja egy felhasználói fiókkal rendelkező személy e-mail-címét."
 
+#: 
+msgid "Fund totals appear here once payments are added."
+msgstr "Az alapok összesítései a befizetések hozzáadása után jelennek meg itt."
+
+#: 
+msgid "No payments yet"
+msgstr "Még nincs befizetés"
+
+#: 
+msgid "Some payments could not be deleted"
+msgstr "Egyes befizetéseket nem sikerült törölni"
+
+#: 
+msgid "A string value is required"
+msgstr "Szöveges érték megadása kötelező"
+
+#: 
+msgid "Administrator permission required for this setting"
+msgstr "Ehhez a beállításhoz rendszergazdai jogosultság szükséges"
+
+#: 
+msgid "Alerts sent: {{sent}}, failed: {{failed}}"
+msgstr "Elküldött értesítések: {{sent}}, sikertelen: {{failed}}"
+
+#: 
+msgid "Alerts sent: {{total}}"
+msgstr "Elküldött értesítések: {{total}}"
+
+#: 
+msgid "Assign an event to the kiosk using the dropdown"
+msgstr "Rendeljen eseményt a kioszkhoz a legördülő lista segítségével"
+
+#: 
+msgid "Awaiting Acceptance"
+msgstr "Jóváhagyásra vár"
+
+#: 
+msgid "Birthday coming up!"
+msgstr "Hamarosan születésnap!"
+
+#: 
+msgid "Check that the event start/end times are correct"
+msgstr "Ellenőrizze, hogy az esemény kezdő és záró időpontja helyes-e"
+
+#: 
+msgid "Check the server logs for more details"
+msgstr "További részletekért nézze meg a kiszolgáló naplóit"
+
+#: 
+msgid "Check-in Opens Soon"
+msgstr "A bejelentkezés hamarosan megnyílik"
+
+#: 
+msgid "Checked-in-by person is not an adult family member"
+msgstr "A bejelentkeztető személy nem felnőtt családtag"
+
+#: 
+msgid "Checked-out-by person is not an adult family member"
+msgstr "A kijelentkeztető személy nem felnőtt családtag"
+
+#: 
+msgid "Checkout all students"
+msgstr "Minden tanuló kijelentkeztetése"
+
+#: 
+msgid "Days"
+msgstr "Nap"
+
+#: 
+msgid "Ensure the group has members"
+msgstr "Győződjön meg róla, hogy a csoportnak vannak tagjai"
+
+#: 
+msgid "Ensure the group has members assigned"
+msgstr "Győződjön meg róla, hogy a csoporthoz vannak tagok rendelve"
+
+#: 
+msgid "Error Loading Members"
+msgstr "Hiba a tagok betöltésekor"
+
+#: 
+msgid "Event Has Ended"
+msgstr "Az esemény véget ért"
+
+#: 
+msgid "Event not linked to a Group"
+msgstr "Az esemény nincs csoporthoz kapcsolva"
+
+#: 
+msgid "Event timing"
+msgstr "Esemény időzítése"
+
+#: 
+msgid "Everyone is here!"
+msgstr "Mindenki itt van!"
+
+#: 
+msgid "Failed to send all alerts: {{total}}"
+msgstr "Nem sikerült elküldeni az összes értesítést: {{total}}"
+
+#: 
+msgid "Failed to send parent alert"
+msgstr "Nem sikerült elküldeni a szülői értesítést"
+
+#: 
+msgid "Find this kiosk in the device list"
+msgstr "Keresse meg ezt a kioszkot az eszközlistában"
+
+#: 
+msgid "Group has no members"
+msgstr "A csoportnak nincsenek tagjai"
+
+#: 
+msgid "HTTP Status: {{status}}"
+msgstr "HTTP-állapot: {{status}}"
+
+#: 
+msgid "Hours"
+msgstr "Óra"
+
+#: 
+msgid "How to Accept This Kiosk"
+msgstr "Hogyan hagyja jóvá ezt a kioszkot"
+
+#: 
+msgid "Kiosk Identification"
+msgstr "Kioszk azonosítása"
+
+#: 
+msgid "Kiosk Ready"
+msgstr "A kioszk készen áll"
+
+#: 
+msgid "Log in to ChurchCRM as an administrator"
+msgstr "Jelentkezzen be a ChurchCRM-be rendszergazdaként"
+
+#: 
+msgid "Member is not an adult family member of the roster child"
+msgstr "A tag nem a listán szereplő gyermek felnőtt családtagja"
+
+#: 
+msgid "Next Steps"
+msgstr "Következő lépések"
+
+#: 
+msgid "No Group Members Found"
+msgstr "Nem található csoporttag"
+
+#: 
+msgid "No checked-in students with families to alert"
+msgstr "Nincs bejelentkezett tanuló, akinek a családját értesíteni lehetne"
+
+#: 
+msgid "Parent Alert"
+msgstr "Szülői értesítés"
+
+#: 
+msgid "Parent alert sent for {{name}}"
+msgstr "Szülői értesítés elküldve: {{name}}"
+
+#: 
+msgid "Photo not found"
+msgstr "A fénykép nem található"
+
+#: 
+msgid "Possible Causes"
+msgstr "Lehetséges okok"
+
+#: 
+msgid "Processing..."
+msgstr "Feldolgozás..."
+
+#: 
+msgid "Recent birthday!"
+msgstr "Nemrég volt születésnap!"
+
+#: 
+msgid "Refresh member list"
+msgstr "Taglista frissítése"
+
+#: 
+msgid "Refresh this kiosk page"
+msgstr "A kioszk oldalának frissítése"
+
+#: 
+msgid "Seconds"
+msgstr "Másodperc"
+
+#: 
+msgid "Send alert to all families"
+msgstr "Értesítés küldése minden családnak"
+
+#: 
+msgid "Server error - the event may not be linked to a group"
+msgstr "Kiszolgálóhiba – az esemény lehet, hogy nincs csoporthoz kapcsolva"
+
+#: 
+msgid "Student"
+msgstr "Tanuló"
+
+#: 
+msgid "System timeline entries cannot be deleted"
+msgstr "Az idővonal rendszerbejegyzései nem törölhetők"
+
+#: 
+msgid "System timeline entries cannot be edited"
+msgstr "Az idővonal rendszerbejegyzései nem szerkeszthetők"
+
+#: 
+msgid "Thank you for attending!"
+msgstr "Köszönjük, hogy részt vett!"
+
+#: 
+msgid "This kiosk has registered but needs to be accepted by an administrator before it can be used."
+msgstr "Ez a kioszk regisztrált, de használat előtt egy rendszergazdának jóvá kell hagynia."
+
+#: 
+msgid "This kiosk is accepted but has no active event assignment."
+msgstr "Ez a kioszk jóvá van hagyva, de nincs hozzárendelve aktív esemény."
+
+#: 
+msgid "This kiosk is assigned to an event, but no members are available for check-in."
+msgstr "Ehhez a kioszkhoz esemény van rendelve, de nincs bejelentkezésre elérhető tag."
+
+#: 
+msgid "This page will automatically refresh when check-in opens."
+msgstr "Ez az oldal automatikusan frissül, amikor megnyílik a bejelentkezés."
+
+#: 
+msgid "This page will automatically update once the kiosk is accepted."
+msgstr "Ez az oldal automatikusan frissül, amint a kioszk jóvá lett hagyva."
+
+#: 
+msgid "Today!"
+msgstr "Ma"
+
+#: 
+msgid "Turning {{age}}"
+msgstr "{{age}} éves lesz"
+
+#: 
+msgid "Unable to load group members"
+msgstr "A csoport tagjai nem tölthetők be"
+
+#: 
+msgid "Unknown user configuration key"
+msgstr "Ismeretlen felhasználói konfigurációs kulcs"
+
+#: 
+msgid "this person"
+msgstr "ez a személy"
+
+#: 
+msgid "{{name}} has no family on record"
+msgstr "{{name}} nevéhez nincs család rögzítve"
+
+#: 
+msgid "%d failed (all time)"
+msgstr "%d sikertelen (összesen)"
+
+#: 
+msgid "Failed email history pages"
+msgstr "Sikertelen e-mailek előzményoldalai"
+
+#: 
+msgid "Failed sends across all email history, including automated messages"
+msgstr "Sikertelen küldések a teljes e-mail-előzményben, az automatikus üzeneteket is beleértve"
+
+#: 
+msgid "No server error recorded"
+msgstr "Nincs rögzített kiszolgálóhiba"
+
+#: 
+msgid "Show all recent sends"
+msgstr "Az összes friss küldés megjelenítése"
+
+#: 
+msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
+msgstr "A teljes e-mail-előzmény sikertelen küldései láthatók, az automatikus üzeneteket is beleértve. A részletekhez válasszon egy tárgyat."
+
+#: 
+msgid "The table shows only the latest 20 sends. Open a person to see their full history."
+msgstr "A táblázat csak az utolsó 20 küldést mutatja. A teljes előzményhez nyisson meg egy személyt."
+
+#: 
+msgid "View %d failed sends across all email history"
+msgstr "%d sikertelen küldés megjelenítése a teljes e-mail-előzményben"
+

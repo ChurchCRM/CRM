@@ -24160,3 +24160,291 @@ msgstr "管理者がメールを %1$s から %2$s に変更しました"
 msgid "Only an administrator can change the email of a person with a user account."
 msgstr "ユーザーアカウントを持つ人のメールを変更できるのは、管理者だけです。"
 
+#: 
+msgid "Fund totals appear here once payments are added."
+msgstr "支払いを追加すると、ここに基金の合計が表示されます。"
+
+#: 
+msgid "No payments yet"
+msgstr "支払いはまだありません"
+
+#: 
+msgid "Some payments could not be deleted"
+msgstr "一部の支払いを削除できませんでした"
+
+#: 
+msgid "A string value is required"
+msgstr "文字列の値が必要です"
+
+#: 
+msgid "Administrator permission required for this setting"
+msgstr "この設定には管理者権限が必要です"
+
+#: 
+msgid "Alerts sent: {{sent}}, failed: {{failed}}"
+msgstr "送信した通知：{{sent}}件、失敗：{{failed}}件"
+
+#: 
+msgid "Alerts sent: {{total}}"
+msgstr "送信した通知：{{total}}件"
+
+#: 
+msgid "Assign an event to the kiosk using the dropdown"
+msgstr "ドロップダウンを使ってキオスクにイベントを割り当ててください"
+
+#: 
+msgid "Awaiting Acceptance"
+msgstr "承認待ち"
+
+#: 
+msgid "Birthday coming up!"
+msgstr "もうすぐ誕生日です！"
+
+#: 
+msgid "Check that the event start/end times are correct"
+msgstr "イベントの開始・終了時刻が正しいか確認してください"
+
+#: 
+msgid "Check the server logs for more details"
+msgstr "詳細はサーバーログを確認してください"
+
+#: 
+msgid "Check-in Opens Soon"
+msgstr "まもなくチェックイン開始"
+
+#: 
+msgid "Checked-in-by person is not an adult family member"
+msgstr "チェックインした人は成人の家族ではありません"
+
+#: 
+msgid "Checked-out-by person is not an adult family member"
+msgstr "チェックアウトした人は成人の家族ではありません"
+
+#: 
+msgid "Checkout all students"
+msgstr "全員をチェックアウト"
+
+#: 
+msgid "Days"
+msgstr "日"
+
+#: 
+msgid "Ensure the group has members"
+msgstr "グループにメンバーがいることを確認してください"
+
+#: 
+msgid "Ensure the group has members assigned"
+msgstr "グループにメンバーが割り当てられていることを確認してください"
+
+#: 
+msgid "Error Loading Members"
+msgstr "メンバーの読み込みエラー"
+
+#: 
+msgid "Event Has Ended"
+msgstr "イベントは終了しました"
+
+#: 
+msgid "Event not linked to a Group"
+msgstr "イベントがグループにリンクされていません"
+
+#: 
+msgid "Event timing"
+msgstr "イベントのタイミング"
+
+#: 
+msgid "Everyone is here!"
+msgstr "全員そろいました！"
+
+#: 
+msgid "Failed to send all alerts: {{total}}"
+msgstr "すべての通知の送信に失敗しました：{{total}}件"
+
+#: 
+msgid "Failed to send parent alert"
+msgstr "保護者への通知の送信に失敗しました"
+
+#: 
+msgid "Find this kiosk in the device list"
+msgstr "デバイス一覧でこのキオスクを探してください"
+
+#: 
+msgid "Group has no members"
+msgstr "グループにメンバーがいません"
+
+#: 
+msgid "HTTP Status: {{status}}"
+msgstr "HTTPステータス：{{status}}"
+
+#: 
+msgid "Hours"
+msgstr "時間"
+
+#: 
+msgid "How to Accept This Kiosk"
+msgstr "このキオスクを承認する方法"
+
+#: 
+msgid "Kiosk Identification"
+msgstr "キオスクの識別"
+
+#: 
+msgid "Kiosk Ready"
+msgstr "キオスク準備完了"
+
+#: 
+msgid "Log in to ChurchCRM as an administrator"
+msgstr "管理者として ChurchCRM にログインしてください"
+
+#: 
+msgid "Member is not an adult family member of the roster child"
+msgstr "このメンバーは名簿の子どもの成人の家族ではありません"
+
+#: 
+msgid "Next Steps"
+msgstr "次のステップ"
+
+#: 
+msgid "No Group Members Found"
+msgstr "グループメンバーが見つかりません"
+
+#: 
+msgid "No checked-in students with families to alert"
+msgstr "通知できる家族のいるチェックイン済みの生徒がいません"
+
+#: 
+msgid "Parent Alert"
+msgstr "保護者への通知"
+
+#: 
+msgid "Parent alert sent for {{name}}"
+msgstr "{{name}}の保護者に通知を送信しました"
+
+#: 
+msgid "Photo not found"
+msgstr "写真が見つかりません"
+
+#: 
+msgid "Possible Causes"
+msgstr "考えられる原因"
+
+#: 
+msgid "Processing..."
+msgstr "処理中..."
+
+#: 
+msgid "Recent birthday!"
+msgstr "最近誕生日でした！"
+
+#: 
+msgid "Refresh member list"
+msgstr "メンバー一覧を更新"
+
+#: 
+msgid "Refresh this kiosk page"
+msgstr "このキオスクのページを更新"
+
+#: 
+msgid "Seconds"
+msgstr "秒"
+
+#: 
+msgid "Send alert to all families"
+msgstr "すべての家族に通知を送信"
+
+#: 
+msgid "Server error - the event may not be linked to a group"
+msgstr "サーバーエラー - イベントがグループにリンクされていない可能性があります"
+
+#: 
+msgid "Student"
+msgstr "生徒"
+
+#: 
+msgid "System timeline entries cannot be deleted"
+msgstr "システムのタイムライン項目は削除できません"
+
+#: 
+msgid "System timeline entries cannot be edited"
+msgstr "システムのタイムライン項目は編集できません"
+
+#: 
+msgid "Thank you for attending!"
+msgstr "ご参加ありがとうございました！"
+
+#: 
+msgid "This kiosk has registered but needs to be accepted by an administrator before it can be used."
+msgstr "このキオスクは登録済みですが、使用する前に管理者の承認が必要です。"
+
+#: 
+msgid "This kiosk is accepted but has no active event assignment."
+msgstr "このキオスクは承認済みですが、有効なイベントが割り当てられていません。"
+
+#: 
+msgid "This kiosk is assigned to an event, but no members are available for check-in."
+msgstr "このキオスクにはイベントが割り当てられていますが、チェックインできるメンバーがいません。"
+
+#: 
+msgid "This page will automatically refresh when check-in opens."
+msgstr "チェックインが開始されると、このページは自動的に更新されます。"
+
+#: 
+msgid "This page will automatically update once the kiosk is accepted."
+msgstr "キオスクが承認されると、このページは自動的に更新されます。"
+
+#: 
+msgid "Today!"
+msgstr "今日"
+
+#: 
+msgid "Turning {{age}}"
+msgstr "{{age}}歳になります"
+
+#: 
+msgid "Unable to load group members"
+msgstr "グループメンバーを読み込めません"
+
+#: 
+msgid "Unknown user configuration key"
+msgstr "不明なユーザー設定キー"
+
+#: 
+msgid "this person"
+msgstr "この人"
+
+#: 
+msgid "{{name}} has no family on record"
+msgstr "{{name}}さんの家族は登録されていません"
+
+#: 
+msgid "%d failed (all time)"
+msgstr "失敗 %d 件（累計）"
+
+#: 
+msgid "Failed email history pages"
+msgstr "失敗したメール履歴ページ"
+
+#: 
+msgid "Failed sends across all email history, including automated messages"
+msgstr "自動送信メッセージを含む、メール履歴全体の送信失敗"
+
+#: 
+msgid "No server error recorded"
+msgstr "サーバーエラーは記録されていません"
+
+#: 
+msgid "Show all recent sends"
+msgstr "最近の送信をすべて表示"
+
+#: 
+msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
+msgstr "自動送信メッセージを含む、メール履歴全体の送信失敗を表示しています。件名を選択すると詳細が表示されます。"
+
+#: 
+msgid "The table shows only the latest 20 sends. Open a person to see their full history."
+msgstr "表には直近20件の送信のみ表示されます。全履歴を見るには、その人を開いてください。"
+
+#: 
+msgid "View %d failed sends across all email history"
+msgstr "メール履歴全体の送信失敗 %d 件を表示"
+

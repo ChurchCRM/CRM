@@ -24203,3 +24203,291 @@ msgstr "నిర్వాహకుడు ఈమెయిల్‌ను %1$s �
 msgid "Only an administrator can change the email of a person with a user account."
 msgstr "వాడుకరి ఖాతా ఉన్న వ్యక్తి ఈమెయిల్‌ను నిర్వాహకుడు మాత్రమే మార్చగలరు."
 
+#: 
+msgid "Fund totals appear here once payments are added."
+msgstr "చెల్లింపులు జోడించిన తర్వాత నిధుల మొత్తాలు ఇక్కడ కనిపిస్తాయి."
+
+#: 
+msgid "No payments yet"
+msgstr "ఇంకా చెల్లింపులు లేవు"
+
+#: 
+msgid "Some payments could not be deleted"
+msgstr "కొన్ని చెల్లింపులను తొలగించలేకపోయాం"
+
+#: 
+msgid "A string value is required"
+msgstr "స్ట్రింగ్ విలువ అవసరం"
+
+#: 
+msgid "Administrator permission required for this setting"
+msgstr "ఈ సెట్టింగ్‌కు అడ్మినిస్ట్రేటర్ అనుమతి అవసరం"
+
+#: 
+msgid "Alerts sent: {{sent}}, failed: {{failed}}"
+msgstr "పంపిన హెచ్చరికలు: {{sent}}, విఫలమైనవి: {{failed}}"
+
+#: 
+msgid "Alerts sent: {{total}}"
+msgstr "పంపిన హెచ్చరికలు: {{total}}"
+
+#: 
+msgid "Assign an event to the kiosk using the dropdown"
+msgstr "డ్రాప్‌డౌన్ ఉపయోగించి కియోస్క్‌కు ఒక ఈవెంట్‌ను కేటాయించండి"
+
+#: 
+msgid "Awaiting Acceptance"
+msgstr "అంగీకారం కోసం వేచి ఉంది"
+
+#: 
+msgid "Birthday coming up!"
+msgstr "పుట్టినరోజు దగ్గరలో ఉంది!"
+
+#: 
+msgid "Check that the event start/end times are correct"
+msgstr "ఈవెంట్ ప్రారంభ, ముగింపు సమయాలు సరిగ్గా ఉన్నాయో లేదో తనిఖీ చేయండి"
+
+#: 
+msgid "Check the server logs for more details"
+msgstr "మరిన్ని వివరాల కోసం సర్వర్ లాగ్‌లను చూడండి"
+
+#: 
+msgid "Check-in Opens Soon"
+msgstr "చెక్-ఇన్ త్వరలో తెరుచుకుంటుంది"
+
+#: 
+msgid "Checked-in-by person is not an adult family member"
+msgstr "చెక్-ఇన్ చేసిన వ్యక్తి కుటుంబంలోని పెద్ద సభ్యుడు కాదు"
+
+#: 
+msgid "Checked-out-by person is not an adult family member"
+msgstr "చెక్-అవుట్ చేసిన వ్యక్తి కుటుంబంలోని పెద్ద సభ్యుడు కాదు"
+
+#: 
+msgid "Checkout all students"
+msgstr "విద్యార్థులందరినీ చెక్-అవుట్ చేయండి"
+
+#: 
+msgid "Days"
+msgstr "రోజులు"
+
+#: 
+msgid "Ensure the group has members"
+msgstr "గ్రూప్‌లో సభ్యులు ఉన్నారని నిర్ధారించుకోండి"
+
+#: 
+msgid "Ensure the group has members assigned"
+msgstr "గ్రూప్‌కు సభ్యులు కేటాయించబడ్డారని నిర్ధారించుకోండి"
+
+#: 
+msgid "Error Loading Members"
+msgstr "సభ్యులను లోడ్ చేయడంలో లోపం"
+
+#: 
+msgid "Event Has Ended"
+msgstr "ఈవెంట్ ముగిసింది"
+
+#: 
+msgid "Event not linked to a Group"
+msgstr "ఈవెంట్ ఏ గ్రూప్‌కూ లింక్ చేయబడలేదు"
+
+#: 
+msgid "Event timing"
+msgstr "ఈవెంట్ సమయం"
+
+#: 
+msgid "Everyone is here!"
+msgstr "అందరూ వచ్చారు!"
+
+#: 
+msgid "Failed to send all alerts: {{total}}"
+msgstr "అన్ని హెచ్చరికలను పంపడం విఫలమైంది: {{total}}"
+
+#: 
+msgid "Failed to send parent alert"
+msgstr "తల్లిదండ్రులకు హెచ్చరిక పంపడం విఫలమైంది"
+
+#: 
+msgid "Find this kiosk in the device list"
+msgstr "పరికరాల జాబితాలో ఈ కియోస్క్‌ను కనుగొనండి"
+
+#: 
+msgid "Group has no members"
+msgstr "గ్రూప్‌లో సభ్యులు లేరు"
+
+#: 
+msgid "HTTP Status: {{status}}"
+msgstr "HTTP స్థితి: {{status}}"
+
+#: 
+msgid "Hours"
+msgstr "గంటలు"
+
+#: 
+msgid "How to Accept This Kiosk"
+msgstr "ఈ కియోస్క్‌ను ఎలా అంగీకరించాలి"
+
+#: 
+msgid "Kiosk Identification"
+msgstr "కియోస్క్ గుర్తింపు"
+
+#: 
+msgid "Kiosk Ready"
+msgstr "కియోస్క్ సిద్ధంగా ఉంది"
+
+#: 
+msgid "Log in to ChurchCRM as an administrator"
+msgstr "అడ్మినిస్ట్రేటర్‌గా ChurchCRMలో లాగిన్ అవ్వండి"
+
+#: 
+msgid "Member is not an adult family member of the roster child"
+msgstr "జాబితాలోని పిల్లవాడి కుటుంబంలో ఈ సభ్యుడు పెద్ద సభ్యుడు కాదు"
+
+#: 
+msgid "Next Steps"
+msgstr "తదుపరి దశలు"
+
+#: 
+msgid "No Group Members Found"
+msgstr "గ్రూప్ సభ్యులు ఎవరూ కనుగొనబడలేదు"
+
+#: 
+msgid "No checked-in students with families to alert"
+msgstr "హెచ్చరించడానికి కుటుంబం ఉన్న చెక్-ఇన్ చేసిన విద్యార్థులు లేరు"
+
+#: 
+msgid "Parent Alert"
+msgstr "తల్లిదండ్రుల హెచ్చరిక"
+
+#: 
+msgid "Parent alert sent for {{name}}"
+msgstr "{{name}} కోసం తల్లిదండ్రుల హెచ్చరిక పంపబడింది"
+
+#: 
+msgid "Photo not found"
+msgstr "ఫోటో కనుగొనబడలేదు"
+
+#: 
+msgid "Possible Causes"
+msgstr "సాధ్యమయ్యే కారణాలు"
+
+#: 
+msgid "Processing..."
+msgstr "ప్రాసెస్ అవుతోంది..."
+
+#: 
+msgid "Recent birthday!"
+msgstr "ఇటీవలే పుట్టినరోజు!"
+
+#: 
+msgid "Refresh member list"
+msgstr "సభ్యుల జాబితాను రిఫ్రెష్ చేయండి"
+
+#: 
+msgid "Refresh this kiosk page"
+msgstr "ఈ కియోస్క్ పేజీని రిఫ్రెష్ చేయండి"
+
+#: 
+msgid "Seconds"
+msgstr "సెకన్లు"
+
+#: 
+msgid "Send alert to all families"
+msgstr "అన్ని కుటుంబాలకు హెచ్చరిక పంపండి"
+
+#: 
+msgid "Server error - the event may not be linked to a group"
+msgstr "సర్వర్ లోపం - ఈవెంట్ ఏ గ్రూప్‌కూ లింక్ చేయబడకపోవచ్చు"
+
+#: 
+msgid "Student"
+msgstr "విద్యార్థి"
+
+#: 
+msgid "System timeline entries cannot be deleted"
+msgstr "సిస్టమ్ టైమ్‌లైన్ ఎంట్రీలను తొలగించలేరు"
+
+#: 
+msgid "System timeline entries cannot be edited"
+msgstr "సిస్టమ్ టైమ్‌లైన్ ఎంట్రీలను సవరించలేరు"
+
+#: 
+msgid "Thank you for attending!"
+msgstr "హాజరైనందుకు ధన్యవాదాలు!"
+
+#: 
+msgid "This kiosk has registered but needs to be accepted by an administrator before it can be used."
+msgstr "ఈ కియోస్క్ నమోదు చేయబడింది, కానీ ఉపయోగించే ముందు అడ్మినిస్ట్రేటర్ అంగీకరించాలి."
+
+#: 
+msgid "This kiosk is accepted but has no active event assignment."
+msgstr "ఈ కియోస్క్ అంగీకరించబడింది, కానీ దానికి క్రియాశీల ఈవెంట్ కేటాయించబడలేదు."
+
+#: 
+msgid "This kiosk is assigned to an event, but no members are available for check-in."
+msgstr "ఈ కియోస్క్‌కు ఈవెంట్ కేటాయించబడింది, కానీ చెక్-ఇన్ కోసం సభ్యులు ఎవరూ అందుబాటులో లేరు."
+
+#: 
+msgid "This page will automatically refresh when check-in opens."
+msgstr "చెక్-ఇన్ తెరుచుకున్నప్పుడు ఈ పేజీ ఆటోమేటిక్‌గా రిఫ్రెష్ అవుతుంది."
+
+#: 
+msgid "This page will automatically update once the kiosk is accepted."
+msgstr "కియోస్క్ అంగీకరించబడిన తర్వాత ఈ పేజీ ఆటోమేటిక్‌గా అప్‌డేట్ అవుతుంది."
+
+#: 
+msgid "Today!"
+msgstr "ఈ రోజు"
+
+#: 
+msgid "Turning {{age}}"
+msgstr "{{age}} ఏళ్లు నిండబోతున్నాయి"
+
+#: 
+msgid "Unable to load group members"
+msgstr "గ్రూప్ సభ్యులను లోడ్ చేయలేకపోయాం"
+
+#: 
+msgid "Unknown user configuration key"
+msgstr "తెలియని వినియోగదారు కాన్ఫిగరేషన్ కీ"
+
+#: 
+msgid "this person"
+msgstr "ఈ వ్యక్తి"
+
+#: 
+msgid "{{name}} has no family on record"
+msgstr "{{name}}కు రికార్డ్‌లో కుటుంబం లేదు"
+
+#: 
+msgid "%d failed (all time)"
+msgstr "%d విఫలమయ్యాయి (మొత్తం)"
+
+#: 
+msgid "Failed email history pages"
+msgstr "విఫలమైన ఇమెయిల్ చరిత్ర పేజీలు"
+
+#: 
+msgid "Failed sends across all email history, including automated messages"
+msgstr "ఆటోమేటెడ్ సందేశాలతో సహా మొత్తం ఇమెయిల్ చరిత్రలో విఫలమైన పంపకాలు"
+
+#: 
+msgid "No server error recorded"
+msgstr "సర్వర్ లోపం ఏదీ రికార్డ్ కాలేదు"
+
+#: 
+msgid "Show all recent sends"
+msgstr "ఇటీవలి పంపకాలన్నీ చూపించు"
+
+#: 
+msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
+msgstr "ఆటోమేటెడ్ సందేశాలతో సహా మొత్తం ఇమెయిల్ చరిత్రలో విఫలమైన పంపకాలు చూపబడుతున్నాయి. వివరాల కోసం ఒక విషయాన్ని ఎంచుకోండి."
+
+#: 
+msgid "The table shows only the latest 20 sends. Open a person to see their full history."
+msgstr "పట్టిక చివరి 20 పంపకాలను మాత్రమే చూపిస్తుంది. పూర్తి చరిత్ర చూడటానికి ఒక వ్యక్తిని తెరవండి."
+
+#: 
+msgid "View %d failed sends across all email history"
+msgstr "మొత్తం ఇమెయిల్ చరిత్రలో విఫలమైన %d పంపకాలను చూడండి"
+

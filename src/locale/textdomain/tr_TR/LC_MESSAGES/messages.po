@@ -24226,3 +24226,291 @@ msgstr "E-posta bir yönetici tarafından %1$s adresinden %2$s adresine değişt
 msgid "Only an administrator can change the email of a person with a user account."
 msgstr "Kullanıcı hesabı olan bir kişinin e-postasını yalnızca yönetici değiştirebilir."
 
+#: 
+msgid "Fund totals appear here once payments are added."
+msgstr "Fon toplamları, ödemeler eklendikten sonra burada görünür."
+
+#: 
+msgid "No payments yet"
+msgstr "Henüz ödeme yok"
+
+#: 
+msgid "Some payments could not be deleted"
+msgstr "Bazı ödemeler silinemedi"
+
+#: 
+msgid "A string value is required"
+msgstr "Metin değeri gereklidir"
+
+#: 
+msgid "Administrator permission required for this setting"
+msgstr "Bu ayar için yönetici izni gereklidir"
+
+#: 
+msgid "Alerts sent: {{sent}}, failed: {{failed}}"
+msgstr "Gönderilen uyarılar: {{sent}}, başarısız: {{failed}}"
+
+#: 
+msgid "Alerts sent: {{total}}"
+msgstr "Gönderilen uyarılar: {{total}}"
+
+#: 
+msgid "Assign an event to the kiosk using the dropdown"
+msgstr "Açılır listeyi kullanarak kioska bir etkinlik atayın"
+
+#: 
+msgid "Awaiting Acceptance"
+msgstr "Onay Bekliyor"
+
+#: 
+msgid "Birthday coming up!"
+msgstr "Doğum günü yaklaşıyor!"
+
+#: 
+msgid "Check that the event start/end times are correct"
+msgstr "Etkinliğin başlangıç ve bitiş saatlerinin doğru olduğunu kontrol edin"
+
+#: 
+msgid "Check the server logs for more details"
+msgstr "Daha fazla ayrıntı için sunucu günlüklerine bakın"
+
+#: 
+msgid "Check-in Opens Soon"
+msgstr "Giriş Kaydı Yakında Açılacak"
+
+#: 
+msgid "Checked-in-by person is not an adult family member"
+msgstr "Giriş yapan kişi yetişkin bir aile üyesi değil"
+
+#: 
+msgid "Checked-out-by person is not an adult family member"
+msgstr "Çıkış yapan kişi yetişkin bir aile üyesi değil"
+
+#: 
+msgid "Checkout all students"
+msgstr "Tüm öğrencilerin çıkışını yap"
+
+#: 
+msgid "Days"
+msgstr "Gün"
+
+#: 
+msgid "Ensure the group has members"
+msgstr "Grubun üyeleri olduğundan emin olun"
+
+#: 
+msgid "Ensure the group has members assigned"
+msgstr "Gruba üye atandığından emin olun"
+
+#: 
+msgid "Error Loading Members"
+msgstr "Üyeler Yüklenirken Hata"
+
+#: 
+msgid "Event Has Ended"
+msgstr "Etkinlik Sona Erdi"
+
+#: 
+msgid "Event not linked to a Group"
+msgstr "Etkinlik bir gruba bağlı değil"
+
+#: 
+msgid "Event timing"
+msgstr "Etkinlik Zamanlaması"
+
+#: 
+msgid "Everyone is here!"
+msgstr "Herkes burada!"
+
+#: 
+msgid "Failed to send all alerts: {{total}}"
+msgstr "Tüm uyarılar gönderilemedi: {{total}}"
+
+#: 
+msgid "Failed to send parent alert"
+msgstr "Ebeveyn uyarısı gönderilemedi"
+
+#: 
+msgid "Find this kiosk in the device list"
+msgstr "Bu kioskı cihaz listesinde bulun"
+
+#: 
+msgid "Group has no members"
+msgstr "Grubun üyesi yok"
+
+#: 
+msgid "HTTP Status: {{status}}"
+msgstr "HTTP Durumu: {{status}}"
+
+#: 
+msgid "Hours"
+msgstr "Saat"
+
+#: 
+msgid "How to Accept This Kiosk"
+msgstr "Bu Kiosk Nasıl Onaylanır"
+
+#: 
+msgid "Kiosk Identification"
+msgstr "Kiosk Tanımlama"
+
+#: 
+msgid "Kiosk Ready"
+msgstr "Kiosk Hazır"
+
+#: 
+msgid "Log in to ChurchCRM as an administrator"
+msgstr "ChurchCRM'e yönetici olarak giriş yapın"
+
+#: 
+msgid "Member is not an adult family member of the roster child"
+msgstr "Üye, listedeki çocuğun yetişkin bir aile üyesi değil"
+
+#: 
+msgid "Next Steps"
+msgstr "Sonraki Adımlar"
+
+#: 
+msgid "No Group Members Found"
+msgstr "Grup Üyesi Bulunamadı"
+
+#: 
+msgid "No checked-in students with families to alert"
+msgstr "Uyarılacak ailesi olan giriş yapmış öğrenci yok"
+
+#: 
+msgid "Parent Alert"
+msgstr "Ebeveyn Uyarısı"
+
+#: 
+msgid "Parent alert sent for {{name}}"
+msgstr "{{name}} için ebeveyn uyarısı gönderildi"
+
+#: 
+msgid "Photo not found"
+msgstr "Fotoğraf bulunamadı"
+
+#: 
+msgid "Possible Causes"
+msgstr "Olası Nedenler"
+
+#: 
+msgid "Processing..."
+msgstr "İşleniyor..."
+
+#: 
+msgid "Recent birthday!"
+msgstr "Yakın zamanda doğum günü!"
+
+#: 
+msgid "Refresh member list"
+msgstr "Üye listesini yenile"
+
+#: 
+msgid "Refresh this kiosk page"
+msgstr "Bu kiosk sayfasını yenile"
+
+#: 
+msgid "Seconds"
+msgstr "Saniye"
+
+#: 
+msgid "Send alert to all families"
+msgstr "Tüm ailelere uyarı gönder"
+
+#: 
+msgid "Server error - the event may not be linked to a group"
+msgstr "Sunucu hatası - etkinlik bir gruba bağlı olmayabilir"
+
+#: 
+msgid "Student"
+msgstr "Öğrenci"
+
+#: 
+msgid "System timeline entries cannot be deleted"
+msgstr "Sistem zaman çizelgesi girdileri silinemez"
+
+#: 
+msgid "System timeline entries cannot be edited"
+msgstr "Sistem zaman çizelgesi girdileri düzenlenemez"
+
+#: 
+msgid "Thank you for attending!"
+msgstr "Katıldığınız için teşekkürler!"
+
+#: 
+msgid "This kiosk has registered but needs to be accepted by an administrator before it can be used."
+msgstr "Bu kiosk kaydoldu ancak kullanılmadan önce bir yönetici tarafından onaylanması gerekiyor."
+
+#: 
+msgid "This kiosk is accepted but has no active event assignment."
+msgstr "Bu kiosk onaylandı ancak atanmış etkin bir etkinliği yok."
+
+#: 
+msgid "This kiosk is assigned to an event, but no members are available for check-in."
+msgstr "Bu kioska bir etkinlik atandı ancak giriş için uygun üye yok."
+
+#: 
+msgid "This page will automatically refresh when check-in opens."
+msgstr "Giriş kaydı açıldığında bu sayfa otomatik olarak yenilenecek."
+
+#: 
+msgid "This page will automatically update once the kiosk is accepted."
+msgstr "Kiosk onaylandığında bu sayfa otomatik olarak güncellenecek."
+
+#: 
+msgid "Today!"
+msgstr "Bugün"
+
+#: 
+msgid "Turning {{age}}"
+msgstr "{{age}} yaşına giriyor"
+
+#: 
+msgid "Unable to load group members"
+msgstr "Grup üyeleri yüklenemiyor"
+
+#: 
+msgid "Unknown user configuration key"
+msgstr "Bilinmeyen kullanıcı yapılandırma anahtarı"
+
+#: 
+msgid "this person"
+msgstr "bu kişi"
+
+#: 
+msgid "{{name}} has no family on record"
+msgstr "{{name}} için kayıtlı aile yok"
+
+#: 
+msgid "%d failed (all time)"
+msgstr "%d başarısız (toplam)"
+
+#: 
+msgid "Failed email history pages"
+msgstr "Başarısız e-posta geçmişi sayfaları"
+
+#: 
+msgid "Failed sends across all email history, including automated messages"
+msgstr "Otomatik iletiler dahil tüm e-posta geçmişindeki başarısız gönderimler"
+
+#: 
+msgid "No server error recorded"
+msgstr "Kayıtlı sunucu hatası yok"
+
+#: 
+msgid "Show all recent sends"
+msgstr "Tüm son gönderimleri göster"
+
+#: 
+msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
+msgstr "Otomatik iletiler dahil tüm e-posta geçmişindeki başarısız gönderimler gösteriliyor. Ayrıntılar için bir konu seçin."
+
+#: 
+msgid "The table shows only the latest 20 sends. Open a person to see their full history."
+msgstr "Tablo yalnızca son 20 gönderimi gösterir. Tüm geçmişi görmek için bir kişiyi açın."
+
+#: 
+msgid "View %d failed sends across all email history"
+msgstr "Tüm e-posta geçmişindeki %d başarısız gönderimi görüntüle"
+

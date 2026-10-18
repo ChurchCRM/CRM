@@ -24191,3 +24191,291 @@ msgstr "प्रशासक ने ईमेल %1$s से %2$s में ब
 msgid "Only an administrator can change the email of a person with a user account."
 msgstr "उपयोगकर्ता खाते वाले व्यक्ति का ईमेल केवल प्रशासक बदल सकता है।"
 
+#: 
+msgid "Fund totals appear here once payments are added."
+msgstr "भुगतान जोड़े जाने पर फ़ंड का कुल योग यहाँ दिखाई देगा।"
+
+#: 
+msgid "No payments yet"
+msgstr "अभी तक कोई भुगतान नहीं"
+
+#: 
+msgid "Some payments could not be deleted"
+msgstr "कुछ भुगतान हटाए नहीं जा सके"
+
+#: 
+msgid "A string value is required"
+msgstr "स्ट्रिंग मान आवश्यक है"
+
+#: 
+msgid "Administrator permission required for this setting"
+msgstr "इस सेटिंग के लिए व्यवस्थापक अनुमति आवश्यक है"
+
+#: 
+msgid "Alerts sent: {{sent}}, failed: {{failed}}"
+msgstr "भेजी गई अलर्ट: {{sent}}, विफल: {{failed}}"
+
+#: 
+msgid "Alerts sent: {{total}}"
+msgstr "भेजी गई अलर्ट: {{total}}"
+
+#: 
+msgid "Assign an event to the kiosk using the dropdown"
+msgstr "ड्रॉपडाउन का उपयोग करके कियोस्क को कोई कार्यक्रम असाइन करें"
+
+#: 
+msgid "Awaiting Acceptance"
+msgstr "स्वीकृति की प्रतीक्षा में"
+
+#: 
+msgid "Birthday coming up!"
+msgstr "जन्मदिन आने वाला है!"
+
+#: 
+msgid "Check that the event start/end times are correct"
+msgstr "जाँचें कि कार्यक्रम का प्रारंभ और समाप्ति समय सही है"
+
+#: 
+msgid "Check the server logs for more details"
+msgstr "अधिक जानकारी के लिए सर्वर लॉग देखें"
+
+#: 
+msgid "Check-in Opens Soon"
+msgstr "चेक-इन जल्द खुलेगा"
+
+#: 
+msgid "Checked-in-by person is not an adult family member"
+msgstr "चेक-इन करने वाला व्यक्ति वयस्क पारिवारिक सदस्य नहीं है"
+
+#: 
+msgid "Checked-out-by person is not an adult family member"
+msgstr "चेक-आउट करने वाला व्यक्ति वयस्क पारिवारिक सदस्य नहीं है"
+
+#: 
+msgid "Checkout all students"
+msgstr "सभी विद्यार्थियों का चेक-आउट करें"
+
+#: 
+msgid "Days"
+msgstr "दिन"
+
+#: 
+msgid "Ensure the group has members"
+msgstr "सुनिश्चित करें कि समूह में सदस्य हैं"
+
+#: 
+msgid "Ensure the group has members assigned"
+msgstr "सुनिश्चित करें कि समूह में सदस्य असाइन किए गए हैं"
+
+#: 
+msgid "Error Loading Members"
+msgstr "सदस्य लोड करने में त्रुटि"
+
+#: 
+msgid "Event Has Ended"
+msgstr "कार्यक्रम समाप्त हो गया है"
+
+#: 
+msgid "Event not linked to a Group"
+msgstr "कार्यक्रम किसी समूह से जुड़ा नहीं है"
+
+#: 
+msgid "Event timing"
+msgstr "कार्यक्रम का समय"
+
+#: 
+msgid "Everyone is here!"
+msgstr "सभी यहाँ हैं!"
+
+#: 
+msgid "Failed to send all alerts: {{total}}"
+msgstr "सभी अलर्ट भेजने में विफल: {{total}}"
+
+#: 
+msgid "Failed to send parent alert"
+msgstr "अभिभावक को अलर्ट भेजने में विफल"
+
+#: 
+msgid "Find this kiosk in the device list"
+msgstr "डिवाइस सूची में यह कियोस्क खोजें"
+
+#: 
+msgid "Group has no members"
+msgstr "समूह में कोई सदस्य नहीं है"
+
+#: 
+msgid "HTTP Status: {{status}}"
+msgstr "HTTP स्थिति: {{status}}"
+
+#: 
+msgid "Hours"
+msgstr "घंटे"
+
+#: 
+msgid "How to Accept This Kiosk"
+msgstr "इस कियोस्क को कैसे स्वीकार करें"
+
+#: 
+msgid "Kiosk Identification"
+msgstr "कियोस्क पहचान"
+
+#: 
+msgid "Kiosk Ready"
+msgstr "कियोस्क तैयार है"
+
+#: 
+msgid "Log in to ChurchCRM as an administrator"
+msgstr "व्यवस्थापक के रूप में ChurchCRM में लॉग इन करें"
+
+#: 
+msgid "Member is not an adult family member of the roster child"
+msgstr "यह सदस्य सूची में दिए गए बच्चे का वयस्क पारिवारिक सदस्य नहीं है"
+
+#: 
+msgid "Next Steps"
+msgstr "अगले चरण"
+
+#: 
+msgid "No Group Members Found"
+msgstr "कोई समूह सदस्य नहीं मिला"
+
+#: 
+msgid "No checked-in students with families to alert"
+msgstr "अलर्ट करने के लिए परिवार वाले कोई चेक-इन किए हुए विद्यार्थी नहीं हैं"
+
+#: 
+msgid "Parent Alert"
+msgstr "अभिभावक अलर्ट"
+
+#: 
+msgid "Parent alert sent for {{name}}"
+msgstr "{{name}} के लिए अभिभावक अलर्ट भेजा गया"
+
+#: 
+msgid "Photo not found"
+msgstr "फ़ोटो नहीं मिली"
+
+#: 
+msgid "Possible Causes"
+msgstr "संभावित कारण"
+
+#: 
+msgid "Processing..."
+msgstr "प्रोसेस हो रहा है..."
+
+#: 
+msgid "Recent birthday!"
+msgstr "हाल ही में जन्मदिन था!"
+
+#: 
+msgid "Refresh member list"
+msgstr "सदस्य सूची रीफ़्रेश करें"
+
+#: 
+msgid "Refresh this kiosk page"
+msgstr "इस कियोस्क का पृष्ठ रीफ़्रेश करें"
+
+#: 
+msgid "Seconds"
+msgstr "सेकंड"
+
+#: 
+msgid "Send alert to all families"
+msgstr "सभी परिवारों को अलर्ट भेजें"
+
+#: 
+msgid "Server error - the event may not be linked to a group"
+msgstr "सर्वर त्रुटि - हो सकता है कार्यक्रम किसी समूह से जुड़ा न हो"
+
+#: 
+msgid "Student"
+msgstr "विद्यार्थी"
+
+#: 
+msgid "System timeline entries cannot be deleted"
+msgstr "सिस्टम टाइमलाइन प्रविष्टियाँ हटाई नहीं जा सकतीं"
+
+#: 
+msgid "System timeline entries cannot be edited"
+msgstr "सिस्टम टाइमलाइन प्रविष्टियाँ संपादित नहीं की जा सकतीं"
+
+#: 
+msgid "Thank you for attending!"
+msgstr "उपस्थित होने के लिए धन्यवाद!"
+
+#: 
+msgid "This kiosk has registered but needs to be accepted by an administrator before it can be used."
+msgstr "यह कियोस्क पंजीकृत हो चुका है, लेकिन उपयोग से पहले व्यवस्थापक द्वारा स्वीकार किया जाना आवश्यक है।"
+
+#: 
+msgid "This kiosk is accepted but has no active event assignment."
+msgstr "यह कियोस्क स्वीकृत है, लेकिन इसे कोई सक्रिय कार्यक्रम असाइन नहीं है।"
+
+#: 
+msgid "This kiosk is assigned to an event, but no members are available for check-in."
+msgstr "इस कियोस्क को कार्यक्रम असाइन है, लेकिन चेक-इन के लिए कोई सदस्य उपलब्ध नहीं है।"
+
+#: 
+msgid "This page will automatically refresh when check-in opens."
+msgstr "चेक-इन खुलने पर यह पृष्ठ अपने आप रीफ़्रेश हो जाएगा।"
+
+#: 
+msgid "This page will automatically update once the kiosk is accepted."
+msgstr "कियोस्क स्वीकार होने पर यह पृष्ठ अपने आप अपडेट हो जाएगा।"
+
+#: 
+msgid "Today!"
+msgstr "आज"
+
+#: 
+msgid "Turning {{age}}"
+msgstr "{{age}} वर्ष के होने वाले हैं"
+
+#: 
+msgid "Unable to load group members"
+msgstr "समूह के सदस्य लोड नहीं हो सके"
+
+#: 
+msgid "Unknown user configuration key"
+msgstr "अज्ञात उपयोगकर्ता कॉन्फ़िगरेशन कुंजी"
+
+#: 
+msgid "this person"
+msgstr "यह व्यक्ति"
+
+#: 
+msgid "{{name}} has no family on record"
+msgstr "{{name}} का कोई परिवार दर्ज नहीं है"
+
+#: 
+msgid "%d failed (all time)"
+msgstr "%d विफल (कुल)"
+
+#: 
+msgid "Failed email history pages"
+msgstr "विफल ईमेल इतिहास पृष्ठ"
+
+#: 
+msgid "Failed sends across all email history, including automated messages"
+msgstr "स्वचालित संदेशों सहित संपूर्ण ईमेल इतिहास में विफल भेजे गए संदेश"
+
+#: 
+msgid "No server error recorded"
+msgstr "कोई सर्वर त्रुटि दर्ज नहीं हुई"
+
+#: 
+msgid "Show all recent sends"
+msgstr "सभी हाल के भेजे गए संदेश दिखाएँ"
+
+#: 
+msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
+msgstr "स्वचालित संदेशों सहित संपूर्ण ईमेल इतिहास में विफल भेजे गए संदेश दिखाए जा रहे हैं। विवरण के लिए कोई विषय चुनें।"
+
+#: 
+msgid "The table shows only the latest 20 sends. Open a person to see their full history."
+msgstr "तालिका में केवल अंतिम 20 भेजे गए संदेश दिखते हैं। पूरा इतिहास देखने के लिए किसी व्यक्ति को खोलें।"
+
+#: 
+msgid "View %d failed sends across all email history"
+msgstr "संपूर्ण ईमेल इतिहास में %d विफल भेजे गए संदेश देखें"
+

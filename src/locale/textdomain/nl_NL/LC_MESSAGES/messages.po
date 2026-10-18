@@ -24195,3 +24195,291 @@ msgstr "E-mail door een beheerder gewijzigd van %1$s naar %2$s"
 msgid "Only an administrator can change the email of a person with a user account."
 msgstr "Alleen een beheerder kan het e-mailadres wijzigen van een persoon met een gebruikersaccount."
 
+#: 
+msgid "Fund totals appear here once payments are added."
+msgstr "Fondstotalen verschijnen hier zodra er betalingen zijn toegevoegd."
+
+#: 
+msgid "No payments yet"
+msgstr "Nog geen betalingen"
+
+#: 
+msgid "Some payments could not be deleted"
+msgstr "Sommige betalingen konden niet worden verwijderd"
+
+#: 
+msgid "A string value is required"
+msgstr "Een tekstwaarde is vereist"
+
+#: 
+msgid "Administrator permission required for this setting"
+msgstr "Beheerdersrechten zijn vereist voor deze instelling"
+
+#: 
+msgid "Alerts sent: {{sent}}, failed: {{failed}}"
+msgstr "Meldingen verzonden: {{sent}}, mislukt: {{failed}}"
+
+#: 
+msgid "Alerts sent: {{total}}"
+msgstr "Meldingen verzonden: {{total}}"
+
+#: 
+msgid "Assign an event to the kiosk using the dropdown"
+msgstr "Wijs een activiteit toe aan de kiosk via de keuzelijst"
+
+#: 
+msgid "Awaiting Acceptance"
+msgstr "Wacht op goedkeuring"
+
+#: 
+msgid "Birthday coming up!"
+msgstr "Binnenkort jarig!"
+
+#: 
+msgid "Check that the event start/end times are correct"
+msgstr "Controleer of de start- en eindtijd van de activiteit kloppen"
+
+#: 
+msgid "Check the server logs for more details"
+msgstr "Bekijk de serverlogboeken voor meer details"
+
+#: 
+msgid "Check-in Opens Soon"
+msgstr "Inchecken opent binnenkort"
+
+#: 
+msgid "Checked-in-by person is not an adult family member"
+msgstr "De persoon die heeft ingecheckt is geen volwassen gezinslid"
+
+#: 
+msgid "Checked-out-by person is not an adult family member"
+msgstr "De persoon die heeft uitgecheckt is geen volwassen gezinslid"
+
+#: 
+msgid "Checkout all students"
+msgstr "Alle leerlingen uitchecken"
+
+#: 
+msgid "Days"
+msgstr "Dagen"
+
+#: 
+msgid "Ensure the group has members"
+msgstr "Zorg dat de groep leden heeft"
+
+#: 
+msgid "Ensure the group has members assigned"
+msgstr "Zorg dat er leden aan de groep zijn toegewezen"
+
+#: 
+msgid "Error Loading Members"
+msgstr "Fout bij het laden van leden"
+
+#: 
+msgid "Event Has Ended"
+msgstr "Activiteit is afgelopen"
+
+#: 
+msgid "Event not linked to a Group"
+msgstr "Activiteit niet gekoppeld aan een groep"
+
+#: 
+msgid "Event timing"
+msgstr "Evenementtijdstip"
+
+#: 
+msgid "Everyone is here!"
+msgstr "Iedereen is er!"
+
+#: 
+msgid "Failed to send all alerts: {{total}}"
+msgstr "Verzenden van alle meldingen mislukt: {{total}}"
+
+#: 
+msgid "Failed to send parent alert"
+msgstr "Melding aan ouders verzenden mislukt"
+
+#: 
+msgid "Find this kiosk in the device list"
+msgstr "Zoek deze kiosk in de apparatenlijst"
+
+#: 
+msgid "Group has no members"
+msgstr "Groep heeft geen leden"
+
+#: 
+msgid "HTTP Status: {{status}}"
+msgstr "HTTP-status: {{status}}"
+
+#: 
+msgid "Hours"
+msgstr "Uren"
+
+#: 
+msgid "How to Accept This Kiosk"
+msgstr "Deze kiosk goedkeuren"
+
+#: 
+msgid "Kiosk Identification"
+msgstr "Kioskidentificatie"
+
+#: 
+msgid "Kiosk Ready"
+msgstr "Kiosk gereed"
+
+#: 
+msgid "Log in to ChurchCRM as an administrator"
+msgstr "Log in bij ChurchCRM als beheerder"
+
+#: 
+msgid "Member is not an adult family member of the roster child"
+msgstr "Lid is geen volwassen gezinslid van het kind op de lijst"
+
+#: 
+msgid "Next Steps"
+msgstr "Volgende stappen"
+
+#: 
+msgid "No Group Members Found"
+msgstr "Geen groepsleden gevonden"
+
+#: 
+msgid "No checked-in students with families to alert"
+msgstr "Geen ingecheckte leerlingen met gezinnen om te waarschuwen"
+
+#: 
+msgid "Parent Alert"
+msgstr "Melding aan ouders"
+
+#: 
+msgid "Parent alert sent for {{name}}"
+msgstr "Melding aan ouders verzonden voor {{name}}"
+
+#: 
+msgid "Photo not found"
+msgstr "Foto niet gevonden"
+
+#: 
+msgid "Possible Causes"
+msgstr "Mogelijke oorzaken"
+
+#: 
+msgid "Processing..."
+msgstr "Bezig met verwerken..."
+
+#: 
+msgid "Recent birthday!"
+msgstr "Onlangs jarig geweest!"
+
+#: 
+msgid "Refresh member list"
+msgstr "Ledenlijst vernieuwen"
+
+#: 
+msgid "Refresh this kiosk page"
+msgstr "Deze kioskpagina vernieuwen"
+
+#: 
+msgid "Seconds"
+msgstr "Seconden"
+
+#: 
+msgid "Send alert to all families"
+msgstr "Melding sturen naar alle gezinnen"
+
+#: 
+msgid "Server error - the event may not be linked to a group"
+msgstr "Serverfout - de activiteit is mogelijk niet aan een groep gekoppeld"
+
+#: 
+msgid "Student"
+msgstr "Leerling"
+
+#: 
+msgid "System timeline entries cannot be deleted"
+msgstr "Systeemitems in de tijdlijn kunnen niet worden verwijderd"
+
+#: 
+msgid "System timeline entries cannot be edited"
+msgstr "Systeemitems in de tijdlijn kunnen niet worden bewerkt"
+
+#: 
+msgid "Thank you for attending!"
+msgstr "Bedankt voor je aanwezigheid!"
+
+#: 
+msgid "This kiosk has registered but needs to be accepted by an administrator before it can be used."
+msgstr "Deze kiosk is geregistreerd, maar moet door een beheerder worden goedgekeurd voordat hij kan worden gebruikt."
+
+#: 
+msgid "This kiosk is accepted but has no active event assignment."
+msgstr "Deze kiosk is goedgekeurd maar heeft geen actieve activiteit toegewezen."
+
+#: 
+msgid "This kiosk is assigned to an event, but no members are available for check-in."
+msgstr "Aan deze kiosk is een activiteit toegewezen, maar er zijn geen leden beschikbaar om in te checken."
+
+#: 
+msgid "This page will automatically refresh when check-in opens."
+msgstr "Deze pagina wordt automatisch vernieuwd zodra het inchecken opent."
+
+#: 
+msgid "This page will automatically update once the kiosk is accepted."
+msgstr "Deze pagina wordt automatisch bijgewerkt zodra de kiosk is goedgekeurd."
+
+#: 
+msgid "Today!"
+msgstr "Vandaag"
+
+#: 
+msgid "Turning {{age}}"
+msgstr "Wordt {{age}}"
+
+#: 
+msgid "Unable to load group members"
+msgstr "Groepsleden kunnen niet worden geladen"
+
+#: 
+msgid "Unknown user configuration key"
+msgstr "Onbekende gebruikersconfiguratiesleutel"
+
+#: 
+msgid "this person"
+msgstr "deze persoon"
+
+#: 
+msgid "{{name}} has no family on record"
+msgstr "{{name}} heeft geen gezin geregistreerd"
+
+#: 
+msgid "%d failed (all time)"
+msgstr "%d mislukt (totaal)"
+
+#: 
+msgid "Failed email history pages"
+msgstr "Pagina's met mislukte e-mailgeschiedenis"
+
+#: 
+msgid "Failed sends across all email history, including automated messages"
+msgstr "Mislukte verzendingen in de hele e-mailgeschiedenis, inclusief geautomatiseerde berichten"
+
+#: 
+msgid "No server error recorded"
+msgstr "Geen serverfout geregistreerd"
+
+#: 
+msgid "Show all recent sends"
+msgstr "Alle recente verzendingen tonen"
+
+#: 
+msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
+msgstr "Mislukte verzendingen uit de hele e-mailgeschiedenis worden getoond, inclusief geautomatiseerde berichten. Selecteer een onderwerp voor details."
+
+#: 
+msgid "The table shows only the latest 20 sends. Open a person to see their full history."
+msgstr "De tabel toont alleen de laatste 20 verzendingen. Open een persoon om de volledige geschiedenis te zien."
+
+#: 
+msgid "View %d failed sends across all email history"
+msgstr "Bekijk %d mislukte verzendingen in de hele e-mailgeschiedenis"
+

@@ -24338,3 +24338,291 @@ msgstr "管理員已將電子郵件從 %1$s 更改為 %2$s"
 msgid "Only an administrator can change the email of a person with a user account."
 msgstr "只有管理員可以更改擁有使用者帳號的人員的電子郵件。"
 
+#: 
+msgid "Fund totals appear here once payments are added."
+msgstr "新增付款後，基金合計將顯示於此。"
+
+#: 
+msgid "No payments yet"
+msgstr "尚無付款"
+
+#: 
+msgid "Some payments could not be deleted"
+msgstr "部分付款無法刪除"
+
+#: 
+msgid "A string value is required"
+msgstr "需要字串值"
+
+#: 
+msgid "Administrator permission required for this setting"
+msgstr "此設定需要管理員權限"
+
+#: 
+msgid "Alerts sent: {{sent}}, failed: {{failed}}"
+msgstr "已傳送提醒：{{sent}}，失敗：{{failed}}"
+
+#: 
+msgid "Alerts sent: {{total}}"
+msgstr "已傳送提醒：{{total}}"
+
+#: 
+msgid "Assign an event to the kiosk using the dropdown"
+msgstr "使用下拉選單為簽到機台指派活動"
+
+#: 
+msgid "Awaiting Acceptance"
+msgstr "等待接受"
+
+#: 
+msgid "Birthday coming up!"
+msgstr "生日即將到來！"
+
+#: 
+msgid "Check that the event start/end times are correct"
+msgstr "請檢查活動的開始與結束時間是否正確"
+
+#: 
+msgid "Check the server logs for more details"
+msgstr "請查看伺服器日誌以取得更多詳細資料"
+
+#: 
+msgid "Check-in Opens Soon"
+msgstr "簽到即將開放"
+
+#: 
+msgid "Checked-in-by person is not an adult family member"
+msgstr "辦理簽到的人不是成年家庭成員"
+
+#: 
+msgid "Checked-out-by person is not an adult family member"
+msgstr "辦理簽退的人不是成年家庭成員"
+
+#: 
+msgid "Checkout all students"
+msgstr "全部學生簽退"
+
+#: 
+msgid "Days"
+msgstr "天"
+
+#: 
+msgid "Ensure the group has members"
+msgstr "請確認該小組有成員"
+
+#: 
+msgid "Ensure the group has members assigned"
+msgstr "請確認已為該小組指派成員"
+
+#: 
+msgid "Error Loading Members"
+msgstr "載入成員時發生錯誤"
+
+#: 
+msgid "Event Has Ended"
+msgstr "活動已結束"
+
+#: 
+msgid "Event not linked to a Group"
+msgstr "活動未連結小組"
+
+#: 
+msgid "Event timing"
+msgstr "活動時間設定"
+
+#: 
+msgid "Everyone is here!"
+msgstr "大家都到齊了！"
+
+#: 
+msgid "Failed to send all alerts: {{total}}"
+msgstr "傳送全部提醒失敗：{{total}}"
+
+#: 
+msgid "Failed to send parent alert"
+msgstr "傳送家長提醒失敗"
+
+#: 
+msgid "Find this kiosk in the device list"
+msgstr "在裝置清單中找到此簽到機台"
+
+#: 
+msgid "Group has no members"
+msgstr "該小組沒有成員"
+
+#: 
+msgid "HTTP Status: {{status}}"
+msgstr "HTTP 狀態：{{status}}"
+
+#: 
+msgid "Hours"
+msgstr "小時"
+
+#: 
+msgid "How to Accept This Kiosk"
+msgstr "如何接受此簽到機台"
+
+#: 
+msgid "Kiosk Identification"
+msgstr "簽到機台識別"
+
+#: 
+msgid "Kiosk Ready"
+msgstr "簽到機台已就緒"
+
+#: 
+msgid "Log in to ChurchCRM as an administrator"
+msgstr "以管理員身分登入 ChurchCRM"
+
+#: 
+msgid "Member is not an adult family member of the roster child"
+msgstr "該成員不是名單中孩子的成年家庭成員"
+
+#: 
+msgid "Next Steps"
+msgstr "後續步驟"
+
+#: 
+msgid "No Group Members Found"
+msgstr "找不到小組成員"
+
+#: 
+msgid "No checked-in students with families to alert"
+msgstr "沒有已簽到且有家庭可提醒的學生"
+
+#: 
+msgid "Parent Alert"
+msgstr "家長提醒"
+
+#: 
+msgid "Parent alert sent for {{name}}"
+msgstr "已為 {{name}} 傳送家長提醒"
+
+#: 
+msgid "Photo not found"
+msgstr "找不到照片"
+
+#: 
+msgid "Possible Causes"
+msgstr "可能的原因"
+
+#: 
+msgid "Processing..."
+msgstr "處理中..."
+
+#: 
+msgid "Recent birthday!"
+msgstr "最近剛過生日！"
+
+#: 
+msgid "Refresh member list"
+msgstr "重新整理成員清單"
+
+#: 
+msgid "Refresh this kiosk page"
+msgstr "重新整理此簽到機台頁面"
+
+#: 
+msgid "Seconds"
+msgstr "秒"
+
+#: 
+msgid "Send alert to all families"
+msgstr "向所有家庭傳送提醒"
+
+#: 
+msgid "Server error - the event may not be linked to a group"
+msgstr "伺服器錯誤 - 該活動可能未連結小組"
+
+#: 
+msgid "Student"
+msgstr "學生"
+
+#: 
+msgid "System timeline entries cannot be deleted"
+msgstr "系統時間軸項目無法刪除"
+
+#: 
+msgid "System timeline entries cannot be edited"
+msgstr "系統時間軸項目無法編輯"
+
+#: 
+msgid "Thank you for attending!"
+msgstr "感謝您的參與！"
+
+#: 
+msgid "This kiosk has registered but needs to be accepted by an administrator before it can be used."
+msgstr "此簽到機台已註冊，但需要管理員接受後才能使用。"
+
+#: 
+msgid "This kiosk is accepted but has no active event assignment."
+msgstr "此簽到機台已被接受，但沒有指派進行中的活動。"
+
+#: 
+msgid "This kiosk is assigned to an event, but no members are available for check-in."
+msgstr "此簽到機台已指派活動，但沒有可簽到的成員。"
+
+#: 
+msgid "This page will automatically refresh when check-in opens."
+msgstr "簽到開放後，此頁面將自動重新整理。"
+
+#: 
+msgid "This page will automatically update once the kiosk is accepted."
+msgstr "簽到機台被接受後，此頁面將自動更新。"
+
+#: 
+msgid "Today!"
+msgstr "今天"
+
+#: 
+msgid "Turning {{age}}"
+msgstr "即將滿 {{age}} 歲"
+
+#: 
+msgid "Unable to load group members"
+msgstr "無法載入小組成員"
+
+#: 
+msgid "Unknown user configuration key"
+msgstr "未知的使用者設定鍵"
+
+#: 
+msgid "this person"
+msgstr "此人"
+
+#: 
+msgid "{{name}} has no family on record"
+msgstr "{{name}} 沒有家庭記錄"
+
+#: 
+msgid "%d failed (all time)"
+msgstr "%d 次失敗（累計）"
+
+#: 
+msgid "Failed email history pages"
+msgstr "失敗郵件歷史頁面"
+
+#: 
+msgid "Failed sends across all email history, including automated messages"
+msgstr "全部郵件歷史中的傳送失敗記錄，包括自動郵件"
+
+#: 
+msgid "No server error recorded"
+msgstr "未記錄伺服器錯誤"
+
+#: 
+msgid "Show all recent sends"
+msgstr "顯示所有最近的傳送記錄"
+
+#: 
+msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
+msgstr "正在顯示全部郵件歷史中的傳送失敗記錄，包括自動郵件。選擇主旨查看詳細資料。"
+
+#: 
+msgid "The table shows only the latest 20 sends. Open a person to see their full history."
+msgstr "表格僅顯示最近 20 次傳送。開啟某人可查看其完整歷史。"
+
+#: 
+msgid "View %d failed sends across all email history"
+msgstr "檢視全部郵件歷史中的 %d 次傳送失敗"
+
