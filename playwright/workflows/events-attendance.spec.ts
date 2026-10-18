@@ -15,6 +15,7 @@ test.describe('Events & Attendance', () => {
       title: 'Events Calendar',
       category: 'Groups & Events',
       purpose: 'Show the event calendar',
+      usedIn: ['docs'],
     });
   });
 
@@ -51,6 +52,7 @@ test.describe('Events & Attendance', () => {
       title: 'Check-In & Attendance',
       category: 'Groups & Events',
       purpose: 'Show the event check-in / attendance workflow',
+      usedIn: ['website'],
     });
   });
 });

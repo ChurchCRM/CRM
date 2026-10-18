@@ -17,6 +17,7 @@ test.describe('Dashboard', () => {
       category: 'Dashboards',
       dark: 'dashboard-hero-dark',
       purpose: 'Landing dashboard after login — hero shot',
+      usedIn: ['docs', 'website'],
     });
   });
 });

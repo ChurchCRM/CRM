@@ -58,6 +58,7 @@ test.describe('Directory booklet', () => {
       title: 'Folded Booklet Directory',
       category: 'People & Families',
       purpose: 'Show the directory report options with the Folded Booklet page layout selected',
+      usedIn: ['docs'],
     });
   });
 
