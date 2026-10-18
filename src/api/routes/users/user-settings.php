@@ -54,7 +54,7 @@ $app->group('/user/{userId:[0-9]+}/setting', function (RouteCollectorProxy $grou
 
         $value = ((array) $request->getParsedBody())['value'] ?? null;
         $formats = [
-            'ui.locale' => '/^[a-z]{2,3}(_[A-Za-z0-9]{2,8})*$/',
+            'ui.locale' => '/^([a-z]{2,3}(_[A-Za-z0-9]{2,8})*)?$/',
             'ui.table.size' => '/^-?\d{1,4}$/',
         ];
         if (

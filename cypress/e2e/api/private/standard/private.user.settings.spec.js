@@ -95,6 +95,10 @@ describe("API Private User Settings", () => {
         );
     });
 
+    it("Accepts an empty value to clear ui.locale", () => {
+        cy.makePrivateUserAPICall("POST", "/api/user/3/setting/ui.locale", { value: "" }, 200);
+    });
+
     it("Rejects invalid setting names and values", () => {
         cy.makePrivateUserAPICall("POST", "/api/user/3/setting/ui.table.size", { value: "10;alert(1)" }, 400);
         cy.makePrivateUserAPICall("POST", "/api/user/3/setting/ui.locale", { value: "</script>" }, 400);
