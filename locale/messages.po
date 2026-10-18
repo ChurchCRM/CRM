@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 15:49+0000\n"
+"POT-Creation-Date: 2026-10-18 20:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -7173,9 +7173,6 @@ msgid "Generate again closer to its first date."
 msgstr ""
 
 msgid "Generate and download confirmation letters"
-msgstr ""
-
-msgid "Generate annual giving statements for tax purposes"
 msgstr ""
 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
@@ -14700,12 +14697,6 @@ msgid "Tax Report Verbiage"
 msgstr ""
 
 msgid "Tax Report signer"
-msgstr ""
-
-msgid "Tax Statements"
-msgstr ""
-
-msgid "Tax Statements (Giving Report)"
 msgstr ""
 
 msgid "Tax Year Reporting Checklist"
