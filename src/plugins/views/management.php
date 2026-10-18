@@ -994,8 +994,8 @@ $(document).ready(function() {
                 : '';
             const author = (entry.author || '').trim();
             const homepageUrl = (entry.homepage || '').trim();
-            const homepageLink = homepageUrl
-                ? '<a href="' + $('<div>').text(homepageUrl).html() + '" target="_blank" rel="noopener"><?= addslashes(gettext('Homepage')) ?></a>'
+            const homepageLink = /^https:\/\//i.test(homepageUrl)
+                ? $('<a target="_blank" rel="noopener noreferrer"></a>').attr('href', homepageUrl).text('<?= addslashes(gettext('Homepage')) ?>').prop('outerHTML')
                 : '';
             const metaParts = [author ? $('<div>').text(author).html() : '', homepageLink].filter(Boolean);
             const metaHtml = metaParts.length
