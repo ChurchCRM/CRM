@@ -524,7 +524,8 @@
     "Min",
     "Reset link",
     "SMTP test",
-    "Kiosk Settings"
+    "Kiosk Settings",
+    "{{team}}: {{staffing}}"
   ],
   "fr": [
     "AM / PM",
@@ -586,7 +587,8 @@
     "Data",
     "Folder",
     "Min",
-    "Valid"
+    "Valid",
+    "{{team}}: {{staffing}}"
   ],
   "ja": [
     "Azure",
@@ -693,7 +695,8 @@
   "vi": [
     "Azure",
     "Email BCC",
-    "SHA1 Hash"
+    "SHA1 Hash",
+    "{{team}}: {{staffing}}"
   ],
   "zh-CN": [
     "Azure",
@@ -856,7 +859,8 @@
     "Indigo",
     "SHA1 Hash",
     "am / pm",
-    "Data"
+    "Data",
+    "{{team}}: {{staffing}}"
   ],
   "ta": [
     "Azure",
@@ -897,7 +901,8 @@
     "Server",
     "Session Handler",
     "Test",
-    "Timeout"
+    "Timeout",
+    "{{team}}: {{staffing}}"
   ],
   "uk": [
     "Azure",
