@@ -397,15 +397,6 @@ msgid "Add Payment"
 msgstr "చెల్లింపును జోడించండి"
 
 #: 
-#, fuzzy
-msgid "Load Authorized"
-msgstr "అధీకృత లావాదేవీలను లోడ్ చేయండి"
-
-#: 
-msgid "Run Transactions"
-msgstr "లావాదేవీలను అమలు చేయండి"
-
-#: 
 msgid "Directory reports"
 msgstr "డైరెక్టరీ నివేదికలు"
 
@@ -2237,10 +2228,6 @@ msgstr "మీరు ఎంచుకున్నదాన్ని తొలగ�
 #: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "ఈ చర్య రద్దు చేయబడదు మరియు చట్టపరమైన పరిణామాలు ఉండవచ్చు!"
-
-#: 
-msgid "Please ensure this what you want to do."
-msgstr "దయచేసి ఇది మీరు చేయాలనుకున్నదేనని నిర్ధారించుకోండి."
 
 #: 
 msgid "Deposit Type"
@@ -5625,14 +5612,6 @@ msgid "Generate Report"
 msgstr "రిపోర్ట్ జనరేట్ చేయండి"
 
 #: 
-msgid "No Cash"
-msgstr "నగదు లేదు"
-
-#: 
-msgid "No Checks"
-msgstr "చెక్కులు లేవు"
-
-#: 
 msgid "Payments"
 msgstr "చెల్లింపులు"
 
@@ -5647,11 +5626,6 @@ msgstr "మొత్తం డిపాజిట్"
 #: 
 msgid "Total Payments"
 msgstr "మొత్తం చెల్లింపులు"
-
-#: 
-#, fuzzy
-msgid "payments?"
-msgstr "చెల్లింపు(లు)?"
 
 #: 
 msgid "All system files have passed integrity validation."
@@ -6275,10 +6249,6 @@ msgid "Aug"
 msgstr "ఆగస్టు"
 
 #: 
-msgid "Back to Deposits"
-msgstr "డిపాజిట్‌లకు తిరిగి వెళ్ళు"
-
-#: 
 msgid "Back to Families"
 msgstr "కుటుంబాలకు తిరిగి వెళ్ళు"
 
@@ -6357,10 +6327,6 @@ msgstr "రోజు"
 #: 
 msgid "Dec"
 msgstr "డిసెంబర్"
-
-#: 
-msgid "Deposit Navigation"
-msgstr "డిపాజిట్ నావిగేషన్"
 
 #: 
 msgid "Deposit Statistics"
@@ -13966,10 +13932,6 @@ msgid "Foreground Color"
 msgstr "ముందు రంగు"
 
 #: 
-msgid "Fund(s)"
-msgstr "నిధి(లు)"
-
-#: 
 msgid "Generate new code"
 msgstr "కొత్త కోడ్‌ను రూపొందించండి"
 
@@ -14340,10 +14302,6 @@ msgstr "చెక్-ఇన్ చేయడానికి ఒక వ్యక�
 #: 
 msgid "Please select a role."
 msgstr "దయచేసి ఒక పాత్రను ఎంచుకోండి."
-
-#: 
-msgid "Please select rows to delete"
-msgstr "దయచేసి తొలగించడానికి వరుసలను ఎంచుకోండి"
 
 #: 
 msgid "Please try again"

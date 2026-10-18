@@ -397,15 +397,6 @@ msgid "Add Payment"
 msgstr "ክፍያ ጨምር"
 
 #: 
-#, fuzzy
-msgid "Load Authorized"
-msgstr "የተፈቀዱ ግብይቶችን ጫን"
-
-#: 
-msgid "Run Transactions"
-msgstr "ግብይቶችን አሂድ"
-
-#: 
 msgid "Directory reports"
 msgstr "ማውጫ ሪፖርቶች"
 
@@ -2246,10 +2237,6 @@ msgstr "የተመረጠውን መሰረዝ መፈለግህን እርግጠኛ �
 #: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "ይህ እርምጃ ሊቀለበስ አይችልም፣ እና ህጋዊ አንድምታ ሊኖረው ይችላል!"
-
-#: 
-msgid "Please ensure this what you want to do."
-msgstr "እባክዎ ይህን ማድረግ የሚፈልጉትን ያረጋግጡ."
 
 #: 
 msgid "Deposit Type"
@@ -5655,14 +5642,6 @@ msgid "Generate Report"
 msgstr "ሪፖርት አውጣ"
 
 #: 
-msgid "No Cash"
-msgstr "ጥሬ ገንዘብ የለም"
-
-#: 
-msgid "No Checks"
-msgstr "ቼኮች የሉም"
-
-#: 
 msgid "Payments"
 msgstr "ክፍያዎች"
 
@@ -5677,11 +5656,6 @@ msgstr "አጠቃላይ ተቀማጭ"
 #: 
 msgid "Total Payments"
 msgstr "አጠቃላይ ክፍያዎች"
-
-#: 
-#, fuzzy
-msgid "payments?"
-msgstr "ክፍያ(ዎች)?"
 
 #: 
 msgid "All system files have passed integrity validation."
@@ -6305,10 +6279,6 @@ msgid "Aug"
 msgstr "ኦገስት"
 
 #: 
-msgid "Back to Deposits"
-msgstr "ወደ ተቀማጮች ተመለስ"
-
-#: 
 msgid "Back to Families"
 msgstr "ወደ ቤተሰቦች ተመለስ"
 
@@ -6387,10 +6357,6 @@ msgstr "ቀን"
 #: 
 msgid "Dec"
 msgstr "ዲሴምበር"
-
-#: 
-msgid "Deposit Navigation"
-msgstr "የተቀማጭ አሰሳ"
 
 #: 
 msgid "Deposit Statistics"
@@ -13997,10 +13963,6 @@ msgstr "\n"
 "የፊት ለፊት ቀለም"
 
 #: 
-msgid "Fund(s)"
-msgstr "ፈንድ(ዶች)"
-
-#: 
 msgid "Generate new code"
 msgstr "አዲስ ኮድ አዘጋጅ"
 
@@ -14371,10 +14333,6 @@ msgstr "እባክዎ ለምዝገባ ሰው ይምረጡ።"
 #: 
 msgid "Please select a role."
 msgstr "እባክዎ ሚና ይምረጡ።"
-
-#: 
-msgid "Please select rows to delete"
-msgstr "እባክዎን የሚሰረዙ ረድፎችን ይምረጡ"
 
 #: 
 msgid "Please try again"

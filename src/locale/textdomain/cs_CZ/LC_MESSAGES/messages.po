@@ -398,15 +398,6 @@ msgid "Add Payment"
 msgstr "Vlož platbu"
 
 #: 
-#, fuzzy
-msgid "Load Authorized"
-msgstr "Načíst autorizované transakce"
-
-#: 
-msgid "Run Transactions"
-msgstr "Provést transakce"
-
-#: 
 msgid "Directory reports"
 msgstr "Sestavy adresáře"
 
@@ -2247,10 +2238,6 @@ msgstr "Opravdu chcete smazat vybrané"
 #: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "Tento úkon NELZE vzít zpět a může mít právní důsledky!"
-
-#: 
-msgid "Please ensure this what you want to do."
-msgstr "Ujistěte se, že to chcete udělat."
 
 #: 
 msgid "Deposit Type"
@@ -5638,14 +5625,6 @@ msgid "Generate Report"
 msgstr "Generovat zprávu"
 
 #: 
-msgid "No Cash"
-msgstr "Bez hotovosti"
-
-#: 
-msgid "No Checks"
-msgstr "Bez šeků"
-
-#: 
 msgid "Payments"
 msgstr "Platby"
 
@@ -5660,11 +5639,6 @@ msgstr "Celkový vklad"
 #: 
 msgid "Total Payments"
 msgstr "Celkové platby"
-
-#: 
-#, fuzzy
-msgid "payments?"
-msgstr "platby?"
 
 #: 
 msgid "All system files have passed integrity validation."
@@ -6290,10 +6264,6 @@ msgid "Aug"
 msgstr "srp"
 
 #: 
-msgid "Back to Deposits"
-msgstr "Zpátky na vklady"
-
-#: 
 msgid "Back to Families"
 msgstr "Zpátky na rodiny"
 
@@ -6372,10 +6342,6 @@ msgstr "den"
 #: 
 msgid "Dec"
 msgstr "pro"
-
-#: 
-msgid "Deposit Navigation"
-msgstr "Navigace vkladu"
 
 #: 
 msgid "Deposit Statistics"
@@ -13987,10 +13953,6 @@ msgid "Foreground Color"
 msgstr "Barva popředí"
 
 #: 
-msgid "Fund(s)"
-msgstr "Fond(y)"
-
-#: 
 msgid "Generate new code"
 msgstr "Generovat nový kód"
 
@@ -14361,10 +14323,6 @@ msgstr "Vyberte prosím osobu k přihlášení."
 #: 
 msgid "Please select a role."
 msgstr "Vyberte prosím roli."
-
-#: 
-msgid "Please select rows to delete"
-msgstr "Vyberte řádky, které chcete smazat"
 
 #: 
 msgid "Please try again"

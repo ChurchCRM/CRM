@@ -404,14 +404,6 @@ msgid "Add Payment"
 msgstr "เพิ่มการชำระเงิน"
 
 #: 
-msgid "Load Authorized"
-msgstr "โหลดที่ได้รับอนุญาต"
-
-#: 
-msgid "Run Transactions"
-msgstr "ดำเนินการธุรกรรม"
-
-#: 
 msgid "Directory reports"
 msgstr "รายงานไดเรกทอรี"
 
@@ -2237,10 +2229,6 @@ msgstr "คุณแน่ใจหรือไม่ว่าต้องกา
 #: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "การดำเนินการนี้ไม่สามารถเลิกทำได้และอาจมีผลกระทบทางกฎหมาย!"
-
-#: 
-msgid "Please ensure this what you want to do."
-msgstr "กรุณาตรวจสอบให้แน่ใจว่านี่คือสิ่งที่คุณต้องการทำ"
 
 #: 
 msgid "Deposit Type"
@@ -5623,14 +5611,6 @@ msgid "Generate Report"
 msgstr "สร้างรายงาน"
 
 #: 
-msgid "No Cash"
-msgstr "ไม่มีเงินสด"
-
-#: 
-msgid "No Checks"
-msgstr "ไม่มีเช็ค"
-
-#: 
 msgid "Payments"
 msgstr "การชำระเงิน"
 
@@ -5645,11 +5625,6 @@ msgstr "ยอดรวมการฝาก"
 #: 
 msgid "Total Payments"
 msgstr "ยอดรวมการชำระเงิน"
-
-#: 
-#, fuzzy
-msgid "payments?"
-msgstr "การชำระเงิน?"
 
 #: 
 msgid "All system files have passed integrity validation."
@@ -6271,10 +6246,6 @@ msgid "Aug"
 msgstr "ส.ค."
 
 #: 
-msgid "Back to Deposits"
-msgstr "กลับไปที่การฝาก"
-
-#: 
 msgid "Back to Families"
 msgstr "กลับไปที่ครอบครัว"
 
@@ -6353,10 +6324,6 @@ msgstr "วัน"
 #: 
 msgid "Dec"
 msgstr "ธ.ค."
-
-#: 
-msgid "Deposit Navigation"
-msgstr "การนำทางการฝาก"
 
 #: 
 msgid "Deposit Statistics"
@@ -13956,10 +13923,6 @@ msgid "Foreground Color"
 msgstr "สีพื้นหน้า"
 
 #: 
-msgid "Fund(s)"
-msgstr "กองทุน"
-
-#: 
 msgid "Generate new code"
 msgstr "สร้างรหัสใหม่"
 
@@ -14330,10 +14293,6 @@ msgstr "กรุณาเลือกบุคคลเพื่อลงทะ
 #: 
 msgid "Please select a role."
 msgstr "กรุณาเลือกบทบาท"
-
-#: 
-msgid "Please select rows to delete"
-msgstr "กรุณาเลือกแถวที่จะลบ"
 
 #: 
 msgid "Please try again"

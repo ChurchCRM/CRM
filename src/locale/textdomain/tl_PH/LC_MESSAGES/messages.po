@@ -392,14 +392,6 @@ msgid "Add Payment"
 msgstr "Magdagdag ng Bayad"
 
 #: 
-msgid "Load Authorized"
-msgstr "I-load ang Awtorisado"
-
-#: 
-msgid "Run Transactions"
-msgstr "Patakbuhin ang mga Transaksyon"
-
-#: 
 msgid "Directory reports"
 msgstr "Mga ulat ng Direktoryo"
 
@@ -2225,10 +2217,6 @@ msgstr "Sigurado ka bang gusto mong burahin ang napiling"
 #: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "Ang aksyong ito ay HINDI na mababawi, at maaaring may legal na implikasyon!"
-
-#: 
-msgid "Please ensure this what you want to do."
-msgstr "Pakitiyak na ito ang gusto mong gawin."
 
 #: 
 msgid "Deposit Type"
@@ -5613,14 +5601,6 @@ msgid "Generate Report"
 msgstr "Gumawa ng Ulat"
 
 #: 
-msgid "No Cash"
-msgstr "Walang Cash"
-
-#: 
-msgid "No Checks"
-msgstr "Walang mga Tseke"
-
-#: 
 msgid "Payments"
 msgstr "Mga Pagbabayad"
 
@@ -5635,11 +5615,6 @@ msgstr "Kabuuang Deposito"
 #: 
 msgid "Total Payments"
 msgstr "Kabuuang Pagbabayad"
-
-#: 
-#, fuzzy
-msgid "payments?"
-msgstr "pagbabayad(mga)?"
 
 #: 
 msgid "All system files have passed integrity validation."
@@ -6263,10 +6238,6 @@ msgid "Aug"
 msgstr "Ago"
 
 #: 
-msgid "Back to Deposits"
-msgstr "Bumalik sa mga Deposito"
-
-#: 
 msgid "Back to Families"
 msgstr "Bumalik sa mga Pamilya"
 
@@ -6345,10 +6316,6 @@ msgstr "Araw"
 #: 
 msgid "Dec"
 msgstr "Dis"
-
-#: 
-msgid "Deposit Navigation"
-msgstr "Nabigasyon ng Deposito"
 
 #: 
 msgid "Deposit Statistics"
@@ -13954,10 +13921,6 @@ msgid "Foreground Color"
 msgstr "Kulay ng Foreground"
 
 #: 
-msgid "Fund(s)"
-msgstr "Pondo(mga)"
-
-#: 
 msgid "Generate new code"
 msgstr "Gumawa ng bagong code"
 
@@ -14328,10 +14291,6 @@ msgstr "Pumili ng tao para i-check in."
 #: 
 msgid "Please select a role."
 msgstr "Pumili ng papel."
-
-#: 
-msgid "Please select rows to delete"
-msgstr "Pakipili ng mga row na buburahin"
 
 #: 
 msgid "Please try again"

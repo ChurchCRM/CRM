@@ -414,15 +414,6 @@ msgid "Add Payment"
 msgstr "Lägg till betalning"
 
 #: 
-#, fuzzy
-msgid "Load Authorized"
-msgstr "Ladda in godkända verifikationer"
-
-#: 
-msgid "Run Transactions"
-msgstr "Köra verifikationer"
-
-#: 
 msgid "Directory reports"
 msgstr "Katalograpporter"
 
@@ -2337,10 +2328,6 @@ msgstr "Är du säker på att du vill ta bort det valda"
 #: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "Denna åtgärd KAN INTE ångras och kan ha juridiska konsekvenser!"
-
-#: 
-msgid "Please ensure this what you want to do."
-msgstr "Se till att du gör det du vill göra."
 
 #: 
 msgid "Deposit Type"
@@ -5738,14 +5725,6 @@ msgid "Generate Report"
 msgstr "Generera rapport"
 
 #: 
-msgid "No Cash"
-msgstr "Inga kontanter"
-
-#: 
-msgid "No Checks"
-msgstr "Inga checkar"
-
-#: 
 msgid "Payments"
 msgstr "Betalningar"
 
@@ -5760,11 +5739,6 @@ msgstr "Total insättning"
 #: 
 msgid "Total Payments"
 msgstr "Totala betalningar"
-
-#: 
-#, fuzzy
-msgid "payments?"
-msgstr "betalning(ar)?"
 
 #: 
 msgid "All system files have passed integrity validation."
@@ -6388,10 +6362,6 @@ msgid "Aug"
 msgstr "Aug"
 
 #: 
-msgid "Back to Deposits"
-msgstr "Tillbaka till insättningar"
-
-#: 
 msgid "Back to Families"
 msgstr "Tillbaka till familjer"
 
@@ -6470,10 +6440,6 @@ msgstr "Dag"
 #: 
 msgid "Dec"
 msgstr "Dec"
-
-#: 
-msgid "Deposit Navigation"
-msgstr "Navigering för insättningar"
 
 #: 
 msgid "Deposit Statistics"
@@ -14079,10 +14045,6 @@ msgid "Foreground Color"
 msgstr "Förgrundsfärg"
 
 #: 
-msgid "Fund(s)"
-msgstr "Fond(er)"
-
-#: 
 msgid "Generate new code"
 msgstr "Generera ny kod"
 
@@ -14453,10 +14415,6 @@ msgstr "Välj en person att checka in."
 #: 
 msgid "Please select a role."
 msgstr "Välj en roll."
-
-#: 
-msgid "Please select rows to delete"
-msgstr "Välj rader att radera"
 
 #: 
 msgid "Please try again"

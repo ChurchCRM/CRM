@@ -398,15 +398,6 @@ msgid "Add Payment"
 msgstr "Tambah Pembayaran"
 
 #: 
-#, fuzzy
-msgid "Load Authorized"
-msgstr "Muat transaksi yang sudah terotorisasi"
-
-#: 
-msgid "Run Transactions"
-msgstr "Jalankan transaksi"
-
-#: 
 msgid "Directory reports"
 msgstr "Laporan direktori"
 
@@ -2248,10 +2239,6 @@ msgstr "Anda yakin ingin menghapus yang dipilih"
 #: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "Tindakan ini TIDAK BISA dibatalkan, dan mungkin memiliki implikasi hukum!"
-
-#: 
-msgid "Please ensure this what you want to do."
-msgstr "Harap pastikan ini yang ingin Anda lakukan."
 
 #: 
 msgid "Deposit Type"
@@ -5640,14 +5627,6 @@ msgid "Generate Report"
 msgstr "Buat Laporan"
 
 #: 
-msgid "No Cash"
-msgstr "Tanpa Tunai"
-
-#: 
-msgid "No Checks"
-msgstr "Tanpa Cek"
-
-#: 
 msgid "Payments"
 msgstr "Pembayaran"
 
@@ -5662,11 +5641,6 @@ msgstr "Total Setoran"
 #: 
 msgid "Total Payments"
 msgstr "Total Pembayaran"
-
-#: 
-#, fuzzy
-msgid "payments?"
-msgstr "pembayaran"
 
 #: 
 msgid "All system files have passed integrity validation."
@@ -6288,10 +6262,6 @@ msgid "Aug"
 msgstr "Agu"
 
 #: 
-msgid "Back to Deposits"
-msgstr "Kembali ke Setoran"
-
-#: 
 msgid "Back to Families"
 msgstr "Kembali ke Keluarga"
 
@@ -6370,10 +6340,6 @@ msgstr "Hari"
 #: 
 msgid "Dec"
 msgstr "Des"
-
-#: 
-msgid "Deposit Navigation"
-msgstr "Navigasi Setoran"
 
 #: 
 msgid "Deposit Statistics"
@@ -13973,10 +13939,6 @@ msgid "Foreground Color"
 msgstr "Warna latar depan"
 
 #: 
-msgid "Fund(s)"
-msgstr "Dana"
-
-#: 
 msgid "Generate new code"
 msgstr "Buat kode baru"
 
@@ -14347,10 +14309,6 @@ msgstr "Silakan pilih seseorang untuk diabsen masuk."
 #: 
 msgid "Please select a role."
 msgstr "Silakan pilih peran."
-
-#: 
-msgid "Please select rows to delete"
-msgstr "Harap pilih baris yang akan dihapus"
 
 #: 
 msgid "Please try again"

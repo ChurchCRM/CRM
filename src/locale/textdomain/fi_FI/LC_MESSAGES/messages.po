@@ -398,15 +398,6 @@ msgid "Add Payment"
 msgstr "Lisää maksu"
 
 #: 
-#, fuzzy
-msgid "Load Authorized"
-msgstr "lataa Valtuutetut tapahtumat"
-
-#: 
-msgid "Run Transactions"
-msgstr "Suorita siirtotapahtumat"
-
-#: 
 msgid "Directory reports"
 msgstr "Hakemistoraportit"
 
@@ -2232,10 +2223,6 @@ msgstr "Oletko varma, että haluat poistaa valitut"
 #: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "Tätä toimintoa EI VOI peruuttaa, ja sillä voi olla oikeudellisia vaikutuksia!"
-
-#: 
-msgid "Please ensure this what you want to do."
-msgstr "Varmista, että haluat todella tehdä tämän."
 
 #: 
 msgid "Deposit Type"
@@ -5615,14 +5602,6 @@ msgid "Generate Report"
 msgstr "Luo raportti"
 
 #: 
-msgid "No Cash"
-msgstr "Ei käteistä"
-
-#: 
-msgid "No Checks"
-msgstr "Ei shekkejä"
-
-#: 
 msgid "Payments"
 msgstr "Maksut"
 
@@ -5637,11 +5616,6 @@ msgstr "Talletus yhteensä"
 #: 
 msgid "Total Payments"
 msgstr "Maksut yhteensä"
-
-#: 
-#, fuzzy
-msgid "payments?"
-msgstr "maksu(t)?"
 
 #: 
 msgid "All system files have passed integrity validation."
@@ -6265,10 +6239,6 @@ msgid "Aug"
 msgstr "Elo"
 
 #: 
-msgid "Back to Deposits"
-msgstr "Takaisin talletusliuskoihin"
-
-#: 
 msgid "Back to Families"
 msgstr "Takaisin perheisiin"
 
@@ -6347,10 +6317,6 @@ msgstr "Päivä"
 #: 
 msgid "Dec"
 msgstr "Joulu"
-
-#: 
-msgid "Deposit Navigation"
-msgstr "Talletusliuskan navigointi"
 
 #: 
 msgid "Deposit Statistics"
@@ -13956,10 +13922,6 @@ msgid "Foreground Color"
 msgstr "Etualaväri"
 
 #: 
-msgid "Fund(s)"
-msgstr "Rahasto(t)"
-
-#: 
 msgid "Generate new code"
 msgstr "Luo uusi koodi"
 
@@ -14330,10 +14292,6 @@ msgstr "Valitse kirjattava henkilö."
 #: 
 msgid "Please select a role."
 msgstr "Valitse rooli."
-
-#: 
-msgid "Please select rows to delete"
-msgstr "Valitse poistettavat rivit"
 
 #: 
 msgid "Please try again"

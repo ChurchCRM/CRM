@@ -398,15 +398,6 @@ msgid "Add Payment"
 msgstr "Προσθήκη πληρωμής"
 
 #: 
-#, fuzzy
-msgid "Load Authorized"
-msgstr "Φόρτωση εξουσιοδοτημένων συναλλαγών"
-
-#: 
-msgid "Run Transactions"
-msgstr "Εκτέλεση συναλλαγών"
-
-#: 
 msgid "Directory reports"
 msgstr "Αναφορές καταλόγου"
 
@@ -2247,10 +2238,6 @@ msgstr "Είστε βέβαιοι ότι θέλετε να διαγράψετε 
 #: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "Αυτή η ενέργεια ΔΕΝ μπορεί να αναιρεθεί και μπορεί να έχει νομικές επιπτώσεις!"
-
-#: 
-msgid "Please ensure this what you want to do."
-msgstr "Βεβαιωθείτε ότι αυτό θέλετε να κάνετε."
 
 #: 
 msgid "Deposit Type"
@@ -5648,14 +5635,6 @@ msgid "Generate Report"
 msgstr "Δημιουργία αναφοράς"
 
 #: 
-msgid "No Cash"
-msgstr "Χωρίς μετρητά"
-
-#: 
-msgid "No Checks"
-msgstr "Χωρίς επιταγές"
-
-#: 
 msgid "Payments"
 msgstr "Πληρωμές"
 
@@ -5670,11 +5649,6 @@ msgstr "Συνολική κατάθεση"
 #: 
 msgid "Total Payments"
 msgstr "Σύνολο πληρωμών"
-
-#: 
-#, fuzzy
-msgid "payments?"
-msgstr "πληρωμή(ές)"
 
 #: 
 msgid "All system files have passed integrity validation."
@@ -6298,10 +6272,6 @@ msgid "Aug"
 msgstr "Αυγ"
 
 #: 
-msgid "Back to Deposits"
-msgstr "Επιστροφή σε Καταθέσεις"
-
-#: 
 msgid "Back to Families"
 msgstr "Επιστροφή σε Οικογένειες"
 
@@ -6380,10 +6350,6 @@ msgstr "Ημέρα"
 #: 
 msgid "Dec"
 msgstr "Δεκ"
-
-#: 
-msgid "Deposit Navigation"
-msgstr "Πλοήγηση Κατάθεσης"
 
 #: 
 msgid "Deposit Statistics"
@@ -13989,10 +13955,6 @@ msgid "Foreground Color"
 msgstr "Χρώμα προσκηνίου"
 
 #: 
-msgid "Fund(s)"
-msgstr "Ταμείο(α)"
-
-#: 
 msgid "Generate new code"
 msgstr "Δημιουργία νέου κωδικού"
 
@@ -14363,10 +14325,6 @@ msgstr "Παρακαλώ επιλέξτε ένα άτομο για check-in."
 #: 
 msgid "Please select a role."
 msgstr "Παρακαλώ επιλέξτε ρόλο."
-
-#: 
-msgid "Please select rows to delete"
-msgstr "Παρακαλούμε επιλέξτε σειρές για διαγραφή"
 
 #: 
 msgid "Please try again"

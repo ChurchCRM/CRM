@@ -411,15 +411,6 @@ msgid "Add Payment"
 msgstr "Dodaj Płatność"
 
 #: 
-#, fuzzy
-msgid "Load Authorized"
-msgstr "Załaduj Zaakceptowaną Transakcję"
-
-#: 
-msgid "Run Transactions"
-msgstr "Rozpocznij Transakcję"
-
-#: 
 msgid "Directory reports"
 msgstr "Spisy"
 
@@ -2311,10 +2302,6 @@ msgstr "Czy na pewno chcesz usunąć wybrane"
 #: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "Tej czynności NIE MOŻNA cofnąć i może ona mieć konsekwencje prawne!"
-
-#: 
-msgid "Please ensure this what you want to do."
-msgstr "Upewnij się, że to jest to, co chcesz zrobić."
 
 #: 
 msgid "Deposit Type"
@@ -5707,14 +5694,6 @@ msgid "Generate Report"
 msgstr "Generuj raport"
 
 #: 
-msgid "No Cash"
-msgstr "Brak gotówki"
-
-#: 
-msgid "No Checks"
-msgstr "Brak czeków"
-
-#: 
 msgid "Payments"
 msgstr "Płatności"
 
@@ -5729,11 +5708,6 @@ msgstr "Suma wpłaty"
 #: 
 msgid "Total Payments"
 msgstr "Suma płatności"
-
-#: 
-#, fuzzy
-msgid "payments?"
-msgstr "płatność(i)?"
 
 #: 
 msgid "All system files have passed integrity validation."
@@ -6359,10 +6333,6 @@ msgid "Aug"
 msgstr "Sie"
 
 #: 
-msgid "Back to Deposits"
-msgstr "Powrót do wpłat"
-
-#: 
 msgid "Back to Families"
 msgstr "Powrót do rodzin"
 
@@ -6441,10 +6411,6 @@ msgstr "Dzień"
 #: 
 msgid "Dec"
 msgstr "Gru"
-
-#: 
-msgid "Deposit Navigation"
-msgstr "Nawigacja wpłat"
 
 #: 
 msgid "Deposit Statistics"
@@ -14056,10 +14022,6 @@ msgid "Foreground Color"
 msgstr "Kolor Pierwszego Planu"
 
 #: 
-msgid "Fund(s)"
-msgstr "Fundusz(e)"
-
-#: 
 msgid "Generate new code"
 msgstr "Generuj nowy kod"
 
@@ -14430,10 +14392,6 @@ msgstr "Wybierz osobę do zameldowania."
 #: 
 msgid "Please select a role."
 msgstr "Wybierz rolę."
-
-#: 
-msgid "Please select rows to delete"
-msgstr "Wybierz wiersze do usunięcia"
 
 #: 
 msgid "Please try again"

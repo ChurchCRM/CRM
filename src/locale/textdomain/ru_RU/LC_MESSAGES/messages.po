@@ -408,15 +408,6 @@ msgid "Add Payment"
 msgstr "Оплатить"
 
 #: 
-#, fuzzy
-msgid "Load Authorized"
-msgstr "Груза, разрешенной Сделки"
-
-#: 
-msgid "Run Transactions"
-msgstr "Запуск Сделки"
-
-#: 
 msgid "Directory reports"
 msgstr "Отчеты Каталог"
 
@@ -2309,10 +2300,6 @@ msgstr "Вы уверенны, что хотите удалить выбранн
 #: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "Это действие НЕ МОЖЕТ быть отменено и может иметь юридические последствия!"
-
-#: 
-msgid "Please ensure this what you want to do."
-msgstr "Пожалуйста, убедитесь, что это то, что вы хотите сделать."
 
 #: 
 msgid "Deposit Type"
@@ -5706,14 +5693,6 @@ msgid "Generate Report"
 msgstr "Создать отчет"
 
 #: 
-msgid "No Cash"
-msgstr "Без наличных"
-
-#: 
-msgid "No Checks"
-msgstr "Без чеков"
-
-#: 
 msgid "Payments"
 msgstr "Платежи"
 
@@ -5728,11 +5707,6 @@ msgstr "Всего по депозиту"
 #: 
 msgid "Total Payments"
 msgstr "Всего платежей"
-
-#: 
-#, fuzzy
-msgid "payments?"
-msgstr "платеж(и)?"
 
 #: 
 msgid "All system files have passed integrity validation."
@@ -6360,10 +6334,6 @@ msgid "Aug"
 msgstr "Авг"
 
 #: 
-msgid "Back to Deposits"
-msgstr "Назад к депозитам"
-
-#: 
 msgid "Back to Families"
 msgstr "Назад к семьям"
 
@@ -6442,10 +6412,6 @@ msgstr "День"
 #: 
 msgid "Dec"
 msgstr "Дек"
-
-#: 
-msgid "Deposit Navigation"
-msgstr "Навигация по депозитам"
 
 #: 
 msgid "Deposit Statistics"
@@ -14063,10 +14029,6 @@ msgid "Foreground Color"
 msgstr "Цвет текста"
 
 #: 
-msgid "Fund(s)"
-msgstr "Фонд(ы)"
-
-#: 
 msgid "Generate new code"
 msgstr "Сгенерировать новый код"
 
@@ -14437,10 +14399,6 @@ msgstr "Пожалуйста, выберите человека для реги�
 #: 
 msgid "Please select a role."
 msgstr "Пожалуйста, выберите роль."
-
-#: 
-msgid "Please select rows to delete"
-msgstr "Пожалуйста, выберите строки для удаления"
 
 #: 
 msgid "Please try again"

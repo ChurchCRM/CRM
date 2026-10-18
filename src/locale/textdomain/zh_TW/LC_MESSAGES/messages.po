@@ -413,15 +413,6 @@ msgid "Add Payment"
 msgstr "添加付款"
 
 #: 
-#, fuzzy
-msgid "Load Authorized"
-msgstr "加載授權交易"
-
-#: 
-msgid "Run Transactions"
-msgstr "運行事務"
-
-#: 
 msgid "Directory reports"
 msgstr "目錄報告"
 
@@ -2319,10 +2310,6 @@ msgstr "您確定要刪除所選內容嗎？"
 #: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "此操作無法撤消，可能會產生法律影響！"
-
-#: 
-msgid "Please ensure this what you want to do."
-msgstr "請確保這是你想要做的。"
 
 #: 
 msgid "Deposit Type"
@@ -5790,14 +5777,6 @@ msgid "Generate Report"
 msgstr "生成報告"
 
 #: 
-msgid "No Cash"
-msgstr "無現金"
-
-#: 
-msgid "No Checks"
-msgstr "無支票"
-
-#: 
 msgid "Payments"
 msgstr "付款"
 
@@ -5812,11 +5791,6 @@ msgstr "總存款"
 #: 
 msgid "Total Payments"
 msgstr "總付款"
-
-#: 
-#, fuzzy
-msgid "payments?"
-msgstr "付款記錄"
 
 #: 
 msgid "All system files have passed integrity validation."
@@ -6438,10 +6412,6 @@ msgid "Aug"
 msgstr "八月"
 
 #: 
-msgid "Back to Deposits"
-msgstr "返回存款列表"
-
-#: 
 msgid "Back to Families"
 msgstr "返回家庭列表"
 
@@ -6520,10 +6490,6 @@ msgstr "日"
 #: 
 msgid "Dec"
 msgstr "十二月"
-
-#: 
-msgid "Deposit Navigation"
-msgstr "存款導覽"
 
 #: 
 msgid "Deposit Statistics"
@@ -14123,10 +14089,6 @@ msgid "Foreground Color"
 msgstr "前景色"
 
 #: 
-msgid "Fund(s)"
-msgstr "基金"
-
-#: 
 msgid "Generate new code"
 msgstr "產生新驗證碼"
 
@@ -14497,10 +14459,6 @@ msgstr "請選擇要簽到的人員。"
 #: 
 msgid "Please select a role."
 msgstr "請選擇一個角色。"
-
-#: 
-msgid "Please select rows to delete"
-msgstr "請選擇要刪除的行"
 
 #: 
 msgid "Please try again"

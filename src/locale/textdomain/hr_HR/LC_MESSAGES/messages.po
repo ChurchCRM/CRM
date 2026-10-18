@@ -392,14 +392,6 @@ msgid "Add Payment"
 msgstr "Dodaj uplatu"
 
 #: 
-msgid "Load Authorized"
-msgstr "Učitaj ovlašteno"
-
-#: 
-msgid "Run Transactions"
-msgstr "Pokreni transakcije"
-
-#: 
 msgid "Directory reports"
 msgstr "Imenički izvještaji"
 
@@ -2225,10 +2217,6 @@ msgstr "Jeste li sigurni da želite obrisati odabrane"
 #: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "Ova radnja NE MOŽE biti poništena i može imati pravne posljedice!"
-
-#: 
-msgid "Please ensure this what you want to do."
-msgstr "Molim provjerite je li to što želite učiniti."
 
 #: 
 msgid "Deposit Type"
@@ -5613,14 +5601,6 @@ msgid "Generate Report"
 msgstr "Generiraj izvještaj"
 
 #: 
-msgid "No Cash"
-msgstr "Nema gotovine"
-
-#: 
-msgid "No Checks"
-msgstr "Nema čekova"
-
-#: 
 msgid "Payments"
 msgstr "Uplate"
 
@@ -5635,10 +5615,6 @@ msgstr "Ukupna uplata"
 #: 
 msgid "Total Payments"
 msgstr "Ukupna plaćanja"
-
-#: 
-msgid "payments?"
-msgstr "uplata?"
 
 #: 
 msgid "All system files have passed integrity validation."
@@ -6264,10 +6240,6 @@ msgid "Aug"
 msgstr "Kol"
 
 #: 
-msgid "Back to Deposits"
-msgstr "Povratak na uplate"
-
-#: 
 msgid "Back to Families"
 msgstr "Povratak na obitelji"
 
@@ -6346,10 +6318,6 @@ msgstr "Dan"
 #: 
 msgid "Dec"
 msgstr "Pro"
-
-#: 
-msgid "Deposit Navigation"
-msgstr "Navigacija uplatama"
 
 #: 
 msgid "Deposit Statistics"
@@ -13961,10 +13929,6 @@ msgid "Foreground Color"
 msgstr "Boja teksta"
 
 #: 
-msgid "Fund(s)"
-msgstr "Fond(ovi)"
-
-#: 
 msgid "Generate new code"
 msgstr "Generiraj novi kod"
 
@@ -14335,10 +14299,6 @@ msgstr "Molim odaberite osobu za prijavu."
 #: 
 msgid "Please select a role."
 msgstr "Molim odaberite ulogu."
-
-#: 
-msgid "Please select rows to delete"
-msgstr "Molim odaberite retke za brisanje"
 
 #: 
 msgid "Please try again"

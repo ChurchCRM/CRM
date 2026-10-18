@@ -398,15 +398,6 @@ msgid "Add Payment"
 msgstr "கட்டணத்தைச் சேர்க்கவும்"
 
 #: 
-#, fuzzy
-msgid "Load Authorized"
-msgstr "அங்கீகரிக்கப்பட்ட பரிவர்த்தனைகளை ஏற்றவும்"
-
-#: 
-msgid "Run Transactions"
-msgstr "பரிவர்த்தனைகளை இயக்கவும்"
-
-#: 
 msgid "Directory reports"
 msgstr "அடைவு அறிக்கைகள்"
 
@@ -2247,10 +2238,6 @@ msgstr "தேர்ந்தெடுக்கப்பட்டதை நி�
 #: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "இந்தச் செயலைச் செயல்தவிர்க்க முடியாது, மேலும் சட்டரீதியான தாக்கங்களையும் ஏற்படுத்தலாம்!"
-
-#: 
-msgid "Please ensure this what you want to do."
-msgstr "நீங்கள் என்ன செய்ய விரும்புகிறீர்கள் என்பதை உறுதிப்படுத்தவும்."
 
 #: 
 msgid "Deposit Type"
@@ -5647,14 +5634,6 @@ msgid "Generate Report"
 msgstr "அறிக்கையை உருவாக்குதல்"
 
 #: 
-msgid "No Cash"
-msgstr "ரொக்கம் இல்லை"
-
-#: 
-msgid "No Checks"
-msgstr "காசோலைகள் இல்லை"
-
-#: 
 msgid "Payments"
 msgstr "கொடுப்பனவுகள்"
 
@@ -5669,11 +5648,6 @@ msgstr "மொத்த வைப்புத்தொகை"
 #: 
 msgid "Total Payments"
 msgstr "மொத்த கொடுப்பனவுகள்"
-
-#: 
-#, fuzzy
-msgid "payments?"
-msgstr "கொடுப்பனவுகள்(கள்)?"
 
 #: 
 msgid "All system files have passed integrity validation."
@@ -6301,10 +6275,6 @@ msgid "Aug"
 msgstr "ஆகஸ்ட்"
 
 #: 
-msgid "Back to Deposits"
-msgstr "வைப்புத்தொகைகளுக்குத் திரும்பு"
-
-#: 
 msgid "Back to Families"
 msgstr "குடும்பங்களுக்குத் திரும்பு"
 
@@ -6383,10 +6353,6 @@ msgstr "நாள்"
 #: 
 msgid "Dec"
 msgstr "டிசம்பர்"
-
-#: 
-msgid "Deposit Navigation"
-msgstr "வைப்புத்தொகை வழிசெலுத்தல்"
 
 #: 
 msgid "Deposit Statistics"
@@ -13999,10 +13965,6 @@ msgid "Foreground Color"
 msgstr "முன்புற நிறம்"
 
 #: 
-msgid "Fund(s)"
-msgstr "நிதி(கள்)"
-
-#: 
 msgid "Generate new code"
 msgstr "புதிய குறியீட்டை உருவாக்கு"
 
@@ -14375,10 +14337,6 @@ msgstr "Please select a person to check in."
 #: 
 msgid "Please select a role."
 msgstr "Please select a role."
-
-#: 
-msgid "Please select rows to delete"
-msgstr "Please select rows to delete"
 
 #: 
 msgid "Please try again"

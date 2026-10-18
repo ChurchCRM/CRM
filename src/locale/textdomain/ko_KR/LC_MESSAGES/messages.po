@@ -398,15 +398,6 @@ msgid "Add Payment"
 msgstr "결제 추가"
 
 #: 
-#, fuzzy
-msgid "Load Authorized"
-msgstr "승인된 거래 불러오기"
-
-#: 
-msgid "Run Transactions"
-msgstr "거래 실행"
-
-#: 
 msgid "Directory reports"
 msgstr "명부 보고서"
 
@@ -2247,10 +2238,6 @@ msgstr "선택한 항목을 삭제하시겠습니까: "
 #: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "이 작업은 되돌릴 수 없으며 법적으로 문제가 될 수 있습니다!"
-
-#: 
-msgid "Please ensure this what you want to do."
-msgstr "정말 진행할지 다시 확인하세요."
 
 #: 
 msgid "Deposit Type"
@@ -5640,14 +5627,6 @@ msgid "Generate Report"
 msgstr "보고서 생성"
 
 #: 
-msgid "No Cash"
-msgstr "현금 없음"
-
-#: 
-msgid "No Checks"
-msgstr "수표 없음"
-
-#: 
 msgid "Payments"
 msgstr "결제"
 
@@ -5662,11 +5641,6 @@ msgstr "총 입금액"
 #: 
 msgid "Total Payments"
 msgstr "총 결제액"
-
-#: 
-#, fuzzy
-msgid "payments?"
-msgstr "건의 결제?"
 
 #: 
 msgid "All system files have passed integrity validation."
@@ -6288,10 +6262,6 @@ msgid "Aug"
 msgstr "8월"
 
 #: 
-msgid "Back to Deposits"
-msgstr "입금으로 돌아가기"
-
-#: 
 msgid "Back to Families"
 msgstr "가족으로 돌아가기"
 
@@ -6370,10 +6340,6 @@ msgstr "일"
 #: 
 msgid "Dec"
 msgstr "12월"
-
-#: 
-msgid "Deposit Navigation"
-msgstr "입금 탐색"
 
 #: 
 msgid "Deposit Statistics"
@@ -13973,10 +13939,6 @@ msgid "Foreground Color"
 msgstr "전경 색상"
 
 #: 
-msgid "Fund(s)"
-msgstr "펀드"
-
-#: 
 msgid "Generate new code"
 msgstr "새 코드 생성"
 
@@ -14347,10 +14309,6 @@ msgstr "체크인할 사람을 선택해 주세요."
 #: 
 msgid "Please select a role."
 msgstr "역할을 선택해 주세요."
-
-#: 
-msgid "Please select rows to delete"
-msgstr "삭제할 행을 선택해 주세요"
 
 #: 
 msgid "Please try again"

@@ -409,15 +409,6 @@ msgid "Add Payment"
 msgstr "Thêm thanh toán"
 
 #: 
-#, fuzzy
-msgid "Load Authorized"
-msgstr "Tải các giao dịch được ủy quyền"
-
-#: 
-msgid "Run Transactions"
-msgstr "Chạy giao dịch"
-
-#: 
 msgid "Directory reports"
 msgstr "Báo cáo thư mục"
 
@@ -2258,10 +2249,6 @@ msgstr "Bạn có chắc chắn muốn xóa phần đã chọn"
 #: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "KHÔNG THỂ hoàn tác hành động này và có thể có tác động pháp lý!"
-
-#: 
-msgid "Please ensure this what you want to do."
-msgstr "Hãy đảm bảo điều này những gì bạn muốn làm."
 
 #: 
 msgid "Deposit Type"
@@ -5650,14 +5637,6 @@ msgid "Generate Report"
 msgstr "Xuất báo cáo"
 
 #: 
-msgid "No Cash"
-msgstr "Không có tiền mặt"
-
-#: 
-msgid "No Checks"
-msgstr "Không có chi phiếu"
-
-#: 
 msgid "Payments"
 msgstr "Các khoản đóng góp"
 
@@ -5672,11 +5651,6 @@ msgstr "Tổng nộp"
 #: 
 msgid "Total Payments"
 msgstr "Tổng khoản thu"
-
-#: 
-#, fuzzy
-msgid "payments?"
-msgstr "khoản thanh toán?"
 
 #: 
 msgid "All system files have passed integrity validation."
@@ -6298,10 +6272,6 @@ msgid "Aug"
 msgstr "Th8"
 
 #: 
-msgid "Back to Deposits"
-msgstr "Quay lại danh sách gửi tiền"
-
-#: 
 msgid "Back to Families"
 msgstr "Quay lại danh sách gia đình"
 
@@ -6380,10 +6350,6 @@ msgstr "Ngày"
 #: 
 msgid "Dec"
 msgstr "Th12"
-
-#: 
-msgid "Deposit Navigation"
-msgstr "Điều hướng gửi tiền"
 
 #: 
 msgid "Deposit Statistics"
@@ -13983,10 +13949,6 @@ msgid "Foreground Color"
 msgstr "Màu viền"
 
 #: 
-msgid "Fund(s)"
-msgstr "Quỹ"
-
-#: 
 msgid "Generate new code"
 msgstr "Tạo mã mới"
 
@@ -14357,10 +14319,6 @@ msgstr "Vui lòng chọn một người để đăng ký."
 #: 
 msgid "Please select a role."
 msgstr "Vui lòng chọn một chức vụ."
-
-#: 
-msgid "Please select rows to delete"
-msgstr "Vui lòng chọn các hàng để xóa"
 
 #: 
 msgid "Please try again"

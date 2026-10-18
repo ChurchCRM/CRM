@@ -398,15 +398,6 @@ msgid "Add Payment"
 msgstr "הוסף תשלום"
 
 #: 
-#, fuzzy
-msgid "Load Authorized"
-msgstr "טען פעולות מאושרות"
-
-#: 
-msgid "Run Transactions"
-msgstr "הפעל עסקה"
-
-#: 
 msgid "Directory reports"
 msgstr "דוחות ספרייה"
 
@@ -2247,10 +2238,6 @@ msgstr "אנא אשר שברצונך למחוק את המסומן"
 #: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "פעולה זו אינה ניתנת לביטול, ויתכנו לה השלכות משפטיות!"
-
-#: 
-msgid "Please ensure this what you want to do."
-msgstr "אנא ודו שזה מה שאתה רוצה לעשות."
 
 #: 
 msgid "Deposit Type"
@@ -5646,14 +5633,6 @@ msgid "Generate Report"
 msgstr "הפק דוח"
 
 #: 
-msgid "No Cash"
-msgstr "ללא מזומן"
-
-#: 
-msgid "No Checks"
-msgstr "ללא המחאות"
-
-#: 
 msgid "Payments"
 msgstr "תשלומים"
 
@@ -5668,11 +5647,6 @@ msgstr "סה\"כ הפקדה"
 #: 
 msgid "Total Payments"
 msgstr "סה\"כ תשלומים"
-
-#: 
-#, fuzzy
-msgid "payments?"
-msgstr "תשלומים"
 
 #: 
 msgid "All system files have passed integrity validation."
@@ -6296,10 +6270,6 @@ msgid "Aug"
 msgstr "אוג'"
 
 #: 
-msgid "Back to Deposits"
-msgstr "חזרה להפקדות"
-
-#: 
 msgid "Back to Families"
 msgstr "חזרה למשפחות"
 
@@ -6378,10 +6348,6 @@ msgstr "יום"
 #: 
 msgid "Dec"
 msgstr "דצמ'"
-
-#: 
-msgid "Deposit Navigation"
-msgstr "ניווט הפקדות"
 
 #: 
 msgid "Deposit Statistics"
@@ -13987,10 +13953,6 @@ msgid "Foreground Color"
 msgstr "צבע טקסט"
 
 #: 
-msgid "Fund(s)"
-msgstr "קרנות"
-
-#: 
 msgid "Generate new code"
 msgstr "צור קוד חדש"
 
@@ -14361,10 +14323,6 @@ msgstr "אנא בחר אדם לצ׳ק-אין."
 #: 
 msgid "Please select a role."
 msgstr "אנא בחר תפקיד."
-
-#: 
-msgid "Please select rows to delete"
-msgstr "אנא בחר שורות למחיקה"
 
 #: 
 msgid "Please try again"

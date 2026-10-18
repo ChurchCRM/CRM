@@ -397,15 +397,6 @@ msgid "Add Payment"
 msgstr "إضافة الدفع"
 
 #: 
-#, fuzzy
-msgid "Load Authorized"
-msgstr "تحميل المعاملات المأذون"
-
-#: 
-msgid "Run Transactions"
-msgstr "تشغيل الحركات"
-
-#: 
 msgid "Directory reports"
 msgstr "دليل التقارير"
 
@@ -2245,10 +2236,6 @@ msgstr "هل أنت متأكد أنك تريد حذف المحدد"
 #: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "هذا الإجراء لا يمكن التراجع عنها، ويمكن أن تكون لها آثار قانونية!"
-
-#: 
-msgid "Please ensure this what you want to do."
-msgstr "الرجاء التأكد من هذا ما تريد القيام به."
 
 #: 
 msgid "Deposit Type"
@@ -5647,14 +5634,6 @@ msgid "Generate Report"
 msgstr "إنشاء تقرير"
 
 #: 
-msgid "No Cash"
-msgstr "لا يوجد نقد"
-
-#: 
-msgid "No Checks"
-msgstr "لا توجد شيكات"
-
-#: 
 msgid "Payments"
 msgstr "المدفوعات"
 
@@ -5669,11 +5648,6 @@ msgstr "الإجمالي الإيداع"
 #: 
 msgid "Total Payments"
 msgstr "إجمالي المدفوعات"
-
-#: 
-#, fuzzy
-msgid "payments?"
-msgstr "المدفوعات (ات)؟"
 
 #: 
 msgid "All system files have passed integrity validation."
@@ -6305,10 +6279,6 @@ msgid "Aug"
 msgstr "أغسطس"
 
 #: 
-msgid "Back to Deposits"
-msgstr "العودة إلى الودائع"
-
-#: 
 msgid "Back to Families"
 msgstr "العودة إلى العائلات"
 
@@ -6387,10 +6357,6 @@ msgstr "اليوم"
 #: 
 msgid "Dec"
 msgstr "ديسمبر"
-
-#: 
-msgid "Deposit Navigation"
-msgstr "الملاحة للإيداع"
 
 #: 
 msgid "Deposit Statistics"
@@ -14020,10 +13986,6 @@ msgid "Foreground Color"
 msgstr "المقدمة اللون"
 
 #: 
-msgid "Fund(s)"
-msgstr "صندوق (أصناديق)"
-
-#: 
 msgid "Generate new code"
 msgstr "إنشاء رمز جديد"
 
@@ -14394,10 +14356,6 @@ msgstr "يرجى اختيار شخص لتسجيل حضوره."
 #: 
 msgid "Please select a role."
 msgstr "يرجى تحديد دور."
-
-#: 
-msgid "Please select rows to delete"
-msgstr "يرجى اختيار الصفوف المراد حذفها"
 
 #: 
 msgid "Please try again"

@@ -398,15 +398,6 @@ msgid "Add Payment"
 msgstr "Додати платіж"
 
 #: 
-#, fuzzy
-msgid "Load Authorized"
-msgstr "Завантажте авторизовані транзакції"
-
-#: 
-msgid "Run Transactions"
-msgstr "Запуск транзакцій"
-
-#: 
 msgid "Directory reports"
 msgstr "Звіти каталогу"
 
@@ -2247,10 +2238,6 @@ msgstr "Ви впевнені, що хочете видалити вибране
 #: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "Цю дію НЕ МОЖЕ відмінити і може мати юридичні наслідки!"
-
-#: 
-msgid "Please ensure this what you want to do."
-msgstr "Будь ласка, переконайтеся, що ви хочете зробити."
 
 #: 
 msgid "Deposit Type"
@@ -5652,14 +5639,6 @@ msgid "Generate Report"
 msgstr "Згенерувати звіт"
 
 #: 
-msgid "No Cash"
-msgstr "Без готівки"
-
-#: 
-msgid "No Checks"
-msgstr "Без чеків"
-
-#: 
 msgid "Payments"
 msgstr "Платежі"
 
@@ -5674,11 +5653,6 @@ msgstr "Загальна сума внеску"
 #: 
 msgid "Total Payments"
 msgstr "Усього платежів"
-
-#: 
-#, fuzzy
-msgid "payments?"
-msgstr "платежі(ів)?"
 
 #: 
 msgid "All system files have passed integrity validation."
@@ -6306,10 +6280,6 @@ msgid "Aug"
 msgstr "Серп"
 
 #: 
-msgid "Back to Deposits"
-msgstr "Назад до депозитів"
-
-#: 
 msgid "Back to Families"
 msgstr "Назад до сімей"
 
@@ -6388,10 +6358,6 @@ msgstr "День"
 #: 
 msgid "Dec"
 msgstr "Груд"
-
-#: 
-msgid "Deposit Navigation"
-msgstr "Навігація депозитами"
 
 #: 
 msgid "Deposit Statistics"
@@ -14009,10 +13975,6 @@ msgid "Foreground Color"
 msgstr "Колір переднього плану"
 
 #: 
-msgid "Fund(s)"
-msgstr "Фонд(и)"
-
-#: 
 msgid "Generate new code"
 msgstr "Згенерувати новий код"
 
@@ -14383,10 +14345,6 @@ msgstr "Будь ласка, виберіть особу для відмітки
 #: 
 msgid "Please select a role."
 msgstr "Будь ласка, виберіть роль."
-
-#: 
-msgid "Please select rows to delete"
-msgstr "Будь ласка, виберіть рядки для видалення"
 
 #: 
 msgid "Please try again"

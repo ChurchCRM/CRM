@@ -412,15 +412,6 @@ msgid "Add Payment"
 msgstr "Adaugare plată"
 
 #: 
-#, fuzzy
-msgid "Load Authorized"
-msgstr "Încărcați Tranzacții autorizate"
-
-#: 
-msgid "Run Transactions"
-msgstr "Rulați Tranzacții"
-
-#: 
 msgid "Directory reports"
 msgstr "Rapoarte Director"
 
@@ -2308,10 +2299,6 @@ msgstr "Sunteți sigur că vrețis ă ștergeți selecția "
 #: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "Această acțiune NU poate fi anulată și poate avea implicații legale!"
-
-#: 
-msgid "Please ensure this what you want to do."
-msgstr "Verificați că "
 
 #: 
 msgid "Deposit Type"
@@ -5708,14 +5695,6 @@ msgid "Generate Report"
 msgstr "Generează raport"
 
 #: 
-msgid "No Cash"
-msgstr "Fără numerar"
-
-#: 
-msgid "No Checks"
-msgstr "Fără cecuri"
-
-#: 
 msgid "Payments"
 msgstr "Plăți"
 
@@ -5730,11 +5709,6 @@ msgstr "Total depozit"
 #: 
 msgid "Total Payments"
 msgstr "Total plăți"
-
-#: 
-#, fuzzy
-msgid "payments?"
-msgstr "plăți"
 
 #: 
 msgid "All system files have passed integrity validation."
@@ -6360,10 +6334,6 @@ msgid "Aug"
 msgstr "Aug"
 
 #: 
-msgid "Back to Deposits"
-msgstr "Înapoi la depozite"
-
-#: 
 msgid "Back to Families"
 msgstr "Înapoi la familii"
 
@@ -6442,10 +6412,6 @@ msgstr "Zi"
 #: 
 msgid "Dec"
 msgstr "Dec"
-
-#: 
-msgid "Deposit Navigation"
-msgstr "Navigare depozit"
 
 #: 
 msgid "Deposit Statistics"
@@ -14057,10 +14023,6 @@ msgid "Foreground Color"
 msgstr "Culoare prin plan"
 
 #: 
-msgid "Fund(s)"
-msgstr "Fonduri"
-
-#: 
 msgid "Generate new code"
 msgstr "Generare cod nou"
 
@@ -14431,10 +14393,6 @@ msgstr "Vă rugăm să selectați o persoană pentru înregistrare."
 #: 
 msgid "Please select a role."
 msgstr "Vă rugăm să selectați un rol."
-
-#: 
-msgid "Please select rows to delete"
-msgstr "Vă rugăm să selectați rândurile pentru ștergere"
 
 #: 
 msgid "Please try again"

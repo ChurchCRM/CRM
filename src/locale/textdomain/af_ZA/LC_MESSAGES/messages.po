@@ -398,15 +398,6 @@ msgid "Add Payment"
 msgstr "Voeg betaling by"
 
 #: 
-#, fuzzy
-msgid "Load Authorized"
-msgstr "Laai goedgekeurde transaksies"
-
-#: 
-msgid "Run Transactions"
-msgstr "Laai transaksies"
-
-#: 
 msgid "Directory reports"
 msgstr "Leër rapporte"
 
@@ -2247,10 +2238,6 @@ msgstr "Is u seker dat u die geselekteerde wil verwyder?"
 #: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "Hierdie aksie kan NIE ongedaan gemaak word nie, en kan wettige implikasies hê!"
-
-#: 
-msgid "Please ensure this what you want to do."
-msgstr "Maak seker dat u dit doen wat u wil doen."
 
 #: 
 msgid "Deposit Type"
@@ -5648,14 +5635,6 @@ msgid "Generate Report"
 msgstr "Genereer Verslag"
 
 #: 
-msgid "No Cash"
-msgstr "Geen Kontant"
-
-#: 
-msgid "No Checks"
-msgstr "Geen Kontroles"
-
-#: 
 msgid "Payments"
 msgstr "Betalings"
 
@@ -5670,11 +5649,6 @@ msgstr "Totale Deposito"
 #: 
 msgid "Total Payments"
 msgstr "Totale Betalings"
-
-#: 
-#, fuzzy
-msgid "payments?"
-msgstr "betalings"
 
 #: 
 msgid "All system files have passed integrity validation."
@@ -6298,10 +6272,6 @@ msgid "Aug"
 msgstr "Aug"
 
 #: 
-msgid "Back to Deposits"
-msgstr "Terug na Deposito's"
-
-#: 
 msgid "Back to Families"
 msgstr "Terug na Families"
 
@@ -6380,10 +6350,6 @@ msgstr "Dag"
 #: 
 msgid "Dec"
 msgstr "Des"
-
-#: 
-msgid "Deposit Navigation"
-msgstr "Deposito Navigasie"
 
 #: 
 msgid "Deposit Statistics"
@@ -13989,10 +13955,6 @@ msgid "Foreground Color"
 msgstr "Voorgrondkleur"
 
 #: 
-msgid "Fund(s)"
-msgstr "Fonds(se)"
-
-#: 
 msgid "Generate new code"
 msgstr "Genereer nuwe kode"
 
@@ -14363,10 +14325,6 @@ msgstr "Kies asseblief ʼn persoon om in te teken."
 #: 
 msgid "Please select a role."
 msgstr "Kies asseblief 'n rol."
-
-#: 
-msgid "Please select rows to delete"
-msgstr "Kies asseblief rye om te wis"
 
 #: 
 msgid "Please try again"

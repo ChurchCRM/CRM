@@ -392,14 +392,6 @@ msgid "Add Payment"
 msgstr "പേമെന്റ് ചേർക്കുക"
 
 #: 
-msgid "Load Authorized"
-msgstr "അധികൃതം ലോഡ് ചെയ്യുക"
-
-#: 
-msgid "Run Transactions"
-msgstr "ഇടപാടുകൾ നടത്തുക"
-
-#: 
 msgid "Directory reports"
 msgstr "ഡയറക്ടറി റിപ്പോർട്ടുകൾ"
 
@@ -2225,10 +2217,6 @@ msgstr "തിരഞ്ഞെടുത്തത് ഇല്ലാതാക്�
 #: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "ഈ പ്രവർത്തനം പഴയ നിലയിലേക്ക് മടക്കാനാകില്ല, ഇത് നിയമ പ്രത്യാഘാതങ്ങൾ ഉണ്ടാക്കിയേക്കാം!"
-
-#: 
-msgid "Please ensure this what you want to do."
-msgstr "നിങ്ങൾ ചെയ്യാൻ ആഗ്രഹിക്കുന്നത് ഇതാണെന്ന് ഉറപ്പ് വരുത്തുക."
 
 #: 
 msgid "Deposit Type"
@@ -5613,14 +5601,6 @@ msgid "Generate Report"
 msgstr "റിപ്പോർട്ട് ഉണ്ടാക്കുക"
 
 #: 
-msgid "No Cash"
-msgstr "പണമില്ല"
-
-#: 
-msgid "No Checks"
-msgstr "ചെക്കുകൾ ഇല്ല"
-
-#: 
 msgid "Payments"
 msgstr "പേമെന്റുകൾ"
 
@@ -5635,11 +5615,6 @@ msgstr "ആകെ ഡിപ്പോസിറ്റ്"
 #: 
 msgid "Total Payments"
 msgstr "ആകെ പേമെന്റ്"
-
-#: 
-#, fuzzy
-msgid "payments?"
-msgstr "പേമെന്റ്(കൾ)?"
 
 #: 
 msgid "All system files have passed integrity validation."
@@ -6263,10 +6238,6 @@ msgid "Aug"
 msgstr "ഓഗ"
 
 #: 
-msgid "Back to Deposits"
-msgstr "ഡിപ്പോസിറ്റുകളിലേക്ക് മടങ്ങുക"
-
-#: 
 msgid "Back to Families"
 msgstr "കുടുംബങ്ങളിലേക്ക് മടങ്ങുക"
 
@@ -6345,10 +6316,6 @@ msgstr "ദിവസം"
 #: 
 msgid "Dec"
 msgstr "ഡിസ"
-
-#: 
-msgid "Deposit Navigation"
-msgstr "ഡിപ്പോസിറ്റ് നാവിഗേഷൻ"
 
 #: 
 msgid "Deposit Statistics"
@@ -13954,10 +13921,6 @@ msgid "Foreground Color"
 msgstr "ഫോർഗ്രൗണ്ട് നിറം"
 
 #: 
-msgid "Fund(s)"
-msgstr "ഫണ്ട്(കൾ)"
-
-#: 
 msgid "Generate new code"
 msgstr "പുതിയ കോഡ് ഉണ്ടാക്കൂ"
 
@@ -14328,10 +14291,6 @@ msgstr "ചെക്ക് ഇൻ ചെയ്യാൻ ഒരു വ്യക�
 #: 
 msgid "Please select a role."
 msgstr "ദയവായി ഒരു റോൾ തിരഞ്ഞെടുക്കുക."
-
-#: 
-msgid "Please select rows to delete"
-msgstr "ഇല്ലാതാക്കേണ്ട വരികൾ തിരഞ്ഞെടുക്കുക"
 
 #: 
 msgid "Please try again"

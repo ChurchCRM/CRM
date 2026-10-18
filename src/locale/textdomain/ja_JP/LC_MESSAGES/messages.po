@@ -392,14 +392,6 @@ msgid "Add Payment"
 msgstr "支払いを追加"
 
 #: 
-msgid "Load Authorized"
-msgstr "承認済みを読み込む"
-
-#: 
-msgid "Run Transactions"
-msgstr "取引を実行"
-
-#: 
 msgid "Directory reports"
 msgstr "名簿レポート"
 
@@ -2225,10 +2217,6 @@ msgstr "選択した項目を削除してもよろしいですか"
 #: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "この操作は取り消すことができず、法的影響が生じる可能性があります！"
-
-#: 
-msgid "Please ensure this what you want to do."
-msgstr "これが本当に行いたいことか確認してください。"
 
 #: 
 msgid "Deposit Type"
@@ -5611,14 +5599,6 @@ msgid "Generate Report"
 msgstr "レポートを生成"
 
 #: 
-msgid "No Cash"
-msgstr "現金なし"
-
-#: 
-msgid "No Checks"
-msgstr "小切手なし"
-
-#: 
 msgid "Payments"
 msgstr "支払い"
 
@@ -5633,11 +5613,6 @@ msgstr "入金総額"
 #: 
 msgid "Total Payments"
 msgstr "支払い合計"
-
-#: 
-#, fuzzy
-msgid "payments?"
-msgstr "件の支払い？"
 
 #: 
 msgid "All system files have passed integrity validation."
@@ -6259,10 +6234,6 @@ msgid "Aug"
 msgstr "8月"
 
 #: 
-msgid "Back to Deposits"
-msgstr "預金に戻る"
-
-#: 
 msgid "Back to Families"
 msgstr "家族に戻る"
 
@@ -6341,10 +6312,6 @@ msgstr "日"
 #: 
 msgid "Dec"
 msgstr "12月"
-
-#: 
-msgid "Deposit Navigation"
-msgstr "預金ナビゲーション"
 
 #: 
 msgid "Deposit Statistics"
@@ -13944,10 +13911,6 @@ msgid "Foreground Color"
 msgstr "前景色"
 
 #: 
-msgid "Fund(s)"
-msgstr "基金"
-
-#: 
 msgid "Generate new code"
 msgstr "新しいコードを生成する"
 
@@ -14318,10 +14281,6 @@ msgstr "チェックインする人を選択してください。"
 #: 
 msgid "Please select a role."
 msgstr "役割を選択してください。"
-
-#: 
-msgid "Please select rows to delete"
-msgstr "削除する行を選択してください"
 
 #: 
 msgid "Please try again"

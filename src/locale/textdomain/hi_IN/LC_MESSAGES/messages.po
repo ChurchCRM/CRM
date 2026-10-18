@@ -395,14 +395,6 @@ msgid "Add Payment"
 msgstr "भुगतान जोड़ें"
 
 #: 
-msgid "Load Authorized"
-msgstr "अधिकृत लोड करें"
-
-#: 
-msgid "Run Transactions"
-msgstr "लेनदेन चलाएँ"
-
-#: 
 msgid "Directory reports"
 msgstr "निर्देशिका रिपोर्ट"
 
@@ -2228,10 +2220,6 @@ msgstr "क्या आप वाकई चयनित को हटाना 
 #: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "यह क्रिया पूर्ववत नहीं की जा सकती, और इसके कानूनी निहितार्थ हो सकते हैं!"
-
-#: 
-msgid "Please ensure this what you want to do."
-msgstr "कृपया सुनिश्चित करें कि आप यही करना चाहते हैं।"
 
 #: 
 msgid "Deposit Type"
@@ -5612,14 +5600,6 @@ msgid "Generate Report"
 msgstr "रिपोर्ट तैयार करें"
 
 #: 
-msgid "No Cash"
-msgstr "कोई नकद नहीं"
-
-#: 
-msgid "No Checks"
-msgstr "कोई चेक नहीं"
-
-#: 
 msgid "Payments"
 msgstr "भुगतान"
 
@@ -5634,11 +5614,6 @@ msgstr "कुल जमा"
 #: 
 msgid "Total Payments"
 msgstr "कुल भुगतान"
-
-#: 
-#, fuzzy
-msgid "payments?"
-msgstr "भुगतान?"
 
 #: 
 msgid "All system files have passed integrity validation."
@@ -6262,10 +6237,6 @@ msgid "Aug"
 msgstr "अगस्त"
 
 #: 
-msgid "Back to Deposits"
-msgstr "जमा पर वापस जाएं"
-
-#: 
 msgid "Back to Families"
 msgstr "परिवारों पर वापस जाएं"
 
@@ -6344,10 +6315,6 @@ msgstr "दिन"
 #: 
 msgid "Dec"
 msgstr "दिसंबर"
-
-#: 
-msgid "Deposit Navigation"
-msgstr "जमा नेविगेशन"
 
 #: 
 msgid "Deposit Statistics"
@@ -13953,10 +13920,6 @@ msgid "Foreground Color"
 msgstr "अग्रभूमि रंग"
 
 #: 
-msgid "Fund(s)"
-msgstr "फंड"
-
-#: 
 msgid "Generate new code"
 msgstr "नया कोड उत्पन्न करें"
 
@@ -14327,10 +14290,6 @@ msgstr "कृपया चेक इन के लिए एक व्यक्
 #: 
 msgid "Please select a role."
 msgstr "कृपया एक भूमिका चुनें।"
-
-#: 
-msgid "Please select rows to delete"
-msgstr "कृपया हटाने के लिए पंक्तियाँ चुनें"
 
 #: 
 msgid "Please try again"
