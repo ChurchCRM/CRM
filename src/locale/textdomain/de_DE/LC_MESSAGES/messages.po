@@ -6705,10 +6705,6 @@ msgid "Tax Report Verbiage"
 msgstr "Steuerberichtstext"
 
 #: 
-msgid "Tax Statements (Giving Report)"
-msgstr "Steuererklärungen (Spendenbericht)"
-
-#: 
 msgid "Tax Year Reporting Checklist"
 msgstr "Jahressteuerbericht-Checkliste"
 
@@ -9220,10 +9216,6 @@ msgid "Generate and download confirmation letters"
 msgstr "Bestätigungsschreiben generieren und herunterladen"
 
 #: 
-msgid "Generate annual giving statements for tax purposes"
-msgstr "Jährliche Spendenbescheinigungen für Steuerzwecke generieren"
-
-#: 
 msgid "Generate directory listings and printed materials"
 msgstr "Verzeichnislistungen und Druckmaterialien generieren"
 
@@ -9868,10 +9860,6 @@ msgstr "Systemdiagnoseinformationen und Konfiguration"
 #: 
 msgid "Tags"
 msgstr "Etiketten"
-
-#: 
-msgid "Tax Statements"
-msgstr "Steuerbescheinigungen"
 
 #: 
 msgid "Teacher"

@@ -6718,10 +6718,6 @@ msgid "Tax Report Verbiage"
 msgstr "Text för skatterapport"
 
 #: 
-msgid "Tax Statements (Giving Report)"
-msgstr "Skattebesked (Gåvorapport)"
-
-#: 
 msgid "Tax Year Reporting Checklist"
 msgstr "Checklista för rapportering av skatteår"
 
@@ -9233,10 +9229,6 @@ msgid "Generate and download confirmation letters"
 msgstr "Generera och ladda ner bekräftelsebrev"
 
 #: 
-msgid "Generate annual giving statements for tax purposes"
-msgstr "Generera årliga gåvobesked för skatteändamål"
-
-#: 
 msgid "Generate directory listings and printed materials"
 msgstr "Generera kataloglistor och tryckt material"
 
@@ -9881,10 +9873,6 @@ msgstr "Systemdiagnostisk information och konfiguration"
 #: 
 msgid "Tags"
 msgstr "Taggar"
-
-#: 
-msgid "Tax Statements"
-msgstr "Skattebesked"
 
 #: 
 msgid "Teacher"

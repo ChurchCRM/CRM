@@ -6636,10 +6636,6 @@ msgid "Tax Report Verbiage"
 msgstr "Текст податкового звіту"
 
 #: 
-msgid "Tax Statements (Giving Report)"
-msgstr "Податкові виписки (Звіт про пожертви)"
-
-#: 
 msgid "Tax Year Reporting Checklist"
 msgstr "Контрольний список податкової звітності"
 
@@ -9161,10 +9157,6 @@ msgid "Generate and download confirmation letters"
 msgstr "Створіть та завантажте листи підтвердження"
 
 #: 
-msgid "Generate annual giving statements for tax purposes"
-msgstr "Створіть річні звіти про пожертви для податків"
-
-#: 
 msgid "Generate directory listings and printed materials"
 msgstr "Створіть каталоги та друковані матеріали"
 
@@ -9809,10 +9801,6 @@ msgstr "Інформація та конфігурація системної д
 #: 
 msgid "Tags"
 msgstr "Теги"
-
-#: 
-msgid "Tax Statements"
-msgstr "Податкові звіти"
 
 #: 
 msgid "Teacher"

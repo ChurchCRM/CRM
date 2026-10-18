@@ -6655,10 +6655,6 @@ msgid "Tax Report Verbiage"
 msgstr "Adójelentés szövegezése"
 
 #: 
-msgid "Tax Statements (Giving Report)"
-msgstr "Adóigazolások (Adományozási jelentés)"
-
-#: 
 msgid "Tax Year Reporting Checklist"
 msgstr "Adóévi jelentési ellenőrzőlista"
 
@@ -9170,10 +9166,6 @@ msgid "Generate and download confirmation letters"
 msgstr "Megerősítő levelek létrehozása és letöltése"
 
 #: 
-msgid "Generate annual giving statements for tax purposes"
-msgstr "Éves adományigazolások készítése adóbevalláshoz"
-
-#: 
 msgid "Generate directory listings and printed materials"
 msgstr "Címtárlisták és nyomtatott anyagok készítése"
 
@@ -9818,10 +9810,6 @@ msgstr "Rendszerdiagnosztikai információk és konfiguráció"
 #: 
 msgid "Tags"
 msgstr "Címkék"
-
-#: 
-msgid "Tax Statements"
-msgstr "Adóigazolások"
 
 #: 
 msgid "Teacher"

@@ -6625,10 +6625,6 @@ msgid "Tax Report Verbiage"
 msgstr "Libellé du rapport fiscal"
 
 #: 
-msgid "Tax Statements (Giving Report)"
-msgstr "Déclarations fiscales (Rapport de don)"
-
-#: 
 msgid "Tax Year Reporting Checklist"
 msgstr "Liste de contrôle de rapport d'année fiscale"
 
@@ -9140,10 +9136,6 @@ msgid "Generate and download confirmation letters"
 msgstr "Générer et télécharger des lettres de confirmation"
 
 #: 
-msgid "Generate annual giving statements for tax purposes"
-msgstr "Générer des relevés annuels d'offrandes à des fins fiscales"
-
-#: 
 msgid "Generate directory listings and printed materials"
 msgstr "Générer des annuaires et des documents imprimés"
 
@@ -9788,10 +9780,6 @@ msgstr "Informations de diagnostic système et configuration"
 #: 
 msgid "Tags"
 msgstr "Badges"
-
-#: 
-msgid "Tax Statements"
-msgstr "Reçus fiscaux"
 
 #: 
 msgid "Teacher"

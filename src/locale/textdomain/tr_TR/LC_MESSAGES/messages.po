@@ -6628,10 +6628,6 @@ msgid "Tax Report Verbiage"
 msgstr "Vergi Raporu Metni"
 
 #: 
-msgid "Tax Statements (Giving Report)"
-msgstr "Vergi Beyannameleri (Bağış Raporu)"
-
-#: 
 msgid "Tax Year Reporting Checklist"
 msgstr "Vergi Yılı Raporlama Kontrol Listesi"
 
@@ -9143,10 +9139,6 @@ msgid "Generate and download confirmation letters"
 msgstr "Onay mektuplarını oluştur ve indir"
 
 #: 
-msgid "Generate annual giving statements for tax purposes"
-msgstr "Vergi amaçlı yıllık bağış beyanlarını oluştur"
-
-#: 
 msgid "Generate directory listings and printed materials"
 msgstr "Rehber listeleri ve basılı materyaller oluştur"
 
@@ -9791,10 +9783,6 @@ msgstr "Sistem tanı bilgileri ve yapılandırma"
 #: 
 msgid "Tags"
 msgstr "Etiketler"
-
-#: 
-msgid "Tax Statements"
-msgstr "Vergi Beyanları"
 
 #: 
 msgid "Teacher"

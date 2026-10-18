@@ -6628,10 +6628,6 @@ msgid "Tax Report Verbiage"
 msgstr "Κείμενο φορολογικής αναφοράς"
 
 #: 
-msgid "Tax Statements (Giving Report)"
-msgstr "Φορολογικές βεβαιώσεις (Αναφορά προσφορών)"
-
-#: 
 msgid "Tax Year Reporting Checklist"
 msgstr "Λίστα ελέγχου αναφορών φορολογικού έτους"
 
@@ -9143,10 +9139,6 @@ msgid "Generate and download confirmation letters"
 msgstr "Δημιουργία και λήψη επιστολών επιβεβαίωσης"
 
 #: 
-msgid "Generate annual giving statements for tax purposes"
-msgstr "Δημιουργία ετήσιων βεβαιώσεων προσφορών για φορολογικούς σκοπούς"
-
-#: 
 msgid "Generate directory listings and printed materials"
 msgstr "Δημιουργία καταλόγων και εκτυπωτικού υλικού"
 
@@ -9791,10 +9783,6 @@ msgstr "Διαγνωστικές πληροφορίες και ρυθμίσει�
 #: 
 msgid "Tags"
 msgstr "Ετικέτες"
-
-#: 
-msgid "Tax Statements"
-msgstr "Φορολογικές βεβαιώσεις"
 
 #: 
 msgid "Teacher"

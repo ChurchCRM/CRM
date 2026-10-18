@@ -6605,10 +6605,6 @@ msgid "Tax Report Verbiage"
 msgstr "పన్ను నివేదిక వర్బియేజ్"
 
 #: 
-msgid "Tax Statements (Giving Report)"
-msgstr "పన్ను స్టేట్‌మెంట్‌లు (విరాళాల నివేదిక)"
-
-#: 
 msgid "Tax Year Reporting Checklist"
 msgstr "పన్ను సంవత్సర నివేదిక చెక్‌లిస్ట్"
 
@@ -9120,10 +9116,6 @@ msgid "Generate and download confirmation letters"
 msgstr "నిర్ధారణ లేఖలను రూపొందించి డౌన్లోడ్ చేయండి"
 
 #: 
-msgid "Generate annual giving statements for tax purposes"
-msgstr "పన్ను ప్రయోజనాల కోసం వార్షిక అర్పణ నివేదికలు రూపొందించండి"
-
-#: 
 msgid "Generate directory listings and printed materials"
 msgstr "డైరెక్టరీ జాబితాలు మరియు ముద్రిత సామగ్రి రూపొందించండి"
 
@@ -9768,10 +9760,6 @@ msgstr "సిస్టమ్ నిర్ధారణ సమాచారం మ
 #: 
 msgid "Tags"
 msgstr "ట్యాగ్‌లు"
-
-#: 
-msgid "Tax Statements"
-msgstr "పన్ను ప్రకటనలు"
 
 #: 
 msgid "Teacher"

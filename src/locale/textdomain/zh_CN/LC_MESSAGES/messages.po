@@ -6693,10 +6693,6 @@ msgid "Tax Report Verbiage"
 msgstr "税务报告措辞"
 
 #: 
-msgid "Tax Statements (Giving Report)"
-msgstr "税务声明（奉献报告）"
-
-#: 
 msgid "Tax Year Reporting Checklist"
 msgstr "税务年度报告检查清单"
 
@@ -9203,10 +9199,6 @@ msgid "Generate and download confirmation letters"
 msgstr "生成并下载确认信函"
 
 #: 
-msgid "Generate annual giving statements for tax purposes"
-msgstr "生成年度奉献报表以供报税使用"
-
-#: 
 msgid "Generate directory listings and printed materials"
 msgstr "生成通讯录和打印材料"
 
@@ -9851,10 +9843,6 @@ msgstr "系统诊断信息和配置"
 #: 
 msgid "Tags"
 msgstr "标签"
-
-#: 
-msgid "Tax Statements"
-msgstr "税务报表"
 
 #: 
 msgid "Teacher"

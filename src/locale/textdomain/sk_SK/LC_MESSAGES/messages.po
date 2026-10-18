@@ -6604,10 +6604,6 @@ msgid "Tax Report Verbiage"
 msgstr "Text daňovej správy"
 
 #: 
-msgid "Tax Statements (Giving Report)"
-msgstr "Daňové výkazy (správa o darovaní)"
-
-#: 
 msgid "Tax Year Reporting Checklist"
 msgstr "Kontrolný zoznam daňového výkazníctva za rok"
 
@@ -9129,10 +9125,6 @@ msgid "Generate and download confirmation letters"
 msgstr "Generovať a stiahnuť potvrdzujúce listy"
 
 #: 
-msgid "Generate annual giving statements for tax purposes"
-msgstr "Generovať ročné výkazy darovania na daňové účely"
-
-#: 
 msgid "Generate directory listings and printed materials"
 msgstr "Generovať výpisy adresára a tlačené materiály"
 
@@ -9777,10 +9769,6 @@ msgstr "Diagnostické informácie a konfigurácia systému"
 #: 
 msgid "Tags"
 msgstr "Štítky"
-
-#: 
-msgid "Tax Statements"
-msgstr "Daňové výkazy"
 
 #: 
 msgid "Teacher"

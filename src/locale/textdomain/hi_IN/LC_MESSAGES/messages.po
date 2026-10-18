@@ -6593,10 +6593,6 @@ msgid "Tax Report Verbiage"
 msgstr "कर रिपोर्ट शब्दावली"
 
 #: 
-msgid "Tax Statements (Giving Report)"
-msgstr "कर विवरण (दान रिपोर्ट)"
-
-#: 
 msgid "Tax Year Reporting Checklist"
 msgstr "कर वर्ष रिपोर्टिंग चेकलिस्ट"
 
@@ -9108,10 +9104,6 @@ msgid "Generate and download confirmation letters"
 msgstr "पुष्टि पत्र तैयार करें और डाउनलोड करें"
 
 #: 
-msgid "Generate annual giving statements for tax purposes"
-msgstr "कर उद्देश्यों के लिए वार्षिक दान विवरण तैयार करें"
-
-#: 
 msgid "Generate directory listings and printed materials"
 msgstr "निर्देशिका सूची और मुद्रित सामग्री तैयार करें"
 
@@ -9756,10 +9748,6 @@ msgstr "सिस्टम निदान जानकारी और कॉ�
 #: 
 msgid "Tags"
 msgstr "टैग"
-
-#: 
-msgid "Tax Statements"
-msgstr "कर विवरण"
 
 #: 
 msgid "Teacher"

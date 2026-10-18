@@ -6597,10 +6597,6 @@ msgid "Tax Report Verbiage"
 msgstr "Belastingrapportformulering"
 
 #: 
-msgid "Tax Statements (Giving Report)"
-msgstr "Belastingafschriften (Giftrapport)"
-
-#: 
 msgid "Tax Year Reporting Checklist"
 msgstr "Controlelijst voor belastingjaarrapportage"
 
@@ -9112,10 +9108,6 @@ msgid "Generate and download confirmation letters"
 msgstr "Bevestigingsbrieven genereren en downloaden"
 
 #: 
-msgid "Generate annual giving statements for tax purposes"
-msgstr "Jaarlijkse giftenverklaringen genereren voor belastingdoeleinden"
-
-#: 
 msgid "Generate directory listings and printed materials"
 msgstr "Ledenlijsten en drukwerk genereren"
 
@@ -9760,10 +9752,6 @@ msgstr "Systeemdiagnostische informatie en configuratie"
 #: 
 msgid "Tags"
 msgstr "Labels"
-
-#: 
-msgid "Tax Statements"
-msgstr "Belastingverklaringen"
 
 #: 
 msgid "Teacher"

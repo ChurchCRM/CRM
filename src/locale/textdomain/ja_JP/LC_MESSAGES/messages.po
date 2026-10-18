@@ -6590,10 +6590,6 @@ msgid "Tax Report Verbiage"
 msgstr "税務レポートの文言"
 
 #: 
-msgid "Tax Statements (Giving Report)"
-msgstr "税務明細書（寄付レポート）"
-
-#: 
 msgid "Tax Year Reporting Checklist"
 msgstr "税年度報告チェックリスト"
 
@@ -9100,10 +9096,6 @@ msgid "Generate and download confirmation letters"
 msgstr "確認書の生成とダウンロード"
 
 #: 
-msgid "Generate annual giving statements for tax purposes"
-msgstr "税務用の年間献金明細書を生成"
-
-#: 
 msgid "Generate directory listings and printed materials"
 msgstr "ディレクトリ一覧と印刷物を生成"
 
@@ -9748,10 +9740,6 @@ msgstr "システム診断情報と設定"
 #: 
 msgid "Tags"
 msgstr "タグ"
-
-#: 
-msgid "Tax Statements"
-msgstr "税務証明書"
 
 #: 
 msgid "Teacher"
