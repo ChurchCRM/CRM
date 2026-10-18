@@ -4587,7 +4587,6 @@
     "one": "%d varsayılan gönüllü atandı",
     "other": "%d varsayılan gönüllü atandı"
   },
-  "%d failed": "%d başarısız oldu",
   "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
     "one": "Bu pozisyon için hâlâ %d gönüllü daha gerekiyor. Boşluğu doldurmak için oluşumu açın.",
     "other": "Bu pozisyon için hâlâ %d gönüllü daha gerekiyor. Boşluğu doldurmak için oluşumu açın."
@@ -4881,7 +4880,6 @@
   "Event staffed": "Etkinliğe kadro verildi",
   "Event title": "Olay başlığı",
   "Event type": "Etkinlik tipi",
-  "Every email ChurchCRM sent, newest first. Open a person to see their full history.": "ChurchCRM'in gönderdiği her e-posta, en yeniler önce. Tam geçmişini görmek için bir kişiyi açın.",
   "Every position in this window has the people it needs.": "Bu aralıktaki her pozisyonda gereken kişiler var.",
   "Everyone has answered": "Herkes yanıt verdi",
   "Everyone in the cart joins this ministry's volunteers. Tick their positions afterwards.": "Seçimdeki herkes bu hizmetin gönüllülerine katılır. Ardından pozisyonlarını işaretleyin.",

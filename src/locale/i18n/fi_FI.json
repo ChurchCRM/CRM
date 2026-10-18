@@ -4587,7 +4587,6 @@
     "one": "%d oletusvapaaehtoinen määrätty",
     "other": "%d oletusvapaaehtoista määrätty"
   },
-  "%d failed": "%d epäonnistui",
   "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
     "one": "Tähän tehtävään tarvitaan vielä %d vapaaehtoinen lisää. Avaa tapahtumakerta täyttääksesi aukon.",
     "other": "Tähän tehtävään tarvitaan vielä %d vapaaehtoista lisää. Avaa tapahtumakerta täyttääksesi aukon."
@@ -4881,7 +4880,6 @@
   "Event staffed": "Tapahtuma miehitetty",
   "Event title": "Tapahtuman nimi",
   "Event type": "Tapahtumatyyppi",
-  "Every email ChurchCRM sent, newest first. Open a person to see their full history.": "Jokainen ChurchCRM:n lähettämä sähköposti, uusin ensin. Avaa henkilö nähdäksesi hänen koko historiansa.",
   "Every position in this window has the people it needs.": "Jokaisessa tämän ajanjakson tehtävässä on tarvittavat henkilöt.",
   "Everyone has answered": "Kaikki ovat vastanneet",
   "Everyone in the cart joins this ministry's volunteers. Tick their positions afterwards.": "Kaikki valinnassa olevat liittyvät tämän työalan vapaaehtoisiin. Merkitse heidän tehtävänsä sen jälkeen.",

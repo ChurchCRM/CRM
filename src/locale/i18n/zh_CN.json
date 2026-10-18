@@ -4567,7 +4567,6 @@
   "%d default volunteer assigned": {
     "other": "%d 个默认义工已分配"
   },
-  "%d failed": "%d 项失败",
   "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
     "other": "此岗位仍需 %d 名义工。打开发生以填补空缺。"
   },
@@ -4855,7 +4854,6 @@
   "Event staffed": "活动已安排人员",
   "Event title": "活动名称",
   "Event type": "事件类型",
-  "Every email ChurchCRM sent, newest first. Open a person to see their full history.": "ChurchCRM 发出的每封电子邮件，最新的在前。打开某个人可查看其完整记录。",
   "Every position in this window has the people it needs.": "此时段内每个职位都已有所需人员。",
   "Everyone has answered": "每个人都已回应",
   "Everyone in the cart joins this ministry's volunteers. Tick their positions afterwards.": "已选中的所有人都会加入此事工的志愿者。之后再勾选他们的职位。",

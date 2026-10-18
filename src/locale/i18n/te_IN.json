@@ -4587,7 +4587,6 @@
     "one": "%d డిఫాల్ట్ స్వచ్ఛంద సేవకుడు నియమించబడ్డారు",
     "other": "%d డిఫాల్ట్ స్వచ్ఛంద సేవకులు నియమించబడ్డారు"
   },
-  "%d failed": "%d విఫలమయ్యాయి",
   "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
     "one": "ఈ స్థానానికి ఇంకా %d మరో స్వచ్ఛంద సేవకుడు అవసరం. ఖాళీని నింపడానికి సందర్భాన్ని తెరవండి.",
     "other": "ఈ స్థానానికి ఇంకా %d మంది మరో స్వచ్ఛంద సేవకులు అవసరం. ఖాళీని నింపడానికి సందర్భాన్ని తెరవండి."
@@ -4881,7 +4880,6 @@
   "Event staffed": "కార్యక్రమానికి సేవకులు ఏర్పాటయ్యారు",
   "Event title": "ఈవెంట్ శీర్షిక",
   "Event type": "ఈవెంట్ రకం",
-  "Every email ChurchCRM sent, newest first. Open a person to see their full history.": "ChurchCRM పంపిన ప్రతి ఇమెయిల్, కొత్తవి మొదట. పూర్తి చరిత్రను చూడటానికి ఒక వ్యక్తిని తెరవండి.",
   "Every position in this window has the people it needs.": "ఈ కాలంలోని ప్రతి స్థానానికి అవసరమైన వ్యక్తులు ఉన్నారు.",
   "Everyone has answered": "అందరూ సమాధానం ఇచ్చారు",
   "Everyone in the cart joins this ministry's volunteers. Tick their positions afterwards.": "ఎంపికలో ఉన్న ప్రతి ఒక్కరూ ఈ పరిచర్య స్వచ్ఛంద సేవకులలో చేరతారు. ఆ తరువాత వారి స్థానాలను టిక్ చేయండి.",

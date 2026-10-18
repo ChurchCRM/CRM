@@ -4587,7 +4587,6 @@
     "one": "%d डिफ़ॉल्ट स्वयंसेवक नियुक्त किया गया",
     "other": "%d डिफ़ॉल्ट स्वयंसेवक नियुक्त किए गए"
   },
-  "%d failed": "%d विफल",
   "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
     "one": "इस पद के लिए अभी %d और स्वयंसेवक की आवश्यकता है। रिक्ति भरने के लिए अवसर खोलें।",
     "other": "इस पद के लिए अभी %d और स्वयंसेवकों की आवश्यकता है। रिक्ति भरने के लिए अवसर खोलें।"
@@ -4881,7 +4880,6 @@
   "Event staffed": "आयोजन में नियुक्ति हो गई",
   "Event title": "इवेंट का शीर्षक",
   "Event type": "इवेंट प्रकार",
-  "Every email ChurchCRM sent, newest first. Open a person to see their full history.": "ChurchCRM द्वारा भेजा गया हर ईमेल, नवीनतम पहले। पूरा इतिहास देखने के लिए किसी व्यक्ति को खोलें।",
   "Every position in this window has the people it needs.": "इस अवधि के हर पद के लिए आवश्यक लोग हैं।",
   "Everyone has answered": "सभी ने उत्तर दे दिया है",
   "Everyone in the cart joins this ministry's volunteers. Tick their positions afterwards.": "चयन में सभी लोग इस सेवकाई के स्वयंसेवकों में शामिल होते हैं। बाद में उनके पद चुनें।",

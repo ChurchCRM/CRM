@@ -4587,7 +4587,6 @@
     "one": "%d standaardvrijwilliger ingeroosterd",
     "other": "%d standaardvrijwilligers ingeroosterd"
   },
-  "%d failed": "%d mislukt",
   "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
     "one": "Er is nog %d vrijwilliger nodig voor deze functie. Open het moment om de leemte op te vullen.",
     "other": "Er zijn nog %d vrijwilligers nodig voor deze functie. Open het moment om de leemte op te vullen."
@@ -4881,7 +4880,6 @@
   "Event staffed": "Activiteit bezet",
   "Event title": "Naam activiteit",
   "Event type": "Hoofdactiviteit",
-  "Every email ChurchCRM sent, newest first. Open a person to see their full history.": "Elke e-mail die ChurchCRM heeft verzonden, nieuwste eerst. Open een persoon om zijn of haar volledige geschiedenis te zien.",
   "Every position in this window has the people it needs.": "Elke functie in dit venster heeft de mensen die nodig zijn.",
   "Everyone has answered": "Iedereen heeft geantwoord",
   "Everyone in the cart joins this ministry's volunteers. Tick their positions afterwards.": "Iedereen in de selectie wordt vrijwilliger van deze bediening. Vink daarna hun functies aan.",

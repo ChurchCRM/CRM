@@ -4627,7 +4627,6 @@
     "many": "%d predvoleného dobrovoľníka pridelených",
     "other": "%d predvolených dobrovoľníkov pridelených"
   },
-  "%d failed": "%d zlyhalo",
   "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
     "one": "Pre túto pozíciu je stále potrebný %d ďalší dobrovoľník. Otvorte termín a doplňte medzeru.",
     "few": "Pre túto pozíciu sú stále potrební %d ďalší dobrovoľníci. Otvorte termín a doplňte medzeru.",
@@ -4933,7 +4932,6 @@
   "Event staffed": "Udalosť obsadená",
   "Event title": "Názov udalosti",
   "Event type": "Typ udalosti",
-  "Every email ChurchCRM sent, newest first. Open a person to see their full history.": "Každý e-mail, ktorý ChurchCRM odoslal, od najnovšieho. Otvorte osobu a uvidíte jej úplnú históriu.",
   "Every position in this window has the people it needs.": "Každá pozícia v tomto okne má ľudí, ktorých potrebuje.",
   "Everyone has answered": "Všetci odpovedali",
   "Everyone in the cart joins this ministry's volunteers. Tick their positions afterwards.": "Všetci vo výbere sa pripoja k dobrovoľníkom tejto služby. Potom zaškrtnite ich pozície.",

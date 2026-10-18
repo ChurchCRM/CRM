@@ -62,5 +62,13 @@
   "Unable to load group members": "",
   "Unknown user configuration key": "",
   "this person": "",
-  "{{name}} has no family on record": ""
+  "{{name}} has no family on record": "",
+  "%d failed (all time)": "",
+  "Failed email history pages": "",
+  "Failed sends across all email history, including automated messages": "",
+  "No server error recorded": "",
+  "Show all recent sends": "",
+  "Showing failed sends across all email history, including automated messages. Select a subject for details.": "",
+  "The table shows only the latest 20 sends. Open a person to see their full history.": "",
+  "View %d failed sends across all email history": ""
 }

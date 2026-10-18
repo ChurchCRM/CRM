@@ -18964,10 +18964,6 @@ msgid_plural "%d default volunteers assigned"
 msgstr[0] "%d 个默认义工已分配"
 
 #: 
-msgid "%d failed"
-msgstr "%d 项失败"
-
-#: 
 msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
 msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
 msgstr[0] "此岗位仍需 %d 名义工。打开发生以填补空缺。"
@@ -20082,10 +20078,6 @@ msgstr "活动名称"
 #: 
 msgid "Event type"
 msgstr "事件类型"
-
-#: 
-msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
-msgstr "ChurchCRM 发出的每封电子邮件，最新的在前。打开某个人可查看其完整记录。"
 
 #: 
 msgid "Every position in this window has the people it needs."

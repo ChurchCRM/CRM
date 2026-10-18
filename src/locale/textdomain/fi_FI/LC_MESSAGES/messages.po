@@ -18882,10 +18882,6 @@ msgstr[0] "%d oletusvapaaehtoinen määrätty"
 msgstr[1] "%d oletusvapaaehtoista määrätty"
 
 #: 
-msgid "%d failed"
-msgstr "%d epäonnistui"
-
-#: 
 msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
 msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
 msgstr[0] "Tähän tehtävään tarvitaan vielä %d vapaaehtoinen lisää. Avaa tapahtumakerta täyttääksesi aukon."
@@ -20006,10 +20002,6 @@ msgstr "Tapahtuman nimi"
 #: 
 msgid "Event type"
 msgstr "Tapahtumatyyppi"
-
-#: 
-msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
-msgstr "Jokainen ChurchCRM:n lähettämä sähköposti, uusin ensin. Avaa henkilö nähdäksesi hänen koko historiansa."
 
 #: 
 msgid "Every position in this window has the people it needs."

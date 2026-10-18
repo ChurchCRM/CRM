@@ -4587,7 +4587,6 @@
     "one": "%d vaikimisi vabatahtlik määratud",
     "other": "%d vaikimisi vabatahtlikku määratud"
   },
-  "%d failed": "%d ebaõnnestus",
   "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
     "one": "Sellele ülesandele on veel vaja %d vabatahtlikku. Ava toimumiskord, et lünk täita.",
     "other": "Sellele ülesandele on veel vaja %d vabatahtlikku. Ava toimumiskord, et lünk täita."
@@ -4881,7 +4880,6 @@
   "Event staffed": "Sündmus komplekteeritud",
   "Event title": "Ürituse pealkiri",
   "Event type": "Sündmuste tüüp",
-  "Every email ChurchCRM sent, newest first. Open a person to see their full history.": "Iga ChurchCRM-i saadetud e-kiri, uuemad enne. Täieliku ajaloo nägemiseks ava isik.",
   "Every position in this window has the people it needs.": "Igal selle perioodi ülesandel on vajalikud inimesed.",
   "Everyone has answered": "Kõik on vastanud",
   "Everyone in the cart joins this ministry's volunteers. Tick their positions afterwards.": "Kõik valikus olevad liituvad selle valdkonna vabatahtlikega. Märgi seejärel nende ülesanded.",

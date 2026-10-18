@@ -18911,10 +18911,6 @@ msgstr[0] "Mtu wa kujitolea mteule %d amepangwa"
 msgstr[1] "Watu wa kujitolea wateule %d wamepangwa"
 
 #: 
-msgid "%d failed"
-msgstr "%d imeshindwa"
-
-#: 
 msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
 msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
 msgstr[0] "Mtu mmoja zaidi wa kujitolea (%d) bado anahitajika kwa nafasi hii. Fungua tukio ili kuziba pengo."
@@ -20035,10 +20031,6 @@ msgstr "Kichwa cha habari"
 #: 
 msgid "Event type"
 msgstr "Aina ya Tukio"
-
-#: 
-msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
-msgstr "Kila barua pepe ambayo ChurchCRM ilituma, mpya zaidi kwanza. Fungua mtu ili uone historia yake kamili."
 
 #: 
 msgid "Every position in this window has the people it needs."

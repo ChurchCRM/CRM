@@ -19005,10 +19005,6 @@ msgstr[0] "%d standardvolontär tilldelad"
 msgstr[1] "%d standardvolontärer tilldelade"
 
 #: 
-msgid "%d failed"
-msgstr "%d misslyckades"
-
-#: 
 msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
 msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
 msgstr[0] "Ytterligare %d volontär behövs fortfarande för denna position. Öppna tillfället för att fylla luckan."
@@ -20129,10 +20125,6 @@ msgstr "Evenemangsnamn"
 #: 
 msgid "Event type"
 msgstr "Evenemangstyp"
-
-#: 
-msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
-msgstr "Alla e-postmeddelanden som ChurchCRM skickat, senaste först. Öppna en person för att se hens fullständiga historik."
 
 #: 
 msgid "Every position in this window has the people it needs."
