@@ -13166,10 +13166,6 @@ msgid "Are you sure you want to delete this note?"
 msgstr "Kas olete kindel, et soovite selle märkuse kustutada?"
 
 #: 
-msgid "Cancel — wait 1 more minute"
-msgstr "Tühista — oota veel 1 minut"
-
-#: 
 msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
 msgstr "Annetusfondi ei saa kustutada: sellele viitab veel üks või mitu rahalist kohustust."
 
@@ -13298,14 +13294,6 @@ msgid "Read more"
 msgstr "Loe rohkem"
 
 #: 
-msgid "Refreshing Soon"
-msgstr "Värskendamine varsti"
-
-#: 
-msgid "Refreshing in"
-msgstr "Värskendamine"
-
-#: 
 msgid "That name already exists."
 msgstr "See nimi on juba olemas."
 
@@ -13324,10 +13312,6 @@ msgstr "Teil puudub luba selle märkuse kustutamiseks."
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "Teil puudub luba selle märkuse muutmiseks."
-
-#: 
-msgid "seconds"
-msgstr "sekundit"
 
 #: 
 msgid "Cannot delete event: %d people are currently checked in."

@@ -13187,10 +13187,6 @@ msgid "Are you sure you want to delete this note?"
 msgstr "Ви впевнені, що хочете видалити цю нотатку?"
 
 #: 
-msgid "Cancel — wait 1 more minute"
-msgstr "Скасувати — зачекати ще 1 хвилину"
-
-#: 
 msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
 msgstr "Неможливо видалити фонд пожертвувань: на нього ще посилаються одне або декілька фінансових зобов'язань."
 
@@ -13319,14 +13315,6 @@ msgid "Read more"
 msgstr "Читати далі"
 
 #: 
-msgid "Refreshing Soon"
-msgstr "Оновлення незабаром"
-
-#: 
-msgid "Refreshing in"
-msgstr "Оновлення через"
-
-#: 
 msgid "That name already exists."
 msgstr "Таке ім'я вже існує."
 
@@ -13345,10 +13333,6 @@ msgstr "У вас немає дозволу на видалення цієї н�
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "У вас немає дозволу на редагування цієї нотатки."
-
-#: 
-msgid "seconds"
-msgstr "секунд"
 
 #: 
 msgid "Cannot delete event: %d people are currently checked in."

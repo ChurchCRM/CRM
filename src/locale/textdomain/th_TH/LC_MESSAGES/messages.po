@@ -13135,10 +13135,6 @@ msgid "Are you sure you want to delete this note?"
 msgstr "คุณแน่ใจหรือไม่ว่าต้องการลบบันทึกนี้?"
 
 #: 
-msgid "Cancel — wait 1 more minute"
-msgstr "ยกเลิก — รอ 1 นาทีเพิ่มเติม"
-
-#: 
 msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
 msgstr "ไม่สามารถลบกองทุนเพื่อการบริจาคได้: ยังมีคำมั่นสัญญาทางการเงินหนึ่งรายการหรือมากกว่าอ้างอิงอยู่"
 
@@ -13267,14 +13263,6 @@ msgid "Read more"
 msgstr "อ่านเพิ่มเติม"
 
 #: 
-msgid "Refreshing Soon"
-msgstr "กำลังรีเฟรชเร็วๆ นี้"
-
-#: 
-msgid "Refreshing in"
-msgstr "รีเฟรชใน"
-
-#: 
 msgid "That name already exists."
 msgstr "ชื่อนี้มีอยู่แล้ว"
 
@@ -13293,10 +13281,6 @@ msgstr "คุณไม่มีสิทธิ์ลบบันทึกนี
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "คุณไม่มีสิทธิ์แก้ไขบันทึกนี้"
-
-#: 
-msgid "seconds"
-msgstr "วินาที"
 
 #: 
 msgid "Cannot delete event: %d people are currently checked in."

@@ -13177,10 +13177,6 @@ msgid "Are you sure you want to delete this note?"
 msgstr "இந்த குறிப்பை நீக்க விரும்புகிறீர்களா?"
 
 #: 
-msgid "Cancel — wait 1 more minute"
-msgstr "ரத்து செய் — இன்னும் 1 நிமிடம் காத்திருக்கவும்"
-
-#: 
 msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
 msgstr "நன்கொடை நிதியை நீக்க முடியாது: அது இன்னும் ஒரு அல்லது அதற்கு மேற்பட்ட உறுதிமொழிகளால் குறிப்பிடப்படுகிறது."
 
@@ -13309,14 +13305,6 @@ msgid "Read more"
 msgstr "மேலும் படிக்க"
 
 #: 
-msgid "Refreshing Soon"
-msgstr "விரைவில் புதுப்பிக்கப்படுகிறது"
-
-#: 
-msgid "Refreshing in"
-msgstr "புதுப்பிப்பு நடைபெறுகிறது"
-
-#: 
 msgid "That name already exists."
 msgstr "அந்த பெயர் ஏற்கனவே உள்ளது."
 
@@ -13335,10 +13323,6 @@ msgstr "இந்த குறிப்பை நீக்க உங்களு
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "இந்த குறிப்பை திருத்த உங்களுக்கு அனுமதி இல்லை."
-
-#: 
-msgid "seconds"
-msgstr "வினாடிகள்"
 
 #: 
 msgid "Cannot delete event: %d people are currently checked in."

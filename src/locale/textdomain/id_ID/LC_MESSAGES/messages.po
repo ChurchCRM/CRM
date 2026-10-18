@@ -13151,10 +13151,6 @@ msgid "Are you sure you want to delete this note?"
 msgstr "Apakah Anda yakin ingin menghapus catatan ini?"
 
 #: 
-msgid "Cancel — wait 1 more minute"
-msgstr "Batal — tunggu 1 menit lagi"
-
-#: 
 msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
 msgstr "Tidak dapat menghapus dana donasi: masih direferensikan oleh satu atau lebih komitmen keuangan."
 
@@ -13283,14 +13279,6 @@ msgid "Read more"
 msgstr "Baca selengkapnya"
 
 #: 
-msgid "Refreshing Soon"
-msgstr "Akan Segera Diperbarui"
-
-#: 
-msgid "Refreshing in"
-msgstr "Diperbarui dalam"
-
-#: 
 msgid "That name already exists."
 msgstr "Nama tersebut sudah ada."
 
@@ -13309,10 +13297,6 @@ msgstr "Anda tidak memiliki izin untuk menghapus catatan ini."
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "Anda tidak memiliki izin untuk mengedit catatan ini."
-
-#: 
-msgid "seconds"
-msgstr "detik"
 
 #: 
 msgid "Cannot delete event: %d people are currently checked in."

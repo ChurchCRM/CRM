@@ -13301,10 +13301,6 @@ msgid "Are you sure you want to delete this note?"
 msgstr "您確定要刪除這則備註嗎？"
 
 #: 
-msgid "Cancel — wait 1 more minute"
-msgstr "取消 — 再等候 1 分鐘"
-
-#: 
 msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
 msgstr "無法刪除捐款基金：仍有一個或多個財務承諾參照此基金。"
 
@@ -13433,14 +13429,6 @@ msgid "Read more"
 msgstr "閱讀更多"
 
 #: 
-msgid "Refreshing Soon"
-msgstr "即將重新整理"
-
-#: 
-msgid "Refreshing in"
-msgstr "倒數重新整理："
-
-#: 
 msgid "That name already exists."
 msgstr "該名稱已存在。"
 
@@ -13459,10 +13447,6 @@ msgstr "您沒有刪除此備註的權限。"
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "您沒有編輯此備註的權限。"
-
-#: 
-msgid "seconds"
-msgstr "秒"
 
 #: 
 msgid "Cannot delete event: %d people are currently checked in."

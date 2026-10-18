@@ -13141,10 +13141,6 @@ msgid "Are you sure you want to delete this note?"
 msgstr "Jeste li sigurni da želite obrisati ovu bilješku?"
 
 #: 
-msgid "Cancel — wait 1 more minute"
-msgstr "Odustani — čekaj još 1 minutu"
-
-#: 
 msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
 msgstr "Nije moguće obrisati fond darivanja: još uvijek ga referira jedan ili više zavjeta."
 
@@ -13273,14 +13269,6 @@ msgid "Read more"
 msgstr "Čitaj više"
 
 #: 
-msgid "Refreshing Soon"
-msgstr "Uskoro osvježavanje"
-
-#: 
-msgid "Refreshing in"
-msgstr "Osvježavanje za"
-
-#: 
 msgid "That name already exists."
 msgstr "Taj naziv već postoji."
 
@@ -13299,10 +13287,6 @@ msgstr "Nemate dozvolu za brisanje ove bilješke."
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "Nemate dozvolu za uređivanje ove bilješke."
-
-#: 
-msgid "seconds"
-msgstr "sekundi"
 
 #: 
 msgid "Cannot delete event: %d people are currently checked in."

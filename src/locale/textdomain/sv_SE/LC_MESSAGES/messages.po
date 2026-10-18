@@ -13257,10 +13257,6 @@ msgid "Are you sure you want to delete this note?"
 msgstr "Är du säker på att du vill ta bort den här anteckningen?"
 
 #: 
-msgid "Cancel — wait 1 more minute"
-msgstr "Avbryt — vänta 1 minut till"
-
-#: 
 msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
 msgstr "Kan inte ta bort donationsfonden: den refereras fortfarande av ett eller flera finansiella löften."
 
@@ -13389,14 +13385,6 @@ msgid "Read more"
 msgstr "Läs mer"
 
 #: 
-msgid "Refreshing Soon"
-msgstr "Uppdateras snart"
-
-#: 
-msgid "Refreshing in"
-msgstr "Uppdateras om"
-
-#: 
 msgid "That name already exists."
 msgstr "Det namnet finns redan."
 
@@ -13415,10 +13403,6 @@ msgstr "Du har inte behörighet att ta bort den här anteckningen."
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "Du har inte behörighet att redigera den här anteckningen."
-
-#: 
-msgid "seconds"
-msgstr "sekunder"
 
 #: 
 msgid "Cannot delete event: %d people are currently checked in."

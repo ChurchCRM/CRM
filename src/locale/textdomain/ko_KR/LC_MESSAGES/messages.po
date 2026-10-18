@@ -13151,10 +13151,6 @@ msgid "Are you sure you want to delete this note?"
 msgstr "이 메모를 삭제하시겠습니까?"
 
 #: 
-msgid "Cancel — wait 1 more minute"
-msgstr "취소 — 1분 더 기다리기"
-
-#: 
 msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
 msgstr "헌금 기금을 삭제할 수 없습니다: 하나 이상의 재정 서약에서 참조 중입니다."
 
@@ -13283,14 +13279,6 @@ msgid "Read more"
 msgstr "자세히 보기"
 
 #: 
-msgid "Refreshing Soon"
-msgstr "곧 새로 고침"
-
-#: 
-msgid "Refreshing in"
-msgstr "새로 고침까지"
-
-#: 
 msgid "That name already exists."
 msgstr "이미 존재하는 이름입니다."
 
@@ -13309,10 +13297,6 @@ msgstr "이 메모를 삭제할 권한이 없습니다."
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "이 메모를 편집할 권한이 없습니다."
-
-#: 
-msgid "seconds"
-msgstr "초"
 
 #: 
 msgid "Cannot delete event: %d people are currently checked in."

@@ -13144,10 +13144,6 @@ msgid "Are you sure you want to delete this note?"
 msgstr "మీరు ఈ నోట్‌ను తొలగించాలనుకుంటున్నారా?"
 
 #: 
-msgid "Cancel — wait 1 more minute"
-msgstr "రద్దు చేయి — మరో 1 నిమిషం వేచి ఉండండి"
-
-#: 
 msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
 msgstr "దాన నిధిని తొలగించడం సాధ్యం కాదు: ఇది ఇంకా ఒక లేదా అంతకంటే ఎక్కువ ఆర్థిక నిబద్ధతలతో అనుసంధానించబడి ఉంది."
 
@@ -13276,14 +13272,6 @@ msgid "Read more"
 msgstr "మరింత చదవండి"
 
 #: 
-msgid "Refreshing Soon"
-msgstr "త్వరలో రిఫ్రెష్ అవుతుంది"
-
-#: 
-msgid "Refreshing in"
-msgstr "రిఫ్రెష్ అవుతుంది"
-
-#: 
 msgid "That name already exists."
 msgstr "ఆ పేరు ఇప్పటికే ఉంది."
 
@@ -13302,10 +13290,6 @@ msgstr "ఈ నోట్‌ను తొలగించే అనుమతి �
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "ఈ నోట్‌ను సవరించే అనుమతి మీకు లేదు."
-
-#: 
-msgid "seconds"
-msgstr "సెకన్లు"
 
 #: 
 msgid "Cannot delete event: %d people are currently checked in."

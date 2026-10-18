@@ -13167,10 +13167,6 @@ msgid "Are you sure you want to delete this note?"
 msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετε αυτή τη σημείωση;"
 
 #: 
-msgid "Cancel — wait 1 more minute"
-msgstr "Ακύρωση — περιμένετε ακόμα 1 λεπτό"
-
-#: 
 msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
 msgstr "Δεν είναι δυνατή η διαγραφή του ταμείου δωρεών: αναφέρεται ακόμα σε μία ή περισσότερες οικονομικές δεσμεύσεις."
 
@@ -13299,14 +13295,6 @@ msgid "Read more"
 msgstr "Διαβάστε περισσότερα"
 
 #: 
-msgid "Refreshing Soon"
-msgstr "Ανανέωση σύντομα"
-
-#: 
-msgid "Refreshing in"
-msgstr "Ανανέωση σε"
-
-#: 
 msgid "That name already exists."
 msgstr "Αυτό το όνομα υπάρχει ήδη."
 
@@ -13325,10 +13313,6 @@ msgstr "Δεν έχετε άδεια να διαγράψετε αυτή τη σ�
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "Δεν έχετε άδεια να επεξεργαστείτε αυτή τη σημείωση."
-
-#: 
-msgid "seconds"
-msgstr "δευτερόλεπτα"
 
 #: 
 msgid "Cannot delete event: %d people are currently checked in."
