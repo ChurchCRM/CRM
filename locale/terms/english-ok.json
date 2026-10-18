@@ -567,7 +567,8 @@
   "hi": [
     "HTML URL",
     "ICS URL",
-    "SHA1 Hash"
+    "SHA1 Hash",
+    "{{team}}: {{staffing}}"
   ],
   "id": [
     "AM / PM",
@@ -755,7 +756,8 @@
     "PDF",
     "SHA1 Hash",
     "URL",
-    "manifest."
+    "manifest.",
+    "{{team}}: {{staffing}}"
   ],
   "nb": [
     "4. Kiosk",
@@ -864,7 +866,8 @@
   ],
   "ta": [
     "Azure",
-    "SHA1 Hash"
+    "SHA1 Hash",
+    "{{team}}: {{staffing}}"
   ],
   "te": [
     "App",
@@ -886,7 +889,8 @@
     "SHA1 Hash",
     "Server",
     "Test",
-    "Timeout"
+    "Timeout",
+    "{{team}}: {{staffing}}"
   ],
   "th": [
     "App",
