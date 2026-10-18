@@ -5,6 +5,7 @@
  * Requires: moment.js (loaded globally), jQuery
  */
 
+import Avatar from "avatar-initials";
 import type {
   ActiveClassMembersResponse,
   AjaxOptions,
@@ -90,6 +91,36 @@ function getFamilyPhotoUrl(childPersonId: number, memberId: number): string {
 }
 
 /**
+ * Avatar for a guardian: the uploaded photo when there is one, otherwise (or if the
+ * photo fails to load) generated initials, matching avatars elsewhere in the app.
+ */
+function buildGuardianAvatar(person: CheckinByPerson, className: string, size: number, photoUrl: string): JQuery {
+  const $img = $("<img>", { class: className, alt: `${person.FirstName} ${person.LastName}` });
+  const applyInitials = (): void => {
+    Avatar.from($img[0] as HTMLImageElement, {
+      useGravatar: false,
+      initials: `${person.FirstName.charAt(0)}${person.LastName.charAt(0)}`.toUpperCase(),
+      size,
+      color: "#ffffff",
+      background: `hsl(${(person.Id * 47) % 360}, 65%, 40%)`,
+      fontSize: Math.floor(size * 0.4),
+      fontWeight: 600,
+      fontFamily: "'Segoe UI', 'Helvetica Neue', Arial, sans-serif",
+    });
+  };
+
+  if (person.hasPhoto) {
+    // Bind before setting src; inline onerror is blocked by the project CSP.
+    $img.one("error", applyInitials);
+    $img.attr("src", photoUrl);
+  } else {
+    applyInitials();
+  }
+
+  return $img;
+}
+
+/**
  * Update (or clear) the "Checked in by" line on a roster child's card.
  *
  * Shows a small avatar + name when checker is not null; clears the line
@@ -109,22 +140,10 @@ function updateCheckinByLine(childPersonId: number, checker: CheckinByPerson | n
 
   $byLine.empty();
 
-  if (checker.hasPhoto) {
-    const photoUrl = getFamilyPhotoUrl(childPersonId, checker.Id);
-    const $img = $("<img>", { class: "checkin-by-inline-photo", alt: `${checker.FirstName} ${checker.LastName}` });
-    // Bind error handler before setting src to guarantee it fires on broken images.
-    // Inline onerror attributes are blocked by the project CSP (no 'unsafe-inline').
-    $img.on("error", () => {
-      $img.replaceWith($("<i>", { class: "fa-solid fa-user-check" }));
-    });
-    $img.attr("src", photoUrl);
-    $byLine.append($img, $("<span>").text(`${checker.FirstName} ${checker.LastName}`));
-  } else {
-    $byLine.append(
-      $("<i>", { class: "fa-solid fa-user-check" }),
-      $("<span>").text(`${checker.FirstName} ${checker.LastName}`),
-    );
-  }
+  $byLine.append(
+    buildGuardianAvatar(checker, "checkin-by-inline-photo", 40, getFamilyPhotoUrl(childPersonId, checker.Id)),
+    $("<span>").text(`${checker.FirstName} ${checker.LastName}`),
+  );
 }
 
 /**
@@ -974,18 +993,7 @@ function renderFamilyMemberOptions(members: FamilyMember[], childPersonId: numbe
       "data-memberid": member.Id,
     });
 
-    if (member.hasPhoto) {
-      const photoUrl = getFamilyPhotoUrl(childPersonId, member.Id);
-      const $img = $("<img>", { class: "checkin-by-photo", alt: `${member.FirstName} ${member.LastName}` });
-      // Bind error handler before setting src; inline onerror is blocked by project CSP.
-      $img.on("error", () => {
-        $img.replaceWith($("<i>", { class: "fa-solid fa-user fa-2x" }));
-      });
-      $img.attr("src", photoUrl);
-      $btn.append($img);
-    } else {
-      $btn.append($("<i>", { class: "fa-solid fa-user fa-2x" }));
-    }
+    $btn.append(buildGuardianAvatar(member, "checkin-by-photo", 144, getFamilyPhotoUrl(childPersonId, member.Id)));
 
     $btn.append($("<span>", { class: "checkin-by-name", text: `${member.FirstName} ${member.LastName}` }));
     $container.append($btn);
