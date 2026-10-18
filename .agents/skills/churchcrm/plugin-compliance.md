@@ -20,6 +20,8 @@ Work through every section when you install, upgrade or audit a community plugin
 
 ---
 
+If reviewing a plugin PR that includes UI, check it against [Frontend Development](./frontend-development.md): theme-aware Tabler tokens (no fixed light-only `bg-light`, `alert-light` or `table-success` classes), plus screenshots/verification in **light and dark** at **desktop, tablet and phone** sizes.
+
 ## 1. Before you install
 
 ### 1a. Confirm the plugin is on the approved list
@@ -214,6 +216,7 @@ When maintainers remove a plugin from the registry (usually after a disclosed vu
 
 ## 5. Quarterly self-audit
 
+- [ ] Any plugin UI changes are checked in light/dark and at desktop/tablet/phone sizes per [Frontend Development](./frontend-development.md)
 - [ ] Every plugin under `src/plugins/community/` has a matching registry entry
 - [ ] Every `reviewedAt` is at most 6 months old
 - [ ] Sections 3a-3d re-run on every installed community plugin

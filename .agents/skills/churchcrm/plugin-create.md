@@ -19,6 +19,8 @@ This is the path from idea to an entry in `approved-plugins.json`. Deeper detail
 
 List the `KNOWN_PERMISSIONS` tags the plugin needs before coding. `hooks.financial` + `network.outbound`, or `fs.write` + `network.outbound`, classify the plugin `high` and need two maintainer reviews.
 
+For plugin UI, follow [Frontend Development](./frontend-development.md): use Tabler theme tokens rather than fixed light-only classes (`bg-light`, `alert-light`, `table-success`), and check **light/dark** at **desktop, tablet and phone** before submitting.
+
 ## 1. Scaffold
 
 ```bash
