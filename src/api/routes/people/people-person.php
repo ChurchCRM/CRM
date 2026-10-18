@@ -404,7 +404,9 @@ function setPersonRoleAPI(Request $request, Response $response, array $args): Re
     $person = $request->getAttribute('person');
 
     $roleId = (int) $args['roleId'];
-    $role = ListOptionQuery::create()->filterByOptionId($roleId)->findOne();
+    // Family roles belong to list 2 (the same list returned by /persons/roles).
+    // Option IDs are only unique within a list.
+    $role = ListOptionQuery::create()->filterById(2)->filterByOptionId($roleId)->findOne();
 
     if (empty($role)) {
         throw new HttpNotFoundException($request, gettext('The role could not be found.'));
