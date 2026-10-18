@@ -24238,3 +24238,291 @@ msgstr "ஒரு நிர்வாகி மின்னஞ்சலை %1$s �
 msgid "Only an administrator can change the email of a person with a user account."
 msgstr "பயனர் கணக்கு உள்ள நபரின் மின்னஞ்சலை நிர்வாகி மட்டுமே மாற்ற முடியும்."
 
+#: 
+msgid "Fund totals appear here once payments are added."
+msgstr "பணம் செலுத்துதல்கள் சேர்க்கப்பட்டதும் நிதிகளின் மொத்தம் இங்கே தோன்றும்."
+
+#: 
+msgid "No payments yet"
+msgstr "இதுவரை பணம் செலுத்துதல்கள் இல்லை"
+
+#: 
+msgid "Some payments could not be deleted"
+msgstr "சில பணம் செலுத்துதல்களை நீக்க முடியவில்லை"
+
+#: 
+msgid "A string value is required"
+msgstr "சரம் மதிப்பு தேவை"
+
+#: 
+msgid "Administrator permission required for this setting"
+msgstr "இந்த அமைப்புக்கு நிர்வாகி அனுமதி தேவை"
+
+#: 
+msgid "Alerts sent: {{sent}}, failed: {{failed}}"
+msgstr "அனுப்பிய எச்சரிக்கைகள்: {{sent}}, தோல்வி: {{failed}}"
+
+#: 
+msgid "Alerts sent: {{total}}"
+msgstr "அனுப்பிய எச்சரிக்கைகள்: {{total}}"
+
+#: 
+msgid "Assign an event to the kiosk using the dropdown"
+msgstr "கீழிறங்கும் பட்டியலைப் பயன்படுத்தி கியோஸ்க்கிற்கு ஒரு நிகழ்வை ஒதுக்கவும்"
+
+#: 
+msgid "Awaiting Acceptance"
+msgstr "ஏற்பிற்காகக் காத்திருக்கிறது"
+
+#: 
+msgid "Birthday coming up!"
+msgstr "பிறந்தநாள் நெருங்குகிறது!"
+
+#: 
+msgid "Check that the event start/end times are correct"
+msgstr "நிகழ்வின் தொடக்க, முடிவு நேரங்கள் சரியாக உள்ளனவா எனச் சரிபார்க்கவும்"
+
+#: 
+msgid "Check the server logs for more details"
+msgstr "மேலும் விவரங்களுக்கு சர்வர் பதிவுகளைப் பார்க்கவும்"
+
+#: 
+msgid "Check-in Opens Soon"
+msgstr "செக்-இன் விரைவில் திறக்கும்"
+
+#: 
+msgid "Checked-in-by person is not an adult family member"
+msgstr "செக்-இன் செய்தவர் குடும்பத்தின் வயது வந்த உறுப்பினர் அல்ல"
+
+#: 
+msgid "Checked-out-by person is not an adult family member"
+msgstr "செக்-அவுட் செய்தவர் குடும்பத்தின் வயது வந்த உறுப்பினர் அல்ல"
+
+#: 
+msgid "Checkout all students"
+msgstr "அனைத்து மாணவர்களையும் செக்-அவுட் செய்யவும்"
+
+#: 
+msgid "Days"
+msgstr "நாட்கள்"
+
+#: 
+msgid "Ensure the group has members"
+msgstr "குழுவில் உறுப்பினர்கள் இருப்பதை உறுதிசெய்யவும்"
+
+#: 
+msgid "Ensure the group has members assigned"
+msgstr "குழுவிற்கு உறுப்பினர்கள் ஒதுக்கப்பட்டுள்ளதை உறுதிசெய்யவும்"
+
+#: 
+msgid "Error Loading Members"
+msgstr "உறுப்பினர்களை ஏற்றுவதில் பிழை"
+
+#: 
+msgid "Event Has Ended"
+msgstr "நிகழ்வு முடிந்துவிட்டது"
+
+#: 
+msgid "Event not linked to a Group"
+msgstr "நிகழ்வு எந்தக் குழுவுடனும் இணைக்கப்படவில்லை"
+
+#: 
+msgid "Event timing"
+msgstr "நிகழ்வு நேரம்"
+
+#: 
+msgid "Everyone is here!"
+msgstr "அனைவரும் வந்துவிட்டனர்!"
+
+#: 
+msgid "Failed to send all alerts: {{total}}"
+msgstr "அனைத்து எச்சரிக்கைகளையும் அனுப்ப முடியவில்லை: {{total}}"
+
+#: 
+msgid "Failed to send parent alert"
+msgstr "பெற்றோருக்கான எச்சரிக்கையை அனுப்ப முடியவில்லை"
+
+#: 
+msgid "Find this kiosk in the device list"
+msgstr "சாதனப் பட்டியலில் இந்த கியோஸ்க்கைக் கண்டறியவும்"
+
+#: 
+msgid "Group has no members"
+msgstr "குழுவில் உறுப்பினர்கள் இல்லை"
+
+#: 
+msgid "HTTP Status: {{status}}"
+msgstr "HTTP நிலை: {{status}}"
+
+#: 
+msgid "Hours"
+msgstr "மணிநேரம்"
+
+#: 
+msgid "How to Accept This Kiosk"
+msgstr "இந்த கியோஸ்க்கை ஏற்றுக்கொள்வது எப்படி"
+
+#: 
+msgid "Kiosk Identification"
+msgstr "கியோஸ்க் அடையாளம்"
+
+#: 
+msgid "Kiosk Ready"
+msgstr "கியோஸ்க் தயார்"
+
+#: 
+msgid "Log in to ChurchCRM as an administrator"
+msgstr "நிர்வாகியாக ChurchCRM-இல் உள்நுழையவும்"
+
+#: 
+msgid "Member is not an adult family member of the roster child"
+msgstr "பட்டியலில் உள்ள குழந்தையின் குடும்பத்தின் வயது வந்த உறுப்பினர் அல்ல இந்த உறுப்பினர்"
+
+#: 
+msgid "Next Steps"
+msgstr "அடுத்த படிகள்"
+
+#: 
+msgid "No Group Members Found"
+msgstr "குழு உறுப்பினர்கள் எவரும் கிடைக்கவில்லை"
+
+#: 
+msgid "No checked-in students with families to alert"
+msgstr "எச்சரிக்க குடும்பம் உள்ள செக்-இன் செய்த மாணவர்கள் இல்லை"
+
+#: 
+msgid "Parent Alert"
+msgstr "பெற்றோர் எச்சரிக்கை"
+
+#: 
+msgid "Parent alert sent for {{name}}"
+msgstr "{{name}}-க்கான பெற்றோர் எச்சரிக்கை அனுப்பப்பட்டது"
+
+#: 
+msgid "Photo not found"
+msgstr "புகைப்படம் கிடைக்கவில்லை"
+
+#: 
+msgid "Possible Causes"
+msgstr "சாத்தியமான காரணங்கள்"
+
+#: 
+msgid "Processing..."
+msgstr "செயலாக்கப்படுகிறது..."
+
+#: 
+msgid "Recent birthday!"
+msgstr "சமீபத்தில் பிறந்தநாள்!"
+
+#: 
+msgid "Refresh member list"
+msgstr "உறுப்பினர் பட்டியலைப் புதுப்பிக்கவும்"
+
+#: 
+msgid "Refresh this kiosk page"
+msgstr "இந்த கியோஸ்க் பக்கத்தைப் புதுப்பிக்கவும்"
+
+#: 
+msgid "Seconds"
+msgstr "விநாடிகள்"
+
+#: 
+msgid "Send alert to all families"
+msgstr "அனைத்துக் குடும்பங்களுக்கும் எச்சரிக்கை அனுப்பவும்"
+
+#: 
+msgid "Server error - the event may not be linked to a group"
+msgstr "சர்வர் பிழை - நிகழ்வு குழுவுடன் இணைக்கப்படாமல் இருக்கலாம்"
+
+#: 
+msgid "Student"
+msgstr "மாணவர்"
+
+#: 
+msgid "System timeline entries cannot be deleted"
+msgstr "கணினி காலவரிசை உள்ளீடுகளை நீக்க முடியாது"
+
+#: 
+msgid "System timeline entries cannot be edited"
+msgstr "கணினி காலவரிசை உள்ளீடுகளைத் திருத்த முடியாது"
+
+#: 
+msgid "Thank you for attending!"
+msgstr "கலந்துகொண்டதற்கு நன்றி!"
+
+#: 
+msgid "This kiosk has registered but needs to be accepted by an administrator before it can be used."
+msgstr "இந்த கியோஸ்க் பதிவு செய்யப்பட்டுள்ளது, ஆனால் பயன்படுத்தும் முன் நிர்வாகி ஏற்க வேண்டும்."
+
+#: 
+msgid "This kiosk is accepted but has no active event assignment."
+msgstr "இந்த கியோஸ்க் ஏற்கப்பட்டுள்ளது, ஆனால் செயலில் உள்ள நிகழ்வு ஒதுக்கப்படவில்லை."
+
+#: 
+msgid "This kiosk is assigned to an event, but no members are available for check-in."
+msgstr "இந்த கியோஸ்க்கிற்கு நிகழ்வு ஒதுக்கப்பட்டுள்ளது, ஆனால் செக்-இன் செய்ய உறுப்பினர்கள் யாரும் இல்லை."
+
+#: 
+msgid "This page will automatically refresh when check-in opens."
+msgstr "செக்-இன் திறக்கும்போது இந்தப் பக்கம் தானாகப் புதுப்பிக்கப்படும்."
+
+#: 
+msgid "This page will automatically update once the kiosk is accepted."
+msgstr "கியோஸ்க் ஏற்கப்பட்டதும் இந்தப் பக்கம் தானாகப் புதுப்பிக்கப்படும்."
+
+#: 
+msgid "Today!"
+msgstr "இன்று"
+
+#: 
+msgid "Turning {{age}}"
+msgstr "{{age}} வயதாகிறது"
+
+#: 
+msgid "Unable to load group members"
+msgstr "குழு உறுப்பினர்களை ஏற்ற முடியவில்லை"
+
+#: 
+msgid "Unknown user configuration key"
+msgstr "அறியப்படாத பயனர் உள்ளமைவு விசை"
+
+#: 
+msgid "this person"
+msgstr "இந்த நபர்"
+
+#: 
+msgid "{{name}} has no family on record"
+msgstr "{{name}}-க்குப் பதிவில் குடும்பம் இல்லை"
+
+#: 
+msgid "%d failed (all time)"
+msgstr "%d தோல்வி (மொத்தம்)"
+
+#: 
+msgid "Failed email history pages"
+msgstr "தோல்வியடைந்த மின்னஞ்சல் வரலாற்றுப் பக்கங்கள்"
+
+#: 
+msgid "Failed sends across all email history, including automated messages"
+msgstr "தானியங்கி செய்திகள் உட்பட, முழு மின்னஞ்சல் வரலாற்றிலும் தோல்வியடைந்த அனுப்புதல்கள்"
+
+#: 
+msgid "No server error recorded"
+msgstr "சர்வர் பிழை எதுவும் பதிவு செய்யப்படவில்லை"
+
+#: 
+msgid "Show all recent sends"
+msgstr "சமீபத்திய அனுப்புதல்கள் அனைத்தையும் காட்டு"
+
+#: 
+msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
+msgstr "தானியங்கி செய்திகள் உட்பட, முழு மின்னஞ்சல் வரலாற்றிலும் தோல்வியடைந்த அனுப்புதல்கள் காட்டப்படுகின்றன. விவரங்களுக்கு ஒரு பொருளைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "The table shows only the latest 20 sends. Open a person to see their full history."
+msgstr "அட்டவணை கடைசி 20 அனுப்புதல்களை மட்டுமே காட்டும். முழு வரலாற்றைக் காண ஒருவரைத் திறக்கவும்."
+
+#: 
+msgid "View %d failed sends across all email history"
+msgstr "முழு மின்னஞ்சல் வரலாற்றிலும் தோல்வியடைந்த %d அனுப்புதல்களைக் காட்டு"
+

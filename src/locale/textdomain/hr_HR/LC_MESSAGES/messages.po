@@ -24222,3 +24222,291 @@ msgstr "Administrator je promijenio e-poštu s %1$s na %2$s"
 msgid "Only an administrator can change the email of a person with a user account."
 msgstr "Samo administrator može promijeniti e-poštu osobe s korisničkim računom."
 
+#: 
+msgid "Fund totals appear here once payments are added."
+msgstr "Zbrojevi fondova pojavit će se ovdje nakon dodavanja uplata."
+
+#: 
+msgid "No payments yet"
+msgstr "Još nema uplata"
+
+#: 
+msgid "Some payments could not be deleted"
+msgstr "Neke uplate nije moguće izbrisati"
+
+#: 
+msgid "A string value is required"
+msgstr "Potrebna je tekstualna vrijednost"
+
+#: 
+msgid "Administrator permission required for this setting"
+msgstr "Za ovu postavku potrebno je administratorsko dopuštenje"
+
+#: 
+msgid "Alerts sent: {{sent}}, failed: {{failed}}"
+msgstr "Poslano upozorenja: {{sent}}, neuspjelo: {{failed}}"
+
+#: 
+msgid "Alerts sent: {{total}}"
+msgstr "Poslano upozorenja: {{total}}"
+
+#: 
+msgid "Assign an event to the kiosk using the dropdown"
+msgstr "Dodijelite događaj kiosku pomoću padajućeg izbornika"
+
+#: 
+msgid "Awaiting Acceptance"
+msgstr "Čeka prihvaćanje"
+
+#: 
+msgid "Birthday coming up!"
+msgstr "Uskoro rođendan!"
+
+#: 
+msgid "Check that the event start/end times are correct"
+msgstr "Provjerite jesu li vremena početka i završetka događaja ispravna"
+
+#: 
+msgid "Check the server logs for more details"
+msgstr "Više pojedinosti potražite u zapisnicima poslužitelja"
+
+#: 
+msgid "Check-in Opens Soon"
+msgstr "Prijava uskoro počinje"
+
+#: 
+msgid "Checked-in-by person is not an adult family member"
+msgstr "Osoba koja je evidentirala dolazak nije odrasli član obitelji"
+
+#: 
+msgid "Checked-out-by person is not an adult family member"
+msgstr "Osoba koja je evidentirala odlazak nije odrasli član obitelji"
+
+#: 
+msgid "Checkout all students"
+msgstr "Evidentiraj odlazak svih učenika"
+
+#: 
+msgid "Days"
+msgstr "Dani"
+
+#: 
+msgid "Ensure the group has members"
+msgstr "Provjerite ima li grupa članove"
+
+#: 
+msgid "Ensure the group has members assigned"
+msgstr "Provjerite jesu li grupi dodijeljeni članovi"
+
+#: 
+msgid "Error Loading Members"
+msgstr "Pogreška pri učitavanju članova"
+
+#: 
+msgid "Event Has Ended"
+msgstr "Događaj je završio"
+
+#: 
+msgid "Event not linked to a Group"
+msgstr "Događaj nije povezan s grupom"
+
+#: 
+msgid "Event timing"
+msgstr "Vremenski raspored događaja"
+
+#: 
+msgid "Everyone is here!"
+msgstr "Svi su tu!"
+
+#: 
+msgid "Failed to send all alerts: {{total}}"
+msgstr "Slanje svih upozorenja nije uspjelo: {{total}}"
+
+#: 
+msgid "Failed to send parent alert"
+msgstr "Slanje upozorenja roditeljima nije uspjelo"
+
+#: 
+msgid "Find this kiosk in the device list"
+msgstr "Pronađite ovaj kiosk na popisu uređaja"
+
+#: 
+msgid "Group has no members"
+msgstr "Grupa nema članova"
+
+#: 
+msgid "HTTP Status: {{status}}"
+msgstr "HTTP status: {{status}}"
+
+#: 
+msgid "Hours"
+msgstr "Sati"
+
+#: 
+msgid "How to Accept This Kiosk"
+msgstr "Kako prihvatiti ovaj kiosk"
+
+#: 
+msgid "Kiosk Identification"
+msgstr "Identifikacija kioska"
+
+#: 
+msgid "Kiosk Ready"
+msgstr "Kiosk je spreman"
+
+#: 
+msgid "Log in to ChurchCRM as an administrator"
+msgstr "Prijavite se u ChurchCRM kao administrator"
+
+#: 
+msgid "Member is not an adult family member of the roster child"
+msgstr "Član nije odrasli član obitelji djeteta s popisa"
+
+#: 
+msgid "Next Steps"
+msgstr "Sljedeći koraci"
+
+#: 
+msgid "No Group Members Found"
+msgstr "Nisu pronađeni članovi grupe"
+
+#: 
+msgid "No checked-in students with families to alert"
+msgstr "Nema prijavljenih učenika s obiteljima za upozorenje"
+
+#: 
+msgid "Parent Alert"
+msgstr "Upozorenje roditeljima"
+
+#: 
+msgid "Parent alert sent for {{name}}"
+msgstr "Upozorenje roditeljima poslano za: {{name}}"
+
+#: 
+msgid "Photo not found"
+msgstr "Fotografija nije pronađena"
+
+#: 
+msgid "Possible Causes"
+msgstr "Mogući uzroci"
+
+#: 
+msgid "Processing..."
+msgstr "Obrada..."
+
+#: 
+msgid "Recent birthday!"
+msgstr "Nedavni rođendan!"
+
+#: 
+msgid "Refresh member list"
+msgstr "Osvježi popis članova"
+
+#: 
+msgid "Refresh this kiosk page"
+msgstr "Osvježi stranicu ovog kioska"
+
+#: 
+msgid "Seconds"
+msgstr "Sekunde"
+
+#: 
+msgid "Send alert to all families"
+msgstr "Pošalji upozorenje svim obiteljima"
+
+#: 
+msgid "Server error - the event may not be linked to a group"
+msgstr "Pogreška poslužitelja – događaj možda nije povezan s grupom"
+
+#: 
+msgid "Student"
+msgstr "Učenik"
+
+#: 
+msgid "System timeline entries cannot be deleted"
+msgstr "Sistemske zapise na vremenskoj crti nije moguće izbrisati"
+
+#: 
+msgid "System timeline entries cannot be edited"
+msgstr "Sistemske zapise na vremenskoj crti nije moguće uređivati"
+
+#: 
+msgid "Thank you for attending!"
+msgstr "Hvala na dolasku!"
+
+#: 
+msgid "This kiosk has registered but needs to be accepted by an administrator before it can be used."
+msgstr "Ovaj kiosk je registriran, ali ga prije uporabe mora prihvatiti administrator."
+
+#: 
+msgid "This kiosk is accepted but has no active event assignment."
+msgstr "Ovaj kiosk je prihvaćen, ali nema dodijeljen aktivni događaj."
+
+#: 
+msgid "This kiosk is assigned to an event, but no members are available for check-in."
+msgstr "Ovom kiosku dodijeljen je događaj, ali nema članova dostupnih za prijavu."
+
+#: 
+msgid "This page will automatically refresh when check-in opens."
+msgstr "Ova će se stranica automatski osvježiti kada prijava počne."
+
+#: 
+msgid "This page will automatically update once the kiosk is accepted."
+msgstr "Ova će se stranica automatski ažurirati nakon što se kiosk prihvati."
+
+#: 
+msgid "Today!"
+msgstr "Danas"
+
+#: 
+msgid "Turning {{age}}"
+msgstr "Navršava {{age}}"
+
+#: 
+msgid "Unable to load group members"
+msgstr "Nije moguće učitati članove grupe"
+
+#: 
+msgid "Unknown user configuration key"
+msgstr "Nepoznat ključ korisničke konfiguracije"
+
+#: 
+msgid "this person"
+msgstr "ova osoba"
+
+#: 
+msgid "{{name}} has no family on record"
+msgstr "{{name}} nema obitelj u evidenciji"
+
+#: 
+msgid "%d failed (all time)"
+msgstr "Neuspjelo: %d (ukupno)"
+
+#: 
+msgid "Failed email history pages"
+msgstr "Stranice povijesti neuspjelih e-poruka"
+
+#: 
+msgid "Failed sends across all email history, including automated messages"
+msgstr "Neuspjela slanja u cijeloj povijesti e-poruka, uključujući automatske poruke"
+
+#: 
+msgid "No server error recorded"
+msgstr "Nije zabilježena pogreška poslužitelja"
+
+#: 
+msgid "Show all recent sends"
+msgstr "Prikaži sva nedavna slanja"
+
+#: 
+msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
+msgstr "Prikazuju se neuspjela slanja iz cijele povijesti e-poruka, uključujući automatske poruke. Odaberite predmet za pojedinosti."
+
+#: 
+msgid "The table shows only the latest 20 sends. Open a person to see their full history."
+msgstr "Tablica prikazuje samo posljednjih 20 slanja. Otvorite osobu za potpunu povijest."
+
+#: 
+msgid "View %d failed sends across all email history"
+msgstr "Prikaži neuspjela slanja iz cijele povijesti e-poruka: %d"
+

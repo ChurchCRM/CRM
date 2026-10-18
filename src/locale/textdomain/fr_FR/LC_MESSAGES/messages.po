@@ -24223,3 +24223,291 @@ msgstr "E-mail modifié par un administrateur de %1$s à %2$s"
 msgid "Only an administrator can change the email of a person with a user account."
 msgstr "Seul un administrateur peut changer l'e-mail d'une personne qui a un compte utilisateur."
 
+#: 
+msgid "Fund totals appear here once payments are added."
+msgstr "Les totaux par fonds apparaîtront ici dès que des paiements seront ajoutés."
+
+#: 
+msgid "No payments yet"
+msgstr "Aucun paiement pour le moment"
+
+#: 
+msgid "Some payments could not be deleted"
+msgstr "Certains paiements n'ont pas pu être supprimés"
+
+#: 
+msgid "A string value is required"
+msgstr "Une valeur de type chaîne est requise"
+
+#: 
+msgid "Administrator permission required for this setting"
+msgstr "Le droit d'administrateur est requis pour ce paramètre"
+
+#: 
+msgid "Alerts sent: {{sent}}, failed: {{failed}}"
+msgstr "Alertes envoyées : {{sent}}, échecs : {{failed}}"
+
+#: 
+msgid "Alerts sent: {{total}}"
+msgstr "Alertes envoyées : {{total}}"
+
+#: 
+msgid "Assign an event to the kiosk using the dropdown"
+msgstr "Associez un événement à la borne à l'aide de la liste déroulante"
+
+#: 
+msgid "Awaiting Acceptance"
+msgstr "En attente d'acceptation"
+
+#: 
+msgid "Birthday coming up!"
+msgstr "Anniversaire à venir !"
+
+#: 
+msgid "Check that the event start/end times are correct"
+msgstr "Vérifiez que les heures de début et de fin de l'événement sont correctes"
+
+#: 
+msgid "Check the server logs for more details"
+msgstr "Consultez les journaux du serveur pour plus de détails"
+
+#: 
+msgid "Check-in Opens Soon"
+msgstr "L'enregistrement ouvre bientôt"
+
+#: 
+msgid "Checked-in-by person is not an adult family member"
+msgstr "La personne ayant effectué l'arrivée n'est pas un adulte de la famille"
+
+#: 
+msgid "Checked-out-by person is not an adult family member"
+msgstr "La personne ayant effectué le départ n'est pas un adulte de la famille"
+
+#: 
+msgid "Checkout all students"
+msgstr "Enregistrer le départ de tous les élèves"
+
+#: 
+msgid "Days"
+msgstr "Jours"
+
+#: 
+msgid "Ensure the group has members"
+msgstr "Vérifiez que le groupe compte des membres"
+
+#: 
+msgid "Ensure the group has members assigned"
+msgstr "Vérifiez que des membres sont affectés au groupe"
+
+#: 
+msgid "Error Loading Members"
+msgstr "Erreur de chargement des membres"
+
+#: 
+msgid "Event Has Ended"
+msgstr "L'événement est terminé"
+
+#: 
+msgid "Event not linked to a Group"
+msgstr "Événement non lié à un groupe"
+
+#: 
+msgid "Event timing"
+msgstr "Horaire de l'événement"
+
+#: 
+msgid "Everyone is here!"
+msgstr "Tout le monde est là !"
+
+#: 
+msgid "Failed to send all alerts: {{total}}"
+msgstr "Échec de l'envoi de toutes les alertes : {{total}}"
+
+#: 
+msgid "Failed to send parent alert"
+msgstr "Échec de l'envoi de l'alerte aux parents"
+
+#: 
+msgid "Find this kiosk in the device list"
+msgstr "Repérez cette borne dans la liste des appareils"
+
+#: 
+msgid "Group has no members"
+msgstr "Le groupe n'a aucun membre"
+
+#: 
+msgid "HTTP Status: {{status}}"
+msgstr "Statut HTTP : {{status}}"
+
+#: 
+msgid "Hours"
+msgstr "Heures"
+
+#: 
+msgid "How to Accept This Kiosk"
+msgstr "Comment accepter cette borne"
+
+#: 
+msgid "Kiosk Identification"
+msgstr "Identification de la borne"
+
+#: 
+msgid "Kiosk Ready"
+msgstr "Borne prête"
+
+#: 
+msgid "Log in to ChurchCRM as an administrator"
+msgstr "Connectez-vous à ChurchCRM en tant qu'administrateur"
+
+#: 
+msgid "Member is not an adult family member of the roster child"
+msgstr "Ce membre n'est pas un adulte de la famille de l'enfant inscrit"
+
+#: 
+msgid "Next Steps"
+msgstr "Étapes suivantes"
+
+#: 
+msgid "No Group Members Found"
+msgstr "Aucun membre de groupe trouvé"
+
+#: 
+msgid "No checked-in students with families to alert"
+msgstr "Aucun élève enregistré dont la famille peut être alertée"
+
+#: 
+msgid "Parent Alert"
+msgstr "Alerte aux parents"
+
+#: 
+msgid "Parent alert sent for {{name}}"
+msgstr "Alerte aux parents envoyée pour {{name}}"
+
+#: 
+msgid "Photo not found"
+msgstr "Photo introuvable"
+
+#: 
+msgid "Possible Causes"
+msgstr "Causes possibles"
+
+#: 
+msgid "Processing..."
+msgstr "Traitement en cours..."
+
+#: 
+msgid "Recent birthday!"
+msgstr "Anniversaire récent !"
+
+#: 
+msgid "Refresh member list"
+msgstr "Actualiser la liste des membres"
+
+#: 
+msgid "Refresh this kiosk page"
+msgstr "Actualiser la page de cette borne"
+
+#: 
+msgid "Seconds"
+msgstr "Secondes"
+
+#: 
+msgid "Send alert to all families"
+msgstr "Envoyer une alerte à toutes les familles"
+
+#: 
+msgid "Server error - the event may not be linked to a group"
+msgstr "Erreur serveur : l'événement n'est peut-être pas lié à un groupe"
+
+#: 
+msgid "Student"
+msgstr "Élève"
+
+#: 
+msgid "System timeline entries cannot be deleted"
+msgstr "Les entrées système de la chronologie ne peuvent pas être supprimées"
+
+#: 
+msgid "System timeline entries cannot be edited"
+msgstr "Les entrées système de la chronologie ne peuvent pas être modifiées"
+
+#: 
+msgid "Thank you for attending!"
+msgstr "Merci de votre présence !"
+
+#: 
+msgid "This kiosk has registered but needs to be accepted by an administrator before it can be used."
+msgstr "Cette borne s'est enregistrée mais doit être acceptée par un administrateur avant de pouvoir être utilisée."
+
+#: 
+msgid "This kiosk is accepted but has no active event assignment."
+msgstr "Cette borne est acceptée mais n'a aucun événement actif associé."
+
+#: 
+msgid "This kiosk is assigned to an event, but no members are available for check-in."
+msgstr "Cette borne est associée à un événement, mais aucun membre n'est disponible pour l'enregistrement."
+
+#: 
+msgid "This page will automatically refresh when check-in opens."
+msgstr "Cette page s'actualisera automatiquement à l'ouverture de l'enregistrement."
+
+#: 
+msgid "This page will automatically update once the kiosk is accepted."
+msgstr "Cette page se mettra à jour automatiquement une fois la borne acceptée."
+
+#: 
+msgid "Today!"
+msgstr "Aujourd'hui"
+
+#: 
+msgid "Turning {{age}}"
+msgstr "Aura {{age}} ans"
+
+#: 
+msgid "Unable to load group members"
+msgstr "Impossible de charger les membres du groupe"
+
+#: 
+msgid "Unknown user configuration key"
+msgstr "Clé de configuration utilisateur inconnue"
+
+#: 
+msgid "this person"
+msgstr "cette personne"
+
+#: 
+msgid "{{name}} has no family on record"
+msgstr "{{name}} n'a aucune famille enregistrée"
+
+#: 
+msgid "%d failed (all time)"
+msgstr "%d échecs (depuis le début)"
+
+#: 
+msgid "Failed email history pages"
+msgstr "Pages d'historique des e-mails en échec"
+
+#: 
+msgid "Failed sends across all email history, including automated messages"
+msgstr "Envois en échec dans tout l'historique des e-mails, y compris les messages automatiques"
+
+#: 
+msgid "No server error recorded"
+msgstr "Aucune erreur serveur enregistrée"
+
+#: 
+msgid "Show all recent sends"
+msgstr "Afficher tous les envois récents"
+
+#: 
+msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
+msgstr "Affichage des envois en échec dans tout l'historique des e-mails, y compris les messages automatiques. Sélectionnez un objet pour voir les détails."
+
+#: 
+msgid "The table shows only the latest 20 sends. Open a person to see their full history."
+msgstr "Le tableau n'affiche que les 20 derniers envois. Ouvrez une personne pour voir son historique complet."
+
+#: 
+msgid "View %d failed sends across all email history"
+msgstr "Voir les %d envois en échec dans tout l'historique des e-mails"
+

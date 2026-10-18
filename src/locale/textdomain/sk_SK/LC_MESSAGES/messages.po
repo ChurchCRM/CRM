@@ -24258,3 +24258,291 @@ msgstr "Správca zmenil e-mail z %1$s na %2$s"
 msgid "Only an administrator can change the email of a person with a user account."
 msgstr "E-mail osoby s používateľským účtom môže zmeniť len správca."
 
+#: 
+msgid "Fund totals appear here once payments are added."
+msgstr "Súčty fondov sa tu zobrazia po pridaní platieb."
+
+#: 
+msgid "No payments yet"
+msgstr "Zatiaľ žiadne platby"
+
+#: 
+msgid "Some payments could not be deleted"
+msgstr "Niektoré platby sa nepodarilo odstrániť"
+
+#: 
+msgid "A string value is required"
+msgstr "Vyžaduje sa textová hodnota"
+
+#: 
+msgid "Administrator permission required for this setting"
+msgstr "Pre toto nastavenie sa vyžaduje oprávnenie správcu"
+
+#: 
+msgid "Alerts sent: {{sent}}, failed: {{failed}}"
+msgstr "Odoslané upozornenia: {{sent}}, neúspešné: {{failed}}"
+
+#: 
+msgid "Alerts sent: {{total}}"
+msgstr "Odoslané upozornenia: {{total}}"
+
+#: 
+msgid "Assign an event to the kiosk using the dropdown"
+msgstr "Priraďte kiosku udalosť pomocou rozbaľovacej ponuky"
+
+#: 
+msgid "Awaiting Acceptance"
+msgstr "Čaká na schválenie"
+
+#: 
+msgid "Birthday coming up!"
+msgstr "Blížia sa narodeniny!"
+
+#: 
+msgid "Check that the event start/end times are correct"
+msgstr "Skontrolujte, či sú časy začiatku a konca udalosti správne"
+
+#: 
+msgid "Check the server logs for more details"
+msgstr "Ďalšie podrobnosti nájdete v protokoloch servera"
+
+#: 
+msgid "Check-in Opens Soon"
+msgstr "Príchody sa čoskoro otvoria"
+
+#: 
+msgid "Checked-in-by person is not an adult family member"
+msgstr "Osoba, ktorá zaznamenala príchod, nie je dospelý člen rodiny"
+
+#: 
+msgid "Checked-out-by person is not an adult family member"
+msgstr "Osoba, ktorá zaznamenala odchod, nie je dospelý člen rodiny"
+
+#: 
+msgid "Checkout all students"
+msgstr "Zaznamenať odchod všetkých žiakov"
+
+#: 
+msgid "Days"
+msgstr "Dni"
+
+#: 
+msgid "Ensure the group has members"
+msgstr "Uistite sa, že skupina má členov"
+
+#: 
+msgid "Ensure the group has members assigned"
+msgstr "Uistite sa, že do skupiny sú priradení členovia"
+
+#: 
+msgid "Error Loading Members"
+msgstr "Chyba pri načítaní členov"
+
+#: 
+msgid "Event Has Ended"
+msgstr "Udalosť skončila"
+
+#: 
+msgid "Event not linked to a Group"
+msgstr "Udalosť nie je prepojená so skupinou"
+
+#: 
+msgid "Event timing"
+msgstr "Čas podujatia"
+
+#: 
+msgid "Everyone is here!"
+msgstr "Všetci sú tu!"
+
+#: 
+msgid "Failed to send all alerts: {{total}}"
+msgstr "Odoslanie všetkých upozornení zlyhalo: {{total}}"
+
+#: 
+msgid "Failed to send parent alert"
+msgstr "Odoslanie upozornenia rodičom zlyhalo"
+
+#: 
+msgid "Find this kiosk in the device list"
+msgstr "Nájdite tento kiosk v zozname zariadení"
+
+#: 
+msgid "Group has no members"
+msgstr "Skupina nemá žiadnych členov"
+
+#: 
+msgid "HTTP Status: {{status}}"
+msgstr "Stav HTTP: {{status}}"
+
+#: 
+msgid "Hours"
+msgstr "Hodiny"
+
+#: 
+msgid "How to Accept This Kiosk"
+msgstr "Ako schváliť tento kiosk"
+
+#: 
+msgid "Kiosk Identification"
+msgstr "Identifikácia kioska"
+
+#: 
+msgid "Kiosk Ready"
+msgstr "Kiosk je pripravený"
+
+#: 
+msgid "Log in to ChurchCRM as an administrator"
+msgstr "Prihláste sa do ChurchCRM ako správca"
+
+#: 
+msgid "Member is not an adult family member of the roster child"
+msgstr "Člen nie je dospelým členom rodiny dieťaťa zo zoznamu"
+
+#: 
+msgid "Next Steps"
+msgstr "Ďalšie kroky"
+
+#: 
+msgid "No Group Members Found"
+msgstr "Nenašli sa žiadni členovia skupiny"
+
+#: 
+msgid "No checked-in students with families to alert"
+msgstr "Žiadni prihlásení žiaci s rodinami na upozornenie"
+
+#: 
+msgid "Parent Alert"
+msgstr "Upozornenie rodičom"
+
+#: 
+msgid "Parent alert sent for {{name}}"
+msgstr "Upozornenie rodičom odoslané pre: {{name}}"
+
+#: 
+msgid "Photo not found"
+msgstr "Fotografia sa nenašla"
+
+#: 
+msgid "Possible Causes"
+msgstr "Možné príčiny"
+
+#: 
+msgid "Processing..."
+msgstr "Spracúvanie..."
+
+#: 
+msgid "Recent birthday!"
+msgstr "Nedávne narodeniny!"
+
+#: 
+msgid "Refresh member list"
+msgstr "Obnoviť zoznam členov"
+
+#: 
+msgid "Refresh this kiosk page"
+msgstr "Obnoviť stránku tohto kioska"
+
+#: 
+msgid "Seconds"
+msgstr "Sekundy"
+
+#: 
+msgid "Send alert to all families"
+msgstr "Odoslať upozornenie všetkým rodinám"
+
+#: 
+msgid "Server error - the event may not be linked to a group"
+msgstr "Chyba servera – udalosť nemusí byť prepojená so skupinou"
+
+#: 
+msgid "Student"
+msgstr "Žiak"
+
+#: 
+msgid "System timeline entries cannot be deleted"
+msgstr "Systémové záznamy časovej osi nemožno odstrániť"
+
+#: 
+msgid "System timeline entries cannot be edited"
+msgstr "Systémové záznamy časovej osi nemožno upraviť"
+
+#: 
+msgid "Thank you for attending!"
+msgstr "Ďakujeme za účasť!"
+
+#: 
+msgid "This kiosk has registered but needs to be accepted by an administrator before it can be used."
+msgstr "Tento kiosk sa zaregistroval, ale pred použitím ho musí schváliť správca."
+
+#: 
+msgid "This kiosk is accepted but has no active event assignment."
+msgstr "Tento kiosk je schválený, ale nemá priradenú žiadnu aktívnu udalosť."
+
+#: 
+msgid "This kiosk is assigned to an event, but no members are available for check-in."
+msgstr "Tomuto kiosku je priradená udalosť, ale nie sú k dispozícii žiadni členovia na príchod."
+
+#: 
+msgid "This page will automatically refresh when check-in opens."
+msgstr "Táto stránka sa automaticky obnoví, keď sa otvoria príchody."
+
+#: 
+msgid "This page will automatically update once the kiosk is accepted."
+msgstr "Táto stránka sa automaticky aktualizuje po schválení kioska."
+
+#: 
+msgid "Today!"
+msgstr "Dnes"
+
+#: 
+msgid "Turning {{age}}"
+msgstr "Bude mať {{age}}"
+
+#: 
+msgid "Unable to load group members"
+msgstr "Členov skupiny sa nepodarilo načítať"
+
+#: 
+msgid "Unknown user configuration key"
+msgstr "Neznámy kľúč používateľskej konfigurácie"
+
+#: 
+msgid "this person"
+msgstr "táto osoba"
+
+#: 
+msgid "{{name}} has no family on record"
+msgstr "{{name}} nemá v evidencii žiadnu rodinu"
+
+#: 
+msgid "%d failed (all time)"
+msgstr "Neúspešných: %d (celkom)"
+
+#: 
+msgid "Failed email history pages"
+msgstr "Stránky histórie neúspešných e-mailov"
+
+#: 
+msgid "Failed sends across all email history, including automated messages"
+msgstr "Neúspešné odoslania v celej histórii e-mailov vrátane automatických správ"
+
+#: 
+msgid "No server error recorded"
+msgstr "Nebola zaznamenaná žiadna chyba servera"
+
+#: 
+msgid "Show all recent sends"
+msgstr "Zobraziť všetky nedávne odoslania"
+
+#: 
+msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
+msgstr "Zobrazujú sa neúspešné odoslania v celej histórii e-mailov vrátane automatických správ. Podrobnosti zobrazíte výberom predmetu."
+
+#: 
+msgid "The table shows only the latest 20 sends. Open a person to see their full history."
+msgstr "Tabuľka zobrazuje iba posledných 20 odoslaní. Úplnú históriu uvidíte po otvorení osoby."
+
+#: 
+msgid "View %d failed sends across all email history"
+msgstr "Zobraziť neúspešné odoslania v celej histórii e-mailov: %d"
+

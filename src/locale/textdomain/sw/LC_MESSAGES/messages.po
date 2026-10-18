@@ -24222,3 +24222,291 @@ msgstr "Barua pepe imebadilishwa na msimamizi kutoka %1$s hadi %2$s"
 msgid "Only an administrator can change the email of a person with a user account."
 msgstr "Msimamizi pekee ndiye anayeweza kubadilisha barua pepe ya mtu mwenye akaunti ya mtumiaji."
 
+#: 
+msgid "Fund totals appear here once payments are added."
+msgstr "Jumla za mifuko zitaonekana hapa mara malipo yanapoongezwa."
+
+#: 
+msgid "No payments yet"
+msgstr "Bado hakuna malipo"
+
+#: 
+msgid "Some payments could not be deleted"
+msgstr "Baadhi ya malipo hayakuweza kufutwa"
+
+#: 
+msgid "A string value is required"
+msgstr "Thamani ya maandishi inahitajika"
+
+#: 
+msgid "Administrator permission required for this setting"
+msgstr "Mpangilio huu unahitaji idhini ya msimamizi"
+
+#: 
+msgid "Alerts sent: {{sent}}, failed: {{failed}}"
+msgstr "Arifa zilizotumwa: {{sent}}, zilizoshindwa: {{failed}}"
+
+#: 
+msgid "Alerts sent: {{total}}"
+msgstr "Arifa zilizotumwa: {{total}}"
+
+#: 
+msgid "Assign an event to the kiosk using the dropdown"
+msgstr "Weka tukio kwenye kioski kwa kutumia orodha kunjuzi"
+
+#: 
+msgid "Awaiting Acceptance"
+msgstr "Inasubiri Kukubaliwa"
+
+#: 
+msgid "Birthday coming up!"
+msgstr "Siku ya kuzaliwa inakaribia!"
+
+#: 
+msgid "Check that the event start/end times are correct"
+msgstr "Hakikisha muda wa kuanza na kuisha kwa tukio ni sahihi"
+
+#: 
+msgid "Check the server logs for more details"
+msgstr "Angalia kumbukumbu za seva kwa maelezo zaidi"
+
+#: 
+msgid "Check-in Opens Soon"
+msgstr "Kuingia Kutafunguliwa Hivi Karibuni"
+
+#: 
+msgid "Checked-in-by person is not an adult family member"
+msgstr "Aliyeingiza si mwanafamilia mtu mzima"
+
+#: 
+msgid "Checked-out-by person is not an adult family member"
+msgstr "Aliyetoa si mwanafamilia mtu mzima"
+
+#: 
+msgid "Checkout all students"
+msgstr "Toa wanafunzi wote"
+
+#: 
+msgid "Days"
+msgstr "Siku"
+
+#: 
+msgid "Ensure the group has members"
+msgstr "Hakikisha kikundi kina wanachama"
+
+#: 
+msgid "Ensure the group has members assigned"
+msgstr "Hakikisha kikundi kimepangiwa wanachama"
+
+#: 
+msgid "Error Loading Members"
+msgstr "Hitilafu ya Kupakia Wanachama"
+
+#: 
+msgid "Event Has Ended"
+msgstr "Tukio Limekwisha"
+
+#: 
+msgid "Event not linked to a Group"
+msgstr "Tukio halijaunganishwa na Kikundi"
+
+#: 
+msgid "Event timing"
+msgstr "Muda wa Tukio"
+
+#: 
+msgid "Everyone is here!"
+msgstr "Wote wapo!"
+
+#: 
+msgid "Failed to send all alerts: {{total}}"
+msgstr "Imeshindwa kutuma arifa zote: {{total}}"
+
+#: 
+msgid "Failed to send parent alert"
+msgstr "Imeshindwa kutuma arifa kwa mzazi"
+
+#: 
+msgid "Find this kiosk in the device list"
+msgstr "Tafuta kioski hiki kwenye orodha ya vifaa"
+
+#: 
+msgid "Group has no members"
+msgstr "Kikundi hakina wanachama"
+
+#: 
+msgid "HTTP Status: {{status}}"
+msgstr "Hali ya HTTP: {{status}}"
+
+#: 
+msgid "Hours"
+msgstr "Saa"
+
+#: 
+msgid "How to Accept This Kiosk"
+msgstr "Jinsi ya Kukubali Kioski Hiki"
+
+#: 
+msgid "Kiosk Identification"
+msgstr "Utambulisho wa Kioski"
+
+#: 
+msgid "Kiosk Ready"
+msgstr "Kioski Tayari"
+
+#: 
+msgid "Log in to ChurchCRM as an administrator"
+msgstr "Ingia kwenye ChurchCRM kama msimamizi"
+
+#: 
+msgid "Member is not an adult family member of the roster child"
+msgstr "Mwanachama si mwanafamilia mtu mzima wa mtoto aliye kwenye orodha"
+
+#: 
+msgid "Next Steps"
+msgstr "Hatua Zinazofuata"
+
+#: 
+msgid "No Group Members Found"
+msgstr "Hakuna Wanachama wa Kikundi Waliopatikana"
+
+#: 
+msgid "No checked-in students with families to alert"
+msgstr "Hakuna wanafunzi walioingia wenye familia wa kuarifiwa"
+
+#: 
+msgid "Parent Alert"
+msgstr "Arifa kwa Wazazi"
+
+#: 
+msgid "Parent alert sent for {{name}}"
+msgstr "Arifa kwa wazazi imetumwa kwa {{name}}"
+
+#: 
+msgid "Photo not found"
+msgstr "Picha haijapatikana"
+
+#: 
+msgid "Possible Causes"
+msgstr "Sababu Zinazowezekana"
+
+#: 
+msgid "Processing..."
+msgstr "Inachakata..."
+
+#: 
+msgid "Recent birthday!"
+msgstr "Siku ya kuzaliwa hivi karibuni!"
+
+#: 
+msgid "Refresh member list"
+msgstr "Onyesha upya orodha ya wanachama"
+
+#: 
+msgid "Refresh this kiosk page"
+msgstr "Onyesha upya ukurasa wa kioski hiki"
+
+#: 
+msgid "Seconds"
+msgstr "Sekunde"
+
+#: 
+msgid "Send alert to all families"
+msgstr "Tuma arifa kwa familia zote"
+
+#: 
+msgid "Server error - the event may not be linked to a group"
+msgstr "Hitilafu ya seva - tukio huenda halijaunganishwa na kikundi"
+
+#: 
+msgid "Student"
+msgstr "Mwanafunzi"
+
+#: 
+msgid "System timeline entries cannot be deleted"
+msgstr "Rekodi za mfumo kwenye ratiba haziwezi kufutwa"
+
+#: 
+msgid "System timeline entries cannot be edited"
+msgstr "Rekodi za mfumo kwenye ratiba haziwezi kuhaririwa"
+
+#: 
+msgid "Thank you for attending!"
+msgstr "Asante kwa kuhudhuria!"
+
+#: 
+msgid "This kiosk has registered but needs to be accepted by an administrator before it can be used."
+msgstr "Kioski hiki kimesajiliwa lakini kinahitaji kukubaliwa na msimamizi kabla ya kutumika."
+
+#: 
+msgid "This kiosk is accepted but has no active event assignment."
+msgstr "Kioski hiki kimekubaliwa lakini hakina tukio linalotumika lililopangiwa."
+
+#: 
+msgid "This kiosk is assigned to an event, but no members are available for check-in."
+msgstr "Kioski hiki kimepangiwa tukio, lakini hakuna wanachama wanaopatikana kwa kuingia."
+
+#: 
+msgid "This page will automatically refresh when check-in opens."
+msgstr "Ukurasa huu utaonyeshwa upya kiotomatiki kuingia kutakapofunguliwa."
+
+#: 
+msgid "This page will automatically update once the kiosk is accepted."
+msgstr "Ukurasa huu utasasishwa kiotomatiki kioski kitakapokubaliwa."
+
+#: 
+msgid "Today!"
+msgstr "Leo"
+
+#: 
+msgid "Turning {{age}}"
+msgstr "Anatimiza miaka {{age}}"
+
+#: 
+msgid "Unable to load group members"
+msgstr "Imeshindwa kupakia wanachama wa kikundi"
+
+#: 
+msgid "Unknown user configuration key"
+msgstr "Ufunguo wa usanidi wa mtumiaji haujulikani"
+
+#: 
+msgid "this person"
+msgstr "mtu huyu"
+
+#: 
+msgid "{{name}} has no family on record"
+msgstr "{{name}} hana familia kwenye rekodi"
+
+#: 
+msgid "%d failed (all time)"
+msgstr "%d zimeshindwa (jumla)"
+
+#: 
+msgid "Failed email history pages"
+msgstr "Kurasa za historia ya barua pepe zilizoshindwa"
+
+#: 
+msgid "Failed sends across all email history, including automated messages"
+msgstr "Utumaji ulioshindwa katika historia yote ya barua pepe, ikiwemo ujumbe wa kiotomatiki"
+
+#: 
+msgid "No server error recorded"
+msgstr "Hakuna hitilafu ya seva iliyorekodiwa"
+
+#: 
+msgid "Show all recent sends"
+msgstr "Onyesha utumaji wote wa hivi karibuni"
+
+#: 
+msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
+msgstr "Inaonyesha utumaji ulioshindwa katika historia yote ya barua pepe, ikiwemo ujumbe wa kiotomatiki. Chagua mada kwa maelezo."
+
+#: 
+msgid "The table shows only the latest 20 sends. Open a person to see their full history."
+msgstr "Jedwali linaonyesha utumaji 20 wa mwisho tu. Fungua mtu kuona historia kamili."
+
+#: 
+msgid "View %d failed sends across all email history"
+msgstr "Tazama utumaji %d ulioshindwa katika historia yote ya barua pepe"
+

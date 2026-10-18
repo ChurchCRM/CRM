@@ -24234,3 +24234,291 @@ msgstr "አስተዳዳሪ ደብዳቤውን ከ%1$s ወደ %2$s ቀይሯል"
 msgid "Only an administrator can change the email of a person with a user account."
 msgstr "የተጠቃሚ መለያ ያለውን ሰው ደብዳቤ መቀየር የሚችለው አስተዳዳሪ ብቻ ነው።"
 
+#: 
+msgid "Fund totals appear here once payments are added."
+msgstr "ክፍያዎች ከተጨመሩ በኋላ የፈንድ ድምሮች እዚህ ይታያሉ።"
+
+#: 
+msgid "No payments yet"
+msgstr "እስካሁን ምንም ክፍያ የለም"
+
+#: 
+msgid "Some payments could not be deleted"
+msgstr "አንዳንድ ክፍያዎችን መሰረዝ አልተቻለም"
+
+#: 
+msgid "A string value is required"
+msgstr "የጽሑፍ እሴት ያስፈልጋል"
+
+#: 
+msgid "Administrator permission required for this setting"
+msgstr "ለዚህ ቅንብር የአስተዳዳሪ ፈቃድ ያስፈልጋል"
+
+#: 
+msgid "Alerts sent: {{sent}}, failed: {{failed}}"
+msgstr "የተላኩ ማንቂያዎች፡ {{sent}}፣ ያልተሳኩ፡ {{failed}}"
+
+#: 
+msgid "Alerts sent: {{total}}"
+msgstr "የተላኩ ማንቂያዎች፡ {{total}}"
+
+#: 
+msgid "Assign an event to the kiosk using the dropdown"
+msgstr "ተቆልቋይ ዝርዝሩን በመጠቀም ለኪዮስኩ ክስተት ይመድቡ"
+
+#: 
+msgid "Awaiting Acceptance"
+msgstr "ተቀባይነትን በመጠበቅ ላይ"
+
+#: 
+msgid "Birthday coming up!"
+msgstr "የልደት ቀን እየቀረበ ነው!"
+
+#: 
+msgid "Check that the event start/end times are correct"
+msgstr "የክስተቱ መጀመሪያና መጨረሻ ሰዓት ትክክል መሆኑን ያረጋግጡ"
+
+#: 
+msgid "Check the server logs for more details"
+msgstr "ለተጨማሪ ዝርዝር የአገልጋይ መዝገቦችን ይመልከቱ"
+
+#: 
+msgid "Check-in Opens Soon"
+msgstr "ቼክ-ኢን በቅርቡ ይከፈታል"
+
+#: 
+msgid "Checked-in-by person is not an adult family member"
+msgstr "ቼክ-ኢን ያደረገው ሰው የቤተሰብ ጎልማሳ አባል አይደለም"
+
+#: 
+msgid "Checked-out-by person is not an adult family member"
+msgstr "ቼክ-አውት ያደረገው ሰው የቤተሰብ ጎልማሳ አባል አይደለም"
+
+#: 
+msgid "Checkout all students"
+msgstr "ሁሉንም ተማሪዎች ቼክ-አውት አድርግ"
+
+#: 
+msgid "Days"
+msgstr "ቀናት"
+
+#: 
+msgid "Ensure the group has members"
+msgstr "ቡድኑ አባላት እንዳሉት ያረጋግጡ"
+
+#: 
+msgid "Ensure the group has members assigned"
+msgstr "ለቡድኑ አባላት መመደባቸውን ያረጋግጡ"
+
+#: 
+msgid "Error Loading Members"
+msgstr "አባላትን በመጫን ላይ ስህተት"
+
+#: 
+msgid "Event Has Ended"
+msgstr "ክስተቱ አብቅቷል"
+
+#: 
+msgid "Event not linked to a Group"
+msgstr "ክስተቱ ከቡድን ጋር አልተገናኘም"
+
+#: 
+msgid "Event timing"
+msgstr "የዝግጅት ጊዜ"
+
+#: 
+msgid "Everyone is here!"
+msgstr "ሁሉም እዚህ አሉ!"
+
+#: 
+msgid "Failed to send all alerts: {{total}}"
+msgstr "ሁሉንም ማንቂያዎች መላክ አልተሳካም፡ {{total}}"
+
+#: 
+msgid "Failed to send parent alert"
+msgstr "ለወላጅ ማንቂያ መላክ አልተሳካም"
+
+#: 
+msgid "Find this kiosk in the device list"
+msgstr "ይህን ኪዮስክ በመሣሪያ ዝርዝር ውስጥ ያግኙት"
+
+#: 
+msgid "Group has no members"
+msgstr "ቡድኑ አባላት የሉትም"
+
+#: 
+msgid "HTTP Status: {{status}}"
+msgstr "የHTTP ሁኔታ፡ {{status}}"
+
+#: 
+msgid "Hours"
+msgstr "ሰዓታት"
+
+#: 
+msgid "How to Accept This Kiosk"
+msgstr "ይህን ኪዮስክ እንዴት መቀበል እንደሚቻል"
+
+#: 
+msgid "Kiosk Identification"
+msgstr "የኪዮስክ መለያ"
+
+#: 
+msgid "Kiosk Ready"
+msgstr "ኪዮስክ ዝግጁ ነው"
+
+#: 
+msgid "Log in to ChurchCRM as an administrator"
+msgstr "እንደ አስተዳዳሪ ወደ ChurchCRM ይግቡ"
+
+#: 
+msgid "Member is not an adult family member of the roster child"
+msgstr "አባሉ በዝርዝሩ ላይ ያለው ልጅ የቤተሰብ ጎልማሳ አባል አይደለም"
+
+#: 
+msgid "Next Steps"
+msgstr "ቀጣይ ደረጃዎች"
+
+#: 
+msgid "No Group Members Found"
+msgstr "ምንም የቡድን አባል አልተገኘም"
+
+#: 
+msgid "No checked-in students with families to alert"
+msgstr "ለማስጠንቀቅ ቤተሰብ ያላቸው ቼክ-ኢን ያደረጉ ተማሪዎች የሉም"
+
+#: 
+msgid "Parent Alert"
+msgstr "የወላጅ ማንቂያ"
+
+#: 
+msgid "Parent alert sent for {{name}}"
+msgstr "ለ{{name}} የወላጅ ማንቂያ ተልኳል"
+
+#: 
+msgid "Photo not found"
+msgstr "ፎቶ አልተገኘም"
+
+#: 
+msgid "Possible Causes"
+msgstr "ሊሆኑ የሚችሉ ምክንያቶች"
+
+#: 
+msgid "Processing..."
+msgstr "በማስኬድ ላይ..."
+
+#: 
+msgid "Recent birthday!"
+msgstr "በቅርቡ የልደት ቀን ነበር!"
+
+#: 
+msgid "Refresh member list"
+msgstr "የአባላት ዝርዝርን አድስ"
+
+#: 
+msgid "Refresh this kiosk page"
+msgstr "የዚህን ኪዮስክ ገጽ አድስ"
+
+#: 
+msgid "Seconds"
+msgstr "ሰከንዶች"
+
+#: 
+msgid "Send alert to all families"
+msgstr "ለሁሉም ቤተሰቦች ማንቂያ ላክ"
+
+#: 
+msgid "Server error - the event may not be linked to a group"
+msgstr "የአገልጋይ ስህተት - ክስተቱ ከቡድን ጋር ላይገናኝ ይችላል"
+
+#: 
+msgid "Student"
+msgstr "ተማሪ"
+
+#: 
+msgid "System timeline entries cannot be deleted"
+msgstr "የሲስተም የጊዜ መስመር ግቤቶች ሊሰረዙ አይችሉም"
+
+#: 
+msgid "System timeline entries cannot be edited"
+msgstr "የሲስተም የጊዜ መስመር ግቤቶች ሊስተካከሉ አይችሉም"
+
+#: 
+msgid "Thank you for attending!"
+msgstr "ስለተገኙ እናመሰግናለን!"
+
+#: 
+msgid "This kiosk has registered but needs to be accepted by an administrator before it can be used."
+msgstr "ይህ ኪዮስክ ተመዝግቧል ነገር ግን ከመጠቀሙ በፊት በአስተዳዳሪ መቀበል አለበት።"
+
+#: 
+msgid "This kiosk is accepted but has no active event assignment."
+msgstr "ይህ ኪዮስክ ተቀባይነት አግኝቷል ነገር ግን ንቁ ክስተት አልተመደበለትም።"
+
+#: 
+msgid "This kiosk is assigned to an event, but no members are available for check-in."
+msgstr "ለዚህ ኪዮስክ ክስተት ተመድቧል፣ ነገር ግን ለቼክ-ኢን የሚገኙ አባላት የሉም።"
+
+#: 
+msgid "This page will automatically refresh when check-in opens."
+msgstr "ቼክ-ኢን ሲከፈት ይህ ገጽ በራሱ ይታደሳል።"
+
+#: 
+msgid "This page will automatically update once the kiosk is accepted."
+msgstr "ኪዮስኩ ሲቀበል ይህ ገጽ በራሱ ይዘምናል።"
+
+#: 
+msgid "Today!"
+msgstr "ዛሬ"
+
+#: 
+msgid "Turning {{age}}"
+msgstr "{{age}} ዓመት ሊሞላው ነው"
+
+#: 
+msgid "Unable to load group members"
+msgstr "የቡድን አባላትን መጫን አልተቻለም"
+
+#: 
+msgid "Unknown user configuration key"
+msgstr "ያልታወቀ የተጠቃሚ ውቅር ቁልፍ"
+
+#: 
+msgid "this person"
+msgstr "ይህ ሰው"
+
+#: 
+msgid "{{name}} has no family on record"
+msgstr "{{name}} በመዝገብ ላይ ቤተሰብ የለውም"
+
+#: 
+msgid "%d failed (all time)"
+msgstr "%d ያልተሳኩ (በጠቅላላ)"
+
+#: 
+msgid "Failed email history pages"
+msgstr "ያልተሳኩ የኢሜይል ታሪክ ገጾች"
+
+#: 
+msgid "Failed sends across all email history, including automated messages"
+msgstr "አውቶማቲክ መልዕክቶችን ጨምሮ በሁሉም የኢሜይል ታሪክ ውስጥ ያልተሳኩ መላኮች"
+
+#: 
+msgid "No server error recorded"
+msgstr "ምንም የአገልጋይ ስህተት አልተመዘገበም"
+
+#: 
+msgid "Show all recent sends"
+msgstr "ሁሉንም የቅርብ ጊዜ መላኮች አሳይ"
+
+#: 
+msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
+msgstr "አውቶማቲክ መልዕክቶችን ጨምሮ በሁሉም የኢሜይል ታሪክ ውስጥ ያልተሳኩ መላኮች እየታዩ ነው። ዝርዝር ለማየት ርዕስ ይምረጡ።"
+
+#: 
+msgid "The table shows only the latest 20 sends. Open a person to see their full history."
+msgstr "ሰንጠረዡ የመጨረሻዎቹን 20 መላኮች ብቻ ያሳያል። ሙሉ ታሪኩን ለማየት ሰውን ይክፈቱ።"
+
+#: 
+msgid "View %d failed sends across all email history"
+msgstr "በሁሉም የኢሜይል ታሪክ ውስጥ ያሉ %d ያልተሳኩ መላኮችን ይመልከቱ"
+

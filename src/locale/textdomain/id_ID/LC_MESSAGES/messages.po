@@ -24188,3 +24188,291 @@ msgstr "Surel diubah oleh administrator dari %1$s menjadi %2$s"
 msgid "Only an administrator can change the email of a person with a user account."
 msgstr "Hanya administrator yang dapat mengubah surel orang yang memiliki akun pengguna."
 
+#: 
+msgid "Fund totals appear here once payments are added."
+msgstr "Total dana akan muncul di sini setelah pembayaran ditambahkan."
+
+#: 
+msgid "No payments yet"
+msgstr "Belum ada pembayaran"
+
+#: 
+msgid "Some payments could not be deleted"
+msgstr "Beberapa pembayaran tidak dapat dihapus"
+
+#: 
+msgid "A string value is required"
+msgstr "Nilai string diperlukan"
+
+#: 
+msgid "Administrator permission required for this setting"
+msgstr "Pengaturan ini memerlukan izin administrator"
+
+#: 
+msgid "Alerts sent: {{sent}}, failed: {{failed}}"
+msgstr "Peringatan terkirim: {{sent}}, gagal: {{failed}}"
+
+#: 
+msgid "Alerts sent: {{total}}"
+msgstr "Peringatan terkirim: {{total}}"
+
+#: 
+msgid "Assign an event to the kiosk using the dropdown"
+msgstr "Tetapkan acara ke kios menggunakan menu tarik-turun"
+
+#: 
+msgid "Awaiting Acceptance"
+msgstr "Menunggu Persetujuan"
+
+#: 
+msgid "Birthday coming up!"
+msgstr "Ulang tahun sebentar lagi!"
+
+#: 
+msgid "Check that the event start/end times are correct"
+msgstr "Pastikan waktu mulai dan selesai acara sudah benar"
+
+#: 
+msgid "Check the server logs for more details"
+msgstr "Periksa log server untuk detail lebih lanjut"
+
+#: 
+msgid "Check-in Opens Soon"
+msgstr "Check-in Segera Dibuka"
+
+#: 
+msgid "Checked-in-by person is not an adult family member"
+msgstr "Orang yang melakukan check-in bukan anggota keluarga dewasa"
+
+#: 
+msgid "Checked-out-by person is not an adult family member"
+msgstr "Orang yang melakukan check-out bukan anggota keluarga dewasa"
+
+#: 
+msgid "Checkout all students"
+msgstr "Check-out semua siswa"
+
+#: 
+msgid "Days"
+msgstr "Hari"
+
+#: 
+msgid "Ensure the group has members"
+msgstr "Pastikan grup memiliki anggota"
+
+#: 
+msgid "Ensure the group has members assigned"
+msgstr "Pastikan grup memiliki anggota yang ditetapkan"
+
+#: 
+msgid "Error Loading Members"
+msgstr "Kesalahan Memuat Anggota"
+
+#: 
+msgid "Event Has Ended"
+msgstr "Acara Telah Berakhir"
+
+#: 
+msgid "Event not linked to a Group"
+msgstr "Acara tidak terhubung ke Grup"
+
+#: 
+msgid "Event timing"
+msgstr "Waktu Acara"
+
+#: 
+msgid "Everyone is here!"
+msgstr "Semua sudah hadir!"
+
+#: 
+msgid "Failed to send all alerts: {{total}}"
+msgstr "Gagal mengirim semua peringatan: {{total}}"
+
+#: 
+msgid "Failed to send parent alert"
+msgstr "Gagal mengirim peringatan orang tua"
+
+#: 
+msgid "Find this kiosk in the device list"
+msgstr "Temukan kios ini di daftar perangkat"
+
+#: 
+msgid "Group has no members"
+msgstr "Grup tidak memiliki anggota"
+
+#: 
+msgid "HTTP Status: {{status}}"
+msgstr "Status HTTP: {{status}}"
+
+#: 
+msgid "Hours"
+msgstr "Jam"
+
+#: 
+msgid "How to Accept This Kiosk"
+msgstr "Cara Menyetujui Kios Ini"
+
+#: 
+msgid "Kiosk Identification"
+msgstr "Identifikasi Kios"
+
+#: 
+msgid "Kiosk Ready"
+msgstr "Kios Siap"
+
+#: 
+msgid "Log in to ChurchCRM as an administrator"
+msgstr "Masuk ke ChurchCRM sebagai administrator"
+
+#: 
+msgid "Member is not an adult family member of the roster child"
+msgstr "Anggota ini bukan anggota keluarga dewasa dari anak dalam daftar"
+
+#: 
+msgid "Next Steps"
+msgstr "Langkah Berikutnya"
+
+#: 
+msgid "No Group Members Found"
+msgstr "Tidak Ada Anggota Grup"
+
+#: 
+msgid "No checked-in students with families to alert"
+msgstr "Tidak ada siswa yang sudah check-in dengan keluarga untuk diperingatkan"
+
+#: 
+msgid "Parent Alert"
+msgstr "Peringatan Orang Tua"
+
+#: 
+msgid "Parent alert sent for {{name}}"
+msgstr "Peringatan orang tua terkirim untuk {{name}}"
+
+#: 
+msgid "Photo not found"
+msgstr "Foto tidak ditemukan"
+
+#: 
+msgid "Possible Causes"
+msgstr "Kemungkinan Penyebab"
+
+#: 
+msgid "Processing..."
+msgstr "Memproses..."
+
+#: 
+msgid "Recent birthday!"
+msgstr "Baru saja berulang tahun!"
+
+#: 
+msgid "Refresh member list"
+msgstr "Muat ulang daftar anggota"
+
+#: 
+msgid "Refresh this kiosk page"
+msgstr "Muat ulang halaman kios ini"
+
+#: 
+msgid "Seconds"
+msgstr "Detik"
+
+#: 
+msgid "Send alert to all families"
+msgstr "Kirim peringatan ke semua keluarga"
+
+#: 
+msgid "Server error - the event may not be linked to a group"
+msgstr "Kesalahan server - acara mungkin tidak terhubung ke grup"
+
+#: 
+msgid "Student"
+msgstr "Siswa"
+
+#: 
+msgid "System timeline entries cannot be deleted"
+msgstr "Entri sistem pada lini masa tidak dapat dihapus"
+
+#: 
+msgid "System timeline entries cannot be edited"
+msgstr "Entri sistem pada lini masa tidak dapat diedit"
+
+#: 
+msgid "Thank you for attending!"
+msgstr "Terima kasih telah hadir!"
+
+#: 
+msgid "This kiosk has registered but needs to be accepted by an administrator before it can be used."
+msgstr "Kios ini telah terdaftar tetapi perlu disetujui oleh administrator sebelum dapat digunakan."
+
+#: 
+msgid "This kiosk is accepted but has no active event assignment."
+msgstr "Kios ini sudah disetujui tetapi belum memiliki acara aktif."
+
+#: 
+msgid "This kiosk is assigned to an event, but no members are available for check-in."
+msgstr "Kios ini sudah memiliki acara, tetapi tidak ada anggota yang tersedia untuk check-in."
+
+#: 
+msgid "This page will automatically refresh when check-in opens."
+msgstr "Halaman ini akan dimuat ulang otomatis saat check-in dibuka."
+
+#: 
+msgid "This page will automatically update once the kiosk is accepted."
+msgstr "Halaman ini akan diperbarui otomatis setelah kios disetujui."
+
+#: 
+msgid "Today!"
+msgstr "Hari Ini"
+
+#: 
+msgid "Turning {{age}}"
+msgstr "Berusia {{age}} tahun"
+
+#: 
+msgid "Unable to load group members"
+msgstr "Tidak dapat memuat anggota grup"
+
+#: 
+msgid "Unknown user configuration key"
+msgstr "Kunci konfigurasi pengguna tidak dikenal"
+
+#: 
+msgid "this person"
+msgstr "orang ini"
+
+#: 
+msgid "{{name}} has no family on record"
+msgstr "{{name}} tidak memiliki keluarga yang tercatat"
+
+#: 
+msgid "%d failed (all time)"
+msgstr "%d gagal (sepanjang waktu)"
+
+#: 
+msgid "Failed email history pages"
+msgstr "Halaman riwayat email gagal"
+
+#: 
+msgid "Failed sends across all email history, including automated messages"
+msgstr "Pengiriman gagal di seluruh riwayat email, termasuk pesan otomatis"
+
+#: 
+msgid "No server error recorded"
+msgstr "Tidak ada kesalahan server yang tercatat"
+
+#: 
+msgid "Show all recent sends"
+msgstr "Tampilkan semua pengiriman terbaru"
+
+#: 
+msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
+msgstr "Menampilkan pengiriman gagal di seluruh riwayat email, termasuk pesan otomatis. Pilih subjek untuk melihat detail."
+
+#: 
+msgid "The table shows only the latest 20 sends. Open a person to see their full history."
+msgstr "Tabel hanya menampilkan 20 pengiriman terbaru. Buka seseorang untuk melihat riwayat lengkapnya."
+
+#: 
+msgid "View %d failed sends across all email history"
+msgstr "Lihat %d pengiriman gagal di seluruh riwayat email"
+

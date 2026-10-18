@@ -24345,3 +24345,291 @@ msgstr "مسؤول غيّر البريد من %1$s إلى %2$s"
 msgid "Only an administrator can change the email of a person with a user account."
 msgstr "المسؤول بس هو اللي يقدر يغيّر بريد شخص عنده حساب مستخدم."
 
+#: 
+msgid "Fund totals appear here once payments are added."
+msgstr "ستظهر إجماليات الصناديق هنا بعد إضافة المدفوعات."
+
+#: 
+msgid "No payments yet"
+msgstr "لا توجد مدفوعات بعد"
+
+#: 
+msgid "Some payments could not be deleted"
+msgstr "تعذّر حذف بعض المدفوعات"
+
+#: 
+msgid "A string value is required"
+msgstr "مطلوب قيمة نصية"
+
+#: 
+msgid "Administrator permission required for this setting"
+msgstr "هذا الإعداد يتطلب صلاحية المسؤول"
+
+#: 
+msgid "Alerts sent: {{sent}}, failed: {{failed}}"
+msgstr "التنبيهات المرسلة: {{sent}}، الفاشلة: {{failed}}"
+
+#: 
+msgid "Alerts sent: {{total}}"
+msgstr "التنبيهات المرسلة: {{total}}"
+
+#: 
+msgid "Assign an event to the kiosk using the dropdown"
+msgstr "عيّن فعالية للكشك باستخدام القائمة المنسدلة"
+
+#: 
+msgid "Awaiting Acceptance"
+msgstr "بانتظار القبول"
+
+#: 
+msgid "Birthday coming up!"
+msgstr "عيد ميلاد قريب!"
+
+#: 
+msgid "Check that the event start/end times are correct"
+msgstr "تحقق من صحة وقتَي بدء الفعالية وانتهائها"
+
+#: 
+msgid "Check the server logs for more details"
+msgstr "راجع سجلات الخادم لمزيد من التفاصيل"
+
+#: 
+msgid "Check-in Opens Soon"
+msgstr "سيبدأ تسجيل الحضور قريبًا"
+
+#: 
+msgid "Checked-in-by person is not an adult family member"
+msgstr "الشخص الذي سجّل الحضور ليس فردًا بالغًا من العائلة"
+
+#: 
+msgid "Checked-out-by person is not an adult family member"
+msgstr "الشخص الذي سجّل الانصراف ليس فردًا بالغًا من العائلة"
+
+#: 
+msgid "Checkout all students"
+msgstr "تسجيل انصراف جميع الطلاب"
+
+#: 
+msgid "Days"
+msgstr "أيام"
+
+#: 
+msgid "Ensure the group has members"
+msgstr "تأكد من أن المجموعة تضم أعضاء"
+
+#: 
+msgid "Ensure the group has members assigned"
+msgstr "تأكد من تعيين أعضاء للمجموعة"
+
+#: 
+msgid "Error Loading Members"
+msgstr "خطأ في تحميل الأعضاء"
+
+#: 
+msgid "Event Has Ended"
+msgstr "انتهت الفعالية"
+
+#: 
+msgid "Event not linked to a Group"
+msgstr "الفعالية غير مرتبطة بمجموعة"
+
+#: 
+msgid "Event timing"
+msgstr "توقيت الحدث"
+
+#: 
+msgid "Everyone is here!"
+msgstr "الجميع حاضرون!"
+
+#: 
+msgid "Failed to send all alerts: {{total}}"
+msgstr "فشل إرسال جميع التنبيهات: {{total}}"
+
+#: 
+msgid "Failed to send parent alert"
+msgstr "فشل إرسال تنبيه ولي الأمر"
+
+#: 
+msgid "Find this kiosk in the device list"
+msgstr "ابحث عن هذا الكشك في قائمة الأجهزة"
+
+#: 
+msgid "Group has no members"
+msgstr "المجموعة بلا أعضاء"
+
+#: 
+msgid "HTTP Status: {{status}}"
+msgstr "حالة HTTP: {{status}}"
+
+#: 
+msgid "Hours"
+msgstr "ساعات"
+
+#: 
+msgid "How to Accept This Kiosk"
+msgstr "كيفية قبول هذا الكشك"
+
+#: 
+msgid "Kiosk Identification"
+msgstr "تعريف الكشك"
+
+#: 
+msgid "Kiosk Ready"
+msgstr "الكشك جاهز"
+
+#: 
+msgid "Log in to ChurchCRM as an administrator"
+msgstr "سجّل الدخول إلى ChurchCRM بصفتك مسؤولًا"
+
+#: 
+msgid "Member is not an adult family member of the roster child"
+msgstr "العضو ليس فردًا بالغًا من عائلة الطفل في القائمة"
+
+#: 
+msgid "Next Steps"
+msgstr "الخطوات التالية"
+
+#: 
+msgid "No Group Members Found"
+msgstr "لم يتم العثور على أعضاء المجموعة"
+
+#: 
+msgid "No checked-in students with families to alert"
+msgstr "لا يوجد طلاب مسجّلون الحضور لهم عائلات لتنبيهها"
+
+#: 
+msgid "Parent Alert"
+msgstr "تنبيه أولياء الأمور"
+
+#: 
+msgid "Parent alert sent for {{name}}"
+msgstr "تم إرسال تنبيه لأولياء الأمور بخصوص {{name}}"
+
+#: 
+msgid "Photo not found"
+msgstr "لم يتم العثور على الصورة"
+
+#: 
+msgid "Possible Causes"
+msgstr "الأسباب المحتملة"
+
+#: 
+msgid "Processing..."
+msgstr "جارٍ المعالجة..."
+
+#: 
+msgid "Recent birthday!"
+msgstr "عيد ميلاد حديث!"
+
+#: 
+msgid "Refresh member list"
+msgstr "تحديث قائمة الأعضاء"
+
+#: 
+msgid "Refresh this kiosk page"
+msgstr "تحديث صفحة هذا الكشك"
+
+#: 
+msgid "Seconds"
+msgstr "ثوانٍ"
+
+#: 
+msgid "Send alert to all families"
+msgstr "إرسال تنبيه إلى جميع العائلات"
+
+#: 
+msgid "Server error - the event may not be linked to a group"
+msgstr "خطأ في الخادم - قد تكون الفعالية غير مرتبطة بمجموعة"
+
+#: 
+msgid "Student"
+msgstr "طالب"
+
+#: 
+msgid "System timeline entries cannot be deleted"
+msgstr "لا يمكن حذف إدخالات النظام في الجدول الزمني"
+
+#: 
+msgid "System timeline entries cannot be edited"
+msgstr "لا يمكن تعديل إدخالات النظام في الجدول الزمني"
+
+#: 
+msgid "Thank you for attending!"
+msgstr "شكرًا لحضوركم!"
+
+#: 
+msgid "This kiosk has registered but needs to be accepted by an administrator before it can be used."
+msgstr "تم تسجيل هذا الكشك لكنه يحتاج إلى قبول من المسؤول قبل استخدامه."
+
+#: 
+msgid "This kiosk is accepted but has no active event assignment."
+msgstr "تم قبول هذا الكشك لكن لم تُعيَّن له فعالية نشطة."
+
+#: 
+msgid "This kiosk is assigned to an event, but no members are available for check-in."
+msgstr "عُيّنت لهذا الكشك فعالية، لكن لا يوجد أعضاء متاحون لتسجيل الحضور."
+
+#: 
+msgid "This page will automatically refresh when check-in opens."
+msgstr "ستتحدّث هذه الصفحة تلقائيًا عند بدء تسجيل الحضور."
+
+#: 
+msgid "This page will automatically update once the kiosk is accepted."
+msgstr "ستتحدّث هذه الصفحة تلقائيًا بعد قبول الكشك."
+
+#: 
+msgid "Today!"
+msgstr "اليوم"
+
+#: 
+msgid "Turning {{age}}"
+msgstr "يبلغ {{age}} عامًا"
+
+#: 
+msgid "Unable to load group members"
+msgstr "تعذّر تحميل أعضاء المجموعة"
+
+#: 
+msgid "Unknown user configuration key"
+msgstr "مفتاح إعدادات المستخدم غير معروف"
+
+#: 
+msgid "this person"
+msgstr "هذا الشخص"
+
+#: 
+msgid "{{name}} has no family on record"
+msgstr "{{name}} ليس لديه عائلة مسجّلة"
+
+#: 
+msgid "%d failed (all time)"
+msgstr "%d فاشلة (الإجمالي)"
+
+#: 
+msgid "Failed email history pages"
+msgstr "صفحات سجل البريد الإلكتروني الفاشل"
+
+#: 
+msgid "Failed sends across all email history, including automated messages"
+msgstr "عمليات الإرسال الفاشلة في كامل سجل البريد الإلكتروني، بما في ذلك الرسائل التلقائية"
+
+#: 
+msgid "No server error recorded"
+msgstr "لم يتم تسجيل أي خطأ في الخادم"
+
+#: 
+msgid "Show all recent sends"
+msgstr "عرض جميع عمليات الإرسال الأخيرة"
+
+#: 
+msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
+msgstr "يتم عرض عمليات الإرسال الفاشلة في كامل سجل البريد الإلكتروني، بما في ذلك الرسائل التلقائية. اختر موضوعًا لعرض التفاصيل."
+
+#: 
+msgid "The table shows only the latest 20 sends. Open a person to see their full history."
+msgstr "يعرض الجدول آخر 20 عملية إرسال فقط. افتح الشخص لعرض سجله الكامل."
+
+#: 
+msgid "View %d failed sends across all email history"
+msgstr "عرض %d من عمليات الإرسال الفاشلة في كامل سجل البريد الإلكتروني"
+

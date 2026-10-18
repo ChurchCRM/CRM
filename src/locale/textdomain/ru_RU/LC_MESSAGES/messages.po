@@ -24344,3 +24344,291 @@ msgstr "Администратор изменил почту с %1$s на %2$s"
 msgid "Only an administrator can change the email of a person with a user account."
 msgstr "Почту человека с учётной записью может изменить только администратор."
 
+#: 
+msgid "Fund totals appear here once payments are added."
+msgstr "Итоги по фондам появятся здесь после добавления платежей."
+
+#: 
+msgid "No payments yet"
+msgstr "Платежей пока нет"
+
+#: 
+msgid "Some payments could not be deleted"
+msgstr "Не удалось удалить некоторые платежи"
+
+#: 
+msgid "A string value is required"
+msgstr "Требуется строковое значение"
+
+#: 
+msgid "Administrator permission required for this setting"
+msgstr "Для этой настройки требуются права администратора"
+
+#: 
+msgid "Alerts sent: {{sent}}, failed: {{failed}}"
+msgstr "Отправлено оповещений: {{sent}}, не удалось: {{failed}}"
+
+#: 
+msgid "Alerts sent: {{total}}"
+msgstr "Отправлено оповещений: {{total}}"
+
+#: 
+msgid "Assign an event to the kiosk using the dropdown"
+msgstr "Назначьте мероприятие киоску с помощью выпадающего списка"
+
+#: 
+msgid "Awaiting Acceptance"
+msgstr "Ожидает подтверждения"
+
+#: 
+msgid "Birthday coming up!"
+msgstr "Скоро день рождения!"
+
+#: 
+msgid "Check that the event start/end times are correct"
+msgstr "Проверьте, что время начала и окончания мероприятия указано верно"
+
+#: 
+msgid "Check the server logs for more details"
+msgstr "Подробности смотрите в журналах сервера"
+
+#: 
+msgid "Check-in Opens Soon"
+msgstr "Регистрация скоро откроется"
+
+#: 
+msgid "Checked-in-by person is not an adult family member"
+msgstr "Отметивший приход не является взрослым членом семьи"
+
+#: 
+msgid "Checked-out-by person is not an adult family member"
+msgstr "Отметивший уход не является взрослым членом семьи"
+
+#: 
+msgid "Checkout all students"
+msgstr "Отметить уход всех учеников"
+
+#: 
+msgid "Days"
+msgstr "Дни"
+
+#: 
+msgid "Ensure the group has members"
+msgstr "Убедитесь, что в группе есть участники"
+
+#: 
+msgid "Ensure the group has members assigned"
+msgstr "Убедитесь, что в группу назначены участники"
+
+#: 
+msgid "Error Loading Members"
+msgstr "Ошибка загрузки участников"
+
+#: 
+msgid "Event Has Ended"
+msgstr "Мероприятие завершено"
+
+#: 
+msgid "Event not linked to a Group"
+msgstr "Мероприятие не связано с группой"
+
+#: 
+msgid "Event timing"
+msgstr "Время события"
+
+#: 
+msgid "Everyone is here!"
+msgstr "Все на месте!"
+
+#: 
+msgid "Failed to send all alerts: {{total}}"
+msgstr "Не удалось отправить все оповещения: {{total}}"
+
+#: 
+msgid "Failed to send parent alert"
+msgstr "Не удалось отправить оповещение родителям"
+
+#: 
+msgid "Find this kiosk in the device list"
+msgstr "Найдите этот киоск в списке устройств"
+
+#: 
+msgid "Group has no members"
+msgstr "В группе нет участников"
+
+#: 
+msgid "HTTP Status: {{status}}"
+msgstr "Статус HTTP: {{status}}"
+
+#: 
+msgid "Hours"
+msgstr "Часы"
+
+#: 
+msgid "How to Accept This Kiosk"
+msgstr "Как подтвердить этот киоск"
+
+#: 
+msgid "Kiosk Identification"
+msgstr "Идентификация киоска"
+
+#: 
+msgid "Kiosk Ready"
+msgstr "Киоск готов"
+
+#: 
+msgid "Log in to ChurchCRM as an administrator"
+msgstr "Войдите в ChurchCRM как администратор"
+
+#: 
+msgid "Member is not an adult family member of the roster child"
+msgstr "Участник не является взрослым членом семьи ребёнка из списка"
+
+#: 
+msgid "Next Steps"
+msgstr "Следующие шаги"
+
+#: 
+msgid "No Group Members Found"
+msgstr "Участники группы не найдены"
+
+#: 
+msgid "No checked-in students with families to alert"
+msgstr "Нет отмеченных учеников с семьями для оповещения"
+
+#: 
+msgid "Parent Alert"
+msgstr "Оповещение родителей"
+
+#: 
+msgid "Parent alert sent for {{name}}"
+msgstr "Оповещение родителям отправлено для {{name}}"
+
+#: 
+msgid "Photo not found"
+msgstr "Фото не найдено"
+
+#: 
+msgid "Possible Causes"
+msgstr "Возможные причины"
+
+#: 
+msgid "Processing..."
+msgstr "Обработка..."
+
+#: 
+msgid "Recent birthday!"
+msgstr "Недавний день рождения!"
+
+#: 
+msgid "Refresh member list"
+msgstr "Обновить список участников"
+
+#: 
+msgid "Refresh this kiosk page"
+msgstr "Обновить страницу этого киоска"
+
+#: 
+msgid "Seconds"
+msgstr "Секунды"
+
+#: 
+msgid "Send alert to all families"
+msgstr "Отправить оповещение всем семьям"
+
+#: 
+msgid "Server error - the event may not be linked to a group"
+msgstr "Ошибка сервера: возможно, мероприятие не связано с группой"
+
+#: 
+msgid "Student"
+msgstr "Ученик"
+
+#: 
+msgid "System timeline entries cannot be deleted"
+msgstr "Системные записи хронологии нельзя удалить"
+
+#: 
+msgid "System timeline entries cannot be edited"
+msgstr "Системные записи хронологии нельзя изменить"
+
+#: 
+msgid "Thank you for attending!"
+msgstr "Спасибо, что пришли!"
+
+#: 
+msgid "This kiosk has registered but needs to be accepted by an administrator before it can be used."
+msgstr "Этот киоск зарегистрирован, но перед использованием его должен подтвердить администратор."
+
+#: 
+msgid "This kiosk is accepted but has no active event assignment."
+msgstr "Этот киоск подтверждён, но ему не назначено активное мероприятие."
+
+#: 
+msgid "This kiosk is assigned to an event, but no members are available for check-in."
+msgstr "Этому киоску назначено мероприятие, но нет участников, доступных для регистрации."
+
+#: 
+msgid "This page will automatically refresh when check-in opens."
+msgstr "Эта страница обновится автоматически, когда откроется регистрация."
+
+#: 
+msgid "This page will automatically update once the kiosk is accepted."
+msgstr "Эта страница обновится автоматически после подтверждения киоска."
+
+#: 
+msgid "Today!"
+msgstr "Сегодня"
+
+#: 
+msgid "Turning {{age}}"
+msgstr "Исполняется {{age}}"
+
+#: 
+msgid "Unable to load group members"
+msgstr "Не удалось загрузить участников группы"
+
+#: 
+msgid "Unknown user configuration key"
+msgstr "Неизвестный ключ пользовательской настройки"
+
+#: 
+msgid "this person"
+msgstr "этот человек"
+
+#: 
+msgid "{{name}} has no family on record"
+msgstr "У {{name}} нет семьи в базе"
+
+#: 
+msgid "%d failed (all time)"
+msgstr "Не удалось: %d (всего)"
+
+#: 
+msgid "Failed email history pages"
+msgstr "Страницы истории неудачных писем"
+
+#: 
+msgid "Failed sends across all email history, including automated messages"
+msgstr "Неудачные отправки во всей истории писем, включая автоматические сообщения"
+
+#: 
+msgid "No server error recorded"
+msgstr "Ошибка сервера не записана"
+
+#: 
+msgid "Show all recent sends"
+msgstr "Показать все недавние отправки"
+
+#: 
+msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
+msgstr "Показаны неудачные отправки во всей истории писем, включая автоматические сообщения. Выберите тему, чтобы увидеть подробности."
+
+#: 
+msgid "The table shows only the latest 20 sends. Open a person to see their full history."
+msgstr "В таблице показаны только последние 20 отправок. Откройте карточку человека, чтобы увидеть всю историю."
+
+#: 
+msgid "View %d failed sends across all email history"
+msgstr "Показать неудачные отправки во всей истории писем: %d"
+

@@ -24226,3 +24226,291 @@ msgstr "Το ηλ. ταχυδρομείο άλλαξε από διαχειρισ
 msgid "Only an administrator can change the email of a person with a user account."
 msgstr "Μόνο διαχειριστής μπορεί να αλλάξει το ηλ. ταχυδρομείο προσώπου με λογαριασμό χρήστη."
 
+#: 
+msgid "Fund totals appear here once payments are added."
+msgstr "Τα σύνολα των ταμείων θα εμφανιστούν εδώ μόλις προστεθούν πληρωμές."
+
+#: 
+msgid "No payments yet"
+msgstr "Δεν υπάρχουν ακόμη πληρωμές"
+
+#: 
+msgid "Some payments could not be deleted"
+msgstr "Ορισμένες πληρωμές δεν μπόρεσαν να διαγραφούν"
+
+#: 
+msgid "A string value is required"
+msgstr "Απαιτείται τιμή κειμένου"
+
+#: 
+msgid "Administrator permission required for this setting"
+msgstr "Απαιτείται άδεια διαχειριστή για αυτή τη ρύθμιση"
+
+#: 
+msgid "Alerts sent: {{sent}}, failed: {{failed}}"
+msgstr "Απεσταλμένες ειδοποιήσεις: {{sent}}, αποτυχίες: {{failed}}"
+
+#: 
+msgid "Alerts sent: {{total}}"
+msgstr "Απεσταλμένες ειδοποιήσεις: {{total}}"
+
+#: 
+msgid "Assign an event to the kiosk using the dropdown"
+msgstr "Αντιστοιχίστε μια εκδήλωση στο κιόσκι από την αναπτυσσόμενη λίστα"
+
+#: 
+msgid "Awaiting Acceptance"
+msgstr "Αναμονή αποδοχής"
+
+#: 
+msgid "Birthday coming up!"
+msgstr "Πλησιάζουν γενέθλια!"
+
+#: 
+msgid "Check that the event start/end times are correct"
+msgstr "Ελέγξτε ότι οι ώρες έναρξης και λήξης της εκδήλωσης είναι σωστές"
+
+#: 
+msgid "Check the server logs for more details"
+msgstr "Δείτε τα αρχεία καταγραφής του διακομιστή για περισσότερες λεπτομέρειες"
+
+#: 
+msgid "Check-in Opens Soon"
+msgstr "Η είσοδος ανοίγει σύντομα"
+
+#: 
+msgid "Checked-in-by person is not an adult family member"
+msgstr "Το άτομο που έκανε την είσοδο δεν είναι ενήλικο μέλος της οικογένειας"
+
+#: 
+msgid "Checked-out-by person is not an adult family member"
+msgstr "Το άτομο που έκανε την έξοδο δεν είναι ενήλικο μέλος της οικογένειας"
+
+#: 
+msgid "Checkout all students"
+msgstr "Έξοδος όλων των μαθητών"
+
+#: 
+msgid "Days"
+msgstr "Ημέρες"
+
+#: 
+msgid "Ensure the group has members"
+msgstr "Βεβαιωθείτε ότι η ομάδα έχει μέλη"
+
+#: 
+msgid "Ensure the group has members assigned"
+msgstr "Βεβαιωθείτε ότι έχουν ανατεθεί μέλη στην ομάδα"
+
+#: 
+msgid "Error Loading Members"
+msgstr "Σφάλμα φόρτωσης μελών"
+
+#: 
+msgid "Event Has Ended"
+msgstr "Η εκδήλωση έχει τελειώσει"
+
+#: 
+msgid "Event not linked to a Group"
+msgstr "Η εκδήλωση δεν συνδέεται με ομάδα"
+
+#: 
+msgid "Event timing"
+msgstr "Χρονοδιάγραμμα εκδήλωσης"
+
+#: 
+msgid "Everyone is here!"
+msgstr "Είναι όλοι εδώ!"
+
+#: 
+msgid "Failed to send all alerts: {{total}}"
+msgstr "Αποτυχία αποστολής όλων των ειδοποιήσεων: {{total}}"
+
+#: 
+msgid "Failed to send parent alert"
+msgstr "Αποτυχία αποστολής ειδοποίησης στους γονείς"
+
+#: 
+msgid "Find this kiosk in the device list"
+msgstr "Βρείτε αυτό το κιόσκι στη λίστα συσκευών"
+
+#: 
+msgid "Group has no members"
+msgstr "Η ομάδα δεν έχει μέλη"
+
+#: 
+msgid "HTTP Status: {{status}}"
+msgstr "Κατάσταση HTTP: {{status}}"
+
+#: 
+msgid "Hours"
+msgstr "Ώρες"
+
+#: 
+msgid "How to Accept This Kiosk"
+msgstr "Πώς να αποδεχτείτε αυτό το κιόσκι"
+
+#: 
+msgid "Kiosk Identification"
+msgstr "Αναγνώριση κιοσκιού"
+
+#: 
+msgid "Kiosk Ready"
+msgstr "Το κιόσκι είναι έτοιμο"
+
+#: 
+msgid "Log in to ChurchCRM as an administrator"
+msgstr "Συνδεθείτε στο ChurchCRM ως διαχειριστής"
+
+#: 
+msgid "Member is not an adult family member of the roster child"
+msgstr "Το μέλος δεν είναι ενήλικο μέλος της οικογένειας του παιδιού της λίστας"
+
+#: 
+msgid "Next Steps"
+msgstr "Επόμενα βήματα"
+
+#: 
+msgid "No Group Members Found"
+msgstr "Δεν βρέθηκαν μέλη της ομάδας"
+
+#: 
+msgid "No checked-in students with families to alert"
+msgstr "Δεν υπάρχουν μαθητές με είσοδο και οικογένεια για ειδοποίηση"
+
+#: 
+msgid "Parent Alert"
+msgstr "Ειδοποίηση γονέων"
+
+#: 
+msgid "Parent alert sent for {{name}}"
+msgstr "Η ειδοποίηση γονέων εστάλη για {{name}}"
+
+#: 
+msgid "Photo not found"
+msgstr "Η φωτογραφία δεν βρέθηκε"
+
+#: 
+msgid "Possible Causes"
+msgstr "Πιθανές αιτίες"
+
+#: 
+msgid "Processing..."
+msgstr "Επεξεργασία..."
+
+#: 
+msgid "Recent birthday!"
+msgstr "Πρόσφατα γενέθλια!"
+
+#: 
+msgid "Refresh member list"
+msgstr "Ανανέωση λίστας μελών"
+
+#: 
+msgid "Refresh this kiosk page"
+msgstr "Ανανέωση της σελίδας αυτού του κιοσκιού"
+
+#: 
+msgid "Seconds"
+msgstr "Δευτερόλεπτα"
+
+#: 
+msgid "Send alert to all families"
+msgstr "Αποστολή ειδοποίησης σε όλες τις οικογένειες"
+
+#: 
+msgid "Server error - the event may not be linked to a group"
+msgstr "Σφάλμα διακομιστή - η εκδήλωση ίσως δεν συνδέεται με ομάδα"
+
+#: 
+msgid "Student"
+msgstr "Μαθητής"
+
+#: 
+msgid "System timeline entries cannot be deleted"
+msgstr "Οι εγγραφές συστήματος του χρονολογίου δεν μπορούν να διαγραφούν"
+
+#: 
+msgid "System timeline entries cannot be edited"
+msgstr "Οι εγγραφές συστήματος του χρονολογίου δεν μπορούν να επεξεργαστούν"
+
+#: 
+msgid "Thank you for attending!"
+msgstr "Σας ευχαριστούμε για την παρουσία σας!"
+
+#: 
+msgid "This kiosk has registered but needs to be accepted by an administrator before it can be used."
+msgstr "Αυτό το κιόσκι έχει εγγραφεί αλλά πρέπει να γίνει αποδεκτό από διαχειριστή πριν χρησιμοποιηθεί."
+
+#: 
+msgid "This kiosk is accepted but has no active event assignment."
+msgstr "Αυτό το κιόσκι έχει γίνει αποδεκτό αλλά δεν έχει ενεργή εκδήλωση."
+
+#: 
+msgid "This kiosk is assigned to an event, but no members are available for check-in."
+msgstr "Σε αυτό το κιόσκι έχει ανατεθεί εκδήλωση, αλλά δεν υπάρχουν διαθέσιμα μέλη για είσοδο."
+
+#: 
+msgid "This page will automatically refresh when check-in opens."
+msgstr "Αυτή η σελίδα θα ανανεωθεί αυτόματα όταν ανοίξει η είσοδος."
+
+#: 
+msgid "This page will automatically update once the kiosk is accepted."
+msgstr "Αυτή η σελίδα θα ενημερωθεί αυτόματα μόλις γίνει αποδεκτό το κιόσκι."
+
+#: 
+msgid "Today!"
+msgstr "Σήμερα"
+
+#: 
+msgid "Turning {{age}}"
+msgstr "Γίνεται {{age}} ετών"
+
+#: 
+msgid "Unable to load group members"
+msgstr "Δεν είναι δυνατή η φόρτωση των μελών της ομάδας"
+
+#: 
+msgid "Unknown user configuration key"
+msgstr "Άγνωστο κλειδί διαμόρφωσης χρήστη"
+
+#: 
+msgid "this person"
+msgstr "αυτό το άτομο"
+
+#: 
+msgid "{{name}} has no family on record"
+msgstr "Ο/Η {{name}} δεν έχει οικογένεια στα αρχεία"
+
+#: 
+msgid "%d failed (all time)"
+msgstr "%d αποτυχίες (συνολικά)"
+
+#: 
+msgid "Failed email history pages"
+msgstr "Σελίδες ιστορικού αποτυχημένων email"
+
+#: 
+msgid "Failed sends across all email history, including automated messages"
+msgstr "Αποτυχημένες αποστολές σε όλο το ιστορικό email, συμπεριλαμβανομένων των αυτόματων μηνυμάτων"
+
+#: 
+msgid "No server error recorded"
+msgstr "Δεν καταγράφηκε σφάλμα διακομιστή"
+
+#: 
+msgid "Show all recent sends"
+msgstr "Εμφάνιση όλων των πρόσφατων αποστολών"
+
+#: 
+msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
+msgstr "Εμφανίζονται οι αποτυχημένες αποστολές σε όλο το ιστορικό email, συμπεριλαμβανομένων των αυτόματων μηνυμάτων. Επιλέξτε ένα θέμα για λεπτομέρειες."
+
+#: 
+msgid "The table shows only the latest 20 sends. Open a person to see their full history."
+msgstr "Ο πίνακας εμφανίζει μόνο τις τελευταίες 20 αποστολές. Ανοίξτε ένα άτομο για να δείτε το πλήρες ιστορικό."
+
+#: 
+msgid "View %d failed sends across all email history"
+msgstr "Προβολή %d αποτυχημένων αποστολών σε όλο το ιστορικό email"
+

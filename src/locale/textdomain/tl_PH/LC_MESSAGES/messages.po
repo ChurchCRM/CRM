@@ -24192,3 +24192,291 @@ msgstr "Binago ng isang tagapangasiwa ang email mula %1$s patungo sa %2$s"
 msgid "Only an administrator can change the email of a person with a user account."
 msgstr "Tanging tagapangasiwa ang maaaring magbago ng email ng taong may kuwenta ng gumagamit."
 
+#: 
+msgid "Fund totals appear here once payments are added."
+msgstr "Lalabas dito ang kabuuan ng mga pondo kapag may naidagdag nang bayad."
+
+#: 
+msgid "No payments yet"
+msgstr "Wala pang bayad"
+
+#: 
+msgid "Some payments could not be deleted"
+msgstr "Hindi ma-delete ang ilang bayad"
+
+#: 
+msgid "A string value is required"
+msgstr "Kailangan ng string na halaga"
+
+#: 
+msgid "Administrator permission required for this setting"
+msgstr "Kailangan ng pahintulot ng administrator para sa setting na ito"
+
+#: 
+msgid "Alerts sent: {{sent}}, failed: {{failed}}"
+msgstr "Mga alerto na naipadala: {{sent}}, nabigo: {{failed}}"
+
+#: 
+msgid "Alerts sent: {{total}}"
+msgstr "Mga alerto na naipadala: {{total}}"
+
+#: 
+msgid "Assign an event to the kiosk using the dropdown"
+msgstr "Magtalaga ng event sa kiosk gamit ang dropdown"
+
+#: 
+msgid "Awaiting Acceptance"
+msgstr "Naghihintay ng Pagtanggap"
+
+#: 
+msgid "Birthday coming up!"
+msgstr "Malapit na ang kaarawan!"
+
+#: 
+msgid "Check that the event start/end times are correct"
+msgstr "Tiyaking tama ang oras ng simula at pagtatapos ng event"
+
+#: 
+msgid "Check the server logs for more details"
+msgstr "Tingnan ang mga log ng server para sa higit pang detalye"
+
+#: 
+msgid "Check-in Opens Soon"
+msgstr "Malapit nang magbukas ang Check-in"
+
+#: 
+msgid "Checked-in-by person is not an adult family member"
+msgstr "Ang nag-check-in ay hindi nasa hustong gulang na miyembro ng pamilya"
+
+#: 
+msgid "Checked-out-by person is not an adult family member"
+msgstr "Ang nag-check-out ay hindi nasa hustong gulang na miyembro ng pamilya"
+
+#: 
+msgid "Checkout all students"
+msgstr "I-check-out ang lahat ng estudyante"
+
+#: 
+msgid "Days"
+msgstr "Araw"
+
+#: 
+msgid "Ensure the group has members"
+msgstr "Tiyaking may mga miyembro ang grupo"
+
+#: 
+msgid "Ensure the group has members assigned"
+msgstr "Tiyaking may mga miyembrong naitalaga sa grupo"
+
+#: 
+msgid "Error Loading Members"
+msgstr "Error sa Pag-load ng mga Miyembro"
+
+#: 
+msgid "Event Has Ended"
+msgstr "Tapos Na ang Event"
+
+#: 
+msgid "Event not linked to a Group"
+msgstr "Hindi nakakabit ang event sa isang Grupo"
+
+#: 
+msgid "Event timing"
+msgstr "Oras ng Event"
+
+#: 
+msgid "Everyone is here!"
+msgstr "Nandito na ang lahat!"
+
+#: 
+msgid "Failed to send all alerts: {{total}}"
+msgstr "Nabigong ipadala ang lahat ng alerto: {{total}}"
+
+#: 
+msgid "Failed to send parent alert"
+msgstr "Nabigong ipadala ang alerto sa magulang"
+
+#: 
+msgid "Find this kiosk in the device list"
+msgstr "Hanapin ang kiosk na ito sa listahan ng mga device"
+
+#: 
+msgid "Group has no members"
+msgstr "Walang miyembro ang grupo"
+
+#: 
+msgid "HTTP Status: {{status}}"
+msgstr "HTTP Status: {{status}}"
+
+#: 
+msgid "Hours"
+msgstr "Oras"
+
+#: 
+msgid "How to Accept This Kiosk"
+msgstr "Paano Tanggapin ang Kiosk na Ito"
+
+#: 
+msgid "Kiosk Identification"
+msgstr "Pagkilala sa Kiosk"
+
+#: 
+msgid "Kiosk Ready"
+msgstr "Handa na ang Kiosk"
+
+#: 
+msgid "Log in to ChurchCRM as an administrator"
+msgstr "Mag-log in sa ChurchCRM bilang administrator"
+
+#: 
+msgid "Member is not an adult family member of the roster child"
+msgstr "Ang miyembro ay hindi nasa hustong gulang na miyembro ng pamilya ng batang nasa listahan"
+
+#: 
+msgid "Next Steps"
+msgstr "Mga Susunod na Hakbang"
+
+#: 
+msgid "No Group Members Found"
+msgstr "Walang Nakitang Miyembro ng Grupo"
+
+#: 
+msgid "No checked-in students with families to alert"
+msgstr "Walang naka-check-in na estudyante na may pamilyang aalertuhan"
+
+#: 
+msgid "Parent Alert"
+msgstr "Alerto sa Magulang"
+
+#: 
+msgid "Parent alert sent for {{name}}"
+msgstr "Naipadala ang alerto sa magulang para kay {{name}}"
+
+#: 
+msgid "Photo not found"
+msgstr "Hindi nakita ang larawan"
+
+#: 
+msgid "Possible Causes"
+msgstr "Mga Posibleng Dahilan"
+
+#: 
+msgid "Processing..."
+msgstr "Pinoproseso..."
+
+#: 
+msgid "Recent birthday!"
+msgstr "Kakaraan lang ng kaarawan!"
+
+#: 
+msgid "Refresh member list"
+msgstr "I-refresh ang listahan ng miyembro"
+
+#: 
+msgid "Refresh this kiosk page"
+msgstr "I-refresh ang pahina ng kiosk na ito"
+
+#: 
+msgid "Seconds"
+msgstr "Segundo"
+
+#: 
+msgid "Send alert to all families"
+msgstr "Magpadala ng alerto sa lahat ng pamilya"
+
+#: 
+msgid "Server error - the event may not be linked to a group"
+msgstr "Error sa server - maaaring hindi nakakabit ang event sa isang grupo"
+
+#: 
+msgid "Student"
+msgstr "Estudyante"
+
+#: 
+msgid "System timeline entries cannot be deleted"
+msgstr "Hindi maaaring i-delete ang mga entry ng system sa timeline"
+
+#: 
+msgid "System timeline entries cannot be edited"
+msgstr "Hindi maaaring i-edit ang mga entry ng system sa timeline"
+
+#: 
+msgid "Thank you for attending!"
+msgstr "Salamat sa pagdalo!"
+
+#: 
+msgid "This kiosk has registered but needs to be accepted by an administrator before it can be used."
+msgstr "Nakarehistro na ang kiosk na ito ngunit kailangan munang tanggapin ng administrator bago magamit."
+
+#: 
+msgid "This kiosk is accepted but has no active event assignment."
+msgstr "Tinanggap na ang kiosk na ito ngunit wala itong aktibong event na nakatalaga."
+
+#: 
+msgid "This kiosk is assigned to an event, but no members are available for check-in."
+msgstr "May nakatalagang event ang kiosk na ito, ngunit walang miyembrong available para mag-check-in."
+
+#: 
+msgid "This page will automatically refresh when check-in opens."
+msgstr "Awtomatikong magre-refresh ang pahinang ito kapag nagbukas na ang check-in."
+
+#: 
+msgid "This page will automatically update once the kiosk is accepted."
+msgstr "Awtomatikong mag-a-update ang pahinang ito kapag natanggap na ang kiosk."
+
+#: 
+msgid "Today!"
+msgstr "Ngayon"
+
+#: 
+msgid "Turning {{age}}"
+msgstr "Magiging {{age}} na"
+
+#: 
+msgid "Unable to load group members"
+msgstr "Hindi ma-load ang mga miyembro ng grupo"
+
+#: 
+msgid "Unknown user configuration key"
+msgstr "Hindi kilalang key ng configuration ng user"
+
+#: 
+msgid "this person"
+msgstr "ang taong ito"
+
+#: 
+msgid "{{name}} has no family on record"
+msgstr "Walang pamilya sa talaan si {{name}}"
+
+#: 
+msgid "%d failed (all time)"
+msgstr "%d ang nabigo (kabuuan)"
+
+#: 
+msgid "Failed email history pages"
+msgstr "Mga pahina ng nabigong kasaysayan ng email"
+
+#: 
+msgid "Failed sends across all email history, including automated messages"
+msgstr "Mga nabigong pagpapadala sa buong kasaysayan ng email, kasama ang mga awtomatikong mensahe"
+
+#: 
+msgid "No server error recorded"
+msgstr "Walang naitalang error sa server"
+
+#: 
+msgid "Show all recent sends"
+msgstr "Ipakita ang lahat ng kamakailang pagpapadala"
+
+#: 
+msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
+msgstr "Ipinapakita ang mga nabigong pagpapadala sa buong kasaysayan ng email, kasama ang mga awtomatikong mensahe. Pumili ng paksa para sa mga detalye."
+
+#: 
+msgid "The table shows only the latest 20 sends. Open a person to see their full history."
+msgstr "Ang huling 20 pagpapadala lang ang ipinapakita ng talahanayan. Buksan ang isang tao para makita ang buong kasaysayan."
+
+#: 
+msgid "View %d failed sends across all email history"
+msgstr "Tingnan ang %d nabigong pagpapadala sa buong kasaysayan ng email"
+

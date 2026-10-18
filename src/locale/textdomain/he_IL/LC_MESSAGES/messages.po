@@ -24224,3 +24224,291 @@ msgstr "מנהל שינה את הדוא״ל מ־%1$s אל %2$s"
 msgid "Only an administrator can change the email of a person with a user account."
 msgstr "רק מנהל יכול לשנות את הדוא״ל של אדם עם חשבון משתמש."
 
+#: 
+msgid "Fund totals appear here once payments are added."
+msgstr "סיכומי הקרנות יופיעו כאן לאחר הוספת תשלומים."
+
+#: 
+msgid "No payments yet"
+msgstr "עדיין אין תשלומים"
+
+#: 
+msgid "Some payments could not be deleted"
+msgstr "לא ניתן היה למחוק חלק מהתשלומים"
+
+#: 
+msgid "A string value is required"
+msgstr "נדרש ערך מחרוזת"
+
+#: 
+msgid "Administrator permission required for this setting"
+msgstr "הגדרה זו דורשת הרשאת מנהל"
+
+#: 
+msgid "Alerts sent: {{sent}}, failed: {{failed}}"
+msgstr "התראות שנשלחו: {{sent}}, נכשלו: {{failed}}"
+
+#: 
+msgid "Alerts sent: {{total}}"
+msgstr "התראות שנשלחו: {{total}}"
+
+#: 
+msgid "Assign an event to the kiosk using the dropdown"
+msgstr "הקצו אירוע לעמדה באמצעות הרשימה הנפתחת"
+
+#: 
+msgid "Awaiting Acceptance"
+msgstr "ממתין לאישור"
+
+#: 
+msgid "Birthday coming up!"
+msgstr "יום הולדת מתקרב!"
+
+#: 
+msgid "Check that the event start/end times are correct"
+msgstr "ודאו ששעות ההתחלה והסיום של האירוע נכונות"
+
+#: 
+msgid "Check the server logs for more details"
+msgstr "לפרטים נוספים עיינו ביומני השרת"
+
+#: 
+msgid "Check-in Opens Soon"
+msgstr "הרישום ייפתח בקרוב"
+
+#: 
+msgid "Checked-in-by person is not an adult family member"
+msgstr "מי שביצע את הרישום אינו בן משפחה בוגר"
+
+#: 
+msgid "Checked-out-by person is not an adult family member"
+msgstr "מי שביצע את סיום הנוכחות אינו בן משפחה בוגר"
+
+#: 
+msgid "Checkout all students"
+msgstr "סיום נוכחות לכל התלמידים"
+
+#: 
+msgid "Days"
+msgstr "ימים"
+
+#: 
+msgid "Ensure the group has members"
+msgstr "ודאו שיש חברים בקבוצה"
+
+#: 
+msgid "Ensure the group has members assigned"
+msgstr "ודאו שהוקצו חברים לקבוצה"
+
+#: 
+msgid "Error Loading Members"
+msgstr "שגיאה בטעינת החברים"
+
+#: 
+msgid "Event Has Ended"
+msgstr "האירוע הסתיים"
+
+#: 
+msgid "Event not linked to a Group"
+msgstr "האירוע אינו מקושר לקבוצה"
+
+#: 
+msgid "Event timing"
+msgstr "תזמון האירוע"
+
+#: 
+msgid "Everyone is here!"
+msgstr "כולם כאן!"
+
+#: 
+msgid "Failed to send all alerts: {{total}}"
+msgstr "שליחת כל ההתראות נכשלה: {{total}}"
+
+#: 
+msgid "Failed to send parent alert"
+msgstr "שליחת ההתראה להורים נכשלה"
+
+#: 
+msgid "Find this kiosk in the device list"
+msgstr "אתרו את העמדה הזו ברשימת המכשירים"
+
+#: 
+msgid "Group has no members"
+msgstr "אין חברים בקבוצה"
+
+#: 
+msgid "HTTP Status: {{status}}"
+msgstr "סטטוס HTTP: {{status}}"
+
+#: 
+msgid "Hours"
+msgstr "שעות"
+
+#: 
+msgid "How to Accept This Kiosk"
+msgstr "כיצד לאשר עמדה זו"
+
+#: 
+msgid "Kiosk Identification"
+msgstr "זיהוי העמדה"
+
+#: 
+msgid "Kiosk Ready"
+msgstr "העמדה מוכנה"
+
+#: 
+msgid "Log in to ChurchCRM as an administrator"
+msgstr "היכנסו ל-ChurchCRM כמנהל"
+
+#: 
+msgid "Member is not an adult family member of the roster child"
+msgstr "החבר אינו בן משפחה בוגר של הילד שברשימה"
+
+#: 
+msgid "Next Steps"
+msgstr "השלבים הבאים"
+
+#: 
+msgid "No Group Members Found"
+msgstr "לא נמצאו חברי קבוצה"
+
+#: 
+msgid "No checked-in students with families to alert"
+msgstr "אין תלמידים שנרשמו ושיש להם משפחה להתראה"
+
+#: 
+msgid "Parent Alert"
+msgstr "התראה להורים"
+
+#: 
+msgid "Parent alert sent for {{name}}"
+msgstr "התראה להורים נשלחה עבור {{name}}"
+
+#: 
+msgid "Photo not found"
+msgstr "התמונה לא נמצאה"
+
+#: 
+msgid "Possible Causes"
+msgstr "סיבות אפשריות"
+
+#: 
+msgid "Processing..."
+msgstr "מעבד..."
+
+#: 
+msgid "Recent birthday!"
+msgstr "יום הולדת לאחרונה!"
+
+#: 
+msgid "Refresh member list"
+msgstr "רענון רשימת החברים"
+
+#: 
+msgid "Refresh this kiosk page"
+msgstr "רענון דף העמדה הזו"
+
+#: 
+msgid "Seconds"
+msgstr "שניות"
+
+#: 
+msgid "Send alert to all families"
+msgstr "שליחת התראה לכל המשפחות"
+
+#: 
+msgid "Server error - the event may not be linked to a group"
+msgstr "שגיאת שרת - ייתכן שהאירוע אינו מקושר לקבוצה"
+
+#: 
+msgid "Student"
+msgstr "תלמיד"
+
+#: 
+msgid "System timeline entries cannot be deleted"
+msgstr "לא ניתן למחוק רשומות מערכת בציר הזמן"
+
+#: 
+msgid "System timeline entries cannot be edited"
+msgstr "לא ניתן לערוך רשומות מערכת בציר הזמן"
+
+#: 
+msgid "Thank you for attending!"
+msgstr "תודה שהגעתם!"
+
+#: 
+msgid "This kiosk has registered but needs to be accepted by an administrator before it can be used."
+msgstr "עמדה זו נרשמה אך נדרש אישור של מנהל לפני השימוש בה."
+
+#: 
+msgid "This kiosk is accepted but has no active event assignment."
+msgstr "עמדה זו אושרה אך לא הוקצה לה אירוע פעיל."
+
+#: 
+msgid "This kiosk is assigned to an event, but no members are available for check-in."
+msgstr "לעמדה זו הוקצה אירוע, אך אין חברים זמינים לרישום."
+
+#: 
+msgid "This page will automatically refresh when check-in opens."
+msgstr "דף זה יתרענן אוטומטית כשהרישום ייפתח."
+
+#: 
+msgid "This page will automatically update once the kiosk is accepted."
+msgstr "דף זה יתעדכן אוטומטית לאחר שהעמדה תאושר."
+
+#: 
+msgid "Today!"
+msgstr "היום"
+
+#: 
+msgid "Turning {{age}}"
+msgstr "יהיה בן/בת {{age}}"
+
+#: 
+msgid "Unable to load group members"
+msgstr "לא ניתן לטעון את חברי הקבוצה"
+
+#: 
+msgid "Unknown user configuration key"
+msgstr "מפתח תצורת משתמש לא מוכר"
+
+#: 
+msgid "this person"
+msgstr "אדם זה"
+
+#: 
+msgid "{{name}} has no family on record"
+msgstr "ל-{{name}} אין משפחה ברשומות"
+
+#: 
+msgid "%d failed (all time)"
+msgstr "%d נכשלו (סה״כ)"
+
+#: 
+msgid "Failed email history pages"
+msgstr "דפי היסטוריית אימיילים שנכשלו"
+
+#: 
+msgid "Failed sends across all email history, including automated messages"
+msgstr "שליחות שנכשלו בכל היסטוריית האימיילים, כולל הודעות אוטומטיות"
+
+#: 
+msgid "No server error recorded"
+msgstr "לא נרשמה שגיאת שרת"
+
+#: 
+msgid "Show all recent sends"
+msgstr "הצגת כל השליחות האחרונות"
+
+#: 
+msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
+msgstr "מוצגות שליחות שנכשלו בכל היסטוריית האימיילים, כולל הודעות אוטומטיות. בחרו נושא לפרטים."
+
+#: 
+msgid "The table shows only the latest 20 sends. Open a person to see their full history."
+msgstr "הטבלה מציגה רק את 20 השליחות האחרונות. פתחו אדם כדי לראות את ההיסטוריה המלאה."
+
+#: 
+msgid "View %d failed sends across all email history"
+msgstr "הצגת %d שליחות שנכשלו בכל היסטוריית האימיילים"
+

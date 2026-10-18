@@ -24172,3 +24172,291 @@ msgstr "ผู้ดูแลระบบเปลี่ยนอีเมลจ
 msgid "Only an administrator can change the email of a person with a user account."
 msgstr "มีเพียงผู้ดูแลระบบที่เปลี่ยนอีเมลของบุคคลที่มีบัญชีผู้ใช้ได้"
 
+#: 
+msgid "Fund totals appear here once payments are added."
+msgstr "ยอดรวมของกองทุนจะแสดงที่นี่เมื่อเพิ่มการชำระเงินแล้ว"
+
+#: 
+msgid "No payments yet"
+msgstr "ยังไม่มีการชำระเงิน"
+
+#: 
+msgid "Some payments could not be deleted"
+msgstr "ไม่สามารถลบการชำระเงินบางรายการได้"
+
+#: 
+msgid "A string value is required"
+msgstr "ต้องระบุค่าสตริง"
+
+#: 
+msgid "Administrator permission required for this setting"
+msgstr "การตั้งค่านี้ต้องมีสิทธิ์ผู้ดูแลระบบ"
+
+#: 
+msgid "Alerts sent: {{sent}}, failed: {{failed}}"
+msgstr "ส่งการแจ้งเตือนแล้ว: {{sent}}, ล้มเหลว: {{failed}}"
+
+#: 
+msgid "Alerts sent: {{total}}"
+msgstr "ส่งการแจ้งเตือนแล้ว: {{total}}"
+
+#: 
+msgid "Assign an event to the kiosk using the dropdown"
+msgstr "กำหนดกิจกรรมให้ตู้คีออสก์โดยใช้เมนูแบบเลื่อนลง"
+
+#: 
+msgid "Awaiting Acceptance"
+msgstr "รอการยอมรับ"
+
+#: 
+msgid "Birthday coming up!"
+msgstr "ใกล้ถึงวันเกิดแล้ว!"
+
+#: 
+msgid "Check that the event start/end times are correct"
+msgstr "ตรวจสอบว่าเวลาเริ่มและสิ้นสุดของกิจกรรมถูกต้อง"
+
+#: 
+msgid "Check the server logs for more details"
+msgstr "ดูบันทึกของเซิร์ฟเวอร์เพื่อดูรายละเอียดเพิ่มเติม"
+
+#: 
+msgid "Check-in Opens Soon"
+msgstr "การเช็กอินจะเปิดเร็วๆ นี้"
+
+#: 
+msgid "Checked-in-by person is not an adult family member"
+msgstr "ผู้ที่เช็กอินไม่ใช่สมาชิกครอบครัวที่เป็นผู้ใหญ่"
+
+#: 
+msgid "Checked-out-by person is not an adult family member"
+msgstr "ผู้ที่เช็กเอาต์ไม่ใช่สมาชิกครอบครัวที่เป็นผู้ใหญ่"
+
+#: 
+msgid "Checkout all students"
+msgstr "เช็กเอาต์นักเรียนทั้งหมด"
+
+#: 
+msgid "Days"
+msgstr "วัน"
+
+#: 
+msgid "Ensure the group has members"
+msgstr "ตรวจสอบให้แน่ใจว่ากลุ่มมีสมาชิก"
+
+#: 
+msgid "Ensure the group has members assigned"
+msgstr "ตรวจสอบให้แน่ใจว่ามีการกำหนดสมาชิกให้กลุ่มแล้ว"
+
+#: 
+msgid "Error Loading Members"
+msgstr "เกิดข้อผิดพลาดในการโหลดสมาชิก"
+
+#: 
+msgid "Event Has Ended"
+msgstr "กิจกรรมสิ้นสุดแล้ว"
+
+#: 
+msgid "Event not linked to a Group"
+msgstr "กิจกรรมไม่ได้เชื่อมโยงกับกลุ่ม"
+
+#: 
+msgid "Event timing"
+msgstr "เวลาของกิจกรรม"
+
+#: 
+msgid "Everyone is here!"
+msgstr "ทุกคนมาครบแล้ว!"
+
+#: 
+msgid "Failed to send all alerts: {{total}}"
+msgstr "ส่งการแจ้งเตือนทั้งหมดไม่สำเร็จ: {{total}}"
+
+#: 
+msgid "Failed to send parent alert"
+msgstr "ส่งการแจ้งเตือนผู้ปกครองไม่สำเร็จ"
+
+#: 
+msgid "Find this kiosk in the device list"
+msgstr "ค้นหาตู้คีออสก์นี้ในรายการอุปกรณ์"
+
+#: 
+msgid "Group has no members"
+msgstr "กลุ่มไม่มีสมาชิก"
+
+#: 
+msgid "HTTP Status: {{status}}"
+msgstr "สถานะ HTTP: {{status}}"
+
+#: 
+msgid "Hours"
+msgstr "ชั่วโมง"
+
+#: 
+msgid "How to Accept This Kiosk"
+msgstr "วิธียอมรับตู้คีออสก์นี้"
+
+#: 
+msgid "Kiosk Identification"
+msgstr "การระบุตู้คีออสก์"
+
+#: 
+msgid "Kiosk Ready"
+msgstr "ตู้คีออสก์พร้อมใช้งาน"
+
+#: 
+msgid "Log in to ChurchCRM as an administrator"
+msgstr "เข้าสู่ระบบ ChurchCRM ในฐานะผู้ดูแลระบบ"
+
+#: 
+msgid "Member is not an adult family member of the roster child"
+msgstr "สมาชิกไม่ใช่สมาชิกครอบครัวที่เป็นผู้ใหญ่ของเด็กในรายชื่อ"
+
+#: 
+msgid "Next Steps"
+msgstr "ขั้นตอนถัดไป"
+
+#: 
+msgid "No Group Members Found"
+msgstr "ไม่พบสมาชิกกลุ่ม"
+
+#: 
+msgid "No checked-in students with families to alert"
+msgstr "ไม่มีนักเรียนที่เช็กอินและมีครอบครัวให้แจ้งเตือน"
+
+#: 
+msgid "Parent Alert"
+msgstr "การแจ้งเตือนผู้ปกครอง"
+
+#: 
+msgid "Parent alert sent for {{name}}"
+msgstr "ส่งการแจ้งเตือนผู้ปกครองสำหรับ {{name}} แล้ว"
+
+#: 
+msgid "Photo not found"
+msgstr "ไม่พบรูปภาพ"
+
+#: 
+msgid "Possible Causes"
+msgstr "สาเหตุที่เป็นไปได้"
+
+#: 
+msgid "Processing..."
+msgstr "กำลังประมวลผล..."
+
+#: 
+msgid "Recent birthday!"
+msgstr "เพิ่งผ่านวันเกิดมา!"
+
+#: 
+msgid "Refresh member list"
+msgstr "รีเฟรชรายชื่อสมาชิก"
+
+#: 
+msgid "Refresh this kiosk page"
+msgstr "รีเฟรชหน้าตู้คีออสก์นี้"
+
+#: 
+msgid "Seconds"
+msgstr "วินาที"
+
+#: 
+msgid "Send alert to all families"
+msgstr "ส่งการแจ้งเตือนถึงทุกครอบครัว"
+
+#: 
+msgid "Server error - the event may not be linked to a group"
+msgstr "เซิร์ฟเวอร์ผิดพลาด - กิจกรรมอาจไม่ได้เชื่อมโยงกับกลุ่ม"
+
+#: 
+msgid "Student"
+msgstr "นักเรียน"
+
+#: 
+msgid "System timeline entries cannot be deleted"
+msgstr "ไม่สามารถลบรายการระบบในไทม์ไลน์ได้"
+
+#: 
+msgid "System timeline entries cannot be edited"
+msgstr "ไม่สามารถแก้ไขรายการระบบในไทม์ไลน์ได้"
+
+#: 
+msgid "Thank you for attending!"
+msgstr "ขอบคุณที่มาร่วม!"
+
+#: 
+msgid "This kiosk has registered but needs to be accepted by an administrator before it can be used."
+msgstr "ตู้คีออสก์นี้ลงทะเบียนแล้วแต่ต้องให้ผู้ดูแลระบบยอมรับก่อนจึงจะใช้งานได้"
+
+#: 
+msgid "This kiosk is accepted but has no active event assignment."
+msgstr "ตู้คีออสก์นี้ได้รับการยอมรับแล้วแต่ยังไม่ได้กำหนดกิจกรรมที่ใช้งานอยู่"
+
+#: 
+msgid "This kiosk is assigned to an event, but no members are available for check-in."
+msgstr "ตู้คีออสก์นี้ถูกกำหนดกิจกรรมแล้ว แต่ไม่มีสมาชิกที่เช็กอินได้"
+
+#: 
+msgid "This page will automatically refresh when check-in opens."
+msgstr "หน้านี้จะรีเฟรชอัตโนมัติเมื่อการเช็กอินเปิด"
+
+#: 
+msgid "This page will automatically update once the kiosk is accepted."
+msgstr "หน้านี้จะอัปเดตอัตโนมัติเมื่อตู้คีออสก์ได้รับการยอมรับ"
+
+#: 
+msgid "Today!"
+msgstr "วันนี้"
+
+#: 
+msgid "Turning {{age}}"
+msgstr "อายุครบ {{age}} ปี"
+
+#: 
+msgid "Unable to load group members"
+msgstr "ไม่สามารถโหลดสมาชิกกลุ่มได้"
+
+#: 
+msgid "Unknown user configuration key"
+msgstr "ไม่รู้จักคีย์การกำหนดค่าผู้ใช้"
+
+#: 
+msgid "this person"
+msgstr "บุคคลนี้"
+
+#: 
+msgid "{{name}} has no family on record"
+msgstr "{{name}} ไม่มีครอบครัวในบันทึก"
+
+#: 
+msgid "%d failed (all time)"
+msgstr "ล้มเหลว %d (ทั้งหมด)"
+
+#: 
+msgid "Failed email history pages"
+msgstr "หน้าประวัติอีเมลที่ล้มเหลว"
+
+#: 
+msgid "Failed sends across all email history, including automated messages"
+msgstr "การส่งที่ล้มเหลวในประวัติอีเมลทั้งหมด รวมถึงข้อความอัตโนมัติ"
+
+#: 
+msgid "No server error recorded"
+msgstr "ไม่มีข้อผิดพลาดของเซิร์ฟเวอร์ที่บันทึกไว้"
+
+#: 
+msgid "Show all recent sends"
+msgstr "แสดงการส่งล่าสุดทั้งหมด"
+
+#: 
+msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
+msgstr "กำลังแสดงการส่งที่ล้มเหลวในประวัติอีเมลทั้งหมด รวมถึงข้อความอัตโนมัติ เลือกหัวข้อเพื่อดูรายละเอียด"
+
+#: 
+msgid "The table shows only the latest 20 sends. Open a person to see their full history."
+msgstr "ตารางแสดงเฉพาะการส่งล่าสุด 20 รายการ เปิดบุคคลเพื่อดูประวัติทั้งหมด"
+
+#: 
+msgid "View %d failed sends across all email history"
+msgstr "ดูการส่งที่ล้มเหลว %d รายการในประวัติอีเมลทั้งหมด"
+

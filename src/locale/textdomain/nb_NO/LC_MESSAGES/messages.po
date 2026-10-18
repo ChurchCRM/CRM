@@ -24296,3 +24296,291 @@ msgstr "E-post endret av en administrator fra %1$s til %2$s"
 msgid "Only an administrator can change the email of a person with a user account."
 msgstr "Bare en administrator kan endre e-postadressen til en person med en brukerkonto."
 
+#: 
+msgid "Fund totals appear here once payments are added."
+msgstr "Fondssummer vises her når betalinger er lagt til."
+
+#: 
+msgid "No payments yet"
+msgstr "Ingen betalinger ennå"
+
+#: 
+msgid "Some payments could not be deleted"
+msgstr "Noen betalinger kunne ikke slettes"
+
+#: 
+msgid "A string value is required"
+msgstr "En tekstverdi kreves"
+
+#: 
+msgid "Administrator permission required for this setting"
+msgstr "Administratortillatelse kreves for denne innstillingen"
+
+#: 
+msgid "Alerts sent: {{sent}}, failed: {{failed}}"
+msgstr "Varsler sendt: {{sent}}, mislyktes: {{failed}}"
+
+#: 
+msgid "Alerts sent: {{total}}"
+msgstr "Varsler sendt: {{total}}"
+
+#: 
+msgid "Assign an event to the kiosk using the dropdown"
+msgstr "Tilordne et arrangement til kiosken i nedtrekksmenyen"
+
+#: 
+msgid "Awaiting Acceptance"
+msgstr "Venter på godkjenning"
+
+#: 
+msgid "Birthday coming up!"
+msgstr "Bursdag på vei!"
+
+#: 
+msgid "Check that the event start/end times are correct"
+msgstr "Kontroller at start- og sluttidspunktene for arrangementet er riktige"
+
+#: 
+msgid "Check the server logs for more details"
+msgstr "Se serverloggene for flere detaljer"
+
+#: 
+msgid "Check-in Opens Soon"
+msgstr "Innsjekkingen åpner snart"
+
+#: 
+msgid "Checked-in-by person is not an adult family member"
+msgstr "Personen som sjekket inn er ikke et voksent familiemedlem"
+
+#: 
+msgid "Checked-out-by person is not an adult family member"
+msgstr "Personen som sjekket ut er ikke et voksent familiemedlem"
+
+#: 
+msgid "Checkout all students"
+msgstr "Sjekk ut alle elever"
+
+#: 
+msgid "Days"
+msgstr "Dager"
+
+#: 
+msgid "Ensure the group has members"
+msgstr "Sørg for at gruppen har medlemmer"
+
+#: 
+msgid "Ensure the group has members assigned"
+msgstr "Sørg for at gruppen har tilordnede medlemmer"
+
+#: 
+msgid "Error Loading Members"
+msgstr "Feil ved lasting av medlemmer"
+
+#: 
+msgid "Event Has Ended"
+msgstr "Arrangementet er avsluttet"
+
+#: 
+msgid "Event not linked to a Group"
+msgstr "Arrangementet er ikke koblet til en gruppe"
+
+#: 
+msgid "Event timing"
+msgstr "Hendelsestidspunkt"
+
+#: 
+msgid "Everyone is here!"
+msgstr "Alle er her!"
+
+#: 
+msgid "Failed to send all alerts: {{total}}"
+msgstr "Kunne ikke sende alle varsler: {{total}}"
+
+#: 
+msgid "Failed to send parent alert"
+msgstr "Kunne ikke sende varsel til foreldrene"
+
+#: 
+msgid "Find this kiosk in the device list"
+msgstr "Finn denne kiosken i enhetslisten"
+
+#: 
+msgid "Group has no members"
+msgstr "Gruppen har ingen medlemmer"
+
+#: 
+msgid "HTTP Status: {{status}}"
+msgstr "HTTP-status: {{status}}"
+
+#: 
+msgid "Hours"
+msgstr "Timer"
+
+#: 
+msgid "How to Accept This Kiosk"
+msgstr "Slik godkjenner du denne kiosken"
+
+#: 
+msgid "Kiosk Identification"
+msgstr "Kioskidentifikasjon"
+
+#: 
+msgid "Kiosk Ready"
+msgstr "Kiosken er klar"
+
+#: 
+msgid "Log in to ChurchCRM as an administrator"
+msgstr "Logg inn på ChurchCRM som administrator"
+
+#: 
+msgid "Member is not an adult family member of the roster child"
+msgstr "Medlemmet er ikke et voksent familiemedlem til barnet i listen"
+
+#: 
+msgid "Next Steps"
+msgstr "Neste steg"
+
+#: 
+msgid "No Group Members Found"
+msgstr "Ingen gruppemedlemmer funnet"
+
+#: 
+msgid "No checked-in students with families to alert"
+msgstr "Ingen innsjekkede elever med familier å varsle"
+
+#: 
+msgid "Parent Alert"
+msgstr "Varsel til foreldre"
+
+#: 
+msgid "Parent alert sent for {{name}}"
+msgstr "Varsel til foreldre sendt for {{name}}"
+
+#: 
+msgid "Photo not found"
+msgstr "Fant ikke bildet"
+
+#: 
+msgid "Possible Causes"
+msgstr "Mulige årsaker"
+
+#: 
+msgid "Processing..."
+msgstr "Behandler..."
+
+#: 
+msgid "Recent birthday!"
+msgstr "Nylig bursdag!"
+
+#: 
+msgid "Refresh member list"
+msgstr "Oppdater medlemslisten"
+
+#: 
+msgid "Refresh this kiosk page"
+msgstr "Oppdater denne kioskens side"
+
+#: 
+msgid "Seconds"
+msgstr "Sekunder"
+
+#: 
+msgid "Send alert to all families"
+msgstr "Send varsel til alle familier"
+
+#: 
+msgid "Server error - the event may not be linked to a group"
+msgstr "Serverfeil – arrangementet er kanskje ikke koblet til en gruppe"
+
+#: 
+msgid "Student"
+msgstr "Elev"
+
+#: 
+msgid "System timeline entries cannot be deleted"
+msgstr "Systemoppføringer i tidslinjen kan ikke slettes"
+
+#: 
+msgid "System timeline entries cannot be edited"
+msgstr "Systemoppføringer i tidslinjen kan ikke redigeres"
+
+#: 
+msgid "Thank you for attending!"
+msgstr "Takk for at du kom!"
+
+#: 
+msgid "This kiosk has registered but needs to be accepted by an administrator before it can be used."
+msgstr "Denne kiosken er registrert, men må godkjennes av en administrator før den kan brukes."
+
+#: 
+msgid "This kiosk is accepted but has no active event assignment."
+msgstr "Denne kiosken er godkjent, men har ikke noe aktivt arrangement tilordnet."
+
+#: 
+msgid "This kiosk is assigned to an event, but no members are available for check-in."
+msgstr "Denne kiosken har et arrangement tilordnet, men ingen medlemmer er tilgjengelige for innsjekking."
+
+#: 
+msgid "This page will automatically refresh when check-in opens."
+msgstr "Denne siden oppdateres automatisk når innsjekkingen åpner."
+
+#: 
+msgid "This page will automatically update once the kiosk is accepted."
+msgstr "Denne siden oppdateres automatisk når kiosken er godkjent."
+
+#: 
+msgid "Today!"
+msgstr "I dag"
+
+#: 
+msgid "Turning {{age}}"
+msgstr "Fyller {{age}}"
+
+#: 
+msgid "Unable to load group members"
+msgstr "Kan ikke laste gruppemedlemmer"
+
+#: 
+msgid "Unknown user configuration key"
+msgstr "Ukjent nøkkel for brukerkonfigurasjon"
+
+#: 
+msgid "this person"
+msgstr "denne personen"
+
+#: 
+msgid "{{name}} has no family on record"
+msgstr "{{name}} har ingen familie registrert"
+
+#: 
+msgid "%d failed (all time)"
+msgstr "%d mislyktes (totalt)"
+
+#: 
+msgid "Failed email history pages"
+msgstr "Sider i historikken over mislykkede e-poster"
+
+#: 
+msgid "Failed sends across all email history, including automated messages"
+msgstr "Mislykkede utsendelser i hele e-posthistorikken, inkludert automatiske meldinger"
+
+#: 
+msgid "No server error recorded"
+msgstr "Ingen serverfeil registrert"
+
+#: 
+msgid "Show all recent sends"
+msgstr "Vis alle nylige utsendelser"
+
+#: 
+msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
+msgstr "Viser mislykkede utsendelser i hele e-posthistorikken, inkludert automatiske meldinger. Velg et emne for detaljer."
+
+#: 
+msgid "The table shows only the latest 20 sends. Open a person to see their full history."
+msgstr "Tabellen viser bare de siste 20 utsendelsene. Åpne en person for å se hele historikken."
+
+#: 
+msgid "View %d failed sends across all email history"
+msgstr "Vis %d mislykkede utsendelser i hele e-posthistorikken"
+

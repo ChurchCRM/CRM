@@ -24198,3 +24198,291 @@ msgstr "Quản trị viên đã đổi email từ %1$s thành %2$s"
 msgid "Only an administrator can change the email of a person with a user account."
 msgstr "Chỉ quản trị viên mới đổi được email của người có tài khoản người dùng."
 
+#: 
+msgid "Fund totals appear here once payments are added."
+msgstr "Tổng số theo quỹ sẽ hiển thị ở đây sau khi thêm khoản thanh toán."
+
+#: 
+msgid "No payments yet"
+msgstr "Chưa có khoản thanh toán nào"
+
+#: 
+msgid "Some payments could not be deleted"
+msgstr "Không thể xóa một số khoản thanh toán"
+
+#: 
+msgid "A string value is required"
+msgstr "Cần có giá trị chuỗi"
+
+#: 
+msgid "Administrator permission required for this setting"
+msgstr "Cài đặt này cần quyền quản trị viên"
+
+#: 
+msgid "Alerts sent: {{sent}}, failed: {{failed}}"
+msgstr "Đã gửi cảnh báo: {{sent}}, thất bại: {{failed}}"
+
+#: 
+msgid "Alerts sent: {{total}}"
+msgstr "Đã gửi cảnh báo: {{total}}"
+
+#: 
+msgid "Assign an event to the kiosk using the dropdown"
+msgstr "Gán một sự kiện cho kiosk bằng danh sách thả xuống"
+
+#: 
+msgid "Awaiting Acceptance"
+msgstr "Đang chờ chấp nhận"
+
+#: 
+msgid "Birthday coming up!"
+msgstr "Sắp đến sinh nhật!"
+
+#: 
+msgid "Check that the event start/end times are correct"
+msgstr "Kiểm tra thời gian bắt đầu và kết thúc của sự kiện có đúng không"
+
+#: 
+msgid "Check the server logs for more details"
+msgstr "Xem nhật ký máy chủ để biết thêm chi tiết"
+
+#: 
+msgid "Check-in Opens Soon"
+msgstr "Sắp mở điểm danh"
+
+#: 
+msgid "Checked-in-by person is not an adult family member"
+msgstr "Người điểm danh vào không phải là thành viên gia đình trưởng thành"
+
+#: 
+msgid "Checked-out-by person is not an adult family member"
+msgstr "Người điểm danh ra không phải là thành viên gia đình trưởng thành"
+
+#: 
+msgid "Checkout all students"
+msgstr "Điểm danh ra cho tất cả học sinh"
+
+#: 
+msgid "Days"
+msgstr "Ngày"
+
+#: 
+msgid "Ensure the group has members"
+msgstr "Hãy chắc chắn nhóm có thành viên"
+
+#: 
+msgid "Ensure the group has members assigned"
+msgstr "Hãy chắc chắn nhóm đã được gán thành viên"
+
+#: 
+msgid "Error Loading Members"
+msgstr "Lỗi khi tải thành viên"
+
+#: 
+msgid "Event Has Ended"
+msgstr "Sự kiện đã kết thúc"
+
+#: 
+msgid "Event not linked to a Group"
+msgstr "Sự kiện chưa được liên kết với nhóm"
+
+#: 
+msgid "Event timing"
+msgstr "Thời gian sự kiện"
+
+#: 
+msgid "Everyone is here!"
+msgstr "Mọi người đã có mặt!"
+
+#: 
+msgid "Failed to send all alerts: {{total}}"
+msgstr "Không thể gửi tất cả cảnh báo: {{total}}"
+
+#: 
+msgid "Failed to send parent alert"
+msgstr "Không thể gửi cảnh báo cho phụ huynh"
+
+#: 
+msgid "Find this kiosk in the device list"
+msgstr "Tìm kiosk này trong danh sách thiết bị"
+
+#: 
+msgid "Group has no members"
+msgstr "Nhóm không có thành viên"
+
+#: 
+msgid "HTTP Status: {{status}}"
+msgstr "Trạng thái HTTP: {{status}}"
+
+#: 
+msgid "Hours"
+msgstr "Giờ"
+
+#: 
+msgid "How to Accept This Kiosk"
+msgstr "Cách chấp nhận kiosk này"
+
+#: 
+msgid "Kiosk Identification"
+msgstr "Nhận dạng kiosk"
+
+#: 
+msgid "Kiosk Ready"
+msgstr "Kiosk đã sẵn sàng"
+
+#: 
+msgid "Log in to ChurchCRM as an administrator"
+msgstr "Đăng nhập vào ChurchCRM với tư cách quản trị viên"
+
+#: 
+msgid "Member is not an adult family member of the roster child"
+msgstr "Thành viên này không phải là thành viên gia đình trưởng thành của em trong danh sách"
+
+#: 
+msgid "Next Steps"
+msgstr "Các bước tiếp theo"
+
+#: 
+msgid "No Group Members Found"
+msgstr "Không tìm thấy thành viên nhóm"
+
+#: 
+msgid "No checked-in students with families to alert"
+msgstr "Không có học sinh đã điểm danh nào có gia đình để cảnh báo"
+
+#: 
+msgid "Parent Alert"
+msgstr "Cảnh báo phụ huynh"
+
+#: 
+msgid "Parent alert sent for {{name}}"
+msgstr "Đã gửi cảnh báo phụ huynh cho {{name}}"
+
+#: 
+msgid "Photo not found"
+msgstr "Không tìm thấy ảnh"
+
+#: 
+msgid "Possible Causes"
+msgstr "Nguyên nhân có thể"
+
+#: 
+msgid "Processing..."
+msgstr "Đang xử lý..."
+
+#: 
+msgid "Recent birthday!"
+msgstr "Mới sinh nhật!"
+
+#: 
+msgid "Refresh member list"
+msgstr "Làm mới danh sách thành viên"
+
+#: 
+msgid "Refresh this kiosk page"
+msgstr "Làm mới trang kiosk này"
+
+#: 
+msgid "Seconds"
+msgstr "Giây"
+
+#: 
+msgid "Send alert to all families"
+msgstr "Gửi cảnh báo cho tất cả gia đình"
+
+#: 
+msgid "Server error - the event may not be linked to a group"
+msgstr "Lỗi máy chủ - sự kiện có thể chưa được liên kết với nhóm"
+
+#: 
+msgid "Student"
+msgstr "Học sinh"
+
+#: 
+msgid "System timeline entries cannot be deleted"
+msgstr "Không thể xóa các mục hệ thống trên dòng thời gian"
+
+#: 
+msgid "System timeline entries cannot be edited"
+msgstr "Không thể chỉnh sửa các mục hệ thống trên dòng thời gian"
+
+#: 
+msgid "Thank you for attending!"
+msgstr "Cảm ơn bạn đã tham dự!"
+
+#: 
+msgid "This kiosk has registered but needs to be accepted by an administrator before it can be used."
+msgstr "Kiosk này đã đăng ký nhưng cần được quản trị viên chấp nhận trước khi sử dụng."
+
+#: 
+msgid "This kiosk is accepted but has no active event assignment."
+msgstr "Kiosk này đã được chấp nhận nhưng chưa có sự kiện nào đang hoạt động được gán."
+
+#: 
+msgid "This kiosk is assigned to an event, but no members are available for check-in."
+msgstr "Kiosk này đã được gán sự kiện nhưng không có thành viên nào để điểm danh."
+
+#: 
+msgid "This page will automatically refresh when check-in opens."
+msgstr "Trang này sẽ tự động làm mới khi mở điểm danh."
+
+#: 
+msgid "This page will automatically update once the kiosk is accepted."
+msgstr "Trang này sẽ tự động cập nhật khi kiosk được chấp nhận."
+
+#: 
+msgid "Today!"
+msgstr "Hôm nay"
+
+#: 
+msgid "Turning {{age}}"
+msgstr "Sắp tròn {{age}} tuổi"
+
+#: 
+msgid "Unable to load group members"
+msgstr "Không thể tải thành viên nhóm"
+
+#: 
+msgid "Unknown user configuration key"
+msgstr "Khóa cấu hình người dùng không xác định"
+
+#: 
+msgid "this person"
+msgstr "người này"
+
+#: 
+msgid "{{name}} has no family on record"
+msgstr "{{name}} chưa có gia đình trong hồ sơ"
+
+#: 
+msgid "%d failed (all time)"
+msgstr "%d thất bại (tổng cộng)"
+
+#: 
+msgid "Failed email history pages"
+msgstr "Các trang lịch sử email thất bại"
+
+#: 
+msgid "Failed sends across all email history, including automated messages"
+msgstr "Các lần gửi thất bại trong toàn bộ lịch sử email, bao gồm cả tin nhắn tự động"
+
+#: 
+msgid "No server error recorded"
+msgstr "Không ghi nhận lỗi máy chủ"
+
+#: 
+msgid "Show all recent sends"
+msgstr "Hiện tất cả lần gửi gần đây"
+
+#: 
+msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
+msgstr "Đang hiện các lần gửi thất bại trong toàn bộ lịch sử email, bao gồm cả tin nhắn tự động. Chọn một chủ đề để xem chi tiết."
+
+#: 
+msgid "The table shows only the latest 20 sends. Open a person to see their full history."
+msgstr "Bảng chỉ hiện 20 lần gửi gần nhất. Mở một người để xem toàn bộ lịch sử."
+
+#: 
+msgid "View %d failed sends across all email history"
+msgstr "Xem %d lần gửi thất bại trong toàn bộ lịch sử email"
+
