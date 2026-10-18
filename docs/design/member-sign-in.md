@@ -568,7 +568,8 @@ For each family whose email isn't empty (compared trimmed and in lower case):
   - email needs attention: no personal email, a personal email shared with someone else, or an unconfirmed one (§9). It has two tools for release day:
     - **Fix shared emails** previews every blocking shared address, with who keeps it and who loses it. Staff apply the rows they tick (§4).
     - **Select all** and **Confirm selected** confirm unconfirmed addresses in bulk, where §9 lets the staff member confirm them (§10.1).
-    - The Sign-in tab shows how many shared addresses block sign-in next to the Member sign-in switch, so the office sees them before turning sign-in on;
+    - The Sign-in tab shows how many shared addresses block sign-in next to the Member sign-in switch, so the office sees them before turning sign-in on.
+    - The admin pages are for administrators. Staff with Edit Records reach the same list and both tools at People → **Email needs attention** (`/people/sign-in-email`), limited to the rows §9 lets them change;
   - families confirmed in the last 30 days;
   - family emails not moved (one time, after the upgrade).
 - **Audit**, filterable by person and date. Each row has a time, the person, the event, the method and, for staff actions, who did it.
