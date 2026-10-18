@@ -1,40 +1,44 @@
-# RFC: Online Giving and Payment Gateways
+# RFC: Online payments and payment gateways
 
 > **BLUF**
-> A core gateway contract with Stripe, PayPal and BTCPay Server as core plugins. Every gift lands once in the existing `pledge_plg` / `deposit_dep` tables, with hosted checkout so no card data reaches ChurchCRM. Six decisions are open for maintainers (below). No release is committed and no implementation issues are filed until the direction is accepted.
+> A core gateway contract with Stripe, PayPal and BTCPay Server as core plugins. Members give once or on a schedule from the Member Portal, and visitors give from a public page, through hosted checkout, so no card data reaches ChurchCRM. Every gift lands once in the existing `pledge_plg` / `deposit_dep` tables. This RFC depends on [RFC 0004](0004-portal-giving-pledges.md) for per-person credit, the shared finance fixes and the portal Giving page; a payment can optionally fulfil a pledge from it. Five decisions are open for maintainers (below). No release is committed and no implementation issues are filed until the direction is accepted.
 
 **Status:** Proposed, open for review; no release commitment  
+**Date:** 2026-10-17  
 **Owner:** @cwhorton  
-**Proposal issue:** [#10033](https://github.com/ChurchCRM/CRM/issues/10033) · **Related:** [#9313](https://github.com/ChurchCRM/CRM/issues/9313), [#10550](https://github.com/ChurchCRM/CRM/issues/10550)  
-**Numbering:** `0004` is provisional; a maintainer assigns the final number on merge.
+**Proposal issue:** [#10033](https://github.com/ChurchCRM/CRM/issues/10033) · **Depends on:** [RFC 0004](0004-portal-giving-pledges.md) · **Related:** [#9313](https://github.com/ChurchCRM/CRM/issues/9313), [#10550](https://github.com/ChurchCRM/CRM/issues/10550)  
+**Numbering:** `0005` is provisional; a maintainer assigns the final number on merge.
 
 ## Summary
-- Members give once or on a schedule (weekly, monthly, annually) from a new **Giving** page in the Member Portal (#8977), and see their giving by calendar year.
+- Members give once or on a schedule (weekly, monthly, annually) from a **Give** tab on the Member Portal Giving page that RFC 0004 adds, and see their giving by calendar year.
 - Visitors give anonymously from a public page, with an optional email receipt.
 - Stripe, PayPal and BTCPay Server are core plugins behind a gateway contract in core. v1 sends donors to each gateway's hosted page, so no card data reaches ChurchCRM.
 - The gateway runs recurring charges and reports each one to a webhook served from the plugin's own folder.
 - Every gift is recorded once into the existing `pledge_plg` / `deposit_dep` tables. There is no second ledger.
-- A gift can be credited to a person as well as a family (#9313), in office entry too. Statements, deposits (gross, fee, net), refunds, disputes, fundraiser balances and reports build on that.
+- Deposits (gross, fee, net), refunds, disputes, receipts, fundraiser balances and online reports build on RFC 0004's per-person credit, audit log, `PledgeWriter` and statement service.
+- A payment can link to a pledge through a nullable pledge id, so **Pay my pledge** fulfils it (D22). A pledge stays the member's editable intent, and a gateway subscription stays a separate thing (A22).
 
 ## Questions for the maintainer
 1. A core gateway contract plus core gateway plugins, revising #8178's adapter plugin (§2.1)?
 2. Public webhook routes inside plugin folders, dispatched before `LoadConfigs.php` (§2.5)? Fallback: a core `POST /api/public/giving/webhook/{gatewayId}`.
 3. Plugin-local `vendor/` built at release (D10, §2.6), or `stripe/stripe-php` in `src/composer.json`?
-4. Migration scripts are written as `<next-version>-*.sql` (shown below as `7.8.0-*.sql`) and added to `upgrade.json` only when a maintainer schedules the work (§3)?
-5. Phases A–D, F and GIV-50 before #8977, and the portal children after #8977 and #9843 (§7)?
-6. Should the per-person attribution here (GIV-05, GIV-06, GIV-07, GIV-43) replace #9313's scope, or should #9313 stay separate?
+4. Migration scripts are written as `<next>-*.sql`, named for the release a maintainer schedules them into, and added to `upgrade.json` only then (§3)?
+5. Phases B–D, F and GIV-50 before the donor surfaces, and phase E after RFC 0004's Giving page (GIV-83) (§7)?
+6. Answered in #10033: the per-person attribution (GIV-05, GIV-06, GIV-07, GIV-43) is a prerequisite in RFC 0004, and #9313 stays its epic.
 
 **Status**
 - Proposed. No code yet. The child issues in §7 are opened only if this direction is accepted.
 - Related: #9313 (per-person gifts), #8178, #8180 (plugin gateways), #9600, #9472, #9575, #8977 (Member Portal), #9225, #8181.
+- Depends on RFC 0004 (prerequisites GIV-02 to GIV-07 and the Giving page GIV-83). RFC 0004 does not depend on this RFC.
 - Depends on unreleased work: #8977 Member Portal, #9843 masquerade, #9876 email log.
 - Citations are `path:line` on upstream `master` `7881b01a2`. Code that exists only on those unreleased branches is marked **[portal branch]**.
 
-**Today:** no gateway code (removed in #4566; dead callers at `src/DepositSlipEditor.php:55-58, 268-276`); gifts are family-level only (`src/mysql/install/Install.sql:552-579`).
+**Today:** no gateway code (removed in #4566; dead callers at `src/DepositSlipEditor.php:55-58, 268-276`). Per-person credit comes from RFC 0004.
 
 **How to read this**
 - Ids: **D** proposed product choice; **A** proposed technical choice; **F** flow (§4); **I** invariant (§3.3); **Q** open question (§8.1); **T** threat (§6); **R** requirement (Appendix A); **GIV-nn** a proposed child PR (§7), not filed.
-- Table short names (§3.2): `gint` = `giving_intent_gint`, `gtxn` = `giving_transaction_gtxn`, `grec` = `giving_recurring_grec`, `gcus` = `giving_customer_gcus`, `gwhe` = `giving_webhook_event_gwhe`, `gntf` = `giving_notification_gntf`, `gnc` = `giving_noncash_gnc`, `faud` = `finance_audit_faud`, `srl` = `system_ratelimit_srl`.
+- Ids are shared with RFC 0004. Items that moved there keep their numbers and are marked "Moved to RFC 0004" here: D3, D11, A10, A14, A21, A31, A32, I5, I6, F8 (office entry), GIV-02 to GIV-07, GIV-43. This RFC refers to them by the same id.
+- Table short names (§3.2): `gint` = `giving_intent_gint`, `gtxn` = `giving_transaction_gtxn`, `grec` = `giving_recurring_grec`, `gcus` = `giving_customer_gcus`, `gwhe` = `giving_webhook_event_gwhe`, `gntf` = `giving_notification_gntf`, `gnc` = `giving_noncash_gnc`, `srl` = `system_ratelimit_srl`; `faud` = `finance_audit_faud` (RFC 0004).
 - Tags: **[portal branch]** = code only on the unreleased branches above; **[#NNNN]** = needs that unmerged work (#8977, #9843 or #9876).
 - Terms: HoH = head of household; UQ = unique key; PI = Stripe PaymentIntent; FMV = fair market value of goods the donor received; ACH = US bank debit; TOTP = authenticator-app code; SAQ-A = the shortest PCI DSS self-assessment, for merchants that hand all card entry to a provider; FAQ 1588 = the PCI Security Standards Council FAQ on SAQ-A script criteria.
 
@@ -44,15 +48,15 @@
 
 **Goals**
 1. Core gateway contract; Stripe, PayPal and BTCPay as core plugins, each serving its webhook from its own folder.
-2. Every gift credited to a person, a family or no one, from admin entry, portal or public page.
-3. Portal **Giving** page with two tabs. **Give:** funds (split allowed), fee estimate and offer to cover, recurring (Monthly default; Weekly or Annually; chosen day) where supported, recurring notices with More Info and Cancel, Apple/Google Pay where the gateway allows. **Giving History:** by calendar year with totals, scoped by D3.
+2. Every online gift credited to a person, a family or no one, from the portal or the public page (office entry: RFC 0004).
+3. Two more tabs on RFC 0004's portal **Giving** page. **Give:** funds (split allowed), fee estimate and offer to cover, recurring (Monthly default; Weekly or Annually; chosen day) where supported, recurring notices with More Info and Cancel, Apple/Google Pay where the gateway allows, and Pay my pledge (D22). **Giving History:** by calendar year with totals, scoped by D3.
 4. Public anonymous give page (D4).
-5. Statements (Household, Individual, Both) and #9313's per-person reports.
+5. The non-cash section of statements, portal statement downloads and online reports, on RFC 0004's statement service.
 6. Fundraiser balances payable online.
 7. Deposits with gross, fees and net; review queue; refunds; disputes; webhook health.
 8. US-compliant receipts; crypto as non-cash property.
 
-**Non-goals (v1):** a second ledger; multiple currencies; recurring on the public page; Omnipay (no subscriptions support); everything marked Defer or Reject in §9.
+**Non-goals (v1):** a second ledger; multiple currencies; recurring on the public page; Omnipay (no subscriptions support); pledges themselves (RFC 0004); everything marked Defer or Reject in §9.
 
 ---
 
@@ -62,16 +66,17 @@
 |---|---|
 | D1 | The first release ships **Stripe, PayPal and BTCPay Server** as gateway plugins. **Release gate:** online giving stays hidden until all three are merged. Reason: the contract is proven against three different payment models (card processor, PayPal account, self-hosted crypto) before any church relies on it, and a church picks its gateway once, because recurring gifts cannot be moved from one gateway to another. |
 | D2 | Upstream epic. The Giving domain and gateway contract live in core. Gateways are core plugins in `src/plugins/core/{stripe,paypal,btcpay}/`. |
-| D3 | Anyone who is not Head of Household (HoH), **spouse included**, sees only gifts credited to them. The HoH sees the whole family, including gifts recorded to the family as a whole. |
-| D4 | The public page is anonymous. An optional email gets a receipt. The page links "If you are a member, click here" to `/portal/giving`, which requires login and returns the member there. **No newsletter sign-up** (removed 2026-10-05): ChurchCRM has no email newsletter to sign up for — only the family "Send Newsletter" flag, used for printed labels, and a Mailchimp plugin that reads audiences — so the giving pages do not add one. |
+| D3 | Moved to RFC 0004 (HoH sees the whole family; everyone else, spouse included, sees only what is credited to them). This RFC applies it to History, notices and downloads. |
+| D4 | The public page is anonymous. An optional email gets a receipt. The page links "If you are a member, click here" to the Give tab, `/portal/giving/give`, which requires login and returns the member there. **No newsletter sign-up** (removed 2026-10-05): ChurchCRM has no email newsletter to sign up for — only the family "Send Newsletter" flag, used for printed labels, and a Mailchimp plugin that reads audiences — so the giving pages do not add one. |
 | D5 | v1 uses **hosted redirect** for all three gateways (Stripe Checkout, PayPal approval page, BTCPay checkout link). Apple Pay and Google Pay appear on Stripe's hosted page, including for recurring gifts. On-page wallet buttons come later (GIV-60). |
 | D6 | **The first recurring charge falls on the chosen day**, not today unless today is that day (Stripe "Last day" chosen on a 28th–30th starts on the next last day, F3). The UI reads "First gift on Oct 1, then monthly on the 1st". Days 1–28, plus "Last day". |
 | D7 | PayPal recurring uses **Subscriptions v1 REST**, the current replacement for PayPal's older NVP "Recurring Payment profiles". |
 | D8 | Give, public and return pages **stay overridable** by themes like any portal template. With hosted redirect the PCI SAQ-A script criterion does not apply (FAQ 1588 covers embedded iframes, not redirects). Remaining control: the server builds the redirect URL and accepts only the gateway's hosts. Stricter script controls come only with GIV-60 and cover only a small payment partial, not the layout. |
 | D9 | Deposits get **one new `dep_Type`, 'Online'**, no 'Crypto'. `dep_Gateway` separates BTCPay deposits. Crypto handling (non-cash, excluded from cash totals, no value on receipts) follows from `plg_method = 'CRYPTO'` and the row's `giving_noncash_gnc` record. |
 | D10 | **Gateway SDKs live inside the plugin.** The loader optionally loads `src/plugins/<core\|community>/<id>/vendor/autoload.php`. Stripe's own `composer.json` holds `stripe/stripe-php`, which needs no other Composer package, so no version conflicts. The release build runs `composer install` in each plugin with a `composer.json`; Dependabot gets one entry per plugin. PayPal and BTCPay use core's Guzzle (`php-http/guzzle7-adapter`, `src/composer.json:46`). Why not `stripe/stripe-php` in `src/composer.json`: every install would ship and update a payment SDK even if it never takes online gifts, and a community gateway plugin could not bring its own SDK the same way. Cost: a loader change, a per-plugin install step in the release build, a CI duplicate-package check and one Dependabot entry per plugin (GIV-09). If this is refused, the fallback is `stripe/stripe-php` in `src/composer.json` (question 3). |
-| D11 | **Adult child who starts a family:** gifts credited to them while in the parents' family stay in the parents' history; nothing is rewritten. The parents' HoH still sees them, the child sees them through the person credit, past statements stay consistent. New and recurring gifts go to the new family from the next charge, because the family is looked up at charge time. When staff change a person's family they get an optional, audited "Move this year's gifts to the new family" for the current calendar year, which has no statement yet. |
+| D11 | Moved to RFC 0004 (adult child who starts a family). This RFC adds: new and recurring gifts go to the new family from the next charge, because the family is looked up at charge time. |
 | D12 | This design is posted for feedback only, with one proposal issue. No epic or child issues are filed until the maintainer accepts the direction. |
+| D22 | **Pay my pledge.** A pledge card from RFC 0004 offers Pay my pledge when the Give tab is available. It opens the Give tab with the pledge's fund and amount per gift: one-time, or recurring when the gateway supports the pledge's schedule (weekly or monthly). Each recorded row of that fund carries the pledge id. The pledge stays the member's editable intent and the recurring gift stays a separate thing (A22): editing or ending the pledge never changes the subscription, and cancelling the subscription never ends the pledge. |
 
 ## Proposed technical choices
 
@@ -86,18 +91,18 @@
 | A7 | `plg_method` adds only 'CRYPTO' (card, wallets, PayPal = CREDITCARD; ACH = BANKDRAFT); `dep_Type` adds only 'Online' (D9). | Payouts mix methods; smallest enum change. |
 | A8 | `PluginWebhookApp` dispatched at the top of `src/plugins/index.php`, before `Include/LoadConfigs.php`, in a session-less boot mode. | No auth, session, `bLockURL` redirect or DB auto-upgrade in a callback. |
 | A9 | Inline processing, 10 s budget, 503 on transient failure. | `fastcgi_finish_request()` exists on PHP-FPM and FrankenPHP (alias of `frankenphp_finish_request()`), not on Apache mod_php. |
-| A10 | HoH: `plg_FamID = :fam OR plg_PerID = :actor`; others: `plg_PerID = :actor`. | D3. |
+| A10 | Moved to RFC 0004 (the D3 scope query). | |
 | A11 | Refund rows dated on the refund date, in the open deposit; re-issue flag across years. | Closed periods never change. |
 | A12 | Covered fee spread by largest remainder (leftover cents go to the lines with the largest fractional parts; ties to the larger line, then the lower fund id); designated fund optional. Each row stores its share in `plg_FeeCovered`. | Fund shares stay honest, and a covered fee stays a gift on top: it never pays down a fundraiser balance or counts toward the price of an item (F12). |
 | A13 | Separate `gntf`, `gcus`, `gnc` tables. | Own lifecycles and retention. |
-| A14 | Core append-only `finance_audit_faud`. | Edits delete and re-insert; logs last 3 days (`LoggerUtils.php:19`). |
+| A14 | Moved to RFC 0004 (core append-only `finance_audit_faud`). This RFC adds `faud_IpHash` (GIV-13). | |
 | A15 | Encrypted `secret` type (Defuse, `src/composer.json:38`), key from `Include/Config.php` or env; live blocked without it. | A DB-stored key like `sTwoFASecretKey` (`src/Include/LoadConfigs.php:57-62`) protects nothing in a dump. |
 | A16 | `RateLimitService` + `ClientIp` (trusted proxies); per-session, per-email, circuit breaker; high per-IP ceiling; Turnstile deferred to GIV-60. | Sunday Wi-Fi shares an IP; Turnstile needs the GIV-60 CSP builder. |
 | A17 | Automatic deposits `dep_EnteredBy` NULL (unsigned, `Install.sql:36`); system rows `plg_EditedBy = Person::ONLINE_GIVING (-3)` (signed, `Install.sql:562`). | −3 sits beside the existing system ids `SELF_REGISTER`/`SELF_VERIFY` (`Person.php:31-32`), so system writes are recognisable. |
 | A18 | Default fees = standard published domestic rates. | International or currency-converted cards cost more (Stripe adds about 1.5% for international cards and 1% for conversion); any shortfall is the church's (F9). |
 | A19 | Refunds and staff cancels need Finance + a **TOTP re-prompt** (`User::isTwoFACodeValid()`, `User.php:860`). | Enrolment is not presence. |
 | A20 | `PaymentGatewayRegistry::register(PluginInterface $owner, PaymentGatewayInterface $g)`, not an open filter, verified after plugin loading ends; "core" decided by path; `payments.process` tag; CI flag `CHURCHCRM_GIVING_SANDBOX` for `FakeGateway` (§2.4). | A filter lets any plugin replace or impersonate a gateway. |
-| A21 | `GIFT_RECORDED` once per group from `PledgeWriter`; `DONATION_RECEIVED` stays per row. | Admin and online gifts look alike. |
+| A21 | Moved to RFC 0004 (`GIFT_RECORDED` from `PledgeWriter`). | |
 | A22 | Recurring change/pause and biweekly deferred. | The donor cancels and sets up a new gift instead, which avoids per-gateway proration and price-change rules. |
 | A23 | Webhook payloads 90 days, encrypted. | Dispute window; payloads hold PII. |
 | A24 | Reconcile in `runTimerJobs()` plus a bounded post-webhook step. | Rare staff logins still catch up. |
@@ -107,8 +112,9 @@
 | A28 | Removed 2026-10-05: no newsletter sign-up (D4). | |
 | A29 | Stable `sGivingInstallId` UUID in metadata; a cloned DB forces test mode. | A URL hash would orphan subscriptions after a domain change. |
 | A30 | Public page `/portal/give` with anonymous-safe Twig and a signed return token. | Themes reused; no session needed after checkout. |
-| A31 | Attribution set when recorded and changed only through the audited attribution service (F8); recurring charges use the owner's family at charge time (D11). | History never shifts silently. |
-| A32 | One `GivingStatementService` for admin and portal: visibility follows D3, statement placement follows the mode. | Each gift on exactly one tax statement. |
+| A31 | Moved to RFC 0004 (attribution changes only through the audited service). This RFC adds: recurring charges use the owner's family at charge time (D11). | History never shifts silently. |
+| A32 | Moved to RFC 0004 (one `GivingStatementService`). This RFC reuses it for portal downloads (GIV-30) and adds the non-cash section (GIV-24). | |
+| A40 | `plg_PledgeID` (NULL) on `Payment` rows links a payment to an RFC 0004 pledge row of the same fund. `gint_plg_ID` and `grec_plg_ID` carry the link from Pay my pledge to F0, which writes it while the pledge is not ended and is in the charge's fiscal year, else NULL. A linked payment counts toward that pledge only, overriding RFC 0004's matching rule (D21). A pledge with linked payments can be ended, not deleted: the portal Delete and an office edit that drops that fund answer 409. | Pay my pledge fulfils the pledge the member chose, even where the matching rule would pick another. RFC 0004 keeps pledge row ids stable (A34). |
 
 ---
 
@@ -117,7 +123,7 @@
 ### 2.1 Layers
 
 ```
-Portal /portal/giving[/history]*   Public /portal/give*   Finance /finance/online-giving   Admin /admin/online-giving
+Portal /portal/giving/give|history* Public /portal/give*   Finance /finance/online-giving   Admin /admin/online-giving
 /api/portal/giving/*               /api/public/giving/*   /api/giving/* (FinanceRoleAuthMiddleware)
                  └──────────────────────┬──────────────────────┘
  CORE ChurchCRM\Giving (no gateway SDKs)
@@ -133,11 +139,13 @@ Portal /portal/giving[/history]*   Public /portal/give*   Finance /finance/onlin
 ```
 \* Portal routes depend on #8977 [portal branch].
 
-`PledgeWriter` (in `ChurchCRM\Service`, used by office entry too) is extracted from `FinancialService::insertPledgeorPayment` (`src/ChurchCRM/Service/FinancialService.php:373-444`) and `updatePledgeOrPayment` (`:495-557`) and runs without a session.
+`PledgeWriter`, `GivingScope`, `GivingStatementService` and `FinanceAuditService` come from RFC 0004 (GIV-03, GIV-04, GIV-07). `PledgeWriter` is the only writer of pledge rows, for office entry and gateways alike, and runs without a session; `GivingRecorder` calls it.
 
 **Why the contract is in core (revising #8178's adapter plugin):** plugins are discovered core-first then community, unsorted within each directory (`discoverPlugins()`, `src/ChurchCRM/Plugin/PluginManager.php:71-109`, `DirectoryIterator` `:84`), booted in that order (`loadActivePlugins()`, `:114-148`), and autoloadable only once loaded (`:202-229`), so a gateway could boot before a plugin holding the interface. The callers are core. Precedent: `SystemCalendar` + `SYSTEM_CALENDARS_REGISTER` + `HolidaysPlugin` (`Hooks.php:83-87`, `src/ChurchCRM/dto/SystemCalendars.php:42`, `src/plugins/core/holidays/src/HolidaysPlugin.php:36-41`), with an explicit registry call instead of a filter (A20).
 
-**Why the Giving domain is core, not a plugin (revising #8180):** most of this work is needed with no gateway at all: per-person attribution (#9313), statements, deposit and report fixes, the audit log and the admin editor. The flow writes core tables (`pledge_plg`, `deposit_dep`) inside core transactions, and the portal and finance pages that call it are core. #8180's on/off property is kept: nothing online shows unless `bEnableOnlineGiving` is on and a gateway plugin is active.
+**Why the Giving domain is core, not a plugin (revising #8180):** much of the work needs no gateway at all, which is why per-person attribution (#9313), statements, the audit log and the admin editor are their own RFC (0004). The flow writes core tables (`pledge_plg`, `deposit_dep`) inside core transactions, and the portal and finance pages that call it are core. #8180's on/off property is kept: nothing online shows unless `bEnableOnlineGiving` is on and a gateway plugin is active.
+
+**Gateways are plugins, not `Include/modules/gateways/`.** Each gateway is a plugin: the three in `src/plugins/core/`, others as community plugins in `src/plugins/community/`. The Member Portal design first proposed in #9862 reserved `Include/modules/gateways/` for them. The current Member Portal design on master (`.agents/skills/churchcrm/member-portal-design.md`, P14) no longer reserves that folder, so this RFC changes nothing there; RFC 0004's GIV-83 rewrites P14 when the Giving page lands.
 
 ### 2.2 Contract (`ChurchCRM\Giving\Gateway`)
 
@@ -301,22 +309,22 @@ src/plugins/core/stripe/
 
 ## 3. Data model
 
-**Migrations:** `src/mysql/upgrade/7.8.0-giving-*.sql`, `7.8.0-finance-audit.sql`, `7.8.0-system-ratelimit.sql`; mirrored by hand in `Install.sql`, `orm/schema.xml`, `cypress/data/seed.sql`. Registered in `upgrade.json` only when the maintainer opens the 7.8.0 block (`current` is `dbVersion 7.7.1`, `scripts: []`). No column-level `IF NOT EXISTS`.
+**Migrations:** `src/mysql/upgrade/<next>-giving-*.sql` and `<next>-system-ratelimit.sql`, named for the release a maintainer schedules them into (question 4); mirrored by hand in `Install.sql`, `orm/schema.xml`, `cypress/data/seed.sql`. Registered in `upgrade.json` only then. RFC 0004's migrations (anonymous normalize, person attribution, pledge end date, fund flag, finance audit) run first. No column-level `IF NOT EXISTS`.
 
 ### 3.1 Changes to existing tables
 
 | Table | Change | Migration / issue |
 |---|---|---|
-| `pledge_plg` | Data `plg_FamID = 0 → NULL`; anonymous = both ids NULL | `7.8.0-giving-anonymous-normalize.sql` / GIV-02 |
-| `pledge_plg` | `plg_PerID mediumint(9) unsigned NULL` + index; `idx_plg_GroupKey`; no DB FK (stock style), nulled in code on person delete | `7.8.0-giving-person-attribution.sql` / GIV-05 |
-| `pledge_plg` | `plg_gtxn_ID int NULL` + index; `plg_method` + 'CRYPTO'; `plg_schedule` + 'Annually' | `7.8.0-giving-columns.sql` / GIV-14 |
-| `pledge_plg` | `plg_fr_ID mediumint(9) unsigned NULL` + index (fundraiser); `plg_pn_ID mediumint(9) unsigned NULL` + index (paddle, `paddlenum_pn.pn_ID`, `Install.sql:990`) | `7.8.0-giving-columns.sql` / GIV-14 (the recorder writes them; GIV-50 uses them) |
-| `pledge_plg` | `plg_FeeCovered decimal(8,2) NOT NULL DEFAULT 0`: the row's share of a fee the donor chose to cover (A12), included in `plg_amount` | `7.8.0-giving-columns.sql` / GIV-14 |
-| `pledge_plg`, `deposit_dep` | utf8 → utf8mb4 (`Install.sql:40,579`), as `7.7.0-events-utf8mb4.sql` did | `7.8.0-giving-utf8mb4.sql` / GIV-14 |
+| `pledge_plg` | Moved to RFC 0004: anonymous = both ids NULL (GIV-02); `plg_PerID` (GIV-05); `plg_EndDate` (GIV-82) | |
+| `pledge_plg` | `plg_gtxn_ID int NULL` + index; `plg_method` + 'CRYPTO'; `plg_schedule` + 'Annually' | `<next>-giving-columns.sql` / GIV-14 |
+| `pledge_plg` | `plg_PledgeID mediumint(9) NULL` + index: on a `Payment` row, the RFC 0004 pledge row it fulfils (A40, D22); no DB FK, set NULL in code if that pledge is deleted | `<next>-giving-columns.sql` / GIV-14 |
+| `pledge_plg` | `plg_fr_ID mediumint(9) unsigned NULL` + index (fundraiser); `plg_pn_ID mediumint(9) unsigned NULL` + index (paddle, `paddlenum_pn.pn_ID`, `Install.sql:990`) | `<next>-giving-columns.sql` / GIV-14 (the recorder writes them; GIV-50 uses them) |
+| `pledge_plg` | `plg_FeeCovered decimal(8,2) NOT NULL DEFAULT 0`: the row's share of a fee the donor chose to cover (A12), included in `plg_amount` | `<next>-giving-columns.sql` / GIV-14 |
+| `pledge_plg`, `deposit_dep` | utf8 → utf8mb4 (`Install.sql:40,579`), as `7.7.0-events-utf8mb4.sql` did | `<next>-giving-utf8mb4.sql` / GIV-14 |
 | `deposit_dep` | `dep_Type` + 'Online'; `dep_Gateway varchar(32) NULL`; `dep_PayoutRef varchar(191) NULL`, UNIQUE(gateway, ref); `dep_FeeAmount decimal(10,2) DEFAULT 0`; `dep_NetAmount decimal(10,2) NULL`; `dep_ReconStatus enum('none','balanced','discrepancy')`; INDEX(gateway, closed, date) | GIV-14 |
-| `donationfund_fun` | `fun_OnlineGiving tinyint(1) NOT NULL DEFAULT 0` (opt-in, so restricted funds are never offered by accident) | GIV-14 |
+| `donationfund_fun` | Moved to RFC 0004: `fun_OnlineGiving` (D14, GIV-80). The Give tab offers the same funds. | |
 
-**Propel.** The existing `plg_EditedBy` FK (`orm/schema.xml:544-546`) is unnamed; a second FK to `person_per` would rename generated methods to `…RelatedBy…`. GIV-05 names both: existing `phpName="Person"`, `refPhpName="Pledge"` (callers `FinancialService.php:79`, `src/api/routes/finance/finance-payments.php:136`, `PledgeQuery.php:59,134` unchanged); new `phpName="Donor"`, `refPhpName="DonatedPledge"`.
+**Propel.** RFC 0004 (GIV-05) names the two FKs from `pledge_plg` to `person_per`. `plg_PledgeID` is a self-reference; GIV-14 names it `phpName="FulfilledPledge"`, `refPhpName="FulfillingPayment"`.
 
 **Mapping:** card, Apple Pay, Google Pay, PayPal → CREDITCARD; ACH → BANKDRAFT; bitcoin → CRYPTO + `gnc`. All → `dep_Type` 'Online' with `dep_Gateway`. The label ("Visa •••• 4242") lives on `gtxn`.
 
@@ -331,6 +339,7 @@ utf8mb4 InnoDB, `int(11)` ids, real FKs between new tables; `person_per`/`family
 | `gint_ClientKey` | varchar(64) NULL UQ; browser `Idempotency-Key` |
 | `gint_Gateway`, `gint_Mode`, `gint_Channel`, `gint_Kind` | varchar(32); enum('test','live'); enum('portal','public','fundraiser','admin'); enum('one_time','recurring') |
 | `gint_per_ID`, `gint_fam_ID`, `gint_fr_ID`, `gint_pn_ID`, `gint_AttributeTo` | NULL, from session or verified token only; enum('person','family','anonymous') |
+| `gint_plg_ID` | mediumint(9) NULL; the pledge row from Pay my pledge (A40), checked against the actor's scope |
 | `gint_Method`, `gint_Currency`, `gint_Net`, `gint_CoveredFee`, `gint_Gross` | varchar(20), char(3), decimal(10,2); gross ≤ 999,999.99 |
 | `gint_FeeModel`, `gint_Allocation` | snapshot (`290bps+30`); immutable JSON `[{fundId,amount}]` |
 | `gint_grec_ID`, `gint_CheckoutRef` | FK NULL; cs_/order/invoice id |
@@ -362,6 +371,7 @@ utf8mb4 InnoDB, `int(11)` ids, real FKs between new tables; `person_per`/`family
 | `grec_Gateway`, `grec_Mode`, `grec_SubscriptionRef` | UQ(gateway, mode, ref); ref NULL until the gateway creates the subscription |
 | `grec_gcus_ID` | FK NULL |
 | `grec_per_ID`, `grec_fam_ID`, `grec_AttributeTo` | owner: set at creation, NULL once the owner is deleted (§6); enum('person','family') |
+| `grec_plg_ID` | mediumint(9) NULL; the pledge a Pay my pledge recurring gift was set up for (A40). Never changes the pledge |
 | `grec_Currency`, `grec_Net`, `grec_CoveredFee`, `grec_Gross`, `grec_Allocation` | decimal(10,2); JSON `[{fundId,amount}]` |
 | `grec_Frequency`, `grec_DayOfMonth`, `grec_Weekday`, `grec_MonthOfYear`, `grec_FirstChargeDate` | enum('weekly','monthly','annually') DEFAULT 'monthly'; 1–28, 31 = last day |
 | `grec_Status` | enum('pending','active','past_due','cancelled','expired','review'); exits in F3.5–3.6, F5, F7, F14 |
@@ -374,33 +384,33 @@ utf8mb4 InnoDB, `int(11)` ids, real FKs between new tables; `person_per`/`family
 - `giving_webhook_event_gwhe`: `gwhe_ID bigint`, gateway, mode, `gwhe_EventRef` (UQ with gateway), `gwhe_Source` (webhook, reconcile, return), type, object ref, `gwhe_Status` (received, held, processed, ignored, failed, review), attempts, sanitised last error, payload hash, `gwhe_Payload` (encrypted, 90 days), timestamps.
 - `giving_notification_gntf` (outbox): `gntf_Type` (receipt, refund, recurring_created/cancelled/failed, fundraiser_receipt, admin_alert), `gntf_DedupeKey varchar(190) UQ` (`receipt:{gtxn}`), to-email, per/fam/gtxn/grec ids, scheduled-for, `gntf_Status` (pending, sent, failed, skipped), attempts, last error, sent-at. Standalone (Volunteer v2's `vntf` is similar [portal branch]).
 - `giving_noncash_gnc` (1:1 with a crypto charge `gtxn`, shared by all its rows): `gnc_gtxn_ID` PK/FK, `gnc_Asset`, `gnc_Quantity decimal(24,12)`, `gnc_Network enum('onchain','lightning')`, `gnc_Rate decimal(20,8)`, `gnc_RateSource`, `gnc_TxIds`, `gnc_AppraisalFlag` (> $5,000, Form 8283 Section B), `gnc_DisposedDate`, `gnc_DisposalProceeds`, `gnc_Form8282FiledDate`.
-- `finance_audit_faud` (append-only; no update/delete API): `faud_ID bigint`, date, `faud_ActorPerId` (signed), `faud_ImpersonatorPerId`, `faud_Action`, entity type and id, `faud_Before`/`faud_After` JSON (secrets excluded), `faud_IpHash`.
+- `finance_audit_faud`: moved to RFC 0004 (GIV-03). GIV-13 adds `faud_IpHash` (HMAC, keyed outside the DB, §3.4).
 - `system_ratelimit_srl`: `srl_Key varchar(191) PK` (hashed bucket), window start, count; one atomic UPDATE per hit.
 
-### 3.3 Invariants (enforced in code; a nightly check of all but I5 raises `admin_alert`)
+### 3.3 Invariants (enforced in code; a nightly check of I1–I4, I7–I11, I14 and RFC 0004's I6, I12 and I13 raises `admin_alert`)
 - **I1** Σ `plg_amount` for a succeeded charge's rows = `gtxn_Gross`.
 - **I2** Rows are written once, in the transaction that marks the charge succeeded, under `SELECT … FOR UPDATE`, on the Propel write connection only.
 - **I3** Σ refunds and dispute debits ≤ gross + dispute credits.
 - **I4** Gateway rows never change amount, date, method or fund split and are never deleted, except by the test purge (F13). Only two updates are allowed: `plg_FamID`/`plg_PerID` through the attribution service (F8), and one `plg_depID` NULL → payout deposit attach by `GivingDepositService` (F13); both audited, in place.
-- **I5** (write-time rule, not in the nightly check: ChurchCRM keeps no family-membership history) When a row credited to a person is written, `plg_FamID` = `PledgeWriter::familyOf(person)`, NULL if the person has no family. Afterwards it changes only through the attribution service: re-attribution, the D11 move, or the family donation move (F8), each audited. Enforced in `PledgeWriter` and the attribution service.
-- **I6** Anonymous = both ids NULL; `plg_FamID` is never 0.
+- **I5** Moved to RFC 0004 (the family is set at write time through `PledgeWriter::familyOf()`). Gateway rows follow it.
+- **I6** Moved to RFC 0004 (anonymous = both ids NULL; `plg_FamID` is never 0).
 - **I7** A payout deposit is `balanced` when Σ rows − `dep_FeeAmount` = `dep_NetAmount`, with `dep_FeeAmount` = every fee balance transaction in the payout, including Stripe's separate `stripe_fee` (Billing) lines.
 - **I8** Recurring gifts are cancelled locally only after the gateway confirms, or says already cancelled or not found.
 - **I9** No test-mode rows in live books after go-live.
 - **I10** Every CRYPTO row's `plg_gtxn_ID` (for a refund, its `gtxn_Parent_ID`) has a `gnc` row; cash totals exclude CRYPTO.
 - **I11** Report totals = ledger totals, refunds included.
+- **I14** A `plg_PledgeID` names a `Pledge` row of the same fund, and only `Payment` rows carry one.
 
 ### 3.4 Settings (category-less core `ConfigItem`s on `/admin/online-giving`)
 
 | Key | Default | Meaning |
 |---|---|---|
-| `bEnableOnlineGiving`, `bEnablePublicGiving`, `bPortalShowGiving` | 0, 0, 0 | master (plus D1 gate); public page; portal section, set on Admin → Member Portal [portal branch] and added by GIV-30 |
-| `bFinanceShowGivenBy` | 1 | admin-entry "Given by" UI (#9313's "optional"); data unaffected |
+| `bEnableOnlineGiving`, `bEnablePublicGiving` | 0, 0 | master (plus D1 gate); public page. The portal Giving page itself is RFC 0004's `bPortalShowGiving` |
 | `sGivingCurrency` | USD | ISO 4217, 2-decimal; replaces hard-coded `<CURDEF>USD` in OFX (`src/ChurchCRM/model/ChurchCRM/Deposit.php:65`) |
 | `sGivingGatewayOrder`, `sGivingDepositBatching`, `aGivingAmountPresets` | stripe,paypal,btcpay; weekly; 25,50,100,250 | batching: daily, weekly, monthly |
 | `iGivingMinPublic`, `iGivingMaxPublic`, `iGivingMinMember`, `iGivingMaxMember` | 5, 10,000; 1, 25,000 | whole currency units; hard cap 999,999.99 |
 | `sGivingCoverFeeDefault`, `iGivingFeeCoverFund` | unchecked, 0 | 0 = spread |
-| `sGivingReceiptText`, `bGivingReceiptPerRecurringCharge`, `sGivingStatementMode` | IRS wording; 1; household | mode: household, individual, both |
+| `sGivingReceiptText`, `bGivingReceiptPerRecurringCharge` | IRS wording; 1 | `bFinanceShowGivenBy` and `sGivingStatementMode` are RFC 0004's |
 | `sGivingTrustedProxies` | empty | CIDRs for `ClientIp` |
 | `sGivingPrivacyNoticeUrl`, `sGivingRefundPolicyUrl` | empty | shown on giving pages (GIV-71) |
 | `iGivingRefundAlertAmount`, `iGivingWebhookRetentionDays`, `iGivingPublicCircuitBreaker` | 500, 90, 20 | alert threshold; days; failed/abandoned public intents per hour (`processing` ones do not count) |
@@ -418,17 +428,17 @@ The HMAC key for IP hashes and return tokens is not a setting. It is derived fro
 3. Check the `fetchPayment()` snapshot: succeeded, same currency, amount = `gint_Gross`/`grec_Gross`; else `review`, no rows. A one-fund recurring charge records the actual amount; several funds are scaled and flagged. A BTCPay overpayment goes to review with no rows (F11).
 4. `AllocationSplitter` splits the gross: covered fee in proportion, by largest remainder (A12); each line keeps its fee share for `plg_FeeCovered`.
 5. `GivingDepositService::depositFor()` under `GET_LOCK('giving_deposit_'.gw)` on the same connection (batch); payout mode leaves `plg_depID` NULL.
-6. `PledgeWriter::insertGroup()`, one Payment row per fund: date = `gtxn_OccurredAt` in `sTimeZone`; FY via `FiscalYearUtils::getFiscalYearIdForDate()`; ids per F8 (recurring: `familyOf(owner)` at charge time, D11); method per §3.1; `plg_gtxn_ID`, `plg_fr_ID`, `plg_pn_ID` (from `gint_fr_ID`/`gint_pn_ID`); `plg_FeeCovered` = the line's fee share; NonDeductible = fundraiser FMV part or 0; schedule: one-time → 'Once', weekly/monthly/annually → 'Weekly'/'Monthly'/'Annually'; `plg_aut_Cleared=1`; EditedBy = actor or −3; GroupKey `gtxn{id}|0|{fam}|{funds}|{date}` (no scan).
+6. `PledgeWriter::insertGroup()`, one Payment row per fund: date = `gtxn_OccurredAt` in `sTimeZone`; FY via `FiscalYearUtils::getFiscalYearIdForDate()`; ids per F8 (RFC 0004; recurring: `familyOf(owner)` at charge time, D11); `plg_PledgeID` per A40 on the rows of the pledge's fund; method per §3.1; `plg_gtxn_ID`, `plg_fr_ID`, `plg_pn_ID` (from `gint_fr_ID`/`gint_pn_ID`); `plg_FeeCovered` = the line's fee share; NonDeductible = fundraiser FMV part or 0; schedule: one-time → 'Once', weekly/monthly/annually → 'Weekly'/'Monthly'/'Annually'; `plg_aut_Cleared=1`; EditedBy = actor or −3; GroupKey `gtxn{id}|0|{fam}|{funds}|{date}` (no scan).
 7. Update `gtxn` (succeeded, GroupKey, deposit, fee), `gint` (completed), `grec` (last/next charge; active unless in review); audit; enqueue `receipt:{gtxn}` (an INSERT into `gntf`, status pending); `COMMIT`.
 8. After commit: `DONATION_RECEIVED` per row, `GIFT_RECORDED` once; GIV-17 flushes up to 5 notifications; any `gwhe` held awaiting this charge (a refund or dispute that arrived first) is applied now.
 
-**Family lookup.** Every place that copies "the person's family" into `plg_FamID`, `gint_fam_ID`, `gtxn_fam_ID` or `grec_fam_ID` calls `PledgeWriter::familyOf(Person)` (GIV-04). It maps `per_fam_ID = 0` to NULL: the column is `NOT NULL default '0'` (`Install.sql:521`), and unlinking members sets 0 (`src/api/routes/people/people-family.php:501`). Without it, family-less people would write 0 and break I6.
+**Family lookup.** Every place that copies "the person's family" into `gint_fam_ID`, `gtxn_fam_ID` or `grec_fam_ID`, as well as `plg_FamID`, calls RFC 0004's `PledgeWriter::familyOf(Person)`, which maps `per_fam_ID = 0` to NULL (I6).
 
 **Install identity (A29).** `sGivingInstallId` is created when giving is first configured (so test gifts carry it) and fixed at go-live, with a fingerprint of `$URL` and DB name. When the fingerprint changes, the admin page asks "Moved this install" (keep id) or "This is a copy" (new id, test mode, keys re-entered); live mode is off until answered. Webhooks that arrive meanwhile are verified and stored as `gwhe` `held` (§2.5); "Moved this install" processes them, "This is a copy" marks them ignored. A 200-ignored live event would never be resent.
 
 **F1. Portal gift, one-time** [portal branch, #8977]
-1. `GET /portal/giving` with the actor from `PortalAccessMiddleware` (`src/ChurchCRM/Portal/PortalAccessMiddleware.php:50-58` [portal branch]): funds with `fun_Active='true' AND fun_OnlineGiving=1` in `fun_Order`, `forGiving()` capabilities and fee models, recurring notices, fundraiser balances.
-2. Fund lines (up to 5, or presets), gateway and method, optional fee cover; the HoH also sees "Give as: Me / Our household".
+1. `GET /portal/giving/give` (the Give tab on RFC 0004's Giving page) with the actor from `PortalAccessMiddleware` (`src/ChurchCRM/Portal/PortalAccessMiddleware.php:50-58` [portal branch]): funds with `fun_Active='true' AND fun_OnlineGiving=1` in `fun_Order`, `forGiving()` capabilities and fee models, recurring notices, fundraiser balances.
+2. Fund lines (up to 5, or presets), gateway and method, optional fee cover; the HoH also sees "Give as: Me / Our household". **Pay my pledge** (D22) arrives as `?pledge={id}`: one fund line locked to the pledge's fund, amount = its amount per gift (editable), and recurring preset to its schedule when the gateway supports it; the pledge must be in the actor's scope (else 404) and is sent on as `gint_plg_ID`.
 3. `POST /api/portal/giving/intents` (`Idempotency-Key`; `CSRFMiddleware`, `PortalApiMiddleware` [portal branch], giving no-masquerade middleware §5.1). No person or family ids accepted. The server validates funds and limits, recomputes the fee (> 1¢ difference → 409 "Total changed, please review"), creates `gint` (per = actor, fam = `familyOf(actor)`), calls `beginCheckout()`, checks the URL's host against `getRedirectHosts()`, returns `{redirectUrl}`. For `kind=recurring` it answers **422** when the gateway lacks `supportsRecurring()`, the frequency is not in `frequencies`, or day = last and the gateway lacks `monthEnd`, so a crafted POST cannot create a `grec` the gateway cannot honour.
 4. The `portal-giving` bundle re-checks the host, then `location.assign()`. No form post: `form-action 'self'` (`src/Include/Header-Security.php:32-46`) covers redirect targets.
 5. Return: `GET /portal/giving/return?intent={uuid}` (top-level GET keeps the Lax cookie); `gint_per_ID` must equal the actor (else 404); `completeReturn()` → F0; shows succeeded with receipt, pending (ACH, PayPal PENDING, on-chain; polls `GET /api/portal/giving/intents/{uuid}`), or failed.
@@ -438,7 +448,7 @@ The HMAC key for IP hashes and return tokens is not a setting. It is derived fro
 1. **`GET /portal/give[?fund=&amount=]`**, outside `PortalAccessMiddleware`. The AuthMiddleware public-path list gains exactly `/portal/give`, matched on whole segments (`isPublicPath()`, `AuthMiddleware.php:138-151` [portal branch]), so `/portal/giving` stays private. `PublicGivingEnabledMiddleware` answers 404 when `bEnablePublicGiving` is off, except for a request carrying a valid `fundraiserPayment` token (the page and its `POST /api/public/giving/intents`), so fundraiser pay links (F12) work without a public page; the D1 gate and `bEnableOnlineGiving` still apply.
    - **Anonymous-safe Twig:** `PortalExtension::getGlobals()` always builds `member` (`:262`), `nav` (`PortalNav.php:167`) and color mode (`:210`), and each calls `AuthenticationManager::getCurrentUser()`, which throws without a session provider (`src/ChurchCRM/Portal/PortalExtension.php:208-216,260-266`; `AuthenticationManager.php:24-35,42-56` [portal branch]). GIV-33 adds `AuthenticationManager::tryGetCurrentUser(): ?User` and makes these globals return null or defaults. The route calls `PortalTwig::preparePage()` (`PortalTwig.php:56-63` [portal branch]) for the CSP nonce.
    - `giving/public.html.twig` extends `layout-public.html.twig` (logo, no nav or account menu); both overridable (D8). CSRF token from the anonymous session.
-2. **Form:** fund, amount, gateway/method, fee cover; optional "Email me a receipt" (prompt at $250+); honeypot, minimum fill time; privacy and refund links; **"If you are a member, click here"** → `/portal/giving?fund=&amount=`; "No login yet? Contact the church office"; "Members can sign in to give monthly"; signed-in visitors see "give from your account". The member link and "sign in to give monthly" render only when the portal Give tab is available (portal on, `bEnabledFinance`, `bPortalShowGiving`, the D1 gate, `bEnableOnlineGiving`, a gateway); otherwise the page shows only "Contact the church office", so members never log in to a hidden section.
+2. **Form:** fund, amount, gateway/method, fee cover; optional "Email me a receipt" (prompt at $250+); honeypot, minimum fill time; privacy and refund links; **"If you are a member, click here"** → `/portal/giving/give?fund=&amount=`; "No login yet? Contact the church office"; "Members can sign in to give monthly"; signed-in visitors see "give from your account". The member link and "sign in to give monthly" render only when the portal Give tab is available (portal on, `bEnabledFinance`, `bPortalShowGiving`, the D1 gate, `bEnableOnlineGiving`, a gateway); otherwise the page shows only "Contact the church office", so members never log in to a hidden section.
 3. **`POST /api/public/giving/intents`** behind `StrictCSRFMiddleware` (rejects the `X-API-Key` bypass, `src/ChurchCRM/Slim/Middleware/CSRFMiddleware.php:38-44`), `RateLimitMiddleware` and the circuit breaker. Creates `gint` (channel public, ids NULL, email). Always rejects `kind=recurring` (422). Stripe gets `customer_email` as prefill only, not `receipt_email`.
 4. **Return** carries an HMAC token (uuid + 7-day expiry, giving HMAC key, §3.4): `GET /portal/give/return?t=…` needs no session. Valid → status, amount, fund, printable receipt. Invalid/expired → "Thank you. If you entered an email, your receipt is on its way." Never a 404 after paying.
 5. **F0 writes** both ids NULL, EditedBy −3; receipt to the email if given.
@@ -492,14 +502,10 @@ The HMAC key for IP hashes and return tokens is not a setting. It is derived fro
 - **BTCPay:** pull payment; claim link stored; staff **Record refund** after payout (only manual money write; audited, TOTP).
 - **Disputes:** `charge.dispute.created`/`CUSTOMER.DISPUTE.CREATED` → disputed + alert, `grec` to review · `funds_withdrawn`/`PAYMENT.CAPTURE.REVERSED` → `dispute_debit`, negative rows, fee into `gtxn_Fee` · `funds_reinstated` → `dispute_credit`, positive rows · `closed` → status. A `grec` in review keeps recording charges; staff either **Resume** it (after `getRecurring()` confirms it is live → active) or cancel it (TOTP, → cancelled). Review blocks plugin disable (§2.5 item 7).
 
-**F8. Admin entry** (`src/finance/views/pledges/editor.php`)
-- **Given by** (when `bFinanceShowGivenBy`): Family (existing TomSelect on `/api/families/search`, `:85-93, 368-390`, plus "Credit to: Whole household | {member}"), Person (family filled from the person), Anonymous. Hint: "Only the head of household and the credited person see this gift in the Member Portal."
-- The payload (`:536-547`) adds `PersonID`. The rule and the 999,999.99 cap live in `PledgeWriter`, so all three write routes share them: `POST /api/payments/` (`finance-payments.php:55-63`), `POST /api/payments/pledges` (`:246`) and `PUT /api/payments/{groupKey}` (`:321`). Person → PerID P, FamID = `familyOf(P)`; Family → NULL, F; Anonymous → NULL, NULL. Both sent and disagreeing → 400. No `PersonID` on a new gift → as today (family only). No `PersonID` on an edit (`PUT`, which deletes and re-inserts the group, A14) → every row keeps the PerID it had, so fixing a check number or date never turns a person's gift into a family or anonymous one (D3, I5, I6); only an explicit Person, Family or Anonymous changes it. This covers `bFinanceShowGivenBy` = 0, where the editor never sends the field, and API clients that predate it.
+**F8. Admin entry.** Moved to RFC 0004 ("Given by", the `PersonID` rule, the attribution service, the family donation move and the D11 move). This RFC adds:
 - **Gateway groups** are read-only: `PUT` → 409 "Online gifts can only be re-attributed"; `DELETE` → 409 "Refund it through the gateway".
-- **Attribution service** (GIV-05) is the only path that changes ids on existing rows. It updates in place on every row of a group and on its `gtxn` (`gtxn_per_ID`/`gtxn_fam_ID`), writes one `faud` row per group, and leaves `plg_EditedBy` alone (so −3 survives). It serves `PATCH /api/payments/{groupKey}/attribution` (Finance, office and gateway groups), the D11 move and the family donation move.
-- **Family donation move:** the family-delete page (`src/SelectDelete.php:126-146`) calls `POST /api/family/{id}/donations/move` (`src/api/routes/people/people-family.php:538-572`). Today it rewrites `plg_FamID` on every row of the family, all years, sets `plg_EditedBy` to the current user, and writes no audit. GIV-05 reimplements it on the attribution service. It is refused while the family owns a pending, active, past_due or review `grec`. Person-credited rows move too, listed in the audit rows, because the source family is being merged away and would otherwise drop them from household statements. All years move: this is a family merge, not the D11 case.
-- **Family change (D11):** when `per_fam_ID` changes (`src/PersonEditor.php`, `src/FamilyEditor.php`, `src/ConvertIndividualToFamily.php`, `src/api/routes/people/people-family.php`), the result offers "Move this year's gifts to the new family": rows with PerID = person, FamID = old family, current calendar year, via the attribution service. Earlier years never move.
-- Rebase on #10021 (Ctrl+Enter, open PR) if it merges first.
+- The attribution service also updates the group's `gtxn` (`gtxn_per_ID`/`gtxn_fam_ID`), and serves gateway groups through the same `PATCH /api/payments/{groupKey}/attribution`. It leaves `plg_EditedBy` alone, so −3 survives.
+- The family donation move is refused while the family owns a pending, active, past_due or review `grec`.
 
 **F9. Fee estimate** (`FeeCalculator`, integer cents, round up)
 - `fee(x) = min(cap ?? ∞, ceil(x·p) + f)`. Cover: `G = ceil((N+f)/(1−p))`; `while (G − ceil(G·p) − f < N) G++`; with a cap, `G = min(G, N + cap)`. This is the smallest G with `G − fee(G) ≥ N`. Stripe recurring adds 0.7% to `p`.
@@ -552,12 +558,12 @@ Cron is the supported scheduler (`src/cli/timerjobs.php:57`). Admin page loads a
 ## 5. UI and reports
 
 ### 5.1 Portal Giving [portal branch, #8977]
-- **Nav:** `PortalNav::GIVING` "Giving", `fa-solid fa-hand-holding-heart`, between My Family and Profile (`PortalNav.php:33-38,45-107`). `isGivingVisible()` = `bEnabledFinance` (`SystemConfig.php:268`) + `bPortalShowGiving` + a person record. The Give tab also needs the D1 gate, `bEnableOnlineGiving` and a gateway; otherwise the section lands on History, which needs none. URL-per-tab with a `giving/partials/tabs.html.twig` partial like volunteer's. Portal home gets a Give card.
-- **Routes:** `/portal/giving`, `/portal/giving/history[?year=]`, `/portal/giving/history/{year}/statement.pdf|.csv`, `/portal/giving/return`, `/portal/give`, `/portal/give/return`.
+- **Nav and page:** the Giving page, its nav entry and `bPortalShowGiving` come from RFC 0004 (GIV-83), with its Pledges view. This RFC adds two tabs, URL per tab, with a `giving/partials/tabs.html.twig` partial like volunteer's. The Give tab needs the D1 gate, `bEnableOnlineGiving` and a gateway; History needs none. Portal home gets a Give card.
+- **Routes:** `/portal/giving/give[?pledge=]`, `/portal/giving/history[?year=]`, `/portal/giving/history/{year}/statement.pdf|.csv`, `/portal/giving/return`, `/portal/give`, `/portal/give/return`.
 - **Templates:** `giving/{give,history,return,public,public-return}.html.twig`; partials `tabs, recurring-notice, more-info-dialog, receipt, fund-lines`; all overridable (D8), documented in `docs/portal-templates.md` [portal branch]. New `PortalExtension::getFilters()` `money` filter over `CurrencyFormatter` (`src/ChurchCRM/Utils/CurrencyFormatter.php`). Dates preformatted in PHP per `docs/portal-templates.md:378-379,495` [portal branch].
 - **API** `src/api/routes/portal/portal-giving.php` [portal branch]: `quote, intents, intents/{uuid}, recurring/{uuid}, …/cancel, …/manage` behind `CSRFMiddleware` + `PortalApiMiddleware` (`PortalApiMiddleware.php:27-52`); no person or family ids (`portal-me.php:16-36` invariant). Writes use a giving no-masquerade middleware: 409 "Giving is not available while viewing as another person" (`NoActiveMasqueradeMiddleware`, `:21-41` [#9843], has a nested-masquerade message). Bundle `portal-giving` with `portal-forms.ts`, `portal-toast.ts`, native `<dialog>`.
 - **Give tab order:** recurring notices; fundraiser balance card; presets and fund lines (+ Add another fund, ≤ 5; `fun_Description` help); Give as (HoH); gateway/method (hidden if one); recurring panel with live sentence; fee cover with `aria-live` estimate; button "Give $103.30" (one-time) or "Give $104.05 monthly" (recurring, F9); non-HoH note "Gifts you make are also visible to your head of household"; privacy and refund links; TEST banner.
-- **Giving History (D3):** `GivingScope::forPortalActor()`: HoH (actor in `Family::getHeadPeople()`, list-aware, `src/ChurchCRM/model/ChurchCRM/Family.php:227-230,274-285`) → `plg_FamID = fam OR plg_PerID = actor`; others → `plg_PerID = actor`. Payments, online or office. Heading "Giving for the Smith household" or "Gifts credited to you — household gifts appear in the head of household's history". Calendar-year sections, newest first: total and per-fund subtotals; Date | Given by (HoH) | For | Method ("Online" badge) | Amount | Status; pending marked and excluded from totals; refunds negative; "Non-cash gifts" block without value or total.
+- **Giving History (D3):** RFC 0004's `GivingScope::forPortalActor()` (GIV-07): HoH (actor in `Family::getHeadPeople()`, list-aware, `src/ChurchCRM/model/ChurchCRM/Family.php:227-230,274-285`) → `plg_FamID = fam OR plg_PerID = actor`; others → `plg_PerID = actor`. Payments, online or office. Heading "Giving for the Smith household" or "Gifts credited to you — household gifts appear in the head of household's history". Calendar-year sections, newest first: total and per-fund subtotals; Date | Given by (HoH) | For | Method ("Online" badge) | Amount | Status; pending marked and excluded from totals; refunds negative; "Non-cash gifts" block without value or total.
 - **Download:** "{year} statement" (PDF/CSV) is what `GivingStatementService` would mail that person under `sGivingStatementMode`; if the mode gives them none (non-HoH in Household) it is a "Giving summary (not a tax statement)". Current year is year-to-date.
 - **Masquerade** [#9843]: reads only if the impersonator `isFinanceEnabled()` (`User.php:181`); writes 409; audited with `ImpersonationService::getImpersonatorUserId()` (`:54` [portal branch]).
 
@@ -579,23 +585,14 @@ See F2. Framing stays forbidden (`X-Frame-Options: SAMEORIGIN`; cross-site ifram
   - **Households:** families with gifts but no living, active head.
 - Finance dashboard card; `/finance/funds` "Offer online" toggle; `person-view.php` Finance-only Giving card (`GET /api/payments/person/{id}/list`); family view Given by and Source columns (card `src/people/views/family-view.php:651-695`; columns are DataTable definitions in `src/skin/js/FamilyView.js:141-175`, fed at `:105`); `DepositSlipEditor.php` gross/fees/net; `PledgeDetails.php` "Online transaction" panel; paddle list Send payment link, Paid, Balance.
 
-**Statements** (`GivingStatementService`, extracted from `src/Reports/TaxReport.php`; same service for portal downloads)
-- **Household** (default): all rows with `plg_FamID` = family, with a Given by column; rows with FamID NULL and PerID set (no family) get individual letters.
-- **Individual:** each person's PerID rows, addressed to them (`per_Envelope`); family-level rows (PerID NULL) go on the letter of the head with the lowest `per_ID` among `getHeadPeople()` (which returns heads in no set order), or on a household letter as today when the family has no head.
-- **Both:** gifts credited to any non-HoH person, spouse included, go only on that person's statement; family-level and the HoH's own gifts on the household statement. Each gift on exactly one statement.
-- Anonymous left out; crypto in a non-cash section without value; covered fees included; refunds netted; minimum amount applied to the donor total, not per row (per row today, `FinancialService.php:736`); NonDeductible unchanged (`TaxReport.php:263-269`).
-- Build the missing view behind `/finance/reports/tax-statements` (`src/finance/routes/reports.php:31-46`; `reports/tax-statements.php` does not exist).
-- **Head lists:** `src/FinancialReports.php:131-150` already splits `sDirRoleHead` (`:137-138`) but `intval()`s `sDirRoleSpouse` (`:139-140`) and joins spouses for "John & Jane" (`:145-150`); make the spouse role list-aware (`Family::getAdults()` semantics), not head-only. `src/FamilyEditor.php:481` casts `sDirRoleHead` to int; take the first id.
+**Statements.** Moved to RFC 0004 §5 (`GivingStatementService`, the Household, Individual and Both modes, the tax-statements view and the head-list fixes). This RFC adds: crypto in a non-cash section without value (GIV-24); covered fees included; refunds netted; the same service behind the portal downloads (GIV-30).
 
 ### 5.4 Reports
-- "Anonymous" (gettext) replaces "Unassigned" (`TaxReport.php:87`; `src/Reports/AdvancedDeposit.php:109,312,480,647`).
-- `FamilyPledgeSummaryService.php:26,38` and `FundContributorsService.php:66,78` get LEFT JOINs and drop `filterByAmount(0, GREATER_THAN)` so refunds net. Office entry stays positive-only (`FinancialService.php:298,390`, `editor.php:517`); `PledgeWriter` allows negative rows internally.
-- Donor count: `getYtdDonorFamilyCount()` (`FinancialService.php:988-999`) already skips NULL via `COUNT(DISTINCT plg_FamID)` (`:996`); its only defect, anonymous rows stored as 0, goes with GIV-02. After GIV-05 it counts distinct family, or person when the family is NULL.
+- Moved to RFC 0004 §5: the "Anonymous" label, the LEFT JOINs and refund netting in the pledge summaries (GIV-02), and the donor count (GIV-05). They are what make this RFC's negative rows net.
 - Deposit PDF totals CREDITCARD, BANKDRAFT and CRYPTO (non-cash) besides CHECK and CASH (`Deposit.php:428-470`), plus an Online gross/fees/net summary. CSV adds person, source, gateway, external ref, fee. OFX uses `sGivingCurrency`.
 - Advanced Deposit: CRYPTO label in all three method blocks (`AdvancedDeposit.php:371-379, 539-547, 707-715`); Given by, Source, Gateway filters.
-- **New (GIV-43):** #9313's Contributions by Person, Fund Giving by Person, Top Contributors by Fund, Building Fund Progress by Member; online by gateway (gross, covered, fees, net); recurring forecast; past-due; disputes; non-cash register (8283/8282).
-- Zero Givers, Reminder and Voting Members stay family-level (documented).
-- **Deleted families:** delete stays finance-only when the family has payments (`src/api/routes/people/people-family.php:458-466`) and keeps `plg_FamID` so totals reconcile; reports show "Deleted family #N"; a `faud` row records it; refused while the family owns a pending, active, past_due or review recurring gift. The delete page first offers "Move Donations to Selected Family" (`src/SelectDelete.php:126-146`), which GIV-05 moves onto the audited attribution service (F8, family donation move).
+- **New (GIV-44):** online by gateway (gross, covered, fees, net); recurring forecast; past-due; disputes; non-cash register (8283/8282). #9313's per-person reports are RFC 0004's GIV-43.
+- **Families:** RFC 0004 §5 covers family delete and the family donation move. This RFC adds: the move is refused while the family owns a pending, active, past_due or review recurring gift.
 
 ---
 
@@ -632,7 +629,7 @@ See F2. Framing stays forbidden (`X-Frame-Options: SAMEORIGIN`; cross-site ifram
 - No auto-matching of anonymous gifts; staff re-attribute only on request, audited.
 - A guest's email sits on `gint_DonorEmail`, `gntf_ToEmail`, and the email log once #9876 lands. Anonymous receipts log with a "do not resolve" context, because `EmailLogService::logSend()` otherwise matches the address to a person or family (`src/ChurchCRM/Service/EmailLogService.php:42-75`, `:65-67` [portal branch, #9876]); upstream `BaseEmail` does not log (`src/ChurchCRM/Emails/BaseEmail.php:52-59`).
 - **Erase guest donor PII** (Finance, audited) redacts email and name on `gint`, `gntf`, email-log rows [#9876] and stored `gwhe` payloads; money stays.
-- **Person delete** (`Person::preDelete`, `src/ChurchCRM/model/ChurchCRM/Person.php:653`) clears the person's ids: `plg_PerID`, `gtxn_per_ID`, `gint_per_ID`, `grec_per_ID` and `gcus_per_ID` (the family keeps its gifts; audited). It is refused while the person owns a pending, active, past_due or review recurring gift, and while any of their rows has `plg_FamID` NULL: clearing those would turn a named gift into an anonymous one (I6), so Finance re-attributes them first. Family delete: §5.4.
+- **Person delete:** RFC 0004 (GIV-05) clears `plg_PerID` and refuses while a payment of theirs has `plg_FamID` NULL. This RFC also clears `gtxn_per_ID`, `gint_per_ID`, `grec_per_ID` and `gcus_per_ID` (audited), and refuses while the person owns a pending, active, past_due or review recurring gift. Family delete: §5.4.
 - **Retention:** pledge rows, `gtxn`, `gnc`, `faud` permanent · `gwhe_Payload` 90 days · IP hashes 30 days · abandoned `gint` 180 days · sent `gntf` 1 year.
 
 **Receipts (US).** Organisation, amount, date, number, goods-and-services wording. Each receipt is the contemporaneous acknowledgment for a single gift of $250+ (gifts are not aggregated). Over $75 with goods: deductible limited to the excess over the good-faith FMV (`di_estprice`). Crypto is property: asset and quantity, no value; > $5,000 flagged for Form 8283 Section B (qualified appraisal, church signs the donee part); disposal within 3 years tracked for Form 8282.
@@ -645,28 +642,28 @@ See F2. Framing stays forbidden (`X-Frame-Options: SAMEORIGIN`; cross-site ifram
 
 Nothing here is filed yet (D12). One concern and one PR per child; each user-visible child opens a user-manual docs issue. Each issue will carry its own scope and acceptance criteria. CI uses `FakeGateway` (`CHURCHCRM_GIVING_SANDBOX=1`, §2.4), never a real gateway.
 
-**Sequencing:** phases A–D, F and GIV-50 can go upstream before #8977. Phase E and GIV-51 wait for #8977 (and #9843 for the masquerade guard). Online giving stays hidden until GIV-20 to GIV-24 are merged (D1); office-side work (phase A, GIV-50, the #9313 reports in GIV-43) is visible as soon as it merges.
+**Sequencing:** RFC 0004's prerequisites (GIV-02 to GIV-07) come first. Phases B–D, F and GIV-50 can then go upstream before the donor surfaces. Phase E and GIV-51 wait for RFC 0004's Giving page (GIV-83). Online giving stays hidden until GIV-20 to GIV-24 are merged (D1); office-side work (GIV-01, GIV-50) is visible as soon as it merges.
 
 | Id | Title | Design | Depends on |
 |---|---|---|---|
 | **A** | **Finance foundations (no gateway)** | | |
 | GIV-01 | Remove dead e-payment code (`setDeposit`, Load Authorized, Run Transactions); refuse deletes in closed deposits; fire `DEPOSIT_CLOSED` on close | F13, §2.4 | – |
-| GIV-02 | Anonymous = NULL family; "Anonymous" label; LEFT JOINs and refund netting in summaries | §3.1, §5.4 | – |
-| GIV-03 | Append-only finance audit log | §3.2 `faud` | – |
-| GIV-04 | `PledgeWriter` (session-less, server FY, PDO GroupKeys, `familyOf()`); `Person::ONLINE_GIVING`; `GIFT_RECORDED` | §2.1, F0 | 03 |
-| GIV-05 | Per-person attribution (#9313): `plg_PerID`; `PersonID` rule on all write routes; attribution service and PATCH; family donation move; person delete rule; donor count | §3.1, F8, §5.4, §6 | 02, 04 |
-| GIV-06 | "Given by" in the editor, person and family views; D11 move | F8 | 05 |
-| GIV-07 | `GivingStatementService`, `GivingScope`, tax-statements view, head-list fixes | §5.3 | 05 |
+| GIV-02 | Moved to RFC 0004 (anonymous = NULL family) | | |
+| GIV-03 | Moved to RFC 0004 (finance audit log) | | |
+| GIV-04 | Moved to RFC 0004 (`PledgeWriter`). `Person::ONLINE_GIVING` (A17) moves to GIV-16 | | |
+| GIV-05 | Moved to RFC 0004 (per-person attribution, #9313) | | |
+| GIV-06 | Moved to RFC 0004 ("Given by" UI, D11 move) | | |
+| GIV-07 | Moved to RFC 0004 (`GivingStatementService`, `GivingScope`) | | |
 | **B** | **Platform** | | |
 | GIV-09 | Plugin-local `vendor/` (D10) | §2.6 | – |
 | GIV-10 | Contract; registry (lazy owner check, core by path, no community id equal to a core id); `payments.process`; release gate; `FakeGateway` fixture | §2.2–2.4 | – |
 | GIV-11 | Rate limiter, `ClientIp`, `StrictCSRFMiddleware`, circuit breaker | §6 T6–T7 | – |
 | GIV-12 | Webhook ingress in the plugin folder; webhook boot mode (no session, no auto-upgrade, no PostHog handler); DB gate; lifecycle guard; `getGivingLogger()` | §2.5 | 10, 11, 14 |
 | GIV-13 | Encrypted `secret` settings with the key outside the DB; giving HMAC key derivation | A15, §3.4 | – |
-| GIV-14 | Giving schema: §3.1 columns (incl. `plg_fr_ID`, `plg_pn_ID`), §3.2 tables, utf8mb4 | §3 | 05 |
+| GIV-14 | Giving schema: §3.1 columns (incl. `plg_fr_ID`, `plg_pn_ID`, `plg_PledgeID`), §3.2 tables, utf8mb4 | §3 | 05 |
 | GIV-15 | `/admin/online-giving`, settings, readiness, test purge, `FeeCalculator`, `AllocationSplitter`, `RecurrenceScheduler`, install identity | §3.4, §5.3, F3, F9, F13 | 10, 13, 14 |
 | **C** | **Engine** | | |
-| GIV-16 | Intents; `GivingRecorder`; `WebhookProcessor`; batch deposits; gateway-group and gateway-deposit guards; reconcile; nightly invariants | F0, F13, F14, §2.5 | 04, 12, 14, 15 |
+| GIV-16 | Intents; `GivingRecorder`; `WebhookProcessor`; batch deposits; gateway-group and gateway-deposit guards; `Person::ONLINE_GIVING`; reconcile; nightly invariants | F0, F13, F14, §2.5 | 04, 12, 14, 15 |
 | GIV-17 | Notification outbox (flush after commit, drain in reconcile) and receipts | §3.2 `gntf`, §6 | 16 |
 | **D** | **Gateways (all three before release, D1)** | | |
 | GIV-20 | Stripe, one-time | §2.3, F10 | 09, 13, 16, 17 |
@@ -674,23 +671,24 @@ Nothing here is filed yet (D12). One concern and one PR per child; each user-vis
 | GIV-22 | PayPal, one-time (Orders v2) | §2.3, F6 | 13, 16, 17 |
 | GIV-23 | PayPal recurring (Subscriptions v1) | F3–F6, D7 | 21, 22 |
 | GIV-24 | BTCPay Server; non-cash recording | F11 | 13, 16, 17; 07 for the statement section |
-| **E** | **Donor surfaces (after #8977)** | | |
-| GIV-30 | Portal Giving section, History, downloads, `bPortalShowGiving` | §5.1 | #8977, 07 |
-| GIV-31 | Give tab, one-time | F1, §5.1 | 30, 11, 16, 17, one of 20/22/24, #9843 |
-| GIV-32 | Recurring in the portal: notices, More Info, Cancel | F3, F5 | 31, 21 or 23, #9843 |
+| **E** | **Donor surfaces (on RFC 0004's Giving page)** | | |
+| GIV-30 | History tab and statement downloads | §5.1 | 07, 83 |
+| GIV-31 | Give tab, one-time; Pay my pledge | F1, §5.1, D22 | 30, 11, 16, 17, one of 20/22/24 |
+| GIV-32 | Recurring in the portal: notices, More Info, Cancel | F3, F5 | 31, 21 or 23 |
 | GIV-33 | Public anonymous page | F2, §5.2 | 31 |
 | GIV-34 | Removed 2026-10-05: no newsletter sign-up (D4) | – | – |
 | **F** | **Finance operations** | | |
 | GIV-40 | Finance dashboard and review queue | §5.3 | 03, 16, 17 |
 | GIV-41 | Refunds, disputes, staff cancel and Resume, guest PII erase (TOTP) | F7, §6 | 40; 20 or 22; 21 or 23 for staff cancel |
 | GIV-42 | Stripe payout deposits; deposit slip and exports | F13, §5.4 | 16, 20 |
-| GIV-43 | Giving reports, including #9313's | §5.4 | 07, 16, 24 |
+| GIV-43 | Moved to RFC 0004 (#9313's per-person reports) | | |
+| GIV-44 | Online giving reports (split from GIV-43) | §5.4 | 07, 16, 24 |
 | **G** | **Fundraisers** | | |
 | GIV-50 | Buyer balances by paddle; editor paddle picker; Collected | F12 | 14 |
 | GIV-51 | Online balance payments; pay links | F12 | 17, 31, 33, 50 |
 | **H** | **Later and cross-cutting** | | |
 | GIV-60 | Embedded checkout, on-page wallets, CSP builder, Turnstile | D5, D8, F10 | 20, 22, 24, 31 |
-| GIV-70 | Docs, E2E, i18n (rolling) | – | each item after the issue it covers |
+| GIV-70 | Docs, E2E, i18n (rolling, shared with RFC 0004) | – | each item after the issue it covers |
 | GIV-71 | Legal checklist and policy links | §6 | 15, 17 |
 
 ---
@@ -705,14 +703,14 @@ Nothing here is filed yet (D12). One concern and one PR per child; each user-vis
 | Q2 | Whose recurring gifts show as notices? | Only those the actor set up; staff can cancel any. |
 | Q3 | Where does a covered fee go? | Spread across chosen funds; designated fund optional. |
 | Q4 | "Cover the fee" default? | Unchecked. |
-| Q5 | Statement mode default? | Household. |
+| Q5 | Moved to RFC 0004 (product default 2: statement mode). | |
 | Q6 | Refund alert threshold? | $500. |
 | Q7 | Amount limits? | Public $5–$10,000; members $1–$25,000. |
 | Q8 | Fee defaults? | Standard published rates, with nonprofit-rate help. |
 | Q9 | PayPal "Last day"? | Hidden until a sandbox test proves month-end billing. |
 | Q10 | Receipt for every recurring charge? | Yes. |
-| Q11 | Nav position? | Between My Family and Profile, plus a Give card on the portal home. |
-| Q12 | No HoH or several heads? | All of `getHeadPeople()` see the household; office list of headless families. |
+| Q11 | Moved to RFC 0004 (product default 4: nav position). This RFC adds a Give card on the portal home. | |
+| Q12 | No HoH or several heads? | RFC 0004 (product default 3): all of `getHeadPeople()` see the household. This RFC adds the office list of headless families with gifts. |
 | Q13 | Fundraiser pay links? | 30 days, 5 uses; Manage Fundraisers or Finance may send. |
 | Q14 | Stripe ACH? | Included, off. |
 | Q15 | Batch period? | Weekly; payout mode stays opt-in. |
@@ -722,7 +720,7 @@ Nothing here is filed yet (D12). One concern and one PR per child; each user-vis
 | Q19 | Test-mode gifts? | "[TEST]" deposits, purged at go-live. |
 
 ### 8.2 For the maintainer
-The six questions are listed at the top of this document, under "Questions for the maintainer".
+The questions are listed at the top of this document, under "Questions for the maintainer". Question 6 is answered in #10033.
 
 ---
 
@@ -733,7 +731,7 @@ The six questions are listed at the top of this document, under "Questions for t
 | Receipts with IRS wording and numbers; printable on-screen receipt; portal year statement | Keep (GIV-17/30) |
 | Split gifts; refunds, disputes, chargebacks as negative rows; review queue | Keep (GIV-31/40/41) |
 | Automatic deposits with gross/fees/net; payout-exact deposits (opt-in); catch-up sync and webhook health | Keep (GIV-16/42) |
-| Finance audit log; test mode with purge and clone detection; encrypted secrets; core rate limiter | Keep (GIV-03/15/13/11) |
+| Test mode with purge and clone detection; encrypted secrets; core rate limiter (the finance audit log is RFC 0004's GIV-03) | Keep (GIV-15/13/11) |
 | Plugin-disable guard and receive-only; delete guards; past-due badge with Update payment method | Keep (GIV-12/21/32) |
 | HoH transparency note; privacy and refund links; deep links and QR | Keep (GIV-31/71/33) |
 | Paper card-number line removed from fundraiser statements | Keep (GIV-51) |
@@ -741,7 +739,8 @@ The six questions are listed at the top of this document, under "Questions for t
 | Recurring edit/pause; biweekly; dunning emails (gateways send their own); website iframe | Defer |
 | PayPal Apple Pay; BTCPay recurring; automated BTCPay refunds; more gateways (#9575) | Defer; the contract fits |
 | Import from other platforms (#9600) via `PledgeWriter`, deduplicated on external ref | Defer, aligned |
-| Campaigns, pledge progress, tribute, text-to-give, kiosk; stock and in-kind gifts (reuse `gnc`) | Defer |
+| Pay my pledge, linking a payment to an RFC 0004 pledge | Keep (D22, GIV-31) |
+| Campaigns, tribute, text-to-give, kiosk; stock and in-kind gifts (reuse `gnc`) | Defer |
 | CRA/Gift Aid; multi-currency; bulk statement email; two-person refund approval; QuickBooks export; paid events (#8181) | Defer |
 | Dropping `plg_aut_*`, `result_res` | Defer (release after GIV-01) |
 | Staff virtual terminal | Reject (PCI scope) |
@@ -750,20 +749,20 @@ The six questions are listed at the top of this document, under "Questions for t
 
 ## Appendix A. Requirements this design covers
 
-Each requirement and each proposed product choice (D1–D12), with the sections that meet it.
+Each requirement and each proposed product choice (D1–D12, D22), with the sections that meet it. Rows marked "Moved to RFC 0004" are met there.
 
 | # | Requirement | Where | Notes |
 |---|---|---|---|
 | R1 | Payment gateway plugin design | §2.1–2.6, A20, GIV-10 | |
-| R2 | Anonymous giving, admin entry | F8, GIV-02/06 | I6 |
+| R2 | Anonymous giving, admin entry | Moved to RFC 0004 | |
 | R3 | Anonymous giving, unauthenticated portal page | F2, §5.2, GIV-33 | Needs #8977 |
-| R4 | Giving by persons, admin entry | F8, GIV-05/06 | Optional; `bFinanceShowGivenBy` |
-| R5 | Giving by families, admin entry | F8 | Whole household or member |
+| R4 | Giving by persons, admin entry | Moved to RFC 0004 | |
+| R5 | Giving by families, admin entry | Moved to RFC 0004 | |
 | R6 | Giving by persons, portal | F1 | PerID = actor |
 | R7 | Giving by families, portal | F1, §5.1, Q1 | Give as household |
-| R8 | Portal Giving page, tabs Give and Giving History | §5.1 | History-only when giving is off |
+| R8 | Portal Giving page, tabs Give and Giving History | §5.1 | On RFC 0004's page; the Give tab hides when giving is off |
 | R9 | Give: electronic gift via enabled gateways | F1, §2.4 | `forGiving()` |
-| R10 | Give: choose purpose | F1, §5.1, `fun_OnlineGiving` | Up to 5 funds |
+| R10 | Give: choose purpose | F1, §5.1, `fun_OnlineGiving` (RFC 0004 D14) | Up to 5 funds |
 | R11 | Give: estimate fee to the church | F9 | Actual fees stored separately |
 | R12 | Give: ask to cover the fee | F9, §5.1 | Hidden when zero |
 | R13 | Give: offer recurring | F3, §5.1 | |
@@ -793,9 +792,9 @@ Each requirement and each proposed product choice (D1–D12), with the sections 
 | R37 | History lists gifts | §5.1 | Online and office |
 | R38 | By calendar year | §5.1 | |
 | R39 | Totals by year | §5.1, I10 | Pending and crypto excluded |
-| R40 | Non-HoH sees own gifts only | D3, A10 | Spouse included |
-| R41 | HoH sees whole family | D3, A10, D11 | Incl. family-level |
-| R42 | Admin reports updated similarly | §5.3, §5.4, GIV-07/43, A32 | #9313 reports |
+| R40 | Non-HoH sees own gifts only | D3, A10 (RFC 0004), §5.1 | Spouse included |
+| R41 | HoH sees whole family | D3, A10, D11 (RFC 0004), §5.1 | Incl. family-level |
+| R42 | Admin reports updated similarly | Moved to RFC 0004; online reports §5.4, GIV-44 | |
 | R43 | Fundraisers use gateways | F12, GIV-50/51 | Token on `pn_ID`; balance by `plg_pn_ID`; works with the public page off |
 | R44 | Portal Apple Pay where allowed | D5, F10, GIV-60 | v1 on Stripe's hosted page |
 | R45 | Other features and integration | §8, §9 | |
@@ -806,10 +805,10 @@ Each requirement and each proposed product choice (D1–D12), with the sections 
 | R50 | Removed 2026-10-05: no newsletter sign-up | D4 | |
 | R51 | "If you are a member, click here" link | F2.2 | Shown only when the portal Give tab is available; plus "Contact the church office" |
 | R52 | Login returns to the Give page | F2.6 | `AuthMiddleware.php:197-215` |
-| R53 | 7.8.0, `7.8.0-*.sql`, not in `upgrade.json` | §3 | |
+| R53 | `<next>-*.sql`, not in `upgrade.json` until scheduled | §3 | Question 4 |
 | D1 | Three gateways; release gate | §2.4, §7 | |
 | D2 | Upstream; core contract; core plugins | §2.1, §2.6 | |
-| D3 | HoH / non-HoH visibility | A10, §5.1, §5.3 | |
+| D3 | HoH / non-HoH visibility | Moved to RFC 0004; applied in §5.1 | |
 | D4 | Public page, receipt, member link | F2 | |
 | D5 | Hosted redirect; wallets on Stripe | A1, F10 | |
 | D6 | First charge on chosen day | F3, A27 | |
@@ -817,5 +816,6 @@ Each requirement and each proposed product choice (D1–D12), with the sections 
 | D8 | Overridable pages; server-built redirect | A26, F1.4, §6 | |
 | D9 | Single 'Online' type | A7, §3.1, F13 | |
 | D10 | Plugin-local vendor | §2.6, GIV-09 | |
-| D11 | Moving families | A31, F4, F8, GIV-06 | |
+| D11 | Moving families | Moved to RFC 0004; F4 for recurring charges | |
 | D12 | Proposal first; issues only after the direction is accepted | Status, §7 | |
+| D22 | Pay my pledge | A40, F0, F1, GIV-31 | Pledge and subscription stay separate |
