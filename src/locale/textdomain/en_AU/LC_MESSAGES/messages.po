@@ -73,11 +73,6 @@ msgid "Use Ctrl Key to select multiple"
 msgstr "Use Ctrl Key (Mac: ⌘ ) to select multiple"
 
 #: 
-#, fuzzy
-msgid "Load Authorized"
-msgstr "Load Authorised Transactions"
-
-#: 
 msgid "Family Cell Phone"
 msgstr "Family Mobile"
 
