@@ -400,7 +400,7 @@ describe("Kiosk Device Endpoint - Acceptance Enforcement", () => {
                     (after.body.KioskDevices || []).filter((k) => !existingIds.has(k.Id)).forEach((k) => extraKioskIds.push(k.Id));
                 });
                 cy.clearCookies();
-                cy.setCookie("kioskCookie", cookie.value, { path: "/kiosk/" });
+                cy.setCookie("kioskCookie", cookie.value, { path: cookie.path });
             });
         });
     };
@@ -511,6 +511,7 @@ describe("Kiosk Device - Guardian Photo and checkedInBy", () => {
         "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==";
 
     let kioskCookie = null;
+    let kioskCookiePath = null;
     let kioskId = null;
     let eventId = null;
 
@@ -519,7 +520,7 @@ describe("Kiosk Device - Guardian Photo and checkedInBy", () => {
 
     const asKiosk = () => {
         cy.clearCookies();
-        cy.setCookie("kioskCookie", kioskCookie, { path: "/kiosk/" });
+        cy.setCookie("kioskCookie", kioskCookie, { path: kioskCookiePath });
     };
 
     before(() => {
@@ -533,6 +534,7 @@ describe("Kiosk Device - Guardian Photo and checkedInBy", () => {
             cy.getCookie("kioskCookie").then((cookie) => {
                 expect(cookie, "kiosk cookie set on registration").to.not.be.null;
                 kioskCookie = cookie.value;
+                kioskCookiePath = cookie.path;
             });
 
             cy.clearCookies();
