@@ -1,62 +1,62 @@
 {
-  "Your coordinator": "",
-  "Your teams: %s": "",
-  "positionIds must be a list of position ids": "",
-  "{{name}} ({{family}} family)": "",
-  "{{name}} assigned and recorded as accepted": "",
-  "Ask an administrator to change your sign-in email.": "",
-  "Email changed by an administrator from %1$s to %2$s": "",
-  "Only an administrator can change the email of a person with a user account.": "",
+  "Your coordinator": "U koördineerder",
+  "Your teams: %s": "U spanne: %s",
+  "positionIds must be a list of position ids": "positionIds moet ’n lys van posisie-id’s wees",
+  "{{name}} ({{family}} family)": "{{name}} (gesin {{family}})",
+  "{{name}} assigned and recorded as accepted": "{{name}} toegewys en aangeteken as aanvaar",
+  "Ask an administrator to change your sign-in email.": "Vra ’n beheerder om u aanmeld-e-pos te verander.",
+  "Email changed by an administrator from %1$s to %2$s": "E-pos deur ’n beheerder verander van %1$s na %2$s",
+  "Only an administrator can change the email of a person with a user account.": "Net ’n beheerder kan die e-pos verander van ’n persoon met ’n gebruikersrekening.",
   "Delete ({{count}})": {
-    "one": "",
-    "other": ""
+    "one": "Skrap (een)",
+    "other": "Skrap ({{count}})"
   },
   "Delete events ({{count}})": {
-    "one": "",
-    "other": ""
+    "one": "Skrap een gebeurtenis",
+    "other": "Skrap gebeurtenisse ({{count}})"
   },
   "Delete {{count}} occurrences? Their assignments, the volunteers' responses, any substitutions and every queued reminder go with them. This cannot be undone.": {
-    "one": "",
-    "other": ""
+    "one": "Skrap een voorkoms? Die toewysings, die vrywilligers se antwoorde, enige plaasvervangers en elke herinnering in die waglys gaan saam. Dit kan nie ongedaan gemaak word nie.",
+    "other": "Skrap {{count}} voorkomste? Die toewysings, die vrywilligers se antwoorde, enige plaasvervangers en elke herinnering in die waglys gaan saam. Dit kan nie ongedaan gemaak word nie."
   },
   "Occurrences are created for events in the next {{count}} weeks (through {{date}}).": {
-    "one": "",
-    "other": ""
+    "one": "Voorkomste word geskep vir gebeurtenisse in die volgende week (tot {{date}}).",
+    "other": "Voorkomste word geskep vir gebeurtenisse in die volgende {{count}} weke (tot {{date}})."
   },
   "They finish {{count}} minutes after the event ends.": {
-    "one": "",
-    "other": ""
+    "one": "Hulle eindig een minuut nadat die gebeurtenis eindig.",
+    "other": "Hulle eindig {{count}} minute nadat die gebeurtenis eindig."
   },
   "They finish {{count}} minutes before the event ends.": {
-    "one": "",
-    "other": ""
+    "one": "Hulle eindig een minuut voordat die gebeurtenis eindig.",
+    "other": "Hulle eindig {{count}} minute voordat die gebeurtenis eindig."
   },
   "Volunteers start {{count}} minutes after the event starts.": {
-    "one": "",
-    "other": ""
+    "one": "Vrywilligers begin een minuut nadat die gebeurtenis begin.",
+    "other": "Vrywilligers begin {{count}} minute nadat die gebeurtenis begin."
   },
   "Volunteers start {{count}} minutes before the event starts.": {
-    "one": "",
-    "other": ""
+    "one": "Vrywilligers begin een minuut voordat die gebeurtenis begin.",
+    "other": "Vrywilligers begin {{count}} minute voordat die gebeurtenis begin."
   },
   "{{count}} needed": {
-    "one": "",
-    "other": ""
+    "one": "Een nodig",
+    "other": "{{count}} nodig"
   },
   "{{count}} occurrences deleted": {
-    "one": "",
-    "other": ""
+    "one": "Een voorkoms geskrap",
+    "other": "{{count}} voorkomste geskrap"
   },
   "{{failed}} of {{count}} occurrences could not be deleted": {
-    "one": "",
-    "other": ""
+    "one": "{{failed}} van een voorkoms kon nie geskrap word nie",
+    "other": "{{failed}} van {{count}} voorkomste kon nie geskrap word nie"
   },
   "{{name}} ({{count}} upcoming)": {
-    "one": "",
-    "other": ""
+    "one": "{{name}} (een komende)",
+    "other": "{{name}} ({{count}} komende)"
   },
   "{{title}} ({{count}} upcoming)": {
-    "one": "",
-    "other": ""
+    "one": "{{title}} (een komende)",
+    "other": "{{title}} ({{count}} komende)"
   }
 }
