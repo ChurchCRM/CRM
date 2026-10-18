@@ -150,7 +150,7 @@ export interface KioskJSOM {
   setCheckinByEnabled: (enabled: boolean) => void;
   resolveCheckinByModal: (checkedByPersonId: number | null) => void;
   cancelCheckinByModal: () => void;
-  cancelScheduledRefresh: () => void;
+  scheduleNextRefresh: (delayMs?: number) => void;
   showGuestRegistrationModal: () => void;
   submitGuestRegistration: () => void;
 }
