@@ -1,62 +1,62 @@
 {
-  "Your coordinator": "",
-  "Your teams: %s": "",
-  "positionIds must be a list of position ids": "",
-  "{{name}} ({{family}} family)": "",
-  "{{name}} assigned and recorded as accepted": "",
-  "Ask an administrator to change your sign-in email.": "",
-  "Email changed by an administrator from %1$s to %2$s": "",
-  "Only an administrator can change the email of a person with a user account.": "",
+  "Your coordinator": "Váš koordinátor",
+  "Your teams: %s": "Vaše týmy: %s",
+  "positionIds must be a list of position ids": "positionIds musí být seznam identifikátorů pozic",
+  "{{name}} ({{family}} family)": "{{name}} (rodina {{family}})",
+  "{{name}} assigned and recorded as accepted": "{{name}} přiřazeno a zaznamenáno jako přijaté",
+  "Ask an administrator to change your sign-in email.": "Požádejte správce o změnu přihlašovacího e-mailu.",
+  "Email changed by an administrator from %1$s to %2$s": "Správce změnil e-mail z %1$s na %2$s",
+  "Only an administrator can change the email of a person with a user account.": "E-mail osoby s uživatelským účtem může změnit jen správce.",
   "Delete ({{count}})": {
-    "one": "",
-    "other": ""
+    "one": "Smazat (1)",
+    "other": "Smazat ({{count}})"
   },
   "Delete events ({{count}})": {
-    "one": "",
-    "other": ""
+    "one": "Smazat událost (1)",
+    "other": "Smazat události ({{count}})"
   },
   "Delete {{count}} occurrences? Their assignments, the volunteers' responses, any substitutions and every queued reminder go with them. This cannot be undone.": {
-    "one": "",
-    "other": ""
+    "one": "Smazat 1 výskyt? Spolu s ním zmizí přiřazení, odpovědi dobrovolníků, případná zastoupení a každá připomínka ve frontě. Tuto akci nelze vrátit.",
+    "other": "Smazat {{count}} výskytů? Spolu s nimi zmizí přiřazení, odpovědi dobrovolníků, případná zastoupení a každá připomínka ve frontě. Tuto akci nelze vrátit."
   },
   "Occurrences are created for events in the next {{count}} weeks (through {{date}}).": {
-    "one": "",
-    "other": ""
+    "one": "Výskyty se vytvářejí pro události v příštím týdnu (do {{date}}).",
+    "other": "Výskyty se vytvářejí pro události v příštích {{count}} týdnech (do {{date}})."
   },
   "They finish {{count}} minutes after the event ends.": {
-    "one": "",
-    "other": ""
+    "one": "Končí 1 minutu po skončení události.",
+    "other": "Končí {{count}} minut po skončení události."
   },
   "They finish {{count}} minutes before the event ends.": {
-    "one": "",
-    "other": ""
+    "one": "Končí 1 minutu před skončením události.",
+    "other": "Končí {{count}} minut před skončením události."
   },
   "Volunteers start {{count}} minutes after the event starts.": {
-    "one": "",
-    "other": ""
+    "one": "Dobrovolníci začínají 1 minutu po začátku události.",
+    "other": "Dobrovolníci začínají {{count}} minut po začátku události."
   },
   "Volunteers start {{count}} minutes before the event starts.": {
-    "one": "",
-    "other": ""
+    "one": "Dobrovolníci začínají 1 minutu před začátkem události.",
+    "other": "Dobrovolníci začínají {{count}} minut před začátkem události."
   },
   "{{count}} needed": {
-    "one": "",
-    "other": ""
+    "one": "Potřeba 1",
+    "other": "Potřeba {{count}}"
   },
   "{{count}} occurrences deleted": {
-    "one": "",
-    "other": ""
+    "one": "Smazán 1 výskyt",
+    "other": "Smazáno {{count}} výskytů"
   },
   "{{failed}} of {{count}} occurrences could not be deleted": {
-    "one": "",
-    "other": ""
+    "one": "Nepodařilo se smazat {{failed}} z 1 výskytu",
+    "other": "Nepodařilo se smazat {{failed}} z {{count}} výskytů"
   },
   "{{name}} ({{count}} upcoming)": {
-    "one": "",
-    "other": ""
+    "one": "{{name}} (1 nadcházející)",
+    "other": "{{name}} ({{count}} nadcházejících)"
   },
   "{{title}} ({{count}} upcoming)": {
-    "one": "",
-    "other": ""
+    "one": "{{title}} (1 nadcházející)",
+    "other": "{{title}} ({{count}} nadcházejících)"
   }
 }
