@@ -29,19 +29,6 @@ use Propel\Runtime\Map\TableMap;
  */
 class Event extends BaseEvent
 {
-    /**
-     * Only http(s) URLs are stored; anything else (javascript:, data:, relative) becomes null.
-     */
-    public function setURL($v)
-    {
-        $v = trim((string) $v);
-        if ($v !== '' && !preg_match('#^https?://[^\s]+$#i', $v)) {
-            $v = '';
-        }
-
-        return parent::setURL($v === '' ? null : $v);
-    }
-
     private bool $editable = true;
 
     /**

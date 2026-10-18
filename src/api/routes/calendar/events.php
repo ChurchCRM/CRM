@@ -919,12 +919,16 @@ function updateEvent(Request $request, Response $response, array $args): Respons
 
     $fields = [
         'Title' => 'setTitle', 'Desc' => 'setDesc', 'Text' => 'setText', 'Start' => 'setStart',
-        'End' => 'setEnd', 'InActive' => 'setInActive', 'Type' => 'setType', 'URL' => 'setURL',
+        'End' => 'setEnd', 'InActive' => 'setInActive', 'Type' => 'setType',
     ];
     foreach ($fields as $key => $setter) {
         if (array_key_exists($key, $input)) {
             $Event->$setter($input[$key]);
         }
+    }
+    if (array_key_exists('URL', $input)) {
+        $url = trim((string) $input['URL']);
+        $Event->setURL(preg_match('#^https?://\S+$#i', $url) ? $url : null);
     }
     $Event->setMinistryId($ministryId);
 
