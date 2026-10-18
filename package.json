@@ -151,7 +151,6 @@
         "marked": "^18.1.1",
         "moment": "^2.31.0",
         "notyf": "^3.10.0",
-        "pdfmake": "^0.3.11",
         "posthog-js": "^1.438.9",
         "quill": "2.0.2",
         "temporal-polyfill": "^1.0.5",
