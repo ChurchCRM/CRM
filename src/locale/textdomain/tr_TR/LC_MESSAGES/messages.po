@@ -398,15 +398,6 @@ msgid "Add Payment"
 msgstr "Ödeme Ekle"
 
 #: 
-#, fuzzy
-msgid "Load Authorized"
-msgstr "Yetkili İşlemleri Yükle"
-
-#: 
-msgid "Run Transactions"
-msgstr "İşlemleri çalıştırın"
-
-#: 
 msgid "Directory reports"
 msgstr "Dizin raporları"
 
@@ -2247,10 +2238,6 @@ msgstr "Seçilenleri silmek istediğinden emin misiniz"
 #: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "Bu eylem geri alınamaz ve yasal etkileri olabilir!"
-
-#: 
-msgid "Please ensure this what you want to do."
-msgstr "Lütfen bunu yapmak istediğiniz şeyi sağlayın."
 
 #: 
 msgid "Deposit Type"
@@ -5648,14 +5635,6 @@ msgid "Generate Report"
 msgstr "Rapor Oluştur"
 
 #: 
-msgid "No Cash"
-msgstr "Nakit Yok"
-
-#: 
-msgid "No Checks"
-msgstr "Çek Yok"
-
-#: 
 msgid "Payments"
 msgstr "Ödemeler"
 
@@ -5670,11 +5649,6 @@ msgstr "Toplam Yatırılan"
 #: 
 msgid "Total Payments"
 msgstr "Toplam Ödemeler"
-
-#: 
-#, fuzzy
-msgid "payments?"
-msgstr "ödeme(ler)?"
 
 #: 
 msgid "All system files have passed integrity validation."
@@ -6298,10 +6272,6 @@ msgid "Aug"
 msgstr "Ağu"
 
 #: 
-msgid "Back to Deposits"
-msgstr "Para Yatırma İşlemlerine Dön"
-
-#: 
 msgid "Back to Families"
 msgstr "Ailelere Dön"
 
@@ -6380,10 +6350,6 @@ msgstr "Gün"
 #: 
 msgid "Dec"
 msgstr "Ara"
-
-#: 
-msgid "Deposit Navigation"
-msgstr "Para Yatırma Navigasyonu"
 
 #: 
 msgid "Deposit Statistics"
@@ -13989,10 +13955,6 @@ msgid "Foreground Color"
 msgstr "Ön plan rengi"
 
 #: 
-msgid "Fund(s)"
-msgstr "Fon(lar)"
-
-#: 
 msgid "Generate new code"
 msgstr "Yeni kod oluştur"
 
@@ -14363,10 +14325,6 @@ msgstr "Lütfen giriş yapacak bir kişi seçin."
 #: 
 msgid "Please select a role."
 msgstr "Lütfen bir rol seçin."
-
-#: 
-msgid "Please select rows to delete"
-msgstr "Lütfen silinecek satırları seçin"
 
 #: 
 msgid "Please try again"

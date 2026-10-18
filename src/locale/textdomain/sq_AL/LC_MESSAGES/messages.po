@@ -398,15 +398,6 @@ msgid "Add Payment"
 msgstr "Shto Pagesa"
 
 #: 
-#, fuzzy
-msgid "Load Authorized"
-msgstr "Load transaksionet e autorizuara"
-
-#: 
-msgid "Run Transactions"
-msgstr "Transaksionet Run"
-
-#: 
 msgid "Directory reports"
 msgstr "Raportet Directory"
 
@@ -2250,10 +2241,6 @@ msgstr "Jeni të sigurt që dëshironi të fshini të përzgjedhurat"
 #: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "Ky veprim NUK MUND të zhbëhet dhe mund të ketë implikime ligjore!"
-
-#: 
-msgid "Please ensure this what you want to do."
-msgstr "Ju lutemi sigurohuni që kjo është ajo që dëshironi të bëni."
 
 #: 
 msgid "Deposit Type"
@@ -5638,14 +5625,6 @@ msgid "Generate Report"
 msgstr "Gjenero raport"
 
 #: 
-msgid "No Cash"
-msgstr "Pa para të gatshme"
-
-#: 
-msgid "No Checks"
-msgstr "Pa çeqe"
-
-#: 
 msgid "Payments"
 msgstr "Pagesat"
 
@@ -5660,11 +5639,6 @@ msgstr "Totali i depozitës"
 #: 
 msgid "Total Payments"
 msgstr "Totali i pagesave"
-
-#: 
-#, fuzzy
-msgid "payments?"
-msgstr "pagesë(a)?"
 
 #: 
 msgid "All system files have passed integrity validation."
@@ -6288,10 +6262,6 @@ msgid "Aug"
 msgstr "Gus"
 
 #: 
-msgid "Back to Deposits"
-msgstr "Kthehu në depozita"
-
-#: 
 msgid "Back to Families"
 msgstr "Kthehu në familje"
 
@@ -6370,10 +6340,6 @@ msgstr "Ditë"
 #: 
 msgid "Dec"
 msgstr "Dhj"
-
-#: 
-msgid "Deposit Navigation"
-msgstr "Navigimi i depozitave"
 
 #: 
 msgid "Deposit Statistics"
@@ -13979,10 +13945,6 @@ msgid "Foreground Color"
 msgstr "Ngjyra e planit të parë"
 
 #: 
-msgid "Fund(s)"
-msgstr "Fond(et)"
-
-#: 
 msgid "Generate new code"
 msgstr "Gjenero kod të ri"
 
@@ -14353,10 +14315,6 @@ msgstr "Ju lutemi zgjidhni një person për të regjistruar."
 #: 
 msgid "Please select a role."
 msgstr "Ju lutemi zgjidhni një rol."
-
-#: 
-msgid "Please select rows to delete"
-msgstr "Ju lutem zgjidhni rreshtat për t'u fshirë"
 
 #: 
 msgid "Please try again"

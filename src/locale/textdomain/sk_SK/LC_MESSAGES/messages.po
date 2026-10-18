@@ -392,14 +392,6 @@ msgid "Add Payment"
 msgstr "Pridať platbu"
 
 #: 
-msgid "Load Authorized"
-msgstr "Načítať autorizované"
-
-#: 
-msgid "Run Transactions"
-msgstr "Spustiť transakcie"
-
-#: 
 msgid "Directory reports"
 msgstr "Prehľady adresára"
 
@@ -2225,10 +2217,6 @@ msgstr "Naozaj chcete odstrániť vybrané"
 #: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "Táto akcia SA NEDÁ VRÁTIŤ a môže mať právne dôsledky!"
-
-#: 
-msgid "Please ensure this what you want to do."
-msgstr "Uistite sa, že toto chcete urobiť."
 
 #: 
 msgid "Deposit Type"
@@ -5619,14 +5607,6 @@ msgid "Generate Report"
 msgstr "Vygenerovať správu"
 
 #: 
-msgid "No Cash"
-msgstr "Žiadna hotovosť"
-
-#: 
-msgid "No Checks"
-msgstr "Žiadne šeky"
-
-#: 
 msgid "Payments"
 msgstr "Platby"
 
@@ -5641,10 +5621,6 @@ msgstr "Celkový vklad"
 #: 
 msgid "Total Payments"
 msgstr "Celkové platby"
-
-#: 
-msgid "payments?"
-msgstr "platby?"
 
 #: 
 msgid "All system files have passed integrity validation."
@@ -6272,10 +6248,6 @@ msgid "Aug"
 msgstr "Aug"
 
 #: 
-msgid "Back to Deposits"
-msgstr "Späť na vklady"
-
-#: 
 msgid "Back to Families"
 msgstr "Späť na rodiny"
 
@@ -6354,10 +6326,6 @@ msgstr "Deň"
 #: 
 msgid "Dec"
 msgstr "Dec"
-
-#: 
-msgid "Deposit Navigation"
-msgstr "Navigácia vkladov"
 
 #: 
 msgid "Deposit Statistics"
@@ -13975,10 +13943,6 @@ msgid "Foreground Color"
 msgstr "Farba popredia"
 
 #: 
-msgid "Fund(s)"
-msgstr "Fond(y)"
-
-#: 
 msgid "Generate new code"
 msgstr "Generovať nový kód"
 
@@ -14349,10 +14313,6 @@ msgstr "Vyberte osobu na zaregistrovanie."
 #: 
 msgid "Please select a role."
 msgstr "Vyberte rolu."
-
-#: 
-msgid "Please select rows to delete"
-msgstr "Vyberte riadky na odstránenie"
 
 #: 
 msgid "Please try again"

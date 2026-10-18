@@ -398,15 +398,6 @@ msgid "Add Payment"
 msgstr "Ongeza Malipo"
 
 #: 
-#, fuzzy
-msgid "Load Authorized"
-msgstr "Pakia Shughuli Zilizoidhinishwa"
-
-#: 
-msgid "Run Transactions"
-msgstr "Endesha Miamala"
-
-#: 
 msgid "Directory reports"
 msgstr "Ripoti za saraka"
 
@@ -2247,10 +2238,6 @@ msgstr "Je, una uhakika unataka kufuta iliyochaguliwa"
 #: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "Hatua hii HAIWEZI kutenduliwa, na inaweza kuwa na athari za kisheria!"
-
-#: 
-msgid "Please ensure this what you want to do."
-msgstr "Tafadhali hakikisha hiki unachotaka kufanya."
 
 #: 
 msgid "Deposit Type"
@@ -5644,14 +5631,6 @@ msgid "Generate Report"
 msgstr "Tengeneza Ripoti"
 
 #: 
-msgid "No Cash"
-msgstr "Hakuna Pesa Taslimu"
-
-#: 
-msgid "No Checks"
-msgstr "Hakuna Hundi"
-
-#: 
 msgid "Payments"
 msgstr "Malipo"
 
@@ -5666,11 +5645,6 @@ msgstr "Jumla ya Amana"
 #: 
 msgid "Total Payments"
 msgstr "Jumla ya Malipo"
-
-#: 
-#, fuzzy
-msgid "payments?"
-msgstr "malipo?"
 
 #: 
 msgid "All system files have passed integrity validation."
@@ -6294,10 +6268,6 @@ msgid "Aug"
 msgstr "Ago"
 
 #: 
-msgid "Back to Deposits"
-msgstr "Rudi kwenye Amana"
-
-#: 
 msgid "Back to Families"
 msgstr "Rudi kwenye Familia"
 
@@ -6376,10 +6346,6 @@ msgstr "Siku"
 #: 
 msgid "Dec"
 msgstr "Des"
-
-#: 
-msgid "Deposit Navigation"
-msgstr "Urambazaji wa Amana"
 
 #: 
 msgid "Deposit Statistics"
@@ -13985,10 +13951,6 @@ msgid "Foreground Color"
 msgstr "Rangi ya Mbele"
 
 #: 
-msgid "Fund(s)"
-msgstr "Mifuko"
-
-#: 
 msgid "Generate new code"
 msgstr "Tengeneza msimbo mpya"
 
@@ -14359,10 +14321,6 @@ msgstr "Tafadhali chagua mtu wa kuingiza."
 #: 
 msgid "Please select a role."
 msgstr "Tafadhali chagua jukumu."
-
-#: 
-msgid "Please select rows to delete"
-msgstr "Tafadhali chagua mistari ya kufuta"
 
 #: 
 msgid "Please try again"

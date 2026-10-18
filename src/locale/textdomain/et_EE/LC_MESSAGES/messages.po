@@ -398,15 +398,6 @@ msgid "Add Payment"
 msgstr "Lisage makse"
 
 #: 
-#, fuzzy
-msgid "Load Authorized"
-msgstr "Laadige volitatud tehinguid"
-
-#: 
-msgid "Run Transactions"
-msgstr "Käivitage tehingud"
-
-#: 
 msgid "Directory reports"
 msgstr "Kataloogiaruanded"
 
@@ -2247,10 +2238,6 @@ msgstr "Kas soovite kindlasti valitud valitud kustutada?"
 #: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "Seda toimingut EI SAA tagasi võtta ja sellel võib olla juriidiline tähendus!"
-
-#: 
-msgid "Please ensure this what you want to do."
-msgstr "Palun kontrollige seda, mida soovite teha."
 
 #: 
 msgid "Deposit Type"
@@ -5647,14 +5634,6 @@ msgid "Generate Report"
 msgstr "Loo aruanne"
 
 #: 
-msgid "No Cash"
-msgstr "Raha puudub"
-
-#: 
-msgid "No Checks"
-msgstr "Tsekkisid pole"
-
-#: 
 msgid "Payments"
 msgstr "Maksed"
 
@@ -5669,11 +5648,6 @@ msgstr "Kogudepossiit"
 #: 
 msgid "Total Payments"
 msgstr "Kokku maksed"
-
-#: 
-#, fuzzy
-msgid "payments?"
-msgstr "makset(e)?"
 
 #: 
 msgid "All system files have passed integrity validation."
@@ -6297,10 +6271,6 @@ msgid "Aug"
 msgstr "Aug"
 
 #: 
-msgid "Back to Deposits"
-msgstr "Tagasi deposiitidele"
-
-#: 
 msgid "Back to Families"
 msgstr "Tagasi perekondadele"
 
@@ -6379,10 +6349,6 @@ msgstr "Päev"
 #: 
 msgid "Dec"
 msgstr "Det"
-
-#: 
-msgid "Deposit Navigation"
-msgstr "Deposiidi navigeerimine"
 
 #: 
 msgid "Deposit Statistics"
@@ -13988,10 +13954,6 @@ msgid "Foreground Color"
 msgstr "Esiplaani värv"
 
 #: 
-msgid "Fund(s)"
-msgstr "Vahend(id)"
-
-#: 
 msgid "Generate new code"
 msgstr "Genereeri uus kood"
 
@@ -14362,10 +14324,6 @@ msgstr "Palun valige registreerimiseks isik."
 #: 
 msgid "Please select a role."
 msgstr "Palun valige roll."
-
-#: 
-msgid "Please select rows to delete"
-msgstr "Palun valige kustutamiseks read"
 
 #: 
 msgid "Please try again"

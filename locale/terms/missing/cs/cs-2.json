@@ -7,6 +7,9 @@
   "Ask an administrator to change your sign-in email.": "",
   "Email changed by an administrator from %1$s to %2$s": "",
   "Only an administrator can change the email of a person with a user account.": "",
+  "Fund totals appear here once payments are added.": "",
+  "No payments yet": "",
+  "Some payments could not be deleted": "",
   "Delete ({{count}})": {
     "one": "",
     "other": ""

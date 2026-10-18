@@ -393,14 +393,6 @@ msgid "Add Payment"
 msgstr "Fizetési mód hozzáadása"
 
 #: 
-msgid "Load Authorized"
-msgstr "Engedélyezettek betöltése"
-
-#: 
-msgid "Run Transactions"
-msgstr "Tranzakciók futtatása"
-
-#: 
 msgid "Directory reports"
 msgstr "Könyvtárjelentések"
 
@@ -2286,10 +2278,6 @@ msgstr "Biztosan törölni szeretné a kijelölt"
 #: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "Ez a művelet NEM vonható vissza, és jogi következményei lehetnek!"
-
-#: 
-msgid "Please ensure this what you want to do."
-msgstr "Kérjük, győződjön meg róla, hogy valóban ezt szeretné tenni."
 
 #: 
 msgid "Deposit Type"
@@ -5674,14 +5662,6 @@ msgid "Generate Report"
 msgstr "Jelentés generálása"
 
 #: 
-msgid "No Cash"
-msgstr "Nincs készpénz"
-
-#: 
-msgid "No Checks"
-msgstr "Nincs csekkek"
-
-#: 
 msgid "Payments"
 msgstr "Fizetések"
 
@@ -5696,11 +5676,6 @@ msgstr "Teljes betét"
 #: 
 msgid "Total Payments"
 msgstr "Teljes fizetések"
-
-#: 
-#, fuzzy
-msgid "payments?"
-msgstr "fizetés(ek)?"
 
 #: 
 msgid "All system files have passed integrity validation."
@@ -6324,10 +6299,6 @@ msgid "Aug"
 msgstr "Aug"
 
 #: 
-msgid "Back to Deposits"
-msgstr "Vissza a Letétekhez"
-
-#: 
 msgid "Back to Families"
 msgstr "Vissza a Családokhoz"
 
@@ -6406,10 +6377,6 @@ msgstr "Nap"
 #: 
 msgid "Dec"
 msgstr "Dec"
-
-#: 
-msgid "Deposit Navigation"
-msgstr "Befizetés navigáció"
 
 #: 
 msgid "Deposit Statistics"
@@ -14015,10 +13982,6 @@ msgid "Foreground Color"
 msgstr "Előtérszín"
 
 #: 
-msgid "Fund(s)"
-msgstr "Alap(ok)"
-
-#: 
 msgid "Generate new code"
 msgstr "Új kód generálása"
 
@@ -14389,10 +14352,6 @@ msgstr "Kérjük, válasszon személyt a bejelentkeztetéshez."
 #: 
 msgid "Please select a role."
 msgstr "Kérjük, válasszon szerepkört."
-
-#: 
-msgid "Please select rows to delete"
-msgstr "Kérjük, válasszon az sorokból törléshez"
 
 #: 
 msgid "Please try again"
