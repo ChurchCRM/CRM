@@ -585,6 +585,35 @@ describe("Kiosk Device - Guardian Photo and checkedInBy", () => {
         cy.makePrivateAdminAPICall("DELETE", `/api/person/${GUARDIAN_ID}/photo`, null, 200);
     });
 
+    describe("POST /kiosk/device/checkin and /checkout guardian authorization", () => {
+        ["checkin", "checkout"].forEach((action) => {
+            const field = action === "checkin" ? "CheckedInById" : "CheckedOutById";
+
+            it(`${action} denies a person who is not an adult in the child's family`, () => {
+                asKiosk();
+                cy.request({
+                    method: "POST",
+                    url: `/kiosk/device/${action}`,
+                    body: { PersonId: CHILD_ID, [field]: UNRELATED_ADULT_ID },
+                    failOnStatusCode: false,
+                })
+                    .its("status")
+                    .should("equal", 403);
+            });
+        });
+
+        it("checkin accepts an adult in the child's family", () => {
+            asKiosk();
+            cy.request({
+                method: "POST",
+                url: "/kiosk/device/checkin",
+                body: { PersonId: CHILD_ID, CheckedInById: GUARDIAN_ID },
+            })
+                .its("status")
+                .should("equal", 200);
+        });
+    });
+
     describe("GET /kiosk/device/activeClassMember/{PersonId}/family/{MemberId}/photo", () => {
         it("serves the photo of an adult family member of a roster child", () => {
             asKiosk();

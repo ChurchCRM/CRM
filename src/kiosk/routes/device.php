@@ -42,6 +42,16 @@ function getKioskRosterIds(object $assignment): array
 }
 
 /**
+ * True when $guardianId is an adult family member of the child (the only people a kiosk may record).
+ */
+function isKioskGuardianOf(int $childId, int $guardianId): bool
+{
+    $child = PersonQuery::create()->findOneById($childId);
+
+    return $child !== null && in_array($guardianId, array_column(getAdultFamilyMembers($child), 'Id'), true);
+}
+
+/**
  * Return the adult members of a person's family, excluding the person
  * themselves, formatted for the kiosk "Checked In By" / "Checked Out By"
  * picker.
@@ -196,6 +206,10 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
         }
         [, , $event] = $result;
 
+        if ($checkedInById !== null && !isKioskGuardianOf($personId, $checkedInById)) {
+            return SlimUtils::renderErrorJSON($response, gettext('Checked-in-by person is not an adult family member'), [], 403);
+        }
+
         $status = $event->checkInPerson($personId, $checkedInById);
 
         return SlimUtils::renderJSON($response, $status);
@@ -215,6 +229,10 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
             return $result;
         }
         [, , $event] = $result;
+
+        if ($checkedOutById !== null && !isKioskGuardianOf($personId, $checkedOutById)) {
+            return SlimUtils::renderErrorJSON($response, gettext('Checked-out-by person is not an adult family member'), [], 403);
+        }
 
         $status = $event->checkOutPerson($personId, $checkedOutById);
 
