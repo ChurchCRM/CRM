@@ -94,6 +94,8 @@ npm run build:php:validate:orm
 
 ## MySQL-Compatible SQL
 
+Every `.sql` change (upgrade script, `Install.sql`, `seed.sql`) must run on both MariaDB and MySQL. Before you ask to commit, apply it to MariaDB (`docker/docker-compose.yaml`) and to a MySQL 8 container, and run it a second time where it should be idempotent. Syntax that only one server accepts fails on the other; CI finds it only in the nightly matrix.
+
 Column-level `IF EXISTS` / `IF NOT EXISTS` on `ADD COLUMN`, `DROP COLUMN`, `CHANGE COLUMN`, and `MODIFY COLUMN` is MariaDB-only. MySQL rejects it with `SQLSTATE[42000] 1064`, and only the nightly MySQL matrix (`docker/docker-compose.mysql.yaml`) runs against MySQL. `scripts/validate-mysql-upgrade-syntax.js` checks this in CI (`.github/workflows/code-quality.yml`) and in `.githooks/pre-commit`.
 
 Use plain DDL when version gating guarantees the column's state (a script that ADDs a column runs only on installs that lack it):
