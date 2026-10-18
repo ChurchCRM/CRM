@@ -160,14 +160,14 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
         $renderer = new PhpRenderer(__DIR__ . '/../templates/kioskDevices/');
         $pageObjects = ['sRootPath' => $_SESSION['sRootPath']];
 
-        return $renderer->render($response, 'sunday-school-class-view.php', $pageObjects);
+        return $renderer->render($response, 'event-attendance-view.php', $pageObjects);
     });
 
     $group->get('/', function (Request $request, Response $response) {
         $renderer = new PhpRenderer(__DIR__ . '/../templates/kioskDevices/');
         $pageObjects = ['sRootPath' => $_SESSION['sRootPath']];
 
-        return $renderer->render($response, 'sunday-school-class-view.php', $pageObjects);
+        return $renderer->render($response, 'event-attendance-view.php', $pageObjects);
     });
 
     // Heartbeat: only requires kiosk to exist (not accepted) so pending
@@ -693,5 +693,5 @@ $app->get('/', function (Request $request, Response $response) {
     $renderer = new PhpRenderer(__DIR__ . '/../templates/kioskDevices/');
     $pageObjects = ['sRootPath' => $_SESSION['sRootPath']];
 
-    return $renderer->render($response, 'sunday-school-class-view.php', $pageObjects);
+    return $renderer->render($response, 'event-attendance-view.php', $pageObjects);
 });
