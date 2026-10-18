@@ -115,6 +115,26 @@ describe("Email history on the email dashboard", () => {
         cy.get("[data-email-history-table] tbody tr").should("have.length.at.least", 7);
     });
 
+    it("failed all-time badge links to failed-only history with recipient and server error", () => {
+        cy.visit("/admin/email/log");
+        cy.get("[data-email-failed-badge]")
+            .should("contain.text", "failed (all time)")
+            .and("have.attr", "href")
+            .and("include", "status=failed");
+
+        cy.get("[data-email-failed-badge]").click();
+        cy.location("search").should("eq", "?status=failed");
+        cy.get("[data-email-failed-filter]").should("contain.text", "across all email history");
+        cy.get("[data-email-history-table] tbody tr").should("have.length.at.least", 1)
+            .each(($row) => {
+                expect($row).to.have.attr("data-email-status", "failed");
+            });
+        cy.get("[data-email-failure-error]").should("have.length.at.least", 1);
+        cy.contains("a", "Show all recent sends").click();
+        cy.location("search").should("eq", "");
+        cy.get("[data-email-failed-filter]").should("not.exist");
+    });
+
     it("Delete Queue deletes the queued messages after a confirmation that names the count", () => {
         const subject = `Delete crm-10356-${Date.now()}`;
         // The page footer runs the timer jobs; keep it from sending the row first.

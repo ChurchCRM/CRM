@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\EmailLogService;
 use ChurchCRM\Utils\InputUtils;
 
@@ -13,6 +14,8 @@ use ChurchCRM\Utils\InputUtils;
  */
 $emailHistoryRows = $emailHistoryRows ?? [];
 $emailHistoryShowTo = $emailHistoryShowTo ?? false;
+$emailHistoryShowError = $emailHistoryShowError ?? false;
+$emailHistoryLinkPerson = $emailHistoryLinkPerson ?? false;
 ?>
 <?php if (empty($emailHistoryRows)) : ?>
     <div class="text-center text-body-secondary py-4" data-email-history-empty>
@@ -29,6 +32,7 @@ $emailHistoryShowTo = $emailHistoryShowTo ?? false;
                     <th><?= gettext('Subject') ?></th>
                     <?php if ($emailHistoryShowTo) : ?><th><?= gettext('To') ?></th><?php endif; ?>
                     <th class="w-1 text-nowrap"><?= gettext('Status') ?></th>
+                    <?php if ($emailHistoryShowError) : ?><th><?= gettext('Server error') ?></th><?php endif; ?>
                     <th class="w-1 text-nowrap d-none d-md-table-cell"><?= gettext('Sent by') ?></th>
                 </tr>
             </thead>
@@ -52,11 +56,22 @@ $emailHistoryShowTo = $emailHistoryShowTo ?? false;
                            title="<?= gettext('View this email') ?>"><?= InputUtils::escapeHTML($row['subject'] !== '' ? $row['subject'] : gettext('(no subject)')) ?></a>
                     </td>
                     <?php if ($emailHistoryShowTo) : ?>
-                        <td class="text-body-secondary small"><?= InputUtils::escapeHTML($row['address']) ?></td>
+                        <td class="text-body-secondary small">
+                            <?php if ($emailHistoryLinkPerson && !empty($row['personId'])) : ?>
+                                <a href="<?= SystemURLs::getRootPath() ?>/people/view/<?= (int) $row['personId'] ?>"><?= InputUtils::escapeHTML($row['address']) ?></a>
+                            <?php else : ?>
+                                <?= InputUtils::escapeHTML($row['address']) ?>
+                            <?php endif; ?>
+                        </td>
                     <?php endif; ?>
                     <td class="text-nowrap">
                         <span class="badge <?= $statusClass ?>" <?php if (!empty($row['error'])) : ?>title="<?= InputUtils::escapeAttribute($row['error']) ?>"<?php endif; ?>><?= InputUtils::escapeHTML($statusLabel) ?></span>
                     </td>
+                    <?php if ($emailHistoryShowError) : ?>
+                        <td class="text-danger small" data-email-failure-error>
+                            <?= InputUtils::escapeHTML(!empty($row['error']) ? $row['error'] : gettext('No server error recorded')) ?>
+                        </td>
+                    <?php endif; ?>
                     <td class="text-nowrap text-body-secondary d-none d-md-table-cell"><?= $row['sentBy'] !== null ? InputUtils::escapeHTML($row['sentBy']) : '<span class="text-secondary">' . gettext('Automatic') . '</span>' ?></td>
                 </tr>
             <?php endforeach; ?>
