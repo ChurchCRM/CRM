@@ -110,15 +110,16 @@
 | Route | Does |
 |---|---|
 | `GET /api/portal/giving/pledges` | The actor's cards (D3), with given and remaining |
-| `POST /api/portal/giving/pledges` | Add: fund, owner (`me` or `household`), amount per gift, schedule, start, end |
+| `POST /api/portal/giving/pledges` | Add: fund, owner (`me` or `household`), amount per gift, schedule, `start`, `end` (optional) |
 | `PUT /api/portal/giving/pledges/{id}` | Edit |
-| `POST /api/portal/giving/pledges/{id}/end` | End, on a date (default today) |
+| `POST /api/portal/giving/pledges/{id}/end` | End, on `date` (default today) |
 | `DELETE /api/portal/giving/pledges/{id}` | Delete, while nothing has been given |
 | `GET /api/portal/giving/pledges/{id}/gifts` | The payments counted toward it |
 
 - An `{id}` outside the actor's scope answers 404. One the actor can see but not change (a spouse's pledge, a card of several office rows) answers 403. Owner `household` from a non-HoH answers 403.
 - A second pledge for the same owner, fund and year answers 409 "You already have a pledge for this fund this year".
 - Amounts: 0.01 to 999,999.99 per gift and for the year total (`plg_amount` is `decimal(8,2)`).
+- Dates (`start`, `end`, `date`, and every date in a response) are ISO `Y-m-d` calendar dates in the church's time zone, never locale-formatted. Anything else answers 400. The page formats them for display.
 
 ### 2.3 Staff pages: progress per fund, family and person
 Reuse first. The family and fund views exist; they gain person lines and LEFT JOINs.
