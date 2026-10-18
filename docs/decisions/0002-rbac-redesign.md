@@ -57,7 +57,7 @@ These are **approved product requirements**, not proof of current behavior or ap
 |---|---|---|
 | `usr_AddRecords` | Add person and family records | People create, ordinary records |
 | `usr_EditRecords` | Edit person and family records | People update, ordinary records |
-| `usr_DeleteRecords` | Delete person and family records | People delete, ordinary records |
+| `usr_DeleteRecords` | Delete person and family records. It is a people flag, not a general delete permission | People delete, ordinary records |
 | `usr_MenuOptions` | The signed-in user's own menu options | Own-account preference, not a data grant |
 | `usr_ManageGroups` | Group administration. The flag is global, not per group | Group manage |
 | `usr_Finance` | Finance module | Finance, separate from pastoral records |
@@ -67,6 +67,8 @@ These are **approved product requirements**, not proof of current behavior or ap
 | `usr_Notes` | Private notes (`canReadPrivateNotes`) | Notes read, not highly confidential notes |
 | `usr_Admin` | System administration, including user administration | Church administrator template. Not a confidential-content grant (P6) |
 | `usr_EditSelf` | Self and same-family edits. Exclusive portal when set without staff flags | Portal-only role. Must not become staff. The member sign-in cutover deletes these accounts, and their people sign in as members with no account |
+
+**Scope of `usr_DeleteRecords`:** it gates deleting person and family records and nothing else. Each other area deletes under its own flag: fundraisers, donated items and paddle numbers under `usr_ManageFundraisers`; money under `usr_Finance`; groups under `usr_ManageGroups`; ministries under the ministry flags. A new delete action takes the flag of its own area, or a new capability in V2, and does not reuse `usr_DeleteRecords`. Three places check it outside people today and are tracked for cleanup: the fundraiser donated-item and paddle-number delete routes ([#10684](https://github.com/ChurchCRM/CRM/issues/10684)) and the volunteer-opportunity delete ([#10688](https://github.com/ChurchCRM/CRM/issues/10688)).
 
 **Audit limitation:** These are targeted inspections, not a complete route/schema/upgrade/test inventory. Do not infer security or exploitability from uninspected endpoints. Related historical findings: [#8999](https://github.com/ChurchCRM/CRM/issues/8999), [#9036](https://github.com/ChurchCRM/CRM/issues/9036), [#10206](https://github.com/ChurchCRM/CRM/issues/10206), [#10213](https://github.com/ChurchCRM/CRM/issues/10213).
 
