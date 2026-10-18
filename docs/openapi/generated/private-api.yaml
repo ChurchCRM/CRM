@@ -9061,6 +9061,8 @@ paths:
       responses:
         '200':
           description: 'Updated membership records for the person in the group'
+        '400':
+          description: 'Role does not belong to this group'
         '403':
           description: 'ManageGroupRole role required'
         '409':
@@ -9211,6 +9213,8 @@ paths:
       responses:
         '200':
           description: 'Default role updated'
+        '400':
+          description: 'Role does not belong to this group'
         '403':
           description: 'ManageGroupRole role required'
       security:
