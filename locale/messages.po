@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 15:03+0000\n"
+"POT-Creation-Date: 2026-10-18 15:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -899,6 +899,9 @@ msgid "Add New Field"
 msgstr ""
 
 msgid "Add New Fund"
+msgstr ""
+
+msgid "Add New Grade"
 msgstr ""
 
 msgid "Add New Group"
@@ -2778,6 +2781,9 @@ msgid "Change Event"
 msgstr ""
 
 msgid "Change Family Role"
+msgstr ""
+
+msgid "Change Grade Names"
 msgstr ""
 
 msgid "Change Password"
@@ -5464,6 +5470,9 @@ msgstr ""
 msgid "Enforce strict CSP headers to protect against XSS attacks"
 msgstr ""
 
+msgid "England and Wales"
+msgstr ""
+
 #. Context: locales
 msgid "English - Australia"
 msgstr ""
@@ -5839,6 +5848,9 @@ msgstr ""
 msgid "Every week on"
 msgstr ""
 
+msgid "Every year each person moves to the next grade in this order, and the last grade is cleared."
+msgstr ""
+
 msgid "Every year on"
 msgstr ""
 
@@ -5858,6 +5870,9 @@ msgid "Everyone is checked in!"
 msgstr ""
 
 msgid "Everyone is here!"
+msgstr ""
+
+msgid "Everyone with a grade will move up one grade now, and this will count as this year's promotion."
 msgstr ""
 
 msgid "Everything is correct"
@@ -6790,6 +6805,17 @@ msgstr ""
 msgid "Findings"
 msgstr ""
 
+#, php-format
+msgid "Finished %s, so the yearly promotion cleared the grade"
+msgstr ""
+
+#, php-format
+msgid "Finished the last grade: %d"
+msgstr ""
+
+msgid "Finishing the last grade (grade will be cleared): {{total}}"
+msgstr ""
+
 #. Context: countries
 msgid "Finland (Suomi)"
 msgstr ""
@@ -6958,6 +6984,9 @@ msgid "From"
 msgstr ""
 
 msgid "From Date"
+msgstr ""
+
+msgid "From Grade"
 msgstr ""
 
 msgid "From Phone Number"
@@ -7346,6 +7375,50 @@ msgstr ""
 
 #. plugin:google-analytics:section:2:content
 msgid "Google Analytics collects anonymized usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy."
+msgstr ""
+
+msgid "Grade"
+msgstr ""
+
+#, php-format
+msgid "Grade %s cleared when the grade names changed to %s"
+msgstr ""
+
+msgid "Grade Names"
+msgstr ""
+
+msgid "Grade Promotion"
+msgstr ""
+
+#, php-format
+msgid "Grade changed from %s to %s by the yearly promotion"
+msgstr ""
+
+msgid "Grade names not found"
+msgstr ""
+
+msgid "Grades"
+msgstr ""
+
+msgid "Grades Editor"
+msgstr ""
+
+msgid "Grades added"
+msgstr ""
+
+msgid "Grades removed"
+msgstr ""
+
+msgid "Grades renamed: {{total}}"
+msgstr ""
+
+msgid "Grades were already promoted this year, on {{date}}. Promoting again moves everyone up another grade."
+msgstr ""
+
+msgid "Grades were promoted by someone else in the meantime. Reload the page to see the new grades."
+msgstr ""
+
+msgid "Grades you added that match a name in the list and are combined with it"
 msgstr ""
 
 msgid "Grant individual permissions"
@@ -8158,6 +8231,12 @@ msgstr ""
 msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
 msgstr ""
 
+msgid "Internal: date and time of the last grade promotion. Do not edit manually."
+msgstr ""
+
+msgid "Internal: how the last grade promotion ran and how many people it moved. Do not edit manually."
+msgstr ""
+
 msgid "Internal: last date and time the background timer jobs completed (YYYY-MM-DD HH:MM:SS). Do not edit manually."
 msgstr ""
 
@@ -8168,6 +8247,15 @@ msgid "Internal: last date the daily email listing unfilled volunteer positions 
 msgstr ""
 
 msgid "Internal: last date the volunteer schedules were topped up to the scheduling horizon (YYYY-MM-DD). Do not edit manually."
+msgstr ""
+
+msgid "Internal: the country whose grade names were last applied to the grade list. Do not edit manually."
+msgstr ""
+
+msgid "Internal: the day the grade promotion date was last changed (YYYY-MM-DD). Do not edit manually."
+msgstr ""
+
+msgid "Internal: the list that holds the grade names. Do not edit manually."
 msgstr ""
 
 msgid "Internal: when the volunteer schedules were last topped up and how many occurrences that created. Do not edit manually."
@@ -8623,6 +8711,9 @@ msgstr ""
 msgid "Last name must be at least 2 characters"
 msgstr ""
 
+msgid "Last promotion"
+msgstr ""
+
 msgid "Last seen"
 msgstr ""
 
@@ -8682,6 +8773,9 @@ msgid "Leave blank to keep existing password"
 msgstr ""
 
 msgid "Leave both at 0 to serve exactly when the event happens. Moving the event moves the volunteers too."
+msgstr ""
+
+msgid "Leave empty for one grade"
 msgstr ""
 
 msgid "Leave open"
@@ -9676,7 +9770,14 @@ msgstr ""
 msgid "Move up"
 msgstr ""
 
+#, php-format
+msgid "Moved up: %d"
+msgstr ""
+
 msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
+msgstr ""
+
+msgid "Moving up: {{total}}"
 msgstr ""
 
 #. Context: countries
@@ -9959,6 +10060,9 @@ msgid "Next Member"
 msgstr ""
 
 msgid "Next Steps"
+msgstr ""
+
+msgid "Next automatic promotion"
 msgstr ""
 
 #, php-format
@@ -10420,6 +10524,9 @@ msgstr ""
 msgid "Nobody else is trained for this yet — tell your coordinator instead."
 msgstr ""
 
+msgid "Nobody has a grade to promote."
+msgstr ""
+
 msgid "Nobody has said how many volunteers each position needs, so there is nothing to fill."
 msgstr ""
 
@@ -10471,6 +10578,9 @@ msgstr ""
 
 #. Context: countries
 msgid "North Korea (조선 민주주의 인민 공화국)"
+msgstr ""
+
+msgid "Northern Ireland"
 msgstr ""
 
 #. Context: countries
@@ -11425,10 +11535,16 @@ msgstr ""
 msgid "People by Classification"
 msgstr ""
 
+msgid "People by Grade"
+msgstr ""
+
 msgid "People in Cart"
 msgstr ""
 
 msgid "People in Cart (filters ignored)"
+msgstr ""
+
+msgid "People in a range of school grades, such as Kindergarten through 5th"
 msgstr ""
 
 msgid "People not in"
@@ -11441,6 +11557,9 @@ msgid "People to notify when a new family or person is added"
 msgstr ""
 
 msgid "People who joined in a particular month"
+msgstr ""
+
+msgid "People whose grade is cleared: {{total}}"
 msgstr ""
 
 msgid "People with birthdays in a particular month"
@@ -12160,6 +12279,18 @@ msgstr ""
 msgid "Profile and security"
 msgstr ""
 
+msgid "Promote Grades"
+msgstr ""
+
+msgid "Promote Now"
+msgstr ""
+
+msgid "Promotion Day"
+msgstr ""
+
+msgid "Promotion Month"
+msgstr ""
+
 msgid "Prompt"
 msgstr ""
 
@@ -12643,6 +12774,9 @@ msgid "Rename Category"
 msgstr ""
 
 msgid "Rename Kiosk"
+msgstr ""
+
+msgid "Renames the grades to the names used in that country. People keep their grade, and grades you added yourself stay."
 msgstr ""
 
 msgid "Repeats"
@@ -13201,6 +13335,9 @@ msgstr ""
 msgid "Scheduled"
 msgstr ""
 
+msgid "Scheduled Task"
+msgstr ""
+
 msgid "Scheduled Tasks"
 msgstr ""
 
@@ -13227,6 +13364,9 @@ msgid "Schema Version"
 msgstr ""
 
 msgid "Scope grant not found"
+msgstr ""
+
+msgid "Scotland"
 msgstr ""
 
 msgid "Search"
@@ -14961,6 +15101,9 @@ msgstr ""
 msgid "The date and time of every occurrence come from its calendar event, so moving the event moves the schedule."
 msgstr ""
 
+msgid "The day of that month on which grades are promoted. A day past the end of the month means its last day."
+msgstr ""
+
 msgid "The days parameter must be a whole number between 1 and 365"
 msgstr ""
 
@@ -15025,6 +15168,12 @@ msgstr ""
 msgid "The events could not be staffed"
 msgstr ""
 
+msgid "The grades already use these names."
+msgstr ""
+
+msgid "The grades changed after the preview. Review the changes again before applying them."
+msgstr ""
+
 msgid "The grant could not be removed"
 msgstr ""
 
@@ -15068,6 +15217,9 @@ msgid "The ministry could not be reactivated"
 msgstr ""
 
 msgid "The ministry could not be saved"
+msgstr ""
+
+msgid "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off."
 msgstr ""
 
 msgid "The month that starts your organization's fiscal year"
@@ -15765,6 +15917,9 @@ msgid "Thousands Separator"
 msgstr ""
 
 msgid "Thousands separator and decimal separator must be different characters."
+msgstr ""
+
+msgid "Through Grade"
 msgstr ""
 
 msgid "Thursdays"
