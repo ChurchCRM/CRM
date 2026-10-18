@@ -384,6 +384,26 @@ describe("Kiosk API - ManageGroups role access (non-admin)", () => {
 
 describe("Kiosk Device Endpoint - Acceptance Enforcement", () => {
     let createdKioskId = null;
+    const extraKioskIds = [];
+
+    const registerExtraKiosk = () => {
+        cy.setupAdminSession();
+        cy.request({ method: "GET", url: "/kiosk/api/devices" }).then((before) => {
+            const existingIds = new Set((before.body.KioskDevices || []).map((k) => k.Id));
+            cy.request({ method: "POST", url: "/kiosk/api/allowRegistration" });
+            cy.clearCookies();
+            cy.visit("/kiosk/", { failOnStatusCode: false });
+            cy.getCookie("kioskCookie").then((cookie) => {
+                cy.clearCookies();
+                cy.setupAdminSession({ forceLogin: true });
+                cy.request({ method: "GET", url: "/kiosk/api/devices" }).then((after) => {
+                    (after.body.KioskDevices || []).filter((k) => !existingIds.has(k.Id)).forEach((k) => extraKioskIds.push(k.Id));
+                });
+                cy.clearCookies();
+                cy.setCookie("kioskCookie", cookie.value, { path: "/kiosk/" });
+            });
+        });
+    };
 
     before(() => {
         // Register a new unaccepted kiosk device via the proper flow
@@ -413,14 +433,10 @@ describe("Kiosk Device Endpoint - Acceptance Enforcement", () => {
     });
 
     after(() => {
-        if (createdKioskId) {
-            cy.setupAdminSession({ forceLogin: true });
-            cy.request({
-                method: "DELETE",
-                url: `/kiosk/api/devices/${createdKioskId}`,
-                failOnStatusCode: false,
-            });
-        }
+        cy.setupAdminSession({ forceLogin: true });
+        [createdKioskId, ...extraKioskIds].filter(Boolean).forEach((id) => {
+            cy.request({ method: "DELETE", url: `/kiosk/api/devices/${id}`, failOnStatusCode: false });
+        });
     });
 
     it("newly registered kiosk should not be accepted", () => {
@@ -455,10 +471,7 @@ describe("Kiosk Device Endpoint - Acceptance Enforcement", () => {
     });
 
     it("unaccepted kiosk is denied the guardian photo endpoint", () => {
-        cy.setupAdminSession();
-        cy.request({ method: "POST", url: "/kiosk/api/allowRegistration" });
-        cy.clearCookies();
-        cy.visit("/kiosk/", { failOnStatusCode: false });
+        registerExtraKiosk();
 
         cy.request({
             method: "GET",
@@ -494,6 +507,8 @@ describe("Kiosk Device - Guardian Photo and checkedInBy", () => {
     const MINOR_SIBLING_ID = 13;
     const UNRELATED_ADULT_ID = 2;
     const NON_ROSTER_CHILD_ID = 10;
+    const ONE_PIXEL_PNG =
+        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==";
 
     let kioskCookie = null;
     let kioskId = null;
@@ -555,6 +570,7 @@ describe("Kiosk Device - Guardian Photo and checkedInBy", () => {
                 { personIds: [CHILD_ID], checkedInById: GUARDIAN_ID },
                 200,
             );
+            cy.makePrivateAdminAPICall("POST", `/api/person/${GUARDIAN_ID}/photo`, { imgBase64: ONE_PIXEL_PNG }, 200);
         });
     });
 
@@ -566,17 +582,23 @@ describe("Kiosk Device - Guardian Photo and checkedInBy", () => {
         if (eventId) {
             cy.cleanupEvents([eventId]);
         }
+        cy.makePrivateAdminAPICall("DELETE", `/api/person/${GUARDIAN_ID}/photo`, null, 200);
     });
 
     describe("GET /kiosk/device/activeClassMember/{PersonId}/family/{MemberId}/photo", () => {
         it("serves the photo of an adult family member of a roster child", () => {
             asKiosk();
-            [GUARDIAN_ID, SECOND_GUARDIAN_ID].forEach((memberId) => {
-                cy.request({ method: "GET", url: photoUrl(CHILD_ID, memberId) }).then((response) => {
-                    expect(response.status).to.equal(200);
-                    expect(response.headers["content-type"]).to.match(/^image\//);
-                });
+            cy.request({ method: "GET", url: photoUrl(CHILD_ID, GUARDIAN_ID) }).then((response) => {
+                expect(response.status).to.equal(200);
+                expect(response.headers["content-type"]).to.match(/^image\//);
             });
+        });
+
+        it("returns 404 for an adult family member with no uploaded photo", () => {
+            asKiosk();
+            cy.request({ method: "GET", url: photoUrl(CHILD_ID, SECOND_GUARDIAN_ID), failOnStatusCode: false })
+                .its("status")
+                .should("equal", 404);
         });
 
         it("denies a minor family member", () => {
@@ -633,6 +655,30 @@ describe("Kiosk Device - Guardian Photo and checkedInBy", () => {
                 expect(byId[CHILD_ID].checkedInBy.hasPhoto).to.be.a("boolean");
                 expect(byId[OTHER_CHILD_ID].checkedInBy).to.equal(null);
             });
+        });
+
+        const reCheckIn = (checkedInById) => {
+            const body = checkedInById ? { personIds: [CHILD_ID], checkedInById } : { personIds: [CHILD_ID] };
+            cy.makePrivateAdminAPICall("POST", `/api/events/${eventId}/checkin-people`, body, 200);
+        };
+
+        const childCheckedInBy = () => {
+            asKiosk();
+            return cy
+                .request({ method: "GET", url: "/kiosk/device/activeClassMembers" })
+                .then((response) => response.body.People.find((p) => p.Id === CHILD_ID).checkedInBy);
+        };
+
+        it("clears the previous checker when a later check-in names no guardian", () => {
+            reCheckIn(null);
+            childCheckedInBy().should("equal", null);
+            reCheckIn(GUARDIAN_ID);
+        });
+
+        it("hides a checker who is not an adult in the child's family", () => {
+            reCheckIn(UNRELATED_ADULT_ID);
+            childCheckedInBy().should("equal", null);
+            reCheckIn(GUARDIAN_ID);
         });
 
         it("clears checkedInBy after checkout", () => {

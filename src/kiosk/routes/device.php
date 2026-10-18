@@ -23,6 +23,25 @@ use Slim\Views\PhpRenderer;
 // They use kiosk cookie authentication, not user authentication
 
 /**
+ * IDs of everyone on the kiosk's active class roster (group members + walk-in guests).
+ * Iterates because array_column() reads zeros from a Propel ObjectCollection.
+ *
+ * @return list<int>
+ */
+function getKioskRosterIds(object $assignment): array
+{
+    $ids = [];
+    foreach ($assignment->getActiveGroupMembers() as $member) {
+        $ids[] = (int) $member->getId();
+    }
+    foreach ($assignment->getEventGuests() as $guest) {
+        $ids[] = (int) $guest->getId();
+    }
+
+    return $ids;
+}
+
+/**
  * Return the adult members of a person's family, excluding the person
  * themselves, formatted for the kiosk "Checked In By" / "Checked Out By"
  * picker.
@@ -410,7 +429,16 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
 
         foreach ($peopleData as &$personEntry) {
             $attendRecord = (int) $personEntry['status'] === 1 ? ($attendByPersonId[$personEntry['Id']] ?? null) : null;
-            $personEntry['checkedInBy'] = $attendRecord !== null ? ($checkerData[(int) $attendRecord->getCheckinId()] ?? null) : null;
+            $checker = $attendRecord !== null ? ($checkerData[(int) $attendRecord->getCheckinId()] ?? null) : null;
+            if ($checker !== null) {
+                // Only publish a checker who is an adult in the child's family (same rule as the photo route).
+                $child = PersonQuery::create()->findOneById($personEntry['Id']);
+                $adultIds = $child !== null ? array_column(getAdultFamilyMembers($child), 'Id') : [];
+                if (!in_array($checker['Id'], $adultIds, true)) {
+                    $checker = null;
+                }
+            }
+            $personEntry['checkedInBy'] = $checker;
         }
         unset($personEntry); // break the reference from the foreach
 
@@ -438,18 +466,15 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
         // public props/array keys, not ORM getters), which silently 403s every
         // photo/family request with a confusing "not in roster" error. Iterate
         // and call ->getId() instead. See PR #8706 history; same trap recurred.
-        $rosterIds = [];
-        foreach ($assignment->getActiveGroupMembers() as $member) {
-            $rosterIds[] = (int) $member->getId();
-        }
-        foreach ($assignment->getEventGuests() as $guest) {
-            $rosterIds[] = (int) $guest->getId();
-        }
+        $rosterIds = getKioskRosterIds($assignment);
         if (!in_array($personId, $rosterIds, true)) {
             return SlimUtils::renderErrorJSON($response, gettext('Person not in active class roster'), [], 403);
         }
 
         $photo = new Photo('Person', $personId);
+        if (!$photo->hasUploadedPhoto()) {
+            return SlimUtils::renderErrorJSON($response, gettext('Photo not found'), [], 404);
+        }
 
         $response->getBody()->write($photo->getPhotoBytes());
 
@@ -483,10 +508,7 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
         }
 
         // Verify the child is in the active class roster.
-        $rosterIds = [];
-        foreach ($assignment->getActiveGroupMembers() as $rosterMember) {
-            $rosterIds[] = (int) $rosterMember->getId();
-        }
+        $rosterIds = getKioskRosterIds($assignment);
         if (!in_array($personId, $rosterIds, true)) {
             return SlimUtils::renderErrorJSON($response, gettext('Person not in active class roster'), [], 403);
         }
@@ -503,6 +525,9 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
         }
 
         $photo = new Photo('Person', $memberId);
+        if (!$photo->hasUploadedPhoto()) {
+            return SlimUtils::renderErrorJSON($response, gettext('Photo not found'), [], 404);
+        }
 
         $response->getBody()->write($photo->getPhotoBytes());
 
@@ -528,13 +553,7 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
         // public props/array keys, not ORM getters), which silently 403s every
         // photo/family request with a confusing "not in roster" error. Iterate
         // and call ->getId() instead. See PR #8706 history; same trap recurred.
-        $rosterIds = [];
-        foreach ($assignment->getActiveGroupMembers() as $member) {
-            $rosterIds[] = (int) $member->getId();
-        }
-        foreach ($assignment->getEventGuests() as $guest) {
-            $rosterIds[] = (int) $guest->getId();
-        }
+        $rosterIds = getKioskRosterIds($assignment);
         if (!in_array($personId, $rosterIds, true)) {
             return SlimUtils::renderErrorJSON($response, gettext('Person not in active class roster'), [], 403);
         }
