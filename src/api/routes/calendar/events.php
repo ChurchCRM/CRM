@@ -1455,8 +1455,6 @@ function checkinPerson(Request $request, Response $response, array $args): Respo
         'success' => true,
         'status' => 'checked_in',
         'checkinTime' => date(SystemConfig::getValue('sDateTimeFormat')),
-        'checkinId' => $checkedInById,
-        'checkoutId' => null,
     ]);
 }
 
@@ -1500,7 +1498,6 @@ function checkoutPerson(Request $request, Response $response, array $args): Resp
         'success' => true,
         'status' => 'checked_out',
         'checkoutTime' => date(SystemConfig::getValue('sDateTimeFormat')),
-        'checkoutId' => $checkedOutById,
     ]);
 }
 

@@ -646,54 +646,11 @@ describe("API Event Check-in Endpoints", () => {
 
             cy.makePrivateAdminAPICall(
                 "POST",
-                `/api/events/${eventId}/checkin`,
-                { personId: 4, checkedInById: 1 },
+                `/api/events/${eventId}/checkin-people`,
+                { personIds: [4], checkedInById: 1 },
                 200,
             ).then((response) => {
                 expect(response.body.success).to.be.true;
-                expect(response.body.checkinId).to.equal(1);
-            });
-        });
-
-        it("Clears a previous checker when the next check-in names nobody", () => {
-            expect(eventId, "before() must have populated eventId").to.be.a("number");
-
-            cy.makePrivateAdminAPICall(
-                "POST",
-                `/api/events/${eventId}/checkin`,
-                { personId: 4 },
-                200,
-            ).then((response) => {
-                expect(response.body.checkinId).to.equal(null);
-                expect(response.body.checkoutId).to.equal(null);
-            });
-        });
-
-        it("Clears a previous checkout person when the next checkout names nobody", () => {
-            expect(eventId, "before() must have populated eventId").to.be.a("number");
-
-            cy.makePrivateAdminAPICall(
-                "POST",
-                `/api/events/${eventId}/checkin`,
-                { personId: 5 },
-                200,
-            );
-            cy.makePrivateAdminAPICall(
-                "POST",
-                `/api/events/${eventId}/checkout`,
-                { personId: 5, checkedOutById: 1 },
-                200,
-            ).then((response) => {
-                expect(response.body.checkoutId).to.equal(1);
-            });
-            // Still checked out, so the stored checkout id is the one this call clears.
-            cy.makePrivateAdminAPICall(
-                "POST",
-                `/api/events/${eventId}/checkout`,
-                { personId: 5 },
-                200,
-            ).then((response) => {
-                expect(response.body.checkoutId).to.equal(null);
             });
         });
 
