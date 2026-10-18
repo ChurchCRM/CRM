@@ -163,6 +163,16 @@ function mailpitBaseUrl(): string {
   return `http://127.0.0.1:${process.env.MAILSERVER_GUI_PORT || 8025}`;
 }
 
+/**
+ * Gives specs that call Mailpit with cy.request() the same URL as the mail
+ * tasks, read with Cypress.mailpitUrl(). Every config that registers
+ * mailTasks calls this.
+ */
+export function exposeMailpitUrl(config: any) {
+  config.expose = { ...config.expose, mailpitUrl: mailpitBaseUrl() };
+  return config;
+}
+
 async function mailpitFetch(path: string, init?: Record<string, unknown>) {
   // A short timeout keeps "no mail server here" from costing the spec a minute.
   const controller = new AbortController();
@@ -326,6 +336,7 @@ export function setupCommonNodeEvents(on: any, config: any) {
   }
 
   on('task', tasks);
+  exposeMailpitUrl(config);
 
   // Common browser launch options
   on('before:browser:launch', (browser: any, launchOptions: any) => {

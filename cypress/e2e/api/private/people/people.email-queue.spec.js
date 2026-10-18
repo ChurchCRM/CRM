@@ -6,10 +6,8 @@
  * administrator can delete what is still queued (DELETE /admin/api/email/queue).
  *
  * Failures come from Mailpit's chaos triggers (docker-compose sets MP_ENABLE_CHAOS), so the
- * stack's mail server must be recreated after that change. Override Mailpit with
- * `--env mailpitUrl=http://localhost:8070` on a stack with non-default ports.
+ * stack's mail server must be recreated after that change.
  */
-const mailpit = () => Cypress.testEnv("mailpitUrl") || "http://localhost:8025";
 
 const CHAOS_OFF = {
     Sender: { ErrorCode: 451, Probability: 0 },
@@ -19,13 +17,13 @@ const CHAOS_OFF = {
 
 const setChaos = (triggers = {}) =>
     cy
-        .then(() => cy.request({ method: "PUT", url: `${mailpit()}/api/v1/chaos`, body: { ...CHAOS_OFF, ...triggers } }))
+        .then(() => cy.request({ method: "PUT", url: `${Cypress.mailpitUrl()}/api/v1/chaos`, body: { ...CHAOS_OFF, ...triggers } }))
         .its("status")
         .should("eq", 200);
 
 const mailpitMessages = (tag) =>
     cy
-        .request(`${mailpit()}/api/v1/search?query=${encodeURIComponent(`subject:${tag}`)}&limit=500`)
+        .request(`${Cypress.mailpitUrl()}/api/v1/search?query=${encodeURIComponent(`subject:${tag}`)}&limit=500`)
         .then((resp) => resp.body.messages);
 
 const queue = (personIds, subject, keyName = "admin.api.key") =>
@@ -66,7 +64,7 @@ const concurrently = (requests) =>
     );
 
 before(() => {
-    cy.rememberTestEnv(["mailpitUrl", "admin.api.key"]);
+    cy.rememberTestEnv(["admin.api.key"]);
     setChaos();
 });
 
