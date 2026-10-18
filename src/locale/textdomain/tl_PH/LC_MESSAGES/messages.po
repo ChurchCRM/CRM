@@ -24480,3 +24480,203 @@ msgstr "Ang huling 20 pagpapadala lang ang ipinapakita ng talahanayan. Buksan an
 msgid "View %d failed sends across all email history"
 msgstr "Tingnan ang %d nabigong pagpapadala sa buong kasaysayan ng email"
 
+#: 
+msgid "Add New Grade"
+msgstr "Magdagdag ng bagong baitang"
+
+#: 
+msgid "Change Grade Names"
+msgstr "Baguhin ang mga pangalan ng baitang"
+
+#: 
+msgid "England and Wales"
+msgstr "Inglatera at Wales"
+
+#: 
+msgid "Every year each person moves to the next grade in this order, and the last grade is cleared."
+msgstr "Bawat taon, lumilipat ang bawat tao sa susunod na baitang ayon sa pagkakasunud-sunod na ito, at binubura ang huling baitang."
+
+#: 
+msgid "Everyone with a grade will move up one grade now, and this will count as this year's promotion."
+msgstr "Ang lahat ng may baitang ay aakyat ng isang baitang ngayon, at ito ang bibilangin bilang pag-angat ngayong taon."
+
+#: 
+msgid "Finished %s, so the yearly promotion cleared the grade"
+msgstr "Natapos ang %s, kaya binura ng taunang pag-angat ang baitang"
+
+#: 
+msgid "Finished the last grade: %d"
+msgstr "Natapos ang huling baitang: %d"
+
+#: 
+msgid "Finishing the last grade (grade will be cleared): {{total}}"
+msgstr "Tinatapos ang huling baitang (buburahin ang baitang): {{total}}"
+
+#: 
+msgid "From Grade"
+msgstr "Mula sa baitang"
+
+#: 
+msgid "Grade"
+msgstr "Baitang"
+
+#: 
+msgid "Grade %s cleared when the grade names changed to %s"
+msgstr "Binura ang baitang %s nang naging %s ang mga pangalan ng baitang"
+
+#: 
+msgid "Grade Names"
+msgstr "Mga pangalan ng baitang"
+
+#: 
+msgid "Grade Promotion"
+msgstr "Pag-angat ng baitang"
+
+#: 
+msgid "Grade changed from %s to %s by the yearly promotion"
+msgstr "Binago ang baitang mula %s patungong %s ng taunang pag-angat"
+
+#: 
+msgid "Grade names not found"
+msgstr "Hindi nahanap ang mga pangalan ng baitang"
+
+#: 
+msgid "Grades"
+msgstr "Mga baitang"
+
+#: 
+msgid "Grades Editor"
+msgstr "Patnugot ng mga baitang"
+
+#: 
+msgid "Grades added"
+msgstr "Nadagdag ang mga baitang"
+
+#: 
+msgid "Grades removed"
+msgstr "Naalis ang mga baitang"
+
+#: 
+msgid "Grades renamed: {{total}}"
+msgstr "Pinalitan ang pangalan ng mga baitang: {{total}}"
+
+#: 
+msgid "Grades were already promoted this year, on {{date}}. Promoting again moves everyone up another grade."
+msgstr "Naitaas na ang mga baitang ngayong taon, noong {{date}}. Ang muling pag-angat ay magpapataas sa lahat ng isa pang baitang."
+
+#: 
+msgid "Grades were promoted by someone else in the meantime. Reload the page to see the new grades."
+msgstr "Itinaas ng iba ang mga baitang sa ngayon. I-reload ang pahina para makita ang mga bagong baitang."
+
+#: 
+msgid "Grades you added that match a name in the list and are combined with it"
+msgstr "Mga baitang na idinagdag mo na tumutugma sa isang pangalan sa listahan at pinagsasama rito"
+
+#: 
+msgid "Internal: date and time of the last grade promotion. Do not edit manually."
+msgstr "Panloob: petsa at oras ng huling pag-angat ng baitang. Huwag i-edit nang mano-mano."
+
+#: 
+msgid "Internal: how the last grade promotion ran and how many people it moved. Do not edit manually."
+msgstr "Panloob: kung paano tumakbo ang huling pag-angat ng baitang at ilang tao ang inilipat nito. Huwag i-edit nang mano-mano."
+
+#: 
+msgid "Internal: the country whose grade names were last applied to the grade list. Do not edit manually."
+msgstr "Panloob: ang bansang ang mga pangalan ng baitang ay huling inilapat sa listahan ng baitang. Huwag i-edit nang mano-mano."
+
+#: 
+msgid "Internal: the day the grade promotion date was last changed (YYYY-MM-DD). Do not edit manually."
+msgstr "Panloob: ang araw na huling binago ang petsa ng pag-angat ng baitang (YYYY-MM-DD). Huwag i-edit nang mano-mano."
+
+#: 
+msgid "Internal: the list that holds the grade names. Do not edit manually."
+msgstr "Panloob: ang listahang nagtataglay ng mga pangalan ng baitang. Huwag i-edit nang mano-mano."
+
+#: 
+msgid "Last promotion"
+msgstr "Huling pag-angat"
+
+#: 
+msgid "Leave empty for one grade"
+msgstr "Iwanang walang laman para sa isang baitang"
+
+#: 
+msgid "Moved up: %d"
+msgstr "Umakyat: %d"
+
+#: 
+msgid "Moving up: {{total}}"
+msgstr "Umaakyat: {{total}}"
+
+#: 
+msgid "Next automatic promotion"
+msgstr "Susunod na awtomatikong pag-angat"
+
+#: 
+msgid "Nobody has a grade to promote."
+msgstr "Walang may baitang na iaangat."
+
+#: 
+msgid "Northern Ireland"
+msgstr "Hilagang Irlanda"
+
+#: 
+msgid "People by Grade"
+msgstr "Mga tao ayon sa baitang"
+
+#: 
+msgid "People in a range of school grades, such as Kindergarten through 5th"
+msgstr "Mga tao sa saklaw ng mga baitang sa paaralan, gaya ng kinder hanggang ika-5"
+
+#: 
+msgid "People whose grade is cleared: {{total}}"
+msgstr "Mga taong buburahin ang baitang: {{total}}"
+
+#: 
+msgid "Promote Grades"
+msgstr "Itaas ang mga baitang"
+
+#: 
+msgid "Promote Now"
+msgstr "Itaas ngayon"
+
+#: 
+msgid "Promotion Day"
+msgstr "Araw ng pag-angat"
+
+#: 
+msgid "Promotion Month"
+msgstr "Buwan ng pag-angat"
+
+#: 
+msgid "Renames the grades to the names used in that country. People keep their grade, and grades you added yourself stay."
+msgstr "Pinapalitan ang mga pangalan ng baitang ng mga pangalang ginagamit sa bansang iyon. Nanatili ang baitang ng mga tao, at nananatili ang mga baitang na idinagdag mo mismo."
+
+#: 
+msgid "Scheduled Task"
+msgstr "Nakaiskedyul na gawain"
+
+#: 
+msgid "Scotland"
+msgstr "Eskosya"
+
+#: 
+msgid "The day of that month on which grades are promoted. A day past the end of the month means its last day."
+msgstr "Ang araw ng buwang iyon kung kailan itinaas ang mga baitang. Ang araw na lampas sa katapusan ng buwan ay nangangahulugang huling araw nito."
+
+#: 
+msgid "The grades already use these names."
+msgstr "Ginagamit na ng mga baitang ang mga pangalang ito."
+
+#: 
+msgid "The grades changed after the preview. Review the changes again before applying them."
+msgstr "Nagbago ang mga baitang pagkatapos ng preview. Suriin muli ang mga pagbabago bago ilapat."
+
+#: 
+msgid "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off."
+msgstr "Ang buwan kung kailan umaakyat ng isang baitang ang lahat ng may baitang. Ang Sarado ay pinapatay ang awtomatikong pag-angat."
+
+#: 
+msgid "Through Grade"
+msgstr "Hanggang baitang"
+

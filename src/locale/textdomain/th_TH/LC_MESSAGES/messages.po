@@ -24460,3 +24460,203 @@ msgstr "ตารางแสดงเฉพาะการส่งล่าส
 msgid "View %d failed sends across all email history"
 msgstr "ดูการส่งที่ล้มเหลว %d รายการในประวัติอีเมลทั้งหมด"
 
+#: 
+msgid "Add New Grade"
+msgstr "เพิ่มชั้นเรียนใหม่"
+
+#: 
+msgid "Change Grade Names"
+msgstr "เปลี่ยนชื่อชั้นเรียน"
+
+#: 
+msgid "England and Wales"
+msgstr "อังกฤษและเวลส์"
+
+#: 
+msgid "Every year each person moves to the next grade in this order, and the last grade is cleared."
+msgstr "ทุกปีแต่ละคนจะเลื่อนไปชั้นเรียนถัดไปตามลำดับนี้ และชั้นเรียนสุดท้ายจะถูกล้าง"
+
+#: 
+msgid "Everyone with a grade will move up one grade now, and this will count as this year's promotion."
+msgstr "ทุกคนที่มีชั้นเรียนจะเลื่อนขึ้นหนึ่งชั้นเรียนตอนนี้ และนับเป็นการเลื่อนชั้นของปีนี้"
+
+#: 
+msgid "Finished %s, so the yearly promotion cleared the grade"
+msgstr "จบ %s แล้ว ดังนั้นการเลื่อนชั้นประจำปีจึงล้างชั้นเรียน"
+
+#: 
+msgid "Finished the last grade: %d"
+msgstr "จบชั้นเรียนสุดท้าย: %d"
+
+#: 
+msgid "Finishing the last grade (grade will be cleared): {{total}}"
+msgstr "กำลังจบชั้นเรียนสุดท้าย (ชั้นเรียนจะถูกล้าง): {{total}}"
+
+#: 
+msgid "From Grade"
+msgstr "จากชั้นเรียน"
+
+#: 
+msgid "Grade"
+msgstr "ชั้นเรียน"
+
+#: 
+msgid "Grade %s cleared when the grade names changed to %s"
+msgstr "ชั้นเรียน %s ถูกล้างเมื่อชื่อชั้นเรียนเปลี่ยนเป็น %s"
+
+#: 
+msgid "Grade Names"
+msgstr "ชื่อชั้นเรียน"
+
+#: 
+msgid "Grade Promotion"
+msgstr "การเลื่อนชั้นเรียน"
+
+#: 
+msgid "Grade changed from %s to %s by the yearly promotion"
+msgstr "ชั้นเรียนเปลี่ยนจาก %s เป็น %s โดยการเลื่อนชั้นประจำปี"
+
+#: 
+msgid "Grade names not found"
+msgstr "ไม่พบชื่อชั้นเรียน"
+
+#: 
+msgid "Grades"
+msgstr "ชั้นเรียนทั้งหมด"
+
+#: 
+msgid "Grades Editor"
+msgstr "ตัวแก้ไขชั้นเรียน"
+
+#: 
+msgid "Grades added"
+msgstr "เพิ่มชั้นเรียนแล้ว"
+
+#: 
+msgid "Grades removed"
+msgstr "นำชั้นเรียนออกแล้ว"
+
+#: 
+msgid "Grades renamed: {{total}}"
+msgstr "เปลี่ยนชื่อชั้นเรียน: {{total}}"
+
+#: 
+msgid "Grades were already promoted this year, on {{date}}. Promoting again moves everyone up another grade."
+msgstr "มีการเลื่อนชั้นเรียนแล้วในปีนี้ เมื่อ {{date}} การเลื่อนอีกครั้งจะเลื่อนทุกคนขึ้นอีกหนึ่งชั้นเรียน"
+
+#: 
+msgid "Grades were promoted by someone else in the meantime. Reload the page to see the new grades."
+msgstr "มีคนอื่นเลื่อนชั้นเรียนไปแล้วในระหว่างนี้ โหลดหน้าใหม่เพื่อดูชั้นเรียนใหม่"
+
+#: 
+msgid "Grades you added that match a name in the list and are combined with it"
+msgstr "ชั้นเรียนที่คุณเพิ่มซึ่งตรงกับชื่อในรายการและถูกรวมเข้ากับชื่อนั้น"
+
+#: 
+msgid "Internal: date and time of the last grade promotion. Do not edit manually."
+msgstr "ภายใน: วันที่และเวลาของการเลื่อนชั้นเรียนครั้งล่าสุด อย่าแก้ไขด้วยตนเอง"
+
+#: 
+msgid "Internal: how the last grade promotion ran and how many people it moved. Do not edit manually."
+msgstr "ภายใน: การเลื่อนชั้นเรียนครั้งล่าสุดทำงานอย่างไรและย้ายคนกี่คน อย่าแก้ไขด้วยตนเอง"
+
+#: 
+msgid "Internal: the country whose grade names were last applied to the grade list. Do not edit manually."
+msgstr "ภายใน: ประเทศที่นำชื่อชั้นเรียนไปใช้กับรายการชั้นเรียนครั้งล่าสุด อย่าแก้ไขด้วยตนเอง"
+
+#: 
+msgid "Internal: the day the grade promotion date was last changed (YYYY-MM-DD). Do not edit manually."
+msgstr "ภายใน: วันที่เปลี่ยนวันเลื่อนชั้นเรียนครั้งล่าสุด (YYYY-MM-DD) อย่าแก้ไขด้วยตนเอง"
+
+#: 
+msgid "Internal: the list that holds the grade names. Do not edit manually."
+msgstr "ภายใน: รายการที่เก็บชื่อชั้นเรียน อย่าแก้ไขด้วยตนเอง"
+
+#: 
+msgid "Last promotion"
+msgstr "การเลื่อนชั้นครั้งล่าสุด"
+
+#: 
+msgid "Leave empty for one grade"
+msgstr "เว้นว่างไว้สำหรับชั้นเรียนเดียว"
+
+#: 
+msgid "Moved up: %d"
+msgstr "เลื่อนขึ้นแล้ว: %d"
+
+#: 
+msgid "Moving up: {{total}}"
+msgstr "กำลังเลื่อนขึ้น: {{total}}"
+
+#: 
+msgid "Next automatic promotion"
+msgstr "การเลื่อนชั้นอัตโนมัติครั้งถัดไป"
+
+#: 
+msgid "Nobody has a grade to promote."
+msgstr "ไม่มีใครมีชั้นเรียนให้เลื่อน"
+
+#: 
+msgid "Northern Ireland"
+msgstr "ไอร์แลนด์เหนือ"
+
+#: 
+msgid "People by Grade"
+msgstr "คนตามชั้นเรียน"
+
+#: 
+msgid "People in a range of school grades, such as Kindergarten through 5th"
+msgstr "คนในช่วงชั้นเรียนของโรงเรียน เช่น อนุบาลถึงชั้นประถมปีที่ 5"
+
+#: 
+msgid "People whose grade is cleared: {{total}}"
+msgstr "คนที่ชั้นเรียนถูกล้าง: {{total}}"
+
+#: 
+msgid "Promote Grades"
+msgstr "เลื่อนชั้นเรียน"
+
+#: 
+msgid "Promote Now"
+msgstr "เลื่อนชั้นตอนนี้"
+
+#: 
+msgid "Promotion Day"
+msgstr "วันเลื่อนชั้น"
+
+#: 
+msgid "Promotion Month"
+msgstr "เดือนเลื่อนชั้น"
+
+#: 
+msgid "Renames the grades to the names used in that country. People keep their grade, and grades you added yourself stay."
+msgstr "เปลี่ยนชื่อชั้นเรียนเป็นชื่อที่ใช้ในประเทศนั้น คนยังคงชั้นเรียนเดิม และชั้นเรียนที่คุณเพิ่มเองจะคงอยู่"
+
+#: 
+msgid "Scheduled Task"
+msgstr "งานตามกำหนดการ"
+
+#: 
+msgid "Scotland"
+msgstr "สกอตแลนด์"
+
+#: 
+msgid "The day of that month on which grades are promoted. A day past the end of the month means its last day."
+msgstr "วันของเดือนนั้นที่เลื่อนชั้นเรียน วันที่เลยสิ้นเดือนหมายถึงวันสุดท้ายของเดือน"
+
+#: 
+msgid "The grades already use these names."
+msgstr "ชั้นเรียนใช้ชื่อเหล่านี้แล้ว"
+
+#: 
+msgid "The grades changed after the preview. Review the changes again before applying them."
+msgstr "ชั้นเรียนเปลี่ยนหลังการแสดงตัวอย่าง ตรวจสอบการเปลี่ยนแปลงอีกครั้งก่อนนำไปใช้"
+
+#: 
+msgid "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off."
+msgstr "เดือนที่ทุกคนที่มีชั้นเรียนเลื่อนขึ้นหนึ่งชั้นเรียน ปิดจะปิดการเลื่อนชั้นอัตโนมัติ"
+
+#: 
+msgid "Through Grade"
+msgstr "ถึงชั้นเรียน"
+

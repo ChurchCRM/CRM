@@ -24632,3 +24632,203 @@ msgstr "В таблице показаны только последние 20 о
 msgid "View %d failed sends across all email history"
 msgstr "Показать неудачные отправки во всей истории писем: %d"
 
+#: 
+msgid "Add New Grade"
+msgstr "Добавить новый класс"
+
+#: 
+msgid "Change Grade Names"
+msgstr "Изменить названия классов"
+
+#: 
+msgid "England and Wales"
+msgstr "Англия и Уэльс"
+
+#: 
+msgid "Every year each person moves to the next grade in this order, and the last grade is cleared."
+msgstr "Каждый год каждый человек переходит в следующий класс в этом порядке, а последний класс очищается."
+
+#: 
+msgid "Everyone with a grade will move up one grade now, and this will count as this year's promotion."
+msgstr "Все, у кого есть класс, сейчас перейдут на один класс выше, и это будет считаться переводом этого года."
+
+#: 
+msgid "Finished %s, so the yearly promotion cleared the grade"
+msgstr "Закончил %s, поэтому ежегодный перевод очистил класс"
+
+#: 
+msgid "Finished the last grade: %d"
+msgstr "Закончили последний класс: %d"
+
+#: 
+msgid "Finishing the last grade (grade will be cleared): {{total}}"
+msgstr "Заканчивают последний класс (класс будет очищен): {{total}}"
+
+#: 
+msgid "From Grade"
+msgstr "С класса"
+
+#: 
+msgid "Grade"
+msgstr "Класс"
+
+#: 
+msgid "Grade %s cleared when the grade names changed to %s"
+msgstr "Класс %s очищен, когда названия классов изменились на %s"
+
+#: 
+msgid "Grade Names"
+msgstr "Названия классов"
+
+#: 
+msgid "Grade Promotion"
+msgstr "Перевод в следующий класс"
+
+#: 
+msgid "Grade changed from %s to %s by the yearly promotion"
+msgstr "Класс изменён с %s на %s ежегодным переводом"
+
+#: 
+msgid "Grade names not found"
+msgstr "Названия классов не найдены"
+
+#: 
+msgid "Grades"
+msgstr "Классы"
+
+#: 
+msgid "Grades Editor"
+msgstr "Редактор классов"
+
+#: 
+msgid "Grades added"
+msgstr "Классы добавлены"
+
+#: 
+msgid "Grades removed"
+msgstr "Классы удалены"
+
+#: 
+msgid "Grades renamed: {{total}}"
+msgstr "Классы переименованы: {{total}}"
+
+#: 
+msgid "Grades were already promoted this year, on {{date}}. Promoting again moves everyone up another grade."
+msgstr "Классы уже переводились в этом году, {{date}}. Повторный перевод поднимает всех ещё на один класс."
+
+#: 
+msgid "Grades were promoted by someone else in the meantime. Reload the page to see the new grades."
+msgstr "Классы тем временем перевёл кто-то другой. Обновите страницу, чтобы увидеть новые классы."
+
+#: 
+msgid "Grades you added that match a name in the list and are combined with it"
+msgstr "Добавленные вами классы, которые совпадают с названием в списке и объединяются с ним"
+
+#: 
+msgid "Internal: date and time of the last grade promotion. Do not edit manually."
+msgstr "Служебное: дата и время последнего перевода классов. Не изменяйте вручную."
+
+#: 
+msgid "Internal: how the last grade promotion ran and how many people it moved. Do not edit manually."
+msgstr "Служебное: как прошёл последний перевод классов и сколько человек он переместил. Не изменяйте вручную."
+
+#: 
+msgid "Internal: the country whose grade names were last applied to the grade list. Do not edit manually."
+msgstr "Служебное: страна, названия классов которой последними применены к списку классов. Не изменяйте вручную."
+
+#: 
+msgid "Internal: the day the grade promotion date was last changed (YYYY-MM-DD). Do not edit manually."
+msgstr "Служебное: день последнего изменения даты перевода классов (YYYY-MM-DD). Не изменяйте вручную."
+
+#: 
+msgid "Internal: the list that holds the grade names. Do not edit manually."
+msgstr "Служебное: список, в котором хранятся названия классов. Не изменяйте вручную."
+
+#: 
+msgid "Last promotion"
+msgstr "Последний перевод"
+
+#: 
+msgid "Leave empty for one grade"
+msgstr "Оставьте пустым для одного класса"
+
+#: 
+msgid "Moved up: %d"
+msgstr "Переведены выше: %d"
+
+#: 
+msgid "Moving up: {{total}}"
+msgstr "Переходят выше: {{total}}"
+
+#: 
+msgid "Next automatic promotion"
+msgstr "Следующий автоматический перевод"
+
+#: 
+msgid "Nobody has a grade to promote."
+msgstr "Ни у кого нет класса для перевода."
+
+#: 
+msgid "Northern Ireland"
+msgstr "Северная Ирландия"
+
+#: 
+msgid "People by Grade"
+msgstr "Люди по классам"
+
+#: 
+msgid "People in a range of school grades, such as Kindergarten through 5th"
+msgstr "Люди в диапазоне школьных классов, например от детского сада до 5-го класса"
+
+#: 
+msgid "People whose grade is cleared: {{total}}"
+msgstr "Люди, чей класс очищается: {{total}}"
+
+#: 
+msgid "Promote Grades"
+msgstr "Перевести классы"
+
+#: 
+msgid "Promote Now"
+msgstr "Перевести сейчас"
+
+#: 
+msgid "Promotion Day"
+msgstr "День перевода"
+
+#: 
+msgid "Promotion Month"
+msgstr "Месяц перевода"
+
+#: 
+msgid "Renames the grades to the names used in that country. People keep their grade, and grades you added yourself stay."
+msgstr "Переименовывает классы в названия, используемые в этой стране. Люди сохраняют свой класс, а классы, добавленные вами, остаются."
+
+#: 
+msgid "Scheduled Task"
+msgstr "Запланированная задача"
+
+#: 
+msgid "Scotland"
+msgstr "Шотландия"
+
+#: 
+msgid "The day of that month on which grades are promoted. A day past the end of the month means its last day."
+msgstr "День этого месяца, в который классы переводятся. День после конца месяца означает его последний день."
+
+#: 
+msgid "The grades already use these names."
+msgstr "Классы уже используют эти названия."
+
+#: 
+msgid "The grades changed after the preview. Review the changes again before applying them."
+msgstr "Классы изменились после предварительного просмотра. Проверьте изменения ещё раз перед применением."
+
+#: 
+msgid "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off."
+msgstr "Месяц, в котором все, у кого есть класс, переходят на один класс выше. «Выкл.» отключает автоматический перевод."
+
+#: 
+msgid "Through Grade"
+msgstr "По класс"
+

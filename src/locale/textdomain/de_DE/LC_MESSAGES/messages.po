@@ -24591,3 +24591,203 @@ msgstr "Die Tabelle zeigt nur die letzten 20 Sendungen. Öffnen Sie eine Person,
 msgid "View %d failed sends across all email history"
 msgstr "%d fehlgeschlagene Sendungen im gesamten E-Mail-Verlauf anzeigen"
 
+#: 
+msgid "Add New Grade"
+msgstr "Neue Klassenstufe hinzufügen"
+
+#: 
+msgid "Change Grade Names"
+msgstr "Namen der Klassenstufen ändern"
+
+#: 
+msgid "England and Wales"
+msgstr "England und Wales"
+
+#: 
+msgid "Every year each person moves to the next grade in this order, and the last grade is cleared."
+msgstr "Jedes Jahr rückt jede Person in dieser Reihenfolge in die nächste Klassenstufe auf, und die letzte Klassenstufe wird geleert."
+
+#: 
+msgid "Everyone with a grade will move up one grade now, and this will count as this year's promotion."
+msgstr "Alle mit einer Klassenstufe rücken jetzt eine Klassenstufe auf, und dies zählt als diesjährige Versetzung."
+
+#: 
+msgid "Finished %s, so the yearly promotion cleared the grade"
+msgstr "Hat %s abgeschlossen, daher hat die jährliche Versetzung die Klassenstufe geleert"
+
+#: 
+msgid "Finished the last grade: %d"
+msgstr "Letzte Klassenstufe abgeschlossen: %d"
+
+#: 
+msgid "Finishing the last grade (grade will be cleared): {{total}}"
+msgstr "Schließt die letzte Klassenstufe ab (Klassenstufe wird geleert): {{total}}"
+
+#: 
+msgid "From Grade"
+msgstr "Von Klassenstufe"
+
+#: 
+msgid "Grade"
+msgstr "Klassenstufe"
+
+#: 
+msgid "Grade %s cleared when the grade names changed to %s"
+msgstr "Klassenstufe %s wurde geleert, als die Namen der Klassenstufen in %s geändert wurden"
+
+#: 
+msgid "Grade Names"
+msgstr "Namen der Klassenstufen"
+
+#: 
+msgid "Grade Promotion"
+msgstr "Versetzung der Klassenstufen"
+
+#: 
+msgid "Grade changed from %s to %s by the yearly promotion"
+msgstr "Klassenstufe durch die jährliche Versetzung von %s auf %s geändert"
+
+#: 
+msgid "Grade names not found"
+msgstr "Namen der Klassenstufen nicht gefunden"
+
+#: 
+msgid "Grades"
+msgstr "Klassenstufen"
+
+#: 
+msgid "Grades Editor"
+msgstr "Editor für Klassenstufen"
+
+#: 
+msgid "Grades added"
+msgstr "Klassenstufen hinzugefügt"
+
+#: 
+msgid "Grades removed"
+msgstr "Klassenstufen entfernt"
+
+#: 
+msgid "Grades renamed: {{total}}"
+msgstr "Klassenstufen umbenannt: {{total}}"
+
+#: 
+msgid "Grades were already promoted this year, on {{date}}. Promoting again moves everyone up another grade."
+msgstr "Die Klassenstufen wurden in diesem Jahr bereits am {{date}} versetzt. Eine erneute Versetzung rückt alle eine weitere Klassenstufe auf."
+
+#: 
+msgid "Grades were promoted by someone else in the meantime. Reload the page to see the new grades."
+msgstr "Die Klassenstufen wurden inzwischen von jemand anderem versetzt. Laden Sie die Seite neu, um die neuen Klassenstufen zu sehen."
+
+#: 
+msgid "Grades you added that match a name in the list and are combined with it"
+msgstr "Von Ihnen hinzugefügte Klassenstufen, die einem Namen in der Liste entsprechen und mit ihm zusammengeführt werden"
+
+#: 
+msgid "Internal: date and time of the last grade promotion. Do not edit manually."
+msgstr "Intern: Datum und Uhrzeit der letzten Klassenstufenversetzung. Nicht manuell bearbeiten."
+
+#: 
+msgid "Internal: how the last grade promotion ran and how many people it moved. Do not edit manually."
+msgstr "Intern: wie die letzte Klassenstufenversetzung ausgeführt wurde und wie viele Personen sie verschoben hat. Nicht manuell bearbeiten."
+
+#: 
+msgid "Internal: the country whose grade names were last applied to the grade list. Do not edit manually."
+msgstr "Intern: das Land, dessen Klassenstufennamen zuletzt auf die Liste angewendet wurden. Nicht manuell bearbeiten."
+
+#: 
+msgid "Internal: the day the grade promotion date was last changed (YYYY-MM-DD). Do not edit manually."
+msgstr "Intern: der Tag, an dem das Versetzungsdatum zuletzt geändert wurde (YYYY-MM-DD). Nicht manuell bearbeiten."
+
+#: 
+msgid "Internal: the list that holds the grade names. Do not edit manually."
+msgstr "Intern: die Liste, die die Namen der Klassenstufen enthält. Nicht manuell bearbeiten."
+
+#: 
+msgid "Last promotion"
+msgstr "Letzte Versetzung"
+
+#: 
+msgid "Leave empty for one grade"
+msgstr "Für eine Klassenstufe leer lassen"
+
+#: 
+msgid "Moved up: %d"
+msgstr "Aufgerückt: %d"
+
+#: 
+msgid "Moving up: {{total}}"
+msgstr "Rücken auf: {{total}}"
+
+#: 
+msgid "Next automatic promotion"
+msgstr "Nächste automatische Versetzung"
+
+#: 
+msgid "Nobody has a grade to promote."
+msgstr "Niemand hat eine Klassenstufe zum Versetzen."
+
+#: 
+msgid "Northern Ireland"
+msgstr "Nordirland"
+
+#: 
+msgid "People by Grade"
+msgstr "Personen nach Klassenstufe"
+
+#: 
+msgid "People in a range of school grades, such as Kindergarten through 5th"
+msgstr "Personen in einem Bereich von Schulklassenstufen, etwa vom Kindergarten bis zur 5. Klasse"
+
+#: 
+msgid "People whose grade is cleared: {{total}}"
+msgstr "Personen, deren Klassenstufe geleert wird: {{total}}"
+
+#: 
+msgid "Promote Grades"
+msgstr "Klassenstufen versetzen"
+
+#: 
+msgid "Promote Now"
+msgstr "Jetzt versetzen"
+
+#: 
+msgid "Promotion Day"
+msgstr "Versetzungstag"
+
+#: 
+msgid "Promotion Month"
+msgstr "Versetzungsmonat"
+
+#: 
+msgid "Renames the grades to the names used in that country. People keep their grade, and grades you added yourself stay."
+msgstr "Benennt die Klassenstufen in die in diesem Land verwendeten Namen um. Personen behalten ihre Klassenstufe, und selbst hinzugefügte Klassenstufen bleiben erhalten."
+
+#: 
+msgid "Scheduled Task"
+msgstr "Geplante Aufgabe"
+
+#: 
+msgid "Scotland"
+msgstr "Schottland"
+
+#: 
+msgid "The day of that month on which grades are promoted. A day past the end of the month means its last day."
+msgstr "Der Tag dieses Monats, an dem die Klassenstufen versetzt werden. Ein Tag nach dem Monatsende bedeutet dessen letzten Tag."
+
+#: 
+msgid "The grades already use these names."
+msgstr "Die Klassenstufen verwenden bereits diese Namen."
+
+#: 
+msgid "The grades changed after the preview. Review the changes again before applying them."
+msgstr "Die Klassenstufen haben sich nach der Vorschau geändert. Prüfen Sie die Änderungen erneut, bevor Sie sie anwenden."
+
+#: 
+msgid "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off."
+msgstr "Der Monat, in dem alle mit einer Klassenstufe eine Klassenstufe aufrücken. Aus schaltet die automatische Versetzung aus."
+
+#: 
+msgid "Through Grade"
+msgstr "Bis Klassenstufe"
+

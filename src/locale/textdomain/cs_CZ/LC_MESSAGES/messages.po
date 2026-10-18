@@ -24534,3 +24534,203 @@ msgstr "Tabulka zobrazuje pouze posledních 20 odeslání. Úplnou historii uvid
 msgid "View %d failed sends across all email history"
 msgstr "Zobrazit neúspěšná odeslání v celé historii e-mailů: %d"
 
+#: 
+msgid "Add New Grade"
+msgstr "Přidat nový ročník"
+
+#: 
+msgid "Change Grade Names"
+msgstr "Změnit názvy ročníků"
+
+#: 
+msgid "England and Wales"
+msgstr "Anglie a Wales"
+
+#: 
+msgid "Every year each person moves to the next grade in this order, and the last grade is cleared."
+msgstr "Každý rok se každý člověk posune na další ročník v tomto pořadí a poslední ročník se vymaže."
+
+#: 
+msgid "Everyone with a grade will move up one grade now, and this will count as this year's promotion."
+msgstr "Všichni s ročníkem se nyní posunou o jeden ročník výš a započítá se to jako letošní postup."
+
+#: 
+msgid "Finished %s, so the yearly promotion cleared the grade"
+msgstr "Dokončil %s, proto roční postup ročník vymazal"
+
+#: 
+msgid "Finished the last grade: %d"
+msgstr "Dokončili poslední ročník: %d"
+
+#: 
+msgid "Finishing the last grade (grade will be cleared): {{total}}"
+msgstr "Dokončují poslední ročník (ročník bude vymazán): {{total}}"
+
+#: 
+msgid "From Grade"
+msgstr "Od ročníku"
+
+#: 
+msgid "Grade"
+msgstr "Ročník"
+
+#: 
+msgid "Grade %s cleared when the grade names changed to %s"
+msgstr "Ročník %s byl vymazán, když se názvy ročníků změnily na %s"
+
+#: 
+msgid "Grade Names"
+msgstr "Názvy ročníků"
+
+#: 
+msgid "Grade Promotion"
+msgstr "Postup ročníků"
+
+#: 
+msgid "Grade changed from %s to %s by the yearly promotion"
+msgstr "Ročník se ročním postupem změnil z %s na %s"
+
+#: 
+msgid "Grade names not found"
+msgstr "Názvy ročníků nebyly nalezeny"
+
+#: 
+msgid "Grades"
+msgstr "Ročníky"
+
+#: 
+msgid "Grades Editor"
+msgstr "Editor ročníků"
+
+#: 
+msgid "Grades added"
+msgstr "Ročníky přidány"
+
+#: 
+msgid "Grades removed"
+msgstr "Ročníky odebrány"
+
+#: 
+msgid "Grades renamed: {{total}}"
+msgstr "Ročníky přejmenovány: {{total}}"
+
+#: 
+msgid "Grades were already promoted this year, on {{date}}. Promoting again moves everyone up another grade."
+msgstr "Ročníky už letos postoupily, dne {{date}}. Další postup posune všechny o další ročník výš."
+
+#: 
+msgid "Grades were promoted by someone else in the meantime. Reload the page to see the new grades."
+msgstr "Ročníky mezitím posunul někdo jiný. Znovu načtěte stránku, abyste viděli nové ročníky."
+
+#: 
+msgid "Grades you added that match a name in the list and are combined with it"
+msgstr "Ročníky, které jste přidali, shodují se s názvem v seznamu a slučují se s ním"
+
+#: 
+msgid "Internal: date and time of the last grade promotion. Do not edit manually."
+msgstr "Interní: datum a čas posledního postupu ročníků. Neupravujte ručně."
+
+#: 
+msgid "Internal: how the last grade promotion ran and how many people it moved. Do not edit manually."
+msgstr "Interní: jak proběhl poslední postup ročníků a kolik lidí přesunul. Neupravujte ručně."
+
+#: 
+msgid "Internal: the country whose grade names were last applied to the grade list. Do not edit manually."
+msgstr "Interní: země, jejíž názvy ročníků byly naposledy použity na seznam ročníků. Neupravujte ručně."
+
+#: 
+msgid "Internal: the day the grade promotion date was last changed (YYYY-MM-DD). Do not edit manually."
+msgstr "Interní: den, kdy bylo datum postupu ročníků naposledy změněno (YYYY-MM-DD). Neupravujte ručně."
+
+#: 
+msgid "Internal: the list that holds the grade names. Do not edit manually."
+msgstr "Interní: seznam, který obsahuje názvy ročníků. Neupravujte ručně."
+
+#: 
+msgid "Last promotion"
+msgstr "Poslední postup"
+
+#: 
+msgid "Leave empty for one grade"
+msgstr "Pro jeden ročník nechte prázdné"
+
+#: 
+msgid "Moved up: %d"
+msgstr "Posunuto výš: %d"
+
+#: 
+msgid "Moving up: {{total}}"
+msgstr "Posouvá se výš: {{total}}"
+
+#: 
+msgid "Next automatic promotion"
+msgstr "Další automatický postup"
+
+#: 
+msgid "Nobody has a grade to promote."
+msgstr "Nikdo nemá ročník k postupu."
+
+#: 
+msgid "Northern Ireland"
+msgstr "Severní Irsko"
+
+#: 
+msgid "People by Grade"
+msgstr "Lidé podle ročníku"
+
+#: 
+msgid "People in a range of school grades, such as Kindergarten through 5th"
+msgstr "Lidé v rozsahu školních ročníků, například od mateřské školy po 5. ročník"
+
+#: 
+msgid "People whose grade is cleared: {{total}}"
+msgstr "Lidé, jejichž ročník se vymaže: {{total}}"
+
+#: 
+msgid "Promote Grades"
+msgstr "Posunout ročníky"
+
+#: 
+msgid "Promote Now"
+msgstr "Posunout nyní"
+
+#: 
+msgid "Promotion Day"
+msgstr "Den postupu"
+
+#: 
+msgid "Promotion Month"
+msgstr "Měsíc postupu"
+
+#: 
+msgid "Renames the grades to the names used in that country. People keep their grade, and grades you added yourself stay."
+msgstr "Přejmenuje ročníky na názvy používané v dané zemi. Lidé si ročník ponechají a ročníky, které jste přidali sami, zůstanou."
+
+#: 
+msgid "Scheduled Task"
+msgstr "Naplánovaná úloha"
+
+#: 
+msgid "Scotland"
+msgstr "Skotsko"
+
+#: 
+msgid "The day of that month on which grades are promoted. A day past the end of the month means its last day."
+msgstr "Den toho měsíce, kdy ročníky postupují. Den po konci měsíce znamená jeho poslední den."
+
+#: 
+msgid "The grades already use these names."
+msgstr "Ročníky už tyto názvy používají."
+
+#: 
+msgid "The grades changed after the preview. Review the changes again before applying them."
+msgstr "Ročníky se po náhledu změnily. Před použitím změny znovu zkontrolujte."
+
+#: 
+msgid "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off."
+msgstr "Měsíc, ve kterém se všichni s ročníkem posunou o jeden ročník výš. Vypnuto vypne automatický postup."
+
+#: 
+msgid "Through Grade"
+msgstr "Do ročníku"
+

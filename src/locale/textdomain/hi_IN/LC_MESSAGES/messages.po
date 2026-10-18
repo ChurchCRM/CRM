@@ -24479,3 +24479,203 @@ msgstr "तालिका में केवल अंतिम 20 भेज�
 msgid "View %d failed sends across all email history"
 msgstr "संपूर्ण ईमेल इतिहास में %d विफल भेजे गए संदेश देखें"
 
+#: 
+msgid "Add New Grade"
+msgstr "नई कक्षा जोड़ें"
+
+#: 
+msgid "Change Grade Names"
+msgstr "कक्षाओं के नाम बदलें"
+
+#: 
+msgid "England and Wales"
+msgstr "इंग्लैंड और वेल्स"
+
+#: 
+msgid "Every year each person moves to the next grade in this order, and the last grade is cleared."
+msgstr "हर वर्ष प्रत्येक व्यक्ति इस क्रम में अगली कक्षा में जाता है, और अंतिम कक्षा खाली कर दी जाती है।"
+
+#: 
+msgid "Everyone with a grade will move up one grade now, and this will count as this year's promotion."
+msgstr "जिसकी भी कक्षा है, वह अभी एक कक्षा ऊपर जाएगा, और यह इस वर्ष की पदोन्नति मानी जाएगी।"
+
+#: 
+msgid "Finished %s, so the yearly promotion cleared the grade"
+msgstr "%s पूरा किया, इसलिए वार्षिक पदोन्नति ने कक्षा खाली कर दी"
+
+#: 
+msgid "Finished the last grade: %d"
+msgstr "अंतिम कक्षा पूरी की: %d"
+
+#: 
+msgid "Finishing the last grade (grade will be cleared): {{total}}"
+msgstr "अंतिम कक्षा पूरी कर रहे हैं (कक्षा खाली हो जाएगी): {{total}}"
+
+#: 
+msgid "From Grade"
+msgstr "कक्षा से"
+
+#: 
+msgid "Grade"
+msgstr "कक्षा"
+
+#: 
+msgid "Grade %s cleared when the grade names changed to %s"
+msgstr "कक्षा %s तब खाली हुई जब कक्षाओं के नाम %s में बदले गए"
+
+#: 
+msgid "Grade Names"
+msgstr "कक्षाओं के नाम"
+
+#: 
+msgid "Grade Promotion"
+msgstr "कक्षा पदोन्नति"
+
+#: 
+msgid "Grade changed from %s to %s by the yearly promotion"
+msgstr "वार्षिक पदोन्नति से कक्षा %s से %s में बदली"
+
+#: 
+msgid "Grade names not found"
+msgstr "कक्षाओं के नाम नहीं मिले"
+
+#: 
+msgid "Grades"
+msgstr "कक्षाएँ"
+
+#: 
+msgid "Grades Editor"
+msgstr "कक्षा संपादक"
+
+#: 
+msgid "Grades added"
+msgstr "जोड़ी गई कक्षाएँ"
+
+#: 
+msgid "Grades removed"
+msgstr "हटाई गई कक्षाएँ"
+
+#: 
+msgid "Grades renamed: {{total}}"
+msgstr "नाम बदली गई कक्षाएँ: {{total}}"
+
+#: 
+msgid "Grades were already promoted this year, on {{date}}. Promoting again moves everyone up another grade."
+msgstr "कक्षाओं की पदोन्नति इस वर्ष पहले ही {{date}} को हो चुकी है। फिर से पदोन्नति करने पर सभी एक और कक्षा ऊपर चले जाते हैं।"
+
+#: 
+msgid "Grades were promoted by someone else in the meantime. Reload the page to see the new grades."
+msgstr "इस बीच किसी और ने कक्षाओं की पदोन्नति कर दी। नई कक्षाएँ देखने के लिए पृष्ठ पुनः लोड करें।"
+
+#: 
+msgid "Grades you added that match a name in the list and are combined with it"
+msgstr "आपके जोड़ी कक्षाएँ जो सूची के किसी नाम से मेल खाती हैं और उसी के साथ जोड़ दी जाती हैं"
+
+#: 
+msgid "Internal: date and time of the last grade promotion. Do not edit manually."
+msgstr "आंतरिक: अंतिम कक्षा पदोन्नति की तिथि और समय। हाथ से संपादित न करें।"
+
+#: 
+msgid "Internal: how the last grade promotion ran and how many people it moved. Do not edit manually."
+msgstr "आंतरिक: अंतिम कक्षा पदोन्नति कैसे चली और उसने कितने लोगों को आगे बढ़ाया। हाथ से संपादित न करें।"
+
+#: 
+msgid "Internal: the country whose grade names were last applied to the grade list. Do not edit manually."
+msgstr "आंतरिक: वह देश जिसके कक्षा नाम अंतिम बार कक्षा सूची पर लागू हुए। हाथ से संपादित न करें।"
+
+#: 
+msgid "Internal: the day the grade promotion date was last changed (YYYY-MM-DD). Do not edit manually."
+msgstr "आंतरिक: वह दिन जब कक्षा पदोन्नति की तिथि अंतिम बार बदली गई (YYYY-MM-DD)। हाथ से संपादित न करें।"
+
+#: 
+msgid "Internal: the list that holds the grade names. Do not edit manually."
+msgstr "आंतरिक: वह सूची जिसमें कक्षाओं के नाम हैं। हाथ से संपादित न करें।"
+
+#: 
+msgid "Last promotion"
+msgstr "पिछली पदोन्नति"
+
+#: 
+msgid "Leave empty for one grade"
+msgstr "एक कक्षा के लिए खाली छोड़ें"
+
+#: 
+msgid "Moved up: %d"
+msgstr "ऊपर गए: %d"
+
+#: 
+msgid "Moving up: {{total}}"
+msgstr "ऊपर जा रहे हैं: {{total}}"
+
+#: 
+msgid "Next automatic promotion"
+msgstr "अगली स्वचालित पदोन्नति"
+
+#: 
+msgid "Nobody has a grade to promote."
+msgstr "किसी की भी पदोन्नति के लिए कक्षा नहीं है।"
+
+#: 
+msgid "Northern Ireland"
+msgstr "उत्तरी आयरलैंड"
+
+#: 
+msgid "People by Grade"
+msgstr "कक्षा के अनुसार लोग"
+
+#: 
+msgid "People in a range of school grades, such as Kindergarten through 5th"
+msgstr "स्कूल कक्षाओं की एक सीमा में लोग, जैसे किंडरगार्टन से पाँचवीं तक"
+
+#: 
+msgid "People whose grade is cleared: {{total}}"
+msgstr "जिनकी कक्षा खाली होती है: {{total}}"
+
+#: 
+msgid "Promote Grades"
+msgstr "कक्षाओं की पदोन्नति करें"
+
+#: 
+msgid "Promote Now"
+msgstr "अभी पदोन्नति करें"
+
+#: 
+msgid "Promotion Day"
+msgstr "पदोन्नति का दिन"
+
+#: 
+msgid "Promotion Month"
+msgstr "पदोन्नति का महीना"
+
+#: 
+msgid "Renames the grades to the names used in that country. People keep their grade, and grades you added yourself stay."
+msgstr "कक्षाओं के नाम उस देश में प्रयुक्त नामों में बदलता है। लोग अपनी कक्षा बनाए रखते हैं, और आपके स्वयं जोड़ी कक्षाएँ रहती हैं।"
+
+#: 
+msgid "Scheduled Task"
+msgstr "निर्धारित कार्य"
+
+#: 
+msgid "Scotland"
+msgstr "स्कॉटलैंड"
+
+#: 
+msgid "The day of that month on which grades are promoted. A day past the end of the month means its last day."
+msgstr "उस महीने का दिन जिस दिन कक्षाओं की पदोन्नति होती है। महीने के अंत के बाद का दिन उसके अंतिम दिन का अर्थ है।"
+
+#: 
+msgid "The grades already use these names."
+msgstr "कक्षाएँ पहले से ये नाम उपयोग करती हैं।"
+
+#: 
+msgid "The grades changed after the preview. Review the changes again before applying them."
+msgstr "पूर्वावलोकन के बाद कक्षाएँ बदल गईं। लागू करने से पहले परिवर्तनों की फिर से समीक्षा करें।"
+
+#: 
+msgid "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off."
+msgstr "वह महीना जिसमें जिसकी भी कक्षा है वह एक कक्षा ऊपर जाता है। बंद स्वचालित पदोन्नति बंद कर देता है।"
+
+#: 
+msgid "Through Grade"
+msgstr "कक्षा तक"
+

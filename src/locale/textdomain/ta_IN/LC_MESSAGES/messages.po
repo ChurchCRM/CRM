@@ -24526,3 +24526,203 @@ msgstr "அட்டவணை கடைசி 20 அனுப்புதல்�
 msgid "View %d failed sends across all email history"
 msgstr "முழு மின்னஞ்சல் வரலாற்றிலும் தோல்வியடைந்த %d அனுப்புதல்களைக் காட்டு"
 
+#: 
+msgid "Add New Grade"
+msgstr "புதிய வகுப்பைச் சேர்"
+
+#: 
+msgid "Change Grade Names"
+msgstr "வகுப்புப் பெயர்களை மாற்று"
+
+#: 
+msgid "England and Wales"
+msgstr "இங்கிலாந்தும் வேல்ஸும்"
+
+#: 
+msgid "Every year each person moves to the next grade in this order, and the last grade is cleared."
+msgstr "ஒவ்வொரு ஆண்டும் ஒவ்வொருவரும் இந்த வரிசையில் அடுத்த வகுப்புக்குச் செல்கிறார்கள், கடைசி வகுப்பு அழிக்கப்படுகிறது."
+
+#: 
+msgid "Everyone with a grade will move up one grade now, and this will count as this year's promotion."
+msgstr "வகுப்பு உள்ள அனைவரும் இப்போது ஒரு வகுப்பு மேலே செல்வார்கள், இது இந்த ஆண்டின் உயர்வு எனக் கணக்கிடப்படும்."
+
+#: 
+msgid "Finished %s, so the yearly promotion cleared the grade"
+msgstr "%s முடிந்ததால், ஆண்டு உயர்வு வகுப்பை அழித்தது"
+
+#: 
+msgid "Finished the last grade: %d"
+msgstr "கடைசி வகுப்பை முடித்தவர்: %d"
+
+#: 
+msgid "Finishing the last grade (grade will be cleared): {{total}}"
+msgstr "கடைசி வகுப்பை முடிப்பவர் (வகுப்பு அழிக்கப்படும்): {{total}}"
+
+#: 
+msgid "From Grade"
+msgstr "வகுப்பிலிருந்து"
+
+#: 
+msgid "Grade"
+msgstr "வகுப்பு"
+
+#: 
+msgid "Grade %s cleared when the grade names changed to %s"
+msgstr "வகுப்பு %s அழிக்கப்பட்டது, வகுப்புப் பெயர்கள் %s என மாறியபோது"
+
+#: 
+msgid "Grade Names"
+msgstr "வகுப்புப் பெயர்கள்"
+
+#: 
+msgid "Grade Promotion"
+msgstr "வகுப்பு உயர்வு"
+
+#: 
+msgid "Grade changed from %s to %s by the yearly promotion"
+msgstr "ஆண்டு உயர்வால் வகுப்பு %s இலிருந்து %s ஆக மாறியது"
+
+#: 
+msgid "Grade names not found"
+msgstr "வகுப்புப் பெயர்கள் கிடைக்கவில்லை"
+
+#: 
+msgid "Grades"
+msgstr "வகுப்புகள்"
+
+#: 
+msgid "Grades Editor"
+msgstr "வகுப்புகள் திருத்தி"
+
+#: 
+msgid "Grades added"
+msgstr "வகுப்புகள் சேர்க்கப்பட்டன"
+
+#: 
+msgid "Grades removed"
+msgstr "வகுப்புகள் நீக்கப்பட்டன"
+
+#: 
+msgid "Grades renamed: {{total}}"
+msgstr "மறுபெயரிடப்பட்ட வகுப்புகள்: {{total}}"
+
+#: 
+msgid "Grades were already promoted this year, on {{date}}. Promoting again moves everyone up another grade."
+msgstr "வகுப்புகள் இந்த ஆண்டு ஏற்கெனவே {{date}} அன்று உயர்த்தப்பட்டன. மீண்டும் உயர்த்தினால் அனைவரும் இன்னொரு வகுப்பு மேலே செல்வார்கள்."
+
+#: 
+msgid "Grades were promoted by someone else in the meantime. Reload the page to see the new grades."
+msgstr "இதற்கிடையில் வேறு ஒருவர் வகுப்புகளை உயர்த்திவிட்டார். புதிய வகுப்புகளைப் பார்க்கப் பக்கத்தை மீண்டும் ஏற்றவும்."
+
+#: 
+msgid "Grades you added that match a name in the list and are combined with it"
+msgstr "பட்டியலில் உள்ள பெயருடன் பொருந்தி அதனுடன் இணைக்கப்படும், நீங்கள் சேர்த்த வகுப்புகள்"
+
+#: 
+msgid "Internal: date and time of the last grade promotion. Do not edit manually."
+msgstr "உள்: கடைசி வகுப்பு உயர்வின் தேதியும் நேரமும். கைமுறையாகத் திருத்த வேண்டாம்."
+
+#: 
+msgid "Internal: how the last grade promotion ran and how many people it moved. Do not edit manually."
+msgstr "உள்: கடைசி வகுப்பு உயர்வு எப்படி இயங்கியது, எத்தனை பேரை நகர்த்தியது. கைமுறையாகத் திருத்த வேண்டாம்."
+
+#: 
+msgid "Internal: the country whose grade names were last applied to the grade list. Do not edit manually."
+msgstr "உள்: வகுப்புப் பட்டியலுக்குக் கடைசியாகப் பயன்படுத்தப்பட்ட வகுப்புப் பெயர்களின் நாடு. கைமுறையாகத் திருத்த வேண்டாம்."
+
+#: 
+msgid "Internal: the day the grade promotion date was last changed (YYYY-MM-DD). Do not edit manually."
+msgstr "உள்: வகுப்பு உயர்வு தேதி கடைசியாக மாற்றப்பட்ட நாள் (YYYY-MM-DD). கைமுறையாகத் திருத்த வேண்டாம்."
+
+#: 
+msgid "Internal: the list that holds the grade names. Do not edit manually."
+msgstr "உள்: வகுப்புப் பெயர்களை வைத்திருக்கும் பட்டியல். கைமுறையாகத் திருத்த வேண்டாம்."
+
+#: 
+msgid "Last promotion"
+msgstr "கடைசி உயர்வு"
+
+#: 
+msgid "Leave empty for one grade"
+msgstr "ஒரு வகுப்புக்கு காலியாக விடவும்"
+
+#: 
+msgid "Moved up: %d"
+msgstr "மேலே நகர்த்தப்பட்டவர்: %d"
+
+#: 
+msgid "Moving up: {{total}}"
+msgstr "மேலே நகர்கிறவர்: {{total}}"
+
+#: 
+msgid "Next automatic promotion"
+msgstr "அடுத்த தானியங்கி உயர்வு"
+
+#: 
+msgid "Nobody has a grade to promote."
+msgstr "உயர்த்த எவருக்கும் வகுப்பு இல்லை."
+
+#: 
+msgid "Northern Ireland"
+msgstr "வடக்கு அயர்லாந்து"
+
+#: 
+msgid "People by Grade"
+msgstr "வகுப்பு வாரியாக மக்கள்"
+
+#: 
+msgid "People in a range of school grades, such as Kindergarten through 5th"
+msgstr "மழலையர் வகுப்பு முதல் 5ஆம் வகுப்பு வரை போன்ற பள்ளி வகுப்பு வரம்பில் உள்ள மக்கள்"
+
+#: 
+msgid "People whose grade is cleared: {{total}}"
+msgstr "வகுப்பு அழிக்கப்படும் மக்கள்: {{total}}"
+
+#: 
+msgid "Promote Grades"
+msgstr "வகுப்புகளை உயர்த்து"
+
+#: 
+msgid "Promote Now"
+msgstr "இப்போது உயர்த்து"
+
+#: 
+msgid "Promotion Day"
+msgstr "உயர்வு நாள்"
+
+#: 
+msgid "Promotion Month"
+msgstr "உயர்வு மாதம்"
+
+#: 
+msgid "Renames the grades to the names used in that country. People keep their grade, and grades you added yourself stay."
+msgstr "அந்த நாட்டில் பயன்படும் பெயர்களாக வகுப்புகளை மறுபெயரிடுகிறது. மக்கள் தங்கள் வகுப்பை வைத்திருக்கிறார்கள், நீங்களே சேர்த்த வகுப்புகள் இருக்கும்."
+
+#: 
+msgid "Scheduled Task"
+msgstr "திட்டமிட்ட பணி"
+
+#: 
+msgid "Scotland"
+msgstr "ஸ்காட்லாந்து"
+
+#: 
+msgid "The day of that month on which grades are promoted. A day past the end of the month means its last day."
+msgstr "அந்த மாதத்தில் வகுப்புகள் உயர்த்தப்படும் நாள். மாத முடிவைக் கடந்த நாள் அதன் கடைசி நாளாகும்."
+
+#: 
+msgid "The grades already use these names."
+msgstr "வகுப்புகள் ஏற்கெனவே இந்தப் பெயர்களைப் பயன்படுத்துகின்றன."
+
+#: 
+msgid "The grades changed after the preview. Review the changes again before applying them."
+msgstr "முன்னோட்டத்திற்குப் பிறகு வகுப்புகள் மாறின. அவற்றைப் பயன்படுத்துவதற்கு முன் மாற்றங்களை மீண்டும் பார்க்கவும்."
+
+#: 
+msgid "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off."
+msgstr "வகுப்பு உள்ள அனைவரும் ஒரு வகுப்பு மேலே செல்லும் மாதம். ஆஃப் தானியங்கி உயர்வை அணைக்கிறது."
+
+#: 
+msgid "Through Grade"
+msgstr "வகுப்பு வரை"
+

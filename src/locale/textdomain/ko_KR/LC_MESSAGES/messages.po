@@ -24476,3 +24476,203 @@ msgstr "표에는 최근 20건의 발송만 표시됩니다. 전체 기록을 �
 msgid "View %d failed sends across all email history"
 msgstr "전체 이메일 기록의 발송 실패 %d건 보기"
 
+#: 
+msgid "Add New Grade"
+msgstr "새 학년 추가"
+
+#: 
+msgid "Change Grade Names"
+msgstr "학년 이름 변경"
+
+#: 
+msgid "England and Wales"
+msgstr "잉글랜드와 웨일스"
+
+#: 
+msgid "Every year each person moves to the next grade in this order, and the last grade is cleared."
+msgstr "매년 각 사람은 이 순서대로 다음 학년으로 올라가며, 마지막 학년은 비워집니다."
+
+#: 
+msgid "Everyone with a grade will move up one grade now, and this will count as this year's promotion."
+msgstr "학년이 있는 모든 사람이 지금 한 학년 올라가며, 이것은 올해의 진급으로 계산됩니다."
+
+#: 
+msgid "Finished %s, so the yearly promotion cleared the grade"
+msgstr "%s을(를) 마쳐 연간 진급에서 학년이 비워졌습니다"
+
+#: 
+msgid "Finished the last grade: %d"
+msgstr "마지막 학년을 마침: %d"
+
+#: 
+msgid "Finishing the last grade (grade will be cleared): {{total}}"
+msgstr "마지막 학년을 마치는 중(학년이 비워짐): {{total}}"
+
+#: 
+msgid "From Grade"
+msgstr "시작 학년"
+
+#: 
+msgid "Grade"
+msgstr "학년"
+
+#: 
+msgid "Grade %s cleared when the grade names changed to %s"
+msgstr "학년 이름이 %s(으)로 바뀔 때 학년 %s이(가) 비워졌습니다"
+
+#: 
+msgid "Grade Names"
+msgstr "학년 이름"
+
+#: 
+msgid "Grade Promotion"
+msgstr "학년 진급"
+
+#: 
+msgid "Grade changed from %s to %s by the yearly promotion"
+msgstr "연간 진급으로 학년이 %s에서 %s(으)로 변경됨"
+
+#: 
+msgid "Grade names not found"
+msgstr "학년 이름을 찾을 수 없음"
+
+#: 
+msgid "Grades"
+msgstr "학년"
+
+#: 
+msgid "Grades Editor"
+msgstr "학년 편집기"
+
+#: 
+msgid "Grades added"
+msgstr "추가된 학년"
+
+#: 
+msgid "Grades removed"
+msgstr "제거된 학년"
+
+#: 
+msgid "Grades renamed: {{total}}"
+msgstr "이름이 바뀐 학년: {{total}}"
+
+#: 
+msgid "Grades were already promoted this year, on {{date}}. Promoting again moves everyone up another grade."
+msgstr "학년은 올해 이미 {{date}}에 진급되었습니다. 다시 진급하면 모두가 한 학년 더 올라갑니다."
+
+#: 
+msgid "Grades were promoted by someone else in the meantime. Reload the page to see the new grades."
+msgstr "그 사이에 다른 사람이 학년을 진급시켰습니다. 새 학년을 보려면 페이지를 다시 불러오세요."
+
+#: 
+msgid "Grades you added that match a name in the list and are combined with it"
+msgstr "목록의 이름과 일치하여 그와 합쳐지는, 직접 추가한 학년"
+
+#: 
+msgid "Internal: date and time of the last grade promotion. Do not edit manually."
+msgstr "내부: 마지막 학년 진급의 날짜와 시간. 수동으로 편집하지 마세요."
+
+#: 
+msgid "Internal: how the last grade promotion ran and how many people it moved. Do not edit manually."
+msgstr "내부: 마지막 학년 진급이 어떻게 실행되었고 몇 명을 이동시켰는지. 수동으로 편집하지 마세요."
+
+#: 
+msgid "Internal: the country whose grade names were last applied to the grade list. Do not edit manually."
+msgstr "내부: 학년 이름이 학년 목록에 마지막으로 적용된 국가. 수동으로 편집하지 마세요."
+
+#: 
+msgid "Internal: the day the grade promotion date was last changed (YYYY-MM-DD). Do not edit manually."
+msgstr "내부: 학년 진급 날짜가 마지막으로 변경된 날(YYYY-MM-DD). 수동으로 편집하지 마세요."
+
+#: 
+msgid "Internal: the list that holds the grade names. Do not edit manually."
+msgstr "내부: 학년 이름을 담는 목록. 수동으로 편집하지 마세요."
+
+#: 
+msgid "Last promotion"
+msgstr "마지막 진급"
+
+#: 
+msgid "Leave empty for one grade"
+msgstr "한 학년인 경우 비워 두세요"
+
+#: 
+msgid "Moved up: %d"
+msgstr "올라간 사람: %d"
+
+#: 
+msgid "Moving up: {{total}}"
+msgstr "올라가는 사람: {{total}}"
+
+#: 
+msgid "Next automatic promotion"
+msgstr "다음 자동 진급"
+
+#: 
+msgid "Nobody has a grade to promote."
+msgstr "진급할 학년이 있는 사람이 없습니다."
+
+#: 
+msgid "Northern Ireland"
+msgstr "북아일랜드"
+
+#: 
+msgid "People by Grade"
+msgstr "학년별 사람"
+
+#: 
+msgid "People in a range of school grades, such as Kindergarten through 5th"
+msgstr "유치원부터 5학년까지와 같은 학교 학년 범위의 사람"
+
+#: 
+msgid "People whose grade is cleared: {{total}}"
+msgstr "학년이 비워지는 사람: {{total}}"
+
+#: 
+msgid "Promote Grades"
+msgstr "학년 진급"
+
+#: 
+msgid "Promote Now"
+msgstr "지금 진급"
+
+#: 
+msgid "Promotion Day"
+msgstr "진급일"
+
+#: 
+msgid "Promotion Month"
+msgstr "진급 월"
+
+#: 
+msgid "Renames the grades to the names used in that country. People keep their grade, and grades you added yourself stay."
+msgstr "학년을 해당 국가에서 쓰는 이름으로 바꿉니다. 사람은 학년을 유지하고, 직접 추가한 학년은 남습니다."
+
+#: 
+msgid "Scheduled Task"
+msgstr "예약된 작업"
+
+#: 
+msgid "Scotland"
+msgstr "스코틀랜드"
+
+#: 
+msgid "The day of that month on which grades are promoted. A day past the end of the month means its last day."
+msgstr "해당 월에서 학년을 진급하는 날. 월말을 지난 날은 그 달의 마지막 날을 의미합니다."
+
+#: 
+msgid "The grades already use these names."
+msgstr "학년이 이미 이 이름을 사용합니다."
+
+#: 
+msgid "The grades changed after the preview. Review the changes again before applying them."
+msgstr "미리 보기 후에 학년이 변경되었습니다. 적용하기 전에 변경 사항을 다시 검토하세요."
+
+#: 
+msgid "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off."
+msgstr "학년이 있는 모든 사람이 한 학년 올라가는 달. 끄면 자동 진급이 꺼집니다."
+
+#: 
+msgid "Through Grade"
+msgstr "종료 학년"
+

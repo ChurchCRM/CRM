@@ -24511,3 +24511,203 @@ msgstr "Le tableau n'affiche que les 20 derniers envois. Ouvrez une personne pou
 msgid "View %d failed sends across all email history"
 msgstr "Voir les %d envois en échec dans tout l'historique des e-mails"
 
+#: 
+msgid "Add New Grade"
+msgstr "Ajouter un niveau scolaire"
+
+#: 
+msgid "Change Grade Names"
+msgstr "Modifier les noms des niveaux scolaires"
+
+#: 
+msgid "England and Wales"
+msgstr "Angleterre et pays de Galles"
+
+#: 
+msgid "Every year each person moves to the next grade in this order, and the last grade is cleared."
+msgstr "Chaque année, chaque personne passe au niveau scolaire suivant dans cet ordre, et le dernier niveau est effacé."
+
+#: 
+msgid "Everyone with a grade will move up one grade now, and this will count as this year's promotion."
+msgstr "Toutes les personnes ayant un niveau scolaire monteront maintenant d’un niveau, et cela comptera comme la promotion de cette année."
+
+#: 
+msgid "Finished %s, so the yearly promotion cleared the grade"
+msgstr "A terminé %s, la promotion annuelle a donc effacé le niveau"
+
+#: 
+msgid "Finished the last grade: %d"
+msgstr "A terminé le dernier niveau : %d"
+
+#: 
+msgid "Finishing the last grade (grade will be cleared): {{total}}"
+msgstr "Termine le dernier niveau (le niveau sera effacé) : {{total}}"
+
+#: 
+msgid "From Grade"
+msgstr "Du niveau"
+
+#: 
+msgid "Grade"
+msgstr "Niveau scolaire"
+
+#: 
+msgid "Grade %s cleared when the grade names changed to %s"
+msgstr "Le niveau %s a été effacé lorsque les noms des niveaux ont été changés en %s"
+
+#: 
+msgid "Grade Names"
+msgstr "Noms des niveaux"
+
+#: 
+msgid "Grade Promotion"
+msgstr "Promotion des niveaux scolaires"
+
+#: 
+msgid "Grade changed from %s to %s by the yearly promotion"
+msgstr "Niveau passé de %s à %s par la promotion annuelle"
+
+#: 
+msgid "Grade names not found"
+msgstr "Noms des niveaux introuvables"
+
+#: 
+msgid "Grades"
+msgstr "Niveaux scolaires"
+
+#: 
+msgid "Grades Editor"
+msgstr "Éditeur des niveaux"
+
+#: 
+msgid "Grades added"
+msgstr "Niveaux ajoutés"
+
+#: 
+msgid "Grades removed"
+msgstr "Niveaux supprimés"
+
+#: 
+msgid "Grades renamed: {{total}}"
+msgstr "Niveaux renommés : {{total}}"
+
+#: 
+msgid "Grades were already promoted this year, on {{date}}. Promoting again moves everyone up another grade."
+msgstr "Les niveaux ont déjà été promus cette année, le {{date}}. Une nouvelle promotion fait monter tout le monde d’un niveau supplémentaire."
+
+#: 
+msgid "Grades were promoted by someone else in the meantime. Reload the page to see the new grades."
+msgstr "Les niveaux ont été promus par quelqu’un d’autre entre-temps. Rechargez la page pour voir les nouveaux niveaux."
+
+#: 
+msgid "Grades you added that match a name in the list and are combined with it"
+msgstr "Niveaux que vous avez ajoutés et qui correspondent à un nom de la liste, puis sont combinés avec celui-ci"
+
+#: 
+msgid "Internal: date and time of the last grade promotion. Do not edit manually."
+msgstr "Interne : date et heure de la dernière promotion des niveaux. Ne pas modifier manuellement."
+
+#: 
+msgid "Internal: how the last grade promotion ran and how many people it moved. Do not edit manually."
+msgstr "Interne : comment la dernière promotion des niveaux s’est exécutée et combien de personnes elle a déplacées. Ne pas modifier manuellement."
+
+#: 
+msgid "Internal: the country whose grade names were last applied to the grade list. Do not edit manually."
+msgstr "Interne : le pays dont les noms de niveaux ont été appliqués en dernier à la liste des niveaux. Ne pas modifier manuellement."
+
+#: 
+msgid "Internal: the day the grade promotion date was last changed (YYYY-MM-DD). Do not edit manually."
+msgstr "Interne : le jour où la date de promotion des niveaux a été modifiée pour la dernière fois (YYYY-MM-DD). Ne pas modifier manuellement."
+
+#: 
+msgid "Internal: the list that holds the grade names. Do not edit manually."
+msgstr "Interne : la liste qui contient les noms des niveaux. Ne pas modifier manuellement."
+
+#: 
+msgid "Last promotion"
+msgstr "Dernière promotion"
+
+#: 
+msgid "Leave empty for one grade"
+msgstr "Laisser vide pour un seul niveau"
+
+#: 
+msgid "Moved up: %d"
+msgstr "Montés d’un niveau : %d"
+
+#: 
+msgid "Moving up: {{total}}"
+msgstr "Montent d’un niveau : {{total}}"
+
+#: 
+msgid "Next automatic promotion"
+msgstr "Prochaine promotion automatique"
+
+#: 
+msgid "Nobody has a grade to promote."
+msgstr "Personne n’a de niveau à promouvoir."
+
+#: 
+msgid "Northern Ireland"
+msgstr "Irlande du Nord"
+
+#: 
+msgid "People by Grade"
+msgstr "Personnes par niveau scolaire"
+
+#: 
+msgid "People in a range of school grades, such as Kindergarten through 5th"
+msgstr "Personnes dans une plage de niveaux scolaires, par exemple de la maternelle à la 5e année"
+
+#: 
+msgid "People whose grade is cleared: {{total}}"
+msgstr "Personnes dont le niveau est effacé : {{total}}"
+
+#: 
+msgid "Promote Grades"
+msgstr "Promouvoir les niveaux"
+
+#: 
+msgid "Promote Now"
+msgstr "Promouvoir maintenant"
+
+#: 
+msgid "Promotion Day"
+msgstr "Jour de promotion"
+
+#: 
+msgid "Promotion Month"
+msgstr "Mois de promotion"
+
+#: 
+msgid "Renames the grades to the names used in that country. People keep their grade, and grades you added yourself stay."
+msgstr "Renomme les niveaux avec les noms utilisés dans ce pays. Les personnes conservent leur niveau, et les niveaux que vous avez ajoutés vous-même restent."
+
+#: 
+msgid "Scheduled Task"
+msgstr "Tâche planifiée"
+
+#: 
+msgid "Scotland"
+msgstr "Écosse"
+
+#: 
+msgid "The day of that month on which grades are promoted. A day past the end of the month means its last day."
+msgstr "Le jour de ce mois où les niveaux sont promus. Un jour au-delà de la fin du mois correspond à son dernier jour."
+
+#: 
+msgid "The grades already use these names."
+msgstr "Les niveaux utilisent déjà ces noms."
+
+#: 
+msgid "The grades changed after the preview. Review the changes again before applying them."
+msgstr "Les niveaux ont changé après l’aperçu. Vérifiez de nouveau les modifications avant de les appliquer."
+
+#: 
+msgid "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off."
+msgstr "Le mois au cours duquel toute personne ayant un niveau monte d’un niveau. Désactivé coupe la promotion automatique."
+
+#: 
+msgid "Through Grade"
+msgstr "Jusqu’au niveau"
+

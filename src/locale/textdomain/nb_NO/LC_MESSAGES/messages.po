@@ -24584,3 +24584,203 @@ msgstr "Tabellen viser bare de siste 20 utsendelsene. Åpne en person for å se 
 msgid "View %d failed sends across all email history"
 msgstr "Vis %d mislykkede utsendelser i hele e-posthistorikken"
 
+#: 
+msgid "Add New Grade"
+msgstr "Legg til nytt klassetrinn"
+
+#: 
+msgid "Change Grade Names"
+msgstr "Endre navn på klassetrinn"
+
+#: 
+msgid "England and Wales"
+msgstr "England og Wales"
+
+#: 
+msgid "Every year each person moves to the next grade in this order, and the last grade is cleared."
+msgstr "Hvert år flyttes hver person til neste klassetrinn i denne rekkefølgen, og det siste trinnet tømmes."
+
+#: 
+msgid "Everyone with a grade will move up one grade now, and this will count as this year's promotion."
+msgstr "Alle med et klassetrinn flyttes nå opp ett trinn, og dette regnes som årets opprykk."
+
+#: 
+msgid "Finished %s, so the yearly promotion cleared the grade"
+msgstr "Fullførte %s, så det årlige opprykket tømte trinnet"
+
+#: 
+msgid "Finished the last grade: %d"
+msgstr "Fullførte siste klassetrinn: %d"
+
+#: 
+msgid "Finishing the last grade (grade will be cleared): {{total}}"
+msgstr "Fullfører siste klassetrinn (trinnet tømmes): {{total}}"
+
+#: 
+msgid "From Grade"
+msgstr "Fra klassetrinn"
+
+#: 
+msgid "Grade"
+msgstr "Klassetrinn"
+
+#: 
+msgid "Grade %s cleared when the grade names changed to %s"
+msgstr "Klassetrinn %s ble tømt da trinnnavnene ble endret til %s"
+
+#: 
+msgid "Grade Names"
+msgstr "Navn på klassetrinn"
+
+#: 
+msgid "Grade Promotion"
+msgstr "Opprykk av klassetrinn"
+
+#: 
+msgid "Grade changed from %s to %s by the yearly promotion"
+msgstr "Klassetrinn endret fra %s til %s ved det årlige opprykket"
+
+#: 
+msgid "Grade names not found"
+msgstr "Fant ikke navn på klassetrinn"
+
+#: 
+msgid "Grades"
+msgstr "Klassetrinn"
+
+#: 
+msgid "Grades Editor"
+msgstr "Rediger klassetrinn"
+
+#: 
+msgid "Grades added"
+msgstr "Klassetrinn lagt til"
+
+#: 
+msgid "Grades removed"
+msgstr "Klassetrinn fjernet"
+
+#: 
+msgid "Grades renamed: {{total}}"
+msgstr "Klassetrinn omdøpt: {{total}}"
+
+#: 
+msgid "Grades were already promoted this year, on {{date}}. Promoting again moves everyone up another grade."
+msgstr "Klassetrinn ble allerede rykket opp i år, den {{date}}. Et nytt opprykk flytter alle opp ett trinn til."
+
+#: 
+msgid "Grades were promoted by someone else in the meantime. Reload the page to see the new grades."
+msgstr "Noen andre har rykket opp klassetrinnene i mellomtiden. Last inn siden på nytt for å se de nye trinnene."
+
+#: 
+msgid "Grades you added that match a name in the list and are combined with it"
+msgstr "Klassetrinn du la til som samsvarer med et navn i listen og slås sammen med det"
+
+#: 
+msgid "Internal: date and time of the last grade promotion. Do not edit manually."
+msgstr "Intern: dato og klokkeslett for siste opprykk av klassetrinn. Ikke rediger manuelt."
+
+#: 
+msgid "Internal: how the last grade promotion ran and how many people it moved. Do not edit manually."
+msgstr "Intern: hvordan siste opprykk av klassetrinn kjørte, og hvor mange personer det flyttet. Ikke rediger manuelt."
+
+#: 
+msgid "Internal: the country whose grade names were last applied to the grade list. Do not edit manually."
+msgstr "Intern: landet hvis trinnnavn sist ble brukt på listen over klassetrinn. Ikke rediger manuelt."
+
+#: 
+msgid "Internal: the day the grade promotion date was last changed (YYYY-MM-DD). Do not edit manually."
+msgstr "Intern: dagen da datoen for opprykk av klassetrinn sist ble endret (YYYY-MM-DD). Ikke rediger manuelt."
+
+#: 
+msgid "Internal: the list that holds the grade names. Do not edit manually."
+msgstr "Intern: listen som inneholder navnene på klassetrinnene. Ikke rediger manuelt."
+
+#: 
+msgid "Last promotion"
+msgstr "Siste opprykk"
+
+#: 
+msgid "Leave empty for one grade"
+msgstr "La stå tomt for ett klassetrinn"
+
+#: 
+msgid "Moved up: %d"
+msgstr "Flyttet opp: %d"
+
+#: 
+msgid "Moving up: {{total}}"
+msgstr "Flyttes opp: {{total}}"
+
+#: 
+msgid "Next automatic promotion"
+msgstr "Neste automatiske opprykk"
+
+#: 
+msgid "Nobody has a grade to promote."
+msgstr "Ingen har et klassetrinn å rykke opp."
+
+#: 
+msgid "Northern Ireland"
+msgstr "Nord-Irland"
+
+#: 
+msgid "People by Grade"
+msgstr "Personer etter klassetrinn"
+
+#: 
+msgid "People in a range of school grades, such as Kindergarten through 5th"
+msgstr "Personer i et spenn av skoletrinn, for eksempel barnehageklasse til 5. trinn"
+
+#: 
+msgid "People whose grade is cleared: {{total}}"
+msgstr "Personer hvis klassetrinn tømmes: {{total}}"
+
+#: 
+msgid "Promote Grades"
+msgstr "Rykk opp klassetrinn"
+
+#: 
+msgid "Promote Now"
+msgstr "Rykk opp nå"
+
+#: 
+msgid "Promotion Day"
+msgstr "Opprykksdag"
+
+#: 
+msgid "Promotion Month"
+msgstr "Opprykksmåned"
+
+#: 
+msgid "Renames the grades to the names used in that country. People keep their grade, and grades you added yourself stay."
+msgstr "Gir klassetrinnene navnene som brukes i det landet. Personene beholder trinnet sitt, og trinn du la til selv, blir værende."
+
+#: 
+msgid "Scheduled Task"
+msgstr "Planlagt oppgave"
+
+#: 
+msgid "Scotland"
+msgstr "Skottland"
+
+#: 
+msgid "The day of that month on which grades are promoted. A day past the end of the month means its last day."
+msgstr "Dagen i den måneden da klassetrinn rykker opp. En dag etter månedsslutt betyr månedens siste dag."
+
+#: 
+msgid "The grades already use these names."
+msgstr "Klassetrinnene bruker allerede disse navnene."
+
+#: 
+msgid "The grades changed after the preview. Review the changes again before applying them."
+msgstr "Klassetrinnene ble endret etter forhåndsvisningen. Gå gjennom endringene på nytt før du bruker dem."
+
+#: 
+msgid "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off."
+msgstr "Måneden da alle med et klassetrinn flyttes opp ett trinn. Av slår av automatisk opprykk."
+
+#: 
+msgid "Through Grade"
+msgstr "Til klassetrinn"
+

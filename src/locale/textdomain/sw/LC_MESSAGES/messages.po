@@ -24510,3 +24510,203 @@ msgstr "Jedwali linaonyesha utumaji 20 wa mwisho tu. Fungua mtu kuona historia k
 msgid "View %d failed sends across all email history"
 msgstr "Tazama utumaji %d ulioshindwa katika historia yote ya barua pepe"
 
+#: 
+msgid "Add New Grade"
+msgstr "Ongeza Darasa Jipya"
+
+#: 
+msgid "Change Grade Names"
+msgstr "Badilisha Majina ya Madarasa"
+
+#: 
+msgid "England and Wales"
+msgstr "Uingereza na Wales"
+
+#: 
+msgid "Every year each person moves to the next grade in this order, and the last grade is cleared."
+msgstr "Kila mwaka kila mtu anahamia darasa linalofuata kwa mpangilio huu, na darasa la mwisho linafutwa."
+
+#: 
+msgid "Everyone with a grade will move up one grade now, and this will count as this year's promotion."
+msgstr "Kila mtu aliye na darasa atahamia darasa moja juu sasa, na hii itahesabiwa kama kupandishwa kwa mwaka huu."
+
+#: 
+msgid "Finished %s, so the yearly promotion cleared the grade"
+msgstr "Amemaliza %s, hivyo kupandishwa kwa mwaka kulifuta darasa"
+
+#: 
+msgid "Finished the last grade: %d"
+msgstr "Amemaliza darasa la mwisho: %d"
+
+#: 
+msgid "Finishing the last grade (grade will be cleared): {{total}}"
+msgstr "Anamaliza darasa la mwisho (darasa litafutwa): {{total}}"
+
+#: 
+msgid "From Grade"
+msgstr "Kutoka Darasa"
+
+#: 
+msgid "Grade"
+msgstr "Darasa"
+
+#: 
+msgid "Grade %s cleared when the grade names changed to %s"
+msgstr "Darasa %s lilifutwa majina ya madarasa yalipobadilishwa kuwa %s"
+
+#: 
+msgid "Grade Names"
+msgstr "Majina ya Madarasa"
+
+#: 
+msgid "Grade Promotion"
+msgstr "Kupandisha Darasa"
+
+#: 
+msgid "Grade changed from %s to %s by the yearly promotion"
+msgstr "Darasa lilibadilika kutoka %s hadi %s kwa kupandishwa kwa mwaka"
+
+#: 
+msgid "Grade names not found"
+msgstr "Majina ya madarasa hayajapatikana"
+
+#: 
+msgid "Grades"
+msgstr "Madarasa"
+
+#: 
+msgid "Grades Editor"
+msgstr "Kihariri cha Madarasa"
+
+#: 
+msgid "Grades added"
+msgstr "Madarasa yameongezwa"
+
+#: 
+msgid "Grades removed"
+msgstr "Madarasa yameondolewa"
+
+#: 
+msgid "Grades renamed: {{total}}"
+msgstr "Madarasa yaliyopewa majina mapya: {{total}}"
+
+#: 
+msgid "Grades were already promoted this year, on {{date}}. Promoting again moves everyone up another grade."
+msgstr "Madarasa yalikuwa yameshapandishwa mwaka huu, tarehe {{date}}. Kupandisha tena kunahamisha kila mtu darasa lingine juu."
+
+#: 
+msgid "Grades were promoted by someone else in the meantime. Reload the page to see the new grades."
+msgstr "Madarasa yalipandishwa na mtu mwingine wakati huu. Pakia upya ukurasa ili kuona madarasa mapya."
+
+#: 
+msgid "Grades you added that match a name in the list and are combined with it"
+msgstr "Madarasa uliyoongeza yanayolingana na jina katika orodha na kuunganishwa nayo"
+
+#: 
+msgid "Internal: date and time of the last grade promotion. Do not edit manually."
+msgstr "Ndani: tarehe na saa ya kupandishwa darasa kwa mara ya mwisho. Usibadilishe kwa mkono."
+
+#: 
+msgid "Internal: how the last grade promotion ran and how many people it moved. Do not edit manually."
+msgstr "Ndani: jinsi kupandishwa darasa kwa mara ya mwisho kulivyotekelezwa na watu wangapi kilihamisha. Usibadilishe kwa mkono."
+
+#: 
+msgid "Internal: the country whose grade names were last applied to the grade list. Do not edit manually."
+msgstr "Ndani: nchi ambayo majina yake ya madarasa yalitumika mwisho kwenye orodha ya madarasa. Usibadilishe kwa mkono."
+
+#: 
+msgid "Internal: the day the grade promotion date was last changed (YYYY-MM-DD). Do not edit manually."
+msgstr "Ndani: siku ambayo tarehe ya kupandisha darasa ilibadilishwa mwisho (YYYY-MM-DD). Usibadilishe kwa mkono."
+
+#: 
+msgid "Internal: the list that holds the grade names. Do not edit manually."
+msgstr "Ndani: orodha inayoshikilia majina ya madarasa. Usibadilishe kwa mkono."
+
+#: 
+msgid "Last promotion"
+msgstr "Kupandishwa kwa mwisho"
+
+#: 
+msgid "Leave empty for one grade"
+msgstr "Acha tupu kwa darasa moja"
+
+#: 
+msgid "Moved up: %d"
+msgstr "Waliopanda: %d"
+
+#: 
+msgid "Moving up: {{total}}"
+msgstr "Wanapanda: {{total}}"
+
+#: 
+msgid "Next automatic promotion"
+msgstr "Kupandishwa kiotomatiki kinachofuata"
+
+#: 
+msgid "Nobody has a grade to promote."
+msgstr "Hakuna mtu aliye na darasa la kupandisha."
+
+#: 
+msgid "Northern Ireland"
+msgstr "Ireland ya Kaskazini"
+
+#: 
+msgid "People by Grade"
+msgstr "Watu kwa Darasa"
+
+#: 
+msgid "People in a range of school grades, such as Kindergarten through 5th"
+msgstr "Watu katika masafa ya madarasa ya shule, kama vile Chekechea hadi la 5"
+
+#: 
+msgid "People whose grade is cleared: {{total}}"
+msgstr "Watu ambao darasa lao limefutwa: {{total}}"
+
+#: 
+msgid "Promote Grades"
+msgstr "Pandisha Madarasa"
+
+#: 
+msgid "Promote Now"
+msgstr "Pandisha Sasa"
+
+#: 
+msgid "Promotion Day"
+msgstr "Siku ya Kupandisha"
+
+#: 
+msgid "Promotion Month"
+msgstr "Mwezi wa Kupandisha"
+
+#: 
+msgid "Renames the grades to the names used in that country. People keep their grade, and grades you added yourself stay."
+msgstr "Hubadilisha majina ya madarasa kuwa majina yanayotumika katika nchi hiyo. Watu hubaki na darasa lao, na madarasa uliyoongeza mwenyewe yanabaki."
+
+#: 
+msgid "Scheduled Task"
+msgstr "Kazi Iliyoratibiwa"
+
+#: 
+msgid "Scotland"
+msgstr "Uskoti"
+
+#: 
+msgid "The day of that month on which grades are promoted. A day past the end of the month means its last day."
+msgstr "Siku ya mwezi huo ambayo madarasa yanapandishwa. Siku inayozidi mwisho wa mwezi inamaanisha siku yake ya mwisho."
+
+#: 
+msgid "The grades already use these names."
+msgstr "Madarasa tayari yanatumia majina haya."
+
+#: 
+msgid "The grades changed after the preview. Review the changes again before applying them."
+msgstr "Madarasa yalibadilika baada ya hakikisho. Kagua mabadiliko tena kabla ya kuyatumia."
+
+#: 
+msgid "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off."
+msgstr "Mwezi ambao kila mtu aliye na darasa anahamia darasa moja juu. Kuzima kunazima kupandishwa kiotomatiki."
+
+#: 
+msgid "Through Grade"
+msgstr "Hadi Darasa"
+
