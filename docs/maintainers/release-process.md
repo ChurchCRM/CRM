@@ -66,6 +66,7 @@ Notes:
 - Run 2.1 after Phase 1, because every locale PR merge moves HEAD and invalidates the nightly SHA.
 - The nightly cron is `0 3 * * *`; scheduled runs start about 08:00 to 08:30 UTC because of GitHub queue delay.
 - A red nightly blocks the release until its cause is fixed.
+- One red cell is triaged before it blocks: download the `cypress-junit-<cell>-<run id>` artifact and read the failure message. A harness error (for example `Cannot read properties of undefined (reading 'KeyboardEvent')`) that passes in the sibling cell is a flake: `gh run rerun <run id> --failed` re-runs only the failed jobs on the same SHA. A failure that repeats is real.
 - `release-publish.yml` takes the newest successful `master` push build whose `package.json` version matches and uploads that build's ZIP. The agent gate in `release-management.md` checks HEAD = build SHA = nightly SHA.
 - Master pushes use per-commit concurrency, so several builds run in parallel after a burst of merges; wait for the HEAD build. Pushes touching only ignored paths (`locale/terms/**`, `locale/messages.po`, docs, `.agents/**`) do not build, so the latest build can lag HEAD and its ZIP is still correct.
 

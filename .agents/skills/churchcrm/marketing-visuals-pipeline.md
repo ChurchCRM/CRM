@@ -7,7 +7,7 @@ intent: "Capture trustworthy screenshots and videos of real ChurchCRM workflows 
 
 ## Context
 
-A Playwright pipeline in `playwright/` captures screenshots and videos of real ChurchCRM workflows for marketing use. It is the repo's one Playwright suite (multi-viewport projects and built-in video recording); Cypress in `cypress/` covers E2E regression. Details, directory layout and troubleshooting: `playwright/README.md`.
+A Playwright pipeline in `playwright/` captures screenshots and videos of real ChurchCRM workflows for marketing use. It is the repo's one Playwright suite (multi-viewport projects and built-in video recording); Cypress in `cypress/` covers E2E regression. Issues and PRs for the Playwright pipeline carry the `Marketing` label; `Integration Testing` is Cypress only. Details, directory layout and troubleshooting: `playwright/README.md`.
 
 This is a media-generation pipeline. A passing run is necessary, and the captured screenshots and videos must also look like something shown to a church deciding whether to adopt ChurchCRM: no error banners, no half-loaded AJAX content, no unintended "Inactive" or placeholder state. Some captures show inactive or deceased status on purpose (`person-inactive-profile`, `person-deceased-profile`, `family-inactive-profile`); see "Demo subjects, status and photos". Open the generated PNGs under `playwright/artifacts/screenshots/` before calling a workflow done.
 
