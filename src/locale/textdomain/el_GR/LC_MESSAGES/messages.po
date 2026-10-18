@@ -8147,14 +8147,6 @@ msgid "API Key is required."
 msgstr "Το κλειδί API είναι απαραίτητο."
 
 #: 
-msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
-msgstr "Δεν είναι δυνατή η σύνδεση με το OpenLP στο %s. Ελέγξτε το URL του διακομιστή και ότι το OpenLP εκτελείται."
-
-#: 
-msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
-msgstr "Δεν είναι δυνατή η σύνδεση με το OpenLP στο %s. Ο διακομιστής επέστρεψε HTTP %d."
-
-#: 
 msgid "Congregation Map"
 msgstr "Χάρτης εκκλησιαστικής κοινότητας"
 

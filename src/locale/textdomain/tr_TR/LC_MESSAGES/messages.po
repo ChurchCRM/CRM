@@ -8147,14 +8147,6 @@ msgid "API Key is required."
 msgstr "API Anahtarı gereklidir."
 
 #: 
-msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
-msgstr "%s adresindeki OpenLP'ye bağlanılamıyor. Sunucu URL'sini ve OpenLP'nin çalıştığını kontrol edin."
-
-#: 
-msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
-msgstr "%s adresindeki OpenLP'ye bağlanılamıyor. Sunucu HTTP %d döndürdü."
-
-#: 
 msgid "Congregation Map"
 msgstr "Cemaat Haritası"
 

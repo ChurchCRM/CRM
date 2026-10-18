@@ -8137,14 +8137,6 @@ msgid "API Key is required."
 msgstr "Çelësi API është i nevojshëm."
 
 #: 
-msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
-msgstr "Nuk mund të lidheni me OpenLP në %s. Kontrolloni URL-në e serverit dhe nëse OpenLP po ekzekutohet."
-
-#: 
-msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
-msgstr "Nuk mund të lidheni me OpenLP në %s. Serveri ktheu HTTP %d."
-
-#: 
 msgid "Congregation Map"
 msgstr "Harta e Kongregacionit"
 

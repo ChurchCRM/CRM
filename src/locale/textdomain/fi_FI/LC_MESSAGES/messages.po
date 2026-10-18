@@ -8114,14 +8114,6 @@ msgid "API Key is required."
 msgstr "API-avain vaaditaan."
 
 #: 
-msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
-msgstr "Ei voi muodostaa yhteyttä OpenLP:hen osoitteessa %s. Tarkista palvelimen URL-osoite ja että OpenLP on käynnissä."
-
-#: 
-msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
-msgstr "Ei voi muodostaa yhteyttä OpenLP:hen osoitteessa %s. Palvelin palautti HTTP %d."
-
-#: 
 msgid "Congregation Map"
 msgstr "Seurakunnan kartta"
 

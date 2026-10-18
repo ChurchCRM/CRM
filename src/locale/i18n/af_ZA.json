@@ -1961,8 +1961,6 @@
   "manifest.": "manifes.",
   "subscribers": "intekenaars",
   "API Key is required.": "API-sleutel is vereis.",
-  "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running.": "Kan nie met OpenLP verbind by %s nie. Kyk die bediener-URL en of OpenLP aan die gang is.",
-  "Cannot connect to OpenLP at %s. Server returned HTTP %d.": "Kan nie met OpenLP verbind by %s nie. Bediener het HTTP %d teruggegee.",
   "Congregation Map": "Gemeentekaart",
   "Connected to MailChimp! Account: %s (%d subscribers)": "Verbind met MailChimp! Rekening: %s (%d intekenaars)",
   "Connected to OpenLP server successfully.": "Suksesvol verbind met OpenLP-bediener.",

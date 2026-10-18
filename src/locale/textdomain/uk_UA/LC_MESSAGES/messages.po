@@ -8163,14 +8163,6 @@ msgid "API Key is required."
 msgstr "API-ключ обов'язковий."
 
 #: 
-msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
-msgstr "Неможливо підключитися до OpenLP за адресою %s. Перевірте URL сервера та чи запущено OpenLP."
-
-#: 
-msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
-msgstr "Неможливо підключитися до OpenLP за адресою %s. Сервер повернув HTTP %d."
-
-#: 
 msgid "Congregation Map"
 msgstr "Карта парафії"
 

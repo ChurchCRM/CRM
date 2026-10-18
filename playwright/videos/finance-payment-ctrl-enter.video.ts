@@ -57,7 +57,7 @@ async function enterEnvelope(page: Page, envelope: Envelope): Promise<void> {
 }
 
 test('finance-payment-ctrl-enter', async ({ page }, testInfo) => {
-  await page.goto(`/DepositSlipEditor.php?DepositSlipID=${depositId}`);
+  await page.goto(`/finance/deposit/${depositId}`);
   await expect(page.locator('#paymentsTable')).toBeAttached({ timeout: 15000 });
   await humanPause(page, 1500);
 
@@ -76,7 +76,7 @@ test('finance-payment-ctrl-enter', async ({ page }, testInfo) => {
 
   await humanPause(page, 1200);
   await humanClick(page.locator('a.btn-secondary', { hasText: 'Cancel' }));
-  await page.waitForURL(/DepositSlipEditor\.php/, { timeout: 15000 });
+  await page.waitForURL(/\/finance\/deposit\//, { timeout: 15000 });
   await expect(page.locator('#payment-count')).toHaveText(String(ENVELOPES.length), { timeout: 15000 });
   await settle(page, 3000);
 

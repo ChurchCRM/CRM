@@ -8146,14 +8146,6 @@ msgid "API Key is required."
 msgstr "API võti on kohustuslik."
 
 #: 
-msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
-msgstr "Ei saa ühendust luua OpenLP-ga aadressil %s. Kontrollige serveri URL-i ja et OpenLP töötab."
-
-#: 
-msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
-msgstr "Ei saa ühendust luua OpenLP-ga aadressil %s. Server tagastas HTTP %d."
-
-#: 
 msgid "Congregation Map"
 msgstr "Koguduse Kaart"
 

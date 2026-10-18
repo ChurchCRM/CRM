@@ -8217,14 +8217,6 @@ msgid "API Key is required."
 msgstr "API-nøkkel er påkrevd."
 
 #: 
-msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
-msgstr "Kan ikke koble til OpenLP på %s. Sjekk server-URL og at OpenLP kjører."
-
-#: 
-msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
-msgstr "Kan ikke koble til OpenLP på %s. Serveren returnerte HTTP %d."
-
-#: 
 msgid "Congregation Map"
 msgstr "Menighetskart"
 

@@ -8129,14 +8129,6 @@ msgid "API Key is required."
 msgstr "API kľúč je povinný."
 
 #: 
-msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
-msgstr "Nie je možné pripojiť sa k OpenLP na %s. Skontrolujte URL servera a či OpenLP beží."
-
-#: 
-msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
-msgstr "Nie je možné pripojiť sa k OpenLP na %s. Server vrátil HTTP %d."
-
-#: 
 msgid "Congregation Map"
 msgstr "Mapa zboru"
 

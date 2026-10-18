@@ -8116,14 +8116,6 @@ msgid "API Key is required."
 msgstr "API-sleutel is verplicht."
 
 #: 
-msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
-msgstr "Kan geen verbinding maken met OpenLP op %s. Controleer de server-URL en of OpenLP actief is."
-
-#: 
-msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
-msgstr "Kan geen verbinding maken met OpenLP op %s. Server gaf HTTP %d terug."
-
-#: 
 msgid "Congregation Map"
 msgstr "Gemeentekaart"
 

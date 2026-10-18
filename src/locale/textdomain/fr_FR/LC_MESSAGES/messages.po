@@ -8144,14 +8144,6 @@ msgid "API Key is required."
 msgstr "La clé API est requise."
 
 #: 
-msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
-msgstr "Impossible de se connecter à OpenLP sur %s. Vérifiez l'URL du serveur et que OpenLP est en cours d'exécution."
-
-#: 
-msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
-msgstr "Impossible de se connecter à OpenLP sur %s. Le serveur a renvoyé HTTP %d."
-
-#: 
 msgid "Congregation Map"
 msgstr "Carte de la congrégation"
 

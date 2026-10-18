@@ -1961,8 +1961,6 @@
   "manifest.": "manifest.",
   "subscribers": "feliratkozók",
   "API Key is required.": "Az API-kulcs megadása kötelező.",
-  "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running.": "Nem sikerült csatlakozni az OpenLP-hez (%s). Ellenőrizze a kiszolgáló URL-jét, és hogy az OpenLP fut-e.",
-  "Cannot connect to OpenLP at %s. Server returned HTTP %d.": "Nem sikerült csatlakozni az OpenLP-hez (%s). A kiszolgáló HTTP %d választ adott.",
   "Congregation Map": "Gyülekezeti térkép",
   "Connected to MailChimp! Account: %s (%d subscribers)": "Csatlakozva a MailChimp-hez! Fiók: %s (%d feliratkozó)",
   "Connected to OpenLP server successfully.": "Sikeresen csatlakozva az OpenLP kiszolgálóhoz.",

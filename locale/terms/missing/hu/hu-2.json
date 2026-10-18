@@ -4,6 +4,9 @@
   "positionIds must be a list of position ids": "",
   "{{name}} ({{family}} family)": "",
   "{{name}} assigned and recorded as accepted": "",
+  "Ask an administrator to change your sign-in email.": "",
+  "Email changed by an administrator from %1$s to %2$s": "",
+  "Only an administrator can change the email of a person with a user account.": "",
   "Delete ({{count}})": {
     "one": "",
     "other": ""

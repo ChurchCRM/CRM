@@ -1961,8 +1961,6 @@
   "manifest.": "מניפסט.",
   "subscribers": "מנויים",
   "API Key is required.": "מפתח API נדרש.",
-  "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running.": "לא ניתן להתחבר ל-OpenLP בכתובת %s. בדוק את כתובת השרת ושה-OpenLP פועל.",
-  "Cannot connect to OpenLP at %s. Server returned HTTP %d.": "לא ניתן להתחבר ל-OpenLP בכתובת %s. השרת החזיר HTTP %d.",
   "Congregation Map": "מפת הקהילה",
   "Connected to MailChimp! Account: %s (%d subscribers)": "מחובר ל-MailChimp! חשבון: %s (%d מנויים)",
   "Connected to OpenLP server successfully.": "החיבור לשרת OpenLP הצליח.",
