@@ -130,18 +130,21 @@ jobs:
     - name: Run PHP error-redaction tests
       run: npm run test:php
 
+    - uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
+
     - name: Build Docker images
-      run: |
-        PHP_VERSIONS='${{ needs.configure.outputs.php-versions }}'
-        for version in $(echo "$PHP_VERSIONS" | jq -r '.[]'); do
-          echo "Building Docker image for PHP $version..."
-          docker build --target test \
-            --build-arg PHP_VERSION=$version \
-            -t churchcrm/crm:php${version}-test \
-            -f docker/Dockerfile.churchcrm-apache-php8 docker/
-          docker save churchcrm/crm:php${version}-test | gzip > temp/docker-image-${version}.tar.gz
-          echo "Saved: $(du -h temp/docker-image-${version}.tar.gz | cut -f1)"
-        done
+      uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
+      with:
+        context: docker
+        file: docker/Dockerfile.churchcrm-apache-php8
+        target: test
+        load: true
+        tags: churchcrm/crm:php8.4-test
+        cache-from: type=gha,scope=ci-test-image
+        cache-to: type=gha,mode=max,scope=ci-test-image
+
+    - name: Save Docker image
+      run: docker save churchcrm/crm:php8.4-test | gzip > temp/docker-image-8.4.tar.gz
 
     - name: Upload build artifact
       uses: ./.github/actions/upload-artifact
@@ -442,7 +445,7 @@ jobs:
       run: rm -f src/Include/Config.php
 
     - name: Start Docker (new system subdirectory)
-      run: npm run docker:ci:new-system:subdir:start
+      run: docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.subdir.yaml --profile ci-new-system up -d
 
     - name: Wait for server (new system subdirectory)
       uses: ./.github/actions/wait-for-server
