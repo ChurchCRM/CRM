@@ -241,6 +241,12 @@ paths:
       responses:
         '200':
           description: 'Updated config key/value pair'
+        '400':
+          description: 'A string value is required'
+        '403':
+          description: 'This setting is administrator-only'
+        '404':
+          description: 'Unknown user configuration key'
       security:
         -
           ApiKeyAuth: []
@@ -8506,7 +8512,7 @@ paths:
       tags:
         - People
       summary: "Update a note's text and/or privacy"
-      description: "Only the note's author or an admin may update a note."
+      description: "Only the note's author or an admin may update an ordinary user note; system timeline entries are immutable. Omitting private preserves the stored privacy flag."
       operationId: updateNote
       parameters:
         -
@@ -8556,7 +8562,7 @@ paths:
       tags:
         - People
       summary: 'Delete a note'
-      description: "Deletes the note. Requires Notes permission. Only the note's author or an admin may delete it."
+      description: "Deletes an ordinary user note. Requires Notes permission. Only the note's author or an admin may delete it; system timeline entries cannot be deleted through this API."
       operationId: deleteNote
       parameters:
         -
