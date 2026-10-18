@@ -28,7 +28,7 @@
 
 **Status**
 - Proposed. No code yet. The child issues in §8 are opened only if this direction is accepted (D12).
-- Builds on the Member Portal on master (`src/portal/`, epic #8977).
+- Builds on the Member Portal on master (`src/portal/`, epic #8977) and on the [member sign-in](https://github.com/ChurchCRM/CRM/blob/feature/member-sign-in/docs/design/member-sign-in.md) design accepted for 7.9.0 (#10464). Members sign in with no user account, and portal pages decide access with its portal permissions model (A41).
 - RFC 0005 depends on this RFC. This RFC does not depend on RFC 0005.
 - Code is cited by symbol on upstream `master` as of 2026-10-17.
 
@@ -87,6 +87,7 @@
 | A36 | Every query that reads a deposit's rows also filters `plg_PledgeOrPayment = 'Payment'` (list in §6), and so does the payment search. | Defence in depth: today these queries rely on pledges having no deposit. |
 | A37 | One `PledgeProgressService` computes D21 for the portal and for the staff pages, per owner, fund and fiscal year. | Portal and staff totals agree. |
 | A38 | `PledgeWriter` makes GroupKeys unique across both types. | `FunctionsUtils::genGroupKey()` checks only `Payment` rows, so two pledges for one family, fund and date get the same key, and an edit of one (`FinancialService::updatePledgeOrPayment()` deletes by GroupKey) rewrites both. |
+| A41 | **Portal permissions** use member sign-in's model (§8 there). `portal.giving.pledges` (no scope) comes from the everyone rule while `bEnabledFinance` and `bPortalShowGiving` are on; it guards the nav item, the page and the API (`RequirePortalCapability`). `portal.giving.household` (family scope) comes from a head-of-household rule: anyone in `Family::getHeadPeople()`. It shows household pledges and "Pledge as: Our household" (`portal_can()` in templates). It is deliberately not member sign-in's adult rule, because D3 keeps a spouse's view to their own pledges. | One check for every portal page and for plugins; whole grants; revoked by the next request. |
 | A39 | The amount per gift is derived: total ÷ gifts scheduled between `plg_date` and `plg_EndDate` (or the FY end). It is exact because A33 writes the total that way. When the office sets a total that does not divide, or the schedule is Other, the card shows only the total. | No second amount column to keep in step. |
 
 ---
@@ -94,8 +95,8 @@
 ## 2. Pages and API
 
 ### 2.1 Member Portal Giving page
-- **Nav:** `PortalNav::GIVING` "Giving", `fa-solid fa-hand-holding-heart`, between My Family and Profile in `PortalNav::build()`. Shown when `bEnabledFinance` and the new `bPortalShowGiving` (Admin → Member Portal, default off) are on and the actor has a person record.
-- **Route:** `GET /portal/giving`, one view (Pledges), in `src/portal/routes/giving.php`, inside the portal group behind `PortalAccessMiddleware` and `CSRFMiddleware` like the other portal pages. Template `giving/pledges.html.twig` with partials `pledge-card` and `pledge-form`; overridable like every portal template.
+- **Nav:** `PortalNav::GIVING` "Giving", `fa-solid fa-hand-holding-heart`, between My Family and Profile in `PortalNav::build()`. It names `portal.giving.pledges` (A41), so it shows when `bEnabledFinance` and the new `bPortalShowGiving` (Admin → Member Portal, default off) are on.
+- **Route:** `GET /portal/giving`, one view (Pledges), in `src/portal/routes/giving.php`, inside the portal group behind the portal session middleware and `CSRFMiddleware` like the other portal pages, with `RequirePortalCapability` for `portal.giving.pledges`. Template `giving/pledges.html.twig` with partials `pledge-card` and `pledge-form`; overridable like every portal template.
 - **Cards:** one per owner, fund and fiscal year visible under D3, current year first. Each shows the fund, the owner ("You", "Smith household", or a spouse's name, read-only), the schedule sentence, pledged, given, remaining and a progress bar. **Show gifts** lists the payments counted toward it (date, amount, method), office-entered today. Edit, End and Delete (D16) appear only on pledges the actor owns (D18).
 - **Add a pledge:** fund (offered funds only: `fun_Active = 'true' AND fun_OnlineGiving = 1`, in `fun_Order`, with `fun_Description` as help), Pledge as (HoH only), amount per gift, schedule, start date, optional end date, with a live sentence and total. If the owner already has a pledge for that fund and year, the form offers to edit it (D13).
 - **Pledge again** appears in the last month of the fiscal year (D19).
@@ -104,7 +105,7 @@
 - The Member Portal design (`.agents/skills/churchcrm/member-portal-design.md`, P14) says the nav holds no Giving page until a payment-gateway design exists. GIV-83 rewrites P14 to point at this RFC.
 
 ### 2.2 Portal API
-`src/api/routes/portal/portal-giving.php`, behind `PortalApiMiddleware` and `CSRFMiddleware`, with the rules of `portal-me.php`: the actor is the session, no person or family id is accepted, and an API key is refused.
+`src/api/routes/portal/portal-giving.php`, behind `PortalApiMiddleware`, `CSRFMiddleware` and `RequirePortalCapability` (A41), with the rules of `portal-me.php`: the actor is the session's portal principal, no person or family id is accepted, and an API key is refused.
 
 | Route | Does |
 |---|---|
@@ -146,7 +147,7 @@ All of them use `PledgeProgressService` (A37). Family totals do not change: the 
 | `pledge_plg` | `plg_PerID mediumint(9) unsigned NULL` + index; `idx_plg_GroupKey`. No DB FK (stock style); cleared in code on person delete | `<next>-giving-person-attribution.sql` / GIV-05 |
 | `pledge_plg` | `plg_EndDate date NULL`: last date of a scheduled pledge; NULL = through the FY end. Written on `Pledge` rows only | `<next>-pledge-end-date.sql` / GIV-82 |
 | `donationfund_fun` | `fun_OnlineGiving tinyint(1) NOT NULL DEFAULT 0` (D14) | `<next>-fund-online-giving.sql` / GIV-80 |
-| new `finance_audit_faud` | Append-only, no update or delete API: `faud_ID bigint`, date, `faud_ActorPerId` (signed), `faud_ImpersonatorPerId` (NULL unless a Login as User feature sets it), `faud_Action`, entity type and id, `faud_Before`/`faud_After` JSON (secrets excluded). RFC 0005 adds `faud_IpHash` once its HMAC key exists | `<next>-finance-audit.sql` / GIV-03 |
+| new `finance_audit_faud` | Append-only, no update or delete API: `faud_ID bigint`, date, `faud_ActorPerId` (signed), `faud_ImpersonatorPerId` (the administrator's person during Login as User, member sign-in §6.5; else NULL), `faud_Action`, entity type and id, `faud_Before`/`faud_After` JSON (secrets excluded). RFC 0005 adds `faud_IpHash` once its HMAC key exists | `<next>-finance-audit.sql` / GIV-03 |
 
 **Why `plg_EndDate`:** without it an ended pledge cannot show "Ended Jun 30", and A39 cannot recover the amount per gift after an end. Nothing else is added. The start date is `plg_date`, the fiscal year is `plg_FYID`, the schedule is `plg_schedule` (no enum change), the amount per gift is derived (A39), and who entered a pledge is in the audit log.
 
@@ -266,7 +267,7 @@ No money moves, so there is no PCI scope, gateway secret, webhook or fee. What r
 | T13 | Wrong year | FY computed on the server from the date (`FiscalYearUtils::getFiscalYearIdForDate()`) | GIV-04 |
 | T19 | A pledge counted as money | A35, A36, I12, tests in §6 | GIV-81 |
 | T20 | A member sees someone else's pledges | D3 scope tests: HoH, spouse, child, person with no family, two heads | GIV-07, 83 |
-| T21 | Login as User | Not on master (rolled back in #10352). If it returns, pledge writes answer 409 while impersonating, and reads need a finance-enabled impersonator | GIV-83 |
+| T21 | Login as User | Returns with member sign-in (§6.5 there: administrators only, off by default, read-only by default). Pledges show only when the administrator has Finance. Pledge writes answer 409 during Login as User, even when the church allows changes, and the audit records the administrator | GIV-83 |
 | T22 | Abuse | Session only, CSRF, one pledge per owner, fund and year, amount cap | GIV-83 |
 
 **Person delete** (`Person::preDelete()`) clears `plg_PerID` on the person's rows; the family keeps them; audited. The person's pledges with `plg_FamID` NULL are deleted with them, because a pledge is not a gift. Their payments with `plg_FamID` NULL block the delete: clearing the id would make a named gift anonymous (I6), so Finance re-attributes them first. RFC 0005 extends the rule to its own person ids and to recurring gifts.
@@ -334,7 +335,7 @@ The five questions for the maintainer are at the top of this document.
 | R59 | Staff see pledge progress per person | §2.3, GIV-43, GIV-84 | New report, person view |
 | R60 | No money moves | D20, §6, I12 | Guards in GIV-81 |
 | R61 | The church chooses which funds appear | D14, GIV-80 | Off by default |
-| D3 | HoH / non-HoH visibility | A10, §2.1, §5 | |
+| D3 | HoH / non-HoH visibility | A10, A41, §2.1, §5 | |
 | D11 | Moving families | A31, F8, GIV-06 | Pledges move with the person |
 | D12 | Proposal first; issues only after the direction is accepted | Status, §8 | |
 | D13–D21 | Pledge choices | §2, §3, F15–F17 | |
