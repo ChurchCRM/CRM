@@ -427,6 +427,7 @@ class DemoDataService
                             $person->setNeedsReview($familyNeedsReview);
                         }
                         $this->applyDemoPersonStatus($person, $m, $today);
+                        $this->applyDemoGrade($person, $today);
                         $person->save();
                         $this->personMap[$person->getId()] = $person;
                         $this->importResult['imported']['people']++;
@@ -546,6 +547,7 @@ class DemoDataService
                     $person->setNeedsReview($m['needsReview'] ?? true);
                 }
                 $this->applyDemoPersonStatus($person, $m, $today);
+                $this->applyDemoGrade($person, $today);
                 $person->save();
                 $this->personMap[$person->getId()] = $person;
                 $this->importResult['imported']['people']++;
@@ -594,6 +596,26 @@ class DemoDataService
         }
         
         return $emailMap;
+    }
+
+    /**
+     * A demo child's grade is the level for their age at the start of this school
+     * year (taken as September 1), so the demo stays right as the years pass.
+     */
+    private function applyDemoGrade(Person $person, DateTime $today): void
+    {
+        if (empty($person->getBirthYear()) || empty($person->getBirthMonth()) || empty($person->getBirthDay())) {
+            return;
+        }
+        $schoolYearStart = new DateTime(((int) $today->format('n') >= 9 ? $today->format('Y') : (int) $today->format('Y') - 1) . '-09-01');
+        $birthDate = DateTime::createFromFormat('!Y-n-j', $person->getBirthYear() . '-' . $person->getBirthMonth() . '-' . $person->getBirthDay());
+        if ($birthDate === false || $birthDate > $schoolYearStart) {
+            return;
+        }
+        $level = $birthDate->diff($schoolYearStart)->y;
+        if (GradeService::isValid($level)) {
+            $person->setGradeId($level);
+        }
     }
 
     private function applyDemoPersonStatus(Person $person, array $m, DateTime $today): void

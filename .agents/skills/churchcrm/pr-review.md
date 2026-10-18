@@ -47,6 +47,14 @@ git log origin/master...origin/<branch-name> --oneline
 git diff --name-status origin/master...origin/<branch-name>
 ```
 
+A diff is not a review. For every changed function, route, or query:
+
+- Read the whole function and the middleware/model it relies on, not only the hunk
+- Grep every caller and every producer of the values the change branches on (types, flags, nullable columns); list what the new condition now rejects or accepts
+- Check existing installs: legacy rows, NULL/empty values, demo and seed data, UI that still offers the action
+- Verify each assertion in a new spec against the code (status codes, seed IDs, helper names)
+- State in the draft what you read and what you did not; never mark an item verified from the diff alone
+
 Look for:
 
 - Changes outside the stated purpose

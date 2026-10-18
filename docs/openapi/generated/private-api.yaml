@@ -241,6 +241,12 @@ paths:
       responses:
         '200':
           description: 'Updated config key/value pair'
+        '400':
+          description: 'A string value is required'
+        '403':
+          description: 'This setting is administrator-only'
+        '404':
+          description: 'Unknown user configuration key'
       security:
         -
           ApiKeyAuth: []
@@ -8506,7 +8512,7 @@ paths:
       tags:
         - People
       summary: "Update a note's text and/or privacy"
-      description: "Only the note's author or an admin may update a note."
+      description: "Only the note's author or an admin may update an ordinary user note; system timeline entries are immutable. Omitting private preserves the stored privacy flag."
       operationId: updateNote
       parameters:
         -
@@ -8556,7 +8562,7 @@ paths:
       tags:
         - People
       summary: 'Delete a note'
-      description: "Deletes the note. Requires Notes permission. Only the note's author or an admin may delete it."
+      description: "Deletes an ordinary user note. Requires Notes permission. Only the note's author or an admin may delete it; system timeline entries cannot be deleted through this API."
       operationId: deleteNote
       parameters:
         -
@@ -9055,6 +9061,8 @@ paths:
       responses:
         '200':
           description: 'Updated membership records for the person in the group'
+        '400':
+          description: 'Role does not belong to this group'
         '403':
           description: 'ManageGroupRole role required'
         '409':
@@ -9205,6 +9213,8 @@ paths:
       responses:
         '200':
           description: 'Default role updated'
+        '400':
+          description: 'Role does not belong to this group'
         '403':
           description: 'ManageGroupRole role required'
       security:
@@ -10256,6 +10266,173 @@ paths:
           description: Unauthorized
         '403':
           description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /admin/api/grades/promotion:
+    get:
+      tags:
+        - Admin
+      summary: 'Get the yearly grade promotion settings, last run and preview'
+      description: 'The promotion month and day, the next automatic promotion date, the last promotion marker and result, and how many people a promotion would move up or clear from the last grade.'
+      operationId: getGradePromotionStatus
+      responses:
+        '200':
+          description: 'Promotion status'
+          content:
+            application/json:
+              schema:
+                properties:
+                  month: { description: '1-12, or 0 when automatic promotion is off', type: integer, example: 6 }
+                  day: { type: integer, example: 1 }
+                  nextDate: { type: string, format: date, example: '2027-06-01', nullable: true }
+                  nextDateText: { type: string, example: 'June 01 2027' }
+                  lastAt: { description: 'Last promotion marker; send it back as expectedLastAt', type: string, example: '2026-06-01 00:05:12.123456' }
+                  lastRunText: { type: string, nullable: true }
+                  promotedThisYear: { type: boolean }
+                  lastResult: { properties: { ranAt: { type: string }, trigger: { type: string, enum: [automatic, manual] }, userId: { type: integer }, moved: { type: integer }, finished: { type: integer } }, type: object, nullable: true }
+                  preview: { properties: { moved: { type: integer }, finished: { type: integer } }, type: object }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+    post:
+      tags:
+        - Admin
+      summary: 'Move everyone with a grade up one grade now'
+      description: "Counts as this year's promotion. The last grade is cleared, deceased people are skipped and each moved person gets a timeline note. A browser session must send the CSRF token in X-CSRF-Token; API-key calls do not."
+      operationId: promoteGradesNow
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                expectedLastAt:
+                  description: 'The lastAt the caller was shown; empty when grades were never promoted'
+                  type: string
+                  example: ''
+              type: object
+      responses:
+        '200':
+          description: 'Promotion result and the new status'
+          content:
+            application/json:
+              schema:
+                properties:
+                  result: { properties: { ranAt: { type: string }, trigger: { type: string, example: manual }, userId: { type: integer }, moved: { type: integer }, finished: { type: integer } }, type: object }
+                  status: { description: 'Same shape as GET /admin/api/grades/promotion', type: object }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Admin role required, or the CSRF token is missing'
+        '409':
+          description: "Grades were promoted after the caller's expectedLastAt"
+      security:
+        -
+          ApiKeyAuth: []
+  /admin/api/grades/presets:
+    get:
+      tags:
+        - Admin
+      summary: 'List the grade names available for each country'
+      operationId: listGradePresets
+      responses:
+        '200':
+          description: 'Countries and their grade names'
+          content:
+            application/json:
+              schema:
+                properties:
+                  current: { description: 'Key of the names last applied', type: string, example: us }
+                  presets: { type: array, items: { properties: { key: { type: string, example: england-wales }, name: { type: string, example: 'England and Wales' }, grades: { type: array, items: { type: string, example: 'Year 1' } } }, type: object } }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/admin/api/grades/presets/{key}/preview':
+    get:
+      tags:
+        - Admin
+      summary: "Preview what applying a country's grade names would change"
+      operationId: previewGradePreset
+      parameters:
+        -
+          name: key
+          in: path
+          required: true
+          schema:
+            type: string
+          example: england-wales
+      responses:
+        '200':
+          description: 'The planned changes and the state token to apply them'
+          content:
+            application/json:
+              schema:
+                properties:
+                  preset: { type: string, example: england-wales }
+                  renamed: { type: array, items: { properties: { from: { type: string, example: 1st }, to: { type: string, example: 'Year 2' } }, type: object } }
+                  added: { type: array, items: { type: string, example: Nursery } }
+                  removed: { type: array, items: { properties: { name: { type: string }, people: { type: integer } }, type: object } }
+                  merged: { type: array, items: { properties: { name: { type: string }, people: { type: integer } }, type: object } }
+                  cleared: { description: 'People whose grade a removed grade clears', type: integer }
+                  state: { description: 'Send back as expectedState when applying', type: string }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Admin role required'
+        '404':
+          description: 'No grade names for that key'
+      security:
+        -
+          ApiKeyAuth: []
+  '/admin/api/grades/presets/{key}':
+    post:
+      tags:
+        - Admin
+      summary: "Rename the grades to a country's names, as previewed"
+      description: 'People keep their grade. The plan is checked against expectedState under row locks before anything changes. A browser session must send the CSRF token in X-CSRF-Token; API-key calls do not.'
+      operationId: applyGradePreset
+      parameters:
+        -
+          name: key
+          in: path
+          required: true
+          schema:
+            type: string
+          example: england-wales
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                expectedState:
+                  description: 'The state token from the preview'
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: 'The changes that were applied (same shape as the preview)'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Admin role required, or the CSRF token is missing'
+        '404':
+          description: 'No grade names for that key'
+        '409':
+          description: 'The grades changed after the preview; nothing was changed'
       security:
         -
           ApiKeyAuth: []

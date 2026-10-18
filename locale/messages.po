@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 03:56+0000\n"
+"POT-Creation-Date: 2026-10-18 15:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -155,7 +155,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #, php-format
-msgid "%d failed"
+msgid "%d failed (all time)"
 msgstr ""
 
 #, php-format
@@ -618,6 +618,9 @@ msgstr ""
 msgid "A staffing requirement belongs to exactly one of a schedule or an occurrence"
 msgstr ""
 
+msgid "A string value is required"
+msgstr ""
+
 msgid "A substitute has already been proposed for this assignment"
 msgstr ""
 
@@ -896,6 +899,9 @@ msgid "Add New Field"
 msgstr ""
 
 msgid "Add New Fund"
+msgstr ""
+
+msgid "Add New Grade"
 msgstr ""
 
 msgid "Add New Group"
@@ -1177,6 +1183,9 @@ msgstr ""
 msgid "Administrator permission required"
 msgstr ""
 
+msgid "Administrator permission required for this setting"
+msgstr ""
+
 msgid "Administrator privileges"
 msgstr ""
 
@@ -1239,6 +1248,12 @@ msgstr ""
 
 #. Context: locales
 msgid "Albanian"
+msgstr ""
+
+msgid "Alerts sent: {{sent}}, failed: {{failed}}"
+msgstr ""
+
+msgid "Alerts sent: {{total}}"
 msgstr ""
 
 #. Context: countries
@@ -1803,6 +1818,9 @@ msgstr ""
 msgid "Assign a volunteer"
 msgstr ""
 
+msgid "Assign an event to the kiosk using the dropdown"
+msgstr ""
+
 msgid "Assign and manage donation envelope numbers"
 msgstr ""
 
@@ -1993,6 +2011,9 @@ msgid "Avg Open Rate"
 msgstr ""
 
 msgid "Avg Sale Price"
+msgstr ""
+
+msgid "Awaiting Acceptance"
 msgstr ""
 
 msgid "Awaiting reply"
@@ -2308,6 +2329,9 @@ msgstr ""
 msgid "Birthday Greeting Emails"
 msgstr ""
 
+msgid "Birthday coming up!"
+msgstr ""
+
 msgid "Birthday greeting"
 msgstr ""
 
@@ -2596,9 +2620,6 @@ msgstr ""
 msgid "Cancel this occurrence"
 msgstr ""
 
-msgid "Cancel — wait 1 more minute"
-msgstr ""
-
 msgid "Cancelled"
 msgstr ""
 
@@ -2762,6 +2783,9 @@ msgstr ""
 msgid "Change Family Role"
 msgstr ""
 
+msgid "Change Grade Names"
+msgstr ""
+
 msgid "Change Password"
 msgstr ""
 
@@ -2868,6 +2892,12 @@ msgstr ""
 msgid "Check out"
 msgstr ""
 
+msgid "Check that the event start/end times are correct"
+msgstr ""
+
+msgid "Check the server logs for more details"
+msgstr ""
+
 msgid "Check your email for a password reset link"
 msgstr ""
 
@@ -2875,6 +2905,9 @@ msgid "Check-in"
 msgstr ""
 
 msgid "Check-in By"
+msgstr ""
+
+msgid "Check-in Opens Soon"
 msgstr ""
 
 msgid "Check-in and Check-out"
@@ -2937,7 +2970,16 @@ msgstr ""
 msgid "Checked out from event: %s"
 msgstr ""
 
+msgid "Checked-in-by person is not an adult family member"
+msgstr ""
+
+msgid "Checked-out-by person is not an adult family member"
+msgstr ""
+
 msgid "Checking…"
+msgstr ""
+
+msgid "Checkout all students"
 msgstr ""
 
 msgid "Checks"
@@ -4259,6 +4301,9 @@ msgstr ""
 msgid "Day, no leading zero"
 msgstr ""
 
+msgid "Days"
+msgstr ""
+
 msgid "Deactivate"
 msgstr ""
 
@@ -5425,6 +5470,9 @@ msgstr ""
 msgid "Enforce strict CSP headers to protect against XSS attacks"
 msgstr ""
 
+msgid "England and Wales"
+msgstr ""
+
 #. Context: locales
 msgid "English - Australia"
 msgstr ""
@@ -5453,6 +5501,12 @@ msgid "Enrolled"
 msgstr ""
 
 msgid "Ensure all deposits for the tax year are closed before generating statements."
+msgstr ""
+
+msgid "Ensure the group has members"
+msgstr ""
+
+msgid "Ensure the group has members assigned"
 msgstr ""
 
 msgid "Enter Data Manually"
@@ -5580,6 +5634,9 @@ msgstr ""
 msgid "Error"
 msgstr ""
 
+msgid "Error Loading Members"
+msgstr ""
+
 msgid "Error Log"
 msgstr ""
 
@@ -5674,6 +5731,9 @@ msgstr ""
 msgid "Event Details"
 msgstr ""
 
+msgid "Event Has Ended"
+msgstr ""
+
 msgid "Event ID"
 msgstr ""
 
@@ -5710,7 +5770,13 @@ msgstr ""
 msgid "Event not found"
 msgstr ""
 
+msgid "Event not linked to a Group"
+msgstr ""
+
 msgid "Event staffed"
+msgstr ""
+
+msgid "Event timing"
 msgstr ""
 
 msgid "Event title"
@@ -5770,9 +5836,6 @@ msgstr ""
 msgid "Every email ChurchCRM sent, newest first"
 msgstr ""
 
-msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
-msgstr ""
-
 msgid "Every matching occurrence between From and To will get its own event at the same Start/End time."
 msgstr ""
 
@@ -5783,6 +5846,9 @@ msgid "Every position in this window has the people it needs."
 msgstr ""
 
 msgid "Every week on"
+msgstr ""
+
+msgid "Every year each person moves to the next grade in this order, and the last grade is cleared."
 msgstr ""
 
 msgid "Every year on"
@@ -5801,6 +5867,12 @@ msgid "Everyone in the cart joins this ministry's volunteers. Tick their positio
 msgstr ""
 
 msgid "Everyone is checked in!"
+msgstr ""
+
+msgid "Everyone is here!"
+msgstr ""
+
+msgid "Everyone with a grade will move up one grade now, and this will count as this year's promotion."
 msgstr ""
 
 msgid "Everything is correct"
@@ -5924,7 +5996,13 @@ msgstr ""
 msgid "Failed Logins"
 msgstr ""
 
+msgid "Failed email history pages"
+msgstr ""
+
 msgid "Failed login attempts"
+msgstr ""
+
+msgid "Failed sends across all email history, including automated messages"
 msgstr ""
 
 msgid "Failed to add family to cart"
@@ -6257,10 +6335,16 @@ msgstr ""
 msgid "Failed to save the downloaded release file. Please check disk space and permissions."
 msgstr ""
 
+msgid "Failed to send all alerts: {{total}}"
+msgstr ""
+
 msgid "Failed to send email"
 msgstr ""
 
 msgid "Failed to send email. Please try again or use 'Open in Email Client'."
+msgstr ""
+
+msgid "Failed to send parent alert"
 msgstr ""
 
 msgid "Failed to set default role. Please try again."
@@ -6705,6 +6789,9 @@ msgstr ""
 msgid "Find the line"
 msgstr ""
 
+msgid "Find this kiosk in the device list"
+msgstr ""
+
 msgid "Find volunteers for a particular opportunity"
 msgstr ""
 
@@ -6716,6 +6803,17 @@ msgid "Finding Your Server URL"
 msgstr ""
 
 msgid "Findings"
+msgstr ""
+
+#, php-format
+msgid "Finished %s, so the yearly promotion cleared the grade"
+msgstr ""
+
+#, php-format
+msgid "Finished the last grade: %d"
+msgstr ""
+
+msgid "Finishing the last grade (grade will be cleared): {{total}}"
 msgstr ""
 
 #. Context: countries
@@ -6886,6 +6984,9 @@ msgid "From"
 msgstr ""
 
 msgid "From Date"
+msgstr ""
+
+msgid "From Grade"
 msgstr ""
 
 msgid "From Phone Number"
@@ -7276,6 +7377,50 @@ msgstr ""
 msgid "Google Analytics collects anonymized usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy."
 msgstr ""
 
+msgid "Grade"
+msgstr ""
+
+#, php-format
+msgid "Grade %s cleared when the grade names changed to %s"
+msgstr ""
+
+msgid "Grade Names"
+msgstr ""
+
+msgid "Grade Promotion"
+msgstr ""
+
+#, php-format
+msgid "Grade changed from %s to %s by the yearly promotion"
+msgstr ""
+
+msgid "Grade names not found"
+msgstr ""
+
+msgid "Grades"
+msgstr ""
+
+msgid "Grades Editor"
+msgstr ""
+
+msgid "Grades added"
+msgstr ""
+
+msgid "Grades removed"
+msgstr ""
+
+msgid "Grades renamed: {{total}}"
+msgstr ""
+
+msgid "Grades were already promoted this year, on {{date}}. Promoting again moves everyone up another grade."
+msgstr ""
+
+msgid "Grades were promoted by someone else in the meantime. Reload the page to see the new grades."
+msgstr ""
+
+msgid "Grades you added that match a name in the list and are combined with it"
+msgstr ""
+
 msgid "Grant individual permissions"
 msgstr ""
 
@@ -7404,6 +7549,9 @@ msgstr ""
 msgid "Group deleted successfully."
 msgstr ""
 
+msgid "Group has no members"
+msgstr ""
+
 msgid "Group key is required"
 msgstr ""
 
@@ -7490,6 +7638,9 @@ msgid "Guyana"
 msgstr ""
 
 msgid "HTML URL"
+msgstr ""
+
+msgid "HTTP Status: {{status}}"
 msgstr ""
 
 #. Context: countries
@@ -7654,6 +7805,9 @@ msgstr ""
 msgid "Hour 24h, 2 digits"
 msgstr ""
 
+msgid "Hours"
+msgstr ""
+
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr ""
 
@@ -7699,6 +7853,9 @@ msgid "How often"
 msgstr ""
 
 msgid "How the CSV Import Works"
+msgstr ""
+
+msgid "How to Accept This Kiosk"
 msgstr ""
 
 msgid "How to Fix"
@@ -8074,6 +8231,12 @@ msgstr ""
 msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
 msgstr ""
 
+msgid "Internal: date and time of the last grade promotion. Do not edit manually."
+msgstr ""
+
+msgid "Internal: how the last grade promotion ran and how many people it moved. Do not edit manually."
+msgstr ""
+
 msgid "Internal: last date and time the background timer jobs completed (YYYY-MM-DD HH:MM:SS). Do not edit manually."
 msgstr ""
 
@@ -8084,6 +8247,15 @@ msgid "Internal: last date the daily email listing unfilled volunteer positions 
 msgstr ""
 
 msgid "Internal: last date the volunteer schedules were topped up to the scheduling horizon (YYYY-MM-DD). Do not edit manually."
+msgstr ""
+
+msgid "Internal: the country whose grade names were last applied to the grade list. Do not edit manually."
+msgstr ""
+
+msgid "Internal: the day the grade promotion date was last changed (YYYY-MM-DD). Do not edit manually."
+msgstr ""
+
+msgid "Internal: the list that holds the grade names. Do not edit manually."
 msgstr ""
 
 msgid "Internal: when the volunteer schedules were last topped up and how many occurrences that created. Do not edit manually."
@@ -8380,10 +8552,16 @@ msgstr ""
 msgid "Kiosk Enabled"
 msgstr ""
 
+msgid "Kiosk Identification"
+msgstr ""
+
 msgid "Kiosk Manager"
 msgstr ""
 
 msgid "Kiosk Name"
+msgstr ""
+
+msgid "Kiosk Ready"
 msgstr ""
 
 msgid "Kiosk Registration Disabled"
@@ -8533,6 +8711,9 @@ msgstr ""
 msgid "Last name must be at least 2 characters"
 msgstr ""
 
+msgid "Last promotion"
+msgstr ""
+
 msgid "Last seen"
 msgstr ""
 
@@ -8592,6 +8773,9 @@ msgid "Leave blank to keep existing password"
 msgstr ""
 
 msgid "Leave both at 0 to serve exactly when the event happens. Moving the event moves the volunteers too."
+msgstr ""
+
+msgid "Leave empty for one grade"
 msgstr ""
 
 msgid "Leave open"
@@ -8826,6 +9010,9 @@ msgid "Log Out"
 msgstr ""
 
 msgid "Log Settings"
+msgstr ""
+
+msgid "Log in to ChurchCRM as an administrator"
 msgstr ""
 
 msgid "Log level + message"
@@ -9270,6 +9457,9 @@ msgstr ""
 msgid "Member Roles"
 msgstr ""
 
+msgid "Member is not an adult family member of the roster child"
+msgstr ""
+
 msgid "Member or family records"
 msgstr ""
 
@@ -9580,7 +9770,14 @@ msgstr ""
 msgid "Move up"
 msgstr ""
 
+#, php-format
+msgid "Moved up: %d"
+msgstr ""
+
 msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
+msgstr ""
+
+msgid "Moving up: {{total}}"
 msgstr ""
 
 #. Context: countries
@@ -9862,6 +10059,12 @@ msgstr ""
 msgid "Next Member"
 msgstr ""
 
+msgid "Next Steps"
+msgstr ""
+
+msgid "Next automatic promotion"
+msgstr ""
+
 #, php-format
 msgid "Next on %s"
 msgstr ""
@@ -9925,6 +10128,9 @@ msgstr ""
 msgid "No Group (Select for Kiosk Check-in)"
 msgstr ""
 
+msgid "No Group Members Found"
+msgstr ""
+
 msgid "No Group Selected"
 msgstr ""
 
@@ -9980,6 +10186,9 @@ msgid "No cell phone on file"
 msgstr ""
 
 msgid "No changes to save"
+msgstr ""
+
+msgid "No checked-in students with families to alert"
 msgstr ""
 
 msgid "No class"
@@ -10242,6 +10451,9 @@ msgstr ""
 msgid "No schedules yet"
 msgstr ""
 
+msgid "No server error recorded"
+msgstr ""
+
 msgid "No settings provided"
 msgstr ""
 
@@ -10312,6 +10524,9 @@ msgstr ""
 msgid "Nobody else is trained for this yet — tell your coordinator instead."
 msgstr ""
 
+msgid "Nobody has a grade to promote."
+msgstr ""
+
 msgid "Nobody has said how many volunteers each position needs, so there is nothing to fill."
 msgstr ""
 
@@ -10363,6 +10578,9 @@ msgstr ""
 
 #. Context: countries
 msgid "North Korea (조선 민주주의 인민 공화국)"
+msgstr ""
+
+msgid "Northern Ireland"
 msgstr ""
 
 #. Context: countries
@@ -11155,6 +11373,12 @@ msgstr ""
 msgid "Paraguay"
 msgstr ""
 
+msgid "Parent Alert"
+msgstr ""
+
+msgid "Parent alert sent for {{name}}"
+msgstr ""
+
 msgid "Parents"
 msgstr ""
 
@@ -11311,10 +11535,16 @@ msgstr ""
 msgid "People by Classification"
 msgstr ""
 
+msgid "People by Grade"
+msgstr ""
+
 msgid "People in Cart"
 msgstr ""
 
 msgid "People in Cart (filters ignored)"
+msgstr ""
+
+msgid "People in a range of school grades, such as Kindergarten through 5th"
 msgstr ""
 
 msgid "People not in"
@@ -11327,6 +11557,9 @@ msgid "People to notify when a new family or person is added"
 msgstr ""
 
 msgid "People who joined in a particular month"
+msgstr ""
+
+msgid "People whose grade is cleared: {{total}}"
 msgstr ""
 
 msgid "People with birthdays in a particular month"
@@ -11521,6 +11754,9 @@ msgid "Photo"
 msgstr ""
 
 msgid "Photo Directory"
+msgstr ""
+
+msgid "Photo not found"
 msgstr ""
 
 msgid "PhotoBook"
@@ -11952,6 +12188,9 @@ msgstr ""
 msgid "Positions still short"
 msgstr ""
 
+msgid "Possible Causes"
+msgstr ""
+
 msgid "Pre-flight"
 msgstr ""
 
@@ -12025,6 +12264,9 @@ msgstr ""
 msgid "Private Calendar"
 msgstr ""
 
+msgid "Processing..."
+msgstr ""
+
 msgid "Profile"
 msgstr ""
 
@@ -12035,6 +12277,18 @@ msgid "Profile Image uploaded"
 msgstr ""
 
 msgid "Profile and security"
+msgstr ""
+
+msgid "Promote Grades"
+msgstr ""
+
+msgid "Promote Now"
+msgstr ""
+
+msgid "Promotion Day"
+msgstr ""
+
+msgid "Promotion Month"
 msgstr ""
 
 msgid "Prompt"
@@ -12249,6 +12503,9 @@ msgstr ""
 msgid "Recent Sends"
 msgstr ""
 
+msgid "Recent birthday!"
+msgstr ""
+
 msgid "Recipient"
 msgstr ""
 
@@ -12356,10 +12613,10 @@ msgstr ""
 msgid "Refresh List"
 msgstr ""
 
-msgid "Refreshing Soon"
+msgid "Refresh member list"
 msgstr ""
 
-msgid "Refreshing in"
+msgid "Refresh this kiosk page"
 msgstr ""
 
 msgid "Refreshing..."
@@ -12517,6 +12774,9 @@ msgid "Rename Category"
 msgstr ""
 
 msgid "Rename Kiosk"
+msgstr ""
+
+msgid "Renames the grades to the names used in that country. People keep their grade, and grades you added yourself stay."
 msgstr ""
 
 msgid "Repeats"
@@ -13075,6 +13335,9 @@ msgstr ""
 msgid "Scheduled"
 msgstr ""
 
+msgid "Scheduled Task"
+msgstr ""
+
 msgid "Scheduled Tasks"
 msgstr ""
 
@@ -13101,6 +13364,9 @@ msgid "Schema Version"
 msgstr ""
 
 msgid "Scope grant not found"
+msgstr ""
+
+msgid "Scotland"
 msgstr ""
 
 msgid "Search"
@@ -13182,6 +13448,9 @@ msgid "Second Home"
 msgstr ""
 
 msgid "Second Volunteer Opportunity"
+msgstr ""
+
+msgid "Seconds"
 msgstr ""
 
 msgid "Secure"
@@ -13435,6 +13704,9 @@ msgstr ""
 msgid "Send a test message to verify your SMTP configuration"
 msgstr ""
 
+msgid "Send alert to all families"
+msgstr ""
+
 msgid "Send an email notifying users when their account has been deleted"
 msgstr ""
 
@@ -13525,6 +13797,9 @@ msgid "Server Version"
 msgstr ""
 
 msgid "Server error"
+msgstr ""
+
+msgid "Server error - the event may not be linked to a group"
 msgstr ""
 
 msgid "Server locale support could not be checked (exec is disabled)."
@@ -13684,6 +13959,9 @@ msgstr ""
 msgid "Show all"
 msgstr ""
 
+msgid "Show all recent sends"
+msgstr ""
+
 msgid "Show in Member Portal"
 msgstr ""
 
@@ -13743,6 +14021,9 @@ msgstr ""
 
 #. plugin:holidays:section:2:title
 msgid "Showing and hiding individual countries"
+msgstr ""
+
+msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
 msgstr ""
 
 msgid "Showing inactive persons only."
@@ -14121,6 +14402,9 @@ msgstr ""
 msgid "Stuck Events"
 msgstr ""
 
+msgid "Student"
+msgstr ""
+
 msgid "Student Information"
 msgstr ""
 
@@ -14353,6 +14637,12 @@ msgstr ""
 msgid "System language, time zone, date/time formats, and phone number formats"
 msgstr ""
 
+msgid "System timeline entries cannot be deleted"
+msgstr ""
+
+msgid "System timeline entries cannot be edited"
+msgstr ""
+
 msgid "System upgrade completed successfully!"
 msgstr ""
 
@@ -14553,6 +14843,9 @@ msgid "Thank You!"
 msgstr ""
 
 msgid "Thank you"
+msgstr ""
+
+msgid "Thank you for attending!"
 msgstr ""
 
 msgid "Thank you for signing up to serve"
@@ -14808,6 +15101,9 @@ msgstr ""
 msgid "The date and time of every occurrence come from its calendar event, so moving the event moves the schedule."
 msgstr ""
 
+msgid "The day of that month on which grades are promoted. A day past the end of the month means its last day."
+msgstr ""
+
 msgid "The days parameter must be a whole number between 1 and 365"
 msgstr ""
 
@@ -14872,6 +15168,12 @@ msgstr ""
 msgid "The events could not be staffed"
 msgstr ""
 
+msgid "The grades already use these names."
+msgstr ""
+
+msgid "The grades changed after the preview. Review the changes again before applying them."
+msgstr ""
+
 msgid "The grant could not be removed"
 msgstr ""
 
@@ -14915,6 +15217,9 @@ msgid "The ministry could not be reactivated"
 msgstr ""
 
 msgid "The ministry could not be saved"
+msgstr ""
+
+msgid "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off."
 msgstr ""
 
 msgid "The month that starts your organization's fiscal year"
@@ -15099,6 +15404,9 @@ msgid "The substitution could not be decided"
 msgstr ""
 
 msgid "The substitution requests could not be loaded"
+msgstr ""
+
+msgid "The table shows only the latest 20 sends. Open a person to see their full history."
 msgstr ""
 
 msgid "The teacher sent this alert at"
@@ -15404,6 +15712,15 @@ msgstr ""
 msgid "This is your church account. Everything you can do for yourself and your family lives here."
 msgstr ""
 
+msgid "This kiosk has registered but needs to be accepted by an administrator before it can be used."
+msgstr ""
+
+msgid "This kiosk is accepted but has no active event assignment."
+msgstr ""
+
+msgid "This kiosk is assigned to an event, but no members are available for check-in."
+msgstr ""
+
 msgid "This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience."
 msgstr ""
 
@@ -15463,6 +15780,12 @@ msgid "This page is not part of your account. If you think it should be, ask the
 msgstr ""
 
 msgid "This page was not found"
+msgstr ""
+
+msgid "This page will automatically refresh when check-in opens."
+msgstr ""
+
+msgid "This page will automatically update once the kiosk is accepted."
 msgstr ""
 
 msgid "This part of the Member Portal is for volunteer team leaders."
@@ -15596,6 +15919,9 @@ msgstr ""
 msgid "Thousands separator and decimal separator must be different characters."
 msgstr ""
 
+msgid "Through Grade"
+msgstr ""
+
 msgid "Thursdays"
 msgstr ""
 
@@ -15726,6 +16052,9 @@ msgid ""
 msgstr ""
 
 msgid "Today"
+msgstr ""
+
+msgid "Today!"
 msgstr ""
 
 msgid "Today's Birthdays"
@@ -15928,6 +16257,9 @@ msgstr ""
 msgid "Turning this off clears the saved username and password."
 msgstr ""
 
+msgid "Turning {{age}}"
+msgstr ""
+
 msgid "Turns off the portal template cache and prints the name of each template in an HTML comment. For theme designers; leave this off in normal use."
 msgstr ""
 
@@ -16042,6 +16374,9 @@ msgstr ""
 msgid "Unable to load"
 msgstr ""
 
+msgid "Unable to load group members"
+msgstr ""
+
 msgid "Unable to load state list. Please check your network connection or try again later."
 msgstr ""
 
@@ -16139,6 +16474,9 @@ msgid "Unknown occurrence status"
 msgstr ""
 
 msgid "Unknown schedule link mode"
+msgstr ""
+
+msgid "Unknown user configuration key"
 msgstr ""
 
 msgid "Unknown volunteer ministry"
@@ -16620,6 +16958,10 @@ msgid "Vietnamese"
 msgstr ""
 
 msgid "View"
+msgstr ""
+
+#, php-format
+msgid "View %d failed sends across all email history"
 msgstr ""
 
 msgid "View All"
@@ -18106,9 +18448,6 @@ msgstr ""
 msgid "same address as another recipient"
 msgstr ""
 
-msgid "seconds"
-msgstr ""
-
 msgid "select an option"
 msgstr ""
 
@@ -18167,6 +18506,9 @@ msgid "system user updated"
 msgstr ""
 
 msgid "their classroom"
+msgstr ""
+
+msgid "this person"
 msgstr ""
 
 #, php-format
@@ -18356,6 +18698,9 @@ msgid "{{name}} does not name the event it follows, so it has nothing to staff."
 msgstr ""
 
 msgid "{{name}} ended on {{date}}, so there are no dates left to generate."
+msgstr ""
+
+msgid "{{name}} has no family on record"
 msgstr ""
 
 msgid "{{name}} has no upcoming meetings on the calendar, so this schedule has nothing to staff."

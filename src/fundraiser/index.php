@@ -10,7 +10,8 @@ use Slim\Routing\RouteCollectorProxy;
 
 // Global gate: every /fundraiser/* request requires login (AuthMiddleware) AND
 // the ManageFundraisers permission (ManageFundraisersRoleAuthMiddleware).
-// Individual delete routes add an inline isDeleteRecordsEnabled() check.
+// Fundraiser item/paddle deletion uses this role gate, not the unrelated
+// DeleteRecords flag that protects person and family records.
 $app = MvcAppFactory::create('/fundraiser', [
     'dashboardUrl'  => '/fundraiser/',
     'dashboardText' => gettext('Return to Fundraiser Dashboard'),

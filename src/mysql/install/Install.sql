@@ -415,6 +415,20 @@ INSERT INTO `list_lst` (`lst_ID`, `lst_OptionID`, `lst_OptionSequence`, `lst_Opt
   (5, 7, 7, 'bManageGroups'),
   (5, 8, 8, 'bFinance'),
   (5, 9, 9, 'bNotes'),
+  (6, 4, 1, 'Pre-K'),
+  (6, 5, 2, 'Kindergarten'),
+  (6, 6, 3, '1st'),
+  (6, 7, 4, '2nd'),
+  (6, 8, 5, '3rd'),
+  (6, 9, 6, '4th'),
+  (6, 10, 7, '5th'),
+  (6, 11, 8, '6th'),
+  (6, 12, 9, '7th'),
+  (6, 13, 10, '8th'),
+  (6, 14, 11, '9th'),
+  (6, 15, 12, '10th'),
+  (6, 16, 13, '11th'),
+  (6, 17, 14, '12th'),
   (10, 1, 1, 'Teacher'),
   (10, 2, 2, 'Student'),
   (11, 1, 1, 'Member'),
@@ -562,10 +576,12 @@ CREATE TABLE `person_per` (
   `per_LinkedIn` varchar(50) default NULL,
   `per_DateDeactivated` date DEFAULT NULL,
   `per_NeedsReview` tinyint(1) unsigned NOT NULL default '0',
+  `per_grd_ID` mediumint(8) unsigned default NULL,
   PRIMARY KEY  (`per_ID`),
   INDEX `idx_per_fam_ID` (`per_fam_ID`),
   INDEX `idx_per_cls_ID` (`per_cls_ID`),
-  INDEX `idx_per_fmr_ID` (`per_fmr_ID`)
+  INDEX `idx_per_fmr_ID` (`per_fmr_ID`),
+  INDEX `idx_per_grd_ID` (`per_grd_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=2 ;
 
 --

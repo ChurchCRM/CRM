@@ -410,15 +410,6 @@ msgid "Add Payment"
 msgstr "Incluir pagamento"
 
 #: 
-#, fuzzy
-msgid "Load Authorized"
-msgstr "Carregar transações autorizadas"
-
-#: 
-msgid "Run Transactions"
-msgstr "Executar transações"
-
-#: 
 msgid "Directory reports"
 msgstr "Diretório para relatórios"
 
@@ -2342,10 +2333,6 @@ msgstr "Você tem certeza de que quer apagar o que foi selecionado"
 #: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "Esta ação NÃO pode ser desfeita, e pode ter implicações legais!"
-
-#: 
-msgid "Please ensure this what you want to do."
-msgstr "Por Favor, assegure-se de que é isso que você deseja fazer."
 
 #: 
 msgid "Deposit Type"
@@ -5767,14 +5754,6 @@ msgid "Generate Report"
 msgstr "Gerar relatório"
 
 #: 
-msgid "No Cash"
-msgstr "Sem dinheiro"
-
-#: 
-msgid "No Checks"
-msgstr "Sem verificações"
-
-#: 
 msgid "Payments"
 msgstr "Pagamentos"
 
@@ -5789,11 +5768,6 @@ msgstr "Depósito total"
 #: 
 msgid "Total Payments"
 msgstr "Pagamentos totais"
-
-#: 
-#, fuzzy
-msgid "payments?"
-msgstr "pagamento(s)?"
 
 #: 
 msgid "All system files have passed integrity validation."
@@ -6417,10 +6391,6 @@ msgid "Aug"
 msgstr "Ago"
 
 #: 
-msgid "Back to Deposits"
-msgstr "Voltar para depósitos"
-
-#: 
 msgid "Back to Families"
 msgstr "Voltar para famílias"
 
@@ -6499,10 +6469,6 @@ msgstr "Dia"
 #: 
 msgid "Dec"
 msgstr "Dez"
-
-#: 
-msgid "Deposit Navigation"
-msgstr "Navegação de depósito"
 
 #: 
 msgid "Deposit Statistics"
@@ -13320,10 +13286,6 @@ msgid "Are you sure you want to delete this note?"
 msgstr "Tem a certeza de que pretende eliminar esta nota?"
 
 #: 
-msgid "Cancel — wait 1 more minute"
-msgstr "Cancelar — aguardar mais 1 minuto"
-
-#: 
 msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
 msgstr "Não é possível eliminar o fundo de doações: ainda é referenciado por um ou mais compromissos financeiros."
 
@@ -13452,14 +13414,6 @@ msgid "Read more"
 msgstr "Ler mais"
 
 #: 
-msgid "Refreshing Soon"
-msgstr "A atualizar em breve"
-
-#: 
-msgid "Refreshing in"
-msgstr "A atualizar em"
-
-#: 
 msgid "That name already exists."
 msgstr "Esse nome já existe."
 
@@ -13478,10 +13432,6 @@ msgstr "Não tem permissão para eliminar esta nota."
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "Não tem permissão para editar esta nota."
-
-#: 
-msgid "seconds"
-msgstr "segundos"
 
 #: 
 msgid "Cannot delete event: %d people are currently checked in."
@@ -14108,10 +14058,6 @@ msgid "Foreground Color"
 msgstr "Cor de Primeiro Plano"
 
 #: 
-msgid "Fund(s)"
-msgstr "Fundo(s)"
-
-#: 
 msgid "Generate new code"
 msgstr "Gerar novo código"
 
@@ -14482,10 +14428,6 @@ msgstr "Por favor, selecione uma pessoa para registar a entrada."
 #: 
 msgid "Please select a role."
 msgstr "Por favor, selecione uma função."
-
-#: 
-msgid "Please select rows to delete"
-msgstr "Por favor, selecione linhas para excluir"
 
 #: 
 msgid "Please try again"
@@ -19092,10 +19034,6 @@ msgstr[0] "%d voluntário padrão designado"
 msgstr[1] "%d voluntários padrão designados"
 
 #: 
-msgid "%d failed"
-msgstr "%d falharam"
-
-#: 
 msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
 msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
 msgstr[0] "Mais %d voluntário ainda é necessário para esta função. Abra a ocorrência para preencher a vaga."
@@ -20216,10 +20154,6 @@ msgstr "Título do evento"
 #: 
 msgid "Event type"
 msgstr "Tipo de evento"
-
-#: 
-msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
-msgstr "Todos os e-mails enviados pelo ChurchCRM, do mais recente ao mais antigo. Abra uma pessoa para ver seu histórico completo."
 
 #: 
 msgid "Every position in this window has the people it needs."
@@ -23648,4 +23582,766 @@ msgstr "Não é possível eliminar uma família que tem promessas ou pagamentos.
 #: 
 msgid "You cannot delete your own account."
 msgstr "Não pode eliminar a sua própria conta."
+
+#: 
+msgid "A recurring event needs a last date, so it is back to {{date}}."
+msgstr "Um evento recorrente precisa de uma data de fim, por isso volta a {{date}}."
+
+#: 
+msgid "Add Everyone in Cart to {{ministry}}"
+msgstr "Adicionar todos da Seleção a {{ministry}}"
+
+#: 
+msgid "Add Volunteer to {{ministry}}"
+msgstr "Adicionar voluntário a {{ministry}}"
+
+#: 
+msgid "Add the class's meetings as a recurring event with {{name}} as its class, then generate again."
+msgstr "Adicione as reuniões da classe como evento recorrente com {{name}} como classe e volte a gerar."
+
+#: 
+msgid "Add them on the Calendar tab as a recurring event with {{name}} as its class."
+msgstr "Adicione-os no separador Calendário como evento recorrente com {{name}} como classe."
+
+#: 
+msgid "Covered · {{more}} more welcome"
+msgstr "Coberto · mais {{more}} bem-vindos"
+
+#: 
+msgid "Creates {{total}} events, every year on {{date}} from {{first}} to {{last}}"
+msgstr "Cria {{total}} eventos, todos os anos em {{date}}, de {{first}} a {{last}}"
+
+#: 
+msgid "Creates {{total}} events, every {{day}} from {{first}} to {{last}}"
+msgstr "Cria {{total}} eventos, a cada {{day}}, de {{first}} a {{last}}"
+
+#: 
+msgid "Creates {{total}} events, on day {{day}} of each month from {{first}} to {{last}}"
+msgstr "Cria {{total}} eventos, no dia {{day}} de cada mês, de {{first}} a {{last}}"
+
+#: 
+msgid "Default volunteer {{number}} for {{position}}"
+msgstr "Voluntário predefinido {{number}} para {{position}}"
+
+#: 
+msgid "Default volunteers for {{position}}"
+msgstr "Voluntários predefinidos para {{position}}"
+
+#: 
+msgctxt "one"
+msgid "Delete ({{count}})"
+msgstr "Eliminar (um)"
+
+#: 
+msgctxt "other"
+msgid "Delete ({{count}})"
+msgstr "Eliminar ({{count}})"
+
+#: 
+msgctxt "one"
+msgid "Delete events ({{count}})"
+msgstr "Eliminar um evento"
+
+#: 
+msgctxt "other"
+msgid "Delete events ({{count}})"
+msgstr "Eliminar os eventos ({{count}})"
+
+#: 
+msgctxt "one"
+msgid "Delete {{count}} occurrences? Their assignments, the volunteers' responses, any substitutions and every queued reminder go with them. This cannot be undone."
+msgstr "Eliminar uma ocorrência? As designações, as respostas dos voluntários, as substituições e cada lembrete em fila desaparecem com ela. Esta ação não pode ser desfeita."
+
+#: 
+msgctxt "other"
+msgid "Delete {{count}} occurrences? Their assignments, the volunteers' responses, any substitutions and every queued reminder go with them. This cannot be undone."
+msgstr "Eliminar {{count}} ocorrências? As designações, as respostas dos voluntários, as substituições e cada lembrete em fila desaparecem com elas. Esta ação não pode ser desfeita."
+
+#: 
+msgid "Filling {{position}}"
+msgstr "Preenchimento de {{position}}"
+
+#: 
+msgid "Full"
+msgstr "Completo"
+
+#: 
+msgid "Full · {{live}} of {{max}}"
+msgstr "Completo · {{live}} de {{max}}"
+
+#: 
+msgid "Headcount: {{total}}"
+msgstr "Contagem de presentes: {{total}}"
+
+#: 
+msgid "Maximum allowed for {{position}}"
+msgstr "Máximo permitido para {{position}}"
+
+#: 
+msgid "Meetings of {{name}}"
+msgstr "Reuniões de {{name}}"
+
+#: 
+msgid "Minimum needed for {{position}}"
+msgstr "Mínimo necessário para {{position}}"
+
+#: 
+msgid "Move them to {{className}}"
+msgstr "Movê-los para {{className}}"
+
+#: 
+msgid "Needs {{more}} more"
+msgstr "Faltam mais {{more}}"
+
+#: 
+msgid "New position: {{name}}"
+msgstr "Nova função: {{name}}"
+
+#: 
+msgid "New recurring event for {{name}}"
+msgstr "Novo evento recorrente para {{name}}"
+
+#: 
+msgid "New recurring event titled {{title}}"
+msgstr "Novo evento recorrente intitulado {{title}}"
+
+#: 
+msgid "No event was found between {{from}} and {{to}}."
+msgstr "Não foi encontrado nenhum evento entre {{from}} e {{to}}."
+
+#: 
+msgid "No events on the calendar use {{name}} as their class between {{from}} and {{to}}."
+msgstr "Nenhum evento do calendário usa {{name}} como classe entre {{from}} e {{to}}."
+
+#: 
+msgid "No upcoming events titled {{title}} are on the calendar."
+msgstr "Não há eventos futuros intitulados {{title}} no calendário."
+
+#: 
+msgid "No {{type}} events between {{from}} and {{to}}."
+msgstr "Nenhum evento {{type}} entre {{from}} e {{to}}."
+
+#: 
+msgid "No {{type}} events titled {{title}} between {{from}} and {{to}}."
+msgstr "Nenhum evento {{type}} intitulado {{title}} entre {{from}} e {{to}}."
+
+#: 
+msgid "Nobody is qualified for {{position}} yet"
+msgstr "Ainda ninguém está qualificado para {{position}}"
+
+#: 
+msgid "Not needed this time"
+msgstr "Não é necessário desta vez"
+
+#: 
+msgid "Occurrences are created for events in the next week (through {{date}})."
+msgstr "As ocorrências são criadas para os eventos da próxima semana (até {{date}})."
+
+#: 
+msgctxt "one"
+msgid "Occurrences are created for events in the next {{count}} weeks (through {{date}})."
+msgstr "As ocorrências são criadas para os eventos da próxima semana (até {{date}})."
+
+#: 
+msgctxt "other"
+msgid "Occurrences are created for events in the next {{count}} weeks (through {{date}})."
+msgstr "As ocorrências são criadas para os eventos das próximas {{count}} semanas (até {{date}})."
+
+#: 
+msgid "Occurrences are created for events through {{date}}, when this schedule ends."
+msgstr "As ocorrências são criadas para os eventos até {{date}}, quando esta escala termina."
+
+#: 
+msgid "One event: {{title}}"
+msgstr "Um evento: {{title}}"
+
+#: 
+msgid "Optional · up to {{max}} welcome"
+msgstr "Opcional · até {{max}} bem-vindos"
+
+#: 
+msgid "Optional · {{live}} of up to {{max}}"
+msgstr "Opcional · {{live}} de um máximo de {{max}}"
+
+#: 
+msgid "Plugin upgraded from %1$s to %2$s."
+msgstr "Plugin atualizado de %1$s para %2$s."
+
+#: 
+msgid "Select {{event}}"
+msgstr "Selecionar {{event}}"
+
+#: 
+msgid "Select {{when}}"
+msgstr "Selecionar {{when}}"
+
+#: 
+msgid "Substitute asked: {{name}}"
+msgstr "Substituto pedido: {{name}}"
+
+#: 
+msgid "Sunday School: {{name}}"
+msgstr "Escola Bíblica Dominical: {{name}}"
+
+#: 
+msgid "Teachers to import: {{total}}"
+msgstr "Professores a importar: {{total}}"
+
+#: 
+msgid "That is more than {{max}} events. Choose a shorter range."
+msgstr "São mais de {{max}} eventos. Escolha um intervalo mais curto."
+
+#: 
+msgctxt "one"
+msgid "They finish {{count}} minutes after the event ends."
+msgstr "Terminam um minuto depois de o evento acabar."
+
+#: 
+msgctxt "other"
+msgid "They finish {{count}} minutes after the event ends."
+msgstr "Terminam {{count}} minutos depois de o evento acabar."
+
+#: 
+msgctxt "one"
+msgid "They finish {{count}} minutes before the event ends."
+msgstr "Terminam um minuto antes de o evento acabar."
+
+#: 
+msgctxt "other"
+msgid "They finish {{count}} minutes before the event ends."
+msgstr "Terminam {{count}} minutos antes de o evento acabar."
+
+#: 
+msgid "This ministry's events titled {{title}}"
+msgstr "Eventos deste ministério intitulados {{title}}"
+
+#: 
+msgid "Up to {{max}} welcome"
+msgstr "Até {{max}} bem-vindos"
+
+#: 
+msgid "Volunteer times must be whole minutes, at most {{max}} from the event"
+msgstr "Os horários dos voluntários têm de ser minutos inteiros, no máximo {{max}} do evento"
+
+#: 
+msgctxt "one"
+msgid "Volunteers start {{count}} minutes after the event starts."
+msgstr "Os voluntários começam um minuto depois de o evento começar."
+
+#: 
+msgctxt "other"
+msgid "Volunteers start {{count}} minutes after the event starts."
+msgstr "Os voluntários começam {{count}} minutos depois de o evento começar."
+
+#: 
+msgctxt "one"
+msgid "Volunteers start {{count}} minutes before the event starts."
+msgstr "Os voluntários começam um minuto antes de o evento começar."
+
+#: 
+msgctxt "other"
+msgid "Volunteers start {{count}} minutes before the event starts."
+msgstr "Os voluntários começam {{count}} minutos antes de o evento começar."
+
+#: 
+msgid "You are already helping that day as {{what}}."
+msgstr "Já está a ajudar nesse dia como {{what}}."
+
+#: 
+msgid "already serving as {{position}}"
+msgstr "já a servir como {{position}}"
+
+#: 
+msgid "last served {{date}}"
+msgstr "último serviço em {{date}}"
+
+#: 
+msgctxt "one"
+msgid "{{count}} needed"
+msgstr "Um necessário"
+
+#: 
+msgctxt "other"
+msgid "{{count}} needed"
+msgstr "{{count}} necessários"
+
+#: 
+msgctxt "one"
+msgid "{{count}} occurrences deleted"
+msgstr "Uma ocorrência eliminada"
+
+#: 
+msgctxt "other"
+msgid "{{count}} occurrences deleted"
+msgstr "{{count}} ocorrências eliminadas"
+
+#: 
+msgctxt "one"
+msgid "{{failed}} of {{count}} occurrences could not be deleted"
+msgstr "{{failed}} de uma ocorrência não pôde ser eliminada"
+
+#: 
+msgctxt "other"
+msgid "{{failed}} of {{count}} occurrences could not be deleted"
+msgstr "{{failed}} de {{count}} ocorrências não puderam ser eliminadas"
+
+#: 
+msgid "{{live}} assigned, {{min}} needed, room for {{more}} more"
+msgstr "{{live}} designados, {{min}} necessários, lugar para mais {{more}}"
+
+#: 
+msgid "{{live}} of up to {{max}}"
+msgstr "{{live}} de um máximo de {{max}}"
+
+#: 
+msgid "{{live}} of {{max}}"
+msgstr "{{live}} de {{max}}"
+
+#: 
+msgid "{{live}} of {{min}}"
+msgstr "{{live}} de {{min}}"
+
+#: 
+msgid "{{live}} of {{min}}–{{max}}"
+msgstr "{{live}} de {{min}}–{{max}}"
+
+#: 
+msgid "{{ministry}} has no events between {{from}} and {{to}}."
+msgstr "{{ministry}} não tem eventos entre {{from}} e {{to}}."
+
+#: 
+msgid "{{ministry}} has no events titled {{title}} between {{from}} and {{to}}."
+msgstr "{{ministry}} não tem eventos intitulados {{title}} entre {{from}} e {{to}}."
+
+#: 
+msgid "{{min}} to {{max}} needed"
+msgstr "{{min}} a {{max}} necessários"
+
+#: 
+msgid "{{name}} (no longer qualified)"
+msgstr "{{name}} (já não qualificado)"
+
+#: 
+msgid "{{name}} (no upcoming meetings — add its meetings first)"
+msgstr "{{name}} (sem reuniões futuras — adicione primeiro as reuniões)"
+
+#: 
+msgid "{{name}} (no upcoming meetings)"
+msgstr "{{name}} (sem reuniões futuras)"
+
+#: 
+msgctxt "one"
+msgid "{{name}} ({{count}} upcoming)"
+msgstr "{{name}} (um futuro)"
+
+#: 
+msgctxt "other"
+msgid "{{name}} ({{count}} upcoming)"
+msgstr "{{name}} ({{count}} futuros)"
+
+#: 
+msgid "{{name}} does not name the event it follows, so it has nothing to staff."
+msgstr "{{name}} não indica o evento que segue, por isso não há nada a preencher."
+
+#: 
+msgid "{{name}} ended on {{date}}, so there are no dates left to generate."
+msgstr "{{name}} terminou em {{date}}, por isso não restam datas a gerar."
+
+#: 
+msgid "{{name}} has no upcoming meetings on the calendar, so this schedule has nothing to staff."
+msgstr "{{name}} não tem reuniões futuras no calendário, por isso esta escala não tem nada a preencher."
+
+#: 
+msgid "{{name}} is no longer qualified, so this place is left open on new occurrences."
+msgstr "{{name}} já não está qualificado, por isso este lugar fica em aberto nas novas ocorrências."
+
+#: 
+msgid "{{name}} starts on {{date}}, after the dates generated now (through {{through}})."
+msgstr "{{name}} começa em {{date}}, depois das datas geradas agora (até {{through}})."
+
+#: 
+msgid "{{pending}} not yet confirmed"
+msgstr "{{pending}} ainda não confirmados"
+
+#: 
+msgid "{{position}}: Max is {{max}} but {{chosen}} default volunteers are chosen. Remove one or raise Max."
+msgstr "{{position}}: o máximo é {{max}}, mas estão escolhidos {{chosen}} voluntários predefinidos. Remova um ou aumente o máximo."
+
+#: 
+msgid "{{team}}: no staffing needs set"
+msgstr "{{team}}: sem necessidades de pessoal definidas"
+
+#: 
+msgid "{{team}}: {{staffing}}"
+msgstr "{{team}}: {{staffing}}"
+
+#: 
+msgctxt "one"
+msgid "{{title}} ({{count}} upcoming)"
+msgstr "{{title}} (um futuro)"
+
+#: 
+msgctxt "other"
+msgid "{{title}} ({{count}} upcoming)"
+msgstr "{{title}} ({{count}} futuros)"
+
+#: 
+msgid "{{type}} events (no event chosen yet)"
+msgstr "Eventos {{type}} (nenhum evento escolhido ainda)"
+
+#: 
+msgid "{{type}} events titled {{title}}"
+msgstr "Eventos {{type}} intitulados {{title}}"
+
+#: 
+msgid "User must be a staff user"
+msgstr "O utilizador tem de ser um utilizador do pessoal"
+
+#: 
+msgid "Enter a new password"
+msgstr "Introduza uma nova palavra-passe"
+
+#: 
+msgid "%d queued"
+msgstr "%d em fila"
+
+#: 
+msgid "%s queued: %s"
+msgstr "%s em fila: %s"
+
+#: 
+msgid "Could not delete the queue."
+msgstr "Não foi possível eliminar a fila."
+
+#: 
+msgid "Delete Queue"
+msgstr "Eliminar fila"
+
+#: 
+msgid "Delete every queued message? They will not be sent. Queued messages: {{total}}"
+msgstr "Eliminar todas as mensagens em fila? Não serão enviadas. Mensagens em fila: {{total}}"
+
+#: 
+msgid "Each message is recorded in the person's email history."
+msgstr "Cada mensagem fica registada no histórico de e-mail da pessoa."
+
+#: 
+msgid "Email batch not found. If it was still queued, an administrator deleted the queue and it will not be sent."
+msgstr "Lote de e-mails não encontrado. Se ainda estava em fila, um administrador eliminou a fila e não será enviado."
+
+#: 
+msgid "Failed to delete the email queue"
+msgstr "Falha ao eliminar a fila de e-mails"
+
+#: 
+msgid "Failed to queue the email"
+msgstr "Falha ao colocar o e-mail em fila"
+
+#: 
+msgid "Follow it in the email history"
+msgstr "Acompanhe-o no histórico de e-mail"
+
+#: 
+msgid "Messages queued: {{total}}. They will be sent in the background."
+msgstr "Mensagens em fila: {{total}}. Serão enviadas em segundo plano."
+
+#: 
+msgid "Queued"
+msgstr "Em fila"
+
+#: 
+msgid "Queued messages deleted: {{total}}"
+msgstr "Mensagens em fila eliminadas: {{total}}"
+
+#: 
+msgid "Sending"
+msgstr "A enviar"
+
+#: 
+msgid "Sending was interrupted before the server answered."
+msgstr "O envio foi interrompido antes da resposta do servidor."
+
+#: 
+msgid "Sending… {{done}} of {{total}}"
+msgstr "A enviar… {{done}} de {{total}}"
+
+#: 
+msgid "Still queued, to be sent automatically: {{total}}"
+msgstr "Ainda em fila, a enviar automaticamente: {{total}}"
+
+#: 
+msgid "The queue was cleared. Messages that will not be sent: {{total}}"
+msgstr "A fila foi limpa. Mensagens que não serão enviadas: {{total}}"
+
+#: 
+msgid "This email batch was queued by another user"
+msgstr "Este lote de e-mails foi colocado em fila por outro utilizador"
+
+#: 
+msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
+msgstr "Depois de importar, pode usar Redefinir Base de Dados no Painel de administração para limpar todos os dados e recomeçar. A configuração da aplicação será preservada."
+
+#: 
+msgid "Importing demo data..."
+msgstr "A importar dados de demonstração..."
+
+#: 
+msgid "Please do not refresh or navigate away"
+msgstr "Não atualize nem saia da página"
+
+#: 
+msgid "Skip to main content"
+msgstr "Saltar para o conteúdo principal"
+
+#: 
+msgid "Choose None, TLS or SSL for encryption."
+msgstr "Escolha Nenhum, TLS ou SSL para a encriptação."
+
+#: 
+msgid "Choose an existing person property for Do Not Email."
+msgstr "Escolha uma propriedade de pessoa existente para Não Enviar Email."
+
+#: 
+msgid "Copy Church Email must be a valid email address."
+msgstr "Copiar e-mail da paróquia tem de ser um endereço de e-mail válido."
+
+#: 
+msgid "Email Log"
+msgstr "Registo de e-mail"
+
+#: 
+msgid "Email is disabled. Enable it in Email Settings before testing."
+msgstr "O e-mail está desativado. Ative-o nas Definições de e-mail antes de testar."
+
+#: 
+msgid "Email settings saved successfully"
+msgstr "Definições de e-mail guardadas com sucesso"
+
+#: 
+msgid "Enable email below, then configure your SMTP server."
+msgstr "Ative o e-mail abaixo e configure o servidor SMTP."
+
+#: 
+msgid "Every email ChurchCRM sent, newest first"
+msgstr "Todos os e-mails enviados pelo ChurchCRM, do mais recente"
+
+#: 
+msgid "Find duplicate addresses and people with no email"
+msgstr "Encontrar endereços duplicados e pessoas sem e-mail"
+
+#: 
+msgid "General"
+msgstr "Geral"
+
+#: 
+msgid "SMTP Server"
+msgstr "Servidor SMTP"
+
+#: 
+msgid "SMTP and delivery settings"
+msgstr "Definições de SMTP e de entrega"
+
+#: 
+msgid "SMTP timeout must be a whole number of seconds between 1 and 600."
+msgstr "O tempo limite SMTP tem de ser um número inteiro de segundos entre 1 e 600."
+
+#: 
+msgid "SMTP username is required when authentication is on."
+msgstr "O nome de utilizador SMTP é obrigatório quando a autenticação está ligada."
+
+#: 
+msgid "Save Email Settings"
+msgstr "Guardar definições de e-mail"
+
+#: 
+msgid "Turning this off clears the saved username and password."
+msgstr "Desligar isto apaga o nome de utilizador e a palavra-passe guardados."
+
+#: 
+msgid "%1$s added %2$s to the %3$s volunteer pool."
+msgstr "%1$s adicionou %2$s ao banco de voluntários de %3$s."
+
+#: 
+msgid "%1$s added %2$s to the %3$s volunteers"
+msgstr "%1$s adicionou %2$s aos voluntários de %3$s"
+
+#: 
+msgid "%1$s — still needed: %2$d"
+msgstr "%1$s — ainda necessários: %2$d"
+
+#: 
+msgid "%1$s, who leads %2$s, added %3$s to the %4$s volunteer pool."
+msgstr "%1$s, que lidera %2$s, adicionou %3$s ao banco de voluntários de %4$s."
+
+#: 
+msgid "%s recorded that you will serve. You are on the schedule."
+msgstr "%s registou que vai servir. Está na escala."
+
+#: 
+msgid "Added and qualified"
+msgstr "Adicionado e qualificado"
+
+#: 
+msgid "Choose how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
+msgstr "Escolha com que antecedência as escalas são preenchidas e quando saem os lembretes, e confirme que as tarefas em segundo plano estão a correr."
+
+#: 
+msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
+msgstr "Escolha alguém que já esteja no diretório da igreja. Passa a integrar os voluntários deste ministério e os coordenadores recebem um e-mail. Só um coordenador pode retirar alguém."
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
+msgstr "O ChurchCRM tem duas formas de gerir voluntários. Só uma se destina a estar em uso de cada vez; a definição de experiência de Voluntários decide qual esta igreja vê. Mudar oculta ou mostra páginas e entradas de menu — nunca apaga dados, por isso pode voltar atrás."
+
+#: 
+msgid "Daily unfilled-position email time"
+msgstr "Hora do e-mail diário das funções por preencher"
+
+#: 
+msgid "Donation funds, pledges and giving records"
+msgstr "Fundos de donativos, promessas e registos de ofertas"
+
+#: 
+msgid "Events and calendars, including the Member Portal calendars"
+msgstr "Eventos e calendários, incluindo os calendários do Portal do Membro"
+
+#: 
+msgid "Families, people and groups"
+msgstr "Famílias, pessoas e grupos"
+
+#: 
+msgid "How many hours before a volunteer occurrence its coordinators are told about positions still unfilled. Set to 0 to send no such alerts; reminders are not affected."
+msgstr "Quantas horas antes de uma ocorrência de voluntariado os coordenadores são informados das funções ainda por preencher. Defina 0 para não enviar estes alertas; os lembretes não são afetados."
+
+#: 
+msgid "How many hours before an occurrence its coordinators are told about positions still unfilled. Set to 0 to send no such alerts; reminders are not affected."
+msgstr "Quantas horas antes de uma ocorrência os coordenadores são informados das funções ainda por preencher. Defina 0 para não enviar estes alertas; os lembretes não são afetados."
+
+#: 
+msgid "Internal: last date the daily email listing unfilled volunteer positions was sent (YYYY-MM-DD). Do not edit manually."
+msgstr "Interno: última data de envio do e-mail diário que lista as funções de voluntariado por preencher (YYYY-MM-DD). Não edite manualmente."
+
+#: 
+msgid "Load sample families, people, groups, events, volunteer ministries and giving records. The safest way to learn ChurchCRM before committing your real data."
+msgstr "Carregue famílias, pessoas, grupos, eventos, ministérios de voluntários e registos de ofertas de exemplo. A forma mais segura de aprender o ChurchCRM antes de confirmar os dados reais."
+
+#: 
+msgid "Not authorized to grant this scope"
+msgstr "Sem autorização para conceder este âmbito"
+
+#: 
+msgid "Once a day at this time (church time zone), coordinators get one email listing the unfilled positions that start within the alert lead time plus 24 hours. A gap that opens later in the day is sent on its own."
+msgstr "Uma vez por dia a esta hora (fuso horário da igreja), os coordenadores recebem um e-mail com as funções por preencher que começam dentro da antecedência do alerta mais 24 horas. Uma falha que surja mais tarde no dia é enviada à parte."
+
+#: 
+msgid "Only a coordinator can take someone out of the pool."
+msgstr "Só um coordenador pode retirar alguém do banco."
+
+#: 
+msgid "Only positions of this team can be ticked"
+msgstr "Só as funções desta equipa podem ser assinaladas"
+
+#: 
+msgid "Open each occurrence to assign the people you need."
+msgstr "Abra cada ocorrência para designar as pessoas de que precisa."
+
+#: 
+msgid "Optional. You can tick positions on the grid later too."
+msgstr "Opcional. Também pode assinalar funções na grelha mais tarde."
+
+#: 
+msgid "Qualify them for"
+msgstr "Qualificá-los para"
+
+#: 
+msgid "Queue"
+msgstr "Fila"
+
+#: 
+msgid "Record they accepted"
+msgstr "Registar que aceitaram"
+
+#: 
+msgid "Sunday School classes"
+msgstr "Classes de Escola Bíblica Dominical"
+
+#: 
+msgid "The time of day (HH:MM, in the church's time zone) the daily email listing unfilled volunteer positions is sent to coordinators."
+msgstr "A hora do dia (HH:MM, no fuso horário da igreja) a que o e-mail diário das funções de voluntariado por preencher é enviado aos coordenadores."
+
+#: 
+msgid "They already said yes. They get a short confirmation instead of a request to respond."
+msgstr "Já disseram que sim. Recebem uma confirmação curta em vez de um pedido de resposta."
+
+#: 
+msgid "They were already a volunteer here, and are now qualified"
+msgstr "Já eram voluntários aqui e agora estão qualificados"
+
+#: 
+msgid "This will add sample data to your database"
+msgstr "Isto adicionará dados de exemplo à sua base de dados"
+
+#: 
+msgid "Unfilled-position alert lead time (hours)"
+msgstr "Antecedência do alerta de funções por preencher (horas)"
+
+#: 
+msgid "Volunteer Management"
+msgstr "Gestão de voluntários"
+
+#: 
+msgid "Volunteer ministries, teams, schedules and assignments"
+msgstr "Ministérios de voluntários, equipas, escalas e designações"
+
+#: 
+msgid "Volunteer positions to fill in the coming days"
+msgstr "Funções de voluntariado a preencher nos próximos dias"
+
+#: 
+msgid "Volunteers still needed for these upcoming occurrences: %d"
+msgstr "Voluntários ainda necessários para estas próximas ocorrências: %d"
+
+#: 
+msgid "What do these mean?"
+msgstr "O que significam?"
+
+#: 
+msgid "Which volunteer experience this church uses"
+msgstr "Qual experiência de voluntários esta igreja usa"
+
+#: 
+msgid "You are on the schedule"
+msgstr "Está na escala"
+
+#: 
+msgid "Your coordinator"
+msgstr "O seu coordenador"
+
+#: 
+msgid "Your teams: %s"
+msgstr "As suas equipas: %s"
+
+#: 
+msgid "positionIds must be a list of position ids"
+msgstr "positionIds tem de ser uma lista de ids de funções"
+
+#: 
+msgid "{{name}} ({{family}} family)"
+msgstr "{{name}} (família {{family}})"
+
+#: 
+msgid "{{name}} assigned and recorded as accepted"
+msgstr "{{name}} designado e registado como aceite"
+
+#: 
+msgid "Ask an administrator to change your sign-in email."
+msgstr "Peça a um administrador para alterar o seu e-mail de início de sessão."
+
+#: 
+msgid "Email changed by an administrator from %1$s to %2$s"
+msgstr "E-mail alterado por um administrador de %1$s para %2$s"
+
+#: 
+msgid "Only an administrator can change the email of a person with a user account."
+msgstr "Só um administrador pode alterar o e-mail de uma pessoa com conta de utilizador."
 

@@ -16,6 +16,7 @@
     margin: 0;
     font-size: 1.75rem;
     font-weight: 600;
+    color: inherit; // Tabler's heading colour is dark on this blue
   }
 
   .kiosk-church-logo {
@@ -171,6 +172,38 @@
 .kiosk-member-age {
   font-size: 0.85rem;
   color: var(--tblr-secondary-color);
+}
+
+// "Checked in by" attribution line shown on member cards when a guardian
+// performed the check-in (Check-in By feature, issue #7949).
+.kiosk-member-checkin-by {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  color: var(--tblr-secondary-color);
+  margin-top: 0.25rem;
+  min-height: 0; // collapse when empty
+
+  .checkin-by-inline-photo {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #dee2e6;
+    flex-shrink: 0;
+  }
+
+  .fa-solid {
+    font-size: 0.8rem;
+    flex-shrink: 0;
+  }
+
+  span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
 
 .kiosk-member-actions {
@@ -383,6 +416,8 @@
 }
 
 .birthday-age-badge {
+  margin-left: 0.75rem;
+  flex-shrink: 0;
   background: #e83e8c;
   color: white;
   font-size: 0.7rem;

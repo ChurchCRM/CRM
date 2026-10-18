@@ -19,17 +19,46 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </button>
         <?php endif; ?>
         <?php if (!empty($failedEmailCount)) : ?>
-            <span class="badge bg-danger-lt text-danger ms-3"><i class="fa-solid fa-triangle-exclamation me-1"></i><?= sprintf(gettext('%d failed'), (int) $failedEmailCount) ?></span>
+            <a href="<?= $sRootPath ?>/admin/email/log?status=failed" class="badge bg-danger-lt text-danger ms-3" data-email-failed-badge
+               title="<?= gettext('Failed sends across all email history, including automated messages') ?>"
+               aria-label="<?= sprintf(gettext('View %d failed sends across all email history'), (int) $failedEmailCount) ?>">
+                <i class="fa-solid fa-triangle-exclamation me-1"></i><?= sprintf(gettext('%d failed (all time)'), (int) $failedEmailCount) ?>
+            </a>
         <?php endif; ?>
-        <span class="ms-auto text-body-secondary small"><?= gettext('Every email ChurchCRM sent, newest first. Open a person to see their full history.') ?></span>
+        <?php if (!empty($failedOnly)) : ?>
+            <a href="<?= $sRootPath ?>/admin/email/log" class="ms-auto small"><?= gettext('Show all recent sends') ?></a>
+        <?php else : ?>
+            <span class="ms-auto text-body-secondary small"><?= gettext('The table shows only the latest 20 sends. Open a person to see their full history.') ?></span>
+        <?php endif; ?>
     </div>
+    <?php if (!empty($failedOnly)) : ?>
+        <p class="text-body-secondary small px-3 pt-3 mb-0" data-email-failed-filter>
+            <?= gettext('Showing failed sends across all email history, including automated messages. Select a subject for details.') ?>
+        </p>
+    <?php endif; ?>
     <div class="card-body p-0">
         <?php
         $emailHistoryRows = $recentEmails['rows'];
         $emailHistoryShowTo = true;
+        $emailHistoryShowError = !empty($failedOnly);
+        $emailHistoryLinkPerson = !empty($failedOnly);
         include SystemURLs::getDocumentRoot() . '/people/views/partials/email-history-table.php';
         ?>
     </div>
+    <?php if (!empty($failedOnly) && $recentEmails['pages'] > 1) : ?>
+        <?php $currentPage = (int) $recentEmails['page']; ?>
+        <nav class="card-footer d-flex align-items-center justify-content-between" aria-label="<?= gettext('Failed email history pages') ?>">
+            <span class="text-body-secondary small"><?= sprintf(gettext('Page %d of %d'), $currentPage, (int) $recentEmails['pages']) ?></span>
+            <div class="d-flex gap-2">
+                <?php if ($currentPage > 1) : ?>
+                    <a class="btn btn-sm" href="<?= $sRootPath ?>/admin/email/log?status=failed&amp;page=<?= $currentPage - 1 ?>"><?= gettext('Previous') ?></a>
+                <?php endif; ?>
+                <?php if ($currentPage < (int) $recentEmails['pages']) : ?>
+                    <a class="btn btn-sm" href="<?= $sRootPath ?>/admin/email/log?status=failed&amp;page=<?= $currentPage + 1 ?>"><?= gettext('Next') ?></a>
+                <?php endif; ?>
+            </div>
+        </nav>
+    <?php endif; ?>
 </div>
 <?php include SystemURLs::getDocumentRoot() . '/people/views/partials/email-history-modal.php'; ?>
 <?php if (!empty($queuedEmailCount)) : ?>
