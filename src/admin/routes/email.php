@@ -148,6 +148,16 @@ $app->get('/email/log', function (Request $request, Response $response): Respons
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
     $log = new EmailLogService();
 
+    // Explicit all-history failure filter. Default is still the 20 most recent
+    // messages of every status. The query is server-side so older failed rows
+    // cannot be hidden behind the default Recent Sends page.
+    $query = $request->getQueryParams();
+    $failedOnly = ($query['status'] ?? null) === EmailLogService::STATUS_FAILED;
+    $rawPage = $query['page'] ?? 1;
+    $page = is_scalar($rawPage) && ctype_digit((string) $rawPage)
+        ? max(1, min(100000, (int) $rawPage))
+        : 1;
+
     $pageArgs = [
         'sRootPath'          => SystemURLs::getRootPath(),
         'sPageTitle'         => gettext('Email Log'),
@@ -160,7 +170,8 @@ $app->get('/email/log', function (Request $request, Response $response): Respons
             ['label' => gettext('Email Settings'), 'url' => '/admin/email', 'icon' => 'fa-sliders'],
             ['label' => gettext('Email Debug'), 'url' => '/admin/email/debug', 'icon' => 'fa-stethoscope'],
         ]),
-        'recentEmails'       => $log->getRecent(null, 1, 20),
+        'recentEmails'       => $log->getRecent($failedOnly ? EmailLogService::STATUS_FAILED : null, $failedOnly ? $page : 1, 20),
+        'failedOnly'         => $failedOnly,
         'failedEmailCount'   => $log->getRecent(EmailLogService::STATUS_FAILED, 1, 1)['total'],
         'queuedEmailCount'   => $log->getRecent(EmailLogService::STATUS_QUEUED, 1, 1)['total'],
     ];
