@@ -1961,8 +1961,6 @@
   "manifest.": "manifest.",
   "subscribers": "tilaajat",
   "API Key is required.": "API-avain vaaditaan.",
-  "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running.": "Ei voi muodostaa yhteyttä OpenLP:hen osoitteessa %s. Tarkista palvelimen URL-osoite ja että OpenLP on käynnissä.",
-  "Cannot connect to OpenLP at %s. Server returned HTTP %d.": "Ei voi muodostaa yhteyttä OpenLP:hen osoitteessa %s. Palvelin palautti HTTP %d.",
   "Congregation Map": "Seurakunnan kartta",
   "Connected to MailChimp! Account: %s (%d subscribers)": "Yhdistetty MailChimpiin! Tili: %s (%d tilaajaa)",
   "Connected to OpenLP server successfully.": "Yhteys OpenLP-palvelimeen muodostettu onnistuneesti.",

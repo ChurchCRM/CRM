@@ -1961,8 +1961,6 @@
   "manifest.": "manifest.",
   "subscribers": "aboneler",
   "API Key is required.": "API Anahtarı gereklidir.",
-  "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running.": "%s adresindeki OpenLP'ye bağlanılamıyor. Sunucu URL'sini ve OpenLP'nin çalıştığını kontrol edin.",
-  "Cannot connect to OpenLP at %s. Server returned HTTP %d.": "%s adresindeki OpenLP'ye bağlanılamıyor. Sunucu HTTP %d döndürdü.",
   "Congregation Map": "Cemaat Haritası",
   "Connected to MailChimp! Account: %s (%d subscribers)": "MailChimp'e bağlandı! Hesap: %s (%d abone)",
   "Connected to OpenLP server successfully.": "OpenLP sunucusuna başarıyla bağlandı.",

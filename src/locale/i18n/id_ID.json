@@ -1953,8 +1953,6 @@
   "manifest.": "manifes.",
   "subscribers": "pelanggan",
   "API Key is required.": "Kunci API diperlukan.",
-  "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running.": "Tidak dapat terhubung ke OpenLP di %s. Periksa URL server dan pastikan OpenLP berjalan.",
-  "Cannot connect to OpenLP at %s. Server returned HTTP %d.": "Tidak dapat terhubung ke OpenLP di %s. Server mengembalikan HTTP %d.",
   "Congregation Map": "Peta Jemaat",
   "Connected to MailChimp! Account: %s (%d subscribers)": "Terhubung ke MailChimp! Akun: %s (%d pelanggan)",
   "Connected to OpenLP server successfully.": "Berhasil terhubung ke server OpenLP.",

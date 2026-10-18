@@ -1961,8 +1961,6 @@
   "manifest.": "manifest.",
   "subscribers": "wanachama",
   "API Key is required.": "Ufunguo wa API unahitajika.",
-  "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running.": "Haiwezekani kuunganika na OpenLP kwenye %s. Angalia URL ya seva na hakikisha OpenLP inaendesha.",
-  "Cannot connect to OpenLP at %s. Server returned HTTP %d.": "Haiwezekani kuunganika na OpenLP kwenye %s. Seva ilirudisha HTTP %d.",
   "Congregation Map": "Ramani ya Wanachama",
   "Connected to MailChimp! Account: %s (%d subscribers)": "Imeunganishwa na MailChimp! Akaunti: %s (wanachama %d)",
   "Connected to OpenLP server successfully.": "Imeunganishwa na seva ya OpenLP kwa mafanikio.",

@@ -1961,8 +1961,6 @@
   "manifest.": "αρχείο manifest.",
   "subscribers": "συνδρομητές",
   "API Key is required.": "Το κλειδί API είναι απαραίτητο.",
-  "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running.": "Δεν είναι δυνατή η σύνδεση με το OpenLP στο %s. Ελέγξτε το URL του διακομιστή και ότι το OpenLP εκτελείται.",
-  "Cannot connect to OpenLP at %s. Server returned HTTP %d.": "Δεν είναι δυνατή η σύνδεση με το OpenLP στο %s. Ο διακομιστής επέστρεψε HTTP %d.",
   "Congregation Map": "Χάρτης εκκλησιαστικής κοινότητας",
   "Connected to MailChimp! Account: %s (%d subscribers)": "Συνδέθηκε με το MailChimp! Λογαριασμός: %s (%d συνδρομητές)",
   "Connected to OpenLP server successfully.": "Επιτυχής σύνδεση με τον διακομιστή OpenLP.",

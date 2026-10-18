@@ -1961,8 +1961,6 @@
   "manifest.": "मैनिफेस्ट।",
   "subscribers": "सदस्य",
   "API Key is required.": "API Key आवश्यक है।",
-  "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running.": "%s पर OpenLP से कनेक्ट नहीं हो सकता। सर्वर URL जाँचें और सुनिश्चित करें कि OpenLP चल रहा है।",
-  "Cannot connect to OpenLP at %s. Server returned HTTP %d.": "%s पर OpenLP से कनेक्ट नहीं हो सकता। सर्वर ने HTTP %d लौटाया।",
   "Congregation Map": "मंडली मानचित्र",
   "Connected to MailChimp! Account: %s (%d subscribers)": "MailChimp से जुड़ गए! खाता: %s (%d सदस्य)",
   "Connected to OpenLP server successfully.": "OpenLP सर्वर से सफलतापूर्वक जुड़ गए।",

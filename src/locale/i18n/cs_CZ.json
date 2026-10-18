@@ -1969,8 +1969,6 @@
   "manifest.": "manifest.",
   "subscribers": "odběratelé",
   "API Key is required.": "Klíč API je povinný.",
-  "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running.": "Nelze se připojit k OpenLP na %s. Zkontrolujte URL serveru a zda OpenLP běží.",
-  "Cannot connect to OpenLP at %s. Server returned HTTP %d.": "Nelze se připojit k OpenLP na %s. Server vrátil HTTP %d.",
   "Congregation Map": "Mapa sboru",
   "Connected to MailChimp! Account: %s (%d subscribers)": "Připojeno k MailChimp! Účet: %s (%d odběratelů)",
   "Connected to OpenLP server successfully.": "Úspěšně připojeno k serveru OpenLP.",

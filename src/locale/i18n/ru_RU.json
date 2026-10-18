@@ -1977,8 +1977,6 @@
   "manifest.": "manifest.",
   "subscribers": "подписчики",
   "API Key is required.": "API-ключ обязателен.",
-  "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running.": "Не удалось подключиться к OpenLP по адресу %s. Проверьте URL сервера и убедитесь, что OpenLP запущен.",
-  "Cannot connect to OpenLP at %s. Server returned HTTP %d.": "Не удалось подключиться к OpenLP по адресу %s. Сервер вернул HTTP %d.",
   "Congregation Map": "Карта прихода",
   "Connected to MailChimp! Account: %s (%d subscribers)": "Подключено к MailChimp! Аккаунт: %s (%d подписчиков)",
   "Connected to OpenLP server successfully.": "Успешное подключение к серверу OpenLP.",

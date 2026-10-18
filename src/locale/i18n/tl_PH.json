@@ -1961,8 +1961,6 @@
   "manifest.": "manifest.",
   "subscribers": "mga subscriber",
   "API Key is required.": "Ang API Key ay kinakailangan.",
-  "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running.": "Hindi makakonekta sa OpenLP sa %s. Tingnan ang URL ng server at na ang OpenLP ay tumatakbo.",
-  "Cannot connect to OpenLP at %s. Server returned HTTP %d.": "Hindi makakonekta sa OpenLP sa %s. Ang server ay nagbalik ng HTTP %d.",
   "Congregation Map": "Mapa ng Kongregasyon",
   "Connected to MailChimp! Account: %s (%d subscribers)": "Nakakonekta sa MailChimp! Account: %s (%d subscriber)",
   "Connected to OpenLP server successfully.": "Matagumpay na nakakonekta sa OpenLP server.",

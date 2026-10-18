@@ -8143,14 +8143,6 @@ msgid "API Key is required."
 msgstr "Khóa API là bắt buộc."
 
 #: 
-msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
-msgstr "Không thể kết nối đến OpenLP tại %s. Kiểm tra URL máy chủ và đảm bảo OpenLP đang chạy."
-
-#: 
-msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
-msgstr "Không thể kết nối đến OpenLP tại %s. Máy chủ trả về HTTP %d."
-
-#: 
 msgid "Congregation Map"
 msgstr "Bản Đồ Hội Thánh"
 

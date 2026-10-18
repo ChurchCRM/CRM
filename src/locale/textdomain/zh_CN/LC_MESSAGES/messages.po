@@ -8208,14 +8208,6 @@ msgid "API Key is required."
 msgstr "API密钥为必填项。"
 
 #: 
-msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
-msgstr "无法连接到 %s 的OpenLP。请检查服务器URL以及OpenLP是否正在运行。"
-
-#: 
-msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
-msgstr "无法连接到 %s 的OpenLP。服务器返回HTTP %d。"
-
-#: 
 msgid "Congregation Map"
 msgstr "会众地图"
 

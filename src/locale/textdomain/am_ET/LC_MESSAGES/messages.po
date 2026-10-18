@@ -8154,14 +8154,6 @@ msgid "API Key is required."
 msgstr "API ቁልፍ ያስፈልጋል።"
 
 #: 
-msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
-msgstr "ወደ OpenLP በ %s ሊገናኝ አልቻለም። የአገልጋዩ URL እና OpenLP እየሄደ እንደሆነ ያረጋግጡ።"
-
-#: 
-msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
-msgstr "ወደ OpenLP በ %s ሊገናኝ አልቻለም። አገልጋዩ HTTP %d ተመለሰ።"
-
-#: 
 msgid "Congregation Map"
 msgstr "የምዕመናን ካርታ"
 

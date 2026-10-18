@@ -8283,14 +8283,6 @@ msgid "API Key is required."
 msgstr "API金鑰為必填項。"
 
 #: 
-msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
-msgstr "無法連線到 %s 的OpenLP。請檢查伺服器URL以及OpenLP是否正在執行。"
-
-#: 
-msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
-msgstr "無法連線到 %s 的OpenLP。伺服器傳回HTTP %d。"
-
-#: 
 msgid "Congregation Map"
 msgstr "會眾地圖"
 

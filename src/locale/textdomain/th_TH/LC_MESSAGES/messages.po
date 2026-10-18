@@ -8116,14 +8116,6 @@ msgid "API Key is required."
 msgstr "ต้องระบุ API Key"
 
 #: 
-msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
-msgstr "ไม่สามารถเชื่อมต่อ OpenLP ที่ %s ตรวจสอบ URL เซิร์ฟเวอร์และให้แน่ใจว่า OpenLP กำลังทำงาน"
-
-#: 
-msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
-msgstr "ไม่สามารถเชื่อมต่อ OpenLP ที่ %s เซิร์ฟเวอร์ตอบกลับ HTTP %d"
-
-#: 
 msgid "Congregation Map"
 msgstr "แผนที่สมาชิกโบสถ์"
 
