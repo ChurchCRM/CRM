@@ -24522,3 +24522,203 @@ msgstr "ሰንጠረዡ የመጨረሻዎቹን 20 መላኮች ብቻ ያሳ�
 msgid "View %d failed sends across all email history"
 msgstr "በሁሉም የኢሜይል ታሪክ ውስጥ ያሉ %d ያልተሳኩ መላኮችን ይመልከቱ"
 
+#: 
+msgid "Add New Grade"
+msgstr "አዲስ ክፍል ጨምር"
+
+#: 
+msgid "Change Grade Names"
+msgstr "የክፍል ስሞችን ቀይር"
+
+#: 
+msgid "England and Wales"
+msgstr "እንግሊዝ እና ዌልስ"
+
+#: 
+msgid "Every year each person moves to the next grade in this order, and the last grade is cleared."
+msgstr "በየዓመቱ እያንዳንዱ ሰው በዚህ ቅደም ተከተል ወደ ቀጣዩ ክፍል ይሸጋገራል፣ የመጨረሻው ክፍልም ይጸዳል።"
+
+#: 
+msgid "Everyone with a grade will move up one grade now, and this will count as this year's promotion."
+msgstr "ክፍል ያላቸው ሁሉ አሁን አንድ ክፍል ይወጣሉ፣ ይህም የዚህ ዓመት እድገት ይቆጠራል።"
+
+#: 
+msgid "Finished %s, so the yearly promotion cleared the grade"
+msgstr "%s ጨርሰዋል፣ ስለዚህ ዓመታዊው እድገት ክፍሉን አጽድቷል"
+
+#: 
+msgid "Finished the last grade: %d"
+msgstr "የመጨረሻውን ክፍል የጨረሱ፦ %d"
+
+#: 
+msgid "Finishing the last grade (grade will be cleared): {{total}}"
+msgstr "የመጨረሻውን ክፍል እየጨረሱ (ክፍሉ ይጸዳል)፦ {{total}}"
+
+#: 
+msgid "From Grade"
+msgstr "ከክፍል"
+
+#: 
+msgid "Grade"
+msgstr "ክፍል"
+
+#: 
+msgid "Grade %s cleared when the grade names changed to %s"
+msgstr "የክፍል ስሞች ወደ %s ሲቀየሩ ክፍል %s ተጸድቷል"
+
+#: 
+msgid "Grade Names"
+msgstr "የክፍል ስሞች"
+
+#: 
+msgid "Grade Promotion"
+msgstr "የክፍል እድገት"
+
+#: 
+msgid "Grade changed from %s to %s by the yearly promotion"
+msgstr "ክፍል በዓመታዊ እድገት ከ%s ወደ %s ተቀይሯል"
+
+#: 
+msgid "Grade names not found"
+msgstr "የክፍል ስሞች አልተገኙም"
+
+#: 
+msgid "Grades"
+msgstr "ክፍሎች"
+
+#: 
+msgid "Grades Editor"
+msgstr "የክፍሎች አርታኢ"
+
+#: 
+msgid "Grades added"
+msgstr "ክፍሎች ታክለዋል"
+
+#: 
+msgid "Grades removed"
+msgstr "ክፍሎች ተወግደዋል"
+
+#: 
+msgid "Grades renamed: {{total}}"
+msgstr "ክፍሎች ተቀይረው ተሰይመዋል፦ {{total}}"
+
+#: 
+msgid "Grades were already promoted this year, on {{date}}. Promoting again moves everyone up another grade."
+msgstr "ክፍሎች በዚህ ዓመት ቀድሞውኑ በ{{date}} ከፍ ብለዋል። እንደገና ማሳደግ ሁሉንም ሰው አንድ ተጨማሪ ክፍል ያወጣል።"
+
+#: 
+msgid "Grades were promoted by someone else in the meantime. Reload the page to see the new grades."
+msgstr "ክፍሎች በመካከል በሌላ ሰው ከፍ ብለዋል። አዲሶቹን ክፍሎች ለማየት ገጹን እንደገና ጫን።"
+
+#: 
+msgid "Grades you added that match a name in the list and are combined with it"
+msgstr "እርስዎ የጨመሩና በዝርዝሩ ውስጥ ካለ ስም ጋር የሚዛመዱ እና ከእሱ ጋር የሚዋሃዱ ክፍሎች"
+
+#: 
+msgid "Internal: date and time of the last grade promotion. Do not edit manually."
+msgstr "ውስጣዊ፦ የመጨረሻው የክፍል እድገት ቀን እና ሰዓት። በእጅ አትቀይሩ።"
+
+#: 
+msgid "Internal: how the last grade promotion ran and how many people it moved. Do not edit manually."
+msgstr "ውስጣዊ፦ የመጨረሻው የክፍል እድገት እንዴት እንደሄደ እና ስንት ሰዎችን እንዳዘዋወረ። በእጅ አትቀይሩ።"
+
+#: 
+msgid "Internal: the country whose grade names were last applied to the grade list. Do not edit manually."
+msgstr "ውስጣዊ፦ የክፍል ስሞቹ ለመጨረሻ ጊዜ በክፍል ዝርዝሩ ላይ የተተገበሩበት አገር። በእጅ አትቀይሩ።"
+
+#: 
+msgid "Internal: the day the grade promotion date was last changed (YYYY-MM-DD). Do not edit manually."
+msgstr "ውስጣዊ፦ የክፍል እድገት ቀን ለመጨረሻ ጊዜ የተቀየረበት ቀን (YYYY-MM-DD)። በእጅ አትቀይሩ።"
+
+#: 
+msgid "Internal: the list that holds the grade names. Do not edit manually."
+msgstr "ውስጣዊ፦ የክፍል ስሞችን የያዘው ዝርዝር። በእጅ አትቀይሩ።"
+
+#: 
+msgid "Last promotion"
+msgstr "የመጨረሻ እድገት"
+
+#: 
+msgid "Leave empty for one grade"
+msgstr "ለአንድ ክፍል ባዶ ይተዉ"
+
+#: 
+msgid "Moved up: %d"
+msgstr "ወጥተዋል፦ %d"
+
+#: 
+msgid "Moving up: {{total}}"
+msgstr "እየወጡ፦ {{total}}"
+
+#: 
+msgid "Next automatic promotion"
+msgstr "ቀጣይ ራስ-ሰር እድገት"
+
+#: 
+msgid "Nobody has a grade to promote."
+msgstr "የሚያድግ ክፍል ያለው ማንም የለም።"
+
+#: 
+msgid "Northern Ireland"
+msgstr "ሰሜን አየርላንድ"
+
+#: 
+msgid "People by Grade"
+msgstr "ሰዎች በክፍል"
+
+#: 
+msgid "People in a range of school grades, such as Kindergarten through 5th"
+msgstr "እንደ መዋዕለ ሕፃናት እስከ 5ኛ ክፍል ባሉ የትምህርት ክፍሎች ክልል ውስጥ ያሉ ሰዎች"
+
+#: 
+msgid "People whose grade is cleared: {{total}}"
+msgstr "ክፍላቸው የሚጸዳ ሰዎች፦ {{total}}"
+
+#: 
+msgid "Promote Grades"
+msgstr "ክፍሎችን አሳድግ"
+
+#: 
+msgid "Promote Now"
+msgstr "አሁን አሳድግ"
+
+#: 
+msgid "Promotion Day"
+msgstr "የእድገት ቀን"
+
+#: 
+msgid "Promotion Month"
+msgstr "የእድገት ወር"
+
+#: 
+msgid "Renames the grades to the names used in that country. People keep their grade, and grades you added yourself stay."
+msgstr "ክፍሎቹን በዚያ አገር ወደሚጠቀሙባቸው ስሞች ይቀይራል። ሰዎች ክፍላቸውን ይጠብቃሉ፣ እርስዎ እራስዎ የጨመሩትም ክፍሎች ይቀራሉ።"
+
+#: 
+msgid "Scheduled Task"
+msgstr "የታቀደ ተግባር"
+
+#: 
+msgid "Scotland"
+msgstr "ስኮትላንድ"
+
+#: 
+msgid "The day of that month on which grades are promoted. A day past the end of the month means its last day."
+msgstr "ክፍሎች በዚያ ወር የሚያድጉበት ቀን። ከወሩ መጨረሻ በኋላ ያለ ቀን የመጨረሻውን ቀኑን ያመለክታል።"
+
+#: 
+msgid "The grades already use these names."
+msgstr "ክፍሎቹ እነዚህን ስሞች አስቀድመው ይጠቀማሉ።"
+
+#: 
+msgid "The grades changed after the preview. Review the changes again before applying them."
+msgstr "ክፍሎቹ ከቅድመ እይታው በኋላ ተቀይረዋል። ከመተግበርዎ በፊት ለውጦቹን እንደገና ይገምግሙ።"
+
+#: 
+msgid "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off."
+msgstr "ክፍል ያለው ሁሉ አንድ ክፍል የሚወጣበት ወር። ጠፍቷል ራስ-ሰር እድገትን ያጠፋል።"
+
+#: 
+msgid "Through Grade"
+msgstr "እስከ ክፍል"
+

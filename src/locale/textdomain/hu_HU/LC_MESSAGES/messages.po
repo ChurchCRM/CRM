@@ -24541,3 +24541,203 @@ msgstr "A táblázat csak az utolsó 20 küldést mutatja. A teljes előzményhe
 msgid "View %d failed sends across all email history"
 msgstr "%d sikertelen küldés megjelenítése a teljes e-mail-előzményben"
 
+#: 
+msgid "Add New Grade"
+msgstr "Új évfolyam hozzáadása"
+
+#: 
+msgid "Change Grade Names"
+msgstr "Évfolyamnevek módosítása"
+
+#: 
+msgid "England and Wales"
+msgstr "Anglia és Wales"
+
+#: 
+msgid "Every year each person moves to the next grade in this order, and the last grade is cleared."
+msgstr "Minden évben minden személy ebben a sorrendben a következő évfolyamra lép, és az utolsó évfolyam törlődik."
+
+#: 
+msgid "Everyone with a grade will move up one grade now, and this will count as this year's promotion."
+msgstr "Mindenki, akinek van évfolyama, most egy évfolyamot lép feljebb, és ez számít az idei léptetésnek."
+
+#: 
+msgid "Finished %s, so the yearly promotion cleared the grade"
+msgstr "Befejezte: %s, ezért az éves léptetés törölte az évfolyamot"
+
+#: 
+msgid "Finished the last grade: %d"
+msgstr "Befejezte az utolsó évfolyamot: %d"
+
+#: 
+msgid "Finishing the last grade (grade will be cleared): {{total}}"
+msgstr "Befejezi az utolsó évfolyamot (az évfolyam törlődik): {{total}}"
+
+#: 
+msgid "From Grade"
+msgstr "Évfolyamtól"
+
+#: 
+msgid "Grade"
+msgstr "Évfolyam"
+
+#: 
+msgid "Grade %s cleared when the grade names changed to %s"
+msgstr "A(z) %s évfolyam törlődött, amikor az évfolyamnevek erre változtak: %s"
+
+#: 
+msgid "Grade Names"
+msgstr "Évfolyamnevek"
+
+#: 
+msgid "Grade Promotion"
+msgstr "Évfolyamléptetés"
+
+#: 
+msgid "Grade changed from %s to %s by the yearly promotion"
+msgstr "Az évfolyam az éves léptetéssel %s értékről %s értékre változott"
+
+#: 
+msgid "Grade names not found"
+msgstr "Az évfolyamnevek nem találhatók"
+
+#: 
+msgid "Grades"
+msgstr "Évfolyamok"
+
+#: 
+msgid "Grades Editor"
+msgstr "Évfolyamszerkesztő"
+
+#: 
+msgid "Grades added"
+msgstr "Hozzáadott évfolyamok"
+
+#: 
+msgid "Grades removed"
+msgstr "Eltávolított évfolyamok"
+
+#: 
+msgid "Grades renamed: {{total}}"
+msgstr "Átnevezett évfolyamok: {{total}}"
+
+#: 
+msgid "Grades were already promoted this year, on {{date}}. Promoting again moves everyone up another grade."
+msgstr "Az évfolyamokat idén már léptették, ekkor: {{date}}. Az újbóli léptetés mindenkit még egy évfolyammal feljebb visz."
+
+#: 
+msgid "Grades were promoted by someone else in the meantime. Reload the page to see the new grades."
+msgstr "Az évfolyamokat időközben valaki más léptette. Töltse újra az oldalt az új évfolyamok megtekintéséhez."
+
+#: 
+msgid "Grades you added that match a name in the list and are combined with it"
+msgstr "Az Ön által hozzáadott évfolyamok, amelyek egyeznek a lista egy nevével, és azzal összevonásra kerülnek"
+
+#: 
+msgid "Internal: date and time of the last grade promotion. Do not edit manually."
+msgstr "Belső: az utolsó évfolyamléptetés dátuma és ideje. Ne szerkessze kézzel."
+
+#: 
+msgid "Internal: how the last grade promotion ran and how many people it moved. Do not edit manually."
+msgstr "Belső: hogyan futott az utolsó évfolyamléptetés, és hány embert léptetett. Ne szerkessze kézzel."
+
+#: 
+msgid "Internal: the country whose grade names were last applied to the grade list. Do not edit manually."
+msgstr "Belső: az az ország, amelynek évfolyamneveit utoljára alkalmazták az évfolyamlistára. Ne szerkessze kézzel."
+
+#: 
+msgid "Internal: the day the grade promotion date was last changed (YYYY-MM-DD). Do not edit manually."
+msgstr "Belső: az a nap, amikor az évfolyamléptetés dátuma utoljára megváltozott (YYYY-MM-DD). Ne szerkessze kézzel."
+
+#: 
+msgid "Internal: the list that holds the grade names. Do not edit manually."
+msgstr "Belső: a lista, amely az évfolyamneveket tartalmazza. Ne szerkessze kézzel."
+
+#: 
+msgid "Last promotion"
+msgstr "Utolsó léptetés"
+
+#: 
+msgid "Leave empty for one grade"
+msgstr "Hagyja üresen egy évfolyamhoz"
+
+#: 
+msgid "Moved up: %d"
+msgstr "Feljebb lépett: %d"
+
+#: 
+msgid "Moving up: {{total}}"
+msgstr "Feljebb lép: {{total}}"
+
+#: 
+msgid "Next automatic promotion"
+msgstr "Következő automatikus léptetés"
+
+#: 
+msgid "Nobody has a grade to promote."
+msgstr "Senkinek nincs léptethető évfolyama."
+
+#: 
+msgid "Northern Ireland"
+msgstr "Észak-Írország"
+
+#: 
+msgid "People by Grade"
+msgstr "Személyek évfolyam szerint"
+
+#: 
+msgid "People in a range of school grades, such as Kindergarten through 5th"
+msgstr "Személyek iskolai évfolyamok tartományában, például az óvodától az 5. osztályig"
+
+#: 
+msgid "People whose grade is cleared: {{total}}"
+msgstr "Személyek, akiknek az évfolyama törlődik: {{total}}"
+
+#: 
+msgid "Promote Grades"
+msgstr "Évfolyamok léptetése"
+
+#: 
+msgid "Promote Now"
+msgstr "Léptetés most"
+
+#: 
+msgid "Promotion Day"
+msgstr "Léptetés napja"
+
+#: 
+msgid "Promotion Month"
+msgstr "Léptetés hónapja"
+
+#: 
+msgid "Renames the grades to the names used in that country. People keep their grade, and grades you added yourself stay."
+msgstr "Átnevezi az évfolyamokat az adott országban használt nevekre. A személyek megtartják évfolyamukat, és a saját maga által hozzáadott évfolyamok megmaradnak."
+
+#: 
+msgid "Scheduled Task"
+msgstr "Ütemezett feladat"
+
+#: 
+msgid "Scotland"
+msgstr "Skócia"
+
+#: 
+msgid "The day of that month on which grades are promoted. A day past the end of the month means its last day."
+msgstr "Annak a hónapnak a napja, amelyen az évfolyamokat léptetik. A hónap vége utáni nap a hónap utolsó napját jelenti."
+
+#: 
+msgid "The grades already use these names."
+msgstr "Az évfolyamok már ezeket a neveket használják."
+
+#: 
+msgid "The grades changed after the preview. Review the changes again before applying them."
+msgstr "Az évfolyamok az előnézet után megváltoztak. Az alkalmazás előtt tekintse át újra a módosításokat."
+
+#: 
+msgid "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off."
+msgstr "Az a hónap, amelyben minden évfolyammal rendelkező személy egy évfolyamot lép feljebb. A Ki kikapcsolja az automatikus léptetést."
+
+#: 
+msgid "Through Grade"
+msgstr "Évfolyamig"
+

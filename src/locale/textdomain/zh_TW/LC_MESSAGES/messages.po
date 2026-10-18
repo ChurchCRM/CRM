@@ -24626,3 +24626,203 @@ msgstr "表格僅顯示最近 20 次傳送。開啟某人可查看其完整歷�
 msgid "View %d failed sends across all email history"
 msgstr "檢視全部郵件歷史中的 %d 次傳送失敗"
 
+#: 
+msgid "Add New Grade"
+msgstr "新增年級"
+
+#: 
+msgid "Change Grade Names"
+msgstr "變更年級名稱"
+
+#: 
+msgid "England and Wales"
+msgstr "英格蘭和威爾斯"
+
+#: 
+msgid "Every year each person moves to the next grade in this order, and the last grade is cleared."
+msgstr "每年每個人都依此順序升到下一年級，最後一個年級會被清除。"
+
+#: 
+msgid "Everyone with a grade will move up one grade now, and this will count as this year's promotion."
+msgstr "所有有年級的人現在都會升一個年級，並計為今年的升級。"
+
+#: 
+msgid "Finished %s, so the yearly promotion cleared the grade"
+msgstr "已完成%s，因此年度升級清除了該年級"
+
+#: 
+msgid "Finished the last grade: %d"
+msgstr "已完成最後一個年級：%d"
+
+#: 
+msgid "Finishing the last grade (grade will be cleared): {{total}}"
+msgstr "即將完成最後一個年級（年級將被清除）：{{total}}"
+
+#: 
+msgid "From Grade"
+msgstr "從年級"
+
+#: 
+msgid "Grade"
+msgstr "年級"
+
+#: 
+msgid "Grade %s cleared when the grade names changed to %s"
+msgstr "年級名稱改為%s時，年級%s已被清除"
+
+#: 
+msgid "Grade Names"
+msgstr "年級名稱"
+
+#: 
+msgid "Grade Promotion"
+msgstr "年級升級"
+
+#: 
+msgid "Grade changed from %s to %s by the yearly promotion"
+msgstr "年度升級將年級從%s改為%s"
+
+#: 
+msgid "Grade names not found"
+msgstr "找不到年級名稱"
+
+#: 
+msgid "Grades"
+msgstr "年級"
+
+#: 
+msgid "Grades Editor"
+msgstr "年級編輯器"
+
+#: 
+msgid "Grades added"
+msgstr "已新增年級"
+
+#: 
+msgid "Grades removed"
+msgstr "已移除年級"
+
+#: 
+msgid "Grades renamed: {{total}}"
+msgstr "已重新命名年級：{{total}}"
+
+#: 
+msgid "Grades were already promoted this year, on {{date}}. Promoting again moves everyone up another grade."
+msgstr "年級已於今年{{date}}升級過。再次升級會讓所有人再升一個年級。"
+
+#: 
+msgid "Grades were promoted by someone else in the meantime. Reload the page to see the new grades."
+msgstr "年級已在此期間被其他人升級。請重新載入頁面以查看新年級。"
+
+#: 
+msgid "Grades you added that match a name in the list and are combined with it"
+msgstr "您新增的、與清單中某個名稱相符並與之合併的年級"
+
+#: 
+msgid "Internal: date and time of the last grade promotion. Do not edit manually."
+msgstr "內部：上次年級升級的日期和時間。請勿手動編輯。"
+
+#: 
+msgid "Internal: how the last grade promotion ran and how many people it moved. Do not edit manually."
+msgstr "內部：上次年級升級的執行方式及其移動的人數。請勿手動編輯。"
+
+#: 
+msgid "Internal: the country whose grade names were last applied to the grade list. Do not edit manually."
+msgstr "內部：上次套用到年級清單的年級名稱所屬國家。請勿手動編輯。"
+
+#: 
+msgid "Internal: the day the grade promotion date was last changed (YYYY-MM-DD). Do not edit manually."
+msgstr "內部：年級升級日期上次變更的日期（YYYY-MM-DD）。請勿手動編輯。"
+
+#: 
+msgid "Internal: the list that holds the grade names. Do not edit manually."
+msgstr "內部：保存年級名稱的清單。請勿手動編輯。"
+
+#: 
+msgid "Last promotion"
+msgstr "上次升級"
+
+#: 
+msgid "Leave empty for one grade"
+msgstr "僅一個年級時留空"
+
+#: 
+msgid "Moved up: %d"
+msgstr "已升級：%d"
+
+#: 
+msgid "Moving up: {{total}}"
+msgstr "即將升級：{{total}}"
+
+#: 
+msgid "Next automatic promotion"
+msgstr "下次自動升級"
+
+#: 
+msgid "Nobody has a grade to promote."
+msgstr "沒有人有可升級的年級。"
+
+#: 
+msgid "Northern Ireland"
+msgstr "北愛爾蘭"
+
+#: 
+msgid "People by Grade"
+msgstr "依年級查看人員"
+
+#: 
+msgid "People in a range of school grades, such as Kindergarten through 5th"
+msgstr "處於一定學校年級範圍內的人員，例如幼稚園至五年級"
+
+#: 
+msgid "People whose grade is cleared: {{total}}"
+msgstr "年級將被清除的人員：{{total}}"
+
+#: 
+msgid "Promote Grades"
+msgstr "升級年級"
+
+#: 
+msgid "Promote Now"
+msgstr "立即升級"
+
+#: 
+msgid "Promotion Day"
+msgstr "升級日"
+
+#: 
+msgid "Promotion Month"
+msgstr "升級月份"
+
+#: 
+msgid "Renames the grades to the names used in that country. People keep their grade, and grades you added yourself stay."
+msgstr "將年級重新命名為該國家使用的名稱。人員保留其年級，您自行新增的年級也會保留。"
+
+#: 
+msgid "Scheduled Task"
+msgstr "排程工作"
+
+#: 
+msgid "Scotland"
+msgstr "蘇格蘭"
+
+#: 
+msgid "The day of that month on which grades are promoted. A day past the end of the month means its last day."
+msgstr "該月中升級年級的日期。超過月底的日期表示該月最後一天。"
+
+#: 
+msgid "The grades already use these names."
+msgstr "年級已使用這些名稱。"
+
+#: 
+msgid "The grades changed after the preview. Review the changes again before applying them."
+msgstr "預覽後年級已變更。套用前請再次檢查變更。"
+
+#: 
+msgid "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off."
+msgstr "所有有年級的人升一個年級的月份。關閉會停用自動升級。"
+
+#: 
+msgid "Through Grade"
+msgstr "至年級"
+

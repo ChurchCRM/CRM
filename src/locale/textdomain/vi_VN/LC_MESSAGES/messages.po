@@ -24486,3 +24486,203 @@ msgstr "Bảng chỉ hiện 20 lần gửi gần nhất. Mở một người đ�
 msgid "View %d failed sends across all email history"
 msgstr "Xem %d lần gửi thất bại trong toàn bộ lịch sử email"
 
+#: 
+msgid "Add New Grade"
+msgstr "Thêm lớp mới"
+
+#: 
+msgid "Change Grade Names"
+msgstr "Đổi tên lớp"
+
+#: 
+msgid "England and Wales"
+msgstr "Anh và xứ Wales"
+
+#: 
+msgid "Every year each person moves to the next grade in this order, and the last grade is cleared."
+msgstr "Mỗi năm mỗi người chuyển lên lớp tiếp theo theo thứ tự này, và lớp cuối cùng được xóa."
+
+#: 
+msgid "Everyone with a grade will move up one grade now, and this will count as this year's promotion."
+msgstr "Mọi người có lớp sẽ lên một lớp ngay bây giờ, và việc này được tính là đợt lên lớp của năm nay."
+
+#: 
+msgid "Finished %s, so the yearly promotion cleared the grade"
+msgstr "Đã hoàn thành %s, nên đợt lên lớp hằng năm đã xóa lớp"
+
+#: 
+msgid "Finished the last grade: %d"
+msgstr "Đã hoàn thành lớp cuối: %d"
+
+#: 
+msgid "Finishing the last grade (grade will be cleared): {{total}}"
+msgstr "Đang hoàn thành lớp cuối (lớp sẽ bị xóa): {{total}}"
+
+#: 
+msgid "From Grade"
+msgstr "Từ lớp"
+
+#: 
+msgid "Grade"
+msgstr "Lớp"
+
+#: 
+msgid "Grade %s cleared when the grade names changed to %s"
+msgstr "Lớp %s đã bị xóa khi tên lớp đổi thành %s"
+
+#: 
+msgid "Grade Names"
+msgstr "Tên lớp"
+
+#: 
+msgid "Grade Promotion"
+msgstr "Đợt lên lớp"
+
+#: 
+msgid "Grade changed from %s to %s by the yearly promotion"
+msgstr "Lớp đổi từ %s sang %s do đợt lên lớp hằng năm"
+
+#: 
+msgid "Grade names not found"
+msgstr "Không tìm thấy tên lớp"
+
+#: 
+msgid "Grades"
+msgstr "Các lớp"
+
+#: 
+msgid "Grades Editor"
+msgstr "Trình sửa lớp"
+
+#: 
+msgid "Grades added"
+msgstr "Đã thêm lớp"
+
+#: 
+msgid "Grades removed"
+msgstr "Đã xóa lớp"
+
+#: 
+msgid "Grades renamed: {{total}}"
+msgstr "Đã đổi tên lớp: {{total}}"
+
+#: 
+msgid "Grades were already promoted this year, on {{date}}. Promoting again moves everyone up another grade."
+msgstr "Các lớp đã được lên lớp trong năm nay, vào {{date}}. Lên lớp lần nữa sẽ chuyển mọi người thêm một lớp."
+
+#: 
+msgid "Grades were promoted by someone else in the meantime. Reload the page to see the new grades."
+msgstr "Trong lúc đó có người khác đã thực hiện lên lớp. Tải lại trang để xem các lớp mới."
+
+#: 
+msgid "Grades you added that match a name in the list and are combined with it"
+msgstr "Các lớp bạn thêm trùng tên trong danh sách và được gộp với tên đó"
+
+#: 
+msgid "Internal: date and time of the last grade promotion. Do not edit manually."
+msgstr "Nội bộ: ngày và giờ của lần lên lớp gần nhất. Không sửa thủ công."
+
+#: 
+msgid "Internal: how the last grade promotion ran and how many people it moved. Do not edit manually."
+msgstr "Nội bộ: lần lên lớp gần nhất chạy thế nào và đã chuyển bao nhiêu người. Không sửa thủ công."
+
+#: 
+msgid "Internal: the country whose grade names were last applied to the grade list. Do not edit manually."
+msgstr "Nội bộ: quốc gia có tên lớp được áp dụng lần cuối cho danh sách lớp. Không sửa thủ công."
+
+#: 
+msgid "Internal: the day the grade promotion date was last changed (YYYY-MM-DD). Do not edit manually."
+msgstr "Nội bộ: ngày lần cuối đổi ngày lên lớp (YYYY-MM-DD). Không sửa thủ công."
+
+#: 
+msgid "Internal: the list that holds the grade names. Do not edit manually."
+msgstr "Nội bộ: danh sách chứa tên lớp. Không sửa thủ công."
+
+#: 
+msgid "Last promotion"
+msgstr "Lần lên lớp gần nhất"
+
+#: 
+msgid "Leave empty for one grade"
+msgstr "Để trống nếu chỉ một lớp"
+
+#: 
+msgid "Moved up: %d"
+msgstr "Đã lên: %d"
+
+#: 
+msgid "Moving up: {{total}}"
+msgstr "Đang lên: {{total}}"
+
+#: 
+msgid "Next automatic promotion"
+msgstr "Lần lên lớp tự động tiếp theo"
+
+#: 
+msgid "Nobody has a grade to promote."
+msgstr "Không ai có lớp để lên."
+
+#: 
+msgid "Northern Ireland"
+msgstr "Bắc Ireland"
+
+#: 
+msgid "People by Grade"
+msgstr "Người theo lớp"
+
+#: 
+msgid "People in a range of school grades, such as Kindergarten through 5th"
+msgstr "Người trong một khoảng lớp học, chẳng hạn từ mẫu giáo đến lớp 5"
+
+#: 
+msgid "People whose grade is cleared: {{total}}"
+msgstr "Người có lớp bị xóa: {{total}}"
+
+#: 
+msgid "Promote Grades"
+msgstr "Thực hiện lên lớp"
+
+#: 
+msgid "Promote Now"
+msgstr "Lên lớp ngay"
+
+#: 
+msgid "Promotion Day"
+msgstr "Ngày lên lớp"
+
+#: 
+msgid "Promotion Month"
+msgstr "Tháng lên lớp"
+
+#: 
+msgid "Renames the grades to the names used in that country. People keep their grade, and grades you added yourself stay."
+msgstr "Đổi tên các lớp thành tên dùng ở quốc gia đó. Mọi người giữ nguyên lớp, và các lớp bạn tự thêm vẫn còn."
+
+#: 
+msgid "Scheduled Task"
+msgstr "Tác vụ đã lên lịch"
+
+#: 
+msgid "Scotland"
+msgstr "Scotland"
+
+#: 
+msgid "The day of that month on which grades are promoted. A day past the end of the month means its last day."
+msgstr "Ngày trong tháng đó mà các lớp được lên lớp. Ngày vượt quá cuối tháng nghĩa là ngày cuối của tháng."
+
+#: 
+msgid "The grades already use these names."
+msgstr "Các lớp đã dùng những tên này."
+
+#: 
+msgid "The grades changed after the preview. Review the changes again before applying them."
+msgstr "Các lớp đã thay đổi sau khi xem trước. Xem lại các thay đổi trước khi áp dụng."
+
+#: 
+msgid "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off."
+msgstr "Tháng mà mọi người có lớp đều lên một lớp. Tắt sẽ tắt việc lên lớp tự động."
+
+#: 
+msgid "Through Grade"
+msgstr "Đến lớp"
+
