@@ -525,7 +525,8 @@
     "Reset link",
     "SMTP test",
     "Kiosk Settings",
-    "{{team}}: {{staffing}}"
+    "{{team}}: {{staffing}}",
+    "HTTP Status: {{status}}"
   ],
   "fr": [
     "AM / PM",
