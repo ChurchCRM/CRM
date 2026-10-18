@@ -194,7 +194,7 @@ All of them use `PledgeProgressService` (A37). Family totals do not change: the 
 **F15. Add a pledge**
 1. `GET /portal/giving` with the actor from `PortalAccessMiddleware`. The page loads the cards and the offered funds.
 2. `POST /api/portal/giving/pledges` checks that the fund is active and offered, the owner rule (D18), one pledge per owner, fund and year (409), a start date in the current or next fiscal year, an end date on or after the start and no later than that year's end, and the amounts (§2.2).
-3. `PortalPledgeService` computes the total (A33). `PledgeWriter` writes the row and a `faud` row (`pledge.create`, before NULL, after the row), in one transaction.
+3. `PortalPledgeService` computes the total (A33). `PledgeWriter` writes the row and a `faud` row (`pledge.create`, before NULL, after the row), in one transaction. Profile and family writes in the portal add a timeline note "edited via the Member Portal"; pledge writes do not, so finance data stays out of the person timeline that non-finance staff read.
 4. The card appears with given = what D21 already counts.
 
 **F16. Edit, end, delete**
@@ -235,21 +235,21 @@ The review asked how tax statements and the Advanced Deposit Report treat `Pledg
 **Filtered by type, so pledges never appear**
 - Tax statements: `TaxReport.php` and `FamilyTaxReportEmail.php` read `FinancialService::getTaxReportData()`, which uses `PledgeQuery::filterForTaxReport()`: `Payment` rows only.
 - Advanced Deposit Report: `FinancialService::getAdvancedDepositReportData()` uses `PledgeQuery::filterForAdvancedDeposit()`: `Payment` rows only.
-- Zero Givers (`PledgeQuery::filterForZeroGivers()`), Voting Members (`Reports/VotingMembers.php`), the finance dashboard (`FinancialService::getYtdPaymentTotal()`, `getYtdPledgeTotal()`, `getYtdPaymentCount()`, `getYtdDonorFamilyCount()`) and `DepositService::getDepositTotal()` all filter by type. `DepositService::getDepositItemsByType()` takes the type as an argument.
+- Zero Givers (`PledgeQuery::filterForZeroGivers()`), Voting Members (`Reports/VotingMembers.php`), the finance dashboard (`FinancialService::getYtdPaymentTotal()`, `getYtdPledgeTotal()`, `getYtdPaymentCount()`, `getYtdDonorFamilyCount()`) `DepositService::getDepositTotal()` and the deposit CSV export (`DepositService::getDepositsForExport()`) all filter by type. `DepositService::getDepositItemsByType()` takes the type as an argument.
 
 **Not filtered by type, correct only because pledges carry no deposit**
 - The deposit list total: `DepositQuery::preSelect()` sums every row joined to the deposit.
 - `Deposit::getTotalChecks()`, `getTotalCash()`, `getCountChecks()`, `getCountCash()`, `getFundTotals()`, the deposit PDF (`Deposit::getPDF()`, including the QuickBooks slip), `Deposit::getOFX()`, and `Deposit::preDelete()`, which deletes every row on the deposit.
-- `DepositService::getPayments()` for a deposit, and the "No Payments on this Deposit" check in `Reports/PrintDeposit.php`.
+- The "No Payments on this Deposit" checks in `Reports/PrintDeposit.php` and `GET /api/deposits/{id}/pdf`.
 - The payment search (`FinancePaymentSearchResultProvider`) lists every group, pledges included, as "Payment on Deposit".
 
-**The gap.** The office editor shows no deposit field for a pledge, so office pledges have `plg_depID` NULL. But `FinancialService::insertPledgeorPayment()` copies `DepositID` for either type. A call to `POST /api/payments/` or `POST /api/payments/pledges` with `type` = `Pledge` and a `DepositID` puts a pledge on that deposit: it then counts in the deposit total, the fund totals, the PDF and the OFX file, and is deleted with the deposit. It still never reaches a tax statement or the Advanced Deposit Report.
+**The gap.** The office editor shows no deposit field for a pledge, so office pledges have `plg_depID` NULL. But `FinancialService::insertPledgeorPayment()` copies `DepositID` for either type. A call to `POST /api/payments/` or `POST /api/payments/pledges` with `type` = `Pledge` and a `DepositID` puts a pledge on that deposit: it then counts in the deposit total, the fund totals, the PDF and the OFX file, and is deleted with the deposit. It still never reaches a tax statement, the deposit CSV or the Advanced Deposit Report.
 
 **What this RFC guards** (GIV-81, before any portal pledge exists)
 1. No deposit on a pledge: `insertPledgeorPayment()` now, and `PledgeWriter` after GIV-04, answer 400 to a `DepositID` on a `Pledge` row (A35).
 2. Every deposit-scoped query above, and the payment search, filters `Payment` (A36).
 3. `GivingStatementService` (GIV-07) keeps the `Payment` filter of `filterForTaxReport()`.
-4. Tests on seed data: a pledge, including one forced onto a deposit, is absent from the deposit total, fund totals, PDF, OFX, search, tax statement and Advanced Deposit Report.
+4. Tests on seed data: a pledge, including one forced onto a deposit, is absent from the deposit total, fund totals, PDF, OFX, CSV, search, tax statement and Advanced Deposit Report.
 5. GroupKeys are unique across both types (A38).
 
 Pledge rows that already carry a deposit (only the API could write them) stop counting toward that deposit once A36 lands, which is the correct total; a closed deposit's printed total can then differ from a new print. The change note gives the query that lists them: `SELECT plg_depID, COUNT(*) FROM pledge_plg WHERE plg_PledgeOrPayment = 'Pledge' AND plg_depID IS NOT NULL GROUP BY plg_depID`.
