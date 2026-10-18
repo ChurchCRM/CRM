@@ -1,62 +1,62 @@
 {
-  "Your coordinator": "",
-  "Your teams: %s": "",
-  "positionIds must be a list of position ids": "",
-  "{{name}} ({{family}} family)": "",
-  "{{name}} assigned and recorded as accepted": "",
-  "Ask an administrator to change your sign-in email.": "",
-  "Email changed by an administrator from %1$s to %2$s": "",
-  "Only an administrator can change the email of a person with a user account.": "",
+  "Your coordinator": "Il tuo coordinatore",
+  "Your teams: %s": "Le tue squadre: %s",
+  "positionIds must be a list of position ids": "positionIds deve essere un elenco di id di posizioni",
+  "{{name}} ({{family}} family)": "{{name}} (famiglia {{family}})",
+  "{{name}} assigned and recorded as accepted": "{{name}} assegnato e registrato come accettato",
+  "Ask an administrator to change your sign-in email.": "Chiedi a un amministratore di cambiare l'e-mail di accesso.",
+  "Email changed by an administrator from %1$s to %2$s": "E-mail cambiata da un amministratore da %1$s a %2$s",
+  "Only an administrator can change the email of a person with a user account.": "Solo un amministratore può cambiare l'e-mail di una persona con un account utente.",
   "Delete ({{count}})": {
-    "one": "",
-    "other": ""
+    "one": "Elimina (uno)",
+    "other": "Elimina ({{count}})"
   },
   "Delete events ({{count}})": {
-    "one": "",
-    "other": ""
+    "one": "Elimina un evento",
+    "other": "Elimina gli eventi ({{count}})"
   },
   "Delete {{count}} occurrences? Their assignments, the volunteers' responses, any substitutions and every queued reminder go with them. This cannot be undone.": {
-    "one": "",
-    "other": ""
+    "one": "Eliminare un'occorrenza? Le sue assegnazioni, le risposte dei volontari, le eventuali sostituzioni e ogni promemoria in coda vengono eliminati con essa. L'operazione non può essere annullata.",
+    "other": "Eliminare {{count}} occorrenze? Le loro assegnazioni, le risposte dei volontari, le eventuali sostituzioni e ogni promemoria in coda vengono eliminati con esse. L'operazione non può essere annullata."
   },
   "Occurrences are created for events in the next {{count}} weeks (through {{date}}).": {
-    "one": "",
-    "other": ""
+    "one": "Le occorrenze vengono create per gli eventi della prossima settimana (fino al {{date}}).",
+    "other": "Le occorrenze vengono create per gli eventi delle prossime {{count}} settimane (fino al {{date}})."
   },
   "They finish {{count}} minutes after the event ends.": {
-    "one": "",
-    "other": ""
+    "one": "Finiscono un minuto dopo la fine dell'evento.",
+    "other": "Finiscono {{count}} minuti dopo la fine dell'evento."
   },
   "They finish {{count}} minutes before the event ends.": {
-    "one": "",
-    "other": ""
+    "one": "Finiscono un minuto prima della fine dell'evento.",
+    "other": "Finiscono {{count}} minuti prima della fine dell'evento."
   },
   "Volunteers start {{count}} minutes after the event starts.": {
-    "one": "",
-    "other": ""
+    "one": "I volontari iniziano un minuto dopo l'inizio dell'evento.",
+    "other": "I volontari iniziano {{count}} minuti dopo l'inizio dell'evento."
   },
   "Volunteers start {{count}} minutes before the event starts.": {
-    "one": "",
-    "other": ""
+    "one": "I volontari iniziano un minuto prima dell'inizio dell'evento.",
+    "other": "I volontari iniziano {{count}} minuti prima dell'inizio dell'evento."
   },
   "{{count}} needed": {
-    "one": "",
-    "other": ""
+    "one": "Uno necessario",
+    "other": "{{count}} necessari"
   },
   "{{count}} occurrences deleted": {
-    "one": "",
-    "other": ""
+    "one": "Un'occorrenza eliminata",
+    "other": "{{count}} occorrenze eliminate"
   },
   "{{failed}} of {{count}} occurrences could not be deleted": {
-    "one": "",
-    "other": ""
+    "one": "{{failed}} su un'occorrenza non è stato possibile eliminarla",
+    "other": "{{failed}} su {{count}} occorrenze non è stato possibile eliminarle"
   },
   "{{name}} ({{count}} upcoming)": {
-    "one": "",
-    "other": ""
+    "one": "{{name}} (uno imminente)",
+    "other": "{{name}} ({{count}} imminenti)"
   },
   "{{title}} ({{count}} upcoming)": {
-    "one": "",
-    "other": ""
+    "one": "{{title}} (uno imminente)",
+    "other": "{{title}} ({{count}} imminenti)"
   }
 }
