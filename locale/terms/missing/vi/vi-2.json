@@ -1,62 +1,62 @@
 {
-  "Your coordinator": "",
-  "Your teams: %s": "",
-  "positionIds must be a list of position ids": "",
-  "{{name}} ({{family}} family)": "",
-  "{{name}} assigned and recorded as accepted": "",
-  "Ask an administrator to change your sign-in email.": "",
-  "Email changed by an administrator from %1$s to %2$s": "",
-  "Only an administrator can change the email of a person with a user account.": "",
+  "Your coordinator": "Điều phối viên của bạn",
+  "Your teams: %s": "Các đội của bạn: %s",
+  "positionIds must be a list of position ids": "positionIds phải là danh sách mã vị trí",
+  "{{name}} ({{family}} family)": "{{name}} (gia đình {{family}})",
+  "{{name}} assigned and recorded as accepted": "{{name}} đã được phân công và ghi nhận là đã nhận",
+  "Ask an administrator to change your sign-in email.": "Nhờ quản trị viên đổi email đăng nhập của bạn.",
+  "Email changed by an administrator from %1$s to %2$s": "Quản trị viên đã đổi email từ %1$s thành %2$s",
+  "Only an administrator can change the email of a person with a user account.": "Chỉ quản trị viên mới đổi được email của người có tài khoản người dùng.",
   "Delete ({{count}})": {
-    "one": "",
-    "other": ""
+    "one": "Xóa ({{count}})",
+    "other": "Xóa ({{count}})"
   },
   "Delete events ({{count}})": {
-    "one": "",
-    "other": ""
+    "one": "Xóa sự kiện ({{count}})",
+    "other": "Xóa sự kiện ({{count}})"
   },
   "Delete {{count}} occurrences? Their assignments, the volunteers' responses, any substitutions and every queued reminder go with them. This cannot be undone.": {
-    "one": "",
-    "other": ""
+    "one": "Xóa {{count}} buổi? Phân công, phản hồi của tình nguyện viên, mọi sự thay thế và mọi lời nhắc trong hàng đợi sẽ bị xóa theo. Không thể hoàn tác.",
+    "other": "Xóa {{count}} buổi? Phân công, phản hồi của tình nguyện viên, mọi sự thay thế và mọi lời nhắc trong hàng đợi sẽ bị xóa theo. Không thể hoàn tác."
   },
   "Occurrences are created for events in the next {{count}} weeks (through {{date}}).": {
-    "one": "",
-    "other": ""
+    "one": "Các buổi được tạo cho sự kiện trong {{count}} tuần tới (đến {{date}}).",
+    "other": "Các buổi được tạo cho sự kiện trong {{count}} tuần tới (đến {{date}})."
   },
   "They finish {{count}} minutes after the event ends.": {
-    "one": "",
-    "other": ""
+    "one": "Họ kết thúc {{count}} phút sau khi sự kiện kết thúc.",
+    "other": "Họ kết thúc {{count}} phút sau khi sự kiện kết thúc."
   },
   "They finish {{count}} minutes before the event ends.": {
-    "one": "",
-    "other": ""
+    "one": "Họ kết thúc {{count}} phút trước khi sự kiện kết thúc.",
+    "other": "Họ kết thúc {{count}} phút trước khi sự kiện kết thúc."
   },
   "Volunteers start {{count}} minutes after the event starts.": {
-    "one": "",
-    "other": ""
+    "one": "Tình nguyện viên bắt đầu {{count}} phút sau khi sự kiện bắt đầu.",
+    "other": "Tình nguyện viên bắt đầu {{count}} phút sau khi sự kiện bắt đầu."
   },
   "Volunteers start {{count}} minutes before the event starts.": {
-    "one": "",
-    "other": ""
+    "one": "Tình nguyện viên bắt đầu {{count}} phút trước khi sự kiện bắt đầu.",
+    "other": "Tình nguyện viên bắt đầu {{count}} phút trước khi sự kiện bắt đầu."
   },
   "{{count}} needed": {
-    "one": "",
-    "other": ""
+    "one": "Cần {{count}}",
+    "other": "Cần {{count}}"
   },
   "{{count}} occurrences deleted": {
-    "one": "",
-    "other": ""
+    "one": "Đã xóa {{count}} buổi",
+    "other": "Đã xóa {{count}} buổi"
   },
   "{{failed}} of {{count}} occurrences could not be deleted": {
-    "one": "",
-    "other": ""
+    "one": "Không xóa được {{failed}} trong {{count}} buổi",
+    "other": "Không xóa được {{failed}} trong {{count}} buổi"
   },
   "{{name}} ({{count}} upcoming)": {
-    "one": "",
-    "other": ""
+    "one": "{{name}} ({{count}} sắp tới)",
+    "other": "{{name}} ({{count}} sắp tới)"
   },
   "{{title}} ({{count}} upcoming)": {
-    "one": "",
-    "other": ""
+    "one": "{{title}} ({{count}} sắp tới)",
+    "other": "{{title}} ({{count}} sắp tới)"
   }
 }
