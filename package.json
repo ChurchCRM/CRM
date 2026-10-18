@@ -177,7 +177,6 @@
         "picomatch": "4.0.7",
         "sass": "^1.105.1",
         "sass-loader": "^17.0.1",
-        "style-loader": "^4.0.0",
         "ts-loader": "^9.6.2",
         "typescript": "^6.0.3",
         "webpack": "^5.111.1",
