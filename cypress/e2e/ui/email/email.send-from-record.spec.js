@@ -9,15 +9,11 @@
  * the whole group. Both queue through POST /api/email/send with ids, one message
  * per recipient; the composer then sends the batch (#10356), and the outcome is
  * checked in the Mailpit sink.
- *
- * Override Mailpit with `--env mailpitUrl=http://localhost:8070` on a stack with
- * non-default ports.
  */
-const mailpit = () => Cypress.testEnv("mailpitUrl") || "http://localhost:8025";
 
 const mailpitMessages = (tag) =>
     cy
-        .request({ method: "GET", url: `${mailpit()}/api/v1/messages?limit=100` })
+        .request({ method: "GET", url: `${Cypress.mailpitUrl()}/api/v1/messages?limit=100` })
         .then((resp) => resp.body.messages.filter((m) => m.Subject.includes(tag)));
 
 /** Fills the compose form and submits; returns the send response via the alias. */
@@ -30,10 +26,6 @@ const composeAndSend = (subject, body) => {
     cy.get("#crm-email-send-submit").click();
     return cy.wait("@send");
 };
-
-before(() => {
-    cy.rememberTestEnv(["mailpitUrl"]);
-});
 
 describe("Send email from a record", () => {
     beforeEach(() => {

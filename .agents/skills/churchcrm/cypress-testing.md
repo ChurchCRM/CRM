@@ -29,6 +29,7 @@ Every new test is a Cypress E2E spec. Server logic is tested through its route w
 - Optional demo values go in `src/admin/demo/config.json`, which keeps the Cypress seed stable
 - Commit specs without `.only` / `.skip`
 - `allowCypressEnv` is false. Secrets go through `cy.readEnv(key)` or `cy.rememberTestEnv(keys)` / `Cypress.testEnv(key)` in `cypress/support/test-env.js`. Public run flags (`rowCountGuard`, `LOCALE_TIER`) use `Cypress.expose()`; select the locale tier with `--expose LOCALE_TIER=full`
+- Mailpit lives at `Cypress.mailpitUrl()` for `cy.request()`; use the `mail:*` tasks where the stack may have none. The config resolves it from `MAILPIT_URL` or `MAILSERVER_GUI_PORT`, so a run on an isolated stack reaches that stack's Mailpit, not the developer's on 8025
 - The server counts days in `sTimeZone`; CI's browser is on UTC, a day ahead every evening. A spec that builds dates from the browser clock calls `cy.useChurchTimeZone()` in a root `before()` and `cy.useHostTimeZone()` in a root `after()` (`cypress/support/church-time-zone.js`). Check it locally with `TZ=UTC npx cypress run ...` between 8 pm and midnight Eastern
 - Comment only a CI or Cypress trap, in one line.
 
