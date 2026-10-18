@@ -13165,10 +13165,6 @@ msgid "Are you sure you want to delete this note?"
 msgstr "Opravdu chcete smazat tuto poznámku?"
 
 #: 
-msgid "Cancel — wait 1 more minute"
-msgstr "Zrušit — počkat ještě 1 minutu"
-
-#: 
 msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
 msgstr "Fond darů nelze smazat: stále na něj odkazuje jeden nebo více finančních závazků."
 
@@ -13297,14 +13293,6 @@ msgid "Read more"
 msgstr "Číst více"
 
 #: 
-msgid "Refreshing Soon"
-msgstr "Brzy se obnoví"
-
-#: 
-msgid "Refreshing in"
-msgstr "Obnovení za"
-
-#: 
 msgid "That name already exists."
 msgstr "Tento název již existuje."
 
@@ -13323,10 +13311,6 @@ msgstr "Nemáte oprávnění smazat tuto poznámku."
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "Nemáte oprávnění upravit tuto poznámku."
-
-#: 
-msgid "seconds"
-msgstr "sekund"
 
 #: 
 msgid "Cannot delete event: %d people are currently checked in."

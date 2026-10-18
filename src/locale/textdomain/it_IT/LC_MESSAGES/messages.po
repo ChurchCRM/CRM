@@ -13186,10 +13186,6 @@ msgid "Are you sure you want to delete this note?"
 msgstr "Sei sicuro di voler eliminare questa nota?"
 
 #: 
-msgid "Cancel — wait 1 more minute"
-msgstr "Annulla — attendi ancora 1 minuto"
-
-#: 
 msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
 msgstr "Impossibile eliminare il fondo donazioni: è ancora referenziato da uno o più impegni finanziari."
 
@@ -13318,14 +13314,6 @@ msgid "Read more"
 msgstr "Leggi di più"
 
 #: 
-msgid "Refreshing Soon"
-msgstr "Aggiornamento imminente"
-
-#: 
-msgid "Refreshing in"
-msgstr "Aggiornamento tra"
-
-#: 
 msgid "That name already exists."
 msgstr "Questo nome esiste già."
 
@@ -13344,10 +13332,6 @@ msgstr "Non si dispone dell'autorizzazione per eliminare questa nota."
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "Non si dispone dell'autorizzazione per modificare questa nota."
-
-#: 
-msgid "seconds"
-msgstr "secondi"
 
 #: 
 msgid "Cannot delete event: %d people are currently checked in."

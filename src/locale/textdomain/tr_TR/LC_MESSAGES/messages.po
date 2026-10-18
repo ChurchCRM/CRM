@@ -13167,10 +13167,6 @@ msgid "Are you sure you want to delete this note?"
 msgstr "Bu notu silmek istediğinizden emin misiniz?"
 
 #: 
-msgid "Cancel — wait 1 more minute"
-msgstr "İptal — 1 dakika daha bekle"
-
-#: 
 msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
 msgstr "Bağış fonu silinemiyor: Bir veya daha fazla mali taahhüt tarafından hâlâ başvuruluyor."
 
@@ -13299,14 +13295,6 @@ msgid "Read more"
 msgstr "Daha fazla oku"
 
 #: 
-msgid "Refreshing Soon"
-msgstr "Yakında Yenilenecek"
-
-#: 
-msgid "Refreshing in"
-msgstr "Yenileniyor"
-
-#: 
 msgid "That name already exists."
 msgstr "Bu ad zaten mevcut."
 
@@ -13325,10 +13313,6 @@ msgstr "Bu notu silme izniniz yok."
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "Bu notu düzenleme izniniz yok."
-
-#: 
-msgid "seconds"
-msgstr "saniye"
 
 #: 
 msgid "Cannot delete event: %d people are currently checked in."

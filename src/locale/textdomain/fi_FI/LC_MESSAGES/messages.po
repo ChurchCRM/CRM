@@ -13134,10 +13134,6 @@ msgid "Are you sure you want to delete this note?"
 msgstr "Haluatko varmasti poistaa tämän muistiinpanon?"
 
 #: 
-msgid "Cancel — wait 1 more minute"
-msgstr "Peruuta — odota vielä 1 minuutti"
-
-#: 
 msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
 msgstr "Lahjoitusrahastoa ei voi poistaa: siihen viitataan yhä yhdessä tai useammassa taloudellisessa sitoumuksessa."
 
@@ -13266,14 +13262,6 @@ msgid "Read more"
 msgstr "Lue lisää"
 
 #: 
-msgid "Refreshing Soon"
-msgstr "Päivitetään pian"
-
-#: 
-msgid "Refreshing in"
-msgstr "Päivitetään"
-
-#: 
 msgid "That name already exists."
 msgstr "Tämä nimi on jo olemassa."
 
@@ -13292,10 +13280,6 @@ msgstr "Sinulla ei ole oikeutta poistaa tätä muistiinpanoa."
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "Sinulla ei ole oikeutta muokata tätä muistiinpanoa."
-
-#: 
-msgid "seconds"
-msgstr "sekuntia"
 
 #: 
 msgid "Cannot delete event: %d people are currently checked in."

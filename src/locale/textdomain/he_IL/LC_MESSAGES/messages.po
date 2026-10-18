@@ -13165,10 +13165,6 @@ msgid "Are you sure you want to delete this note?"
 msgstr "האם אתה בטוח שברצונך למחוק פתק זה?"
 
 #: 
-msgid "Cancel — wait 1 more minute"
-msgstr "ביטול — המתן עוד דקה אחת"
-
-#: 
 msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
 msgstr "לא ניתן למחוק את קרן התרומות: היא עדיין מוזכרת בהתחייבות אחת או יותר."
 
@@ -13297,14 +13293,6 @@ msgid "Read more"
 msgstr "קרא עוד"
 
 #: 
-msgid "Refreshing Soon"
-msgstr "מתרענן בקרוב"
-
-#: 
-msgid "Refreshing in"
-msgstr "מתרענן בעוד"
-
-#: 
 msgid "That name already exists."
 msgstr "שם זה כבר קיים."
 
@@ -13323,10 +13311,6 @@ msgstr "אין לך הרשאה למחוק פתק זה."
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "אין לך הרשאה לערוך פתק זה."
-
-#: 
-msgid "seconds"
-msgstr "שניות"
 
 #: 
 msgid "Cannot delete event: %d people are currently checked in."

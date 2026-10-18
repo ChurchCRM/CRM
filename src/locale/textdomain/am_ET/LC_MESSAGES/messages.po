@@ -13174,10 +13174,6 @@ msgid "Are you sure you want to delete this note?"
 msgstr "እርግጠኛ ነዎት ይህን ማስታወሻ መሰረዝ ይፈልጋሉ?"
 
 #: 
-msgid "Cancel — wait 1 more minute"
-msgstr "ሰርዝ — ለ1 ደቂቃ ተጨማሪ ይጠብቁ"
-
-#: 
 msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
 msgstr "የልገሳ ፈንዱን መሰረዝ አይቻልም፦ አሁንም በአንድ ወይም ከዚያ በላይ በሆኑ የፋይናንስ ቃል ኪዳኖች ይጠቀሳል።"
 
@@ -13306,14 +13302,6 @@ msgid "Read more"
 msgstr "ተጨማሪ ያንብቡ"
 
 #: 
-msgid "Refreshing Soon"
-msgstr "በቅርቡ ይታደሳል"
-
-#: 
-msgid "Refreshing in"
-msgstr "ይታደሳል በ"
-
-#: 
 msgid "That name already exists."
 msgstr "ያ ስም አስቀድሞ አለ።"
 
@@ -13332,10 +13320,6 @@ msgstr "ይህን ማስታወሻ የመሰረዝ ፈቃድ የለዎትም።"
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "ይህን ማስታወሻ የማርትዕ ፈቃድ የለዎትም።"
-
-#: 
-msgid "seconds"
-msgstr "ሰከንዶች"
 
 #: 
 msgid "Cannot delete event: %d people are currently checked in."

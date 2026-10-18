@@ -13157,10 +13157,6 @@ msgid "Are you sure you want to delete this note?"
 msgstr "Jeni të sigurt që dëshironi të fshini këtë shënim?"
 
 #: 
-msgid "Cancel — wait 1 more minute"
-msgstr "Anulo — prit edhe 1 minutë"
-
-#: 
 msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
 msgstr "Nuk mund të fshihet fondi i donacioneve: ai ende referohet nga një ose më shumë zotimet."
 
@@ -13289,14 +13285,6 @@ msgid "Read more"
 msgstr "Lexo më shumë"
 
 #: 
-msgid "Refreshing Soon"
-msgstr "Rifreskim së shpejti"
-
-#: 
-msgid "Refreshing in"
-msgstr "Rifreskim në"
-
-#: 
 msgid "That name already exists."
 msgstr "Ai emër ekziston tashmë."
 
@@ -13315,10 +13303,6 @@ msgstr "Nuk keni leje për të fshirë këtë shënim."
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "Nuk keni leje për të redaktuar këtë shënim."
-
-#: 
-msgid "seconds"
-msgstr "sekonda"
 
 #: 
 msgid "Cannot delete event: %d people are currently checked in."

@@ -13226,10 +13226,6 @@ msgid "Are you sure you want to delete this note?"
 msgstr "确定要删除这条备注吗？"
 
 #: 
-msgid "Cancel — wait 1 more minute"
-msgstr "取消 — 再等待1分钟"
-
-#: 
 msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
 msgstr "无法删除捐款基金：仍有一个或多个财务承诺引用了它。"
 
@@ -13358,14 +13354,6 @@ msgid "Read more"
 msgstr "阅读更多"
 
 #: 
-msgid "Refreshing Soon"
-msgstr "即将刷新"
-
-#: 
-msgid "Refreshing in"
-msgstr "将在以下时间后刷新"
-
-#: 
 msgid "That name already exists."
 msgstr "该名称已存在。"
 
@@ -13384,10 +13372,6 @@ msgstr "您没有权限删除此备注。"
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "您没有权限编辑此备注。"
-
-#: 
-msgid "seconds"
-msgstr "秒"
 
 #: 
 msgid "Cannot delete event: %d people are currently checked in."

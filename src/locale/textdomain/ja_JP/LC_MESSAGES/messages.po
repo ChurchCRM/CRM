@@ -13123,10 +13123,6 @@ msgid "Are you sure you want to delete this note?"
 msgstr "このメモを削除してもよろしいですか？"
 
 #: 
-msgid "Cancel — wait 1 more minute"
-msgstr "キャンセル — もう1分待つ"
-
-#: 
 msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
 msgstr "寄付金基金を削除できません：1件以上の財政的誓約から参照されています。"
 
@@ -13255,14 +13251,6 @@ msgid "Read more"
 msgstr "続きを読む"
 
 #: 
-msgid "Refreshing Soon"
-msgstr "まもなく更新されます"
-
-#: 
-msgid "Refreshing in"
-msgstr "更新まで"
-
-#: 
 msgid "That name already exists."
 msgstr "その名前はすでに存在します。"
 
@@ -13281,10 +13269,6 @@ msgstr "このメモを削除する権限がありません。"
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "このメモを編集する権限がありません。"
-
-#: 
-msgid "seconds"
-msgstr "秒"
 
 #: 
 msgid "Cannot delete event: %d people are currently checked in."
