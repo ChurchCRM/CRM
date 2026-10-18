@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-17 22:59+0000\n"
+"POT-Creation-Date: 2026-10-18 01:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2612,14 +2612,6 @@ msgid "Cannot Delete Event Type"
 msgstr ""
 
 msgid "Cannot check in to an inactive event. Activate the event first."
-msgstr ""
-
-#, php-format
-msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
-msgstr ""
-
-#, php-format
-msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
 msgstr ""
 
 msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
