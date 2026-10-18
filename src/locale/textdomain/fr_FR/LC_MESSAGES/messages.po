@@ -18912,10 +18912,6 @@ msgstr[0] "%d bénévole par défaut affecté"
 msgstr[1] "%d bénévoles par défaut affectés"
 
 #: 
-msgid "%d failed"
-msgstr "%d échoué"
-
-#: 
 msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
 msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
 msgstr[0] "%d bénévole supplémentaire est encore requis pour ce poste. Ouvrez l'occurrence pour combler le manque."
@@ -20036,10 +20032,6 @@ msgstr "Titre de l'événement"
 #: 
 msgid "Event type"
 msgstr "Type d'événement"
-
-#: 
-msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
-msgstr "Chaque courriel envoyé par ChurchCRM, du plus récent au plus ancien. Ouvrez une personne pour voir son historique complet."
 
 #: 
 msgid "Every position in this window has the people it needs."

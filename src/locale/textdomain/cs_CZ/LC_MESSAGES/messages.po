@@ -18923,10 +18923,6 @@ msgstr[1] "%d výchozí dobrovolníci přiřazeni"
 msgstr[2] "%d výchozích dobrovolníků přiřazeno"
 
 #: 
-msgid "%d failed"
-msgstr "%d se nezdařilo"
-
-#: 
 msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
 msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
 msgstr[0] "Pro tuto pozici je stále potřeba ještě %d dobrovolník. Otevřete výskyt a vyplňte mezeru."
@@ -20053,10 +20049,6 @@ msgstr "Název události"
 #: 
 msgid "Event type"
 msgstr "Typ události"
-
-#: 
-msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
-msgstr "Každý e-mail odeslaný systémem ChurchCRM, nejnovější první. Otevřete osobu, abyste viděli její úplnou historii."
 
 #: 
 msgid "Every position in this window has the people it needs."

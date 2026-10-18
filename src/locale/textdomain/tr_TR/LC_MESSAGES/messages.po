@@ -18915,10 +18915,6 @@ msgstr[0] "%d varsayılan gönüllü atandı"
 msgstr[1] "%d varsayılan gönüllü atandı"
 
 #: 
-msgid "%d failed"
-msgstr "%d başarısız oldu"
-
-#: 
 msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
 msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
 msgstr[0] "Bu pozisyon için hâlâ %d gönüllü daha gerekiyor. Boşluğu doldurmak için oluşumu açın."
@@ -20039,10 +20035,6 @@ msgstr "Olay başlığı"
 #: 
 msgid "Event type"
 msgstr "Etkinlik tipi"
-
-#: 
-msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
-msgstr "ChurchCRM'in gönderdiği her e-posta, en yeniler önce. Tam geçmişini görmek için bir kişiyi açın."
 
 #: 
 msgid "Every position in this window has the people it needs."

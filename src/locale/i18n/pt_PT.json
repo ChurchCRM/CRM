@@ -4587,7 +4587,6 @@
     "one": "%d voluntário padrão designado",
     "other": "%d voluntários padrão designados"
   },
-  "%d failed": "%d falharam",
   "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
     "one": "Mais %d voluntário ainda é necessário para esta função. Abra a ocorrência para preencher a vaga.",
     "other": "Mais %d voluntários ainda são necessários para esta função. Abra a ocorrência para preencher a vaga."
@@ -4881,7 +4880,6 @@
   "Event staffed": "Evento escalado",
   "Event title": "Título do evento",
   "Event type": "Tipo de evento",
-  "Every email ChurchCRM sent, newest first. Open a person to see their full history.": "Todos os e-mails enviados pelo ChurchCRM, do mais recente ao mais antigo. Abra uma pessoa para ver seu histórico completo.",
   "Every position in this window has the people it needs.": "Todas as funções neste período têm as pessoas de que precisam.",
   "Everyone has answered": "Todos responderam",
   "Everyone in the cart joins this ministry's volunteers. Tick their positions afterwards.": "Todos da Seleção entram no banco de voluntários deste ministério. Marque as funções deles depois.",

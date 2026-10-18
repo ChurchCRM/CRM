@@ -4587,7 +4587,6 @@
     "one": "%d standardfrivillig tildelt",
     "other": "%d standardfrivillige tildelt"
   },
-  "%d failed": "%d mislyktes",
   "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
     "one": "%d frivillig til trengs fortsatt for denne oppgaven. Åpne gjennomføringen for å fylle hullet.",
     "other": "%d frivillige til trengs fortsatt for denne oppgaven. Åpne gjennomføringen for å fylle hullet."
@@ -4881,7 +4880,6 @@
   "Event staffed": "Arrangement bemannet",
   "Event title": "Hendelse Tittel",
   "Event type": "Hendelsestype",
-  "Every email ChurchCRM sent, newest first. Open a person to see their full history.": "Alle e-poster ChurchCRM har sendt, nyeste først. Åpne en person for å se hele historikken deres.",
   "Every position in this window has the people it needs.": "Hver oppgave i dette tidsrommet har de personene den trenger.",
   "Everyone has answered": "Alle har svart",
   "Everyone in the cart joins this ministry's volunteers. Tick their positions afterwards.": "Alle i utvalget blir med i denne tjenestens frivillige. Huk av oppgavene deres etterpå.",

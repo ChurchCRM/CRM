@@ -18927,10 +18927,6 @@ msgstr[0] "%d இயல்புநிலை தன்னார்வலர் �
 msgstr[1] "%d இயல்புநிலை தன்னார்வலர்கள் நியமிக்கப்பட்டனர்"
 
 #: 
-msgid "%d failed"
-msgstr "%d தோல்வியடைந்தன"
-
-#: 
 msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
 msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
 msgstr[0] "இந்தப் பொறுப்புக்கு இன்னும் %d தன்னார்வலர் தேவை. இடைவெளியை நிரப்ப நிகழ்வைத் திறக்கவும்."
@@ -20051,10 +20047,6 @@ msgstr "நிகழ்வு தலைப்பு"
 #: 
 msgid "Event type"
 msgstr "நிகழ்வு வகை"
-
-#: 
-msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
-msgstr "ChurchCRM அனுப்பிய ஒவ்வொரு மின்னஞ்சலும், புதியவை முதலில். முழு வரலாற்றைக் காண ஒரு நபரைத் திறக்கவும்."
 
 #: 
 msgid "Every position in this window has the people it needs."

@@ -18892,10 +18892,6 @@ msgstr[0] "%d డిఫాల్ట్ స్వచ్ఛంద సేవకు�
 msgstr[1] "%d డిఫాల్ట్ స్వచ్ఛంద సేవకులు నియమించబడ్డారు"
 
 #: 
-msgid "%d failed"
-msgstr "%d విఫలమయ్యాయి"
-
-#: 
 msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
 msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
 msgstr[0] "ఈ స్థానానికి ఇంకా %d మరో స్వచ్ఛంద సేవకుడు అవసరం. ఖాళీని నింపడానికి సందర్భాన్ని తెరవండి."
@@ -20016,10 +20012,6 @@ msgstr "ఈవెంట్ శీర్షిక"
 #: 
 msgid "Event type"
 msgstr "ఈవెంట్ రకం"
-
-#: 
-msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
-msgstr "ChurchCRM పంపిన ప్రతి ఇమెయిల్, కొత్తవి మొదట. పూర్తి చరిత్రను చూడటానికి ఒక వ్యక్తిని తెరవండి."
 
 #: 
 msgid "Every position in this window has the people it needs."

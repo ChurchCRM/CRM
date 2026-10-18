@@ -18905,10 +18905,6 @@ msgstr[0] "%d vullnetar i parazgjedhur u caktua"
 msgstr[1] "%d vullnetarë të parazgjedhur u caktuan"
 
 #: 
-msgid "%d failed"
-msgstr "%d dështuan"
-
-#: 
 msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
 msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
 msgstr[0] "Për këtë pozicion nevojitet ende %d vullnetar tjetër. Hapni zhvillimin për të mbushur boshllëkun."
@@ -20029,10 +20025,6 @@ msgstr "Titulli i evenimentit"
 #: 
 msgid "Event type"
 msgstr "Lloji Event"
-
-#: 
-msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
-msgstr "Çdo email që ka dërguar ChurchCRM, më i riu i pari. Hapni një person për të parë historikun e tij të plotë."
 
 #: 
 msgid "Every position in this window has the people it needs."

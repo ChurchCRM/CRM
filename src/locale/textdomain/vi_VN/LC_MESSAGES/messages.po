@@ -18899,10 +18899,6 @@ msgid_plural "%d default volunteers assigned"
 msgstr[0] "%d tình nguyện viên mặc định được gán"
 
 #: 
-msgid "%d failed"
-msgstr "%d thất bại"
-
-#: 
 msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
 msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
 msgstr[0] "Vị trí này vẫn cần thêm %d tình nguyện viên. Mở sự kiện để lấp đầy khoảng trống."
@@ -20017,10 +20013,6 @@ msgstr "Tiêu đề sự kiện"
 #: 
 msgid "Event type"
 msgstr "Loại sự kiện"
-
-#: 
-msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
-msgstr "Mọi email ChurchCRM đã gửi, mới nhất trước. Mở hồ sơ một người để xem toàn bộ lịch sử của họ."
 
 #: 
 msgid "Every position in this window has the people it needs."

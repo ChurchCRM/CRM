@@ -4587,7 +4587,6 @@
     "one": "Mtu wa kujitolea mteule %d amepangwa",
     "other": "Watu wa kujitolea wateule %d wamepangwa"
   },
-  "%d failed": "%d imeshindwa",
   "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
     "one": "Mtu mmoja zaidi wa kujitolea (%d) bado anahitajika kwa nafasi hii. Fungua tukio ili kuziba pengo.",
     "other": "Watu %d zaidi wa kujitolea bado wanahitajika kwa nafasi hii. Fungua tukio ili kuziba pengo."
@@ -4881,7 +4880,6 @@
   "Event staffed": "Tukio limewekewa watumishi",
   "Event title": "Kichwa cha habari",
   "Event type": "Aina ya Tukio",
-  "Every email ChurchCRM sent, newest first. Open a person to see their full history.": "Kila barua pepe ambayo ChurchCRM ilituma, mpya zaidi kwanza. Fungua mtu ili uone historia yake kamili.",
   "Every position in this window has the people it needs.": "Kila nafasi katika kipindi hiki ina watu inaowahitaji.",
   "Everyone has answered": "Kila mtu amejibu",
   "Everyone in the cart joins this ministry's volunteers. Tick their positions afterwards.": "Kila mtu aliye kwenye Chaguo anajiunga na watu wa kujitolea wa huduma hii. Weka alama nafasi zao baadaye.",

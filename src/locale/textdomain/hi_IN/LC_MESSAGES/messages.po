@@ -18880,10 +18880,6 @@ msgstr[0] "%d डिफ़ॉल्ट स्वयंसेवक नियु�
 msgstr[1] "%d डिफ़ॉल्ट स्वयंसेवक नियुक्त किए गए"
 
 #: 
-msgid "%d failed"
-msgstr "%d विफल"
-
-#: 
 msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
 msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
 msgstr[0] "इस पद के लिए अभी %d और स्वयंसेवक की आवश्यकता है। रिक्ति भरने के लिए अवसर खोलें।"
@@ -20004,10 +20000,6 @@ msgstr "इवेंट का शीर्षक"
 #: 
 msgid "Event type"
 msgstr "इवेंट प्रकार"
-
-#: 
-msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
-msgstr "ChurchCRM द्वारा भेजा गया हर ईमेल, नवीनतम पहले। पूरा इतिहास देखने के लिए किसी व्यक्ति को खोलें।"
 
 #: 
 msgid "Every position in this window has the people it needs."

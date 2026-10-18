@@ -4607,7 +4607,6 @@
     "few": "%d zadana volontera dodijeljena",
     "other": "%d zadanih volontera dodijeljeno"
   },
-  "%d failed": "%d nije uspjelo",
   "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
     "one": "Za ovu poziciju još je potreban %d volonter. Otvorite termin da popunite prazninu.",
     "few": "Za ovu poziciju još su potrebna %d volontera. Otvorite termin da popunite prazninu.",
@@ -4907,7 +4906,6 @@
   "Event staffed": "Događaj popunjen",
   "Event title": "Naslov događaja",
   "Event type": "Vrsta događaja",
-  "Every email ChurchCRM sent, newest first. Open a person to see their full history.": "Svaka e-pošta koju je ChurchCRM poslao, od najnovije. Otvorite osobu da vidite njezinu cjelovitu povijest.",
   "Every position in this window has the people it needs.": "Svaka pozicija u ovom razdoblju ima ljude koji su joj potrebni.",
   "Everyone has answered": "Svi su odgovorili",
   "Everyone in the cart joins this ministry's volunteers. Tick their positions afterwards.": "Svi u odabiru pridružuju se volonterima ove službe. Zatim označite njihove pozicije.",
