@@ -104,6 +104,7 @@ function getPeopleReport(Request $request, Response $response, array $args): Res
         'report' => $report,
         'values' => $values,
         'missing' => $missing,
+        'submitted' => $request->getQueryParams() !== [],
         'options' => $options,
         'rows' => $rows,
         'reportParams' => $reportParams,

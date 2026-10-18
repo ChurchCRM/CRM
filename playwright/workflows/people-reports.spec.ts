@@ -38,7 +38,7 @@ async function runBirthdaysAndAnniversaries(page: Page): Promise<void> {
 test.describe('People Reports', () => {
   test('people-reports-list', async ({ page }, testInfo) => {
     await page.goto('/people/reports');
-    await expect(page.locator('#peopleReports a[id^="report-"]')).toHaveCount(9);
+    await expect(page.locator('#peopleReports a[id^="report-"]')).toHaveCount(10);
     await waitForFloatingButtonsToHide(page);
     await settle(page, 600);
 

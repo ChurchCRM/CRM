@@ -23,6 +23,12 @@ window.initializePeopleListFromServer = (serverVars) => {
     }
   }
 
+  if (Array.isArray(serverVars.GradeList)) {
+    for (const item of serverVars.GradeList) {
+      $("<option>").val(item.id).text(item.name).appendTo(".filter-Grade");
+    }
+  }
+
   // Role — same {id, name} structure; use OptionId as value for consistent URL → filter mapping.
   if (Array.isArray(RoleList)) {
     for (let i = 0; i < RoleList.length; i++) {

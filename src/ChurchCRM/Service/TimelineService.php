@@ -259,6 +259,9 @@ class TimelineService
         if ($dbNote->getDisplayEditedBy() === Person::SELF_VERIFY) {
             return gettext('Self Verification');
         }
+        if ($dbNote->getDisplayEditedBy() === Person::SCHEDULED_TASK) {
+            return gettext('Scheduled Task');
+        }
         $editor = PersonQuery::create()->findPk($dbNote->getDisplayEditedBy());
 
         return $editor !== null ? $editor->getFullName() : gettext('Unknown');
@@ -283,6 +286,7 @@ class TimelineService
         'verify-URL'  => 'system',
         'user'        => 'system',
         'delete-note' => 'system',
+        'grade'       => 'system',
         'email'       => 'email',
     ];
 
