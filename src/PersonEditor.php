@@ -10,6 +10,7 @@ use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Family;
+use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonCustom;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
@@ -162,6 +163,10 @@ $bHomeBound = false;
 $aCustomData = [];
 
 //Is this the second pass?
+$accountPerson = $iPersonID > 0 ? PersonQuery::create()->findPk($iPersonID) : null;
+$emailAccountHolder = $accountPerson !== null && $accountPerson->isUser();
+$emailLocked = $emailAccountHolder && !AuthenticationManager::getCurrentUser()->isAdmin();
+
 if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     //Get all the variables from the request object and assign them locally
     $sTitle = InputUtils::legacyFilterInput($_POST['Title']);
@@ -214,7 +219,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     $sHomePhone = InputUtils::legacyFilterInput($_POST['HomePhone']);
     $sWorkPhone = InputUtils::legacyFilterInput($_POST['WorkPhone']);
     $sCellPhone = InputUtils::legacyFilterInput($_POST['CellPhone']);
-    $sEmail = InputUtils::legacyFilterInput($_POST['Email']);
+    $sEmail = $emailLocked ? (string) $accountPerson->getEmail() : InputUtils::legacyFilterInput($_POST['Email']);
     $sWorkEmail = InputUtils::legacyFilterInput($_POST['WorkEmail']);
     $iBirthMonth = InputUtils::legacyFilterInput($_POST['BirthMonth'], 'int');
     $iBirthDay = InputUtils::legacyFilterInput($_POST['BirthDay'], 'int');
@@ -384,11 +389,13 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         }
 
         $person = new Person();
+        $oldEmail = '';
 
         // If a person already exists, update the preexisting record.
         $personAlreadyExist = $iPersonID > 0;
         if ($personAlreadyExist) {
             $person = PersonQuery::create()->findOneById($iPersonID);
+            $oldEmail = (string) $person->getEmail();
             $person
                 ->setDateLastEdited(date('YmdHis'))
                 ->setEditedBy(AuthenticationManager::getCurrentUser()->getId());
@@ -452,6 +459,19 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
         $person->save();
         $person->reload();
+
+        if ($emailAccountHolder && $oldEmail !== (string) $sEmail) {
+            $note = new Note();
+            $note->setPerId($iPersonID);
+            $note->setType('edit');
+            $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
+            $note->setText(sprintf(
+                gettext('Email changed by an administrator from %1$s to %2$s'),
+                InputUtils::escapeHTML($oldEmail),
+                InputUtils::escapeHTML((string) $sEmail)
+            ));
+            $note->save();
+        }
 
         if (!$personAlreadyExist) {
             $iPersonID = $person->getId();
@@ -960,8 +980,11 @@ require_once __DIR__ . '/Include/Header.php';
                             <span class="input-group-text"><i class="fa-solid fa-at"></i></span>
                             <input type="email" name="Email" id="Email"
                                    value="<?= InputUtils::escapeAttribute(stripslashes($sEmail)) ?>"
-                                   maxlength="100" class="form-control">
+                                   maxlength="100" class="form-control"<?= $emailLocked ? ' readonly' : '' ?>>
                         </div>
+                        <?php if ($emailLocked) { ?>
+                            <span class="text-secondary small"><?= gettext('Only an administrator can change the email of a person with a user account.') ?></span>
+                        <?php } ?>
                         <?php if ($sEmailError) { ?>
                             <span class="text-danger small"><?= $sEmailError ?></span>
                         <?php } ?>

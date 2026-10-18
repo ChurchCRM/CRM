@@ -15,6 +15,7 @@ early_access: false
 tone_instructions: >-
   Concise. Hard blocks only: security, authz, data leak, upgrade breakage,
   missing tests, unwrapped strings, Query View work, date/money contract. No nits.
+  Never post nitpick or trivial-severity comments.
 
 reviews:
   profile: chill
@@ -120,7 +121,10 @@ reviews:
   path_instructions:
     - path: "**/*"
       instructions: |
-        Apply maintainer-review-gates.md. Hard blocks only.
+        Report only hard blocks. Do not post nitpicks, trivial or optional suggestions,
+        or "add more cases" comments on a test that already exercises the behavior.
+        If a finding is not a hard block, omit it.
+        Apply maintainer-review-gates.md and docs/contributing/issue-readiness.md. Review issue/PR scope and linked work by evidence; hard blocks only.
         Do not ask for locale:build or messages.po.
     - path: "**/*.{lock,json}"
       instructions: |

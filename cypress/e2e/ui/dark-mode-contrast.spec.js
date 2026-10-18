@@ -36,11 +36,11 @@ describe("Signed-in pages stay readable in dark mode (#10593)", () => {
     });
 
     it("draws the deposit slip Funds header and payment count in the body colour on a dark surface", () => {
-        cy.visit("/DepositSlipEditor.php?DepositSlipID=5");
+        cy.visit("/finance/deposit/5");
         cy.get("html").should("have.attr", "data-bs-theme", "dark");
         cy.contains(".card-header", "Funds").should(($el) => expectReadableInDarkMode($el, "Funds header"));
-        cy.contains(".stat-label", "Total Payments")
-            .siblings(".stat-value")
+        cy.contains(".text-body-secondary", "Total Payments")
+            .siblings(".fw-medium")
             .should(($el) => expectReadableInDarkMode($el, "Total Payments count"));
     });
 

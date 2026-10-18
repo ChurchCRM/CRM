@@ -10,6 +10,8 @@ Draft the GitHub review in chat as normal Markdown (the text that would be poste
 
 If the PR author is the same GitHub user the agent is acting as, do not post a review comment. Fix the branch instead.
 
+Issue sizing and contributor readiness are defined in [`docs/contributing/issue-readiness.md`](../../../docs/contributing/issue-readiness.md). Use that guide for scope, epic decomposition, and `good first issue` readiness; this file remains authoritative for PR hard blocks and follow-ups.
+
 Passing this checklist does not mean the PR should merge.
 
 Leave CI status out of the review; branch protection owns it.

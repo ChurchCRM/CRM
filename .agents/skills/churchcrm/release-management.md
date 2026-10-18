@@ -6,8 +6,8 @@ intent: Orchestrate an approved ChurchCRM release using the canonical release ru
 # Release Management
 
 Use this skill to prepare, check, start, publish, or verify a ChurchCRM release.
-Follow [the release process](../../../docs/release-process.md) for the steps and
-current automation. Use [the locale pipeline](../../../docs/locale-pipeline.md)
+Follow [the release process](../../../docs/maintainers/release-process.md) for the steps and
+current automation. Use [the locale pipeline](../../../docs/maintainers/locale-pipeline.md)
 for localization details.
 
 ## Agent gates

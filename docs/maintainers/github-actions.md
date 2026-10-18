@@ -19,9 +19,7 @@ The prefix says who made the branch and what it is for.
 
 | Branch | Made by | Purpose |
 |---|---|---|
-| `locale/terms/<version>-<YYYYMMDD-HHMMSS>` | `Locale: terms` | New source strings in `locale/messages.po`. Merged |
-| `locale/download/<version>` | `Locale: sync` | What POEditor returned: translations and missing-term batches. Merged |
-| `locale/translate/<version>-<YYYY-MM-DD>-<HHMMSS>` | translation agent | Translated batches. **Never merged**; the push is the upload |
+| `locale/**` | Locale workflows and the translation agent | See [locale-pipeline.md](locale-pipeline.md#branches) |
 | `build/<version>` | `Release: start next version` | The "Start `<version>` release" PR that bumps `package.json` |
 | `release/**`, `hotfix/**` | maintainers | Build, test and nightly run on every push |
 | `fix/issue-N-short`, `fix/short`, `ci/short`, `feature/short` | contributors | See `.agents/skills/churchcrm/git-workflow.md` |
@@ -50,11 +48,7 @@ The prefix says who made the branch and what it is for.
 
 ### Locale
 
-| Workflow (file) | Starts on | Does | Needs |
-|---|---|---|---|
-| `Locale: terms` (`locale-generate-terms.yml`) | push to `master` touching `src/**` except `src/locale/i18n/**` and `src/locale/textdomain/**`; manual | Extracts new strings into `locale/messages.po` and opens the terms PR | — |
-| `Locale: sync` (`locale-sync-poeditor.yml`) | push to `master` touching `locale/messages.po`, after a 30 minute settle that restarts on each new push; 00:00 UTC daily; manual; dispatched by `Locale: upload translations` with `upload_terms=false` (neither waits) | 1. upload terms, delete terms no longer in the file and verify POEditor matches, 2. download and open the download PR. No translation happens here. Runs from `master` only, because the terms upload deletes terms missing from the file | `POEDITOR_TOKEN` |
-| `Locale: upload translations` (`locale-upload-missing.yml`) | push to `locale/translate/**` touching `locale/terms/missing/**`; manual | Uploads the locales that push changed, then starts `Locale: sync` download-only | `POEDITOR_TOKEN`, `actions: write` |
+`Locale: terms`, `Locale: sync` and `Locale: upload translations`: see [locale-pipeline.md](locale-pipeline.md#workflows).
 
 ### Release
 
@@ -80,29 +74,21 @@ Composite actions in `.github/actions/`: `checkout-node-npm` (Node from `.nvmrc`
 
 ## Chains and why they do not loop
 
+The locale chains and their merge table are in [locale-pipeline.md](locale-pipeline.md#why-it-does-not-loop).
+
 ```
-Terms flow      PR ─merge─► master ─► Locale: terms ─► terms PR ─merge─► master
-                  ─► Locale: sync (settle 30 min → upload terms → download) ─► download PR ─merge─► master
-
-Translate flow  locale/terms/missing/ ─► translation agent (LLM, outside Actions) ─► locale/translate/* push
-                  ─► Locale: upload translations ─► Locale: sync (download only) ─► download PR ─merge─► master
-
-Release         Release & Start Next ─► draft release + build/<next> PR
-                person publishes ─► Build & Push Docker Images · Release: bookkeeping · nightly upgrade tests
+Release   Release & Start Next ─► draft release + build/<next> PR
+          person publishes ─► Build & Push Docker Images · Release: bookkeeping · nightly upgrade tests
 ```
 
 | Merge or event | Starts | Does not start | Why |
 |---|---|---|---|
-| terms PR merged | `Locale: sync`, after the 30 minute settle | `Locale: terms` | it touches `locale/messages.po`; `src/locale/i18n/**` is excluded from the terms filter |
-| download PR merged | nothing | terms, sync | it has no `locale/messages.po`, and the terms filter ignores `src/locale/**` output |
-| translate branch pushed | `Locale: upload translations`, once | anything on merge | the branch is never merged |
 | `Documentation` commits specs | nothing | itself | commit made with `GITHUB_TOKEN`, and `docs/openapi/generated/**` is excluded |
 | draft release created | nothing | docker, bookkeeping | `published` fires only when a person publishes |
 
 ## Planned
 
-- Merge the terms and download PRs automatically behind a validity check, with a GitHub App token so the next stage starts.
-- Start the translation agent from the merged download PR; it runs outside Actions.
+- Locale items: see [locale-pipeline.md](locale-pipeline.md#planned).
 - One READY / BLOCKED report before releasing.
 - Add a top-level `permissions:` block to `Marketing: capture screenshots & videos`.
 - Rename workflows whose display names lack the `<Area>: <what>` form (`Build, Test and Package`, `CI — Typecheck, Lint & Format`, `Documentation`, `Release & Start Next`, `Validate …`, `Build & Push Docker Images`) when you next touch them.

@@ -145,6 +145,6 @@ One short Markdown block back to the maintainer:
 - Docs PRs ready to merge: #… #… | none | ⚠ #… has no milestone
 ```
 
-See [the release process](../../../docs/release-process.md) for the complete
-release sequence and [the locale pipeline](../../../docs/locale-pipeline.md)
+See [the release process](../../../docs/maintainers/release-process.md) for the complete
+release sequence and [the locale pipeline](../../../docs/maintainers/locale-pipeline.md)
 for localization status.

@@ -13,8 +13,8 @@ complexity: "beginner"
 Turn the PRs in a release into publication-ready GitHub release notes for church staff, finance officers and ministry leaders, then write them straight onto the draft release. Nobody should have to copy PR text into a chat or paste notes back into GitHub.
 
 This skill writes and fact-checks. It does not decide release scope and does not publish.
-It covers notes authoring in [the release process](../../../docs/release-process.md);
-localization workflow details live in [the locale pipeline](../../../docs/locale-pipeline.md).
+It covers notes authoring in [the release process](../../../docs/maintainers/release-process.md);
+localization workflow details live in [the locale pipeline](../../../docs/maintainers/locale-pipeline.md).
 
 ---
 

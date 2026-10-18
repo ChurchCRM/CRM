@@ -231,8 +231,10 @@ class PortalSelfService
     {
         $changed = [];
 
+        $emailLocked = $actor->isUser();
+
         foreach (self::PERSON_FIELDS as $field => [$getter, $setter]) {
-            if (!array_key_exists($field, $body)) {
+            if (!array_key_exists($field, $body) || ($field === 'email' && $emailLocked)) {
                 continue;
             }
             $value = self::asString($body[$field]);

@@ -23,7 +23,9 @@ on:
       - develop
       - 'hotfix/**'
     paths-ignore:
+      # Docs-only PRs do not need an application build or Cypress rerun.
       - '**/*.md'
+      - '.github/PULL_REQUEST_TEMPLATE.md'
       - 'docs/**'
       - 'LICENSE'
       - '.gitignore'
@@ -51,7 +53,9 @@ on:
       - 'hotfix/**'
       - 'release/**'
     paths-ignore:
+      # Docs-only PRs do not need an application build or Cypress rerun.
       - '**/*.md'
+      - '.github/PULL_REQUEST_TEMPLATE.md'
       - 'docs/**'
       - 'LICENSE'
       - '.gitignore'

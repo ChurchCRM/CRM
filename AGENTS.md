@@ -2,6 +2,10 @@
 
 Loaded by Codex every session. Other agents should follow the same files.
 
+## Community feedback
+
+Feature Proposals and RFC Reviews Discussions: [`docs/decisions/0003-rfc-community-prioritization.md`](docs/decisions/0003-rfc-community-prioritization.md).
+
 ## Skills
 
 Index: [`.agents/skills/churchcrm/SKILL.md`](.agents/skills/churchcrm/SKILL.md).
@@ -38,16 +42,21 @@ Do not append `<!-- learned: -->` essays. Do not paste catalogs from `src/`.
 
 Plugin registry URL: `CentralServices::PLUGIN_REGISTRY_URL` (External branch today).
 
+## Issue and PR readiness
+
+Before triaging or implementing an issue, read [`docs/contributing/issue-readiness.md`](docs/contributing/issue-readiness.md). Check existing issues/PRs first, size work by review burden and risk, use epics for independently meaningful outcomes or cross-subsystem work, and treat `good first issue` as a maintainer certification. Keep issue intake friendly and PRs focused. Human maintainers remain accountable for decisions and approvals.
+
 ## Session hygiene
 
 - Confirm `git branch --show-current` before committing docs
 - Do not land cross-cutting skill edits on an unrelated feature branch
 - After a push that fixes review comments, resolve every thread it fixed before you report done: check each against the pushed code, reply with the SHA when unclear, leave unfixed threads open (`git-workflow.md`)
 - Do not merge or close issues unless the maintainer answers yes to a direct question
-- User-visible behavior: open a docs tracking issue on ChurchCRM/CRM. It does not block feature merge. Docs PRs wait for the release. See `docs/contributing-pr-review.md`
+- User-visible behavior: open a docs tracking issue on ChurchCRM/CRM. It does not block feature merge. Docs PRs wait for the release. See `docs/contributing/pr-review.md`
 - UI that belongs on a marketing or docs page: one PR carries the code, the Cypress specs, and the Playwright capture (the `playwright/workflows/` spec, the `en` PNGs, and the `manifest.json` entries; `marketing-visuals-pipeline.md`). Run the pipeline in a git worktree on its own compose project, never on the dev checkout: it deletes `src/Include/Config.php`. Open a separate Playwright issue only when the capture cannot be taken yet
+- Follow the human-first writing rules in [`docs/contributing/issue-readiness.md`](docs/contributing/issue-readiness.md): BLUF first, concise goals and outcomes, details only when they help a decision.
 - Write the current state: positive instructions, no history, no negating comments, migrate a legacy page when you touch it (`skill-architecture.md`)
-- Write little. Names and tests carry intent. Do not narrate the next line in a comment.
+- Write little. Names and tests carry intent. Comment only to explain intent or a non-obvious constraint; do not narrate the code.
 - If the PR author is the same GitHub user the agent is acting as, do not post a review comment. Fix the branch.
 
 ## Tests

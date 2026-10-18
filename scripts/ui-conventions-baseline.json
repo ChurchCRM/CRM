@@ -12,7 +12,7 @@
     "src/external/templates/system-db-update.php": 1,
     "src/external/templates/verify/verify-family-info.php": 1,
     "src/finance/views/deposits/search.php": 1,
-    "src/kiosk/templates/kioskDevices/sunday-school-class-view.php": 1,
+    "src/kiosk/templates/kioskDevices/event-attendance-view.php": 1,
     "src/kiosk/views/manager.php": 1,
     "src/people/views/timeline-events.php": 1,
     "src/plugins/views/management.php": 2,

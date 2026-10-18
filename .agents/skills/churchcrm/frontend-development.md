@@ -21,6 +21,16 @@ Tabler builds in light and dark themes (`data-bs-theme` on `<html>`, set in `Hea
 Working examples: `src/views/`, `src/admin/views/`, `src/Include/Header.php`. If you need a component, open a nearby page that already has it and match that markup.
 Breakpoints: `responsive-design-guidelines.md`. Bundling: `webpack-typescript.md` and `webpack/`.
 
+## Design each page around a role's task
+
+Name the role and the goal before you lay out a page ("treasurer finds the open deposit", "secretary adds a family"), then build the page so that task takes the fewest steps. The Cypress spec for the page follows the same workflow (`cypress-testing.md`).
+
+- The primary action is a prominent button in the page header (`$sPageHeaderButtons`, `btn btn-success` or `btn-primary` with an icon), not a small control in a card header
+- A button that starts a task lands the user in that task: a "Create X" link on another page goes to the form or opens the modal (`?new=1` on the list page), not to a list the user must search
+- A list page shows its table above the fold. Filters are compact or collapsed with a one-line summary; summary tiles (a row of Tabler `card card-sm`) answer the role's first question. Copy `src/finance/views/dashboard.php` and `src/finance/views/deposits/editor.php`
+- One search per list. Bulk actions appear when rows are selected, with the count. The ID or name links to the record
+- A form saves, then returns the user to the page they came from (`linkBack`) with the result visible
+
 ## Must
 
 - Asset URLs: `SystemURLs::getRootPath()` — see any current view under `src/views/` or `src/admin/views/`
