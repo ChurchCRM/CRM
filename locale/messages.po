@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 03:56+0000\n"
+"POT-Creation-Date: 2026-10-18 07:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -618,6 +618,9 @@ msgstr ""
 msgid "A staffing requirement belongs to exactly one of a schedule or an occurrence"
 msgstr ""
 
+msgid "A string value is required"
+msgstr ""
+
 msgid "A substitute has already been proposed for this assignment"
 msgstr ""
 
@@ -1177,6 +1180,9 @@ msgstr ""
 msgid "Administrator permission required"
 msgstr ""
 
+msgid "Administrator permission required for this setting"
+msgstr ""
+
 msgid "Administrator privileges"
 msgstr ""
 
@@ -1239,6 +1245,12 @@ msgstr ""
 
 #. Context: locales
 msgid "Albanian"
+msgstr ""
+
+msgid "Alerts sent: {{sent}}, failed: {{failed}}"
+msgstr ""
+
+msgid "Alerts sent: {{total}}"
 msgstr ""
 
 #. Context: countries
@@ -1803,6 +1815,9 @@ msgstr ""
 msgid "Assign a volunteer"
 msgstr ""
 
+msgid "Assign an event to the kiosk using the dropdown"
+msgstr ""
+
 msgid "Assign and manage donation envelope numbers"
 msgstr ""
 
@@ -1993,6 +2008,9 @@ msgid "Avg Open Rate"
 msgstr ""
 
 msgid "Avg Sale Price"
+msgstr ""
+
+msgid "Awaiting Acceptance"
 msgstr ""
 
 msgid "Awaiting reply"
@@ -2308,6 +2326,9 @@ msgstr ""
 msgid "Birthday Greeting Emails"
 msgstr ""
 
+msgid "Birthday coming up!"
+msgstr ""
+
 msgid "Birthday greeting"
 msgstr ""
 
@@ -2596,9 +2617,6 @@ msgstr ""
 msgid "Cancel this occurrence"
 msgstr ""
 
-msgid "Cancel — wait 1 more minute"
-msgstr ""
-
 msgid "Cancelled"
 msgstr ""
 
@@ -2868,6 +2886,12 @@ msgstr ""
 msgid "Check out"
 msgstr ""
 
+msgid "Check that the event start/end times are correct"
+msgstr ""
+
+msgid "Check the server logs for more details"
+msgstr ""
+
 msgid "Check your email for a password reset link"
 msgstr ""
 
@@ -2875,6 +2899,9 @@ msgid "Check-in"
 msgstr ""
 
 msgid "Check-in By"
+msgstr ""
+
+msgid "Check-in Opens Soon"
 msgstr ""
 
 msgid "Check-in and Check-out"
@@ -2937,7 +2964,16 @@ msgstr ""
 msgid "Checked out from event: %s"
 msgstr ""
 
+msgid "Checked-in-by person is not an adult family member"
+msgstr ""
+
+msgid "Checked-out-by person is not an adult family member"
+msgstr ""
+
 msgid "Checking…"
+msgstr ""
+
+msgid "Checkout all students"
 msgstr ""
 
 msgid "Checks"
@@ -4259,6 +4295,9 @@ msgstr ""
 msgid "Day, no leading zero"
 msgstr ""
 
+msgid "Days"
+msgstr ""
+
 msgid "Deactivate"
 msgstr ""
 
@@ -5455,6 +5494,12 @@ msgstr ""
 msgid "Ensure all deposits for the tax year are closed before generating statements."
 msgstr ""
 
+msgid "Ensure the group has members"
+msgstr ""
+
+msgid "Ensure the group has members assigned"
+msgstr ""
+
 msgid "Enter Data Manually"
 msgstr ""
 
@@ -5580,6 +5625,9 @@ msgstr ""
 msgid "Error"
 msgstr ""
 
+msgid "Error Loading Members"
+msgstr ""
+
 msgid "Error Log"
 msgstr ""
 
@@ -5674,6 +5722,9 @@ msgstr ""
 msgid "Event Details"
 msgstr ""
 
+msgid "Event Has Ended"
+msgstr ""
+
 msgid "Event ID"
 msgstr ""
 
@@ -5710,7 +5761,13 @@ msgstr ""
 msgid "Event not found"
 msgstr ""
 
+msgid "Event not linked to a Group"
+msgstr ""
+
 msgid "Event staffed"
+msgstr ""
+
+msgid "Event timing"
 msgstr ""
 
 msgid "Event title"
@@ -5801,6 +5858,9 @@ msgid "Everyone in the cart joins this ministry's volunteers. Tick their positio
 msgstr ""
 
 msgid "Everyone is checked in!"
+msgstr ""
+
+msgid "Everyone is here!"
 msgstr ""
 
 msgid "Everything is correct"
@@ -6257,10 +6317,16 @@ msgstr ""
 msgid "Failed to save the downloaded release file. Please check disk space and permissions."
 msgstr ""
 
+msgid "Failed to send all alerts: {{total}}"
+msgstr ""
+
 msgid "Failed to send email"
 msgstr ""
 
 msgid "Failed to send email. Please try again or use 'Open in Email Client'."
+msgstr ""
+
+msgid "Failed to send parent alert"
 msgstr ""
 
 msgid "Failed to set default role. Please try again."
@@ -6703,6 +6769,9 @@ msgid "Find something to help with"
 msgstr ""
 
 msgid "Find the line"
+msgstr ""
+
+msgid "Find this kiosk in the device list"
 msgstr ""
 
 msgid "Find volunteers for a particular opportunity"
@@ -7404,6 +7473,9 @@ msgstr ""
 msgid "Group deleted successfully."
 msgstr ""
 
+msgid "Group has no members"
+msgstr ""
+
 msgid "Group key is required"
 msgstr ""
 
@@ -7490,6 +7562,9 @@ msgid "Guyana"
 msgstr ""
 
 msgid "HTML URL"
+msgstr ""
+
+msgid "HTTP Status: {{status}}"
 msgstr ""
 
 #. Context: countries
@@ -7654,6 +7729,9 @@ msgstr ""
 msgid "Hour 24h, 2 digits"
 msgstr ""
 
+msgid "Hours"
+msgstr ""
+
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr ""
 
@@ -7699,6 +7777,9 @@ msgid "How often"
 msgstr ""
 
 msgid "How the CSV Import Works"
+msgstr ""
+
+msgid "How to Accept This Kiosk"
 msgstr ""
 
 msgid "How to Fix"
@@ -8380,10 +8461,16 @@ msgstr ""
 msgid "Kiosk Enabled"
 msgstr ""
 
+msgid "Kiosk Identification"
+msgstr ""
+
 msgid "Kiosk Manager"
 msgstr ""
 
 msgid "Kiosk Name"
+msgstr ""
+
+msgid "Kiosk Ready"
 msgstr ""
 
 msgid "Kiosk Registration Disabled"
@@ -8828,6 +8915,9 @@ msgstr ""
 msgid "Log Settings"
 msgstr ""
 
+msgid "Log in to ChurchCRM as an administrator"
+msgstr ""
+
 msgid "Log level + message"
 msgstr ""
 
@@ -9268,6 +9358,9 @@ msgid "Member Role Change"
 msgstr ""
 
 msgid "Member Roles"
+msgstr ""
+
+msgid "Member is not an adult family member of the roster child"
 msgstr ""
 
 msgid "Member or family records"
@@ -9862,6 +9955,9 @@ msgstr ""
 msgid "Next Member"
 msgstr ""
 
+msgid "Next Steps"
+msgstr ""
+
 #, php-format
 msgid "Next on %s"
 msgstr ""
@@ -9925,6 +10021,9 @@ msgstr ""
 msgid "No Group (Select for Kiosk Check-in)"
 msgstr ""
 
+msgid "No Group Members Found"
+msgstr ""
+
 msgid "No Group Selected"
 msgstr ""
 
@@ -9980,6 +10079,9 @@ msgid "No cell phone on file"
 msgstr ""
 
 msgid "No changes to save"
+msgstr ""
+
+msgid "No checked-in students with families to alert"
 msgstr ""
 
 msgid "No class"
@@ -11155,6 +11257,12 @@ msgstr ""
 msgid "Paraguay"
 msgstr ""
 
+msgid "Parent Alert"
+msgstr ""
+
+msgid "Parent alert sent for {{name}}"
+msgstr ""
+
 msgid "Parents"
 msgstr ""
 
@@ -11521,6 +11629,9 @@ msgid "Photo"
 msgstr ""
 
 msgid "Photo Directory"
+msgstr ""
+
+msgid "Photo not found"
 msgstr ""
 
 msgid "PhotoBook"
@@ -11952,6 +12063,9 @@ msgstr ""
 msgid "Positions still short"
 msgstr ""
 
+msgid "Possible Causes"
+msgstr ""
+
 msgid "Pre-flight"
 msgstr ""
 
@@ -12023,6 +12137,9 @@ msgid "Private"
 msgstr ""
 
 msgid "Private Calendar"
+msgstr ""
+
+msgid "Processing..."
 msgstr ""
 
 msgid "Profile"
@@ -12249,6 +12366,9 @@ msgstr ""
 msgid "Recent Sends"
 msgstr ""
 
+msgid "Recent birthday!"
+msgstr ""
+
 msgid "Recipient"
 msgstr ""
 
@@ -12356,10 +12476,10 @@ msgstr ""
 msgid "Refresh List"
 msgstr ""
 
-msgid "Refreshing Soon"
+msgid "Refresh member list"
 msgstr ""
 
-msgid "Refreshing in"
+msgid "Refresh this kiosk page"
 msgstr ""
 
 msgid "Refreshing..."
@@ -13184,6 +13304,9 @@ msgstr ""
 msgid "Second Volunteer Opportunity"
 msgstr ""
 
+msgid "Seconds"
+msgstr ""
+
 msgid "Secure"
 msgstr ""
 
@@ -13435,6 +13558,9 @@ msgstr ""
 msgid "Send a test message to verify your SMTP configuration"
 msgstr ""
 
+msgid "Send alert to all families"
+msgstr ""
+
 msgid "Send an email notifying users when their account has been deleted"
 msgstr ""
 
@@ -13525,6 +13651,9 @@ msgid "Server Version"
 msgstr ""
 
 msgid "Server error"
+msgstr ""
+
+msgid "Server error - the event may not be linked to a group"
 msgstr ""
 
 msgid "Server locale support could not be checked (exec is disabled)."
@@ -14121,6 +14250,9 @@ msgstr ""
 msgid "Stuck Events"
 msgstr ""
 
+msgid "Student"
+msgstr ""
+
 msgid "Student Information"
 msgstr ""
 
@@ -14353,6 +14485,12 @@ msgstr ""
 msgid "System language, time zone, date/time formats, and phone number formats"
 msgstr ""
 
+msgid "System timeline entries cannot be deleted"
+msgstr ""
+
+msgid "System timeline entries cannot be edited"
+msgstr ""
+
 msgid "System upgrade completed successfully!"
 msgstr ""
 
@@ -14553,6 +14691,9 @@ msgid "Thank You!"
 msgstr ""
 
 msgid "Thank you"
+msgstr ""
+
+msgid "Thank you for attending!"
 msgstr ""
 
 msgid "Thank you for signing up to serve"
@@ -15404,6 +15545,15 @@ msgstr ""
 msgid "This is your church account. Everything you can do for yourself and your family lives here."
 msgstr ""
 
+msgid "This kiosk has registered but needs to be accepted by an administrator before it can be used."
+msgstr ""
+
+msgid "This kiosk is accepted but has no active event assignment."
+msgstr ""
+
+msgid "This kiosk is assigned to an event, but no members are available for check-in."
+msgstr ""
+
 msgid "This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience."
 msgstr ""
 
@@ -15463,6 +15613,12 @@ msgid "This page is not part of your account. If you think it should be, ask the
 msgstr ""
 
 msgid "This page was not found"
+msgstr ""
+
+msgid "This page will automatically refresh when check-in opens."
+msgstr ""
+
+msgid "This page will automatically update once the kiosk is accepted."
 msgstr ""
 
 msgid "This part of the Member Portal is for volunteer team leaders."
@@ -15728,6 +15884,9 @@ msgstr ""
 msgid "Today"
 msgstr ""
 
+msgid "Today!"
+msgstr ""
+
 msgid "Today's Birthdays"
 msgstr ""
 
@@ -15928,6 +16087,9 @@ msgstr ""
 msgid "Turning this off clears the saved username and password."
 msgstr ""
 
+msgid "Turning {{age}}"
+msgstr ""
+
 msgid "Turns off the portal template cache and prints the name of each template in an HTML comment. For theme designers; leave this off in normal use."
 msgstr ""
 
@@ -16042,6 +16204,9 @@ msgstr ""
 msgid "Unable to load"
 msgstr ""
 
+msgid "Unable to load group members"
+msgstr ""
+
 msgid "Unable to load state list. Please check your network connection or try again later."
 msgstr ""
 
@@ -16139,6 +16304,9 @@ msgid "Unknown occurrence status"
 msgstr ""
 
 msgid "Unknown schedule link mode"
+msgstr ""
+
+msgid "Unknown user configuration key"
 msgstr ""
 
 msgid "Unknown volunteer ministry"
@@ -18106,9 +18274,6 @@ msgstr ""
 msgid "same address as another recipient"
 msgstr ""
 
-msgid "seconds"
-msgstr ""
-
 msgid "select an option"
 msgstr ""
 
@@ -18167,6 +18332,9 @@ msgid "system user updated"
 msgstr ""
 
 msgid "their classroom"
+msgstr ""
+
+msgid "this person"
 msgstr ""
 
 #, php-format
@@ -18356,6 +18524,9 @@ msgid "{{name}} does not name the event it follows, so it has nothing to staff."
 msgstr ""
 
 msgid "{{name}} ended on {{date}}, so there are no dates left to generate."
+msgstr ""
+
+msgid "{{name}} has no family on record"
 msgstr ""
 
 msgid "{{name}} has no upcoming meetings on the calendar, so this schedule has nothing to staff."
