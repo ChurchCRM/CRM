@@ -24512,3 +24512,203 @@ msgstr "הטבלה מציגה רק את 20 השליחות האחרונות. פת
 msgid "View %d failed sends across all email history"
 msgstr "הצגת %d שליחות שנכשלו בכל היסטוריית האימיילים"
 
+#: 
+msgid "Add New Grade"
+msgstr "הוספת כיתה חדשה"
+
+#: 
+msgid "Change Grade Names"
+msgstr "שינוי שמות הכיתות"
+
+#: 
+msgid "England and Wales"
+msgstr "אנגליה וויילס"
+
+#: 
+msgid "Every year each person moves to the next grade in this order, and the last grade is cleared."
+msgstr "בכל שנה כל אדם עובר לכיתה הבאה לפי הסדר הזה, והכיתה האחרונה מתרוקנת."
+
+#: 
+msgid "Everyone with a grade will move up one grade now, and this will count as this year's promotion."
+msgstr "כל מי שיש לו כיתה יעלה כעת כיתה אחת, וזה ייחשב כקידום של השנה."
+
+#: 
+msgid "Finished %s, so the yearly promotion cleared the grade"
+msgstr "סיים את %s, ולכן הקידום השנתי רוקן את הכיתה"
+
+#: 
+msgid "Finished the last grade: %d"
+msgstr "סיים את הכיתה האחרונה: %d"
+
+#: 
+msgid "Finishing the last grade (grade will be cleared): {{total}}"
+msgstr "מסיים את הכיתה האחרונה (הכיתה תתרוקן): {{total}}"
+
+#: 
+msgid "From Grade"
+msgstr "מכיתה"
+
+#: 
+msgid "Grade"
+msgstr "כיתה"
+
+#: 
+msgid "Grade %s cleared when the grade names changed to %s"
+msgstr "הכיתה %s רוקנה כאשר שמות הכיתות שונו ל-%s"
+
+#: 
+msgid "Grade Names"
+msgstr "שמות הכיתות"
+
+#: 
+msgid "Grade Promotion"
+msgstr "קידום כיתות"
+
+#: 
+msgid "Grade changed from %s to %s by the yearly promotion"
+msgstr "הכיתה שונתה מ-%s ל-%s על ידי הקידום השנתי"
+
+#: 
+msgid "Grade names not found"
+msgstr "שמות הכיתות לא נמצאו"
+
+#: 
+msgid "Grades"
+msgstr "כיתות"
+
+#: 
+msgid "Grades Editor"
+msgstr "עורך הכיתות"
+
+#: 
+msgid "Grades added"
+msgstr "כיתות שנוספו"
+
+#: 
+msgid "Grades removed"
+msgstr "כיתות שהוסרו"
+
+#: 
+msgid "Grades renamed: {{total}}"
+msgstr "כיתות ששמן שונה: {{total}}"
+
+#: 
+msgid "Grades were already promoted this year, on {{date}}. Promoting again moves everyone up another grade."
+msgstr "הכיתות כבר קודמו השנה, ב-{{date}}. קידום נוסף מעלה את כולם כיתה נוספת."
+
+#: 
+msgid "Grades were promoted by someone else in the meantime. Reload the page to see the new grades."
+msgstr "הכיתות קודמו בינתיים על ידי מישהו אחר. טענו מחדש את הדף כדי לראות את הכיתות החדשות."
+
+#: 
+msgid "Grades you added that match a name in the list and are combined with it"
+msgstr "כיתות שהוספתם שתואמות לשם ברשימה ומשולבות איתו"
+
+#: 
+msgid "Internal: date and time of the last grade promotion. Do not edit manually."
+msgstr "פנימי: תאריך ושעה של קידום הכיתות האחרון. אין לערוך ידנית."
+
+#: 
+msgid "Internal: how the last grade promotion ran and how many people it moved. Do not edit manually."
+msgstr "פנימי: כיצד רץ קידום הכיתות האחרון וכמה אנשים הוא הזיז. אין לערוך ידנית."
+
+#: 
+msgid "Internal: the country whose grade names were last applied to the grade list. Do not edit manually."
+msgstr "פנימי: המדינה ששמות הכיתות שלה הוחלו לאחרונה על רשימת הכיתות. אין לערוך ידנית."
+
+#: 
+msgid "Internal: the day the grade promotion date was last changed (YYYY-MM-DD). Do not edit manually."
+msgstr "פנימי: היום שבו תאריך קידום הכיתות שונה לאחרונה (YYYY-MM-DD). אין לערוך ידנית."
+
+#: 
+msgid "Internal: the list that holds the grade names. Do not edit manually."
+msgstr "פנימי: הרשימה שמחזיקה את שמות הכיתות. אין לערוך ידנית."
+
+#: 
+msgid "Last promotion"
+msgstr "קידום אחרון"
+
+#: 
+msgid "Leave empty for one grade"
+msgstr "השאירו ריק עבור כיתה אחת"
+
+#: 
+msgid "Moved up: %d"
+msgstr "עלו כיתה: %d"
+
+#: 
+msgid "Moving up: {{total}}"
+msgstr "עולים כיתה: {{total}}"
+
+#: 
+msgid "Next automatic promotion"
+msgstr "הקידום האוטומטי הבא"
+
+#: 
+msgid "Nobody has a grade to promote."
+msgstr "לאף אחד אין כיתה לקידום."
+
+#: 
+msgid "Northern Ireland"
+msgstr "צפון אירלנד"
+
+#: 
+msgid "People by Grade"
+msgstr "אנשים לפי כיתה"
+
+#: 
+msgid "People in a range of school grades, such as Kindergarten through 5th"
+msgstr "אנשים בטווח של כיתות בית ספר, כגון מגן חובה עד כיתה ה׳"
+
+#: 
+msgid "People whose grade is cleared: {{total}}"
+msgstr "אנשים שהכיתה שלהם מתרוקנת: {{total}}"
+
+#: 
+msgid "Promote Grades"
+msgstr "קדם כיתות"
+
+#: 
+msgid "Promote Now"
+msgstr "קדם עכשיו"
+
+#: 
+msgid "Promotion Day"
+msgstr "יום הקידום"
+
+#: 
+msgid "Promotion Month"
+msgstr "חודש הקידום"
+
+#: 
+msgid "Renames the grades to the names used in that country. People keep their grade, and grades you added yourself stay."
+msgstr "משנה את שמות הכיתות לשמות הנהוגים באותה מדינה. האנשים שומרים על הכיתה שלהם, וכיתות שהוספתם בעצמכם נשארות."
+
+#: 
+msgid "Scheduled Task"
+msgstr "משימה מתוזמנת"
+
+#: 
+msgid "Scotland"
+msgstr "סקוטלנד"
+
+#: 
+msgid "The day of that month on which grades are promoted. A day past the end of the month means its last day."
+msgstr "היום באותו חודש שבו הכיתות מקודמות. יום אחרי סוף החודש פירושו היום האחרון שלו."
+
+#: 
+msgid "The grades already use these names."
+msgstr "הכיתות כבר משתמשות בשמות האלה."
+
+#: 
+msgid "The grades changed after the preview. Review the changes again before applying them."
+msgstr "הכיתות השתנו אחרי התצוגה המקדימה. בדקו שוב את השינויים לפני החלתם."
+
+#: 
+msgid "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off."
+msgstr "החודש שבו כל מי שיש לו כיתה עולה כיתה אחת. כבוי מכבה את הקידום האוטומטי."
+
+#: 
+msgid "Through Grade"
+msgstr "עד כיתה"
+

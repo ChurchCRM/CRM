@@ -24448,3 +24448,203 @@ msgstr "表には直近20件の送信のみ表示されます。全履歴を見�
 msgid "View %d failed sends across all email history"
 msgstr "メール履歴全体の送信失敗 %d 件を表示"
 
+#: 
+msgid "Add New Grade"
+msgstr "新しい学年を追加"
+
+#: 
+msgid "Change Grade Names"
+msgstr "学年名を変更"
+
+#: 
+msgid "England and Wales"
+msgstr "イングランドおよびウェールズ"
+
+#: 
+msgid "Every year each person moves to the next grade in this order, and the last grade is cleared."
+msgstr "毎年、各人はこの順序で次の学年に進み、最後の学年はクリアされます。"
+
+#: 
+msgid "Everyone with a grade will move up one grade now, and this will count as this year's promotion."
+msgstr "学年のある人は全員、今すぐ1学年上がり、これは今年の進級として数えられます。"
+
+#: 
+msgid "Finished %s, so the yearly promotion cleared the grade"
+msgstr "%sを修了したため、年次進級で学年がクリアされました"
+
+#: 
+msgid "Finished the last grade: %d"
+msgstr "最後の学年を修了: %d"
+
+#: 
+msgid "Finishing the last grade (grade will be cleared): {{total}}"
+msgstr "最後の学年を修了する（学年はクリアされます）: {{total}}"
+
+#: 
+msgid "From Grade"
+msgstr "開始学年"
+
+#: 
+msgid "Grade"
+msgstr "学年"
+
+#: 
+msgid "Grade %s cleared when the grade names changed to %s"
+msgstr "学年名が%sに変更されたとき、学年%sはクリアされました"
+
+#: 
+msgid "Grade Names"
+msgstr "学年名"
+
+#: 
+msgid "Grade Promotion"
+msgstr "学年の進級"
+
+#: 
+msgid "Grade changed from %s to %s by the yearly promotion"
+msgstr "年次進級により学年が%sから%sに変わりました"
+
+#: 
+msgid "Grade names not found"
+msgstr "学年名が見つかりません"
+
+#: 
+msgid "Grades"
+msgstr "学年"
+
+#: 
+msgid "Grades Editor"
+msgstr "学年エディター"
+
+#: 
+msgid "Grades added"
+msgstr "追加された学年"
+
+#: 
+msgid "Grades removed"
+msgstr "削除された学年"
+
+#: 
+msgid "Grades renamed: {{total}}"
+msgstr "名前が変更された学年: {{total}}"
+
+#: 
+msgid "Grades were already promoted this year, on {{date}}. Promoting again moves everyone up another grade."
+msgstr "学年は今年すでに{{date}}に進級しています。再度進級すると、全員がさらに1学年上がります。"
+
+#: 
+msgid "Grades were promoted by someone else in the meantime. Reload the page to see the new grades."
+msgstr "その間に別の人が学年を進級させました。新しい学年を見るにはページを再読み込みしてください。"
+
+#: 
+msgid "Grades you added that match a name in the list and are combined with it"
+msgstr "一覧の名前と一致し、それと統合される、自分で追加した学年"
+
+#: 
+msgid "Internal: date and time of the last grade promotion. Do not edit manually."
+msgstr "内部: 最後の学年進級の日時。手動で編集しないでください。"
+
+#: 
+msgid "Internal: how the last grade promotion ran and how many people it moved. Do not edit manually."
+msgstr "内部: 最後の学年進級がどのように実行され、何人を移動したか。手動で編集しないでください。"
+
+#: 
+msgid "Internal: the country whose grade names were last applied to the grade list. Do not edit manually."
+msgstr "内部: 学年名が最後に学年一覧へ適用された国。手動で編集しないでください。"
+
+#: 
+msgid "Internal: the day the grade promotion date was last changed (YYYY-MM-DD). Do not edit manually."
+msgstr "内部: 学年進級の日付が最後に変更された日（YYYY-MM-DD）。手動で編集しないでください。"
+
+#: 
+msgid "Internal: the list that holds the grade names. Do not edit manually."
+msgstr "内部: 学年名を保持する一覧。手動で編集しないでください。"
+
+#: 
+msgid "Last promotion"
+msgstr "前回の進級"
+
+#: 
+msgid "Leave empty for one grade"
+msgstr "1学年の場合は空のままにする"
+
+#: 
+msgid "Moved up: %d"
+msgstr "進級した人数: %d"
+
+#: 
+msgid "Moving up: {{total}}"
+msgstr "進級する人数: {{total}}"
+
+#: 
+msgid "Next automatic promotion"
+msgstr "次の自動進級"
+
+#: 
+msgid "Nobody has a grade to promote."
+msgstr "進級する学年を持つ人はいません。"
+
+#: 
+msgid "Northern Ireland"
+msgstr "北アイルランド"
+
+#: 
+msgid "People by Grade"
+msgstr "学年別の人"
+
+#: 
+msgid "People in a range of school grades, such as Kindergarten through 5th"
+msgstr "幼稚園から5年生までなど、学校の学年の範囲にいる人"
+
+#: 
+msgid "People whose grade is cleared: {{total}}"
+msgstr "学年がクリアされる人: {{total}}"
+
+#: 
+msgid "Promote Grades"
+msgstr "学年を進級"
+
+#: 
+msgid "Promote Now"
+msgstr "今すぐ進級"
+
+#: 
+msgid "Promotion Day"
+msgstr "進級日"
+
+#: 
+msgid "Promotion Month"
+msgstr "進級月"
+
+#: 
+msgid "Renames the grades to the names used in that country. People keep their grade, and grades you added yourself stay."
+msgstr "学年をその国で使われる名前に変更します。人は学年を保持し、自分で追加した学年は残ります。"
+
+#: 
+msgid "Scheduled Task"
+msgstr "スケジュールされたタスク"
+
+#: 
+msgid "Scotland"
+msgstr "スコットランド"
+
+#: 
+msgid "The day of that month on which grades are promoted. A day past the end of the month means its last day."
+msgstr "その月のうち、学年を進級する日。月末を過ぎた日はその月の最終日を意味します。"
+
+#: 
+msgid "The grades already use these names."
+msgstr "学年はすでにこれらの名前を使用しています。"
+
+#: 
+msgid "The grades changed after the preview. Review the changes again before applying them."
+msgstr "プレビューの後に学年が変わりました。適用する前に変更を再度確認してください。"
+
+#: 
+msgid "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off."
+msgstr "学年のある人が全員1学年上がる月。オフにすると自動進級がオフになります。"
+
+#: 
+msgid "Through Grade"
+msgstr "終了学年"
+

@@ -24514,3 +24514,203 @@ msgstr "Die tabel wys net die laaste 20 versendings. Maak 'n persoon oop om die 
 msgid "View %d failed sends across all email history"
 msgstr "Bekyk %d mislukte versendings in die hele e-posgeskiedenis"
 
+#: 
+msgid "Add New Grade"
+msgstr "Voeg nuwe graad by"
+
+#: 
+msgid "Change Grade Names"
+msgstr "Verander graadname"
+
+#: 
+msgid "England and Wales"
+msgstr "Engeland en Wallis"
+
+#: 
+msgid "Every year each person moves to the next grade in this order, and the last grade is cleared."
+msgstr "Elke jaar skuif elke persoon in hierdie volgorde na die volgende graad, en die laaste graad word uitgevee."
+
+#: 
+msgid "Everyone with a grade will move up one grade now, and this will count as this year's promotion."
+msgstr "Almal met 'n graad skuif nou een graad op, en dit tel as vanjaar se bevordering."
+
+#: 
+msgid "Finished %s, so the yearly promotion cleared the grade"
+msgstr "Het %s voltooi, so die jaarlikse bevordering het die graad uitgevee"
+
+#: 
+msgid "Finished the last grade: %d"
+msgstr "Het die laaste graad voltooi: %d"
+
+#: 
+msgid "Finishing the last grade (grade will be cleared): {{total}}"
+msgstr "Voltooi die laaste graad (graad word uitgevee): {{total}}"
+
+#: 
+msgid "From Grade"
+msgstr "Van graad"
+
+#: 
+msgid "Grade"
+msgstr "Graad"
+
+#: 
+msgid "Grade %s cleared when the grade names changed to %s"
+msgstr "Graad %s is uitgevee toe die graadname na %s verander het"
+
+#: 
+msgid "Grade Names"
+msgstr "Graadname"
+
+#: 
+msgid "Grade Promotion"
+msgstr "Graadbevordering"
+
+#: 
+msgid "Grade changed from %s to %s by the yearly promotion"
+msgstr "Graad het deur die jaarlikse bevordering van %s na %s verander"
+
+#: 
+msgid "Grade names not found"
+msgstr "Graadname nie gevind nie"
+
+#: 
+msgid "Grades"
+msgstr "Grade"
+
+#: 
+msgid "Grades Editor"
+msgstr "Graadredigeerder"
+
+#: 
+msgid "Grades added"
+msgstr "Grade bygevoeg"
+
+#: 
+msgid "Grades removed"
+msgstr "Grade verwyder"
+
+#: 
+msgid "Grades renamed: {{total}}"
+msgstr "Grade hernoem: {{total}}"
+
+#: 
+msgid "Grades were already promoted this year, on {{date}}. Promoting again moves everyone up another grade."
+msgstr "Grade is reeds vanjaar bevorder, op {{date}}. As jy weer bevorder, skuif almal nog 'n graad op."
+
+#: 
+msgid "Grades were promoted by someone else in the meantime. Reload the page to see the new grades."
+msgstr "Grade is intussen deur iemand anders bevorder. Herlaai die bladsy om die nuwe grade te sien."
+
+#: 
+msgid "Grades you added that match a name in the list and are combined with it"
+msgstr "Grade wat jy bygevoeg het wat met 'n naam in die lys ooreenstem en daarmee saamgevoeg word"
+
+#: 
+msgid "Internal: date and time of the last grade promotion. Do not edit manually."
+msgstr "Intern: datum en tyd van die laaste graadbevordering. Moenie met die hand wysig nie."
+
+#: 
+msgid "Internal: how the last grade promotion ran and how many people it moved. Do not edit manually."
+msgstr "Intern: hoe die laaste graadbevordering verloop het en hoeveel mense dit geskuif het. Moenie met die hand wysig nie."
+
+#: 
+msgid "Internal: the country whose grade names were last applied to the grade list. Do not edit manually."
+msgstr "Intern: die land waarvan die graadname laas op die graadlys toegepas is. Moenie met die hand wysig nie."
+
+#: 
+msgid "Internal: the day the grade promotion date was last changed (YYYY-MM-DD). Do not edit manually."
+msgstr "Intern: die dag waarop die graadbevorderingsdatum laas verander is (YYYY-MM-DD). Moenie met die hand wysig nie."
+
+#: 
+msgid "Internal: the list that holds the grade names. Do not edit manually."
+msgstr "Intern: die lys wat die graadname bevat. Moenie met die hand wysig nie."
+
+#: 
+msgid "Last promotion"
+msgstr "Laaste bevordering"
+
+#: 
+msgid "Leave empty for one grade"
+msgstr "Laat leeg vir een graad"
+
+#: 
+msgid "Moved up: %d"
+msgstr "Opgeskuif: %d"
+
+#: 
+msgid "Moving up: {{total}}"
+msgstr "Skuif op: {{total}}"
+
+#: 
+msgid "Next automatic promotion"
+msgstr "Volgende outomatiese bevordering"
+
+#: 
+msgid "Nobody has a grade to promote."
+msgstr "Niemand het 'n graad om te bevorder nie."
+
+#: 
+msgid "Northern Ireland"
+msgstr "Noord-Ierland"
+
+#: 
+msgid "People by Grade"
+msgstr "Mense volgens graad"
+
+#: 
+msgid "People in a range of school grades, such as Kindergarten through 5th"
+msgstr "Mense in 'n reeks skoolgrade, soos kleuterskool tot graad 5"
+
+#: 
+msgid "People whose grade is cleared: {{total}}"
+msgstr "Mense wie se graad uitgevee word: {{total}}"
+
+#: 
+msgid "Promote Grades"
+msgstr "Bevorder grade"
+
+#: 
+msgid "Promote Now"
+msgstr "Bevorder nou"
+
+#: 
+msgid "Promotion Day"
+msgstr "Bevorderingsdag"
+
+#: 
+msgid "Promotion Month"
+msgstr "Bevorderingsmaand"
+
+#: 
+msgid "Renames the grades to the names used in that country. People keep their grade, and grades you added yourself stay."
+msgstr "Hernoem die grade na die name wat in daardie land gebruik word. Mense behou hul graad, en grade wat jy self bygevoeg het, bly."
+
+#: 
+msgid "Scheduled Task"
+msgstr "Geskeduleerde taak"
+
+#: 
+msgid "Scotland"
+msgstr "Skotland"
+
+#: 
+msgid "The day of that month on which grades are promoted. A day past the end of the month means its last day."
+msgstr "Die dag van daardie maand waarop grade bevorder word. 'n Dag ná die einde van die maand beteken die laaste dag daarvan."
+
+#: 
+msgid "The grades already use these names."
+msgstr "Die grade gebruik reeds hierdie name."
+
+#: 
+msgid "The grades changed after the preview. Review the changes again before applying them."
+msgstr "Die grade het ná die voorskou verander. Hersien die veranderinge weer voordat jy dit toepas."
+
+#: 
+msgid "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off."
+msgstr "Die maand waarin almal met 'n graad een graad opskuif. Af skakel outomatiese bevordering af."
+
+#: 
+msgid "Through Grade"
+msgstr "Tot graad"
+

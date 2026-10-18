@@ -219,7 +219,7 @@ All of them use `PledgeProgressService` (A37). Family totals do not change: the 
 - **Individual:** each person's PerID rows, addressed to them (`per_Envelope`). Family-level rows (PerID NULL) go on the letter of the head with the lowest `per_ID` among `getHeadPeople()`, which returns heads in no set order, or on a household letter as today when the family has no head.
 - **Both:** gifts credited to any non-HoH person, spouse included, go only on that person's statement; family-level and the HoH's own gifts go on the household statement. Each gift is on exactly one statement.
 - Anonymous rows are left out. Pledges are never read (I12). The minimum amount applies to the donor total, not per row (today `getTaxReportData()` filters each row). NonDeductible handling is unchanged. Refunds (negative rows) and non-cash gifts come with RFC 0005.
-- Build the missing view behind `/finance/reports/tax-statements`: the route renders `reports/tax-statements.php`, which does not exist.
+- Add a tax statements page on the service: the `/finance/reports/tax-statements` route and its view `reports/tax-statements.php`.
 - **Head lists:** the family filter on the Financial Reports page (`FinancialReports.php`) splits `sDirRoleHead` on commas but `intval()`s `sDirRoleSpouse`, and joins spouses for "John & Jane". Make the spouse role list-aware (`Family::getAdults()` semantics). `FamilyEditor.php` casts `sDirRoleHead` to int for the quick-entry default role; take the first id.
 
 **Report fixes that come with the prerequisites**
@@ -290,7 +290,7 @@ Nothing here is filed yet (D12). One concern and one PR per child; each user-vis
 | GIV-04 | `PledgeWriter`: session-less, server FY, PDO GroupKeys unique across both types, `familyOf()`, pledge rows edited in place, no deposit on pledges; `GIFT_RECORDED` | A21, A33–A35, A38 | 03, 81 |
 | GIV-05 | Per-person attribution (#9313): `plg_PerID`; `PersonID` rule on all write routes; attribution service and PATCH; family donation move; person delete rule; donor count | §3, F8, §5, §7 | 02, 04 |
 | GIV-06 | "Given by" in the editor, person and family views; D11 move | F8 | 05 |
-| GIV-07 | `GivingStatementService`, `GivingScope` (A10), tax-statements view, head-list fixes | §5 | 05 |
+| GIV-07 | `GivingStatementService`, `GivingScope` (A10), tax-statements route and view, head-list fixes | §5 | 05 |
 | GIV-43 | Per-person reports from #9313: Contributions by Person, Fund Giving by Person, Top Contributors by Fund, Pledge progress by person (#9313's "Building Fund Progress by Member", any fund) | §2.3 | 07, 82 |
 | **P** | **Portal pledges** | | |
 | GIV-80 | Offer a fund in the Member Portal: `fun_OnlineGiving` and its toggle on `/finance/funds` | D14 | – |

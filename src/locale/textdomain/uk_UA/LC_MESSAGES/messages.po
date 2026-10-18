@@ -24578,3 +24578,203 @@ msgstr "У таблиці показано лише останні 20 надси
 msgid "View %d failed sends across all email history"
 msgstr "Показати невдалі надсилання в усій історії листів: %d"
 
+#: 
+msgid "Add New Grade"
+msgstr "Додати новий клас"
+
+#: 
+msgid "Change Grade Names"
+msgstr "Змінити назви класів"
+
+#: 
+msgid "England and Wales"
+msgstr "Англія та Уельс"
+
+#: 
+msgid "Every year each person moves to the next grade in this order, and the last grade is cleared."
+msgstr "Щороку кожна особа переходить до наступного класу в цьому порядку, а останній клас очищується."
+
+#: 
+msgid "Everyone with a grade will move up one grade now, and this will count as this year's promotion."
+msgstr "Усі, хто має клас, зараз перейдуть на один клас вище, і це зарахується як цьогорічне підвищення."
+
+#: 
+msgid "Finished %s, so the yearly promotion cleared the grade"
+msgstr "Завершив %s, тож щорічне підвищення очистило клас"
+
+#: 
+msgid "Finished the last grade: %d"
+msgstr "Завершили останній клас: %d"
+
+#: 
+msgid "Finishing the last grade (grade will be cleared): {{total}}"
+msgstr "Завершують останній клас (клас буде очищено): {{total}}"
+
+#: 
+msgid "From Grade"
+msgstr "Від класу"
+
+#: 
+msgid "Grade"
+msgstr "Клас"
+
+#: 
+msgid "Grade %s cleared when the grade names changed to %s"
+msgstr "Клас %s очищено, коли назви класів змінено на %s"
+
+#: 
+msgid "Grade Names"
+msgstr "Назви класів"
+
+#: 
+msgid "Grade Promotion"
+msgstr "Підвищення класу"
+
+#: 
+msgid "Grade changed from %s to %s by the yearly promotion"
+msgstr "Клас змінено з %s на %s щорічним підвищенням"
+
+#: 
+msgid "Grade names not found"
+msgstr "Назви класів не знайдено"
+
+#: 
+msgid "Grades"
+msgstr "Класи"
+
+#: 
+msgid "Grades Editor"
+msgstr "Редактор класів"
+
+#: 
+msgid "Grades added"
+msgstr "Класи додано"
+
+#: 
+msgid "Grades removed"
+msgstr "Класи вилучено"
+
+#: 
+msgid "Grades renamed: {{total}}"
+msgstr "Класи перейменовано: {{total}}"
+
+#: 
+msgid "Grades were already promoted this year, on {{date}}. Promoting again moves everyone up another grade."
+msgstr "Класи вже підвищено цього року, {{date}}. Повторне підвищення переведе всіх ще на один клас вище."
+
+#: 
+msgid "Grades were promoted by someone else in the meantime. Reload the page to see the new grades."
+msgstr "Тим часом класи підвищив хтось інший. Перезавантажте сторінку, щоб побачити нові класи."
+
+#: 
+msgid "Grades you added that match a name in the list and are combined with it"
+msgstr "Класи, які ви додали, що збігаються з назвою в списку та об’єднуються з нею"
+
+#: 
+msgid "Internal: date and time of the last grade promotion. Do not edit manually."
+msgstr "Внутрішнє: дата й час останнього підвищення класу. Не редагуйте вручну."
+
+#: 
+msgid "Internal: how the last grade promotion ran and how many people it moved. Do not edit manually."
+msgstr "Внутрішнє: як відбулося останнє підвищення класу і скількох людей воно перевело. Не редагуйте вручну."
+
+#: 
+msgid "Internal: the country whose grade names were last applied to the grade list. Do not edit manually."
+msgstr "Внутрішнє: країна, чиї назви класів востаннє застосовано до списку класів. Не редагуйте вручну."
+
+#: 
+msgid "Internal: the day the grade promotion date was last changed (YYYY-MM-DD). Do not edit manually."
+msgstr "Внутрішнє: день, коли дату підвищення класу востаннє змінено (YYYY-MM-DD). Не редагуйте вручну."
+
+#: 
+msgid "Internal: the list that holds the grade names. Do not edit manually."
+msgstr "Внутрішнє: список, що містить назви класів. Не редагуйте вручну."
+
+#: 
+msgid "Last promotion"
+msgstr "Останнє підвищення"
+
+#: 
+msgid "Leave empty for one grade"
+msgstr "Залиште порожнім для одного класу"
+
+#: 
+msgid "Moved up: %d"
+msgstr "Переведено вгору: %d"
+
+#: 
+msgid "Moving up: {{total}}"
+msgstr "Переводяться вгору: {{total}}"
+
+#: 
+msgid "Next automatic promotion"
+msgstr "Наступне автоматичне підвищення"
+
+#: 
+msgid "Nobody has a grade to promote."
+msgstr "Ніхто не має класу для підвищення."
+
+#: 
+msgid "Northern Ireland"
+msgstr "Північна Ірландія"
+
+#: 
+msgid "People by Grade"
+msgstr "Люди за класом"
+
+#: 
+msgid "People in a range of school grades, such as Kindergarten through 5th"
+msgstr "Люди в діапазоні шкільних класів, наприклад від дитячого садка до 5-го"
+
+#: 
+msgid "People whose grade is cleared: {{total}}"
+msgstr "Люди, чий клас очищено: {{total}}"
+
+#: 
+msgid "Promote Grades"
+msgstr "Підвищити класи"
+
+#: 
+msgid "Promote Now"
+msgstr "Підвищити зараз"
+
+#: 
+msgid "Promotion Day"
+msgstr "День підвищення"
+
+#: 
+msgid "Promotion Month"
+msgstr "Місяць підвищення"
+
+#: 
+msgid "Renames the grades to the names used in that country. People keep their grade, and grades you added yourself stay."
+msgstr "Перейменовує класи на назви, що використовуються в тій країні. Люди зберігають свій клас, а класи, які ви додали самі, залишаються."
+
+#: 
+msgid "Scheduled Task"
+msgstr "Заплановане завдання"
+
+#: 
+msgid "Scotland"
+msgstr "Шотландія"
+
+#: 
+msgid "The day of that month on which grades are promoted. A day past the end of the month means its last day."
+msgstr "День того місяця, коли класи підвищуються. День після кінця місяця означає його останній день."
+
+#: 
+msgid "The grades already use these names."
+msgstr "Класи вже використовують ці назви."
+
+#: 
+msgid "The grades changed after the preview. Review the changes again before applying them."
+msgstr "Класи змінилися після попереднього перегляду. Перегляньте зміни ще раз перед застосуванням."
+
+#: 
+msgid "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off."
+msgstr "Місяць, у якому всі, хто має клас, переходять на один клас вище. Вимкнено вимикає автоматичне підвищення."
+
+#: 
+msgid "Through Grade"
+msgstr "До класу"
+

@@ -10,8 +10,6 @@
  * people.email-queue.spec.js.
  *
  * Delivery is verified against the Mailpit sink the test stack ships with.
- * Override its URL with `--env mailpitUrl=http://localhost:8070` when the
- * stack runs on non-default ports.
  *
  * Seed fixtures used (cypress/data/seed.sql):
  *   person 2   Mathew Campbell  mathew.campbell@example.com
@@ -21,22 +19,16 @@
  *   person 105 Mary Smith       no email, family 21 has no email
  *   family 1   Campbell         no family email
  */
-const mailpit = () => Cypress.testEnv("mailpitUrl") || "http://localhost:8025";
-
 const clearMailpit = () =>
-    cy.request({ method: "DELETE", url: `${mailpit()}/api/v1/messages`, failOnStatusCode: false });
+    cy.request({ method: "DELETE", url: `${Cypress.mailpitUrl()}/api/v1/messages`, failOnStatusCode: false });
 
 /** Returns the Mailpit messages whose subject contains `tag`. */
 const mailpitMessages = (tag) =>
     cy
-        .request({ method: "GET", url: `${mailpit()}/api/v1/messages?limit=100` })
+        .request({ method: "GET", url: `${Cypress.mailpitUrl()}/api/v1/messages?limit=100` })
         .then((resp) => resp.body.messages.filter((m) => m.Subject.includes(tag)));
 
 const send = (body, expectedStatus = 200) => cy.makePrivateAdminAPICall("POST", "/api/email/send", body, expectedStatus);
-
-before(() => {
-    cy.rememberTestEnv(["mailpitUrl"]);
-});
 
 describe("API POST /api/email/send", () => {
     describe("resolution and delivery", () => {
@@ -84,7 +76,7 @@ describe("API POST /api/email/send", () => {
 
                 const mathew = messages.find((m) => m.To[0].Address === "mathew.campbell@example.com");
                 expect(mathew.To[0].Name).to.equal("Mathew Campbell");
-                cy.request(`${mailpit()}/api/v1/message/${mathew.ID}`).then((full) => {
+                cy.request(`${Cypress.mailpitUrl()}/api/v1/message/${mathew.ID}`).then((full) => {
                     // The author writes greeting and closing: nothing is generated around the body
                     // except the church header, and there is no marketing footer.
                     expect(full.body.HTML).to.not.include("Dear ");

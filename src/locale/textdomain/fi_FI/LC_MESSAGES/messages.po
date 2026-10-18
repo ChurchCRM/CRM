@@ -24481,3 +24481,203 @@ msgstr "Taulukko näyttää vain viimeiset 20 lähetystä. Avaa henkilö nähdä
 msgid "View %d failed sends across all email history"
 msgstr "Näytä %d epäonnistunutta lähetystä koko sähköpostihistoriassa"
 
+#: 
+msgid "Add New Grade"
+msgstr "Lisää uusi luokka-aste"
+
+#: 
+msgid "Change Grade Names"
+msgstr "Vaihda luokka-asteiden nimet"
+
+#: 
+msgid "England and Wales"
+msgstr "Englanti ja Wales"
+
+#: 
+msgid "Every year each person moves to the next grade in this order, and the last grade is cleared."
+msgstr "Joka vuosi jokainen siirtyy seuraavaan luokka-asteeseen tässä järjestyksessä, ja viimeinen luokka-aste tyhjennetään."
+
+#: 
+msgid "Everyone with a grade will move up one grade now, and this will count as this year's promotion."
+msgstr "Kaikki, joilla on luokka-aste, siirtyvät nyt yhden asteen ylöspäin, ja tämä lasketaan tämän vuoden ylennykseksi."
+
+#: 
+msgid "Finished %s, so the yearly promotion cleared the grade"
+msgstr "Suoritti tason %s, joten vuosittainen ylennys tyhjensi luokka-asteen"
+
+#: 
+msgid "Finished the last grade: %d"
+msgstr "Suoritti viimeisen luokka-asteen: %d"
+
+#: 
+msgid "Finishing the last grade (grade will be cleared): {{total}}"
+msgstr "Suorittaa viimeisen luokka-asteen (luokka-aste tyhjennetään): {{total}}"
+
+#: 
+msgid "From Grade"
+msgstr "Luokka-asteesta"
+
+#: 
+msgid "Grade"
+msgstr "Luokka-aste"
+
+#: 
+msgid "Grade %s cleared when the grade names changed to %s"
+msgstr "Luokka-aste %s tyhjennettiin, kun luokka-asteiden nimet vaihdettiin muotoon %s"
+
+#: 
+msgid "Grade Names"
+msgstr "Luokka-asteiden nimet"
+
+#: 
+msgid "Grade Promotion"
+msgstr "Luokka-asteen ylennys"
+
+#: 
+msgid "Grade changed from %s to %s by the yearly promotion"
+msgstr "Luokka-aste vaihtui arvosta %s arvoon %s vuosittaisen ylennyksen vuoksi"
+
+#: 
+msgid "Grade names not found"
+msgstr "Luokka-asteiden nimiä ei löytynyt"
+
+#: 
+msgid "Grades"
+msgstr "Luokka-asteet"
+
+#: 
+msgid "Grades Editor"
+msgstr "Luokka-asteiden muokkain"
+
+#: 
+msgid "Grades added"
+msgstr "Luokka-asteita lisätty"
+
+#: 
+msgid "Grades removed"
+msgstr "Luokka-asteita poistettu"
+
+#: 
+msgid "Grades renamed: {{total}}"
+msgstr "Luokka-asteita nimetty uudelleen: {{total}}"
+
+#: 
+msgid "Grades were already promoted this year, on {{date}}. Promoting again moves everyone up another grade."
+msgstr "Luokka-asteet ylennettiin jo tänä vuonna {{date}}. Uudelleen ylentäminen siirtää kaikki vielä yhden asteen ylöspäin."
+
+#: 
+msgid "Grades were promoted by someone else in the meantime. Reload the page to see the new grades."
+msgstr "Joku muu ylensi luokka-asteet sillä välin. Lataa sivu uudelleen nähdäksesi uudet luokka-asteet."
+
+#: 
+msgid "Grades you added that match a name in the list and are combined with it"
+msgstr "Lisäämäsi luokka-asteet, jotka vastaavat luettelon nimeä ja yhdistetään siihen"
+
+#: 
+msgid "Internal: date and time of the last grade promotion. Do not edit manually."
+msgstr "Sisäinen: viimeisimmän luokka-asteylennyksen päivämäärä ja kellonaika. Älä muokkaa käsin."
+
+#: 
+msgid "Internal: how the last grade promotion ran and how many people it moved. Do not edit manually."
+msgstr "Sisäinen: miten viimeisin luokka-asteylennys suoritettiin ja kuinka monta henkilöä se siirsi. Älä muokkaa käsin."
+
+#: 
+msgid "Internal: the country whose grade names were last applied to the grade list. Do not edit manually."
+msgstr "Sisäinen: maa, jonka luokka-asteiden nimet viimeksi sovellettiin luetteloon. Älä muokkaa käsin."
+
+#: 
+msgid "Internal: the day the grade promotion date was last changed (YYYY-MM-DD). Do not edit manually."
+msgstr "Sisäinen: päivä, jolloin luokka-asteylennyksen päivämäärää viimeksi muutettiin (YYYY-MM-DD). Älä muokkaa käsin."
+
+#: 
+msgid "Internal: the list that holds the grade names. Do not edit manually."
+msgstr "Sisäinen: luettelo, joka sisältää luokka-asteiden nimet. Älä muokkaa käsin."
+
+#: 
+msgid "Last promotion"
+msgstr "Viimeisin ylennys"
+
+#: 
+msgid "Leave empty for one grade"
+msgstr "Jätä tyhjäksi yhtä luokka-astetta varten"
+
+#: 
+msgid "Moved up: %d"
+msgstr "Siirtyi ylöspäin: %d"
+
+#: 
+msgid "Moving up: {{total}}"
+msgstr "Siirtyy ylöspäin: {{total}}"
+
+#: 
+msgid "Next automatic promotion"
+msgstr "Seuraava automaattinen ylennys"
+
+#: 
+msgid "Nobody has a grade to promote."
+msgstr "Kenelläkään ei ole ylennettävää luokka-astetta."
+
+#: 
+msgid "Northern Ireland"
+msgstr "Pohjois-Irlanti"
+
+#: 
+msgid "People by Grade"
+msgstr "Henkilöt luokka-asteen mukaan"
+
+#: 
+msgid "People in a range of school grades, such as Kindergarten through 5th"
+msgstr "Henkilöt koulun luokka-asteiden välillä, kuten esikoulusta 5. luokkaan"
+
+#: 
+msgid "People whose grade is cleared: {{total}}"
+msgstr "Henkilöt, joiden luokka-aste tyhjennetään: {{total}}"
+
+#: 
+msgid "Promote Grades"
+msgstr "Ylennä luokka-asteet"
+
+#: 
+msgid "Promote Now"
+msgstr "Ylennä nyt"
+
+#: 
+msgid "Promotion Day"
+msgstr "Ylennyspäivä"
+
+#: 
+msgid "Promotion Month"
+msgstr "Ylennyskuukausi"
+
+#: 
+msgid "Renames the grades to the names used in that country. People keep their grade, and grades you added yourself stay."
+msgstr "Nimeää luokka-asteet kyseisessä maassa käytetyillä nimillä. Henkilöt säilyttävät luokka-asteensa, ja itse lisäämäsi luokka-asteet säilyvät."
+
+#: 
+msgid "Scheduled Task"
+msgstr "Ajastettu tehtävä"
+
+#: 
+msgid "Scotland"
+msgstr "Skotlanti"
+
+#: 
+msgid "The day of that month on which grades are promoted. A day past the end of the month means its last day."
+msgstr "Sen kuukauden päivä, jolloin luokka-asteet ylennetään. Kuukauden loppua myöhäisempi päivä tarkoittaa sen viimeistä päivää."
+
+#: 
+msgid "The grades already use these names."
+msgstr "Luokka-asteet käyttävät jo näitä nimiä."
+
+#: 
+msgid "The grades changed after the preview. Review the changes again before applying them."
+msgstr "Luokka-asteet muuttuivat esikatselun jälkeen. Tarkista muutokset uudelleen ennen niiden käyttöönottoa."
+
+#: 
+msgid "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off."
+msgstr "Kuukausi, jolloin kaikki, joilla on luokka-aste, siirtyvät yhden asteen ylöspäin. Pois käytöstä kytkee automaattisen ylennyksen pois."
+
+#: 
+msgid "Through Grade"
+msgstr "Luokka-asteeseen"
+

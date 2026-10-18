@@ -24514,3 +24514,203 @@ msgstr "Ο πίνακας εμφανίζει μόνο τις τελευταίε�
 msgid "View %d failed sends across all email history"
 msgstr "Προβολή %d αποτυχημένων αποστολών σε όλο το ιστορικό email"
 
+#: 
+msgid "Add New Grade"
+msgstr "Προσθήκη νέας τάξης"
+
+#: 
+msgid "Change Grade Names"
+msgstr "Αλλαγή ονομάτων τάξεων"
+
+#: 
+msgid "England and Wales"
+msgstr "Αγγλία και Ουαλία"
+
+#: 
+msgid "Every year each person moves to the next grade in this order, and the last grade is cleared."
+msgstr "Κάθε χρόνο κάθε άτομο μεταβαίνει στην επόμενη τάξη με αυτή τη σειρά, και η τελευταία τάξη εκκαθαρίζεται."
+
+#: 
+msgid "Everyone with a grade will move up one grade now, and this will count as this year's promotion."
+msgstr "Όλοι όσοι έχουν τάξη θα ανέβουν τώρα μία τάξη, και αυτό θα μετρήσει ως η προαγωγή αυτής της χρονιάς."
+
+#: 
+msgid "Finished %s, so the yearly promotion cleared the grade"
+msgstr "Ολοκλήρωσε το %s, οπότε η ετήσια προαγωγή εκκαθάρισε την τάξη"
+
+#: 
+msgid "Finished the last grade: %d"
+msgstr "Ολοκλήρωσε την τελευταία τάξη: %d"
+
+#: 
+msgid "Finishing the last grade (grade will be cleared): {{total}}"
+msgstr "Ολοκληρώνει την τελευταία τάξη (η τάξη θα εκκαθαριστεί): {{total}}"
+
+#: 
+msgid "From Grade"
+msgstr "Από τάξη"
+
+#: 
+msgid "Grade"
+msgstr "Τάξη"
+
+#: 
+msgid "Grade %s cleared when the grade names changed to %s"
+msgstr "Η τάξη %s εκκαθαρίστηκε όταν τα ονόματα των τάξεων άλλαξαν σε %s"
+
+#: 
+msgid "Grade Names"
+msgstr "Ονόματα τάξεων"
+
+#: 
+msgid "Grade Promotion"
+msgstr "Προαγωγή τάξεων"
+
+#: 
+msgid "Grade changed from %s to %s by the yearly promotion"
+msgstr "Η τάξη άλλαξε από %s σε %s με την ετήσια προαγωγή"
+
+#: 
+msgid "Grade names not found"
+msgstr "Τα ονόματα των τάξεων δεν βρέθηκαν"
+
+#: 
+msgid "Grades"
+msgstr "Τάξεις"
+
+#: 
+msgid "Grades Editor"
+msgstr "Επεξεργαστής τάξεων"
+
+#: 
+msgid "Grades added"
+msgstr "Τάξεις που προστέθηκαν"
+
+#: 
+msgid "Grades removed"
+msgstr "Τάξεις που αφαιρέθηκαν"
+
+#: 
+msgid "Grades renamed: {{total}}"
+msgstr "Τάξεις που μετονομάστηκαν: {{total}}"
+
+#: 
+msgid "Grades were already promoted this year, on {{date}}. Promoting again moves everyone up another grade."
+msgstr "Οι τάξεις προήχθησαν ήδη φέτος, στις {{date}}. Νέα προαγωγή μετακινεί όλους μία ακόμη τάξη επάνω."
+
+#: 
+msgid "Grades were promoted by someone else in the meantime. Reload the page to see the new grades."
+msgstr "Οι τάξεις προήχθησαν στο μεταξύ από κάποιον άλλον. Ανανεώστε τη σελίδα για να δείτε τις νέες τάξεις."
+
+#: 
+msgid "Grades you added that match a name in the list and are combined with it"
+msgstr "Τάξεις που προσθέσατε και ταιριάζουν με ένα όνομα στη λίστα και συνδυάζονται με αυτό"
+
+#: 
+msgid "Internal: date and time of the last grade promotion. Do not edit manually."
+msgstr "Εσωτερικό: ημερομηνία και ώρα της τελευταίας προαγωγής τάξεων. Μην το επεξεργάζεστε χειροκίνητα."
+
+#: 
+msgid "Internal: how the last grade promotion ran and how many people it moved. Do not edit manually."
+msgstr "Εσωτερικό: πώς εκτελέστηκε η τελευταία προαγωγή τάξεων και πόσα άτομα μετακίνησε. Μην το επεξεργάζεστε χειροκίνητα."
+
+#: 
+msgid "Internal: the country whose grade names were last applied to the grade list. Do not edit manually."
+msgstr "Εσωτερικό: η χώρα της οποίας τα ονόματα τάξεων εφαρμόστηκαν τελευταία στη λίστα τάξεων. Μην το επεξεργάζεστε χειροκίνητα."
+
+#: 
+msgid "Internal: the day the grade promotion date was last changed (YYYY-MM-DD). Do not edit manually."
+msgstr "Εσωτερικό: η ημέρα κατά την οποία άλλαξε τελευταία η ημερομηνία προαγωγής τάξεων (YYYY-MM-DD). Μην το επεξεργάζεστε χειροκίνητα."
+
+#: 
+msgid "Internal: the list that holds the grade names. Do not edit manually."
+msgstr "Εσωτερικό: η λίστα που περιέχει τα ονόματα των τάξεων. Μην την επεξεργάζεστε χειροκίνητα."
+
+#: 
+msgid "Last promotion"
+msgstr "Τελευταία προαγωγή"
+
+#: 
+msgid "Leave empty for one grade"
+msgstr "Αφήστε κενό για μία τάξη"
+
+#: 
+msgid "Moved up: %d"
+msgstr "Ανέβηκαν: %d"
+
+#: 
+msgid "Moving up: {{total}}"
+msgstr "Ανεβαίνουν: {{total}}"
+
+#: 
+msgid "Next automatic promotion"
+msgstr "Επόμενη αυτόματη προαγωγή"
+
+#: 
+msgid "Nobody has a grade to promote."
+msgstr "Κανείς δεν έχει τάξη προς προαγωγή."
+
+#: 
+msgid "Northern Ireland"
+msgstr "Βόρεια Ιρλανδία"
+
+#: 
+msgid "People by Grade"
+msgstr "Άτομα ανά τάξη"
+
+#: 
+msgid "People in a range of school grades, such as Kindergarten through 5th"
+msgstr "Άτομα σε ένα εύρος σχολικών τάξεων, όπως από το νηπιαγωγείο έως την 5η"
+
+#: 
+msgid "People whose grade is cleared: {{total}}"
+msgstr "Άτομα των οποίων η τάξη εκκαθαρίζεται: {{total}}"
+
+#: 
+msgid "Promote Grades"
+msgstr "Προαγωγή τάξεων"
+
+#: 
+msgid "Promote Now"
+msgstr "Προαγωγή τώρα"
+
+#: 
+msgid "Promotion Day"
+msgstr "Ημέρα προαγωγής"
+
+#: 
+msgid "Promotion Month"
+msgstr "Μήνας προαγωγής"
+
+#: 
+msgid "Renames the grades to the names used in that country. People keep their grade, and grades you added yourself stay."
+msgstr "Μετονομάζει τις τάξεις στα ονόματα που χρησιμοποιούνται σε αυτή τη χώρα. Τα άτομα διατηρούν την τάξη τους και οι τάξεις που προσθέσατε εσείς παραμένουν."
+
+#: 
+msgid "Scheduled Task"
+msgstr "Προγραμματισμένη εργασία"
+
+#: 
+msgid "Scotland"
+msgstr "Σκωτία"
+
+#: 
+msgid "The day of that month on which grades are promoted. A day past the end of the month means its last day."
+msgstr "Η ημέρα αυτού του μήνα κατά την οποία προάγονται οι τάξεις. Ημέρα μετά το τέλος του μήνα σημαίνει την τελευταία του ημέρα."
+
+#: 
+msgid "The grades already use these names."
+msgstr "Οι τάξεις χρησιμοποιούν ήδη αυτά τα ονόματα."
+
+#: 
+msgid "The grades changed after the preview. Review the changes again before applying them."
+msgstr "Οι τάξεις άλλαξαν μετά την προεπισκόπηση. Ελέγξτε ξανά τις αλλαγές πριν τις εφαρμόσετε."
+
+#: 
+msgid "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off."
+msgstr "Ο μήνας κατά τον οποίο όλοι όσοι έχουν τάξη ανεβαίνουν μία τάξη. Η απενεργοποίηση κλείνει την αυτόματη προαγωγή."
+
+#: 
+msgid "Through Grade"
+msgstr "Έως τάξη"
+

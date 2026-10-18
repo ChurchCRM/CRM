@@ -24481,3 +24481,203 @@ msgstr "A tabela mostra apenas os últimos 20 envios. Abra uma pessoa para ver o
 msgid "View %d failed sends across all email history"
 msgstr "Ver os %d envios com falha em todo o histórico de e-mails"
 
+#: 
+msgid "Add New Grade"
+msgstr "Adicionar nova série"
+
+#: 
+msgid "Change Grade Names"
+msgstr "Alterar nomes das séries"
+
+#: 
+msgid "England and Wales"
+msgstr "Inglaterra e País de Gales"
+
+#: 
+msgid "Every year each person moves to the next grade in this order, and the last grade is cleared."
+msgstr "Todo ano cada pessoa passa para a série seguinte nesta ordem, e a última série é limpa."
+
+#: 
+msgid "Everyone with a grade will move up one grade now, and this will count as this year's promotion."
+msgstr "Todas as pessoas com uma série vão subir uma série agora, e isso contará como a promoção deste ano."
+
+#: 
+msgid "Finished %s, so the yearly promotion cleared the grade"
+msgstr "Concluiu %s, então a promoção anual limpou a série"
+
+#: 
+msgid "Finished the last grade: %d"
+msgstr "Concluiu a última série: %d"
+
+#: 
+msgid "Finishing the last grade (grade will be cleared): {{total}}"
+msgstr "Concluindo a última série (a série será limpa): {{total}}"
+
+#: 
+msgid "From Grade"
+msgstr "Da série"
+
+#: 
+msgid "Grade"
+msgstr "Série"
+
+#: 
+msgid "Grade %s cleared when the grade names changed to %s"
+msgstr "A série %s foi limpa quando os nomes das séries mudaram para %s"
+
+#: 
+msgid "Grade Names"
+msgstr "Nomes das séries"
+
+#: 
+msgid "Grade Promotion"
+msgstr "Promoção de série"
+
+#: 
+msgid "Grade changed from %s to %s by the yearly promotion"
+msgstr "Série alterada de %s para %s pela promoção anual"
+
+#: 
+msgid "Grade names not found"
+msgstr "Nomes das séries não encontrados"
+
+#: 
+msgid "Grades"
+msgstr "Séries"
+
+#: 
+msgid "Grades Editor"
+msgstr "Editor de séries"
+
+#: 
+msgid "Grades added"
+msgstr "Séries adicionadas"
+
+#: 
+msgid "Grades removed"
+msgstr "Séries removidas"
+
+#: 
+msgid "Grades renamed: {{total}}"
+msgstr "Séries renomeadas: {{total}}"
+
+#: 
+msgid "Grades were already promoted this year, on {{date}}. Promoting again moves everyone up another grade."
+msgstr "As séries já foram promovidas neste ano, em {{date}}. Promover de novo faz todos subirem mais uma série."
+
+#: 
+msgid "Grades were promoted by someone else in the meantime. Reload the page to see the new grades."
+msgstr "As séries foram promovidas por outra pessoa nesse meio-tempo. Recarregue a página para ver as novas séries."
+
+#: 
+msgid "Grades you added that match a name in the list and are combined with it"
+msgstr "Séries que você adicionou que coincidem com um nome da lista e são combinadas com ele"
+
+#: 
+msgid "Internal: date and time of the last grade promotion. Do not edit manually."
+msgstr "Interno: data e hora da última promoção de série. Não edite manualmente."
+
+#: 
+msgid "Internal: how the last grade promotion ran and how many people it moved. Do not edit manually."
+msgstr "Interno: como a última promoção de série foi executada e quantas pessoas ela moveu. Não edite manualmente."
+
+#: 
+msgid "Internal: the country whose grade names were last applied to the grade list. Do not edit manually."
+msgstr "Interno: o país cujos nomes de série foram aplicados por último à lista de séries. Não edite manualmente."
+
+#: 
+msgid "Internal: the day the grade promotion date was last changed (YYYY-MM-DD). Do not edit manually."
+msgstr "Interno: o dia em que a data da promoção de série foi alterada pela última vez (YYYY-MM-DD). Não edite manualmente."
+
+#: 
+msgid "Internal: the list that holds the grade names. Do not edit manually."
+msgstr "Interno: a lista que guarda os nomes das séries. Não edite manualmente."
+
+#: 
+msgid "Last promotion"
+msgstr "Última promoção"
+
+#: 
+msgid "Leave empty for one grade"
+msgstr "Deixe em branco para uma série"
+
+#: 
+msgid "Moved up: %d"
+msgstr "Subiram: %d"
+
+#: 
+msgid "Moving up: {{total}}"
+msgstr "Subindo: {{total}}"
+
+#: 
+msgid "Next automatic promotion"
+msgstr "Próxima promoção automática"
+
+#: 
+msgid "Nobody has a grade to promote."
+msgstr "Ninguém tem uma série para promover."
+
+#: 
+msgid "Northern Ireland"
+msgstr "Irlanda do Norte"
+
+#: 
+msgid "People by Grade"
+msgstr "Pessoas por série"
+
+#: 
+msgid "People in a range of school grades, such as Kindergarten through 5th"
+msgstr "Pessoas em um intervalo de séries escolares, como do jardim de infância à 5ª série"
+
+#: 
+msgid "People whose grade is cleared: {{total}}"
+msgstr "Pessoas cuja série é limpa: {{total}}"
+
+#: 
+msgid "Promote Grades"
+msgstr "Promover séries"
+
+#: 
+msgid "Promote Now"
+msgstr "Promover agora"
+
+#: 
+msgid "Promotion Day"
+msgstr "Dia da promoção"
+
+#: 
+msgid "Promotion Month"
+msgstr "Mês da promoção"
+
+#: 
+msgid "Renames the grades to the names used in that country. People keep their grade, and grades you added yourself stay."
+msgstr "Renomeia as séries para os nomes usados nesse país. As pessoas mantêm a série, e as séries que você mesmo adicionou permanecem."
+
+#: 
+msgid "Scheduled Task"
+msgstr "Tarefa agendada"
+
+#: 
+msgid "Scotland"
+msgstr "Escócia"
+
+#: 
+msgid "The day of that month on which grades are promoted. A day past the end of the month means its last day."
+msgstr "O dia desse mês em que as séries são promovidas. Um dia depois do fim do mês significa o último dia dele."
+
+#: 
+msgid "The grades already use these names."
+msgstr "As séries já usam esses nomes."
+
+#: 
+msgid "The grades changed after the preview. Review the changes again before applying them."
+msgstr "As séries mudaram depois da pré-visualização. Revise as alterações de novo antes de aplicá-las."
+
+#: 
+msgid "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off."
+msgstr "O mês em que todas as pessoas com uma série sobem uma série. Desligado desativa a promoção automática."
+
+#: 
+msgid "Through Grade"
+msgstr "Até a série"
+

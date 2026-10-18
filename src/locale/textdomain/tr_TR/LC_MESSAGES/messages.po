@@ -24514,3 +24514,203 @@ msgstr "Tablo yalnızca son 20 gönderimi gösterir. Tüm geçmişi görmek içi
 msgid "View %d failed sends across all email history"
 msgstr "Tüm e-posta geçmişindeki %d başarısız gönderimi görüntüle"
 
+#: 
+msgid "Add New Grade"
+msgstr "Yeni Sınıf Ekle"
+
+#: 
+msgid "Change Grade Names"
+msgstr "Sınıf Adlarını Değiştir"
+
+#: 
+msgid "England and Wales"
+msgstr "İngiltere ve Galler"
+
+#: 
+msgid "Every year each person moves to the next grade in this order, and the last grade is cleared."
+msgstr "Her yıl her kişi bu sırayla bir sonraki sınıfa geçer ve son sınıf temizlenir."
+
+#: 
+msgid "Everyone with a grade will move up one grade now, and this will count as this year's promotion."
+msgstr "Sınıfı olan herkes şimdi bir sınıf yukarı taşınır ve bu, bu yılın yükseltmesi sayılır."
+
+#: 
+msgid "Finished %s, so the yearly promotion cleared the grade"
+msgstr "%s bittiği için yıllık yükseltme sınıfı temizledi"
+
+#: 
+msgid "Finished the last grade: %d"
+msgstr "Son sınıfı bitiren: %d"
+
+#: 
+msgid "Finishing the last grade (grade will be cleared): {{total}}"
+msgstr "Son sınıfı bitirenler (sınıf temizlenecek): {{total}}"
+
+#: 
+msgid "From Grade"
+msgstr "Başlangıç sınıfı"
+
+#: 
+msgid "Grade"
+msgstr "Sınıf"
+
+#: 
+msgid "Grade %s cleared when the grade names changed to %s"
+msgstr "%s sınıfı temizlendi, sınıf adları %s olarak değiştiğinde"
+
+#: 
+msgid "Grade Names"
+msgstr "Sınıf Adları"
+
+#: 
+msgid "Grade Promotion"
+msgstr "Sınıf Yükseltme"
+
+#: 
+msgid "Grade changed from %s to %s by the yearly promotion"
+msgstr "Yıllık yükseltme ile sınıf %s iken %s oldu"
+
+#: 
+msgid "Grade names not found"
+msgstr "Sınıf adları bulunamadı"
+
+#: 
+msgid "Grades"
+msgstr "Sınıflar"
+
+#: 
+msgid "Grades Editor"
+msgstr "Sınıf Düzenleyici"
+
+#: 
+msgid "Grades added"
+msgstr "Sınıflar eklendi"
+
+#: 
+msgid "Grades removed"
+msgstr "Sınıflar kaldırıldı"
+
+#: 
+msgid "Grades renamed: {{total}}"
+msgstr "Yeniden adlandırılan sınıflar: {{total}}"
+
+#: 
+msgid "Grades were already promoted this year, on {{date}}. Promoting again moves everyone up another grade."
+msgstr "Sınıflar bu yıl {{date}} tarihinde zaten yükseltildi. Yeniden yükseltmek herkesi bir sınıf daha yukarı taşır."
+
+#: 
+msgid "Grades were promoted by someone else in the meantime. Reload the page to see the new grades."
+msgstr "Bu arada sınıfları başka biri yükseltti. Yeni sınıfları görmek için sayfayı yeniden yükleyin."
+
+#: 
+msgid "Grades you added that match a name in the list and are combined with it"
+msgstr "Liste içindeki bir adla eşleşen ve onunla birleştirilen, sizin eklediğiniz sınıflar"
+
+#: 
+msgid "Internal: date and time of the last grade promotion. Do not edit manually."
+msgstr "Dahili: son sınıf yükseltmesinin tarih ve saati. Elle düzenlemeyin."
+
+#: 
+msgid "Internal: how the last grade promotion ran and how many people it moved. Do not edit manually."
+msgstr "Dahili: son sınıf yükseltmesinin nasıl çalıştığı ve kaç kişiyi taşıdığı. Elle düzenlemeyin."
+
+#: 
+msgid "Internal: the country whose grade names were last applied to the grade list. Do not edit manually."
+msgstr "Dahili: sınıf listesine en son uygulanan sınıf adlarının ülkesi. Elle düzenlemeyin."
+
+#: 
+msgid "Internal: the day the grade promotion date was last changed (YYYY-MM-DD). Do not edit manually."
+msgstr "Dahili: sınıf yükseltme tarihinin en son değiştirildiği gün (YYYY-MM-DD). Elle düzenlemeyin."
+
+#: 
+msgid "Internal: the list that holds the grade names. Do not edit manually."
+msgstr "Dahili: sınıf adlarını tutan liste. Elle düzenlemeyin."
+
+#: 
+msgid "Last promotion"
+msgstr "Son yükseltme"
+
+#: 
+msgid "Leave empty for one grade"
+msgstr "Tek sınıf için boş bırakın"
+
+#: 
+msgid "Moved up: %d"
+msgstr "Yukarı taşınan: %d"
+
+#: 
+msgid "Moving up: {{total}}"
+msgstr "Yukarı taşınıyor: {{total}}"
+
+#: 
+msgid "Next automatic promotion"
+msgstr "Sonraki otomatik yükseltme"
+
+#: 
+msgid "Nobody has a grade to promote."
+msgstr "Yükseltilecek sınıfı olan kimse yok."
+
+#: 
+msgid "Northern Ireland"
+msgstr "Kuzey İrlanda"
+
+#: 
+msgid "People by Grade"
+msgstr "Sınıfa göre kişiler"
+
+#: 
+msgid "People in a range of school grades, such as Kindergarten through 5th"
+msgstr "Anaokulundan 5. sınıfa kadar gibi bir okul sınıfı aralığındaki kişiler"
+
+#: 
+msgid "People whose grade is cleared: {{total}}"
+msgstr "Sınıfı temizlenen kişiler: {{total}}"
+
+#: 
+msgid "Promote Grades"
+msgstr "Sınıfları Yükselt"
+
+#: 
+msgid "Promote Now"
+msgstr "Şimdi Yükselt"
+
+#: 
+msgid "Promotion Day"
+msgstr "Yükseltme Günü"
+
+#: 
+msgid "Promotion Month"
+msgstr "Yükseltme Ayı"
+
+#: 
+msgid "Renames the grades to the names used in that country. People keep their grade, and grades you added yourself stay."
+msgstr "Sınıfları o ülkede kullanılan adlarla yeniden adlandırır. Kişiler sınıflarını korur ve kendiniz eklediğiniz sınıflar kalır."
+
+#: 
+msgid "Scheduled Task"
+msgstr "Zamanlanmış Görev"
+
+#: 
+msgid "Scotland"
+msgstr "İskoçya"
+
+#: 
+msgid "The day of that month on which grades are promoted. A day past the end of the month means its last day."
+msgstr "Sınıfların yükseltildiği ayın günü. Ayın sonunu geçen bir gün, ayın son günü demektir."
+
+#: 
+msgid "The grades already use these names."
+msgstr "Sınıflar zaten bu adları kullanıyor."
+
+#: 
+msgid "The grades changed after the preview. Review the changes again before applying them."
+msgstr "Önizlemeden sonra sınıflar değişti. Uygulamadan önce değişiklikleri yeniden gözden geçirin."
+
+#: 
+msgid "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off."
+msgstr "Sınıfı olan herkesin bir sınıf yukarı taşındığı ay. Kapalı, otomatik yükseltmeyi kapatır."
+
+#: 
+msgid "Through Grade"
+msgstr "Bitiş sınıfı"
+

@@ -24604,3 +24604,203 @@ msgstr "Tabelul afișează doar ultimele 20 de trimiteri. Deschideți o persoan�
 msgid "View %d failed sends across all email history"
 msgstr "Vizualizați cele %d trimiteri eșuate din tot istoricul e-mailurilor"
 
+#: 
+msgid "Add New Grade"
+msgstr "Adaugă o clasă nouă"
+
+#: 
+msgid "Change Grade Names"
+msgstr "Schimbă numele claselor"
+
+#: 
+msgid "England and Wales"
+msgstr "Anglia și Țara Galilor"
+
+#: 
+msgid "Every year each person moves to the next grade in this order, and the last grade is cleared."
+msgstr "În fiecare an fiecare persoană trece la clasa următoare în această ordine, iar ultima clasă este golită."
+
+#: 
+msgid "Everyone with a grade will move up one grade now, and this will count as this year's promotion."
+msgstr "Toți cei care au o clasă vor urca acum o clasă, iar aceasta va conta ca promovarea din acest an."
+
+#: 
+msgid "Finished %s, so the yearly promotion cleared the grade"
+msgstr "A terminat %s, așa că promovarea anuală a golit clasa"
+
+#: 
+msgid "Finished the last grade: %d"
+msgstr "Au terminat ultima clasă: %d"
+
+#: 
+msgid "Finishing the last grade (grade will be cleared): {{total}}"
+msgstr "Terminarea ultimei clase (clasa va fi golită): {{total}}"
+
+#: 
+msgid "From Grade"
+msgstr "De la clasa"
+
+#: 
+msgid "Grade"
+msgstr "Clasă"
+
+#: 
+msgid "Grade %s cleared when the grade names changed to %s"
+msgstr "Clasa %s a fost golită când numele claselor s-au schimbat în %s"
+
+#: 
+msgid "Grade Names"
+msgstr "Numele claselor"
+
+#: 
+msgid "Grade Promotion"
+msgstr "Promovarea claselor"
+
+#: 
+msgid "Grade changed from %s to %s by the yearly promotion"
+msgstr "Clasa a fost schimbată de la %s la %s prin promovarea anuală"
+
+#: 
+msgid "Grade names not found"
+msgstr "Numele claselor nu au fost găsite"
+
+#: 
+msgid "Grades"
+msgstr "Clase"
+
+#: 
+msgid "Grades Editor"
+msgstr "Editor de clase"
+
+#: 
+msgid "Grades added"
+msgstr "Clase adăugate"
+
+#: 
+msgid "Grades removed"
+msgstr "Clase eliminate"
+
+#: 
+msgid "Grades renamed: {{total}}"
+msgstr "Clase redenumite: {{total}}"
+
+#: 
+msgid "Grades were already promoted this year, on {{date}}. Promoting again moves everyone up another grade."
+msgstr "Clasele au fost deja promovate anul acesta, la {{date}}. O nouă promovare mută pe toată lumea încă o clasă mai sus."
+
+#: 
+msgid "Grades were promoted by someone else in the meantime. Reload the page to see the new grades."
+msgstr "Între timp, altcineva a promovat clasele. Reîncarcă pagina ca să vezi noile clase."
+
+#: 
+msgid "Grades you added that match a name in the list and are combined with it"
+msgstr "Clasele pe care le-ai adăugat și care se potrivesc cu un nume din listă și sunt combinate cu acesta"
+
+#: 
+msgid "Internal: date and time of the last grade promotion. Do not edit manually."
+msgstr "Intern: data și ora ultimei promovări a claselor. Nu edita manual."
+
+#: 
+msgid "Internal: how the last grade promotion ran and how many people it moved. Do not edit manually."
+msgstr "Intern: cum a rulat ultima promovare a claselor și câte persoane a mutat. Nu edita manual."
+
+#: 
+msgid "Internal: the country whose grade names were last applied to the grade list. Do not edit manually."
+msgstr "Intern: țara ale cărei nume de clase au fost aplicate ultima dată listei de clase. Nu edita manual."
+
+#: 
+msgid "Internal: the day the grade promotion date was last changed (YYYY-MM-DD). Do not edit manually."
+msgstr "Intern: ziua în care data promovării claselor a fost schimbată ultima dată (YYYY-MM-DD). Nu edita manual."
+
+#: 
+msgid "Internal: the list that holds the grade names. Do not edit manually."
+msgstr "Intern: lista care păstrează numele claselor. Nu edita manual."
+
+#: 
+msgid "Last promotion"
+msgstr "Ultima promovare"
+
+#: 
+msgid "Leave empty for one grade"
+msgstr "Lasă gol pentru o singură clasă"
+
+#: 
+msgid "Moved up: %d"
+msgstr "Au urcat: %d"
+
+#: 
+msgid "Moving up: {{total}}"
+msgstr "Urcă: {{total}}"
+
+#: 
+msgid "Next automatic promotion"
+msgstr "Următoarea promovare automată"
+
+#: 
+msgid "Nobody has a grade to promote."
+msgstr "Nimeni nu are o clasă de promovat."
+
+#: 
+msgid "Northern Ireland"
+msgstr "Irlanda de Nord"
+
+#: 
+msgid "People by Grade"
+msgstr "Persoane după clasă"
+
+#: 
+msgid "People in a range of school grades, such as Kindergarten through 5th"
+msgstr "Persoane dintr-un interval de clase școlare, cum ar fi de la grădiniță până la clasa a 5-a"
+
+#: 
+msgid "People whose grade is cleared: {{total}}"
+msgstr "Persoane a căror clasă este golită: {{total}}"
+
+#: 
+msgid "Promote Grades"
+msgstr "Promovează clasele"
+
+#: 
+msgid "Promote Now"
+msgstr "Promovează acum"
+
+#: 
+msgid "Promotion Day"
+msgstr "Ziua promovării"
+
+#: 
+msgid "Promotion Month"
+msgstr "Luna promovării"
+
+#: 
+msgid "Renames the grades to the names used in that country. People keep their grade, and grades you added yourself stay."
+msgstr "Redenumește clasele cu numele folosite în acea țară. Persoanele își păstrează clasa, iar clasele adăugate de tine rămân."
+
+#: 
+msgid "Scheduled Task"
+msgstr "Sarcină programată"
+
+#: 
+msgid "Scotland"
+msgstr "Scoția"
+
+#: 
+msgid "The day of that month on which grades are promoted. A day past the end of the month means its last day."
+msgstr "Ziua din acea lună în care clasele sunt promovate. O zi de după sfârșitul lunii înseamnă ultima ei zi."
+
+#: 
+msgid "The grades already use these names."
+msgstr "Clasele folosesc deja aceste nume."
+
+#: 
+msgid "The grades changed after the preview. Review the changes again before applying them."
+msgstr "Clasele s-au schimbat după previzualizare. Verifică din nou modificările înainte de a le aplica."
+
+#: 
+msgid "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off."
+msgstr "Luna în care toți cei cu o clasă urcă o clasă. Dezactivat oprește promovarea automată."
+
+#: 
+msgid "Through Grade"
+msgstr "Până la clasa"
+

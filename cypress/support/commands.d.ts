@@ -623,4 +623,7 @@ declare namespace Cypress {
 
   /** Value previously loaded with cy.rememberTestEnv(). */
   function testEnv(key: string): unknown;
+
+  /** Mailpit base URL of the stack under test, without a trailing slash. */
+  function mailpitUrl(): string;
 }

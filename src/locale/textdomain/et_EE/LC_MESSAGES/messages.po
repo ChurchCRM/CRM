@@ -24513,3 +24513,203 @@ msgstr "Tabel näitab ainult viimast 20 saatmist. Kogu ajaloo nägemiseks avage 
 msgid "View %d failed sends across all email history"
 msgstr "Näita %d ebaõnnestunud saatmist kogu e-kirjade ajaloos"
 
+#: 
+msgid "Add New Grade"
+msgstr "Lisa uus klass"
+
+#: 
+msgid "Change Grade Names"
+msgstr "Muuda klasside nimesid"
+
+#: 
+msgid "England and Wales"
+msgstr "Inglismaa ja Wales"
+
+#: 
+msgid "Every year each person moves to the next grade in this order, and the last grade is cleared."
+msgstr "Igal aastal liigub iga inimene selles järjekorras järgmisse klassi ja viimane klass tühjendatakse."
+
+#: 
+msgid "Everyone with a grade will move up one grade now, and this will count as this year's promotion."
+msgstr "Kõik, kellel on klass, liiguvad nüüd ühe klassi võrra edasi ja see loetakse selle aasta edutamiseks."
+
+#: 
+msgid "Finished %s, so the yearly promotion cleared the grade"
+msgstr "Lõpetas %s, seega aastane edutamine tühjendas klassi"
+
+#: 
+msgid "Finished the last grade: %d"
+msgstr "Lõpetasid viimase klassi: %d"
+
+#: 
+msgid "Finishing the last grade (grade will be cleared): {{total}}"
+msgstr "Lõpetavad viimase klassi (klass tühjendatakse): {{total}}"
+
+#: 
+msgid "From Grade"
+msgstr "Klassist"
+
+#: 
+msgid "Grade"
+msgstr "Klass"
+
+#: 
+msgid "Grade %s cleared when the grade names changed to %s"
+msgstr "Klass %s tühjendati, kui klasside nimed muudeti nimeks %s"
+
+#: 
+msgid "Grade Names"
+msgstr "Klasside nimed"
+
+#: 
+msgid "Grade Promotion"
+msgstr "Klasside edutamine"
+
+#: 
+msgid "Grade changed from %s to %s by the yearly promotion"
+msgstr "Klass muudeti aastase edutamisega %s-lt %s-ks"
+
+#: 
+msgid "Grade names not found"
+msgstr "Klasside nimesid ei leitud"
+
+#: 
+msgid "Grades"
+msgstr "Klassid"
+
+#: 
+msgid "Grades Editor"
+msgstr "Klasside redaktor"
+
+#: 
+msgid "Grades added"
+msgstr "Klassid lisatud"
+
+#: 
+msgid "Grades removed"
+msgstr "Klassid eemaldatud"
+
+#: 
+msgid "Grades renamed: {{total}}"
+msgstr "Klassid ümber nimetatud: {{total}}"
+
+#: 
+msgid "Grades were already promoted this year, on {{date}}. Promoting again moves everyone up another grade."
+msgstr "Klasse on sel aastal juba edutatud, kuupäeval {{date}}. Uuesti edutamine viib kõik veel ühe klassi võrra edasi."
+
+#: 
+msgid "Grades were promoted by someone else in the meantime. Reload the page to see the new grades."
+msgstr "Klasse edutas vahepeal keegi teine. Uute klasside nägemiseks laadige leht uuesti."
+
+#: 
+msgid "Grades you added that match a name in the list and are combined with it"
+msgstr "Teie lisatud klassid, mis kattuvad loendis oleva nimega ja liidetakse sellega"
+
+#: 
+msgid "Internal: date and time of the last grade promotion. Do not edit manually."
+msgstr "Sisemine: viimase klasside edutamise kuupäev ja kellaaeg. Ärge muutke käsitsi."
+
+#: 
+msgid "Internal: how the last grade promotion ran and how many people it moved. Do not edit manually."
+msgstr "Sisemine: kuidas viimane klasside edutamine toimus ja kui palju inimesi see liigutas. Ärge muutke käsitsi."
+
+#: 
+msgid "Internal: the country whose grade names were last applied to the grade list. Do not edit manually."
+msgstr "Sisemine: riik, mille klasside nimed viimati klasside loendile rakendati. Ärge muutke käsitsi."
+
+#: 
+msgid "Internal: the day the grade promotion date was last changed (YYYY-MM-DD). Do not edit manually."
+msgstr "Sisemine: päev, mil klasside edutamise kuupäeva viimati muudeti (YYYY-MM-DD). Ärge muutke käsitsi."
+
+#: 
+msgid "Internal: the list that holds the grade names. Do not edit manually."
+msgstr "Sisemine: loend, mis sisaldab klasside nimesid. Ärge muutke käsitsi."
+
+#: 
+msgid "Last promotion"
+msgstr "Viimane edutamine"
+
+#: 
+msgid "Leave empty for one grade"
+msgstr "Jätke ühe klassi jaoks tühjaks"
+
+#: 
+msgid "Moved up: %d"
+msgstr "Edasi liikunud: %d"
+
+#: 
+msgid "Moving up: {{total}}"
+msgstr "Liiguvad edasi: {{total}}"
+
+#: 
+msgid "Next automatic promotion"
+msgstr "Järgmine automaatne edutamine"
+
+#: 
+msgid "Nobody has a grade to promote."
+msgstr "Kellelgi pole klassi, mida edutada."
+
+#: 
+msgid "Northern Ireland"
+msgstr "Põhja-Iirimaa"
+
+#: 
+msgid "People by Grade"
+msgstr "Inimesed klassi järgi"
+
+#: 
+msgid "People in a range of school grades, such as Kindergarten through 5th"
+msgstr "Inimesed kooliklasside vahemikus, näiteks lasteaiast kuni 5. klassini"
+
+#: 
+msgid "People whose grade is cleared: {{total}}"
+msgstr "Inimesed, kelle klass tühjendatakse: {{total}}"
+
+#: 
+msgid "Promote Grades"
+msgstr "Eduta klasse"
+
+#: 
+msgid "Promote Now"
+msgstr "Eduta kohe"
+
+#: 
+msgid "Promotion Day"
+msgstr "Edutamise päev"
+
+#: 
+msgid "Promotion Month"
+msgstr "Edutamise kuu"
+
+#: 
+msgid "Renames the grades to the names used in that country. People keep their grade, and grades you added yourself stay."
+msgstr "Nimetab klassid ümber selle riigi nimedeks. Inimesed säilitavad oma klassi ja teie enda lisatud klassid jäävad alles."
+
+#: 
+msgid "Scheduled Task"
+msgstr "Ajastatud ülesanne"
+
+#: 
+msgid "Scotland"
+msgstr "Šotimaa"
+
+#: 
+msgid "The day of that month on which grades are promoted. A day past the end of the month means its last day."
+msgstr "Selle kuu päev, mil klasse edutatakse. Kuu lõpust hilisem päev tähendab selle viimast päeva."
+
+#: 
+msgid "The grades already use these names."
+msgstr "Klassid kasutavad neid nimesid juba."
+
+#: 
+msgid "The grades changed after the preview. Review the changes again before applying them."
+msgstr "Klassid muutusid pärast eelvaadet. Vaadake muudatused enne rakendamist uuesti üle."
+
+#: 
+msgid "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off."
+msgstr "Kuu, mil kõik, kellel on klass, liiguvad ühe klassi võrra edasi. Väljas lülitab automaatse edutamise välja."
+
+#: 
+msgid "Through Grade"
+msgstr "Klassini"
+

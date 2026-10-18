@@ -24633,3 +24633,203 @@ msgstr "يعرض الجدول آخر 20 عملية إرسال فقط. افتح �
 msgid "View %d failed sends across all email history"
 msgstr "عرض %d من عمليات الإرسال الفاشلة في كامل سجل البريد الإلكتروني"
 
+#: 
+msgid "Add New Grade"
+msgstr "إضافة صف جديد"
+
+#: 
+msgid "Change Grade Names"
+msgstr "تغيير أسماء الصفوف"
+
+#: 
+msgid "England and Wales"
+msgstr "إنجلترا وويلز"
+
+#: 
+msgid "Every year each person moves to the next grade in this order, and the last grade is cleared."
+msgstr "كل عام ينتقل كل شخص إلى الصف التالي بهذا الترتيب، ويُمسح الصف الأخير."
+
+#: 
+msgid "Everyone with a grade will move up one grade now, and this will count as this year's promotion."
+msgstr "سينتقل الآن كل من لديه صف إلى الصف التالي، ويُحتسب ذلك ترقية هذا العام."
+
+#: 
+msgid "Finished %s, so the yearly promotion cleared the grade"
+msgstr "أنهى %s، لذلك مسحت الترقية السنوية الصف"
+
+#: 
+msgid "Finished the last grade: %d"
+msgstr "أنهوا الصف الأخير: %d"
+
+#: 
+msgid "Finishing the last grade (grade will be cleared): {{total}}"
+msgstr "ينهون الصف الأخير (سيُمسح الصف): {{total}}"
+
+#: 
+msgid "From Grade"
+msgstr "من الصف"
+
+#: 
+msgid "Grade"
+msgstr "الصف"
+
+#: 
+msgid "Grade %s cleared when the grade names changed to %s"
+msgstr "مُسح الصف %s عندما تغيرت أسماء الصفوف إلى %s"
+
+#: 
+msgid "Grade Names"
+msgstr "أسماء الصفوف"
+
+#: 
+msgid "Grade Promotion"
+msgstr "ترقية الصفوف"
+
+#: 
+msgid "Grade changed from %s to %s by the yearly promotion"
+msgstr "تغيّر الصف من %s إلى %s بالترقية السنوية"
+
+#: 
+msgid "Grade names not found"
+msgstr "لم يُعثر على أسماء الصفوف"
+
+#: 
+msgid "Grades"
+msgstr "الصفوف"
+
+#: 
+msgid "Grades Editor"
+msgstr "محرّر الصفوف"
+
+#: 
+msgid "Grades added"
+msgstr "أُضيفت الصفوف"
+
+#: 
+msgid "Grades removed"
+msgstr "أُزيلت الصفوف"
+
+#: 
+msgid "Grades renamed: {{total}}"
+msgstr "أُعيدت تسمية الصفوف: {{total}}"
+
+#: 
+msgid "Grades were already promoted this year, on {{date}}. Promoting again moves everyone up another grade."
+msgstr "رُقّيت الصفوف بالفعل هذا العام، في {{date}}. الترقية مرة أخرى تنقل الجميع صفًا آخر إلى الأعلى."
+
+#: 
+msgid "Grades were promoted by someone else in the meantime. Reload the page to see the new grades."
+msgstr "رُقّيت الصفوف في هذه الأثناء بواسطة شخص آخر. أعد تحميل الصفحة لرؤية الصفوف الجديدة."
+
+#: 
+msgid "Grades you added that match a name in the list and are combined with it"
+msgstr "الصفوف التي أضفتها وتطابق اسمًا في القائمة وتُدمج معه"
+
+#: 
+msgid "Internal: date and time of the last grade promotion. Do not edit manually."
+msgstr "داخلي: تاريخ ووقت آخر ترقية للصفوف. لا تحرّره يدويًا."
+
+#: 
+msgid "Internal: how the last grade promotion ran and how many people it moved. Do not edit manually."
+msgstr "داخلي: كيف جرت آخر ترقية للصفوف وكم شخصًا نقلت. لا تحرّره يدويًا."
+
+#: 
+msgid "Internal: the country whose grade names were last applied to the grade list. Do not edit manually."
+msgstr "داخلي: البلد الذي طُبّقت أسماء صفوفه آخر مرة على قائمة الصفوف. لا تحرّره يدويًا."
+
+#: 
+msgid "Internal: the day the grade promotion date was last changed (YYYY-MM-DD). Do not edit manually."
+msgstr "داخلي: اليوم الذي تغيّر فيه تاريخ ترقية الصفوف آخر مرة (YYYY-MM-DD). لا تحرّره يدويًا."
+
+#: 
+msgid "Internal: the list that holds the grade names. Do not edit manually."
+msgstr "داخلي: القائمة التي تحفظ أسماء الصفوف. لا تحرّرها يدويًا."
+
+#: 
+msgid "Last promotion"
+msgstr "آخر ترقية"
+
+#: 
+msgid "Leave empty for one grade"
+msgstr "اتركه فارغًا لصف واحد"
+
+#: 
+msgid "Moved up: %d"
+msgstr "انتقلوا للأعلى: %d"
+
+#: 
+msgid "Moving up: {{total}}"
+msgstr "ينتقلون للأعلى: {{total}}"
+
+#: 
+msgid "Next automatic promotion"
+msgstr "الترقية التلقائية التالية"
+
+#: 
+msgid "Nobody has a grade to promote."
+msgstr "لا أحد لديه صف للترقية."
+
+#: 
+msgid "Northern Ireland"
+msgstr "أيرلندا الشمالية"
+
+#: 
+msgid "People by Grade"
+msgstr "الأشخاص حسب الصف"
+
+#: 
+msgid "People in a range of school grades, such as Kindergarten through 5th"
+msgstr "أشخاص في نطاق من الصفوف الدراسية، مثل روضة الأطفال حتى الصف الخامس"
+
+#: 
+msgid "People whose grade is cleared: {{total}}"
+msgstr "الأشخاص الذين يُمسح صفهم: {{total}}"
+
+#: 
+msgid "Promote Grades"
+msgstr "ترقية الصفوف"
+
+#: 
+msgid "Promote Now"
+msgstr "رقِّ الآن"
+
+#: 
+msgid "Promotion Day"
+msgstr "يوم الترقية"
+
+#: 
+msgid "Promotion Month"
+msgstr "شهر الترقية"
+
+#: 
+msgid "Renames the grades to the names used in that country. People keep their grade, and grades you added yourself stay."
+msgstr "يعيد تسمية الصفوف بالأسماء المستخدمة في ذلك البلد. يحتفظ الأشخاص بصفهم، وتبقى الصفوف التي أضفتها بنفسك."
+
+#: 
+msgid "Scheduled Task"
+msgstr "مهمة مجدولة"
+
+#: 
+msgid "Scotland"
+msgstr "اسكتلندا"
+
+#: 
+msgid "The day of that month on which grades are promoted. A day past the end of the month means its last day."
+msgstr "يوم ذلك الشهر الذي تُرقّى فيه الصفوف. اليوم الذي يتجاوز نهاية الشهر يعني آخر يوم فيه."
+
+#: 
+msgid "The grades already use these names."
+msgstr "الصفوف تستخدم هذه الأسماء بالفعل."
+
+#: 
+msgid "The grades changed after the preview. Review the changes again before applying them."
+msgstr "تغيّرت الصفوف بعد المعاينة. راجع التغييرات مرة أخرى قبل تطبيقها."
+
+#: 
+msgid "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off."
+msgstr "الشهر الذي ينتقل فيه كل من لديه صف إلى الصف التالي. إيقاف يُعطّل الترقية التلقائية."
+
+#: 
+msgid "Through Grade"
+msgstr "إلى الصف"
+
