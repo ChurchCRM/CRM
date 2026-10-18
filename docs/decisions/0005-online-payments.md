@@ -584,7 +584,7 @@ See F2. Framing stays forbidden (`X-Frame-Options: SAMEORIGIN`; cross-site ifram
   - **Households:** families with gifts but no living, active head.
 - Finance dashboard card; family view Source column (the pledges and payments DataTable in `FamilyView.js`; the "Given by" column, the person Giving card and the fund toggle are RFC 0004's GIV-06 and GIV-80); `DepositSlipEditor.php` gross/fees/net; `PledgeDetails.php` "Online transaction" panel; paddle list Send payment link, Paid, Balance.
 
-**Statements.** Moved to RFC 0004 §5 (`GivingStatementService`, the Household, Individual and Both modes, the tax-statements view and the head-list fixes). This RFC adds: crypto in a non-cash section without value (GIV-24); covered fees included; refunds netted; the same service behind the portal downloads (GIV-30).
+**Statements.** Moved to RFC 0004 §5 (`GivingStatementService`, the Household, Individual and Both modes, the tax-statements route and view, and the head-list fixes). This RFC adds: crypto in a non-cash section without value (GIV-24); covered fees included; refunds netted; the same service behind the portal downloads (GIV-30).
 
 ### 5.4 Reports
 - Moved to RFC 0004 §5: the "Anonymous" label, the LEFT JOINs and refund netting in the pledge summaries (GIV-02), and the donor count (GIV-05). They are what make this RFC's negative rows net.
