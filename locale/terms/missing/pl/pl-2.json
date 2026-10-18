@@ -1,62 +1,62 @@
 {
-  "Your coordinator": "",
-  "Your teams: %s": "",
-  "positionIds must be a list of position ids": "",
-  "{{name}} ({{family}} family)": "",
-  "{{name}} assigned and recorded as accepted": "",
-  "Ask an administrator to change your sign-in email.": "",
-  "Email changed by an administrator from %1$s to %2$s": "",
-  "Only an administrator can change the email of a person with a user account.": "",
+  "Your coordinator": "Twój koordynator",
+  "Your teams: %s": "Twoje zespoły: %s",
+  "positionIds must be a list of position ids": "positionIds musi być listą identyfikatorów stanowisk",
+  "{{name}} ({{family}} family)": "{{name}} (rodzina {{family}})",
+  "{{name}} assigned and recorded as accepted": "{{name}} przypisano i zapisano jako przyjęte",
+  "Ask an administrator to change your sign-in email.": "Poproś administratora o zmianę adresu e-mail do logowania.",
+  "Email changed by an administrator from %1$s to %2$s": "Administrator zmienił e-mail z %1$s na %2$s",
+  "Only an administrator can change the email of a person with a user account.": "Tylko administrator może zmienić e-mail osoby z kontem użytkownika.",
   "Delete ({{count}})": {
-    "one": "",
-    "other": ""
+    "one": "Usuń (1)",
+    "other": "Usuń ({{count}})"
   },
   "Delete events ({{count}})": {
-    "one": "",
-    "other": ""
+    "one": "Usuń wydarzenie (1)",
+    "other": "Usuń wydarzenia ({{count}})"
   },
   "Delete {{count}} occurrences? Their assignments, the volunteers' responses, any substitutions and every queued reminder go with them. This cannot be undone.": {
-    "one": "",
-    "other": ""
+    "one": "Usunąć 1 wystąpienie? Wraz z nim znikną przydziały, odpowiedzi wolontariuszy, zastępstwa i wszystkie przypomnienia w kolejce. Tej operacji nie można cofnąć.",
+    "other": "Usunąć {{count}} wystąpień? Wraz z nimi znikną przydziały, odpowiedzi wolontariuszy, zastępstwa i wszystkie przypomnienia w kolejce. Tej operacji nie można cofnąć."
   },
   "Occurrences are created for events in the next {{count}} weeks (through {{date}}).": {
-    "one": "",
-    "other": ""
+    "one": "Wystąpienia są tworzone dla wydarzeń w następnym tygodniu (do {{date}}).",
+    "other": "Wystąpienia są tworzone dla wydarzeń w następnych {{count}} tygodniach (do {{date}})."
   },
   "They finish {{count}} minutes after the event ends.": {
-    "one": "",
-    "other": ""
+    "one": "Kończą 1 minutę po zakończeniu wydarzenia.",
+    "other": "Kończą {{count}} minut po zakończeniu wydarzenia."
   },
   "They finish {{count}} minutes before the event ends.": {
-    "one": "",
-    "other": ""
+    "one": "Kończą 1 minutę przed zakończeniem wydarzenia.",
+    "other": "Kończą {{count}} minut przed zakończeniem wydarzenia."
   },
   "Volunteers start {{count}} minutes after the event starts.": {
-    "one": "",
-    "other": ""
+    "one": "Wolontariusze zaczynają 1 minutę po rozpoczęciu wydarzenia.",
+    "other": "Wolontariusze zaczynają {{count}} minut po rozpoczęciu wydarzenia."
   },
   "Volunteers start {{count}} minutes before the event starts.": {
-    "one": "",
-    "other": ""
+    "one": "Wolontariusze zaczynają 1 minutę przed rozpoczęciem wydarzenia.",
+    "other": "Wolontariusze zaczynają {{count}} minut przed rozpoczęciem wydarzenia."
   },
   "{{count}} needed": {
-    "one": "",
-    "other": ""
+    "one": "Potrzeba 1",
+    "other": "Potrzeba {{count}}"
   },
   "{{count}} occurrences deleted": {
-    "one": "",
-    "other": ""
+    "one": "Usunięto 1 wystąpienie",
+    "other": "Usunięto {{count}} wystąpień"
   },
   "{{failed}} of {{count}} occurrences could not be deleted": {
-    "one": "",
-    "other": ""
+    "one": "Nie udało się usunąć {{failed}} z 1 wystąpienia",
+    "other": "Nie udało się usunąć {{failed}} z {{count}} wystąpień"
   },
   "{{name}} ({{count}} upcoming)": {
-    "one": "",
-    "other": ""
+    "one": "{{name}} (1 nadchodzące)",
+    "other": "{{name}} ({{count}} nadchodzących)"
   },
   "{{title}} ({{count}} upcoming)": {
-    "one": "",
-    "other": ""
+    "one": "{{title}} (1 nadchodzące)",
+    "other": "{{title}} ({{count}} nadchodzących)"
   }
 }
