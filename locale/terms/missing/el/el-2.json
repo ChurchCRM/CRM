@@ -1,62 +1,62 @@
 {
-  "Your coordinator": "",
-  "Your teams: %s": "",
-  "positionIds must be a list of position ids": "",
-  "{{name}} ({{family}} family)": "",
-  "{{name}} assigned and recorded as accepted": "",
-  "Ask an administrator to change your sign-in email.": "",
-  "Email changed by an administrator from %1$s to %2$s": "",
-  "Only an administrator can change the email of a person with a user account.": "",
+  "Your coordinator": "Ο συντονιστής σας",
+  "Your teams: %s": "Οι ομάδες σας: %s",
+  "positionIds must be a list of position ids": "Το positionIds πρέπει να είναι λίστα αναγνωριστικών θέσεων",
+  "{{name}} ({{family}} family)": "{{name}} (οικογένεια {{family}})",
+  "{{name}} assigned and recorded as accepted": "Το πρόσωπο {{name}} ανατέθηκε και καταγράφηκε ως αποδεκτό",
+  "Ask an administrator to change your sign-in email.": "Ζητήστε από έναν διαχειριστή να αλλάξει το ηλ. ταχυδρομείο σύνδεσής σας.",
+  "Email changed by an administrator from %1$s to %2$s": "Το ηλ. ταχυδρομείο άλλαξε από διαχειριστή από %1$s σε %2$s",
+  "Only an administrator can change the email of a person with a user account.": "Μόνο διαχειριστής μπορεί να αλλάξει το ηλ. ταχυδρομείο προσώπου με λογαριασμό χρήστη.",
   "Delete ({{count}})": {
-    "one": "",
-    "other": ""
+    "one": "Διαγραφή (1)",
+    "other": "Διαγραφή ({{count}})"
   },
   "Delete events ({{count}})": {
-    "one": "",
-    "other": ""
+    "one": "Διαγραφή γεγονότος (1)",
+    "other": "Διαγραφή γεγονότων ({{count}})"
   },
   "Delete {{count}} occurrences? Their assignments, the volunteers' responses, any substitutions and every queued reminder go with them. This cannot be undone.": {
-    "one": "",
-    "other": ""
+    "one": "Να διαγραφεί 1 εμφάνιση; Μαζί της φεύγουν οι αναθέσεις, οι απαντήσεις των εθελοντών, οι αναπληρώσεις και κάθε υπενθύμιση στην ουρά. Αυτό δεν αναιρείται.",
+    "other": "Να διαγραφούν {{count}} εμφανίσεις; Μαζί τους φεύγουν οι αναθέσεις, οι απαντήσεις των εθελοντών, οι αναπληρώσεις και κάθε υπενθύμιση στην ουρά. Αυτό δεν αναιρείται."
   },
   "Occurrences are created for events in the next {{count}} weeks (through {{date}}).": {
-    "one": "",
-    "other": ""
+    "one": "Οι εμφανίσεις δημιουργούνται για γεγονότα της επόμενης εβδομάδας (έως {{date}}).",
+    "other": "Οι εμφανίσεις δημιουργούνται για γεγονότα των επόμενων {{count}} εβδομάδων (έως {{date}})."
   },
   "They finish {{count}} minutes after the event ends.": {
-    "one": "",
-    "other": ""
+    "one": "Τελειώνουν 1 λεπτό μετά το τέλος του γεγονότος.",
+    "other": "Τελειώνουν {{count}} λεπτά μετά το τέλος του γεγονότος."
   },
   "They finish {{count}} minutes before the event ends.": {
-    "one": "",
-    "other": ""
+    "one": "Τελειώνουν 1 λεπτό πριν από το τέλος του γεγονότος.",
+    "other": "Τελειώνουν {{count}} λεπτά πριν από το τέλος του γεγονότος."
   },
   "Volunteers start {{count}} minutes after the event starts.": {
-    "one": "",
-    "other": ""
+    "one": "Οι εθελοντές αρχίζουν 1 λεπτό μετά την έναρξη του γεγονότος.",
+    "other": "Οι εθελοντές αρχίζουν {{count}} λεπτά μετά την έναρξη του γεγονότος."
   },
   "Volunteers start {{count}} minutes before the event starts.": {
-    "one": "",
-    "other": ""
+    "one": "Οι εθελοντές αρχίζουν 1 λεπτό πριν από την έναρξη του γεγονότος.",
+    "other": "Οι εθελοντές αρχίζουν {{count}} λεπτά πριν από την έναρξη του γεγονότος."
   },
   "{{count}} needed": {
-    "one": "",
-    "other": ""
+    "one": "Χρειάζεται 1",
+    "other": "Χρειάζονται {{count}}"
   },
   "{{count}} occurrences deleted": {
-    "one": "",
-    "other": ""
+    "one": "Διαγράφηκε 1 εμφάνιση",
+    "other": "Διαγράφηκαν {{count}} εμφανίσεις"
   },
   "{{failed}} of {{count}} occurrences could not be deleted": {
-    "one": "",
-    "other": ""
+    "one": "Δεν ήταν δυνατή η διαγραφή {{failed}} από 1 εμφάνιση",
+    "other": "Δεν ήταν δυνατή η διαγραφή {{failed}} από {{count}} εμφανίσεις"
   },
   "{{name}} ({{count}} upcoming)": {
-    "one": "",
-    "other": ""
+    "one": "{{name}} (1 επερχόμενο)",
+    "other": "{{name}} ({{count}} επερχόμενα)"
   },
   "{{title}} ({{count}} upcoming)": {
-    "one": "",
-    "other": ""
+    "one": "{{title}} (1 επερχόμενο)",
+    "other": "{{title}} ({{count}} επερχόμενα)"
   }
 }
