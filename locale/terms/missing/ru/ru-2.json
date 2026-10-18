@@ -1,62 +1,62 @@
 {
-  "Your coordinator": "",
-  "Your teams: %s": "",
-  "positionIds must be a list of position ids": "",
-  "{{name}} ({{family}} family)": "",
-  "{{name}} assigned and recorded as accepted": "",
-  "Ask an administrator to change your sign-in email.": "",
-  "Email changed by an administrator from %1$s to %2$s": "",
-  "Only an administrator can change the email of a person with a user account.": "",
+  "Your coordinator": "Ваш координатор",
+  "Your teams: %s": "Ваши команды: %s",
+  "positionIds must be a list of position ids": "positionIds должен быть списком идентификаторов позиций",
+  "{{name}} ({{family}} family)": "{{name}} (семья {{family}})",
+  "{{name}} assigned and recorded as accepted": "{{name}} назначен и записан как согласившийся",
+  "Ask an administrator to change your sign-in email.": "Попросите администратора изменить почту для входа.",
+  "Email changed by an administrator from %1$s to %2$s": "Администратор изменил почту с %1$s на %2$s",
+  "Only an administrator can change the email of a person with a user account.": "Почту человека с учётной записью может изменить только администратор.",
   "Delete ({{count}})": {
-    "one": "",
-    "other": ""
+    "one": "Удалить ({{count}})",
+    "other": "Удалить ({{count}})"
   },
   "Delete events ({{count}})": {
-    "one": "",
-    "other": ""
+    "one": "Удалить событие",
+    "other": "Удалить события ({{count}})"
   },
   "Delete {{count}} occurrences? Their assignments, the volunteers' responses, any substitutions and every queued reminder go with them. This cannot be undone.": {
-    "one": "",
-    "other": ""
+    "one": "Удалить проведение? Его назначения, ответы добровольцев, замены и все напоминания в очереди удалятся вместе с ним. Это нельзя отменить.",
+    "other": "Удалить {{count}} проведений? Их назначения, ответы добровольцев, замены и все напоминания в очереди удалятся вместе с ними. Это нельзя отменить."
   },
   "Occurrences are created for events in the next {{count}} weeks (through {{date}}).": {
-    "one": "",
-    "other": ""
+    "one": "Проведения создаются для событий на ближайшую неделю (до {{date}}).",
+    "other": "Проведения создаются для событий на следующие {{count}} недель (до {{date}})."
   },
   "They finish {{count}} minutes after the event ends.": {
-    "one": "",
-    "other": ""
+    "one": "Они заканчиваются через минуту после конца события.",
+    "other": "Они заканчиваются через {{count}} минут после конца события."
   },
   "They finish {{count}} minutes before the event ends.": {
-    "one": "",
-    "other": ""
+    "one": "Они заканчиваются за минуту до конца события.",
+    "other": "Они заканчиваются за {{count}} минут до конца события."
   },
   "Volunteers start {{count}} minutes after the event starts.": {
-    "one": "",
-    "other": ""
+    "one": "Добровольцы начинают через минуту после начала события.",
+    "other": "Добровольцы начинают через {{count}} минут после начала события."
   },
   "Volunteers start {{count}} minutes before the event starts.": {
-    "one": "",
-    "other": ""
+    "one": "Добровольцы начинают за минуту до начала события.",
+    "other": "Добровольцы начинают за {{count}} минут до начала события."
   },
   "{{count}} needed": {
-    "one": "",
-    "other": ""
+    "one": "Нужен один",
+    "other": "Нужно {{count}}"
   },
   "{{count}} occurrences deleted": {
-    "one": "",
-    "other": ""
+    "one": "Удалено одно проведение",
+    "other": "Удалено проведений: {{count}}"
   },
   "{{failed}} of {{count}} occurrences could not be deleted": {
-    "one": "",
-    "other": ""
+    "one": "Не удалось удалить {{failed}} из проведений",
+    "other": "Не удалось удалить {{failed}} из {{count}} проведений"
   },
   "{{name}} ({{count}} upcoming)": {
-    "one": "",
-    "other": ""
+    "one": "{{name}} (одно предстоящее)",
+    "other": "{{name}} (предстоящих: {{count}})"
   },
   "{{title}} ({{count}} upcoming)": {
-    "one": "",
-    "other": ""
+    "one": "{{title}} (одно предстоящее)",
+    "other": "{{title}} (предстоящих: {{count}})"
   }
 }

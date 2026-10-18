@@ -8,7 +8,8 @@
     "SHA1 Hash",
     "in",
     "Content Security Policy",
-    "Min"
+    "Min",
+    "{{team}}: {{staffing}}"
   ],
   "cs": [
     "AM / PM",
@@ -34,7 +35,9 @@
     "Material",
     "SHA1 Hash",
     "am / pm",
-    "Individual"
+    "Individual",
+    "{{team}}: {{staffing}}",
+    "General"
   ],
   "es-AR": [
     "AM / PM",
@@ -44,7 +47,9 @@
     "Manual",
     "Material",
     "SHA1 Hash",
-    "am / pm"
+    "am / pm",
+    "{{team}}: {{staffing}}",
+    "General"
   ],
   "es-CO": [
     "AM / PM",
@@ -55,7 +60,9 @@
     "Material",
     "SHA1 Hash",
     "am / pm",
-    "Individual"
+    "Individual",
+    "{{team}}: {{staffing}}",
+    "General"
   ],
   "es-MX": [
     "AM / PM",
@@ -66,7 +73,9 @@
     "Material",
     "SHA1 Hash",
     "am / pm",
-    "Individual"
+    "Individual",
+    "{{team}}: {{staffing}}",
+    "General"
   ],
   "es-SV": [
     "AM / PM",
@@ -77,7 +86,9 @@
     "Material",
     "SHA1 Hash",
     "am / pm",
-    "Individual"
+    "Individual",
+    "{{team}}: {{staffing}}",
+    "General"
   ],
   "et": [
     "Audit",
@@ -513,7 +524,8 @@
     "Min",
     "Reset link",
     "SMTP test",
-    "Kiosk Settings"
+    "Kiosk Settings",
+    "{{team}}: {{staffing}}"
   ],
   "fr": [
     "AM / PM",
@@ -555,7 +567,8 @@
   "hi": [
     "HTML URL",
     "ICS URL",
-    "SHA1 Hash"
+    "SHA1 Hash",
+    "{{team}}: {{staffing}}"
   ],
   "id": [
     "AM / PM",
@@ -575,19 +588,22 @@
     "Data",
     "Folder",
     "Min",
-    "Valid"
+    "Valid",
+    "{{team}}: {{staffing}}"
   ],
   "ja": [
     "Azure",
     "HTML URL",
     "ICS URL",
-    "SHA1 Hash"
+    "SHA1 Hash",
+    "{{team}}: {{staffing}}"
   ],
   "ko": [
     "Azure",
     "HTML URL",
     "ICS URL",
-    "SHA1 Hash"
+    "SHA1 Hash",
+    "{{team}}: {{staffing}}"
   ],
   "nl": [
     "4. Kiosk",
@@ -619,7 +635,8 @@
     "Max",
     "Min",
     "Team",
-    "Teams"
+    "Teams",
+    "{{team}}: {{staffing}}"
   ],
   "pt": [
     "AM / PM",
@@ -631,10 +648,12 @@
     "SHA1 Hash",
     "am / pm",
     "Offline",
-    "Individual"
+    "Individual",
+    "{{team}}: {{staffing}}"
   ],
   "pt-BR": [
-    "Azure"
+    "Azure",
+    "{{team}}: {{staffing}}"
   ],
   "pt-br": [
     "AM / PM",
@@ -650,7 +669,8 @@
   ],
   "ru": [
     "Azure",
-    "SHA1 Hash"
+    "SHA1 Hash",
+    "{{team}}: {{staffing}}"
   ],
   "sq": [
     "4. Kiosk",
@@ -676,7 +696,8 @@
   "vi": [
     "Azure",
     "Email BCC",
-    "SHA1 Hash"
+    "SHA1 Hash",
+    "{{team}}: {{staffing}}"
   ],
   "zh-CN": [
     "Azure",
@@ -718,7 +739,8 @@
     "Offline",
     "File",
     "Max",
-    "Min"
+    "Min",
+    "{{team}}: {{staffing}}"
   ],
   "ml": [
     "-----------------------------------------------------------------------------------------------------------------------------------------------",
@@ -734,7 +756,8 @@
     "PDF",
     "SHA1 Hash",
     "URL",
-    "manifest."
+    "manifest.",
+    "{{team}}: {{staffing}}"
   ],
   "nb": [
     "4. Kiosk",
@@ -760,7 +783,8 @@
     "Content Security Policy",
     "Min",
     "Send",
-    "Team"
+    "Team",
+    "{{team}}: {{staffing}}"
   ],
   "pl": [
     "4. Kiosk",
@@ -802,7 +826,9 @@
     "Catalog",
     "Max",
     "Min",
-    "Valid"
+    "Valid",
+    "{{team}}: {{staffing}}",
+    "General"
   ],
   "sv": [
     "4. Kiosk",
@@ -826,7 +852,8 @@
     "Content Security Policy",
     "Max",
     "Min",
-    "Team"
+    "Team",
+    "{{team}}: {{staffing}}"
   ],
   "sw": [
     "AM / PM",
@@ -834,11 +861,13 @@
     "Indigo",
     "SHA1 Hash",
     "am / pm",
-    "Data"
+    "Data",
+    "{{team}}: {{staffing}}"
   ],
   "ta": [
     "Azure",
-    "SHA1 Hash"
+    "SHA1 Hash",
+    "{{team}}: {{staffing}}"
   ],
   "te": [
     "App",
@@ -860,7 +889,8 @@
     "SHA1 Hash",
     "Server",
     "Test",
-    "Timeout"
+    "Timeout",
+    "{{team}}: {{staffing}}"
   ],
   "th": [
     "App",
@@ -875,11 +905,13 @@
     "Server",
     "Session Handler",
     "Test",
-    "Timeout"
+    "Timeout",
+    "{{team}}: {{staffing}}"
   ],
   "uk": [
     "Azure",
-    "SHA1 Hash"
+    "SHA1 Hash",
+    "{{team}}: {{staffing}}"
   ],
   "de": [
     "AM / PM",
@@ -898,7 +930,8 @@
     "Team",
     "Teams",
     "Theme",
-    "Themes"
+    "Themes",
+    "{{team}}: {{staffing}}"
   ],
   "hr": [
     "-----------------------------------------------------------------------------------------------------------------------------------------------",
@@ -976,10 +1009,12 @@
     "SHA1 Hash"
   ],
   "ar": [
-    "SHA1 Hash"
+    "SHA1 Hash",
+    "{{team}}: {{staffing}}"
   ],
   "he": [
-    "SHA1 Hash"
+    "SHA1 Hash",
+    "{{team}}: {{staffing}}"
   ],
   "sk": [
     "SHA1 Hash",

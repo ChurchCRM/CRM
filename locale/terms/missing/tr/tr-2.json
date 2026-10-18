@@ -1,62 +1,62 @@
 {
-  "Your coordinator": "",
-  "Your teams: %s": "",
-  "positionIds must be a list of position ids": "",
-  "{{name}} ({{family}} family)": "",
-  "{{name}} assigned and recorded as accepted": "",
-  "Ask an administrator to change your sign-in email.": "",
-  "Email changed by an administrator from %1$s to %2$s": "",
-  "Only an administrator can change the email of a person with a user account.": "",
+  "Your coordinator": "Koordinatörünüz",
+  "Your teams: %s": "Ekipleriniz: %s",
+  "positionIds must be a list of position ids": "positionIds bir görev kimlikleri listesi olmalıdır",
+  "{{name}} ({{family}} family)": "{{name}} ({{family}} ailesi)",
+  "{{name}} assigned and recorded as accepted": "{{name}} atandı ve kabul edilmiş olarak kaydedildi",
+  "Ask an administrator to change your sign-in email.": "Oturum e-postanızı değiştirmesi için bir yöneticiden isteyin.",
+  "Email changed by an administrator from %1$s to %2$s": "E-posta bir yönetici tarafından %1$s adresinden %2$s adresine değiştirildi",
+  "Only an administrator can change the email of a person with a user account.": "Kullanıcı hesabı olan bir kişinin e-postasını yalnızca yönetici değiştirebilir.",
   "Delete ({{count}})": {
-    "one": "",
-    "other": ""
+    "one": "Sil (1)",
+    "other": "Sil ({{count}})"
   },
   "Delete events ({{count}})": {
-    "one": "",
-    "other": ""
+    "one": "Etkinliği sil (1)",
+    "other": "Etkinlikleri sil ({{count}})"
   },
   "Delete {{count}} occurrences? Their assignments, the volunteers' responses, any substitutions and every queued reminder go with them. This cannot be undone.": {
-    "one": "",
-    "other": ""
+    "one": "1 oluşum silinsin mi? Atamaları, gönüllülerin yanıtları, yedeklemeler ve kuyruktaki her anımsatıcı onunla birlikte gider. Bu geri alınamaz.",
+    "other": "{{count}} oluşum silinsin mi? Atamaları, gönüllülerin yanıtları, yedeklemeler ve kuyruktaki her anımsatıcı onlarla birlikte gider. Bu geri alınamaz."
   },
   "Occurrences are created for events in the next {{count}} weeks (through {{date}}).": {
-    "one": "",
-    "other": ""
+    "one": "Oluşumlar gelecek haftanın etkinlikleri için oluşturulur ({{date}} tarihine kadar).",
+    "other": "Oluşumlar sonraki {{count}} haftanın etkinlikleri için oluşturulur ({{date}} tarihine kadar)."
   },
   "They finish {{count}} minutes after the event ends.": {
-    "one": "",
-    "other": ""
+    "one": "Etkinlik bittikten 1 dakika sonra biterler.",
+    "other": "Etkinlik bittikten {{count}} dakika sonra biterler."
   },
   "They finish {{count}} minutes before the event ends.": {
-    "one": "",
-    "other": ""
+    "one": "Etkinlik bitmeden 1 dakika önce biterler.",
+    "other": "Etkinlik bitmeden {{count}} dakika önce biterler."
   },
   "Volunteers start {{count}} minutes after the event starts.": {
-    "one": "",
-    "other": ""
+    "one": "Gönüllüler etkinlik başladıktan 1 dakika sonra başlar.",
+    "other": "Gönüllüler etkinlik başladıktan {{count}} dakika sonra başlar."
   },
   "Volunteers start {{count}} minutes before the event starts.": {
-    "one": "",
-    "other": ""
+    "one": "Gönüllüler etkinlik başlamadan 1 dakika önce başlar.",
+    "other": "Gönüllüler etkinlik başlamadan {{count}} dakika önce başlar."
   },
   "{{count}} needed": {
-    "one": "",
-    "other": ""
+    "one": "1 gerekli",
+    "other": "{{count}} gerekli"
   },
   "{{count}} occurrences deleted": {
-    "one": "",
-    "other": ""
+    "one": "1 oluşum silindi",
+    "other": "{{count}} oluşum silindi"
   },
   "{{failed}} of {{count}} occurrences could not be deleted": {
-    "one": "",
-    "other": ""
+    "one": "1 oluşumdan {{failed}} silinemedi",
+    "other": "{{count}} oluşumdan {{failed}} silinemedi"
   },
   "{{name}} ({{count}} upcoming)": {
-    "one": "",
-    "other": ""
+    "one": "{{name}} (1 yaklaşan)",
+    "other": "{{name}} ({{count}} yaklaşan)"
   },
   "{{title}} ({{count}} upcoming)": {
-    "one": "",
-    "other": ""
+    "one": "{{title}} (1 yaklaşan)",
+    "other": "{{title}} ({{count}} yaklaşan)"
   }
 }

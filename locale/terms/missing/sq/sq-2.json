@@ -1,62 +1,62 @@
 {
-  "Your coordinator": "",
-  "Your teams: %s": "",
-  "positionIds must be a list of position ids": "",
-  "{{name}} ({{family}} family)": "",
-  "{{name}} assigned and recorded as accepted": "",
-  "Ask an administrator to change your sign-in email.": "",
-  "Email changed by an administrator from %1$s to %2$s": "",
-  "Only an administrator can change the email of a person with a user account.": "",
+  "Your coordinator": "Koordinatori yt",
+  "Your teams: %s": "Ekipet e tua: %s",
+  "positionIds must be a list of position ids": "positionIds duhet të jetë një listë identifikuesish pozicionesh",
+  "{{name}} ({{family}} family)": "{{name}} (familja {{family}})",
+  "{{name}} assigned and recorded as accepted": "{{name}} u caktua dhe u regjistrua si i pranuar",
+  "Ask an administrator to change your sign-in email.": "Kërkoji një administratori të ndryshojë emailin tënd të hyrjes.",
+  "Email changed by an administrator from %1$s to %2$s": "Emaili u ndryshua nga një administrator nga %1$s në %2$s",
+  "Only an administrator can change the email of a person with a user account.": "Vetëm një administrator mund të ndryshojë emailin e një personi me llogari përdoruesi.",
   "Delete ({{count}})": {
-    "one": "",
-    "other": ""
+    "one": "Fshi (1)",
+    "other": "Fshi ({{count}})"
   },
   "Delete events ({{count}})": {
-    "one": "",
-    "other": ""
+    "one": "Fshi ngjarjen (1)",
+    "other": "Fshi ngjarjet ({{count}})"
   },
   "Delete {{count}} occurrences? Their assignments, the volunteers' responses, any substitutions and every queued reminder go with them. This cannot be undone.": {
-    "one": "",
-    "other": ""
+    "one": "Të fshihet 1 rast? Bashkë me të shkojnë caktimet, përgjigjet e vullnetarëve, zëvendësimet dhe çdo kujtesë në radhë. Kjo nuk zhbëhet.",
+    "other": "Të fshihen {{count}} raste? Bashkë me to shkojnë caktimet, përgjigjet e vullnetarëve, zëvendësimet dhe çdo kujtesë në radhë. Kjo nuk zhbëhet."
   },
   "Occurrences are created for events in the next {{count}} weeks (through {{date}}).": {
-    "one": "",
-    "other": ""
+    "one": "Rastet krijohen për ngjarjet e javës së ardhshme (deri më {{date}}).",
+    "other": "Rastet krijohen për ngjarjet e {{count}} javëve të ardhshme (deri më {{date}})."
   },
   "They finish {{count}} minutes after the event ends.": {
-    "one": "",
-    "other": ""
+    "one": "Përfundojnë 1 minutë pas mbarimit të ngjarjes.",
+    "other": "Përfundojnë {{count}} minuta pas mbarimit të ngjarjes."
   },
   "They finish {{count}} minutes before the event ends.": {
-    "one": "",
-    "other": ""
+    "one": "Përfundojnë 1 minutë para mbarimit të ngjarjes.",
+    "other": "Përfundojnë {{count}} minuta para mbarimit të ngjarjes."
   },
   "Volunteers start {{count}} minutes after the event starts.": {
-    "one": "",
-    "other": ""
+    "one": "Vullnetarët fillojnë 1 minutë pas fillimit të ngjarjes.",
+    "other": "Vullnetarët fillojnë {{count}} minuta pas fillimit të ngjarjes."
   },
   "Volunteers start {{count}} minutes before the event starts.": {
-    "one": "",
-    "other": ""
+    "one": "Vullnetarët fillojnë 1 minutë para fillimit të ngjarjes.",
+    "other": "Vullnetarët fillojnë {{count}} minuta para fillimit të ngjarjes."
   },
   "{{count}} needed": {
-    "one": "",
-    "other": ""
+    "one": "Duhet 1",
+    "other": "Duhen {{count}}"
   },
   "{{count}} occurrences deleted": {
-    "one": "",
-    "other": ""
+    "one": "U fshi 1 rast",
+    "other": "U fshinë {{count}} raste"
   },
   "{{failed}} of {{count}} occurrences could not be deleted": {
-    "one": "",
-    "other": ""
+    "one": "{{failed}} nga 1 rast nuk u fshi dot",
+    "other": "{{failed}} nga {{count}} raste nuk u fshinë dot"
   },
   "{{name}} ({{count}} upcoming)": {
-    "one": "",
-    "other": ""
+    "one": "{{name}} (1 e ardhshme)",
+    "other": "{{name}} ({{count}} të ardhshme)"
   },
   "{{title}} ({{count}} upcoming)": {
-    "one": "",
-    "other": ""
+    "one": "{{title}} (1 e ardhshme)",
+    "other": "{{title}} ({{count}} të ardhshme)"
   }
 }

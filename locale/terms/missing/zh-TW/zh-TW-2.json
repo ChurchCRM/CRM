@@ -1,62 +1,62 @@
 {
-  "Your coordinator": "",
-  "Your teams: %s": "",
-  "positionIds must be a list of position ids": "",
-  "{{name}} ({{family}} family)": "",
-  "{{name}} assigned and recorded as accepted": "",
-  "Ask an administrator to change your sign-in email.": "",
-  "Email changed by an administrator from %1$s to %2$s": "",
-  "Only an administrator can change the email of a person with a user account.": "",
+  "Your coordinator": "你的協調員",
+  "Your teams: %s": "你的團隊：%s",
+  "positionIds must be a list of position ids": "positionIds 必須是崗位編號的清單",
+  "{{name}} ({{family}} family)": "{{name}}（{{family}} 家庭）",
+  "{{name}} assigned and recorded as accepted": "已指派 {{name}}，並記錄為已接受",
+  "Ask an administrator to change your sign-in email.": "請讓管理員更改你的登入電子郵件。",
+  "Email changed by an administrator from %1$s to %2$s": "管理員已將電子郵件從 %1$s 更改為 %2$s",
+  "Only an administrator can change the email of a person with a user account.": "只有管理員可以更改擁有使用者帳號的人員的電子郵件。",
   "Delete ({{count}})": {
-    "one": "",
-    "other": ""
+    "one": "刪除（{{count}}）",
+    "other": "刪除（{{count}}）"
   },
   "Delete events ({{count}})": {
-    "one": "",
-    "other": ""
+    "one": "刪除活動（{{count}}）",
+    "other": "刪除活動（{{count}}）"
   },
   "Delete {{count}} occurrences? Their assignments, the volunteers' responses, any substitutions and every queued reminder go with them. This cannot be undone.": {
-    "one": "",
-    "other": ""
+    "one": "要刪除 {{count}} 次安排嗎？人員指派、志工的回覆、所有代班，以及所有排隊中的提醒都會一併刪除。此操作無法復原。",
+    "other": "要刪除 {{count}} 次安排嗎？人員指派、志工的回覆、所有代班，以及所有排隊中的提醒都會一併刪除。此操作無法復原。"
   },
   "Occurrences are created for events in the next {{count}} weeks (through {{date}}).": {
-    "one": "",
-    "other": ""
+    "one": "將為接下來 {{count}} 週內（截至 {{date}}）的活動建立各次安排。",
+    "other": "將為接下來 {{count}} 週內（截至 {{date}}）的活動建立各次安排。"
   },
   "They finish {{count}} minutes after the event ends.": {
-    "one": "",
-    "other": ""
+    "one": "他們在活動結束後 {{count}} 分鐘結束。",
+    "other": "他們在活動結束後 {{count}} 分鐘結束。"
   },
   "They finish {{count}} minutes before the event ends.": {
-    "one": "",
-    "other": ""
+    "one": "他們在活動結束前 {{count}} 分鐘結束。",
+    "other": "他們在活動結束前 {{count}} 分鐘結束。"
   },
   "Volunteers start {{count}} minutes after the event starts.": {
-    "one": "",
-    "other": ""
+    "one": "志工在活動開始後 {{count}} 分鐘開始。",
+    "other": "志工在活動開始後 {{count}} 分鐘開始。"
   },
   "Volunteers start {{count}} minutes before the event starts.": {
-    "one": "",
-    "other": ""
+    "one": "志工在活動開始前 {{count}} 分鐘開始。",
+    "other": "志工在活動開始前 {{count}} 分鐘開始。"
   },
   "{{count}} needed": {
-    "one": "",
-    "other": ""
+    "one": "需要 {{count}}",
+    "other": "需要 {{count}}"
   },
   "{{count}} occurrences deleted": {
-    "one": "",
-    "other": ""
+    "one": "已刪除 {{count}} 次安排",
+    "other": "已刪除 {{count}} 次安排"
   },
   "{{failed}} of {{count}} occurrences could not be deleted": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} 次安排中有 {{failed}} 次無法刪除",
+    "other": "{{count}} 次安排中有 {{failed}} 次無法刪除"
   },
   "{{name}} ({{count}} upcoming)": {
-    "one": "",
-    "other": ""
+    "one": "{{name}}（即將到來 {{count}}）",
+    "other": "{{name}}（即將到來 {{count}}）"
   },
   "{{title}} ({{count}} upcoming)": {
-    "one": "",
-    "other": ""
+    "one": "{{title}}（即將到來 {{count}}）",
+    "other": "{{title}}（即將到來 {{count}}）"
   }
 }
