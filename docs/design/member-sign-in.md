@@ -1,12 +1,13 @@
 # Member Portal sign-in: email and passkeys, portal permissions, and email that belongs to people
 
-**Status:** revised proposal, for George's approval before any work starts. It replaces the password-based design first posted on this PR. Nothing is built, and no child issues are filed.
+**Status:** accepted for 7.9.0 (George, 2026-10-17). The work lands on the branch `feature/member-sign-in`, one issue and one PR per row of §16. It replaces the password-based design first posted on this PR.
 
 **Parent:** #10463 · **Related:** #10511 (authorization RFC), #10392 and #9843 (Login as User), #10197 (throttling), #8977 (Member Portal)
 
 ## Summary
 
 - **Members sign in with their own email address.** ChurchCRM emails a code and a link. Members have no user account and no password. The web root opens the member sign-in page, `/portal/login`.
+- **Admin → Users lists staff only.** Members never appear there.
 - **Passkeys come in the same release.** After the first email sign-in, a member can choose to add a passkey or to stay signed in on their own device. Email is then only for the first time and for getting back in. Nothing is remembered on a device unless the member asks, because it could be a shared or public computer. Google and Microsoft sign-in come later.
 - **Staff sign in at `/admin`**, with their username, password and two-factor, as today. `/admin` takes over from `/session/begin`.
 - **One shared step.** Every way of signing in ends at the same step: "start a portal session for this verified person". That step checks who may sign in, records the sign-in, and is the only code that creates a member session.
@@ -27,6 +28,8 @@
 | 10-10 | George's reply | "Good with all." The authorization model needs redoing, ideally in the same release, but much can be done without it. George will make sure the APIs exist for a mobile app. |
 | 10-11 | #10511 | The authorization RFC: typed principals; portal-only is never inferred from permission flags; personal email unique when supplied (P4); contact email is not a sign-in identity by default (R3); whole grants (T1); revocation by the next request (S5). |
 | 10-12 | #10511, Carl's review | N3: families lose the family email, which moves to an adult. |
+| 10-15 | Discord | George approved the design. The work goes on one branch, `feature/member-sign-in`, for 7.9.0. |
+| 10-17 | George's review on this PR | Accepted for 7.9.0, with eleven points to settle. This revision settles them: shared addresses (§4), what ships alone (§16), the cutover's references and rollback (§12), bulk confirmation (§10.1), one administrator (§9), the family API (§10.2), two tabs (§6.2), proxies (§6.1), teenagers (§4), the RFC 0002 edit (§15) and the doc's location. |
 
 This document puts those into one design and one delivery plan.
 
@@ -37,7 +40,7 @@ This document puts those into one design and one delivery plan.
 | ID | Decision | From |
 |---|---|---|
 | A1 | Members have no user account and no password. Staff keep a username, password and two-factor sign-in. | George, 10-09 |
-| A2 | A member signs in with a code and link sent to their personal email. A family email never matches. The address must belong to exactly one person who may sign in. If two people share it, neither can use it until an administrator fixes the records. | George, 10-09 |
+| A2 | A member signs in with a code and link sent to their personal email. A family email never matches. The address must belong to exactly one person who may sign in. If two people share it, neither can use it until staff fix the records (§4). | George, 10-09 |
 | A3 | SMTP is required. There is no copy-a-link fallback. | George, 10-09 |
 | A4 | The email is valid for a set time (default 2 hours). A new request replaces the old one. The link opens a confirm page, so mail scanners don't use it up. The email is spent when the person confirms or types the code. | George, 10-09 |
 | A5 | A member session ends after a set idle time (default 30 minutes). | George, 10-09 |
@@ -160,7 +163,22 @@ A person may start a portal session when **all** of these hold. The shared step 
 - an exact match after trimming and lower-casing;
 - if two people who would otherwise qualify share the address, nobody signs in with it. Both people show up under "Email needs attention".
 
+**Couples who share one address.** A couple often shares one email. A shared mailbox is a shared credential: whoever reads it could sign in as either person. So two people never sign in with one address, and each needs their own.
+- For release day, the "Email needs attention" list has **Fix shared emails** (§11.2). For each address shared within one family, it proposes keeping it on the head of household, or else the spouse (the oldest first, as in §10.1), and clearing it from the others.
+- Nothing changes until staff review the list and apply it. They can untick any row. This follows #10511 §5, which says ChurchCRM must never silently choose which spouse owns an address.
+- Addresses shared across families, or with no head of household or spouse among the people who share them, are listed to fix by hand.
+- The person who keeps the address can then sign in with it (an address moved from the family email still needs confirming first, §9). The other person signs in once staff add an address of their own.
+- A person who loses the address has no email of their own until then. Mail to the family still reaches the shared mailbox through the head of household (§10.2). Mail sent to that person alone, such as a group email, is skipped, and the composer says so.
+- Clearing an address follows §9: staff with Edit Records may apply a row, but a row with someone who has given portal grants or a staff account needs an administrator. Every change is audited.
+
 **Teenagers.** A member under 18 can sign in when the minimum age allows it. In the portal, an *adult* is a head of household or spouse who is 18 or older. Only adults see other family members' contact details, change family details, add family members or confirm the family (§8.4).
+
+**What the minimum age means for parents and guardians:**
+- A member aged 13 to 17 who may sign in has their own sign-in: their own email, sessions, devices and passkeys.
+- A parent gets no control over it. They can't sign in as the teen, see the teen's sign-ins or devices, or turn their sign-in off.
+- As a family adult, the parent sees the teen in the family and the teen's contact details.
+- The office can turn on Disable sign-in for one teen, or raise the minimum age for everyone.
+- This design gives no one guardian access to a child's portal. Consent, oversight and acting for a child belong to #10511 P3 (verified guardians manage approved child data). Household membership doesn't prove guardianship, so the family adult rule grants no access to a child's own sign-in.
 
 ## 5. The shared step and the portal session
 
@@ -216,6 +234,14 @@ So Disable sign-in, a change to the rule, a deactivated family or "sign out ever
 
 Requests over a limit get the same answer screen and no email. They are audited as "throttled".
 
+**Behind a proxy or shared hosting.** These per-IP limits, and #10197's limit on failed staff sign-ins, count the address PHP sees (`REMOTE_ADDR`). An IPv6 address counts by its /64.
+- ChurchCRM doesn't read `X-Forwarded-For` itself, because any visitor can send it.
+- Some sites sit behind a reverse proxy, a CDN or a shared-hosting front end that doesn't pass the visitor's address on. There every visitor shares one address, and they all reach the limit together.
+- Such a site has two choices:
+  - have the web server take the real address from its trusted proxy (Apache `mod_remoteip`, nginx `real_ip`);
+  - or set the per-IP limits to 0 (`iMemberSignInRequestsPerIP`, `iMaxFailedLoginsPerIP`).
+- The per-address and per-person limits still apply either way. The settings' help text says this.
+
 ### 6.2 Remembered devices
 
 - **Staying signed in is the member's choice, on each device.**
@@ -224,6 +250,10 @@ Requests over a limit get the same answer screen and no email. They are audited 
   - Without it, nothing is kept on the device. The session ends after the idle time (A5) or when the browser closes.
 - When the member ticks the box, ChurchCRM sets a long-lived cookie (`HttpOnly`, `Secure`, `SameSite=Lax`, path `/portal`). The cookie carries a random token, and only its hash is stored.
 - When the portal session has gone idle, the cookie starts a new one through the shared step, with method `DEVICE`. The rule is checked again. The token is replaced at each use, and it lasts the set number of days (default 30).
+- **Two tabs.** Two tabs, or two requests at once, can arrive with the same cookie. So the previous token stays good for 60 seconds after it is replaced, on that device only.
+  - A request using it gets a session through the shared step, with every check, but doesn't replace the token again.
+  - After the 60 seconds it signs nothing in.
+  - Removing the device ends it at once.
 - Members see their devices and passkeys on a new **Sign-in and devices** portal page. Each device shows a browser and system label, when it was added and when it was last used. A member can sign out one device, or every device.
 - Disable sign-in, "sign out everywhere", and an email change made by someone else (§9) remove all remembered devices.
 
@@ -443,6 +473,16 @@ Saving the same address again doesn't confirm it. An address is confirmed when:
 
 An address moved from the family email has only the last way, because everyone who reads the family's mailbox would get the code and the person has no other way in yet. Until an address is confirmed, the person is listed under "Email needs attention". After it is confirmed, the first email sign-in still proves the mailbox.
 
+**A church with one administrator.** Most confirmations don't need an administrator:
+- staff with Edit Records confirm moved family addresses, one at a time or in bulk (§10.1);
+- a member confirms a replacement address on their own, with the link sent to their old address or with a passkey.
+
+What waits for an administrator:
+- a replacement address the member can't confirm, because the old mailbox is gone and they have no passkey;
+- any change for a person with given portal grants or a staff account.
+
+These are rare. They come up only when someone else changes the email of a person who has already signed in. Until they are confirmed, the member keeps any passkey. A church that wants a second person able to confirm makes them an administrator; this design adds no separate role for it.
+
 Every change and confirmation is audited with the old and new address, who made it, and how.
 
 This is how #10511 R3 applies to portal principals: a notice to the old address, an audit row, limits on who can make a change, and no sign-in with a replacement address until the person or an administrator confirms it.
@@ -470,11 +510,16 @@ For each family whose email isn't empty (compared trimmed and in lower case):
 
 - **A moved address doesn't sign in yet.** It is unconfirmed (§9) until staff with Edit Records or an administrator confirm that it is that person's own, because everyone who reads the family's mailbox would get the sign-in code. Mail goes to it at once (§10.2).
   - **Except in a one-person family.** When the person who receives it is the family's only living, active member, it is an address on record before the first sign-in (§9) and can be used to sign in at once. Receiving the code is the accepted proof of identity.
+- **Confirming in bulk.** An office with hundreds of families confirms moved addresses from the "Email needs attention" list (§11.2), using **Select all** and **Confirm selected**.
+  - Before anything is confirmed, ChurchCRM asks: *"Only confirm addresses you know belong to that person. Anyone who reads an address can sign in as its person."*
+  - Each confirmation is audited as "confirmed in bulk", with who did it.
+  - Staff can leave a family they aren't sure about for a phone call. An example is a family email that teenagers also read.
+  - Only rows the staff member may confirm under §9 can be ticked. The server checks every row again.
 - A one-time **Family emails not moved** list on the Member Portal Sign-in tab links to each family with a note, with counts: moved to a head, moved to a spouse, already held, and noted.
 - The notes are ordinary family notes, written with `Family::createTimeLineNote()` (`Family.php:551`). Staff who can see the family's timeline can read them.
 - The move is plain SQL in the 7.9.0 upgrade script (`src/mysql/upgrade/7.9.0.sql`), the same file the other 7.9.0 work adds to. It uses no window functions, so it runs on every database ChurchCRM supports.
 - **Some people lose email:** those who were reached only through the family email, and who aren't the head or spouse who receives it. Most are children. The Sign-in tab's "Email needs attention" list shows them.
-- The `fam_Email` column stays empty for one release, then a later upgrade drops it. Any family email added during that release by an older import or API client can be moved by the same rule before the drop.
+- The `fam_Email` column stays empty for one release, then a later upgrade drops it (§16, row 17). Nothing in core writes it during that release. The drop runs the same move again first, in case other code wrote an address.
 
 ### 10.2 After the move
 
@@ -486,7 +531,12 @@ For each family whose email isn't empty (compared trimmed and in lower case):
 - **Member Portal:** the family details form loses its Email field. Each member keeps their own email on their profile (§9).
 - **Public registration:** the API's family `Email` field (`public-register.php:120`) is saved on the person who registered.
 - **CSV import:** an email that today is copied into the family email goes through the rule in §10.1 instead. **CSV export:** each person's own email only.
-- **REST API:** the family endpoints stop reading and writing `email`. The release notes list this as an API change.
+- **REST API, with a deprecation step:**
+  - For one release, the family endpoints keep returning the family email field, read-only. It is filled from the head of household's own email, or else the spouse's, or else left empty.
+  - The API docs mark it deprecated. Every response from those endpoints carries a `Deprecation` header (RFC 9745).
+  - A write that sends a family email still succeeds, but the email isn't stored. A warning naming the endpoint is logged.
+  - The field goes away with the column (§16, row 17). The release notes list it as an API change.
+- **Plugins:** the core plugins that read the family email (MailChimp's family status) use the same head-then-spouse rule. The release notes name the community plugins in the plugin registry, so their authors can check theirs.
 - **Printed member directory:**
   - the "Family Email" option (`bDirFamilyEmail`) and its line on family records are removed;
   - single-person records stop falling back to the family email;
@@ -513,7 +563,10 @@ For each family whose email isn't empty (compared trimmed and in lower case):
   - who may sign in now;
   - who signed in during the last 30 days;
   - who may sign in but never has;
-  - email needs attention: no personal email, a personal email shared with someone else, or an unconfirmed one (§9), which staff can confirm from the list where §9 lets them;
+  - email needs attention: no personal email, a personal email shared with someone else, or an unconfirmed one (§9). It has two tools for release day:
+    - **Fix shared emails** previews every blocking shared address, with who keeps it and who loses it. Staff apply the rows they tick (§4).
+    - **Select all** and **Confirm selected** confirm unconfirmed addresses in bulk, where §9 lets the staff member confirm them (§10.1).
+    - The Sign-in tab shows how many shared addresses block sign-in next to the Member sign-in switch, so the office sees them before turning sign-in on;
   - families confirmed in the last 30 days;
   - family emails not moved (one time, after the upgrade).
 - **Audit**, filterable by person and date. Each row has a time, the person, the event, the method and, for staff actions, who did it.
@@ -542,6 +595,10 @@ For each family whose email isn't empty (compared trimmed and in lower case):
 - **Read-only staff accounts** (every flag off) stay as they are. #10511 P5 makes read-only the starting point for new staff accounts.
 - **The confinement code** (`isLimitedAccessAllowedPath()` and the `PageInit.php` redirect) stays for one more release as a safety net, then goes.
 - **Wording.** "Self-service" becomes "Member Portal" in the visible text.
+- **Rolling back.** ChurchCRM upgrades the database on the first page load after new files are installed, so the 7.9.0 upgrade can't be undone in place.
+  - A rollback means restoring the database backup taken before the upgrade, together with the previous release's files.
+  - Anything done after the upgrade is lost.
+  - The release notes say to take that backup first.
 
 ## 13. Data model and settings
 
@@ -607,6 +664,11 @@ This work does not wait for #10511's F0, as George said on 10-10. It is built so
 - **N3 (family email).** §10.
 - **S5 (revocation by the next request).** §5.
 - **The RFC's portal-only test fixtures** (an `EditSelf` user with dormant staff flags) no longer apply after the cutover, because no such accounts are left. The portal-principal tests in §17 cover the same ground.
+- **A follow-up edit to RFC 0002** (`docs/decisions/0002-rbac-redesign.md`) makes it match this design:
+  - portal-only members have no user account;
+  - Login as User opens only a member's portal, never a staff account, and records both people (§6.5). The P6 note changes to say so;
+  - the P4 consumer: this design's email rule, shared-address fix and family email move (§4, §10);
+  - the portal-only fixtures become an upgrade test.
 
 ## 16. Delivery plan
 
@@ -631,7 +693,17 @@ This work does not wait for #10511's F0, as George said on 10-10. It is built so
 | 14 | Documentation: a docs tracking issue and a docs PR on `release-docs/<version>` | 13, 15 |
 | 15 | A member's portal language: the profile's Language field, the language of portal pages and of mail to the member (§5), carried over from self-service accounts at the cutover (§12) | 2, 5, 13 |
 
-Row 11 doesn't depend on the sign-in work. It can be built first, and can ship one release earlier if that release comes sooner.
+**What can ship alone:**
+- **Earlier, on its own:** row 11 (family email) and row 0 (#10197) don't depend on the sign-in work. Either can ship one release earlier if that release comes sooner.
+- **Later, without blocking member sign-in or the cutover:**
+  - row 3 (plugin API): no core page needs it;
+  - row 12 (Login as User): it is off by default.
+- **Must ship together:** rows 1, 2, 4–10, 13 and 15, with the docs (row 14).
+  - Without the cutover, members would have two ways in. Without email sign-in, the cutover would lock them out.
+  - Without remembered devices and passkeys, members would be back to email on every visit (A9).
+  - Without the email rules, a changed address could sign in unchecked.
+  - Without the admin lists, the office couldn't fix shared or unconfirmed addresses on release day.
+  - Row 2 can't be split off either. Members have no user account, so the portal's own checks that read the signed-in user stop working without it, team leaders above all. Its admin parts (given grants and the Permissions tab, in row 9) could wait, but they are small.
 
 **Later.**
 
@@ -669,7 +741,8 @@ Row 11 doesn't depend on the sign-in work. It can be built first, and can ship o
   - without it, closing the browser or going idle ends the session, and nothing is kept on the device;
   - with it, the session comes back after idling;
   - the token is replaced at each use;
-  - removing a device stops it;
+  - the previous token still signs in for 60 seconds without replacing the token again, then fails;
+  - removing a device stops it, previous token included;
   - Disable sign-in removes all of them.
 - **Passkeys:**
   - the offer after sign-in appears only when the member ticked **This is my own device**;
@@ -695,7 +768,13 @@ Row 11 doesn't depend on the sign-in work. It can be built first, and can ship o
   - every row of §9, including the notice to the old address and sessions ending;
   - an unconfirmed address can't sign in until one of the three ways confirms it, and each way is tested;
   - an address set by staff, an import or the API before the person's first sign-in signs in at once, and the audit records who set it;
-  - saving a moved family address again doesn't confirm it.
+  - saving a moved family address again doesn't confirm it;
+  - bulk confirmation confirms only the rows the staff member may confirm, the server refuses the others, and each one is audited.
+- **Shared addresses:**
+  - Fix shared emails keeps the address on the head of household, or else the spouse (oldest first), and clears it from the others only in the rows staff applied;
+  - addresses shared across families, or with no head of household or spouse, are left alone;
+  - a row with someone who has given grants or a staff account is refused for staff who aren't administrators;
+  - every change is audited.
 - **Family email move:**
   - copied to the head, or to the spouse when the head has an email;
   - a timeline note when both have one, when there is no adult, and when another family holds the address;
@@ -704,7 +783,8 @@ Row 11 doesn't depend on the sign-in work. It can be built first, and can ship o
   - staff with Edit Records can't confirm a replacement address after the first sign-in, nor any address of a person with given portal grants or a staff account;
   - in a one-person family it signs in at once, as an address on record, and the audit records it;
   - mail for a family goes to the head;
-  - the directory prints no family email.
+  - the directory prints no family email;
+  - the family API returns the field read-only, from the head or else the spouse, with the `Deprecation` header, and a write doesn't store it.
 - **Login as User:**
   - grayed out for deceased, Disable sign-in and staff accounts;
   - still starts, and stays open across later pages, for each case §6.5 deliberately doesn't check: an inactive person, a deactivated family, awaiting review, outside the member rule, no usable email, and member sign-in off;
