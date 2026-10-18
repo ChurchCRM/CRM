@@ -532,11 +532,13 @@ For each family whose email isn't empty (compared trimmed and in lower case):
 - **Public registration:** the API's family `Email` field (`public-register.php:120`) is saved on the person who registered.
 - **CSV import:** an email that today is copied into the family email goes through the rule in §10.1 instead. **CSV export:** each person's own email only.
 - **REST API, with a deprecation step:**
-  - For one release, the family endpoints keep returning the family email field, read-only. It is filled from the head of household's own email, or else the spouse's, or else left empty.
-  - The API docs mark it deprecated. Every response from those endpoints carries a `Deprecation` header (RFC 9745).
-  - A write that sends a family email still succeeds, but the email isn't stored. A warning naming the endpoint is logged.
+  - For one release, the family responses that carried the family email keep carrying it, read-only. It is filled from the head of household's own email, or else the spouse's, or else left empty.
+    - **Staff and public API:** `Email` on `GET /api/family/{id}`, the self-registered, self-verified and without-email family lists, group members' families, and the public family registration.
+    - **Member Portal API:** `email` on `/api/portal/family`. It stays empty unless the member may see the family's contacts (§8.4) or is the person it comes from.
+  - The API docs mark the field deprecated. Each of those responses carries a `Deprecation` header (RFC 9745) and a `Link` to the endpoint's docs page.
+  - A write that sends a family email still succeeds, but the email isn't stored. A warning naming the endpoint is logged. The only API write that took it is `POST /api/portal/family`.
   - The field goes away with the column (§16, row 17). The release notes list it as an API change.
-- **Plugins:** the core plugins that read the family email (MailChimp's family status) use the same head-then-spouse rule. The release notes name the community plugins in the plugin registry, so their authors can check theirs.
+- **Plugins:** no core plugin reads the family email any more; MailChimp's family status uses the head-then-spouse rule. Neither community plugin in the plugin registry (hello-world, meeting-outlines) reads it. The release notes still ask plugin authors to check theirs.
 - **Printed member directory:**
   - the "Family Email" option (`bDirFamilyEmail`) and its line on family records are removed;
   - single-person records stop falling back to the family email;
@@ -595,10 +597,25 @@ For each family whose email isn't empty (compared trimmed and in lower case):
 - **Read-only staff accounts** (every flag off) stay as they are. #10511 P5 makes read-only the starting point for new staff accounts.
 - **The confinement code** (`isLimitedAccessAllowedPath()` and the `PageInit.php` redirect) stays for one more release as a safety net, then goes.
 - **Wording.** "Self-service" becomes "Member Portal" in the visible text.
-- **Rolling back.** ChurchCRM upgrades the database on the first page load after new files are installed, so the 7.9.0 upgrade can't be undone in place.
-  - A rollback means restoring the database backup taken before the upgrade, together with the previous release's files.
+- **What still points at a deleted account.** In ChurchCRM a user id is the person id, so most rows an account wrote still point at the right person once the account is gone. No SQL foreign key references `user_usr`, so nothing blocks the delete.
+
+  | Where | What happens at the cutover |
+  |---|---|
+  | Notes (`nte_EnteredBy`, `nte_EditedBy`), and the person and family editor columns | Left in place. Pages name the author from `person_per`, so timelines and person pages still show who wrote or edited. |
+  | Finance (`dep_EnteredBy`, `plg_EditedBy`, `fr_EnteredBy`, `di_EnteredBy`) | Left in place, and named from `person_per`. A self-service account only has these from staff rights it held before. |
+  | Volunteer rows (assignments, responses, swaps, qualifications, scopes, notifications, ministries) | Keyed by person, so they are untouched. Team leaders keep their teams through the team-leader rule (§8.3). |
+  | Event check-in and check-out (`checkin_id`, `checkout_id`) | Keyed by person, so they are untouched. |
+  | Email history (`eml_usr_ID`) | Left in place. The sender is now named from the person; before, a missing account showed as "Automatic". |
+  | The account's own data: API key, two-factor secret and recovery codes, password, per-account settings (`userconfig_ucfg`, `user_settings`), password tokens | Deleted with the account, after the calendar feed, last portal activity and language are copied (above). |
+  | Sign-in audit, given grants, Disable sign-in and Login as User history | New in 7.9.0 and empty at the cutover. Afterwards they name people from `person_per`. |
+  | An open session of a deleted account | It ends on the next request. A portal page goes to `/portal/login`, an API call gets 401, and a staff page goes to `/admin`. |
+
+  Former self-service members appear as "never signed in" until their first email sign-in, because only the last portal activity is copied.
+- **Rolling back.** ChurchCRM has no downgrade. Once the 7.9.0 files are in place, the database upgrades itself on the first page load. After that, the deleted accounts exist only in a backup taken before the upgrade.
+  - A rollback means restoring that pre-upgrade database backup with the database tools (the mysql client, phpMyAdmin or the hosting panel), and putting the previous release's files back at the same time.
+  - Putting back only the old files stops at "Software Update Required". Restoring the backup from inside 7.9.0 just upgrades it again on the next page load.
   - Anything done after the upgrade is lost.
-  - The release notes say to take that backup first.
+  - Admin → System → Upgrade offers a backup step, but it can be skipped, and nothing asks for one when the files are replaced by hand. So the release notes say to take a backup first.
 
 ## 13. Data model and settings
 
@@ -803,7 +820,9 @@ This work does not wait for #10511's F0, as George said on 10-10. It is built so
   - an upgraded database with self-service accounts loses them, and their calendar feed URLs keep working;
   - an `EditSelf` user with dormant staff flags is treated the same way;
   - administrators and read-only staff are untouched;
-  - a self-service account's language carries over to the person when ChurchCRM ships it.
+  - a self-service account's language carries over to the person when ChurchCRM ships it;
+  - notes, volunteer rows, email history, audit rows and Login as User history written by a self-service account still name its person after the account is deleted;
+  - an open session of a deleted account goes to `/portal/login` from a portal page, and gets 401 from the API.
 - **Audit:** no code, token or link appears in any row.
 
 ## 18. Not in scope
