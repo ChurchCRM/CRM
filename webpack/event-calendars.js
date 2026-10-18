@@ -683,7 +683,9 @@ function initializeCalendar() {
       jsEvent.preventDefault();
 
       if (eventData.url !== "null") {
-        window.open(eventData.url);
+        if (/^https?:\/\//i.test(eventData.url)) {
+          window.open(eventData.url, "_blank", "noopener,noreferrer");
+        }
       } else if (eventData.editable || eventData.startEditable || eventData.durationEditable) {
         window.showEventForm(eventData);
       } else {
