@@ -219,6 +219,14 @@
     // Pre-fill today's date
     $("#depositDate").val(new Date().toISOString().split("T")[0]);
 
+    const params = new URLSearchParams(window.location.search);
+    if (params.has("new")) {
+      params.delete("new");
+      const query = params.toString();
+      window.history.replaceState(null, "", `${window.location.pathname}${query ? `?${query}` : ""}`);
+      window.bootstrap.Modal.getOrCreateInstance(document.getElementById("newDepositModal")).show();
+    }
+
     $("#addNewDeposit").on("click", () => {
       var newDeposit = {
         depositType: $("#depositType").val(),
@@ -254,7 +262,7 @@
         dataType: "json",
       })
         .done((data) => {
-          window.location.href = `${window.CRM.root}/DepositSlipEditor.php?DepositSlipID=${data.Id}`;
+          window.location.href = `${window.CRM.root}/finance/deposit/${data.Id}`;
         })
         .fail((_jqXHR, _textStatus, errorThrown) => {
           window.CRM.notify(`${i18next.t("Failed to create deposit")}: ${errorThrown || i18next.t("Unknown error")}`, {
