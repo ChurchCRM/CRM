@@ -1,62 +1,62 @@
 {
-  "Your coordinator": "",
-  "Your teams: %s": "",
-  "positionIds must be a list of position ids": "",
-  "{{name}} ({{family}} family)": "",
-  "{{name}} assigned and recorded as accepted": "",
-  "Ask an administrator to change your sign-in email.": "",
-  "Email changed by an administrator from %1$s to %2$s": "",
-  "Only an administrator can change the email of a person with a user account.": "",
+  "Your coordinator": "Ang tagapag-ugnay mo",
+  "Your teams: %s": "Mga pangkat mo: %s",
+  "positionIds must be a list of position ids": "Ang positionIds ay dapat listahan ng mga id ng posisyon",
+  "{{name}} ({{family}} family)": "{{name}} (pamilyang {{family}})",
+  "{{name}} assigned and recorded as accepted": "Naitalaga si {{name}} at naitala bilang tumanggap",
+  "Ask an administrator to change your sign-in email.": "Hilingin sa isang tagapangasiwa na baguhin ang email mo sa pagpasok.",
+  "Email changed by an administrator from %1$s to %2$s": "Binago ng isang tagapangasiwa ang email mula %1$s patungo sa %2$s",
+  "Only an administrator can change the email of a person with a user account.": "Tanging tagapangasiwa ang maaaring magbago ng email ng taong may kuwenta ng gumagamit.",
   "Delete ({{count}})": {
-    "one": "",
-    "other": ""
+    "one": "Burahin",
+    "other": "Burahin ({{count}})"
   },
   "Delete events ({{count}})": {
-    "one": "",
-    "other": ""
+    "one": "Burahin ang kaganapan",
+    "other": "Burahin ang mga kaganapan ({{count}})"
   },
   "Delete {{count}} occurrences? Their assignments, the volunteers' responses, any substitutions and every queued reminder go with them. This cannot be undone.": {
-    "one": "",
-    "other": ""
+    "one": "Burahin ang {{count}} sesyon? Kasama ang mga pagtatalaga nito, mga tugon ng boluntaryo, anumang pagpapalit, at bawat paalalang nasa pila. Hindi ito maaaring bawiin.",
+    "other": "Burahin ang {{count}} sesyon? Kasama ang mga pagtatalaga ng mga ito, mga tugon ng boluntaryo, anumang pagpapalit, at bawat paalalang nasa pila. Hindi ito maaaring bawiin."
   },
   "Occurrences are created for events in the next {{count}} weeks (through {{date}}).": {
-    "one": "",
-    "other": ""
+    "one": "Ang mga sesyon ay nililikha para sa mga kaganapan sa susunod na {{count}} linggo (hanggang {{date}}).",
+    "other": "Ang mga sesyon ay nililikha para sa mga kaganapan sa susunod na {{count}} linggo (hanggang {{date}})."
   },
   "They finish {{count}} minutes after the event ends.": {
-    "one": "",
-    "other": ""
+    "one": "Matatapos sila {{count}} minuto pagkatapos magtapos ang kaganapan.",
+    "other": "Matatapos sila {{count}} minuto pagkatapos magtapos ang kaganapan."
   },
   "They finish {{count}} minutes before the event ends.": {
-    "one": "",
-    "other": ""
+    "one": "Matatapos sila {{count}} minuto bago magtapos ang kaganapan.",
+    "other": "Matatapos sila {{count}} minuto bago magtapos ang kaganapan."
   },
   "Volunteers start {{count}} minutes after the event starts.": {
-    "one": "",
-    "other": ""
+    "one": "Magsisimula ang mga boluntaryo {{count}} minuto pagkatapos magsimula ang kaganapan.",
+    "other": "Magsisimula ang mga boluntaryo {{count}} minuto pagkatapos magsimula ang kaganapan."
   },
   "Volunteers start {{count}} minutes before the event starts.": {
-    "one": "",
-    "other": ""
+    "one": "Magsisimula ang mga boluntaryo {{count}} minuto bago magsimula ang kaganapan.",
+    "other": "Magsisimula ang mga boluntaryo {{count}} minuto bago magsimula ang kaganapan."
   },
   "{{count}} needed": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} ang kailangan",
+    "other": "{{count}} ang kailangan"
   },
   "{{count}} occurrences deleted": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} sesyon ang nabura",
+    "other": "{{count}} sesyon ang nabura"
   },
   "{{failed}} of {{count}} occurrences could not be deleted": {
-    "one": "",
-    "other": ""
+    "one": "{{failed}} sa {{count}} sesyon ang hindi mabura",
+    "other": "{{failed}} sa {{count}} sesyon ang hindi mabura"
   },
   "{{name}} ({{count}} upcoming)": {
-    "one": "",
-    "other": ""
+    "one": "{{name}} ({{count}} paparating)",
+    "other": "{{name}} ({{count}} paparating)"
   },
   "{{title}} ({{count}} upcoming)": {
-    "one": "",
-    "other": ""
+    "one": "{{title}} ({{count}} paparating)",
+    "other": "{{title}} ({{count}} paparating)"
   }
 }
