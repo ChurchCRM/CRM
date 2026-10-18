@@ -29,6 +29,7 @@ export interface ArtifactMetadata {
   title: string;
   category: string;
   dark: string | null;
+  usedIn: string[];
   device: string;
   viewport: { width: number; height: number };
   /** Null for video-only captures (currently just the `setup` project). */

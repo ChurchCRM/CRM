@@ -115,6 +115,7 @@ setup('setup-church-info', async ({ page }, testInfo) => {
     title: 'Setup - Church Info',
     category: 'Setup',
     purpose: 'Show first-run setup: prerequisites, database configuration, and church info',
+    usedIn: ['website'],
   });
 });
 
@@ -155,6 +156,7 @@ setup('demo-data-import', async ({ page }, testInfo) => {
     title: 'Demo Data Import',
     category: 'Setup',
     purpose: 'Show importing the sample data set and the resulting seeded families',
+    usedIn: ['website'],
   });
 
   // CRM #10048 — set the admin account's UI locale (no-op for the default

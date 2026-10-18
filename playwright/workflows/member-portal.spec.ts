@@ -80,6 +80,7 @@ test('admin-member-portal-calendars', async ({ page }, testInfo) => {
     title: 'Member Portal Calendars',
     category: 'Admin & Settings',
     purpose: 'Choose which church and holiday calendars members see in the Member Portal.',
+    usedIn: ['docs'],
   });
 });
 
@@ -97,6 +98,7 @@ test.describe('signed in as a member', () => {
       title: 'Member Portal Home Page',
       category: 'People & Families',
       purpose: 'A member signs in to their own portal: upcoming events, family and profile.',
+      usedIn: ['docs'],
     });
   });
 
@@ -138,6 +140,7 @@ test.describe('signed in as a member', () => {
       title: 'Member Portal: My Family',
       category: 'People & Families',
       purpose: 'Members see their household and address, with a new member awaiting review.',
+      usedIn: ['docs'],
     });
   });
 
@@ -154,6 +157,7 @@ test.describe('signed in as a member', () => {
       title: 'Member Portal Calendar',
       category: 'Groups & Events',
       purpose: 'Members browse the calendars the church shares, color-coded with a legend.',
+      usedIn: ['docs'],
     });
   });
 
@@ -176,6 +180,7 @@ test.describe('signed in as a member', () => {
       title: 'Subscribe to the Church Calendar',
       category: 'Groups & Events',
       purpose: 'Members subscribe to the shared church calendars from their own calendar app.',
+      usedIn: ['docs'],
     });
   });
 });
