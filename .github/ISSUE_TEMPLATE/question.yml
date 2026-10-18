@@ -7,61 +7,18 @@ body:
   - type: markdown
     attributes:
       value: |
-        👋 Need help right now, or want to talk it through? Come to Discord. You do not have to open a GitHub issue just to get support:
-        👉 <https://discord.gg/tuWyFzj3Nj>
-
-        Open an issue when the question should stay searchable for the next person. Please fill in the form below.
-
-        Before opening: please check [the docs](https://docs.churchcrm.io/?utm_source=github&utm_medium=referral&utm_campaign=github_issue_templates&utm_content=question_docs).
+        Need an answer fast? [Ask on Discord](https://discord.gg/tuWyFzj3Nj). Open an issue when the answer should stay searchable for the next person. The [docs](https://docs.churchcrm.io/?utm_source=github&utm_medium=referral&utm_campaign=github_issue_templates&utm_content=question_docs) may already cover it.
 
   - type: textarea
     id: goal
     attributes:
       label: What are you trying to do?
-      description: Your goal or workflow.
+      description: Tell us your goal and anything you've already tried.
     validations:
       required: true
-
-  - type: textarea
-    id: tried
-    attributes:
-      label: What have you already tried?
-      placeholder: Steps, settings, docs you've checked, etc.
-    validations:
-      required: true
-
-  - type: textarea
-    id: expected
-    attributes:
-      label: What did you expect to happen?
-    validations:
-      required: false
 
   - type: input
     id: version
     attributes:
-      label: ChurchCRM version (if relevant)
+      label: ChurchCRM version (optional)
       placeholder: "e.g. 7.1.0"
-
-  - type: textarea
-    id: logs
-    attributes:
-      label: Server-side logs / screenshots (optional)
-      description: |
-        If you're seeing an error, logs help a lot:
-
-        - **In-app:** Admin → System Maintenance → System Logs (or the 🐞 debug icon)
-        - **PHP error log:** `/var/log/php-fpm/error.log`, `/var/log/apache2/error.log`, `/var/log/nginx/error.log`
-        - **Docker:** `docker logs <container-name> --tail 200`
-
-        Please redact any private data before pasting.
-      render: shell
-
-  - type: markdown
-    attributes:
-      value: |
-        ---
-        💬 **Urgent or want to chat?** <https://discord.gg/tuWyFzj3Nj>
-        📘 **Diagnostics guide:** <https://docs.churchcrm.io/administration/reporting-issues?utm_source=github&utm_medium=referral&utm_campaign=github_issue_templates&utm_content=question_diagnostics>
-
-        Thanks for asking! 🙏
