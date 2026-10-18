@@ -78,11 +78,26 @@ body:
     validations:
       required: true
 
+  - type: dropdown
+    id: web-server
+    attributes:
+      label: Web server
+      description: |
+        Apache, nginx, and LiteSpeed do not route ChurchCRM the same way. A 404 or redirect loop on nginx is often a missing front-controller rule, not the same bug as on Apache. Pick the server that receives the browser request.
+      options:
+        - Apache
+        - nginx
+        - LiteSpeed
+        - Caddy
+        - Other / not sure
+    validations:
+      required: true
+
   - type: input
     id: php-version
     attributes:
       label: PHP version (if known)
-      placeholder: "e.g. 8.3.2"
+      placeholder: "e.g. 8.4"
 
   - type: input
     id: db-version

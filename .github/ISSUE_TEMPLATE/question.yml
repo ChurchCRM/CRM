@@ -43,6 +43,19 @@ body:
       label: ChurchCRM version (if relevant)
       placeholder: "e.g. 7.1.0"
 
+  - type: dropdown
+    id: web-server
+    attributes:
+      label: Web server (if relevant)
+      description: Name the server in front of PHP. Routing problems depend on it.
+      options:
+        - Apache
+        - nginx
+        - LiteSpeed
+        - Caddy
+        - Other / not sure
+        - Not relevant
+
   - type: textarea
     id: logs
     attributes:
