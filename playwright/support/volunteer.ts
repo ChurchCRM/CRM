@@ -92,7 +92,7 @@ export async function waitForFloatingButtonsToTuck(page: Page): Promise<void> {
   }
 }
 
-/** New installations start on V2 and Ministry Settings has no switch, so the Config API sets it. */
+/** The V1 / V2 switch lives on Feature Toggles and new installations start on V2, so specs set it through the Config API. */
 export async function setVolunteerVersion(page: Page, version: 'v1' | 'v2'): Promise<void> {
   await api(page, 'POST', '/admin/api/system/config/sVolunteerVersion', { value: version });
 }
