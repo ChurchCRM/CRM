@@ -6600,10 +6600,6 @@ msgid "Tax Report Verbiage"
 msgstr "Lenguaje del informe fiscal"
 
 #: 
-msgid "Tax Statements (Giving Report)"
-msgstr "Declaraciones fiscales (informe de donaciones)"
-
-#: 
 msgid "Tax Year Reporting Checklist"
 msgstr "Lista de verificación de informes del año fiscal"
 
@@ -9120,10 +9116,6 @@ msgid "Generate and download confirmation letters"
 msgstr "Generar y descargar cartas de confirmación"
 
 #: 
-msgid "Generate annual giving statements for tax purposes"
-msgstr "Generar declaraciones anuales de ofrendas para fines fiscales"
-
-#: 
 msgid "Generate directory listings and printed materials"
 msgstr "Generar listados de directorio y material impreso"
 
@@ -9768,10 +9760,6 @@ msgstr "Información de diagnóstico del sistema y configuración"
 #: 
 msgid "Tags"
 msgstr "Etiquetas"
-
-#: 
-msgid "Tax Statements"
-msgstr "Declaraciones fiscales"
 
 #: 
 msgid "Teacher"

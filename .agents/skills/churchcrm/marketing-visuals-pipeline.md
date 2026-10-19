@@ -42,6 +42,10 @@ The capture spec ships in the same PR as the UI change. Images serve your own ch
 5. Commit the spec only
 6. Tear down: `COMPOSE_PROJECT_NAME=crm-pw-capture npm run docker:ci:new-system:down`
 
+### Marking used captures
+
+`docs.churchcrm.io` and `ChurchCRM.io` link captures by name (`cdn.churchcrm.io/screenshots/<locale>/<device>/<name>.png`, the website's `cdn-shot` partial, and its setup videos). A capture a page links sets `usedIn: ['docs']`, `['website']` or both in its `captureScreen()` call, in the same PR as the link. `usedIn` reaches the generated manifest. `npm run lint:capture-used-in` fails when a capture that is marked on `origin/master` is removed or renamed. To retire one, change the links, clear its `usedIn` in a merged PR, then delete it. The website gallery lists every manifest entry, so unmarked captures can still appear there; `usedIn` records the links a page hard-codes.
+
 ## Architecture
 
 Three Playwright projects run in this order (`playwright/playwright.config.ts`):

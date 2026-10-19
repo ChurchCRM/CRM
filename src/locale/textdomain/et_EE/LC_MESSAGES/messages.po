@@ -6627,10 +6627,6 @@ msgid "Tax Report Verbiage"
 msgstr "Maksuaruande tekst"
 
 #: 
-msgid "Tax Statements (Giving Report)"
-msgstr "Maksuaruanded (andmise aruanne)"
-
-#: 
 msgid "Tax Year Reporting Checklist"
 msgstr "Maksuaasta aruandluslehekülg"
 
@@ -9142,10 +9138,6 @@ msgid "Generate and download confirmation letters"
 msgstr "Looge ja laadige alla kinnituskirjad"
 
 #: 
-msgid "Generate annual giving statements for tax purposes"
-msgstr "Looge aastased annetuste aruanded maksuameti jaoks"
-
-#: 
 msgid "Generate directory listings and printed materials"
 msgstr "Looge kataloogi nimekirjad ja trükitud materjalid"
 
@@ -9790,10 +9782,6 @@ msgstr "Süsteemi diagnostiline teave ja konfiguratsioon"
 #: 
 msgid "Tags"
 msgstr "Sildid"
-
-#: 
-msgid "Tax Statements"
-msgstr "Maksudeklaratsioonid"
 
 #: 
 msgid "Teacher"

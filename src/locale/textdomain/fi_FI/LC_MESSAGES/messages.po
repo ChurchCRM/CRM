@@ -6595,10 +6595,6 @@ msgid "Tax Report Verbiage"
 msgstr "Veroraportin tekstit"
 
 #: 
-msgid "Tax Statements (Giving Report)"
-msgstr "Veroilmoitukset (Lahjoitusraportti)"
-
-#: 
 msgid "Tax Year Reporting Checklist"
 msgstr "Verovuoden raportoinnin tarkistuslista"
 
@@ -9110,10 +9106,6 @@ msgid "Generate and download confirmation letters"
 msgstr "Luo ja lataa vahvistuskirjeet"
 
 #: 
-msgid "Generate annual giving statements for tax purposes"
-msgstr "Luo vuosittaiset lahjoitustodistukset verotusta varten"
-
-#: 
 msgid "Generate directory listings and printed materials"
 msgstr "Luo hakemistoluettelot ja painetut materiaalit"
 
@@ -9758,10 +9750,6 @@ msgstr "Järjestelmän diagnostiikkatiedot ja asetukset"
 #: 
 msgid "Tags"
 msgstr "Tunnisteet"
-
-#: 
-msgid "Tax Statements"
-msgstr "Verotodistukset"
 
 #: 
 msgid "Teacher"

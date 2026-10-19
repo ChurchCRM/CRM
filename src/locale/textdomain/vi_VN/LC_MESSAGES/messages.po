@@ -6628,10 +6628,6 @@ msgid "Tax Report Verbiage"
 msgstr "Ngôn từ báo cáo thuế"
 
 #: 
-msgid "Tax Statements (Giving Report)"
-msgstr "Báo cáo thuế (Báo cáo dâng hiến)"
-
-#: 
 msgid "Tax Year Reporting Checklist"
 msgstr "Danh mục kiểm tra báo cáo năm thuế"
 
@@ -9138,10 +9134,6 @@ msgid "Generate and download confirmation letters"
 msgstr "Tao va tai thu xac nhan"
 
 #: 
-msgid "Generate annual giving statements for tax purposes"
-msgstr "Tao bao cao dang hien hang nam cho muc dich thue"
-
-#: 
 msgid "Generate directory listings and printed materials"
 msgstr "Tao danh ba va tai lieu in"
 
@@ -9786,10 +9778,6 @@ msgstr "Thong tin chan doan he thong va cau hinh"
 #: 
 msgid "Tags"
 msgstr "The"
-
-#: 
-msgid "Tax Statements"
-msgstr "Bao cao thue"
 
 #: 
 msgid "Teacher"

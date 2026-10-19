@@ -6768,10 +6768,6 @@ msgid "Tax Report Verbiage"
 msgstr "稅務報告用詞"
 
 #: 
-msgid "Tax Statements (Giving Report)"
-msgstr "稅務聲明（奉獻報告）"
-
-#: 
 msgid "Tax Year Reporting Checklist"
 msgstr "稅務年度報告檢查清單"
 
@@ -9278,10 +9274,6 @@ msgid "Generate and download confirmation letters"
 msgstr "產生並下載確認信函"
 
 #: 
-msgid "Generate annual giving statements for tax purposes"
-msgstr "產生年度奉獻報表以供報稅使用"
-
-#: 
 msgid "Generate directory listings and printed materials"
 msgstr "產生通訊錄和列印資料"
 
@@ -9926,10 +9918,6 @@ msgstr "系統診斷資訊和設定"
 #: 
 msgid "Tags"
 msgstr "標籤"
-
-#: 
-msgid "Tax Statements"
-msgstr "稅務報表"
 
 #: 
 msgid "Teacher"

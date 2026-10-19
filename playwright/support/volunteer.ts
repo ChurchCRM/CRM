@@ -2,7 +2,6 @@ import { type Browser, expect, type Page } from '@playwright/test';
 import path from 'node:path';
 
 import { BASE_URL } from './env';
-import { humanClick, humanSelect } from './human';
 
 /**
  * Volunteer Management v2 fixture for the volunteer captures. The demo import
@@ -93,25 +92,9 @@ export async function waitForFloatingButtonsToTuck(page: Page): Promise<void> {
   }
 }
 
-/** Ministry Settings is the one home of the V1 / V2 / Both switch. */
+/** New installations start on V2 and Ministry Settings has no switch, so the Config API sets it. */
 export async function setVolunteerVersion(page: Page, version: 'v1' | 'v2'): Promise<void> {
-  await page.goto('/admin/ministry-settings');
-  const select = page.locator('#ministrySettingsPanel select[name="sVolunteerVersion"]');
-  await expect(select).toBeEnabled({ timeout: 30000 });
-  if ((await select.inputValue()) === version) {
-    return;
-  }
-  await humanSelect(select, version);
-  const saved = page.waitForResponse(
-    (r) => r.url().includes('/admin/api/system/config/') && r.request().method() === 'POST'
-  );
-  await humanClick(page.locator('#ministrySettingsPanel .settings-panel-save'));
-  await saved;
-  // onSave reloads the page so the menu follows the new rollout state.
-  await page.waitForEvent('load', { timeout: 30000 });
-  await expect(page.locator('#ministrySettingsPanel select[name="sVolunteerVersion"]')).toHaveValue(version, {
-    timeout: 30000,
-  });
+  await api(page, 'POST', '/admin/api/system/config/sVolunteerVersion', { value: version });
 }
 
 async function personId(page: Page, email: string): Promise<number> {

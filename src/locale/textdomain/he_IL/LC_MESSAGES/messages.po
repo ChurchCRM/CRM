@@ -6626,10 +6626,6 @@ msgid "Tax Report Verbiage"
 msgstr "נוסח דוח מס"
 
 #: 
-msgid "Tax Statements (Giving Report)"
-msgstr "הצהרות מס (דוח תרומות)"
-
-#: 
 msgid "Tax Year Reporting Checklist"
 msgstr "רשימת ביקורת לדיווח שנת מס"
 
@@ -9141,10 +9137,6 @@ msgid "Generate and download confirmation letters"
 msgstr "יצירה והורדה של מכתבי אישור"
 
 #: 
-msgid "Generate annual giving statements for tax purposes"
-msgstr "יצירת דוחות תרומות שנתיים לצרכי מס"
-
-#: 
 msgid "Generate directory listings and printed materials"
 msgstr "יצירת רשימות מדריך וחומרים מודפסים"
 
@@ -9789,10 +9781,6 @@ msgstr "מידע אבחוני ותצורת מערכת"
 #: 
 msgid "Tags"
 msgstr "תגיות"
-
-#: 
-msgid "Tax Statements"
-msgstr "דוחות מס"
 
 #: 
 msgid "Teacher"

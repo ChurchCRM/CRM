@@ -6596,10 +6596,6 @@ msgid "Tax Report Verbiage"
 msgstr "Tekst poreznog izvještaja"
 
 #: 
-msgid "Tax Statements (Giving Report)"
-msgstr "Porezne izjave (Izvještaj o darivanju)"
-
-#: 
 msgid "Tax Year Reporting Checklist"
 msgstr "Kontrolna lista izvještavanja za poreznu godinu"
 
@@ -9116,10 +9112,6 @@ msgid "Generate and download confirmation letters"
 msgstr "Generiraj i preuzmi pisma potvrde"
 
 #: 
-msgid "Generate annual giving statements for tax purposes"
-msgstr "Generiraj godišnje izjave o darivanju za porezne svrhe"
-
-#: 
 msgid "Generate directory listings and printed materials"
 msgstr "Generiraj imeničke popise i tiskane materijale"
 
@@ -9764,10 +9756,6 @@ msgstr "Sistemske dijagnostičke informacije i konfiguracija"
 #: 
 msgid "Tags"
 msgstr "Oznake"
-
-#: 
-msgid "Tax Statements"
-msgstr "Porezne izjave"
 
 #: 
 msgid "Teacher"

@@ -6690,10 +6690,6 @@ msgid "Tax Report Verbiage"
 msgstr "Limbajul raportului fiscal"
 
 #: 
-msgid "Tax Statements (Giving Report)"
-msgstr "Declarații fiscale (Raport donații)"
-
-#: 
 msgid "Tax Year Reporting Checklist"
 msgstr "Listă de verificare pentru raportarea anului fiscal"
 
@@ -9210,10 +9206,6 @@ msgid "Generate and download confirmation letters"
 msgstr "Generați și descărcați scrisori de confirmare"
 
 #: 
-msgid "Generate annual giving statements for tax purposes"
-msgstr "Generați declarații anuale de contribuții în scopuri fiscale"
-
-#: 
 msgid "Generate directory listings and printed materials"
 msgstr "Generați liste de director și materiale tipărite"
 
@@ -9858,10 +9850,6 @@ msgstr "Informații de diagnostic al sistemului și configurare"
 #: 
 msgid "Tags"
 msgstr "Etichete"
-
-#: 
-msgid "Tax Statements"
-msgstr "Declarații fiscale"
 
 #: 
 msgid "Teacher"

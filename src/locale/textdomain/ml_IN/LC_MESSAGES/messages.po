@@ -6594,10 +6594,6 @@ msgid "Tax Report Verbiage"
 msgstr "നികുതി റിപ്പോർട്ട് ഉള്ളടക്കം"
 
 #: 
-msgid "Tax Statements (Giving Report)"
-msgstr "നികുതി സ്റ്റേറ്റ്‌മെന്റ് (ദക്ഷിണ റിപ്പോർട്ട്)"
-
-#: 
 msgid "Tax Year Reporting Checklist"
 msgstr "നികുതി വർഷ റിപ്പോർട്ടിംഗ് ചെക്‌ലിസ്‌റ്റ്"
 
@@ -9109,10 +9105,6 @@ msgid "Generate and download confirmation letters"
 msgstr "സ്ഥിരീകരണ കത്തുകൾ സൃഷ്ടിച്ച് ഡൗൺലോഡ് ചെയ്യുക"
 
 #: 
-msgid "Generate annual giving statements for tax purposes"
-msgstr "നികുതി ആവശ്യങ്ങൾക്കായി വാർഷിക ദാന പ്രസ്താവനകൾ സൃഷ്ടിക്കുക"
-
-#: 
 msgid "Generate directory listings and printed materials"
 msgstr "ഡയറക്ടറി ലിസ്‌റ്റിംഗുകളും അച്ചടി വസ്തുക്കളും സൃഷ്ടിക്കുക"
 
@@ -9757,10 +9749,6 @@ msgstr "സിസ്റ്റം ഡയഗ്നോസ്റ്റിക് വ�
 #: 
 msgid "Tags"
 msgstr "ടാഗുകൾ"
-
-#: 
-msgid "Tax Statements"
-msgstr "നികുതി പ്രസ്താവനകൾ"
 
 #: 
 msgid "Teacher"

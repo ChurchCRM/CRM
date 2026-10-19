@@ -6624,10 +6624,6 @@ msgid "Tax Report Verbiage"
 msgstr "Maandishi ya Ripoti ya Kodi"
 
 #: 
-msgid "Tax Statements (Giving Report)"
-msgstr "Taarifa za Kodi (Ripoti ya Utoaji)"
-
-#: 
 msgid "Tax Year Reporting Checklist"
 msgstr "Orodha ya Ukaguzi wa Ripoti ya Mwaka wa Kodi"
 
@@ -9139,10 +9135,6 @@ msgid "Generate and download confirmation letters"
 msgstr "Tengeneza na pakua barua za uthibitisho"
 
 #: 
-msgid "Generate annual giving statements for tax purposes"
-msgstr "Tengeneza taarifa za michango ya mwaka kwa madhumuni ya kodi"
-
-#: 
 msgid "Generate directory listings and printed materials"
 msgstr "Tengeneza orodha za saraka na nyaraka za kuchapishwa"
 
@@ -9787,10 +9779,6 @@ msgstr "Taarifa za uchunguzi wa mfumo na usanidi"
 #: 
 msgid "Tags"
 msgstr "Lebo"
-
-#: 
-msgid "Tax Statements"
-msgstr "Taarifa za Kodi"
 
 #: 
 msgid "Teacher"

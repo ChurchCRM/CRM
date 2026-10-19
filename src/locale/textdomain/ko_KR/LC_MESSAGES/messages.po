@@ -6618,10 +6618,6 @@ msgid "Tax Report Verbiage"
 msgstr "세금 보고서 문구"
 
 #: 
-msgid "Tax Statements (Giving Report)"
-msgstr "세금 명세서 (헌금 보고서)"
-
-#: 
 msgid "Tax Year Reporting Checklist"
 msgstr "세금 연도 보고 체크리스트"
 
@@ -9128,10 +9124,6 @@ msgid "Generate and download confirmation letters"
 msgstr "확인서 생성 및 다운로드"
 
 #: 
-msgid "Generate annual giving statements for tax purposes"
-msgstr "세금 목적의 연간 헌금 명세서 생성"
-
-#: 
 msgid "Generate directory listings and printed materials"
 msgstr "디렉토리 목록 및 인쇄물 생성"
 
@@ -9776,10 +9768,6 @@ msgstr "시스템 진단 정보 및 구성"
 #: 
 msgid "Tags"
 msgstr "태그"
-
-#: 
-msgid "Tax Statements"
-msgstr "세금 명세서"
 
 #: 
 msgid "Teacher"
