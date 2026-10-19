@@ -314,8 +314,14 @@ class Bootstrapper
                 $localeInfo->getLocale() . '.utf8'
             );
             
+            // GNU gettext picks the catalog from LANGUAGE, but ignores it while LC_MESSAGES is C/POSIX.
+            // Hosts without the requested OS locale can still show translations through any installed UTF-8 locale.
+            putenv('LANGUAGE=' . $localeInfo->getLocale());
             if ($localeSet === false) {
-                self::$bootStrapLogger->warning("Failed to set locale: " . $localeInfo->getLocale() . ", using system default");
+                $messagesLocale = setlocale(LC_MESSAGES, 'en_US.UTF-8', 'en_US.utf8', 'en_GB.UTF-8', 'en_GB.utf8');
+                self::$bootStrapLogger->warning("Failed to set locale: " . $localeInfo->getLocale() . ", using system default", [
+                    'messagesFallback' => $messagesLocale,
+                ]);
             }
 
             // Get numeric and monetary locale settings
