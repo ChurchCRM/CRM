@@ -11,14 +11,17 @@ name: "Marketing: capture screenshots & videos"
 #
 # Stages (each its own job, so the Actions UI shows exactly which locale or
 # stage is running or failed):
-#   1. capture   — one job per locale, in parallel. Each installs the
-#                  toolchain, starts its own CI docker stack, runs the setup
-#                  wizard + demo import, and captures that locale's
+#   1. capture_en — English alone, first. It also records and publishes the
+#                  videos. The other locales wait for it, so a broken spec
+#                  fails one job instead of eight.
+#   2. capture   — one job per remaining locale, in parallel. Each installs
+#                  the toolchain, starts its own CI docker stack, runs the
+#                  setup wizard + demo import, and captures that locale's
 #                  screenshots (scripts/capture-all-locales.sh <locale>).
 #                  Locales can't share one instance in parallel: the locale
-#                  is a DB setting on the shared admin user. Only 'en' also
-#                  records and publishes the videos.
-#   2. merge     — combines every locale's output, re-runs the capture check
+#                  is a DB setting on the shared admin user. Both stages run
+#                  the same composite action, .github/actions/marketing-capture.
+#   3. merge     — combines every locale's output, re-runs the capture check
 #                  and regenerates the manifest, then uploads the artifact.
 #
 # Trigger this from the Actions tab: pick the branch, click "Run workflow".
@@ -31,93 +34,40 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # English runs first and alone. It also records the videos. If it fails, no
+  # other locale starts, so a broken spec costs one job, not eight.
+  capture_en:
+    name: "1 — Capture (en)"
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: ./.github/actions/marketing-capture
+        with:
+          locale: en
+
   capture:
-    name: "1 — Capture (${{ matrix.locale }})"
+    name: "2 — Capture (${{ matrix.locale }})"
+    needs: capture_en
     runs-on: ubuntu-24.04
     timeout-minutes: 30
     strategy:
       fail-fast: false
       matrix:
-        locale: [en, es, pt, zh, fr, ru, de, ar]
+        locale: [es, pt, zh, fr, ru, de, ar]
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - name: Set up Node.js
-        uses: ./.github/actions/setup-node
+      - uses: ./.github/actions/marketing-capture
         with:
-          node-version-file: '.nvmrc'
-          cache: 'npm'
-
-      - name: Install npm dependencies
-        run: npm ci
-
-      - name: Set up PHP 8.4
-        uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # 2.40.0
-        with:
-          php-version: '8.4'
-          extensions: pdo_mysql, mysqli, gd, zip, gettext, iconv, mbstring, xml, curl, fileinfo, bcmath
-          coverage: none
-
-      - name: Get Composer cache directory
-        id: composer-cache
-        run: |
-          cd src
-          echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
-
-      - name: Cache Composer packages
-        uses: ./.github/actions/cache
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: ${{ runner.os }}-composer-
-
-      - name: Cache Playwright browsers
-        uses: ./.github/actions/cache
-        with:
-          path: ~/.cache/ms-playwright
-          key: ${{ runner.os }}-playwright-${{ hashFiles('package-lock.json') }}
-
-      - name: Install Playwright browser
-        run: npm run marketing:install
-
-      - name: Capture ${{ matrix.locale }}
-        run: ./scripts/capture-all-locales.sh "${{ matrix.locale }}"
-
-      - name: Dump container logs on failure
-        if: failure()
-        run: |
-          docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system logs --no-color || true
-
-      - name: Tear down Docker stack
-        if: always()
-        run: npm run docker:ci:new-system:down
-
-      - name: Upload ${{ matrix.locale }} captures
-        uses: ./.github/actions/upload-artifact
-        with:
-          name: marketing-locale-${{ matrix.locale }}-${{ github.run_id }}
-          path: |
-            playwright/artifacts/screenshots
-            playwright/artifacts/metadata
-            playwright/artifacts/videos
-          retention-days: 1
-          if-no-files-found: error
-
-      - name: Upload failure output
-        if: failure()
-        uses: ./.github/actions/upload-artifact
-        with:
-          name: marketing-failure-${{ matrix.locale }}-${{ github.run_id }}
-          path: playwright/.playwright-output/
-          # Dot-directory: actions/upload-artifact drops it unless told otherwise.
-          include-hidden-files: true
-          retention-days: 14
-          if-no-files-found: warn
+          locale: ${{ matrix.locale }}
 
   merge:
-    name: "2 — Merge & check"
-    needs: capture
+    name: "3 — Merge & check"
+    needs: [capture_en, capture]
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
