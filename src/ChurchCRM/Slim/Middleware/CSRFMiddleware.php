@@ -2,6 +2,8 @@
 
 namespace ChurchCRM\Slim\Middleware;
 
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Authentication\AuthenticationProviders\APITokenAuthentication;
 use ChurchCRM\Utils\CSRFUtils;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -38,7 +40,8 @@ class CSRFMiddleware implements MiddlewareInterface
         if (in_array($method, ['POST', 'PUT', 'DELETE', 'PATCH'])) {
             // Skip CSRF validation for API key authenticated requests
             $apiKey = $request->getHeaderLine('X-API-Key');
-            if (!empty($apiKey)) {
+            if (!empty($apiKey) && AuthenticationManager::isUserAuthenticated()
+                && AuthenticationManager::getAuthenticationProvider() instanceof APITokenAuthentication) {
                 // API key authentication provided, skip CSRF validation
                 return $handler->handle($request);
             }

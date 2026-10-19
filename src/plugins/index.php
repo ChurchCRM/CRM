@@ -20,6 +20,7 @@ use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
 use ChurchCRM\Slim\Middleware\ChurchInfoRequiredMiddleware;
 use ChurchCRM\Slim\Middleware\CorsMiddleware;
+use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
@@ -49,7 +50,7 @@ $app->group('/management', function (RouteCollectorProxy $group): void {
 // Register plugin management API routes - with admin middleware
 $app->group('/api', function (RouteCollectorProxy $group): void {
     require __DIR__ . '/routes/api/management.php';
-})->add(AdminRoleAuthMiddleware::class);
+})->add(new CSRFMiddleware())->add(AdminRoleAuthMiddleware::class);
 
 // Public plugin status endpoint - no admin required
 // Used by PersonView.js/FamilyView.js to check if MailChimp tab should be shown
@@ -92,6 +93,11 @@ $errorMiddleware->setDefaultErrorHandler(function (
         $response = $app->getResponseFactory()->createResponse(302);
 
         return $response->withHeader('Location', \ChurchCRM\dto\SystemURLs::getRootPath() . '/');
+    }
+
+    if ($exception instanceof \Slim\Exception\HttpException) {
+        $response = $app->getResponseFactory()->createResponse();
+        return SlimUtils::renderErrorJSON($response, $exception->getMessage(), [], $exception->getCode());
     }
 
     $logger->error('Plugin error', [

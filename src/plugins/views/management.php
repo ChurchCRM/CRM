@@ -669,6 +669,7 @@ $(document).ready(function() {
         btn.prop('disabled', true);
         
         $.ajax({
+            headers: { 'X-CSRF-Token': <?= \ChurchCRM\Utils\InputUtils::jsonEncodeForScript(\ChurchCRM\Utils\CSRFUtils::generateToken()) ?> },
             url: window.CRM.root + '/plugins/api/plugins/' + pluginId + '/' + action,
             method: 'POST',
             dataType: 'json',
@@ -735,6 +736,7 @@ $(document).ready(function() {
         submitBtn.prop('disabled', true).html('<i class="fa-solid fa-spinner fa-spin me-1"></i>' + i18next.t('Saving...'));
         
         $.ajax({
+            headers: { 'X-CSRF-Token': <?= \ChurchCRM\Utils\InputUtils::jsonEncodeForScript(\ChurchCRM\Utils\CSRFUtils::generateToken()) ?> },
             url: window.CRM.root + '/plugins/api/plugins/' + pluginId + '/settings',
             method: 'POST',
             dataType: 'json',
@@ -812,6 +814,7 @@ $(document).ready(function() {
         btn.prop('disabled', true).html('<i class="fa-solid fa-spinner fa-spin me-1"></i>' + i18next.t('Testing...'));
 
         $.ajax({
+            headers: { 'X-CSRF-Token': <?= \ChurchCRM\Utils\InputUtils::jsonEncodeForScript(\ChurchCRM\Utils\CSRFUtils::generateToken()) ?> },
             url:         window.CRM.root + '/plugins/api/plugins/' + pluginId + '/test',
             method:      'POST',
             dataType:    'json',
@@ -845,6 +848,7 @@ $(document).ready(function() {
         btn.prop('disabled', true).html('<i class="fa-solid fa-spinner fa-spin me-1"></i>' + i18next.t('Resetting...'));
         
         $.ajax({
+            headers: { 'X-CSRF-Token': <?= \ChurchCRM\Utils\InputUtils::jsonEncodeForScript(\ChurchCRM\Utils\CSRFUtils::generateToken()) ?> },
             url: window.CRM.root + '/plugins/api/plugins/' + pluginId + '/reset',
             method: 'POST',
             dataType: 'json',
@@ -913,6 +917,7 @@ $(document).ready(function() {
             i18next.t('Delete'),
             function() {
         $.ajax({
+            headers: { 'X-CSRF-Token': <?= \ChurchCRM\Utils\InputUtils::jsonEncodeForScript(\ChurchCRM\Utils\CSRFUtils::generateToken()) ?> },
             url: window.CRM.root + '/plugins/api/plugins/' + encodeURIComponent(pluginId),
             method: 'DELETE',
             success: function() {
@@ -944,6 +949,7 @@ $(document).ready(function() {
             i18next.t('Clear Quarantine'),
             function() {
                 $.ajax({
+            headers: { 'X-CSRF-Token': <?= \ChurchCRM\Utils\InputUtils::jsonEncodeForScript(\ChurchCRM\Utils\CSRFUtils::generateToken()) ?> },
                     url: window.CRM.root + '/plugins/api/plugins/' + encodeURIComponent(pluginId) + '/quarantine',
                     method: 'DELETE',
                     success: function() { setTimeout(function() { window.location.reload(); }, 200); },
@@ -1034,6 +1040,7 @@ $(document).ready(function() {
         $('#approvedPluginsModal').modal('show');
 
         $.ajax({
+            headers: { 'X-CSRF-Token': <?= \ChurchCRM\Utils\InputUtils::jsonEncodeForScript(\ChurchCRM\Utils\CSRFUtils::generateToken()) ?> },
             url: '<?= $sRootPath ?>/plugins/api/approved',
             method: 'GET',
             dataType: 'json',
@@ -1053,6 +1060,7 @@ $(document).ready(function() {
         $list.html('<div class="text-center text-body-secondary py-4"><i class="fa-solid fa-spinner fa-spin me-2"></i><?= addslashes(gettext('Fetching latest registry…')) ?></div>');
 
         $.ajax({
+            headers: { 'X-CSRF-Token': <?= \ChurchCRM\Utils\InputUtils::jsonEncodeForScript(\ChurchCRM\Utils\CSRFUtils::generateToken()) ?> },
             url: '<?= $sRootPath ?>/plugins/api/registry/refresh',
             method: 'POST',
             dataType: 'json',
@@ -1076,6 +1084,7 @@ $(document).ready(function() {
         $btn.prop('disabled', true).html('<i class="fa-solid fa-spinner fa-spin"></i>');
 
         $.ajax({
+            headers: { 'X-CSRF-Token': <?= \ChurchCRM\Utils\InputUtils::jsonEncodeForScript(\ChurchCRM\Utils\CSRFUtils::generateToken()) ?> },
             url: '<?= $sRootPath ?>/plugins/api/plugins/install',
             method: 'POST',
             data: { downloadUrl: downloadUrl },
@@ -1125,6 +1134,7 @@ $(document).ready(function() {
         $btn.prop('disabled', true).html('<i class="fa-solid fa-spinner fa-spin me-1"></i><?= addslashes(gettext('Installing…')) ?>');
 
         $.ajax({
+            headers: { 'X-CSRF-Token': <?= \ChurchCRM\Utils\InputUtils::jsonEncodeForScript(\ChurchCRM\Utils\CSRFUtils::generateToken()) ?> },
             url: '<?= $sRootPath ?>/plugins/api/plugins/install-url',
             method: 'POST',
             contentType: 'application/json',

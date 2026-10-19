@@ -208,7 +208,7 @@ $asLocalInput = static function (?string $value): string {
         try {
             const response = await fetch(url, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': <?= \ChurchCRM\Utils\InputUtils::jsonEncodeForScript(\ChurchCRM\Utils\CSRFUtils::generateToken()) ?> },
                 body: JSON.stringify(payload)
             });
             const data = await response.json();

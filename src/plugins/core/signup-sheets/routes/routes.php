@@ -17,6 +17,7 @@ use ChurchCRM\Plugins\SignupSheets\SignupSheetsPlugin;
 use ChurchCRM\Plugins\SignupSheets\SignupValidationException;
 use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\ViewEventsRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\CsvExporter;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -82,7 +83,7 @@ $app->group('/signup-sheets', function (RouteCollectorProxy $group) use (
             'events' => EventQuery::create()->orderByStart('desc')->limit(200)->find(),
             'allowPublic' => $signupSheetsPlugin->isPublicSharingAllowed(),
         ]);
-    })->add(AddEventsRoleAuthMiddleware::class);
+    })->add(new CSRFMiddleware())->add(AddEventsRoleAuthMiddleware::class);
 
     // Sheet editor — existing
     $group->get('/{sheetId:[0-9]+}/edit', function (Request $request, Response $response, array $args) use (
@@ -103,7 +104,7 @@ $app->group('/signup-sheets', function (RouteCollectorProxy $group) use (
             'events' => EventQuery::create()->orderByStart('desc')->limit(200)->find(),
             'allowPublic' => $signupSheetsPlugin->isPublicSharingAllowed(),
         ]);
-    })->add(AddEventsRoleAuthMiddleware::class);
+    })->add(new CSRFMiddleware())->add(AddEventsRoleAuthMiddleware::class);
 
     // Sheet detail / roster
     $group->get('/{sheetId:[0-9]+}', function (Request $request, Response $response, array $args) use (
@@ -293,4 +294,4 @@ $app->group('/signup-sheets/api', function (RouteCollectorProxy $group) use (
 
         return SlimUtils::renderSuccessJSON($response);
     });
-})->add(AddEventsRoleAuthMiddleware::class);
+})->add(new CSRFMiddleware())->add(AddEventsRoleAuthMiddleware::class);

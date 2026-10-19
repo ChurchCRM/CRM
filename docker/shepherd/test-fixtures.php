@@ -15,6 +15,7 @@ use ChurchCRM\Utils\KeyManagerUtils;
 use Defuse\Crypto\Crypto;
 
 $accounts = [];
+\ChurchCRM\dto\SystemConfig::setValue('bEnableLostPassword', '1');
 \ChurchCRM\dto\SystemConfig::setValue('bRequire2FA', '0');
 \ChurchCRM\dto\SystemConfig::setValue('sChurchName', 'Disposable Upgrade Tests');
 \ChurchCRM\dto\SystemConfig::setValue('sChurchEmail', 'upgrade@example.invalid');

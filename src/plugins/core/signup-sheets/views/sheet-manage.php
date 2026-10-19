@@ -337,6 +337,7 @@ foreach ($slotsByCategory as $slots) {
         if (payload) {
             options.body = JSON.stringify(payload);
         }
+        options.headers = { ...options.headers, 'X-CSRF-Token': <?= \ChurchCRM\Utils\InputUtils::jsonEncodeForScript(\ChurchCRM\Utils\CSRFUtils::generateToken()) ?> };
         const response = await fetch(url, options);
         let data = {};
         try {

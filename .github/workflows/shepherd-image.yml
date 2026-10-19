@@ -69,6 +69,8 @@ jobs:
           npm run lint
           npm audit --omit=dev --audit-level=moderate
           npm run validate:mysql-upgrade-syntax
+          docker run --rm --user root --entrypoint sh -v "$PWD/scripts:/var/www/html/scripts:ro" shepherd:test -c 'ln -s /var/www/html/shepherd /var/www/html/src; cd /var/www/html; php /var/www/html/scripts/test-error-redaction.php && php /var/www/html/scripts/test-volunteer-class-link-memo.php && php /var/www/html/scripts/test-countries.php'
+          docker run --rm --entrypoint sh -v "$PWD/src/composer.json:/audit/composer.json:ro" -v "$PWD/src/composer.lock:/audit/composer.lock:ro" -w /audit composer:2@sha256:af98f42dfff7c68ba8d53c2164fd9fde1087b7d449514baa38c418b1f6bc4bac -c 'composer audit --locked --no-dev'
       - name: Fresh installation and HTTP checks at root and subdirectory
         shell: bash
         run: |
@@ -90,6 +92,7 @@ jobs:
               sleep 2
             done
             "${compose[@]}" exec -T app php -d display_errors=stderr < docker/shepherd/test-fixtures.php > /tmp/fixtures.json
+            "${compose[@]}" exec -T app php -d display_errors=stderr < docker/shepherd/invariants.test.php
             TEST_ROOT="$prefix" node docker/shepherd/functional.test.mjs /tmp/fixtures.json
             "${compose[@]}" run --rm --no-deps --entrypoint php app /opt/shepherd/migrate.php
             "${compose[@]}" down -v

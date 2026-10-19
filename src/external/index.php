@@ -20,7 +20,7 @@ $app->addBodyParsingMiddleware();
 $app->addRoutingMiddleware();
 
 // Error middleware must be added AFTER routing (Slim 4 LIFO: last added = first executed)
-$errorMiddleware = $app->addErrorMiddleware(true, true, true);
+$errorMiddleware = $app->addErrorMiddleware(\ChurchCRM\dto\SystemConfig::debugEnabled(), true, true);
 SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
 
 $app->add(VersionMiddleware::class);
@@ -32,6 +32,7 @@ require __DIR__ . '/routes/verify.php';
 require __DIR__ . '/routes/calendar.php';
 require __DIR__ . '/routes/system.php';
 
+\ChurchCRM\Plugin\PluginManager::init(\ChurchCRM\dto\SystemURLs::getDocumentRoot() . '/plugins');
 \ChurchCRM\Plugin\PluginManager::registerPublicPluginRoutes($app);
 
 // Run app
