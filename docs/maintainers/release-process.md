@@ -168,7 +168,7 @@ Merge the `Start <next> release` PR before Publish (3.3). Bookkeeping reads the 
 
 ### The visuals did not reach the CDN
 
-`publish-visuals` looks for a green `marketing-capture-assets.yml` run on the release commit. With none, it prints a warning, skips the publish and still reports success, so check its summary after Publish. To publish by hand:
+The capture workflow publishes on its own when it finishes green on `master`. If the capture failed, or the `Publish visuals` job failed (a missing `DOCS_RELEASE_TOKEN` fails it), publish by hand:
 
 1. Run the capture on `master` (never on a feature branch) and wait for it to be green. Its artifact is `marketing-visuals-<run id>`, kept 30 days.
 2. `gh workflow run publish.yml -R ChurchCRM/visuals -f run_id=<capture run id> -f release=<version>`. It replaces the whole published set with that run's.

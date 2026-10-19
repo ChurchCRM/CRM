@@ -23,10 +23,6 @@ on:
         required: false
         type: boolean
         default: false
-      capture_run_id:
-        description: 'Publish the visuals from this "Marketing: capture screenshots & videos" run. Blank: the run on the release commit.'
-        required: false
-        type: string
 
 permissions:
   contents: read
@@ -181,54 +177,3 @@ jobs:
           NEXT_VERSION: ${{ steps.next_version.outputs.next_version }}
           MERGE: 'true'
         run: ./scripts/notify-docs-release.sh
-
-  publish-visuals:
-    if: (github.event_name == 'release' && !github.event.release.prerelease) || github.event_name == 'workflow_dispatch'
-    needs: sync
-    name: Publish the visuals
-    timeout-minutes: 10
-    runs-on: ubuntu-24.04
-    permissions:
-      contents: read
-      actions: read
-    env:
-      VISUALS_REPO: ChurchCRM/visuals
-      CURRENT_TAG:  ${{ github.event.release.tag_name || github.event.inputs.tag }}
-    steps:
-      # The release workflow starts a capture on the release commit without
-      # waiting for it. If it has not passed by publish time there is none: say so
-      # and stop; 'Publish visuals' can be run by hand once it is green.
-      - name: Find the capture run for the release commit
-        id: capture
-        env:
-          GH_TOKEN: ${{ github.token }}
-          GH_REPO: ${{ github.repository }}
-          CAPTURE_RUN_ID: ${{ github.event.inputs.capture_run_id }}
-        run: |
-          set -euo pipefail
-          if [ -n "$CAPTURE_RUN_ID" ]; then
-            echo "run_id=$CAPTURE_RUN_ID" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          target=$(gh release view "$CURRENT_TAG" --json targetCommitish --jq .targetCommitish)
-          sha=$(gh api "repos/$GH_REPO/commits/$target" --jq .sha)
-          run_id=$(gh run list --workflow marketing-capture-assets.yml --commit "$sha" --status success \
-            --limit 1 --json databaseId --jq '.[0].databaseId // empty')
-          if [ -z "$run_id" ]; then
-            echo "::warning::No successful marketing capture on ${sha:0:12}. Run 'Publish visuals' in $VISUALS_REPO by hand."
-          fi
-          echo "run_id=$run_id" >> "$GITHUB_OUTPUT"
-
-      - name: Start "Publish visuals" in the visuals repo
-        if: steps.capture.outputs.run_id != ''
-        env:
-          # Needs Actions: write on ChurchCRM/visuals.
-          GH_TOKEN: ${{ secrets.DOCS_RELEASE_TOKEN }}
-          RUN_ID: ${{ steps.capture.outputs.run_id }}
-        run: |
-          if [ -z "${GH_TOKEN:-}" ]; then
-            echo "::warning::DOCS_RELEASE_TOKEN is not set. Run 'Publish visuals' in $VISUALS_REPO by hand with run_id=$RUN_ID."
-            exit 0
-          fi
-          gh workflow run publish.yml -R "$VISUALS_REPO" -f run_id="$RUN_ID" -f release="$CURRENT_TAG"
-          echo "Started Publish visuals for $CURRENT_TAG from capture run $RUN_ID."

@@ -1,13 +1,11 @@
 name: "Marketing: capture screenshots & videos"
 
-# Manually run the marketing screenshot/video pipeline end-to-end against a
-# chosen branch, verify every capture it claims to have produced is a real,
-# non-empty file (npm run marketing:check), and upload the result as a run
-# artifact. Nothing is committed to this repo. The visuals are published at
-# https://cdn.churchcrm.io by ChurchCRM/visuals ("Publish visuals"), which
-# downloads this run's artifact. Release bookkeeping starts that when a release
-# is published; the release workflow requires a green run of this workflow on
-# the release commit first.
+# Runs the marketing screenshot/video pipeline end-to-end, verifies every
+# capture it claims to have produced is a real, non-empty file
+# (npm run marketing:check), uploads the result as a run artifact and, on
+# master, publishes it to https://cdn.churchcrm.io. Capture and publish are one
+# run. Nothing is committed to this repo. The release workflow starts this on
+# master after the draft exists and never waits for it.
 #
 # Stages (each its own job, so the Actions UI shows exactly which locale or
 # stage is running or failed):
@@ -23,8 +21,12 @@ name: "Marketing: capture screenshots & videos"
 #                  the same composite action, .github/actions/marketing-capture.
 #   3. merge     — combines every locale's output, re-runs the capture check
 #                  and regenerates the manifest, then uploads the artifact.
+#   4. publish   — master only. Starts "Publish visuals" in ChurchCRM/visuals,
+#                  which replaces the published set with this run's artifact.
+#                  That repo owns the publish steps; nothing is copied here.
 #
-# Trigger this from the Actions tab: pick the branch, click "Run workflow".
+# Run it on master from the Actions tab. A run on another branch captures and
+# checks but never publishes.
 
 on:
   workflow_dispatch:
@@ -102,3 +104,26 @@ jobs:
           path: playwright/artifacts/
           retention-days: 30
           if-no-files-found: error
+
+  publish:
+    name: "4 — Publish visuals"
+    needs: merge
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - name: Start "Publish visuals" in the visuals repo
+        env:
+          # Needs Actions: write on ChurchCRM/visuals.
+          GH_TOKEN: ${{ secrets.DOCS_RELEASE_TOKEN }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          if [ -z "${GH_TOKEN:-}" ]; then
+            echo "::error::DOCS_RELEASE_TOKEN is not set. Run 'Publish visuals' in ChurchCRM/visuals by hand with run_id=$RUN_ID."
+            exit 1
+          fi
+          gh workflow run publish.yml -R ChurchCRM/visuals -f run_id="$RUN_ID"
+          echo "Started Publish visuals in ChurchCRM/visuals from capture run $RUN_ID." >> "$GITHUB_STEP_SUMMARY"
+
