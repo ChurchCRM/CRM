@@ -159,7 +159,7 @@
     },
     "devDependencies": {
         "@biomejs/biome": "^2.5.15",
-        "@playwright/test": "^1.64.0",
+        "@playwright/test": "^1.64.1",
         "@types/jquery": "^3.5.33",
         "archiver": "^7.0.1",
         "css-loader": "^7.1.5",
@@ -175,7 +175,7 @@
         "minimatch": "^9.0.7",
         "mysql2": "^3.24.6",
         "picomatch": "4.0.7",
-        "sass": "^1.105.1",
+        "sass": "^1.105.2",
         "sass-loader": "^17.0.1",
         "ts-loader": "^9.6.2",
         "typescript": "^6.0.3",
