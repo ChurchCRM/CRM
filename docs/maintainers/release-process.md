@@ -130,3 +130,32 @@ Starts after Publish (3.4) and runs about a week.
 | 6.7 | Evaluate the campaign | Signals: GA4 on churchcrm.io (`utm_campaign=release-<tag>` on Discord links, `github_content` on README/CONTRIBUTING links), GitHub release ZIP download counts, PostHog `crm_version` for opted-in installs, social platform analytics | ✋ |
 
 Marketing judgment calls stay with the maintainer: which feature leads, whether a blog is warranted, and the week's cadence. An agent can draft the week's plan (launch posts, blog draft, blog share, follow-ups) from the final release notes.
+
+## Recovery paths
+
+These are what to do when a step above does not run as written. Each one was needed in the 7.8.1 release.
+
+### The release workflow stops before it creates the draft
+
+`release-publish.yml` stops when Build/Test/Package, the Nightly or the marketing capture has no green run on the branch tip. Fix the cause, or do the two steps by hand without touching `master`:
+
+1. Draft: download the ZIP from the green Build/Test/Package run on the release commit (`gh run download <run id> --pattern 'ChurchCRM-*'`), then `gh release create <version> ChurchCRM-<version>.zip --target <commit sha> --generate-notes --notes-start-tag <previous version> --draft`. A draft shows `untagged-<hash>` in its URL; `gh release view <version> --json tagName` still shows the version, and the git tag appears at Publish.
+2. Next-version PR: `gh workflow run release-prepare.yml --ref master -f version=<next version>`.
+
+Merge the `Start <next> release` PR before Publish (3.3). Bookkeeping reads the next version from `master`, and its milestone jobs stop while `master` still carries the released version. If Publish happened first, merge that PR, then re-run `release-bookkeeping.yml` with `tag=<version>`.
+
+### Bookkeeping failed
+
+`gh run view <run id> --log-failed` names the job. A `403 Resource not accessible by personal access token` from the docs milestone job means `DOCS_RELEASE_TOKEN` lacks Issues write on `ChurchCRM/docs.churchcrm.io`; fix the token, then re-run.
+
+### The visuals did not reach the CDN
+
+`publish-visuals` looks for a green `marketing-capture-assets.yml` run on the release commit. With none, it prints a warning, skips the publish and still reports success, so check its summary after Publish. To publish by hand:
+
+1. Run the capture on `master` (never on a feature branch) and wait for it to be green. Its artifact is `marketing-visuals-<run id>`, kept 30 days.
+2. `gh workflow run publish.yml -R ChurchCRM/visuals -f run_id=<capture run id> -f release=<version>`. It replaces the whole published set with that run's.
+3. Wait for the `pages build and deployment` run in `ChurchCRM/visuals`; the CDN lags the publish by a minute or two. Then check that the new images return 200 at `cdn.churchcrm.io/screenshots/en/desktop/<name>.png` and that `manifest.json` lists `usedIn`.
+4. Re-run "Validate Docusaurus site" on the `docs: ChurchCRM <version>` pull request. It fails on every `cdn.churchcrm.io` image that returns 404, so the visuals come before the docs merge.
+
+A capture that fails is diagnosed in `.agents/skills/churchcrm/marketing-visuals-pipeline.md` ("Fixing a failed capture").
+

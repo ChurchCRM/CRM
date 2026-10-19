@@ -46,6 +46,17 @@ The capture spec ships in the same PR as the UI change. Images serve your own ch
 
 `docs.churchcrm.io` and `ChurchCRM.io` link captures by name (`cdn.churchcrm.io/screenshots/<locale>/<device>/<name>.png`, the website's `cdn-shot` partial, and its setup videos). A capture a page links sets `usedIn: ['docs']`, `['website']` or both in its `captureScreen()` call, in the same PR as the link. `usedIn` reaches the generated manifest. `npm run lint:capture-used-in` fails when a capture that is marked on `origin/master` is removed or renamed. To retire one, change the links, clear its `usedIn` in a merged PR, then delete it. The website gallery lists every manifest entry, so unmarked captures can still appear there; `usedIn` records the links a page hard-codes.
 
+### Fixing a failed capture
+
+A broken locator fails the same test in every locale, and serial specs skip the tests behind it, so one failure can hide several more.
+
+- Run the capture workflow on `master` only. Do not dispatch it on a branch, and do not start a second run while one is queued.
+- A run's log downloads only after the run finishes. While it runs, read the `marketing-failure-<locale>-<run id>` artifact (kept 14 days): each failed test has `error-context.md` and `test-failed-*.png`. Open the screenshot first; a page that renders correctly means the locator is stale.
+- Locators must not use English text. Captures run in 8 locales and FullCalendar translates its aria-labels. Videos run in `en` only.
+- Verify locally before another CI run, in a worktree on its own compose project (see "Adding a capture in a feature PR"). Start the stack once, then run only the failed tests with `npx playwright test --config=playwright/playwright.config.ts --project=screenshots --no-deps --grep "<name>|<name>"`, and run a second locale through the `locale-set` project. Repeat until they pass.
+- Reset the database between runs. The volunteer fixture leaves users behind, so a locale set in one run shows up in the next (an English-only video failed on Portuguese text). `scripts/capture-all-locales.sh <locales>` tears the stack down and reinstalls, so use it for the final check, English first. macOS has no `timeout`.
+- The full run (`capture-all-locales.sh en pt`, about 15 minutes) must pass `marketing:check` before the fix goes up.
+
 ## Architecture
 
 Three Playwright projects run in this order (`playwright/playwright.config.ts`):
