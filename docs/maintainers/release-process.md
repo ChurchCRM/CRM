@@ -12,7 +12,7 @@ Legend: 🤖 automated · 🧑‍💻 agent-assisted · ✋ manual
 4. **Notes:** ask an agent to "write the `<version>` release notes". It reads the `release-notes-context-<version>` artifact and applies the approved text with `gh release edit <version> --tag <version> --notes-file …` (3.2).
 5. **Merge the `Start <next> release` PR before publishing** (3.3).
 6. **Check the tag, then Publish** (3.4): `gh release view <version> -R ChurchCRM/CRM --json tagName,isDraft` shows `"tagName":"<version>"`.
-7. **After Publish** (Phase 4): bookkeeping `sync`, `manage-milestones` and `sync-docs-milestones` are green, and the release nightly is green.
+7. **After Publish** (Phase 4): bookkeeping `sync`, `manage-milestones` and `docs-release` are green, and the release nightly is green.
 8. **Marketing** (Phase 6).
 
 Recovery for a release published under a placeholder `untagged-<hash>` tag is in `MEMORY.md`; re-run `release-bookkeeping.yml` with `tag=<version>` afterwards.
@@ -116,7 +116,7 @@ Notes:
 | 4.3 | The upgrade wizard ("What you'll gain") shows the release body from GitHub and links `changelog/<version>.md` on `master` | `ChurchCRMReleaseManager::getUpgradePreviewData()` | 🤖 |
 | 4.4 | Changelog: writes `changelog/<version>.md` from the release body and adds a row to `CHANGELOG.md`, committed to `master` as `chore(changelog): sync <version> release notes` | [`release-bookkeeping.yml`](../../.github/workflows/release-bookkeeping.yml) job `sync` → `scripts/release-changelog.js` | 🤖 |
 | 4.5 | Milestones: closes `<version>`, creates the next milestone (from `master`'s `package.json`) if missing, and moves every still-open issue/PR into it. Skipped for pre-releases | job `manage-milestones` | 🤖 |
-| 4.6 | Docs milestones: ensures `<version>` and next exist in `ChurchCRM/docs.churchcrm.io` and leaves both open, keeping held docs PRs on the released one. It reads the next version from `master`, so merge the `Start <next> release` PR first. Closing the previous release's docs milestone is manual (step 6.2) | job `sync-docs-milestones`; needs the `DOCS_RELEASE_TOKEN` secret | 🤖 |
+| 4.6 | Docs release: sends `crm-released` to `ChurchCRM/docs.churchcrm.io`, whose workflow merges the release docs and creates the `<version>` and next milestones, leaving held docs PRs on the released one. Closing the previous release's docs milestone and creating `release-docs/<next>` are manual (step 6.2) | job `docs-release`; needs the `DOCS_RELEASE_TOKEN` secret to send the dispatch | 🤖 |
 | 4.7 | Post-release nightly: the full suite, including the upgrade matrix, runs against the published release | `build-test-nightly.yml` on `release: published` | 🤖 |
 | 4.8 | Verify draft advisories with `patched_version` = the released version are public; publish any that are not | https://github.com/ChurchCRM/CRM/security/advisories | ✋ (same day) |
 

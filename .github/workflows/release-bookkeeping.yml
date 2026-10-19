@@ -142,7 +142,7 @@ jobs:
           gh api -X PATCH "repos/$GH_REPO/milestones/$current_milestone" -f state=closed --silent
           echo "Closed CRM milestone $CURRENT_TAG"
 
-  sync-docs-milestones:
+  docs-release:
     if: (github.event_name == 'release' && !github.event.release.prerelease) || github.event_name == 'workflow_dispatch'
     needs: sync
     name: Publish the docs

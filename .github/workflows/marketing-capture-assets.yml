@@ -31,6 +31,9 @@ name: "Marketing: capture screenshots & videos"
 on:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 concurrency:
   group: marketing-capture-assets-${{ github.ref }}
   cancel-in-progress: true
