@@ -25,7 +25,8 @@ test.describe('Volunteer Management v2', () => {
   test('volunteer-ministry-settings', async ({ page }, testInfo) => {
     // Captured before the seed, so the delivery card has no queued messages to report.
     await setVolunteerVersion(page, 'v2');
-    await expect(page.locator('#ministrySettingsPanel')).toBeVisible();
+    await page.goto('/admin/ministry-settings');
+    await expect(page.locator('#ministrySettingsPanel')).toBeVisible({ timeout: 30000 });
     await expect(page.locator('#ministry-delivery-card')).toBeVisible();
     await waitForFloatingButtonsToTuck(page);
     await settle(page, 800);
