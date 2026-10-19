@@ -2,7 +2,7 @@
 
 Use this after a human or bot leaves review comments. It follows `churchcrm/git-workflow.md`.
 
-1. Read comments: `gh pr view <num> --comments` and the Files changed tab.
+1. Read every thread: the GraphQL call in `churchcrm/pr-review.md` Phase 1 (inline threads from people and bots, plus review states), `gh pr view <num> --comments`, and the Files changed tab.
 2. Confirm you are on the PR branch (`git branch --show-current`).
 3. Apply each requested change as a separate logical edit. Treat Copilot and other-agent suggestions as hints; verify each against the ChurchCRM skills.
 4. Run `npm run lint` and the matching build (`npm run build:php`, `npm run build:webpack`, or `npm run build`).

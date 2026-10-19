@@ -22,7 +22,10 @@ Use this skill when asked to review a PR or branch, check standards, or triage m
 gh pr view <NUMBER>
 gh pr view <NUMBER> --comments
 gh pr view <NUMBER> --json title,body,headRefName,baseRefName,state,latestReviews,reviews,comments
+gh api graphql -f query='{repository(owner:"ChurchCRM",name:"CRM"){pullRequest(number:<NUMBER>){reviewThreads(first:100){nodes{id isResolved isOutdated path line comments(first:20){nodes{author{login} body}}}} reviews(first:50){nodes{author{login} state submittedAt commit{abbreviatedOid}}}}}}'
 ```
+
+`--comments` omits inline threads. The GraphQL call lists every thread (resolved or not, any author, including bots) and each review's state. Read all unresolved threads and check each against the current code.
 
 Answer before reading code:
 
@@ -57,6 +60,7 @@ A diff is not a review. For every changed function, route, or query:
 
 Look for:
 
+- Comments added or changed in the diff: accurate against the code, and about why rather than what (`code-standards.md`)
 - Changes outside the stated purpose
 - Debug leftovers
 - Scope that belongs in a second PR
@@ -184,9 +188,10 @@ gh pr review <NUMBER> --comment --body "..."
 
 **After posting a review or reviewing an author's fixes:**
 
-- When the author has pushed fixes for your comments, resolve those threads (GitHub UI or GraphQL `resolveReviewThread`)
+- Check every unresolved thread, whoever wrote it, against the current code. Resolve each one the code now addresses (GitHub UI or GraphQL `resolveReviewThread`)
 - Cite the commit SHA ("Fixed in abc123d")
 - Leave a thread open when the fix is incomplete or the concern remains
+- Report the threads still open and each bot's latest review state
 
 ---
 
