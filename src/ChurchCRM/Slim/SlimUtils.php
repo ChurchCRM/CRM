@@ -495,9 +495,13 @@ class SlimUtils
     /**
      * Render an array as JSON response (canonical camel-case)
      */
-    public static function renderJSON(Response $response, array $obj, int $status = 200): Response
+    public static function renderJSON(Response $response, array $obj, ?int $status = null): Response
     {
-        return self::renderStringJSON($response, json_encode($obj), $status);
+        return self::renderStringJSON(
+            $response,
+            json_encode($obj, JSON_THROW_ON_ERROR),
+            $status ?? $response->getStatusCode()
+        );
     }
 
     /**

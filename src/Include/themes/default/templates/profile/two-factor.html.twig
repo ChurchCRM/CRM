@@ -20,7 +20,8 @@
     <p class="portal-card-text">
         {{ gettext('Add a second step to your sign-in, so your password alone is not enough to reach your account.') }}
     </p>
-    <div id="two-factor-enrollment-app"></div>
+    {{ csrf_field() }}
+<div id="two-factor-enrollment-app"></div>
     <p class="portal-action-row">
         <a class="portal-button portal-button-quiet" href="{{ url('/portal/profile') }}">{{ gettext('Back to your profile') }}</a>
     </p>

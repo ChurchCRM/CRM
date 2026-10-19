@@ -75,3 +75,5 @@ cy.log
 /.obsidian
 .claude/settings.local.json
 cypress/fixtures/plugin-registry
+
+/docker/shepherd/Caddyfile.root.test

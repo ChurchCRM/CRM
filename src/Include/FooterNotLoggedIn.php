@@ -32,5 +32,6 @@ use ChurchCRM\Utils\InputUtils;
 </div>
 
   <?= PluginManager::getPluginFooterContent() ?>
+<script src="<?= \ChurchCRM\dto\SystemURLs::assetVersioned('/skin/js/shepherd-embed.js') ?>"></script>
 </body>
 </html>

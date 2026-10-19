@@ -87,6 +87,17 @@ class AuthenticationManager
         }
     }
 
+    public static function isCompletedLocalAuthentication(): bool
+    {
+        try {
+            $provider = self::getAuthenticationProvider();
+
+            return $provider instanceof LocalAuthentication && $provider->isPrimaryAuthenticationComplete();
+        } catch (\Throwable $exception) {
+            return false;
+        }
+    }
+
     public static function endSession(bool $preventRedirect = false): void
     {
         $logger = LoggerUtils::getAuthLogger();
@@ -160,8 +171,10 @@ class AuthenticationManager
             $redirectLocation ??= self::getDefaultLandingPath();
             
             // One-time login tasks: check for system updates and fetch remote notifications
-            self::checkSystemUpdates();
-            NotificationService::fetchRemoteNotifications();
+            if (getenv('SHEPHERD_PREVIEW') !== '1') {
+                self::checkSystemUpdates();
+                NotificationService::fetchRemoteNotifications();
+            }
 
             $logger->debug(
                 'Authentication Successful; redirecting to: ' . $redirectLocation
@@ -339,5 +352,106 @@ class AuthenticationManager
         $_SESSION['systemUpdateAvailable'] = $updateInfo['available'];
         $_SESSION['systemUpdateVersion'] = $updateInfo['version'];
         $_SESSION['systemLatestVersion'] = $updateInfo['latestVersion'];
+    }
+
+    public static function synchronizeAuthenticatedPasswordHash(string $expectedPasswordHash): void
+    {
+        $provider = self::getAuthenticationProvider();
+        if ($provider instanceof LocalAuthentication) {
+            $provider->synchronizeAuthenticatedPasswordHash($expectedPasswordHash);
+        }
+    }
+
+    public static function synchronizeAuthenticatedTwoFactorSecret(?string $expectedTwoFactorSecret): void
+    {
+        $provider = self::getAuthenticationProvider();
+        if ($provider instanceof LocalAuthentication) {
+            $provider->synchronizeAuthenticatedTwoFactorSecret($expectedTwoFactorSecret);
+        }
+    }
+
+    public static function synchronizeAuthenticatedRecoveryCodes(?string $expectedRecoveryCodes): void
+    {
+        $provider = self::getAuthenticationProvider();
+        if ($provider instanceof LocalAuthentication) {
+            $provider->synchronizeAuthenticatedRecoveryCodes($expectedRecoveryCodes);
+        }
+    }
+
+    public static function rotateAuthenticatedSessionAfterSecurityMutation(): void
+    {
+        $provider = self::getAuthenticationProvider();
+        if (!$provider instanceof LocalAuthentication) {
+            throw new \LogicException('Security credential mutations require local browser authentication');
+        }
+
+        $provider->rotateAuthenticatedSessionAfterSecurityMutation();
+    }
+
+    public static function getAuthenticatedSecurityMarkers(): array
+    {
+        $provider = self::getAuthenticationProvider();
+        if ($provider instanceof LocalAuthentication) {
+            return $provider->getAuthenticatedSecurityMarkers();
+        }
+
+        $user = self::getCurrentUser();
+
+        return [
+            'passwordHash' => $user->getPassword(),
+            'twoFactorSecret' => $user->getTwoFactorAuthSecret(),
+            'recoveryCodes' => $user->getTwoFactorAuthRecoveryCodes(),
+        ];
+    }
+
+    public static function hasRecentSecurityActionAuthentication(): bool
+    {
+        try {
+            $provider = self::getAuthenticationProvider();
+
+            return $provider instanceof LocalAuthentication
+                && $provider->hasRecentSecurityActionAuthentication();
+        } catch (\Throwable $exception) {
+            return false;
+        }
+    }
+
+    public static function reauthenticateForSecurityAction(string $password): bool
+    {
+        try {
+            $provider = self::getAuthenticationProvider();
+
+            return $provider instanceof LocalAuthentication
+                && $provider->reauthenticateForSecurityAction($password);
+        } catch (\Throwable $exception) {
+            return false;
+        }
+    }
+
+    public static function getUserSessionValidationResult(bool $updateLastOperationTimestamp = true): AuthenticationResult
+    {
+        $authenticationResult = new AuthenticationResult();
+
+        // Check if an authentication provider is set before attempting validation
+        // This prevents unnecessary logging for public API calls that don't require authentication
+        if (
+            !isset($_SESSION) ||
+            !array_key_exists('AuthenticationProvider', $_SESSION) ||
+            !$_SESSION['AuthenticationProvider'] instanceof IAuthenticationProvider
+        ) {
+            return $authenticationResult;
+        }
+
+        try {
+            return self::getAuthenticationProvider()
+                ->validateUserSessionIsActive($updateLastOperationTimestamp);
+        } catch (\Exception $error) {
+            LoggerUtils::getAuthLogger()->debug(
+                'Error determining session authentication status.',
+                ['exception' => $error]
+            );
+
+            return $authenticationResult;
+        }
     }
 }

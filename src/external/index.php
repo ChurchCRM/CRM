@@ -32,5 +32,7 @@ require __DIR__ . '/routes/verify.php';
 require __DIR__ . '/routes/calendar.php';
 require __DIR__ . '/routes/system.php';
 
+\ChurchCRM\Plugin\PluginManager::registerPublicPluginRoutes($app);
+
 // Run app
 $app->run();

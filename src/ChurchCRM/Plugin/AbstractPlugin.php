@@ -4,6 +4,9 @@ namespace ChurchCRM\Plugin;
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Utils\SQLUtils;
+use PDO;
+use Propel\Runtime\Propel;
 
 /**
  * Abstract base class for ChurchCRM plugins.
@@ -163,6 +166,153 @@ abstract class AbstractPlugin implements PluginInterface
             // Config key doesn't exist - plugin is not enabled
             return false;
         }
+    }
+
+    // =========================================================================
+    // Plugin-Owned Database Schema
+    // =========================================================================
+
+    /**
+     * Absolute path to this plugin's schema file, or null if it owns no tables.
+     *
+     * Declared in plugin.json as a path relative to the plugin directory:
+     *
+     *     "schemaFile": "schema/install.sql"
+     *
+     * A plugin's tables are its own responsibility, not a core release
+     * migration's: core upgrade scripts only run when a database crosses the
+     * version they are attached to, so a plugin that shipped inside an already
+     * released version would never provision itself on databases already at
+     * that version. Applying the schema on enable removes the coupling.
+     */
+    public function getSchemaFile(): ?string
+    {
+        $relativePath = $this->getManifest()['schemaFile'] ?? null;
+        if (!is_string($relativePath) || trim($relativePath) === '') {
+            return null;
+        }
+
+        // Keep the manifest from reaching outside its own plugin directory.
+        if (str_contains($relativePath, '..')) {
+            LoggerUtils::getAppLogger()->error(
+                'Plugin schemaFile must stay inside the plugin directory',
+                ['plugin' => $this->getId(), 'schemaFile' => $relativePath]
+            );
+            return null;
+        }
+
+        $schemaPath = $this->basePath . '/' . ltrim($relativePath, '/');
+
+        return file_exists($schemaPath) ? $schemaPath : null;
+    }
+
+    /**
+     * Tables this plugin cannot run without, from plugin.json `requiredTables`.
+     *
+     * Used to verify that the schema actually landed before the plugin is
+     * marked enabled, and to explain a broken install to the administrator.
+     *
+     * @return string[]
+     */
+    public function getRequiredTables(): array
+    {
+        $tables = $this->getManifest()['requiredTables'] ?? [];
+        if (!is_array($tables)) {
+            return [];
+        }
+
+        return array_values(array_filter($tables, static fn ($table): bool => is_string($table) && $table !== ''));
+    }
+
+    /**
+     * Apply this plugin's schema file, if it has one.
+     *
+     * Runs on every enable, so the schema file must be idempotent
+     * (CREATE TABLE IF NOT EXISTS, ALTER guarded by information_schema, ...).
+     *
+     * This executes DDL as the runtime database user. A deployment that grants
+     * the application DML only will fail here — the same privilege the in-app
+     * upgrader already needs, but now reachable from the plugin page too.
+     *
+     * @throws \RuntimeException If the schema cannot be applied
+     */
+    public function installSchema(): void
+    {
+        $schemaFile = $this->getSchemaFile();
+        if ($schemaFile === null) {
+            return;
+        }
+
+        try {
+            SQLUtils::sqlImport($schemaFile, Propel::getWriteConnection('default'));
+        } catch (\Throwable $e) {
+            LoggerUtils::getAppLogger()->error(
+                'Unable to apply plugin schema',
+                [
+                    'plugin' => $this->getId(),
+                    'schemaFile' => basename($schemaFile),
+                    'error' => $e->getMessage(),
+                ]
+            );
+
+            throw new \RuntimeException(
+                "Unable to apply schema for plugin '{$this->getId()}': " . $e->getMessage(),
+                0,
+                $e
+            );
+        }
+
+        LoggerUtils::getAppLogger()->info(
+            'Plugin schema applied',
+            ['plugin' => $this->getId(), 'schemaFile' => basename($schemaFile)]
+        );
+    }
+
+    /**
+     * Required tables that are absent from the database.
+     *
+     * Throws rather than answering "nothing is missing" when the database
+     * cannot be questioned. This is a verification gate, and a gate that
+     * cannot verify must fail closed: an empty array here is what lets
+     * enablePlugin() record the plugin as enabled.
+     *
+     * @return string[]
+     *
+     * @throws \RuntimeException If the database cannot be queried
+     */
+    public function getMissingTables(): array
+    {
+        $requiredTables = $this->getRequiredTables();
+        if ($requiredTables === []) {
+            return [];
+        }
+
+        try {
+            $connection = Propel::getReadConnection('default');
+            $placeholders = implode(', ', array_fill(0, count($requiredTables), '?'));
+            $statement = $connection->prepare(
+                'SELECT TABLE_NAME FROM information_schema.TABLES'
+                . ' WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME IN (' . $placeholders . ')'
+            );
+            $statement->execute($requiredTables);
+            $presentTables = array_flip($statement->fetchAll(PDO::FETCH_COLUMN));
+        } catch (\Throwable $e) {
+            LoggerUtils::getAppLogger()->error(
+                'Unable to verify plugin tables',
+                ['plugin' => $this->getId(), 'error' => $e->getMessage()]
+            );
+
+            throw new \RuntimeException(
+                "Unable to verify tables for plugin '{$this->getId()}': " . $e->getMessage(),
+                0,
+                $e
+            );
+        }
+
+        return array_values(array_filter(
+            $requiredTables,
+            static fn (string $table): bool => !isset($presentTables[$table])
+        ));
     }
 
     public function getAuthor(): string

@@ -85,7 +85,13 @@ class PortalAccountPages
             throw new PasswordChangeException('New', gettext('You must enter the same password in both boxes'));
         }
 
-        $user->userChangePassword((string) ($fields['OldPassword'] ?? ''), $newPassword);
+        $oldPassword = (string) ($fields['OldPassword'] ?? '');
+        if (!\ChurchCRM\Authentication\AuthenticationManager::reauthenticateForSecurityAction($oldPassword)) {
+            throw new PasswordChangeException('Old', gettext('Incorrect password supplied for current user'));
+        }
+        $markers = \ChurchCRM\Authentication\AuthenticationManager::getAuthenticatedSecurityMarkers();
+        $hash = $user->userChangePassword($oldPassword, $newPassword, $markers['passwordHash'], $markers['twoFactorSecret'], $markers['recoveryCodes']);
+        \ChurchCRM\Authentication\AuthenticationManager::synchronizeAuthenticatedPasswordHash($hash);
     }
 
     /**

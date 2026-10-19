@@ -5,17 +5,46 @@
  * Uses Bootstrap 5 cards and vanilla fetch against the 2FA API.
  */
 
-import { escapeHtml } from "./utils/escape-html";
-
 const CRMRoot = window.CRM.root;
 const t = (key) => (window.i18next ? window.i18next.t(key) : key);
 
 function fetchJSON(url, opts = {}) {
-  return fetch(url, { credentials: "include", ...opts }).then((r) => {
-    if (!r.ok) throw new Error(`HTTP ${r.status}`);
-    if (r.status === 204) return {};
-    return r.json();
+  const requestOptions = { credentials: "include", ...opts };
+  const method = (requestOptions.method || "GET").toUpperCase();
+  const headers = new Headers(requestOptions.headers || {});
+  if (["POST", "PUT", "PATCH", "DELETE"].includes(method)) {
+    const csrfToken = getContainer()?.dataset.csrfToken || document.querySelector('input[name="csrf_token"]')?.value;
+    if (csrfToken) headers.set("X-CSRF-Token", csrfToken);
+  }
+  requestOptions.headers = headers;
+
+  return fetch(url, requestOptions).then(async (response) => {
+    let data = {};
+    if (response.status !== 204) {
+      const text = await response.text();
+      if (text) {
+        try {
+          data = JSON.parse(text);
+        } catch (_error) {
+          data = {};
+        }
+      }
+    }
+    if (!response.ok) {
+      const error = new Error(data.error || data.message || `HTTP ${response.status}`);
+      error.status = response.status;
+      throw error;
+    }
+
+    return data;
   });
+}
+
+function escapeHtml(str) {
+  if (!str) return "";
+  const div = document.createElement("div");
+  div.textContent = str;
+  return div.innerHTML.replace(/"/g, "&quot;").replace(/'/g, "&#39;");
 }
 
 function notifyError(message) {
@@ -36,6 +65,10 @@ const state = {
   currentTwoFAPin: "",
   currentTwoFAPinStatus: "",
   TwoFARecoveryCodes: [],
+  requiresReauthentication: true,
+  reauthenticationError: "",
+  reauthenticationReturnView: "intro",
+  pendingSecurityAction: null,
 };
 
 function getContainer() {
@@ -55,6 +88,37 @@ function renderLoading() {
             <span class="spinner-border" aria-hidden="true"></span>
             <span class="visually-hidden">${t("Loading")}...</span>
           </span>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderReauthentication() {
+  const errorHtml = state.reauthenticationError
+    ? `<div class="alert alert-danger" role="alert">${escapeHtml(state.reauthenticationError)}</div>`
+    : "";
+
+  return `<div class="row">
+    <div class="col-lg-8">
+      <div class="card card-outline card-primary">
+        <div class="card-header">
+          <h4 class="mb-0"><i class="fa-solid fa-lock me-2"></i>${t("Confirm Your Password")}</h4>
+        </div>
+        <div class="card-body">
+          <p class="text-muted">${t("For your security, enter your current password before changing two-factor authentication settings.")}</p>
+          ${errorHtml}
+          <form id="securityReauthenticationForm">
+            <div class="mb-3">
+              <label for="current-password" class="form-label">${t("Current Password")}</label>
+              <input id="current-password" name="currentPassword" type="password" class="form-control"
+                autocomplete="current-password" required maxlength="1024">
+            </div>
+            <div class="d-flex gap-2">
+              <button type="submit" class="btn btn-primary">${t("Continue")}</button>
+              <button type="button" id="cancelSecurityReauthentication" class="btn btn-outline-secondary">${t("Cancel")}</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -154,8 +218,9 @@ function renderQRCode() {
             <p class="text-muted small mb-3">${t("Enter the 6-digit code from your authenticator app")}</p>
             <div class="row justify-content-center">
               <div class="col-sm-8">
-                <input id="totp-input" type="text" maxlength="6" class="form-control form-control-lg text-center two-factor-pin-input${state.currentTwoFAPinStatus === "invalid" ? " two-factor-pin-invalid" : ""}"
-                  placeholder="000000" autocomplete="off">
+                <input id="totp-input" type="text" maxlength="6" class="form-control form-control-lg text-center"
+                  placeholder="000000" autocomplete="off"
+                  style="font-size:1.75em;letter-spacing:0.5em;font-weight:500;font-family:monospace;border-width:2px;border-color:${state.currentTwoFAPinStatus === "invalid" ? "#dc3545" : "#ced4da"}">
               </div>
             </div>
             <div class="row justify-content-center mt-2" aria-live="polite">
@@ -277,6 +342,9 @@ function render() {
     case "loading":
       html = renderLoading();
       break;
+    case "reauthenticate":
+      html = renderReauthentication();
+      break;
     case "intro":
       html = renderIntro();
       break;
@@ -298,26 +366,36 @@ function render() {
 }
 
 function bindEvents() {
+  const reauthenticationForm = document.getElementById("securityReauthenticationForm");
+  if (reauthenticationForm) {
+    reauthenticationForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      submitSecurityReauthentication();
+    });
+    document.getElementById("current-password")?.focus();
+  }
+
+  const cancelReauthenticationBtn = document.getElementById("cancelSecurityReauthentication");
+  if (cancelReauthenticationBtn) {
+    cancelReauthenticationBtn.addEventListener("click", cancelSecurityReauthentication);
+  }
+
   // Intro: Get Started button
   const beginBtn = document.getElementById("begin2faEnrollment");
   if (beginBtn) {
-    beginBtn.addEventListener("click", () => {
-      requestNewBarcode();
-      state.currentView = "BeginEnroll";
-      render();
-    });
+    beginBtn.addEventListener("click", () => startEnrollment());
   }
 
   // QR screen: new code button
   const newQRBtn = document.getElementById("newQRCodeBtn");
   if (newQRBtn) {
-    newQRBtn.addEventListener("click", () => requestNewBarcode());
+    newQRBtn.addEventListener("click", () => requestNewBarcode("new-barcode", "BeginEnroll"));
   }
 
   // QR screen: cancel button
   const cancelBtn = document.getElementById("cancel2FABtn");
   if (cancelBtn) {
-    cancelBtn.addEventListener("click", () => remove2FA());
+    cancelBtn.addEventListener("click", cancelEnrollment);
   }
 
   // QR screen: TOTP input — set value via DOM (not interpolation) to prevent XSS
@@ -405,7 +483,7 @@ function bindEvents() {
           t("Are you sure you want to disable two-factor authentication? Your account will be less secure."),
         )
       ) {
-        disable2FA();
+        runSecurityAction("disable", "status-enabled", disable2FA);
       }
     });
   }
@@ -419,6 +497,7 @@ function loadInitialStatus() {
   fetchJSON(`${CRMRoot}/api/user/current/2fa-status`)
     .then((data) => {
       state.is2FAEnabled = data.IsEnabled;
+      state.requiresReauthentication = Boolean(data.RequiresReauthentication);
       state.initialLoadComplete = true;
       state.currentView = data.IsEnabled ? "status-enabled" : "intro";
       render();
@@ -430,20 +509,138 @@ function loadInitialStatus() {
     });
 }
 
-function requestNewBarcode() {
+function updateCsrfToken(token) {
+  const container = getContainer();
+  if (container && typeof token === "string" && token) {
+    container.dataset.csrfToken = token;
+  }
+}
+
+function beginSecurityReauthentication(action, returnView) {
+  state.pendingSecurityAction = action;
+  state.reauthenticationReturnView = returnView;
+  state.reauthenticationError = "";
+  state.currentView = "reauthenticate";
+  render();
+}
+
+function cancelSecurityReauthentication() {
+  state.pendingSecurityAction = null;
+  state.reauthenticationError = "";
+  state.currentView = state.reauthenticationReturnView;
+  render();
+}
+
+function runSecurityAction(action, returnView, callback) {
+  if (state.requiresReauthentication) {
+    beginSecurityReauthentication(action, returnView);
+    return;
+  }
+  callback();
+}
+
+function handleSecurityActionFailure(error, action, returnView, fallbackMessage) {
+  if (error.status === 428) {
+    state.requiresReauthentication = true;
+    beginSecurityReauthentication(action, returnView);
+    return;
+  }
+  if (error.status === 401) {
+    window.location.assign(`${CRMRoot}/session/begin`);
+    return;
+  }
+  if (error.status === 403) {
+    notifyError(t("This page's security token expired. Reload the page and try again."));
+    return;
+  }
+  notifyError(fallbackMessage);
+}
+
+function executePendingSecurityAction(action) {
+  switch (action) {
+    case "begin":
+      requestNewBarcode("begin", "intro");
+      break;
+    case "new-barcode":
+      requestNewBarcode("new-barcode", "BeginEnroll");
+      break;
+    case "disable":
+      disable2FA();
+      break;
+    case "confirm-pin":
+      // Expiring the old grant deliberately discarded the server-side draft.
+      // Provision a replacement instead of retrying against the stale QR code.
+      notifyError(t("The enrollment code expired. Scan the new QR code and try again."));
+      requestNewBarcode("new-barcode", "BeginEnroll");
+      break;
+    case "recovery-codes":
+      requestRecoveryCodes();
+      break;
+    default:
+      state.currentView = state.reauthenticationReturnView;
+      render();
+  }
+}
+
+function submitSecurityReauthentication() {
+  const passwordInput = document.getElementById("current-password");
+  const currentPassword = passwordInput?.value || "";
+  if (!currentPassword) {
+    state.reauthenticationError = t("Current password is required.");
+    render();
+    return;
+  }
+
+  const pendingAction = state.pendingSecurityAction;
+  fetchJSON(`${CRMRoot}/api/user/current/reauthenticate`, {
+    method: "POST",
+    headers: { Accept: "application/json", "Content-Type": "application/json" },
+    body: JSON.stringify({ currentPassword }),
+  })
+    .then((data) => {
+      updateCsrfToken(data.CSRFToken);
+      state.requiresReauthentication = false;
+      state.reauthenticationError = "";
+      state.pendingSecurityAction = null;
+      executePendingSecurityAction(pendingAction);
+    })
+    .catch((error) => {
+      if (error.status === 401) {
+        window.location.assign(`${CRMRoot}/session/begin`);
+        return;
+      }
+      if (error.status === 403) {
+        state.reauthenticationError = t("This page's security token expired. Reload the page and try again.");
+        render();
+        return;
+      }
+      state.reauthenticationError =
+        error.status === 422
+          ? t("The current password was not accepted.")
+          : t("Unable to confirm your password. Please try again.");
+      render();
+    });
+}
+
+function startEnrollment() {
+  runSecurityAction("begin", "intro", () => requestNewBarcode("begin", "intro"));
+}
+
+function requestNewBarcode(action, returnView) {
   fetchJSON(`${CRMRoot}/api/user/current/refresh2fasecret`, {
     method: "POST",
     headers: { Accept: "application/json", "Content-Type": "application/json" },
   })
     .then((data) => {
       state.TwoFAQRCodeDataUri = data.TwoFAQRCodeDataUri;
-      // Update only the QR image if we're on the right screen
-      const img = document.getElementById("2faQrCodeDataUri");
-      if (img) {
-        img.src = data.TwoFAQRCodeDataUri;
-      }
+      state.currentTwoFAPin = "";
+      state.currentTwoFAPinStatus = "";
+      state.currentView = "BeginEnroll";
+      render();
     })
-    .catch(() => notifyError(t("Failed to generate QR code. Please try again.")));
+    .catch((error) =>
+      handleSecurityActionFailure(error, action, returnView, t("Failed to generate QR code. Please try again.")),
+    );
 }
 
 function requestRecoveryCodes() {
@@ -455,20 +652,30 @@ function requestRecoveryCodes() {
       state.TwoFARecoveryCodes = data.TwoFARecoveryCodes;
       render();
     })
-    .catch(() => notifyError(t("Failed to load recovery codes. Please refresh the page.")));
+    .catch((error) =>
+      handleSecurityActionFailure(
+        error,
+        "recovery-codes",
+        "success",
+        t("Failed to load recovery codes. Please refresh the page."),
+      ),
+    );
 }
 
-function remove2FA() {
-  fetchJSON(`${CRMRoot}/api/user/current/remove2fasecret`, {
+function cancelEnrollment() {
+  fetchJSON(`${CRMRoot}/api/user/current/cancel2faenrollment`, {
     method: "POST",
     headers: { Accept: "application/json", "Content-Type": "application/json" },
   })
-    .then(() => {
+    .catch(() => notifyError(t("The enrollment was closed, but its server-side draft could not be cleared.")))
+    .finally(() => {
+      pendingPinVerification = "";
       state.TwoFAQRCodeDataUri = "";
-      state.currentView = "intro";
+      state.currentTwoFAPin = "";
+      state.currentTwoFAPinStatus = "";
+      state.currentView = state.is2FAEnabled ? "status-enabled" : "intro";
       render();
-    })
-    .catch(() => notifyError(t("Failed to cancel enrollment. Please try again.")));
+    });
 }
 
 function disable2FA() {
@@ -484,7 +691,14 @@ function disable2FA() {
         window.CRM.notify(t("Two-factor authentication has been disabled"), { type: "success" });
       }
     })
-    .catch(() => notifyError(t("Failed to disable two-factor authentication. Please try again.")));
+    .catch((error) =>
+      handleSecurityActionFailure(
+        error,
+        "disable",
+        "status-enabled",
+        t("Failed to disable two-factor authentication. Please try again."),
+      ),
+    );
 }
 
 let pendingPinVerification = "";
@@ -495,34 +709,51 @@ function handlePinChange(value) {
     state.currentTwoFAPinStatus = "pending";
     pendingPinVerification = value;
     render();
-    fetchJSON(`${CRMRoot}/api/user/current/test2FAEnrollmentCode`, {
-      method: "POST",
-      headers: { Accept: "application/json", "Content-Type": "application/json" },
-      body: JSON.stringify({ enrollmentCode: value }),
-    })
-      .then((data) => {
-        // Ignore stale responses if the user changed the code while request was pending
-        if (pendingPinVerification !== value) return;
-        if (data.IsEnrollmentCodeValid) {
-          requestRecoveryCodes();
-          state.is2FAEnabled = true;
-          state.currentView = "success";
-          render();
-        } else {
-          state.currentTwoFAPinStatus = "invalid";
-          render();
-        }
-      })
-      .catch(() => {
-        if (pendingPinVerification !== value) return;
-        state.currentTwoFAPinStatus = "invalid";
-        render();
-        notifyError(t("Verification failed. Please try again."));
-      });
+    verifyEnrollmentCode(value);
   } else {
     state.currentTwoFAPinStatus = "incomplete";
     render();
   }
+}
+
+function verifyEnrollmentCode(value) {
+  fetchJSON(`${CRMRoot}/api/user/current/test2FAEnrollmentCode`, {
+    method: "POST",
+    headers: { Accept: "application/json", "Content-Type": "application/json" },
+    body: JSON.stringify({ enrollmentCode: value }),
+  })
+    .then((data) => {
+      // Ignore stale responses if the user changed the code while request was pending.
+      if (pendingPinVerification !== value) return;
+      if (data.IsEnrollmentCodeValid) {
+        state.is2FAEnabled = true;
+        state.currentView = "success";
+        render();
+        requestRecoveryCodes();
+      } else {
+        state.currentTwoFAPinStatus = "invalid";
+        render();
+      }
+    })
+    .catch((error) => {
+      if (pendingPinVerification !== value) return;
+      if (error.status === 428) {
+        state.requiresReauthentication = true;
+        beginSecurityReauthentication("confirm-pin", "BeginEnroll");
+        return;
+      }
+      if (error.status === 401) {
+        window.location.assign(`${CRMRoot}/session/begin`);
+        return;
+      }
+      if (error.status === 403) {
+        notifyError(t("This page's security token expired. Reload the page and try again."));
+        return;
+      }
+      state.currentTwoFAPinStatus = "invalid";
+      render();
+      notifyError(t("Verification failed. Please try again."));
+    });
 }
 
 // ---------------------------------------------------------------------------

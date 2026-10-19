@@ -94,7 +94,7 @@ class AppIntegrityService
             try {
                 $signatureFileContents = file_get_contents($signatureFile);
                 MiscUtils::throwIfFailed($signatureFileContents);
-                $signatureData = json_decode($signatureFileContents, null, 512);
+                $signatureData = json_decode($signatureFileContents, null, 512, JSON_THROW_ON_ERROR);
             } catch (\Exception $e) {
                 $logger->warning("Error decoding signature definition file: {signatureFile}", [
                     'signatureFile' => $signatureFile,
@@ -193,7 +193,7 @@ class AppIntegrityService
             new Prerequisite('PHP Session', fn (): bool => function_exists('session_start')),
             new Prerequisite('PHP XML', fn (): bool => class_exists('SimpleXMLElement')),
             new Prerequisite('PHP iconv', fn (): bool => function_exists('iconv')),
-            new Prerequisite('URL Rewriting (mod_rewrite / nginx / LiteSpeed)', fn (): bool => AppIntegrityService::hasModRewrite()),
+            new Prerequisite('URL Rewriting (Apache / nginx / LiteSpeed / Caddy)', fn (): bool => AppIntegrityService::hasModRewrite()),
             new Prerequisite(
                 'GD Library for image manipulation',
                 fn (): bool =>
@@ -249,6 +249,18 @@ class AppIntegrityService
     public static function hasModRewrite(): bool
     {
         $logger = LoggerUtils::getAppLogger();
+
+        // Managed containers can declare rewrite support explicitly. This avoids a
+        // false negative on Caddy/FrankenPHP, where Apache module inspection and
+        // REDIRECT_STATUS are unavailable even though try_files routing is active.
+        $configuredRewriteSupport = getenv('CHURCHCRM_URL_REWRITING');
+        if ($configuredRewriteSupport !== false && $configuredRewriteSupport !== '') {
+            $enabled = filter_var($configuredRewriteSupport, FILTER_VALIDATE_BOOL, FILTER_NULL_ON_FAILURE);
+            if ($enabled !== null) {
+                $logger->debug('URL rewriting detection via CHURCHCRM_URL_REWRITING: ' . ($enabled ? 'true' : 'false'));
+                return $enabled;
+            }
+        }
 
         // Strategy 1: ask Apache directly (works on mod_php / litespeed with apache compat).
         // This is the most reliable signal and requires no network call.
@@ -352,7 +364,7 @@ class AppIntegrityService
             try {
                 $signatureFileContents = file_get_contents($signatureFile);
                 MiscUtils::throwIfFailed($signatureFileContents);
-                $signatureData = json_decode($signatureFileContents, null, 512);
+                $signatureData = json_decode($signatureFileContents, null, 512, JSON_THROW_ON_ERROR);
                 if (isset($signatureData->files) && is_array($signatureData->files)) {
                     foreach ($signatureData->files as $file) {
                         $validFiles[$file->filename] = true;
@@ -473,9 +485,6 @@ class AppIntegrityService
             '/^propel\/propel\.php$/',
             '/^integrityCheck\.json$/',
             '/^Images\/Person\/thumbnails\//',
-            // Uploaded church logo — runtime data, never part of signatures.json.
-            // Keep in sync with scripts/generate-signatures-node.js and package-release.js.
-            '/^Images\/church-logo\.png$/',
             '/^vendor\/.*\/example\//',
             '/^vendor\/.*\/examples\//',
             '/^vendor\/.*\/tests\//',
@@ -486,14 +495,6 @@ class AppIntegrityService
             // They are never part of the shipped signatures.json and must not
             // be reported as orphans. See plugin-system.md / plugin-security-scan.md.
             '/^plugins\/community\//',
-            // Church-supplied Member Portal themes and, later, other
-            // church-supplied module types. They are uploaded by the church's
-            // administrator, survive every upgrade, and are never part of the
-            // shipped signatures.json. See member-portal-design.md §3.8.
-            '/^Include\/themes\//',
-            '/^Include\/modules\//',
-            // Twig's compile cache for the portal — generated at runtime.
-            '/^Include\/cache\//',
         ];
 
         foreach ($excludePatterns as $pattern) {

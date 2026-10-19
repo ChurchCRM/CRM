@@ -64,7 +64,7 @@ class Bootstrapper
      * 
      * @throws \InvalidArgumentException If required parameters are empty
      */
-    public static function init(string $sSERVERNAME, $dbPort, string $sUSER, string $sPASSWORD, string $sDATABASE, string $sRootPath, bool $bLockURL, array $URL): void
+    public static function init(string $sSERVERNAME, $dbPort, string $sUSER, string $sPASSWORD, string $sDATABASE, string $sRootPath, bool $bLockURL, array $URL, bool $initializeSession = true): void
     {
         // Prevent double initialization
         if (self::$initialized) {
@@ -116,7 +116,9 @@ class Bootstrapper
         if (self::isDatabaseEmpty()) {
             self::installChurchCRMSchema();
         }
-        self::initSession();
+        if ($initializeSession) {
+            self::initSession();
+        }
         
         // Initialize SystemConfig with database values only once during bootstrap
         // Fallback error handlers (testMYSQLI, systemFailure) will call init() without parameters
@@ -127,6 +129,9 @@ class Bootstrapper
         self::configureLogging();
         self::configureLocale();
         if (!self::isDBCurrent()) {
+            if (!$initializeSession) {
+                throw new \RuntimeException('The database must be upgraded through an authenticated Shepherd request before serving sessionless content.');
+            }
             $dbVersion = VersionUtils::getDBVersion();
             $softwareVersion = VersionUtils::getInstalledVersion();
 
@@ -484,6 +489,9 @@ class Bootstrapper
             'secure'   => $isHttps,
             'path'     => $cookiePath,
         ]);
+        // Reject attacker-supplied/uninitialized session IDs instead of
+        // accepting them as the basis for a new authenticated session.
+        ini_set('session.use_strict_mode', '1');
 
         // iSessionTimeout is enforced by the app but SystemConfig is not loaded yet; PHP's 1440s default
         // would delete idle sessions first (#8959).

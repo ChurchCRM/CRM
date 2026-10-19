@@ -190,7 +190,7 @@
             },
             "readdir-glob": {
                 "minimatch": "5.1.8",
-                "brace-expansion": "2.1.4"
+                "brace-expansion": "2.1.7"
             }
         },
         "lodash": "4.18.1",

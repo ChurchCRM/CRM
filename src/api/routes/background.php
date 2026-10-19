@@ -36,7 +36,7 @@ function runTimerJobsAPI(Request $request, Response $response, array $args): Res
     // scheduling horizon applied now rather than at tomorrow's top-up (D31).
     $body = (array) $request->getParsedBody();
     $force = !empty($body['force']) && AuthenticationManager::getCurrentUser()->isAdmin();
-    $ran = SystemService::runTimerJobs($force, $force);
+    $ran = getenv('SHEPHERD_PREVIEW') !== '1' && SystemService::runTimerJobs($force, $force);
     $lastRun = SystemService::getLastTimerJobsRun();
 
     return SlimUtils::renderJSON($response, [

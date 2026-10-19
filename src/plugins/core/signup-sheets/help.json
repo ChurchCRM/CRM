@@ -1,0 +1,31 @@
+{
+  "summary": "Signup Sheets lets you post what an event needs — dishes to bring, roles to serve, shifts to cover — and lets people claim those slots themselves, either inside ChurchCRM or through a public share link.",
+  "sections": [
+    {
+      "title": "Getting Started",
+      "content": "1. Open **Events > Signup Sheets** and choose **New Sheet**\n2. Give the sheet a title, and optionally attach it to an existing church event\n3. Add a slot for each thing you need — \"Bring a dessert\", \"Greeter, 9:00 service\", \"Stack chairs after\"\n4. Set the capacity on each slot: how many people (or dishes) you need. Use 0 for unlimited\n5. Set the sheet status to **Open** so people can start claiming slots"
+    },
+    {
+      "title": "Slots and Categories",
+      "content": "Give slots a category to group them on the page — for example Food, Setup, Cleanup, or a service time. Slots without a category appear together at the top.\n\nEnable **Allow quantity** on a slot when one person might cover several units of it, such as \"Bring a dozen cookies\" where someone can bring three dozen."
+    },
+    {
+      "title": "Public Share Links",
+      "content": "Switch a sheet to public and it gets a secret link at `/external/signup-sheets/{token}`. Anyone with the link can claim a slot by entering their name and email — no CRM login required.\n\nThe link is unguessable but not private: treat it as shareable with your congregation, not as a secret. Turn public sharing off for a sheet at any time and the link stops working immediately.\n\nEach volunteer gets their own manage link after signing up so they can cancel without contacting you."
+    },
+    {
+      "title": "Managing Signups",
+      "content": "Open a sheet to see who has claimed what. You can add a signup on someone's behalf, remove a signup, and export the whole roster as CSV for printing or emailing.\n\nWhen a signup is linked to a Person record, the roster shows the CRM name; public signups show the name the volunteer typed."
+    },
+    {
+      "title": "Privacy & Abuse Protection",
+      "content": "Public sheets accept a limited number of signups per hour from any one visitor — adjustable in plugin settings. Signup attempts are recorded with a hashed IP address only; no raw addresses are stored.\n\nPublic pages list volunteers by name so people can see who has already claimed a slot. Email addresses and phone numbers are never shown there — those are visible only to logged-in CRM users."
+    }
+  ],
+  "links": [
+    {
+      "label": "ChurchCRM Plugin Documentation",
+      "url": "https://docs.churchcrm.io/administration/plugins"
+    }
+  ]
+}

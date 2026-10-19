@@ -858,6 +858,7 @@ function adminChangeUserPassword(Request $request, Response $response, array $ar
     $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
         'user' => $user,
+        'bRequiresReauthentication' => !AuthenticationManager::hasRecentSecurityActionAuthentication(),
         'sPageTitle' => gettext('Change Password') . ': ' . InputUtils::escapeHTML($user->getFullName()),
         'aBreadcrumbs' => PageHeader::breadcrumbs([
             [gettext('Admin'), '/admin/'],
@@ -867,19 +868,40 @@ function adminChangeUserPassword(Request $request, Response $response, array $ar
     ];
 
     if ($request->getMethod() === 'POST') {
-        $loginRequestBody = (array) $request->getParsedBody();
-        $newPassword = (string) ($loginRequestBody['NewPassword1'] ?? '');
+        $loginRequestBody = $request->getParsedBody();
 
         try {
-            if (trim($newPassword) === '') {
-                throw new PasswordChangeException('New', gettext('Enter a new password'));
+            if (!is_array($loginRequestBody)) {
+                throw new PasswordChangeException('New', gettext('Complete both password fields.'));
             }
+            if (!AuthenticationManager::hasRecentSecurityActionAuthentication()) {
+                $pageArgs['bRequiresReauthentication'] = true;
+                if (!isset($loginRequestBody['CurrentPassword'])
+                    || !is_string($loginRequestBody['CurrentPassword'])
+                    || $loginRequestBody['CurrentPassword'] === ''
+                    || strlen($loginRequestBody['CurrentPassword']) > 1024) {
+                    throw new PasswordChangeException('Current', gettext('Enter your current administrator password.'));
+                }
+                if (!AuthenticationManager::reauthenticateForSecurityAction($loginRequestBody['CurrentPassword'])) {
+                    if (!AuthenticationManager::isCompletedLocalAuthentication()) {
+                        AuthenticationManager::endSession(true);
 
-            if ($newPassword !== (string) ($loginRequestBody['NewPassword2'] ?? '')) {
-                throw new PasswordChangeException('New', gettext('You must enter the same password in both boxes'));
+                        return SlimUtils::renderRedirect($response, AuthenticationManager::getSessionBeginURL());
+                    }
+                    throw new PasswordChangeException('Current', gettext('Unable to confirm your current administrator password.'));
+                }
+                $pageArgs['bRequiresReauthentication'] = false;
             }
-
-            $user->adminSetUserPassword($newPassword);
+            if (!isset($loginRequestBody['NewPassword1'], $loginRequestBody['NewPassword2'])
+                || !is_string($loginRequestBody['NewPassword1'])
+                || !is_string($loginRequestBody['NewPassword2'])) {
+                throw new PasswordChangeException('New', gettext('Complete both password fields.'));
+            }
+            if (!hash_equals($loginRequestBody['NewPassword1'], $loginRequestBody['NewPassword2'])) {
+                throw new PasswordChangeException('New', gettext('The new passwords do not match.'));
+            }
+            $user->adminSetUserPassword($loginRequestBody['NewPassword1']);
+            AuthenticationManager::rotateAuthenticatedSessionAfterSecurityMutation();
 
             $pageArgs['sPasswordChangeSuccess'] = true;
 

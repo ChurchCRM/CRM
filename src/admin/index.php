@@ -12,6 +12,7 @@ $app = MvcAppFactory::create('/admin', [
 ]);
 
 // Register routes
+require __DIR__ . '/routes/shepherd-signups.php';
 require __DIR__ . '/routes/dashboard.php';
 require __DIR__ . '/routes/get-started.php';
 require __DIR__ . '/routes/api/demo.php';

@@ -1,0 +1,8 @@
+services:
+  app:
+    environment:
+      SHEPHERD_ROOT_PATH: ""
+    volumes:
+      - ./Caddyfile.root.test:/etc/caddy/Caddyfile:ro
+    healthcheck:
+      disable: true

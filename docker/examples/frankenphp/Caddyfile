@@ -42,26 +42,34 @@
 
     # Block .htaccess and other dot-files
     @dotfiles path_regexp hidden (^|/)\.
-    respond @dotfiles 404
 
     # Block access to PHP error/session logs
     @logs path /logs/*
-    respond @logs 404
 
     # Block access to uploaded file attachments (served via API only)
     @tmp_attach path /tmp_attach/*
-    respond @tmp_attach 404
 
     # Block access to install-time configuration (Config.php, config-values.json,
     # bootstrap scripts). Nothing under Include/ should ever be served directly.
     # See GHSA-mp2w-4q3r-ppx7.
     @include path /Include /Include/*
-    respond @include 404
 
     # Block direct HTTP execution of community/core plugin PHP files (GHSA-37mf-vq43-5qp9).
     # Caddy does not honour .htaccess — this explicit rule is required.
     @pluginPhp path_regexp pluginphp ^/plugins/(community|core)/.+\.(php|phar|phtml|pht|php[3-9])$
-    respond @pluginPhp 404
+
+    # Block direct execution of PHP view templates in Slim modules. Apache
+    # installations get this protection from each module's .htaccess file.
+    @moduleViews path_regexp moduleViews (?i)^/(?:people|groups|event|fundraiser)/views(?:/|$).*\.php$
+    # Preserve the security denials before the mutually exclusive handlers.
+    # Caddy otherwise sorts top-level `handle` ahead of `respond`.
+    route {
+        respond @dotfiles 404
+        respond @logs 404
+        respond @tmp_attach 404
+        respond @include 404
+        respond @pluginPhp 404
+        respond @moduleViews 404
 
     # ── Slim sub-application routing ──────────────────────────────────────
     #
@@ -101,6 +109,30 @@
         php_server
     }
 
+    # People module
+    handle /people/* {
+        try_files {path} /people/index.php
+        php_server
+    }
+
+    # Groups module
+    handle /groups/* {
+        try_files {path} /groups/index.php
+        php_server
+    }
+
+    # Event module
+    handle /event/* {
+        try_files {path} /event/index.php
+        php_server
+    }
+
+    # Fundraiser module
+    handle /fundraiser/* {
+        try_files {path} /fundraiser/index.php
+        php_server
+    }
+
     # Kiosk / check-in module
     handle /kiosk/* {
         try_files {path} /kiosk/index.php
@@ -136,6 +168,7 @@
         try_files {path} {path}/ /index.php
         php_server
     }
+    }
 }
 
 # ── SUBDIRECTORY INSTALLATION ─────────────────────────────────────────────────
@@ -149,15 +182,19 @@
 #     encode zstd br gzip
 #
 #     @dotfiles path_regexp hidden (^|/)\.
-#     respond @dotfiles 404
 #     @logs path /churchcrm/logs/*
-#     respond @logs 404
 #     @tmp_attach path /churchcrm/tmp_attach/*
-#     respond @tmp_attach 404
 #     @include path /churchcrm/Include/*
-#     respond @include 404
 #     @pluginPhp path_regexp pluginphp ^/churchcrm/plugins/(community|core)/.+\.(php|phar|phtml|pht|php[3-9])$
-#     respond @pluginPhp 404
+#     @moduleViews path_regexp moduleViews (?i)^/churchcrm/(?:people|groups|event|fundraiser)/views(?:/|$).*\.php$
+#
+#     route {
+#         respond @dotfiles 404
+#         respond @logs 404
+#         respond @tmp_attach 404
+#         respond @include 404
+#         respond @pluginPhp 404
+#         respond @moduleViews 404
 #
 #     handle /churchcrm/session/* {
 #         try_files {path} /churchcrm/session/index.php
@@ -179,6 +216,22 @@
 #         try_files {path} /churchcrm/finance/index.php
 #         php_server
 #     }
+#     handle /churchcrm/people/* {
+#         try_files {path} /churchcrm/people/index.php
+#         php_server
+#     }
+#     handle /churchcrm/groups/* {
+#         try_files {path} /churchcrm/groups/index.php
+#         php_server
+#     }
+#     handle /churchcrm/event/* {
+#         try_files {path} /churchcrm/event/index.php
+#         php_server
+#     }
+#     handle /churchcrm/fundraiser/* {
+#         try_files {path} /churchcrm/fundraiser/index.php
+#         php_server
+#     }
 #     handle /churchcrm/kiosk/* {
 #         try_files {path} /churchcrm/kiosk/index.php
 #         php_server
@@ -198,5 +251,6 @@
 #     handle /churchcrm/* {
 #         try_files {path} {path}/ /churchcrm/index.php
 #         php_server
+#     }
 #     }
 # }

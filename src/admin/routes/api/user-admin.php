@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Authentication\AuthenticationProviders\APITokenAuthentication;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Emails\users\AccountDeletedEmail;
 use ChurchCRM\Emails\users\ResetPasswordEmail;
@@ -8,11 +9,54 @@ use ChurchCRM\Emails\users\UnlockedEmail;
 use ChurchCRM\model\ChurchCRM\UserConfigQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Api\UserMiddleware;
+use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Exception\HttpForbiddenException;
 use Slim\Routing\RouteCollectorProxy;
+
+/**
+ * Require a recent local password confirmation for high-impact browser actions.
+ * Valid API-key authentication is request-scoped and remains supported for
+ * administrative automation.
+ */
+function requireRecentAdminSecurityAuthentication(Request $request, Response $response): ?Response
+{
+    $provider = AuthenticationManager::getAuthenticationProvider();
+    if ($provider instanceof APITokenAuthentication && AuthenticationManager::isUserAuthenticated()) {
+        return null;
+    }
+
+    if (!AuthenticationManager::isCompletedLocalAuthentication()) {
+        throw new HttpForbiddenException(
+            $request,
+            gettext('This action requires a signed-in browser session or a valid API key.')
+        );
+    }
+    if (!AuthenticationManager::hasRecentSecurityActionAuthentication()) {
+        return SlimUtils::renderJSON(
+            $response
+                ->withStatus(428)
+                ->withHeader('Cache-Control', 'no-store, private')
+                ->withHeader('Pragma', 'no-cache'),
+            [
+                'error' => gettext('Please confirm your current password before performing this administrative security action.'),
+                'code' => 'reauthentication_required',
+            ]
+        );
+    }
+
+    return null;
+}
+
+function rotateLocalAdminSessionAfterSecurityMutation(): void
+{
+    if (AuthenticationManager::isCompletedLocalAuthentication()) {
+        AuthenticationManager::rotateAuthenticatedSessionAfterSecurityMutation();
+    }
+}
 
 $app->group('/api/user/{userId:[0-9]+}', function (RouteCollectorProxy $group): void {
     /**
@@ -24,6 +68,7 @@ $app->group('/api/user/{userId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     @OA\Parameter(name="userId", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Password reset and email sent"),
      *     @OA\Response(response=403, description="Admin role required"),
+     *     @OA\Response(response=428, description="Recent browser password confirmation required"),
      *     @OA\Response(
      *         response=409,
      *         description="Email delivery is disabled or SMTP is not configured, so the reset was refused",
@@ -41,8 +86,13 @@ $app->group('/api/user/{userId:[0-9]+}', function (RouteCollectorProxy $group): 
      *         )
      *     )
      * )
-     */
+    */
     $group->post('/password/reset', function (Request $request, Response $response, array $args): Response {
+        $authenticationChallenge = requireRecentAdminSecurityAuthentication($request, $response);
+        if ($authenticationChallenge !== null) {
+            return $authenticationChallenge;
+        }
+
         if (!SystemConfig::isEmailEnabled()) {
             // Don't reset if we can't deliver the new credentials — the user
             // would be locked out. Admin should use "Change Password" instead
@@ -54,6 +104,7 @@ $app->group('/api/user/{userId:[0-9]+}', function (RouteCollectorProxy $group): 
         }
         $user = $request->getAttribute('user');
         $password = $user->resetPasswordToRandom();
+        rotateLocalAdminSessionAfterSecurityMutation();
         $user->save();
         $user->createTimeLineNote('password-reset');
         $email = new ResetPasswordEmail($user, $password);
@@ -79,12 +130,19 @@ $app->group('/api/user/{userId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="userId", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="2FA disabled for the user"),
-     *     @OA\Response(response=403, description="Admin role required")
+     *     @OA\Response(response=403, description="Admin role required"),
+     *     @OA\Response(response=428, description="Recent browser password confirmation required")
      * )
-     */
+    */
     $group->post('/disableTwoFactor', function (Request $request, Response $response, array $args): Response {
+        $authenticationChallenge = requireRecentAdminSecurityAuthentication($request, $response);
+        if ($authenticationChallenge !== null) {
+            return $authenticationChallenge;
+        }
+
         $user = $request->getAttribute('user');
         $user->disableTwoFactorAuthentication();
+        rotateLocalAdminSessionAfterSecurityMutation();
 
         return SlimUtils::renderSuccessJSON($response);
     });
@@ -92,18 +150,24 @@ $app->group('/api/user/{userId:[0-9]+}', function (RouteCollectorProxy $group): 
     /**
      * @OA\Post(
      *     path="/api/user/{userId}/login/reset",
-     *     summary="Reset failed login counter and send unlock email (Admin role required)",
+     *     summary="Reset failed login and 2FA rate-limit counters, then send an unlock email (Admin role required)",
      *     tags={"Admin"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="userId", in="path", required=true, @OA\Schema(type="integer")),
-     *     @OA\Response(response=200, description="Login counter reset and unlock email sent"),
-     *     @OA\Response(response=403, description="Admin role required")
+     *     @OA\Response(response=200, description="Login counters reset and unlock email sent"),
+     *     @OA\Response(response=403, description="Admin role required"),
+     *     @OA\Response(response=428, description="Recent browser password confirmation required")
      * )
-     */
+    */
     $group->post('/login/reset', function (Request $request, Response $response, array $args): Response {
+        $authenticationChallenge = requireRecentAdminSecurityAuthentication($request, $response);
+        if ($authenticationChallenge !== null) {
+            return $authenticationChallenge;
+        }
+
         $user = $request->getAttribute('user');
-        $user->setFailedLogins(0);
-        $user->save();
+        $user->resetAuthenticationFailures();
+        rotateLocalAdminSessionAfterSecurityMutation();
         $user->createTimeLineNote('login-reset');
         $email = new UnlockedEmail($user);
         if (!$email->send()) {
@@ -123,22 +187,22 @@ $app->group('/api/user/{userId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     @OA\Response(response=200, description="User deleted",
      *         @OA\JsonContent(@OA\Property(property="user", type="string", description="Deleted username"))
      *     ),
-     *     @OA\Response(response=403, description="Admin role required")
+     *     @OA\Response(response=403, description="Admin role required"),
+     *     @OA\Response(response=428, description="Recent browser password confirmation required")
      * )
-     */
+    */
     $group->delete('/', function (Request $request, Response $response, array $args): Response {
-        $user = $request->getAttribute('user');
-        $currentUser = AuthenticationManager::getCurrentUser();
-
-        // Never allow a user to delete themselves
-        if ($currentUser !== null && $currentUser->getId() === $user->getId()) {
-            return SlimUtils::renderErrorJSON($response, gettext('You cannot delete your own account.'), [], 403);
+        $authenticationChallenge = requireRecentAdminSecurityAuthentication($request, $response);
+        if ($authenticationChallenge !== null) {
+            return $authenticationChallenge;
         }
 
+        $user = $request->getAttribute('user');
         $userName = $user->getName();
         UserConfigQuery::create()->filterByPeronId($user->getId())->delete();
 
         $user->delete();
+        rotateLocalAdminSessionAfterSecurityMutation();
         if (SystemConfig::getBooleanValue('bSendUserDeletedEmail')) {
             $email = new AccountDeletedEmail($user);
             if (!$email->send()) {
@@ -171,4 +235,6 @@ $app->group('/api/user/{userId:[0-9]+}', function (RouteCollectorProxy $group): 
 
         return SlimUtils::renderJSON($response, ['user' => $user->getName(), 'userId' => $user->getId(), 'addEvent' => $user->isAddEvent()]);
     });
-})->add(AdminRoleAuthMiddleware::class)->add(UserMiddleware::class);
+})->add(new CSRFMiddleware('admin_user_security_action'))
+    ->add(AdminRoleAuthMiddleware::class)
+    ->add(UserMiddleware::class);

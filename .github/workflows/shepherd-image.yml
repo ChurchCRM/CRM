@@ -1,0 +1,110 @@
+name: Shepherd image
+
+on:
+  pull_request:
+  push:
+    branches: [master, feature/shepherd-7-8-1]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: 24
+      - uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069
+      - name: Check private-media routing contract
+        run: node --test docker/shepherd/Caddyfile.test.mjs
+      - name: Build production image and lint PHP
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc
+        with:
+          context: .
+          file: docker/shepherd/Dockerfile
+          load: true
+          push: false
+          tags: shepherd:test
+          labels: org.opencontainers.image.revision=${{ github.sha }}
+      - name: Smoke-test private-media denial
+        shell: bash
+        run: |
+          set -euo pipefail
+          docker run --detach --env SHEPHERD_SKIP_MIGRATION=1 --name shepherd-route-test --publish 127.0.0.1:18080:8080 shepherd:test
+          trap 'docker rm --force shepherd-route-test >/dev/null 2>&1 || true' EXIT
+
+          healthy=false
+          for attempt in {1..30}; do
+            if curl --fail --silent http://127.0.0.1:18080/shepherd/livez >/dev/null; then
+              healthy=true
+              break
+            fi
+            sleep 1
+          done
+          test "$healthy" = true
+
+          docker exec shepherd-route-test sh -c 'printf private > /var/www/html/shepherd/Images/Person/qa-private.jpg'
+          docker exec shepherd-route-test sh -c 'printf private > /var/www/html/shepherd/Images/Family/qa-private.jpg'
+
+          assert_private_media_denied() {
+            status="$(curl --location --max-redirs 5 --path-as-is --silent --output /dev/null --write-out '%{http_code}' "$1")"
+            case "$status" in
+              400|404) ;;
+              *) echo "Private media request returned HTTP $status: $1" >&2; exit 1 ;;
+            esac
+          }
+
+          assert_private_media_denied http://127.0.0.1:18080/shepherd/Images/Person/qa-private.jpg
+          assert_private_media_denied http://127.0.0.1:18080/shepherd/Images/Family/qa-private.jpg
+          assert_private_media_denied http://127.0.0.1:18080/shepherd/Images//Person/qa-private.jpg
+          assert_private_media_denied http://127.0.0.1:18080/shepherd/public/../Images/Person/qa-private.jpg
+          assert_private_media_denied http://127.0.0.1:18080/shepherd/Images/Person%2Fqa-private.jpg
+          test "$(curl --silent --output /dev/null --write-out '%{http_code}' http://127.0.0.1:18080/shepherd/livez)" = 200
+
+      - name: Validate application source
+        run: |
+          npm ci --ignore-scripts
+          npm run lint
+          npm audit --omit=dev --audit-level=moderate
+          npm run validate:mysql-upgrade-syntax
+      - name: Fresh installation and HTTP checks at root and subdirectory
+        shell: bash
+        run: |
+          set -euo pipefail
+          docker tag shepherd:test shepherd-upgrade:work
+          node docker/shepherd/make-root-test.mjs
+          for mode in subdir root; do
+            project="shepherd-upgrade-test-$mode"
+            extra=()
+            prefix=/shepherd
+            if [ "$mode" = root ]; then
+              extra=(-f docker/shepherd/compose.root-test.yml)
+              prefix=
+            fi
+            compose=(docker compose -p "$project" -f docker/shepherd/compose.test.yml "${extra[@]}")
+            "${compose[@]}" up -d
+            for attempt in {1..60}; do
+              if curl -fsS "http://127.0.0.1:18088$prefix/livez" >/dev/null; then break; fi
+              sleep 2
+            done
+            "${compose[@]}" exec -T app php -d display_errors=stderr < docker/shepherd/test-fixtures.php > /tmp/fixtures.json
+            TEST_ROOT="$prefix" node docker/shepherd/functional.test.mjs /tmp/fixtures.json
+            "${compose[@]}" run --rm --no-deps --entrypoint php app /opt/shepherd/migrate.php
+            "${compose[@]}" down -v
+          done
+      - name: Publish immutable image archive
+        if: github.event_name == 'push'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          sha="${{ github.sha }}"
+          tag="shepherd-candidate-${sha:0:12}"
+          docker tag shepherd:test "shepherd-candidate:$sha"
+          docker save "shepherd-candidate:$sha" | gzip -1 > shepherd-image.tar.gz
+          sha256sum shepherd-image.tar.gz > SHA256SUMS
+          printf 'commit=%s\nupstream=1eed269dac669a77623fe0c081359447bdcfb051\nimage=%s\n' "$sha" "$(docker image inspect -f '{{.Id}}' shepherd:test)" > MANIFEST
+          gh release create "$tag" --target "$sha" --prerelease --title "Shepherd 7.8.1 candidate ${sha:0:12}" --notes 'Preview candidate. Production promotion requires acceptance.'
+          gh release upload "$tag" shepherd-image.tar.gz SHA256SUMS MANIFEST

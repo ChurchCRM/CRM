@@ -1,0 +1,22 @@
+.shepherd-auth {
+    background: linear-gradient(135deg, #1f421b, #446d3d);
+}
+.shepherd-auth .login-card {
+    border-top: 4px solid #b7974f;
+}
+.shepherd-honeypot {
+    position: absolute !important;
+    left: -10000px !important;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.signup-count-column { width: 120px; }
+.signup-actions-column { width: 160px; }
+.signup-progress-column { min-width: 150px; }
+.signup-progress-track { height: 6px; }
+.signup-unavailable { max-width: 560px; }
+.signup-sheet-public { max-width: 900px; }
+.signup-button-group { min-width: 190px; }
+.signup-claim-manage { max-width: 620px; }

@@ -26,12 +26,13 @@ $app->addBodyParsingMiddleware();
 $app->addRoutingMiddleware();
 
 // Error middleware must be added AFTER routing (Slim 4 LIFO: last added = first executed)
-$errorMiddleware = $app->addErrorMiddleware(true, true, true);
+$errorMiddleware = $app->addErrorMiddleware(\ChurchCRM\dto\SystemConfig::debugEnabled(), true, true);
 SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
 
 $app->add(new VersionMiddleware());
 
 require __DIR__ . '/routes/password-reset.php';
+require __DIR__ . '/routes/shepherd-signup.php';
 
 $app->get('/begin', 'beginSession');
 $app->post('/begin', 'beginSession');
@@ -91,16 +92,11 @@ function beginSession(Request $request, Response $response, array $args): Respon
     ];
 
     if ($request->getMethod() === 'POST') {
-        // getParsedBody() returns null when the body is absent or its media type
-        // has no registered parser, and a malformed form post can omit either
-        // field. LocalUsernamePasswordRequest is strictly typed, so passing null
-        // raised an uncaught TypeError (HTTP 500) instead of failing the login.
-        // Matches the ?? '' already used for TwoFACode above.
-        $loginRequestBody = $request->getParsedBody() ?? [];
+        $loginRequestBody = $request->getParsedBody();
 
         $userPassRequest = new LocalUsernamePasswordRequest(
-            (string) ($loginRequestBody['User'] ?? ''),
-            (string) ($loginRequestBody['Password'] ?? '')
+            $loginRequestBody['User'],
+            $loginRequestBody['Password']
         );
         $authenticationResult = AuthenticationManager::authenticate($userPassRequest);
         $pageArgs['sErrorText'] = $authenticationResult->message;

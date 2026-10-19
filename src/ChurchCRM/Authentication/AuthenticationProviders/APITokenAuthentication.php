@@ -16,16 +16,12 @@ class APITokenAuthentication implements IAuthenticationProvider
 
     public function __serialize(): array
     {
-        // Explicitly serialize only the essential properties that need to persist across requests
-        return [
-            'currentUser' => $this->currentUser,
-        ];
+        return [];
     }
 
     public function __unserialize(array $data): void
     {
-        // Restore the properties from serialized data
-        $this->currentUser = $data['currentUser'] ?? null;
+        $this->currentUser = null;
     }
 
     public function getCurrentUser(): ?User
@@ -52,10 +48,11 @@ class APITokenAuthentication implements IAuthenticationProvider
             $this->currentUser = null;
         }
 
-        if (!empty($this->currentUser)) {
+        if ($this->currentUser instanceof \ChurchCRM\model\ChurchCRM\User && \ChurchCRM\Shepherd\SecurityPolicy::apiEligible($this->currentUser)) {
             LoggerUtils::getAuthLogger()->debug(sprintf(gettext('User authenticated via API Key: %s'), $this->currentUser->getName()));
             $authenticationResult->isAuthenticated = true;
         } else {
+            $this->currentUser = null;
             LoggerUtils::getAuthLogger()->warning(gettext('Unsuccessful API Key authentication attempt'));
         }
 

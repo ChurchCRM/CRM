@@ -30,7 +30,7 @@ $localeInfo = Bootstrapper::getCurrentLocale(); // always returns a LocaleInfo o
     <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/churchcrm.min.css') ?>">
     <?php endif; ?>
 
-    <title>ChurchCRM: <?= InputUtils::escapeHTML($sPageTitle) ?></title>
+    <title>Shepherd: <?= InputUtils::escapeHTML($sPageTitle) ?></title>
 
     <?= PluginManager::getPluginHeadContent() ?>
 

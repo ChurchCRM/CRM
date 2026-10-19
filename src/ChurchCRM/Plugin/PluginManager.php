@@ -463,6 +463,24 @@ class PluginManager
             return false;
         }
 
+        // Provision the plugin's own tables before anything can use them.
+        //
+        // Plugin schema deliberately does not ride on a core release migration:
+        // upgrade.json scripts only run when a database crosses the version they
+        // are attached to, so a plugin added within an already released version
+        // would never provision itself on databases already at that version.
+        // The schema file is idempotent, so this is a no-op once applied.
+        if ($plugin instanceof AbstractPlugin) {
+            $plugin->installSchema();
+
+            $missingTables = $plugin->getMissingTables();
+            if ($missingTables !== []) {
+                throw new \RuntimeException(
+                    "Plugin '$pluginId' is missing required tables: " . implode(', ', $missingTables)
+                );
+            }
+        }
+
         // Call activate hook
         $plugin->activate();
 
@@ -969,6 +987,35 @@ class PluginManager
      */
     public static function registerPluginRoutes($app): void
     {
+        self::requireRouteFiles($app, false);
+    }
+
+    /**
+     * Register unauthenticated routes for all active plugins that declare a
+     * publicRoutesFile.
+     *
+     * Called from the /external Slim app, which has no AuthMiddleware. Every
+     * route registered here is reachable by anonymous visitors, so the plugin
+     * itself is responsible for authorization (share tokens, rate limiting,
+     * and so on). Plugins that omit publicRoutesFile expose nothing publicly.
+     *
+     * @param mixed $app The Slim application instance
+     */
+    public static function registerPublicPluginRoutes($app): void
+    {
+        self::requireRouteFiles($app, true);
+    }
+
+    /**
+     * Include the routes file each active plugin declares for the given surface.
+     *
+     * @param mixed $app    The Slim application instance, in scope for the included file
+     * @param bool  $public true for the unauthenticated /external surface
+     */
+    private static function requireRouteFiles($app, bool $public): void
+    {
+        $surface = $public ? 'public' : 'authenticated';
+
         foreach (self::$loadedPlugins as $pluginId => $plugin) {
             try {
                 $metadata = self::$discoveredPlugins[$pluginId] ?? null;
@@ -976,7 +1023,7 @@ class PluginManager
                     continue;
                 }
 
-                $routesFile = $metadata->getRoutesFile();
+                $routesFile = $public ? $metadata->getPublicRoutesFile() : $metadata->getRoutesFile();
                 if (empty($routesFile)) {
                     continue;
                 }
@@ -985,7 +1032,7 @@ class PluginManager
                 if (!file_exists($routesPath)) {
                     LoggerUtils::getAppLogger()->warning(
                         "Plugin routes file not found: $routesPath",
-                        ['plugin' => $pluginId]
+                        ['plugin' => $pluginId, 'surface' => $surface]
                     );
                     continue;
                 }
@@ -995,12 +1042,12 @@ class PluginManager
 
                 LoggerUtils::getAppLogger()->debug(
                     "Loaded plugin routes: $pluginId",
-                    ['routesFile' => $routesFile]
+                    ['routesFile' => $routesFile, 'surface' => $surface]
                 );
             } catch (\Throwable $e) {
                 LoggerUtils::getAppLogger()->error(
                     "Error loading plugin routes: $pluginId",
-                    ['error' => $e->getMessage()]
+                    ['error' => $e->getMessage(), 'surface' => $surface]
                 );
             }
         }

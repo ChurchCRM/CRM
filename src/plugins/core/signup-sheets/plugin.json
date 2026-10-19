@@ -1,0 +1,52 @@
+{
+  "id": "signup-sheets",
+  "name": "Signup Sheets",
+  "description": "Volunteer and potluck signup sheets. Create a sheet of slots — what to bring, how to serve, which shift to take — and let members claim them inside the CRM or through a shareable public link.",
+  "version": "1.0.0",
+  "author": "ChurchCRM Team",
+  "authorUrl": "https://churchcrm.io",
+  "type": "core",
+  "minimumCRMVersion": "7.6.2",
+  "mainClass": "ChurchCRM\\Plugins\\SignupSheets\\SignupSheetsPlugin",
+  "dependencies": [],
+  "settingsUrl": null,
+  "schemaFile": "schema/install.sql",
+  "requiredTables": ["signupsheet_shs", "signupslot_sls", "signupclaim_sgc", "signupaudit_sga"],
+  "routesFile": "routes/routes.php",
+  "publicRoutesFile": "routes/public.php",
+  "settings": [
+    {
+      "key": "allowPublicSheets",
+      "label": "Allow public share links",
+      "type": "boolean",
+      "required": false,
+      "default": true,
+      "help": "When enabled, a sheet can be published at a secret link that anyone can use without a CRM login."
+    },
+    {
+      "key": "publicRateLimit",
+      "label": "Public signups per hour per visitor",
+      "type": "number",
+      "required": false,
+      "default": "20",
+      "help": "Maximum signups accepted from one IP address per hour on public sheets. Rejected submissions are throttled separately, at five times this number."
+    },
+    {
+      "key": "contactEmail",
+      "label": "Sheet contact email",
+      "type": "text",
+      "required": false,
+      "help": "Shown on public sheets so volunteers know who to ask about the event."
+    }
+  ],
+  "menuItems": [
+    {
+      "parent": "events",
+      "label": "Signup Sheets",
+      "url": "plugins/signup-sheets",
+      "icon": "fa-clipboard-list"
+    }
+  ],
+  "hooks": [],
+  "hasTest": false
+}

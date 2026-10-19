@@ -7,7 +7,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\ChurchLogo;
 
 $sPageTitle = gettext('Login');
-$sBodyClass = 'page-auth page-login';
+$sBodyClass = 'page-auth page-login shepherd-auth';
 require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
 
 ?>
@@ -33,7 +33,7 @@ $contactWebsite = ChurchMetaData::getChurchWebSite();
         <?= ChurchLogo::img() ?>
       </div>
       <h2 class="login-header-church-name"><?= InputUtils::escapeHTML(ChurchMetaData::getChurchName()) ?></h2>
-      <p class="login-header-tagline"><?= gettext('Community Management Platform') ?></p>
+      <p class="login-header-tagline">Shepherd</p>
     </div>
 
     <!-- Card body -->
@@ -78,6 +78,7 @@ $contactWebsite = ChurchMetaData::getChurchWebSite();
         </div>
       <?php endif; ?>
 
+      <p class="text-center"><a href="<?= SystemURLs::getRootPath() ?>/session/signup"><?= gettext('Request a Shepherd account') ?></a></p>
       <!-- Sign In form -->
       <?php if (isset($sErrorText)): ?>
         <div class="alert alert-danger"><?= htmlspecialchars($sErrorText) ?></div>
@@ -88,13 +89,13 @@ $contactWebsite = ChurchMetaData::getChurchWebSite();
 
       <form method="post" name="LoginForm" action="<?= $localAuthNextStepURL ?>">
         <div class="mb-3">
-          <label for="UserBox" class="form-label"><?= gettext('Email address') ?></label>
+          <label for="UserBox" class="form-label"><?= gettext('Username') ?></label>
           <input
             type="text"
             id="UserBox"
             name="User"
             class="form-control"
-            placeholder="name@example.com"
+            autocomplete="username"
             value="<?= htmlspecialchars($prefilledUserName) ?>"
             required
             autofocus

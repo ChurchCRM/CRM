@@ -1,0 +1,49 @@
+name: shepherd-upgrade-test
+services:
+  database:
+    image: mariadb@sha256:24e76fcec8c003a0362d0dd53f4806e7e79458d7fdeaf47437760e19496f5a9c
+    environment:
+      MARIADB_DATABASE: shepherd
+      MARIADB_USER: shepherd
+      MARIADB_PASSWORD: disposable-test-password
+      MARIADB_ROOT_PASSWORD: disposable-root-password
+    volumes:
+      - database:/var/lib/mysql
+    networks: [test]
+    healthcheck:
+      test: [CMD, healthcheck.sh, --connect, --innodb_initialized]
+      interval: 3s
+      timeout: 5s
+      retries: 30
+  app:
+    image: shepherd-upgrade:work
+    environment:
+      SHEPHERD_DB_HOST: database
+      SHEPHERD_DB_NAME: shepherd
+      SHEPHERD_DB_USER: shepherd
+      SHEPHERD_DB_PASSWORD: disposable-test-password
+      SHEPHERD_PUBLIC_URL: http://localhost:${TEST_PORT:-18088}
+      SHEPHERD_PREVIEW: "1"
+      SHEPHERD_SMTP_HOST: mailpit:1025
+    networks: [test]
+    depends_on:
+      database:
+        condition: service_healthy
+  mailpit:
+    image: axllent/mailpit@sha256:23fe39e81bde596a918000b3135c0f85dc8bb4c9ea6be274b051143f3e300387
+    environment:
+      MP_DISABLE_VERSION_CHECK: "true"
+      MP_SMTP_DISABLE_RDNS: "true"
+    networks: [test]
+  gateway:
+    image: nginx@sha256:892bb2152464f0c5d8972593a5f5afaf8054552580b699d95f8ff4af08c2d33d
+    ports: ["127.0.0.1:${TEST_PORT:-18088}:80"]
+    volumes:
+      - ./nginx.test.conf:/etc/nginx/conf.d/default.conf:ro
+    networks: [test, ingress]
+networks:
+  test:
+    internal: true
+  ingress:
+volumes:
+  database:

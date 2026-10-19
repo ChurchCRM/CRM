@@ -83,6 +83,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 <?php } ?>
 
 <?= PluginManager::getPluginFooterContent() ?>
+<script src="<?= \ChurchCRM\dto\SystemURLs::assetVersioned('/skin/js/shepherd-embed.js') ?>"></script>
 </body>
 </html>
 <?php

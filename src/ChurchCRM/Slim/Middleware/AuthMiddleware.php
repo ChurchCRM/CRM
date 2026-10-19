@@ -100,7 +100,9 @@ class AuthMiddleware implements MiddlewareInterface
                 // Use a PSR-15 response redirect rather than calling ensureAuthentication() which exits via header().
                 if ($this->isBrowserRequest($request) && !$this->isPath($request, 'background')) {
                     $result = AuthenticationManager::getAuthenticationProvider()->validateUserSessionIsActive(true);
-                    if ($result->nextStepURL !== null) {
+                    if ($result->nextStepURL !== null
+                        && $request->getUri()->getPath() !== $result->nextStepURL
+                        && !in_array(substr($request->getUri()->getPath(), strlen(SystemURLs::getRootPath())), self::AUTH_FLOW_EXEMPT_PATHS, true)) {
                         return (new Response())->withStatus(302)->withHeader('Location', $result->nextStepURL);
                     }
                 }
@@ -123,6 +125,17 @@ class AuthMiddleware implements MiddlewareInterface
             }
         }
 
+        if (!$this->isPublicPath($request) && AuthenticationManager::isUserAuthenticated()
+            && AuthenticationManager::getAuthenticationProvider() instanceof \ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication) {
+            $result = AuthenticationManager::getAuthenticationProvider()->validateUserSessionIsActive(false);
+            $relativePath = substr($request->getUri()->getPath(), strlen(SystemURLs::getRootPath()));
+            if ($result->nextStepURL !== null && !in_array($relativePath, self::AUTH_FLOW_EXEMPT_PATHS, true)) {
+                if ($this->isBrowserRequest($request)) {
+                    return (new Response())->withStatus(302)->withHeader('Location', $result->nextStepURL);
+                }
+                return SlimUtils::renderJSON((new Response())->withStatus(403), ['error' => 'Complete the required account security step.']);
+            }
+        }
         return $handler->handle($request);
     }
 
@@ -186,6 +199,8 @@ class AuthMiddleware implements MiddlewareInterface
         '/v2/user/current/manage2fa',
         '/v2/user/current/enroll2fa',
         '/api/user/current/2fa-status',
+        '/api/user/current/reauthenticate',
+        '/api/user/current/cancel2faenrollment',
         '/api/user/current/get2faqrcode',
         '/api/user/current/refresh2fasecret',
         '/api/user/current/refresh2farecoverycodes',

@@ -24,6 +24,7 @@ class PluginMetadata
     private ?string $settingsUrl;
     private array $help;
     private ?string $routesFile;
+    private ?string $publicRoutesFile;
     private bool $hasTest;
 
     public function __construct(array $data, string $path)
@@ -45,6 +46,7 @@ class PluginMetadata
         $this->settingsUrl = $data['settingsUrl'] ?? null;
         $this->help = $data['help'] ?? [];
         $this->routesFile = $data['routesFile'] ?? null;
+        $this->publicRoutesFile = $data['publicRoutesFile'] ?? null;
         $this->hasTest = (bool) ($data['hasTest'] ?? false);
     }
 
@@ -147,6 +149,17 @@ class PluginMetadata
         return $this->routesFile;
     }
 
+    /**
+     * Routes file mounted on the unauthenticated /external app.
+     *
+     * Anything registered from this file is reachable by anonymous visitors,
+     * so plugins must do their own authorization (share tokens, etc.).
+     */
+    public function getPublicRoutesFile(): ?string
+    {
+        return $this->publicRoutesFile;
+    }
+
     public function hasTest(): bool
     {
         return $this->hasTest;
@@ -207,6 +220,7 @@ class PluginMetadata
             'hooks' => $this->hooks,
             'settingsUrl' => $this->settingsUrl,
             'routesFile' => $this->routesFile,
+            'publicRoutesFile' => $this->publicRoutesFile,
             'help' => $this->help,
         ];
     }

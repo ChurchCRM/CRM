@@ -1,0 +1,136 @@
+{
+    auto_https off
+    frankenphp
+    order php_server before file_server
+}
+
+:8080 {
+    root * /var/www/html
+    encode zstd gzip
+
+    header {
+        X-Frame-Options "SAMEORIGIN"
+        Content-Security-Policy "frame-ancestors 'self'"
+        X-Content-Type-Options "nosniff"
+        Referrer-Policy "strict-origin-when-cross-origin"
+        -Server
+    }
+
+    @dotfiles path_regexp hidden ^/shepherd/(?:.*/)?\.
+    @protected path /shepherd/Include /shepherd/Include/* /shepherd/logs /shepherd/logs/* /shepherd/tmp_attach /shepherd/tmp_attach/* /shepherd/SQL /shepherd/SQL/* /shepherd/uploads /shepherd/uploads/* /shepherd/vendor /shepherd/vendor/* /shepherd/ChurchCRM /shepherd/ChurchCRM/* /shepherd/mysql /shepherd/mysql/*
+    # Uploaded person/family photos must be served through authenticated API routes.
+    # Caddy does not honor the deny rules in the directories' .htaccess files.
+    # See: GHSA-r286-h493-ppwj
+    @privateMedia path_regexp privateMedia (?i)^/shepherd/Images/(?:Person|Family)(?:/|$)
+    # These Slim modules render PHP templates from their views directories.
+    # Apache blocks direct template execution through each module's .htaccess;
+    # Caddy must provide the equivalent protection explicitly.
+    @moduleViews path_regexp moduleViews (?i)^/shepherd/[^/]+/(?:views|templates)(?:/|$).*\.php$
+    @pluginPhp path_regexp pluginphp ^/shepherd/plugins/(community|core)/.+\.(php|phar|phtml|pht|php[3-9])$
+    @retired path /shepherd/admin.html /shepherd/api/console/session /shepherd/api/background/console/session /shepherd/api/bulletins /shepherd/api/bulletins/* /shepherd/bulletins /shepherd/bulletins/*
+    @websiteContentUpdate {
+        method PUT
+        path /shepherd/api/website-content/*
+    }
+
+    # `route` preserves literal handler order. Without it, Caddy's directive
+    # sorting places `handle` before top-level `respond` directives.
+    route {
+        # Liveness only proves that the web process can answer requests. It must
+        # remain independent of MariaDB so the orchestrator can distinguish a
+        # crashed container from an unavailable dependency.
+        handle /shepherd/livez {
+            header Content-Type "application/json; charset=utf-8"
+            header Cache-Control "no-store"
+            respond `{"status":"alive"}` 200
+        }
+
+        # Readiness is handled by a small deployment probe that checks the
+        # application database/schema and writable persistent paths. It does not
+        # bootstrap ChurchCRM, create a session, or expose dependency details.
+        handle /shepherd/healthz {
+            rewrite * /shepherd/healthz.php
+            php_server
+        }
+        handle /shepherd/healthz.php {
+            respond 404
+        }
+
+        respond @dotfiles 404
+        respond @retired 410
+        respond @protected 404
+        respond @privateMedia 404
+        respond @moduleViews 404
+        respond @pluginPhp 404
+
+        request_body @websiteContentUpdate {
+            max_size 2100000
+        }
+
+        handle /shepherd/ministries/* {
+            try_files {path} /shepherd/ministries/index.php
+            php_server
+        }
+        handle /shepherd/portal/* {
+            try_files {path} /shepherd/portal/index.php
+            php_server
+        }
+        handle /shepherd/session/* {
+            try_files {path} /shepherd/session/index.php
+            php_server
+        }
+        handle /shepherd/api/* {
+            try_files {path} /shepherd/api/index.php
+            php_server
+        }
+        handle /shepherd/v2/* {
+            try_files {path} /shepherd/v2/index.php
+            php_server
+        }
+        handle /shepherd/admin/* {
+            try_files {path} /shepherd/admin/index.php
+            php_server
+        }
+        handle /shepherd/finance/* {
+            try_files {path} /shepherd/finance/index.php
+            php_server
+        }
+        handle /shepherd/people/* {
+            try_files {path} /shepherd/people/index.php
+            php_server
+        }
+        handle /shepherd/groups/* {
+            try_files {path} /shepherd/groups/index.php
+            php_server
+        }
+        handle /shepherd/event/* {
+            try_files {path} /shepherd/event/index.php
+            php_server
+        }
+        handle /shepherd/fundraiser/* {
+            try_files {path} /shepherd/fundraiser/index.php
+            php_server
+        }
+        handle /shepherd/kiosk/* {
+            try_files {path} /shepherd/kiosk/index.php
+            php_server
+        }
+        handle /shepherd/plugins/* {
+            try_files {path} /shepherd/plugins/index.php
+            php_server
+        }
+        handle /shepherd/external/* {
+            try_files {path} /shepherd/external/index.php
+            php_server
+        }
+        handle /shepherd/setup/* {
+            try_files {path} /shepherd/setup/index.php
+            php_server
+        }
+        handle /shepherd/* {
+            try_files {path} {path}/ /shepherd/index.php
+            php_server
+        }
+        respond 404
+    }
+}
