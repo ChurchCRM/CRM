@@ -50,6 +50,7 @@ export function writeMetadata(destination: string, data: ArtifactMetadata): void
     title: data.title,
     category: data.category,
     dark: data.dark,
+    usedIn: data.usedIn,
     product: 'ChurchCRM',
     commit: getCommit(),
     locale: LOCALE,
