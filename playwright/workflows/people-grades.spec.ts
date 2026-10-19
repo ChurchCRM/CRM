@@ -34,6 +34,7 @@ test.describe('School Grades', () => {
       title: 'School Grades',
       category: 'People & Families',
       purpose: 'Show the church-defined grade list, with grade names for the church’s country',
+      usedIn: ['docs'],
     });
   });
 
@@ -50,6 +51,7 @@ test.describe('School Grades', () => {
       title: 'Yearly Grade Promotion',
       category: 'People & Families',
       purpose: 'Show the date on which every child moves up one grade, and the Promote Now button',
+      usedIn: ['docs'],
     });
   });
 
@@ -70,6 +72,7 @@ test.describe('School Grades', () => {
       title: 'People by Grade Report',
       category: 'People & Families',
       purpose: 'Show Kindergarten through 5th in one list, ready to add to the cart and place in a Sunday School class',
+      usedIn: ['docs'],
     });
   });
 });
