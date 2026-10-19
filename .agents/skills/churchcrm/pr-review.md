@@ -101,6 +101,7 @@ Rules live in `frontend-development.md`; check the diff against it.
 - [ ] The page is built around a role's task (`frontend-development.md`): primary action in the page header, table above the fold, entry buttons land in the task
 - [ ] Renders in **light and dark**, at **desktop, tablet and phone**: the author states the pass; screenshots if they exist
 - [ ] Every `@media` rule survives the restyle; Cypress selectors the change touches still match
+- [ ] `playwright/` specs, videos and helpers that use anything the change removes, renames or reroutes are updated in the same PR (grep `playwright/` for the ids, routes, settings and labels in the diff); locators carry no English text; captures marked `usedIn` still exist
 - [ ] Asset paths use `SystemURLs::getRootPath()`
 - [ ] UI text wrapped with `gettext()` or `i18next.t()`
 - [ ] Messages and confirmations use `window.CRM.notify()` and bootbox or a Bootstrap modal
