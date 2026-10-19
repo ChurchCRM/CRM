@@ -26,6 +26,8 @@ jobs:
           file: docker/shepherd/Dockerfile
           load: true
           push: false
+          cache-from: type=gha,scope=shepherd-7-8-1
+          cache-to: type=gha,mode=max,scope=shepherd-7-8-1
           tags: shepherd:test
           labels: org.opencontainers.image.revision=${{ github.sha }}
       - name: Smoke-test private-media denial

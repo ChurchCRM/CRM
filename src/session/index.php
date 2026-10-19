@@ -43,7 +43,11 @@ $app->post('/two-factor', 'processTwoFactorPost');
 function processTwoFactorGet(Request $request, Response $response, array $args): Response
 {
     $renderer = new PhpRenderer('templates/');
-    $curUser = AuthenticationManager::getCurrentUser();
+    try {
+        $curUser = AuthenticationManager::getCurrentUser();
+    } catch (\Throwable) {
+        return $response->withStatus(302)->withHeader('Location', SystemURLs::getRootPath() . '/session/begin');
+    }
     $queryParams = $request->getQueryParams();
     $pageArgs = [
         'sRootPath'    => SystemURLs::getRootPath(),
@@ -60,7 +64,8 @@ function processTwoFactorPost(Request $request, Response $response, array $args)
     $loginRequestBody = $request->getParsedBody();
     $queryParams = $request->getQueryParams();
     $isRecoveryMode = isset($queryParams['recovery']);
-    $twoFARequest = new LocalTwoFactorTokenRequest($loginRequestBody['TwoFACode'] ?? '', $isRecoveryMode);
+    $code = is_array($loginRequestBody) && is_string($loginRequestBody['TwoFACode'] ?? null) ? $loginRequestBody['TwoFACode'] : '';
+    $twoFARequest = new LocalTwoFactorTokenRequest($code, $isRecoveryMode);
     // AuthenticationManager::authenticate() calls RedirectUtils::redirect() which exits.
     // On success: redirects to dashboard. On failure: redirects to /session/two-factor?invalid=1
     AuthenticationManager::authenticate($twoFARequest);
@@ -82,7 +87,7 @@ function beginSession(Request $request, Response $response, array $args): Respon
 
     // Check for explicit username in query params (e.g., from password reset)
     $rawUserName = $queryParams['username'] ?? $request->getServerParams()['username'] ?? '';
-    $prefilledUserName = InputUtils::sanitizeText($rawUserName);
+    $prefilledUserName = InputUtils::sanitizeText(is_string($rawUserName) ? $rawUserName : '');
 
     $pageArgs = [
         'sRootPath'            => SystemURLs::getRootPath(),
@@ -92,11 +97,11 @@ function beginSession(Request $request, Response $response, array $args): Respon
     ];
 
     if ($request->getMethod() === 'POST') {
-        $loginRequestBody = $request->getParsedBody();
-
+        $body = $request->getParsedBody();
+        $body = is_array($body) ? $body : [];
         $userPassRequest = new LocalUsernamePasswordRequest(
-            $loginRequestBody['User'],
-            $loginRequestBody['Password']
+            is_string($body['User'] ?? null) ? $body['User'] : '',
+            is_string($body['Password'] ?? null) ? $body['Password'] : ''
         );
         $authenticationResult = AuthenticationManager::authenticate($userPassRequest);
         $pageArgs['sErrorText'] = $authenticationResult->message;

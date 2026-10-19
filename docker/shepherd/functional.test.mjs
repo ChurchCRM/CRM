@@ -48,6 +48,10 @@ check((await anonymous.request('/api/background/website-content/session', {heade
 for (const path of ['/Include/Config.php','/vendor/autoload.php','/mysql/install/Install.sql','/Images/Person/private.jpg','/admin/views/users.php','/session/templates/begin-session.php']) {
   check((await anonymous.request(path)).status === 404, `private path denied: ${path}`);
 }
+for (const body of [{},{User:'x'},{Password:'x'},{User:[],Password:{}},null]) {
+  check((await anonymous.request('/session/begin',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})).status < 500, 'malformed login input is handled without a server error');
+}
+check((await anonymous.request('/session/two-factor')).status === 302, 'anonymous second-factor page redirects to login');
 const member = new Browser();
 await member.login(fixtures.member);
 check((await member.request('/api/background/website-content/session',{headers:{Accept:'application/json'}})).status === 403, 'member cannot authorize CMS');
