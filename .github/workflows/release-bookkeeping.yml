@@ -149,7 +149,7 @@ jobs:
   sync-docs-milestones:
     if: (github.event_name == 'release' && !github.event.release.prerelease) || github.event_name == 'workflow_dispatch'
     needs: sync
-    name: Synchronize docs milestones
+    name: Publish the docs
     timeout-minutes: 10
     runs-on: ubuntu-24.04
     permissions:
@@ -168,47 +168,12 @@ jobs:
           next_version=$(echo "$pkg_b64" | base64 -d | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>console.log(JSON.parse(s).version))")
           echo "next_version=$next_version" >> "$GITHUB_OUTPUT"
 
-      - name: Synchronize released and next docs milestones
-        env:
-          # Cross-repository milestone writes require a fine-grained PAT or GitHub App token
-          # with Issues:write access to ChurchCRM/docs.churchcrm.io.
-          GH_TOKEN: ${{ secrets.DOCS_RELEASE_TOKEN }}
-          NEXT_VERSION: ${{ steps.next_version.outputs.next_version }}
-        run: |
-          set -euo pipefail
-
-          if [ -z "${GH_TOKEN:-}" ]; then
-            echo "::warning::DOCS_RELEASE_TOKEN is not set; skipping docs milestone sync. See #10097."
-            exit 0
-          fi
-
-          ensure_milestone() {
-            local version="$1"
-            local number
-            number=$(gh api --paginate "repos/$DOCS_REPO/milestones?state=all&per_page=100" \
-              --jq ".[] | select(.title == \"$version\") | .number" | head -n 1)
-            if [ -z "$number" ]; then
-              number=$(gh api "repos/$DOCS_REPO/milestones" -f title="$version" --jq '.number')
-              echo "Created docs milestone #$number ($version)"
-            else
-              echo "Docs milestone $version already exists (#$number)"
-            fi
-            echo "$number"
-          }
-
-          released_number=$(ensure_milestone "$CURRENT_TAG" | tail -n 1)
-          next_number=$(ensure_milestone "$NEXT_VERSION" | tail -n 1)
-
-          # Mark the released docs milestone as released, but DO NOT move its open docs PRs.
-          # They document that exact release and should remain associated with it until merged/closed.
-          gh api -X PATCH "repos/$DOCS_REPO/milestones/$released_number" -f state=open --silent
-          gh api -X PATCH "repos/$DOCS_REPO/milestones/$next_number" -f state=open --silent
-
-          echo "Docs milestones synchronized: released=$CURRENT_TAG, next=$NEXT_VERSION"
-
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
+      # The docs repo owns its milestones and the release-docs/<next> branch, so
+      # nothing here writes to them. A stale NEXT_VERSION (master not yet bumped)
+      # makes the docs workflow use the next patch.
       - name: Publish the docs for this release
         env:
           GH_TOKEN: ${{ secrets.DOCS_RELEASE_TOKEN }}
@@ -230,8 +195,9 @@ jobs:
       VISUALS_REPO: ChurchCRM/visuals
       CURRENT_TAG:  ${{ github.event.release.tag_name || github.event.inputs.tag }}
     steps:
-      # The release workflow requires a green capture on the release commit, so
-      # there is normally one. A release made another way has none: say so and stop.
+      # The release workflow starts a capture on the release commit without
+      # waiting for it. If it has not passed by publish time there is none: say so
+      # and stop; 'Publish visuals' can be run by hand once it is green.
       - name: Find the capture run for the release commit
         id: capture
         env:

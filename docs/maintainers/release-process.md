@@ -8,7 +8,7 @@ Legend: 🤖 automated · 🧑‍💻 agent-assisted · ✋ manual
 
 1. **Locales clean:** `locale/terms/missing/` is empty on `master` (Phase 1). New strings follow the count-neutral rule in `i18n-localization.md`.
 2. **Built and tested:** Build/Test/Package and the nightly are green on the same `master` HEAD, and the milestone for the `package.json` version is reviewed (Phase 2).
-3. **Release & Start Next** with `next_version`, the only input (3.1). It requires green Build/Test/Package, Nightly and marketing capture on the branch tip, and refuses to replace an existing release.
+3. **Release & Start Next** with `next_version`, the only input (3.1). It requires green Build/Test/Package and Nightly on the branch tip, and refuses to replace an existing release. It starts the marketing capture, the notes context, the docs staging and the `Start <next> release` PR as separate jobs that never block the draft.
 4. **Notes:** ask an agent to "write the `<version>` release notes". It reads the `release-notes-context-<version>` artifact and applies the approved text with `gh release edit <version> --tag <version> --notes-file …` (3.2).
 5. **Merge the `Start <next> release` PR before publishing** (3.3).
 6. **Check the tag, then Publish** (3.4): `gh release view <version> -R ChurchCRM/CRM --json tagName,isDraft` shows `"tagName":"<version>"`.
@@ -18,6 +18,24 @@ Legend: 🤖 automated · 🧑‍💻 agent-assisted · ✋ manual
 Recovery for a release published under a placeholder `untagged-<hash>` tag is in `MEMORY.md`; re-run `release-bookkeeping.yml` with `tag=<version>` afterwards.
 
 ---
+
+## Hard gates and non-blocking automation
+
+A **hard gate** stops the release until it is met or the maintainer overrides it. **Automation** runs beside the release and never holds up the draft or the Publish click; a failure is fixed and re-run afterwards.
+
+| Step | Kind | Why |
+|---|---|---|
+| Build/Test/Package green on the tip, ZIP present (2.2) | Hard gate, enforced by `release-publish.yml` | The ZIP is the released file |
+| Nightly green on the same tip (2.1) | Hard gate, enforced by `release-publish.yml` | Full suite and upgrade matrix on the exact commit |
+| Version and tag sanity: `package.json` is `X.Y.Z`, `next_version` differs, no existing release or tag (3.1) | Hard gate, enforced by `release-publish.yml` | A wrong tag cannot be undone cleanly |
+| Unfixed High-severity advisory (2.4) | Hard gate, maintainer override by GHSA ID | Do not ship a known High unannounced |
+| Milestone review (2.3) | Maintainer judgment | Moves items that will not ship; not a workflow check |
+| Release notes reviewed, `Start <next> release` PR merged, tag checked, Publish click (3.2 to 3.4) | Hard gate, maintainer approval | Bookkeeping reads the next version from `master` at publish time |
+| Locales clean (Phase 1) | Checklist, not enforced | Missing translations fall back to English; the maintainer decides |
+| Marketing capture | Automation, starts with the release | Visuals are not part of the shipped ZIP |
+| Notes context, docs staging, `Start <next> release` PR creation (3.1) | Automation, separate jobs | The draft exists before they run; a failure is re-run |
+| Changelog sync, milestones, docs milestones, publish visuals (4.4 to 4.6) | Automation after Publish, re-runnable | `release-bookkeeping.yml` with `tag=<version>` |
+| Post-release nightly, advisory publish, marketing push (4.7, 4.8, Phase 6) | After release | Verification and follow-up |
 
 ## Phase 1: Localization sync
 
@@ -74,7 +92,7 @@ Notes:
 
 | # | Step | How | Status |
 |---|------|-----|--------|
-| 3.1 | Run **Release & Start Next** with `next_version`. It creates the draft from the tested build's ZIP, uploads the `release-notes-context-<version>` artifact, bumps `master` to `next_version` and opens the `Start <next> release` PR. It requires green build, nightly and marketing capture on the branch tip and refuses to replace an existing release | [`release-publish.yml`](../../.github/workflows/release-publish.yml) → [`release-prepare.yml`](../../.github/workflows/release-prepare.yml), about 2 to 3 min | ✋ trigger / 🤖 run |
+| 3.1 | Run **Release & Start Next** with `next_version`. It creates the draft from the tested build's ZIP, uploads the `release-notes-context-<version>` artifact, bumps `master` to `next_version` and opens the `Start <next> release` PR. It requires green build and nightly on the branch tip and refuses to replace an existing release. The marketing capture starts as its own job and does not gate the draft | [`release-publish.yml`](../../.github/workflows/release-publish.yml) → [`release-prepare.yml`](../../.github/workflows/release-prepare.yml), about 2 to 3 min | ✋ trigger / 🤖 run |
 | 3.2 | Release notes: an agent reads the context artifact, writes user-facing notes following [`release-notes.md`](../../.agents/skills/churchcrm/release-notes.md) (grouped by user impact, verified language count), and after approval applies them with `gh release edit <tag> --tag <tag> --notes-file …` | Agent and skill | 🧑‍💻 |
 | 3.3 | Merge the `Start <next> release` PR before publishing. Bookkeeping stops if `master` still carries the released version, and `pr-milestone-stamp.yml` stamps new merges into the next milestone | PR from `build/<next>` | ✋ |
 | 3.4 | Check the tag, then Publish: `gh release view <tag> --json tagName,isDraft` shows the version | GitHub release page | ✋ (approval) |
@@ -121,7 +139,7 @@ Starts after Publish (3.4) and runs about a week.
 
 | # | Step | How | Status |
 |---|------|-----|--------|
-| 6.1 | Check the marketing visuals are published at https://cdn.churchcrm.io | [`marketing-capture-assets.yml`](../../.github/workflows/marketing-capture-assets.yml) runs on the release commit as a gate in 3.1. On Publish, `release-bookkeeping` job `publish-visuals` starts `Publish visuals` in `ChurchCRM/visuals` with that capture run (`DOCS_RELEASE_TOKEN` needs Actions: write there). If it warned, run `Publish visuals` by hand with the capture run id | 🤖 / ✋ fallback |
+| 6.1 | Check the marketing visuals are published at https://cdn.churchcrm.io | [`marketing-capture-assets.yml`](../../.github/workflows/marketing-capture-assets.yml) starts in 3.1 on `master` and never gates the release. Capture and publish are one run: English first, the other locales after it, then a last job starts `Publish visuals` in `ChurchCRM/visuals` with that run (`DOCS_RELEASE_TOKEN` needs Actions: write there). The publish step only runs on `master`. If the capture failed, fix it and re-run the workflow on `master` | 🤖 / ✋ fix and re-run |
 | 6.2 | Release the docs. In `ChurchCRM/docs.churchcrm.io`: (1) set `crm-release.json` on `release-docs/<version>` to the released version and push, (2) merge the `docs: ChurchCRM <version>` pull request into `main`, (3) create `release-docs/<next version>` from `main` (command in the docs repo `DOCS_GUIDE.md`), (4) close the docs milestone of the release before this one (releasing 7.8.1 closes docs milestone 7.8.0; the released version's own docs milestone stays open until the next release, because its docs PRs can still merge) | Docs PRs for the release were merged into `release-docs/<version>` as approved, and their CRM tracking issues closed then | ✋ |
 | 6.3 | Launch-day announcements: Discord, "shipped, please retest" comments on fixed issues, social posts | [Release Announcement skill](../../.agents/skills/churchcrm/release-announcement.md) steps 1 and 2; [`social-media-release.md`](../../.agents/skills/churchcrm/social-media-release.md) | 🧑‍💻 |
 | 6.4 | For a release with new features, write a blog post | Blog PR in `ChurchCRM.io` | ✋ |
