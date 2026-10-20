@@ -44,7 +44,7 @@ The capture spec ships in the same PR as the UI change. Images serve your own ch
 
 ### Marking used captures
 
-`docs.churchcrm.io` and `ChurchCRM.io` link captures by name (`cdn.churchcrm.io/screenshots/<locale>/<device>/<name>.png`, the website's `cdn-shot` partial, and its setup videos). A capture a page links sets `usedIn: ['docs']`, `['website']` or both in its `captureScreen()` call, in the same PR as the link. `usedIn` reaches the generated manifest. `npm run lint:capture-used-in` fails when a capture that is marked on `origin/master` is removed or renamed. To retire one, change the links, clear its `usedIn` in a merged PR, then delete it. The website gallery lists every manifest entry, so unmarked captures can still appear there; `usedIn` records the links a page hard-codes.
+`docs.churchcrm.io` and `ChurchCRM.io` link captures by name (`cdn.churchcrm.io/screenshots/<locale>/<device>/<name>.png`, the website's `cdn-shot` partial, and its setup videos). A capture a page links sets `usedIn: ['docs']`, `['website']` or both in its `captureScreen()` call, in the same PR as the link. `usedIn` reaches the generated manifest. `npm run lint` fails when a capture that is marked on `origin/master` is removed or renamed. To retire one, change the links, clear its `usedIn` in a merged PR, then delete it. The website gallery lists every manifest entry, so unmarked captures can still appear there; `usedIn` records the links a page hard-codes.
 
 ### Fixing a failed capture
 

@@ -33,7 +33,7 @@ The prefix says who made the branch and what it is for.
 |---|---|---|
 | `Build, Test and Package` (`build-test-package.yml`) | PR to `master`/`develop`/`hotfix/**`; push to those and `release/**`. Skips docs, locale terms and other non-code paths | Builds the PHP image, runs the Cypress suites (root and subdirectory installs, setup wizard) and packages `ChurchCRM-<version>.zip`. The release flow reuses that zip |
 | `Build, Test and Package (Nightly)` (`build-test-nightly.yml`) | 03:00 UTC daily, manual, release published, push to `release/**` | The heavy sweeps: PHP 8.4 and 8.5, full locale sweep (root and subdirectory), upgrade tests |
-| `CI — Typecheck, Lint & Format` (`code-quality.yml`) | push to `master`/`develop`/`hotfix/**`; PRs | `tsc`, Biome format and lint, `npm run locale:test`, seed charset, MySQL upgrade syntax, icon checks |
+| `CI — Typecheck, Lint & Format` (`code-quality.yml`) | push to `master`/`develop`/`hotfix/**`; PRs | `npm run lint` (`scripts/lint.js`): `tsc`, Biome format and lint, UI, icon and Cypress checks, seed charset, MySQL upgrade syntax, locale script tests |
 | `Documentation` (`docs.yml`) | push or PR touching API routes or `docs/openapi/**` | Generates and validates the OpenAPI specs; on `master` it commits the regenerated specs back (its own output paths are excluded from the trigger) |
 
 ### Security and Docker

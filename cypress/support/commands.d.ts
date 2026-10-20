@@ -3,7 +3,7 @@
 //
 // This file must stay in sync with the real commands registered in
 // cypress/support/api-commands.js and cypress/support/ui-commands.js.
-// `npm run lint:cypress-commands` (also run in CI) fails when a command is
+// `npm run lint` (also run in CI) fails when a command is
 // declared here but not defined, or defined but not declared.
 // ***********************************************
 
