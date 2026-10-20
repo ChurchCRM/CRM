@@ -25,7 +25,7 @@ name: Build, Test and Package (Nightly)
 #
 # Stage 2b – Upgrade tests, one job per database engine
 #   • upgrade-mysql:    MySQL 8.4 LTS (the supported floor) × PHP 8.4 and 8.5 × ChurchInfo 1.3.1 and ChurchCRM 6.0.0,
-#                       plus mysql:lts (newest LTS) on PHP 8.4 × ChurchInfo 1.3.1
+#                       plus mysql:lts (newest LTS) and mysql:latest (early warning, may fail) on PHP 8.4 × ChurchInfo 1.3.1
 #   • upgrade-mariadb:  MariaDB 10.11 LTS (the supported floor) × PHP 8.4 and 8.5 × ChurchInfo 1.3.1 and ChurchCRM 6.0.0
 #
 # Stage 3 – Summary
@@ -603,6 +603,7 @@ jobs:
       contents: read
       checks: write
     runs-on: ubuntu-24.04
+    continue-on-error: ${{ matrix.experimental == true }}
     env:
       MYSQL_IMAGE: ${{ matrix.db_image }}
     strategy:
@@ -627,6 +628,17 @@ jobs:
           # Newest LTS (floats to the next one), on the oldest schema, to catch breakage before hosts move to it.
           - php: "8.4"
             db_image: mysql:lts
+            schema:
+              label: ChurchInfo 1.3.1
+              slug: churchinfo-1.3.1
+              sql_file: cypress/fixtures/upgrade/churchinfo-1.3.1.sql
+              admin_user: Admin
+              admin_pass: churchinfoadmin
+              force_password_change: 'true'
+          # Newest release, any track. Early warning only: a failure here does not fail the nightly.
+          - php: "8.4"
+            db_image: mysql:latest
+            experimental: true
             schema:
               label: ChurchInfo 1.3.1
               slug: churchinfo-1.3.1
