@@ -94,10 +94,10 @@ describe("Zero-Permission User (EditSelf=0, all flags 0)", () => {
             cy.url().should("include", "/v2/access-denied");
         });
 
-        // MenuOptions=0 — pages newly guarded alongside the gate change.
-        it("LettersAndLabels is denied (MenuOptions)", () => {
-            cy.visit("LettersAndLabels.php", { failOnStatusCode: false });
-            cy.url().should("include", "/v2/access-denied");
+        // Letters and labels follow ordinary report access, like the directory.
+        it("LettersAndLabels opens like the other reports", () => {
+            cy.visit("LettersAndLabels.php");
+            cy.contains("Letters and Mailing Labels");
         });
 
         it("People Verify page is denied (EditRecords)", () => {

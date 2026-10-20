@@ -221,7 +221,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </div>
                         <i class="fa-solid fa-chevron-right ms-auto text-body-secondary"></i>
                     </a>
-                    <?php if (!empty($canLetters)) : ?>
                     <a href="<?= $sRootPath ?>/LettersAndLabels.php" class="list-group-item list-group-item-action d-flex align-items-center">
                         <i class="fa-solid fa-envelope-open-text fa-fw text-body-secondary me-3"></i>
                         <div>
@@ -230,7 +229,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </div>
                         <i class="fa-solid fa-chevron-right ms-auto text-body-secondary"></i>
                     </a>
-                    <?php endif; ?>
                 </div>
             </div>
 
