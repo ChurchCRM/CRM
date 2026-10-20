@@ -91,9 +91,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
         <div class="card-body">
             <div class="d-flex flex-wrap gap-2">
+                <?php if ($canEdit) : ?>
                 <a href="<?= $sRootPath ?>/people/verify" class="btn btn-outline-info">
                     <i class="fa-solid fa-clipboard-check me-1"></i><?= gettext('Verify People') ?>
                 </a>
+                <?php endif; ?>
                 <?php if ($canEmail): ?>
                     <button type="button" class="btn btn-outline-primary"
                             data-email-composer
@@ -219,7 +221,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </div>
                         <i class="fa-solid fa-chevron-right ms-auto text-body-secondary"></i>
                     </a>
-                    <?php if (!empty($canLetters)) : ?>
                     <a href="<?= $sRootPath ?>/LettersAndLabels.php" class="list-group-item list-group-item-action d-flex align-items-center">
                         <i class="fa-solid fa-envelope-open-text fa-fw text-body-secondary me-3"></i>
                         <div>
@@ -228,7 +229,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </div>
                         <i class="fa-solid fa-chevron-right ms-auto text-body-secondary"></i>
                     </a>
-                    <?php endif; ?>
                 </div>
             </div>
 

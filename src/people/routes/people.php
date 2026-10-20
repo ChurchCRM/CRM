@@ -33,6 +33,11 @@ $app->post('/report/verify/email', 'sendVerifyReportEmail')->add(new CSRFMiddlew
 
 function viewPeopleVerify(Request $request, Response $response, array $args): Response
 {
+    AuthenticationManager::redirectHomeIfFalse(
+        AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(),
+        'EditRecords'
+    );
+
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
     $queryParams = $request->getQueryParams();
@@ -65,13 +70,13 @@ function viewPeopleVerify(Request $request, Response $response, array $args): Re
  *
  * Route: GET /people/report/verify[?familyId=<int>]
  *
- * Requires the "Create Directory" permission.
+ * Requires the Edit Records permission.
  */
 function generateVerifyReport(Request $request, Response $response, array $args): Response
 {
     AuthenticationManager::redirectHomeIfFalse(
-        AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled(),
-        'MenuOptions'
+        AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(),
+        'EditRecords'
     );
 
     $queryParams = $request->getQueryParams();
@@ -100,13 +105,13 @@ function generateVerifyReport(Request $request, Response $response, array $args)
  *
  * Route: POST /people/report/verify/email (CSRF-protected state-changing action)
  *
- * Requires the "Create Directory" permission.
+ * Requires the Edit Records permission.
  */
 function sendVerifyReportEmail(Request $request, Response $response, array $args): Response
 {
     AuthenticationManager::redirectHomeIfFalse(
-        AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled(),
-        'MenuOptions'
+        AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(),
+        'EditRecords'
     );
 
     // Detect AJAX requests — these get a JSON response instead of a redirect

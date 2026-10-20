@@ -76,6 +76,12 @@ describe("Self-only access — EditSelf account user (limited.user)", () => {
         cy.url().should("include", "/portal");
     });
 
+    it("Direct visit to LettersAndLabels.php redirects to /portal", () => {
+        login();
+        cy.visit("LettersAndLabels.php", { failOnStatusCode: false });
+        cy.url().should("include", "/portal");
+    });
+
     it("Session-based internal API call is blocked with 403", () => {
         // Complements the api-key 403 test: a logged-in browser SESSION for a
         // limited user must also be rejected from internal APIs (AuthMiddleware

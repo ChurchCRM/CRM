@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 // Seed users: noperm.user (901) has every permission flag off; tony.wade (3, the
-// standard user) has Delete Records and Menu Options; limited.user (4) is EditSelf only.
+// standard user) has Delete Records; limited.user (4) is EditSelf only.
 // Seed July birthdays give the Birthdays report rows.
 const LABELS = "/Reports/PDFLabel.php?report=birthdays&month=7&labeltype=5160&labelfont=Helvetica&labelfontsize=10&startrow=1&startcol=1&filetype=CSV";
 
@@ -32,20 +32,17 @@ describe("People Reports for staff users (#10570)", () => {
                 .should("include", "text/csv");
         });
 
-        it("offers no edit, delete or labels", () => {
+        it("offers no edit or delete", () => {
             cy.visit("/people/reports/birthdays?month=7");
             cy.get("#reportResults tbody tr[data-person-id]").should("have.length.greaterThan", 0);
             cy.get("#reportResults .delete-person").should("not.exist");
             cy.get('#reportResults a[href*="PersonEditor.php"]').should("not.exist");
-            cy.get("#printLabels").should("not.exist");
-            cy.get("#labelsModal").should("not.exist");
         });
 
-        it("cannot print report labels without Menu Options", () => {
-            cy.request({ url: LABELS, followRedirect: false }).then((response) => {
-                expect(response.status).to.eq(302);
-                expect(response.headers.location).to.include("access-denied");
-            });
+        it("prints report labels like any report", () => {
+            cy.visit("/people/reports/birthdays?month=7");
+            cy.get("#printLabels").should("be.enabled");
+            cy.request(LABELS).its("status").should("eq", 200);
         });
     });
 
@@ -77,14 +74,12 @@ describe("People Reports for staff users (#10570)", () => {
         });
     });
 
-    describe("as a staff user with Delete Records and Menu Options", () => {
+    describe("as a staff user with Delete Records", () => {
         beforeEach(() => cy.setupStandardSession());
 
-        it("offers delete and labels", () => {
+        it("offers delete", () => {
             cy.visit("/people/reports/birthdays?month=7");
             cy.get("#reportResults .delete-person").should("have.length.greaterThan", 0);
-            cy.get("#printLabels").should("be.enabled");
-            cy.request(LABELS).its("status").should("eq", 200);
         });
     });
 
