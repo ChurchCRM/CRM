@@ -66,7 +66,7 @@ services:
     hostname: crm-webserver
 
   mailserver:
-    image: axllent/mailpit:latest
+    image: axllent/mailpit:v1
     restart: unless-stopped
     ports:
       - "${DOCKER_BIND_ADDRESS:-127.0.0.1}:${MAILSERVER_PORT:-1025}:1025"
