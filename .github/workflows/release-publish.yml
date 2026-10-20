@@ -371,7 +371,7 @@ jobs:
       GH_TOKEN: ${{ github.token }}
       GH_REPO: ${{ github.repository }}
     steps:
-      - name: Start the capture on the release branch
+      - name: Start the capture on master
         run: |
-          gh workflow run marketing-capture-assets.yml --ref "$GITHUB_REF_NAME"
-          echo "Started marketing-capture-assets.yml on $GITHUB_REF_NAME (release commit ${{ needs.publish.outputs.target_commit }})." >> "$GITHUB_STEP_SUMMARY"
+          gh workflow run marketing-capture-assets.yml --ref master
+          echo "Started marketing-capture-assets.yml on master (release commit ${{ needs.publish.outputs.target_commit }})." >> "$GITHUB_STEP_SUMMARY"
