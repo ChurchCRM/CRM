@@ -8,7 +8,7 @@
  * Seed users used:
  *   - editrecords.user (judith.matthews, id=95): EditRecords=1, all other
  *     permission flags 0, non-admin. Must succeed on every route here.
- *   - menuoptions.user (id=902): EditRecords=0, non-admin. Must get 403.
+ *   - noperm.user (id=901): every permission flag 0. Must get 403.
  *
  * Seed data:
  *   - person 2 (Mathew Campbell)
@@ -48,7 +48,7 @@ describe("People Properties API — EditRecords authorization gate (GHSA-4wmp-3v
         });
 
         it("GET /api/people/properties/person -> 403 without EditRecords", () => {
-            cy.makePrivateMenuOptionsAPICall(
+            cy.makePrivateNoPermAPICall(
                 "GET",
                 "/api/people/properties/person",
                 "",
@@ -61,14 +61,13 @@ describe("People Properties API — EditRecords authorization gate (GHSA-4wmp-3v
 
     context("Person record property routes: user without EditRecords blocked (403)", () => {
         it("POST /api/people/properties/person/:id/:propId -> 403", () => {
-            cy.makePrivateMenuOptionsAPICall(
+            cy.makePrivateNoPermAPICall(
                 "POST",
                 `/api/people/properties/person/${PERSON_ID}/${PERSON_PROPERTY_ID}`,
                 {},
                 403,
             );
         });
-
     });
 
     context("Person record property routes: EditRecords-only user succeeds", () => {
@@ -121,14 +120,13 @@ describe("People Properties API — EditRecords authorization gate (GHSA-4wmp-3v
 
     context("Family record property routes: user without EditRecords blocked (403)", () => {
         it("POST /api/people/properties/family/:id/:propId -> 403", () => {
-            cy.makePrivateMenuOptionsAPICall(
+            cy.makePrivateNoPermAPICall(
                 "POST",
                 `/api/people/properties/family/${FAMILY_ID}/${FAMILY_PROPERTY_ID}`,
                 {},
                 403,
             );
         });
-
     });
 
     context("Family record property routes: EditRecords-only user succeeds", () => {
