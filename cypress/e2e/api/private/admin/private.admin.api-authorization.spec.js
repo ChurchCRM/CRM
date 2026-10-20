@@ -23,7 +23,6 @@ const ROUTES = [
     ["GET", "/admin/api/import/csv/families"],
     ["POST", "/admin/api/import/csv/upload"],
     ["POST", "/admin/api/import/csv/execute"],
-    ["POST", "/admin/api/map/geocode-all"],
     ["GET", "/admin/api/options/1"],
     ["POST", "/admin/api/options/1"],
     ["PATCH", "/admin/api/options/1/1"],
@@ -78,7 +77,7 @@ describe("Admin API authorization matrix", () => {
     });
 
     it("covers every admin API route", () => {
-        expect(ROUTES).to.have.length(55);
+        expect(ROUTES).to.have.length(54);
     });
 
     describe("non-admin API key is refused (403)", () => {

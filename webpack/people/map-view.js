@@ -221,7 +221,7 @@ if (geocodeAllBtn) {
   // call therefore skips the number of families that already failed in this
   // run, and the loop stops once nothing but known failures is left.
   const runAllBatches = (acc) =>
-    fetch(`${window.CRM.root}/admin/api/map/geocode-all`, {
+    fetch(`${window.CRM.root}/api/map/geocode-all`, {
       method: "POST",
       credentials: "same-origin",
       headers: { "Content-Type": "application/json" },
