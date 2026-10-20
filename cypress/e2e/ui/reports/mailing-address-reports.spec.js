@@ -24,8 +24,8 @@ describe("Mailing address on mailed reports (#9743)", () => {
         "labeltype=Tractor&labelfont=Helvetica&labelfontsize=default&recipientnamingmethod=familyname";
 
     /**
-     * Direct form login, as in confirm-reports.spec.js: these pages need the
-     * MenuOptions role flag and a PHP session uncontaminated by earlier tests.
+     * Direct form login, as in confirm-reports.spec.js: a fresh PHP session
+     * uncontaminated by earlier tests.
      */
 
     /**
