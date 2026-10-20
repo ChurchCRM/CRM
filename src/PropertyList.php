@@ -9,8 +9,7 @@ use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\view\PageHeader;
 
-// Security: user must have MenuOptions permission to use this page
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled(), 'MenuOptions');
+AuthenticationManager::redirectHomeIfNotAdmin();
 
 // Get the type to display
 $sType = InputUtils::legacyFilterInput($_GET['Type'], 'char', 1);
@@ -63,9 +62,6 @@ while ($aRow = mysqli_fetch_assoc($rsProperties)) {
     $groups[$prtId]['properties'][] = $aRow;
 }
 
-$canManage = AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled();
-$colCount = $canManage ? 4 : 3;
-
 $sPageSubtitle = gettext('Define custom properties that can be assigned to') . ' ' . strtolower(InputUtils::escapeHTML($sTypeName)) . ' ' . gettext('records');
 $breadcrumbParent = match ($sType) {
     'g' => [gettext('Groups'), '/groups/dashboard'],
@@ -107,11 +103,9 @@ require_once __DIR__ . '/Include/Header.php';
                 <a href="PropertyTypeList.php?class=<?= InputUtils::escapeAttribute($sType) ?>" class="btn btn-sm btn-outline-secondary me-2">
                     <i class="fa-solid fa-tags me-1"></i><?= gettext('Manage') ?> <?= InputUtils::escapeHTML($sTypeName) ?> <?= gettext('Property Types') ?>
                 </a>
-                <?php if ($canManage): ?>
                 <a href="PropertyEditor.php?Type=<?= InputUtils::escapeAttribute($sType) ?>" class="btn btn-sm btn-primary">
                     <i class="fa-solid fa-plus me-1"></i><?= gettext('Add New') ?>
                 </a>
-                <?php endif; ?>
             </div>
         </div>
 
@@ -121,30 +115,26 @@ require_once __DIR__ . '/Include/Header.php';
                     <th><?= gettext('Name') ?></th>
                     <th><?= gettext('Description') ?></th>
                     <th><?= gettext('Prompt') ?></th>
-                    <?php if ($canManage): ?>
                     <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
-                    <?php endif; ?>
                 </tr>
             </thead>
             <tbody>
                 <?php if (empty($groups)): ?>
                 <tr>
-                    <td colspan="<?= $colCount ?>" class="text-center text-body-secondary py-5">
+                    <td colspan="4" class="text-center text-body-secondary py-5">
                         <i class="fa-solid fa-inbox fa-3x mb-3 d-block"></i>
                         <?= gettext('No properties defined yet') ?>
-                        <?php if ($canManage): ?>
                         <br>
                         <a href="PropertyEditor.php?Type=<?= InputUtils::escapeAttribute($sType) ?>" class="btn btn-primary btn-sm mt-3">
                             <i class="fa-solid fa-plus me-1"></i><?= gettext('Add Your First Property') ?>
                         </a>
-                        <?php endif; ?>
                     </td>
                 </tr>
                 <?php else: ?>
                     <?php foreach ($groups as $group): ?>
                     <!-- Property type group header -->
                     <tr class="table-active">
-                        <td colspan="<?= $colCount ?>">
+                        <td colspan="4">
                             <span class="fw-bold text-secondary">
                                 <i class="fa-solid fa-folder-open me-1"></i><?= InputUtils::escapeHTML($group['name']) ?>
                             </span>
@@ -164,7 +154,6 @@ require_once __DIR__ . '/Include/Header.php';
                         <td class="text-body-secondary">
                             <?= InputUtils::escapeHTML($prop['pro_Prompt']) ?>
                         </td>
-                        <?php if ($canManage): ?>
                         <td class="text-center w-1">
                             <div class="dropdown">
                                 <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
@@ -183,7 +172,6 @@ require_once __DIR__ . '/Include/Header.php';
                                 </div>
                             </div>
                         </td>
-                        <?php endif; ?>
                     </tr>
                     <?php endforeach; ?>
                     <?php endforeach; ?>
@@ -211,9 +199,9 @@ $(document).ready(function () {
                 },
                 callback: function (result) {
                     if (result) {
-                        window.CRM.APIRequest({
+                        window.CRM.AdminAPIRequest({
                             method: 'DELETE',
-                            path: 'people/properties/definition/' + propertyId,
+                            path: 'properties/definition/' + propertyId,
                         }).done(function () {
                             btn.closest('tr').fadeOut(300, function () { $(this).remove(); });
                         });

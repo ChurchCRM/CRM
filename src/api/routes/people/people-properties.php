@@ -39,7 +39,6 @@ $app->group('/people/properties', function (RouteCollectorProxy $group): void {
         ->add(EditRecordsRoleAuthMiddleware::class);
     $group->delete('/family/{familyId}/{propertyId}', 'removePropertyFromFamily')->add($familyAPIMiddleware)->add($familyPropertyAPIMiddleware)->add(EditRecordsRoleAuthMiddleware::class);
 
-    $group->delete('/definition/{propertyId}', 'deletePropertyDefinition');
 })->add(MenuOptionsRoleAuthMiddleware::class);
 
 /**
@@ -302,32 +301,3 @@ function removeProperty($request, $response, $id, $property): Response
     return SlimUtils::renderJSON($response, ['success' => true, 'msg' => gettext('The property is successfully unassigned.')]);
 }
 
-
-/**
- * @OA\Delete(
- *     path="/people/properties/definition/{propertyId}",
- *     summary="Delete a property definition and all its assignments (MenuOptions role required)",
- *     tags={"Properties"},
- *     security={{"ApiKeyAuth":{}}},
- *     @OA\Parameter(name="propertyId", in="path", required=true, @OA\Schema(type="integer")),
- *     @OA\Response(response=200, description="Property definition deleted"),
- *     @OA\Response(response=404, description="Property not found"),
- *     @OA\Response(response=403, description="MenuOptions role required")
- * )
- */
-function deletePropertyDefinition(Request $request, Response $response, array $args): Response
-{
-    $propertyId = (int) $args['propertyId'];
-
-    $property = PropertyQuery::create()->findPk($propertyId);
-    if ($property === null) {
-        throw new HttpNotFoundException($request, gettext('Property not found'));
-    }
-
-    // Delete all record assignments first, then the definition
-    RecordPropertyQuery::create()->filterByPropertyId($propertyId)->delete();
-
-    $property->delete();
-
-    return SlimUtils::renderJSON($response, ['success' => true, 'msg' => gettext('Property deleted successfully.')]);
-}

@@ -317,7 +317,7 @@ describe("UI: Property Definition Delete (PropertyList.php)", () => {
                 return;
             }
 
-            cy.intercept("DELETE", "**/api/people/properties/definition/*").as(
+            cy.intercept("DELETE", "**/admin/api/properties/definition/*").as(
                 "deleteDef"
             );
 

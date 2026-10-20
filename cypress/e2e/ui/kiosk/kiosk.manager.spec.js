@@ -92,11 +92,11 @@ describe("Kiosk Manager", () => {
             cy.get("#kioskSettings").should("not.exist");
         });
 
-        it("ManageGroups user without MenuOptions does not see Group Properties in the Groups menu (#9172)", () => {
+        it("ManageGroups user who is not an admin does not see Group Properties in the Groups menu (#9172)", () => {
             cy.visit("/");
             cy.contains("a", "Groups").first().click({ force: true });
-            // Kiosk Manager is gated on ManageGroups, so it stays; PropertyList.php is gated on
-            // MenuOptions, so the menu must not offer it to this user.
+            // Kiosk Manager is gated on ManageGroups, so it stays; PropertyList.php is admin-only,
+            // so the menu must not offer it to this user.
             cy.get('a[href*="kiosk/admin"]', { timeout: 10000 }).should("exist");
             cy.get('a[href*="PropertyList.php?Type=g"]').should("not.exist");
         });
