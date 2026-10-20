@@ -14,8 +14,9 @@ App under test: `DEVELOPING.md` (`npm run docker:test:start`).
 
 Every new test is a Cypress E2E spec. Server logic is tested through its route with an API spec. The test stack has no PHPUnit and takes no new PHP test scripts; a PR that adds either is asked for a Cypress spec instead.
 
-- API: `cypress/e2e/api/`
-- UI: `cypress/e2e/ui/`
+- API: `cypress/e2e/api/` (admin-only APIs in `api/private/admin/` named `private.admin.*`; the rest in `api/private/standard/` and its siblings)
+- UI: `cypress/e2e/ui/` (admin-only pages in `cypress/e2e/ui-admin/` named `admin.*`)
+- A spec holds one audience. An admin-only route or page is tested in an admin folder, never inside a standard spec
 - Helpers: `cypress/support/` — use `cy.setupAdminSession()` (or the current support helper) instead of inventing login. After `cy.request()`, the PHP session is dead: call `cy.freshAdminFormLogin(options)` from `cypress/support/test-env.js`. Pass the options directly instead of wrapping them.
 
 ## Must
@@ -24,7 +25,8 @@ Every new test is a Cypress E2E spec. Server logic is tested through its route w
 - Clear `src/logs/$(date +%Y-%m-%d)-*.log` before a local run; read the log even if the spec passes
 - Before push, run the specs the change touches locally: `npm run docker:test:reset:db`, then `cypress run` with a comma-separated `--spec` list (new specs plus the existing ones for pages you changed). The reset replaces the test database with the seed, so aim runs only at the test stack. Seed rows that specs approve or delete are gone until the next reset. Specs that need a record should create their own, not consume a seed row
 - Test the workflow a church person does, not CRUD. Name each UI spec for a role and a goal ("treasurer closes a deposit", "secretary merges two families") and walk the steps they take on the page: set up their data through the API, act in the UI, then assert what they see after a reload and what the API now holds. A feature or migration PR covers every flow the page offers: save, delete with its confirm, filter, report or export, the next page in the flow, and the user the role check turns away. An API spec proves the endpoint contract; it does not stand in for the page flow
-- Test behavior, not presence. A test asserts what a user gets, saves, or is denied. Do not add tests that only check a page renders, a link navigates, a button fills inputs, or an element `not.exist` on a page that never had it. Negative tests are for permission and validation rules that the server enforces; one per rule. Fold several checks of one page into one test
+- Test behavior, not presence. A test asserts what a user gets, saves, or is denied. Do not add tests that only check a page renders, a link navigates, a button fills inputs, or an element `not.exist` on a page that never had it. Negative tests are for permission and validation rules that the server enforces; one per rule. A role wrapper applied once to a route group gets one denial test; a wrapper added route by route gets one per route. Denial tests use the zero-permission user (`makePrivateNoPermAPICall`). Fold several checks of one page into one test
+- A test never branches on missing data and passes by logging "skipping". Create the record in a `before` hook through the API, or drop the test
 - Stable selectors: `id`, `data-cy`, `name`, href/text — not visual utility classes
 - Optional demo values go in `src/admin/demo/config.json`, which keeps the Cypress seed stable
 - Commit specs without `.only` / `.skip`
