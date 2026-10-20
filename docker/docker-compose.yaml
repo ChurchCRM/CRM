@@ -18,7 +18,7 @@ services:
     # Also part of the CI profiles: the seeded SMTP host is mailserver:1025, so without it
     # every send in CI fails and nothing can assert delivery. Specs read the sink at :8025.
     profiles: [test, ci-root, ci-subdir]
-    image: axllent/mailpit:latest
+    image: axllent/mailpit:v1
     environment:
       # Lets a spec make the SMTP server refuse mail (PUT /api/v1/chaos); off until a spec asks.
       MP_ENABLE_CHAOS: "true"
