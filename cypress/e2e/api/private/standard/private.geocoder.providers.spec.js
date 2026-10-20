@@ -12,9 +12,7 @@
  * default/church country settings decide. They use a stable public address (the
  * Empire State Building) that both services resolve and assert the result lands
  * within ~1 km. Every lookup that reaches a service is a live call; the settings
- * are restored afterwards. GeocoderChain retries a service that times out or rate-limits
- * (#10791); its retry, fall-through and not-found-versus-unavailable rules are covered
- * without the network by scripts/test-geocoder-chain.php.
+ * are restored afterwards. GeocoderChain retries a service that times out or rate-limits (#10791).
  */
 describe("API Private Geocoder — provider chain (#9848)", () => {
     const CONFIG = (name) => `/admin/api/system/config/${name}`;
