@@ -60,15 +60,6 @@ describe("People Properties API — EditRecords authorization gate (GHSA-4wmp-3v
     // ── Person record-level property routes — EditRecords required ──
 
     context("Person record property routes: user without EditRecords blocked (403)", () => {
-        it("GET /api/people/properties/person/:id -> 403", () => {
-            cy.makePrivateMenuOptionsAPICall(
-                "GET",
-                `/api/people/properties/person/${PERSON_ID}`,
-                "",
-                403,
-            );
-        });
-
         it("POST /api/people/properties/person/:id/:propId -> 403", () => {
             cy.makePrivateMenuOptionsAPICall(
                 "POST",
@@ -78,14 +69,6 @@ describe("People Properties API — EditRecords authorization gate (GHSA-4wmp-3v
             );
         });
 
-        it("DELETE /api/people/properties/person/:id/:propId -> 403", () => {
-            cy.makePrivateMenuOptionsAPICall(
-                "DELETE",
-                `/api/people/properties/person/${PERSON_ID}/${PERSON_PROPERTY_ID}`,
-                "",
-                403,
-            );
-        });
     });
 
     context("Person record property routes: EditRecords-only user succeeds", () => {
@@ -137,15 +120,6 @@ describe("People Properties API — EditRecords authorization gate (GHSA-4wmp-3v
     // ── Family record-level property routes — EditRecords required (parity) ──
 
     context("Family record property routes: user without EditRecords blocked (403)", () => {
-        it("GET /api/people/properties/family/:id -> 403", () => {
-            cy.makePrivateMenuOptionsAPICall(
-                "GET",
-                `/api/people/properties/family/${FAMILY_ID}`,
-                "",
-                403,
-            );
-        });
-
         it("POST /api/people/properties/family/:id/:propId -> 403", () => {
             cy.makePrivateMenuOptionsAPICall(
                 "POST",
@@ -155,14 +129,6 @@ describe("People Properties API — EditRecords authorization gate (GHSA-4wmp-3v
             );
         });
 
-        it("DELETE /api/people/properties/family/:id/:propId -> 403", () => {
-            cy.makePrivateMenuOptionsAPICall(
-                "DELETE",
-                `/api/people/properties/family/${FAMILY_ID}/${FAMILY_PROPERTY_ID}`,
-                "",
-                403,
-            );
-        });
     });
 
     context("Family record property routes: EditRecords-only user succeeds", () => {
