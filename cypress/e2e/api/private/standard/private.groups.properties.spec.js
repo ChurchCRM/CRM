@@ -87,12 +87,21 @@ describe("API: Group Property Endpoints", () => {
             );
         });
 
-        it("returns 200 for a standard user (has MenuOptions permission in seed data)", () => {
-            cy.makePrivateUserAPICall(
+        it("returns 200 for a ManageGroups-only user", () => {
+            cy.makePrivateManageGroupsOnlyAPICall(
                 "GET",
                 `/api/groups/${groupID}/properties`,
                 null,
                 200
+            );
+        });
+
+        it("returns 403 for a user without ManageGroups", () => {
+            cy.makePrivateMenuOptionsAPICall(
+                "GET",
+                `/api/groups/${groupID}/properties`,
+                null,
+                403
             );
         });
     });
@@ -141,10 +150,10 @@ describe("API: Group Property Endpoints", () => {
             });
         });
 
-        it("returns 200 for a standard user (has ManageGroups permission in seed data)", function () {
+        it("returns 200 for a ManageGroups-only user", function () {
             if (!createdPropertyId) this.skip();
 
-            cy.makePrivateUserAPICall(
+            cy.makePrivateManageGroupsOnlyAPICall(
                 "POST",
                 `/api/groups/${groupID}/properties/${createdPropertyId}`,
                 {},
@@ -211,7 +220,7 @@ describe("API: Group Property Endpoints", () => {
             );
         });
 
-        it("returns 200 for a standard user (has ManageGroups permission in seed data)", function () {
+        it("returns 200 for a ManageGroups-only user", function () {
             if (!createdPropertyId) this.skip();
 
             // Re-assign so the target exists, then delete as standard user
@@ -221,7 +230,7 @@ describe("API: Group Property Endpoints", () => {
                 {},
                 200
             ).then(() => {
-                cy.makePrivateUserAPICall(
+                cy.makePrivateManageGroupsOnlyAPICall(
                     "DELETE",
                     `/api/groups/${groupID}/properties/${createdPropertyId}`,
                     null,
