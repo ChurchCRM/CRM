@@ -327,20 +327,6 @@ declare namespace Cypress {
     ): Chainable<any>;
 
     /**
-     * MenuOptions-only user (id=902): usr_MenuOptions=1, all other perm flags 0,
-     * non-admin, non-EditSelf. Used to verify the EditRecords gate on person/family
-     * property routes (GHSA-4wmp-3v34-g7q8). Passes MenuOptions middleware but is
-     * blocked by EditRecordsRoleAuthMiddleware — expects 403 on record-level routes.
-     */
-    makePrivateMenuOptionsAPICall(
-      method: string,
-      url: string,
-      body?: any,
-      expectedStatus?: number | number[],
-      timeoutMs?: number
-    ): Chainable<any>;
-
-    /**
      * Zero-permission user (noperm.user, id=901): every permission flag 0,
      * usr_EditSelf=0, non-admin. Passes AuthMiddleware under the read-default
      * policy (#9003) with read-only access, so every write route must answer

@@ -97,7 +97,7 @@ describe("API: Group Property Endpoints", () => {
         });
 
         it("returns 403 for a user without ManageGroups", () => {
-            cy.makePrivateMenuOptionsAPICall(
+            cy.makePrivateNoPermAPICall(
                 "GET",
                 `/api/groups/${groupID}/properties`,
                 null,

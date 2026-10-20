@@ -5,7 +5,7 @@
  *
  * Seed data: user "noperm.user" (person ID 901, family 1 — Campbell) has every
  * permission flag set to 0: AddRecords=0, EditRecords=0, DeleteRecords=0,
- * MenuOptions=0, ManageGroups=0, Finance=0, Notes=0, Admin=0, EditSelf=0.
+ * ManageGroups=0, Finance=0, Notes=0, Admin=0, EditSelf=0.
  * Password: "changeme".
  *
  * Business rule under test (read-default policy, #9003):
