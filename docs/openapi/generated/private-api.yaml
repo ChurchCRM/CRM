@@ -9,7 +9,7 @@ info:
   license:
     name: MIT
     url: 'https://opensource.org/licenses/MIT'
-  version: 7.8.1
+  version: 7.8.2
 servers:
   -
     url: '{scheme}://{host}/api'
@@ -6797,152 +6797,6 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /property-types:
-    get:
-      tags:
-        - System
-      summary: 'List all property types (MenuOptions role required)'
-      parameters:
-        -
-          name: class
-          in: query
-          description: 'Filter by class (p/f/g)'
-          required: false
-          schema:
-            type: string
-      responses:
-        '200':
-          description: 'Array of property types'
-        '401':
-          description: Unauthorized
-        '403':
-          description: 'MenuOptions role required'
-      security:
-        -
-          ApiKeyAuth: []
-    post:
-      tags:
-        - System
-      summary: 'Create a new property type (MenuOptions role required)'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              required:
-                - class
-                - name
-              properties:
-                class:
-                  type: string
-                  enum: [p, f, g]
-                name:
-                  type: string
-                  maxLength: 50
-                description:
-                  type: string
-              type: object
-      responses:
-        '201':
-          description: 'Newly created property type'
-        '400':
-          description: 'Validation error'
-        '401':
-          description: Unauthorized
-        '403':
-          description: 'MenuOptions role required'
-      security:
-        -
-          ApiKeyAuth: []
-  '/property-types/{id}':
-    get:
-      tags:
-        - System
-      summary: 'Get a single property type (MenuOptions role required)'
-      parameters:
-        -
-          name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: 'Property type object'
-        '404':
-          description: 'Property type not found'
-        '401':
-          description: Unauthorized
-        '403':
-          description: 'MenuOptions role required'
-      security:
-        -
-          ApiKeyAuth: []
-    put:
-      tags:
-        - System
-      summary: 'Update a property type (MenuOptions role required)'
-      parameters:
-        -
-          name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              properties:
-                class:
-                  type: string
-                  enum: [p, f, g]
-                name:
-                  type: string
-                  maxLength: 50
-                description:
-                  type: string
-              type: object
-      responses:
-        '200':
-          description: 'Updated property type'
-        '400':
-          description: 'Validation error'
-        '404':
-          description: 'Property type not found'
-        '401':
-          description: Unauthorized
-        '403':
-          description: 'MenuOptions role required'
-      security:
-        -
-          ApiKeyAuth: []
-    delete:
-      tags:
-        - System
-      summary: 'Delete a property type (MenuOptions role required)'
-      parameters:
-        -
-          name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: Deleted
-        '404':
-          description: 'Property type not found'
-        '409':
-          description: 'Property type is still in use by one or more properties'
-        '401':
-          description: Unauthorized
-        '403':
-          description: 'MenuOptions role required'
-      security:
-        -
-          ApiKeyAuth: []
   '/family/{familyId}/photo':
     get:
       tags:
@@ -8282,28 +8136,6 @@ paths:
           description: 'Record not found'
         '403':
           description: 'EditRecords role required'
-      security:
-        -
-          ApiKeyAuth: []
-  '/people/properties/definition/{propertyId}':
-    delete:
-      tags:
-        - Properties
-      summary: 'Delete a property definition and all its assignments (MenuOptions role required)'
-      parameters:
-        -
-          name: propertyId
-          in: path
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: 'Property definition deleted'
-        '404':
-          description: 'Property not found'
-        '403':
-          description: 'MenuOptions role required'
       security:
         -
           ApiKeyAuth: []
@@ -10820,6 +10652,174 @@ paths:
                   type: object
         '403':
           description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /admin/api/property-types:
+    get:
+      tags:
+        - Admin
+      summary: 'List all property types'
+      parameters:
+        -
+          name: class
+          in: query
+          description: 'Filter by class (p/f/g)'
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'Array of property types'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden: admin only'
+      security:
+        -
+          ApiKeyAuth: []
+    post:
+      tags:
+        - Admin
+      summary: 'Create a new property type'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - class
+                - name
+              properties:
+                class:
+                  type: string
+                  enum: [p, f, g]
+                name:
+                  type: string
+                  maxLength: 50
+                description:
+                  type: string
+              type: object
+      responses:
+        '201':
+          description: 'Newly created property type'
+        '400':
+          description: 'Validation error'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden: admin only'
+      security:
+        -
+          ApiKeyAuth: []
+  '/admin/api/property-types/{id}':
+    get:
+      tags:
+        - Admin
+      summary: 'Get a single property type'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Property type object'
+        '404':
+          description: 'Property type not found'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden: admin only'
+      security:
+        -
+          ApiKeyAuth: []
+    put:
+      tags:
+        - Admin
+      summary: 'Update a property type'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                class:
+                  type: string
+                  enum: [p, f, g]
+                name:
+                  type: string
+                  maxLength: 50
+                description:
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: 'Updated property type'
+        '400':
+          description: 'Validation error'
+        '404':
+          description: 'Property type not found'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden: admin only'
+      security:
+        -
+          ApiKeyAuth: []
+    delete:
+      tags:
+        - Admin
+      summary: 'Delete a property type'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Deleted
+        '404':
+          description: 'Property type not found'
+        '409':
+          description: 'Property type is still in use by one or more properties'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden: admin only'
+      security:
+        -
+          ApiKeyAuth: []
+  '/admin/api/properties/definition/{propertyId}':
+    delete:
+      tags:
+        - Admin
+      summary: 'Delete a property definition and all its assignments'
+      parameters:
+        -
+          name: propertyId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Property definition deleted'
+        '404':
+          description: 'Property not found'
+        '403':
+          description: 'Forbidden: admin only'
       security:
         -
           ApiKeyAuth: []
