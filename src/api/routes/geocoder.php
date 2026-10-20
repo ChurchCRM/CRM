@@ -24,7 +24,8 @@ $app->group('/geocoder', function (RouteCollectorProxy $group): void {
  *     @OA\Response(response=200, description="Latitude and longitude for the provided address",
  *         @OA\JsonContent(
  *             @OA\Property(property="Latitude", type="number", format="float"),
- *             @OA\Property(property="Longitude", type="number", format="float")
+ *             @OA\Property(property="Longitude", type="number", format="float"),
+ *             @OA\Property(property="Status", type="string", enum={"found", "not_found", "unavailable"}, description="not_found: the services answered and have no such address. unavailable: no service could answer; try again later. Latitude and Longitude are 0 in both cases.")
  *         )
  *     ),
  *     @OA\Response(response=400, description="Empty or invalid request body")
@@ -37,5 +38,8 @@ function getGeoLocals(Request $request, Response $response, array $p_args): Resp
         throw new HttpBadRequestException($request);
     }
 
-    return SlimUtils::renderJSON($response, GeoUtils::getLatLong($input->address));
+    $outcome = GeoUtils::lookup((string) $input->address);
+    $latLong = $outcome->result?->toLatLong() ?? ['Latitude' => 0.0, 'Longitude' => 0.0];
+
+    return SlimUtils::renderJSON($response, $latLong + ['Status' => $outcome->status]);
 }

@@ -12,10 +12,11 @@
  * default/church country settings decide. They use a stable public address (the
  * Empire State Building) that both services resolve and assert the result lands
  * within ~1 km. Every lookup that reaches a service is a live call; the settings
- * are restored afterwards. Retried twice: the public services occasionally time out
- * or rate-limit a CI runner.
+ * are restored afterwards. GeocoderChain retries a service that times out or rate-limits
+ * (#10791); its retry, fall-through and not-found-versus-unavailable rules are covered
+ * without the network by scripts/test-geocoder-chain.php.
  */
-describe("API Private Geocoder — provider chain (#9848)", { retries: 2 }, () => {
+describe("API Private Geocoder — provider chain (#9848)", () => {
     const CONFIG = (name) => `/admin/api/system/config/${name}`;
     const SETTINGS = ["sGeocoderProviders", "sDefaultCountry", "sChurchCountry"];
     const DEFAULT_RANKING = "Nominatim";
@@ -32,6 +33,7 @@ describe("API Private Geocoder — provider chain (#9848)", { retries: 2 }, () =
     };
 
     const expectNear = (body) => {
+        expect(body.Status).to.equal("found");
         expect(body).to.have.property("Latitude").that.is.a("number");
         expect(body).to.have.property("Longitude").that.is.a("number");
         expect(Math.abs(body.Latitude - EMPIRE_STATE.lat)).to.be.lessThan(TOLERANCE);
@@ -39,6 +41,7 @@ describe("API Private Geocoder — provider chain (#9848)", { retries: 2 }, () =
     };
 
     const expectNotFound = (body) => {
+        expect(body.Status).to.equal("not_found");
         expect(body.Latitude).to.equal(0);
         expect(body.Longitude).to.equal(0);
     };

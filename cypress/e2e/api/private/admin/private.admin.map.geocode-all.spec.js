@@ -66,7 +66,7 @@ describe("API Private Map — POST /admin/api/map/geocode-all", { retries: 2 }, 
                         expect(f).to.have.property("editUrl").that.is.a("string");
                         expect(f).to.have.property("reason").that.is.a("string");
                         // Reason must be one of the three machine codes
-                        expect(["incomplete_address", "no_result", "error"]).to.include(f.reason);
+                        expect(["incomplete_address", "no_result", "unavailable", "error"]).to.include(f.reason);
                     }
 
                     // failuresTruncated must be true iff failures.length < failed

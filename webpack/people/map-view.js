@@ -33,6 +33,9 @@ if (geocodeAllBtn) {
     if (reason === "no_result") {
       return t("No match found — check the street address, city, and ZIP");
     }
+    if (reason === "unavailable") {
+      return t("The geocoding service did not answer — try again later");
+    }
     return t("A geocoding error occurred — try again later");
   };
 

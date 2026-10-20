@@ -40,7 +40,7 @@ $app->post('/api/map/geocode-all', 'geocodeAllFamilies');
  *                     @OA\Property(property="name",    type="string",  description="Family name"),
  *                     @OA\Property(property="address", type="string",  description="Full street address"),
  *                     @OA\Property(property="editUrl", type="string",  description="URL to the family editor page"),
- *                     @OA\Property(property="reason",  type="string",  description="Machine code: 'incomplete_address' | 'no_result' | 'error'")
+ *                     @OA\Property(property="reason",  type="string",  description="Machine code: 'incomplete_address' | 'no_result' | 'unavailable' | 'error'")
  *                 )
  *             ),
  *             @OA\Property(property="failuresTruncated", type="boolean", description="True when failed > 20 and some failures are omitted from the array")
