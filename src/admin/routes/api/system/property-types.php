@@ -3,7 +3,7 @@
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\model\ChurchCRM\PropertyType;
 use ChurchCRM\model\ChurchCRM\PropertyTypeQuery;
-use ChurchCRM\Slim\Middleware\Request\Auth\MenuOptionsRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -15,8 +15,7 @@ use Slim\Routing\RouteCollectorProxy;
  * PropertyTypeDelete.php / PropertyTypeList.php workflow.
  *
  * A property type has a single-char class: 'p' (person), 'f' (family), or
- * 'g' (group). Legacy editors enforce this via MenuOptions permission, and
- * we mirror that with MenuOptionsRoleAuthMiddleware.
+ * 'g' (group).
  */
 
 const PROPERTY_TYPE_VALID_CLASSES = ['p', 'f', 'g'];
@@ -34,17 +33,17 @@ function propertyTypeToArray(PropertyType $pt): array
     ];
 }
 
-$app->group('/property-types', function (RouteCollectorProxy $group): void {
+$app->group('/api/property-types', function (RouteCollectorProxy $group): void {
     /**
      * @OA\Get(
-     *     path="/property-types",
-     *     summary="List all property types (MenuOptions role required)",
-     *     tags={"System"},
+     *     path="/admin/api/property-types",
+     *     summary="List all property types",
+     *     tags={"Admin"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="class", in="query", required=false, description="Filter by class (p/f/g)", @OA\Schema(type="string")),
      *     @OA\Response(response=200, description="Array of property types"),
      *     @OA\Response(response=401, description="Unauthorized"),
-     *     @OA\Response(response=403, description="MenuOptions role required")
+     *     @OA\Response(response=403, description="Forbidden: admin only")
      * )
      */
     $group->get('', function (Request $request, Response $response, array $args): Response {
@@ -68,9 +67,9 @@ $app->group('/property-types', function (RouteCollectorProxy $group): void {
 
     /**
      * @OA\Post(
-     *     path="/property-types",
-     *     summary="Create a new property type (MenuOptions role required)",
-     *     tags={"System"},
+     *     path="/admin/api/property-types",
+     *     summary="Create a new property type",
+     *     tags={"Admin"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\RequestBody(required=true,
      *         @OA\JsonContent(
@@ -83,7 +82,7 @@ $app->group('/property-types', function (RouteCollectorProxy $group): void {
      *     @OA\Response(response=201, description="Newly created property type"),
      *     @OA\Response(response=400, description="Validation error"),
      *     @OA\Response(response=401, description="Unauthorized"),
-     *     @OA\Response(response=403, description="MenuOptions role required")
+     *     @OA\Response(response=403, description="Forbidden: admin only")
      * )
      */
     $group->post('', function (Request $request, Response $response, array $args): Response {
@@ -114,15 +113,15 @@ $app->group('/property-types', function (RouteCollectorProxy $group): void {
 
     /**
      * @OA\Get(
-     *     path="/property-types/{id}",
-     *     summary="Get a single property type (MenuOptions role required)",
-     *     tags={"System"},
+     *     path="/admin/api/property-types/{id}",
+     *     summary="Get a single property type",
+     *     tags={"Admin"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Property type object"),
      *     @OA\Response(response=404, description="Property type not found"),
      *     @OA\Response(response=401, description="Unauthorized"),
-     *     @OA\Response(response=403, description="MenuOptions role required")
+     *     @OA\Response(response=403, description="Forbidden: admin only")
      * )
      */
     $group->get('/{id:[0-9]+}', function (Request $request, Response $response, array $args): Response {
@@ -136,9 +135,9 @@ $app->group('/property-types', function (RouteCollectorProxy $group): void {
 
     /**
      * @OA\Put(
-     *     path="/property-types/{id}",
-     *     summary="Update a property type (MenuOptions role required)",
-     *     tags={"System"},
+     *     path="/admin/api/property-types/{id}",
+     *     summary="Update a property type",
+     *     tags={"Admin"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\RequestBody(required=true,
@@ -152,7 +151,7 @@ $app->group('/property-types', function (RouteCollectorProxy $group): void {
      *     @OA\Response(response=400, description="Validation error"),
      *     @OA\Response(response=404, description="Property type not found"),
      *     @OA\Response(response=401, description="Unauthorized"),
-     *     @OA\Response(response=403, description="MenuOptions role required")
+     *     @OA\Response(response=403, description="Forbidden: admin only")
      * )
      */
     $group->put('/{id:[0-9]+}', function (Request $request, Response $response, array $args): Response {
@@ -194,16 +193,16 @@ $app->group('/property-types', function (RouteCollectorProxy $group): void {
 
     /**
      * @OA\Delete(
-     *     path="/property-types/{id}",
-     *     summary="Delete a property type (MenuOptions role required)",
-     *     tags={"System"},
+     *     path="/admin/api/property-types/{id}",
+     *     summary="Delete a property type",
+     *     tags={"Admin"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Deleted"),
      *     @OA\Response(response=404, description="Property type not found"),
      *     @OA\Response(response=409, description="Property type is still in use by one or more properties"),
      *     @OA\Response(response=401, description="Unauthorized"),
-     *     @OA\Response(response=403, description="MenuOptions role required")
+     *     @OA\Response(response=403, description="Forbidden: admin only")
      * )
      */
     $group->delete('/{id:[0-9]+}', function (Request $request, Response $response, array $args): Response {
@@ -236,4 +235,4 @@ $app->group('/property-types', function (RouteCollectorProxy $group): void {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to delete property type'), [], 500, $e, $request);
         }
     });
-})->add(MenuOptionsRoleAuthMiddleware::class);
+})->add(new CSRFMiddleware());
