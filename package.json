@@ -77,6 +77,7 @@
         "test:api": "npx cypress run --config-file cypress/configs/docker.config.ts --spec 'cypress/e2e/api/**/*.spec.js'",
         "test:ui": "npx cypress run --config-file cypress/configs/docker.config.ts --spec 'cypress/e2e/ui/**/*.spec.js'",
         "test:ui-admin": "npx cypress run --config-file cypress/configs/docker-admin.config.ts --spec 'cypress/e2e/ui-admin/**/*.spec.js'",
+        "test:self-service": "npx cypress run --config-file cypress/configs/docker.config.ts --spec 'cypress/e2e/api/personas/portal-only/*.spec.js,cypress/e2e/ui/personas/portal-only/*.spec.js'",
         "test:new-system": "npx cypress run --config-file cypress/configs/new-system.config.ts",
         "test:locale": "npx cypress run --config-file cypress/configs/locale.config.ts --headless --browser electron",
         "test:locale:full": "npx cypress run --config-file cypress/configs/locale.config.ts --headless --browser electron --env LOCALE_TIER=full",
