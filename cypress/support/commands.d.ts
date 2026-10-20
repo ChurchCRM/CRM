@@ -57,6 +57,24 @@ declare namespace Cypress {
     setupAdminSession(options?: { forceLogin?: boolean }): Chainable<void>;
 
     /**
+     * Ensure a cached login session for a seed persona (cypress/support/personas-data.js)
+     */
+    setupPersonaSession(persona: string, options?: { forceLogin?: boolean }): Chainable<void>;
+
+    /**
+     * Make an API request with a seed persona's key. Same contract as makePrivateAPICall.
+     * @param persona - Persona name from cypress/support/personas-data.js
+     */
+    personaAPICall(
+      persona: string,
+      method: string,
+      url: string,
+      body?: any,
+      expectedStatus?: number | number[],
+      timeoutMs?: number
+    ): Chainable<any>;
+
+    /**
      * Ensure a standard session is active (optionally forcing a fresh login)
      */
     setupStandardSession(options?: { forceLogin?: boolean }): Chainable<void>;
