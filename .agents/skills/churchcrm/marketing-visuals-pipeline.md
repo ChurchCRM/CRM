@@ -35,8 +35,8 @@ On release publish, `release-bookkeeping.yml` job `publish-visuals` starts `Publ
 
 The capture spec ships in the same PR as the UI change. Images serve your own check and stay uncommitted.
 
-1. Make a `git worktree` at the PR commit, symlink `node_modules`, then run `composer:install`, `build:webpack`, `build:signatures`
-2. Start the pipeline's own stack: `COMPOSE_PROJECT_NAME=crm-pw-capture npm run docker:ci:new-system:start`. It uses ports 8081 and 3308 (separate from the dev and test stacks) and removes `src/Include/Config.php`, so it runs in the worktree and never in the main checkout
+1. Follow [Docker checkout](./git-workflow.md#docker-checkout), then run `composer:install`, `build:webpack`, `build:signatures` at the PR commit in the main checkout. Preserve `src/Include/Config.php` before starting the pipeline and restore it afterward.
+2. Start the pipeline's own stack: `COMPOSE_PROJECT_NAME=crm-pw-capture npm run docker:ci:new-system:start`. It uses ports 8081 and 3308 (separate from the dev and test stacks) and removes `src/Include/Config.php`, so preserve that file before starting
 3. First run: `BROWSER_CHANNEL=chrome CHURCHCRM_LOCALE=en npm run marketing:screenshots -- --grep "<capture-name>"`. After a UI tweak, re-run only the capture on the seeded instance: `-- --project=screenshots --no-deps --grep "<capture-name>"`
 4. Open the desktop, tablet and mobile PNGs, fix anything cramped, re-run
 5. Commit the spec only
@@ -53,7 +53,7 @@ A broken locator fails the same test in every locale, and serial specs skip the 
 - Run the capture workflow on `master` only. Do not dispatch it on a branch, and do not start a second run while one is queued.
 - A run's log downloads only after the run finishes. While it runs, read the `marketing-failure-<locale>-<run id>` artifact (kept 14 days): each failed test has `error-context.md` and `test-failed-*.png`. Open the screenshot first; a page that renders correctly means the locator is stale.
 - Locators must not use English text. Captures run in 8 locales and FullCalendar translates its aria-labels. Videos run in `en` only.
-- Verify locally before another CI run, in a worktree on its own compose project (see "Adding a capture in a feature PR"). Start the stack once, then run only the failed tests with `npx playwright test --config=playwright/playwright.config.ts --project=screenshots --no-deps --grep "<name>|<name>"`, and run a second locale through the `locale-set` project. Repeat until they pass.
+- Verify locally before another CI run, in the main checkout on its own compose project (see "Adding a capture in a feature PR"). Start the stack once, then run only the failed tests with `npx playwright test --config=playwright/playwright.config.ts --project=screenshots --no-deps --grep "<name>|<name>"`, and run a second locale through the `locale-set` project. Repeat until they pass.
 - Reset the database between runs. The volunteer fixture leaves users behind, so a locale set in one run shows up in the next (an English-only video failed on Portuguese text). `scripts/capture-all-locales.sh <locales>` tears the stack down and reinstalls, so use it for the final check, English first. macOS has no `timeout`.
 - The full run (`capture-all-locales.sh en pt`, about 15 minutes) must pass `marketing:check` before the fix goes up.
 
