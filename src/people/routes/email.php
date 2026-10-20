@@ -3,6 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\EmailLogService;
 use ChurchCRM\Slim\Middleware\Request\Auth\EmailRoleAuthMiddleware;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -21,6 +22,7 @@ $app->group('/email', function (RouteCollectorProxy $group): void {
 function getPeopleEmailDashboard(Request $request, Response $response, array $args): Response
 {
     $renderer = new PhpRenderer(__DIR__ . '/../views/email/');
+    $user = AuthenticationManager::getCurrentUser();
 
     $pageArgs = [
         'sRootPath'          => SystemURLs::getRootPath(),
@@ -34,7 +36,13 @@ function getPeopleEmailDashboard(Request $request, Response $response, array $ar
             ['label' => gettext('Email Settings'), 'url' => '/admin/email', 'icon' => 'fa-sliders'],
         ]),
         'bEmailEnabled'      => SystemConfig::getBooleanValue('bEnabledEmail'),
-        'isAdmin'            => AuthenticationManager::getCurrentUser()->isAdmin(),
+        'isAdmin'            => $user->isAdmin(),
+        'emailLog'           => [
+            'facets'         => (new EmailLogService())->getLogFacets($user->isAdmin() ? null : (int) $user->getId()),
+            'pageUrl'        => '/people/email',
+            'showSender'     => $user->isAdmin(),
+            'canDeleteQueue' => false,
+        ],
     ];
 
     return $renderer->render($response, 'dashboard.php', $pageArgs);

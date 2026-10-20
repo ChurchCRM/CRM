@@ -199,21 +199,6 @@ class EmailLogService
     }
 
     /**
-     * Newest-first page across everyone (admin view), optionally by status.
-     *
-     * @return array{rows: list<array<string, mixed>>, total: int, page: int, limit: int, pages: int}
-     */
-    public function getRecent(?string $status = null, int $page = 1, int $limit = self::DEFAULT_PAGE_SIZE): array
-    {
-        $query = EmailLogQuery::create();
-        if ($status !== null && $status !== '') {
-            $query->filterByStatus($status);
-        }
-
-        return $this->page($query, $page, $limit);
-    }
-
-    /**
      * Newest-first page of the email log table: everyone's mail, or only the mail
      * $senderUserId queued. Every word of the search must appear in the subject, the
      * address or the recipient's name. Rows carry recipientName and recipientUrl, the
