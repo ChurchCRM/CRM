@@ -107,3 +107,15 @@ describe("Person Profile", () => {
 
     });
 });
+
+describe("Why Came editor for an Edit Records-only user", () => {
+    beforeEach(() => cy.setupNoFinanceSession());
+
+    it("opens the editor from the person page", () => {
+        cy.visit("/people/view/2");
+        cy.get("#person-actions-dropdown").click();
+        cy.get("#editWhyCame").click();
+        cy.url().should("contain", "WhyCameEditor.php?PersonID=2");
+        cy.get('textarea[name="Join"]').should("exist");
+    });
+});

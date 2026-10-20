@@ -100,7 +100,7 @@ describe("Zero-Permission User (EditSelf=0, all flags 0)", () => {
             cy.url().should("include", "/v2/access-denied");
         });
 
-        it("WhyCameEditor is denied (MenuOptions)", () => {
+        it("WhyCameEditor is denied (EditRecords)", () => {
             cy.visit("WhyCameEditor.php?PersonID=2", { failOnStatusCode: false });
             cy.url().should("include", "/v2/access-denied");
         });
