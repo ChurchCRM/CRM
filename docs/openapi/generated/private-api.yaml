@@ -7944,7 +7944,7 @@ paths:
         '200':
           description: 'Array of person property definitions'
         '403':
-          description: 'MenuOptions role required'
+          description: 'EditRecords role required'
       security:
         -
           ApiKeyAuth: []
@@ -8019,7 +8019,7 @@ paths:
         '200':
           description: 'Array of family property definitions'
         '403':
-          description: 'MenuOptions role required'
+          description: 'EditRecords role required'
       security:
         -
           ApiKeyAuth: []
@@ -9403,7 +9403,7 @@ paths:
         '200':
           description: 'Array of group property definitions'
         '403':
-          description: 'MenuOptions role required'
+          description: 'ManageGroups role required'
       security:
         -
           ApiKeyAuth: []
@@ -9431,7 +9431,7 @@ paths:
                   properties: { id: { type: integer }, name: { type: string }, value: { type: string }, prompt: { type: string }, allowEdit: { type: boolean }, allowDelete: { type: boolean } }
                   type: object
         '403':
-          description: 'MenuOptions role required'
+          description: 'ManageGroups role required'
         '404':
           description: 'Group not found'
       security:
@@ -9442,7 +9442,7 @@ paths:
       tags:
         - Groups
         - Properties
-      summary: 'Assign or update a property on a group (ManageGroup role required)'
+      summary: 'Assign or update a property on a group (ManageGroups role required)'
       parameters:
         -
           name: groupID
@@ -9469,7 +9469,7 @@ paths:
         '200':
           description: 'Property assigned successfully'
         '403':
-          description: 'ManageGroup role required'
+          description: 'ManageGroups role required'
         '404':
           description: 'Group or property not found'
       security:
@@ -9479,7 +9479,7 @@ paths:
       tags:
         - Groups
         - Properties
-      summary: 'Remove a property from a group (ManageGroup role required)'
+      summary: 'Remove a property from a group (ManageGroups role required)'
       parameters:
         -
           name: groupID
@@ -9499,7 +9499,7 @@ paths:
         '404':
           description: 'Assignment not found'
         '403':
-          description: 'ManageGroup role required'
+          description: 'ManageGroups role required'
       security:
         -
           ApiKeyAuth: []
