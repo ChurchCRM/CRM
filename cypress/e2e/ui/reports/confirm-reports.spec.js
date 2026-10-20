@@ -20,7 +20,7 @@ describe("Confirmation Reports - MVC Routes", () => {
      * Direct form login — clears existing cookies and authenticates as admin
      * via the real ChurchCRM login page (/session/begin). More reliable than
      * cy.setupAdminSession() for pages that require specific role flags
-     * (MenuOptions), because it guarantees a fresh PHP session without any
+     * (EditRecords), because it guarantees a fresh PHP session without any
      * contamination from prior tests.
      * Pattern follows cypress/e2e/ui/people/standard.cart-to-family.spec.js.
      */
@@ -396,5 +396,15 @@ describe("Confirmation Reports - MVC Routes", () => {
             // Preview should populate without TypeError
             cy.get('[data-cy="modal-recipient-count"]').should("be.visible");
         });
+    });
+});
+
+describe("People Verify for an Edit Records-only user", () => {
+    beforeEach(() => cy.setupNoFinanceSession());
+
+    it("opens the verify page and the dashboard links to it", () => {
+        cy.visit("/people/dashboard");
+        cy.get('a[href$="/people/verify"]').click();
+        cy.contains("People Verify Dashboard");
     });
 });

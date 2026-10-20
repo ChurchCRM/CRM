@@ -52,6 +52,7 @@ $app->get('/dashboard', function (Request $request, Response $response): Respons
         'isAdmin'            => $isAdmin,
         'canEmail'           => $currentUser->isEmailEnabled(),
         'canLetters'         => $currentUser->isMenuOptionsEnabled(),
+        'canEdit'            => $currentUser->isEditRecordsEnabled(),
     ];
 
     return $renderer->render($response, 'dashboard.php', $pageArgs);

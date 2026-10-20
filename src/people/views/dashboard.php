@@ -91,9 +91,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
         <div class="card-body">
             <div class="d-flex flex-wrap gap-2">
+                <?php if ($canEdit) : ?>
                 <a href="<?= $sRootPath ?>/people/verify" class="btn btn-outline-info">
                     <i class="fa-solid fa-clipboard-check me-1"></i><?= gettext('Verify People') ?>
                 </a>
+                <?php endif; ?>
                 <?php if ($canEmail): ?>
                     <button type="button" class="btn btn-outline-primary"
                             data-email-composer

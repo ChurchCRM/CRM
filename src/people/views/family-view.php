@@ -197,9 +197,11 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
                     </button>
                     <div class="dropdown-divider"></div>
                     <?php } ?>
+                    <?php if ($canEditRecords) { ?>
                     <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#confirm-verify">
                         <i class="fa-solid fa-clipboard-check me-2"></i><?= gettext('Verify Info') ?>
                     </a>
+                    <?php } ?>
                     <?php if ($family->hasLatitudeAndLongitude()) { ?>
                     <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/people/map/neighbors?familyId=<?= $family->getId() ?>">
                         <i class="fa-solid fa-people-roof me-2"></i><?= gettext('Find Neighbors') ?>

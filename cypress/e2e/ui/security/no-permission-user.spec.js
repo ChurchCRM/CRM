@@ -100,6 +100,16 @@ describe("Zero-Permission User (EditSelf=0, all flags 0)", () => {
             cy.url().should("include", "/v2/access-denied");
         });
 
+        it("People Verify page is denied (EditRecords)", () => {
+            cy.visit("people/verify", { failOnStatusCode: false });
+            cy.url().should("include", "/v2/access-denied");
+        });
+
+        it("Verify report download is denied (EditRecords)", () => {
+            cy.visit("people/report/verify", { failOnStatusCode: false });
+            cy.url().should("include", "/v2/access-denied");
+        });
+
         it("WhyCameEditor is denied (EditRecords)", () => {
             cy.visit("WhyCameEditor.php?PersonID=2", { failOnStatusCode: false });
             cy.url().should("include", "/v2/access-denied");
