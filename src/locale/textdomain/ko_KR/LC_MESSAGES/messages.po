@@ -1751,10 +1751,6 @@ msgid "Login Name"
 msgstr "로그인 이름"
 
 #: 
-msgid "Manage Properties and Classifications"
-msgstr "속성 및 분류 관리"
-
-#: 
 msgid "Manage Groups and Roles"
 msgstr "그룹 및 역할 관리"
 
@@ -5319,10 +5315,6 @@ msgid "Enter event description..."
 msgstr "행사 설명을 입력하세요..."
 
 #: 
-msgid "Event ID"
-msgstr "행사 ID"
-
-#: 
 msgid "Enter note text here..."
 msgstr "여기에 메모를 입력하세요..."
 
@@ -6086,10 +6078,6 @@ msgid "Manage Orphaned Files"
 msgstr "고아 파일 관리"
 
 #: 
-msgid "Menu options access"
-msgstr "메뉴 옵션 액세스"
-
-#: 
 msgid "Multiple Copies"
 msgstr "여러 사본"
 
@@ -6196,10 +6184,6 @@ msgstr "외부에 저장하기 전에 외부 도구(GPG, 7-Zip)를 사용하여 
 #: 
 msgid "User authentication"
 msgstr "사용자 인증"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "사용자에게 메뉴 옵션 권한이 있어야 합니다"
 
 #: 
 msgid "What are Orphaned Files?"

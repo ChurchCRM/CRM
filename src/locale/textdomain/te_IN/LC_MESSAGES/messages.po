@@ -1745,10 +1745,6 @@ msgid "Login Name"
 msgstr "లాగిన్ పేరు"
 
 #: 
-msgid "Manage Properties and Classifications"
-msgstr "గుణాలు మరియు వర్గీకరణలను నిర్వహించండి"
-
-#: 
 msgid "Manage Groups and Roles"
 msgstr "గ్రూప్‌లు మరియు పాత్రలను నిర్వహించండి"
 
@@ -5304,10 +5300,6 @@ msgid "Enter event description..."
 msgstr "ఈవెంట్ వివరణను నమోదు చేయండి..."
 
 #: 
-msgid "Event ID"
-msgstr "ఈవెంట్ ఐడి"
-
-#: 
 msgid "Enter note text here..."
 msgstr "ఇక్కడ నోట్ టెక్స్ట్ నమోదు చేయండి..."
 
@@ -6073,10 +6065,6 @@ msgid "Manage Orphaned Files"
 msgstr "అనాథ ఫైళ్లను నిర్వహించండి"
 
 #: 
-msgid "Menu options access"
-msgstr "మెనూ ఎంపికల యాక్సెస్"
-
-#: 
 msgid "Multiple Copies"
 msgstr "బహుళ కాపీలు"
 
@@ -6183,10 +6171,6 @@ msgstr "ఆఫ్‌సైట్‌లో నిల్వ చేయడాని�
 #: 
 msgid "User authentication"
 msgstr "వినియోగదారు ప్రమాణీకరణ"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "వినియోగదారుకు మెనూ ఎంపికల అనుమతి ఉండాలి"
 
 #: 
 msgid "What are Orphaned Files?"

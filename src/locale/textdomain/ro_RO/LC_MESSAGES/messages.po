@@ -1796,11 +1796,6 @@ msgstr "Nume acces"
 
 #: 
 #, fuzzy
-msgid "Manage Properties and Classifications"
-msgstr "Gestionarea proprietăților și clasificări"
-
-#: 
-#, fuzzy
 msgid "Manage Groups and Roles"
 msgstr "Gestionarea grupurilor și roluri"
 
@@ -5387,10 +5382,6 @@ msgid "Enter event description..."
 msgstr "Introduceți descrierea evenimentului..."
 
 #: 
-msgid "Event ID"
-msgstr "ID Eveniment"
-
-#: 
 msgid "Enter note text here..."
 msgstr "Introduceți textul notei aici..."
 
@@ -6158,10 +6149,6 @@ msgid "Manage Orphaned Files"
 msgstr "Gestionare fișiere orfane"
 
 #: 
-msgid "Menu options access"
-msgstr "Acces opțiuni meniu"
-
-#: 
 msgid "Multiple Copies"
 msgstr "Copii multiple"
 
@@ -6268,10 +6255,6 @@ msgstr "Utilizați instrumente externe (GPG, 7-Zip) pentru a cripta backup-urile
 #: 
 msgid "User authentication"
 msgstr "Autentificare utilizator"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "Utilizatorul trebuie să aibă permisiunea Opțiuni meniu"
 
 #: 
 msgid "What are Orphaned Files?"

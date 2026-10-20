@@ -1762,10 +1762,6 @@ msgid "Login Name"
 msgstr "Tên đăng nhập"
 
 #: 
-msgid "Manage Properties and Classifications"
-msgstr "Quản lý thuộc tính và phân loại"
-
-#: 
 msgid "Manage Groups and Roles"
 msgstr "Quản lý Nhóm và Vai trò"
 
@@ -5329,10 +5325,6 @@ msgid "Enter event description..."
 msgstr "Nhập mô tả sự kiện..."
 
 #: 
-msgid "Event ID"
-msgstr "Mã sự kiện"
-
-#: 
 msgid "Enter note text here..."
 msgstr "Nhập nội dung ghi chú tại đây..."
 
@@ -6096,10 +6088,6 @@ msgid "Manage Orphaned Files"
 msgstr "Quản lý tệp mồ côi"
 
 #: 
-msgid "Menu options access"
-msgstr "Truy cập tùy chọn menu"
-
-#: 
 msgid "Multiple Copies"
 msgstr "Nhiều bản sao"
 
@@ -6206,10 +6194,6 @@ msgstr "Sử dụng các công cụ bên ngoài để mã hóa bản sao lưu tr
 #: 
 msgid "User authentication"
 msgstr "Xác thực người dùng"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "Người dùng phải có quyền Tùy chọn Menu"
 
 #: 
 msgid "What are Orphaned Files?"

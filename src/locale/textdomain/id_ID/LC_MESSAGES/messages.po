@@ -1752,10 +1752,6 @@ msgid "Login Name"
 msgstr "Nama login"
 
 #: 
-msgid "Manage Properties and Classifications"
-msgstr "Kelola Properti dan Klasifikasi"
-
-#: 
 msgid "Manage Groups and Roles"
 msgstr "Kelola Grup dan Peran"
 
@@ -5319,10 +5315,6 @@ msgid "Enter event description..."
 msgstr "Masukkan deskripsi event..."
 
 #: 
-msgid "Event ID"
-msgstr "ID Event"
-
-#: 
 msgid "Enter note text here..."
 msgstr "Masukkan catatan..."
 
@@ -6086,10 +6078,6 @@ msgid "Manage Orphaned Files"
 msgstr "Kelola File Yatim"
 
 #: 
-msgid "Menu options access"
-msgstr "Akses opsi menu"
-
-#: 
 msgid "Multiple Copies"
 msgstr "Beberapa Salinan"
 
@@ -6196,10 +6184,6 @@ msgstr "Gunakan alat eksternal untuk mengenkripsi cadangan sebelum disimpan di l
 #: 
 msgid "User authentication"
 msgstr "Autentikasi pengguna"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "Pengguna harus memiliki izin Opsi Menu"
 
 #: 
 msgid "What are Orphaned Files?"

@@ -1734,10 +1734,6 @@ msgid "Login Name"
 msgstr "Login Naam"
 
 #: 
-msgid "Manage Properties and Classifications"
-msgstr "Beheer kenmerken"
-
-#: 
 msgid "Manage Groups and Roles"
 msgstr "Beheer groepen en rollen"
 
@@ -5295,10 +5291,6 @@ msgid "Enter event description..."
 msgstr "Vul een "
 
 #: 
-msgid "Event ID"
-msgstr "Event ID"
-
-#: 
 msgid "Enter note text here..."
 msgstr "Vul hier de notitie in"
 
@@ -6065,10 +6057,6 @@ msgid "Manage Orphaned Files"
 msgstr "Verweesde Bestanden Beheren"
 
 #: 
-msgid "Menu options access"
-msgstr "Menuit opties Toegang"
-
-#: 
 msgid "Multiple Copies"
 msgstr "Meerdere Kopieën"
 
@@ -6175,10 +6163,6 @@ msgstr "Gebruik externe tools (GPG, 7-Zip) om back-ups te versleutelen voordat u
 #: 
 msgid "User authentication"
 msgstr "Gebruikersverificatie"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "Gebruiker moet toestemming voor Menu-opties hebben"
 
 #: 
 msgid "What are Orphaned Files?"

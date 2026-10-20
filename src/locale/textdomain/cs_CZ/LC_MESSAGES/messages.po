@@ -1751,10 +1751,6 @@ msgid "Login Name"
 msgstr "Přihlašovací jméno"
 
 #: 
-msgid "Manage Properties and Classifications"
-msgstr "Spravovat vlastnosti a klasifikace"
-
-#: 
 msgid "Manage Groups and Roles"
 msgstr "Spravovat skupiny a role"
 
@@ -5317,10 +5313,6 @@ msgid "Enter event description..."
 msgstr "Zadejte popis události..."
 
 #: 
-msgid "Event ID"
-msgstr "ID události"
-
-#: 
 msgid "Enter note text here..."
 msgstr "Sem zadejte text poznámky..."
 
@@ -6088,10 +6080,6 @@ msgid "Manage Orphaned Files"
 msgstr "Spravovat osamocené soubory"
 
 #: 
-msgid "Menu options access"
-msgstr "Přístup k možnostem menu"
-
-#: 
 msgid "Multiple Copies"
 msgstr "Více kopií"
 
@@ -6198,10 +6186,6 @@ msgstr "Před uložením mimo pracoviště zašifrujte zálohy pomocí externíc
 #: 
 msgid "User authentication"
 msgstr "Ověření uživatele"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "Uživatel musí mít oprávnění Možnosti menu"
 
 #: 
 msgid "What are Orphaned Files?"

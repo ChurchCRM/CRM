@@ -65,6 +65,10 @@ A 7.2.x install matches `pre-7.3.1` (DB set to 7.3.0), then `current` (runs the 
 
 Delete its `CREATE TABLE` from `Install.sql`, its `DROP/CREATE` plus data from `seed.sql`, its `<table>` from `schema.xml`, and add `DROP TABLE IF EXISTS` to the upgrade script (idempotent on fresh installs).
 
+### Removing a column
+
+Drop it from `schema.xml`, from the `CREATE TABLE` in `Install.sql` and `seed.sql`, and from `Install.sql`'s named `INSERT` (column list and value). In `seed.sql` remove the value at its ordinal from every tuple of every `INSERT` for the table, then verify each tuple's value count equals the `CREATE TABLE` column count. The upgrade script runs `ALTER TABLE ... DROP COLUMN` (plain DDL, version-gated).
+
 ### Adding a column to seed.sql
 
 `seed.sql` is a `mysqldump`: its `INSERT` statements are positional (no column list). A new column in `CREATE TABLE` needs a value at the matching ordinal in every tuple of every `INSERT` for that table, or the load fails with `Column count doesn't match value count`. Do it mechanically: split tuples on top-level commas outside single-quoted strings, insert the default, then verify the `CREATE TABLE` column count equals the value count in every tuple. `Install.sql` inserts for `user_usr` name their columns, so a new column with a `DEFAULT` needs no edit there.

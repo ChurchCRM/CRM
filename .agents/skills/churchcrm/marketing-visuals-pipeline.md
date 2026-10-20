@@ -7,7 +7,7 @@ intent: "Capture trustworthy screenshots and videos of real ChurchCRM workflows 
 
 ## Context
 
-A Playwright pipeline in `playwright/` captures screenshots and videos of real ChurchCRM workflows for marketing use. It is the repo's one Playwright suite (multi-viewport projects and built-in video recording); Cypress in `cypress/` covers E2E regression. Details, directory layout and troubleshooting: `playwright/README.md`.
+A Playwright pipeline in `playwright/` captures screenshots and videos of real ChurchCRM workflows for marketing use. It is the repo's one Playwright suite (multi-viewport projects and built-in video recording); Cypress in `cypress/` covers E2E regression. Issues and PRs for the Playwright pipeline carry the `Marketing` label; `Integration Testing` is Cypress only. Details, directory layout and troubleshooting: `playwright/README.md`.
 
 This is a media-generation pipeline. A passing run is necessary, and the captured screenshots and videos must also look like something shown to a church deciding whether to adopt ChurchCRM: no error banners, no half-loaded AJAX content, no unintended "Inactive" or placeholder state. Some captures show inactive or deceased status on purpose (`person-inactive-profile`, `person-deceased-profile`, `family-inactive-profile`); see "Demo subjects, status and photos". Open the generated PNGs under `playwright/artifacts/screenshots/` before calling a workflow done.
 
@@ -45,6 +45,17 @@ The capture spec ships in the same PR as the UI change. Images serve your own ch
 ### Marking used captures
 
 `docs.churchcrm.io` and `ChurchCRM.io` link captures by name (`cdn.churchcrm.io/screenshots/<locale>/<device>/<name>.png`, the website's `cdn-shot` partial, and its setup videos). A capture a page links sets `usedIn: ['docs']`, `['website']` or both in its `captureScreen()` call, in the same PR as the link. `usedIn` reaches the generated manifest. `npm run lint:capture-used-in` fails when a capture that is marked on `origin/master` is removed or renamed. To retire one, change the links, clear its `usedIn` in a merged PR, then delete it. The website gallery lists every manifest entry, so unmarked captures can still appear there; `usedIn` records the links a page hard-codes.
+
+### Fixing a failed capture
+
+A broken locator fails the same test in every locale, and serial specs skip the tests behind it, so one failure can hide several more.
+
+- Run the capture workflow on `master` only. Do not dispatch it on a branch, and do not start a second run while one is queued.
+- A run's log downloads only after the run finishes. While it runs, read the `marketing-failure-<locale>-<run id>` artifact (kept 14 days): each failed test has `error-context.md` and `test-failed-*.png`. Open the screenshot first; a page that renders correctly means the locator is stale.
+- Locators must not use English text. Captures run in 8 locales and FullCalendar translates its aria-labels. Videos run in `en` only.
+- Verify locally before another CI run, in a worktree on its own compose project (see "Adding a capture in a feature PR"). Start the stack once, then run only the failed tests with `npx playwright test --config=playwright/playwright.config.ts --project=screenshots --no-deps --grep "<name>|<name>"`, and run a second locale through the `locale-set` project. Repeat until they pass.
+- Reset the database between runs. The volunteer fixture leaves users behind, so a locale set in one run shows up in the next (an English-only video failed on Portuguese text). `scripts/capture-all-locales.sh <locales>` tears the stack down and reinstalls, so use it for the final check, English first. macOS has no `timeout`.
+- The full run (`capture-all-locales.sh en pt`, about 15 minutes) must pass `marketing:check` before the fix goes up.
 
 ## Architecture
 

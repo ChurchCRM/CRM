@@ -16,3 +16,17 @@ describe('Direct requests to MVC view files', () => {
     });
   });
 });
+
+describe('Direct requests to core plugin PHP files', () => {
+  [
+    '/plugins/core/mailchimp/src/MailChimpPlugin.php',
+    '/plugins/core/gravatar/src/GravatarPlugin.php',
+    '/plugins/core/mailchimp/src/MailChimpPlugin.php/extra',
+  ].forEach((path) => {
+    it(`returns 403 for ${path}`, () => {
+      cy.request({ url: path, followRedirect: false, failOnStatusCode: false })
+        .its('status')
+        .should('eq', 403);
+    });
+  });
+});

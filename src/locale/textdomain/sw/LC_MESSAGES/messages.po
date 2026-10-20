@@ -1751,10 +1751,6 @@ msgid "Login Name"
 msgstr "Jina la Kuingia"
 
 #: 
-msgid "Manage Properties and Classifications"
-msgstr "Dhibiti Sifa na Ainisho"
-
-#: 
 msgid "Manage Groups and Roles"
 msgstr "Dhibiti Vikundi na Majukumu"
 
@@ -5323,10 +5319,6 @@ msgid "Enter event description..."
 msgstr "Ingiza maelezo ya tukio..."
 
 #: 
-msgid "Event ID"
-msgstr "ID ya Tukio"
-
-#: 
 msgid "Enter note text here..."
 msgstr "Andika ujumbe hapa..."
 
@@ -6092,10 +6084,6 @@ msgid "Manage Orphaned Files"
 msgstr "Simamia Faili Yatima"
 
 #: 
-msgid "Menu options access"
-msgstr "Ufikiaji wa chaguzi za orodha"
-
-#: 
 msgid "Multiple Copies"
 msgstr "Nakala Nyingi"
 
@@ -6202,10 +6190,6 @@ msgstr "Tumia zana za nje kusimba nakala kabla ya kuzihifadhi nje ya eneo."
 #: 
 msgid "User authentication"
 msgstr "Uthibitishaji wa mtumiaji"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "Mtumiaji lazima awe na ruhusa ya Chaguzi za Orodha"
 
 #: 
 msgid "What are Orphaned Files?"

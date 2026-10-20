@@ -5,7 +5,7 @@
  *
  * Seed data: user "noperm.user" (person ID 901, family 1 — Campbell) has every
  * permission flag set to 0: AddRecords=0, EditRecords=0, DeleteRecords=0,
- * MenuOptions=0, ManageGroups=0, Finance=0, Notes=0, Admin=0, EditSelf=0.
+ * ManageGroups=0, Finance=0, Notes=0, Admin=0, EditSelf=0.
  * Password: "changeme".
  *
  * Business rule under test (read-default policy, #9003):
@@ -94,13 +94,23 @@ describe("Zero-Permission User (EditSelf=0, all flags 0)", () => {
             cy.url().should("include", "/v2/access-denied");
         });
 
-        // MenuOptions=0 — pages newly guarded alongside the gate change.
-        it("LettersAndLabels is denied (MenuOptions)", () => {
-            cy.visit("LettersAndLabels.php", { failOnStatusCode: false });
+        // Letters and labels follow ordinary report access, like the directory.
+        it("LettersAndLabels opens like the other reports", () => {
+            cy.visit("LettersAndLabels.php");
+            cy.contains("Letters and Mailing Labels");
+        });
+
+        it("People Verify page is denied (EditRecords)", () => {
+            cy.visit("people/verify", { failOnStatusCode: false });
             cy.url().should("include", "/v2/access-denied");
         });
 
-        it("WhyCameEditor is denied (MenuOptions)", () => {
+        it("Verify report download is denied (EditRecords)", () => {
+            cy.visit("people/report/verify", { failOnStatusCode: false });
+            cy.url().should("include", "/v2/access-denied");
+        });
+
+        it("WhyCameEditor is denied (EditRecords)", () => {
             cy.visit("WhyCameEditor.php?PersonID=2", { failOnStatusCode: false });
             cy.url().should("include", "/v2/access-denied");
         });

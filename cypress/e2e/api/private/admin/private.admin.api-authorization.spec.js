@@ -34,6 +34,12 @@ const ROUTES = [
     ["POST", "/admin/api/options/1/1/directory"],
     ["GET", "/admin/api/orphaned-files"],
     ["POST", "/admin/api/orphaned-files/delete-all"],
+    ["DELETE", "/admin/api/properties/definition/1"],
+    ["GET", "/admin/api/property-types"],
+    ["POST", "/admin/api/property-types"],
+    ["GET", "/admin/api/property-types/1"],
+    ["PUT", "/admin/api/property-types/1"],
+    ["DELETE", "/admin/api/property-types/1"],
     ["GET", "/admin/api/system/church-logo"],
     ["POST", "/admin/api/system/church-logo"],
     ["DELETE", "/admin/api/system/church-logo"],
@@ -72,7 +78,7 @@ describe("Admin API authorization matrix", () => {
     });
 
     it("covers every admin API route", () => {
-        expect(ROUTES).to.have.length(49);
+        expect(ROUTES).to.have.length(55);
     });
 
     describe("non-admin API key is refused (403)", () => {

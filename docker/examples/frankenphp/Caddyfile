@@ -38,6 +38,9 @@
     # Enable compression for all responses
     encode zstd br gzip
 
+    # HSTS applies once the site is served over HTTPS (Caddy's automatic HTTPS on a real domain).
+    # header Strict-Transport-Security "max-age=31536000"
+
     # ── Security: block access to sensitive paths ─────────────────────────
 
     # Block .htaccess and other dot-files

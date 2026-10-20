@@ -1806,11 +1806,6 @@ msgstr "Login Name"
 
 #: 
 #, fuzzy
-msgid "Manage Properties and Classifications"
-msgstr "Einstellungen und Einordnungen verwalten"
-
-#: 
-#, fuzzy
 msgid "Manage Groups and Roles"
 msgstr "Gruppen und Rollen verwalten"
 
@@ -5404,10 +5399,6 @@ msgid "Enter event description..."
 msgstr "Ereignisbeschreibung eingeben..."
 
 #: 
-msgid "Event ID"
-msgstr "Ereignis-ID"
-
-#: 
 msgid "Enter note text here..."
 msgstr "Notiztext hier eingeben..."
 
@@ -6173,10 +6164,6 @@ msgid "Manage Orphaned Files"
 msgstr "Verwaiste Dateien verwalten"
 
 #: 
-msgid "Menu options access"
-msgstr "Menüoptionszugriff"
-
-#: 
 msgid "Multiple Copies"
 msgstr "Mehrere Kopien"
 
@@ -6283,10 +6270,6 @@ msgstr "Verwenden Sie externe Tools (GPG, 7-Zip), um Sicherungen vor dem Speiche
 #: 
 msgid "User authentication"
 msgstr "Benutzerauthentifizierung"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "Benutzer muss die Menüoptionsberechtigung haben"
 
 #: 
 msgid "What are Orphaned Files?"

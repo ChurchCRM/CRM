@@ -110,12 +110,6 @@ Cypress.Commands.add("makePrivateLimitedAPICall", privateApiCall("limited.api.ke
 // return 200 to authenticated users but strip note items (e.g. timeline).
 Cypress.Commands.add("makePrivateEditRecordsAPICall", privateApiCall("editrecords.api.key"));
 
-// menuoptions.user (id=902): usr_MenuOptions=1, all other permission flags 0,
-// non-admin, non-EditSelf. Used to verify EditRecords gate on person/family
-// property routes (GHSA-4wmp-3v34-g7q8). Passes MenuOptions middleware but
-// is blocked by EditRecordsRoleAuthMiddleware (expects 403 on record routes).
-Cypress.Commands.add("makePrivateMenuOptionsAPICall", privateApiCall("menuoptions.api.key"));
-
 // noperm.user (id=901): every permission flag 0, usr_EditSelf=0,
 // non-admin. The genuinely zero-permission user — it passes
 // AuthMiddleware under the read-default policy (#9003) and gets

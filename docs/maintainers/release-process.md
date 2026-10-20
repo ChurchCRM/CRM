@@ -52,20 +52,21 @@ Goal: the exact commit being released is built, fully tested, and its scope is c
 - [ ] Latest green nightly SHA = `master` HEAD (2.1)
 - [ ] Build/Test/Package green on `master` HEAD, ZIP artifact present (2.2)
 - [ ] Milestone `<version>` has no open issue or PR that should ship (2.3)
-- [ ] No High-severity GHSA advisory is in draft state (2.4, blocks release)
+- [ ] Every draft High-severity GHSA is fixed on the release commit, or the maintainer has overridden it by ID (2.4)
 
 | # | Step | How | Status |
 |---|------|-----|--------|
 | 2.1 | Compare the latest successful nightly run's SHA with `master` HEAD. If they differ, run the nightly manually and wait for green | [`build-test-nightly.yml`](../../.github/workflows/build-test-nightly.yml): build, root and subdir suites, setup wizard, locale smoke, upgrade matrix. A manual run takes about 30 to 48 min | ✋ check and trigger / 🤖 run |
 | 2.2 | Confirm `Build, Test and Package` on `master` HEAD is completed and green; its `ChurchCRM-<version>.zip` artifact is the released file | [`build-test-package.yml`](../../.github/workflows/build-test-package.yml) runs on every push to `master`, about 36 min | 🤖 run / ✋ check |
 | 2.3 | Review the GitHub milestone matching the `package.json` version on `master`; remove any open issue or PR that will not ship | Milestones → `<version>`. [`pr-milestone-stamp.yml`](../../.github/workflows/pr-milestone-stamp.yml) stamps merged PRs and `release-bookkeeping.yml` rolls open items to the next milestone, so the review looks for blockers | ✋ |
-| 2.4 | Check for draft High-severity GHSA advisories at https://github.com/ChurchCRM/CRM/security/advisories (state=draft, severity=High). Fix and publish first, or defer the release | | ✋ |
+| 2.4 | List draft advisories (`gh api 'repos/ChurchCRM/CRM/security-advisories?state=draft'`). For each High, read the description and check the code on the release commit: a High that is still exploitable blocks. Medium and Low never block. Fix it, defer the release, or have the maintainer override it by GHSA ID. Set `patched_versions` only on a fixed advisory and clear it on any other | [Security Advisory Review](../../.agents/skills/churchcrm/security-advisory-review.md) | ✋ |
 
 Notes:
 
 - Run 2.1 after Phase 1, because every locale PR merge moves HEAD and invalidates the nightly SHA.
 - The nightly cron is `0 3 * * *`; scheduled runs start about 08:00 to 08:30 UTC because of GitHub queue delay.
 - A red nightly blocks the release until its cause is fixed.
+- One red cell is triaged before it blocks: download the `cypress-junit-<cell>-<run id>` artifact and read the failure message. A harness error (for example `Cannot read properties of undefined (reading 'KeyboardEvent')`) that passes in the sibling cell is a flake: `gh run rerun <run id> --failed` re-runs only the failed jobs on the same SHA. A failure that repeats is real.
 - `release-publish.yml` takes the newest successful `master` push build whose `package.json` version matches and uploads that build's ZIP. The agent gate in `release-management.md` checks HEAD = build SHA = nightly SHA.
 - Master pushes use per-commit concurrency, so several builds run in parallel after a burst of merges; wait for the HEAD build. Pushes touching only ignored paths (`locale/terms/**`, `locale/messages.po`, docs, `.agents/**`) do not build, so the latest build can lag HEAD and its ZIP is still correct.
 
@@ -97,7 +98,7 @@ Notes:
 | 4.3 | The upgrade wizard ("What you'll gain") shows the release body from GitHub and links `changelog/<version>.md` on `master` | `ChurchCRMReleaseManager::getUpgradePreviewData()` | 🤖 |
 | 4.4 | Changelog: writes `changelog/<version>.md` from the release body and adds a row to `CHANGELOG.md`, committed to `master` as `chore(changelog): sync <version> release notes` | [`release-bookkeeping.yml`](../../.github/workflows/release-bookkeeping.yml) job `sync` → `scripts/release-changelog.js` | 🤖 |
 | 4.5 | Milestones: closes `<version>`, creates the next milestone (from `master`'s `package.json`) if missing, and moves every still-open issue/PR into it. Skipped for pre-releases | job `manage-milestones` | 🤖 |
-| 4.6 | Docs milestones: ensures `<version>` and next exist in `ChurchCRM/docs.churchcrm.io`, keeping held docs PRs on the released one | job `sync-docs-milestones`; needs the `DOCS_RELEASE_TOKEN` secret | 🤖 |
+| 4.6 | Docs milestones: ensures `<version>` and next exist in `ChurchCRM/docs.churchcrm.io` and leaves both open, keeping held docs PRs on the released one. It reads the next version from `master`, so merge the `Start <next> release` PR first. Closing the previous release's docs milestone is manual (step 6.2) | job `sync-docs-milestones`; needs the `DOCS_RELEASE_TOKEN` secret | 🤖 |
 | 4.7 | Post-release nightly: the full suite, including the upgrade matrix, runs against the published release | `build-test-nightly.yml` on `release: published` | 🤖 |
 | 4.8 | Verify draft advisories with `patched_version` = the released version are public; publish any that are not | https://github.com/ChurchCRM/CRM/security/advisories | ✋ (same day) |
 
@@ -121,7 +122,7 @@ Starts after Publish (3.4) and runs about a week.
 | # | Step | How | Status |
 |---|------|-----|--------|
 | 6.1 | Check the marketing visuals are published at https://cdn.churchcrm.io | [`marketing-capture-assets.yml`](../../.github/workflows/marketing-capture-assets.yml) runs on the release commit as a gate in 3.1. On Publish, `release-bookkeeping` job `publish-visuals` starts `Publish visuals` in `ChurchCRM/visuals` with that capture run (`DOCS_RELEASE_TOKEN` needs Actions: write there). If it warned, run `Publish visuals` by hand with the capture run id | 🤖 / ✋ fallback |
-| 6.2 | Release the docs. In `ChurchCRM/docs.churchcrm.io`: (1) set `crm-release.json` on `release-docs/<version>` to the released version and push, (2) merge the `docs: ChurchCRM <version>` pull request into `main`, (3) create `release-docs/<next version>` from `main` (command in the docs repo `DOCS_GUIDE.md`) | Docs PRs for the release were merged into `release-docs/<version>` as approved, and their CRM tracking issues closed then | ✋ |
+| 6.2 | Release the docs. In `ChurchCRM/docs.churchcrm.io`: (1) set `crm-release.json` on `release-docs/<version>` to the released version and push, (2) merge the `docs: ChurchCRM <version>` pull request into `main`, (3) create `release-docs/<next version>` from `main` (command in the docs repo `DOCS_GUIDE.md`), (4) close the docs milestone of the release before this one (releasing 7.8.1 closes docs milestone 7.8.0; the released version's own docs milestone stays open until the next release, because its docs PRs can still merge) | Docs PRs for the release were merged into `release-docs/<version>` as approved, and their CRM tracking issues closed then | ✋ |
 | 6.3 | Launch-day announcements: Discord, "shipped, please retest" comments on fixed issues, social posts | [Release Announcement skill](../../.agents/skills/churchcrm/release-announcement.md) steps 1 and 2; [`social-media-release.md`](../../.agents/skills/churchcrm/social-media-release.md) | 🧑‍💻 |
 | 6.4 | For a release with new features, write a blog post | Blog PR in `ChurchCRM.io` | ✋ |
 | 6.5 | A few days later, share the blog post on social media | | ✋ |
@@ -129,3 +130,32 @@ Starts after Publish (3.4) and runs about a week.
 | 6.7 | Evaluate the campaign | Signals: GA4 on churchcrm.io (`utm_campaign=release-<tag>` on Discord links, `github_content` on README/CONTRIBUTING links), GitHub release ZIP download counts, PostHog `crm_version` for opted-in installs, social platform analytics | ✋ |
 
 Marketing judgment calls stay with the maintainer: which feature leads, whether a blog is warranted, and the week's cadence. An agent can draft the week's plan (launch posts, blog draft, blog share, follow-ups) from the final release notes.
+
+## Recovery paths
+
+These are what to do when a step above does not run as written. Each one was needed in the 7.8.1 release.
+
+### The release workflow stops before it creates the draft
+
+`release-publish.yml` stops when Build/Test/Package, the Nightly or the marketing capture has no green run on the branch tip. Fix the cause, or do the two steps by hand without touching `master`:
+
+1. Draft: download the ZIP from the green Build/Test/Package run on the release commit (`gh run download <run id> --pattern 'ChurchCRM-*'`), then `gh release create <version> ChurchCRM-<version>.zip --target <commit sha> --generate-notes --notes-start-tag <previous version> --draft`. A draft shows `untagged-<hash>` in its URL; `gh release view <version> --json tagName` still shows the version, and the git tag appears at Publish.
+2. Next-version PR: `gh workflow run release-prepare.yml --ref master -f version=<next version>`.
+
+Merge the `Start <next> release` PR before Publish (3.3). Bookkeeping reads the next version from `master`, and its milestone jobs stop while `master` still carries the released version. If Publish happened first, merge that PR, then re-run `release-bookkeeping.yml` with `tag=<version>`.
+
+### Bookkeeping failed
+
+`gh run view <run id> --log-failed` names the job. A `403 Resource not accessible by personal access token` from the docs milestone job means `DOCS_RELEASE_TOKEN` lacks Issues write on `ChurchCRM/docs.churchcrm.io`; fix the token, then re-run.
+
+### The visuals did not reach the CDN
+
+`publish-visuals` looks for a green `marketing-capture-assets.yml` run on the release commit. With none, it prints a warning, skips the publish and still reports success, so check its summary after Publish. To publish by hand:
+
+1. Run the capture on `master` (never on a feature branch) and wait for it to be green. Its artifact is `marketing-visuals-<run id>`, kept 30 days.
+2. `gh workflow run publish.yml -R ChurchCRM/visuals -f run_id=<capture run id> -f release=<version>`. It replaces the whole published set with that run's.
+3. Wait for the `pages build and deployment` run in `ChurchCRM/visuals`; the CDN lags the publish by a minute or two. Then check that the new images return 200 at `cdn.churchcrm.io/screenshots/en/desktop/<name>.png` and that `manifest.json` lists `usedIn`.
+4. Re-run "Validate Docusaurus site" on the `docs: ChurchCRM <version>` pull request. It fails on every `cdn.churchcrm.io` image that returns 404, so the visuals come before the docs merge.
+
+A capture that fails is diagnosed in `.agents/skills/churchcrm/marketing-visuals-pipeline.md` ("Fixing a failed capture").
+

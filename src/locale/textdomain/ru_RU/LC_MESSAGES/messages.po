@@ -1795,11 +1795,6 @@ msgstr "Логин"
 
 #: 
 #, fuzzy
-msgid "Manage Properties and Classifications"
-msgstr "Управление свойства и классификации"
-
-#: 
-#, fuzzy
 msgid "Manage Groups and Roles"
 msgstr "Управление группами и ролями"
 
@@ -5385,10 +5380,6 @@ msgid "Enter event description..."
 msgstr "Введите описание события..."
 
 #: 
-msgid "Event ID"
-msgstr "ID события"
-
-#: 
 msgid "Enter note text here..."
 msgstr "Введите текст заметки..."
 
@@ -6158,10 +6149,6 @@ msgid "Manage Orphaned Files"
 msgstr "Управление бесхозными файлами"
 
 #: 
-msgid "Menu options access"
-msgstr "Доступ к опциям меню"
-
-#: 
 msgid "Multiple Copies"
 msgstr "Несколько копий"
 
@@ -6268,10 +6255,6 @@ msgstr "Используйте внешние утилиты для шифров
 #: 
 msgid "User authentication"
 msgstr "Аутентификация пользователя"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "Нужно право на опции меню"
 
 #: 
 msgid "What are Orphaned Files?"

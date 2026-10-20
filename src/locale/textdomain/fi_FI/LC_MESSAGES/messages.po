@@ -1740,10 +1740,6 @@ msgid "Login Name"
 msgstr "Kirjautumistunnus"
 
 #: 
-msgid "Manage Properties and Classifications"
-msgstr "Hallitse ominaisuuksia ja luokitteluja"
-
-#: 
 msgid "Manage Groups and Roles"
 msgstr "Hallitse ryhmiä ja rooleja"
 
@@ -5294,10 +5290,6 @@ msgid "Enter event description..."
 msgstr "Syötä tapahtuman kuvaus..."
 
 #: 
-msgid "Event ID"
-msgstr "Tapahtumatunnus"
-
-#: 
 msgid "Enter note text here..."
 msgstr "Kirjoita muistiinpano tähän..."
 
@@ -6063,10 +6055,6 @@ msgid "Manage Orphaned Files"
 msgstr "Hallitse jääneitä tiedostoja"
 
 #: 
-msgid "Menu options access"
-msgstr "Valikon vaihtoehtojen käyttöoikeus"
-
-#: 
 msgid "Multiple Copies"
 msgstr "Useita kopioita"
 
@@ -6173,10 +6161,6 @@ msgstr "Käytä ulkoisia työkaluja (GPG, 7-Zip) varmuuskopioiden salaamiseen en
 #: 
 msgid "User authentication"
 msgstr "Käyttäjän todennus"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "Käyttäjällä on oltava Valikkovaihtoehdot -käyttöoikeus"
 
 #: 
 msgid "What are Orphaned Files?"

@@ -1734,10 +1734,6 @@ msgid "Login Name"
 msgstr "Pangalan sa Login"
 
 #: 
-msgid "Manage Properties and Classifications"
-msgstr "Pamahalaan ang mga Katangian at Klasipikasyon"
-
-#: 
 msgid "Manage Groups and Roles"
 msgstr "Pamahalaan ang mga Grupo at Papel"
 
@@ -5293,10 +5289,6 @@ msgid "Enter event description..."
 msgstr "Ipasok ang paglalarawan ng kaganapan..."
 
 #: 
-msgid "Event ID"
-msgstr "ID ng Kaganapan"
-
-#: 
 msgid "Enter note text here..."
 msgstr "Ipasok ang teksto ng tala dito..."
 
@@ -6062,10 +6054,6 @@ msgid "Manage Orphaned Files"
 msgstr "Pamahalaan ang mga Orphaned na File"
 
 #: 
-msgid "Menu options access"
-msgstr "Access sa mga opsyon ng menu"
-
-#: 
 msgid "Multiple Copies"
 msgstr "Maraming Kopya"
 
@@ -6172,10 +6160,6 @@ msgstr "Gumamit ng mga external na kagamitan (GPG, 7-Zip) para i-encrypt ang mga
 #: 
 msgid "User authentication"
 msgstr "Authentication ng user"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "Ang user ay dapat may pahintulot sa Mga Opsyon ng Menu"
 
 #: 
 msgid "What are Orphaned Files?"

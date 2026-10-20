@@ -1796,11 +1796,6 @@ msgstr "Nazwa Użytkownika (Login)"
 
 #: 
 #, fuzzy
-msgid "Manage Properties and Classifications"
-msgstr "Zarządzaj Właściwościami i Klasyfikacją"
-
-#: 
-#, fuzzy
 msgid "Manage Groups and Roles"
 msgstr "Zarządzaj Grupami i Rolami"
 
@@ -5386,10 +5381,6 @@ msgid "Enter event description..."
 msgstr "Wprowadź opis wydarzenia..."
 
 #: 
-msgid "Event ID"
-msgstr "ID wydarzenia"
-
-#: 
 msgid "Enter note text here..."
 msgstr "Wpisz treść notatki..."
 
@@ -6157,10 +6148,6 @@ msgid "Manage Orphaned Files"
 msgstr "Zarządzaj osieroconymi plikami"
 
 #: 
-msgid "Menu options access"
-msgstr "Dostęp do opcji menu"
-
-#: 
 msgid "Multiple Copies"
 msgstr "Wiele kopii"
 
@@ -6267,10 +6254,6 @@ msgstr "Używaj zewnętrznych narzędzi do szyfrowania kopii przed wysyłką poz
 #: 
 msgid "User authentication"
 msgstr "Uwierzytelnianie użytkownika"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "Użytkownik musi mieć uprawnienie do opcji menu"
 
 #: 
 msgid "What are Orphaned Files?"

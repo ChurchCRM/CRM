@@ -1750,10 +1750,6 @@ msgid "Login Name"
 msgstr "የመግቢያ ስም"
 
 #: 
-msgid "Manage Properties and Classifications"
-msgstr "ንብረቶችንና አከፋፈላቸውን ያስተዳድሩ"
-
-#: 
 msgid "Manage Groups and Roles"
 msgstr "ቡድኖችና ሚናዎችን ያስተዳድሩ"
 
@@ -5334,10 +5330,6 @@ msgid "Enter event description..."
 msgstr "የክስተት መግለጫ ያስገቡ..."
 
 #: 
-msgid "Event ID"
-msgstr "የክስተት መለያ"
-
-#: 
 msgid "Enter note text here..."
 msgstr "የማስታወሻ ጽሁፍ እዚህ ያስገቡ..."
 
@@ -6103,10 +6095,6 @@ msgid "Manage Orphaned Files"
 msgstr "ተረጂ ያልሆኑ ፋይሎችን አስተዳድር"
 
 #: 
-msgid "Menu options access"
-msgstr "የሜኑ አማራጮች መዳረሻ"
-
-#: 
 msgid "Multiple Copies"
 msgstr "በርካታ ቅጂዎች"
 
@@ -6213,10 +6201,6 @@ msgstr "መጠባበቂያዎችን ከግቢ ውጭ ከማስቀመጥዎ በ�
 #: 
 msgid "User authentication"
 msgstr "የተጠቃሚ ማረጋገጫ"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "ተጠቃሚው የሜኑ አማራጮች ፈቃድ ሊኖረው ይገባል"
 
 #: 
 msgid "What are Orphaned Files?"

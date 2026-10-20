@@ -1757,10 +1757,6 @@ msgid "Login Name"
 msgstr "Nome di Login"
 
 #: 
-msgid "Manage Properties and Classifications"
-msgstr "Gestisci proprietà e classificazioni"
-
-#: 
 msgid "Manage Groups and Roles"
 msgstr "Gestisci gruppi e ruoli"
 
@@ -5346,10 +5342,6 @@ msgid "Enter event description..."
 msgstr "Inserisci la descrizione dell'evento..."
 
 #: 
-msgid "Event ID"
-msgstr "ID Evento"
-
-#: 
 msgid "Enter note text here..."
 msgstr "Inserisci il testo della nota qui..."
 
@@ -6115,10 +6107,6 @@ msgid "Manage Orphaned Files"
 msgstr "Gestisci File Orfani"
 
 #: 
-msgid "Menu options access"
-msgstr "Accesso alle opzioni di menu"
-
-#: 
 msgid "Multiple Copies"
 msgstr "Copie Multiple"
 
@@ -6225,10 +6213,6 @@ msgstr "Usa strumenti esterni (GPG, 7-Zip) per crittografare i backup prima di a
 #: 
 msgid "User authentication"
 msgstr "Autenticazione utente"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "L'utente deve avere l'autorizzazione Opzioni Menu"
 
 #: 
 msgid "What are Orphaned Files?"

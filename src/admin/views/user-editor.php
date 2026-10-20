@@ -160,7 +160,6 @@ $accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom
             <p class="text-body-secondary small mb-3"><?= gettext('Grant individual permissions') ?>:</p>
             <?php
             $permissions = [
-                ['name' => 'MenuOptions',  'label' => gettext('Manage Properties and Classifications'), 'checked' => $perms['menuOptions']],
                 ['name' => 'ManageGroups', 'label' => gettext('Manage Groups and Roles'),               'checked' => $perms['manageGroups']],
                 ['name' => 'Finance',            'label' => gettext('Manage Donations and Finance'),  'checked' => $perms['finance']],
                 ['name' => 'ManageFundraisers', 'label' => gettext('Manage Fundraisers'),              'checked' => $perms['manageFundraisers']],

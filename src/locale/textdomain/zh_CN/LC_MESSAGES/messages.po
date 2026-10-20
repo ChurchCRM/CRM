@@ -1798,11 +1798,6 @@ msgstr "登录用户名"
 
 #: 
 #, fuzzy
-msgid "Manage Properties and Classifications"
-msgstr "管理属性和分类"
-
-#: 
-#, fuzzy
 msgid "Manage Groups and Roles"
 msgstr "管理组和角色"
 
@@ -5394,10 +5389,6 @@ msgid "Enter event description..."
 msgstr "输入活动描述..."
 
 #: 
-msgid "Event ID"
-msgstr "活动 ID"
-
-#: 
 msgid "Enter note text here..."
 msgstr "在此处输入笔记文本..."
 
@@ -6161,10 +6152,6 @@ msgid "Manage Orphaned Files"
 msgstr "管理孤立文件"
 
 #: 
-msgid "Menu options access"
-msgstr "菜单选项权限"
-
-#: 
 msgid "Multiple Copies"
 msgstr "多份副本"
 
@@ -6271,10 +6258,6 @@ msgstr "在异地存储之前，使用外部工具（如 GPG, 7-Zip）加密备�
 #: 
 msgid "User authentication"
 msgstr "用户认证"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "用户必须具有菜单选项权限"
 
 #: 
 msgid "What are Orphaned Files?"

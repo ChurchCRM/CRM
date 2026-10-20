@@ -1751,10 +1751,6 @@ msgid "Login Name"
 msgstr "שם משתמש"
 
 #: 
-msgid "Manage Properties and Classifications"
-msgstr "נהל מאפיינים וסיווגים"
-
-#: 
 msgid "Manage Groups and Roles"
 msgstr "נהל קבוצות ותפקידים"
 
@@ -5325,10 +5321,6 @@ msgid "Enter event description..."
 msgstr "הזן תיאור אירוע..."
 
 #: 
-msgid "Event ID"
-msgstr "מזהה אירוע"
-
-#: 
 msgid "Enter note text here..."
 msgstr "הזן את הטקסט להערה כאן..."
 
@@ -6094,10 +6086,6 @@ msgid "Manage Orphaned Files"
 msgstr "נהל קבצים יתומים"
 
 #: 
-msgid "Menu options access"
-msgstr "גישה לאפשרויות תפריט"
-
-#: 
 msgid "Multiple Copies"
 msgstr "עותקים מרובים"
 
@@ -6204,10 +6192,6 @@ msgstr "השתמש בכלים חיצוניים להצפנת גיבויים לפ�
 #: 
 msgid "User authentication"
 msgstr "אימות משתמש"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "המשתמש חייב להיות בעל הרשאת אפשרויות תפריט"
 
 #: 
 msgid "What are Orphaned Files?"

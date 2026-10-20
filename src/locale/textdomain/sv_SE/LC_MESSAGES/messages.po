@@ -1821,11 +1821,6 @@ msgstr "Inloggningsnamn"
 
 #: 
 #, fuzzy
-msgid "Manage Properties and Classifications"
-msgstr "Underhålla egenskaper och klassificeringer"
-
-#: 
-#, fuzzy
 msgid "Manage Groups and Roles"
 msgstr "Hantera grupper och roller"
 
@@ -5417,10 +5412,6 @@ msgid "Enter event description..."
 msgstr "Ange händelsebeskrivning..."
 
 #: 
-msgid "Event ID"
-msgstr "Händelse-ID"
-
-#: 
 msgid "Enter note text here..."
 msgstr "Ange anteckningstext här..."
 
@@ -6186,10 +6177,6 @@ msgid "Manage Orphaned Files"
 msgstr "Hantera föräldralösa filer"
 
 #: 
-msgid "Menu options access"
-msgstr "Åtkomst till menyalternativ"
-
-#: 
 msgid "Multiple Copies"
 msgstr "Flera kopior"
 
@@ -6296,10 +6283,6 @@ msgstr "Använd externa verktyg (GPG, 7-Zip) för att kryptera säkerhetskopior 
 #: 
 msgid "User authentication"
 msgstr "Användarautentisering"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "Användaren måste ha behörighet för menyalternativ"
 
 #: 
 msgid "What are Orphaned Files?"
