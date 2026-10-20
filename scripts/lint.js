@@ -20,6 +20,11 @@ const localeTests = fs
     .filter((name) => name.endsWith('.test.js'))
     .map((name) => path.join('locale', 'scripts', 'lib', name));
 
+const scriptTests = fs
+    .readdirSync(__dirname)
+    .filter((name) => name.endsWith('.test.js'))
+    .map((name) => path.join('scripts', name));
+
 const checks = {
     'biome lint': npx('biome', 'check', 'webpack/'),
     'biome format': npx('biome', 'format', '.'),
@@ -36,6 +41,7 @@ const checks = {
     'seed charsets': script('validate-seed-charsets.js'),
     'mysql upgrade syntax': script('validate-mysql-upgrade-syntax.js'),
     'locale script tests': [node, ['--test', ...localeTests]],
+    'tooling script tests': [node, ['--test', ...scriptTests]],
 };
 
 function run(name, [command, args]) {

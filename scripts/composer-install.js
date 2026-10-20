@@ -15,7 +15,7 @@ const installedFile = path.join(srcDir, 'vendor', 'composer', 'installed.json');
 const strippedDirs = new Set(['tests', 'Tests', 'test', 'docs', 'examples', 'example']);
 
 function packageSet(packages) {
-    return new Set(packages.map((p) => `${p.name}@${p.version}`));
+    return new Set(packages.map((p) => `${p.name}@${p.version}@${p.dist?.reference ?? p.source?.reference ?? ''}`));
 }
 
 function vendorIsCurrent() {
@@ -32,7 +32,7 @@ function vendorIsCurrent() {
 }
 
 function composer(args) {
-    const result = spawnSync('composer', args, { cwd: srcDir, stdio: 'inherit' });
+    const result = spawnSync('composer', args, { cwd: srcDir, stdio: 'inherit', shell: process.platform === 'win32' });
     if (result.error?.code === 'ENOENT') {
         console.error('\n✖ composer is not installed or not on PATH. Install it from https://getcomposer.org/download/\n');
         process.exit(1);
