@@ -58,7 +58,6 @@ These are **approved product requirements**, not proof of current behavior or ap
 | `usr_AddRecords` | Add person and family records | People create, ordinary records |
 | `usr_EditRecords` | Edit person and family records | People update, ordinary records |
 | `usr_DeleteRecords` | Delete person and family records. It is a people flag, not a general delete permission | People delete, ordinary records |
-| `usr_MenuOptions` | Despite the name, a data grant: property definitions and types, property assignment, letters and mailing labels, the verify report and its family email, the "why came" editor, and `GetText.php`. See [#10314](https://github.com/ChurchCRM/CRM/issues/10314) | To be retired: property catalogue to Admin, property assignment to Edit Records (groups: Manage Groups), "why came" and the verify report to Edit Records, letters and labels to ordinary report access |
 | `usr_ManageGroups` | Group administration. The flag is global, not per group | Group manage |
 | `usr_Finance` | Finance module | Finance, separate from pastoral records |
 | `usr_ManageFundraisers` | Fundraisers | Fundraiser manage |
