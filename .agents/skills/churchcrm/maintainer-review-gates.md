@@ -22,7 +22,7 @@ The author is a volunteer. Be thankful, specific, and focused on what matters.
 
 ## Comment Resolution
 
-Resolve addressed comments as part of PR review. If a comment's concern is addressed in the current PR code (question answered, bug fixed, design decision made), mark/resolve that comment. This keeps threads clean and shows progress.
+Read every review thread on the PR (inline threads and review summaries, from people and bots) before you review or report on it. Resolve a thread when the current PR code addresses it (question answered, bug fixed, design decision made). Leave it open, with a reply, when it is not addressed. A bot's `CHANGES_REQUESTED` review stays until that bot reviews again, so a green check does not mean approval: report the unresolved threads and each bot's latest review state.
 
 ## Review Format: No Hard Blocks
 
