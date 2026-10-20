@@ -4,12 +4,15 @@ require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\view\PageHeader;
 
 AuthenticationManager::redirectHomeIfNotAdmin();
+
+$csrfToken = CSRFUtils::generateToken();
 
 // Get the type to display
 $sType = InputUtils::legacyFilterInput($_GET['Type'], 'char', 1);
@@ -166,7 +169,8 @@ require_once __DIR__ . '/Include/Header.php';
                                     <div class="dropdown-divider"></div>
                                     <button class="dropdown-item text-danger delete-property-btn"
                                         data-property-id="<?= InputUtils::escapeAttribute($prop['pro_ID']) ?>"
-                                        data-property-name="<?= InputUtils::escapeAttribute($prop['pro_Name']) ?>">
+                                        data-property-name="<?= InputUtils::escapeAttribute($prop['pro_Name']) ?>"
+                                        data-csrf-token="<?= InputUtils::escapeAttribute($csrfToken) ?>">
                                         <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
                                     </button>
                                 </div>
@@ -202,6 +206,7 @@ $(document).ready(function () {
                         window.CRM.AdminAPIRequest({
                             method: 'DELETE',
                             path: 'properties/definition/' + propertyId,
+                            headers: { 'X-CSRF-Token': btn.data('csrf-token') },
                         }).done(function () {
                             btn.closest('tr').fadeOut(300, function () { $(this).remove(); });
                         });
