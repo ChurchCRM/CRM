@@ -190,7 +190,11 @@ jobs:
             }
 
             for (const n of linked) {
-              await stamp(n, 'issue', { forceIfClosed: true });
+              try {
+                await stamp(n, 'issue', { forceIfClosed: true });
+              } catch (e) {
+                failures.push(`issue #${n}: ${e.message}`);
+              }
             }
 
             if (failures.length) {
