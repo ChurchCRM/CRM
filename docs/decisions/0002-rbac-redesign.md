@@ -71,6 +71,30 @@ These are **approved product requirements**, not proof of current behavior or ap
 
 **Audit limitation:** These are targeted inspections, not a complete route/schema/upgrade/test inventory. Do not infer security or exploitability from uninspected endpoints. Related historical findings: [#8999](https://github.com/ChurchCRM/CRM/issues/8999), [#9036](https://github.com/ChurchCRM/CRM/issues/9036), [#10206](https://github.com/ChurchCRM/CRM/issues/10206), [#10213](https://github.com/ChurchCRM/CRM/issues/10213).
 
+### Lessons from retiring `usr_MenuOptions` (7.8.2)
+
+The flag is absent from the table above on purpose. [#10314](https://github.com/ChurchCRM/CRM/issues/10314) retired it in a stack of six PRs for 7.8.2 ([#10767](https://github.com/ChurchCRM/CRM/pull/10767), [#10775](https://github.com/ChurchCRM/CRM/pull/10775) to [#10779](https://github.com/ChurchCRM/CRM/pull/10779)); until they merge, the default branch still carries it. The user editor labelled it "Manage Properties and Classifications", but its callers were the property catalogue, property assignment on people, families and groups, letters and labels, the Why Came editor, the verify report and its family email, and one page nothing linked to. The V2 inventory should expect the same gap between a flag's name and its callers.
+
+| Former caller | Now |
+|---|---|
+| Property definitions and types (pages and APIs) | Administrator only, in `/admin/api` |
+| Assigning properties to people and families | Edit Records |
+| Assigning properties to groups | Manage Groups |
+| Why Came editor | Edit Records |
+| Verify report, its page and family email | Edit Records |
+| Letters, mailing labels, People Report labels | Ordinary staff access, like the directory |
+| Unlinked text page | Removed |
+
+What carries into V2:
+
+1. **Build the parity inventory from callers, not names.** Search every `isXxxEnabled()` and `*RoleAuthMiddleware` use, then decide per caller. The label would have sent property assignment and letters to the same grant.
+2. **A feature has one permission across its page, its API and every control that leads to it.** The audit found a person page offering "Assign property" to users whose API call returned 403, a verify page with no check at all, and dashboard buttons that ended in 403. The route manifest (R1) lists links, buttons and action menus beside routes and verbs.
+3. **The permission follows the record, and catalogues are configuration.** Work on a person or family is a people grant; work on a group is a group grant; defining shared catalogues (properties, types, lists) is administration. V2 should not fold the three into one grant.
+4. **Reports and labels show why bulk extraction needs its own capability.** Opening labels to ordinary staff matches the directory and the People Report CSV, and also hands every staff user a whole-congregation address list. The scoped print and export grants in the bulk export gate ([#10516](https://github.com/ChurchCRM/CRM/issues/10516)) are the place to restrict it.
+5. **Retiring a grant silently removes access, and the data cannot be recovered.** Users who held only Menu Options lose the catalogue and the verify report on upgrade. V2 needs the effective-access preview (P11, item 5) and a release note before any legacy flag is dropped.
+6. **Test with single-grant users.** The standard test user held the flag, so specs passed through it. Success and denial tests run as one user per grant (Edit Records only, Manage Groups only, no permissions) so a wrong or missing gate fails a test.
+7. **Apply a role wrapper once on the route group** so a denied user gets 403 before any entity lookup answers 404, and keep admin-only APIs in `/admin/api` while every other API stays in `/api` with its own role middleware.
+
 ## 3. Church-first 80/20 experience
 
 A church must be able to use templates without constructing a complex access graph. Roles **compose** (no inheritance graph in v1); role assignment does not override sensitive-record restrictions.
