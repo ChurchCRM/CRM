@@ -5,7 +5,6 @@ use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\model\ChurchCRM\RecordProperty;
 use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
-use ChurchCRM\Slim\Middleware\Request\Auth\MenuOptionsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Api\FamilyMiddleware;
 use ChurchCRM\Slim\Middleware\Api\PersonMiddleware;
 use ChurchCRM\Slim\Middleware\Api\PropertyMiddleware;
@@ -22,7 +21,7 @@ $app->group('/people/properties', function (RouteCollectorProxy $group): void {
     $personAPIMiddleware = new PersonMiddleware();
     $familyPropertyAPIMiddleware = new PropertyMiddleware('f');
     $familyAPIMiddleware = new FamilyMiddleware();
-    $group->get('/person', 'getAllPersonProperties');
+    $group->get('/person', 'getAllPersonProperties')->add(EditRecordsRoleAuthMiddleware::class);
     $group->get('/person/{personId}', 'getPersonProperties')->add($personAPIMiddleware)->add(EditRecordsRoleAuthMiddleware::class);
     $group->post('/person/{personId}/{propertyId}', 'addPropertyToPerson')
         ->add(new InputSanitizationMiddleware(['value' => 'text']))
@@ -30,7 +29,7 @@ $app->group('/people/properties', function (RouteCollectorProxy $group): void {
         ->add($personPropertyAPIMiddleware)
         ->add(EditRecordsRoleAuthMiddleware::class);
     $group->delete('/person/{personId}/{propertyId}', 'removePropertyFromPerson')->add($personAPIMiddleware)->add($personPropertyAPIMiddleware)->add(EditRecordsRoleAuthMiddleware::class);
-    $group->get('/family', 'getAllFamilyProperties');
+    $group->get('/family', 'getAllFamilyProperties')->add(EditRecordsRoleAuthMiddleware::class);
     $group->get('/family/{familyId}', 'getFamilyProperties')->add($familyAPIMiddleware)->add(EditRecordsRoleAuthMiddleware::class);
     $group->post('/family/{familyId}/{propertyId}', 'addPropertyToFamily')
         ->add(new InputSanitizationMiddleware(['value' => 'text']))
@@ -39,7 +38,7 @@ $app->group('/people/properties', function (RouteCollectorProxy $group): void {
         ->add(EditRecordsRoleAuthMiddleware::class);
     $group->delete('/family/{familyId}/{propertyId}', 'removePropertyFromFamily')->add($familyAPIMiddleware)->add($familyPropertyAPIMiddleware)->add(EditRecordsRoleAuthMiddleware::class);
 
-})->add(MenuOptionsRoleAuthMiddleware::class);
+});
 
 /**
  * @OA\Get(
@@ -48,7 +47,7 @@ $app->group('/people/properties', function (RouteCollectorProxy $group): void {
  *     tags={"Properties"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Response(response=200, description="Array of person property definitions"),
- *     @OA\Response(response=403, description="MenuOptions role required")
+ *     @OA\Response(response=403, description="EditRecords role required")
  * )
  */
 function getAllPersonProperties(Request $request, Response $response, array $args): Response
@@ -109,7 +108,7 @@ function removePropertyFromPerson(Request $request, Response $response, array $a
  *     tags={"Properties"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Response(response=200, description="Array of family property definitions"),
- *     @OA\Response(response=403, description="MenuOptions role required")
+ *     @OA\Response(response=403, description="EditRecords role required")
  * )
  */
 function getAllFamilyProperties(Request $request, Response $response, array $args): Response

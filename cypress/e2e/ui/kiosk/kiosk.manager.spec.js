@@ -92,6 +92,12 @@ describe("Kiosk Manager", () => {
             cy.get("#kioskSettings").should("not.exist");
         });
 
+        it("does not show a Group Properties button on the Groups dashboard", () => {
+            cy.visit("/groups/dashboard");
+            cy.contains("Group Reports");
+            cy.get('a[href*="PropertyList.php?Type=g"]').should("not.exist");
+        });
+
         it("ManageGroups user who is not an admin does not see Group Properties in the Groups menu (#9172)", () => {
             cy.visit("/");
             cy.contains("a", "Groups").first().click({ force: true });
