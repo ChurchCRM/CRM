@@ -88,7 +88,7 @@ describe("API GET /api/email/log", () => {
         });
     });
 
-    it("unscoped list is for administrators only and can filter by status", () => {
+    it("unscoped list needs the Email permission and can filter by status", () => {
         adminGet("/api/email/log?status=failed").then((resp) => {
             expect(resp.body.total).to.be.at.least(1);
             for (const r of resp.body.rows) expect(r.status).to.eq("failed");

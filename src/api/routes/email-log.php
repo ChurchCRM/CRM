@@ -15,12 +15,15 @@ use Slim\Routing\RouteCollectorProxy;
  * @OA\Get(
  *     path="/email/log",
  *     summary="Page through the email history",
- *     description="Newest first. With personId or familyId the caller must be allowed to view that record; without either the caller must be an administrator (recent sends across everyone).",
+ *     description="Newest first. With personId or familyId the caller must be allowed to view that record. Without either it is the email log: an administrator sees everyone's mail, a user with the Email permission only the mail they queued, filtered by status, kind, sentBy and q.",
  *     tags={"Email"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="personId", in="query", @OA\Schema(type="integer")),
  *     @OA\Parameter(name="familyId", in="query", @OA\Schema(type="integer"), description="Rows for the family address and its current members"),
- *     @OA\Parameter(name="status", in="query", @OA\Schema(type="string", enum={"sent","failed","skipped","queued","sending"}), description="Only honoured on the unscoped (admin) list"),
+ *     @OA\Parameter(name="status", in="query", @OA\Schema(type="string", enum={"sent","failed","skipped","queued","sending"}), description="Email log only"),
+ *     @OA\Parameter(name="kind", in="query", @OA\Schema(type="string", maxLength=50), description="Email log only: one email type, e.g. composer or birthday"),
+ *     @OA\Parameter(name="sentBy", in="query", @OA\Schema(type="string"), description="Email log only: a user id, or automatic for mail no user queued. A user without admin rights may pass only their own id."),
+ *     @OA\Parameter(name="q", in="query", @OA\Schema(type="string", maxLength=100), description="Email log only: every word must appear in the subject, the address or the recipient's name"),
  *     @OA\Parameter(name="page", in="query", @OA\Schema(type="integer", default=1)),
  *     @OA\Parameter(name="limit", in="query", @OA\Schema(type="integer", default=25, maximum=100)),
  *     @OA\Response(response=200, description="A page of history rows",
@@ -40,15 +43,18 @@ use Slim\Routing\RouteCollectorProxy;
  *                 @OA\Property(property="attempts", type="integer", description="Delivery attempts so far"),
  *                 @OA\Property(property="error", type="string", nullable=true),
  *                 @OA\Property(property="dateSent", type="string"),
- *                 @OA\Property(property="hasBody", type="boolean"))),
+ *                 @OA\Property(property="hasBody", type="boolean"),
+ *                 @OA\Property(property="recipientName", type="string", nullable=true, description="Email log only: the person, or else the family, the address belonged to"),
+ *                 @OA\Property(property="recipientUrl", type="string", nullable=true, description="Email log only: that record's page"))),
  *             @OA\Property(property="total", type="integer"),
  *             @OA\Property(property="page", type="integer"),
  *             @OA\Property(property="limit", type="integer"),
  *             @OA\Property(property="pages", type="integer")
  *         )
  *     ),
+ *     @OA\Response(response=400, description="Invalid status, kind, sentBy or q"),
  *     @OA\Response(response=401, description="Unauthorized"),
- *     @OA\Response(response=403, description="Not allowed to view this record's history")
+ *     @OA\Response(response=403, description="Not allowed to view this record's history, the Email permission is missing, or sentBy names another sender without admin rights")
  * )
  * @OA\Get(
  *     path="/email/log/{id}",
@@ -94,15 +100,38 @@ $app->group('/email/log', function (RouteCollectorProxy $group): void {
 
                 return SlimUtils::renderJSON($response, $service->getForFamily($familyId, $memberIds, $page, $limit));
             }
-            if (!$user->isAdmin()) {
-                return SlimUtils::renderErrorJSON($response, gettext('Administrator permission required'), [], 403, null, $request);
+            if (!$user->isEmailEnabled()) {
+                return SlimUtils::renderErrorJSON($response, gettext('User must have Email permission'), [], 403, null, $request);
             }
-            $status = isset($q['status']) ? (string) $q['status'] : null;
-            if ($status !== null && !in_array($status, EmailLogService::STATUSES, true)) {
+            $text = static fn (string $name): string => is_scalar($q[$name] ?? null) ? (string) $q[$name] : '';
+            $status = $text('status');
+            if ($status !== '' && !in_array($status, EmailLogService::STATUSES, true)) {
                 return SlimUtils::renderErrorJSON($response, gettext('Invalid status'), [], 400, null, $request);
             }
+            $kind = $text('kind');
+            if (mb_strlen($kind) > 50) {
+                return SlimUtils::renderErrorJSON($response, gettext('Invalid type value'), [], 400, null, $request);
+            }
+            $sentBy = $text('sentBy');
+            if ($sentBy !== '' && $sentBy !== EmailLogService::SENT_BY_AUTOMATIC && !ctype_digit($sentBy)) {
+                return SlimUtils::renderErrorJSON($response, gettext('Invalid request data'), [], 400, null, $request);
+            }
+            $search = trim($text('q'));
+            if (mb_strlen($search) > EmailLogService::MAX_SEARCH_LENGTH) {
+                return SlimUtils::renderErrorJSON($response, gettext('Invalid request data'), [], 400, null, $request);
+            }
+            $sentBy = ctype_digit($sentBy) ? (int) $sentBy : ($sentBy !== '' ? $sentBy : null);
+            $senderUserId = $user->isAdmin() ? null : (int) $user->getId();
+            if ($senderUserId !== null && $sentBy !== null && $sentBy !== $senderUserId) {
+                return SlimUtils::renderErrorJSON($response, gettext('Administrator permission required'), [], 403, null, $request);
+            }
 
-            return SlimUtils::renderJSON($response, $service->getRecent($status, $page, $limit));
+            return SlimUtils::renderJSON($response, $service->getLog(
+                ['status' => $status, 'kind' => $kind, 'sentBy' => $sentBy, 'search' => $search],
+                $senderUserId,
+                $page,
+                $limit,
+            ));
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to load email history'), [], 500, $e, $request);
         }
