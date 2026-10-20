@@ -1734,10 +1734,6 @@ msgid "Login Name"
 msgstr "Korisničko ime"
 
 #: 
-msgid "Manage Properties and Classifications"
-msgstr "Upravljaj svojstvima i klasifikacijama"
-
-#: 
 msgid "Manage Groups and Roles"
 msgstr "Upravljaj skupinama i ulogama"
 
@@ -6060,10 +6056,6 @@ msgid "Manage Orphaned Files"
 msgstr "Upravljaj sirotim datotekama"
 
 #: 
-msgid "Menu options access"
-msgstr "Pristup opcijama izbornika"
-
-#: 
 msgid "Multiple Copies"
 msgstr "Višestruke kopije"
 
@@ -6170,10 +6162,6 @@ msgstr "Koristite vanjske alate (GPG, 7-Zip) za šifriranje sigurnosnih kopija p
 #: 
 msgid "User authentication"
 msgstr "Autentifikacija korisnika"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "Korisnik mora imati dozvolu za opcije izbornika"
 
 #: 
 msgid "What are Orphaned Files?"

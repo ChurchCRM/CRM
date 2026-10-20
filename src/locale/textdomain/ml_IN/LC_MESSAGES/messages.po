@@ -1734,10 +1734,6 @@ msgid "Login Name"
 msgstr "ലോഗിൻ നാമം"
 
 #: 
-msgid "Manage Properties and Classifications"
-msgstr "സ്വഭാവങ്ങളും വർഗ്ഗീകരണങ്ങളും മാനേജ് ചെയ്യുക"
-
-#: 
 msgid "Manage Groups and Roles"
 msgstr "ഗ്രൂപ്പുകളും പങ്കുകളും മാനേജ് ചെയ്യുക"
 
@@ -6058,10 +6054,6 @@ msgid "Manage Orphaned Files"
 msgstr "അനാഥ ഫയലുകൾ മാനേജ് ചെയ്യുക"
 
 #: 
-msgid "Menu options access"
-msgstr "മെനു ഓപ്ഷൻ ആക്സസ്"
-
-#: 
 msgid "Multiple Copies"
 msgstr "ഒന്നിലധികം കോപ്പികൾ"
 
@@ -6168,10 +6160,6 @@ msgstr "ഓഫ്-സൈറ്റ് സ്റ്റോർ ചെയ്യുന
 #: 
 msgid "User authentication"
 msgstr "ഉപയോക്തൃ ആധികാരികത"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "ഉപയോക്താവിന് മെനു ഓപ്ഷൻ അനുമതി ഉണ്ടായിരിക്കണം"
 
 #: 
 msgid "What are Orphaned Files?"

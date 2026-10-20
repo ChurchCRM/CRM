@@ -1751,10 +1751,6 @@ msgid "Login Name"
 msgstr "Aanmeldingsnaam"
 
 #: 
-msgid "Manage Properties and Classifications"
-msgstr "Bestuur eiendomme en klassifikasies"
-
-#: 
 msgid "Manage Groups and Roles"
 msgstr "Bestuur groepe en rolle"
 
@@ -6092,10 +6088,6 @@ msgid "Manage Orphaned Files"
 msgstr "Bestuur Wees Lêers"
 
 #: 
-msgid "Menu options access"
-msgstr "Spyskaartopsies toegang"
-
-#: 
 msgid "Multiple Copies"
 msgstr "Veelvuldige Kopieë"
 
@@ -6202,10 +6194,6 @@ msgstr "Gebruik eksterne gereedskap (GPG, 7-Zip) om rugsteune te enkripteer voor
 #: 
 msgid "User authentication"
 msgstr "Gebruiker Verifikasie"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "Gebruiker moet Spyskaartopsies-toestemming hê"
 
 #: 
 msgid "What are Orphaned Files?"

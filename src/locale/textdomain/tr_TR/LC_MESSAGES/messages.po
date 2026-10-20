@@ -1751,10 +1751,6 @@ msgid "Login Name"
 msgstr "Kullanıcı adı"
 
 #: 
-msgid "Manage Properties and Classifications"
-msgstr "Özellikleri ve sınıflandırmaları yönetin"
-
-#: 
 msgid "Manage Groups and Roles"
 msgstr "Grupları ve rolleri yönetin"
 
@@ -6092,10 +6088,6 @@ msgid "Manage Orphaned Files"
 msgstr "Sahipsiz Dosyaları Yönet"
 
 #: 
-msgid "Menu options access"
-msgstr "Menü seçenekleri erişimi"
-
-#: 
 msgid "Multiple Copies"
 msgstr "Birden Fazla Kopya"
 
@@ -6202,10 +6194,6 @@ msgstr "Yedekleri saha dışında saklamadan önce şifrelemek için harici ara�
 #: 
 msgid "User authentication"
 msgstr "Kullanıcı doğrulama"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "Kullanıcı Menü Seçenekleri iznine sahip olmalıdır"
 
 #: 
 msgid "What are Orphaned Files?"

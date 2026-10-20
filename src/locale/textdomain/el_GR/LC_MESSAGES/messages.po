@@ -1751,10 +1751,6 @@ msgid "Login Name"
 msgstr "Ονομα σύνδεσης"
 
 #: 
-msgid "Manage Properties and Classifications"
-msgstr "Διαχείριση ιδιοτήτων και ταξινομήσεων"
-
-#: 
 msgid "Manage Groups and Roles"
 msgstr "Διαχείριση ομάδων και ρόλων"
 
@@ -6092,10 +6088,6 @@ msgid "Manage Orphaned Files"
 msgstr "Διαχείριση ορφανών αρχείων"
 
 #: 
-msgid "Menu options access"
-msgstr "Πρόσβαση στις επιλογές μενού"
-
-#: 
 msgid "Multiple Copies"
 msgstr "Πολλαπλά Αντίγραφα"
 
@@ -6202,10 +6194,6 @@ msgstr "Χρησιμοποιήστε εξωτερικά εργαλεία (GPG, 7
 #: 
 msgid "User authentication"
 msgstr "Ταυτοποίηση Χρήστη"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "Ο χρήστης πρέπει να έχει άδεια Menu Options"
 
 #: 
 msgid "What are Orphaned Files?"

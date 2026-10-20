@@ -1748,10 +1748,6 @@ msgid "Login Name"
 msgstr "Nom d'authentification"
 
 #: 
-msgid "Manage Properties and Classifications"
-msgstr "Administrer les propriétés et catégories"
-
-#: 
 msgid "Manage Groups and Roles"
 msgstr "Administrer des Groupes et des Rôles"
 
@@ -6089,10 +6085,6 @@ msgid "Manage Orphaned Files"
 msgstr "Gérer les fichiers orphelins"
 
 #: 
-msgid "Menu options access"
-msgstr "Accès aux options du menu"
-
-#: 
 msgid "Multiple Copies"
 msgstr "Plusieurs copies"
 
@@ -6199,10 +6191,6 @@ msgstr "Utilisez des outils externes (GPG, 7-Zip) pour chiffrer les sauvegardes 
 #: 
 msgid "User authentication"
 msgstr "Authentification de l'utilisateur"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "L'utilisateur doit avoir la permission Options du menu"
 
 #: 
 msgid "What are Orphaned Files?"

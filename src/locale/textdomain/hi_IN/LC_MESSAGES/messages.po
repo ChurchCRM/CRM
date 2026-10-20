@@ -1737,10 +1737,6 @@ msgid "Login Name"
 msgstr "लॉगिन नाम"
 
 #: 
-msgid "Manage Properties and Classifications"
-msgstr "गुण और वर्गीकरण प्रबंधित करें"
-
-#: 
 msgid "Manage Groups and Roles"
 msgstr "समूह और भूमिकाएं प्रबंधित करें"
 
@@ -6057,10 +6053,6 @@ msgid "Manage Orphaned Files"
 msgstr "अनाथ फ़ाइलें प्रबंधित करें"
 
 #: 
-msgid "Menu options access"
-msgstr "मेनू विकल्प एक्सेस"
-
-#: 
 msgid "Multiple Copies"
 msgstr "एकाधिक प्रतियाँ"
 
@@ -6167,10 +6159,6 @@ msgstr "ऑफ-साइट स्टोर करने से पहले ब
 #: 
 msgid "User authentication"
 msgstr "उपयोगकर्ता प्रमाणीकरण"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "उपयोगकर्ता के पास मेनू विकल्प अनुमति होनी चाहिए"
 
 #: 
 msgid "What are Orphaned Files?"

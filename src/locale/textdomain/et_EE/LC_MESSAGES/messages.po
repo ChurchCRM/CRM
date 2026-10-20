@@ -1751,10 +1751,6 @@ msgid "Login Name"
 msgstr "Kasutaja nimi"
 
 #: 
-msgid "Manage Properties and Classifications"
-msgstr "Halda atribuutie ja klassifikatsioone"
-
-#: 
 msgid "Manage Groups and Roles"
 msgstr "Halda rühmi ja rolle"
 
@@ -6091,10 +6087,6 @@ msgid "Manage Orphaned Files"
 msgstr "Halda vervatest faile"
 
 #: 
-msgid "Menu options access"
-msgstr "Menüü valikute juurdepääs"
-
-#: 
 msgid "Multiple Copies"
 msgstr "Mitu koopiat"
 
@@ -6201,10 +6193,6 @@ msgstr "Kasutage välist tööriista (GPG, 7-Zip) varukoopiaid krüptimiseks enn
 #: 
 msgid "User authentication"
 msgstr "Kasutaja autentimine"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "Kasutajal peavad olema menüü valikute õigused"
 
 #: 
 msgid "What are Orphaned Files?"
