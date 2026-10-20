@@ -14,14 +14,14 @@ REST endpoints in ChurchCRM use Slim 4 route files and the service layer ([`serv
 
 - Entry point: `src/api/index.php`
 - Non-admin APIs live under `/api/` in `src/api/routes/<domain>/` (finance routes use `FinanceRoleAuthMiddleware`)
-- Admin-only APIs live under `/admin/api/` (`src/admin/routes/api/`) or `/{module}/api/` (`src/{module}/routes/api/`) behind `AdminRoleAuthMiddleware`
+- Admin-only APIs live under `/admin/api/` (`src/admin/routes/api/`) behind `AdminRoleAuthMiddleware`. Every other API lives under `/api/` and carries its own role middleware (Edit Records, Manage Groups, Finance, …); a module gets no `/{module}/api/` of its own
 - Endpoints are kebab-case (`/download-latest-release`); GET reads, POST/PUT/DELETE change state
 - Create an endpoint for external clients, AJAX operations, or logic shared across pages. A page that needs a service method calls the service directly
 
 | API type | Location | Middleware |
 |----------|----------|-----------|
 | Role-based read/write | `src/api/routes/` | Role-specific (e.g. `FinanceRoleAuthMiddleware`) |
-| Admin CRUD | `src/admin/routes/api/` or `src/{module}/routes/api/` | `AdminRoleAuthMiddleware` |
+| Admin CRUD | `src/admin/routes/api/` | `AdminRoleAuthMiddleware` |
 
 Use inline closures for handlers: `$group->post('/path', function (Request $request, Response $response): Response { ... });`
 
@@ -390,7 +390,7 @@ $group->delete('/{id:[0-9]+}', function (Request $request, Response $response, a
 });
 ```
 
-Reference implementations: `src/api/routes/finance/finance-donation-funds.php` (service-delegated), `finance-fundraisers.php`, `src/api/routes/system/property-types.php`, `src/admin/routes/api/system/volunteer-opportunities.php` (inline count), `src/event/routes/types.php` (event type, blocked while events use it).
+Reference implementations: `src/api/routes/finance/finance-donation-funds.php` (service-delegated), `finance-fundraisers.php`, `src/admin/routes/api/system/property-types.php`, `src/admin/routes/api/system/volunteer-opportunities.php` (inline count), `src/event/routes/types.php` (event type, blocked while events use it).
 
 ### When cascade is correct
 
