@@ -1819,11 +1819,6 @@ msgstr "Logg Navn"
 
 #: 
 #, fuzzy
-msgid "Manage Properties and Classifications"
-msgstr "Administrere Egenskaper og klassifikasjoner"
-
-#: 
-#, fuzzy
 msgid "Manage Groups and Roles"
 msgstr "Administrere grupper og roller"
 
@@ -6162,10 +6157,6 @@ msgid "Manage Orphaned Files"
 msgstr "Administrer foreldreløse filer"
 
 #: 
-msgid "Menu options access"
-msgstr "Tilgang til menyvalg"
-
-#: 
 msgid "Multiple Copies"
 msgstr "Flere kopier"
 
@@ -6272,10 +6263,6 @@ msgstr "Bruk eksterne verktøy (GPG, 7-Zip) for å kryptere sikkerhetskopier fø
 #: 
 msgid "User authentication"
 msgstr "Brukerautentisering"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "Bruker må ha tillatelse for menyvalg"
 
 #: 
 msgid "What are Orphaned Files?"

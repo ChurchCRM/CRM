@@ -1751,10 +1751,6 @@ msgid "Login Name"
 msgstr "Логін"
 
 #: 
-msgid "Manage Properties and Classifications"
-msgstr "Управління властивостями та класифікаціями"
-
-#: 
 msgid "Manage Groups and Roles"
 msgstr "Управління групами та ролями"
 
@@ -6100,10 +6096,6 @@ msgid "Manage Orphaned Files"
 msgstr "Керування застарілими файлами"
 
 #: 
-msgid "Menu options access"
-msgstr "Доступ до опцій меню"
-
-#: 
 msgid "Multiple Copies"
 msgstr "Кілька копій"
 
@@ -6210,10 +6202,6 @@ msgstr "Використовуйте зовнішні інструменти (GP
 #: 
 msgid "User authentication"
 msgstr "Автентифікація користувача"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "Користувач повинен мати дозвіл на параметри меню"
 
 #: 
 msgid "What are Orphaned Files?"

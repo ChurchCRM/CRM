@@ -1734,10 +1734,6 @@ msgid "Login Name"
 msgstr "ログイン名"
 
 #: 
-msgid "Manage Properties and Classifications"
-msgstr "プロパティと分類を管理"
-
-#: 
 msgid "Manage Groups and Roles"
 msgstr "グループと役割を管理"
 
@@ -6054,10 +6050,6 @@ msgid "Manage Orphaned Files"
 msgstr "孤立ファイルの管理"
 
 #: 
-msgid "Menu options access"
-msgstr "メニューオプションアクセス"
-
-#: 
 msgid "Multiple Copies"
 msgstr "複数のコピー"
 
@@ -6164,10 +6156,6 @@ msgstr "外部ツール（GPG、7-Zip）を使用して、オフサイトに保�
 #: 
 msgid "User authentication"
 msgstr "ユーザー認証"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "ユーザーはメニューオプション権限が必要です"
 
 #: 
 msgid "What are Orphaned Files?"

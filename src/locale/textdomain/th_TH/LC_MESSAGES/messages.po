@@ -1746,10 +1746,6 @@ msgid "Login Name"
 msgstr "ชื่อผู้ใช้"
 
 #: 
-msgid "Manage Properties and Classifications"
-msgstr "จัดการคุณสมบัติและการจัดประเภท"
-
-#: 
 msgid "Manage Groups and Roles"
 msgstr "จัดการกลุ่มและบทบาท"
 
@@ -6066,10 +6062,6 @@ msgid "Manage Orphaned Files"
 msgstr "จัดการไฟล์กำพร้า"
 
 #: 
-msgid "Menu options access"
-msgstr "การเข้าถึงตัวเลือกเมนู"
-
-#: 
 msgid "Multiple Copies"
 msgstr "หลายสำเนา"
 
@@ -6176,10 +6168,6 @@ msgstr "ใช้เครื่องมือภายนอก (GPG, 7-Zip) �
 #: 
 msgid "User authentication"
 msgstr "การยืนยันตัวตนผู้ใช้"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "ผู้ใช้ต้องมีสิทธิ์ตัวเลือกเมนู"
 
 #: 
 msgid "What are Orphaned Files?"

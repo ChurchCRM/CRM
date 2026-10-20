@@ -1749,10 +1749,6 @@ msgid "Login Name"
 msgstr "اسم المستخدم"
 
 #: 
-msgid "Manage Properties and Classifications"
-msgstr "إدارة خصائص وتصنيفات"
-
-#: 
 msgid "Manage Groups and Roles"
 msgstr "إدارة المجموعات والأدوار"
 
@@ -6099,10 +6095,6 @@ msgid "Manage Orphaned Files"
 msgstr "إدارة الملفات اليتيمة"
 
 #: 
-msgid "Menu options access"
-msgstr "الوصول لخيارات القائمة"
-
-#: 
 msgid "Multiple Copies"
 msgstr "نسخ متعددة"
 
@@ -6209,10 +6201,6 @@ msgstr "استخدم أدوات خارجية (GPG و7-Zip) لتشفير النس
 #: 
 msgid "User authentication"
 msgstr "مصادقة المستخدم"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "يجب أن يكون للمستخدم إذن خيارات القائمة"
 
 #: 
 msgid "What are Orphaned Files?"

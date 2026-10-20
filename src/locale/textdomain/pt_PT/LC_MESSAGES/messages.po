@@ -1821,11 +1821,6 @@ msgstr "Nome de login"
 
 #: 
 #, fuzzy
-msgid "Manage Properties and Classifications"
-msgstr "Gerenciar propriedades e classifiações"
-
-#: 
-#, fuzzy
 msgid "Manage Groups and Roles"
 msgstr "Gerenciar Grupos e funções"
 
@@ -6211,10 +6206,6 @@ msgid "Manage Orphaned Files"
 msgstr "Gerenciar arquivos órfãos"
 
 #: 
-msgid "Menu options access"
-msgstr "Acesso a opções de menu"
-
-#: 
 msgid "Multiple Copies"
 msgstr "Cópias múltiplas"
 
@@ -6321,10 +6312,6 @@ msgstr "Use ferramentas externas (GPG, 7-Zip) para criptografar backups antes de
 #: 
 msgid "User authentication"
 msgstr "Autenticação do usuário"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "O usuário deve ter permissão de opções de menu"
 
 #: 
 msgid "What are Orphaned Files?"

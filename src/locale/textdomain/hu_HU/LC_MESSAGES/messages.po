@@ -1773,11 +1773,6 @@ msgstr "Bejelentkezés Név"
 
 #: 
 #, fuzzy
-msgid "Manage Properties and Classifications"
-msgstr "Kezelése Tulajdonságok és szempontok"
-
-#: 
-#, fuzzy
 msgid "Manage Groups and Roles"
 msgstr "Csoportok kezelése és Szerep"
 
@@ -6119,10 +6114,6 @@ msgid "Manage Orphaned Files"
 msgstr "Árva Fájlok Kezelése"
 
 #: 
-msgid "Menu options access"
-msgstr "Menübeállítások hozzáférése"
-
-#: 
 msgid "Multiple Copies"
 msgstr "Több Másolat"
 
@@ -6229,10 +6220,6 @@ msgstr "Külső eszközök (GPG, 7-Zip) segítségével titkosítsa a biztonság
 #: 
 msgid "User authentication"
 msgstr "Felhasználói Hitelesítés"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "A felhasználónak Menu Options engedéllyel kell rendelkeznie"
 
 #: 
 msgid "What are Orphaned Files?"
