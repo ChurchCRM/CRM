@@ -1247,7 +1247,6 @@
   "System Logs": "Системні журнали",
   "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported.": "Застосовувати політику безпеки вмісту (CSP) для захисту від міжсайтового скриптингу. Якщо вимкнено, про порушення CSP лише повідомляється.",
   "Enter event description...": "Введіть опис події...",
-  "Event ID": "ID події",
   "Enter note text here...": "Введіть текст нотатки тут...",
   "Note": "Нотатка",
   "No log files found.": "Файлів журналів не знайдено.",

@@ -1241,7 +1241,6 @@
   "System Logs": "系統日誌",
   "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported.": "強制執行內容安全策略 (CSP) 以幫助防止跨站腳本攻擊。停用時，僅報告 CSP 違規情況。",
   "Enter event description...": "輸入活動描述...",
-  "Event ID": "活動 ID",
   "Enter note text here...": "在此處輸入筆記文字...",
   "Note": "筆記",
   "No log files found.": "未找到日誌檔案。",

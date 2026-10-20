@@ -1243,7 +1243,6 @@
   "System Logs": "सिस्टम लॉग्स",
   "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported.": "क्रॉस-साइट स्क्रिप्टिंग से सुरक्षा के लिए कंटेंट सिक्योरिटी पॉलिसी (CSP) लागू करें। अक्षम होने पर, CSP उल्लंघन केवल रिपोर्ट किए जाते हैं।",
   "Enter event description...": "इवेंट विवरण दर्ज करें...",
-  "Event ID": "इवेंट आईडी",
   "Enter note text here...": "यहाँ नोट टेक्स्ट दर्ज करें...",
   "Note": "नोट",
   "No log files found.": "कोई लॉग फ़ाइल नहीं मिली।",

@@ -1243,7 +1243,6 @@
   "System Logs": "Rendszer naplók",
   "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported.": "A tartalombiztonsági irányelv (CSP) betartatása a weboldali parancsfájlok elleni védelem érdekében. Ha letiltja, a CSP megsértéseit csak jelentik.",
   "Enter event description...": "Adjon meg eseményleírást...",
-  "Event ID": "Esemény azonosítója",
   "Enter note text here...": "Adjon meg jegyzet szöveget itt...",
   "Note": "Megjegyzés",
   "No log files found.": "Nem találhatók naplófájlok.",

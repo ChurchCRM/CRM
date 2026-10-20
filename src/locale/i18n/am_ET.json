@@ -1243,7 +1243,6 @@
   "System Logs": "የሥርዓት መዝገቦች",
   "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported.": "ከ cross-site scripting ለመከላከል የይዘት ደህንነት ፖሊሲን (CSP) ያስገድዱ። ሲሰናከል የCSP ጥሰቶች ሪፖርት ብቻ ይደረጋሉ።",
   "Enter event description...": "የክስተት መግለጫ ያስገቡ...",
-  "Event ID": "የክስተት መለያ",
   "Enter note text here...": "የማስታወሻ ጽሁፍ እዚህ ያስገቡ...",
   "Note": "ማስታወሻ",
   "No log files found.": "ምንም የመዝገብ ፋይሎች አልተገኙም።",

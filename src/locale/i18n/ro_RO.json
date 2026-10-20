@@ -1245,7 +1245,6 @@
   "System Logs": "Jurnale sistem",
   "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported.": "Impuneți Politica de Securitate a Conținutului (CSP) pentru a ajuta la protejarea împotriva scripturilor cross-site. Când este dezactivată, încălcările CSP sunt doar raportate.",
   "Enter event description...": "Introduceți descrierea evenimentului...",
-  "Event ID": "ID Eveniment",
   "Enter note text here...": "Introduceți textul notei aici...",
   "Note": "Notă",
   "No log files found.": "Nu au fost găsite fișiere jurnal.",

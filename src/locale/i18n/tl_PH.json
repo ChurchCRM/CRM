@@ -1243,7 +1243,6 @@
   "System Logs": "Mga Log ng Sistema",
   "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported.": "Ipatupad ang Content Security Policy (CSP) para makatulong na protektahan laban sa cross-site scripting. Kapag hindi pinagana, ang mga paglabag sa CSP ay iniuulat lamang.",
   "Enter event description...": "Ipasok ang paglalarawan ng kaganapan...",
-  "Event ID": "ID ng Kaganapan",
   "Enter note text here...": "Ipasok ang teksto ng tala dito...",
   "Note": "Tala",
   "No log files found.": "Walang nakitang log file.",

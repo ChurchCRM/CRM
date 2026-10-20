@@ -1243,7 +1243,6 @@
   "System Logs": "Järjestelmälokit",
   "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported.": "Ota käyttöön Content Security Policy (CSP) suojautuaksesi cross-site scripting -hyökkäyksiltä. Kun poissa käytöstä, rikkomuksista vain raportoidaan.",
   "Enter event description...": "Syötä tapahtuman kuvaus...",
-  "Event ID": "Tapahtumatunnus",
   "Enter note text here...": "Kirjoita muistiinpano tähän...",
   "Note": "Muistiinpano",
   "No log files found.": "Lokitiedostoja ei löytynyt.",

@@ -5292,10 +5292,6 @@ msgid "Enter event description..."
 msgstr "इवेंट विवरण दर्ज करें..."
 
 #: 
-msgid "Event ID"
-msgstr "इवेंट आईडी"
-
-#: 
 msgid "Enter note text here..."
 msgstr "यहाँ नोट टेक्स्ट दर्ज करें..."
 

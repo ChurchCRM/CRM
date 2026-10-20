@@ -1243,7 +1243,6 @@
   "System Logs": "יומני מערכת",
   "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported.": "אכיפת מדיניות אבטחת תוכן (CSP) כדי לסייע בהגנה מפני התקפות XSS. כאשר האפשרות מושבתת, הפרות CSP מדווחות בלבד.",
   "Enter event description...": "הזן תיאור אירוע...",
-  "Event ID": "מזהה אירוע",
   "Enter note text here...": "הזן את הטקסט להערה כאן...",
   "Note": "הערה",
   "No log files found.": "לא נמצאו קבצי יומן.",

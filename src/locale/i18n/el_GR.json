@@ -1243,7 +1243,6 @@
   "System Logs": "Σημειώματα Συστήματος",
   "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported.": "Εφαρμόστε πολιτική ασφάλειας περιεχομένου (CSP) για προστασία από cross-site scripting. Όταν απενεργοποιηθεί, οι παραβιάσεις CSP αναφέρονται μόνο.",
   "Enter event description...": "Εισαγάγετε περιγραφή εκδήλωσης...",
-  "Event ID": "Εκδήλωση ID",
   "Enter note text here...": "Εισαγάγετε κείμενο σημείωσης εδώ...",
   "Note": "Σημείωση",
   "No log files found.": "Δεν βρέθηκαν αρχεία καταγραφής.",

@@ -5326,10 +5326,6 @@ msgid "Enter event description..."
 msgstr "أدخل وصف الحدث..."
 
 #: 
-msgid "Event ID"
-msgstr "معرف الحدث"
-
-#: 
 msgid "Enter note text here..."
 msgstr "أدخل نص الملاحظة هنا..."
 

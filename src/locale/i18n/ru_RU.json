@@ -1247,7 +1247,6 @@
   "System Logs": "Системные логи",
   "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported.": "Включить CSP для защиты от XSS. Если отключено, нарушения только логируются.",
   "Enter event description...": "Введите описание события...",
-  "Event ID": "ID события",
   "Enter note text here...": "Введите текст заметки...",
   "Note": "Заметка",
   "No log files found.": "Файлы логов не найдены.",

@@ -5304,10 +5304,6 @@ msgid "Enter event description..."
 msgstr "ఈవెంట్ వివరణను నమోదు చేయండి..."
 
 #: 
-msgid "Event ID"
-msgstr "ఈవెంట్ ఐడి"
-
-#: 
 msgid "Enter note text here..."
 msgstr "ఇక్కడ నోట్ టెక్స్ట్ నమోదు చేయండి..."
 

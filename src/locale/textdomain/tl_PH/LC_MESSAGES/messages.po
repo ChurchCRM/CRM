@@ -5293,10 +5293,6 @@ msgid "Enter event description..."
 msgstr "Ipasok ang paglalarawan ng kaganapan..."
 
 #: 
-msgid "Event ID"
-msgstr "ID ng Kaganapan"
-
-#: 
 msgid "Enter note text here..."
 msgstr "Ipasok ang teksto ng tala dito..."
 

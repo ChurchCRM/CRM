@@ -1245,7 +1245,6 @@
   "System Logs": "Sistemski dnevnici",
   "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported.": "Primijenite Politiku sigurnosti sadržaja (CSP) za zaštitu od cross-site scriptinga. Kada je onemogućeno, kršenja CSP-a se samo prijavljuju.",
   "Enter event description...": "Unesite opis događaja...",
-  "Event ID": "ID događaja",
   "Enter note text here...": "Unesite tekst bilješke ovdje...",
   "Note": "Bilješka",
   "No log files found.": "Nisu pronađene datoteke dnevnika.",

@@ -1243,7 +1243,6 @@
   "System Logs": "Kumbukumbu za Mfumo",
   "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported.": "Tekeleza Sera ya Usalama wa Maudhui (CSP) ili kusaidia kulinda dhidi ya mashambulizi ya mtandaoni. Ikiwa imezimwa, ukiukaji wa CSP utaripotiwa tu.",
   "Enter event description...": "Ingiza maelezo ya tukio...",
-  "Event ID": "ID ya Tukio",
   "Enter note text here...": "Andika ujumbe hapa...",
   "Note": "Ujumbe",
   "No log files found.": "Hakuna faili za kumbukumbu zilizopatikana.",

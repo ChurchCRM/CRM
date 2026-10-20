@@ -1243,7 +1243,6 @@
   "System Logs": "கணினி பதிவுகள்",
   "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported.": "குறுக்கு தள ஸ்கிரிப்டிங்கிலிருந்து பாதுகாக்க உள்ளடக்க பாதுகாப்பு கொள்கையை (CSP) செயல்படுத்தவும். முடக்கப்பட்டிருக்கும் போது, ​​CSP மீறல்கள் மட்டுமே புகாரளிக்கப்படும்.",
   "Enter event description...": "நிகழ்வு விளக்கத்தை உள்ளிடவும்...",
-  "Event ID": "நிகழ்வு ஐடி",
   "Enter note text here...": "குறிப்பு உரையை இங்கே உள்ளிடவும்...",
   "Note": "குறிப்பு",
   "No log files found.": "பதிவு கோப்புகள் எதுவும் கிடைக்கவில்லை.",

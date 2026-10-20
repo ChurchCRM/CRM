@@ -5354,10 +5354,6 @@ msgid "Enter event description..."
 msgstr "Adjon meg eseményleírást..."
 
 #: 
-msgid "Event ID"
-msgstr "Esemény azonosítója"
-
-#: 
 msgid "Enter note text here..."
 msgstr "Adjon meg jegyzet szöveget itt..."
 

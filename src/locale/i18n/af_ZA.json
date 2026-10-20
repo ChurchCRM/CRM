@@ -1243,7 +1243,6 @@
   "System Logs": "Stelsellogboeke",
   "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported.": "Dwing Inhoudsekuriteitbeleid (CSP) af om teen kruiswebwerf-skripting te beskerm. Wanneer uitgeskakel word, word CSP-skendinge slegs gerapporteer.",
   "Enter event description...": "Voer gebeurtenisbeskrywing in...",
-  "Event ID": "Gebeurtenis-ID",
   "Enter note text here...": "Voer notaateks hier in...",
   "Note": "Nota",
   "No log files found.": "Geen logboeklêers gevind.",

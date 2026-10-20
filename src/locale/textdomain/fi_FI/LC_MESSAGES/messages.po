@@ -5294,10 +5294,6 @@ msgid "Enter event description..."
 msgstr "Syötä tapahtuman kuvaus..."
 
 #: 
-msgid "Event ID"
-msgstr "Tapahtumatunnus"
-
-#: 
 msgid "Enter note text here..."
 msgstr "Kirjoita muistiinpano tähän..."
 
