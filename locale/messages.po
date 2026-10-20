@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-20 10:31+0000\n"
+"POT-Creation-Date: 2026-10-20 13:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -9220,9 +9220,6 @@ msgstr ""
 msgid "Manage Orphaned Files"
 msgstr ""
 
-msgid "Manage Properties and Classifications"
-msgstr ""
-
 msgid "Manage SMS/text messaging tools and settings"
 msgstr ""
 
@@ -9518,9 +9515,6 @@ msgid "Menu name must be 50 characters or less"
 msgstr ""
 
 msgid "Menu name must be at least 2 characters"
-msgstr ""
-
-msgid "Menu options access"
 msgstr ""
 
 msgid "Message"
@@ -16760,9 +16754,6 @@ msgid "User must have Email permission"
 msgstr ""
 
 msgid "User must have Manage Groups permission"
-msgstr ""
-
-msgid "User must have Menu Options permission"
 msgstr ""
 
 msgid "User must have Notes permission"
