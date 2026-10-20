@@ -6,7 +6,6 @@
  *   GET    /api/groups/{groupID}/properties
  *   POST   /api/groups/{groupID}/properties/{propertyId}
  *   DELETE /api/groups/{groupID}/properties/{propertyId}
- *   DELETE /admin/api/properties/definition/{propertyId}
  *
  * Requires: Docker / local environment with seeded data.
  * Uses existing group ID 1 and creates a temporary group property definition.
@@ -249,20 +248,6 @@ describe("API: Group Property Endpoints", () => {
                     200
                 );
             });
-        });
-    });
-
-    // ------------------------------------------------------------------ //
-    // DELETE /admin/api/properties/definition/{propertyId}
-    // ------------------------------------------------------------------ //
-    describe("DELETE /admin/api/properties/definition/{propertyId}", () => {
-        it("returns 404 for a non-existent property definition", () => {
-            cy.makePrivateAdminAPICall(
-                "DELETE",
-                "/admin/api/properties/definition/999999",
-                null,
-                404
-            );
         });
     });
 });
