@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 21:35+0000\n"
+"POT-Creation-Date: 2026-10-20 10:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -5732,9 +5732,6 @@ msgid "Event Details"
 msgstr ""
 
 msgid "Event Has Ended"
-msgstr ""
-
-msgid "Event ID"
 msgstr ""
 
 msgid "Event Log severity to write, used by ORM and App Logs"
