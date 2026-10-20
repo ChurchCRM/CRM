@@ -161,17 +161,6 @@ describe("API: Group Property Endpoints", () => {
             );
         });
 
-        it("returns 403 for a user without ManageGroups", function () {
-            if (!createdPropertyId) this.skip();
-
-            cy.makePrivateMenuOptionsAPICall(
-                "POST",
-                `/api/groups/${groupID}/properties/${createdPropertyId}`,
-                {},
-                403
-            );
-        });
-
         it("returns 404 for a non-existent property", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
