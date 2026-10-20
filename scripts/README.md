@@ -7,8 +7,12 @@ This folder contains Node.js and shell scripts used for building, packaging, and
 
 | Script | Purpose | Usage |
 |--------|---------|-------|
+| `build.js` | Production build: Composer and webpack in parallel, then signatures | `npm run build` |
+| `composer-install.js` | Install production Composer dependencies; skipped when `src/vendor` matches `composer.lock` | `npm run composer:install` |
+| `clean.js` | Remove dependencies, build output, and logs (`--logs`: logs only) | `npm run clean`, `npm run logs:clear` |
+| `docker-config.js` | Put `src/Include/Config.php` in place for a docker profile (`--remove`: delete it) | Called by the `docker:*:start` scripts |
 | `generate-signatures-node.js` | Generate file integrity checksums | `npm run build:signatures` |
-| `validate-php-syntax.js` | Validate PHP syntax in build | `npm run build:php:validate` |
+| `validate-php-syntax.js` | Validate PHP syntax of changed files | `npm run build:php:validate` |
 | `package-release.js` | Create release ZIP package | `npm run package` |
 | `validate-ui-conventions.js` | Keep styling in utilities, page partials and stock Tabler | `npm run lint:ui` (part of `npm run lint`) |
 | `locale-check.js` | Lint locale files for issues | `npm run locale:lint` |
