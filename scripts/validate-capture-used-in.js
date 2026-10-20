@@ -9,7 +9,7 @@
  * `usedIn` in a merged PR, then delete it. Rules:
  * .agents/skills/churchcrm/marketing-visuals-pipeline.md "Marking used captures".
  *
- *   npm run lint:capture-used-in
+ *   npm run lint
  *   CAPTURE_BASE_REF=origin/master node scripts/validate-capture-used-in.js
  */
 

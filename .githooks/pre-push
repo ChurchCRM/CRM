@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #
-# ChurchCRM pre-push hook — runs Biome lint before any push.
+# ChurchCRM pre-push hook — runs `npm run lint` (Biome format and lint, tsc,
+# UI/icon/Cypress/SQL conventions, locale script tests) before any push.
 #
 # Enabled automatically by `npm install` (the `prepare` script in
 # package.json points core.hooksPath at this directory). To bypass for
@@ -19,15 +20,15 @@ if [ ! -f package.json ]; then
     exit 0
 fi
 
-echo "→ pre-push: running Biome lint (npm run lint)…"
+echo "→ pre-push: running lint (npm run lint)…"
 
 if ! npm run --silent lint; then
     echo ""
-    echo "✘ pre-push: Biome lint failed."
-    echo "  Fix the errors above (or run \`npm run lint:fix\`) and try again."
+    echo "✘ pre-push: lint failed."
+    echo "  Fix the errors above (or run \`npm run lint:fix\` for formatting) and try again."
     echo "  To bypass in an emergency: git push --no-verify (justify in PR)."
     exit 1
 fi
 
-echo "✓ pre-push: Biome lint passed."
+echo "✓ pre-push: lint passed."
 exit 0

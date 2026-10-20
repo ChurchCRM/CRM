@@ -10,7 +10,7 @@
  * docker-admin.config.ts carried a nofinance.api.key that existed nowhere,
  * turning every would-be 403 assertion in that suite into a 401.
  *
- * Run: `npm run lint:cypress-api-keys`
+ * Run: `npm run lint`
  */
 
 const fs = require('node:fs');

@@ -84,7 +84,7 @@ The Tabler icon webfont is not shipped, so `ti` / `ti-*` classes render blank. U
 
 ## Guards
 
-`npm run lint:icons` runs both checks (also in the `code-quality` CI job):
+`npm run lint` runs both checks (also in the `code-quality` CI job):
 
 | Script | Rejects |
 |--------|---------|
@@ -128,7 +128,7 @@ render: (data, type, row) =>
 - [ ] Variants are `fa-solid`, `fa-regular` or `fa-brands`
 - [ ] Each icon has a variant class and an icon class
 - [ ] Spacing uses `me-*` / `ms-*`
-- [ ] `npm run lint:icons` passes
+- [ ] `npm run lint` passes
 - [ ] Dynamic values are escaped
 - [ ] Decorative icons have `aria-hidden="true"`; icon-only buttons have `aria-label`
 

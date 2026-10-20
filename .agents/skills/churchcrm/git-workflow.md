@@ -59,6 +59,15 @@ GitHub-only service, clean-room environment, or multi-runtime matrix.
 When changing CI, the PR description must state why each newly added CI-only
 check cannot run meaningfully before push.
 
+### One lint entry point
+
+`npm run lint` runs `scripts/lint.js`, which runs every check in parallel. The pre-push hook and the `code-quality.yml` job call it and nothing else.
+
+- Add a check as one entry in the `checks` map in `scripts/lint.js`. Do not add `lint:*` or `validate:*` npm scripts, and do not add a separate CI step for it. `lint:fix` is the only other lint script.
+- A check must take a few seconds, need no Docker, database, or network, and print its findings to stdout or stderr with a non-zero exit.
+- The pre-commit hook runs only checks scoped to staged files (`locale-check --staged`, the changed-file PHP validators). Whole-repo checks go in `scripts/lint.js`.
+- A check that always exits 0 is not a check. Test a new one against a bad input before you add it.
+
 ## After push
 
 If the PR work used a `git worktree` and the session has been idle 10 minutes after the push (no review threads or CI you were asked to watch), ask once whether to remove it (`git worktree remove <path>`, then delete the local branch if merged). Never remove it unasked.
