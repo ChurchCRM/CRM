@@ -35,7 +35,7 @@ On release publish, `release-bookkeeping.yml` job `publish-visuals` starts `Publ
 
 The capture spec ships in the same PR as the UI change. Images serve your own check and stay uncommitted.
 
-1. Make a `git worktree` at the PR commit, symlink `node_modules`, then run `composer:install`, `build:js`, `build:signatures`
+1. Make a `git worktree` at the PR commit, symlink `node_modules`, then run `composer:install`, `build:webpack`, `build:signatures`
 2. Start the pipeline's own stack: `COMPOSE_PROJECT_NAME=crm-pw-capture npm run docker:ci:new-system:start`. It uses ports 8081 and 3308 (separate from the dev and test stacks) and removes `src/Include/Config.php`, so it runs in the worktree and never in the main checkout
 3. First run: `BROWSER_CHANNEL=chrome CHURCHCRM_LOCALE=en npm run marketing:screenshots -- --grep "<capture-name>"`. After a UI tweak, re-run only the capture on the seeded instance: `-- --project=screenshots --no-deps --grep "<capture-name>"`
 4. Open the desktop, tablet and mobile PNGs, fix anything cramped, re-run
