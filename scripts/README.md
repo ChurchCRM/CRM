@@ -12,6 +12,7 @@ This folder contains Node.js and shell scripts used for building, packaging, and
 | `composer-install.js` | Install production Composer dependencies; skipped when `src/vendor` matches `composer.lock` | `npm run composer:install` |
 | `clean.js` | Remove dependencies, build output, and logs (`--logs`: logs only) | `npm run clean`, `npm run logs:clear` |
 | `docker-config.js` | Put `src/Include/Config.php` in place for a docker profile (`--remove`: delete it) | Called by the `docker:*:start` scripts |
+| `sync-supported-databases.js` | Rewrite the compose images, nightly matrix and setup text from `supported-databases.json` (`--check` fails when one is stale) | `node scripts/sync-supported-databases.js` |
 | `generate-signatures-node.js` | Generate file integrity checksums | `npm run build:signatures` |
 | `validate-php-syntax.js` | Validate PHP syntax of changed files | `npm run build:php:validate` |
 | `package-release.js` | Create release ZIP package | `npm run package` |

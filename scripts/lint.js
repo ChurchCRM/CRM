@@ -40,6 +40,7 @@ const checks = {
     'capture used-in': script('validate-capture-used-in.js'),
     'seed charsets': script('validate-seed-charsets.js'),
     'mysql upgrade syntax': script('validate-mysql-upgrade-syntax.js'),
+    'supported databases': script('sync-supported-databases.js', '--check'),
     'locale script tests': [node, ['--test', ...localeTests]],
     'tooling script tests': [node, ['--test', ...scriptTests]],
 };
