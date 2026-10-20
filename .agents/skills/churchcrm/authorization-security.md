@@ -37,7 +37,19 @@ Read is default: `canReadFamily` / `canReadPerson` return true. Pass the real ID
 
 App-level middleware = lowest **read** role. Add the write middleware on POST routes. A module-level AddEvents gate 403s the calendar for View-only users.
 
-`Menu.php` visibility must match the route middleware. Hidden menu + open route is a hole. Visible menu + 403 is a bug.
+A page, the API it calls and every menu entry, dashboard button and action-menu item that leads to it use the same permission. A hidden control over an open route is a hole. A visible control that ends in 403 is a bug.
+
+Apply a route group's role middleware once, on the group, so a denied user gets 403 before any entity middleware answers 404.
+
+## What each permission covers
+
+- Work on a person or family (including assigning properties) needs Edit Records. Work on a group needs Manage Groups.
+- Defining shared catalogs (properties, property types, list options) is admin-only.
+- Report, letter and label pages follow ordinary staff access (the entry gate above). Bulk extraction is a separate decision in `docs/decisions/0002-rbac-redesign.md`.
+
+## Retiring a permission
+
+Move each caller to the permission that matches its data, drop the flag from the schema in the release's upgrade script (`db-schema-migration.md`), and write a release note telling administrators which users lose access and what to grant first. A dropped flag cannot be recovered from the database.
 
 ## PR Permission Audit — required before merge
 
@@ -46,4 +58,4 @@ If the diff touches `User.php`, `AuthMiddleware`, `PageInit.php`, `Menu.php`, fa
 1. EditSelf-exclusive cannot reach internal pages.
 2. Zero-permission user can read people/family and cannot write.
 3. Family profile / geolocation / notes stay behind `canViewFamily()`.
-4. Menu and middleware agree.
+4. Menu entries, dashboard buttons and action menus agree with the route middleware.
