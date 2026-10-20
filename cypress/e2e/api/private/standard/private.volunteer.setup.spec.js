@@ -933,7 +933,7 @@ describe("API Private Volunteer v2 core schema", () => {
             });
 
             // CHECK constraints (MariaDB 10.2.1+ / MySQL 8.0.16+ enforce them; the
-            // CI databases are MariaDB 10.11 and mysql:latest). Error codes differ:
+            // CI runs MariaDB and the nightly runs MySQL). Error codes differ:
             // MariaDB 4025 ER_CONSTRAINT_FAILED, MySQL 3819 ER_CHECK_CONSTRAINT_VIOLATED.
             const CHECK_ERRNOS = [4025, 3819];
 

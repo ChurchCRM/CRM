@@ -7,6 +7,7 @@ This folder contains Node.js and shell scripts used for building, packaging, and
 
 | Script | Purpose | Usage |
 |--------|---------|-------|
+| `sync-supported-databases.js` | Rewrite the compose images, nightly matrix and setup text from `supported-databases.json` (`--check` fails when one is stale) | `node scripts/sync-supported-databases.js` |
 | `generate-signatures-node.js` | Generate file integrity checksums | `npm run build:signatures` |
 | `validate-php-syntax.js` | Validate PHP syntax in build | `npm run build:php:validate` |
 | `package-release.js` | Create release ZIP package | `npm run package` |

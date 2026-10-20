@@ -50,7 +50,7 @@
         "locale:test": "node --test locale/scripts/lib/*.test.js",
         "locale:upload:missing": "node locale/scripts/poeditor-upload-missing.js",
         "locale:upload:terms": "node locale/scripts/poeditor-upload-terms.js",
-        "lint": "npm run lint:biome && npm run lint:icons && npm run lint:ui && npm run lint:actions-pinned && npm run lint:cypress-db-access && npm run lint:capture-used-in",
+        "lint": "npm run lint:biome && npm run lint:icons && npm run lint:ui && npm run lint:actions-pinned && npm run lint:cypress-db-access && npm run lint:capture-used-in && node scripts/sync-supported-databases.js --check && node --test scripts/supported-databases.test.js",
         "lint:actions-pinned": "node scripts/validate-actions-pinned.js",
         "lint:biome": "node scripts/ensure-biome.js && biome check webpack/",
         "lint:ui": "node scripts/validate-ui-conventions.js",
