@@ -10980,7 +10980,7 @@ paths:
     post:
       tags:
         - Finance
-      summary: 'Create a new donation fund (Finance role required)'
+      summary: 'Create a new donation fund (Finance role or Admin required)'
       operationId: createDonationFundAdmin
       requestBody:
         required: true
@@ -11029,7 +11029,7 @@ paths:
     put:
       tags:
         - Finance
-      summary: 'Update a donation fund (Finance role required)'
+      summary: 'Update a donation fund (Finance role or Admin required)'
       operationId: updateDonationFundAdmin
       parameters:
         -
@@ -11076,7 +11076,7 @@ paths:
     delete:
       tags:
         - Finance
-      summary: 'Delete a donation fund (Finance role required)'
+      summary: 'Delete a donation fund (Finance role or Admin required)'
       operationId: deleteDonationFundAdmin
       parameters:
         -
@@ -11104,7 +11104,7 @@ paths:
     patch:
       tags:
         - Finance
-      summary: 'Move a donation fund up or down in display order (Finance role required)'
+      summary: 'Move a donation fund up or down in display order (Finance role or Admin required)'
       operationId: reorderDonationFundAdmin
       parameters:
         -
