@@ -1241,7 +1241,6 @@
   "System Logs": "Nhật ký hệ thống",
   "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported.": "Áp dụng Chính sách Bảo mật Nội dung (CSP) để bảo vệ khỏi tấn công XSS. Khi tắt, các vi phạm chỉ được ghi nhận lại.",
   "Enter event description...": "Nhập mô tả sự kiện...",
-  "Event ID": "Mã sự kiện",
   "Enter note text here...": "Nhập nội dung ghi chú tại đây...",
   "Note": "Ghi chú",
   "No log files found.": "Không tìm thấy tệp nhật ký nào.",

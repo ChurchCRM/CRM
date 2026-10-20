@@ -1243,7 +1243,6 @@
   "System Logs": "Regjistrat e sistemit",
   "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported.": "Zbato politikën e sigurisë së përmbajtjes (CSP) për të ndihmuar në mbrojtjen kundër skriptimit ndër-faqeve. Kur çaktivizohet, shkeljet e CSP vetëm raportohen.",
   "Enter event description...": "Vendosni përshkrimin e ngjarjes...",
-  "Event ID": "ID e ngjarjes",
   "Enter note text here...": "Vendosni tekstin e shënimit këtu...",
   "Note": "Shënim",
   "No log files found.": "Nuk u gjetën skedarë regjistri.",

@@ -5299,10 +5299,6 @@ msgid "Enter event description..."
 msgstr "Zadajte popis udalosti..."
 
 #: 
-msgid "Event ID"
-msgstr "ID udalosti"
-
-#: 
 msgid "Enter note text here..."
 msgstr "Zadajte text poznámky..."
 

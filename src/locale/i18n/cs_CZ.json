@@ -1245,7 +1245,6 @@
   "System Logs": "Systémové protokoly",
   "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported.": "Vynutit zásady zabezpečení obsahu (CSP), které pomáhají chránit před cross-site scriptingem. Pokud jsou zásady CSP zakázány, porušení zásad se pouze hlásí.",
   "Enter event description...": "Zadejte popis události...",
-  "Event ID": "ID události",
   "Enter note text here...": "Sem zadejte text poznámky...",
   "Note": "Poznámka",
   "No log files found.": "Nenalezeny žádné protokoly.",

@@ -1243,7 +1243,6 @@
   "System Logs": "Süsteemi logid",
   "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported.": "Jõustage Content Security Policy (CSP) ristveebiliste skriptimise vastu kaitseks. Kui see on keelatud, teatakse CSP rikkumistest ainult.",
   "Enter event description...": "Sisestage sündmuse kirjeldus...",
-  "Event ID": "Sündmuse ID",
   "Enter note text here...": "Sisestage märkuse tekst siia...",
   "Note": "Märkus",
   "No log files found.": "Logifaile ei leitud.",

@@ -1241,7 +1241,6 @@
   "System Logs": "Log Sistem",
   "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported.": "Gunakan Content Security Policy (CSP) untuk membantu melindungi dari XSS Scripting. Jika non-aktif, masalah CSP hanya dicatat.",
   "Enter event description...": "Masukkan deskripsi event...",
-  "Event ID": "ID Event",
   "Enter note text here...": "Masukkan catatan...",
   "Note": "Catatan",
   "No log files found.": "Log kosong.",

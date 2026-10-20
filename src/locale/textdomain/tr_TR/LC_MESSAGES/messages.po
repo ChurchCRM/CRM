@@ -5327,10 +5327,6 @@ msgid "Enter event description..."
 msgstr "Etkinlik açıklaması girin..."
 
 #: 
-msgid "Event ID"
-msgstr "Etkinlik Kimliği (ID)"
-
-#: 
 msgid "Enter note text here..."
 msgstr "Not metnini buraya girin..."
 

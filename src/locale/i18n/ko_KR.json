@@ -1241,7 +1241,6 @@
   "System Logs": "시스템 로그",
   "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported.": "크로스 사이트 스크립팅으로부터 보호하기 위해 콘텐츠 보안 정책(CSP)을 적용합니다. 비활성화 시 CSP 위반 사항만 보고됩니다.",
   "Enter event description...": "행사 설명을 입력하세요...",
-  "Event ID": "행사 ID",
   "Enter note text here...": "여기에 메모를 입력하세요...",
   "Note": "메모",
   "No log files found.": "로그 파일을 찾을 수 없습니다.",

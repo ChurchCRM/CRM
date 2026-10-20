@@ -1243,7 +1243,6 @@
   "System Logs": "Systemprotokolle",
   "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported.": "Content Security Policy (CSP) erzwingen, um vor böswilligen Skripten zu schützen. Wenn deaktiviert, werden CSP-Verstöße nur gemeldet.",
   "Enter event description...": "Ereignisbeschreibung eingeben...",
-  "Event ID": "Ereignis-ID",
   "Enter note text here...": "Notiztext hier eingeben...",
   "Note": "Notiz",
   "No log files found.": "Keine Protokolldateien gefunden.",

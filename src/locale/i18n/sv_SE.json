@@ -1243,7 +1243,6 @@
   "System Logs": "Systemloggar",
   "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported.": "Framtvinga Content Security Policy (CSP) för att skydda mot cross-site scripting. När det är inaktiverat rapporteras endast CSP-överträdelser.",
   "Enter event description...": "Ange händelsebeskrivning...",
-  "Event ID": "Händelse-ID",
   "Enter note text here...": "Ange anteckningstext här...",
   "Note": "Anteckning",
   "No log files found.": "Inga loggfiler hittades.",

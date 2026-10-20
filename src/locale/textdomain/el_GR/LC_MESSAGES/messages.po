@@ -5327,10 +5327,6 @@ msgid "Enter event description..."
 msgstr "Εισαγάγετε περιγραφή εκδήλωσης..."
 
 #: 
-msgid "Event ID"
-msgstr "Εκδήλωση ID"
-
-#: 
 msgid "Enter note text here..."
 msgstr "Εισαγάγετε κείμενο σημείωσης εδώ..."
 

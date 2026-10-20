@@ -1241,7 +1241,6 @@
   "System Logs": "บันทึกระบบ",
   "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported.": "บังคับใช้นโยบายความปลอดภัยเนื้อหา (CSP) เพื่อช่วยป้องกัน cross-site scripting เมื่อปิดใช้งาน การละเมิด CSP จะถูกรายงานเท่านั้น",
   "Enter event description...": "ป้อนคำอธิบายกิจกรรม...",
-  "Event ID": "ID กิจกรรม",
   "Enter note text here...": "ป้อนข้อความบันทึกที่นี่...",
   "Note": "บันทึก",
   "No log files found.": "ไม่พบไฟล์บันทึก",

@@ -1243,7 +1243,6 @@
   "System Logs": "Sistem Günlükleri",
   "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported.": "Siteler arası betik çalıştırmaya (XSS) karşı korunmaya yardımcı olmak için İçerik Güvenlik Politikası'nı (CSP) zorunlu kılın. Devre dışı bırakıldığında, CSP ihlalleri yalnızca raporlanır.",
   "Enter event description...": "Etkinlik açıklaması girin...",
-  "Event ID": "Etkinlik Kimliği (ID)",
   "Enter note text here...": "Not metnini buraya girin...",
   "Note": "Not",
   "No log files found.": "Günlük dosyası bulunamadı.",

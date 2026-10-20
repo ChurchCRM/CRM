@@ -1251,7 +1251,6 @@
   "System Logs": "سجلات النظام",
   "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported.": "تطبيق سياسة أمان المحتوى (CSP) للمساعدة في الحماية ضد البرمجة النصية عبر المواقع. عند التعطيل، يتم الإبلاغ عن انتهاكات CSP فقط.",
   "Enter event description...": "أدخل وصف الحدث...",
-  "Event ID": "معرف الحدث",
   "Enter note text here...": "أدخل نص الملاحظة هنا...",
   "Note": "ملاحظة",
   "No log files found.": "لم يتم العثور على ملفات السجل.",

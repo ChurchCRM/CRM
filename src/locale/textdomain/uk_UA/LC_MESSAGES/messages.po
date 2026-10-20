@@ -5331,10 +5331,6 @@ msgid "Enter event description..."
 msgstr "Введіть опис події..."
 
 #: 
-msgid "Event ID"
-msgstr "ID події"
-
-#: 
 msgid "Enter note text here..."
 msgstr "Введіть текст нотатки тут..."
 

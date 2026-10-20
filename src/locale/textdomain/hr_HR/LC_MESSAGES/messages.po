@@ -5293,10 +5293,6 @@ msgid "Enter event description..."
 msgstr "Unesite opis događaja..."
 
 #: 
-msgid "Event ID"
-msgstr "ID događaja"
-
-#: 
 msgid "Enter note text here..."
 msgstr "Unesite tekst bilješke ovdje..."
 

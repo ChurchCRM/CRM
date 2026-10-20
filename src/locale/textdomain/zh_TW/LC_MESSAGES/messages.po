@@ -5469,10 +5469,6 @@ msgid "Enter event description..."
 msgstr "輸入活動描述..."
 
 #: 
-msgid "Event ID"
-msgstr "活動 ID"
-
-#: 
 msgid "Enter note text here..."
 msgstr "在此處輸入筆記文字..."
 

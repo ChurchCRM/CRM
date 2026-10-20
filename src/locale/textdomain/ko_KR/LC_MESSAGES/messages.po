@@ -5319,10 +5319,6 @@ msgid "Enter event description..."
 msgstr "행사 설명을 입력하세요..."
 
 #: 
-msgid "Event ID"
-msgstr "행사 ID"
-
-#: 
 msgid "Enter note text here..."
 msgstr "여기에 메모를 입력하세요..."
 

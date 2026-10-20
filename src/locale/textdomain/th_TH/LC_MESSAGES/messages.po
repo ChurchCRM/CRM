@@ -5303,10 +5303,6 @@ msgid "Enter event description..."
 msgstr "ป้อนคำอธิบายกิจกรรม..."
 
 #: 
-msgid "Event ID"
-msgstr "ID กิจกรรม"
-
-#: 
 msgid "Enter note text here..."
 msgstr "ป้อนข้อความบันทึกที่นี่..."
 

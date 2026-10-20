@@ -1243,7 +1243,6 @@
   "System Logs": "Journaux système",
   "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported.": "Appliquez la politique de sécurité du contenu (CSP) pour vous protéger contre les attaques XSS. Lorsqu'elle est désactivée, seules les violations de la CSP sont signalées.",
   "Enter event description...": "Entrez la description de l'événement...",
-  "Event ID": "ID d'événement",
   "Enter note text here...": "Saisissez votre texte ici...",
   "Note": "Note",
   "No log files found.": "Aucun fichier journal trouvé.",

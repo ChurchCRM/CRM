@@ -5326,10 +5326,6 @@ msgid "Enter event description..."
 msgstr "நிகழ்வு விளக்கத்தை உள்ளிடவும்..."
 
 #: 
-msgid "Event ID"
-msgstr "நிகழ்வு ஐடி"
-
-#: 
 msgid "Enter note text here..."
 msgstr "குறிப்பு உரையை இங்கே உள்ளிடவும்..."
 

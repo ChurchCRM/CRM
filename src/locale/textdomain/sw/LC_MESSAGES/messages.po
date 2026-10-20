@@ -5323,10 +5323,6 @@ msgid "Enter event description..."
 msgstr "Ingiza maelezo ya tukio..."
 
 #: 
-msgid "Event ID"
-msgstr "ID ya Tukio"
-
-#: 
 msgid "Enter note text here..."
 msgstr "Andika ujumbe hapa..."
 
