@@ -28,6 +28,14 @@ export const FINANCE_GATES = [
         deny,
     },
     {
+        id: "finance-payments-api",
+        audience: "standard",
+        classification: "finance",
+        api: { method: "GET", url: "/api/payments/" },
+        allow,
+        deny,
+    },
+    {
         id: "finance-deposits-api",
         audience: "standard",
         classification: "finance",
