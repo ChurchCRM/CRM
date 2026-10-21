@@ -126,9 +126,13 @@ test("Caddy metadata denial wins over a catch-all fallback", async (t) => {
           await new Promise((done) => setTimeout(done, 100));
         }
         assert.ok(ready, "Caddy test server must be ready");
-        for (const path of matcher.split(/\s+/).slice(2)) {
-          const response = await fetch(`http://127.0.0.1:${port}${path}`);
-          assert.equal(response.status, 404, path);
+        // Exercise only fixed expected paths; never construct a network URL from
+        // text read from the Caddyfile. The matcher itself is checked above.
+        const pathPrefix = matcher === subMatcher ? "/churchcrm" : "";
+        for (const path of privatePaths) {
+          const target = `${pathPrefix}${path}`;
+          const response = await fetch(`http://127.0.0.1:${port}${target}`);
+          assert.equal(response.status, 404, target);
         }
         const publicResponse = await fetch(`http://127.0.0.1:${port}/public.txt`);
         assert.equal(publicResponse.status, 200);
