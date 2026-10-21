@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-20 13:59+0000\n"
+"POT-Creation-Date: 2026-10-20 18:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15151,6 +15151,9 @@ msgid "The events could not be deleted"
 msgstr ""
 
 msgid "The events could not be staffed"
+msgstr ""
+
+msgid "The geocoding service did not answer — try again later"
 msgstr ""
 
 msgid "The grades already use these names."
