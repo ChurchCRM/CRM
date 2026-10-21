@@ -41,7 +41,7 @@ use Slim\Routing\RouteCollectorProxy;
  *                 @OA\Property(property="status", type="string", enum={"sent","failed","skipped","queued","sending"}, description="queued: waiting to be sent (a retry keeps the last error); sending: a run is sending it now"),
  *                 @OA\Property(property="statusLabel", type="string"),
  *                 @OA\Property(property="attempts", type="integer", description="Delivery attempts so far"),
- *                 @OA\Property(property="error", type="string", nullable=true),
+ *                 @OA\Property(property="error", type="string", nullable=true, description="The mail server's error; null for callers without admin rights"),
  *                 @OA\Property(property="dateSent", type="string"),
  *                 @OA\Property(property="hasBody", type="boolean"),
  *                 @OA\Property(property="recipientName", type="string", nullable=true, description="Email log only: the person, or else the family, the address belonged to"),
@@ -78,13 +78,16 @@ $app->group('/email/log', function (RouteCollectorProxy $group): void {
             $page = (int) ($q['page'] ?? 1);
             $limit = (int) ($q['limit'] ?? EmailLogService::DEFAULT_PAGE_SIZE);
             $service = new EmailLogService();
+            $forViewer = static fn (array $log): array => array_replace($log, [
+                'rows' => array_map(static fn (array $row): array => $service->forViewer($row, $user->isAdmin()), $log['rows']),
+            ]);
 
             if ($personId > 0) {
                 if (!$user->canReadPerson($personId)) {
                     return SlimUtils::renderErrorJSON($response, gettext('Not allowed to view this person'), [], 403, null, $request);
                 }
 
-                return SlimUtils::renderJSON($response, $service->getForPerson($personId, $page, $limit));
+                return SlimUtils::renderJSON($response, $forViewer($service->getForPerson($personId, $page, $limit)));
             }
             if ($familyId > 0) {
                 if (!$user->canReadFamily($familyId)) {
@@ -98,7 +101,7 @@ $app->group('/email/log', function (RouteCollectorProxy $group): void {
                     }
                 }
 
-                return SlimUtils::renderJSON($response, $service->getForFamily($familyId, $memberIds, $page, $limit));
+                return SlimUtils::renderJSON($response, $forViewer($service->getForFamily($familyId, $memberIds, $page, $limit)));
             }
             if (!$user->isEmailEnabled()) {
                 return SlimUtils::renderErrorJSON($response, gettext('User must have Email permission'), [], 403, null, $request);
@@ -126,12 +129,12 @@ $app->group('/email/log', function (RouteCollectorProxy $group): void {
                 return SlimUtils::renderErrorJSON($response, gettext('Administrator permission required'), [], 403, null, $request);
             }
 
-            return SlimUtils::renderJSON($response, $service->getLog(
+            return SlimUtils::renderJSON($response, $forViewer($service->getLog(
                 ['status' => $status, 'kind' => $kind, 'sentBy' => $sentBy, 'search' => $search],
                 $senderUserId,
                 $page,
                 $limit,
-            ));
+            )));
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to load email history'), [], 500, $e, $request);
         }
@@ -156,7 +159,7 @@ $app->group('/email/log', function (RouteCollectorProxy $group): void {
                 return SlimUtils::renderErrorJSON($response, gettext('Not allowed to view this email'), [], 403, null, $request);
             }
 
-            return SlimUtils::renderJSON($response, $service->toArray($row, true));
+            return SlimUtils::renderJSON($response, $service->forViewer($service->toArray($row, true), $user->isAdmin()));
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to load email'), [], 500, $e, $request);
         }

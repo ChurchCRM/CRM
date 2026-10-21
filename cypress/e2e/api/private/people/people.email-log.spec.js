@@ -152,6 +152,16 @@ describe("GET /api/email/log for a sender without admin rights", () => {
         log({ sentBy: SENDER_ID, q: tag }, { as: "sender" }).its("body.total").should("eq", 2);
     });
 
+    it("sees a failed message's status but not the mail server's error", () => {
+        log({ status: "failed", q: tag }, { as: "sender" }).then((resp) => {
+            const failed = resp.body.rows.find((r) => r.subject === `${tag} sender failed`);
+            expect(failed).to.include({ status: "failed", error: null });
+
+            callers.sender("GET", `/api/email/log/${failed.id}`, null, 200).its("body.error").should("eq", null);
+            callers.admin("GET", `/api/email/log/${failed.id}`, null, 200).its("body.error").should("be.a", "string").and("not.be.empty");
+        });
+    });
+
     it("is refused another sender's mail and mail ChurchCRM sent on its own", () => {
         log({ sentBy: ADMIN_ID }, { as: "sender", status: 403 });
         log({ sentBy: "automatic" }, { as: "sender", status: 403 });

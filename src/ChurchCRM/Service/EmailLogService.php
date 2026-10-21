@@ -324,6 +324,23 @@ class EmailLogService
     }
 
     /**
+     * The mail server's error can name its host or the account that failed to sign in,
+     * so only administrators see it; others still see the failed status.
+     *
+     * @param array<string, mixed> $row from toArray()
+     *
+     * @return array<string, mixed>
+     */
+    public function forViewer(array $row, bool $isAdmin): array
+    {
+        if (!$isAdmin) {
+            $row['error'] = null;
+        }
+
+        return $row;
+    }
+
+    /**
      * What a member may see of one of their own rows: toArray() without the delivery
      * status, attempts and server error, which are for staff.
      *

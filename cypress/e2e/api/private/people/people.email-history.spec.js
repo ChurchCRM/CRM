@@ -105,6 +105,18 @@ describe("API GET /api/email/log", () => {
             expect(resp.body.rows).to.be.an("array");
         });
     });
+
+    it("shows a failed row's status without the mail server's error to a non-admin", () => {
+        const failedRow = (resp) => resp.body.rows.find((r) => r.id === 4);
+        cy.makePrivateFinanceOnlyAPICall("GET", "/api/email/log?personId=2&limit=100").then((resp) => {
+            expect(failedRow(resp)).to.include({ status: "failed", error: null });
+        });
+        cy.makePrivateFinanceOnlyAPICall("GET", "/api/email/log?familyId=1&limit=100").then((resp) => {
+            expect(failedRow(resp)).to.include({ status: "failed", error: null });
+        });
+        cy.makePrivateFinanceOnlyAPICall("GET", "/api/email/log/4").its("body.error").should("eq", null);
+        adminGet("/api/email/log?personId=2&limit=100").then((resp) => expect(failedRow(resp).error).to.include("SMTP"));
+    });
 });
 
 describe("Every send writes history rows", () => {
