@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-20 18:05+0000\n"
+"POT-Creation-Date: 2026-10-21 20:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -5993,9 +5993,6 @@ msgstr ""
 msgid "Failed Logins"
 msgstr ""
 
-msgid "Failed email history pages"
-msgstr ""
-
 msgid "Failed login attempts"
 msgstr ""
 
@@ -10442,9 +10439,6 @@ msgstr ""
 msgid "No schedules yet"
 msgstr ""
 
-msgid "No server error recorded"
-msgstr ""
-
 msgid "No settings provided"
 msgstr ""
 
@@ -11036,6 +11030,9 @@ msgid "Only the assigned volunteer may propose a substitute"
 msgstr ""
 
 msgid "Only the calendars this ministry may add events to are listed. Its own calendar is ticked to start with."
+msgstr ""
+
+msgid "Only the email you sent is shown."
 msgstr ""
 
 msgid "Only the first part of a very long list is shown. Narrow the window to see the rest."
@@ -12489,9 +12486,6 @@ msgid "Recent Emails"
 msgstr ""
 
 msgid "Recent Friends"
-msgstr ""
-
-msgid "Recent Sends"
 msgstr ""
 
 msgid "Recent birthday!"
@@ -13950,9 +13944,6 @@ msgstr ""
 msgid "Show all"
 msgstr ""
 
-msgid "Show all recent sends"
-msgstr ""
-
 msgid "Show in Member Portal"
 msgstr ""
 
@@ -14012,9 +14003,6 @@ msgstr ""
 
 #. plugin:holidays:section:2:title
 msgid "Showing and hiding individual countries"
-msgstr ""
-
-msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
 msgstr ""
 
 msgid "Showing inactive persons only."
@@ -15392,9 +15380,6 @@ msgid "The substitution could not be decided"
 msgstr ""
 
 msgid "The substitution requests could not be loaded"
-msgstr ""
-
-msgid "The table shows only the latest 20 sends. Open a person to see their full history."
 msgstr ""
 
 msgid "The teacher sent this alert at"
