@@ -13,6 +13,8 @@ complexity: "beginner"
 Turn the PRs in a release into publication-ready GitHub release notes for church staff, finance officers and ministry leaders, then write them straight onto the draft release. Nobody should have to copy PR text into a chat or paste notes back into GitHub.
 
 This skill writes and fact-checks. It does not decide release scope and does not publish.
+It covers notes authoring in [the release process](../../../docs/maintainers/release-process.md);
+localization workflow details live in [the locale pipeline](../../../docs/maintainers/locale-pipeline.md).
 
 ---
 
@@ -42,7 +44,7 @@ Otherwise build it locally. It is the same script and needs a token for the GitH
 node scripts/release-notes-context.js "$PREV" "$TARGET" > /tmp/rn/release-notes-context-$TAG.md
 ```
 
-The file lists every PR merged between `PREV` and `TARGET` with its **full description**, author, labels, linked issues and a bucket derived from the files it touched (User-facing, Localization, Dependencies, Testing, CI & tooling, Marketing capture, Docs & agent guidance, Automated).
+The script makes one API call per PR, so a 100-PR release takes several minutes: run it in the background. The file lists every PR merged between `PREV` and `TARGET` with its **full description**, author, labels, linked issues and a bucket derived from the files it touched (User-facing, Localization, Dependencies, Testing, CI & tooling, Marketing capture, Docs & agent guidance, Automated).
 
 **Read the full description of every PR in the User-facing, Localization and Other buckets.** Titles lie: "refactor" PRs often fix a visible bug, and "fix" PRs sometimes only touch tests. When the description is thin, read the linked issue or the diff (`gh pr diff`). Buckets are a first pass; move a PR when its content says otherwise, for example a marketing PR that also changes demo data.
 

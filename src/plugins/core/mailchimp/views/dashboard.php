@@ -9,7 +9,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <div class="row mb-3">
     <div class="col-12 d-flex align-items-center">
         <nav aria-label="breadcrumb" class="flex-grow-1">
-            <ol class="breadcrumb mb-0 bg-light">
+            <ol class="breadcrumb mb-0">
                 <li class="breadcrumb-item"><a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard"><i class="fa-solid fa-home"></i></a></li>
                 <li class="breadcrumb-item"><a href="<?= SystemURLs::getRootPath() ?>/plugins/management"><?= gettext('Plugins') ?></a></li>
                 <li class="breadcrumb-item active" aria-current="page">Mailchimp</li>
@@ -44,7 +44,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
     <!-- Account Info Banner -->
     <?php if (!empty($accountInfo['account_name'])) : ?>
-    <div class="alert alert-light border mb-3">
+    <div class="alert bg-surface-secondary border mb-3">
         <div class="d-flex align-items-center">
             <i class="fa-brands fa-mailchimp fa-2x text-warning me-3"></i>
             <div class="flex-grow-1">
@@ -190,7 +190,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             </tbody>
                         </table>
                     </div>
-                    <div class="card-footer bg-light">
+                    <div class="card-footer bg-surface-secondary">
                         <div class="btn-group btn-group-sm d-flex" role="group">
                             <a href="<?= SystemURLs::getRootPath() ?>/plugins/mailchimp/list/<?= $list['id'] ?>/unsubscribed" class="btn btn-outline-primary flex-fill">
                                 <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Not Subscribed') ?>

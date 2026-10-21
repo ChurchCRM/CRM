@@ -85,7 +85,6 @@ Access database via VS Code or your IDE (host: localhost:3306, user: churchcrm, 
 | `npm run docker:dev:logs` | View live container logs |
 | `npm run docker:dev:rebuild` | Rebuild webserver image (useful when Dockerfile changes) |
 | `npm run docker:dev:reset:db` | Reset database to fresh seed data |
-| `npm run docker:dev:reset` | Full teardown + restart everything |
 | `npm run docker:dev:login:web` | Open shell in webserver container |
 | `npm run docker:dev:login:db` | Open shell in database container |
 
@@ -102,7 +101,7 @@ Because `src/` is bind-mounted, **changes are instant** — no rebuild needed. J
 By default, database is seeded with demo data. For a fresh setup wizard:
 
 1. Remove `../cypress/data` bind-mount from `database` service
-2. Run `npm run docker:dev:reset`
+2. Run `npm run docker:dev:reset:db`
 
 ---
 
@@ -193,18 +192,34 @@ Comparison: Dev vs Test
 Self-Hosted & Production References
 ---
 
-Reference configurations for production-like deployments are in `examples/`:
+To run a published release, use `production/compose.yaml` — see **Official
+Release Images** below. The files in `examples/` are illustrations of other
+architectures, not deployment recipes:
 
-- **nginx + PHP-FPM** (`examples/docker-compose.nginx.yaml`)
-- **FrankenPHP** (`examples/docker-compose.frankenphp.yaml`)
+- **nginx + PHP-FPM** (`examples/docker-compose.nginx.yaml`) — unsupported
+- **FrankenPHP** (`examples/docker-compose.frankenphp.yaml`) — unsupported, no image published
 
-See `examples/README.md` for details.
+Both build from local Dockerfiles rather than the published tags. See
+`examples/README.md` and the caveats in [`DOCKER_RELEASE.md`](DOCKER_RELEASE.md).
 
 ---
 
 Official Release Images
 ---
 
-Pre-built, versioned images (Apache and PHP-FPM) are published to DockerHub automatically on every
-GitHub release. See [`DOCKER_RELEASE.md`](DOCKER_RELEASE.md) for available tags, quick start, and
-the one-time DockerHub credentials setup.
+Every stable GitHub release publishes versioned multi-arch images
+(`linux/amd64` + `linux/arm64`) to DockerHub as `churchcrm/crm`.
+
+| Tag | Variant | Supported |
+| --- | --- | --- |
+| `<version>-php8-apache` | Apache + PHP 8.4, HTTP on 8080 | Yes — use this |
+| `latest-php8-apache`, `latest` | Newest stable Apache build | Yes, but pin a version in production |
+| `<version>-php8-fpm`, `latest-php8-fpm` | PHP-FPM, FastCGI on 9000 | No — needs your own web server |
+
+**To run one:** copy `production/` somewhere of your own, copy `.env.example` to
+`.env`, fill in the two passwords, and `docker compose up -d`. The full guide —
+setup wizard, backup and restore, upgrade paths and the traps worth knowing — is
+at <https://docs.churchcrm.io/installation/docker>.
+
+[`DOCKER_RELEASE.md`](DOCKER_RELEASE.md) covers the release engineering side:
+how the workflow builds and publishes, and the one-time DockerHub credentials.

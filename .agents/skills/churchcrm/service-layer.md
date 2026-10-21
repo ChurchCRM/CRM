@@ -8,312 +8,72 @@ complexity: "intermediate"
 
 # Skill: Service Layer Development
 
-## Context
-This skill covers creating and using service classes for business logic in ChurchCRM.
+## Service Layer First
 
-## Service Layer First Principle
+Business logic lives in `src/ChurchCRM/Service/`. Service methods hold domain logic, database operations, and validation, and pages, APIs, and MVC routes all call them. Services use Propel ORM only. List current services with `ls src/ChurchCRM/Service/`; the finance service is `FinancialService`.
 
-**When implementing business logic, ALWAYS create/update Service classes** in `src/ChurchCRM/Service/`
+## Obtaining a Service
 
-- Service methods encapsulate domain logic, database operations, and validation
-- Call services from legacy pages (`src/*.php`), APIs, and modern routes
-- Services use Propel ORM exclusively - **no RunQuery() or direct SQL**
-
-## Key Services
-
-Located in `src/ChurchCRM/Service/`:
-
-- **PersonService** - Person/family operations
-- **GroupService** - Group management
-- **FinancialService** - Payments, pledges, funds (note the name: `FinancialService`, not `FinanceService`)
-- **DepositService** - Deposit slip handling
-- **SystemService** - System-wide operations
-- **UserService** - User management with optimized database operations
-- **EventService** - The one recurring-event generator (see below)
-- **RecurrenceDateGenerator** - Event-free weekly/monthly/yearly date math
-
-## How to Obtain a Service — Direct Instantiation <!-- learned: 2026-09-11 -->
-
-**ChurchCRM has no dependency-injection container.** `src/composer.json` declares no
-container library, `MvcAppFactory::create()`
-(`src/ChurchCRM/Slim/MvcAppFactory.php:39`) never calls `AppFactory::setContainer()`, and
-`$app->getContainer()` is therefore `null` in every MVC module. The single surviving
-`$container->get(...)` in the tree is inside `SlimUtils::registerCustomErrorHandlers()`
-(`src/ChurchCRM/Slim/SlimUtils.php:180`), a method marked `@deprecated Slim 3 only`.
-
-Instantiate the service where you need it:
+Construct the service where you use it. There is no dependency-injection container; `$app->getContainer()` is `null`.
 
 ```php
-// ✅ CORRECT — src/api/routes/finance/finance-payments.php:30-37 (trimmed)
 use ChurchCRM\Service\FinancialService;
 
 $group->get('/', function (Request $request, Response $response, array $args): Response {
     $financialService = new FinancialService();
-
-    return SlimUtils::renderJSON(
-        $response,
-        ['payments' => $financialService->getPayments()]
-    );
+    return SlimUtils::renderJSON($response, ['payments' => $financialService->getPayments()]);
 });
-
-// ❌ WRONG — there is no container; $container is undefined and
-//    $app->getContainer() returns null, so this is a fatal error
-$service = $container->get('FinancialService');
-$service = $app->getContainer()->get('FinancialService');
 ```
 
-Services are cheap value-less objects — construct one per request where you use it rather
-than threading a shared instance through the call stack. Other real call sites:
-`new PersonService()` / `new SystemService()` (`src/Include/PageInit.php:13-14`),
-`new UserService()` (`src/admin/views/users.php:14`, `src/admin/routes/system.php:975,1091`),
-`(new PersonService())->buildDoNotEmailSet(...)` (`src/ChurchCRM/dto/Cart.php:269`).
+Some services expose static methods only (`AppIntegrityService`, `AuthService`, `LocaleService`, `NotificationService`, `PropertyService`, `TelemetryService`, `UpgradeService`, `UpgradeAPIService`, `BirthdayEmailService`). Read the class to choose `new X()` or `X::method()`.
 
-Some services expose **static** methods only and are never instantiated —
-`AppIntegrityService`, `AuthService`, `LocaleService`, `NotificationService`,
-`PropertyService`, `TelemetryService`, `UpgradeService`, `UpgradeAPIService`,
-`BirthdayEmailService`. Call those as `AppIntegrityService::verifyApplicationIntegrity()`.
-Check the class before deciding which form to use.
+## Performance
 
-## Service Layer Performance Best Practices
-
-When creating services, optimize database operations:
-
-### 1. Selective field loading
-
-Use `->select(['field1', 'field2'])` to fetch only required columns:
-
+1. Select only the columns you need: `->select(['Id', 'FailedLogins'])`.
+2. Fetch related data in one query and aggregate in PHP:
 ```php
-// GOOD - Only fetch needed fields
-$users = UserQuery::create()
-    ->select(['Id', 'FailedLogins', 'TwoFactorAuthSecret'])
-    ->find();
-
-// BAD - Fetches all columns unnecessarily
-$users = UserQuery::create()->find();
-```
-
-### 2. Single query philosophy
-
-Group related data retrieval in one query, then process in PHP memory:
-
-```php
-// GOOD - One query, process in memory
-$allUsers = UserQuery::create()
-    ->select(['FailedLogins', 'TwoFactorAuthSecret'])
-    ->find();
-
-$lockedCount = 0;
-$twoFactorCount = 0;
-foreach ($allUsers as $user) {
-    if ($user['FailedLogins'] >= 3) $lockedCount++;
-    if (!empty($user['TwoFactorAuthSecret'])) $twoFactorCount++;
-}
-
-// BAD - Multiple queries
-$lockedCount = UserQuery::create()->filterByFailedLogins(3, Criteria::GREATER_EQUAL)->count();
-$twoFactorCount = UserQuery::create()->filterByTwoFactorAuthSecret(null, Criteria::ISNOTNULL)->count();
-```
-
-### 3. Avoid N+1 queries
-
-Pre-fetch related data instead of looping with individual queries:
-
-```php
-// GOOD - Pre-fetch with join
-$persons = PersonQuery::create()
-    ->joinWith('Family')
-    ->find();
-
-foreach ($persons as $person) {
-    echo $person->getFamily()->getName(); // No additional query
-}
-
-// BAD - N+1 queries (one per person)
-$persons = PersonQuery::create()->find();
-foreach ($persons as $person) {
-    echo $person->getFamily()->getName(); // Additional query each iteration
-}
-```
-
-### 4. Example: UserService getUserStats()
-
-Fetches all users' `failedLogins` and `twoFactorAuthSecret` in one query, then processes statistics in memory:
-
-```php
-public function getUserStats(): array
-{
-    $users = UserQuery::create()
-        ->select(['FailedLogins', 'TwoFactorAuthSecret'])
-        ->find();
-    
-    $stats = [
-        'total' => count($users),
-        'locked' => 0,
-        'twoFactorEnabled' => 0,
-    ];
-    
-    foreach ($users as $user) {
-        if ($user['FailedLogins'] >= SystemConfig::getValue('iMaxFailedLogins')) {
-            $stats['locked']++;
-        }
-        if (!empty($user['TwoFactorAuthSecret'])) {
-            $stats['twoFactorEnabled']++;
-        }
+$users = UserQuery::create()->select(['FailedLogins', 'TwoFactorAuthSecret'])->find();
+$stats = ['total' => count($users), 'locked' => 0, 'twoFactorEnabled' => 0];
+foreach ($users as $user) {
+    if ($user['FailedLogins'] >= SystemConfig::getValue('iMaxFailedLogins')) {
+        $stats['locked']++;
     }
-    
-    return $stats;
-}
-```
-
-## Creating API Endpoints vs Service Calls
-
-**Only create API endpoints when:**
-- Needed by external clients
-- Required for AJAX operations
-- Shared across multiple pages
-
-**Do NOT create API endpoints** if a service method is only called from a legacy page:
-
-```php
-// GOOD - Call service directly from the legacy page
-use ChurchCRM\Service\PersonService;
-
-require 'Include/Config.php';
-$personService = new PersonService();
-$result = $personService->search($searchTerm);
-
-// BAD - Creating unnecessary API endpoint just to call service once
-// Don't create /api/person/update if only used by one page
-```
-
-## Logging in Services
-
-**Always use LoggerUtils** for business logic operations:
-
-```php
-use ChurchCRM\Utils\LoggerUtils;
-
-class MyService
-{
-    private $logger;
-    
-    public function __construct()
-    {
-        $this->logger = LoggerUtils::getAppLogger();
-    }
-    
-    public function doSomething($param): void
-    {
-        $this->logger->debug('Operation starting', ['param' => $param]);
-        
-        try {
-            // Business logic here
-            $this->logger->info('Operation succeeded', ['result' => $value]);
-        } catch (\Exception $e) {
-            $this->logger->error('Operation failed', ['error' => $e->getMessage()]);
-            throw $e;
-        }
+    if (!empty($user['TwoFactorAuthSecret'])) {
+        $stats['twoFactorEnabled']++;
     }
 }
 ```
+3. Pre-fetch relations with `joinWith('Family')` before looping over `$person->getFamily()`.
 
-**Log levels:**
-- `debug` - Development info, detailed execution flow
-- `info` - Business events, successful operations
-- `warning` - Issues that don't stop execution
-- `error` - Failures, exceptions
+## API Endpoints vs Service Calls
 
-**Always include context** as second parameter array for meaningful logs.
+Add an API endpoint for external clients, AJAX operations, or logic shared across pages. A page used by one caller calls the service directly.
 
-## SystemConfig for UI Settings Panels
+## Logging
 
-**For admin pages that display system settings:**
-
-Call `SystemConfig::getSettingsConfig($settingKeys)` to get structured configuration for a settings panel.
-
-**Service method example:**
+Use `LoggerUtils::getAppLogger()` and pass context as the second argument.
 
 ```php
-public function getUserSettingsConfig(): array 
-{
-    $userSettings = [
-        'iSessionTimeout',
-        'iMaxFailedLogins',
-        'bEnableLostPassword'
-    ];
-    return SystemConfig::getSettingsConfig($userSettings);
-}
+$this->logger = LoggerUtils::getAppLogger();
+$this->logger->debug('Operation starting', ['param' => $param]);
+$this->logger->info('Operation succeeded', ['result' => $value]);
+$this->logger->error('Operation failed', ['error' => $e->getMessage()]);
 ```
 
-**Returns array with:** `category`, `name`, `value`, `type`, `options` for each setting
+Levels: `debug` execution detail, `info` business events, `warning` non-fatal issues, `error` failures.
 
-**Frontend usage:** Render collapsed setting panels using this structured data
+## Settings Panels
 
-**Avoid:** Hardcoding settings or creating separate SystemConfig lookups - use the service method
+Admin settings panels get their data from `SystemConfig::getSettingsConfig($keys)`, which returns `category`, `name`, `value`, `type`, `options` per setting. Wrap it in a service method (`getUserSettingsConfig()` in `admin-mvc-migration.md`).
 
-## Files
+## Side Effects After Model Saves
 
-**Services:** `src/ChurchCRM/Service/`
-**Logger:** `src/ChurchCRM/Utils/LoggerUtils.php`
-**Config:** `src/ChurchCRM/dto/SystemConfig.php`
-
-There is no service-container file. `src/ChurchCRM/ServiceContainerBuilder.php` does not
-exist anywhere in the tree — see "How to Obtain a Service" above.
-
-## Auto-Triggering Service Methods from Model Saves <!-- learned: 2026-03-08 -->
-
-For business logic that should automatically trigger when a model is saved (e.g., auto-geocoding on address change),
-hook into the save handler in the page that modifies the model. This keeps services clean and prevents duplicate logic.
-
-**Pattern:**
-1. Service method checks if action is needed (e.g., address was modified but no coordinates exist)
-2. Page/handler checks column modifications using `$model->isColumnModified(TableMap::COL_NAME)`
-3. Instantiate and call service after model is saved
-
-**Example: Auto-Geocode Family on Address Save**
+Run side effects (for example geocoding) from the save handler: check `$model->isColumnModified(TableMap::COL_NAME)`, save, then call the service.
 
 ```php
-// Service: FamilyService->autoGeocodeFamily()
-public function autoGeocodeFamily(Family $family): bool
-{
-    $street = trim($family->getAddress1() ?? '');
-    if (empty($street)) {
-        $this->logger->debug('autoGeocodeFamily: skipping empty address');
-        return true;
-    }
-
-    try {
-        $coords = GeoUtils::getLatLong(
-            $street,
-            $family->getCity(),
-            $family->getState(),
-            $family->getZip()
-        );
-
-        if ((float)$coords['Latitude'] === 0.0 && (float)$coords['Longitude'] === 0.0) {
-            $this->logger->warning('autoGeocodeFamily: Could not geocode address');
-            return false;
-        }
-
-        $family->setLatitude((float)$coords['Latitude']);
-        $family->setLongitude((float)$coords['Longitude']);
-        $family->save();
-
-        $this->logger->info('autoGeocodeFamily: Geocoded successfully');
-        return true;
-    } catch (\Throwable $e) {
-        $this->logger->warning('autoGeocodeFamily error: ' . $e->getMessage());
-        return false;
-    }
-}
-
-// Handler: FamilyEditor.php
-use ChurchCRM\Service\FamilyService;
-
 $family->save();
 $family->reload();
 
-// Auto-geocode if address was modified but no coordinates exist
 if (
     ($family->isColumnModified(FamilyTableMap::COL_FAM_ADDRESS1)
         || $family->isColumnModified(FamilyTableMap::COL_FAM_CITY)
@@ -321,42 +81,30 @@ if (
         || $family->isColumnModified(FamilyTableMap::COL_FAM_ZIP))
     && empty($family->getLatitude())
 ) {
-    $familyService = new FamilyService();
-    $familyService->autoGeocodeFamily($family);
+    (new FamilyService())->autoGeocodeFamily($family);
 }
 ```
 
-**Guidelines:**
-- Service method should be idempotent (safe to call multiple times)
-- Always log what happened (success/failure/skipped)
-- Don't break the main transaction if the side-effect fails
-- Use logger->debug for parameter values, ->info for success, ->warning for expected failures
+The service method is idempotent, logs success, skip and failure, returns `false` on failure instead of throwing, and leaves the main transaction intact.
 
-## Time String Concatenation Hazards <!-- learned: 2026-04-09 -->
+## Time Strings
 
-When building DB datetime strings by concatenating a date with a user-supplied time, **never blindly append `:00`** to add seconds — the input may already include seconds. `EventService::createRepeatEvents()` was producing invalid timestamps like `2026-04-09 09:00:00:00` when the form passed `09:00:00` instead of `09:00`.
-
-Normalize the input to a known shape before concatenation:
+Normalize a user-supplied time before concatenating it with a date; the input may or may not carry seconds.
 
 ```php
 private static function normalizeTime(string $time): string
 {
     $parsed = \DateTimeImmutable::createFromFormat('H:i:s', $time)
         ?: \DateTimeImmutable::createFromFormat('H:i', $time);
-    if ($parsed === false) {
-        return '09:00:00';
-    }
-    return $parsed->format('H:i:s');
+    return $parsed === false ? '09:00:00' : $parsed->format('H:i:s');
 }
 
-// Caller — never ' . $time . ':00'
-$startTime = self::normalizeTime($data['startTime'] ?? '09:00');
-$eventStart = $occurrenceDate->format('Y-m-d') . ' ' . $startTime;
+$eventStart = $occurrenceDate->format('Y-m-d') . ' ' . self::normalizeTime($data['startTime'] ?? '09:00');
 ```
 
-## Wrap Naked `new \DateTime($input)` in try/catch <!-- learned: 2026-04-09 -->
+## User-Supplied Dates
 
-`new \DateTime($userString)` throws when the string is malformed, and the uncaught exception bubbles to a 500 instead of a proper 400. In a service method that throws `\InvalidArgumentException` for validation failures, wrap raw `DateTime` construction so the API layer gets a clean validation error:
+Wrap `new \DateTime($input)` in try/catch and throw `\InvalidArgumentException`, so the API returns a 400.
 
 ```php
 try {
@@ -367,11 +115,11 @@ try {
 }
 ```
 
-For stricter validation at the route level (before reaching the service), use `\DateTimeImmutable::createFromFormat('!Y-m-d', $input)` and check the round-trip — `DateTime` constructor accepts loose formats like `2026-13-99` and rolls them over silently.
+For strict route-level validation use `\DateTimeImmutable::createFromFormat('!Y-m-d', $input)` and check the round-trip, because `DateTime` rolls `2026-13-99` over silently.
 
-## Cap Bulk-Generation Loops <!-- learned: 2026-04-09 -->
+## Bulk Generation Cap
 
-Any service method that generates rows from a date range needs an upper bound to stop a wide range from creating thousands of rows in one request. `createRepeatEvents()` could otherwise generate `weekly × 10 years × 52 = 520` rows per call.
+A service method that generates rows from a date range enforces an upper bound:
 
 ```php
 public const MAX_REPEAT_OCCURRENCES = 366;
@@ -385,41 +133,24 @@ if (count($occurrenceDates) > self::MAX_REPEAT_OCCURRENCES) {
 }
 ```
 
-## One Recurrence Engine — `EventService` + `RecurrenceDateGenerator` <!-- learned: 2026-09-11 -->
+## Recurring Events
 
-Recurring events had two independent implementations (issue #9735): `EventService::createRepeatEvents()` and an inline `generateRecurringEvents()` in `src/api/routes/calendar/events.php`, with different caps, titles, times and duplicate handling. They are now one path — **do not add a third**.
+One path creates recurring events:
 
-- `ChurchCRM\Service\RecurrenceDateGenerator::generate()` — event-free date math (weekly / monthly / yearly). Anything that needs "the dates this repeats on" calls this, not a private copy of the switch.
-- `ChurchCRM\Service\EventService::createRecurringEvents()` — the only place events are created in bulk. `createRepeatEvents()` is a thin wrapper returning just the IDs.
-- Both HTTP endpoints (`POST /api/events/repeat`, `POST /api/events/generate-recurring`) and the repeat-event editor are adapters over it.
+- `RecurrenceDateGenerator::generate()` computes weekly, monthly, and yearly dates. Anything that needs the repeat dates calls it.
+- `EventService::createRecurringEvents()` creates events in bulk. `createRepeatEvents()` wraps it and returns the IDs.
+- `POST /api/events/repeat`, `POST /api/events/generate-recurring`, and the repeat-event editor are adapters over it.
 
-The shared, documented policy lives in the `EventService` class docblock: one cap (`MAX_REPEAT_OCCURRENCES`, expressed in occurrences rather than calendar span so it means something for yearly recurrence too), caller-supplied title/times win and otherwise fall back to the event type's defaults, and `skipExisting` dedups on `(event type, calendar date)`.
+The policy (single occurrence cap, caller title/times override event-type defaults, `skipExisting` dedups on event type and calendar date) is in the `EventService` class docblock.
 
-Endpoint adapters keep their own request/response shapes — the unification is behavioural, not a URL change.
+## Geocoding
 
-## Geocoding goes through a provider chain <!-- learned: 2026-09-15 -->
+`GeoUtils::getLatLong($street, $city, $state, $zip, $country)` is the only entry point for geocoding; every caller (family save, person, church info, bulk action, `/api/geocoder/address`) goes through it. It asks `GeocoderChain::fromConfig()`, which reads `sGeocoderProviders` ("Nominatim" by default; "Nominatim, US Census" adds the US Census Bureau) and lazily yields a `GeocodeResult` per provider that finds the address. A time budget stops starting new providers late in a request.
 
-`GeoUtils::getLatLong()` never talks to a geocoding service directly. It asks
-`ChurchCRM\Service\Geocoding\GeocoderChain::fromConfig()`, which reads the
-`sGeocoderProviders` setting ("Nominatim" by default; "Nominatim, US Census" opts in
-to the US Census Bureau; surfaced on the Family Map's Map Settings panel) and
-iterates the `GeocoderProviderInterface`s one by one. `results()` is a lazy
-generator: it yields a `GeocodeResult` (coordinates plus the address the provider
-matched) per provider that found the address, so stopping at the first one never
-calls the rest, and a time budget stops it starting new providers late in a request.
+Provider applicability comes from the record's country, then `sDefaultCountry`, then `sChurchCountry`. When all are blank, `supports()` receives null and a country-limited provider declines. Pass the record's country to `getLatLong()`.
 
-Which providers apply to an address is decided from its country: the record's own
-country, else `sDefaultCountry`, else `sChurchCountry`; when all are blank
-`supports()` receives null and a country-limited provider (US Census) must decline.
-Callers should pass the record's country to `getLatLong()`.
+To add a provider: extend `AbstractHttpGeocoder`, implement `getName()` and `geocode()` (plus `supports()` for country-limited services), and register the lower-case name in `GeocoderChain::PROVIDERS`.
 
-To add a service: extend `AbstractHttpGeocoder`, implement `getName()`/`geocode()`
-(returning a `GeocodeResult`, with the matched address when the service gives one)
-and `supports()` when it only covers some countries, then register the lower-case
-name in `GeocoderChain::PROVIDERS`. Never call a geocoding HTTP endpoint from
-anywhere else: every caller (family save, person, church info, bulk action,
-`/api/geocoder/address`) must keep going through `GeoUtils`.
+## Files
 
-```php
-$coords = GeoUtils::getLatLong($street, $city, $state, $zip, $country); // ['Latitude' => .., 'Longitude' => ..] or zeros
-```
+Services: `src/ChurchCRM/Service/`. Logger: `src/ChurchCRM/Utils/LoggerUtils.php`. Config: `src/ChurchCRM/dto/SystemConfig.php`.

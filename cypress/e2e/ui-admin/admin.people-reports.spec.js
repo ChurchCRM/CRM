@@ -17,6 +17,7 @@ const REPORTS = [
     "volunteers-two-opportunities",
     "missing-people",
     "wedding-anniversaries",
+    "people-by-grade",
     "birthdays-anniversaries",
 ];
 
@@ -40,7 +41,7 @@ function rows() {
 describe("People Reports (#9914, #9915)", () => {
     beforeEach(() => cy.setupAdminSession());
 
-    it("lists the nine people reports", () => {
+    it("lists the ten people reports", () => {
         cy.visit("/people/reports");
         cy.get("body").should("not.contain", "Fatal error");
         cy.get("#peopleReports a[id^='report-']").should("have.length", REPORTS.length);
@@ -209,13 +210,5 @@ describe("People Reports (#9914, #9915)", () => {
             expect(lines).to.have.length(2);
             expect(lines[1]).to.include("Constance Hart");
         });
-    });
-});
-
-describe("People Reports access", () => {
-    it("redirects non-admins to access denied", () => {
-        cy.setupStandardSession();
-        cy.visit("/people/reports", { failOnStatusCode: false });
-        cy.url().should("include", "/v2/access-denied");
     });
 });

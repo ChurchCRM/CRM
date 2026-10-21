@@ -484,51 +484,50 @@ describe("Standard Calendar — save (admin-session)", () => {
  *
  * The fixture is built here rather than seeded. #9869 gave `calendars.ministry_id` a
  * real foreign key to `volunteer_ministry_vmin`, so a seeded calendar pointing at a
- * ministry the seed does not contain is no longer a harmless fiction: it survives the
- * load only because the dump disables foreign-key checks, and it is nulled the moment
- * some other spec creates and deletes a ministry that takes the same id. So this block
- * makes its own ministry and its own calendar, and takes both away afterwards.
+ * ministry the seed does not contain is no longer a harmless fiction. So this block
+ * creates its own ministry through the API, which gives it its calendar, and deletes
+ * both the same way afterwards.
  */
 describe("Calendar sidebar — church, ministry and system lists", () => {
     const MINISTRY_NAME = "CALSIDEBAR Youth Ministry";
+    const VOLUNTEER_VERSION = "sVolunteerVersion";
     let ministryId = 0;
+    let originalVolunteerVersion;
 
-    const dbOk = (sql, params = []) =>
-        cy.dbQuery(sql, params).then((result) => {
-            if (result.error !== null) {
-                throw new Error(
-                    `Unexpected SQL failure.\n  SQL: ${sql}\n  ${result.error.code}: ${result.error.message}`,
-                );
-            }
-            return result.rows;
+    // The ministries API answers only while Volunteer v2 is on; the sidebar is tested as the seed has it.
+    const withVolunteerV2 = (work) => {
+        cy.getSystemConfig(VOLUNTEER_VERSION).then((value) => {
+            originalVolunteerVersion = value;
         });
-
-    const removeFixture = () => {
-        // The calendar first: the foreign key is ON DELETE SET NULL, so a calendar
-        // left behind becomes an unowned church calendar and pollutes this very list.
-        dbOk(`DELETE FROM calendars WHERE name = ?`, [MINISTRY_NAME]);
-        dbOk(`DELETE FROM volunteer_ministry_vmin WHERE vmin_Name = ?`, [MINISTRY_NAME]);
+        cy.makePrivateAdminAPICall("POST", `/admin/api/system/config/${VOLUNTEER_VERSION}`, { value: "v2" }, 200);
+        work();
+        cy.then(() => cy.restoreSystemConfig(VOLUNTEER_VERSION, originalVolunteerVersion));
     };
 
+    const removeFixture = () =>
+        cy.makePrivateAdminAPICall("GET", "/api/ministries/ministries", null, 200).then((resp) => {
+            for (const ministry of resp.body.ministries.filter((m) => m.name === MINISTRY_NAME)) {
+                cy.makePrivateAdminAPICall("POST", `/api/ministries/ministries/${ministry.id}`, { active: false }, 200);
+                cy.makePrivateAdminAPICall("DELETE", `/api/ministries/ministries/${ministry.id}`, null, 200);
+            }
+        });
+
     before(() => {
-        removeFixture();
-        dbOk(
-            `INSERT INTO volunteer_ministry_vmin
-                (vmin_Name, vmin_Description, vmin_Active, vmin_CreatedDate)
-             VALUES (?, 'calendar sidebar fixture', 1, NOW())`,
-            [MINISTRY_NAME],
-        ).then((rows) => {
-            ministryId = rows.insertId;
-            dbOk(
-                `INSERT INTO calendars (name, foregroundColor, backgroundColor, ministry_id)
-                 VALUES (?, 'FFFFFF', '795548', ?)`,
-                [MINISTRY_NAME, ministryId],
-            );
+        withVolunteerV2(() => {
+            removeFixture();
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/ministries/ministries",
+                { name: MINISTRY_NAME, description: "calendar sidebar fixture" },
+                201,
+            ).then((resp) => {
+                ministryId = resp.body.ministry.id;
+            });
         });
     });
 
     after(() => {
-        removeFixture();
+        withVolunteerV2(removeFixture);
     });
 
     beforeEach(() => cy.setupStandardSession());

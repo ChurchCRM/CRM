@@ -1,23 +1,12 @@
-/**
- * ChurchCRM Image Styles
- *
- * Consolidates image-related SCSS: profile images, lazy-loading, and photo gallery.
- * Replaces: _profileImage.scss, _people-lazy-image-loading.scss, _photo-gallery.scss
- */
-
-/* =========================
-   Lazy Image Loading Styles
-   ========================= */
-/* Base style for lazy-loading images */
+// Lazy-loaded entity images (webpack/avatar-loader.ts toggles .loading/.loaded/.error)
 img[data-image-entity-type] {
-  background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 50%, #f8f9fa 100%);
+  background: linear-gradient(90deg, var(--tblr-bg-surface-secondary) 0%, var(--tblr-border-color) 50%, var(--tblr-bg-surface-secondary) 100%);
   background-size: 200% 100%;
   min-height: 50px;
   min-width: 50px;
-  object-fit: cover; /* Ensure images maintain aspect ratio when resized */
+  object-fit: cover;
 }
 
-/* Loading animation */
 img[data-image-entity-type].loading {
   opacity: 0.7;
   animation: shimmer 1.5s ease-in-out infinite;
@@ -28,55 +17,14 @@ img[data-image-entity-type].loading {
   100% { background-position: 200% 0; }
 }
 
-/* Loaded state - smooth fade in */
 img[data-image-entity-type].loaded {
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
   background: transparent;
 }
 
-/* Error state */
 img[data-image-entity-type].error {
   background: #ffebee;
   border: 2px dashed #ef5350;
   opacity: 0.8;
-}
-
-/* Avatar/profile image utilities moved to _avatars.scss
-   See src/skin/scss/_avatars.scss for avatar, photo-*, and placeholder styles.
-*/
-
-
-/* =========================
-   Image Overlay Styles
-   (merged from _imageOverlay.scss)
-   ========================= */
-.image-container {
-  position: relative;
-}
-.image-container .after {
-  position: absolute;
-  bottom: 0;
-  left: 1px;
-  width: 100%;
-  height: 44px;
-  display: block;
-  color: #fff;
-}
-.image-container:hover .after .buttons {
-  display: block;
-  background: rgba(0, 0, 0, 0.6);
-}
-.image-container .after .buttons {
-  font-size: 1.7em;
-  width: 80%;
-  max-width: 180px;
-  text-align: center;
-  background: rgba(0, 0, 0, 0.2);
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-}
-.image-container .after .buttons a {
-  color: #eee;
 }

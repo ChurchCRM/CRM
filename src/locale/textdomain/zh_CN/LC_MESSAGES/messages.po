@@ -412,15 +412,6 @@ msgid "Add Payment"
 msgstr "添加付款"
 
 #: 
-#, fuzzy
-msgid "Load Authorized"
-msgstr "加载授权交易"
-
-#: 
-msgid "Run Transactions"
-msgstr "运行事务"
-
-#: 
 msgid "Directory reports"
 msgstr "目录报告"
 
@@ -1807,11 +1798,6 @@ msgstr "登录用户名"
 
 #: 
 #, fuzzy
-msgid "Manage Properties and Classifications"
-msgstr "管理属性和分类"
-
-#: 
-#, fuzzy
 msgid "Manage Groups and Roles"
 msgstr "管理组和角色"
 
@@ -2313,10 +2299,6 @@ msgstr "您确定要删除所选内容吗？"
 #: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "此操作无法撤消，可能会产生法律影响！"
-
-#: 
-msgid "Please ensure this what you want to do."
-msgstr "请确保这是你想要做的。"
 
 #: 
 msgid "Deposit Type"
@@ -5407,10 +5389,6 @@ msgid "Enter event description..."
 msgstr "输入活动描述..."
 
 #: 
-msgid "Event ID"
-msgstr "活动 ID"
-
-#: 
 msgid "Enter note text here..."
 msgstr "在此处输入笔记文本..."
 
@@ -5715,14 +5693,6 @@ msgid "Generate Report"
 msgstr "生成报告"
 
 #: 
-msgid "No Cash"
-msgstr "无现金"
-
-#: 
-msgid "No Checks"
-msgstr "无支票"
-
-#: 
 msgid "Payments"
 msgstr "付款"
 
@@ -5737,11 +5707,6 @@ msgstr "总存款"
 #: 
 msgid "Total Payments"
 msgstr "总付款"
-
-#: 
-#, fuzzy
-msgid "payments?"
-msgstr "付款记录"
 
 #: 
 msgid "All system files have passed integrity validation."
@@ -6187,10 +6152,6 @@ msgid "Manage Orphaned Files"
 msgstr "管理孤立文件"
 
 #: 
-msgid "Menu options access"
-msgstr "菜单选项权限"
-
-#: 
 msgid "Multiple Copies"
 msgstr "多份副本"
 
@@ -6299,10 +6260,6 @@ msgid "User authentication"
 msgstr "用户认证"
 
 #: 
-msgid "User must have Menu Options permission"
-msgstr "用户必须具有菜单选项权限"
-
-#: 
 msgid "What are Orphaned Files?"
 msgstr "什么是孤立文件？"
 
@@ -6361,10 +6318,6 @@ msgstr "四月"
 #: 
 msgid "Aug"
 msgstr "八月"
-
-#: 
-msgid "Back to Deposits"
-msgstr "返回存款列表"
 
 #: 
 msgid "Back to Families"
@@ -6445,10 +6398,6 @@ msgstr "日"
 #: 
 msgid "Dec"
 msgstr "十二月"
-
-#: 
-msgid "Deposit Navigation"
-msgstr "存款导航"
 
 #: 
 msgid "Deposit Statistics"
@@ -6725,10 +6674,6 @@ msgstr "税务与奉献报告"
 #: 
 msgid "Tax Report Verbiage"
 msgstr "税务报告措辞"
-
-#: 
-msgid "Tax Statements (Giving Report)"
-msgstr "税务声明（奉献报告）"
 
 #: 
 msgid "Tax Year Reporting Checklist"
@@ -8208,14 +8153,6 @@ msgid "API Key is required."
 msgstr "API密钥为必填项。"
 
 #: 
-msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
-msgstr "无法连接到 %s 的OpenLP。请检查服务器URL以及OpenLP是否正在运行。"
-
-#: 
-msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
-msgstr "无法连接到 %s 的OpenLP。服务器返回HTTP %d。"
-
-#: 
 msgid "Congregation Map"
 msgstr "会众地图"
 
@@ -9245,10 +9182,6 @@ msgid "Generate and download confirmation letters"
 msgstr "生成并下载确认信函"
 
 #: 
-msgid "Generate annual giving statements for tax purposes"
-msgstr "生成年度奉献报表以供报税使用"
-
-#: 
 msgid "Generate directory listings and printed materials"
 msgstr "生成通讯录和打印材料"
 
@@ -9397,10 +9330,6 @@ msgid "Load demo data"
 msgstr "加载演示数据"
 
 #: 
-msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
-msgstr "加载示例家庭、人员、小组和奉献记录。这是在提交真实数据之前学习 ChurchCRM 最安全的方式。"
-
-#: 
 msgid "Log Files"
 msgstr "日志文件"
 
@@ -9435,10 +9364,6 @@ msgstr "管理捐献基金以进行财务跟踪"
 #: 
 msgid "Manage donations, pledges, and financial records"
 msgstr "管理奉献、奉献承诺和财务记录"
-
-#: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "管理邮件工具和 SMTP 配置"
 
 #: 
 msgid "Manage families, people, and demographic information"
@@ -9901,10 +9826,6 @@ msgstr "系统诊断信息和配置"
 #: 
 msgid "Tags"
 msgstr "标签"
-
-#: 
-msgid "Tax Statements"
-msgstr "税务报表"
 
 #: 
 msgid "Teacher"
@@ -10416,10 +10337,6 @@ msgid "Distance Unit"
 msgstr "距离单位"
 
 #: 
-msgid "Email Dashboard"
-msgstr "电子邮件仪表板"
-
-#: 
 msgid "Email Integrations"
 msgstr "电子邮件集成"
 
@@ -10434,10 +10351,6 @@ msgstr "小组和人员视图中的电子邮件链接"
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "电子邮件列表与Mailchimp同步。"
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "在下面的设置面板中启用电子邮件,然后配置SMTP服务器。"
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10579,10 +10492,6 @@ msgstr "系统日历"
 #: 
 msgid "System language for the church."
 msgstr "教会的系统语言。"
-
-#: 
-msgid "Text Dashboard"
-msgstr "文本仪表板"
 
 #: 
 msgid "Text Settings"
@@ -12503,10 +12412,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "电子邮件已禁用。请先配置电子邮件再重置密码，或使用更改密码功能。"
 
 #: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "电子邮件已禁用。请在电子邮件仪表盘设置中启用后再进行测试。"
-
-#: 
 msgid "Enter one of your backup recovery codes"
 msgstr "输入您的一个备用恢复代码"
 
@@ -13292,10 +13197,6 @@ msgid "Are you sure you want to delete this note?"
 msgstr "确定要删除这条备注吗？"
 
 #: 
-msgid "Cancel — wait 1 more minute"
-msgstr "取消 — 再等待1分钟"
-
-#: 
 msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
 msgstr "无法删除捐款基金：仍有一个或多个财务承诺引用了它。"
 
@@ -13424,14 +13325,6 @@ msgid "Read more"
 msgstr "阅读更多"
 
 #: 
-msgid "Refreshing Soon"
-msgstr "即将刷新"
-
-#: 
-msgid "Refreshing in"
-msgstr "将在以下时间后刷新"
-
-#: 
 msgid "That name already exists."
 msgstr "该名称已存在。"
 
@@ -13450,10 +13343,6 @@ msgstr "您没有权限删除此备注。"
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "您没有权限编辑此备注。"
-
-#: 
-msgid "seconds"
-msgstr "秒"
 
 #: 
 msgid "Cannot delete event: %d people are currently checked in."
@@ -14080,10 +13969,6 @@ msgid "Foreground Color"
 msgstr "前景色"
 
 #: 
-msgid "Fund(s)"
-msgstr "基金"
-
-#: 
 msgid "Generate new code"
 msgstr "生成新验证码"
 
@@ -14150,18 +14035,6 @@ msgstr "重要"
 #: 
 msgid "Importing..."
 msgstr "正在导入..."
-
-#: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "包含主日学班级和报名"
-
-#: 
-msgid "Include events and calendars"
-msgstr "包含活动和日历"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "包含财务数据（捐赠基金、认献）"
 
 #: 
 msgid "Invalid Entry"
@@ -14336,16 +14209,8 @@ msgid "Open in New Tab"
 msgstr "在新标签页中打开"
 
 #: 
-msgid "Open in new tab"
-msgstr "在新标签页中打开"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "打开您的验证器应用并扫描此QR码"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "可选包含的数据"
 
 #: 
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
@@ -14474,10 +14339,6 @@ msgstr "请选择要签到的人员。"
 #: 
 msgid "Please select a role."
 msgstr "请选择一个角色。"
-
-#: 
-msgid "Please select rows to delete"
-msgstr "请选择要删除的行"
 
 #: 
 msgid "Please try again"
@@ -19074,10 +18935,6 @@ msgid_plural "%d default volunteers assigned"
 msgstr[0] "%d 个默认义工已分配"
 
 #: 
-msgid "%d failed"
-msgstr "%d 项失败"
-
-#: 
 msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
 msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
 msgstr[0] "此岗位仍需 %d 名义工。打开发生以填补空缺。"
@@ -19788,10 +19645,6 @@ msgid "Choose where the schedule's dates come from"
 msgstr "选择排班日期的来源"
 
 #: 
-msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
-msgstr "选择教会使用哪种志愿者体验、提前多久安排排班、何时发出提醒，并检查后台任务是否在运行。"
-
-#: 
 msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
 msgstr "选择默认由谁担任每个职位。此选择保存在排班中：只要他们仍具备资格，就会被分配到现在生成的每一场活动，以及之后每日补充生成的活动，并会被要求回应，除非您将其设为已接受。职位留空则可逐周分配。"
 
@@ -19822,10 +19675,6 @@ msgstr "某一类型的教会活动会添加到教会日历。请检查排班的
 #: 
 msgid "Church website"
 msgstr "教会网站"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM 有两种管理志愿者的方式。同一时间只应使用其中一种；左侧的设置决定本教会看到哪一种。切换只会隐藏或显示页面和菜单项，不会删除任何数据，因此可以随时切换回来。"
 
 #: 
 msgid "Close event details"
@@ -20152,10 +20001,6 @@ msgid "Email preview"
 msgstr "邮件预览"
 
 #: 
-msgid "Email sending is disabled"
-msgstr "电子邮件发送已停用"
-
-#: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
 msgstr "电子邮件发送未启用。发送前请先配置 SMTP 设置并启用电子邮件。"
 
@@ -20204,10 +20049,6 @@ msgstr "活动名称"
 #: 
 msgid "Event type"
 msgstr "事件类型"
-
-#: 
-msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
-msgstr "ChurchCRM 发出的每封电子邮件，最新的在前。打开某个人可查看其完整记录。"
 
 #: 
 msgid "Every position in this window has the people it needs."
@@ -22880,10 +22721,6 @@ msgid "View my schedule"
 msgstr "查看我的排班"
 
 #: 
-msgid "View only"
-msgstr "仅查看"
-
-#: 
 msgid "View person"
 msgstr "查看人员"
 
@@ -22914,10 +22751,6 @@ msgstr "志愿者分配"
 #: 
 msgid "Volunteer declined"
 msgstr "志愿者已拒绝"
-
-#: 
-msgid "Volunteer experience"
-msgstr "志愿者体验"
 
 #: 
 msgid "Volunteer positions still need to be filled"
@@ -23056,10 +22889,6 @@ msgstr "启用哪种志愿者管理体验。V1 是旧版志愿者机会功能；
 #: 
 msgid "Which events"
 msgstr "哪些活动"
-
-#: 
-msgid "Which volunteer experience this church uses. The card on the right explains each choice."
-msgstr "本教会使用哪种志愿者体验。右侧的卡片说明了每个选项。"
 
 #: 
 msgid "Who is covering"
@@ -23642,4 +23471,1254 @@ msgstr "无法删除有认捐或付款记录的家庭。请先转移或删除财
 #: 
 msgid "You cannot delete your own account."
 msgstr "您不能删除自己的账户。"
+
+#: 
+msgid "A recurring event needs a last date, so it is back to {{date}}."
+msgstr "重复活动必须有结束日期，因此已恢复为 {{date}}。"
+
+#: 
+msgid "Add Everyone in Cart to {{ministry}}"
+msgstr "将购物车中的所有人加入 {{ministry}}"
+
+#: 
+msgid "Add Volunteer to {{ministry}}"
+msgstr "将义工加入 {{ministry}}"
+
+#: 
+msgid "Add the class's meetings as a recurring event with {{name}} as its class, then generate again."
+msgstr "将该班级的聚会添加为重复活动，并以 {{name}} 作为其班级，然后重新生成。"
+
+#: 
+msgid "Add them on the Calendar tab as a recurring event with {{name}} as its class."
+msgstr "请在「日历」页签中，将其添加为以 {{name}} 为班级的重复活动。"
+
+#: 
+msgid "Covered · {{more}} more welcome"
+msgstr "已满足 · 还可再欢迎 {{more}} 人"
+
+#: 
+msgid "Creates {{total}} events, every year on {{date}} from {{first}} to {{last}}"
+msgstr "将创建 {{total}} 个活动，每年在 {{date}}，从 {{first}} 到 {{last}}"
+
+#: 
+msgid "Creates {{total}} events, every {{day}} from {{first}} to {{last}}"
+msgstr "将创建 {{total}} 个活动，每逢 {{day}}，从 {{first}} 到 {{last}}"
+
+#: 
+msgid "Creates {{total}} events, on day {{day}} of each month from {{first}} to {{last}}"
+msgstr "将创建 {{total}} 个活动，每月 {{day}} 日，从 {{first}} 到 {{last}}"
+
+#: 
+msgid "Default volunteer {{number}} for {{position}}"
+msgstr "{{position}} 的默认义工 {{number}}"
+
+#: 
+msgid "Default volunteers for {{position}}"
+msgstr "{{position}} 的默认义工"
+
+#: 
+msgctxt "one"
+msgid "Delete ({{count}})"
+msgstr "删除（{{count}}）"
+
+#: 
+msgctxt "other"
+msgid "Delete ({{count}})"
+msgstr "删除（{{count}}）"
+
+#: 
+msgctxt "one"
+msgid "Delete events ({{count}})"
+msgstr "删除活动（{{count}}）"
+
+#: 
+msgctxt "other"
+msgid "Delete events ({{count}})"
+msgstr "删除活动（{{count}}）"
+
+#: 
+msgctxt "one"
+msgid "Delete {{count}} occurrences? Their assignments, the volunteers' responses, any substitutions and every queued reminder go with them. This cannot be undone."
+msgstr "要删除 {{count}} 次安排吗？人员指派、义工的回复、所有代班，以及所有排队中的提醒都会一并删除。此操作无法撤销。"
+
+#: 
+msgctxt "other"
+msgid "Delete {{count}} occurrences? Their assignments, the volunteers' responses, any substitutions and every queued reminder go with them. This cannot be undone."
+msgstr "要删除 {{count}} 次安排吗？人员指派、义工的回复、所有代班，以及所有排队中的提醒都会一并删除。此操作无法撤销。"
+
+#: 
+msgid "Filling {{position}}"
+msgstr "正在安排 {{position}}"
+
+#: 
+msgid "Full"
+msgstr "已满"
+
+#: 
+msgid "Full · {{live}} of {{max}}"
+msgstr "已满 · {{max}} 人中 {{live}} 人"
+
+#: 
+msgid "Headcount: {{total}}"
+msgstr "人数：{{total}}"
+
+#: 
+msgid "Maximum allowed for {{position}}"
+msgstr "{{position}} 允许的最多人数"
+
+#: 
+msgid "Meetings of {{name}}"
+msgstr "{{name}} 的聚会"
+
+#: 
+msgid "Minimum needed for {{position}}"
+msgstr "{{position}} 所需的最少人数"
+
+#: 
+msgid "Move them to {{className}}"
+msgstr "将他们移到 {{className}}"
+
+#: 
+msgid "Needs {{more}} more"
+msgstr "还需要 {{more}} 人"
+
+#: 
+msgid "New position: {{name}}"
+msgstr "新服事岗位：{{name}}"
+
+#: 
+msgid "New recurring event for {{name}}"
+msgstr "{{name}} 的新重复活动"
+
+#: 
+msgid "New recurring event titled {{title}}"
+msgstr "标题为 {{title}} 的新重复活动"
+
+#: 
+msgid "No event was found between {{from}} and {{to}}."
+msgstr "在 {{from}} 至 {{to}} 之间没有找到活动。"
+
+#: 
+msgid "No events on the calendar use {{name}} as their class between {{from}} and {{to}}."
+msgstr "在 {{from}} 至 {{to}} 之间，日历上没有以 {{name}} 为班级的活动。"
+
+#: 
+msgid "No upcoming events titled {{title}} are on the calendar."
+msgstr "日历上没有标题为 {{title}} 的即将到来的活动。"
+
+#: 
+msgid "No {{type}} events between {{from}} and {{to}}."
+msgstr "在 {{from}} 至 {{to}} 之间没有 {{type}} 活动。"
+
+#: 
+msgid "No {{type}} events titled {{title}} between {{from}} and {{to}}."
+msgstr "在 {{from}} 至 {{to}} 之间没有标题为 {{title}} 的 {{type}} 活动。"
+
+#: 
+msgid "Nobody is qualified for {{position}} yet"
+msgstr "还没有人具备担任 {{position}} 的资格"
+
+#: 
+msgid "Not needed this time"
+msgstr "这次不需要"
+
+#: 
+msgid "Occurrences are created for events in the next week (through {{date}})."
+msgstr "将为下一周内（截至 {{date}}）的活动创建各次安排。"
+
+#: 
+msgctxt "one"
+msgid "Occurrences are created for events in the next {{count}} weeks (through {{date}})."
+msgstr "将为接下来 {{count}} 周内（截至 {{date}}）的活动创建各次安排。"
+
+#: 
+msgctxt "other"
+msgid "Occurrences are created for events in the next {{count}} weeks (through {{date}})."
+msgstr "将为接下来 {{count}} 周内（截至 {{date}}）的活动创建各次安排。"
+
+#: 
+msgid "Occurrences are created for events through {{date}}, when this schedule ends."
+msgstr "将为截至 {{date}}（本日程结束之日）的活动创建各次安排。"
+
+#: 
+msgid "One event: {{title}}"
+msgstr "一个活动：{{title}}"
+
+#: 
+msgid "Optional · up to {{max}} welcome"
+msgstr "可选 · 最多欢迎 {{max}} 人"
+
+#: 
+msgid "Optional · {{live}} of up to {{max}}"
+msgstr "可选 · 最多 {{max}} 人中已有 {{live}} 人"
+
+#: 
+msgid "Plugin upgraded from %1$s to %2$s."
+msgstr "插件已从 %1$s 升级到 %2$s。"
+
+#: 
+msgid "Select {{event}}"
+msgstr "选择 {{event}}"
+
+#: 
+msgid "Select {{when}}"
+msgstr "选择 {{when}}"
+
+#: 
+msgid "Substitute asked: {{name}}"
+msgstr "已请求代班：{{name}}"
+
+#: 
+msgid "Sunday School: {{name}}"
+msgstr "主日学：{{name}}"
+
+#: 
+msgid "Teachers to import: {{total}}"
+msgstr "待导入的教师：{{total}}"
+
+#: 
+msgid "That is more than {{max}} events. Choose a shorter range."
+msgstr "这超过了 {{max}} 个活动。请选择更短的范围。"
+
+#: 
+msgctxt "one"
+msgid "They finish {{count}} minutes after the event ends."
+msgstr "他们在活动结束后 {{count}} 分钟结束。"
+
+#: 
+msgctxt "other"
+msgid "They finish {{count}} minutes after the event ends."
+msgstr "他们在活动结束后 {{count}} 分钟结束。"
+
+#: 
+msgctxt "one"
+msgid "They finish {{count}} minutes before the event ends."
+msgstr "他们在活动结束前 {{count}} 分钟结束。"
+
+#: 
+msgctxt "other"
+msgid "They finish {{count}} minutes before the event ends."
+msgstr "他们在活动结束前 {{count}} 分钟结束。"
+
+#: 
+msgid "This ministry's events titled {{title}}"
+msgstr "本事工中标题为 {{title}} 的活动"
+
+#: 
+msgid "Up to {{max}} welcome"
+msgstr "最多欢迎 {{max}} 人"
+
+#: 
+msgid "Volunteer times must be whole minutes, at most {{max}} from the event"
+msgstr "义工时间必须是整数分钟，且与活动相差最多 {{max}} 分钟"
+
+#: 
+msgctxt "one"
+msgid "Volunteers start {{count}} minutes after the event starts."
+msgstr "义工在活动开始后 {{count}} 分钟开始。"
+
+#: 
+msgctxt "other"
+msgid "Volunteers start {{count}} minutes after the event starts."
+msgstr "义工在活动开始后 {{count}} 分钟开始。"
+
+#: 
+msgctxt "one"
+msgid "Volunteers start {{count}} minutes before the event starts."
+msgstr "义工在活动开始前 {{count}} 分钟开始。"
+
+#: 
+msgctxt "other"
+msgid "Volunteers start {{count}} minutes before the event starts."
+msgstr "义工在活动开始前 {{count}} 分钟开始。"
+
+#: 
+msgid "You are already helping that day as {{what}}."
+msgstr "你当天已经以 {{what}} 的身份在服事。"
+
+#: 
+msgid "already serving as {{position}}"
+msgstr "已在担任 {{position}}"
+
+#: 
+msgid "last served {{date}}"
+msgstr "上次服事 {{date}}"
+
+#: 
+msgctxt "one"
+msgid "{{count}} needed"
+msgstr "需要 {{count}}"
+
+#: 
+msgctxt "other"
+msgid "{{count}} needed"
+msgstr "需要 {{count}}"
+
+#: 
+msgctxt "one"
+msgid "{{count}} occurrences deleted"
+msgstr "已删除 {{count}} 次安排"
+
+#: 
+msgctxt "other"
+msgid "{{count}} occurrences deleted"
+msgstr "已删除 {{count}} 次安排"
+
+#: 
+msgctxt "one"
+msgid "{{failed}} of {{count}} occurrences could not be deleted"
+msgstr "{{count}} 次安排中有 {{failed}} 次无法删除"
+
+#: 
+msgctxt "other"
+msgid "{{failed}} of {{count}} occurrences could not be deleted"
+msgstr "{{count}} 次安排中有 {{failed}} 次无法删除"
+
+#: 
+msgid "{{live}} assigned, {{min}} needed, room for {{more}} more"
+msgstr "已安排 {{live}} 人，需要 {{min}} 人，还可再容纳 {{more}} 人"
+
+#: 
+msgid "{{live}} of up to {{max}}"
+msgstr "最多 {{max}} 人中的 {{live}} 人"
+
+#: 
+msgid "{{live}} of {{max}}"
+msgstr "{{max}} 人中的 {{live}} 人"
+
+#: 
+msgid "{{live}} of {{min}}"
+msgstr "{{min}} 人中的 {{live}} 人"
+
+#: 
+msgid "{{live}} of {{min}}–{{max}}"
+msgstr "{{min}}–{{max}} 人中的 {{live}} 人"
+
+#: 
+msgid "{{ministry}} has no events between {{from}} and {{to}}."
+msgstr "{{ministry}} 在 {{from}} 至 {{to}} 之间没有活动。"
+
+#: 
+msgid "{{ministry}} has no events titled {{title}} between {{from}} and {{to}}."
+msgstr "{{ministry}} 在 {{from}} 至 {{to}} 之间没有标题为 {{title}} 的活动。"
+
+#: 
+msgid "{{min}} to {{max}} needed"
+msgstr "需要 {{min}} 至 {{max}} 人"
+
+#: 
+msgid "{{name}} (no longer qualified)"
+msgstr "{{name}}（已不再具备资格）"
+
+#: 
+msgid "{{name}} (no upcoming meetings — add its meetings first)"
+msgstr "{{name}}（没有即将到来的聚会——请先添加其聚会）"
+
+#: 
+msgid "{{name}} (no upcoming meetings)"
+msgstr "{{name}}（没有即将到来的聚会）"
+
+#: 
+msgctxt "one"
+msgid "{{name}} ({{count}} upcoming)"
+msgstr "{{name}}（即将到来 {{count}}）"
+
+#: 
+msgctxt "other"
+msgid "{{name}} ({{count}} upcoming)"
+msgstr "{{name}}（即将到来 {{count}}）"
+
+#: 
+msgid "{{name}} does not name the event it follows, so it has nothing to staff."
+msgstr "{{name}} 没有写明所跟随的活动，因此没有可安排人员的内容。"
+
+#: 
+msgid "{{name}} ended on {{date}}, so there are no dates left to generate."
+msgstr "{{name}} 已于 {{date}} 结束，因此没有剩下可生成的日期。"
+
+#: 
+msgid "{{name}} has no upcoming meetings on the calendar, so this schedule has nothing to staff."
+msgstr "{{name}} 在日历上没有即将到来的聚会，因此此日程没有可安排的人员。"
+
+#: 
+msgid "{{name}} is no longer qualified, so this place is left open on new occurrences."
+msgstr "{{name}} 已不再具备资格，因此新的各次安排会把这个位置留空。"
+
+#: 
+msgid "{{name}} starts on {{date}}, after the dates generated now (through {{through}})."
+msgstr "{{name}} 从 {{date}} 开始，晚于本次生成的日期（截至 {{through}}）。"
+
+#: 
+msgid "{{pending}} not yet confirmed"
+msgstr "{{pending}} 人尚未确认"
+
+#: 
+msgid "{{position}}: Max is {{max}} but {{chosen}} default volunteers are chosen. Remove one or raise Max."
+msgstr "{{position}}：上限是 {{max}}，但已选择 {{chosen}} 名默认义工。请去掉一人或提高上限。"
+
+#: 
+msgid "{{team}}: no staffing needs set"
+msgstr "{{team}}：尚未设置人员需求"
+
+#: 
+msgid "{{team}}: {{staffing}}"
+msgstr "{{team}}：{{staffing}}"
+
+#: 
+msgctxt "one"
+msgid "{{title}} ({{count}} upcoming)"
+msgstr "{{title}}（即将到来 {{count}}）"
+
+#: 
+msgctxt "other"
+msgid "{{title}} ({{count}} upcoming)"
+msgstr "{{title}}（即将到来 {{count}}）"
+
+#: 
+msgid "{{type}} events (no event chosen yet)"
+msgstr "{{type}} 活动（尚未选择活动）"
+
+#: 
+msgid "{{type}} events titled {{title}}"
+msgstr "标题为 {{title}} 的 {{type}} 活动"
+
+#: 
+msgid "User must be a staff user"
+msgstr "用户必须是职员用户"
+
+#: 
+msgid "Enter a new password"
+msgstr "请输入新密码"
+
+#: 
+msgid "%d queued"
+msgstr "已排队 %d"
+
+#: 
+msgid "%s queued: %s"
+msgstr "%s 已排队：%s"
+
+#: 
+msgid "Could not delete the queue."
+msgstr "无法删除队列。"
+
+#: 
+msgid "Delete Queue"
+msgstr "删除队列"
+
+#: 
+msgid "Delete every queued message? They will not be sent. Queued messages: {{total}}"
+msgstr "要删除所有排队中的邮件吗？它们将不会发送。排队邮件：{{total}}"
+
+#: 
+msgid "Each message is recorded in the person's email history."
+msgstr "每封邮件都会记入该人员的邮件记录。"
+
+#: 
+msgid "Email batch not found. If it was still queued, an administrator deleted the queue and it will not be sent."
+msgstr "未找到该批邮件。若它仍在队列中，则是管理员删除了队列，将不会发送。"
+
+#: 
+msgid "Failed to delete the email queue"
+msgstr "删除邮件队列失败"
+
+#: 
+msgid "Failed to queue the email"
+msgstr "将邮件加入队列失败"
+
+#: 
+msgid "Follow it in the email history"
+msgstr "在邮件记录中查看"
+
+#: 
+msgid "Messages queued: {{total}}. They will be sent in the background."
+msgstr "已排队的邮件：{{total}}。将在后台发送。"
+
+#: 
+msgid "Queued"
+msgstr "已排队"
+
+#: 
+msgid "Queued messages deleted: {{total}}"
+msgstr "已删除的排队邮件：{{total}}"
+
+#: 
+msgid "Sending"
+msgstr "正在发送"
+
+#: 
+msgid "Sending was interrupted before the server answered."
+msgstr "服务器回应之前，发送已中断。"
+
+#: 
+msgid "Sending… {{done}} of {{total}}"
+msgstr "正在发送… {{total}} 中的 {{done}}"
+
+#: 
+msgid "Still queued, to be sent automatically: {{total}}"
+msgstr "仍在排队、将自动发送：{{total}}"
+
+#: 
+msgid "The queue was cleared. Messages that will not be sent: {{total}}"
+msgstr "队列已清空。将不会发送的邮件：{{total}}"
+
+#: 
+msgid "This email batch was queued by another user"
+msgstr "这批邮件是由另一位用户加入队列的"
+
+#: 
+msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
+msgstr "导入之后，可以在管理仪表板上使用「重置数据库」清除全部数据并重新开始。应用程序配置会保留。"
+
+#: 
+msgid "Importing demo data..."
+msgstr "正在导入示例数据..."
+
+#: 
+msgid "Please do not refresh or navigate away"
+msgstr "请不要刷新或离开此页"
+
+#: 
+msgid "Skip to main content"
+msgstr "跳到主要内容"
+
+#: 
+msgid "Choose None, TLS or SSL for encryption."
+msgstr "加密请选择「无」、TLS 或 SSL。"
+
+#: 
+msgid "Choose an existing person property for Do Not Email."
+msgstr "请为「不要发邮件」选择一个已有的人员属性。"
+
+#: 
+msgid "Copy Church Email must be a valid email address."
+msgstr "教会邮件副本必须是有效的电子邮件地址。"
+
+#: 
+msgid "Email Log"
+msgstr "邮件日志"
+
+#: 
+msgid "Email is disabled. Enable it in Email Settings before testing."
+msgstr "电子邮件已停用。测试前请先在电子邮件设置中启用。"
+
+#: 
+msgid "Email settings saved successfully"
+msgstr "电子邮件设置已保存"
+
+#: 
+msgid "Enable email below, then configure your SMTP server."
+msgstr "请先在下方启用电子邮件，然后配置 SMTP 服务器。"
+
+#: 
+msgid "Every email ChurchCRM sent, newest first"
+msgstr "ChurchCRM 发送的全部邮件，最新的在前"
+
+#: 
+msgid "Find duplicate addresses and people with no email"
+msgstr "查找重复的地址，以及没有电子邮件的人"
+
+#: 
+msgid "General"
+msgstr "常规"
+
+#: 
+msgid "SMTP Server"
+msgstr "SMTP 服务器"
+
+#: 
+msgid "SMTP and delivery settings"
+msgstr "SMTP 与发送设置"
+
+#: 
+msgid "SMTP timeout must be a whole number of seconds between 1 and 600."
+msgstr "SMTP 超时必须是 1 到 600 之间的整数秒。"
+
+#: 
+msgid "SMTP username is required when authentication is on."
+msgstr "开启身份验证时，必须填写 SMTP 用户名。"
+
+#: 
+msgid "Save Email Settings"
+msgstr "保存电子邮件设置"
+
+#: 
+msgid "Turning this off clears the saved username and password."
+msgstr "关闭此项会清除已保存的用户名和密码。"
+
+#: 
+msgid "%1$s added %2$s to the %3$s volunteer pool."
+msgstr "%1$s 已将 %2$s 加入 %3$s 义工库。"
+
+#: 
+msgid "%1$s added %2$s to the %3$s volunteers"
+msgstr "%1$s 已将 %2$s 加入 %3$s 的义工"
+
+#: 
+msgid "%1$s — still needed: %2$d"
+msgstr "%1$s — 仍需要：%2$d"
+
+#: 
+msgid "%1$s, who leads %2$s, added %3$s to the %4$s volunteer pool."
+msgstr "带领 %2$s 的 %1$s 已将 %3$s 加入 %4$s 义工库。"
+
+#: 
+msgid "%s recorded that you will serve. You are on the schedule."
+msgstr "%s 已记录你将服事。你已在日程上。"
+
+#: 
+msgid "Added and qualified"
+msgstr "已添加并具备资格"
+
+#: 
+msgid "Choose how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
+msgstr "选择日程提前多久安排人员、提醒何时发出，并确认后台作业正在运行。"
+
+#: 
+msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
+msgstr "请选择已经在教会名册中的人。他们会加入本事工的义工，并会发邮件给协调员。只有协调员可以把人移出。"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
+msgstr "ChurchCRM 有两种管理义工的方式。同一时间只应使用一种；「义工体验」设置决定本教会看到哪一种。切换只会隐藏或显示页面和菜单项，绝不会删除数据，因此可以再切回来。"
+
+#: 
+msgid "Daily unfilled-position email time"
+msgstr "每日未满岗位邮件的发送时间"
+
+#: 
+msgid "Donation funds, pledges and giving records"
+msgstr "奉献基金、认献与奉献记录"
+
+#: 
+msgid "Events and calendars, including the Member Portal calendars"
+msgstr "活动与日历，包括会友门户的日历"
+
+#: 
+msgid "Families, people and groups"
+msgstr "家庭、人员与小组"
+
+#: 
+msgid "How many hours before a volunteer occurrence its coordinators are told about positions still unfilled. Set to 0 to send no such alerts; reminders are not affected."
+msgstr "在一次义工安排开始前多少小时，把仍未招满的岗位告知其协调员。设为 0 则不发送此类通知；提醒不受影响。"
+
+#: 
+msgid "How many hours before an occurrence its coordinators are told about positions still unfilled. Set to 0 to send no such alerts; reminders are not affected."
+msgstr "在一次安排开始前多少小时，把仍未招满的岗位告知其协调员。设为 0 则不发送此类通知；提醒不受影响。"
+
+#: 
+msgid "Internal: last date the daily email listing unfilled volunteer positions was sent (YYYY-MM-DD). Do not edit manually."
+msgstr "内部：上次发送「未满义工岗位」每日邮件的日期（YYYY-MM-DD）。请勿手动修改。"
+
+#: 
+msgid "Load sample families, people, groups, events, volunteer ministries and giving records. The safest way to learn ChurchCRM before committing your real data."
+msgstr "载入示例家庭、人员、小组、活动、义工事工和奉献记录。在放入真实数据之前，这是熟悉 ChurchCRM 最稳妥的方式。"
+
+#: 
+msgid "Not authorized to grant this scope"
+msgstr "无权授予此范围"
+
+#: 
+msgid "Once a day at this time (church time zone), coordinators get one email listing the unfilled positions that start within the alert lead time plus 24 hours. A gap that opens later in the day is sent on its own."
+msgstr "每天在这个时间（教会时区），协调员会收到一封邮件，列出在提醒提前时间再加上 24 小时内开始、仍未招满的岗位。当天稍后才出现的空缺会单独发送。"
+
+#: 
+msgid "Only a coordinator can take someone out of the pool."
+msgstr "只有协调员可以把人移出义工库。"
+
+#: 
+msgid "Only positions of this team can be ticked"
+msgstr "只能勾选本团队的岗位"
+
+#: 
+msgid "Open each occurrence to assign the people you need."
+msgstr "打开每一次安排，指派你需要的人。"
+
+#: 
+msgid "Optional. You can tick positions on the grid later too."
+msgstr "可选。之后也可以在表格里勾选岗位。"
+
+#: 
+msgid "Qualify them for"
+msgstr "授予他们资格："
+
+#: 
+msgid "Queue"
+msgstr "队列"
+
+#: 
+msgid "Record they accepted"
+msgstr "记录他们已接受"
+
+#: 
+msgid "Sunday School classes"
+msgstr "主日学校的课程"
+
+#: 
+msgid "The time of day (HH:MM, in the church's time zone) the daily email listing unfilled volunteer positions is sent to coordinators."
+msgstr "向协调员发送「未满义工岗位」每日邮件的时刻（HH:MM，教会时区）。"
+
+#: 
+msgid "They already said yes. They get a short confirmation instead of a request to respond."
+msgstr "他们已经答应了。他们会收到简短确认，而不是请他们回复的请求。"
+
+#: 
+msgid "They were already a volunteer here, and are now qualified"
+msgstr "他们本来就是这里的义工，现在已具备资格"
+
+#: 
+msgid "This will add sample data to your database"
+msgstr "这会向你的数据库添加示例数据"
+
+#: 
+msgid "Unfilled-position alert lead time (hours)"
+msgstr "未满岗位通知的提前时间（小时）"
+
+#: 
+msgid "Volunteer Management"
+msgstr "义工管理"
+
+#: 
+msgid "Volunteer ministries, teams, schedules and assignments"
+msgstr "义工事工、团队、日程与指派"
+
+#: 
+msgid "Volunteer positions to fill in the coming days"
+msgstr "未来几天要安排的义工岗位"
+
+#: 
+msgid "Volunteers still needed for these upcoming occurrences: %d"
+msgstr "这些即将到来的安排仍需要的义工：%d"
+
+#: 
+msgid "What do these mean?"
+msgstr "这些是什么意思？"
+
+#: 
+msgid "Which volunteer experience this church uses"
+msgstr "本教会使用哪种义工体验"
+
+#: 
+msgid "You are on the schedule"
+msgstr "你已在日程上"
+
+#: 
+msgid "Your coordinator"
+msgstr "你的协调员"
+
+#: 
+msgid "Your teams: %s"
+msgstr "你的团队：%s"
+
+#: 
+msgid "positionIds must be a list of position ids"
+msgstr "positionIds 必须是岗位编号的列表"
+
+#: 
+msgid "{{name}} ({{family}} family)"
+msgstr "{{name}}（{{family}} 家庭）"
+
+#: 
+msgid "{{name}} assigned and recorded as accepted"
+msgstr "已指派 {{name}}，并记录为已接受"
+
+#: 
+msgid "Ask an administrator to change your sign-in email."
+msgstr "请让管理员更改你的登录邮箱。"
+
+#: 
+msgid "Email changed by an administrator from %1$s to %2$s"
+msgstr "管理员已将电子邮件从 %1$s 更改为 %2$s"
+
+#: 
+msgid "Only an administrator can change the email of a person with a user account."
+msgstr "只有管理员可以更改拥有用户账号的人员的电子邮件。"
+
+#: 
+msgid "Fund totals appear here once payments are added."
+msgstr "添加付款后，基金合计将显示在此处。"
+
+#: 
+msgid "No payments yet"
+msgstr "暂无付款"
+
+#: 
+msgid "Some payments could not be deleted"
+msgstr "部分付款无法删除"
+
+#: 
+msgid "A string value is required"
+msgstr "需要字符串值"
+
+#: 
+msgid "Administrator permission required for this setting"
+msgstr "此设置需要管理员权限"
+
+#: 
+msgid "Alerts sent: {{sent}}, failed: {{failed}}"
+msgstr "已发送提醒：{{sent}}，失败：{{failed}}"
+
+#: 
+msgid "Alerts sent: {{total}}"
+msgstr "已发送提醒：{{total}}"
+
+#: 
+msgid "Assign an event to the kiosk using the dropdown"
+msgstr "使用下拉菜单为签到终端分配活动"
+
+#: 
+msgid "Awaiting Acceptance"
+msgstr "等待接受"
+
+#: 
+msgid "Birthday coming up!"
+msgstr "生日即将到来！"
+
+#: 
+msgid "Check that the event start/end times are correct"
+msgstr "请检查活动的开始和结束时间是否正确"
+
+#: 
+msgid "Check the server logs for more details"
+msgstr "请查看服务器日志了解更多详情"
+
+#: 
+msgid "Check-in Opens Soon"
+msgstr "签到即将开始"
+
+#: 
+msgid "Checked-in-by person is not an adult family member"
+msgstr "办理签到的人不是成年家庭成员"
+
+#: 
+msgid "Checked-out-by person is not an adult family member"
+msgstr "办理签退的人不是成年家庭成员"
+
+#: 
+msgid "Checkout all students"
+msgstr "全部学生签退"
+
+#: 
+msgid "Days"
+msgstr "天"
+
+#: 
+msgid "Ensure the group has members"
+msgstr "请确保该小组有成员"
+
+#: 
+msgid "Ensure the group has members assigned"
+msgstr "请确保已为该小组分配成员"
+
+#: 
+msgid "Error Loading Members"
+msgstr "加载成员时出错"
+
+#: 
+msgid "Event Has Ended"
+msgstr "活动已结束"
+
+#: 
+msgid "Event not linked to a Group"
+msgstr "活动未关联小组"
+
+#: 
+msgid "Event timing"
+msgstr "事件时间"
+
+#: 
+msgid "Everyone is here!"
+msgstr "大家都到齐了！"
+
+#: 
+msgid "Failed to send all alerts: {{total}}"
+msgstr "发送全部提醒失败：{{total}}"
+
+#: 
+msgid "Failed to send parent alert"
+msgstr "发送家长提醒失败"
+
+#: 
+msgid "Find this kiosk in the device list"
+msgstr "在设备列表中找到此签到终端"
+
+#: 
+msgid "Group has no members"
+msgstr "该小组没有成员"
+
+#: 
+msgid "HTTP Status: {{status}}"
+msgstr "HTTP 状态：{{status}}"
+
+#: 
+msgid "Hours"
+msgstr "小时"
+
+#: 
+msgid "How to Accept This Kiosk"
+msgstr "如何接受此签到终端"
+
+#: 
+msgid "Kiosk Identification"
+msgstr "签到终端标识"
+
+#: 
+msgid "Kiosk Ready"
+msgstr "签到终端已就绪"
+
+#: 
+msgid "Log in to ChurchCRM as an administrator"
+msgstr "以管理员身份登录 ChurchCRM"
+
+#: 
+msgid "Member is not an adult family member of the roster child"
+msgstr "该成员不是名单中孩子的成年家庭成员"
+
+#: 
+msgid "Next Steps"
+msgstr "后续步骤"
+
+#: 
+msgid "No Group Members Found"
+msgstr "未找到小组成员"
+
+#: 
+msgid "No checked-in students with families to alert"
+msgstr "没有已签到且有家庭可提醒的学生"
+
+#: 
+msgid "Parent Alert"
+msgstr "家长提醒"
+
+#: 
+msgid "Parent alert sent for {{name}}"
+msgstr "已为 {{name}} 发送家长提醒"
+
+#: 
+msgid "Photo not found"
+msgstr "未找到照片"
+
+#: 
+msgid "Possible Causes"
+msgstr "可能的原因"
+
+#: 
+msgid "Processing..."
+msgstr "处理中..."
+
+#: 
+msgid "Recent birthday!"
+msgstr "最近刚过生日！"
+
+#: 
+msgid "Refresh member list"
+msgstr "刷新成员列表"
+
+#: 
+msgid "Refresh this kiosk page"
+msgstr "刷新此签到终端页面"
+
+#: 
+msgid "Seconds"
+msgstr "秒"
+
+#: 
+msgid "Send alert to all families"
+msgstr "向所有家庭发送提醒"
+
+#: 
+msgid "Server error - the event may not be linked to a group"
+msgstr "服务器错误 - 该活动可能未关联小组"
+
+#: 
+msgid "Student"
+msgstr "学生"
+
+#: 
+msgid "System timeline entries cannot be deleted"
+msgstr "系统时间线条目无法删除"
+
+#: 
+msgid "System timeline entries cannot be edited"
+msgstr "系统时间线条目无法编辑"
+
+#: 
+msgid "Thank you for attending!"
+msgstr "感谢您的参与！"
+
+#: 
+msgid "This kiosk has registered but needs to be accepted by an administrator before it can be used."
+msgstr "此签到终端已注册，但需要管理员接受后才能使用。"
+
+#: 
+msgid "This kiosk is accepted but has no active event assignment."
+msgstr "此签到终端已被接受，但没有分配进行中的活动。"
+
+#: 
+msgid "This kiosk is assigned to an event, but no members are available for check-in."
+msgstr "此签到终端已分配活动，但没有可签到的成员。"
+
+#: 
+msgid "This page will automatically refresh when check-in opens."
+msgstr "签到开始后，此页面将自动刷新。"
+
+#: 
+msgid "This page will automatically update once the kiosk is accepted."
+msgstr "签到终端被接受后，此页面将自动更新。"
+
+#: 
+msgid "Today!"
+msgstr "今天"
+
+#: 
+msgid "Turning {{age}}"
+msgstr "即将满 {{age}} 岁"
+
+#: 
+msgid "Unable to load group members"
+msgstr "无法加载小组成员"
+
+#: 
+msgid "Unknown user configuration key"
+msgstr "未知的用户配置键"
+
+#: 
+msgid "this person"
+msgstr "此人"
+
+#: 
+msgid "{{name}} has no family on record"
+msgstr "{{name}} 没有家庭记录"
+
+#: 
+msgid "%d failed (all time)"
+msgstr "%d 次失败（累计）"
+
+#: 
+msgid "Failed email history pages"
+msgstr "失败邮件历史页面"
+
+#: 
+msgid "Failed sends across all email history, including automated messages"
+msgstr "全部邮件历史中的发送失败记录，包括自动邮件"
+
+#: 
+msgid "No server error recorded"
+msgstr "未记录服务器错误"
+
+#: 
+msgid "Show all recent sends"
+msgstr "显示所有最近的发送记录"
+
+#: 
+msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
+msgstr "正在显示全部邮件历史中的发送失败记录，包括自动邮件。选择主题查看详情。"
+
+#: 
+msgid "The table shows only the latest 20 sends. Open a person to see their full history."
+msgstr "表格仅显示最近 20 次发送。打开某人可查看其完整历史。"
+
+#: 
+msgid "View %d failed sends across all email history"
+msgstr "查看全部邮件历史中的 %d 次发送失败"
+
+#: 
+msgid "Add New Grade"
+msgstr "添加新年级"
+
+#: 
+msgid "Change Grade Names"
+msgstr "更改年级名称"
+
+#: 
+msgid "England and Wales"
+msgstr "英格兰和威尔士"
+
+#: 
+msgid "Every year each person moves to the next grade in this order, and the last grade is cleared."
+msgstr "每年每个人都按此顺序升到下一年级，最后一个年级会被清除。"
+
+#: 
+msgid "Everyone with a grade will move up one grade now, and this will count as this year's promotion."
+msgstr "所有有年级的人现在都会升一个年级，并计为今年的升级。"
+
+#: 
+msgid "Finished %s, so the yearly promotion cleared the grade"
+msgstr "已完成%s，因此年度升级清除了该年级"
+
+#: 
+msgid "Finished the last grade: %d"
+msgstr "已完成最后一个年级：%d"
+
+#: 
+msgid "Finishing the last grade (grade will be cleared): {{total}}"
+msgstr "即将完成最后一个年级（年级将被清除）：{{total}}"
+
+#: 
+msgid "From Grade"
+msgstr "从年级"
+
+#: 
+msgid "Grade"
+msgstr "年级"
+
+#: 
+msgid "Grade %s cleared when the grade names changed to %s"
+msgstr "年级名称改为%s时，年级%s已被清除"
+
+#: 
+msgid "Grade Names"
+msgstr "年级名称"
+
+#: 
+msgid "Grade Promotion"
+msgstr "年级升级"
+
+#: 
+msgid "Grade changed from %s to %s by the yearly promotion"
+msgstr "年度升级将年级从%s改为%s"
+
+#: 
+msgid "Grade names not found"
+msgstr "未找到年级名称"
+
+#: 
+msgid "Grades"
+msgstr "年级"
+
+#: 
+msgid "Grades Editor"
+msgstr "年级编辑器"
+
+#: 
+msgid "Grades added"
+msgstr "已添加年级"
+
+#: 
+msgid "Grades removed"
+msgstr "已移除年级"
+
+#: 
+msgid "Grades renamed: {{total}}"
+msgstr "已重命名年级：{{total}}"
+
+#: 
+msgid "Grades were already promoted this year, on {{date}}. Promoting again moves everyone up another grade."
+msgstr "年级已于今年{{date}}升级过。再次升级会让所有人再升一个年级。"
+
+#: 
+msgid "Grades were promoted by someone else in the meantime. Reload the page to see the new grades."
+msgstr "年级已在此期间被其他人升级。请重新加载页面以查看新年级。"
+
+#: 
+msgid "Grades you added that match a name in the list and are combined with it"
+msgstr "您添加的、与列表中某个名称匹配并与之合并的年级"
+
+#: 
+msgid "Internal: date and time of the last grade promotion. Do not edit manually."
+msgstr "内部：上次年级升级的日期和时间。请勿手动编辑。"
+
+#: 
+msgid "Internal: how the last grade promotion ran and how many people it moved. Do not edit manually."
+msgstr "内部：上次年级升级的运行方式及其移动的人数。请勿手动编辑。"
+
+#: 
+msgid "Internal: the country whose grade names were last applied to the grade list. Do not edit manually."
+msgstr "内部：上次应用到年级列表的年级名称所属国家。请勿手动编辑。"
+
+#: 
+msgid "Internal: the day the grade promotion date was last changed (YYYY-MM-DD). Do not edit manually."
+msgstr "内部：年级升级日期上次更改的日期（YYYY-MM-DD）。请勿手动编辑。"
+
+#: 
+msgid "Internal: the list that holds the grade names. Do not edit manually."
+msgstr "内部：保存年级名称的列表。请勿手动编辑。"
+
+#: 
+msgid "Last promotion"
+msgstr "上次升级"
+
+#: 
+msgid "Leave empty for one grade"
+msgstr "仅一个年级时留空"
+
+#: 
+msgid "Moved up: %d"
+msgstr "已升级：%d"
+
+#: 
+msgid "Moving up: {{total}}"
+msgstr "即将升级：{{total}}"
+
+#: 
+msgid "Next automatic promotion"
+msgstr "下次自动升级"
+
+#: 
+msgid "Nobody has a grade to promote."
+msgstr "没有人有可升级的年级。"
+
+#: 
+msgid "Northern Ireland"
+msgstr "北爱尔兰"
+
+#: 
+msgid "People by Grade"
+msgstr "按年级查看人员"
+
+#: 
+msgid "People in a range of school grades, such as Kindergarten through 5th"
+msgstr "处于一定学校年级范围内的人员，例如幼儿园至五年级"
+
+#: 
+msgid "People whose grade is cleared: {{total}}"
+msgstr "年级将被清除的人员：{{total}}"
+
+#: 
+msgid "Promote Grades"
+msgstr "升级年级"
+
+#: 
+msgid "Promote Now"
+msgstr "立即升级"
+
+#: 
+msgid "Promotion Day"
+msgstr "升级日"
+
+#: 
+msgid "Promotion Month"
+msgstr "升级月份"
+
+#: 
+msgid "Renames the grades to the names used in that country. People keep their grade, and grades you added yourself stay."
+msgstr "将年级重命名为该国家使用的名称。人员保留其年级，您自行添加的年级也会保留。"
+
+#: 
+msgid "Scheduled Task"
+msgstr "计划任务"
+
+#: 
+msgid "Scotland"
+msgstr "苏格兰"
+
+#: 
+msgid "The day of that month on which grades are promoted. A day past the end of the month means its last day."
+msgstr "该月中升级年级的日期。超过月末的日期表示该月最后一天。"
+
+#: 
+msgid "The grades already use these names."
+msgstr "年级已使用这些名称。"
+
+#: 
+msgid "The grades changed after the preview. Review the changes again before applying them."
+msgstr "预览后年级已更改。应用前请再次检查更改。"
+
+#: 
+msgid "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off."
+msgstr "所有有年级的人升一个年级的月份。关闭会停用自动升级。"
+
+#: 
+msgid "Through Grade"
+msgstr "至年级"
 

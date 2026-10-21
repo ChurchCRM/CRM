@@ -295,7 +295,7 @@ window.calendarPropertiesModal = {
 
     const colorSwatch = (hex) =>
       '<span class="d-inline-flex align-items-center gap-2">' +
-      '<span style="display:inline-block;width:1.25rem;height:1.25rem;border-radius:4px;border:1px solid var(--tblr-border-color);background:#' +
+      '<span class="calendar-color-swatch" style="background:#' +
       hex +
       '"></span>' +
       "<code>#" +
@@ -502,7 +502,7 @@ window.calendarPropertiesModal = {
 function fieldError(inputField) {
   let p = $(inputField).parent().find("p .form-field-error");
   if (p.length === 0) {
-    p = $("<p class='form-field-error'>");
+    p = $("<p class='text-danger form-field-error'>");
     $(inputField).parent().append(p);
   }
   $(p).text(i18next.t("Invalid Entry"));
@@ -683,7 +683,9 @@ function initializeCalendar() {
       jsEvent.preventDefault();
 
       if (eventData.url !== "null") {
-        window.open(eventData.url);
+        if (/^https?:$/.test(new URL(eventData.url, window.location.href).protocol)) {
+          window.open(eventData.url, "_blank", "noopener,noreferrer");
+        }
       } else if (eventData.editable || eventData.startEditable || eventData.durationEditable) {
         window.showEventForm(eventData);
       } else {
@@ -794,7 +796,7 @@ function getCalendarFilterElement(calendar, type) {
     sourceId +
     '">' +
     '<div class="d-flex align-items-center">' +
-    '<span class="d-inline-block rounded-circle flex-shrink-0 me-2" style="width:12px;height:12px;background-color:#' +
+    '<span class="d-inline-block rounded-circle flex-shrink-0 me-2 calendar-dot" style="background-color:#' +
     calendar.BackgroundColor +
     '"></span>' +
     '<div class="flex-fill">' +

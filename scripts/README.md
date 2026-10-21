@@ -7,11 +7,18 @@ This folder contains Node.js and shell scripts used for building, packaging, and
 
 | Script | Purpose | Usage |
 |--------|---------|-------|
+| `lint.js` | Run every lint check in parallel; prints only failures | `npm run lint` (pre-push hook and CI) |
+| `build.js` | Production build: Composer and webpack in parallel, then signatures | `npm run build` |
+| `composer-install.js` | Install production Composer dependencies; skipped when `src/vendor` matches `composer.lock` | `npm run composer:install` |
+| `clean.js` | Remove dependencies, build output, and logs (`--logs`: logs only) | `npm run clean`, `npm run logs:clear` |
+| `docker-config.js` | Put `src/Include/Config.php` in place for a docker profile (`--remove`: delete it) | Called by the `docker:*:start` scripts |
+| `sync-supported-databases.js` | Rewrite the compose images, nightly matrix and setup text from `supported-databases.json` (`--check` fails when one is stale) | `node scripts/sync-supported-databases.js` |
 | `generate-signatures-node.js` | Generate file integrity checksums | `npm run build:signatures` |
-| `validate-php-syntax.js` | Validate PHP syntax in build | `npm run build:php:validate` |
+| `validate-php-syntax.js` | Validate PHP syntax of changed files | `npm run build:php:validate` |
 | `package-release.js` | Create release ZIP package | `npm run package` |
+| `validate-ui-conventions.js` | Keep styling in utilities, page partials and stock Tabler | `npm run lint` |
 | `locale-check.js` | Lint locale files for issues | `npm run locale:lint` |
-| `startNewRelease.js` | Version bump for releases | Used by maintainers |
+| `startNewRelease.js` | Version bump for releases | Called only by `.github/workflows/release-prepare.yml` |
 | `create-plugin.php` | Scaffold a new community plugin (clones [community-plugin-hello-world](https://github.com/ChurchCRM/community-plugin-hello-world) from GitHub) | `php scripts/create-plugin.php <kebab-id> [--author="Name"]` |
 | `plugin-scan.php` | Self-audit a community plugin directory against the maintainer review checklist | `php scripts/plugin-scan.php [--json] <plugin-dir>` |
 
@@ -90,18 +97,13 @@ npm run locale:lint
 
 ### startNewRelease.js
 
-**Version management for releases.** Used by maintainers to bump version numbers.
-
-```bash
-node scripts/startNewRelease.js <new-version>
-```
+**Version management for releases.** Only `.github/workflows/release-prepare.yml` calls this script.
 
 **What it updates:**
 - `package.json` version
 - Database upgrade configuration
 - Creates git tag
 
-**Note:** This script is for maintainers only. Contributors should not modify version numbers.
 
 ---
 

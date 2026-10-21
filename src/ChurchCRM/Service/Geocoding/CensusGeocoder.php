@@ -33,7 +33,7 @@ class CensusGeocoder extends AbstractHttpGeocoder
         return Countries::toISO($country) === 'US';
     }
 
-    public function geocode(string $street, ?string $city, ?string $state, ?string $zip, ?string $country): ?GeocodeResult
+    public function geocode(string $street, ?string $city, ?string $state, ?string $zip, ?string $country, int $timeoutSeconds = self::TIMEOUT_SECONDS): GeocodeOutcome
     {
         $params = ['benchmark' => self::BENCHMARK, 'format' => 'json'];
 
@@ -54,11 +54,15 @@ class CensusGeocoder extends AbstractHttpGeocoder
             $url = self::ENDPOINT . 'onelineaddress?' . http_build_query($params);
         }
 
-        $data = $this->fetchJson($url, [], self::TIMEOUT_SECONDS);
-        $match = $data['result']['addressMatches'][0] ?? null;
+        $response = $this->fetchJson($url, [], min($timeoutSeconds, self::TIMEOUT_SECONDS));
+        if ($response->data === null) {
+            return $this->failureOutcome($response);
+        }
+
+        $match = $response->data['result']['addressMatches'][0] ?? null;
         $coordinates = \is_array($match) ? ($match['coordinates'] ?? null) : null;
         if (!\is_array($coordinates) || !isset($coordinates['x'], $coordinates['y'])) {
-            return null;
+            return GeocodeOutcome::notFound();
         }
 
         $components = \is_array($match['addressComponents'] ?? null) ? $match['addressComponents'] : [];
@@ -70,6 +74,6 @@ class CensusGeocoder extends AbstractHttpGeocoder
             'country' => self::COUNTRY_NAME,
         ], static fn (string $value): bool => $value !== '');
 
-        return new GeocodeResult((float) $coordinates['y'], (float) $coordinates['x'], self::NAME, $address);
+        return GeocodeOutcome::found(new GeocodeResult((float) $coordinates['y'], (float) $coordinates['x'], self::NAME, $address));
     }
 }

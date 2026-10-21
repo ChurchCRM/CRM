@@ -39,7 +39,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <div class="mb-3">
                         <label for="NewPassword2"><?= gettext('Confirm New Password') ?>:</label>
                         <input type="password" name="NewPassword2" id="NewPassword2" class="form-control" value="">
-                        <span id="NewPasswordError" class="form-field-error"><?= $sNewPasswordError ?? '' ?></span>
+                        <span id="NewPasswordError" class="text-danger"><?= $sNewPasswordError ?? '' ?></span>
                     </div>
                 </div>
                 <div class="card-footer">

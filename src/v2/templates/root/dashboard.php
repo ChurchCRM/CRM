@@ -251,7 +251,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <h3 class="card-title"><i class="fa-solid fa-circle-dollar-to-slot me-2"></i> <?= gettext('Deposit Tracking') ?></h3>
             </div>
             <div class="card-body">
-                <div id="deposit-lineGraph" style="min-height: 300px;"></div>
+                <div id="deposit-lineGraph" class="deposit-line-graph"></div>
             </div>
         </div>
     </div>

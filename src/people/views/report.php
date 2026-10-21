@@ -9,6 +9,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 $reportUrl = $sRootPath . '/people/reports/' . InputUtils::escapeAttribute($slug);
 $canEdit = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled();
+$canDelete = AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled();
 $cart = $_SESSION['aPeopleCart'] ?? [];
 $missingLabels = array_map(static fn (string $key): string => $report['params'][$key]['label'], $missing);
 ?>
@@ -23,7 +24,7 @@ $missingLabels = array_map(static fn (string $key): string => $report['params'][
                     $id = InputUtils::escapeAttribute($key);
                     $value = $values[$key] ?? null;
                     $isMissing = in_array($key, $missing, true);
-                    $invalid = $isMissing ? ' is-invalid' : '';
+                    $invalid = $isMissing && $submitted ? ' is-invalid' : '';
                     ?>
                 <div class="<?= in_array($param['type'], ['classification', 'events'], true) ? 'col-md-6 col-lg-4' : 'col-md-4 col-lg-3' ?>">
                     <label class="form-label" for="<?= $id ?>"><?= InputUtils::escapeHTML($param['label']) ?></label>
@@ -48,7 +49,7 @@ $missingLabels = array_map(static fn (string $key): string => $report['params'][
                     </select>
                     <?php endif; ?>
                     <?php if (!empty($param['help'])) : ?>
-                    <div class="form-hint"><?= InputUtils::escapeHTML($param['help']) ?></div>
+                    <div class="form-text"><?= InputUtils::escapeHTML($param['help']) ?></div>
                     <?php endif; ?>
                 </div>
                 <?php endforeach; ?>
@@ -86,7 +87,7 @@ $missingLabels = array_map(static fn (string $key): string => $report['params'][
             </a>
         </div>
     </div>
-    <div style="overflow-x: clip; overflow-y: visible;">
+    <div class="table-clip-x">
         <table id="reportResults" class="table table-vcenter table-hover card-table">
             <thead>
                 <tr>
@@ -143,12 +144,14 @@ $missingLabels = array_map(static fn (string $key): string => $report['params'][
                                     <i class="<?= $inCart ? 'fa-solid fa-box-open' : 'fa-solid fa-cart-shopping' ?> me-2"></i>
                                     <span class="cart-label"><?= $inCart ? gettext('Remove from Cart') : gettext('Add to Cart') ?></span>
                                 </button>
+                                <?php if ($canDelete) : ?>
                                 <div class="dropdown-divider"></div>
                                 <button type="button" class="dropdown-item text-danger delete-person"
                                         data-person_id="<?= $personId ?>"
                                         data-person_name="<?= InputUtils::escapeAttribute($row['Name']) ?>"<?= PersonDeleteGuard::attributes((int) $personId) ?>>
                                     <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
                                 </button>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </td>
@@ -175,6 +178,10 @@ require __DIR__ . '/partials/labels-modal.php';
                 hidePlaceholder: true,
                 placeholder: select.dataset.placeholder
             });
+        });
+
+        $('#reportFilters').on('change', 'select', function () {
+            this.classList.remove('is-invalid');
         });
 
         $('#addAllToCart').on('click', function () {

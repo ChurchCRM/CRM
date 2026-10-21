@@ -58,7 +58,7 @@ if ($output === 'pdf') {
                 exit;
             }
         }
-        RedirectUtils::redirect('DepositSlipEditor.php?DepositSlipID=' . (int)$iDepositSlipID);
+        RedirectUtils::redirect('finance/deposit/' . (int)$iDepositSlipID);
         exit;
     }
     RedirectUtils::redirect('api/deposits/' . $iDepositSlipID . '/pdf');

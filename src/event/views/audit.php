@@ -38,7 +38,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 
     <div id="auditEmpty" class="card-body text-center text-body-secondary py-5 d-none">
-        <i class="fa-solid fa-smile mb-2 d-block" style="font-size: 3rem;"></i>
+        <i class="fa-solid fa-smile mb-2 d-block empty-state-icon"></i>
         <h3 class="text-body-secondary"><?= gettext('All clear!') ?></h3>
         <p class="text-body-secondary mb-0"><?= gettext('No past events are still marked Active.') ?></p>
     </div>

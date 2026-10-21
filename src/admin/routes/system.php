@@ -3,11 +3,11 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\Exceptions\PasswordChangeException;
 use ChurchCRM\data\Countries;
+use ChurchCRM\data\GradePresets;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\LocaleInfo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Emails\TestEmail;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
@@ -15,6 +15,7 @@ use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\Service\ClassificationService;
+use ChurchCRM\Service\GradeService;
 use ChurchCRM\Service\LocaleService;
 use ChurchCRM\Service\UserService;
 use ChurchCRM\Slim\Middleware\CSRFMiddleware;
@@ -93,6 +94,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         $listConfig = match ($mode) {
             'famroles' => ['listId' => 2, 'title' => gettext('Family Roles Editor'), 'noun' => gettext('Family Role')],
             'classes' => ['listId' => 1, 'title' => gettext('Person Classifications Editor'), 'noun' => gettext('Person Classification')],
+            'grades' => ['listId' => GradeService::listId(), 'title' => gettext('Grades Editor'), 'noun' => gettext('Grade')],
             'grptypes' => ['listId' => 3, 'title' => gettext('Group Types Editor'), 'noun' => gettext('Group Type')],
             'securitygrp' => ['listId' => 5, 'title' => gettext('Security Groups Editor'), 'noun' => gettext('Security Group')],
             'grproles' => $customListId > 0 && GroupQuery::create()->findOneByRoleListId($customListId) !== null
@@ -131,27 +133,32 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
 
         $breadcrumbParent = match ($mode) {
             'grptypes', 'grproles', 'groupcustom' => [gettext('Groups'), '/groups/dashboard'],
-            'famroles', 'famcustom', 'classes', 'custom' => [gettext('People'), '/people/dashboard'],
+            'famroles', 'famcustom', 'classes', 'custom', 'grades' => [gettext('People'), '/people/dashboard'],
             default => [gettext('Admin'), '/admin/'],
         };
         $pageArgs = [
             'sRootPath' => SystemURLs::getRootPath(),
             'sPageTitle' => $listConfig['title'],
-            'sPageSubtitle' => sprintf(gettext('Manage %s options'), $listConfig['noun']),
+            'sPageSubtitle' => $mode === 'grades'
+                ? gettext('Every year each person moves to the next grade in this order, and the last grade is cleared.')
+                : sprintf(gettext('Manage %s options'), $listConfig['noun']),
             'aBreadcrumbs' => PageHeader::breadcrumbs(array_values(array_filter([
                 $breadcrumbParent,
-                in_array($mode, ['famroles', 'famcustom', 'classes', 'custom'], true)
+                in_array($mode, ['famroles', 'famcustom', 'classes', 'custom', 'grades'], true)
                     ? [gettext('People Settings'), '/admin/people']
                     : null,
                 [$listConfig['title']],
             ]))),
-            'sPageHeaderButtons' => in_array($mode, ['famroles', 'famcustom', 'classes', 'custom'], true) ? PageHeader::peopleSettingsButton() : '',
+            'sPageHeaderButtons' => in_array($mode, ['famroles', 'famcustom', 'classes', 'custom', 'grades'], true) ? PageHeader::peopleSettingsButton() : '',
             'mode' => $mode,
             'listId' => $listConfig['listId'],
             'noun' => $listConfig['noun'],
+            'addLabel' => $mode === 'grades' ? gettext('Add New Grade') : gettext('Add New') . ' ' . $listConfig['noun'],
             'optionRows' => $optionRows,
             'inactiveClasses' => $inactiveClasses,
             'directoryClasses' => $directoryClasses,
+            'gradePresets' => $mode === 'grades' ? array_map(static fn (array $preset): string => $preset['name'], GradePresets::all()) : [],
+            'currentGradePreset' => $mode === 'grades' ? GradeService::currentPresetKey() : '',
         ];
 
         return $renderer->render($response, 'option-manager.php', $pageArgs);
@@ -248,95 +255,6 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
                 [gettext('Admin'), '/admin/'],
                 [gettext('Debug')],
             ]),
-        ];
-
-        return $renderer->render($response, 'debug.php', $pageArgs);
-    });
-
-    // Email Debug page — sends a test message to the church's own email
-    // address so an admin can confirm the SMTP settings work end-to-end.
-    $group->get('/debug/email', function (Request $request, Response $response): Response {
-        $renderer = new PhpRenderer(__DIR__ . '/../../v2/templates/email/');
-
-        $configError = null;
-        $configErrorFixUrl = null; // page where the setting actually lives
-        $churchEmail = ChurchMetaData::getChurchEmail();
-        if (!SystemConfig::getBooleanValue('bEnabledEmail')) {
-            $configError = gettext('Email is disabled. Enable it in the Email Dashboard settings before testing.');
-            $configErrorFixUrl = SystemURLs::getRootPath() . '/v2/email/dashboard?settings=open';
-        } elseif (empty(SystemConfig::getValue('sSMTPHost'))) {
-            $configError = gettext('SMTP Host is not configured.');
-            $configErrorFixUrl = SystemURLs::getRootPath() . '/v2/email/dashboard?settings=open';
-        } elseif (empty($churchEmail)) {
-            // Church email is configured on the Church Information page, not
-            // the Email Dashboard — point the admin at the right page.
-            $configError = gettext('Church Email address is not set — the test email has nowhere to go.');
-            $configErrorFixUrl = SystemURLs::getRootPath() . '/admin/system/church-info';
-        }
-
-        // Gather SMTP settings up-front so the page can render them even when
-        // we abort before the send (config errors) — admins still get the
-        // summary of what IS configured.
-        $smtpSettings = [
-            'host'     => SystemConfig::getValue('sSMTPHost') ?: '(not set)',
-            'secure'   => SystemConfig::getValue('sPHPMailerSMTPSecure') ?: gettext('(none)'),
-            'auth'     => SystemConfig::getBooleanValue('bSMTPAuth') ? gettext('Yes') : gettext('No'),
-            'username' => SystemConfig::getBooleanValue('bSMTPAuth') ? SystemConfig::getValue('sSMTPUser') : null,
-            'autoTLS'  => SystemConfig::getBooleanValue('bPHPMailerAutoTLS') ? gettext('Yes') : gettext('No'),
-            'timeout'  => SystemConfig::getIntValue('iSMTPTimeout') . 's',
-        ];
-
-        $sendResult = [
-            'attempted' => false,
-            'success'   => false,
-            'error'     => null,
-            'debugLog'  => '',
-            'from'      => null,
-            'fromName'  => null,
-            'to'        => null,
-        ];
-
-        if ($configError === null) {
-            $email = new TestEmail([$churchEmail]);
-            $sendResult['attempted'] = true;
-            $sendResult['from']     = $churchEmail;
-            $sendResult['fromName'] = ChurchMetaData::getChurchName();
-            $sendResult['to']       = $churchEmail;
-
-            // Capture PHPMailer's HTML debug output (Debugoutput='html' echoes
-            // directly during send) so we can show it inline instead of bleeding
-            // into the rendered page.
-            ob_start();
-            try {
-                $sendResult['success'] = $email->send();
-            } catch (\Throwable $e) {
-                $sendResult['success'] = false;
-                $sendResult['error']   = $e->getMessage();
-            }
-            $sendResult['debugLog'] = ob_get_clean() ?: '';
-
-            if (!$sendResult['success'] && empty($sendResult['error'])) {
-                $sendResult['error'] = $email->getError();
-            }
-        }
-
-        $pageArgs = [
-            'sRootPath'    => SystemURLs::getRootPath(),
-            'sPageTitle'   => gettext('Email Debug'),
-            'sPageSubtitle' => gettext('Send a test message to verify your SMTP configuration'),
-            'aBreadcrumbs' => PageHeader::breadcrumbs([
-                [gettext('Admin'), '/admin/'],
-                [gettext('Email Dashboard'), '/v2/email/dashboard'],
-                [gettext('Debug')],
-            ]),
-            'configError'  => $configError,
-            'configErrorFixUrl' => $configErrorFixUrl,
-            'smtpSettings' => $smtpSettings,
-            'sendResult'   => $sendResult,
-            // ?settings=open matches the dashboard tile behavior — opens the
-            // settings panel so the admin lands directly on the fields they
-            // need to edit, not the dashboard landing view.
-            'emailDashboardUrl' => SystemURLs::getRootPath() . '/v2/email/dashboard?settings=open',
         ];
 
         return $renderer->render($response, 'debug.php', $pageArgs);
@@ -949,10 +867,19 @@ function adminChangeUserPassword(Request $request, Response $response, array $ar
     ];
 
     if ($request->getMethod() === 'POST') {
-        $loginRequestBody = $request->getParsedBody();
+        $loginRequestBody = (array) $request->getParsedBody();
+        $newPassword = (string) ($loginRequestBody['NewPassword1'] ?? '');
 
         try {
-            $user->adminSetUserPassword($loginRequestBody['NewPassword1']);
+            if (trim($newPassword) === '') {
+                throw new PasswordChangeException('New', gettext('Enter a new password'));
+            }
+
+            if ($newPassword !== (string) ($loginRequestBody['NewPassword2'] ?? '')) {
+                throw new PasswordChangeException('New', gettext('You must enter the same password in both boxes'));
+            }
+
+            $user->adminSetUserPassword($newPassword);
 
             $pageArgs['sPasswordChangeSuccess'] = true;
 
@@ -1021,7 +948,7 @@ function adminUserEditorNew(Request $request, Response $response): Response
             $pageArgs['sUserName']        = '';
             $pageArgs['perms']            = ['admin' => 0, 'editSelf' => 0, 'addRecords' => 0,
                                              'editRecords' => 0, 'deleteRecords' => 0,
-                                             'menuOptions' => 0, 'manageGroups' => 0,
+                                             'manageGroups' => 0,
                                              'finance' => 0, 'manageFundraisers' => 0,
                                              'manageMinistries' => 0, 'manageMyMinistries' => 0, 'notes' => 0,
                                              'addEvent' => 0];
@@ -1073,7 +1000,7 @@ function adminUserEditorNew(Request $request, Response $response): Response
     $pageArgs['perms'] = [
         'admin' => 0, 'editSelf' => 0, 'addRecords' => 0,
         'editRecords' => 0, 'deleteRecords' => 0,
-        'menuOptions' => 0, 'manageGroups' => 0,
+        'manageGroups' => 0,
         'finance' => 0, 'manageFundraisers' => 0, 'manageMinistries' => 0, 'manageMyMinistries' => 0, 'notes' => 0,
         'addEvent' => 0,
     ];
@@ -1161,7 +1088,6 @@ function adminUserEditorEdit(Request $request, Response $response, array $args):
         'addRecords'   => $user->getAddRecords(),
         'editRecords'  => $user->getEditRecords(),
         'deleteRecords' => $user->getDeleteRecords(),
-        'menuOptions'  => $user->getMenuOptions(),
         'manageGroups'       => $user->getManageGroups(),
         'finance'            => $user->getFinance(),
         'manageFundraisers'  => $user->getManageFundraisers(),
