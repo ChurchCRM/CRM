@@ -37,6 +37,10 @@ class EmailLogService
     public const DEFAULT_PAGE_SIZE = 25;
     public const MAX_PAGE_SIZE = 100;
 
+    /** getLog() sentBy value for mail no user queued (birthday greetings, account email) */
+    public const SENT_BY_AUTOMATIC = 'automatic';
+    public const MAX_SEARCH_LENGTH = 100;
+
     /** @var array<string, array{personId: ?int, familyId: ?int}> per-request address cache */
     private array $resolved = [];
 
@@ -195,18 +199,83 @@ class EmailLogService
     }
 
     /**
-     * Newest-first page across everyone (admin view), optionally by status.
+     * Newest-first page of the email log table: everyone's mail, or only the mail
+     * $senderUserId queued. Every word of the search must appear in the subject, the
+     * address or the recipient's name. Rows carry recipientName and recipientUrl, the
+     * person (or else family) record the address belonged to.
+     *
+     * @param array{status?: ?string, kind?: ?string, sentBy?: int|string|null, search?: ?string} $filters
+     *        sentBy is a user id or SENT_BY_AUTOMATIC
      *
      * @return array{rows: list<array<string, mixed>>, total: int, page: int, limit: int, pages: int}
      */
-    public function getRecent(?string $status = null, int $page = 1, int $limit = self::DEFAULT_PAGE_SIZE): array
+    public function getLog(array $filters, ?int $senderUserId = null, int $page = 1, int $limit = self::DEFAULT_PAGE_SIZE): array
     {
-        $query = EmailLogQuery::create();
-        if ($status !== null && $status !== '') {
-            $query->filterByStatus($status);
+        $query = $this->logQuery($senderUserId);
+        if (($filters['status'] ?? '') !== '') {
+            $query->filterByStatus($filters['status']);
+        }
+        if (($filters['kind'] ?? '') !== '') {
+            $query->filterByKind($filters['kind']);
+        }
+        $sentBy = $filters['sentBy'] ?? null;
+        if ($sentBy === self::SENT_BY_AUTOMATIC) {
+            $query->filterByUsrId(null, Criteria::ISNULL);
+        } elseif (is_int($sentBy)) {
+            $query->filterByUsrId($sentBy);
+        }
+        $words = preg_split('/\s+/u', trim((string) ($filters['search'] ?? '')), -1, PREG_SPLIT_NO_EMPTY) ?: [];
+        if ($words !== []) {
+            $query->joinPerson(null, Criteria::LEFT_JOIN)->joinFamily(null, Criteria::LEFT_JOIN);
+            $matches = [];
+            foreach ($words as $index => $word) {
+                $like = '%' . addcslashes($word, '%_\\') . '%';
+                $query->condition("subject$index", 'EmailLog.Subject LIKE ?', $like)
+                    ->condition("address$index", 'EmailLog.Address LIKE ?', $like)
+                    ->condition("first$index", 'Person.FirstName LIKE ?', $like)
+                    ->condition("last$index", 'Person.LastName LIKE ?', $like)
+                    ->condition("family$index", 'Family.Name LIKE ?', $like)
+                    ->combine(["subject$index", "address$index", "first$index", "last$index", "family$index"], Criteria::LOGICAL_OR, "word$index");
+                $matches[] = "word$index";
+            }
+            $query->where($matches);
         }
 
-        return $this->page($query, $page, $limit);
+        $result = $this->page($query, $page, $limit);
+        $result['rows'] = $this->withRecipients($result['rows']);
+
+        return $result;
+    }
+
+    /**
+     * What the email log table can filter by within the mail the viewer may see: the types
+     * and senders that occur, and how many messages failed or wait in the queue.
+     *
+     * @return array{kinds: array<string, string>, senders: array<int, string>, failed: int, queued: int}
+     */
+    public function getLogFacets(?int $senderUserId = null): array
+    {
+        $kinds = [];
+        foreach ($this->logQuery($senderUserId)->select('Kind')->distinct()->find() as $kind) {
+            $kinds[(string) $kind] = self::kindLabel((string) $kind);
+        }
+        asort($kinds, SORT_NATURAL | SORT_FLAG_CASE);
+
+        $senderIds = $this->logQuery($senderUserId)->filterByUsrId(null, Criteria::ISNOTNULL)->select('UsrId')->distinct()->find()->toArray();
+        $senders = [];
+        if ($senderIds !== []) {
+            foreach (PersonQuery::create()->filterById($senderIds, Criteria::IN)->find() as $person) {
+                $senders[(int) $person->getId()] = $person->getFullName();
+            }
+        }
+        asort($senders, SORT_NATURAL | SORT_FLAG_CASE);
+
+        return [
+            'kinds'   => $kinds,
+            'senders' => $senders,
+            'failed'  => $this->logQuery($senderUserId)->filterByStatus(self::STATUS_FAILED)->count(),
+            'queued'  => $this->logQuery($senderUserId)->filterByStatus(self::STATUS_QUEUED)->count(),
+        ];
     }
 
     public function find(int $id): ?EmailLog
@@ -252,6 +321,23 @@ class EmailLogService
         }
 
         return $out;
+    }
+
+    /**
+     * The mail server's error can name its host or the account that failed to sign in,
+     * so only administrators see it; others still see the failed status.
+     *
+     * @param array<string, mixed> $row from toArray()
+     *
+     * @return array<string, mixed>
+     */
+    public function forViewer(array $row, bool $isAdmin): array
+    {
+        if (!$isAdmin) {
+            $row['error'] = null;
+        }
+
+        return $row;
     }
 
     /**
@@ -305,6 +391,49 @@ class EmailLogService
             'volunteerhelpoffer'    => gettext('Offer to help'),
             default               => gettext('Email'),
         };
+    }
+
+    private function logQuery(?int $senderUserId): EmailLogQuery
+    {
+        $query = EmailLogQuery::create();
+        if ($senderUserId !== null) {
+            $query->filterByUsrId($senderUserId);
+        }
+
+        return $query;
+    }
+
+    /**
+     * @param list<array<string, mixed>> $rows toArray() rows
+     *
+     * @return list<array<string, mixed>>
+     */
+    private function withRecipients(array $rows): array
+    {
+        $personIds = array_values(array_unique(array_filter(array_column($rows, 'personId'))));
+        $familyIds = array_values(array_unique(array_filter(array_column($rows, 'familyId'))));
+        $people = [];
+        if ($personIds !== []) {
+            foreach (PersonQuery::create()->filterById($personIds, Criteria::IN)->find() as $person) {
+                $people[(int) $person->getId()] = $person;
+            }
+        }
+        $families = [];
+        if ($familyIds !== []) {
+            foreach (FamilyQuery::create()->filterById($familyIds, Criteria::IN)->find() as $family) {
+                $families[(int) $family->getId()] = $family;
+            }
+        }
+
+        foreach ($rows as &$row) {
+            $person = $people[$row['personId'] ?? 0] ?? null;
+            $family = $families[$row['familyId'] ?? 0] ?? null;
+            $row['recipientName'] = $person?->getFullName() ?? $family?->getName();
+            $row['recipientUrl'] = $person?->getViewURI() ?? $family?->getViewURI();
+        }
+        unset($row);
+
+        return $rows;
     }
 
     /**
