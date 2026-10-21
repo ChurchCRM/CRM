@@ -68,7 +68,7 @@ These are the only places a row should change when ADR 0002 lands. Each is a cel
 
 | ADR item | Cell that changes |
 |---|---|
-| P6: an administrator never reads highly confidential notes | `church-admin` moves from `allow` to `deny` on the confidential-notes rows |
+| P6: an administrator never reads highly confidential notes | `church-admin` moves from `allow` to `deny` on the confidential-notes rows. Today `private.notes.visibility.spec.js` pins the admin reads of another user's private note (single note, person and family timelines, notes list) and the admin edit and delete of any note; those assertions are the ones P6 flips |
 | #10516 bulk export | Letters, labels and CSV rows: `zero-permission-staff` and `office-staff` move to `deny` once scoped export grants exist. Today letters and labels follow ordinary staff access (#10778) |
 | #10512 `membership.date.manage` | New row: `office-staff` denied on the membership date write |
 | Member sign-in cutover | `portal-only` signs in by session; its API-key rows are removed |
