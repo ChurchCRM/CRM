@@ -5,6 +5,7 @@ const test = require("node:test");
 
 const root = resolve(__dirname, "..");
 const apache = readFileSync(resolve(root, "src/.htaccess"), "utf8");
+const apacheImage = readFileSync(resolve(root, "docker/apache/default.conf"), "utf8");
 const nginx = readFileSync(resolve(root, "docker/examples/nginx/default.conf"), "utf8");
 const caddy = readFileSync(resolve(root, "docker/examples/frankenphp/Caddyfile"), "utf8");
 
@@ -21,6 +22,18 @@ const publicPaths = ["/index.php", "/robots.txt", "/Images/ChurchCRM.png"];
 test("Apache FilesMatch denies the metadata filenames without affecting public assets", () => {
   const match = apache.match(/<FilesMatch "([^"]+)">\s*Require all denied\s*<\/FilesMatch>/);
   assert.ok(match, "expected explicit Apache 2.4 denial");
+  const protectedBasename = new RegExp(match[1]);
+  for (const path of privatePaths) {
+    assert.equal(protectedBasename.test(path.split("/").at(-1)), true, path);
+  }
+  for (const path of publicPaths) {
+    assert.equal(protectedBasename.test(path.split("/").at(-1)), false, path);
+  }
+});
+
+test("the Apache image config denies the metadata filenames without relying on .htaccess", () => {
+  const match = apacheImage.match(/<FilesMatch "(\^\(composer[^"]+)">\s*Require all denied\s*<\/FilesMatch>/);
+  assert.ok(match, "expected explicit denial in docker/apache/default.conf");
   const protectedBasename = new RegExp(match[1]);
   for (const path of privatePaths) {
     assert.equal(protectedBasename.test(path.split("/").at(-1)), true, path);
