@@ -133,15 +133,6 @@ describe("Admin → Member Portal page", () => {
         cy.exec(`rm -rf ${GOOD_DIR} ${BROKEN_DIR} ${WARNING_DIR}`, { failOnNonZeroExit: false });
     });
 
-    describe("Access", () => {
-        it("A staff login without the Admin flag is denied", () => {
-            cy.setupStandardSession();
-            cy.visit("/admin/member-portal");
-            cy.url({ timeout: 10000 }).should("include", "/v2/access-denied");
-            cy.get("#memberPortalPage").should("not.exist");
-        });
-    });
-
     describe("As an administrator", () => {
         beforeEach(() => {
             cy.setupAdminSession();

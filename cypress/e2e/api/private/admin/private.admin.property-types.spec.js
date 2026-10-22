@@ -11,7 +11,7 @@
  *   DELETE /admin/api/property-types/{id}
  *
  * The admin-only rule for these routes is covered by
- * private.admin.api-authorization.spec.js.
+ * the admin-app row in cypress/support/gates/admin.js.
  */
 describe("API Private Property Types", () => {
     beforeEach(() => {
