@@ -90,7 +90,7 @@ if ($sReportType === '') {
         </select>
       </div>
       <div class="d-flex gap-2">
-        <input type="button" class="btn btn-secondary" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location='v2/dashboard';">
+        <input type="button" class="btn btn-secondary" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location='<?= SystemURLs::getRootPath() ?>/v2/dashboard';">
         <input type="submit" class="btn btn-primary" name="Submit1" value="<?= gettext('Next') ?>">
       </div>
     </form>
