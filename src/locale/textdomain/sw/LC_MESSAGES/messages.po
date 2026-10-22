@@ -21147,10 +21147,6 @@ msgid "Recent Emails"
 msgstr "Barua pepe za Hivi Karibuni"
 
 #: 
-msgid "Recent Sends"
-msgstr "Zilizotumwa Hivi Karibuni"
-
-#: 
 msgid "Recipient"
 msgstr "Mpokeaji"
 
@@ -24455,28 +24451,8 @@ msgid "%d failed (all time)"
 msgstr "%d zimeshindwa (jumla)"
 
 #: 
-msgid "Failed email history pages"
-msgstr "Kurasa za historia ya barua pepe zilizoshindwa"
-
-#: 
 msgid "Failed sends across all email history, including automated messages"
 msgstr "Utumaji ulioshindwa katika historia yote ya barua pepe, ikiwemo ujumbe wa kiotomatiki"
-
-#: 
-msgid "No server error recorded"
-msgstr "Hakuna hitilafu ya seva iliyorekodiwa"
-
-#: 
-msgid "Show all recent sends"
-msgstr "Onyesha utumaji wote wa hivi karibuni"
-
-#: 
-msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
-msgstr "Inaonyesha utumaji ulioshindwa katika historia yote ya barua pepe, ikiwemo ujumbe wa kiotomatiki. Chagua mada kwa maelezo."
-
-#: 
-msgid "The table shows only the latest 20 sends. Open a person to see their full history."
-msgstr "Jedwali linaonyesha utumaji 20 wa mwisho tu. Fungua mtu kuona historia kamili."
 
 #: 
 msgid "View %d failed sends across all email history"

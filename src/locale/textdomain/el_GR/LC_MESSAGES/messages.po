@@ -21151,10 +21151,6 @@ msgid "Recent Emails"
 msgstr "Πρόσφατα email"
 
 #: 
-msgid "Recent Sends"
-msgstr "Πρόσφατες αποστολές"
-
-#: 
 msgid "Recipient"
 msgstr "Παραλήπτης"
 
@@ -24459,28 +24455,8 @@ msgid "%d failed (all time)"
 msgstr "%d αποτυχίες (συνολικά)"
 
 #: 
-msgid "Failed email history pages"
-msgstr "Σελίδες ιστορικού αποτυχημένων email"
-
-#: 
 msgid "Failed sends across all email history, including automated messages"
 msgstr "Αποτυχημένες αποστολές σε όλο το ιστορικό email, συμπεριλαμβανομένων των αυτόματων μηνυμάτων"
-
-#: 
-msgid "No server error recorded"
-msgstr "Δεν καταγράφηκε σφάλμα διακομιστή"
-
-#: 
-msgid "Show all recent sends"
-msgstr "Εμφάνιση όλων των πρόσφατων αποστολών"
-
-#: 
-msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
-msgstr "Εμφανίζονται οι αποτυχημένες αποστολές σε όλο το ιστορικό email, συμπεριλαμβανομένων των αυτόματων μηνυμάτων. Επιλέξτε ένα θέμα για λεπτομέρειες."
-
-#: 
-msgid "The table shows only the latest 20 sends. Open a person to see their full history."
-msgstr "Ο πίνακας εμφανίζει μόνο τις τελευταίες 20 αποστολές. Ανοίξτε ένα άτομο για να δείτε το πλήρες ιστορικό."
 
 #: 
 msgid "View %d failed sends across all email history"
