@@ -168,12 +168,22 @@ jobs:
           - name: api
             spec: "cypress/e2e/api/**/*.spec.js"
             config: "cypress/configs/docker.config.ts"
-          - name: admin-ui
-            spec: "cypress/e2e/ui-admin/**/*.spec.js"
-            config: "cypress/configs/docker-admin.config.ts"
         include:
-          # ui specs sharded 3× (PHP 8.4 only; 8.5 ui covered by build-test-nightly.yml)
+          # ui and admin-ui specs sharded 3× by recorded duration (cypress/split-timings.json)
+          # (PHP 8.4 only; 8.5 ui covered by build-test-nightly.yml)
           # split-index values are strings to avoid JS falsy coercion of 0
+          - php-version: "8.4"
+            test-type: { name: admin-ui-shard-0, config: "cypress/configs/docker-admin.config.ts", spec: "cypress/e2e/ui-admin/**/*.spec.js" }
+            split-index: "0"
+            shard-total: 3
+          - php-version: "8.4"
+            test-type: { name: admin-ui-shard-1, config: "cypress/configs/docker-admin.config.ts", spec: "cypress/e2e/ui-admin/**/*.spec.js" }
+            split-index: "1"
+            shard-total: 3
+          - php-version: "8.4"
+            test-type: { name: admin-ui-shard-2, config: "cypress/configs/docker-admin.config.ts", spec: "cypress/e2e/ui-admin/**/*.spec.js" }
+            split-index: "2"
+            shard-total: 3
           - php-version: "8.4"
             test-type: { name: ui-shard-0, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
             split-index: "0"
@@ -263,12 +273,22 @@ jobs:
           - name: api
             spec: "cypress/e2e/api/**/*.spec.js"
             config: "cypress/configs/docker.config.ts"
-          - name: admin-ui
-            spec: "cypress/e2e/ui-admin/**/*.spec.js"
-            config: "cypress/configs/docker-admin.config.ts"
         include:
-          # ui specs sharded 3× (PHP 8.4 only; 8.5 ui covered by build-test-nightly.yml)
+          # ui and admin-ui specs sharded 3× by recorded duration (cypress/split-timings.json)
+          # (PHP 8.4 only; 8.5 ui covered by build-test-nightly.yml)
           # split-index values are strings to avoid JS falsy coercion of 0
+          - php-version: "8.4"
+            test-type: { name: admin-ui-shard-0, config: "cypress/configs/docker-admin.config.ts", spec: "cypress/e2e/ui-admin/**/*.spec.js" }
+            split-index: "0"
+            shard-total: 3
+          - php-version: "8.4"
+            test-type: { name: admin-ui-shard-1, config: "cypress/configs/docker-admin.config.ts", spec: "cypress/e2e/ui-admin/**/*.spec.js" }
+            split-index: "1"
+            shard-total: 3
+          - php-version: "8.4"
+            test-type: { name: admin-ui-shard-2, config: "cypress/configs/docker-admin.config.ts", spec: "cypress/e2e/ui-admin/**/*.spec.js" }
+            split-index: "2"
+            shard-total: 3
           - php-version: "8.4"
             test-type: { name: ui-shard-0, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
             split-index: "0"
