@@ -274,73 +274,6 @@ jobs:
       if: always()
       run: npm run docker:ci:root:down
 
-  # Pull requests run only the install-path check under /churchcrm. The full suite
-  # in that layout runs in build-test-nightly.yml.
-  test-subdir:
-    needs: [configure, build, lint]
-    timeout-minutes: 40
-    permissions:
-      contents: read
-      checks: write
-    runs-on: ubuntu-24.04
-    strategy:
-      fail-fast: false
-      matrix:
-        php-version: ${{ fromJSON(needs.configure.outputs.php-versions) }}
-        test-type:
-          - name: install-path
-            spec: "cypress/e2e/ui/navigation/install-path-requests.spec.js"
-            config: "cypress/configs/docker-ui.config.ts"
-    steps:
-    - name: Checkout
-      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-
-    - uses: ./.github/actions/checkout-node-npm
-      with:
-        cache-cypress: 'true'
-
-    - name: Download build artifact
-      uses: ./.github/actions/download-artifact
-      with:
-        name: build-${{ github.run_id }}
-        path: .
-
-    - name: Load Docker image
-      run: |
-        docker load < temp/docker-image-${{ matrix.php-version }}.tar.gz
-        docker tag churchcrm/crm:php${{ matrix.php-version }}-test churchcrm/crm:php8-debian
-
-    - name: Start Docker (subdirectory path)
-      run: |
-        cp docker/Config.parallel.subdir.php src/Include/Config.php
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir up -d
-
-    - name: Wait for server (subdirectory path)
-      uses: ./.github/actions/wait-for-server
-      with:
-        url: 'http://127.0.0.1:8080/churchcrm/api/public/echo'
-        docker-compose-profile: 'ci-subdir'
-
-    - name: Run Cypress ${{ matrix.test-type.name }} tests (subdir, PHP ${{ matrix.php-version }})
-      uses: ./.github/actions/run-cypress-tests
-      with:
-        config-file: ${{ matrix.test-type.config }}
-        spec: ${{ matrix.test-type.spec }}
-        test-name: ${{ matrix.test-type.name }}
-        php-version: ${{ matrix.php-version }}
-        deployment: subdir
-        base-url: http://127.0.0.1:8080/churchcrm/
-        docker-compose-profile: ci-subdir
-        # ci-subdir publishes MySQL on 3307. db:query and the row guard both read it.
-        extra-env: |
-          DATABASE_PORT=3307
-          ROW_GUARD_DB_PORT=3307
-          ROW_GUARD_REQUIRED=1
-
-    - name: Stop Docker
-      if: always()
-      run: npm run docker:ci:subdir:down
-
   test-new-system:
     needs: [configure, build, lint]
     timeout-minutes: 40
@@ -402,72 +335,8 @@ jobs:
       if: always()
       run: npm run docker:ci:new-system:down
 
-  test-new-system-subdir:
-    needs: [configure, build, lint]
-    timeout-minutes: 40
-    permissions:
-      contents: read
-      checks: write
-    runs-on: ubuntu-24.04
-    strategy:
-      fail-fast: false
-      matrix:
-        php-version: ${{ fromJSON(needs.configure.outputs.php-versions) }}
-    steps:
-    - name: Checkout
-      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-
-    - uses: ./.github/actions/checkout-node-npm
-      with:
-        cache-cypress: 'true'
-
-    - name: Download build artifact
-      uses: ./.github/actions/download-artifact
-      with:
-        name: build-${{ github.run_id }}
-        path: .
-
-    - name: Load Docker image
-      run: |
-        docker load < temp/docker-image-${{ matrix.php-version }}.tar.gz
-        docker tag churchcrm/crm:php${{ matrix.php-version }}-test churchcrm/crm:php8-debian
-
-    - name: Generate file signatures
-      run: node scripts/generate-signatures-node.js
-
-    - name: Remove Config.php for fresh install test
-      run: rm -f src/Include/Config.php
-
-    - name: Start Docker (new system subdirectory)
-      run: npm run docker:ci:new-system:subdir:start
-
-    - name: Wait for server (new system subdirectory)
-      uses: ./.github/actions/wait-for-server
-      with:
-        url: 'http://127.0.0.1:8081/churchcrm/'
-        docker-compose-profile: 'ci-new-system'
-        docker-compose-files: 'docker/docker-compose.yaml,docker/docker-compose.parallel.yaml,docker/docker-compose.subdir.yaml'
-
-    - name: Run Cypress tests (setup wizard subdir, PHP ${{ matrix.php-version }})
-      uses: ./.github/actions/run-cypress-tests
-      with:
-        config-file: cypress/configs/new-system.config.ts
-        spec: cypress/e2e/new-system/**/*.spec.js
-        test-name: setup
-        php-version: ${{ matrix.php-version }}
-        deployment: new-system-subdir
-        shard-total: 1
-        shard-index: '0'
-        base-url: http://127.0.0.1:8081/churchcrm/
-        docker-compose-profile: ci-new-system
-        docker-compose-files: 'docker/docker-compose.yaml,docker/docker-compose.parallel.yaml,docker/docker-compose.subdir.yaml'
-
-    - name: Stop Docker
-      if: always()
-      run: npm run docker:ci:new-system:subdir:down
-
   test-summary:
-    needs: [build, test-root, test-subdir, test-new-system, test-new-system-subdir]
+    needs: [build, test-root, test-new-system]
     if: always()
     runs-on: ubuntu-24.04
     steps:
@@ -478,7 +347,7 @@ jobs:
       uses: ./.github/actions/test-run-summary
 
   package:
-    needs: [build, test-root, test-subdir, test-new-system, test-new-system-subdir]
+    needs: [build, test-root, test-new-system]
     # Serialize release uploads per branch so concurrent master builds
     # don't race on gh release upload.
     concurrency:
@@ -546,8 +415,8 @@ jobs:
         echo "" >> $GITHUB_STEP_SUMMARY
         echo "**Tests:**" >> $GITHUB_STEP_SUMMARY
         echo "- Root path (API + UI)" >> $GITHUB_STEP_SUMMARY
-        echo "- Subdirectory (API + UI)" >> $GITHUB_STEP_SUMMARY
-        echo "- New system setup wizard (root + subdirectory)" >> $GITHUB_STEP_SUMMARY
+        echo "- New system setup wizard (root path)" >> $GITHUB_STEP_SUMMARY
+        echo "- Subdirectory install: nightly (build-test-nightly.yml)" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
         if [ -d "temp" ]; then
           echo "**Artifacts:**" >> $GITHUB_STEP_SUMMARY
