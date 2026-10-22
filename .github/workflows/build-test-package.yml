@@ -4,7 +4,6 @@ concurrency:
   # PRs: de-dup by PR number (cancel superseded runs).
   # Pushes: per-commit group so back-to-back master/branch pushes all run
   # concurrently without waiting or cancelling each other.
-  # Release upload serialisation is handled at the package job level.
   group: >-
     ${{ github.event_name == 'pull_request'
         && format('pr-{0}', github.event.number)
@@ -169,6 +168,33 @@ jobs:
           temp/
           !src/logs
         retention-days: 1
+
+    # The release workflow downloads this zip from the run that is green on the release tip.
+    - name: Upload release artifact
+      uses: ./.github/actions/upload-artifact
+      with:
+        name: >-
+          ${{ github.ref == 'refs/heads/master' &&
+              format('ChurchCRM-{0}', steps.package-version.outputs.current-version) ||
+              (github.event_name == 'pull_request' &&
+               format('ChurchCRM-{0}-PR{1}', steps.package-version.outputs.current-version, github.event.number) ||
+               format('ChurchCRM-{0}-{1}', steps.package-version.outputs.current-version, steps.vars.outputs.safe_branch)) }}
+        path: temp/ChurchCRM-*.zip
+        retention-days: ${{ github.event_name == 'pull_request' && 14 || 90 }}
+        if-no-files-found: error
+
+    - name: Build summary
+      run: |
+        {
+          echo "## Build Summary"
+          echo ""
+          echo "**Version:** ${{ steps.package-version.outputs.current-version }}"
+          echo "**Branch:** ${{ steps.vars.outputs.branch }}"
+          echo "**Commit:** ${{ github.sha }}"
+          for file in temp/ChurchCRM-*.zip; do
+            [ -f "$file" ] && echo "- \`$(basename "$file")\` ($(du -h "$file" | cut -f1))"
+          done
+        } >> "$GITHUB_STEP_SUMMARY"
 
   test-root:
     needs: [configure, build, lint]
@@ -345,82 +371,3 @@ jobs:
 
     - name: Test overview
       uses: ./.github/actions/test-run-summary
-
-  package:
-    needs: [build, test-root, test-new-system]
-    # Serialize release uploads per branch so concurrent master builds
-    # don't race on gh release upload.
-    concurrency:
-      group: release-${{ github.ref }}
-      cancel-in-progress: false
-    # Package only after the normal integration suite succeeds. Heavy exhaustive
-    # sweeps (incl. the full locale sweep) belong in the nightly workflow, not
-    # in the push/PR critical path. build-test-nightly.yml also triggers on
-    # every push to release/**, so release-branch commits still get an
-    # automatic full-locale run — it just doesn't block this package job.
-    if: ${{ needs.build.result == 'success' && !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled') }}
-    timeout-minutes: 15
-    permissions:
-      contents: read
-    runs-on: ubuntu-24.04
-    steps:
-    - name: Checkout
-      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-
-    - uses: ./.github/actions/checkout-node-npm
-
-    - name: Declare variables
-      id: vars
-      shell: bash
-      run: |
-        branch_name="${GITHUB_REF#refs/heads/}"
-        if [ "${{ github.event_name }}" = "pull_request" ]; then
-          branch_name="pr-${{ github.event.number }}"
-        fi
-        safe_branch=$(echo "$branch_name" | sed 's/[\/\\<>:"|?*]/-/g')
-        echo "branch=$branch_name" >> $GITHUB_OUTPUT
-        echo "safe_branch=$safe_branch" >> $GITHUB_OUTPUT
-
-    - name: Get package version
-      id: package-version
-      run: echo "current-version=$(node -p 'require("./package.json").version')" >> $GITHUB_OUTPUT
-
-    - name: Download build artifact
-      uses: ./.github/actions/download-artifact
-      with:
-        name: build-${{ github.run_id }}
-        path: .
-
-    - name: Upload release artifact
-      uses: ./.github/actions/upload-artifact
-      with:
-        name: >-
-          ${{ github.ref == 'refs/heads/master' &&
-              format('ChurchCRM-{0}', steps.package-version.outputs.current-version) ||
-              (github.event_name == 'pull_request' &&
-               format('ChurchCRM-{0}-PR{1}', steps.package-version.outputs.current-version, github.event.number) ||
-               format('ChurchCRM-{0}-{1}', steps.package-version.outputs.current-version, steps.vars.outputs.safe_branch)) }}
-        path: temp/ChurchCRM-*.zip
-        retention-days: 90
-        if-no-files-found: error
-
-    - name: Build summary
-      if: always()
-      run: |
-        echo "## Build Summary" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "**Version:** ${{ steps.package-version.outputs.current-version }}" >> $GITHUB_STEP_SUMMARY
-        echo "**Branch:** ${{ steps.vars.outputs.branch }}" >> $GITHUB_STEP_SUMMARY
-        echo "**Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "**Tests:**" >> $GITHUB_STEP_SUMMARY
-        echo "- Root path (API + UI)" >> $GITHUB_STEP_SUMMARY
-        echo "- New system setup wizard (root path)" >> $GITHUB_STEP_SUMMARY
-        echo "- Subdirectory install: nightly (build-test-nightly.yml)" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        if [ -d "temp" ]; then
-          echo "**Artifacts:**" >> $GITHUB_STEP_SUMMARY
-          for file in temp/ChurchCRM-*.zip; do
-            [ -f "$file" ] && echo "- \`$(basename "$file")\` ($(du -h "$file" | cut -f1))" >> $GITHUB_STEP_SUMMARY
-          done
-        fi
