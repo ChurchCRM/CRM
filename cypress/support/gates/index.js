@@ -4,7 +4,7 @@ import { FINANCE_GATES } from "./finance";
 import { FUNDRAISER_GATES } from "./fundraiser";
 import { GROUPS_GATES } from "./groups";
 import { NOTES_GATES } from "./notes";
-import { PEOPLE_GATES, RECORD_GATES } from "./people";
+import { EMAIL_GATES, PEOPLE_GATES, RECORD_GATES } from "./people";
 
 export const GATES = [
     ...ADMIN_GATES,
@@ -14,5 +14,6 @@ export const GATES = [
     ...NOTES_GATES,
     ...PEOPLE_GATES,
     ...RECORD_GATES,
+    ...EMAIL_GATES,
     ...EVENT_GATES,
 ];
