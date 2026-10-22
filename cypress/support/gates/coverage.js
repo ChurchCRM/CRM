@@ -4,7 +4,7 @@
 //   pending: why no row exists yet
 // gate-coverage.spec.js fails on an unlisted file or a stale entry, and on more pending entries than MAX_PENDING.
 
-export const MAX_PENDING = 20;
+export const MAX_PENDING = 16;
 
 const APP_GATE = { rows: ["admin-app"], note: "redundant with the admin app gate" };
 const EMAIL_ROLE = { pending: "the Email role needs a persona with bEmailMailto" };
@@ -46,11 +46,11 @@ export const COVERAGE = {
             "people-properties-family-api",
         ],
     },
-    "src/api/routes/people/people-families.php": RECORD_ROUTES,
-    "src/api/routes/people/people-family.php": RECORD_ROUTES,
+    "src/api/routes/people/people-families.php": { rows: ["families-self-verify-api", "families-pending-self-verify-api", "families-verify-email-preview-api"] },
+    "src/api/routes/people/people-family.php": { rows: ["family-photo-upload-api", "family-photo-delete-api", "family-verify-api", "family-verify-url-api", "family-verify-now-api", "family-activate-api", "family-approve-review-api", "family-geocode-api", "family-delete-api"] },
     "src/api/routes/people/people-groups.php": RECORD_ROUTES,
-    "src/api/routes/people/people-person.php": RECORD_ROUTES,
-    "src/api/routes/people/people-persons.php": RECORD_ROUTES,
+    "src/api/routes/people/people-person.php": { rows: ["person-photo-upload-api", "person-activate-api", "person-role-api", "person-approve-review-api", "person-add-to-cart-api", "person-photo-delete-api", "person-delete-api"] },
+    "src/api/routes/people/people-persons.php": { rows: ["persons-duplicate-emails-api", "persons-self-register-approve-api"] },
     "src/api/routes/map.php": { spec: "cypress/e2e/api/private/standard/private.map.geocode-all.spec.js" },
     "src/api/routes/cart.php": EMAIL_ROLE,
     "src/api/routes/email.php": EMAIL_ROLE,

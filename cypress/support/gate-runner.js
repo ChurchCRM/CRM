@@ -12,7 +12,7 @@ export const personasFor = (audience, probe) => [
 ];
 
 export function runApiGates(persona, audience = "standard") {
-    const rows = rowsFor(persona, audience, "api");
+    const rows = rowsFor(persona, audience, "api").filter((row) => !(row.denyOnly && row.allow.includes(persona)));
     if (rows.length === 0) {
         return;
     }
@@ -20,9 +20,12 @@ export function runApiGates(persona, audience = "standard") {
     describe(`${persona}: API gates`, () => {
         rows.forEach((row) => {
             const allowed = row.allow.includes(persona);
+            if (allowed && row.denyOnly) {
+                return;
+            }
 
             it(`${row.id} ${allowed ? "allows" : "refuses"} ${row.api.method} ${row.api.url}`, () => {
-                cy.personaAPICall(persona, row.api.method, row.api.url, null, allowed ? 200 : 403).then((response) => {
+                cy.personaAPICall(persona, row.api.method, row.api.url, row.api.body ?? null, allowed ? 200 : 403).then((response) => {
                     if (!allowed) {
                         expect(response.body.success).to.eq(false);
                     }
