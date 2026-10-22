@@ -21101,10 +21101,6 @@ msgid "Recent Emails"
 msgstr "อีเมลล่าสุด"
 
 #: 
-msgid "Recent Sends"
-msgstr "การส่งล่าสุด"
-
-#: 
 msgid "Recipient"
 msgstr "ผู้รับ"
 
@@ -24405,28 +24401,8 @@ msgid "%d failed (all time)"
 msgstr "ล้มเหลว %d (ทั้งหมด)"
 
 #: 
-msgid "Failed email history pages"
-msgstr "หน้าประวัติอีเมลที่ล้มเหลว"
-
-#: 
 msgid "Failed sends across all email history, including automated messages"
 msgstr "การส่งที่ล้มเหลวในประวัติอีเมลทั้งหมด รวมถึงข้อความอัตโนมัติ"
-
-#: 
-msgid "No server error recorded"
-msgstr "ไม่มีข้อผิดพลาดของเซิร์ฟเวอร์ที่บันทึกไว้"
-
-#: 
-msgid "Show all recent sends"
-msgstr "แสดงการส่งล่าสุดทั้งหมด"
-
-#: 
-msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
-msgstr "กำลังแสดงการส่งที่ล้มเหลวในประวัติอีเมลทั้งหมด รวมถึงข้อความอัตโนมัติ เลือกหัวข้อเพื่อดูรายละเอียด"
-
-#: 
-msgid "The table shows only the latest 20 sends. Open a person to see their full history."
-msgstr "ตารางแสดงเฉพาะการส่งล่าสุด 20 รายการ เปิดบุคคลเพื่อดูประวัติทั้งหมด"
 
 #: 
 msgid "View %d failed sends across all email history"

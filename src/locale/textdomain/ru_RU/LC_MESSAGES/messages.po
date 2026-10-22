@@ -21260,10 +21260,6 @@ msgid "Recent Emails"
 msgstr "Недавние письма"
 
 #: 
-msgid "Recent Sends"
-msgstr "Недавние отправки"
-
-#: 
 msgid "Recipient"
 msgstr "Получатель"
 
@@ -24576,28 +24572,8 @@ msgid "%d failed (all time)"
 msgstr "Не удалось: %d (всего)"
 
 #: 
-msgid "Failed email history pages"
-msgstr "Страницы истории неудачных писем"
-
-#: 
 msgid "Failed sends across all email history, including automated messages"
 msgstr "Неудачные отправки во всей истории писем, включая автоматические сообщения"
-
-#: 
-msgid "No server error recorded"
-msgstr "Ошибка сервера не записана"
-
-#: 
-msgid "Show all recent sends"
-msgstr "Показать все недавние отправки"
-
-#: 
-msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
-msgstr "Показаны неудачные отправки во всей истории писем, включая автоматические сообщения. Выберите тему, чтобы увидеть подробности."
-
-#: 
-msgid "The table shows only the latest 20 sends. Open a person to see their full history."
-msgstr "В таблице показаны только последние 20 отправок. Откройте карточку человека, чтобы увидеть всю историю."
 
 #: 
 msgid "View %d failed sends across all email history"

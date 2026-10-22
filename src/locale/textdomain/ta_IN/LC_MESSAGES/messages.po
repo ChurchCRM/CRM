@@ -21163,10 +21163,6 @@ msgid "Recent Emails"
 msgstr "சமீபத்திய மின்னஞ்சல்கள்"
 
 #: 
-msgid "Recent Sends"
-msgstr "சமீபத்திய அனுப்புதல்கள்"
-
-#: 
 msgid "Recipient"
 msgstr "பெறுநர்"
 
@@ -24471,28 +24467,8 @@ msgid "%d failed (all time)"
 msgstr "%d தோல்வி (மொத்தம்)"
 
 #: 
-msgid "Failed email history pages"
-msgstr "தோல்வியடைந்த மின்னஞ்சல் வரலாற்றுப் பக்கங்கள்"
-
-#: 
 msgid "Failed sends across all email history, including automated messages"
 msgstr "தானியங்கி செய்திகள் உட்பட, முழு மின்னஞ்சல் வரலாற்றிலும் தோல்வியடைந்த அனுப்புதல்கள்"
-
-#: 
-msgid "No server error recorded"
-msgstr "சர்வர் பிழை எதுவும் பதிவு செய்யப்படவில்லை"
-
-#: 
-msgid "Show all recent sends"
-msgstr "சமீபத்திய அனுப்புதல்கள் அனைத்தையும் காட்டு"
-
-#: 
-msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
-msgstr "தானியங்கி செய்திகள் உட்பட, முழு மின்னஞ்சல் வரலாற்றிலும் தோல்வியடைந்த அனுப்புதல்கள் காட்டப்படுகின்றன. விவரங்களுக்கு ஒரு பொருளைத் தேர்ந்தெடுக்கவும்."
-
-#: 
-msgid "The table shows only the latest 20 sends. Open a person to see their full history."
-msgstr "அட்டவணை கடைசி 20 அனுப்புதல்களை மட்டுமே காட்டும். முழு வரலாற்றைக் காண ஒருவரைத் திறக்கவும்."
 
 #: 
 msgid "View %d failed sends across all email history"

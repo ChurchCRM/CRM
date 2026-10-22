@@ -21127,10 +21127,6 @@ msgid "Recent Emails"
 msgstr "Email gần đây"
 
 #: 
-msgid "Recent Sends"
-msgstr "Lần gửi gần đây"
-
-#: 
 msgid "Recipient"
 msgstr "Người nhận"
 
@@ -24431,28 +24427,8 @@ msgid "%d failed (all time)"
 msgstr "%d thất bại (tổng cộng)"
 
 #: 
-msgid "Failed email history pages"
-msgstr "Các trang lịch sử email thất bại"
-
-#: 
 msgid "Failed sends across all email history, including automated messages"
 msgstr "Các lần gửi thất bại trong toàn bộ lịch sử email, bao gồm cả tin nhắn tự động"
-
-#: 
-msgid "No server error recorded"
-msgstr "Không ghi nhận lỗi máy chủ"
-
-#: 
-msgid "Show all recent sends"
-msgstr "Hiện tất cả lần gửi gần đây"
-
-#: 
-msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
-msgstr "Đang hiện các lần gửi thất bại trong toàn bộ lịch sử email, bao gồm cả tin nhắn tự động. Chọn một chủ đề để xem chi tiết."
-
-#: 
-msgid "The table shows only the latest 20 sends. Open a person to see their full history."
-msgstr "Bảng chỉ hiện 20 lần gửi gần nhất. Mở một người để xem toàn bộ lịch sử."
 
 #: 
 msgid "View %d failed sends across all email history"

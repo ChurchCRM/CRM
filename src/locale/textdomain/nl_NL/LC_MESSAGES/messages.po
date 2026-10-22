@@ -21120,10 +21120,6 @@ msgid "Recent Emails"
 msgstr "Recente e-mails"
 
 #: 
-msgid "Recent Sends"
-msgstr "Recente verzendingen"
-
-#: 
 msgid "Recipient"
 msgstr "Ontvanger"
 
@@ -24428,28 +24424,8 @@ msgid "%d failed (all time)"
 msgstr "%d mislukt (totaal)"
 
 #: 
-msgid "Failed email history pages"
-msgstr "Pagina's met mislukte e-mailgeschiedenis"
-
-#: 
 msgid "Failed sends across all email history, including automated messages"
 msgstr "Mislukte verzendingen in de hele e-mailgeschiedenis, inclusief geautomatiseerde berichten"
-
-#: 
-msgid "No server error recorded"
-msgstr "Geen serverfout geregistreerd"
-
-#: 
-msgid "Show all recent sends"
-msgstr "Alle recente verzendingen tonen"
-
-#: 
-msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
-msgstr "Mislukte verzendingen uit de hele e-mailgeschiedenis worden getoond, inclusief geautomatiseerde berichten. Selecteer een onderwerp voor details."
-
-#: 
-msgid "The table shows only the latest 20 sends. Open a person to see their full history."
-msgstr "De tabel toont alleen de laatste 20 verzendingen. Open een persoon om de volledige geschiedenis te zien."
 
 #: 
 msgid "View %d failed sends across all email history"

@@ -21150,10 +21150,6 @@ msgid "Recent Emails"
 msgstr "Hiljutised e-kirjad"
 
 #: 
-msgid "Recent Sends"
-msgstr "Hiljutised saatmised"
-
-#: 
 msgid "Recipient"
 msgstr "Saaja"
 
@@ -24458,28 +24454,8 @@ msgid "%d failed (all time)"
 msgstr "%d ebaõnnestus (kokku)"
 
 #: 
-msgid "Failed email history pages"
-msgstr "Ebaõnnestunud e-kirjade ajaloo lehed"
-
-#: 
 msgid "Failed sends across all email history, including automated messages"
 msgstr "Ebaõnnestunud saatmised kogu e-kirjade ajaloos, sh automaatsed sõnumid"
-
-#: 
-msgid "No server error recorded"
-msgstr "Serveri viga pole salvestatud"
-
-#: 
-msgid "Show all recent sends"
-msgstr "Näita kõiki hiljutisi saatmisi"
-
-#: 
-msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
-msgstr "Kuvatakse ebaõnnestunud saatmised kogu e-kirjade ajaloost, sh automaatsed sõnumid. Üksikasjade nägemiseks valige teema."
-
-#: 
-msgid "The table shows only the latest 20 sends. Open a person to see their full history."
-msgstr "Tabel näitab ainult viimast 20 saatmist. Kogu ajaloo nägemiseks avage isik."
 
 #: 
 msgid "View %d failed sends across all email history"

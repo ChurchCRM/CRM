@@ -21117,10 +21117,6 @@ msgid "Recent Emails"
 msgstr "Kamakailang Mga Email"
 
 #: 
-msgid "Recent Sends"
-msgstr "Kamakailang Mga Ipinadala"
-
-#: 
 msgid "Recipient"
 msgstr "Tatanggap"
 
@@ -24425,28 +24421,8 @@ msgid "%d failed (all time)"
 msgstr "%d ang nabigo (kabuuan)"
 
 #: 
-msgid "Failed email history pages"
-msgstr "Mga pahina ng nabigong kasaysayan ng email"
-
-#: 
 msgid "Failed sends across all email history, including automated messages"
 msgstr "Mga nabigong pagpapadala sa buong kasaysayan ng email, kasama ang mga awtomatikong mensahe"
-
-#: 
-msgid "No server error recorded"
-msgstr "Walang naitalang error sa server"
-
-#: 
-msgid "Show all recent sends"
-msgstr "Ipakita ang lahat ng kamakailang pagpapadala"
-
-#: 
-msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
-msgstr "Ipinapakita ang mga nabigong pagpapadala sa buong kasaysayan ng email, kasama ang mga awtomatikong mensahe. Pumili ng paksa para sa mga detalye."
-
-#: 
-msgid "The table shows only the latest 20 sends. Open a person to see their full history."
-msgstr "Ang huling 20 pagpapadala lang ang ipinapakita ng talahanayan. Buksan ang isang tao para makita ang buong kasaysayan."
 
 #: 
 msgid "View %d failed sends across all email history"

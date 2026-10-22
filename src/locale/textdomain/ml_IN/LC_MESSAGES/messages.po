@@ -21117,10 +21117,6 @@ msgid "Recent Emails"
 msgstr "സമീപകാല ഇമെയിലുകൾ"
 
 #: 
-msgid "Recent Sends"
-msgstr "സമീപകാല അയയ്ക്കലുകൾ"
-
-#: 
 msgid "Recipient"
 msgstr "സ്വീകർത്താവ്"
 
@@ -24425,28 +24421,8 @@ msgid "%d failed (all time)"
 msgstr "%d പരാജയപ്പെട്ടു (ആകെ)"
 
 #: 
-msgid "Failed email history pages"
-msgstr "പരാജയപ്പെട്ട ഇമെയിൽ ചരിത്ര പേജുകൾ"
-
-#: 
 msgid "Failed sends across all email history, including automated messages"
 msgstr "യാന്ത്രിക സന്ദേശങ്ങൾ ഉൾപ്പെടെ, മുഴുവൻ ഇമെയിൽ ചരിത്രത്തിലെയും പരാജയപ്പെട്ട അയയ്ക്കലുകൾ"
-
-#: 
-msgid "No server error recorded"
-msgstr "സെർവർ പിശകൊന്നും രേഖപ്പെടുത്തിയിട്ടില്ല"
-
-#: 
-msgid "Show all recent sends"
-msgstr "സമീപകാല അയയ്ക്കലുകളെല്ലാം കാണിക്കുക"
-
-#: 
-msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
-msgstr "യാന്ത്രിക സന്ദേശങ്ങൾ ഉൾപ്പെടെ, മുഴുവൻ ഇമെയിൽ ചരിത്രത്തിലെയും പരാജയപ്പെട്ട അയയ്ക്കലുകൾ കാണിക്കുന്നു. വിശദാംശങ്ങൾക്ക് ഒരു വിഷയം തിരഞ്ഞെടുക്കുക."
-
-#: 
-msgid "The table shows only the latest 20 sends. Open a person to see their full history."
-msgstr "പട്ടിക അവസാനത്തെ 20 അയയ്ക്കലുകൾ മാത്രമേ കാണിക്കൂ. പൂർണ്ണ ചരിത്രം കാണാൻ ഒരു വ്യക്തിയെ തുറക്കുക."
 
 #: 
 msgid "View %d failed sends across all email history"
