@@ -82,13 +82,20 @@ jobs:
             gh run list --workflow="$1" --commit "$COMMIT" --limit 20 --json databaseId,status,conclusion --jq "$2"
           }
           resolve() {
-            local wf="$1" id
+            local wf="$1" id expired=""
             id=$(find_run "$wf" '[.[]|select(.conclusion=="success")][0].databaseId // empty')
+            # A green build whose zip has expired (kept 3 to 7 days) cannot be released: run it again.
+            if [ -n "$id" ] && [ "$wf" = build-test-package.yml ] &&
+               [ "$(gh api "repos/$GH_REPO/actions/runs/$id/artifacts" --jq '[.artifacts[]|select((.name|startswith("ChurchCRM-")) and (.expired|not))]|length')" = 0 ]; then
+              echo "Build run #$id is green but its ChurchCRM zip has expired; starting a new run." >&2
+              id=""
+              expired=1
+            fi
             if [ -z "$id" ]; then
               id=$(find_run "$wf" '[.[]|select(.status!="completed")][0].databaseId // empty')
             fi
             if [ -z "$id" ]; then
-              if [ -n "$(find_run "$wf" '.[0].databaseId // empty')" ]; then
+              if [ -z "$expired" ] && [ -n "$(find_run "$wf" '.[0].databaseId // empty')" ]; then
                 echo "::error::Every $wf run on ${COMMIT:0:12} failed or was cancelled. Fix it and re-run, then dispatch again."
                 return 1
               fi
