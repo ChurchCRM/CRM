@@ -4,12 +4,11 @@
 //   pending: why no row exists yet
 // gate-coverage.spec.js fails on an unlisted file or a stale entry, and on more pending entries than MAX_PENDING.
 
-export const MAX_PENDING = 20;
+export const MAX_PENDING = 12;
 
 const APP_GATE = { rows: ["admin-app"], note: "redundant with the admin app gate" };
-const EMAIL_ROLE = { pending: "the Email role needs a persona with bEmailMailto" };
 const ADD_EVENT_ROLE = { pending: "AddEvents and CalendarWrite need a persona with bAddEvent" };
-const RECORD_ROUTES = { pending: "per-route Edit Records, Delete Records and Email gates need rows with fixtures" };
+const RECORD_ROUTES = { pending: "the Manage Groups and Email gates on group routes need a group fixture" };
 const VOLUNTEER = "cypress/e2e/api/private/standard/private.volunteer";
 
 export const COVERAGE = {
@@ -46,16 +45,16 @@ export const COVERAGE = {
             "people-properties-family-api",
         ],
     },
-    "src/api/routes/people/people-families.php": RECORD_ROUTES,
-    "src/api/routes/people/people-family.php": RECORD_ROUTES,
+    "src/api/routes/people/people-families.php": { rows: ["families-self-verify-api", "families-pending-self-verify-api", "families-verify-email-preview-api"] },
+    "src/api/routes/people/people-family.php": { rows: ["family-photo-upload-api", "family-photo-delete-api", "family-verify-api", "family-verify-url-api", "family-verify-now-api", "family-activate-api", "family-approve-review-api", "family-geocode-api", "family-delete-api"] },
     "src/api/routes/people/people-groups.php": RECORD_ROUTES,
-    "src/api/routes/people/people-person.php": RECORD_ROUTES,
-    "src/api/routes/people/people-persons.php": RECORD_ROUTES,
+    "src/api/routes/people/people-person.php": { rows: ["person-photo-upload-api", "person-activate-api", "person-role-api", "person-approve-review-api", "person-add-to-cart-api", "person-photo-delete-api", "person-delete-api"] },
+    "src/api/routes/people/people-persons.php": { rows: ["persons-duplicate-emails-api", "persons-self-register-approve-api", "people-emails-api"] },
     "src/api/routes/map.php": { spec: "cypress/e2e/api/private/standard/private.map.geocode-all.spec.js" },
-    "src/api/routes/cart.php": EMAIL_ROLE,
-    "src/api/routes/email.php": EMAIL_ROLE,
-    "src/people/routes/email.php": EMAIL_ROLE,
-    "src/people/routes/text.php": EMAIL_ROLE,
+    "src/api/routes/cart.php": { rows: ["cart-emails-api"] },
+    "src/api/routes/email.php": { rows: ["email-send-api", "email-preview-api", "email-batch-api", "email-batch-send-api"] },
+    "src/people/routes/email.php": { rows: ["people-email-page"] },
+    "src/people/routes/text.php": { rows: ["people-text-page"] },
     "src/people/routes/reports.php": { spec: "cypress/e2e/ui/reports/people-reports.staff-access.spec.js" },
 
     "src/event/index.php": { rows: ["event-app"] },
