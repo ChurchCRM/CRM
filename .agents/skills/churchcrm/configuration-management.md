@@ -75,7 +75,7 @@ Build image and skin URLs from `getRootPath()`. `getImagesRoot()` is a filesyste
 $photoPath = SystemURLs::getDocumentRoot() . '/photos/person_' . $personId . '.jpg';
 ```
 
-ChurchCRM installs at a site root or in a subdirectory (`/churchcrm/`), and routes nest (`/admin/system/debug`), so root-relative literals like `/skin/v2/...` and relative paths like `../skin/...` resolve wrongly. `getRootPath()` makes every URL correct.
+ChurchCRM installs at a site root or in a subdirectory (`/churchcrm/`), and routes nest (`/admin/system/debug`), so root-relative literals like `/skin/v2/...` and relative paths like `../skin/...` resolve wrongly. `getRootPath()` makes every URL correct. `npm run lint` (`scripts/validate-subdir-urls.js`) fails on a literal that starts at `/` or `./` in a URL sink; mark a deliberate case with `// subdir-ok: <reason>`.
 
 ## Settings Panels
 

@@ -248,6 +248,8 @@ jobs:
       if: always()
       run: npm run docker:ci:root:down
 
+  # Pull requests run only the install-path check under /churchcrm. The full suite
+  # in that layout runs in build-test-nightly.yml.
   test-subdir:
     needs: [configure, build]
     timeout-minutes: 40
@@ -260,27 +262,9 @@ jobs:
       matrix:
         php-version: ${{ fromJSON(needs.configure.outputs.php-versions) }}
         test-type:
-          - name: api
-            spec: "cypress/e2e/api/**/*.spec.js"
-            config: "cypress/configs/docker.config.ts"
-          - name: admin-ui
-            spec: "cypress/e2e/ui-admin/**/*.spec.js"
-            config: "cypress/configs/docker-admin.config.ts"
-        include:
-          # ui specs sharded 3× (PHP 8.4 only; 8.5 ui covered by build-test-nightly.yml)
-          # split-index values are strings to avoid JS falsy coercion of 0
-          - php-version: "8.4"
-            test-type: { name: ui-shard-0, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
-            split-index: "0"
-            shard-total: 3
-          - php-version: "8.4"
-            test-type: { name: ui-shard-1, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
-            split-index: "1"
-            shard-total: 3
-          - php-version: "8.4"
-            test-type: { name: ui-shard-2, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
-            split-index: "2"
-            shard-total: 3
+          - name: install-path
+            spec: "cypress/e2e/ui/navigation/install-path-requests.spec.js"
+            config: "cypress/configs/docker-ui.config.ts"
     steps:
     - name: Checkout
       uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -319,19 +303,6 @@ jobs:
         test-name: ${{ matrix.test-type.name }}
         php-version: ${{ matrix.php-version }}
         deployment: subdir
-        # api uses docker.config.ts, whose specPattern also matches ui/**
-        # specs (see cypress/configs/docker.config.ts). Forcing SPLIT via the
-        # default shard-total fallback would make cypress-split discover and
-        # run every matching spec (api + ui) in this single job instead of
-        # just the api ones, so api keeps shard-total empty and relies on the
-        # explicit --spec filter in run-cypress-tests/action.yml instead.
-        # NOTE: written as `name != 'api' && (...) || ''`, not
-        # `name == 'api' && '' || (...)` — with GitHub Actions' left-to-right
-        # &&/|| evaluation, `true && ''` is itself falsy, so an `== 'api'`
-        # form would fall through to the `|| (matrix.shard-total || 1)`
-        # fallback instead of returning ''.
-        shard-total: ${{ matrix.test-type.name != 'api' && (matrix.shard-total || 1) || '' }}
-        shard-index: ${{ matrix.split-index || '0' }}
         base-url: http://127.0.0.1:8080/churchcrm/
         docker-compose-profile: ci-subdir
         # ci-subdir publishes MySQL on 3307. db:query and the row guard both read it.
