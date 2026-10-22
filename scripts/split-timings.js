@@ -1,16 +1,18 @@
 #!/usr/bin/env node
 
 /**
- * cypress/split-timings.json holds one duration per UI spec. cypress-split reads it
+ * cypress/split-timings.json holds one duration per sharded spec (api, ui, ui-admin). cypress-split reads it
  * (SPLIT_FILE) to give every shard about the same run time.
  *
  *   node scripts/split-timings.js check
  *       Fails on a malformed file, a duplicate, an unsorted list, or an entry whose spec no
  *       longer exists. A spec missing from the file is fine: it gets the average duration.
  *
- *   node scripts/split-timings.js update LOG...
+ *   node scripts/split-timings.js update [--area api|ui|ui-admin] LOG...
  *       Rewrites the file from the "Run Finished" tables of Cypress job logs
  *       (gh run view --job <id> --log > job.log). Several logs of one spec are averaged.
+ *       --area names the spec folder the following logs ran; it keeps a name that exists
+ *       in two folders from being skipped as ambiguous.
  */
 
 const fs = require('fs');
@@ -18,7 +20,9 @@ const path = require('path');
 
 const root = path.join(__dirname, '..');
 const timingsFile = path.join('cypress', 'split-timings.json');
-const AREAS = ['ui', 'ui-admin'];
+const AREAS = ['api', 'ui', 'ui-admin'];
+// Cypress spends about 2 s per spec file outside the spec: start-up and the row-count guard.
+const PER_SPEC_OVERHEAD_MS = 2000;
 const ANSI = /\x1b\[[0-9;]*m/g;
 
 function listSpecs(repo, area) {
@@ -85,9 +89,10 @@ function parseRunFinished(log) {
         .filter((line) => line.includes('│'))
         .forEach((line) => {
             const body = line.trim().replace(/^│/, '').replace(/│$/, '').trimEnd();
-            const match = /^\s*[✔✖!-]\s{1,3}(\S.*?)\s{2,}(\d\d):(\d\d)\s+(?:\d+|-)\s/.exec(`${body} `);
+            const match = /^\s*[✔✖!-]\s{1,3}(\S.*?)\s{2,}(?:(\d\d):(\d\d)|(\d+)ms)\s+(?:\d+|-)\s/.exec(`${body} `);
             if (match) {
-                current = { name: match[1], seconds: Number(match[2]) * 60 + Number(match[3]) };
+                const seconds = match[4] === undefined ? Number(match[2]) * 60 + Number(match[3]) : Number(match[4]) / 1000;
+                current = { name: match[1], seconds };
                 rows.push(current);
             } else if (current && body.trim()) {
                 current.name += body.trim();
@@ -96,12 +101,14 @@ function parseRunFinished(log) {
     return rows;
 }
 
+// A log is a string, or { text, area } when the folder it ran is known.
 function update(logs, repo = root) {
     const specs = AREAS.flatMap((area) => listSpecs(repo, area));
     const samples = {};
     logs.forEach((log) =>
-        parseRunFinished(log).forEach(({ name, seconds }) => {
-            const matches = specs.filter((spec) => spec.endsWith(`/${name}`));
+        parseRunFinished(log.text ?? log).forEach(({ name, seconds }) => {
+            const candidates = log.area ? specs.filter((spec) => spec.startsWith(`cypress/e2e/${log.area}/`)) : specs;
+            const matches = candidates.filter((spec) => spec.endsWith(`/${name}`));
             if (matches.length === 1) {
                 (samples[matches[0]] ||= []).push(seconds);
             }
@@ -113,7 +120,7 @@ function update(logs, repo = root) {
     const merged = new Map(previous.filter(({ spec }) => specs.includes(spec)).map(({ spec, duration }) => [spec, duration]));
     Object.entries(samples).forEach(([spec, seconds]) => {
         const average = seconds.reduce((sum, value) => sum + value, 0) / seconds.length;
-        merged.set(spec, Math.max(1000, Math.round(average * 1000)));
+        merged.set(spec, Math.round(average * 1000) + PER_SPEC_OVERHEAD_MS);
     });
 
     const durations = [...merged].sort(([a], [b]) => (a < b ? -1 : 1)).map(([spec, duration]) => ({ spec, duration }));
@@ -128,10 +135,19 @@ if (require.main === module) {
         problems.forEach((problem) => console.error(problem));
         process.exit(problems.length ? 1 : 0);
     } else if (command === 'update' && rest.length) {
-        const result = update(rest.map((log) => fs.readFileSync(log, 'utf8')));
+        let area = null;
+        const logs = [];
+        for (let i = 0; i < rest.length; i += 1) {
+            if (rest[i] === '--area') {
+                area = rest[(i += 1)];
+            } else {
+                logs.push({ text: fs.readFileSync(rest[i], 'utf8'), area });
+            }
+        }
+        const result = update(logs);
         console.log(`Updated ${result.updated} specs; ${result.total} in ${timingsFile}.`);
     } else {
-        console.error('usage: split-timings.js check | update LOG...');
+        console.error('usage: split-timings.js check | update [--area NAME] LOG...');
         process.exit(2);
     }
 }

@@ -23,12 +23,14 @@ const LOG = [
     '2026-10-22T09:31:04.8Z   │ ✔  avatar-click.spec.js                     00:13       13       13        -        -        - │',
     '2026-10-22T09:31:04.8Z   │ ✔  communication/communication.admin-m      01:04        2        2        -        -        - │',
     '2026-10-22T09:31:04.8Z   │    enu.spec.js                                                                                 │',
+    '2026-10-22T09:31:04.8Z   │ ✔  public/public.calendar.spec.js           963ms        5        5        -        -        - │',
 ].join('\n');
 
-test('parseRunFinished joins a wrapped path and reads minutes and seconds', () => {
+test('parseRunFinished joins a wrapped path and reads minutes, seconds and milliseconds', () => {
     assert.deepEqual(parseRunFinished(LOG), [
         { name: 'avatar-click.spec.js', seconds: 13 },
         { name: 'communication/communication.admin-menu.spec.js', seconds: 64 },
+        { name: 'public/public.calendar.spec.js', seconds: 0.963 },
     ]);
 });
 
@@ -72,8 +74,17 @@ test('update averages samples, keeps other entries and drops deleted specs', () 
     assert.deepEqual(update(logs, repo), { updated: 2, total: 3 });
     const written = JSON.parse(fs.readFileSync(path.join(repo, 'cypress', 'split-timings.json'), 'utf8')).durations;
     assert.deepEqual(written, [
-        { spec: 'cypress/e2e/ui-admin/b.spec.js', duration: 30000 },
-        { spec: 'cypress/e2e/ui/a.spec.js', duration: 15000 },
+        { spec: 'cypress/e2e/ui-admin/b.spec.js', duration: 32000 },
+        { spec: 'cypress/e2e/ui/a.spec.js', duration: 17000 },
         { spec: 'cypress/e2e/ui/c.spec.js', duration: 5000 },
     ]);
+});
+
+test('update reads a name that exists in two folders when the folder is given', () => {
+    const repo = repoWith(['cypress/e2e/api/people/a.spec.js', 'cypress/e2e/ui/people/a.spec.js'], null);
+    const log = '(Run Finished)\n│ ✔  people/a.spec.js   00:10   1   1   -   -   - │';
+    assert.deepEqual(update([{ text: log, area: 'api' }], repo), { updated: 1, total: 1 });
+    assert.deepEqual(update([log], repo), { updated: 0, total: 1 });
+    const written = JSON.parse(fs.readFileSync(path.join(repo, 'cypress', 'split-timings.json'), 'utf8')).durations;
+    assert.deepEqual(written, [{ spec: 'cypress/e2e/api/people/a.spec.js', duration: 12000 }]);
 });

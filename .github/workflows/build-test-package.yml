@@ -88,6 +88,23 @@ jobs:
     - id: set-matrix
       run: echo 'php-versions=["8.4"]' >> "$GITHUB_OUTPUT"
 
+  # Runs beside `build`, which takes longer, so it adds no wall-clock time. A red lint
+  # stops the Cypress jobs before they start instead of after 160 runner-minutes.
+  lint:
+    if: ${{ !startsWith(github.head_ref, 'locale/') }}
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    runs-on: ubuntu-24.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+    - uses: ./.github/actions/checkout-node-npm
+
+    - name: Lint (typecheck, Biome, UI, Cypress, SQL, and locale script checks)
+      run: npm run lint
+
   build:
     # Locale PRs only touch translations. Skip here, not in `configure`: a skipped
     # `configure` leaves the test jobs' fromJSON(php-versions) matrix empty, which fails the run.
@@ -154,7 +171,7 @@ jobs:
         retention-days: 1
 
   test-root:
-    needs: [configure, build]
+    needs: [configure, build, lint]
     timeout-minutes: 40
     permissions:
       contents: read
@@ -165,13 +182,19 @@ jobs:
       matrix:
         php-version: ${{ fromJSON(needs.configure.outputs.php-versions) }}
         test-type:
-          - name: api
+          - name: api-shard-0
             spec: "cypress/e2e/api/**/*.spec.js"
-            config: "cypress/configs/docker.config.ts"
+            config: "cypress/configs/docker-api.config.ts"
+            split-index: "0"
+            shard-total: 2
         include:
-          # ui and admin-ui specs sharded 3× by recorded duration (cypress/split-timings.json)
+          # api, admin-ui and ui specs sharded by recorded duration (cypress/split-timings.json)
           # (PHP 8.4 only; 8.5 ui covered by build-test-nightly.yml)
           # split-index values are strings to avoid JS falsy coercion of 0
+          - php-version: "8.4"
+            test-type: { name: api-shard-1, config: "cypress/configs/docker-api.config.ts", spec: "cypress/e2e/api/**/*.spec.js" }
+            split-index: "1"
+            shard-total: 2
           - php-version: "8.4"
             test-type: { name: admin-ui-shard-0, config: "cypress/configs/docker-admin.config.ts", spec: "cypress/e2e/ui-admin/**/*.spec.js" }
             split-index: "0"
@@ -187,15 +210,19 @@ jobs:
           - php-version: "8.4"
             test-type: { name: ui-shard-0, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
             split-index: "0"
-            shard-total: 3
+            shard-total: 4
           - php-version: "8.4"
             test-type: { name: ui-shard-1, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
             split-index: "1"
-            shard-total: 3
+            shard-total: 4
           - php-version: "8.4"
             test-type: { name: ui-shard-2, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
             split-index: "2"
-            shard-total: 3
+            shard-total: 4
+          - php-version: "8.4"
+            test-type: { name: ui-shard-3, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+            split-index: "3"
+            shard-total: 4
     steps:
     - name: Checkout
       uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -235,19 +262,8 @@ jobs:
         test-name: ${{ matrix.test-type.name }}
         php-version: ${{ matrix.php-version }}
         deployment: root
-        # api uses docker.config.ts, whose specPattern also matches ui/**
-        # specs (see cypress/configs/docker.config.ts). Forcing SPLIT via the
-        # default shard-total fallback would make cypress-split discover and
-        # run every matching spec (api + ui) in this single job instead of
-        # just the api ones, so api keeps shard-total empty and relies on the
-        # explicit --spec filter in run-cypress-tests/action.yml instead.
-        # NOTE: written as `name != 'api' && (...) || ''`, not
-        # `name == 'api' && '' || (...)` — with GitHub Actions' left-to-right
-        # &&/|| evaluation, `true && ''` is itself falsy, so an `== 'api'`
-        # form would fall through to the `|| (matrix.shard-total || 1)`
-        # fallback instead of returning ''.
-        shard-total: ${{ matrix.test-type.name != 'api' && (matrix.shard-total || 1) || '' }}
-        shard-index: ${{ matrix.split-index || '0' }}
+        shard-total: ${{ matrix.test-type.shard-total || matrix.shard-total || '' }}
+        shard-index: ${{ matrix.test-type.split-index || matrix.split-index || '0' }}
         docker-compose-profile: ci-root
         # ci-root publishes MySQL on 3306. The guard reads this inside the action.
         extra-env: |
@@ -261,7 +277,7 @@ jobs:
   # Pull requests run only the install-path check under /churchcrm. The full suite
   # in that layout runs in build-test-nightly.yml.
   test-subdir:
-    needs: [configure, build]
+    needs: [configure, build, lint]
     timeout-minutes: 40
     permissions:
       contents: read
@@ -326,7 +342,7 @@ jobs:
       run: npm run docker:ci:subdir:down
 
   test-new-system:
-    needs: [configure, build]
+    needs: [configure, build, lint]
     timeout-minutes: 40
     permissions:
       contents: read
@@ -387,7 +403,7 @@ jobs:
       run: npm run docker:ci:new-system:down
 
   test-new-system-subdir:
-    needs: [configure, build]
+    needs: [configure, build, lint]
     timeout-minutes: 40
     permissions:
       contents: read
