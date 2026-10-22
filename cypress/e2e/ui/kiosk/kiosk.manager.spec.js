@@ -60,22 +60,6 @@ describe("Kiosk Manager", () => {
         });
     });
 
-    describe("Standard User Access Denied (no ManageGroups role)", () => {
-        beforeEach(() => {
-            // tony.wade (standard session) has usr_ManageGroups=1 and now passes
-            // ManageGroupRoleAuthMiddleware added in #9476 — switch to
-            // setupNoFinanceSession() (judith.matthews: ManageGroups=0, Finance=0, Admin=0)
-            // to correctly test the non-ManageGroups denial path.
-            cy.setupNoFinanceSession();
-        });
-
-        it("should deny access to users without ManageGroups role for kiosk admin page", () => {
-            cy.visit("kiosk/admin", { failOnStatusCode: false });
-            // Should be redirected or show access denied
-            cy.url().should("not.include", "kiosk/admin");
-        });
-    });
-
     describe("ManageGroups Role Access (non-admin)", () => {
         beforeEach(() => {
             cy.setupManageGroupsOnlySession();

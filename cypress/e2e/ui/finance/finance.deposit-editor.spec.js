@@ -146,11 +146,3 @@ describe("Deposit search: deleting deposits", () => {
         });
     });
 });
-
-describe("Deposit editor: access control", () => {
-    it("sends a user without the Finance role to access-denied", () => {
-        cy.setupNoFinanceSession();
-        cy.visit("/finance/deposit/5", { failOnStatusCode: false });
-        cy.url().should("include", "role=Finance");
-    });
-});

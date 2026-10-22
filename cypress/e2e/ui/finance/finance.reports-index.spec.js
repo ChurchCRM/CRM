@@ -124,18 +124,3 @@ describe("Finance Reports Index - Standard User Access", () => {
         cy.contains("Pledge Reports").should("be.visible");
     });
 });
-
-describe("Finance Reports Index - No Finance Permission", () => {
-    beforeEach(() => {
-        cy.setupNoFinanceSession();
-    });
-
-    it("should deny access to users without finance permission", () => {
-        // User judith.matthews has no finance permission
-        cy.visit("/finance/reports", { failOnStatusCode: false });
-
-        // Should be redirected to access-denied page
-        cy.url().should("include", "/v2/access-denied");
-        cy.url().should("include", "role=Finance");
-    });
-});

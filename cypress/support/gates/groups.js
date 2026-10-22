@@ -8,6 +8,7 @@ export const GROUPS_GATES = [
         audience: "standard",
         classification: "kiosk-devices",
         api: { method: "GET", url: "/kiosk/api/devices" },
+        page: "/kiosk/admin",
         allow,
         deny,
     },
