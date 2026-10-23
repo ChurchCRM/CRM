@@ -26,6 +26,10 @@ intent: How agents commit and push on ChurchCRM.
 - Do not merge `master` into a contributor branch or push to their branch unless asked
 - Do not run `locale:build` or commit `messages.po` on a feature branch
 
+## Docker checkout
+
+Run Docker from the main repository checkout. Before Docker work, ask whether to switch that checkout to the task branch and wait for the user’s answer.
+
 ## Commit freely, push only on approval
 
 `git commit` and `git push` are separate gates.
