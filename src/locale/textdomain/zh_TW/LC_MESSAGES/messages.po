@@ -1801,11 +1801,6 @@ msgstr "登錄用戶名"
 
 #: 
 #, fuzzy
-msgid "Manage Properties and Classifications"
-msgstr "管理的屬性和分類"
-
-#: 
-#, fuzzy
 msgid "Manage Groups and Roles"
 msgstr "管理組和角色"
 
@@ -5469,10 +5464,6 @@ msgid "Enter event description..."
 msgstr "輸入活動描述..."
 
 #: 
-msgid "Event ID"
-msgstr "活動 ID"
-
-#: 
 msgid "Enter note text here..."
 msgstr "在此處輸入筆記文字..."
 
@@ -6236,10 +6227,6 @@ msgid "Manage Orphaned Files"
 msgstr "管理孤立檔案"
 
 #: 
-msgid "Menu options access"
-msgstr "選單選項權限"
-
-#: 
 msgid "Multiple Copies"
 msgstr "多份副本"
 
@@ -6346,10 +6333,6 @@ msgstr "在異地存儲之前，使用外部工具（如 GPG, 7-Zip）加密備�
 #: 
 msgid "User authentication"
 msgstr "使用者驗證"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "使用者必須具有選單選項權限"
 
 #: 
 msgid "What are Orphaned Files?"
@@ -21283,10 +21266,6 @@ msgid "Recent Emails"
 msgstr "最近的電子郵件"
 
 #: 
-msgid "Recent Sends"
-msgstr "最近的傳送"
-
-#: 
 msgid "Recipient"
 msgstr "收件人"
 
@@ -24587,28 +24566,8 @@ msgid "%d failed (all time)"
 msgstr "%d 次失敗（累計）"
 
 #: 
-msgid "Failed email history pages"
-msgstr "失敗郵件歷史頁面"
-
-#: 
 msgid "Failed sends across all email history, including automated messages"
 msgstr "全部郵件歷史中的傳送失敗記錄，包括自動郵件"
-
-#: 
-msgid "No server error recorded"
-msgstr "未記錄伺服器錯誤"
-
-#: 
-msgid "Show all recent sends"
-msgstr "顯示所有最近的傳送記錄"
-
-#: 
-msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
-msgstr "正在顯示全部郵件歷史中的傳送失敗記錄，包括自動郵件。選擇主旨查看詳細資料。"
-
-#: 
-msgid "The table shows only the latest 20 sends. Open a person to see their full history."
-msgstr "表格僅顯示最近 20 次傳送。開啟某人可查看其完整歷史。"
 
 #: 
 msgid "View %d failed sends across all email history"

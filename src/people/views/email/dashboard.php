@@ -26,7 +26,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 </div>
 <?php endif; ?>
 
-<div class="card">
+<div class="card mb-3">
     <div class="card-header">
         <h3 class="card-title"><i class="fa-solid fa-envelope me-2"></i><?= gettext('Email Tools') ?></h3>
     </div>
@@ -41,6 +41,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
     </div>
 </div>
+
+<?php include SystemURLs::getDocumentRoot() . '/people/views/partials/email-log-table.php'; ?>
 
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

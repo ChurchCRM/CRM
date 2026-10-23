@@ -1796,11 +1796,6 @@ msgstr "Nume acces"
 
 #: 
 #, fuzzy
-msgid "Manage Properties and Classifications"
-msgstr "Gestionarea proprietăților și clasificări"
-
-#: 
-#, fuzzy
 msgid "Manage Groups and Roles"
 msgstr "Gestionarea grupurilor și roluri"
 
@@ -5387,10 +5382,6 @@ msgid "Enter event description..."
 msgstr "Introduceți descrierea evenimentului..."
 
 #: 
-msgid "Event ID"
-msgstr "ID Eveniment"
-
-#: 
 msgid "Enter note text here..."
 msgstr "Introduceți textul notei aici..."
 
@@ -6158,10 +6149,6 @@ msgid "Manage Orphaned Files"
 msgstr "Gestionare fișiere orfane"
 
 #: 
-msgid "Menu options access"
-msgstr "Acces opțiuni meniu"
-
-#: 
 msgid "Multiple Copies"
 msgstr "Copii multiple"
 
@@ -6268,10 +6255,6 @@ msgstr "Utilizați instrumente externe (GPG, 7-Zip) pentru a cripta backup-urile
 #: 
 msgid "User authentication"
 msgstr "Autentificare utilizator"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "Utilizatorul trebuie să aibă permisiunea Opțiuni meniu"
 
 #: 
 msgid "What are Orphaned Files?"
@@ -21253,10 +21236,6 @@ msgid "Recent Emails"
 msgstr "E-mailuri recente"
 
 #: 
-msgid "Recent Sends"
-msgstr "Trimiteri recente"
-
-#: 
 msgid "Recipient"
 msgstr "Destinatar"
 
@@ -24565,28 +24544,8 @@ msgid "%d failed (all time)"
 msgstr "%d eșuate (în total)"
 
 #: 
-msgid "Failed email history pages"
-msgstr "Pagini din istoricul e-mailurilor eșuate"
-
-#: 
 msgid "Failed sends across all email history, including automated messages"
 msgstr "Trimiteri eșuate din tot istoricul e-mailurilor, inclusiv mesajele automate"
-
-#: 
-msgid "No server error recorded"
-msgstr "Nicio eroare de server înregistrată"
-
-#: 
-msgid "Show all recent sends"
-msgstr "Afișați toate trimiterile recente"
-
-#: 
-msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
-msgstr "Se afișează trimiterile eșuate din tot istoricul e-mailurilor, inclusiv mesajele automate. Selectați un subiect pentru detalii."
-
-#: 
-msgid "The table shows only the latest 20 sends. Open a person to see their full history."
-msgstr "Tabelul afișează doar ultimele 20 de trimiteri. Deschideți o persoană pentru a vedea istoricul complet."
 
 #: 
 msgid "View %d failed sends across all email history"

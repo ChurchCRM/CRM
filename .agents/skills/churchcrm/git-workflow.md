@@ -11,7 +11,7 @@ intent: How agents commit and push on ChurchCRM.
 - Link an open issue when the PR changes user-visible behavior (feature or bug fix). CI, docs, tooling, dependency, and trivial PRs need none; say why in the PR body
 - Imperative subject, under 72 chars
 - Branch every PR from `master`, one per independent change. Base a PR on another unmerged PR only when it needs that PR's code; a PR that removes what the others stopped using waits until they merge, then branches from `master`. The last PR of an epic says `Part of #epic`; a maintainer closes the epic
-- Milestone for a PR is the `version` in `package.json` (7.8.0 → milestone `7.8.0`). Do not guess from the open milestone list or the latest release. When the PR finishes an issue, the body says `Fixes #N` (not `refs`). On merge, `.github/workflows/pr-milestone-stamp.yml` copies that milestone onto those issues and closes them if they are still open
+- Do not set a milestone by hand. On merge, `.github/workflows/pr-milestone-stamp.yml` stamps the PR and every issue it fixes with the `package.json` `version` (7.8.0 → milestone `7.8.0`) and closes those issues if they are still open. When the PR finishes an issue, the body says `Fixes #N` (not `refs`)
 - A bug uses the GitHub issue type Bug. Do not add a `bug` label. Other issue labels are one of `enhancement`, `question`, `Documentation`, `Epic`, `refactor`, or `cleanup`, plus the area labels that fit (`Feature: ...`, `UI`, `API`, `Security`, `Platform: ...`). `Integration Testing` is Cypress and other automated tests of the app. Playwright work (captures, screenshots, videos, the marketing pipeline) is `Marketing`, never `Integration Testing`. Copy exact names from `gh label list --repo ChurchCRM/CRM`. Never invent a label. Do not use `feature` (use `enhancement`), `volunteer` (use `Feature: Volunteer`), or `translation` (use `Localization`). `Epic` is only for a parent that tracks child issues. Do not add `Stale` by hand. The Monday hygiene workflow asks for a reply after 45 quiet days and closes 14 days later if nobody answers. `Security`, `security-delete-required`, `Epic`, and `good first issue` stay open. `dependencies` is Dependabot only; human dependency work uses `Package Dependencies`
 - `npm run lint` and the matching build before you ask to commit
 - UI change: check the pages in a real browser before you ask to commit, in light and dark themes, at desktop, tablet (about 820px), and phone width (browsers stop near 500px). Look for column widths, wrapping, horizontal scroll, and working menus. Fix what is off, then look again
@@ -21,6 +21,8 @@ intent: How agents commit and push on ChurchCRM.
 - Show the diff. Wait for yes before commit
 - Title and body match the current diff
 - Never `--force`. `--force-with-lease` only after an approved rebase
+- Fixing an existing PR: push to that PR's head branch. A push to any other branch can auto-open a duplicate PR
+- Keep unrelated fixes (a CI retry beside a security fix) in their own PR
 - Do not merge `master` into a contributor branch or push to their branch unless asked
 - Do not run `locale:build` or commit `messages.po` on a feature branch
 
@@ -62,6 +64,15 @@ GitHub-only service, clean-room environment, or multi-runtime matrix.
 
 When changing CI, the PR description must state why each newly added CI-only
 check cannot run meaningfully before push.
+
+### One lint entry point
+
+`npm run lint` runs `scripts/lint.js`, which runs every check in parallel. The pre-push hook and the `code-quality.yml` job call it and nothing else.
+
+- Add a check as one entry in the `checks` map in `scripts/lint.js`. Do not add `lint:*` or `validate:*` npm scripts, and do not add a separate CI step for it. `lint:fix` is the only other lint script.
+- A check must take a few seconds, need no Docker, database, or network, and print its findings to stdout or stderr with a non-zero exit.
+- The pre-commit hook runs only checks scoped to staged files (`locale-check --staged`, the changed-file PHP validators). Whole-repo checks go in `scripts/lint.js`.
+- A check that always exits 0 is not a check. Test a new one against a bad input before you add it.
 
 ## After push
 

@@ -1822,6 +1822,7 @@ paths:
                 properties:
                   Latitude: { type: number, format: float }
                   Longitude: { type: number, format: float }
+                  Status: { description: 'not_found: the services answered and have no such address. unavailable: no service could answer; try again later. Latitude and Longitude are 0 in both cases.', type: string, enum: [found, not_found, unavailable] }
                 type: object
         '400':
           description: 'Empty or invalid request body'
@@ -6191,7 +6192,7 @@ paths:
       tags:
         - Email
       summary: 'Page through the email history'
-      description: 'Newest first. With personId or familyId the caller must be allowed to view that record; without either the caller must be an administrator (recent sends across everyone).'
+      description: "Newest first. With personId or familyId the caller must be allowed to view that record. Without either it is the email log: an administrator sees everyone's mail, a user with the Email permission only the mail they queued, filtered by status, kind, sentBy and q."
       parameters:
         -
           name: personId
@@ -6207,7 +6208,7 @@ paths:
         -
           name: status
           in: query
-          description: 'Only honoured on the unscoped (admin) list'
+          description: 'Email log only'
           schema:
             type: string
             enum:
@@ -6216,6 +6217,26 @@ paths:
               - skipped
               - queued
               - sending
+        -
+          name: kind
+          in: query
+          description: 'Email log only: one email type, e.g. composer or birthday'
+          schema:
+            type: string
+            maxLength: 50
+        -
+          name: sentBy
+          in: query
+          description: 'Email log only: a user id, or automatic for mail no user queued. A user without admin rights may pass only their own id.'
+          schema:
+            type: string
+        -
+          name: q
+          in: query
+          description: "Email log only: every word must appear in the subject, the address or the recipient's name"
+          schema:
+            type: string
+            maxLength: 100
         -
           name: page
           in: query
@@ -6236,16 +6257,18 @@ paths:
             application/json:
               schema:
                 properties:
-                  rows: { type: array, items: { properties: { id: { type: integer }, personId: { type: integer, nullable: true }, familyId: { type: integer, nullable: true }, sentByUserId: { type: integer, nullable: true }, sentBy: { description: 'Name of the user who wrote a composer message', type: string, nullable: true }, address: { type: string }, kind: { type: string }, kindLabel: { type: string }, subject: { type: string }, status: { description: 'queued: waiting to be sent (a retry keeps the last error); sending: a run is sending it now', type: string, enum: [sent, failed, skipped, queued, sending] }, statusLabel: { type: string }, attempts: { description: 'Delivery attempts so far', type: integer }, error: { type: string, nullable: true }, dateSent: { type: string }, hasBody: { type: boolean } }, type: object } }
+                  rows: { type: array, items: { properties: { id: { type: integer }, personId: { type: integer, nullable: true }, familyId: { type: integer, nullable: true }, sentByUserId: { type: integer, nullable: true }, sentBy: { description: 'Name of the user who wrote a composer message', type: string, nullable: true }, address: { type: string }, kind: { type: string }, kindLabel: { type: string }, subject: { type: string }, status: { description: 'queued: waiting to be sent (a retry keeps the last error); sending: a run is sending it now', type: string, enum: [sent, failed, skipped, queued, sending] }, statusLabel: { type: string }, attempts: { description: 'Delivery attempts so far', type: integer }, error: { description: "The mail server's error; null for callers without admin rights", type: string, nullable: true }, dateSent: { type: string }, hasBody: { type: boolean }, recipientName: { description: 'Email log only: the person, or else the family, the address belonged to', type: string, nullable: true }, recipientUrl: { description: "Email log only: that record's page", type: string, nullable: true } }, type: object } }
                   total: { type: integer }
                   page: { type: integer }
                   limit: { type: integer }
                   pages: { type: integer }
                 type: object
+        '400':
+          description: 'Invalid status, kind, sentBy or q'
         '401':
           description: Unauthorized
         '403':
-          description: "Not allowed to view this record's history"
+          description: "Not allowed to view this record's history, the Email permission is missing, or sentBy names another sender without admin rights"
       security:
         -
           ApiKeyAuth: []
@@ -6334,6 +6357,47 @@ paths:
       responses:
         '200':
           description: 'Array of neighbor families'
+      security:
+        -
+          ApiKeyAuth: []
+  /map/geocode-all:
+    post:
+      tags:
+        - Map
+      summary: 'Geocode all active families missing coordinates'
+      description: "Iterates active families that have a street address but no usable coordinates, geocoding each via the configured geocoding services (Map Settings) at ~1 request/second. Families are taken in ID order; up to 50 per call. Pass 'skip' = the number of families that failed in earlier calls so those are not re-queried, and repeat while 'remaining' > 'skip'. Requires the Edit Records role."
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              properties:
+                skip:
+                  description: 'Families (in ID order) to skip before the batch — the running count of failures from previous calls'
+                  type: integer
+                  default: 0
+                  minimum: 0
+              type: object
+      responses:
+        '200':
+          description: 'Geocoding batch summary'
+          content:
+            application/json:
+              schema:
+                properties:
+                  total: { description: 'Total families missing coordinates before this run', type: integer }
+                  skip: { description: 'Offset applied to this batch (echoed back)', type: integer }
+                  processed: { description: 'Families examined in this batch (0 when skip >= total)', type: integer }
+                  geocoded: { description: 'Families successfully geocoded in this batch', type: integer }
+                  failed: { description: 'Families that could not be geocoded', type: integer }
+                  remaining: { description: 'Families still missing coordinates after this batch, including the ones that failed (run again while remaining > failures so far)', type: integer }
+                  failures: { description: 'Per-family failure details (capped at 20 entries). Empty array when all families were geocoded.', type: array, items: { properties: { id: { description: 'Family ID', type: integer }, name: { description: 'Family name', type: string }, address: { description: 'Full street address', type: string }, editUrl: { description: 'URL to the family editor page', type: string }, reason: { description: "Machine code: 'incomplete_address' | 'no_result' | 'unavailable' | 'error'", type: string } }, type: object } }
+                  failuresTruncated: { description: 'True when failed > 20 and some failures are omitted from the array', type: boolean }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Edit Records role required'
       security:
         -
           ApiKeyAuth: []
@@ -10057,47 +10121,6 @@ paths:
           description: 'Current admin has no email on file'
         '500':
           description: 'Test email failed to send'
-      security:
-        -
-          ApiKeyAuth: []
-  /admin/api/map/geocode-all:
-    post:
-      tags:
-        - Map
-      summary: 'Geocode all active families missing coordinates'
-      description: "Iterates active families that have a street address but no usable coordinates, geocoding each via the configured geocoding services (Map Settings) at ~1 request/second. Families are taken in ID order; up to 50 per call. Pass 'skip' = the number of families that failed in earlier calls so those are not re-queried, and repeat while 'remaining' > 'skip'. Admin-only."
-      requestBody:
-        required: false
-        content:
-          application/json:
-            schema:
-              properties:
-                skip:
-                  description: 'Families (in ID order) to skip before the batch — the running count of failures from previous calls'
-                  type: integer
-                  default: 0
-                  minimum: 0
-              type: object
-      responses:
-        '200':
-          description: 'Geocoding batch summary'
-          content:
-            application/json:
-              schema:
-                properties:
-                  total: { description: 'Total families missing coordinates before this run', type: integer }
-                  skip: { description: 'Offset applied to this batch (echoed back)', type: integer }
-                  processed: { description: 'Families examined in this batch (0 when skip >= total)', type: integer }
-                  geocoded: { description: 'Families successfully geocoded in this batch', type: integer }
-                  failed: { description: 'Families that could not be geocoded', type: integer }
-                  remaining: { description: 'Families still missing coordinates after this batch, including the ones that failed (run again while remaining > failures so far)', type: integer }
-                  failures: { description: 'Per-family failure details (capped at 20 entries). Empty array when all families were geocoded.', type: array, items: { properties: { id: { description: 'Family ID', type: integer }, name: { description: 'Family name', type: string }, address: { description: 'Full street address', type: string }, editUrl: { description: 'URL to the family editor page', type: string }, reason: { description: "Machine code: 'incomplete_address' | 'no_result' | 'error'", type: string } }, type: object } }
-                  failuresTruncated: { description: 'True when failed > 20 and some failures are omitted from the array', type: boolean }
-                type: object
-        '401':
-          description: Unauthorized
-        '403':
-          description: 'Admin role required'
       security:
         -
           ApiKeyAuth: []

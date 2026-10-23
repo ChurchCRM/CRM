@@ -1734,10 +1734,6 @@ msgid "Login Name"
 msgstr "ログイン名"
 
 #: 
-msgid "Manage Properties and Classifications"
-msgstr "プロパティと分類を管理"
-
-#: 
 msgid "Manage Groups and Roles"
 msgstr "グループと役割を管理"
 
@@ -5291,10 +5287,6 @@ msgid "Enter event description..."
 msgstr "イベントの説明を入力..."
 
 #: 
-msgid "Event ID"
-msgstr "イベントID"
-
-#: 
 msgid "Enter note text here..."
 msgstr "ここにノートテキストを入力..."
 
@@ -6058,10 +6050,6 @@ msgid "Manage Orphaned Files"
 msgstr "孤立ファイルの管理"
 
 #: 
-msgid "Menu options access"
-msgstr "メニューオプションアクセス"
-
-#: 
 msgid "Multiple Copies"
 msgstr "複数のコピー"
 
@@ -6168,10 +6156,6 @@ msgstr "外部ツール（GPG、7-Zip）を使用して、オフサイトに保�
 #: 
 msgid "User authentication"
 msgstr "ユーザー認証"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "ユーザーはメニューオプション権限が必要です"
 
 #: 
 msgid "What are Orphaned Files?"
@@ -21105,10 +21089,6 @@ msgid "Recent Emails"
 msgstr "最近のメール"
 
 #: 
-msgid "Recent Sends"
-msgstr "最近の送信"
-
-#: 
 msgid "Recipient"
 msgstr "宛先"
 
@@ -24409,28 +24389,8 @@ msgid "%d failed (all time)"
 msgstr "失敗 %d 件（累計）"
 
 #: 
-msgid "Failed email history pages"
-msgstr "失敗したメール履歴ページ"
-
-#: 
 msgid "Failed sends across all email history, including automated messages"
 msgstr "自動送信メッセージを含む、メール履歴全体の送信失敗"
-
-#: 
-msgid "No server error recorded"
-msgstr "サーバーエラーは記録されていません"
-
-#: 
-msgid "Show all recent sends"
-msgstr "最近の送信をすべて表示"
-
-#: 
-msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
-msgstr "自動送信メッセージを含む、メール履歴全体の送信失敗を表示しています。件名を選択すると詳細が表示されます。"
-
-#: 
-msgid "The table shows only the latest 20 sends. Open a person to see their full history."
-msgstr "表には直近20件の送信のみ表示されます。全履歴を見るには、その人を開いてください。"
 
 #: 
 msgid "View %d failed sends across all email history"

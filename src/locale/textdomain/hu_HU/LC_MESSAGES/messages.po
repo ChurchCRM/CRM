@@ -1773,11 +1773,6 @@ msgstr "Bejelentkezés Név"
 
 #: 
 #, fuzzy
-msgid "Manage Properties and Classifications"
-msgstr "Kezelése Tulajdonságok és szempontok"
-
-#: 
-#, fuzzy
 msgid "Manage Groups and Roles"
 msgstr "Csoportok kezelése és Szerep"
 
@@ -5354,10 +5349,6 @@ msgid "Enter event description..."
 msgstr "Adjon meg eseményleírást..."
 
 #: 
-msgid "Event ID"
-msgstr "Esemény azonosítója"
-
-#: 
 msgid "Enter note text here..."
 msgstr "Adjon meg jegyzet szöveget itt..."
 
@@ -6123,10 +6114,6 @@ msgid "Manage Orphaned Files"
 msgstr "Árva Fájlok Kezelése"
 
 #: 
-msgid "Menu options access"
-msgstr "Menübeállítások hozzáférése"
-
-#: 
 msgid "Multiple Copies"
 msgstr "Több Másolat"
 
@@ -6233,10 +6220,6 @@ msgstr "Külső eszközök (GPG, 7-Zip) segítségével titkosítsa a biztonság
 #: 
 msgid "User authentication"
 msgstr "Felhasználói Hitelesítés"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "A felhasználónak Menu Options engedéllyel kell rendelkeznie"
 
 #: 
 msgid "What are Orphaned Files?"
@@ -21194,10 +21177,6 @@ msgid "Recent Emails"
 msgstr "Legutóbbi e-mailek"
 
 #: 
-msgid "Recent Sends"
-msgstr "Legutóbbi küldések"
-
-#: 
 msgid "Recipient"
 msgstr "Címzett"
 
@@ -24502,28 +24481,8 @@ msgid "%d failed (all time)"
 msgstr "%d sikertelen (összesen)"
 
 #: 
-msgid "Failed email history pages"
-msgstr "Sikertelen e-mailek előzményoldalai"
-
-#: 
 msgid "Failed sends across all email history, including automated messages"
 msgstr "Sikertelen küldések a teljes e-mail-előzményben, az automatikus üzeneteket is beleértve"
-
-#: 
-msgid "No server error recorded"
-msgstr "Nincs rögzített kiszolgálóhiba"
-
-#: 
-msgid "Show all recent sends"
-msgstr "Az összes friss küldés megjelenítése"
-
-#: 
-msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
-msgstr "A teljes e-mail-előzmény sikertelen küldései láthatók, az automatikus üzeneteket is beleértve. A részletekhez válasszon egy tárgyat."
-
-#: 
-msgid "The table shows only the latest 20 sends. Open a person to see their full history."
-msgstr "A táblázat csak az utolsó 20 küldést mutatja. A teljes előzményhez nyisson meg egy személyt."
 
 #: 
 msgid "View %d failed sends across all email history"

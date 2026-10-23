@@ -120,6 +120,7 @@ module.exports = {
     'people-labels-modal': './webpack/people/labels-modal',
     'email-history-modal': './webpack/people/email-history-modal',
     'email-delete-queue': './webpack/people/email-delete-queue',
+    'email-log-table': './webpack/people/email-log-table',
     'error': './webpack/error',
     'feature-toggles': './webpack/feature-toggles',
     'groups-group-view': './webpack/groups/group-view',

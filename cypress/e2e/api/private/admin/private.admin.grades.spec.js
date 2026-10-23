@@ -258,10 +258,4 @@ describe("API Private Admin - School grades", () => {
         cy.makePrivateAdminAPICall("GET", "/admin/api/grades/presets/atlantis/preview", null, 404);
         cy.makePrivateAdminAPICall("POST", "/admin/api/grades/presets/atlantis", null, 404);
     });
-
-    it("is for administrators only", () => {
-        cy.makePrivateUserAPICall("GET", "/admin/api/grades/promotion", null, 403);
-        cy.makePrivateUserAPICall("POST", "/admin/api/grades/promotion", { expectedLastAt: "" }, 403);
-        cy.makePrivateUserAPICall("POST", "/admin/api/grades/presets/england-wales", null, 403);
-    });
 });

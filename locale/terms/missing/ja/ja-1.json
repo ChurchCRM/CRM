@@ -1,3 +1,5 @@
 {
-  "Invalid setting name or value": ""
+  "Invalid setting name or value": "",
+  "The geocoding service did not answer — try again later": "",
+  "Only the email you sent is shown.": ""
 }

@@ -2,7 +2,7 @@
 
 /**
  * API tests for the bulk-geocode endpoint
- * POST /admin/api/map/geocode-all — geocodes active families missing coordinates
+ * POST /api/map/geocode-all — geocodes active families missing coordinates
  *
  * This endpoint makes live Nominatim API calls during a real run, so the
  * happy-path test only asserts the response *shape* (not specific geocoded
@@ -12,14 +12,14 @@
  * server response time is ~50 s. Pass an explicit 120 000 ms timeout so the
  * cy.request() command does not time out before the server replies.
  */
-describe("API Private Map — POST /admin/api/map/geocode-all", { retries: 2 }, () => {
-    context("Happy path (admin)", () => {
+describe("API Private Map — POST /api/map/geocode-all", { retries: 2 }, () => {
+    context("Happy path", () => {
         it("Returns 200 with a valid summary shape", () => {
             // Pass an explicit 120-second timeout — the default (30 s) is too
             // short when the CI database has many families missing coordinates.
             cy.makePrivateAdminAPICall(
                 "POST",
-                "/admin/api/map/geocode-all",
+                "/api/map/geocode-all",
                 {},
                 200,
                 120000,
@@ -66,7 +66,7 @@ describe("API Private Map — POST /admin/api/map/geocode-all", { retries: 2 }, 
                         expect(f).to.have.property("editUrl").that.is.a("string");
                         expect(f).to.have.property("reason").that.is.a("string");
                         // Reason must be one of the three machine codes
-                        expect(["incomplete_address", "no_result", "error"]).to.include(f.reason);
+                        expect(["incomplete_address", "no_result", "unavailable", "error"]).to.include(f.reason);
                     }
 
                     // failuresTruncated must be true iff failures.length < failed
@@ -89,7 +89,7 @@ describe("API Private Map — POST /admin/api/map/geocode-all", { retries: 2 }, 
         // Neither call below reaches Nominatim for a skipped family, so this is
         // deterministic regardless of what the seed addresses resolve to.
         it("Skipping past every missing family processes nothing", () => {
-            cy.makePrivateAdminAPICall("POST", "/admin/api/map/geocode-all", { skip: 100000 }, 200, 30000).then(
+            cy.makePrivateAdminAPICall("POST", "/api/map/geocode-all", { skip: 100000 }, 200, 30000).then(
                 (response) => {
                     expect(response.body.skip).to.equal(100000);
                     expect(response.body.processed).to.equal(0);
@@ -102,7 +102,7 @@ describe("API Private Map — POST /admin/api/map/geocode-all", { retries: 2 }, 
         });
 
         it("Skipping all but one missing family processes exactly one", () => {
-            cy.makePrivateAdminAPICall("POST", "/admin/api/map/geocode-all", { skip: 100000 }, 200, 30000).then(
+            cy.makePrivateAdminAPICall("POST", "/api/map/geocode-all", { skip: 100000 }, 200, 30000).then(
                 (probe) => {
                     const total = probe.body.total;
                     if (total === 0) {
@@ -111,7 +111,7 @@ describe("API Private Map — POST /admin/api/map/geocode-all", { retries: 2 }, 
                     }
                     cy.makePrivateAdminAPICall(
                         "POST",
-                        "/admin/api/map/geocode-all",
+                        "/api/map/geocode-all",
                         { skip: total - 1 },
                         200,
                         60000,
@@ -125,11 +125,11 @@ describe("API Private Map — POST /admin/api/map/geocode-all", { retries: 2 }, 
         });
 
         it("Rejects a negative skip with 400", () => {
-            cy.makePrivateAdminAPICall("POST", "/admin/api/map/geocode-all", { skip: -1 }, 400, 30000);
+            cy.makePrivateAdminAPICall("POST", "/api/map/geocode-all", { skip: -1 }, 400, 30000);
         });
 
         it("Echoes the requested skip and a processed count in the summary", () => {
-            cy.makePrivateAdminAPICall("POST", "/admin/api/map/geocode-all", { skip: 100000 }, 200, 30000).then(
+            cy.makePrivateAdminAPICall("POST", "/api/map/geocode-all", { skip: 100000 }, 200, 30000).then(
                 (probe) => {
                     // The default (no skip key) path is asserted by the happy-path test above.
                     expect(probe.body.skip).to.equal(100000);
@@ -143,7 +143,7 @@ describe("API Private Map — POST /admin/api/map/geocode-all", { retries: 2 }, 
         it("Returns 401 when no API key is supplied", () => {
             cy.apiRequest({
                 method: "POST",
-                url: "/admin/api/map/geocode-all",
+                url: "/api/map/geocode-all",
                 body: {},
                 failOnStatusCode: false,
             }).then((response) => {
@@ -153,11 +153,14 @@ describe("API Private Map — POST /admin/api/map/geocode-all", { retries: 2 }, 
     });
 
     context("Authorization", () => {
-        it("Returns 403 for a non-admin authenticated user", () => {
-            // Uses tony.wade (user.api.key): EditRecords=1, Admin=0.
-            // This user passes AuthMiddleware (not EditSelf-exclusive) but lacks
-            // Admin=1, so AdminRoleAuthMiddleware correctly returns 403.
-            cy.makePrivateUserAPICall("POST", "/admin/api/map/geocode-all", {}, 403);
+        it("Allows a user with Edit Records who is not an admin", () => {
+            // tony.wade (user.api.key): EditRecords=1, Admin=0. Skipping past every family
+            // keeps the call off the geocoding services.
+            cy.makePrivateUserAPICall("POST", "/api/map/geocode-all", { skip: 100000 }, 200, 30000);
+        });
+
+        it("Returns 403 for a user without Edit Records", () => {
+            cy.makePrivatePlainAuthAPICall("POST", "/api/map/geocode-all", {}, 403);
         });
     });
 });

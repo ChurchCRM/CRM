@@ -65,6 +65,14 @@ export const PERSONAS = {
         // Edit Self without staff flags is confined to /portal; the internal API answers 403.
         confinedToPortal: true,
     },
+    // Edit Self plus a dormant Notes flag: still a self-service account, never staff.
+    "portal-only-dormant-flags": {
+        principal: "portal",
+        apiKey: "selfedit.plus.notes.api.key",
+        login: { username: "lena.black.editself.notes@example.com", password: SEED_PASSWORD },
+        flags: "Edit Self, Notes",
+        confinedToPortal: true,
+    },
 };
 
 export const personaNames = Object.keys(PERSONAS);

@@ -1749,10 +1749,6 @@ msgid "Login Name"
 msgstr "اسم المستخدم"
 
 #: 
-msgid "Manage Properties and Classifications"
-msgstr "إدارة خصائص وتصنيفات"
-
-#: 
 msgid "Manage Groups and Roles"
 msgstr "إدارة المجموعات والأدوار"
 
@@ -5326,10 +5322,6 @@ msgid "Enter event description..."
 msgstr "أدخل وصف الحدث..."
 
 #: 
-msgid "Event ID"
-msgstr "معرف الحدث"
-
-#: 
 msgid "Enter note text here..."
 msgstr "أدخل نص الملاحظة هنا..."
 
@@ -6103,10 +6095,6 @@ msgid "Manage Orphaned Files"
 msgstr "إدارة الملفات اليتيمة"
 
 #: 
-msgid "Menu options access"
-msgstr "الوصول لخيارات القائمة"
-
-#: 
 msgid "Multiple Copies"
 msgstr "نسخ متعددة"
 
@@ -6213,10 +6201,6 @@ msgstr "استخدم أدوات خارجية (GPG و7-Zip) لتشفير النس
 #: 
 msgid "User authentication"
 msgstr "مصادقة المستخدم"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "يجب أن يكون للمستخدم إذن خيارات القائمة"
 
 #: 
 msgid "What are Orphaned Files?"
@@ -21270,10 +21254,6 @@ msgid "Recent Emails"
 msgstr "الرسائل الأخيرة"
 
 #: 
-msgid "Recent Sends"
-msgstr "عمليات الإرسال الأخيرة"
-
-#: 
 msgid "Recipient"
 msgstr "المستلم"
 
@@ -24594,28 +24574,8 @@ msgid "%d failed (all time)"
 msgstr "%d فاشلة (الإجمالي)"
 
 #: 
-msgid "Failed email history pages"
-msgstr "صفحات سجل البريد الإلكتروني الفاشل"
-
-#: 
 msgid "Failed sends across all email history, including automated messages"
 msgstr "عمليات الإرسال الفاشلة في كامل سجل البريد الإلكتروني، بما في ذلك الرسائل التلقائية"
-
-#: 
-msgid "No server error recorded"
-msgstr "لم يتم تسجيل أي خطأ في الخادم"
-
-#: 
-msgid "Show all recent sends"
-msgstr "عرض جميع عمليات الإرسال الأخيرة"
-
-#: 
-msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
-msgstr "يتم عرض عمليات الإرسال الفاشلة في كامل سجل البريد الإلكتروني، بما في ذلك الرسائل التلقائية. اختر موضوعًا لعرض التفاصيل."
-
-#: 
-msgid "The table shows only the latest 20 sends. Open a person to see their full history."
-msgstr "يعرض الجدول آخر 20 عملية إرسال فقط. افتح الشخص لعرض سجله الكامل."
 
 #: 
 msgid "View %d failed sends across all email history"

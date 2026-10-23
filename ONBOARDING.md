@@ -19,7 +19,7 @@ Claude Code helps you contribute more effectively. This guide walks you through 
 ### Key Commands
 ```bash
 npm install              # Install dependencies
-npm run lint            # Required before every commit (Biome)
+npm run lint            # Required before every commit (all static checks)
 npm run build           # Build the project
 npm run docker:test:start  # Run the test environment
 cd src && composer install  # PHP dependencies

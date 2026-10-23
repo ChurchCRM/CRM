@@ -577,6 +577,9 @@
         <index name="idx_plg_depID">
             <index-column name="plg_depID"/>
         </index>
+        <index name="idx_plg_GroupKey">
+            <index-column name="plg_GroupKey"/>
+        </index>
         <foreign-key foreignTable="deposit_dep">
             <reference local="plg_depID" foreign="dep_ID"/>
         </foreign-key>
