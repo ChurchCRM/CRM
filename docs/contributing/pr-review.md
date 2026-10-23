@@ -18,12 +18,13 @@ Thank you for donating time (and often tokens). Reviews mark each item as a hard
 10. Keep the PR title and description true to the current diff.
 11. Build new reports with Slim/Tabler MVC + Propel, or a reports plugin. Query View (`QueryView.php`, `QueryList.php`, predefined `query_qry` rows) is closed to new features.
 12. Let names and tests carry intent; comment only a *why* the code cannot say.
+13. Upgrade scripts: prefer plain `.sql`. A `.php` upgrade script must not reference a class, method, or constant added or changed in the same release (the upgrader runs it in the same process that just deployed the code). See `.agents/skills/churchcrm/db-schema-migration.md`.
 
 ## Hard blocks (expect Request changes)
 
 - Security problem
 - Unmeasured performance risk on a common path
-- Unsafe upgrade or surprise behavior
+- Unsafe upgrade or surprise behavior (including a `.php` upgrade script that depends on a newly-deployed class or constant)
 - UI that does not look like ChurchCRM, or a UI change without a tablet/mobile check
 - New strings that are not wrapped
 - Dates/times/numbers/currency that ignore the storage vs display rules above
