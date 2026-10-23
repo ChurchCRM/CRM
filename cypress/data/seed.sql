@@ -1894,6 +1894,20 @@ INSERT INTO `version_ver` (`ver_ID`, `ver_version`, `ver_update_start`, `ver_upd
 (93,'7.8.1','2026-10-10 20:13:31','2026-10-10 20:13:31'),
 (94,'7.8.2','2026-10-18 23:31:54','2026-10-18 23:31:54');
 
+-- Next ids. family_custom and person_custom keep rows past the last family and person, so a
+-- counter left at max+1 hands a new family an id that table already holds.
+ALTER TABLE `calendars` AUTO_INCREMENT = 95;
+ALTER TABLE `donationfund_fun` AUTO_INCREMENT = 5;
+ALTER TABLE `eventcountnames_evctnm` AUTO_INCREMENT = 8;
+ALTER TABLE `events_event` AUTO_INCREMENT = 5;
+ALTER TABLE `event_attend` AUTO_INCREMENT = 3;
+ALTER TABLE `family_fam` AUTO_INCREMENT = 46;
+ALTER TABLE `group_grp` AUTO_INCREMENT = 25;
+ALTER TABLE `menu_links` AUTO_INCREMENT = 4;
+ALTER TABLE `pledge_plg` AUTO_INCREMENT = 36;
+ALTER TABLE `propertytype_prt` AUTO_INCREMENT = 5;
+ALTER TABLE `property_pro` AUTO_INCREMENT = 32;
+
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
