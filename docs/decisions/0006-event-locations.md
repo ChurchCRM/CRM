@@ -1,19 +1,19 @@
 # RFC: Event locations
 
 > **BLUF**
-> Admins define a place once (name, address, contact) and pick it from a list when they create an event. Staff and members then see where an event is. The `locations` table, the `Location` model and `GET /api/events/{id}/location` already exist; the management pages, the picker and the display do not. Ship it as four reviewable PRs. This RFC is meant to replace epic #5238 and its nine sub-issues, which were written before master moved on (7.8.1 today). Those issues are closed with this RFC; their detail is carried into §4 and §8, and new issues are filed when the RFC is ready to be worked on.
+> Admins define a place once (name, address, contact) and pick it from a list when they create an event. Staff then see where an event is, including a directions link. The `locations` table, the `Location` model and `GET /api/events/{id}/location` already exist, and a few portal and volunteer views already show the place name. The management pages, the picker and the staff event pages do not. Ship it as four reviewable PRs. This RFC replaces epic #5238 and its nine sub-issues, which were written before master moved on (7.8.1 today). Their detail is in §4 and §8. New issues are filed when the RFC is accepted.
 
-**Status:** Draft; open for review, no release commitment  
+**Status:** Proposed, open for review; no release commitment  
 **Date:** 2026-10-17  
 **Owner:** George Dawoud  
 **Replaces:** [#5238](https://github.com/ChurchCRM/CRM/issues/5238) (epic) and its sub-issues #8575, #8576, #8577, #8578, #8579, #8580, #8581, #8582, #8583 · **Related:** closed [#3895](https://github.com/ChurchCRM/CRM/issues/3895), [#4223](https://github.com/ChurchCRM/CRM/issues/4223)  
-**Numbering:** `0006` is provisional; a maintainer assigns the final number on merge.  
-Code is cited by symbol on `master` as of 2026-10-17.
+**Numbering:** `0006`  
+Code is cited by symbol on `master` as of 2026-10-23.
 
 ## Questions for the maintainer
 1. Four PRs (§5) instead of the nine tickets in the old epic?
-2. Keep `events_event.location_id = 0` as "no location" and guard deletes in the service, with no foreign key (D5)?
-3. Show the location to portal members and in the iCal feed in this RFC (PR 4), given that a location can be someone's home (D8)?
+2. Keep `events_event.location_id = 0` as "no location", block deletes in the service, and set `skipSql="true"` on the existing schema relation so `getLocation()` stays and no SQL foreign key is added (D5)?
+3. Keep showing the place name where members already see it, and add the address only behind a switch (D8)?
 4. Widen the 45-character address, city and email columns in the same migration (D3)?
 
 ## 1. What master has today
@@ -22,15 +22,15 @@ The epic's audit was checked against `master`. It holds, with these corrections.
 
 | Epic said | Master |
 |---|---|
-| `events_event.location_id` is an FK to `locations` | Plain `INTEGER NOT NULL DEFAULT 0` in `orm/schema.xml`. No foreign key. `0` means none. |
+| `events_event.location_id` is an FK to `locations` | The `schema.xml` column is `INTEGER NOT NULL DEFAULT 0`, and the table has `<foreign-key foreignTable="locations">` with no `skipSql`. That element generates `Event::getLocation()`, which treats `0` as none. `Install.sql` is `INT DEFAULT NULL`. No install or upgrade script adds a SQL constraint. |
 | `locations` is ready to use | `orm/schema.xml` declares `location_id` without `autoIncrement`; `Install.sql` has `AUTO_INCREMENT`. #4223 (closed) fixed an older install. Check both before the first insert. Column `location_timzezone` is misspelled. `location_typeID` is unused. |
 | `locations` columns are NOT NULL | `Install.sql` allows NULL for phone, email and timezone; `schema.xml` does not. They disagree. |
-| Nothing reads a location | The volunteer team page already does: `src/portal/routes/teams.php` passes `$linkedEvent->getLocation()->getLocationName()` to the template. |
+| Nothing reads a location | The place name is already shown in four places: portal teams (`src/portal/routes/teams.php`), the volunteer occurrence page (`src/ministries/routes/occurrence.php`), the member calendar (`PortalCalendarService::locationName()`), and volunteer emails (`VolunteerNotificationService::locationNameFor()`). The email path calls `getName()`; `Location` only has `getLocationName()`. |
 | API: only `GET /api/events/{id}/location` | Confirmed (`getEventLocation` in `src/api/routes/calendar/events.php`). It answers 404 when the event has no location. |
 | Waits on the event MVC migration (#8550) | Merged. Event pages live in `src/event/routes/` and `src/event/views/`. |
 | Menu entry "under Events" | Events menu is built in `Menu.php` (`Events Dashboard` → `event/dashboard`; `Event Types` → `event/types`). |
 | No new permission needed | Still true: `AddEventsRoleAuthMiddleware` and `ViewEventsRoleAuthMiddleware` exist. |
-| iCal feed shows where | `src/ChurchCRM/dto/iCal.php` and `PortalCalendarFeed` emit no `LOCATION`. |
+| iCal feed shows where | `src/ChurchCRM/dto/iCal.php` emits no `LOCATION`. `PortalCalendarFeed` writes `LOCATION` from the name `PortalCalendarService` already sets. The address is not included. |
 | Planned for 7.2 / 7.3 | Stale. Target is the next minor after acceptance. |
 
 Confirmed missing: a locations API, management pages, an editor picker, any display on the event dashboard or event view page, an event filter by location, and a menu entry.
@@ -53,10 +53,10 @@ Confirmed missing: a locations API, management pages, an editor picker, any disp
 | D2 | **Soft delete.** New column `is_active` (default 1). Inactive places leave the pickers and keep showing on old events. |
 | D3 | **One migration** `src/mysql/upgrade/<version>-event-locations.sql` and a matching `orm/schema.xml` change: add `is_active`; make `location_id` auto-increment in both; let phone, email and timezone be NULL in both. Optionally widen `location_address`, `location_city` and `location_email` to 255 (question 4): 45 characters truncates real addresses and emails. The `location_timzezone` typo stays; renaming it costs a migration for no user benefit. |
 | D4 | **Permissions reuse events.** Reads sit behind `ViewEventsRoleAuthMiddleware`; every write route adds `AddEventsRoleAuthMiddleware`. No new permission column. When the RBAC redesign ([RFC 0002](0002-rbac-redesign.md)) lands, these two guards move with the other event routes. |
-| D5 | **Delete is blocked while any event uses the place.** The service counts `events_event.location_id` inside the delete and answers 409 with the count: "Used by N events. Deactivate it instead, or reassign the events first." (Sub-issue #8577 instead soft-deleted a referenced place on `DELETE`; the epic's restrict rule wins, so `DELETE` never changes `is_active` and there is no `?force`.) No foreign key: `0` already means "none", and an FK would force a data migration of every existing event for no new behavior (question 2). |
+| D5 | **Delete is blocked while any event uses the place.** The service counts `events_event.location_id` inside the delete and answers 409 with the count: "Used by N events. Deactivate it instead, or reassign the events first." (Sub-issue #8577 instead soft-deleted a referenced place on `DELETE`; the epic's restrict rule wins, so `DELETE` never changes `is_active` and there is no `?force`.) No SQL foreign key. `0` already means "none", and a constraint would reject every existing event stored as `0`. Keep the `<foreign-key foreignTable="locations">` element and set `skipSql="true"` on it, the same way the person contacts are mapped. That keeps `Event::getLocation()`. Deleting the element removes the relation the portal and volunteer pages already call (question 2). |
 | D6 | **Business logic in `src/ChurchCRM/Service/LocationService.php`**, using Propel (`LocationQuery`, `EventQuery`). Routes stay thin. |
 | D7 | **Free text stays possible.** An event with `location_id = 0` is valid. Online events keep using `event_url`; a place needs no address (the address columns accept `''`). |
-| D8 | **Members see a place only where the church chooses.** The portal calendar and iCal `LOCATION` show the name and address of an active place. Because a place can be a private home, the location form says "Shown to everyone who can see the event", and the display is a single switch in PR 4 that can ship later or off without touching PRs 1 to 3 (question 3). |
+| D8 | **The name stays; the address is a switch.** Members already see the place name on the portal calendar, and `PortalCalendarFeed` already writes that name as `LOCATION`. The address is not shown. Because a place can be a private home, PR 4 adds the address, and `LOCATION` on the staff feed from `iCal.php`, only when one switch is on. The switch defaults off. The location form says "Shown to everyone who can see the event". The switch can ship later without touching PRs 1 to 3 (question 3). |
 
 ## 4. Surface
 
@@ -85,16 +85,18 @@ Sized by review burden, not by ticket count. Each is independently shippable and
 | 1. Data + API | D3 migration and `schema.xml`, `LocationService`, the five routes, OpenAPI | #8575, #8576, #8577 | Cypress API spec: CRUD, 404, 409 on delete, 403 without `AddEvents` |
 | 2. Management pages | List, new, edit, Events menu entry | #8578, #8579, part of #8583 | Cypress UI spec; Playwright capture spec in the same PR |
 | 3. Event integration | Picker (both editors), dashboard badge and filter, event page card | #8580, #8581, #8582 | Cypress specs in `event-editor.spec.js`, `repeat-event-editor.spec.js` and a dashboard filter spec |
-| 4. Members | Portal calendar and iCal `LOCATION` (D8), accessibility sweep | the member story in #5238 | Cypress feed spec |
+| 4. Members | Address and staff `iCal.php` `LOCATION`, behind the D8 switch. Portal name and portal feed `LOCATION` already exist. Call `getLocationName()` from `VolunteerNotificationService`. Accessibility sweep | the member story in #5238 | Cypress feed spec |
 
 UI PRs follow `frontend-development.md` (Tabler, light and dark, desktop, tablet and phone) and attach screenshots.
 
 ## 6. Risks
-- **Privacy:** a location can be a private address. Mitigated by D8's wording and its switch, and by staff-only entry (D4).
-- **Orphans:** with no FK (D5), a direct database delete can strand `location_id`. `getLocation()` already returns null for a missing row, and every display path treats null as "no location".
+- **Privacy:** a location can be a private address. The name is already shown to members who can see the event. The address is the remaining exposure. D8's switch defaults off, and only staff can enter a place (D4).
+- **Orphans:** with no SQL foreign key (D5), a direct database delete can strand `location_id`. `getLocation()` already returns null for a missing row, and every display path treats null as "no location".
 - **Schema drift:** `Install.sql` and `schema.xml` disagree today (§1). PR 1 makes them match and its spec fails if they diverge again.
 
 ## 7. Disposition of the old issues
+
+Close each of these when this RFC is accepted. They stay open until then.
 
 | Issue | Outcome |
 |---|---|
