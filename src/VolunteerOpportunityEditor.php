@@ -4,6 +4,7 @@ require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunityQuery;
 use ChurchCRM\model\ChurchCRM\User;
@@ -485,10 +486,10 @@ if (isset($_POST['SaveChanges'])) {
                         <i class="fa-solid fa-floppy-disk"></i>
                         <?= gettext('Save Changes') ?>
                     </button>
-                    <button type="button" class="btn btn-secondary" name="Exit" onclick="document.location='v2/dashboard'">
+                    <a class="btn btn-secondary" href="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath() . '/v2/dashboard') ?>">
                         <i class="fa-solid fa-arrow-right-from-bracket"></i>
                         <?= gettext('Exit') ?>
-                    </button>
+                    </a>
                 </div>
         <?php } ?>
     </form>

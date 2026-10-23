@@ -1751,10 +1751,6 @@ msgid "Login Name"
 msgstr "உள்நுழைவு பெயர்"
 
 #: 
-msgid "Manage Properties and Classifications"
-msgstr "பண்புகள் மற்றும் வகைப்பாடுகளை நிர்வகிக்கவும்"
-
-#: 
 msgid "Manage Groups and Roles"
 msgstr "குழுக்கள் மற்றும் வேலைகளை/பாத்திரங்களை நிர்வகிக்கவும்"
 
@@ -5326,10 +5322,6 @@ msgid "Enter event description..."
 msgstr "நிகழ்வு விளக்கத்தை உள்ளிடவும்..."
 
 #: 
-msgid "Event ID"
-msgstr "நிகழ்வு ஐடி"
-
-#: 
 msgid "Enter note text here..."
 msgstr "குறிப்பு உரையை இங்கே உள்ளிடவும்..."
 
@@ -6099,10 +6091,6 @@ msgid "Manage Orphaned Files"
 msgstr "தனித்து விடப்பட்ட கோப்புகளை நிர்வகித்தல்"
 
 #: 
-msgid "Menu options access"
-msgstr "பட்டி விருப்பங்களுக்கான அணுகல்"
-
-#: 
 msgid "Multiple Copies"
 msgstr "பல நகல்கள்"
 
@@ -6209,10 +6197,6 @@ msgstr "காப்புப்பிரதிகளை வெளி இடங�
 #: 
 msgid "User authentication"
 msgstr "பயனர் அங்கீகாரம்"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "பயனருக்கு மெனு விருப்பங்களுக்கான அனுமதி இருக்க வேண்டும்."
 
 #: 
 msgid "What are Orphaned Files?"
@@ -21179,10 +21163,6 @@ msgid "Recent Emails"
 msgstr "சமீபத்திய மின்னஞ்சல்கள்"
 
 #: 
-msgid "Recent Sends"
-msgstr "சமீபத்திய அனுப்புதல்கள்"
-
-#: 
 msgid "Recipient"
 msgstr "பெறுநர்"
 
@@ -24487,28 +24467,8 @@ msgid "%d failed (all time)"
 msgstr "%d தோல்வி (மொத்தம்)"
 
 #: 
-msgid "Failed email history pages"
-msgstr "தோல்வியடைந்த மின்னஞ்சல் வரலாற்றுப் பக்கங்கள்"
-
-#: 
 msgid "Failed sends across all email history, including automated messages"
 msgstr "தானியங்கி செய்திகள் உட்பட, முழு மின்னஞ்சல் வரலாற்றிலும் தோல்வியடைந்த அனுப்புதல்கள்"
-
-#: 
-msgid "No server error recorded"
-msgstr "சர்வர் பிழை எதுவும் பதிவு செய்யப்படவில்லை"
-
-#: 
-msgid "Show all recent sends"
-msgstr "சமீபத்திய அனுப்புதல்கள் அனைத்தையும் காட்டு"
-
-#: 
-msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
-msgstr "தானியங்கி செய்திகள் உட்பட, முழு மின்னஞ்சல் வரலாற்றிலும் தோல்வியடைந்த அனுப்புதல்கள் காட்டப்படுகின்றன. விவரங்களுக்கு ஒரு பொருளைத் தேர்ந்தெடுக்கவும்."
-
-#: 
-msgid "The table shows only the latest 20 sends. Open a person to see their full history."
-msgstr "அட்டவணை கடைசி 20 அனுப்புதல்களை மட்டுமே காட்டும். முழு வரலாற்றைக் காண ஒருவரைத் திறக்கவும்."
 
 #: 
 msgid "View %d failed sends across all email history"

@@ -1752,10 +1752,6 @@ msgid "Login Name"
 msgstr "Identifikohu Emri"
 
 #: 
-msgid "Manage Properties and Classifications"
-msgstr "Menaxho Prona dhe klasifikime"
-
-#: 
 msgid "Manage Groups and Roles"
 msgstr "Menaxhuar grupet dhe Rolet"
 
@@ -5317,10 +5313,6 @@ msgid "Enter event description..."
 msgstr "Vendosni përshkrimin e ngjarjes..."
 
 #: 
-msgid "Event ID"
-msgstr "ID e ngjarjes"
-
-#: 
 msgid "Enter note text here..."
 msgstr "Vendosni tekstin e shënimit këtu..."
 
@@ -6086,10 +6078,6 @@ msgid "Manage Orphaned Files"
 msgstr "Menaxho skedarët jetimë"
 
 #: 
-msgid "Menu options access"
-msgstr "Aksesi në opsionet e menusë"
-
-#: 
 msgid "Multiple Copies"
 msgstr "Kopje të shumëfishta"
 
@@ -6196,10 +6184,6 @@ msgstr "Përdorni mjete të jashtme (GPG, 7-Zip) për të enkriptuar kopjet reze
 #: 
 msgid "User authentication"
 msgstr "Vërtetimi i përdoruesit"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "Përdoruesi duhet të ketë lejen e opsioneve të menusë"
 
 #: 
 msgid "What are Orphaned Files?"
@@ -21157,10 +21141,6 @@ msgid "Recent Emails"
 msgstr "Email-et e fundit"
 
 #: 
-msgid "Recent Sends"
-msgstr "Dërgimet e fundit"
-
-#: 
 msgid "Recipient"
 msgstr "Marrësi"
 
@@ -24465,28 +24445,8 @@ msgid "%d failed (all time)"
 msgstr "%d të dështuara (gjithsej)"
 
 #: 
-msgid "Failed email history pages"
-msgstr "Faqet e historikut të emailave të dështuar"
-
-#: 
 msgid "Failed sends across all email history, including automated messages"
 msgstr "Dërgimet e dështuara në të gjithë historikun e emailave, përfshirë mesazhet automatike"
-
-#: 
-msgid "No server error recorded"
-msgstr "Nuk u regjistrua asnjë gabim serveri"
-
-#: 
-msgid "Show all recent sends"
-msgstr "Shfaq të gjitha dërgimet e fundit"
-
-#: 
-msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
-msgstr "Po shfaqen dërgimet e dështuara në të gjithë historikun e emailave, përfshirë mesazhet automatike. Zgjidh një subjekt për detaje."
-
-#: 
-msgid "The table shows only the latest 20 sends. Open a person to see their full history."
-msgstr "Tabela shfaq vetëm 20 dërgimet e fundit. Hap një person për të parë historikun e plotë."
 
 #: 
 msgid "View %d failed sends across all email history"

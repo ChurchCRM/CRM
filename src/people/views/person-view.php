@@ -441,7 +441,7 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
                     <i class="fa-solid fa-ellipsis-vertical me-1"></i><?= gettext("Actions") ?>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
-                    <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
+                    <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
                         <a class="dropdown-item" id="editWhyCame" href="<?= SystemURLs::getRootPath() ?>/WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-circle-question me-2"></i><?= gettext("Why Came") ?></a>
                     <?php } ?>
                     <?php if ($bOkToEdit && $fam_ID !== '') { ?>
@@ -634,7 +634,7 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
                         <i class="fa-solid fa-people-roof me-1"></i><?= gettext('Find Neighbors') ?>
                     </a>
                     <?php endif; ?>
-                    <?php if (!empty($fam_ID) && !$familyHasCoords) : ?>
+                    <?php if (!empty($fam_ID) && !$familyHasCoords && AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) : ?>
                     <button type="button" class="btn btn-sm btn-outline-success" id="refresh-coordinates-btn" data-family-id="<?= $fam_ID ?>" title="<?= gettext('Automatically detect coordinates using address') ?>">
                         <i class="fa-solid fa-location-dot me-1"></i><?= gettext('Refresh Coordinates') ?>
                     </button>

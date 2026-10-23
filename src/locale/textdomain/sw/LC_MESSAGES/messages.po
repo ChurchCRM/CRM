@@ -1751,10 +1751,6 @@ msgid "Login Name"
 msgstr "Jina la Kuingia"
 
 #: 
-msgid "Manage Properties and Classifications"
-msgstr "Dhibiti Sifa na Ainisho"
-
-#: 
 msgid "Manage Groups and Roles"
 msgstr "Dhibiti Vikundi na Majukumu"
 
@@ -5323,10 +5319,6 @@ msgid "Enter event description..."
 msgstr "Ingiza maelezo ya tukio..."
 
 #: 
-msgid "Event ID"
-msgstr "ID ya Tukio"
-
-#: 
 msgid "Enter note text here..."
 msgstr "Andika ujumbe hapa..."
 
@@ -6092,10 +6084,6 @@ msgid "Manage Orphaned Files"
 msgstr "Simamia Faili Yatima"
 
 #: 
-msgid "Menu options access"
-msgstr "Ufikiaji wa chaguzi za orodha"
-
-#: 
 msgid "Multiple Copies"
 msgstr "Nakala Nyingi"
 
@@ -6202,10 +6190,6 @@ msgstr "Tumia zana za nje kusimba nakala kabla ya kuzihifadhi nje ya eneo."
 #: 
 msgid "User authentication"
 msgstr "Uthibitishaji wa mtumiaji"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "Mtumiaji lazima awe na ruhusa ya Chaguzi za Orodha"
 
 #: 
 msgid "What are Orphaned Files?"
@@ -21163,10 +21147,6 @@ msgid "Recent Emails"
 msgstr "Barua pepe za Hivi Karibuni"
 
 #: 
-msgid "Recent Sends"
-msgstr "Zilizotumwa Hivi Karibuni"
-
-#: 
 msgid "Recipient"
 msgstr "Mpokeaji"
 
@@ -24471,28 +24451,8 @@ msgid "%d failed (all time)"
 msgstr "%d zimeshindwa (jumla)"
 
 #: 
-msgid "Failed email history pages"
-msgstr "Kurasa za historia ya barua pepe zilizoshindwa"
-
-#: 
 msgid "Failed sends across all email history, including automated messages"
 msgstr "Utumaji ulioshindwa katika historia yote ya barua pepe, ikiwemo ujumbe wa kiotomatiki"
-
-#: 
-msgid "No server error recorded"
-msgstr "Hakuna hitilafu ya seva iliyorekodiwa"
-
-#: 
-msgid "Show all recent sends"
-msgstr "Onyesha utumaji wote wa hivi karibuni"
-
-#: 
-msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
-msgstr "Inaonyesha utumaji ulioshindwa katika historia yote ya barua pepe, ikiwemo ujumbe wa kiotomatiki. Chagua mada kwa maelezo."
-
-#: 
-msgid "The table shows only the latest 20 sends. Open a person to see their full history."
-msgstr "Jedwali linaonyesha utumaji 20 wa mwisho tu. Fungua mtu kuona historia kamili."
 
 #: 
 msgid "View %d failed sends across all email history"

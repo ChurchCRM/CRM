@@ -487,7 +487,7 @@ function showSendBanner(kind: "info" | "success" | "warning" | "danger", text: s
   return body;
 }
 
-/** "Follow it in the email history" link for administrators; others see each person's history. */
+/** "Follow it in the email history" link to the email log; without one, each person's history. */
 function appendHistoryLink(banner: HTMLElement): void {
   const url = window.CRM?.comm?.emailHistoryURL;
   const note = document.createElement("div");

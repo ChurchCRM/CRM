@@ -197,9 +197,11 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
                     </button>
                     <div class="dropdown-divider"></div>
                     <?php } ?>
+                    <?php if ($canEditRecords) { ?>
                     <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#confirm-verify">
                         <i class="fa-solid fa-clipboard-check me-2"></i><?= gettext('Verify Info') ?>
                     </a>
+                    <?php } ?>
                     <?php if ($family->hasLatitudeAndLongitude()) { ?>
                     <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/people/map/neighbors?familyId=<?= $family->getId() ?>">
                         <i class="fa-solid fa-people-roof me-2"></i><?= gettext('Find Neighbors') ?>
@@ -576,7 +578,7 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
                         <i class="fa-solid fa-people-roof me-1"></i><?= gettext('Find Neighbors') ?>
                     </a>
                     <?php endif; ?>
-                    <?php if (!$family->hasLatitudeAndLongitude()) : ?>
+                    <?php if ($canEditRecords && !$family->hasLatitudeAndLongitude()) : ?>
                     <button type="button" class="btn btn-sm btn-outline-success" id="refresh-coordinates-btn"
                             data-family-id="<?= $family->getId() ?>"
                             title="<?= gettext('Automatically detect coordinates using address') ?>">

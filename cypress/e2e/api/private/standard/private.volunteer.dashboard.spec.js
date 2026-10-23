@@ -25,7 +25,7 @@
  *   person 1   `admin.api.key`                  Administrator — sees everything
  *   person 3   `user.api.key`                   ministry scope on ministry A
  *   person 95  `nofinance.api.key`              ministry scope on ministry B
- *   person 902 `menuoptions.api.key`             TEAM scope only, on team A2
+ *   person 902 `teamleader.api.key`             TEAM scope only, on team A2
  *   person 900 `plainauth.api.key`              no volunteer rights → 403
  *
  * The team leader is person 902, an ordinary staff account, because this spec is
@@ -43,7 +43,7 @@ const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const ADMIN_KEY = "admin.api.key";
 const COORD_A_KEY = "user.api.key";
 const COORD_B_KEY = "nofinance.api.key";
-const TEAM_LEADER_KEY = "menuoptions.api.key";
+const TEAM_LEADER_KEY = "teamleader.api.key";
 const PLAINAUTH_KEY = "plainauth.api.key";
 
 const VOLUNTEER_URL = "/api/ministries";
@@ -367,7 +367,7 @@ function cleanupFixtures() {
 // ── fixture ────────────────────────────────────────────────────────────────
 
 before(() => {
-    cy.rememberTestEnv(["admin.api.key", "user.api.key", "nofinance.api.key", "plainauth.api.key", "menuoptions.api.key"]);
+    cy.rememberTestEnv(["admin.api.key", "user.api.key", "nofinance.api.key", "plainauth.api.key", "teamleader.api.key"]);
     cy.useChurchTimeZone();
 });
 

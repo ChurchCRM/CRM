@@ -16,6 +16,7 @@ for localization details.
 - Identify the release candidate by exact commit SHA. A change to that SHA invalidates its prior green checks.
 - Do not start a draft or publish without the maintainer's explicit approval for that action. Approval to draft is not approval to publish.
 - Do not replace or delete an existing release or tag without explicit approval.
+- Security gate: only a High advisory blocks, and only while the code on the release commit is still exploitable. Read each draft High and check `master`; a draft state or a missing `Fixes` link does not decide it. Medium and Low never block. List every blocking GHSA ID. Only the maintainer lifts a block, by naming the ID.
 - Report **READY FOR DRAFT** or **BLOCKED** with the evidence and remaining blockers. After publication, report **RELEASE VERIFIED** only after completing the runbook's post-release checks.
 
 Use the [Release Notes skill](./release-notes.md) to prepare notes, and the

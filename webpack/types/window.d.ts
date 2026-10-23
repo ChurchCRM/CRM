@@ -340,7 +340,7 @@ interface CRMNamespace {
     vonageEnabled?: boolean;
     /** Church default "to" address (sToEmailAddress); "" when unset or user lacks email permission. */
     defaultEmailToAddress?: string;
-    /** Recent Sends on Email Settings (administrators); "" for everyone else. */
+    /** The email log: /admin/email/log for administrators, /people/email for other senders; "" without the Email permission. */
     emailHistoryURL?: string;
     [key: string]: unknown;
   };

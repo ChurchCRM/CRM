@@ -22,7 +22,7 @@ The author is a volunteer. Be thankful, specific, and focused on what matters.
 
 ## Comment Resolution
 
-Resolve addressed comments as part of PR review. If a comment's concern is addressed in the current PR code (question answered, bug fixed, design decision made), mark/resolve that comment. This keeps threads clean and shows progress.
+Read every review thread on the PR (inline threads and review summaries, from people and bots) before you review or report on it. Resolve a thread when the current PR code addresses it (question answered, bug fixed, design decision made). Leave it open, with a reply, when it is not addressed. A bot's `CHANGES_REQUESTED` review stays until that bot reviews again, so a green check does not mean approval: report the unresolved threads and each bot's latest review state.
 
 ## Review Format: No Hard Blocks
 
@@ -52,6 +52,7 @@ The "Verified" + "No hard blocks" signal replaces an all-checked checkbox list.
 7. Tests — feature or bug fix with no new or updated tests.
 8. Repo process — issue rule in `git-workflow.md` not met; title or body that describes different work than the diff.
 9. Query View freeze — any new feature or filter on `QueryView.php`, `QueryList.php`, or predefined `query_qry` / `queryparameters_qrp` rows for that UI. Point the author at Slim/Tabler MVC + Propel (`src/v2/`), or a reports plugin (`src/plugins/`; `src/plugins/community/` to share). Security-only patches on Query View need an explicit maintainer exception.
+10. Existing Playwright captures — the PR removes, renames or reroutes something that `playwright/` specs, videos or helpers use (an id, route, setting, button, menu entry or aria-label) and does not update them. The capture suite runs on `master` after merge and feeds the release docs, so the break appears late. Same standard as a Cypress selector. Grep `playwright/` for what the diff removes; a capture marked `usedIn` must still exist (`npm run lint`). Locators must not depend on English text (captures run in 8 locales; videos run in `en` only).
 
 Comment volume is not a review topic. Wrong or essay comments can be deleted; that is not Request changes.
 
@@ -73,7 +74,7 @@ If hard blocks stay open and the author goes quiet, maintainers may close the PR
 - Demo-import values belong in `src/admin/demo/config.json`, which keeps the Cypress seed stable.
 - User manual tracking issue on ChurchCRM/CRM. The docs pull request uses the same milestone and stays open until that release is published.
 - Docs and screenshots follow-up. A PR that adds or changes user-visible behavior gets one note in the review: the docs pull request on `ChurchCRM/docs.churchcrm.io` needs that release milestone, and screenshots or video for docs, blog, and marketing still have to land. Name which ones the PR already carries and which still need an issue. The docs pull request merges only after the release exists, its CI is green, and CodeRabbit has approved. Skip bug-fix, security, CI, locale, dependency, and refactor-only PRs. Not a blocker.
-- Playwright capture when the PR changes UI that belongs on a marketing or docs page. It ships in the same PR (the spec only; images are generated and published to cdn.churchcrm.io, not committed); ask the author to add it. If it cannot be taken yet, an issue linked from the PR is enough. Not a blocker.
+- A new Playwright capture when the PR changes UI that belongs on a marketing or docs page (breaking an existing capture is a hard block, item 10). It ships in the same PR (the spec only; images are generated and published to cdn.churchcrm.io, not committed); ask the author to add it. If it cannot be taken yet, an issue linked from the PR is enough. Not a blocker.
 - Marketing / blog only on a full end-to-end feature. Ask George; skip bug/security-only.
 - Member-facing consumer when this PR is storage-only.
 - Extra screenshots. If they have tablet/mobile shots, ask them to attach.

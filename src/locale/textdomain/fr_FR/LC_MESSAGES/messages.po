@@ -1748,10 +1748,6 @@ msgid "Login Name"
 msgstr "Nom d'authentification"
 
 #: 
-msgid "Manage Properties and Classifications"
-msgstr "Administrer les propriétés et catégories"
-
-#: 
 msgid "Manage Groups and Roles"
 msgstr "Administrer des Groupes et des Rôles"
 
@@ -5324,10 +5320,6 @@ msgid "Enter event description..."
 msgstr "Entrez la description de l'événement..."
 
 #: 
-msgid "Event ID"
-msgstr "ID d'événement"
-
-#: 
 msgid "Enter note text here..."
 msgstr "Saisissez votre texte ici..."
 
@@ -6093,10 +6085,6 @@ msgid "Manage Orphaned Files"
 msgstr "Gérer les fichiers orphelins"
 
 #: 
-msgid "Menu options access"
-msgstr "Accès aux options du menu"
-
-#: 
 msgid "Multiple Copies"
 msgstr "Plusieurs copies"
 
@@ -6203,10 +6191,6 @@ msgstr "Utilisez des outils externes (GPG, 7-Zip) pour chiffrer les sauvegardes 
 #: 
 msgid "User authentication"
 msgstr "Authentification de l'utilisateur"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "L'utilisateur doit avoir la permission Options du menu"
 
 #: 
 msgid "What are Orphaned Files?"
@@ -21164,10 +21148,6 @@ msgid "Recent Emails"
 msgstr "E-mails récents"
 
 #: 
-msgid "Recent Sends"
-msgstr "Envois récents"
-
-#: 
 msgid "Recipient"
 msgstr "Destinataire"
 
@@ -24472,28 +24452,8 @@ msgid "%d failed (all time)"
 msgstr "%d échecs (depuis le début)"
 
 #: 
-msgid "Failed email history pages"
-msgstr "Pages d'historique des e-mails en échec"
-
-#: 
 msgid "Failed sends across all email history, including automated messages"
 msgstr "Envois en échec dans tout l'historique des e-mails, y compris les messages automatiques"
-
-#: 
-msgid "No server error recorded"
-msgstr "Aucune erreur serveur enregistrée"
-
-#: 
-msgid "Show all recent sends"
-msgstr "Afficher tous les envois récents"
-
-#: 
-msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
-msgstr "Affichage des envois en échec dans tout l'historique des e-mails, y compris les messages automatiques. Sélectionnez un objet pour voir les détails."
-
-#: 
-msgid "The table shows only the latest 20 sends. Open a person to see their full history."
-msgstr "Le tableau n'affiche que les 20 derniers envois. Ouvrez une personne pour voir son historique complet."
 
 #: 
 msgid "View %d failed sends across all email history"

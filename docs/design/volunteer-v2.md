@@ -202,7 +202,7 @@ Load-bearing: if one changes, the section that depends on it is revisited.
 | F28 | `event_audience` is "a prospective audience for the purpose of advertising / outreach", not an ownership relation. |
 | F29 | V2 migration scripts are named `7.8.0-volunteer-v2-*.sql` (D17). |
 | F31 | `i18next.t()` in a `.php` view is extracted; the JS extractor also scans `src/skin/js/**` and `webpack/**`. |
-| F32 | A spec runs only if a runner config's `specPattern` matches it: `cypress/e2e/api/**`, `cypress/e2e/ui/**` and `cypress/e2e/ui-admin/**`, plus the dedicated `locale/`, `new-system/` and `upgrade/` configs. `npm run lint:cypress-spec-coverage` fails on any spec no runner config matches. |
+| F32 | A spec runs only if a runner config's `specPattern` matches it: `cypress/e2e/api/**`, `cypress/e2e/ui/**` and `cypress/e2e/ui-admin/**`, plus the dedicated `locale/`, `new-system/` and `upgrade/` configs. `npm run lint` fails on any spec no runner config matches. |
 | F33 | `src/finance/`, `src/v2/` and `src/admin/` `.htaccess` files do not block direct access to their view templates; `src/event/`, `src/groups/`, `src/people/` and `src/ministries/` do (`RewriteRule ^views/.*\.php$ - [F,L]`). A new module's `.htaccess` copies the blocking form. |
 
 
@@ -2943,7 +2943,7 @@ Only three globs are wired into a Cypress config (F32):
 | `cypress/e2e/ui-admin/**/*.spec.js` | `docker-admin.config.ts` | `test-type.name == admin-ui` |
 
 > V2 specs live under `cypress/e2e/api/private/...`, `cypress/e2e/ui/` or `cypress/e2e/ui-admin/`:
-> a directory no `specPattern` matches never runs, and `npm run lint:cypress-spec-coverage` fails on one.
+> a directory no `specPattern` matches never runs, and `npm run lint` fails on one.
 > Every `docker*` config matches only `*.spec.js`; a `.spec.ts` or `.cy.ts` file under `e2e/ui/` is ignored.
 
 ### 6.3 Spec files for V2

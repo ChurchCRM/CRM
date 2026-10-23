@@ -1798,11 +1798,6 @@ msgstr "登录用户名"
 
 #: 
 #, fuzzy
-msgid "Manage Properties and Classifications"
-msgstr "管理属性和分类"
-
-#: 
-#, fuzzy
 msgid "Manage Groups and Roles"
 msgstr "管理组和角色"
 
@@ -5394,10 +5389,6 @@ msgid "Enter event description..."
 msgstr "输入活动描述..."
 
 #: 
-msgid "Event ID"
-msgstr "活动 ID"
-
-#: 
 msgid "Enter note text here..."
 msgstr "在此处输入笔记文本..."
 
@@ -6161,10 +6152,6 @@ msgid "Manage Orphaned Files"
 msgstr "管理孤立文件"
 
 #: 
-msgid "Menu options access"
-msgstr "菜单选项权限"
-
-#: 
 msgid "Multiple Copies"
 msgstr "多份副本"
 
@@ -6271,10 +6258,6 @@ msgstr "在异地存储之前，使用外部工具（如 GPG, 7-Zip）加密备�
 #: 
 msgid "User authentication"
 msgstr "用户认证"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "用户必须具有菜单选项权限"
 
 #: 
 msgid "What are Orphaned Files?"
@@ -21208,10 +21191,6 @@ msgid "Recent Emails"
 msgstr "最近的电子邮件"
 
 #: 
-msgid "Recent Sends"
-msgstr "最近的发送"
-
-#: 
 msgid "Recipient"
 msgstr "收件人"
 
@@ -24512,28 +24491,8 @@ msgid "%d failed (all time)"
 msgstr "%d 次失败（累计）"
 
 #: 
-msgid "Failed email history pages"
-msgstr "失败邮件历史页面"
-
-#: 
 msgid "Failed sends across all email history, including automated messages"
 msgstr "全部邮件历史中的发送失败记录，包括自动邮件"
-
-#: 
-msgid "No server error recorded"
-msgstr "未记录服务器错误"
-
-#: 
-msgid "Show all recent sends"
-msgstr "显示所有最近的发送记录"
-
-#: 
-msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
-msgstr "正在显示全部邮件历史中的发送失败记录，包括自动邮件。选择主题查看详情。"
-
-#: 
-msgid "The table shows only the latest 20 sends. Open a person to see their full history."
-msgstr "表格仅显示最近 20 次发送。打开某人可查看其完整历史。"
 
 #: 
 msgid "View %d failed sends across all email history"

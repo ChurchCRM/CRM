@@ -1745,10 +1745,6 @@ msgid "Login Name"
 msgstr "లాగిన్ పేరు"
 
 #: 
-msgid "Manage Properties and Classifications"
-msgstr "గుణాలు మరియు వర్గీకరణలను నిర్వహించండి"
-
-#: 
 msgid "Manage Groups and Roles"
 msgstr "గ్రూప్‌లు మరియు పాత్రలను నిర్వహించండి"
 
@@ -5304,10 +5300,6 @@ msgid "Enter event description..."
 msgstr "ఈవెంట్ వివరణను నమోదు చేయండి..."
 
 #: 
-msgid "Event ID"
-msgstr "ఈవెంట్ ఐడి"
-
-#: 
 msgid "Enter note text here..."
 msgstr "ఇక్కడ నోట్ టెక్స్ట్ నమోదు చేయండి..."
 
@@ -6073,10 +6065,6 @@ msgid "Manage Orphaned Files"
 msgstr "అనాథ ఫైళ్లను నిర్వహించండి"
 
 #: 
-msgid "Menu options access"
-msgstr "మెనూ ఎంపికల యాక్సెస్"
-
-#: 
 msgid "Multiple Copies"
 msgstr "బహుళ కాపీలు"
 
@@ -6183,10 +6171,6 @@ msgstr "ఆఫ్‌సైట్‌లో నిల్వ చేయడాని�
 #: 
 msgid "User authentication"
 msgstr "వినియోగదారు ప్రమాణీకరణ"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "వినియోగదారుకు మెనూ ఎంపికల అనుమతి ఉండాలి"
 
 #: 
 msgid "What are Orphaned Files?"
@@ -21144,10 +21128,6 @@ msgid "Recent Emails"
 msgstr "ఇటీవలి ఇమెయిల్‌లు"
 
 #: 
-msgid "Recent Sends"
-msgstr "ఇటీవలి పంపకాలు"
-
-#: 
 msgid "Recipient"
 msgstr "గ్రహీత"
 
@@ -24452,28 +24432,8 @@ msgid "%d failed (all time)"
 msgstr "%d విఫలమయ్యాయి (మొత్తం)"
 
 #: 
-msgid "Failed email history pages"
-msgstr "విఫలమైన ఇమెయిల్ చరిత్ర పేజీలు"
-
-#: 
 msgid "Failed sends across all email history, including automated messages"
 msgstr "ఆటోమేటెడ్ సందేశాలతో సహా మొత్తం ఇమెయిల్ చరిత్రలో విఫలమైన పంపకాలు"
-
-#: 
-msgid "No server error recorded"
-msgstr "సర్వర్ లోపం ఏదీ రికార్డ్ కాలేదు"
-
-#: 
-msgid "Show all recent sends"
-msgstr "ఇటీవలి పంపకాలన్నీ చూపించు"
-
-#: 
-msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
-msgstr "ఆటోమేటెడ్ సందేశాలతో సహా మొత్తం ఇమెయిల్ చరిత్రలో విఫలమైన పంపకాలు చూపబడుతున్నాయి. వివరాల కోసం ఒక విషయాన్ని ఎంచుకోండి."
-
-#: 
-msgid "The table shows only the latest 20 sends. Open a person to see their full history."
-msgstr "పట్టిక చివరి 20 పంపకాలను మాత్రమే చూపిస్తుంది. పూర్తి చరిత్ర చూడటానికి ఒక వ్యక్తిని తెరవండి."
 
 #: 
 msgid "View %d failed sends across all email history"

@@ -577,6 +577,9 @@
         <index name="idx_plg_depID">
             <index-column name="plg_depID"/>
         </index>
+        <index name="idx_plg_GroupKey">
+            <index-column name="plg_GroupKey"/>
+        </index>
         <foreign-key foreignTable="deposit_dep">
             <reference local="plg_depID" foreign="dep_ID"/>
         </foreign-key>
@@ -681,7 +684,6 @@
         <column name="usr_AddRecords" phpName="AddRecords" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0"/>
         <column name="usr_EditRecords" phpName="EditRecords" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0"/>
         <column name="usr_DeleteRecords" phpName="DeleteRecords" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0"/>
-        <column name="usr_MenuOptions" phpName="MenuOptions" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0"/>
         <column name="usr_ManageGroups" phpName="ManageGroups" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0"/>
         <column name="usr_Finance" phpName="Finance" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0"/>
         <column name="usr_ManageFundraisers" phpName="ManageFundraisers" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0"/>

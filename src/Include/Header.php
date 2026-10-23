@@ -143,7 +143,11 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
               'emailSignature' => \ChurchCRM\Service\EmailComposerService::defaultSignature($currentUser),
               'vonageEnabled' => PluginManager::getPlugin('vonage')?->isConfigured() ?? false,
               'defaultEmailToAddress' => $currentUser->isEmailEnabled() ? SystemConfig::getValue('sToEmailAddress') : '',
-              'emailHistoryURL' => $currentUser->isAdmin() ? SystemURLs::getRootPath() . '/admin/email/log' : '',
+              'emailHistoryURL' => match (true) {
+                  $currentUser->isAdmin()        => SystemURLs::getRootPath() . '/admin/email/log',
+                  $currentUser->isEmailEnabled() => SystemURLs::getRootPath() . '/people/email',
+                  default                        => '',
+              },
           ],
           'plugins' => PluginManager::getPluginsClientConfig() ?: new stdClass(),
           'bEnableGravatarPhotos' => PluginManager::getPluginsClientConfig()['gravatar']['enabled'] ?? false,

@@ -17,7 +17,7 @@ export interface CaptureOptions {
   category: string;
   /** Name of this capture's dark-mode twin, when there is one. */
   dark?: string;
-  /** Where a page links this capture. A used capture is never deleted: `npm run lint:capture-used-in`. */
+  /** Where a page links this capture. A used capture is never deleted: `npm run lint`. */
   usedIn?: ReadonlyArray<'docs' | 'website'>;
 }
 

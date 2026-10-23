@@ -15,10 +15,12 @@ PHP 8.4+. Versions: `package.json`, `composer.json`. Review: `maintainer-review-
 - Output: `InputUtils::escapeHTML()` / `escapeAttribute()`
 - JSON in `<script>`: `InputUtils::jsonEncodeForScript()`
 - Redirects: `RedirectUtils` — not raw `header('Location')`
-- UI and styling: `frontend-development.md` is the only rule set (Tabler, light and dark, desktop/tablet/phone, `npm run lint:ui`). Wrap `gettext()` / `i18next.t()`
+- UI and styling: `frontend-development.md` is the only rule set (Tabler, light and dark, desktop/tablet/phone, `npm run lint`). Wrap `gettext()` / `i18next.t()`
 - JS: page logic goes in a `webpack/` entry, registered in `webpack.config.js` and loaded with one `<script src="<?= SystemURLs::assetVersioned('/skin/v2/NAME.min.js') ?>">`. No inline `<script>` blocks for page logic; a one-line config handoff with `InputUtils::jsonEncodeForScript()` is fine. Read `window.CRM` at run time (inside `onLocalesReady`), never at module load (`webpack-typescript.md`)
 - Reports: never extend `QueryView.php` / `QueryList.php` or add `query_qry` rows (#9921). Core reports → `src/v2/` route + controller + Twig. One church's needs → a plugin in `src/plugins/` (shareable in `src/plugins/community/`)
 - Tests with behavior changes
+- `package.json` scripts are one command or a short `&&` chain of npm scripts. Shell logic (`||`, `&`, pipes, `cp`, `rm`, `find`) goes in `scripts/*.js` (Node, cross-platform)
+- `npm run build` installs Composer dependencies, builds webpack, then signs the finished tree. Formatters and validators belong in `npm run lint` and the hooks, not the build
 - Comments are rare. Names and tests carry intent. Do not restate the next line. Comment only a *why* that the code cannot say (CI trap, security invariant, deliberate deviation). Do not add paragraph comments in specs.
 
 ## Strict vs Loose Comparisons

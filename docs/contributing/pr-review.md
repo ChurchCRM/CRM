@@ -41,6 +41,7 @@ Do not hold a feature or bug-fix PR solely because user documentation, screensho
 
 - User manual updates belong in the docs repository and describe released behavior. Merge/publish them according to that repository's release process.
 - For useful user-visible changes, leave a concise follow-up note and link or create one focused issue for the relevant docs, screenshots/video, or content. Do not require every feature to have every asset.
+- A missing new capture is a follow-up. Breaking an existing one is not: if the change removes or renames something a `playwright/` spec uses, update the spec in the same PR, as you would a Cypress selector.
 - Invite non-code contributors to write how-to guides, capture real-product screenshots, make short walkthroughs, improve translations, or explain a feature's value to churches. Provide a clear issue, confirmed product behavior, and contribution path.
 - Marketing should explain the church problem or outcome and accurately state when the feature is available. Bug/security-only fixes usually need no marketing follow-up.
 - Demo-import data in `src/admin/demo/config.json` can be followed up separately (not Cypress seed if tests would break).

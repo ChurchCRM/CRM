@@ -1751,10 +1751,6 @@ msgid "Login Name"
 msgstr "Aanmeldingsnaam"
 
 #: 
-msgid "Manage Properties and Classifications"
-msgstr "Bestuur eiendomme en klassifikasies"
-
-#: 
 msgid "Manage Groups and Roles"
 msgstr "Bestuur groepe en rolle"
 
@@ -5327,10 +5323,6 @@ msgid "Enter event description..."
 msgstr "Voer gebeurtenisbeskrywing in..."
 
 #: 
-msgid "Event ID"
-msgstr "Gebeurtenis-ID"
-
-#: 
 msgid "Enter note text here..."
 msgstr "Voer notaateks hier in..."
 
@@ -6096,10 +6088,6 @@ msgid "Manage Orphaned Files"
 msgstr "Bestuur Wees Lêers"
 
 #: 
-msgid "Menu options access"
-msgstr "Spyskaartopsies toegang"
-
-#: 
 msgid "Multiple Copies"
 msgstr "Veelvuldige Kopieë"
 
@@ -6206,10 +6194,6 @@ msgstr "Gebruik eksterne gereedskap (GPG, 7-Zip) om rugsteune te enkripteer voor
 #: 
 msgid "User authentication"
 msgstr "Gebruiker Verifikasie"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "Gebruiker moet Spyskaartopsies-toestemming hê"
 
 #: 
 msgid "What are Orphaned Files?"
@@ -21167,10 +21151,6 @@ msgid "Recent Emails"
 msgstr "Onlangse e-posse"
 
 #: 
-msgid "Recent Sends"
-msgstr "Onlangse versendings"
-
-#: 
 msgid "Recipient"
 msgstr "Ontvanger"
 
@@ -24475,28 +24455,8 @@ msgid "%d failed (all time)"
 msgstr "%d misluk (altesaam)"
 
 #: 
-msgid "Failed email history pages"
-msgstr "Bladsye van mislukte e-posgeskiedenis"
-
-#: 
 msgid "Failed sends across all email history, including automated messages"
 msgstr "Mislukte versendings in die hele e-posgeskiedenis, insluitend outomatiese boodskappe"
-
-#: 
-msgid "No server error recorded"
-msgstr "Geen bedienerfout aangeteken nie"
-
-#: 
-msgid "Show all recent sends"
-msgstr "Wys alle onlangse versendings"
-
-#: 
-msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
-msgstr "Wys mislukte versendings in die hele e-posgeskiedenis, insluitend outomatiese boodskappe. Kies 'n onderwerp vir besonderhede."
-
-#: 
-msgid "The table shows only the latest 20 sends. Open a person to see their full history."
-msgstr "Die tabel wys net die laaste 20 versendings. Maak 'n persoon oop om die volledige geskiedenis te sien."
 
 #: 
 msgid "View %d failed sends across all email history"

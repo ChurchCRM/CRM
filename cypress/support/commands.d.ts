@@ -3,7 +3,7 @@
 //
 // This file must stay in sync with the real commands registered in
 // cypress/support/api-commands.js and cypress/support/ui-commands.js.
-// `npm run lint:cypress-commands` (also run in CI) fails when a command is
+// `npm run lint` (also run in CI) fails when a command is
 // declared here but not defined, or defined but not declared.
 // ***********************************************
 
@@ -55,6 +55,24 @@ declare namespace Cypress {
      * Ensure an admin session is active (optionally forcing a fresh login)
      */
     setupAdminSession(options?: { forceLogin?: boolean }): Chainable<void>;
+
+    /**
+     * Ensure a cached login session for a seed persona (cypress/support/personas-data.js)
+     */
+    setupPersonaSession(persona: string, options?: { forceLogin?: boolean }): Chainable<void>;
+
+    /**
+     * Make an API request with a seed persona's key. Same contract as makePrivateAPICall.
+     * @param persona - Persona name from cypress/support/personas-data.js
+     */
+    personaAPICall(
+      persona: string,
+      method: string,
+      url: string,
+      body?: any,
+      expectedStatus?: number | number[],
+      timeoutMs?: number
+    ): Chainable<any>;
 
     /**
      * Ensure a standard session is active (optionally forcing a fresh login)
@@ -319,20 +337,6 @@ declare namespace Cypress {
      * assertions.
      */
     makePrivateEditRecordsAPICall(
-      method: string,
-      url: string,
-      body?: any,
-      expectedStatus?: number | number[],
-      timeoutMs?: number
-    ): Chainable<any>;
-
-    /**
-     * MenuOptions-only user (id=902): usr_MenuOptions=1, all other perm flags 0,
-     * non-admin, non-EditSelf. Used to verify the EditRecords gate on person/family
-     * property routes (GHSA-4wmp-3v34-g7q8). Passes MenuOptions middleware but is
-     * blocked by EditRecordsRoleAuthMiddleware — expects 403 on record-level routes.
-     */
-    makePrivateMenuOptionsAPICall(
       method: string,
       url: string,
       body?: any,

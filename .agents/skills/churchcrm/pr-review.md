@@ -22,17 +22,23 @@ Use this skill when asked to review a PR or branch, check standards, or triage m
 gh pr view <NUMBER>
 gh pr view <NUMBER> --comments
 gh pr view <NUMBER> --json title,body,headRefName,baseRefName,state,latestReviews,reviews,comments
+gh api graphql -f query='{repository(owner:"ChurchCRM",name:"CRM"){pullRequest(number:<NUMBER>){reviewThreads(first:100){nodes{id isResolved isOutdated path line comments(first:20){nodes{author{login} body}}}} reviews(first:50){nodes{author{login} state submittedAt commit{abbreviatedOid}}}}}}'
 ```
+
+`--comments` omits inline threads. The GraphQL call lists every thread (resolved or not, any author, including bots) and each review's state. Read all unresolved threads and check each against the current code.
 
 Answer before reading code:
 
 - What is the stated purpose?
 - Bug fix, feature, refactor, or migration?
+- Does another open PR already cover the same issue? Read its comments first: a maintainer may have a plan for it. Do not open a competing PR.
 - Does it meet the issue rule in `git-workflow.md`? Missing it is a hard block.
 - Does the goal belong in this milestone? Passing gates still does not mean merge if maintainers disagree with the goal.
 - Does it extend Query View / predefined `query_qry` reports? If yes, Request changes. New reports are MVC + Propel or a plugin.
 
 Leave the contributor branch as it is: merge `master`, resolve conflicts, or push only when the maintainer asks.
+
+Credit the contributor. When their PR leaves the project better than before but has gaps, ask them to fix the gaps and explain why, so they learn and keep the credit. Do not replace their PR with ours. If they do not reply, open our own PR for the gaps (or merge theirs with a `Co-authored-by` trailer) and thank them there.
 
 ---
 
@@ -57,6 +63,7 @@ A diff is not a review. For every changed function, route, or query:
 
 Look for:
 
+- Comments added or changed in the diff: accurate against the code, and about why rather than what (`code-standards.md`)
 - Changes outside the stated purpose
 - Debug leftovers
 - Scope that belongs in a second PR
@@ -101,6 +108,7 @@ Rules live in `frontend-development.md`; check the diff against it.
 - [ ] The page is built around a role's task (`frontend-development.md`): primary action in the page header, table above the fold, entry buttons land in the task
 - [ ] Renders in **light and dark**, at **desktop, tablet and phone**: the author states the pass; screenshots if they exist
 - [ ] Every `@media` rule survives the restyle; Cypress selectors the change touches still match
+- [ ] `playwright/` specs, videos and helpers that use anything the change removes, renames or reroutes are updated in the same PR (grep `playwright/` for the ids, routes, settings and labels in the diff); locators carry no English text; captures marked `usedIn` still exist
 - [ ] Asset paths use `SystemURLs::getRootPath()`
 - [ ] UI text wrapped with `gettext()` or `i18next.t()`
 - [ ] Messages and confirmations use `window.CRM.notify()` and bootbox or a Bootstrap modal
@@ -184,9 +192,10 @@ gh pr review <NUMBER> --comment --body "..."
 
 **After posting a review or reviewing an author's fixes:**
 
-- When the author has pushed fixes for your comments, resolve those threads (GitHub UI or GraphQL `resolveReviewThread`)
+- Check every unresolved thread, whoever wrote it, against the current code. Resolve each one the code now addresses (GitHub UI or GraphQL `resolveReviewThread`)
 - Cite the commit SHA ("Fixed in abc123d")
 - Leave a thread open when the fix is incomplete or the concern remains
+- Report the threads still open and each bot's latest review state
 
 ---
 

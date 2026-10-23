@@ -100,6 +100,12 @@ function userLogin(Request $request, Response $response, array $args): Response
         throw new HttpUnauthorizedException($request, $genericError);
     }
 
+    // A self-service account signs in to the Member Portal in a browser. It never receives an API key.
+    if ($user->isEditSelfExclusive()) {
+        $logger->warning('API login refused: self-service account', ['username' => $user->getUserName()]);
+        throw new HttpUnauthorizedException($request, $genericError);
+    }
+
     // Check 2FA enrollment BEFORE resetting failed logins (only reset on full auth)
     if ($user->is2FactorAuthEnabled()) {
         $otp = $body['otp'] ?? null;

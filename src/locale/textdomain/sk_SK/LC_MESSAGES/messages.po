@@ -1734,10 +1734,6 @@ msgid "Login Name"
 msgstr "Prihlasovacie meno"
 
 #: 
-msgid "Manage Properties and Classifications"
-msgstr "Spravovať vlastnosti a klasifikácie"
-
-#: 
 msgid "Manage Groups and Roles"
 msgstr "Spravovať skupiny a roly"
 
@@ -5299,10 +5295,6 @@ msgid "Enter event description..."
 msgstr "Zadajte popis udalosti..."
 
 #: 
-msgid "Event ID"
-msgstr "ID udalosti"
-
-#: 
 msgid "Enter note text here..."
 msgstr "Zadajte text poznámky..."
 
@@ -6072,10 +6064,6 @@ msgid "Manage Orphaned Files"
 msgstr "Spravovať opustené súbory"
 
 #: 
-msgid "Menu options access"
-msgstr "Prístup k možnostiam menu"
-
-#: 
 msgid "Multiple Copies"
 msgstr "Viac kópií"
 
@@ -6182,10 +6170,6 @@ msgstr "Použite externé nástroje (GPG, 7-Zip) na šifrovanie záloh pred ulo�
 #: 
 msgid "User authentication"
 msgstr "Autentifikácia používateľa"
-
-#: 
-msgid "User must have Menu Options permission"
-msgstr "Používateľ musí mať oprávnenie na možnosti menu"
 
 #: 
 msgid "What are Orphaned Files?"
@@ -21191,10 +21175,6 @@ msgid "Recent Emails"
 msgstr "Nedávne e-maily"
 
 #: 
-msgid "Recent Sends"
-msgstr "Nedávne odoslania"
-
-#: 
 msgid "Recipient"
 msgstr "Príjemca"
 
@@ -24507,28 +24487,8 @@ msgid "%d failed (all time)"
 msgstr "Neúspešných: %d (celkom)"
 
 #: 
-msgid "Failed email history pages"
-msgstr "Stránky histórie neúspešných e-mailov"
-
-#: 
 msgid "Failed sends across all email history, including automated messages"
 msgstr "Neúspešné odoslania v celej histórii e-mailov vrátane automatických správ"
-
-#: 
-msgid "No server error recorded"
-msgstr "Nebola zaznamenaná žiadna chyba servera"
-
-#: 
-msgid "Show all recent sends"
-msgstr "Zobraziť všetky nedávne odoslania"
-
-#: 
-msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
-msgstr "Zobrazujú sa neúspešné odoslania v celej histórii e-mailov vrátane automatických správ. Podrobnosti zobrazíte výberom predmetu."
-
-#: 
-msgid "The table shows only the latest 20 sends. Open a person to see their full history."
-msgstr "Tabuľka zobrazuje iba posledných 20 odoslaní. Úplnú históriu uvidíte po otvorení osoby."
 
 #: 
 msgid "View %d failed sends across all email history"
