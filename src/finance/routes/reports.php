@@ -13,18 +13,8 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
     // Proof of concept: shared letterhead via mPDF (framework only)
     $group->get('/pdf-framework-preview', function (Request $request, Response $response): Response {
         $renderer = new \ChurchCRM\Service\MpdfRenderer();
-        $church = [
-            'name' => \ChurchCRM\dto\SystemConfig::getValue('sChurchName'),
-            'address' => \ChurchCRM\dto\SystemConfig::getValue('sChurchAddress'),
-            'city' => \ChurchCRM\dto\SystemConfig::getValue('sChurchCity'),
-            'state' => \ChurchCRM\dto\SystemConfig::getValue('sChurchState'),
-            'zip' => \ChurchCRM\dto\SystemConfig::getValue('sChurchZip'),
-            'phone' => \ChurchCRM\dto\SystemConfig::getValue('sChurchPhone'),
-            'email' => \ChurchCRM\dto\SystemConfig::getValue('sChurchEmail'),
-        ];
         $data = [
             'letterhead' => 'address',
-            'church' => $church,
             'date_range' => gettext('Year-end statements preview'),
             'closing' => \ChurchCRM\dto\SystemConfig::getValue('sTaxReport2'),
             'signer' => \ChurchCRM\dto\SystemConfig::getValue('sTaxSigner'),

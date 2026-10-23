@@ -69,19 +69,9 @@ $group->get('/giving/statement', function (Request $request, Response $response)
         ];
     }
 
-    $church = [
-        'name' => SystemConfig::getValue('sChurchName'),
-        'address' => SystemConfig::getValue('sChurchAddress'),
-        'city' => SystemConfig::getValue('sChurchCity'),
-        'state' => SystemConfig::getValue('sChurchState'),
-        'zip' => SystemConfig::getValue('sChurchZip'),
-        'phone' => SystemConfig::getValue('sChurchPhone'),
-        'email' => SystemConfig::getValue('sChurchEmail'),
-    ];
 
     $data = [
         'letterhead' => 'address',
-        'church' => $church,
         'date_range' => sprintf(gettext('Giving statement for %s'), (string) $year),
         'closing' => SystemConfig::getValue('sTaxReport2'),
         'signer' => SystemConfig::getValue('sTaxSigner'),
