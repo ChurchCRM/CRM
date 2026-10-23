@@ -34,7 +34,7 @@ A **hard gate** stops the release until it is met or the maintainer overrides it
 | Locales clean (Phase 1) | Checklist, not enforced | Missing translations fall back to English; the maintainer decides |
 | Marketing capture | Automation, starts with the release | Visuals are not part of the shipped ZIP |
 | Notes context, docs staging, `Start <next> release` PR creation (3.1) | Automation, separate jobs | The draft exists before they run; a failure is re-run |
-| Changelog sync, milestones, docs milestones, publish visuals (4.4 to 4.6) | Automation after Publish, re-runnable | `release-bookkeeping.yml` with `tag=<version>` |
+| Changelog sync, milestones, docs release (4.4 to 4.6) | Automation after Publish, re-runnable | `release-bookkeeping.yml` with `tag=<version>` |
 | Post-release nightly, advisory publish, marketing push (4.7, 4.8, Phase 6) | After release | Verification and follow-up |
 
 ## Phase 1: Localization sync
@@ -155,7 +155,7 @@ These are what to do when a step above does not run as written. Each one was nee
 
 ### The release workflow stops before it creates the draft
 
-`release-publish.yml` stops when Build/Test/Package, the Nightly or the marketing capture has no green run on the branch tip. Fix the cause, or do the two steps by hand without touching `master`:
+`release-publish.yml` stops when Build/Test/Package or the Nightly has no green run on the branch tip. A failed marketing capture does not stop it. Fix the cause, or do the two steps by hand without touching `master`:
 
 1. Draft: download the ZIP from the green Build/Test/Package run on the release commit (`gh run download <run id> --pattern 'ChurchCRM-*'`), then `gh release create <version> ChurchCRM-<version>.zip --target <commit sha> --generate-notes --notes-start-tag <previous version> --draft`. A draft shows `untagged-<hash>` in its URL; `gh release view <version> --json tagName` still shows the version, and the git tag appears at Publish.
 2. Next-version PR: `gh workflow run release-prepare.yml --ref master -f version=<next version>`.
@@ -164,7 +164,7 @@ Merge the `Start <next> release` PR before Publish (3.3). Bookkeeping reads the 
 
 ### Bookkeeping failed
 
-`gh run view <run id> --log-failed` names the job. A `403 Resource not accessible by personal access token` from the docs milestone job means `DOCS_RELEASE_TOKEN` lacks Issues write on `ChurchCRM/docs.churchcrm.io`; fix the token, then re-run.
+`gh run view <run id> --log-failed` names the job. A `403 Resource not accessible by personal access token` from `docs-release` means `DOCS_RELEASE_TOKEN` lacks Actions: write on `ChurchCRM/docs.churchcrm.io`; fix the token, then re-run.
 
 ### The visuals did not reach the CDN
 

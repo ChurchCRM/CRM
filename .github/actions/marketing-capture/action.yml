@@ -45,7 +45,9 @@ runs:
 
     - name: Capture ${{ inputs.locale }}
       shell: bash
-      run: ./scripts/capture-all-locales.sh "${{ inputs.locale }}"
+      env:
+        LOCALE: ${{ inputs.locale }}
+      run: ./scripts/capture-all-locales.sh "$LOCALE"
 
     - name: Dump container logs on failure
       if: failure()

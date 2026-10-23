@@ -29,12 +29,11 @@ concurrency:
 #                   to the version you typed in `next_version` and open the
 #                   "Start <next> release" PR.
 #
-#   4. marketing_capture — starts marketing-capture-assets.yml on the branch.
-#                   It never gates the release: a failed capture leaves the
+#   4. marketing_capture — starts marketing-capture-assets.yml on master.
+#                   It never gates the release: a failed dispatch leaves the
 #                   draft, the notes context and the next-version PR as they
-#                   are. release-bookkeeping.yml publishes the visuals from a
-#                   green capture on the release commit when the release goes
-#                   out.
+#                   are. The capture workflow publishes the visuals when that
+#                   run is on master.
 #
 # Review the draft release + the bump PR. If happy, click "Publish release"
 # on GitHub and merge the PR.
@@ -372,6 +371,12 @@ jobs:
       GH_REPO: ${{ github.repository }}
     steps:
       - name: Start the capture on master
+        env:
+          TARGET_COMMIT: ${{ needs.publish.outputs.target_commit }}
         run: |
-          gh workflow run marketing-capture-assets.yml --ref master
-          echo "Started marketing-capture-assets.yml on master (release commit ${{ needs.publish.outputs.target_commit }})." >> "$GITHUB_STEP_SUMMARY"
+          if gh workflow run marketing-capture-assets.yml --ref master; then
+            echo "Started marketing-capture-assets.yml on master (release commit $TARGET_COMMIT)." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "::warning::Could not start marketing-capture-assets.yml on master for release commit $TARGET_COMMIT. Run it from the Actions tab on master."
+            exit 1
+          fi
