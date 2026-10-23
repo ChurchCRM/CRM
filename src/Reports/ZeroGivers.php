@@ -69,7 +69,7 @@ foreach ($familyObjects as $family) {
 // Exit if no rows returned
 $iCountRows = count($rsReport);
 if ($iCountRows < 1) {
-    RedirectUtils::redirect('FinancialReports.php?ReturnMessage=NoRows&ReportType=Zero%20Givers');
+    RedirectUtils::redirect('/finance/reports/Zero%20Givers?ReturnMessage=NoRows');
 }
 
 // Create Giving Report -- PDF
@@ -173,7 +173,7 @@ if ($output === 'pdf') {
             'DateStart' => $sDateStart,
             'DateEnd'   => $sDateEnd,
         ];
-        RedirectUtils::redirect('FinancialReports.php?' . http_build_query($params));
+        RedirectUtils::redirect('/finance/reports/' . http_build_query($params));
     }
 } else {
     echo '[' . $output . '] output selected, but is not known';

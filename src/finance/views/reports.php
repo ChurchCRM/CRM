@@ -6,7 +6,6 @@ use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
-// Get fiscal year info for display
 $iFYMonth = SystemConfig::getIntValue('iFYMonth');
 $currentYear = (int) date('Y');
 
@@ -29,6 +28,64 @@ $monthNames = [
 ];
 $fyMonthName = $monthNames[$iFYMonth] ?? '';
 
+$jobs = [
+    [
+        'title' => gettext('Send year-end giving statements'),
+        'description' => gettext('Generate tax-deductible giving statements for this fiscal year. Ready to print or email.'),
+        'href' => '/finance/reports/year-end',
+        'icon' => 'fa-file-invoice-dollar',
+        'primary' => true,
+    ],
+    [
+        'title' => gettext('See who has not given'),
+        'description' => gettext('Find members with no gifts in a date range so you can follow up.'),
+        'href' => '/finance/reports/Zero%20Givers',
+        'icon' => 'fa-user-slash',
+        'primary' => true,
+    ],
+    [
+        'title' => gettext('Review pledges vs payments'),
+        'description' => gettext('See which families are on track and which need a reminder.'),
+        'href' => '/finance/pledge/dashboard',
+        'icon' => 'fa-chart-pie',
+        'primary' => true,
+    ],
+    [
+        'title' => gettext('Send pledge reminders'),
+        'description' => gettext('Generate reminder letters for families with unpaid pledges.'),
+        'href' => '/finance/reports/Pledge%20Reminders',
+        'icon' => 'fa-envelope',
+        'primary' => false,
+    ],
+    [
+        'title' => gettext('Print a deposit slip'),
+        'description' => gettext('Detailed breakdown of a single deposit.'),
+        'href' => '/finance/reports/Individual%20Deposit%20Report',
+        'icon' => 'fa-receipt',
+        'primary' => false,
+    ],
+    [
+        'title' => gettext('Custom deposit report'),
+        'description' => gettext('Filter deposits by date, fund, family, or payment method.'),
+        'href' => '/finance/reports/Advanced%20Deposit%20Report',
+        'icon' => 'fa-filter',
+        'primary' => false,
+    ],
+    [
+        'title' => gettext('Pledge family summary'),
+        'description' => gettext('Detailed breakdown of pledges and payments by family.'),
+        'href' => '/finance/reports/Pledge%20Family%20Summary',
+        'icon' => 'fa-users',
+        'primary' => false,
+    ],
+    [
+        'title' => gettext('Voting members'),
+        'description' => gettext('List members eligible to vote based on giving and membership.'),
+        'href' => '/finance/reports/Voting%20Members',
+        'icon' => 'fa-check-to-slot',
+        'primary' => false,
+    ],
+];
 ?>
 
 <div class="card mb-3">
@@ -39,58 +96,38 @@ $fyMonthName = $monthNames[$iFYMonth] ?? '';
     </div>
 </div>
 
-<div class="card" id="financeReports">
-    <div class="list-group list-group-flush">
-        <?php
-        $sections = [
-            [
-                'title' => gettext('Tax & Giving Reports'),
-                'reports' => [
-                    ['href' => '/FinancialReports.php?ReportType=Giving%20Report', 'title' => gettext('Giving Report (Tax Statements)'), 'description' => gettext('Generate annual tax-deductible giving statements for donors. Can be printed or emailed.')],
-                    ['href' => '/FinancialReports.php?ReportType=Zero%20Givers', 'title' => gettext('Zero Givers'), 'description' => gettext('Identify members who have not made any donations within a date range.')],
-                ],
-            ],
-            [
-                'title' => gettext('Pledge Reports'),
-                'reports' => [
-                    ['href' => '/finance/pledge/dashboard', 'title' => gettext('Pledge Summary'), 'description' => gettext('Interactive pledges-vs-payments summary by fund with sort, search, and export.')],
-                    ['href' => '/FinancialReports.php?ReportType=Pledge%20Family%20Summary', 'title' => gettext('Pledge Family Summary'), 'description' => gettext('Detailed breakdown of pledges and payments by family.')],
-                    ['href' => '/FinancialReports.php?ReportType=Pledge%20Reminders', 'title' => gettext('Pledge Reminders'), 'description' => gettext('Generate reminder letters for families with outstanding pledges.')],
-                ],
-            ],
-            [
-                'title' => gettext('Deposit Reports'),
-                'reports' => [
-                    ['href' => '/FinancialReports.php?ReportType=Individual%20Deposit%20Report', 'title' => gettext('Individual Deposit Report'), 'description' => gettext('Detailed breakdown of a single deposit slip.')],
-                    ['href' => '/FinancialReports.php?ReportType=Advanced%20Deposit%20Report', 'title' => gettext('Advanced Deposit Report'), 'description' => gettext('Customizable report with filtering by date, fund, family, and payment method.')],
-                ],
-            ],
-            [
-                'title' => gettext('Membership Reports'),
-                'reports' => [
-                    ['href' => '/FinancialReports.php?ReportType=Voting%20Members', 'title' => gettext('Voting Members'), 'description' => gettext('List members eligible to vote based on giving history and membership criteria.')],
-                ],
-            ],
-        ];
-        foreach ($sections as $section) :
-            ?>
-        <div class="list-group-item bg-surface-secondary fw-bold"><?= InputUtils::escapeHTML($section['title']) ?></div>
-            <?php foreach ($section['reports'] as $report) : ?>
-        <div class="list-group-item">
-            <div class="row align-items-center">
-                <div class="col">
-                    <a href="<?= $sRootPath . $report['href'] ?>" class="fw-bold text-body"><?= InputUtils::escapeHTML($report['title']) ?></a>
-                    <div class="text-secondary"><?= InputUtils::escapeHTML($report['description']) ?></div>
+<div class="row g-3 mb-4">
+<?php foreach (array_filter($jobs, fn($j) => $j['primary']) as $job) : ?>
+    <div class="col-md-4">
+        <a href="<?= $sRootPath . $job['href'] ?>" class="card card-link text-reset h-100 text-decoration-none">
+            <div class="card-body">
+                <div class="d-flex align-items-center mb-2">
+                    <span class="avatar bg-primary-lt me-2"><i class="fa-solid <?= $job['icon'] ?>"></i></span>
+                    <div class="fw-bold"><?= InputUtils::escapeHTML($job['title']) ?></div>
                 </div>
-                <div class="col-auto">
-                    <a href="<?= $sRootPath . $report['href'] ?>" class="btn btn-sm btn-outline-primary">
-                        <i class="fa-solid fa-play me-1"></i><?= gettext('Run') ?>
-                    </a>
+                <div class="text-secondary small"><?= InputUtils::escapeHTML($job['description']) ?></div>
+            </div>
+        </a>
+    </div>
+<?php endforeach; ?>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><?= gettext('More reports') ?></h3>
+    </div>
+    <div class="list-group list-group-flush">
+<?php foreach (array_filter($jobs, fn($j) => !$j['primary']) as $job) : ?>
+        <a href="<?= $sRootPath . $job['href'] ?>" class="list-group-item list-group-item-action">
+            <div class="d-flex align-items-center">
+                <i class="fa-solid <?= $job['icon'] ?> me-3 text-secondary"></i>
+                <div>
+                    <div class="fw-bold"><?= InputUtils::escapeHTML($job['title']) ?></div>
+                    <div class="text-secondary small"><?= InputUtils::escapeHTML($job['description']) ?></div>
                 </div>
             </div>
-        </div>
-            <?php endforeach; ?>
-        <?php endforeach; ?>
+        </a>
+<?php endforeach; ?>
     </div>
 </div>
 

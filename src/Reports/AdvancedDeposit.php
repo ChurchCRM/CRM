@@ -136,7 +136,7 @@ if ($iCountRows < 1) {
         'DateEnd'   => $sDateEnd,
         'datetype'  => $datetype,
     ];
-    RedirectUtils::redirect('FinancialReports.php?' . http_build_query($params));
+    RedirectUtils::redirect('/finance/reports/' . http_build_query($params));
 }
 
 // Set up bottom border value
@@ -861,6 +861,6 @@ $page = 1;
             'DateEnd'   => $sDateEnd,
             'datetype'  => $datetype,
         ];
-        RedirectUtils::redirect('FinancialReports.php?' . http_build_query($params));
+        RedirectUtils::redirect('/finance/reports/' . http_build_query($params));
     }
 }

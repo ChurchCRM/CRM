@@ -35,7 +35,7 @@ $app->get('/', function (Request $request, Response $response) {
             // so this button stays adminOnly: true (default) to hide it from Finance-only users.
             ['label' => gettext('Financial Settings'), 'icon' => 'fa-cog', 'collapse' => '#financialSettings'],
             ['label' => gettext('Donation Funds'), 'url' => '/finance/funds', 'icon' => 'fa-hand-holding-dollar', 'adminOnly' => false],
-            ['label' => gettext('Manage Envelopes'), 'url' => '/ManageEnvelopes.php', 'icon' => 'fa-envelope', 'adminOnly' => false],
+            ['label' => gettext('Manage Envelopes'), 'url' => '/finance/envelopes', 'icon' => 'fa-envelope', 'adminOnly' => false],
         ]),
         'dashboardData' => $dashboardData,
     ];

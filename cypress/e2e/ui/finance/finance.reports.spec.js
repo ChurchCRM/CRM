@@ -20,12 +20,12 @@ describe("Financial Reports", () => {
     it("Navigate to Giving Report from Reports Index", () => {
         cy.visit("/finance/reports");
         cy.contains("Giving Report (Tax Statements)").click();
-        cy.url().should("contain", "FinancialReports.php");
+        cy.url().should("contain", "/finance/reports");
         cy.contains("Financial Reports");
     });
 
     it("Giving Report", () => {
-        cy.visit("FinancialReports.php");
+        cy.visit("/finance/reports");
         cy.contains("Financial Reports");
         cy.get("#FinancialReportTypes").select("Giving Report");
         cy.get("#FinancialReports").submit();
@@ -41,7 +41,7 @@ describe("Financial Reports", () => {
     });
 
     it("Pledge Family Summary", () => {
-        cy.visit("FinancialReports.php");
+        cy.visit("/finance/reports");
         cy.contains("Financial Reports");
         cy.get("#FinancialReportTypes").select("Pledge Family Summary");
         cy.get("#FinancialReports").submit();
@@ -67,7 +67,7 @@ describe("Financial Reports", () => {
     });
 
     it("Pledge Reminders", () => {
-        cy.visit("FinancialReports.php");
+        cy.visit("/finance/reports");
         cy.contains("Financial Reports");
         cy.get("#FinancialReportTypes").select("Pledge Reminders");
         cy.get("#FinancialReports").submit();
@@ -93,7 +93,7 @@ describe("Financial Reports", () => {
     });
 
     it("Voting Members", () => {
-        cy.visit("FinancialReports.php");
+        cy.visit("/finance/reports");
         cy.contains("Financial Reports");
         cy.get("#FinancialReportTypes").select("Voting Members");
         cy.get("#FinancialReports").submit();
@@ -119,7 +119,7 @@ describe("Financial Reports", () => {
     });
 
     it("Zero Givers", () => {
-        cy.visit("FinancialReports.php");
+        cy.visit("/finance/reports");
         cy.contains("Financial Reports");
         cy.get("#FinancialReportTypes").select("Zero Givers");
         cy.get("#FinancialReports").submit();
@@ -145,7 +145,7 @@ describe("Financial Reports", () => {
     });
 
     it("Individual Deposit Report", () => {
-        cy.visit("FinancialReports.php");
+        cy.visit("/finance/reports");
         cy.contains("Financial Reports");
         cy.get("#FinancialReportTypes").select("Individual Deposit Report");
         cy.get("#FinancialReports").submit();
@@ -171,7 +171,7 @@ describe("Financial Reports", () => {
     });
 
     it("Advanced Deposit Report", () => {
-        cy.visit("FinancialReports.php");
+        cy.visit("/finance/reports");
         cy.contains("Financial Reports");
         cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
         cy.get("#FinancialReports").submit();

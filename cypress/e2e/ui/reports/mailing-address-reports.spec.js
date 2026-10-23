@@ -191,7 +191,7 @@ describe("Mailing address on mailed reports (#9743)", () => {
 
     it("addresses each giving statement's remittance slip to that statement's family", () => {
         // Seed families 1 and 6 both gave on 2018-03-04; statements run in family order.
-        cy.visit("/FinancialReports.php");
+        cy.visit("/finance/reports");
         cy.get("#FinancialReportTypes").select("Giving Report");
         cy.get("#FinancialReports").submit();
         cy.get("#DateStart").clear().type("2018-01-01");

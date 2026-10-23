@@ -7,7 +7,7 @@ describe("Finance Deposits", () => {
     });
 
     it("Envelope Manager", () => {
-        cy.visit("/ManageEnvelopes.php");
+        cy.visit("/finance/envelopes");
         cy.contains("Envelope Manager");
     });
 

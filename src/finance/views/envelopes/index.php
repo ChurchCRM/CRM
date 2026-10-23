@@ -1,15 +1,14 @@
 <?php
 
-require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/PageInit.php';
-
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
+
 
 $sPageTitle = gettext('Envelope Manager');
 $sPageSubtitle = gettext('Assign and manage donation envelope numbers');
@@ -85,12 +84,12 @@ $aBreadcrumbs = PageHeader::breadcrumbs([
     [gettext('Finance'), '/finance/'],
     [gettext('Manage Envelopes')],
 ]);
-require_once __DIR__ . '/Include/Header.php';
+require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 ?>
 
 <div class="card-body">
-<form method="post" action="ManageEnvelopes.php" name="ManageEnvelopes">
+<form method="post" action="/finance/envelopes" name="ManageEnvelopes">
 <?php
 
 $duplicateEnvelopeHash = [];
@@ -249,4 +248,4 @@ function getEnvelopes(?int $classification = null): array
     return $envelopes;
 }
 
-require_once __DIR__ . '/Include/Footer.php';
+require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

@@ -26,7 +26,7 @@ describe("PDF Reports - iconv fallback fix", () => {
     });
 
     it("Tax Statement (Giving Report) PDF generation does not return a server error", () => {
-        cy.visit("FinancialReports.php");
+        cy.visit("/finance/reports");
         cy.contains("Financial Reports");
 
         cy.get("#FinancialReportTypes").select("Giving Report");

@@ -33,7 +33,7 @@ describe("Issue #7864 - Advanced Deposit Report Summary Data Fund Totals", () =>
     describe("Summary Data Report - Fund Totals Display", () => {
         it("should display individual fund totals in CSV output (not grouped under Undesignated)", () => {
             // Navigate to Financial Reports
-            cy.visit("/FinancialReports.php");
+            cy.visit("/finance/reports");
             cy.get(".page-title").contains("Financial Reports").should("be.visible");
 
             // Select Advanced Deposit Report
@@ -137,7 +137,7 @@ describe("Issue #7864 - Advanced Deposit Report Summary Data Fund Totals", () =>
         });
 
         it("should display individual fund totals with 'deposit' sort order", () => {
-            cy.visit("/FinancialReports.php");
+            cy.visit("/finance/reports");
             cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
             cy.get("#FinancialReports").submit();
 
@@ -165,7 +165,7 @@ describe("Issue #7864 - Advanced Deposit Report Summary Data Fund Totals", () =>
         });
 
         it("should display individual fund totals with 'fund' sort order", () => {
-            cy.visit("/FinancialReports.php");
+            cy.visit("/finance/reports");
             cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
             cy.get("#FinancialReports").submit();
 
@@ -193,7 +193,7 @@ describe("Issue #7864 - Advanced Deposit Report Summary Data Fund Totals", () =>
         });
 
         it("should display individual fund totals with 'family' sort order", () => {
-            cy.visit("/FinancialReports.php");
+            cy.visit("/finance/reports");
             cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
             cy.get("#FinancialReports").submit();
 
@@ -224,7 +224,7 @@ describe("Issue #7864 - Advanced Deposit Report Summary Data Fund Totals", () =>
     describe("Summary Data vs Detail Level comparison", () => {
         it("should generate both summary and detail reports without errors", () => {
             // Test Summary Data
-            cy.visit("/FinancialReports.php");
+            cy.visit("/finance/reports");
             cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
             cy.get("#FinancialReports").submit();
 
@@ -244,7 +244,7 @@ describe("Issue #7864 - Advanced Deposit Report Summary Data Fund Totals", () =>
                 }
 
                 // Now test Detail level for comparison
-                cy.visit("/FinancialReports.php");
+                cy.visit("/finance/reports");
                 cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
                 cy.get("#FinancialReports").submit();
 

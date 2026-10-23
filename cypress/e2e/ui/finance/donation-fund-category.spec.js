@@ -56,7 +56,7 @@ describe("Donation Fund Categories - funds page", () => {
     it("groups the fund under its category on the dashboard and report filter", () => {
         cy.visit("/finance/");
         cy.contains("h3.card-title", "Donation Funds").closest(".card").should("contain", fundName);
-        cy.visit("/FinancialReports.php");
+        cy.visit("/finance/reports");
         cy.get("#FinancialReportTypes").select("Giving Report");
         cy.get("#FinancialReports").submit();
         cy.get("#fundsList optgroup").should("have.length.at.least", 1);

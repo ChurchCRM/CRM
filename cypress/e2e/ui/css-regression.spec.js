@@ -34,7 +34,7 @@ describe("CSS Regression — No Auth Style Leakage", () => {
 
     describe("Financial Reports — buttons render without auth styles", () => {
         beforeEach(() => {
-            cy.visit("/FinancialReports.php");
+            cy.visit("/finance/reports");
         });
 
         it("Should load the financial reports page", () => {

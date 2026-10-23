@@ -20,7 +20,7 @@ AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser
 
 // Require POST to prevent CSRF on this state-changing (email-sending) action
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    RedirectUtils::redirect('FinancialReports.php');
+    RedirectUtils::redirect('/finance/reports');
 }
 
 // Input: familyId and year are required
@@ -29,7 +29,7 @@ $year     = (int) InputUtils::legacyFilterInput($_POST['year'] ?? '', 'int');
 
 // Basic range validation before CSRF lookup (year must be sane to build form ID)
 if ($familyId <= 0 || $year <= 1990 || $year > (int) date('Y')) {
-    RedirectUtils::redirect('FinancialReports.php');
+    RedirectUtils::redirect('/finance/reports');
 }
 
 // Validate CSRF token (year-scoped form ID, consume=true prevents double-send within session)
@@ -37,7 +37,7 @@ if (
     !isset($_POST['csrf_token']) ||
     !CSRFUtils::validateToken($_POST['csrf_token'], 'tax_email_' . $year, true)
 ) {
-    RedirectUtils::redirect('FinancialReports.php');
+    RedirectUtils::redirect('/finance/reports');
 }
 
 $family = FamilyQuery::create()->findPk($familyId);
@@ -45,7 +45,23 @@ if (empty($family)) {
     RedirectUtils::redirect('people/family/not-found?id=' . $familyId);
 }
 
-$emailList = $family->getEmails();
+// Year-end statements go to the head of household and spouse (adults), not children.
+// Family email is used only when no adult has an email.
+$emailList = [];
+foreach ($family->getAdults() as $adult) {
+    $email = $adult->getEmail();
+    if ($email) {
+        $emailList[] = $email;
+    }
+    $work = $adult->getWorkEmail();
+    if ($work) {
+        $emailList[] = $work;
+    }
+}
+$emailList = array_values(array_unique($emailList));
+if (empty($emailList) && $family->getEmail()) {
+    $emailList = [$family->getEmail()];
+}
 if (empty($emailList)) {
     RedirectUtils::redirect('people/family/' . $familyId . '?TaxEmailError=NoEmail');
 }

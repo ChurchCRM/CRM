@@ -3,7 +3,7 @@
 describe("csv export", () => {
     beforeEach(() => {
         cy.setupAdminSession();
-        cy.visit("FinancialReports.php");
+        cy.visit("/finance/reports");
     });
 
     // NOTE: personal/family CSV export pure-API tests live in
@@ -11,7 +11,7 @@ describe("csv export", () => {
 
     describe("advanced deposit report", () => {
         it("should export advanced deposit report as CSV", () => {
-            cy.visit("/FinancialReports.php");
+            cy.visit("/finance/reports");
             cy.contains("Financial Reports");
             cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
             cy.get("#FinancialReports").submit();
@@ -44,7 +44,7 @@ describe("csv export", () => {
         });
 
         it("should handle advanced deposit report with multiple filters", () => {
-            cy.visit("/FinancialReports.php");
+            cy.visit("/finance/reports");
             cy.contains("Financial Reports");
             cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
             cy.get("#FinancialReports").submit();
@@ -73,13 +73,13 @@ describe("csv export", () => {
             });
 
             cy.get("#createReport").click({ force: true });
-            cy.url().should("include", "/FinancialReports.php");
+            cy.url().should("include", "/finance/reports");
         });
     });
 
     describe("tax report / giving report", () => {
         it("should export giving report as CSV", () => {
-            cy.visit("/FinancialReports.php");
+            cy.visit("/finance/reports");
             cy.contains("Financial Reports");
             cy.get("#FinancialReportTypes").select("Giving Report");
             cy.get("#FinancialReports").submit();
@@ -114,7 +114,7 @@ describe("csv export", () => {
 
     describe("zero givers report", () => {
         it("should export zero givers report as CSV", () => {
-            cy.visit("/FinancialReports.php");
+            cy.visit("/finance/reports");
             cy.contains("Financial Reports");
             cy.get("#FinancialReportTypes").select("Zero Givers");
             cy.get("#FinancialReports").submit();
@@ -138,7 +138,7 @@ describe("csv export", () => {
         });
 
         it("should handle zero givers report with custom date range", () => {
-            cy.visit("/FinancialReports.php");
+            cy.visit("/finance/reports");
             cy.contains("Financial Reports");
             cy.get("#FinancialReportTypes").select("Zero Givers");
             cy.get("#FinancialReports").submit();

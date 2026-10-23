@@ -17,7 +17,7 @@ describe("Issue #7854 - Financial Reports Fix", () => {
     describe("Advanced Deposit Report - Fund and Family Names", () => {
         it("should display actual fund names and family names (not UNDESIGNATED/UNASSIGNED)", () => {
             // Navigate to Financial Reports
-            cy.visit("/FinancialReports.php");
+            cy.visit("/finance/reports");
             cy.get(".page-title").contains("Financial Reports").should("be.visible");
 
             // Select Advanced Deposit Report
@@ -108,7 +108,7 @@ describe("Issue #7854 - Financial Reports Fix", () => {
         });
 
         it("should handle date range filtering correctly", () => {
-            cy.visit("/FinancialReports.php");
+            cy.visit("/finance/reports");
             cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
             cy.get("#FinancialReports").submit();
 
@@ -138,7 +138,7 @@ describe("Issue #7854 - Financial Reports Fix", () => {
         });
 
         it("should sort by different criteria without errors", () => {
-            cy.visit("/FinancialReports.php");
+            cy.visit("/finance/reports");
             cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
             cy.get("#FinancialReports").submit();
 
@@ -166,7 +166,7 @@ describe("Issue #7854 - Financial Reports Fix", () => {
 
                 // Go back to report config
                 if (sortBy !== sortOptions[sortOptions.length - 1]) {
-                    cy.visit("/FinancialReports.php");
+                    cy.visit("/finance/reports");
                     cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
                     cy.get("#FinancialReports").submit();
                     cy.get("input[name='DateStart']").clear({ force: true }).type("01/01/2024", { force: true });
@@ -178,7 +178,7 @@ describe("Issue #7854 - Financial Reports Fix", () => {
 
     describe("Giving Report (Tax Statements) - Large Dataset Handling", () => {
         it("should handle large datasets without white screen", () => {
-            cy.visit("/FinancialReports.php");
+            cy.visit("/finance/reports");
             cy.get("#FinancialReportTypes").select("Giving Report");
             cy.get("#FinancialReports").submit();
 

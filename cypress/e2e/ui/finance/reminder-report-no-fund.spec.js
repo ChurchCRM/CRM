@@ -36,7 +36,7 @@ describe("Reminder Report fund selection - Issue #9803", () => {
 
     beforeEach(() => {
         cy.setupAdminSession();
-        cy.visit("/FinancialReports.php");
+        cy.visit("/finance/reports");
         cy.contains("Financial Reports");
         cy.get("#FinancialReportTypes").select("Pledge Reminders");
         cy.get("#FinancialReports").submit();

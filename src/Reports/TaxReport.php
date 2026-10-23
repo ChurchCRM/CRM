@@ -137,7 +137,7 @@ $aSQLCriteria[1] = $criteriaStr;
 // Exit if no rows returned
 $iCountRows = count($rsReport);
 if ($iCountRows < 1) {
-    RedirectUtils::redirect('FinancialReports.php?ReturnMessage=NoRows&ReportType=Giving%20Report');
+    RedirectUtils::redirect('/finance/reports/Giving%20Report?ReturnMessage=NoRows');
 }
 
 // Create Giving Report -- PDF
@@ -467,6 +467,6 @@ if ($output === 'pdf') {
             'DateStart' => $sDateStart,
             'DateEnd'   => $sDateEnd,
         ];
-        RedirectUtils::redirect('FinancialReports.php?' . http_build_query($params));
+        RedirectUtils::redirect('/finance/reports/' . http_build_query($params));
     }
 }

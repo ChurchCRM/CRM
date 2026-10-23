@@ -36,7 +36,7 @@ describe("Advanced Deposit Report - Deposit Date Filter (Issue Fix)", () => {
      * interacting with these inputs to ensure the datepicker parses the value correctly.
      */
     it("should return data when filtering by Deposit Date with a matching date range", () => {
-        cy.visit("/FinancialReports.php");
+        cy.visit("/finance/reports");
         cy.get(".page-title").contains("Financial Reports").should("be.visible");
 
         cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
@@ -91,7 +91,7 @@ describe("Advanced Deposit Report - Deposit Date Filter (Issue Fix)", () => {
      * return "No Data Found". This ensures the fix does not suppress valid empty results.
      */
     it("should return 'No Data Found' when Deposit Date range excludes all deposits", () => {
-        cy.visit("/FinancialReports.php");
+        cy.visit("/finance/reports");
         cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
         cy.get("#FinancialReports").submit();
         cy.contains("Advanced Deposit Report").should("be.visible");
@@ -115,7 +115,7 @@ describe("Advanced Deposit Report - Deposit Date Filter (Issue Fix)", () => {
      * PDF is the default output format — verifies the full render path works end-to-end.
      */
     it("should return a valid PDF when filtering by Deposit Date", () => {
-        cy.visit("/FinancialReports.php");
+        cy.visit("/finance/reports");
         cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
         cy.get("#FinancialReports").submit();
         cy.contains("Advanced Deposit Report").should("be.visible");
@@ -160,7 +160,7 @@ describe("Advanced Deposit Report - Deposit Date Filter (Issue Fix)", () => {
      * This confirms neither the fix nor any regression has broken the existing path.
      */
     it("should return data when filtering by Payment Date with a broad date range", () => {
-        cy.visit("/FinancialReports.php");
+        cy.visit("/finance/reports");
         cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
         cy.get("#FinancialReports").submit();
         cy.contains("Advanced Deposit Report").should("be.visible");
