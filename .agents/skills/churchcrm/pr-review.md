@@ -37,6 +37,8 @@ Answer before reading code:
 
 Leave the contributor branch as it is: merge `master`, resolve conflicts, or push only when the maintainer asks.
 
+Credit the contributor. When their PR leaves the project better than before but has gaps, ask them to fix the gaps and explain why, so they learn and keep the credit. Do not replace their PR with ours. If they do not reply, open our own PR for the gaps (or merge theirs with a `Co-authored-by` trailer) and thank them there.
+
 ---
 
 ## Phase 2 — Review the full branch diff
