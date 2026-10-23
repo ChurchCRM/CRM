@@ -5,7 +5,7 @@ intent: How the Cypress CI jobs, shards, test database and cleanup guard fit tog
 
 # CI and test infrastructure
 
-Writing a spec: `cypress-testing.md`. Permission specs: `authz-gate-tests.md`. Workflow map: `docs/maintainers/github-actions.md`.
+Writing a spec or a permission test: `cypress-testing.md`. Workflow map: `docs/maintainers/github-actions.md`.
 
 ## Pipeline
 
@@ -14,6 +14,25 @@ Writing a spec: `cypress-testing.md`. Permission specs: `authz-gate-tests.md`. W
 Only files the suite runs or ships start the pipeline: `paths:` in `build-test-package.yml` excludes docs, agent files, Playwright artifacts, tooling config and every workflow file except the two test workflows. A pull request also skips generated translations; a push to `master` builds them because the release ZIP ships them. A new path that is neither tested nor shipped goes in both `paths:` lists.
 
 Pull requests run the suite at the site root. The nightly workflow runs it at the root and under `/churchcrm`, plus the setup wizard, the locale sweep and the upgrade matrix, three times a day. `scripts/nightly-needed.js` ends a scheduled run green without testing when every file changed since the last successful run is one `build-test-package.yml` ignores on push; a failed run is never the baseline, and manual and release runs always test. Shard counts and matrix cells live in `.github/workflows/build-test-package.yml` and `build-test-nightly.yml`; read them there.
+
+## Test stack
+
+```bash
+npm run docker:test:start       # start test containers
+npm run docker:test:stop        # stop, keep volumes
+npm run docker:test:rebuild     # rebuild images
+npm run docker:test:down        # remove containers and volumes
+npm run docker:test:reset:db    # rebuild the test database: Install.sql, then cypress/data/seed.sql
+npm run test                    # all Cypress specs, headless
+npm run test:open               # interactive
+npm run test:php                # PHP regression tests, no Docker or database needed
+```
+
+Dev stack: `npm run docker:dev:start`, `docker:dev:stop`, `docker:dev:logs`. Compose profiles: `test` and `ci` in `docker/docker-compose.yaml`; `ci-root`, `ci-subdir` and `ci-new-system` in `docker/docker-compose.parallel.yaml`; the dev stack in `docker/docker-compose.dev.yaml`. CI runs the `docker:ci:*` scripts from `package.json`.
+
+Artifacts: `cypress-artifacts-{run_id}` (logs, screenshots, videos) and `cypress-reports-{branch}`, under Actions, workflow run, Artifacts. `cypress-terminal-report` writes browser console output to `cypress/logs/`.
+
+A check that runs locally belongs in the commit and pre-push checkpoint first (`git-workflow.md`). Exhaustive suites too expensive for every push, such as the full locale matrix, run in `build-test-nightly.yml`.
 
 ## Shards
 

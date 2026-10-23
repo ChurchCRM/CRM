@@ -248,8 +248,6 @@ knowledge_base:
         applyTo: "**/*.{php,js,ts}"
       - files: ".agents/skills/churchcrm/cypress-testing.md"
         applyTo: "cypress/**/*.{js,ts}"
-      - files: ".agents/skills/churchcrm/authz-gate-tests.md"
-        applyTo: "cypress/support/gates/**"
       - files: ".agents/skills/churchcrm/ci-test-infrastructure.md"
         applyTo: "{cypress/data/**,cypress/configs/**,scripts/**,.github/workflows/**,docker/**}"
       - files: ".agents/skills/churchcrm/db-schema-migration.md"
