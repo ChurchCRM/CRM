@@ -7,7 +7,7 @@
 # The release code is copied into the image during build.
 # When container starts, ChurchCRM is ready to serve.
 
-ARG PHP_IMAGE=php:8.4.25-apache-trixie@sha256:d54a6bdfaaa4b516264617b2ac6a3692f23f29510278e02494154f8e260e9ce3
+ARG PHP_IMAGE=php:8.4.27-apache-trixie@sha256:a0b75cee7023ba2c127138dcad2ecc6ec7e09435534645e70450f29f24ea2a5a
 
 # Base stage: Apache + PHP runtime
 FROM ${PHP_IMAGE} AS base
