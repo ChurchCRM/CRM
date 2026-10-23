@@ -35,7 +35,7 @@ const publicPaths = [
 ];
 
 function protectedBasenameMatcher(source, label) {
-  const matches = [...source.matchAll(/<FilesMatch "([^"]+)">\\s*Require all denied\\s*<\\/FilesMatch>/g)];
+  const matches = [...source.matchAll(/<FilesMatch "([^"]+)">\s*Require all denied\s*<\/FilesMatch>/g)];
   const match = matches.find((entry) => {
     const regex = new RegExp(entry[1]);
     return regex.test("composer.json") && regex.test("installed.json");
@@ -48,7 +48,7 @@ test("Apache .htaccess and Docker image deny nested metadata by filename", () =>
   const srcMatcher = protectedBasenameMatcher(apache, "src/.htaccess");
   const dockerMatcher = protectedBasenameMatcher(dockerApache, "docker/apache/default.conf");
   assert.equal(srcMatcher.source, dockerMatcher.source, "image and .htaccess rules must agree");
-  assert.ok(dockerApache.indexOf('<FilesMatch "^\\\\.ht">') < dockerApache.indexOf('<FilesMatch "^(composer'), "add image denial after dotfile block");
+  assert.ok(dockerApache.indexOf('<FilesMatch "^\\.ht">') < dockerApache.indexOf('<FilesMatch "^(composer'), "add image denial after dotfile block");
   for (const path of [...privatePaths, ...nestedPaths]) {
     const name = path.split("/").at(-1);
     assert.ok(srcMatcher.test(name), path);
@@ -60,8 +60,8 @@ test("Apache .htaccess and Docker image deny nested metadata by filename", () =>
 });
 
 test("nginx regex denies nested metadata names and preserves public assets", () => {
-  const rootRule = nginx.match(/^\\s*location ~ (\\/\\(\\?:[^\\n]+) \\{ return 404; \\}$/m);
-  const subdirRule = nginx.match(/^#\\s+location ~ (\\/\\(\\?:[^\\n]+) \\{ return 404; \\}$/m);
+  const rootRule = nginx.match(/^\s*location ~ (\/\(\?:[^\n]+) \{ return 404; \}$/m);
+  const subdirRule = nginx.match(/^#\s+location ~ (\/\(\?:[^\n]+) \{ return 404; \}$/m);
   assert.ok(rootRule, "root regex location missing");
   assert.ok(subdirRule, "subdirectory example regex missing");
   assert.equal(subdirRule[1], rootRule[1], "both installations must deny the same basenames");
@@ -77,8 +77,8 @@ test("nginx regex denies nested metadata names and preserves public assets", () 
 });
 
 test("Caddy path_regexp protects nested metadata before fallback", () => {
-  const rootMatcher = caddy.match(/^\\s*@metadata path_regexp metadata (.+)$/m);
-  const subdirMatcher = caddy.match(/^#\\s+@metadata path_regexp metadata (.+)$/m);
+  const rootMatcher = caddy.match(/^\s*@metadata path_regexp metadata (.+)$/m);
+  const subdirMatcher = caddy.match(/^#\s+@metadata path_regexp metadata (.+)$/m);
   assert.ok(rootMatcher, "root path_regexp missing");
   assert.ok(subdirMatcher, "subdir path_regexp missing");
   assert.equal(subdirMatcher[1], rootMatcher[1], "path patterns must agree");
@@ -92,12 +92,12 @@ test("Caddy path_regexp protects nested metadata before fallback", () => {
   }
   // Caddy's directive ordering puts a plain respond behind the catch-all
   // handle; this specific denial must belong to the handle group.
-  const rootDenial = "    handle @metadata {\\n        respond 404\\n    }";
-  const subdirDenial = "#     handle @metadata {\\n#         respond 404\\n#     }";
+  const rootDenial = "    handle @metadata {\n        respond 404\n    }";
+  const subdirDenial = "#     handle @metadata {\n#         respond 404\n#     }";
   assert.ok(caddy.includes(rootDenial), "root denial must be a handle");
   assert.ok(caddy.includes(subdirDenial), "subdir denial must be a handle");
-  assert.ok(caddy.indexOf(rootDenial) < caddy.indexOf("\\n    handle {"), "deny before root fallback");
-  assert.ok(caddy.indexOf(subdirDenial) < caddy.indexOf("\\n#     handle /churchcrm/* {"), "deny before subdir fallback");
+  assert.ok(caddy.indexOf(rootDenial) < caddy.indexOf("\n    handle {"), "deny before root fallback");
+  assert.ok(caddy.indexOf(subdirDenial) < caddy.indexOf("\n#     handle /churchcrm/* {"), "deny before subdir fallback");
 });
 
 // When Caddy is installed, exercise effective handle precedence rather than only
@@ -119,8 +119,8 @@ test("Caddy metadata denial wins over a catch-all fallback", async (t) => {
   });
 
   const dir = mkdtempSync(join(tmpdir(), "churchcrm-caddy-routes-"));
-  const rootMatcher = caddy.match(/^\s*@metadata path (.+)$/m)?.[0].trim();
-  const subMatcher = caddy.match(/^#\s+@metadata path (.+)$/m)?.[0].replace(/^#\s*/, "");
+  const rootMatcher = caddy.match(/^\s*@metadata path_regexp metadata (.+)$/m)?.[0].trim();
+  const subMatcher = caddy.match(/^#\s+@metadata path_regexp metadata (.+)$/m)?.[0].replace(/^#\s*/, "");
   assert.ok(rootMatcher);
   assert.ok(subMatcher);
   const config = join(dir, "Caddyfile");
