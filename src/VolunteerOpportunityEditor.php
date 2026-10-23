@@ -486,7 +486,7 @@ if (isset($_POST['SaveChanges'])) {
                         <i class="fa-solid fa-floppy-disk"></i>
                         <?= gettext('Save Changes') ?>
                     </button>
-                    <a class="btn btn-secondary" href="<?= SystemURLs::getRootPath() ?>/v2/dashboard">
+                    <a class="btn btn-secondary" href="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath() . '/v2/dashboard') ?>">
                         <i class="fa-solid fa-arrow-right-from-bracket"></i>
                         <?= gettext('Exit') ?>
                     </a>

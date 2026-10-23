@@ -65,7 +65,7 @@ FontSizeSelect('labelfontsize');
             <div>
               <input type="submit" class="btn btn-secondary" name="SubmitNewsLetter" value="<?= gettext('Newsletter labels') ?>">
               <input type="submit" class="btn btn-secondary" name="SubmitConfirmLabels" value="<?= gettext('Confirm data labels') ?>">
-              <a class="btn btn-warning" href="<?= SystemURLs::getRootPath() ?>/v2/dashboard"><?= gettext('Cancel') ?></a>
+              <a class="btn btn-warning" href="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath() . '/v2/dashboard') ?>"><?= gettext('Cancel') ?></a>
             </div>
 
         </form>
