@@ -20,3 +20,8 @@ test('a positional insert fails', () => {
     assert.strictEqual(found.length, 1);
     assert.match(found[0], /names no columns/);
 });
+
+test('indented and unquoted statements are caught', () => {
+    const sql = ['  CREATE TABLE note_nte (nte_ID int);', "\tINSERT INTO person_per VALUES (1,'A');"].join('\n');
+    assert.strictEqual(problems(sql).length, 2);
+});
