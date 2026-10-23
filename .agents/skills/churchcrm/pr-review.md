@@ -38,6 +38,8 @@ Answer before reading code:
 
 Leave the contributor branch as it is: merge `master`, resolve conflicts, or push only when the maintainer asks.
 
+A PR without tests, or without a note of what the author ran, is not ours to test. Thank the author first. Say in one friendly paragraph that the tests keep the software safe and that the reviewer is not the PR's tester. Name the spec to copy (a spec in the same folder, `cypress-testing.md`) and offer to help. Hold the merge until the tests exist; a maintainer exception is the maintainer's call, in writing on the PR. Do not write or run the tests for the author unless the maintainer asks.
+
 Credit the contributor. When their PR leaves the project better than before but has gaps, ask them to fix the gaps and explain why, so they learn and keep the credit. Do not replace their PR with ours. If they do not reply, open our own PR for the gaps (or merge theirs with a `Co-authored-by` trailer) and thank them there.
 
 ---

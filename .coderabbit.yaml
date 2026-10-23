@@ -133,7 +133,9 @@ reviews:
       instructions: |
         Report only hard blocks. Do not post nitpicks, trivial or optional suggestions,
         or "add more cases" comments on a test that already exercises the behavior.
-        If a finding is not a hard block, omit it.
+        If a finding is not a hard block, omit it. That includes findings you would
+        label Minor, Quick win or preventive. Do not ask to broaden a lint rule,
+        validator or regex beyond a case that exists in the repository.
         Apply maintainer-review-gates.md and docs/contributing/issue-readiness.md. Review issue/PR scope and linked work by evidence; hard blocks only.
         Do not ask for locale:build or messages.po.
     - path: "**/*.{lock,json}"
@@ -168,6 +170,16 @@ reviews:
       instructions: |
         No .only or .skip. Do not put optional demo values in Cypress seed.
         A feature or bug fix needs a spec when that is the project pattern.
+    - path: "cypress/data/seed.sql"
+      instructions: |
+        Test data only; the schema comes from src/mysql/install/Install.sql. Do not ask
+        for CREATE TABLE here. Inserts name their columns. The ALTER TABLE ... AUTO_INCREMENT
+        lines are deliberate: family_custom and person_custom hold rows past the last id.
+    - path: "cypress/e2e/**/*.{js,ts}"
+      instructions: |
+        A spec deletes what it creates, in after(), through the API. No literal ids of
+        seeded people or families where a name lookup works. A deposit that was closed
+        must be reopened before it can be deleted.
     - path: "docker/examples/frankenphp/**"
       instructions: |
         Unsupported example. No published image and no CI job runs FrankenPHP.
@@ -234,6 +246,14 @@ knowledge_base:
         applyTo: "**/*.{php,js,ts}"
       - files: ".agents/skills/churchcrm/timezone-handling.md"
         applyTo: "**/*.{php,js,ts}"
+      - files: ".agents/skills/churchcrm/cypress-testing.md"
+        applyTo: "cypress/**/*.{js,ts}"
+      - files: ".agents/skills/churchcrm/authz-gate-tests.md"
+        applyTo: "cypress/support/gates/**"
+      - files: ".agents/skills/churchcrm/ci-test-infrastructure.md"
+        applyTo: "{cypress/data/**,cypress/configs/**,scripts/**,.github/workflows/**,docker/**}"
+      - files: ".agents/skills/churchcrm/db-schema-migration.md"
+        applyTo: "{orm/**,src/mysql/**,cypress/data/**}"
       - files: "CLAUDE.md"
         applyTo: "**/*"
 

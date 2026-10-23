@@ -96,3 +96,14 @@ Each slice is its own PR from `master`, as `git-workflow.md` requires; a slice t
 | 5a–c | Delete the tests the rows replace, one PR per surface | 3x |
 | 6 | One shared persona-key module for the Cypress configs | after the open Menu Options PRs |
 | 7 | Upgrade-fixture run of the matrix | 3a–d |
+
+## 8. Readiness gates
+
+F0 and F1 do not change who can do what, so the gate rows are their safety net: a changed outcome fails a row. The first slice that replaces a V1 check with a V2 one (F3) starts when:
+
+1. `gates/coverage.js` has no `pending` entry. Groups, events and calendar, and plugin routes each name the fixture they need.
+2. Every route that returns person, family, finance or note data is listed with its gate or marked public or self-service. `coverage.js` lists only files that attach a role middleware, so a route with no gate is invisible to it; an inventory of all routes closes that gap (ADR 0002 R0.1).
+3. Each data class has rows for its alternate channels: list, search, count, CSV, PDF and labels (§4, `classification`).
+4. The matrix runs from the `upgrade` config (§6).
+5. The maintainers decide on policy unit tests with fake principals (§6).
+6. The cleanup guard counts `pledge_plg` and `deposit_dep` (`GUARDED_TABLES` in `cypress/configs/row-count-guard.ts`), so a spec that leaks payments fails its own file.
