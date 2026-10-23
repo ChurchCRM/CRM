@@ -10,6 +10,11 @@ name: Build, Test and Package (Nightly)
 #
 # What this workflow covers
 # ─────────────────────────
+# Stage 0 – changes
+#   • A scheduled run asks scripts/nightly-needed.js whether anything the suite tests or ships
+#     changed since the last successful run. If not, the run ends green without the test jobs.
+#     Manual, release and release-branch runs always run.
+#
 # Stage 1 – build
 #   • Builds the PHP 8.4 and 8.5 images. The app suite below uses 8.5.
 #     The pull-request workflow tests the app on 8.4. Nightly uses 8.4
@@ -48,7 +53,8 @@ permissions:
 
 on:
   schedule:
-    - cron: '0 3 * * *'  # offset from build-test-package.yml (0 2) to avoid runner contention
+    # Three slots a day. A slot with no testable change since the last green run costs one short job.
+    - cron: '17 3,11,19 * * *'
   workflow_dispatch:
   release:
     types: [published]
@@ -63,11 +69,41 @@ on:
 
 jobs:
   # ═══════════════════════════════════════════════════════════════════════════
+  # STAGE 0 — Changes
+  # A scheduled run skips the suite when nothing it tests changed since the last green run.
+  # ═══════════════════════════════════════════════════════════════════════════
+  changes:
+    name: Changes since the last green run
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      actions: read
+    runs-on: ubuntu-24.04
+    outputs:
+      run: ${{ steps.decide.outputs.run }}
+      reason: ${{ steps.decide.outputs.reason }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+    - name: Decide
+      id: decide
+      env:
+        GH_TOKEN: ${{ github.token }}
+        EVENT: ${{ github.event_name }}
+        SHA: ${{ github.sha }}
+        BRANCH: ${{ github.ref_name }}
+        REPO: ${{ github.repository }}
+      run: node scripts/nightly-needed.js
+
+  # ═══════════════════════════════════════════════════════════════════════════
   # STAGE 1 — Build
   # Build the app and the PHP 8.4 and 8.5 images; upload them as one artifact.
   # ═══════════════════════════════════════════════════════════════════════════
   build:
     name: PHP 8.4 and 8.5 images
+    needs: changes
+    if: needs.changes.outputs.run == 'true'
     timeout-minutes: 40
     permissions:
       contents: read
@@ -843,6 +879,7 @@ jobs:
   # ═══════════════════════════════════════════════════════════════════════════
   nightly-summary:
     needs:
+      - changes
       - build
       - test-root
       - test-subdir
@@ -863,6 +900,11 @@ jobs:
 
     - name: Fail the run when a group did not pass
       run: |
+        if [[ "${{ needs.changes.outputs.run }}" == "false" ]]; then
+          echo "**Overall: ✅ NOTHING TO TEST**" >> $GITHUB_STEP_SUMMARY
+          echo "${{ needs.changes.outputs.reason }}. The last green run still covers this commit." >> $GITHUB_STEP_SUMMARY
+          exit 0
+        fi
         # Non-success includes skipped and cancelled, such as when build fails.
         if [[ "${{ needs.build.result }}" != "success" || \
               "${{ needs.test-root.result }}" != "success" || \

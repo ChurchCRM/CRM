@@ -13,7 +13,7 @@ Writing a spec: `cypress-testing.md`. Permission specs: `authz-gate-tests.md`. W
 
 Only files the suite runs or ships start the pipeline: `paths:` in `build-test-package.yml` excludes docs, agent files, Playwright artifacts, tooling config and every workflow file except the two test workflows. A pull request also skips generated translations; a push to `master` builds them because the release ZIP ships them. A new path that is neither tested nor shipped goes in both `paths:` lists.
 
-Pull requests run the suite at the site root. The nightly workflow runs it at the root and under `/churchcrm`, plus the setup wizard, the locale sweep and the upgrade matrix. Shard counts and matrix cells live in `.github/workflows/build-test-package.yml` and `build-test-nightly.yml`; read them there.
+Pull requests run the suite at the site root. The nightly workflow runs it at the root and under `/churchcrm`, plus the setup wizard, the locale sweep and the upgrade matrix, three times a day. `scripts/nightly-needed.js` ends a scheduled run green without testing when every file changed since the last successful run is one `build-test-package.yml` ignores on push; a failed run is never the baseline, and manual and release runs always test. Shard counts and matrix cells live in `.github/workflows/build-test-package.yml` and `build-test-nightly.yml`; read them there.
 
 ## Shards
 
