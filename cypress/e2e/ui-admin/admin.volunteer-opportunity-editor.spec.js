@@ -19,4 +19,11 @@ describe("Volunteer Opportunity Editor", () => {
         cy.get("body").should("not.contain", "Fatal error");
         cy.contains("You must enter a name");
     });
+
+    it("Exit returns to the dashboard under the install path", () => {
+        const installPath = new URL(Cypress.config("baseUrl")).pathname.replace(/\/$/, "");
+        cy.visit("/VolunteerOpportunityEditor.php");
+        cy.contains("a.btn", "Exit").click();
+        cy.location("pathname").should("eq", `${installPath}/v2/dashboard`);
+    });
 });
