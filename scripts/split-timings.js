@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 /**
- * cypress/split-timings.json holds one duration per sharded spec (api, ui, ui-admin). cypress-split reads it
- * (SPLIT_FILE) to give every shard about the same run time.
+ * cypress/split-timings.json holds one duration per sharded spec (api, ui, ui-admin). scripts/shard-specs.js reads it
+ * to give every shard about the same run time.
  *
  *   node scripts/split-timings.js check
  *       Fails on a malformed file, a duplicate, an unsorted list, or an entry whose spec no
@@ -25,13 +25,21 @@ const AREAS = ['api', 'ui', 'ui-admin'];
 const PER_SPEC_OVERHEAD_MS = 2000;
 const ANSI = /\x1b\[[0-9;]*m/g;
 
+function readIfPresent(read) {
+    try {
+        return read();
+    } catch (error) {
+        if (error.code === 'ENOENT') {
+            return null;
+        }
+        throw error;
+    }
+}
+
 function listSpecs(repo, area) {
     const dir = path.join(repo, 'cypress', 'e2e', area);
-    if (!fs.existsSync(dir)) {
-        return [];
-    }
     const walk = (current) =>
-        fs.readdirSync(current, { withFileTypes: true }).flatMap((entry) => {
+        (readIfPresent(() => fs.readdirSync(current, { withFileTypes: true })) ?? []).flatMap((entry) => {
             const full = path.join(current, entry.name);
             if (entry.isDirectory()) {
                 return walk(full);
@@ -76,7 +84,10 @@ function check(repo = root) {
 
 // Rows of the Cypress summary table. A long path wraps onto continuation lines.
 function parseRunFinished(log) {
-    const text = log.replace(ANSI, '').replace(/^\S+Z /gm, '');
+    const text = log
+        .replace(ANSI, '')
+        .replace(/^[^\t\n]*\t[^\t\n]*\t(?=\S+Z )/gm, '')
+        .replace(/^\S+Z /gm, '');
     const start = text.indexOf('(Run Finished)');
     if (start === -1) {
         return [];
@@ -116,7 +127,8 @@ function update(logs, repo = root) {
     );
 
     const file = path.join(repo, timingsFile);
-    const previous = fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')).durations : [];
+    const existing = readIfPresent(() => fs.readFileSync(file, 'utf8'));
+    const previous = existing === null ? [] : JSON.parse(existing).durations;
     const merged = new Map(previous.filter(({ spec }) => specs.includes(spec)).map(({ spec, duration }) => [spec, duration]));
     Object.entries(samples).forEach(([spec, seconds]) => {
         const average = seconds.reduce((sum, value) => sum + value, 0) / seconds.length;

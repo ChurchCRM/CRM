@@ -34,6 +34,14 @@ test('parseRunFinished joins a wrapped path and reads minutes, seconds and milli
     ]);
 });
 
+test('parseRunFinished reads the job and step prefix that gh run view --log adds', () => {
+    const log = [
+        'test-root\tRun Cypress\t2026-10-22T09:31:04.7Z   (Run Finished)',
+        'test-root\tRun Cypress\t2026-10-22T09:31:04.8Z   │ ✔  avatar-click.spec.js                     00:13       13       13        -        -        - │',
+    ].join('\n');
+    assert.deepEqual(parseRunFinished(log), [{ name: 'avatar-click.spec.js', seconds: 13 }]);
+});
+
 test('check passes a sorted file of existing specs', () => {
     const repo = repoWith(['cypress/e2e/ui/a.spec.js', 'cypress/e2e/ui/b.spec.js'], [
         { spec: 'cypress/e2e/ui/a.spec.js', duration: 1000 },
