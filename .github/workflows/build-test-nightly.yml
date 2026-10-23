@@ -899,10 +899,12 @@ jobs:
       uses: ./.github/actions/test-run-summary
 
     - name: Fail the run when a group did not pass
+      env:
+        CHANGES_REASON: ${{ needs.changes.outputs.reason }}
       run: |
         if [[ "${{ needs.changes.outputs.run }}" == "false" ]]; then
           echo "**Overall: ✅ NOTHING TO TEST**" >> $GITHUB_STEP_SUMMARY
-          echo "${{ needs.changes.outputs.reason }}. The last green run still covers this commit." >> $GITHUB_STEP_SUMMARY
+          echo "${CHANGES_REASON}. The last green run still covers this commit." >> $GITHUB_STEP_SUMMARY
           exit 0
         fi
         # Non-success includes skipped and cancelled, such as when build fails.
