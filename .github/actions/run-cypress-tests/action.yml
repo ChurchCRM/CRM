@@ -90,8 +90,6 @@ runs:
         DEPLOYMENT: ${{ inputs.deployment }}
         TEST_NAME: ${{ inputs.test-name }}
         SPLIT: ${{ inputs.shard-total }}
-        # Balance shards by recorded duration; a missing or unreadable file falls back to a split by name.
-        SPLIT_FILE: ${{ inputs.shard-total != '' && inputs.shard-total != '1' && 'cypress/split-timings.json' || '' }}
         SPLIT_INDEX: ${{ inputs.shard-index }}
         CYPRESS_BASE_URL: ${{ inputs.base-url }}
         CYPRESS_ENV_ARG: ${{ inputs.cypress-env }}
