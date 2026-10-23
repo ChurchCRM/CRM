@@ -14,7 +14,7 @@ Rules for where specs go, seeded data, secrets and time zones: `cypress-testing.
 
 - API specs: `cypress/e2e/api/private/{standard,admin,...}/`
 - UI specs: `cypress/e2e/ui/[feature]/`
-- Configs: `cypress/configs/docker.config.ts` (standard runner for `npm run test`, `test:open`, `test:api`, `test:ui` and the root/subdir CI jobs) and `cypress/configs/new-system.config.ts` (setup-wizard / fresh-install runner for `npm run test:new-system`). Every script passes `--config-file`; credentials live in these configs
+- Configs: `cypress/configs/docker.config.ts` (standard runner for `npm run test`, `test:open`, `test:api`, `test:ui` and the CI jobs; pull requests run the whole suite at the site root; the nightly workflow runs it at the root and under `/churchcrm`, and `npm run lint` catches hardcoded root-relative URLs on every push) and `cypress/configs/new-system.config.ts` (setup-wizard / fresh-install runner for `npm run test:new-system`). Every script passes `--config-file`; credentials live in these configs
 - Support: `cypress/support/ui-commands.js`, `cypress/support/api-commands.js` (imported from `cypress/support/e2e.js`)
 - CI logs: `cypress-terminal-report` captures browser console output into `cypress/logs/`, uploaded as GitHub Actions artifacts
 
@@ -132,7 +132,7 @@ npm run docker:test:start       # start test containers
 npm run docker:test:stop        # stop, keep volumes
 npm run docker:test:rebuild     # rebuild images
 npm run docker:test:down        # remove containers and volumes
-npm run docker:test:reset:db    # reload the seeded test database
+npm run docker:test:reset:db    # rebuild the test database: Install.sql, then cypress/data/seed.sql
 ```
 
 Dev stack: `npm run docker:dev:start`, `docker:dev:stop`, `docker:dev:logs`.

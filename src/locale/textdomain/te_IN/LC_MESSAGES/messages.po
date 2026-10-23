@@ -21128,10 +21128,6 @@ msgid "Recent Emails"
 msgstr "ఇటీవలి ఇమెయిల్‌లు"
 
 #: 
-msgid "Recent Sends"
-msgstr "ఇటీవలి పంపకాలు"
-
-#: 
 msgid "Recipient"
 msgstr "గ్రహీత"
 
@@ -24436,28 +24432,8 @@ msgid "%d failed (all time)"
 msgstr "%d విఫలమయ్యాయి (మొత్తం)"
 
 #: 
-msgid "Failed email history pages"
-msgstr "విఫలమైన ఇమెయిల్ చరిత్ర పేజీలు"
-
-#: 
 msgid "Failed sends across all email history, including automated messages"
 msgstr "ఆటోమేటెడ్ సందేశాలతో సహా మొత్తం ఇమెయిల్ చరిత్రలో విఫలమైన పంపకాలు"
-
-#: 
-msgid "No server error recorded"
-msgstr "సర్వర్ లోపం ఏదీ రికార్డ్ కాలేదు"
-
-#: 
-msgid "Show all recent sends"
-msgstr "ఇటీవలి పంపకాలన్నీ చూపించు"
-
-#: 
-msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
-msgstr "ఆటోమేటెడ్ సందేశాలతో సహా మొత్తం ఇమెయిల్ చరిత్రలో విఫలమైన పంపకాలు చూపబడుతున్నాయి. వివరాల కోసం ఒక విషయాన్ని ఎంచుకోండి."
-
-#: 
-msgid "The table shows only the latest 20 sends. Open a person to see their full history."
-msgstr "పట్టిక చివరి 20 పంపకాలను మాత్రమే చూపిస్తుంది. పూర్తి చరిత్ర చూడటానికి ఒక వ్యక్తిని తెరవండి."
 
 #: 
 msgid "View %d failed sends across all email history"

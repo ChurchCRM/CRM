@@ -467,7 +467,20 @@ window.calendarPropertiesModal = {
         }
       }
 
-      bootbox.alert(i18next.t("A Calendar access token has been generated and saved."));
+      const createdMessage = i18next.t("A Calendar access token has been generated and saved.");
+      if (!window.CRM.calendarJSArgs.bEnableExternalCalendarAPI) {
+        // The page normally shows this warning only on initial load. A newly
+        // generated token should show it immediately, without a page refresh.
+        const $warning = $("#calendarApiWarning").removeClass("d-none");
+        const warningMessage = $warning.find("p").text().trim();
+        bootbox.alert(
+          warningMessage
+            ? `${escapeHtml(createdMessage)}<p class="mt-2 text-warning">${escapeHtml(warningMessage)}</p>`
+            : createdMessage,
+        );
+      } else {
+        bootbox.alert(createdMessage);
+      }
       window.calendarPropertiesModal.calendar = newcalendar;
     });
   },

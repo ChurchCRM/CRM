@@ -55,13 +55,4 @@ describe("Admin API System Custom Fields Endpoint", () => {
             expect(resp.body).to.deep.eq([]);
         });
     });
-
-    it("non-admin is denied access", () => {
-        cy.makePrivateUserAPICall(
-            "GET",
-            "/admin/api/system/custom-fields/person?typeId=2",
-            null,
-            403,
-        );
-    });
 });

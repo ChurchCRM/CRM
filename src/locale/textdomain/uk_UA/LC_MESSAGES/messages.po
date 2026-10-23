@@ -21207,10 +21207,6 @@ msgid "Recent Emails"
 msgstr "Нещодавні листи"
 
 #: 
-msgid "Recent Sends"
-msgstr "Нещодавні надсилання"
-
-#: 
 msgid "Recipient"
 msgstr "Отримувач"
 
@@ -24523,28 +24519,8 @@ msgid "%d failed (all time)"
 msgstr "Не вдалося: %d (усього)"
 
 #: 
-msgid "Failed email history pages"
-msgstr "Сторінки історії невдалих листів"
-
-#: 
 msgid "Failed sends across all email history, including automated messages"
 msgstr "Невдалі надсилання в усій історії листів, зокрема автоматичні повідомлення"
-
-#: 
-msgid "No server error recorded"
-msgstr "Помилку сервера не записано"
-
-#: 
-msgid "Show all recent sends"
-msgstr "Показати всі нещодавні надсилання"
-
-#: 
-msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
-msgstr "Показано невдалі надсилання в усій історії листів, зокрема автоматичні повідомлення. Виберіть тему, щоб побачити подробиці."
-
-#: 
-msgid "The table shows only the latest 20 sends. Open a person to see their full history."
-msgstr "У таблиці показано лише останні 20 надсилань. Відкрийте картку особи, щоб побачити всю історію."
 
 #: 
 msgid "View %d failed sends across all email history"

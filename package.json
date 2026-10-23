@@ -48,8 +48,9 @@
         "locale:test": "node --test locale/scripts/lib/*.test.js",
         "locale:upload:missing": "node locale/scripts/poeditor-upload-missing.js",
         "locale:upload:terms": "node locale/scripts/poeditor-upload-terms.js",
-        "lint": "node scripts/lint.js",
+        "lint": "node scripts/lint.js && npm run test:frankenphp-routing",
         "lint:fix": "node scripts/ensure-biome.js && biome check --write webpack/ && biome format --write .",
+        "test:frankenphp-routing": "node --test scripts/test-frankenphp-routing.test.mjs",
         "postinstall": "node scripts/patch-cypress-split.js 2>/dev/null || true",
         "prepare": "git config core.hooksPath .githooks 2>/dev/null || true",
         "locale:lint": "node scripts/locale-check.js",
@@ -73,7 +74,7 @@
         "docker:test:login:web": "docker compose -f docker/docker-compose.yaml --profile test exec webserver bash",
         "docker:test:login:db": "docker compose -f docker/docker-compose.yaml --profile test exec database bash",
         "docker:test:rebuild": "docker compose -f docker/docker-compose.yaml --profile test build --no-cache webserver && docker compose -f docker/docker-compose.yaml --profile test up -d webserver",
-        "docker:test:reset:db": "docker compose -f docker/docker-compose.yaml --profile test exec -T database sh -c 'MYSQL_PWD=\"$MYSQL_PASSWORD\" exec mysql -u\"$MYSQL_USER\" \"$MYSQL_DATABASE\"' < cypress/data/seed.sql",
+        "docker:test:reset:db": "node scripts/reset-test-db.js",
         "docker:dev:start": "node scripts/docker-config.js docker/Config.php && docker compose -f docker/docker-compose.dev.yaml up -d",
         "docker:dev:stop": "docker compose -f docker/docker-compose.dev.yaml stop",
         "docker:dev:down": "docker compose -f docker/docker-compose.dev.yaml down -v",
@@ -100,7 +101,8 @@
         "marketing:chrome": "BROWSER_CHANNEL=chrome ./scripts/capture-all-locales.sh",
         "marketing:videos": "node scripts/finalize-marketing-videos.js",
         "marketing:check": "node scripts/check-marketing-visuals.js",
-        "marketing:manifest": "node scripts/generate-marketing-manifest.js"
+        "marketing:manifest": "node scripts/generate-marketing-manifest.js",
+        "test:frankenphp-routing": "node --test scripts/test-frankenphp-routing.test.mjs"
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^7.3.1",
@@ -164,7 +166,7 @@
         "sass-loader": "^17.0.1",
         "ts-loader": "^9.6.2",
         "typescript": "^6.0.3",
-        "webpack": "^5.111.1",
+        "webpack": "^5.112.0",
         "webpack-cli": "^7.2.3"
     },
     "overrides": {

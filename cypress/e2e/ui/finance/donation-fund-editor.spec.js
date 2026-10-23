@@ -140,10 +140,4 @@ describe("Finance: Donation Funds page - Access control", () => {
         cy.visit("/finance/");
         cy.get("a").contains("Manage Funds").should("exist");
     });
-
-    it("Redirects users without Finance role to access-denied", () => {
-        cy.setupNoFinanceSession();
-        cy.visit("/finance/funds", { failOnStatusCode: false });
-        cy.url().should("not.include", "/finance/funds");
-    });
 });

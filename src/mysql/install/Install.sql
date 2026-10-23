@@ -623,7 +623,8 @@ CREATE TABLE `pledge_plg` (
   INDEX `idx_plg_FamID` (`plg_FamID`),
   INDEX `idx_plg_FYID` (`plg_FYID`),
   INDEX `idx_plg_fundID` (`plg_fundID`),
-  INDEX `idx_plg_depID` (`plg_depID`)
+  INDEX `idx_plg_depID` (`plg_depID`),
+  INDEX `idx_plg_GroupKey` (`plg_GroupKey`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --

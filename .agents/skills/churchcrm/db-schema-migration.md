@@ -11,7 +11,7 @@ complexity: "advanced"
 Schema source: `orm/schema.xml` (Perpl ORM). Upgrade scripts: `src/mysql/upgrade/`, registered in `src/mysql/upgrade.json`.
 
 Process:
-1. Write the upgrade script and update `orm/schema.xml`, `Install.sql`, and (after asking) `seed.sql`
+1. Write the upgrade script and update `orm/schema.xml` and `Install.sql`. `seed.sql` is test data only and holds no schema
 2. Run the migration on a staging copy and smoke-test the app
 3. Back up the production DB before applying; keep a rollback script and a snapshot
 4. Apply in a maintenance window and watch for errors
@@ -58,22 +58,28 @@ A 7.2.x install matches `pre-7.3.1` (DB set to 7.3.0), then `current` (runs the 
 |------|--------|
 | `src/mysql/upgrade/X.Y.Z-<desc>.sql` | The `ALTER` / `CREATE` / `DROP` |
 | `src/mysql/install/Install.sql` | Same change in the `CREATE TABLE` block, so fresh installs match upgraded ones |
-| `cypress/data/seed.sql` | Same change; ask the user first (it holds Cypress test data) |
+| `cypress/data/seed.sql` | Test data only; the test database gets its schema from `Install.sql`. Touch it only when specs read the new value, or to remove values of a dropped column or table |
 | `orm/schema.xml` | Column/table attributes |
 
 ### Removing a table
 
-Delete its `CREATE TABLE` from `Install.sql`, its `DROP/CREATE` plus data from `seed.sql`, its `<table>` from `schema.xml`, and add `DROP TABLE IF EXISTS` to the upgrade script (idempotent on fresh installs).
+Delete its `CREATE TABLE` from `Install.sql`, its `DELETE FROM` and `INSERT` from `seed.sql`, its `<table>` from `schema.xml`, and add `DROP TABLE IF EXISTS` to the upgrade script (idempotent on fresh installs).
 
 ### Removing a column
 
-Drop it from `schema.xml`, from the `CREATE TABLE` in `Install.sql` and `seed.sql`, and from `Install.sql`'s named `INSERT` (column list and value). In `seed.sql` remove the value at its ordinal from every tuple of every `INSERT` for the table, then verify each tuple's value count equals the `CREATE TABLE` column count. The upgrade script runs `ALTER TABLE ... DROP COLUMN` (plain DDL, version-gated).
+Drop it from `schema.xml`, from the `CREATE TABLE` in `Install.sql`, and from `Install.sql`'s named `INSERT` (column list and value). The upgrade script runs `ALTER TABLE ... DROP COLUMN` (plain DDL, version-gated).
 
-### Adding a column to seed.sql
+`seed.sql` names its columns, so a dropped column makes its `INSERT` fail with `Unknown column`. Refresh the data instead of editing tuples: load the old `Install.sql` and `seed.sql` into a scratch database, run the new upgrade script, then dump it:
 
-`seed.sql` is a `mysqldump`: its `INSERT` statements are positional (no column list). A new column in `CREATE TABLE` needs a value at the matching ordinal in every tuple of every `INSERT` for that table, or the load fails with `Column count doesn't match value count`. Do it mechanically: split tuples on top-level commas outside single-quoted strings, insert the default, then verify the `CREATE TABLE` column count equals the value count in every tuple. `Install.sql` inserts for `user_usr` name their columns, so a new column with a `DEFAULT` needs no edit there.
+```bash
+mariadb-dump --no-create-info --complete-insert --order-by-primary --skip-comments --skip-add-locks --skip-disable-keys scratch_db
+```
 
-Match each file's local column types (`seed.sql` uses `tinyint(3)` for permission booleans where `Install.sql` uses `tinyint(1)`); nothing validates the files against each other.
+Replace the `INSERT` statements in `seed.sql` with that output (keep its header, the `DELETE FROM` lines and the `ALTER`/`CREATE TABLE` lines for custom-field and `groupprop_N` tables).
+
+### Adding a column
+
+`seed.sql` needs nothing: its `INSERT` statements name their columns, so the new column takes its `DEFAULT`. Add a seeded value only when a spec reads it. `npm run lint` (`seed data only`) fails a `CREATE TABLE` for an installed table or an `INSERT` without a column list.
 
 ### Adding a table
 
@@ -84,7 +90,7 @@ cp -n orm/propel.php.dist orm/propel.php
 cd src && composer run orm-gen
 ```
 
-Add the table to `cypress/data/seed.sql` too (with seeded rows if specs read it); the test DB loads only from that file. Reference: `email_log_eml`.
+The test database creates the table from `Install.sql`. Add rows to `cypress/data/seed.sql` (named columns) only if specs read them. Reference: `email_log_eml`.
 
 ### Regenerating the ORM
 
@@ -139,12 +145,12 @@ ALTER TABLE `note_nte` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_
 
 ## Foreign Keys
 
-`<foreign-key onDelete="cascade|setnull|restrict">` in `schema.xml` declares the relation for Propel. `Install.sql` and `seed.sql` enforce a constraint only where a `FOREIGN KEY` clause is written there by hand, exactly as in the upgrade script; no tooling compares the three files.
+`<foreign-key onDelete="cascade|setnull|restrict">` in `schema.xml` declares the relation for Propel. `Install.sql` enforces a constraint only where a `FOREIGN KEY` clause is written there by hand, exactly as in the upgrade script; no tooling compares it with `schema.xml`. The test database is built from `Install.sql`, so it enforces the same constraints.
 
 - Constraints that exist fire: `ON DELETE CASCADE` / `SET NULL` / `RESTRICT` act, and an orphan insert fails with `ER_NO_REFERENCED_ROW_2`
 - MariaDB needs an index on every FK column; declare it explicitly (or lead a composite key with the column) so the server does not create an auto-named one that breaks an `_idx` / `_uidx` naming check
 - Create the parent table before anything references it within one script
-- `schema.xml` may reference a table declared later in the file; raw SQL may not. For an FK from an existing table to a new one, put the column and its `KEY` in the existing `CREATE TABLE` and the constraint in a trailing `ALTER TABLE` after the parent is created, in both `Install.sql` and `seed.sql`:
+- `schema.xml` may reference a table declared later in the file; raw SQL may not. For an FK from an existing table to a new one, put the column and its `KEY` in the existing `CREATE TABLE` and the constraint in a trailing `ALTER TABLE` after the parent is created, in `Install.sql`:
 
 ```sql
 -- inside the existing CREATE TABLE

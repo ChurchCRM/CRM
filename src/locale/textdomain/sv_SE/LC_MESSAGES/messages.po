@@ -21240,10 +21240,6 @@ msgid "Recent Emails"
 msgstr "Senaste e-postmeddelanden"
 
 #: 
-msgid "Recent Sends"
-msgstr "Senaste utskick"
-
-#: 
 msgid "Recipient"
 msgstr "Mottagare"
 
@@ -24548,28 +24544,8 @@ msgid "%d failed (all time)"
 msgstr "%d misslyckade (totalt)"
 
 #: 
-msgid "Failed email history pages"
-msgstr "Sidor i historiken över misslyckade e-postmeddelanden"
-
-#: 
 msgid "Failed sends across all email history, including automated messages"
 msgstr "Misslyckade utskick i hela e-posthistoriken, inklusive automatiska meddelanden"
-
-#: 
-msgid "No server error recorded"
-msgstr "Inget serverfel registrerat"
-
-#: 
-msgid "Show all recent sends"
-msgstr "Visa alla senaste utskick"
-
-#: 
-msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
-msgstr "Visar misslyckade utskick i hela e-posthistoriken, inklusive automatiska meddelanden. Välj ett ämne för mer information."
-
-#: 
-msgid "The table shows only the latest 20 sends. Open a person to see their full history."
-msgstr "Tabellen visar bara de senaste 20 utskicken. Öppna en person för att se hela historiken."
 
 #: 
 msgid "View %d failed sends across all email history"

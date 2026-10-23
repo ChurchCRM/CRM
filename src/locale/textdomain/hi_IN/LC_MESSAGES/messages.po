@@ -21116,10 +21116,6 @@ msgid "Recent Emails"
 msgstr "हाल के ईमेल"
 
 #: 
-msgid "Recent Sends"
-msgstr "हाल में भेजे गए"
-
-#: 
 msgid "Recipient"
 msgstr "प्राप्तकर्ता"
 
@@ -24424,28 +24420,8 @@ msgid "%d failed (all time)"
 msgstr "%d विफल (कुल)"
 
 #: 
-msgid "Failed email history pages"
-msgstr "विफल ईमेल इतिहास पृष्ठ"
-
-#: 
 msgid "Failed sends across all email history, including automated messages"
 msgstr "स्वचालित संदेशों सहित संपूर्ण ईमेल इतिहास में विफल भेजे गए संदेश"
-
-#: 
-msgid "No server error recorded"
-msgstr "कोई सर्वर त्रुटि दर्ज नहीं हुई"
-
-#: 
-msgid "Show all recent sends"
-msgstr "सभी हाल के भेजे गए संदेश दिखाएँ"
-
-#: 
-msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
-msgstr "स्वचालित संदेशों सहित संपूर्ण ईमेल इतिहास में विफल भेजे गए संदेश दिखाए जा रहे हैं। विवरण के लिए कोई विषय चुनें।"
-
-#: 
-msgid "The table shows only the latest 20 sends. Open a person to see their full history."
-msgstr "तालिका में केवल अंतिम 20 भेजे गए संदेश दिखते हैं। पूरा इतिहास देखने के लिए किसी व्यक्ति को खोलें।"
 
 #: 
 msgid "View %d failed sends across all email history"
