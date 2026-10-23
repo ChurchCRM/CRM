@@ -9,6 +9,7 @@ use ChurchCRM\Portal\PortalSelfService;
 use ChurchCRM\Portal\PortalTwig;
 use ChurchCRM\Service\MpdfRenderer;
 use ChurchCRM\Utils\CurrencyFormatter;
+use ChurchCRM\Utils\DateTimeUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
@@ -73,7 +74,7 @@ $group->get('/giving/statement', function (Request $request, Response $response)
         $amount = (float) $pledge->getAmount();
         $total += $amount;
         $gifts[] = [
-            'date' => (string) $pledge->getDate('Y-m-d'),
+            'date' => DateTimeUtils::formatDate((string) $pledge->getDate('Y-m-d')),
             'fund' => $pledge->getDonationFund() ? $pledge->getDonationFund()->getName() : '',
             'method' => (string) $pledge->getMethod(),
             'amount' => CurrencyFormatter::format($amount),
@@ -81,12 +82,19 @@ $group->get('/giving/statement', function (Request $request, Response $response)
     }
 
 
+    $letterheadPath = SystemConfig::getValue('bDirLetterHead');
+    $useGraphic = is_string($letterheadPath) && $letterheadPath !== '' && is_readable($letterheadPath);
+    $start = DateTimeUtils::formatDate($year . '-01-01');
+    $end = DateTimeUtils::formatDate($year . '-12-31');
+    $disposition = SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline';
+
     $deductible = $total;
     $data = [
-        'letterhead' => 'address',
+        'letterhead' => $useGraphic ? 'graphic' : 'address',
+        'letterhead_image' => $useGraphic ? $letterheadPath : null,
         'title' => gettext('Contribution Statement'),
-        'date_range' => sprintf(gettext('%s through %s'), $year . '-01-01', $year . '-12-31'),
-        'opening' => trim(SystemConfig::getValue('sTaxReport1') . ' ' . $year . '.'),
+        'date_range' => sprintf(gettext('%s through %s'), $start, $end),
+        'opening' => trim(SystemConfig::getValue('sTaxReport1') . ' ' . $start . ' – ' . $end . '.'),
         'closing' => SystemConfig::getValue('sTaxReport2'),
         'questions' => SystemConfig::getValue('sTaxReport3'),
         'signer' => SystemConfig::getValue('sTaxSigner'),
@@ -106,5 +114,5 @@ $group->get('/giving/statement', function (Request $request, Response $response)
     $response->getBody()->write($pdf);
     return $response
         ->withHeader('Content-Type', 'application/pdf')
-        ->withHeader('Content-Disposition', 'inline; filename="giving-statement-' . $year . '.pdf"');
+        ->withHeader('Content-Disposition', $disposition . '; filename="giving-statement-' . $year . '.pdf"');
 });
