@@ -1,9 +1,10 @@
 {% extends "_base.html.twig" %}
 {% block content %}
   <div class="letterhead">
-    {% if letterhead == 'graphic' and church_logo %}
-      <img src="{{ church_logo }}" style="max-width: 180mm; max-height: 30mm;">
-    {% elseif letterhead != 'none' %}
+    {% if church_logo %}
+      <img src="{{ church_logo }}" style="max-width: 60mm; max-height: 20mm;">
+    {% endif %}
+    {% if letterhead != 'none' %}
       <strong>{{ church_name }}</strong><br>
       {{ church_address }}<br>
       <span class="muted">{{ church_phone }} {{ church_email }}</span>

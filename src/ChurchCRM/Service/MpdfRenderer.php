@@ -39,7 +39,7 @@ class MpdfRenderer implements PdfRendererInterface
         $data['church_address'] = ChurchMetaData::getChurchFullAddress();
         $data['church_phone'] = ChurchMetaData::getChurchPhone();
         $data['church_email'] = ChurchMetaData::getChurchEmail();
-        $data['church_logo'] = ChurchMetaData::getChurchLogoPath();
+        $data['church_logo'] = ChurchMetaData::getChurchLogoURL();
         return $data;
     }
 
