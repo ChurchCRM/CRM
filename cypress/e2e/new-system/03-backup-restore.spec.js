@@ -109,6 +109,8 @@ describe('03 - Backup and Restore', () => {
                     timeout: 30000
                 }).then((download) => cy.writeFile(restoreFile, download.body, 'binary'));
             });
+            // /login answers 404 for a signed-in session; beforeEach logs in from a clean one
+            cy.clearCookies();
         });
 
         beforeEach(() => {
