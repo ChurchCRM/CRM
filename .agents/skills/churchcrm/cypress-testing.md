@@ -6,6 +6,7 @@ intent: How to add ChurchCRM E2E tests. Commands live in package.json.
 # Cypress Testing
 
 Layout and how-to: `cypress/README.md`.
+CI, shards, the test database and the cleanup guard: `ci-test-infrastructure.md`. Permission tests: `authz-gate-tests.md`.
 Scripts: `package.json` (`test`, `test:api`, `test:ui`).
 Config: `cypress/configs/docker.config.ts`.
 App under test: `DEVELOPING.md` (`npm run docker:test:start`).
@@ -29,6 +30,8 @@ Every new test is a Cypress E2E spec. Server logic is tested through its route w
 - A test never branches on missing data and passes by logging "skipping". Create the record in a `before` hook through the API, or drop the test
 - Stable selectors: `id`, `data-cy`, `name`, href/text — not visual utility classes
 - Optional demo values go in `src/admin/demo/config.json`, which keeps the Cypress seed stable
+- Delete what a spec creates, in `after`, through the API. The row-count guard fails a spec file that leaves rows behind; a deposit you closed must be reopened before it can be deleted (`ci-test-infrastructure.md`)
+- Permission checks are persona gate rows, never a flag-named helper in a spec (`authz-gate-tests.md`)
 - Commit specs without `.only` / `.skip`
 - `allowCypressEnv` is false. Secrets go through `cy.readEnv(key)` or `cy.rememberTestEnv(keys)` / `Cypress.testEnv(key)` in `cypress/support/test-env.js`. Public run flags (`rowCountGuard`, `LOCALE_TIER`) use `Cypress.expose()`; select the locale tier with `--expose LOCALE_TIER=full`
 - Mailpit lives at `Cypress.mailpitUrl()` for `cy.request()`; use the `mail:*` tasks where the stack may have none. The config resolves it from `MAILPIT_URL` or `MAILSERVER_GUI_PORT`, so a run on an isolated stack reaches that stack's Mailpit, not the developer's on 8025

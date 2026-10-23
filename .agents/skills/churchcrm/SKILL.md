@@ -78,6 +78,8 @@ Row actions: [`table-action-menu.md`](./table-action-menu.md). Settings UI: copy
 |-------|------------|
 | [Testing](./testing.md) | Writing tests |
 | [Cypress Testing](./cypress-testing.md) | E2E |
+| [CI & Test Infrastructure](./ci-test-infrastructure.md) | Red CI, shards, test database and seed, cleanup guard |
+| [Authorization Gate Tests](./authz-gate-tests.md) | Persona gate rows, a new gated route or persona |
 | [Marketing Visual-Media Pipeline](./marketing-visuals-pipeline.md) | Playwright captures |
 
 ## MVC / PHP

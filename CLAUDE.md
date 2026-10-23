@@ -18,6 +18,8 @@ Load the card for the task. Do not load every skill.
 | Security | `security-best-practices.md` → `authorization-security.md` |
 | Plugin | `plugin-system.md` → `plugin-registry.md` |
 | Tests | `cypress-testing.md` |
+| CI failure, seed or schema change | `ci-test-infrastructure.md` |
+| Permission tests | `authz-gate-tests.md` |
 | API | `api-development.md` → `service-layer.md` |
 
 Always-on:

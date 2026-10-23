@@ -8,7 +8,7 @@ complexity: "intermediate"
 
 # Authorization Test Strategy
 
-**Status:** Proposed. Implements the test side of [ADR 0002](../decisions/0002-rbac-redesign.md). Changes no runtime behavior.
+**Status:** Active. Slices 1 to 5 of §7 are shipped; slices 6 and 7 and the `pending` entries in `cypress/support/gates/coverage.js` are open. Implements the test side of [ADR 0002](../decisions/0002-rbac-redesign.md). Changes no runtime behavior. How to add a row or persona: `.agents/skills/churchcrm/authz-gate-tests.md`.
 
 ## 1. Purpose
 
