@@ -48,7 +48,7 @@
     respond @dotfiles 404
 
     # Block public HTTP access to build/version metadata (PHP reads it from disk).
-    @metadata path /composer.json /composer.lock /package.json /package-lock.json /mysql/upgrade.json /vendor/composer/installed.json
+    @metadata path_regexp metadata (^|/)(composer\.json|composer\.lock|package(-lock)?\.json|upgrade\.json|installed\.json)$
     handle @metadata {
         respond 404
     }
@@ -165,7 +165,7 @@
 #     respond @tmp_attach 404
 #     @include path /churchcrm/Include/*
 #     respond @include 404
-#     @metadata path /churchcrm/composer.json /churchcrm/composer.lock /churchcrm/package.json /churchcrm/package-lock.json /churchcrm/mysql/upgrade.json /churchcrm/vendor/composer/installed.json
+#     @metadata path_regexp metadata (^|/)(composer\.json|composer\.lock|package(-lock)?\.json|upgrade\.json|installed\.json)$
 #     handle @metadata {
 #         respond 404
 #     }
