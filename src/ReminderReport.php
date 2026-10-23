@@ -42,8 +42,7 @@ if (isset($_POST['Submit'])) {
 
       <div class="d-flex gap-2">
         <button type="submit" class="btn btn-primary" name="Submit"><?= gettext('Create Report') ?></button>
-        <button type="button" class="btn btn-secondary" name="Cancel"
-                onclick="javascript:document.location='<?= SystemURLs::getRootPath() ?>/v2/dashboard';"><?= gettext('Cancel') ?></button>
+        <a class="btn btn-secondary" href="<?= SystemURLs::getRootPath() ?>/v2/dashboard"><?= gettext('Cancel') ?></a>
       </div>
     </form>
   </div>

@@ -7,6 +7,9 @@ import { LEGACY_PAGES, MVC_PAGES } from "../../../support/mvc-pages";
 const base = () => new URL(Cypress.config("baseUrl"));
 const installPath = () => base().pathname.replace(/\/$/, "");
 
+// The report endpoints answer with a PDF, which cy.visit() rejects.
+const HTML_LEGACY_PAGES = LEGACY_PAGES.filter((page) => !page.startsWith("/Reports/"));
+
 describe("Page requests stay inside the install path", () => {
     let seen;
 
@@ -45,11 +48,23 @@ describe("Page requests stay inside the install path", () => {
             watchRequests();
         });
 
-        [...Object.values(MVC_PAGES).flat(), ...LEGACY_PAGES].forEach((page) => {
+        [...Object.values(MVC_PAGES).flat(), ...HTML_LEGACY_PAGES].forEach((page) => {
             it(`${page} requests only its own install`, () => {
                 cy.visit(page, { failOnStatusCode: false });
                 cy.get("body").should("exist");
                 expectNoStrayRequests();
+            });
+        });
+    });
+
+    context("leaving a report page", () => {
+        beforeEach(() => cy.setupAdminSession());
+
+        ["/DirectoryReports.php", "/FinancialReports.php", "/LettersAndLabels.php", "/ReminderReport.php"].forEach((page) => {
+            it(`${page} Cancel returns to the dashboard of its own install`, () => {
+                cy.visit(page);
+                cy.contains("a.btn", "Cancel").click();
+                cy.location("pathname").should("eq", `${installPath()}/v2/dashboard`);
             });
         });
     });

@@ -486,10 +486,10 @@ if (isset($_POST['SaveChanges'])) {
                         <i class="fa-solid fa-floppy-disk"></i>
                         <?= gettext('Save Changes') ?>
                     </button>
-                    <button type="button" class="btn btn-secondary" name="Exit" onclick="document.location='<?= SystemURLs::getRootPath() ?>/v2/dashboard'">
+                    <a class="btn btn-secondary" href="<?= SystemURLs::getRootPath() ?>/v2/dashboard">
                         <i class="fa-solid fa-arrow-right-from-bracket"></i>
                         <?= gettext('Exit') ?>
-                    </button>
+                    </a>
                 </div>
         <?php } ?>
     </form>

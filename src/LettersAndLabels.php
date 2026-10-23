@@ -65,7 +65,7 @@ FontSizeSelect('labelfontsize');
             <div>
               <input type="submit" class="btn btn-secondary" name="SubmitNewsLetter" value="<?= gettext('Newsletter labels') ?>">
               <input type="submit" class="btn btn-secondary" name="SubmitConfirmLabels" value="<?= gettext('Confirm data labels') ?>">
-              <input type="button" class="btn btn-warning" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location='<?= SystemURLs::getRootPath() ?>/v2/dashboard';">
+              <a class="btn btn-warning" href="<?= SystemURLs::getRootPath() ?>/v2/dashboard"><?= gettext('Cancel') ?></a>
             </div>
 
         </form>
