@@ -1,27 +1,66 @@
 {% extends "_letter.html.twig" %}
 {% block letter_body %}
-  <p>{{ date_range }}</p>
   {% for family in families %}
     {% if not loop.first %}<pagebreak />{% endif %}
-    <p><strong>{{ family.salutation }}</strong><br>
-    {{ family.address|nl2br }}</p>
-    <table>
-      <thead>
-        <tr><th>Date</th><th>Fund</th><th>Method</th><th class="right">Amount</th></tr>
-      </thead>
-      <tbody>
-        {% for gift in family.gifts %}
+
+    <div class="meta">
+      <h1>{{ title|default('Contribution Statement') }}</h1>
+      <div class="muted">{{ date_range }}</div>
+    </div>
+
+    <div class="recipient">
+      <strong>{{ family.salutation }}</strong><br>
+      {{ family.address|nl2br }}
+    </div>
+
+    <p>{{ opening }}</p>
+
+    {% if family.gifts is empty %}
+      <p class="empty">{{ empty_message|default('No contributions were recorded for this period.') }}</p>
+    {% else %}
+      <table class="gifts">
+        <thead>
           <tr>
-            <td>{{ gift.date }}</td>
-            <td>{{ gift.fund }}</td>
-            <td>{{ gift.method }}</td>
-            <td class="right">{{ gift.amount }}</td>
+            <th>{{ 'Date'|trans }}</th>
+            <th>{{ 'Fund'|trans }}</th>
+            <th>{{ 'Method'|trans }}</th>
+            <th class="right">{{ 'Amount'|trans }}</th>
           </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-    <p><strong>Total: {{ family.total }}</strong></p>
-    <p>{{ closing }}</p>
-    <p>{{ signer }}</p>
+        </thead>
+        <tbody>
+          {% for gift in family.gifts %}
+            <tr>
+              <td>{{ gift.date }}</td>
+              <td>{{ gift.fund }}</td>
+              <td>{{ gift.method }}</td>
+              <td class="right">{{ gift.amount }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <table class="totals">
+        <tr>
+          <td class="label">{{ 'Total contributions'|trans }}</td>
+          <td class="amount">{{ family.total }}</td>
+        </tr>
+        <tr>
+          <td class="label">{{ 'Goods and services'|trans }}</td>
+          <td class="amount">{{ family.goods_services|default('$0.00') }}</td>
+        </tr>
+        <tr class="final">
+          <td class="label">{{ 'Tax-deductible amount'|trans }}</td>
+          <td class="amount">{{ family.deductible|default(family.total) }}</td>
+        </tr>
+      </table>
+    {% endif %}
+
+    <p class="disclosure">{{ disclosure }}</p>
+
+    <div class="closing">
+      <p>{{ closing }}</p>
+      {% if questions %}<p>{{ questions }}</p>{% endif %}
+      {% if signer %}<p>{{ signer }}</p>{% endif %}
+    </div>
   {% endfor %}
 {% endblock %}

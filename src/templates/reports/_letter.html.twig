@@ -2,15 +2,13 @@
 {% block content %}
   <div class="letterhead">
     {% if church_logo %}
-      <img src="{{ church_logo }}" style="max-width: 60mm; max-height: 20mm;">
+      <img src="{{ church_logo }}" alt="">
     {% endif %}
     {% if letterhead != 'none' %}
-      <strong>{{ church_name }}</strong><br>
-      {{ church_address }}<br>
-      <span class="muted">{{ church_phone }} {{ church_email }}</span>
+      <div class="church-name">{{ church_name }}</div>
+      <div>{{ church_address }}</div>
+      <div class="muted">{{ church_phone }}{% if church_email %} · {{ church_email }}{% endif %}</div>
     {% endif %}
   </div>
-  <div style="margin-top: 8mm;">
-    {% block letter_body %}{% endblock %}
-  </div>
+  {% block letter_body %}{% endblock %}
 {% endblock %}

@@ -81,15 +81,23 @@ $group->get('/giving/statement', function (Request $request, Response $response)
     }
 
 
+    $deductible = $total;
     $data = [
         'letterhead' => 'address',
-        'date_range' => sprintf(gettext('Giving statement for %s'), (string) $year),
+        'title' => gettext('Contribution Statement'),
+        'date_range' => sprintf(gettext('%s through %s'), $year . '-01-01', $year . '-12-31'),
+        'opening' => trim(SystemConfig::getValue('sTaxReport1') . ' ' . $year . '.'),
         'closing' => SystemConfig::getValue('sTaxReport2'),
+        'questions' => SystemConfig::getValue('sTaxReport3'),
         'signer' => SystemConfig::getValue('sTaxSigner'),
+        'disclosure' => gettext('No goods or services were provided in exchange for these contributions, other than intangible religious benefits.'),
+        'empty_message' => gettext('No contributions were recorded for this period.'),
         'families' => [[
             'salutation' => $isHousehold ? $family->getName() : $actor->getFullName(),
-            'address' => $family->getAddress(),
+            'address' => $family->getMailingAddressLines(),
             'total' => CurrencyFormatter::format($total),
+            'goods_services' => CurrencyFormatter::format(0),
+            'deductible' => CurrencyFormatter::format($deductible),
             'gifts' => $gifts,
         ]],
     ];
