@@ -2,9 +2,9 @@
 
 /**
  * Email history UI (#9877): the Recent Emails card on the person view (5 latest,
- * subject opens a modal with the rendered body), the Show all page (paginated,
- * newest first), the family view card and the admin Recent Sends panel with its
- * Delete Queue button (#10356).
+ * subject opens a modal with the rendered body) and the Show all page (paginated,
+ * newest first). The email log table is admin.email-log.spec.js and
+ * email.sender-history.spec.js.
  */
 describe("Email history on the person view", () => {
     beforeEach(() => {
@@ -101,89 +101,5 @@ describe("Email history on the person view", () => {
         cy.visit("/people/view/2");
         cy.get("#timeline .timeline-filter-chip[data-filter='email']").should("be.visible").click();
         cy.get("#timeline .timeline-event[data-timeline-category='email']").should("be.visible").and("contain.text", "Welcome to the choir");
-    });
-});
-
-describe("Email history on the email dashboard", () => {
-    beforeEach(() => {
-        cy.setupAdminSession();
-    });
-
-    it("admin email dashboard shows recent sends with a failed count", () => {
-        cy.visit("/admin/email/log");
-        cy.get("[data-email-history-table]").should("be.visible").and("contain.text", "failed");
-        cy.get("[data-email-history-table] tbody tr").should("have.length.at.least", 7);
-    });
-
-    it("failed all-time badge links to failed-only history with recipient and server error", () => {
-        cy.visit("/admin/email/log");
-        cy.get("[data-email-failed-badge]")
-            .should("contain.text", "failed (all time)")
-            .and("have.attr", "href")
-            .and("include", "status=failed");
-
-        cy.get("[data-email-failed-badge]").click();
-        cy.location("search").should("eq", "?status=failed");
-        cy.get("[data-email-failed-filter]").should("contain.text", "across all email history");
-        cy.get("[data-email-history-table] tbody tr").should("have.length.at.least", 1)
-            .each(($row) => {
-                expect($row).to.have.attr("data-email-status", "failed");
-            });
-        cy.get("[data-email-failure-error]").should("have.length.at.least", 1);
-        cy.contains("a", "Show all recent sends").click();
-        cy.location("search").should("eq", "");
-        cy.get("[data-email-failed-filter]").should("not.exist");
-    });
-
-    it("Delete Queue deletes the queued messages after a confirmation that names the count", () => {
-        const subject = `Delete crm-10356-${Date.now()}`;
-        // The page footer runs the timer jobs; keep it from sending the row first.
-        cy.intercept("POST", "**/api/background/timerjobs", { statusCode: 200, body: { ran: false } });
-        cy.request("POST", "/api/email/send", { personIds: [2], subject, body: "Never sent" })
-            .its("body.counts.queued")
-            .should("eq", 1);
-
-        cy.visit("/admin/email/log");
-        cy.contains("[data-email-history-table] tr", subject).should("have.attr", "data-email-status", "queued");
-        cy.get("#email-delete-queue")
-            .should("be.visible")
-            .invoke("attr", "data-queued-count")
-            .then((count) => {
-                cy.intercept("DELETE", "**/admin/api/email/queue").as("deleteQueue");
-                cy.get("#email-delete-queue").click();
-                cy.get(".bootbox.modal")
-                    .should("be.visible")
-                    .and("contain.text", `Delete every queued message? They will not be sent. Queued messages: ${count}`);
-                cy.get(".bootbox.modal .bootbox-accept").click();
-                cy.wait("@deleteQueue").its("response.body.deleted").should("eq", Number(count));
-            });
-
-        cy.get("#email-delete-queue").should("not.exist");
-        cy.get("#email-queued-count").should("not.exist");
-        cy.get("[data-email-history-table]").should("not.contain.text", subject);
-    });
-
-    it("hides Delete Queue when nothing is queued", () => {
-        cy.request("DELETE", "/admin/api/email/queue");
-        cy.visit("/admin/email/log");
-        cy.get("[data-email-history-table]").should("be.visible");
-        cy.get("#email-delete-queue").should("not.exist");
-    });
-});
-
-describe("Delete Queue is for administrators", () => {
-    it("is not offered to a sender without admin rights, even with mail queued", () => {
-        cy.setupAdminSession();
-        cy.request("POST", "/api/email/send", { personIds: [2], subject: `Queued crm-10356-${Date.now()}`, body: "Waiting" })
-            .its("body.counts.queued")
-            .should("eq", 1);
-
-        cy.setupStandardSession();
-        cy.visit("/people/email");
-        cy.contains("Recent Sends").should("not.exist");
-        cy.get("#email-delete-queue").should("not.exist");
-
-        cy.setupAdminSession();
-        cy.request("DELETE", "/admin/api/email/queue");
     });
 });

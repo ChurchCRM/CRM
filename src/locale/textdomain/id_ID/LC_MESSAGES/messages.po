@@ -21117,10 +21117,6 @@ msgid "Recent Emails"
 msgstr "Email Terbaru"
 
 #: 
-msgid "Recent Sends"
-msgstr "Pengiriman Terbaru"
-
-#: 
 msgid "Recipient"
 msgstr "Penerima"
 
@@ -24421,28 +24417,8 @@ msgid "%d failed (all time)"
 msgstr "%d gagal (sepanjang waktu)"
 
 #: 
-msgid "Failed email history pages"
-msgstr "Halaman riwayat email gagal"
-
-#: 
 msgid "Failed sends across all email history, including automated messages"
 msgstr "Pengiriman gagal di seluruh riwayat email, termasuk pesan otomatis"
-
-#: 
-msgid "No server error recorded"
-msgstr "Tidak ada kesalahan server yang tercatat"
-
-#: 
-msgid "Show all recent sends"
-msgstr "Tampilkan semua pengiriman terbaru"
-
-#: 
-msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
-msgstr "Menampilkan pengiriman gagal di seluruh riwayat email, termasuk pesan otomatis. Pilih subjek untuk melihat detail."
-
-#: 
-msgid "The table shows only the latest 20 sends. Open a person to see their full history."
-msgstr "Tabel hanya menampilkan 20 pengiriman terbaru. Buka seseorang untuk melihat riwayat lengkapnya."
 
 #: 
 msgid "View %d failed sends across all email history"

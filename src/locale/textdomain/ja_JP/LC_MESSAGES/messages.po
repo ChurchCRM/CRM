@@ -21089,10 +21089,6 @@ msgid "Recent Emails"
 msgstr "最近のメール"
 
 #: 
-msgid "Recent Sends"
-msgstr "最近の送信"
-
-#: 
 msgid "Recipient"
 msgstr "宛先"
 
@@ -24393,28 +24389,8 @@ msgid "%d failed (all time)"
 msgstr "失敗 %d 件（累計）"
 
 #: 
-msgid "Failed email history pages"
-msgstr "失敗したメール履歴ページ"
-
-#: 
 msgid "Failed sends across all email history, including automated messages"
 msgstr "自動送信メッセージを含む、メール履歴全体の送信失敗"
-
-#: 
-msgid "No server error recorded"
-msgstr "サーバーエラーは記録されていません"
-
-#: 
-msgid "Show all recent sends"
-msgstr "最近の送信をすべて表示"
-
-#: 
-msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
-msgstr "自動送信メッセージを含む、メール履歴全体の送信失敗を表示しています。件名を選択すると詳細が表示されます。"
-
-#: 
-msgid "The table shows only the latest 20 sends. Open a person to see their full history."
-msgstr "表には直近20件の送信のみ表示されます。全履歴を見るには、その人を開いてください。"
 
 #: 
 msgid "View %d failed sends across all email history"

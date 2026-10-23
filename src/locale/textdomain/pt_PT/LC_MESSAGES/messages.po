@@ -21269,10 +21269,6 @@ msgid "Recent Emails"
 msgstr "E-mails recentes"
 
 #: 
-msgid "Recent Sends"
-msgstr "Envios recentes"
-
-#: 
 msgid "Recipient"
 msgstr "Destinatário"
 
@@ -24577,28 +24573,8 @@ msgid "%d failed (all time)"
 msgstr "%d falhados (no total)"
 
 #: 
-msgid "Failed email history pages"
-msgstr "Páginas do histórico de e-mails falhados"
-
-#: 
 msgid "Failed sends across all email history, including automated messages"
 msgstr "Envios falhados em todo o histórico de e-mails, incluindo mensagens automáticas"
-
-#: 
-msgid "No server error recorded"
-msgstr "Nenhum erro do servidor registado"
-
-#: 
-msgid "Show all recent sends"
-msgstr "Mostrar todos os envios recentes"
-
-#: 
-msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
-msgstr "A mostrar envios falhados em todo o histórico de e-mails, incluindo mensagens automáticas. Selecione um assunto para ver os detalhes."
-
-#: 
-msgid "The table shows only the latest 20 sends. Open a person to see their full history."
-msgstr "A tabela mostra apenas os últimos 20 envios. Abra uma pessoa para ver o histórico completo."
 
 #: 
 msgid "View %d failed sends across all email history"

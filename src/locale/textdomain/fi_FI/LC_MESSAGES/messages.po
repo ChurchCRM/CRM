@@ -21118,10 +21118,6 @@ msgid "Recent Emails"
 msgstr "Viimeisimmät sähköpostit"
 
 #: 
-msgid "Recent Sends"
-msgstr "Viimeisimmät lähetykset"
-
-#: 
 msgid "Recipient"
 msgstr "Vastaanottaja"
 
@@ -24426,28 +24422,8 @@ msgid "%d failed (all time)"
 msgstr "%d epäonnistui (yhteensä)"
 
 #: 
-msgid "Failed email history pages"
-msgstr "Epäonnistuneiden sähköpostien historiasivut"
-
-#: 
 msgid "Failed sends across all email history, including automated messages"
 msgstr "Epäonnistuneet lähetykset koko sähköpostihistoriassa, myös automaattiset viestit"
-
-#: 
-msgid "No server error recorded"
-msgstr "Palvelinvirhettä ei tallennettu"
-
-#: 
-msgid "Show all recent sends"
-msgstr "Näytä kaikki viimeaikaiset lähetykset"
-
-#: 
-msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
-msgstr "Näytetään epäonnistuneet lähetykset koko sähköpostihistoriassa, myös automaattiset viestit. Valitse aihe nähdäksesi tiedot."
-
-#: 
-msgid "The table shows only the latest 20 sends. Open a person to see their full history."
-msgstr "Taulukko näyttää vain viimeiset 20 lähetystä. Avaa henkilö nähdäksesi koko historian."
 
 #: 
 msgid "View %d failed sends across all email history"

@@ -1,8 +1,8 @@
 /**
- * "Delete Queue" on Email Settings Recent Sends (administrators, #10356).
+ * "Delete Queue" on the Email Log's Email History card (administrators, #10356).
  *
  * Deletes every queued composer message through DELETE /admin/api/email/queue after a
- * confirmation that names the count, then reloads so Recent Sends shows what is left.
+ * confirmation that names the count, then reloads so the table shows what is left.
  */
 
 import { buildAdminAPIUrl } from "../api-utils";

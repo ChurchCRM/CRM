@@ -8,7 +8,7 @@
 # The release code is copied into the image during build.
 # When container starts, ChurchCRM is ready to serve.
 
-ARG PHP_IMAGE=php:8.4.25-fpm-trixie@sha256:223115611852f585846b5d30f0cd95de8af9b486ca3bf310174a143704fc71e3
+ARG PHP_IMAGE=php:8.4.27-fpm-trixie@sha256:e2d8e787dc775bdbd9d7e0c5e8f2f9ddb41ce5977c8bbaf99a2ba2e7d90fd8ae
 
 # Builder stage: compile PHP extensions only (code comes from release artifact)
 FROM ${PHP_IMAGE} AS builder

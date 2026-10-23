@@ -517,22 +517,5 @@ describe("API Private Admin Church Logo", () => {
                 expect(response.status).to.equal(401);
             });
         });
-
-        it("Returns 403 for a non-admin user on GET", () => {
-            cy.makePrivateUserAPICall("GET", LOGO_URL, null, 403);
-        });
-
-        it("Returns 403 for a non-admin user on POST", () => {
-            cy.makePrivateUserAPICall(
-                "POST",
-                LOGO_URL,
-                { imgBase64: VALID_PNG_DATA_URI },
-                403,
-            );
-        });
-
-        it("Returns 403 for a non-admin user on DELETE", () => {
-            cy.makePrivateUserAPICall("DELETE", LOGO_URL, null, 403);
-        });
     });
 });

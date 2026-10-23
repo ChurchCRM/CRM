@@ -21143,10 +21143,6 @@ msgid "Recent Emails"
 msgstr "Nedavna e-pošta"
 
 #: 
-msgid "Recent Sends"
-msgstr "Nedavna slanja"
-
-#: 
 msgid "Recipient"
 msgstr "Primatelj"
 
@@ -24455,28 +24451,8 @@ msgid "%d failed (all time)"
 msgstr "Neuspjelo: %d (ukupno)"
 
 #: 
-msgid "Failed email history pages"
-msgstr "Stranice povijesti neuspjelih e-poruka"
-
-#: 
 msgid "Failed sends across all email history, including automated messages"
 msgstr "Neuspjela slanja u cijeloj povijesti e-poruka, uključujući automatske poruke"
-
-#: 
-msgid "No server error recorded"
-msgstr "Nije zabilježena pogreška poslužitelja"
-
-#: 
-msgid "Show all recent sends"
-msgstr "Prikaži sva nedavna slanja"
-
-#: 
-msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
-msgstr "Prikazuju se neuspjela slanja iz cijele povijesti e-poruka, uključujući automatske poruke. Odaberite predmet za pojedinosti."
-
-#: 
-msgid "The table shows only the latest 20 sends. Open a person to see their full history."
-msgstr "Tablica prikazuje samo posljednjih 20 slanja. Otvorite osobu za potpunu povijest."
 
 #: 
 msgid "View %d failed sends across all email history"

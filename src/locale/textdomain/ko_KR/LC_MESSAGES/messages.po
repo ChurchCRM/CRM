@@ -21117,10 +21117,6 @@ msgid "Recent Emails"
 msgstr "최근 이메일"
 
 #: 
-msgid "Recent Sends"
-msgstr "최근 발송"
-
-#: 
 msgid "Recipient"
 msgstr "수신자"
 
@@ -24421,28 +24417,8 @@ msgid "%d failed (all time)"
 msgstr "실패 %d건 (전체)"
 
 #: 
-msgid "Failed email history pages"
-msgstr "실패한 이메일 기록 페이지"
-
-#: 
 msgid "Failed sends across all email history, including automated messages"
 msgstr "자동 발송 메시지를 포함한 전체 이메일 기록의 발송 실패"
-
-#: 
-msgid "No server error recorded"
-msgstr "기록된 서버 오류 없음"
-
-#: 
-msgid "Show all recent sends"
-msgstr "최근 발송 모두 보기"
-
-#: 
-msgid "Showing failed sends across all email history, including automated messages. Select a subject for details."
-msgstr "자동 발송 메시지를 포함한 전체 이메일 기록의 발송 실패를 표시하고 있습니다. 자세한 내용은 제목을 선택하세요."
-
-#: 
-msgid "The table shows only the latest 20 sends. Open a person to see their full history."
-msgstr "표에는 최근 20건의 발송만 표시됩니다. 전체 기록을 보려면 해당 사람을 여세요."
 
 #: 
 msgid "View %d failed sends across all email history"
