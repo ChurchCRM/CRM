@@ -17,7 +17,8 @@ Load the card for the task. Do not load every skill.
 | i18n | `i18n-localization.md` |
 | Security | `security-best-practices.md` → `authorization-security.md` |
 | Plugin | `plugin-system.md` → `plugin-registry.md` |
-| Tests | `cypress-testing.md` |
+| Tests, permission tests | `cypress-testing.md` |
+| CI failure, seed or schema change | `ci-test-infrastructure.md` |
 | API | `api-development.md` → `service-layer.md` |
 
 Always-on:

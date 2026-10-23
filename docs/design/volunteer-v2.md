@@ -87,7 +87,7 @@ These are settled. A PR does not reopen them.
 | D14 | **Volunteers are ChurchCRM members with logins** — the "Non-Admin Member Access" persona, an **EditSelf-exclusive** user. Self-service lives on authenticated member-facing pages in the Member Portal (`/portal/volunteer/*`), authorized per authenticated person. Volunteer scopes count for a self-service login: `VolunteerAuthorizationService::loadScopes()` loads grants for every account, and `User::isVolunteerTeamLeaderEnabled()` reports a held `team` grant. **A self-service-only account is never a coordinator; it may lead a team, exercised in the Member Portal (MP6/MP7).** `isVolunteerCoordinatorEnabled()` returns false for an EditSelf-exclusive account, which keeps the coordinator dashboard, the ministry pages and the sidebar's Ministries heading staff-only. Tokenized accept/decline links in email for people without logins are a documented future extension, not in scope. See §4.7. |
 | D15 | **Reminders and scheduling**: ChurchCRM has no scheduler. V2 uses a **notification outbox** table (idempotent enqueue keyed by assignment + type, send log, retry-safe) drained by the existing `POST /api/background/timerjobs` mechanism. Installations wanting punctual reminders run `src/cli/timerjobs.php` from cron, or ping the endpoint with an API key — no V2 code. Best-effort delivery on page load is the fallback. See §3.6. |
 | D16 | **A person may hold multiple qualifications within the same team and the same ministry**, and may be assigned to different positions on different occurrences. Multi-position on one occurrence is allowed, with a UI warning and no server-side block — one person can lead singing and serve communion in the same service (§2.7, §2.11.2 I7). |
-| D17 | **Release target is 7.8.0.** The rollout flag defaults to `v1` and V1 stays fully compatible. V2 migration scripts are named `7.8.0-volunteer-v2-*.sql`; fresh installs get the schema from `Install.sql` and the test database from `seed.sql`. |
+| D17 | **Release target is 7.8.0.** The rollout flag defaults to `v1` and V1 stays fully compatible. V2 migration scripts are named `7.8.0-volunteer-v2-*.sql`; fresh installs and the test database get the schema from `Install.sql`; `seed.sql` holds test data. |
 | D18 | **Every ministry has at least one team, and positions and schedules belong to a team.** Creating a ministry auto-creates its first team, named `"{Ministry name} Team"`, in the same transaction; it is an ordinary team and can be renamed. `vpos_vtem_ID` and `vsch_vtem_ID` are `NOT NULL` with `ON DELETE CASCADE` foreign keys, and the API answers `400` to a position or schedule with no `teamId`. A ministry's only team cannot be deleted (`409`, *"A ministry needs at least one team. Rename it instead."*); deleting the ministry takes its teams with it. A ministry coordinator manages every team of their ministry, a team leader their own. Where a screen shows positions from more than one team (the qualification matrix on *All teams*, a cross-team "still needed" line, a dashboard gap list), a position is labelled `"{Team} · {Position}"`; where the context is one team, the bare name stands. |
 | D19 | **A ministry owns exactly one core Group — its volunteer pool — and coordinators may write it.** Creating a ministry creates that Group in the same transaction: named after the ministry, typed "Ministry", carrying the nullable core column `group_grp.grp_ministry_id` (FK → `vmin_ID`, `ON DELETE SET NULL`). Renaming the ministry renames the Group; deleting the ministry deletes it. **(a)** The `bManageGroups` model hooks have one exception: a write to a Group carrying a ministry id is allowed when the caller coordinates that ministry — decided by `VolunteerAuthorizationService` reading `volunteer_scope_vscp`, never `$_SESSION`, so API-key callers are judged identically — or when a V2 service has opened an explicit managed-write context (`VolunteerPoolWriter::run()`) after authorizing the write itself. A Group with a NULL ministry id takes the core path. **(b)** Qualification does not require pool membership: the picker may name anyone, qualifying somebody outside the pool adds them to it, revoking a qualification leaves them in the pool, and the qualification matrix's rows are the pool ∪ everyone qualified. Self-signup and `GET /me/opportunities` test qualification only. **(c)** A ministry can advertise: `vmin_HelpWanted` / `vmin_HelpWantedText` put it on the Open Opportunities page with an "I'd like to help" button that joins the pool and mails the coordinators (outbox type `help_offer`, one per coordinator per day). A ministry also advertises when **any active position has `vpos_Recruiting` on**, which lists those positions by name under "New volunteers needed for the following positions" (§5.6). Either alone is enough, and `recordHelpOffer()` shares the same test, so the button is never rendered over a `403`. **(d)** A team leader may add an existing person to the pool of their team's ministry (#10531): from the admin team view and the portal team page, through a person search limited to active people, optionally ticking positions of their own team; the ministry's coordinators are emailed who added whom (outbox type `pool_add`). Removing stays a coordinator's: it ends someone's part in every team of the ministry. The Groups module shows the Group and keeps its membership fully editable; its identity belongs to the ministry — `POST`/`DELETE /api/groups/{id}` answer `409`, the editor redirects, and the page says whose pool it is. |
 | D20–D35 | **Core-reuse decisions.** Every occurrence anchored to an event, with optional time offsets; four ways for a schedule to find its events; teams linked to Sunday School classes with V2 writing the Teacher role; coordinators create one-off and recurring ministry events from the ministry page; administrators open church calendars to ministries; class meetings are events with core headcounts; portal legend toggles; a class's events change only as the coordinator chooses; the Sunday School switch; empty Generate runs explained; schedules follow existing events up to a church-wide scheduling horizon, topped up daily; default volunteers; events, schedules and occurrences created separately; staffing status words; several default volunteers per position. Full text in §0.8. |
@@ -389,7 +389,7 @@ Legend for **Decision**:
 | S2 | Rollout enforcement middleware | `BaseAuthSettingMiddleware` (`src/ChurchCRM/Slim/Middleware/Request/Setting/BaseAuthSettingMiddleware.php`) | **Extend (new sibling, not a subclass)** | The base class only understands `getBooleanValue()` and returns an **empty body** with the reason in the HTTP reason-phrase. A choice-valued gate needs its own small middleware that returns proper JSON. §3.1. |
 | S3 | Reminder lead time | `ConfigItem` type `number`; `SystemConfig::getIntValue()` | **Reuse** | `iVolunteerReminderLeadHours`, default `48`. Appendix B. |
 | S4 | Admin settings surface | `window.CRM.settingsPanel` (U8) vs `src/SystemSettings.php` + `buildCategories()` | **Reuse the panel** | V2 settings are `ConfigItem`s in `buildConfigs()` surfaced through the settings panel on Admin → Ministry Settings (Appendix B). |
-| B1 | New tables / migration | `orm/schema.xml` + `src/mysql/upgrade/X.Y.Z-*.sql` + `src/mysql/upgrade.json` + `src/mysql/install/Install.sql` (+ `cypress/data/seed.sql`); worked example `src/mysql/upgrade/7.6.4-pledge-denominations.sql` | **Reuse the conventions** | Name the script `7.8.0-volunteer-v2-*.sql` (D17, F29). `CREATE TABLE IF NOT EXISTS`, InnoDB, `utf8mb4_unicode_ci`, index names `_idx` / `_uidx`, a leading comment naming the issue. Checklist in Appendix A. |
+| B1 | New tables / migration | `orm/schema.xml` + `src/mysql/upgrade/X.Y.Z-*.sql` + `src/mysql/upgrade.json` + `src/mysql/install/Install.sql`; worked example `src/mysql/upgrade/7.6.4-pledge-denominations.sql` | **Reuse the conventions** | Name the script `7.8.0-volunteer-v2-*.sql` (D17, F29). `CREATE TABLE IF NOT EXISTS`, InnoDB, `utf8mb4_unicode_ci`, index names `_idx` / `_uidx`, a leading comment naming the issue. Checklist in Appendix A. |
 | B2 | Model generation | `cd src && composer run orm-gen` | **Reuse** | `npm run build:orm` runs the same composer script. `orm/propel.php` is copied from `orm/propel.php.dist` first. Appendix A. |
 | L1 | Localization (PHP) | `gettext()` / `ngettext()`; bootstrapped in `Bootstrapper.php` | **Reuse** | Use `gettext()`; colons go outside the call. `locale/messages.po` changes only through the locale workflow (`git-workflow.md`). |
 | L2 | Localization (JS) | `i18next` UMD global; `webpack/locale-loader.js`; `window.CRM.onLocalesReady` | **Reuse, with one hard rule** | Every `i18next.t()` call lives in a file under `webpack/`, and init is deferred behind `window.CRM.onLocalesReady(init)` or `t()` returns `undefined` on non-`en_US` locales. |
@@ -1203,9 +1203,8 @@ Naming follows the `events_event` column style — bare, prefixed with the table
 (`location_id`, `primary_contact_person_id`). Type is `INTEGER` to
 match `vmin_ID`. `ON DELETE SET NULL` so deleting a ministry never deletes church events.
 
-**What the column touches.** Schema changes follow Appendix A; `Install.sql` and `seed.sql` carry
-the column in their `events_event` `CREATE TABLE` (ask the user before editing `seed.sql`,
-`db-schema-migration.md`), and the script is `7.8.0-volunteer-v2-event-ministry.sql` (a plain
+**What the column touches.** Schema changes follow Appendix A; `Install.sql` carries
+the column in its `events_event` `CREATE TABLE` (`seed.sql` takes the column default), and the script is `7.8.0-volunteer-v2-event-ministry.sql` (a plain
 `ALTER`, since `ADD COLUMN IF NOT EXISTS` is not portable across the supported databases, see
 `src/mysql/upgrade/7.4.3-manage-fundraisers.sql`).
 
@@ -1913,7 +1912,7 @@ The pattern is `usr_ManageFundraisers` (`src/mysql/upgrade/7.4.3-manage-fundrais
 
 1. `orm/schema.xml` after `usr_ManageFundraisers`: `<column name="usr_ManageMinistries" phpName="ManageMinistries" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0"/>`.
 2. An upgrade script (`7.8.0-volunteer-v2-manager-permission.sql`): `ALTER TABLE \`user_usr\` ADD COLUMN \`usr_ManageMinistries\` tinyint(1) unsigned NOT NULL DEFAULT 0 AFTER \`usr_ManageFundraisers\`;` as a plain `ALTER`, not `IF NOT EXISTS` (`7.4.3-manage-fundraisers.sql`). Registered in `upgrade.json` by the epic PR (D17, F29).
-3. `src/mysql/install/Install.sql` and `cypress/data/seed.sql` (a seeded manager and coordinator, §6.4; ask the user before editing `seed.sql`).
+3. `src/mysql/install/Install.sql`, and `cypress/data/seed.sql` for a seeded manager and coordinator (§6.4; named-column `INSERT`s only).
 4. ORM regeneration: `cd src && composer run orm-gen`, then `npm run build:php:validate:orm`.
 5. `User.php`: the predicates, beside `isManageFundraisersEnabled()` (`isVolunteerV2Enabled()`, `isManageMinistriesEnabled()`, `isManageMyMinistriesEnabled()`, `isVolunteerCoordinatorEnabled()`, `isVolunteerTeamLeaderEnabled()`).
 6. `UserService::extractModulePerms()` (`'manageMinistries' => …`) and the `$permissions` array in `src/admin/views/user-editor.php`.
@@ -2993,9 +2992,8 @@ be added to **three** configs — `docker.config.ts`, `docker-ui.config.ts` **an
 `cypress/support/api-commands.js`, and the declaration in `cypress/support/commands.d.ts`.
 Keys are defined in all three configs, or the `admin-ui` or `ui-shard-*` legs break.
 
-`seed.sql` carries the V2 `CREATE TABLE` blocks and the new columns —
-**ask the user before editing `seed.sql`** (`db-schema-migration.md`), and note that
-`.githooks/pre-commit` lints any staged `.sql`.
+The V2 tables and columns come from `Install.sql`; `seed.sql` holds rows only
+(`db-schema-migration.md`). `.githooks/pre-commit` lints any staged `.sql`.
 
 **Cleanup goes in `beforeEach`, not `afterEach`** — `afterEach` does
 not run if a test crashes mid-way. Delete through the API with an `allowedStatuses` array that
@@ -3296,12 +3294,11 @@ Follow this for every V2 migration PR (#9705, #9706's permission column, #9713's
    calendars script comes first because it adds `calendars.ministry_id`, and the volunteer schema
    script adds the `calendars_ministry_fk` foreign key on that column. Every CREATE in the schema
    script is `IF NOT EXISTS`, so a half-applied run resumes cleanly. Until registration, fresh
-   installs get the tables from `Install.sql` and the Cypress database from `seed.sql`.
+   installs and the Cypress database get the tables from `Install.sql`.
 4. **`src/mysql/install/Install.sql`** — mirror every change; nothing in the build validates
    Install.sql against `schema.xml`.
-5. **`cypress/data/seed.sql`** — mirror the `CREATE TABLE` blocks and any new columns.
-   **Ask the user before editing `seed.sql`** (`db-schema-migration.md`). `.githooks/pre-commit`
-   lints staged `.sql`.
+5. **`cypress/data/seed.sql`** — test data only; add rows (named columns) when a spec reads them.
+   No `CREATE TABLE` (`db-schema-migration.md`). `.githooks/pre-commit` lints staged `.sql`.
 6. **Regenerate the ORM**:
    ```bash
    cp orm/propel.php.dist orm/propel.php      # orm/propel.php is not in the tree
