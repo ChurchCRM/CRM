@@ -25,3 +25,8 @@ test('indented and unquoted statements are caught', () => {
     const sql = ['  CREATE TABLE note_nte (nte_ID int);', "\tINSERT INTO person_per VALUES (1,'A');"].join('\n');
     assert.strictEqual(problems(sql).length, 2);
 });
+
+test('tabs and newlines between keywords are caught', () => {
+    const sql = ['CREATE\tTABLE `note_nte` (a int);', "INSERT\nINTO `person_per` VALUES (1);"].join('\n');
+    assert.strictEqual(problems(sql).length, 2);
+});

@@ -17,13 +17,13 @@ const APP_CREATED = /^groupprop_\d+$/;
 
 function problems(sql) {
     const found = [];
-    for (const match of sql.matchAll(/^\s*(?:DROP TABLE(?: IF EXISTS)?|CREATE TABLE(?: IF NOT EXISTS)?)\s+(?:`(\w+)`|(\w+))/gim)) {
+    for (const match of sql.matchAll(/^\s*(?:DROP\s+TABLE(?:\s+IF\s+EXISTS)?|CREATE\s+TABLE(?:\s+IF\s+NOT\s+EXISTS)?)\s+(?:`(\w+)`|(\w+))/gim)) {
         const table = match[1] || match[2];
         if (!APP_CREATED.test(table)) {
             found.push(`table \`${table}\` is defined in the seed; define it in Install.sql only`);
         }
     }
-    for (const match of sql.matchAll(/^\s*INSERT(?: IGNORE)? INTO\s+(?:`(\w+)`|(\w+))\s+VALUES/gim)) {
+    for (const match of sql.matchAll(/^\s*INSERT(?:\s+IGNORE)?\s+INTO\s+(?:`(\w+)`|(\w+))\s+VALUES/gim)) {
         const table = match[1] || match[2];
         found.push(`insert into \`${table}\` names no columns; use INSERT INTO \`${table}\` (\`col\`, ...) VALUES`);
     }
