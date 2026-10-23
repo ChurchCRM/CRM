@@ -40,7 +40,12 @@ describe("Deposit editor: what a treasurer does", () => {
     // Payments left on family 3 turn its delete page into a donations list.
     after(() => {
         cy.setupAdminSession();
-        createdDeposits.forEach((id) => cy.request({ method: "DELETE", url: `/api/deposits/${id}`, failOnStatusCode: false }));
+        createdDeposits.forEach((id) =>
+            cy
+                .request({ method: "DELETE", url: `/api/deposits/${id}`, failOnStatusCode: false })
+                .its("status")
+                .should("be.oneOf", [200, 404]),
+        );
     });
 
     it("edits the comment, closes the deposit, and can no longer add or delete payments", () => {
