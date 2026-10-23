@@ -1,5 +1,5 @@
 {
-  "Invalid setting name or value": "",
-  "The geocoding service did not answer — try again later": "",
-  "Only the email you sent is shown.": ""
+  "Invalid setting name or value": "தவறான அமைப்புப் பெயர் அல்லது மதிப்பு",
+  "The geocoding service did not answer — try again later": "புவிக்குறியீட்டுச் சேவை பதிலளிக்கவில்லை — பின்னர் மீண்டும் முயற்சிக்கவும்",
+  "Only the email you sent is shown.": "நீங்கள் அனுப்பிய மின்னஞ்சல் மட்டுமே காட்டப்படும்."
 }
