@@ -1,5 +1,5 @@
 {
-  "Invalid setting name or value": "",
-  "The geocoding service did not answer — try again later": "",
-  "Only the email you sent is shown.": ""
+  "Invalid setting name or value": "שם ההגדרה או הערך אינם תקינים",
+  "The geocoding service did not answer — try again later": "שירות הקידוד הגאוגרפי לא הגיב — יש לנסות שוב מאוחר יותר",
+  "Only the email you sent is shown.": "מוצגת רק הודעת הדוא״ל ששלחת."
 }
