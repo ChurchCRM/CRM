@@ -3,6 +3,7 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\dto\ChurchMetaData;
+use ChurchCRM\Service\ChurchLogoService;
 use ChurchCRM\dto\SystemConfig;
 use Mpdf\Mpdf;
 use Twig\Environment;
@@ -39,8 +40,25 @@ class MpdfRenderer implements PdfRendererInterface
         $data['church_address'] = ChurchMetaData::getChurchFullAddress();
         $data['church_phone'] = ChurchMetaData::getChurchPhone();
         $data['church_email'] = ChurchMetaData::getChurchEmail();
-        $data['church_logo'] = ChurchMetaData::getChurchLogoURL();
+        $data['church_logo'] = $this->churchLogo();
+        $data['generated_on'] = date(\ChurchCRM\dto\SystemConfig::getValue('sDateFormatLong') ?: 'Y-m-d');
         return $data;
+    }
+
+    /**
+     * Church-owned logo only. Never the bundled ChurchCRM mark on a letter
+     * a donor receives.
+     */
+    private function churchLogo(): ?string
+    {
+        if (ChurchLogoService::hasCustomLogo()) {
+            return ChurchLogoService::getLogoPath();
+        }
+        $configured = ChurchMetaData::getChurchLogoURL();
+        if ($configured !== '' && !str_contains($configured, 'churchcrm-logo')) {
+            return $configured;
+        }
+        return null;
     }
 
     private function makeMpdf(): Mpdf

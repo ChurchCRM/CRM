@@ -13,4 +13,7 @@
     {% endif %}
   </div>
   {% block letter_body %}{% endblock %}
+  {% if generated_on %}
+    <div class="muted" style="margin-top: 10mm;">{{ 'Generated'|trans }} {{ generated_on }}</div>
+  {% endif %}
 {% endblock %}
