@@ -1,5 +1,5 @@
 {
-  "Invalid setting name or value": "",
-  "The geocoding service did not answer — try again later": "",
-  "Only the email you sent is shown.": ""
+  "Invalid setting name or value": "Tên hoặc giá trị cài đặt không hợp lệ",
+  "The geocoding service did not answer — try again later": "Dịch vụ mã hóa địa lý không phản hồi — hãy thử lại sau",
+  "Only the email you sent is shown.": "Chỉ hiển thị email bạn đã gửi."
 }
