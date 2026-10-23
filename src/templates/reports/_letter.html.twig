@@ -6,9 +6,8 @@
     {% elseif church_logo %}
       <img src="{{ church_logo }}" alt="">
     {% endif %}
+    <div class="church-name">{{ church_name }} · {{ church_address }}</div>
     {% if letterhead != 'none' %}
-      <div class="church-name">{{ church_name }}</div>
-      <div>{{ church_address }}</div>
       <div class="muted">{{ church_phone }}{% if church_email %} · {{ church_email }}{% endif %}</div>
     {% endif %}
   </div>
