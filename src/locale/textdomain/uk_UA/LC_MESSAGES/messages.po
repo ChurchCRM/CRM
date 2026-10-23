@@ -24726,3 +24726,15 @@ msgstr "Місяць, у якому всі, хто має клас, перехо
 msgid "Through Grade"
 msgstr "До класу"
 
+#: 
+msgid "Invalid setting name or value"
+msgstr "Неприпустима назва або значення налаштування"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Служба геокодування не відповіла — повторіть спробу пізніше"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Відображається лише надісланий вами електронний лист."
+

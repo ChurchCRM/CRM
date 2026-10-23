@@ -5996,6 +5996,9 @@
   "The grades changed after the preview. Review the changes again before applying them.": "As séries mudaram depois da pré-visualização. Revise as alterações de novo antes de aplicá-las.",
   "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off.": "O mês em que todas as pessoas com uma série sobem uma série. Desligado desativa a promoção automática.",
   "Through Grade": "Até a série",
+  "Invalid setting name or value": "Nome ou valor de configuração inválido",
+  "The geocoding service did not answer — try again later": "O serviço de geocodificação não respondeu — tente novamente mais tarde",
+  "Only the email you sent is shown.": "Somente o e-mail que você enviou é exibido.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} ocorrência criada",
     "other": "\"{{name}}\": {{count}} ocorrências criadas"

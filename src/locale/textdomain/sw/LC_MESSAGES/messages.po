@@ -24658,3 +24658,15 @@ msgstr "Mwezi ambao kila mtu aliye na darasa anahamia darasa moja juu. Kuzima ku
 msgid "Through Grade"
 msgstr "Hadi Darasa"
 
+#: 
+msgid "Invalid setting name or value"
+msgstr "Jina au thamani ya mpangilio si sahihi"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Huduma ya usimbaji wa kijiografia haikujibu — jaribu tena baadaye"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Barua pepe uliyotuma pekee ndiyo inayoonyeshwa."
+

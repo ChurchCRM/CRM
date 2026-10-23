@@ -24662,3 +24662,15 @@ msgstr "Ο μήνας κατά τον οποίο όλοι όσοι έχουν τ
 msgid "Through Grade"
 msgstr "Έως τάξη"
 
+#: 
+msgid "Invalid setting name or value"
+msgstr "Μη έγκυρο όνομα ή τιμή ρύθμισης"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Η υπηρεσία γεωκωδικοποίησης δεν απάντησε — δοκιμάστε ξανά αργότερα"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Εμφανίζεται μόνο το email που στείλατε."
+

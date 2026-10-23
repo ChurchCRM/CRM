@@ -5964,6 +5964,9 @@
   "The grades changed after the preview. Review the changes again before applying them.": "ชั้นเรียนเปลี่ยนหลังการแสดงตัวอย่าง ตรวจสอบการเปลี่ยนแปลงอีกครั้งก่อนนำไปใช้",
   "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off.": "เดือนที่ทุกคนที่มีชั้นเรียนเลื่อนขึ้นหนึ่งชั้นเรียน ปิดจะปิดการเลื่อนชั้นอัตโนมัติ",
   "Through Grade": "ถึงชั้นเรียน",
+  "Invalid setting name or value": "ชื่อหรือค่าการตั้งค่าไม่ถูกต้อง",
+  "The geocoding service did not answer — try again later": "บริการแปลงที่อยู่เป็นพิกัดไม่ตอบสนอง — โปรดลองอีกครั้งในภายหลัง",
+  "Only the email you sent is shown.": "แสดงเฉพาะอีเมลที่คุณส่งเท่านั้น",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：สร้าง {{count}} การเกิดขึ้น",
     "other": "\"{{name}}\"：สร้าง {{count}} การเกิดขึ้น"

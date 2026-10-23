@@ -5996,6 +5996,9 @@
   "The grades changed after the preview. Review the changes again before applying them.": "Önizlemeden sonra sınıflar değişti. Uygulamadan önce değişiklikleri yeniden gözden geçirin.",
   "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off.": "Sınıfı olan herkesin bir sınıf yukarı taşındığı ay. Kapalı, otomatik yükseltmeyi kapatır.",
   "Through Grade": "Bitiş sınıfı",
+  "Invalid setting name or value": "Geçersiz ayar adı veya değeri",
+  "The geocoding service did not answer — try again later": "Coğrafi kodlama hizmeti yanıt vermedi — daha sonra tekrar deneyin",
+  "Only the email you sent is shown.": "Yalnızca gönderdiğiniz e-posta gösterilir.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} olay oluşturuldu",
     "other": "\"{{name}}\": {{count}} olay oluşturuldu"

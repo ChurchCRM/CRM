@@ -24779,3 +24779,15 @@ msgstr "Месяц, в котором все, у кого есть класс, �
 msgid "Through Grade"
 msgstr "По класс"
 
+#: 
+msgid "Invalid setting name or value"
+msgstr "Недопустимое имя или значение настройки"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Служба геокодирования не ответила — повторите попытку позже"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Отображается только отправленное вами письмо."
+

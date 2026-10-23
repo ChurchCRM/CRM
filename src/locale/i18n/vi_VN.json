@@ -5964,6 +5964,9 @@
   "The grades changed after the preview. Review the changes again before applying them.": "Các lớp đã thay đổi sau khi xem trước. Xem lại các thay đổi trước khi áp dụng.",
   "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off.": "Tháng mà mọi người có lớp đều lên một lớp. Tắt sẽ tắt việc lên lớp tự động.",
   "Through Grade": "Đến lớp",
+  "Invalid setting name or value": "Tên hoặc giá trị cài đặt không hợp lệ",
+  "The geocoding service did not answer — try again later": "Dịch vụ mã hóa địa lý không phản hồi — hãy thử lại sau",
+  "Only the email you sent is shown.": "Chỉ hiển thị email bạn đã gửi.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：tạo {{count}} lần xuất hiện",
     "other": "\"{{name}}\"：tạo {{count}} lần xuất hiện"

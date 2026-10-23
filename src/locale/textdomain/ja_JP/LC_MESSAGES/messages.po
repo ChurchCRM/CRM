@@ -24596,3 +24596,15 @@ msgstr "学年のある人が全員1学年上がる月。オフにすると自�
 msgid "Through Grade"
 msgstr "終了学年"
 
+#: 
+msgid "Invalid setting name or value"
+msgstr "設定名または値が無効です"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "ジオコーディングサービスから応答がありませんでした — しばらくしてからもう一度お試しください"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "送信したメールのみが表示されます。"
+

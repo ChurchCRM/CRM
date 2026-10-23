@@ -5996,6 +5996,9 @@
   "The grades changed after the preview. Review the changes again before applying them.": "Die Klassenstufen haben sich nach der Vorschau geändert. Prüfen Sie die Änderungen erneut, bevor Sie sie anwenden.",
   "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off.": "Der Monat, in dem alle mit einer Klassenstufe eine Klassenstufe aufrücken. Aus schaltet die automatische Versetzung aus.",
   "Through Grade": "Bis Klassenstufe",
+  "Invalid setting name or value": "Ungültiger Einstellungsname oder Wert",
+  "The geocoding service did not answer — try again later": "Der Geokodierungsdienst hat nicht geantwortet — versuchen Sie es später erneut",
+  "Only the email you sent is shown.": "Es wird nur die von Ihnen gesendete E-Mail angezeigt.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} Ereignis erstellt",
     "other": "\"{{name}}\": {{count}} Ereignisse erstellt"

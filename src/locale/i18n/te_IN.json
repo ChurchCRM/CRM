@@ -5996,6 +5996,9 @@
   "The grades changed after the preview. Review the changes again before applying them.": "ముందస్తు వీక్షణ తర్వాత తరగతులు మారాయి. వాటిని వర్తింపజేయడానికి ముందు మార్పులను మళ్లీ సమీక్షించండి.",
   "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off.": "తరగతి ఉన్న ప్రతి ఒక్కరూ ఒక తరగతి పైకి వెళ్లే నెల. ఆఫ్ స్వయంచాలక ప్రమోషన్‌ను ఆపివేస్తుంది.",
   "Through Grade": "తరగతి వరకు",
+  "Invalid setting name or value": "చెల్లని సెట్టింగ్ పేరు లేదా విలువ",
+  "The geocoding service did not answer — try again later": "జియోకోడింగ్ సేవ స్పందించలేదు — తర్వాత మళ్లీ ప్రయత్నించండి",
+  "Only the email you sent is shown.": "మీరు పంపిన ఇమెయిల్ మాత్రమే చూపబడుతుంది.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} సందర్భం సృష్టించబడింది",
     "other": "\"{{name}}\": {{count}} సందర్భాలు సృష్టించబడ్డాయి"

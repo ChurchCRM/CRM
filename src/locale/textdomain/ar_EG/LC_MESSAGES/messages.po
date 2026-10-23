@@ -24781,3 +24781,15 @@ msgstr "الشهر الذي ينتقل فيه كل من لديه صف إلى ا�
 msgid "Through Grade"
 msgstr "إلى الصف"
 
+#: 
+msgid "Invalid setting name or value"
+msgstr "اسم الإعداد أو قيمته غير صالح"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "لم تستجب خدمة الترميز الجغرافي — حاول مرة أخرى لاحقًا"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "يُعرض فقط البريد الإلكتروني الذي أرسلته."
+

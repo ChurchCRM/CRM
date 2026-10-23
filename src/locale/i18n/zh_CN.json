@@ -5964,6 +5964,9 @@
   "The grades changed after the preview. Review the changes again before applying them.": "预览后年级已更改。应用前请再次检查更改。",
   "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off.": "所有有年级的人升一个年级的月份。关闭会停用自动升级。",
   "Through Grade": "至年级",
+  "Invalid setting name or value": "设置名称或值无效",
+  "The geocoding service did not answer — try again later": "地理编码服务未响应 — 请稍后重试",
+  "Only the email you sent is shown.": "仅显示您发送的电子邮件。",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：创建了 {{count}} 个发生",
     "other": "\"{{name}}\"：创建了 {{count}} 个发生"
