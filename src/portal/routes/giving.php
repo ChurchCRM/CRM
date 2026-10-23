@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
@@ -27,7 +28,7 @@ $group->get('/giving', function (Request $request, Response $response) use ($por
         $response,
         'giving/index.html.twig',
         [
-            'pageTitle' => gettext('My giving statement'),
+            'pageTitle' => gettext('My Giving'),
             'year' => $year,
             'isHousehold' => $actor && $actor->getFamily() && PortalSelfService::isAdultOf($actor->getFamily(), $actor),
         ],
@@ -38,7 +39,17 @@ $group->get('/giving', function (Request $request, Response $response) use ($por
 $group->get('/giving/statement', function (Request $request, Response $response) use ($portalGivingActor): Response {
     $actor = $portalGivingActor($request);
     if (!$actor || !$actor->getFamily()) {
-        return PortalTwig::render($response, 'family/none.html.twig', ['pageTitle' => gettext('My giving statement')]);
+        return PortalTwig::render(
+            $response,
+            'family/none.html.twig',
+            [
+                'pageTitle' => gettext('You are not currently associated with a family'),
+                'officeEmail' => trim(ChurchMetaData::getChurchEmail()),
+                'officePhone' => trim(ChurchMetaData::getChurchPhone()),
+                'officePhoneHref' => preg_replace('/[^0-9+]/', '', ChurchMetaData::getChurchPhone()),
+            ],
+            PortalNav::GIVING
+        );
     }
 
     $year = (int) ($request->getQueryParams()['year'] ?? (date('Y') - 1));

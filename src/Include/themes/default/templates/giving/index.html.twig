@@ -1,24 +1,39 @@
-{% extends "layouts/page.html.twig" %}
+{% extends "layout.html.twig" %}
+
+{#
+  My Giving — the member's own year-end statement.
+
+  Variables: `year`, `isHousehold`. Head of household and spouse see the
+  household gifts; everyone else sees only gifts credited to them.
+#}
+
 {% block content %}
-<div class="card">
-  <div class="card-header">
-    <h3 class="card-title">{{ pageTitle }}</h3>
-  </div>
-  <div class="card-body">
-    <p class="text-secondary">
-      {% if isHousehold %}
-        {{ "This is the household statement. It includes gifts for your family."|trans }}
-      {% else %}
-        {{ "This statement includes only gifts credited to you."|trans }}
-      {% endif %}
-    </p>
-    <form method="get" action="{{ rootPath }}/portal/giving/statement">
-      <div class="mb-3 col-6 col-md-3">
-        <label class="form-label" for="year">{{ "Year"|trans }}</label>
-        <input class="form-control" type="number" name="year" id="year" value="{{ year }}">
-      </div>
-      <button type="submit" class="btn btn-primary">{{ "Download statement"|trans }}</button>
-    </form>
-  </div>
+<div class="portal-giving" id="portal-giving">
+
+    <section class="portal-card">
+        <h1 class="portal-page-title">{{ gettext('My Giving') }}</h1>
+        <p class="portal-card-text">
+            {% if isHousehold %}
+                {{ gettext('This is the household statement. It includes gifts for your family.') }}
+            {% else %}
+                {{ gettext('This statement includes only gifts credited to you.') }}
+            {% endif %}
+        </p>
+    </section>
+
+    <section class="portal-card">
+        <h2 class="portal-card-title">
+            <i class="fa-solid fa-file-invoice-dollar" aria-hidden="true"></i>
+            <span>{{ gettext('Year-end statement') }}</span>
+        </h2>
+        <form method="get" action="{{ url('/portal/giving/statement') }}">
+            <div class="portal-field">
+                <label class="portal-field-label" for="year">{{ gettext('Year') }}</label>
+                <input class="portal-input" type="number" name="year" id="year" value="{{ year }}">
+            </div>
+            <button type="submit" class="portal-button">{{ gettext('Download statement') }}</button>
+        </form>
+    </section>
+
 </div>
 {% endblock %}
