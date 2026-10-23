@@ -26,6 +26,7 @@ const scriptTests = fs
     .map((name) => path.join('scripts', name));
 
 const checks = {
+    'composer lock': script('validate-composer-lock.js'),
     'biome lint': npx('biome', 'check', 'webpack/'),
     'biome format': npx('biome', 'format', '.'),
     typecheck: npx('tsc', '--noEmit', '--pretty'),

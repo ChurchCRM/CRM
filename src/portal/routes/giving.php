@@ -24,14 +24,29 @@ $portalGivingActor = static function (Request $request): ?Person {
 
 $group->get('/giving', function (Request $request, Response $response) use ($portalGivingActor): Response {
     $actor = $portalGivingActor($request);
-    $year = (int) date('Y') - 1;
+    $family = $actor?->getFamily();
+    $currentYear = (int) date('Y');
+    $firstYear = min($currentYear, (int) ($family?->getDateEntered('Y') ?: $currentYear));
+    $isHousehold = $family && PortalSelfService::isAdultOf($family, $actor);
+    $givingYears = [];
+    if ($family && $isHousehold) {
+        foreach (PledgeQuery::create()->filterByFamId((int) $family->getId())->filterByPledgeOrPayment('Payment')->find() as $gift) {
+            $givingYears[(int) $gift->getDate('Y')] = true;
+        }
+    }
+    $years = [];
+    for ($year = $currentYear; $year >= $firstYear; --$year) {
+        $years[] = ['value' => $year, 'hasGiving' => isset($givingYears[$year])];
+    }
+    $year = max($firstYear, $currentYear - 1);
     return PortalTwig::render(
         $response,
         'giving/index.html.twig',
         [
             'pageTitle' => gettext('My Giving'),
             'year' => $year,
-            'isHousehold' => $actor && $actor->getFamily() && PortalSelfService::isAdultOf($actor->getFamily(), $actor),
+            'isHousehold' => $isHousehold,
+            'years' => $years,
         ],
         PortalNav::GIVING
     );

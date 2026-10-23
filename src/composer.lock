@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8ddc1d3018e49429cae3ecf79780cf0c",
+    "content-hash": "33e6ca6a193c74bd525165b6b3ee2f2b",
     "packages": [
         {
             "name": "azuyalabs/yasumi",
@@ -230,7 +230,7 @@
             ],
             "authors": [
                 {
-                    "name": "Christian L\u00fcck",
+                    "name": "Christian Lück",
                     "email": "christian@clue.engineering"
                 }
             ],
@@ -701,7 +701,7 @@
                     "homepage": "https://github.com/Nyholm"
                 },
                 {
-                    "name": "M\u00e1rk S\u00e1gi-Kaz\u00e1r",
+                    "name": "Márk Sági-Kazár",
                     "email": "mark.sagikazar@gmail.com",
                     "homepage": "https://github.com/sagikazarmark"
                 },
@@ -900,7 +900,7 @@
                     "homepage": "https://github.com/Nyholm"
                 },
                 {
-                    "name": "M\u00e1rk S\u00e1gi-Kaz\u00e1r",
+                    "name": "Márk Sági-Kazár",
                     "email": "mark.sagikazar@gmail.com",
                     "homepage": "https://github.com/sagikazarmark"
                 },
@@ -910,7 +910,7 @@
                     "homepage": "https://github.com/Tobion"
                 },
                 {
-                    "name": "M\u00e1rk S\u00e1gi-Kaz\u00e1r",
+                    "name": "Márk Sági-Kazár",
                     "email": "mark.sagikazar@gmail.com",
                     "homepage": "https://sagikazarmark.hu"
                 }
@@ -1228,7 +1228,7 @@
             ],
             "authors": [
                 {
-                    "name": "Lu\u00eds Cobucci",
+                    "name": "Luís Cobucci",
                     "email": "lcobucci@gmail.com",
                     "role": "Developer"
                 }
@@ -1454,24 +1454,24 @@
             "name": "mpdf/mpdf",
             "version": "v8.3.1",
             "source": {
-                "url": "https://github.com/mpdf/mpdf.git",
                 "type": "git",
+                "url": "https://github.com/mpdf/mpdf.git",
                 "reference": "2a454ec334109911fdb323a284c19dbf3f049810"
             },
             "dist": {
-                "url": "https://api.github.com/repos/mpdf/mpdf/zipball/2a454ec334109911fdb323a284c19dbf3f049810",
                 "type": "zip",
-                "shasum": "",
-                "reference": "2a454ec334109911fdb323a284c19dbf3f049810"
+                "url": "https://api.github.com/repos/mpdf/mpdf/zipball/2a454ec334109911fdb323a284c19dbf3f049810",
+                "reference": "2a454ec334109911fdb323a284c19dbf3f049810",
+                "shasum": ""
             },
             "require": {
-                "php": "^5.6 || ^7.0 || ~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
                 "ext-gd": "*",
                 "ext-mbstring": "*",
                 "mpdf/psr-http-message-shim": "^1.0 || ^2.0",
                 "mpdf/psr-log-aware-trait": "^2.0 || ^3.0",
                 "myclabs/deep-copy": "^1.7",
                 "paragonie/random_compat": "^1.4|^2.0|^9.99.99",
+                "php": "^5.6 || ^7.0 || ~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
                 "psr/http-message": "^1.0 || ^2.0",
                 "psr/log": "^1.0 || ^2.0 || ^3.0",
                 "setasign/fpdi": "^2.1"
@@ -1496,15 +1496,15 @@
             "name": "mpdf/psr-http-message-shim",
             "version": "v2.0.1",
             "source": {
-                "url": "https://github.com/mpdf/psr-http-message-shim.git",
                 "type": "git",
+                "url": "https://github.com/mpdf/psr-http-message-shim.git",
                 "reference": "f25a0153d645e234f9db42e5433b16d9b113920f"
             },
             "dist": {
-                "url": "https://api.github.com/repos/mpdf/psr-http-message-shim/zipball/f25a0153d645e234f9db42e5433b16d9b113920f",
                 "type": "zip",
-                "shasum": "",
-                "reference": "f25a0153d645e234f9db42e5433b16d9b113920f"
+                "url": "https://api.github.com/repos/mpdf/psr-http-message-shim/zipball/f25a0153d645e234f9db42e5433b16d9b113920f",
+                "reference": "f25a0153d645e234f9db42e5433b16d9b113920f",
+                "shasum": ""
             },
             "require": {
                 "psr/http-message": "^2.0"
@@ -1526,15 +1526,15 @@
             "name": "mpdf/psr-log-aware-trait",
             "version": "v3.0.0",
             "source": {
-                "url": "https://github.com/mpdf/psr-log-aware-trait.git",
                 "type": "git",
+                "url": "https://github.com/mpdf/psr-log-aware-trait.git",
                 "reference": "a633da6065e946cc491e1c962850344bb0bf3e78"
             },
             "dist": {
-                "url": "https://api.github.com/repos/mpdf/psr-log-aware-trait/zipball/a633da6065e946cc491e1c962850344bb0bf3e78",
                 "type": "zip",
-                "shasum": "",
-                "reference": "a633da6065e946cc491e1c962850344bb0bf3e78"
+                "url": "https://api.github.com/repos/mpdf/psr-log-aware-trait/zipball/a633da6065e946cc491e1c962850344bb0bf3e78",
+                "reference": "a633da6065e946cc491e1c962850344bb0bf3e78",
+                "shasum": ""
             },
             "require": {
                 "psr/log": "^3.0"
@@ -1554,27 +1554,63 @@
         },
         {
             "name": "myclabs/deep-copy",
-            "version": "1.13.4",
+            "version": "1.14.0",
             "source": {
-                "url": "https://github.com/myclabs/DeepCopy.git",
                 "type": "git",
-                "reference": "07d290f0c47959fd5eed98c95ee5602db07e0b6a"
+                "url": "https://github.com/myclabs/DeepCopy.git",
+                "reference": "8680aa248f8e07bc8fb43f56f0f5fc77a0c96aae"
             },
             "dist": {
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/07d290f0c47959fd5eed98c95ee5602db07e0b6a",
                 "type": "zip",
-                "shasum": "",
-                "reference": "07d290f0c47959fd5eed98c95ee5602db07e0b6a"
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/8680aa248f8e07bc8fb43f56f0f5fc77a0c96aae",
+                "reference": "8680aa248f8e07bc8fb43f56f0f5fc77a0c96aae",
+                "shasum": ""
             },
             "require": {
-                "php": "^7.1 || ^8.0"
+                "php": "^8.0"
+            },
+            "conflict": {
+                "doctrine/collections": "<1.6.8",
+                "doctrine/common": "<2.13.3 || >=3 <3.2.2"
+            },
+            "require-dev": {
+                "doctrine/collections": "^1.6.8",
+                "doctrine/common": "^2.13.3 || ^3.2.2",
+                "phpspec/prophecy": "^1.10",
+                "phpunit/phpunit": "^7.5.20 || ^8.5.23 || ^9.5.13"
             },
             "type": "library",
-            "autoload": {},
+            "autoload": {
+                "files": [
+                    "src/DeepCopy/deep_copy.php"
+                ],
+                "psr-4": {
+                    "DeepCopy\\": "src/DeepCopy/"
+                }
+            },
             "notification-url": "https://packagist.org/downloads/",
-            "license": [],
-            "description": "",
-            "time": "2025-08-01T08:46:24+00:00"
+            "license": [
+                "MIT"
+            ],
+            "description": "Create deep copies (clones) of your objects",
+            "keywords": [
+                "clone",
+                "copy",
+                "duplicate",
+                "object",
+                "object graph"
+            ],
+            "support": {
+                "issues": "https://github.com/myclabs/DeepCopy/issues",
+                "source": "https://github.com/myclabs/DeepCopy/tree/1.14.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/mnapoli",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-08-11T10:17:44+00:00"
         },
         {
             "name": "nikic/fast-route",
@@ -1870,7 +1906,7 @@
             ],
             "authors": [
                 {
-                    "name": "M\u00e1rk S\u00e1gi-Kaz\u00e1r",
+                    "name": "Márk Sági-Kazár",
                     "email": "mark.sagikazar@gmail.com"
                 }
             ],
@@ -1937,7 +1973,7 @@
             ],
             "authors": [
                 {
-                    "name": "M\u00e1rk S\u00e1gi-Kaz\u00e1r",
+                    "name": "Márk Sági-Kazár",
                     "email": "mark.sagikazar@gmail.com"
                 }
             ],
@@ -2012,7 +2048,7 @@
             ],
             "authors": [
                 {
-                    "name": "M\u00e1rk S\u00e1gi-Kaz\u00e1r",
+                    "name": "Márk Sági-Kazár",
                     "email": "mark.sagikazar@gmail.com"
                 }
             ],
@@ -2133,7 +2169,7 @@
                     "email": "geloen.eric@gmail.com"
                 },
                 {
-                    "name": "M\u00e1rk S\u00e1gi-Kaz\u00e1r",
+                    "name": "Márk Sági-Kazár",
                     "email": "mark.sagikazar@gmail.com",
                     "homepage": "https://sagikazarmark.hu"
                 }
@@ -2202,7 +2238,7 @@
             ],
             "authors": [
                 {
-                    "name": "M\u00e1rk S\u00e1gi-Kaz\u00e1r",
+                    "name": "Márk Sági-Kazár",
                     "email": "mark.sagikazar@gmail.com"
                 }
             ],
@@ -2312,7 +2348,7 @@
                     "email": "joel.wurtz@gmail.com"
                 },
                 {
-                    "name": "M\u00e1rk S\u00e1gi-Kaz\u00e1r",
+                    "name": "Márk Sági-Kazár",
                     "email": "mark.sagikazar@gmail.com"
                 }
             ],
@@ -3192,28 +3228,74 @@
         },
         {
             "name": "setasign/fpdi",
-            "version": "v2.6.4",
+            "version": "v2.6.9",
             "source": {
-                "url": "https://github.com/Setasign/FPDI.git",
                 "type": "git",
-                "reference": "4b53852fde2734ec6a07e458a085db627c60eada"
+                "url": "https://github.com/Setasign/FPDI.git",
+                "reference": "d97ade6368aa0b51b6316d5dc16a567e2bf60167"
             },
             "dist": {
-                "url": "https://api.github.com/repos/Setasign/FPDI/zipball/4b53852fde2734ec6a07e458a085db627c60eada",
                 "type": "zip",
-                "shasum": "",
-                "reference": "4b53852fde2734ec6a07e458a085db627c60eada"
+                "url": "https://api.github.com/repos/Setasign/FPDI/zipball/d97ade6368aa0b51b6316d5dc16a567e2bf60167",
+                "reference": "d97ade6368aa0b51b6316d5dc16a567e2bf60167",
+                "shasum": ""
             },
             "require": {
-                "php": "^7.1 || ^8.0",
-                "ext-zlib": "*"
+                "ext-zlib": "*",
+                "php": ">=7.2 <=8.6.99999"
+            },
+            "conflict": {
+                "setasign/tfpdf": "<1.31"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.5.52",
+                "setasign/fpdf": "^1.9.0",
+                "setasign/tfpdf": "~1.33",
+                "tecnickcom/tcpdf": "^6.8"
+            },
+            "suggest": {
+                "setasign/fpdf": "FPDI will extend this class but as it is also possible to use TCPDF or tFPDF as an alternative. There's no fixed dependency configured."
             },
             "type": "library",
-            "autoload": {},
+            "autoload": {
+                "psr-4": {
+                    "setasign\\Fpdi\\": "src/"
+                }
+            },
             "notification-url": "https://packagist.org/downloads/",
-            "license": [],
-            "description": "",
-            "time": "2025-08-05T09:57:14+00:00"
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jan Slabon",
+                    "email": "jan.slabon@setasign.com",
+                    "homepage": "https://www.setasign.com"
+                },
+                {
+                    "name": "Maximilian Kresse",
+                    "email": "maximilian.kresse@setasign.com",
+                    "homepage": "https://www.setasign.com"
+                }
+            ],
+            "description": "FPDI is a collection of PHP classes facilitating developers to read pages from existing PDF documents and use them as templates in FPDF. Because it is also possible to use FPDI with TCPDF, there are no fixed dependencies defined. Please see suggestions for packages which evaluates the dependencies automatically.",
+            "homepage": "https://www.setasign.com/fpdi",
+            "keywords": [
+                "fpdf",
+                "fpdi",
+                "pdf"
+            ],
+            "support": {
+                "issues": "https://github.com/Setasign/FPDI/issues",
+                "source": "https://github.com/Setasign/FPDI/tree/v2.6.9"
+            },
+            "funding": [
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/setasign/fpdi",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2026-10-13T07:36:28+00:00"
         },
         {
             "name": "slim/http-cache",
@@ -5597,7 +5679,7 @@
             ],
             "authors": [
                 {
-                    "name": "Ond\u0159ej Mirtes"
+                    "name": "Ondřej Mirtes"
                 },
                 {
                     "name": "Markus Staab"

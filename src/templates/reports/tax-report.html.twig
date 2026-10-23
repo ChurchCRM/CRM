@@ -21,10 +21,10 @@
       <table class="gifts">
         <thead>
           <tr>
-            <th>{{ 'Date'|trans }}</th>
-            <th>{{ 'Fund'|trans }}</th>
-            <th>{{ 'Method'|trans }}</th>
-            <th class="right">{{ 'Amount'|trans }}</th>
+            <th>{{ gettext('Date') }}</th>
+            <th>{{ gettext('Fund') }}</th>
+            <th>{{ gettext('Method') }}</th>
+            <th class="right">{{ gettext('Amount') }}</th>
           </tr>
         </thead>
         <tbody>
@@ -41,15 +41,15 @@
 
       <table class="totals">
         <tr>
-          <td class="label">{{ 'Total contributions'|trans }}</td>
+          <td class="label">{{ gettext('Total contributions') }}</td>
           <td class="amount">{{ family.total }}</td>
         </tr>
         <tr>
-          <td class="label">{{ 'Goods and services'|trans }}</td>
+          <td class="label">{{ gettext('Goods and services') }}</td>
           <td class="amount">{{ family.goods_services|default('$0.00') }}</td>
         </tr>
         <tr class="final">
-          <td class="label">{{ 'Tax-deductible amount'|trans }}</td>
+          <td class="label">{{ gettext('Tax-deductible amount') }}</td>
           <td class="amount">{{ family.deductible|default(family.total) }}</td>
         </tr>
       </table>

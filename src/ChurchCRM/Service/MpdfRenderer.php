@@ -5,6 +5,7 @@ namespace ChurchCRM\Service;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\Service\ChurchLogoService;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Twig\GettextExtension;
 use Mpdf\Mpdf;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
@@ -16,6 +17,9 @@ class MpdfRenderer implements PdfRendererInterface
     public function __construct(?Environment $twig = null)
     {
         $this->twig = $twig ?? new Environment(new FilesystemLoader(__DIR__ . '/../../templates/reports'));
+        if (!$this->twig->hasExtension(GettextExtension::class)) {
+            $this->twig->addExtension(new GettextExtension());
+        }
     }
 
     public function renderToString(string $template, array $data): string
@@ -63,10 +67,9 @@ class MpdfRenderer implements PdfRendererInterface
 
     private function makeMpdf(): Mpdf
     {
-        $format = SystemConfig::getValue('sPaperFormat') ?: 'Letter';
         return new Mpdf([
             'mode' => 'utf-8',
-            'format' => $format,
+            'format' => 'Letter',
             'margin_left' => 15,
             'margin_right' => 15,
             'margin_top' => 16,
