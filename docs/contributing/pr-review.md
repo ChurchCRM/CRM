@@ -8,7 +8,7 @@ Thank you for donating time (and often tokens). Reviews mark each item as a hard
 
 1. Link an issue if `CONTRIBUTING.md` requires one.
 2. Run lint and build.
-3. Add or update tests.
+3. Add or update tests, and run them. You test your change: a maintainer reviews it, and tests are what keep churches' data and the next release safe. Not sure how? Copy a spec from the same folder (`.agents/skills/churchcrm/cypress-testing.md`) and ask in the PR. We will help you write it.
 4. Wrap new user-visible strings in `gettext()` / `i18next.t()`. `locale:build` runs on merge to `master`.
 5. Dates, times, numbers, and currency: API/storage is ISO `Y-m-d` or naive church wall-clock. Display uses `sDateFormat*`, `sTimeZone`, and `sLanguage`. Parse JSON dates as ISO, independent of the display format and the browser timezone.
 6. If you change the UI, keep Tabler / Bootstrap 5 and **check tablet and mobile** as well as desktop. Attach screenshots if you have them — they help, they are not the whole gate.
