@@ -37,7 +37,7 @@ const seedSql = fs.readFileSync(SEED_FILE, 'utf8');
  * whole dump, which would also match a comment or an unrelated table.
  */
 const seededUserLiterals = new Set();
-const userInsert = /INSERT INTO `user_usr` VALUES([\s\S]*?);\s*$/gm;
+const userInsert = /INSERT INTO `user_usr` (?:\([^)]*\) )?VALUES([\s\S]*?);\s*$/gm;
 let insertMatch = userInsert.exec(seedSql);
 while (insertMatch !== null) {
     const literals = insertMatch[1].match(/'(?:[^'\\]|\\.)*'/g) || [];

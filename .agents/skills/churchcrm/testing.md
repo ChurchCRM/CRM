@@ -132,7 +132,7 @@ npm run docker:test:start       # start test containers
 npm run docker:test:stop        # stop, keep volumes
 npm run docker:test:rebuild     # rebuild images
 npm run docker:test:down        # remove containers and volumes
-npm run docker:test:reset:db    # reload the seeded test database
+npm run docker:test:reset:db    # rebuild the test database: Install.sql, then cypress/data/seed.sql
 ```
 
 Dev stack: `npm run docker:dev:start`, `docker:dev:stop`, `docker:dev:logs`.

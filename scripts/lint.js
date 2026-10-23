@@ -40,7 +40,7 @@ const checks = {
     'cypress split timings': script('split-timings.js', 'check'),
     'cypress db access': script('validate-cypress-db-access.js'),
     'capture used-in': script('validate-capture-used-in.js'),
-    'seed charsets': script('validate-seed-charsets.js'),
+    'seed data only': script('validate-seed-data-only.js'),
     'mysql upgrade syntax': script('validate-mysql-upgrade-syntax.js'),
     'supported databases': script('sync-supported-databases.js', '--check'),
     'locale script tests': [node, ['--test', ...localeTests]],
