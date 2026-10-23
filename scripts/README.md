@@ -9,7 +9,7 @@ This folder contains Node.js and shell scripts used for building, packaging, and
 |--------|---------|-------|
 | `lint.js` | Run every lint check in parallel; prints only failures | `npm run lint` (pre-push hook and CI) |
 | `build.js` | Production build: Composer and webpack in parallel, then signatures | `npm run build` |
-| `composer-install.js` | Install production Composer dependencies; skipped when `src/vendor` matches `composer.lock` | `npm run composer:install` |
+| `composer-install.js` | Install production Composer dependencies; refresh metadata when `src/vendor` matches `composer.lock` | `npm run composer:install` |
 | `clean.js` | Remove dependencies, build output, and logs (`--logs`: logs only) | `npm run clean`, `npm run logs:clear` |
 | `docker-config.js` | Put `src/Include/Config.php` in place for a docker profile (`--remove`: delete it) | Called by the `docker:*:start` scripts |
 | `sync-supported-databases.js` | Rewrite the compose images, nightly matrix and setup text from `supported-databases.json` (`--check` fails when one is stale) | `node scripts/sync-supported-databases.js` |
