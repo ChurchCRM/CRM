@@ -43,23 +43,29 @@ test("the Apache image config denies the metadata filenames without relying on .
   }
 });
 
-test("nginx protects each exact metadata path at root and subdirectory", () => {
-  for (const path of privatePaths) {
-    assert.ok(nginx.includes(`    location = ${path} { return 404; }`), path);
-    assert.ok(nginx.includes(`#     location = /churchcrm${path} { return 404; }`), path);
+const nestedPrivatePaths = [...privatePaths, "/vendor/azuyalabs/yasumi/composer.json"];
+const METADATA_NGINX = /location ~ (\/\(\?:composer[^\s]+\$) \{ return 404; \}/;
+
+test("nginx denies metadata basenames at any depth, root and subdirectory", () => {
+  const rootMatch = nginx.match(new RegExp(`^    ${METADATA_NGINX.source}`, "m"));
+  const subMatch = nginx.match(new RegExp(`^#     ${METADATA_NGINX.source}`, "m"));
+  assert.ok(rootMatch && subMatch);
+  for (const match of [rootMatch, subMatch]) {
+    const pattern = new RegExp(match[1]);
+    for (const path of nestedPrivatePaths) assert.equal(pattern.test(path), true, path);
+    for (const path of [...publicPaths, "/Images/composer.png"]) assert.equal(pattern.test(path), false, path);
   }
-  assert.equal(nginx.includes("location = /index.php { return 404; }"), false);
 });
 
-test("FrankenPHP matchers deny root and subdirectory metadata", () => {
-  const rootMatcher = caddy.match(/^\s*@metadata path (.+)$/m);
-  const subdirMatcher = caddy.match(/^#\s+@metadata path (.+)$/m);
-  assert.ok(rootMatcher);
-  assert.ok(subdirMatcher);
-  const rootPaths = rootMatcher[1].trim().split(/\s+/);
-  const subdirPaths = subdirMatcher[1].trim().split(/\s+/);
-  assert.deepEqual(rootPaths, privatePaths);
-  assert.deepEqual(subdirPaths, privatePaths.map((path) => `/churchcrm${path}`));
+test("FrankenPHP matchers deny metadata basenames at any depth, root and subdirectory", () => {
+  const rootMatcher = caddy.match(/^\s*@metadata path_regexp metadata (.+)$/m);
+  const subdirMatcher = caddy.match(/^#\s+@metadata path_regexp metadata (.+)$/m);
+  assert.ok(rootMatcher && subdirMatcher);
+  for (const match of [rootMatcher, subdirMatcher]) {
+    const pattern = new RegExp(match[1].trim());
+    for (const path of nestedPrivatePaths) assert.equal(pattern.test(path), true, path);
+    for (const path of [...publicPaths, "/Images/composer.png"]) assert.equal(pattern.test(path), false, path);
+  }
   // Caddy sorts directive types: a top-level `respond @metadata` runs too late
   // after catch-all `handle`. Denials must be part of the handle group.
   const rootDenial = "    handle @metadata {\n        respond 404\n    }";
@@ -71,9 +77,47 @@ test("FrankenPHP matchers deny root and subdirectory metadata", () => {
   assert.ok(rootFallback > caddy.indexOf(rootDenial), "deny before fallback");
   assert.ok(subdirFallback > caddy.indexOf(subdirDenial), "subdir deny before fallback");
   assert.ok(!caddy.includes("respond @metadata 404"), "no ineffective top-level respond");
-  for (const path of publicPaths) {
-    assert.ok(!rootPaths.includes(path));
-    assert.ok(!subdirPaths.includes(`/churchcrm${path}`));
+});
+
+const xdebugInstall = /for i in 1 2 3; do pecl install xdebug[^\n]*/;
+
+test("Xdebug install retries and fails the build after three failed attempts", () => {
+  const { spawnSync } = require("node:child_process");
+  const { mkdtempSync, writeFileSync, chmodSync, readFileSync: read, rmSync } = require("node:fs");
+  const { tmpdir } = require("node:os");
+  const { join } = require("node:path");
+  const dockerfiles = ["docker/Dockerfile.churchcrm-apache-php8", "docker/Dockerfile.churchcrm-fpm-php8"];
+  const dir = mkdtempSync(join(tmpdir(), "churchcrm-xdebug-"));
+  const stub = (name, body) => {
+    writeFileSync(join(dir, name), `#!/bin/sh\n${body}\n`);
+    chmodSync(join(dir, name), 0o755);
+  };
+  try {
+    for (const file of dockerfiles) {
+      const line = read(resolve(root, file), "utf8").match(xdebugInstall);
+      assert.ok(line, `${file} must use the retry loop`);
+      const command = line[0].replace("sleep 10", "sleep 0");
+      const run = (pecl) => {
+        stub("pecl", pecl);
+        stub("docker-php-ext-enable", `echo enabled >> "${dir}/enabled"`);
+        stub("count-reset", `: > "${dir}/calls"`);
+        writeFileSync(join(dir, "calls"), "");
+        rmSync(join(dir, "enabled"), { force: true });
+        return spawnSync("sh", ["-c", command], { env: { ...process.env, PATH: `${dir}:${process.env.PATH}` }, encoding: "utf8" });
+      };
+      const calls = () => read(join(dir, "calls"), "utf8").trim().split("\n").filter(Boolean).length;
+
+      const alwaysFails = run(`echo x >> "${dir}/calls"; exit 1`);
+      assert.notEqual(alwaysFails.status, 0, file);
+      assert.equal(calls(), 3, `${file} must try exactly three times`);
+
+      const flaky = run(`echo x >> "${dir}/calls"; [ "$(wc -l < "${dir}/calls")" -ge 2 ]`);
+      assert.equal(flaky.status, 0, `${file}: ${flaky.stderr}`);
+      assert.equal(calls(), 2, file);
+      assert.ok(read(join(dir, "enabled"), "utf8").includes("enabled"), file);
+    }
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
   }
 });
 
@@ -102,8 +146,8 @@ test("Caddy metadata denial wins over a catch-all fallback", async (t) => {
   });
 
   const dir = mkdtempSync(join(tmpdir(), "churchcrm-caddy-routes-"));
-  const rootMatcher = caddy.match(/^\s*@metadata path (.+)$/m)?.[0].trim();
-  const subMatcher = caddy.match(/^#\s+@metadata path (.+)$/m)?.[0].replace(/^#\s*/, "");
+  const rootMatcher = caddy.match(/^\s*@metadata path_regexp metadata (.+)$/m)?.[0].trim();
+  const subMatcher = caddy.match(/^#\s+@metadata path_regexp metadata (.+)$/m)?.[0].replace(/^#\s*/, "");
   assert.ok(rootMatcher);
   assert.ok(subMatcher);
   const config = join(dir, "Caddyfile");
@@ -142,7 +186,7 @@ test("Caddy metadata denial wins over a catch-all fallback", async (t) => {
         // Exercise only fixed expected paths; never construct a network URL from
         // text read from the Caddyfile. The matcher itself is checked above.
         const pathPrefix = matcher === subMatcher ? "/churchcrm" : "";
-        for (const path of privatePaths) {
+        for (const path of nestedPrivatePaths) {
           const target = `${pathPrefix}${path}`;
           const response = await fetch(`http://127.0.0.1:${port}${target}`);
           assert.equal(response.status, 404, target);
