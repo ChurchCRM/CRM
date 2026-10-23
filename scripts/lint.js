@@ -36,6 +36,8 @@ const checks = {
     'cypress api keys': script('validate-cypress-api-keys.js'),
     'cypress commands': script('validate-cypress-commands.js'),
     'cypress spec coverage': script('validate-cypress-spec-coverage.js'),
+    'subdir-safe urls': script('validate-subdir-urls.js'),
+    'cypress split timings': script('split-timings.js', 'check'),
     'cypress db access': script('validate-cypress-db-access.js'),
     'capture used-in': script('validate-capture-used-in.js'),
     'seed charsets': script('validate-seed-charsets.js'),
