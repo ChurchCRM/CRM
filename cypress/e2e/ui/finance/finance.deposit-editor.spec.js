@@ -17,6 +17,8 @@ describe("Deposit editor: what a treasurer does", () => {
         ...overrides,
     });
 
+    const createdDeposits = [];
+
     const createDeposit = (comment) =>
         cy
             .request("POST", "/api/deposits", {
@@ -24,12 +26,22 @@ describe("Deposit editor: what a treasurer does", () => {
                 depositComment: comment,
                 depositDate: "2025-10-25",
             })
-            .its("body.Id");
+            .its("body.Id")
+            .then((id) => {
+                createdDeposits.push(id);
+                return id;
+            });
 
     const addPayment = (depositId, fundId, amount) =>
         cy.request("POST", "/api/payments/pledges", payment(depositId, fundId, amount));
 
     beforeEach(() => cy.setupAdminSession());
+
+    // Payments left on family 3 turn its delete page into a donations list.
+    after(() => {
+        cy.setupAdminSession();
+        createdDeposits.forEach((id) => cy.request({ method: "DELETE", url: `/api/deposits/${id}`, failOnStatusCode: false }));
+    });
 
     it("edits the comment, closes the deposit, and can no longer add or delete payments", () => {
         const comment = `Sunday offering ${Date.now()}`;
