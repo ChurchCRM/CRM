@@ -140,7 +140,7 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
         python3
 
 # Install Xdebug for testing
-RUN pecl install xdebug && docker-php-ext-enable xdebug
+RUN for i in 1 2 3; do pecl install xdebug && break; [ "$i" = 3 ] && exit 1; sleep 10; done && docker-php-ext-enable xdebug
 
 # Install Composer with checksum verification
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
@@ -170,7 +170,7 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
         python3
 
 # Install Xdebug for debugging
-RUN pecl install xdebug && docker-php-ext-enable xdebug
+RUN for i in 1 2 3; do pecl install xdebug && break; [ "$i" = 3 ] && exit 1; sleep 10; done && docker-php-ext-enable xdebug
 
 # Install Composer with checksum verification
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
