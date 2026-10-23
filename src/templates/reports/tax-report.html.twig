@@ -1,0 +1,27 @@
+{% extends "_letter.html.twig" %}
+{% block letter_body %}
+  <p>{{ date_range }}</p>
+  {% for family in families %}
+    {% if not loop.first %}<pagebreak />{% endif %}
+    <p><strong>{{ family.salutation }}</strong><br>
+    {{ family.address|nl2br }}</p>
+    <table>
+      <thead>
+        <tr><th>Date</th><th>Fund</th><th>Method</th><th class="right">Amount</th></tr>
+      </thead>
+      <tbody>
+        {% for gift in family.gifts %}
+          <tr>
+            <td>{{ gift.date }}</td>
+            <td>{{ gift.fund }}</td>
+            <td>{{ gift.method }}</td>
+            <td class="right">{{ gift.amount }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <p><strong>Total: {{ family.total }}</strong></p>
+    <p>{{ closing }}</p>
+    <p>{{ signer }}</p>
+  {% endfor %}
+{% endblock %}

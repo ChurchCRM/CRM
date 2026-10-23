@@ -1,0 +1,16 @@
+{% extends "_base.html.twig" %}
+{% block content %}
+  <div class="letterhead">
+    {% if letterhead == 'graphic' and logo %}
+      <img src="{{ logo }}" style="max-width: 180mm; max-height: 30mm;">
+    {% elseif letterhead != 'none' %}
+      <strong>{{ church.name }}</strong><br>
+      {{ church.address }}<br>
+      {{ church.city }}{% if church.state %}, {{ church.state }}{% endif %} {{ church.zip }}<br>
+      <span class="muted">{{ church.phone }} {{ church.email }}</span>
+    {% endif %}
+  </div>
+  <div style="margin-top: 8mm;">
+    {% block letter_body %}{% endblock %}
+  </div>
+{% endblock %}
