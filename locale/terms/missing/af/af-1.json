@@ -1,5 +1,5 @@
 {
-  "Invalid setting name or value": "",
-  "The geocoding service did not answer — try again later": "",
-  "Only the email you sent is shown.": ""
+  "Invalid setting name or value": "Ongeldige instellingnaam of waarde",
+  "The geocoding service did not answer — try again later": "Die geokoderingsdiens het nie geantwoord nie — probeer later weer",
+  "Only the email you sent is shown.": "Slegs die e-pos wat jy gestuur het, word gewys."
 }
