@@ -18,6 +18,20 @@ Process:
 
 Backward compatibility: add nullable columns or new tables first, populate them (background job if large), then tighten to non-null in a later step.
 
+## PHP vs SQL upgrade scripts
+
+**Default to plain `.sql`.** Use a `.php` upgrade script only when the work cannot be expressed as SQL:
+
+- Reading or writing values from the PHP `Config.php` file (not the `config_cfg` table).
+- Conditional logic that depends on application config or country/state presets whose data lives in PHP classes (`GradePresets`, etc.).
+- Dynamic discovery of tables or indexes that cannot be listed statically.
+
+Schema changes (`ALTER TABLE`, `CREATE TABLE`, indexes, simple data fixes) stay in `.sql`. Do not convert a PHP script to SQL just to avoid a class-loading issue; fix the class-loading issue instead.
+
+**Same-process constraint for `.php` scripts.** The in-app upgrader moves the new code into place and then runs the upgrade scripts in the *same* PHP process. Newly-deployed classes and constants may still be the old versions (already loaded or opcached). A `.php` upgrade script must not reference a class constant, method, or class that was added or changed in the same release. Use a literal, or move the work to a one-time post-upgrade task that runs on a fresh request. See #10826 (`Person::SCHEDULED_TASK` in `7.8.1.php`).
+
+The version-gated runner writes the new `version_ver` row only after every script in the step succeeds. A failure in a later script (SQL or PHP) leaves the schema partially applied and the version unchanged, so a retry re-runs the earlier scripts and hits "column already exists." Prefer small, single-purpose scripts and keep PHP scripts free of newly-introduced symbols.
+
 ## Registering a Script in upgrade.json
 
 `UpgradeService` reads `VersionUtils::getDBVersion()` fresh on every iteration. An install walks the blocks in order: each block whose `versions` list contains the current DB version runs its `scripts` and sets the DB version to its `dbVersion`.
