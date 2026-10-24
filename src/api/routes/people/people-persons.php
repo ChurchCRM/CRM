@@ -261,16 +261,14 @@ function getAllRolesAPI(Request $request, Response $response, array $args): Resp
 }
 
 /**
- * A method that review dup emails in the db and returns families and people where that email is used.
- */
-/**
  * @OA\Get(
  *     path="/persons/duplicate/emails",
  *     operationId="getEmailDuplicates",
- *     summary="Find duplicate email addresses across persons and families",
+ *     summary="Find personal email addresses shared by more than one person",
+ *     description="Compared trimmed and in lower case. Lists the people sharing each address and their families.",
  *     tags={"People"},
  *     security={{"ApiKeyAuth":{}}},
- *     @OA\Response(response=200, description="Emails used by more than one record",
+ *     @OA\Response(response=200, description="Personal emails used by more than one person",
  *         @OA\JsonContent(type="object",
  *             @OA\Property(property="emails", type="array", @OA\Items(type="object",
  *                 @OA\Property(property="email", type="string", format="email"),
@@ -290,29 +288,43 @@ function getAllRolesAPI(Request $request, Response $response, array $args): Resp
  */
 function getEmailDupesAPI(Request $request, Response $response, array $args): Response
 {
-    $connection = Propel::getConnection();
-    $dupEmailsSQL = "select email, total from ( SELECT email, COUNT(*) AS total FROM ( SELECT fam_Email AS email, 'family' AS type, fam_id AS id FROM family_fam WHERE fam_email IS NOT NULL AND fam_email != '' UNION SELECT per_email AS email, 'person_home' AS type, per_id AS id FROM person_per WHERE per_email IS NOT NULL AND per_email != '' UNION SELECT per_WorkEmail AS email, 'person_work' AS type, per_id AS id FROM person_per WHERE per_WorkEmail IS NOT NULL AND per_WorkEmail != '') as allEmails group by email) as dupEmails where total > 1";
-    $statement = $connection->prepare($dupEmailsSQL);
-    $statement->execute();
-    $dupEmails = $statement->fetchAll();
+    $idsByEmail = [];
+    $rows = PersonQuery::create()
+        ->filterByEmail('', Criteria::NOT_EQUAL)
+        ->select(['Id', 'Email'])
+        ->orderById()
+        ->find();
+    foreach ($rows as $row) {
+        $key = strtolower(trim((string) $row['Email']));
+        if ($key !== '') {
+            $idsByEmail[$key][] = (int) $row['Id'];
+        }
+    }
+    $idsByEmail = array_filter($idsByEmail, fn (array $ids): bool => count($ids) > 1);
+
+    $people = [];
+    if ($idsByEmail !== []) {
+        foreach (PersonQuery::create()->filterById(array_merge(...array_values($idsByEmail)), Criteria::IN)->find() as $person) {
+            $people[(int) $person->getId()] = $person;
+        }
+    }
 
     $emails = [];
-    foreach ($dupEmails as $dbEmail) {
-        $email = $dbEmail['email'];
-        $dbPeople = PersonQuery::create()->filterByEmail($email)->_or()->filterByWorkEmail($email)->find();
-        $people = [];
-        foreach ($dbPeople as $person) {
-            $people[] = ['id' => $person->getId(), 'name' => $person->getFullName()];
-        }
+    foreach ($idsByEmail as $email => $ids) {
+        $sharers = [];
         $families = [];
-        $dbFamilies = FamilyQuery::create()->findByEmail($email);
-        foreach ($dbFamilies as $family) {
-            $families[] = ['id' => $family->getId(), 'name' => $family->getName()];
+        foreach ($ids as $id) {
+            $person = $people[$id];
+            $sharers[] = ['id' => $id, 'name' => $person->getFullName()];
+            $family = $person->getFamily();
+            if ($family !== null) {
+                $families[(int) $family->getId()] = ['id' => (int) $family->getId(), 'name' => $family->getName()];
+            }
         }
         $emails[] = [
             'email' => $email,
-            'people' => $people,
-            'families' => $families,
+            'people' => $sharers,
+            'families' => array_values($families),
         ];
     }
 

@@ -318,7 +318,6 @@ class DemoDataService
                 $contact = $famData['contact'] ?? [];
                 $phone = $contact['phone'] ?? [];
                 $family->setHomePhone($phone['home'] ?? null);
-                $family->setEmail($contact['email'] ?? null);
 
                 // Override first family's wedding date to today, otherwise use JSON data
                 if ($familyIndex === 0) {
@@ -368,7 +367,7 @@ class DemoDataService
                 $this->familyMap[$family->getId()] = $family;
                 $this->importResult['imported']['families']++;
 
-                // Build family-email → family-id map for financial data import
+                // contact.email in people.json only links the family to finance.json; families have no email.
                 $contactEmail = strtolower(trim($contact['email'] ?? ''));
                 if ($contactEmail !== '') {
                     $this->familyEmailToId[$contactEmail] = $family->getId();

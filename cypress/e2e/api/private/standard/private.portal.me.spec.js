@@ -211,6 +211,17 @@ describe("Member Portal API — /api/portal/me and /api/portal/family", () => {
             });
         });
 
+        it("has no family email: the view carries none and a posted one is ignored", () => {
+            portalLogin(adultUser);
+            cy.request("/api/portal/family").its("body.family").should("not.have.property", "email");
+            withCsrfToken((token) => {
+                portalPost("/api/portal/family", { email: "household@example.com" }, token, 200).then((response) => {
+                    expect(response.body.updated).to.deep.equal([]);
+                    expect(response.body.family).to.not.have.property("email");
+                });
+            });
+        });
+
         it("refuses a member of the family who is not one of its adults", () => {
             portalLogin(nonAdultUser);
             cy.request("/api/portal/family").then((response) => {

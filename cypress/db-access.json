@@ -9,6 +9,10 @@
             "kind": "fixture",
             "reason": "Read-only row counts for the test-database drift guard (#9769)."
         },
+        "cypress/e2e/api/private/admin/private.admin.family-email-move.spec.js": {
+            "kind": "schema",
+            "reason": "Migration spec for the 7.9.0 family email move (member sign-in row 11): the app no longer writes a family email, so the fixtures, the upgrade block and its marker table are reached in SQL."
+        },
         "cypress/e2e/api/private/standard/private.portal.session.spec.js": {
             "kind": "fixture",
             "reason": "Member sign-in row 1 (#10463): Disable sign-in, the session version, the timeouts and the sign-in audit have no HTTP surface until rows 4 and 9 add the admin pages."

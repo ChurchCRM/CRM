@@ -318,7 +318,6 @@ $app->group('/portal', function (RouteCollectorProxy $group) use (
      *             @OA\Property(property="zip", type="string"),
      *             @OA\Property(property="country", type="string"),
      *             @OA\Property(property="homePhone", type="string"),
-     *             @OA\Property(property="email", type="string"),
      *             @OA\Property(property="weddingDate", type="string", example="2004-06-12")
      *         )
      *     ),

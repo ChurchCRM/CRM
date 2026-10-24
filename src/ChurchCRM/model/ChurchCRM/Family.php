@@ -10,6 +10,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\verify\FamilyVerificationEmail;
 use ChurchCRM\Emails\notifications\NewPersonOrFamilyEmail;
 use ChurchCRM\model\ChurchCRM\Base\Family as BaseFamily;
+use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\PhotoInterface;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
@@ -543,21 +544,49 @@ class Family extends BaseFamily implements PhotoInterface
     public function getEmails(): array
     {
         $emails = [];
-        if (!(empty($this->getEmail()))) {
-            $emails[] = $this->getEmail();
-        }
         foreach ($this->getPeopleSorted() as $person) {
-            $email = $person->getEmail();
-            if ($email !== null) {
-                $emails[] = $email;
-            }
-            $email = $person->getWorkEmail();
-            if ($email !== null) {
-                $emails[] = $email;
+            foreach ([$person->getEmail(), $person->getWorkEmail()] as $email) {
+                if (!empty($email)) {
+                    $emails[] = $email;
+                }
             }
         }
 
-        return array_unique($emails);
+        return array_values(array_unique($emails));
+    }
+
+    /**
+     * Who receives mail meant for the whole family: the oldest living, active
+     * head of household with their own email, else the oldest such spouse.
+     */
+    public function getEmailRecipient(): ?Person
+    {
+        foreach ([$this->getHeadPeople(), $this->getSpousePeople()] as $people) {
+            $candidates = array_values(array_filter(
+                $people,
+                fn (Person $person): bool => !$person->isDeceased() && $person->isActive() && trim((string) $person->getEmail()) !== ''
+            ));
+            if ($candidates !== []) {
+                usort($candidates, fn (Person $a, Person $b): int => self::ageSortKey($a) <=> self::ageSortKey($b));
+
+                return $candidates[0];
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * @return int[] oldest first; unknown birth-date parts sort last
+     */
+    private static function ageSortKey(Person $person): array
+    {
+        return [
+            (int) $person->getBirthYear() ?: 9999,
+            (int) $person->getBirthMonth() ?: 99,
+            (int) $person->getBirthDay() ?: 99,
+            (int) $person->getId(),
+        ];
     }
 
     public function createTimeLineNote($type): void
@@ -779,6 +808,7 @@ class Family extends BaseFamily implements PhotoInterface
     public function toArray(string $keyType = TableMap::TYPE_PHPNAME, bool $includeLazyLoadColumns = true, array $alreadyDumpedObjects = [], bool $includeForeignObjects = false): array
     {
         $array = parent::toArray($keyType, $includeLazyLoadColumns, $alreadyDumpedObjects, $includeForeignObjects);
+        unset($array[FamilyTableMap::translateFieldName('Email', TableMap::TYPE_PHPNAME, $keyType)]);
         $array['Address'] = $this->getAddress();
         $array['FamilyString'] = $this->getFamilyString();
         // Additive, read-only mailing-address resolution (#9743). `Address` stays the

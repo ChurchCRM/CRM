@@ -102,6 +102,24 @@ describe("Send email from a record", () => {
         cy.get("#crm-email-composer-modal .modal-title").should("contain.text", "Mathew Campbell");
     });
 
+    it("family view: the family's Send button mails the head of household", () => {
+        const tag = `crm-msi11-family-${Date.now()}`;
+        cy.visit("/people/family/2");
+
+        cy.get("#family-email-composer").should("be.visible").click();
+        cy.get("#crm-email-composer-modal").should("be.visible");
+        cy.get("#crm-email-composer-modal .modal-title").should("contain.text", "Hart Family");
+
+        composeAndSend(`Family ${tag}`, "Hello Harts.").then(({ request, response }) => {
+            expect(request.body).to.deep.include({ personIds: [], familyIds: [2] });
+            expect(response.body.counts).to.deep.equal({ sent: 1, skipped: 0, failed: 0 });
+            expect(response.body.sent[0]).to.include({ familyId: 2, email: "constance.hart@example.com" });
+        });
+        mailpitMessages(tag).then((messages) => {
+            expect(messages.map((m) => m.To[0].Address)).to.deep.equal(["constance.hart@example.com"]);
+        });
+    });
+
     it("group view: the Email button sends one message per member and lists who was skipped", () => {
         const tag = `crm-9876-group-${Date.now()}`;
         cy.visit("/groups/view/1");

@@ -21,7 +21,6 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
 use ChurchCRM\Utils\AddressDefaults;
@@ -68,7 +67,6 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
 
 $bErrorFlag = false;
 $sNameError = '';
-$sEmailError = '';
 $sWeddingDateError = '';
 $sSecondAddressError = '';
 
@@ -132,7 +130,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     }
 
     $sHomePhone = InputUtils::legacyFilterInput($_POST['HomePhone']);
-    $sEmail = InputUtils::legacyFilterInput($_POST['Email']);
     $bSendNewsLetter = isset($_POST['SendNewsLetter']);
 
     $nLatitude = 0.0;
@@ -238,16 +235,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $dWeddingDate = $dateString;
     }
 
-    // Validate Email
-    if (strlen($sEmail) > 0) {
-        if (MiscUtils::checkEmail($sEmail) === false) {
-            $sEmailError = '<span class="text-danger">'
-                . gettext('Email is Not Valid') . '</span>';
-            $bErrorFlag = true;
-            $sEmail = null;
-        }
-    }
-
     // Validate all the custom fields
     $aCustomData = [];
     while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
@@ -296,7 +283,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             ->setSendNewsletter($bSendNewsLetterString)
             ->setEnvelope($nEnvelope)
             ->setWeddingdate($dWeddingDate)
-            ->setEmail($sEmail)
             ->setLatitude($nLatitude)
             ->setLongitude($nLongitude);
 
@@ -466,7 +452,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $sSecondCountry = $family->getSecondCountry();
         $bSecondIsMailing = (bool) $family->getSecondIsMailing();
         $sHomePhone = $family->getHomePhone();
-        $sEmail = $family->getEmail();
         $bSendNewsLetter = $family->getSendNewsletter() === 'TRUE';
         $dWeddingDate = $family->getWeddingdate(SystemConfig::getValue("sDatePickerFormat"));
         $nLatitude = $family->getLatitude();
@@ -543,7 +528,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $bNoFormat_WorkPhone = isset($_POST['NoFormat_WorkPhone']);
         $sCellPhone = '';
         $bNoFormat_CellPhone = isset($_POST['NoFormat_CellPhone']);
-        $sEmail = '';
         $bSendNewsLetter = 'TRUE';
         $dWeddingDate = '';
         $nLatitude = 0.0;
@@ -821,16 +805,6 @@ require_once __DIR__ . '/Include/Header.php';
                             <label class="form-check-label" for="NoFormat_HomePhone"><?= gettext('No format') ?></label>
                         </span>
                     </div>
-                </div>
-                <div class="mb-3 col-12 col-md-6">
-                    <label for="Email"><?= gettext('Email') ?>:</label>
-                    <div class="input-group">
-                        <span class="input-group-text"><i class="fa-solid fa-at"></i></span>
-                        <input type="email" id="Email" name="Email" class="form-control" value="<?= InputUtils::escapeAttribute($sEmail) ?>" maxlength="100">
-                    </div>
-                    <?php if ($sEmailError) { ?>
-                    <span class="text-danger small"><?= $sEmailError ?></span>
-                    <?php } ?>
                 </div>
             </div>
             <?php if (!SystemConfig::getBooleanValue('bHideFamilyNewsletter')) { /* Newsletter can be hidden - General Settings */ ?>

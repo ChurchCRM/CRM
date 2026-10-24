@@ -16,51 +16,89 @@
  * Connection defaults mirror docker/.env, which CI exports as real environment
  * variables; DATABASE_PORT lets an isolated stack publish MySQL on another port.
  */
+// A connection failure (DB down, wrong port or credentials) deliberately
+// THROWS rather than being returned as data: it is an infrastructure fault
+// that must fail the run loudly, not something a spec should assert on.
+// Only driver errors from the statement itself are returned by the tasks.
+//
+// The port must match the stack the specs run against: 3306 for the
+// default and ci-root stacks, DATABASE_SUBDIR_PORT (3307) for ci-subdir —
+// the workflows export DATABASE_PORT accordingly, and an isolated local
+// stack on another port must export it too.
+async function openDbConnection(multipleStatements: boolean) {
+  const mysql = require('mysql2/promise');
+  return mysql.createConnection({
+    host: process.env.DATABASE_HOST || '127.0.0.1',
+    port: Number(process.env.DATABASE_PORT || 3306),
+    user: process.env.MYSQL_USER || 'churchcrm',
+    password: process.env.MYSQL_PASSWORD || 'changeme',
+    database: process.env.MYSQL_DATABASE || 'churchcrm',
+    multipleStatements,
+    dateStrings: true
+  });
+}
+
+function driverError(err: any) {
+  return {
+    code: err.code || null,
+    errno: err.errno || null,
+    sqlState: err.sqlState || null,
+    message: err.message || String(err)
+  };
+}
+
+async function closeDbConnection(connection: any) {
+  // A rejected await inside finally would replace the value returned
+  // above, so never let end() reject; destroy() cannot.
+  try {
+    await connection.end();
+  } catch {
+    connection.destroy();
+  }
+}
+
 export const dbTasks = {
   async 'db:query'({ sql, params }: { sql: string; params?: unknown[] }) {
-    const mysql = require('mysql2/promise');
-
-    // A connection failure (DB down, wrong port or credentials) deliberately
-    // THROWS rather than being returned as data: it is an infrastructure fault
-    // that must fail the run loudly, not something a spec should assert on.
-    // Only driver errors from the statement itself are returned below.
-    //
-    // The port must match the stack the specs run against: 3306 for the
-    // default and ci-root stacks, DATABASE_SUBDIR_PORT (3307) for ci-subdir —
-    // the workflows export DATABASE_PORT accordingly, and an isolated local
-    // stack on another port must export it too.
-    const port = Number(process.env.DATABASE_PORT || 3306);
-    const connection = await mysql.createConnection({
-      host: process.env.DATABASE_HOST || '127.0.0.1',
-      port,
-      user: process.env.MYSQL_USER || 'churchcrm',
-      password: process.env.MYSQL_PASSWORD || 'changeme',
-      database: process.env.MYSQL_DATABASE || 'churchcrm',
-      multipleStatements: false,
-      dateStrings: true
-    });
-
+    const connection = await openDbConnection(false);
     try {
       const [rows] = await connection.query(sql, params || []);
       return { rows, error: null };
     } catch (err: any) {
-      return {
-        rows: null,
-        error: {
-          code: err.code || null,
-          errno: err.errno || null,
-          sqlState: err.sqlState || null,
-          message: err.message || String(err)
-        }
-      };
+      return { rows: null, error: driverError(err) };
     } finally {
-      // A rejected await inside finally would replace the value returned
-      // above, so never let end() reject; destroy() cannot.
-      try {
-        await connection.end();
-      } catch {
-        connection.destroy();
-      }
+      await closeDbConnection(connection);
+    }
+  },
+
+  /**
+   * Runs one block of a shipped upgrade script, the text between the lines
+   * `-- BEGIN: <block>` and `-- END: <block>`, so a migration spec tests the
+   * SQL an upgrade actually runs rather than a copy of it.
+   */
+  async 'db:upgradeBlock'({ script, block }: { script: string; block: string }) {
+    const fs = require('fs');
+    const path = require('path');
+
+    // Cypress starts with cwd = cypress/configs, not the repo root.
+    let root = process.cwd();
+    while (!fs.existsSync(path.join(root, 'src', 'mysql', 'upgrade')) && path.dirname(root) !== root) {
+      root = path.dirname(root);
+    }
+    const text = fs.readFileSync(path.join(root, 'src', 'mysql', 'upgrade', path.basename(script)), 'utf8');
+    const begin = text.indexOf(`-- BEGIN: ${block}`);
+    const end = text.indexOf(`-- END: ${block}`, begin);
+    if (begin < 0 || end < 0) {
+      throw new Error(`db:upgradeBlock: no block "${block}" in ${script}`);
+    }
+
+    const connection = await openDbConnection(true);
+    try {
+      await connection.query(text.slice(begin, end));
+      return { error: null };
+    } catch (err: any) {
+      return { error: driverError(err) };
+    } finally {
+      await closeDbConnection(connection);
     }
   }
 };

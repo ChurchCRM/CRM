@@ -17,6 +17,7 @@ use ChurchCRM\Utils\LoggerUtils;
  * The API never accepts raw addresses: the server owns the recipient list, so
  * it can apply the do-not-email property, skip the deceased and the
  * address-less, deduplicate, and report every skipped recipient by name.
+ * A family recipient is mailed at Family::getEmailRecipient()'s address.
  *
  * Recipient shape (also the shape of the `recipients` arrays returned by the
  * /cart/emails, /people/emails and /groups/{id}/emails list endpoints):
@@ -33,6 +34,7 @@ class EmailComposerService
     public const SKIP_DECEASED = 'deceased';
     public const SKIP_INACTIVE = 'inactive';
     public const SKIP_DUPLICATE = 'duplicate-address';
+    public const SKIP_NO_ADULT_EMAIL = 'no-adult-email';
 
     /**
      * @param int[] $personIds
@@ -71,7 +73,6 @@ class EmailComposerService
                     $skipped[] = self::skip($personId, null, $name, self::SKIP_DO_NOT_EMAIL);
                     continue;
                 }
-                // Person::getEmail() falls back to the family address when the person has none.
                 $email = trim((string) $person->getEmail());
                 if ($email === '') {
                     $skipped[] = self::skip($personId, null, $name, self::SKIP_NO_EMAIL);
@@ -109,9 +110,9 @@ class EmailComposerService
                     $skipped[] = self::skip(null, $familyId, $name, self::SKIP_INACTIVE);
                     continue;
                 }
-                $email = trim((string) $family->getEmail());
+                $email = trim((string) $family->getEmailRecipient()?->getEmail());
                 if ($email === '') {
-                    $skipped[] = self::skip(null, $familyId, $name, self::SKIP_NO_EMAIL);
+                    $skipped[] = self::skip(null, $familyId, $name, self::SKIP_NO_ADULT_EMAIL);
                     continue;
                 }
                 $key = strtolower($email);

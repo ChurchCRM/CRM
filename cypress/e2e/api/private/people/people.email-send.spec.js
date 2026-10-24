@@ -16,8 +16,9 @@
  *   person 3   Tony Campbell    tony.wade@example.com
  *   person 35  Shane Stewart    tony.wade@example.com   (same address as 3)
  *   person 19  Laurie Ray       deceased 2019-04-12
- *   person 105 Mary Smith       no email, family 21 has no email
- *   family 1   Campbell         no family email
+ *   person 105 Mary Smith       no email of her own
+ *   family 1   Campbell         head of household is person 2
+ *   family 2   Hart             head Constance and spouse Marion both have an email
  */
 const clearMailpit = () =>
     cy.request({ method: "DELETE", url: `${Cypress.mailpitUrl()}/api/v1/messages`, failOnStatusCode: false });
@@ -60,7 +61,7 @@ describe("API POST /api/email/send", () => {
                 expect(skipped[105]).to.include({ name: "Mary Smith", reason: "no-email" });
                 expect(skipped[19]).to.include({ name: "Laurie Ray", reason: "deceased" });
                 expect(skipped[35]).to.include({ name: "Shane Stewart", reason: "duplicate-address" });
-                expect(skipped["family-1"]).to.include({ name: "Campbell Family", reason: "no-email" });
+                expect(skipped["family-1"]).to.include({ name: "Campbell Family", reason: "duplicate-address" });
             });
         });
 
@@ -93,6 +94,71 @@ describe("API POST /api/email/send", () => {
                         expect(full.body.HTML).to.include(`mailto:${email.body.value}`);
                     });
                 });
+            });
+        });
+    });
+
+    describe("family recipients", () => {
+        const tag = `crm-msi11-${Date.now()}`;
+        const registered = [];
+        let savedSelfReg;
+        let spouseFamilyId;
+        let noAdultFamilyId;
+
+        const register = (name, people) =>
+            cy
+                .request({
+                    method: "POST",
+                    url: "/api/public/register/family",
+                    body: { Name: name, Address1: "1 Test St", City: "Testville", State: "TS", Country: "US", Zip: "00000", people },
+                })
+                .then((resp) => {
+                    registered.push(resp.body.Id);
+                    return resp.body.Id;
+                });
+
+        before(() => {
+            clearMailpit();
+            cy.getSystemConfig("bEnableSelfRegistration").then((value) => {
+                savedSelfReg = value;
+            });
+            cy.makePrivateAdminAPICall("POST", "admin/api/system/config/bEnableSelfRegistration", { value: "1" });
+            register("SpouseMail", [
+                { firstName: "Hank", lastName: "SpouseMail", gender: 1, role: 1, email: "" },
+                { firstName: "Sara", lastName: "SpouseMail", gender: 2, role: 2, email: `sara.${tag}@example.com` },
+            ]).then((id) => {
+                spouseFamilyId = id;
+            });
+            register("NoAdultMail", [
+                { firstName: "Nora", lastName: "NoAdultMail", gender: 2, role: 1, email: "" },
+                { firstName: "Kid", lastName: "NoAdultMail", gender: 1, role: 3, email: `kid.${tag}@example.com` },
+            ]).then((id) => {
+                noAdultFamilyId = id;
+            });
+        });
+
+        after(() => {
+            cy.cleanupFamilies(registered);
+            cy.restoreSystemConfig("bEnableSelfRegistration", savedSelfReg);
+        });
+
+        it("mails the head of household, else the spouse, and says why when neither has an email", () => {
+            send({ familyIds: [2, spouseFamilyId, noAdultFamilyId], subject: `Family ${tag}`, body: "Hello" }).then((resp) => {
+                expect(resp.body.counts).to.deep.equal({ sent: 2, skipped: 1, failed: 0 });
+                expect(resp.body.sent.map((r) => [r.familyId, r.email])).to.deep.equal([
+                    [2, "constance.hart@example.com"],
+                    [spouseFamilyId, `sara.${tag}@example.com`],
+                ]);
+                expect(resp.body.skipped[0]).to.include({
+                    familyId: noAdultFamilyId,
+                    name: "NoAdultMail Family",
+                    reason: "no-adult-email",
+                });
+            });
+            mailpitMessages(tag).then((messages) => {
+                expect(messages.map((m) => m.To[0].Address).sort()).to.deep.equal(
+                    ["constance.hart@example.com", `sara.${tag}@example.com`].sort(),
+                );
             });
         });
     });

@@ -157,7 +157,6 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
               'bDirFamilyPhone'    => ['label' => gettext('Family Home Phone'), 'checked' => true],
               'bDirFamilyWork'     => ['label' => gettext('Family Work Phone'), 'checked' => true],
               'bDirFamilyCell'     => ['label' => gettext('Family Cell Phone'), 'checked' => true],
-              'bDirFamilyEmail'    => ['label' => gettext('Family Email'), 'checked' => true],
               'bDirPersonalPhone'  => ['label' => gettext('Personal Home Phone'), 'checked' => true],
               'bDirPersonalWork'   => ['label' => gettext('Personal Work Phone'), 'checked' => true],
               'bDirPersonalCell'   => ['label' => gettext('Personal Cell Phone'), 'checked' => true],

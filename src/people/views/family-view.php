@@ -51,13 +51,15 @@ if ($showFamilyCheckin) {
     }
 }
 
-// Store family email for JavaScript (used by MailChimp plugin if active)
-$familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '';
-
 // Group family members by role
 $headPeople = $family->getHeadPeople();
 $spousePeople = $family->getSpousePeople();
 $keyPeople = array_merge($headPeople, $spousePeople);
+
+$adultsWithEmail = array_values(array_filter($keyPeople, fn ($p) => !$p->isDeceased() && !empty($p->getEmail())));
+$familyMailRecipient = $family->getEmailRecipient();
+$familyMailEmail = $familyMailRecipient?->getEmail() ?? '';
+$familyEmailMD5 = $familyMailEmail !== '' ? md5(strtolower($familyMailEmail)) : '';
 $childPeople = $family->getChildPeople();
 $otherPeople = $family->getOtherPeople();
 
@@ -82,7 +84,7 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
     window.CRM.currentFamilyView = 2;
     window.CRM.currentFYId = <?= (int) $currentFYId ?>;
     window.CRM.currentFY = <?= InputUtils::jsonEncodeForScript($currentFY) ?>;
-    window.CRM.familyEmail ="<?= InputUtils::escapeAttribute($family->getEmail() ?? '') ?>";
+    window.CRM.familyEmail = <?= InputUtils::jsonEncodeForScript($familyMailEmail) ?>;
     window.CRM.familyEmailMD5 ="<?= $familyEmailMD5 ?>";
     <?php if ($showFamilyCheckin): ?>
     window.CRM.familyCheckin = {
@@ -623,42 +625,66 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
         </div>
         <?php endif; ?>
 
-        <?php if (!empty($family->getEmail())) { ?>
-        <!-- Email Card (with Mailchimp status if plugin enabled) -->
-        <div class="card mb-3">
+        <!-- Email Card: the adults' own emails (with Mailchimp status if plugin enabled) -->
+        <div class="card mb-3" id="family-email-card">
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title m-0"><i class="fa-solid fa-envelope me-1"></i> <?= gettext("Email") ?></h3>
+                <?php if ($canSendEmail && $familyMailRecipient !== null) : ?>
+                <button class="btn btn-sm btn-outline-primary ms-auto" type="button" id="family-email-composer"
+                        data-email-composer
+                        data-email-family-id="<?= (int) $family->getId() ?>"
+                        data-email-address="<?= InputUtils::escapeAttribute($familyMailRecipient->getEmail()) ?>"
+                        data-email-name="<?= InputUtils::escapeAttribute(sprintf(gettext('%s Family'), $family->getName())) ?>"
+                        data-email-title="<?= InputUtils::escapeAttribute(sprintf(gettext('Email %s Family'), $family->getName())) ?>"
+                        title="<?= gettext('Send email from ChurchCRM') ?>">
+                    <i class="fa-solid fa-paper-plane me-1"></i><?= sprintf(gettext('Email %s Family'), InputUtils::escapeHTML($family->getName())) ?>
+                </button>
+                <?php endif; ?>
             </div>
             <div class="card-body">
+                <?php if ($adultsWithEmail === []) : ?>
+                <span class="text-body-secondary" id="family-email-none"><?= gettext('No head of household or spouse has an email address.') ?></span>
+                <?php else : ?>
                 <ul class="list-unstyled mb-0">
-                    <li class="mb-1">
-                        <i class="fa-solid fa-envelope me-2 text-body-secondary icon-fixed-width"></i><a href="mailto:<?= InputUtils::escapeAttribute($family->getEmail()) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($family->getEmail()) ?></a>
-                        <?php if ($canSendEmail) : ?>
-                        <button class="btn btn-sm btn-ghost-primary ms-1" type="button"
-                                data-email-composer
-                                data-email-family-id="<?= (int) $family->getId() ?>"
-                                data-email-address="<?= InputUtils::escapeAttribute($family->getEmail()) ?>"
-                                data-email-name="<?= InputUtils::escapeAttribute(sprintf(gettext('%s Family'), $family->getName())) ?>"
-                                data-email-title="<?= InputUtils::escapeAttribute(sprintf(gettext('Email %s Family'), $family->getName())) ?>"
-                                title="<?= gettext('Send email from ChurchCRM') ?>">
-                            <i class="fa-solid fa-paper-plane"></i>
-                        </button>
-                        <?php endif; ?>
-                        <button class="btn btn-sm btn-ghost-secondary ms-1 copy-email-btn" type="button"
-                                data-email="<?= InputUtils::escapeAttribute($family->getEmail()) ?>"
-                                title="<?= gettext('Copy to clipboard') ?>">
-                            <i class="fa-solid fa-copy"></i>
-                        </button>
+                    <?php foreach ($adultsWithEmail as $adult) {
+                        $adultEmail = $adult->getEmail(); ?>
+                    <li class="mb-2 d-flex align-items-start" data-family-adult-email="<?= (int) $adult->getId() ?>">
+                        <i class="fa-solid fa-envelope me-2 mt-1 text-body-secondary icon-fixed-width"></i>
+                        <div class="min-w-0">
+                            <div class="text-truncate"><a href="mailto:<?= InputUtils::escapeAttribute($adultEmail) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($adultEmail) ?></a></div>
+                            <div class="small text-body-secondary d-flex align-items-center flex-wrap gap-1">
+                                <span><?= InputUtils::escapeHTML($adult->getFullName()) ?></span>
+                                <?php if ($canSendEmail) : ?>
+                                <button class="btn btn-sm btn-ghost-primary py-0" type="button"
+                                        data-email-composer
+                                        data-email-person-id="<?= (int) $adult->getId() ?>"
+                                        data-email-address="<?= InputUtils::escapeAttribute($adultEmail) ?>"
+                                        data-email-name="<?= InputUtils::escapeAttribute($adult->getFullName()) ?>"
+                                        data-email-title="<?= InputUtils::escapeAttribute(sprintf(gettext('Email %s'), $adult->getFullName())) ?>"
+                                        title="<?= gettext('Send email from ChurchCRM') ?>">
+                                    <i class="fa-solid fa-paper-plane"></i>
+                                </button>
+                                <?php endif; ?>
+                                <button class="btn btn-sm btn-ghost-secondary py-0 copy-email-btn" type="button"
+                                        data-email="<?= InputUtils::escapeAttribute($adultEmail) ?>"
+                                        title="<?= gettext('Copy to clipboard') ?>">
+                                    <i class="fa-solid fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
                     </li>
+                    <?php } ?>
+                    <?php if ($familyMailRecipient !== null) : ?>
                     <!-- MailChimp status - populated by JavaScript if plugin is active -->
                     <li class="d-none mb-1" id="mailchimp-status-container">
                         <i class="fa-regular fa-paper-plane me-2 text-body-secondary icon-fixed-width"></i>Mailchimp:
                         <span id="mailchimp-status">... <?= gettext("loading")?> ...</span>
                     </li>
+                    <?php endif; ?>
                 </ul>
+                <?php endif; ?>
             </div>
         </div>
-        <?php } ?>
 
         <?php if (!empty($familyCustom)) { ?>
         <!-- Custom Fields Card (collapsible) -->

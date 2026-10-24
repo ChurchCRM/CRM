@@ -35,6 +35,7 @@ class Person extends BasePerson implements PhotoInterface
     public const SELF_REGISTER = -1;
     public const SELF_VERIFY = -2;
     public const SCHEDULED_TASK = -3;
+    public const UPGRADE = -4;
     private ?Photo $photo = null;
     private bool $skipPostUpdateNote = false;
 
@@ -1012,18 +1013,6 @@ class Person extends BasePerson implements PhotoInterface
     public function getStatusText(): string
     {
         return $this->isActive() ? gettext('Active') : gettext('Inactive');
-    }
-
-    public function getEmail(): ?string
-    {
-        if (parent::getEmail() === null) {
-            $family = $this->getFamily();
-            if ($family !== null) {
-                return $family->getEmail();
-            }
-        }
-
-        return parent::getEmail();
     }
 
     /**

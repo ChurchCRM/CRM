@@ -37,7 +37,7 @@ $app->group('/public/register', function (RouteCollectorProxy $group): void {
  *             @OA\Property(property="Country", type="string", example="US"),
  *             @OA\Property(property="Zip", type="string", example="98101"),
  *             @OA\Property(property="HomePhone", type="string", nullable=true, example="206-555-0100"),
- *             @OA\Property(property="Email", type="string", format="email", nullable=true, example="smith@example.com"),
+ *             @OA\Property(property="Email", type="string", format="email", nullable=true, example="smith@example.com", description="Saved as the first person's email when that person gives none. Families have no email of their own."),
  *             @OA\Property(
  *                 property="people",
  *                 type="array",
@@ -117,7 +117,6 @@ function registerFamilyAPI(Request $request, Response $response, array $args): R
     $family->setCountry($familyMetadata['Country'] ?? '');
     $family->setZip($familyMetadata['Zip'] ?? '');
     $family->setHomePhone($familyMetadata['HomePhone'] ?? '');
-    $family->setEmail($familyMetadata['Email'] ?? '');
     $family->setEnteredBy(Person::SELF_REGISTER);
     $family->setDateEntered(new DateTime());
     $family->setNeedsReview(true);
@@ -173,6 +172,11 @@ function registerFamilyAPI(Request $request, Response $response, array $args): R
         }
 
         $familyMembers[] = $person;
+    }
+
+    $registrant = $familyMembers[0];
+    if (trim((string) $registrant->getEmail()) === '' && !empty($familyMetadata['Email'])) {
+        $registrant->setEmail($familyMetadata['Email']);
     }
 
     $family->save();

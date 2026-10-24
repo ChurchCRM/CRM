@@ -1,21 +1,19 @@
 /// <reference types="cypress" />
 
 describe("API Public Registration", () => {
-    // The family the happy-path test registers, so after() can remove it and
-    // its member again (#9769) — a public registration is a real family+person
+    // The families the tests register, so after() can remove them and their
+    // members again (#9769) — a public registration is a real family+person
     // write and used to be left behind on every run.
-    let registeredFamilyId;
+    const registeredFamilyIds = [];
 
     after(() => {
-        if (registeredFamilyId) {
-            cy.makePrivateAdminAPICall(
-                "DELETE",
-                `/api/family/${registeredFamilyId}?deleteMembers=true`,
-                null,
-                [200, 404],
-            );
-        }
+        cy.cleanupFamilies(registeredFamilyIds);
     });
+
+    const memberEmailsOf = (familyId) =>
+        cy
+            .makePrivateAdminAPICall("GET", "/api/families/self-register")
+            .then((resp) => resp.body.families.find((f) => f.Id === familyId).MemberEmails);
 
     it("Should allow family registration without authentication", () => {
         const testFamily = {
@@ -51,10 +49,36 @@ describe("API Public Registration", () => {
         }).then((resp) => {
             expect(resp.status).to.eq(200);
             expect(resp.body).to.have.property('Id');
-            registeredFamilyId = resp.body.Id;
+            registeredFamilyIds.push(resp.body.Id);
             expect(resp.body.Name).to.eq(testFamily.Name);
             expect(resp.body.Address1).to.eq(testFamily.Address1);
-            expect(resp.body.Email).to.eq(testFamily.Email);
+            expect(resp.body).to.not.have.property("Email");
+            memberEmailsOf(resp.body.Id).should("deep.equal", ["john@example.com"]);
+        });
+    });
+
+    it("Saves the family Email on the registering person when they give none", () => {
+        const name = `Cypress Family Email ${Date.now()}`;
+        cy.request({
+            method: "POST",
+            url: "/api/public/register/family",
+            body: {
+                Name: name,
+                Address1: "1 Test Street",
+                City: "Testville",
+                State: "TS",
+                Country: "US",
+                Zip: "12345",
+                Email: "household@example.com",
+                people: [
+                    { firstName: "Ruth", lastName: "Registrant", gender: 2, role: 1, email: "" },
+                    { firstName: "Boaz", lastName: "Registrant", gender: 1, role: 2, email: "" },
+                ],
+            },
+        }).then((resp) => {
+            registeredFamilyIds.push(resp.body.Id);
+            expect(resp.body).to.not.have.property("Email");
+            memberEmailsOf(resp.body.Id).should("deep.equal", ["household@example.com"]);
         });
     });
 

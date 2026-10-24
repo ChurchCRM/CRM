@@ -318,6 +318,28 @@ CREATE TABLE `family_fam` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `family_email_move_fem`
+-- (member sign-in row 11: one row per family email moved to people, design 10.1)
+--
+
+CREATE TABLE `family_email_move_fem` (
+  `fem_ID`           int(10) unsigned      NOT NULL AUTO_INCREMENT,
+  `fem_fam_ID`       mediumint(9) unsigned NOT NULL,
+  `fem_Email`        varchar(100)          NOT NULL,
+  `fem_Outcome`      enum('pending','head','spouse','held','noted') NOT NULL DEFAULT 'pending',
+  `fem_Reason`       enum('both_have_email','no_adult','other_person') DEFAULT NULL,
+  `fem_per_ID`       mediumint(9) unsigned DEFAULT NULL,
+  `fem_NeedsConfirm` tinyint(1) unsigned   NOT NULL DEFAULT 0,
+  `fem_DateMoved`    datetime              NOT NULL,
+  PRIMARY KEY (`fem_ID`),
+  KEY `fem_fam_idx` (`fem_fam_ID`),
+  KEY `fem_per_idx` (`fem_per_ID`),
+  KEY `fem_outcome_idx` (`fem_Outcome`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `groupprop_master`
 --
 
@@ -553,7 +575,7 @@ CREATE TABLE `person_per` (
   `per_HomePhone` varchar(30) default NULL,
   `per_WorkPhone` varchar(30) default NULL,
   `per_CellPhone` varchar(30) default NULL,
-  `per_Email` varchar(50) default NULL,
+  `per_Email` varchar(100) default NULL,
   `per_WorkEmail` varchar(50) default NULL,
   `per_BirthMonth` tinyint(3) unsigned NOT NULL default '0',
   `per_BirthDay` tinyint(3) unsigned NOT NULL default '0',

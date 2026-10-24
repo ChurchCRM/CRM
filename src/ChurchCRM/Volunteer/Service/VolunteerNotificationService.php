@@ -1127,8 +1127,6 @@ class VolunteerNotificationService
             return 'recipient is in the do-not-email set';
         }
 
-        // Person::getEmail() falls back to the FAMILY address, so this can legitimately
-        // be a shared inbox (Appendix C notes it; V2 cannot fix it).
         $address = (string) ($recipient->getEmail() ?? '');
         if (trim($address) === '') {
             return 'recipient has no email address';
