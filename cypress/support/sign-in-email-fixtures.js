@@ -5,7 +5,7 @@
 // mails. So they are set here, and each spec's people are put back.
 
 const db = (sql, params = []) =>
-    cy.dbQuery(sql, params).then((result) => {
+    cy.dbQuery(sql, params, { fixture: "cypress/support/sign-in-email-fixtures.js" }).then((result) => {
         expect(result.error, sql).to.be.null;
         return result.rows;
     });
@@ -25,6 +25,17 @@ export const markEmailUnconfirmed = (personId, source = "family_email") =>
          ON DUPLICATE KEY UPDATE psi_UnconfirmedEmail = VALUES(psi_UnconfirmedEmail),
              psi_UnconfirmedSource = VALUES(psi_UnconfirmedSource), psi_UnconfirmedAt = VALUES(psi_UnconfirmedAt)`,
         [source, personId],
+    );
+
+/** Leaves the person's current email unconfirmed as a staff change does after the person signed in with `provenEmail`. */
+export const markReplacedAfterSignIn = (personId, provenEmail) =>
+    db(
+        `INSERT INTO person_signin_psi (psi_per_ID, psi_ProvenEmail, psi_ProvenAt, psi_UnconfirmedEmail, psi_UnconfirmedSource, psi_UnconfirmedAt)
+         SELECT per_ID, ?, NOW() - INTERVAL 30 DAY, per_Email, 'staff', NOW() FROM person_per WHERE per_ID = ?
+         ON DUPLICATE KEY UPDATE psi_ProvenEmail = VALUES(psi_ProvenEmail), psi_ProvenAt = VALUES(psi_ProvenAt),
+             psi_UnconfirmedEmail = VALUES(psi_UnconfirmedEmail), psi_UnconfirmedSource = VALUES(psi_UnconfirmedSource),
+             psi_UnconfirmedAt = VALUES(psi_UnconfirmedAt)`,
+        [provenEmail, personId],
     );
 
 /** Puts the seed emails back (`{ personId: email }`) and removes those people's sign-in rows, remembered devices and given grants. */

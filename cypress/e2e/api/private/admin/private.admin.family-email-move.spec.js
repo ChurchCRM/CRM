@@ -229,25 +229,30 @@ describe("7.9.0 upgrade: family email moves to people", () => {
         movedNotes("Both").should("have.length", 1);
     });
 
-    it("handles each family once when it runs twice in the same second", () => {
-        const fixtureMoves = () =>
-            cy
-                .then(() =>
-                    cy.dbQuery(`SELECT COUNT(*) AS n FROM family_email_move_fem WHERE fem_fam_ID IN (${familyIds.map(Number).join(",")})`),
-                )
-                .its("rows.0.n");
-
-        addFamily("Twice", addr("twice"));
-        addPerson("twiceHead", "Twice", 1, addr("twice-head"));
-        addPerson("twiceSpouse", "Twice", 2, addr("twice-spouse"));
-        fixtureMoves().then((before) => {
-            runMove();
-            runMove();
-            fixtureMoves().should("eq", before + 1);
+    describe("a family added after the upgrade ran", () => {
+        before(() => {
+            addFamily("Twice", addr("twice"));
+            addPerson("twiceHead", "Twice", 1, addr("twice-head"));
+            addPerson("twiceSpouse", "Twice", 2, addr("twice-spouse"));
         });
-        moveOf("Twice").should("have.length", 1).its("0").should("include", { outcome: "noted", reason: "both_have_email" });
-        movedNotes("Twice").should("have.length", 1);
-        movedNotes("Both").should("have.length", 1);
+
+        it("handles each family once when it runs twice in the same second", () => {
+            const fixtureMoves = () =>
+                cy
+                    .then(() =>
+                        cy.dbQuery(`SELECT COUNT(*) AS n FROM family_email_move_fem WHERE fem_fam_ID IN (${familyIds.map(Number).join(",")})`),
+                    )
+                    .its("rows.0.n");
+
+            fixtureMoves().then((before) => {
+                runMove();
+                runMove();
+                fixtureMoves().should("eq", before + 1);
+            });
+            moveOf("Twice").should("have.length", 1).its("0").should("include", { outcome: "noted", reason: "both_have_email" });
+            movedNotes("Twice").should("have.length", 1);
+            movedNotes("Both").should("have.length", 1);
+        });
     });
 
     describe("a family email written later by an older client", () => {
@@ -276,47 +281,56 @@ describe("7.9.0 upgrade: family email moves to people", () => {
             );
         });
 
-        it("is neither shown on the family page nor printed in the directory", () => {
+        describe("on a family whose head and spouse have their own email", () => {
             const strayBoth = addr("stray-both");
-            const cart = (method, body) =>
-                cy.request({ method, url: "/api/cart/", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
 
-            cy.dbQuery("UPDATE family_fam SET fam_Email = ? WHERE fam_ID = ?", [strayBoth, fam.Both]);
-            cy.setupAdminSession();
-            cy.visit(`/people/family/${fam.Both}`);
-            cy.get("#family-email-card").should("contain.text", addr("both-head")).and("not.contain.text", strayBoth);
+            before(() => {
+                cy.dbQuery("UPDATE family_fam SET fam_Email = ? WHERE fam_ID = ?", [strayBoth, fam.Both]);
+            });
 
-            cart("DELETE", {});
-            cart("POST", { Family: fam.Both });
-            cy.request({
-                method: "POST",
-                url: "Reports/DirectoryReport.php",
-                form: true,
-                encoding: "binary",
-                body: {
-                    cartdir: "M",
-                    "sDirRoleHead[]": "1",
-                    "sDirRoleSpouse[]": "2",
-                    "sDirRoleChild[]": "3",
-                    bDirAddress: "1",
-                    bDirFamilyEmail: "1",
-                    bDirPersonalEmail: "1",
-                    sDirLayout: "pages",
-                    NumCols: "1",
-                    PageSize: "letter",
-                    FSize: "10",
-                    Submit: "Create Directory",
-                },
-            })
-                .then((response) => pdfText(response.body))
-                .then((lines) => {
-                    const text = lines.join("\n");
-                    expect(text).to.include(addr("both-head"));
-                    expect(text).to.include(addr("both-spouse"));
-                    expect(text).to.not.include(strayBoth);
-                });
-            cart("DELETE", {});
-            cy.dbQuery("UPDATE family_fam SET fam_Email = NULL WHERE fam_ID = ?", [fam.Both]);
+            after(() => {
+                cy.dbQuery("UPDATE family_fam SET fam_Email = NULL WHERE fam_ID = ?", [fam.Both]);
+            });
+
+            it("is neither shown on the family page nor printed in the directory", () => {
+                const cart = (method, body) =>
+                    cy.request({ method, url: "/api/cart/", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+
+                cy.setupAdminSession();
+                cy.visit(`/people/family/${fam.Both}`);
+                cy.get("#family-email-card").should("contain.text", addr("both-head")).and("not.contain.text", strayBoth);
+
+                cart("DELETE", {});
+                cart("POST", { Family: fam.Both });
+                cy.request({
+                    method: "POST",
+                    url: "Reports/DirectoryReport.php",
+                    form: true,
+                    encoding: "binary",
+                    body: {
+                        cartdir: "M",
+                        "sDirRoleHead[]": "1",
+                        "sDirRoleSpouse[]": "2",
+                        "sDirRoleChild[]": "3",
+                        bDirAddress: "1",
+                        bDirFamilyEmail: "1",
+                        bDirPersonalEmail: "1",
+                        sDirLayout: "pages",
+                        NumCols: "1",
+                        PageSize: "letter",
+                        FSize: "10",
+                        Submit: "Create Directory",
+                    },
+                })
+                    .then((response) => pdfText(response.body))
+                    .then((lines) => {
+                        const text = lines.join("\n");
+                        expect(text).to.include(addr("both-head"));
+                        expect(text).to.include(addr("both-spouse"));
+                        expect(text).to.not.include(strayBoth);
+                    });
+                cart("DELETE", {});
+            });
         });
 
         it("is moved by the same rule when the upgrade block runs again", () => {

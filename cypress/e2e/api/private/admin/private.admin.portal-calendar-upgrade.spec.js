@@ -44,42 +44,54 @@ describe("7.9.0 upgrade: the portal calendar follows the shared calendars", () =
         cy.then(() => cy.shareMemberPortalCalendars(savedCalendars));
     });
 
-    for (const off of ["0", ""]) {
-        it(`keeps the calendar hidden where the switch was off (${JSON.stringify(off)})`, () => {
+    /** The installation before the upgrade: the church calendar shared, and the old switch. */
+    const beforeTheUpgrade = (oldSwitch) => {
+        beforeEach(() => {
             cy.shareMemberPortalCalendars([CHURCH_CALENDAR]);
-            setOldSwitch(off);
+            setOldSwitch(oldSwitch);
+        });
+    };
 
-            runBlock();
-            oldSwitchRows().should("eq", 0);
-            cy.getMemberPortalCalendars().should("deep.eq", []);
+    for (const off of ["0", ""]) {
+        describe(`where the switch was off (${JSON.stringify(off)})`, () => {
+            beforeTheUpgrade(off);
 
-            cy.signInAsMember(100);
-            cy.request({ url: "/portal/calendar", failOnStatusCode: false }).its("status").should("eq", 404);
+            it("keeps the calendar hidden", () => {
+                runBlock();
+                oldSwitchRows().should("eq", 0);
+                cy.getMemberPortalCalendars().should("deep.eq", []);
+
+                cy.signInAsMember(100);
+                cy.request({ url: "/portal/calendar", failOnStatusCode: false }).its("status").should("eq", 404);
+            });
         });
     }
+
+    describe("run again", () => {
+        beforeTheUpgrade("0");
+
+        it("is safe to run again: a calendar shared after the upgrade stays shared", () => {
+            runBlock();
+
+            cy.shareMemberPortalCalendars([CHURCH_CALENDAR]);
+            runBlock();
+            oldSwitchRows().should("eq", 0);
+            cy.getMemberPortalCalendars().should("deep.eq", [CHURCH_CALENDAR]);
+        });
+    });
 
     for (const [label, on] of [
         ["switched on", "1"],
         ["never turned off", null],
     ]) {
-        it(`keeps the shared calendars where the switch was ${label}`, () => {
-            cy.shareMemberPortalCalendars([CHURCH_CALENDAR]);
-            setOldSwitch(on);
+        describe(`where the switch was ${label}`, () => {
+            beforeTheUpgrade(on);
 
-            runBlock();
-            oldSwitchRows().should("eq", 0);
-            cy.getMemberPortalCalendars().should("deep.eq", [CHURCH_CALENDAR]);
+            it("keeps the shared calendars", () => {
+                runBlock();
+                oldSwitchRows().should("eq", 0);
+                cy.getMemberPortalCalendars().should("deep.eq", [CHURCH_CALENDAR]);
+            });
         });
     }
-
-    it("is safe to run again: a calendar shared after the upgrade stays shared", () => {
-        cy.shareMemberPortalCalendars([CHURCH_CALENDAR]);
-        setOldSwitch("0");
-        runBlock();
-
-        cy.shareMemberPortalCalendars([CHURCH_CALENDAR]);
-        runBlock();
-        oldSwitchRows().should("eq", 0);
-        cy.getMemberPortalCalendars().should("deep.eq", [CHURCH_CALENDAR]);
-    });
 });

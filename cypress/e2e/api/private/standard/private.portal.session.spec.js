@@ -8,10 +8,12 @@
  * session for its own person. Once the staff session itself has
  * timed out (iSessionTimeout), only the portal session is left: that is the
  * "portal principal, no user" request the portal must accept and every staff
- * route must refuse. Disable sign-in also blocks the staff session (row 4). The
- * session version and the audit have no HTTP surface until row 9, so they are set
- * and read with cy.dbQuery().
+ * route must refuse. Disable sign-in also blocks the staff session (row 4).
+ * Settings, Disable sign-in and Sign out everywhere go through the admin API; the
+ * person's sign-in row and the stored audit rows are read with cy.dbQuery().
  */
+
+import { inOwnCookieJar } from "../../../../support/cookie-jar";
 
 const staffUser = { username: "tony.wade@example.com", password: "basicjoe", personId: 3 };
 const touchedConfig = ["iSessionTimeout", "iPortalIdleMinutes"];
@@ -22,11 +24,14 @@ const db = (sql, params = []) =>
         return result.rows;
     });
 
-const setConfig = (name, value) =>
-    db(
-        "INSERT INTO config_cfg (cfg_name, cfg_value) VALUES (?, ?) ON DUPLICATE KEY UPDATE cfg_value = VALUES(cfg_value)",
-        [name, value],
-    );
+const admin = (url, body = null, expectedStatus = 200) =>
+    inOwnCookieJar(() => cy.makePrivateAdminAPICall("POST", url, body, expectedStatus));
+
+const setConfig = (name, value) => inOwnCookieJar(() => cy.setSystemConfig(name, value));
+
+const signOutEverywhere = () => admin(`/admin/api/person/${staffUser.personId}/sign-in/sign-out-everywhere`);
+
+const disableSignIn = () => admin(`/admin/api/person/${staffUser.personId}/sign-in/disable`, { reason: "Session spec" });
 
 const signIn = ({ username, password }) => {
     cy.clearCookies();
@@ -50,27 +55,22 @@ describe("Member Portal session (portal principal)", () => {
     const savedConfig = {};
 
     before(() => {
-        db("SELECT cfg_name, cfg_value FROM config_cfg WHERE cfg_name IN (?, ?)", touchedConfig).then((rows) => {
-            rows.forEach((row) => {
-                savedConfig[row.cfg_name] = row.cfg_value;
+        touchedConfig.forEach((name) => {
+            cy.getSystemConfig(name).then((value) => {
+                savedConfig[name] = value;
             });
         });
+        db("DELETE FROM person_signin_psi WHERE psi_per_ID = ?", [staffUser.personId]);
     });
 
     afterEach(() => {
-        touchedConfig.forEach((name) => {
-            if (Object.hasOwn(savedConfig, name)) {
-                setConfig(name, savedConfig[name]);
-            } else {
-                db("DELETE FROM config_cfg WHERE cfg_name = ?", [name]);
-            }
-        });
-        db("UPDATE person_signin_psi SET psi_SignInDisabled = 0 WHERE psi_per_ID = ?", [staffUser.personId]);
+        cy.clearCookies();
+        touchedConfig.forEach((name) => cy.restoreSystemConfig(name, savedConfig[name]));
+        cy.makePrivateAdminAPICall("POST", `/admin/api/person/${staffUser.personId}/sign-in/enable`, null, [200, 409]);
         cy.clearCookies();
     });
 
     it("starts a STAFF portal session for a staff sign-in and audits it without secrets", () => {
-        db("DELETE FROM person_signin_psi WHERE psi_per_ID = ?", [staffUser.personId]);
         lastAuditId().then((startId) => {
             signIn(staffUser);
             openPortal();
@@ -137,9 +137,7 @@ describe("Member Portal session (portal principal)", () => {
             endStaffSession();
             cy.request("/api/portal/me").its("status").should("eq", 200);
 
-            db("UPDATE person_signin_psi SET psi_SessionVersion = psi_SessionVersion + 1 WHERE psi_per_ID = ?", [
-                staffUser.personId,
-            ]);
+            signOutEverywhere();
 
             cy.request({ url: "/api/portal/me", failOnStatusCode: false }).its("status").should("eq", 401);
             cy.request({ url: "/portal/", followRedirect: false }).then((response) => {
@@ -149,9 +147,8 @@ describe("Member Portal session (portal principal)", () => {
 
             auditRowsSince(staffUser.personId, startId).then((rows) => {
                 const ended = rows.filter((row) => row.psa_Event === "session_ended");
-                expect(ended).to.have.length(1);
-                expect(ended[0].psa_Reason).to.eq("session_version");
-                expect(ended[0].psa_Method).to.eq("staff");
+                expect(ended.map((row) => row.psa_Reason)).to.deep.equal(["signed_out_everywhere", "session_version"]);
+                expect(ended[1].psa_Method).to.eq("staff");
             });
         });
     });
@@ -162,7 +159,7 @@ describe("Member Portal session (portal principal)", () => {
             openPortal();
             endStaffSession();
 
-            db("UPDATE person_signin_psi SET psi_SignInDisabled = 1 WHERE psi_per_ID = ?", [staffUser.personId]);
+            disableSignIn();
 
             cy.request({ url: "/api/portal/me", failOnStatusCode: false }).its("status").should("eq", 401);
             auditRowsSince(staffUser.personId, startId).then((rows) => {
@@ -178,7 +175,7 @@ describe("Member Portal session (portal principal)", () => {
             signIn(staffUser);
             openPortal();
 
-            db("UPDATE person_signin_psi SET psi_SignInDisabled = 1 WHERE psi_per_ID = ?", [staffUser.personId]);
+            disableSignIn();
 
             cy.request({ url: "/portal/", followRedirect: false }).then((response) => {
                 expect(response.status).to.eq(302);
@@ -198,14 +195,13 @@ describe("Member Portal session (portal principal)", () => {
             signIn(staffUser);
             openPortal();
 
-            db("UPDATE person_signin_psi SET psi_SessionVersion = psi_SessionVersion + 1 WHERE psi_per_ID = ?", [
-                staffUser.personId,
-            ]);
+            signOutEverywhere();
 
             cy.request("/api/portal/me").its("status").should("eq", 200);
             auditRowsSince(staffUser.personId, startId).then((rows) => {
                 expect(rows.map((row) => `${row.psa_Event}:${row.psa_Reason ?? ""}`)).to.deep.equal([
                     "signed_in:",
+                    "session_ended:signed_out_everywhere",
                     "session_ended:session_version",
                     "signed_in:",
                 ]);

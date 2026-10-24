@@ -8,7 +8,11 @@
  * 2 Mathew (head, email removed here), 6 Constance and 7 Marion (made to share an
  * email), 14 Nathan (an unconfirmed moved address), 34 Alvin, 57 Jon and 92 Bruce
  * (heads with their own email). 95 Judith has a staff account and opens the portal from it.
+ * The upgrade's family email moves, old audit rows and past sign-ins are support
+ * fixtures; the people's emails and sign-in rows are set up and put back in SQL.
  */
+
+import { addOldAuditRows, ageFamilyConfirmations, recordFamilyEmailMoves, recordPastSignIn } from "../../../../support/member-sign-in-fixtures";
 
 const SETTINGS_URL = "/admin/api/member-portal/sign-in";
 const RULE = { sMemberSignInFamilyRoles: [1, 2, 3], sMemberSignInClassifications: [1, 2], iMemberSignInMinAge: 13 };
@@ -30,6 +34,13 @@ const summary = () => cy.makePrivateAdminAPICall("GET", "/admin/api/member-porta
 const stats = () => cy.makePrivateAdminAPICall("GET", "/admin/api/member-portal/stats", null, 200).its("body");
 const audit = (params = {}) =>
     cy.makePrivateAdminAPICall("GET", `/admin/api/member-portal/audit?${new URLSearchParams(params).toString()}`, null, 200).its("body");
+
+/** A family confirms its details through the emailed link, with a message. */
+const confirmFamilyByEmailLink = (familyId, message) =>
+    cy.makePrivateAdminAPICall("GET", `/api/family/${familyId}/verify/url`, null, 200).then(({ body }) => {
+        const path = new URL(body.url).pathname.replace(/^.*\/external\//, "/external/");
+        cy.request({ method: "POST", url: path, form: true, body: { message } }).its("status").should("eq", 200);
+    });
 
 const resetFixtures = () => {
     db("UPDATE person_per SET per_Email = 'mathew.campbell@example.com' WHERE per_ID = 2");
@@ -61,6 +72,7 @@ describe("Admin → Member Portal lists, audit and statistics", () => {
                     (34, NULL, NULL, NULL, NOW() - INTERVAL 40 DAY, 'email_link'),
                     (57, NULL, NULL, NULL, NOW() - INTERVAL 3 DAY, 'passkey')`,
         );
+        db("UPDATE user_usr SET usr_LastPortalActivity = NULL WHERE usr_per_ID = 95");
     });
 
     after(() => {
@@ -151,14 +163,13 @@ describe("Admin → Member Portal lists, audit and statistics", () => {
     });
 
     it("lists the family emails the upgrade could not move, with the counts by outcome", () => {
-        db(
-            `INSERT INTO family_email_move_fem (fem_fam_ID, fem_Email, fem_Outcome, fem_Reason, fem_per_ID, fem_NeedsConfirm, fem_DateMoved) VALUES
-             (1, '${MARK}-head@example.com', 'head', NULL, 2, 1, NOW()),
-             (2, '${MARK}-spouse@example.com', 'spouse', NULL, 7, 1, NOW()),
-             (3, '${MARK}-held@example.com', 'held', NULL, 14, 0, NOW()),
-             (7, '${MARK}-both@example.com', 'noted', 'both_have_email', NULL, 0, NOW()),
-             (12, '${MARK}-other@example.com', 'noted', 'other_person', 92, 0, NOW())`,
-        );
+        recordFamilyEmailMoves([
+            { familyId: 1, email: `${MARK}-head@example.com`, outcome: "head", personId: 2, needsConfirm: true },
+            { familyId: 2, email: `${MARK}-spouse@example.com`, outcome: "spouse", personId: 7, needsConfirm: true },
+            { familyId: 3, email: `${MARK}-held@example.com`, outcome: "held", personId: 14 },
+            { familyId: 7, email: `${MARK}-both@example.com`, outcome: "noted", reason: "both_have_email" },
+            { familyId: 12, email: `${MARK}-other@example.com`, outcome: "noted", reason: "other_person", personId: 92 },
+        ]);
         summary().then((body) => {
             expect(body["family-emails-not-moved"]).to.eq(2);
             expect(body.familyEmailMoves).to.include({ head: 1, spouse: 1, held: 1, noted: 2, total: 5 });
@@ -175,11 +186,9 @@ describe("Admin → Member Portal lists, audit and statistics", () => {
     });
 
     it("lists the families confirmed in the last 30 days by the emailed link", () => {
-        db(
-            `INSERT INTO note_nte (nte_fam_ID, nte_per_ID, nte_Private, nte_Text, nte_DateEntered, nte_EnteredBy, nte_Type)
-             VALUES (12, 0, 0, ?, NOW() - INTERVAL 2 DAY, -2, 'verify'), (19, 0, 0, ?, NOW() - INTERVAL 45 DAY, -2, 'verify')`,
-            [MARK, MARK],
-        );
+        confirmFamilyByEmailLink(12, MARK);
+        confirmFamilyByEmailLink(19, MARK);
+        ageFamilyConfirmations(19, MARK, 45);
         list("families-confirmed").then((body) => {
             const families = body.rows.map((row) => row.familyId);
             expect(families).to.include(12);
@@ -194,11 +203,9 @@ describe("Admin → Member Portal lists, audit and statistics", () => {
     it("filters the audit by person, event and dates, newest first, with nothing secret in a row", () => {
         cy.makePrivateAdminAPICall("POST", "/admin/api/person/92/sign-in/disable", { reason: "Lists spec" }, 200);
         cy.makePrivateAdminAPICall("POST", "/admin/api/person/92/sign-in/enable", null, 200);
-        db(
-            `INSERT INTO portal_signin_audit_psa (psa_Time, psa_per_ID, psa_Event, psa_Method, psa_Reason, psa_Email, psa_IP, psa_Detail)
-             VALUES (NOW() - INTERVAL 400 DAY, NULL, 'refused', 'email_code', 'no_match', ?, '10.0.0.9', ?)`,
-            [`${MARK}@example.com`, MARK],
-        );
+        addOldAuditRows([
+            { daysAgo: 400, event: "refused", method: "email_code", reason: "no_match", email: `${MARK}@example.com`, ip: "10.0.0.9", detail: MARK },
+        ]);
 
         audit({ personId: 92 }).then((body) => {
             expect(body.rows.map((row) => row.event).slice(0, 2)).to.deep.eq(["sign_in_enabled", "sign_in_disabled"]);
@@ -254,12 +261,10 @@ describe("Admin → Member Portal lists, audit and statistics", () => {
             expect(JSON.stringify(body.rows)).to.not.match(/[0-9a-f]{64}/);
         });
 
-        db(
-            `INSERT INTO portal_signin_audit_psa (psa_Time, psa_per_ID, psa_Event, psa_Method, psa_Reason, psa_Email, psa_Detail)
-             VALUES (NOW() - INTERVAL 401 DAY, NULL, 'refused', 'email_code', 'shared_email', ?, 'matched:6,7'),
-                    (NOW() - INTERVAL 402 DAY, 92, 'email_requested', 'email_code', NULL, ?, 'send_failed')`,
-            [`${MARK}-shared@example.com`, `${MARK}-send@example.com`],
-        );
+        addOldAuditRows([
+            { daysAgo: 401, event: "refused", method: "email_code", reason: "shared_email", email: `${MARK}-shared@example.com`, detail: "matched:6,7" },
+            { daysAgo: 402, personId: 92, event: "email_requested", method: "email_code", email: `${MARK}-send@example.com`, detail: "send_failed" },
+        ]);
         audit({ to: day(-300), length: "100" }).then((body) => {
             const byEmail = Object.fromEntries(body.rows.map((row) => [row.email, row]));
             expect(byEmail[`${MARK}-shared@example.com`].summary).to.eq("Matches: Constance Hart, Marion Hart");
@@ -272,12 +277,8 @@ describe("Admin → Member Portal lists, audit and statistics", () => {
     });
 
     it("reads Statistics from the person sign-in rows, and stops stamping the account", () => {
-        db("UPDATE user_usr SET usr_LastPortalActivity = NULL WHERE usr_per_ID = 95");
         stats().then((before) => {
-            db(
-                `INSERT INTO person_signin_psi (psi_per_ID, psi_LastSignIn, psi_LastMethod) VALUES (92, NOW() - INTERVAL 20 DAY, 'device')
-                 ON DUPLICATE KEY UPDATE psi_LastSignIn = VALUES(psi_LastSignIn), psi_LastMethod = VALUES(psi_LastMethod)`,
-            );
+            recordPastSignIn(92, 20, "device");
             cy.request({ method: "POST", url: "/admin/", form: true, body: { User: "judith.matthews@example.com", Password: "noMoney$" } });
             cy.request("/portal/");
 

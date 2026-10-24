@@ -17,6 +17,7 @@ import {
     useMemberSignIn,
     waitForMail,
 } from "../../../support/member-sign-in";
+import { ageSignInRequests } from "../../../support/member-sign-in-fixtures";
 
 /**
  * Member sign-in row 5 (#10463): /portal/login, the emailed code and link
@@ -242,10 +243,7 @@ describe("Member Portal sign-in by email", () => {
     it("refuses an expired link and code", () => {
         askInBrowser();
         signInEmail(member.email).then(({ code, link }) => {
-            db(
-                "UPDATE person_signin_request_psr SET psr_CreatedAt = DATE_SUB(psr_CreatedAt, INTERVAL 3 HOUR), psr_ExpiresAt = DATE_SUB(psr_ExpiresAt, INTERVAL 3 HOUR) WHERE psr_per_ID = ?",
-                [member.personId],
-            );
+            ageSignInRequests(member.personId, 3);
             typeCode(code);
             cy.get("#portalSignInCodeError").should("contain.text", "That code did not work");
             cy.visit(link);

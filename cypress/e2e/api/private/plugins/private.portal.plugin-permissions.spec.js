@@ -7,9 +7,11 @@
  * cypress/fixtures/plugins/portal-example is installed as a community plugin
  * through the fake registry. It declares two capabilities: a roster of each
  * group a person belongs to (from its own rule), and a notice board that only
- * an administrator gives. Given grants have no HTTP surface until row 9, so
- * they are written with cy.dbQuery().
+ * an administrator gives. Grants are given through the admin API; one the API
+ * refuses is a support fixture, and the plugin's grants are counted in SQL.
  */
+
+import { addStoredGrant, removeStoredGrant } from "../../../../support/member-sign-in-fixtures";
 
 const ID = "portal-example";
 const PLUGIN_URL = `/plugins/api/plugins/${ID}`;
@@ -25,12 +27,8 @@ const db = (sql, params = []) =>
         return result.rows;
     });
 
-const giveGrant = (capability, scopeType = "none", scopeId = 0) =>
-    db(
-        `INSERT INTO portal_grant_pgr (pgr_per_ID, pgr_Capability, pgr_ScopeType, pgr_ScopeId, pgr_Reason, pgr_GrantedBy_usr_ID, pgr_GrantedAt)
-         VALUES (?, ?, ?, ?, 'Cypress', 1, NOW())`,
-        [MEMBER.personId, capability, scopeType, scopeId],
-    );
+const giveGrant = (capability, scopeId = null) =>
+    cy.makePrivateAdminAPICall("POST", `/admin/api/person/${MEMBER.personId}/sign-in/grants`, { capability, scopeId, reason: "Cypress" }, 201);
 
 const pluginGrantCount = () =>
     db("SELECT COUNT(*) AS n FROM portal_grant_pgr WHERE pgr_Capability LIKE ?", [`plugin.${ID}.%`]).then((rows) => Number(rows[0].n));
@@ -97,10 +95,17 @@ describe("Member Portal plugin API (portal capabilities, rules, pages and nav)",
     });
 
     it("denies a capability the plugin did not declare, even one given to the person", () => {
-        giveGrant(`plugin.${ID}.undeclared`);
-        signIn();
-        status(`/portal/plugins/${ID}/undeclared`).should("eq", 404);
-        db("DELETE FROM portal_grant_pgr WHERE pgr_Capability = ?", [`plugin.${ID}.undeclared`]);
+        cy.makePrivateAdminAPICall(
+            "POST",
+            `/admin/api/person/${MEMBER.personId}/sign-in/grants`,
+            { capability: `plugin.${ID}.undeclared`, reason: "Cypress" },
+            400,
+        );
+        addStoredGrant(MEMBER.personId, `plugin.${ID}.undeclared`).then((grantId) => {
+            signIn();
+            status(`/portal/plugins/${ID}/undeclared`).should("eq", 404);
+            removeStoredGrant(grantId);
+        });
     });
 
     it("opens a page and its nav item for a given grant", () => {
@@ -129,7 +134,7 @@ describe("Member Portal plugin API (portal capabilities, rules, pages and nav)",
     });
 
     it("deletes the plugin's given grants on uninstall, and no others", () => {
-        giveGrant("portal.family.contacts.view", "family", 1);
+        giveGrant("portal.family.contacts.view", 1);
         cy.makePrivateAdminAPICall("DELETE", PLUGIN_URL, null, 200);
 
         pluginGrantCount().should("eq", 0);

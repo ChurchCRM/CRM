@@ -7,7 +7,10 @@
  *
  * cypress/fixtures/plugins/portal-example adds a rule-based capability (a roster
  * of each group a person belongs to) and one only an administrator gives.
+ * Remembered devices and a passkey with labels are support fixtures.
  */
+
+import { addPasskey, addRememberedDevice } from "../../../../support/member-sign-in-fixtures";
 
 const SETTINGS_URL = "/admin/api/member-portal/sign-in";
 const RULE = { sMemberSignInFamilyRoles: [1, 2, 3], sMemberSignInClassifications: [1, 2], iMemberSignInMinAge: 13 };
@@ -230,30 +233,20 @@ describe("Admin → Member Portal permissions and given grants", () => {
     });
 
     it("signs out one remembered device or removes a passkey of a person, and audits it", () => {
-        db(
-            `INSERT INTO person_device_pdv (pdv_per_ID, pdv_TokenHash, pdv_Kind, pdv_Label, pdv_CreatedAt, pdv_ExpiresAt)
-             VALUES (?, SHA2('row09-device-a', 256), 'browser', 'row09 laptop', NOW(), NOW() + INTERVAL 20 DAY),
-                    (?, SHA2('row09-device-b', 256), 'browser', 'row09 phone', NOW(), NOW() + INTERVAL 20 DAY)`,
-            [OTHER, OTHER],
-        );
-        db(
-            `INSERT INTO person_passkey_ppk (ppk_per_ID, ppk_CredentialId, ppk_CredentialHash, ppk_PublicKey, ppk_Label, ppk_CreatedAt)
-             VALUES (?, 'row09-credential', SHA2('row09-credential', 256), 'public-key', 'row09 passkey', NOW())`,
-            [OTHER],
-        );
-        db("SELECT pdv_ID AS id FROM person_device_pdv WHERE pdv_Label = 'row09 laptop'").then(([device]) => {
-            cy.makePrivateAdminAPICall("POST", `/admin/api/person/${CHILD}/sign-in/devices/${device.id}/remove`, null, 404);
-            cy.makePrivateAdminAPICall("POST", `/admin/api/person/${OTHER}/sign-in/devices/${device.id}/remove`, null, 200);
-            cy.makePrivateAdminAPICall("POST", `/admin/api/person/${OTHER}/sign-in/devices/${device.id}/remove`, null, 404);
+        addRememberedDevice(OTHER, { label: "row09 laptop", expiresInDays: 20 }).then((deviceId) => {
+            addRememberedDevice(OTHER, { label: "row09 phone", expiresInDays: 20 });
+            cy.makePrivateAdminAPICall("POST", `/admin/api/person/${CHILD}/sign-in/devices/${deviceId}/remove`, null, 404);
+            cy.makePrivateAdminAPICall("POST", `/admin/api/person/${OTHER}/sign-in/devices/${deviceId}/remove`, null, 200);
+            cy.makePrivateAdminAPICall("POST", `/admin/api/person/${OTHER}/sign-in/devices/${deviceId}/remove`, null, 404);
             db("SELECT pdv_Label AS label, pdv_RevokedAt AS revokedAt FROM person_device_pdv WHERE pdv_per_ID = ? AND pdv_Label LIKE 'row09 %' ORDER BY pdv_ID", [OTHER]).then((rows) => {
                 expect(rows.map((row) => row.label)).to.deep.eq(["row09 laptop", "row09 phone"]);
                 expect(rows[0].revokedAt, "signed out, kept for the member's list").to.not.be.null;
                 expect(rows[1].revokedAt).to.be.null;
             });
         });
-        db("SELECT ppk_ID AS id FROM person_passkey_ppk WHERE ppk_Label = 'row09 passkey'").then(([passkey]) => {
-            cy.makePrivateAdminAPICall("POST", `/admin/api/person/${OTHER}/sign-in/passkeys/${passkey.id}/remove`, null, 200);
-            cy.makePrivateAdminAPICall("POST", `/admin/api/person/${OTHER}/sign-in/passkeys/${passkey.id}/remove`, null, 404);
+        addPasskey(OTHER, { label: "row09 passkey" }).then((passkeyId) => {
+            cy.makePrivateAdminAPICall("POST", `/admin/api/person/${OTHER}/sign-in/passkeys/${passkeyId}/remove`, null, 200);
+            cy.makePrivateAdminAPICall("POST", `/admin/api/person/${OTHER}/sign-in/passkeys/${passkeyId}/remove`, null, 404);
         });
         cy.makePrivateAdminAPICall("GET", `/admin/api/member-portal/audit?personId=${OTHER}&length=2`, null, 200).then(({ body }) => {
             expect(body.rows.map((row) => row.event)).to.deep.eq(["passkey_removed", "device_removed"]);

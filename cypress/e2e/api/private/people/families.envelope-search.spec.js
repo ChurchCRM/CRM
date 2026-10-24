@@ -6,15 +6,32 @@ describe("Family search by envelope number (issue #9502)", () => {
     const search = (call) => call("GET", `/api/families/search/${ENVELOPE}`, null, 200);
     let originalSetting;
 
+    /** Assigns the family's envelope number in the Envelope Manager. */
+    const assignEnvelope = (envelope) => {
+        cy.clearCookies();
+        cy.readEnv("admin.username").then((username) =>
+            cy.readEnv("admin.password").then((password) =>
+                cy.request({ method: "POST", url: "/admin/", form: true, body: { User: username, Password: password } }),
+            ),
+        );
+        cy.request({
+            method: "POST",
+            url: "/ManageEnvelopes.php",
+            form: true,
+            body: { Classification: "0", Confirm: "Confirm", [`EnvelopeID_${FAMILY_ID}`]: String(envelope) },
+        });
+        cy.clearCookies();
+    };
+
     before(() => {
         cy.getSystemConfig("bUseDonationEnvelopes").then((v) => {
             originalSetting = v;
         });
-        cy.dbQuery("UPDATE family_fam SET fam_Envelope = ? WHERE fam_ID = ?", [ENVELOPE, FAMILY_ID]);
+        assignEnvelope(ENVELOPE);
     });
 
     after(() => {
-        cy.dbQuery("UPDATE family_fam SET fam_Envelope = 0 WHERE fam_ID = ?", [FAMILY_ID]);
+        assignEnvelope(0);
         cy.restoreSystemConfig("bUseDonationEnvelopes", originalSetting);
     });
 

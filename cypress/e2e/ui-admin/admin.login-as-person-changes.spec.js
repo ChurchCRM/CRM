@@ -1,13 +1,12 @@
 /// <reference types="cypress" />
 
-import { db } from "../../support/member-sign-in";
+import { addRememberedDevice, removeRememberedDevices } from "../../support/member-sign-in-fixtures";
 
 // Login as Person (#10463 row 12, docs/member-sign-in-design.md §6.5, §17): read-only
 // unless changes are allowed, every write recorded with both people, and how a
 // session ends.
 const MEMBER = 2; // Mathew Campbell, head of the Campbell family
 const ADMIN = 1;
-const DEVICE_TOKEN = "c".repeat(64);
 const SETTINGS = ["bAllowLoginAsPerson", "bLoginAsPersonCanWrite", "bMemberSignIn", "sVolunteerVersion", "iSessionTimeout"];
 const REFUSED = "Changes are turned off during Login as Person.";
 
@@ -89,6 +88,7 @@ const actionsOf = (session) =>
 
 describe("Login as Person: changes and endings", () => {
     const saved = {};
+    const addedDevices = [];
 
     before(() => {
         SETTINGS.forEach((name) => {
@@ -108,7 +108,7 @@ describe("Login as Person: changes and endings", () => {
 
     afterEach(() => {
         Object.entries(saved).forEach(([name, value]) => cy.restoreSystemConfig(name, value));
-        db("DELETE FROM person_device_pdv WHERE pdv_TokenHash = ?", [DEVICE_TOKEN]);
+        removeRememberedDevices(addedDevices.splice(0));
     });
 
     it("refuses every change while changes are off, and records each attempt", () => {
@@ -157,12 +157,8 @@ describe("Login as Person: changes and endings", () => {
 
     it("records every change with both people when changes are allowed", () => {
         setSetting("bLoginAsPersonCanWrite", "1");
-        db(
-            "INSERT INTO person_device_pdv (pdv_per_ID, pdv_TokenHash, pdv_Kind, pdv_Label, pdv_CreatedAt, pdv_ExpiresAt) VALUES (?, ?, 'browser', 'Row 12 test', NOW(), NOW() + INTERVAL 1 DAY)",
-            [MEMBER, DEVICE_TOKEN],
-        );
-        db("SELECT pdv_ID FROM person_device_pdv WHERE pdv_TokenHash = ?", [DEVICE_TOKEN]).then((devices) => {
-            const deviceId = devices[0].pdv_ID;
+        addRememberedDevice(MEMBER, { label: "Row 12 test", expiresInDays: 1 }).then((deviceId) => {
+            addedDevices.push(deviceId);
             newestAuditId().then((auditBefore) => {
                 startLoginAsPerson();
                 cy.visit("/portal/");

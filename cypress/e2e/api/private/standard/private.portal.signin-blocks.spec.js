@@ -7,38 +7,21 @@
  * request. Seed staff account noperm.user (Alice Noperm, person 901, family 1), password
  * changeme; seed member Lena Black (person 100, family 20), who signs in with her email.
  *
- * Remembered devices, passkeys, the session timeout and the audit have no HTTP surface
- * until rows 7, 8 and 9, so they are set and read with cy.dbQuery().
+ * The device comes from an email sign-in that stays signed in; a passkey, which only a
+ * WebAuthn ceremony registers, and "awaiting review" are support fixtures. The audit and
+ * the person's sign-in status are read through the admin API.
  */
+
+import { inOwnCookieJar } from "../../../../support/cookie-jar";
+import { addPasskey, clearAwaitingReview, markAwaitingReview, resetSignIn } from "../../../../support/member-sign-in-fixtures";
+import { auditRowsSince, newestAuditId, signInStatus } from "../../../../support/sign-in-audit";
 
 const staff = { username: "noperm.user", password: "changeme", personId: 901, familyId: 1 };
 const member = { personId: 100, familyId: 20 };
 const GENERIC_MESSAGE = "Invalid login or password";
 
-const db = (sql, params = []) =>
-    cy.dbQuery(sql, params).then((result) => {
-        expect(result.error, sql).to.be.null;
-        return result.rows;
-    });
-
-const lastAuditId = () =>
-    db("SELECT COALESCE(MAX(psa_ID), 0) AS id FROM portal_signin_audit_psa").then((rows) => Number(rows[0].id));
-
-const auditRowsSince = (personId, afterId) =>
-    db("SELECT * FROM portal_signin_audit_psa WHERE psa_per_ID = ? AND psa_ID > ? ORDER BY psa_ID", [personId, afterId]);
-
-/** An API-key call answers with a new session cookie; keep the browser's own session. */
-const keepingSession = (call) =>
-    cy.getCookies().then((cookies) => {
-        call();
-        cy.clearCookies();
-        cookies.forEach(({ name, value, path, domain, httpOnly, secure, sameSite }) => {
-            cy.setCookie(name, value, { path, domain, httpOnly, secure, sameSite });
-        });
-    });
-
 const adminPost = (url, body = null, expectedStatus = 200) =>
-    keepingSession(() => cy.makePrivateAdminAPICall("POST", url, body, expectedStatus));
+    inOwnCookieJar(() => cy.makePrivateAdminAPICall("POST", url, body, expectedStatus));
 
 const signIn = () => {
     cy.clearCookies();
@@ -51,22 +34,19 @@ const signIn = () => {
     });
 };
 
-const portalSessionOnly = () => {
-    cy.signInAsMember(member.personId);
+const portalSessionOnly = (options = {}) => {
+    cy.signInAsMember(member.personId, options);
     cy.request("/api/portal/me").its("body.profile.id").should("eq", member.personId);
 };
 
-const randomHash = () => Array.from({ length: 64 }, () => Math.floor(Math.random() * 16).toString(16)).join("");
-
-const addDeviceAndPasskey = () => {
-    db(
-        "INSERT INTO person_device_pdv (pdv_per_ID, pdv_TokenHash, pdv_Kind, pdv_CreatedAt, pdv_ExpiresAt) VALUES (?, ?, 'browser', NOW(), DATE_ADD(NOW(), INTERVAL 30 DAY))",
-        [member.personId, randomHash()],
-    );
-    db(
-        "INSERT INTO person_passkey_ppk (ppk_per_ID, ppk_CredentialId, ppk_CredentialHash, ppk_PublicKey, ppk_CreatedAt) VALUES (?, 'cypress-credential', ?, 'cypress-key', NOW())",
-        [member.personId, randomHash()],
-    );
+/** A member signed in on a remembered device, who also has a passkey. */
+const portalSessionWithDeviceAndPasskey = () => {
+    portalSessionOnly({ rememberDevice: true });
+    addPasskey(member.personId);
+    signInStatus(member.personId).then((status) => {
+        expect(status.devices).to.eq(1);
+        expect(status.passkeys).to.eq(1);
+    });
 };
 
 const blocks = [
@@ -78,7 +58,7 @@ const blocks = [
     {
         name: "awaiting review",
         reason: "needs_review",
-        apply: (person) => db("UPDATE person_per SET per_NeedsReview = 1 WHERE per_ID = ?", [person.personId]),
+        apply: (person) => markAwaitingReview(person.personId),
     },
     {
         name: "Disable sign-in",
@@ -90,11 +70,9 @@ const blocks = [
 describe("Sign-in blocks for everyone", () => {
     afterEach(() => {
         cy.clearCookies();
-        db("UPDATE family_fam SET fam_DateDeactivated = NULL WHERE fam_ID IN (?, ?)", [staff.familyId, member.familyId]);
-        db("UPDATE person_per SET per_NeedsReview = 0 WHERE per_ID IN (?, ?)", [staff.personId, member.personId]);
-        db("DELETE FROM person_signin_psi WHERE psi_per_ID IN (?, ?, 27)", [staff.personId, member.personId]);
-        db("DELETE FROM person_device_pdv WHERE pdv_per_ID = ?", [member.personId]);
-        db("DELETE FROM person_passkey_ppk WHERE ppk_per_ID = ?", [member.personId]);
+        [staff.familyId, member.familyId].forEach((familyId) => cy.makePrivateAdminAPICall("POST", `/api/family/${familyId}/activate/true`));
+        clearAwaitingReview([staff.personId, member.personId]);
+        resetSignIn([staff.personId, member.personId, 27]);
     });
 
     blocks.forEach(({ name, reason, apply }) => {
@@ -131,14 +109,14 @@ describe("Sign-in blocks for everyone", () => {
             });
 
             it("ends an open portal session on its next request", () => {
-                lastAuditId().then((startId) => {
+                newestAuditId().then((startId) => {
                     portalSessionOnly();
                     apply(member);
                     cy.request({ url: "/api/portal/me", failOnStatusCode: false }).its("status").should("eq", 401);
                     auditRowsSince(member.personId, startId).then((rows) => {
-                        const ended = rows.filter((row) => row.psa_Event === "session_ended");
+                        const ended = rows.filter((row) => row.event === "session_ended");
                         expect(ended).to.have.length(1);
-                        expect(ended[0].psa_Reason).to.eq(reason);
+                        expect(ended[0].reason).to.eq(reason);
                     });
                 });
             });
@@ -162,49 +140,50 @@ describe("Sign-in blocks for everyone", () => {
     });
 
     it("Disable sign-in removes devices and passkeys and is audited with the administrator", () => {
-        lastAuditId().then((startId) => {
-            portalSessionOnly();
-            addDeviceAndPasskey();
+        newestAuditId().then((startId) => {
+            portalSessionWithDeviceAndPasskey();
 
             adminPost(`/admin/api/person/${member.personId}/sign-in/disable`, { reason: "Blocks spec" });
 
             cy.request({ url: "/api/portal/me", failOnStatusCode: false }).its("status").should("eq", 401);
-            db("SELECT COUNT(*) AS n FROM person_device_pdv WHERE pdv_per_ID = ?", [member.personId]).its("0.n").should("eq", 0);
-            db("SELECT COUNT(*) AS n FROM person_passkey_ppk WHERE ppk_per_ID = ?", [member.personId]).its("0.n").should("eq", 0);
-            db("SELECT * FROM person_signin_psi WHERE psi_per_ID = ?", [member.personId]).then((rows) => {
-                expect(rows[0].psi_SignInDisabled).to.eq(1);
-                expect(rows[0].psi_DisabledBy_usr_ID).to.eq(1);
-                expect(rows[0].psi_DisabledReason).to.eq("Blocks spec");
+            signInStatus(member.personId).then((status) => {
+                expect(status.devices).to.eq(0);
+                expect(status.passkeys).to.eq(0);
+                expect(status.signInDisabled).to.eq(true);
+                expect(status.disabledBy.id).to.eq(1);
+                expect(status.disabledReason).to.eq("Blocks spec");
             });
             auditRowsSince(member.personId, startId).then((rows) => {
-                const disabled = rows.find((row) => row.psa_Event === "sign_in_disabled");
-                expect(disabled.psa_Actor_usr_ID).to.eq(1);
-                expect(disabled.psa_Detail).to.eq("devices=1 passkeys=1");
+                const disabled = rows.find((row) => row.event === "sign_in_disabled");
+                expect(disabled.actorId).to.eq(1);
+                expect(disabled.detail).to.eq("devices=1 passkeys=1");
                 expect(JSON.stringify(rows)).not.to.contain("Blocks spec");
             });
 
             adminPost(`/admin/api/person/${member.personId}/sign-in/enable`);
             auditRowsSince(member.personId, startId).then((rows) => {
-                expect(rows.map((row) => row.psa_Event)).to.include("sign_in_enabled");
+                expect(rows.map((row) => row.event)).to.include("sign_in_enabled");
             });
             portalSessionOnly();
         });
     });
 
     it("Sign out everywhere ends portal sessions and revokes devices but keeps passkeys", () => {
-        lastAuditId().then((startId) => {
-            portalSessionOnly();
-            addDeviceAndPasskey();
+        newestAuditId().then((startId) => {
+            portalSessionWithDeviceAndPasskey();
 
             adminPost(`/admin/api/person/${member.personId}/sign-in/sign-out-everywhere`);
 
             cy.request({ url: "/api/portal/me", failOnStatusCode: false }).its("status").should("eq", 401);
-            db("SELECT pdv_RevokedAt FROM person_device_pdv WHERE pdv_per_ID = ?", [member.personId]).its("0.pdv_RevokedAt").should("not.be.null");
-            db("SELECT COUNT(*) AS n FROM person_passkey_ppk WHERE ppk_per_ID = ?", [member.personId]).its("0.n").should("eq", 1);
+            signInStatus(member.personId).then((status) => {
+                expect(status.devices, "no device still signs in").to.eq(0);
+                expect(status.passkeys).to.eq(1);
+            });
             auditRowsSince(member.personId, startId).then((rows) => {
-                const events = rows.map((row) => `${row.psa_Event}:${row.psa_Reason ?? ""}:${row.psa_Actor_usr_ID ?? ""}`);
+                const events = rows.map((row) => `${row.event}:${row.reason ?? ""}:${row.actorId ?? ""}`);
                 expect(events).to.include("session_ended:signed_out_everywhere:1");
                 expect(events).to.include("session_ended:session_version:");
+                expect(rows.find((row) => row.reason === "signed_out_everywhere").detail).to.eq("devices=1");
             });
             portalSessionOnly();
         });
@@ -216,9 +195,7 @@ describe("Sign-in blocks for everyone", () => {
         cy.makePrivateAdminAPICall("POST", "/admin/api/person/1/sign-in/disable", { reason: "x" }, 403);
         cy.makePrivateAdminAPICall("POST", `/admin/api/person/${member.personId}/sign-in/disable`, { reason: " " }, 400);
         cy.makePrivateAdminAPICall("POST", `/admin/api/person/${member.personId}/sign-in/enable`, null, 409);
-        db("SELECT COUNT(*) AS n FROM person_signin_psi WHERE psi_per_ID = ? AND psi_SignInDisabled = 1", [member.personId])
-            .its("0.n")
-            .should("eq", 0);
+        signInStatus(member.personId).its("signInDisabled").should("eq", false);
     });
 
     it("refuses a browser request without the CSRF token", () => {

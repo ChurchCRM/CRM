@@ -197,13 +197,11 @@ describe("7.9.0 upgrade: the release-day cutover", () => {
     });
 
     it("applies the member rule to a member's feed once member sign-in is on, but not to staff", () => {
-        db(
-            "INSERT INTO config_cfg (cfg_name, cfg_value) VALUES ('bMemberSignIn', '1'), ('sMemberSignInClassifications', '2') " +
-                "ON DUPLICATE KEY UPDATE cfg_value = VALUES(cfg_value)",
-        );
+        cy.setSystemConfig("bMemberSignIn", "1");
+        cy.setSystemConfig("sMemberSignInClassifications", "2");
         feedStatus(feeds.selfService).should("eq", 404);
         feedStatus(feeds.readOnly).should("eq", 200);
-        db("UPDATE config_cfg SET cfg_value = '1' WHERE cfg_name = 'sMemberSignInClassifications'");
+        cy.setSystemConfig("sMemberSignInClassifications", "1");
         feedStatus(feeds.selfService).should("eq", 200);
     });
 

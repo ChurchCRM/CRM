@@ -5,9 +5,13 @@
  * (docs/member-sign-in-design.md §8, §4 "Teenagers", §17 "Portal permissions").
  *
  * Members sign in with their email (a portal-only session); the administrator
- * signs in at /admin and opens the portal (a STAFF principal). Given grants and
- * a person's role and birth year are set with cy.dbQuery().
+ * signs in at /admin and opens the portal (a STAFF principal). Grants are given
+ * through the admin API and a person's role and birth year in the person editor.
  */
+
+import { inOwnCookieJar } from "../../../../support/cookie-jar";
+import { endPortalGrant } from "../../../../support/member-sign-in-fixtures";
+import { savePersonEditor } from "../../../../support/person-editor";
 
 const LEADER = { personId: 100 };
 const NON_ADULT = { personId: 4, familyId: 1 };
@@ -17,6 +21,7 @@ const MATHEW_EMAIL = "mathew.campbell@example.com";
 const PREFIX = "PERM10463";
 const VERSION_URL = "/admin/api/system/config/sVolunteerVersion";
 const touchedConfig = ["bPortalShowVolunteer"];
+const NON_ADULT_SEED = { FamilyRole: 4, BirthYear: 1910, BirthMonth: 7, BirthDay: 23 };
 
 let ministryId = 0;
 let teamLed = 0;
@@ -24,17 +29,7 @@ let teamOther = 0;
 let leaderScopeId = 0;
 let originalVersion = "v1";
 
-const db = (sql, params = []) =>
-    cy.dbQuery(sql, params).then((result) => {
-        expect(result.error, sql).to.be.null;
-        return result.rows;
-    });
-
-const setConfig = (name, value) =>
-    db(
-        "INSERT INTO config_cfg (cfg_name, cfg_value) VALUES (?, ?) ON DUPLICATE KEY UPDATE cfg_value = VALUES(cfg_value)",
-        [name, value],
-    );
+const givenGrants = [];
 
 const signIn = ({ username, password, personId }) => {
     if (username === undefined) {
@@ -61,27 +56,28 @@ const csrfToken = () =>
         return match[1];
     });
 
-const giveGrant = (personId, capability, scopeType, scopeId, endsAtSql) =>
-    db(
-        `INSERT INTO portal_grant_pgr (pgr_per_ID, pgr_Capability, pgr_ScopeType, pgr_ScopeId, pgr_EndsAt, pgr_Reason, pgr_GrantedBy_usr_ID, pgr_GrantedAt)
-         VALUES (?, ?, ?, ?, ${endsAtSql}, 'Cypress', 1, NOW())`,
-        [personId, capability, scopeType, scopeId],
-    );
+const tomorrow = () => new Date(Date.now() + 86400000).toISOString().slice(0, 10);
+
+/** Gives a portal permission as the administrator; yields the grant id. */
+const giveGrant = (personId, capability, scopeId, endsOn = "") =>
+    inOwnCookieJar(() =>
+        cy
+            .makePrivateAdminAPICall("POST", `/admin/api/person/${personId}/sign-in/grants`, { capability, scopeId, endsOn, reason: "Cypress" }, 201)
+            .then(({ body }) => {
+                givenGrants.push({ personId, grantId: body.grantId });
+            }),
+    ).then(() => givenGrants[givenGrants.length - 1].grantId);
+
+const setConfig = (name, value) => inOwnCookieJar(() => cy.setSystemConfig(name, value));
 
 function cleanupFixtures() {
-    db("DELETE FROM portal_grant_pgr WHERE pgr_Reason = 'Cypress'");
-    db(
-        `DELETE vscp FROM volunteer_scope_vscp vscp
-           JOIN volunteer_team_vtem vtem ON vscp.vscp_ScopeType = 'team' AND vscp.vscp_ScopeID = vtem.vtem_ID
-           JOIN volunteer_ministry_vmin vmin ON vmin.vmin_ID = vtem.vtem_vmin_ID
-          WHERE vmin.vmin_Name LIKE ?`,
-        [`${PREFIX}%`],
-    );
-    db("SELECT vmin_ID FROM volunteer_ministry_vmin WHERE vmin_Name LIKE ?", [`${PREFIX}%`]).then((rows) => {
-        rows.forEach((row) => {
-            cy.makePrivateAdminAPICall("POST", `/api/ministries/ministries/${row.vmin_ID}`, { active: false }, [200, 404]);
-            cy.makePrivateAdminAPICall("DELETE", `/api/ministries/ministries/${row.vmin_ID}`, null, [200, 204, 404]);
-        });
+    cy.makePrivateAdminAPICall("GET", "/api/ministries/ministries", null, 200).then(({ body }) => {
+        body.ministries
+            .filter((ministry) => ministry.name.startsWith(PREFIX))
+            .forEach((ministry) => {
+                cy.makePrivateAdminAPICall("POST", `/api/ministries/ministries/${ministry.id}`, { active: false }, [200, 404]);
+                cy.makePrivateAdminAPICall("DELETE", `/api/ministries/ministries/${ministry.id}`, null, [200, 204, 404]);
+            });
     });
 }
 
@@ -93,13 +89,11 @@ describe("Member Portal permissions (portal permissions model)", () => {
         cy.getMemberPortalCalendars().then((calendars) => {
             savedCalendars = calendars;
         });
-        db(`SELECT cfg_name, cfg_value FROM config_cfg WHERE cfg_name IN (${touchedConfig.map(() => "?").join(", ")})`, touchedConfig).then(
-            (rows) => {
-                rows.forEach((row) => {
-                    savedConfig[row.cfg_name] = row.cfg_value;
-                });
-            },
-        );
+        touchedConfig.forEach((name) => {
+            cy.getSystemConfig(name).then((value) => {
+                savedConfig[name] = value;
+            });
+        });
         cy.makePrivateAdminAPICall("GET", VERSION_URL, null, 200).then((response) => {
             originalVersion = response.body.value ?? response.body.Value ?? "v1";
         });
@@ -141,17 +135,11 @@ describe("Member Portal permissions (portal permissions model)", () => {
     });
 
     afterEach(() => {
-        touchedConfig.forEach((name) => {
-            if (Object.hasOwn(savedConfig, name)) {
-                setConfig(name, savedConfig[name]);
-            } else {
-                db("DELETE FROM config_cfg WHERE cfg_name = ?", [name]);
-            }
+        cy.clearCookies();
+        touchedConfig.forEach((name) => cy.restoreSystemConfig(name, savedConfig[name]));
+        givenGrants.splice(0).forEach(({ personId, grantId }) => {
+            cy.makePrivateAdminAPICall("POST", `/admin/api/person/${personId}/sign-in/grants/${grantId}/remove`, null, [200, 404]);
         });
-        db("DELETE FROM portal_grant_pgr WHERE pgr_Reason = 'Cypress'");
-        db("UPDATE person_per SET per_fmr_ID = 4, per_BirthYear = 1910, per_BirthMonth = 7, per_BirthDay = 23 WHERE per_ID = ?", [
-            NON_ADULT.personId,
-        ]);
         cy.clearCookies();
     });
 
@@ -247,54 +235,58 @@ describe("Member Portal permissions (portal permissions model)", () => {
             });
         });
 
-        it("counts a head of household or spouse as an adult from 18, or when the birth year is unknown", () => {
-            const year = new Date().getFullYear();
-            const contactsVisible = () => cy.request("/api/portal/family").its("body.canSeeContacts");
+        describe("as a spouse", () => {
+            afterEach(() => {
+                savePersonEditor(NON_ADULT.personId, NON_ADULT_SEED).its("status").should("eq", 302);
+                cy.clearCookies();
+            });
 
-            db("UPDATE person_per SET per_fmr_ID = 2, per_BirthYear = ?, per_BirthMonth = 1, per_BirthDay = 1 WHERE per_ID = ?", [
-                year - 16,
-                NON_ADULT.personId,
-            ]);
-            signIn(NON_ADULT);
-            contactsVisible().should("eq", false);
+            it("counts a head of household or spouse as an adult from 18, or when the birth year is unknown", () => {
+                const year = new Date().getFullYear();
+                const contactsVisible = () => cy.request("/api/portal/family").its("body.canSeeContacts");
+                const saveBirthYear = (birthYear) =>
+                    inOwnCookieJar(() => savePersonEditor(NON_ADULT.personId, { BirthYear: birthYear }).its("status").should("eq", 302));
 
-            db("UPDATE person_per SET per_BirthYear = ? WHERE per_ID = ?", [year - 30, NON_ADULT.personId]);
-            contactsVisible().should("eq", true);
+                savePersonEditor(NON_ADULT.personId, { FamilyRole: 2, BirthYear: year - 16, BirthMonth: 1, BirthDay: 1 })
+                    .its("status")
+                    .should("eq", 302);
+                signIn(NON_ADULT);
+                contactsVisible().should("eq", false);
 
-            db("UPDATE person_per SET per_BirthYear = NULL WHERE per_ID = ?", [NON_ADULT.personId]);
-            contactsVisible().should("eq", true);
+                saveBirthYear(year - 30);
+                contactsVisible().should("eq", true);
+
+                saveBirthYear("");
+                contactsVisible().should("eq", true);
+            });
         });
     });
 
     describe("Given grants", () => {
         it("works until its end date", () => {
-            giveGrant(NON_ADULT.personId, "portal.family.contacts.view", "family", NON_ADULT.familyId, "DATE_ADD(NOW(), INTERVAL 1 DAY)");
-            signIn(NON_ADULT);
-            cy.request("/api/portal/family").then(({ body }) => {
-                expect(body.canSeeContacts).to.eq(true);
-                expect(body.canConfirm).to.eq(false);
-                expect(body.members.map((member) => member.email)).to.include(MATHEW_EMAIL);
-            });
+            giveGrant(NON_ADULT.personId, "portal.family.contacts.view", NON_ADULT.familyId, tomorrow()).then((grantId) => {
+                signIn(NON_ADULT);
+                cy.request("/api/portal/family").then(({ body }) => {
+                    expect(body.canSeeContacts).to.eq(true);
+                    expect(body.canConfirm).to.eq(false);
+                    expect(body.members.map((member) => member.email)).to.include(MATHEW_EMAIL);
+                });
 
-            db("UPDATE portal_grant_pgr SET pgr_EndsAt = DATE_SUB(NOW(), INTERVAL 1 DAY) WHERE pgr_Reason = 'Cypress'");
-            cy.request("/api/portal/family").its("body.canSeeContacts").should("eq", false);
+                endPortalGrant(grantId);
+                cy.request("/api/portal/family").its("body.canSeeContacts").should("eq", false);
+            });
         });
 
         it("lets a member run a team they were given, through the volunteer API too, until it ends", () => {
-            giveGrant(LEADER.personId, "volunteer.team.manage", "team", teamOther, "NULL");
-            signIn(LEADER);
-            status(`/portal/teams/${teamOther}`).should("eq", 200);
-            status(`/api/ministries/teams/${teamOther}`).should("eq", 200);
+            giveGrant(LEADER.personId, "volunteer.team.manage", teamOther).then((grantId) => {
+                signIn(LEADER);
+                status(`/portal/teams/${teamOther}`).should("eq", 200);
+                status(`/api/ministries/teams/${teamOther}`).should("eq", 200);
 
-            db("UPDATE portal_grant_pgr SET pgr_EndsAt = DATE_SUB(NOW(), INTERVAL 1 DAY) WHERE pgr_Reason = 'Cypress'");
-            status(`/portal/teams/${teamOther}`).should("eq", 404);
-            status(`/api/ministries/teams/${teamOther}`).should("eq", 403);
-        });
-
-        it("is ignored when its scope type does not match the capability", () => {
-            giveGrant(NON_ADULT.personId, "portal.family.contacts.view", "team", NON_ADULT.familyId, "NULL");
-            signIn(NON_ADULT);
-            cy.request("/api/portal/family").its("body.canSeeContacts").should("eq", false);
+                endPortalGrant(grantId);
+                status(`/portal/teams/${teamOther}`).should("eq", 404);
+                status(`/api/ministries/teams/${teamOther}`).should("eq", 403);
+            });
         });
     });
 

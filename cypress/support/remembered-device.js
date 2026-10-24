@@ -7,6 +7,7 @@ Cypress.Commands.add("endDeviceTokenGrace", (personId) =>
         .dbQuery(
             "UPDATE person_device_pdv SET pdv_PreviousValidUntil = pdv_PreviousValidUntil - INTERVAL 1 DAY WHERE pdv_per_ID = ? AND pdv_PreviousValidUntil IS NOT NULL",
             [personId],
+            { fixture: "cypress/support/remembered-device.js" },
         )
         .then(({ error }) => {
             expect(error, "ending the device token grace").to.eq(null);

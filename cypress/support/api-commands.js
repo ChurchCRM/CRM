@@ -42,6 +42,10 @@ Cypress.Commands.add("getSystemConfig", (name) => {
         .then((response) => String(response.body.value));
 });
 
+Cypress.Commands.add("setSystemConfig", (name, value) =>
+    cy.makePrivateAdminAPICall("POST", `admin/api/system/config/${name}`, { value: String(value) }, 200),
+);
+
 // Put a SystemConfig key back to a value captured with getSystemConfig, then
 // confirm it. Restore the captured value, never a literal: setValue() deletes
 // the config_cfg row when the value equals the default, so writing the default
@@ -157,9 +161,10 @@ Cypress.Commands.add(
 // assert them against the database itself (#9705). The task resolves with
 // `{ rows, error }` rather than rejecting, so a spec can assert that a write
 // was refused (ER_DUP_ENTRY, ER_NO_REFERENCED_ROW_2, ...) without failing the
-// test run.
-Cypress.Commands.add("dbQuery", (sql, params = []) => {
-    return cy.task("db:query", { sql, params }, { log: false });
+// test run. It runs only for the files cypress/db-access.json lets use the
+// database (#10377); a fixture in cypress/support/ names its own file.
+Cypress.Commands.add("dbQuery", (sql, params = [], { fixture = null } = {}) => {
+    return cy.task("db:query", { sql, params, spec: Cypress.spec.relative, fixture }, { log: false });
 });
 
 // ---------------------------------------------------------------------------

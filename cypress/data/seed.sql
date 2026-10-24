@@ -225,7 +225,10 @@ INSERT INTO `email_log_eml` (`eml_ID`, `eml_per_ID`, `eml_fam_ID`, `eml_usr_ID`,
 (6,2,NULL,1,'mathew.campbell@example.com','composer','Oldest message','<p>Dear Mathew,</p><p>This is the sixth and oldest seeded message.</p>','sent',NULL,'<seed-6@churchcrm.test>','2026-02-01 08:00:00',NULL,1,NULL),
 (7,3,NULL,NULL,'tony.wade@example.com','account.reset-token','Reset your ChurchCRM password',NULL,'sent',NULL,'<seed-7@churchcrm.test>','2026-07-04 12:00:00',NULL,1,NULL),
 (8,100,NULL,1,'lena.walker@example.com','composer','Seeded failed message for Lena','<p>Dear Lena,</p><p>This one never went out.</p>','failed','SMTP Error: Could not connect to SMTP host.',NULL,'2026-03-01 09:00:00',NULL,1,NULL),
-(9,100,NULL,NULL,'lena.walker@example.com','birthday','Seeded skipped birthday greeting for Lena',NULL,'skipped',NULL,NULL,'2026-03-02 06:00:00',NULL,0,NULL);
+(9,100,NULL,NULL,'lena.walker@example.com','birthday','Seeded skipped birthday greeting for Lena',NULL,'skipped',NULL,NULL,'2026-03-02 06:00:00',NULL,0,NULL),
+(10,3,NULL,NULL,'kind@example.com','volunteerassignment','Seeded volunteer assignment',NULL,'skipped',NULL,NULL,'2000-01-01 00:00:00',NULL,0,NULL),
+(11,3,NULL,NULL,'kind@example.com','volunteerhelpoffer','Seeded offer to help',NULL,'skipped',NULL,NULL,'2000-01-01 00:00:00',NULL,0,NULL),
+(12,3,NULL,NULL,'kind@example.com','email','Seeded email of no known kind',NULL,'skipped',NULL,NULL,'2000-01-01 00:00:00',NULL,0,NULL);
 
 INSERT INTO `event_attend` (`attend_id`, `event_id`, `person_id`, `checkin_date`, `checkin_id`, `checkout_date`, `checkout_id`) VALUES (1,3,104,'2017-04-15 17:23:46',26,NULL,NULL);
 

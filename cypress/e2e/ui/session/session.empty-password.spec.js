@@ -94,30 +94,32 @@ describe("Empty password", () => {
     });
 
     WHITESPACE_PASSWORDS.forEach(({ label, password, hash }) => {
-        it(`an account that already holds a password of ${label} cannot sign in with it`, () => {
-            cy.dbQuery("UPDATE user_usr SET usr_Password = ?, usr_FailedLogins = 0 WHERE usr_per_ID = ?", [
-                hash,
-                USER_ID,
-            ]);
-            cy.clearCookies();
-            cy.request({
-                method: "POST",
-                url: "/admin/",
-                form: true,
-                body: { User: USER_NAME, Password: password },
-                followRedirect: false,
-            })
-                .its("status")
-                .should("eq", 200);
-            cy.apiRequest({
-                method: "POST",
-                url: "/api/public/user/login",
-                headers: { "content-type": "application/json" },
-                body: { userName: USER_NAME, password },
-                failOnStatusCode: false,
-            }).then((resp) => {
-                expect(resp.status).to.eq(401);
-                expect(resp.body).not.to.have.property("apiKey");
+        describe(`an account that already holds a password of ${label}`, () => {
+            beforeEach(() => {
+                cy.dbQuery("UPDATE user_usr SET usr_Password = ?, usr_FailedLogins = 0 WHERE usr_per_ID = ?", [hash, USER_ID]);
+                cy.clearCookies();
+            });
+
+            it("cannot sign in with it", () => {
+                cy.request({
+                    method: "POST",
+                    url: "/admin/",
+                    form: true,
+                    body: { User: USER_NAME, Password: password },
+                    followRedirect: false,
+                })
+                    .its("status")
+                    .should("eq", 200);
+                cy.apiRequest({
+                    method: "POST",
+                    url: "/api/public/user/login",
+                    headers: { "content-type": "application/json" },
+                    body: { userName: USER_NAME, password },
+                    failOnStatusCode: false,
+                }).then((resp) => {
+                    expect(resp.status).to.eq(401);
+                    expect(resp.body).not.to.have.property("apiKey");
+                });
             });
         });
     });

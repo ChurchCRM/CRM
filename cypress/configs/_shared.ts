@@ -57,8 +57,61 @@ async function closeDbConnection(connection: any) {
   }
 }
 
+/**
+ * Who may use the database tasks: cypress/db-access.json, the same list
+ * `npm run lint` checks (#10377). A spec runs SQL only while the list approves
+ * it or keeps it on the baseline; a fixture in cypress/support/ names its own
+ * approved file. Only an approved schema spec changes the schema or runs an
+ * upgrade block. A refusal throws, so it fails the test instead of reading as
+ * a driver error a spec could assert on.
+ */
+const SCHEMA_CHANGE = /^\s*(?:CREATE|ALTER|DROP|TRUNCATE|RENAME|GRANT|REVOKE)\b|^\s*SET\s+GLOBAL\b/i;
+
+let currentSpec: string | null = null;
+
+/** Records which spec is running, so a task knows who called it. */
+export function trackCurrentSpec(on: (event: 'before:spec', handler: (spec: { relative: string }) => void) => void) {
+  on('before:spec', (spec) => {
+    currentSpec = spec.relative.split('\\').join('/');
+  });
+}
+
+function databaseAccess() {
+  const fs = require('fs');
+  const path = require('path');
+  return JSON.parse(fs.readFileSync(path.resolve(__dirname, '../db-access.json'), 'utf8'));
+}
+
+function refuseUnlisted({ spec, fixture, sql, upgradeBlock = false }: { spec?: string | null; fixture?: string | null; sql?: string; upgradeBlock?: boolean }) {
+  const caller = currentSpec || spec || null;
+  if (caller === null) {
+    // `cypress open` without experimentalInteractiveRunEvents; the lint guard still applies.
+    return;
+  }
+  const { approved = {}, baseline = {} } = databaseAccess();
+  const changesSchema = upgradeBlock || (sql !== undefined && SCHEMA_CHANGE.test(sql));
+  let problem: string | null = null;
+  if (fixture) {
+    if (!fixture.startsWith('cypress/support/') || approved[fixture]?.kind !== 'fixture') {
+      problem = `${fixture} is not a support fixture approved in cypress/db-access.json`;
+    } else if (changesSchema) {
+      problem = `the support fixture ${fixture} may not change the schema`;
+    }
+  } else if (changesSchema) {
+    if (approved[caller]?.kind !== 'schema') {
+      problem = `${caller} is not an approved schema spec, so it may not change the schema or run an upgrade block`;
+    }
+  } else if (!approved[caller] && !(baseline[caller] > 0)) {
+    problem = `cypress/db-access.json neither approves ${caller} nor keeps it on the baseline`;
+  }
+  if (problem !== null) {
+    throw new Error(`Database access refused (#10377): ${problem}. See .agents/skills/churchcrm/cypress-testing.md "Database access".`);
+  }
+}
+
 export const dbTasks = {
-  async 'db:query'({ sql, params }: { sql: string; params?: unknown[] }) {
+  async 'db:query'({ sql, params, spec = null, fixture = null }: { sql: string; params?: unknown[]; spec?: string | null; fixture?: string | null }) {
+    refuseUnlisted({ spec, fixture, sql });
     const connection = await openDbConnection(false);
     try {
       const [rows] = await connection.query(sql, params || []);
@@ -76,6 +129,7 @@ export const dbTasks = {
    * SQL an upgrade actually runs rather than a copy of it.
    */
   async 'db:upgradeBlock'({ script, block }: { script: string; block: string }) {
+    refuseUnlisted({ upgradeBlock: true });
     const fs = require('fs');
     const path = require('path');
 
