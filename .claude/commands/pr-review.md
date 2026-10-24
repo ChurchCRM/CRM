@@ -15,6 +15,7 @@ Read in order:
 - Do not approve. Do not merge.
 - Hard blocks → Request changes. Everything else → Comment.
 - UI changes: require a tablet/mobile manual pass. Ask for screenshots if they exist. Do not block only because shots are missing.
+- UI changes: check `playwright/` for anything the diff removes or renames (ids, routes, settings, labels). Request changes if a spec or video would break; a missing new capture is only a follow-up.
 - Dates, times, numbers, currency, timezone: follow `timezone-handling.md`. API/storage is ISO or naive `sTimeZone` wall-clock. Display settings are not parse formats. Wrong contract is Request changes.
 - Posted reviews include a checkbox list of what is still open.
 - Do not ask for `locale:build`.

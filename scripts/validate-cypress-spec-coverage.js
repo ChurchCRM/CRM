@@ -25,7 +25,7 @@
  * `specPattern`, so a spec this script calls reachable really is picked up by
  * the runner.
  *
- * Run:  npm run lint:cypress-spec-coverage
+ * Run:  npm run lint
  *       (runs the built-in self-test first, then scans the live tree)
  *       node scripts/validate-cypress-spec-coverage.js --self-test
  */
@@ -47,6 +47,7 @@ const RUNNER_CONFIGS = [
     'docker.config.ts',
     'docker-ui.config.ts',
     'docker-admin.config.ts',
+    'docker-api.config.ts',
     'locale.config.ts',
     'new-system.config.ts',
     'upgrade.config.ts',

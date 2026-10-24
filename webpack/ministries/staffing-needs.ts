@@ -156,7 +156,7 @@ function defaultCells(
   if (people.length === 0 && saved.length === 0) {
     return `
           <div class="col-12">
-            <div class="form-hint volunteer-need-default-empty">${escapeHtml(
+            <div class="form-text volunteer-need-default-empty">${escapeHtml(
               i18next.t("Nobody is qualified for this position yet, so it stays open."),
             )}</div>
           </div>`;

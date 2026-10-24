@@ -6,6 +6,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\Requests\APITokenAuthenticationRequest;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\Portal\Auth\PortalSessionStore;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -104,6 +105,9 @@ class AuthMiddleware implements MiddlewareInterface
                         return (new Response())->withStatus(302)->withHeader('Location', $result->nextStepURL);
                     }
                 }
+            } elseif ($this->isPortalPath($request) && PortalSessionStore::has()) {
+                // A portal session with no staff user (member sign-in design §3).
+                // PortalSessionMiddleware validates it; every other route refuses it below.
             } else {
                 $logger = LoggerUtils::getAppLogger();
                 $logger->warning('No authenticated user or session', [
@@ -237,11 +241,8 @@ class AuthMiddleware implements MiddlewareInterface
         $path = $request->getUri()->getPath();
         $rootPath = SystemURLs::getRootPath();
 
-        foreach (['/portal', '/api/portal'] as $allowedPrefix) {
-            $allowedPath = $rootPath . $allowedPrefix;
-            if ($path === $allowedPath || str_starts_with($path, $allowedPath . '/')) {
-                return true;
-            }
+        if ($this->isPortalPath($request)) {
+            return true;
         }
 
         foreach (self::AUTH_FLOW_EXEMPT_PATHS as $exemptPath) {
@@ -269,6 +270,22 @@ class AuthMiddleware implements MiddlewareInterface
         $user = AuthenticationManager::getCurrentUser();
 
         return $user instanceof User && $user->isVolunteerTeamLeaderEnabled();
+    }
+
+    /** `/portal` and `/api/portal`, anchored at the root path and matched by whole segments. */
+    private function isPortalPath(ServerRequestInterface $request): bool
+    {
+        $path = $request->getUri()->getPath();
+        $rootPath = SystemURLs::getRootPath();
+
+        foreach (['/portal', '/api/portal'] as $portalPrefix) {
+            $portalPath = $rootPath . $portalPrefix;
+            if ($path === $portalPath || str_starts_with($path, $portalPath . '/')) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private function isPath(ServerRequestInterface $request, string $pathPart): bool

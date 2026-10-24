@@ -16,6 +16,8 @@ require __DIR__ . '/routes/family.php';
 require __DIR__ . '/routes/person.php';
 require __DIR__ . '/routes/view.php';
 require __DIR__ . '/routes/cart.php';
+require __DIR__ . '/routes/email.php';
+require __DIR__ . '/routes/text.php';
 require __DIR__ . '/routes/self-register.php';
 require __DIR__ . '/routes/map.php';
 require __DIR__ . '/routes/reports.php';

@@ -1,61 +1,40 @@
-/**
- * ChurchCRM Calendar Decorative Elements & DatePicker Overrides
- *
- * Minimal custom styles after Bootstrap utility migration:
- * - Strike-through text divider for "Add New Calendar" button
- * - DatePicker styling overrides for modal z-index and compatibility
- *
- * Bootstrap utilities handle: table layouts (w-100), form validation (text-danger, invisible), field sizing
- * Used in: webpack/calendar-event-editor.js, src/skin/js/Calendar.js
- */
-
-/* ================================================
-   Strike-Through Text Divider Styles
-   Used for "Add New Calendar" decorative divider
-   No Bootstrap equivalent - must be custom
-   ================================================ */
-
-.strike {
-  display: block;
-  text-align: center;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.strike > span {
-  position: relative;
-  display: inline-block;
-}
-
-.strike:hover {
-  font-size: 22px;
-  color: lime;
-}
-
-.strike > span:before,
-.strike > span:after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: 9999px;
-  height: 1px;
-  background: grey;
-}
-
-.strike > span:before {
-  right: 100%;
-  margin-right: 15px;
-}
-
-.strike > span:after {
-  left: 100%;
-  margin-left: 15px;
-}
-
-/* Bootstrap / jQuery datepicker popup
-   Ensure the popup appears above fixed headers/sidebars */
+// Raise the datepicker popup above fixed headers and sidebars.
 .datepicker,
 .datepicker.dropdown-menu,
 .bootstrap-datepicker {
-  z-index: 2000 !important;
+  z-index: 2000 !important; // beats the plugin's inline z-index
+}
+
+// FullCalendar's Forma palette only switches on [data-color-scheme="dark"]; map its neutrals to Tabler tokens under the app's data-bs-theme.
+@media not print {
+  :root[data-bs-theme="dark"] {
+    --fc-forma-background: var(--tblr-bg-surface);
+    --fc-forma-foreground: var(--tblr-body-color);
+    --fc-forma-muted-foreground: var(--tblr-secondary-color);
+    --fc-forma-faint-foreground: color-mix(in srgb, var(--tblr-body-color) 40%, transparent);
+    --fc-forma-faint: #ffffff0a;
+    --fc-forma-muted: #ffffff14;
+    --fc-forma-strong: #ffffff1f;
+    --fc-forma-stronger: #ffffff29;
+    --fc-forma-strongest: #ffffff33;
+    --fc-forma-border: var(--tblr-border-color);
+    --fc-forma-muted-border: var(--tblr-border-color);
+    --fc-forma-strong-border: var(--tblr-border-color-active, #707070);
+    --fc-forma-highlight: #3788d859;
+  }
+}
+
+// bootstrap-datepicker hovers with a fixed #eee while the dropdown text follows the theme.
+[data-bs-theme="dark"] .datepicker {
+  table tr td.day:hover,
+  table tr td.focused,
+  table tr td span:hover,
+  table tr td span.focused,
+  .datepicker-switch:hover,
+  .prev:hover,
+  .next:hover,
+  tfoot tr th:hover {
+    background: var(--tblr-bg-surface-tertiary);
+    color: var(--tblr-body-color);
+  }
 }

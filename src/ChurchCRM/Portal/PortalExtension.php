@@ -2,14 +2,14 @@
 
 namespace ChurchCRM\Portal;
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\LocaleInfo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Plugin\PluginManager;
+use ChurchCRM\Portal\Auth\PortalContext;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use Twig\Extension\AbstractExtension;
@@ -179,13 +179,13 @@ class PortalExtension extends AbstractExtension implements GlobalsInterface
     }
 
     /**
-     * The per-user colour mode, normalised for the template: the user setting
-     * stores 'default' for light.
+     * The staff account's colour mode, normalised for the template: the user
+     * setting stores 'default' for light. A member session has no setting.
      */
     private function getColorMode(): string
     {
-        $user = AuthenticationManager::getCurrentUser();
-        if (!$user instanceof User) {
+        $user = PortalContext::staffUser();
+        if ($user === null) {
             return 'auto';
         }
 
@@ -255,8 +255,8 @@ class PortalExtension extends AbstractExtension implements GlobalsInterface
      */
     private function getMember(): array
     {
-        $user = AuthenticationManager::getCurrentUser();
-        if (!$user instanceof User) {
+        $person = PortalContext::person();
+        if (!$person instanceof Person) {
             return [
                 'id' => 0,
                 'firstName' => '',
@@ -271,30 +271,29 @@ class PortalExtension extends AbstractExtension implements GlobalsInterface
             ];
         }
 
-        $person = $user->getPerson();
-        $personId = (int) $user->getPersonId();
+        $staffUser = PortalContext::staffUser();
 
         return [
-            'id' => $personId,
-            'firstName' => $person ? (string) $person->getFirstName() : '',
-            'lastName' => $person ? (string) $person->getLastName() : '',
-            'fullName' => (string) $user->getFullName(),
+            'id' => (int) $person->getId(),
+            'firstName' => (string) $person->getFirstName(),
+            'lastName' => (string) $person->getLastName(),
+            'fullName' => (string) $person->getFullName(),
             // Not in design §3.4's table, but the home page greets a member with
             // their family's name; adding a field is a compatible change (§3.6).
-            'familyName' => $person && $person->getFamily() ? (string) $person->getFamily()->getName() : '',
-            'email' => (string) ($user->getEmail() ?? ''),
+            'familyName' => $person->getFamily() ? (string) $person->getFamily()->getName() : '',
+            'email' => (string) ($person->getEmail() ?? ''),
             // The portal's own endpoint, not /api/person/{id}/photo: a
             // self-service session is refused that path, so an avatar pointed
             // there renders broken for exactly the people the portal is for.
             // Empty when nobody has uploaded a photo, like profile.photoUrl.
-            'avatarUrl' => $person ? PortalSelfService::getPhotoUrl($person, $person) : '',
-            'familyId' => $person ? (int) $person->getFamId() : 0,
+            'avatarUrl' => PortalSelfService::getPhotoUrl($person, $person),
+            'familyId' => (int) $person->getFamId(),
             // True when this person holds a volunteer `team` scope — including on
             // a self-service login, which is the whole of the D14 revision (P17,
             // #9867). MP7 turns it into the "My Teams" nav entry; until then it is
             // a fact a theme may already render.
-            'isTeamLeader' => $user->isVolunteerTeamLeaderEnabled(),
-            'isStaff' => !$user->isEditSelfExclusive(),
+            'isTeamLeader' => $staffUser?->isVolunteerTeamLeaderEnabled() === true,
+            'isStaff' => $staffUser !== null && !$staffUser->isEditSelfExclusive(),
         ];
     }
 

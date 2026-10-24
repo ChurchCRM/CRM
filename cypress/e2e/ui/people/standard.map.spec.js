@@ -144,7 +144,7 @@ describe("Find Neighbors (/people/map/neighbors)", () => {
     describe("Update All Coordinates (#9846)", () => {
         it("Runs every batch from one click, passing the failure count as skip", () => {
             const calls = [];
-            cy.intercept("POST", "**/admin/api/map/geocode-all", (req) => {
+            cy.intercept("POST", "**/api/map/geocode-all", (req) => {
                 calls.push(req.body);
             }).as("geocodeAll");
 
@@ -174,6 +174,18 @@ describe("Find Neighbors (/people/map/neighbors)", () => {
                     cy.get("#geocodeAllResults .alert-warning .list-group-item").should("have.length.at.least", 1);
                 }
             });
+        });
+    });
+
+    describe("Update All Coordinates for a non-admin with Edit Records", () => {
+        beforeEach(() => {
+            cy.setupStandardSession();
+        });
+
+        it("Shows the button but not Map Settings", () => {
+            cy.visit("people/map");
+            cy.get("#geocodeAllBtn").should("be.visible");
+            cy.contains("a", "Map Settings").should("not.exist");
         });
     });
 });

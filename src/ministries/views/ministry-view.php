@@ -30,6 +30,10 @@ use ChurchCRM\Utils\InputUtils;
  *   - **The Occurrences tab has a search form**, not a "Filter by Date" dialog —
  *     Team · Event · From · To above the table, every field live.
  *
+ * A team leader who does not coordinate the ministry gets the team-only view
+ * (webpack/ministries/team-view.ts): Positions · Volunteers · Schedules · Occurrences
+ * for their own teams, and none of the ministry-wide markup.
+ *
  * Every string is `gettext()`. The JS strings live in
  * webpack/ministries/ministry.ts, because an `i18next.t()` call inside a .php file
  * is scanned by neither the PHP nor the JS extractor and is silently never
@@ -44,8 +48,12 @@ use ChurchCRM\Utils\InputUtils;
 /** @var bool $bIsMinistryCoordinator */
 /** @var bool $bCanPinAnyCalendar the viewer holds Add Events, so every calendar is offered */
 /** @var string|null $sClassUrlBase where a linked class opens, or null when the viewer cannot open groups */
+/** @var bool $bTeamView a team leader's view: their teams only, nothing ministry-wide */
+/** @var array<int, array{id: int, name: string}> $aTeams the teams of this ministry the team leader runs */
+/** @var bool $bSundaySchool the ministry provides teachers for Sunday School (D29) */
 
 $sRootPath = $sRootPath ?? SystemURLs::getRootPath();
+$bShowTeamFilters = !$bTeamView || count($aTeams) > 1;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
@@ -66,6 +74,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       API refuses for an active ministry regardless of what is rendered (D5). The
       counts the Delete dialog quotes come from the ministry document's summary.
     -->
+<?php if (!$bTeamView): ?>
     <div class="d-flex gap-2">
       <button type="button" class="btn btn-outline-primary btn-sm" id="ministry-edit-btn">
         <i class="fa-solid fa-pen me-1"></i><?= gettext('Edit') ?>
@@ -88,16 +97,19 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <?php endif; ?>
       <?php endif; ?>
     </div>
+<?php endif; ?>
   </div>
 
   <ul class="nav nav-tabs" id="volunteer-ministry-tabs" role="tablist">
+<?php if (!$bTeamView): ?>
     <li class="nav-item" role="presentation">
       <a class="nav-link active" id="nav-item-overview" href="#overview" data-bs-toggle="tab" role="tab" aria-controls="overview" aria-selected="true">
         <i class="fa-solid fa-circle-info me-1"></i><?= gettext('Overview') ?>
       </a>
     </li>
+<?php endif; ?>
     <li class="nav-item" role="presentation">
-      <a class="nav-link" id="nav-item-positions" href="#positions" data-bs-toggle="tab" role="tab" aria-controls="positions" aria-selected="false">
+      <a class="nav-link<?= $bTeamView ? ' active' : '' ?>" id="nav-item-positions" href="#positions" data-bs-toggle="tab" role="tab" aria-controls="positions" aria-selected="<?= $bTeamView ? 'true' : 'false' ?>">
         <i class="fa-solid fa-list-check me-1"></i><?= gettext('Positions') ?>
       </a>
     </li>
@@ -116,6 +128,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <i class="fa-solid fa-calendar-days me-1"></i><?= gettext('Occurrences') ?>
       </a>
     </li>
+<?php if (!$bTeamView): ?>
     <li class="nav-item" role="presentation">
       <a class="nav-link" id="nav-item-calendar" href="#calendar" data-bs-toggle="tab" role="tab" aria-controls="calendar" aria-selected="false">
         <i class="fa-solid fa-calendar-plus me-1"></i><?= gettext('Calendar') ?>
@@ -126,9 +139,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <i class="fa-solid fa-bullhorn me-1"></i><?= gettext('Help Wanted') ?>
       </a>
     </li>
+<?php endif; ?>
   </ul>
 
   <div class="card-body tab-content">
+<?php if (!$bTeamView): ?>
 
     <!--
       Overview: three counts, the description, the teams of the ministry, and — for
@@ -208,7 +223,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <?= gettext('Teams are the groups of people who serve in this ministry.') ?>
             </p>
           </div>
-          <div style="overflow-x: clip; overflow-y: visible;" class=" d-none" id="teams-table-wrapper">
+          <div class="table-clip-x d-none" id="teams-table-wrapper">
             <table class="table table-hover table-vcenter" id="volunteerTeamsTable">
               <thead>
                 <tr>
@@ -281,7 +296,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <?= gettext('A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well.') ?>
               </p>
             </div>
-            <div style="overflow-x: clip; overflow-y: visible;" class=" d-none" id="scopes-coordinators-wrapper">
+            <div class="table-clip-x d-none" id="scopes-coordinators-wrapper">
               <table class="table table-hover table-vcenter" id="volunteerCoordinatorsTable">
                 <thead>
                   <tr>
@@ -298,6 +313,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       </div>
 <?php endif; ?>
     </div>
+<?php endif; ?>
 
     <!--
       Volunteers (formerly Qualifications; #9707, design §5.4). People (rows) ×
@@ -319,10 +335,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     -->
     <div class="tab-pane fade" id="volunteers" role="tabpanel" aria-labelledby="nav-item-volunteers">
       <div class="row g-2 align-items-end mb-3">
+<?php if ($bShowTeamFilters): ?>
         <div class="col-12 col-md-4">
           <label class="form-label" for="qualification-team-filter"><?= gettext('Team') ?></label>
           <select class="form-select" id="qualification-team-filter"></select>
         </div>
+<?php endif; ?>
         <!-- Hidden until the list is long enough to need it (more than five
              names): on a short list it reads as a way to ADD a volunteer. -->
         <div class="col-12 col-md-4 d-none" id="qualification-filter-wrap">
@@ -340,9 +358,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <button type="button" class="btn btn-outline-primary" id="qualification-add-person">
             <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Add Volunteer') ?>
           </button>
+<?php if (!$bTeamView): ?>
           <button type="button" class="btn btn-outline-primary" id="qualification-cart-btn">
             <i class="fa-solid fa-cart-shopping me-1"></i><?= gettext('Add from Cart') ?>
           </button>
+<?php endif; ?>
         </div>
       </div>
 
@@ -388,7 +408,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 
     <!-- Positions -->
-    <div class="tab-pane fade" id="positions" role="tabpanel" aria-labelledby="nav-item-positions">
+    <div class="tab-pane fade<?= $bTeamView ? ' show active' : '' ?>" id="positions" role="tabpanel" aria-labelledby="nav-item-positions">
       <div class="d-flex justify-content-end mb-2">
         <button type="button" class="btn btn-primary btn-sm" id="position-add-btn">
           <i class="fa-solid fa-plus me-1"></i><?= gettext('Add position') ?>
@@ -410,7 +430,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <?= gettext('A position is a role someone serves in, such as Espresso or Song Leader.') ?>
         </p>
       </div>
-      <div style="overflow-x: clip; overflow-y: visible;" class=" d-none" id="positions-table-wrapper">
+      <div class="table-clip-x d-none" id="positions-table-wrapper">
         <table class="table table-hover table-vcenter" id="volunteerPositionsTable">
           <thead>
             <tr>
@@ -462,7 +482,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <?= gettext('A schedule says which calendar events a team staffs: a type of church service, a class\'s meetings, or this ministry\'s own events. Add one and generate its occurrences.') ?>
         </p>
       </div>
-      <div style="overflow-x: clip; overflow-y: visible;" class=" d-none" id="schedules-table-wrapper">
+      <div class="table-clip-x d-none" id="schedules-table-wrapper">
         <table class="table table-hover table-vcenter" id="volunteerSchedulesTable">
           <thead>
             <tr>
@@ -525,20 +545,22 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="d-flex justify-content-end" id="occurrences-toolbar"></div>
       </div>
       <div class="row g-2 align-items-end mb-3">
+<?php if ($bShowTeamFilters): ?>
         <div class="col-12 col-md-3">
           <label class="form-label" for="occurrence-team-filter"><?= gettext('Team') ?></label>
           <select class="form-select" id="occurrence-team-filter"></select>
         </div>
-        <div class="col-12 col-md-3">
+<?php endif; ?>
+        <div class="col-12 col-md-<?= $bShowTeamFilters ? '3' : '4' ?>">
           <label class="form-label" for="occurrence-event-filter"><?= gettext('Event') ?></label>
           <input type="search" class="form-control" id="occurrence-event-filter" maxlength="100"
                  placeholder="<?= InputUtils::escapeAttribute(gettext('Any event')) ?>">
         </div>
-        <div class="col-6 col-md-3">
+        <div class="col-6 col-md-<?= $bShowTeamFilters ? '3' : '4' ?>">
           <label class="form-label" for="occurrence-from"><?= gettext('From') ?></label>
           <input type="date" class="form-control" id="occurrence-from">
         </div>
-        <div class="col-6 col-md-3">
+        <div class="col-6 col-md-<?= $bShowTeamFilters ? '3' : '4' ?>">
           <label class="form-label" for="occurrence-to"><?= gettext('To') ?></label>
           <input type="date" class="form-control" id="occurrence-to">
         </div>
@@ -559,7 +581,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <?= gettext('Create a schedule and generate its occurrences, and the weeks to staff appear here.') ?>
         </p>
       </div>
-      <div style="overflow-x: clip; overflow-y: visible;" class=" d-none" id="occurrences-table-wrapper">
+      <div class="table-clip-x d-none" id="occurrences-table-wrapper">
         <table class="table table-hover table-vcenter" id="volunteerOccurrencesTable">
           <thead>
             <tr>
@@ -577,6 +599,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       </div>
     </div>
 
+<?php if (!$bTeamView): ?>
     <!--
       Calendar (D24): the events this ministry owns, created here through core's event
       code and edited in the core event editor. Upcoming by default; the switch shows the
@@ -674,6 +697,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <button type="button" class="btn btn-primary" id="help-wanted-save"><?= gettext('Save') ?></button>
       </div>
     </div>
+<?php endif; ?>
 
   </div>
 </div>
@@ -710,6 +734,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <?php endif; ?>
 
+<?php if (!$bTeamView): ?>
 <!--
   Team editor — name, description, active, and the team's leader.
 
@@ -856,6 +881,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   </div>
 </div>
 
+<?php endif; ?>
+
 <!-- Position editor -->
 <div class="modal fade" id="positionModal" tabindex="-1" aria-hidden="true" aria-labelledby="positionModalTitle">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -946,11 +973,23 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= InputUtils::escapeAttribute(gettext('Close')) ?>"></button>
       </div>
       <div class="modal-body">
+<?php if ($bTeamView): ?>
+        <p class="text-body-secondary">
+          <?= gettext("Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out.") ?>
+        </p>
+<?php endif; ?>
         <div class="mb-3">
           <label class="form-label" for="add-volunteer-person"><?= gettext('Person') ?></label>
           <select class="form-select person-search" id="add-volunteer-person"
                   data-placeholder="<?= InputUtils::escapeAttribute(gettext('Start typing a name')) ?>"></select>
         </div>
+<?php if ($bTeamView): ?>
+        <div class="d-none" id="add-volunteer-positions-row">
+          <div class="form-label"><?= gettext('Qualify them for') ?></div>
+          <div id="add-volunteer-positions"></div>
+          <div class="form-text"><?= gettext('Optional. You can tick positions on the grid later too.') ?></div>
+        </div>
+<?php endif; ?>
         <div class="alert alert-danger d-none mt-3" role="alert" id="add-volunteer-form-error">
           <i class="fa-solid fa-circle-exclamation me-1"></i><span class="volunteer-error-text"></span>
         </div>
@@ -963,6 +1002,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   </div>
 </div>
 
+<?php if (!$bTeamView): ?>
 <!--
   Add everyone in the cart (#9707, as amended). The Cart is the existing
   bulk-selection mechanism (P5); V2 adds a sink for it and no second selection UI.
@@ -993,6 +1033,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
   </div>
 </div>
+
+<?php endif; ?>
 
 <!-- Staff an event (D22): one calendar event, one team, its staffing needs and one occurrence. -->
 <div class="modal fade" id="staffEventModal" tabindex="-1" aria-hidden="true" aria-labelledby="staffEventModalTitle">
@@ -1191,6 +1233,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   </div>
 </div>
 
+<?php if (!$bTeamView): ?>
 <!--
   New event / New recurring event (D24). One dialog with a One-time / Recurring switch. The
   events are created through core with this ministry's id, and only created: staffing them is
@@ -1304,6 +1347,15 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   </div>
 </div>
 
+<?php endif; ?>
+
+<?php if ($bTeamView): ?>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+window.CRM = window.CRM || {};
+window.CRM.volunteerTeamView = <?= InputUtils::jsonEncodeForScript(['ministryId' => (int) $iMinistryId, 'ministryName' => $sMinistryName, 'teams' => $aTeams, 'sundaySchool' => $bSundaySchool]) ?>;
+</script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" src="<?= SystemURLs::assetVersioned('/skin/v2/ministries-team-view.min.js') ?>"></script>
+<?php else: ?>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 window.CRM = window.CRM || {};
 window.CRM.volunteerMinistry = {
@@ -1314,6 +1366,7 @@ window.CRM.volunteerMinistry = {
 };
 </script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>" src="<?= SystemURLs::assetVersioned('/skin/v2/ministries-ministry.min.js') ?>"></script>
+<?php endif; ?>
 
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

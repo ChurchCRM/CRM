@@ -86,16 +86,15 @@ describe("Member Portal — Profile", () => {
         cy.get("img#portal-profile-photo").should("have.prop", "naturalWidth").and("be.greaterThan", 0);
     });
 
-    it("Editing the mobile phone and email saves, toasts, and survives a reload", () => {
+    it("Editing the mobile phone saves, toasts, and survives a reload; the email is read-only", () => {
         const stamp = Date.now();
         const newPhone = `(206) 555-${String(stamp).slice(-4)}`;
-        const newEmail = `lena.portal.${stamp}@example.com`;
 
         login();
         cy.visit("/portal/profile/edit");
 
         cy.get("#portal-cellPhone").clear().type(newPhone);
-        cy.get("#portal-email").clear().type(newEmail);
+        cy.get("#portal-email").should("have.attr", "readonly");
         cy.get("#portal-profile-save").click();
 
         cy.get(".portal-flash-success", { timeout: 10000 })
@@ -107,7 +106,6 @@ describe("Member Portal — Profile", () => {
 
         cy.visit("/portal/profile");
         cy.get("#portal-profile-details [data-field=cellPhone]").should("contain", newPhone);
-        cy.get("#portal-profile-details [data-field=email]").should("contain", newEmail);
     });
 
     it("An empty required name is refused inline and nothing is saved", () => {
@@ -223,14 +221,12 @@ describe("Member Portal — Profile", () => {
             return lines;
         };
 
-        const saveEmail = (email) => {
-            cy.visit("/portal/profile/edit");
-            cy.get("#portal-email").clear();
-            if (email) {
-                cy.get("#portal-email").type(email);
-            }
-            cy.get("#portal-profile-save").click();
-            cy.get(".portal-flash-success", { timeout: 10000 }).should("be.visible");
+        // Members cannot change their own email; an administrator sets it.
+        const adminSaveEmail = (email) => {
+            cy.setupAdminSession();
+            cy.visit("/PersonEditor.php?PersonID=100");
+            cy.get("#Email").clear().type(email);
+            cy.get('button[name="PersonSubmit"]').click();
         };
 
         cy.viewport(375, 812);
@@ -239,7 +235,8 @@ describe("Member Portal — Profile", () => {
         cy.get("#portal-email")
             .invoke("val")
             .then((originalEmail) => {
-                saveEmail(longEmail);
+                adminSaveEmail(longEmail);
+                login();
 
                 for (const [path, list] of [
                     ["/portal/", "#portal-home-profile-details"],
@@ -261,7 +258,7 @@ describe("Member Portal — Profile", () => {
                     });
                 }
 
-                saveEmail(originalEmail);
+                adminSaveEmail(originalEmail);
             });
     });
 });

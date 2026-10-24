@@ -11,7 +11,7 @@
  */
 
 describe("People Settings hub", () => {
-    const SECTIONS = ["#peopleNewMembers", "#peopleFamilies", "#peoplePeople", "#peopleMap"];
+    const SECTIONS = ["#peopleNewMembers", "#peopleFamilies", "#peoplePeople", "#peopleGrades", "#peopleMap"];
     let savedProviders;
     let savedFriendDate;
     let savedDefaultCity;
@@ -60,6 +60,7 @@ describe("People Settings hub", () => {
                 ["Person Classifications", "mode=classes"],
                 ["Person Properties", "PropertyList.php?Type=p"],
                 ["Person Custom Fields", "PersonCustomFieldsEditor.php"],
+                ["Grades", "mode=grades"],
                 ["Family Roles", "mode=famroles"],
                 ["Family Properties", "PropertyList.php?Type=f"],
                 ["Family Custom Fields", "FamilyCustomFieldsEditor.php"],
@@ -138,7 +139,8 @@ describe("People Settings hub", () => {
                 expect(titles[0]).to.contain("New Members & Greeting");
                 expect(titles[1]).to.contain("Families");
                 expect(titles[2]).to.contain("People");
-                expect(titles[3]).to.contain("Map Settings");
+                expect(titles[3]).to.contain("Grade Promotion");
+                expect(titles[4]).to.contain("Map Settings");
             });
             cy.get("#peopleDefaults").should("not.exist");
             cy.get("#peopleNewMembers h4.subheader").should("contain", "New Record Defaults");

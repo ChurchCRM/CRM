@@ -162,7 +162,8 @@ class OpenLPPlugin extends AbstractPlugin
     }
 
     /**
-     * Validate that a URL hostname can be resolved (basic SSRF mitigation).
+     * Validate that the URL uses http(s) and that its hostname resolves.
+     * Internal/LAN addresses are allowed: OpenLP normally runs on the church network.
      *
      * @param string $url The URL to validate
      * @return string|null Error message if URL is invalid, null if valid
@@ -232,7 +233,6 @@ class OpenLPPlugin extends AbstractPlugin
             return ['success' => false, 'message' => gettext('Invalid server URL format.')];
         }
 
-        // Validate URL does not point to internal/reserved IP addresses (GHSA-hrfr-xg9w-hjm4)
         $urlValidationError = $this->validateServerUrl($serverUrl);
         if ($urlValidationError !== null) {
             return ['success' => false, 'message' => $urlValidationError];
@@ -269,10 +269,7 @@ class OpenLPPlugin extends AbstractPlugin
             if ($response === false) {
                 return [
                     'success' => false,
-                    'message' => sprintf(
-                        gettext('Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running.'),
-                        $serverUrl
-                    ),
+                    'message' => gettext('Failed to connect to OpenLP server.'),
                 ];
             }
 
@@ -287,11 +284,7 @@ class OpenLPPlugin extends AbstractPlugin
             if ($statusCode !== 200) {
                 return [
                     'success' => false,
-                    'message' => sprintf(
-                        gettext('Cannot connect to OpenLP at %s. Server returned HTTP %d.'),
-                        $serverUrl,
-                        $statusCode
-                    ),
+                    'message' => gettext('Failed to connect to OpenLP server.'),
                 ];
             }
 

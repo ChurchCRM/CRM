@@ -2,10 +2,10 @@
 
 namespace ChurchCRM\Portal;
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\Portal\Auth\PortalContext;
 use Throwable;
 
 /**
@@ -164,8 +164,6 @@ class PortalNav
             return false;
         }
 
-        $user = AuthenticationManager::getCurrentUser();
-
-        return $user instanceof User && $user->isVolunteerTeamLeaderEnabled();
+        return PortalContext::staffUser()?->isVolunteerTeamLeaderEnabled() === true;
     }
 }

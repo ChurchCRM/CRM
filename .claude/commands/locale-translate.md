@@ -5,7 +5,7 @@ Translate missing ChurchCRM UI terms for one or all locales.
 **Arguments:** `--list`, `--locale <code>`, or `--all`
 
 Follow the agent rules in [`.agents/skills/churchcrm/locale-translation-workflow.md`](../../.agents/skills/churchcrm/locale-translation-workflow.md).
-The complete locale loop, branches, uploads, and plural handling are in [`docs/locale-pipeline.md`](../../docs/locale-pipeline.md).
+The complete locale loop, branches, uploads, and plural handling are in [`docs/maintainers/locale-pipeline.md`](../../docs/maintainers/locale-pipeline.md).
 
 ## Mandatory rules
 
@@ -16,5 +16,5 @@ The complete locale loop, branches, uploads, and plural handling are in [`docs/l
 ## Related
 
 - [Locale Translation skill](../../.agents/skills/churchcrm/locale-translation-workflow.md)
-- [Locale pipeline](../../docs/locale-pipeline.md)
-- [Release process](../../docs/release-process.md)
+- [Locale pipeline](../../docs/maintainers/locale-pipeline.md)
+- [Release process](../../docs/maintainers/release-process.md)
