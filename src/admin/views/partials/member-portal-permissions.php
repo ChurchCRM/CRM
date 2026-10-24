@@ -10,6 +10,7 @@
         <?= gettext('What members can see and do in the portal, and where each permission comes from. People are counted among everyone the sign-in rules let in, and staff.') ?>
         <?= gettext('An administrator can give any permission to one person on that person\'s page. "Given by an administrator" then shows here, with the number of people who were given it.') ?>
     </p>
+    <div id="portalMemberFeaturesPanel" class="mb-3"></div>
     <div class="card">
         <div class="table-clip-x">
             <table class="table table-vcenter card-table" id="portalPermissionsTable">

@@ -1,20 +1,19 @@
 /**
  * Admin → Member Portal (#9864) — the page's behaviour.
  *
- * Five tabs are rendered server-side (Statistics, Settings, Sign-in, Themes,
- * Calendars); this bundle adds the six things that need the browser:
+ * The tabs are rendered server-side; this bundle adds what needs the browser:
  *
- *   1. the Settings Panel component for the four portal ConfigItems, which
- *      saves through POST /admin/api/system/config/{name};
- *   2. the "Check" button, which re-runs the theme validator and lists what it
- *      found without changing anything;
- *   3. theme activation, which goes through POST /admin/api/member-portal/theme
- *      so the validator can refuse — a refusal lists the findings and leaves
- *      the active theme alone;
- *   4. a refresh of the statistics numbers when that tab is opened;
- *   5. the Calendars tab's save, which posts the switched-on calendars to
+ *   1. three Settings Panels for the portal ConfigItems, each in the tab it
+ *      belongs to, saving through POST /admin/api/system/config/{name}:
+ *      the calendar switch (Calendars), Developer mode (Themes), and the
+ *      birthday and volunteering switches (Permissions);
+ *   2. the Themes tab's row actions: Check re-runs the validator and Activate
+ *      goes through POST /admin/api/member-portal/theme so the validator can
+ *      refuse. Either one shows what it found in the row under that theme;
+ *   3. a refresh of the statistics numbers when that tab is opened;
+ *   4. the Calendars tab's save, which posts the switched-on calendars to
  *      POST /admin/api/member-portal/calendars;
- *   6. the Sign-in tab's save, which posts every sign-in setting to
+ *   5. the Sign-in tab's save, which posts every sign-in setting to
  *      POST /admin/api/member-portal/sign-in. The server checks them all and
  *      saves none when one is wrong, naming each problem.
  *
@@ -28,7 +27,7 @@
  */
 import { wireAuditTab } from "./admin-member-portal/audit-tab";
 import { wireMembersTab } from "./admin-member-portal/members-tab";
-import { wirePermissionsTab } from "./admin-member-portal/permissions-tab";
+import { loadPermissionsCatalog, wirePermissionsTab } from "./admin-member-portal/permissions-tab";
 
 interface ThemeFinding {
   file: string;
@@ -54,10 +53,6 @@ interface PortalStats {
   neverSignedIn: number;
 }
 
-const SETTINGS_CONTAINER = "#portalSettingsPanel";
-const THEME_SELECT_ID = "portalThemeSelect";
-const FINDINGS_ID = "portalThemeFindings";
-const STATUS_BADGE_ID = "portalThemeStatusBadge";
 const CALENDARS_TABLE_ID = "portalCalendarsTable";
 const CALENDARS_STATUS_ID = "portalCalendarsStatus";
 
@@ -118,31 +113,26 @@ function statusPresentation(status: string): { cssClass: string; icon: string; l
   return { cssClass: "bg-success text-white", icon: "fa-circle-check", label: t("Valid") };
 }
 
-function paintStatusBadge(status: string): void {
-  const badge = document.getElementById(STATUS_BADGE_ID);
-  if (!badge) {
+function setBusy(button: HTMLButtonElement | null, busy: boolean): void {
+  if (!button) {
     return;
   }
-  const presentation = statusPresentation(status);
-  badge.className = `badge ${presentation.cssClass}`;
-  badge.innerHTML = `<i class="fa-solid ${presentation.icon} me-1"></i><span class="badge-text">${escapeHtml(presentation.label)}</span>`;
+  button.disabled = busy;
+}
+
+function themeRow(name: string): HTMLTableRowElement | null {
+  return document.querySelector<HTMLTableRowElement>(`#portalThemesTable tr[data-theme="${CSS.escape(name)}"]`);
 }
 
 /**
- * Draw the findings list under the theme picker. An empty list is a statement
- * in its own right — the designer asked a question and deserves an answer.
+ * The findings list for one theme. An empty list is a statement in its own
+ * right — the designer asked a question and deserves an answer.
  */
-function paintFindings(response: ThemeResponse): void {
-  const container = document.getElementById(FINDINGS_ID);
-  if (!container) {
-    return;
-  }
-
+function findingsHtml(response: ThemeResponse): string {
   if (response.findings.length === 0) {
-    container.innerHTML = `<div class="alert alert-success mb-0"><i class="fa-solid fa-circle-check me-2"></i>${escapeHtml(
+    return `<div class="alert alert-success mb-0"><i class="fa-solid fa-circle-check me-2"></i>${escapeHtml(
       t("This theme has no problems."),
     )}</div>`;
-    return;
   }
 
   const rows = response.findings
@@ -158,24 +148,34 @@ function paintFindings(response: ThemeResponse): void {
     .join("");
 
   const heading = response.activated === false ? t("This theme cannot be activated") : t("What the check found");
-
-  container.innerHTML = `
-    <div class="card">
-      <div class="card-header py-2"><h4 class="card-title mb-0">${escapeHtml(heading)}</h4></div>
-      <div class="card-body py-2"><ul class="list-unstyled mb-0">${rows}</ul></div>
-    </div>`;
+  return `<div class="fw-medium mb-1">${escapeHtml(heading)}</div><ul class="list-unstyled mb-0">${rows}</ul>`;
 }
 
-function selectedTheme(): string {
-  const select = document.getElementById(THEME_SELECT_ID) as HTMLSelectElement | null;
-  return select?.value ?? "";
-}
-
-function setBusy(button: HTMLButtonElement | null, busy: boolean): void {
-  if (!button) {
+/** Repaint one theme's row with a fresh result and open the findings under it. */
+function paintThemeResult(name: string, response: ThemeResponse): void {
+  const row = themeRow(name);
+  const findingsRow = document.getElementById(`portalFindings-${name}`);
+  if (!row || !findingsRow) {
     return;
   }
-  button.disabled = busy;
+
+  const badge = row.querySelector<HTMLElement>(".portal-theme-status");
+  if (badge) {
+    const presentation = statusPresentation(response.status);
+    badge.className = `badge ${presentation.cssClass} portal-theme-status`;
+    badge.innerHTML = `<i class="fa-solid ${presentation.icon} me-1"></i>${escapeHtml(presentation.label)}`;
+  }
+  row.querySelector(".portal-theme-findings-toggle")?.classList.toggle("d-none", response.findings.length === 0);
+  const count = row.querySelector(".portal-theme-findings-count");
+  if (count) {
+    count.textContent = String(response.findings.length);
+  }
+
+  const cell = findingsRow.querySelector(".portal-theme-findings");
+  if (cell) {
+    cell.innerHTML = findingsHtml(response);
+  }
+  window.bootstrap.Collapse?.getOrCreateInstance(findingsRow, { toggle: false }).show();
 }
 
 /** Run the validator against one theme and show what it found. */
@@ -188,9 +188,7 @@ async function checkTheme(name: string): Promise<void> {
     window.CRM?.notify?.(t("That theme could not be checked."), { type: "danger" });
     return;
   }
-  const body: ThemeResponse = await response.json();
-  paintStatusBadge(body.status);
-  paintFindings(body);
+  paintThemeResult(name, await response.json());
 }
 
 /**
@@ -215,8 +213,7 @@ async function activateTheme(name: string): Promise<void> {
   }
 
   if (response.status === 409 && body) {
-    paintStatusBadge("error");
-    paintFindings({ ...body, activated: false });
+    paintThemeResult(name, { ...body, status: "error", activated: false });
     window.CRM?.notify?.(t("That theme has errors, so it was not activated."), { type: "danger" });
     return;
   }
@@ -226,8 +223,7 @@ async function activateTheme(name: string): Promise<void> {
     return;
   }
 
-  paintStatusBadge(body.status);
-  paintFindings(body);
+  paintThemeResult(name, body);
   window.CRM?.notify?.(t("The Member Portal theme was changed."), { type: "success" });
   window.setTimeout(() => window.location.reload(), 1500);
 }
@@ -248,63 +244,35 @@ async function refreshStatistics(): Promise<void> {
 }
 
 function wireThemeControls(): void {
-  const checkButton = document.getElementById("portalThemeCheckButton") as HTMLButtonElement | null;
-  const activateButton = document.getElementById("portalThemeActivateButton") as HTMLButtonElement | null;
-  const select = document.getElementById(THEME_SELECT_ID) as HTMLSelectElement | null;
-
-  checkButton?.addEventListener("click", async () => {
-    setBusy(checkButton, true);
-    await checkTheme(selectedTheme());
-    setBusy(checkButton, false);
-  });
-
-  activateButton?.addEventListener("click", async () => {
-    setBusy(activateButton, true);
-    await activateTheme(selectedTheme());
-    setBusy(activateButton, false);
-  });
-
-  // Picking a different entry shows that entry's badge from the server-side
-  // validation; the Check button is what re-runs the validator.
-  select?.addEventListener("change", () => {
-    const option = select.options[select.selectedIndex];
-    paintStatusBadge(option?.dataset.status ?? "ok");
-    const findings = document.getElementById(FINDINGS_ID);
-    if (findings) {
-      findings.innerHTML = "";
-    }
-  });
-
-  // Row actions on the Themes tab drive the same two operations.
   for (const button of document.querySelectorAll<HTMLButtonElement>(".portal-theme-activate")) {
     button.addEventListener("click", () => activateTheme(button.dataset.theme ?? ""));
   }
   for (const button of document.querySelectorAll<HTMLButtonElement>(".portal-theme-check")) {
-    button.addEventListener("click", async () => {
-      const name = button.dataset.theme ?? "";
-      if (select) {
-        select.value = name;
-      }
-      await checkTheme(name);
-      document.getElementById("portal-settings-tab")?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
-    });
+    button.addEventListener("click", () => checkTheme(button.dataset.theme ?? ""));
   }
 }
 
-function wireSettingsPanel(): void {
-  const panel = window.CRM?.settingsPanel;
-  if (!panel || !document.querySelector(SETTINGS_CONTAINER)) {
+/**
+ * The portal ConfigItems carry no System Settings category, so each lives in
+ * the tab it affects, and a link to that page would be a dead end.
+ */
+function wireSettingsPanels(): void {
+  const SettingsPanel = window.CRM?.SettingsPanel;
+  if (!SettingsPanel) {
     return;
   }
+  const panel = (
+    container: string,
+    options: { title: string; icon: string; settings: CRMSettingsPanelSetting[]; onSave?: () => void },
+  ): void => {
+    if (document.querySelector(container)) {
+      new SettingsPanel().init({ container, showAllSettingsLink: false, autoSave: true, ...options });
+    }
+  };
 
-  panel.init({
-    container: SETTINGS_CONTAINER,
-    title: t("Portal settings"),
-    icon: "fa-solid fa-sliders",
-    headerClass: "bg-info-lt",
-    // These four items deliberately carry no System Settings category, so a
-    // link to that page would be a dead end.
-    showAllSettingsLink: false,
+  panel("#portalCalendarSectionPanel", {
+    title: t("Calendar section"),
+    icon: "fa-solid fa-calendar-days",
     settings: [
       {
         name: "bPortalShowCalendar",
@@ -312,18 +280,13 @@ function wireSettingsPanel(): void {
         label: t("Show the church calendar"),
         tooltip: t("Show the church calendar section in the Member Portal."),
       },
-      {
-        name: "bPortalShowVolunteer",
-        type: "boolean",
-        label: t("Show volunteering"),
-        tooltip: t("Show the volunteering and team sections in the Member Portal."),
-      },
-      {
-        name: "bPortalAllowBirthdayEdit",
-        type: "boolean",
-        label: t("Let members edit birthdays"),
-        tooltip: t("Allow members to change their own and their family members' birthdays."),
-      },
+    ],
+  });
+
+  panel("#portalDeveloperModePanel", {
+    title: t("Theme development"),
+    icon: "fa-solid fa-code",
+    settings: [
       {
         name: "bPortalDeveloperMode",
         type: "boolean",
@@ -333,9 +296,27 @@ function wireSettingsPanel(): void {
         ),
       },
     ],
-    onSave: () => {
-      window.setTimeout(() => window.location.reload(), 1500);
-    },
+  });
+
+  // Both switches feed the catalog's On/Off column, so it is redrawn after a save.
+  panel("#portalMemberFeaturesPanel", {
+    title: t("What members can use"),
+    icon: "fa-solid fa-toggle-on",
+    settings: [
+      {
+        name: "bPortalAllowBirthdayEdit",
+        type: "boolean",
+        label: t("Let members edit birthdays"),
+        tooltip: t("Allow members to change their own and their family members' birthdays."),
+      },
+      {
+        name: "bPortalShowVolunteer",
+        type: "boolean",
+        label: t("Show volunteering"),
+        tooltip: t("Show the volunteering and team sections in the Member Portal."),
+      },
+    ],
+    onSave: () => void loadPermissionsCatalog(),
   });
 }
 
@@ -526,7 +507,7 @@ function openTabFromHash(): void {
 
 function start(): void {
   wireThemeControls();
-  wireSettingsPanel();
+  wireSettingsPanels();
   wireCalendarControls();
   wireSignInTab();
   wireMembersTab();

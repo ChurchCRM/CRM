@@ -12,11 +12,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 /*
  * Admin → Member Portal (#9864, design §4).
  *
- * Variables from the route: $themes, $activeTheme, $activeThemeExists,
- * $developerMode, $showCalendar, $showVolunteer, $allowBirthdayEdit, $stats,
+ * Variables from the route: $themes, $activeTheme, $activeThemeExists, $stats,
  * $portalCalendars, $signIn, $memberLists, $csrfToken.
  *
- * Every theme was validated server-side by the route, so each entry carries a
+ * Every theme was validated server-side by the route, so each row carries a
  * badge on first paint without a round trip. The page's behaviour lives in
  * webpack/admin-member-portal.ts.
  */
@@ -30,7 +29,7 @@ $statusBadge = static function (string $status): array {
     };
 };
 
-/** A theme's label in the dropdown: the system theme is named as such. */
+/** A theme's label in the Themes tab: the system theme is named as such. */
 $themeLabel = static function (array $theme): string {
     return $theme['isDefault'] ? gettext('System default') : $theme['name'];
 };
@@ -64,6 +63,7 @@ $themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration
                     gettext('The Member Portal is set to the theme "%s", which is no longer on the server. Members are seeing an error page until you pick a theme that exists.'),
                     InputUtils::escapeHTML($activeTheme)
                 ) ?>
+                <a href="#portal-themes" class="ms-1"><?= gettext('Choose a theme') ?></a>
             </p>
         </div>
     <?php endif; ?>
@@ -72,11 +72,6 @@ $themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration
         <li class="nav-item" role="presentation">
             <a class="nav-link active" id="portal-statistics-tab" data-bs-toggle="tab" href="#portal-statistics" role="tab">
                 <i class="fa-solid fa-chart-simple me-2"></i><?= gettext('Statistics') ?>
-            </a>
-        </li>
-        <li class="nav-item" role="presentation">
-            <a class="nav-link" id="portal-settings-tab" data-bs-toggle="tab" href="#portal-settings" role="tab">
-                <i class="fa-solid fa-sliders me-2"></i><?= gettext('Settings') ?>
             </a>
         </li>
         <li class="nav-item" role="presentation">
@@ -113,70 +108,6 @@ $themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration
     </ul>
 
     <div class="tab-content pt-3">
-
-        <!-- ============================ Settings ============================ -->
-        <div class="tab-pane fade" id="portal-settings" role="tabpanel">
-            <div class="row">
-                <div class="col-12 col-xl-6">
-                    <div class="card mb-3">
-                        <div class="card-header">
-                            <h3 class="card-title mb-0">
-                                <i class="fa-solid fa-palette me-2"></i><?= gettext('Theme') ?>
-                            </h3>
-                        </div>
-                        <div class="card-body">
-                            <label class="form-label" for="portalThemeSelect"><?= gettext('Portal theme') ?></label>
-                            <div class="d-flex gap-2 align-items-start flex-wrap">
-                                <select class="form-select w-auto flex-grow-1" id="portalThemeSelect">
-                                    <?php foreach ($themes as $theme): ?>
-                                        <?php [$badgeClass, $badgeIcon, $badgeLabel] = $statusBadge($theme['status']); ?>
-                                        <option value="<?= InputUtils::escapeAttribute($theme['id']) ?>"
-                                                data-status="<?= InputUtils::escapeAttribute($theme['status']) ?>"
-                                                <?= $theme['id'] === $activeTheme ? 'selected' : '' ?>>
-                                            <?= InputUtils::escapeHTML($themeLabel($theme)) ?> — <?= InputUtils::escapeHTML($badgeLabel) ?>
-                                        </option>
-                                    <?php endforeach; ?>
-                                </select>
-                                <button type="button" class="btn btn-outline-secondary" id="portalThemeCheckButton">
-                                    <i class="fa-solid fa-stethoscope me-2"></i><?= gettext('Check') ?>
-                                </button>
-                                <button type="button" class="btn btn-primary" id="portalThemeActivateButton">
-                                    <i class="fa-solid fa-circle-check me-2"></i><?= gettext('Activate') ?>
-                                </button>
-                            </div>
-                            <p class="form-text mt-2">
-                                <?= gettext('A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM.') ?>
-                            </p>
-
-                            <div class="mt-3">
-                                <span class="me-2"><?= gettext('Last check') ?></span>
-                                <?php
-                                $activeEntry = null;
-                                foreach ($themes as $theme) {
-                                    if ($theme['id'] === $activeTheme) {
-                                        $activeEntry = $theme;
-                                        break;
-                                    }
-                                }
-                                [$badgeClass, $badgeIcon, $badgeLabel] = $statusBadge($activeEntry['status'] ?? ThemeValidator::LEVEL_ERROR);
-                                ?>
-                                <span class="badge <?= $badgeClass ?>" id="portalThemeStatusBadge">
-                                    <i class="fa-solid <?= $badgeIcon ?> me-1"></i><span class="badge-text"><?= InputUtils::escapeHTML($badgeLabel) ?></span>
-                                </span>
-                            </div>
-
-                            <div id="portalThemeFindings" class="mt-3"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-xl-6">
-                    <!-- The Settings Panel component renders and saves these four
-                         ConfigItems through POST /admin/api/system/config/{name}. -->
-                    <div id="portalSettingsPanel"></div>
-                </div>
-            </div>
-        </div>
 
         <!-- ============================= Sign-in ============================ -->
         <div class="tab-pane fade" id="portal-signin" role="tabpanel">
@@ -353,6 +284,9 @@ $themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration
 
         <!-- ============================= Themes ============================= -->
         <div class="tab-pane fade" id="portal-themes" role="tabpanel">
+            <p class="text-secondary" id="portalThemesLead">
+                <?= gettext('A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM.') ?>
+            </p>
             <div class="alert alert-info" id="portalThemeDisclaimer">
                 <i class="fa-solid fa-circle-info me-2"></i>
                 <?= gettext('Themes are provided by your church, not by ChurchCRM, and are not verified by the ChurchCRM project.') ?>
@@ -367,9 +301,9 @@ $themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration
                         <thead>
                             <tr>
                                 <th><?= gettext('Theme') ?></th>
-                                <th><?= gettext('Folder') ?></th>
-                                <th><?= gettext('Author') ?></th>
-                                <th class="text-center"><?= gettext('Overridden templates') ?></th>
+                                <th class="d-none d-md-table-cell"><?= gettext('Folder') ?></th>
+                                <th class="d-none d-md-table-cell"><?= gettext('Author') ?></th>
+                                <th class="d-none d-md-table-cell text-center"><?= gettext('Overridden templates') ?></th>
                                 <th><?= gettext('Validation') ?></th>
                                 <th class="w-1"></th>
                             </tr>
@@ -387,21 +321,19 @@ $themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration
                                             <div class="text-secondary small"><?= InputUtils::escapeHTML($theme['description']) ?></div>
                                         <?php endif; ?>
                                     </td>
-                                    <td><code><?= InputUtils::escapeHTML($theme['id']) ?></code></td>
-                                    <td><?= $theme['author'] !== '' ? InputUtils::escapeHTML($theme['author']) : '<span class="text-secondary">&mdash;</span>' ?></td>
-                                    <td class="text-center"><?= (int) $theme['overriddenTemplates'] ?></td>
+                                    <td class="d-none d-md-table-cell"><code><?= InputUtils::escapeHTML($theme['id']) ?></code></td>
+                                    <td class="d-none d-md-table-cell"><?= $theme['author'] !== '' ? InputUtils::escapeHTML($theme['author']) : '<span class="text-secondary">&mdash;</span>' ?></td>
+                                    <td class="d-none d-md-table-cell text-center"><?= (int) $theme['overriddenTemplates'] ?></td>
                                     <td>
-                                        <span class="badge <?= $badgeClass ?>">
+                                        <span class="badge <?= $badgeClass ?> portal-theme-status">
                                             <i class="fa-solid <?= $badgeIcon ?> me-1"></i><?= InputUtils::escapeHTML($badgeLabel) ?>
                                         </span>
-                                        <?php if ($theme['findings'] !== []): ?>
-                                            <button type="button" class="btn btn-sm btn-ghost-secondary portal-theme-findings-toggle"
-                                                    data-bs-toggle="collapse"
-                                                    data-bs-target="#portalFindings-<?= InputUtils::escapeAttribute($theme['id']) ?>">
-                                                <?= gettext('Findings') ?>
-                                                <span class="badge bg-secondary text-white ms-1"><?= count($theme['findings']) ?></span>
-                                            </button>
-                                        <?php endif; ?>
+                                        <button type="button" class="btn btn-sm btn-ghost-secondary portal-theme-findings-toggle<?= $theme['findings'] === [] ? ' d-none' : '' ?>"
+                                                data-bs-toggle="collapse"
+                                                data-bs-target="#portalFindings-<?= InputUtils::escapeAttribute($theme['id']) ?>">
+                                            <?= gettext('Findings') ?>
+                                            <span class="badge bg-secondary text-white ms-1 portal-theme-findings-count"><?= count($theme['findings']) ?></span>
+                                        </button>
                                     </td>
                                     <td class="w-1">
                                         <div class="dropdown">
@@ -423,9 +355,9 @@ $themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration
                                         </div>
                                     </td>
                                 </tr>
-                                <?php if ($theme['findings'] !== []): ?>
-                                    <tr class="collapse" id="portalFindings-<?= InputUtils::escapeAttribute($theme['id']) ?>">
-                                        <td colspan="6" class="bg-surface-secondary">
+                                <tr class="collapse portal-theme-findings-row" id="portalFindings-<?= InputUtils::escapeAttribute($theme['id']) ?>">
+                                    <td colspan="6" class="bg-surface-secondary portal-theme-findings">
+                                        <?php if ($theme['findings'] !== []): ?>
                                             <ul class="list-unstyled mb-0">
                                                 <?php foreach ($theme['findings'] as $finding): ?>
                                                     <li class="py-1">
@@ -441,14 +373,16 @@ $themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration
                                                     </li>
                                                 <?php endforeach; ?>
                                             </ul>
-                                        </td>
-                                    </tr>
-                                <?php endif; ?>
+                                        <?php endif; ?>
+                                    </td>
+                                </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
             </div>
+
+            <div id="portalDeveloperModePanel" class="mt-3"></div>
         </div>
 
         <!-- =========================== Statistics =========================== -->
@@ -568,6 +502,8 @@ $themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration
 
         <!-- ============================ Calendars =========================== -->
         <div class="tab-pane fade" id="portal-calendars" role="tabpanel">
+            <div id="portalCalendarSectionPanel" class="mb-3"></div>
+
             <p class="text-secondary" id="portalCalendarsLead">
                 <?= gettext('Members see only the calendars switched on here. Birthdays and anniversaries show first names and last initials only.') ?>
             </p>

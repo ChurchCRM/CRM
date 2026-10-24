@@ -107,7 +107,7 @@ function drawCatalog(): void {
     .join("");
 }
 
-async function loadCatalog(): Promise<void> {
+export async function loadPermissionsCatalog(): Promise<void> {
   try {
     capabilities = (await getJSON<{ capabilities: Capability[] }>("member-portal/permissions")).capabilities;
   } catch (error) {
@@ -191,5 +191,5 @@ export function wirePermissionsTab(): void {
       openHolders(button.dataset.capability);
     }
   });
-  onTabShown("portal-permissions-tab", () => void loadCatalog(), true);
+  onTabShown("portal-permissions-tab", () => void loadPermissionsCatalog(), true);
 }

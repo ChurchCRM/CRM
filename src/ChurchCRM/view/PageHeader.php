@@ -144,8 +144,16 @@ class PageHeader
     /** Header button back to the People settings hub; admin-only like the hub itself. */
     public static function peopleSettingsButton(): string
     {
-        return self::buttons([
-            ['label' => gettext('People Settings'), 'url' => '/admin/people', 'icon' => 'fa-sliders'],
-        ]);
+        return self::buttons([self::peopleSettingsLink()]);
+    }
+
+    /**
+     * The People Settings button as an entry for buttons(), for a page that shows it beside its own buttons.
+     *
+     * @return array{label: string, url: string, icon: string}
+     */
+    public static function peopleSettingsLink(): array
+    {
+        return ['label' => gettext('People Settings'), 'url' => '/admin/people', 'icon' => 'fa-sliders'];
     }
 }

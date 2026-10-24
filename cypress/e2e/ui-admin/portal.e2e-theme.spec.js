@@ -94,6 +94,17 @@ function memberLogin() {
     cy.url({ timeout: 10000 }).should("include", "/portal");
 }
 
+function openThemesTab() {
+    cy.visit("/admin/member-portal");
+    cy.get("#portal-themes-tab").click();
+    cy.get("#portal-themes").should("be.visible");
+}
+
+function themeRowAction(theme, action) {
+    cy.get(`#portalThemesTable tr[data-theme="${theme}"] [data-bs-toggle="dropdown"]`).click();
+    cy.get(`#portalThemesTable tr[data-theme="${theme}"] .portal-theme-${action}`).should("be.visible").click();
+}
+
 before(() => {
     cy.rememberTestEnv(["admin.api.key", "admin.username", "admin.password"]);
 });
@@ -136,27 +147,23 @@ describe("Member Portal e2e — #9869 scenario 4, a church themes the portal", (
 
     it("finds the uploaded folder on Admin → Member Portal and says it is valid", () => {
         adminLogin();
-        cy.visit("/admin/member-portal");
-        cy.get("#portal-settings-tab").click();
+        openThemesTab();
 
-        cy.get("#portalThemeSelect").should("contain.text", "E2E 9869 Church");
-        cy.get("#portalThemeSelect").select(GOOD_THEME);
-        cy.get("#portalThemeCheckButton").click();
+        cy.get(`#portalThemesTable tr[data-theme="${GOOD_THEME}"]`).should("contain.text", "E2E 9869 Church");
+        themeRowAction(GOOD_THEME, "check");
 
-        cy.get("#portalThemeFindings", { timeout: 10000 }).should(
+        cy.get(`#portalFindings-${GOOD_THEME}`, { timeout: 10000 }).should(
             "contain.text",
             "This theme has no problems.",
         );
-        cy.get("#portalThemeStatusBadge").should("contain.text", "Valid");
+        cy.get(`#portalThemesTable tr[data-theme="${GOOD_THEME}"] .portal-theme-status`).should("contain.text", "Valid");
     });
 
     it("activates it from the admin page, and EVERY portal page wears it", () => {
         adminLogin();
         cy.intercept("POST", "**/admin/api/member-portal/theme").as("activate");
-        cy.visit("/admin/member-portal");
-        cy.get("#portal-settings-tab").click();
-        cy.get("#portalThemeSelect").select(GOOD_THEME);
-        cy.get("#portalThemeActivateButton").click();
+        openThemesTab();
+        themeRowAction(GOOD_THEME, "activate");
         cy.wait("@activate").its("response.statusCode").should("eq", 200);
 
         readConfig("sMemberPortalTheme").then((resp) => {
@@ -203,16 +210,14 @@ describe("Member Portal e2e — #9869 scenario 4, a church themes the portal", (
 
     it("refuses the broken theme, lists the findings, and leaves members alone", () => {
         adminLogin();
-        cy.visit("/admin/member-portal");
-        cy.get("#portal-settings-tab").click();
-        cy.get("#portalThemeSelect").select(BROKEN_THEME);
-        cy.get("#portalThemeActivateButton").click();
+        openThemesTab();
+        themeRowAction(BROKEN_THEME, "activate");
 
-        cy.get("#portalThemeFindings", { timeout: 10000 }).should(
+        cy.get(`#portalFindings-${BROKEN_THEME}`, { timeout: 10000 }).should(
             "contain.text",
             "home.html.twig",
         );
-        cy.get("#portalThemeStatusBadge").should("contain.text", "Errors");
+        cy.get(`#portalThemesTable tr[data-theme="${BROKEN_THEME}"] .portal-theme-status`).should("contain.text", "Errors");
 
         // Nothing was written — the refusal is the point, not the error page.
         readConfig("sMemberPortalTheme").then((resp) => {

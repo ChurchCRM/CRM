@@ -166,12 +166,15 @@ A bundle treats a missing hook as "this theme does without the feature". Adding 
 
 ## Admin -> Member Portal (`/admin/member-portal`)
 
-Administrators only, one page with tabs:
+Administrators only, under People Settings (breadcrumb and header button), one page with tabs. Statistics is first and open by default:
 
-- **Settings:** theme dropdown (`listThemes()`, "System default" first, validation badge and "Check" button per theme), Developer mode, section switches (`bPortalShowCalendar`, `bPortalShowVolunteer`), `bPortalAllowBirthdayEdit`. Values save through `POST /admin/api/system/config/{name}`; theme changes go through `POST /admin/api/member-portal/theme` so activation can refuse.
-- **Calendars:** one list of church calendars, ministry calendars and system calendars with a "Show in Member Portal" switch each.
 - **Statistics:** members who signed in during the last 24 hours, 7 days and 30 days, and members active in the last 15 minutes, from `person_signin_psi` (`psi_LastSignIn`, `psi_LastActivity`); everyone who may sign in; those who never have; the ten most recent sign-ins.
-- **Themes:** discovered folders with display name, author, overridden-template count, last validation result.
+- **Sign-in, Members, Audit:** member sign-in settings, the member lists and the sign-in audit (member sign-in design).
+- **Permissions:** the portal permissions (member sign-in design), under a "What members can use" panel for `bPortalAllowBirthdayEdit` and `bPortalShowVolunteer`.
+- **Themes:** discovered folders (`listThemes()`, "System default" first) with display name, author, overridden-template count and validation badge. Each row's Check and Activate show their findings under that row; activation goes through `POST /admin/api/member-portal/theme` so it can refuse. Developer mode sits below the list.
+- **Calendars:** `bPortalShowCalendar` on top switches the whole section; below it, one list of church calendars, ministry calendars and system calendars with a "Show in Member Portal" switch each.
+
+The four booleans use the Settings Panel component and auto-save through `POST /admin/api/system/config/{name}`.
 
 Admin APIs: `/admin/api/member-portal/{stats,themes,theme/{name}/validation,theme,calendars}`.
 
