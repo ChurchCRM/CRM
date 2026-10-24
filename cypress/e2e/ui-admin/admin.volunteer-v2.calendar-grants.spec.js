@@ -3,7 +3,7 @@
 /**
  * Volunteer v2 D25 — "Ministries that may add events" on the admin calendar page, and the event
  * editor offering a coordinator only the calendars they may pin to.
- * Design: volunteer-v2-design.md §0.8 D25, §2.16; member-portal-design.md §5.3.
+ * Design: docs/design/volunteer-v2.md §0.8 D25, §2.16; member-portal-design.md §5.3.
  *
  * API setup runs before a fresh login: cy.request() rotates the PHP session cookie.
  */

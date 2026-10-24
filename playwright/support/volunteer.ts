@@ -2,13 +2,13 @@ import { type Browser, expect, type Page } from '@playwright/test';
 import path from 'node:path';
 
 import { BASE_URL } from './env';
-import { humanClick, humanSelect } from './human';
 
 /**
- * Volunteer Management v2 fixture for the volunteer captures. V2 is off on a
- * fresh install, so the seed turns it on in Admin → Ministry Settings and
- * builds a "Hospitality" ministry through the volunteer API; removeVolunteerSeed()
- * takes both back out, because every workflow shares one database.
+ * Volunteer Management v2 fixture for the volunteer captures. The demo import
+ * turns V2 on and brings a "Hospitality" ministry of its own; the seed replaces it
+ * with this one, built through the volunteer API, because the recording changes its
+ * staffing and the screenshots need it as seeded. removeVolunteerSeed() takes it
+ * back out, because every workflow shares one database.
  *
  * Volunteers are demo people looked up by their demo email, from families no
  * other spec uses. Emily Evans gets a self-service login for the Member Portal.
@@ -92,25 +92,9 @@ export async function waitForFloatingButtonsToTuck(page: Page): Promise<void> {
   }
 }
 
-/** Ministry Settings is the one home of the V1 / V2 / Both switch. */
+/** The V1 / V2 switch lives on Feature Toggles and new installations start on V2, so specs set it through the Config API. */
 export async function setVolunteerVersion(page: Page, version: 'v1' | 'v2'): Promise<void> {
-  await page.goto('/admin/ministry-settings');
-  const select = page.locator('#ministrySettingsPanel select[name="sVolunteerVersion"]');
-  await expect(select).toBeEnabled({ timeout: 30000 });
-  if ((await select.inputValue()) === version) {
-    return;
-  }
-  await humanSelect(select, version);
-  const saved = page.waitForResponse(
-    (r) => r.url().includes('/admin/api/system/config/') && r.request().method() === 'POST'
-  );
-  await humanClick(page.locator('#ministrySettingsPanel .settings-panel-save'));
-  await saved;
-  // onSave reloads the page so the menu follows the new rollout state.
-  await page.waitForEvent('load', { timeout: 30000 });
-  await expect(page.locator('#ministrySettingsPanel select[name="sVolunteerVersion"]')).toHaveValue(version, {
-    timeout: 30000,
-  });
+  await api(page, 'POST', '/admin/api/system/config/sVolunteerVersion', { value: version });
 }
 
 async function personId(page: Page, email: string): Promise<number> {
@@ -325,7 +309,7 @@ export async function seedVolunteerFixture(browser: Browser): Promise<VolunteerS
   }
 }
 
-/** Removes the ministry, its events and Emily's login, and turns V2 back off. */
+/** Removes the ministry, its events and Emily's login. V2 stays on: a new installation starts there (#10561). */
 export async function removeVolunteerSeed(browser: Browser): Promise<void> {
   const context = await browser.newContext({ baseURL: BASE_URL, storageState: STORAGE_STATE_PATH });
   const page = await context.newPage();
@@ -333,7 +317,6 @@ export async function removeVolunteerSeed(browser: Browser): Promise<void> {
     await setVolunteerVersion(page, 'v2');
     await deleteMemberLogin(page);
     await deleteHospitality(page);
-    await setVolunteerVersion(page, 'v1');
   } finally {
     seed = null;
     memberLoginCreated = false;
@@ -378,7 +361,7 @@ export async function memberPortalPage(admin: Page, browser: Browser): Promise<P
     timezoneId: 'America/Chicago',
   });
   const page = await context.newPage();
-  await page.goto('/session/begin');
+  await page.goto('/admin/');
   await page.locator('input[name=User]').fill(MEMBER_USERNAME);
   await page.locator('input[name=Password]').fill(MEMBER_PASSWORD);
   await page.locator('input[name=Password]').press('Enter');

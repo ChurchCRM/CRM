@@ -4,6 +4,7 @@ namespace ChurchCRM\model\ChurchCRM;
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\Exceptions\PasswordChangeException;
+use ChurchCRM\Authentication\SignInThrottle;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\KeyManagerUtils;
 use ChurchCRM\model\ChurchCRM\Base\User as BaseUser;
@@ -27,6 +28,7 @@ class User extends BaseUser
 {
     public const SIGN_IN_BLOCKED_DECEASED = 'deceased';
     public const SIGN_IN_BLOCKED_INACTIVE = 'inactive';
+    public const SIGN_IN_BLOCKED_DISABLED = 'sign_in_disabled';
 
     private $provisional2FAKey;
 
@@ -95,7 +97,7 @@ class User extends BaseUser
     //
     //   TIER 1 — user_usr boolean columns (fast, indexed, ORM-generated getters):
     //     usr_Admin, usr_EditSelf, usr_AddRecords, usr_EditRecords,
-    //     usr_DeleteRecords, usr_MenuOptions, usr_ManageGroups,
+    //     usr_DeleteRecords, usr_ManageGroups,
     //     usr_Finance, usr_ManageFundraisers, usr_Notes.
     //     These are the "core" record permissions accessible via isXxx() getters
     //     (e.g. isAddRecords(), isFinance()) or the corresponding isXxxEnabled()
@@ -175,14 +177,6 @@ class User extends BaseUser
             return false;
         }
         return $this->isAdmin() || $this->isDeleteRecords();
-    }
-
-    public function isMenuOptionsEnabled(): bool
-    {
-        if ($this->isEditSelfExclusive()) {
-            return false;
-        }
-        return $this->isAdmin() || $this->isMenuOptions();
     }
 
     public function isManageGroupsEnabled(): bool
@@ -607,15 +601,17 @@ class User extends BaseUser
     {
         // An account may already hold a hash of a blank password, saved before
         // updatePassword() refused blanks. It must not sign in with nothing.
-        if (mb_trim($password) === '') {
-            return false;
-        }
-
+        $isBlank = mb_trim($password) === '';
         $storedHash = $this->getPassword();
 
-        // Check if this is a bcrypt hash (starts with $2y$)
+        // Every answer spends one bcrypt check, so its timing cannot tell an existing,
+        // unlocked account from the refusals in SignInThrottle (#10197).
         if ($this->isBcryptHash($storedHash)) {
-            return password_verify($password, $storedHash);
+            return password_verify($password, $storedHash) && !$isBlank;
+        }
+        SignInThrottle::spendPasswordCheckTime($password);
+        if ($isBlank) {
+            return false;
         }
 
         // Legacy MD5 check — pre-6.x / ChurchInfo 1.x stored passwords as unsalted
@@ -685,28 +681,29 @@ class User extends BaseUser
     }
 
     /**
-     * Why this account may not sign in, based only on the user's own person
-     * record (never the family): 'deceased', 'inactive', or null when allowed.
-     * Reads the status columns fresh so a long-lived session sees later changes.
+     * Why this account may not sign in (member sign-in design §4, blocks for
+     * everyone): one of the SIGN_IN_BLOCKED_* values, or null when allowed.
+     * The family's status and awaiting review apply to member sign-in only.
+     * Reads the person and sign-in rows fresh so a long-lived session sees
+     * later changes.
      */
     public function getSignInBlockedReason(): ?string
     {
         $status = PersonQuery::create()
             ->filterById($this->getPersonId())
-            ->select(['DateDeceased', 'DateDeactivated'])
+            ->leftJoinPersonSignin()
+            ->select(['DateDeceased', 'DateDeactivated', 'PersonSignin.SignInDisabled'])
             ->findOne();
 
         if (!is_array($status)) {
             return null;
         }
-        if (!empty($status['DateDeceased'])) {
-            return self::SIGN_IN_BLOCKED_DECEASED;
-        }
-        if (!empty($status['DateDeactivated'])) {
-            return self::SIGN_IN_BLOCKED_INACTIVE;
-        }
 
-        return null;
+        return Person::signInBlockedReasonFor(
+            $status['DateDeceased'],
+            $status['DateDeactivated'],
+            (bool) $status['PersonSignin.SignInDisabled'],
+        );
     }
 
     public function getSignInBlockedLabel(): ?string
@@ -714,6 +711,7 @@ class User extends BaseUser
         return match ($this->getSignInBlockedReason()) {
             self::SIGN_IN_BLOCKED_DECEASED => gettext('Deceased — cannot sign in'),
             self::SIGN_IN_BLOCKED_INACTIVE => gettext('Inactive — cannot sign in'),
+            self::SIGN_IN_BLOCKED_DISABLED => gettext('Sign-in disabled'),
             default => null,
         };
     }
@@ -725,7 +723,7 @@ class User extends BaseUser
 
     public function isLocked(): bool
     {
-        return SystemConfig::getIntValue('iMaxFailedLogins') > 0 && $this->getFailedLogins() >= SystemConfig::getIntValue('iMaxFailedLogins');
+        return SignInThrottle::isAccountLocked($this);
     }
 
     public function resetPasswordToRandom(): string

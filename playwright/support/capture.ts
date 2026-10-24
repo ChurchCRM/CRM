@@ -17,6 +17,8 @@ export interface CaptureOptions {
   category: string;
   /** Name of this capture's dark-mode twin, when there is one. */
   dark?: string;
+  /** Where a page links this capture. A used capture is never deleted: `npm run lint`. */
+  usedIn?: ReadonlyArray<'docs' | 'website'>;
 }
 
 /**
@@ -172,6 +174,7 @@ async function captureAtViewport(
     title: opts.title,
     category: opts.category,
     dark: opts.dark ?? null,
+    usedIn: opts.usedIn ?? [],
     device,
     viewport: { width: viewport.width, height: viewport.height },
     screenshot: screenshotPath,

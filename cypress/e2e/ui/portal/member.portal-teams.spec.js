@@ -17,7 +17,7 @@
  * The walk is the acceptance criterion of the issue, in order: the nav entry
  * appears, the team opens, a qualification tick saves, a schedule is created,
  * its dates are generated, one of them is staffed — and the two refusals hold:
- * another team's page is the portal's own 403, and `/ministries/{id}`
+ * another team's page is the portal's own 404, and `/ministries/{id}`
  * never renders the admin shell.
  *
  * `limited.user` is the control: a member with no scope at all, who must not see
@@ -48,6 +48,8 @@ const PLAIN_PASSWORD = "changeme";
 
 /** Seeded member of group 1 "Angels class" — the person to qualify and assign. */
 const POOL_MEMBER = 8;
+/** Norman Newman, whom the leader adds to the pool (#10531). */
+const ADDED_PERSON = 56;
 
 const PREFIX = "MP9868";
 
@@ -310,7 +312,6 @@ describe("Member Portal (MP7, #9868) — My Teams", () => {
                 cy.get("#volunteer-teams-card").should("not.exist");
                 cy.get("#volunteer-scope-panel").should("not.exist");
                 cy.get("#volunteer-help-wanted").should("not.exist");
-                cy.get("#qualification-add-person").should("not.exist");
                 cy.get("#qualification-cart-btn").should("not.exist");
                 cy.get("#qualification-team-filter").should("not.exist");
                 cy.get("#occurrence-team-filter").should("not.exist");
@@ -339,7 +340,7 @@ describe("Member Portal (MP7, #9868) — My Teams", () => {
                 // The open menu is lifted out of the wrapper's overflow box and sits
                 // entirely inside the viewport, every item reachable.
                 cy.get("#positions-table-wrapper .dropdown-menu.show")
-                    .should("have.class", "volunteer-menu-fixed")
+                    .should("have.class", "dropdown-menu-fixed")
                     .then(($menu) => {
                         const rect = $menu[0].getBoundingClientRect();
                         expect(rect.left, "menu left edge").to.be.at.least(0);
@@ -378,6 +379,26 @@ describe("Member Portal (MP7, #9868) — My Teams", () => {
                         expect(rows.length, "the qualification was written").to.eq(1);
                     });
                 });
+            });
+
+            it("Adds an existing person to the ministry's volunteers from the Volunteers tab (#10531)", () => {
+                login(LEADER_USERNAME, LEADER_PASSWORD);
+                cy.visit(`${TEAMS_URL}/${teamLed}`);
+
+                cy.get("#nav-item-volunteers").click();
+                cy.get("#volunteerQualificationsTable tbody tr", { timeout: 15000 }).should("have.length.greaterThan", 0);
+                cy.get("#qualification-add-person").click();
+                cy.get("#addVolunteerModal").should("be.visible").and("contain.text", `${PREFIX} Hospitality`);
+                cy.get("#addVolunteerModal .ts-control").click();
+                cy.get("#addVolunteerModal .ts-control input").type("Norman New");
+                cy.get("body > .ts-dropdown .option", { timeout: 10000 }).contains("Norman Newman (Newman family)").click();
+                cy.get(`#add-volunteer-positions .add-volunteer-position[value="${posDoor}"]`).check();
+                cy.get("#add-volunteer-save").click();
+
+                cy.get(`.volunteer-qual-toggle[data-person-id="${ADDED_PERSON}"][data-position-id="${posDoor}"]`, {
+                    timeout: 15000,
+                }).should("be.checked");
+                cy.get("#sidebar").should("not.exist");
             });
 
             it("Creates a schedule for the team, whose Save generates its dates, and staffs one", () => {
@@ -457,15 +478,40 @@ describe("Member Portal (MP7, #9868) — My Teams", () => {
                     });
                 });
             });
+
+            it("Records the volunteer as accepted from the Assign dialog (#10528)", () => {
+                adminApi(
+                    "GET",
+                    `${VOLUNTEER_URL}/occurrences?from=${isoDate(0)}&to=${isoDate(28)}&ministryId=${ministryId}`,
+                ).then((resp) => {
+                    const occurrences = resp.body.occurrences;
+                    expect(occurrences.length, "the schedule made more than one date").to.be.greaterThan(1);
+
+                    login(LEADER_USERNAME, LEADER_PASSWORD);
+                    cy.visit(`${TEAMS_URL}/${teamLed}/occurrences/${occurrences[occurrences.length - 1].id}`);
+                });
+
+                cy.get(`.volunteer-assign-btn[data-position-id="${posDoor}"]`, { timeout: 15000 }).click();
+                cy.get("#volunteer-assign-modal", { timeout: 10000 }).should("be.visible");
+                cy.get("#assign-accepted").should("not.be.checked");
+                cy.get("#assign-person-select option", { timeout: 10000 }).should("have.length.greaterThan", 1);
+                cy.get("#assign-person-select").select(String(POOL_MEMBER), { force: true });
+                cy.get("#assign-accepted").check();
+                cy.get("#assign-save").click();
+
+                cy.get(
+                    `.volunteer-requirement[data-position-id="${posDoor}"] .volunteer-assignment-row[data-status="accepted"]`,
+                    { timeout: 15000 },
+                ).should("contain.text", "Herminia");
+            });
         });
 
         describe("Refusals", () => {
-            it("Another team's page is the portal's own 403, not the admin access-denied page", () => {
+            it("Another team's page is the portal's own 404, not the admin access-denied page", () => {
                 login(LEADER_USERNAME, LEADER_PASSWORD);
                 cy.visit(`${TEAMS_URL}/${teamOther}`, { failOnStatusCode: false });
 
-                cy.get(".portal-error-403").should("exist");
-                cy.contains("You cannot open this page").should("exist");
+                cy.get(".portal-error-404").should("exist");
                 cy.url().should("not.include", "/v2/access-denied");
                 cy.get("#sidebar").should("not.exist");
             });
@@ -489,7 +535,7 @@ describe("Member Portal (MP7, #9868) — My Teams", () => {
                 cy.get(".portal-error-403").should("exist");
 
                 cy.visit(`${TEAMS_URL}/${teamLed}`, { failOnStatusCode: false });
-                cy.get(".portal-error-403").should("exist");
+                cy.get(".portal-error-404").should("exist");
             });
         });
     });

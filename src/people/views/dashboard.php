@@ -90,10 +90,17 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <h3 class="card-title"><i class="fa-solid fa-bolt me-2"></i><?= gettext('Quick Actions') ?></h3>
         </div>
         <div class="card-body">
-            <div class="d-flex flex-wrap" style="gap: .5rem;">
+            <div class="d-flex flex-wrap gap-2">
+                <?php if ($canEdit) : ?>
                 <a href="<?= $sRootPath ?>/people/verify" class="btn btn-outline-info">
                     <i class="fa-solid fa-clipboard-check me-1"></i><?= gettext('Verify People') ?>
                 </a>
+                <?php endif; ?>
+                <?php if (!empty($canFixSignInEmail)) : ?>
+                    <a href="<?= $sRootPath ?>/people/sign-in-email" class="btn btn-outline-warning" id="signInEmailAttentionLink">
+                        <i class="fa-solid fa-envelope-circle-check me-1"></i><?= gettext('Email needs attention') ?>
+                    </a>
+                <?php endif; ?>
                 <?php if ($canEmail): ?>
                     <button type="button" class="btn btn-outline-primary"
                             data-email-composer
@@ -122,8 +129,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <thead>
                             <tr>
                                 <th><?= gettext('Classification') ?></th>
-                                <th style="width:45%;"><?= gettext('Share') ?></th>
-                                <th class="text-end" style="width:60px;"><?= gettext('Count') ?></th>
+                                <th class="share-col"><?= gettext('Share') ?></th>
+                                <th class="text-end count-col"><?= gettext('Count') ?></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -138,10 +145,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <div class="progress flex-grow-1 me-2" style="height:6px;">
+                                            <div class="progress progress-thin flex-grow-1 me-2">
                                                 <div class="progress-bar bg-primary" style="width:<?= $pct ?>%"></div>
                                             </div>
-                                            <span class="text-body-secondary small" style="min-width:2.5rem;"><?= $pct ?>%</span>
+                                            <span class="text-body-secondary small pct-label"><?= $pct ?>%</span>
                                         </div>
                                     </td>
                                     <td class="text-end">
@@ -164,8 +171,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <thead>
                             <tr>
                                 <th><?= gettext('Role / Gender') ?></th>
-                                <th style="width:45%;"><?= gettext('Share') ?></th>
-                                <th class="text-end" style="width:60px;"><?= gettext('Count') ?></th>
+                                <th class="share-col"><?= gettext('Share') ?></th>
+                                <th class="text-end count-col"><?= gettext('Count') ?></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -184,10 +191,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <div class="progress flex-grow-1 me-2" style="height:6px;">
+                                            <div class="progress progress-thin flex-grow-1 me-2">
                                                 <div class="progress-bar bg-success" style="width:<?= $pct ?>%"></div>
                                             </div>
-                                            <span class="text-body-secondary small" style="min-width:2.5rem;"><?= $pct ?>%</span>
+                                            <span class="text-body-secondary small pct-label"><?= $pct ?>%</span>
                                         </div>
                                     </td>
                                     <td class="text-end">
@@ -219,7 +226,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </div>
                         <i class="fa-solid fa-chevron-right ms-auto text-body-secondary"></i>
                     </a>
-                    <?php if (!empty($canLetters)) : ?>
                     <a href="<?= $sRootPath ?>/LettersAndLabels.php" class="list-group-item list-group-item-action d-flex align-items-center">
                         <i class="fa-solid fa-envelope-open-text fa-fw text-body-secondary me-3"></i>
                         <div>
@@ -228,7 +234,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </div>
                         <i class="fa-solid fa-chevron-right ms-auto text-body-secondary"></i>
                     </a>
-                    <?php endif; ?>
                 </div>
             </div>
 
@@ -281,7 +286,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <h3 class="card-title"><i class="fa-solid fa-chart-column me-2"></i><?= gettext('Age Distribution') ?></h3>
                 </div>
                 <div class="card-body">
-                    <div id="age-stats-bar" style="min-height:300px;"></div>
+                    <div id="age-stats-bar" class="age-stats-chart"></div>
                 </div>
             </div>
 

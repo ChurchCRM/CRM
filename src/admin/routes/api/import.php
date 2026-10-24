@@ -11,7 +11,10 @@ use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\model\ChurchCRM\RecordProperty;
 use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
+use ChurchCRM\Portal\Auth\EmailChangeChannel;
+use ChurchCRM\Portal\Auth\SignInEmailPolicy;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
+use ChurchCRM\Service\GradeService;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
@@ -77,6 +80,7 @@ const CSV_CORE_FIELD_LABELS = [
     'WeddingDate'    => 'Wedding Date',
     'Classification' => 'Classification',
     'FamilyRole'     => 'Family Role',
+    'Grade'          => 'Grade',
 ];
 
 // Maps ChurchCRM field names to known CSV header aliases (all lowercase)
@@ -115,6 +119,7 @@ const CSV_FIELD_ALIASES = [
     'WeddingDate'    => ['weddingdate', 'wedding_date', 'wedding date', 'anniversary'],
     'Classification' => ['classification', 'class', 'member_type', 'member type', 'membertype', 'membership_type', 'membership type'],
     'FamilyRole'     => ['familyrole', 'family_role', 'family role', 'role', 'household_role', 'household role'],
+    'Grade'          => ['grade', 'grade level', 'grade_level', 'gradelevel', 'school grade', 'school_grade'],
 ];
 
 function autoMapHeader(string $header, array $extensionFields = []): ?string
@@ -622,6 +627,11 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
             $classificationMap[strtolower($cls->getOptionName())] = $cls->getOptionId();
         }
 
+        $gradeMap = [];
+        foreach (GradeService::names() as $gradeId => $gradeName) {
+            $gradeMap[mb_strtolower($gradeName)] = $gradeId;
+        }
+
         // Build family role name → ID lookup
         $familyRoleMap = [];
         foreach (ListOptionQuery::create()->filterById($familyRoleListId)->find() as $role) {
@@ -661,6 +671,7 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
         // CSV omits a Country aren't silently stored blank and rendered as the
         // first country in the dropdown (Afghanistan). See issue #4347.
         $defaultCountry = AddressDefaults::country();
+        $emailPolicy = new SignInEmailPolicy();
 
         try {
             foreach ($csv->getRecords() as $row) {
@@ -752,7 +763,6 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
                             }
                         }
                         if (!empty($data['HomePhone'])) $family->setHomePhone($data['HomePhone']);
-                        if (!empty($data['Email']))    $family->setEmail($data['Email']);
                         if (!empty($data['Envelope'])) $family->setEnvelope((int) $data['Envelope']);
                         if (!empty($data['WeddingDate'])) {
                             // A bare 4-digit year (e.g. "2020") must not be passed to strtotime()
@@ -887,6 +897,10 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
                     }
                 }
 
+                if (!empty($data['Grade'])) {
+                    $person->setGradeId($gradeMap[mb_strtolower(trim($data['Grade']))] ?? null);
+                }
+
                 if ($family !== null) {
                     $person->setFamId($family->getId());
 
@@ -902,6 +916,7 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
                 $person->setDateEntered(date('YmdHis'));
                 $person->setEnteredBy(AuthenticationManager::getCurrentUser()->getId());
                 $person->save($con);
+                $emailPolicy->recordChange($person, null, EmailChangeChannel::IMPORT, AuthenticationManager::getCurrentUser());
 
                 writeCustomFields($con, 'person_custom', 'per_ID', $person->getId(), $personCustoms, $personCustomTypes);
                 writeProperties($con, $person->getId(), $personProps, $personPropPrompts);

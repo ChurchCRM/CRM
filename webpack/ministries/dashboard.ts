@@ -373,7 +373,7 @@ function staffedBadge(occurrence: VolunteerDashboardOccurrence): string {
                 title="${escapeAttribute(staffingTitle(counts))}">${escapeHtml(counts.label)}</span>`;
 }
 
-function renderUpcoming(rows: VolunteerDashboardOccurrence[], manageableMinistryIds: Set<number>): void {
+function renderUpcoming(rows: VolunteerDashboardOccurrence[], openableMinistryIds: Set<number>): void {
   const body = byId("volunteer-upcoming-table")?.querySelector("tbody");
   if (!body) {
     return;
@@ -412,7 +412,7 @@ function renderUpcoming(rows: VolunteerDashboardOccurrence[], manageableMinistry
                 label: i18next.t("Staff this occurrence"),
               },
               occurrence.ministryId !== null &&
-                manageableMinistryIds.has(occurrence.ministryId) && {
+                openableMinistryIds.has(occurrence.ministryId) && {
                   type: "link",
                   href: `${root()}/ministries/${occurrence.ministryId}`,
                   icon: "fa-solid fa-handshake-angle",
@@ -442,9 +442,8 @@ function renderUpcoming(rows: VolunteerDashboardOccurrence[], manageableMinistry
  * This is what closes the hole a pure **team leader** would otherwise fall into: the
  * ministry list is scoped to ministries they coordinate, which is empty for them, so
  * without this they pass the role gate and find nothing to open. The server marks a
- * ministry they only reach through a team as `manageable: false`, and it is rendered as
- * plain text with its teams underneath rather than as a link into a page the server
- * would refuse (§4.6).
+ * ministry they only reach through a team as `manageable: false`; it opens the ministry
+ * page's team-only view, and so does each team.
  */
 function renderScope(scope: VolunteerDashboard["scope"]): void {
   const ministries = byId("volunteer-scope-ministries");
@@ -461,17 +460,13 @@ function renderScope(scope: VolunteerDashboard["scope"]): void {
         ? ""
         : `<span class="badge bg-secondary-lt ms-2">${i18next.t("Inactive")}</span>`;
 
-      if (!ministry.manageable) {
-        return `
-          <div class="list-group-item">
-            <span class="fw-bold">${escapeHtml(ministry.name)}</span>${inactive}
-            <span class="badge bg-secondary-lt ms-2">${i18next.t("View only")}</span>
-          </div>`;
-      }
+      const teamView = ministry.manageable
+        ? ""
+        : `<span class="badge bg-blue-lt ms-2">${i18next.t("Team leader")}</span>`;
 
       return `
         <a class="list-group-item list-group-item-action" href="${root()}/ministries/${ministry.id}">
-          <span class="fw-bold">${escapeHtml(ministry.name)}</span>${inactive}
+          <span class="fw-bold">${escapeHtml(ministry.name)}</span>${inactive}${teamView}
         </a>`;
     })
     .join("");
@@ -479,10 +474,10 @@ function renderScope(scope: VolunteerDashboard["scope"]): void {
   teams.innerHTML = scope.teams
     .map(
       (team) => `
-        <div class="list-group-item">
+        <a class="list-group-item list-group-item-action" href="${root()}/ministries/${team.ministryId}?team=${team.id}">
           <i class="fa-solid fa-people-group me-2 text-body-secondary"></i>${escapeHtml(team.name)}
           <span class="text-body-secondary small ms-1">${escapeHtml(team.ministryName ?? "")}</span>
-        </div>`,
+        </a>`,
     )
     .join("");
 }
@@ -516,10 +511,7 @@ function renderAll(dashboard: VolunteerDashboard): void {
   renderGaps(dashboard.gaps);
   renderPending(dashboard.pendingResponses);
   renderSwaps(dashboard.proposedSwaps);
-  renderUpcoming(
-    dashboard.upcoming,
-    new Set(dashboard.scope.ministries.filter((ministry) => ministry.manageable).map((ministry) => ministry.id)),
-  );
+  renderUpcoming(dashboard.upcoming, new Set(dashboard.scope.ministries.map((ministry) => ministry.id)));
   renderScope(dashboard.scope);
   renderFailedNotifications(dashboard.failedNotifications);
   show(byId("volunteer-capped-note"), dashboard.capped);

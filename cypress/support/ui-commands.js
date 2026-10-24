@@ -8,6 +8,13 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 
+// /admin/ is both the staff sign-in and, while the admin is the only person, the
+// Admin Dashboard, so a sign-in is proved by the user menu's Sign out link.
+Cypress.Commands.add('expectStaffSignedIn', (options = {}) => {
+    cy.get('a[href$="/session/end"]', options).should('exist');
+    cy.get('#UserBox, #PasswordBox').should('not.exist');
+});
+
 /**
  * Internal helper: Sets up a cached login session using cy.session()
  * Performs login and validates with CRM cookie presence
@@ -32,13 +39,10 @@ Cypress.Commands.add('setupLoginSession', (sessionName, username, password, opti
     cy.session(
         effectiveSessionName,
         () => {
-            // Perform the login
-            cy.visit('/login');
+            cy.visit('/admin/');
             cy.get('input[name=User]').type(username);
             cy.get('input[name=Password]').type(password + '{enter}');
-            // Wait for redirect away from session/login pages
-            // ChurchCRM's login page is /session/begin, not /login
-            cy.url().should('not.include', '/session/begin');
+            cy.expectStaffSignedIn();
         },
         {
             validate: validate ?? defaultValidate
@@ -149,7 +153,7 @@ Cypress.Commands.add('setupManageGroupsOnlySession', (options = {}) =>
  */
 Cypress.Commands.add('loginWithCredentials', (username, password, sessionName = 'custom-session', expectSuccess = true) => {
     cy.session(sessionName, () => {
-        cy.visit('/login');
+        cy.visit('/admin/');
         cy.get('input[name=User]').type(username);
         cy.get('input[name=Password]').type(password + '{enter}');
     }, {

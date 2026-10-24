@@ -26,6 +26,7 @@
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\TelemetryService;
+use ChurchCRM\Utils\RequestUtils;
 
 $telemetryEnabled = TelemetryService::isEnabled();
 
@@ -81,6 +82,9 @@ if (empty($allowFraming)) {
 $csp[] = 'report-uri ' . SystemURLs::getRootPath() . '/api/public/csp-report';
 
 header('X-Content-Type-Options: nosniff');
+if (RequestUtils::isHttps()) {
+    header('Strict-Transport-Security: max-age=31536000');
+}
 header('Referrer-Policy: strict-origin-when-cross-origin');
 // CSP can be in report-only mode (violations logged but not blocked) or enforcing mode (violations blocked)
 // The mode is controlled by the bEnforceCSP system configuration option

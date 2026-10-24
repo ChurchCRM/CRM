@@ -58,12 +58,12 @@ function freshAdminLogin() {
     // One retry: in CI a login page occasionally reloads while the name is being
     // typed (the submit then goes out with an empty user and bounces back here).
     cy.url().then((url) => {
-        if (url.includes("/session/begin")) {
+        if (new URL(url).pathname === "/admin/") {
             cy.get("input[name=User]").clear().type(Cypress.testEnv("admin.username"));
             cy.get("input[name=Password]").clear().type(Cypress.testEnv("admin.password") + "{enter}");
         }
     });
-    cy.url().should("not.include", "/session/begin");
+    cy.location("pathname").should("not.eq", "/admin/");
 }
 
 function setVersion(value) {
@@ -555,6 +555,26 @@ describe("Volunteer v2 — occurrence / staffing view (#9709)", () => {
                 .first()
                 .should("have.attr", "href")
                 .and("include", `/people/view/${POOL_MEMBER_A}`);
+        });
+
+        it("records the volunteer as accepted when Record they accepted is ticked (#10528)", () => {
+            cy.intercept("POST", "**/api/ministries/occurrences/*/assignments").as("assign");
+            cy.visit(occurrenceUrl());
+
+            openAssignPicker(posEspresso);
+            cy.get("#assign-accepted").should("not.be.checked");
+            cy.get(`.ts-dropdown .option[data-value="${POOL_MEMBER_A}"]`).should("be.visible").click();
+            cy.get("#assign-accepted").check();
+            cy.get("#assign-save").click();
+
+            cy.wait("@assign").its("request.body").should("include", { personId: POOL_MEMBER_A, accepted: true });
+            cy.get(`.volunteer-requirement[data-position-id="${posEspresso}"] .volunteer-assignment-row[data-status="accepted"]`)
+                .should("have.length", 1);
+            cy.get(`.volunteer-requirement[data-position-id="${posEspresso}"] .volunteer-status-badge`)
+                .should("contain", "Accepted");
+
+            openAssignPicker(posMilk);
+            cy.get("#assign-accepted").should("not.be.checked");
         });
     });
 

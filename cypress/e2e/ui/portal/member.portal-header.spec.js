@@ -215,7 +215,7 @@ describe("Member Portal header", () => {
         it("Signs the member out from the menu", () => {
             cy.get("#portal-account-toggle").click();
             cy.get("#portal-account-menu").contains('[role="menuitem"]', "Sign out").click();
-            cy.url({ timeout: 10000 }).should("include", "/session/begin");
+            cy.location("pathname", { timeout: 10000 }).should("eq", "/admin/");
         });
 
         it("Works beside the navigation toggle on a phone", () => {

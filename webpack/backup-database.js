@@ -73,7 +73,7 @@ function doBackup(isRemote) {
           '<button class="btn btn-success btn-lg" id="downloadbutton" onclick="window.BackupDatabase.downloadBackup(\'' +
           data.BackupDownloadFileName +
           "')\">" +
-          '<i class="fa-solid fa-download mr-2"></i>' +
+          '<i class="fa-solid fa-download me-2"></i>' +
           data.BackupDownloadFileName +
           "</button>";
         $("#resultFiles").html(downloadButton);

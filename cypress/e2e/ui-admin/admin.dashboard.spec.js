@@ -88,24 +88,20 @@ describe("Admin Dashboard", () => {
         cy.get("#importDemoDataV2").click();
 
         // Verify the overlay is displayed
-        cy.get("#demoImportConfirmOverlay").should("be.visible");
+        cy.get("#demoImportModal").should("be.visible");
         cy.contains("Import Demo Data");
-        cy.contains("This will add sample families, people, and groups to your database.");
-
-        // Verify options are present
-        cy.contains("Optional Data to Include");
-        cy.get("#includeDemoSundaySchool").should("be.checked");
-        cy.get("#includeDemoFinancial").should("be.checked");
-        cy.get("#includeDemoEvents").should("be.checked");
+        cy.contains("This will add sample data to your database");
+        cy.get("#demoImportModal li").should("have.length", 5);
+        cy.get("#demoImportModal input[type=checkbox]").should("not.exist");
 
         // Verify instructions section
         cy.contains("Need to remove this data later?");
         cy.contains("Admin Dashboard");
 
         // Click Cancel to close without importing
-        cy.get("#demoImportCancelBtn").click();
+        cy.get("#demoImportCancelBtn").should("be.focused").click();
 
         // Verify overlay is hidden
-        cy.get("#demoImportConfirmOverlay").should("not.be.visible");
+        cy.get("#demoImportModal").should("not.be.visible");
     });
 });

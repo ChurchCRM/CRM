@@ -169,7 +169,7 @@ $fundraiserTableTitle = $filterStatus !== ''
     </a>
   </div>
   <div class="card-body p-0">
-    <div style="overflow: visible;">
+    <div class="overflow-visible">
       <table id="fundraisers" class="table table-hover table-vcenter mb-0 w-100">
         <thead>
           <tr>
@@ -208,9 +208,9 @@ $fundraiserTableTitle = $filterStatus !== ''
             <td><span class="<?= $frStatusBadgeClass($status) ?>"><?= InputUtils::escapeHTML(gettext($status)) ?></span></td>
             <td class="text-end"><?= (int) $summary['items'] ?></td>
             <td class="text-end"><?= CurrencyFormatter::formatHtml($raised) ?></td>
-            <td style="min-width:80px">
+            <td class="col-min-80">
               <?php if ($goalPct !== null): ?>
-              <div class="progress" style="height:8px" title="<?= $goalPct ?>%">
+              <div class="progress progress-h-8" title="<?= $goalPct ?>%">
                 <div class="progress-bar bg-success" role="progressbar" style="width:<?= $goalPct ?>%" aria-valuenow="<?= $goalPct ?>" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
               <small class="text-body-secondary"><?= $goalPct ?>%</small>
@@ -299,7 +299,7 @@ $fundraiserTableTitle = $filterStatus !== ''
   </div>
   <div id="archiveCollapse" class="collapse">
     <div class="card-body p-0">
-      <div style="overflow: visible;">
+      <div class="overflow-visible">
         <table id="fundraisers-archive" class="table table-hover table-vcenter mb-0 w-100">
           <thead>
             <tr>
@@ -335,9 +335,9 @@ $fundraiserTableTitle = $filterStatus !== ''
               <td><span class="<?= $frStatusBadgeClass($status) ?>"><?= InputUtils::escapeHTML(gettext($status)) ?></span></td>
               <td class="text-end"><?= (int) $summary['items'] ?></td>
               <td class="text-end"><?= CurrencyFormatter::formatHtml($raised) ?></td>
-              <td style="min-width:80px">
+              <td class="col-min-80">
                 <?php if ($goalPct !== null): ?>
-                <div class="progress" style="height:8px" title="<?= $goalPct ?>%">
+                <div class="progress progress-h-8" title="<?= $goalPct ?>%">
                   <div class="progress-bar bg-success" role="progressbar" style="width:<?= $goalPct ?>%" aria-valuenow="<?= $goalPct ?>" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
                 <small class="text-body-secondary"><?= $goalPct ?>%</small>

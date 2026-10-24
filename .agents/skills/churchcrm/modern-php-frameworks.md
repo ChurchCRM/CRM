@@ -7,290 +7,102 @@ complexity: "intermediate"
 ---
 # Modern PHP 8.4+ & Framework Best Practices
 
-ChurchCRM requires PHP >=8.4 (defined in composer.json) with the following framework stack:
-- **PHP**: >=8.4 (required, composer.json)
-- **Perpl ORM**: ^2.6.0 (actively maintained Propel2 fork)
-- **Slim Framework**: ^4.15.0 (PSR-7/PSR-15 compliant)
-- **Monolog**: ^3.10.0 (structured logging)
+Stack versions: `src/composer.json` (PHP, Perpl ORM, Slim, Monolog).
 
-This skill consolidates verified best practices from PHP.net, OWASP, Slim 4 docs, and Perpl ORM documentation.
+## Passwords
 
-## PHP 8.4+ Security Hardening
+Hash with `password_hash()` and verify with `password_verify()`. `User::hashPassword()` is the single entry point (`PASSWORD_DEFAULT`).
 
-### Password Security (CRITICAL)
+## Sessions
 
-**Use Argon2ID for new implementations:**
+`Bootstrapper` configures sessions: strict mode, cookies only, `httponly`, `samesite`, `secure` on HTTPS. Change session settings there. Call `session_regenerate_id(true)` after authentication.
 
-```php
-// CORRECT - Modern password hashing (PHP 8.4+ default)
-$hash = password_hash(
-    $password,
-    PASSWORD_ARGON2ID,
-    [
-        'memory_cost' => 65536,  // 65MB
-        'time_cost' => 4,         // 4 iterations
-        'threads' => 2            // 2 parallel threads
-    ]
-);
+## Error display
 
-// LEGACY - Still works but less secure
-$hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
+- Production: `display_errors = 0`, `log_errors = 1`, `error_reporting = E_ALL`, `expose_php = 0`
+- Log through `LoggerUtils::getAppLogger()`
 
-// VERIFICATION (same code for both)
-if (password_verify($userInput, $hash)) {
-    // Password is correct
-}
-```
+## Server hardening
 
-**Consider password pepper for additional security:**
+Deployments set `disable_functions` (`exec`, `system`, `shell_exec`, `passthru`, `proc_open`, `pcntl_exec`), `allow_url_fopen = 0` and `allow_url_include = 0` in php.ini or the image.
+
+## Slim 4
+
+Middleware order, error handling, DI and response patterns: [`slim-4-best-practices.md`](./slim-4-best-practices.md).
+
+### Route error handling
+
+Catch exceptions in the route and return sanitized JSON through `SlimUtils`:
 
 ```php
-// Generate pepper (4096-bit random key) once during installation
-$pepper = openssl_random_pseudo_bytes(512);  // Store in .env
-
-// Before hashing
-$peppered = hash_hmac('sha256', $password, $_ENV['PASSWORD_PEPPER']);
-$hash = password_hash($peppered, PASSWORD_ARGON2ID);
-
-// Verification also uses pepper
-$peppered = hash_hmac('sha256', $userInput, $_ENV['PASSWORD_PEPPER']);
-if (password_verify($peppered, $storedHash)) { /* ... */ }
-```
-
-**Why it matters:**
-- Argon2ID resists GPU attacks better than bcrypt
-- Pepper provides additional brute-force protection even if salts leak
-- NIST 2017 recommends pepper for critical authentication
-
-**Source**: [PHP.net password_hash](https://www.php.net/manual/en/function.password-hash.php), [OWASP Authentication Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html)
-
-### Session Security (Critical)
-
-**Enable strict session mode in docker/Config.php:**
-
-```php
-// Production session configuration
-ini_set('session.use_strict_mode', 1);           // Reject client-supplied session IDs
-ini_set('session.cookie_secure', 1);              // HTTPS only
-ini_set('session.cookie_httponly', 1);            // Block JavaScript access
-ini_set('session.cookie_samesite', 'Strict');     // CSRF protection
-ini_set('session.name', 'id');                    // Non-standard name
-ini_set('session.cookie_lifetime', 0);            // Expires when browser closes
-ini_set('session.gc_maxlifetime', 3600);          // Remove after 1 hour idle
-```
-
-**Regenerate session after authentication:**
-
-```php
-// In authentication routes
-if (authenticateUser($username, $password)) {
-    session_regenerate_id(true);  // true = delete old session
-    $_SESSION['user_id'] = $userId;
-    $_SESSION['authenticated'] = true;
-}
-```
-
-**Why it matters:**
-- Strict mode prevents session fixation attacks
-- SameSite blocks CSRF by default
-- Session regeneration prevents hijacking after login
-- HTTPOnly prevents XSS access to session cookie
-
-**Source**: [OWASP Session Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html)
-
-### Error Display Hardening
-
-**Production configuration in docker/Config.php:**
-
-```php
-// Never display errors in production
-if ($isDevelopment) {
-    ini_set('display_errors', '1');
-    error_reporting(E_ALL);
-} else {
-    ini_set('display_errors', '0');         // Never show errors
-    error_reporting(E_ALL);                 // Log all errors
-    ini_set('log_errors', '1');
-    ini_set('error_log', '/var/log/php-errors.log');
-}
-
-// Security headers - hide PHP version
-ini_set('expose_php', '0');
-header('X-Powered-By', 'hidden');  // Don't advertise PHP
-```
-
-**Why it matters:**
-- Exposed error messages leak system information to attackers
-- Version disclosure enables targeted exploits
-- All errors logged server-side for debugging without exposing to users
-
-**Source**: [OWASP PHP Configuration Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/PHP_Configuration_Cheat_Sheet.html)
-
-### Dangerous Function Restrictions
-
-**Disable in web server configuration:**
-
-```php
-// In docker/Config.php or Dockerfile
-// Disable shell execution functions in production
-disable_functions = "exec,system,shell_exec,passthru,proc_open,pcntl_exec"
-
-// Restrict file operations
-allow_url_fopen = 0
-allow_url_include = 0
-```
-
-**Why it matters:**
-- Shell execution allows RCE (Remote Code Execution)
-- URL wrappers enable RFI (Remote File Inclusion)
-- File restrictions prevent file-based attacks
-
-## Slim 4 Framework Best Practices
-
-> [!NOTE] Canonical reference
-> [`slim-4-best-practices.md`](./slim-4-best-practices.md) is the single source of truth
-> for Slim 4 middleware ordering, error handling, DI, and response patterns.
-> Consult that file for all Slim 4 questions. This section covers only PHP-level patterns.
-
-### Error Handling Pattern
-
-**Never throw HTTP exceptions from routes:**
-
-```php
-// ❌ WRONG - Exception thrown exposes stack trace; withJson() is Slim 3 and does not exist
-$app->post('/payments/delete', function(Request $req, Response $res): Response {
-    $service = new FinancialService();
-    $service->deletePayment($groupKey);  // If this throws, raw 500 + stack trace
-    return $res->withJson(['success' => true]);
-});
-
-// ✅ CORRECT - Catch and return sanitized JSON via SlimUtils
-$app->post('/payments/delete', function(Request $req, Response $res): Response {
+$app->post('/payments/delete', function (Request $req, Response $res): Response {
     try {
-        $service = new FinancialService();   // no DI container — see service-layer.md
+        $service = new FinancialService();
         $service->deletePayment($groupKey);
         return SlimUtils::renderJSON($res, ['success' => true]);
     } catch (Throwable $e) {
-        return SlimUtils::renderErrorJSON(
-            $res,
-            gettext('An error occurred'),
-            [],
-            500,
-            $e,
-            $req
-        );
+        return SlimUtils::renderErrorJSON($res, gettext('An error occurred'), [], 500, $e, $req);
     }
 });
 ```
 
-## Perpl ORM Best Practices
+## Perpl ORM
 
-### Query Optimization with findObjects()
-
-**Use typed collections:**
+### Typed collections
 
 ```php
-// ✅ BETTER - Returns ObjectCollection<User> with IDE support
-$users = UserQuery::create()
-    ->filterByActive(true)
-    ->findObjects();  // Type hints work in IDE
-
-foreach ($users as $user) {
-    echo $user->getFirstName();  // IDE autocomplete works
-}
-
-// Older way - less type safety
-$users = UserQuery::create()
-    ->filterByActive(true)
-    ->find();  // Returns generic collection
+$users = UserQuery::create()->filterByActive(true)->findObjects();
 ```
 
-### Eager Loading (Prevent N+1 Queries)
-
-**BEFORE (N+1 problem):**
+### Eager loading
 
 ```php
-$books = BookQuery::create()->find();
+$books = BookQuery::create()->with('Author')->findObjects();
 foreach ($books as $book) {
-    echo $book->getAuthor()->getName();  // Extra query per book!
-}
-// If 1000 books: 1001 queries total!
-```
-
-**AFTER (single query):**
-
-```php
-$books = BookQuery::create()
-    ->with('Author')  // Eager-load author in one query
-    ->findObjects();
-
-foreach ($books as $book) {
-    echo $book->getAuthor()->getName();  // No extra queries, 2 total!
+    echo $book->getAuthor()->getName();
 }
 ```
 
-### Batch Operations for Performance
-
-**Instead of looping saves:**
+### Bulk updates
 
 ```php
-// ❌ SLOW - N queries
-foreach ($people as $person) {
-    $person->setStatus('Inactive');
-    $person->save();  // 1 query per person
-}
-
-// ✅ FAST - 1 query
 PersonQuery::create()
     ->filterByFamilyId($familyId)
     ->setUpdateValue('status', 'Inactive')
-    ->update();  // Single query updates all matching rows
+    ->update();
 ```
 
-### Type-Safe Joins with useXXXQuery()
+### Type-safe joins
 
 ```php
-// Type-safe join chain
-$query = BookQuery::create()                    // BookQuery<null>
-    ->useAuthorQuery()                         // AuthorQuery<BookQuery<null>>
+$books = BookQuery::create()
+    ->useAuthorQuery()
         ->filterByLastName('Smith')
-    ->endUse()                                 // Back to BookQuery<null>
-    ->useCategoryQuery('category')             // CategoryQuery<BookQuery<null>>
+    ->endUse()
+    ->useCategoryQuery('category')
         ->filterByType('Fiction')
-    ->endUse();                                // Back to BookQuery<null>
-
-// Result typed properly for IDE
-$books = $query->findObjects();  // ObjectCollection<Book>
+    ->endUse()
+    ->findObjects();
 ```
 
-## Best Practices Checklist
+More query patterns: `performance-optimization.md`.
+
+## Checklist
 
 ### Security
-- [ ] Passwords hashed with PASSWORD_ARGON2ID
-- [ ] Session strict mode enabled in php.ini
-- [ ] Session cookies secure + HTTPOnly + SameSite=Strict
-- [ ] Error details never displayed in production
-- [ ] All user input sanitized with InputUtils
-- [ ] Authorization checks use canEditPerson() for object-level security
-- [ ] TLS verification enabled by default (allow-self-signed is opt-in)
+- [ ] Passwords go through `User::hashPassword()`
+- [ ] Error details stay out of production responses
+- [ ] User input passes through `InputUtils`
+- [ ] Object-level authorization uses `canEditPerson()`
+- [ ] Outbound HTTPS verifies TLS (self-signed is opt-in)
 
 ### Performance
-- [ ] Services use selective field loading with `->select()`
-- [ ] Related data eager-loaded with `->with()`
-- [ ] No N+1 queries in loops (use `withColumn()` or `with()`)
-- [ ] Aggregations use SQL `SUM()`, `COUNT()` not PHP loops
-- [ ] Hash-based lookups used for set membership
-- [ ] Batch operations for bulk updates
-- [ ] Large result sets paginated or processed in batches
+- [ ] `->select()` for needed columns, `->with()` / `withColumn()` for related data
+- [ ] SQL `SUM()` / `COUNT()` for aggregates
+- [ ] Batch updates for bulk changes
+- [ ] Pagination or batching for large result sets
 
 ### Framework
-- [ ] Middleware order correct: Body → Routing → Error → Custom (LIFO: error wraps routing)
-- [ ] Services lazy-loaded through container
-- [ ] All errors caught and returned via SlimUtils::renderErrorJSON
-- [ ] No HTTP exceptions thrown from routes
-- [ ] Dependency injection used for service access
-- [ ] Routes focused on HTTP concerns only
-
----
-
-**Last updated: February 16, 2026**
+- [ ] Routes catch errors and return `SlimUtils::renderErrorJSON()`
+- [ ] Services are instantiated per `service-layer.md`
+- [ ] Routes handle HTTP only; logic lives in services

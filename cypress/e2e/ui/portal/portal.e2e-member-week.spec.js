@@ -258,7 +258,6 @@ describe("Member Portal — #9869 scenario 1, \"a member's week\", as ONE end-to
             originalVersion = resp.body.value ?? resp.body.data ?? "v1";
         });
         setVersion("v2");
-        setConfig("bPortalShowCalendar", "1");
         setConfig("bPortalShowVolunteer", "1");
         setVisibleCalendars([{ type: "calendar", id: CHURCH_CALENDAR_ID }]);
 
@@ -438,7 +437,7 @@ describe("Member Portal — #9869 scenario 1, \"a member's week\", as ONE end-to
                     const labels = [...$labels].map((el) => el.textContent.trim());
                     expect(labels.slice(0, 2)).to.deep.eq(["Home", "Calendar"]);
                     expect(labels).to.include("Volunteering");
-                    expect(labels.slice(-2)).to.deep.eq(["My Family", "Profile"]);
+                    expect(labels.slice(-3)).to.deep.eq(["My Family", "Profile", "Sign-in and devices"]);
                 },
             );
 

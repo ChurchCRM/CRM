@@ -25,7 +25,9 @@ test.describe('Volunteer Management v2', () => {
   test('volunteer-ministry-settings', async ({ page }, testInfo) => {
     // Captured before the seed, so the delivery card has no queued messages to report.
     await setVolunteerVersion(page, 'v2');
-    await expect(page.locator('#ministry-experience-card')).toBeVisible();
+    await page.goto('/admin/ministry-settings');
+    await expect(page.locator('#ministrySettingsPanel')).toBeVisible({ timeout: 30000 });
+    await expect(page.locator('#ministry-delivery-card')).toBeVisible();
     await waitForFloatingButtonsToTuck(page);
     await settle(page, 800);
 
@@ -33,7 +35,8 @@ test.describe('Volunteer Management v2', () => {
       name: 'volunteer-ministry-settings',
       title: 'Volunteer Management Settings',
       category: 'Admin & Settings',
-      purpose: 'Show the Ministry Settings page that switches a church to Volunteer Management V2.',
+      purpose: 'Show the Ministry Settings page: reminder and alert timing, the scheduling horizon and the background-job and delivery status.',
+      usedIn: ['docs'],
     });
   });
 
@@ -51,6 +54,7 @@ test.describe('Volunteer Management v2', () => {
       title: 'Ministry Dashboard',
       category: 'Dashboards',
       purpose: 'Show the Ministry Dashboard: open spots to fill, replies still owed and upcoming staffed services.',
+      usedIn: ['docs'],
     });
   });
 
@@ -67,6 +71,7 @@ test.describe('Volunteer Management v2', () => {
       title: 'Ministry Volunteers & Qualifications',
       category: 'Groups & Events',
       purpose: 'Show a ministry page with its volunteers and the positions each one is qualified for.',
+      usedIn: ['docs'],
     });
   });
 
@@ -81,6 +86,7 @@ test.describe('Volunteer Management v2', () => {
       title: 'Sunday Staffing at a Glance',
       category: 'Groups & Events',
       purpose: 'Show one Sunday staffed position by position, in plain words: Full, Covered, Needs 2 more.',
+      usedIn: ['docs'],
     });
   });
 
@@ -109,6 +115,7 @@ test.describe('Volunteer Management v2', () => {
       title: 'Assign a Qualified Volunteer',
       category: 'Groups & Events',
       purpose: 'Show the volunteer picker, which offers only qualified people and who served least recently.',
+      usedIn: ['docs'],
     });
   });
 
@@ -123,6 +130,7 @@ test.describe('Volunteer Management v2', () => {
       title: 'Member Portal: My Volunteer Schedule',
       category: 'Groups & Events',
       purpose: 'Show a volunteer answering a request in the Member Portal: accept, decline or find a sub.',
+      usedIn: ['docs'],
     });
     await member.context().close();
   });
@@ -139,6 +147,7 @@ test.describe('Volunteer Management v2', () => {
       title: 'Member Portal: Volunteer Sign-Up',
       category: 'Groups & Events',
       purpose: 'Show a volunteer finding open spots they are qualified for and signing up in the Member Portal.',
+      usedIn: ['docs'],
     });
     await member.context().close();
   });

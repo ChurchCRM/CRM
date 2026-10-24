@@ -15,10 +15,16 @@ import { formatTimeElements } from "../ministries/components/ui";
 import { initAttendanceHistory } from "./attendance-history";
 import { initRefreshCoordinatesBtn } from "./geo-refresh";
 import { initGroupManager } from "./person-group-manager";
+import { initLoginAsPerson } from "./person-login-as-person";
+import { initPortalAccess } from "./person-portal-access";
+import { initPortalSignInCard } from "./person-signin-card";
 import { initTimelineFilter } from "./timeline-filter";
 
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".timeline-container").forEach(initTimelineFilter);
+  initPortalSignInCard();
+  initPortalAccess();
+  initLoginAsPerson();
   // The Volunteer v2 pane's dates (#9711), in ChurchCRM's locale.
   formatTimeElements();
   // Map initialisation

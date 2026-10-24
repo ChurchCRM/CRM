@@ -195,7 +195,7 @@ function renderTitleFieldInHeader(event) {
       <label class="form-label text-muted small mb-1" for="event-title-input">${t("Event Title")}</label>
       <input id="event-title-input" name="Title" value="${escapeHtml(event.Title || "")}"
         placeholder="${t("e.g. Sunday Service")}"
-        class="form-control form-control-lg fw-bold border-0 border-bottom rounded-0 px-0" style="box-shadow:none">
+        class="form-control form-control-lg fw-bold border-0 border-bottom rounded-0 px-0 shadow-none">
       <div class="invalid-feedback" id="titleFeedback"><i class="fas fa-exclamation-circle me-1"></i>${t("This field is required")}</div>
     </div>`;
 }
@@ -471,7 +471,7 @@ function renderViewerMarkup(event, calendars, eventTypes, groups = []) {
   let calBadges = "";
   for (const cal of pinnedCals) {
     calBadges += `<span class="badge border me-1" style="background-color:#${cal.BackgroundColor};color:#${cal.ForegroundColor};border-color:#${cal.BackgroundColor}">
-      <span class="d-inline-block rounded-circle me-1" style="width:8px;height:8px;background-color:#${cal.ForegroundColor};opacity:0.7"></span>
+      <span class="d-inline-block rounded-circle me-1 calendar-dot-sm" style="background-color:#${cal.ForegroundColor}"></span>
       ${escapeHtml(cal.Name)}</span>`;
   }
 

@@ -11,12 +11,13 @@ use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Utils\LoggerUtils;
 
 /**
- * Resolves composer recipients from person / family ids and sends one
- * ComposerEmail per recipient.
+ * Resolves composer recipients from person / family ids and queues one
+ * ComposerEmail per recipient (EmailQueueService sends them).
  *
  * The API never accepts raw addresses: the server owns the recipient list, so
  * it can apply the do-not-email property, skip the deceased and the
  * address-less, deduplicate, and report every skipped recipient by name.
+ * A family recipient is mailed at Family::getEmailRecipient()'s address.
  *
  * Recipient shape (also the shape of the `recipients` arrays returned by the
  * /cart/emails, /people/emails and /groups/{id}/emails list endpoints):
@@ -33,6 +34,7 @@ class EmailComposerService
     public const SKIP_DECEASED = 'deceased';
     public const SKIP_INACTIVE = 'inactive';
     public const SKIP_DUPLICATE = 'duplicate-address';
+    public const SKIP_NO_ADULT_EMAIL = 'no-adult-email';
 
     /**
      * @param int[] $personIds
@@ -71,7 +73,6 @@ class EmailComposerService
                     $skipped[] = self::skip($personId, null, $name, self::SKIP_DO_NOT_EMAIL);
                     continue;
                 }
-                // Person::getEmail() falls back to the family address when the person has none.
                 $email = trim((string) $person->getEmail());
                 if ($email === '') {
                     $skipped[] = self::skip($personId, null, $name, self::SKIP_NO_EMAIL);
@@ -109,9 +110,9 @@ class EmailComposerService
                     $skipped[] = self::skip(null, $familyId, $name, self::SKIP_INACTIVE);
                     continue;
                 }
-                $email = trim((string) $family->getEmail());
+                $email = trim((string) $family->getEmailRecipient()?->getEmail());
                 if ($email === '') {
-                    $skipped[] = self::skip(null, $familyId, $name, self::SKIP_NO_EMAIL);
+                    $skipped[] = self::skip(null, $familyId, $name, self::SKIP_NO_ADULT_EMAIL);
                     continue;
                 }
                 $key = strtolower($email);
@@ -133,54 +134,30 @@ class EmailComposerService
     }
 
     /**
-     * Sends one ComposerEmail per recipient. Never throws for a transport
-     * failure: the failed recipient is reported with PHPMailer's error text.
+     * Queues one message per recipient for EmailQueueService to send. The message is
+     * rendered once, now, so every recipient gets what the author previewed.
      *
-     * @param list<array{personId: ?int, familyId: ?int, name: string, email: string}> $recipients
+     * @param non-empty-list<array{personId: ?int, familyId: ?int, name: string, email: string}> $recipients
      *
-     * @return array{sent: list<array{personId: ?int, familyId: ?int, name: string, email: string}>, failed: list<array{personId: ?int, familyId: ?int, name: string, email: string, error: string}>}
+     * @return string the batch id
      */
-    public function send(array $recipients, string $subject, string $body, ?User $sentBy = null): array
+    public function queue(array $recipients, string $subject, string $body, ?User $sentBy = null): string
     {
-        $sent = [];
-        $failed = [];
+        $batch = (new EmailQueueService())->enqueue(
+            $recipients,
+            $subject,
+            $this->preview($recipients[0], $subject, $body),
+            $sentBy?->getId() !== null ? (int) $sentBy->getId() : null,
+        );
 
-        foreach ($recipients as $recipient) {
-            $public = [
-                'personId' => $recipient['personId'],
-                'familyId' => $recipient['familyId'],
-                'name'     => $recipient['name'],
-                'email'    => $recipient['email'],
-            ];
-            try {
-                $email = new ComposerEmail(
-                    $recipient['email'],
-                    $recipient['name'],
-                    $subject,
-                    $body,
-                );
-                // Attribute the history row to the record and the sending user.
-                $email->setLogContext($recipient['personId'], $recipient['familyId'], $sentBy?->getId() !== null ? (int) $sentBy->getId() : null);
-                if ($email->send()) {
-                    $sent[] = $public;
-                } else {
-                    $public['error'] = $email->getError() ?: gettext('Email sending is disabled');
-                    $failed[] = $public;
-                }
-            } catch (\Throwable $e) {
-                $public['error'] = $e->getMessage();
-                $failed[] = $public;
-            }
-        }
-
-        LoggerUtils::getAppLogger()->info('Composer email sent', [
+        LoggerUtils::getAppLogger()->info('Composer email queued', [
             'sentBy'  => $sentBy?->getUserName() ?? '',
             'subject' => $subject,
-            'sent'    => count($sent),
-            'failed'  => count($failed),
+            'batch'   => $batch,
+            'queued'  => count($recipients),
         ]);
 
-        return ['sent' => $sent, 'failed' => $failed];
+        return $batch;
     }
 
     /**

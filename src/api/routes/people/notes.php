@@ -332,7 +332,7 @@ $app->group('/note/{noteId:[0-9]+}', function (RouteCollectorProxy $group): void
      *     path="/note/{noteId}",
      *     operationId="updateNote",
      *     summary="Update a note's text and/or privacy",
-     *     description="Only the note's author or an admin may update a note.",
+     *     description="Only the note's author or an admin may update an ordinary user note; system timeline entries are immutable. Omitting private preserves the stored privacy flag.",
      *     tags={"People"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="noteId", in="path", required=true, @OA\Schema(type="integer", example=1)),
@@ -357,6 +357,12 @@ $app->group('/note/{noteId:[0-9]+}', function (RouteCollectorProxy $group): void
         $note = $request->getAttribute('note');
         $currentUser = AuthenticationManager::getCurrentUser();
 
+        // Only user-authored notes may be edited. System timeline rows
+        // (create/edit/delete-note/etc.) are immutable audit evidence, even for admins.
+        if ($note->getType() !== 'note') {
+            return SlimUtils::renderErrorJSON($response, gettext('System timeline entries cannot be edited'), [], 403);
+        }
+
         // Editing requires reading the note. Admins see all notes (including
         // private) via canReadPrivateNotes() → isAdmin(), so they may edit any note.
         // Non-admin non-authors are rejected.
@@ -372,7 +378,11 @@ $app->group('/note/{noteId:[0-9]+}', function (RouteCollectorProxy $group): void
             return SlimUtils::renderErrorJSON($response, gettext('Note text is required'), [], 400);
         }
 
-        $private = !empty($input['private']) ? 1 : 0;
+        // Omitting 'private' means no privacy change; never silently publish
+        // a previously confidential note during a text-only update.
+        $private = array_key_exists('private', $input)
+            ? (!empty($input['private']) ? 1 : 0)
+            : (int) $note->isPrivate();
 
         $note->setText($text);
         $note->setPrivate($private);
@@ -388,7 +398,7 @@ $app->group('/note/{noteId:[0-9]+}', function (RouteCollectorProxy $group): void
      *     path="/note/{noteId}",
      *     operationId="deleteNote",
      *     summary="Delete a note",
-     *     description="Deletes the note. Requires Notes permission. Only the note's author or an admin may delete it.",
+     *     description="Deletes an ordinary user note. Requires Notes permission. Only the note's author or an admin may delete it; system timeline entries cannot be deleted through this API.",
      *     tags={"People"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="noteId", in="path", required=true, @OA\Schema(type="integer", example=1)),
@@ -404,6 +414,12 @@ $app->group('/note/{noteId:[0-9]+}', function (RouteCollectorProxy $group): void
         /** @var Note $note */
         $note = $request->getAttribute('note');
         $currentUser = AuthenticationManager::getCurrentUser();
+
+        // System/audit entries are not user notes and must not be deleted
+        // through this API. Otherwise an admin could erase the audit trail.
+        if ($note->getType() !== 'note') {
+            return SlimUtils::renderErrorJSON($response, gettext('System timeline entries cannot be deleted'), [], 403);
+        }
 
         if (!$currentUser->isAdmin() && $note->getEnteredBy() !== $currentUser->getId()) {
             return SlimUtils::renderErrorJSON($response, gettext('Only the note author or an admin may delete this note'), [], 403);
