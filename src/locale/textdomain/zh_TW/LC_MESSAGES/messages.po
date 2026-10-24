@@ -18140,10 +18140,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d 份稅單已成功郵寄給家庭"
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d 捐獻聲明"
-
-#: 
 msgid "All classifications"
 msgstr "所有分類"
 
@@ -21648,10 +21644,6 @@ msgstr "已登入"
 #: 
 msgid "Signed up"
 msgstr "已報名"
-
-#: 
-msgid "Sincerely"
-msgstr "謹上"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."

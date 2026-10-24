@@ -17982,10 +17982,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d belastingdocument succesvol naar het gezin gemaild."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d Givingverklaring"
-
-#: 
 msgid "All classifications"
 msgstr "Alle classificaties"
 
@@ -21502,10 +21498,6 @@ msgstr "Aangemeld"
 #: 
 msgid "Signed up"
 msgstr "Aangemeld om te dienen"
-
-#: 
-msgid "Sincerely"
-msgstr "Met vriendelijke groet"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."

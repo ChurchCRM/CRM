@@ -18009,10 +18009,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "Hati %d ya kodi imetumwa kwa familia kwa mafanikio."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "Taarifa ya Utoaji %s %d"
-
-#: 
 msgid "All classifications"
 msgstr "Uainishaji wote"
 
@@ -21529,10 +21525,6 @@ msgstr "Ameingia"
 #: 
 msgid "Signed up"
 msgstr "Amejisajili"
-
-#: 
-msgid "Sincerely"
-msgstr "Wako mwaminifu"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."

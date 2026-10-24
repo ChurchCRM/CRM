@@ -18013,10 +18013,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d belastingdokument is suksesvol aan die gesin e-pos gestuur."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d Gawing Verklaring"
-
-#: 
 msgid "All classifications"
 msgstr "Alle klassifikasies"
 
@@ -21533,10 +21529,6 @@ msgstr "Aangemeld"
 #: 
 msgid "Signed up"
 msgstr "Ingeskryf"
-
-#: 
-msgid "Sincerely"
-msgstr "Met vriendelike groete"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."

@@ -18089,10 +18089,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d Steuerdokument erfolgreich per E-Mail an die Familie versendet."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d Spendenbescheinigung"
-
-#: 
 msgid "All classifications"
 msgstr "Alle Kategorien"
 
@@ -21609,10 +21605,6 @@ msgstr "Angemeldet"
 #: 
 msgid "Signed up"
 msgstr "Eingetragen"
-
-#: 
-msgid "Sincerely"
-msgstr "Herzliche Grüße"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."

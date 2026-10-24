@@ -17991,10 +17991,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d개의 세금 문서가 가족에게 성공적으로 이메일로 전송되었습니다."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d 기부 명세서"
-
-#: 
 msgid "All classifications"
 msgstr "모든 분류"
 
@@ -21499,10 +21495,6 @@ msgstr "로그인함"
 #: 
 msgid "Signed up"
 msgstr "신청함"
-
-#: 
-msgid "Sincerely"
-msgstr "드림"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."

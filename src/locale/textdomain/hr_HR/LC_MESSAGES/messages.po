@@ -17993,10 +17993,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d porezni dokument uspješno poslan po e-pošti obitelji."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "Izjava o darivanju %s %d"
-
-#: 
 msgid "All classifications"
 msgstr "Sve klasifikacije"
 
@@ -21525,10 +21521,6 @@ msgstr "Prijavljen"
 #: 
 msgid "Signed up"
 msgstr "Prijavljen/a"
-
-#: 
-msgid "Sincerely"
-msgstr "S poštovanjem"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."

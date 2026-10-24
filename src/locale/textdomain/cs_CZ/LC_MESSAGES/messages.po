@@ -18017,10 +18017,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d daňový dokument byl úspěšně zaslán rodině."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d Výpis darů"
-
-#: 
 msgid "All classifications"
 msgstr "Všechny klasifikace"
 
@@ -21549,10 +21545,6 @@ msgstr "Přihlášen(a)"
 #: 
 msgid "Signed up"
 msgstr "Přihlášen(a) ke službě"
-
-#: 
-msgid "Sincerely"
-msgstr "S pozdravem"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."

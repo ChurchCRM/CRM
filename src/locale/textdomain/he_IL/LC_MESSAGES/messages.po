@@ -18011,10 +18011,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d מסמכי מס נשלחו למשפחה בהצלחה."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d הצהרת תרומה"
-
-#: 
 msgid "All classifications"
 msgstr "כל הסיווגים"
 
@@ -21531,10 +21527,6 @@ msgstr "מחובר"
 #: 
 msgid "Signed up"
 msgstr "נרשם"
-
-#: 
-msgid "Sincerely"
-msgstr "בכבוד רב"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."

@@ -17979,10 +17979,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d നികുതി രേഖ കുടുംബത്തിന് വിജയകരമായി ഇമെയിൽ ചെയ്തു."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d സദാചരണ പ്രസ്താവന"
-
-#: 
 msgid "All classifications"
 msgstr "എല്ലാ വർഗ്ഗീകരണങ്ങൾ"
 
@@ -21499,10 +21495,6 @@ msgstr "സൈൻ ഇൻ ചെയ്തു"
 #: 
 msgid "Signed up"
 msgstr "സൈൻ അപ്പ് ചെയ്തു"
-
-#: 
-msgid "Sincerely"
-msgstr "വിശ്വസ്തതയോടെ"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."

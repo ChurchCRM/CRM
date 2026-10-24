@@ -17991,10 +17991,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d dokumen pajak berhasil dikirim ke keluarga melalui email."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d Laporan Pemberian"
-
-#: 
 msgid "All classifications"
 msgstr "Semua klasifikasi"
 
@@ -21499,10 +21495,6 @@ msgstr "Sudah masuk"
 #: 
 msgid "Signed up"
 msgstr "Terdaftar"
-
-#: 
-msgid "Sincerely"
-msgstr "Hormat kami"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."

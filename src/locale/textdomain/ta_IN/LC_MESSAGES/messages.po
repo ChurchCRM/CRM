@@ -18025,10 +18025,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d வரி ஆவணம் குடும்பத்திற்கு வெற்றிகரமாக மின்னஞ்சல் அனுப்பப்பட்டது."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d வழங்குதல் அறிக்கை"
-
-#: 
 msgid "All classifications"
 msgstr "அனைத்து வகைப்பாடுகள்"
 
@@ -21545,10 +21541,6 @@ msgstr "உள்நுழைந்தார்"
 #: 
 msgid "Signed up"
 msgstr "பதிவு செய்தார்"
-
-#: 
-msgid "Sincerely"
-msgstr "இப்படிக்கு"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."

@@ -17963,10 +17963,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d件の税務文書が家族に正常にメール送信されました。"
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d 献金報告書"
-
-#: 
 msgid "All classifications"
 msgstr "すべての分類"
 
@@ -21471,10 +21467,6 @@ msgstr "サインイン済み"
 #: 
 msgid "Signed up"
 msgstr "申込済み"
-
-#: 
-msgid "Sincerely"
-msgstr "敬具"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."

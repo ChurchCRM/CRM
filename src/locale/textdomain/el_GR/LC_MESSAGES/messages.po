@@ -18013,10 +18013,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d έγγραφο φόρου αποστάλθηκε στην οικογένεια με επιτυχία."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d Δήλωση Παροχής"
-
-#: 
 msgid "All classifications"
 msgstr "Όλες οι ταξινομήσεις"
 
@@ -21533,10 +21529,6 @@ msgstr "Συνδέθηκε"
 #: 
 msgid "Signed up"
 msgstr "Εγγράφηκε"
-
-#: 
-msgid "Sincerely"
-msgstr "Με εκτίμηση"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."

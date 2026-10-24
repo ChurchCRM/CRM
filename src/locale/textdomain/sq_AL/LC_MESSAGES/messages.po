@@ -18003,10 +18003,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d dokument tatimor i dërguar me sukses në familje me email."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "Deklarata e dhurimit %s %d"
-
-#: 
 msgid "All classifications"
 msgstr "Të gjitha klasifikimet"
 
@@ -21523,10 +21519,6 @@ msgstr "Hyrë"
 #: 
 msgid "Signed up"
 msgstr "Regjistruar"
-
-#: 
-msgid "Sincerely"
-msgstr "Me respekt"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."

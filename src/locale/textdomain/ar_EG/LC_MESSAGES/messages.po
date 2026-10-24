@@ -18068,10 +18068,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "تم إرسال %d وثيقة ضريبية إلى الأسرة بنجاح عبر البريد الإلكتروني."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d بيان التبرع"
-
-#: 
 msgid "All classifications"
 msgstr "جميع التصنيفات"
 
@@ -21636,10 +21632,6 @@ msgstr "مسجَّل الدخول"
 #: 
 msgid "Signed up"
 msgstr "مسجَّل"
-
-#: 
-msgid "Sincerely"
-msgstr "مع خالص التحية"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."

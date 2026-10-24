@@ -18021,10 +18021,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d የግብር ሰነድ ለቤተሰብ በተሳካ ሁኔታ በኢሜል ተላልፏል።"
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d የለገና መግለጫ"
-
-#: 
 msgid "All classifications"
 msgstr "ሁሉም ምድቦች"
 
@@ -21541,10 +21537,6 @@ msgstr "ገብተዋል"
 #: 
 msgid "Signed up"
 msgstr "ተመዝግቧል"
-
-#: 
-msgid "Sincerely"
-msgstr "ከሰላምታ ጋር"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
