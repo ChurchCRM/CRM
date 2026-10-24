@@ -46,6 +46,21 @@ const expectSignedOut = (response) => {
     expect(response.redirectedToUrl).to.match(/\/portal\/login$/);
 };
 
+const auditRows = () =>
+    cy
+        .makePrivateAdminAPICall("GET", `/admin/api/member-portal/audit?personId=${member.personId}&length=100`, null, 200)
+        .its("body.rows");
+
+const lastAuditId = () => auditRows().then((rows) => (rows.length > 0 ? rows[0].id : 0));
+
+const deviceSignInsSince = (startId) =>
+    auditRows().then((rows) =>
+        rows
+            .filter((row) => row.id > startId && row.event === "signed_in")
+            .reverse()
+            .map((row) => `${row.method}:${row.detail ?? ""}`),
+    );
+
 const signOutEverywhere = () =>
     cy.makePrivateAdminAPICall("POST", `/admin/api/person/${member.personId}/sign-in/sign-out-everywhere`, {}, 200);
 
@@ -64,7 +79,7 @@ describe("Member Portal device token grace", () => {
 
     it("lets a second request with the token just replaced sign in too, without replacing it again", () => {
         signInRemembered().then((first) => {
-            cy.then(() => {
+            lastAuditId().then((startId) => {
                 resumeWith(first).then((response) => {
                     expectSignedIn(response);
                     expect(setsDeviceCookie(response), "the first request gets the new token").to.eq(true);
@@ -80,6 +95,12 @@ describe("Member Portal device token grace", () => {
 
                         resumeWith(second).then(expectSignedIn);
                         resumeWith(first).then(expectSignedOut);
+
+                        deviceSignInsSince(startId).should("deep.equal", ["device:", "device:previous_token", "device:"]);
+                        auditRows().then((rows) => {
+                            const grace = rows.find((row) => row.id > startId && row.detail === "previous_token");
+                            expect(grace.summary).to.eq("With the token the device replaced moments ago");
+                        });
                     });
             });
         });
