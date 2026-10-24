@@ -296,6 +296,20 @@ describe("Member Portal permissions (portal permissions model)", () => {
             status(`/api/ministries/teams/${teamOther}`).should("eq", 403);
         });
 
+        it("is ignored once its team is deleted", () => {
+            cy.makePrivateAdminAPICall("POST", `/api/ministries/ministries/${ministryId}/teams`, { name: `${PREFIX} Parking` }, 201).then(
+                ({ body }) => {
+                    const teamId = body.team.id;
+                    giveGrant(NON_ADULT.personId, "volunteer.team.manage", "team", teamId, "NULL");
+                    signIn(NON_ADULT);
+                    navIds().should("include", "/portal/teams");
+
+                    cy.makePrivateAdminAPICall("DELETE", `/api/ministries/teams/${teamId}`, null, [200, 204]);
+                    navIds().should("not.include", "/portal/teams");
+                },
+            );
+        });
+
         it("is ignored when its scope type does not match the capability", () => {
             giveGrant(NON_ADULT.personId, "portal.family.contacts.view", "team", NON_ADULT.familyId, "NULL");
             signIn(NON_ADULT);
