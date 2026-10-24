@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import { resetUserFixture, resetUserState, resetTokenState, seedResetToken, blockedResetUser, cleanupResetFixture } from "../../../support/password-reset-fixtures";
+import { resetUserFixture, resetUserState, resetTokenState, seedResetToken, blockedResetUser, cleanupResetFixture, resetCsrfFixture } from "../../../support/password-reset-fixtures";
 
 describe("Session Password Reset", () => {
     describe("Password Reset Form", () => {
@@ -155,11 +155,12 @@ describe("Session Password Reset", () => {
         let token;
         let storageKey;
         let beforeUser;
+        let csrfToken;
         const password = "ChurchReset!10201Strong";
         const state = () => resetUserState(user);
         const tokenState = () => cy.then(() => resetTokenState(storageKey));
         const url = () => `/session/forgot-password/set/${token}`;
-        const post = (body) => cy.request({ method: "POST", url: url(), form: true, body });
+        const post = (body) => cy.request({ method: "POST", url: url(), form: true, body: { csrf_token: csrfToken, ...body } });
         const csrf = () => cy.get('input[name="csrf_token"]').invoke("val");
 
         beforeEach(() => {
@@ -167,6 +168,7 @@ describe("Session Password Reset", () => {
             resetUserFixture().then((row) => {
                 user = row;
                 beforeUser = [row];
+                return resetCsrfFixture(row).then((value) => { csrfToken = value; });
             });
             token = crypto.randomUUID().replaceAll("-", "") + crypto.randomUUID().replaceAll("-", "");
             storageKey = token;
@@ -309,7 +311,7 @@ describe("Session Password Reset", () => {
         it("rejects missing CSRF and invalid passwords without consuming the link", () => {
             cy.then(() => seedToken());
             cy.visit(url());
-            post({ password, passwordConfirmation: password }).its("body").should("include", "Password Reset Error");
+            post({ csrf_token: "", password, passwordConfirmation: password }).its("body").should("include", "Password Reset Error");
             csrf().then((csrf_token) => {
                 for (const [value, confirmation, message] of [
                     ["short", "short", "Your new password must be at least"],

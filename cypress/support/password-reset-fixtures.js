@@ -39,3 +39,14 @@ export function cleanupResetFixture(key, user) {
     return query(`UPDATE user_usr SET ${columns.map((column) => `${column} = ?`).join(", ")} WHERE usr_per_ID = ?`,
         [...columns.map((column) => user[column]), user.usr_per_ID]);
 }
+
+export function resetCsrfFixture(user) {
+    const key = crypto.randomUUID().replaceAll("-", "") + crypto.randomUUID().replaceAll("-", "");
+    return seedResetToken(key, user.usr_per_ID)
+        .then(() => cy.request(`/session/forgot-password/set/${key}`))
+        .then(({ body }) => {
+            const match = body.match(/name="csrf_token" value="([^"]+)"/);
+            expect(match, "recovery form CSRF token").not.to.equal(null);
+            return query("DELETE FROM tokens WHERE token = ?", [key]).then(() => match[1]);
+        });
+}
