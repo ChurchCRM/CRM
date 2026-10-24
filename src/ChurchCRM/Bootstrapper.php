@@ -299,12 +299,15 @@ class Bootstrapper
     /**
      * Runs `$work` with gettext in `$locale`, then puts the request's locale
      * back. For text meant for someone other than the person making the
-     * request, such as an email to a member in their own language.
+     * request, such as an email to a member in their own language. When the
+     * server has no such locale, `$work` runs in the request's language.
      */
     public static function inLocale(string $locale, callable $work): mixed
     {
         $previous = setlocale(LC_ALL, '0');
-        setlocale(LC_ALL, $locale, $locale . '.UTF-8', $locale . '.utf8');
+        if (setlocale(LC_ALL, $locale, $locale . '.UTF-8', $locale . '.utf8') === false) {
+            LoggerUtils::getAppLogger()->warning('Failed to set locale for text in another language; it stays in the request language', ['locale' => $locale]);
+        }
         setlocale(LC_NUMERIC, 'C');
         try {
             return $work();
