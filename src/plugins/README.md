@@ -157,6 +157,10 @@ plugin declares in `plugin.json`; only members who hold it see it.
   a `RequirePortalCapability` for a scoped check. A route without one
   can't be added. Render pages with `PortalTwig::renderPluginPage()` from
   `portal/templates/`.
+- **Reads and writes:** a `get` route only reads; change data in `post`,
+  `put`, `patch` or `delete`. The portal tells reads from writes by the
+  method: a read-only Login as Person session lets GET and HEAD through
+  and refuses the rest.
 - **Nav:** `getPortalNavItems()` returns `{label, url, icon, capability}`.
 - **Off and uninstall:** a disabled plugin's capabilities are refused and
   its pages and nav disappear; given grants stay and are deleted on
