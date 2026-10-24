@@ -35,7 +35,7 @@ Theme authors: https://docs.churchcrm.io/administration/member-portal-theme-guid
 | P17 | Volunteer scopes count for members: a team leader manages their own team in the portal (`volunteer.team.manage`). Coordinators and managers are staff accounts. |
 | P18 | Every portal page, API route and nav entry names a portal capability (`ChurchCRM\Portal\Permissions`, member sign-in design §8). Core and plugins register capabilities and rules the same way (`plugin-development.md` -> "Member Portal"). |
 
-Out of scope: contribution history and online giving, per-event visibility flags, members hiding themselves or single fields from the directory, personal-device check-in, theme editor or upload UI, theming the admin shell.
+Out of scope: contribution history and online giving, per-event visibility flags, personal-device check-in, theme editor or upload UI, theming the admin shell. The member directory (below) is a draft that needs a privacy model first: whether a member can leave themselves out of the portal and printed directories is open in #10869 (design: `docs/design/member-directory.md`, #10870), and #10524's protected-household policy must apply. The team leader's name-only Add Volunteer picker (#10531) is not a directory.
 
 ## Layout on disk
 
