@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe("Deprecated family Email in the family API (7.9.0)", () => {
+describe("Deprecated family Email in the family API (7.8.3)", () => {
     const run = Date.now();
     const address = (who) => `cypress-fem-${who}-${run}@example.com`;
     const families = {};
