@@ -24,6 +24,8 @@
             <span class="portal-brand-name">{{ church.name|default('ChurchCRM') }}</span>
         </a>
 
+        {# Signed out (the sign-in pages), there is no member and no menu. #}
+        {% if member.id %}
         <div class="portal-header-actions">
             <button class="portal-nav-toggle" type="button" id="portal-nav-toggle"
                     aria-controls="portal-nav" aria-expanded="false"
@@ -65,5 +67,6 @@
                 </div>
             </div>
         </div>
+        {% endif %}
     </div>
 </header>

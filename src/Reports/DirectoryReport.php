@@ -56,7 +56,6 @@ $bDirBirthday = isset($_POST['bDirBirthday']);
 $bDirFamilyPhone = isset($_POST['bDirFamilyPhone']);
 $bDirFamilyWork = isset($_POST['bDirFamilyWork']);
 $bDirFamilyCell = isset($_POST['bDirFamilyCell']);
-$bDirFamilyEmail = isset($_POST['bDirFamilyEmail']);
 $bDirPersonalPhone = isset($_POST['bDirPersonalPhone']);
 $bDirPersonalWork = isset($_POST['bDirPersonalWork']);
 $bDirPersonalCell = isset($_POST['bDirPersonalCell']);
@@ -278,7 +277,7 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
         $sHomePhone = !empty($per_HomePhone) ? $per_HomePhone : ($fam_HomePhone ?? '');
         $sWorkPhone = $per_WorkPhone ?? '';
         $sCellPhone = $per_CellPhone ?? '';
-        $sEmail = !empty($per_Email) ? $per_Email : ($fam_Email ?? '');
+        $sEmail = $per_Email ?? '';
 
         if ($bDirAddress) {
             if (strlen($sAddress1)) {
@@ -312,7 +311,7 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
             $TempStr = $sCellPhone;
             $OutStr .= '   ' . gettext('Cell') . ': ' . $TempStr ."\n";
         }
-        if (($bDirFamilyEmail || $bDirPersonalEmail) && strlen($sEmail)) {
+        if ($bDirPersonalEmail && strlen($sEmail)) {
             $OutStr .= '   ' . gettext('Email') . ': ' . $sEmail ."\n";
         }
         if ($bDirPersonalWorkEmail && strlen($per_WorkEmail)) {

@@ -123,8 +123,6 @@ class UpgradeService
             if ($upgradeScriptsExecuted === 0) {
                 $logger->warning('No upgrade path for ' . VersionUtils::getDBVersion() . ' to ' . $installed_version);
             }
-            // always rebuild the views
-            SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/mysql/upgrade/rebuild_views.sql', $connection);
 
             // Mark session to avoid immediate redirect loop while bootstrapper re-reads DB version.
             // Also clear update-notification session variables so the notification disappears

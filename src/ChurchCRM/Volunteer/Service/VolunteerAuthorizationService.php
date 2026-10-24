@@ -19,6 +19,8 @@ use ChurchCRM\model\ChurchCRM\VolunteerScope;
 use ChurchCRM\model\ChurchCRM\VolunteerScopeQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerSwap;
 use ChurchCRM\model\ChurchCRM\VolunteerTeamQuery;
+use ChurchCRM\Portal\Permissions\CorePortalCapabilities;
+use ChurchCRM\Portal\Permissions\PortalAuthorizationService;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -303,7 +305,29 @@ class VolunteerAuthorizationService
             return false;
         }
 
-        return $this->canManageAssignment($user, $assignment);
+        return $this->canDecideSwapFor($user, $assignment);
+    }
+
+    /**
+     * May this user approve or decline a substitute request on this assignment?
+     * Whoever manages the assignment, and anybody holding the portal capability
+     * `volunteer.team.substitutes` on its team (member sign-in design §8.4).
+     */
+    public function canDecideSwapFor(User $user, VolunteerAssignment $assignment): bool
+    {
+        if ($this->canManageAssignment($user, $assignment)) {
+            return true;
+        }
+
+        $substituteTeamIds = $this->getSubstituteTeamIds($user);
+        if ($substituteTeamIds === []) {
+            return false;
+        }
+
+        $occurrence = VolunteerOccurrenceQuery::create()->findPk((int) $assignment->getOccurrenceId());
+        $schedule = $occurrence === null ? null : VolunteerScheduleQuery::create()->findPk((int) $occurrence->getScheduleId());
+
+        return $schedule !== null && in_array((int) $schedule->getTeamId(), $substituteTeamIds, true);
     }
 
     /**
@@ -331,7 +355,9 @@ class VolunteerAuthorizationService
     }
 
     /**
-     * The teams this user leads by an explicit `team` grant of their own.
+     * The teams this user leads: an explicit `team` grant of their own, or a
+     * `volunteer.team.manage` grant an administrator gave them in the portal
+     * permissions model (member sign-in design §8.3).
      *
      * Deliberately NOT `getManagedTeamIds()`, which unions in every team under a
      * managed ministry: this answers "does this person lead a team", which is what
@@ -343,7 +369,53 @@ class VolunteerAuthorizationService
      */
     public function getOwnTeamScopeIds(User $user): array
     {
-        return $this->loadScopes($user)['team'];
+        return array_values(array_unique(array_merge(
+            $this->loadScopes($user)['team'],
+            $this->portalTeamIds($user, CorePortalCapabilities::TEAM_MANAGE),
+        )));
+    }
+
+    /**
+     * The person's own `team` scope rows, as the portal's team-leader rule reads
+     * them. Nothing when V2 is off.
+     *
+     * @return int[]
+     */
+    public function teamScopeIdsForPerson(int $personId): array
+    {
+        if (!User::isVolunteerV2Enabled()) {
+            return [];
+        }
+
+        return array_map(
+            'intval',
+            VolunteerScopeQuery::create()
+                ->filterByPersonId($personId)
+                ->filterByScopeType(self::SCOPE_TEAM)
+                ->select(['ScopeId'])
+                ->find()
+                ->toArray()
+        );
+    }
+
+    /**
+     * Teams whose substitute requests this person may decide through the portal
+     * permissions model (`volunteer.team.substitutes`).
+     *
+     * @return int[]
+     */
+    public function getSubstituteTeamIds(User $user): array
+    {
+        return $this->portalTeamIds($user, CorePortalCapabilities::TEAM_SUBSTITUTES);
+    }
+
+    /**
+     * Does this person run any team, or decide any team's substitute requests?
+     * The coarse gate for the team half of the volunteer API.
+     */
+    public function hasTeamAuthority(User $user): bool
+    {
+        return $this->getOwnTeamScopeIds($user) !== [] || $this->getSubstituteTeamIds($user) !== [];
     }
 
     /**
@@ -362,7 +434,7 @@ class VolunteerAuthorizationService
      *     ministries list page was retired the sidebar is the only way in;
      *   - a pure **team leader** holds only `team` scopes, so the list is
      *     empty. Leading a team is not administering the ministry above it
-     *     (§4.6), and `/ministries/{id}` would refuse them.
+     *     (§4.6); the dashboard links them to `/ministries/{id}`'s team-only view.
      *
      * Ids and names only — this runs on **every** page of the application, so
      * it never hydrates a model object.
@@ -407,7 +479,43 @@ class VolunteerAuthorizationService
     }
 
     /**
-     * Team ids: own team scopes ∪ every team under a managed ministry (§4.4).
+     * The active ministries this user reaches only as a team leader, id => name, by name.
+     *
+     * @return array<int, string>
+     */
+    public function getTeamLedMinistries(User $user): array
+    {
+        $teamIds = $this->getOwnTeamScopeIds($user);
+        if ($teamIds === []) {
+            return [];
+        }
+
+        $ministryIds = array_map('intval', VolunteerTeamQuery::create()
+            ->filterById($teamIds, Criteria::IN)
+            ->select('MinistryId')
+            ->find()
+            ->toArray());
+        $ministryIds = array_values(array_diff(array_unique($ministryIds), array_keys($this->getManageableMinistries($user))));
+        if ($ministryIds === []) {
+            return [];
+        }
+
+        $ministries = [];
+        foreach (VolunteerMinistryQuery::create()
+            ->filterById($ministryIds, Criteria::IN)
+            ->filterByActive(true)
+            ->orderByName()
+            ->select(['Id', 'Name'])
+            ->find()
+            ->toArray() as $row) {
+            $ministries[(int) $row['Id']] = (string) $row['Name'];
+        }
+
+        return $ministries;
+    }
+
+    /**
+     * Team ids: own teams (`getOwnTeamScopeIds()`) ∪ every team under a managed ministry (§4.4).
      * That union is what makes the hierarchy real rather than two independent lists.
      *
      * @return int[]
@@ -415,7 +523,7 @@ class VolunteerAuthorizationService
     public function getManagedTeamIds(User $user): array
     {
         $scopes = $this->loadScopes($user);
-        $teamIds = $scopes['team'];
+        $teamIds = $this->getOwnTeamScopeIds($user);
 
         if ($scopes['ministry'] !== []) {
             $inherited = VolunteerTeamQuery::create()
@@ -682,5 +790,19 @@ class VolunteerAuthorizationService
     private function forgetScopes(int $personId): void
     {
         unset($this->scopeCache[$personId], self::$manageableMinistryMemo[$personId]);
+        PortalAuthorizationService::forget($personId);
+    }
+
+    /**
+     * Team scopes the portal permissions model gives this person on top of
+     * their own scope rows: the grants an administrator gave them. The model's
+     * team-leader rule is those same rows, so for a team leader this adds
+     * nothing, and it stays empty while the portal's volunteering switch is off.
+     *
+     * @return int[]
+     */
+    private function portalTeamIds(User $user, string $capability): array
+    {
+        return (new PortalAuthorizationService())->scopeIdsForPerson((int) $user->getId(), $capability);
     }
 }

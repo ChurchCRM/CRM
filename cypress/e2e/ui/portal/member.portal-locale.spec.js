@@ -68,15 +68,6 @@ const setLocale = (value) =>
         failOnStatusCode: false,
     });
 
-const setConfig = (name, value) =>
-    cy.request({
-        method: "POST",
-        url: `/admin/api/system/config/${name}`,
-        headers: { "content-type": "application/json", "x-api-key": adminKey() },
-        body: { value },
-        failOnStatusCode: false,
-    });
-
 const loginAsMember = () => {
     cy.clearCookies();
     cy.visit("/session/begin");
@@ -90,13 +81,19 @@ before(() => {
 });
 
 describe("Member Portal — the member's own language (#9869)", () => {
+    let savedCalendars;
+
     before(() => {
-        // The nav entries this spec reads are only there when their sections are on.
-        setConfig("bPortalShowCalendar", "1");
+        // The Calendar nav entry this spec reads is there while a calendar is shared.
+        cy.getMemberPortalCalendars().then((calendars) => {
+            savedCalendars = calendars;
+        });
+        cy.shareMemberPortalCalendars([{ type: "calendar", id: 1 }]);
     });
 
     after(() => {
         setLocale("");
+        cy.then(() => cy.shareMemberPortalCalendars(savedCalendars));
     });
 
     it("renders the portal navigation in the member's language", () => {

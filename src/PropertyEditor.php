@@ -11,8 +11,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
 
-// Security: User must have property and classification editing permission
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled(), 'MenuOptions');
+AuthenticationManager::redirectHomeIfNotAdmin();
 
 $sClassError = '';
 $sNameError = '';

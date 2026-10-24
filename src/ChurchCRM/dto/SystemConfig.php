@@ -63,6 +63,11 @@ class   SystemConfig
         ];
     }
 
+    private static function getGradePromotionMonthChoices(): array
+    {
+        return ['Choices' => array_merge([gettext('Off') . ':0'], self::getMonthChoices()['Choices'])];
+    }
+
     private static function getMapZoomChoices(): array
     {
         return [
@@ -157,7 +162,9 @@ class   SystemConfig
             'iMinPasswordLength'                   => new ConfigItem('iMinPasswordLength', 'number', '8', gettext('Minimum length a user may set their password to')),
             'iMinPasswordChange'                   => new ConfigItem('iMinPasswordChange', 'number', '4', gettext("Minimum amount that a new password must differ from the old one (# of characters changed)\nSet to zero to disable this feature")),
             'aDisallowedPasswords'                 => new ConfigItem('aDisallowedPasswords', 'text', 'password,god,jesus,church,christian', gettext('A comma-separated list of disallowed (too obvious) passwords.')),
-            'iMaxFailedLogins'                     => new ConfigItem('iMaxFailedLogins', 'number', '5', gettext("Maximum number of failed logins to allow before a user account is locked.\nOnce the maximum has been reached, an administrator must re-enable the account.\nThis feature helps to protect against automated password guessing attacks.\nSet to zero to disable this feature.")),
+            'iMaxFailedLogins'                     => new ConfigItem('iMaxFailedLogins', 'number', '5', gettext("Maximum number of failed logins to allow before a user account is locked.\nA locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\nThis feature helps to protect against automated password guessing attacks.\nSet to zero to disable this feature.")),
+            'iLoginLockoutMinutes'                 => new ConfigItem('iLoginLockoutMinutes', 'number', '15', gettext("Lockout period in minutes\nA locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period.")),
+            'iMaxFailedLoginsPerIP'                => new ConfigItem('iMaxFailedLoginsPerIP', 'number', '20', gettext("Maximum number of failed logins from one IP address\nFailed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\nSet to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address.")),
             'iPDFOutputType'                       => new ConfigItem('iPDFOutputType', 'number', '1', gettext("PDF handling mode.\n1 = Save File dialog\n2 = Open in current browser window")),
             'sDefaultCity'                         => new ConfigItem('sDefaultCity', 'text', '', gettext('Default City')),
             'sDefaultState'                        => new ConfigItem('sDefaultState', 'text', '', gettext('Default State - Must be 2-letter abbreviation!')),
@@ -265,7 +272,6 @@ class   SystemConfig
             // admin page, Admin → Member Portal (design P9, §4).
             'sMemberPortalTheme'                   => new ConfigItem('sMemberPortalTheme', 'text', 'default', gettext('Folder name of the Member Portal theme to use, from Include/themes/. "default" is the system theme that ships with ChurchCRM.')),
             'bPortalDeveloperMode'                 => new ConfigItem('bPortalDeveloperMode', 'boolean', '0', gettext('Turn off the Member Portal template cache and print the name of each template in an HTML comment. For theme designers; leave off in normal use.')),
-            'bPortalShowCalendar'                  => new ConfigItem('bPortalShowCalendar', 'boolean', '1', gettext('Show the church calendar in the Member Portal.')),
             'bPortalShowVolunteer'                 => new ConfigItem('bPortalShowVolunteer', 'boolean', '1', gettext('Show volunteering and team pages in the Member Portal.')),
             'bPortalAllowBirthdayEdit'             => new ConfigItem('bPortalAllowBirthdayEdit', 'boolean', '0', gettext('Let members change their own and their family members\' birthdays in the Member Portal.')),
             // The calendars the Member Portal shows, as a JSON list of
@@ -277,6 +283,20 @@ class   SystemConfig
             // install starts with. Read and written through
             // ChurchCRM\Portal\PortalCalendarService, never by hand.
             'aPortalCalendars'                     => new ConfigItem('aPortalCalendars', 'json', '[]', gettext('Calendars the Member Portal shows to members, chosen on Admin -> Member Portal -> Calendars.')),
+            // Member sign-in (#10463, design §11.1, §13). No category: their home
+            // is the Admin → Member Portal → Sign-in tab.
+            'bMemberSignIn'                        => new ConfigItem('bMemberSignIn', 'boolean', '0', gettext('Let members sign in to the Member Portal with their own email address. It can only be turned on while email sending works.')),
+            'sMemberSignInFamilyRoles'             => new ConfigItem('sMemberSignInFamilyRoles', 'text', '1,2', gettext('Family roles whose members may sign in to the Member Portal, as a comma-separated list of role ids.')),
+            'sMemberSignInClassifications'         => new ConfigItem('sMemberSignInClassifications', 'text', '', gettext('Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids.')),
+            'iMemberSignInMinAge'                  => new ConfigItem('iMemberSignInMinAge', 'number', '13', gettext('Youngest age at which a person may sign in to the Member Portal. When the birth date is unknown, only a head of household or spouse qualifies.')),
+            'iSignInLinkMinutes'                   => new ConfigItem('iSignInLinkMinutes', 'number', '120', gettext('How many minutes a Member Portal sign-in code and link stay valid.')),
+            'iMemberSignInRequestsPerIP'           => new ConfigItem('iMemberSignInRequestsPerIP', 'number', '20', gettext('How many Member Portal sign-in emails one IP address can ask for in an hour. Set to 0 for no limit, for example when everyone reaches ChurchCRM through one address.')),
+            'iPortalIdleMinutes'                   => new ConfigItem('iPortalIdleMinutes', 'number', '30', gettext('How many idle minutes end a Member Portal session.')),
+            'iRememberDeviceDays'                  => new ConfigItem('iRememberDeviceDays', 'number', '30', gettext('How many days a device stays signed in to the Member Portal after the member chooses to stay signed in. Set to 0 to remove the choice.')),
+            'bPortalPasskeys'                      => new ConfigItem('bPortalPasskeys', 'boolean', '1', gettext('Let members add passkeys and sign in to the Member Portal with them.')),
+            'sMemberSignInNotificationRecipientIDs' => new ConfigItem('sMemberSignInNotificationRecipientIDs', 'text', '', gettext('People to email when someone could not sign in to the Member Portal')),
+            'bAllowLoginAsUser'                    => new ConfigItem('bAllowLoginAsUser', 'boolean', '0', gettext('Let administrators open a member\'s Member Portal as that member, from the person\'s Actions menu.')),
+            'bLoginAsUserCanWrite'                 => new ConfigItem('bLoginAsUserCanWrite', 'boolean', '0', gettext('Allow changes while an administrator uses Login as User. When off, Login as User is read-only.')),
             'sChurchLogoURL'                       => new ConfigItem('sChurchLogoURL', 'text', '', gettext('Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application\'s own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo.')),
             'bEnableExternalCalendarAPI'           => new ConfigItem('bEnableExternalCalendarAPI', 'boolean', '0', gettext('Allow unauthenticated reads of events from the external calendar API')),
             'sCalendarEmbedOrigins'                => new ConfigItem('sCalendarEmbedOrigins', 'text', '*', gettext('Space-separated list of origins allowed to embed the public external calendar page in an <iframe> (CSP frame-ancestors). Default "*" allows any origin. Restrict to specific origins for tighter security, e.g. "https://mysite.org https://embed.example.com".')),
@@ -309,8 +329,11 @@ class   SystemConfig
             'bEnabledFundraiser'                   => new ConfigItem('bEnabledFundraiser', 'boolean', '1', gettext('Enable Fundraiser menu.')),
             // Volunteer Management v2 (#9704, #9710). Deliberately declared without a
             // category (2026-09-18): their one home is Admin → Ministry Settings.
-            'sVolunteerVersion'                    => new ConfigItem('sVolunteerVersion', 'choice', 'v1', gettext('Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. "Both" shows each side by side during migration.'), '', json_encode(self::getVolunteerVersionChoices())),
+            'sVolunteerVersion'                    => new ConfigItem('sVolunteerVersion', 'choice', 'v2', gettext('Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. "Both" shows each side by side during migration.'), '', json_encode(self::getVolunteerVersionChoices())),
             'iVolunteerReminderLeadHours'          => new ConfigItem('iVolunteerReminderLeadHours', 'number', '48', gettext('How many hours before a volunteer occurrence the reminder email is sent. Set to 0 to send no reminders at all. Delivery depends on background jobs running; see the Volunteer documentation for the recommended cron setup.')),
+            'iVolunteerGapAlertLeadHours'          => new ConfigItem('iVolunteerGapAlertLeadHours', 'number', '48', gettext('How many hours before a volunteer occurrence its coordinators are told about positions still unfilled. Set to 0 to send no such alerts; reminders are not affected.')),
+            'sVolunteerGapAlertBatchTime'          => new ConfigItem('sVolunteerGapAlertBatchTime', 'text', '07:00', gettext('The time of day (HH:MM, in the church\'s time zone) the daily email listing unfilled volunteer positions is sent to coordinators.')),
+            'sLastVolunteerGapAlertBatchDate'      => new ConfigItem('sLastVolunteerGapAlertBatchDate', 'text', '', gettext('Internal: last date the daily email listing unfilled volunteer positions was sent (YYYY-MM-DD). Do not edit manually.')),
             'iVolunteerSchedulingHorizonWeeks'     => new ConfigItem('iVolunteerSchedulingHorizonWeeks', 'number', '8', gettext('How many weeks ahead volunteer occurrences are created for the events each schedule follows, from 1 to 52. A daily background job keeps every schedule filled up to this point.')),
             'iVolunteerDefaultEventTypeId'         => new ConfigItem('iVolunteerDefaultEventTypeId', 'number', '', gettext('The event type a ministry\'s new events start with. When empty, or when the type was deleted, the type named "Other" is used if there is one.')),
             'sLastVolunteerTopUpRunDate'           => new ConfigItem('sLastVolunteerTopUpRunDate', 'text', '', gettext('Internal: last date the volunteer schedules were topped up to the scheduling horizon (YYYY-MM-DD). Do not edit manually.')),
@@ -318,6 +341,14 @@ class   SystemConfig
             'bEnabledEmail'                        => new ConfigItem('bEnabledEmail', 'boolean', '1', gettext('Enable email sending from ChurchCRM. Required for password reset, notifications, and email links.')),
             'bEnableBirthdayEmails'                => new ConfigItem('bEnableBirthdayEmails', 'boolean', '0', gettext('Automatically send a birthday greeting email to people on their birthday')),
             'sLastBirthdayEmailRunDate'            => new ConfigItem('sLastBirthdayEmailRunDate', 'text', '', gettext('Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually.')),
+            // School grades (#10189). The promotion date's home is Admin → People Settings.
+            'iGradePromotionMonth'                 => new ConfigItem('iGradePromotionMonth', 'choice', '0', gettext('The month in which everyone with a grade moves up one grade. Off turns automatic promotion off.'), '', json_encode(self::getGradePromotionMonthChoices())),
+            'iGradePromotionDay'                   => new ConfigItem('iGradePromotionDay', 'number', '1', gettext('The day of that month on which grades are promoted. A day past the end of the month means its last day.')),
+            'iGradeListId'                         => new ConfigItem('iGradeListId', 'number', '6', gettext('Internal: the list that holds the grade names. Do not edit manually.')),
+            'sGradePreset'                         => new ConfigItem('sGradePreset', 'text', 'us', gettext('Internal: the country whose grade names were last applied to the grade list. Do not edit manually.')),
+            'sGradePromotionSetDate'               => new ConfigItem('sGradePromotionSetDate', 'text', '', gettext('Internal: the day the grade promotion date was last changed (YYYY-MM-DD). Do not edit manually.')),
+            'sLastGradePromotionAt'                => new ConfigItem('sLastGradePromotionAt', 'text', '', gettext('Internal: date and time of the last grade promotion. Do not edit manually.')),
+            'sLastGradePromotionResult'            => new ConfigItem('sLastGradePromotionResult', 'text', '', gettext('Internal: how the last grade promotion ran and how many people it moved. Do not edit manually.')),
             'sLastTimerJobsRunDateTime'            => new ConfigItem('sLastTimerJobsRunDateTime', 'text', '', gettext('Internal: last date and time the background timer jobs completed (YYYY-MM-DD HH:MM:SS). Do not edit manually.')),
             'iTimerJobsStaleHours'                 => new ConfigItem('iTimerJobsStaleHours', 'number', '26', gettext('Warn on the admin dashboard when the background timer jobs have not run for this many hours. 26 allows for a daily cron plus some drift. Set to 0 to disable the warning.')),
             'iTimerJobsMinIntervalMinutes'         => new ConfigItem('iTimerJobsMinIntervalMinutes', 'number', '15', gettext('Minimum number of minutes between background timer-job runs triggered by a page load. Stops a busy Sunday morning from running the jobs once per page view. Does not apply to the command-line runner. Set to 0 to run on every page load.')),
@@ -354,14 +385,17 @@ class   SystemConfig
     }
 
     /**
-     * @param \ChurchCRM\model\ChurchCRM\Config[] $configs
+     * @param \ChurchCRM\model\ChurchCRM\Config[]|null $configs the stored rows
+     * @param bool $pruneUnknown delete rows no ConfigItem declares. Only Bootstrapper
+     *                           passes true, once the database is current, so an
+     *                           upgrade script can still read a retired key
      */
-    public static function init($configs = null): void
+    public static function init($configs = null, bool $pruneUnknown = false): void
     {
         self::$configs = self::buildConfigs();
         self::$categories = self::buildCategories();
         if (!empty($configs)) {
-            self::scrapeDBConfigs($configs);
+            self::scrapeDBConfigs($configs, $pruneUnknown);
         }
     }
 
@@ -381,13 +415,13 @@ class   SystemConfig
     /**
      * @param \ChurchCRM\model\ChurchCRM\Config[] $configs
      */
-    private static function scrapeDBConfigs($configs): void
+    private static function scrapeDBConfigs($configs, bool $pruneUnknown): void
     {
         foreach ($configs as $config) {
             if (isset(self::$configs[$config->getName()])) {
                 //if the current config set defined by code contains the current config retrieved from the db, then cache it
                 self::$configs[$config->getName()]->setDBConfigObject($config);
-            } else {
+            } elseif ($pruneUnknown) {
                 //there's a config item in the DB that doesn't exist in the current code.
                 //don't delete dynamic keys like plugin.* configs - they're managed by plugins
                 if (strpos($config->getName(), 'plugin.') !== 0) {

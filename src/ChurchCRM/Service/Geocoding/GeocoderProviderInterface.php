@@ -23,8 +23,9 @@ interface GeocoderProviderInterface
     public function supports(?string $country): bool;
 
     /**
-     * Look up an address. Returns null when the service had no answer or the
-     * request failed, so the chain can move on to the next provider.
+     * Look up an address. Reports found, not found (the service answered and has no
+     * such address) or unavailable (timeout, 429, 5xx), so the chain can retry or move on.
+     * No single request may take longer than $timeoutSeconds.
      */
-    public function geocode(string $street, ?string $city, ?string $state, ?string $zip, ?string $country): ?GeocodeResult;
+    public function geocode(string $street, ?string $city, ?string $state, ?string $zip, ?string $country, int $timeoutSeconds = 10): GeocodeOutcome;
 }

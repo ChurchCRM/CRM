@@ -99,7 +99,7 @@ export function initializeMainDashboard() {
     const viewClass = type === "person" ? "view-person-photo" : "view-family-photo";
     const dataIdAttr = type === "person" ? `data-person-id="${id}"` : `data-family-id="${id}"`;
     const photoUrl = window.CRM.root + `/api/${type}/${id}/photo`;
-    return `<img class="avatar avatar-sm rounded-circle ${viewClass}" src="${photoUrl}" ${dataIdAttr} alt="" style="cursor: pointer; object-fit: cover;" title="${i18next.t("View Photo")}" />`;
+    return `<img class="avatar avatar-sm rounded-circle ${viewClass} cursor-pointer object-fit-cover" src="${photoUrl}" ${dataIdAttr} alt="" title="${i18next.t("View Photo")}" />`;
   }
 
   const dataTableDashboardDefaults = {
@@ -671,7 +671,7 @@ export function initializeMainDashboard() {
               .closest(".card-body")
               .html(
                 '<div class="text-center py-1">' +
-                  '<i class="fa-solid fa-calendar-day" style="font-size: 0.9rem; margin-right: 0.5rem; opacity: 0.6;"></i>' +
+                  '<i class="fa-solid fa-calendar-day dashboard-empty-icon"></i>' +
                   '<span class="fs-7 text-muted">' +
                   i18next.t("No Events Today") +
                   "</span>" +

@@ -19,6 +19,22 @@ function privateApiCall(keyName) {
 
 Cypress.Commands.add("makePrivateAdminAPICall", privateApiCall("admin.api.key"));
 
+// POST /api/email/send only queues (#10356). Send the batch through the way the composer does
+// and yield the send response with the batch's final progress as `progress`.
+const sendEmailBatch = (batch) =>
+    cy.makePrivateAdminAPICall("POST", `/api/email/batches/${batch}/send`, null, 200).then((resp) =>
+        resp.body.done || resp.body.due === 0 ? resp.body : sendEmailBatch(batch),
+    );
+
+Cypress.Commands.add("sendComposerEmailNow", (body) =>
+    cy.makePrivateAdminAPICall("POST", "/api/email/send", body, 200).then((resp) => {
+        if (!resp.body.batch) {
+            return { ...resp.body, progress: null };
+        }
+        return sendEmailBatch(resp.body.batch).then((progress) => ({ ...resp.body, progress }));
+    }),
+);
+
 // Effective value of a SystemConfig key (the default when no config_cfg row exists).
 Cypress.Commands.add("getSystemConfig", (name) => {
     return cy
@@ -38,6 +54,18 @@ Cypress.Commands.add("restoreSystemConfig", (name, value) => {
     cy.makePrivateAdminAPICall("POST", `admin/api/system/config/${name}`, { value }, 200);
     cy.getSystemConfig(name).should("eq", value);
 });
+
+// The calendars Admin -> Member Portal -> Calendars shares with members, as {type, id}.
+// The portal has a Calendar page while at least one is shared.
+Cypress.Commands.add("getMemberPortalCalendars", () =>
+    cy
+        .makePrivateAdminAPICall("GET", "/admin/api/member-portal/calendars", null, 200)
+        .then((response) => response.body.calendars.filter((calendar) => calendar.visible).map(({ type, id }) => ({ type, id }))),
+);
+
+Cypress.Commands.add("shareMemberPortalCalendars", (visible) =>
+    cy.makePrivateAdminAPICall("POST", "/admin/api/member-portal/calendars", { visible }, 200),
+);
 
 Cypress.Commands.add("makePrivateUserAPICall", privateApiCall("user.api.key"));
 
@@ -93,12 +121,6 @@ Cypress.Commands.add("makePrivateLimitedAPICall", privateApiCall("limited.api.ke
 // returns false (no Notes flag). Use for testing routes that should
 // return 200 to authenticated users but strip note items (e.g. timeline).
 Cypress.Commands.add("makePrivateEditRecordsAPICall", privateApiCall("editrecords.api.key"));
-
-// menuoptions.user (id=902): usr_MenuOptions=1, all other permission flags 0,
-// non-admin, non-EditSelf. Used to verify EditRecords gate on person/family
-// property routes (GHSA-4wmp-3v34-g7q8). Passes MenuOptions middleware but
-// is blocked by EditRecordsRoleAuthMiddleware (expects 403 on record routes).
-Cypress.Commands.add("makePrivateMenuOptionsAPICall", privateApiCall("menuoptions.api.key"));
 
 // noperm.user (id=901): every permission flag 0, usr_EditSelf=0,
 // non-admin. The genuinely zero-permission user — it passes

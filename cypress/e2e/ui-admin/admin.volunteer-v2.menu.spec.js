@@ -13,7 +13,8 @@
  *     *Dashboard* and then one entry per ministry the viewer may administer,
  *     by name — every active ministry for an administrator or a global
  *     volunteer manager, exactly the ministry scopes for anybody else, and
- *     nothing at all for a pure team leader. Since 2026-09-18 "anybody else"
+ *     for a pure team leader the ministries of their teams, each opening the
+ *     team-only view (#10530). Since 2026-09-18 "anybody else"
  *     must also hold the **Manage My Ministries** permission: the flag opens
  *     the area, the scope rows say which ministries are in it. The seed gives
  *     person 3 the flag; one block below takes it away and proves the heading
@@ -227,7 +228,7 @@ describe("Volunteer v2 — the Ministries sidebar heading", () => {
                 // Ministries group's own toggle is a collapse anchor, not a link.
                 cy.get("a.nav-link:not([data-bs-toggle])").each(($link) => {
                     expect($link.attr("href")).to.match(
-                        /\/ministries\/(dashboard|\d+)$/,
+                        /\/(ministries\/(dashboard|\d+)|admin\/ministry-settings)$/,
                     );
                 });
             });
@@ -407,14 +408,14 @@ describe("Volunteer v2 — the Ministries sidebar heading", () => {
             cy.visit(DASHBOARD_URL);
         });
 
-        it("sees the Ministries heading with Dashboard alone", () => {
+        it("sees the Ministries heading with Dashboard and their team's ministry, opening the team view (#10530)", () => {
             menuSection("Ministries").within(() => {
                 cy.get(`a[href$="${DASHBOARD_URL}"]`).should("exist");
-                // Leading a team is not administering the ministry above it
-                // (design §4.6), so no ministry entry is offered.
-                cy.get("a.nav-link").should("have.length", 1);
+                cy.get("a.nav-link").should("have.length", 2);
+                cy.contains("a.nav-link", MINISTRY_A).click();
             });
-            menuSection("Ministries").should("not.contain", MINISTRY_A);
+            cy.location("pathname").should("match", new RegExp(`/ministries/${ministryA}$`));
+            cy.contains("Your teams:").should("exist");
         });
     });
 

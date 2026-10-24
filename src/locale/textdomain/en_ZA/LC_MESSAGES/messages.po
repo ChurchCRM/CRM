@@ -30,11 +30,6 @@ msgid "Mobile Phone"
 msgstr "Cellphone"
 
 #: 
-#, fuzzy
-msgid "Load Authorized"
-msgstr "Load Authorised Transactions"
-
-#: 
 msgid "Family Cell Phone"
 msgstr "Family Cellphone"
 

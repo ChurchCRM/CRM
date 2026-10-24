@@ -18,6 +18,7 @@
  * church theme restyles with the portal tokens.
  */
 import { getCsrfToken, type PortalApiResult, sendPortalJSON, t } from "./portal-forms";
+import { reloadWhenSignedOut } from "./portal-session";
 
 /** One calendar the member may tick. */
 interface SubscriptionChoice {
@@ -253,6 +254,7 @@ export function initCalendarSubscription(config: SubscriptionConfig): void {
       credentials: "same-origin",
       headers: { accept: "application/json" },
     });
+    reloadWhenSignedOut(response.status);
     if (!response.ok) {
       setError(t("The calendars could not be loaded. Please try again."));
       return;

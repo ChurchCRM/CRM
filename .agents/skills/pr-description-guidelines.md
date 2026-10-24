@@ -1,19 +1,20 @@
 # PR title and description
 
-Title and body must describe **this diff**, not the first idea on the branch.
-
-When the PR grows, update both before you ask for review again.
+Write for the human reviewer first. Lead with the goal and outcome; keep detail proportional to risk.
 
 ## Title
 
-Short, specific. Name the actual change. Do not leave an old title after the work changed.
+Use a short, specific title that matches the current diff.
 
 ## Body
 
-Use `.github/PULL_REQUEST_TEMPLATE.md` as a copy (do not edit the template file).
+Use `.github/PULL_REQUEST_TEMPLATE.md` as the structure.
 
-- What changed (matches the file list)
-- Type
-- How you tested
+- **Goal:** why this change matters.
+- **Done:** the user-visible or technical outcome actually delivered.
+- **Validation:** relevant tests/commands and results.
+- **Risk:** migration, security, permissions, or compatibility details when they affect review.
 
-Do not list files that are not in the diff. Do not claim app behavior change on a docs-only PR.
+Put the summary first. Keep routine PRs short; let the diff, tests, and linked issue provide detail. Add context only when the reviewer needs it to make a decision.
+
+Describe positive outcomes. Include non-goals, alternatives, failure cases, or exhaustive negative-test lists only when they resolve a real scope, safety, or compatibility question. Do not repeat the file list, narrate obvious code, or claim behavior changes in docs-only PRs.

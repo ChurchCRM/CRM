@@ -182,7 +182,7 @@ $sRootPath = $sRootPath ?? SystemURLs::getRootPath();
               <?= gettext('Open a ministry from the Ministries menu, create a schedule and generate its dates, and the weeks to staff appear here.') ?>
             </p>
           </div>
-          <div style="overflow-x: clip; overflow-y: visible;" class=" d-none" id="volunteer-upcoming-content">
+          <div class="table-clip-x d-none" id="volunteer-upcoming-content">
             <table class="table table-hover table-vcenter" id="volunteer-upcoming-table">
               <thead>
                 <tr>
@@ -208,9 +208,9 @@ $sRootPath = $sRootPath ?? SystemURLs::getRootPath();
     <div class="col-12 col-xl-4">
 
       <!-- My ministries and teams. For a team leader this is the ONLY entry
-           point into the module: /ministries/{id} is ministry-scoped
-           (design §4.6), so the sidebar's Ministries heading offers them no
-           ministry entry and this card is where their teams are named. -->
+           point into the module: the sidebar's Ministries heading offers them no
+           ministry entry, and this card links their ministries and teams to
+           /ministries/{id}'s team-only view. -->
       <div class="card mb-3" id="volunteer-scope-card">
         <div class="card-header">
           <h3 class="card-title mb-0">

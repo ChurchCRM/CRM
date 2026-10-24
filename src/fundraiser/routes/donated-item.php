@@ -274,15 +274,9 @@ $app->post('/{fundraiserId}/donated-items/{itemId}/replicate', function (Request
 });
 
 // POST /fundraiser/{fundraiserId}/donated-items/{itemId}/delete — delete (migrated from DonatedItemDelete.php)
-// Module middleware covers ManageFundraisers; inline guard adds DeleteRecords.
+// The entire /fundraiser module requires ManageFundraisers (and CSRF for POST).
+// DeleteRecords applies to person/family deletion, not fundraiser items.
 $app->post('/{fundraiserId}/donated-items/{itemId}/delete', function (Request $request, Response $response, array $args): Response {
-    $currentUser = AuthenticationManager::getCurrentUser();
-    if (!$currentUser->isDeleteRecordsEnabled()) {
-        return $response
-            ->withHeader('Location', SystemURLs::getRootPath() . '/v2/access-denied?role=DeleteRecords')
-            ->withStatus(302);
-    }
-
     $fundraiserId = (int) $args['fundraiserId'];
     $itemId       = (int) $args['itemId'];
 

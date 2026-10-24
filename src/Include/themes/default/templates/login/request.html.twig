@@ -1,0 +1,35 @@
+{% extends "layout.html.twig" %}
+
+{#
+  Member sign-in: the email form at GET /portal/login (member sign-in design
+  §6.1, §7). It posts to `loginUrl`; the answer is the code page, whatever the
+  address.
+
+  Variables: `pageTitle`, `email`, `emailError`, `loginUrl`, `staffSignInUrl`.
+#}
+
+{% block nav %}{% endblock %}
+
+{% block content %}
+<div class="portal-signin">
+    <form class="portal-card portal-form" id="portalSignInForm" method="post" action="{{ loginUrl }}" novalidate>
+        {{ csrf_field() }}
+
+        <h1 class="portal-page-title">{{ gettext('Sign in to the Member Portal') }}</h1>
+        <p class="portal-card-text">{{ gettext('Type your email address. We will email you a code and a link to sign in with.') }}</p>
+
+        <div class="portal-field">
+            <label class="portal-field-label" for="portalSignInEmail">{{ gettext('Email Address') }}</label>
+            <input class="portal-input{% if emailError %} is-invalid{% endif %}" type="email" name="email" id="portalSignInEmail"
+                   value="{{ email }}" autocomplete="email" inputmode="email" maxlength="254" required autofocus>
+            <p class="portal-field-error" id="portalSignInEmailError" role="alert">{{ emailError }}</p>
+        </div>
+
+        <div class="portal-form-actions">
+            <button class="portal-button" type="submit" id="portalSignInSubmit">{{ gettext('Email me a code') }}</button>
+        </div>
+    </form>
+
+    {% include 'login/staff-link.html.twig' %}
+</div>
+{% endblock %}

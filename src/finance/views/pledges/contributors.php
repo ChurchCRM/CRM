@@ -42,7 +42,7 @@ $statusClasses = [
             <div class="mb-0">
                 <label for="fyid" class="fw-bold"><?= gettext('Fiscal Year') ?></label>
                 <form method="GET" class="d-inline">
-                    <select name="fyid" id="fyid" class="form-select d-inline-block" style="width: auto;">
+                    <select name="fyid" id="fyid" class="form-select d-inline-block w-auto">
                         <option value="0" <?= $selectedFyid === 0 ? 'selected' : '' ?>><?= gettext('All Time') ?></option>
                         <?php foreach ($availableYears as $year): ?>
                             <option value="<?= (int) $year['id'] ?>" <?= $year['id'] == $selectedFyid ? 'selected' : '' ?>>
@@ -172,7 +172,7 @@ $statusClasses = [
                     <?= gettext('Contributors') ?> &mdash; <?= InputUtils::escapeHTML(FiscalYearUtils::formatFiscalYearLabel($selectedFyid)) ?>
                 </h3>
             </div>
-            <div style="overflow: visible;">
+            <div class="overflow-visible">
                 <table id="fundContributors" class="table table-hover table-vcenter mb-0 w-100">
                     <thead>
                         <tr>
