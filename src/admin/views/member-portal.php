@@ -4,6 +4,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Portal\Auth\MemberSignInRule;
 use ChurchCRM\Portal\ThemeManager;
 use ChurchCRM\Portal\ThemeValidator;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
@@ -13,7 +14,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
  *
  * Variables from the route: $themes, $activeTheme, $activeThemeExists,
  * $developerMode, $showCalendar, $showVolunteer, $allowBirthdayEdit, $stats,
- * $portalCalendars, $signIn, $csrfToken.
+ * $portalCalendars, $signIn, $memberLists, $csrfToken.
  *
  * Every theme was validated server-side by the route, so each entry carries a
  * badge on first paint without a round trip. The page's behaviour lives in
@@ -81,6 +82,21 @@ $themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration
         <li class="nav-item" role="presentation">
             <a class="nav-link" id="portal-signin-tab" data-bs-toggle="tab" href="#portal-signin" role="tab">
                 <i class="fa-solid fa-right-to-bracket me-2"></i><?= gettext('Sign-in') ?>
+            </a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="portal-members-tab" data-bs-toggle="tab" href="#portal-members" role="tab">
+                <i class="fa-solid fa-users me-2"></i><?= gettext('Members') ?>
+            </a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="portal-permissions-tab" data-bs-toggle="tab" href="#portal-permissions" role="tab">
+                <i class="fa-solid fa-key me-2"></i><?= gettext('Permissions') ?>
+            </a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="portal-audit-tab" data-bs-toggle="tab" href="#portal-audit" role="tab">
+                <i class="fa-solid fa-list-check me-2"></i><?= gettext('Audit') ?>
             </a>
         </li>
         <li class="nav-item" role="presentation">
@@ -326,6 +342,10 @@ $themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration
             </form>
         </div>
 
+        <?php require __DIR__ . '/partials/member-portal-members.php'; ?>
+        <?php require __DIR__ . '/partials/member-portal-permissions.php'; ?>
+        <?php require __DIR__ . '/partials/member-portal-audit.php'; ?>
+
         <!-- ============================= Themes ============================= -->
         <div class="tab-pane fade" id="portal-themes" role="tabpanel">
             <div class="alert alert-info" id="portalThemeDisclaimer">
@@ -429,7 +449,7 @@ $themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration
         <!-- =========================== Statistics =========================== -->
         <div class="tab-pane fade show active" id="portal-statistics" role="tabpanel">
             <p class="text-secondary">
-                <?= gettext('These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else.') ?>
+                <?= gettext('Member Portal sign-ins and activity, for members and for staff who open the portal from their staff sign-in.') ?>
             </p>
 
             <div class="row row-cards mb-3" id="portalStatCards">
@@ -439,8 +459,8 @@ $themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration
                     ['id' => 'signedIn24Hours', 'label' => gettext('Last 24 hours'), 'hint' => gettext('Signed in'), 'icon' => 'fa-clock', 'color' => 'bg-blue'],
                     ['id' => 'signedIn7Days', 'label' => gettext('Last 7 days'), 'hint' => gettext('Signed in'), 'icon' => 'fa-calendar-week', 'color' => 'bg-azure'],
                     ['id' => 'signedIn30Days', 'label' => gettext('Last 30 days'), 'hint' => gettext('Signed in'), 'icon' => 'fa-calendar-days', 'color' => 'bg-indigo'],
-                    ['id' => 'totalAccounts', 'label' => gettext('Self-service accounts'), 'hint' => gettext('Total'), 'icon' => 'fa-users', 'color' => 'bg-secondary'],
-                    ['id' => 'neverSignedIn', 'label' => gettext('Never signed in'), 'hint' => gettext('Accounts'), 'icon' => 'fa-user-slash', 'color' => 'bg-orange'],
+                    ['id' => 'maySignIn', 'label' => gettext('May sign in'), 'hint' => gettext('Total'), 'icon' => 'fa-users', 'color' => 'bg-secondary'],
+                    ['id' => 'neverSignedIn', 'label' => gettext('Never signed in'), 'hint' => gettext('May sign in'), 'icon' => 'fa-user-slash', 'color' => 'bg-orange'],
                 ];
                 foreach ($statCards as $card): ?>
                     <div class="col-6 col-lg-4 col-xl-2">
@@ -475,7 +495,7 @@ $themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration
                         <thead>
                             <tr>
                                 <th><?= gettext('Member') ?></th>
-                                <th><?= gettext('Login') ?></th>
+                                <th><?= gettext('How') ?></th>
                                 <th><?= gettext('Last sign-in') ?></th>
                                 <th><?= gettext('Last seen in the portal') ?></th>
                                 <th class="w-1 no-export"><?= gettext('Actions') ?></th>
@@ -489,22 +509,22 @@ $themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration
                                     </td>
                                 </tr>
                             <?php else: ?>
-                                <?php foreach ($stats['recentSignIns'] as $signIn): ?>
+                                <?php foreach ($stats['recentSignIns'] as $recentSignIn): ?>
                                     <tr>
                                         <td>
-                                            <a href="<?= SystemURLs::getRootPath() ?>/people/view/<?= (int) $signIn['personId'] ?>">
-                                                <?= InputUtils::escapeHTML($signIn['name']) ?>
+                                            <a href="<?= SystemURLs::getRootPath() ?>/people/view/<?= (int) $recentSignIn['personId'] ?>">
+                                                <?= InputUtils::escapeHTML($recentSignIn['name']) ?>
                                             </a>
                                         </td>
-                                        <td><?= InputUtils::escapeHTML($signIn['userName']) ?></td>
-                                        <td><?= InputUtils::escapeHTML($signIn['lastLogin']) ?></td>
+                                        <td><?= InputUtils::escapeHTML((string) $recentSignIn['methodLabel']) ?></td>
+                                        <td><?= InputUtils::escapeHTML(DateTimeUtils::formatDate($recentSignIn['lastSignIn'], true)) ?></td>
                                         <td>
-                                            <?= $signIn['lastPortalActivity'] !== ''
-                                                ? InputUtils::escapeHTML($signIn['lastPortalActivity'])
+                                            <?= $recentSignIn['lastActivity'] !== ''
+                                                ? InputUtils::escapeHTML(DateTimeUtils::formatDate($recentSignIn['lastActivity'], true))
                                                 : '<span class="text-secondary">&mdash;</span>' ?>
                                         </td>
                                         <td class="w-1">
-                                            <?php $personId = (int) $signIn['personId']; ?>
+                                            <?php $personId = (int) $recentSignIn['personId']; ?>
                                             <?php $inCart = isset($_SESSION['aPeopleCart']) && in_array($personId, $_SESSION['aPeopleCart'], false); ?>
                                             <div class="dropdown">
                                                 <button class="btn btn-sm btn-ghost-secondary" type="button"

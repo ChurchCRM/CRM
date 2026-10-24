@@ -18,11 +18,18 @@
  *      POST /admin/api/member-portal/sign-in. The server checks them all and
  *      saves none when one is wrong, naming each problem.
  *
+ * The Members, Permissions and Audit tabs (member sign-in design §11.2, §8.6)
+ * live in webpack/admin-member-portal/ and read their rows a page at a time.
+ *
  * Every user-visible string goes through i18next — the *global* instance the
  * locale loader initialises, never a bundled copy, which would be empty — and
  * is resolved inside the handlers, because i18next is only populated once the
  * locale loader has run.
  */
+import { wireAuditTab } from "./admin-member-portal/audit-tab";
+import { wireMembersTab } from "./admin-member-portal/members-tab";
+import { wirePermissionsTab } from "./admin-member-portal/permissions-tab";
+
 interface ThemeFinding {
   file: string;
   line: number;
@@ -39,7 +46,7 @@ interface ThemeResponse {
 }
 
 interface PortalStats {
-  totalAccounts: number;
+  maySignIn: number;
   activeNow: number;
   signedIn24Hours: number;
   signedIn7Days: number;
@@ -515,7 +522,11 @@ function start(): void {
   wireSettingsPanel();
   wireCalendarControls();
   wireSignInTab();
+  wireMembersTab();
+  wirePermissionsTab();
+  wireAuditTab();
   openTabFromHash();
+  window.addEventListener("hashchange", openTabFromHash);
   document.getElementById("portal-statistics-tab")?.addEventListener("click", () => {
     void refreshStatistics();
   });

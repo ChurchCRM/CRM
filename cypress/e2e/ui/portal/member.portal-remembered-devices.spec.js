@@ -243,6 +243,24 @@ describe("Member Portal remembered devices", () => {
         });
     });
 
+    it("ends the session kept on a device an administrator signs out on the person page", () => {
+        signInWithCode({ remember: true });
+        saveCookies().then((memberBrowser) => {
+            devicesOf(member.personId).then(([device]) => {
+                lastAuditId().then((startId) => {
+                    adminPost(`/admin/api/person/${member.personId}/sign-in/devices/${device.pdv_ID}/remove`);
+                    useCookies(memberBrowser);
+                    expectSignedOut();
+                    cy.getCookie(DEVICE_COOKIE).should("be.null");
+                    auditSince(startId).then((rows) => {
+                        expect(events(rows)).to.include("device_removed::signed_out");
+                        expect(rows.find((row) => row.psa_Event === "device_removed").psa_Actor_usr_ID).to.eq(1);
+                    });
+                });
+            });
+        });
+    });
+
     it("signs out this device from the page and lands on the sign-in page", () => {
         signInWithCode({ remember: true });
         closeBrowser();

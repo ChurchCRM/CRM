@@ -170,7 +170,7 @@ Administrators only, one page with tabs:
 
 - **Settings:** theme dropdown (`listThemes()`, "System default" first, validation badge and "Check" button per theme), Developer mode, section switches (`bPortalShowCalendar`, `bPortalShowVolunteer`), `bPortalAllowBirthdayEdit`. Values save through `POST /admin/api/system/config/{name}`; theme changes go through `POST /admin/api/member-portal/theme` so activation can refuse.
 - **Calendars:** one list of church calendars, ministry calendars and system calendars with a "Show in Member Portal" switch each.
-- **Statistics:** self-service sign-ins in the last 24 hours, 7 days and 30 days (`usr_LastLogin`); members active in the last 15 minutes (`usr_LastPortalActivity`, stamped by `PortalAccessMiddleware` at most once per five minutes per session); total self-service accounts; accounts never signed in; the ten most recent sign-ins.
+- **Statistics:** members who signed in during the last 24 hours, 7 days and 30 days, and members active in the last 15 minutes, from `person_signin_psi` (`psi_LastSignIn`, `psi_LastActivity`); everyone who may sign in; those who never have; the ten most recent sign-ins.
 - **Themes:** discovered folders with display name, author, overridden-template count, last validation result.
 
 Admin APIs: `/admin/api/member-portal/{stats,themes,theme/{name}/validation,theme,calendars}`.

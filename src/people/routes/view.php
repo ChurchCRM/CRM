@@ -13,8 +13,10 @@ use ChurchCRM\model\ChurchCRM\VolunteerOpportunityQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerPositionQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerQualification;
 use ChurchCRM\Service\EmailLogService;
+use ChurchCRM\Service\PersonPortalAccessService;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\PersonSignInService;
+use ChurchCRM\Service\PortalGrantService;
 use ChurchCRM\Service\PropertyService;
 use ChurchCRM\Volunteer\Service\VolunteerAssignmentService;
 use ChurchCRM\Volunteer\Service\VolunteerScheduleService;
@@ -352,6 +354,9 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
     $portalSignIn = $currentUser->isEditRecordsEnabled()
         ? (new PersonSignInService())->statusFor($person, $currentUser->isAdmin())
         : null;
+    // Its devices, passkeys and portal permissions: administrators only (§11.3, §8.6)
+    $portalAccess = $portalSignIn !== null && $currentUser->isAdmin() ? (new PersonPortalAccessService())->forPerson($person) : null;
+    $portalGrantChoices = $portalAccess === null ? [] : PortalGrantService::givableCapabilities();
 
     // ── Render ───────────────────────────────────────────────────────────────
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
@@ -413,6 +418,8 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
         'portalSignInCanManage'  => $currentUser->isAdmin(),
         'portalSignInIsSelf'     => $iPersonID === (int) $currentUser->getPersonId(),
         'portalSignInCsrfToken'  => $portalSignIn === null ? '' : CSRFUtils::generateToken(),
+        'portalAccess'           => $portalAccess,
+        'portalGrantChoices'     => $portalGrantChoices,
     ];
 
     return $renderer->render($response, 'person-view.php', $pageArgs);

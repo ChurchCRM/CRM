@@ -17,9 +17,17 @@
             "kind": "schema",
             "reason": "Migration spec for the 7.9.0 family email move (member sign-in row 11): the app no longer writes a family email, so the fixtures, the upgrade block and its marker table are reached in SQL."
         },
+        "cypress/e2e/api/private/admin/private.admin.member-portal-lists.spec.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in row 9 (#10463): shared and unconfirmed emails, past sign-in times, the 7.9.0 family email move rows, an emailed family confirmation and an old refusal are fixtures with no HTTP surface; the upgrade, the email link and row 10 write them."
+        },
         "cypress/e2e/api/private/admin/private.admin.member-sign-in-rule.spec.js": {
             "kind": "fixture",
             "reason": "Member sign-in row 4 (#10463): a head of household with no birth year and an unconfirmed address (row 11 writes it during the upgrade) have no HTTP surface; the person editor that sets a birth year is a legacy form."
+        },
+        "cypress/e2e/api/private/admin/private.admin.portal-permissions.spec.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in row 9 (#10463): remembered devices and passkeys are written by rows 7 and 8, so the removal fixtures are inserted; the staff and group membership counts are read to check the Permissions tab's holder counts independently."
         },
         "cypress/e2e/api/private/plugins/private.portal.plugin-permissions.spec.js": {
             "kind": "fixture",
@@ -52,6 +60,10 @@
         "cypress/e2e/ui-admin/admin.csvimport-email-audit.spec.js": {
             "kind": "fixture",
             "reason": "Member sign-in row 10 (#10463): the sign-in audit has no HTTP surface until row 9, and the importer answers no ids."
+        },
+        "cypress/e2e/ui-admin/admin.member-portal-members.spec.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in row 9 (#10463): a shared email, the 7.9.0 family email move rows and remembered devices (rows 7 and 11 write them) are fixtures with no HTTP surface; the portal's verify note is removed afterwards because notes have no delete API for a member confirmation."
         },
         "cypress/e2e/ui/people/person-signin-email.spec.js": {
             "kind": "fixture",

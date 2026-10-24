@@ -11,6 +11,8 @@ use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Portal\Auth\EmailChangeRefusedException;
 use ChurchCRM\Portal\Auth\PortalContext;
+use ChurchCRM\Portal\Auth\SignInAudit;
+use ChurchCRM\Portal\Auth\SignInAuditEvent;
 use ChurchCRM\Portal\Auth\SignInEmailPolicy;
 use ChurchCRM\Portal\Permissions\CorePortalCapabilities;
 use ChurchCRM\Portal\Permissions\PortalAuthorizationService;
@@ -400,6 +402,15 @@ class PortalSelfService
             $note->setText(InputUtils::escapeHTML($comment));
         }
         $note->save();
+
+        $principal = PortalContext::principal();
+        SignInAudit::record(
+            SignInAuditEvent::FAMILY_CONFIRMED,
+            (int) $actor->getId(),
+            $principal?->method,
+            actorUserId: $principal?->actorUserId,
+            detail: sprintf('family=%d; note=%d; result=%s', (int) $family->getId(), (int) $note->getId(), $result),
+        );
     }
 
     /**
