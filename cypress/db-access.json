@@ -15,7 +15,7 @@
         },
         "cypress/e2e/api/private/admin/private.admin.family-email-move.spec.js": {
             "kind": "schema",
-            "reason": "Migration spec for the 7.9.0 family email move (member sign-in row 11): the app no longer writes a family email, so the fixtures, the upgrade block and its marker table are reached in SQL."
+            "reason": "Migration spec for the 7.8.3 family email move (member sign-in row 11): the app no longer writes a family email, so the fixtures, the upgrade block and its marker table are reached in SQL."
         },
         "cypress/e2e/api/private/admin/private.admin.portal-calendar-upgrade.spec.js": {
             "kind": "schema",
