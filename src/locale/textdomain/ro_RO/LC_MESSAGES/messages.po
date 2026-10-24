@@ -24755,3 +24755,11 @@ msgstr "Serviciul de geocodificare nu a răspuns — încercați din nou mai tâ
 msgid "Only the email you sent is shown."
 msgstr "Este afișat doar e-mailul pe care l-ați trimis."
 
+#: 
+msgid "%d Giving Statement"
+msgstr "Declarație de donații %d"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Evenimentele repetitive nu au putut fi create. Verificați jurnalul aplicației pentru detalii."
+

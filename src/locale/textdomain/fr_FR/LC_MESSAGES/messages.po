@@ -24663,3 +24663,11 @@ msgstr "Le service de géocodage n’a pas répondu — réessayez plus tard"
 msgid "Only the email you sent is shown."
 msgstr "Seul le courriel que vous avez envoyé est affiché."
 
+#: 
+msgid "%d Giving Statement"
+msgstr "Relevé de dons %d"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Les événements récurrents n'ont pas pu être créés. Consultez le journal de l'application pour plus de détails."
+

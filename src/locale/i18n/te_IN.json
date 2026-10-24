@@ -5997,6 +5997,8 @@
   "Invalid setting name or value": "చెల్లని సెట్టింగ్ పేరు లేదా విలువ",
   "The geocoding service did not answer — try again later": "జియోకోడింగ్ సేవ స్పందించలేదు — తర్వాత మళ్లీ ప్రయత్నించండి",
   "Only the email you sent is shown.": "మీరు పంపిన ఇమెయిల్ మాత్రమే చూపబడుతుంది.",
+  "%d Giving Statement": "%d దాన ప్రకటన",
+  "Repeat events could not be created. Check the application log for details.": "పునరావృత ఈవెంట్‌లను సృష్టించలేకపోయాము. వివరాల కోసం అప్లికేషన్ లాగ్‌ను తనిఖీ చేయండి.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} సందర్భం సృష్టించబడింది",
     "other": "\"{{name}}\": {{count}} సందర్భాలు సృష్టించబడ్డాయి"

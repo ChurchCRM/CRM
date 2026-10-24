@@ -6125,6 +6125,8 @@
   "Invalid setting name or value": "اسم الإعداد أو قيمته غير صالح",
   "The geocoding service did not answer — try again later": "لم تستجب خدمة الترميز الجغرافي — حاول مرة أخرى لاحقًا",
   "Only the email you sent is shown.": "يُعرض فقط البريد الإلكتروني الذي أرسلته.",
+  "%d Giving Statement": "بيان العطاء %d",
+  "Repeat events could not be created. Check the application log for details.": "تعذر إنشاء الأحداث المتكررة. تحقق من سجل التطبيق للحصول على التفاصيل.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "تم إنشاء {{count}} موعد لـ \"{{name}}\"",
     "other": "تم إنشاء {{count}} مواعيد لـ \"{{name}}\""

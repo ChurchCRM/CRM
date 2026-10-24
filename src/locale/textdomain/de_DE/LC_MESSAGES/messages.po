@@ -24742,3 +24742,11 @@ msgstr "Der Geokodierungsdienst hat nicht geantwortet — versuchen Sie es spät
 msgid "Only the email you sent is shown."
 msgstr "Es wird nur die von Ihnen gesendete E-Mail angezeigt."
 
+#: 
+msgid "%d Giving Statement"
+msgstr "%d Spendenübersicht"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Wiederholende Ereignisse konnten nicht erstellt werden. Überprüfen Sie das Anwendungsprotokoll für Details."
+

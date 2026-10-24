@@ -5997,6 +5997,8 @@
   "Invalid setting name or value": "שם ההגדרה או הערך אינם תקינים",
   "The geocoding service did not answer — try again later": "שירות הקידוד הגאוגרפי לא הגיב — יש לנסות שוב מאוחר יותר",
   "Only the email you sent is shown.": "מוצגת רק הודעת הדוא״ל ששלחת.",
+  "%d Giving Statement": "הצהרת תרומות %d",
+  "Repeat events could not be created. Check the application log for details.": "לא ניתן היה ליצור אירועים חוזרים. בדוק את יומן היישום לפרטים.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": נוצר {{count}} מופע",
     "other": "\"{{name}}\": נוצרו {{count}} מופעים"

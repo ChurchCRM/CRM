@@ -24635,3 +24635,11 @@ msgstr "El servicio de geocodificación no respondió — volvé a intentarlo m�
 msgid "Only the email you sent is shown."
 msgstr "Solo se muestra el correo electrónico que enviaste."
 
+#: 
+msgid "%d Giving Statement"
+msgstr "Declaración de ofrendas %d"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "No se pudieron crear los eventos recurrentes. Consulte el registro de la aplicación para obtener detalles."
+

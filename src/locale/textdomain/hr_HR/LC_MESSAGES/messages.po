@@ -24662,3 +24662,11 @@ msgstr "Usluga geokodiranja nije odgovorila — pokušajte ponovno kasnije"
 msgid "Only the email you sent is shown."
 msgstr "Prikazuje se samo e-pošta koju ste poslali."
 
+#: 
+msgid "%d Giving Statement"
+msgstr "%d Izjava o davanju"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Ponavljajući događaji nisu mogli biti stvoreni. Provjerite zapisnik aplikacije za detalje."
+

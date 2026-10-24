@@ -5997,6 +5997,8 @@
   "Invalid setting name or value": "Emër ose vlerë e pavlefshme e cilësimit",
   "The geocoding service did not answer — try again later": "Shërbimi i gjeokodimit nuk u përgjigj — provoni përsëri më vonë",
   "Only the email you sent is shown.": "Shfaqet vetëm emaili që keni dërguar.",
+  "%d Giving Statement": "Deklaratë Dhëniesh %d",
+  "Repeat events could not be created. Check the application log for details.": "Ngjarjet e përsëritura nuk mund të krijoheshin. Kontrolloni regjistrin e aplikacionit për detaje.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} ngjarje e krijuar",
     "other": "\"{{name}}\": {{count}} ngjarje të krijuara"

@@ -24754,3 +24754,11 @@ msgstr "Usługa geokodowania nie odpowiedziała — spróbuj ponownie później"
 msgid "Only the email you sent is shown."
 msgstr "Wyświetlana jest tylko wysłana przez Ciebie wiadomość e-mail."
 
+#: 
+msgid "%d Giving Statement"
+msgstr "%d Zestawienie darowizn"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Nie można było utworzyć powtarzających się wydarzeń. Sprawdź dziennik aplikacji, aby uzyskać szczegóły."
+

@@ -6029,6 +6029,8 @@
   "Invalid setting name or value": "Nieprawidłowa nazwa lub wartość ustawienia",
   "The geocoding service did not answer — try again later": "Usługa geokodowania nie odpowiedziała — spróbuj ponownie później",
   "Only the email you sent is shown.": "Wyświetlana jest tylko wysłana przez Ciebie wiadomość e-mail.",
+  "%d Giving Statement": "%d Zestawienie darowizn",
+  "Repeat events could not be created. Check the application log for details.": "Nie można było utworzyć powtarzających się wydarzeń. Sprawdź dziennik aplikacji, aby uzyskać szczegóły.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} zdarzenie utworzone",
     "other": "\"{{name}}\": {{count}} zdarzeń utworzonych"

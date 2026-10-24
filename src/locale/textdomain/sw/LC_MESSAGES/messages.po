@@ -24662,3 +24662,11 @@ msgstr "Huduma ya usimbaji wa kijiografia haikujibu — jaribu tena baadaye"
 msgid "Only the email you sent is shown."
 msgstr "Barua pepe uliyotuma pekee ndiyo inayoonyeshwa."
 
+#: 
+msgid "%d Giving Statement"
+msgstr "Taarifa ya Utoaji %d"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Matukio yanayojirudia hayakuweza kuundwa. Angalia kumbukumbu ya programu kwa maelezo."
+

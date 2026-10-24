@@ -5965,6 +5965,8 @@
   "Invalid setting name or value": "设置名称或值无效",
   "The geocoding service did not answer — try again later": "地理编码服务未响应 — 请稍后重试",
   "Only the email you sent is shown.": "仅显示您发送的电子邮件。",
+  "%d Giving Statement": "%d 奉献报表",
+  "Repeat events could not be created. Check the application log for details.": "无法创建重复活动。请查看应用程序日志了解详情。",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：创建了 {{count}} 个发生",
     "other": "\"{{name}}\"：创建了 {{count}} 个发生"

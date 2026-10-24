@@ -24785,3 +24785,11 @@ msgstr "لم تستجب خدمة الترميز الجغرافي — حاول م
 msgid "Only the email you sent is shown."
 msgstr "يُعرض فقط البريد الإلكتروني الذي أرسلته."
 
+#: 
+msgid "%d Giving Statement"
+msgstr "بيان العطاء %d"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "تعذر إنشاء الأحداث المتكررة. تحقق من سجل التطبيق للحصول على التفاصيل."
+

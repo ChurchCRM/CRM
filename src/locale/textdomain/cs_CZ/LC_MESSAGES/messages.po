@@ -24686,3 +24686,11 @@ msgstr "Geokódovací služba neodpověděla — zkuste to znovu později"
 msgid "Only the email you sent is shown."
 msgstr "Zobrazuje se pouze e-mail, který jste odeslali."
 
+#: 
+msgid "%d Giving Statement"
+msgstr "%d Výkaz darů"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Opakující se události se nepodařilo vytvořit. Podrobnosti najdete v protokolu aplikace."
+

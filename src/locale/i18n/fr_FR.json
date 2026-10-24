@@ -5997,6 +5997,8 @@
   "Invalid setting name or value": "Nom ou valeur du paramètre non valide",
   "The geocoding service did not answer — try again later": "Le service de géocodage n’a pas répondu — réessayez plus tard",
   "Only the email you sent is shown.": "Seul le courriel que vous avez envoyé est affiché.",
+  "%d Giving Statement": "Relevé de dons %d",
+  "Repeat events could not be created. Check the application log for details.": "Les événements récurrents n'ont pas pu être créés. Consultez le journal de l'application pour plus de détails.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} occurrence créée",
     "other": "\"{{name}}\": {{count}} occurrences créées"

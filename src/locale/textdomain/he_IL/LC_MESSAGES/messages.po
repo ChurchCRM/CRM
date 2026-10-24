@@ -24664,3 +24664,11 @@ msgstr "שירות הקידוד הגאוגרפי לא הגיב — יש לנסו
 msgid "Only the email you sent is shown."
 msgstr "מוצגת רק הודעת הדוא״ל ששלחת."
 
+#: 
+msgid "%d Giving Statement"
+msgstr "הצהרת תרומות %d"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "לא ניתן היה ליצור אירועים חוזרים. בדוק את יומן היישום לפרטים."
+

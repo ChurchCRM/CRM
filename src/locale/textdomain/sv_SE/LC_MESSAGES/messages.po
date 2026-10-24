@@ -24755,3 +24755,11 @@ msgstr "Geokodningstjänsten svarade inte — försök igen senare"
 msgid "Only the email you sent is shown."
 msgstr "Endast det e-postmeddelande du skickade visas."
 
+#: 
+msgid "%d Giving Statement"
+msgstr "%d Givarapport"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Upprepade händelser kunde inte skapas. Kontrollera applikationsloggen för detaljer."
+

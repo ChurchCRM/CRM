@@ -24702,3 +24702,11 @@ msgstr "地理编码服务未响应 — 请稍后重试"
 msgid "Only the email you sent is shown."
 msgstr "仅显示您发送的电子邮件。"
 
+#: 
+msgid "%d Giving Statement"
+msgstr "%d 奉献报表"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "无法创建重复活动。请查看应用程序日志了解详情。"
+

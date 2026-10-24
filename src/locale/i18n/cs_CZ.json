@@ -6029,6 +6029,8 @@
   "Invalid setting name or value": "Neplatný název nebo hodnota nastavení",
   "The geocoding service did not answer — try again later": "Geokódovací služba neodpověděla — zkuste to znovu později",
   "Only the email you sent is shown.": "Zobrazuje se pouze e-mail, který jste odeslali.",
+  "%d Giving Statement": "%d Výkaz darů",
+  "Repeat events could not be created. Check the application log for details.": "Opakující se události se nepodařilo vytvořit. Podrobnosti najdete v protokolu aplikace.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} akce vytvořena",
     "other": "\"{{name}}\": {{count}} akcí vytvořeno"

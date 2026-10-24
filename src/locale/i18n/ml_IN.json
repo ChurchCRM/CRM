@@ -5997,6 +5997,8 @@
   "Invalid setting name or value": "അസാധുവായ ക്രമീകരണ നാമം അല്ലെങ്കിൽ മൂല്യം",
   "The geocoding service did not answer — try again later": "ജിയോകോഡിംഗ് സേവനം പ്രതികരിച്ചില്ല — പിന്നീട് വീണ്ടും ശ്രമിക്കുക",
   "Only the email you sent is shown.": "നിങ്ങൾ അയച്ച ഇമെയിൽ മാത്രമാണ് കാണിക്കുന്നത്.",
+  "%d Giving Statement": "%d ദാന പ്രസ്താവന",
+  "Repeat events could not be created. Check the application log for details.": "ആവർത്തന ഇവന്റുകൾ സൃഷ്ടിക്കാൻ കഴിഞ്ഞില്ല. വിശദാംശങ്ങൾക്ക് ആപ്ലിക്കേഷൻ ലോഗ് പരിശോധിക്കുക.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} സംഭവം സൃഷ്ടിച്ചു",
     "other": "\"{{name}}\": {{count}} സംഭവങ്ങൾ സൃഷ്ടിച്ചു"

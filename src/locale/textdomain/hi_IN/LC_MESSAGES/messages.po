@@ -24631,3 +24631,11 @@ msgstr "जियोकोडिंग सेवा ने जवाब नह�
 msgid "Only the email you sent is shown."
 msgstr "केवल आपके द्वारा भेजा गया ईमेल दिखाया जाता है।"
 
+#: 
+msgid "%d Giving Statement"
+msgstr "%d दान विवरण"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "दोहराए जाने वाले कार्यक्रम नहीं बनाए जा सके। विवरण के लिए एप्लिकेशन लॉग देखें।"
+
