@@ -34,6 +34,28 @@ const fixRow = (address) => cy.get(`#sharedEmailFixModal [data-cy=shared-fix-row
 // Bootstrap ignores a hide while the modal is still opening; it focuses the modal once it is open.
 const fixModalOpen = () => cy.get("#sharedEmailFixModal").should("be.visible").and("have.focus");
 
+/** The text of each line the element renders on. */
+const renderedLines = (element) => {
+    const doc = element.ownerDocument;
+    const walker = doc.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+    const lines = [];
+    let lastTop = null;
+    for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+        for (let i = 0; i < node.length; i += 1) {
+            const range = doc.createRange();
+            range.setStart(node, i);
+            range.setEnd(node, i + 1);
+            const top = Math.round(range.getBoundingClientRect().top);
+            if (top !== lastTop) {
+                lines.push("");
+                lastTop = top;
+            }
+            lines[lines.length - 1] += node.data[i];
+        }
+    }
+    return lines;
+};
+
 const noHorizontalScroll = () =>
     cy.document().then((doc) => {
         expect(doc.documentElement.scrollWidth, "page width").to.be.at.most(doc.documentElement.clientWidth + 1);
@@ -164,6 +186,26 @@ describe("Email needs attention: Fix shared emails and Confirm selected", () => 
 
         cy.get('#unconfirmedKinds [data-kind="replacement"]').click();
         cy.contains("#memberListTable tbody tr", "Paul Smith").find("[data-cy=attention-select-locked]").should("exist");
+    });
+
+    it("shows each address whole, and names three of the others who use it", () => {
+        const shared = "robertson.dixon.hernandez.craig.gordon.household@example.com";
+        setPersonEmails({ 26: shared, 28: shared, 48: shared, 49: shared, 50: shared });
+        cy.viewport(1400, 900);
+        cy.freshAdminFormLogin();
+        cy.visit("/people/sign-in-email");
+        cy.get("#memberListTable_wrapper input[type=search]").type("robertson.dixon");
+        cy.get('#memberListTable [data-cy=attention-fix][data-person-id="26"]')
+            .closest("tr")
+            .within(() => {
+                cy.get("[data-cy=attention-shared-with] a").should("have.length", 3);
+                cy.get("[data-cy=attention-shared-more]").should("have.text", "+1 more");
+                cy.get("[data-cy=attention-email]").should(($email) => {
+                    const lines = renderedLines($email[0]);
+                    expect(lines.join(""), "rendered address").to.eq(shared);
+                    lines.slice(0, -1).forEach((line) => expect(line, "a line break inside the address").to.match(/@$/));
+                });
+            });
     });
 
     it("fits a phone screen", () => {

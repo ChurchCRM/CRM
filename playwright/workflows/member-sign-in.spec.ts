@@ -215,6 +215,8 @@ test('person-portal-give-permission', async ({ page }, testInfo) => {
   const son = await findDemoPerson(api, GRANT_SUBJECT);
   await page.goto(`/people/view/${son.personId}`);
   await waitForFloatingButtonsToTuck(page);
+  await humanClick(page.locator('#portal-signin-permissions-toggle'));
+  await expect(page.locator('#portal-signin-permissions-section')).toBeVisible();
   await humanClick(page.locator('#portal-grant-add'));
   const dialog = page.locator('#portal-grant-modal');
   await expect(dialog).toBeVisible();

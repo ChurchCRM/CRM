@@ -138,10 +138,17 @@ final class SignInEmailPolicy
      * every portal session and remembered device ends, the previous address is
      * told, and the new address stays unconfirmed. Passkeys stay. Either way
      * the sign-in codes and links already emailed stop working. Audited.
+     *
+     * `$oldEmail` is null when the save created the person: a new person's
+     * first email is the address on record, with nothing to end, nobody to
+     * tell and no change to audit.
      */
     public function recordChange(Person $person, ?string $oldEmail, EmailChangeChannel $channel, ?User $actor): void
     {
-        $oldEmail = trim((string) $oldEmail);
+        if ($oldEmail === null) {
+            return;
+        }
+        $oldEmail = trim($oldEmail);
         $newEmail = trim((string) $person->getEmail());
         if (self::sameAddress($oldEmail, $newEmail)) {
             return;
