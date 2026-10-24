@@ -488,11 +488,21 @@ class Family extends BaseFamily implements PhotoInterface
     public function getAdults(): array
     {
         $adults = array_merge($this->getHeadPeople(), $this->getSpousePeople());
-        if ($this->getEnteredBy() === Person::SELF_REGISTER) {
-            return $adults;
-        }
 
-        return array_values(array_filter($adults, fn (Person $person): bool => !$person->getNeedsReview()));
+        return array_values(array_filter(
+            $adults,
+            fn (Person $person): bool => !self::proposedMemberAwaitsReview((bool) $person->getNeedsReview(), $this->getEnteredBy()),
+        ));
+    }
+
+    /**
+     * Whether a person waits for staff approval as someone proposed for an
+     * existing family. A family that self-registered is approved as a whole.
+     * Takes column values so bulk queries can ask without loading objects.
+     */
+    public static function proposedMemberAwaitsReview(bool $personNeedsReview, ?int $familyEnteredBy): bool
+    {
+        return $personNeedsReview && $familyEnteredBy !== Person::SELF_REGISTER;
     }
 
     public function getChildPeople(): array

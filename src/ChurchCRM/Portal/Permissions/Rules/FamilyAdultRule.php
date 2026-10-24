@@ -55,7 +55,7 @@ final class FamilyAdultRule implements PortalRule
     public static function isAdult(Person $person, ?DateTimeImmutable $today = null, ?Family $family = null): bool
     {
         $family ??= $person->getFamily();
-        if ($family instanceof Family && self::awaitsReview((bool) $person->getNeedsReview(), (int) $family->getEnteredBy())) {
+        if ($family instanceof Family && Family::proposedMemberAwaitsReview((bool) $person->getNeedsReview(), $family->getEnteredBy())) {
             return false;
         }
 
@@ -81,12 +81,6 @@ final class FamilyAdultRule implements PortalRule
         }
 
         return [$month, $day] <= [(int) $today->format('n'), (int) $today->format('j')];
-    }
-
-    /** Proposed for an existing family and not yet approved (see `Family::getAdults()`). */
-    private static function awaitsReview(bool $personNeedsReview, int $familyEnteredBy): bool
-    {
-        return $personNeedsReview && $familyEnteredBy !== Person::SELF_REGISTER;
     }
 
     /**
