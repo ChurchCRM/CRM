@@ -626,6 +626,10 @@ The Member Portal page sits at People → People Settings → Member Portal. Its
   - Putting back only the old files stops at "Software Update Required". Restoring the backup from inside 7.9.0 just upgrades it again on the next page load.
   - Anything done after the upgrade is lost.
   - Admin → System → Upgrade offers a backup step, but it can be skipped, and nothing asks for one when the files are replaced by hand. So the release notes say to take a backup first.
+  - **The release notes also say how to count the accounts the upgrade removes, before upgrading**, in the version the church runs today:
+    - Admin → Users marks each one with the *Self-service only* icon (the same rule: Edit Self on, not an administrator);
+    - Admin → Member Portal → Statistics shows the total.
+  - 7.9.0 doesn't ask before the step, because it upgrades itself on the first page load.
 
 ## 13. Data model and settings
 
