@@ -9,7 +9,7 @@ body.page-auth {
 // Login background photo + dark overlay — only for login/auth flow pages.
 // Templates that need this must set $sBodyClass = 'page-auth page-login'.
 body.page-login {
-  background: url('/Images/login-photo.png') center/cover no-repeat fixed;
+  background: url('../Images/login-photo.png') center/cover no-repeat fixed;
 
   &::before {
     content: '';

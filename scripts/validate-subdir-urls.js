@@ -4,7 +4,7 @@
  * A subdirectory install serves the app under a path such as /churchcrm. A browser URL that
  * starts at "/" or at "./" ignores that path. This check fails when source code hands such a
  * literal to a place the browser requests: fetch, $.ajax, url:, location, href, src, action,
- * header('Location'). Build the URL from window.CRM.root, SystemURLs::getRootPath() or
+ * header('Location'), CSS url(), and variables named *Url / *Href. Build the URL from window.CRM.root, SystemURLs::getRootPath() or
  * SystemURLs::assetVersioned().
  *
  * A line that is deliberately root-relative ends with  // subdir-ok: <reason>
@@ -18,7 +18,7 @@ const path = require('path');
 const root = path.join(__dirname, '..');
 const SCAN_DIRS = ['webpack', 'src'];
 const SKIP = /(^|\/)(vendor|external|node_modules|locale|logs|Images)(\/|$)|\/skin\/v2\/|\.min\.js$/;
-const EXTENSIONS = /\.(php|twig|js|ts|tsx)$/;
+const EXTENSIONS = /\.(php|twig|js|ts|tsx|scss|css)$/;
 const ROUTES = 'api|admin|people|finance|groups|v2|event|kiosk|plugins|ministries|fundraiser|session|setup|portal|skin';
 
 const SINK =
@@ -26,6 +26,8 @@ const SINK =
     '\\blocation(?:\\.href)?\\s*=(?!=)|location\\.(?:assign|replace)\\s*\\(|window\\.open\\s*\\(|new\\s+URL\\s*\\(|' +
     '\\.(?:get|post|put|delete|patch)\\s*\\(|\\b(?:href|src|action)\\s*=\\s*)';
 const ROOT_RELATIVE = new RegExp(`${SINK}\\s*(?:\\(\\s*)?["'\`]/(?!/)[A-Za-z]`);
+const CSS_URL = /(?:background(?:-image)?|src|content|cursor|mask(?:-image)?|list-style(?:-image)?)\s*:[^;]*\burl\(\s*["']?\/(?!\/)[A-Za-z]/;
+const URL_VARIABLE = new RegExp(`\\b\\w*(?:Url|URL|Href)\\s*=\\s*["'\`]/(?:${ROUTES}|Images)/`);
 const HEADER_LOCATION = /header\s*\(\s*["']Location:\s*\/(?!\/)[A-Za-z]/;
 const DOT_RELATIVE = new RegExp(`(?:\\bfetch\\s*\\(|\\burl\\s*:|\\$\\.(?:ajax|get|post|getJSON)\\s*\\(|location(?:\\.href)?\\s*=(?!=))\\s*["'\`](?:\\.{1,2}/|(?:${ROUTES})/)`);
 const SAFE_ON_LINE = /CRM\.root|getRootPath|assetVersioned|rootPath|subdir-ok:/;
@@ -37,7 +39,7 @@ function violations(source) {
         if (/^(\/\/|\*|\/\*|#)/.test(text) || SAFE_ON_LINE.test(line) || ROUTE_REGISTRATION.test(line)) {
             return [];
         }
-        return ROOT_RELATIVE.test(line) || HEADER_LOCATION.test(line) || DOT_RELATIVE.test(line) ? [{ line: index + 1, text }] : [];
+        return ROOT_RELATIVE.test(line) || HEADER_LOCATION.test(line) || CSS_URL.test(line) || URL_VARIABLE.test(line) || DOT_RELATIVE.test(line) ? [{ line: index + 1, text }] : [];
     });
 }
 
