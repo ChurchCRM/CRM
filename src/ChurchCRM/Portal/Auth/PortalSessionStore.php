@@ -1,0 +1,58 @@
+<?php
+
+namespace ChurchCRM\Portal\Auth;
+
+/**
+ * The portal session's place in the PHP session. It sits beside the staff
+ * session (`AuthenticationProvider`) and never inside it, so ending one leaves
+ * the other alone. Only `PortalSessionStarter` saves a principal.
+ */
+final class PortalSessionStore
+{
+    private const PRINCIPAL_KEY = 'PortalPrincipal';
+    private const LAST_ACTIVITY_KEY = 'PortalLastActivity';
+
+    public static function load(): ?PortalPrincipal
+    {
+        if (!isset($_SESSION) || !array_key_exists(self::PRINCIPAL_KEY, $_SESSION)) {
+            return null;
+        }
+
+        return PortalPrincipal::fromArray($_SESSION[self::PRINCIPAL_KEY]);
+    }
+
+    public static function has(): bool
+    {
+        return self::load() instanceof PortalPrincipal;
+    }
+
+    public static function save(PortalPrincipal $principal): void
+    {
+        $_SESSION[self::PRINCIPAL_KEY] = $principal->toArray();
+        self::touch();
+    }
+
+    public static function lastActivity(): ?int
+    {
+        $value = $_SESSION[self::LAST_ACTIVITY_KEY] ?? null;
+
+        return is_int($value) ? $value : null;
+    }
+
+    public static function touch(): void
+    {
+        $_SESSION[self::LAST_ACTIVITY_KEY] = time();
+    }
+
+    public static function clear(): void
+    {
+        unset($_SESSION[self::PRINCIPAL_KEY], $_SESSION[self::LAST_ACTIVITY_KEY]);
+    }
+
+    public static function regenerateId(): void
+    {
+        if (session_status() === PHP_SESSION_ACTIVE && !headers_sent()) {
+            session_regenerate_id(true);
+        }
+    }
+}

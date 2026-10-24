@@ -9,6 +9,14 @@
             "kind": "fixture",
             "reason": "Read-only row counts for the test-database drift guard (#9769)."
         },
+        "cypress/e2e/api/private/standard/private.portal.session.spec.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in row 1 (#10463): Disable sign-in, the session version, the timeouts and the sign-in audit have no HTTP surface until rows 4 and 9 add the admin pages."
+        },
+        "cypress/e2e/api/private/standard/private.portal.signin-schema.spec.js": {
+            "kind": "schema",
+            "reason": "Member sign-in schema spec (#10463): the new person-keyed tables, their foreign keys, ON DELETE rules and unique token hashes have no HTTP surface."
+        },
         "cypress/e2e/api/private/standard/private.volunteer.setup.spec.js": {
             "kind": "schema",
             "reason": "Volunteer v2 schema spec (#9705): columns, UNIQUE keys, foreign keys, ON DELETE rules and enum domains have no HTTP surface."

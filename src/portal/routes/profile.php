@@ -1,8 +1,9 @@
 <?php
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\Exceptions\PasswordChangeException;
 use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\Portal\Auth\PortalContext;
 use ChurchCRM\Portal\PortalAccountPages;
 use ChurchCRM\Portal\PortalNav;
 use ChurchCRM\Portal\PortalSelfService;
@@ -66,9 +67,8 @@ $group->get('/profile/edit', function (Request $request, Response $response) use
 // Console" control and nowhere else. See PortalAccountPages for why the older
 // /v2/user/current/* URLs still exist alongside these.
 //
-// These two act on the signed-in *account*, not on a person record, so unlike
-// the pages above they do not resolve $portalActor: somebody whose account has
-// no person record linked must still be able to change their own password.
+// These two act on the staff account behind a STAFF portal session, not on a
+// person record. A member session has no password to change.
 
 // GET /portal/profile/password — the form.
 $group->get('/profile/password', function (Request $request, Response $response): Response {
@@ -82,7 +82,10 @@ $group->get('/profile/password', function (Request $request, Response $response)
 // confirmation page, and a rejected password re-renders this form carrying the
 // error, exactly as the /v2 page does for a self-service session.
 $group->post('/profile/password', function (Request $request, Response $response): Response {
-    $user = AuthenticationManager::getCurrentUser();
+    $user = PortalContext::staffUser();
+    if (!$user instanceof User) {
+        throw new HttpNotFoundException($request);
+    }
 
     try {
         PortalAccountPages::applyPasswordChange($user, $request->getParsedBody());
