@@ -3,6 +3,7 @@
 namespace ChurchCRM\model\ChurchCRM;
 
 use ChurchCRM\model\ChurchCRM\Base\TokenQuery as BaseTokenQuery;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'tokens' table.
@@ -23,6 +24,6 @@ class TokenQuery extends BaseTokenQuery
         }
 
         return $this->findPk(Token::passwordResetStorageKey($token))
-            ?? $this->where('Token.Token NOT LIKE ?', 'sha256:%')->findPk($token);
+            ?? $this->filterByToken('sha256:%', Criteria::NOT_LIKE)->findPk($token);
     }
 }

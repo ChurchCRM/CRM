@@ -3,6 +3,7 @@
 namespace ChurchCRM\model\ChurchCRM;
 
 use ChurchCRM\model\ChurchCRM\Base\Token as BaseToken;
+use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Connection\ConnectionInterface;
 
 /**
@@ -79,7 +80,9 @@ class Token extends BaseToken
             ->filterByToken($this->getToken())
             ->filterByType($this->getType())
             ->filterByRemainingUses($remainingUses)
-            ->where('(Token.ValidUntilDate IS NULL OR Token.ValidUntilDate > ?)', date('Y-m-d H:i:s'), \PDO::PARAM_STR)
+            ->filterByValidUntilDate(null, Criteria::ISNULL)
+            ->_or()
+            ->filterByValidUntilDate(date('Y-m-d H:i:s'), Criteria::GREATER_THAN)
             ->update(['RemainingUses' => $remainingUses - 1], $connection);
 
         if ($updated !== 1) {

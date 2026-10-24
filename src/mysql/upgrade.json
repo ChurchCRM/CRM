@@ -111,7 +111,11 @@
   },
   "current": {
     "versions": ["7.8.1"],
-    "scripts": ["/mysql/upgrade/7.8.2.sql", "/mysql/upgrade/7.8.2-pledge-groupkey-index.sql"],
+    "scripts": [
+      "/mysql/upgrade/7.8.2.sql",
+      "/mysql/upgrade/7.8.2-pledge-groupkey-index.sql",
+      "/mysql/upgrade/7.8.2-tokens-valid-until-datetime.sql"
+    ],
     "dbVersion": "7.8.2"
   }
 }

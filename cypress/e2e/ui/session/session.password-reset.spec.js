@@ -102,15 +102,13 @@ describe("Session Password Reset", () => {
         it("Should display error page with proper Tabler UX structure", () => {
             cy.visit("/session/forgot-password/set/invalid-token-12345");
 
-            // Verify page header elements
-            cy.get(".login-form-header").should("be.visible");
-            cy.get(".login-header-logo img").should("be.visible");
-            cy.get(".login-header-church-name").should("be.visible");
+            cy.get(".forgot-password-card").should("be.visible");
+            cy.get(".forgot-password-card-logo img").should("be.visible");
+            cy.get(".forgot-password-card h2").should("be.visible");
             cy.contains("Account Recovery").should("be.visible");
 
-            // Verify error title section
-            cy.get(".login-form-title h1").should("contain", "Password Reset Error");
-            cy.get(".login-form-title h1 i.fa-circle-exclamation").should("exist");
+            cy.get(".forgot-password-card h3").should("contain", "Password Reset Error");
+            cy.get(".forgot-password-card h3 i.fa-circle-exclamation").should("exist");
             cy.contains("We were unable to process your password reset request").should("be.visible");
         });
 
