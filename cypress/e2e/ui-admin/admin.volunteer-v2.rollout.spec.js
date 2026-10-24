@@ -8,7 +8,7 @@
  * surfaces below cannot be asserted there because both `/people/*` and the
  * legacy `VolunteerOpportunityEditor.php` load `Include/PageInit.php`, whose
  * `ensureAuthentication()` call runs at file-load time — before any Slim
- * middleware — so an x-api-key request to them 302s to /session/begin.
+ * middleware — so an x-api-key request to them 302s to the /admin/ sign-in.
  *
  * Order inside every hook is API setup → freshAdminLogin() → cy.visit(),
  * because cy.request() rotates the PHP session cookie (cypress-testing.md).
@@ -27,12 +27,12 @@ function freshAdminLogin() {
     // One retry: under CI load the submit occasionally lands back on the login
     // page although the server logged the login (a lost cookie on the redirect).
     cy.url().then((url) => {
-        if (url.includes("/session/begin")) {
+        if (new URL(url).pathname === "/admin/") {
             cy.get("input[name=User]").clear().type(Cypress.testEnv("admin.username"));
             cy.get("input[name=Password]").clear().type(Cypress.testEnv("admin.password") + "{enter}");
         }
     });
-    cy.url().should("not.include", "/session/begin");
+    cy.location("pathname").should("not.eq", "/admin/");
 }
 
 function setVersion(value) {

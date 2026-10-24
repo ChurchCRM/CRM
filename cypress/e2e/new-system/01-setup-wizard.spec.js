@@ -133,7 +133,7 @@ describe('01 - Setup Wizard', () => {
             cy.get('#continue-to-login').should('be.visible').click();
             
             // Should redirect to login page
-            cy.url({ timeout: 10000 }).should('include', '/session/begin');
+            cy.location('pathname', { timeout: 10000 }).should('eq', '/admin/');
         });
     });
 
@@ -221,7 +221,7 @@ describe('01 - Setup Wizard', () => {
             cy.get('input[name=Password]').type(newAdminPassword + '{enter}');
 
             // Should redirect away from login
-            cy.url({ timeout: 15000 }).should('not.include', '/session/begin');
+            cy.location('pathname', { timeout: 15000 }).should('not.eq', '/admin/');
 
             // Should be on some page (dashboard or admin)
             cy.get('body').should('exist');
@@ -231,7 +231,7 @@ describe('01 - Setup Wizard', () => {
             cy.visit('/login');
             cy.get('input[name=User]').type(adminCredentials.username);
             cy.get('input[name=Password]').type(newAdminPassword + '{enter}');
-            cy.url({ timeout: 15000 }).should('not.include', '/session/begin');
+            cy.location('pathname', { timeout: 15000 }).should('not.eq', '/admin/');
 
             cy.url().then((url) => {
                 cy.log('Redirected to: ' + url);
@@ -245,7 +245,7 @@ describe('01 - Setup Wizard', () => {
             cy.visit('/login');
             cy.get('input[name=User]').type(adminCredentials.username);
             cy.get('input[name=Password]').type(newAdminPassword + '{enter}');
-            cy.url({ timeout: 15000 }).should('not.include', '/session/begin');
+            cy.location('pathname', { timeout: 15000 }).should('not.eq', '/admin/');
 
             // Check people API - should return mostly empty (only admin user)
             cy.request({
@@ -280,7 +280,7 @@ describe('01 - Setup Wizard', () => {
             cy.visit('/login');
             cy.get('input[name=User]').type(adminCredentials.username);
             cy.get('input[name=Password]').type(newAdminPassword + '{enter}');
-            cy.url({ timeout: 15000 }).should('not.include', '/session/begin');
+            cy.location('pathname', { timeout: 15000 }).should('not.eq', '/admin/');
 
             cy.visit('/v2/user/current/changepassword');
             cy.get('#OldPassword').type(newAdminPassword);
@@ -299,7 +299,7 @@ describe('01 - Setup Wizard', () => {
             cy.visit('/login');
             cy.get('input[name=User]').type(adminCredentials.username);
             cy.get('input[name=Password]').type(adminCredentials.password + '{enter}');
-            cy.url({ timeout: 15000 }).should('not.include', '/session/begin');
+            cy.location('pathname', { timeout: 15000 }).should('not.eq', '/admin/');
         };
 
         it('should not show "Forgot password?" link on the login page', () => {

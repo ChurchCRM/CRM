@@ -32,7 +32,7 @@ describe("Zero-Permission User (EditSelf=0, all flags 0)", () => {
         cy.visit("session/begin");
         cy.get("input[name=User]").type(noPermUser);
         cy.get("input[name=Password]").type(noPermPassword + "{enter}");
-        cy.url({ timeout: 10000 }).should("not.include", "/session/begin");
+        cy.location("pathname", { timeout: 10000 }).should("not.eq", "/admin/");
     };
 
     describe("Can log in and read people/families", () => {
@@ -241,7 +241,7 @@ describe("Zero-Permission User (EditSelf=0, all flags 0)", () => {
             // Open the user-menu dropdown, then click the 'Sign out' link
             cy.get('[aria-label="Open user menu"]').click();
             cy.contains("Sign out").click();
-            cy.url().should("include", "/session/begin");
+            cy.location("pathname").should("eq", "/admin/");
         });
     });
 });

@@ -4,12 +4,10 @@ require_once __DIR__ . '/../Include/LoadConfigs.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\Requests\LocalTwoFactorTokenRequest;
-use ChurchCRM\Authentication\Requests\LocalUsernamePasswordRequest;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Portal\Auth\RememberedDeviceCookie;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
-use ChurchCRM\Utils\InputUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
@@ -34,8 +32,16 @@ $app->add(new VersionMiddleware());
 
 require __DIR__ . '/routes/password-reset.php';
 
-$app->get('/begin', 'beginSession');
-$app->post('/begin', 'beginSession');
+// The staff sign-in moved to /admin (member sign-in design §7). A 307 keeps a
+// POST's method and body, so a sign-in form cached before the move, or posted
+// from a church's own website, still signs in there.
+$app->map(['GET', 'POST'], '/begin', function (Request $request, Response $response): Response {
+    $query = $request->getUri()->getQuery();
+
+    return $response
+        ->withStatus($request->getMethod() === 'POST' ? 307 : 302)
+        ->withHeader('Location', AuthenticationManager::getStaffSignInURL() . ($query !== '' ? '?' . $query : ''));
+});
 $app->get('/end', 'endSession');
 $app->get('/two-factor', 'processTwoFactorGet');
 $app->post('/two-factor', 'processTwoFactorPost');
@@ -72,42 +78,6 @@ function endSession(Request $request, Response $response, array $args): Response
     $response = RememberedDeviceCookie::without($response->withHeader('Location', $redirectUrl)->withStatus(302));
     $response->getBody()->write('');
     return $response;
-}
-
-function beginSession(Request $request, Response $response, array $args): Response
-{
-    $queryParams = $request->getQueryParams();
-
-    // Check for explicit username in query params (e.g., from password reset)
-    $rawUserName = $queryParams['username'] ?? $request->getServerParams()['username'] ?? '';
-    $prefilledUserName = InputUtils::sanitizeText($rawUserName);
-
-    $pageArgs = [
-        'sRootPath'            => SystemURLs::getRootPath(),
-        'localAuthNextStepURL' => AuthenticationManager::getSessionBeginURL(),
-        'forgotPasswordURL'    => AuthenticationManager::getForgotPasswordURL(),
-        'prefilledUserName'    => $prefilledUserName,
-    ];
-
-    if ($request->getMethod() === 'POST') {
-        // getParsedBody() returns null when the body is absent or its media type
-        // has no registered parser, and a malformed form post can omit either
-        // field. LocalUsernamePasswordRequest is strictly typed, so passing null
-        // raised an uncaught TypeError (HTTP 500) instead of failing the login.
-        // Matches the ?? '' already used for TwoFACode above.
-        $loginRequestBody = $request->getParsedBody() ?? [];
-
-        $userPassRequest = new LocalUsernamePasswordRequest(
-            (string) ($loginRequestBody['User'] ?? ''),
-            (string) ($loginRequestBody['Password'] ?? '')
-        );
-        $authenticationResult = AuthenticationManager::authenticate($userPassRequest);
-        $pageArgs['sErrorText'] = $authenticationResult->message;
-    }
-
-    $renderer = new PhpRenderer('templates/');
-
-    return $renderer->render($response, 'begin-session.php', $pageArgs);
 }
 
 $app->run();

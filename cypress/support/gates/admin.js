@@ -6,7 +6,8 @@ export const ADMIN_GATES = [
         audience: "admin",
         classification: "configuration",
         api: { method: "GET", url: "/admin/api/system/config/sChurchName" },
-        page: "/admin/",
+        // The /admin root is the staff sign-in page and sends other staff to their dashboard.
+        page: "/admin/system/users",
         allow: ["church-admin"],
         deny: except(STAFF, "church-admin"),
     },

@@ -48,7 +48,7 @@ const signIn = () => {
     cy.clearCookies();
     return cy.request({
         method: "POST",
-        url: "/session/begin",
+        url: "/admin/",
         form: true,
         followRedirect: false,
         body: { User: member.username, Password: member.password },
@@ -168,7 +168,7 @@ describe("Sign-in blocks for everyone", () => {
 
     it("refuses the two-factor step once Disable sign-in is on", () => {
         cy.clearCookies();
-        cy.request({ method: "POST", url: "/session/begin", form: true, body: { User: "twofa_user", Password: "changeme" } })
+        cy.request({ method: "POST", url: "/admin/", form: true, body: { User: "twofa_user", Password: "changeme" } })
             .its("redirects")
             .should("satisfy", (redirects) => redirects.some((url) => url.includes("/session/two-factor")));
         adminPost("/admin/api/person/27/sign-in/disable", { reason: "Blocks spec" });
@@ -176,7 +176,7 @@ describe("Sign-in blocks for everyone", () => {
         cy.request({ method: "POST", url: "/session/two-factor", form: true, body: { TwoFACode: "000000" } }).then(
             (response) => {
                 expect(response.redirects.some((url) => url.includes("/session/two-factor"))).to.eq(false);
-                expect(response.redirects.some((url) => url.includes("/session/begin"))).to.eq(true);
+                expect(response.redirects.some((url) => url.endsWith("/admin/"))).to.eq(true);
             },
         );
         cy.request({ url: "/v2/dashboard", followRedirect: false }).its("status").should("eq", 302);
@@ -246,7 +246,7 @@ describe("Sign-in blocks for everyone", () => {
         cy.clearCookies();
         cy.readEnv("admin.username").then((username) =>
             cy.readEnv("admin.password").then((password) =>
-                cy.request({ method: "POST", url: "/session/begin", form: true, body: { User: username, Password: password } }),
+                cy.request({ method: "POST", url: "/admin/", form: true, body: { User: username, Password: password } }),
             ),
         );
         cy.request({

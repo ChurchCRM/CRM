@@ -32,13 +32,10 @@ Cypress.Commands.add('setupLoginSession', (sessionName, username, password, opti
     cy.session(
         effectiveSessionName,
         () => {
-            // Perform the login
-            cy.visit('/login');
+            cy.visit('/admin/');
             cy.get('input[name=User]').type(username);
             cy.get('input[name=Password]').type(password + '{enter}');
-            // Wait for redirect away from session/login pages
-            // ChurchCRM's login page is /session/begin, not /login
-            cy.url().should('not.include', '/session/begin');
+            cy.location('pathname').should('not.match', /\/admin\/?$/);
         },
         {
             validate: validate ?? defaultValidate
@@ -149,7 +146,7 @@ Cypress.Commands.add('setupManageGroupsOnlySession', (options = {}) =>
  */
 Cypress.Commands.add('loginWithCredentials', (username, password, sessionName = 'custom-session', expectSuccess = true) => {
     cy.session(sessionName, () => {
-        cy.visit('/login');
+        cy.visit('/admin/');
         cy.get('input[name=User]').type(username);
         cy.get('input[name=Password]').type(password + '{enter}');
     }, {

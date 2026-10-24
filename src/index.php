@@ -6,6 +6,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Portal\Auth\PortalSessionStore;
 use ChurchCRM\Utils\PathUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Utils\VersionUtils;
@@ -51,8 +52,17 @@ $shortName = str_starts_with($_idx_requestPath, $_idx_rootPrefix)
     ? substr($_idx_requestPath, strlen($_idx_rootPrefix))
     : substr($_idx_requestPath, 1);
 
-// First, ensure that the user is authenticated.
-AuthenticationManager::ensureAuthentication();
+$_idx_isWebRoot = $shortName === '' || strtolower($shortName) === 'index.php';
+$_idx_safeShortPath = PathUtils::resolveSafeRequirePath($shortName);
+
+// The web root (member sign-in design §7): signed out it goes to the member
+// sign-in page, and a member session goes to the portal.
+if ($_idx_isWebRoot && !AuthenticationManager::validateUserSessionIsActive(false)) {
+    RedirectUtils::redirect(PortalSessionStore::has() ? 'portal/' : 'portal/login');
+}
+
+// Only a real page is remembered for after sign-in.
+AuthenticationManager::ensureAuthentication($_idx_safeShortPath !== null);
 
 // On a fresh install (sChurchName empty), redirect admin users to complete setup.
 if (empty(SystemConfig::getValue('sChurchName'))) {
@@ -67,9 +77,9 @@ if (empty(SystemConfig::getValue('sChurchName'))) {
     }
 }
 
-if ($shortName === '' || strtolower($shortName) === 'index.php') {
+if ($_idx_isWebRoot) {
     RedirectUtils::redirect('v2/dashboard');
-} elseif (($_idx_safeShortPath = PathUtils::resolveSafeRequirePath($shortName)) !== null) {
+} elseif ($_idx_safeShortPath !== null) {
     require $_idx_safeShortPath;
 } elseif (in_array(strtolower(pathinfo($shortName, PATHINFO_EXTENSION)), ['js', 'css'], true)) {
     // Missing static asset (e.g. a stale webpack chunk hash after a deploy) —

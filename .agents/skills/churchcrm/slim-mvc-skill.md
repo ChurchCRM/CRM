@@ -46,7 +46,7 @@ Each module's entry point is `src/<module>/index.php` and its routes live in `sr
 
 | Prefix | Module role gate | Notes |
 |--------|------------------|-------|
-| `/admin` | `AdminRoleAuthMiddleware` | System pages and `/admin/api/*`. Admin role required. |
+| `/admin` | `AdminRoleAuthMiddleware` | Staff sign-in at `/admin/` (`StaffSignInPage`), system pages and `/admin/api/*`. Admin role required. |
 | `/event` | `ViewEventsRoleAuthMiddleware` | Write routes add `new AddEventsRoleAuthMiddleware()`. |
 | `/finance` | `FinanceRoleAuthMiddleware` | Audit-sensitive. `routes/api/` holds the finance JSON endpoints. |
 | `/fundraiser` | `ManageFundraisersRoleAuthMiddleware` | Routes sit in a group with `CSRFMiddleware` and `FundraiserEnabledMiddleware`. |
@@ -64,7 +64,7 @@ Each module's entry point is `src/<module>/index.php` and its routes live in `sr
 | `/external` | Often unauthenticated or token-based. Validate inputs strictly. |
 | `/kiosk` | Kiosk device token and cookie flows with a deliberately limited action set. |
 | `/plugins` | `/plugins/management/*` and `/plugins/api/*` are admin only. Each enabled plugin registers `/plugins/{plugin-name}/...` with its own permission settings (see `plugin-security-scan.md`). |
-| `/session` | Login, two-factor, password reset. |
+| `/session` | Two-factor, password reset, sign-out (`/session/end`). `/session/begin` redirects to the staff sign-in at `/admin/`. |
 | `/setup` | Installer. Sensitive; runs once. |
 
 ## Route organization

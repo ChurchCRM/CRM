@@ -70,12 +70,12 @@ function freshAdminLogin() {
     // One retry: in CI a login page occasionally reloads while the name is being
     // typed (the submit then goes out with an empty user and bounces back here).
     cy.url().then((url) => {
-        if (url.includes("/session/begin")) {
+        if (new URL(url).pathname === "/admin/") {
             cy.get("input[name=User]").clear().type(Cypress.testEnv("admin.username"));
             cy.get("input[name=Password]").clear().type(Cypress.testEnv("admin.password") + "{enter}");
         }
     });
-    cy.url().should("not.include", "/session/begin");
+    cy.location("pathname").should("not.eq", "/admin/");
 }
 
 /** Log in as person 95, who this spec makes a leader of the ministry's only team. */
@@ -87,12 +87,12 @@ function freshLeaderLogin() {
     // One retry: under CI load the submit occasionally lands back on the login
     // page although the server logged the login (a lost cookie on the redirect).
     cy.url().then((url) => {
-        if (url.includes("/session/begin")) {
+        if (new URL(url).pathname === "/admin/") {
             cy.get("input[name=User]").clear().type(Cypress.testEnv("nofinance.username"));
             cy.get("input[name=Password]").clear().type(Cypress.testEnv("nofinance.password") + "{enter}");
         }
     });
-    cy.url().should("not.include", "/session/begin");
+    cy.location("pathname").should("not.eq", "/admin/");
 }
 
 function adminApi(method, url, body, expectedStatus = 200) {

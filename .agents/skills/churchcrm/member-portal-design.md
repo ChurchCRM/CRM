@@ -54,7 +54,7 @@ src/skin/scss/_portal.scss   part of portal.min.css
 
 ## Request flow
 
-1. Login lands by the P10 rule. `/external/limited-access` redirects to `/portal`. The portal is always on.
+1. Members sign in at `/portal/login`, staff at `/admin/` (`/session/begin` redirects there); landing follows P10. `/external/limited-access` redirects to `/portal`. The portal is always on.
 2. A request with a portal principal and no staff session passes `AuthMiddleware` only on `/portal`, `/api/portal` and the volunteer API (`/api/ministries/`). `AuthMiddleware` redirects an Edit-Self-only browser request outside `isLimitedAccessAllowedPath()` to `/portal`. The allowed paths include `/portal`, `/api/portal`, the auth-flow pages, `/api/ministries/me/` and `/api/ministries/` (team leaders). `/volunteer` and other admin areas stay closed. API-key calls from these accounts get 403. `Include/PageInit.php` applies the same rule to PHP pages; `AuthenticationManager::getDefaultLandingPath()` picks the post-login destination.
 3. `src/portal/index.php` mounts `PortalSessionMiddleware` (the portal principal: a member session, or a staff session opening the portal as its own person; it ends the session on a block, a session-version change or idle time), then `PortalAccessMiddleware` (302 to `/portal/login` when signed out, API keys refused) and `CSRFMiddleware`, on the page group. `/api/portal/*` groups use `PortalSessionMiddleware` + `PortalApiMiddleware`. Portal code reads who it serves from `PortalContext`, never `AuthenticationManager::getCurrentUser()`.
 4. A route handler builds a view-model and calls `PortalTwig::render($response, 'calendar/index.html.twig', $model, PortalNav::CALENDAR)`. The loader order is active theme, then default theme; a theme file with the same relative path wins.
@@ -65,7 +65,7 @@ src/skin/scss/_portal.scss   part of portal.min.css
 
 | Account | Lands in | Portal | Admin shell |
 |---|---|---|---|
-| Staff login (admin flag or any module permission) | `/v2/dashboard` | via user menu "Member Portal" | yes |
+| Staff login at `/admin/` (admin flag or any module permission) | `/v2/dashboard` | via user menu "Member Portal" | yes |
 | Edit Self only | `/portal` | yes | no |
 
 ## Theming
@@ -114,7 +114,7 @@ Both error pages render from the default theme, so they always render. The porta
 | `csrf_field()` | `CSRFUtils::getTokenInputField()` |
 | `nonce()` | `SystemURLs::getCSPNonce()` |
 | `church` | `{name, address, city, state, zip, phone, email, website, logoUrl, logoOnDarkUrl, socialLinks}` from `ChurchMetaData`; `socialLinks` is `[{id, label, url, icon}]` |
-| `member` | `{id, firstName, lastName, fullName, email, avatarUrl, familyId, isTeamLeader, isStaff}` |
+| `member` | `{id, firstName, lastName, fullName, email, avatarUrl, familyId, isTeamLeader, isStaff, signedInWithPassword, adminConsoleUrl}` |
 | `portal_can(capability, scope)` | the portal permissions check, for showing a section or button; routes use `RequirePortalCapability` |
 | `nav` | `PortalNav` model: `[{id, label, url, icon, capability, active, badge}]`, each entry shown when the member holds its capability |
 | `flash` | `[{type, message}]` from the session |
@@ -182,7 +182,7 @@ Config items: `sMemberPortalTheme`, `bPortalDeveloperMode`, `bPortalShowVoluntee
 
 ## Screens and APIs
 
-Nav (`PortalNav`), in order, each hidden when its feature is off or the member has nothing there: Home, Calendar, Volunteering, My Teams, My Family, Profile. The header shows the church logo and name and one account menu: "Hello <first name>" over Email History, Change Password, Admin Console (staff logins only) and Sign out (`GET /session/end`).
+Nav (`PortalNav`), in order, each hidden when its feature is off or the member has nothing there: Home, Calendar, Volunteering, My Teams, My Family, Profile. The header shows the church logo and name and one account menu: "Hello <first name>" over Email History, Change Password (staff sessions only), Admin Console (back to the staff side from a staff session; the `/admin/` sign-in from a member session whose person has a staff account) and Sign out (`GET /session/end`).
 
 ### Home (`/portal`)
 
@@ -197,7 +197,7 @@ Cards: next portal-visible events, the member's next volunteer assignment and pe
 - Photos: the portal serves its own copies because `isLimitedAccessAllowedPath()` confines self-service sessions to `/portal` and `/api/portal`. `GET /api/portal/me/photo` (cached privately for `Photo::CACHE_DURATION_SECONDS`) and `GET /api/portal/family/members/{personId}/photo` (`private, no-store`) serve through the `Photo` object; every `photoUrl` the portal hands out points at them with `?v=<mtime>`. The family photo route is the one place a portal route takes a person id; it checks the id against the actor's own family, and anything else is 404, never 403.
 - Confirm family details (`/portal/family/confirm`, `POST /api/portal/family/confirm`): writes the same `verify` note as `/external/verify`, with `Person::SELF_VERIFY` as the enterer because People -> Verify selects on it. Confirming needs `portal.family.confirm` (an adult of the family). The emailed verify-token link keeps serving people without logins.
 - A member with no family (or no person record) gets `family/none.html.twig` with HTTP 200: "You are not currently associated with a family", plus Church Information email as `mailto:` and phone as `tel:` (each omitted when empty; with neither, "Please contact the church office."). The portal 404 is for URLs that do not exist.
-- Password and two-factor: `GET/POST /portal/profile/password` and `GET /portal/profile/two-factor`, in the portal layout for every role, so an administrator who changes a password from the portal stays in the portal. They act on the signed-in account and work with no linked person. `PortalAccountPages` is the single place a portal account page becomes a response; `User::userChangePassword()`, the form ids and the `PasswordChange.js` / `two-factor-enrollment` bundles are shared. `/v2/user/current/changepassword` and `/v2/user/current/manage2fa` render through the same class and stay at those URLs: `LocalAuthentication` returns them as `nextStepURL` for forced flows, which match `REQUEST_URI` to break their own redirect loop. The password template's `formAction` is a variable set by each route, never taken from the request.
+- Password and two-factor: `GET/POST /portal/profile/password` and `GET /portal/profile/two-factor`, in the portal layout, so an administrator who changes a password from the portal stays in the portal. They act on the staff account behind a STAFF portal session; a member session gets 404. `PortalAccountPages` is the single place a portal account page becomes a response; `User::userChangePassword()`, the form ids and the `PasswordChange.js` / `two-factor-enrollment` bundles are shared. `/v2/user/current/changepassword` and `/v2/user/current/manage2fa` render through the same class and stay at those URLs: `LocalAuthentication` returns them as `nextStepURL` for forced flows, which match `REQUEST_URI` to break their own redirect loop. The password template's `formAction` is a variable set by each route, never taken from the request.
 
 ### Calendar (`/portal/calendar`)
 

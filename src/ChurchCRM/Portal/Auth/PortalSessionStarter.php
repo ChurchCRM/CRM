@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Portal\Auth;
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonSignin;
 use ChurchCRM\model\ChurchCRM\PersonSigninQuery;
@@ -46,6 +47,9 @@ final class PortalSessionStarter
             throw new PortalSignInRefusedException($refusal);
         }
 
+        if ($method->replacesStaffSession()) {
+            AuthenticationManager::endStaffSession();
+        }
         if ($method->regeneratesSessionId()) {
             PortalSessionStore::regenerateId();
         }

@@ -25,7 +25,7 @@ final class PortalSignInPages
 
     public static function staffSignInUrl(): string
     {
-        return AuthenticationManager::getSessionBeginURL();
+        return AuthenticationManager::getStaffSignInURL();
     }
 
     public static function loginUrl(string $path = ''): string

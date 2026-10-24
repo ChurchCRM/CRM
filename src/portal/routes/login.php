@@ -39,7 +39,8 @@ $finishSignIn = static function (Request $request, Response $response, EmailSign
 
 // A remembered device goes on to the portal, which signs it in or sends it back here without its cookie.
 $loginForm = static function (Request $request, Response $response) use ($renderLoginPage, $redirect): Response {
-    if (PortalSessionStore::has() || RememberedDeviceCookie::isPresent($request)) {
+    // A browser holding a staff session sees the form: signing in here replaces it (design §6.4).
+    if (PortalSessionStore::load()?->method->replacesStaffSession() || RememberedDeviceCookie::isPresent($request)) {
         return $redirect(PortalSignInPages::landingUrl());
     }
 

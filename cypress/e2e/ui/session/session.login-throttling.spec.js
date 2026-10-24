@@ -49,7 +49,7 @@ describe("Sign-in page throttling (#10197)", () => {
     it("shows the same message for an unknown user, a wrong password and a locked account", () => {
         ["no_such_user_10197", LOCKOUT_USER, "locked.user"].forEach((userName) => {
             login(userName, userName === "locked.user" ? PASSWORD : "wrong_password");
-            cy.url().should("include", "/session/begin");
+            cy.location("pathname").should("eq", "/admin/");
             cy.get(".alert-danger").invoke("text").invoke("trim").should("eq", GENERIC_MESSAGE);
         });
     });
@@ -58,12 +58,12 @@ describe("Sign-in page throttling (#10197)", () => {
         Cypress._.times(maxFailedLogins, () => postLogin(LOCKOUT_USER, "wrong_password"));
 
         login(LOCKOUT_USER, PASSWORD);
-        cy.url().should("include", "/session/begin");
+        cy.location("pathname").should("eq", "/admin/");
         cy.contains(".alert-danger", GENERIC_MESSAGE);
 
         cy.expireSignInThrottle("signin.lockout", LOCKOUT_USER_ID);
         login(LOCKOUT_USER, PASSWORD);
-        cy.url({ timeout: 10000 }).should("not.include", "/session/begin");
+        cy.location("pathname", { timeout: 10000 }).should("not.eq", "/admin/");
     });
 
     it("wrong 2FA codes lock the account", () => {
@@ -73,10 +73,10 @@ describe("Sign-in page throttling (#10197)", () => {
         Cypress._.times(maxFailedLogins, (n) => {
             cy.get("#TwoFACode").type(`${String(n).padStart(6, "0")}{enter}`);
         });
-        cy.url().should("include", "/session/begin");
+        cy.location("pathname").should("eq", "/admin/");
 
         login(TWOFA_USER, PASSWORD);
-        cy.url().should("include", "/session/begin");
+        cy.location("pathname").should("eq", "/admin/");
         cy.contains(".alert-danger", GENERIC_MESSAGE);
 
         cy.expireSignInThrottle("signin.lockout", TWOFA_USER_ID);

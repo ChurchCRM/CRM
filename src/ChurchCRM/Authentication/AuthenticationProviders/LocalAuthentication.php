@@ -207,7 +207,7 @@ class LocalAuthentication implements IAuthenticationProvider
                 $this->tPendingTwoFactorStarted = null;
                 $this->setCurrentUser(null);
                 $authenticationResult->isAuthenticated = false;
-                $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/begin';
+                $authenticationResult->nextStepURL = AuthenticationManager::getStaffSignInURL();
                 return $authenticationResult;
             }
             // Guard: if the account is already locked (e.g. from a prior OTP failure in
@@ -221,7 +221,7 @@ class LocalAuthentication implements IAuthenticationProvider
                 $this->bPendingTwoFactorAuth = false;
                 $this->setCurrentUser(null);
                 $authenticationResult->isAuthenticated = false;
-                $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/begin';
+                $authenticationResult->nextStepURL = AuthenticationManager::getStaffSignInURL();
                 return $authenticationResult;
             }
             if (($blockedReason = $this->currentUser->getSignInBlockedReason()) !== null) {
@@ -230,7 +230,7 @@ class LocalAuthentication implements IAuthenticationProvider
                 $this->currentUser = null;
                 $authenticationResult->isAuthenticated = false;
                 $authenticationResult->message = gettext('Invalid login or password');
-                $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/begin';
+                $authenticationResult->nextStepURL = AuthenticationManager::getStaffSignInURL();
                 return $authenticationResult;
             }
             if ($this->currentUser->isTwoFACodeValid($AuthenticationRequest->TwoFACode)) {
@@ -256,7 +256,7 @@ class LocalAuthentication implements IAuthenticationProvider
                     // then redirect back to login.
                     $this->bPendingTwoFactorAuth = false;
                     $this->setCurrentUser(null);
-                    $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/begin';
+                    $authenticationResult->nextStepURL = AuthenticationManager::getStaffSignInURL();
                 } else {
                     $recoveryParam = $AuthenticationRequest->isRecoveryMode ? '&recovery' : '';
                     $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/two-factor?invalid=1' . $recoveryParam;
