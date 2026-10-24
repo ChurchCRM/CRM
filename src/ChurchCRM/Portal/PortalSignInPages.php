@@ -23,11 +23,6 @@ final class PortalSignInPages
 {
     public const BROWSER_COOKIE = 'CRM-portal-signin';
 
-    public static function staffSignInUrl(): string
-    {
-        return AuthenticationManager::getStaffSignInURL();
-    }
-
     public static function loginUrl(string $path = ''): string
     {
         return AuthenticationManager::getPortalLoginURL() . $path;

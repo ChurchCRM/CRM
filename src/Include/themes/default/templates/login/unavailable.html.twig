@@ -3,7 +3,7 @@
 {#
   Every /portal/login page while member sign-in is off (member sign-in design §7).
 
-  Variables: `pageTitle`, `staffSignInUrl`.
+  Variables: `pageTitle`.
 #}
 
 {% block nav %}{% endblock %}
@@ -14,7 +14,5 @@
         <h1 class="portal-page-title">{{ gettext('Sign in to the Member Portal') }}</h1>
         <p class="portal-card-text">{{ gettext("Member sign-in isn't available yet. Please contact the church office.") }}</p>
     </section>
-
-    {% include 'login/staff-link.html.twig' %}
 </div>
 {% endblock %}

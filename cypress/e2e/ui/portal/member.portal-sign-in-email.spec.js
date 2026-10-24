@@ -170,6 +170,7 @@ describe("Member Portal sign-in by email", () => {
         lastAuditId().then((startId) => {
             askInBrowser();
             cy.get("#portalRememberDevice").should("not.be.checked");
+            cy.get("#portalStaffSignIn").should("not.exist");
             signInEmail(member.email).then(({ code }) => {
                 cy.getCookies().then((askingBrowser) => {
                     cy.clearCookies();
@@ -298,7 +299,7 @@ describe("Member Portal sign-in by email", () => {
         });
     });
 
-    it("says member sign-in isn't available while it is off, with the staff link", () => {
+    it("says member sign-in isn't available while it is off, with no staff sign-in link", () => {
         setConfig("bMemberSignIn", "0");
         cy.visit("/portal/login");
         cy.get("#portalSignInUnavailable").should(
@@ -306,15 +307,15 @@ describe("Member Portal sign-in by email", () => {
             "Member sign-in isn't available yet. Please contact the church office.",
         );
         cy.get("#portalSignInEmail").should("not.exist");
-        cy.get("#portalStaffSignIn").should("have.attr", "href").and("match", /\/admin\/$/);
+        cy.get("#portalStaffSignIn").should("not.exist");
         cy.get("#portal-account-toggle").should("not.exist");
         setConfig("bMemberSignIn", "1");
     });
 
-    it("shows the email form with a Staff sign-in link and no portal menu", () => {
+    it("shows the email form with no staff sign-in link and no portal menu", () => {
         cy.visit("/portal/login");
         cy.get("#portalSignInEmail").should("be.visible");
-        cy.get("#portalStaffSignIn").should("have.attr", "href").and("match", /\/admin\/$/);
+        cy.get("#portalStaffSignIn").should("not.exist");
         cy.get("#portal-account-toggle").should("not.exist");
         cy.get("#portal-nav").should("not.exist");
 

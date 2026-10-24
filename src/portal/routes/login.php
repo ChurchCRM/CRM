@@ -19,7 +19,6 @@ $renderLoginPage = static function (Response $response, string $template, array 
     return PortalTwig::render($response, $template, $model + [
         'pageTitle' => gettext('Sign in'),
         'loginUrl' => PortalSignInPages::loginUrl(),
-        'staffSignInUrl' => PortalSignInPages::staffSignInUrl(),
         'offerRememberDevice' => PortalSignInPages::offersRememberDevice(),
     ]);
 };

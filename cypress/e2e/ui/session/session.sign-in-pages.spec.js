@@ -61,11 +61,12 @@ describe("Sign-in pages", () => {
     const admin = () => ({ username: Cypress.testEnv("admin.username"), password: Cypress.testEnv("admin.password") });
 
     describe("signed out", () => {
-        it("sends the web root to /portal/login while member sign-in is on, whose Staff sign-in link opens the staff sign-in at /admin", () => {
+        it("sends the web root to /portal/login while member sign-in is on, with no staff sign-in link, and staff sign in at /admin", () => {
             cy.visit("/");
             cy.location("pathname").should("eq", "/portal/login");
             cy.get("#portalSignInEmail").should("be.visible");
-            cy.get("#portalStaffSignIn").should("have.attr", "href", "/admin/").click();
+            cy.get("#portalStaffSignIn").should("not.exist");
+            cy.visit("/admin/");
             cy.location("pathname").should("eq", "/admin/");
             cy.get("#UserBox").should("be.visible");
             cy.get("#PasswordBox").should("be.visible");
@@ -79,7 +80,7 @@ describe("Sign-in pages", () => {
             cy.get("#PasswordBox").should("be.visible");
             cy.visit("/portal/login");
             cy.contains("Member sign-in isn't available yet");
-            cy.get("#portalStaffSignIn").should("have.attr", "href", "/admin/");
+            cy.get("#portalStaffSignIn").should("not.exist");
         });
 
         it("redirects /session/begin to /admin, keeping the query, and re-posts an old form there", () => {

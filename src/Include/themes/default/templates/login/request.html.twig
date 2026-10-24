@@ -5,7 +5,7 @@
   §6.1, §7). It posts to `loginUrl`; the answer is the code page, whatever the
   address.
 
-  Variables: `pageTitle`, `email`, `emailError`, `loginUrl`, `staffSignInUrl`.
+  Variables: `pageTitle`, `email`, `emailError`, `loginUrl`.
 #}
 
 {% block nav %}{% endblock %}
@@ -29,7 +29,5 @@
             <button class="portal-button" type="submit" id="portalSignInSubmit">{{ gettext('Email me a code') }}</button>
         </div>
     </form>
-
-    {% include 'login/staff-link.html.twig' %}
 </div>
 {% endblock %}

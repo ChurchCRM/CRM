@@ -30,10 +30,7 @@ class PortalSignInPageMiddleware implements MiddlewareInterface
         PortalTwig::preparePage();
 
         if (!EmailSignInService::isEnabled()) {
-            return PortalTwig::render(new Response(), 'login/unavailable.html.twig', [
-                'pageTitle' => gettext('Sign in'),
-                'staffSignInUrl' => PortalSignInPages::staffSignInUrl(),
-            ]);
+            return PortalTwig::render(new Response(), 'login/unavailable.html.twig', ['pageTitle' => gettext('Sign in')]);
         }
 
         try {
