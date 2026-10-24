@@ -71,7 +71,6 @@ class EmailComposerService
                     $skipped[] = self::skip($personId, null, $name, self::SKIP_DO_NOT_EMAIL);
                     continue;
                 }
-                // Person::getEmail() falls back to the family address when the person has none.
                 $email = trim((string) $person->getEmail());
                 if ($email === '') {
                     $skipped[] = self::skip($personId, null, $name, self::SKIP_NO_EMAIL);

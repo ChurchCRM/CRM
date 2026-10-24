@@ -994,28 +994,6 @@ class Person extends BasePerson implements PhotoInterface
     }
 
     /**
-     * The person's own per_Email, with no family fallback. Account mail (reset, locked, new
-     * account) and the portal profile use this so a family email never receives or stands in
-     * for a person's credentials.
-     */
-    public function getOwnEmail(): ?string
-    {
-        return parent::getEmail();
-    }
-
-    public function getEmail(): ?string
-    {
-        if (parent::getEmail() === null) {
-            $family = $this->getFamily();
-            if ($family !== null) {
-                return $family->getEmail();
-            }
-        }
-
-        return parent::getEmail();
-    }
-
-    /**
      * Returns a string of a person's full name initial, formatted as specified by $Style
      * $Style = 0  :  "One character from FirstName and one character from LastName"
      * $Style = 1  :  "Two characters from FirstName"
