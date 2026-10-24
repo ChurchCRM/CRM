@@ -212,10 +212,11 @@ describe("7.9.0 upgrade: family email moves to people", () => {
         moveOf("InactiveHead").its("0.needsConfirm").should("eq", 0);
     });
 
-    it("clears every family email and no longer returns one from the family API", () => {
+    it("clears every family email, and the family API's deprecated Email is the head's moved address", () => {
         cy.dbQuery(`SELECT COUNT(*) AS n FROM family_fam WHERE fam_Email IS NOT NULL`).its("rows.0.n").should("eq", 0);
         cy.makePrivateAdminAPICall("GET", `/api/family/${fam.Head}`).then((resp) => {
-            expect(resp.body).to.not.have.property("Email");
+            expect(resp.body.Email).to.eq(addr("head"));
+            expect(resp.headers).to.have.property("deprecation");
             expect(resp.body.Name).to.eq(`Head ${tag}`);
         });
     });
