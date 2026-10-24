@@ -4,6 +4,7 @@ namespace ChurchCRM\Plugin;
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Portal\Permissions\PortalPluginRoutes;
 use ChurchCRM\Utils\LoggerUtils;
 use Slim\Routing\RouteCollectorProxy;
 
@@ -1017,8 +1018,9 @@ class PluginManager
     /**
      * Mount the `portalRoutesFile` of every active plugin under
      * `{group}/plugins/{id}` (member sign-in design §8.5). The file is included
-     * with `$group` (that sub-group), `$portalArea` (PORTAL_PAGES or PORTAL_API)
-     * and `$plugin`, once for the portal pages and once for its API.
+     * with `$routes` (a `PortalPluginRoutes` for that sub-group, so every route
+     * names its capability), `$portalArea` (PORTAL_PAGES or PORTAL_API) and
+     * `$plugin`, once for the portal pages and once for its API.
      */
     public static function registerPortalRoutes(RouteCollectorProxy $group, string $portalArea): void
     {
@@ -1038,12 +1040,18 @@ class PluginManager
 
             try {
                 $group->group('/plugins/' . $pluginId, function (RouteCollectorProxy $group) use ($routesPath, $portalArea, $plugin): void {
-                    require $routesPath;
+                    self::includePortalRoutes($routesPath, new PortalPluginRoutes($group), $portalArea, $plugin);
                 });
             } catch (\Throwable $e) {
                 LoggerUtils::getAppLogger()->error("Error loading plugin portal routes: $pluginId", ['error' => $e->getMessage()]);
             }
         }
+    }
+
+    /** The routes file sees only these three variables, never the raw route group. */
+    private static function includePortalRoutes(string $routesPath, PortalPluginRoutes $routes, string $portalArea, PluginInterface $plugin): void
+    {
+        require $routesPath;
     }
 
     /**
