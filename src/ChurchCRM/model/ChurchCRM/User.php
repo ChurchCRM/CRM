@@ -603,15 +603,17 @@ class User extends BaseUser
     {
         // An account may already hold a hash of a blank password, saved before
         // updatePassword() refused blanks. It must not sign in with nothing.
-        if (mb_trim($password) === '') {
-            return false;
-        }
-
+        $isBlank = mb_trim($password) === '';
         $storedHash = $this->getPassword();
 
-        // Check if this is a bcrypt hash (starts with $2y$)
+        // Every answer spends one bcrypt check, so its timing cannot tell an existing,
+        // unlocked account from the refusals in SignInThrottle (#10197).
         if ($this->isBcryptHash($storedHash)) {
-            return password_verify($password, $storedHash);
+            return password_verify($password, $storedHash) && !$isBlank;
+        }
+        SignInThrottle::spendPasswordCheckTime($password);
+        if ($isBlank) {
+            return false;
         }
 
         // Legacy MD5 check — pre-6.x / ChurchInfo 1.x stored passwords as unsalted
