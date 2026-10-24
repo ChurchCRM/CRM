@@ -17,6 +17,29 @@
  * variables; DATABASE_PORT lets an isolated stack publish MySQL on another port.
  */
 export const dbTasks = {
+  async 'passwordReset:race'({ url, password }: { url: string; password: string }) {
+    const sessions = await Promise.all([0, 1].map(async () => {
+      const response = await fetch(url);
+      const html = await response.text();
+      const csrf = html.match(/name="csrf_token" value="([^"]+)"/);
+      const cookie = response.headers.getSetCookie().map((value) => value.split(';')[0]).join('; ');
+      if (!csrf || !cookie) {
+        throw new Error('Password reset confirmation did not establish a CSRF session');
+      }
+      return { cookie, csrf: csrf[1] };
+    }));
+    return Promise.all(sessions.map(async ({ cookie, csrf }) => {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: { Cookie: cookie, 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({ csrf_token: csrf, password, passwordConfirmation: password }),
+      });
+      if (!response.ok) {
+        throw new Error(`Password reset POST returned HTTP ${response.status}`);
+      }
+      return response.text();
+    }));
+  },
   async 'db:query'({ sql, params }: { sql: string; params?: unknown[] }) {
     const mysql = require('mysql2/promise');
 
