@@ -23,7 +23,7 @@ The **Sign-in** tab owns the keys in `MemberSignInSettingsService::KEYS`. Each c
 
 ### Retiring a key
 
-Remove the `ConfigItem` and carry its meaning over in the release's upgrade SQL, which may still read the old `config_cfg` row and must delete it. `Bootstrapper` keeps rows no `ConfigItem` declares until the database is current (`SystemConfig::init($rows, $pruneUnknown)`), so the upgrade runs before `scrapeDBConfigs()` prunes them.
+Remove the `ConfigItem` and carry its meaning over in the release's upgrade SQL, which may still read the old `config_cfg` row and must delete it. Only `Bootstrapper` prunes rows no `ConfigItem` declares (`SystemConfig::init($rows, true)`), and only once the database is current, so the upgrade runs before they go. An upgrade script that calls `SystemConfig::init($rows)` itself keeps them.
 
 ## SystemConfig
 
