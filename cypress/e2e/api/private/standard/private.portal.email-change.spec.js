@@ -176,6 +176,7 @@ describe("A member changes their own email in the portal (§9)", () => {
             });
         };
         signInToPortal();
+        newestAuditId().as("startId");
         cy.getCookies().then((memberBrowser) => {
             cy.clearCookies();
             askForEmail(LENA.email);
@@ -190,9 +191,11 @@ describe("A member changes their own email in the portal (§9)", () => {
 
                     useCookies(otherBrowser);
                     postCode(code).its("body").should("include", "That code did not work");
-                    db("SELECT psa_Reason FROM portal_signin_audit_psa WHERE psa_per_ID = ? AND psa_Event = 'request_cancelled' ORDER BY psa_ID DESC LIMIT 1", [LENA.id])
-                        .its("0.psa_Reason")
-                        .should("eq", "email_changed");
+                    cy.get("@startId").then((startId) =>
+                        auditRowsSince(LENA.id, startId).then((rows) => {
+                            expect(rows.filter((row) => row.event === "request_cancelled").map((row) => row.reason)).to.deep.eq(["email_changed"]);
+                        }),
+                    );
                 });
             });
         });

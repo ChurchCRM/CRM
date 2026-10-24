@@ -1,5 +1,5 @@
 // Member sign-in states that no HTTP route writes (#10463, #10377). A passkey is
-// registered only by a WebAuthn ceremony in a browser, a remembered device takes
+// registered, and its signature counter moved, only by a WebAuthn ceremony in a browser, a remembered device takes
 // its label from the browser that chose to stay signed in, the family email
 // move rows come only from the 7.9.0 upgrade, a person waits for review only
 // after a registration or a member's proposal, the give API refuses a grant an
@@ -26,6 +26,10 @@ export const addPasskey = (personId, { label = null } = {}) => {
         [personId, `cypress-${hash.slice(0, 16)}`, hash, label],
     ).its("insertId");
 };
+
+/** Sets the signature counter stored for the person's passkeys, as their last sign-in left it. */
+export const setPasskeySignCount = (personId, signCount) =>
+    db("UPDATE person_passkey_ppk SET ppk_SignCount = ? WHERE ppk_per_ID = ?", [signCount, personId]);
 
 /** Adds a remembered device for the person; yields its id. `signedOut` leaves it revoked, as Sign out does. */
 export const addRememberedDevice = (personId, { label = null, expiresInDays = 30, signedOut = false } = {}) =>

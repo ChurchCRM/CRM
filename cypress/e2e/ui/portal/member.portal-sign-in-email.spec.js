@@ -1,5 +1,6 @@
 /// <reference types="cypress" />
 
+import { inOwnCookieJar } from "../../../support/cookie-jar";
 import {
     ANSWER,
     askForEmail,
@@ -17,7 +18,8 @@ import {
     useMemberSignIn,
     waitForMail,
 } from "../../../support/member-sign-in";
-import { ageSignInRequests } from "../../../support/member-sign-in-fixtures";
+import { ageSignInRequests, resetSignIn } from "../../../support/member-sign-in-fixtures";
+import { markEmailUnconfirmed, setPersonEmails } from "../../../support/sign-in-email-fixtures";
 
 /**
  * Member sign-in row 5 (#10463): /portal/login, the emailed code and link
@@ -323,19 +325,11 @@ describe("Member Portal sign-in by email", () => {
     });
 
     describe("a code and link already emailed", () => {
-        const adminPost = (url, body = null) =>
-            cy.getCookies().then((cookies) => {
-                cy.makePrivateAdminAPICall("POST", url, body, 200);
-                cy.clearCookies();
-                cookies.forEach((cookie) => cy.setCookie(cookie.name, cookie.value, { path: cookie.path }));
-            });
+        const adminPost = (url, body = null) => inOwnCookieJar(() => cy.makePrivateAdminAPICall("POST", url, body, 200));
 
         afterEach(() => {
-            db("UPDATE person_per SET per_Email = ? WHERE per_ID = ?", [member.email, member.personId]);
-            db(
-                "UPDATE person_signin_psi SET psi_SignInDisabled = 0, psi_DisabledBy_usr_ID = NULL, psi_DisabledAt = NULL, psi_DisabledReason = NULL, psi_UnconfirmedEmail = NULL WHERE psi_per_ID = ?",
-                [member.personId],
-            );
+            setPersonEmails({ [member.personId]: member.email });
+            resetSignIn([member.personId]);
         });
 
         [
@@ -379,16 +373,12 @@ describe("Member Portal sign-in by email", () => {
             {
                 change: "is no longer the person's email",
                 reason: "request_address_changed",
-                apply: () => db("UPDATE person_per SET per_Email = ? WHERE per_ID = ?", ["constance.moved@example.com", member.personId]),
+                apply: () => setPersonEmails({ [member.personId]: "constance.moved@example.com" }),
             },
             {
                 change: "is waiting to be confirmed",
                 reason: "email_unconfirmed",
-                apply: () =>
-                    db(
-                        "INSERT INTO person_signin_psi (psi_per_ID, psi_UnconfirmedEmail) VALUES (?, ?) ON DUPLICATE KEY UPDATE psi_UnconfirmedEmail = VALUES(psi_UnconfirmedEmail)",
-                        [member.personId, member.email],
-                    ),
+                apply: () => markEmailUnconfirmed(member.personId, "staff"),
             },
         ].forEach(({ change, reason, apply }) => {
             it(`sign nobody in when the address they went to ${change}`, () => {

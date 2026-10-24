@@ -217,17 +217,17 @@ describe("Sign-in email changes by staff, imports and registration (§9)", () =>
         const newEmail = `mathew.moved.${Date.now()}@example.com`;
         cy.clearCookies();
         resetEmailSignIn([MATHEW.id]);
-        lastAuditId().then((startId) => {
+        newestAuditId().then((startId) => {
             askForEmail(MATHEW.email);
             signInEmail(MATHEW.email).then(({ code }) => {
                 keepingSession(() => saveEmailInPersonEditor(MATHEW.id, newEmail).its("status").should("eq", 302));
                 postCode(code).its("body").should("include", "That code did not work");
                 cy.request({ url: "/api/portal/me", failOnStatusCode: false }).its("status").should("eq", 401);
-                auditSince(MATHEW.id, startId).then((rows) => {
-                    const cancelled = rows.filter((row) => row.psa_Event === "request_cancelled");
+                auditRowsSince(MATHEW.id, startId).then((rows) => {
+                    const cancelled = rows.filter((row) => row.event === "request_cancelled");
                     expect(cancelled).to.have.length(1);
-                    expect(cancelled[0].psa_Reason).to.eq("email_changed");
-                    expect(cancelled[0].psa_Actor_usr_ID).to.eq(JUDITH.id);
+                    expect(cancelled[0].reason).to.eq("email_changed");
+                    expect(cancelled[0].actorId).to.eq(JUDITH.id);
                 });
             });
         });
