@@ -9,6 +9,7 @@ namespace ChurchCRM\Portal\Auth;
 enum SignInAuditEvent: string
 {
     case EMAIL_REQUESTED = 'email_requested';
+    case REQUEST_CANCELLED = 'request_cancelled';
     case SIGNED_IN = 'signed_in';
     case REFUSED = 'refused';
     case THROTTLED = 'throttled';
