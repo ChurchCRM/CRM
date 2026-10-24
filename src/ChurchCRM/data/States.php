@@ -37,4 +37,30 @@ class States
     {
         return $this->states;
     }
+
+    /**
+     * The code for a state code or state name of this country; any other value unchanged.
+     */
+    public function toCode(?string $value): string
+    {
+        if ($value === null || $value === '' || isset($this->states[$value])) {
+            return (string) $value;
+        }
+        $code = array_search($value, $this->states, true);
+
+        return $code === false ? $value : (string) $code;
+    }
+
+    /**
+     * The value to save when a form submits $submitted for a record that holds $stored.
+     * The state select posts codes while many records hold names, so $stored is kept
+     * when both are the same state of $country; otherwise an unchanged save would
+     * rewrite the record and count as an address change.
+     */
+    public static function keepStoredIfSame(?string $country, ?string $stored, ?string $submitted): ?string
+    {
+        $states = new self(Countries::toISO($country));
+
+        return $states->toCode($stored) === $states->toCode($submitted) ? $stored : $submitted;
+    }
 }

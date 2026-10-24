@@ -8,6 +8,7 @@ use ChurchCRM\model\ChurchCRM\EventCountsQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\Service\EventAttendanceRosterService;
 use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerOccurrenceQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerScheduleQuery;
@@ -31,40 +32,9 @@ $app->get('/view/{id}', function (Request $request, Response $response, array $a
     }
 
     // Build attendance roster
-    $attendees = [];
-    $eventAttendees = EventAttendQuery::create()
-        ->filterByEventId($eventId)
-        ->find();
-
-    foreach ($eventAttendees as $att) {
-        $person = PersonQuery::create()->findOneById($att->getPersonId());
-        if ($person === null) {
-            continue;
-        }
-
-        $checkinByName = '';
-        if ($att->getCheckinId()) {
-            $checkinBy = PersonQuery::create()->findOneById($att->getCheckinId());
-            $checkinByName = $checkinBy ? $checkinBy->getFullName() : '';
-        }
-
-        $checkoutByName = '';
-        if ($att->getCheckoutId()) {
-            $checkoutBy = PersonQuery::create()->findOneById($att->getCheckoutId());
-            $checkoutByName = $checkoutBy ? $checkoutBy->getFullName() : '';
-        }
-
-        $attendees[] = [
-            'personId'     => $att->getPersonId(),
-            'fullName'     => $person->getFullName(),
-            'familyId'     => $person->getFamId(),
-            'checkinDate'  => $att->getCheckinDate() ? date_format($att->getCheckinDate(), SystemConfig::getValue('sDateTimeFormat')) : null,
-            'checkinBy'    => $checkinByName,
-            'checkoutDate' => $att->getCheckoutDate() ? date_format($att->getCheckoutDate(), SystemConfig::getValue('sDateTimeFormat')) : null,
-            'checkoutBy'   => $checkoutByName,
-            'isCheckedOut' => $att->getCheckoutDate() !== null,
-        ];
-    }
+    $attendees = EventAttendanceRosterService::build(
+        EventAttendQuery::create()->filterByEventId($eventId)->find()
+    );
 
     // Attendance counts
     $eventCounts = EventCountsQuery::create()

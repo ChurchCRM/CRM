@@ -38,7 +38,7 @@ if ($isForced) {
                     <label for="OldPassword"><?= gettext('Current Password') ?>:</label>
                     <input type="password" name="OldPassword" id="OldPassword" class="form-control" placeholder="<?= gettext('Enter your current password') ?>" autofocus>
                     <?php if (!empty($sOldPasswordError ?? '')): ?>
-                        <span class="form-field-error"><?= $sOldPasswordError ?></span>
+                        <span class="text-danger"><?= $sOldPasswordError ?></span>
                     <?php endif; ?>
                 </div>
 
@@ -50,7 +50,7 @@ if ($isForced) {
                 <div class="mb-3">
                     <label for="NewPassword2"><?= gettext('Confirm New Password') ?>:</label>
                     <input type="password" name="NewPassword2" id="NewPassword2" class="form-control" placeholder="<?= gettext('Confirm your new password') ?>">
-                    <span id="NewPasswordError" class="form-field-error"><?= $sNewPasswordError ?? '' ?></span>
+                    <span id="NewPasswordError" class="text-danger"><?= $sNewPasswordError ?? '' ?></span>
                 </div>
 
                 <p class="text-body-secondary small mb-3">
@@ -77,7 +77,7 @@ if ($isForced) {
                 <div class="card-body">
                     <div class="mb-3">
                         <label for="OldPassword"><?= gettext('Old Password') ?>:</label>
-                        <input type="password" name="OldPassword" id="OldPassword" class="form-control" autofocus><span id="oldPasswordError" class="form-field-error"><?= $sOldPasswordError ?? '' ?></span>
+                        <input type="password" name="OldPassword" id="OldPassword" class="form-control" autofocus><span id="oldPasswordError" class="text-danger"><?= $sOldPasswordError ?? '' ?></span>
                     </div>
                     <div class="mb-3">
                             <label for="NewPassword1"><?= gettext('New Password') ?>:</label>
@@ -85,7 +85,7 @@ if ($isForced) {
                     </div>
                     <div class="mb-3">
                         <label for="NewPassword2"><?= gettext('Confirm New Password') ?>:</label>
-                        <input type="password" name="NewPassword2" id="NewPassword2"  class="form-control"><span id="NewPasswordError" class="form-field-error"><?= $sNewPasswordError ?? '' ?></span>
+                        <input type="password" name="NewPassword2" id="NewPassword2"  class="form-control"><span id="NewPasswordError" class="text-danger"><?= $sNewPasswordError ?? '' ?></span>
                     </div>
                 </div>
 

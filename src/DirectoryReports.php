@@ -7,6 +7,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\ClassificationService;
+use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
 
 $sPageTitle = gettext('Directory reports');
@@ -156,7 +157,6 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
               'bDirFamilyPhone'    => ['label' => gettext('Family Home Phone'), 'checked' => true],
               'bDirFamilyWork'     => ['label' => gettext('Family Work Phone'), 'checked' => true],
               'bDirFamilyCell'     => ['label' => gettext('Family Cell Phone'), 'checked' => true],
-              'bDirFamilyEmail'    => ['label' => gettext('Family Email'), 'checked' => true],
               'bDirPersonalPhone'  => ['label' => gettext('Personal Home Phone'), 'checked' => true],
               'bDirPersonalWork'   => ['label' => gettext('Personal Work Phone'), 'checked' => true],
               'bDirPersonalCell'   => ['label' => gettext('Personal Cell Phone'), 'checked' => true],
@@ -277,7 +277,7 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
 
       <div class="d-flex gap-2 mt-3">
         <input type="submit" class="btn btn-primary" name="Submit" value="<?= gettext('Create Directory') ?>">
-        <input type="button" class="btn btn-secondary" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location='v2/dashboard';">
+        <a class="btn btn-secondary" href="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath() . '/v2/dashboard') ?>"><?= gettext('Cancel') ?></a>
       </div>
     </form>
   </div>

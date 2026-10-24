@@ -241,7 +241,6 @@ class ConfirmReportService
             if ($family->getWeddingdate()) {
                 $col2Y = $addField(gettext('Anniversary Date'), $family->getWeddingdate(SystemConfig::getValue('sDateFormatLong')), $col2X, $col2Y) + 1;
             }
-            $col2Y = $addField(gettext('Family Email'), $family->getEmail(), $col2X, $col2Y) + 1;
 
             $curY = max($col1Y, $col2Y) + 1;
 
@@ -516,11 +515,6 @@ class ConfirmReportService
             $pdf->writeAtCell($dataCol, $curY, $dataWid, DateTimeUtils::formatDate($family->getWeddingDate()));
             $curY += SystemConfig::getValue('incrementY');
 
-            $pdf->SetFont('Times', 'B', 10);
-            $pdf->writeAtCell(SystemConfig::getValue('leftX'), $curY, $dataCol - SystemConfig::getValue('leftX'), gettext('Family Email'));
-            $pdf->SetFont('Times', '', 10);
-            $pdf->writeAtCell($dataCol, $curY, $dataWid, (string)$family->getEmail());
-            $curY += SystemConfig::getValue('incrementY');
             $curY += SystemConfig::getValue('incrementY');
 
             // --- Member table header ---
@@ -749,7 +743,6 @@ class ConfirmReportService
         $recipientFamilies = $recipientQuery->distinct()->find();
 
         // Build recipients list; track IDs for the set-difference below.
-        // Use the family-level email for display (avoids N+1 from getEmails()/getPeopleSorted()).
         $recipientIds = [];
         $recipients   = [];
         foreach ($recipientFamilies as $fam) {
@@ -757,15 +750,13 @@ class ConfirmReportService
             $recipients[] = [
                 'id'    => $fam->getId(),
                 'name'  => $fam->getName(),
-                // Family-level email for display; actual sends also use member-level emails
-                'email' => (string) ($fam->getEmail() ?? ''),
+                // The send goes to every member's email (Family::getEmails()); this is the head-then-spouse one.
+                'email' => (string) ($fam->getEmailRecipient()?->getEmail() ?? ''),
             ];
         }
 
         // Families WITHOUT any email = all families not in the recipient set.
-        // Computed as a set-difference to avoid a second round of N+1 queries and
-        // correctly captures families that have a fam_Email but no per_Email
-        // (those are excluded from the recipient query and belong in this list).
+        // Computed as a set-difference to avoid a second round of N+1 queries.
         $allFamilyQuery = FamilyQuery::create()->orderByName();
         if ($familyId !== null) {
             $allFamilyQuery->filterById($familyId);

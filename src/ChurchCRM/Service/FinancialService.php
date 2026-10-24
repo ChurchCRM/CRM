@@ -271,7 +271,7 @@ class FinancialService
 
     public function getViewURI(string $Id): string
     {
-        return SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=' . $Id;
+        return SystemURLs::getRootPath() . '/finance/deposit/' . $Id;
     }
 
     private function validateDate(object $payment): void
@@ -394,17 +394,17 @@ class FinancialService
             if ($Fund->Amount > 0) {  // Only insert a row if this fund has a non-zero amount.
                 if ($sGroupKey === null) {  // GroupKey is shared across all fund rows for one payment.
                     $iAutID = $payment->iAutID ?? null;
-                    // Normalize to string: null/absent FamilyID becomes '' so genGroupKey
+                    // Normalize to string: null/absent FamilyID becomes '' so generateGroupKey
                     // (typed string) doesn't receive null and trigger a PHP 8 deprecation.
                     $famIdStr = (string) ($payment->FamilyID ?? '');
                     if ($payment->iMethod === 'CHECK') {
-                        $sGroupKey = FunctionsUtils::genGroupKey($payment->iCheckNo ?? 'check', $famIdStr, $Fund->FundID, $payment->Date);
+                        $sGroupKey = $this->generateGroupKey($payment->iCheckNo ?? 'check', $famIdStr, $Fund->FundID, $payment->Date);
                     } elseif ($payment->iMethod === 'BANKDRAFT') {
-                        $sGroupKey = FunctionsUtils::genGroupKey($iAutID ?? 'draft', $famIdStr, $Fund->FundID, $payment->Date);
+                        $sGroupKey = $this->generateGroupKey($iAutID ?? 'draft', $famIdStr, $Fund->FundID, $payment->Date);
                     } elseif ($payment->iMethod === 'CREDITCARD') {
-                        $sGroupKey = FunctionsUtils::genGroupKey($iAutID ?? 'credit', $famIdStr, $Fund->FundID, $payment->Date);
+                        $sGroupKey = $this->generateGroupKey($iAutID ?? 'credit', $famIdStr, $Fund->FundID, $payment->Date);
                     } else {
-                        $sGroupKey = FunctionsUtils::genGroupKey('cash', $famIdStr, $Fund->FundID, $payment->Date);
+                        $sGroupKey = $this->generateGroupKey('cash', $famIdStr, $Fund->FundID, $payment->Date);
                     }
                 }
 
@@ -445,6 +445,20 @@ class FinancialService
         }
 
         return $sGroupKey;
+    }
+
+    /**
+     * Returns method|n|family|fund|date with the lowest n that no pledge_plg row uses,
+     * pledge or payment: delete and edit act on every row with the key.
+     */
+    private function generateGroupKey(string $methodSpecificId, string $famId, string $fundId, string $date): string
+    {
+        $uniqueNum = 0;
+        do {
+            $groupKey = implode('|', [$methodSpecificId, $uniqueNum++, $famId, $fundId, $date]);
+        } while (PledgeQuery::create()->filterByGroupKey($groupKey)->exists());
+
+        return $groupKey;
     }
 
     /**
@@ -518,15 +532,17 @@ class FinancialService
                 // causing a second rollBack() on an inactive transaction (PDOException).
                 throw new \InvalidArgumentException('Pledge group not found');
             }
-            // Guard: refuse edits when the associated deposit is already closed.
+            // Guard: refuse edits when any row of the group is in a closed deposit.
             // This check runs inside the transaction so it is safe against concurrent
             // deposit-close operations (no TOCTOU gap).
-            $onePledge = PledgeQuery::create()->filterByGroupKey($groupKey)->findOne($con);
-            if ($onePledge !== null && $onePledge->getDepId()) {
-                $deposit = DepositQuery::create()->findOneById($onePledge->getDepId(), $con);
-                if ($deposit !== null && $deposit->getClosed()) {
-                    throw new \DomainException(gettext('Cannot edit a payment in a closed deposit'));
-                }
+            $inClosedDeposit = PledgeQuery::create()
+                ->filterByGroupKey($groupKey)
+                ->useDepositQuery()
+                    ->filterByClosed(true)
+                ->endUse()
+                ->exists($con);
+            if ($inClosedDeposit) {
+                throw new \DomainException(gettext('Cannot edit a payment in a closed deposit'));
             }
             // Remove orphaned denomination rows. pledge_denominations_pdem has no FK
             // constraint and no Propel model, so we use a parameterized statement on

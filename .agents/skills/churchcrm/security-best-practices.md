@@ -13,15 +13,15 @@ Incoming vuln report: `security-report-triage.md`.
 
 - Escape on output: `InputUtils::escapeHTML()` / `escapeAttribute()`
 - Sanitize on input: `sanitizeText()` (no HTML) or `sanitizeHTML()` (Quill / rich text)
-- JSON in `<script>`: `InputUtils::jsonEncodeForScript()` — not raw `json_encode()`
-- DB: ORM + bound values. No new `RunQuery()` or string-built SQL
+- JSON in `<script>`: `InputUtils::jsonEncodeForScript()`
+- DB: ORM with bound values
 - IDs: `(int)` or `InputUtils::filterInt()`
-- Redirects: `RedirectUtils::*` — not raw `header('Location')`
+- Redirects: `RedirectUtils::*`
 - TLS verify on outbound HTTPS
 - `target="_blank"` → `rel="noopener noreferrer"`
-- State-changing routes: CSRF. Prefer one `CSRFMiddleware` on a Slim **group** (after body parsing). App-level CSRF runs too early and 403s every POST
-- Deletes: POST + confirm. Never delete on GET
-- Destructive IDs: `$_GET` on GET, `$_POST` on POST — not `$_REQUEST`
+- State-changing routes: CSRF. Prefer one `CSRFMiddleware` on a Slim **group** (after body parsing). App-level CSRF runs before body parsing and 403s every POST
+- Deletes: POST + confirm
+- Destructive IDs: `$_GET` on GET, `$_POST` on POST
 - Role checks on the same page as the write
 
 ## Review

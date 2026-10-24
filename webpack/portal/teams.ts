@@ -15,7 +15,7 @@
  *   teams.ts     teams() = the one team                    → no selects at all
  *
  * and everything else follows from that. The controls a team leader must not have
- * — Add Volunteer, Add from Cart, Remove Volunteer, team rename and delete, the
+ * — Add from Cart, Remove Volunteer, team rename and delete, the
  * Teams card, Ministry Coordinators, Help Wanted — are simply not in
  * `teams/team.html.twig`, and the components look their controls up by id, so the
  * wiring for them is inert. That is deliberate: hiding a control the API would
@@ -38,6 +38,7 @@
 
 import { ensureCrmHelpers } from "../common/crm-helpers";
 import {
+  addTeamPoolMember,
   createStaffedEvent,
   errorMessage,
   getTeam,
@@ -53,7 +54,7 @@ import {
   type QualificationMatrixHandle,
 } from "../ministries/components/qualification-matrix";
 import { createSchedulesTable, type SchedulesTableHandle } from "../ministries/components/schedules-table";
-import { byId, renderState, wireUnclippedRowMenus } from "../ministries/components/ui";
+import { byId, renderState } from "../ministries/components/ui";
 
 /** The page config `teams/team.html.twig` writes in its inline script. */
 interface PortalTeamConfig {
@@ -132,6 +133,9 @@ function buildComponents(): void {
     teams,
     ensureContext: ensureTeam,
     fetch: () => getTeamQualificationMatrix(teamId),
+    teamAdd: true,
+    addPoolMember: (personId, positionIds) => addTeamPoolMember(teamId, personId, positionIds),
+    ministryName: () => byId("portal-team")?.dataset.ministryName ?? "",
     // Never: "Remove Volunteer" ends someone's membership of the MINISTRY's pool,
     // which the API refuses a team leader (D5). The row menu is not offered, and
     // the template carries no `removeVolunteer` callback for it either.
@@ -189,9 +193,6 @@ function wire(): void {
   // wrapper's edge (review, 2026-09-18: the Positions menu was cut off). The
   // open menu is re-anchored with `position: fixed`, exactly as the volunteers
   // grid already does for itself; see table-action-menu.md.
-  wireUnclippedRowMenus("positions-table-wrapper");
-  wireUnclippedRowMenus("schedules-table-wrapper");
-  wireUnclippedRowMenus("occurrences-table-wrapper");
 
   for (const [navId, tab] of [
     ["nav-item-positions", "positions"],

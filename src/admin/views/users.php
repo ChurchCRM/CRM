@@ -29,7 +29,7 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
             <strong><?= gettext('Email is disabled') ?></strong>
             <div class="text-secondary"><?= gettext('Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically.') ?></div>
         </div>
-        <a href="<?= SystemURLs::getRootPath() ?>/v2/email/dashboard?settings=open" class="btn btn-warning ms-3">
+        <a href="<?= SystemURLs::getRootPath() ?>/admin/email" class="btn btn-warning ms-3">
             <i class="fa-solid fa-envelope me-1"></i><?= gettext('Set up Email') ?>
         </a>
     </div>
@@ -122,7 +122,7 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
         <span class="me-3"><i class="fa-solid fa-user-check text-warning me-1"></i><?= gettext('Self-service') ?></span>
         <span><i class="fa-solid fa-cog text-azure me-1"></i><?= gettext('Custom') ?></span>
     </div>
-    <div class="card-body" style="overflow: visible;">
+    <div class="card-body overflow-visible">
         <table class="table table-hover w-100" id="user-listing-table">
                 <thead>
                     <tr>

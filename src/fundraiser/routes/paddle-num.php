@@ -273,15 +273,9 @@ $app->post('/{fundraiserId}/paddle-numbers/editor[/{paddleId}]', function (Reque
 });
 
 // POST /fundraiser/{fundraiserId}/paddle-numbers/{paddleId}/delete — delete a paddle number
-// Module middleware covers ManageFundraisers; inline guard adds DeleteRecords.
+// The entire /fundraiser module requires ManageFundraisers (and CSRF for POST).
+// DeleteRecords applies to person/family deletion, not fundraiser paddles.
 $app->post('/{fundraiserId}/paddle-numbers/{paddleId}/delete', function (Request $request, Response $response, array $args): Response {
-    $currentUser = AuthenticationManager::getCurrentUser();
-    if (!$currentUser->isDeleteRecordsEnabled()) {
-        return $response
-            ->withHeader('Location', SystemURLs::getRootPath() . '/v2/access-denied?role=DeleteRecords')
-            ->withStatus(302);
-    }
-
     $fundraiserId = (int) $args['fundraiserId'];
     $paddleId     = (int) $args['paddleId'];
 
