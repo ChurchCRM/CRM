@@ -26,7 +26,8 @@ const db = (sql, params = []) =>
     });
 
 const grants = (personId) => `/admin/api/person/${personId}/sign-in/grants`;
-const give = (personId, body, status = 201) => cy.makePrivateAdminAPICall("POST", grants(personId), { reason: REASON, ...body }, status);
+const give = (personId, body, status = 201) =>
+    cy.makePrivateAdminAPICall("POST", grants(personId), { reason: REASON, endsOn: day(30), ...body }, status);
 const catalog = () =>
     cy.makePrivateAdminAPICall("GET", "/admin/api/member-portal/permissions", null, 200).then(({ body }) =>
         Object.fromEntries(body.capabilities.map((capability) => [capability.key, capability])),
@@ -218,6 +219,9 @@ describe("Admin → Member Portal permissions and given grants", () => {
         give(CHILD, { capability: "no.such.capability" }, 400);
         give(CHILD, { capability: "portal.family.edit" }, 400);
         give(CHILD, { capability: "portal.family.edit", scopeId: 987654 }, 400);
+        give(CHILD, { capability: "portal.calendar.view", endsOn: "" }, 400)
+            .its("body.message")
+            .should("eq", "Choose the last day of this permission.");
         give(CHILD, { capability: "portal.calendar.view", endsOn: day(-2) }, 400);
         give(CHILD, { capability: "portal.calendar.view", endsOn: "31/12/2026" }, 400);
         give(CHILD, { capability: "portal.calendar.view", reason: "  " }, 400);

@@ -33,19 +33,24 @@ final class PortalSignInRules
         $blocked = Person::signInBlockedReasonFor(
             $person->getDateDeceased(),
             $person->getDateDeactivated(),
-            $person->getFamily()?->getDateDeactivated(),
-            (bool) $person->getNeedsReview(),
             $state instanceof PersonSignin && $state->getSignInDisabled(),
         );
         if ($blocked !== null) {
             return SignInReason::from($blocked);
         }
 
-        if ($method->appliesMemberRule()) {
-            return ($memberRule ?? MemberSignInRule::fromSettings())->check($person);
+        if (!$method->appliesMemberRule()) {
+            return null;
+        }
+        // Member sign-in only, so no staff account is locked out by its family's status or a review flag.
+        if (!empty($person->getFamily()?->getDateDeactivated())) {
+            return SignInReason::FAMILY_INACTIVE;
+        }
+        if ((bool) $person->getNeedsReview()) {
+            return SignInReason::NEEDS_REVIEW;
         }
 
-        return null;
+        return ($memberRule ?? MemberSignInRule::fromSettings())->check($person);
     }
 
     /**
@@ -74,20 +79,28 @@ final class PortalSignInRules
 
     /**
      * Narrows an unaliased PersonQuery to the people none of the blocks for
-     * everyone apply to: living, active, in an active family or none, not
-     * awaiting review, and without Disable sign-in.
+     * everyone apply to: living, active, and without Disable sign-in.
      */
     public static function filterNotBlocked(PersonQuery $query): PersonQuery
     {
         return $query
             ->filterByDateDeceased(null, Criteria::ISNULL)
             ->filterByDateDeactivated(null, Criteria::ISNULL)
+            ->usePersonSigninNotExistsQuery()
+                ->filterBySignInDisabled(true)
+            ->endUse();
+    }
+
+    /**
+     * `filterNotBlocked()` plus the blocks for member sign-in: in an active
+     * family or none, and not awaiting review.
+     */
+    public static function filterMemberNotBlocked(PersonQuery $query): PersonQuery
+    {
+        return self::filterNotBlocked($query)
             ->filterByNeedsReview(false)
             ->useFamilyQuery(null, Criteria::LEFT_JOIN)
                 ->filterByDateDeactivated(null, Criteria::ISNULL)
-            ->endUse()
-            ->usePersonSigninNotExistsQuery()
-                ->filterBySignInDisabled(true)
             ->endUse();
     }
 }

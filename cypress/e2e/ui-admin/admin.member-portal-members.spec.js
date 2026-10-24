@@ -255,10 +255,13 @@ describe("Admin → Member Portal members, audit, permissions and the person car
         const lastDay = new Date(Date.now() + 60 * 86400000).toISOString().slice(0, 10);
         cy.get("#portal-grant-ends").should("have.class", "is-empty").type(lastDay);
         cy.get("#portal-grant-ends").should("not.have.class", "is-empty").clear();
-        cy.get("#portal-grant-ends").should("have.class", "is-empty").type(lastDay);
+        cy.get("#portal-grant-ends").should("have.class", "is-empty").and("have.attr", "required");
         cy.get("#portal-grant-save").click();
         cy.get("#portal-grant-error").should("contain.text", "say why");
         cy.get("#portal-grant-reason").type("Leads the greeters this autumn");
+        cy.get("#portal-grant-save").click();
+        cy.get("#portal-grant-error").should("contain.text", "its last day");
+        cy.get("#portal-grant-ends").should("have.class", "is-invalid").type(lastDay);
         cy.get("#portal-grant-save").click();
 
         cy.get('#portal-signin-permissions [data-source="given"]', { timeout: 20000 })
@@ -366,6 +369,7 @@ describe("Admin → Member Portal members, audit, permissions and the person car
         cy.makePrivateAdminAPICall("POST", `/admin/api/person/${PORTAL_PERSON}/sign-in/grants`, {
             capability: "portal.family.contacts.view",
             scopeId: 3,
+            endsOn: new Date(Date.now() + 30 * 86400000).toISOString().slice(0, 10),
             reason: "Hidden from Edit Records",
         }, 201);
         db(

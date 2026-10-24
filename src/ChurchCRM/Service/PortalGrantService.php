@@ -48,7 +48,7 @@ final class PortalGrantService
     ];
 
     /**
-     * @throws InvalidArgumentException 400: an unknown capability, a missing or unknown scope, a bad date or reason
+     * @throws InvalidArgumentException 400: an unknown capability, a missing or unknown scope, a missing or bad last day, a bad reason
      * @throws DomainException          409: the person already holds this capability on this scope, from any source
      */
     public function give(Person $person, User $actor, string $capability, ?int $scopeId, ?string $endsOn, string $reason): PortalGrant
@@ -370,14 +370,15 @@ final class PortalGrantService
 
     /**
      * The last day a grant counts, inclusive: it ends at that day's last second.
+     * Every given grant has one (design §8.6).
      *
-     * @throws InvalidArgumentException for a malformed date or one in the past
+     * @throws InvalidArgumentException for a missing or malformed date, or one in the past
      */
-    private static function endOfDay(?string $endsOn): ?DateTimeImmutable
+    private static function endOfDay(?string $endsOn): DateTimeImmutable
     {
         $endsOn = trim((string) $endsOn);
         if ($endsOn === '') {
-            return null;
+            throw new InvalidArgumentException(gettext('Choose the last day of this permission.'));
         }
         $timezone = DateTimeUtils::getConfiguredTimezone();
         $day = DateTimeImmutable::createFromFormat('!Y-m-d', $endsOn, $timezone);
