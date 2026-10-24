@@ -3,20 +3,21 @@
 
 // Custom gradient backgrounds for error pages
 .bg-gradient-primary-purple {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 .bg-gradient-danger {
-  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%) !important;
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
 }
 
 .bg-gradient-warning {
-  background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%) !important;
+  background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
 }
 
 // Error wrapper responsive sizing
 .error-wrapper {
   min-width: 300px;
+  max-width: 500px;
 }
 
 // Card styling for error pages
@@ -85,7 +86,7 @@ code {
 
 // Text utilities
 .text-muted {
-  color: #666 !important;
+  color: #666 !important; // beats Bootstrap's !important .text-muted
   line-height: 1.6;
 }
 

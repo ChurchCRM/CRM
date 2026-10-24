@@ -5,13 +5,22 @@ namespace ChurchCRM\Authentication;
 use ChurchCRM\Authentication\AuthenticationProviders\APITokenAuthentication;
 use ChurchCRM\Authentication\AuthenticationProviders\IAuthenticationProvider;
 use ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication;
+use ChurchCRM\Authentication\AuthenticationProviders\PortalMemberAuthentication;
 use ChurchCRM\Authentication\Requests\APITokenAuthenticationRequest;
 use ChurchCRM\Authentication\Requests\AuthenticationRequest;
 use ChurchCRM\Authentication\Requests\LocalTwoFactorTokenRequest;
 use ChurchCRM\Authentication\Requests\LocalUsernamePasswordRequest;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\Portal\Auth\LoginAsPerson;
+use ChurchCRM\Portal\Auth\PortalMemberUser;
+use ChurchCRM\Portal\Auth\PortalPrincipal;
+use ChurchCRM\Portal\Auth\PortalSessionStore;
+use ChurchCRM\Portal\Auth\SignInAudit;
+use ChurchCRM\Portal\Auth\SignInAuditEvent;
+use ChurchCRM\Portal\Auth\SignInReason;
 use ChurchCRM\Service\NotificationService;
+use ChurchCRM\Service\RememberedDeviceService;
 use ChurchCRM\Utils\ChurchCRMReleaseManager;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -23,12 +32,23 @@ class AuthenticationManager
 
     // API-key authentication is stateless: its provider lives for one request and is
     // never written to the session, so an API call can neither create a login session
-    // nor replace the browser session that may arrive with it.
-    private static ?APITokenAuthentication $requestProvider = null;
+    // nor replace the browser session that may arrive with it. A portal member acting
+    // on the volunteer API is held the same way.
+    private static APITokenAuthentication|PortalMemberAuthentication|null $requestProvider = null;
 
     public static function clearRequestProvider(): void
     {
         self::$requestProvider = null;
+    }
+
+    /**
+     * For this request only, the portal session's person is the current user of
+     * the volunteer API (`VolunteerPortalMemberMiddleware`). No staff route sees it:
+     * AuthMiddleware clears it at the start of every request.
+     */
+    public static function actAsPortalMember(PortalMemberUser $member): void
+    {
+        self::$requestProvider = new PortalMemberAuthentication($member);
     }
 
     public static function getAuthenticationProvider(): IAuthenticationProvider
@@ -46,6 +66,27 @@ class AuthenticationManager
         } else {
             throw new \Exception('No active authentication provider');
         }
+    }
+
+    /**
+     * Login as Person (member sign-in design §6.5): takes the browser's staff session
+     * out of the PHP session while the administrator is in the Member Portal, so no
+     * staff page or API sees it, and hands it to the caller to keep.
+     */
+    public static function setAsideSessionProvider(): ?LocalAuthentication
+    {
+        $provider = $_SESSION['AuthenticationProvider'] ?? null;
+        if (!$provider instanceof LocalAuthentication || self::$requestProvider !== null) {
+            return null;
+        }
+        unset($_SESSION['AuthenticationProvider']);
+
+        return $provider;
+    }
+
+    public static function restoreSessionProvider(LocalAuthentication $provider): void
+    {
+        self::setAuthenticationProvider($provider);
     }
 
     private static function setAuthenticationProvider(IAuthenticationProvider $AuthenticationProvider): void
@@ -99,11 +140,26 @@ class AuthenticationManager
         }
         $logCtx = ['username' => $currentSessionUserName];
 
-        try {
-            self::getAuthenticationProvider()->endSession();
+        LoginAsPerson::endWithSession();
 
-            session_unset();
-            session_destroy();
+        try {
+            if (self::hasSessionProvider()) {
+                self::getAuthenticationProvider()->endSession();
+            }
+        } catch (\Exception $e) {
+            $logger->warning(
+                'Error ending the authentication provider session',
+                array_merge($logCtx, ['exception' => $e])
+            );
+        }
+
+        // A portal-only session has no staff provider, and must still be
+        // destroyed whole: the principal lives in the same PHP session.
+        try {
+            if (session_status() === PHP_SESSION_ACTIVE) {
+                session_unset();
+                session_destroy();
+            }
             $logger->info(
                 'Ended Local session for user',
                 $logCtx
@@ -115,9 +171,77 @@ class AuthenticationManager
             );
         } finally {
             if (!$preventRedirect) {
-                RedirectUtils::redirect(self::getSessionBeginURL());
+                RedirectUtils::redirect(self::getStaffSignInURL());
             }
         }
+    }
+
+    /**
+     * Ends the staff sign-in in this browser and keeps the rest of the PHP
+     * session: a member sign-in replaces it (one principal per session, §6.4).
+     */
+    public static function endStaffSession(): void
+    {
+        if (!isset($_SESSION['AuthenticationProvider'])) {
+            return;
+        }
+
+        try {
+            if ($_SESSION['AuthenticationProvider'] instanceof IAuthenticationProvider) {
+                $_SESSION['AuthenticationProvider']->endSession();
+            }
+        } catch (\Throwable $e) {
+            LoggerUtils::getAuthLogger()->warning('Error ending the staff session', ['exception' => $e]);
+        }
+        unset($_SESSION['AuthenticationProvider']);
+        LoggerUtils::getAuthLogger()->info('Staff session ended by a member sign-in in the same browser');
+    }
+
+    /** A staff sign-in replaces a member session in this browser (one principal per session, §6.4). */
+    private static function replacePortalSession(): void
+    {
+        LoginAsPerson::endForNewSignIn();
+        $principal = PortalSessionStore::load();
+        if (!$principal instanceof PortalPrincipal) {
+            return;
+        }
+
+        PortalSessionStore::clear();
+        SignInAudit::record(
+            SignInAuditEvent::SESSION_ENDED,
+            $principal->personId,
+            $principal->method,
+            SignInReason::REPLACED,
+            $principal->actorUserId,
+        );
+    }
+
+    /**
+     * Signs out whatever this browser holds, staff or portal session (design §7),
+     * and returns where to send it: a member goes back to the member sign-in page.
+     * A remembered device is forgotten too (§6.2); the caller drops its cookie.
+     */
+    public static function signOut(): string
+    {
+        $principal = PortalSessionStore::load();
+        $staffSignedIn = self::validateUserSessionIsActive(false);
+
+        if ($principal instanceof PortalPrincipal) {
+            SignInAudit::record(
+                SignInAuditEvent::SESSION_ENDED,
+                $principal->personId,
+                $principal->method,
+                SignInReason::SIGNED_OUT,
+                $principal->actorUserId,
+            );
+            (new RememberedDeviceService())->forgetSessionDevice();
+        }
+
+        self::endSession(true);
+
+        return $principal instanceof PortalPrincipal && !$staffSignedIn && !$principal->isAssisted()
+            ? self::getPortalLoginURL()
+            : self::getStaffSignInURL();
     }
 
     public static function authenticate(AuthenticationRequest $AuthenticationRequest): AuthenticationResult
@@ -148,6 +272,10 @@ class AuthenticationManager
         }
 
         $result = self::getAuthenticationProvider()->authenticate($AuthenticationRequest);
+
+        if ($result->isAuthenticated && !$AuthenticationRequest instanceof APITokenAuthenticationRequest) {
+            self::replacePortalSession();
+        }
 
         if (null !== $result->nextStepURL) {
             $logger->debug('Authentication requires additional step: ' . $result->nextStepURL);
@@ -199,11 +327,19 @@ class AuthenticationManager
         }
     }
 
-    public static function ensureAuthentication(): void
+    /**
+     * @param bool $rememberPage false for a request that names no real page, so
+     *                           sign-in does not land on a not-found page
+     */
+    public static function ensureAuthentication(bool $rememberPage = true): void
     {
         // This function differs from the semantic `ValidateUserSessionIsActive` in that it will
         // take corrective action to redirect the user to an appropriate login location
         // if the current session is not actually authenticated
+
+        if (LoginAsPerson::isActive()) {
+            LoginAsPerson::refuseStaffPage();
+        }
 
         try {
             $result = self::getAuthenticationProvider()->validateUserSessionIsActive(true);
@@ -215,15 +351,7 @@ class AuthenticationManager
                 LoggerUtils::getAuthLogger()->debug(
                     'Session not authenticated.  Redirecting to login page'
                 );
-
-                // Store the originally requested URL in the session for post-login redirect.
-                // Using the session (server-side) prevents open-redirect attacks via a crafted query parameter.
-                $safeUri = RedirectUtils::stripAndValidatePath($_SERVER['REQUEST_URI'] ?? '');
-                if ($safeUri !== '') {
-                    $_SESSION['location'] = $safeUri;
-                }
-
-                RedirectUtils::redirect(self::getSessionBeginURL());
+                self::redirectToStaffSignIn($rememberPage);
             } elseif (null !== $result->nextStepURL) {
                 LoggerUtils::getAuthLogger()->debug(
                     'Session authenticated, but redirect requested by authentication provider.'
@@ -236,12 +364,30 @@ class AuthenticationManager
                 'Error determining session authentication status.  Redirecting to login page.',
                 ['exception' => $error]
             );
-            RedirectUtils::redirect(self::getSessionBeginURL());
+            self::redirectToStaffSignIn($rememberPage);
         }
     }
 
     /**
-     * Ends the current session when its user is deceased or inactive.
+     * Store the originally requested URL in the session for post-login redirect,
+     * whether or not this browser ever signed in (design §7). Using the session
+     * (server-side) prevents open-redirect attacks via a crafted query parameter.
+     */
+    private static function redirectToStaffSignIn(bool $rememberPage): void
+    {
+        if ($rememberPage) {
+            $safeUri = RedirectUtils::stripAndValidatePath($_SERVER['REQUEST_URI'] ?? '');
+            if ($safeUri !== '') {
+                $_SESSION['location'] = $safeUri;
+            }
+        }
+
+        RedirectUtils::redirect(self::getStaffSignInURL());
+    }
+
+    /**
+     * Ends the current session when its user may no longer sign in (member
+     * sign-in design §4, blocks for everyone).
      *
      * @return bool false when the session was ended
      */
@@ -262,9 +408,21 @@ class AuthenticationManager
         return false;
     }
 
-    public static function getSessionBeginURL(): string
+    /** The staff sign-in page, the `/admin` root (design §7). `/session/begin` redirects there. */
+    public static function getStaffSignInURL(): string
     {
-        return SystemURLs::getRootPath() . '/session/begin';
+        return SystemURLs::getRootPath() . '/admin/';
+    }
+
+    public static function getPortalLoginURL(): string
+    {
+        return SystemURLs::getRootPath() . '/portal/login';
+    }
+
+    private static function hasSessionProvider(): bool
+    {
+        return self::$requestProvider !== null
+            || (isset($_SESSION['AuthenticationProvider']) && $_SESSION['AuthenticationProvider'] instanceof IAuthenticationProvider);
     }
 
     public static function getForgotPasswordURL(): string

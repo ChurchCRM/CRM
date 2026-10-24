@@ -1,9 +1,4 @@
-// ================================================================
-// Floating Action Buttons (FAB)
-// Menu toggle, Add Person, Add Family — bottom-right fixed stack.
-// ================================================================
-
-// --- Container ---------------------------------------------------
+// Floating action buttons: bottom-right fixed stack.
 .fab-container {
   position: fixed;
   bottom: 4.5rem; // Clear the Tabler footer
@@ -15,7 +10,6 @@
   gap: 0.75rem;
 }
 
-// --- Action buttons (Person / Family) ----------------------------
 .fab-button {
   display: flex;
   align-items: center;
@@ -33,7 +27,6 @@
     display: none;
   }
 
-  // Nested .fab-icon should be transparent — the button itself is the circle
   .fab-icon {
     display: flex;
     align-items: center;
@@ -47,7 +40,6 @@
     font-size: 1.125rem;
   }
 
-  // Hide the label tooltip — labels are set via JS but not needed in Tabler layout
   .fab-label {
     display: none;
   }
@@ -59,7 +51,6 @@
     color: #fff;
   }
 
-  // Family button uses success/green color
   &.fab-family {
     background-color: var(--tblr-success);
     box-shadow: 0 4px 12px rgba(47, 179, 68, 0.35);
@@ -69,11 +60,9 @@
       box-shadow: 0 6px 20px rgba(47, 179, 68, 0.45);
     }
   }
-
-  // Save button — green/success (primary action)
 }
 
-// --- Menu toggle (sidebar open on mobile/tablet) -----------------
+// Opens the sidebar on mobile/tablet.
 .fab-menu-toggle {
   display: flex;
   align-items: center;
@@ -96,7 +85,6 @@
   }
 }
 
-// --- Larger touch targets on mobile ------------------------------
 @media (max-width: 767.98px) {
   .fab-button,
   .fab-menu-toggle {

@@ -3,6 +3,7 @@
 namespace ChurchCRM\model\ChurchCRM;
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\data\Countries;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
@@ -12,6 +13,7 @@ use ChurchCRM\model\ChurchCRM\Base\Person as BasePerson;
 use ChurchCRM\PhotoInterface;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
+use ChurchCRM\Service\GradeService;
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\GeoUtils;
@@ -32,6 +34,8 @@ class Person extends BasePerson implements PhotoInterface
 {
     public const SELF_REGISTER = -1;
     public const SELF_VERIFY = -2;
+    public const SCHEDULED_TASK = -3;
+    public const UPGRADE = -4;
     private ?Photo $photo = null;
     private bool $skipPostUpdateNote = false;
 
@@ -81,6 +85,37 @@ class Person extends BasePerson implements PhotoInterface
     public function isDeceased(): bool
     {
         return !empty($this->getDateDeceased());
+    }
+
+    /**
+     * Why this person may not sign in at all, staff or portal (member sign-in
+     * design §4, blocks for everyone): one of the User::SIGN_IN_BLOCKED_*
+     * values, or null. Member sign-in adds its own blocks (`PortalSignInRules`).
+     */
+    public function getSignInBlockedReason(): ?string
+    {
+        $state = PersonSigninQuery::create()->findPk($this->getId());
+
+        return self::signInBlockedReasonFor(
+            $this->getDateDeceased(),
+            $this->getDateDeactivated(),
+            $state instanceof PersonSignin && $state->getSignInDisabled(),
+        );
+    }
+
+    public static function signInBlockedReasonFor(mixed $dateDeceased, mixed $dateDeactivated, bool $signInDisabled = false): ?string
+    {
+        if (!empty($dateDeceased)) {
+            return User::SIGN_IN_BLOCKED_DECEASED;
+        }
+        if (!empty($dateDeactivated)) {
+            return User::SIGN_IN_BLOCKED_INACTIVE;
+        }
+        if ($signInDisabled) {
+            return User::SIGN_IN_BLOCKED_DISABLED;
+        }
+
+        return null;
     }
 
     public function getBirthDate(): ?\DateTimeImmutable
@@ -154,6 +189,11 @@ class Person extends BasePerson implements PhotoInterface
         }
 
         return $classification;
+    }
+
+    public function getGradeName(): ?string
+    {
+        return GradeService::nameOf($this->getGradeId());
     }
 
     public function getClassificationName()
@@ -288,7 +328,7 @@ class Person extends BasePerson implements PhotoInterface
                 $address[] = $this->getZip();
             }
             if (!empty($this->getCountry())) {
-                $address[] = $this->getCountry();
+                $address[] = Countries::toName($this->getCountry());
             }
 
             return implode(' ', $address);
@@ -489,18 +529,23 @@ class Person extends BasePerson implements PhotoInterface
         }
     }
 
-    public function setImageFromBase64($base64): void
+    /**
+     * @param int|null $editorId who uploaded it; the signed-in user when null. A member
+     *                           session has no user, so the portal passes the member's person id.
+     */
+    public function setImageFromBase64($base64, ?int $editorId = null): void
     {
+        $editorId ??= AuthenticationManager::getCurrentUser()->getId();
         $note = new Note();
         $note->setText(gettext('Profile Image uploaded'));
         $note->setType('photo');
-        $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
+        $note->setEntered($editorId);
         $this->getPhoto()->setImageFromBase64($base64);
         $note->setPerId($this->getId());
         $note->save();
 
         $this->setDateLastEdited(new \DateTime());
-        $this->setEditedBy(AuthenticationManager::getCurrentUser()->getId());
+        $this->setEditedBy($editorId);
         $this->skipPostUpdateNote = true;
         try {
             $this->save();
@@ -983,18 +1028,6 @@ class Person extends BasePerson implements PhotoInterface
     public function getStatusText(): string
     {
         return $this->isActive() ? gettext('Active') : gettext('Inactive');
-    }
-
-    public function getEmail(): ?string
-    {
-        if (parent::getEmail() === null) {
-            $family = $this->getFamily();
-            if ($family !== null) {
-                return $family->getEmail();
-            }
-        }
-
-        return parent::getEmail();
     }
 
     /**

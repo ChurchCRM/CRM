@@ -11,8 +11,8 @@ use Slim\Routing\RouteCollectorProxy;
 /**
  * Public (Finance-role) read-only REST API for DonationFund.
  *
- * Admin CRUD (POST / PUT / DELETE / PATCH order) has been moved to
- * /finance/api/funds (AdminRoleAuth) — see src/finance/routes/api/funds-api.php.
+ * Fund CRUD (POST / PUT / DELETE / PATCH order) has been moved to
+ * /finance/api/funds (FinanceRoleAuth) — see src/finance/routes/api/funds-api.php.
  *
  * These endpoints are used by forms that need a fund dropdown (e.g. pledge
  * editor, payment entry) and are accessible to any finance-enabled user.

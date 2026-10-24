@@ -389,6 +389,7 @@ class SundaySchoolService
                 'firstName'   => $kid->getFirstName(),
                 'kidEmail'    => $kid->getEmail(),
                 'LastName'    => $kid->getLastName(),
+                'grade'       => $kid->getGradeName(),
                 'birthDay'    => $kid->getBirthDay(),
                 'birthMonth'  => $kid->getBirthMonth(),
                 'birthYear'   => $kid->getBirthYear(),

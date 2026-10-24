@@ -2,13 +2,10 @@
 
 /**
  * Member Portal — the calendar legend switches calendars on and off (Volunteer v2 D27).
- * Design: member-portal-design.md §5.3, §3.6; volunteer-v2-design.md §0.8 D27.
+ * Design: member-portal-design.md §5.3, §3.6; docs/design/volunteer-v2.md §0.8 D27.
  *
- * Seed persona: Lena Black (user 100), a self-service member confined to the portal.
- * API setup runs before the member logs in: every x-api-key request replaces the session.
+ * Seed persona: Lena Black (person 100), signed in with her email.
  */
-const MEMBER_USER = "lena.black.editself.notes@example.com";
-const MEMBER_PASSWORD = "changeme";
 const PUBLIC_CALENDAR = 1;
 const STORAGE_KEY = "churchcrm.portal.calendar.hidden";
 const PREFIX = "PORTALLEG";
@@ -36,11 +33,8 @@ const dbOk = (sql, params = []) =>
     });
 
 const loginAsMember = () => {
-    cy.clearCookies();
-    cy.visit("/session/begin");
-    cy.get("input[name=User]").type(MEMBER_USER);
-    cy.get("input[name=Password]").type(`${MEMBER_PASSWORD}{enter}`);
-    cy.url({ timeout: 10000 }).should("include", "/portal");
+    cy.signInAsMember(100);
+    cy.visit("/portal/");
 };
 
 const gotoDay = () => {

@@ -77,7 +77,7 @@ function renderErrorPage($title, $icon, $gradientClass, $content, $issueBody) {
     <link rel="stylesheet" href="<?php echo htmlspecialchars($cssPath, ENT_QUOTES, 'UTF-8'); ?>">
 </head>
 <body class="bg-gradient-primary-purple d-flex align-items-center justify-content-center min-vh-100 p-3">
-    <div class="error-wrapper w-100" style="max-width: 500px;">
+    <div class="error-wrapper w-100">
         <div class="card shadow-lg border-0 overflow-hidden">
             <div class="card-header bg-gradient-<?php echo htmlspecialchars($gradientClass, ENT_QUOTES, 'UTF-8'); ?> text-white p-4 text-center">
                 <div class="fs-1 mb-3"><?php echo $icon; ?></div>

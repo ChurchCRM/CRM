@@ -1,23 +1,5 @@
-/**
- * UI Components
- *
- * Custom styling for ChurchCRM UI components that extend AdminLTE and Bootstrap.
- * Only includes styles that are not available in the base frameworks.
- */
-
-// Fix icon-text spacing in buttons sitewide (BS5/Tabler migration).
-// Buttons containing <i class="fa-..."></i>Label rendered with the icon
-// touching the text because no trailing whitespace or gap existed.
-// Using inline-flex + gap ensures consistent spacing between icon and label
-// for ALL button variants (primary, outline, ghost, dropdown toggle, etc.).
-// The margin reset on <i>/<svg> overrides Bootstrap me-*/ms-* utilities
-// (higher specificity .btn > i beats .me-* even with !important) so the
-// gap value is the single source of truth — no double-spacing for buttons
-// that previously relied on me-* utility classes for icon spacing.
-// Icon-only buttons are unaffected: gap only applies between multiple items.
+// The gap is the only icon spacing; the margin reset beats the !important .me-*/.ms-* utilities.
 .btn {
-  display: inline-flex;
-  align-items: center;
   gap: 0.35em;
 
   > i,
@@ -26,17 +8,14 @@
     margin-left: 0 !important;
   }
 
-  // Dropdown caret (::after pseudo-element) becomes a flex item inside the
-  // flex container. Reset Bootstrap's built-in margin-left so that only the
-  // gap value provides the spacing before the caret.
   &.dropdown-toggle::after {
     margin-left: 0;
   }
 }
 
-/* System Notifications (merged from _SystemNotifications.scss) */
+// bootstrap-notify containers; above modals.
 [data-notify="container"] {
-  z-index: 9999 !important;
+  z-index: 9999 !important; // beats the plugin's inline z-index
 }
 
 [data-notify="progressbar"] {
@@ -48,9 +27,7 @@
   height: 5px;
 }
 
-/* Dashboard Stat Card Icons
-   Small circular icon badges used in dashboard stat cards (family count, people count, etc.).
-   These use a span.rounded-circle with centered FontAwesome icon. */
+// Dashboard stat-card icon centred in its circular avatar.
 .rounded-circle .icon {
   display: flex;
   align-items: center;
@@ -61,9 +38,77 @@
   line-height: 1;
 }
 
-/* Delete control the signed-in user may not use (the person has a login).
-   Stays hoverable so its title explains why; the click handler ignores it. */
+// Stays hoverable so the title explains why; the click handler ignores it.
 .delete-person[aria-disabled="true"] {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+// An empty optional date input still shows its format (mm/dd/yyyy); the page script
+// sets .is-empty until a date is entered, so the format reads as a hint, not a value.
+.form-control[type="date"].is-empty {
+  color: var(--tblr-secondary);
+}
+
+/* A data table with more columns than a phone or tablet in portrait can show
+   unrolls into one card per row below the lg breakpoint (the -md-down naming
+   of Bootstrap's modal-fullscreen-md-down). Each cell prints its column name
+   from data-label, so the header row is moved off-screen rather than removed
+   and a screen reader still reads a table. */
+@media (max-width: 991.98px) {
+  .table.table-stack-md-down {
+    > thead {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    > tbody,
+    > tbody > tr,
+    > tbody > tr > td {
+      display: block;
+      width: 100%;
+    }
+
+    > tbody > tr {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--tblr-border-color);
+    }
+
+    > tbody > tr > td {
+      position: relative;
+      padding: 0.2rem 0 0.2rem 6.5rem;
+      border-bottom-width: 0;
+      text-align: start;
+
+      &::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        top: 0.35rem;
+        width: 6rem;
+        color: var(--tblr-secondary);
+        font-size: 0.7rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      &:empty {
+        display: none;
+      }
+
+      // DataTables' "no rows" and "loading" cells span the table and have no label.
+      &[colspan] {
+        padding-left: 0;
+        text-align: center;
+
+        &::before {
+          content: none;
+        }
+      }
+    }
+  }
 }

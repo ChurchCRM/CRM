@@ -70,12 +70,12 @@ function freshAdminLogin() {
     // One retry: in CI a login page occasionally reloads while the name is being
     // typed (the submit then goes out with an empty user and bounces back here).
     cy.url().then((url) => {
-        if (url.includes("/session/begin")) {
+        if (new URL(url).pathname === "/admin/") {
             cy.get("input[name=User]").clear().type(Cypress.testEnv("admin.username"));
             cy.get("input[name=Password]").clear().type(Cypress.testEnv("admin.password") + "{enter}");
         }
     });
-    cy.url().should("not.include", "/session/begin");
+    cy.location("pathname").should("not.eq", "/admin/");
 }
 
 /** Log in as person 95, who this spec makes a leader of the ministry's only team. */
@@ -87,12 +87,12 @@ function freshLeaderLogin() {
     // One retry: under CI load the submit occasionally lands back on the login
     // page although the server logged the login (a lost cookie on the redirect).
     cy.url().then((url) => {
-        if (url.includes("/session/begin")) {
+        if (new URL(url).pathname === "/admin/") {
             cy.get("input[name=User]").clear().type(Cypress.testEnv("nofinance.username"));
             cy.get("input[name=Password]").clear().type(Cypress.testEnv("nofinance.password") + "{enter}");
         }
     });
-    cy.url().should("not.include", "/session/begin");
+    cy.location("pathname").should("not.eq", "/admin/");
 }
 
 function adminApi(method, url, body, expectedStatus = 200) {
@@ -438,6 +438,14 @@ describe("Volunteer v2 ministry page (#9701)", () => {
                 .click();
             cy.get(
                 `#volunteerQualificationsTable .volunteer-remove-volunteer[data-person-id="${POOL_REMOVED}"]`,
+            )
+                .parents(".dropdown-menu")
+                .should("contain", "View")
+                .and("contain", "Edit")
+                .and("contain", "Add to Cart")
+                .and("not.contain", "Delete");
+            cy.get(
+                `#volunteerQualificationsTable .volunteer-remove-volunteer[data-person-id="${POOL_REMOVED}"]`,
             ).click();
 
             cy.get(".bootbox")
@@ -463,11 +471,7 @@ describe("Volunteer v2 ministry page (#9701)", () => {
             );
         });
 
-        it("is out of reach for a team leader, who cannot open the page at all", () => {
-            // A team scope does not reach the ministry page — it is ministry-scoped
-            // (§4.6), so a pure team leader is sent to access-denied and never sees
-            // the menu item. The API refuses them independently; that 403 is pinned
-            // in private.volunteer.ministry-page.spec.js.
+        it("is not offered to a team leader, whose team-only view has no row menu (#10530)", () => {
             adminApi(
                 "POST",
                 `${VOLUNTEER_URL}/scopes`,
@@ -477,7 +481,9 @@ describe("Volunteer v2 ministry page (#9701)", () => {
 
             freshLeaderLogin();
             cy.visit(ministryUrl());
-            cy.url().should("include", "access-denied");
+            cy.url().should("not.include", "access-denied");
+            cy.get("#nav-item-volunteers").click();
+            cy.get("#volunteerQualificationsTable tbody tr", { timeout: 15000 }).should("have.length.greaterThan", 0);
             cy.get(".volunteer-remove-volunteer").should("not.exist");
         });
     });

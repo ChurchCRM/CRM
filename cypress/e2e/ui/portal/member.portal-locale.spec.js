@@ -1,13 +1,15 @@
 /// <reference types="cypress" />
 
 /**
- * Member Portal — the member's own language (MP8, #9869).
+ * Member Portal — the signed-in account's own language (MP8, #9869).
  *
  * Design `.agents/skills/churchcrm/member-portal-design.md` §3.4: the portal's Twig
  * environment exposes `gettext()`/`ngettext()` and the page loads the same i18next
- * catalogues the admin shell does, so a member who has chosen a language sees the
- * portal in it. `ui.locale` is a per-user setting layered over the system-wide
- * `sLanguage` by `Bootstrapper::getCurrentLocale()`.
+ * catalogues the admin shell does, so an account holder who has chosen a language
+ * sees the portal in it. `ui.locale` is a per-user setting layered over the
+ * system-wide `sLanguage` by `Bootstrapper::getCurrentLocale()`. Members have no
+ * account since the release-day cutover, so they see the church's language; the
+ * persona is a staff account opening its own portal.
  *
  * What this proves that the API specs cannot: the rendered page. Three failure modes
  * are possible once strings go through a catalogue and none of them is a 500, so none
@@ -24,17 +26,10 @@
  * must show the English msgid. Which labels are which changes over time; the rule
  * does not.
  *
- * Seed persona: user 100, Lena Black. usr_EditSelf=1 and no admin flag, so she is
- * confined to the portal. The username column is VARCHAR(32), so the seeded address is
- * stored truncated — log in with the 32-char form.
- *
- * NOTE: every x-api-key request replaces the browser session cookie with an API-token
- * session, so each locale change is followed by a fresh login.
+ * Seed persona: noperm.user (Alice Noperm, person 901, family 1), password changeme.
  */
 
-const MEMBER_USER = "lena.black.editself.notes@example.com";
-const MEMBER_PASSWORD = "changeme";
-const MEMBER_USER_ID = 100;
+const MEMBER_USER_ID = 901;
 
 const LOCALE_URL = `/api/user/${MEMBER_USER_ID}/setting/ui.locale`;
 
@@ -68,35 +63,30 @@ const setLocale = (value) =>
         failOnStatusCode: false,
     });
 
-const setConfig = (name, value) =>
-    cy.request({
-        method: "POST",
-        url: `/admin/api/system/config/${name}`,
-        headers: { "content-type": "application/json", "x-api-key": adminKey() },
-        body: { value },
-        failOnStatusCode: false,
-    });
-
 const loginAsMember = () => {
     cy.clearCookies();
-    cy.visit("/session/begin");
-    cy.get("input[name=User]").type(MEMBER_USER);
-    cy.get("input[name=Password]").type(`${MEMBER_PASSWORD}{enter}`);
-    cy.url({ timeout: 10000 }).should("include", "/portal");
+    cy.request({ method: "POST", url: "/admin/", form: true, body: { User: "noperm.user", Password: "changeme" } });
+    cy.visit("/portal/");
 };
 
 before(() => {
     cy.rememberTestEnv(["admin.api.key"]);
 });
 
-describe("Member Portal — the member's own language (#9869)", () => {
+describe("Member Portal — the signed-in account's own language (#9869)", () => {
+    let savedCalendars;
+
     before(() => {
-        // The nav entries this spec reads are only there when their sections are on.
-        setConfig("bPortalShowCalendar", "1");
+        // The Calendar nav entry this spec reads is there while a calendar is shared.
+        cy.getMemberPortalCalendars().then((calendars) => {
+            savedCalendars = calendars;
+        });
+        cy.shareMemberPortalCalendars([{ type: "calendar", id: 1 }]);
     });
 
     after(() => {
         setLocale("");
+        cy.then(() => cy.shareMemberPortalCalendars(savedCalendars));
     });
 
     it("renders the portal navigation in the member's language", () => {

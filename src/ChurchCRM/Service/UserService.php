@@ -2,10 +2,14 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\Authentication\SignInThrottle;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Emails\users\NewAccountEmail;
+use ChurchCRM\Emails\users\ResetPasswordTokenEmail;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\Token;
+use ChurchCRM\model\ChurchCRM\TokenQuery;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\UserConfig;
 use ChurchCRM\model\ChurchCRM\UserConfigQuery;
@@ -43,20 +47,11 @@ class UserService
             ->select(['failedLogins', 'twoFactorAuthSecret'])
             ->find();
 
-        $maxFailedLogins = SystemConfig::getIntValue('iMaxFailedLogins');
         $totalUsers = $users->count();
-        $activeUsers = 0;
-        $lockedUsers = 0;
+        $lockedUsers = count($this->getLockedUsers());
         $usersWithTwoFactor = 0;
 
-        // Process results in memory to avoid multiple DB queries
         foreach ($users as $user) {
-            if ($user['failedLogins'] >= $maxFailedLogins) {
-                $lockedUsers++;
-            } else {
-                $activeUsers++;
-            }
-
             if (!empty($user['twoFactorAuthSecret'])) {
                 $usersWithTwoFactor++;
             }
@@ -64,7 +59,7 @@ class UserService
 
         return [
             'total' => $totalUsers,
-            'active' => $activeUsers,
+            'active' => $totalUsers - $lockedUsers,
             'locked' => $lockedUsers,
             'twoFactor' => $usersWithTwoFactor
         ];
@@ -87,13 +82,13 @@ class UserService
      */
     public function isUserLocked(User $user): bool
     {
-        $maxFailedLogins = SystemConfig::getIntValue('iMaxFailedLogins');
-        return $maxFailedLogins > 0 && $user->getFailedLogins() >= $maxFailedLogins;
+        return $user->isLocked();
     }
 
     /**
      * True when the person is an administrator who can sign in and no other
-     * administrator can. Such a person must not be made deceased or inactive.
+     * administrator can. Such a person must not be made deceased or inactive,
+     * nor have their sign-in disabled.
      */
     public function isLastSignInCapableAdmin(int $personId): bool
     {
@@ -115,15 +110,20 @@ class UserService
     }
 
     /**
-     * Get users with failed login attempts
-     * @return User[]|ObjectCollection
+     * Users whose account is locked right now
+     * @return User[]
      */
-    public function getLockedUsers()
+    public function getLockedUsers(): array
     {
         $maxFailedLogins = SystemConfig::getIntValue('iMaxFailedLogins');
-        return UserQuery::create()
+        if ($maxFailedLogins < 1) {
+            return [];
+        }
+        $candidates = UserQuery::create()
             ->filterByFailedLogins(['min' => $maxFailedLogins])
             ->find();
+
+        return array_values(array_filter($candidates->getData(), fn (User $user): bool => $user->isLocked()));
     }
 
     /**
@@ -147,6 +147,8 @@ class UserService
         $userSettings = [
             'iSessionTimeout',
             'iMaxFailedLogins',
+            'iLoginLockoutMinutes',
+            'iMaxFailedLoginsPerIP',
             'bEnableLostPassword',
             'bSendUserDeletedEmail',
             'iMinPasswordLength',
@@ -188,68 +190,38 @@ class UserService
     }
 
     /**
-     * Derive the canonical permission flags from a POST body.
+     * Resolves the access mode and every permission from the submitted form body.
      *
-     * The three access modes are mutually exclusive:
-     *   - admin:  Admin=1, EditSelf=0, all module perms as submitted (ignored by server for admin)
-     *   - self:   Admin=0, EditSelf=1, all module perms cleared
-     *   - custom: Admin=0, EditSelf=0, module perms as submitted
-     *
-     * An additional EditSelf-exclusivity rule (defense-in-depth, #9079) clears all
-     * module permissions when EditSelf=1 && Admin=0, regardless of what the form sent.
-     *
-     * @param array $body POST body
-     * @return array Normalized permission flags keyed by camelCase name
-     */
-    /**
-     * Resolves access mode and all permissions from the submitted form body.
-     *
-     * Mode logic (admin/editSelf) is enforced here; individual module permissions
-     * are read generically from the body and default to 0 when absent. EditSelf
-     * is exclusive — no module permissions apply when it is set (#9079).
+     * Two modes: admin (Admin=1) and custom (Admin=0, the module permissions as
+     * submitted, each 0 when absent). Every account made or saved here is a staff
+     * account: the self-service mode went with the release-day cutover (member
+     * sign-in design §12), so EditSelf is always 0.
      */
     public function normalizeAccessMode(array $body): array
     {
-        $accessMode = $body['accessMode'] ?? 'custom';
-
-        if ($accessMode === 'admin') {
-            $admin    = 1;
-            $editSelf = 0;
-        } elseif ($accessMode === 'self') {
-            $admin    = 0;
-            $editSelf = 1;
-        } else {
-            $admin    = 0;
-            $editSelf = 0;
-        }
-
         return array_merge(
-            ['admin' => $admin, 'editSelf' => $editSelf],
-            $this->extractModulePerms($body, (bool) $editSelf)
+            ['admin' => ($body['accessMode'] ?? 'custom') === 'admin' ? 1 : 0, 'editSelf' => 0],
+            $this->extractModulePerms($body)
         );
     }
 
     /**
      * Reads individual module permissions from the form body.
-     * All default to 0 if absent. Zeroes everything when editSelf is active
-     * because EditSelf is exclusive — no module permissions apply (#9079).
-     * Adding a new permission only requires adding it here.
+     * All default to 0 if absent. Adding a new permission only requires adding it here.
      */
-    private function extractModulePerms(array $body, bool $editSelf): array
+    private function extractModulePerms(array $body): array
     {
-        $allow = !$editSelf;
         return [
-            'addRecords'        => $allow && isset($body['AddRecords'])        ? 1 : 0,
-            'editRecords'       => $allow && isset($body['EditRecords'])       ? 1 : 0,
-            'deleteRecords'     => $allow && isset($body['DeleteRecords'])     ? 1 : 0,
-            'menuOptions'       => $allow && isset($body['MenuOptions'])       ? 1 : 0,
-            'manageGroups'      => $allow && isset($body['ManageGroups'])      ? 1 : 0,
-            'finance'           => $allow && isset($body['Finance'])           ? 1 : 0,
-            'manageFundraisers' => $allow && isset($body['ManageFundraisers']) ? 1 : 0,
-            'manageMinistries'  => $allow && isset($body['ManageMinistries'])  ? 1 : 0,
-            'manageMyMinistries' => $allow && isset($body['ManageMyMinistries']) ? 1 : 0,
-            'notes'             => $allow && isset($body['Notes'])             ? 1 : 0,
-            'addEvent'          => $allow && isset($body['AddEvent'])          ? 1 : 0,
+            'addRecords'        => isset($body['AddRecords'])        ? 1 : 0,
+            'editRecords'       => isset($body['EditRecords'])       ? 1 : 0,
+            'deleteRecords'     => isset($body['DeleteRecords'])     ? 1 : 0,
+            'manageGroups'      => isset($body['ManageGroups'])      ? 1 : 0,
+            'finance'           => isset($body['Finance'])           ? 1 : 0,
+            'manageFundraisers' => isset($body['ManageFundraisers']) ? 1 : 0,
+            'manageMinistries'  => isset($body['ManageMinistries'])  ? 1 : 0,
+            'manageMyMinistries' => isset($body['ManageMyMinistries']) ? 1 : 0,
+            'notes'             => isset($body['Notes'])             ? 1 : 0,
+            'addEvent'          => isset($body['AddEvent'])          ? 1 : 0,
         ];
     }
 
@@ -310,7 +282,6 @@ class UserService
                 ->setAddRecords($perms['addRecords'])
                 ->setEditRecords($perms['editRecords'])
                 ->setDeleteRecords($perms['deleteRecords'])
-                ->setMenuOptions($perms['menuOptions'])
                 ->setManageGroups($perms['manageGroups'])
                 ->setFinance($perms['finance'])
                 ->setManageFundraisers($perms['manageFundraisers'])
@@ -424,7 +395,6 @@ class UserService
         $user->setAddRecords($perms['addRecords'])
             ->setEditRecords($perms['editRecords'])
             ->setDeleteRecords($perms['deleteRecords'])
-            ->setMenuOptions($perms['menuOptions'])
             ->setManageGroups($perms['manageGroups'])
             ->setFinance($perms['finance'])
             ->setManageFundraisers($perms['manageFundraisers'])
@@ -624,5 +594,60 @@ class UserService
                 $userConfig->save();
             }
         }
+    }
+
+    /**
+     * Emails a reset link when the login name belongs to an account that may
+     * sign in and has an email. Callers answer the same way whatever happens.
+     */
+    public function requestPasswordReset(string $userName): void
+    {
+        $logger = LoggerUtils::getAuthLogger();
+        $logCtx = ['username' => $userName];
+
+        if (SignInThrottle::isIpThrottled()) {
+            $logger->warning('Password reset request throttled for this address', $logCtx);
+
+            return;
+        }
+        SignInThrottle::recordIpAttempt();
+
+        $user = UserQuery::create()->findOneByUserName($userName);
+        if ($user === null || empty($user->getEmail())) {
+            $logger->warning('Password reset requested for an unknown user or a user without an email', $logCtx);
+
+            return;
+        }
+        if ($user->getSignInBlockedReason() !== null) {
+            $logger->warning('Password reset requested for an account that cannot sign in', $logCtx);
+
+            return;
+        }
+        if (!SignInThrottle::allowPasswordResetEmail($user)) {
+            $logger->warning('Password reset request throttled for this account', $logCtx);
+
+            return;
+        }
+
+        TokenQuery::create()
+            ->filterByType(Token::TYPE_PASSWORD)
+            ->filterByReferenceId($user->getId())
+            ->delete();
+        TokenQuery::create()
+            ->filterByType(Token::TYPE_PASSWORD)
+            ->filterByValidUntilDate(new \DateTime(), Criteria::LESS_THAN)
+            ->delete();
+
+        $token = new Token();
+        $token->build(Token::TYPE_PASSWORD, $user->getId());
+        $token->save();
+        $email = new ResetPasswordTokenEmail($user, $token->getToken());
+        if (!$email->send()) {
+            $token->delete();
+            $logger->error('Password reset email failed', $logCtx + ['error' => $email->getError()]);
+
+            return;
+        }
+        $logger->info('Password reset link sent', $logCtx);
     }
 }

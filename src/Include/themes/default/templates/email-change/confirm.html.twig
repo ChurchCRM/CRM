@@ -1,0 +1,44 @@
+{% extends "layout.html.twig" %}
+
+{#
+  The page an email-change link opens (member sign-in design §9). It is public:
+  the link is often opened on another device, so it draws no navigation.
+  Opening it changes nothing; the button posts back and spends the link.
+
+  Variables: `state` (confirm, done or invalid), `kind` (change: the link went
+  to the new address; confirm: it went to the previous address), `email`,
+  `firstName`, `churchName`, `token`. See docs/portal-templates.md.
+#}
+
+{% block nav %}{% endblock %}
+
+{% block content %}
+<section class="portal-card" id="portal-email-confirm" data-state="{{ state }}">
+    {% if state == 'confirm' %}
+        <h1 class="portal-page-title">{{ gettext('Confirm your email address') }}</h1>
+        <p class="portal-card-text">
+            {{ gettext('Use %1$s as the email address for %2$s at %3$s?')|format(email, firstName, churchName) }}
+        </p>
+        {% if kind == 'confirm' %}
+        <p class="portal-card-text">{{ gettext('Once it is confirmed, it can be used to sign in to the Member Portal.') }}</p>
+        {% endif %}
+        <form method="post" action="{{ url('/portal/email/confirm/' ~ token) }}">
+            {{ csrf_field() }}
+            <div class="portal-form-actions">
+                <button class="portal-button" type="submit" id="portal-email-confirm-button">{{ gettext('Confirm Email Address') }}</button>
+            </div>
+        </form>
+    {% elseif state == 'done' %}
+        <h1 class="portal-page-title">{{ gettext('Your email address is confirmed') }}</h1>
+        <p class="portal-card-text">
+            {{ gettext('%s is now your email address. You can use it to sign in to the Member Portal.')|format(email) }}
+        </p>
+        <p><a class="portal-button" href="{{ url('/portal/') }}">{{ gettext('Go to the Member Portal') }}</a></p>
+    {% else %}
+        <h1 class="portal-page-title">{{ gettext('This link cannot be used') }}</h1>
+        <p class="portal-card-text">
+            {{ gettext('It may have expired or already been used. If you need help, please contact the church office.') }}
+        </p>
+    {% endif %}
+</section>
+{% endblock %}

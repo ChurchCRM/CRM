@@ -8,7 +8,7 @@
  * surfaces below cannot be asserted there because both `/people/*` and the
  * legacy `VolunteerOpportunityEditor.php` load `Include/PageInit.php`, whose
  * `ensureAuthentication()` call runs at file-load time — before any Slim
- * middleware — so an x-api-key request to them 302s to /session/begin.
+ * middleware — so an x-api-key request to them 302s to the /admin/ sign-in.
  *
  * Order inside every hook is API setup → freshAdminLogin() → cy.visit(),
  * because cy.request() rotates the PHP session cookie (cypress-testing.md).
@@ -27,12 +27,12 @@ function freshAdminLogin() {
     // One retry: under CI load the submit occasionally lands back on the login
     // page although the server logged the login (a lost cookie on the redirect).
     cy.url().then((url) => {
-        if (url.includes("/session/begin")) {
+        if (new URL(url).pathname === "/admin/") {
             cy.get("input[name=User]").clear().type(Cypress.testEnv("admin.username"));
             cy.get("input[name=Password]").clear().type(Cypress.testEnv("admin.password") + "{enter}");
         }
     });
-    cy.url().should("not.include", "/session/begin");
+    cy.location("pathname").should("not.eq", "/admin/");
 }
 
 function setVersion(value) {
@@ -132,13 +132,10 @@ describe("Volunteer v2 rollout — navigation and person view (#9704)", () => {
         });
 
         it("shows the coordinator entries as soon as the setting is saved, without a new login", () => {
-            // The rollout switch lives on Admin → Ministry Settings (2026-09-18),
-            // which exists in every rollout state — the dashboard it used to sit
-            // on does not exist until V2 is on.
-            cy.visit("/admin/ministry-settings");
-            cy.get('#ministrySettingsPanel select[name="sVolunteerVersion"]').should("be.enabled").and("have.value", "v1").select("v2");
-            cy.get("#ministrySettingsPanel .settings-panel-save").click();
-            cy.get(".notyf__toast, .alert-success", { timeout: 10000 }).should("exist");
+            // The rollout switch lives on Admin → Feature Toggles.
+            cy.visit("/admin/system/feature-toggles");
+            cy.get("select.feature-choice[data-setting='sVolunteerVersion']").should("be.enabled").and("have.value", "v1").select("v2");
+            cy.get('a[href$="/ministries/dashboard"]', { timeout: 10000 }).should("exist");
 
             cy.visit(PERSON_VIEW_URL);
             // "Setup" is gone from the menu: the guided wizard was removed and

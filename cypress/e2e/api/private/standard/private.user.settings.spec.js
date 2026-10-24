@@ -95,6 +95,18 @@ describe("API Private User Settings", () => {
         );
     });
 
+    it("Accepts an empty value to clear ui.locale", () => {
+        cy.makePrivateUserAPICall("POST", "/api/user/3/setting/ui.locale", { value: "" }, 200);
+    });
+
+    it("Rejects invalid setting names and values", () => {
+        cy.makePrivateUserAPICall("POST", "/api/user/3/setting/ui.table.size", { value: "10;alert(1)" }, 400);
+        cy.makePrivateUserAPICall("POST", "/api/user/3/setting/ui.locale", { value: "</script>" }, 400);
+        cy.makePrivateUserAPICall("POST", "/api/user/3/setting/bad name!", { value: "x" }, 400);
+        cy.makePrivateUserAPICall("POST", "/api/user/3/setting/ui.style", { value: "x".repeat(51) }, 400);
+        cy.makePrivateUserAPICall("POST", "/api/user/3/setting/ui.style", { value: ["a"] }, 400);
+    });
+
     it("Admin Set / GET Other User Settings", () => {
         const json = { value: "dark" };
         cy.makePrivateUserAPICall(

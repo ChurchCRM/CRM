@@ -29,7 +29,7 @@
  *                                     rather than assumed, because a seed change that
  *                                     gave them the flag would turn this spec green
  *                                     while proving nothing.
- *   person 99  `selfedit.api.key`  the EditSelf-exclusive volunteer persona (D14)
+ *   person 99  a member session     the volunteer persona (D14)
  *
  * **Mailpit is optional**, exactly as in `private.volunteer.notifications.spec.js`:
  * the `test` docker profile runs it, other profiles do not, so the delivery
@@ -59,7 +59,7 @@ const MINISTRY_GROUP_TYPE = 1;
 const PLAIN_GROUP = 1; // "Angels class"
 
 const PERSON_COORDINATOR_NO_GROUPS = 95; // judith.matthews — editrecords.api.key
-const PERSON_VOLUNTEER = 99; // amanda.black — EditSelf-exclusive (D14)
+const PERSON_VOLUNTEER = 99; // Amanda Black, a member session (D14)
 const PERSON_ADMIN = 1;
 const PERSON_SOMEBODY = 8; // herminia.bennett — a person with an email address
 
@@ -73,10 +73,6 @@ let mailpitAvailable = false;
 
 function coordinatorKey() {
     return Cypress.testEnv("editrecords.api.key");
-}
-
-function volunteerKey() {
-    return Cypress.testEnv("selfedit.api.key");
 }
 
 /** Run SQL and fail the test if the database rejected it. */
@@ -211,7 +207,7 @@ function requireMailpit(ctx) {
 }
 
 before(() => {
-    cy.rememberTestEnv(["selfedit.api.key", "editrecords.api.key"]);
+    cy.rememberTestEnv(["editrecords.api.key"]);
 });
 
 describe("Volunteer v2 ministry-owned pool Group and Help wanted (D19)", () => {
@@ -593,8 +589,8 @@ describe("Volunteer v2 ministry-owned pool Group and Help wanted (D19)", () => {
         });
 
         it("lists only the advertising ministries on the member surface", () => {
-            cy.makePrivateAPICall(
-                volunteerKey(),
+            cy.makeMemberAPICall(
+                PERSON_VOLUNTEER,
                 "GET",
                 `${VOLUNTEER_URL}/me/help-wanted`,
                 null,
@@ -614,15 +610,15 @@ describe("Volunteer v2 ministry-owned pool Group and Help wanted (D19)", () => {
         });
 
         it("refuses an offer to a ministry that is not asking, and 404s an unknown one", () => {
-            cy.makePrivateAPICall(
-                volunteerKey(),
+            cy.makeMemberAPICall(
+                PERSON_VOLUNTEER,
                 "POST",
                 `${VOLUNTEER_URL}/me/help-wanted/${ministryB}`,
                 null,
                 403,
             );
-            cy.makePrivateAPICall(
-                volunteerKey(),
+            cy.makeMemberAPICall(
+                PERSON_VOLUNTEER,
                 "POST",
                 `${VOLUNTEER_URL}/me/help-wanted/99999999`,
                 null,
@@ -631,8 +627,8 @@ describe("Volunteer v2 ministry-owned pool Group and Help wanted (D19)", () => {
         });
 
         it("adds the volunteer to the pool and enqueues one help_offer", () => {
-            cy.makePrivateAPICall(
-                volunteerKey(),
+            cy.makeMemberAPICall(
+                PERSON_VOLUNTEER,
                 "POST",
                 `${VOLUNTEER_URL}/me/help-wanted/${ministryA}`,
                 null,
@@ -671,8 +667,8 @@ describe("Volunteer v2 ministry-owned pool Group and Help wanted (D19)", () => {
         });
 
         it("sends nothing extra on a second tap the same day", () => {
-            cy.makePrivateAPICall(
-                volunteerKey(),
+            cy.makeMemberAPICall(
+                PERSON_VOLUNTEER,
                 "POST",
                 `${VOLUNTEER_URL}/me/help-wanted/${ministryA}`,
                 null,
@@ -694,8 +690,8 @@ describe("Volunteer v2 ministry-owned pool Group and Help wanted (D19)", () => {
         });
 
         it("reports inPool on the member surface once they have joined", () => {
-            cy.makePrivateAPICall(
-                volunteerKey(),
+            cy.makeMemberAPICall(
+                PERSON_VOLUNTEER,
                 "GET",
                 `${VOLUNTEER_URL}/me/help-wanted`,
                 null,
@@ -738,8 +734,8 @@ describe("Volunteer v2 ministry-owned pool Group and Help wanted (D19)", () => {
             // moving yesterday's row out of the way is what makes the next tap send.
             dbOk(`DELETE FROM volunteer_notification_vntf WHERE vntf_Type = 'help_offer'`);
 
-            cy.makePrivateAPICall(
-                volunteerKey(),
+            cy.makeMemberAPICall(
+                PERSON_VOLUNTEER,
                 "POST",
                 `${VOLUNTEER_URL}/me/help-wanted/${ministryA}`,
                 null,
@@ -765,8 +761,8 @@ describe("Volunteer v2 ministry-owned pool Group and Help wanted (D19)", () => {
                 { helpWanted: false },
                 200,
             );
-            cy.makePrivateAPICall(
-                volunteerKey(),
+            cy.makeMemberAPICall(
+                PERSON_VOLUNTEER,
                 "GET",
                 `${VOLUNTEER_URL}/me/help-wanted`,
                 null,
@@ -776,8 +772,8 @@ describe("Volunteer v2 ministry-owned pool Group and Help wanted (D19)", () => {
                     ministryA,
                 );
             });
-            cy.makePrivateAPICall(
-                volunteerKey(),
+            cy.makeMemberAPICall(
+                PERSON_VOLUNTEER,
                 "POST",
                 `${VOLUNTEER_URL}/me/help-wanted/${ministryA}`,
                 null,
@@ -794,12 +790,13 @@ describe("Volunteer v2 ministry-owned pool Group and Help wanted (D19)", () => {
 
         it("keeps the advert behind the rollout flag", () => {
             setVersion("v1");
-            cy.makePrivateAPICall(
-                volunteerKey(),
+            // Without V2 there is no member API: a member session is not signed in to it.
+            cy.makeMemberAPICall(
+                PERSON_VOLUNTEER,
                 "GET",
                 `${VOLUNTEER_URL}/me/help-wanted`,
                 null,
-                403,
+                401,
             );
             setVersion("v2");
         });
@@ -818,8 +815,8 @@ describe("Volunteer v2 ministry-owned pool Group and Help wanted (D19)", () => {
         it("never takes a person id from the caller", () => {
             // The §3.3.3 rule, structurally: there is no personId anywhere on this
             // route, so a body carrying one changes nothing about who is added.
-            cy.makePrivateAPICall(
-                volunteerKey(),
+            cy.makeMemberAPICall(
+                PERSON_VOLUNTEER,
                 "POST",
                 `${VOLUNTEER_URL}/me/help-wanted/${ministryA}`,
                 { personId: PERSON_ADMIN },

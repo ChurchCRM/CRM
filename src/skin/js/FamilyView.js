@@ -15,17 +15,17 @@ function initializeFamilyView() {
     .then((data) => {
       // Show view button only if there's an actual uploaded photo (hasPhoto=true)
       if (data.hasPhoto) {
-        $("#view-larger-image-btn").removeClass("hide-if-no-photo");
+        $("#view-larger-image-btn").removeClass("d-none");
         $("#view-larger-image-btn").removeClass("d-none");
       } else {
         // Keep hidden for initials/gravatar only
-        $("#view-larger-image-btn").addClass("hide-if-no-photo");
+        $("#view-larger-image-btn").addClass("d-none");
         $("#view-larger-image-btn").addClass("d-none");
       }
     })
     .catch((error) => {
       console.error("Failed to fetch avatar info:", error);
-      $("#view-larger-image-btn").addClass("hide-if-no-photo");
+      $("#view-larger-image-btn").addClass("d-none");
       $("#view-larger-image-btn").addClass("d-none");
     });
 

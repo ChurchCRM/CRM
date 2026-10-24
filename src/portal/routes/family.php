@@ -3,19 +3,20 @@
 use ChurchCRM\data\Countries;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\Portal\Permissions\CorePortalCapabilities;
+use ChurchCRM\Portal\Permissions\RequirePortalCapability;
 use ChurchCRM\Portal\PortalNav;
 use ChurchCRM\Portal\PortalSelfService;
 use ChurchCRM\Portal\PortalTwig;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Slim\Exception\HttpForbiddenException;
 
 // My Family — the member's own family record (design §5.2, issue #9865).
 //
 // The family is always the acting member's family: it is read from the person
-// the session resolves to, never from the URL. Editing is offered only to the
-// family's adults — the audience the verify flow addresses — and everybody
-// else sees the same page read-only.
+// the session resolves to, never from the URL. Seeing it, changing it and
+// confirming it are three portal capabilities (member sign-in design §8.4); the
+// last two come from the adult-of-the-family rule.
 
 /**
  * The family view-model for the acting member, or null when the account has no
@@ -101,20 +102,13 @@ $group->get('/family', function (Request $request, Response $response) use ($por
         ),
         PortalNav::FAMILY
     );
-});
+})->add(RequirePortalCapability::onOwnFamily(CorePortalCapabilities::FAMILY_VIEW));
 
 // GET /portal/family/edit — the form that POSTs to /api/portal/family.
 $group->get('/family/edit', function (Request $request, Response $response) use ($portalFamilyView, $portalFamilyNone): Response {
     $view = $portalFamilyView($request);
     if ($view === null) {
         return $portalFamilyNone($response);
-    }
-
-    if (!$view['canEdit']) {
-        throw new HttpForbiddenException(
-            $request,
-            gettext('Only an adult of your family can change these details. Please contact the church office.')
-        );
     }
 
     return PortalTwig::render(
@@ -133,7 +127,10 @@ $group->get('/family/edit', function (Request $request, Response $response) use 
         ),
         PortalNav::FAMILY
     );
-});
+})->add(RequirePortalCapability::onOwnFamily(
+    CorePortalCapabilities::FAMILY_EDIT,
+    gettext('Only an adult of your family can change these details. Please contact the church office.')
+));
 
 // GET /portal/family/confirm — "are these details still right?", the portal's
 // door into the same flow the emailed verify link opens.
@@ -149,4 +146,7 @@ $group->get('/family/confirm', function (Request $request, Response $response) u
         array_merge(['pageTitle' => gettext('Confirm your family details')], $view),
         PortalNav::FAMILY
     );
-});
+})->add(RequirePortalCapability::onOwnFamily(
+    CorePortalCapabilities::FAMILY_CONFIRM,
+    gettext('Only an adult of your family can confirm these details. Please contact the church office.')
+));
