@@ -126,7 +126,7 @@ describe("Member Portal — the page's language", () => {
     it("renders the portal and the next page in the language the member picks", () => {
         cy.signInAsMember(LENA);
         cy.visit("/portal/profile/edit");
-        cy.get("#portal-language option").first().should("have.value", "").and("have.text", "Church default (English (United States))");
+        cy.get("#portal-language option").first().should("have.value", "").and("have.text", "Church default: English (United States)");
         cy.get("#portal-language option[value=fr_FR]").should("have.text", "Français");
 
         cy.get("#portal-language").select("fr_FR");
@@ -180,7 +180,7 @@ describe("Member Portal — the page's language", () => {
         cy.signInAsMember(LENA);
         cy.visit("/portal/profile/edit");
         cy.get("#portal-language").should("have.value", "");
-        cy.get("#portal-language option").first().should("have.text", "Church default (Français)");
+        cy.get("#portal-language option").first().should("have.text", "Church default: Français");
         expectFrenchNav();
 
         setConfig("sLanguage", "en_US");
