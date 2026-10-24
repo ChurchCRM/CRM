@@ -182,9 +182,9 @@ $removeButton = static function (string $class, string $dataName, int $id, strin
                             data-placeholder="<?= InputUtils::escapeAttribute(gettext('Type a name')) ?>"></select>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="portal-grant-ends"><?= gettext('Last day') ?></label>
-                    <input type="date" class="form-control is-empty" id="portal-grant-ends" name="endsOn">
-                    <div class="form-text"><?= gettext('Leave empty to keep it until someone removes it.') ?></div>
+                    <label class="form-label required" for="portal-grant-ends"><?= gettext('Last day') ?></label>
+                    <input type="date" class="form-control is-empty" id="portal-grant-ends" name="endsOn" required>
+                    <div class="form-text"><?= gettext('The permission ends after this day. It can be given again.') ?></div>
                 </div>
                 <div>
                     <label class="form-label required" for="portal-grant-reason"><?= gettext('Reason') ?></label>
