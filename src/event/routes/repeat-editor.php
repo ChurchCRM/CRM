@@ -178,6 +178,12 @@ $app->post('/repeat-editor', function (Request $request, Response $response) {
     } catch (\InvalidArgumentException $e) {
         $_SESSION['sGlobalMessage'] = $e->getMessage();
         $_SESSION['sGlobalMessageClass'] = 'danger';
+    } catch (\Throwable $e) {
+        // Unexpected failures (DB errors, plugin hooks, etc.) previously
+        // bubbled as raw 500s. Surface a safe message and leave a server log.
+        error_log('Repeat event creation failed: ' . $e->getMessage() . ' in ' . $e->getFile() . ':' . $e->getLine());
+        $_SESSION['sGlobalMessage'] = gettext('An unexpected error occurred while creating the events. Please try again or contact support.');
+        $_SESSION['sGlobalMessageClass'] = 'danger';
     }
 
     return $response
