@@ -15,7 +15,7 @@ name: "Marketing: capture screenshots & videos"
 #   2. capture   — one job per remaining locale, in parallel. Each installs
 #                  the toolchain, starts its own CI docker stack, runs the
 #                  setup wizard + demo import, and captures that locale's
-#                  screenshots (scripts/capture-all-locales.sh <locale>).
+#                  @all-locales screenshots (scripts/capture-all-locales.sh <locale>).
 #                  Locales can't share one instance in parallel: the locale
 #                  is a DB setting on the shared admin user. Both stages run
 #                  the same composite action, .github/actions/marketing-capture.

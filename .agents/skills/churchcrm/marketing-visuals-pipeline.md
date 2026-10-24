@@ -19,7 +19,7 @@ npm run marketing:screenshots -- --grep "person-.*-profile"   # re-run a subset 
 npm run docker:ci:new-system:down   # tear down when done
 ```
 
-`npm run marketing` installs a fresh instance once, captures the first locale, then applies each remaining locale (`en es pt zh fr ru de ar` by default) through the `locale-set` project and re-runs `screenshots --no-deps`. ChurchCRM resolves locale per request from a DB-stored user preference, so no reinstall or re-seed is needed. `marketing:check` and `marketing:manifest` run once at the end across all locales. Pass locales as arguments to capture a subset.
+`npm run marketing` installs a fresh instance once, captures the first locale (every screenshot for English, tagged captures for other locales), then applies each remaining locale (`en es pt zh fr ru de ar` by default) through the `locale-set` project and re-runs `screenshots --no-deps --grep @all-locales`. ChurchCRM resolves locale per request from a DB-stored user preference, so no reinstall or re-seed is needed. `marketing:check` and `marketing:manifest` run once at the end across all locales. Pass locales as arguments to capture a subset.
 
 The pipeline uses Playwright's bundled Chromium (`npm run marketing:install`). Set `BROWSER_CHANNEL=chrome` (or `npm run marketing:chrome`) to drive system Chrome.
 
@@ -41,6 +41,21 @@ The capture spec ships in the same PR as the UI change. Images serve your own ch
 4. Open the desktop, tablet and mobile PNGs, fix anything cramped, re-run
 5. Commit the spec only
 6. Tear down: `COMPOSE_PROJECT_NAME=crm-pw-capture npm run docker:ci:new-system:down`
+
+### Choosing capture locales
+
+Screenshots default to English only. Key self-service and staff workflows, plus
+page shots used by the website in the visitor's language, set `locales: 'all'`.
+Declare their options with `defineCapture()`, pass that object as the test's
+second argument and to `captureScreen()`. It supplies `@all-locales` at discovery
+time, before Playwright filters the tests. The screenshots project also filters
+non-English runs, including standalone CI locale jobs. Videos run once in English.
+
+Sidecars and the generated manifest carry `locales: 'all' | 'en'` alongside
+`usedIn`. The gallery filters actual entries by `locale`; English-only cards are
+absent in other languages. Dark-twin links are emitted only when a matching
+locale/device capture exists. Completeness guards must use this locale policy
+rather than expect every capture in every locale.
 
 ### Marking used captures
 
