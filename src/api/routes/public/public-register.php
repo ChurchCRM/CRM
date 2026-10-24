@@ -71,7 +71,7 @@ $app->group('/public/register', function (RouteCollectorProxy $group): void {
  *             @OA\Property(property="City", type="string"),
  *             @OA\Property(property="State", type="string"),
  *             @OA\Property(property="Zip", type="string"),
- *             @OA\Property(property="Email", type="string", readOnly=true, deprecated=true, description="Deprecated in 7.9.0: the head of household's email, else the spouse's. Removed with the family email column.")
+ *             @OA\Property(property="Email", type="string", readOnly=true, deprecated=true, description="Deprecated in 7.8.3: the head of household's email, else the spouse's. Removed with the family email column.")
  *         )
  *     ),
  *     @OA\Response(response=400, description="Validation error",

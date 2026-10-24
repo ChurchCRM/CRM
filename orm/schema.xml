@@ -170,7 +170,7 @@
                 sqlType="tinyint(1) unsigned" required="true" defaultValue="0"
                 description="When true the second address is the family's mailing address; otherwise it is a second home"/>
         <column name="fam_HomePhone" phpName="HomePhone" type="VARCHAR" size="30"/>
-        <column name="fam_Email" phpName="Email" type="VARCHAR" size="100" description="Unused since 7.9.0: the upgrade moves each family email to a person (family_email_move_fem). Dropped in a later release."/>
+        <column name="fam_Email" phpName="Email" type="VARCHAR" size="100" description="Unused since 7.8.3: the upgrade moves each family email to a person (family_email_move_fem). Dropped in a later release."/>
         <column name="fam_WeddingDate" phpName="Weddingdate" type="DATE"/>
         <column name="fam_DateEntered" phpName="DateEntered" type="TIMESTAMP" required="true"/>
         <column name="fam_DateLastEdited" phpName="DateLastEdited" type="TIMESTAMP"/>
@@ -200,7 +200,7 @@
         </behavior>
     </table>
 
-    <table name="family_email_move_fem" idMethod="native" phpName="FamilyEmailMove" description="One row per family email the 7.9.0 upgrade moved to people (member sign-in design 10.1). fem_per_ID is the person who has the address afterwards: the head or spouse who received it, or the person who already held it. fem_NeedsConfirm marks an address moved into a family of two or more living, active people, which may not be used to sign in until staff confirm it. Dropped together with fam_Email.">
+    <table name="family_email_move_fem" idMethod="native" phpName="FamilyEmailMove" description="One row per family email the 7.8.3 upgrade moved to people (member sign-in design 10.1). fem_per_ID is the person who has the address afterwards: the head or spouse who received it, or the person who already held it. fem_NeedsConfirm marks an address moved into a family of two or more living, active people, which may not be used to sign in until staff confirm it. Dropped together with fam_Email.">
         <column name="fem_ID" phpName="Id" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
         <column name="fem_fam_ID" phpName="FamilyId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true"/>
         <column name="fem_Email" phpName="Email" type="VARCHAR" size="100" required="true"/>
