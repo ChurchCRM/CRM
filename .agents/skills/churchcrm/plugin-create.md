@@ -174,9 +174,9 @@ public function getPortalNavItems(): array
 // portal/routes.php: included for pages ($portalArea 'pages', under /portal/plugins/my-plugin)
 // and for the API ($portalArea 'api', under /api/portal/plugins/my-plugin)
 if ($portalArea === 'pages') {
-    $group->get('/rosters/{groupId:[0-9]+}', function ($request, $response) {
+    $routes->get('/rosters/{groupId:[0-9]+}', function ($request, $response) {
         return PortalTwig::renderPluginPage($response, 'my-plugin', 'roster.html.twig', ['pageTitle' => 'Roster']);
-    })->add(RequirePortalCapability::onRouteArgument('plugin.my-plugin.roster.view', 'groupId'));
+    }, RequirePortalCapability::onRouteArgument('plugin.my-plugin.roster.view', 'groupId'));
 }
 ```
 

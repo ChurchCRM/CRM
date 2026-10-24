@@ -13,8 +13,8 @@ enum SignInReason: string
     case PERSON_NOT_FOUND = 'person_not_found';
     case DECEASED = User::SIGN_IN_BLOCKED_DECEASED;
     case INACTIVE = User::SIGN_IN_BLOCKED_INACTIVE;
-    case FAMILY_INACTIVE = User::SIGN_IN_BLOCKED_FAMILY_INACTIVE;
-    case NEEDS_REVIEW = User::SIGN_IN_BLOCKED_NEEDS_REVIEW;
+    case FAMILY_INACTIVE = 'family_inactive';
+    case NEEDS_REVIEW = 'needs_review';
     case SIGN_IN_DISABLED = User::SIGN_IN_BLOCKED_DISABLED;
     case FAMILY_ROLE = 'family_role';
     case CLASSIFICATION = 'classification';

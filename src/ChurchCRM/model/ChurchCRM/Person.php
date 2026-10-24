@@ -90,7 +90,7 @@ class Person extends BasePerson implements PhotoInterface
     /**
      * Why this person may not sign in at all, staff or portal (member sign-in
      * design §4, blocks for everyone): one of the User::SIGN_IN_BLOCKED_*
-     * values, or null.
+     * values, or null. Member sign-in adds its own blocks (`PortalSignInRules`).
      */
     public function getSignInBlockedReason(): ?string
     {
@@ -99,30 +99,17 @@ class Person extends BasePerson implements PhotoInterface
         return self::signInBlockedReasonFor(
             $this->getDateDeceased(),
             $this->getDateDeactivated(),
-            $this->getFamily()?->getDateDeactivated(),
-            (bool) $this->getNeedsReview(),
             $state instanceof PersonSignin && $state->getSignInDisabled(),
         );
     }
 
-    public static function signInBlockedReasonFor(
-        mixed $dateDeceased,
-        mixed $dateDeactivated,
-        mixed $familyDateDeactivated = null,
-        bool $needsReview = false,
-        bool $signInDisabled = false,
-    ): ?string {
+    public static function signInBlockedReasonFor(mixed $dateDeceased, mixed $dateDeactivated, bool $signInDisabled = false): ?string
+    {
         if (!empty($dateDeceased)) {
             return User::SIGN_IN_BLOCKED_DECEASED;
         }
         if (!empty($dateDeactivated)) {
             return User::SIGN_IN_BLOCKED_INACTIVE;
-        }
-        if (!empty($familyDateDeactivated)) {
-            return User::SIGN_IN_BLOCKED_FAMILY_INACTIVE;
-        }
-        if ($needsReview) {
-            return User::SIGN_IN_BLOCKED_NEEDS_REVIEW;
         }
         if ($signInDisabled) {
             return User::SIGN_IN_BLOCKED_DISABLED;
