@@ -192,7 +192,7 @@
                 <tr>
                     <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
                         <p style="margin: 0;">{{buttonNotWorkingText}}:</p>
-                        <p style="margin: 0; word-break: break-all; overflow-wrap: anywhere;"><a href="{{fullURL}}" target="_blank" style="word-break: break-all; overflow-wrap: anywhere;">{{fullURL}}</a></p>
+                        <p style="margin: 0; word-break: break-all; overflow-wrap: anywhere;"><a href="{{fullURL}}" target="_blank" style="word-break: break-all; overflow-wrap: anywhere;">{{fullURL}}</a></p> {# nosemgrep: generic.html-templates.security.var-in-href.var-in-href -- the email class builds fullURL from the site URL #}
                     </td>
                 </tr>
                 <!-- end copy -->
