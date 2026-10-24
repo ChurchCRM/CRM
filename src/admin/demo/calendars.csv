@@ -1,3 +1,4 @@
-id,name,slug,description,timezone
-cal-1,Church Events,church-events,Main church calendar,America/Chicago
-cal-2,Youth Ministry,youth,Youth ministry events,America/Chicago
+id,name,slug,description,timezone,background_color,foreground_color,portal
+cal-1,Church Events,church-events,Main church calendar,America/Chicago,00695C,FFFFFF,true
+cal-2,Youth Ministry,youth,Youth ministry events,America/Chicago,AD1457,FFFFFF,true
+cal-3,Sunday School,sunday-school,Sunday School classes,America/Chicago,D84315,FFFFFF,true

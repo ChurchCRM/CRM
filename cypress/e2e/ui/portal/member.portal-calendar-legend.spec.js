@@ -2,7 +2,7 @@
 
 /**
  * Member Portal — the calendar legend switches calendars on and off (Volunteer v2 D27).
- * Design: member-portal-design.md §5.3, §3.6; volunteer-v2-design.md §0.8 D27.
+ * Design: member-portal-design.md §5.3, §3.6; docs/design/volunteer-v2.md §0.8 D27.
  *
  * Seed persona: Lena Black (user 100), a self-service member confined to the portal.
  * API setup runs before the member logs in: every x-api-key request replaces the session.

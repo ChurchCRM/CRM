@@ -174,8 +174,8 @@ function categoryId(string $category): string {
             <table class="table table-vcenter card-table">
               <thead>
                 <tr>
-                  <th style="width:200px"><?= gettext('Variable name') ?></th>
-                  <th style="width:380px"><?= gettext('Value') ?></th>
+                  <th class="col-w-200"><?= gettext('Variable name') ?></th>
+                  <th class="col-w-380"><?= gettext('Value') ?></th>
                   <th><?= gettext('Default / Notes') ?></th>
                 </tr>
               </thead>

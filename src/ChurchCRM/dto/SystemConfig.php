@@ -63,6 +63,11 @@ class   SystemConfig
         ];
     }
 
+    private static function getGradePromotionMonthChoices(): array
+    {
+        return ['Choices' => array_merge([gettext('Off') . ':0'], self::getMonthChoices()['Choices'])];
+    }
+
     private static function getMapZoomChoices(): array
     {
         return [
@@ -309,8 +314,11 @@ class   SystemConfig
             'bEnabledFundraiser'                   => new ConfigItem('bEnabledFundraiser', 'boolean', '1', gettext('Enable Fundraiser menu.')),
             // Volunteer Management v2 (#9704, #9710). Deliberately declared without a
             // category (2026-09-18): their one home is Admin → Ministry Settings.
-            'sVolunteerVersion'                    => new ConfigItem('sVolunteerVersion', 'choice', 'v1', gettext('Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. "Both" shows each side by side during migration.'), '', json_encode(self::getVolunteerVersionChoices())),
+            'sVolunteerVersion'                    => new ConfigItem('sVolunteerVersion', 'choice', 'v2', gettext('Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. "Both" shows each side by side during migration.'), '', json_encode(self::getVolunteerVersionChoices())),
             'iVolunteerReminderLeadHours'          => new ConfigItem('iVolunteerReminderLeadHours', 'number', '48', gettext('How many hours before a volunteer occurrence the reminder email is sent. Set to 0 to send no reminders at all. Delivery depends on background jobs running; see the Volunteer documentation for the recommended cron setup.')),
+            'iVolunteerGapAlertLeadHours'          => new ConfigItem('iVolunteerGapAlertLeadHours', 'number', '48', gettext('How many hours before a volunteer occurrence its coordinators are told about positions still unfilled. Set to 0 to send no such alerts; reminders are not affected.')),
+            'sVolunteerGapAlertBatchTime'          => new ConfigItem('sVolunteerGapAlertBatchTime', 'text', '07:00', gettext('The time of day (HH:MM, in the church\'s time zone) the daily email listing unfilled volunteer positions is sent to coordinators.')),
+            'sLastVolunteerGapAlertBatchDate'      => new ConfigItem('sLastVolunteerGapAlertBatchDate', 'text', '', gettext('Internal: last date the daily email listing unfilled volunteer positions was sent (YYYY-MM-DD). Do not edit manually.')),
             'iVolunteerSchedulingHorizonWeeks'     => new ConfigItem('iVolunteerSchedulingHorizonWeeks', 'number', '8', gettext('How many weeks ahead volunteer occurrences are created for the events each schedule follows, from 1 to 52. A daily background job keeps every schedule filled up to this point.')),
             'iVolunteerDefaultEventTypeId'         => new ConfigItem('iVolunteerDefaultEventTypeId', 'number', '', gettext('The event type a ministry\'s new events start with. When empty, or when the type was deleted, the type named "Other" is used if there is one.')),
             'sLastVolunteerTopUpRunDate'           => new ConfigItem('sLastVolunteerTopUpRunDate', 'text', '', gettext('Internal: last date the volunteer schedules were topped up to the scheduling horizon (YYYY-MM-DD). Do not edit manually.')),
@@ -318,6 +326,14 @@ class   SystemConfig
             'bEnabledEmail'                        => new ConfigItem('bEnabledEmail', 'boolean', '1', gettext('Enable email sending from ChurchCRM. Required for password reset, notifications, and email links.')),
             'bEnableBirthdayEmails'                => new ConfigItem('bEnableBirthdayEmails', 'boolean', '0', gettext('Automatically send a birthday greeting email to people on their birthday')),
             'sLastBirthdayEmailRunDate'            => new ConfigItem('sLastBirthdayEmailRunDate', 'text', '', gettext('Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually.')),
+            // School grades (#10189). The promotion date's home is Admin → People Settings.
+            'iGradePromotionMonth'                 => new ConfigItem('iGradePromotionMonth', 'choice', '0', gettext('The month in which everyone with a grade moves up one grade. Off turns automatic promotion off.'), '', json_encode(self::getGradePromotionMonthChoices())),
+            'iGradePromotionDay'                   => new ConfigItem('iGradePromotionDay', 'number', '1', gettext('The day of that month on which grades are promoted. A day past the end of the month means its last day.')),
+            'iGradeListId'                         => new ConfigItem('iGradeListId', 'number', '6', gettext('Internal: the list that holds the grade names. Do not edit manually.')),
+            'sGradePreset'                         => new ConfigItem('sGradePreset', 'text', 'us', gettext('Internal: the country whose grade names were last applied to the grade list. Do not edit manually.')),
+            'sGradePromotionSetDate'               => new ConfigItem('sGradePromotionSetDate', 'text', '', gettext('Internal: the day the grade promotion date was last changed (YYYY-MM-DD). Do not edit manually.')),
+            'sLastGradePromotionAt'                => new ConfigItem('sLastGradePromotionAt', 'text', '', gettext('Internal: date and time of the last grade promotion. Do not edit manually.')),
+            'sLastGradePromotionResult'            => new ConfigItem('sLastGradePromotionResult', 'text', '', gettext('Internal: how the last grade promotion ran and how many people it moved. Do not edit manually.')),
             'sLastTimerJobsRunDateTime'            => new ConfigItem('sLastTimerJobsRunDateTime', 'text', '', gettext('Internal: last date and time the background timer jobs completed (YYYY-MM-DD HH:MM:SS). Do not edit manually.')),
             'iTimerJobsStaleHours'                 => new ConfigItem('iTimerJobsStaleHours', 'number', '26', gettext('Warn on the admin dashboard when the background timer jobs have not run for this many hours. 26 allows for a daily cron plus some drift. Set to 0 to disable the warning.')),
             'iTimerJobsMinIntervalMinutes'         => new ConfigItem('iTimerJobsMinIntervalMinutes', 'number', '15', gettext('Minimum number of minutes between background timer-job runs triggered by a page load. Stops a busy Sunday morning from running the jobs once per page view. Does not apply to the command-line runner. Set to 0 to run on every page load.')),

@@ -1,23 +1,5 @@
-/**
- * UI Components
- *
- * Custom styling for ChurchCRM UI components that extend AdminLTE and Bootstrap.
- * Only includes styles that are not available in the base frameworks.
- */
-
-// Fix icon-text spacing in buttons sitewide (BS5/Tabler migration).
-// Buttons containing <i class="fa-..."></i>Label rendered with the icon
-// touching the text because no trailing whitespace or gap existed.
-// Using inline-flex + gap ensures consistent spacing between icon and label
-// for ALL button variants (primary, outline, ghost, dropdown toggle, etc.).
-// The margin reset on <i>/<svg> overrides Bootstrap me-*/ms-* utilities
-// (higher specificity .btn > i beats .me-* even with !important) so the
-// gap value is the single source of truth — no double-spacing for buttons
-// that previously relied on me-* utility classes for icon spacing.
-// Icon-only buttons are unaffected: gap only applies between multiple items.
+// The gap is the only icon spacing; the margin reset beats the !important .me-*/.ms-* utilities.
 .btn {
-  display: inline-flex;
-  align-items: center;
   gap: 0.35em;
 
   > i,
@@ -26,17 +8,14 @@
     margin-left: 0 !important;
   }
 
-  // Dropdown caret (::after pseudo-element) becomes a flex item inside the
-  // flex container. Reset Bootstrap's built-in margin-left so that only the
-  // gap value provides the spacing before the caret.
   &.dropdown-toggle::after {
     margin-left: 0;
   }
 }
 
-/* System Notifications (merged from _SystemNotifications.scss) */
+// bootstrap-notify containers; above modals.
 [data-notify="container"] {
-  z-index: 9999 !important;
+  z-index: 9999 !important; // beats the plugin's inline z-index
 }
 
 [data-notify="progressbar"] {
@@ -48,9 +27,7 @@
   height: 5px;
 }
 
-/* Dashboard Stat Card Icons
-   Small circular icon badges used in dashboard stat cards (family count, people count, etc.).
-   These use a span.rounded-circle with centered FontAwesome icon. */
+// Dashboard stat-card icon centred in its circular avatar.
 .rounded-circle .icon {
   display: flex;
   align-items: center;
@@ -61,8 +38,7 @@
   line-height: 1;
 }
 
-/* Delete control the signed-in user may not use (the person has a login).
-   Stays hoverable so its title explains why; the click handler ignores it. */
+// Stays hoverable so the title explains why; the click handler ignores it.
 .delete-person[aria-disabled="true"] {
   opacity: 0.5;
   cursor: not-allowed;

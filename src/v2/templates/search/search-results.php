@@ -18,7 +18,7 @@ $groupIcons = [
 ?>
 
 <form method="get" action="<?= SystemURLs::getRootPath() ?>/v2/search" class="mb-4">
-  <div class="input-icon" style="max-width: 600px;">
+  <div class="input-icon search-input-wrap">
     <span class="input-icon-addon">
       <i class="fa-solid fa-search"></i>
     </span>
@@ -33,7 +33,7 @@ $groupIcons = [
 
   <div class="empty">
     <div class="empty-icon">
-      <i class="fa-solid fa-search" style="font-size: 3rem; color: var(--tblr-secondary);"></i>
+      <i class="fa-solid fa-search search-empty-icon"></i>
     </div>
     <p class="empty-title"><?= gettext('Enter a search term') ?></p>
     <p class="empty-subtitle text-secondary">
@@ -45,7 +45,7 @@ $groupIcons = [
 
   <div class="empty">
     <div class="empty-icon">
-      <i class="fa-solid fa-circle-question" style="font-size: 3rem; color: var(--tblr-secondary);"></i>
+      <i class="fa-solid fa-circle-question search-empty-icon"></i>
     </div>
     <p class="empty-title"><?= gettext('No results found') ?></p>
     <p class="empty-subtitle text-secondary">
@@ -76,8 +76,7 @@ $groupIcons = [
         <div class="card">
           <div class="card-header">
             <h3 class="card-title d-flex align-items-center">
-              <span class="avatar avatar-sm rounded me-3 text-white"
-                    style="background-color: var(--tblr-primary); flex-shrink: 0;">
+              <span class="avatar avatar-sm rounded me-3 text-white bg-primary flex-shrink-0">
                 <i class="fa-solid <?= $icon ?>"></i>
               </span>
               <?= InputUtils::escapeHTML($displayName) ?>

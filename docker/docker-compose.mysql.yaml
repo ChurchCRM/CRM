@@ -1,6 +1,7 @@
 # MySQL override for upgrade-test CI jobs.
 # Layer this on top of docker-compose.yaml + docker-compose.parallel.yaml to replace
-# the MariaDB image in the ci-new-system profile with the latest MySQL image.
+# the MariaDB image in the ci-new-system profile with a MySQL LTS image. MYSQL_IMAGE
+# selects it (default: the oldest supported LTS, mysql:8.4).
 # Only the image and healthcheck differ from the base definition; every other
 # property (profile, ports, MYSQL_* env, depends_on, hostname) is inherited.
 #
@@ -12,7 +13,7 @@
 
 services:
   database-new-system:
-    image: mysql:latest
+    image: ${MYSQL_IMAGE:-mysql:8.4}
     # Use TCP (-h 127.0.0.1) so the healthcheck only passes after the full
     # server is up with networking — MySQL's mid-init temp server runs with
     # --skip-networking, which prevents premature "healthy" signals.

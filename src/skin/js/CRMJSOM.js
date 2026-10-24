@@ -759,12 +759,14 @@ window.CRM.dashboard = {
 
   /**
    * Render a standard person action dropdown menu.
-   * Standard order: View → Edit → [View Family] → [divider] → Cart → [divider] → Delete
+   * Standard order: View → Edit → [View Family] → [divider] → Cart → [divider → extra items] → [divider → Delete]
    * @param {number} personId
    * @param {string} personName - Used in delete confirmation
    * @param {Object} [options]
    * @param {boolean} [options.inCart=false] - Whether person is already in cart
    * @param {number} [options.familyId] - When set, adds a "View Family" item after Edit
+   * @param {CRMActionMenuItem[]} [options.extraItems] - Page-specific items added after Cart
+   * @param {boolean} [options.omitDelete=false] - Leave out Delete, for lists that manage a relationship rather than the person
    * @returns {string} HTML string
    */
   window.CRM.renderPersonActionMenu = (personId, personName, options) => {
@@ -800,8 +802,9 @@ window.CRM.dashboard = {
       },
       { type: "divider" },
       cartItem(personId, "person", options.inCart || false),
-      { type: "divider" },
-      {
+      ...(options.extraItems?.length ? [{ type: "divider" }, ...options.extraItems] : []),
+      !options.omitDelete && { type: "divider" },
+      !options.omitDelete && {
         type: "button",
         danger: true,
         className: "delete-person",

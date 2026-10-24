@@ -16,8 +16,9 @@
  *
  * Controls a caller does not want are simply left out of ITS markup: every
  * `byId()` below returns null for an absent element and the wiring is inert. That
- * is how the portal hides "Add Volunteer", "Add from Cart" and "Remove Volunteer"
- * — all three are ministry-level acts the API refuses a team leader anyway (D5).
+ * is how the portal hides "Add from Cart" and "Remove Volunteer" — ministry-level
+ * acts the API refuses a team leader anyway (D5). A team leader's "Add Volunteer" is the
+ * same dialog with `teamAdd`.
  */
 
 import { attachToModal } from "../../common/person-select";
@@ -26,6 +27,7 @@ import {
   grantQualification,
   notifyError,
   notifySuccess,
+  POOL_CANDIDATE_SEARCH_ENDPOINT,
   positionLabel,
   type QualificationMatrix,
   revokeQualification,
@@ -47,7 +49,7 @@ import {
   showModalError,
   tText,
   wireModalFadeGuard,
-  wireUnclippedRowMenus,
+  wireStickyHead,
 } from "./ui";
 
 export interface QualificationMatrixOptions {
@@ -70,8 +72,14 @@ export interface QualificationMatrixOptions {
    * API authorizes independently (D5).
    */
   canRemoveVolunteer(): boolean;
-  /** Ministry-level pool writes; omitted by a caller whose markup has no such buttons. */
-  addPoolMember?(personId: number): Promise<{ added: boolean }>;
+  /** Pool writes; omitted by a caller whose markup has no such buttons. */
+  addPoolMember?(
+    personId: number,
+    positionIds: number[],
+    teamId: number | null,
+  ): Promise<{ added: boolean; qualified?: number[] }>;
+  /** A team leader's Add Volunteer: searches the people a team leader may add and offers the grid team's positions. */
+  teamAdd?: boolean;
   addPoolFromCart?(): Promise<{ added: number; alreadyMembers: number }>;
   removeVolunteer?(personId: number): Promise<{ qualifications: number; assignments: number; defaults: number }>;
   /** What the "Remove {name} from …?" confirm names — the ministry. */
@@ -108,6 +116,7 @@ export function createQualificationMatrix(options: QualificationMatrixOptions): 
    * before the first team is known.
    */
   let teamId: number | null = null;
+  const refreshStickyHead = wireStickyHead("volunteers-table-wrapper");
 
   /**
    * The team the grid is showing, by name — the two Add dialogs put it in their
@@ -176,6 +185,10 @@ export function createQualificationMatrix(options: QualificationMatrixOptions): 
     // coordinator and above and to nobody else. The flag is the server's opinion and
     // is advisory: the API refuses a team leader with 403 whatever this says (D5).
     const canRemove = options.canRemoveVolunteer() && options.removeVolunteer !== undefined;
+    // The admin shell offers the standard person menu (View, Edit, Cart); the Member
+    // Portal has no person pages and loads no renderer, so it gets Remove Volunteer or nothing.
+    const personMenu = window.CRM?.renderPersonActionMenu;
+    const showActions = canRemove || personMenu !== undefined;
 
     // "Elementary · Lead Teacher", not a bare "Lead Teacher", whenever the columns
     // come from more than one team — two teams under one ministry may own a position
@@ -190,7 +203,7 @@ export function createQualificationMatrix(options: QualificationMatrixOptions): 
       ...data.positions.map(
         (position: VolunteerPosition) => `<th class="text-center">${escapeHtml(columnLabel(position))}</th>`,
       ),
-      canRemove ? `<th class="text-center no-export w-1">${i18next.t("Actions")}</th>` : "",
+      showActions ? `<th class="text-center no-export w-1">${i18next.t("Actions")}</th>` : "",
     ].join("");
 
     body.innerHTML = data.people
@@ -231,17 +244,23 @@ export function createQualificationMatrix(options: QualificationMatrixOptions): 
               i18next.t("Not in the pool"),
             )}</span>`;
 
-        const menu = canRemove
-          ? `<td class="text-center w-1">${actionMenu([
-              {
-                type: "button",
-                icon: "fa-solid fa-user-minus",
-                label: i18next.t("Remove Volunteer"),
-                className: "volunteer-remove-volunteer",
-                danger: true,
-                data: { "person-id": person.personId, "person-name": person.displayName },
-              },
-            ])}</td>`
+        const removeItem: CRMActionMenuItem = {
+          type: "button",
+          icon: "fa-solid fa-user-minus",
+          label: i18next.t("Remove Volunteer"),
+          className: "volunteer-remove-volunteer",
+          danger: true,
+          data: { "person-id": person.personId, "person-name": person.displayName },
+        };
+        const menu = showActions
+          ? `<td class="text-center w-1">${
+              personMenu
+                ? personMenu(person.personId, person.displayName, {
+                    omitDelete: true,
+                    extraItems: canRemove ? [removeItem] : [],
+                  })
+                : actionMenu([removeItem])
+            }</td>`
           : "";
 
         return `<tr data-person-name="${escapeAttribute(person.displayName.toLowerCase())}">
@@ -257,6 +276,7 @@ export function createQualificationMatrix(options: QualificationMatrixOptions): 
     // hidden with the empty and error states.
     show(byId("volunteers-save-hint"), true);
     applyFilter();
+    refreshStickyHead();
   }
 
   /**
@@ -309,16 +329,29 @@ export function createQualificationMatrix(options: QualificationMatrixOptions): 
       return;
     }
 
+    if (force) {
+      matrix = null;
+    }
     renderState("volunteers", "loading");
     show(byId("volunteers-save-hint"), false);
+    let requestedTeamId = teamId;
     try {
       // The caller's document names the teams, and the grid is always one team's —
       // so it has to be there before the first matrix request can name one.
       await options.ensureContext();
       fillTeamFilter();
-      matrix = await options.fetch(teamId);
+      requestedTeamId = teamId;
+      const loaded = await options.fetch(requestedTeamId);
+      // A team switch while this was in flight has started a newer load.
+      if (requestedTeamId !== teamId) {
+        return;
+      }
+      matrix = loaded;
       render(matrix);
     } catch (error) {
+      if (requestedTeamId !== teamId) {
+        return;
+      }
       // Clearing the cache is what makes Retry a genuine retry (§5.8).
       matrix = null;
       show(byId("volunteers-save-hint"), false);
@@ -386,6 +419,25 @@ export function createQualificationMatrix(options: QualificationMatrixOptions): 
     });
   }
 
+  /** The grid team's positions, unticked, for the Add Volunteer dialog. */
+  function renderAddPositions(): void {
+    const container = byId("add-volunteer-positions");
+    if (!container) {
+      return;
+    }
+
+    const positions = (matrix?.positions ?? []).filter((position: VolunteerPosition) => position.active);
+    container.innerHTML = positions
+      .map(
+        (position: VolunteerPosition) => `<label class="form-check">
+            <input class="form-check-input add-volunteer-position" type="checkbox" value="${position.id}">
+            <span class="form-check-label">${escapeHtml(position.name ?? "")}</span>
+          </label>`,
+      )
+      .join("");
+    show(byId("add-volunteer-positions-row"), positions.length > 0);
+  }
+
   function wire(): void {
     byId("qualification-filter")?.addEventListener("input", applyFilter);
 
@@ -406,7 +458,19 @@ export function createQualificationMatrix(options: QualificationMatrixOptions): 
     // The shared person selector (CR1/#9819) rather than a hand-rolled TomSelect: it
     // owns the modal lifecycle, the body-mounted dropdown and the maxOptions fix.
     const personModal = byId("addVolunteerModal");
-    const personPicker = personModal ? attachToModal(personModal, "#add-volunteer-person") : null;
+    const candidateOption = (item: PersonSearchResult): PersonSearchResult => ({
+      objid: Number(item.id),
+      text: item.familyName
+        ? tText("{{name}} ({{family}} family)", { name: String(item.name ?? ""), family: String(item.familyName) })
+        : String(item.name ?? ""),
+    });
+    const personPicker = personModal
+      ? attachToModal(
+          personModal,
+          "#add-volunteer-person",
+          options.teamAdd ? { endpoint: POOL_CANDIDATE_SEARCH_ENDPOINT, mapResult: candidateOption } : {},
+        )
+      : null;
     // Every dialog that closes ITSELF on a successful save needs the guard: a local
     // API answers inside Bootstrap's 150 ms fade, and `Modal.hide()` during the
     // transition is accepted and thrown away, leaving the dialog open over a screen
@@ -423,6 +487,9 @@ export function createQualificationMatrix(options: QualificationMatrixOptions): 
           "addVolunteerModalTitle",
           tText("Add Volunteer to {{ministry}}", { ministry: options.ministryName?.() ?? teamName() }),
         );
+        if (options.teamAdd) {
+          renderAddPositions();
+        }
         modal("addVolunteerModal")?.show();
       });
 
@@ -437,13 +504,22 @@ export function createQualificationMatrix(options: QualificationMatrixOptions): 
         // Idempotent server-side, so "they were already here" is an ANSWER rather than
         // an error — and the grid is force-refreshed either way, because a coordinator
         // who has just named somebody expects to see them whichever answer came back.
-        addPoolMember(personId)
+        const positionIds = [
+          ...document.querySelectorAll<HTMLInputElement>("#add-volunteer-positions .add-volunteer-position:checked"),
+        ].map((box) => Number(box.value));
+
+        addPoolMember(personId, positionIds, teamId)
           .then((result) => {
             hideModal("addVolunteerModal");
+            const qualified = (result.qualified ?? []).length > 0;
             notifySuccess(
               result.added
-                ? i18next.t("Added — now tick the positions they can serve")
-                : i18next.t("They were already a volunteer here"),
+                ? qualified
+                  ? i18next.t("Added and qualified")
+                  : i18next.t("Added — now tick the positions they can serve")
+                : qualified
+                  ? i18next.t("They were already a volunteer here, and are now qualified")
+                  : i18next.t("They were already a volunteer here"),
             );
 
             return options.reload().then(() => load(true));
@@ -580,7 +656,6 @@ export function createQualificationMatrix(options: QualificationMatrixOptions): 
 
     wireRemoveVolunteer();
     // The qualification grid is the one table that scrolls sideways.
-    wireUnclippedRowMenus("volunteers-table-wrapper");
   }
 
   wire();

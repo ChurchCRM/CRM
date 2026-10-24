@@ -21,7 +21,7 @@ use ChurchCRM\Utils\InputUtils;
                 <h5 class="modal-title" id="viewNoteLabel"><?= gettext('Note') ?></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body" id="viewNoteBody" style="min-height:4rem;"></div>
+            <div class="modal-body note-view-body" id="viewNoteBody"></div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= gettext('Close') ?></button>
             </div>

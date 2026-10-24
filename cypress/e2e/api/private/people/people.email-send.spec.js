@@ -5,12 +5,11 @@
  *
  * Contract: recipients are person / family ids, never addresses. The server
  * resolves each id, skips the deceased, do-not-email, address-less and
- * duplicate addresses (reporting each by name and reason), and sends one
- * message per remaining recipient through the configured SMTP server.
+ * duplicate addresses (reporting each by name and reason), and queues one
+ * message per remaining recipient (#10356); the queue is covered by
+ * people.email-queue.spec.js.
  *
  * Delivery is verified against the Mailpit sink the test stack ships with.
- * Override its URL with `--env mailpitUrl=http://localhost:8070` when the
- * stack runs on non-default ports.
  *
  * Seed fixtures used (cypress/data/seed.sql):
  *   person 2   Mathew Campbell  mathew.campbell@example.com
@@ -20,22 +19,16 @@
  *   person 105 Mary Smith       no email, family 21 has no email
  *   family 1   Campbell         no family email
  */
-const mailpit = () => Cypress.testEnv("mailpitUrl") || "http://localhost:8025";
-
 const clearMailpit = () =>
-    cy.request({ method: "DELETE", url: `${mailpit()}/api/v1/messages`, failOnStatusCode: false });
+    cy.request({ method: "DELETE", url: `${Cypress.mailpitUrl()}/api/v1/messages`, failOnStatusCode: false });
 
 /** Returns the Mailpit messages whose subject contains `tag`. */
 const mailpitMessages = (tag) =>
     cy
-        .request({ method: "GET", url: `${mailpit()}/api/v1/messages?limit=100` })
+        .request({ method: "GET", url: `${Cypress.mailpitUrl()}/api/v1/messages?limit=100` })
         .then((resp) => resp.body.messages.filter((m) => m.Subject.includes(tag)));
 
 const send = (body, expectedStatus = 200) => cy.makePrivateAdminAPICall("POST", "/api/email/send", body, expectedStatus);
-
-before(() => {
-    cy.rememberTestEnv(["mailpitUrl"]);
-});
 
 describe("API POST /api/email/send", () => {
     describe("resolution and delivery", () => {
@@ -45,21 +38,24 @@ describe("API POST /api/email/send", () => {
             clearMailpit();
         });
 
-        it("sends one message per resolvable recipient and reports every skipped one by name", () => {
-            send({
+        it("queues one message per resolvable recipient and reports every skipped one by name", () => {
+            cy.sendComposerEmailNow({
                 personIds: [2, 105, 19, 3, 35, 2],
                 familyIds: [1],
                 subject: `Hello <b>there</b> ${tag}`,
                 body: "Line one\nLine two <script>alert(1)</script>",
-            }).then((resp) => {
-                expect(resp.body.counts).to.deep.equal({ sent: 2, skipped: 4, failed: 0 });
-                expect(resp.body.failed).to.deep.equal([]);
+            }).then((result) => {
+                expect(result.counts).to.deep.equal({ queued: 2, sent: 0, skipped: 4, failed: 0 });
+                expect(result.batch).to.match(/^[0-9a-f]{32}$/);
+                expect(result.sent).to.deep.equal([]);
+                expect(result.failed).to.deep.equal([]);
+                expect(result.progress).to.include({ total: 2, sent: 2, failed: 0, done: true });
 
-                expect(resp.body.sent.map((r) => r.personId)).to.deep.equal([2, 3]);
-                expect(resp.body.sent[0]).to.include({ name: "Mathew Campbell", email: "mathew.campbell@example.com" });
+                expect(result.queued.map((r) => r.personId)).to.deep.equal([2, 3]);
+                expect(result.queued[0]).to.include({ name: "Mathew Campbell", email: "mathew.campbell@example.com" });
 
                 const skipped = Object.fromEntries(
-                    resp.body.skipped.map((r) => [r.personId ?? `family-${r.familyId}`, r]),
+                    result.skipped.map((r) => [r.personId ?? `family-${r.familyId}`, r]),
                 );
                 expect(skipped[105]).to.include({ name: "Mary Smith", reason: "no-email" });
                 expect(skipped[19]).to.include({ name: "Laurie Ray", reason: "deceased" });
@@ -80,7 +76,7 @@ describe("API POST /api/email/send", () => {
 
                 const mathew = messages.find((m) => m.To[0].Address === "mathew.campbell@example.com");
                 expect(mathew.To[0].Name).to.equal("Mathew Campbell");
-                cy.request(`${mailpit()}/api/v1/message/${mathew.ID}`).then((full) => {
+                cy.request(`${Cypress.mailpitUrl()}/api/v1/message/${mathew.ID}`).then((full) => {
                     // The author writes greeting and closing: nothing is generated around the body
                     // except the church header, and there is no marketing footer.
                     expect(full.body.HTML).to.not.include("Dear ");
@@ -146,7 +142,8 @@ describe("API POST /api/email/send", () => {
 
         it("reports unknown ids as skipped rather than failing the request", () => {
             send({ personIds: [999999], subject: "s", body: "b" }).then((resp) => {
-                expect(resp.body.counts).to.deep.equal({ sent: 0, skipped: 1, failed: 0 });
+                expect(resp.body.counts).to.deep.equal({ queued: 0, sent: 0, skipped: 1, failed: 0 });
+                expect(resp.body.batch).to.be.null;
                 expect(resp.body.skipped[0]).to.include({ personId: 999999, reason: "not-found" });
             });
         });

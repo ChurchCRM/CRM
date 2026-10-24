@@ -213,7 +213,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       <p class="text-body-secondary">
         <?= gettext('These people are still assigned, but the position they hold is no longer part of this occurrence\'s staffing plan.') ?>
       </p>
-      <div style="overflow-x: clip; overflow-y: visible;" class="">
+      <div class="table-clip-x">
         <table class="table table-vcenter" id="other-assignments-table">
           <thead>
             <tr>
@@ -251,7 +251,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <?= gettext('When a volunteer proposes someone to take their place, it appears here for you to approve or reject.') ?>
         </p>
       </div>
-      <div style="overflow-x: clip; overflow-y: visible;" class=" d-none" id="swaps-table-wrapper">
+      <div class="table-clip-x d-none" id="swaps-table-wrapper">
         <table class="table table-vcenter" id="volunteerSwapsTable">
           <thead>
             <tr>
@@ -294,8 +294,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="mb-3">
           <label class="form-label" for="assign-person-select"><?= gettext('Volunteer') ?></label>
           <select class="form-select" id="assign-person-select"></select>
-          <div class="form-hint"><?= gettext('Whoever served least recently is listed first.') ?></div>
+          <div class="form-text"><?= gettext('Whoever served least recently is listed first.') ?></div>
         </div>
+        <label class="form-check mb-3">
+          <input class="form-check-input" type="checkbox" id="assign-accepted">
+          <span class="form-check-label"><?= gettext('Record they accepted') ?></span>
+          <span class="form-check-description"><?= gettext('They already said yes. They get a short confirmation instead of a request to respond.') ?></span>
+        </label>
         <div class="empty d-none" id="assign-empty">
           <div class="empty-icon"><i class="fa-solid fa-user-slash fa-2x text-muted"></i></div>
           <p class="empty-title"><?= gettext('Nobody is qualified for this position yet') ?></p>

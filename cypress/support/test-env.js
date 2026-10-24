@@ -40,6 +40,15 @@ Cypress.testEnv = (key) => {
     return remembered[key];
 };
 
+/** Mailpit of the stack under test, resolved by exposeMailpitUrl() in cypress/configs/_shared.ts. */
+Cypress.mailpitUrl = () => {
+    const url = Cypress.expose("mailpitUrl");
+    if (!url) {
+        throw new Error("mailpitUrl is not exposed. Call exposeMailpitUrl(config) in this Cypress config's setupNodeEvents.");
+    }
+    return url;
+};
+
 /**
  * Form login that does not go through cy.session(). Specs that call the API
  * before cy.visit() need this: cy.request() replaces the PHP session.
