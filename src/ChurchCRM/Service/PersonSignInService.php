@@ -84,6 +84,7 @@ final class PersonSignInService
             throw $e;
         }
 
+        (new EmailSignInService())->cancelOpenRequests($personId, SignInReason::SIGN_IN_DISABLED, (int) $actor->getPersonId());
         SignInAudit::record(
             SignInAuditEvent::SIGN_IN_DISABLED,
             $personId,
@@ -115,8 +116,9 @@ final class PersonSignInService
     }
 
     /**
-     * Ends every portal session of the person on its next request and revokes
-     * their remembered devices. Passkeys stay: the member keeps a way back in.
+     * Ends every portal session of the person on its next request, revokes
+     * their remembered devices and cancels the sign-in codes and links already
+     * emailed. Passkeys stay: the member keeps a way back in.
      *
      * @return int how many devices were revoked
      */
@@ -138,6 +140,7 @@ final class PersonSignInService
             throw $e;
         }
 
+        (new EmailSignInService())->cancelOpenRequests($personId, SignInReason::SIGNED_OUT_EVERYWHERE, (int) $actor->getPersonId());
         SignInAudit::record(
             SignInAuditEvent::SESSION_ENDED,
             $personId,
