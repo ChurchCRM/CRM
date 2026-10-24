@@ -81,6 +81,10 @@
             "kind": "fixture",
             "reason": "Member sign-in (#10463): ends the one-minute grace of a remembered device's replaced token, so specs need not wait it out; the server still decides what an ended grace means."
         },
+        "cypress/support/sign-in-audit-retention.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in (#10463): audit rows from weeks ago for the retention spec; only time makes them, and the audit has no HTTP surface until the admin pages."
+        },
         "cypress/support/sign-in-throttle.js": {
             "kind": "fixture",
             "reason": "Ends a sign-in throttle window (#10197) so specs need not wait out a 15-minute lockout; the server still decides what an ended window means."
