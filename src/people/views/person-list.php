@@ -275,9 +275,24 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
 </div>
 
 <div class="card">
-    <div class="card-header">
-        <h3 class="card-title"><i class="fa-solid fa-users me-1"></i> <span id="people-title"></span></h3>
+    <div class="card-header d-flex flex-wrap justify-content-between align-items-center gap-2">
+    <h3 class="card-title mb-0">
+        <i class="fa-solid fa-users me-1"></i>
+        <span id="people-title"></span>
+    </h3>
+    <!-- Add all to cart -->   
+    <div class="d-flex flex-wrap gap-2">
+        <button type="button" id="AddAllToCart" class="btn btn-primary">
+            <i class="fa-solid fa-cart-plus me-1"></i>
+            <span id="add-all-cart-text"><?= gettext('Add All to Cart') ?></span>
+        </button>
+    <!-- Remove all from cart -->
+        <button type="button" id="RemoveAllFromCart" class="btn btn-outline-danger">
+            <i class="fa-solid fa-cart-shopping me-1"></i>
+            <span id="remove-all-cart-text"><?= gettext('Remove All from Cart') ?></span>
+        </button>
     </div>
+</div>
     <div class="card-body">
         <table id="members" class="table table-vcenter table-hover data-table mb-0">
             <thead>
