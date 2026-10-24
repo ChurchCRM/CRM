@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-24 07:05+0000\n"
+"POT-Creation-Date: 2026-10-24 07:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12762,6 +12762,9 @@ msgid "Rename Kiosk"
 msgstr ""
 
 msgid "Renames the grades to the names used in that country. People keep their grade, and grades you added yourself stay."
+msgstr ""
+
+msgid "Repeat events could not be created. Check the application log for details."
 msgstr ""
 
 msgid "Repeats"
