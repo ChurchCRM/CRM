@@ -2,7 +2,6 @@
 
 namespace ChurchCRM\Volunteer\Email;
 
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Emails\BaseEmail;
 
 /**
@@ -42,7 +41,7 @@ abstract class BaseVolunteerEmail extends BaseEmail
 
         parent::__construct($toAddresses);
 
-        $this->mail->Subject = SystemConfig::getValue('sChurchName') . ': ' . $this->getSubSubject();
+        $this->mail->Subject = $this->getSubSubject();
         $this->mail->isHTML(true);
         $this->mail->msgHTML($this->buildMessage());
     }

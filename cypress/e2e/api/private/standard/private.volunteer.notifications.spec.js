@@ -852,9 +852,8 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
                     );
 
                     mailTo(MEMBER_A_EMAIL).then((message) => {
-                        // The church name prefix is the shape every BaseEmail
-                        // subclass in the tree already uses.
-                        expect(message.Subject).to.contain(churchName);
+                        // The sender name is the church, so the subject does not repeat it.
+                        expect(message.Subject).to.not.contain(`${churchName}:`);
                         expect(message.Subject.toLowerCase()).to.contain("serve");
 
                         const body = `${message.Text || ""}\n${message.HTML || ""}`;
