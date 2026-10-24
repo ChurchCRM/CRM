@@ -5,7 +5,7 @@
  * 
  * Tests run after demo data has been imported:
  * 6. Create a backup of the system (current demo state)
- * 7. Restore seed.sql via restore page
+ * 7. Restore a backup the app made, via the restore page
  * 8. Verify data from that restore is valid
  * 9. Restore the demo backup to ensure restore works
  * 
@@ -26,7 +26,7 @@ describe('03 - Backup and Restore', () => {
         cy.visit('/login');
         cy.get('input[name=User]').type(adminCredentials.username);
         cy.get('input[name=Password]').type(password + '{enter}');
-        cy.url({ timeout: 15000 }).should('not.include', '/session/begin');
+        cy.expectStaffSignedIn({ timeout: 15000 });
     };
 
     describe('Step 6: Create Backup', () => {
@@ -89,7 +89,30 @@ describe('03 - Backup and Restore', () => {
         });
     });
 
-    describe('Step 7: Restore seed.sql', () => {
+    describe('Step 7: Restore a backup', () => {
+        let restoreFile;
+
+        before(() => {
+            loginAsAdmin();
+            cy.request({
+                method: 'POST',
+                url: '/admin/api/database/backup',
+                body: { BackupType: 2 },
+                timeout: 60000
+            }).then((response) => {
+                const backupName = response.body.BackupDownloadFileName.replace(/^.*[\\\/]/, '');
+                restoreFile = `${Cypress.config('downloadsFolder')}/${backupName}`;
+                cy.request({
+                    method: 'GET',
+                    url: '/admin/api/database/download/' + backupName,
+                    encoding: 'binary',
+                    timeout: 30000
+                }).then((download) => cy.writeFile(restoreFile, download.body, 'binary'));
+            });
+            // /login answers 404 for a signed-in session; beforeEach logs in from a clean one
+            cy.clearCookies();
+        });
+
         beforeEach(() => {
             loginAsAdmin();
         });
@@ -103,19 +126,15 @@ describe('03 - Backup and Restore', () => {
             cy.contains('Restore Database').should('be.visible');
         });
 
-        it('should restore seed.sql file', () => {
+        it('should restore the backup file', () => {
             cy.visit('/admin/system/restore');
-            
-            // The demo SQL file path (relative to cypress project root)
-            const demoSqlPath = 'cypress/data/seed.sql';
-            
-            // Use cy.selectFile to upload the file
-            // The file input is hidden, so we need to force the action
-            cy.get('#restoreFile').selectFile(demoSqlPath, { force: true });
-            
+
+            // The file input is hidden, so force the upload
+            cy.get('#restoreFile').selectFile(restoreFile, { force: true });
+
             // File info should show
             cy.get('#fileInfo').should('be.visible');
-            cy.get('#fileName').should('contain', 'seed.sql');
+            cy.get('#fileName').should('contain', restoreFile.replace(/^.*\//, ''));
             
             // Click restore button
             cy.get('#submitRestore').click();
@@ -130,9 +149,7 @@ describe('03 - Backup and Restore', () => {
             cy.get('#restoreSuccessModal', { timeout: 120000 }).should('be.visible');
 
             // Should eventually redirect to login page
-            cy.url({ timeout: 30000 }).should('satisfy', (url) => {
-                return url.includes('/session/begin') || url.includes('/login');
-            });
+            cy.location('pathname', { timeout: 30000 }).should('eq', '/admin/');
         });
     });
 
@@ -151,7 +168,7 @@ describe('03 - Backup and Restore', () => {
                 expect(response.status).to.equal(200);
                 expect(response.body).to.have.property('families');
                 
-                // seed.sql should have multiple families
+                // the restored demo data has multiple families
                 const families = response.body.families;
                 expect(families.length).to.be.greaterThan(5);
                 cy.log(`Found ${families.length} families after restore`);

@@ -13,6 +13,7 @@ use ChurchCRM\Service\UpgradeService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Utils\RequestUtils;
 use ChurchCRM\Utils\SQLUtils;
 use ChurchCRM\Utils\VersionUtils;
 use Monolog\Handler\StreamHandler;
@@ -119,9 +120,11 @@ class Bootstrapper
         self::initSession();
         
         // Initialize SystemConfig with database values only once during bootstrap
-        // Fallback error handlers (testMYSQLI, systemFailure) will call init() without parameters
+        // Fallback error handlers (testMYSQLI, systemFailure) will call init() without parameters.
+        // Rows of retired keys stay until the database is current, so the upgrade
+        // scripts below can still read them.
         if (!SystemConfig::isInitialized()) {
-            SystemConfig::init(ConfigQuery::create()->find());
+            SystemConfig::init(ConfigQuery::create()->find(), self::isDBCurrent());
         }
 
         self::configureLogging();
@@ -463,10 +466,9 @@ class Bootstrapper
         // HttpOnly prevents client-side JavaScript from reading the cookie (mitigates XSS cookie theft).
         // SameSite=Lax blocks the cookie from being sent on cross-site POST requests (mitigates CSRF).
         // Secure flag is set when the connection is HTTPS — either directly via $_SERVER['HTTPS']
-        // or behind a TLS-terminating reverse proxy that sets X-Forwarded-Proto (common in
-        // Docker/Kubernetes deployments where the web server sees plain HTTP).
-        $isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
-            || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https');
+        // or behind a TLS-terminating reverse proxy listed in CHURCHCRM_TRUSTED_PROXIES that
+        // sets X-Forwarded-Proto (see RequestUtils::isHttps()).
+        $isHttps = RequestUtils::isHttps();
 
         // The cookie path is scoped to the application root so the cookie is sent for all
         // ChurchCRM routes. getRootPath() returns the admin-configured $sRootPath from Config.php

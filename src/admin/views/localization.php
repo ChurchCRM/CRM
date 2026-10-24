@@ -46,7 +46,7 @@ $sGlobalMessageClass = $sGlobalMessageClass ?? 'success';
                                     <span class="text-body-secondary"><?= gettext('Translation completeness') ?></span>
                                     <span class="fw-medium" id="locale-preview-percent">—</span>
                                 </div>
-                                <div class="progress" style="height: 6px;">
+                                <div class="progress admin-progress-hairline">
                                     <div class="progress-bar" id="locale-preview-bar" role="progressbar" style="width: 0;"></div>
                                 </div>
                                 <div class="small text-body-secondary mt-1" id="locale-preview-translation-note"></div>
@@ -128,7 +128,7 @@ $sGlobalMessageClass = $sGlobalMessageClass ?? 'success';
     <!-- Language & Region -->
     <div class="row">
         <div class="col-12">
-            <div class="card" id="section-language" style="scroll-margin-top: 1rem;">
+            <div class="card admin-scroll-anchor" id="section-language">
                 <div class="card-header">
                     <h3 class="card-title"><i class="fa-solid fa-globe me-2"></i><?= gettext('Language &amp; Region') ?></h3>
                 </div>
@@ -136,16 +136,15 @@ $sGlobalMessageClass = $sGlobalMessageClass ?? 'success';
                     <div class="row">
                         <div class="mb-3 col-md-4">
                             <label class="form-label" for="sLanguage"><?= gettext('Language') ?></label>
-                            <select class="form-select" id="sLanguage" name="sLanguage"
-                                data-selected-locale="<?= InputUtils::escapeAttribute($localeSettings['sLanguage']) ?>"
-                                style="width: 100%;"></select>
+                            <select class="form-select w-100" id="sLanguage" name="sLanguage"
+                                data-selected-locale="<?= InputUtils::escapeAttribute($localeSettings['sLanguage']) ?>"></select>
                             <small class="form-text text-body-secondary">
                                 <?= gettext('System language for the church.') ?>
                             </small>
                         </div>
                         <div class="mb-3 col-md-4">
                             <label class="form-label" for="sTimeZone"><?= gettext('Time Zone') ?></label>
-                            <select class="form-select auto-tomselect" id="sTimeZone" name="sTimeZone" style="width: 100%;">
+                            <select class="form-select auto-tomselect w-100" id="sTimeZone" name="sTimeZone">
                                 <?php foreach ($timezones as $tz): ?>
                                 <option value="<?= InputUtils::escapeHTML($tz) ?>"
                                     <?= ($localeSettings['sTimeZone'] === $tz) ? 'selected' : '' ?>>
@@ -180,7 +179,7 @@ $sGlobalMessageClass = $sGlobalMessageClass ?? 'success';
     <!-- Date & Time Formats -->
     <div class="row">
         <div class="col-12">
-            <div class="card" id="section-datetime" style="scroll-margin-top: 1rem;">
+            <div class="card admin-scroll-anchor" id="section-datetime">
                 <div class="card-header">
                     <h3 class="card-title"><i class="fa-solid fa-calendar-days me-2"></i><?= gettext('Date &amp; Time Formats') ?></h3>
                 </div>
@@ -330,7 +329,7 @@ $sGlobalMessageClass = $sGlobalMessageClass ?? 'success';
     <!-- Currency & Finance Formats -->
     <div class="row">
         <div class="col-12">
-            <div class="card" id="section-currency" style="scroll-margin-top: 1rem;">
+            <div class="card admin-scroll-anchor" id="section-currency">
                 <div class="card-header">
                     <h3 class="card-title"><i class="fa-solid fa-dollar-sign me-2"></i><?= gettext('Currency & Finance Formats') ?></h3>
                 </div>
@@ -420,7 +419,7 @@ $sGlobalMessageClass = $sGlobalMessageClass ?? 'success';
     <!-- Phone Number Formats -->
     <div class="row">
         <div class="col-12">
-            <div class="card" id="section-phone" style="scroll-margin-top: 1rem;">
+            <div class="card admin-scroll-anchor" id="section-phone">
                 <div class="card-header">
                     <h3 class="card-title"><i class="fa-solid fa-phone me-2"></i><?= gettext('Phone Number Formats') ?></h3>
                 </div>

@@ -396,4 +396,20 @@ abstract class AbstractPlugin implements PluginInterface
         $context['plugin'] = $this->getId();
         LoggerUtils::getAppLogger()->$level($message, $context);
     }
+
+    /**
+     * No portal rules by default.
+     */
+    public function getPortalRules(): array
+    {
+        return [];
+    }
+
+    /**
+     * No portal nav items by default.
+     */
+    public function getPortalNavItems(): array
+    {
+        return [];
+    }
 }

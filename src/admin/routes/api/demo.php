@@ -19,9 +19,6 @@ $app->group('/api/demo', function (RouteCollectorProxy $group): void {
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\RequestBody(required=true,
      *         @OA\JsonContent(
-     *             @OA\Property(property="includeFinancial", type="boolean", default=false),
-     *             @OA\Property(property="includeEvents", type="boolean", default=false),
-     *             @OA\Property(property="includeSundaySchool", type="boolean", default=false),
      *             @OA\Property(property="force", type="boolean", default=false, description="Skip the fresh-install guard")
      *         )
      *     ),
@@ -43,9 +40,6 @@ $app->group('/api/demo', function (RouteCollectorProxy $group): void {
         $logger = LoggerUtils::getAppLogger();
 
         $body = $request->getParsedBody();
-        $includeFinancial = isset($body['includeFinancial']) ? (bool)$body['includeFinancial'] : false;
-        $includeEvents = isset($body['includeEvents']) ? (bool)$body['includeEvents'] : false;
-        $includeSundaySchool = isset($body['includeSundaySchool']) ? (bool)$body['includeSundaySchool'] : false;
         $force = isset($body['force']) ? (bool)$body['force'] : false;
 
         if (!$force) {
@@ -60,9 +54,9 @@ $app->group('/api/demo', function (RouteCollectorProxy $group): void {
 
 
         try {
-            $logger->info('Admin demo data import started', ['includeFinancial' => $includeFinancial, 'includeEvents' => $includeEvents, 'includeSundaySchool' => $includeSundaySchool]);
+            $logger->info('Admin demo data import started');
             $demoService = new DemoDataService();
-            $result = $demoService->importDemoData($includeFinancial, $includeEvents, $includeSundaySchool, $force);
+            $result = $demoService->importDemoData($force);
 
             $duration = $result['endTime'] - $result['startTime'];
 

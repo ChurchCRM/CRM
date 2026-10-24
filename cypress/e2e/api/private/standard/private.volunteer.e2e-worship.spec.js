@@ -3,7 +3,7 @@
 /**
  * Volunteer v2 — #9714 scenario 2, "Sunday Worship", as ONE end-to-end run.
  *
- * Epic #9701, issue #9714, design `.agents/skills/churchcrm/volunteer-v2-design.md`
+ * Epic #9701, issue #9714, design `docs/design/volunteer-v2.md`
  * §0.4 UC2, §2.13 (substitution as a first-class, coordinator-approved
  * workflow), §2.11.1 (the `substituted` terminal state), §2.12 (the append-only
  * response log) and §6.5 row 2.

@@ -61,7 +61,7 @@ const loginAsMember = () => {
     cy.request("/session/begin");
     cy.request({
         method: "POST",
-        url: "/session/begin",
+        url: "/admin/",
         form: true,
         body: { User: MEMBER_USER, Password: MEMBER_PASSWORD },
         followRedirect: false,

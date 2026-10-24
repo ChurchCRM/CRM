@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\Portal\Auth\PortalSessionMiddleware;
 use ChurchCRM\Portal\PortalApiMiddleware;
 use ChurchCRM\Portal\PortalSelfService;
 use ChurchCRM\Service\EmailLogService;
@@ -28,10 +29,14 @@ use Slim\Routing\RouteCollectorProxy;
  *    `GET /api/portal/family/members/{personId}/photo` already gives a person
  *    id outside the member's family (design P12).
  *
- * **Scope decision — the family's shared address is not included.** A row is
- * shown only when `eml_per_ID` is this person. An email addressed to the
- * family's own address lands in `email_log_eml` with `eml_per_ID` NULL and
- * `eml_fam_ID` set (see `EmailLogService::resolveAddress()`), and this first
+ * **Only mail that went out.** A member sees `sent` rows and nothing else, with no
+ * delivery status: a queued or sending message has not reached them yet, and a failed
+ * or skipped one never did. An unsent row is the same 404 as somebody else's.
+ *
+ * **Scope decision — mail sent to the whole family is not included.** A row is
+ * shown only when `eml_per_ID` is this person. An email sent to a family
+ * lands in `email_log_eml` with `eml_per_ID` NULL and `eml_fam_ID` set
+ * (see `EmailComposerService::queue()`), and this first
  * version deliberately leaves those out: every adult of a household would
  * otherwise see mail that was not addressed to them by name, which is a
  * privacy call for the product owner rather than an implementation detail.
@@ -69,7 +74,7 @@ $app->group('/portal/me/emails', function (RouteCollectorProxy $group) use ($por
      *     path="/portal/me/emails",
      *     operationId="getPortalMyEmails",
      *     summary="A page of the signed-in member's own email history",
-     *     description="Newest first, in the same envelope GET /email/log answers with, but scoped to the acting member: only rows whose eml_per_ID is this person. There is no person id to pass. Rows never carry the body; GET /portal/me/emails/{id} does. Session only — API keys are refused.",
+     *     description="Newest first, in the same envelope GET /email/log answers with, but scoped to the acting member: only rows whose eml_per_ID is this person, and only mail that was sent. Queued, sending, failed and skipped mail is left out, and rows carry no delivery status. There is no person id to pass. Rows never carry the body; GET /portal/me/emails/{id} does. Session only — API keys are refused.",
      *     tags={"Member Portal"},
      *     @OA\Parameter(name="page", in="query", @OA\Schema(type="integer", default=1)),
      *     @OA\Parameter(name="limit", in="query", @OA\Schema(type="integer", default=25, maximum=100)),
@@ -82,8 +87,7 @@ $app->group('/portal/me/emails', function (RouteCollectorProxy $group) use ($por
      *                 @OA\Property(property="kind", type="string"),
      *                 @OA\Property(property="kindLabel", type="string"),
      *                 @OA\Property(property="subject", type="string"),
-     *                 @OA\Property(property="status", type="string", enum={"sent","failed","skipped"}),
-     *                 @OA\Property(property="dateSent", type="string"),
+         *                 @OA\Property(property="dateSent", type="string"),
      *                 @OA\Property(property="hasBody", type="boolean"))),
      *             @OA\Property(property="total", type="integer"),
      *             @OA\Property(property="page", type="integer"),
@@ -103,7 +107,7 @@ $app->group('/portal/me/emails', function (RouteCollectorProxy $group) use ($por
 
         return SlimUtils::renderJSON(
             $response,
-            (new EmailLogService())->getForPerson((int) $portalEmailActor($request)->getId(), $page, $limit)
+            (new EmailLogService())->getSentForMember((int) $portalEmailActor($request)->getId(), $page, $limit)
         );
     });
 
@@ -112,7 +116,7 @@ $app->group('/portal/me/emails', function (RouteCollectorProxy $group) use ($por
      *     path="/portal/me/emails/{id}",
      *     operationId="getPortalMyEmail",
      *     summary="One email from the signed-in member's own history, with its body",
-     *     description="The row is returned only when it was addressed to the acting member. Somebody else's row and an id that does not exist are the same 404, so a member cannot learn that an email exists by asking for it. The body is null for the email classes that never store one (account emails carrying a password or a one-time link).",
+     *     description="The row is returned only when it was addressed to the acting member and was sent. Somebody else's row, an unsent row and an id that does not exist are the same 404, so a member cannot learn that an email exists by asking for it. No delivery status is included. The body is null for the email classes that never store one (account emails carrying a password or a one-time link).",
      *     tags={"Member Portal"},
      *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="The row, with its stored body"),
@@ -123,12 +127,12 @@ $app->group('/portal/me/emails', function (RouteCollectorProxy $group) use ($por
      */
     $group->get('/{id:[0-9]+}', function (Request $request, Response $response, array $args) use ($portalEmailActor): Response {
         $service = new EmailLogService();
-        $row = $service->find((int) $args['id']);
+        $row = $service->findSentForMember((int) $args['id'], (int) $portalEmailActor($request)->getId());
 
-        if ($row === null || (int) $row->getPerId() !== (int) $portalEmailActor($request)->getId()) {
+        if ($row === null) {
             return SlimUtils::renderErrorJSON($response, gettext('Email not found'), [], 404);
         }
 
-        return SlimUtils::renderJSON($response, $service->toArray($row, true));
+        return SlimUtils::renderJSON($response, $service->toMemberArray($row, true));
     });
-})->add(new PortalApiMiddleware());
+})->add(new PortalApiMiddleware())->add(new PortalSessionMiddleware());

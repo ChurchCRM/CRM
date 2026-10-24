@@ -80,6 +80,11 @@ final class VolunteerEmailContext
         return $this->occurrenceId;
     }
 
+    public function getStart(): ?\DateTimeInterface
+    {
+        return $this->start;
+    }
+
     /** The occurrence's start in church wall-clock, or '' when it has none. */
     public function getWhen(): string
     {
@@ -159,5 +164,11 @@ final class VolunteerEmailContext
     public static function getDashboardURL(): string
     {
         return SystemURLs::getURL() . '/ministries/dashboard';
+    }
+
+    /** Absolute link to the team leader's My Teams page in the Member Portal. */
+    public static function getMyTeamsURL(): string
+    {
+        return SystemURLs::getURL() . '/portal/teams';
     }
 }

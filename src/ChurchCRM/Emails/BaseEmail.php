@@ -6,6 +6,7 @@ use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\data\Countries;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\EmailLog;
 use ChurchCRM\Service\EmailLogService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Utils\LoggerUtils;
@@ -23,6 +24,8 @@ abstract class BaseEmail
     protected ?int $logFamilyId = null;
     /** User who wrote the message (composer); NULL for automated sends. */
     protected ?int $logSentByUserId = null;
+    /** The queued history row this send completes (EmailQueueService). */
+    private ?EmailLog $queuedLogRow = null;
 
     /**
      * Optional Reply-To, as ['address' => string, 'name' => string].
@@ -146,6 +149,36 @@ abstract class BaseEmail
         return $this;
     }
 
+    /** Record the outcome on this queued history row instead of adding a row per recipient. */
+    public function setQueuedLogRow(EmailLog $row): static
+    {
+        $this->queuedLogRow = $row;
+
+        return $this;
+    }
+
+    /**
+     * After a failed send(): true when trying again cannot help. PHPMailer refused the
+     * address, the server refused the recipient, or it answered with a 5xx code.
+     * Everything else (no connection, timeout, 4xx) may pass on a later attempt.
+     */
+    public function isPermanentFailure(): bool
+    {
+        $code = (int) ($this->mail->getSMTPInstance()->getError()['smtp_code'] ?? 0);
+        if ($code >= 400) {
+            return $code >= 500;
+        }
+        $translations = $this->mail->getTranslations();
+        foreach (['recipients_failed', 'provide_address', 'invalid_address'] as $key) {
+            $prefix = (string) ($translations[$key] ?? '');
+            if ($prefix !== '' && str_starts_with($this->mail->ErrorInfo, $prefix)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     /**
      * Short kind stored in the history log (eml_Kind), e.g. composer, birthday,
      * account.reset. Defaults to the class name without the Email suffix, or
@@ -181,6 +214,7 @@ abstract class BaseEmail
             $this->logPersonId,
             $this->logFamilyId,
             $this->logSentByUserId,
+            $this->queuedLogRow,
         );
     }
 

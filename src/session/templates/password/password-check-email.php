@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\Utils\InputUtils;
@@ -35,7 +36,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
           <span class="small"><?= gettext("Once you receive the email, you can log in with your temporary password and change it to something you prefer.") ?></span>
         </div>
 
-        <a href="<?= SystemURLs::getRootPath() ?>/session/begin" class="btn-sign-in">
+        <a href="<?= AuthenticationManager::getStaffSignInURL() ?>" class="btn-sign-in">
           <i class="fa-solid fa-right-to-bracket"></i>
           <?= gettext("Go to Login") ?>
         </a>

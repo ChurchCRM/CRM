@@ -35,11 +35,6 @@
             <dt>{{ gettext('Type') }}</dt>
             <dd data-field="kindLabel">{{ email.kindLabel }}</dd>
 
-            <dt>{{ gettext('Status') }}</dt>
-            <dd data-field="status">
-                <span class="portal-email-status is-{{ email.status }}">{{ email.statusLabel }}</span>
-            </dd>
-
             <dt>{{ gettext('To') }}</dt>
             <dd data-field="address">{{ email.address|email_wrap }}</dd>
         </dl>

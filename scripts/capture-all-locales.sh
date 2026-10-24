@@ -65,7 +65,7 @@ echo "▶ [1/${#LOCALES[@]}] ${FIRST_LOCALE} — full install + capture" >&2
 run_step "Removing old artifacts" rm -rf playwright/artifacts/
 run_step "Tearing down old Docker CI environment" npm run docker:ci:new-system:down || true
 run_step "Installing Composer dependencies" npm run composer:install
-run_step "Building JavaScript" npm run build:js
+run_step "Building JavaScript" npm run build:webpack
 run_step "Starting Docker CI environment" npm run docker:ci:new-system:start
 run_step "Building signatures" npm run build:signatures
 

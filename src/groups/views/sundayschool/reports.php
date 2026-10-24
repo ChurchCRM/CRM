@@ -109,7 +109,7 @@ $error = $_GET['error'] ?? '';
                 </div>
             </div>
 
-            <div class="d-flex flex-wrap" style="gap:.5rem;">
+            <div class="d-flex flex-wrap gap-2">
                 <button type="submit" name="SubmitClassList" class="btn btn-primary">
                     <i class="fa-solid fa-list me-1"></i><?= gettext('Create Class List') ?>
                 </button>

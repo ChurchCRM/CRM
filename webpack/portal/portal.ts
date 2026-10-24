@@ -18,6 +18,7 @@
 import { ensureCrmHelpers } from "../common/crm-helpers";
 import { formatTimeElements } from "../ministries/components/ui";
 import { formatWhat, formatWhen } from "./member-ui";
+import { reloadWhenSignedOut } from "./portal-session";
 import { type PortalToastType, portalToast, wireRenderedToasts } from "./portal-toast";
 import "./portal.scss";
 
@@ -217,6 +218,7 @@ async function loadVolunteeringCard(): Promise<void> {
       credentials: "same-origin",
       headers: { Accept: "application/json" },
     });
+    reloadWhenSignedOut(response.status);
     if (!response.ok) {
       throw new Error(String(response.status));
     }

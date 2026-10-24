@@ -139,14 +139,14 @@ describe('Error Handler — /kiosk (no crash on unknown routes)', () => {
 describe('Error Handler — /plugins (unauthenticated redirects to login)', () => {
   it('should return 302 to login, not a 500', () => {
     // cy.request() sends no Accept header → isBrowserRequest() = true →
-    // AuthMiddleware redirects unauthenticated browsers to /session/begin (302)
+    // AuthMiddleware redirects unauthenticated browsers to the staff sign-in at /admin/ (302)
     cy.request({
       url: '/plugins/this-route-does-not-exist',
       failOnStatusCode: false,
       followRedirect: false,
     }).then((response) => {
       expect(response.status).to.equal(302);
-      expect(response.headers['location']).to.include('/session/begin');
+      expect(response.headers['location']).to.match(/\/admin\/$/);
     });
   });
 });

@@ -87,11 +87,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="row g-2 align-items-center">
           <div class="col-auto">
             <input type="time"
-                   class="form-control"
+                   class="form-control field-max-w-160"
                    id="newEvtStartTime"
                    name="newEvtStartTime"
                    value="<?= InputUtils::escapeAttribute($start24h) ?>"
-                   style="max-width: 160px;" />
+                   />
           </div>
           <div class="col-auto">
             <button type="submit" class="btn btn-primary">
