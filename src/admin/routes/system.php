@@ -981,7 +981,7 @@ function adminUserEditorNew(Request $request, Response $response): Response
             return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/admin/system/users');
         }
         $sUser    = $person->getLastName() . ', ' . $person->getFirstName();
-        $email    = $person->getEmail();
+        $email    = $person->getOwnEmail();
         $userName = !empty($email) ? $email : $person->getFirstName() . '.' . $person->getLastName();
         $pageArgs['editorPersonId']        = $personId;
         $pageArgs['sUser']            = $sUser;

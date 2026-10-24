@@ -70,7 +70,7 @@ class User extends BaseUser
 
     public function getEmail(): ?string
     {
-        return $this->getPerson()->getEmail();
+        return $this->getPerson()->getOwnEmail();
     }
 
     public function getFullName(): string

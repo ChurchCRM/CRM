@@ -993,6 +993,16 @@ class Person extends BasePerson implements PhotoInterface
         return $this->isActive() ? gettext('Active') : gettext('Inactive');
     }
 
+    /**
+     * The person's own per_Email, with no family fallback. Account mail (reset, locked, new
+     * account) and the portal profile use this so a family email never receives or stands in
+     * for a person's credentials.
+     */
+    public function getOwnEmail(): ?string
+    {
+        return parent::getEmail();
+    }
+
     public function getEmail(): ?string
     {
         if (parent::getEmail() === null) {

@@ -219,7 +219,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     $sHomePhone = InputUtils::legacyFilterInput($_POST['HomePhone']);
     $sWorkPhone = InputUtils::legacyFilterInput($_POST['WorkPhone']);
     $sCellPhone = InputUtils::legacyFilterInput($_POST['CellPhone']);
-    $sEmail = $emailLocked ? (string) $accountPerson->getEmail() : InputUtils::legacyFilterInput($_POST['Email']);
+    $sEmail = $emailLocked ? (string) $accountPerson->getOwnEmail() : InputUtils::legacyFilterInput($_POST['Email']);
     $sWorkEmail = InputUtils::legacyFilterInput($_POST['WorkEmail']);
     $iBirthMonth = InputUtils::legacyFilterInput($_POST['BirthMonth'], 'int');
     $iBirthDay = InputUtils::legacyFilterInput($_POST['BirthDay'], 'int');
@@ -395,7 +395,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $personAlreadyExist = $iPersonID > 0;
         if ($personAlreadyExist) {
             $person = PersonQuery::create()->findOneById($iPersonID);
-            $oldEmail = (string) $person->getEmail();
+            $oldEmail = (string) $person->getOwnEmail();
             $person
                 ->setDateLastEdited(date('YmdHis'))
                 ->setEditedBy(AuthenticationManager::getCurrentUser()->getId());
