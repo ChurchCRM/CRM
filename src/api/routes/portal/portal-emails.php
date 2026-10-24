@@ -36,7 +36,7 @@ use Slim\Routing\RouteCollectorProxy;
  * **Scope decision — mail sent to the whole family is not included.** A row is
  * shown only when `eml_per_ID` is this person. An email sent to a family
  * lands in `email_log_eml` with `eml_per_ID` NULL and `eml_fam_ID` set
- * (see `EmailComposerService::send()`), and this first
+ * (see `EmailComposerService::queue()`), and this first
  * version deliberately leaves those out: every adult of a household would
  * otherwise see mail that was not addressed to them by name, which is a
  * privacy call for the product owner rather than an implementation detail.
