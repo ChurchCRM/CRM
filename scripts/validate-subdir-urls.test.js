@@ -16,6 +16,7 @@ test('flags a root-relative URL handed to the browser', () => {
         'header("Location: /v2/dashboard");',
         "$.get('/api/cart/');",
         "new URL('/api/x', window.location.origin);",
+        "background: url('/Images/login-photo.png') center/cover;",
     ].forEach((code) => assert.equal(flagged(code), 1, code));
 });
 
@@ -45,6 +46,8 @@ test('ignores comments, route registrations and values that are not URLs', () =>
         "const known = map.get('key');",
         "fetch('https://example.com/api');",
         "fetch('//cdn.example.com/x.js');",
+        "background: url('../Images/login-photo.png');",
+        'background: url(data:image/png;base64,AAAA);',
     ].forEach((code) => assert.equal(flagged(code), 0, code));
 });
 
