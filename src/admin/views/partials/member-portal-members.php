@@ -1,6 +1,6 @@
 <?php
 
-use ChurchCRM\Service\MemberSignInListService;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 
 /*
@@ -35,17 +35,10 @@ use ChurchCRM\Utils\InputUtils;
                         <div class="text-secondary small mt-1" id="memberListDescription"></div>
                     </div>
                 </div>
-                <div class="card-body border-bottom py-2 d-none" id="memberListProblemBar">
-                    <div class="d-flex flex-wrap gap-2" role="group" aria-label="<?= gettext('Email problem') ?>" id="memberListProblems">
-                        <button type="button" class="btn btn-sm btn-outline-secondary active" data-problem=""><?= gettext('All') ?></button>
-                        <?php foreach (MemberSignInListService::EMAIL_PROBLEMS as $problem) : ?>
-                            <button type="button" class="btn btn-sm btn-outline-secondary" data-problem="<?= $problem->value ?>">
-                                <?= InputUtils::escapeHTML($problem->label()) ?>
-                                <span class="badge bg-secondary text-white ms-1" data-problem-count="<?= $problem->value ?>"></span>
-                            </button>
-                        <?php endforeach; ?>
-                    </div>
-                </div>
+                <?php
+                $attentionBarHidden = true;
+                require SystemURLs::getDocumentRoot() . '/people/views/partials/email-attention-toolbar.php';
+                ?>
                 <div class="card-body border-bottom py-2 d-none" id="memberListMoveCounts">
                     <div class="d-flex flex-wrap gap-3 small">
                         <span><?= gettext('Moved to a head of household') ?>: <strong data-move-count="head">0</strong></span>

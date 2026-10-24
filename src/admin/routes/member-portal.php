@@ -80,6 +80,7 @@ $memberPortalHandler = function (Request $request, Response $response): Response
             'classifications' => $signInSettings->classificationChoices(),
             'officeRecipients' => $signInSettings->officeRecipients(),
             'maySignInCount' => $signInSettings->maySignInCount(),
+            'sharedAddresses' => count((new MemberSignInListService())->sharedEmails()),
         ],
         // The Members tab (member sign-in design §11.2): which lists to offer;
         // their rows are read a page at a time.

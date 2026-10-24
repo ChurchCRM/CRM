@@ -51,6 +51,7 @@ require __DIR__ . '/routes/people/groups-properties.php';
 require __DIR__ . '/routes/people/groups-form-props.php';
 require __DIR__ . '/routes/people/people-person.php';
 require __DIR__ . '/routes/people/people-persons.php';
+require __DIR__ . '/routes/people/people-sign-in-email.php';
 require __DIR__ . '/routes/people/people-properties.php';
 require __DIR__ . '/routes/people/notes.php';
 require __DIR__ . '/routes/people/timeline.php';

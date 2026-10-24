@@ -588,9 +588,11 @@ class Family extends BaseFamily implements PhotoInterface
     }
 
     /**
+     * The order the family email goes in (member sign-in design §10.1).
+     *
      * @return int[] oldest first; unknown birth-date parts sort last
      */
-    private static function ageSortKey(Person $person): array
+    public static function ageSortKey(Person $person): array
     {
         return [
             (int) $person->getBirthYear() ?: 9999,

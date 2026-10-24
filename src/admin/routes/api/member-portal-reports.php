@@ -50,6 +50,8 @@ function memberPortalPageParams(Request $request, int $defaultLength): array
  *             @OA\Property(property="never-signed-in", type="integer"),
  *             @OA\Property(property="email-attention", type="integer"),
  *             @OA\Property(property="emailProblems", type="object", example={"no_email": 3, "shared_email": 2, "email_unconfirmed": 1}),
+ *             @OA\Property(property="sharedAddresses", type="integer", description="Shared addresses behind the shared_email people"),
+ *             @OA\Property(property="unconfirmedKinds", type="object", example={"family_email": 1, "replacement": 0}),
  *             @OA\Property(property="families-confirmed", type="integer"),
  *             @OA\Property(property="family-emails-not-moved", type="integer"),
  *             @OA\Property(property="familyEmailMoves", type="object", example={"head": 120, "spouse": 4, "held": 30, "noted": 6, "pending": 0, "total": 160}),
@@ -77,6 +79,7 @@ function getMemberPortalListSummaryAPI(Request $request, Response $response): Re
  *     @OA\Parameter(name="length", in="query", @OA\Schema(type="integer", default=25, maximum=100)),
  *     @OA\Parameter(name="search", in="query", description="Part of a name or email", @OA\Schema(type="string")),
  *     @OA\Parameter(name="problem", in="query", description="email-attention only", @OA\Schema(type="string", enum={"no_email", "shared_email", "email_unconfirmed"})),
+ *     @OA\Parameter(name="kind", in="query", description="email-attention with problem=email_unconfirmed only: moved from the family email, or a replacement after the first sign-in", @OA\Schema(type="string", enum={"family_email", "replacement"})),
  *     @OA\Response(response=200, description="The page",
  *         @OA\JsonContent(
  *             @OA\Property(property="total", type="integer", description="Rows in the list"),
@@ -92,10 +95,11 @@ function getMemberPortalListAPI(Request $request, Response $response, array $arg
 {
     [$start, $length, $search] = memberPortalPageParams($request, MemberSignInListService::DEFAULT_PAGE_SIZE);
     $problem = $request->getQueryParams()['problem'] ?? '';
+    $kind = $request->getQueryParams()['kind'] ?? '';
 
     try {
         $lists = new MemberSignInListService(null, AuthenticationManager::getCurrentUser()->isAdmin());
-        $page = $lists->page((string) $args['list'], $start, $length, $search, is_string($problem) ? $problem : '');
+        $page = $lists->page((string) $args['list'], $start, $length, $search, is_string($problem) ? $problem : '', is_string($kind) ? $kind : '');
     } catch (InvalidArgumentException $e) {
         return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400, null, $request);
     }

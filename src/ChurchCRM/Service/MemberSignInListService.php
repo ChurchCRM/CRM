@@ -55,6 +55,10 @@ final class MemberSignInListService
         SignInReason::EMAIL_UNCONFIRMED,
     ];
 
+    /** Kinds of unconfirmed address (§9): moved from the family email, or a replacement after the first sign-in. */
+    public const UNCONFIRMED_MOVED = SignInEmailPolicy::SOURCE_FAMILY_EMAIL;
+    public const UNCONFIRMED_REPLACEMENT = 'replacement';
+
     public const RECENT_DAYS = 30;
     public const DEFAULT_PAGE_SIZE = 25;
     public const MAX_PAGE_SIZE = 100;
@@ -82,10 +86,7 @@ final class MemberSignInListService
      */
     public function summary(): array
     {
-        $problems = [];
-        foreach (self::EMAIL_PROBLEMS as $problem) {
-            $problems[$problem->value] = $this->emailAttentionQuery($problem)->count();
-        }
+        $attention = $this->emailAttentionCounts();
 
         $moves = ['head' => 0, 'spouse' => 0, 'held' => 0, 'noted' => 0, 'pending' => 0];
         $outcomes = FamilyEmailMoveQuery::create()
@@ -102,11 +103,35 @@ final class MemberSignInListService
             self::MAY_SIGN_IN => $this->maySignInNowQuery()->count(),
             self::SIGNED_IN_RECENTLY => $this->signedInRecentlyQuery()->count(),
             self::NEVER_SIGNED_IN => $this->neverSignedInQuery()->count(),
-            self::EMAIL_ATTENTION => array_sum($problems),
-            'emailProblems' => $problems,
+            self::EMAIL_ATTENTION => array_sum($attention['emailProblems']),
+            ...$attention,
             self::FAMILIES_CONFIRMED => $this->familiesConfirmedQuery()->count(),
             self::FAMILY_EMAILS_NOT_MOVED => $moves['noted'],
             'familyEmailMoves' => $moves + ['total' => array_sum($moves)],
+        ];
+    }
+
+    /**
+     * The "Email needs attention" counts: people per problem, the shared
+     * addresses behind them, and the unconfirmed people by kind.
+     *
+     * @return array{emailProblems: array<string, int>, sharedAddresses: int, unconfirmedKinds: array<string, int>}
+     */
+    public function emailAttentionCounts(): array
+    {
+        $problems = [];
+        foreach (self::EMAIL_PROBLEMS as $problem) {
+            $problems[$problem->value] = $this->emailAttentionQuery($problem)->count();
+        }
+        $kinds = [];
+        foreach ([self::UNCONFIRMED_MOVED, self::UNCONFIRMED_REPLACEMENT] as $kind) {
+            $kinds[$kind] = $this->emailAttentionQuery(SignInReason::EMAIL_UNCONFIRMED, $kind)->count();
+        }
+
+        return [
+            'emailProblems' => $problems,
+            'sharedAddresses' => count($this->sharedEmails()),
+            'unconfirmedKinds' => $kinds,
         ];
     }
 
@@ -127,7 +152,7 @@ final class MemberSignInListService
      *
      * @throws InvalidArgumentException for an unknown list or problem
      */
-    public function page(string $list, int $start = 0, int $length = self::DEFAULT_PAGE_SIZE, string $search = '', string $problem = ''): array
+    public function page(string $list, int $start = 0, int $length = self::DEFAULT_PAGE_SIZE, string $search = '', string $problem = '', string $kind = ''): array
     {
         $start = max(0, $start);
         $length = max(1, min(self::MAX_PAGE_SIZE, $length));
@@ -137,7 +162,7 @@ final class MemberSignInListService
             self::MAY_SIGN_IN => $this->peoplePage($this->maySignInNowQuery(), $start, $length, $search),
             self::NEVER_SIGNED_IN => $this->peoplePage($this->neverSignedInQuery(), $start, $length, $search),
             self::SIGNED_IN_RECENTLY => $this->peoplePage($this->signedInRecentlyQuery(), $start, $length, $search, true),
-            self::EMAIL_ATTENTION => $this->emailAttentionPage($this->problemFilter($problem), $start, $length, $search),
+            self::EMAIL_ATTENTION => $this->emailAttentionPage($this->problemFilter($problem), $this->kindFilter($kind), $start, $length, $search),
             self::FAMILIES_CONFIRMED => $this->familiesConfirmedPage($start, $length, $search),
             self::FAMILY_EMAILS_NOT_MOVED => $this->familyEmailsNotMovedPage($start, $length, $search),
             default => throw new InvalidArgumentException(gettext('There is no such list.')),
@@ -165,6 +190,18 @@ final class MemberSignInListService
         }
 
         return $reason;
+    }
+
+    private function kindFilter(string $kind): ?string
+    {
+        if ($kind === '') {
+            return null;
+        }
+        if (!in_array($kind, [self::UNCONFIRMED_MOVED, self::UNCONFIRMED_REPLACEMENT], true)) {
+            throw new InvalidArgumentException(gettext('There is no such kind of unconfirmed email.'));
+        }
+
+        return $kind;
     }
 
     /** The member rule and the blocks, with each person's sign-in row joined. */
@@ -201,9 +238,10 @@ final class MemberSignInListService
 
     /**
      * The people the member rule lets in whose email stops them, in the order
-     * the email rule checks: no email, shared, then unconfirmed.
+     * the email rule checks: no email, shared, then unconfirmed. `$kind`
+     * narrows the unconfirmed ones to UNCONFIRMED_MOVED or UNCONFIRMED_REPLACEMENT.
      */
-    private function emailAttentionQuery(?SignInReason $problem = null): PersonQuery
+    private function emailAttentionQuery(?SignInReason $problem = null, ?string $kind = null): PersonQuery
     {
         $query = $this->memberRuleQuery();
         $shared = $this->sharedEmails();
@@ -218,6 +256,11 @@ final class MemberSignInListService
         }
         if ($problem === SignInReason::EMAIL_UNCONFIRMED) {
             $query->where($unconfirmed);
+            if ($kind === self::UNCONFIRMED_MOVED) {
+                $query->where('signin.UnconfirmedSource = ?', self::UNCONFIRMED_MOVED);
+            } elseif ($kind === self::UNCONFIRMED_REPLACEMENT) {
+                $query->where('(signin.UnconfirmedSource IS NULL OR signin.UnconfirmedSource <> ?)', self::UNCONFIRMED_MOVED);
+            }
 
             return $shared === [] ? $query : $query->where(self::NORMALIZED_EMAIL . ' NOT IN ?', $shared);
         }
@@ -238,7 +281,7 @@ final class MemberSignInListService
      *
      * @return string[]
      */
-    private function sharedEmails(): array
+    public function sharedEmails(): array
     {
         if ($this->sharedEmails !== null) {
             return $this->sharedEmails;
@@ -302,9 +345,12 @@ final class MemberSignInListService
     /**
      * @return array{total: int, filtered: int, rows: list<array<string, mixed>>}
      */
-    private function emailAttentionPage(?SignInReason $problem, int $start, int $length, string $search): array
+    private function emailAttentionPage(?SignInReason $problem, ?string $kind, int $start, int $length, string $search): array
     {
-        $page = $this->peoplePage($this->emailAttentionQuery($problem), $start, $length, $search);
+        if ($problem !== SignInReason::EMAIL_UNCONFIRMED) {
+            $kind = null;
+        }
+        $page = $this->peoplePage($this->emailAttentionQuery($problem, $kind), $start, $length, $search);
         $shared = array_flip($this->sharedEmails());
 
         $sharedOnPage = [];

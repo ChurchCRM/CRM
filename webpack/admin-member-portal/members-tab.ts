@@ -5,7 +5,13 @@
  * list reads GET /admin/api/member-portal/lists/{list} a page at a time.
  */
 import {
-  escapeAttribute,
+  type AttentionCounts,
+  type AttentionRow,
+  type AttentionTools,
+  attentionColumns,
+  wireEmailAttentionTools,
+} from "../sign-in-email/email-attention";
+import {
   escapeHtml,
   familyLink,
   getJSON,
@@ -13,7 +19,6 @@ import {
   onTabShown,
   type PageResult,
   personLink,
-  root,
   type ServerColumn,
   serverTable,
   t,
@@ -28,15 +33,6 @@ interface PersonRow {
   lastSignInDisplay: string;
   lastMethodLabel: string | null;
   lastActivityDisplay: string;
-  problem?: string;
-  problemLabel?: string;
-  sharedWith?: Array<{ personId: number; name: string }>;
-  unconfirmedEmail: string | null;
-  unconfirmedSource: string | null;
-  unconfirmedSourceLabel: string | null;
-  unconfirmedAt: string | null;
-  canConfirmEmail?: boolean;
-  confirmEmailRefusal?: string | null;
 }
 
 interface ConfirmationRow {
@@ -62,26 +58,26 @@ interface NotMovedRow {
   dateDisplay: string;
 }
 
-interface ListSummary {
+interface ListSummary extends AttentionCounts {
   [list: string]: unknown;
-  emailProblems: Record<string, number>;
   familyEmailMoves: Record<string, number>;
 }
 
-type AnyRow = PersonRow | ConfirmationRow | NotMovedRow;
+type AnyRow = PersonRow | AttentionRow | ConfirmationRow | NotMovedRow;
 
 const TABLE_ID = "memberListTable";
 
 let currentList = "may-sign-in";
 let currentProblem = "";
 let table: DataTablesApi | null = null;
+let attention: AttentionTools | null = null;
 
 const email = (row: PersonRow): string =>
   row.email ? `<span class="text-break">${escapeHtml(row.email)}</span>` : muted(t("None"));
 const lastSignIn = (row: PersonRow): string =>
   row.lastSignInDisplay ? escapeHtml(row.lastSignInDisplay) : muted(t("Never"));
 
-const personMenu = (row: PersonRow): string =>
+const personMenu = (row: { personId: number; name: string; familyId: number | null }): string =>
   window.CRM?.renderPersonActionMenu?.(row.personId, row.name, { familyId: row.familyId ?? undefined }) ?? "";
 
 const familyMenu = (row: { familyId: number; familyName: string }): string =>
@@ -103,59 +99,6 @@ const menuColumn: ServerColumn<PersonRow> = {
   className: "text-end w-1 no-export",
   priority: 2,
 };
-
-function problemCell(row: PersonRow): string {
-  const label = `<span class="badge bg-warning text-white">${escapeHtml(row.problemLabel ?? "")}</span>`;
-  if (row.problem === "shared_email" && row.sharedWith?.length) {
-    const others = row.sharedWith.map((other) => personLink(other.personId, other.name)).join(", ");
-    return `${label}<div class="small mt-1">${escapeHtml(t("Also used by"))}: ${others}</div>`;
-  }
-  if (row.problem === "email_unconfirmed") {
-    return `${label}<div class="small text-secondary mt-1">${escapeHtml(row.unconfirmedSourceLabel ?? "")}</div>`;
-  }
-  return label;
-}
-
-/**
- * What staff can do about the row. An unconfirmed address is confirmed here,
- * after checking who the person is, when §9 lets the reader; the rest are
- * fixed on the person's record.
- */
-export function attentionFixCell(row: PersonRow): string {
-  const attributes = `data-cy="attention-fix" data-person-id="${row.personId}" data-problem="${escapeAttribute(row.problem ?? "")}"`;
-  if (row.problem === "email_unconfirmed") {
-    if (row.canConfirmEmail) {
-      return `<div ${attributes}><button type="button" class="btn btn-sm btn-outline-primary member-list-confirm-email"
-        data-person-id="${row.personId}" data-email="${escapeAttribute(row.unconfirmedEmail ?? "")}">
-        <i class="fa-solid fa-check me-1"></i>${escapeHtml(t("Confirm Email Address"))}</button></div>`;
-    }
-    return `<div ${attributes}>${muted(row.confirmEmailRefusal ?? "")}</div>`;
-  }
-  const label = row.problem === "shared_email" ? t("Give each person their own email") : t("Add an email");
-  const href = `${root()}/PersonEditor.php?PersonID=${row.personId}`;
-  return `<div ${attributes}><a class="btn btn-sm btn-outline-primary" href="${escapeAttribute(href)}">${escapeHtml(label)}</a></div>`;
-}
-
-async function confirmEmail(button: HTMLButtonElement): Promise<void> {
-  const config = window.CRM?.memberPortalAdmin as { csrfToken?: string } | undefined;
-  button.disabled = true;
-  const response = await fetch(`${root()}/api/person/${button.dataset.personId}/sign-in/confirm-email`, {
-    method: "POST",
-    credentials: "same-origin",
-    headers: { "content-type": "application/json", "X-CSRF-Token": config?.csrfToken ?? "" },
-    body: JSON.stringify({ email: button.dataset.email ?? "" }),
-  });
-  button.disabled = false;
-  if (!response.ok) {
-    const body = (await response.json().catch(() => null)) as { message?: string } | null;
-    const message = body?.message || t("The email could not be confirmed.");
-    window.CRM?.notify?.(message, { type: "danger" });
-    return;
-  }
-  window.CRM?.notify?.(t("The email is confirmed. It can now be used to sign in."), { type: "success" });
-  table?.draw(false);
-  void loadSummary();
-}
 
 const LISTS: Record<string, { description: () => string; columns: () => ServerColumn<AnyRow>[] }> = {
   "may-sign-in": {
@@ -201,14 +144,7 @@ const LISTS: Record<string, { description: () => string; columns: () => ServerCo
       t(
         "The sign-in rules let them in, but their email does not: they have none, share it with someone else who may sign in, or it is not confirmed yet.",
       ),
-    columns: () =>
-      [
-        nameColumn,
-        { title: t("Problem"), render: problemCell, priority: 3 },
-        { title: t("Email"), render: email, priority: 5 },
-        { title: t("What to do"), render: attentionFixCell, priority: 4 },
-        menuColumn,
-      ] as ServerColumn<AnyRow>[],
+    columns: () => attentionColumns(personMenu) as ServerColumn<AnyRow>[],
   },
   "families-confirmed": {
     description: () =>
@@ -265,6 +201,7 @@ function load(start: number, length: number, search: string): Promise<PageResult
     length,
     search,
     problem: currentList === "email-attention" ? currentProblem : "",
+    kind: currentList === "email-attention" ? (attention?.kind() ?? "") : "",
   });
 }
 
@@ -293,7 +230,7 @@ function showList(list: string): void {
   document.getElementById("memberListProblemBar")?.classList.toggle("d-none", list !== "email-attention");
   document.getElementById("memberListMoveCounts")?.classList.toggle("d-none", list !== "family-emails-not-moved");
 
-  table = serverTable<AnyRow>(tableElement, definition.columns(), load);
+  table = serverTable<AnyRow>(tableElement, definition.columns(), load, { onDraw: () => attention?.afterDraw() });
 }
 
 async function loadSummary(): Promise<void> {
@@ -307,19 +244,53 @@ async function loadSummary(): Promise<void> {
     const count = summary[badge.dataset.countFor ?? ""];
     badge.textContent = typeof count === "number" ? String(count) : "";
   }
-  for (const badge of document.querySelectorAll<HTMLElement>("[data-problem-count]")) {
-    badge.textContent = String(summary.emailProblems?.[badge.dataset.problemCount ?? ""] ?? 0);
-  }
+  attention?.applyCounts(summary);
   for (const cell of document.querySelectorAll<HTMLElement>("[data-move-count]")) {
     cell.textContent = String(summary.familyEmailMoves?.[cell.dataset.moveCount ?? ""] ?? 0);
   }
 }
 
+function refresh(): void {
+  table?.draw(false);
+  void loadSummary();
+}
+
+function setProblem(problem: string): void {
+  currentProblem = problem;
+  for (const other of document.querySelectorAll<HTMLButtonElement>("#memberListProblems [data-problem]")) {
+    other.classList.toggle("active", (other.dataset.problem ?? "") === problem);
+  }
+  attention?.setProblem(problem);
+}
+
+/** The Sign-in tab's "Fix shared emails" link: this tab, the shared addresses, and the preview. */
+function openSharedEmailFix(): void {
+  const link = document.getElementById("portal-members-tab");
+  const tabs = (window.bootstrap as unknown as { Tab?: { getOrCreateInstance(el: Element): { show(): void } } }).Tab;
+  if (link && tabs) {
+    tabs.getOrCreateInstance(link).show();
+  }
+  setProblem("shared_email");
+  if (currentList === "email-attention") {
+    table?.draw();
+  } else {
+    showList("email-attention");
+  }
+  attention?.openSharedEmailFix();
+}
+
 export function wireMembersTab(): void {
   const picker = document.getElementById("memberListPicker");
-  if (!picker) {
+  const tableElement = document.getElementById(TABLE_ID) as HTMLTableElement | null;
+  if (!picker || !tableElement) {
     return;
   }
+  attention = wireEmailAttentionTools({
+    table: tableElement,
+    csrfToken: () => (window.CRM?.memberPortalAdmin as { csrfToken?: string } | undefined)?.csrfToken ?? "",
+    onChanged: refresh,
+    onFilter: () => table?.draw(),
+  });
 
   picker.addEventListener("click", (event) => {
     const button = (event.target as HTMLElement).closest<HTMLButtonElement>("[data-list]");
@@ -333,31 +304,16 @@ export function wireMembersTab(): void {
     if (!button) {
       return;
     }
-    currentProblem = button.dataset.problem ?? "";
-    for (const other of document.querySelectorAll<HTMLButtonElement>("#memberListProblems [data-problem]")) {
-      other.classList.toggle("active", other === button);
-    }
+    setProblem(button.dataset.problem ?? "");
     table?.draw();
   });
 
-  document.getElementById(TABLE_ID)?.addEventListener("click", (event) => {
-    const button = (event.target as HTMLElement).closest<HTMLButtonElement>(".member-list-confirm-email");
-    if (!button) {
-      return;
-    }
-    window.bootbox?.confirm({
-      title: t("Confirm Email Address"),
-      message: t(
-        "Confirm this email only after checking, in person or by phone, that it is this person's own address. Once confirmed, it can be used to sign in to the Member Portal.",
-      ),
-      buttons: { confirm: { label: t("Confirm Email Address"), className: "btn-primary" } },
-      callback: (confirmed: boolean) => {
-        if (confirmed) {
-          void confirmEmail(button);
-        }
-      },
+  for (const link of document.querySelectorAll<HTMLElement>("[data-open-shared-email-fix]")) {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      openSharedEmailFix();
     });
-  });
+  }
 
   onTabShown("portal-members-tab", () => {
     void loadSummary();

@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\Portal\PortalCalendarService;
+use ChurchCRM\Service\MemberSignInListService;
 use ChurchCRM\Service\MemberSignInSettingsService;
 use ChurchCRM\Portal\PortalStatsService;
 use ChurchCRM\Portal\ThemeException;
@@ -271,7 +272,8 @@ function getMemberSignInSettingsAPI(Request $request, Response $response): Respo
  *     @OA\Response(response=200, description="Saved; the stored values come back",
  *         @OA\JsonContent(
  *             @OA\Property(property="values", type="object"),
- *             @OA\Property(property="maySignInCount", type="integer")
+ *             @OA\Property(property="maySignInCount", type="integer"),
+ *             @OA\Property(property="sharedAddresses", type="integer", description="Shared personal emails that stop sign-in under the saved rule")
  *         )
  *     ),
  *     @OA\Response(response=400, description="A value is wrong; `errors` names each setting and its problem, and nothing was saved"),
@@ -291,7 +293,12 @@ function saveMemberSignInSettingsAPI(Request $request, Response $response): Resp
         return SlimUtils::renderErrorJSON($response, (string) reset($errors), ['errors' => $errors], 400, null, $request);
     }
 
-    return SlimUtils::renderJSON($response, ['success' => true, 'values' => $settings->values(), 'maySignInCount' => $settings->maySignInCount()]);
+    return SlimUtils::renderJSON($response, [
+        'success' => true,
+        'values' => $settings->values(),
+        'maySignInCount' => $settings->maySignInCount(),
+        'sharedAddresses' => count((new MemberSignInListService())->sharedEmails()),
+    ]);
 }
 
 /**

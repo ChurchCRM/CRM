@@ -1,8 +1,8 @@
 /**
- * A DataTable that reads one page at a time from an admin API returning
+ * A DataTable that reads one page at a time from an API returning
  * `{total, filtered, rows}`, for the Members, Permissions and Audit tabs of
- * Admin → Member Portal. Columns are not sortable: each list has one order,
- * chosen on the server.
+ * Admin → Member Portal and the staff Email needs attention page. Columns are
+ * not sortable: each list has one order, chosen on the server.
  */
 
 export interface PageResult<T> {
@@ -73,7 +73,12 @@ export function familyLink(familyId: number | null, name: string | null): string
 }
 
 /** GET an admin API path and parse the JSON, or throw with the server's message. */
-export async function getJSON<T>(
+export function getJSON<T>(path: string, params: Record<string, string | number | null | undefined> = {}): Promise<T> {
+  return getFrom<T>(`/admin/api/${path}`, params);
+}
+
+/** GET a path under the web root, such as /api/persons/…, and parse the JSON. */
+export async function getFrom<T>(
   path: string,
   params: Record<string, string | number | null | undefined> = {},
 ): Promise<T> {
@@ -83,7 +88,7 @@ export async function getJSON<T>(
       query.set(key, String(value));
     }
   }
-  const response = await fetch(`${root()}/admin/api/${path}${query.toString() ? `?${query.toString()}` : ""}`, {
+  const response = await fetch(`${root()}${path}${query.toString() ? `?${query.toString()}` : ""}`, {
     credentials: "same-origin",
     headers: { Accept: "application/json" },
   });
@@ -110,7 +115,12 @@ export function serverTable<T>(
   table: HTMLTableElement,
   columns: ServerColumn<T>[],
   load: PageLoader<T>,
-  options: { searching?: boolean; stackOnNarrowScreens?: boolean; onError?: (message: string) => void } = {},
+  options: {
+    searching?: boolean;
+    stackOnNarrowScreens?: boolean;
+    onError?: (message: string) => void;
+    onDraw?: () => void;
+  } = {},
 ): DataTablesApi {
   destroyTable(table);
   const stack = options.stackOnNarrowScreens ?? false;
@@ -143,6 +153,7 @@ export function serverTable<T>(
       bottomStart: "pageLength",
       bottomEnd: ["info", "paging"],
     },
+    drawCallback: options.onDraw,
     columns: columns.map((column) => ({
       title: column.title,
       data: null,

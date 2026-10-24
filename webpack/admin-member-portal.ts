@@ -78,6 +78,7 @@ interface SignInSaveResponse {
   message?: string;
   errors?: Record<string, string>;
   maySignInCount?: number;
+  sharedAddresses?: number;
 }
 
 const root = (): string => window.CRM?.root ?? "";
@@ -472,6 +473,12 @@ async function saveSignInSettings(form: HTMLFormElement, button: HTMLButtonEleme
   const count = document.getElementById("memberSignInMayCount");
   if (count && typeof body?.maySignInCount === "number") {
     count.textContent = String(body.maySignInCount);
+  }
+  if (typeof body?.sharedAddresses === "number") {
+    for (const shared of document.querySelectorAll<HTMLElement>("[data-shared-address-count]")) {
+      shared.textContent = String(body.sharedAddresses);
+    }
+    document.getElementById("memberSignInSharedEmails")?.classList.toggle("d-none", body.sharedAddresses === 0);
   }
   const memberSignIn = form.querySelector<HTMLInputElement>('input[name="bMemberSignIn"]');
   if (memberSignIn && !memberSignIn.checked && document.getElementById("memberSignInEmailProblem")) {
