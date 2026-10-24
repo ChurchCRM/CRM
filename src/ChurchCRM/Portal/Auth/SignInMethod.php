@@ -22,7 +22,10 @@ enum SignInMethod: string
         return $this === self::EMAIL_LINK || $this === self::EMAIL_CODE;
     }
 
-    /** STAFF and ASSISTED get the blocks for everyone but not the member rule (§4, §6.4, §6.5). */
+    /**
+     * STAFF gets the blocks for everyone but not the member rule (§4, §6.4).
+     * ASSISTED gets neither: only its own three checks (`PortalSignInRules`, §6.5).
+     */
     public function appliesMemberRule(): bool
     {
         return $this !== self::STAFF && $this !== self::ASSISTED;

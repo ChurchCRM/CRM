@@ -49,8 +49,10 @@ final class PortalSignInRules
     }
 
     /**
-     * Login as User checks only these (design §6.5): the office may need to see
-     * what an inactive person, or one outside the member rule, would see.
+     * Login as User checks only these, at the start and on every request (design
+     * §6.5): the office may need to see what an inactive person, a deactivated
+     * family, someone awaiting review or outside the member rule, or someone with
+     * no usable email would see, even while member sign-in is off.
      */
     private static function loginAsUserRefusal(Person $person, ?PersonSignin $state): ?SignInReason
     {

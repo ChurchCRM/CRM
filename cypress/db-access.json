@@ -69,6 +69,10 @@
             "kind": "fixture",
             "reason": "Member sign-in row 12 (#10463): a remembered device for the member is written only by the email sign-in flow (row 7), so it is inserted to show a device removed during Login as User names the administrator, then deleted."
         },
+        "cypress/e2e/ui-admin/admin.login-as-user-eligibility.spec.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in row 12 (#10463): a death date is set only through the legacy person editor form, so it is set and cleared in SQL to show a Login as User session ends once the person is deceased."
+        },
         "cypress/e2e/ui-admin/admin.member-portal-members.spec.js": {
             "kind": "fixture",
             "reason": "Member sign-in row 9 (#10463): a shared email, the 7.9.0 family email move rows and remembered devices (rows 7 and 11 write them) are fixtures with no HTTP surface; the portal's verify note is removed afterwards because notes have no delete API for a member confirmation."
