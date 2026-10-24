@@ -149,11 +149,14 @@ plugin declares in `plugin.json`; only members who hold it see it.
 
 - **Who holds it:** a rule from `getPortalRules()` (worked out live), or a
   grant an administrator gives on the person's page.
-- **Pages and API:** `portalRoutesFile` is included with `$group` and
+- **Pages and API:** `portalRoutesFile` is included with `$routes` and
   `$portalArea` — `'pages'` under `/portal/plugins/{id}/…`, `'api'` under
-  `/api/portal/plugins/{id}/…` — behind the portal session. Guard every
-  route with `RequirePortalCapability`, and render pages with
-  `PortalTwig::renderPluginPage()` from `portal/templates/`.
+  `/api/portal/plugins/{id}/…` — behind the portal session. `$routes`
+  (`PortalPluginRoutes`) has `get`, `post`, `put`, `patch` and `delete`,
+  and each takes the route's capability as its third argument: a key, or
+  a `RequirePortalCapability` for a scoped check. A route without one
+  can't be added. Render pages with `PortalTwig::renderPluginPage()` from
+  `portal/templates/`.
 - **Nav:** `getPortalNavItems()` returns `{label, url, icon, capability}`.
 - **Off and uninstall:** a disabled plugin's capabilities are refused and
   its pages and nav disappear; given grants stay and are deleted on
@@ -162,9 +165,9 @@ plugin declares in `plugin.json`; only members who hold it see it.
 ```php
 // portal/routes.php
 if ($portalArea === 'pages') {
-    $group->get('/notices', function ($request, $response) {
+    $routes->get('/notices', function ($request, $response) {
         return PortalTwig::renderPluginPage($response, 'my-plugin', 'notices.html.twig', ['pageTitle' => 'Notices']);
-    })->add(RequirePortalCapability::any('plugin.my-plugin.notices'));
+    }, 'plugin.my-plugin.notices');
 }
 ```
 
