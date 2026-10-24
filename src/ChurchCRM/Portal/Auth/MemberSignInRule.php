@@ -125,12 +125,12 @@ final class MemberSignInRule
     }
 
     /**
-     * Everyone who may sign in now under the blocks for everyone and the
+     * Everyone who may sign in now under the blocks for member sign-in and the
      * member rule, whatever their email. The admin lists add the email checks.
      */
     public function maySignInQuery(): PersonQuery
     {
-        return $this->filter(PortalSignInRules::filterNotBlocked(PersonQuery::create()));
+        return $this->filter(PortalSignInRules::filterMemberNotBlocked(PersonQuery::create()));
     }
 
     /**
