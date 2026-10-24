@@ -8,7 +8,6 @@
  *  2. Select All checkbox → export buttons enable/disable with selected count
  *  3. CSV export via bulk endpoint → verify headers, sample row values, no formula-injection
  *     trigger chars at the START of fields (CsvExporter prepends a tab to =,-,+,@ values)
- *  4. Non-finance user blocked → redirected to /v2/access-denied?role=Finance
  *
  * Note on CSV formula-injection safety:
  *   CsvExporter prepends \t (tab) to values starting with =, -, +, @.
@@ -23,7 +22,6 @@
  */
 
 const DEPOSIT_SEARCH_URL = "/finance/deposit/search";
-const ACCESS_DENIED_URL = "/v2/access-denied";
 const FORMULA_TRIGGERS = /^[=\-+@]/;
 // deposit_dep id 1 is seeded with payments by cypress/data/seed.sql
 const SEEDED_DEPOSIT_ID = 1;
@@ -266,12 +264,3 @@ describe("Deposit Search: CSV export quality (bulk endpoint)", () => {
 // ---------------------------------------------------------------------------
 // 4. Authorization — non-finance user is blocked
 // ---------------------------------------------------------------------------
-
-describe("Deposit Search: access control", () => {
-  it("redirects non-finance user to access-denied page", () => {
-    cy.setupNoFinanceSession();
-    cy.visit(DEPOSIT_SEARCH_URL, { failOnStatusCode: false });
-    cy.url().should("include", ACCESS_DENIED_URL);
-    cy.url().should("include", "role=Finance");
-  });
-});

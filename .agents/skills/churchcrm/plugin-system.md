@@ -12,17 +12,12 @@ Registry detail: `plugin-registry.md`.
 ## Registry
 
 Live URL is `CentralServices::PLUGIN_REGISTRY_URL` in `src/ChurchCRM/Remote/CentralServices.php`.
-Today that is the **External** branch:
-`https://raw.githubusercontent.com/ChurchCRM/CRM/External/approved-plugins.json`
-
-No bundled local-fallback file exists — see `hosted-remote-config.md` for what
-happens when the fetch fails.
+It points at `approved-plugins.json` on the `External` branch. A failed fetch yields an empty registry for the session (`hosted-remote-config.md`).
 Loader: `src/ChurchCRM/Plugin/ApprovedPluginRegistry.php`.
-Do not invent a different branch. If the constant changes, this card follows the constant.
 
 ## Runtime
 
-Read `PluginManager` and the hook classes. Community plugins ship their own translations. Plugins are current product.
+Read `PluginManager` and the hook classes. Community plugins ship their own translations.
 
 ## Menu items
 

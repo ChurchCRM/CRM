@@ -468,9 +468,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               return '<span class="badge bg-warning text-dark">' + i18next.t('Pending') + '</span>';
             }
             if (isOnline) {
-              return '<span class="badge bg-success">' + i18next.t('Online') + '</span>';
+              return '<span class="badge bg-success-lt text-success">' + i18next.t('Online') + '</span>';
             }
-            return '<span class="badge bg-secondary-lt">' + i18next.t('Offline') + '</span>';
+            return '<span class="badge bg-secondary-lt text-secondary">' + i18next.t('Offline') + '</span>';
           }
         },
         {

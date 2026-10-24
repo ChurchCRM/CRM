@@ -23,7 +23,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 $statusBadge = static function (string $status): array {
     return match ($status) {
         ThemeValidator::LEVEL_ERROR => ['bg-danger text-white', 'fa-circle-xmark', gettext('Errors')],
-        ThemeValidator::LEVEL_WARNING => ['bg-warning text-white', 'fa-triangle-exclamation', gettext('Warnings')],
+        ThemeValidator::LEVEL_WARNING => ['bg-warning text-dark', 'fa-triangle-exclamation', gettext('Warnings')],
         default => ['bg-success text-white', 'fa-circle-check', gettext('Valid')],
     };
 };
@@ -47,7 +47,7 @@ $calendarKind = static function (array $portalCalendar): string {
         : gettext('Ministry calendar');
 };
 
-$themesDocUrl = 'https://github.com/ChurchCRM/CRM/blob/master/docs/portal-themes.md';
+$themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration/member-portal-theme-guide', 'member_portal_themes');
 ?>
 
 <div class="container-fluid" id="memberPortalPage">
@@ -68,18 +68,18 @@ $themesDocUrl = 'https://github.com/ChurchCRM/CRM/blob/master/docs/portal-themes
 
     <ul class="nav nav-tabs" role="tablist" id="memberPortalTabs">
         <li class="nav-item" role="presentation">
-            <a class="nav-link active" id="portal-settings-tab" data-bs-toggle="tab" href="#portal-settings" role="tab">
+            <a class="nav-link active" id="portal-statistics-tab" data-bs-toggle="tab" href="#portal-statistics" role="tab">
+                <i class="fa-solid fa-chart-simple me-2"></i><?= gettext('Statistics') ?>
+            </a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="portal-settings-tab" data-bs-toggle="tab" href="#portal-settings" role="tab">
                 <i class="fa-solid fa-sliders me-2"></i><?= gettext('Settings') ?>
             </a>
         </li>
         <li class="nav-item" role="presentation">
             <a class="nav-link" id="portal-themes-tab" data-bs-toggle="tab" href="#portal-themes" role="tab">
                 <i class="fa-solid fa-palette me-2"></i><?= gettext('Themes') ?>
-            </a>
-        </li>
-        <li class="nav-item" role="presentation">
-            <a class="nav-link" id="portal-statistics-tab" data-bs-toggle="tab" href="#portal-statistics" role="tab">
-                <i class="fa-solid fa-chart-simple me-2"></i><?= gettext('Statistics') ?>
             </a>
         </li>
         <!-- Calendars (MP5, issue #9866): which calendars members see. -->
@@ -93,7 +93,7 @@ $themesDocUrl = 'https://github.com/ChurchCRM/CRM/blob/master/docs/portal-themes
     <div class="tab-content pt-3">
 
         <!-- ============================ Settings ============================ -->
-        <div class="tab-pane fade show active" id="portal-settings" role="tabpanel">
+        <div class="tab-pane fade" id="portal-settings" role="tabpanel">
             <div class="row">
                 <div class="col-12 col-xl-6">
                     <div class="card mb-3">
@@ -122,7 +122,7 @@ $themesDocUrl = 'https://github.com/ChurchCRM/CRM/blob/master/docs/portal-themes
                                     <i class="fa-solid fa-circle-check me-2"></i><?= gettext('Activate') ?>
                                 </button>
                             </div>
-                            <p class="form-hint mt-2">
+                            <p class="form-text mt-2">
                                 <?= gettext('A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM.') ?>
                             </p>
 
@@ -234,7 +234,7 @@ $themesDocUrl = 'https://github.com/ChurchCRM/CRM/blob/master/docs/portal-themes
                                             <ul class="list-unstyled mb-0">
                                                 <?php foreach ($theme['findings'] as $finding): ?>
                                                     <li class="py-1">
-                                                        <span class="badge <?= $finding['level'] === ThemeValidator::LEVEL_ERROR ? 'bg-danger text-white' : 'bg-warning text-white' ?> me-2">
+                                                        <span class="badge <?= $finding['level'] === ThemeValidator::LEVEL_ERROR ? 'bg-danger text-white' : 'bg-warning text-dark' ?> me-2">
                                                             <?= $finding['level'] === ThemeValidator::LEVEL_ERROR ? gettext('Error') : gettext('Warning') ?>
                                                         </span>
                                                         <?php if ($finding['file'] !== ''): ?>
@@ -257,7 +257,7 @@ $themesDocUrl = 'https://github.com/ChurchCRM/CRM/blob/master/docs/portal-themes
         </div>
 
         <!-- =========================== Statistics =========================== -->
-        <div class="tab-pane fade" id="portal-statistics" role="tabpanel">
+        <div class="tab-pane fade show active" id="portal-statistics" role="tabpanel">
             <p class="text-secondary">
                 <?= gettext('These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else.') ?>
             </p>
@@ -308,12 +308,13 @@ $themesDocUrl = 'https://github.com/ChurchCRM/CRM/blob/master/docs/portal-themes
                                 <th><?= gettext('Login') ?></th>
                                 <th><?= gettext('Last sign-in') ?></th>
                                 <th><?= gettext('Last seen in the portal') ?></th>
+                                <th class="w-1 no-export"><?= gettext('Actions') ?></th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php if ($stats['recentSignIns'] === []): ?>
                                 <tr id="portalNoRecentSignIns">
-                                    <td colspan="4" class="text-secondary">
+                                    <td colspan="5" class="text-secondary">
                                         <?= gettext('No member has signed in to the Member Portal yet.') ?>
                                     </td>
                                 </tr>
@@ -332,6 +333,35 @@ $themesDocUrl = 'https://github.com/ChurchCRM/CRM/blob/master/docs/portal-themes
                                                 ? InputUtils::escapeHTML($signIn['lastPortalActivity'])
                                                 : '<span class="text-secondary">&mdash;</span>' ?>
                                         </td>
+                                        <td class="w-1">
+                                            <?php $personId = (int) $signIn['personId']; ?>
+                                            <?php $inCart = isset($_SESSION['aPeopleCart']) && in_array($personId, $_SESSION['aPeopleCart'], false); ?>
+                                            <div class="dropdown">
+                                                <button class="btn btn-sm btn-ghost-secondary" type="button"
+                                                        data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false"
+                                                        aria-label="<?= InputUtils::escapeAttribute(gettext('Actions')) ?>">
+                                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                                </button>
+                                                <div class="dropdown-menu dropdown-menu-end">
+                                                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/people/view/<?= $personId ?>">
+                                                        <i class="fa-solid fa-eye me-2"></i><?= gettext('View') ?>
+                                                    </a>
+                                                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $personId ?>">
+                                                        <i class="fa-solid fa-pencil me-2"></i><?= gettext('Edit') ?>
+                                                    </a>
+                                                    <div class="dropdown-divider"></div>
+                                                    <button type="button"
+                                                        class="dropdown-item <?= $inCart ? 'RemoveFromCart text-danger' : 'AddToCart' ?>"
+                                                        data-cart-id="<?= $personId ?>"
+                                                        data-cart-type="person"
+                                                        data-label-add="<?= InputUtils::escapeAttribute(gettext('Add to Cart')) ?>"
+                                                        data-label-remove="<?= InputUtils::escapeAttribute(gettext('Remove from Cart')) ?>">
+                                                        <i class="<?= $inCart ? 'fa-solid fa-trash' : 'fa-solid fa-cart-shopping' ?> me-2"></i>
+                                                        <span class="cart-label"><?= $inCart ? gettext('Remove from Cart') : gettext('Add to Cart') ?></span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </td>
                                     </tr>
                                 <?php endforeach; ?>
                             <?php endif; ?>
@@ -349,7 +379,7 @@ $themesDocUrl = 'https://github.com/ChurchCRM/CRM/blob/master/docs/portal-themes
 
             <div class="card">
                 <div class="table-responsive">
-                    <table class="table table-vcenter card-table" id="portalCalendarsTable">
+                    <table class="table table-vcenter card-table portal-calendars-table" id="portalCalendarsTable">
                         <thead>
                             <tr>
                                 <th><?= gettext('Calendar') ?></th>

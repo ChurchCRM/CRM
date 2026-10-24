@@ -3,6 +3,7 @@
 use ChurchCRM\dto\Notification;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\model\ChurchCRM\EventAttendQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
@@ -12,6 +13,7 @@ use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
+use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -19,6 +21,35 @@ use Slim\Views\PhpRenderer;
 
 // Device routes - these are accessed by kiosk devices themselves (not admins)
 // They use kiosk cookie authentication, not user authentication
+
+/**
+ * IDs of everyone on the kiosk's active class roster (group members + walk-in guests).
+ * Iterates because array_column() reads zeros from a Propel ObjectCollection.
+ *
+ * @return list<int>
+ */
+function getKioskRosterIds(object $assignment): array
+{
+    $ids = [];
+    foreach ($assignment->getActiveGroupMembers() as $member) {
+        $ids[] = (int) $member->getId();
+    }
+    foreach ($assignment->getEventGuests() as $guest) {
+        $ids[] = (int) $guest->getId();
+    }
+
+    return $ids;
+}
+
+/**
+ * True when $guardianId is an adult family member of the child (the only people a kiosk may record).
+ */
+function isKioskGuardianOf(int $childId, int $guardianId): bool
+{
+    $child = PersonQuery::create()->findOneById($childId);
+
+    return $child !== null && in_array($guardianId, array_column(getAdultFamilyMembers($child), 'Id'), true);
+}
 
 /**
  * Return the adult members of a person's family, excluding the person
@@ -91,7 +122,7 @@ function getAdultFamilyMembers(Person $person): array
 
         $photo = new Photo('Person', $member->getId());
         $members[] = [
-            'Id'        => $member->getId(),
+            'Id'        => (int) $member->getId(), // explicit int cast — ensures strict in_array() works
             'FirstName' => $member->getFirstName(),
             'LastName'  => $member->getLastName(),
             'hasPhoto'  => $photo->hasUploadedPhoto(),
@@ -139,14 +170,14 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
         $renderer = new PhpRenderer(__DIR__ . '/../templates/kioskDevices/');
         $pageObjects = ['sRootPath' => $_SESSION['sRootPath']];
 
-        return $renderer->render($response, 'sunday-school-class-view.php', $pageObjects);
+        return $renderer->render($response, 'event-attendance-view.php', $pageObjects);
     });
 
     $group->get('/', function (Request $request, Response $response) {
         $renderer = new PhpRenderer(__DIR__ . '/../templates/kioskDevices/');
         $pageObjects = ['sRootPath' => $_SESSION['sRootPath']];
 
-        return $renderer->render($response, 'sunday-school-class-view.php', $pageObjects);
+        return $renderer->render($response, 'event-attendance-view.php', $pageObjects);
     });
 
     // Heartbeat: only requires kiosk to exist (not accepted) so pending
@@ -175,6 +206,10 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
         }
         [, , $event] = $result;
 
+        if ($checkedInById !== null && !isKioskGuardianOf($personId, $checkedInById)) {
+            return SlimUtils::renderErrorJSON($response, gettext('Checked-in-by person is not an adult family member'), [], 403);
+        }
+
         $status = $event->checkInPerson($personId, $checkedInById);
 
         return SlimUtils::renderJSON($response, $status);
@@ -194,6 +229,10 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
             return $result;
         }
         [, , $event] = $result;
+
+        if ($checkedOutById !== null && !isKioskGuardianOf($personId, $checkedOutById)) {
+            return SlimUtils::renderErrorJSON($response, gettext('Checked-out-by person is not an adult family member'), [], 403);
+        }
 
         $status = $event->checkOutPerson($personId, $checkedOutById);
 
@@ -373,6 +412,54 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
                                 $smsEnabled ||
                                 $openLpEnabled;
 
+        // Resolve checkedInBy per currently-checked-in person.
+        // Batch-load all active attend records for this event in a single query,
+        // then map by PersonId for O(1) lookup. Avoids N EventAttendQuery calls.
+        /** @var array<int, \ChurchCRM\model\ChurchCRM\EventAttend> $attendByPersonId */
+        $attendByPersonId = [];
+        foreach (EventAttendQuery::create()
+            ->filterByEventId($event->getId())
+            ->filterByCheckoutDate(null, Criteria::ISNULL) // only currently checked-in records
+            ->find() as $attendRecord) {
+            $attendByPersonId[(int) $attendRecord->getPersonId()] = $attendRecord;
+        }
+
+        $checkerIds = [];
+        foreach ($attendByPersonId as $attend) {
+            $checkinId = (int) $attend->getCheckinId();
+            if ($checkinId > 0) {
+                $checkerIds[$checkinId] = $checkinId;
+            }
+        }
+
+        /** @var array<int, array{Id:int, FirstName:string, LastName:string, hasPhoto:bool}> $checkerData */
+        $checkerData = [];
+        if ($checkerIds !== []) {
+            foreach (PersonQuery::create()->filterById($checkerIds, Criteria::IN)->find() as $checker) {
+                $checkerData[(int) $checker->getId()] = [
+                    'Id'        => (int) $checker->getId(),
+                    'FirstName' => $checker->getFirstName(),
+                    'LastName'  => $checker->getLastName(),
+                    'hasPhoto'  => (new Photo('Person', $checker->getId()))->hasUploadedPhoto(),
+                ];
+            }
+        }
+
+        foreach ($peopleData as &$personEntry) {
+            $attendRecord = (int) $personEntry['status'] === 1 ? ($attendByPersonId[$personEntry['Id']] ?? null) : null;
+            $checker = $attendRecord !== null ? ($checkerData[(int) $attendRecord->getCheckinId()] ?? null) : null;
+            if ($checker !== null) {
+                // Only publish a checker who is an adult in the child's family (same rule as the photo route).
+                $child = PersonQuery::create()->findOneById($personEntry['Id']);
+                $adultIds = $child !== null ? array_column(getAdultFamilyMembers($child), 'Id') : [];
+                if (!in_array($checker['Id'], $adultIds, true)) {
+                    $checker = null;
+                }
+            }
+            $personEntry['checkedInBy'] = $checker;
+        }
+        unset($personEntry); // break the reference from the foreach
+
         return SlimUtils::renderJSON($response, [
             'People' => $peopleData,
             'GroupName' => $groupName,
@@ -397,18 +484,68 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
         // public props/array keys, not ORM getters), which silently 403s every
         // photo/family request with a confusing "not in roster" error. Iterate
         // and call ->getId() instead. See PR #8706 history; same trap recurred.
-        $rosterIds = [];
-        foreach ($assignment->getActiveGroupMembers() as $member) {
-            $rosterIds[] = (int) $member->getId();
-        }
-        foreach ($assignment->getEventGuests() as $guest) {
-            $rosterIds[] = (int) $guest->getId();
-        }
+        $rosterIds = getKioskRosterIds($assignment);
         if (!in_array($personId, $rosterIds, true)) {
             return SlimUtils::renderErrorJSON($response, gettext('Person not in active class roster'), [], 403);
         }
 
         $photo = new Photo('Person', $personId);
+        if (!$photo->hasUploadedPhoto()) {
+            return SlimUtils::renderErrorJSON($response, gettext('Photo not found'), [], 404);
+        }
+
+        $response->getBody()->write($photo->getPhotoBytes());
+
+        return $response->withAddedHeader('Content-type', $photo->getPhotoContentType());
+    });
+
+    /**
+     * Serve a photo of an adult family member (guardian) of a roster child.
+     *
+     * Authorization:
+     * - {PersonId} must be in the active class roster (a child being tracked).
+     * - {MemberId} must be an adult family member of that child (same logic as
+     *   the /family endpoint — prevents enumeration of arbitrary person photos
+     *   via a kiosk cookie).
+     *
+     * Used by the kiosk UI to display guardian photos in the
+     * "Checked In By" / "Checked Out By" modal and on member cards.
+     */
+    $group->get('/activeClassMember/{PersonId}/family/{MemberId}/photo', function (Request $request, Response $response, array $args) use ($getKioskFromCookie): Response {
+        $result = requireAcceptedKioskWithEvent($getKioskFromCookie, $response);
+        if ($result instanceof Response) {
+            return $result;
+        }
+        [, $assignment] = $result;
+
+        $personId = InputUtils::filterInt($args['PersonId'] ?? 0);
+        $memberId = InputUtils::filterInt($args['MemberId'] ?? 0);
+
+        if ($personId <= 0 || $memberId <= 0) {
+            return SlimUtils::renderErrorJSON($response, gettext('Invalid person ID'), [], 400);
+        }
+
+        // Verify the child is in the active class roster.
+        $rosterIds = getKioskRosterIds($assignment);
+        if (!in_array($personId, $rosterIds, true)) {
+            return SlimUtils::renderErrorJSON($response, gettext('Person not in active class roster'), [], 403);
+        }
+
+        // Verify MemberId is an adult family member of the roster child.
+        $person = PersonQuery::create()->findOneById($personId);
+        if ($person === null) {
+            return SlimUtils::renderErrorJSON($response, gettext('Person not found'), [], 404);
+        }
+        $adultMembers = getAdultFamilyMembers($person);
+        $adultMemberIds = array_column($adultMembers, 'Id');
+        if (!in_array($memberId, $adultMemberIds, true)) {
+            return SlimUtils::renderErrorJSON($response, gettext('Member is not an adult family member of the roster child'), [], 403);
+        }
+
+        $photo = new Photo('Person', $memberId);
+        if (!$photo->hasUploadedPhoto()) {
+            return SlimUtils::renderErrorJSON($response, gettext('Photo not found'), [], 404);
+        }
 
         $response->getBody()->write($photo->getPhotoBytes());
 
@@ -434,13 +571,7 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
         // public props/array keys, not ORM getters), which silently 403s every
         // photo/family request with a confusing "not in roster" error. Iterate
         // and call ->getId() instead. See PR #8706 history; same trap recurred.
-        $rosterIds = [];
-        foreach ($assignment->getActiveGroupMembers() as $member) {
-            $rosterIds[] = (int) $member->getId();
-        }
-        foreach ($assignment->getEventGuests() as $guest) {
-            $rosterIds[] = (int) $guest->getId();
-        }
+        $rosterIds = getKioskRosterIds($assignment);
         if (!in_array($personId, $rosterIds, true)) {
             return SlimUtils::renderErrorJSON($response, gettext('Person not in active class roster'), [], 403);
         }
@@ -580,5 +711,5 @@ $app->get('/', function (Request $request, Response $response) {
     $renderer = new PhpRenderer(__DIR__ . '/../templates/kioskDevices/');
     $pageObjects = ['sRootPath' => $_SESSION['sRootPath']];
 
-    return $renderer->render($response, 'sunday-school-class-view.php', $pageObjects);
+    return $renderer->render($response, 'event-attendance-view.php', $pageObjects);
 });

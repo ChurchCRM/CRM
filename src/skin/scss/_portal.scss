@@ -1,15 +1,13 @@
 // Member Portal
 //
 // Compiled into its own bundle (`skin/v2/portal.min.css`, webpack entry
-// `portal`) and deliberately NOT part of the core `churchcrm` bundle: the core
-// bundle has an RTL-flipped twin, and a church theme must never be flipped
-// twice. Everything here uses CSS logical properties only, so the same
-// stylesheet is correct in both directions.
+// `portal`), separate from the core `churchcrm` bundle: the core bundle has an
+// RTL-flipped twin and a church theme must not be flipped twice. Everything
+// here uses CSS logical properties, so one stylesheet serves both directions.
 //
-// Every value a church might want to change is a custom property. The
-// fallbacks below are the system theme's; `Include/themes/default/theme.css`
-// carries the same block, and a church theme that redefines a handful of them
-// recolours every portal page (design §3.5).
+// Every value a church might want to change is a custom property. These are
+// the system theme's defaults; a church theme that redefines a handful of them
+// recolours every portal page.
 
 :root {
     --portal-primary: #1f4e79;
@@ -28,8 +26,7 @@
     --portal-hero-image: none;
     --portal-content-width: 1100px;
     --portal-gap: 1rem;
-    // Notice colours. Each is a solid background with the text drawn on it, the
-    // way the admin side's toasts read.
+    // Notice colours: a solid background and the text drawn on it.
     --portal-success: #2fb344;
     --portal-success-contrast: #ffffff;
     --portal-warning: var(--portal-accent);
@@ -47,6 +44,12 @@
     --portal-text: #f1f3f5;
     --portal-muted: #a6acb3;
     --portal-border: #343a40;
+}
+
+// Reserve the scrollbar's width so the header stays put when a page grows past,
+// or shrinks below, the viewport height.
+html {
+    scrollbar-gutter: stable;
 }
 
 .portal-body {
@@ -94,9 +97,7 @@
     text-decoration: none;
 }
 
-// The core bundle's `a:hover` (0,1,1) outweighs `.portal-brand` (0,1,0), so
-// without this the church's name turned link-blue and picked up an underline
-// under the pointer. The church's identity is not a link that lights up.
+// Outweighs the core bundle's `a:hover` so the church name keeps its colour.
 .portal-brand:hover,
 .portal-brand:focus,
 .portal-brand:focus-visible {
@@ -104,8 +105,7 @@
     text-decoration: none;
 }
 
-// Nothing above removes the browser's focus ring, but the header's dark
-// background makes the default one hard to see, so draw our own.
+// The header's dark background hides the default focus ring.
 .portal-brand:focus-visible {
     outline: 2px solid currentcolor;
     outline-offset: 3px;
@@ -129,10 +129,7 @@
     display: flex;
     align-items: center;
     gap: var(--portal-gap);
-    // The header wraps on a phone, and a wrapped line starts at the leading
-    // edge — which would put the account button on the left and hang its
-    // right-aligned menu off the side of the screen. Keep the actions on the
-    // trailing edge whether they wrap or not.
+    // Keeps the actions on the trailing edge when the header wraps on a phone.
     margin-inline-start: auto;
 }
 
@@ -161,23 +158,14 @@
     color: inherit;
 }
 
-.portal-nav-toggle {
-    display: inline-flex;
-}
-
 // Account menu ---------------------------------------------------------------
-//
-// "Hello <first name>" over a dropdown of the things a member does to their
-// account. Everything is a portal token, so a church theme restyles it with the
-// rest of the header.
 
 .portal-account {
     position: relative;
 }
 
 .portal-account-label {
-    // The header is tight on a phone and a long first name must not push the
-    // caret off the edge.
+    // A long first name must not push the caret off a phone header.
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -186,7 +174,6 @@
 
 .portal-account-caret {
     font-size: 0.75rem;
-    // The caret is decoration; it must not grow the button's hit area.
     flex: 0 0 auto;
 }
 
@@ -229,8 +216,7 @@
 // Navigation -----------------------------------------------------------------
 
 .portal-nav {
-    // Collapsed on a phone until the header's toggle opens it; always open
-    // from the tablet breakpoint up.
+    // Collapsed on a phone until the header's toggle opens it.
     display: none;
     background-color: var(--portal-surface);
     border-block-end: 1px solid var(--portal-border);
@@ -290,10 +276,8 @@
 .portal-layout {
     display: grid;
     gap: var(--portal-gap);
-    // minmax(0, 1fr), not 1fr: a grid track sized 1fr is still floored at the
-    // item's min-content width, so one wide child — a calendar grid, a table —
-    // would stretch the whole page and make the body scroll sideways. This lets
-    // the column shrink and leaves the wide child to scroll inside its own card.
+    // minmax(0, 1fr) lets the column shrink, so a wide child (calendar grid,
+    // table) scrolls inside its card instead of widening the page.
     grid-template-columns: minmax(0, 1fr);
 }
 
@@ -352,25 +336,9 @@
     letter-spacing: 0.04em;
 }
 
-.portal-page-title {
-    margin: 0 0 0.5rem;
-    font-family: var(--portal-font-heading);
-    font-size: 1.5rem;
-}
-
 .portal-card-lead {
     color: var(--portal-text);
     font-weight: 600;
-}
-
-.portal-card-link {
-    color: var(--portal-primary);
-    text-decoration: none;
-}
-
-.portal-card-link:hover,
-.portal-card-link:focus-visible {
-    text-decoration: underline;
 }
 
 .portal-action-row {
@@ -408,7 +376,6 @@
 // Detail lists ---------------------------------------------------------------
 //
 // One column on a phone, label beside value from the tablet breakpoint up.
-
 .portal-detail-list {
     display: grid;
     grid-template-columns: 1fr;
@@ -426,10 +393,8 @@
     overflow-wrap: anywhere;
 }
 
-// The compact variant a card uses. A card in the home page's grid is a column,
-// not a page, so the label stays above its value at every width — the
-// two-column rule below would leave a long email address wrapping one
-// character at a time.
+// Compact variant for a home-page card: the label stays above its value at
+// every width, so a long email address does not wrap one character at a time.
 
 .portal-card-details {
     margin-block: 0.5rem 0.75rem;
@@ -449,8 +414,7 @@
     margin-block-end: 0;
 }
 
-// Contact lines — the church office's email and phone, offered as links a
-// phone can act on.
+// Contact lines: the church office's email and phone.
 
 .portal-contact-list {
     margin: 0 0 1rem;
@@ -581,7 +545,7 @@
 }
 
 .portal-input.is-invalid {
-    border-color: #d63939;
+    border-color: var(--portal-danger);
 }
 
 textarea.portal-input {
@@ -596,7 +560,7 @@ textarea.portal-input {
 
 .portal-field-error {
     margin: 0.25rem 0 0;
-    color: #d63939;
+    color: var(--portal-danger);
     font-size: 0.8125rem;
 }
 
@@ -640,29 +604,21 @@ textarea.portal-input {
 
 // Flash ----------------------------------------------------------------------
 //
-// Every portal notice — the server's `flash` messages and anything a page
-// bundle raises after a fetch — is a toast in this one fixed container. Fixed
-// is the point: a notice must never take part in the document flow, or the
-// page jumps under the member's hands as it appears and again as it goes.
-// (It used to be inserted into the header's flex row, which pushed the church
-// logo halfway across the screen.)
-//
-// Phone first: the stack spans the viewport with a margin each side. From the
-// tablet breakpoint up it becomes a column in the top-right corner, where the
-// admin side's toasts live.
+// Every portal notice, server `flash` or raised by a page bundle, is a toast in
+// this fixed container, so a notice never shifts the page layout.
+// Phone first: the stack spans the viewport. From the tablet breakpoint up it
+// is a column in the top-right corner.
 
 .portal-toasts {
     position: fixed;
-    inset-block-start: var(--portal-toast-offset, var(--portal-gap));
+    inset-block-start: var(--portal-gap);
     inset-inline: var(--portal-gap);
-    // Above the account menu (1045) — a message about what just happened
-    // outranks it.
+    // Above the account menu (1045).
     z-index: 1050;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    // The container spans the viewport even when it is empty, so it must never
-    // swallow a click. Each toast takes its own clicks back.
+    // The empty container spans the viewport; each toast takes its own clicks.
     pointer-events: none;
 }
 
@@ -719,7 +675,6 @@ textarea.portal-input {
     }
 }
 
-// The toast retires on a timer; this is how it leaves.
 .portal-flash-leaving {
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -737,8 +692,6 @@ textarea.portal-input {
     }
 }
 
-// A member who asked for less motion still gets the message and still gets it
-// taken away again — just without the movement.
 @media (prefers-reduced-motion: reduce) {
     .portal-flash {
         animation: none;
@@ -812,9 +765,7 @@ textarea.portal-input {
     cursor: progress;
 }
 
-// The secondary action: same shape, no fill. Declared after .portal-button so
-// its background wins — both are single-class selectors, so source order is
-// the only thing deciding it.
+// Secondary action: same shape, no fill. Must follow .portal-button.
 .portal-button-quiet {
     background-color: transparent;
     border: 1px solid var(--portal-border);
@@ -855,10 +806,8 @@ textarea.portal-input {
     color: inherit;
 }
 
-// The church's social accounts (#9907). `margin-inline-start: auto` is what
-// keeps them on the trailing edge: `justify-content: space-between` only
-// right-aligns them while both halves share a line, and on a phone the row
-// wraps and the social block gets a line of its own.
+// `margin-inline-start: auto` keeps the social links on the trailing edge when
+// the row wraps on a phone.
 
 .portal-footer-social {
     display: flex;
@@ -882,8 +831,8 @@ textarea.portal-input {
 
 // Hero -----------------------------------------------------------------------
 //
-// Empty in the system theme: a church theme sets --portal-hero-image and puts
-// its own markup in the `hero` block.
+// A church theme sets --portal-hero-image and puts its own markup in the
+// `hero` block.
 
 .portal-hero {
     background-image: var(--portal-hero-image);
@@ -891,12 +840,7 @@ textarea.portal-input {
     background-position: center;
 }
 
-// Calendar (MP5, #9866) ------------------------------------------------------
-//
-// Mobile first: the page is one column, the legend wraps, and FullCalendar
-// opens in its list view below the tablet breakpoint (the bundle decides that,
-// because a CSS media query cannot change which view is rendered). The detail
-// panel is part of the page rather than a dialog, so a phone scrolls to it.
+// Calendar -------------------------------------------------------------------
 
 .portal-page-title {
     margin: 0 0 var(--portal-gap);
@@ -930,8 +874,7 @@ textarea.portal-input {
     flex-shrink: 0;
 }
 
-// Legend toggles (D27). The "off" state is a hollow swatch and a struck-through
-// name, so it does not rest on colour; 44px tall for a thumb.
+// Legend toggles. The "off" state is a hollow swatch and a struck-through name.
 .portal-calendar-legend-hint {
     margin: 0 0 0.5rem;
     font-size: 0.8125rem;
@@ -970,9 +913,8 @@ textarea.portal-input {
     border: 2px solid var(--portal-calendar-swatch, var(--portal-border));
 }
 
-// A calendar belonging to a ministry this member leads (#9869). The row is given
-// the portal's own text colour rather than the muted one, and a small tag says why
-// — colour alone would be the only signal otherwise, and it is the swatch's job.
+// A calendar of a ministry this member leads: stronger text and a tag, so the
+// swatch colour is not the only signal.
 .portal-calendar-legend-mine {
     color: var(--portal-text);
     font-weight: 600;
@@ -988,19 +930,15 @@ textarea.portal-input {
     white-space: nowrap;
 }
 
-// FullCalendar's own toolbar buttons (#9869). FullCalendar 7 emits hashed class
-// names, so `headerToolbarClass` in portal-calendar.ts is the only stable hook;
-// the buttons inside it are 34px tall out of the box and the responsive
-// guidelines ask for 44px. Sizing the element rather than the class keeps working
-// if FullCalendar changes what it renders inside the toolbar.
+// FullCalendar emits hashed class names; `headerToolbarClass` in
+// portal-calendar.ts is the only stable hook for its 34px toolbar buttons.
 .portal-fc-toolbar button {
     min-block-size: 44px;
     min-inline-size: 44px;
 }
 
 .portal-calendar-grid {
-    // FullCalendar's own grid can be wider than a phone; let it scroll inside
-    // its card rather than making the page scroll sideways.
+    // FullCalendar's grid can be wider than a phone; scroll inside the card.
     overflow-x: auto;
 }
 
@@ -1024,13 +962,13 @@ textarea.portal-input {
     line-height: 1;
     padding: 0.35rem;
     cursor: pointer;
-    // A comfortable touch target on a phone.
     min-inline-size: 2.75rem;
     min-block-size: 2.75rem;
 }
 
 .portal-calendar-detail-title {
-    margin: 0 2.75rem 0.75rem 0;
+    margin-block: 0 0.75rem;
+    margin-inline-end: 2.75rem;
     font-family: var(--portal-font-heading);
     font-size: 1.25rem;
 }
@@ -1088,10 +1026,13 @@ textarea.portal-input {
 }
 
 .portal-card-link {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 44px;
     color: var(--portal-primary);
     text-decoration: none;
     font-size: 0.875rem;
+    font-weight: 500;
 
     &:hover,
     &:focus {
@@ -1099,11 +1040,7 @@ textarea.portal-input {
     }
 }
 
-// Calendar subscription (design §5.3) ----------------------------------------
-//
-// Mobile first: the page heading is a wrapping flex row, so on a phone the
-// Subscribe button sits under the title and from the tablet breakpoint up it
-// sits at the end of the title's row.
+// Calendar subscription -------------------------------------------------------
 
 .portal-page-heading {
     display: flex;
@@ -1119,13 +1056,11 @@ textarea.portal-input {
 }
 
 .portal-calendar-subscribe-dialog {
-    // Wider than the default dialog: the feed address is a long single line and
-    // a member has to be able to see enough of it to recognise it.
+    // Wider than the default dialog: the feed address is a long single line.
     inline-size: min(36rem, calc(100vw - 2rem));
 }
 
 .portal-calendar-subscribe-notice {
-    // Empty until something happens, so it must not reserve a line of space.
     &:empty {
         display: none;
     }
@@ -1154,8 +1089,6 @@ textarea.portal-input {
 
     .portal-input {
         flex: 1 1 14rem;
-        // The address is long and is read, not typed; a small monospace face
-        // makes a mistyped character visible.
         font-family: var(--bs-font-monospace, monospace);
         font-size: 0.8125rem;
     }
@@ -1163,12 +1096,9 @@ textarea.portal-input {
 
 // Email History --------------------------------------------------------------
 //
-// The list is one `<table>` at every width — the same markup, the same reading
-// order, so nothing is duplicated or hidden from a screen reader. On a phone it
-// is unrolled into a stack of blocks: each row is a card, each cell carries its
-// column name from `data-label`, and the header row goes away because every
-// cell now names itself. From the tablet breakpoint up the browser's own table
-// layout takes over again (see the media block below).
+// One `<table>` at every width. On a phone each row is a block and each cell
+// prints its column name from `data-label`; from the tablet breakpoint up the
+// browser's table layout takes over (see the media block below).
 
 .portal-table {
     inline-size: 100%;
@@ -1177,9 +1107,7 @@ textarea.portal-input {
 }
 
 .portal-table thead {
-    // Off-screen rather than `display: none`: a phone hides the header row, but
-    // the table still has one, so assistive technology that reads the table
-    // structure is not left guessing what a cell is.
+    // Visually hidden, not `display: none`, so screen readers keep the headers.
     position: absolute;
     inline-size: 1px;
     block-size: 1px;
@@ -1205,9 +1133,6 @@ textarea.portal-input {
     gap: 0.5rem;
     padding-block: 0.15rem;
 
-    // The column's name, printed beside the value only while the table is
-    // unrolled. `attr()` keeps it in the markup's own language, already
-    // translated by Twig.
     &::before {
         content: attr(data-label);
         flex: 0 0 5.5rem;
@@ -1221,7 +1146,6 @@ textarea.portal-input {
 .portal-email-subject {
     font-size: 1rem;
     font-weight: 600;
-    // A long subject wraps rather than pushing the row sideways.
     overflow-wrap: anywhere;
 }
 
@@ -1238,27 +1162,6 @@ textarea.portal-input {
     font-size: 0.75rem;
 }
 
-// Sent is the ordinary case and stays quiet; a member only needs to notice the
-// other two, so those carry the palette's notice colours.
-.portal-email-status {
-    display: inline-block;
-    padding: 0.1rem 0.6rem;
-    border-radius: 999px;
-    font-size: 0.75rem;
-    background-color: var(--portal-surface-alt);
-    color: var(--portal-muted);
-
-    &.is-failed {
-        background-color: var(--portal-danger);
-        color: var(--portal-danger-contrast);
-    }
-
-    &.is-skipped {
-        background-color: var(--portal-warning);
-        color: var(--portal-warning-contrast);
-    }
-}
-
 .portal-pager {
     display: flex;
     flex-wrap: wrap;
@@ -1270,15 +1173,12 @@ textarea.portal-input {
 .portal-pager-position {
     color: var(--portal-muted);
     font-size: 0.875rem;
-    // With only one of the two buttons present the position still sits between
-    // them rather than jumping to an edge.
-    order: 0;
     flex: 1 1 auto;
     text-align: center;
 }
 
-// The stored email body, in its sandboxed frame. It cannot be measured from
-// here (see email/show.html.twig), so it gets a generous height and scrolls.
+// The stored email body in its sandboxed frame; its height cannot be measured
+// (see email/show.html.twig), so it has a fixed height and scrolls.
 .portal-email-body {
     inline-size: 100%;
     block-size: min(60vh, 32rem);
@@ -1290,8 +1190,6 @@ textarea.portal-input {
 // Tablet and up --------------------------------------------------------------
 
 @media (min-width: 768px) {
-    // Off the phone the stack stops spanning the screen and becomes a column in
-    // the top-right corner, beside nothing and on top of everything.
     .portal-toasts {
         inset-inline-start: auto;
         inline-size: var(--portal-toast-width);
@@ -1327,7 +1225,7 @@ textarea.portal-input {
         grid-template-columns: minmax(8rem, max-content) 1fr;
     }
 
-    // …except inside a card, which is a column and stays one.
+    // A card stays one column.
     .portal-card-details {
         grid-template-columns: 1fr;
     }
@@ -1350,9 +1248,7 @@ textarea.portal-input {
         }
     }
 
-    // Off the phone the email list rolls back up into a real table: the header
-    // row comes back, each cell is a cell again, and the per-cell column names
-    // are not needed because the header says them once.
+    // The email list becomes a real table; the header row names the columns.
     .portal-table thead {
         position: static;
         inline-size: auto;
@@ -1388,8 +1284,7 @@ textarea.portal-input {
         }
     }
 
-    // The subject is the column that should take the space a long one needs;
-    // the other three are as narrow as their content.
+    // The subject column takes the remaining width.
     .portal-table-cell:nth-child(1),
     .portal-table-cell:nth-child(2),
     .portal-table-cell:nth-child(4) {
@@ -1403,8 +1298,7 @@ textarea.portal-input {
         grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
-    // The calendar card carries a list rather than one sentence, so it gets two
-    // of the four columns while the other cards keep one each.
+    // The calendar card carries a list, so it spans two columns.
     .portal-card-calendar {
         grid-column: span 2;
     }

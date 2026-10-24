@@ -212,7 +212,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="card-header">
         <h3 class="card-title"><?= gettext('People Checked In') ?></h3>
     </div>
-    <div class="card-body" style="overflow: visible;">
+    <div class="card-body overflow-visible">
         <table id="checkedinTable" class="table table-vcenter table-hover data-table">
             <thead>
                 <tr>

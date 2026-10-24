@@ -31,7 +31,6 @@ function viewAccessDenied(Request $request, Response $response, array $args): Re
         'EditRecords',
         'DeleteRecords',
         'AddRecords',
-        'MenuOptions',
         'Notes',
         'AddEvent',
         'Authentication',

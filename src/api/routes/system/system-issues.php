@@ -54,6 +54,7 @@ $app->post('/issues', function (Request $request, Response $response, array $arg
         'Window Size |' . $data->windowSize->height . 'x' . $data->windowSize->width . "\r\n" .
         'Page Size |' . $data->pageSize->height . 'x' . $data->pageSize->width . "\r\n" .
         'Platform Information | ' . php_uname($mode = 'a') . "\r\n" .
+        'Web Server |' . ($_SERVER['SERVER_SOFTWARE'] ?? 'Unknown') . "\r\n" .
         'PHP Version | ' . phpversion() . "\r\n" .
         'SQL Version | ' . SystemService::getDBServerVersion() . "\r\n" .
         'ChurchCRM Version |' . VersionUtils::getInstalledVersion() . "\r\n" .

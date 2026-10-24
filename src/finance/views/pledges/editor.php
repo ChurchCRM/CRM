@@ -64,7 +64,7 @@ $familySearchHint = SystemConfig::getBooleanValue('bUseDonationEnvelopes')
     </div>
 
     <!-- Toast feedback -->
-    <div id="pledge-toast-container" class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index:9999;">
+    <div id="pledge-toast-container" class="toast-container position-fixed bottom-0 end-0 p-3 toast-container-top">
         <div id="pledge-toast" class="toast align-items-center text-white border-0" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="d-flex">
                 <div class="toast-body" id="pledge-toast-body"></div>
@@ -483,7 +483,7 @@ $familySearchHint = SystemConfig::getBooleanValue('bUseDonationEnvelopes')
         const date     = document.getElementById('Date').value;
         const fyid     = parseInt(fyEl ? fyEl.value : '0', 10);
         const methodEl2 = document.getElementById('Method');
-        // Pledges have no Method dropdown; default to CASH so genGroupKey never receives null iCheckNo
+        // Pledges have no Method dropdown; default to CASH so generateGroupKey never receives null iCheckNo
         const method   = methodEl2 ? methodEl2.value : (PLEDGE_TYPE === 'Pledge' ? 'CASH' : 'CHECK');
         const checkEl  = document.getElementById('CheckNo');
         const checkNo  = checkEl ? checkEl.value : '';

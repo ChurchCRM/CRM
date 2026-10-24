@@ -104,9 +104,14 @@
     "scripts": ["/mysql/upgrade/7.8.0.sql"],
     "dbVersion": "7.8.0"
   },
-  "current": {
+  "pre-7.8.1": {
     "versions": ["7.8.0"],
-    "scripts": [],
+    "scripts": ["/mysql/upgrade/7.8.1.sql", "/mysql/upgrade/7.8.1.php"],
     "dbVersion": "7.8.1"
+  },
+  "current": {
+    "versions": ["7.8.1"],
+    "scripts": ["/mysql/upgrade/7.8.2.sql", "/mysql/upgrade/7.8.2-pledge-groupkey-index.sql"],
+    "dbVersion": "7.8.2"
   }
 }

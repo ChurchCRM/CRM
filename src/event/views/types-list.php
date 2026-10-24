@@ -11,7 +11,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <div class="card">
   <div class="card-body">
     <?php if (count($rows) > 0): ?>
-      <div style="overflow: visible;">
+      <div class="overflow-visible">
         <table id="eventTypesTable" class="table table-hover table-vcenter">
           <thead>
             <tr>
@@ -87,7 +87,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       </div>
     <?php else: ?>
       <div class="text-center text-body-secondary py-5">
-        <i class="fa-solid fa-calendar mb-3" style="font-size: 3rem;"></i>
+        <i class="fa-solid fa-calendar mb-3 empty-state-icon"></i>
         <p><?= gettext('No event types defined yet.') ?></p>
         <a href="<?= $sRootPath ?>/event/types/new" class="btn btn-primary">
           <i class="fa-solid fa-plus me-1"></i><?= gettext('Add Event Type') ?>

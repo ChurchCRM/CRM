@@ -32,7 +32,7 @@ class NominatimGeocoder extends AbstractHttpGeocoder
         'municipality', 'county', 'state', 'region', 'province', 'country', 'postcode', 'administrative',
     ];
 
-    public function geocode(string $street, ?string $city, ?string $state, ?string $zip, ?string $country): ?GeocodeResult
+    public function geocode(string $street, ?string $city, ?string $state, ?string $zip, ?string $country, int $timeoutSeconds = 10): GeocodeOutcome
     {
         $baseParams = [
             'format' => 'json',
@@ -66,9 +66,9 @@ class NominatimGeocoder extends AbstractHttpGeocoder
                 $structured['country'] = trim($country);
             }
 
-            $result = $this->search($structured, false);
-            if ($result !== null) {
-                return $result;
+            $outcome = $this->search($structured, false, $timeoutSeconds);
+            if ($outcome->status !== GeocodeOutcome::NOT_FOUND) {
+                return $outcome;
             }
 
             // Structured queries need OSM's exact street spelling; retry once
@@ -80,35 +80,41 @@ class NominatimGeocoder extends AbstractHttpGeocoder
             sleep(1);
         }
 
-        return $this->search($freeForm, true);
+        return $this->search($freeForm, true, $timeoutSeconds);
     }
 
     /**
      * @param array<string, mixed> $params
      * @param bool $requireStreetLevel reject a result that is only a locality (see LOCALITY_ADDRESS_TYPES)
      */
-    private function search(array $params, bool $requireStreetLevel): ?GeocodeResult
+    private function search(array $params, bool $requireStreetLevel, int $timeoutSeconds): GeocodeOutcome
     {
-        $results = $this->fetchJson(
+        $response = $this->fetchJson(
             self::ENDPOINT . '?' . http_build_query($params),
-            ['User-Agent: ChurchCRM/7.0 (+https://churchcrm.io)']
+            ['User-Agent: ChurchCRM/7.0 (+https://churchcrm.io)'],
+            $timeoutSeconds
         );
-        if (empty($results) || !isset($results[0]['lat'], $results[0]['lon'])) {
-            return null;
+        if ($response->data === null) {
+            return $this->failureOutcome($response);
+        }
+
+        $results = $response->data;
+        if ($results === [] || !isset($results[0]['lat'], $results[0]['lon'])) {
+            return GeocodeOutcome::notFound();
         }
 
         $addressType = strtolower((string) ($results[0]['addresstype'] ?? $results[0]['type'] ?? ''));
         if ($requireStreetLevel && \in_array($addressType, self::LOCALITY_ADDRESS_TYPES, true)) {
             $this->logger->debug('Geocoding: Nominatim free-form result is only a locality (' . $addressType . '), ignoring');
-            return null;
+            return GeocodeOutcome::notFound();
         }
 
-        return new GeocodeResult(
+        return GeocodeOutcome::found(new GeocodeResult(
             (float) $results[0]['lat'],
             (float) $results[0]['lon'],
             self::NAME,
             self::addressParts($results[0]['address'] ?? null)
-        );
+        ));
     }
 
     /**

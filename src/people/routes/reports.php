@@ -1,6 +1,5 @@
 <?php
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\PeopleReportService;
 use ChurchCRM\Slim\Middleware\Request\Auth\StaffRoleAuthMiddleware;
@@ -27,23 +26,18 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
  */
 function peopleReportLinks(): array
 {
-    $user = AuthenticationManager::getCurrentUser();
-    $links = [
+    return [
         [
             'href' => '/DirectoryReports.php',
             'title' => gettext('People Directory'),
             'description' => gettext('Printable directory of all people, grouped by family'),
         ],
-    ];
-    if ($user->isMenuOptionsEnabled()) {
-        $links[] = [
+        [
             'href' => '/LettersAndLabels.php',
             'title' => gettext('Letters & Mailing Labels'),
             'description' => gettext('Generate letters and mailing labels'),
-        ];
-    }
-
-    return $links;
+        ],
+    ];
 }
 
 function getPeopleReportsIndex(Request $request, Response $response, array $args): Response
@@ -104,6 +98,7 @@ function getPeopleReport(Request $request, Response $response, array $args): Res
         'report' => $report,
         'values' => $values,
         'missing' => $missing,
+        'submitted' => $request->getQueryParams() !== [],
         'options' => $options,
         'rows' => $rows,
         'reportParams' => $reportParams,

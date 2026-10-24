@@ -423,7 +423,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                     </h5>
                     <span class="badge bg-info text-white ms-auto"><?= $numRows ?> <?= gettext('fields') ?></span>
                 </div>
-                <div class="card-body" style="overflow: visible;">
+                <div class="card-body overflow-visible">
                         <table class="table table-hover table-sm">
                             <thead>
                                 <tr>

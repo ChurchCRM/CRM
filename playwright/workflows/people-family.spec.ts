@@ -40,6 +40,7 @@ test.describe('People & Families', () => {
       category: 'People & Families',
       dark: 'people-family-overview-dark',
       purpose: 'Show how ChurchCRM organizes people and families, with member photos and a geocoded address',
+      usedIn: ['docs', 'website'],
     });
   });
 
@@ -98,6 +99,7 @@ test.describe('People & Families', () => {
       title: 'Family Map',
       category: 'People & Families',
       purpose: 'Show the family map with geocoded pins across the congregation',
+      usedIn: ['docs'],
     });
   });
 
@@ -125,6 +127,7 @@ test.describe('People & Families', () => {
       title: 'People Directory',
       category: 'People & Families',
       purpose: 'Show the filtered person directory list',
+      usedIn: ['website'],
     });
   });
 
@@ -150,6 +153,7 @@ test.describe('People & Families', () => {
       title: 'Inactive Member Profile',
       category: 'People & Families',
       purpose: 'Show a person profile for an inactive member, including the inactive status banner',
+      usedIn: ['website'],
     });
   });
 
@@ -169,6 +173,7 @@ test.describe('People & Families', () => {
       title: 'Deceased Member Profile',
       category: 'People & Families',
       purpose: 'Show a person profile for a deceased member, including the Deceased badge and date',
+      usedIn: ['website'],
     });
   });
 

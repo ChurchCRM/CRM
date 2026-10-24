@@ -1,7 +1,6 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
@@ -339,23 +338,6 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
             }
 
             $financialService = new FinancialService();
-
-            // Guard: prevent edits to payments in a closed deposit
-            $firstPledge = PledgeQuery::create()->filterByGroupKey($groupKey)->findOne();
-            if ($firstPledge !== null) {
-                $deposit = $firstPledge->getDepId()
-                    ? DepositQuery::create()->findOneById($firstPledge->getDepId())
-                    : null;
-                if ($deposit !== null && $deposit->getClosed()) {
-                    return SlimUtils::renderErrorJSON(
-                        $response,
-                        gettext('Cannot edit a payment in a closed deposit'),
-                        [],
-                        409
-                    );
-                }
-            }
-
             $groupPayment = $financialService->updatePledgeOrPayment($payment, $groupKey);
         } catch (\InvalidArgumentException $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Pledge group not found'), [], 404);

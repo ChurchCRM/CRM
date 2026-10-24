@@ -22,7 +22,7 @@ export function initRefreshCoordinatesBtn() {
 
     try {
       this.disabled = true;
-      this.innerHTML = `<i class="fa-solid fa-spinner fa-spin mr-1"></i>${t("Refreshing...")}`;
+      this.innerHTML = `<i class="fa-solid fa-spinner fa-spin me-1"></i>${t("Refreshing...")}`;
 
       const result = await fetchAPIJSON(`family/${familyId}/geocode`, {
         method: "POST",
@@ -31,12 +31,12 @@ export function initRefreshCoordinatesBtn() {
       if (result.success) {
         this.classList.remove("btn-outline-success");
         this.classList.add("btn-outline-primary");
-        this.innerHTML = `<i class="fa-solid fa-check mr-1"></i>${t("Coordinates Updated")}`;
+        this.innerHTML = `<i class="fa-solid fa-check me-1"></i>${t("Coordinates Updated")}`;
         setTimeout(() => location.reload(), 1500);
       } else {
         this.classList.remove("btn-outline-success");
         this.classList.add("btn-outline-danger");
-        this.innerHTML = `<i class="fa-solid fa-exclamation-triangle mr-1"></i>${t("Failed to geocode")}`;
+        this.innerHTML = `<i class="fa-solid fa-exclamation-triangle me-1"></i>${t("Failed to geocode")}`;
         this.disabled = false;
         setTimeout(() => {
           this.classList.remove("btn-outline-danger");

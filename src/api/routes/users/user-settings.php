@@ -52,8 +52,20 @@ $app->group('/user/{userId:[0-9]+}/setting', function (RouteCollectorProxy $grou
         $user = $request->getAttribute('user');
         $settingName = $args['settingName'];
 
-        $input = $request->getParsedBody();
-        $user->setSetting($settingName, $input['value']);
+        $value = ((array) $request->getParsedBody())['value'] ?? null;
+        $formats = [
+            'ui.locale' => '/^([a-z]{2,3}(_[A-Za-z0-9]{2,8})*)?$/',
+            'ui.table.size' => '/^-?\d{1,4}$/',
+        ];
+        if (
+            !preg_match('/^[A-Za-z0-9_.-]{1,50}$/', $settingName)
+            || !is_scalar($value)
+            || strlen((string) $value) > 50
+            || (isset($formats[$settingName]) && !preg_match($formats[$settingName], (string) $value))
+        ) {
+            return SlimUtils::renderErrorJSON($response, gettext('Invalid setting name or value'), [], 400);
+        }
+        $user->setSetting($settingName, (string) $value);
 
         return SlimUtils::renderJSON($response, ['value' => $user->getSetting($settingName)->getValue()]);
     });

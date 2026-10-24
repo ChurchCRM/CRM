@@ -172,6 +172,42 @@ describe("CSV Export Page", () => {
         });
     });
 
+    it("exports each person's grade name in the Grade column (#10189)", () => {
+        cy.get("#EnterDate2").invoke("val").should("match", /^\d{4}-\d{2}-\d{2}$/).as("serverToday", { type: "static" });
+        cy.visit("/PersonEditor.php");
+        cy.get("#FirstName").type("Greta");
+        cy.get("#LastName").type("CsvGrade");
+        cy.get("#Grade").select("8");
+        cy.get("button[name='PersonSubmit']").click();
+        cy.url().should("match", /\/people\/view\/\d+/).then((url) => {
+            const personId = Number(url.match(/\/people\/view\/(\d+)/)[1]);
+            cy.get("@serverToday").then((today) => cy.request({
+                method: "POST",
+                url: "/CSVCreateFile.php",
+                form: true,
+                body: {
+                    FirstName: 1,
+                    PrintGrade: 1,
+                    Source: "all",
+                    Gender: 0,
+                    MembershipDate2: today,
+                    BirthDate2: today,
+                    AnniversaryDate2: today,
+                    EnterDate2: today,
+                    Format: "Default",
+                    Submit: "Create File",
+                },
+            })).then((response) => {
+                const lines = response.body.trim().split(/\r?\n/);
+                const headers = lines[0].split(",").map((header) => header.replace(/"/g, ""));
+                const row = lines.find((line) => line.includes("CsvGrade"));
+                expect(row, "exported row for the graded person").to.exist;
+                expect(row.split(",")[headers.indexOf("Grade")].replace(/"/g, "")).to.eq("3rd");
+            });
+            cy.cleanupPeople([personId]);
+        });
+    });
+
     it("should allow toggling field pills on and off", () => {
         cy.contains(".form-selectgroup-label", "Title").click();
         cy.get('.form-selectgroup-input[name="Title"]').should("be.checked");
