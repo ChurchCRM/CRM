@@ -16,6 +16,7 @@ use Propel\Runtime\ActiveQuery\Criteria;
 final class LoginAsPersonHistoryService
 {
     public const LIMIT = 25;
+    public const SHOWN = 5;
 
     /**
      * @return list<array{id: int, actorName: string, personId: int, personName: string, started: \DateTimeInterface, ended: \DateTimeInterface|null, endReason: string|null, actions: list<array{time: \DateTimeInterface, method: string, path: string, status: int|null}>}>

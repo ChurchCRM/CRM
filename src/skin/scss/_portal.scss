@@ -268,7 +268,7 @@ html {
     padding: 0.1rem 0.5rem;
     border-radius: 999px;
     background-color: var(--portal-accent);
-    color: var(--portal-text);
+    color: var(--portal-warning-contrast);
     font-size: 0.75rem;
 }
 
@@ -351,7 +351,7 @@ html {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-block-end: 0;
+    margin-block: 1rem 0;
 }
 
 // Avatars --------------------------------------------------------------------
@@ -510,13 +510,14 @@ html {
     padding: 0.1rem 0.6rem;
     border-radius: 999px;
     background-color: var(--portal-accent);
-    color: var(--portal-text);
+    color: var(--portal-warning-contrast);
     font-size: 0.75rem;
 }
 
 .portal-member-badge-pending {
     background-color: transparent;
     border: 1px solid var(--portal-warning);
+    color: var(--portal-text);
 }
 
 // Forms ----------------------------------------------------------------------

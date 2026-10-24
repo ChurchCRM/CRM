@@ -215,6 +215,18 @@ describe("Login as Person: changes and endings", () => {
         });
     });
 
+    it("shows the five newest sessions on the person's page, and the rest on Show all", () => {
+        Cypress._.times(6, () => {
+            startLoginAsPerson();
+            portalToken().then((token) => stopLoginAsPerson(token));
+        });
+        cy.visit(`/people/view/${MEMBER}`);
+        cy.get("#login-as-person-history [data-cy=login-as-person-session]:visible").should("have.length", 5);
+        cy.get("#login-as-person-history-show-all").click();
+        cy.get("#login-as-person-history [data-cy=login-as-person-session]:visible").should("have.length.at.least", 6);
+        cy.get("#login-as-person-history-show-all").should("not.be.visible");
+    });
+
     it("ends with the sign-out reason on Sign out", () => {
         startLoginAsPerson();
         cy.request({ url: "/session/end", followRedirect: false }).its("headers.location").should("match", /\/admin\/$/);
