@@ -55,10 +55,14 @@ $shortName = str_starts_with($_idx_requestPath, $_idx_rootPrefix)
 $_idx_isWebRoot = $shortName === '' || strtolower($shortName) === 'index.php';
 $_idx_safeShortPath = PathUtils::resolveSafeRequirePath($shortName);
 
-// The web root (member sign-in design §7): signed out it goes to the member
-// sign-in page, and a member session goes to the portal.
+// The web root (member sign-in design §7): a member session goes to the portal.
+// Signed out, it goes to the member sign-in page while member sign-in is on,
+// and to the staff sign-in while it is off.
 if ($_idx_isWebRoot && !AuthenticationManager::validateUserSessionIsActive(false)) {
-    RedirectUtils::redirect(PortalSessionStore::has() ? 'portal/' : 'portal/login');
+    if (PortalSessionStore::has()) {
+        RedirectUtils::redirect('portal/');
+    }
+    RedirectUtils::redirect(SystemConfig::getBooleanValue('bMemberSignIn') ? 'portal/login' : 'admin/');
 }
 
 // Only a real page is remembered for after sign-in.

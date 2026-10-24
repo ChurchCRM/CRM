@@ -75,7 +75,7 @@ describe('05 - Post-Reset Verification', () => {
             // mismatch occurs and the db-upgrade page is never shown.
             cy.visit('/');
 
-            cy.location('pathname', { timeout: 30000 }).should('eq', '/portal/login');
+            cy.location('pathname', { timeout: 30000 }).should('eq', '/admin/');
         });
 
         it('should login with default credentials after reset', () => {

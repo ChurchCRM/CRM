@@ -50,6 +50,7 @@ describe("Sign-in pages", () => {
 
     beforeEach(() => {
         cy.clearCookies();
+        setConfig("bMemberSignIn", "1");
         resetEmailSignIn([judith.personId, constance.personId]);
     });
 
@@ -60,7 +61,7 @@ describe("Sign-in pages", () => {
     const admin = () => ({ username: Cypress.testEnv("admin.username"), password: Cypress.testEnv("admin.password") });
 
     describe("signed out", () => {
-        it("sends the web root to /portal/login, whose Staff sign-in link opens the staff sign-in at /admin", () => {
+        it("sends the web root to /portal/login while member sign-in is on, whose Staff sign-in link opens the staff sign-in at /admin", () => {
             cy.visit("/");
             cy.location("pathname").should("eq", "/portal/login");
             cy.get("#portalSignInEmail").should("be.visible");
@@ -70,13 +71,15 @@ describe("Sign-in pages", () => {
             cy.get("#PasswordBox").should("be.visible");
         });
 
-        it("sends the web root to /portal/login while member sign-in is off, with the same Staff sign-in link", () => {
+        it("sends the web root to the staff sign-in at /admin while member sign-in is off, and /portal/login still says why", () => {
             setConfig("bMemberSignIn", "0");
             cy.visit("/");
-            cy.location("pathname").should("eq", "/portal/login");
+            cy.location("pathname").should("eq", "/admin/");
+            cy.get("#UserBox").should("be.visible");
+            cy.get("#PasswordBox").should("be.visible");
+            cy.visit("/portal/login");
             cy.contains("Member sign-in isn't available yet");
             cy.get("#portalStaffSignIn").should("have.attr", "href", "/admin/");
-            setConfig("bMemberSignIn", "1");
         });
 
         it("redirects /session/begin to /admin, keeping the query, and re-posts an old form there", () => {
