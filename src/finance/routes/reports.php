@@ -15,18 +15,20 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
         $renderer = new \ChurchCRM\Service\MpdfRenderer();
         $data = [
             'letterhead' => 'address',
+            'title' => gettext('Contribution Statement'),
             'date_range' => gettext('Year-end statements preview'),
+            'empty_message' => gettext('No contributions were recorded for this period.'),
             'closing' => \ChurchCRM\dto\SystemConfig::getValue('sTaxReport2'),
             'signer' => \ChurchCRM\dto\SystemConfig::getValue('sTaxSigner'),
             'families' => [[
                 'salutation' => gettext('Sample Family'),
                 'address' => "123 Example St\nAnytown, ST 00000",
-                'total' => '$0.00',
+                'total' => \ChurchCRM\Utils\CurrencyFormatter::format(0),
                 'gifts' => [[
                     'date' => date('Y-m-d'),
                     'fund' => gettext('General'),
                     'method' => gettext('Check'),
-                    'amount' => '$0.00',
+                    'amount' => \ChurchCRM\Utils\CurrencyFormatter::format(0),
                 ]],
             ]],
         ];

@@ -14,8 +14,8 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 // Member-facing year-end statement.
-// Head of household and spouse see the household gifts.
-// Everyone else sees only gifts credited to them.
+// A household adult sees the family's gifts. Anyone else sees an empty
+// statement: a pledge row does not record which person gave.
 
 $portalGivingActor = static function (Request $request): ?Person {
     $person = $request->getAttribute(PortalSelfService::ACTOR_ATTRIBUTE);
@@ -76,24 +76,25 @@ $group->get('/giving/statement', function (Request $request, Response $response)
     $family = $actor->getFamily();
     $isHousehold = PortalSelfService::isAdultOf($family, $actor);
 
-    $query = PledgeQuery::create()
-        ->filterForTaxReport($year . '-01-01', $year . '-12-31', [], [(int) $family->getId()], [])
-        ->find();
-
     $gifts = [];
     $total = 0.0;
-    foreach ($query as $pledge) {
-        if (!$isHousehold && (int) $pledge->getPersonId() !== (int) $actor->getId()) {
-            continue;
+    // A pledge row has no donor. Only a household adult receives the family's gifts.
+    if ($isHousehold) {
+        foreach (
+            PledgeQuery::create()
+                ->filterForTaxReport($year . '-01-01', $year . '-12-31', [], [(int) $family->getId()], [])
+                ->orderById()
+                ->find() as $pledge
+        ) {
+            $amount = (float) $pledge->getAmount();
+            $total += $amount;
+            $gifts[] = [
+                'date' => DateTimeUtils::formatDate((string) $pledge->getDate('Y-m-d')),
+                'fund' => $pledge->getDonationFund() ? $pledge->getDonationFund()->getName() : '',
+                'method' => (string) $pledge->getMethod(),
+                'amount' => CurrencyFormatter::format($amount),
+            ];
         }
-        $amount = (float) $pledge->getAmount();
-        $total += $amount;
-        $gifts[] = [
-            'date' => DateTimeUtils::formatDate((string) $pledge->getDate('Y-m-d')),
-            'fund' => $pledge->getDonationFund() ? $pledge->getDonationFund()->getName() : '',
-            'method' => (string) $pledge->getMethod(),
-            'amount' => CurrencyFormatter::format($amount),
-        ];
     }
 
 

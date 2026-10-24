@@ -4,7 +4,7 @@
     {% if not loop.first %}<pagebreak />{% endif %}
 
     <div class="meta">
-      <h1>{{ title|default('Contribution Statement') }}</h1>
+      <h1>{{ title|default(gettext('Contribution Statement')) }}</h1>
       <div class="muted">{{ date_range }}</div>
     </div>
 
@@ -16,7 +16,7 @@
     <p>{{ opening }}</p>
 
     {% if family.gifts is empty %}
-      <p class="empty">{{ empty_message|default('No contributions were recorded for this period.') }}</p>
+      <p class="empty">{{ empty_message|default(gettext('No contributions were recorded for this period.')) }}</p>
     {% else %}
       <table class="gifts">
         <thead>
