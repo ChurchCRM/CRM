@@ -44,6 +44,11 @@ declare namespace Cypress {
       sessionCookie?: boolean;
     }): Chainable<void>;
 
+    /**
+     * Assert a staff page is signed in: the user menu is there and the sign-in form is not.
+     */
+    expectStaffSignedIn(options?: { timeout?: number }): Chainable<void>;
+
     setupLoginSession(
       sessionName: string,
       username: string,

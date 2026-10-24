@@ -79,7 +79,7 @@ Cypress.Commands.add("freshAdminFormLogin", (options = {}) => {
         };
         field("input[name=User]", userOpts).type(username);
         field("input[name=Password]").type(`${password}{enter}`, { log: false });
-        cy.location("pathname").should("not.match", /\/admin\/?$/);
+        cy.expectStaffSignedIn();
         if (options.sessionCookie) {
             cy.getCookies().should("satisfy", (cookies) =>
                 cookies.some((cookie) => cookie.name.startsWith("CRM-")),

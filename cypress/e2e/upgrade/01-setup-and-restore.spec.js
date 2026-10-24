@@ -170,7 +170,7 @@ describe('Upgrade via Restore', () => {
             cy.visit('/login');
             cy.get('input[name=User]').type(setupAdmin.username);
             cy.get('input[name=Password]').type(newAdminPassword + '{enter}');
-            cy.location('pathname', { timeout: 15000 }).should('not.eq', '/admin/');
+            cy.expectStaffSignedIn({ timeout: 15000 });
             cy.get('.page, .page-wrapper, .navbar').should('exist');
         });
     });
@@ -185,7 +185,7 @@ describe('Upgrade via Restore', () => {
             cy.visit('/login');
             cy.get('input[name=User]').type(setupAdmin.username);
             cy.get('input[name=Password]').type(newAdminPassword + '{enter}');
-            cy.location('pathname', { timeout: 15000 }).should('not.eq', '/admin/');
+            cy.expectStaffSignedIn({ timeout: 15000 });
 
             cy.visit('/admin/system/restore');
             cy.contains('Restore Database').should('be.visible');
@@ -195,7 +195,7 @@ describe('Upgrade via Restore', () => {
             cy.visit('/login');
             cy.get('input[name=User]').type(setupAdmin.username);
             cy.get('input[name=Password]').type(newAdminPassword + '{enter}');
-            cy.location('pathname', { timeout: 15000 }).should('not.eq', '/admin/');
+            cy.expectStaffSignedIn({ timeout: 15000 });
 
             cy.visit('/admin/system/restore');
 
@@ -273,7 +273,7 @@ describe('Upgrade via Restore', () => {
             cy.get('input[name=Password]').type(verifyPassword + '{enter}');
             // After a successful upgrade, admin credentials must work (post-change for MD5,
             // original restored password for SHA-256 silent migration).
-            cy.location('pathname', { timeout: 30000 }).should('not.eq', '/admin/');
+            cy.expectStaffSignedIn({ timeout: 30000 });
         });
 
         it('should report current software version and healthy API after upgrade', () => {

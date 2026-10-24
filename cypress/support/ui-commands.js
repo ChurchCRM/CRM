@@ -8,6 +8,13 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 
+// /admin/ is both the staff sign-in and, while the admin is the only person, the
+// Admin Dashboard, so a sign-in is proved by the user menu's Sign out link.
+Cypress.Commands.add('expectStaffSignedIn', (options = {}) => {
+    cy.get('a[href$="/session/end"]', options).should('exist');
+    cy.get('#UserBox, #PasswordBox').should('not.exist');
+});
+
 /**
  * Internal helper: Sets up a cached login session using cy.session()
  * Performs login and validates with CRM cookie presence
@@ -35,7 +42,7 @@ Cypress.Commands.add('setupLoginSession', (sessionName, username, password, opti
             cy.visit('/admin/');
             cy.get('input[name=User]').type(username);
             cy.get('input[name=Password]').type(password + '{enter}');
-            cy.location('pathname').should('not.match', /\/admin\/?$/);
+            cy.expectStaffSignedIn();
         },
         {
             validate: validate ?? defaultValidate

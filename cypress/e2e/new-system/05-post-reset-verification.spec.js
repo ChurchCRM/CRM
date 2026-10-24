@@ -35,7 +35,10 @@ describe('05 - Post-Reset Verification', () => {
         cy.get('input[name=User]', { timeout: 15000 }).type(adminCredentials.username);
         cy.get('input[name=Password]').type(password);
         cy.get('input[name=Password]').type('{enter}');
-        cy.location('pathname', { timeout: 30000 }).should('not.eq', '/admin/');
+        // Signed in: the forced password change, or a page with the user menu
+        // (the Admin Dashboard at /admin/ while the admin is the only person).
+        cy.get('#OldPassword, a[href$="/session/end"]', { timeout: 30000 }).should('exist');
+        cy.get('#UserBox, #PasswordBox').should('not.exist');
 
         cy.url().then((url) => {
             if (url.includes('/changepassword')) {

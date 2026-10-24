@@ -30,7 +30,7 @@ describe('02 - Demo Data Import', () => {
         cy.visit('/login');
         cy.get('input[name=User]').type(adminCredentials.username);
         cy.get('input[name=Password]').type(adminCredentials.password + '{enter}');
-        cy.url({ timeout: 15000 }).should('not.include', '/session/begin');
+        cy.expectStaffSignedIn({ timeout: 15000 });
     };
 
     describe('Import Demo Data via Admin UI', () => {
