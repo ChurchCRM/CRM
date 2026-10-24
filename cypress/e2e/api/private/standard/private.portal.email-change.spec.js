@@ -167,6 +167,37 @@ describe("A member changes their own email in the portal (§9)", () => {
         });
     });
 
+    it("a sign-in code already emailed to the old address stops working once the member's change is confirmed", () => {
+        const newEmail = `lena.moved.${Date.now()}@example.com`;
+        const useCookies = (cookies) => {
+            cy.clearCookies();
+            cookies.forEach(({ name, value, path, domain, httpOnly, secure, sameSite }) => {
+                cy.setCookie(name, value, { path, domain, httpOnly, secure, sameSite });
+            });
+        };
+        signInToPortal();
+        cy.getCookies().then((memberBrowser) => {
+            cy.clearCookies();
+            askForEmail(LENA.email);
+            signInEmail(LENA.email).then(({ code }) => {
+                cy.getCookies().then((otherBrowser) => {
+                    useCookies(memberBrowser);
+                    saveProfile({ email: newEmail }).its("status").should("eq", 200);
+                    mailTo(newEmail).then((messages) => confirmLinkIn(messages[0])).then((path) => {
+                        inFreshBrowser(() => openLink(path).then(({ body }) => pressConfirm(path, body).should("eq", "done")));
+                    });
+                    profile().its("email").should("eq", newEmail);
+
+                    useCookies(otherBrowser);
+                    postCode(code).its("body").should("include", "That code did not work");
+                    db("SELECT psa_Reason FROM portal_signin_audit_psa WHERE psa_per_ID = ? AND psa_Event = 'request_cancelled' ORDER BY psa_ID DESC LIMIT 1", [LENA.id])
+                        .its("0.psa_Reason")
+                        .should("eq", "email_changed");
+                });
+            });
+        });
+    });
+
     it("a new request cancels the open one, and an expired link can't be used", () => {
         const first = `lena.first.${Date.now()}@example.com`;
         const second = `lena.second.${Date.now()}@example.com`;

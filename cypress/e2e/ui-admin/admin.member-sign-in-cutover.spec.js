@@ -15,6 +15,18 @@ const setConfig = (name, value) => cy.makePrivateAdminAPICall("POST", `${CONFIG_
 const config = (name) => cy.makePrivateAdminAPICall("GET", `${CONFIG_URL}/${name}`, null, 200).its("body.value");
 
 describe("After the release-day cutover", () => {
+    let smtpHost;
+
+    before(() => {
+        config("sSMTPHost").then((value) => {
+            smtpHost = value;
+        });
+    });
+
+    afterEach(() => {
+        setConfig("sSMTPHost", smtpHost);
+    });
+
     after(() => {
         setConfig("iMemberSignInFormerAccounts", "0");
         setConfig("bMemberSignIn", "0");
@@ -31,6 +43,8 @@ describe("After the release-day cutover", () => {
                 .should("be.visible")
                 .and("contain.text", "Member sign-in is off")
                 .and("contain.text", "People who used to sign in to the Member Portal: 3");
+            cy.get("#former-portal-accounts-email").should("contain.text", "email (SMTP) must work before you turn it on");
+            cy.get("#former-portal-accounts-email-setup").should("not.exist");
             cy.get("#former-portal-accounts-turn-on").should("have.attr", "href", "/admin/member-portal#portal-signin");
 
             cy.intercept("POST", "**/admin/api/member-portal/former-accounts-notice/dismiss").as("dismiss");
@@ -42,6 +56,15 @@ describe("After the release-day cutover", () => {
             cy.get(".container-fluid").should("exist");
             cy.get(NOTICE).should("not.exist");
             config("iMemberSignInFormerAccounts").should("eq", "0");
+        });
+
+        it("sends the administrator to set up email while SMTP is not set", () => {
+            setConfig("iMemberSignInFormerAccounts", "3");
+            setConfig("bMemberSignIn", "0");
+            setConfig("sSMTPHost", "");
+            cy.setupAdminSession();
+            cy.visit("/admin/");
+            cy.get("#former-portal-accounts-email-setup").should("have.attr", "href", "/admin/email");
         });
 
         it("is not shown while member sign-in is on", () => {

@@ -206,7 +206,7 @@ A plugin reaches the Member Portal only through portal capabilities, which the p
 |-------|-------|-------|
 | Capabilities | `plugin.json` -> `portal.capabilities[]`: `key`, `label`, `description`, `scopeType` | `key` = `plugin.<id>.<name>`; `scopeType` is `none`, `family`, `team`, `ministry`, `group` or the plugin's own word. An undeclared key is always refused |
 | Rules | `getPortalRules(): PortalRule[]` (`CallbackPortalRule` for a closure) | evaluated live per request; return `PortalRuleGrant(capability, scope, label)` |
-| Pages and API | `plugin.json` -> `portalRoutesFile` | included twice, with `$group` and `$portalArea` (`'pages'` under `/portal/plugins/<id>`, `'api'` under `/api/portal/plugins/<id>`), behind the portal session. Each route adds `RequirePortalCapability` |
+| Pages and API | `plugin.json` -> `portalRoutesFile` | included twice, with `$routes` and `$portalArea` (`'pages'` under `/portal/plugins/<id>`, `'api'` under `/api/portal/plugins/<id>`), behind the portal session. `$routes` is a `PortalPluginRoutes`: `get`/`post`/`put`/`patch`/`delete($pattern, $handler, $capability)`, where `$capability` is a key or a `RequirePortalCapability`; no route goes in without one |
 | Templates | `portal/templates/*.html.twig`, rendered by `PortalTwig::renderPluginPage()` | extend `layout.html.twig`; `portal_can()` hides sections |
 | Nav | `getPortalNavItems(): [{label, url, icon, capability, id?}]` | shown when `scopesFor(capability)` is not empty, before My Family |
 

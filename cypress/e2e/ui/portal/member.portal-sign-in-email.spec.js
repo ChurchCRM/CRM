@@ -321,4 +321,94 @@ describe("Member Portal sign-in by email", () => {
         cy.get("#portalSignInEmailError").should("contain.text", "Enter your email address.");
         mailTo(member.email).should("have.length", 0);
     });
+
+    describe("a code and link already emailed", () => {
+        const adminPost = (url, body = null) =>
+            cy.getCookies().then((cookies) => {
+                cy.makePrivateAdminAPICall("POST", url, body, 200);
+                cy.clearCookies();
+                cookies.forEach((cookie) => cy.setCookie(cookie.name, cookie.value, { path: cookie.path }));
+            });
+
+        afterEach(() => {
+            db("UPDATE person_per SET per_Email = ? WHERE per_ID = ?", [member.email, member.personId]);
+            db(
+                "UPDATE person_signin_psi SET psi_SignInDisabled = 0, psi_DisabledBy_usr_ID = NULL, psi_DisabledAt = NULL, psi_DisabledReason = NULL, psi_UnconfirmedEmail = NULL WHERE psi_per_ID = ?",
+                [member.personId],
+            );
+        });
+
+        [
+            {
+                action: "Sign out everywhere",
+                reason: "signed_out_everywhere",
+                apply: () => adminPost(`/admin/api/person/${member.personId}/sign-in/sign-out-everywhere`),
+            },
+            {
+                action: "Disable sign-in",
+                reason: "sign_in_disabled",
+                apply: () => adminPost(`/admin/api/person/${member.personId}/sign-in/disable`, { reason: "Email spec" }),
+            },
+        ].forEach(({ action, reason, apply }) => {
+            it(`stop working once an administrator presses ${action}`, () => {
+                lastAuditId().then((startId) => {
+                    askInBrowser();
+                    signInEmail(member.email).then(({ code, link }) => {
+                        apply();
+                        cy.visit("/portal/login/code");
+                        typeCode(code);
+                        cy.get("#portalSignInCodeError").should("contain.text", "That code did not work");
+                        cy.visit(link);
+                        cy.get("#portalSignInLinkExpired").should("exist");
+                        cy.request({ url: "/api/portal/me", failOnStatusCode: false }).its("status").should("eq", 401);
+
+                        requestsFor(member.personId).its("0.psr_CancelledAt").should("not.be.null");
+                        auditSince(startId).then((rows) => {
+                            const cancelled = rows.filter((row) => row.psa_Event === "request_cancelled");
+                            expect(cancelled).to.have.length(1);
+                            expect(cancelled[0].psa_Reason).to.eq(reason);
+                            expect(cancelled[0].psa_Actor_usr_ID).to.eq(1);
+                            expect(rows.map((row) => row.psa_Event)).not.to.include("signed_in");
+                        });
+                    });
+                });
+            });
+        });
+
+        [
+            {
+                change: "is no longer the person's email",
+                reason: "request_address_changed",
+                apply: () => db("UPDATE person_per SET per_Email = ? WHERE per_ID = ?", ["constance.moved@example.com", member.personId]),
+            },
+            {
+                change: "is waiting to be confirmed",
+                reason: "email_unconfirmed",
+                apply: () =>
+                    db(
+                        "INSERT INTO person_signin_psi (psi_per_ID, psi_UnconfirmedEmail) VALUES (?, ?) ON DUPLICATE KEY UPDATE psi_UnconfirmedEmail = VALUES(psi_UnconfirmedEmail)",
+                        [member.personId, member.email],
+                    ),
+            },
+        ].forEach(({ change, reason, apply }) => {
+            it(`sign nobody in when the address they went to ${change}`, () => {
+                lastAuditId().then((startId) => {
+                    askInBrowser();
+                    signInEmail(member.email).then(({ code }) => {
+                        apply();
+                        typeCode(code);
+                        cy.get("#portalSignInFailed").should("exist");
+                        cy.request({ url: "/api/portal/me", failOnStatusCode: false }).its("status").should("eq", 401);
+                        auditSince(startId).then((rows) => {
+                            const refused = rows.filter((row) => row.psa_Event === "refused");
+                            expect(refused).to.have.length(1);
+                            expect(refused[0].psa_Reason).to.eq(reason);
+                            expect(refused[0].psa_Method).to.eq("email_code");
+                            expect(rows.map((row) => row.psa_Event)).not.to.include("signed_in");
+                        });
+                    });
+                });
+            });
+        });
+    });
 });

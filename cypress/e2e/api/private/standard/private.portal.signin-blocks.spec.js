@@ -1,11 +1,12 @@
 /// <reference types="cypress" />
 
 /**
- * Member sign-in row 4 (#10463): the blocks for everyone (docs/member-sign-in-design.md
- * §4, A13). An inactive family, awaiting review and Disable sign-in refuse staff sign-in
- * with the same answer as a wrong password, and end an open portal session on its next
- * request. Seed staff account noperm.user (Alice Noperm, person 901, family 1), password
- * changeme; seed member Lena Black (person 100, family 20), who signs in with her email.
+ * Member sign-in row 4 (#10463): the sign-in blocks (docs/member-sign-in-design.md §4,
+ * A13). Each ends an open member portal session on its next request. Disable sign-in also
+ * refuses staff sign-in with the same answer as a wrong password; an inactive family and
+ * awaiting review refuse member sign-in only, so staff sign-in, the API key and a staff
+ * portal session go on. Seed staff account noperm.user (Alice Noperm, person 901, family 1),
+ * password changeme; seed member Lena Black (person 100, family 20), who signs in with her email.
  *
  * The device comes from an email sign-in that stays signed in; a passkey, which only a
  * WebAuthn ceremony registers, and "awaiting review" are support fixtures. The audit and
@@ -53,16 +54,19 @@ const blocks = [
     {
         name: "an inactive family",
         reason: "family_inactive",
+        blocksStaff: false,
         apply: (person) => adminPost(`/api/family/${person.familyId}/activate/false`),
     },
     {
         name: "awaiting review",
         reason: "needs_review",
+        blocksStaff: false,
         apply: (person) => markAwaitingReview(person.personId),
     },
     {
         name: "Disable sign-in",
         reason: "sign_in_disabled",
+        blocksStaff: true,
         apply: (person) => adminPost(`/admin/api/person/${person.personId}/sign-in/disable`, { reason: "Blocks spec" }),
     },
 ];
@@ -75,38 +79,56 @@ describe("Sign-in blocks for everyone", () => {
         resetSignIn([staff.personId, member.personId, 27]);
     });
 
-    blocks.forEach(({ name, reason, apply }) => {
+    blocks.forEach(({ name, reason, blocksStaff, apply }) => {
         describe(name, () => {
-            it("refuses staff sign-in with the same answer as a wrong password", () => {
-                signIn().its("status").should("eq", 302);
-                cy.clearCookies();
-                apply(staff);
+            if (!blocksStaff) {
+                it("refuses member sign-in but leaves staff sign-in, the API key and a staff portal session open", () => {
+                    signIn().its("status").should("eq", 302);
+                    cy.request("/api/portal/me").its("body.profile.id").should("eq", staff.personId);
+                    apply(staff);
 
-                signIn().then((response) => {
-                    expect(response.status).to.eq(200);
-                    expect(response.body).to.contain(GENERIC_MESSAGE);
+                    cy.request("/api/portal/me").its("body.profile.id").should("eq", staff.personId);
+                    cy.request({ url: "/v2/dashboard", followRedirect: false }).its("status").should("eq", 200);
+                    signIn().its("status").should("eq", 302);
+                    cy.request({ url: "/v2/dashboard", followRedirect: false }).its("status").should("eq", 200);
+                    cy.makePrivateNoPermAPICall("GET", "/api/person/2", null, 200);
+                    signInStatus(staff.personId).then((status) => {
+                        expect(status.maySignIn).to.eq(false);
+                        expect(status.reason).to.eq(reason);
+                    });
                 });
-                cy.request({ url: "/v2/dashboard", followRedirect: false }).its("status").should("eq", 302);
-            });
+            } else {
+                it("refuses staff sign-in with the same answer as a wrong password", () => {
+                    signIn().its("status").should("eq", 302);
+                    cy.clearCookies();
+                    apply(staff);
 
-            it("refuses the person's API key and the public login API", () => {
-                apply(staff);
-                cy.makePrivateNoPermAPICall("GET", "/api/person/2", null, 401);
-                cy.apiRequest({
-                    method: "POST",
-                    url: "/api/public/user/login",
-                    body: { userName: staff.username, password: staff.password },
-                }).then((blocked) => {
+                    signIn().then((response) => {
+                        expect(response.status).to.eq(200);
+                        expect(response.body).to.contain(GENERIC_MESSAGE);
+                    });
+                    cy.request({ url: "/v2/dashboard", followRedirect: false }).its("status").should("eq", 302);
+                });
+
+                it("refuses the person's API key and the public login API", () => {
+                    apply(staff);
+                    cy.makePrivateNoPermAPICall("GET", "/api/person/2", null, 401);
                     cy.apiRequest({
                         method: "POST",
                         url: "/api/public/user/login",
-                        body: { userName: staff.username, password: "not-the-password" },
-                    }).then((wrong) => {
-                        expect(blocked.status).to.eq(401);
-                        expect(blocked.body).to.deep.eq(wrong.body);
+                        body: { userName: staff.username, password: staff.password },
+                    }).then((blocked) => {
+                        cy.apiRequest({
+                            method: "POST",
+                            url: "/api/public/user/login",
+                            body: { userName: staff.username, password: "not-the-password" },
+                        }).then((wrong) => {
+                            expect(blocked.status).to.eq(401);
+                            expect(blocked.body).to.deep.eq(wrong.body);
+                        });
                     });
                 });
-            });
+            }
 
             it("ends an open portal session on its next request", () => {
                 newestAuditId().then((startId) => {

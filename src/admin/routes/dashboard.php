@@ -166,6 +166,7 @@ $app->map(['GET', 'POST'], '/', function (Request $request, Response $response) 
         'timerJobsLastRun'     => $timerJobsLastRun?->format('Y-m-d H:i:s'),
         'timerJobsCronCommand' => '/usr/bin/php ' . SystemURLs::getDocumentRoot() . '/cli/timerjobs.php',
         'formerPortalAccounts' => (new MemberSignInSettingsService())->formerAccountsToNotify(),
+        'hasEmail'             => $hasEmail,
         'csrfToken'            => CSRFUtils::generateToken(),
     ];
 

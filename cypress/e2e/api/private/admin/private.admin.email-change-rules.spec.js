@@ -213,6 +213,26 @@ describe("Sign-in email changes by staff, imports and registration (§9)", () =>
         });
     });
 
+    it("a sign-in code already emailed to the old address stops working once staff change the email", () => {
+        const newEmail = `mathew.moved.${Date.now()}@example.com`;
+        cy.clearCookies();
+        resetEmailSignIn([MATHEW.id]);
+        lastAuditId().then((startId) => {
+            askForEmail(MATHEW.email);
+            signInEmail(MATHEW.email).then(({ code }) => {
+                keepingSession(() => saveEmailInPersonEditor(MATHEW.id, newEmail).its("status").should("eq", 302));
+                postCode(code).its("body").should("include", "That code did not work");
+                cy.request({ url: "/api/portal/me", failOnStatusCode: false }).its("status").should("eq", 401);
+                auditSince(MATHEW.id, startId).then((rows) => {
+                    const cancelled = rows.filter((row) => row.psa_Event === "request_cancelled");
+                    expect(cancelled).to.have.length(1);
+                    expect(cancelled[0].psa_Reason).to.eq("email_changed");
+                    expect(cancelled[0].psa_Actor_usr_ID).to.eq(JUDITH.id);
+                });
+            });
+        });
+    });
+
     describe("after the first sign-in", () => {
         const newEmail = `lena.replaced.${Date.now()}@example.com`;
 
