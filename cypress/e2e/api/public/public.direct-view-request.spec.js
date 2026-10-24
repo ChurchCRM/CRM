@@ -10,6 +10,8 @@ describe('Direct requests to MVC view files', () => {
     '/v2/templates/root/dashboard.php/extra',
     '/admin/views/partials/member-portal-members.php',
     '/people/views/partials/portal-signin-card.php',
+    '/people/views/sign-in-email.php',
+    '/people/views/partials/email-attention-toolbar.php',
     '/portal/routes/login.php',
   ].forEach((path) => {
     it(`returns 403 for ${path}`, () => {
