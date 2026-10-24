@@ -109,8 +109,8 @@ describe(
                 cy.makePrivateAdminAPICall("GET", `/api/person/${personId}`, null, 200).then((resp) => {
                     expect(resp.body.Email).to.eq("noBday@example.com");
                     cy.makePrivateAdminAPICall("GET", `/api/family/${resp.body.FamId}`, null, 200)
-                        .its("body")
-                        .should("not.have.property", "Email");
+                        .its("body.Email")
+                        .should("eq", "");
                 });
             });
         });
