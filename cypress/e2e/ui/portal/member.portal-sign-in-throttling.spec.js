@@ -11,6 +11,7 @@ import {
     restoreSettings,
     setConfig,
     useMemberSignIn,
+    waitForMail,
 } from "../../../support/member-sign-in";
 
 /**
@@ -88,7 +89,7 @@ describe("Member Portal sign-in throttling", () => {
     it("sends one person at most five sign-in emails a day", () => {
         lastAuditId().then((startId) => {
             Cypress._.times(5, () => askForEmail(member.email).then(expectAnswerScreen));
-            mailTo(member.email).should("have.length", 5);
+            waitForMail(member.email, 5).should("have.length", 5);
 
             cy.expireSignInThrottle("portal-signin.address");
             askForEmail(member.email).then(expectAnswerScreen);

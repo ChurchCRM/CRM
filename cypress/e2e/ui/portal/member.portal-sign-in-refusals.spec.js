@@ -11,6 +11,7 @@ import {
     restoreSettings,
     setConfig,
     useMemberSignIn,
+    waitForMail,
 } from "../../../support/member-sign-in";
 
 /**
@@ -77,7 +78,9 @@ const cases = [
     { title: "an address nobody has", email: "nobody.10463@example.com", reason: "no_match", personId: null },
 ];
 
-const officeNotices = () => mailTo(office[0].email);
+const officeNotices = (count = 1) => waitForMail(office[0].email, count);
+
+const noticeText = (notice) => cy.task("mail:get", { id: notice.ID }).its("body.Text");
 
 describe("Member Portal sign-in refusals", () => {
     const saved = {};
@@ -114,7 +117,6 @@ describe("Member Portal sign-in refusals", () => {
             lastAuditId().then((startId) => {
                 askForEmail(email).then(expectAnswerScreen);
 
-                mailTo(email).should("have.length", 0);
                 db("SELECT COUNT(*) AS n FROM person_signin_request_psr WHERE psr_Email = ?", [email])
                     .its("0.n")
                     .should("eq", 0);
@@ -129,8 +131,9 @@ describe("Member Portal sign-in refusals", () => {
                     expect(notices).to.have.length(1);
                     expect(notices[0].Subject).to.include("Someone could not sign in to the Member Portal");
                     expect(notices[0].To.map((to) => to.Address).sort()).to.deep.equal(office.map((p) => p.email).sort());
-                    cy.task("mail:get", { id: notices[0].ID }).its("body.Text").should("include", email);
+                    noticeText(notices[0]).should("include", email);
                 });
+                mailTo(email).should("have.length", 0);
             });
         });
     });
@@ -139,8 +142,6 @@ describe("Member Portal sign-in refusals", () => {
         lastAuditId().then((startId) => {
             askForEmail("natalie.diaz@example.com").then(expectAnswerScreen);
             askForEmail("Natalie.Diaz@example.com ").then(expectAnswerScreen);
-
-            officeNotices().should("have.length", 1);
             auditSince(startId).then((rows) => {
                 expect(rows.map((row) => `${row.psa_Event}:${row.psa_Reason}`)).to.deep.equal([
                     "refused:classification",
@@ -149,7 +150,11 @@ describe("Member Portal sign-in refusals", () => {
             });
 
             askForEmail("nobody.10463@example.com").then(expectAnswerScreen);
-            officeNotices().should("have.length", 2);
+            officeNotices(2).then((notices) => {
+                expect(notices).to.have.length(2);
+                noticeText(notices[1]).should("include", "Email address typed: natalie.diaz@example.com");
+                noticeText(notices[0]).should("include", "Email address typed: nobody.10463@example.com");
+            });
         });
     });
 
@@ -168,7 +173,7 @@ describe("Member Portal sign-in refusals", () => {
     it("sends no notice when the office list is empty", () => {
         setConfig("sMemberSignInNotificationRecipientIDs", "");
         askForEmail("natalie.diaz@example.com").then(expectAnswerScreen);
-        officeNotices().should("have.length", 0);
+        mailTo(office[0].email).should("have.length", 0);
         setConfig("sMemberSignInNotificationRecipientIDs", office.map((person) => person.personId).join(","));
     });
 });

@@ -18,6 +18,7 @@ use ChurchCRM\Portal\Auth\SignInAuditEvent;
 use ChurchCRM\Portal\Auth\SignInCandidate;
 use ChurchCRM\Portal\Auth\SignInMethod;
 use ChurchCRM\Portal\Auth\SignInReason;
+use ChurchCRM\Utils\AfterResponse;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\KeyManagerUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -31,7 +32,9 @@ use Throwable;
  * through the shared step.
  *
  * Nothing here tells the person asking whether an address may sign in (D3):
- * the caller shows the same answer whatever `request()` did.
+ * the caller shows the same answer whatever `request()` did, and every email
+ * goes out after that answer has reached the browser, so SMTP never sets how
+ * long the answer takes.
  *
  * At rest the link token is a SHA-256 hash and the browser binding a SHA-256
  * hash of the cookie value. The code is an HMAC keyed by a server secret,
@@ -75,6 +78,8 @@ final class EmailSignInService
      */
     public function request(string $typedEmail, string $browserSecret): void
     {
+        // Every answer ends the same way, with or without an email to follow.
+        AfterResponse::finishEarly();
         $now = self::now();
         $this->removeExpiredRequests($now);
 
@@ -194,25 +199,22 @@ final class EmailSignInService
             ->setExpiresAt($expiresAt)
             ->save();
 
-        $sent = false;
-        try {
-            $sent = (new MemberSignInEmail($person, $code, $token, $expiresAt))->send();
-        } catch (Throwable $e) {
-            LoggerUtils::getAppLogger()->error('Could not send the Member Portal sign-in email', [
-                'personId' => $personId,
-                'exception' => $e->getMessage(),
-            ]);
-        }
+        $auditId = SignInAudit::record(SignInAuditEvent::EMAIL_REQUESTED, $personId, null, null, null, $address);
 
-        SignInAudit::record(
-            SignInAuditEvent::EMAIL_REQUESTED,
-            $personId,
-            null,
-            null,
-            null,
-            $address,
-            $sent ? null : 'send_failed',
-        );
+        AfterResponse::defer(static function () use ($person, $code, $token, $expiresAt, $auditId): void {
+            $sent = false;
+            try {
+                $sent = (new MemberSignInEmail($person, $code, $token, $expiresAt))->send();
+            } catch (Throwable $e) {
+                LoggerUtils::getAppLogger()->error('Could not send the Member Portal sign-in email', [
+                    'personId' => (int) $person->getId(),
+                    'exception' => $e->getMessage(),
+                ]);
+            }
+            if (!$sent && $auditId !== null) {
+                SignInAudit::setDetail($auditId, 'send_failed');
+            }
+        });
     }
 
     private function refuse(SignInCandidate $candidate): void
@@ -240,18 +242,21 @@ final class EmailSignInService
             return;
         }
 
-        $matchedPeople = $candidate->matchedPersonIds === []
-            ? []
-            : PersonQuery::create()->filterById($candidate->matchedPersonIds, Criteria::IN)->orderById()->find()->getData();
+        $refusedAt = self::now();
+        AfterResponse::defer(static function () use ($recipients, $candidate, $refusedAt): void {
+            $matchedPeople = $candidate->matchedPersonIds === []
+                ? []
+                : PersonQuery::create()->filterById($candidate->matchedPersonIds, Criteria::IN)->orderById()->find()->getData();
 
-        try {
-            $notice = new MemberSignInNoticeEmail($recipients, $candidate->email, $candidate->refusal ?? SignInReason::NO_MATCH, $matchedPeople, self::now());
-            if (!$notice->send()) {
-                LoggerUtils::getAppLogger()->warning('Could not send the Member Portal sign-in notice', ['error' => $notice->getError()]);
+            try {
+                $notice = new MemberSignInNoticeEmail($recipients, $candidate->email, $candidate->refusal ?? SignInReason::NO_MATCH, $matchedPeople, $refusedAt);
+                if (!$notice->send()) {
+                    LoggerUtils::getAppLogger()->warning('Could not send the Member Portal sign-in notice', ['error' => $notice->getError()]);
+                }
+            } catch (Throwable $e) {
+                LoggerUtils::getAppLogger()->error('Could not send the Member Portal sign-in notice', ['exception' => $e->getMessage()]);
             }
-        } catch (Throwable $e) {
-            LoggerUtils::getAppLogger()->error('Could not send the Member Portal sign-in notice', ['exception' => $e->getMessage()]);
-        }
+        });
     }
 
     /**

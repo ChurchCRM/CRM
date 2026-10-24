@@ -115,9 +115,21 @@ export const mailTo = (address) =>
         );
     });
 
+const MAIL_WAIT_MS = 10000;
+const MAIL_POLL_MS = 200;
+
+/** Sign-in mail goes out after the answer page: waits until `count` messages to the address have arrived. */
+export const waitForMail = (address, count = 1, waited = 0) =>
+    mailTo(address).then((messages) => {
+        if (messages.length >= count || waited >= MAIL_WAIT_MS) {
+            return messages;
+        }
+        return cy.wait(MAIL_POLL_MS, { log: false }).then(() => waitForMail(address, count, waited + MAIL_POLL_MS));
+    });
+
 /** The code and link in the newest sign-in email to an address. */
 export const signInEmail = (address) =>
-    mailTo(address).then((messages) => {
+    waitForMail(address).then((messages) => {
         expect(messages, `sign-in email to ${address}`).to.not.be.empty;
         return cy.task("mail:get", { id: messages[0].ID }).then(({ body }) => {
             const text = `${body.Text || ""}`;
