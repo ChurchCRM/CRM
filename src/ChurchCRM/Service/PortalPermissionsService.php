@@ -76,9 +76,11 @@ final class PortalPermissionsService
                 $sources[] = ['source' => EffectiveGrant::SOURCE_GIVEN, 'ruleKey' => null, 'label' => gettext('Admin overrides')];
             }
 
+            $definition = PortalCapabilityRegistry::get($key);
             $rows[] = $capability + [
                 'ownerName' => PortalGrantService::ownerName($capability['owner']),
-                'statusLabel' => PortalGrantService::statusLabel($capability['status']),
+                'statusLabel' => PortalGrantService::statusLabel($capability['status'], $definition),
+                'statusUrl' => $definition === null ? null : PortalGrantService::statusUrl($capability['status'], $definition),
                 'scopeLabel' => PortalGrantService::scopeTypeLabel($capability['scopeType']),
                 'sources' => $sources,
                 'holderCount' => count($holders[$key] ?? []),

@@ -116,6 +116,24 @@ describe("Admin → Member Portal permissions and given grants", () => {
         });
     });
 
+    it("names the switch that turns a permission off for everyone, and links to where it is set", () => {
+        cy.getSystemConfig("bPortalShowVolunteer").then((showVolunteer) => {
+            cy.getMemberPortalCalendars().then((shared) => {
+                cy.makePrivateAdminAPICall("POST", "/admin/api/system/config/bPortalShowVolunteer", { value: "0" }, 200);
+                cy.shareMemberPortalCalendars([]);
+                catalog().then((capabilities) => {
+                    expect(capabilities["portal.volunteer.use"].statusLabel).to.eq('Off for everyone: "Show volunteering" is switched off');
+                    expect(capabilities["portal.volunteer.use"].statusUrl).to.eq("/admin/member-portal#portal-permissions");
+                    expect(capabilities["portal.calendar.view"].statusLabel).to.eq("Off for everyone: no calendar is shared with members");
+                    expect(capabilities["portal.calendar.view"].statusUrl).to.eq("/admin/member-portal#portal-calendars");
+                    expect(capabilities["portal.profile.edit"].statusUrl).to.be.null;
+                });
+                cy.shareMemberPortalCalendars(shared);
+                cy.restoreSystemConfig("bPortalShowVolunteer", showVolunteer);
+            });
+        });
+    });
+
     it("counts holders among everyone the rules let in and staff, from each rule's own data", () => {
         allIds("may-sign-in").then((maySignIn) => {
             allIds("email-attention").then((attention) => {
