@@ -1,7 +1,7 @@
 /**
  * Admin → Member Portal → Members (member sign-in design §11.2, A7, §10.1):
  * the lists of who may sign in, who has, whose email stops them, recent family
- * confirmations and the family emails the 7.9.0 upgrade could not move. Each
+ * confirmations and the family emails the 7.8.3 upgrade could not move. Each
  * list reads GET /admin/api/member-portal/lists/{list} a page at a time.
  */
 import {
@@ -173,7 +173,7 @@ const LISTS: Record<string, { description: () => string; columns: () => ServerCo
   "family-emails-not-moved": {
     description: () =>
       t(
-        "The 7.9.0 upgrade gave each family email to a person. These it could not, so it left a note in the family's timeline instead.",
+        "The 7.8.3 upgrade gave each family email to a person. These it could not, so it left a note in the family's timeline instead.",
       ),
     columns: () =>
       [
