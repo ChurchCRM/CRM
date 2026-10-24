@@ -104,6 +104,20 @@ describe("Member Portal — account pages for staff", () => {
         cy.get("#NewPassword1").should("exist");
     });
 
+    it("A wrong current password re-renders the portal form with the error", () => {
+        cy.visit("/portal/profile/password");
+        cy.get("#OldPassword").type("ThisIsNotTheAdminPassword");
+        cy.get("#NewPassword1").type("aCompletelyDifferentPassphrase");
+        cy.get("#NewPassword2").type("aCompletelyDifferentPassphrase");
+        cy.get("#passwordChangeForm").submit();
+
+        cy.url({ timeout: 10000 }).should("include", "/portal/profile/password");
+        cy.url().should("not.include", "/v2/");
+        cy.get(".portal-shell").should("exist");
+        cy.contains("Incorrect password supplied for current user").should("exist");
+        cy.get("#OldPassword").should("exist");
+    });
+
     it("Two-factor from the portal keeps an administrator in the portal", () => {
         cy.visit("/portal/profile");
         cy.get("#portal-two-factor-link").click();

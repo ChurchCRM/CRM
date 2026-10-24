@@ -157,6 +157,31 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
     </div>
     <?php endif; ?>
 
+    <?php if (!empty($formerPortalAccounts)): ?>
+    <div class="alert alert-info" role="alert" id="former-portal-accounts-notice" data-csrf-token="<?= InputUtils::escapeAttribute($csrfToken) ?>">
+        <div class="d-flex align-items-start">
+            <div class="me-3">
+                <i class="fa-solid fa-right-to-bracket fa-2x"></i>
+            </div>
+            <div class="flex-grow-1">
+                <h4 class="alert-heading mb-2"><?= gettext('Member sign-in is off') ?></h4>
+                <p class="mb-2">
+                    <?= sprintf(gettext('People who used to sign in to the Member Portal: %d'), (int) $formerPortalAccounts) ?>.
+                    <?= gettext('Their old logins were removed by the upgrade. Turn on member sign-in so they can sign in with their own email.') ?>
+                </p>
+                <div class="d-flex flex-wrap gap-2">
+                    <a href="<?= SystemURLs::getRootPath() ?>/admin/member-portal#portal-signin" class="btn btn-primary" id="former-portal-accounts-turn-on">
+                        <?= gettext('Turn on member sign-in') ?>
+                    </a>
+                    <button type="button" class="btn btn-ghost-secondary js-dismiss-former-portal-accounts">
+                        <?= gettext('Dismiss') ?>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
+
     <?php if ($showTelemetryPrompt): ?>
     <!-- Telemetry consent card -->
     <div class="card mb-4 border-info" id="telemetry-consent-card">

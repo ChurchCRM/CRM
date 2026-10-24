@@ -1,37 +1,27 @@
 /// <reference types="cypress" />
 
 /**
- * Member Portal (MP2, #9863) — the landing rule for a self-service login.
+ * Member Portal (MP2, #9863) — what a member session sees.
  *
- * Seed persona: user 100, Lena Black (person 100, family 20). usr_EditSelf=1 and
- * no admin flag, so User::isEditSelfExclusive() is true. usr_UserName is
- * VARCHAR(50) since #9831, so the seeded address is stored whole.
- *
- * Design: .agents/skills/churchcrm/member-portal-design.md §2.2 / §2.3 (P10).
- *   - an Edit-Self-only login lands in /portal and never sees the admin shell
- *   - /external/limited-access is retired and redirects to /portal
- *   - a legacy *.php page bounces to /portal (Include/PageInit.php)
+ * Seed persona: Lena Black (person 100, family 20), signed in with her email
+ * (member sign-in design §6.1). A member session never opens the staff side (A14).
  */
 before(() => {
     cy.rememberTestEnv(["admin.api.key"]);
 });
 
-describe("Member Portal — self-service landing", () => {
-    const memberUser = "lena.black.editself.notes@example.com";
-    const memberPassword = "changeme";
+const LENA = 100;
 
-    const login = () => {
-        cy.clearCookies();
-        cy.visit("session/begin");
-        cy.get("input[name=User]").type(memberUser);
-        cy.get("input[name=Password]").type(memberPassword + "{enter}");
-    };
+const login = () => {
+    cy.signInAsMember(LENA);
+    cy.visit("/portal/");
+};
 
-    it("Login lands on /portal", () => {
-        login();
-        cy.url({ timeout: 10000 }).should("include", "/portal");
-        cy.url().should("not.include", "/external/limited-access");
-        cy.url().should("not.include", "/v2/dashboard");
+describe("Member Portal — member landing", () => {
+    it("The web root sends a member session to /portal", () => {
+        cy.signInAsMember(LENA);
+        cy.visit("/");
+        cy.location("pathname", { timeout: 10000 }).should("eq", "/portal/");
     });
 
     it("The portal home greets the member by name and shows the family name", () => {
@@ -56,7 +46,7 @@ describe("Member Portal — self-service landing", () => {
         cy.url({ timeout: 10000 }).should("include", "/portal");
         cy.get("#portal-account-toggle").click();
         cy.get("#portal-account-menu").contains('[role="menuitem"]', "Sign out").click();
-        cy.location("pathname", { timeout: 10000 }).should("eq", "/admin/");
+        cy.location("pathname", { timeout: 10000 }).should("eq", "/portal/login");
     });
 
     it("The retired /external/limited-access URL redirects to /portal", () => {
@@ -67,28 +57,23 @@ describe("Member Portal — self-service landing", () => {
         cy.url().should("not.include", "/external/limited-access");
     });
 
-    it("A direct visit to /v2/dashboard bounces to /portal", () => {
+    it("A direct visit to /v2/dashboard goes to the staff sign-in", () => {
         login();
-        cy.url({ timeout: 10000 }).should("include", "/portal");
         cy.visit("v2/dashboard", { failOnStatusCode: false });
-        cy.url({ timeout: 10000 }).should("include", "/portal");
-        cy.url().should("not.include", "/v2/dashboard");
+        cy.location("pathname", { timeout: 10000 }).should("eq", "/admin/");
+        cy.get("#UserBox").should("be.visible");
     });
 
-    it("A direct visit to another MVC module bounces to /portal", () => {
+    it("A direct visit to another MVC module goes to the staff sign-in", () => {
         login();
-        cy.url({ timeout: 10000 }).should("include", "/portal");
         cy.visit("people/dashboard", { failOnStatusCode: false });
-        cy.url({ timeout: 10000 }).should("include", "/portal");
-        cy.url().should("not.include", "/people/dashboard");
+        cy.location("pathname", { timeout: 10000 }).should("eq", "/admin/");
     });
 
-    it("A legacy *.php page bounces to /portal (PageInit)", () => {
+    it("A legacy *.php page goes to the staff sign-in", () => {
         login();
-        cy.url({ timeout: 10000 }).should("include", "/portal");
         cy.visit("SystemSettings.php", { failOnStatusCode: false });
-        cy.url({ timeout: 10000 }).should("include", "/portal");
-        cy.url().should("not.include", "SystemSettings.php");
+        cy.location("pathname", { timeout: 10000 }).should("eq", "/admin/");
     });
 
     // The bar is gone for everyone (2026-09-17): the account menu's "Admin
@@ -125,22 +110,10 @@ describe("Member Portal — self-service landing", () => {
  * the two pages rather than hard-coding one of the states.
  */
 describe("Member Portal — the home page's Profile card", () => {
-    const memberUser = "lena.black.editself.notes@example.com";
-    const memberPassword = "changeme";
-
     const OLD_DESCRIPTION = "Your name, email, phone numbers and photo.";
-
-    const login = () => {
-        cy.clearCookies();
-        cy.visit("/session/begin");
-        cy.get("input[name=User]").type(memberUser);
-        cy.get("input[name=Password]").type(memberPassword + "{enter}");
-        cy.url({ timeout: 10000 }).should("include", "/portal");
-    };
 
     beforeEach(() => {
         login();
-        cy.visit("/portal/");
     });
 
     it("shows the member's name and their real email and mobile number", () => {
@@ -341,14 +314,6 @@ describe("Member Portal — the home page's Profile card", () => {
  * flag includes V2.
  */
 describe("Member Portal — the navigation follows the enabled features", () => {
-    // Its own copy: the landing describe's helper is scoped to that block.
-    const login = () => {
-        cy.clearCookies();
-        cy.visit("session/begin");
-        cy.get("input[name=User]").type("lena.black.editself.notes@example.com");
-        cy.get("input[name=Password]").type("changeme{enter}");
-    };
-
     const setVersion = (value) =>
         cy.makePrivateAdminAPICall(
             "POST",

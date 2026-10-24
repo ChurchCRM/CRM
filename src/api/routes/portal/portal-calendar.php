@@ -1,8 +1,8 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\model\ChurchCRM\User;
-use ChurchCRM\model\ChurchCRM\UserQuery;
+use ChurchCRM\model\ChurchCRM\PersonSignin;
+use ChurchCRM\model\ChurchCRM\PersonSigninQuery;
 use ChurchCRM\Portal\Auth\PortalContext;
 use ChurchCRM\Portal\Auth\PortalSessionMiddleware;
 use ChurchCRM\Portal\Permissions\CorePortalCapabilities;
@@ -171,7 +171,7 @@ function getPortalCalendarSubscriptionAPI(Request $request, Response $response):
  */
 function putPortalCalendarSubscriptionAPI(Request $request, Response $response): Response
 {
-    $user = portalCalendarSubscriptionUser($request);
+    $state = portalCalendarSubscriptionState($request);
     $body = $request->getParsedBody();
     $calendars = is_array($body) && isset($body['calendars']) && is_array($body['calendars'])
         ? $body['calendars']
@@ -188,7 +188,7 @@ function putPortalCalendarSubscriptionAPI(Request $request, Response $response):
     );
 
     try {
-        PortalCalendarSubscription::save($user, $calendars);
+        PortalCalendarSubscription::save($state, $calendars);
     } catch (PortalSelfServiceException $e) {
         return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], $e->getStatus(), null, $request);
     }
@@ -209,7 +209,7 @@ function putPortalCalendarSubscriptionAPI(Request $request, Response $response):
  */
 function resetPortalCalendarSubscriptionAPI(Request $request, Response $response): Response
 {
-    PortalCalendarSubscription::reset(portalCalendarSubscriptionUser($request));
+    PortalCalendarSubscription::reset(portalCalendarSubscriptionState($request));
 
     return SlimUtils::renderJSON($response, portalCalendarSubscriptionPayload($request));
 }
@@ -236,8 +236,8 @@ function resetPortalCalendarSubscriptionAPI(Request $request, Response $response
  */
 function portalCalendarSubscriptionPayload(Request $request): array
 {
-    $user = portalCalendarSubscriptionUser($request);
-    $path = PortalCalendarSubscription::feedPath($user);
+    $state = portalCalendarSubscriptionState($request);
+    $path = PortalCalendarSubscription::feedPath($state);
     $url = $path === null ? null : portalCalendarAbsoluteUrl($request, $path);
 
     return [
@@ -251,24 +251,24 @@ function portalCalendarSubscriptionPayload(Request $request): array
         // fall back, so the tap would fail silently. See
         // webpack/portal/portal-calendar-subscribe.ts.
         'webcalUrl' => $url === null ? null : preg_replace('#^https?://#', 'webcal://', $url),
-        'choices' => PortalCalendarSubscription::choices($user),
+        'choices' => PortalCalendarSubscription::choices($state),
     ];
 }
 
 /**
- * The account that holds the portal person's feed. The token and selection
- * stay on user_usr until the release-day cutover moves them to the person's
- * sign-in row (member sign-in design §12).
+ * The portal person's sign-in row, which holds their feed (member sign-in
+ * design §13). A person who has never had one gets a new row, saved with
+ * their first selection.
  */
-function portalCalendarSubscriptionUser(Request $request): User
+function portalCalendarSubscriptionState(Request $request): PersonSignin
 {
     $person = PortalContext::person();
-    $user = $person === null ? null : UserQuery::create()->findPk((int) $person->getId());
-    if (!$user instanceof User) {
+    if ($person === null) {
         throw new HttpForbiddenException($request, gettext('No logged in user'));
     }
 
-    return $user;
+    return PersonSigninQuery::create()->findPk((int) $person->getId())
+        ?? (new PersonSignin())->setPersonId((int) $person->getId());
 }
 
 /**

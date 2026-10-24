@@ -367,6 +367,65 @@ CREATE TABLE IF NOT EXISTS `login_as_person_action_lpa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ============================================================================
+-- BEGIN: member sign-in row 13, release-day cutover (design 12)
+-- ============================================================================
+-- Every account's calendar feed token, feed selection and last portal activity
+-- move to the person's sign-in row, staff accounts included, so no feed address
+-- changes; the usr_PortalCalendar* and usr_LastPortalActivity columns are no
+-- longer read. Values already on the sign-in row win, and the unconfirmed email
+-- the family email move left there is untouched. Then every self-service
+-- account (usr_EditSelf = 1 and not an administrator, User::isEditSelfExclusive())
+-- is deleted with its per-user rows, and the number deleted is kept for the
+-- dashboard notice. Member sign-in stays off. Safe to run again.
+
+INSERT INTO `person_signin_psi` (`psi_per_ID`, `psi_CalendarToken`, `psi_CalendarSelection`, `psi_LastActivity`) SELECT
+  u.`usr_per_ID`, NULLIF(TRIM(u.`usr_PortalCalendarToken`), ''), NULLIF(u.`usr_PortalCalendarSelection`, ''), u.`usr_LastPortalActivity`
+FROM `user_usr` u
+JOIN `person_per` p ON p.`per_ID` = u.`usr_per_ID`
+WHERE NULLIF(TRIM(u.`usr_PortalCalendarToken`), '') IS NOT NULL
+   OR NULLIF(u.`usr_PortalCalendarSelection`, '') IS NOT NULL
+   OR u.`usr_LastPortalActivity` IS NOT NULL
+ON DUPLICATE KEY UPDATE
+  `psi_CalendarToken` = COALESCE(`psi_CalendarToken`, NULLIF(TRIM(u.`usr_PortalCalendarToken`), '')),
+  `psi_CalendarSelection` = COALESCE(`psi_CalendarSelection`, NULLIF(u.`usr_PortalCalendarSelection`, '')),
+  `psi_LastActivity` = GREATEST(COALESCE(`psi_LastActivity`, u.`usr_LastPortalActivity`), COALESCE(u.`usr_LastPortalActivity`, `psi_LastActivity`));
+
+SET @msi_former_accounts = (SELECT COUNT(*) FROM `user_usr` WHERE `usr_EditSelf` = 1 AND `usr_Admin` = 0);
+
+INSERT INTO `config_cfg` (`cfg_name`, `cfg_value`) SELECT 'iMemberSignInFormerAccounts', @msi_former_accounts
+FROM DUAL WHERE @msi_former_accounts > 0
+ON DUPLICATE KEY UPDATE `cfg_value` = CAST(`cfg_value` AS UNSIGNED) + @msi_former_accounts;
+
+-- nte_EnteredBy -4 is Person::UPGRADE, shown as "System Upgrade" on the timeline.
+INSERT INTO `note_nte` (`nte_per_ID`, `nte_fam_ID`, `nte_Private`, `nte_Text`, `nte_DateEntered`, `nte_EnteredBy`, `nte_EditedBy`, `nte_Type`) SELECT
+  u.`usr_per_ID`, 0, 0, 'Member Portal account removed by the upgrade', NOW(), -4, 0, 'user'
+FROM `user_usr` u
+JOIN `person_per` p ON p.`per_ID` = u.`usr_per_ID`
+WHERE u.`usr_EditSelf` = 1 AND u.`usr_Admin` = 0;
+
+DELETE c FROM `userconfig_ucfg` c
+JOIN `user_usr` u ON u.`usr_per_ID` = c.`ucfg_per_id`
+WHERE u.`usr_EditSelf` = 1 AND u.`usr_Admin` = 0;
+
+DELETE s FROM `user_settings` s
+JOIN `user_usr` u ON u.`usr_per_ID` = s.`user_id`
+WHERE u.`usr_EditSelf` = 1 AND u.`usr_Admin` = 0;
+
+DELETE t FROM `tokens` t
+JOIN `user_usr` u ON u.`usr_per_ID` = t.`reference_id`
+WHERE t.`type` = 'password' AND u.`usr_EditSelf` = 1 AND u.`usr_Admin` = 0;
+
+-- The account lockout and password reset limits are keyed by the account id
+-- (SignInThrottle), stored as RateLimiter::hashKey() does.
+DELETE r FROM `rate_limit_rlm` r
+JOIN `user_usr` u ON r.`rlm_KeyHash` = SHA2(CAST(u.`usr_per_ID` AS CHAR), 256)
+WHERE r.`rlm_Bucket` IN ('signin.lockout', 'password-reset.account') AND u.`usr_EditSelf` = 1 AND u.`usr_Admin` = 0;
+
+DELETE FROM `user_usr` WHERE `usr_EditSelf` = 1 AND `usr_Admin` = 0;
+
+-- END: member sign-in row 13, release-day cutover
+
+-- ============================================================================
 -- BEGIN: member portal calendar follows the shared calendars
 -- ============================================================================
 -- bPortalShowCalendar is retired: the portal shows its calendar while at least

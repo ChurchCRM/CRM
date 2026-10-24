@@ -8,7 +8,9 @@ use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Plugin\PluginManager;
+use ChurchCRM\Service\MemberSignInSettingsService;
 use ChurchCRM\Service\SystemService;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -163,6 +165,8 @@ $app->map(['GET', 'POST'], '/', function (Request $request, Response $response) 
         'timerJobsStaleHours'  => SystemService::getTimerJobsStaleHours(),
         'timerJobsLastRun'     => $timerJobsLastRun?->format('Y-m-d H:i:s'),
         'timerJobsCronCommand' => '/usr/bin/php ' . SystemURLs::getDocumentRoot() . '/cli/timerjobs.php',
+        'formerPortalAccounts' => (new MemberSignInSettingsService())->formerAccountsToNotify(),
+        'csrfToken'            => CSRFUtils::generateToken(),
     ];
 
     return $renderer->render($response, 'dashboard.php', $pageArgs);

@@ -8,15 +8,10 @@
  *     was painting it link-blue and underlining it)
  *   - the member's name and the bare "Sign out" link are replaced by one
  *     "Hello <first name>" button that opens a menu: Email History,
- *     Change Password, Admin Console (staff logins only), Sign out
+ *     Change Password and Admin Console (staff sessions only), Sign out
  *
- * Seed persona: user 100, Lena Black (person 100, family 20). usr_EditSelf=1
- * and no admin flag, so she is confined to the portal. The username column is
- * VARCHAR(32), so the seeded address is stored truncated — log in with the
- * 32-character form.
+ * Seed persona: Lena Black (person 100, family 20), signed in with her email.
  */
-const MEMBER_USER = "lena.black.editself.notes@example.com";
-const MEMBER_PASSWORD = "changeme";
 
 const PROBE_CLASS = "portal-state-probe";
 
@@ -82,11 +77,8 @@ const styleUnderState = (win, element, pseudo) => {
 };
 
 const login = () => {
-    cy.clearCookies();
-    cy.visit("/session/begin");
-    cy.get("input[name=User]").type(MEMBER_USER);
-    cy.get("input[name=Password]").type(`${MEMBER_PASSWORD}{enter}`);
-    cy.url({ timeout: 10000 }).should("include", "/portal");
+    cy.signInAsMember(100);
+    cy.visit("/portal/");
 };
 
 describe("Member Portal header", () => {
@@ -160,18 +152,15 @@ describe("Member Portal header", () => {
             cy.get("#portal-account-toggle").should("have.attr", "aria-expanded", "true");
         });
 
-        it("Offers Email History, Change Password and Sign out, but not Admin Console, to a member", () => {
+        it("Offers Email History and Sign out, but neither Change Password nor Admin Console, to a member", () => {
             cy.get("#portal-account-toggle").click();
 
-            cy.get('#portal-account-menu [role="menuitem"]').should("have.length", 3);
+            cy.get('#portal-account-menu [role="menuitem"]').should("have.length", 2);
             cy.get("#portal-account-menu")
                 .contains('[role="menuitem"]', "Email History")
                 .should("have.attr", "href")
                 .and("include", "/portal/email-history");
-            cy.get("#portal-account-menu")
-                .contains('[role="menuitem"]', "Change Password")
-                .should("have.attr", "href")
-                .and("include", "/portal/profile/password");
+            cy.get("#portal-account-menu").contains("Change Password").should("not.exist");
             cy.get("#portal-account-menu")
                 .contains('[role="menuitem"]', "Sign out")
                 .should("have.attr", "href")
@@ -205,17 +194,15 @@ describe("Member Portal header", () => {
 
             cy.focused().should("contain.text", "Email History");
             cy.focused().trigger("keydown", { key: "ArrowDown" });
-            cy.focused().should("contain.text", "Change Password");
-            cy.focused().trigger("keydown", { key: "ArrowDown" });
             cy.focused().should("contain.text", "Sign out");
             cy.focused().trigger("keydown", { key: "ArrowUp" });
-            cy.focused().should("contain.text", "Change Password");
+            cy.focused().should("contain.text", "Email History");
         });
 
         it("Signs the member out from the menu", () => {
             cy.get("#portal-account-toggle").click();
             cy.get("#portal-account-menu").contains('[role="menuitem"]', "Sign out").click();
-            cy.location("pathname", { timeout: 10000 }).should("eq", "/admin/");
+            cy.location("pathname", { timeout: 10000 }).should("eq", "/portal/login");
         });
 
         it("Works beside the navigation toggle on a phone", () => {

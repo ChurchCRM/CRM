@@ -10,13 +10,9 @@
  * *occurrence* or *schedule* (§5.6) — and **mobile-first**: §5.9 makes a 375px
  * viewport a hard requirement for this issue, not a nicety.
  *
- * The persona is person 100, `lena.black.editself.notes@example.com`. Person 99
- * is the EditSelf-EXCLUSIVE volunteer the API spec uses, but its seeded password
- * hash is not the shared `changeme` one (seed.sql `user_usr`), so it cannot be
- * logged in through the form. Person 100 is the design's "second volunteer"
- * (§6.4) and reaches the same pages through the same no-role-gate route group —
- * the EditSelf-exclusive reachability half of §4.7 is proven in
- * `private.volunteer.self-service.spec.js`, which drives person 99 directly.
+ * The persona is person 100, Lena Black, signed in with her email (member
+ * sign-in design §6.1); `private.volunteer.self-service.spec.js` drives the same
+ * API as person 99.
  *
  * Order inside every hook is API setup → login → `cy.visit()`, because
  * `cy.request()` rotates the PHP session cookie (cypress-testing.md). Fixtures
@@ -45,18 +41,8 @@ const OPPORTUNITIES_URL = "/portal/volunteer/opportunities";
 const PREFIX = "UI9712";
 const EVENT_TITLE = `${PREFIX} Hospitality Service`;
 
-/**
- * The volunteer persona's credentials. Hard-coded rather than added to the three
- * cypress configs: person 100 already exists in `seed.sql` with the shared
- * `changeme` password, so there is no new seeded user and nothing for the
- * configs to drift on (§6.4).
- *
- * The username is the full 37-character address. `user_usr.usr_UserName` used
- * to be `VARCHAR(32)` and silently truncated it (upstream #9831); #9879 widened
- * the column, so the seed now stores the whole address.
- */
-const MEMBER_USERNAME = "lena.black.editself.notes@example.com";
-const MEMBER_PASSWORD = "changeme";
+/** The volunteer persona, signed in with her email. */
+const MEMBER_USERNAME = 100;
 const PERSON_MEMBER = 100;
 
 const POOL_MEMBER_A = 8;
@@ -77,11 +63,7 @@ let seriesEnd = "";
 // ── helpers (local functions, NOT cy.* commands — cypress-testing.md) ───────
 
 function freshMemberLogin() {
-    cy.clearCookies();
-    cy.visit("/session/begin");
-    cy.get("input[name=User]").type(MEMBER_USERNAME);
-    cy.get("input[name=Password]").type(MEMBER_PASSWORD + "{enter}");
-    cy.url().should("not.include", "/session/begin");
+    cy.signInAsMember(MEMBER_USERNAME);
 }
 
 function setVersion(value) {

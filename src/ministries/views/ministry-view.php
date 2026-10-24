@@ -275,7 +275,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <?= gettext('A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it.') ?>
           </p>
           <p class="text-body-secondary small" id="volunteer-scope-login-note">
-            <?= gettext('Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account.') ?>
+            <?= gettext('Authority is given to the person, not to a login, so it can be granted before they have one. A person who signs in only to the Member Portal keeps seeing just their own schedule until an administrator gives them a staff account.') ?>
           </p>
 
           <div class="volunteer-loading text-center py-4" id="scopes-loading">

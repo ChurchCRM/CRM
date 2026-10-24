@@ -7,11 +7,8 @@
  * holds an ORDINARY MEMBER LOGIN runs their team from the portal, and never sees
  * the admin shell doing it.
  *
- * Persona: person 100, Lena Black — `usr_EditSelf=1`, no admin flag, so
- * `User::isEditSelfExclusive()` is true and this login has no admin shell to fall
- * back to. `user_usr.usr_UserName` is `VARCHAR(32)` and the seeded address is 37
- * characters, so the login form must be given the truncated form. An
- * administrator grants her a `team` scope through `/api/ministries/scopes`, which
+ * Persona: person 100, Lena Black, signed in with her email: a member session,
+ * with no admin shell to fall back to. An administrator grants her a `team` scope through `/api/ministries/scopes`, which
  * is the only way one is ever made (§4.6), and everything after that is her.
  *
  * The walk is the acceptance criterion of the issue, in order: the nav entry
@@ -20,7 +17,7 @@
  * another team's page is the portal's own 404, and `/ministries/{id}`
  * never renders the admin shell.
  *
- * `limited.user` is the control: a member with no scope at all, who must not see
+ * Darren Campbell (person 4) is the control: a member with no scope at all, who must not see
  * the entry and must be refused the pages.
  *
  * Order inside every hook is API setup → login → `cy.visit()`, because
@@ -34,17 +31,14 @@ const VOLUNTEER_URL = "/api/ministries";
 const TEAMS_URL = "/portal/teams";
 
 /** The team leader (person 100). */
-const LEADER_USERNAME = "lena.black.editself.notes@example.com";
-const LEADER_PASSWORD = "changeme";
 const PERSON_LEADER = 100;
+const LEADER_USERNAME = PERSON_LEADER;
 
 /**
- * A member with no volunteer scope at all: `limited.user` (person 4) — EditSelf
- * only, every other permission flag 0, non-admin. The control for "the nav entry
- * and the pages are for team leaders and nobody else".
+ * A member with no volunteer scope at all: Darren Campbell (person 4). The
+ * control for "the nav entry and the pages are for team leaders and nobody else".
  */
-const PLAIN_USERNAME = "limited.user";
-const PLAIN_PASSWORD = "changeme";
+const PLAIN_USERNAME = 4;
 
 /** Seeded member of group 1 "Angels class" — the person to qualify and assign. */
 const POOL_MEMBER = 8;
@@ -60,12 +54,9 @@ let posDoor = 0;
 
 // ── helpers (local functions, NOT cy.* commands — cypress-testing.md) ───────
 
-function login(username, password) {
-    cy.clearCookies();
-    cy.visit("/session/begin");
-    cy.get("input[name=User]").type(username);
-    cy.get("input[name=Password]").type(`${password}{enter}`);
-    cy.url({ timeout: 10000 }).should("not.include", "/session/begin");
+function login(username) {
+    cy.signInAsMember(username);
+    cy.visit("/portal/");
 }
 
 function adminApi(method, url, body, expectedStatus = 200) {
@@ -271,7 +262,7 @@ describe("Member Portal (MP7, #9868) — My Teams", () => {
     describe("Member Portal — My Teams", () => {
         describe("A member who leads a team", () => {
             it("Finds My Teams in the portal navigation, between Volunteering and My Family", () => {
-                login(LEADER_USERNAME, LEADER_PASSWORD);
+                login(LEADER_USERNAME);
                 cy.url({ timeout: 10000 }).should("include", "/portal");
 
                 cy.get("#portal-nav .portal-nav-link").then(($links) => {
@@ -288,7 +279,7 @@ describe("Member Portal (MP7, #9868) — My Teams", () => {
             });
 
             it("Lists the team, its ministry and its position count", () => {
-                login(LEADER_USERNAME, LEADER_PASSWORD);
+                login(LEADER_USERNAME);
                 cy.visit(TEAMS_URL);
 
                 cy.get(".portal-team-card").should("have.length", 1);
@@ -298,7 +289,7 @@ describe("Member Portal (MP7, #9868) — My Teams", () => {
             });
 
             it("Opens the team on its Positions tab, and hides what a team leader may not do", () => {
-                login(LEADER_USERNAME, LEADER_PASSWORD);
+                login(LEADER_USERNAME);
                 cy.visit(`${TEAMS_URL}/${teamLed}`);
 
                 cy.get("#portal-team").should("exist");
@@ -327,7 +318,7 @@ describe("Member Portal (MP7, #9868) — My Teams", () => {
 
             it("Shows a position's row menu in full on a phone, not clipped by the scrolling table (2026-09-18)", () => {
                 cy.viewport(375, 812);
-                login(LEADER_USERNAME, LEADER_PASSWORD);
+                login(LEADER_USERNAME);
                 cy.visit(`${TEAMS_URL}/${teamLed}`);
                 cy.get("#volunteerPositionsTable tbody tr", { timeout: 15000 }).should("contain.text", `${PREFIX} Door`);
 
@@ -352,7 +343,7 @@ describe("Member Portal (MP7, #9868) — My Teams", () => {
             });
 
             it("Ticks a qualification on the Volunteers tab and it saves", () => {
-                login(LEADER_USERNAME, LEADER_PASSWORD);
+                login(LEADER_USERNAME);
                 cy.visit(`${TEAMS_URL}/${teamLed}`);
 
                 cy.get("#nav-item-volunteers").click();
@@ -402,7 +393,7 @@ describe("Member Portal (MP7, #9868) — My Teams", () => {
             });
 
             it("Creates a schedule for the team, whose Save generates its dates, and staffs one", () => {
-                login(LEADER_USERNAME, LEADER_PASSWORD);
+                login(LEADER_USERNAME);
                 cy.visit(`${TEAMS_URL}/${teamLed}`);
 
                 // ── create ──
@@ -508,7 +499,7 @@ describe("Member Portal (MP7, #9868) — My Teams", () => {
 
         describe("Refusals", () => {
             it("Another team's page is the portal's own 404, not the admin access-denied page", () => {
-                login(LEADER_USERNAME, LEADER_PASSWORD);
+                login(LEADER_USERNAME);
                 cy.visit(`${TEAMS_URL}/${teamOther}`, { failOnStatusCode: false });
 
                 cy.get(".portal-error-404").should("exist");
@@ -517,7 +508,7 @@ describe("Member Portal (MP7, #9868) — My Teams", () => {
             });
 
             it("The admin ministry page never renders for a member login", () => {
-                login(LEADER_USERNAME, LEADER_PASSWORD);
+                login(LEADER_USERNAME);
                 cy.visit(`/ministries/${ministryId}`, { failOnStatusCode: false });
 
                 cy.get("#volunteer-ministry").should("not.exist");
@@ -526,7 +517,7 @@ describe("Member Portal (MP7, #9868) — My Teams", () => {
             });
 
             it("A member who leads nothing has no My Teams entry and cannot open the pages", () => {
-                login(PLAIN_USERNAME, PLAIN_PASSWORD);
+                login(PLAIN_USERNAME);
                 cy.url({ timeout: 10000 }).should("include", "/portal");
 
                 cy.get("#portal-nav").should("not.contain.text", "My Teams");

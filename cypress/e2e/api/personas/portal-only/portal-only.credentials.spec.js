@@ -10,16 +10,14 @@ const apiLogin = (userName, password) =>
         failOnStatusCode: false,
     });
 
-describe("portal-only: a self-service account never gets an API key", () => {
-    ["portal-only", "portal-only-dormant-flags"].forEach((persona) => {
-        it(`${persona} cannot sign in through the API`, () => {
-            const { username, password } = PERSONAS[persona].login;
-
-            apiLogin(username, password).then((response) => {
+describe("portal-only: a member never gets an API key", () => {
+    it("the member's email and the seed password do not sign in through the API", () => {
+        cy.makePrivateAdminAPICall("GET", `/api/person/${PERSONAS["portal-only"].member}`, null, 200).then(({ body }) =>
+            apiLogin(body.Email, "changeme").then((response) => {
                 expect(response.status).to.eq(401);
                 expect(response.body).to.not.have.property("apiKey");
-            });
-        });
+            }),
+        );
     });
 
     it("a staff account still receives its key", () => {

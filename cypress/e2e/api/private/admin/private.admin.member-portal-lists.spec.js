@@ -7,7 +7,7 @@
  * Seed people under the rule used here (roles 1-3, classifications 1-2, age 13):
  * 2 Mathew (head, email removed here), 6 Constance and 7 Marion (made to share an
  * email), 14 Nathan (an unconfirmed moved address), 34 Alvin, 57 Jon and 92 Bruce
- * (heads with their own email). 4 limited.user has a staff account.
+ * (heads with their own email). 95 Judith has a staff account and opens the portal from it.
  */
 
 const SETTINGS_URL = "/admin/api/member-portal/sign-in";
@@ -35,7 +35,7 @@ const resetFixtures = () => {
     db("UPDATE person_per SET per_Email = 'mathew.campbell@example.com' WHERE per_ID = 2");
     db("UPDATE person_per SET per_Email = 'constance.hart@example.com' WHERE per_ID = 6");
     db("UPDATE person_per SET per_Email = 'marion.sutton@example.com' WHERE per_ID = 7");
-    db("DELETE FROM person_signin_psi WHERE psi_per_ID IN (4, 14, 34, 57, 92)");
+    db("DELETE FROM person_signin_psi WHERE psi_per_ID IN (14, 34, 57, 92, 95)");
     db("DELETE FROM family_email_move_fem WHERE fem_Email LIKE ?", [`${MARK}%`]);
     db("DELETE FROM note_nte WHERE nte_Text = ?", [MARK]);
     db("DELETE FROM portal_signin_audit_psa WHERE psa_Detail = ? OR psa_Email LIKE ?", [MARK, `${MARK}%`]);
@@ -272,13 +272,13 @@ describe("Admin → Member Portal lists, audit and statistics", () => {
     });
 
     it("reads Statistics from the person sign-in rows, and stops stamping the account", () => {
-        db("UPDATE user_usr SET usr_LastPortalActivity = NULL WHERE usr_per_ID = 4");
+        db("UPDATE user_usr SET usr_LastPortalActivity = NULL WHERE usr_per_ID = 95");
         stats().then((before) => {
             db(
                 `INSERT INTO person_signin_psi (psi_per_ID, psi_LastSignIn, psi_LastMethod) VALUES (92, NOW() - INTERVAL 20 DAY, 'device')
                  ON DUPLICATE KEY UPDATE psi_LastSignIn = VALUES(psi_LastSignIn), psi_LastMethod = VALUES(psi_LastMethod)`,
             );
-            cy.request({ method: "POST", url: "/session/begin", form: true, body: { User: "limited.user", Password: "changeme" } });
+            cy.request({ method: "POST", url: "/admin/", form: true, body: { User: "judith.matthews@example.com", Password: "noMoney$" } });
             cy.request("/portal/");
 
             stats().then((after) => {
@@ -286,14 +286,14 @@ describe("Admin → Member Portal lists, audit and statistics", () => {
                 expect(after.signedIn24Hours - before.signedIn24Hours, "24 hours").to.eq(1);
                 expect(after.signedIn7Days - before.signedIn7Days, "7 days").to.eq(1);
                 expect(after.signedIn30Days - before.signedIn30Days, "30 days").to.eq(2);
-                expect(after.recentSignIns[0].personId).to.eq(4);
+                expect(after.recentSignIns[0].personId).to.eq(95);
                 expect(after.recentSignIns[0].method).to.eq("staff");
                 expect(after.recentSignIns[0].lastActivity).to.match(/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/);
                 list("may-sign-in", { length: "1" }).its("total").should("eq", after.maySignIn);
                 list("never-signed-in", { length: "1" }).its("total").should("eq", after.neverSignedIn);
                 expect(after.neverSignedIn - before.neverSignedIn, "92 has signed in now").to.eq(-1);
             });
-            db("SELECT usr_LastPortalActivity AS stamp FROM user_usr WHERE usr_per_ID = 4").then((rows) => {
+            db("SELECT usr_LastPortalActivity AS stamp FROM user_usr WHERE usr_per_ID = 95").then((rows) => {
                 expect(rows[0].stamp).to.be.null;
             });
         });

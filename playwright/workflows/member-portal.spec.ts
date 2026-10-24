@@ -1,27 +1,25 @@
-import { type APIRequestContext, expect, type Page, test } from '@playwright/test';
+import { type APIRequestContext, type BrowserContext, expect, type Page, test } from '@playwright/test';
 
 import { captureScreen } from '../support/capture';
 import { humanClick, humanPause, humanType, settle } from '../support/human';
-import {
-  adminRequest,
-  type PortalDemo,
-  setUpPortalDemo,
-  signInAsPortalMember,
-  waitForAvatars,
-} from '../support/portal-member';
+import { rememberedMemberContext, useMemberSignIn } from '../support/member-sign-in';
+import { adminRequest, PORTAL_MEMBER, type PortalDemo, setUpPortalDemo, waitForAvatars } from '../support/portal-member';
 
 let api: APIRequestContext;
 let demo: PortalDemo | undefined;
+let restoreSignIn: (() => Promise<void>) | undefined;
 
 test.describe.configure({ mode: 'serial' });
 
 test.beforeAll(async () => {
   api = await adminRequest();
   demo = await setUpPortalDemo(api);
+  restoreSignIn = await useMemberSignIn(api);
 });
 
 test.afterAll(async () => {
   try {
+    await restoreSignIn?.();
     await demo?.tearDown();
   } finally {
     await api?.dispose();
@@ -85,10 +83,26 @@ test('admin-member-portal-calendars', async ({ page }, testInfo) => {
 });
 
 test.describe('signed in as a member', () => {
-  test.use({ storageState: { cookies: [], origins: [] } });
+  let member: BrowserContext | undefined;
 
-  test('portal-member-home', async ({ page }, testInfo) => {
-    await signInAsPortalMember(page);
+  test.beforeAll(async ({ browser }) => {
+    member = await rememberedMemberContext(browser, PORTAL_MEMBER.email, 'portal');
+  });
+
+  test.afterAll(async () => {
+    await member?.close();
+  });
+
+  /** A new tab in the member's signed-in browser, on the portal home page. */
+  async function memberPage(): Promise<Page> {
+    const page = await (member as BrowserContext).newPage();
+    await page.goto('/portal/');
+    await expect(page.locator('.portal-shell')).toBeVisible({ timeout: 15000 });
+    return page;
+  }
+
+  test('portal-member-home', async ({}, testInfo) => {
+    const page = await memberPage();
     await expect(page.locator('.portal-upcoming-item').first()).toBeVisible();
     await expect(page.locator('#portal-home-family-card')).toBeVisible();
     await settle(page, 600);
@@ -102,8 +116,8 @@ test.describe('signed in as a member', () => {
     });
   });
 
-  test('portal-member-add-family-member', async ({ page }, testInfo) => {
-    await signInAsPortalMember(page);
+  test('portal-member-add-family-member', async ({}, testInfo) => {
+    const page = await memberPage();
     await page.goto('/portal/family');
     await humanClick(page.locator('#portal-add-member-open'));
     const dialog = page.locator('#portal-add-member-dialog');
@@ -127,8 +141,8 @@ test.describe('signed in as a member', () => {
     await expect(dialog).toBeHidden({ timeout: 15000 });
   });
 
-  test('portal-member-family', async ({ page }, testInfo) => {
-    await signInAsPortalMember(page);
+  test('portal-member-family', async ({}, testInfo) => {
+    const page = await memberPage();
     await page.goto('/portal/family');
     await expect(page.locator('#portal-family-members .portal-member-badge-pending')).toBeVisible();
     await keepInView(page, '#portal-family-members');
@@ -144,8 +158,8 @@ test.describe('signed in as a member', () => {
     });
   });
 
-  test('portal-member-calendar', async ({ page }, testInfo) => {
-    await signInAsPortalMember(page);
+  test('portal-member-calendar', async ({}, testInfo) => {
+    const page = await memberPage();
     await page.goto('/portal/calendar');
     await expect(page.locator('.portal-calendar-legend-item')).toHaveCount(demo?.sharedCalendarCount ?? 0);
     await waitForCalendarEvents(page);
@@ -161,8 +175,8 @@ test.describe('signed in as a member', () => {
     });
   });
 
-  test('portal-member-calendar-subscribe', async ({ page }, testInfo) => {
-    await signInAsPortalMember(page);
+  test('portal-member-calendar-subscribe', async ({}, testInfo) => {
+    const page = await memberPage();
     await page.goto('/portal/calendar');
     await waitForCalendarEvents(page);
     await listViewWhenNarrow(page);

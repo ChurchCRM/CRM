@@ -28,11 +28,7 @@
  * Personas
  *   admin        — person 1, sets up what a coordinator cannot
  *   coordinator  — person 3 (`tony.wade`) holding a ministry scope; NOT an admin
- *   volunteer    — person 100, the seeded EditSelf+Notes login #9712 uses
- *
- * The member username is the full address: `user_usr.usr_UserName` used to be
- * `VARCHAR(32)` and truncated it (upstream #9831), but #9879 widened the column
- * and the seed now stores all 37 characters.
+ *   volunteer    — person 100, Lena Black, signed in with her email
  *
  * Order inside every hook is **API setup → login → cy.visit()**: `cy.request()`
  * rotates the PHP session cookie (`cypress-testing.md`). Fixtures are removed in
@@ -50,8 +46,6 @@ const OPPORTUNITIES_URL = "/portal/volunteer/opportunities";
 
 const PERSON_COORDINATOR = 3;
 const PERSON_VOLUNTEER = 100;
-const MEMBER_USERNAME = "lena.black.editself.notes@example.com";
-const MEMBER_PASSWORD = "changeme";
 
 const CHURCH_SERVICE_TYPE = 1;
 
@@ -116,7 +110,8 @@ function freshCoordinatorLogin() {
 }
 
 function freshMemberLogin() {
-    freshLogin(MEMBER_USERNAME, MEMBER_PASSWORD);
+    cy.signInAsMember(PERSON_VOLUNTEER);
+    cy.visit("/portal/");
 }
 
 function dbOk(sql, params = []) {

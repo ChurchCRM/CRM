@@ -94,9 +94,31 @@ final class MemberSignInSettingsService
             foreach ($values as $key => $value) {
                 SystemConfig::setValue($key, $value);
             }
+            if (($values['bMemberSignIn'] ?? '') === '1') {
+                $this->dismissFormerAccountsNotice();
+            }
         }
 
         return $errors;
+    }
+
+    /**
+     * How many self-service accounts the 7.9.0 upgrade removed, while the
+     * Admin Dashboard should still ask to turn member sign-in on (design §12);
+     * 0 once sign-in is on or the notice was dismissed.
+     */
+    public function formerAccountsToNotify(): int
+    {
+        if (SystemConfig::getBooleanValue('bMemberSignIn')) {
+            return 0;
+        }
+
+        return max(0, SystemConfig::getIntValue('iMemberSignInFormerAccounts'));
+    }
+
+    public function dismissFormerAccountsNotice(): void
+    {
+        SystemConfig::setValue('iMemberSignInFormerAccounts', '0');
     }
 
     /**

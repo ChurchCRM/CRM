@@ -13,7 +13,7 @@
 
 const ID = "portal-example";
 const PLUGIN_URL = `/plugins/api/plugins/${ID}`;
-const MEMBER = { username: "limited.user", password: "changeme", personId: 4 };
+const MEMBER = { personId: 4 };
 const MEMBER_GROUP = 1;
 const OTHER_GROUP = 4;
 const ROSTERS = `/portal/plugins/${ID}/rosters`;
@@ -36,8 +36,7 @@ const pluginGrantCount = () =>
     db("SELECT COUNT(*) AS n FROM portal_grant_pgr WHERE pgr_Capability LIKE ?", [`plugin.${ID}.%`]).then((rows) => Number(rows[0].n));
 
 const signIn = () => {
-    cy.clearCookies();
-    cy.request({ method: "POST", url: "/session/begin", form: true, body: { User: MEMBER.username, Password: MEMBER.password } });
+    cy.signInAsMember(MEMBER.personId);
     cy.request("/portal/").its("status").should("eq", 200);
 };
 

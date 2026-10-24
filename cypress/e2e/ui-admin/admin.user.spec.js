@@ -22,50 +22,67 @@ describe("Admin User Password", () => {
             .should("contain.text", "—");
     });
 
-    it("Admin Change password", () => {
-        cy.visit("admin/system/user/99/changePassword");
-        cy.contains("Change Password");
-        cy.contains("Amanda Black");
-        cy.get("#NewPassword1").type("new-user-password");
-        cy.get("#NewPassword2").type("new-user-password");
-        cy.get("#NewPassword1").closest("form").submit();
-        cy.url().should("contain", "admin/system/user/99/changePassword");
-        cy.contains("Password Change Successful");
-    });
+    describe("Change Password", () => {
+        // A throwaway account: a password change also rotates the account's API key.
+        const PERSON_ID = 28; // Rafael Dixon, no seeded account
 
-    it("Admin Change password stops a blank confirmation in the browser", () => {
-        cy.visit("/admin/system/user/99/changePassword");
-        cy.get("#NewPassword1").type("only-in-the-first-box");
-        cy.get("#NewPassword1").closest("form").submit();
-        cy.get("#NewPasswordError").should("have.text", "You must enter the same password in both boxes");
-        cy.get("#NewPassword1").should("have.value", "only-in-the-first-box");
-        cy.contains("Password Change Successful").should("not.exist");
-    });
+        before(() => {
+            cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${PERSON_ID}/`, null, [200, 404]);
+            cy.setupAdminSession({ forceLogin: true });
+            cy.visit(`admin/system/users/new?personId=${PERSON_ID}`);
+            cy.contains("User Editor");
+            cy.get("#SaveButton").click();
+            cy.location("pathname").should("eq", "/admin/system/users");
+        });
 
-    it("Admin Change password refuses a confirmation that does not match", () => {
-        cy.visit("/admin/system/user/99/changePassword");
-        cy.get("input[name=csrf_token]")
-            .invoke("val")
-            .then((csrfToken) =>
-                cy.request({
-                    method: "POST",
-                    url: "/admin/system/user/99/changePassword",
-                    form: true,
-                    body: { csrf_token: csrfToken, NewPassword1: "first-box", NewPassword2: "second-box" },
-                }),
-            )
-            .its("body")
-            .should("contain", "You must enter the same password in both boxes")
-            .and("not.contain", "Password Change Successful");
-    });
+        after(() => {
+            cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${PERSON_ID}/`, null, 200);
+        });
 
-    it("Admin Change password refuses a blank password", () => {
-        cy.visit("/admin/system/user/99/changePassword");
-        cy.get("#NewPassword1").closest("form").submit();
-        cy.get("#NewPasswordError").should("have.text", "Enter a new password");
-        cy.contains("Password Change Successful").should("not.exist");
-    });
+        it("Admin Change password", () => {
+            cy.visit("admin/system/user/28/changePassword");
+            cy.contains("Change Password");
+            cy.contains("Rafael Dixon");
+            cy.get("#NewPassword1").type("new-user-password");
+            cy.get("#NewPassword2").type("new-user-password");
+            cy.get("#NewPassword1").closest("form").submit();
+            cy.url().should("contain", "admin/system/user/28/changePassword");
+            cy.contains("Password Change Successful");
+        });
 
+        it("Admin Change password stops a blank confirmation in the browser", () => {
+            cy.visit("/admin/system/user/28/changePassword");
+            cy.get("#NewPassword1").type("only-in-the-first-box");
+            cy.get("#NewPassword1").closest("form").submit();
+            cy.get("#NewPasswordError").should("have.text", "You must enter the same password in both boxes");
+            cy.get("#NewPassword1").should("have.value", "only-in-the-first-box");
+            cy.contains("Password Change Successful").should("not.exist");
+        });
+
+        it("Admin Change password refuses a confirmation that does not match", () => {
+            cy.visit("/admin/system/user/28/changePassword");
+            cy.get("input[name=csrf_token]")
+                .invoke("val")
+                .then((csrfToken) =>
+                    cy.request({
+                        method: "POST",
+                        url: "/admin/system/user/28/changePassword",
+                        form: true,
+                        body: { csrf_token: csrfToken, NewPassword1: "first-box", NewPassword2: "second-box" },
+                    }),
+                )
+                .its("body")
+                .should("contain", "You must enter the same password in both boxes")
+                .and("not.contain", "Password Change Successful");
+        });
+
+        it("Admin Change password refuses a blank password", () => {
+            cy.visit("/admin/system/user/28/changePassword");
+            cy.get("#NewPassword1").closest("form").submit();
+            cy.get("#NewPasswordError").should("have.text", "Enter a new password");
+            cy.contains("Password Change Successful").should("not.exist");
+        });
+    });
 
     it("Create System Users", () => {
         // Ensure clean start: if Peyton Ray already exists as a user, remove that user first.

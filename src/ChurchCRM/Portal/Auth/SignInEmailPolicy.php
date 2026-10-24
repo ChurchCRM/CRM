@@ -76,8 +76,7 @@ final class SignInEmailPolicy
 
     /**
      * A person with a staff account or given portal grants, whose email only
-     * an administrator may change or confirm. Self-service accounts are not
-     * staff accounts: the release-day cutover removes them.
+     * an administrator may change or confirm.
      */
     public function needsAdministrator(Person $person): bool
     {
@@ -98,10 +97,8 @@ final class SignInEmailPolicy
         }
 
         $found = [];
-        foreach (UserQuery::create()->filterByPersonId($personIds, Criteria::IN)->find() as $user) {
-            if (!$user->isEditSelfExclusive()) {
-                $found[(int) $user->getPersonId()] = true;
-            }
+        foreach (UserQuery::create()->filterByPersonId($personIds, Criteria::IN)->select(['PersonId'])->find() as $personId) {
+            $found[(int) $personId] = true;
         }
 
         $now = $this->now();

@@ -513,20 +513,12 @@
       "duration": 2429
     },
     {
-      "spec": "cypress/e2e/api/private/standard/private.selfedit.family-scope.spec.js",
-      "duration": 3000
-    },
-    {
       "spec": "cypress/e2e/api/private/standard/private.system.timerjobs.spec.js",
       "duration": 2617
     },
     {
       "spec": "cypress/e2e/api/private/standard/private.user-config-permissions.spec.js",
       "duration": 2449
-    },
-    {
-      "spec": "cypress/e2e/api/private/standard/private.user-current.2fa-editself.spec.js",
-      "duration": 2688
     },
     {
       "spec": "cypress/e2e/api/private/standard/private.user.settings.spec.js",

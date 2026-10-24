@@ -11,7 +11,7 @@
  * Business rule under test (read-default policy, #9003):
  *  - A zero-permission user CAN log in and READ people and family records.
  *    They are NOT redirected to the Member Portal — that confinement is
- *    reserved for EditSelf-only users (see limited-access.spec.js).
+ *    reserved for EditSelf-only accounts (the safety net in limited-access.spec.js).
  *  - They CANNOT write anything: no add/edit/delete of person or family, and no
  *    access to finance, notes, admin, or menu-option pages.
  *
@@ -19,8 +19,8 @@
  * User::isEditSelfExclusive(), replacing the removed hasNoAdminPermissions().
  * Zero-permission users fall through it; EditSelf-only users do not.
  *
- * Contrast: limited.user (EditSelf=1, person 4, family 1) IS confined to the
- * Member Portal at /portal — see limited-access.spec.js.
+ * Contrast: an EditSelf-only account IS confined to the Member Portal at
+ * /portal — see limited-access.spec.js.
  */
 describe("Zero-Permission User (EditSelf=0, all flags 0)", () => {
     const noPermUser = "noperm.user";

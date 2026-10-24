@@ -25,14 +25,14 @@ Theme authors: https://docs.churchcrm.io/administration/member-portal-theme-guid
 | P7 | Template edits apply on the next request (Twig `auto_reload`). |
 | P8 | A broken theme fails loudly (section "Failure behaviour"). |
 | P9 | Configuration lives on Admin -> Member Portal. Values are `ConfigItem`s in `config_cfg` without a System Settings category. |
-| P10 | Landing rule: an Edit-Self-only login lands in `/portal` and cannot reach the admin shell; every other login lands in `/v2/dashboard` and has a "Member Portal" entry in its user menu. In the portal, the account menu's **Admin Console** entry (staff logins) returns to the admin dashboard. |
+| P10 | Landing rule: members have no account; they sign in at `/portal/login` with their email (member sign-in design, `docs/member-sign-in-design.md`) and only ever see the portal. Staff sign in at `/admin/` and land in `/v2/dashboard`, with a "Member Portal" entry in the user menu; an Edit-Self-only login is confined to `/portal`. In the portal, the account menu's **Admin Console** entry returns a staff session to the admin side. |
 | P11 | Every portal API derives the acting person from the portal principal (`PortalContext`). No route accepts a `personId` naming the actor. |
 | P12 | Family scope is the member's own family, through `User::canViewFamily()` / `canEditPerson()`. |
 | P13 | The administrator chooses which calendars the portal shows (section "Calendar"). |
 | P14 | Giving is not part of the portal; the nav reserves no page for it until a payment-gateway design exists. |
 | P15 | The volunteer member pages are portal Twig templates around the `webpack/portal/` volunteer bundles and `/api/ministries/me/*`. |
 | P16 | Member-facing volunteer functionality exists only in the portal; the admin shell keeps "Ministries". |
-| P17 | Volunteer scopes count for self-service accounts: team leaders manage their own team. Coordinators and managers are staff accounts. |
+| P17 | Volunteer scopes count for members: a team leader manages their own team in the portal (`volunteer.team.manage`). Coordinators and managers are staff accounts. |
 | P18 | Every portal page, API route and nav entry names a portal capability (`ChurchCRM\Portal\Permissions`, member sign-in design §8). Core and plugins register capabilities and rules the same way (`plugin-development.md` -> "Member Portal"). |
 
 Out of scope: contribution history and online giving, per-event visibility flags, member directory search (needs a privacy model; the team leader's name-only Add Volunteer picker, #10531, is not that), personal-device check-in, theme editor or upload UI, theming the admin shell.
@@ -66,6 +66,7 @@ src/skin/scss/_portal.scss   part of portal.min.css
 
 | Account | Lands in | Portal | Admin shell |
 |---|---|---|---|
+| Member (no account, email sign-in at `/portal/login`) | `/portal` | yes | no |
 | Staff login at `/admin/` (admin flag or any module permission) | `/v2/dashboard` | via user menu "Member Portal" | yes |
 | Edit Self only | `/portal` | yes | no |
 
@@ -207,7 +208,7 @@ Cards: next portal-visible events, the member's next volunteer assignment and pe
 - Every volunteer ministry has a calendar (`calendars.ministry_id`, FK to `volunteer_ministry_vmin`, `ON DELETE SET NULL`), created, renamed and deleted with the ministry by the volunteer service. Coordinators pin their ministry's events to it, and to church calendars an administrator opened to the ministry (`volunteer_calendar_vcal`), judged by `VolunteerCalendarService::mayPin()`. Calendar administration stays with Add Events or the coordinators of the calendar's own ministry (`CalendarWriteRoleAuthMiddleware`). The admin calendar page labels church calendars "Church Calendars" and lists ministry calendars under "Ministry Calendars".
 - `GET /api/portal/calendar/events?from&to` returns events of portal-visible calendars (church, ministry, system), session-gated, in the configured timezone. `from`/`to` are `YYYY-MM-DD`; a reversed range is 400; the window clamps to `PortalCalendarService::MAX_WINDOW_DAYS` and the response echoes the window answered.
 - UI: FullCalendar (month/agenda/list, read-only), one colour per calendar, an event detail panel. Legend entries are `<button aria-pressed data-calendar-key>` toggles that hide and show a calendar's events in place; the choice persists in `localStorage` `churchcrm.portal.calendar.hidden` (every access guarded). A theme without the toggle markup keeps a plain legend.
-- Subscribe: a **Subscribe** button opens a dialog with one checkbox per shared calendar and returns one address, `/api/public/portal-calendar/{token}/calendar.ics`. The token (32 random bytes as hex, `usr_PortalCalendarToken`) is the credential because calendar apps cannot sign in; **Reset link** (`POST /api/portal/calendar/subscription/reset`) retires it at once. The feed serves the member's selection (`usr_PortalCalendarSelection`, `"<type>:<id>"` strings) intersected with the calendars shared now, includes only events, applies the same privacy rewriting, and answers an unknown token with a bare 404. Format: RFC 5545, three months back to eighteen months ahead, `VALUE=DATE` for whole-day and virtual events, UTC for timed ones, `CATEGORIES` naming the source calendar; built by `PortalCalendarFeed`. API: `GET/PUT /api/portal/calendar/subscription`.
+- Subscribe: a **Subscribe** button opens a dialog with one checkbox per shared calendar and returns one address, `/api/public/portal-calendar/{token}/calendar.ics`. The token (32 random bytes as hex, `psi_CalendarToken`) is the credential because calendar apps cannot sign in; **Reset link** (`POST /api/portal/calendar/subscription/reset`) retires it at once. The feed serves the member's selection (`psi_CalendarSelection`, `"<type>:<id>"` strings) intersected with the calendars shared now, includes only events, applies the same privacy rewriting, and answers an unknown token with a bare 404. Format: RFC 5545, three months back to eighteen months ahead, `VALUE=DATE` for whole-day and virtual events, UTC for timed ones, `CATEGORIES` naming the source calendar; built by `PortalCalendarFeed`. API: `GET/PUT /api/portal/calendar/subscription`.
 - Volunteer occurrences not linked to an event live under "My Volunteer Schedule", not on calendars.
 
 ### Volunteering (`/portal/volunteer/schedule`, `/portal/volunteer/opportunities`)
@@ -241,8 +242,12 @@ What the church has emailed this member, newest first, paginated; reached from t
 | Item | Where |
 |---|---|
 | `calendars.ministry_id` (nullable, indexed, FK to `volunteer_ministry_vmin`) | `orm/schema.xml`, `Install.sql` |
-| `user_usr.usr_LastPortalActivity`, `usr_PortalCalendarToken` (UNIQUE), `usr_PortalCalendarSelection` | `orm/schema.xml`, `Install.sql` |
+| `person_signin_psi.psi_LastActivity`, `psi_CalendarToken` (UNIQUE), `psi_CalendarSelection` (the `user_usr` columns are no longer read) | `orm/schema.xml`, `Install.sql` |
 | Config items listed above, no System Settings category | `SystemConfig::buildConfigs()` |
+
+## Tests
+
+Members have no account. The seeded member persona is person 100 (Lena Black, family 20), signed in with `cy.signInAsMember(100)` (an emailed code read from Mailpit, `cypress/support/member-session.js`); `cy.makeMemberAPICall(99, …)` calls the API in person 99's member session. `ui`, `ui-admin` and `api` suites run under separate configs.
 
 ## Minimal church theme
 

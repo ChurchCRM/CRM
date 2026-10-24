@@ -5,8 +5,8 @@
  * page's Portal sign-in card, and the person editor's email field
  * (docs/member-sign-in-design.md §9, §11.3).
  *
- * Seed people: 2 Mathew (no account), 100 Lena (self-service account), 3 Tony
- * (a staff account). judith.matthews has Edit Records and is not an
+ * Seed people: 2 Mathew (no account), 100 Lena (no account), 3 Tony (a staff
+ * account). judith.matthews has Edit Records and is not an
  * administrator. The family email move and "has signed in" have no HTTP
  * surface until rows 5 and 9, so they are set with cy.dbQuery().
  */

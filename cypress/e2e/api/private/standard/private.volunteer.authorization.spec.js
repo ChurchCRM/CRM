@@ -19,7 +19,7 @@
  *   person 3   `user.api.key`       every flag but Admin → Ministry Coordinator once granted a scope
  *   person 900 `plainauth.api.key`  Notes only → the "no volunteer rights" negative case,
  *                                   and the Global Volunteer Manager for the round-trip block
- *   person 99  `selfedit.api.key`   EditSelf-exclusive → the volunteer persona (D14)
+ *   person 99  a member session (email sign-in) → the volunteer persona (D14)
  *
  * §6.6 rule honoured throughout: **never assert a strict 403 on an admin-keyed
  * call** to a role-gated route — an administrator bypasses every role middleware
@@ -44,7 +44,7 @@ const DASHBOARD_URL = "/ministries/dashboard";
 
 const PERSON_COORDINATOR = 3; // tony.wade — user.api.key
 const PERSON_MANAGER = 900; // john.plainauth — plainauth.api.key
-const PERSON_VOLUNTEER = 99; // amanda.black — selfedit.api.key
+const PERSON_VOLUNTEER = 99; // Amanda Black, a member session
 
 // Fixture names are prefixed so cleanup can delete exactly what this spec made.
 const FIXTURE_PREFIX = "AUTHZ9706";
@@ -111,6 +111,12 @@ function createTeam(ministryId, suffix) {
     ).then((rows) => rows.insertId);
 }
 
+/** A page request in the volunteer's member session. */
+function memberPageRequest(url) {
+    cy.useMemberSession(PERSON_VOLUNTEER);
+    return cy.request({ method: "GET", url, failOnStatusCode: false, followRedirect: false });
+}
+
 /**
  * A page request against an MVC module, authenticated by API key.
  * x-api-key authenticates Slim MVC pages such as /ministries (cypress-testing.md);
@@ -166,7 +172,7 @@ function restoreManagerUser() {
 }
 
 before(() => {
-    cy.rememberTestEnv(["admin.api.key", "user.api.key", "selfedit.api.key", "plainauth.api.key"]);
+    cy.rememberTestEnv(["admin.api.key", "user.api.key", "plainauth.api.key"]);
 });
 
 describe("Volunteer v2 scoped authorization (#9706)", () => {
@@ -314,29 +320,21 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
             cy.makePrivatePlainAuthAPICall("GET", SCOPES_URL, null, 403);
         });
 
-        it("clears the manager flag when the account is switched to EditSelf mode", () => {
-            postUserEditor(PERSON_MANAGER, {
-                UserName: MANAGER_USERNAME,
-                accessMode: "custom",
-                Notes: "1",
-                ManageMinistries: "1",
-            });
-            cy.makePrivatePlainAuthAPICall("GET", SCOPES_URL, null, 200);
-
-            // accessMode 'self' is exclusive: extractModulePerms() zeroes every
-            // module permission, ManageMinistries included (#9079).
+        it("never makes a self-service account, even when the old mode is posted", () => {
             postUserEditor(PERSON_MANAGER, {
                 UserName: MANAGER_USERNAME,
                 accessMode: "self",
-                ManageMinistries: "1",
+                Notes: "1",
             });
             cy.dbQuery(
-                "SELECT usr_ManageMinistries AS flag FROM user_usr WHERE usr_per_ID = ?",
+                "SELECT usr_EditSelf AS editSelf, usr_Notes AS notes FROM user_usr WHERE usr_per_ID = ?",
                 [PERSON_MANAGER],
             ).then((result) => {
                 expect(result.error).to.eq(null);
-                expect(Number(result.rows[0].flag)).to.eq(0);
+                expect(Number(result.rows[0].editSelf)).to.eq(0);
+                expect(Number(result.rows[0].notes)).to.eq(1);
             });
+            restoreManagerUser();
         });
     });
 
@@ -778,7 +776,7 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
             dbOk("UPDATE user_usr SET usr_ManageMyMinistries = 0 WHERE usr_per_ID = ?", [PERSON_MANAGER]);
         });
 
-        it("refuses a self-service login a team grant even in a ministry it holds a scope on", () => {
+        it("refuses a member a team grant even in a ministry they hold a scope on", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
                 SCOPES_URL,
@@ -786,7 +784,8 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
                 201,
             );
 
-            cy.makePrivateEditSelfAPICall(
+            cy.makeMemberAPICall(
+                PERSON_VOLUNTEER,
                 "POST",
                 SCOPES_URL,
                 { personId: PERSON_MANAGER, scopeType: "team", scopeId: teamA1 },
@@ -910,11 +909,12 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
     });
 
     // ---------------------------------------------------------------------
-    // §4.7 — the EditSelf-exclusive member-path exemption
+    // §4.7 — the member path, in a member session
     // ---------------------------------------------------------------------
-    describe("EditSelf-exclusive volunteer (§4.7 member-path exemption)", () => {
+    describe("Volunteer in a member session (§4.7 member path)", () => {
         it("reaches the member permission endpoint", () => {
-            cy.makePrivateEditSelfAPICall(
+            cy.makeMemberAPICall(
+                PERSON_VOLUNTEER,
                 "GET",
                 ME_PERMISSIONS_URL,
                 null,
@@ -946,7 +946,7 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
          * short-circuit — that is what holds the coordinator dashboard and the
          * sidebar's Ministries heading shut for this account (asserted below).
          */
-        it("counts a team scope granted to a self-service account (D14 revision)", () => {
+        it("counts a team scope granted to a member (D14 revision)", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
                 SCOPES_URL,
@@ -954,7 +954,8 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
                 201,
             );
 
-            cy.makePrivateEditSelfAPICall(
+            cy.makeMemberAPICall(
+                PERSON_VOLUNTEER,
                 "GET",
                 ME_PERMISSIONS_URL,
                 null,
@@ -972,8 +973,8 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
             });
 
             // Still not a coordinator anywhere it matters.
-            cy.makePrivateEditSelfAPICall("GET", SCOPES_URL, null, 403);
-            pageRequest(DASHBOARD_URL, Cypress.testEnv("selfedit.api.key")).then((resp) => {
+            cy.makeMemberAPICall(PERSON_VOLUNTEER, "GET", SCOPES_URL, null, 403);
+            memberPageRequest(DASHBOARD_URL).then((resp) => {
                 expect(resp.status).to.be.oneOf([302, 403]);
             });
 
@@ -982,7 +983,7 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
             ]);
         });
 
-        it("reports a ministry scope on a self-service account without making it a coordinator", () => {
+        it("reports a ministry scope on a member without making them a coordinator", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
                 SCOPES_URL,
@@ -990,7 +991,8 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
                 201,
             );
 
-            cy.makePrivateEditSelfAPICall(
+            cy.makeMemberAPICall(
+                PERSON_VOLUNTEER,
                 "GET",
                 ME_PERMISSIONS_URL,
                 null,
@@ -1003,7 +1005,7 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
                 expect(resp.body.isTeamLeader).to.eq(false);
             });
 
-            cy.makePrivateEditSelfAPICall("GET", `/api/ministries/ministries`, null, 403);
+            cy.makeMemberAPICall(PERSON_VOLUNTEER, "GET", `/api/ministries/ministries`, null, 403);
 
             dbOk(`DELETE FROM volunteer_scope_vscp WHERE vscp_per_ID = ?`, [
                 PERSON_VOLUNTEER,
@@ -1011,27 +1013,29 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
         });
 
         it("still cannot reach the coordinator/manager scope API", () => {
-            cy.makePrivateEditSelfAPICall("GET", SCOPES_URL, null, 403);
+            cy.makeMemberAPICall(PERSON_VOLUNTEER, "GET", SCOPES_URL, null, 403);
         });
 
         it("still cannot reach a non-volunteer internal API it was blocked from before", () => {
             // Own person record — 403 before #9706 and 403 after: the exemption
             // grants reachability of the enumerated member paths only.
-            cy.makePrivateEditSelfAPICall(
+            cy.makeMemberAPICall(
+                PERSON_VOLUNTEER,
                 "GET",
                 `/api/person/${PERSON_VOLUNTEER}`,
                 null,
-                403,
+                401,
             );
-            cy.makePrivateEditSelfAPICall("GET", "/api/family/20", null, 403);
+            cy.makeMemberAPICall(PERSON_VOLUNTEER, "GET", "/api/family/20", null, 401);
         });
 
         it("is refused a path that only contains the member API path", () => {
-            cy.makePrivateEditSelfAPICall(
+            cy.makeMemberAPICall(
+                PERSON_VOLUNTEER,
                 "GET",
                 `/api/person/${PERSON_VOLUNTEER}${ME_PERMISSIONS_URL}`,
                 null,
-                403,
+                401,
             );
         });
 
@@ -1043,8 +1047,8 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
                 201,
             );
 
-            cy.makePrivateEditSelfAPICall("GET", `/api/ministries/teams/${teamA1}`, null, 200);
-            cy.makePrivateEditSelfAPICall("GET", `/api/family/20/api/ministries/teams/${teamA1}`, null, 403);
+            cy.makeMemberAPICall(PERSON_VOLUNTEER, "GET", `/api/ministries/teams/${teamA1}`, null, 200);
+            cy.makeMemberAPICall(PERSON_VOLUNTEER, "GET", `/api/family/20/api/ministries/teams/${teamA1}`, null, 401);
 
             dbOk(`DELETE FROM volunteer_scope_vscp WHERE vscp_per_ID = ?`, [
                 PERSON_VOLUNTEER,
@@ -1052,18 +1056,16 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
         });
 
         it("is redirected away from the coordinator dashboard", () => {
-            pageRequest(DASHBOARD_URL, Cypress.testEnv("selfedit.api.key")).then(
-                (resp) => {
-                    expect(resp.status).to.be.oneOf([302, 403]);
-                },
-            );
+            memberPageRequest(DASHBOARD_URL).then((resp) => {
+                expect(resp.status).to.be.oneOf([302, 403]);
+            });
         });
 
-        it("loses the member exemption when the rollout state leaves v2", () => {
+        it("loses the member path when the rollout state leaves v2", () => {
             setVersion("v1");
-            cy.makePrivateEditSelfAPICall("GET", ME_PERMISSIONS_URL, null, 403);
+            cy.makeMemberAPICall(PERSON_VOLUNTEER, "GET", ME_PERMISSIONS_URL, null, 401);
             setVersion("v2");
-            cy.makePrivateEditSelfAPICall("GET", ME_PERMISSIONS_URL, null, 200);
+            cy.makeMemberAPICall(PERSON_VOLUNTEER, "GET", ME_PERMISSIONS_URL, null, 200);
         });
     });
 });

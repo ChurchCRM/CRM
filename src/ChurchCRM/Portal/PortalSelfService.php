@@ -468,8 +468,8 @@ class PortalSelfService
 
     /**
      * Replace the acting member's own photo. The avatar endpoint this
-     * delegates to is behind `EditRecords`, which a self-service login never
-     * has, so the portal calls the model the same way that route does.
+     * delegates to is behind `EditRecords`, which a member never has, so the
+     * portal calls the model the same way that route does.
      *
      * @throws PortalSelfServiceException
      */
@@ -481,7 +481,7 @@ class PortalSelfService
 
         // setImageFromBase64() writes its own 'photo' timeline note and stamps
         // the person as edited, so nothing further is needed here.
-        $actor->setImageFromBase64($imageBase64);
+        $actor->setImageFromBase64($imageBase64, (int) $actor->getId());
     }
 
     // -- Internals -----------------------------------------------------------

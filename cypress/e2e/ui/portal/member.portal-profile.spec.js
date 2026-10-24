@@ -3,16 +3,15 @@
 /**
  * Member Portal (MP4, #9865) — Profile self-service.
  *
- * Seed persona: user 100, Lena Black (person 100, family 20, family role 2 =
- * Spouse). usr_EditSelf=1 and no admin flag, so User::isEditSelfExclusive() is
- * true and she lands in /portal. usr_UserName is VARCHAR(50) since #9831, so the
- * seeded address is stored whole.
+ * Seed persona: Lena Black (person 100, family 20, family role 2 = Spouse),
+ * signed in with her email.
  *
  * Design: .agents/skills/churchcrm/member-portal-design.md §5.2 (P11, P12).
  *   - a member reads and edits their own person record and nothing else
  *   - the birthday field is behind bPortalAllowBirthdayEdit
  *   - the photo shows on the profile page
- *   - password and two-factor are reachable, in the portal's own layout
+ *   - a member has no password or two-factor page; staff sessions do
+ *     (admin.portal-staff.spec.js)
  *
  * Note on the birthday switch: `bPortalAllowBirthdayEdit` is declared by the
  * Admin → Member Portal page (MP3, #9864), which is a sibling branch. Until
@@ -23,15 +22,9 @@
  * administrator turns it on.
  */
 describe("Member Portal — Profile", () => {
-    const memberUser = "lena.black.editself.notes@example.com";
-    const memberPassword = "changeme";
-
     const login = () => {
-        cy.clearCookies();
-        cy.visit("/session/begin");
-        cy.get("input[name=User]").type(memberUser);
-        cy.get("input[name=Password]").type(memberPassword + "{enter}");
-        cy.url({ timeout: 10000 }).should("include", "/portal");
+        cy.signInAsMember(100);
+        cy.visit("/portal/");
     };
 
     /** The newest "Confirm your email address" link sent to `address` (member sign-in design §9). */
@@ -184,63 +177,12 @@ describe("Member Portal — Profile", () => {
         });
     });
 
-    it("The profile page's sign-in links point at the portal's own pages", () => {
+    it("A member session offers no password or two-factor page", () => {
         login();
         cy.visit("/portal/profile");
-
-        cy.get("#portal-change-password-link")
-            .should("have.attr", "href")
-            .and("match", /\/portal\/profile\/password$/);
-        cy.get("#portal-two-factor-link")
-            .should("have.attr", "href")
-            .and("match", /\/portal\/profile\/two-factor$/);
-    });
-
-    it("Change password is a portal page reached from the profile page", () => {
-        login();
-        cy.visit("/portal/profile");
-
-        cy.get("#portal-change-password-link").click();
-        cy.url({ timeout: 10000 }).should("include", "/portal/profile/password");
-        cy.get(".portal-shell").should("exist");
-        cy.get("#sidebar").should("not.exist");
-        cy.get("#OldPassword").should("exist");
-        cy.get("#NewPassword1").should("exist");
-        // The form posts back to the portal, never to the admin route.
-        cy.get("#passwordChangeForm")
-            .should("have.attr", "action")
-            .and("match", /\/portal\/profile\/password$/);
-    });
-
-    it("A wrong current password re-renders the portal form with the error", () => {
-        login();
-        cy.visit("/portal/profile/password");
-
-        // The current password is deliberately wrong, so nothing is changed and
-        // the seeded member can still log in on the next run.
-        cy.get("#OldPassword").type("ThisIsNotLenasPassword");
-        cy.get("#NewPassword1").type("aCompletelyDifferentPassphrase");
-        cy.get("#NewPassword2").type("aCompletelyDifferentPassphrase");
-        cy.get("#passwordChangeForm").submit();
-
-        cy.url({ timeout: 10000 }).should("include", "/portal/profile/password");
-        cy.url().should("not.include", "/v2/");
-        cy.get(".portal-shell").should("exist");
-        cy.get("#sidebar").should("not.exist");
-        cy.contains("Incorrect password supplied for current user").should("exist");
-        // The form itself comes back, ready for another attempt.
-        cy.get("#OldPassword").should("exist");
-    });
-
-    it("Two-factor is a portal page reached from the profile page", () => {
-        login();
-        cy.visit("/portal/profile");
-
-        cy.get("#portal-two-factor-link").click();
-        cy.url({ timeout: 10000 }).should("include", "/portal/profile/two-factor");
-        cy.get(".portal-shell").should("exist");
-        cy.get("#two-factor-enrollment-app").should("exist");
-        cy.get("#sidebar").should("not.exist");
+        cy.get("#portal-profile-details").should("exist");
+        cy.get("#portal-change-password-link").should("not.exist");
+        cy.get("#portal-two-factor-link").should("not.exist");
     });
 
     it("A long email address wraps after the @ or before a dot, inside its card (#10421)", () => {

@@ -542,18 +542,23 @@ class Person extends BasePerson implements PhotoInterface
         }
     }
 
-    public function setImageFromBase64($base64): void
+    /**
+     * @param int|null $editorId who uploaded it; the signed-in user when null. A member
+     *                           session has no user, so the portal passes the member's person id.
+     */
+    public function setImageFromBase64($base64, ?int $editorId = null): void
     {
+        $editorId ??= AuthenticationManager::getCurrentUser()->getId();
         $note = new Note();
         $note->setText(gettext('Profile Image uploaded'));
         $note->setType('photo');
-        $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
+        $note->setEntered($editorId);
         $this->getPhoto()->setImageFromBase64($base64);
         $note->setPerId($this->getId());
         $note->save();
 
         $this->setDateLastEdited(new \DateTime());
-        $this->setEditedBy(AuthenticationManager::getCurrentUser()->getId());
+        $this->setEditedBy($editorId);
         $this->skipPostUpdateNote = true;
         try {
             $this->save();

@@ -5,7 +5,7 @@
  *
  * The portal's API is session-only by design: `PortalApiMiddleware` refuses an
  * API key outright, so these tests establish a real browser session with the
- * login form and then use `cy.request()`, which shares that session's cookie.
+ * emailed code and then use `cy.request()`, which shares that session's cookie.
  * No `x-api-key` is sent on those calls, so the PHP session survives them.
  *
  * What is under test (design §5.2, P11, P12):
@@ -20,26 +20,22 @@
  *     not read `/api/person/{id}/photo`, and a photo outside the member's
  *     own family is 404, never 403
  *
- * Personas: Lena Black (user 100, person 100, family 20, role 2 = Spouse, an
- * adult of her family) and limited.user (user 4, person 4, family 1, role 4 =
- * Other Relative, not an adult of his).
+ * Personas, signed in with their email: Lena Black (person 100, family 20,
+ * role 2 = Spouse, an adult of her family) and Darren Campbell (person 4,
+ * family 1, role 4 = Other Relative, not an adult of his).
  */
 describe("Member Portal API — /api/portal/me and /api/portal/family", () => {
-    const adultUser = "lena.black.editself.notes@example.com";
-    const nonAdultUser = "limited.user";
-    const password = "changeme";
+    const adultUser = 100;
+    const nonAdultUser = 4;
 
     const LENA_PERSON_ID = 100;
     const LENA_FAMILY_ID = 20;
     const OTHER_FAMILY_ID = 1;
 
-    /** Sign in with the login form so cy.request() inherits a real session. */
-    const portalLogin = (username) => {
-        cy.clearCookies();
-        cy.visit("/session/begin");
-        cy.get("input[name=User]").type(username);
-        cy.get("input[name=Password]").type(password + "{enter}");
-        cy.url({ timeout: 10000 }).should("include", "/portal");
+    /** Sign in with the emailed code so cy.request() inherits a real session. */
+    const portalLogin = (personId) => {
+        cy.signInAsMember(personId);
+        cy.visit("/portal/");
     };
 
     /**
@@ -71,12 +67,6 @@ describe("Member Portal API — /api/portal/me and /api/portal/family", () => {
     describe("Who may call it", () => {
         it("refuses an API-key caller, even an administrator's key", () => {
             cy.makePrivateAdminAPICall("GET", "/api/portal/me", null, 403);
-        });
-
-        it("refuses an Edit-Self account's API key too", () => {
-            // AuthMiddleware already blocks an EditSelf-exclusive key before
-            // the portal middleware is reached; either way the answer is 403.
-            cy.makePrivateEditSelfAPICall("GET", "/api/portal/me", null, 403);
         });
 
         it("answers a signed-in member with their own record", () => {
