@@ -2,7 +2,7 @@
 
 /**
  * The safety net for a self-service account (usr_EditSelf=1, not an
- * administrator) that the 7.9.0 upgrade did not remove (member sign-in design
+ * administrator) that the 7.8.3 upgrade did not remove (member sign-in design
  * §12). The upgrade deletes every such account and nothing creates one any more,
  * so the account is a fixture written in SQL. The confinement it relies on,
  * AuthMiddleware::isLimitedAccessAllowedPath() and the PageInit.php redirect,

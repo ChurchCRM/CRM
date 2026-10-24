@@ -335,7 +335,7 @@ function searchMemberSignInOfficeCandidatesAPI(Request $request, Response $respo
  *     path="/admin/api/member-portal/former-accounts-notice/dismiss",
  *     operationId="dismissMemberPortalFormerAccountsNotice",
  *     summary="Hide the Admin Dashboard notice about the removed self-service accounts (Admin role required)",
- *     description="The 7.9.0 upgrade removes self-service accounts and records how many. The Admin Dashboard asks to turn member sign-in on until it is on or this is called.",
+ *     description="The 7.8.3 upgrade removes self-service accounts and records how many. The Admin Dashboard asks to turn member sign-in on until it is on or this is called.",
  *     tags={"Admin"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Response(response=200, description="Dismissed", @OA\JsonContent(@OA\Property(property="success", type="boolean", example=true))),

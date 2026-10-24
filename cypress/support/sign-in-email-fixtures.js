@@ -1,5 +1,5 @@
 // Fixtures for Fix shared emails and Confirm selected (#10463, design §4, §9).
-// An address moved from the family email is written only by the 7.9.0
+// An address moved from the family email is written only by the 7.8.3
 // upgrade, and a replacement address only after an email sign-in; a personal
 // email is set only by the legacy person editor form, which also audits and
 // mails. So they are set here, and each spec's people are put back.

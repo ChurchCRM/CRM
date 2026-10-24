@@ -11,15 +11,15 @@
         },
         "cypress/e2e/api/private/admin/private.admin.family-email-move.spec.js": {
             "kind": "schema",
-            "reason": "Migration spec for the 7.9.0 family email move (member sign-in row 11): the app no longer writes a family email, so the fixtures, the upgrade block and its marker table are reached in SQL."
+            "reason": "Migration spec for the 7.8.3 family email move (member sign-in row 11): the app no longer writes a family email, so the fixtures, the upgrade block and its marker table are reached in SQL."
         },
         "cypress/e2e/api/private/admin/private.admin.portal-calendar-upgrade.spec.js": {
             "kind": "schema",
-            "reason": "Migration spec for the 7.9.0 block that retires bPortalShowCalendar: the application no longer reads or writes the switch, so its pre-upgrade config row and the upgrade block are reached in SQL."
+            "reason": "Migration spec for the 7.8.3 block that retires bPortalShowCalendar: the application no longer reads or writes the switch, so its pre-upgrade config row and the upgrade block are reached in SQL."
         },
         "cypress/e2e/api/private/admin/private.admin.member-sign-in-cutover.spec.js": {
             "kind": "schema",
-            "reason": "Migration spec for the 7.9.0 release-day cutover (member sign-in row 13): the application no longer makes self-service accounts, so the pre-upgrade accounts, their per-user rows, the history that names them and the upgrade block are reached in SQL."
+            "reason": "Migration spec for the 7.8.3 release-day cutover (member sign-in row 13): the application no longer makes self-service accounts, so the pre-upgrade accounts, their per-user rows, the history that names them and the upgrade block are reached in SQL."
         },
         "cypress/e2e/api/private/standard/private.portal.signin-schema.spec.js": {
             "kind": "schema",
@@ -39,7 +39,7 @@
         },
         "cypress/support/member-sign-in-fixtures.js": {
             "kind": "fixture",
-            "reason": "Member sign-in (#10463, #10377): named fixtures for states no HTTP route writes (a passkey, which only a WebAuthn ceremony registers; a remembered device with a chosen label; the 7.9.0 family email move rows; a person awaiting review; a stored grant the give API refuses; a language the profile page no longer offers) and for time passing (a grant's last day, an expired link or sign-in request, old audit rows, past sign-ins and confirmations), with the resets that remove them."
+            "reason": "Member sign-in (#10463, #10377): named fixtures for states no HTTP route writes (a passkey, which only a WebAuthn ceremony registers; a remembered device with a chosen label; the 7.8.3 family email move rows; a person awaiting review; a stored grant the give API refuses; a language the profile page no longer offers) and for time passing (a grant's last day, an expired link or sign-in request, old audit rows, past sign-ins and confirmations), with the resets that remove them."
         },
         "cypress/support/member-session.js": {
             "kind": "fixture",
@@ -55,7 +55,7 @@
         },
         "cypress/support/sign-in-email-fixtures.js": {
             "kind": "fixture",
-            "reason": "Member sign-in row 9b (#10463): an address moved from the family email (written only by the 7.9.0 upgrade) or replaced after a sign-in, and the shared personal emails Fix shared emails resolves, have no HTTP surface but the legacy person editor form, which also audits and mails; each spec's seed emails, sign-in rows and grants are put back."
+            "reason": "Member sign-in row 9b (#10463): an address moved from the family email (written only by the 7.8.3 upgrade) or replaced after a sign-in, and the shared personal emails Fix shared emails resolves, have no HTTP surface but the legacy person editor form, which also audits and mails; each spec's seed emails, sign-in rows and grants are put back."
         },
         "cypress/support/sign-in-throttle.js": {
             "kind": "fixture",

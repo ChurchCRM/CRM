@@ -10,7 +10,7 @@ use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 /**
- * Families have no email of their own since 7.9.0 (member sign-in design §10).
+ * Families have no email of their own since 7.8.3 (member sign-in design §10).
  * For that one release, the endpoints that returned a family's email still
  * return one, read-only: the head of household's, else the spouse's. Family
  * serialization includes it only while this middleware handles the request.
@@ -54,7 +54,7 @@ class FamilyEmailDeprecationMiddleware implements MiddlewareInterface
         $body = $request->getParsedBody();
         if ($this->writtenField !== null && is_array($body) && array_key_exists($this->writtenField, $body)) {
             LoggerUtils::getAppLogger()->warning(sprintf(
-                'Ignored the family email sent to %s %s: families have no email since 7.9.0. Set a person\'s email instead.',
+                'Ignored the family email sent to %s %s: families have no email since 7.8.3. Set a person\'s email instead.',
                 $request->getMethod(),
                 $request->getUri()->getPath()
             ));

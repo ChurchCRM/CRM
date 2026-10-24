@@ -96,7 +96,7 @@ $memberPortalHandler = function (Request $request, Response $response): Response
 
 /**
  * The Members tab's lists, in the order the design gives them. The one-time
- * "Family emails not moved" list shows only while the 7.9.0 move left rows.
+ * "Family emails not moved" list shows only while the 7.8.3 move left rows.
  *
  * @return list<array{id: string, label: string, icon: string}>
  */

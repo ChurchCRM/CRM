@@ -1,7 +1,7 @@
 // Member sign-in states that no HTTP route writes (#10463, #10377). A passkey is
 // registered, and its signature counter moved, only by a WebAuthn ceremony in a browser, a remembered device takes
 // its label from the browser that chose to stay signed in, the family email
-// move rows come only from the 7.9.0 upgrade, a person waits for review only
+// move rows come only from the 7.8.3 upgrade, a person waits for review only
 // after a registration or a member's proposal, the give API refuses a grant an
 // older release or a dropped plugin capability left behind, and the profile page
 // stores only a language this installation ships. The rest is time passing: a
@@ -52,7 +52,7 @@ export const resetSignIn = (personIds) => {
 };
 
 /**
- * Records what the 7.9.0 upgrade did with family emails, one row per move:
+ * Records what the 7.8.3 upgrade did with family emails, one row per move:
  * `{ familyId, email, outcome, reason, personId, needsConfirm }`.
  */
 export const recordFamilyEmailMoves = (moves) => {

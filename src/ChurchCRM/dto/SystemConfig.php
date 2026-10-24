@@ -299,7 +299,7 @@ class   SystemConfig
             'sMemberSignInNotificationRecipientIDs' => new ConfigItem('sMemberSignInNotificationRecipientIDs', 'text', '', gettext('People to email when someone could not sign in to the Member Portal')),
             'bAllowLoginAsPerson'                  => new ConfigItem('bAllowLoginAsPerson', 'boolean', '0', gettext('Let administrators open a person\'s Member Portal as that person, from the person\'s Actions menu, while member sign-in is on.')),
             'bLoginAsPersonCanWrite'               => new ConfigItem('bLoginAsPersonCanWrite', 'boolean', '0', gettext('Allow changes while an administrator uses Login as Person. When off, Login as Person is read-only.')),
-            // Set by the 7.9.0 upgrade (design §12): how many self-service accounts it
+            // Set by the 7.8.3 upgrade (design §12): how many self-service accounts it
             // removed. The Admin Dashboard asks to turn member sign-in on while it is
             // above 0; dismissing the notice or turning sign-in on sets it to 0.
             'iMemberSignInFormerAccounts'          => new ConfigItem('iMemberSignInFormerAccounts', 'number', '0'),

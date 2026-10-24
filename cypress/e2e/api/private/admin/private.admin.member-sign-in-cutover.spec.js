@@ -1,14 +1,14 @@
 /// <reference types="cypress" />
 
 /**
- * Member sign-in row 13 (#10463): the release-day cutover in the 7.9.0 upgrade
+ * Member sign-in row 13 (#10463): the release-day cutover in the 7.8.3 upgrade
  * (docs/member-sign-in-design.md §12, §17 "Cutover"). The application no longer
  * makes self-service accounts, so the pre-upgrade accounts are fixtures written
- * in SQL; the test then runs the shipped block of src/mysql/upgrade/7.9.0.sql
+ * in SQL; the test then runs the shipped block of src/mysql/upgrade/7.8.3.sql
  * (task db:upgradeBlock) and reads the result back through the API wherever
  * there is one.
  */
-const CUTOVER = { script: "7.9.0.sql", block: "member sign-in row 13, release-day cutover" };
+const CUTOVER = { script: "7.8.3.sql", block: "member sign-in row 13, release-day cutover" };
 const SHARED_CHANGEME_HASH = "$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S";
 const tag = `cut${Date.now()}`;
 const token = (index) => `${index}${Date.now().toString(16)}`.padEnd(64, "0");
@@ -60,7 +60,7 @@ const addAccount = (key, { editSelf, admin, notes, addRecords }, index) => {
     });
 };
 
-describe("7.9.0 upgrade: the release-day cutover", () => {
+describe("7.8.3 upgrade: the release-day cutover", () => {
     before(() => {
         cy.makePrivateAdminAPICall("POST", "/admin/api/member-portal/calendars", { visible: [{ type: "calendar", id: 1 }] }, 200);
         config("iMemberSignInFormerAccounts").then((value) => {
@@ -132,7 +132,7 @@ describe("7.9.0 upgrade: the release-day cutover", () => {
         });
     });
 
-    it("carries a self-service account's language to the sign-in row when 7.9.0 ships it", () => {
+    it("carries a self-service account's language to the sign-in row when 7.8.3 ships it", () => {
         signInRowOf("selfService").its("psi_Language").should("eq", "fr_FR");
         signInRowOf("unconfirmed").its("psi_Language").should("eq", "es_MX");
         signInRowOf("dormantFlags").its("psi_Language").should("be.null");
@@ -222,7 +222,7 @@ describe("7.9.0 upgrade: the release-day cutover", () => {
 // The account's id is its person's id, so the rows it wrote outlive it (design §12).
 // They are written before the upgrade through the account's own sign-in where the
 // application still allows it, and in SQL where only an older release wrote them.
-describe("7.9.0 upgrade: what the removed self-service account leaves behind", () => {
+describe("7.8.3 upgrade: what the removed self-service account leaves behind", () => {
     const VOLUNTEER = "/api/ministries";
     const prefix = `refs${Date.now()}`;
     const id = {};

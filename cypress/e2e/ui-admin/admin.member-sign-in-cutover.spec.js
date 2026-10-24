@@ -2,7 +2,7 @@
 
 /**
  * Member sign-in row 13 (#10463): what an administrator sees after the
- * release-day cutover (docs/member-sign-in-design.md §12). The 7.9.0 upgrade
+ * release-day cutover (docs/member-sign-in-design.md §12). The 7.8.3 upgrade
  * records how many self-service accounts it removed in
  * iMemberSignInFormerAccounts; the Admin Dashboard asks to turn member sign-in on
  * until it is on or the notice is dismissed. Admin → Users lists staff accounts

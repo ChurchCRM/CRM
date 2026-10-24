@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * The 7.9.0 upgrade copies a self-service account's language to the person
+ * The 7.8.3 upgrade copies a self-service account's language to the person
  * only when it is a language ChurchCRM ships. That list is written out in the
  * SQL, so it must equal the `locale` codes in src/locale/locales.json; a locale
  * added or removed there without the SQL would be dropped or kept by mistake.
@@ -13,7 +13,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 const ROOT = path.join(__dirname, '..');
-const UPGRADE_SQL = 'src/mysql/upgrade/7.9.0.sql';
+const UPGRADE_SQL = 'src/mysql/upgrade/7.8.3.sql';
 const LOCALES_JSON = 'src/locale/locales.json';
 
 /** The quoted codes in the `IN (...)` list that follows the ui.locale join. */
