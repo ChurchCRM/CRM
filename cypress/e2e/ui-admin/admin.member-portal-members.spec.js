@@ -302,7 +302,7 @@ describe("Admin → Member Portal members, audit, permissions and the person car
         const given = `/admin/api/person/${PORTAL_PERSON}/sign-in/grants`;
         let givenId = 0;
         let leaderScopeId = 0;
-        cy.makePrivateAdminAPICall("POST", given, { capability: "portal.directory.view", reason: "Given already" }, 201).then(({ body }) => {
+        cy.makePrivateAdminAPICall("POST", given, { capability: "portal.directory.view", endsOn: new Date(Date.now() + 30 * 86400000).toISOString().slice(0, 10), reason: "Given already" }, 201).then(({ body }) => {
             givenId = body.grantId;
         });
         cy.makePrivateAdminAPICall("POST", `${MINISTRIES_URL}/${ministryId}/teams`, { name: `${PREFIX} Ushers` }, 201);
