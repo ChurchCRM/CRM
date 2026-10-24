@@ -1,14 +1,17 @@
 {% extends "layout.html.twig" %}
 
 {#
-  Sign-in and devices (member sign-in design §6.2): the devices where this
-  member chose to stay signed in, with a way to sign out one or all of them.
+  Sign-in and devices (member sign-in design §6.2, §6.3, §9): the devices where
+  this member chose to stay signed in, with a way to sign out one or all of
+  them, and their passkeys.
 
-  Variables: `pageTitle`, `devices`, `offerRememberDevice` (see
+  Variables: `pageTitle`, `devices`, `offerRememberDevice`, `passkeysOn`,
+  `passkeys`, `passkeyAddProblem`, `emailToConfirm` (see
   docs/portal-templates.md). Every date arrives already formatted.
 
-  Each sign-out is a plain form post carrying `csrf_field()`; signing out every
-  device asks first, inside a <details> so it works without a script.
+  Each sign-out and removal is a plain form post carrying `csrf_field()`, and
+  asks first inside a <details> so it works without a script. Adding a passkey
+  needs portal-passkeys.min.js, which binds to `[data-passkey-add]`.
 #}
 
 {% block content %}
@@ -61,19 +64,94 @@
         {% endif %}
     </section>
 
-    {#
-      PASSKEYS (member sign-in row 8, design §6.3) go here, as their own
-      `portal-card` section: the member's passkeys with a remove button on
-      each, and Add a passkey with the shared-computer warning.
-    #}
+    {% if emailToConfirm %}
+    <section class="portal-card" id="portal-devices-confirm-email">
+        <h2 class="portal-card-title">
+            <i class="fa-solid fa-envelope-circle-check" aria-hidden="true"></i>
+            <span>{{ gettext('Confirm your new email address') }}</span>
+        </h2>
+        <p class="portal-card-text">
+            {{ gettext('Your email address %s is not confirmed yet, so it cannot be used to sign in. We will email a link to it; using the link confirms it.')|format(emailToConfirm) }}
+        </p>
+        <form class="portal-form-actions" method="post" action="{{ url('/portal/devices/confirm-email') }}">
+            {{ csrf_field() }}
+            <button class="portal-button" type="submit" id="portal-devices-confirm-email-submit">{{ gettext('Email me a confirmation link') }}</button>
+        </form>
+    </section>
+    {% endif %}
+
+    {% if passkeysOn %}
+    <section class="portal-card" id="portal-devices-passkeys">
+        <h2 class="portal-card-title">
+            <i class="fa-solid fa-key" aria-hidden="true"></i>
+            <span>{{ gettext('Passkeys') }}</span>
+        </h2>
+        <p class="portal-card-text">
+            {{ gettext('A passkey signs you in with Face ID, a fingerprint or your device PIN, without an email code.') }}
+        </p>
+
+        {% if passkeys is empty %}
+        <p class="portal-card-text" id="portal-passkeys-empty">{{ gettext('You have no passkeys.') }}</p>
+        {% else %}
+        <table class="portal-table" id="portal-passkeys-table">
+            <thead>
+                <tr>
+                    <th scope="col">{{ gettext('Passkey') }}</th>
+                    <th scope="col">{{ gettext('Added') }}</th>
+                    <th scope="col">{{ gettext('Last used') }}</th>
+                    <th scope="col"><span class="visually-hidden">{{ gettext('Actions') }}</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for passkey in passkeys %}
+                <tr class="portal-table-row" data-passkey-row="{{ passkey.id }}">
+                    <td class="portal-table-cell" data-label="{{ gettext('Passkey') }}">
+                        <span class="portal-device-label" data-passkey-label>{{ passkey.label|default(gettext('Passkey')) }}</span>
+                    </td>
+                    <td class="portal-table-cell" data-label="{{ gettext('Added') }}" data-passkey-added>{{ passkey.addedAt }}</td>
+                    <td class="portal-table-cell" data-label="{{ gettext('Last used') }}" data-passkey-last-used>{{ passkey.lastUsedAt|default(gettext('Not yet')) }}</td>
+                    <td class="portal-table-cell portal-table-actions">
+                        <details class="portal-confirm" data-passkey-remove-confirm>
+                            <summary class="portal-button portal-button-quiet" data-passkey-remove>{{ gettext('Remove') }}</summary>
+                            <form class="portal-confirm-body" method="post" action="{{ url('/portal/devices/passkeys/' ~ passkey.id ~ '/remove') }}">
+                                {{ csrf_field() }}
+                                <button class="portal-button portal-button-danger" type="submit" data-passkey-remove-submit>{{ gettext('Yes, remove this passkey') }}</button>
+                            </form>
+                        </details>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+
+        {% if passkeyAddProblem %}
+        <p class="portal-card-text" id="portal-passkey-add-unavailable">{{ passkeyAddProblem }}</p>
+        {% else %}
+        <div class="portal-passkey-add" data-passkey-add
+             data-options-url="{{ url('/portal/devices/passkeys/options') }}" data-add-url="{{ url('/portal/devices/passkeys') }}">
+            {{ csrf_field() }}
+            <p class="portal-field-hint" id="portal-passkey-warning">{{ gettext('Add a passkey only on your own phone or computer, never on a shared or public one.') }}</p>
+            <div class="portal-form-actions">
+                <button class="portal-button" type="button" id="portal-passkey-add" data-passkey-create>{{ gettext('Add a passkey') }}</button>
+            </div>
+            <p class="portal-field-error" id="portal-passkey-add-error" data-passkey-error role="alert"></p>
+        </div>
+        {% endif %}
+    </section>
+    {% endif %}
 
     <section class="portal-card" id="portal-devices-everywhere">
         <h2 class="portal-card-title">
             <i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i>
             <span>{{ gettext('Sign out every device') }}</span>
         </h2>
-        <p class="portal-card-text">
+        <p class="portal-card-text" id="portal-devices-everywhere-text">
+            {% if passkeysOn and passkeys is not empty %}
+            {{ gettext('This signs you out everywhere, including here, and forgets every device. Your passkeys stay: you can sign in again with a passkey or your email address.') }}
+            {% else %}
             {{ gettext('This signs you out everywhere, including here, and forgets every device. You can sign in again with your email address.') }}
+            {% endif %}
         </p>
         <details class="portal-confirm" id="portal-devices-everywhere-confirm">
             <summary class="portal-button portal-button-quiet" id="portal-devices-everywhere-open">{{ gettext('Sign out every device') }}</summary>
@@ -86,4 +164,10 @@
     </section>
 
 </div>
+{% endblock %}
+
+{% block scripts_extra %}
+{% if passkeysOn and not passkeyAddProblem %}
+<script src="{{ asset('/skin/v2/portal-passkeys.min.js') }}"></script>
+{% endif %}
 {% endblock %}

@@ -9,6 +9,7 @@ use ChurchCRM\Portal\Auth\PortalPrincipal;
 use ChurchCRM\Portal\Auth\PortalSessionStore;
 use ChurchCRM\Portal\Auth\RememberedDeviceCookie;
 use ChurchCRM\Portal\Auth\RememberedDeviceToken;
+use ChurchCRM\Service\PasskeyService;
 use ChurchCRM\Service\RememberedDeviceService;
 use ChurchCRM\Utils\RequestUtils;
 use Psr\Http\Message\ResponseInterface;
@@ -35,10 +36,11 @@ final class PortalSignInPages
     }
 
     /**
-     * After an email sign-in (design §6.2): a device cookie only when the
-     * member ticked "This is my own device". Either way, a device cookie this
-     * browser already held is signed out, so nobody else's device survives a
-     * new sign-in here.
+     * After an email or passkey sign-in (design §6.2): a device cookie only
+     * when the member ticked "This is my own device" after an email sign-in,
+     * and then the one-time passkey offer (§6.3). Either way, a device cookie
+     * this browser already held is signed out, so nobody else's device
+     * survives a new sign-in here.
      */
     public static function rememberDevice(ServerRequestInterface $request, ResponseInterface $response, bool $chosen): ResponseInterface
     {
@@ -54,6 +56,8 @@ final class PortalSignInPages
             : null;
 
         if ($token instanceof RememberedDeviceToken) {
+            PasskeyService::offerAfterSignIn($request);
+
             return RememberedDeviceCookie::with($response, $token);
         }
 

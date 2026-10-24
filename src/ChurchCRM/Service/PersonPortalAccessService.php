@@ -3,11 +3,8 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\model\ChurchCRM\Person;
-use ChurchCRM\model\ChurchCRM\PersonPasskey;
 use ChurchCRM\model\ChurchCRM\PersonPasskeyQuery;
 use ChurchCRM\model\ChurchCRM\User;
-use ChurchCRM\Portal\Auth\SignInAudit;
-use ChurchCRM\Portal\Auth\SignInAuditEvent;
 use ChurchCRM\Portal\Permissions\EffectiveGrant;
 use ChurchCRM\Portal\Permissions\PortalAuthorizationService;
 use ChurchCRM\Portal\Permissions\PortalCapabilityRegistry;
@@ -68,19 +65,9 @@ final class PersonPortalAccessService
      */
     public function removePasskey(Person $person, User $actor, int $passkeyId): void
     {
-        $personId = (int) $person->getId();
-        $passkey = PersonPasskeyQuery::create()->filterByPersonId($personId)->findPk($passkeyId);
-        if (!$passkey instanceof PersonPasskey) {
+        if (!(new PasskeyService())->remove((int) $person->getId(), $passkeyId, $actor)) {
             throw new DomainException(gettext('This person has no such passkey.'), 404);
         }
-        $passkey->delete();
-
-        SignInAudit::record(
-            SignInAuditEvent::PASSKEY_REMOVED,
-            $personId,
-            actorUserId: (int) $actor->getId(),
-            detail: sprintf('passkey=%d', $passkeyId),
-        );
     }
 
     /**

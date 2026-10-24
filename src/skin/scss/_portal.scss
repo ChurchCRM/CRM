@@ -1246,6 +1246,16 @@ textarea.portal-input {
     margin-block-start: 0.75rem;
 }
 
+.portal-passkey-add {
+    margin-block-start: 1rem;
+}
+
+.portal-passkey-signin {
+    margin-block-start: 1.25rem;
+    padding-block-start: 1rem;
+    border-block-start: 1px solid var(--portal-border);
+}
+
 // Tablet and up --------------------------------------------------------------
 
 @media (min-width: 768px) {

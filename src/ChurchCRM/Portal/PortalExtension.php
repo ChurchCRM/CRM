@@ -18,6 +18,7 @@ use ChurchCRM\Portal\Permissions\CorePortalCapabilities;
 use ChurchCRM\Portal\Permissions\PortalAuthorizationService;
 use ChurchCRM\Portal\Permissions\PortalCapabilityRegistry;
 use ChurchCRM\Portal\Permissions\PortalScope;
+use ChurchCRM\Service\PasskeyService;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use Twig\Extension\AbstractExtension;
@@ -193,6 +194,10 @@ class PortalExtension extends AbstractExtension implements GlobalsInterface
                 'showCalendar' => $this->portalCan(CorePortalCapabilities::CALENDAR_VIEW),
                 'showVolunteer' => $this->portalCan(CorePortalCapabilities::VOLUNTEER_USE),
                 'allowBirthdayEdit' => SystemConfig::getBooleanValue('bPortalAllowBirthdayEdit'),
+                // The one-time passkey offer after an email sign-in on the
+                // member's own device (member sign-in design §6.3). Reading it
+                // spends it, as `flash` does.
+                'passkeyOffer' => PasskeyService::takeOffer(),
                 // Whether the active theme (or the default it falls back to)
                 // carries these optional files, so the layout can skip a <link>
                 // or <script> that would only 404. Extra fields on an existing

@@ -35,6 +35,8 @@ enum SignInReason: string
     case TOO_MANY_CODES = 'too_many_codes';
     case DEVICE_REMOVED = 'device_removed';
     case DEVICE_EXPIRED = 'device_expired';
+    case PASSKEY_UNKNOWN = 'passkey_unknown';
+    case PASSKEY_INVALID = 'passkey_invalid';
 
     /** For staff screens only; a person signing in never sees a reason (D3, A6). */
     public function label(): string
@@ -65,6 +67,8 @@ enum SignInReason: string
             self::TOO_MANY_CODES => gettext('Too many wrong codes'),
             self::DEVICE_REMOVED => gettext('Their remembered device was signed out'),
             self::DEVICE_EXPIRED => gettext('Their remembered device had expired'),
+            self::PASSKEY_UNKNOWN => gettext('The passkey is not on record, or was removed'),
+            self::PASSKEY_INVALID => gettext('The passkey could not be verified'),
         };
     }
 }

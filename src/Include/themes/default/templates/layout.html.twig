@@ -59,7 +59,10 @@
     <main class="portal-main" id="portal-main">
         <div class="portal-container">
             <div class="portal-layout">
-                <div class="portal-content">{% block content %}{% endblock %}</div>
+                <div class="portal-content">
+                    {% if portal.passkeyOffer %}{% include 'partials/passkey-offer.html.twig' %}{% endif %}
+                    {% block content %}{% endblock %}
+                </div>
                 {% block sidebar %}{% endblock %}
             </div>
         </div>

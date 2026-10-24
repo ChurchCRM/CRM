@@ -1,0 +1,23 @@
+{#
+  The one-time passkey offer (member sign-in design §6.3): the layout shows it
+  on the first portal page after an email sign-in where the member ticked
+  "This is my own device" (`portal.passkeyOffer`). It stays hidden until
+  portal-passkeys.min.js finds that this device can make a passkey with Face
+  ID, a fingerprint or its PIN; "No, thanks" only hides it, since the offer
+  is made once either way.
+#}
+<section class="portal-card" id="portal-passkey-offer" data-passkey-add data-passkey-offer
+         data-options-url="{{ url('/portal/devices/passkeys/options') }}" data-add-url="{{ url('/portal/devices/passkeys') }}" hidden>
+    <h2 class="portal-card-title">
+        <i class="fa-solid fa-key" aria-hidden="true"></i>
+        <span>{{ gettext('Use a passkey on this device?') }}</span>
+    </h2>
+    <p class="portal-card-text">{{ gettext('Sign in next time on this device with Face ID, a fingerprint or your device PIN.') }}</p>
+    {{ csrf_field() }}
+    <div class="portal-form-actions">
+        <button class="portal-button" type="button" id="portal-passkey-offer-yes" data-passkey-create>{{ gettext('Yes, add a passkey') }}</button>
+        <button class="portal-button portal-button-quiet" type="button" id="portal-passkey-offer-no" data-passkey-dismiss>{{ gettext('No, thanks') }}</button>
+    </div>
+    <p class="portal-field-error" data-passkey-error role="alert"></p>
+</section>
+<script src="{{ asset('/skin/v2/portal-passkeys.min.js') }}" defer></script>
