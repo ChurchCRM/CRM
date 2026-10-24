@@ -1805,6 +1805,33 @@
         </vendor>
     </table>
 
+    <table name="person_email_change_pec" idMethod="native" phpName="PersonEmailChange"
+           description="An emailed link that changes or confirms a person's sign-in email (member sign-in design §9). 'change' goes to the new address and makes it the person's proven email; 'confirm' goes to the previous, proven address and confirms an unconfirmed replacement">
+        <column name="pec_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="pec_per_ID" phpName="PersonId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true"/>
+        <column name="pec_Kind" phpName="Kind" type="CHAR" sqlType="enum('change','confirm')" required="true"/>
+        <column name="pec_Email" phpName="Email" type="VARCHAR" size="100" required="true"
+                description="The address the link makes the person's sign-in email"/>
+        <column name="pec_TokenHash" phpName="TokenHash" type="CHAR" size="64" required="true"/>
+        <column name="pec_CreatedAt" phpName="CreatedAt" type="TIMESTAMP" required="true"/>
+        <column name="pec_ExpiresAt" phpName="ExpiresAt" type="TIMESTAMP" required="true"/>
+        <column name="pec_UsedAt" phpName="UsedAt" type="TIMESTAMP"/>
+        <column name="pec_CancelledAt" phpName="CancelledAt" type="TIMESTAMP"/>
+        <foreign-key foreignTable="person_per" name="PersonEmailChangePerson" phpName="Person"
+                     refPhpName="PersonEmailChange" onDelete="cascade">
+            <reference local="pec_per_ID" foreign="per_ID"/>
+        </foreign-key>
+        <unique name="pec_token_uidx">
+            <unique-column name="pec_TokenHash"/>
+        </unique>
+        <index name="pec_person_idx">
+            <index-column name="pec_per_ID"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
     <table name="person_device_pdv" idMethod="native" phpName="PersonDevice"
            description="A device a member chose to stay signed in on, and later app refresh tokens. Only the token hash is stored">
         <column name="pdv_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>

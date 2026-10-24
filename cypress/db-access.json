@@ -9,6 +9,10 @@
             "kind": "fixture",
             "reason": "Read-only row counts for the test-database drift guard (#9769)."
         },
+        "cypress/e2e/api/private/admin/private.admin.email-change-rules.spec.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in row 10 (#10463): \"has signed in\", the family email move, remembered devices, passkeys, given grants, the session timeout and the sign-in audit have no HTTP surface until rows 5, 7, 8 and 9."
+        },
         "cypress/e2e/api/private/admin/private.admin.family-email-move.spec.js": {
             "kind": "schema",
             "reason": "Migration spec for the 7.9.0 family email move (member sign-in row 11): the app no longer writes a family email, so the fixtures, the upgrade block and its marker table are reached in SQL."
@@ -20,6 +24,10 @@
         "cypress/e2e/api/private/plugins/private.portal.plugin-permissions.spec.js": {
             "kind": "fixture",
             "reason": "Member sign-in row 3 (#10463): the portal grants an administrator gives on a plugin's capabilities have no HTTP surface until row 9 adds the person page."
+        },
+        "cypress/e2e/api/private/standard/private.portal.email-change.spec.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in row 10 (#10463): an expired link, given grants, the proven email and the sign-in audit have no HTTP surface until rows 5 and 9."
         },
         "cypress/e2e/api/private/standard/private.portal.permissions.spec.js": {
             "kind": "fixture",
@@ -40,6 +48,14 @@
         "cypress/e2e/api/private/standard/private.volunteer.setup.spec.js": {
             "kind": "schema",
             "reason": "Volunteer v2 schema spec (#9705): columns, UNIQUE keys, foreign keys, ON DELETE rules and enum domains have no HTTP surface."
+        },
+        "cypress/e2e/ui-admin/admin.csvimport-email-audit.spec.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in row 10 (#10463): the sign-in audit has no HTTP surface until row 9, and the importer answers no ids."
+        },
+        "cypress/e2e/ui/people/person-signin-email.spec.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in row 10 (#10463): an address moved from the family email and \"has signed in\" have no HTTP surface until rows 5 and 9."
         },
         "cypress/e2e/ui/portal/member.portal-sign-in-email.spec.js": {
             "kind": "fixture",

@@ -1,7 +1,8 @@
 /**
  * The person page's "Portal sign-in" card (src/people/views/partials/portal-signin-card.php):
- * Disable sign-in, Enable sign-in and Sign out everywhere, for administrators.
- * Each posts to /admin/api/person/{id}/sign-in/* and reloads the page.
+ * Disable sign-in, Enable sign-in and Sign out everywhere, for administrators,
+ * each posting to /admin/api/person/{id}/sign-in/*; and Confirm Email Address,
+ * which posts to /api/person/{id}/sign-in/confirm-email. Each reloads the page.
  */
 
 interface ApiError {
@@ -128,6 +129,47 @@ function wireSignOutEverywhere(card: HTMLElement): void {
   });
 }
 
+function wireConfirmEmail(card: HTMLElement): void {
+  const button = document.getElementById("portal-signin-confirm-email") as HTMLButtonElement | null;
+  if (!button) {
+    return;
+  }
+
+  const confirmEmail = async (): Promise<void> => {
+    button.disabled = true;
+    const response = await fetch(
+      `${window.CRM?.root ?? ""}/api/person/${card.dataset.personId}/sign-in/confirm-email`,
+      {
+        method: "POST",
+        headers: { "content-type": "application/json", "X-CSRF-Token": card.dataset.csrfToken ?? "" },
+        body: JSON.stringify({ email: button.dataset.email ?? "" }),
+      },
+    );
+    button.disabled = false;
+    if (!response.ok) {
+      window.CRM?.notify?.(await errorMessage(response, t("The email could not be confirmed.")), { type: "danger" });
+      return;
+    }
+    window.CRM?.notify?.(t("The email is confirmed. It can now be used to sign in."), { type: "success" });
+    window.location.reload();
+  };
+
+  button.addEventListener("click", () => {
+    window.bootbox?.confirm({
+      title: t("Confirm Email Address"),
+      message: t(
+        "Confirm this email only after checking, in person or by phone, that it is this person's own address. Once confirmed, it can be used to sign in to the Member Portal.",
+      ),
+      buttons: { confirm: { label: t("Confirm Email Address"), className: "btn-primary" } },
+      callback: (result: boolean) => {
+        if (result) {
+          void confirmEmail();
+        }
+      },
+    });
+  });
+}
+
 export function initPortalSignInCard(): void {
   const card = document.getElementById("portal-signin-card");
   if (!card) {
@@ -136,4 +178,5 @@ export function initPortalSignInCard(): void {
   wireDisable(card);
   wireEnable(card);
   wireSignOutEverywhere(card);
+  wireConfirmEmail(card);
 }

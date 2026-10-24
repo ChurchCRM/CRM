@@ -14,6 +14,7 @@ use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Portal\Auth\MemberSignInRule;
 use ChurchCRM\Portal\Auth\SignInAudit;
 use ChurchCRM\Portal\Auth\SignInAuditEvent;
+use ChurchCRM\Portal\Auth\SignInEmailPolicy;
 use ChurchCRM\Portal\Auth\SignInReason;
 use ChurchCRM\Utils\DateTimeUtils;
 use DateTimeImmutable;
@@ -151,7 +152,8 @@ final class PersonSignInService
     /**
      * What the person page's Portal sign-in card shows (§11.3). The
      * administrator's reason for Disable sign-in is included only for
-     * administrators.
+     * administrators. Whether the viewer may confirm an unconfirmed email
+     * follows §9: see SignInEmailPolicy::confirmRefusal().
      *
      * @return array<string, mixed>
      */
@@ -164,6 +166,10 @@ final class PersonSignInService
         $disabledBy = $disabled && $state->getDisabledByUserId() !== null
             ? PersonQuery::create()->findPk((int) $state->getDisabledByUserId())
             : null;
+        $unconfirmedEmail = trim((string) $state?->getUnconfirmedEmail());
+        $confirmRefusal = $unconfirmedEmail === ''
+            ? null
+            : (new SignInEmailPolicy())->confirmRefusal($person, $state, $forAdministrator);
 
         return [
             'personId' => $personId,
@@ -176,6 +182,12 @@ final class PersonSignInService
             'disabledBy' => $disabledBy instanceof Person ? ['id' => (int) $disabledBy->getId(), 'name' => $disabledBy->getFullName()] : null,
             'disabledReason' => $disabled && $forAdministrator ? $state->getDisabledReason() : null,
             'lastSignIn' => $state instanceof PersonSignin ? self::formatTime($state->getLastSignIn()) : null,
+            'unconfirmedEmail' => $unconfirmedEmail === '' ? null : $unconfirmedEmail,
+            'unconfirmedSource' => $unconfirmedEmail === '' ? null : $state->getUnconfirmedSource(),
+            'unconfirmedSourceLabel' => $unconfirmedEmail === '' ? null : SignInEmailPolicy::sourceLabel($state->getUnconfirmedSource()),
+            'unconfirmedAt' => $unconfirmedEmail === '' ? null : self::formatTime($state->getUnconfirmedAt()),
+            'canConfirmEmail' => $unconfirmedEmail !== '' && $confirmRefusal === null,
+            'confirmEmailRefusal' => $confirmRefusal,
             'devices' => PersonDeviceQuery::create()
                 ->filterByPersonId($personId)
                 ->filterByRevokedAt(null, Criteria::ISNULL)

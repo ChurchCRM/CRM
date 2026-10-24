@@ -2,6 +2,8 @@
 
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\Portal\Auth\EmailChangeChannel;
+use ChurchCRM\Portal\Auth\SignInEmailPolicy;
 use ChurchCRM\Slim\Middleware\Api\FamilyEmailDeprecationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Setting\PublicRegistrationAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
@@ -183,10 +185,12 @@ function registerFamilyAPI(Request $request, Response $response, array $args): R
 
     $family->save();
 
+    $emailPolicy = new SignInEmailPolicy();
     foreach ($familyMembers as $person) {
         $person->setFamily($family);
         $family->addPerson($person);
         $person->save();
+        $emailPolicy->recordChange($person, null, EmailChangeChannel::REGISTRATION, null);
     }
 
     $family->save();
@@ -304,6 +308,7 @@ function registerPersonAPI(Request $request, Response $response, array $args): R
     }
 
     $person->save();
+    (new SignInEmailPolicy())->recordChange($person, null, EmailChangeChannel::REGISTRATION, null);
 
     return SlimUtils::renderStringJSON($response, $person->exportTo('JSON'));
 }

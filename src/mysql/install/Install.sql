@@ -1540,6 +1540,23 @@ CREATE TABLE `person_signin_request_psr` (
       REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+CREATE TABLE `person_email_change_pec` (
+  `pec_ID`          int(11)                  NOT NULL AUTO_INCREMENT,
+  `pec_per_ID`      mediumint(9) unsigned    NOT NULL,
+  `pec_Kind`        enum('change','confirm') NOT NULL,
+  `pec_Email`       varchar(100)             NOT NULL,
+  `pec_TokenHash`   char(64)                 NOT NULL,
+  `pec_CreatedAt`   datetime                 NOT NULL,
+  `pec_ExpiresAt`   datetime                 NOT NULL,
+  `pec_UsedAt`      datetime                          DEFAULT NULL,
+  `pec_CancelledAt` datetime                          DEFAULT NULL,
+  PRIMARY KEY (`pec_ID`),
+  UNIQUE KEY `pec_token_uidx` (`pec_TokenHash`),
+  KEY `pec_person_idx`        (`pec_per_ID`),
+  CONSTRAINT `fk_pec_person` FOREIGN KEY (`pec_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 CREATE TABLE `person_device_pdv` (
   `pdv_ID`         int(11)                 NOT NULL AUTO_INCREMENT,
   `pdv_per_ID`     mediumint(9) unsigned   NOT NULL,

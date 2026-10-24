@@ -376,6 +376,8 @@ class EmailLogService
             'account.locked'      => gettext('Account locked'),
             'account.unlocked'    => gettext('Account unlocked'),
             'account.deleted'     => gettext('Account deleted'),
+            'signin.email-notice' => gettext('Email address changed'),
+            'signin.email-confirm' => gettext('Confirm email address'),
             'test'                => gettext('SMTP test'),
             // Volunteer v2 messages log the default kind, their class name.
             'volunteerassignment'   => gettext('Volunteer assignment'),

@@ -34,6 +34,34 @@ describe("Member Portal — Profile", () => {
         cy.url({ timeout: 10000 }).should("include", "/portal");
     };
 
+    /** The newest "Confirm your email address" link sent to `address` (member sign-in design §9). */
+    const confirmLinkTo = (address) =>
+        cy.task("mail:list", { limit: 100 }).then((result) => {
+            const message = (result.body?.messages || []).find(
+                (m) =>
+                    (m.To || []).some((to) => (to.Address || "").toLowerCase() === address.toLowerCase()) &&
+                    (m.Subject || "").includes("Confirm your email address"),
+            );
+            expect(message, `confirmation email to ${address}`).to.exist;
+            return cy.task("mail:get", { id: message.ID }).then((full) => full.body.HTML.match(/\/portal\/email\/confirm\/[0-9a-f]{64}/)[0]);
+        });
+
+    /** Asks for a new email on the profile form and uses the link sent to it. */
+    const changeEmailTo = (email) => {
+        cy.visit("/portal/profile/edit");
+        cy.get("#portal-email").clear().type(email);
+        cy.get("#portal-profile-save").click();
+        cy.get(".portal-flash-success", { timeout: 10000 }).should("contain", email);
+        confirmLinkTo(email).then((path) => {
+            cy.visit(path);
+            cy.get("#portal-email-confirm").should("have.attr", "data-state", "confirm");
+            cy.get("#portal-email-confirm-button").click();
+            cy.get("#portal-email-confirm").should("have.attr", "data-state", "done");
+        });
+    };
+
+    beforeEach(() => cy.expireSignInThrottle("email-change.person"));
+
     it("The portal navigation offers Profile and My Family", () => {
         login();
         cy.get("#portal-nav").within(() => {
@@ -86,26 +114,43 @@ describe("Member Portal — Profile", () => {
         cy.get("img#portal-profile-photo").should("have.prop", "naturalWidth").and("be.greaterThan", 0);
     });
 
-    it("Editing the mobile phone saves, toasts, and survives a reload; the email is read-only", () => {
+    it("Editing the mobile phone saves at once; a new email changes only when its link is used", () => {
         const stamp = Date.now();
         const newPhone = `(206) 555-${String(stamp).slice(-4)}`;
+        const newEmail = `lena.portal.${stamp}@example.com`;
 
         login();
         cy.visit("/portal/profile/edit");
+        cy.get("#portal-email")
+            .invoke("val")
+            .then((originalEmail) => {
+                cy.get("#portal-cellPhone").clear().type(newPhone);
+                cy.get("#portal-email").clear().type(newEmail);
+                cy.get("#portal-profile-save").click();
 
-        cy.get("#portal-cellPhone").clear().type(newPhone);
-        cy.get("#portal-email").should("have.attr", "readonly");
-        cy.get("#portal-profile-save").click();
+                cy.get(".portal-flash-success", { timeout: 10000 })
+                    .should("be.visible")
+                    .and("contain", `We sent a link to ${newEmail}`);
 
-        cy.get(".portal-flash-success", { timeout: 10000 })
-            .should("be.visible")
-            .and("contain", "Your details have been saved");
+                // The form re-renders from the API response, not from what was typed.
+                cy.get("#portal-cellPhone").should("have.value", newPhone);
+                cy.get("#portal-email").should("have.value", originalEmail);
+                cy.get("#portal-email-hint").should("contain", newEmail);
 
-        // The form re-renders from the API response, not from what was typed.
-        cy.get("#portal-cellPhone").should("have.value", newPhone);
+                cy.visit("/portal/profile");
+                cy.get("#portal-profile-details [data-field=cellPhone]").should("contain", newPhone);
+                cy.get("#portal-profile-details [data-field=email]").should("contain", originalEmail);
 
-        cy.visit("/portal/profile");
-        cy.get("#portal-profile-details [data-field=cellPhone]").should("contain", newPhone);
+                confirmLinkTo(newEmail).then((path) => {
+                    cy.visit(path);
+                    cy.get("#portal-email-confirm-button").click();
+                    cy.get("#portal-email-confirm").should("have.attr", "data-state", "done");
+                });
+                cy.visit("/portal/profile");
+                cy.get("#portal-profile-details [data-field=email]").should("contain", newEmail);
+
+                changeEmailTo(originalEmail);
+            });
     });
 
     it("An empty required name is refused inline and nothing is saved", () => {
@@ -221,22 +266,13 @@ describe("Member Portal — Profile", () => {
             return lines;
         };
 
-        // Members cannot change their own email; an administrator sets it.
-        const adminSaveEmail = (email) => {
-            cy.setupAdminSession();
-            cy.visit("/PersonEditor.php?PersonID=100");
-            cy.get("#Email").clear().type(email);
-            cy.get('button[name="PersonSubmit"]').click();
-        };
-
         cy.viewport(375, 812);
         login();
         cy.visit("/portal/profile/edit");
         cy.get("#portal-email")
             .invoke("val")
             .then((originalEmail) => {
-                adminSaveEmail(longEmail);
-                login();
+                changeEmailTo(longEmail);
 
                 for (const [path, list] of [
                     ["/portal/", "#portal-home-profile-details"],
@@ -258,7 +294,7 @@ describe("Member Portal — Profile", () => {
                     });
                 }
 
-                adminSaveEmail(originalEmail);
+                changeEmailTo(originalEmail);
             });
     });
 });

@@ -5,8 +5,9 @@ use ChurchCRM\Utils\InputUtils;
 
 /*
  * The person page's "Portal sign-in" card (member sign-in design §11.3).
- * Staff with Edit Records see the state; administrators can also turn
- * Disable sign-in on or off and sign the person out everywhere.
+ * Staff with Edit Records see the state and may confirm an email moved from
+ * the family email; administrators may confirm any unconfirmed email (§9),
+ * turn Disable sign-in on or off and sign the person out everywhere.
  *
  * Variables: $portalSignIn (PersonSignInService::statusFor()), $portalSignInCanManage,
  * $portalSignInIsSelf, $portalSignInCsrfToken, $iPersonID.
@@ -45,6 +46,26 @@ use ChurchCRM\Utils\InputUtils;
                     <?php endif; ?>
                     <?php if ($portalSignIn['disabledReason'] !== null) : ?>
                         <div class="small" id="portal-signin-disabled-reason"><?= InputUtils::escapeHTML($portalSignIn['disabledReason']) ?></div>
+                    <?php endif; ?>
+                </li>
+            <?php endif; ?>
+            <?php if ($portalSignIn['unconfirmedEmail'] !== null) : ?>
+                <li class="mb-2" id="portal-signin-unconfirmed">
+                    <i class="fa-solid fa-envelope me-2 text-warning"></i><?= gettext('Unconfirmed email') ?>:
+                    <span class="text-break"><?= InputUtils::escapeHTML($portalSignIn['unconfirmedEmail']) ?></span>
+                    <div class="small text-secondary">
+                        <?= InputUtils::escapeHTML((string) $portalSignIn['unconfirmedSourceLabel']) ?>
+                        <?php if ($portalSignIn['unconfirmedAt'] !== null) : ?>
+                            &middot; <?= InputUtils::escapeHTML(DateTimeUtils::formatDate($portalSignIn['unconfirmedAt'], true)) ?>
+                        <?php endif; ?>
+                    </div>
+                    <?php if ($portalSignIn['canConfirmEmail']) : ?>
+                        <button type="button" class="btn btn-sm btn-outline-primary mt-2" id="portal-signin-confirm-email"
+                                data-email="<?= InputUtils::escapeAttribute($portalSignIn['unconfirmedEmail']) ?>">
+                            <i class="fa-solid fa-check me-1"></i><?= gettext('Confirm Email Address') ?>
+                        </button>
+                    <?php else : ?>
+                        <div class="small text-secondary mt-1" id="portal-signin-confirm-refusal"><?= InputUtils::escapeHTML((string) $portalSignIn['confirmEmailRefusal']) ?></div>
                     <?php endif; ?>
                 </li>
             <?php endif; ?>

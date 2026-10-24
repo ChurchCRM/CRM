@@ -8,6 +8,8 @@ use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Plugin\PluginManager;
+use ChurchCRM\Portal\Auth\EmailChangeChannel;
+use ChurchCRM\Portal\Auth\SignInEmailPolicy;
 use ChurchCRM\Service\KioskGuestService;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\DateTimeUtils;
@@ -663,6 +665,7 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
         }
 
         (new KioskGuestService())->registerAndCheckIn($person, $event);
+        (new SignInEmailPolicy())->recordChange($person, null, EmailChangeChannel::REGISTRATION, null);
 
         LoggerUtils::getAppLogger()->info('registerGuest: Walk-in guest registered and checked in', [
             'personId'  => $person->getId(),

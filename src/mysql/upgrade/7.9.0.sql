@@ -313,3 +313,22 @@ WHERE m.`fem_ID` > @fem_max_id AND m.`fem_Outcome` = 'noted';
 UPDATE `family_fam` SET `fam_Email` = NULL WHERE `fam_Email` IS NOT NULL;
 
 -- END: member sign-in row 11, family email moves to people
+
+-- Member sign-in row 10 (#10463): emailed links that change or confirm a
+-- person's sign-in email (design docs/member-sign-in-design.md §9).
+CREATE TABLE IF NOT EXISTS `person_email_change_pec` (
+  `pec_ID`          int(11)                  NOT NULL AUTO_INCREMENT,
+  `pec_per_ID`      mediumint(9) unsigned    NOT NULL,
+  `pec_Kind`        enum('change','confirm') NOT NULL,
+  `pec_Email`       varchar(100)             NOT NULL,
+  `pec_TokenHash`   char(64)                 NOT NULL,
+  `pec_CreatedAt`   datetime                 NOT NULL,
+  `pec_ExpiresAt`   datetime                 NOT NULL,
+  `pec_UsedAt`      datetime                          DEFAULT NULL,
+  `pec_CancelledAt` datetime                          DEFAULT NULL,
+  PRIMARY KEY (`pec_ID`),
+  UNIQUE KEY `pec_token_uidx` (`pec_TokenHash`),
+  KEY `pec_person_idx`        (`pec_per_ID`),
+  CONSTRAINT `fk_pec_person` FOREIGN KEY (`pec_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
