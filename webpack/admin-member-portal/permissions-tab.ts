@@ -12,6 +12,7 @@ import {
   onTabShown,
   type PageResult,
   personLink,
+  root,
   serverTable,
   t,
 } from "./server-table";
@@ -32,6 +33,7 @@ interface Capability {
   scopeLabel: string;
   status: string;
   statusLabel: string | null;
+  statusUrl: string | null;
   sources: CapabilitySource[];
   holderCount: number;
   givenCount: number;
@@ -73,8 +75,12 @@ function statusBadge(capability: Capability): string {
   if (capability.status === "on") {
     return `<span class="badge bg-success text-white">${escapeHtml(t("On"))}</span>`;
   }
+  const why = escapeHtml(capability.statusLabel ?? "");
+  const reason = capability.statusUrl
+    ? `<a href="${escapeAttribute(`${root()}${capability.statusUrl}`)}" data-cy="permission-off-switch">${why}</a>`
+    : why;
   return `<span class="badge bg-secondary text-white" title="${escapeAttribute(capability.statusLabel ?? "")}">${escapeHtml(t("Off"))}</span>
-    <div class="small text-secondary mt-1">${escapeHtml(capability.statusLabel ?? "")}</div>`;
+    <div class="small text-secondary mt-1">${reason}</div>`;
 }
 
 function drawCatalog(): void {

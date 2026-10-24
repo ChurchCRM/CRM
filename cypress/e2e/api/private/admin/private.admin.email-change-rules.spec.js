@@ -442,7 +442,7 @@ describe("Sign-in email changes by staff, imports and registration (§9)", () =>
         status(MATHEW.id).its("reason").should("eq", "email_unconfirmed");
     });
 
-    it("a registration form's address is audited as given by registration", () => {
+    it("a registration form's address is the address on record, with no email change audited", () => {
         const email = `registered.${Date.now()}@example.com`;
         lastAuditId().then((startId) => {
             cy.request({
@@ -451,13 +451,7 @@ describe("Sign-in email changes by staff, imports and registration (§9)", () =>
                 body: { firstName: "Reggie", lastName: "Emailchange", gender: "1", email },
             }).then(({ body }) => {
                 const personId = Number(body.Id);
-                auditSince(personId, startId).then((rows) => {
-                    expect(rows).to.have.length(1);
-                    expect(rows[0].psa_Event).to.eq("email_changed");
-                    expect(rows[0].psa_Actor_usr_ID).to.be.null;
-                    expect(rows[0].psa_Email).to.eq(email);
-                    expect(rows[0].psa_Detail).to.eq("from=; via=registration");
-                });
+                auditSince(personId, startId).should("have.length", 0);
                 cy.cleanupPeople([personId]);
             });
         });

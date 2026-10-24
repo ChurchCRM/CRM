@@ -3,8 +3,9 @@
 /**
  * Member sign-in row 10 (#10463): an address a CSV import gives a new person is
  * the address on record (docs/member-sign-in-design.md §9). It signs in at
- * once, and the audit records who set it. The audit has no HTTP surface until
- * row 9, and the importer answers no ids, so both are read with cy.dbQuery().
+ * once, and a first email is no change, so the audit records none. The audit
+ * has no HTTP surface until row 9, and the importer answers no ids, so both are
+ * read with cy.dbQuery().
  */
 
 const db = (sql, params = []) =>
@@ -28,7 +29,7 @@ describe("CSV import and the sign-in email audit (§9)", () => {
         cy.cleanupPeople(personIds);
     });
 
-    it("audits each imported address as set by the import and the administrator", () => {
+    it("makes each imported address the address on record, with no email change audited", () => {
         cy.freshAdminFormLogin({ path: "/login", visible: true, timeout: 10000 });
         cy.visit("admin/import/csv");
         cy.get("#csvFile").selectFile("cypress/fixtures/test_import_email_audit.csv", { force: true });
@@ -42,11 +43,7 @@ describe("CSV import and the sign-in email audit (§9)", () => {
             const personId = people[0].per_ID;
 
             db("SELECT * FROM portal_signin_audit_psa WHERE psa_per_ID = ? AND psa_ID > ?", [personId, startId]).then((audit) => {
-                expect(audit).to.have.length(1);
-                expect(audit[0].psa_Event).to.eq("email_changed");
-                expect(audit[0].psa_Actor_usr_ID).to.eq(1);
-                expect(audit[0].psa_Email).to.eq(email);
-                expect(audit[0].psa_Detail).to.eq("from=; via=import");
+                expect(audit).to.have.length(0);
             });
             cy.request(`/api/person/${personId}/sign-in`).its("body.unconfirmedEmail").should("be.null");
         });

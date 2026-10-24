@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Service\LoginAsPersonHistoryService;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 
@@ -7,7 +8,8 @@ use ChurchCRM\Utils\InputUtils;
  * The Login as Person history card (member sign-in design §6.5), on the person's
  * page and on the administrator's user page. Administrators only.
  *
- * Variables: $loginAsPersonHistory (LoginAsPersonHistoryService rows).
+ * Variables: $loginAsPersonHistory (LoginAsPersonHistoryService rows, newest
+ * first). The first LoginAsPersonHistoryService::SHOWN show; Show all opens the rest.
  */
 ?>
 <div class="card mb-3" id="login-as-person-history">
@@ -18,8 +20,8 @@ use ChurchCRM\Utils\InputUtils;
         <div class="card-body text-body-secondary"><?= gettext('No Login as Person sessions yet.') ?></div>
     <?php else : ?>
         <div class="list-group list-group-flush">
-            <?php foreach ($loginAsPersonHistory as $loginAsPersonSession) : ?>
-                <div class="list-group-item" data-cy="login-as-person-session" data-session-id="<?= (int) $loginAsPersonSession['id'] ?>">
+            <?php foreach ($loginAsPersonHistory as $loginAsPersonIndex => $loginAsPersonSession) : ?>
+                <div class="list-group-item<?= $loginAsPersonIndex >= LoginAsPersonHistoryService::SHOWN ? ' collapse login-as-person-history-more' : '' ?>" data-cy="login-as-person-session" data-session-id="<?= (int) $loginAsPersonSession['id'] ?>">
                     <div class="fw-medium">
                         <?= InputUtils::escapeHTML(sprintf(
                             /* Translators: %1$s is the administrator, %2$s the person they logged in as. */
@@ -58,5 +60,13 @@ use ChurchCRM\Utils\InputUtils;
                 </div>
             <?php endforeach; ?>
         </div>
+        <?php if (count($loginAsPersonHistory) > LoginAsPersonHistoryService::SHOWN) : ?>
+            <div class="card-footer text-end py-2 collapse show login-as-person-history-more">
+                <button type="button" class="btn btn-link btn-sm p-0" id="login-as-person-history-show-all"
+                        data-bs-toggle="collapse" data-bs-target="#login-as-person-history .login-as-person-history-more" aria-expanded="false">
+                    <?= gettext('Show all') ?> (<?= count($loginAsPersonHistory) ?>) <i class="fa-solid fa-chevron-down fa-xs ms-1"></i>
+                </button>
+            </div>
+        <?php endif; ?>
     <?php endif; ?>
 </div>
