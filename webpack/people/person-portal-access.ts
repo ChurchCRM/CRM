@@ -242,12 +242,15 @@ function wireGiveGrant(card: HTMLElement): void {
       [capability, capability.value === ""],
       [reason, reason.value.trim() === ""],
     ];
+    if (ends) {
+      problems.push([ends, ends.value === ""]);
+    }
     for (const [field, invalid] of problems) {
       field.classList.toggle("is-invalid", invalid);
     }
     if (problems.some(([, invalid]) => invalid) || (scopeType !== "none" && scopeId === "")) {
       if (error) {
-        error.textContent = t("Choose a permission, what it is for, and say why.");
+        error.textContent = t("Choose a permission, what it is for and its last day, and say why.");
       }
       return;
     }

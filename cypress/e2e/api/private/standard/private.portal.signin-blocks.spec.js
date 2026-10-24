@@ -1,10 +1,11 @@
 /// <reference types="cypress" />
 
 /**
- * Member sign-in row 4 (#10463): the blocks for everyone (docs/member-sign-in-design.md
- * §4, A13). An inactive family, awaiting review and Disable sign-in refuse staff sign-in
- * with the same answer as a wrong password, and end an open portal session on its next
- * request. Seed user lena.black.editself.notes (person 100, family 20), password changeme.
+ * Member sign-in row 4 (#10463): the sign-in blocks (docs/member-sign-in-design.md §4,
+ * A13). Disable sign-in refuses staff sign-in with the same answer as a wrong password and
+ * ends an open portal session on its next request. An inactive family and awaiting review
+ * refuse member sign-in only: staff sign-in, the API key and a staff portal session go on.
+ * Seed user lena.black.editself.notes (person 100, family 20), password changeme.
  *
  * Remembered devices, passkeys, the session timeout and the audit have no HTTP surface
  * until rows 7, 8 and 9, so they are set and read with cy.dbQuery().
@@ -78,21 +79,37 @@ const addDeviceAndPasskey = () => {
 
 const blocks = [
     {
-        name: "an inactive family",
-        reason: "family_inactive",
-        apply: () => adminPost(`/api/family/${member.familyId}/activate/false`),
-    },
-    {
-        name: "awaiting review",
-        reason: "needs_review",
-        apply: () => db("UPDATE person_per SET per_NeedsReview = 1 WHERE per_ID = ?", [member.personId]),
-    },
-    {
         name: "Disable sign-in",
         reason: "sign_in_disabled",
         apply: () => adminPost(`/admin/api/person/${member.personId}/sign-in/disable`, { reason: "Blocks spec" }),
     },
 ];
+
+const staff = { username: "noperm.user", password: "changeme", personId: 901, familyId: 1 };
+
+const memberOnlyBlocks = [
+    {
+        name: "an inactive family",
+        reason: "family_inactive",
+        apply: () => adminPost(`/api/family/${staff.familyId}/activate/false`),
+    },
+    {
+        name: "awaiting review",
+        reason: "needs_review",
+        apply: () => db("UPDATE person_per SET per_NeedsReview = 1 WHERE per_ID = ?", [staff.personId]),
+    },
+];
+
+const staffSignIn = () => {
+    cy.clearCookies();
+    return cy.request({
+        method: "POST",
+        url: "/session/begin",
+        form: true,
+        followRedirect: false,
+        body: { User: staff.username, Password: staff.password },
+    });
+};
 
 describe("Sign-in blocks for everyone", () => {
     let savedTimeout;
@@ -106,8 +123,8 @@ describe("Sign-in blocks for everyone", () => {
 
     afterEach(() => {
         cy.clearCookies();
-        db("UPDATE family_fam SET fam_DateDeactivated = NULL WHERE fam_ID = ?", [member.familyId]);
-        db("UPDATE person_per SET per_NeedsReview = 0 WHERE per_ID = ?", [member.personId]);
+        db("UPDATE family_fam SET fam_DateDeactivated = NULL WHERE fam_ID IN (?, ?)", [member.familyId, staff.familyId]);
+        db("UPDATE person_per SET per_NeedsReview = 0 WHERE per_ID IN (?, ?)", [member.personId, staff.personId]);
         db("DELETE FROM person_signin_psi WHERE psi_per_ID IN (?, 27)", [member.personId]);
         db("DELETE FROM person_device_pdv WHERE pdv_per_ID = ?", [member.personId]);
         db("DELETE FROM person_passkey_ppk WHERE ppk_per_ID = ?", [member.personId]);
@@ -162,6 +179,24 @@ describe("Sign-in blocks for everyone", () => {
                         expect(ended[0].psa_Reason).to.eq(reason);
                     });
                 });
+            });
+        });
+    });
+
+    memberOnlyBlocks.forEach(({ name, reason, apply }) => {
+        it(`${name} refuses member sign-in but leaves staff sign-in, the API key and a staff portal session open`, () => {
+            staffSignIn().its("status").should("eq", 302);
+            cy.request("/api/portal/me").its("body.profile.id").should("eq", staff.personId);
+            apply();
+
+            cy.request("/api/portal/me").its("body.profile.id").should("eq", staff.personId);
+            cy.request({ url: "/v2/dashboard", followRedirect: false }).its("status").should("eq", 200);
+            staffSignIn().its("status").should("eq", 302);
+            cy.request({ url: "/v2/dashboard", followRedirect: false }).its("status").should("eq", 200);
+            cy.makePrivateNoPermAPICall("GET", "/api/person/2", null, 200);
+            cy.makePrivateAdminAPICall("GET", `/api/person/${staff.personId}/sign-in`, null, 200).then(({ body }) => {
+                expect(body.maySignIn).to.eq(false);
+                expect(body.reason).to.eq(reason);
             });
         });
     });
