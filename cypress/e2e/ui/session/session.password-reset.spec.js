@@ -196,6 +196,21 @@ describe("Session Password Reset", () => {
                     state().should("deep.equal", beforeUser);
                     tokenState().should("deep.equal", initialToken);
                 });
+                if (format === "SHA-256") {
+                    for (const theme of ["light", "dark"]) {
+                        for (const width of [1280, 820, 390]) {
+                            cy.viewport(width, 900);
+                            cy.document().then((document) => document.documentElement.setAttribute("data-bs-theme", theme));
+                            cy.get("#setPasswordForm").should("be.visible");
+                            cy.document().then((document) => {
+                                expect(document.documentElement.scrollWidth).to.be.at.most(width);
+                            });
+                            cy.screenshot(`password-reset-${theme}-${width}`, { capture: "fullPage" });
+                        }
+                    }
+                    cy.viewport(1920, 1080);
+                    cy.document().then((document) => document.documentElement.setAttribute("data-bs-theme", "light"));
+                }
                 cy.get("#password").type(password, { log: false });
                 cy.get("#passwordConfirmation").type(password, { log: false });
                 csrf().as("csrf");

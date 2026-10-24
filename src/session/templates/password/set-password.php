@@ -11,11 +11,11 @@ $sBodyClass = 'page-auth page-login';
 require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
 ?>
 <main id="main-content" class="forgot-password-container">
-  <div class="forgot-password-card">
+  <div class="forgot-password-card bg-body text-body">
     <div class="forgot-password-card-logo"><?= ChurchLogo::img() ?></div>
-    <h2><?= InputUtils::escapeHTML(ChurchMetaData::getChurchName()) ?></h2>
-    <p class="login-header-tagline"><?= gettext('Account Recovery') ?></p>
-    <h3><?= gettext('Reset your password') ?></h3>
+    <h2 class="text-body"><?= InputUtils::escapeHTML(ChurchMetaData::getChurchName()) ?></h2>
+    <p class="login-header-tagline text-secondary"><?= gettext('Account Recovery') ?></p>
+    <h3 class="text-body"><?= gettext('Reset your password') ?></h3>
     <?php if ($error !== null): ?>
       <div id="password-error" class="alert alert-danger" role="alert"><?= InputUtils::escapeHTML($error) ?></div>
     <?php endif; ?>
