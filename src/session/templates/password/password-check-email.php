@@ -30,9 +30,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
             <i class="fa-solid fa-check"></i>
           </div>
           <h2><?= gettext("Password Reset Successful") ?></h2>
-          <p><?= gettext("A new password has been generated and sent to your email address.") ?></p>
-          <span class="small"><?= gettext("Please check your email (including spam/junk folder) for your temporary password.") ?></span>
-          <span class="small"><?= gettext("Once you receive the email, you can log in with your temporary password and change it to something you prefer.") ?></span>
+          <p><?= gettext('Your password has been changed. You can now sign in with your new password.') ?></p>
         </div>
 
         <a href="<?= SystemURLs::getRootPath() ?>/session/begin" class="btn-sign-in">
