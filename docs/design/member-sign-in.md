@@ -62,7 +62,7 @@ This document puts those into one design and one delivery plan.
 | D2 | This work starts now, built to the shape of #10511's typed principal and `decide()`, without waiting for its F0. It gets a milestone when it is scheduled. | §15, §16 |
 | D3 | The sign-in page shows the same answer whether or not the address can sign in. | §6.1 |
 | D4 | Passkeys are in the first release. Staying signed in is the member's choice, device by device. The box is never ticked for them, and a device stays signed in for 30 days by default. | §6.2, §6.3 |
-| D5 | **Who may sign in:** family roles; classifications, which is where guests are decided; and a minimum age of 13. Deceased and inactive people can't sign in, and neither can people whose family is deactivated, who are awaiting review, or who have Disable sign-in on. In the portal, an adult is a head of household or spouse who is 18 or older. | §4 |
+| D5 | **Who may sign in:** family roles; classifications, which is where guests are decided; and a minimum age of 13. Deceased and inactive people, and people with Disable sign-in on, can't sign in at all. Members also can't while their family is deactivated or they are awaiting review; those two don't block staff (§4). In the portal, an adult is a head of household or spouse who is 18 or older. | §4 |
 | D6 | The personal email is the sign-in identity. §9 controls who may change it, and when a new address may be used to sign in. | §9 |
 | D7 | The web root goes to `/portal/login` while member sign-in is on, and to `/admin` while it is off. `/admin` is the staff sign-in page, and `/session/begin` redirects to it. | §7 |
 | D8 | One portal permissions model serves core, Volunteer and plugins. | §8 |
@@ -145,7 +145,9 @@ A person may start a portal session when **all** of these hold. The shared step 
 
 **Blocks for everyone.** The staff sign-in checks these too.
 - deceased or inactive (today's `getSignInBlockedReason()`);
-- Disable sign-in is on (A13);
+- Disable sign-in is on (A13). It starts off for everyone, and only an administrator turns it on.
+
+**Blocks for member sign-in only.** Staff sign-in, two-factor, API keys and staff sessions don't check these, so an upgrade never locks out a staff account whose person already matches one:
 - the person's family is deactivated;
 - the person is awaiting review (`per_NeedsReview`): public self-registration, kiosk walk-ins, and people a member added in the portal.
 
@@ -722,7 +724,7 @@ This work does not wait for #10511's F0, as George said on 10-10. It is built so
 | 15 | A member's portal language: the profile's Language field, the language of portal pages and of mail to the member (§5), carried over from self-service accounts at the cutover (§12) | 2, 5, 13 |
 
 **What can ship alone:**
-- **Earlier, on its own:** row 11 (family email) and row 0 (#10197) don't depend on the sign-in work. Either can ship one release earlier if that release comes sooner.
+- **Earlier, on its own:** row 0 (#10197) doesn't depend on the sign-in work and can ship one release earlier. Row 11 (family email) can't: its upgrade holds moved addresses for confirmation on `person_signin_psi`, which row 1 creates.
 - **Later, without blocking member sign-in or the cutover:**
   - row 3 (plugin API): no core page needs it;
   - row 12 (Login as Person): it is off by default.
