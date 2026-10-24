@@ -248,7 +248,7 @@ describe("A member changes their own email in the portal (§9)", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
                 `/admin/api/person/${LENA.id}/sign-in/grants`,
-                { capability: "portal.family.contacts.view", scopeId: 3, reason: "Email change spec" },
+                { capability: "portal.family.contacts.view", scopeId: 3, endsOn: new Date(Date.now() + 30 * 86400000).toISOString().slice(0, 10), reason: "Email change spec" },
                 201,
             ).then(({ body }) => {
                 grantId = body.grantId;

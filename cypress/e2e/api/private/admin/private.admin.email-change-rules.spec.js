@@ -149,7 +149,12 @@ const giveGrant = (personId, familyId) =>
     cy.makePrivateAdminAPICall(
         "POST",
         `/admin/api/person/${personId}/sign-in/grants`,
-        { capability: "portal.family.contacts.view", scopeId: familyId, reason: "Email change spec" },
+        {
+            capability: "portal.family.contacts.view",
+            scopeId: familyId,
+            endsOn: new Date(Date.now() + 30 * 86400000).toISOString().slice(0, 10),
+            reason: "Email change spec",
+        },
         201,
     );
 
