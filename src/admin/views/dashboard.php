@@ -169,6 +169,12 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                     <?= sprintf(gettext('People who used to sign in to the Member Portal: %d'), (int) $formerPortalAccounts) ?>.
                     <?= gettext('Their old logins were removed by the upgrade. Turn on member sign-in so they can sign in with their own email.') ?>
                 </p>
+                <p class="mb-2" id="former-portal-accounts-email">
+                    <?= gettext('Member sign-in emails each person a code, so email (SMTP) must work before you turn it on.') ?>
+                    <?php if (empty($hasEmail)): ?>
+                        <a href="<?= SystemURLs::getRootPath() ?>/admin/email" id="former-portal-accounts-email-setup"><?= gettext('Set up email first.') ?></a>
+                    <?php endif; ?>
+                </p>
                 <div class="d-flex flex-wrap gap-2">
                     <a href="<?= SystemURLs::getRootPath() ?>/admin/member-portal#portal-signin" class="btn btn-primary" id="former-portal-accounts-turn-on">
                         <?= gettext('Turn on member sign-in') ?>
