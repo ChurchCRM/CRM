@@ -15,6 +15,9 @@ export const DB = {
   password: process.env.CHURCHCRM_DB_PASSWORD || 'changeme',
 };
 
+// The stack's Mailpit (docker-compose mailserver), where member sign-in codes arrive.
+export const MAILPIT_URL = process.env.CHURCHCRM_MAILPIT_URL || 'http://127.0.0.1:8025';
+
 export const ADMIN_USERNAME = process.env.CHURCHCRM_TEST_USERNAME || 'admin';
 
 // Password on a fresh install, before the forced first-login change.

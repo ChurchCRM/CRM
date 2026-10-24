@@ -24,7 +24,11 @@ npm run docker:ci:new-system:down   # tear down the instance when you're done
 
 1. `docker:ci:new-system:start` — brings up a fresh ChurchCRM instance with an
    empty database (the same Docker Compose profile the `test-new-system` CI
-   job uses), reachable at `http://127.0.0.1:8081/`.
+   job uses), reachable at `http://127.0.0.1:8081/`, with the Mailpit mail
+   sink on port 8025. The member sign-in captures send email there, read
+   their sign-in code from it (`CHURCHCRM_MAILPIT_URL`), and put the email
+   and sign-in settings back afterwards. Passkeys show only when the instance
+   is set up and reached as `localhost`; an IP address can't carry them.
 2. `marketing:screenshots` — runs `playwright test`. Its `setup` project
    (`playwright/setup/bootstrap.setup.ts`) drives the setup wizard, sets a
    working admin password, saves church info, and imports demo data — the
