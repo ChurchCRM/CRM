@@ -103,7 +103,7 @@ final class MemberSignInSettingsService
     }
 
     /**
-     * How many self-service accounts the 7.9.0 upgrade removed, while the
+     * How many self-service accounts the 7.8.3 upgrade removed, while the
      * Admin Dashboard should still ask to turn member sign-in on (design §12);
      * 0 once sign-in is on or the notice was dismissed.
      */
