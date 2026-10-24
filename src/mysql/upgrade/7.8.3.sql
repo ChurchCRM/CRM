@@ -1,4 +1,4 @@
--- ChurchCRM 7.9.0 upgrade script
+-- ChurchCRM 7.8.3 upgrade script
 
 -- Member sign-in row 0 (#10197): counters for login throttling and temporary lockouts.
 CREATE TABLE IF NOT EXISTS `rate_limit_rlm` (
