@@ -112,7 +112,7 @@ Use the smallest relevant test while developing, then run the broader required c
 | `npm run docker:test:start` | Start the local test services |
 | `npm run docker:test:logs` | Follow test-service logs |
 | `npm run docker:test:login:web` | Open a shell in the web container |
-| `npm run docker:test:reset:db` | Restore the test database seed |
+| `npm run docker:test:reset:db` | Rebuild the test database: `Install.sql`, then `cypress/data/seed.sql` |
 | `npm run docker:dev:start` | Start the development stack (PHP/Composer/Node all available in-container) |
 | `npm run docker:dev:build` | Run `composer install` + the full `npm run build` inside the development container |
 | `npm run docker:dev:watch` | Run `webpack --watch` inside the development container |
@@ -157,7 +157,7 @@ Detailed, task-specific guidance is indexed in [`.agents/skills/churchcrm/SKILL.
    npm run build:orm
    ```
 
-4. Update test seed data when the schema changes.
+4. Update `src/mysql/install/Install.sql`. `cypress/data/seed.sql` holds test data only and changes only when a spec needs a row (`.agents/skills/churchcrm/ci-test-infrastructure.md`).
 5. Test both an existing installation upgrade and a fresh installation.
 
 Make schema changes in `orm/schema.xml`; generated Propel model files are build output.

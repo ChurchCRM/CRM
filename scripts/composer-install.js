@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 
 /**
- * Installs production Composer dependencies into src/vendor, skipping the
- * install when vendor already matches the non-dev packages in composer.lock.
+ * Installs production Composer dependencies into src/vendor and refreshes the
+ * root package version and autoloader on every build. Matching dependencies
+ * skip validation and vendor stripping.
  */
 
 const { spawnSync } = require('child_process');
@@ -57,7 +58,8 @@ function stripVendor(dir) {
 }
 
 if (vendorIsCurrent()) {
-    console.log('✓ src/vendor matches composer.lock; skipping composer install.');
+    console.log('✓ src/vendor matches composer.lock; refreshing Composer metadata.');
+    composer(['install', '--no-dev']);
     process.exit(0);
 }
 

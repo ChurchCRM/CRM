@@ -1,5 +1,5 @@
 {
-  "Invalid setting name or value": "",
-  "The geocoding service did not answer — try again later": "",
-  "Only the email you sent is shown.": ""
+  "Invalid setting name or value": "Nama atau nilai pengaturan tidak valid",
+  "The geocoding service did not answer — try again later": "Layanan geocoding tidak merespons — coba lagi nanti",
+  "Only the email you sent is shown.": "Hanya email yang Anda kirim yang ditampilkan."
 }

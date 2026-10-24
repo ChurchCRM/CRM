@@ -1,5 +1,5 @@
 {
-  "Invalid setting name or value": "",
-  "The geocoding service did not answer — try again later": "",
-  "Only the email you sent is shown.": ""
+  "Invalid setting name or value": "Nome ou valor de configuração inválido",
+  "The geocoding service did not answer — try again later": "O serviço de geocodificação não respondeu — tente novamente mais tarde",
+  "Only the email you sent is shown.": "Somente o e-mail que você enviou é exibido."
 }

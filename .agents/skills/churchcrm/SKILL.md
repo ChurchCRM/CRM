@@ -76,8 +76,8 @@ Row actions: [`table-action-menu.md`](./table-action-menu.md). Settings UI: copy
 
 | Skill | When to Use |
 |-------|------------|
-| [Testing](./testing.md) | Writing tests |
-| [Cypress Testing](./cypress-testing.md) | E2E |
+| [Cypress Testing](./cypress-testing.md) | Writing and running specs, permission (gate) tests |
+| [CI & Test Infrastructure](./ci-test-infrastructure.md) | Test stack, red CI, shards, test database and seed, cleanup guard |
 | [Marketing Visual-Media Pipeline](./marketing-visuals-pipeline.md) | Playwright captures |
 
 ## MVC / PHP

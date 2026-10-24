@@ -1,5 +1,5 @@
 {
-  "Invalid setting name or value": "",
-  "The geocoding service did not answer — try again later": "",
-  "Only the email you sent is shown.": ""
+  "Invalid setting name or value": "Vigane sätte nimi või väärtus",
+  "The geocoding service did not answer — try again later": "Geokodeerimisteenus ei vastanud — proovige hiljem uuesti",
+  "Only the email you sent is shown.": "Kuvatakse ainult teie saadetud e-kiri."
 }

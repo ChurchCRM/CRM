@@ -1,5 +1,5 @@
 {
-  "Invalid setting name or value": "",
-  "The geocoding service did not answer — try again later": "",
-  "Only the email you sent is shown.": ""
+  "Invalid setting name or value": "చెల్లని సెట్టింగ్ పేరు లేదా విలువ",
+  "The geocoding service did not answer — try again later": "జియోకోడింగ్ సేవ స్పందించలేదు — తర్వాత మళ్లీ ప్రయత్నించండి",
+  "Only the email you sent is shown.": "మీరు పంపిన ఇమెయిల్ మాత్రమే చూపబడుతుంది."
 }

@@ -1,5 +1,5 @@
 {
-  "Invalid setting name or value": "",
-  "The geocoding service did not answer — try again later": "",
-  "Only the email you sent is shown.": ""
+  "Invalid setting name or value": "設定名稱或值無效",
+  "The geocoding service did not answer — try again later": "地理編碼服務未回應 — 請稍後再試",
+  "Only the email you sent is shown.": "僅顯示您寄出的電子郵件。"
 }

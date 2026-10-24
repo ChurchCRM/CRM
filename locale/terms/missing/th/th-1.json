@@ -1,5 +1,5 @@
 {
-  "Invalid setting name or value": "",
-  "The geocoding service did not answer — try again later": "",
-  "Only the email you sent is shown.": ""
+  "Invalid setting name or value": "ชื่อหรือค่าการตั้งค่าไม่ถูกต้อง",
+  "The geocoding service did not answer — try again later": "บริการแปลงที่อยู่เป็นพิกัดไม่ตอบสนอง — โปรดลองอีกครั้งในภายหลัง",
+  "Only the email you sent is shown.": "แสดงเฉพาะอีเมลที่คุณส่งเท่านั้น"
 }
