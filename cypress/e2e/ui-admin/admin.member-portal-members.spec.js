@@ -204,15 +204,28 @@ describe("Admin → Member Portal members, audit, permissions and the person car
     it("lists the permissions with their holders, and the Statistics tab reads the sign-in rows", () => {
         cy.freshAdminFormLogin();
         cy.visit("/admin/member-portal#portal-permissions");
+        cy.get("#portalPermissionsLead").should("contain.text", '"Admin overrides" then shows here');
+        cy.get("#portalPermissionsTable thead th").then(($headers) => {
+            expect([...$headers].map((header) => header.textContent.trim())).to.deep.eq([
+                "Permission",
+                "Applies to",
+                "Given to",
+                "Status",
+                "People",
+            ]);
+        });
         cy.get('#portalPermissionsTable tr[data-capability="portal.family.edit"]')
             .should("contain.text", "Change family details")
             .and("contain.text", "Adult of the family")
-            .and("not.contain.text", "Given by an administrator");
+            .and("not.contain.text", "Admin overrides");
         cy.get('#portalPermissionsTable tr[data-capability="volunteer.team.manage"]').should("contain.text", "Team leader");
         cy.get('#portalPermissionsTable tr[data-capability="portal.family.edit"] .portal-holders-open').click();
         cy.get("#portalHoldersModal").should("be.visible");
         cy.get("#portalHoldersTitle").should("have.text", "Change family details");
         cy.get("#portalHoldersTable").should("contain.text", "Mathew Campbell").and("contain.text", "Adult of the Campbell family");
+        cy.get("#portalHoldersTable thead th").then(($headers) => {
+            expect([...$headers].map((header) => header.textContent.trim())).to.include("Why").and.not.include("From");
+        });
         cy.get("#portalHoldersModal .btn-close").click();
 
         cy.get("#portal-statistics-tab").click();
@@ -245,7 +258,7 @@ describe("Admin → Member Portal members, audit, permissions and the person car
             .and("contain.text", `${PREFIX} Hospitality`)
             .and("contain.text", "Leads the greeters this autumn");
         cy.visit("/admin/member-portal#portal-permissions");
-        cy.get('#portalPermissionsTable tr[data-capability="volunteer.team.manage"]').should("contain.text", "Given by an administrator: 1");
+        cy.get('#portalPermissionsTable tr[data-capability="volunteer.team.manage"]').should("contain.text", "Admin overrides: 1");
 
         signInAs("limited.user");
         portalNavLabels().should("include", "My Teams");

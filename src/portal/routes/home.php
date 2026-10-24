@@ -44,7 +44,7 @@ $homeHandler = function (Request $request, Response $response): Response {
                 'memberCount' => count($family->getPeople()),
             ],
             'upcomingEvents' => $showCalendar ? portalHomeUpcomingEvents() : [],
-            'hasVisibleCalendars' => $showCalendar && PortalCalendarService::hasVisibleCalendars(),
+            'hasVisibleCalendars' => $showCalendar,
         ],
         PortalNav::HOME
     );

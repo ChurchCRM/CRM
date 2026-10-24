@@ -3,14 +3,43 @@
 /**
  * Member sign-in row 4 (#10463): Admin → Member Portal → Sign-in
  * (docs/member-sign-in-design.md §11.1) and the person page's Portal sign-in
- * card (§11.3). Every x-api-key request replaces the browser session, so the
- * UI steps that follow one log in again.
+ * card (§11.3). Every control saves on its own change. Every x-api-key request
+ * replaces the browser session, so the UI steps that follow one log in again.
  */
 
 const SETTINGS_URL = "/admin/api/member-portal/sign-in";
 const PERSON_ID = 2;
 
+const EVERYONE_CAPABILITY = "portal.profile.edit";
+
 const settings = () => cy.makePrivateAdminAPICall("GET", SETTINGS_URL, null, 200).its("body");
+
+const openSignInTab = () => {
+    cy.freshAdminFormLogin();
+    cy.intercept("POST", "**/admin/api/member-portal/sign-in").as("saveSignIn");
+    cy.visit("/admin/member-portal#portal-signin");
+    cy.get("#portal-signin").should("have.class", "active");
+    cy.get("#sMemberSignInNotificationRecipientIDs").should("have.class", "tomselected");
+};
+
+// Bootstrap ignores a hide while the modal is still opening; bootbox focuses its button once it is open.
+const answerConfirm = (button) => {
+    cy.get(".bootbox .bootbox-accept").should("have.focus");
+    cy.get(`.bootbox .bootbox-${button}`).click();
+    cy.get(".bootbox").should("not.exist");
+};
+
+/** The next save sent exactly one setting, with this value, and the server kept it. */
+const expectSave = (key, value) =>
+    cy.wait("@saveSignIn").then(({ request, response }) => {
+        expect(Object.keys(request.body), "settings in one save").to.deep.eq([key]);
+        if (Array.isArray(value)) {
+            expect(request.body[key]).to.have.members(value);
+        } else {
+            expect(request.body[key]).to.eq(value);
+        }
+        expect(response.statusCode).to.eq(200);
+    });
 
 describe("Admin → Member Portal → Sign-in", () => {
     let savedValues;
@@ -31,40 +60,151 @@ describe("Admin → Member Portal → Sign-in", () => {
         cy.makePrivateAdminAPICall("POST", `/admin/api/person/${PERSON_ID}/sign-in/enable`, null, [200, 409]);
     });
 
-    it("saves the rule and shows a wrong value next to its field", () => {
-        cy.freshAdminFormLogin();
-        cy.visit("/admin/member-portal#portal-signin");
-        cy.get("#portal-signin").should("have.class", "active");
+    it("saves each control as it changes, and keeps it after a reload", () => {
+        openSignInTab();
+        cy.get("#portal-signin").should("contain.text", "Changes save as you make them.");
+        cy.get("#portal-signin button").should("not.exist");
         cy.get("#memberSignInClassifications [data-cy=classification-count]").first().invoke("text").should("match", /^\d+$/);
 
         cy.get("#memberSignInClassification-3").check();
-        cy.get("#iMemberSignInMinAge").clear().type("500");
-        cy.get("#memberSignInSaveButton").click();
-        cy.get('[data-error-for="iMemberSignInMinAge"]').should("contain.text", "0 to 120");
-        cy.get("#iMemberSignInMinAge").should("have.class", "is-invalid");
-
-        cy.get("#iMemberSignInMinAge").clear().type("16");
-        cy.get("#iRememberDeviceDays").clear().type("0");
+        expectSave("sMemberSignInClassifications", [3]);
+        cy.get("#memberSignInRole-3").check();
+        expectSave("sMemberSignInFamilyRoles", [1, 2, 3]);
+        cy.get("#iMemberSignInMinAge").clear().type("16").blur();
+        expectSave("iMemberSignInMinAge", "16");
+        cy.get("#iSignInLinkMinutes").clear().type("60").blur();
+        expectSave("iSignInLinkMinutes", "60");
+        cy.get("#iMemberSignInRequestsPerIP").clear().type("500").blur();
+        expectSave("iMemberSignInRequestsPerIP", "500");
+        cy.get("#iPortalIdleMinutes").clear().type("15").blur();
+        expectSave("iPortalIdleMinutes", "15");
+        cy.get("#iRememberDeviceDays").clear().type("0").blur();
+        expectSave("iRememberDeviceDays", "0");
+        cy.get("#bPortalPasskeys").uncheck();
+        expectSave("bPortalPasskeys", false);
         cy.get("#bAllowLoginAsUser").check();
-        cy.get("#memberSignInSaveButton").click();
-        cy.get("#memberSignInStatus").should("contain.text", "Saved.");
-        cy.get('[data-error-for="iMemberSignInMinAge"]').should("be.empty");
+        expectSave("bAllowLoginAsUser", true);
+        cy.get("#bLoginAsUserCanWrite").check();
+        expectSave("bLoginAsUserCanWrite", true);
+        cy.contains("Settings saved successfully").should("be.visible");
+        cy.get("@saveSignIn.all").should("have.length", 10);
 
         cy.reload();
         cy.get("#memberSignInClassification-3").should("be.checked");
+        cy.get("#memberSignInRole-3").should("be.checked");
         cy.get("#iMemberSignInMinAge").should("have.value", "16");
+        cy.get("#iSignInLinkMinutes").should("have.value", "60");
+        cy.get("#iMemberSignInRequestsPerIP").should("have.value", "500");
+        cy.get("#iPortalIdleMinutes").should("have.value", "15");
         cy.get("#iRememberDeviceDays").should("have.value", "0");
+        cy.get("#bPortalPasskeys").should("not.be.checked");
         cy.get("#bAllowLoginAsUser").should("be.checked");
+        cy.get("#bLoginAsUserCanWrite").should("be.checked");
     });
 
-    it("adds people to the office list by name", () => {
-        cy.freshAdminFormLogin();
-        cy.visit("/admin/member-portal#portal-signin");
+    it("refreshes the counts, lists and permissions that follow the rule", () => {
+        openSignInTab();
+        cy.get("#portal-members-tab").click();
+        cy.get('[data-count-for="may-sign-in"]').should("have.text", "0");
+        cy.get("#portal-permissions-tab").click();
+        cy.get(`#portalPermissionsTable tr[data-capability="${EVERYONE_CAPABILITY}"] [data-cy=holder-count]`)
+            .invoke("text")
+            .as("holdersBefore", { type: "static" });
+        cy.get("#portal-signin-tab").click();
+        cy.get("#memberSignInMayCount").should("have.text", "0");
+
+        cy.get("#memberSignInClassification-1").check();
+        cy.wait("@saveSignIn").its("response.body").then((saved) => {
+            expect(saved.maySignInCount).to.be.greaterThan(0);
+            cy.get("#memberSignInMayCount").should("have.text", String(saved.maySignInCount));
+            cy.get("[data-shared-address-count]").should("have.text", String(saved.sharedAddresses));
+            cy.get("#memberSignInSharedEmails").should(saved.sharedAddresses > 0 ? "be.visible" : "not.be.visible");
+        });
+        cy.request("/admin/api/member-portal/stats").its("body.maySignIn").then((count) => {
+            expect(count).to.be.greaterThan(0);
+            cy.get("#portalStat-maySignIn").should("have.text", String(count));
+            cy.get('[data-count-for="may-sign-in"]').should("have.text", String(count));
+        });
+        cy.request("/admin/api/member-portal/permissions").then(({ body }) => {
+            const everyone = body.capabilities.find((capability) => capability.key === EVERYONE_CAPABILITY);
+            cy.get("@holdersBefore").then((before) => expect(everyone.holderCount).to.be.greaterThan(Number(before)));
+            cy.get(`#portalPermissionsTable tr[data-capability="${EVERYONE_CAPABILITY}"] [data-cy=holder-count]`).should(
+                "have.text",
+                String(everyone.holderCount)
+            );
+        });
+    });
+
+    it("adds and removes people on the office list as they are picked", () => {
+        openSignInTab();
         cy.get("#sMemberSignInNotificationRecipientIDs").parent().find(".ts-control input").type("Mathew");
         cy.get(".ts-dropdown .option").contains("mathew.campbell@example.com").click();
-        cy.get("#memberSignInSaveButton").click();
-        cy.get("#memberSignInStatus").should("contain.text", "Saved.");
-        settings().its("values.sMemberSignInNotificationRecipientIDs").should("eq", String(PERSON_ID));
+        expectSave("sMemberSignInNotificationRecipientIDs", [PERSON_ID]);
+        cy.request(SETTINGS_URL).its("body.values.sMemberSignInNotificationRecipientIDs").should("eq", String(PERSON_ID));
+
+        cy.get("#sMemberSignInNotificationRecipientIDs").parent().find(".ts-control .item .remove").click();
+        expectSave("sMemberSignInNotificationRecipientIDs", []);
+        cy.reload();
+        cy.get("#sMemberSignInNotificationRecipientIDs").parent().find(".ts-control .item").should("not.exist");
+    });
+
+    it("shows the server's message for a refused value and puts the saved value back", () => {
+        openSignInTab();
+        cy.get("#iMemberSignInMinAge").should("have.value", "13").clear().type("500").blur();
+        cy.wait("@saveSignIn").its("response.statusCode").should("eq", 400);
+        cy.contains("Enter a whole number from 0 to 120.").should("be.visible");
+        cy.get("#iMemberSignInMinAge").should("have.value", "13");
+        cy.reload();
+        cy.get("#iMemberSignInMinAge").should("have.value", "13");
+    });
+
+    it("asks before turning member sign-in on, naming how many may sign in", () => {
+        openSignInTab();
+        cy.get("#memberSignInClassification-1").check();
+        cy.wait("@saveSignIn");
+        cy.request("/admin/api/member-portal/stats").its("body.maySignIn").then((count) => {
+            cy.get("#bMemberSignIn").should("not.be.checked").click();
+            cy.get(".bootbox").should("be.visible").and("contain.text", `People who may sign in: ${count}`);
+        });
+        answerConfirm("cancel");
+        cy.get("#bMemberSignIn").should("not.be.checked");
+        cy.get("@saveSignIn.all").should("have.length", 1);
+        cy.request(SETTINGS_URL).its("body.values.bMemberSignIn").should("eq", "0");
+
+        cy.get("#bMemberSignIn").click();
+        answerConfirm("accept");
+        expectSave("bMemberSignIn", true);
+        cy.get("#bMemberSignIn").should("be.checked");
+        cy.reload();
+        cy.get("#bMemberSignIn").should("be.checked");
+    });
+
+    it("asks before turning member sign-in off, saying members are signed out", () => {
+        cy.makePrivateAdminAPICall("POST", SETTINGS_URL, { bMemberSignIn: true }, 200);
+        openSignInTab();
+        cy.get("#bMemberSignIn").should("be.checked").click();
+        cy.get(".bootbox").should("be.visible").and("contain.text", "Members who are signed in now are signed out");
+        answerConfirm("cancel");
+        cy.get("#bMemberSignIn").should("be.checked");
+        cy.get("@saveSignIn.all").should("have.length", 0);
+
+        cy.get("#bMemberSignIn").click();
+        answerConfirm("accept");
+        expectSave("bMemberSignIn", false);
+        cy.get("#bMemberSignIn").should("not.be.checked");
+        cy.reload();
+        cy.get("#bMemberSignIn").should("not.be.checked");
+    });
+
+    it("switches member sign-in back off when the server refuses it", () => {
+        openSignInTab();
+        cy.request({ method: "POST", url: "/admin/api/system/config/bEnabledEmail", body: { value: "0" } });
+        cy.get("#bMemberSignIn").should("not.be.disabled").click();
+        answerConfirm("accept");
+        cy.wait("@saveSignIn").its("response.statusCode").should("eq", 400);
+        cy.contains("so it can only be turned on while ChurchCRM can send email").should("be.visible");
+        cy.get("#bMemberSignIn").should("not.be.checked");
+        cy.request(SETTINGS_URL).its("body.values.bMemberSignIn").should("eq", "0");
     });
 
     it("can't turn member sign-in on while email is off, and says why", () => {

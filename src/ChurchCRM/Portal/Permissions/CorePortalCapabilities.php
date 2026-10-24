@@ -3,6 +3,7 @@
 namespace ChurchCRM\Portal\Permissions;
 
 use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\Portal\PortalCalendarService;
 use ChurchCRM\Portal\Permissions\Rules\EveryoneRule;
 use ChurchCRM\Portal\Permissions\Rules\FamilyAdultRule;
 use ChurchCRM\Portal\Permissions\Rules\TeamLeaderRule;
@@ -28,6 +29,7 @@ final class CorePortalCapabilities
     {
         $core = PortalCapability::OWNER_CORE;
         $volunteerV2 = static fn (): bool => User::isVolunteerV2Enabled();
+        $calendarShared = static fn (): bool => PortalCalendarService::hasVisibleCalendars();
 
         foreach ([
             new PortalCapability(self::PROFILE_EDIT, gettext('Edit my details'), gettext('Change their own name, contact details and photo.'), $core),
@@ -36,7 +38,7 @@ final class CorePortalCapabilities
             new PortalCapability(self::FAMILY_CONTACTS_VIEW, gettext('See family contact details'), gettext('See the email addresses and phone numbers of the people in their family.'), $core, PortalScope::FAMILY),
             new PortalCapability(self::FAMILY_EDIT, gettext('Change family details'), gettext('Change the family address and contact details, and add a family member for review.'), $core, PortalScope::FAMILY),
             new PortalCapability(self::FAMILY_CONFIRM, gettext('Confirm family details'), gettext('Tell the church office whether the family details are still right.'), $core, PortalScope::FAMILY),
-            new PortalCapability(self::CALENDAR_VIEW, gettext('See the church calendar'), gettext('See the calendars the church shares with members, and subscribe to them.'), $core, PortalScope::NONE, 'bPortalShowCalendar'),
+            new PortalCapability(self::CALENDAR_VIEW, gettext('See the church calendar'), gettext('See the calendars the church shares with members, and subscribe to them.'), $core, PortalScope::NONE, null, $calendarShared),
             new PortalCapability(self::VOLUNTEER_USE, gettext('Volunteer'), gettext('See their volunteer schedule, sign up for open places and ask for a substitute.'), $core, PortalScope::NONE, 'bPortalShowVolunteer', $volunteerV2),
             new PortalCapability(self::TEAM_MANAGE, gettext('Manage a team'), gettext('Run a volunteer team: positions, volunteers, schedules, staffing and headcounts.'), $core, PortalScope::TEAM, 'bPortalShowVolunteer', $volunteerV2),
             new PortalCapability(self::TEAM_SUBSTITUTES, gettext('Decide substitute requests'), gettext('Approve or decline substitute requests for a volunteer team.'), $core, PortalScope::TEAM, 'bPortalShowVolunteer', $volunteerV2),

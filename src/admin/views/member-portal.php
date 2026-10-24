@@ -122,8 +122,7 @@ $themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration
                     . ($on ? ' checked' : '') . ($disabled ? ' disabled' : '') . '>'
                     . '<span class="form-check-label fw-medium">' . InputUtils::escapeHTML($label) . '</span>'
                     . '</label>'
-                    . '<div class="form-text mb-2">' . InputUtils::escapeHTML($tooltips[$key]) . '</div>'
-                    . '<div class="invalid-feedback d-block" data-error-for="' . $key . '"></div>';
+                    . '<div class="form-text mb-2">' . InputUtils::escapeHTML($tooltips[$key]) . '</div>';
             };
             $numberField = static function (string $key, string $label, string $value, int $min, int $max, array $tooltips): string {
                 return '<div class="mb-3">'
@@ -131,7 +130,6 @@ $themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration
                     . '<input type="number" class="form-control w-auto" id="' . $key . '" name="' . $key . '"'
                     . ' min="' . $min . '" max="' . $max . '" step="1" required value="' . InputUtils::escapeAttribute($value) . '">'
                     . '<div class="form-text">' . InputUtils::escapeHTML($tooltips[$key]) . '</div>'
-                    . '<div class="invalid-feedback d-block" data-error-for="' . $key . '"></div>'
                     . '</div>';
             };
             ?>
@@ -185,7 +183,6 @@ $themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration
                                             </label>
                                         <?php endforeach; ?>
                                     </div>
-                                    <div class="invalid-feedback d-block" data-error-for="sMemberSignInFamilyRoles"></div>
                                 </fieldset>
                                 <fieldset class="mb-3">
                                     <legend class="form-label"><?= gettext('Classifications') ?></legend>
@@ -204,7 +201,6 @@ $themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration
                                             </label>
                                         <?php endforeach; ?>
                                     </div>
-                                    <div class="invalid-feedback d-block" data-error-for="sMemberSignInClassifications"></div>
                                 </fieldset>
                                 <?= $numberField('iMemberSignInMinAge', gettext('Minimum age'), $signInValues['iMemberSignInMinAge'], 0, 120, $signIn['tooltips']) ?>
                             </div>
@@ -251,7 +247,6 @@ $themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration
                                     <?php endforeach; ?>
                                 </select>
                                 <div class="form-text"><?= gettext('Only people with their own email can be added.') ?></div>
-                                <div class="invalid-feedback d-block" data-error-for="sMemberSignInNotificationRecipientIDs"></div>
                             </div>
                         </div>
 
@@ -269,12 +264,7 @@ $themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration
                     </div>
                 </div>
 
-                <div class="d-flex align-items-center flex-wrap gap-2 mt-3">
-                    <button type="submit" class="btn btn-primary" id="memberSignInSaveButton">
-                        <i class="fa-solid fa-floppy-disk me-2"></i><?= gettext('Save sign-in settings') ?>
-                    </button>
-                    <span class="text-secondary" id="memberSignInStatus" role="status"></span>
-                </div>
+                <p class="text-secondary mt-3 mb-0"><?= gettext('Changes save as you make them.') ?></p>
             </form>
         </div>
 
@@ -502,8 +492,15 @@ $themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration
 
         <!-- ============================ Calendars =========================== -->
         <div class="tab-pane fade" id="portal-calendars" role="tabpanel">
-            <div id="portalCalendarSectionPanel" class="mb-3"></div>
-
+            <?php $calendarShared = array_filter($portalCalendars, static fn (array $portalCalendar): bool => $portalCalendar['visible']) !== []; ?>
+            <p class="fw-medium mb-2" id="portalCalendarsRule">
+                <span class="portal-calendars-rule-shown<?= $calendarShared ? '' : ' d-none' ?>">
+                    <i class="fa-solid fa-calendar-check text-success me-2"></i><?= gettext('Members see the Calendar page while at least one calendar is switched on.') ?>
+                </span>
+                <span class="portal-calendars-rule-hidden<?= $calendarShared ? ' d-none' : '' ?>">
+                    <i class="fa-solid fa-eye-slash text-secondary me-2"></i><?= gettext('No calendar is switched on, so members do not see the Calendar page.') ?>
+                </span>
+            </p>
             <p class="text-secondary" id="portalCalendarsLead">
                 <?= gettext('Members see only the calendars switched on here. Birthdays and anniversaries show first names and last initials only.') ?>
             </p>
@@ -557,12 +554,7 @@ $themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration
                         </tbody>
                     </table>
                 </div>
-                <div class="card-footer d-flex align-items-center gap-2">
-                    <button type="button" class="btn btn-primary" id="portalCalendarsSaveButton">
-                        <i class="fa-solid fa-floppy-disk me-2"></i><?= gettext('Save calendars') ?>
-                    </button>
-                    <span class="text-secondary" id="portalCalendarsStatus" role="status"></span>
-                </div>
+                <div class="card-footer text-secondary"><?= gettext('Changes save as you make them.') ?></div>
             </div>
         </div>
 
@@ -577,6 +569,7 @@ $themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration
         'activeTheme' => $activeTheme,
         'defaultThemeId' => ThemeManager::DEFAULT_THEME,
         'csrfToken' => $csrfToken,
+        'signInValues' => $signIn['values'],
     ]) ?>;
 </script>
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/admin-member-portal.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>

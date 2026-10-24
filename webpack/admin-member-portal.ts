@@ -3,19 +3,20 @@
  *
  * The tabs are rendered server-side; this bundle adds what needs the browser:
  *
- *   1. three Settings Panels for the portal ConfigItems, each in the tab it
+ *   1. Settings Panels for the portal ConfigItems, each in the tab it
  *      belongs to, saving through POST /admin/api/system/config/{name}:
- *      the calendar switch (Calendars), Developer mode (Themes), and the
- *      birthday and volunteering switches (Permissions);
+ *      Developer mode (Themes) and the birthday and volunteering switches
+ *      (Permissions);
  *   2. the Themes tab's row actions: Check re-runs the validator and Activate
  *      goes through POST /admin/api/member-portal/theme so the validator can
  *      refuse. Either one shows what it found in the row under that theme;
  *   3. a refresh of the statistics numbers when that tab is opened;
- *   4. the Calendars tab's save, which posts the switched-on calendars to
- *      POST /admin/api/member-portal/calendars;
- *   5. the Sign-in tab's save, which posts every sign-in setting to
- *      POST /admin/api/member-portal/sign-in. The server checks them all and
- *      saves none when one is wrong, naming each problem.
+ *   4. the Calendars tab's switches, each saved as it changes through
+ *      POST /admin/api/member-portal/calendars. Members see the Calendar
+ *      page while at least one calendar is switched on;
+ *   5. the Sign-in tab's controls, each saved as it changes by posting that one
+ *      setting to POST /admin/api/member-portal/sign-in. A refused value is put
+ *      back to the saved one, so the page only ever shows what the server kept.
  *
  * The Members, Permissions and Audit tabs (member sign-in design §11.2, §8.6)
  * live in webpack/admin-member-portal/ and read their rows a page at a time.
@@ -26,7 +27,7 @@
  * locale loader has run.
  */
 import { wireAuditTab } from "./admin-member-portal/audit-tab";
-import { wireMembersTab } from "./admin-member-portal/members-tab";
+import { refreshMemberLists, wireMembersTab } from "./admin-member-portal/members-tab";
 import { loadPermissionsCatalog, wirePermissionsTab } from "./admin-member-portal/permissions-tab";
 
 interface ThemeFinding {
@@ -54,7 +55,6 @@ interface PortalStats {
 }
 
 const CALENDARS_TABLE_ID = "portalCalendarsTable";
-const CALENDARS_STATUS_ID = "portalCalendarsStatus";
 
 const SIGN_IN_FORM_ID = "memberSignInForm";
 const SIGN_IN_SWITCHES = ["bMemberSignIn", "bPortalPasskeys", "bAllowLoginAsUser", "bLoginAsUserCanWrite"];
@@ -71,9 +71,15 @@ const SIGN_IN_OFFICE_LIST = "sMemberSignInNotificationRecipientIDs";
 interface SignInSaveResponse {
   success?: boolean;
   message?: string;
-  errors?: Record<string, string>;
+  values?: Record<string, string>;
   maySignInCount?: number;
   sharedAddresses?: number;
+}
+
+interface CalendarChoice {
+  type: string;
+  id: number;
+  visible: boolean;
 }
 
 const root = (): string => window.CRM?.root ?? "";
@@ -88,12 +94,12 @@ const csrfToken = (): string => {
  * `import i18next` would be a second, never-initialised instance whose `t()`
  * returns an empty string, so every label on the page would render blank.
  */
-function t(key: string): string {
+function t(key: string, options?: Record<string, unknown>): string {
   if (typeof i18next === "undefined" || typeof i18next.t !== "function") {
     return key;
   }
-  const translated = i18next.t(key);
-  return translated === undefined || translated === "" ? key : translated;
+  const translated = i18next.t(key, options);
+  return translated === undefined || translated === "" ? key : String(translated);
 }
 
 function escapeHtml(value: string): string {
@@ -111,13 +117,6 @@ function statusPresentation(status: string): { cssClass: string; icon: string; l
     return { cssClass: "bg-warning text-dark", icon: "fa-triangle-exclamation", label: t("Warnings") };
   }
   return { cssClass: "bg-success text-white", icon: "fa-circle-check", label: t("Valid") };
-}
-
-function setBusy(button: HTMLButtonElement | null, busy: boolean): void {
-  if (!button) {
-    return;
-  }
-  button.disabled = busy;
 }
 
 function themeRow(name: string): HTMLTableRowElement | null {
@@ -230,11 +229,16 @@ async function activateTheme(name: string): Promise<void> {
 
 /** Re-read the statistics so an admin who leaves the page open sees fresh numbers. */
 async function refreshStatistics(): Promise<void> {
-  const response = await fetch(`${root()}/admin/api/member-portal/stats`);
-  if (!response.ok) {
+  let stats: PortalStats;
+  try {
+    const response = await fetch(`${root()}/admin/api/member-portal/stats`);
+    if (!response.ok) {
+      return;
+    }
+    stats = await response.json();
+  } catch {
     return;
   }
-  const stats: PortalStats = await response.json();
   for (const [key, value] of Object.entries(stats)) {
     const cell = document.getElementById(`portalStat-${key}`);
     if (cell && typeof value === "number") {
@@ -269,19 +273,6 @@ function wireSettingsPanels(): void {
       new SettingsPanel().init({ container, showAllSettingsLink: false, autoSave: true, ...options });
     }
   };
-
-  panel("#portalCalendarSectionPanel", {
-    title: t("Calendar section"),
-    icon: "fa-solid fa-calendar-days",
-    settings: [
-      {
-        name: "bPortalShowCalendar",
-        type: "boolean",
-        label: t("Show the church calendar"),
-        tooltip: t("Show the church calendar section in the Member Portal."),
-      },
-    ],
-  });
 
   panel("#portalDeveloperModePanel", {
     title: t("Theme development"),
@@ -320,157 +311,258 @@ function wireSettingsPanels(): void {
   });
 }
 
+function notifySaved(): void {
+  window.CRM?.notify?.(t("Settings saved successfully"), { type: "success", delay: 2000 });
+}
+
+function notifyRefused(message: string | undefined, fallback: string): void {
+  window.CRM?.notify?.(message || fallback, { type: "error", delay: 5000 });
+}
+
+/** POST a JSON body; a network failure reads as a refusal with no message. */
+async function postJSON<T>(
+  path: string,
+  body: unknown,
+  headers: Record<string, string> = {},
+): Promise<{ ok: boolean; body: T | null }> {
+  try {
+    const response = await fetch(`${root()}${path}`, {
+      method: "POST",
+      headers: { "content-type": "application/json", ...headers },
+      body: JSON.stringify(body),
+    });
+    return { ok: response.ok, body: (await response.json().catch(() => null)) as T | null };
+  } catch {
+    return { ok: false, body: null };
+  }
+}
+
+const calendarKey = (type: string, id: number): string => `${type}:${id}`;
+
+/** The line above the list: whether members see the Calendar page at all. */
+function paintCalendarRule(shared: boolean): void {
+  const rule = document.getElementById("portalCalendarsRule");
+  if (!rule) {
+    return;
+  }
+  rule.querySelector(".portal-calendars-rule-shown")?.classList.toggle("d-none", !shared);
+  rule.querySelector(".portal-calendars-rule-hidden")?.classList.toggle("d-none", shared);
+}
+
+function calendarRows(): HTMLTableRowElement[] {
+  return Array.from(document.querySelectorAll<HTMLTableRowElement>(`#${CALENDARS_TABLE_ID} tr[data-calendar-type]`));
+}
+
+function rowCalendar(row: HTMLTableRowElement): { type: string; id: number } {
+  return { type: row.dataset.calendarType ?? "", id: Number.parseInt(row.dataset.calendarId ?? "0", 10) };
+}
+
 /**
- * Save the Calendars tab: the set of switched-on calendars, as the whole list
- * rather than a diff, so what the server stores is exactly what the page shows.
+ * The Calendars tab saves one switch at a time. Each request sends the set the
+ * server last confirmed with only that switch changed, so a refused switch
+ * never carries another row's change with it.
  */
-async function saveCalendars(button: HTMLButtonElement | null): Promise<void> {
+function wireCalendarControls(): void {
   const table = document.getElementById(CALENDARS_TABLE_ID);
-  const status = document.getElementById(CALENDARS_STATUS_ID);
   if (!table) {
     return;
   }
 
-  const visible: Array<{ type: string; id: number }> = [];
-  for (const row of table.querySelectorAll<HTMLTableRowElement>("tr[data-calendar-type]")) {
-    const input = row.querySelector<HTMLInputElement>(".portal-calendar-switch");
-    if (!input?.checked) {
-      continue;
+  const saved = new Set<string>();
+  for (const row of calendarRows()) {
+    if (row.querySelector<HTMLInputElement>(".portal-calendar-switch")?.checked) {
+      const calendar = rowCalendar(row);
+      saved.add(calendarKey(calendar.type, calendar.id));
     }
-    visible.push({
-      type: row.dataset.calendarType ?? "",
-      id: Number.parseInt(row.dataset.calendarId ?? "0", 10),
-    });
   }
 
-  setBusy(button, true);
-  if (status) {
-    status.textContent = "";
-  }
+  let queue: Promise<void> = Promise.resolve();
 
-  const response = await fetch(`${root()}/admin/api/member-portal/calendars`, {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify({ visible }),
+  const save = async (input: HTMLInputElement, row: HTMLTableRowElement): Promise<void> => {
+    const wanted = input.checked;
+    const calendar = rowCalendar(row);
+    const key = calendarKey(calendar.type, calendar.id);
+    const visible = new Set(saved);
+    if (wanted) {
+      visible.add(key);
+    } else {
+      visible.delete(key);
+    }
+
+    const { ok, body } = await postJSON<{ message?: string; calendars?: CalendarChoice[] }>(
+      "/admin/api/member-portal/calendars",
+      {
+        visible: Array.from(visible, (entry) => {
+          const [type, id] = entry.split(":");
+          return { type, id: Number.parseInt(id, 10) };
+        }),
+      },
+    );
+
+    if (!ok || !body?.calendars) {
+      if (input.checked === wanted) {
+        input.checked = saved.has(key);
+      }
+      notifyRefused(body?.message, t("The calendars could not be saved."));
+      return;
+    }
+
+    saved.clear();
+    for (const choice of body.calendars) {
+      if (choice.visible) {
+        saved.add(calendarKey(choice.type, choice.id));
+      }
+    }
+    paintCalendarRule(saved.size > 0);
+    notifySaved();
+    void loadPermissionsCatalog();
+  };
+
+  table.addEventListener("change", (event) => {
+    const input = (event.target as HTMLElement).closest<HTMLInputElement>(".portal-calendar-switch");
+    const row = input?.closest<HTMLTableRowElement>("tr[data-calendar-type]");
+    if (input && row) {
+      queue = queue.then(() => save(input, row)).catch(() => undefined);
+    }
   });
-  setBusy(button, false);
-
-  if (!response.ok) {
-    window.CRM?.notify?.(t("The calendars could not be saved."), { type: "danger" });
-    return;
-  }
-
-  if (status) {
-    status.textContent =
-      visible.length === 0
-        ? t("No calendar is shared with members.")
-        : t("Saved. Members see the calendars switched on above.");
-  }
-  window.CRM?.notify?.(t("The Member Portal calendars were saved."), { type: "success" });
 }
 
-function wireCalendarControls(): void {
-  const button = document.getElementById("portalCalendarsSaveButton") as HTMLButtonElement | null;
-  button?.addEventListener("click", () => {
-    void saveCalendars(button);
-  });
+type SignInValue = boolean | string | number[];
+
+/** One Sign-in control: its value as the API takes it, and how to show a stored value again. */
+interface SignInControl {
+  read(): SignInValue;
+  write(stored: string): void;
 }
 
-function collectSignInSettings(form: HTMLFormElement): Record<string, unknown> {
-  const settings: Record<string, unknown> = {};
+const storedIds = (stored: string): string[] =>
+  stored
+    .split(",")
+    .map((id) => id.trim())
+    .filter((id) => id !== "");
+
+function signInControls(form: HTMLFormElement): Map<string, SignInControl> {
+  const controls = new Map<string, SignInControl>();
+
   for (const name of SIGN_IN_SWITCHES) {
     const input = form.querySelector<HTMLInputElement>(`input[name="${name}"]`);
     if (input) {
-      settings[name] = input.checked;
+      controls.set(name, {
+        read: () => input.checked,
+        write: (stored) => {
+          input.checked = stored === "1";
+        },
+      });
     }
   }
   for (const name of SIGN_IN_NUMBERS) {
     const input = form.querySelector<HTMLInputElement>(`input[name="${name}"]`);
     if (input) {
-      settings[name] = input.value.trim();
+      controls.set(name, {
+        read: () => input.value.trim(),
+        write: (stored) => {
+          input.value = stored;
+        },
+      });
     }
   }
   for (const name of SIGN_IN_CHECKBOX_LISTS) {
-    settings[name] = Array.from(form.querySelectorAll<HTMLInputElement>(`input[name="${name}"]:checked`), (input) =>
-      Number.parseInt(input.value, 10),
-    );
+    const boxes = Array.from(form.querySelectorAll<HTMLInputElement>(`input[name="${name}"]`));
+    controls.set(name, {
+      read: () => boxes.filter((box) => box.checked).map((box) => Number.parseInt(box.value, 10)),
+      write: (stored) => {
+        const ids = storedIds(stored);
+        for (const box of boxes) {
+          box.checked = ids.includes(box.value);
+        }
+      },
+    });
   }
   const office = form.querySelector<HTMLSelectElement>(`select[name="${SIGN_IN_OFFICE_LIST}"]`);
   if (office) {
-    const picked = office.tomselect ? office.tomselect.getValue() : Array.from(office.selectedOptions, (o) => o.value);
-    settings[SIGN_IN_OFFICE_LIST] = (Array.isArray(picked) ? picked : picked.split(","))
-      .filter((value) => value !== "")
-      .map((value) => Number.parseInt(value, 10));
+    controls.set(SIGN_IN_OFFICE_LIST, {
+      read: () => {
+        const picked = office.tomselect
+          ? office.tomselect.getValue()
+          : Array.from(office.selectedOptions, (o) => o.value);
+        return (Array.isArray(picked) ? picked : picked.split(","))
+          .filter((value) => value !== "")
+          .map((value) => Number.parseInt(value, 10));
+      },
+      write: (stored) => {
+        const ids = storedIds(stored);
+        if (office.tomselect) {
+          office.tomselect.setValue(ids, true);
+        } else {
+          for (const option of office.options) {
+            option.selected = ids.includes(option.value);
+          }
+        }
+      },
+    });
   }
-  return settings;
+  return controls;
 }
 
-function paintSignInErrors(form: HTMLFormElement, errors: Record<string, string>): void {
-  for (const slot of form.querySelectorAll<HTMLElement>("[data-error-for]")) {
-    slot.textContent = errors[slot.dataset.errorFor ?? ""] ?? "";
-  }
-  for (const input of form.querySelectorAll<HTMLElement>(".is-invalid")) {
-    input.classList.remove("is-invalid");
-  }
-  for (const name of Object.keys(errors)) {
-    for (const input of form.querySelectorAll<HTMLElement>(`[name="${name}"]`)) {
-      input.classList.add("is-invalid");
-    }
-  }
-}
+const sameValue = (a: SignInValue, b: SignInValue): boolean => JSON.stringify(a) === JSON.stringify(b);
 
-async function saveSignInSettings(form: HTMLFormElement, button: HTMLButtonElement | null): Promise<void> {
-  const status = document.getElementById("memberSignInStatus");
-  setBusy(button, true);
-  if (status) {
-    status.textContent = "";
-  }
-
-  const response = await fetch(`${root()}/admin/api/member-portal/sign-in`, {
-    method: "POST",
-    headers: { "content-type": "application/json", "X-CSRF-Token": csrfToken() },
-    body: JSON.stringify(collectSignInSettings(form)),
-  });
-  setBusy(button, false);
-
-  let body: SignInSaveResponse | null = null;
-  try {
-    body = await response.json();
-  } catch {
-    body = null;
-  }
-
-  if (response.status === 400 && body?.errors) {
-    paintSignInErrors(form, body.errors);
-    window.CRM?.notify?.(t("Some sign-in settings need fixing. Nothing was saved."), { type: "danger" });
-    return;
-  }
-  if (!response.ok) {
-    window.CRM?.notify?.(t("The sign-in settings could not be saved."), { type: "danger" });
-    return;
-  }
-
-  paintSignInErrors(form, {});
+function paintSignInCounts(body: SignInSaveResponse): void {
   const count = document.getElementById("memberSignInMayCount");
-  if (count && typeof body?.maySignInCount === "number") {
+  if (count && typeof body.maySignInCount === "number") {
     count.textContent = String(body.maySignInCount);
   }
-  if (typeof body?.sharedAddresses === "number") {
+  if (typeof body.sharedAddresses === "number") {
     for (const shared of document.querySelectorAll<HTMLElement>("[data-shared-address-count]")) {
       shared.textContent = String(body.sharedAddresses);
     }
     document.getElementById("memberSignInSharedEmails")?.classList.toggle("d-none", body.sharedAddresses === 0);
   }
-  const memberSignIn = form.querySelector<HTMLInputElement>('input[name="bMemberSignIn"]');
-  if (memberSignIn && !memberSignIn.checked && document.getElementById("memberSignInEmailProblem")) {
-    memberSignIn.disabled = true;
-  }
-  if (status) {
-    status.textContent = t("Saved.");
-  }
-  window.CRM?.notify?.(t("The sign-in settings were saved."), { type: "success" });
 }
 
+/** The counts, lists and permissions on the other tabs that follow the sign-in rule. */
+function refreshAfterSignInSave(): void {
+  void refreshStatistics();
+  refreshMemberLists();
+  void loadPermissionsCatalog();
+}
+
+function confirmMemberSignIn(turningOn: boolean): Promise<boolean> {
+  const maySignIn = document.getElementById("portalStat-maySignIn")?.textContent?.trim() ?? "";
+  const message = turningOn
+    ? `<p>${escapeHtml(t("Everyone the sign-in rules let in can then sign in to the Member Portal with their own email."))}</p>
+       <p class="mb-0 fw-medium">${escapeHtml(t("People who may sign in: {{total}}", { total: maySignIn }))}</p>`
+    : `<p class="mb-0">${escapeHtml(
+        t(
+          "Members who are signed in now are signed out, and nobody can sign in with their email until member sign-in is turned on again.",
+        ),
+      )}</p>`;
+
+  return new Promise((resolve) => {
+    if (!window.bootbox) {
+      resolve(false);
+      return;
+    }
+    window.bootbox.confirm({
+      title: turningOn ? t("Turn on member sign-in?") : t("Turn off member sign-in?"),
+      message,
+      buttons: {
+        cancel: { label: t("Cancel") },
+        confirm: turningOn
+          ? { label: t("Turn on"), className: "btn-primary" }
+          : { label: t("Turn off"), className: "btn-danger" },
+      },
+      callback: (result: boolean) => {
+        resolve(result === true);
+      },
+    });
+  });
+}
+
+/**
+ * The Sign-in tab saves each control on its own change, one request at a
+ * time, by sending only that setting. Member sign-in itself asks first: on, it
+ * lets every eligible member in; off, it signs out everyone signed in.
+ */
 function wireSignInTab(): void {
   const form = document.getElementById(SIGN_IN_FORM_ID) as HTMLFormElement | null;
   if (!form) {
@@ -485,11 +577,67 @@ function wireSignInTab(): void {
     });
   }
 
-  const button = document.getElementById("memberSignInSaveButton") as HTMLButtonElement | null;
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    void saveSignInSettings(form, button);
+  const controls = signInControls(form);
+  const config = window.CRM?.memberPortalAdmin as { signInValues?: Record<string, string> } | undefined;
+  const saved: Record<string, string> = { ...(config?.signInValues ?? {}) };
+  let queue: Promise<void> = Promise.resolve();
+
+  const save = async (name: string, control: SignInControl): Promise<void> => {
+    const sent = control.read();
+    const { ok, body } = await postJSON<SignInSaveResponse>(
+      "/admin/api/member-portal/sign-in",
+      { [name]: sent },
+      { "X-CSRF-Token": csrfToken() },
+    );
+
+    if (!ok || !body?.values) {
+      if (sameValue(control.read(), sent) && saved[name] !== undefined) {
+        control.write(saved[name]);
+      }
+      notifyRefused(body?.message, t("The sign-in settings could not be saved."));
+      return;
+    }
+
+    Object.assign(saved, body.values);
+    if (sameValue(control.read(), sent)) {
+      control.write(saved[name]);
+    }
+    paintSignInCounts(body);
+    const memberSignIn = form.querySelector<HTMLInputElement>('input[name="bMemberSignIn"]');
+    if (memberSignIn && !memberSignIn.checked && document.getElementById("memberSignInEmailProblem")) {
+      memberSignIn.disabled = true;
+    }
+    notifySaved();
+    refreshAfterSignInSave();
+  };
+
+  const enqueue = (work: () => Promise<void>): void => {
+    queue = queue.then(work).catch(() => undefined);
+  };
+
+  form.addEventListener("change", (event) => {
+    const name = (event.target as HTMLInputElement | HTMLSelectElement).name;
+    const control = controls.get(name);
+    if (!control) {
+      return;
+    }
+    if (name !== "bMemberSignIn") {
+      enqueue(() => save(name, control));
+      return;
+    }
+    const turningOn = control.read() === true;
+    enqueue(async () => {
+      if (turningOn) {
+        await refreshStatistics();
+      }
+      if (await confirmMemberSignIn(turningOn)) {
+        await save(name, control);
+      } else {
+        control.write(saved[name] ?? (turningOn ? "0" : "1"));
+      }
+    });
   });
+  form.addEventListener("submit", (event) => event.preventDefault());
 }
 
 /** Open the tab a link points at, such as /admin/member-portal#portal-signin. */

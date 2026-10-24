@@ -62,7 +62,7 @@ class DemoDataService
 {
     private const DATA_PATH = __DIR__ . '/../../admin/demo';
 
-    private const DEMO_TOGGLES = ['bEnabledSundaySchool', 'bEnabledFinance', 'bEnabledEvents', 'bPortalShowCalendar', 'bPortalShowVolunteer'];
+    private const DEMO_TOGGLES = ['bEnabledSundaySchool', 'bEnabledFinance', 'bEnabledEvents', 'bPortalShowVolunteer'];
 
     private const DEMO_NOTIFICATION_REASON = 'demo data import';
 

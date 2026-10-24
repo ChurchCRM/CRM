@@ -255,6 +255,13 @@ function refresh(): void {
   void loadSummary();
 }
 
+/** Redraw the lists after a sign-in rule change, once the tab has drawn them. */
+export function refreshMemberLists(): void {
+  if (table) {
+    refresh();
+  }
+}
+
 function setProblem(problem: string): void {
   currentProblem = problem;
   for (const other of document.querySelectorAll<HTMLButtonElement>("#memberListProblems [data-problem]")) {

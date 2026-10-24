@@ -191,6 +191,15 @@ declare namespace Cypress {
      */
     restoreSystemConfig(name: string, value: string | undefined): Chainable<void>;
 
+    /** The calendars shared with members on Admin → Member Portal → Calendars, as {type, id}. */
+    getMemberPortalCalendars(): Chainable<Array<{ type: string; id: number }>>;
+
+    /**
+     * Share these calendars with members (replacing the set). The portal has a Calendar page,
+     * nav entry and home card while at least one is shared. Replaces the browser session cookie.
+     */
+    shareMemberPortalCalendars(visible: Array<{ type: string; id: number }>): Chainable<any>;
+
     /** Run the browser in the church's time zone (sTimeZone), the zone the server counts days in. */
     useChurchTimeZone(): Chainable<void>;
 

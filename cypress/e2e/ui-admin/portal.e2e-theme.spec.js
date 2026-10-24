@@ -110,6 +110,8 @@ before(() => {
 });
 
 describe("Member Portal e2e — #9869 scenario 4, a church themes the portal", () => {
+    let savedCalendars;
+
     before(() => {
         // What a church uploads: one stylesheet, and a theme.json so the admin page
         // has a name to show instead of a folder.
@@ -135,13 +137,17 @@ describe("Member Portal e2e — #9869 scenario 4, a church themes the portal", (
             '{% extends "@default/layout.html.twig" %}\n{% block content %}\n',
         );
 
-        // The calendar has to be switched on, or one of the pages below is a 404.
-        setConfig("bPortalShowCalendar", "1");
+        // A calendar has to be shared, or one of the pages below is a 404.
+        cy.getMemberPortalCalendars().then((calendars) => {
+            savedCalendars = calendars;
+        });
+        cy.shareMemberPortalCalendars([{ type: "calendar", id: 1 }]);
     });
 
     after(() => {
         setConfig("sMemberPortalTheme", "default");
         setConfig("bPortalDeveloperMode", "0");
+        cy.then(() => cy.shareMemberPortalCalendars(savedCalendars));
         cy.exec(`rm -rf ${GOOD_DIR} ${BROKEN_DIR}`, { failOnNonZeroExit: false });
     });
 

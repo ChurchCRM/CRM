@@ -8,7 +8,7 @@
 <div class="tab-pane fade" id="portal-permissions" role="tabpanel">
     <p class="text-secondary" id="portalPermissionsLead">
         <?= gettext('What members can see and do in the portal, and where each permission comes from. People are counted among everyone the sign-in rules let in, and staff.') ?>
-        <?= gettext('An administrator can give any permission to one person on that person\'s page. "Given by an administrator" then shows here, with the number of people who were given it.') ?>
+        <?= gettext('An administrator can give any permission to one person on that person\'s page. "Admin overrides" then shows here, with the number of people who were given it.') ?>
     </p>
     <div id="portalMemberFeaturesPanel" class="mb-3"></div>
     <div class="card">
@@ -17,8 +17,8 @@
                 <thead>
                     <tr>
                         <th><?= gettext('Permission') ?></th>
-                        <th class="d-none d-md-table-cell"><?= gettext('On') ?></th>
-                        <th class="d-none d-lg-table-cell"><?= gettext('From') ?></th>
+                        <th class="d-none d-md-table-cell"><?= gettext('Applies to') ?></th>
+                        <th class="d-none d-lg-table-cell"><?= gettext('Given to') ?></th>
                         <th><?= gettext('Status') ?></th>
                         <th class="text-end"><?= gettext('People') ?></th>
                     </tr>

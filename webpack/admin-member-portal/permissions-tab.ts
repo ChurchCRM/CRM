@@ -157,7 +157,7 @@ function openHolders(key: string): void {
         [
           { title: t("Name"), render: (row) => personLink(row.personId, row.name), priority: 1 },
           { title: t("Family"), render: (row) => familyLink(row.familyId, row.familyName), priority: 4 },
-          { title: t("From"), render: (row) => (row.grants.length ? grantList(row) : muted("—")), priority: 3 },
+          { title: t("Why"), render: (row) => (row.grants.length ? grantList(row) : muted("—")), priority: 3 },
           {
             title: "",
             render: (row) =>

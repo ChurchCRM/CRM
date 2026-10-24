@@ -55,6 +55,18 @@ Cypress.Commands.add("restoreSystemConfig", (name, value) => {
     cy.getSystemConfig(name).should("eq", value);
 });
 
+// The calendars Admin -> Member Portal -> Calendars shares with members, as {type, id}.
+// The portal has a Calendar page while at least one is shared.
+Cypress.Commands.add("getMemberPortalCalendars", () =>
+    cy
+        .makePrivateAdminAPICall("GET", "/admin/api/member-portal/calendars", null, 200)
+        .then((response) => response.body.calendars.filter((calendar) => calendar.visible).map(({ type, id }) => ({ type, id }))),
+);
+
+Cypress.Commands.add("shareMemberPortalCalendars", (visible) =>
+    cy.makePrivateAdminAPICall("POST", "/admin/api/member-portal/calendars", { visible }, 200),
+);
+
 Cypress.Commands.add("makePrivateUserAPICall", privateApiCall("user.api.key"));
 
 // grace.financeonly (id=904): Finance=1, non-admin.

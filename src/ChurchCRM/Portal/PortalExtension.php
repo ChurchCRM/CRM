@@ -184,7 +184,8 @@ class PortalExtension extends AbstractExtension implements GlobalsInterface
                 // PortalTwig prints the template name in an HTML comment.
                 'developerMode' => PortalTwig::isDeveloperMode(),
                 // Whether the calendar and volunteering sections are there for
-                // this member: their switches (#9864) through the capabilities.
+                // this member, through their capabilities: the calendar while a
+                // calendar is shared with members, volunteering by its switch.
                 // A theme drawing its own home page reads these.
                 'showCalendar' => $this->portalCan(CorePortalCapabilities::CALENDAR_VIEW),
                 'showVolunteer' => $this->portalCan(CorePortalCapabilities::VOLUNTEER_USE),

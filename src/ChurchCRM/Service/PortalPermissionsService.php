@@ -73,7 +73,7 @@ final class PortalPermissionsService
             // Any capability can be given, so "given" is listed only where someone actually holds it that way.
             $givenCount = self::givenCount($holders[$key] ?? []);
             if ($givenCount > 0) {
-                $sources[] = ['source' => EffectiveGrant::SOURCE_GIVEN, 'ruleKey' => null, 'label' => gettext('Given by an administrator')];
+                $sources[] = ['source' => EffectiveGrant::SOURCE_GIVEN, 'ruleKey' => null, 'label' => gettext('Admin overrides')];
             }
 
             $rows[] = $capability + [

@@ -10,11 +10,12 @@ import { contrastRatio, effectiveBackground } from "../../support/colour";
  *   - reached through People Settings; Statistics is the first tab
  *   - the four portal ConfigItems carry no System Settings category, so they
  *     must not appear on /SystemSettings.php; each one lives in the tab it
- *     affects (Calendars, Themes, Permissions) and saves from there
+ *     affects (Themes, Permissions) and saves from there
  *   - activating a valid theme changes what a member sees; activating a broken
  *     one is refused and the findings are listed under its row
  *   - Developer mode prints the template name in an HTML comment
- *   - a section switch turned off removes that section from the portal
+ *   - a section switch turned off removes that section from the portal, and
+ *     sharing no calendar removes the calendar card
  *
  * The spec writes throwaway theme folders on disk (the webserver container
  * bind-mounts ../src) and removes them again in after().
@@ -34,12 +35,13 @@ const adminKey = () => Cypress.testEnv("admin.api.key");
 
 /** Each portal ConfigItem: its tab, its panel there, and its label. */
 const PORTAL_SWITCHES = [
-    ["bPortalShowCalendar", "portal-calendars", "#portalCalendarSectionPanel", "Show the church calendar"],
     ["bPortalDeveloperMode", "portal-themes", "#portalDeveloperModePanel", "Developer mode"],
     ["bPortalAllowBirthdayEdit", "portal-permissions", "#portalMemberFeaturesPanel", "Let members edit birthdays"],
     ["bPortalShowVolunteer", "portal-permissions", "#portalMemberFeaturesPanel", "Show volunteering"],
 ];
 const savedSwitches = {};
+const CHURCH_CALENDAR = { type: "calendar", id: 1 };
+let savedCalendars;
 
 /** Stashed in `before` and restored in `after` — see the comment there. */
 let originalVolunteerVersion = "v1";
@@ -140,6 +142,9 @@ describe("Admin → Member Portal page", () => {
                 savedSwitches[name] = value;
             });
         }
+        cy.getMemberPortalCalendars().then((calendars) => {
+            savedCalendars = calendars;
+        });
     });
 
     before(() => {
@@ -160,9 +165,9 @@ describe("Admin → Member Portal page", () => {
     after(() => {
         activateTheme("default");
         setConfig("bPortalDeveloperMode", "0");
-        setConfig("bPortalShowCalendar", "1");
         setConfig("bPortalShowVolunteer", "1");
         setConfig("sVolunteerVersion", originalVolunteerVersion);
+        cy.then(() => cy.shareMemberPortalCalendars(savedCalendars));
         for (const [name] of PORTAL_SWITCHES) {
             cy.restoreSystemConfig(name, savedSwitches[name]);
         }
@@ -253,7 +258,6 @@ describe("Admin → Member Portal page", () => {
             for (const name of [
                 "sMemberPortalTheme",
                 "bPortalDeveloperMode",
-                "bPortalShowCalendar",
                 "bPortalShowVolunteer",
                 "bPortalAllowBirthdayEdit",
             ]) {
@@ -338,28 +342,24 @@ describe("Admin → Member Portal page", () => {
             cy.request("/portal/").its("body").should("not.contain", "<!-- portal template:");
         });
 
-        it("Turning the calendar section off hides its card in the portal", () => {
+        it("Sharing no calendar hides the calendar card in the portal", () => {
             activateTheme("default");
-            // MP6 (#9867) turned the volunteering placeholder into a real card,
-            // so the "the other section is untouched" half of this assertion
-            // now looks for that card — which needs the V2 rollout flag on as
-            // well as its own section switch.
+            // The volunteering card needs the V2 rollout flag on as well as its own switch.
             setConfig("sVolunteerVersion", "v2");
             setConfig("bPortalShowVolunteer", "1");
-            setConfig("bPortalShowCalendar", "1");
+            cy.shareMemberPortalCalendars([CHURCH_CALENDAR]);
             loginAsMember();
             cy.get(".portal-card-calendar").should("exist");
 
-            setConfig("bPortalShowCalendar", "0");
+            cy.shareMemberPortalCalendars([]);
             loginAsMember();
             cy.get(".portal-card-calendar").should("not.exist");
             cy.get("#portal-volunteering-card").should("exist");
-
-            setConfig("bPortalShowCalendar", "1");
         });
 
         it("Turning the volunteering section off hides its card in the portal", () => {
             activateTheme("default");
+            cy.shareMemberPortalCalendars([CHURCH_CALENDAR]);
             setConfig("sVolunteerVersion", "v2");
             setConfig("bPortalShowVolunteer", "0");
             loginAsMember();
