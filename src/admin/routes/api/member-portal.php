@@ -260,6 +260,7 @@ function getMemberSignInSettingsAPI(Request $request, Response $response): Respo
  *         @OA\Property(property="sMemberSignInClassifications", type="array", @OA\Items(type="integer"), example={1, 2}),
  *         @OA\Property(property="iMemberSignInMinAge", type="integer", minimum=0, maximum=120, example=13),
  *         @OA\Property(property="iSignInLinkMinutes", type="integer", minimum=1, maximum=1440, example=120),
+ *         @OA\Property(property="iMemberSignInRequestsPerIP", type="integer", minimum=0, maximum=10000, example=20),
  *         @OA\Property(property="iPortalIdleMinutes", type="integer", minimum=1, maximum=1440, example=30),
  *         @OA\Property(property="iRememberDeviceDays", type="integer", minimum=0, maximum=365, example=30),
  *         @OA\Property(property="bPortalPasskeys", type="boolean"),

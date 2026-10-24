@@ -1,0 +1,22 @@
+{% extends "layout.html.twig" %}
+
+{#
+  Member sign-in: an emailed link that is unknown, expired, already used or
+  replaced by a newer email.
+
+  Variables: `pageTitle`, `loginUrl`, `staffSignInUrl`.
+#}
+
+{% block nav %}{% endblock %}
+
+{% block content %}
+<div class="portal-signin">
+    <section class="portal-card" id="portalSignInLinkExpired">
+        <h1 class="portal-page-title">{{ gettext('This link has expired or was already used') }}</h1>
+        <p class="portal-card-text">{{ gettext('Each sign-in email works once, for a limited time, and a newer email replaces it.') }}</p>
+        <div class="portal-form-actions">
+            <a class="portal-button" href="{{ loginUrl }}">{{ gettext('Ask for a new email') }}</a>
+        </div>
+    </section>
+</div>
+{% endblock %}

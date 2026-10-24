@@ -194,6 +194,6 @@ final class PortalSessionMiddleware implements MiddlewareInterface
             $_SESSION['location'] = $safePath;
         }
 
-        return (new Response())->withStatus(302)->withHeader('Location', AuthenticationManager::getSessionBeginURL());
+        return (new Response())->withStatus(302)->withHeader('Location', AuthenticationManager::getPortalLoginURL());
     }
 }

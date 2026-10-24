@@ -147,7 +147,7 @@ describe("Member Portal session (portal principal)", () => {
             cy.request({ url: "/api/portal/me", failOnStatusCode: false }).its("status").should("eq", 401);
             cy.request({ url: "/portal/", followRedirect: false }).then((response) => {
                 expect(response.status).to.eq(302);
-                expect(response.redirectedToUrl).to.include("/session/begin");
+                expect(response.redirectedToUrl).to.include("/portal/login");
             });
 
             auditRowsSince(staffUser.personId, startId).then((rows) => {
@@ -185,7 +185,7 @@ describe("Member Portal session (portal principal)", () => {
 
             cy.request({ url: "/portal/", followRedirect: false }).then((response) => {
                 expect(response.status).to.eq(302);
-                expect(response.redirectedToUrl).to.include("/session/begin");
+                expect(response.redirectedToUrl).to.include("/portal/login");
             });
             cy.request({ url: "/api/portal/me", failOnStatusCode: false }).its("status").should("eq", 401);
             cy.request({ url: "/v2/dashboard", followRedirect: false }).its("status").should("eq", 302);

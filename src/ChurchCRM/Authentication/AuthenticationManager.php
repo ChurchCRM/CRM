@@ -13,6 +13,11 @@ use ChurchCRM\Authentication\Requests\LocalUsernamePasswordRequest;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Portal\Auth\PortalMemberUser;
+use ChurchCRM\Portal\Auth\PortalPrincipal;
+use ChurchCRM\Portal\Auth\PortalSessionStore;
+use ChurchCRM\Portal\Auth\SignInAudit;
+use ChurchCRM\Portal\Auth\SignInAuditEvent;
+use ChurchCRM\Portal\Auth\SignInReason;
 use ChurchCRM\Service\NotificationService;
 use ChurchCRM\Utils\ChurchCRMReleaseManager;
 use ChurchCRM\Utils\LoggerUtils;
@@ -113,10 +118,23 @@ class AuthenticationManager
         $logCtx = ['username' => $currentSessionUserName];
 
         try {
-            self::getAuthenticationProvider()->endSession();
+            if (self::hasSessionProvider()) {
+                self::getAuthenticationProvider()->endSession();
+            }
+        } catch (\Exception $e) {
+            $logger->warning(
+                'Error ending the authentication provider session',
+                array_merge($logCtx, ['exception' => $e])
+            );
+        }
 
-            session_unset();
-            session_destroy();
+        // A portal-only session has no staff provider, and must still be
+        // destroyed whole: the principal lives in the same PHP session.
+        try {
+            if (session_status() === PHP_SESSION_ACTIVE) {
+                session_unset();
+                session_destroy();
+            }
             $logger->info(
                 'Ended Local session for user',
                 $logCtx
@@ -131,6 +149,32 @@ class AuthenticationManager
                 RedirectUtils::redirect(self::getSessionBeginURL());
             }
         }
+    }
+
+    /**
+     * Signs out whatever this browser holds, staff or portal session (design §7),
+     * and returns where to send it: a member goes back to the member sign-in page.
+     */
+    public static function signOut(): string
+    {
+        $principal = PortalSessionStore::load();
+        $staffSignedIn = self::validateUserSessionIsActive(false);
+
+        if ($principal instanceof PortalPrincipal) {
+            SignInAudit::record(
+                SignInAuditEvent::SESSION_ENDED,
+                $principal->personId,
+                $principal->method,
+                SignInReason::SIGNED_OUT,
+                $principal->actorUserId,
+            );
+        }
+
+        self::endSession(true);
+
+        return $principal instanceof PortalPrincipal && !$staffSignedIn
+            ? self::getPortalLoginURL()
+            : self::getSessionBeginURL();
     }
 
     public static function authenticate(AuthenticationRequest $AuthenticationRequest): AuthenticationResult
@@ -279,6 +323,17 @@ class AuthenticationManager
     public static function getSessionBeginURL(): string
     {
         return SystemURLs::getRootPath() . '/session/begin';
+    }
+
+    public static function getPortalLoginURL(): string
+    {
+        return SystemURLs::getRootPath() . '/portal/login';
+    }
+
+    private static function hasSessionProvider(): bool
+    {
+        return self::$requestProvider !== null
+            || (isset($_SESSION['AuthenticationProvider']) && $_SESSION['AuthenticationProvider'] instanceof IAuthenticationProvider);
     }
 
     public static function getForgotPasswordURL(): string

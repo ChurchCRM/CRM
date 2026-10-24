@@ -12,6 +12,7 @@ const KEYS = [
     "sMemberSignInClassifications",
     "iMemberSignInMinAge",
     "iSignInLinkMinutes",
+    "iMemberSignInRequestsPerIP",
     "iPortalIdleMinutes",
     "iRememberDeviceDays",
     "bPortalPasskeys",

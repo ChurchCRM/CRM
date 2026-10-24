@@ -41,9 +41,21 @@
             "kind": "schema",
             "reason": "Volunteer v2 schema spec (#9705): columns, UNIQUE keys, foreign keys, ON DELETE rules and enum domains have no HTTP surface."
         },
+        "cypress/e2e/ui/portal/member.portal-sign-in-email.spec.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in row 5 (#10463): the stored sign-in request (hashed, never shown), the proven address and the audit have no HTTP surface until row 9; an expired request is made by moving its times back."
+        },
+        "cypress/e2e/ui/portal/member.portal-sign-in-refusals.spec.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in row 5 (#10463): Disable sign-in and an unconfirmed moved address are set, and the audit read, in SQL; row 9 adds their admin pages."
+        },
         "cypress/support/api-commands.js": {
             "kind": "fixture",
             "reason": "Registers cy.dbQuery()."
+        },
+        "cypress/support/member-sign-in.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in row 5 (#10463): turns member sign-in on, ends the sign-in throttle windows and reads the sign-in audit and requests, none of which has an HTTP surface until row 9."
         },
         "cypress/support/sign-in-throttle.js": {
             "kind": "fixture",

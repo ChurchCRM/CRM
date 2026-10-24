@@ -368,6 +368,8 @@ class EmailLogService
             'verify'              => gettext('Family verification'),
             'notification'        => gettext('Notification'),
             'notification.new-record' => gettext('New record notification'),
+            'notification.portal-sign-in' => gettext('Member Portal sign-in notice'),
+            'portal.sign-in'      => gettext('Member Portal sign-in code'),
             'account.new'         => gettext('New account'),
             'account.reset'       => gettext('Password reset'),
             'account.reset-token' => gettext('Password reset link'),
