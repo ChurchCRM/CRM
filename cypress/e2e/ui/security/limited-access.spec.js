@@ -51,6 +51,18 @@ describe("Safety net — a self-service account the upgrade left behind", () => 
         cy.get("#sidebar").should("not.exist");
     });
 
+    it("The account pages outside /portal have no portal session, so the account menu leaves out Sign-in and devices", () => {
+        login();
+        cy.get("#portal-account-toggle").click();
+        cy.get("#portalAccountDevices").should("exist");
+
+        cy.visit("/v2/user/current/changepassword");
+        cy.get(".portal-shell").should("exist");
+        cy.get("#portal-account-toggle").click();
+        cy.get("#portal-account-menu").contains('[role="menuitem"]', "Sign out").should("be.visible");
+        cy.get("#portalAccountDevices").should("not.exist");
+    });
+
     it("Staff pages send it back to the portal", () => {
         login();
         ["v2/dashboard", "people/dashboard", "PropertyList.php", "LettersAndLabels.php"].forEach((path) => {

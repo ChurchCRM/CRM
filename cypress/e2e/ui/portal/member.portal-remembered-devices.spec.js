@@ -215,7 +215,8 @@ describe("Member Portal remembered devices", () => {
             resetEmailSignIn([member.personId]);
             signInWithCode({ remember: true });
 
-            cy.get("#portal-nav").contains("a", "Sign-in and devices").click();
+            cy.get("#portal-account-toggle").click();
+            cy.get("#portalAccountDevices").click();
             cy.location("pathname").should("match", /\/portal\/devices$/);
             cy.get("#portal-devices-table [data-device-row]").should("have.length", 2);
             cy.get("[data-this-device]").should("have.length", 1);

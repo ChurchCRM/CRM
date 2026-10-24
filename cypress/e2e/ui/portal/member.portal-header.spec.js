@@ -8,7 +8,8 @@
  *     was painting it link-blue and underlining it)
  *   - the member's name and the bare "Sign out" link are replaced by one
  *     "Hello <first name>" button that opens a menu: Email History,
- *     Change Password and Admin Console (staff sessions only), Sign out
+ *     Sign-in and devices, Change Password and Admin Console (staff sessions
+ *     only), Sign out
  *
  * Seed persona: Lena Black (person 100, family 20), signed in with her email.
  */
@@ -152,14 +153,17 @@ describe("Member Portal header", () => {
             cy.get("#portal-account-toggle").should("have.attr", "aria-expanded", "true");
         });
 
-        it("Offers Email History and Sign out, but neither Change Password nor Admin Console, to a member", () => {
+        it("Offers Email History, Sign-in and devices and Sign out, but neither Change Password nor Admin Console, to a member", () => {
             cy.get("#portal-account-toggle").click();
 
-            cy.get('#portal-account-menu [role="menuitem"]').should("have.length", 2);
+            cy.get('#portal-account-menu [role="menuitem"]')
+                .then(($items) => [...$items].map((el) => el.textContent.trim()))
+                .should("deep.equal", ["Email History", "Sign-in and devices", "Sign out"]);
             cy.get("#portal-account-menu")
                 .contains('[role="menuitem"]', "Email History")
                 .should("have.attr", "href")
                 .and("include", "/portal/email-history");
+            cy.get("#portalAccountDevices").should("have.attr", "href").and("match", /\/portal\/devices$/);
             cy.get("#portal-account-menu").contains("Change Password").should("not.exist");
             cy.get("#portal-account-menu")
                 .contains('[role="menuitem"]', "Sign out")
@@ -194,9 +198,27 @@ describe("Member Portal header", () => {
 
             cy.focused().should("contain.text", "Email History");
             cy.focused().trigger("keydown", { key: "ArrowDown" });
+            cy.focused().should("have.id", "portalAccountDevices");
+            cy.focused().trigger("keydown", { key: "ArrowDown" });
             cy.focused().should("contain.text", "Sign out");
             cy.focused().trigger("keydown", { key: "ArrowUp" });
+            cy.focused().should("have.id", "portalAccountDevices");
+            cy.focused().trigger("keydown", { key: "ArrowUp" });
             cy.focused().should("contain.text", "Email History");
+        });
+
+        it("Opens Sign-in and devices, which the navigation does not list or mark active", () => {
+            cy.get("#portal-nav").should("not.contain.text", "Sign-in and devices");
+            cy.get('#portal-nav a[href$="/portal/devices"]').should("not.exist");
+
+            cy.get("#portal-account-toggle").click();
+            cy.get("#portalAccountDevices").click();
+
+            cy.location("pathname").should("eq", "/portal/devices");
+            cy.get(".portal-page-title").should("contain.text", "Sign-in and devices");
+            cy.get("#portal-nav .portal-nav-link").should("have.length.greaterThan", 0);
+            cy.get("#portal-nav .portal-nav-link.is-active").should("not.exist");
+            cy.get('#portal-nav [aria-current="page"]').should("not.exist");
         });
 
         it("Signs the member out from the menu", () => {
@@ -222,9 +244,12 @@ describe("Member Portal header", () => {
                 expect(box.right, "the menu ends inside the viewport").to.be.at.most(375);
             });
 
+            cy.get("#portalAccountDevices").should("be.visible");
+
             // The hamburger still opens the navigation while the menu is up.
             cy.get("#portal-nav-toggle").click();
             cy.get("#portal-nav").should("have.class", "is-open");
+            cy.get("#portal-nav").should("not.contain.text", "Sign-in and devices");
         });
     });
 });

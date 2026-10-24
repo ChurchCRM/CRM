@@ -71,9 +71,11 @@ describe("Member Portal — Email History", () => {
             cy.get("#portal-account-toggle").click();
             cy.focused().should("contain.text", "Email History");
             cy.focused().trigger("keydown", { key: "ArrowDown" });
-            cy.focused().should("contain.text", "Sign out");
+            cy.focused().should("contain.text", "Sign-in and devices");
             cy.focused().trigger("keydown", { key: "ArrowUp" });
             cy.focused().should("contain.text", "Email History");
+            cy.focused().trigger("keydown", { key: "ArrowUp" });
+            cy.focused().should("contain.text", "Sign out");
         });
 
         it("Opens the page from the menu", () => {

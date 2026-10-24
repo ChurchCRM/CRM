@@ -67,14 +67,22 @@ describe("Member Portal — staff access", () => {
         cy.url({ timeout: 10000 }).should("include", "/v2/dashboard");
     });
 
-    it("The account menu still offers Email History, Change Password and Sign out to staff", () => {
+    it("The account menu offers staff Email History, Sign-in and devices, Change Password, Admin Console and Sign out", () => {
         cy.visit("/portal/");
         cy.get("#portal-account-toggle", { timeout: 10000 }).click();
-        // Email History, Change Password, Admin Console, Sign out.
-        cy.get('#portal-account-menu [role="menuitem"]').should("have.length", 4);
-        cy.get("#portal-account-menu").contains('[role="menuitem"]', "Email History").should("exist");
-        cy.get("#portal-account-menu").contains('[role="menuitem"]', "Change Password").should("exist");
-        cy.get("#portal-account-menu").contains('[role="menuitem"]', "Sign out").should("exist");
+        cy.get('#portal-account-menu [role="menuitem"]')
+            .then(($items) => [...$items].map((el) => el.textContent.trim()))
+            .should("deep.equal", ["Email History", "Sign-in and devices", "Change Password", "Admin Console", "Sign out"]);
+        cy.get("#portal-nav").should("not.contain.text", "Sign-in and devices");
+    });
+
+    it("Sign-in and devices opens from the account menu in a staff session", () => {
+        cy.visit("/portal/");
+        cy.get("#portal-account-toggle", { timeout: 10000 }).click();
+        cy.get("#portalAccountDevices").click();
+        cy.location("pathname").should("eq", "/portal/devices");
+        cy.get(".portal-page-title").should("contain.text", "Sign-in and devices");
+        cy.get("#portal-nav .portal-nav-link.is-active").should("not.exist");
     });
 });
 

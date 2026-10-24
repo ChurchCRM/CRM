@@ -185,7 +185,7 @@ Config items: `sMemberPortalTheme`, `bPortalDeveloperMode`, `bPortalShowVoluntee
 
 ## Screens and APIs
 
-Nav (`PortalNav`), in order, each hidden when its feature is off or the member has nothing there: Home, Calendar, Volunteering, My Teams, My Family, Profile. The header shows the church logo and name and one account menu: "Hello <first name>" over Email History, Change Password (staff sessions only), Admin Console (back to the staff side from a staff session; the `/admin/` sign-in from a member session whose person has a staff account) and Sign out (`GET /session/end`).
+Nav (`PortalNav`), in order, each hidden when its feature is off or the member has nothing there: Home, Calendar, Volunteering, My Teams, My Family, Profile. The header shows the church logo and name and one account menu: "Hello <first name>" over Email History, Sign-in and devices (`/portal/devices`, shown with `portal_can('portal.devices.manage')`; `PortalNav` gets no active id for it), Change Password (staff sessions only), Admin Console (back to the staff side from a staff session; the `/admin/` sign-in from a member session whose person has a staff account) and Sign out (`GET /session/end`).
 
 ### Home (`/portal`)
 

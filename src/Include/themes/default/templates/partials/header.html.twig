@@ -11,10 +11,12 @@
 
   Its items, in order:
     1. Email History — what the church has emailed this member
-    2. Change Password — a staff session only; members have no password
-    3. Admin Console — back to the staff side from a staff session, or to the
+    2. Sign-in and devices — remembered devices and passkeys, while the member
+       holds `portal.devices.manage`
+    3. Change Password — a staff session only; members have no password
+    4. Admin Console — back to the staff side from a staff session, or to the
        staff sign-in when a member session's person also has a staff account
-    4. Sign out
+    5. Sign out
 #}
 <header class="portal-header">
     <div class="portal-container portal-header-inner">
@@ -49,6 +51,12 @@
                         <i class="fa-solid fa-envelope-open-text" aria-hidden="true"></i>
                         <span>{{ gettext('Email History') }}</span>
                     </a>
+                    {% if portal_can('portal.devices.manage') %}
+                    <a class="portal-account-item" role="menuitem" href="{{ url('/portal/devices') }}" id="portalAccountDevices">
+                        <i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i>
+                        <span>{{ gettext('Sign-in and devices') }}</span>
+                    </a>
+                    {% endif %}
                     {% if member.signedInWithPassword %}
                     <a class="portal-account-item" role="menuitem" href="{{ url('/portal/profile/password') }}" id="portalAccountChangePassword">
                         <i class="fa-solid fa-key" aria-hidden="true"></i>
