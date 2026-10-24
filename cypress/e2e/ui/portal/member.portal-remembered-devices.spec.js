@@ -208,6 +208,29 @@ describe("Member Portal remembered devices", () => {
         cy.get("#portal-account-toggle").should("contain.text", `Hello ${member.firstName}`);
     });
 
+    it("reloads a page whose save meets an ended session, so the device signs the member back in", () => {
+        signInWithCode({ remember: true });
+        cy.visit("/portal/profile/edit");
+        cy.window().then((win) => {
+            win.beforeTheSessionEnded = true;
+        });
+        closeBrowser();
+        cy.get("#portal-profile-save").click();
+
+        cy.window().should("not.have.property", "beforeTheSessionEnded");
+        cy.location("pathname").should("match", /\/portal\/profile\/edit$/);
+        cy.get("#portal-account-toggle").should("contain.text", `Hello ${member.firstName}`);
+    });
+
+    it("reloads a page whose save meets an ended session into the sign-in page without a device", () => {
+        signInWithCode({ remember: false });
+        cy.visit("/portal/profile/edit");
+        closeBrowser();
+        cy.get("#portal-profile-save").click();
+
+        cy.location("pathname").should("match", /\/portal\/login$/);
+    });
+
     it("lists the devices on Sign-in and devices, and signing one out stops it and its session", () => {
         signInWithCode({ remember: true });
         saveCookies().then((otherDevice) => {

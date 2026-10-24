@@ -288,6 +288,21 @@ describe("Member Portal permissions (portal permissions model)", () => {
                 status(`/api/ministries/teams/${teamOther}`).should("eq", 403);
             });
         });
+
+        it("is ignored once its team is deleted", () => {
+            let teamId = 0;
+            inOwnCookieJar(() =>
+                cy.makePrivateAdminAPICall("POST", `/api/ministries/ministries/${ministryId}/teams`, { name: `${PREFIX} Parking` }, 201).then(({ body }) => {
+                    teamId = body.team.id;
+                }),
+            );
+            cy.then(() => giveGrant(NON_ADULT.personId, "volunteer.team.manage", teamId));
+            signIn(NON_ADULT);
+            navIds().should("include", "/portal/teams");
+
+            cy.then(() => inOwnCookieJar(() => cy.makePrivateAdminAPICall("DELETE", `/api/ministries/teams/${teamId}`, null, [200, 204])));
+            navIds().should("not.include", "/portal/teams");
+        });
     });
 
     describe("Feature switches", () => {

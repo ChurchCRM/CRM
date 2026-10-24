@@ -76,9 +76,11 @@ final class PortalPermissionsService
                 $sources[] = ['source' => EffectiveGrant::SOURCE_GIVEN, 'ruleKey' => null, 'label' => gettext('Admin overrides')];
             }
 
+            $definition = PortalCapabilityRegistry::get($key);
             $rows[] = $capability + [
                 'ownerName' => PortalGrantService::ownerName($capability['owner']),
-                'statusLabel' => PortalGrantService::statusLabel($capability['status']),
+                'statusLabel' => PortalGrantService::statusLabel($capability['status'], $definition),
+                'statusUrl' => $definition === null ? null : PortalGrantService::statusUrl($capability['status'], $definition),
                 'scopeLabel' => PortalGrantService::scopeTypeLabel($capability['scopeType']),
                 'sources' => $sources,
                 'holderCount' => count($holders[$key] ?? []),
@@ -217,12 +219,19 @@ final class PortalPermissionsService
         }
 
         $givers = [];
+        $given = [];
         foreach ($this->givenGrantsQuery()->find() as $row) {
-            $personId = (int) $row->getPersonId();
             $scope = new PortalScope((string) $row->getScopeType(), (int) $row->getScopeId());
-            if (!isset($inPopulation[$personId]) || !PortalAuthorizationService::fitsCatalog((string) $row->getCapability(), $scope)) {
+            if (isset($inPopulation[(int) $row->getPersonId()]) && PortalAuthorizationService::fitsCatalog((string) $row->getCapability(), $scope)) {
+                $given[] = [$row, $scope];
+            }
+        }
+        $missing = PortalAuthorizationService::missingScopes(array_column($given, 1));
+        foreach ($given as [$row, $scope]) {
+            if (isset($missing[$scope->key()])) {
                 continue;
             }
+            $personId = (int) $row->getPersonId();
             $giverId = $row->getGrantedByUserId() === null ? null : (int) $row->getGrantedByUserId();
             if ($giverId !== null && !array_key_exists($giverId, $givers)) {
                 $givers[$giverId] = PersonQuery::create()->findPk($giverId)?->getFullName();

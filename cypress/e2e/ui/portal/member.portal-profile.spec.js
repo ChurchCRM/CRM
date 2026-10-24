@@ -143,6 +143,7 @@ describe("Member Portal — Profile", () => {
                 cy.visit("/portal/profile");
                 cy.get("#portal-profile-details [data-field=cellPhone]").should("contain", newPhone);
                 cy.get("#portal-profile-details [data-field=email]").should("contain", originalEmail);
+                cy.get("#portal-profile-pending-email").should("contain", newEmail);
 
                 confirmLinkTo(newEmail).then((path) => {
                     cy.visit(path);
@@ -151,6 +152,7 @@ describe("Member Portal — Profile", () => {
                 });
                 cy.visit("/portal/profile");
                 cy.get("#portal-profile-details [data-field=email]").should("contain", newEmail);
+                cy.get("#portal-profile-pending-email").should("not.exist");
 
                 changeEmailTo(originalEmail);
             });

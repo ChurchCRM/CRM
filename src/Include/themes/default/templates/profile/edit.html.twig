@@ -136,7 +136,7 @@
             <div class="portal-field">
                 <label class="portal-field-label" for="portal-language">{{ gettext('Language') }}</label>
                 <select class="portal-input" id="portal-language" name="language" aria-describedby="portal-language-hint">
-                    <option value="">{{ gettext('Church default (%s)')|format(languages.churchName) }}</option>
+                    <option value="">{{ gettext('Church default: %s')|format(languages.churchName) }}</option>
                     {% for choice in languages.choices %}
                     <option value="{{ choice.locale }}" lang="{{ choice.locale|replace({'_': '-'}) }}"{% if choice.locale == languages.selected %} selected{% endif %}>{{ choice.name }}</option>
                     {% endfor %}

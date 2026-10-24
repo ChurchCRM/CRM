@@ -49,6 +49,10 @@
             "kind": "fixture",
             "reason": "Member sign-in (#10463): ends the one-minute grace of a remembered device's replaced token, so specs need not wait it out; the server still decides what an ended grace means."
         },
+        "cypress/support/sign-in-audit-retention.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in (#10463): audit rows from weeks ago for the retention spec; only time makes them, and the audit has no HTTP surface until the admin pages."
+        },
         "cypress/support/sign-in-email-fixtures.js": {
             "kind": "fixture",
             "reason": "Member sign-in row 9b (#10463): an address moved from the family email (written only by the 7.9.0 upgrade) or replaced after a sign-in, and the shared personal emails Fix shared emails resolves, have no HTTP surface but the legacy person editor form, which also audits and mails; each spec's seed emails, sign-in rows and grants are put back."

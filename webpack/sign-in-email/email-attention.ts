@@ -104,6 +104,7 @@ export interface AttentionTools {
 const API = "/api/persons/sign-in-email";
 const UNCONFIRMED = "email_unconfirmed";
 const MODAL_ID = "sharedEmailFixModal";
+const SHARERS_NAMED = 3;
 
 async function send<T>(path: string, body: unknown, csrfToken: string): Promise<T> {
   const response = await fetch(`${root()}${path}`, {
@@ -123,11 +124,25 @@ export function attentionCounts(): Promise<AttentionCounts> {
   return getFrom<AttentionCounts>(`${API}/attention/counts`);
 }
 
+/** An address that breaks onto a second line only after its @, never inside a word. */
+function emailCell(email: string): string {
+  const at = email.lastIndexOf("@");
+  const wrapped =
+    at < 0 ? escapeHtml(email) : `${escapeHtml(email.slice(0, at + 1))}<wbr>${escapeHtml(email.slice(at + 1))}`;
+  return `<span data-cy="attention-email">${wrapped}</span>`;
+}
+
 function problemCell(row: AttentionRow): string {
   const label = `<span class="badge bg-warning-lt text-wrap text-start">${escapeHtml(row.problemLabel ?? "")}</span>`;
   if (row.problem === "shared_email" && row.sharedWith?.length) {
-    const others = row.sharedWith.map((other) => personLink(other.personId, other.name)).join(", ");
-    return `${label}<div class="small mt-1">${escapeHtml(t("Also used by"))}: ${others}</div>`;
+    const named = row.sharedWith.slice(0, SHARERS_NAMED);
+    const unnamed = row.sharedWith.slice(SHARERS_NAMED);
+    const others = named.map((other) => personLink(other.personId, other.name)).join(", ");
+    const more =
+      unnamed.length === 0
+        ? ""
+        : ` <span class="text-secondary text-nowrap" data-cy="attention-shared-more" title="${escapeAttribute(unnamed.map((other) => other.name).join(", "))}">${escapeHtml(t("+{{total}} more", { total: unnamed.length }))}</span>`;
+    return `${label}<div class="small mt-1" data-cy="attention-shared-with">${escapeHtml(t("Also used by"))}: ${others}${more}</div>`;
   }
   if (row.problem === UNCONFIRMED) {
     return `${label}<div class="small text-secondary mt-1">${escapeHtml(row.unconfirmedSourceLabel ?? "")}</div>`;
@@ -176,7 +191,7 @@ export function attentionColumns(menu: (row: AttentionRow) => string): ServerCol
     { title: t("Problem"), render: problemCell, priority: 3 },
     {
       title: t("Email"),
-      render: (row) => (row.email ? `<span class="text-break">${escapeHtml(row.email)}</span>` : muted(t("None"))),
+      render: (row) => (row.email ? emailCell(row.email) : muted(t("None"))),
       priority: 5,
     },
     { title: t("What to do"), render: attentionFixCell, priority: 4 },

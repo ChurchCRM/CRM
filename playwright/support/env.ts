@@ -15,8 +15,11 @@ export const DB = {
   password: process.env.CHURCHCRM_DB_PASSWORD || 'changeme',
 };
 
-// The stack's Mailpit (docker-compose mailserver), where member sign-in codes arrive.
-export const MAILPIT_URL = process.env.CHURCHCRM_MAILPIT_URL || 'http://127.0.0.1:8025';
+// The stack's Mailpit (docker-compose mailserver), where member sign-in codes arrive:
+// CHURCHCRM_MAILPIT_URL, else the MAILSERVER_GUI_PORT the stack was started with, as Cypress does.
+export const MAILPIT_URL = (
+  process.env.CHURCHCRM_MAILPIT_URL || `http://127.0.0.1:${process.env.MAILSERVER_GUI_PORT || 8025}`
+).replace(/\/+$/, '');
 
 export const ADMIN_USERNAME = process.env.CHURCHCRM_TEST_USERNAME || 'admin';
 
