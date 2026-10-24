@@ -3,9 +3,13 @@
 namespace ChurchCRM\Portal\Permissions;
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PortalGrantQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerTeamQuery;
 use ChurchCRM\Portal\Auth\PortalPrincipal;
 use ChurchCRM\Portal\Permissions\Rules\EveryoneRule;
 use ChurchCRM\Utils\DateTimeUtils;
@@ -211,7 +215,9 @@ final class PortalAuthorizationService implements PortalAuthorization
     }
 
     /**
-     * The grants administrators gave this person that have not ended yet.
+     * The grants administrators gave this person that have not ended yet, on a
+     * family, team, ministry or group that still exists. Checking here covers
+     * every path that deletes one, and an id the database hands out again.
      *
      * @return EffectiveGrant[]
      */
@@ -226,11 +232,19 @@ final class PortalAuthorizationService implements PortalAuthorization
             ->orderById()
             ->find();
 
-        $givers = [];
-        $grants = [];
+        $fitting = [];
         foreach ($rows as $row) {
             $scope = new PortalScope((string) $row->getScopeType(), (int) $row->getScopeId());
-            if (!self::fitsCatalog((string) $row->getCapability(), $scope)) {
+            if (self::fitsCatalog((string) $row->getCapability(), $scope)) {
+                $fitting[] = [$row, $scope];
+            }
+        }
+        $missing = self::missingScopes(array_column($fitting, 1));
+
+        $givers = [];
+        $grants = [];
+        foreach ($fitting as [$row, $scope]) {
+            if (isset($missing[$scope->key()])) {
                 continue;
             }
 
@@ -254,6 +268,44 @@ final class PortalAuthorizationService implements PortalAuthorization
         }
 
         return $grants;
+    }
+
+    /**
+     * The core scopes among these whose family, team, ministry or group is gone,
+     * keyed by PortalScope::key(). A plugin's own scope type is the plugin's to check.
+     *
+     * @param PortalScope[] $scopes
+     *
+     * @return array<string, true>
+     */
+    public static function missingScopes(array $scopes): array
+    {
+        $ids = [];
+        foreach ($scopes as $scope) {
+            if ($scope->type !== PortalScope::NONE) {
+                $ids[$scope->type][$scope->id] = $scope->id;
+            }
+        }
+
+        $missing = [];
+        foreach ($ids as $type => $typeIds) {
+            $query = match ($type) {
+                PortalScope::FAMILY => FamilyQuery::create(),
+                PortalScope::TEAM => VolunteerTeamQuery::create(),
+                PortalScope::MINISTRY => VolunteerMinistryQuery::create(),
+                PortalScope::GROUP => GroupQuery::create(),
+                default => null,
+            };
+            if ($query === null) {
+                continue;
+            }
+            $found = array_map('intval', $query->filterById(array_values($typeIds), Criteria::IN)->select('Id')->find()->getData());
+            foreach (array_diff($typeIds, $found) as $id) {
+                $missing[$type . ':' . $id] = true;
+            }
+        }
+
+        return $missing;
     }
 
     private static function givenLabel(?string $giver, ?DateTimeInterface $endsAt): string

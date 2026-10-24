@@ -465,7 +465,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
         $person->save();
         $person->reload();
-        $emailPolicy->recordChange($person, $sOldEmail, EmailChangeChannel::STAFF, AuthenticationManager::getCurrentUser());
+        $emailPolicy->recordChange($person, $personAlreadyExist ? $sOldEmail : null, EmailChangeChannel::STAFF, AuthenticationManager::getCurrentUser());
 
         if (!$personAlreadyExist) {
             $iPersonID = $person->getId();
