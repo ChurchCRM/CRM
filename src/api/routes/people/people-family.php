@@ -16,7 +16,6 @@ use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
 use ChurchCRM\Service\FamilyService;
 use ChurchCRM\Service\SystemService;
-use ChurchCRM\Service\UserService;
 use ChurchCRM\Slim\Middleware\Request\Auth\DeleteRecordRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Api\FamilyEmailDeprecationMiddleware;
@@ -356,8 +355,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     @OA\Response(response=200, description="Family activation status updated",
      *         @OA\JsonContent(@OA\Property(property="success", type="boolean"))
      *     ),
-     *     @OA\Response(response=400, description="Invalid status value"),
-     *     @OA\Response(response=403, description="The family holds the only administrator who can sign in")
+     *     @OA\Response(response=400, description="Invalid status value")
      * )
      */
     /**
@@ -375,10 +373,6 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         }
 
         $currentStatus = $family->isActive();
-
-        if ($currentStatus && $newStatus === false && (new UserService())->familyHoldsLastSignInCapableAdmins((int) $family->getId())) {
-            return SlimUtils::renderErrorJSON($response, gettext("Can't deactivate the family of the only administrator who can sign in"), [], 403);
-        }
 
         // update only if the value is different
         if ($currentStatus !== $newStatus) {
