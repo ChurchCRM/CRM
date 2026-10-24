@@ -104,7 +104,7 @@ const staffSignIn = () => {
     cy.clearCookies();
     return cy.request({
         method: "POST",
-        url: "/session/begin",
+        url: "/admin/",
         form: true,
         followRedirect: false,
         body: { User: staff.username, Password: staff.password },
