@@ -187,6 +187,16 @@ describe("Admin → Member Portal permissions and given grants", () => {
         });
     });
 
+    it("refuses a permission the person already holds from a rule or the everyone rule", () => {
+        give(CHILD, { capability: "portal.profile.edit" }, 409).its("body.message").should("eq", "This person already has this permission.");
+        give(CHILD, { capability: "portal.family.view", scopeId: 3 }, 409);
+        // Mathew Campbell (2) changes the Campbell family's details as one of its adults.
+        give(2, { capability: "portal.family.edit", scopeId: 1 }, 409);
+        cy.makePrivateAdminAPICall("GET", "/admin/api/member-portal/grant-scopes/family?q=Lewis&exclude=3,99999", null, 200)
+            .its("body")
+            .then((choices) => expect(choices.map((choice) => choice.id)).to.not.include(3));
+    });
+
     it("gives a plugin's permission without a scope, and counts it", () => {
         give(OTHER, { capability: NOTICES }).then(({ body }) => {
             catalog().then((capabilities) => {

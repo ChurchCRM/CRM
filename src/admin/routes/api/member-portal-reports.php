@@ -227,6 +227,7 @@ function getMemberPortalPermissionHoldersAPI(Request $request, Response $respons
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="type", in="path", required=true, @OA\Schema(type="string", enum={"family", "team", "ministry", "group"})),
  *     @OA\Parameter(name="q", in="query", description="Part of the name", @OA\Schema(type="string")),
+ *     @OA\Parameter(name="exclude", in="query", description="Comma-separated ids to leave out, such as the scopes the person already holds", @OA\Schema(type="string", example="3,7")),
  *     @OA\Response(response=200, description="Up to 25 choices", @OA\JsonContent(type="array", @OA\Items(type="object",
  *         @OA\Property(property="id", type="integer"),
  *         @OA\Property(property="text", type="string")
@@ -237,10 +238,12 @@ function getMemberPortalPermissionHoldersAPI(Request $request, Response $respons
  */
 function searchPortalGrantScopesAPI(Request $request, Response $response, array $args): Response
 {
-    $query = $request->getQueryParams()['q'] ?? '';
+    $params = $request->getQueryParams();
+    $query = $params['q'] ?? '';
+    $exclude = is_string($params['exclude'] ?? null) ? array_values(array_filter(array_map('intval', explode(',', $params['exclude'])))) : [];
 
     try {
-        $choices = (new PortalGrantService())->scopeChoices((string) $args['type'], is_string($query) ? $query : '');
+        $choices = (new PortalGrantService())->scopeChoices((string) $args['type'], is_string($query) ? $query : '', $exclude);
     } catch (InvalidArgumentException $e) {
         return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400, null, $request);
     }

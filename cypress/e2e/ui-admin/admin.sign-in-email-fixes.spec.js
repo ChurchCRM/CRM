@@ -115,7 +115,7 @@ describe("Email needs attention: Fix shared emails and Confirm selected", () => 
         setPersonEmails({ 76: "larson.home@example.com", 77: "larson.home@example.com" });
         [50, 59, 28].forEach((personId) => markEmailUnconfirmed(personId));
         markEmailUnconfirmed(26, "staff");
-        cy.makePrivateAdminAPICall("POST", "/admin/api/person/28/sign-in/grants", { capability: "portal.calendar.view", reason: "Row 9b UI spec" }, 201);
+        cy.makePrivateAdminAPICall("POST", "/admin/api/person/28/sign-in/grants", { capability: "portal.family.contacts.view", scopeId: 3, reason: "Row 9b UI spec" }, 201);
 
         cy.setupStandardSession({ forceLogin: true });
         cy.visit("/people/dashboard");

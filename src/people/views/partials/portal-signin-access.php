@@ -13,11 +13,13 @@ use ChurchCRM\Utils\InputUtils;
  * Behaviour: webpack/people/person-portal-access.ts.
  */
 
-// One entry per source: "Everyone", "Adult of the Smith family", each given grant.
+// One entry per source: "Given to Everyone", "Adult of the Smith family", each given grant.
+// The Permissions tab's catalog keeps the everyone rule's own name, "Everyone".
 $permissionGroups = [];
 foreach ($portalAccess['permissions'] as $permission) {
     $key = $permission['source'] === EffectiveGrant::SOURCE_GIVEN ? 'given:' . $permission['grantId'] : $permission['source'] . ':' . $permission['sourceLabel'];
-    $permissionGroups[$key] ??= ['source' => $permission['source'], 'label' => $permission['sourceLabel'], 'grantId' => $permission['grantId'], 'reason' => $permission['reason'], 'items' => []];
+    $label = $permission['source'] === EffectiveGrant::SOURCE_EVERYONE ? gettext('Given to Everyone') : $permission['sourceLabel'];
+    $permissionGroups[$key] ??= ['source' => $permission['source'], 'label' => $label, 'grantId' => $permission['grantId'], 'reason' => $permission['reason'], 'items' => []];
     $permissionGroups[$key]['items'][] = $permission;
 }
 $sourceOrder = [EffectiveGrant::SOURCE_EVERYONE => 0, EffectiveGrant::SOURCE_RULE => 1, EffectiveGrant::SOURCE_GIVEN => 2];
@@ -130,9 +132,13 @@ $removeButton = static function (string $class, string $dataName, int $id, strin
         <?php endif; ?>
 
         <button type="button" class="btn btn-sm btn-outline-primary mt-2" id="portal-grant-add"
-                data-bs-toggle="modal" data-bs-target="#portal-grant-modal">
+                data-bs-toggle="modal" data-bs-target="#portal-grant-modal"
+                <?= $portalGrantChoices === [] ? 'disabled aria-describedby="portal-grant-none-left"' : '' ?>>
             <i class="fa-solid fa-plus me-1"></i><?= gettext('Give a permission') ?>
         </button>
+        <?php if ($portalGrantChoices === []) : ?>
+            <div class="small text-secondary mt-1" id="portal-grant-none-left"><?= gettext('This person already has every permission that can be given.') ?></div>
+        <?php endif; ?>
     </div>
 </div>
 
@@ -160,7 +166,8 @@ $removeButton = static function (string $class, string $dataName, int $id, strin
                                             data-scope-type="<?= InputUtils::escapeAttribute($choice['scopeType']) ?>"
                                             data-scope-label="<?= InputUtils::escapeAttribute($choice['scopeFieldLabel']) ?>"
                                             data-description="<?= InputUtils::escapeAttribute($choice['description']) ?>"
-                                            data-status="<?= InputUtils::escapeAttribute((string) $choice['statusLabel']) ?>">
+                                            data-status="<?= InputUtils::escapeAttribute((string) $choice['statusLabel']) ?>"
+                                            data-held-scopes="<?= InputUtils::escapeAttribute(implode(',', $choice['heldScopeIds'])) ?>">
                                         <?= InputUtils::escapeHTML($choice['label']) ?>
                                     </option>
                                 <?php endforeach; ?>
@@ -176,7 +183,7 @@ $removeButton = static function (string $class, string $dataName, int $id, strin
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="portal-grant-ends"><?= gettext('Last day') ?></label>
-                    <input type="date" class="form-control" id="portal-grant-ends" name="endsOn">
+                    <input type="date" class="form-control is-empty" id="portal-grant-ends" name="endsOn">
                     <div class="form-text"><?= gettext('Leave empty to keep it until someone removes it.') ?></div>
                 </div>
                 <div>

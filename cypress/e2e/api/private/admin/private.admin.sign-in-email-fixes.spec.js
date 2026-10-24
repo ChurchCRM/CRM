@@ -126,7 +126,7 @@ describe("Email needs attention: Fix shared emails and Confirm selected", () => 
     it("leaves a row with a staff account or given permissions to an administrator, on the server", () => {
         setPersonEmails({ 6: "hart.home@example.com", 7: "hart.home@example.com" });
         setPersonEmails({ 76: "larson.home@example.com", 77: "larson.home@example.com" });
-        asAdmin("POST", "/admin/api/person/77/sign-in/grants", { capability: "portal.calendar.view", reason: "Row 9b spec" }, 201);
+        asAdmin("POST", "/admin/api/person/77/sign-in/grants", { capability: "portal.family.contacts.view", scopeId: 3, reason: "Row 9b spec" }, 201);
 
         planRow("hart.home@example.com", asEditRecords).then((hart) => {
             expect(hart.keeper.personId).to.eq(6);
@@ -205,7 +205,7 @@ describe("Email needs attention: Fix shared emails and Confirm selected", () => 
     it("confirms in bulk what each caller may confirm, and audits it as a bulk confirmation", () => {
         [76, 59, 28].forEach((personId) => markEmailUnconfirmed(personId));
         markEmailUnconfirmed(77, "staff");
-        asAdmin("POST", "/admin/api/person/28/sign-in/grants", { capability: "portal.calendar.view", reason: "Row 9b spec" }, 201);
+        asAdmin("POST", "/admin/api/person/28/sign-in/grants", { capability: "portal.family.contacts.view", scopeId: 3, reason: "Row 9b spec" }, 201);
         const rows = [76, 59, 28, 77].map((personId) => ({ personId, email: SEED[personId] }));
 
         asEditRecords("GET", `${API}/attention?problem=email_unconfirmed&kind=family_email&length=100`).then(({ body }) => {

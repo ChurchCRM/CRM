@@ -49,7 +49,7 @@ final class PortalGrantService
 
     /**
      * @throws InvalidArgumentException 400: an unknown capability, a missing or unknown scope, a bad date or reason
-     * @throws DomainException          409: the person already holds this given grant
+     * @throws DomainException          409: the person already holds this capability on this scope, from any source
      */
     public function give(Person $person, User $actor, string $capability, ?int $scopeId, ?string $endsOn, string $reason): PortalGrant
     {
@@ -76,6 +76,13 @@ final class PortalGrantService
         }
 
         $personId = (int) $person->getId();
+        foreach ((new PortalAuthorizationService())->effectiveGrantsForPerson($personId) as $held) {
+            if ($held->capability === $capability && $held->scope->equals($scope)) {
+                throw new DomainException(gettext('This person already has this permission.'), 409);
+            }
+        }
+
+        // A grant that ended is given again on the same row.
         $now = self::now();
         $grant = PortalGrantQuery::create()
             ->filterByPersonId($personId)
@@ -83,10 +90,6 @@ final class PortalGrantService
             ->filterByScopeType($scope->type)
             ->filterByScopeId($scope->id)
             ->findOne();
-        if ($grant instanceof PortalGrant && self::isInEffect($grant, $now)) {
-            throw new DomainException(gettext('This person already has this permission.'), 409);
-        }
-
         $grant ??= (new PortalGrant())
             ->setPersonId($personId)
             ->setCapability($capability)
@@ -156,6 +159,33 @@ final class PortalGrantService
     }
 
     /**
+     * What the person page offers to give this person: not what they already
+     * hold from any source. A scoped capability lists the scopes they hold in
+     * `heldScopeIds` for the picker to leave out, until they hold all it offers.
+     *
+     * @return list<array<string, mixed>>
+     */
+    public static function givableCapabilitiesFor(int $personId): array
+    {
+        $held = [];
+        foreach ((new PortalAuthorizationService())->effectiveGrantsForPerson($personId) as $grant) {
+            $held[$grant->capability][$grant->scope->id] = $grant->scope->id;
+        }
+
+        $offeredCounts = [];
+        $choices = [];
+        foreach (self::givableCapabilities() as $choice) {
+            $heldIds = array_values($held[$choice['key']] ?? []);
+            if ($heldIds !== [] && ($choice['scopeType'] === PortalScope::NONE || self::holdsEveryScope($choice['scopeType'], $heldIds, $offeredCounts))) {
+                continue;
+            }
+            $choices[] = $choice + ['heldScopeIds' => $heldIds];
+        }
+
+        return $choices;
+    }
+
+    /**
      * The given grants stored for a person, in effect or not, newest first.
      *
      * @return list<array<string, mixed>>
@@ -195,49 +225,72 @@ final class PortalGrantService
 
     /**
      * Families, teams, ministries or groups whose name contains the query, for
-     * the scope picker.
+     * the scope picker, leaving out the ids in `$excludeIds`.
+     *
+     * @param int[] $excludeIds
      *
      * @return list<array{id: int, text: string}>
      *
      * @throws InvalidArgumentException for a scope type the picker does not offer
      */
-    public function scopeChoices(string $type, string $query): array
+    public function scopeChoices(string $type, string $query, array $excludeIds = []): array
     {
         $like = '%' . addcslashes(trim($query), '%_\\') . '%';
-        $choices = [];
+        $scopes = self::offeredScopes($type)->filterByName($like, Criteria::LIKE);
+        if ($excludeIds !== []) {
+            $scopes->filterById($excludeIds, Criteria::NOT_IN);
+        }
+        if ($type === PortalScope::TEAM) {
+            $scopes->withColumn('Ministry.Name', 'MinistryName')->orderBy('MinistryName');
+        }
 
-        switch ($type) {
-            case PortalScope::FAMILY:
-                $families = FamilyQuery::create()->filterByName($like, Criteria::LIKE)->filterByDateDeactivated(null, Criteria::ISNULL)
-                    ->orderByName()->limit(self::SCOPE_CHOICE_LIMIT)->find();
-                foreach ($families as $family) {
-                    $city = trim((string) $family->getCity());
-                    $choices[] = ['id' => (int) $family->getId(), 'text' => $family->getName() . ($city === '' ? '' : ' (' . $city . ')')];
-                }
-                break;
-            case PortalScope::TEAM:
-                $teams = VolunteerTeamQuery::create()->filterByName($like, Criteria::LIKE)
-                    ->joinMinistry()->withColumn('Ministry.Name', 'MinistryName')
-                    ->orderBy('MinistryName')->orderByName()->limit(self::SCOPE_CHOICE_LIMIT)->find();
-                foreach ($teams as $team) {
-                    $choices[] = ['id' => (int) $team->getId(), 'text' => sprintf('%s (%s)', $team->getName(), $team->getVirtualColumn('MinistryName'))];
-                }
-                break;
-            case PortalScope::MINISTRY:
-                foreach (VolunteerMinistryQuery::create()->filterByName($like, Criteria::LIKE)->orderByName()->limit(self::SCOPE_CHOICE_LIMIT)->find() as $ministry) {
-                    $choices[] = ['id' => (int) $ministry->getId(), 'text' => (string) $ministry->getName()];
-                }
-                break;
-            case PortalScope::GROUP:
-                foreach (GroupQuery::create()->filterByName($like, Criteria::LIKE)->orderByName()->limit(self::SCOPE_CHOICE_LIMIT)->find() as $group) {
-                    $choices[] = ['id' => (int) $group->getId(), 'text' => (string) $group->getName()];
-                }
-                break;
-            default:
-                throw new InvalidArgumentException(gettext('There is no picker for this kind of scope.'));
+        $choices = [];
+        foreach ($scopes->orderByName()->limit(self::SCOPE_CHOICE_LIMIT)->find() as $scope) {
+            $text = (string) $scope->getName();
+            if ($type === PortalScope::FAMILY) {
+                $city = trim((string) $scope->getCity());
+                $text .= $city === '' ? '' : ' (' . $city . ')';
+            } elseif ($type === PortalScope::TEAM) {
+                $text = sprintf('%s (%s)', $text, $scope->getVirtualColumn('MinistryName'));
+            }
+            $choices[] = ['id' => (int) $scope->getId(), 'text' => $text];
         }
 
         return $choices;
+    }
+
+    /**
+     * What the scope picker can offer for a scope type, before any search.
+     *
+     * @throws InvalidArgumentException for a scope type the picker does not offer
+     */
+    private static function offeredScopes(string $type): FamilyQuery|VolunteerTeamQuery|VolunteerMinistryQuery|GroupQuery
+    {
+        return match ($type) {
+            PortalScope::FAMILY => FamilyQuery::create()->filterByDateDeactivated(null, Criteria::ISNULL),
+            PortalScope::TEAM => VolunteerTeamQuery::create()->joinMinistry(),
+            PortalScope::MINISTRY => VolunteerMinistryQuery::create(),
+            PortalScope::GROUP => GroupQuery::create(),
+            default => throw new InvalidArgumentException(gettext('There is no picker for this kind of scope.')),
+        };
+    }
+
+    /**
+     * Whether the held ids cover every scope the picker offers for the type.
+     * Counting what the picker offers first keeps this to one query per type
+     * for anyone who holds fewer scopes than that.
+     *
+     * @param int[]              $heldIds
+     * @param array<string, int> $offeredCounts filled in per scope type
+     */
+    private static function holdsEveryScope(string $type, array $heldIds, array &$offeredCounts): bool
+    {
+        $offeredCounts[$type] ??= self::offeredScopes($type)->count();
+        if ($offeredCounts[$type] > count($heldIds)) {
+            return false;
+        }
+
+        return self::offeredScopes($type)->filterById($heldIds, Criteria::NOT_IN)->count() === 0;
     }
 
     /**

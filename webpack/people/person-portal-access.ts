@@ -170,12 +170,19 @@ function wireGiveGrant(card: HTMLElement): void {
   }
 
   let scopeType = "none";
+  let heldScopes = "";
   let scopeSelect: TomSelectInstance | null = null;
 
   if (ends) {
     const today = new Date();
     const pad = (n: number): string => String(n).padStart(2, "0");
     ends.min = `${today.getFullYear()}-${pad(today.getMonth() + 1)}-${pad(today.getDate())}`;
+    const markEmpty = (): void => {
+      ends.classList.toggle("is-empty", ends.value === "");
+    };
+    ends.addEventListener("input", markEmpty);
+    ends.addEventListener("change", markEmpty);
+    markEmpty();
   }
 
   const buildScopeSelect = (): void => {
@@ -186,6 +193,7 @@ function wireGiveGrant(card: HTMLElement): void {
       return;
     }
     const type = scopeType;
+    const exclude = heldScopes === "" ? "" : `&exclude=${encodeURIComponent(heldScopes)}`;
     scopeSelect = new window.TomSelect(scope, {
       valueField: "id",
       labelField: "text",
@@ -195,9 +203,12 @@ function wireGiveGrant(card: HTMLElement): void {
       preload: "focus",
       placeholder: scope.dataset.placeholder,
       load: (query: string, callback: (results?: Array<{ id: number; text: string }>) => void) => {
-        fetch(`${window.CRM?.root ?? ""}/admin/api/member-portal/grant-scopes/${type}?q=${encodeURIComponent(query)}`, {
-          credentials: "same-origin",
-        })
+        fetch(
+          `${window.CRM?.root ?? ""}/admin/api/member-portal/grant-scopes/${type}?q=${encodeURIComponent(query)}${exclude}`,
+          {
+            credentials: "same-origin",
+          },
+        )
           .then((response) => (response.ok ? response.json() : []))
           .then((choices: Array<{ id: number; text: string }>) => callback(choices))
           .catch(() => callback());
@@ -208,6 +219,7 @@ function wireGiveGrant(card: HTMLElement): void {
   capability.addEventListener("change", () => {
     const option = capability.selectedOptions[0];
     scopeType = option?.dataset.scopeType || "none";
+    heldScopes = option?.dataset.heldScopes ?? "";
     if (hint) {
       hint.textContent = [option?.dataset.description ?? "", option?.dataset.status ?? ""].filter(Boolean).join(" ");
     }

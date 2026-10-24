@@ -71,6 +71,7 @@ const cleanupRows = () => {
 describe("Admin → Member Portal members, audit, permissions and the person card", () => {
     const saved = {};
     let savedVersion = "v1";
+    let ministryId = 0;
     let teamId = 0;
     let lastNoteId = 0;
 
@@ -97,6 +98,7 @@ describe("Admin → Member Portal members, audit, permissions and the person car
             lastNoteId = Number(row.id);
         });
         cy.makePrivateAdminAPICall("POST", MINISTRIES_URL, { name: `${PREFIX} Hospitality`, description: MARK }, 201).then(({ body }) => {
+            ministryId = body.ministry.id;
             cy.makePrivateAdminAPICall("GET", `${MINISTRIES_URL}/${body.ministry.id}/teams`, null, 200).then(({ body: teams }) => {
                 teamId = teams.teams[0].id;
             });
@@ -219,6 +221,8 @@ describe("Admin → Member Portal members, audit, permissions and the person car
             .and("contain.text", "Adult of the family")
             .and("not.contain.text", "Admin overrides");
         cy.get('#portalPermissionsTable tr[data-capability="volunteer.team.manage"]').should("contain.text", "Team leader");
+        // The catalog keeps "Everyone"; only the person card says "Given to Everyone".
+        cy.get('#portalPermissionsTable tr[data-capability="portal.profile.edit"]').should("contain.text", "Everyone").and("not.contain.text", "Given to");
         cy.get('#portalPermissionsTable tr[data-capability="portal.family.edit"] .portal-holders-open').click();
         cy.get("#portalHoldersModal").should("be.visible");
         cy.get("#portalHoldersTitle").should("have.text", "Change family details");
@@ -248,6 +252,7 @@ describe("Admin → Member Portal members, audit, permissions and the person car
             .click();
         cy.get("#portal-signin-permissions-section").should("be.visible");
         cy.get("#portal-signin-permissions-toggle").should("have.attr", "aria-expanded", "true").and("contain.text", "Hide Permissions");
+        cy.get('#portal-signin-permissions [data-source="everyone"] .fw-medium').should("have.text", "Given to Everyone");
         cy.get("#portal-signin-permissions-count").invoke("text").as("countBefore", { type: "static" });
         cy.get("#portal-grant-add").click();
         cy.get("#portal-grant-modal").should("be.visible");
@@ -256,7 +261,9 @@ describe("Admin → Member Portal members, audit, permissions and the person car
         cy.get("#portal-grant-scope-group .ts-control input").type(PREFIX);
         cy.get(".ts-dropdown .option").contains(`${PREFIX} Hospitality`).click();
         const lastDay = new Date(Date.now() + 60 * 86400000).toISOString().slice(0, 10);
-        cy.get("#portal-grant-ends").type(lastDay);
+        cy.get("#portal-grant-ends").should("have.class", "is-empty").type(lastDay);
+        cy.get("#portal-grant-ends").should("not.have.class", "is-empty").clear();
+        cy.get("#portal-grant-ends").should("have.class", "is-empty").type(lastDay);
         cy.get("#portal-grant-save").click();
         cy.get("#portal-grant-error").should("contain.text", "say why");
         cy.get("#portal-grant-reason").type("Leads the greeters this autumn");
@@ -297,6 +304,55 @@ describe("Admin → Member Portal members, audit, permissions and the person car
         portalNavLabels().should("not.include", "My Teams");
     });
 
+    it("offers only the permissions and scopes the person does not hold yet", () => {
+        let leaderScopeId = 0;
+        cy.makePrivateAdminAPICall("POST", `${MINISTRIES_URL}/${ministryId}/teams`, { name: `${PREFIX} Ushers` }, 201);
+        cy.makePrivateAdminAPICall("POST", "/api/ministries/scopes", { personId: PORTAL_PERSON, scopeType: "team", scopeId: teamId }, 201).then(({ body }) => {
+            leaderScopeId = body.scope.id;
+        });
+
+        cy.freshAdminFormLogin();
+        cy.visit(`/people/view/${PORTAL_PERSON}`);
+        cy.get("#portal-signin-permissions-toggle").click();
+        cy.get('#portal-signin-permissions [data-source="rule"]').should("contain.text", "Manage a team");
+        cy.get("#portal-grant-none-left").should("not.exist");
+        cy.get("#portal-grant-add").should("be.enabled").click();
+        cy.get("#portal-grant-modal").should("be.visible");
+        // Everyone's own are not offered again.
+        ["portal.profile.edit", "portal.calendar.view"].forEach((key) => {
+            cy.get(`#portal-grant-capability option[value="${key}"]`).should("not.exist");
+        });
+        cy.get('#portal-grant-capability option[value="portal.family.contacts.view"]').should("exist");
+        cy.get('#portal-grant-capability option[value="volunteer.team.manage"]').should("have.attr", "data-held-scopes", String(teamId));
+        cy.intercept("GET", "/admin/api/member-portal/grant-scopes/team*").as("teams");
+        cy.get("#portal-grant-capability").select("volunteer.team.manage");
+        cy.get("#portal-grant-scope-group .ts-control input").type(PREFIX);
+        cy.wait("@teams").its("request.url").should("contain", `exclude=${teamId}`);
+        cy.get(".ts-dropdown .option")
+            .should("contain.text", `${PREFIX} Ushers (${PREFIX} Hospitality)`)
+            .and("not.contain.text", `${PREFIX} Hospitality (${PREFIX} Hospitality)`);
+
+        // Mathew Campbell is an adult of the Campbell family (1).
+        cy.visit("/people/view/2");
+        cy.get("#portal-signin-permissions-toggle").click();
+        cy.get('#portal-signin-permissions [data-source="rule"]').should("contain.text", "Change family details");
+        cy.get("#portal-grant-add").click();
+        cy.get("#portal-grant-modal").should("be.visible");
+        cy.get('#portal-grant-capability option[value="portal.family.edit"]').should("have.attr", "data-held-scopes", "1");
+        cy.intercept("GET", "/admin/api/member-portal/grant-scopes/family*").as("families");
+        cy.get("#portal-grant-capability").select("portal.family.edit");
+        cy.get("#portal-grant-scope-group .ts-control input").type("Campbell");
+        cy.wait("@families").then(({ request, response }) => {
+            expect(request.url).to.contain("exclude=1");
+            expect(response.body.map((choice) => choice.id)).to.not.include(1);
+        });
+        cy.get(".ts-dropdown").should("not.contain.text", "Campbell (Denton)");
+
+        cy.then(() => {
+            cy.makePrivateAdminAPICall("DELETE", `/api/ministries/scopes/${leaderScopeId}`, null, 200);
+        });
+    });
+
     it("lists a person's remembered devices and lets an administrator sign one out", () => {
         db(
             `INSERT INTO person_device_pdv (pdv_per_ID, pdv_TokenHash, pdv_Kind, pdv_Label, pdv_CreatedAt, pdv_LastUsedAt, pdv_ExpiresAt, pdv_RevokedAt) VALUES
@@ -316,7 +372,8 @@ describe("Admin → Member Portal members, audit, permissions and the person car
 
     it("shows Edit Records staff only the sign-in status and the counts", () => {
         cy.makePrivateAdminAPICall("POST", `/admin/api/person/${PORTAL_PERSON}/sign-in/grants`, {
-            capability: "portal.calendar.view",
+            capability: "portal.family.contacts.view",
+            scopeId: 3,
             reason: "Hidden from Edit Records",
         }, 201);
         db(

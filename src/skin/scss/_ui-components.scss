@@ -44,6 +44,12 @@
   cursor: not-allowed;
 }
 
+// An empty optional date input still shows its format (mm/dd/yyyy); the page script
+// sets .is-empty until a date is entered, so the format reads as a hint, not a value.
+.form-control[type="date"].is-empty {
+  color: var(--tblr-secondary);
+}
+
 /* A data table with more columns than a phone or tablet in portrait can show
    unrolls into one card per row below the lg breakpoint (the -md-down naming
    of Bootstrap's modal-fullscreen-md-down). Each cell prints its column name
