@@ -15,6 +15,24 @@ const admin = (method, url, body = null, status = 200) => cy.makePrivateAdminAPI
 
 const setSetting = (name, value) => admin("POST", `admin/api/system/config/${name}`, { value });
 
+// Posts the staff sign-in form rather than typing into it. A staff page left open
+// in the browser answers its own pending requests with a redirect to /admin/ once
+// the session ends, which could reload the form while Cypress typed into it.
+const signInAsAdmin = () =>
+    cy.env(["admin.username", "admin.password"]).then((env) => {
+        cy.clearCookies();
+        cy.request({
+            method: "POST",
+            url: "/admin/",
+            form: true,
+            followRedirect: false,
+            body: { User: env["admin.username"], Password: env["admin.password"] },
+        }).then((response) => {
+            expect(response.status).to.eq(302);
+            expect(response.headers.location).to.not.match(/\/admin\/?$/);
+        });
+    });
+
 const auditSince = (afterId) =>
     admin("GET", `admin/api/member-portal/audit?personId=${MEMBER}&length=100`).then(({ body }) =>
         body.rows
@@ -84,7 +102,7 @@ describe("Login as User: changes and endings", () => {
         setSetting("bAllowLoginAsUser", "1");
         setSetting("bLoginAsUserCanWrite", "0");
         setSetting("sVolunteerVersion", "v2");
-        cy.freshAdminFormLogin();
+        signInAsAdmin();
     });
 
     afterEach(() => {
@@ -195,7 +213,7 @@ describe("Login as User: changes and endings", () => {
                 { event: "login_as_started", reason: null, actorId: ADMIN },
                 { event: "session_ended", reason: "idle", actorId: ADMIN },
             ]);
-            cy.freshAdminFormLogin({ visible: true, enabled: true });
+            signInAsAdmin();
             newestSession().should("contain", "Timed out");
         });
     });
@@ -203,7 +221,7 @@ describe("Login as User: changes and endings", () => {
     it("ends with the sign-out reason on Sign out", () => {
         startLoginAsUser();
         cy.request({ url: "/session/end", followRedirect: false }).its("headers.location").should("match", /\/admin\/$/);
-        cy.freshAdminFormLogin({ visible: true, enabled: true });
+        signInAsAdmin();
         newestSession().should("contain", "Signed out");
     });
 });
