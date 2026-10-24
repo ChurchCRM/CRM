@@ -36,7 +36,7 @@ On release publish, `release-bookkeeping.yml` job `publish-visuals` starts `Publ
 The capture spec ships in the same PR as the UI change. Images serve your own check and stay uncommitted.
 
 1. Make a `git worktree` at the PR commit, symlink `node_modules`, then run `composer:install`, `build:webpack`, `build:signatures`
-2. Start the pipeline's own stack: `COMPOSE_PROJECT_NAME=crm-pw-capture npm run docker:ci:new-system:start`. It uses ports 8081 and 3308 (separate from the dev and test stacks) and removes `src/Include/Config.php`, so it runs in the worktree and never in the main checkout
+2. Start the pipeline's own stack: `export COMPOSE_PROJECT_NAME=crm-pw-capture MAILSERVER_PORT=1026 MAILSERVER_GUI_PORT=8026`, then `npm run docker:ci:new-system:start`. The web server and database use ports 8081 and 3308; Mailpit binds `MAILSERVER_PORT` / `MAILSERVER_GUI_PORT`, which default to the dev stack's 1025 / 8025, so set them. The captures read Mailpit at `MAILSERVER_GUI_PORT` (or `CHURCHCRM_MAILPIT_URL`), so run them in the same shell. The start removes `src/Include/Config.php`, so it runs in the worktree and never in the main checkout
 3. First run: `BROWSER_CHANNEL=chrome CHURCHCRM_LOCALE=en npm run marketing:screenshots -- --grep "<capture-name>"`. After a UI tweak, re-run only the capture on the seeded instance: `-- --project=screenshots --no-deps --grep "<capture-name>"`
 4. Open the desktop, tablet and mobile PNGs, fix anything cramped, re-run
 5. Commit the spec only
