@@ -386,10 +386,11 @@ class   SystemConfig
 
     /**
      * @param \ChurchCRM\model\ChurchCRM\Config[]|null $configs the stored rows
-     * @param bool $pruneUnknown delete rows no ConfigItem declares; false keeps
-     *                           them for an upgrade script that still reads a retired key
+     * @param bool $pruneUnknown delete rows no ConfigItem declares. Only Bootstrapper
+     *                           passes true, once the database is current, so an
+     *                           upgrade script can still read a retired key
      */
-    public static function init($configs = null, bool $pruneUnknown = true): void
+    public static function init($configs = null, bool $pruneUnknown = false): void
     {
         self::$configs = self::buildConfigs();
         self::$categories = self::buildCategories();
