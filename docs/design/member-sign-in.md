@@ -1,6 +1,6 @@
 # Member Portal sign-in: email and passkeys, portal permissions, and email that belongs to people
 
-**Status:** accepted for 7.9.0 (George, 2026-10-17). The work lands on the branch `feature/member-sign-in`, one issue and one PR per row of §16. It replaces the password-based design first posted on this PR.
+**Status:** accepted (George, 2026-10-17) for the 7.8.3 release (George, 2026-10-24). The work lands on the branch `feature/member-sign-in`, one issue and one PR per row of §16. It replaces the password-based design first posted on this PR.
 
 **Parent:** #10463 · **Related:** #10511 (authorization RFC), #10392 and #9843 (Login as User), #10197 (throttling), #8977 (Member Portal)
 
@@ -30,6 +30,7 @@
 | 10-12 | #10511, Carl's review | N3: families lose the family email, which moves to an adult. |
 | 10-15 | Discord | George approved the design. The work goes on one branch, `feature/member-sign-in`, for 7.9.0. |
 | 10-17 | George's review on this PR | Accepted for 7.9.0, with eleven points to settle. This revision settles them: shared addresses (§4), what ships alone (§16), the cutover's references and rollback (§12), bulk confirmation (§10.1), one administrator (§9), the family API (§10.2), two tabs (§6.2), proxies (§6.1), teenagers (§4), the RFC 0002 edit (§15) and the doc's location. |
+| 10-24 | Discord | George: the member portal work, member sign-in and the directory included, ships in 7.8.3 as an enhancement of the portal. New features such as online giving stay in 7.9.0. |
 
 This document puts those into one design and one delivery plan.
 
@@ -393,7 +394,7 @@ interface PortalAuthorization {
      - *adult of the family*: head of household or spouse, 18 or older (§4);
      - *team leader*: from the volunteer `team` scope rows.
    - Plugins can add rules (§8.5).
-3. **Given to a person** by an administrator, on the person's page: capability, scope, an optional end date and a reason. Every grant and removal is audited.
+3. **Given to a person** by an administrator, on the person's page: capability, scope, an end date and a reason, both required. Every grant and removal is audited.
 
 Not in this proposal: an administrator giving a capability to a whole group or family role at once. A rule can already derive grants from group roles. If churches need it, it can be added later as a fourth source.
 
@@ -522,7 +523,7 @@ For each family whose email isn't empty (compared trimmed and in lower case):
   - Only rows the staff member may confirm under §9 can be ticked. The server checks every row again.
 - A one-time **Family emails not moved** list on the Member Portal Sign-in tab links to each family with a note, with counts: moved to a head, moved to a spouse, already held, and noted.
 - The notes are ordinary family notes, written with `Family::createTimeLineNote()` (`Family.php:551`). Staff who can see the family's timeline can read them.
-- The move is plain SQL in the 7.9.0 upgrade script (`src/mysql/upgrade/7.9.0.sql`), the same file the other 7.9.0 work adds to. It uses no window functions, so it runs on every database ChurchCRM supports.
+- The move is plain SQL in the 7.8.3 upgrade script (`src/mysql/upgrade/7.8.3.sql`), the same file the other 7.8.3 work adds to. It uses no window functions, so it runs on every database ChurchCRM supports.
 - **Some people lose email:** those who were reached only through the family email, and who aren't the head or spouse who receives it. Most are children. The Sign-in tab's "Email needs attention" list shows them.
 - The `fam_Email` column stays empty for one release, then a later upgrade drops it (§16, row 17). Nothing in core writes it during that release. The drop runs the same move again first, in case other code wrote an address.
 
@@ -617,19 +618,19 @@ The Member Portal page sits at People → People Settings → Member Portal. Its
   | Event check-in and check-out (`checkin_id`, `checkout_id`) | Keyed by person, so they are untouched. |
   | Email history (`eml_usr_ID`) | Left in place. The sender is now named from the person; before, a missing account showed as "Automatic". |
   | The account's own data: API key, two-factor secret and recovery codes, password, per-account settings (`userconfig_ucfg`, `user_settings`), password tokens | Deleted with the account, after the calendar feed, last portal activity and language are copied (above). |
-  | Sign-in audit, given grants, Disable sign-in and Login as Person history | New in 7.9.0 and empty at the cutover. Afterwards they name people from `person_per`. |
+  | Sign-in audit, given grants, Disable sign-in and Login as Person history | New in 7.8.3 and empty at the cutover. Afterwards they name people from `person_per`. |
   | An open session of a deleted account | It ends on the next request. A portal page goes to `/portal/login`, an API call gets 401, and a staff page goes to `/admin`. |
 
   Former self-service members appear as "never signed in" until their first email sign-in, because only the last portal activity is copied.
-- **Rolling back.** ChurchCRM has no downgrade. Once the 7.9.0 files are in place, the database upgrades itself on the first page load. After that, the deleted accounts exist only in a backup taken before the upgrade.
+- **Rolling back.** ChurchCRM has no downgrade. Once the 7.8.3 files are in place, the database upgrades itself on the first page load. After that, the deleted accounts exist only in a backup taken before the upgrade.
   - A rollback means restoring that pre-upgrade database backup with the database tools (the mysql client, phpMyAdmin or the hosting panel), and putting the previous release's files back at the same time.
-  - Putting back only the old files stops at "Software Update Required". Restoring the backup from inside 7.9.0 just upgrades it again on the next page load.
+  - Putting back only the old files stops at "Software Update Required". Restoring the backup from inside 7.8.3 just upgrades it again on the next page load.
   - Anything done after the upgrade is lost.
   - Admin → System → Upgrade offers a backup step, but it can be skipped, and nothing asks for one when the files are replaced by hand. So the release notes say to take a backup first.
   - **The release notes also say how to count the accounts the upgrade removes, before upgrading**, in the version the church runs today:
     - Admin → Users marks each one with the *Self-service only* icon (the same rule: Edit Self on, not an administrator);
     - Admin → Member Portal → Statistics shows the total.
-  - 7.9.0 doesn't ask before the step, because it upgrades itself on the first page load.
+  - 7.8.3 doesn't ask before the step, because it upgrades itself on the first page load.
 
 ## 13. Data model and settings
 
@@ -656,7 +657,7 @@ New tables. All are keyed by `per_ID` with `ON DELETE CASCADE`, except the capab
   - the per-IP limits `iMemberSignInRequestsPerIP` and `iMaxFailedLoginsPerIP` (§6.1).
   - The portal's calendar switch goes away: the calendar page follows the shared calendars (§8.4), and the upgrade clears the selection where the switch was off.
 - **Capabilities** live in code (core, and plugins at boot), not in a table. Only given grants are stored.
-- **Migration:** everything is plain SQL in `src/mysql/upgrade/7.9.0.sql`: the new tables and settings, copying the portal data, deleting the self-service accounts and moving the family emails (§10, §12). `Install.sql` gets the same tables; the Cypress seed adds only the rows its tests need. `fam_Email` is dropped a release later.
+- **Migration:** everything is plain SQL in `src/mysql/upgrade/7.8.3.sql`: the new tables and settings, copying the portal data, deleting the self-service accounts and moving the family emails (§10, §12). `Install.sql` gets the same tables; the Cypress seed adds only the rows its tests need. `fam_Email` is dropped a release later.
 
 ## 14. Security notes
 
@@ -721,7 +722,7 @@ This work does not wait for #10511's F0, as George said on 10-10. It is built so
 | 8 | Passkeys | 7 |
 | 9 | Admin lists, audit view, Statistics on the new tables, the Permissions tab, the person-page card and given grants | 2, 4, 5 |
 | 10 | Email-change rules (§9) | 1, 5 |
-| 11 | Family email moves to people (§10): the SQL in the 7.9.0 upgrade, every reader listed in §2, the directory, CSV, the API and docs | — |
+| 11 | Family email moves to people (§10): the SQL in the 7.8.3 upgrade, every reader listed in §2, the directory, CSV, the API and docs | 1 |
 | 12 | Login as Person (§6.5), replacing #10392 | 1, 9 |
 | 13 | Cutover: upgrade script, staff-only Users list, removing "Self-service only", wording, release notes | 1–12 |
 | 14 | Documentation: a docs tracking issue and a docs PR on `release-docs/<version>` | 13, 15 |
