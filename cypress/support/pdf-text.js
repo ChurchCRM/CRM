@@ -67,7 +67,7 @@ const decodePdfText = (text) => {
     return out;
 };
 
-const TEXT_OPERATOR = /\[((?:\\.|[^\]])*)\]\s*TJ|\(((?:\\.|[^\\)])*)\)\s*Tj/g;
+const TEXT_OPERATOR = /\[((?:\\.|[^\\\]])*)\]\s*TJ|\(((?:\\.|[^\\)])*)\)\s*Tj/g;
 
 const textLines = (content) => {
     const lines = [];
