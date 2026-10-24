@@ -1513,6 +1513,7 @@ CREATE TABLE `person_signin_psi` (
   `psi_LastActivity`      datetime                       DEFAULT NULL,
   `psi_CalendarToken`     varchar(64)                    DEFAULT NULL,
   `psi_CalendarSelection` text                           DEFAULT NULL,
+  `psi_Language`          varchar(20)                    DEFAULT NULL,
   PRIMARY KEY (`psi_per_ID`),
   UNIQUE KEY `psi_calendar_token_uidx` (`psi_CalendarToken`),
   KEY `psi_last_signin_idx`            (`psi_LastSignIn`),

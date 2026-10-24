@@ -87,6 +87,10 @@ describe("7.9.0 upgrade: the release-day cutover", () => {
                 "INSERT INTO person_signin_psi (psi_per_ID, psi_UnconfirmedEmail, psi_UnconfirmedSource, psi_UnconfirmedAt) VALUES (?, ?, 'family_email', '2026-01-02 03:04:05')",
                 [per.unconfirmed, `unconfirmed.${tag}@example.com`],
             );
+            db("INSERT INTO person_signin_psi (psi_per_ID, psi_Language) VALUES (?, 'it_IT')", [per.blocked]);
+            Object.entries({ dormantFlags: "xx_XX", unconfirmed: "es_MX", blocked: "de_DE", administrator: "de_DE" }).forEach(([key, locale]) => {
+                db("INSERT INTO user_settings (user_id, setting_name, setting_value) VALUES (?, 'ui.locale', ?)", [per[key], locale]);
+            });
         });
         runCutover();
     });
@@ -128,6 +132,17 @@ describe("7.9.0 upgrade: the release-day cutover", () => {
         });
     });
 
+    it("carries a self-service account's language to the sign-in row when 7.9.0 ships it", () => {
+        signInRowOf("selfService").its("psi_Language").should("eq", "fr_FR");
+        signInRowOf("unconfirmed").its("psi_Language").should("eq", "es_MX");
+        signInRowOf("dormantFlags").its("psi_Language").should("be.null");
+        signInRowOf("blocked").its("psi_Language").should("eq", "it_IT");
+        signInRowOf("administrator").its("psi_Language").should("be.null");
+        cy.then(() => db("SELECT setting_value AS locale FROM user_settings WHERE user_id = ? AND setting_name = 'ui.locale'", [per.administrator]))
+            .its("0.locale")
+            .should("eq", "de_DE");
+    });
+
     it("deletes the removed account's settings, reset links and sign-in throttle", () => {
         const id = () => per.selfService;
         cy.then(() => db("SELECT COUNT(*) AS n FROM userconfig_ucfg WHERE ucfg_per_id = ?", [id()])).its("0.n").should("eq", 0);
@@ -167,6 +182,7 @@ describe("7.9.0 upgrade: the release-day cutover", () => {
         accountOf("administrator").should("have.length", 1);
         accountOf("readOnly").should("have.length", 1);
         signInRowOf("selfService").its("psi_CalendarToken").should("eq", feeds.selfService);
+        signInRowOf("selfService").its("psi_Language").should("eq", "fr_FR");
         signInRowOf("unconfirmed").its("psi_UnconfirmedEmail").should("eq", `unconfirmed.${tag}@example.com`);
         cy.makePrivateAdminAPICall("GET", `/api/timeline/person/${per.selfService}`, null, 200)
             .its("body.timeline")
@@ -197,6 +213,11 @@ describe("7.9.0 upgrade: the release-day cutover", () => {
             expect(body.url).to.include(feedUrl(feeds.selfService));
             expect(body.choices.find((choice) => choice.id === "calendar:1").selected).to.eq(true);
         });
+    });
+
+    it("opens the portal in the language the removed account had chosen", () => {
+        cy.signInAsMember(per.selfService);
+        cy.request("/portal/").its("body").should("include", '<html lang="fr-FR"');
     });
 });
 

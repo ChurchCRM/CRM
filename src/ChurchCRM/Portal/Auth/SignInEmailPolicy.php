@@ -19,6 +19,7 @@ use ChurchCRM\model\ChurchCRM\PersonSigninQuery;
 use ChurchCRM\model\ChurchCRM\PortalGrantQuery;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\UserQuery;
+use ChurchCRM\Portal\MemberLanguage;
 use ChurchCRM\Portal\PortalSelfService;
 use ChurchCRM\Service\RateLimiter;
 use ChurchCRM\Service\RememberedDeviceService;
@@ -531,14 +532,21 @@ final class SignInEmailPolicy
                 [$token, $expiresAt] = $this->issueLink((int) $person->getId(), self::KIND_CONFIRM, $newEmail, $this->now());
                 $confirmUrl = self::linkUrl($token);
             }
-            (new EmailChangeNoticeEmail($address, $person, $oldEmail, $newEmail, $by, $confirmUrl, $expiresAt))->send();
+            MemberLanguage::inLanguageOf(
+                (int) $person->getId(),
+                static fn (): bool => (new EmailChangeNoticeEmail($address, $person, $oldEmail, $newEmail, $by, $confirmUrl, $expiresAt))->send()
+            );
         }
     }
 
     private function sendConfirmEmail(Person $person, string $address, DateTimeImmutable $now): bool
     {
         [$token, $expiresAt] = $this->issueLink((int) $person->getId(), self::KIND_CHANGE, $address, $now);
-        if ((new EmailChangeConfirmEmail($address, $person, self::linkUrl($token), $expiresAt))->send()) {
+        $sent = MemberLanguage::inLanguageOf(
+            (int) $person->getId(),
+            static fn (): bool => (new EmailChangeConfirmEmail($address, $person, self::linkUrl($token), $expiresAt))->send()
+        );
+        if ($sent) {
             return true;
         }
 

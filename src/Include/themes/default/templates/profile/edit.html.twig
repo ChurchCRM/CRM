@@ -8,7 +8,7 @@
   It still carries csrf_field(); the bundle reads the token out of the form and
   sends it in X-CSRF-Token.
 
-  Variables: `profile` (see docs/portal-templates.md).
+  Variables: `profile`, `languages` (see docs/portal-templates.md).
 #}
 
 {% block content %}
@@ -131,6 +131,20 @@
                 <input class="portal-input" type="tel" id="portal-workPhone" name="workPhone" value="{{ profile.workPhone }}" inputmode="tel">
                 <p class="portal-field-error" data-error-for="workPhone" role="alert"></p>
             </div>
+
+            {% if languages %}
+            <div class="portal-field">
+                <label class="portal-field-label" for="portal-language">{{ gettext('Language') }}</label>
+                <select class="portal-input" id="portal-language" name="language" aria-describedby="portal-language-hint">
+                    <option value="">{{ gettext('Church default (%s)')|format(languages.churchName) }}</option>
+                    {% for choice in languages.choices %}
+                    <option value="{{ choice.locale }}" lang="{{ choice.locale|replace({'_': '-'}) }}"{% if choice.locale == languages.selected %} selected{% endif %}>{{ choice.name }}</option>
+                    {% endfor %}
+                </select>
+                <p class="portal-field-hint" id="portal-language-hint">{{ gettext('The Member Portal and the emails it sends you use this language.') }}</p>
+                <p class="portal-field-error" data-error-for="language" role="alert"></p>
+            </div>
+            {% endif %}
         </div>
 
         <div class="portal-form-actions">

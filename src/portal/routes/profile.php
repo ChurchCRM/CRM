@@ -4,6 +4,7 @@ use ChurchCRM\Authentication\Exceptions\PasswordChangeException;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Portal\Auth\PortalContext;
+use ChurchCRM\Portal\MemberLanguage;
 use ChurchCRM\Portal\Permissions\CorePortalCapabilities;
 use ChurchCRM\Portal\Permissions\RequirePortalCapability;
 use ChurchCRM\Portal\PortalAccountPages;
@@ -52,12 +53,15 @@ $group->get('/profile', function (Request $request, Response $response) use ($po
 
 // GET /portal/profile/edit — the form that POSTs to /api/portal/me.
 $group->get('/profile/edit', function (Request $request, Response $response) use ($portalActor): Response {
+    $person = $portalActor($request);
+
     return PortalTwig::render(
         $response,
         'profile/edit.html.twig',
         [
             'pageTitle' => gettext('Update your details'),
-            'profile' => PortalSelfService::getProfile($portalActor($request)),
+            'profile' => PortalSelfService::getProfile($person),
+            'languages' => MemberLanguage::appliesTo(PortalContext::principal()) ? MemberLanguage::picker((int) $person->getId()) : null,
         ],
         PortalNav::PROFILE
     );

@@ -20,6 +20,7 @@ use ChurchCRM\Portal\Auth\SignInAuditEvent;
 use ChurchCRM\Portal\Auth\SignInEmailPolicy;
 use ChurchCRM\Portal\Auth\SignInMethod;
 use ChurchCRM\Portal\Auth\SignInReason;
+use ChurchCRM\Portal\MemberLanguage;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use DateTimeImmutable;
@@ -497,7 +498,7 @@ final class PasskeyService
         }
 
         try {
-            (new PasskeyAddedEmail($person, $label, $addedAt))->send();
+            MemberLanguage::inLanguageOf((int) $person->getId(), static fn (): bool => (new PasskeyAddedEmail($person, $label, $addedAt))->send());
         } catch (Throwable $e) {
             LoggerUtils::getAppLogger()->error('Could not send the passkey notice', [
                 'personId' => (int) $person->getId(),

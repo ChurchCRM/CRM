@@ -18,6 +18,7 @@ use ChurchCRM\Portal\Auth\SignInAuditEvent;
 use ChurchCRM\Portal\Auth\SignInCandidate;
 use ChurchCRM\Portal\Auth\SignInMethod;
 use ChurchCRM\Portal\Auth\SignInReason;
+use ChurchCRM\Portal\MemberLanguage;
 use ChurchCRM\Utils\AfterResponse;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\KeyManagerUtils;
@@ -204,7 +205,7 @@ final class EmailSignInService
         AfterResponse::defer(static function () use ($person, $code, $token, $expiresAt, $auditId): void {
             $sent = false;
             try {
-                $sent = (new MemberSignInEmail($person, $code, $token, $expiresAt))->send();
+                $sent = MemberLanguage::inLanguageOf((int) $person->getId(), static fn (): bool => (new MemberSignInEmail($person, $code, $token, $expiresAt))->send());
             } catch (Throwable $e) {
                 LoggerUtils::getAppLogger()->error('Could not send the Member Portal sign-in email', [
                     'personId' => (int) $person->getId(),
@@ -249,7 +250,9 @@ final class EmailSignInService
                 : PersonQuery::create()->filterById($candidate->matchedPersonIds, Criteria::IN)->orderById()->find()->getData();
 
             try {
-                $notice = new MemberSignInNoticeEmail($recipients, $candidate->email, $candidate->refusal ?? SignInReason::NO_MATCH, $matchedPeople, $refusedAt);
+                $notice = MemberLanguage::inChurchLanguage(
+                    static fn (): MemberSignInNoticeEmail => new MemberSignInNoticeEmail($recipients, $candidate->email, $candidate->refusal ?? SignInReason::NO_MATCH, $matchedPeople, $refusedAt)
+                );
                 if (!$notice->send()) {
                     LoggerUtils::getAppLogger()->warning('Could not send the Member Portal sign-in notice', ['error' => $notice->getError()]);
                 }

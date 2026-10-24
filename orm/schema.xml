@@ -1736,7 +1736,7 @@
          columns name the staff account that acted, with no foreign key, so the
          record keeps the id after that account is deleted. -->
     <table name="person_signin_psi" idMethod="native" phpName="PersonSignin"
-           description="Member sign-in state for one person: Disable sign-in, session version, proven and unconfirmed email, sign-in times and the calendar feed">
+           description="Member sign-in state for one person: Disable sign-in, session version, proven and unconfirmed email, sign-in times, the calendar feed and the portal language">
         <column name="psi_per_ID" phpName="PersonId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" required="true"/>
         <column name="psi_SessionVersion" phpName="SessionVersion" type="INTEGER" required="true" defaultValue="0"
                 description="Raised whenever every portal session of this person must end"/>
@@ -1758,6 +1758,8 @@
         <column name="psi_LastActivity" phpName="LastActivity" type="TIMESTAMP"/>
         <column name="psi_CalendarToken" phpName="CalendarToken" type="VARCHAR" size="64"/>
         <column name="psi_CalendarSelection" phpName="CalendarSelection" type="LONGVARCHAR"/>
+        <column name="psi_Language" phpName="Language" type="VARCHAR" size="20"
+                description="The language the person chose for the Member Portal and its emails; NULL follows the church's sLanguage"/>
         <foreign-key foreignTable="person_per" name="PersonSigninPerson" phpName="Person"
                      refPhpName="PersonSignin" onDelete="cascade">
             <reference local="psi_per_ID" foreign="per_ID"/>
