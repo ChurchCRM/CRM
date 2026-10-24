@@ -12,7 +12,7 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
 ?>
 <main id="main-content" class="forgot-password-container">
   <div class="forgot-password-card bg-body text-body">
-    <div class="forgot-password-card-logo"><?= ChurchLogo::img() ?></div>
+    <div class="forgot-password-card-logo bg-white rounded"><?= ChurchLogo::img() ?></div>
     <h2 class="text-body"><?= InputUtils::escapeHTML(ChurchMetaData::getChurchName()) ?></h2>
     <p class="login-header-tagline text-secondary"><?= gettext('Account Recovery') ?></p>
     <h3 class="text-body"><?= gettext('Reset your password') ?></h3>
@@ -22,13 +22,13 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
     <form id="setPasswordForm" method="post" action="<?= InputUtils::escapeAttribute($sRootPath . '/session/forgot-password/set/' . rawurlencode($token)) ?>">
       <?= CSRFUtils::getTokenInputField() ?>
       <div class="mb-3">
-        <label for="password" class="form-label"><?= gettext('New Password') ?></label>
-        <input id="password" name="password" type="password" class="form-control" autocomplete="new-password" required minlength="<?= (int) $minPasswordLength ?>" aria-describedby="password-help">
+        <label for="password" class="form-label text-body"><?= gettext('New Password') ?></label>
+        <input id="password" name="password" type="password" class="form-control bg-body text-body" autocomplete="new-password" required minlength="<?= (int) $minPasswordLength ?>" aria-describedby="password-help">
         <div id="password-help" class="form-text"><?= InputUtils::escapeHTML(gettext('Your new password must be at least') . ' ' . $minPasswordLength . ' ' . gettext('characters')) ?></div>
       </div>
       <div class="mb-3">
-        <label for="passwordConfirmation" class="form-label"><?= gettext('Confirm Password') ?></label>
-        <input id="passwordConfirmation" name="passwordConfirmation" type="password" class="form-control" autocomplete="new-password" required>
+        <label for="passwordConfirmation" class="form-label text-body"><?= gettext('Confirm Password') ?></label>
+        <input id="passwordConfirmation" name="passwordConfirmation" type="password" class="form-control bg-body text-body" autocomplete="new-password" required>
       </div>
       <button id="setPassword" type="submit" class="btn-reset"><?= gettext('Reset Password') ?></button>
       <div class="form-footer"><a href="<?= $sRootPath ?>/session/begin"><?= gettext('Back to login') ?></a></div>
