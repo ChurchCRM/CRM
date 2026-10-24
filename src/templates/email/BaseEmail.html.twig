@@ -199,15 +199,19 @@
                 {% endif %}
 
                 {% block closing %}
+                {% if sGreeterCustomMsg1 or sGreeterCustomMsg2 or confirmSincerely or confirmSigner %}
                 <!-- start copy -->
                 <tr>
                     <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; border-bottom: 3px solid #d4dadf">
                         {% if sGreeterCustomMsg1 %}<p style="margin: 0 0 12px;">{{ sGreeterCustomMsg1|nl2br }}</p>{% endif %}
                         {% if sGreeterCustomMsg2 %}<p style="margin: 0 0 12px;">{{ sGreeterCustomMsg2|nl2br }}</p>{% endif %}
-                        <p style="margin: 0;">{{confirmSincerely}},<br> {{confirmSigner}}</p>
+                        {% if confirmSincerely or confirmSigner %}
+                        <p style="margin: 0;">{% if confirmSincerely %}{{ confirmSincerely }},{% endif %}{% if confirmSincerely and confirmSigner %}<br> {% endif %}{{ confirmSigner }}</p>
+                        {% endif %}
                     </td>
                 </tr>
                 <!-- end copy -->
+                {% endif %}
                 {% endblock %}
 
             </table>
