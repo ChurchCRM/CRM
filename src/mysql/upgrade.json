@@ -114,7 +114,7 @@
     "scripts": [
       "/mysql/upgrade/7.8.2.sql",
       "/mysql/upgrade/7.8.2-pledge-groupkey-index.sql",
-      "/mysql/upgrade/7.9.0.sql"
+      "/mysql/upgrade/7.8.3.sql"
     ],
     "dbVersion": "7.8.2"
   }

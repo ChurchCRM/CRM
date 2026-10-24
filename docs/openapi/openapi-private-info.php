@@ -128,7 +128,7 @@
  *     @OA\Property(property="SecondCountry", type="string", nullable=true),
  *     @OA\Property(property="SecondIsMailing", type="boolean"),
  *     @OA\Property(property="HomePhone", type="string", nullable=true),
- *     @OA\Property(property="Email", type="string", readOnly=true, deprecated=true, description="Deprecated in 7.9.0: the head of household's email, else the spouse's. Removed with the family email column."),
+ *     @OA\Property(property="Email", type="string", readOnly=true, deprecated=true, description="Deprecated in 7.8.3: the head of household's email, else the spouse's. Removed with the family email column."),
  *     @OA\Property(property="Weddingdate", type="string", format="date", nullable=true),
  *     @OA\Property(property="DateEntered", type="string", format="date-time", nullable=true),
  *     @OA\Property(property="DateLastEdited", type="string", format="date-time", nullable=true),
