@@ -165,7 +165,7 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
                             <td class="text-center">
                                 <?php $locked = $user->isLocked(); $mustChange = $user->getNeedPasswordChange(); $signInBlockedLabel = $user->getSignInBlockedLabel(); ?>
                                 <?php if ($signInBlockedLabel !== null): ?>
-                                    <span class="badge rounded-pill bg-secondary text-white me-1" data-cy="sign-in-blocked-badge" data-sign-in-blocked="<?= InputUtils::escapeAttribute($user->getSignInBlockedReason()) ?>" title="<?= InputUtils::escapeAttribute(gettext('This person is deceased or inactive, so this account cannot sign in')) ?>"><i class="fa-solid fa-user-slash me-1"></i><?= InputUtils::escapeHTML($signInBlockedLabel) ?></span>
+                                    <span class="badge rounded-pill bg-secondary text-white me-1" data-cy="sign-in-blocked-badge" data-sign-in-blocked="<?= InputUtils::escapeAttribute($user->getSignInBlockedReason()) ?>" title="<?= InputUtils::escapeAttribute(gettext('The linked person may not sign in, so this account cannot sign in')) ?>"><i class="fa-solid fa-user-slash me-1"></i><?= InputUtils::escapeHTML($signInBlockedLabel) ?></span>
                                 <?php endif; ?>
                                 <?php if ($locked): ?>
                                     <span class="badge rounded-pill bg-danger text-white me-1" title="<?= InputUtils::escapeAttribute(gettext('Account locked due to too many failed login attempts')) ?>"><i class="fa-solid fa-lock me-1"></i><?= gettext('Locked') ?></span>

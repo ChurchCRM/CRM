@@ -87,25 +87,45 @@ class UserService
 
     /**
      * True when the person is an administrator who can sign in and no other
-     * administrator can. Such a person must not be made deceased or inactive.
+     * administrator can. Such a person must not be made deceased or inactive,
+     * nor have their sign-in disabled.
      */
     public function isLastSignInCapableAdmin(int $personId): bool
     {
-        $isTargetAdmin = false;
-        $otherAdmins = 0;
+        return $this->wouldLeaveNoAdminSignIn([$personId]);
+    }
+
+    /**
+     * True when the family holds every administrator who can sign in, so
+     * deactivating it would leave nobody who can sign in as administrator.
+     */
+    public function familyHoldsLastSignInCapableAdmins(int $familyId): bool
+    {
+        $memberIds = PersonQuery::create()->filterByFamId($familyId)->select('Id')->find()->toArray();
+
+        return $familyId > 0 && $this->wouldLeaveNoAdminSignIn(array_map('intval', $memberIds));
+    }
+
+    /**
+     * @param int[] $personIds
+     */
+    private function wouldLeaveNoAdminSignIn(array $personIds): bool
+    {
+        $inside = 0;
+        $outside = 0;
 
         foreach (UserQuery::create()->filterByAdmin(true)->find() as $admin) {
             if (!$admin->canSignIn()) {
                 continue;
             }
-            if ($admin->getPersonId() === $personId) {
-                $isTargetAdmin = true;
+            if (in_array((int) $admin->getPersonId(), $personIds, true)) {
+                $inside++;
             } else {
-                $otherAdmins++;
+                $outside++;
             }
         }
 
-        return $isTargetAdmin && $otherAdmins === 0;
+        return $inside > 0 && $outside === 0;
     }
 
     /**

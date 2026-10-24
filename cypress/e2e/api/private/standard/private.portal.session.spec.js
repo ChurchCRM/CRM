@@ -8,8 +8,9 @@
  * STAFF portal session for its own person. Once the staff session itself has
  * timed out (iSessionTimeout), only the portal session is left: that is the
  * "portal principal, no user" request the portal must accept and every staff
- * route must refuse. Disable sign-in, the session version and the audit have no
- * HTTP surface until rows 4 and 9, so they are set and read with cy.dbQuery().
+ * route must refuse. Disable sign-in also blocks the staff session (row 4). The
+ * session version and the audit have no HTTP surface until row 9, so they are set
+ * and read with cy.dbQuery().
  */
 
 const staffUser = { username: "tony.wade@example.com", password: "basicjoe", personId: 3 };
@@ -175,21 +176,22 @@ describe("Member Portal session (portal principal)", () => {
         });
     });
 
-    it("keeps a signed-in staff account out of the portal while Disable sign-in is on", () => {
+    it("ends both the staff session and its portal session once Disable sign-in is on", () => {
         lastAuditId().then((startId) => {
             signIn(staffUser);
             openPortal();
 
             db("UPDATE person_signin_psi SET psi_SignInDisabled = 1 WHERE psi_per_ID = ?", [staffUser.personId]);
 
-            cy.request({ url: "/portal/", failOnStatusCode: false }).its("status").should("eq", 403);
-            cy.request({ url: "/api/portal/me", failOnStatusCode: false }).its("status").should("eq", 403);
+            cy.request({ url: "/portal/", followRedirect: false }).then((response) => {
+                expect(response.status).to.eq(302);
+                expect(response.redirectedToUrl).to.include("/session/begin");
+            });
+            cy.request({ url: "/api/portal/me", failOnStatusCode: false }).its("status").should("eq", 401);
+            cy.request({ url: "/v2/dashboard", followRedirect: false }).its("status").should("eq", 302);
 
             auditRowsSince(staffUser.personId, startId).then((rows) => {
-                expect(rows.map((row) => `${row.psa_Event}:${row.psa_Reason}`)).to.include.members([
-                    "session_ended:sign_in_disabled",
-                    "refused:sign_in_disabled",
-                ]);
+                expect(rows.map((row) => row.psa_Event)).not.to.include("refused");
             });
         });
     });
