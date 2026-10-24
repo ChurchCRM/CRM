@@ -143,8 +143,8 @@ async function updateDBDemoSQL(newVersion, oldVersion) {
         const hasWindowsLineEndings = sqlContent.includes('\r\n');
         const lineEnding = hasWindowsLineEndings ? '\r\n' : '\n';
         
-        // Find the INSERT INTO version_ver VALUES line
-        const versionInsertRegex = /(INSERT INTO `version_ver` VALUES .*?);/s;
+        // Find the INSERT INTO version_ver statement
+        const versionInsertRegex = /(INSERT INTO `version_ver` (?:\([^)]*\) )?VALUES .*?);/s;
         const match = sqlContent.match(versionInsertRegex);
         
         if (!match) {
@@ -163,7 +163,6 @@ async function updateDBDemoSQL(newVersion, oldVersion) {
         }
         
         const newId = maxId + 1;
-        const newAutoIncrement = newId + 1; // Set AUTO_INCREMENT to next available ID
         const currentDate = new Date().toISOString().slice(0, 19).replace('T', ' ');
         
         // Create the new version entry
@@ -172,12 +171,8 @@ async function updateDBDemoSQL(newVersion, oldVersion) {
         // Add the new entry to the existing INSERT statement
         const updatedInsert = currentInsert + newVersionEntry;
         
-        // Update the AUTO_INCREMENT value in the CREATE TABLE statement
-        const autoIncrementRegex = /(AUTO_INCREMENT=)(\d+)/;
-        const updatedSQLWithAutoIncrement = sqlContent.replace(autoIncrementRegex, `$1${newAutoIncrement}`);
-        
         // Replace the old INSERT with the updated one
-        const finalSQLContent = updatedSQLWithAutoIncrement.replace(versionInsertRegex, `${updatedInsert};`);
+        const finalSQLContent = sqlContent.replace(versionInsertRegex, `${updatedInsert};`);
         
         // Ensure the file ends with exactly one newline (preserve original ending)
         const trimmedContent = finalSQLContent.replace(/\s+$/, '');
@@ -187,7 +182,6 @@ async function updateDBDemoSQL(newVersion, oldVersion) {
         await fs.writeFile(demoSQLFile, finalContent, 'utf8');
         
         console.log(`✅ Added version ${newVersion} (ID: ${newId}) to ${demoSQLFile}`);
-        console.log(`   AUTO_INCREMENT updated to: ${newAutoIncrement}`);
         console.log(`   Line ending preserved: ${hasWindowsLineEndings ? 'CRLF' : 'LF'}`);
         
     } catch (error) {

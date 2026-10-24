@@ -9,6 +9,11 @@ use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\Portal\Permissions\CorePortalCapabilities;
+use ChurchCRM\Portal\Permissions\PortalAuthorizationService;
+use ChurchCRM\Portal\Permissions\PortalScope;
+use ChurchCRM\Portal\Permissions\Rules\FamilyAdultRule;
+use ChurchCRM\Slim\Middleware\Api\FamilyEmailDeprecationMiddleware;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\ORMUtils;
 use DateTime;
@@ -69,7 +74,6 @@ class PortalSelfService
         'zip' => ['getZip', 'setZip'],
         'country' => ['getCountry', 'setCountry'],
         'homePhone' => ['getHomePhone', 'setHomePhone'],
-        'email' => ['getEmail', 'setEmail'],
     ];
 
     /**
@@ -124,8 +128,9 @@ class PortalSelfService
     }
 
     /**
-     * The acting member's family: the address card, every member, and whether
-     * this member is one of the adults who may change it.
+     * The acting member's family: the address card, every member, and what this
+     * member may do with it. Other members' email and phone are there only for
+     * someone who holds `portal.family.contacts.view` on the family (§4).
      *
      * @return array<string, mixed>
      */
@@ -133,26 +138,30 @@ class PortalSelfService
     {
         $family = $actor->getFamily();
         if ($family === null) {
-            return ['family' => null, 'members' => [], 'canEdit' => false, 'canConfirm' => false];
+            return ['family' => null, 'members' => [], 'canEdit' => false, 'canConfirm' => false, 'canSeeContacts' => false];
         }
+
+        $canSeeContacts = self::mayOnFamily($actor, CorePortalCapabilities::FAMILY_CONTACTS_VIEW, $family);
 
         $members = [];
         foreach ($family->getPeopleSorted() as $member) {
+            $isSelf = (int) $member->getId() === (int) $actor->getId();
+            $showContacts = $isSelf || $canSeeContacts;
             $members[] = [
                 'id' => (int) $member->getId(),
                 'fullName' => $member->getFullName(),
                 'role' => $member->getFamilyRoleName(),
-                'email' => (string) $member->getEmail(),
-                'cellPhone' => (string) $member->getCellPhone(),
+                'email' => $showContacts ? (string) $member->getEmail() : '',
+                'cellPhone' => $showContacts ? (string) $member->getCellPhone() : '',
                 'photoUrl' => self::getPhotoUrl($member, $actor),
                 'initials' => self::getInitials($member),
-                'isSelf' => (int) $member->getId() === (int) $actor->getId(),
+                'isSelf' => $isSelf,
                 'isAdult' => self::isAdultOf($family, $member),
                 'awaitingReview' => $member->getEnteredBy() === Person::SELF_REGISTER && (bool) $member->getNeedsReview(),
             ];
         }
 
-        return [
+        $view = [
             'family' => [
                 'id' => (int) $family->getId(),
                 'name' => (string) $family->getName(),
@@ -163,13 +172,20 @@ class PortalSelfService
                 'zip' => (string) $family->getZip(),
                 'country' => (string) $family->getCountry(),
                 'homePhone' => (string) $family->getHomePhone(),
-                'email' => (string) $family->getEmail(),
                 'weddingDate' => (string) ($family->getWeddingdate('Y-m-d') ?? ''),
             ],
             'members' => $members,
-            'canEdit' => self::isAdultOf($family, $actor),
-            'canConfirm' => true,
+            'canEdit' => self::mayOnFamily($actor, CorePortalCapabilities::FAMILY_EDIT, $family),
+            'canConfirm' => self::mayOnFamily($actor, CorePortalCapabilities::FAMILY_CONFIRM, $family),
+            'canSeeContacts' => $canSeeContacts,
         ];
+        if (FamilyEmailDeprecationMiddleware::isHandling()) {
+            $recipient = $family->getEmailRecipient();
+            $mayShow = $recipient !== null && ($canSeeContacts || (int) $recipient->getId() === (int) $actor->getId());
+            $view['family']['email'] = $mayShow ? (string) $recipient->getEmail() : '';
+        }
+
+        return $view;
     }
 
     /**
@@ -195,24 +211,19 @@ class PortalSelfService
     // -- The adult-of-the-family rule ----------------------------------------
 
     /**
-     * Whether this person is one of the family's adults — the audience the
-     * verify flow addresses, and the only one that may change the family's
-     * address and contact details (design §5.2).
-     *
-     * "Adult" is not a column: it is whichever family roles the administrator
-     * put in `sDirRoleHead` and `sDirRoleSpouse`, which is exactly what
-     * `Family::getAdults()` reads. Asking the model means a church that renamed
-     * or renumbered its roles gets the same answer here as everywhere else.
+     * Whether this person is one of the family's adults: a head of household or
+     * spouse who is 18 or older (member sign-in design §4, `FamilyAdultRule`).
      */
     public static function isAdultOf(Family $family, Person $person): bool
     {
-        foreach ($family->getAdults() as $adult) {
-            if ((int) $adult->getId() === (int) $person->getId()) {
-                return true;
-            }
-        }
+        return (int) $person->getFamId() === (int) $family->getId() && FamilyAdultRule::isAdult($person, null, $family);
+    }
 
-        return false;
+    private static function mayOnFamily(Person $actor, string $capability, Family $family): bool
+    {
+        return (new PortalAuthorizationService())
+            ->decideForPerson((int) $actor->getId(), $capability, PortalScope::family((int) $family->getId()))
+            ->allowed;
     }
 
     // -- Writes --------------------------------------------------------------
@@ -231,8 +242,10 @@ class PortalSelfService
     {
         $changed = [];
 
+        $emailLocked = $actor->isUser();
+
         foreach (self::PERSON_FIELDS as $field => [$getter, $setter]) {
-            if (!array_key_exists($field, $body)) {
+            if (!array_key_exists($field, $body) || ($field === 'email' && $emailLocked)) {
                 continue;
             }
             $value = self::asString($body[$field]);
@@ -338,6 +351,14 @@ class PortalSelfService
             throw new PortalSelfServiceException(gettext('You are not part of a family record yet.'), [], 404);
         }
 
+        if (!self::mayOnFamily($actor, CorePortalCapabilities::FAMILY_CONFIRM, $family)) {
+            throw new PortalSelfServiceException(
+                gettext('Only an adult of your family can confirm these details. Please contact the church office.'),
+                [],
+                403
+            );
+        }
+
         if ($result !== self::CONFIRM_NO_CHANGE && $result !== self::CONFIRM_CHANGE_NEEDED) {
             throw new PortalSelfServiceException(gettext('Please choose whether your details need changing.'));
         }
@@ -404,7 +425,7 @@ class PortalSelfService
         $note->setEntered((int) $actor->getId());
         $note->setText(sprintf(
             gettext('Added through the Member Portal and waiting for review: %s'),
-            $person->getFullName()
+            InputUtils::escapeHTML(sprintf('%s (%s)', $person->getFullName(), $person->getFamilyRoleName()))
         ));
         $note->save();
 
@@ -443,7 +464,7 @@ class PortalSelfService
             throw new PortalSelfServiceException(gettext('You are not part of a family record yet.'), [], 404);
         }
 
-        if (!self::isAdultOf($family, $actor)) {
+        if (!self::mayOnFamily($actor, CorePortalCapabilities::FAMILY_EDIT, $family)) {
             throw new PortalSelfServiceException(
                 gettext('Only an adult of your family can change these details. Please contact the church office.'),
                 [],
@@ -519,7 +540,6 @@ class PortalSelfService
             'zip' => gettext('Zip'),
             'country' => gettext('Country'),
             'homePhone' => gettext('Home Phone'),
-            'email' => gettext('Email'),
             'weddingDate' => gettext('Wedding Date'),
         ];
     }
@@ -685,22 +705,13 @@ class PortalSelfService
     }
 
     /**
-     * The submitted family role, kept only when it is one this installation
-     * actually offers and not a head or spouse role. Anything else falls back
-     * to the default above: an adult role would count the unreviewed entry in
-     * `Family::getAdults()` before staff have looked at it.
+     * The submitted family role, kept when this installation offers it, the
+     * same as public self-registration. Anything else falls back to the
+     * default above.
      */
     private static function resolveRoleId(mixed $role): int
     {
         $roleId = (int) $role;
-        $adultRoleIds = array_map(
-            'intval',
-            explode(',', SystemConfig::getValue('sDirRoleHead') . ',' . SystemConfig::getValue('sDirRoleSpouse'))
-        );
-        if (in_array($roleId, $adultRoleIds, true)) {
-            return self::getDefaultNewMemberRoleId();
-        }
-
         foreach (self::getFamilyRoles() as $option) {
             if ($option['id'] === $roleId) {
                 return $roleId;

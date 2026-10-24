@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Portal\Auth\MemberSignInRule;
 use ChurchCRM\Portal\ThemeManager;
 use ChurchCRM\Portal\ThemeValidator;
 use ChurchCRM\Utils\InputUtils;
@@ -12,7 +13,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
  *
  * Variables from the route: $themes, $activeTheme, $activeThemeExists,
  * $developerMode, $showCalendar, $showVolunteer, $allowBirthdayEdit, $stats,
- * $portalCalendars.
+ * $portalCalendars, $signIn, $csrfToken.
  *
  * Every theme was validated server-side by the route, so each entry carries a
  * badge on first paint without a round trip. The page's behaviour lives in
@@ -23,7 +24,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 $statusBadge = static function (string $status): array {
     return match ($status) {
         ThemeValidator::LEVEL_ERROR => ['bg-danger text-white', 'fa-circle-xmark', gettext('Errors')],
-        ThemeValidator::LEVEL_WARNING => ['bg-warning text-white', 'fa-triangle-exclamation', gettext('Warnings')],
+        ThemeValidator::LEVEL_WARNING => ['bg-warning text-dark', 'fa-triangle-exclamation', gettext('Warnings')],
         default => ['bg-success text-white', 'fa-circle-check', gettext('Valid')],
     };
 };
@@ -47,7 +48,7 @@ $calendarKind = static function (array $portalCalendar): string {
         : gettext('Ministry calendar');
 };
 
-$themesDocUrl = 'https://github.com/ChurchCRM/CRM/blob/master/docs/portal-themes.md';
+$themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration/member-portal-theme-guide', 'member_portal_themes');
 ?>
 
 <div class="container-fluid" id="memberPortalPage">
@@ -68,18 +69,23 @@ $themesDocUrl = 'https://github.com/ChurchCRM/CRM/blob/master/docs/portal-themes
 
     <ul class="nav nav-tabs" role="tablist" id="memberPortalTabs">
         <li class="nav-item" role="presentation">
-            <a class="nav-link active" id="portal-settings-tab" data-bs-toggle="tab" href="#portal-settings" role="tab">
+            <a class="nav-link active" id="portal-statistics-tab" data-bs-toggle="tab" href="#portal-statistics" role="tab">
+                <i class="fa-solid fa-chart-simple me-2"></i><?= gettext('Statistics') ?>
+            </a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="portal-settings-tab" data-bs-toggle="tab" href="#portal-settings" role="tab">
                 <i class="fa-solid fa-sliders me-2"></i><?= gettext('Settings') ?>
+            </a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="portal-signin-tab" data-bs-toggle="tab" href="#portal-signin" role="tab">
+                <i class="fa-solid fa-right-to-bracket me-2"></i><?= gettext('Sign-in') ?>
             </a>
         </li>
         <li class="nav-item" role="presentation">
             <a class="nav-link" id="portal-themes-tab" data-bs-toggle="tab" href="#portal-themes" role="tab">
                 <i class="fa-solid fa-palette me-2"></i><?= gettext('Themes') ?>
-            </a>
-        </li>
-        <li class="nav-item" role="presentation">
-            <a class="nav-link" id="portal-statistics-tab" data-bs-toggle="tab" href="#portal-statistics" role="tab">
-                <i class="fa-solid fa-chart-simple me-2"></i><?= gettext('Statistics') ?>
             </a>
         </li>
         <!-- Calendars (MP5, issue #9866): which calendars members see. -->
@@ -93,7 +99,7 @@ $themesDocUrl = 'https://github.com/ChurchCRM/CRM/blob/master/docs/portal-themes
     <div class="tab-content pt-3">
 
         <!-- ============================ Settings ============================ -->
-        <div class="tab-pane fade show active" id="portal-settings" role="tabpanel">
+        <div class="tab-pane fade" id="portal-settings" role="tabpanel">
             <div class="row">
                 <div class="col-12 col-xl-6">
                     <div class="card mb-3">
@@ -122,7 +128,7 @@ $themesDocUrl = 'https://github.com/ChurchCRM/CRM/blob/master/docs/portal-themes
                                     <i class="fa-solid fa-circle-check me-2"></i><?= gettext('Activate') ?>
                                 </button>
                             </div>
-                            <p class="form-hint mt-2">
+                            <p class="form-text mt-2">
                                 <?= gettext('A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM.') ?>
                             </p>
 
@@ -154,6 +160,170 @@ $themesDocUrl = 'https://github.com/ChurchCRM/CRM/blob/master/docs/portal-themes
                     <div id="portalSettingsPanel"></div>
                 </div>
             </div>
+        </div>
+
+        <!-- ============================= Sign-in ============================ -->
+        <div class="tab-pane fade" id="portal-signin" role="tabpanel">
+            <?php
+            $signInValues = $signIn['values'];
+            $memberSignInOn = $signInValues['bMemberSignIn'] === '1';
+            $tickedRoles = MemberSignInRule::idList($signInValues['sMemberSignInFamilyRoles']);
+            $tickedClassifications = MemberSignInRule::idList($signInValues['sMemberSignInClassifications']);
+            $switchRow = static function (string $key, string $label, bool $on, array $tooltips, bool $disabled = false): string {
+                return '<label class="form-check form-switch mb-1">'
+                    . '<input class="form-check-input" type="checkbox" id="' . $key . '" name="' . $key . '" value="1"'
+                    . ($on ? ' checked' : '') . ($disabled ? ' disabled' : '') . '>'
+                    . '<span class="form-check-label fw-medium">' . InputUtils::escapeHTML($label) . '</span>'
+                    . '</label>'
+                    . '<div class="form-text mb-2">' . InputUtils::escapeHTML($tooltips[$key]) . '</div>'
+                    . '<div class="invalid-feedback d-block" data-error-for="' . $key . '"></div>';
+            };
+            $numberField = static function (string $key, string $label, string $value, int $min, int $max, array $tooltips): string {
+                return '<div class="mb-3">'
+                    . '<label class="form-label" for="' . $key . '">' . InputUtils::escapeHTML($label) . '</label>'
+                    . '<input type="number" class="form-control w-auto" id="' . $key . '" name="' . $key . '"'
+                    . ' min="' . $min . '" max="' . $max . '" step="1" required value="' . InputUtils::escapeAttribute($value) . '">'
+                    . '<div class="form-text">' . InputUtils::escapeHTML($tooltips[$key]) . '</div>'
+                    . '<div class="invalid-feedback d-block" data-error-for="' . $key . '"></div>'
+                    . '</div>';
+            };
+            ?>
+            <form id="memberSignInForm" novalidate autocomplete="off">
+                <div class="row row-cards">
+                    <div class="col-12">
+                        <div class="card" id="memberSignInCard">
+                            <div class="card-header">
+                                <h3 class="card-title mb-0">
+                                    <i class="fa-solid fa-envelope-open-text me-2"></i><?= gettext('Member sign-in') ?>
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <?= $switchRow('bMemberSignIn', gettext('Let members sign in with their email'), $memberSignInOn, $signIn['tooltips'], $signIn['emailProblem'] !== null && !$memberSignInOn) ?>
+                                <?php if ($signIn['emailProblem'] !== null): ?>
+                                    <div class="alert alert-warning mb-0 mt-2" id="memberSignInEmailProblem">
+                                        <i class="fa-solid fa-triangle-exclamation me-2"></i><?= InputUtils::escapeHTML($signIn['emailProblem']) ?>
+                                        <a href="<?= SystemURLs::getRootPath() ?>/admin/email" class="ms-1"><?= gettext('Set up email') ?></a>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-xl-6">
+                        <div class="card h-100" id="memberSignInWhoCard">
+                            <div class="card-header">
+                                <h3 class="card-title mb-0">
+                                    <i class="fa-solid fa-user-check me-2"></i><?= gettext('Who may sign in') ?>
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <p class="text-secondary">
+                                    <?= gettext('Member sign-in never lets in people who are deceased, inactive, in an inactive family, awaiting review or have Disable sign-in on. These choices decide who else may.') ?>
+                                </p>
+                                <fieldset class="mb-3">
+                                    <legend class="form-label"><?= gettext('Family Roles') ?></legend>
+                                    <div id="memberSignInFamilyRoles">
+                                        <?php foreach ($signIn['familyRoles'] as $role): ?>
+                                            <label class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="sMemberSignInFamilyRoles"
+                                                       id="memberSignInRole-<?= (int) $role['id'] ?>"
+                                                       value="<?= (int) $role['id'] ?>"
+                                                       <?= in_array((int) $role['id'], $tickedRoles, true) ? 'checked' : '' ?>>
+                                                <span class="form-check-label"><?= InputUtils::escapeHTML($role['name']) ?></span>
+                                            </label>
+                                        <?php endforeach; ?>
+                                    </div>
+                                    <div class="invalid-feedback d-block" data-error-for="sMemberSignInFamilyRoles"></div>
+                                </fieldset>
+                                <fieldset class="mb-3">
+                                    <legend class="form-label"><?= gettext('Classifications') ?></legend>
+                                    <div class="form-text mb-2"><?= gettext('This is where you decide about guests. The number is how many active people have each classification.') ?></div>
+                                    <div id="memberSignInClassifications">
+                                        <?php foreach ($signIn['classifications'] as $classification): ?>
+                                            <label class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="sMemberSignInClassifications"
+                                                       id="memberSignInClassification-<?= (int) $classification['id'] ?>"
+                                                       value="<?= (int) $classification['id'] ?>"
+                                                       <?= in_array((int) $classification['id'], $tickedClassifications, true) ? 'checked' : '' ?>>
+                                                <span class="form-check-label">
+                                                    <?= InputUtils::escapeHTML($classification['name']) ?>
+                                                    <span class="badge bg-secondary text-white ms-1" data-cy="classification-count"><?= (int) $classification['activeCount'] ?></span>
+                                                </span>
+                                            </label>
+                                        <?php endforeach; ?>
+                                    </div>
+                                    <div class="invalid-feedback d-block" data-error-for="sMemberSignInClassifications"></div>
+                                </fieldset>
+                                <?= $numberField('iMemberSignInMinAge', gettext('Minimum age'), $signInValues['iMemberSignInMinAge'], 0, 120, $signIn['tooltips']) ?>
+                            </div>
+                            <div class="card-footer text-secondary">
+                                <?= sprintf(gettext('People the saved settings let in: %s'), '<strong id="memberSignInMayCount">' . (int) $signIn['maySignInCount'] . '</strong>') ?>
+                                <div class="small"><?= gettext('Each of them also needs their own email that nobody else uses.') ?></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-xl-6">
+                        <div class="card mb-3" id="memberSignInSessionsCard">
+                            <div class="card-header">
+                                <h3 class="card-title mb-0">
+                                    <i class="fa-solid fa-clock me-2"></i><?= gettext('Codes, sessions and devices') ?>
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <?= $numberField('iSignInLinkMinutes', gettext('Link and code lifetime (minutes)'), $signInValues['iSignInLinkMinutes'], 1, 1440, $signIn['tooltips']) ?>
+                                <?= $numberField('iMemberSignInRequestsPerIP', gettext('Sign-in emails per IP address per hour'), $signInValues['iMemberSignInRequestsPerIP'], 0, 10000, $signIn['tooltips']) ?>
+                                <?= $numberField('iPortalIdleMinutes', gettext('Idle time (minutes)'), $signInValues['iPortalIdleMinutes'], 1, 1440, $signIn['tooltips']) ?>
+                                <?= $numberField('iRememberDeviceDays', gettext('Keep me signed in (days)'), $signInValues['iRememberDeviceDays'], 0, 365, $signIn['tooltips']) ?>
+                                <?= $switchRow('bPortalPasskeys', gettext('Passkeys'), $signInValues['bPortalPasskeys'] === '1', $signIn['tooltips']) ?>
+                                <?php if ($signIn['passkeyProblem'] !== null): ?>
+                                    <div class="text-warning small" id="memberSignInPasskeyProblem">
+                                        <i class="fa-solid fa-triangle-exclamation me-1"></i><?= InputUtils::escapeHTML($signIn['passkeyProblem']) ?>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                        <div class="card mb-3" id="memberSignInOfficeCard">
+                            <div class="card-header">
+                                <h3 class="card-title mb-0">
+                                    <i class="fa-solid fa-bell me-2"></i><?= gettext('Office list') ?>
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <label class="form-label" for="sMemberSignInNotificationRecipientIDs"><?= InputUtils::escapeHTML($signIn['tooltips']['sMemberSignInNotificationRecipientIDs']) ?></label>
+                                <select multiple class="form-select" id="sMemberSignInNotificationRecipientIDs" name="sMemberSignInNotificationRecipientIDs"
+                                        data-placeholder="<?= InputUtils::escapeAttribute(gettext('Type a name or email')) ?>">
+                                    <?php foreach ($signIn['officeRecipients'] as $recipient): ?>
+                                        <option value="<?= (int) $recipient['id'] ?>" selected><?= InputUtils::escapeHTML($recipient['text']) ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                                <div class="form-text"><?= gettext('Only people with their own email can be added.') ?></div>
+                                <div class="invalid-feedback d-block" data-error-for="sMemberSignInNotificationRecipientIDs"></div>
+                            </div>
+                        </div>
+
+                        <div class="card" id="memberSignInLoginAsCard">
+                            <div class="card-header">
+                                <h3 class="card-title mb-0">
+                                    <i class="fa-solid fa-user-secret me-2"></i><?= gettext('Login as User') ?>
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <?= $switchRow('bAllowLoginAsUser', gettext('Allow Login as User'), $signInValues['bAllowLoginAsUser'] === '1', $signIn['tooltips']) ?>
+                                <?= $switchRow('bLoginAsUserCanWrite', gettext('Allow changes during Login as User'), $signInValues['bLoginAsUserCanWrite'] === '1', $signIn['tooltips']) ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center flex-wrap gap-2 mt-3">
+                    <button type="submit" class="btn btn-primary" id="memberSignInSaveButton">
+                        <i class="fa-solid fa-floppy-disk me-2"></i><?= gettext('Save sign-in settings') ?>
+                    </button>
+                    <span class="text-secondary" id="memberSignInStatus" role="status"></span>
+                </div>
+            </form>
         </div>
 
         <!-- ============================= Themes ============================= -->
@@ -234,7 +404,7 @@ $themesDocUrl = 'https://github.com/ChurchCRM/CRM/blob/master/docs/portal-themes
                                             <ul class="list-unstyled mb-0">
                                                 <?php foreach ($theme['findings'] as $finding): ?>
                                                     <li class="py-1">
-                                                        <span class="badge <?= $finding['level'] === ThemeValidator::LEVEL_ERROR ? 'bg-danger text-white' : 'bg-warning text-white' ?> me-2">
+                                                        <span class="badge <?= $finding['level'] === ThemeValidator::LEVEL_ERROR ? 'bg-danger text-white' : 'bg-warning text-dark' ?> me-2">
                                                             <?= $finding['level'] === ThemeValidator::LEVEL_ERROR ? gettext('Error') : gettext('Warning') ?>
                                                         </span>
                                                         <?php if ($finding['file'] !== ''): ?>
@@ -257,7 +427,7 @@ $themesDocUrl = 'https://github.com/ChurchCRM/CRM/blob/master/docs/portal-themes
         </div>
 
         <!-- =========================== Statistics =========================== -->
-        <div class="tab-pane fade" id="portal-statistics" role="tabpanel">
+        <div class="tab-pane fade show active" id="portal-statistics" role="tabpanel">
             <p class="text-secondary">
                 <?= gettext('These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else.') ?>
             </p>
@@ -308,12 +478,13 @@ $themesDocUrl = 'https://github.com/ChurchCRM/CRM/blob/master/docs/portal-themes
                                 <th><?= gettext('Login') ?></th>
                                 <th><?= gettext('Last sign-in') ?></th>
                                 <th><?= gettext('Last seen in the portal') ?></th>
+                                <th class="w-1 no-export"><?= gettext('Actions') ?></th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php if ($stats['recentSignIns'] === []): ?>
                                 <tr id="portalNoRecentSignIns">
-                                    <td colspan="4" class="text-secondary">
+                                    <td colspan="5" class="text-secondary">
                                         <?= gettext('No member has signed in to the Member Portal yet.') ?>
                                     </td>
                                 </tr>
@@ -332,6 +503,35 @@ $themesDocUrl = 'https://github.com/ChurchCRM/CRM/blob/master/docs/portal-themes
                                                 ? InputUtils::escapeHTML($signIn['lastPortalActivity'])
                                                 : '<span class="text-secondary">&mdash;</span>' ?>
                                         </td>
+                                        <td class="w-1">
+                                            <?php $personId = (int) $signIn['personId']; ?>
+                                            <?php $inCart = isset($_SESSION['aPeopleCart']) && in_array($personId, $_SESSION['aPeopleCart'], false); ?>
+                                            <div class="dropdown">
+                                                <button class="btn btn-sm btn-ghost-secondary" type="button"
+                                                        data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false"
+                                                        aria-label="<?= InputUtils::escapeAttribute(gettext('Actions')) ?>">
+                                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                                </button>
+                                                <div class="dropdown-menu dropdown-menu-end">
+                                                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/people/view/<?= $personId ?>">
+                                                        <i class="fa-solid fa-eye me-2"></i><?= gettext('View') ?>
+                                                    </a>
+                                                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $personId ?>">
+                                                        <i class="fa-solid fa-pencil me-2"></i><?= gettext('Edit') ?>
+                                                    </a>
+                                                    <div class="dropdown-divider"></div>
+                                                    <button type="button"
+                                                        class="dropdown-item <?= $inCart ? 'RemoveFromCart text-danger' : 'AddToCart' ?>"
+                                                        data-cart-id="<?= $personId ?>"
+                                                        data-cart-type="person"
+                                                        data-label-add="<?= InputUtils::escapeAttribute(gettext('Add to Cart')) ?>"
+                                                        data-label-remove="<?= InputUtils::escapeAttribute(gettext('Remove from Cart')) ?>">
+                                                        <i class="<?= $inCart ? 'fa-solid fa-trash' : 'fa-solid fa-cart-shopping' ?> me-2"></i>
+                                                        <span class="cart-label"><?= $inCart ? gettext('Remove from Cart') : gettext('Add to Cart') ?></span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </td>
                                     </tr>
                                 <?php endforeach; ?>
                             <?php endif; ?>
@@ -349,7 +549,7 @@ $themesDocUrl = 'https://github.com/ChurchCRM/CRM/blob/master/docs/portal-themes
 
             <div class="card">
                 <div class="table-responsive">
-                    <table class="table table-vcenter card-table" id="portalCalendarsTable">
+                    <table class="table table-vcenter card-table portal-calendars-table" id="portalCalendarsTable">
                         <thead>
                             <tr>
                                 <th><?= gettext('Calendar') ?></th>
@@ -415,6 +615,7 @@ $themesDocUrl = 'https://github.com/ChurchCRM/CRM/blob/master/docs/portal-themes
     window.CRM.memberPortalAdmin = <?= InputUtils::jsonEncodeForScript([
         'activeTheme' => $activeTheme,
         'defaultThemeId' => ThemeManager::DEFAULT_THEME,
+        'csrfToken' => $csrfToken,
     ]) ?>;
 </script>
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/admin-member-portal.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>

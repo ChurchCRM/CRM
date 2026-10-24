@@ -416,6 +416,25 @@ export function addPoolMember(ministryId: number, personId: number): Promise<{ p
   return request(`/ministries/${ministryId}/pool/${personId}`, { method: "POST" });
 }
 
+/** Who a team leader may add to a pool: id, name and family name, nothing else. */
+export interface VolunteerPoolCandidate {
+  id: number;
+  name: string;
+  familyName: string;
+}
+
+/** The person search behind a team leader's Add Volunteer picker; the query is appended. */
+export const POOL_CANDIDATE_SEARCH_ENDPOINT = "/api/ministries/people/search?q=";
+
+/** A team leader adds somebody to their team's ministry pool, ticking positions of that team. */
+export function addTeamPoolMember(
+  teamId: number,
+  personId: number,
+  positionIds: number[],
+): Promise<{ personId: number; added: boolean; qualified: number[]; notified: number }> {
+  return request(`/teams/${teamId}/pool/${personId}`, { method: "POST", body: JSON.stringify({ positionIds }) });
+}
+
 /**
  * The Cart sink for the pool (P5/P6): the people come from the session cart, not
  * the body, so this takes no payload.
@@ -872,7 +891,7 @@ export function listEligiblePeople(
 
 export function createAssignment(
   occurrenceId: number,
-  payload: { positionId: number; personId: number; allowOutsidePool?: boolean; notes?: string },
+  payload: { positionId: number; personId: number; allowOutsidePool?: boolean; accepted?: boolean; notes?: string },
 ): Promise<{ assignment: VolunteerAssignment }> {
   return request(`/occurrences/${occurrenceId}/assignments`, {
     method: "POST",

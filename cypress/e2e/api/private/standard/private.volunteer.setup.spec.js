@@ -15,7 +15,7 @@
  * with the setup endpoints once they exist.
  *
  * Fixture data is the §2.17 worked example from the design document
- * (.agents/skills/churchcrm/volunteer-v2-design.md): UC1 Coffee Bar and UC2
+ * (docs/design/volunteer-v2.md): UC1 Coffee Bar and UC2
  * Sunday Worship, including the two cases the schema is deliberately shaped
  * around — one person holding several qualifications in one team, and one
  * person serving two different positions on a single occurrence (I7 / D16).
@@ -933,7 +933,7 @@ describe("API Private Volunteer v2 core schema", () => {
             });
 
             // CHECK constraints (MariaDB 10.2.1+ / MySQL 8.0.16+ enforce them; the
-            // CI databases are MariaDB 10.11 and mysql:latest). Error codes differ:
+            // CI runs MariaDB and the nightly runs MySQL). Error codes differ:
             // MariaDB 4025 ER_CONSTRAINT_FAILED, MySQL 3819 ER_CHECK_CONSTRAINT_VIOLATED.
             const CHECK_ERRNOS = [4025, 3819];
 

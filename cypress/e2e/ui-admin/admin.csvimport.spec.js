@@ -32,6 +32,7 @@ describe(
             "BareYrTest",
             "CountryTest",
             "ClsRoleTest",
+            "GradeImportTest",
         ];
 
         after(() => {
@@ -90,6 +91,27 @@ describe(
                 expect(response.status).to.eq(200);
                 const personsGroup = response.body.find((g) => g.text.startsWith("Persons"));
                 expect(personsGroup.children.length).to.be.at.least(5);
+            });
+        });
+
+        it("Verify CSV Import keeps each row's email on its person and gives the family none", () => {
+            cy.visit("admin/import/csv");
+            cy.get("#csvFile").selectFile("cypress/fixtures/test_import.csv", { force: true });
+            cy.get("#csv-import-form").submit();
+            cy.get("#mapping-card").should("be.visible");
+            cy.get("#execute-import").click();
+            cy.get("#summary-card").should("be.visible");
+
+            cy.request("GET", "/api/search/ImportTest").then((response) => {
+                const personsGroup = response.body.find((g) => g.text.startsWith("Persons"));
+                const hit = personsGroup.children.find((child) => child.text.startsWith("noBday "));
+                const personId = hit.uri.match(/\/people\/view\/(\d+)/)[1];
+                cy.makePrivateAdminAPICall("GET", `/api/person/${personId}`, null, 200).then((resp) => {
+                    expect(resp.body.Email).to.eq("noBday@example.com");
+                    cy.makePrivateAdminAPICall("GET", `/api/family/${resp.body.FamId}`, null, 200)
+                        .its("body.Email")
+                        .should("eq", "");
+                });
             });
         });
 
@@ -383,6 +405,31 @@ describe(
                         expect(person.FmrId, `FmrId for person ${personId}`).to.be.greaterThan(0);
                     });
                 });
+            });
+        });
+
+        it("Verify CSV Import maps a Grade column by grade name (#10189)", () => {
+            cy.visit("admin/import/csv");
+            cy.get("#csvFile").selectFile("cypress/fixtures/test_import_grade.csv", { force: true });
+            cy.get("#csv-import-form").submit();
+            cy.get("#mapping-card").should("be.visible");
+            cy.get('#mapping-tbody select.mapping-select[data-header="Grade"]').should("have.value", "Grade");
+            cy.get("#execute-import").click();
+            cy.get("#summary-card").should("be.visible");
+
+            const grades = {};
+            cy.makePrivateAdminAPICall("GET", "/api/persons/search/GradeImportTest", null, 200).then((resp) => {
+                resp.body
+                    .filter((hit) => hit.objid)
+                    .forEach((hit) => {
+                        cy.makePrivateAdminAPICall("GET", `/api/person/${hit.objid}`, null, 200).then(({ body }) => {
+                            grades[body.FirstName] = body.GradeId;
+                        });
+                    });
+            });
+            cy.then(() => {
+                expect(grades.Gary).to.eq(8);
+                expect(grades.Gwen).to.be.null;
             });
         });
 

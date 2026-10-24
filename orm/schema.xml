@@ -32,7 +32,7 @@
         <column name="per_HomePhone" phpName="HomePhone" type="VARCHAR" size="30"/>
         <column name="per_WorkPhone" phpName="WorkPhone" type="VARCHAR" size="30"/>
         <column name="per_CellPhone" phpName="CellPhone" type="VARCHAR" size="30"/>
-        <column name="per_Email" phpName="Email" type="VARCHAR" size="50"/>
+        <column name="per_Email" phpName="Email" type="VARCHAR" size="100"/>
         <column name="per_WorkEmail" phpName="WorkEmail" type="VARCHAR" size="50"/>
         <column name="per_BirthMonth" phpName="BirthMonth" type="TINYINT" size="3" sqlType="tinyint(3) unsigned"
                 required="true" defaultValue="0"/>
@@ -64,6 +64,7 @@
         <column name="per_LinkedIn" phpName="LinkedIn" type="VARCHAR" size="50" Description="LinkedIn name" />
         <column name="per_DateDeactivated" phpName="DateDeactivated" type="DATE"/>
         <column name="per_NeedsReview" phpName="NeedsReview" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0" description="True when this self-registered person is awaiting admin review/approval"/>
+        <column name="per_grd_ID" phpName="GradeId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" description="School grade: lst_OptionID in the grades list (GradeService::listId()); NULL means no grade"/>
         <index name="per_ID">
             <index-column name="per_ID"/>
         </index>
@@ -75,6 +76,9 @@
         </index>
         <index name="idx_per_fmr_ID">
             <index-column name="per_fmr_ID"/>
+        </index>
+        <index name="idx_per_grd_ID">
+            <index-column name="per_grd_ID"/>
         </index>
         <foreign-key foreignTable="family_fam">
             <reference local="per_fam_ID" foreign="fam_ID"/>
@@ -166,7 +170,7 @@
                 sqlType="tinyint(1) unsigned" required="true" defaultValue="0"
                 description="When true the second address is the family's mailing address; otherwise it is a second home"/>
         <column name="fam_HomePhone" phpName="HomePhone" type="VARCHAR" size="30"/>
-        <column name="fam_Email" phpName="Email" type="VARCHAR" size="100"/>
+        <column name="fam_Email" phpName="Email" type="VARCHAR" size="100" description="Unused since 7.8.3: the upgrade moves each family email to a person (family_email_move_fem). Dropped in a later release."/>
         <column name="fam_WeddingDate" phpName="Weddingdate" type="DATE"/>
         <column name="fam_DateEntered" phpName="DateEntered" type="TIMESTAMP" required="true"/>
         <column name="fam_DateLastEdited" phpName="DateLastEdited" type="TIMESTAMP"/>
@@ -194,6 +198,35 @@
             <parameter name="rule2" value="{column: fam_name, validator: NotBlank}" />
             <parameter name="rule3" value="{column: fam_name, validator: Length, options: {min: 2, max: 50}}" />
         </behavior>
+    </table>
+
+    <table name="family_email_move_fem" idMethod="native" phpName="FamilyEmailMove" description="One row per family email the 7.8.3 upgrade moved to people (member sign-in design 10.1). fem_per_ID is the person who has the address afterwards: the head or spouse who received it, or the person who already held it. fem_NeedsConfirm marks an address moved into a family of two or more living, active people, which may not be used to sign in until staff confirm it. Dropped together with fam_Email.">
+        <column name="fem_ID" phpName="Id" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="fem_fam_ID" phpName="FamilyId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true"/>
+        <column name="fem_Email" phpName="Email" type="VARCHAR" size="100" required="true"/>
+        <column name="fem_Outcome" phpName="Outcome" type="CHAR" sqlType="enum('pending','head','spouse','held','noted')" required="true" defaultValue="pending"/>
+        <column name="fem_Reason" phpName="Reason" type="CHAR" sqlType="enum('both_have_email','no_adult','other_person')"/>
+        <column name="fem_per_ID" phpName="PersonId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
+        <column name="fem_NeedsConfirm" phpName="NeedsConfirm" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0"/>
+        <column name="fem_DateMoved" phpName="DateMoved" type="TIMESTAMP" required="true"/>
+        <foreign-key foreignTable="family_fam" phpName="Family">
+            <reference local="fem_fam_ID" foreign="fam_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="person_per" phpName="Person">
+            <reference local="fem_per_ID" foreign="per_ID"/>
+        </foreign-key>
+        <index name="fem_fam_idx">
+            <index-column name="fem_fam_ID"/>
+        </index>
+        <index name="fem_per_idx">
+            <index-column name="fem_per_ID"/>
+        </index>
+        <index name="fem_outcome_idx">
+            <index-column name="fem_Outcome"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
     </table>
     <table name="family_custom_master" idMethod="native" phpName="FamilyCustomMaster">
         <column name="fam_custom_Order" phpName="Order" type="SMALLINT" required="true" defaultValue="0"/>
@@ -573,6 +606,9 @@
         <index name="idx_plg_depID">
             <index-column name="plg_depID"/>
         </index>
+        <index name="idx_plg_GroupKey">
+            <index-column name="plg_GroupKey"/>
+        </index>
         <foreign-key foreignTable="deposit_dep">
             <reference local="plg_depID" foreign="dep_ID"/>
         </foreign-key>
@@ -590,7 +626,7 @@
         </vendor>
     </table>
 
-    <table name="email_log_eml" idMethod="native" phpName="EmailLog" description="One row per recipient for every email ChurchCRM sent through BaseEmail::send(): composer messages, birthday greetings, verification links, account emails, notifications. Links to the person/family the address belonged to at send time and to the user who sent a composer message. The rendered body is stored only for email classes that allow it (composer); account emails never store a body.">
+    <table name="email_log_eml" idMethod="native" phpName="EmailLog" description="One row per recipient for every email ChurchCRM sent through BaseEmail::send(): composer messages, birthday greetings, verification links, account emails, notifications. Links to the person/family the address belonged to at send time and to the user who sent a composer message. The rendered body is stored only for email classes that allow it (composer); account emails never store a body. Composer messages are queued here first (status queued) and sent by the email queue timer job.">
         <column name="eml_ID" phpName="Id" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
         <column name="eml_per_ID" phpName="PerId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"/>
         <column name="eml_fam_ID" phpName="FamId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"/>
@@ -603,6 +639,9 @@
         <column name="eml_Error" phpName="Error" type="LONGVARCHAR"/>
         <column name="eml_MessageID" phpName="MessageId" type="VARCHAR" size="255"/>
         <column name="eml_DateSent" phpName="DateSent" type="TIMESTAMP" required="true"/>
+        <column name="eml_Batch" phpName="Batch" type="VARCHAR" size="32" description="Composer send this row was queued with (EmailQueueService); NULL for a direct send"/>
+        <column name="eml_Attempts" phpName="Attempts" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true" defaultValue="0"/>
+        <column name="eml_NextAttempt" phpName="NextAttempt" type="TIMESTAMP" description="queued: when the row is due; sending: when an interrupted claim may be taken over"/>
         <index name="idx_eml_per_ID">
             <index-column name="eml_per_ID"/>
         </index>
@@ -614,6 +653,9 @@
         </index>
         <index name="idx_eml_Status">
             <index-column name="eml_Status"/>
+        </index>
+        <index name="idx_eml_Batch">
+            <index-column name="eml_Batch"/>
         </index>
         <foreign-key foreignTable="person_per" phpName="Person">
             <reference local="eml_per_ID" foreign="per_ID"/>
@@ -671,7 +713,6 @@
         <column name="usr_AddRecords" phpName="AddRecords" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0"/>
         <column name="usr_EditRecords" phpName="EditRecords" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0"/>
         <column name="usr_DeleteRecords" phpName="DeleteRecords" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0"/>
-        <column name="usr_MenuOptions" phpName="MenuOptions" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0"/>
         <column name="usr_ManageGroups" phpName="ManageGroups" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0"/>
         <column name="usr_Finance" phpName="Finance" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0"/>
         <column name="usr_ManageFundraisers" phpName="ManageFundraisers" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0"/>
@@ -819,6 +860,24 @@
         <column name="valid_until_date" phpName="ValidUntilDate" type="DATE"/>
         <column name="reference_id" phpName="ReferenceId" type="INTEGER" defaultValue=""/>
         <column name="remainingUses" phpName="RemainingUses" type="INTEGER" defaultValue="0"/>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
+    <table name="rate_limit_rlm" idMethod="native" phpName="RateLimit" description="Attempt counters for RateLimiter (#10197): one row per bucket and key, counting hits in a window that starts at the first hit. The key is stored only as a SHA-256 hash, and a row is deleted once its window has ended.">
+        <column name="rlm_ID" phpName="Id" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="rlm_Bucket" phpName="Bucket" type="VARCHAR" size="64" required="true"/>
+        <column name="rlm_KeyHash" phpName="KeyHash" type="CHAR" size="64" required="true"/>
+        <column name="rlm_Hits" phpName="Hits" type="INTEGER" size="10" sqlType="int(10) unsigned" required="true" defaultValue="0"/>
+        <column name="rlm_ResetAt" phpName="ResetAt" type="INTEGER" size="10" sqlType="int(10) unsigned" required="true" description="Unix time when the window ends"/>
+        <unique name="rlm_bucket_key_uidx">
+            <unique-column name="rlm_Bucket"/>
+            <unique-column name="rlm_KeyHash"/>
+        </unique>
+        <index name="rlm_reset_at_idx">
+            <index-column name="rlm_ResetAt"/>
+        </index>
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
         </vendor>
@@ -1029,7 +1088,7 @@
          qualification, schedule, occurrence, staffing requirement,
          assignment, response, swap, notification outbox and scope.
 
-         Conventions (design .agents/skills/churchcrm/volunteer-v2-design.md
+         Conventions (design docs/design/volunteer-v2.md
          §2.0): InnoDB, utf8mb4 in SQL, `<prefix>_ID` primary keys named
          phpName="Id", enums as CHAR + sqlType, BOOLEAN as tinyint(1)
          unsigned, index names `_idx` / `_uidx`, and foreign-key column types
@@ -1554,7 +1613,7 @@
            description="Volunteer v2: the notification outbox. Idempotent enqueue keyed by vntf_DedupeKey, a due time, and a retry-safe send log drained by the background timer jobs">
         <column name="vntf_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
         <column name="vntf_Type" phpName="Type" type="CHAR"
-                sqlType="enum('assignment','reminder','decline_alert','gap_alert','signup_confirm','swap_proposed','swap_resolved','help_offer')"
+                sqlType="enum('assignment','reminder','decline_alert','gap_alert','signup_confirm','swap_proposed','swap_resolved','help_offer','pool_add')"
                 required="true"/>
         <column name="vntf_Channel" phpName="Channel" type="CHAR" sqlType="enum('email')" required="true"
                 defaultValue="email" description="The delivery extension point; email is the only channel in the first release"/>
@@ -1665,6 +1724,204 @@
         </foreign-key>
         <index name="vcal_ministry_idx">
             <index-column name="vcal_vmin_ID"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
+    <!-- Member sign-in (#10463, design docs/member-sign-in-design.md §13). Every
+         table is keyed by the person, never by a user account. Tokens, codes and
+         device secrets are stored only as SHA-256 hex digests. The *_usr_ID
+         columns name the staff account that acted, with no foreign key, so the
+         record keeps the id after that account is deleted. -->
+    <table name="person_signin_psi" idMethod="native" phpName="PersonSignin"
+           description="Member sign-in state for one person: Disable sign-in, session version, proven and unconfirmed email, sign-in times and the calendar feed">
+        <column name="psi_per_ID" phpName="PersonId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" required="true"/>
+        <column name="psi_SessionVersion" phpName="SessionVersion" type="INTEGER" required="true" defaultValue="0"
+                description="Raised whenever every portal session of this person must end"/>
+        <column name="psi_SignInDisabled" phpName="SignInDisabled" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0"/>
+        <column name="psi_DisabledBy_usr_ID" phpName="DisabledByUserId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
+        <column name="psi_DisabledAt" phpName="DisabledAt" type="TIMESTAMP"/>
+        <column name="psi_DisabledReason" phpName="DisabledReason" type="VARCHAR" size="255"/>
+        <column name="psi_ProvenEmail" phpName="ProvenEmail" type="VARCHAR" size="255"
+                description="The address an email sign-in last proved this person controls"/>
+        <column name="psi_ProvenAt" phpName="ProvenAt" type="TIMESTAMP"/>
+        <column name="psi_UnconfirmedEmail" phpName="UnconfirmedEmail" type="VARCHAR" size="255"
+                description="An address that may receive mail but may not sign in until confirmed (design §9)"/>
+        <column name="psi_UnconfirmedSource" phpName="UnconfirmedSource" type="VARCHAR" size="32"
+                description="Why the address is unconfirmed, e.g. family_email, staff, import, api"/>
+        <column name="psi_UnconfirmedAt" phpName="UnconfirmedAt" type="TIMESTAMP"/>
+        <column name="psi_FirstSignIn" phpName="FirstSignIn" type="TIMESTAMP"/>
+        <column name="psi_LastSignIn" phpName="LastSignIn" type="TIMESTAMP"/>
+        <column name="psi_LastMethod" phpName="LastMethod" type="VARCHAR" size="20"/>
+        <column name="psi_LastActivity" phpName="LastActivity" type="TIMESTAMP"/>
+        <column name="psi_CalendarToken" phpName="CalendarToken" type="VARCHAR" size="64"/>
+        <column name="psi_CalendarSelection" phpName="CalendarSelection" type="LONGVARCHAR"/>
+        <foreign-key foreignTable="person_per" name="PersonSigninPerson" phpName="Person"
+                     refPhpName="PersonSignin" onDelete="cascade">
+            <reference local="psi_per_ID" foreign="per_ID"/>
+        </foreign-key>
+        <unique name="psi_calendar_token_uidx">
+            <unique-column name="psi_CalendarToken"/>
+        </unique>
+        <index name="psi_last_signin_idx">
+            <index-column name="psi_LastSignIn"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
+    <table name="person_signin_request_psr" idMethod="native" phpName="PersonSigninRequest"
+           description="A pending email sign-in: hashed link token, hashed code and the hashed browser binding">
+        <column name="psr_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="psr_per_ID" phpName="PersonId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true"/>
+        <column name="psr_Email" phpName="Email" type="VARCHAR" size="255" required="true"
+                description="The address the code and link were sent to"/>
+        <column name="psr_TokenHash" phpName="TokenHash" type="CHAR" size="64" required="true"/>
+        <column name="psr_CodeHash" phpName="CodeHash" type="CHAR" size="64" required="true"/>
+        <column name="psr_BrowserHash" phpName="BrowserHash" type="CHAR" size="64" required="true"/>
+        <column name="psr_Attempts" phpName="Attempts" type="INTEGER" required="true" defaultValue="0"/>
+        <column name="psr_CreatedAt" phpName="CreatedAt" type="TIMESTAMP" required="true"/>
+        <column name="psr_ExpiresAt" phpName="ExpiresAt" type="TIMESTAMP" required="true"/>
+        <column name="psr_UsedAt" phpName="UsedAt" type="TIMESTAMP"/>
+        <column name="psr_CancelledAt" phpName="CancelledAt" type="TIMESTAMP"/>
+        <foreign-key foreignTable="person_per" name="PersonSigninRequestPerson" phpName="Person"
+                     refPhpName="PersonSigninRequest" onDelete="cascade">
+            <reference local="psr_per_ID" foreign="per_ID"/>
+        </foreign-key>
+        <unique name="psr_token_uidx">
+            <unique-column name="psr_TokenHash"/>
+        </unique>
+        <index name="psr_person_idx">
+            <index-column name="psr_per_ID"/>
+        </index>
+        <index name="psr_expires_idx">
+            <index-column name="psr_ExpiresAt"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
+    <table name="person_device_pdv" idMethod="native" phpName="PersonDevice"
+           description="A device a member chose to stay signed in on, and later app refresh tokens. Only the token hash is stored">
+        <column name="pdv_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="pdv_per_ID" phpName="PersonId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true"/>
+        <column name="pdv_TokenHash" phpName="TokenHash" type="CHAR" size="64" required="true"/>
+        <column name="pdv_Kind" phpName="Kind" type="CHAR" sqlType="enum('browser','app')" required="true" defaultValue="browser"/>
+        <column name="pdv_Label" phpName="Label" type="VARCHAR" size="255"/>
+        <column name="pdv_CreatedAt" phpName="CreatedAt" type="TIMESTAMP" required="true"/>
+        <column name="pdv_LastUsedAt" phpName="LastUsedAt" type="TIMESTAMP"/>
+        <column name="pdv_ExpiresAt" phpName="ExpiresAt" type="TIMESTAMP" required="true"/>
+        <column name="pdv_RevokedAt" phpName="RevokedAt" type="TIMESTAMP"/>
+        <foreign-key foreignTable="person_per" name="PersonDevicePerson" phpName="Person"
+                     refPhpName="PersonDevice" onDelete="cascade">
+            <reference local="pdv_per_ID" foreign="per_ID"/>
+        </foreign-key>
+        <unique name="pdv_token_uidx">
+            <unique-column name="pdv_TokenHash"/>
+        </unique>
+        <index name="pdv_person_idx">
+            <index-column name="pdv_per_ID"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
+    <table name="person_passkey_ppk" idMethod="native" phpName="PersonPasskey"
+           description="A WebAuthn passkey a member added. The credential id is base64url text, looked up by its SHA-256 hash">
+        <column name="ppk_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="ppk_per_ID" phpName="PersonId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true"/>
+        <column name="ppk_CredentialId" phpName="CredentialId" type="LONGVARCHAR" required="true"/>
+        <column name="ppk_CredentialHash" phpName="CredentialHash" type="CHAR" size="64" required="true"/>
+        <column name="ppk_PublicKey" phpName="PublicKey" type="LONGVARCHAR" required="true"/>
+        <column name="ppk_SignCount" phpName="SignCount" type="BIGINT" required="true" defaultValue="0"/>
+        <column name="ppk_UserHandle" phpName="UserHandle" type="VARCHAR" size="128"/>
+        <column name="ppk_Transports" phpName="Transports" type="VARCHAR" size="255"/>
+        <column name="ppk_Label" phpName="Label" type="VARCHAR" size="255"/>
+        <column name="ppk_CreatedAt" phpName="CreatedAt" type="TIMESTAMP" required="true"/>
+        <column name="ppk_LastUsedAt" phpName="LastUsedAt" type="TIMESTAMP"/>
+        <foreign-key foreignTable="person_per" name="PersonPasskeyPerson" phpName="Person"
+                     refPhpName="PersonPasskey" onDelete="cascade">
+            <reference local="ppk_per_ID" foreign="per_ID"/>
+        </foreign-key>
+        <unique name="ppk_credential_uidx">
+            <unique-column name="ppk_CredentialHash"/>
+        </unique>
+        <index name="ppk_person_idx">
+            <index-column name="ppk_per_ID"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
+    <table name="portal_grant_pgr" idMethod="native" phpName="PortalGrant"
+           description="A portal capability an administrator gave one person on one scope (design §8.3). Rule-derived grants are never stored">
+        <column name="pgr_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="pgr_per_ID" phpName="PersonId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true"/>
+        <column name="pgr_Capability" phpName="Capability" type="VARCHAR" size="128" required="true"/>
+        <column name="pgr_ScopeType" phpName="ScopeType" type="VARCHAR" size="32" required="true" defaultValue="none"/>
+        <column name="pgr_ScopeId" phpName="ScopeId" type="INTEGER" required="true" defaultValue="0"
+                description="0 when the scope type is none. Polymorphic, so no foreign key"/>
+        <column name="pgr_EndsAt" phpName="EndsAt" type="TIMESTAMP"/>
+        <column name="pgr_Reason" phpName="Reason" type="VARCHAR" size="255"/>
+        <column name="pgr_GrantedBy_usr_ID" phpName="GrantedByUserId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
+        <column name="pgr_GrantedAt" phpName="GrantedAt" type="TIMESTAMP" required="true"/>
+        <foreign-key foreignTable="person_per" name="PortalGrantPerson" phpName="Person"
+                     refPhpName="PortalGrant" onDelete="cascade">
+            <reference local="pgr_per_ID" foreign="per_ID"/>
+        </foreign-key>
+        <unique name="pgr_person_capability_scope_uidx">
+            <unique-column name="pgr_per_ID"/>
+            <unique-column name="pgr_Capability"/>
+            <unique-column name="pgr_ScopeType"/>
+            <unique-column name="pgr_ScopeId"/>
+        </unique>
+        <index name="pgr_capability_idx">
+            <index-column name="pgr_Capability"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
+    <table name="portal_signin_audit_psa" idMethod="native" phpName="PortalSigninAudit"
+           description="The member sign-in audit (design §11.2). Never holds a code, link, token, password or passkey secret">
+        <column name="psa_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="psa_Time" phpName="Time" type="TIMESTAMP" required="true"/>
+        <column name="psa_per_ID" phpName="PersonId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"
+                description="NULL when a typed address matched nobody"/>
+        <column name="psa_Event" phpName="Event" type="VARCHAR" size="32" required="true"/>
+        <column name="psa_Method" phpName="Method" type="VARCHAR" size="20"/>
+        <column name="psa_Reason" phpName="Reason" type="VARCHAR" size="64"/>
+        <column name="psa_Actor_usr_ID" phpName="ActorUserId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
+        <column name="psa_Email" phpName="Email" type="VARCHAR" size="255"
+                description="The address that was typed or used, when there is one"/>
+        <column name="psa_IP" phpName="Ip" type="VARCHAR" size="45"/>
+        <column name="psa_Detail" phpName="Detail" type="VARCHAR" size="255"
+                description="Non-secret context, e.g. the previous address on an email change"/>
+        <foreign-key foreignTable="person_per" name="PortalSigninAuditPerson" phpName="Person"
+                     refPhpName="PortalSigninAudit" onDelete="cascade">
+            <reference local="psa_per_ID" foreign="per_ID"/>
+        </foreign-key>
+        <index name="psa_person_time_idx">
+            <index-column name="psa_per_ID"/>
+            <index-column name="psa_Time"/>
+        </index>
+        <index name="psa_time_idx">
+            <index-column name="psa_Time"/>
+        </index>
+        <index name="psa_email_time_idx">
+            <index-column name="psa_Email"/>
+            <index-column name="psa_Time"/>
+        </index>
+        <index name="psa_ip_time_idx">
+            <index-column name="psa_IP"/>
+            <index-column name="psa_Time"/>
         </index>
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>

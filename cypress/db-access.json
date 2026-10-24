@@ -9,13 +9,61 @@
             "kind": "fixture",
             "reason": "Read-only row counts for the test-database drift guard (#9769)."
         },
+        "cypress/e2e/api/private/admin/private.admin.family-email-move.spec.js": {
+            "kind": "schema",
+            "reason": "Migration spec for the 7.8.3 family email move (member sign-in row 11): the app no longer writes a family email, so the fixtures, the upgrade block and its marker table are reached in SQL."
+        },
+        "cypress/e2e/api/private/admin/private.admin.member-sign-in-rule.spec.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in row 4 (#10463): a head of household with no birth year and an unconfirmed address (row 11 writes it during the upgrade) have no HTTP surface; the person editor that sets a birth year is a legacy form."
+        },
+        "cypress/e2e/api/private/plugins/private.portal.plugin-permissions.spec.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in row 3 (#10463): the portal grants an administrator gives on a plugin's capabilities have no HTTP surface until row 9 adds the person page."
+        },
+        "cypress/e2e/api/private/standard/private.portal.permissions.spec.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in row 2 (#10463): given portal grants, the session timeout behind a portal-only session, and a person's family role and birth year for the adult rule have no HTTP surface until row 9 adds the admin pages."
+        },
+        "cypress/e2e/api/private/standard/private.portal.session.spec.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in row 1 (#10463): Disable sign-in, the session version, the timeouts and the sign-in audit have no HTTP surface until rows 4 and 9 add the admin pages."
+        },
+        "cypress/e2e/api/private/standard/private.portal.signin-blocks.spec.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in row 4 (#10463): awaiting review, remembered devices, passkeys, the session timeout and the sign-in audit have no HTTP surface until rows 7, 8 and 9."
+        },
+        "cypress/e2e/api/private/standard/private.portal.signin-schema.spec.js": {
+            "kind": "schema",
+            "reason": "Member sign-in schema spec (#10463): the new person-keyed tables, their foreign keys, ON DELETE rules and unique token hashes have no HTTP surface."
+        },
         "cypress/e2e/api/private/standard/private.volunteer.setup.spec.js": {
             "kind": "schema",
             "reason": "Volunteer v2 schema spec (#9705): columns, UNIQUE keys, foreign keys, ON DELETE rules and enum domains have no HTTP surface."
         },
+        "cypress/e2e/ui/portal/member.portal-sign-in-email.spec.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in row 5 (#10463): the stored sign-in request (hashed, never shown), the proven address and the audit have no HTTP surface until row 9; an expired request is made by moving its times back."
+        },
+        "cypress/e2e/ui/portal/member.portal-sign-in-refusals.spec.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in row 5 (#10463): Disable sign-in and an unconfirmed moved address are set, and the audit read, in SQL; row 9 adds their admin pages."
+        },
         "cypress/support/api-commands.js": {
             "kind": "fixture",
             "reason": "Registers cy.dbQuery()."
+        },
+        "cypress/support/member-sign-in.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in row 5 (#10463): turns member sign-in on, ends the sign-in throttle windows and reads the sign-in audit and requests, none of which has an HTTP surface until row 9."
+        },
+        "cypress/support/sign-in-audit-retention.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in (#10463): audit rows from weeks ago for the retention spec; only time makes them, and the audit has no HTTP surface until the admin pages."
+        },
+        "cypress/support/sign-in-throttle.js": {
+            "kind": "fixture",
+            "reason": "Ends a sign-in throttle window (#10197) so specs need not wait out a 15-minute lockout; the server still decides what an ended window means."
         }
     },
     "baseline": {

@@ -10,8 +10,7 @@ use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
-// Security: User must have property and classification editing permission
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled(), 'MenuOptions');
+AuthenticationManager::redirectHomeIfNotAdmin();
 
 $sPageTitle = gettext('Property Type Delete Confirmation');
 

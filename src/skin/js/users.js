@@ -59,7 +59,7 @@ function deleteUser(userId, userName) {
   bootbox.confirm({
     title: i18next.t("User Delete Confirmation"),
     message:
-      '<p style="color: red">' +
+      '<p class="text-danger">' +
       i18next.t("Please confirm removal of user status from") +
       ": <b>" +
       window.CRM.escapeHtml(String(userName || "")) +
@@ -81,7 +81,7 @@ function restUserLoginCount(userId, userName) {
   bootbox.confirm({
     title: i18next.t("Action Confirmation"),
     message:
-      '<p style="color: red">' +
+      '<p class="text-danger">' +
       i18next.t("Please confirm reset failed login count") +
       ": <b>" +
       window.CRM.escapeHtml(String(userName || "")) +
@@ -103,7 +103,7 @@ function resetUserPassword(userId, userName) {
   bootbox.confirm({
     title: i18next.t("Action Confirmation"),
     message:
-      '<p style="color: red">' +
+      '<p class="text-danger">' +
       i18next.t("Please confirm the password reset of this user") +
       ": <b>" +
       window.CRM.escapeHtml(String(userName || "")) +
@@ -127,7 +127,7 @@ function disableUserTwoFactorAuth(userId, userName) {
   bootbox.confirm({
     title: i18next.t("Action Confirmation"),
     message:
-      '<p style="color: red">' +
+      '<p class="text-danger">' +
       i18next.t("Please confirm disabling 2 Factor Auth for this user") +
       ": <b>" +
       window.CRM.escapeHtml(String(userName || "")) +

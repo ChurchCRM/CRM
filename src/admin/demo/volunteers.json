@@ -1,0 +1,462 @@
+{
+  "ministries": [
+    {
+      "name": "Worship",
+      "description": "Leads the congregation in song and runs the sound, slides and livestream every Sunday.",
+      "coordinators": ["margaret.rodriguez@demo.churchcrm.io"],
+      "pool": ["charles.rivera@demo.churchcrm.io", "linda.nelson@demo.churchcrm.io"],
+      "teams": [
+        {
+          "name": "Worship Team",
+          "description": "Singers and musicians who lead Sunday worship.",
+          "leaders": ["kevin.flores@demo.churchcrm.io"],
+          "positions": [
+            {
+              "name": "Worship Leader",
+              "description": "Leads the songs and the band.",
+              "qualified": ["kevin.flores@demo.churchcrm.io", "jennifer.lee@demo.churchcrm.io"]
+            },
+            {
+              "name": "Vocalist",
+              "qualified": [
+                "karen.flores@demo.churchcrm.io",
+                "jessica.flores@demo.churchcrm.io",
+                "nancy.harris@demo.churchcrm.io",
+                "betty.harris66@demo.churchcrm.io",
+                "michelle.thompson@demo.churchcrm.io"
+              ]
+            },
+            {
+              "name": "Musician",
+              "description": "Piano, guitar, bass or drums.",
+              "qualified": [
+                "paul.flores14@demo.churchcrm.io",
+                "edward.lee@demo.churchcrm.io",
+                "richard.harris@demo.churchcrm.io",
+                "daniel.rivera@demo.churchcrm.io"
+              ]
+            }
+          ],
+          "schedules": [
+            {
+              "name": "Sunday Worship",
+              "eventType": "Church Service",
+              "title": "Sunday Worship Service",
+              "startOffsetMinutes": -60,
+              "endOffsetMinutes": 0,
+              "needs": [
+                {
+                  "position": "Worship Leader",
+                  "min": 1,
+                  "max": 1,
+                  "defaults": [{ "email": "kevin.flores@demo.churchcrm.io", "accepted": true }]
+                },
+                { "position": "Vocalist", "min": 2, "max": 3 },
+                { "position": "Musician", "min": 2, "max": 2 }
+              ],
+              "assignments": [
+                {
+                  "occurrence": 1,
+                  "position": "Vocalist",
+                  "email": "karen.flores@demo.churchcrm.io",
+                  "status": "accepted"
+                },
+                {
+                  "occurrence": 1,
+                  "position": "Vocalist",
+                  "email": "nancy.harris@demo.churchcrm.io",
+                  "status": "accepted"
+                },
+                {
+                  "occurrence": 1,
+                  "position": "Musician",
+                  "email": "paul.flores14@demo.churchcrm.io",
+                  "status": "accepted"
+                },
+                {
+                  "occurrence": 1,
+                  "position": "Musician",
+                  "email": "edward.lee@demo.churchcrm.io",
+                  "status": "accepted"
+                },
+                {
+                  "occurrence": 2,
+                  "position": "Vocalist",
+                  "email": "jessica.flores@demo.churchcrm.io",
+                  "status": "pending"
+                },
+                {
+                  "occurrence": 2,
+                  "position": "Vocalist",
+                  "email": "betty.harris66@demo.churchcrm.io",
+                  "status": "declined"
+                },
+                {
+                  "occurrence": 2,
+                  "position": "Musician",
+                  "email": "richard.harris@demo.churchcrm.io",
+                  "status": "accepted"
+                },
+                {
+                  "occurrence": 2,
+                  "position": "Musician",
+                  "email": "daniel.rivera@demo.churchcrm.io",
+                  "status": "pending"
+                },
+                {
+                  "occurrence": 3,
+                  "position": "Vocalist",
+                  "email": "michelle.thompson@demo.churchcrm.io",
+                  "status": "accepted"
+                },
+                {
+                  "occurrence": 3,
+                  "position": "Musician",
+                  "email": "paul.flores14@demo.churchcrm.io",
+                  "status": "accepted"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Sound & Media",
+          "description": "Runs the sound desk, the slides and the livestream.",
+          "positions": [
+            {
+              "name": "Sound Engineer",
+              "qualified": ["robert.brown63@demo.churchcrm.io", "kenneth.harris@demo.churchcrm.io"]
+            },
+            {
+              "name": "Slides & Livestream",
+              "qualified": [
+                "jennifer.rivera@demo.churchcrm.io",
+                "mark.thompson@demo.churchcrm.io",
+                "christopher.rodriguez@demo.churchcrm.io"
+              ]
+            }
+          ],
+          "schedules": [
+            {
+              "name": "Sunday Worship",
+              "eventType": "Church Service",
+              "title": "Sunday Worship Service",
+              "startOffsetMinutes": -45,
+              "endOffsetMinutes": 15,
+              "needs": [
+                {
+                  "position": "Sound Engineer",
+                  "min": 1,
+                  "max": 1,
+                  "defaults": [{ "email": "robert.brown63@demo.churchcrm.io", "accepted": true }]
+                },
+                { "position": "Slides & Livestream", "min": 1, "max": 1 }
+              ],
+              "assignments": [
+                {
+                  "occurrence": 1,
+                  "position": "Slides & Livestream",
+                  "email": "jennifer.rivera@demo.churchcrm.io",
+                  "status": "accepted"
+                },
+                {
+                  "occurrence": 2,
+                  "position": "Slides & Livestream",
+                  "email": "mark.thompson@demo.churchcrm.io",
+                  "status": "pending"
+                },
+                {
+                  "occurrence": 3,
+                  "position": "Slides & Livestream",
+                  "email": "christopher.rodriguez@demo.churchcrm.io",
+                  "status": "accepted"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Hospitality",
+      "description": "Welcomes everyone at the doors and serves coffee before and after the service.",
+      "helpWanted": true,
+      "helpWantedText": "We would love a few more greeters and baristas on Sunday mornings.",
+      "coordinators": ["stephanie.adams@demo.churchcrm.io"],
+      "teams": [
+        {
+          "name": "Greeters",
+          "description": "Welcomes people at the doors and the welcome desk.",
+          "positions": [
+            {
+              "name": "Door Greeter",
+              "qualified": [
+                "kevin.nguyen@demo.churchcrm.io",
+                "mary.nguyen@demo.churchcrm.io",
+                "patricia.brown87@demo.churchcrm.io",
+                "ryan.brown@demo.churchcrm.io",
+                "donna.hernandez48@demo.churchcrm.io"
+              ]
+            },
+            {
+              "name": "Welcome Desk",
+              "qualified": ["cynthia.thomas@demo.churchcrm.io", "stephanie.adams@demo.churchcrm.io"]
+            }
+          ],
+          "schedules": [
+            {
+              "name": "Sunday Worship",
+              "eventType": "Church Service",
+              "title": "Sunday Worship Service",
+              "startOffsetMinutes": -30,
+              "endOffsetMinutes": -60,
+              "needs": [
+                { "position": "Door Greeter", "min": 2, "max": 3 },
+                { "position": "Welcome Desk", "min": 1, "max": 1 }
+              ],
+              "assignments": [
+                {
+                  "occurrence": 1,
+                  "position": "Door Greeter",
+                  "email": "kevin.nguyen@demo.churchcrm.io",
+                  "status": "accepted"
+                },
+                {
+                  "occurrence": 1,
+                  "position": "Door Greeter",
+                  "email": "mary.nguyen@demo.churchcrm.io",
+                  "status": "accepted"
+                },
+                {
+                  "occurrence": 1,
+                  "position": "Welcome Desk",
+                  "email": "cynthia.thomas@demo.churchcrm.io",
+                  "status": "accepted"
+                },
+                {
+                  "occurrence": 2,
+                  "position": "Door Greeter",
+                  "email": "patricia.brown87@demo.churchcrm.io",
+                  "status": "pending"
+                },
+                {
+                  "occurrence": 2,
+                  "position": "Welcome Desk",
+                  "email": "stephanie.adams@demo.churchcrm.io",
+                  "status": "accepted"
+                },
+                {
+                  "occurrence": 3,
+                  "position": "Door Greeter",
+                  "email": "ryan.brown@demo.churchcrm.io",
+                  "status": "accepted"
+                },
+                {
+                  "occurrence": 3,
+                  "position": "Door Greeter",
+                  "email": "donna.hernandez48@demo.churchcrm.io",
+                  "status": "declined"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Coffee Bar",
+          "description": "Brews, serves and tidies up the coffee bar.",
+          "leaders": ["betty.thompson@demo.churchcrm.io"],
+          "positions": [
+            {
+              "name": "Barista",
+              "recruiting": true,
+              "qualified": [
+                "betty.thompson@demo.churchcrm.io",
+                "daniel.thompson@demo.churchcrm.io",
+                "melissa.lewis@demo.churchcrm.io"
+              ]
+            },
+            {
+              "name": "Setup & Cleanup",
+              "qualified": [
+                "michael.jones@demo.churchcrm.io",
+                "joseph.hernandez@demo.churchcrm.io",
+                "ashley.jones61@demo.churchcrm.io"
+              ]
+            }
+          ],
+          "schedules": [
+            {
+              "name": "Sunday Worship",
+              "eventType": "Church Service",
+              "title": "Sunday Worship Service",
+              "startOffsetMinutes": -45,
+              "endOffsetMinutes": 30,
+              "needs": [
+                {
+                  "position": "Barista",
+                  "min": 2,
+                  "max": 2,
+                  "defaults": [{ "email": "betty.thompson@demo.churchcrm.io", "accepted": true }]
+                },
+                { "position": "Setup & Cleanup", "min": 1, "max": 2 }
+              ],
+              "assignments": [
+                {
+                  "occurrence": 1,
+                  "position": "Barista",
+                  "email": "daniel.thompson@demo.churchcrm.io",
+                  "status": "accepted"
+                },
+                {
+                  "occurrence": 1,
+                  "position": "Setup & Cleanup",
+                  "email": "michael.jones@demo.churchcrm.io",
+                  "status": "accepted"
+                },
+                {
+                  "occurrence": 2,
+                  "position": "Barista",
+                  "email": "melissa.lewis@demo.churchcrm.io",
+                  "status": "pending"
+                },
+                {
+                  "occurrence": 2,
+                  "position": "Setup & Cleanup",
+                  "email": "joseph.hernandez@demo.churchcrm.io",
+                  "status": "accepted"
+                },
+                {
+                  "occurrence": 3,
+                  "position": "Setup & Cleanup",
+                  "email": "ashley.jones61@demo.churchcrm.io",
+                  "status": "pending"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Children's Ministry",
+      "description": "Teaches the Sunday School classes for our youngest children.",
+      "sundaySchool": true,
+      "coordinators": ["elizabeth.nelson@demo.churchcrm.io"],
+      "teams": [
+        {
+          "name": "Preschool",
+          "description": "Teachers and helpers of the Angels class (ages 3-5).",
+          "class": "Angels class",
+          "teacherPosition": "Teacher",
+          "leaders": ["carol.williams@demo.churchcrm.io"],
+          "positions": [
+            {
+              "name": "Assistant Teacher",
+              "description": "Helps with the story, the craft and snack time.",
+              "qualified": ["nancy.hernandez@demo.churchcrm.io", "linda.nguyen@demo.churchcrm.io"]
+            }
+          ],
+          "schedules": [
+            {
+              "name": "Angels Class",
+              "class": "Angels class",
+              "startOffsetMinutes": -15,
+              "endOffsetMinutes": 0,
+              "needs": [
+                {
+                  "position": "Teacher",
+                  "min": 1,
+                  "max": 2,
+                  "defaults": [{ "email": "carol.williams@demo.churchcrm.io", "accepted": true }]
+                },
+                { "position": "Assistant Teacher", "min": 1, "max": 1 }
+              ],
+              "assignments": [
+                {
+                  "occurrence": 1,
+                  "position": "Teacher",
+                  "email": "paul.nelson94@demo.churchcrm.io",
+                  "status": "accepted"
+                },
+                {
+                  "occurrence": 1,
+                  "position": "Assistant Teacher",
+                  "email": "nancy.hernandez@demo.churchcrm.io",
+                  "status": "accepted"
+                },
+                {
+                  "occurrence": 2,
+                  "position": "Assistant Teacher",
+                  "email": "linda.nguyen@demo.churchcrm.io",
+                  "status": "pending"
+                },
+                {
+                  "occurrence": 4,
+                  "position": "Assistant Teacher",
+                  "email": "nancy.hernandez@demo.churchcrm.io",
+                  "status": "accepted"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Early Elementary",
+          "description": "Teachers and helpers of Class 1-3.",
+          "class": "Class 1-3",
+          "teacherPosition": "Teacher",
+          "positions": [
+            {
+              "name": "Assistant Teacher",
+              "qualified": ["ryan.nguyen@demo.churchcrm.io", "sandra.rodriguez81@demo.churchcrm.io"]
+            }
+          ],
+          "schedules": [
+            {
+              "name": "Class 1-3",
+              "class": "Class 1-3",
+              "startOffsetMinutes": -15,
+              "endOffsetMinutes": 0,
+              "needs": [
+                { "position": "Teacher", "min": 1, "max": 1 },
+                { "position": "Assistant Teacher", "min": 1, "max": 1 }
+              ],
+              "assignments": [
+                {
+                  "occurrence": 1,
+                  "position": "Teacher",
+                  "email": "jason.johnson85@demo.churchcrm.io",
+                  "status": "accepted"
+                },
+                {
+                  "occurrence": 1,
+                  "position": "Assistant Teacher",
+                  "email": "ryan.nguyen@demo.churchcrm.io",
+                  "status": "accepted"
+                },
+                {
+                  "occurrence": 2,
+                  "position": "Teacher",
+                  "email": "paul.nelson94@demo.churchcrm.io",
+                  "status": "pending"
+                },
+                {
+                  "occurrence": 3,
+                  "position": "Teacher",
+                  "email": "jason.johnson85@demo.churchcrm.io",
+                  "status": "declined"
+                },
+                {
+                  "occurrence": 3,
+                  "position": "Assistant Teacher",
+                  "email": "sandra.rodriguez81@demo.churchcrm.io",
+                  "status": "accepted"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -134,7 +134,7 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
                                         </a>
                                     </div>
                                     <div id="collapseModifiedFiles" class="collapse mb-3">
-                                        <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
+                                        <div class="table-responsive admin-scroll-300">
                                             <table class="table table-sm table-vcenter mb-0">
                                                 <tbody>
                                                     <?php foreach ($failingFiles as $file): ?>
@@ -219,7 +219,7 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
                                         <div class="card card-sm">
                                             <div class="card-body">
                                                 <p class="text-secondary small mb-2"><?= gettext('By default the wizard upgrades to the latest version. You may instead choose a specific version below.') ?></p>
-                                                <select class="form-select form-select-sm mb-2" id="targetVersionSelect" style="max-width: 280px;"></select>
+                                                <select class="form-select form-select-sm mb-2 admin-max-w-280" id="targetVersionSelect"></select>
                                                 <div id="advancedWarningBanner" class="alert alert-danger d-none mb-0 py-2">
                                                     <i class="fa fa-shield-halved me-1"></i>
                                                     <span id="advancedWarningText"></span>
@@ -312,7 +312,7 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
                                 <div class="empty-icon"><i class="fa fa-circle-check text-success fa-4x"></i></div>
                                 <p class="empty-title h2"><?= gettext('Upgrade Complete!') ?></p>
                                 <p class="empty-subtitle text-secondary"><?= gettext('Your ChurchCRM installation has been successfully upgraded.') ?></p>
-                                <div class="alert alert-info text-start mx-auto mt-3" style="max-width: 480px;">
+                                <div class="alert alert-info text-start mx-auto mt-3 admin-max-w-480">
                                     <ul class="mb-0">
                                         <li><?= gettext('Application files updated to latest version') ?></li>
                                         <li><?= gettext('Database schema upgraded automatically') ?></li>

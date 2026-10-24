@@ -3,7 +3,6 @@
 require_once __DIR__ . '/../Include/Config.php';
 require_once __DIR__ . '/../Include/PageInit.php';
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\PdfLabel;
 use ChurchCRM\dto\Cart;
@@ -761,11 +760,7 @@ function GenerateLabels(&$pdf, array $aEntries, $iBulkMailPresort, $bToParents, 
     return $zipLabels ?? $sLabelList;
 }
 
-// Labels for a People Report's rows (#10343) instead of the cart, with the permission of Letters & Labels.
 $sReportSlug = (string) ($_GET['report'] ?? '');
-if ($sReportSlug !== '') {
-    AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled(), 'MenuOptions');
-}
 
 // Standard format
 $startcol = InputUtils::legacyFilterInput($_GET['startcol'], 'int');

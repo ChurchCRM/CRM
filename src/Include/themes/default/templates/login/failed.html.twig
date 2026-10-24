@@ -1,0 +1,22 @@
+{% extends "layout.html.twig" %}
+
+{#
+  Member sign-in: the code or link was right, but this person can't sign in
+  now. It never says why (design D3, A6); the reason is in the audit.
+
+  Variables: `pageTitle`, `loginUrl`, `staffSignInUrl`.
+#}
+
+{% block nav %}{% endblock %}
+
+{% block content %}
+<div class="portal-signin">
+    <section class="portal-card" id="portalSignInFailed">
+        <h1 class="portal-page-title">{{ gettext('We could not sign you in') }}</h1>
+        <p class="portal-card-text">{{ gettext('Please contact the church office.') }}</p>
+        <div class="portal-form-actions">
+            <a class="portal-button portal-button-quiet" href="{{ loginUrl }}">{{ gettext('Back to sign-in') }}</a>
+        </div>
+    </section>
+</div>
+{% endblock %}

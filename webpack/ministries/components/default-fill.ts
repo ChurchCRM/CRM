@@ -118,7 +118,7 @@ function slotHtml(containerId: string, serial: number, source: SlotSource): stri
       <div class="row g-2 align-items-start mb-1 volunteer-default-slot ${p}-slot">
         <div class="col-12 col-sm-8">
           <select class="form-select${sm} volunteer-default-select ${p}-select" id="${containerId}-${serial}"></select>
-          <div class="form-hint text-warning d-none volunteer-default-unqualified ${p}-unqualified"></div>
+          <div class="form-text text-warning d-none volunteer-default-unqualified ${p}-unqualified"></div>
           <div class="invalid-feedback volunteer-default-over ${p}-over">${escapeHtml(
             i18next.t("Over Max: remove this one or raise Max."),
           )}</div>
@@ -381,7 +381,7 @@ export function renderDefaultFillRow(
         </div>
         ${
           people.length === 0 && saved.length === 0
-            ? `<div class="form-hint generate-default-empty">${escapeHtml(
+            ? `<div class="form-text generate-default-empty">${escapeHtml(
                 i18next.t("Nobody is qualified for this position yet, so it stays open."),
               )}</div>`
             : renderDefaultSlots({
