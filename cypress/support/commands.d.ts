@@ -283,6 +283,28 @@ declare namespace Cypress {
     ): Chainable<any>;
 
     /**
+     * Sign in to the Member Portal as a person (id or email), with the
+     * emailed code (cypress/support/member-session.js). The member rule is
+     * opened to everyone for the spec.
+     */
+    signInAsMember(who: number | string): Chainable<any>;
+
+    /** Put the member's session back in the browser, signing in the first time. */
+    useMemberSession(who: number | string): Chainable<any>;
+
+    /** A request in the member's session, asserting the status. */
+    makeMemberAPICall(
+      who: number | string,
+      method: string,
+      url: string,
+      body?: any,
+      expectedStatus?: number | number[]
+    ): Chainable<any>;
+
+    /** Forget the cached member sessions. */
+    forgetMemberSessions(): Chainable<any>;
+
+    /**
      * Make API request as an EditSelf-only user (amanda.black, family 20)
      * Used for testing family-scope authorization (GHSA-jjcj-h3cm-p7x7)
      * @param method - HTTP method

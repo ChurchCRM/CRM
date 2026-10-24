@@ -89,6 +89,10 @@
             "kind": "fixture",
             "reason": "Member sign-in row 5 (#10463): turns member sign-in on, ends the sign-in throttle windows and reads the sign-in audit and requests, none of which has an HTTP surface until row 9."
         },
+        "cypress/support/member-session.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in (#10463): opens the member rule for a spec that acts as a member and puts the seed's settings back after it."
+        },
         "cypress/support/remembered-device.js": {
             "kind": "fixture",
             "reason": "Member sign-in (#10463): ends the one-minute grace of a remembered device's replaced token, so specs need not wait it out; the server still decides what an ended grace means."
