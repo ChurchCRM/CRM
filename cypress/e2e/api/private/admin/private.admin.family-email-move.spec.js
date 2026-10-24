@@ -50,12 +50,15 @@ const addPerson = (key, familyKey, role, email, { year = null, deceased = null, 
 
 const runMove = () => cy.task("db:upgradeBlock", MOVE).its("error").should("be.null");
 
+// Ids are read when the command runs, so a family added earlier in the same test is found.
 const moveOf = (familyKey) =>
     cy
-        .dbQuery(
-            "SELECT fem_Email AS email, fem_Outcome AS outcome, fem_Reason AS reason, fem_per_ID AS personId, " +
-                "fem_NeedsConfirm AS needsConfirm FROM family_email_move_fem WHERE fem_fam_ID = ? ORDER BY fem_ID",
-            [fam[familyKey]],
+        .then(() =>
+            cy.dbQuery(
+                "SELECT fem_Email AS email, fem_Outcome AS outcome, fem_Reason AS reason, fem_per_ID AS personId, " +
+                    "fem_NeedsConfirm AS needsConfirm FROM family_email_move_fem WHERE fem_fam_ID = ? ORDER BY fem_ID",
+                [fam[familyKey]],
+            ),
         )
         .its("rows");
 
@@ -63,7 +66,7 @@ const emailOf = (personKey) => cy.makePrivateAdminAPICall("GET", `/api/person/${
 
 const movedNotes = (familyKey) =>
     cy
-        .makePrivateAdminAPICall("GET", `/api/timeline/family/${fam[familyKey]}`)
+        .then(() => cy.makePrivateAdminAPICall("GET", `/api/timeline/family/${fam[familyKey]}`))
         .then((resp) => resp.body.timeline.filter((item) => item.type === "family-email"));
 
 const expectNote = (familyKey, text) => {
@@ -222,6 +225,27 @@ describe("7.9.0 upgrade: family email moves to people", () => {
         cy.dbQuery(`SELECT COUNT(*) AS n FROM family_email_move_fem WHERE fem_fam_ID IN (${familyIds.map(Number).join(",")})`)
             .its("rows.0.n")
             .should("eq", 10);
+        movedNotes("Both").should("have.length", 1);
+    });
+
+    it("handles each family once when it runs twice in the same second", () => {
+        const fixtureMoves = () =>
+            cy
+                .then(() =>
+                    cy.dbQuery(`SELECT COUNT(*) AS n FROM family_email_move_fem WHERE fem_fam_ID IN (${familyIds.map(Number).join(",")})`),
+                )
+                .its("rows.0.n");
+
+        addFamily("Twice", addr("twice"));
+        addPerson("twiceHead", "Twice", 1, addr("twice-head"));
+        addPerson("twiceSpouse", "Twice", 2, addr("twice-spouse"));
+        fixtureMoves().then((before) => {
+            runMove();
+            runMove();
+            fixtureMoves().should("eq", before + 1);
+        });
+        moveOf("Twice").should("have.length", 1).its("0").should("include", { outcome: "noted", reason: "both_have_email" });
+        movedNotes("Twice").should("have.length", 1);
         movedNotes("Both").should("have.length", 1);
     });
 
