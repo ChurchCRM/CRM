@@ -14,7 +14,7 @@
 - **One portal permissions model.** One check decides what each member sees and can do in the portal. Core pages, Volunteer and plugins all use it. Team leaders keep running their teams from the portal.
 - **Email belongs to people.** The family email moves to the head of household or spouse. They can sign in with it only after staff confirm it is theirs, unless they are the family's only living, active member. The printed directory shows each person's email only.
 - **Disable sign-in.** An administrator can stop any person signing in.
-- **Login as User** lets an administrator see a member's portal, from the person's Actions menu, read-only by default and on the record. It can't open a staff account.
+- **Login as Person** lets an administrator see a member's portal, from the person's Actions menu, read-only by default and on the record. It can't open a staff account.
 - **Release-day cutover.** The existing self-service logins stop on the day this ships.
 
 ## How we got here
@@ -64,10 +64,10 @@ This document puts those into one design and one delivery plan.
 | D4 | Passkeys are in the first release. Staying signed in is the member's choice, device by device. The box is never ticked for them, and a device stays signed in for 30 days by default. | §6.2, §6.3 |
 | D5 | **Who may sign in:** family roles; classifications, which is where guests are decided; and a minimum age of 13. Deceased and inactive people can't sign in, and neither can people whose family is deactivated, who are awaiting review, or who have Disable sign-in on. In the portal, an adult is a head of household or spouse who is 18 or older. | §4 |
 | D6 | The personal email is the sign-in identity. §9 controls who may change it, and when a new address may be used to sign in. | §9 |
-| D7 | The web root goes to `/portal/login`. `/admin` is the staff sign-in page, and `/session/begin` redirects to it. | §7 |
+| D7 | The web root goes to `/portal/login` while member sign-in is on, and to `/admin` while it is off. `/admin` is the staff sign-in page, and `/session/begin` redirects to it. | §7 |
 | D8 | One portal permissions model serves core, Volunteer and plugins. | §8 |
 | D9 | **Family email:** it moves to the head of household, then the spouse. If neither can take it, it is kept as a note in the family's timeline. A moved address is used to sign in only after staff with Edit Records or an administrator confirm it is that person's own. In a one-person family it is accepted as the address on record (§9). | §10 |
-| D10 | Login as User returns inside this work, in the person's Actions menu. #10392 closes in favour of it. | §6.5 |
+| D10 | Login as Person returns inside this work, as **Login as {first name}** in the person's Actions menu. #10392 closes in favour of it. | §6.5 |
 | D11 | **Release day:** each self-service account's portal data is copied, then the account is deleted. Member sign-in stays off until an administrator turns it on. | §12 |
 | D12 | Passkeys add one WebAuthn library. | §14 |
 | D13 | **Language:** each person chooses the Member Portal's language on their profile, and it is stored on their sign-in row. Unset, it is the church's language. Mail to the person uses it; the office notice uses the church's. | §5 |
@@ -133,7 +133,7 @@ This document puts those into one design and one delivery plan.
 
 A member session belongs to a **person**, not to a user account.
 
-- **`PortalPrincipal`** is a small value object: the person id, how they signed in, when, and, for Login as User, the acting administrator. It lives in the PHP session.
+- **`PortalPrincipal`** is a small value object: the person id, how they signed in, when, and, for Login as Person, the acting administrator. It lives in the PHP session.
   - `PortalAccessMiddleware` and `PortalApiMiddleware` resolve `portalActor` from the principal instead of from `getCurrentUser()`.
   - The remaining portal callers (§2) read the principal too.
 - **The staff side doesn't change.** `User`, `AuthenticationManager` and every staff route keep working as they do now. A request with only a portal principal is not a signed-in user to them, so staff routes send it to `/admin`.
@@ -187,26 +187,28 @@ A person may start a portal session when **all** of these hold. The shared step 
 PortalSessionStarter::start(
     int $personId,
     SignInMethod $method,   // EMAIL_LINK, EMAIL_CODE, DEVICE, PASSKEY, STAFF, ASSISTED; later GOOGLE, MICROSOFT, APP
-    ?User $actor = null     // the administrator, for ASSISTED (Login as User) only
+    ?User $actor = null     // the administrator, for ASSISTED (Login as Person) only
 ): PortalPrincipal;
 ```
 
 It does the following, in this order:
-1. **Checks.** It loads the person from the database and applies §4. `STAFF` skips the member rule. `ASSISTED` applies only the three checks listed in §6.5 and none of the others. If any check fails, it writes a "refused" audit row with the reason and throws. No session is started.
+1. **Checks.** It loads the person from the database and applies §4. `STAFF` skips the member rule. `ASSISTED` applies only the four checks listed in §6.5 and none of the others. If any check fails, it writes a "refused" audit row with the reason and throws. No session is started.
 2. **Starts the session.** It regenerates the session id. It stores the principal and the person's current **session version**: a number on their sign-in row that goes up whenever all their sessions must end.
 3. **Updates the sign-in row:** first and last sign-in time and the method. For an email method, it also records the address that was proven. `ASSISTED` changes none of these.
 4. **Audits.** It writes a "signed in" audit row with the method, and the actor for `ASSISTED`.
 
 **On every portal request**, `PortalSessionMiddleware`:
 - reloads the person and their sign-in row;
-- applies the checks for the session's sign-in method again: all of §4 for the member methods, §4 without the member rule for `STAFF`, and only the three checks in §6.5 for `ASSISTED`;
+- applies the checks for the session's sign-in method again: all of §4 for the member methods, §4 without the member rule for `STAFF`, and only the four checks in §6.5 for `ASSISTED`;
 - ends the session when one of those checks fails, when the session version has changed, or when the idle time has passed;
-- records last activity, except during Login as User.
+- records last activity, except during Login as Person.
 
 So Disable sign-in, a change to the rule, a deactivated family or "sign out everywhere" all take effect on the person's next request (#10511 S5).
 
+**Turning member sign-in off** ends every email, device and passkey session on its next request, and Login as Person refuses to start (§6.5). `STAFF` sessions keep working. Remembered devices and passkeys aren't removed, so they work again once sign-in is back on.
+
 **The session's language.** Each request picks one language for its pages and scripts.
-- **A member session** (email, device or passkey) and **Login as User** use the language the person chose on their profile (Profile → Update your details → Language). When they chose none, or chose one ChurchCRM no longer ships, they get the church's language.
+- **A member session** (email, device or passkey) and **Login as Person** use the language the person chose on their profile (Profile → Update your details → Language). When they chose none, or chose one ChurchCRM no longer ships, they get the church's language.
 - **A `STAFF` session** keeps the staff account's own language setting, and its profile page has no Language field.
 - **Signed-out pages** use the church's language.
 - **Email to a member** (the sign-in code, the passkey notice and the email-change messages) is written in the member's language. The office notice is written in the church's.
@@ -254,7 +256,7 @@ Requests over a limit get the same answer screen and no email. They are audited 
   - A request using it gets a session through the shared step, with every check, but doesn't replace the token again.
   - After the 60 seconds it signs nothing in.
   - Removing the device ends it at once.
-- Members see their devices and passkeys on a new **Sign-in and devices** portal page. Each device shows a browser and system label, when it was added and when it was last used. A member can sign out one device, or every device.
+- Members see their devices and passkeys on a new **Sign-in and devices** portal page, reached from the account menu under their name (with Email History and Sign out). Each device shows a browser and system label, when it was added and when it was last used. A member can sign out one device, or every device.
 - Disable sign-in, "sign out everywhere", and an email change made by someone else (§9) remove all remembered devices.
 
 ### 6.3 Passkeys
@@ -284,35 +286,35 @@ Requests over a limit get the same answer screen and no email. They are audited 
   - An email link or a passkey never opens the staff side.
 - **The portal's Change Password and two-factor pages** show only in a staff session. Members have neither.
 
-### 6.5 Login as User (folds in #10392)
+### 6.5 Login as Person (folds in #10392)
 
-Login as User lets an administrator see the Member Portal exactly as a member sees it, to help with a problem. It moves into this proposal, and #10392 closes in favour of its child issue.
+Login as Person lets an administrator see the Member Portal exactly as a member sees it, to help with a problem. It moves into this proposal, and #10392 closes in favour of its child issue.
 
-- **Where it is:** a **Login as User** item in the **Actions** menu on the person's page (`src/people/views/person-view.php:436-474`). The Make User, Edit User and View User buttons in the page header (`src/people/routes/view.php:96-106`) stay where they are.
-- **When it is grayed out**, with the reason on hover. These are the only checks Login as User applies, at start and on every request:
+- **Where it is:** a **Login as {first name}** item in the **Actions** menu on the person's page (`src/people/views/person-view.php:436-474`). The Make User, Edit User and View User buttons in the page header (`src/people/routes/view.php:96-106`) stay where they are.
+- **When it is grayed out**, with the reason on hover. These are the only checks Login as Person applies, at start and on every request:
   - the person is deceased;
   - the person's Disable sign-in is on;
-  - the person has a user record (a staff account). Login as User never opens a staff account.
-- **Deliberately not checked.** The office uses Login as User to see what a person sees, including someone who can't sign in yet. So it still works when:
+  - the person has a user record (a staff account). Login as Person never opens a staff account;
+  - member sign-in is off: *"Member sign-in is off."* An open session ends on its next request.
+- **Deliberately not checked.** The office uses Login as Person to see what a person sees, including someone who can't sign in yet. So it still works when:
   - the person is inactive;
   - the person's family is deactivated;
   - the person is awaiting review;
   - the person falls outside the member rule (§4);
-  - the person has no usable sign-in email;
-  - member sign-in is off.
+  - the person has no usable sign-in email.
 
   The session is still read-only by default and fully recorded.
-- **Who and when:** administrators only. The church turns it on in the setting *Allow Login as User*, which is off by default (#10392). While the setting is off, the item doesn't show and the routes answer 404.
+- **Who and when:** administrators only. The church turns it on in the setting *Allow Login as Person* (`bAllowLoginAsPerson`), which is off by default (#10392). While the setting is off, the item doesn't show and the routes answer 404.
 - **How it works:**
   - It calls the shared step with `ASSISTED`, the member as the subject and the administrator as the actor.
-  - The administrator's own staff session waits underneath it. While Login as User is active, staff pages are refused.
+  - The administrator's own staff session waits underneath it. While Login as Person is active, staff pages are refused.
   - **Stop** returns to the administrator's staff session, on the person's page.
-- **Read-only by default.** #9843 asked for this. Changes are refused unless the church also turns on *Allow changes during Login as User*.
-- **A record of every action:** #10392's session and action tables (`user_masquerade_session_ums`, `user_masquerade_action_uma`), with the target changed from a user to a person.
+- **Read-only by default.** #9843 asked for this. Changes are refused unless the church also turns on *Allow changes during Login as Person* (`bLoginAsPersonCanWrite`).
+- **A record of every action:** one row per session in `login_as_person_session_lps` and one per write request in `login_as_person_action_lpa`. They replace #10392's tables, with the target a person instead of a user.
   - Every write is recorded against both the administrator and the member, and so is every audit row (#10511 B1).
   - The history card shows on the person's page and on the administrator's user page.
-- **Activity stats:** Login as User doesn't update the member's last activity or their sign-in statistics.
-- **Language:** the portal opens in the member's language, so the administrator sees what the member sees. Read-only Login as User can't change it.
+- **Activity stats:** Login as Person doesn't update the member's last activity or their sign-in statistics.
+- **Language:** the portal opens in the member's language, so the administrator sees what the member sees. Read-only Login as Person can't change it.
 - **Dropped from #10392:** the rule about the target's two-factor sign-in. Members have no two-factor, and staff accounts can't be targets.
 
 ### 6.6 Google and Microsoft (a later release)
@@ -331,9 +333,10 @@ Login as User lets an administrator see the Member Portal exactly as a member se
 | `/admin` | staff | username, password, then two-factor |
 
 - **Web root.**
-  - Signed out, it goes to `/portal/login`.
+  - Signed out, it goes to `/portal/login` while member sign-in is on, and to `/admin` while it is off.
   - Signed in, it goes to the staff dashboard for a staff session and to the portal for a member session.
-- **`/portal/login`** uses the church's portal theme and has a small **Staff sign-in** link to `/admin`. While member sign-in is off, it says *"Member sign-in isn't available yet. Please contact the church office."*, with the same Staff sign-in link.
+- **`/portal/login`** uses the church's portal theme and is for members only. It has no link to the staff sign-in: staff go to `/admin`, and a staff session reaches the portal and back through the Member Portal and Admin Console links (§6.4). While member sign-in is off, it says *"Member sign-in isn't available yet. Please contact the church office."*
+- **Signing out** of a member session goes to `/portal/login`, and so does any portal page asked for while signed out, whatever the setting.
 - **`/admin`**
   - Signed out, it shows today's staff sign-in: username and password, then the two-factor step, with "Forgot password?".
   - Every staff page a signed-out visitor asks for redirects to `/admin`, which remembers the page and returns there after sign-in. Today that redirect goes to `/session/begin`.
@@ -401,7 +404,7 @@ Not in this proposal: an administrator giving a capability to a whole group or f
 | `portal.family.contacts.view` | family | adult rule | see family members' email and phone |
 | `portal.family.edit` | family | adult rule | change family details, add a family member |
 | `portal.family.confirm` | family | adult rule | confirm the family's details |
-| `portal.calendar.view` | — | everyone, when the calendar is on | church calendars and my subscription |
+| `portal.calendar.view` | — | everyone, while at least one calendar is shared with members | church calendars and my subscription |
 | `portal.volunteer.use` | — | everyone, when volunteering is on | my schedule, sign-ups, substitute requests |
 | `volunteer.team.manage` | team | team-leader rule | positions, Volunteers grid, schedules, staffing, headcounts |
 | `volunteer.team.substitutes` | team | team-leader rule | approve or decline substitute requests |
@@ -426,8 +429,8 @@ Today a plugin has no way into the portal (§2). This proposal adds one, built o
 
 ### 8.6 What administrators see
 
-- **Admin → Member Portal → Permissions:** every capability, core and plugin, with its description, its sources and how many people hold it. Opening one lists the holders and where each grant comes from.
-- **The person's page, "Portal sign-in" card:** the person's portal permissions with their source (for example "Everyone", "Adult of the Smith family", "Leader of Sunday Greeters", or "Given by Pat until 31 Dec"; dates follow the church's date format, time zone and language settings). Administrators add and remove given grants there.
+- **Admin → Member Portal → Permissions:** every capability, core and plugin, with its description, what it **Applies to** (the person, a family, a team), who it is **Given to** (Everyone, the adults of each family, team leaders, or **Admin overrides** for grants an administrator gave) and how many people hold it. Opening one lists the holders and **Why** each holds it.
+- **The person's page, "Portal sign-in" card:** behind a **View Permissions** link, the person's portal permissions with their source (for example "Given to Everyone", "Adult of the Smith family", "Leader of Sunday Greeters", or "Given by Pat until 31 Dec"; dates follow the church's date format, time zone and language settings). Administrators add and remove given grants there. **Give a portal permission** lists only the permissions the person doesn't already hold, the server refuses a duplicate, and an end date is required.
 
 ### 8.7 Other ideas the model supports (not scheduled)
 
@@ -550,14 +553,18 @@ For each family whose email isn't empty (compared trimmed and in lower case):
 
 ### 11.1 Admin → Member Portal → Sign-in
 
+The Member Portal page sits at People → People Settings → Member Portal. Its tabs are Statistics, Sign-in, Members, Permissions, Audit, Themes and Calendars. **Every tab saves as you go**, with no Save buttons. A refused change reverts and says why. The portal's other switches live on the tab they belong to: developer mode on Themes; birthday editing and volunteering on Permissions, under "What members can use"; the member calendar on Calendars, where the calendar page shows while at least one calendar is shared.
+
 - **Member sign-in**, on or off. It can only be turned on while SMTP works, and it is off after the upgrade and on a new install.
+  - Turning it on asks to confirm, with the number of people who may sign in. Turning it off asks too, and signs members out (§5).
+  - When the rule lets nobody in (no family role or classification ticked, or none match), the tab says so, and the turn-on dialog repeats it.
 - **Who may sign in:** family roles, classifications with counts (guests included) and the minimum age.
 - **Link and code lifetime:** default 2 hours.
 - **Idle time:** default 30 minutes.
 - **Keep me signed in:** how many days a device stays signed in after the member ticks **This is my own device** (default 30). Setting it to 0 removes the box.
 - **Passkeys:** on or off, with the HTTPS and host-name check.
 - **Office list:** people to email about failed attempts. Only people with an email can be added.
-- **Login as User:** the two switches from §6.5.
+- **Login as Person:** the two switches from §6.5.
 
 ### 11.2 Lists and audit (A7)
 
@@ -573,7 +580,7 @@ For each family whose email isn't empty (compared trimmed and in lower case):
   - families confirmed in the last 30 days;
   - family emails not moved (one time, after the upgrade).
 - **Audit**, filterable by person and date. Each row has a time, the person, the event, the method and, for staff actions, who did it.
-  - Events: email requested, signed in (with the method), refused (with the reason), throttled, session ended (with the reason), device added or removed, passkey added or removed, email changed or confirmed, sign-in disabled or enabled, grant added or removed, Login as User started and stopped, family confirmed.
+  - Events: email requested, signed in (with the method), refused (with the reason), throttled, session ended (with the reason), device added or removed, passkey added or removed, email changed or confirmed, sign-in disabled or enabled, grant added or removed, Login as Person started and stopped, family confirmed.
   - "Family confirmed" records which member confirmed. Today's confirmation note doesn't.
   - The audit never stores a code, link, token, password or passkey secret.
   - It replaces the 3-day `auth.log` file as the record for member sign-in. The file keeps logging, as today.
@@ -583,8 +590,8 @@ For each family whose email isn't empty (compared trimmed and in lower case):
 
 - **"Portal sign-in" card:**
   - everyone with Edit Records sees whether the person may sign in (or why not), their last sign-in, and how many devices and passkeys they have. They can also Confirm an email moved from the family email (§9);
-  - administrators also get Disable sign-in (with a reason), Confirm for any unconfirmed email (§9), Sign out everywhere, the list of devices and passkeys with a remove button on each, and the portal permissions (§8.6).
-- **Actions menu:** Login as User (§6.5). The Make User, Edit User and View User buttons in the page header stay as they are.
+  - administrators also get Disable sign-in (with a reason), Confirm for any unconfirmed email (§9), Sign out everywhere, the list of devices and passkeys with a remove button on each, and the portal permissions behind **View Permissions** (§8.6). Disable sign-in and Sign out everywhere stay in the card's footer.
+- **Actions menu:** Login as {first name} (§6.5). The Make User, Edit User and View User buttons in the page header stay as they are.
 
 ## 12. Release-day cutover
 
@@ -608,7 +615,7 @@ For each family whose email isn't empty (compared trimmed and in lower case):
   | Event check-in and check-out (`checkin_id`, `checkout_id`) | Keyed by person, so they are untouched. |
   | Email history (`eml_usr_ID`) | Left in place. The sender is now named from the person; before, a missing account showed as "Automatic". |
   | The account's own data: API key, two-factor secret and recovery codes, password, per-account settings (`userconfig_ucfg`, `user_settings`), password tokens | Deleted with the account, after the calendar feed, last portal activity and language are copied (above). |
-  | Sign-in audit, given grants, Disable sign-in and Login as User history | New in 7.9.0 and empty at the cutover. Afterwards they name people from `person_per`. |
+  | Sign-in audit, given grants, Disable sign-in and Login as Person history | New in 7.9.0 and empty at the cutover. Afterwards they name people from `person_per`. |
   | An open session of a deleted account | It ends on the next request. A portal page goes to `/portal/login`, an API call gets 401, and a staff page goes to `/admin`. |
 
   Former self-service members appear as "never signed in" until their first email sign-in, because only the last portal activity is copied.
@@ -630,7 +637,8 @@ New tables. All are keyed by `per_ID` with `ON DELETE CASCADE`, except the capab
 | `person_passkey_ppk` | passkeys: credential id, public key, sign counter, label, created, last used |
 | `portal_grant_pgr` | given portal grants: person, capability key, scope type, scope id, ends, reason, granted by and when |
 | `portal_signin_audit_psa` | the audit in §11.2 |
-| from #10392 | `user_masquerade_session_ums` and `user_masquerade_action_uma`, with the target changed from a user to a person |
+| `login_as_person_session_lps` | one row per Login as Person session: administrator, person, start, stop, whether writes were allowed |
+| `login_as_person_action_lpa` | one row per write request made during a Login as Person session |
 
 - **Settings** (in `config_cfg`):
   - `bMemberSignIn`;
@@ -638,9 +646,11 @@ New tables. All are keyed by `per_ID` with `ON DELETE CASCADE`, except the capab
   - `iSignInLinkMinutes` (120), `iPortalIdleMinutes` (30), `iRememberDeviceDays` (30);
   - `bPortalPasskeys` (on);
   - the office list;
-  - `bAllowLoginAsUser` (off) and `bLoginAsUserCanWrite` (off).
+  - `bAllowLoginAsPerson` (off) and `bLoginAsPersonCanWrite` (off);
+  - the per-IP limits `iMemberSignInRequestsPerIP` and `iMaxFailedLoginsPerIP` (§6.1).
+  - The portal's calendar switch goes away: the calendar page follows the shared calendars (§8.4), and the upgrade clears the selection where the switch was off.
 - **Capabilities** live in code (core, and plugins at boot), not in a table. Only given grants are stored.
-- **Migration:** everything is plain SQL in `src/mysql/upgrade/7.9.0.sql`: the new tables and settings, copying the portal data, deleting the self-service accounts and moving the family emails (§10, §12). `Install.sql` and `cypress/data/seed.sql` get the same tables. `fam_Email` is dropped a release later.
+- **Migration:** everything is plain SQL in `src/mysql/upgrade/7.9.0.sql`: the new tables and settings, copying the portal data, deleting the self-service accounts and moving the family emails (§10, §12). `Install.sql` gets the same tables; the Cypress seed adds only the rows its tests need. `fam_Email` is dropped a release later.
 
 ## 14. Security notes
 
@@ -661,7 +671,7 @@ New tables. All are keyed by `per_ID` with `ON DELETE CASCADE`, except the capab
   - the relying-party id is the site host;
   - user verification is required;
   - adding one needs an email sign-in in the last 15 minutes.
-- **Login as User:** administrators only, off by default, read-only by default, never into a staff account, every write recorded with both people.
+- **Login as Person:** administrators only, off by default, read-only by default, refused while member sign-in is off, never into a staff account, every write recorded with both people.
 - **Portal permissions:** deny by default; whole grants; scope checked on the loaded record; 404 for someone else's scope.
 - **Library:** passkeys add one WebAuthn library to `src/composer.json`. It is chosen on the passkey issue (D12).
 - **Protected households (#10524):** the portal's family pages show only the member's own household. Pages that list other people, such as a team's Volunteers grid, must apply #10524's record policy once it merges.
@@ -670,7 +680,7 @@ New tables. All are keyed by `per_ID` with `ON DELETE CASCADE`, except the capab
 
 This work does not wait for #10511's F0, as George said on 10-10. It is built so the RFC can take it over:
 
-- **Typed principal.** `PortalPrincipal` is #10511's portal principal. The RFC's `Principal` can wrap it, carrying actor and subject for Login as User (B1).
+- **Typed principal.** `PortalPrincipal` is #10511's portal principal. The RFC's `Principal` can wrap it, carrying actor and subject for Login as Person (B1).
 - **Decision shape.** `PortalAuthorization::decide()` has the RFC's shape:
   - every grant is a capability plus a scope (T1);
   - rules wrap the existing domain scopes, as N1 asked;
@@ -684,7 +694,7 @@ This work does not wait for #10511's F0, as George said on 10-10. It is built so
 - **The RFC's portal-only test fixtures** (an `EditSelf` user with dormant staff flags) no longer apply after the cutover, because no such accounts are left. The portal-principal tests in §17 cover the same ground.
 - **A follow-up edit to RFC 0002** (`docs/decisions/0002-rbac-redesign.md`) makes it match this design:
   - portal-only members have no user account;
-  - Login as User opens only a member's portal, never a staff account, and records both people (§6.5). The P6 note changes to say so;
+  - Login as Person opens only a member's portal, never a staff account, and records both people (§6.5). The P6 note changes to say so;
   - the P4 consumer: this design's email rule, shared-address fix and family email move (§4, §10);
   - the portal-only fixtures become an upgrade test.
 
@@ -706,7 +716,7 @@ This work does not wait for #10511's F0, as George said on 10-10. It is built so
 | 9 | Admin lists, audit view, Statistics on the new tables, the Permissions tab, the person-page card and given grants | 2, 4, 5 |
 | 10 | Email-change rules (§9) | 1, 5 |
 | 11 | Family email moves to people (§10): the SQL in the 7.9.0 upgrade, every reader listed in §2, the directory, CSV, the API and docs | — |
-| 12 | Login as User (§6.5), replacing #10392 | 1, 9 |
+| 12 | Login as Person (§6.5), replacing #10392 | 1, 9 |
 | 13 | Cutover: upgrade script, staff-only Users list, removing "Self-service only", wording, release notes | 1–12 |
 | 14 | Documentation: a docs tracking issue and a docs PR on `release-docs/<version>` | 13, 15 |
 | 15 | A member's portal language: the profile's Language field, the language of portal pages and of mail to the member (§5), carried over from self-service accounts at the cutover (§12) | 2, 5, 13 |
@@ -715,7 +725,7 @@ This work does not wait for #10511's F0, as George said on 10-10. It is built so
 - **Earlier, on its own:** row 11 (family email) and row 0 (#10197) don't depend on the sign-in work. Either can ship one release earlier if that release comes sooner.
 - **Later, without blocking member sign-in or the cutover:**
   - row 3 (plugin API): no core page needs it;
-  - row 12 (Login as User): it is off by default.
+  - row 12 (Login as Person): it is off by default.
 - **Must ship together:** rows 1, 2, 4–10, 13 and 15, with the docs (row 14).
   - Without the cutover, members would have two ways in. Without email sign-in, the cutover would lock them out.
   - Without remembered devices and passkeys, members would be back to email on every visit (A9).
@@ -751,6 +761,7 @@ This work does not wait for #10511's F0, as George said on 10-10. It is built so
 - **Throttling:** per address, per IP and per person.
 - **Sessions:**
   - the idle timeout;
+  - turning member sign-in off ends member sessions on the next request, and staff sessions keep working;
   - Disable sign-in ends an open session on the next request;
   - a rule change does the same;
   - so does "sign out everywhere".
@@ -770,7 +781,8 @@ This work does not wait for #10511's F0, as George said on 10-10. It is built so
   - Disable sign-in removes them all.
   - These use Chrome's virtual authenticator.
 - **Sign-in pages:**
-  - the web root goes to `/portal/login`;
+  - the web root goes to `/portal/login` while member sign-in is on, and to `/admin` while it is off;
+  - the member sign-in pages have no staff sign-in link;
   - `/session/begin` redirects to `/admin`;
   - a member session can't open any staff route;
   - a staff session goes to the portal and back without signing in again;
@@ -803,10 +815,10 @@ This work does not wait for #10511's F0, as George said on 10-10. It is built so
   - mail for a family goes to the head;
   - the directory prints no family email;
   - the family API returns the field read-only, from the head or else the spouse, with the `Deprecation` header, and a write doesn't store it.
-- **Login as User:**
-  - grayed out for deceased, Disable sign-in and staff accounts;
-  - still starts, and stays open across later pages, for each case §6.5 deliberately doesn't check: an inactive person, a deactivated family, awaiting review, outside the member rule, no usable email, and member sign-in off;
-  - each of the three checks refuses a start, and ends an open session on the next request;
+- **Login as Person:**
+  - grayed out for deceased, Disable sign-in, staff accounts and member sign-in off;
+  - still starts, and stays open across later pages, for each case §6.5 deliberately doesn't check: an inactive person, a deactivated family, awaiting review, outside the member rule, and no usable email;
+  - each of the four checks refuses a start, and ends an open session on the next request;
   - hidden with the setting off;
   - read-only unless writes are allowed;
   - every write is recorded with both people;
@@ -815,14 +827,14 @@ This work does not wait for #10511's F0, as George said on 10-10. It is built so
   - a member picks a language, and the portal and the next page show it;
   - Church default follows the church's language, and a language no longer shipped falls back to it;
   - a staff session opening the portal keeps the staff account's language and shows no Language field;
-  - Login as User shows the member's language, and read-only Login as User can't change it;
+  - Login as Person shows the member's language, and read-only Login as Person can't change it;
   - the sign-in code email arrives in the member's language, and the office notice in the church's.
 - **Cutover:**
   - an upgraded database with self-service accounts loses them, and their calendar feed URLs keep working;
   - an `EditSelf` user with dormant staff flags is treated the same way;
   - administrators and read-only staff are untouched;
   - a self-service account's language carries over to the person when ChurchCRM ships it;
-  - notes, volunteer rows, email history, audit rows and Login as User history written by a self-service account still name its person after the account is deleted;
+  - notes, volunteer rows, email history, audit rows and Login as Person history written by a self-service account still name its person after the account is deleted;
   - an open session of a deleted account goes to `/portal/login` from a portal page, and gets 401 from the API.
 - **Audit:** no code, token or link appears in any row.
 
@@ -830,7 +842,7 @@ This work does not wait for #10511's F0, as George said on 10-10. It is built so
 
 - A mobile app.
 - Passwords for members.
-- A member directory in the portal.
+- A member directory in the portal. It is proposed separately, on top of this work, with its own capability (`portal.directory.view`).
 - Changing how staff sign in, apart from moving the page to `/admin`.
 - An administrator giving a capability to a whole group at once.
 - Portal roles as named bundles (#10511 role templates).
