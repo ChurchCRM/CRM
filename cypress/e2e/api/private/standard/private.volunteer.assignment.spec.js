@@ -3,7 +3,7 @@
 /**
  * Volunteer v2 — assignment, response and gap workflow (#9709, epic #9701).
  *
- * Normative sections of `.agents/skills/churchcrm/volunteer-v2-design.md`:
+ * Normative sections of `docs/design/volunteer-v2.md`:
  * §2.11 (the assignment row, its unique key, §2.11.1 lifecycle and legal
  * transitions, §2.11.2 invariants I1–I8, §2.11.3 the derived gap), §2.12
  * (append-only responses and the idempotency rule), §2.14 (the notification

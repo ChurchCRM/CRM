@@ -88,7 +88,7 @@ describe("API GET /api/email/log", () => {
         });
     });
 
-    it("unscoped list is for administrators only and can filter by status", () => {
+    it("unscoped list needs the Email permission and can filter by status", () => {
         adminGet("/api/email/log?status=failed").then((resp) => {
             expect(resp.body.total).to.be.at.least(1);
             for (const r of resp.body.rows) expect(r.status).to.eq("failed");
@@ -105,16 +105,28 @@ describe("API GET /api/email/log", () => {
             expect(resp.body.rows).to.be.an("array");
         });
     });
+
+    it("shows a failed row's status without the mail server's error to a non-admin", () => {
+        const failedRow = (resp) => resp.body.rows.find((r) => r.id === 4);
+        cy.makePrivateFinanceOnlyAPICall("GET", "/api/email/log?personId=2&limit=100").then((resp) => {
+            expect(failedRow(resp)).to.include({ status: "failed", error: null });
+        });
+        cy.makePrivateFinanceOnlyAPICall("GET", "/api/email/log?familyId=1&limit=100").then((resp) => {
+            expect(failedRow(resp)).to.include({ status: "failed", error: null });
+        });
+        cy.makePrivateFinanceOnlyAPICall("GET", "/api/email/log/4").its("body.error").should("eq", null);
+        adminGet("/api/email/log?personId=2&limit=100").then((resp) => expect(failedRow(resp).error).to.include("SMTP"));
+    });
 });
 
 describe("Every send writes history rows", () => {
     it("a composer send logs one row per recipient, with the body and the sending user", () => {
         const tag = `crm-9877-${Date.now()}`;
-        cy.makePrivateAdminAPICall("POST", "/api/email/send", {
+        cy.sendComposerEmailNow({
             personIds: [2],
             subject: `Logged ${tag}`,
             body: "First line\nSecond line",
-        }).then((resp) => expect(resp.body.counts.sent).to.eq(1));
+        }).then((result) => expect(result.progress.sent).to.eq(1));
 
         adminGet("/api/email/log?personId=2&limit=1").then((resp) => {
             const row = resp.body.rows[0];

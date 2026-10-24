@@ -32,7 +32,8 @@ services:
       - .env
     volumes:
       # Seed with demo data on first start
-      - ../cypress/data:/docker-entrypoint-initdb.d:ro
+      - ../src/mysql/install/Install.sql:/docker-entrypoint-initdb.d/00-install.sql:ro
+      - ../cypress/data/seed.sql:/docker-entrypoint-initdb.d/10-seed.sql:ro
       - churchcrm-dev-db:/var/lib/mysql
     healthcheck:
       test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
@@ -66,7 +67,7 @@ services:
     hostname: crm-webserver
 
   mailserver:
-    image: axllent/mailpit:latest
+    image: axllent/mailpit:v1
     restart: unless-stopped
     ports:
       - "${DOCKER_BIND_ADDRESS:-127.0.0.1}:${MAILSERVER_PORT:-1025}:1025"

@@ -1,32 +1,3 @@
-// Finance Module Styles
-// Used by: /finance/views/dashboard.php, /finance/views/reports.php
-
-// Finance dashboard & reports card styling
-.finance-card {
-  border: none;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  transition: box-shadow 0.3s ease;
-
-  &:hover {
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-  }
-}
-
-// Finance report list items with hover effect
-.finance-list-group-item {
-  transition: all 0.2s ease;
-
-  &:hover {
-    background-color: #f8f9fa;
-    transform: translateX(3px);
-  }
-
-  h6 {
-    margin-bottom: 0.25rem;
-  }
-}
-
-// Truncated text cells
 .finance-truncate {
   max-width: 200px;
 }

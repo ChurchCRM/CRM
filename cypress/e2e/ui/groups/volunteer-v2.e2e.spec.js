@@ -3,7 +3,7 @@
 /**
  * Volunteer v2 — #9714's browser walk-through and the responsive pass.
  *
- * Epic #9701, issue #9714. Design `.agents/skills/churchcrm/volunteer-v2-design.md`
+ * Epic #9701, issue #9714. Design `docs/design/volunteer-v2.md`
  * §0.3 (the product principle), §5.1 (the screen inventory this pass has to
  * cover), §5.8 (the mandatory states), §5.9 (responsive rules) and §5.10
  * (localization).

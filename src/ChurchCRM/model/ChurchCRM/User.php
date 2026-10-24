@@ -95,7 +95,7 @@ class User extends BaseUser
     //
     //   TIER 1 — user_usr boolean columns (fast, indexed, ORM-generated getters):
     //     usr_Admin, usr_EditSelf, usr_AddRecords, usr_EditRecords,
-    //     usr_DeleteRecords, usr_MenuOptions, usr_ManageGroups,
+    //     usr_DeleteRecords, usr_ManageGroups,
     //     usr_Finance, usr_ManageFundraisers, usr_Notes.
     //     These are the "core" record permissions accessible via isXxx() getters
     //     (e.g. isAddRecords(), isFinance()) or the corresponding isXxxEnabled()
@@ -175,14 +175,6 @@ class User extends BaseUser
             return false;
         }
         return $this->isAdmin() || $this->isDeleteRecords();
-    }
-
-    public function isMenuOptionsEnabled(): bool
-    {
-        if ($this->isEditSelfExclusive()) {
-            return false;
-        }
-        return $this->isAdmin() || $this->isMenuOptions();
     }
 
     public function isManageGroupsEnabled(): bool

@@ -1060,6 +1060,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      *         )
      *     ),
      *     @OA\Response(response=200, description="Updated membership records for the person in the group"),
+     *     @OA\Response(response=400, description="Role does not belong to this group"),
      *     @OA\Response(response=403, description="ManageGroupRole role required"),
      *     @OA\Response(response=409, description="The role is Teacher, or the person is a teacher, of a Sunday School class whose teachers are managed by a volunteer team (Volunteer v2, D23)")
      * )
@@ -1077,7 +1078,19 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
             ->filterByPersonId((int) $userID)
             ->findOne();
         if ($existing === null) {
-            $roleID = $input['RoleID'] ?? $group->getDefaultRole();
+            $requestedRole = $input['RoleID'] ?? $group->getDefaultRole();
+            // Zero means "use group default"; resolve it before validating.
+            $roleID = filter_var($requestedRole, FILTER_VALIDATE_INT);
+            $roleID = $roleID === 0 ? (int) $group->getDefaultRole() : $roleID;
+            if (
+                $roleID === false || $roleID <= 0
+                || ListOptionQuery::create()
+                    ->filterById($group->getRoleListId())
+                    ->filterByOptionId($roleID)
+                    ->count() === 0
+            ) {
+                return SlimUtils::renderErrorJSON($response, gettext("That role is not one of this group's roles."), [], 400);
+            }
 
             $locked = _renderTeacherRoleConflict($response, VolunteerClassLinkService::findTeacherWriteConflict(
                 (int) $groupID,
@@ -1294,12 +1307,24 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      *         @OA\JsonContent(@OA\Property(property="roleID", type="integer"))
      *     ),
      *     @OA\Response(response=200, description="Default role updated"),
+     *     @OA\Response(response=400, description="Role does not belong to this group"),
      *     @OA\Response(response=403, description="ManageGroupRole role required")
      * )
      */
     $group->post('/{groupID:[0-9]+}/defaultRole', function (Request $request, Response $response, array $args): Response {
-        $roleID = $request->getParsedBody()['roleID'];
+        $input = $request->getParsedBody() ?? [];
+        $rawRole = $input['roleID'] ?? null;
+        $roleID = filter_var($rawRole, FILTER_VALIDATE_INT);
         $group = $request->getAttribute('group');
+        if (
+            $roleID === false || $roleID <= 0
+            || ListOptionQuery::create()
+                ->filterById($group->getRoleListId())
+                ->filterByOptionId($roleID)
+                ->count() === 0
+        ) {
+            return SlimUtils::renderErrorJSON($response, gettext("That role is not one of this group's roles."), [], 400);
+        }
         $group->setDefaultRole($roleID);
         $group->save();
         return SlimUtils::renderSuccessJSON($response);

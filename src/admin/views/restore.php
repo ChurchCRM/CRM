@@ -21,7 +21,7 @@ $isOnboarding = $isOnboarding ?? false;
     <div class="card-body">
         <div class="row align-items-center">
             <div class="col-md-1 text-center d-none d-md-block">
-                <i class="fa-solid fa-database fa-3x text-primary" style="font-size: 2.5rem;"></i>
+                <i class="fa-solid fa-database fa-3x text-primary admin-icon-md"></i>
             </div>
             <div class="col-md-11">
                 <p class="mb-2 lead"><?= gettext("Let's restore your previous ChurchCRM data.") ?></p>
@@ -62,9 +62,9 @@ $isOnboarding = $isOnboarding ?? false;
             <!-- File Upload Area -->
             <div class="mb-3">
                 <label class="form-label required"><?= gettext('Select Backup File') ?></label>
-                <div id="dropzone" class="dropzone-area text-center p-4 rounded" style="cursor: pointer;">
+                <div id="dropzone" class="dropzone-area text-center p-4 rounded">
                     <input type="file" name="restoreFile" id="restoreFile" class="d-none" accept=".sql,.gz">
-                    <i class="fa-solid fa-cloud-upload-alt mb-3" style="font-size: 2.5rem;"></i>
+                    <i class="fa-solid fa-cloud-upload-alt mb-3 admin-icon-md"></i>
                     <p class="mb-1"><?= gettext('Drag and drop your backup file here') ?></p>
                     <p class="text-secondary mb-0"><?= gettext('or click to browse') ?></p>
                     <small class="text-secondary"><?= gettext('Supported formats') ?>: .sql, .sql.gz, .tar.gz</small>
@@ -98,7 +98,7 @@ $isOnboarding = $isOnboarding ?? false;
         <div id="statusIdle">
             <div class="empty py-4">
                 <div class="empty-icon">
-                    <i class="fa-solid fa-database" style="font-size: 2.5rem;"></i>
+                    <i class="fa-solid fa-database admin-icon-md"></i>
                 </div>
                 <p class="empty-title"><?= gettext('Ready to restore') ?></p>
                 <p class="empty-subtitle text-secondary"><?= gettext('Select a backup file and click Restore Database.') ?></p>
@@ -107,7 +107,7 @@ $isOnboarding = $isOnboarding ?? false;
         <div id="statusRunning" class="d-none">
             <div class="empty py-4">
                 <div class="empty-icon">
-                    <div class="spinner-border text-warning" role="status" style="width: 2.5rem; height: 2.5rem;">
+                    <div class="spinner-border text-warning admin-spinner-md" role="status">
                         <span class="visually-hidden"><?= gettext('Loading...') ?></span>
                     </div>
                 </div>
@@ -118,7 +118,7 @@ $isOnboarding = $isOnboarding ?? false;
         <div id="statusError" class="d-none">
             <div class="empty py-4">
                 <div class="empty-icon">
-                    <i class="fa-solid fa-circle-xmark text-danger" style="font-size: 2.5rem;"></i>
+                    <i class="fa-solid fa-circle-xmark text-danger admin-icon-md"></i>
                 </div>
                 <p class="empty-title text-danger"><?= gettext('Restore failed.') ?></p>
                 <p class="empty-subtitle text-secondary" id="errorMessage"><?= gettext('Please check the backup file and try again.') ?></p>
@@ -132,7 +132,7 @@ $isOnboarding = $isOnboarding ?? false;
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-body text-center py-5">
-                <i class="fa-solid fa-circle-check text-success mb-4" style="font-size: 4rem;"></i>
+                <i class="fa-solid fa-circle-check text-success mb-4 admin-icon-lg"></i>
                 <h3 class="text-success mb-3"><?= gettext('Database Restored Successfully!') ?></h3>
                 <div id="restoreModalMessages" class="text-start mb-3"></div>
                 <?php if ($isOnboarding): ?>
@@ -150,22 +150,6 @@ $isOnboarding = $isOnboarding ?? false;
         </div>
     </div>
 </div>
-
-<style>
-.dropzone-area {
-    background-color: var(--tblr-bg-surface-secondary);
-    border: 2px dashed var(--tblr-border-color);
-    transition: all 0.3s ease;
-}
-.dropzone-area:hover, .dropzone-area.dragover {
-    background-color: var(--tblr-bg-surface);
-    border-color: var(--tblr-primary);
-}
-.dropzone-area.has-file {
-    background-color: var(--tblr-success-lt);
-    border-color: var(--tblr-success);
-}
-</style>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM.restoreContext = <?= InputUtils::jsonEncodeForScript($isOnboarding ? 'onboarding' : 'standard') ?>;

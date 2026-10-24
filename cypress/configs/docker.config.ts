@@ -3,7 +3,7 @@ import { verifyDownloadTasks } from 'cy-verify-downloads';
 import { registerRowCountGuard } from './row-count-guard';
 
 import base from './base.config'
-import { dbTasks, mailTasks, pluginFixtureTasks } from './_shared'
+import { dbTasks, mailTasks, pluginFixtureTasks, gateCoverageTasks, exposeMailpitUrl } from './_shared'
 export default defineConfig({
   chromeWebSecurity: false,
   video: false,
@@ -35,7 +35,7 @@ export default defineConfig({
     'plainauth.api.key': 'plainAuthReadOnlyApiKeyForTesting12345678901',
     'limited.api.key': 'limitedUserApiKeyForTesting123456789012345678',
     'editrecords.api.key': 'judithMatthewsEditRecordsNoNotesApiKey1234',
-    'menuoptions.api.key': 'menuOptionsOnlyApiKeyForTesting12345678901',
+    'teamleader.api.key': 'teamLeaderApiKeyForTesting1234567890123456',
     'deceased.api.key': 'deceasedUserApiKeyForTesting1234567890123',
     'inactive.api.key': 'inactiveUserApiKeyForTesting1234567890123',
     'noperm.api.key': 'noPermUserApiKeyForTesting123456789012345678',
@@ -58,13 +58,8 @@ export default defineConfig({
       'cypress/e2e/ui/**/*.spec.js'
     ],
     setupNodeEvents(on, config) {
-      // Register cypress-split for UI spec sharding (SPLIT / SPLIT_INDEX env vars).
-      // Guard: when SPLIT is unset the plugin is a no-op, so it's safe to
-      // require unconditionally, but we skip registration to avoid debug noise.
-      if (process.env.SPLIT) {
-        const cypressSplit = require('cypress-split');
-        cypressSplit(on, config);
-      }
+      // Narrows specPattern to this shard when CI sets SPLIT / SPLIT_INDEX (scripts/shard-specs.js).
+      require('../../scripts/shard-specs').applyShard(config);
       const installLogsPrinter = require('cypress-terminal-report/src/installLogsPrinter');
       installLogsPrinter(on, {
         outputRoot: 'cypress/logs',
@@ -77,7 +72,8 @@ export default defineConfig({
       });
       // dbTasks adds db:query, the direct-MySQL task specs use to assert what has
       // no HTTP surface (#9705); mailTasks adds the Mailpit reads (#9710).
-      on('task', { ...verifyDownloadTasks, ...dbTasks, ...mailTasks, ...pluginFixtureTasks });
+      on('task', { ...verifyDownloadTasks, ...dbTasks, ...mailTasks, ...pluginFixtureTasks, ...gateCoverageTasks });
+      exposeMailpitUrl(config);
       // Test-database drift guard (#9769) — read-only row counts, plus the
       // env flag cypress/support/e2e.js checks before arming the guard.
       registerRowCountGuard(on, config);

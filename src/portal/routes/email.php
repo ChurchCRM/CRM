@@ -18,13 +18,13 @@ use Slim\Exception\HttpNotFoundException;
 //
 // Both pages read straight through EmailLogService, the same service
 // `GET /api/portal/me/emails` answers with, so a server-rendered page and the
-// API can never disagree. Dates and status words are turned into strings here
+// API can never disagree. Dates and labels are turned into strings here
 // rather than in the template, so a church theme gets something it can print
 // (design §3.6).
 //
-// Scope: only rows addressed to this person (`eml_per_ID`). Mail sent to the
-// family's shared address is deliberately out of this first version — see the
-// docblock of src/api/routes/portal/portal-emails.php.
+// Scope: only rows addressed to this person (`eml_per_ID`) that were sent, with no
+// delivery status. Mail sent to the family's shared address is deliberately out of
+// this first version — see the docblock of src/api/routes/portal/portal-emails.php.
 
 /** The acting member's person record, or a 404 for an account with none. */
 $portalEmailActor = static function (Request $request): Person {
@@ -39,24 +39,12 @@ $portalEmailActor = static function (Request $request): Person {
     return $person;
 };
 
-/** The word a member reads for an eml_Status value. */
-$portalEmailStatusLabel = static function (string $status): string {
-    return match ($status) {
-        EmailLogService::STATUS_SENT => gettext('Sent'),
-        EmailLogService::STATUS_FAILED => gettext('Failed'),
-        EmailLogService::STATUS_SKIPPED => gettext('Skipped'),
-        default => $status,
-    };
-};
-
 /** One history row as the templates want it: strings, already formatted. */
-$portalEmailRow = static function (array $row) use ($portalEmailStatusLabel): array {
+$portalEmailRow = static function (array $row): array {
     return [
         'id' => (int) $row['id'],
         'subject' => (string) $row['subject'],
         'kindLabel' => (string) $row['kindLabel'],
-        'status' => (string) $row['status'],
-        'statusLabel' => $portalEmailStatusLabel((string) $row['status']),
         'address' => (string) $row['address'],
         'dateSent' => DateTimeUtils::formatDate((string) $row['dateSent'], true),
         'hasBody' => (bool) $row['hasBody'],
@@ -80,7 +68,7 @@ $group->get('/email-history', function (Request $request, Response $response) us
     $page = $toPositiveInt($query['page'] ?? null, 1);
     $limit = min($toPositiveInt($query['limit'] ?? null, EmailLogService::DEFAULT_PAGE_SIZE), EmailLogService::MAX_PAGE_SIZE);
 
-    $history = (new EmailLogService())->getForPerson((int) $portalEmailActor($request)->getId(), $page, $limit);
+    $history = (new EmailLogService())->getSentForMember((int) $portalEmailActor($request)->getId(), $page, $limit);
 
     // The pager keeps a non-default limit in its links so paging does not
     // silently resize the page under the member.
@@ -110,18 +98,18 @@ $group->get('/email-history', function (Request $request, Response $response) us
 
 // GET /portal/email-history/{id} — one email, with its stored body.
 //
-// A row that is not this member's and an id that does not exist are the same
-// 404, for the reason the API gives: a member must not be able to learn that an
-// email exists by asking for it.
+// A row that is not this member's, a row that was not sent and an id that does
+// not exist are the same 404, for the reason the API gives: a member must not be
+// able to learn that an email exists by asking for it.
 $group->get('/email-history/{id:[0-9]+}', function (Request $request, Response $response, array $args) use ($portalEmailActor, $portalEmailRow): Response {
     $service = new EmailLogService();
-    $row = $service->find((int) $args['id']);
+    $row = $service->findSentForMember((int) $args['id'], (int) $portalEmailActor($request)->getId());
 
-    if ($row === null || (int) $row->getPerId() !== (int) $portalEmailActor($request)->getId()) {
+    if ($row === null) {
         throw new HttpNotFoundException($request, gettext('This email is not in your history.'));
     }
 
-    $email = $service->toArray($row, true);
+    $email = $service->toMemberArray($row, true);
 
     return PortalTwig::render(
         $response,

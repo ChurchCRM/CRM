@@ -1,19 +1,10 @@
-// Member Portal — the volunteering pages (MP6, #9867)
+// Member Portal: the volunteering pages.
 //
-// Two small groups of rules, both moved here from the `<style>` blocks the two
-// retired PHP views carried:
-//
-//   * `.volunteer-touch-target` / `.volunteer-card-actions` — the volunteer
-//     design's §5.9 mobile rule: 44px is the minimum touch target on the
-//     accept / decline / sign-up controls, and below `sm` those buttons are a
-//     full-width stack rather than a row. The markup they style is rendered by
-//     `webpack/portal/volunteer-{schedule,opportunities}.ts`.
-//   * `.portal-subnav` — the "My schedule" / "Find something to do" tabs the
-//     portal puts in place of the two sidebar entries the admin shell carried.
-//
-// Part of `portal.min.css`, never the RTL-flipped core bundle, so everything
-// here uses CSS logical properties only and the same design tokens `_portal.scss`
-// declares (design §3.5).
+// `.volunteer-touch-target` / `.volunteer-card-actions` give the accept, decline
+// and sign-up controls a 44px target and a full-width stack below `sm`; the
+// markup is rendered by `webpack/portal/volunteer-{schedule,opportunities}.ts`.
+// `.portal-subnav` is the "My schedule" / "Find something to do" tab row.
+// Logical properties only: this file is not RTL-flipped.
 
 .volunteer-touch-target {
     min-block-size: 44px;
@@ -72,18 +63,8 @@
     border-block-end-color: var(--portal-primary);
 }
 
-// The home page's volunteering card --------------------------------------------
-
 .portal-volunteering-pending {
     margin-block: 0.25rem 0.5rem;
     font-weight: 600;
     color: var(--portal-text);
-}
-
-.portal-card-link {
-    display: inline-flex;
-    align-items: center;
-    min-block-size: 44px;
-    color: var(--portal-primary);
-    font-weight: 500;
 }

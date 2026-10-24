@@ -20,7 +20,7 @@ describe("Confirmation Reports - MVC Routes", () => {
      * Direct form login — clears existing cookies and authenticates as admin
      * via the real ChurchCRM login page (/session/begin). More reliable than
      * cy.setupAdminSession() for pages that require specific role flags
-     * (MenuOptions), because it guarantees a fresh PHP session without any
+     * (EditRecords), because it guarantees a fresh PHP session without any
      * contamination from prior tests.
      * Pattern follows cypress/e2e/ui/people/standard.cart-to-family.spec.js.
      */
@@ -395,6 +395,62 @@ describe("Confirmation Reports - MVC Routes", () => {
             cy.get("#previewFetchError").should("have.class", "d-none");
             // Preview should populate without TypeError
             cy.get('[data-cy="modal-recipient-count"]').should("be.visible");
+        });
+    });
+});
+
+describe("People Verify for an Edit Records-only user", () => {
+    beforeEach(() => cy.setupNoFinanceSession());
+
+    it("opens the verify page and the dashboard links to it", () => {
+        cy.visit("/people/dashboard");
+        cy.get('a[href$="/people/verify"]').click();
+        cy.contains("People Verify Dashboard");
+    });
+
+    it("downloads the verify report", () => {
+        cy.request({ url: "people/report/verify?familyId=1", encoding: "binary" }).then((resp) => {
+            expect(resp.status).to.eq(200);
+            expect(resp.headers["content-type"]).to.include("application/pdf");
+        });
+    });
+
+    it("sends the family email request without being refused", () => {
+        cy.visit("people/verify");
+        cy.get('#verifyEmailAllForm input[name="csrf_token"]').invoke("val").then((token) => {
+            cy.request({
+                method: "POST",
+                url: "people/report/verify/email",
+                form: true,
+                body: { csrf_token: token, familyId: 1 },
+                followRedirect: false,
+                failOnStatusCode: false,
+            }).then((resp) => {
+                expect(resp.status).to.eq(302);
+                expect(resp.headers.location).not.to.include("access-denied");
+            });
+        });
+    });
+});
+
+describe("People Verify email for a user without Edit Records", () => {
+    beforeEach(() => cy.setupLoginSession("verify-email-noperm", "noperm.user", "changeme"));
+
+    it("is sent to access denied", () => {
+        // The family page renders the email form's token for every staff user.
+        cy.visit("people/family/1");
+        cy.get('#verifyEmailPDFForm input[name="csrf_token"]').invoke("val").then((token) => {
+            cy.request({
+                method: "POST",
+                url: "people/report/verify/email",
+                form: true,
+                body: { csrf_token: token, familyId: 1 },
+                followRedirect: false,
+                failOnStatusCode: false,
+            }).then((resp) => {
+                expect(resp.status).to.eq(302);
+                expect(resp.headers.location).to.include("access-denied");
+            });
         });
     });
 });

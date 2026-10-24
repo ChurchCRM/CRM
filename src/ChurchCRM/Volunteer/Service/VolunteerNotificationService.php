@@ -4,7 +4,10 @@ namespace ChurchCRM\Volunteer\Service;
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Emails\BaseEmail;
+use ChurchCRM\model\ChurchCRM\Config;
+use ChurchCRM\model\ChurchCRM\ConfigQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
+use ChurchCRM\model\ChurchCRM\Map\VolunteerNotificationTableMap;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\UserQuery;
@@ -26,13 +29,17 @@ use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Volunteer\Email\VolunteerAssignmentEmail;
 use ChurchCRM\Volunteer\Email\VolunteerDeclineAlertEmail;
 use ChurchCRM\Volunteer\Email\VolunteerEmailContext;
+use ChurchCRM\Volunteer\Email\VolunteerGapAlertBatchEmail;
 use ChurchCRM\Volunteer\Email\VolunteerGapAlertEmail;
 use ChurchCRM\Volunteer\Email\VolunteerHelpOfferEmail;
+use ChurchCRM\Volunteer\Email\VolunteerPoolAddEmail;
 use ChurchCRM\Volunteer\Email\VolunteerReminderEmail;
 use ChurchCRM\Volunteer\Email\VolunteerSignupConfirmEmail;
 use ChurchCRM\Volunteer\Email\VolunteerSwapProposedEmail;
 use ChurchCRM\Volunteer\Email\VolunteerSwapResolvedEmail;
 use Propel\Runtime\ActiveQuery\Criteria;
+use Propel\Runtime\Exception\PropelException;
+use Propel\Runtime\Propel;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -76,6 +83,7 @@ class VolunteerNotificationService
     public const TYPE_SWAP_PROPOSED = VolunteerNotification::TYPE_SWAP_PROPOSED;
     public const TYPE_SWAP_RESOLVED = VolunteerNotification::TYPE_SWAP_RESOLVED;
     public const TYPE_HELP_OFFER = VolunteerNotification::TYPE_HELP_OFFER;
+    public const TYPE_POOL_ADD = VolunteerNotification::TYPE_POOL_ADD;
 
     /**
      * Deliveries attempted before a row is given up on (§2.14).
@@ -85,6 +93,12 @@ class VolunteerNotificationService
      * separate `retrying` state nothing would ever clear.
      */
     public const MAX_ATTEMPTS = 5;
+
+    public const GAP_ALERT_BATCH_TIME_CONFIG = 'sVolunteerGapAlertBatchTime';
+
+    public const DEFAULT_GAP_ALERT_BATCH_TIME = '07:00';
+
+    public const GAP_ALERT_BATCH_DATE_CONFIG = 'sLastVolunteerGapAlertBatchDate';
 
     private LoggerInterface $logger;
 
@@ -309,6 +323,23 @@ class VolunteerNotificationService
         );
     }
 
+    /** `pool_add:{ministryId}:{personId}:{Y-m-d}:{recipientPersonId}`: dated so a re-add on a later day notifies again. */
+    public function poolAddKey(
+        int $ministryId,
+        int $personId,
+        int $recipientPersonId,
+        ?\DateTimeInterface $day = null
+    ): string {
+        return sprintf(
+            '%s:%d:%d:%s:%d',
+            self::TYPE_POOL_ADD,
+            $ministryId,
+            $personId,
+            ($day ?? DateTimeUtils::getToday())->format('Y-m-d'),
+            $recipientPersonId
+        );
+    }
+
     // ── Convenience enqueuers, one per §3.6 trigger this issue owns ────────
 
     public function enqueueAssignment(VolunteerAssignment $assignment): VolunteerNotification
@@ -331,8 +362,11 @@ class VolunteerNotificationService
      * them to answer — would be nonsense. The dedupe key is per assignment per
      * person, so re-signing up after a decline (I8 re-uses the same row) produces no
      * second confirmation.
+     *
+     * `$recordedByPersonId` is the coordinator who recorded the acceptance; the message
+     * then says who put them on the schedule instead of thanking them for signing up.
      */
-    public function enqueueSignupConfirm(VolunteerAssignment $assignment): VolunteerNotification
+    public function enqueueSignupConfirm(VolunteerAssignment $assignment, ?int $recordedByPersonId = null): VolunteerNotification
     {
         return $this->enqueue(
             self::TYPE_SIGNUP_CONFIRM,
@@ -340,7 +374,8 @@ class VolunteerNotificationService
             (int) $assignment->getId(),
             (int) $assignment->getOccurrenceId(),
             DateTimeUtils::getToday(),
-            $this->signupConfirmKey((int) $assignment->getId(), (int) $assignment->getPersonId())
+            $this->signupConfirmKey((int) $assignment->getId(), (int) $assignment->getPersonId()),
+            $recordedByPersonId === null ? null : ['recordedBy' => $recordedByPersonId]
         );
     }
 
@@ -484,6 +519,39 @@ class VolunteerNotificationService
         return $rows;
     }
 
+    /**
+     * @param int[] $recipientPersonIds
+     *
+     * @return VolunteerNotification[]
+     */
+    public function enqueuePoolAdd(
+        int $ministryId,
+        int $teamId,
+        int $addedPersonId,
+        int $addedByPersonId,
+        array $recipientPersonIds
+    ): array {
+        $rows = [];
+        foreach ($recipientPersonIds as $personId) {
+            $rows[] = $this->enqueue(
+                self::TYPE_POOL_ADD,
+                (int) $personId,
+                null,
+                null,
+                DateTimeUtils::getToday(),
+                $this->poolAddKey($ministryId, $addedPersonId, (int) $personId, DateTimeUtils::getToday()),
+                [
+                    'ministryId' => $ministryId,
+                    'teamId' => $teamId,
+                    'personId' => $addedPersonId,
+                    'addedBy' => $addedByPersonId,
+                ]
+            );
+        }
+
+        return $rows;
+    }
+
     // ── Reminders (§3.6, Appendix B) ───────────────────────────────────────
 
     /**
@@ -587,26 +655,112 @@ class VolunteerNotificationService
     /**
      * The unfilled-position alert (#10372, §3.6): a `gap_alert` to the coordinators for
      * every position still short (`getOpenGaps()`, D34's *Needs N more*) on a scheduled
-     * occurrence of an active ministry that starts inside `iVolunteerReminderLeadHours`.
+     * occurrence of an active ministry.
      *
-     * Runs on every timer pass, so a gap is reported soon after it comes inside the
-     * window. Each position is reported to each recipient once, and not at all to a
-     * recipient who already has the occurrence-wide alert a decline sends
-     * (`notifyGapOpened()`), because that one lists every short position. There is no
-     * lead setting of its own, so a lead of 0 turns this off with the reminders.
+     * Once a day, at the first pass at or after `sVolunteerGapAlertBatchTime`, positions
+     * starting within the lead + 24 hours are queued as the daily batch (one message per
+     * coordinator). Every pass queues positions within the lead alone, one message each.
+     * A position is reported to a recipient once, and not to one who already has the
+     * occurrence-wide alert a decline sends (`notifyGapOpened()`). A lead of 0 turns both off.
      *
      * @return int rows enqueued (existing rows are not counted)
      */
     public function scheduleGapAlerts(): int
     {
-        $leadHours = SystemConfig::getIntValue('iVolunteerReminderLeadHours');
+        $leadHours = SystemConfig::getIntValue('iVolunteerGapAlertLeadHours');
         if ($leadHours <= 0) {
             return 0;
         }
 
         $now = DateTimeUtils::getToday();
+        $enqueued = 0;
+
+        // The claim and the batch's rows commit together, so a failed batch gives its day back.
+        $batchDay = $this->gapAlertBatchDayDue($now);
+        if ($batchDay !== null) {
+            $connection = Propel::getWriteConnection(VolunteerNotificationTableMap::DATABASE_NAME);
+            $connection->beginTransaction();
+            try {
+                if ($this->claimGapAlertBatchDay($batchDay)) {
+                    $enqueued += $this->enqueueOpenGapAlerts($now, $leadHours + 24, $batchDay);
+                }
+                $connection->commit();
+            } catch (\Throwable $e) {
+                $connection->rollBack();
+
+                throw $e;
+            }
+        }
+        $enqueued += $this->enqueueOpenGapAlerts($now, $leadHours, null);
+
+        if ($enqueued > 0) {
+            $this->logger->info('Volunteer gap alerts scheduled', [
+                'count' => $enqueued,
+                'leadHours' => $leadHours,
+            ]);
+        }
+
+        return $enqueued;
+    }
+
+    public static function gapAlertBatchTime(): string
+    {
+        $value = trim((string) SystemConfig::getValue(self::GAP_ALERT_BATCH_TIME_CONFIG));
+        if (preg_match('/^([01]?\d|2[0-3]):([0-5]\d)(:[0-5]\d)?$/', $value, $match) !== 1) {
+            return self::DEFAULT_GAP_ALERT_BATCH_TIME;
+        }
+
+        return sprintf('%02d:%02d', (int) $match[1], (int) $match[2]);
+    }
+
+    /** Today once its batch time has passed, else null. */
+    private function gapAlertBatchDayDue(\DateTimeInterface $now): ?string
+    {
+        [$hour, $minute] = array_map('intval', explode(':', self::gapAlertBatchTime()));
+        $batchTime = DateTimeUtils::createDateTime($now->format('Y-m-d'))->setTime($hour, $minute);
+
+        return $now < $batchTime ? null : $batchTime->format('Y-m-d');
+    }
+
+    /** True for one caller per batch day; only a later day wins, so moving the batch time back cannot resend a day. */
+    private function claimGapAlertBatchDay(string $day): bool
+    {
+        $existing = ConfigQuery::create()->findOneByName(self::GAP_ALERT_BATCH_DATE_CONFIG);
+        if ($existing !== null) {
+            if ((string) $existing->getValue() >= $day) {
+                return false;
+            }
+
+            return ConfigQuery::create()
+                ->filterByName(self::GAP_ALERT_BATCH_DATE_CONFIG)
+                ->filterByValue($day, Criteria::LESS_THAN)
+                ->_or()
+                ->filterByValue(null, Criteria::ISNULL)
+                ->update(['Value' => $day]) > 0;
+        }
+
+        try {
+            (new Config())->setName(self::GAP_ALERT_BATCH_DATE_CONFIG)->setValue($day)->save();
+        } catch (PropelException $e) {
+            if ((string) ConfigQuery::create()->findOneByName(self::GAP_ALERT_BATCH_DATE_CONFIG)?->getValue() >= $day) {
+                return false;
+            }
+
+            throw $e;
+        }
+
+        return true;
+    }
+
+    /**
+     * Queue a `gap_alert` per short position and coordinator not yet told; `$batchDay` marks the day's batch.
+     *
+     * @return int rows enqueued
+     */
+    private function enqueueOpenGapAlerts(\DateTime $now, int $hours, ?string $batchDay): int
+    {
         $horizon = DateTimeUtils::createDateTime($now->format('Y-m-d H:i:s'))
-            ->modify(sprintf('+%d hours', $leadHours));
+            ->modify(sprintf('+%d hours', $hours));
 
         $occurrences = $this->scheduledOccurrencesBetween($now, $horizon)
             ->useScheduleQuery()
@@ -663,17 +817,10 @@ class VolunteerNotificationService
                     $occurrenceId,
                     $now,
                     $key,
-                    ['positionId' => $gap['positionId']]
+                    ['positionId' => $gap['positionId']] + ($batchDay === null ? [] : ['batch' => $batchDay])
                 );
                 $enqueued++;
             }
-        }
-
-        if ($enqueued > 0) {
-            $this->logger->info('Volunteer gap alerts scheduled', [
-                'count' => $enqueued,
-                'leadHours' => $leadHours,
-            ]);
         }
 
         return $enqueued;
@@ -762,17 +909,7 @@ class VolunteerNotificationService
     {
         $counts = ['sent' => 0, 'skipped' => 0, 'failed' => 0];
 
-        // A row about a cancelled occurrence is held, not skipped (#10387): restoring the
-        // occurrence sends it as planned, while a skipped row's dedupe key would stop the
-        // reminder scan from ever queuing it again.
-        $rows = VolunteerNotificationQuery::create()
-            ->filterByStatus(VolunteerNotification::STATUS_PENDING)
-            ->filterByScheduledFor(DateTimeUtils::getToday(), Criteria::LESS_EQUAL)
-            ->useOccurrenceQuery(null, Criteria::LEFT_JOIN)
-                ->filterByStatus(VolunteerOccurrence::STATUS_CANCELLED, Criteria::NOT_EQUAL)
-                ->_or()
-                ->filterById(null, Criteria::ISNULL)
-            ->endUse()
+        $rows = $this->dueRowsQuery()
             ->orderByScheduledFor(Criteria::ASC)
             ->limit(max(1, $batchSize))
             ->find();
@@ -787,8 +924,25 @@ class VolunteerNotificationService
         $emailEnabled = SystemConfig::isEmailEnabled();
         $doNotEmail = (new PersonService())->buildDoNotEmailSet();
 
+        $handled = [];
         foreach ($rows as $row) {
+            if (isset($handled[(int) $row->getId()])) {
+                continue;
+            }
+
             try {
+                if ($this->isBatchedGapAlert($row)) {
+                    $batch = $this->dueGapAlertBatch($row) ?: [$row];
+                    foreach ($batch as $member) {
+                        $handled[(int) $member->getId()] = true;
+                    }
+                    foreach ($this->deliverGapAlertBatch($batch, $emailEnabled, $doNotEmail) as $outcome => $count) {
+                        $counts[$outcome] += $count;
+                    }
+
+                    continue;
+                }
+
                 $counts[$this->deliver($row, $emailEnabled, $doNotEmail)]++;
             } catch (\Throwable $e) {
                 // A throw from anywhere in the build or the send is a delivery
@@ -811,6 +965,179 @@ class VolunteerNotificationService
     }
 
     /**
+     * `pending` rows due now. A row about a cancelled occurrence is held, not skipped: a
+     * skipped row's dedupe key would stop the reminder scan from queuing it again.
+     */
+    private function dueRowsQuery(): VolunteerNotificationQuery
+    {
+        return VolunteerNotificationQuery::create()
+            ->filterByStatus(VolunteerNotification::STATUS_PENDING)
+            ->filterByScheduledFor(DateTimeUtils::getToday(), Criteria::LESS_EQUAL)
+            ->useOccurrenceQuery(null, Criteria::LEFT_JOIN)
+                ->filterByStatus(VolunteerOccurrence::STATUS_CANCELLED, Criteria::NOT_EQUAL)
+                ->_or()
+                ->filterById(null, Criteria::ISNULL)
+            ->endUse();
+    }
+
+    private function isBatchedGapAlert(VolunteerNotification $row): bool
+    {
+        return $row->getType() === self::TYPE_GAP_ALERT && isset($this->rowContext($row)['batch']);
+    }
+
+    /**
+     * Every due batched `gap_alert` of this row's recipient, past the drain's limit, so the batch stays one message.
+     *
+     * @return VolunteerNotification[]
+     */
+    private function dueGapAlertBatch(VolunteerNotification $row): array
+    {
+        $rows = $this->dueRowsQuery()
+            ->filterByType(self::TYPE_GAP_ALERT)
+            ->filterByPersonId((int) $row->getPersonId())
+            ->filterByContext('%"batch"%', Criteria::LIKE)
+            ->orderById()
+            ->find();
+
+        return array_values(array_filter(
+            iterator_to_array($rows, false),
+            fn (VolunteerNotification $candidate): bool => $this->isBatchedGapAlert($candidate)
+        ));
+    }
+
+    /**
+     * Deliver one recipient's batched `gap_alert` rows as one message. Rows whose
+     * occurrence is gone or whose position has been filled are skipped; the rest share the outcome.
+     *
+     * @param VolunteerNotification[] $rows
+     * @param array<int, bool>        $doNotEmail
+     *
+     * @return array{sent: int, skipped: int, failed: int}
+     */
+    private function deliverGapAlertBatch(array $rows, bool $emailEnabled, array $doNotEmail): array
+    {
+        $counts = ['sent' => 0, 'skipped' => 0, 'failed' => 0];
+
+        try {
+            $recipient = $this->recipientOf($rows[0], $emailEnabled, $doNotEmail);
+            if (is_string($recipient)) {
+                foreach ($rows as $row) {
+                    $counts[$this->recordSkipped($row, $recipient)]++;
+                }
+
+                return $counts;
+            }
+            [$person, $address] = $recipient;
+            $portalLinks = $this->usesPortalLinks($person);
+
+            $occurrences = [];
+            $listed = [];
+            foreach ($rows as $row) {
+                $context = $this->buildContext($row);
+                if ($context === null) {
+                    $counts[$this->recordSkipped($row, 'the ministry, schedule or occurrence is gone')]++;
+                    continue;
+                }
+                if ($context->hasEnded()) {
+                    $counts[$this->recordSkipped($row, 'the occurrence has already ended')]++;
+                    continue;
+                }
+
+                $occurrenceId = (int) $row->getOccurrenceId();
+                $short = $this->shortPositions($occurrenceId, (int) ($this->rowContext($row)['positionId'] ?? 0));
+                if ($short === []) {
+                    $counts[$this->recordSkipped($row, 'the position was filled before it could be sent')]++;
+                    continue;
+                }
+
+                $occurrences[$occurrenceId] ??= [
+                    'context' => $portalLinks ? $context->withPortalLinks() : $context,
+                    'positions' => [],
+                ];
+                $occurrences[$occurrenceId]['positions'] += $short;
+                $listed[] = $row;
+            }
+
+            if ($listed === []) {
+                return $counts;
+            }
+
+            uasort(
+                $occurrences,
+                static fn (array $a, array $b): int => $a['context']->getStart() <=> $b['context']->getStart()
+            );
+            $email = new VolunteerGapAlertBatchEmail(
+                [$address],
+                (string) $person->getFullName(),
+                array_values($occurrences),
+                $portalLinks
+            );
+
+            if ($email->send()) {
+                foreach ($listed as $row) {
+                    $counts[$this->recordSent($row)]++;
+                }
+            } else {
+                foreach ($listed as $row) {
+                    $this->recordFailure($row, $email->getError());
+                    $counts['failed']++;
+                }
+            }
+        } catch (\Throwable $e) {
+            foreach ($rows as $row) {
+                if ($row->getStatus() === VolunteerNotification::STATUS_PENDING) {
+                    $this->recordFailure($row, $e->getMessage());
+                    $counts['failed']++;
+                }
+            }
+            $this->logger->error('Volunteer gap-alert batch delivery threw', [
+                'personId' => $rows[0]->getPersonId(),
+                'rows' => count($rows),
+                'exception' => $e->getMessage(),
+            ]);
+        }
+
+        return $counts;
+    }
+
+    /**
+     * The recipient and their address, or the reason the row is skipped (§3.6 step 2).
+     *
+     * @param array<int, bool> $doNotEmail
+     *
+     * @return array{0: Person, 1: string}|string
+     */
+    private function recipientOf(VolunteerNotification $row, bool $emailEnabled, array $doNotEmail): array|string
+    {
+        // N2: checked BEFORE anything is attempted, because BaseEmail::send() returns
+        // false identically for "email is switched off" and "SMTP refused us", and the
+        // outbox has to tell those apart or the retry rule is meaningless.
+        if (!$emailEnabled) {
+            return 'email disabled';
+        }
+
+        $recipient = PersonQuery::create()->findPk((int) $row->getPersonId());
+        if ($recipient === null) {
+            return 'recipient no longer exists';
+        }
+
+        // N3: mandatory. A person who asked not to be mailed is not mailed, and the
+        // row records that we chose not to rather than that we failed.
+        if (isset($doNotEmail[(int) $row->getPersonId()])) {
+            return 'recipient is in the do-not-email set';
+        }
+
+        // Person::getEmail() falls back to the FAMILY address, so this can legitimately
+        // be a shared inbox (Appendix C notes it; V2 cannot fix it).
+        $address = (string) ($recipient->getEmail() ?? '');
+        if (trim($address) === '') {
+            return 'recipient has no email address';
+        }
+
+        return [$recipient, $address];
+    }
+
+    /**
      * Deliver one row, or decide not to.
      *
      * @param array<int, bool> $doNotEmail
@@ -819,30 +1146,11 @@ class VolunteerNotificationService
      */
     private function deliver(VolunteerNotification $row, bool $emailEnabled, array $doNotEmail): string
     {
-        // N2: checked BEFORE anything is attempted, because BaseEmail::send() returns
-        // false identically for "email is switched off" and "SMTP refused us", and the
-        // outbox has to tell those apart or the retry rule is meaningless.
-        if (!$emailEnabled) {
-            return $this->recordSkipped($row, 'email disabled');
+        $recipient = $this->recipientOf($row, $emailEnabled, $doNotEmail);
+        if (is_string($recipient)) {
+            return $this->recordSkipped($row, $recipient);
         }
-
-        $recipient = PersonQuery::create()->findPk((int) $row->getPersonId());
-        if ($recipient === null) {
-            return $this->recordSkipped($row, 'recipient no longer exists');
-        }
-
-        // N3: mandatory. A person who asked not to be mailed is not mailed, and the
-        // row records that we chose not to rather than that we failed.
-        if (isset($doNotEmail[(int) $row->getPersonId()])) {
-            return $this->recordSkipped($row, 'recipient is in the do-not-email set');
-        }
-
-        // Person::getEmail() falls back to the FAMILY address, so this can legitimately
-        // be a shared inbox (Appendix C notes it; V2 cannot fix it).
-        $address = (string) ($recipient->getEmail() ?? '');
-        if (trim($address) === '') {
-            return $this->recordSkipped($row, 'recipient has no email address');
-        }
+        [$recipient, $address] = $recipient;
 
         $context = $this->buildContext($row);
         if ($context === null) {
@@ -863,25 +1171,30 @@ class VolunteerNotificationService
         $this->applyReplyTo($email, $row, $context);
 
         if ($email->send()) {
-            $row->setStatus(VolunteerNotification::STATUS_SENT);
-            $row->setSentDate(DateTimeUtils::getToday());
-            $row->setLastAttemptDate(DateTimeUtils::getToday());
-            $row->setAttempts((int) $row->getAttempts() + 1);
-            $row->setLastError(null);
-            $row->save();
-
-            $this->logger->info('Volunteer notification sent', [
-                'notificationId' => $row->getId(),
-                'type' => $row->getType(),
-                'personId' => $row->getPersonId(),
-            ]);
-
-            return 'sent';
+            return $this->recordSent($row);
         }
 
         $this->recordFailure($row, $email->getError());
 
         return 'failed';
+    }
+
+    private function recordSent(VolunteerNotification $row): string
+    {
+        $row->setStatus(VolunteerNotification::STATUS_SENT);
+        $row->setSentDate(DateTimeUtils::getToday());
+        $row->setLastAttemptDate(DateTimeUtils::getToday());
+        $row->setAttempts((int) $row->getAttempts() + 1);
+        $row->setLastError(null);
+        $row->save();
+
+        $this->logger->info('Volunteer notification sent', [
+            'notificationId' => $row->getId(),
+            'type' => $row->getType(),
+            'personId' => $row->getPersonId(),
+        ]);
+
+        return 'sent';
     }
 
     /** §2.14: `skipped` means "we chose not to", so no attempt is counted. */
@@ -954,6 +1267,7 @@ class VolunteerNotificationService
                 // Reply and reach Ann. The message goes TO the coordinator, so
                 // coordinatorPersonId() would point it back at the recipient.
                 self::TYPE_HELP_OFFER => (int) ($this->rowContext($row)['personId'] ?? 0) ?: null,
+                self::TYPE_POOL_ADD => (int) ($this->rowContext($row)['addedBy'] ?? 0) ?: null,
                 default => $this->coordinatorPersonId($row),
             };
 
@@ -1028,9 +1342,18 @@ class VolunteerNotificationService
         // rather than being forced through the occurrence chain below, which would
         // return null and silently skip the row.
         if ($row->getType() === self::TYPE_HELP_OFFER) {
-            $ministry = VolunteerMinistryQuery::create()->findPk($this->helpOfferMinistryId($row));
+            $ministry = VolunteerMinistryQuery::create()->findPk($this->contextMinistryId($row));
 
             return $ministry === null ? null : new VolunteerEmailContext((string) $ministry->getName());
+        }
+
+        if ($row->getType() === self::TYPE_POOL_ADD) {
+            $ministry = VolunteerMinistryQuery::create()->findPk($this->contextMinistryId($row));
+            $team = VolunteerTeamQuery::create()->findPk((int) ($this->rowContext($row)['teamId'] ?? 0));
+
+            return $ministry === null
+                ? null
+                : new VolunteerEmailContext((string) $ministry->getName(), $team === null ? null : (string) $team->getName());
         }
 
         $occurrence = $this->occurrenceFor($row);
@@ -1102,11 +1425,8 @@ class VolunteerNotificationService
         $to = [$address];
         $recipientName = (string) $recipient->getFullName();
 
-        // A team leader without Manage My Ministries runs their team from the Member
-        // Portal; the admin pages these alerts link to would turn them away.
         $alertTypes = [self::TYPE_DECLINE_ALERT, self::TYPE_GAP_ALERT, self::TYPE_SWAP_PROPOSED];
-        if (in_array($row->getType(), $alertTypes, true)
-            && UserQuery::create()->findPk((int) $recipient->getId())?->isVolunteerCoordinatorEnabled() !== true) {
+        if (in_array($row->getType(), $alertTypes, true) && $this->usesPortalLinks($recipient)) {
             $context = $context->withPortalLinks();
         }
 
@@ -1118,7 +1438,16 @@ class VolunteerNotificationService
                 return new VolunteerReminderEmail($to, $recipientName, $context);
 
             case self::TYPE_SIGNUP_CONFIRM:
-                return new VolunteerSignupConfirmEmail($to, $recipientName, $context);
+                $recordedBy = (int) ($this->rowContext($row)['recordedBy'] ?? 0);
+
+                return new VolunteerSignupConfirmEmail(
+                    $to,
+                    $recipientName,
+                    $context,
+                    $recordedBy > 0
+                        ? (PersonQuery::create()->findPk($recordedBy)?->getFullName() ?? gettext('Your coordinator'))
+                        : null
+                );
 
             case self::TYPE_DECLINE_ALERT:
                 $assignment = $this->assignmentFor($row);
@@ -1146,8 +1475,25 @@ class VolunteerNotificationService
                     $recipientName,
                     $context,
                     $this->personName($offeringPersonId),
-                    $this->helpOfferMinistryId($row),
+                    $this->contextMinistryId($row),
                     (bool) ($context_['joinedPool'] ?? false)
+                );
+
+            case self::TYPE_POOL_ADD:
+                $poolAdd = $this->rowContext($row);
+                $addedPersonId = (int) ($poolAdd['personId'] ?? 0);
+                $addedByPersonId = (int) ($poolAdd['addedBy'] ?? 0);
+                if ($addedPersonId <= 0 || $addedByPersonId <= 0) {
+                    return null;
+                }
+
+                return new VolunteerPoolAddEmail(
+                    $to,
+                    $recipientName,
+                    $context,
+                    $this->personName($addedByPersonId),
+                    $this->personName($addedPersonId),
+                    $this->contextMinistryId($row)
                 );
 
             case self::TYPE_GAP_ALERT:
@@ -1197,6 +1543,15 @@ class VolunteerNotificationService
     }
 
     /**
+     * A team leader without Manage My Ministries runs their team from the Member Portal;
+     * the admin pages the coordinator alerts link to would turn them away.
+     */
+    private function usesPortalLinks(Person $recipient): bool
+    {
+        return UserQuery::create()->findPk((int) $recipient->getId())?->isVolunteerCoordinatorEnabled() !== true;
+    }
+
+    /**
      * The JSON `vntf_Context` this row was enqueued with, or an empty array.
      *
      * Never throws: a row whose context is missing or malformed is a row whose message
@@ -1216,7 +1571,7 @@ class VolunteerNotificationService
         return is_array($decoded) ? $decoded : [];
     }
 
-    private function helpOfferMinistryId(VolunteerNotification $row): int
+    private function contextMinistryId(VolunteerNotification $row): int
     {
         return (int) ($this->rowContext($row)['ministryId'] ?? 0);
     }

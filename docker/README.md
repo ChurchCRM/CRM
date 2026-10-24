@@ -85,7 +85,6 @@ Access database via VS Code or your IDE (host: localhost:3306, user: churchcrm, 
 | `npm run docker:dev:logs` | View live container logs |
 | `npm run docker:dev:rebuild` | Rebuild webserver image (useful when Dockerfile changes) |
 | `npm run docker:dev:reset:db` | Reset database to fresh seed data |
-| `npm run docker:dev:reset` | Full teardown + restart everything |
 | `npm run docker:dev:login:web` | Open shell in webserver container |
 | `npm run docker:dev:login:db` | Open shell in database container |
 
@@ -102,7 +101,7 @@ Because `src/` is bind-mounted, **changes are instant** — no rebuild needed. J
 By default, database is seeded with demo data. For a fresh setup wizard:
 
 1. Remove `../cypress/data` bind-mount from `database` service
-2. Run `npm run docker:dev:reset`
+2. Run `npm run docker:dev:reset:db`
 
 ---
 
