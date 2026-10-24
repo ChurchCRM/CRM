@@ -42,6 +42,7 @@ const checks = {
     'capture used-in': script('validate-capture-used-in.js'),
     'seed data only': script('validate-seed-data-only.js'),
     'mysql upgrade syntax': script('validate-mysql-upgrade-syntax.js'),
+    'upgrade locale list': script('validate-upgrade-locales.js'),
     'supported databases': script('sync-supported-databases.js', '--check'),
     'locale script tests': [node, ['--test', ...localeTests]],
     'tooling script tests': [node, ['--test', ...scriptTests]],
