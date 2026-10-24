@@ -4,6 +4,7 @@ namespace ChurchCRM\Portal\Auth;
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonSignin;
@@ -51,9 +52,13 @@ final class PortalSessionMiddleware implements MiddlewareInterface
 
     private const ACTIVITY_WRITE_SECONDS = 60;
 
+    /** @var array{personId: int, timedOut: bool}|null */
+    private ?array $endedLoginAsUser = null;
+
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         PortalContext::reset();
+        $this->endedLoginAsUser = null;
 
         if ($request->getHeaderLine('x-api-key') !== '') {
             throw new HttpForbiddenException(
@@ -64,6 +69,11 @@ final class PortalSessionMiddleware implements MiddlewareInterface
 
         $staffUser = PortalContext::activeStaffUser();
         [$principal, $person, $state] = $this->currentSession($staffUser);
+        if ($this->endedLoginAsUser !== null) {
+            PortalContext::set(null, null, null);
+
+            return $this->loginAsUserEnded($request, $this->endedLoginAsUser);
+        }
 
         if ($staffUser instanceof User && !$principal instanceof PortalPrincipal) {
             try {
@@ -135,6 +145,9 @@ final class PortalSessionMiddleware implements MiddlewareInterface
         if ($reason === null && $deviceId !== null && RememberedDeviceService::isSignedOut($deviceId)) {
             $reason = SignInReason::DEVICE_REMOVED;
         }
+        if ($reason === null && $principal->isAssisted() && !LoginAsUser::keepStaffSessionAlive()) {
+            $reason = SignInReason::IDLE;
+        }
 
         if ($reason !== null) {
             PortalSessionStore::clear();
@@ -145,11 +158,37 @@ final class PortalSessionMiddleware implements MiddlewareInterface
                 $reason,
                 $principal->actorUserId,
             );
+            if ($principal->isAssisted()) {
+                LoginAsUser::endedByPortal($reason);
+                $this->endedLoginAsUser = ['personId' => $principal->personId, 'timedOut' => $reason === SignInReason::IDLE];
+            }
 
             return [null, null, null];
         }
 
         return [$principal, $person, $state];
+    }
+
+    /**
+     * After a timeout the administrator signs in again; after any other end their
+     * staff session is back, on the person's page.
+     *
+     * @param array{personId: int, timedOut: bool} $ended
+     */
+    private function loginAsUserEnded(ServerRequestInterface $request, array $ended): ResponseInterface
+    {
+        if (!$this->isBrowserRequest($request)) {
+            $response = new Response();
+            $response->getBody()->write(json_encode(SlimUtils::buildErrorPayload(gettext('No logged in user'), 401)));
+
+            return $response->withStatus(401)->withHeader('Content-Type', 'application/json');
+        }
+
+        $location = $ended['timedOut']
+            ? AuthenticationManager::getStaffSignInURL()
+            : SystemURLs::getRootPath() . '/people/view/' . $ended['personId'];
+
+        return (new Response())->withStatus(302)->withHeader('Location', $location);
     }
 
     private function isIdle(): bool

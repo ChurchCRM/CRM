@@ -426,6 +426,10 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
             </div>
         </div>
         <?php } ?>
+
+        <?php if ($loginAsUserHistory !== null) : ?>
+            <div class="mt-3"><?php include __DIR__ . '/partials/login-as-user-history.php'; ?></div>
+        <?php endif; ?>
     </div>
     <div class="col-lg-8">
         <!-- Toolbar -->
@@ -472,6 +476,16 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
                         <a class="dropdown-item" id="activateDeactivatePerson">
                             <i class="fa-solid fa-power-off me-2"></i><?= ($person->isActive() ? gettext('Set Inactive') : gettext('Set Active')) ?>
                         </a>
+                    <?php } ?>
+                    <?php if ($loginAsUser !== null) { ?>
+                        <div class="dropdown-divider"></div>
+                        <?php if ($loginAsUser['refusal'] === null) { ?>
+                            <a class="dropdown-item" href="#" id="loginAsUser" data-person-id="<?= (int) $iPersonID ?>" data-csrf-token="<?= InputUtils::escapeAttribute($loginAsUser['csrfToken']) ?>"><i class="fa-solid fa-user-secret me-2"></i><?= gettext('Login as User') ?></a>
+                        <?php } else { ?>
+                            <span class="d-block" id="loginAsUserRefusal" tabindex="0" title="<?= InputUtils::escapeAttribute($loginAsUser['refusal']) ?>">
+                                <span class="dropdown-item disabled" id="loginAsUser" aria-disabled="true"><i class="fa-solid fa-user-secret me-2"></i><?= gettext('Login as User') ?><span class="visually-hidden">: <?= InputUtils::escapeHTML($loginAsUser['refusal']) ?></span></span>
+                            </span>
+                        <?php } ?>
                     <?php } ?>
                     <?php if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) { ?>
                         <div class="dropdown-divider"></div>

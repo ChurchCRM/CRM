@@ -12,6 +12,7 @@ use ChurchCRM\Authentication\Requests\LocalTwoFactorTokenRequest;
 use ChurchCRM\Authentication\Requests\LocalUsernamePasswordRequest;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\Portal\Auth\LoginAsUser;
 use ChurchCRM\Portal\Auth\PortalMemberUser;
 use ChurchCRM\Portal\Auth\PortalPrincipal;
 use ChurchCRM\Portal\Auth\PortalSessionStore;
@@ -67,6 +68,27 @@ class AuthenticationManager
         }
     }
 
+    /**
+     * Login as User (member sign-in design §6.5): takes the browser's staff session
+     * out of the PHP session while the administrator is in the Member Portal, so no
+     * staff page or API sees it, and hands it to the caller to keep.
+     */
+    public static function setAsideSessionProvider(): ?LocalAuthentication
+    {
+        $provider = $_SESSION['AuthenticationProvider'] ?? null;
+        if (!$provider instanceof LocalAuthentication || self::$requestProvider !== null) {
+            return null;
+        }
+        unset($_SESSION['AuthenticationProvider']);
+
+        return $provider;
+    }
+
+    public static function restoreSessionProvider(LocalAuthentication $provider): void
+    {
+        self::setAuthenticationProvider($provider);
+    }
+
     private static function setAuthenticationProvider(IAuthenticationProvider $AuthenticationProvider): void
     {
         if ($AuthenticationProvider instanceof APITokenAuthentication) {
@@ -117,6 +139,8 @@ class AuthenticationManager
             //unable to get name of user logging out. Don't really care.
         }
         $logCtx = ['username' => $currentSessionUserName];
+
+        LoginAsUser::endWithSession();
 
         try {
             if (self::hasSessionProvider()) {
@@ -176,6 +200,7 @@ class AuthenticationManager
     /** A staff sign-in replaces a member session in this browser (one principal per session, §6.4). */
     private static function replacePortalSession(): void
     {
+        LoginAsUser::endForNewSignIn();
         $principal = PortalSessionStore::load();
         if (!$principal instanceof PortalPrincipal) {
             return;
@@ -214,7 +239,7 @@ class AuthenticationManager
 
         self::endSession(true);
 
-        return $principal instanceof PortalPrincipal && !$staffSignedIn
+        return $principal instanceof PortalPrincipal && !$staffSignedIn && !$principal->isAssisted()
             ? self::getPortalLoginURL()
             : self::getStaffSignInURL();
     }
@@ -311,6 +336,10 @@ class AuthenticationManager
         // This function differs from the semantic `ValidateUserSessionIsActive` in that it will
         // take corrective action to redirect the user to an appropriate login location
         // if the current session is not actually authenticated
+
+        if (LoginAsUser::isActive()) {
+            LoginAsUser::refuseStaffPage();
+        }
 
         try {
             $result = self::getAuthenticationProvider()->validateUserSessionIsActive(true);

@@ -46,6 +46,10 @@
 <body class="portal-body">
 
 <div class="portal-shell">
+    {# A THEME THAT OVERRIDES layout.html.twig MUST KEEP THIS INCLUDE: it is the
+       administrator's only way back from Login as User. #}
+    {% include 'partials/login-as-user-banner.html.twig' %}
+
     {# The toast container. It is `position: fixed`, so it is outside the flow
        wherever it sits; it lives here, ahead of the page, because a live region
        belongs early in the document. A theme that replaces this layout must

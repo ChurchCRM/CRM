@@ -1,0 +1,61 @@
+// Login as User banner (member sign-in design §6.5), partials/login-as-user-banner.html.twig.
+//
+// Amber, not the theme's colours: a church theme must not be able to make the one
+// warning on the page blend in. Logical properties only (this ships in portal.min.css).
+
+.portal-login-as-user {
+    background-color: #fde68a;
+    color: #1f1f1f;
+    border-block-end: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.portal-login-as-user-inner {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    max-inline-size: var(--portal-content-width);
+    margin-inline: auto;
+    padding-block: 0.5rem;
+    padding-inline: var(--portal-gap);
+}
+
+.portal-login-as-user-icon {
+    flex-shrink: 0;
+    font-size: 1.25rem;
+}
+
+.portal-login-as-user-text {
+    flex: 1;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.portal-login-as-user-stop {
+    flex-shrink: 0;
+    margin: 0;
+}
+
+.portal-login-as-user-stop .portal-button {
+    background-color: #1f1f1f;
+    color: #ffffff;
+}
+
+.portal-login-as-user-stop .portal-button:hover,
+.portal-login-as-user-stop .portal-button:focus-visible {
+    color: #ffffff;
+}
+
+@media (max-width: 575.98px) {
+    .portal-login-as-user-inner {
+        flex-wrap: wrap;
+    }
+
+    .portal-login-as-user-icon {
+        display: none;
+    }
+
+    .portal-login-as-user-stop,
+    .portal-login-as-user-stop .portal-button {
+        inline-size: 100%;
+    }
+}

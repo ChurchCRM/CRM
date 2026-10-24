@@ -1960,4 +1960,50 @@
         </vendor>
     </table>
 
+    <table name="login_as_user_session_las" idMethod="native" phpName="LoginAsUserSession"
+           description="One row per Login as User session (member sign-in design §6.5): the administrator acting (actor), the person signed in as (subject), when it started and ended, and why it ended: stop, signout, timeout or ended">
+        <column name="las_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="las_Actor_usr_ID" phpName="ActorUserId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true"/>
+        <column name="las_per_ID" phpName="PersonId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true"/>
+        <column name="las_Started" phpName="Started" type="TIMESTAMP" required="true"/>
+        <column name="las_Ended" phpName="Ended" type="TIMESTAMP"/>
+        <column name="las_EndReason" phpName="EndReason" type="VARCHAR" size="16"/>
+        <foreign-key foreignTable="person_per" name="LoginAsUserSessionPerson" phpName="Person"
+                     refPhpName="LoginAsUserSession" onDelete="cascade">
+            <reference local="las_per_ID" foreign="per_ID"/>
+        </foreign-key>
+        <index name="las_person_started_idx">
+            <index-column name="las_per_ID"/>
+            <index-column name="las_Started"/>
+        </index>
+        <index name="las_actor_started_idx">
+            <index-column name="las_Actor_usr_ID"/>
+            <index-column name="las_Started"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
+    <table name="login_as_user_action_laa" idMethod="native" phpName="LoginAsUserAction"
+           description="One row per write request (any method but GET, HEAD and OPTIONS) made during a Login as User session: method, path without the query string, response status and time">
+        <column name="laa_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="laa_las_ID" phpName="SessionId" type="INTEGER" required="true"/>
+        <column name="laa_Time" phpName="Time" type="TIMESTAMP" required="true"/>
+        <column name="laa_Method" phpName="Method" type="VARCHAR" size="10" required="true"/>
+        <column name="laa_Path" phpName="Path" type="VARCHAR" size="255" required="true"/>
+        <column name="laa_Status" phpName="Status" type="SMALLINT" sqlType="smallint(5) unsigned"/>
+        <foreign-key foreignTable="login_as_user_session_las" name="LoginAsUserActionSession" phpName="Session"
+                     refPhpName="Action" onDelete="cascade">
+            <reference local="laa_las_ID" foreign="las_ID"/>
+        </foreign-key>
+        <index name="laa_session_time_idx">
+            <index-column name="laa_las_ID"/>
+            <index-column name="laa_Time"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
 </database>

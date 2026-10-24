@@ -76,7 +76,7 @@ final class PortalSessionStarter
         );
         PortalSessionStore::save($principal);
         SignInAudit::record(
-            SignInAuditEvent::SIGNED_IN,
+            $method === SignInMethod::ASSISTED ? SignInAuditEvent::LOGIN_AS_STARTED : SignInAuditEvent::SIGNED_IN,
             $personId,
             $method,
             null,

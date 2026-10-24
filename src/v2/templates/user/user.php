@@ -490,6 +490,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   </div>
 </div>
 
+<?php if ($loginAsUserHistory !== null) : ?>
+<div class="mt-3">
+  <?php include SystemURLs::getDocumentRoot() . '/people/views/partials/login-as-user-history.php'; ?>
+</div>
+<?php endif; ?>
+
 <!-- Photo Uploader -->
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/photo-uploader.min.css') ?>">
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/photo-uploader.min.js') ?>"></script>

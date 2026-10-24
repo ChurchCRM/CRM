@@ -5,6 +5,8 @@ namespace ChurchCRM\Portal\Auth;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonSignin;
+use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\model\ChurchCRM\UserQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 /**
@@ -24,6 +26,10 @@ final class PortalSignInRules
             return SignInReason::PERSON_NOT_FOUND;
         }
 
+        if ($method === SignInMethod::ASSISTED) {
+            return self::loginAsUserRefusal($person, $state);
+        }
+
         $blocked = Person::signInBlockedReasonFor(
             $person->getDateDeceased(),
             $person->getDateDeactivated(),
@@ -37,6 +43,26 @@ final class PortalSignInRules
 
         if ($method->appliesMemberRule()) {
             return ($memberRule ?? MemberSignInRule::fromSettings())->check($person);
+        }
+
+        return null;
+    }
+
+    /**
+     * Login as User checks only these (design §6.5): the office may need to see
+     * what an inactive person, or one outside the member rule, would see.
+     */
+    private static function loginAsUserRefusal(Person $person, ?PersonSignin $state): ?SignInReason
+    {
+        if (!empty($person->getDateDeceased())) {
+            return SignInReason::DECEASED;
+        }
+        if ($state instanceof PersonSignin && $state->getSignInDisabled()) {
+            return SignInReason::SIGN_IN_DISABLED;
+        }
+        $user = UserQuery::create()->findPk($person->getId());
+        if ($user instanceof User && !$user->isEditSelfExclusive()) {
+            return SignInReason::STAFF_ACCOUNT;
         }
 
         return null;
