@@ -143,13 +143,14 @@ describe("API POST /api/email/send", () => {
         });
 
         it("mails the head of household, else the spouse, and says why when neither has an email", () => {
-            send({ familyIds: [2, spouseFamilyId, noAdultFamilyId], subject: `Family ${tag}`, body: "Hello" }).then((resp) => {
-                expect(resp.body.counts).to.deep.equal({ sent: 2, skipped: 1, failed: 0 });
-                expect(resp.body.sent.map((r) => [r.familyId, r.email])).to.deep.equal([
+            cy.sendComposerEmailNow({ familyIds: [2, spouseFamilyId, noAdultFamilyId], subject: `Family ${tag}`, body: "Hello" }).then((result) => {
+                expect(result.counts).to.deep.equal({ queued: 2, sent: 0, skipped: 1, failed: 0 });
+                expect(result.progress).to.include({ total: 2, sent: 2, failed: 0, done: true });
+                expect(result.queued.map((r) => [r.familyId, r.email])).to.deep.equal([
                     [2, "constance.hart@example.com"],
                     [spouseFamilyId, `sara.${tag}@example.com`],
                 ]);
-                expect(resp.body.skipped[0]).to.include({
+                expect(result.skipped[0]).to.include({
                     familyId: noAdultFamilyId,
                     name: "NoAdultMail Family",
                     reason: "no-adult-email",

@@ -269,7 +269,7 @@ describe("7.9.0 upgrade: family email moves to people", () => {
         it("is never the family's mail address", () => {
             cy.makePrivateAdminAPICall("POST", "/api/email/send", { familyIds: [fam.NoAdult], subject: `s ${tag}`, body: "b" }).then(
                 (resp) => {
-                    expect(resp.body.counts).to.deep.equal({ sent: 0, skipped: 1, failed: 0 });
+                    expect(resp.body.counts).to.deep.equal({ queued: 0, sent: 0, skipped: 1, failed: 0 });
                     expect(resp.body.skipped[0]).to.include({ familyId: fam.NoAdult, reason: "no-adult-email" });
                 },
             );

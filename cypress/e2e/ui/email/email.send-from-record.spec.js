@@ -112,9 +112,10 @@ describe("Send email from a record", () => {
 
         composeAndSend(`Family ${tag}`, "Hello Harts.").then(({ request, response }) => {
             expect(request.body).to.deep.include({ personIds: [], familyIds: [2] });
-            expect(response.body.counts).to.deep.equal({ sent: 1, skipped: 0, failed: 0 });
-            expect(response.body.sent[0]).to.include({ familyId: 2, email: "constance.hart@example.com" });
+            expect(response.body.counts).to.deep.equal({ queued: 1, sent: 0, skipped: 0, failed: 0 });
+            expect(response.body.queued[0]).to.include({ familyId: 2, email: "constance.hart@example.com" });
         });
+        cy.get("#crm-email-compose-form .alert-success").should("contain.text", "Email sent to 1 recipient");
         mailpitMessages(tag).then((messages) => {
             expect(messages.map((m) => m.To[0].Address)).to.deep.equal(["constance.hart@example.com"]);
         });
