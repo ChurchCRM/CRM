@@ -22,6 +22,17 @@
  * administrator turns it on.
  */
 describe("Member Portal — Profile", () => {
+    // Uploading Lena's photo writes Images/Person/100.png, which the test stack
+    // bind-mounts from a tracked fixture, so its bytes are put back afterwards.
+    const LENA_PHOTO = "cypress/data/images/people/100.png";
+    let lenaPhoto = null;
+    before(() =>
+        cy.readFile(LENA_PHOTO, null).then((bytes) => {
+            lenaPhoto = bytes;
+        }),
+    );
+    after(() => cy.writeFile(LENA_PHOTO, lenaPhoto, null));
+
     const login = () => {
         cy.signInAsMember(100);
         cy.visit("/portal/");
@@ -86,9 +97,8 @@ describe("Member Portal — Profile", () => {
         // decodes to nothing and shows as a broken image. naturalWidth is what
         // tells a loaded photo from a broken one.
         //
-        // Lena has no tracked fixture under cypress/data/images/people, so
-        // uploading hers here overwrites nothing (issue #9777); the file read
-        // from is somebody else's fixture and is only ever read.
+        // The file read from is somebody else's fixture and is only ever read;
+        // Lena's own file is restored by the after() hook.
         login();
         cy.visit("/portal/profile/edit");
         cy.get("#portal-photo-input").selectFile("cypress/data/images/people/102.png", { force: true });

@@ -327,11 +327,19 @@ describe("Member Portal API — /api/portal/me and /api/portal/family", () => {
         // instead; these tests are the contract for that.
         //
         // Seeded photo files live in cypress/data/images/people, which the test
-        // stack bind-mounts as Images/Person. Lena (person 100) deliberately has
-        // no tracked fixture: the tests below upload her one through the portal,
-        // the same way the member does, so nothing here overwrites a tracked file
-        // (issue #9777). Samantha (person 102, the same family) does have one and
-        // is only ever read.
+        // stack bind-mounts as Images/Person. The tests below upload Lena's
+        // (person 100) through the portal, the same way the member does, and put
+        // the tracked 100.png back afterwards. Samantha (person 102, the same
+        // family) has one too and is only ever read.
+        const LENA_PHOTO = "cypress/data/images/people/100.png";
+        let lenaPhoto = null;
+        before(() =>
+            cy.readFile(LENA_PHOTO, null).then((bytes) => {
+                lenaPhoto = bytes;
+            }),
+        );
+        after(() => cy.writeFile(LENA_PHOTO, lenaPhoto, null));
+
         const PNG_1PX =
             "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==";
 
