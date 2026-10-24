@@ -144,6 +144,7 @@ function main() {
         category: meta.category || null,
         dark: meta.dark || null,
         usedIn: meta.usedIn || [],
+        locales: meta.locales || 'en',
       });
     }
   }

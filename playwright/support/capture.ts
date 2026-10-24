@@ -19,6 +19,12 @@ export interface CaptureOptions {
   dark?: string;
   /** Where a page links this capture. A used capture is never deleted: `npm run lint`. */
   usedIn?: ReadonlyArray<'docs' | 'website'>;
+  /**
+   * Locales to capture. `'all'` ships this capture in every supported locale
+   * (tagged `@all-locales` so later locale passes can `--grep` it).
+   * Default: English only.
+   */
+  locales?: 'all';
 }
 
 /**
@@ -175,6 +181,7 @@ async function captureAtViewport(
     category: opts.category,
     dark: opts.dark ?? null,
     usedIn: opts.usedIn ?? [],
+    locales: opts.locales === 'all' ? 'all' : 'en',
     device,
     viewport: { width: viewport.width, height: viewport.height },
     screenshot: screenshotPath,

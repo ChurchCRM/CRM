@@ -95,9 +95,9 @@ for locale in "${REMAINING_LOCALES[@]}"; do
   fi
 
   if [ -n "$BROWSER_CHANNEL" ]; then
-    run_step "Capturing screenshots for ${locale}" env CHURCHCRM_LOCALE="$locale" BROWSER_CHANNEL="$BROWSER_CHANNEL" npx playwright test --config=playwright/playwright.config.ts --project=screenshots --no-deps
+    run_step "Capturing screenshots for ${locale} (@all-locales only)" env CHURCHCRM_LOCALE="$locale" BROWSER_CHANNEL="$BROWSER_CHANNEL" npx playwright test --config=playwright/playwright.config.ts --project=screenshots --no-deps --grep @all-locales
   else
-    run_step "Capturing screenshots for ${locale}" env CHURCHCRM_LOCALE="$locale" npx playwright test --config=playwright/playwright.config.ts --project=screenshots --no-deps
+    run_step "Capturing screenshots for ${locale} (@all-locales only)" env CHURCHCRM_LOCALE="$locale" npx playwright test --config=playwright/playwright.config.ts --project=screenshots --no-deps --grep @all-locales
   fi
   i=$((i + 1))
 done

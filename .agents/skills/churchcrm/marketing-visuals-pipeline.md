@@ -46,6 +46,10 @@ The capture spec ships in the same PR as the UI change. Images serve your own ch
 
 `docs.churchcrm.io` and `ChurchCRM.io` link captures by name (`cdn.churchcrm.io/screenshots/<locale>/<device>/<name>.png`, the website's `cdn-shot` partial, and its setup videos). A capture a page links sets `usedIn: ['docs']`, `['website']` or both in its `captureScreen()` call, in the same PR as the link. `usedIn` reaches the generated manifest. `npm run lint` fails when a capture that is marked on `origin/master` is removed or renamed. To retire one, change the links, clear its `usedIn` in a merged PR, then delete it. The website gallery lists every manifest entry, so unmarked captures can still appear there; `usedIn` records the links a page hard-codes.
 
+### Locales
+
+Pass `locales: 'all'` to `captureScreen()` for captures that must ship in every locale (self-service flows, key staff workflows, and the nine website-home page shots listed in #10486). The default is English only. The matching test must also carry the Playwright tag `{ tag: '@all-locales' }` so later locale passes in `scripts/capture-all-locales.sh` can `--grep @all-locales`. The generated manifest records each capture's `locales` field.
+
 ### Fixing a failed capture
 
 A broken locator fails the same test in every locale, and serial specs skip the tests behind it, so one failure can hide several more.
