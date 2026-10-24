@@ -389,9 +389,6 @@ class   SystemConfig
     }
 
     /**
-     * @param \ChurchCRM\model\ChurchCRM\Config[] $configs
-     */
-    /**
      * @param \ChurchCRM\model\ChurchCRM\Config[]|null $configs the stored rows
      * @param bool $pruneUnknown delete rows no ConfigItem declares; false keeps
      *                           them for an upgrade script that still reads a retired key
