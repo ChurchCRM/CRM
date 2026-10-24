@@ -21,6 +21,10 @@ The booleans save through `POST /admin/api/system/config/{name}`. `sMemberPortal
 
 The **Sign-in** tab owns the keys in `MemberSignInSettingsService::KEYS` and saves them through `POST /admin/api/member-portal/sign-in`, all or none. The generic config API routes those keys through the same `normalize()`, so a rule such as "member sign-in only while email works" holds whichever way a value is written.
 
+### Retiring a key
+
+Remove the `ConfigItem` and carry its meaning over in the release's upgrade SQL, which may still read the old `config_cfg` row and must delete it. `Bootstrapper` keeps rows no `ConfigItem` declares until the database is current (`SystemConfig::init($rows, $pruneUnknown)`), so the upgrade runs before `scrapeDBConfigs()` prunes them.
+
 ## SystemConfig
 
 | Method | Purpose |

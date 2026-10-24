@@ -386,14 +386,16 @@ class   SystemConfig
     }
 
     /**
-     * @param \ChurchCRM\model\ChurchCRM\Config[] $configs
+     * @param \ChurchCRM\model\ChurchCRM\Config[]|null $configs the stored rows
+     * @param bool $pruneUnknown delete rows no ConfigItem declares; false keeps
+     *                           them for an upgrade script that still reads a retired key
      */
-    public static function init($configs = null): void
+    public static function init($configs = null, bool $pruneUnknown = true): void
     {
         self::$configs = self::buildConfigs();
         self::$categories = self::buildCategories();
         if (!empty($configs)) {
-            self::scrapeDBConfigs($configs);
+            self::scrapeDBConfigs($configs, $pruneUnknown);
         }
     }
 
@@ -413,13 +415,13 @@ class   SystemConfig
     /**
      * @param \ChurchCRM\model\ChurchCRM\Config[] $configs
      */
-    private static function scrapeDBConfigs($configs): void
+    private static function scrapeDBConfigs($configs, bool $pruneUnknown): void
     {
         foreach ($configs as $config) {
             if (isset(self::$configs[$config->getName()])) {
                 //if the current config set defined by code contains the current config retrieved from the db, then cache it
                 self::$configs[$config->getName()]->setDBConfigObject($config);
-            } else {
+            } elseif ($pruneUnknown) {
                 //there's a config item in the DB that doesn't exist in the current code.
                 //don't delete dynamic keys like plugin.* configs - they're managed by plugins
                 if (strpos($config->getName(), 'plugin.') !== 0) {
