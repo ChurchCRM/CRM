@@ -9,6 +9,7 @@ namespace ChurchCRM\Portal\Auth;
 enum SignInAuditEvent: string
 {
     case EMAIL_REQUESTED = 'email_requested';
+    case REQUEST_CANCELLED = 'request_cancelled';
     case SIGNED_IN = 'signed_in';
     case REFUSED = 'refused';
     case THROTTLED = 'throttled';
@@ -32,6 +33,7 @@ enum SignInAuditEvent: string
     {
         return match ($this) {
             self::EMAIL_REQUESTED => gettext('Sign-in email requested'),
+            self::REQUEST_CANCELLED => gettext('Emailed sign-in code and link cancelled'),
             self::SIGNED_IN => gettext('Signed in'),
             self::REFUSED => gettext('Sign-in refused'),
             self::THROTTLED => gettext('Too many attempts'),

@@ -28,8 +28,6 @@ class User extends BaseUser
 {
     public const SIGN_IN_BLOCKED_DECEASED = 'deceased';
     public const SIGN_IN_BLOCKED_INACTIVE = 'inactive';
-    public const SIGN_IN_BLOCKED_FAMILY_INACTIVE = 'family_inactive';
-    public const SIGN_IN_BLOCKED_NEEDS_REVIEW = 'needs_review';
     public const SIGN_IN_BLOCKED_DISABLED = 'sign_in_disabled';
 
     private $provisional2FAKey;
@@ -685,16 +683,16 @@ class User extends BaseUser
     /**
      * Why this account may not sign in (member sign-in design §4, blocks for
      * everyone): one of the SIGN_IN_BLOCKED_* values, or null when allowed.
-     * Reads the person, family and sign-in rows fresh so a long-lived session
-     * sees later changes.
+     * The family's status and awaiting review apply to member sign-in only.
+     * Reads the person and sign-in rows fresh so a long-lived session sees
+     * later changes.
      */
     public function getSignInBlockedReason(): ?string
     {
         $status = PersonQuery::create()
             ->filterById($this->getPersonId())
-            ->leftJoinFamily()
             ->leftJoinPersonSignin()
-            ->select(['DateDeceased', 'DateDeactivated', 'NeedsReview', 'Family.DateDeactivated', 'PersonSignin.SignInDisabled'])
+            ->select(['DateDeceased', 'DateDeactivated', 'PersonSignin.SignInDisabled'])
             ->findOne();
 
         if (!is_array($status)) {
@@ -704,8 +702,6 @@ class User extends BaseUser
         return Person::signInBlockedReasonFor(
             $status['DateDeceased'],
             $status['DateDeactivated'],
-            $status['Family.DateDeactivated'],
-            (bool) $status['NeedsReview'],
             (bool) $status['PersonSignin.SignInDisabled'],
         );
     }
@@ -715,8 +711,6 @@ class User extends BaseUser
         return match ($this->getSignInBlockedReason()) {
             self::SIGN_IN_BLOCKED_DECEASED => gettext('Deceased — cannot sign in'),
             self::SIGN_IN_BLOCKED_INACTIVE => gettext('Inactive — cannot sign in'),
-            self::SIGN_IN_BLOCKED_FAMILY_INACTIVE => gettext('Family inactive — cannot sign in'),
-            self::SIGN_IN_BLOCKED_NEEDS_REVIEW => gettext('Awaiting review — cannot sign in'),
             self::SIGN_IN_BLOCKED_DISABLED => gettext('Sign-in disabled'),
             default => null,
         };

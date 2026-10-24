@@ -77,11 +77,11 @@ function removePersonPasskeyAPI(Request $request, Response $response, array $arg
  *     path="/admin/api/person/{personId}/sign-in/grants",
  *     operationId="givePersonPortalGrant",
  *     summary="Give a person a portal permission (Admin role required)",
- *     description="A capability, on a scope of its scope type (none, family, team, ministry or group), with an optional last day and a required reason. Takes effect on the person's next portal request. Writes a grant_added audit row; the reason is kept on the grant only.",
+ *     description="A capability, on a scope of its scope type (none, family, team, ministry or group), with a required last day and a required reason. Takes effect on the person's next portal request. Writes a grant_added audit row; the reason is kept on the grant only.",
  *     tags={"Admin"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer")),
- *     @OA\RequestBody(required=true, @OA\JsonContent(required={"capability", "reason"},
+ *     @OA\RequestBody(required=true, @OA\JsonContent(required={"capability", "endsOn", "reason"},
  *         @OA\Property(property="capability", type="string", example="volunteer.team.manage"),
  *         @OA\Property(property="scopeId", type="integer", description="The family, team, ministry or group; omit for a capability without a scope", example=3),
  *         @OA\Property(property="endsOn", type="string", format="date", description="Last day it counts, inclusive", example="2026-12-31"),
@@ -91,7 +91,7 @@ function removePersonPasskeyAPI(Request $request, Response $response, array $arg
  *         @OA\Property(property="success", type="boolean", example=true),
  *         @OA\Property(property="grantId", type="integer")
  *     )),
- *     @OA\Response(response=400, description="An unknown capability, a missing or unknown scope, a date in the past or a missing reason"),
+ *     @OA\Response(response=400, description="An unknown capability, a missing or unknown scope, a missing last day or one in the past, or a missing reason"),
  *     @OA\Response(response=403, description="Admin role required, or an invalid CSRF token"),
  *     @OA\Response(response=404, description="Person not found"),
  *     @OA\Response(response=409, description="The person already has this permission on this scope")

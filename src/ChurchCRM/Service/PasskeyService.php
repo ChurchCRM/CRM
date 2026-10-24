@@ -403,9 +403,12 @@ final class PasskeyService
             return false;
         }
 
-        $counter = $webAuthn->getSignatureCounter();
-        if ($counter === null) {
-            return true;
+        // Synced passkeys keep no counter and report 0 on every use, which the
+        // library returns as null. processGet() has already refused a counter
+        // that did not go up, including a drop to 0 from a stored count.
+        $counter = $webAuthn->getSignatureCounter() ?? 0;
+        if ($counter === 0) {
+            return $previous === 0;
         }
 
         // The conditional update makes two uses of one counter value fail, as a cloned key would.

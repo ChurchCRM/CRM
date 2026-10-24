@@ -132,10 +132,10 @@ describe("Standard User Password", () => {
  * deletes it again. Nothing seeded is touched.
  */
 describe("Standard User Password - successful change", () => {
-    // Person 57 (Jon Olson) is seeded, has no user account, is not referenced
-    // by any other spec, and is in an active family: an inactive family stops
-    // anyone signing in (member sign-in design §4).
-    const PERSON_ID = 57;
+    // Person 24 (Clyde Ray) is seeded, has no user account, and is not
+    // referenced by any other spec. Person 25 is deliberately avoided:
+    // ui-admin/admin.user.spec.js creates and deletes a user for it.
+    const PERSON_ID = 24;
     const FIRST_PASSWORD = "TheFirstPasswordForTheThrowawayUser";
     const SECOND_PASSWORD = "SomeThingsAreBetterLeftUnChangedJustKidding";
 
@@ -143,7 +143,7 @@ describe("Standard User Password - successful change", () => {
 
     // The delete route is declared as $group->delete('/') inside the
     // /api/user/{userId} group, so the trailing slash is load-bearing:
-    // /admin/api/user/57 is a 404, /admin/api/user/57/ is the route.
+    // /admin/api/user/24 is a 404, /admin/api/user/24/ is the route.
     const deleteTestUser = () =>
         cy.makePrivateAdminAPICall(
             "DELETE",
