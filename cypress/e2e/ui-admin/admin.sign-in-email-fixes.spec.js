@@ -28,6 +28,7 @@ const SEED = {
     80: "judy.douglas@example.com",
 };
 
+const lastDay = new Date(Date.now() + 30 * 86400000).toISOString().slice(0, 10);
 const fixRow = (address) => cy.get(`#sharedEmailFixModal [data-cy=shared-fix-row][data-address="${address}"]`);
 
 // Bootstrap ignores a hide while the modal is still opening; it focuses the modal once it is open.
@@ -115,7 +116,7 @@ describe("Email needs attention: Fix shared emails and Confirm selected", () => 
         setPersonEmails({ 76: "larson.home@example.com", 77: "larson.home@example.com" });
         [50, 59, 28].forEach((personId) => markEmailUnconfirmed(personId));
         markEmailUnconfirmed(26, "staff");
-        cy.makePrivateAdminAPICall("POST", "/admin/api/person/28/sign-in/grants", { capability: "portal.family.contacts.view", scopeId: 3, reason: "Row 9b UI spec" }, 201);
+        cy.makePrivateAdminAPICall("POST", "/admin/api/person/28/sign-in/grants", { capability: "portal.family.contacts.view", scopeId: 3, endsOn: lastDay, reason: "Row 9b UI spec" }, 201);
 
         cy.setupStandardSession({ forceLogin: true });
         cy.visit("/people/dashboard");

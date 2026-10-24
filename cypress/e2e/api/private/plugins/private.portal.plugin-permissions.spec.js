@@ -95,6 +95,7 @@ describe("Member Portal plugin API (portal capabilities, rules, pages and nav)",
         cy.request(`/api/portal/plugins/${ID}/groups`).its("body.groupIds").should("deep.equal", [MEMBER_GROUP]);
 
         status(NOTICES).should("eq", 403);
+        status(`/api/portal/plugins/${ID}/notices`).should("eq", 403);
     });
 
     it("denies a capability the plugin did not declare, even one given to the person", () => {
@@ -109,6 +110,7 @@ describe("Member Portal plugin API (portal capabilities, rules, pages and nav)",
         signIn();
         navLinks().should("include", NOTICES);
         cy.request(NOTICES).its("body").should("contain", "portal-example-notices-text");
+        cy.request(`/api/portal/plugins/${ID}/notices`).its("body.notices").should("deep.equal", []);
     });
 
     it("takes away the capabilities, rules, pages and nav with the plugin, and keeps given grants", () => {
