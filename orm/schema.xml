@@ -1843,6 +1843,8 @@
         <column name="pdv_LastUsedAt" phpName="LastUsedAt" type="TIMESTAMP"/>
         <column name="pdv_ExpiresAt" phpName="ExpiresAt" type="TIMESTAMP" required="true"/>
         <column name="pdv_RevokedAt" phpName="RevokedAt" type="TIMESTAMP"/>
+        <column name="pdv_PreviousTokenHash" phpName="PreviousTokenHash" type="CHAR" size="64"/>
+        <column name="pdv_PreviousValidUntil" phpName="PreviousValidUntil" type="TIMESTAMP"/>
         <foreign-key foreignTable="person_per" name="PersonDevicePerson" phpName="Person"
                      refPhpName="PersonDevice" onDelete="cascade">
             <reference local="pdv_per_ID" foreign="per_ID"/>
@@ -1852,6 +1854,9 @@
         </unique>
         <index name="pdv_person_idx">
             <index-column name="pdv_per_ID"/>
+        </index>
+        <index name="pdv_previous_token_idx">
+            <index-column name="pdv_PreviousTokenHash"/>
         </index>
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>

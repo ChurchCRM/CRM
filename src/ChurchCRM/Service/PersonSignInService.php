@@ -131,7 +131,7 @@ final class PersonSignInService
             $devicesRevoked = PersonDeviceQuery::create()
                 ->filterByPersonId($personId)
                 ->filterByRevokedAt(null, Criteria::ISNULL)
-                ->update(['RevokedAt' => $this->now()->format('Y-m-d H:i:s')], $connection);
+                ->update(RememberedDeviceService::revokedValues($this->now()), $connection);
             $connection->commit();
         } catch (Throwable $e) {
             $connection->rollBack();

@@ -71,9 +71,12 @@ CREATE TABLE IF NOT EXISTS `person_device_pdv` (
   `pdv_LastUsedAt` datetime                         DEFAULT NULL,
   `pdv_ExpiresAt`  datetime                NOT NULL,
   `pdv_RevokedAt`  datetime                         DEFAULT NULL,
+  `pdv_PreviousTokenHash`  char(64)                 DEFAULT NULL,
+  `pdv_PreviousValidUntil` datetime                 DEFAULT NULL,
   PRIMARY KEY (`pdv_ID`),
   UNIQUE KEY `pdv_token_uidx` (`pdv_TokenHash`),
   KEY `pdv_person_idx`        (`pdv_per_ID`),
+  KEY `pdv_previous_token_idx` (`pdv_PreviousTokenHash`),
   CONSTRAINT `fk_pdv_person` FOREIGN KEY (`pdv_per_ID`)
       REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

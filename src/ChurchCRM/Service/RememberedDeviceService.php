@@ -25,14 +25,18 @@ use Propel\Runtime\ActiveQuery\Criteria;
  *
  * A device works for `iRememberDeviceDays` from the day the member ticked the
  * box, counted with the current setting, so lowering it (or setting 0) cuts
- * existing devices short. Its token is replaced at each use.
+ * existing devices short. Its token is replaced at each use, and the token it
+ * replaced still signs in for a short grace, so two tabs or parallel requests
+ * that resume together do not sign each other out.
  */
 final class RememberedDeviceService
 {
     public const KIND_BROWSER = 'browser';
+    public const AUDIT_PREVIOUS_TOKEN = 'previous_token';
 
     private const DB_TIME = 'Y-m-d H:i:s';
     private const KEEP_REMOVED_DAYS = 30;
+    private const PREVIOUS_TOKEN_GRACE_SECONDS = 60;
 
     public static function lifetimeDays(): int
     {
@@ -85,15 +89,17 @@ final class RememberedDeviceService
     /**
      * Starts a portal session from a device cookie, or returns null when the
      * cookie may not sign in. The token is spent before the shared step runs,
-     * so a copied cookie works once at most, and a refusal signs the device out.
+     * so a copied cookie works once at most outside the grace, and a refusal
+     * signs the device out.
      */
     public function resume(string $token): ?RememberedDeviceToken
     {
+        $hash = self::hash($token);
         $device = PersonDeviceQuery::create()
             ->filterByKind(self::KIND_BROWSER)
-            ->findOneByTokenHash(self::hash($token));
+            ->findOneByTokenHash($hash);
         if (!$device instanceof PersonDevice) {
-            return null;
+            return $this->resumeWithPreviousToken($hash);
         }
 
         $personId = (int) $device->getPersonId();
@@ -114,22 +120,22 @@ final class RememberedDeviceService
         $newToken = self::newToken();
         $spent = PersonDeviceQuery::create()
             ->filterById($device->getId())
-            ->filterByTokenHash($device->getTokenHash())
+            ->filterByTokenHash($hash)
             ->filterByRevokedAt(null, Criteria::ISNULL)
-            ->update(['TokenHash' => self::hash($newToken), 'LastUsedAt' => $now->format(self::DB_TIME)]);
+            ->update([
+                'TokenHash' => self::hash($newToken),
+                'PreviousTokenHash' => $hash,
+                'PreviousValidUntil' => $now->modify(sprintf('+%d seconds', self::PREVIOUS_TOKEN_GRACE_SECONDS))->format(self::DB_TIME),
+                'LastUsedAt' => $now->format(self::DB_TIME),
+            ]);
         if ($spent !== 1) {
-            return null;
+            // A parallel request with the same cookie replaced the token first.
+            return $this->resumeWithPreviousToken($hash);
         }
 
-        try {
-            PortalSessionStarter::start($personId, SignInMethod::DEVICE);
-        } catch (PortalSignInRefusedException $e) {
-            $this->revoke($device, $e->reason);
-
+        if (!$this->startSession($device)) {
             return null;
         }
-
-        PortalSessionStore::setDeviceId((int) $device->getId());
         $this->removeOldDevices($now);
 
         return new RememberedDeviceToken((int) $device->getId(), $newToken, $expiresAt);
@@ -238,12 +244,63 @@ final class RememberedDeviceService
         return $label === '' ? null : $label;
     }
 
+    /**
+     * The values that sign a device out. Its previous token goes too, so it
+     * signs nothing in for the rest of its grace.
+     *
+     * @return array{RevokedAt: string, PreviousTokenHash: null, PreviousValidUntil: null}
+     */
+    public static function revokedValues(DateTimeInterface $when): array
+    {
+        return ['RevokedAt' => $when->format(self::DB_TIME), 'PreviousTokenHash' => null, 'PreviousValidUntil' => null];
+    }
+
+    /**
+     * The token a device replaced moments ago, still in its grace. It starts a
+     * session without being replaced again; the browser already holds the
+     * current token, so the result carries none for the cookie.
+     */
+    private function resumeWithPreviousToken(string $hash): ?RememberedDeviceToken
+    {
+        $now = self::now();
+        $device = PersonDeviceQuery::create()
+            ->filterByKind(self::KIND_BROWSER)
+            ->filterByPreviousTokenHash($hash)
+            ->filterByPreviousValidUntil($now->format(self::DB_TIME), Criteria::GREATER_THAN)
+            ->filterByRevokedAt(null, Criteria::ISNULL)
+            ->findOne();
+        if (!$device instanceof PersonDevice) {
+            return null;
+        }
+
+        $expiresAt = self::expiryOf($device, self::lifetimeDays());
+        if ($expiresAt <= $now || !$this->startSession($device, self::AUDIT_PREVIOUS_TOKEN)) {
+            return null;
+        }
+
+        return new RememberedDeviceToken((int) $device->getId(), null, $expiresAt);
+    }
+
+    private function startSession(PersonDevice $device, ?string $auditDetail = null): bool
+    {
+        try {
+            PortalSessionStarter::start((int) $device->getPersonId(), SignInMethod::DEVICE, auditDetail: $auditDetail);
+        } catch (PortalSignInRefusedException $e) {
+            $this->revoke($device, $e->reason);
+
+            return false;
+        }
+        PortalSessionStore::setDeviceId((int) $device->getId());
+
+        return true;
+    }
+
     private function revoke(PersonDevice $device, SignInReason $reason): bool
     {
         $revoked = PersonDeviceQuery::create()
             ->filterById($device->getId())
             ->filterByRevokedAt(null, Criteria::ISNULL)
-            ->update(['RevokedAt' => self::now()->format(self::DB_TIME)]);
+            ->update(self::revokedValues(self::now()));
         if ($revoked !== 1) {
             return false;
         }

@@ -158,6 +158,11 @@ describe("Member Portal remembered devices", () => {
                 cy.get("#portal-account-toggle").should("contain.text", `Hello ${member.firstName}`);
 
                 cy.getCookie(DEVICE_COOKIE).its("value").should("not.eq", first.value);
+                devicesOf(member.personId).then(([device]) => {
+                    expect(device.pdv_PreviousTokenHash, "the replaced token's hash").to.match(/^[0-9a-f]{64}$/);
+                    expect(device.pdv_PreviousValidUntil).to.not.be.null;
+                    expect(JSON.stringify(device)).to.not.include(first.value);
+                });
                 auditSince(startId).then((rows) => {
                     expect(events(rows)).to.deep.equal(["signed_in:device:"]);
                 });
@@ -165,6 +170,7 @@ describe("Member Portal remembered devices", () => {
                     .its("0.psi_LastMethod")
                     .should("eq", "device");
 
+                cy.endDeviceTokenGrace(member.personId);
                 cy.clearCookies();
                 cy.setCookie(DEVICE_COOKIE, first.value, { path: "/portal", httpOnly: true });
                 expectSignedOut();
@@ -239,12 +245,17 @@ describe("Member Portal remembered devices", () => {
 
     it("signs out this device from the page and lands on the sign-in page", () => {
         signInWithCode({ remember: true });
+        closeBrowser();
         cy.visit("/portal/devices");
         cy.get("[data-this-device]").parents("[data-device-row]").find("[data-device-sign-out]").click();
         cy.location("pathname").should("match", /\/portal\/login$/);
         cy.get(".portal-flash").should("contain.text", "You are signed out on this device.");
         cy.getCookie(DEVICE_COOKIE).should("be.null");
-        devicesOf(member.personId).its("0.pdv_RevokedAt").should("not.be.null");
+        devicesOf(member.personId).then(([device]) => {
+            expect(device.pdv_RevokedAt).to.not.be.null;
+            expect(device.pdv_PreviousTokenHash, "the replaced token is forgotten too").to.be.null;
+            expect(device.pdv_PreviousValidUntil).to.be.null;
+        });
     });
 
     it("Sign out every device ends every session and stops every device", () => {

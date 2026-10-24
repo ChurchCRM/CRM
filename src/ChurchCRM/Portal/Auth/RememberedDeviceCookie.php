@@ -28,8 +28,13 @@ final class RememberedDeviceCookie
         return self::read($request) !== '';
     }
 
+    /** A token with no value leaves the cookie alone: a parallel response already set the newer token. */
     public static function with(ResponseInterface $response, RememberedDeviceToken $token): ResponseInterface
     {
+        if ($token->value === null) {
+            return $response;
+        }
+
         return $response->withAddedHeader('Set-Cookie', self::header($token->value, max(1, $token->expiresAt->getTimestamp() - time())));
     }
 

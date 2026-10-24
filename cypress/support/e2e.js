@@ -23,6 +23,7 @@ import "./api-commands";
 import "./personas";
 import "./church-time-zone";
 import "./sign-in-throttle";
+import "./remembered-device";
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
