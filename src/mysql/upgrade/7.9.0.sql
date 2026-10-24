@@ -376,7 +376,9 @@ CREATE TABLE IF NOT EXISTS `login_as_person_action_lpa` (
 -- the family email move left there is untouched. Then every self-service
 -- account (usr_EditSelf = 1 and not an administrator, User::isEditSelfExclusive())
 -- is deleted with its per-user rows, and the number deleted is kept for the
--- dashboard notice. Member sign-in stays off. Safe to run again.
+-- dashboard notice. Member sign-in stays off. Safe to run again. What the
+-- account wrote (notes, edits, volunteer rows, email history) keeps its id,
+-- which is the person's id, so it still names the person.
 
 INSERT INTO `person_signin_psi` (`psi_per_ID`, `psi_CalendarToken`, `psi_CalendarSelection`, `psi_LastActivity`) SELECT
   u.`usr_per_ID`, NULLIF(TRIM(u.`usr_PortalCalendarToken`), ''), NULLIF(u.`usr_PortalCalendarSelection`, ''), u.`usr_LastPortalActivity`

@@ -23,7 +23,7 @@
         },
         "cypress/e2e/api/private/admin/private.admin.member-sign-in-cutover.spec.js": {
             "kind": "schema",
-            "reason": "Migration spec for the 7.9.0 release-day cutover (member sign-in row 13): the application no longer makes self-service accounts, so the pre-upgrade accounts, their per-user rows and the upgrade block are reached in SQL."
+            "reason": "Migration spec for the 7.9.0 release-day cutover (member sign-in row 13): the application no longer makes self-service accounts, so the pre-upgrade accounts, their per-user rows, the history that names them and the upgrade block are reached in SQL."
         },
         "cypress/e2e/api/private/admin/private.admin.member-portal-lists.spec.js": {
             "kind": "fixture",
