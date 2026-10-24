@@ -9,10 +9,12 @@ use ChurchCRM\Portal\Permissions\Rules\TeamLeaderRule;
 
 /**
  * The first catalog (member sign-in design §8.4) and the core rules (§8.3).
+ * `portal.devices.manage` is added by row 7 for the Sign-in and devices page.
  */
 final class CorePortalCapabilities
 {
     public const PROFILE_EDIT = 'portal.profile.edit';
+    public const DEVICES_MANAGE = 'portal.devices.manage';
     public const FAMILY_VIEW = 'portal.family.view';
     public const FAMILY_CONTACTS_VIEW = 'portal.family.contacts.view';
     public const FAMILY_EDIT = 'portal.family.edit';
@@ -29,6 +31,7 @@ final class CorePortalCapabilities
 
         foreach ([
             new PortalCapability(self::PROFILE_EDIT, gettext('Edit my details'), gettext('Change their own name, contact details and photo.'), $core),
+            new PortalCapability(self::DEVICES_MANAGE, gettext('Manage my sign-in and devices'), gettext('See the devices that keep them signed in, and sign out one or all of them.'), $core),
             new PortalCapability(self::FAMILY_VIEW, gettext('See my family'), gettext('See the names and photos of the people in their family.'), $core, PortalScope::FAMILY),
             new PortalCapability(self::FAMILY_CONTACTS_VIEW, gettext('See family contact details'), gettext('See the email addresses and phone numbers of the people in their family.'), $core, PortalScope::FAMILY),
             new PortalCapability(self::FAMILY_EDIT, gettext('Change family details'), gettext('Change the family address and contact details, and add a family member for review.'), $core, PortalScope::FAMILY),

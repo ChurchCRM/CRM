@@ -57,6 +57,10 @@
             "kind": "fixture",
             "reason": "Member sign-in row 10 (#10463): an address moved from the family email and \"has signed in\" have no HTTP surface until rows 5 and 9."
         },
+        "cypress/e2e/ui/portal/member.portal-remembered-devices.spec.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in row 7 (#10463): the stored device rows (only a token hash), the sign-in audit, the idle time and the remembered-device days have no HTTP surface until row 9; a refusal is made by unticking the person's classification."
+        },
         "cypress/e2e/ui/portal/member.portal-sign-in-email.spec.js": {
             "kind": "fixture",
             "reason": "Member sign-in row 5 (#10463): the stored sign-in request (hashed, never shown), the proven address and the audit have no HTTP surface until row 9; an expired request is made by moving its times back."

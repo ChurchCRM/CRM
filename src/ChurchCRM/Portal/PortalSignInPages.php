@@ -5,6 +5,11 @@ namespace ChurchCRM\Portal;
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Portal\Auth\PortalPrincipal;
+use ChurchCRM\Portal\Auth\PortalSessionStore;
+use ChurchCRM\Portal\Auth\RememberedDeviceCookie;
+use ChurchCRM\Portal\Auth\RememberedDeviceToken;
+use ChurchCRM\Service\RememberedDeviceService;
 use ChurchCRM\Utils\RequestUtils;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -35,13 +40,29 @@ final class PortalSignInPages
     }
 
     /**
-     * The hook for remembered devices (row 7, design §6.2): when the member
-     * ticked "This is my own device", the device cookie is added here. Until
-     * then nothing is kept on the device, ticked or not.
+     * After an email sign-in (design §6.2): a device cookie only when the
+     * member ticked "This is my own device". Either way, a device cookie this
+     * browser already held is signed out, so nobody else's device survives a
+     * new sign-in here.
      */
-    public static function rememberDevice(ResponseInterface $response, bool $chosen): ResponseInterface
+    public static function rememberDevice(ServerRequestInterface $request, ResponseInterface $response, bool $chosen): ResponseInterface
     {
-        return $response;
+        $devices = new RememberedDeviceService();
+        $previous = RememberedDeviceCookie::read($request);
+        if ($previous !== '') {
+            $devices->forgetToken($previous);
+        }
+
+        $principal = PortalSessionStore::load();
+        $token = $chosen && $principal instanceof PortalPrincipal && $principal->method->isEmail()
+            ? $devices->remember($principal->personId, $principal->method, $request->getHeaderLine('User-Agent'))
+            : null;
+
+        if ($token instanceof RememberedDeviceToken) {
+            return RememberedDeviceCookie::with($response, $token);
+        }
+
+        return $previous !== '' ? RememberedDeviceCookie::without($response) : $response;
     }
 
     public static function browserSecret(ServerRequestInterface $request): string

@@ -23,6 +23,7 @@ final class EveryoneRule implements PortalRule
         $label = gettext('Everyone');
 
         yield new PortalRuleGrant(CorePortalCapabilities::PROFILE_EDIT, null, $label);
+        yield new PortalRuleGrant(CorePortalCapabilities::DEVICES_MANAGE, null, $label);
 
         $familyId = (int) $person->getFamId();
         if ($familyId > 0) {

@@ -117,10 +117,11 @@ final class PersonSignInService
     /**
      * Ends every portal session of the person on its next request and revokes
      * their remembered devices. Passkeys stay: the member keeps a way back in.
+     * `$actor` is null when the member does it from the Sign-in and devices page.
      *
      * @return int how many devices were revoked
      */
-    public function signOutEverywhere(Person $person, User $actor): int
+    public function signOutEverywhere(Person $person, ?User $actor): int
     {
         $personId = (int) $person->getId();
         $connection = Propel::getWriteConnection(PersonSigninTableMap::DATABASE_NAME);
@@ -142,7 +143,7 @@ final class PersonSignInService
             SignInAuditEvent::SESSION_ENDED,
             $personId,
             reason: SignInReason::SIGNED_OUT_EVERYWHERE,
-            actorUserId: (int) $actor->getPersonId(),
+            actorUserId: $actor === null ? null : (int) $actor->getPersonId(),
             detail: sprintf('devices=%d', $devicesRevoked),
         );
 
@@ -188,11 +189,7 @@ final class PersonSignInService
             'unconfirmedAt' => $unconfirmedEmail === '' ? null : self::formatTime($state->getUnconfirmedAt()),
             'canConfirmEmail' => $unconfirmedEmail !== '' && $confirmRefusal === null,
             'confirmEmailRefusal' => $confirmRefusal,
-            'devices' => PersonDeviceQuery::create()
-                ->filterByPersonId($personId)
-                ->filterByRevokedAt(null, Criteria::ISNULL)
-                ->filterByExpiresAt($this->now()->format('Y-m-d H:i:s'), Criteria::GREATER_THAN)
-                ->count(),
+            'devices' => RememberedDeviceService::liveDevicesQuery($personId)->count(),
             'passkeys' => PersonPasskeyQuery::create()->filterByPersonId($personId)->count(),
         ];
     }

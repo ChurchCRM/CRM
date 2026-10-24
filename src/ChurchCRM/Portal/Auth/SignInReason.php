@@ -33,6 +33,8 @@ enum SignInReason: string
     case THROTTLED_IP = 'throttled_ip';
     case THROTTLED_PERSON = 'throttled_person';
     case TOO_MANY_CODES = 'too_many_codes';
+    case DEVICE_REMOVED = 'device_removed';
+    case DEVICE_EXPIRED = 'device_expired';
 
     /** For staff screens only; a person signing in never sees a reason (D3, A6). */
     public function label(): string
@@ -61,6 +63,8 @@ enum SignInReason: string
             self::THROTTLED_IP => gettext('Too many sign-in requests from this IP address'),
             self::THROTTLED_PERSON => gettext('Too many sign-in emails today'),
             self::TOO_MANY_CODES => gettext('Too many wrong codes'),
+            self::DEVICE_REMOVED => gettext('Their remembered device was signed out'),
+            self::DEVICE_EXPIRED => gettext('Their remembered device had expired'),
         };
     }
 }

@@ -94,10 +94,15 @@ export const askForEmail = (email) =>
         cy.request({ method: "POST", url: "/portal/login", form: true, body: { csrf_token: csrfToken(body), email } }),
     );
 
-/** Posts a code from whatever page the current cookie jar can open. */
-export const postCode = (code) =>
+/** Posts a code from whatever page the current cookie jar can open; `fields` adds e.g. `{ rememberDevice: "1" }`. */
+export const postCode = (code, fields = {}) =>
     cy.request("/portal/login").then(({ body }) =>
-        cy.request({ method: "POST", url: "/portal/login/code", form: true, body: { csrf_token: csrfToken(body), code } }),
+        cy.request({
+            method: "POST",
+            url: "/portal/login/code",
+            form: true,
+            body: { csrf_token: csrfToken(body), code, ...fields },
+        }),
     );
 
 export const expectAnswerScreen = (response) => {

@@ -11,6 +11,7 @@ final class PortalSessionStore
 {
     private const PRINCIPAL_KEY = 'PortalPrincipal';
     private const LAST_ACTIVITY_KEY = 'PortalLastActivity';
+    private const DEVICE_KEY = 'PortalDeviceId';
 
     public static function load(): ?PortalPrincipal
     {
@@ -29,7 +30,21 @@ final class PortalSessionStore
     public static function save(PortalPrincipal $principal): void
     {
         $_SESSION[self::PRINCIPAL_KEY] = $principal->toArray();
+        unset($_SESSION[self::DEVICE_KEY]);
         self::touch();
+    }
+
+    /** The remembered device this session started from or was kept on (design §6.2). */
+    public static function deviceId(): ?int
+    {
+        $value = $_SESSION[self::DEVICE_KEY] ?? null;
+
+        return is_int($value) ? $value : null;
+    }
+
+    public static function setDeviceId(int $deviceId): void
+    {
+        $_SESSION[self::DEVICE_KEY] = $deviceId;
     }
 
     public static function lastActivity(): ?int
@@ -46,7 +61,7 @@ final class PortalSessionStore
 
     public static function clear(): void
     {
-        unset($_SESSION[self::PRINCIPAL_KEY], $_SESSION[self::LAST_ACTIVITY_KEY]);
+        unset($_SESSION[self::PRINCIPAL_KEY], $_SESSION[self::LAST_ACTIVITY_KEY], $_SESSION[self::DEVICE_KEY]);
     }
 
     public static function regenerateId(): void

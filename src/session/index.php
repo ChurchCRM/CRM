@@ -6,6 +6,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\Requests\LocalTwoFactorTokenRequest;
 use ChurchCRM\Authentication\Requests\LocalUsernamePasswordRequest;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Portal\Auth\RememberedDeviceCookie;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use ChurchCRM\Utils\InputUtils;
@@ -68,7 +69,7 @@ function processTwoFactorPost(Request $request, Response $response, array $args)
 function endSession(Request $request, Response $response, array $args): Response
 {
     $redirectUrl = AuthenticationManager::signOut();
-    $response = $response->withHeader('Location', $redirectUrl)->withStatus(302);
+    $response = RememberedDeviceCookie::without($response->withHeader('Location', $redirectUrl)->withStatus(302));
     $response->getBody()->write('');
     return $response;
 }

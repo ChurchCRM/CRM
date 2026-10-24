@@ -10,6 +10,8 @@ use ChurchCRM\model\ChurchCRM\PersonSignin;
 use ChurchCRM\model\ChurchCRM\PersonSigninQuery;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Portal\PortalStatsService;
+use ChurchCRM\Service\EmailSignInService;
+use ChurchCRM\Service\RememberedDeviceService;
 use ChurchCRM\Slim\Middleware\BrowserRequestTrait;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\DateTimeUtils;
@@ -35,6 +37,8 @@ use Throwable;
  *    `iPortalIdleMinutes`;
  *  - turns a signed-in staff session into a STAFF principal for its own person
  *    through the shared step (§6.4);
+ *  - otherwise starts a DEVICE session from a remembered device's cookie, and
+ *    replaces its token (§6.2);
  *  - records the activity, except during Login as User.
  *
  * A STAFF principal outlives its staff session's own timeout: from then on it
@@ -74,6 +78,19 @@ final class PortalSessionMiddleware implements MiddlewareInterface
             $state = PersonSigninQuery::create()->findPk($principal->personId);
         }
 
+        $deviceToken = null;
+        if (!$principal instanceof PortalPrincipal && !$staffUser instanceof User && RememberedDeviceCookie::isPresent($request) && EmailSignInService::isEnabled()) {
+            $deviceToken = (new RememberedDeviceService())->resume(RememberedDeviceCookie::read($request));
+            if (!$deviceToken instanceof RememberedDeviceToken) {
+                PortalContext::set(null, null, null);
+
+                return RememberedDeviceCookie::without($this->signedOut($request));
+            }
+            $principal = PortalSessionStore::load();
+            $person = PersonQuery::create()->findPk($principal->personId);
+            $state = PersonSigninQuery::create()->findPk($principal->personId);
+        }
+
         if (!$principal instanceof PortalPrincipal) {
             PortalContext::set(null, null, null);
 
@@ -84,7 +101,9 @@ final class PortalSessionMiddleware implements MiddlewareInterface
         $this->recordActivity($principal, $state, $staffUser);
         PortalContext::set($principal, $person, $staffUser);
 
-        return $handler->handle($request->withAttribute(self::PRINCIPAL_ATTRIBUTE, $principal));
+        $response = $handler->handle($request->withAttribute(self::PRINCIPAL_ATTRIBUTE, $principal));
+
+        return $deviceToken instanceof RememberedDeviceToken ? RememberedDeviceCookie::with($response, $deviceToken) : $response;
     }
 
     /**
@@ -112,6 +131,10 @@ final class PortalSessionMiddleware implements MiddlewareInterface
         }
         if ($reason === null && $staffUser instanceof User && !self::belongsToStaffSession($principal, $staffUser)) {
             $reason = SignInReason::REPLACED;
+        }
+        $deviceId = PortalSessionStore::deviceId();
+        if ($reason === null && $deviceId !== null && RememberedDeviceService::isSignedOut($deviceId)) {
+            $reason = SignInReason::DEVICE_REMOVED;
         }
 
         if ($reason !== null) {
@@ -167,6 +190,10 @@ final class PortalSessionMiddleware implements MiddlewareInterface
             if (!$last instanceof DateTimeInterface || $now->getTimestamp() - $last->getTimestamp() >= self::ACTIVITY_WRITE_SECONDS) {
                 $state ??= (new PersonSignin())->setPersonId($principal->personId);
                 $state->setLastActivity($now)->save();
+                $deviceId = PortalSessionStore::deviceId();
+                if ($deviceId !== null) {
+                    RememberedDeviceService::recordUse($deviceId, $now);
+                }
             }
             if ($principal->method === SignInMethod::STAFF && $staffUser instanceof User) {
                 PortalStatsService::recordPortalActivity($staffUser);
