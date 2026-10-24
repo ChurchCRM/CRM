@@ -7,6 +7,7 @@
 @use "../../src/skin/scss/portal-login-as-person";
 @use "../../src/skin/scss/portal-volunteer";
 @use "../../src/skin/scss/portal-teams";
+@use "../../src/skin/scss/portal-directory";
 // The two rules the shared volunteer components depend on — the sideways-scrolling
 // table wrapper and the viewport-anchored row menu that wrapper would otherwise
 // clip. They live in `_volunteer.scss` because the admin ministry page needs them

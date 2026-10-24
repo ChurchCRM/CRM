@@ -30,6 +30,7 @@ class PortalNav
     public const CALENDAR = 'calendar';
     public const VOLUNTEER = 'volunteer';
     public const TEAMS = 'teams';
+    public const DIRECTORY = 'directory';
     public const FAMILY = 'family';
     public const PROFILE = 'profile';
 
@@ -73,6 +74,13 @@ class PortalNav
                 'url' => $rootPath . '/portal/teams',
                 'icon' => 'fa-solid fa-people-group',
                 'capability' => CorePortalCapabilities::TEAM_MANAGE,
+            ],
+            [
+                'id' => self::DIRECTORY,
+                'label' => gettext('Directory'),
+                'url' => $rootPath . '/portal/directory',
+                'icon' => 'fa-solid fa-address-book',
+                'capability' => CorePortalCapabilities::DIRECTORY_VIEW,
             ],
             [
                 'id' => self::FAMILY,
