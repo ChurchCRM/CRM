@@ -74,6 +74,45 @@ function listMetadataFiles(dir) {
   return out;
 }
 
+function readPngDimensions(filePath) {
+  // Minimal PNG IHDR parser — no external deps. Returns {width, height} or null.
+  const buf = Buffer.alloc(24);
+  const fd = fs.openSync(filePath, 'r');
+  try {
+    const n = fs.readSync(fd, buf, 0, 24, 0);
+    if (n < 24) return null;
+    // PNG signature 8 bytes + IHDR length (4) + 'IHDR' (4) + width (4) + height (4)
+    if (buf.toString('ascii', 1, 4) !== 'PNG' && buf.toString('ascii', 0, 8) !== '\x89PNG\r\n\x1a\n') return null;
+    const width = buf.readUInt32BE(16);
+    const height = buf.readUInt32BE(20);
+    return { width, height };
+  } finally {
+    fs.closeSync(fd);
+  }
+}
+
+// Expected rendered size is viewport * deviceScaleFactor (2). Allow a small
+// tolerance for rounding or minor chrome differences; flag anything that is
+// clearly a cropped, blank, or full-page tiled capture.
+const SCALE = 2;
+const HEIGHT_TOLERANCE = 0.15; // 15%
+
+function checkScreenshotDimensions(problems, label, filePath, meta) {
+  const dims = readPngDimensions(filePath);
+  if (!dims) {
+    problems.push(`NOT A PNG ${label}: ${filePath}`);
+    return;
+  }
+  const expectedH = (meta.viewport?.height ?? 0) * SCALE;
+  if (expectedH <= 0) return;
+  const ratio = dims.height / expectedH;
+  if (ratio < 1 - HEIGHT_TOLERANCE || ratio > 1 + HEIGHT_TOLERANCE * 2) {
+    problems.push(
+      `BAD HEIGHT ${label} (${dims.width}x${dims.height}, expected ~${expectedH}h for viewport ${meta.viewport?.height}): ${filePath}`
+    );
+  }
+}
+
 function checkFile(problems, label, filePath, minBytes) {
   if (!fs.existsSync(filePath)) {
     problems.push(`MISSING ${label}: ${filePath}`);
@@ -110,18 +149,20 @@ function main() {
         checked++;
       }
     } else if (meta.artifact) {
+      const shotPath = path.join(ARTIFACTS_ROOT, 'screenshots', locale, device, meta.artifact);
       checkFile(
         problems,
         `screenshot (${meta.workflow}, ${locale})`,
-        path.join(ARTIFACTS_ROOT, 'screenshots', locale, device, meta.artifact),
+        shotPath,
         MIN_SCREENSHOT_BYTES
       );
+      checkScreenshotDimensions(problems, `screenshot (${meta.workflow}, ${locale})`, shotPath, meta);
       checked++;
     }
   }
 
   if (problems.length > 0) {
-    console.error(`Marketing visuals check failed — ${problems.length}/${checked} artifact(s) missing or too small:\n`);
+    console.error(`Marketing visuals check failed — ${problems.length}/${checked} artifact(s) missing, too small, or wrong dimensions:\n`);
     for (const problem of problems) {
       console.error(`  - ${problem}`);
     }
