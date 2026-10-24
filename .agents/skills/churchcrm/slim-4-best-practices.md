@@ -6,23 +6,17 @@ prereqs: ["[[php-best-practices]]","[[routing-architecture]]"]
 complexity: "intermediate"
 ---
 
-# Skill: Slim 4 Best Practices
+# Slim 4 Best Practices
 
-## Context
-ChurchCRM uses Slim 4 for API routes and modern MVC features. This skill covers setup, routing, middleware, response handling, and dependency injection patterns.
+ChurchCRM uses Slim 4 for API routes and MVC modules. This card covers app setup, middleware order, route grouping, responses, and error handling.
 
----
+## Application setup
 
-## Application Setup Pattern
+### MVC modules: `MvcAppFactory`
 
-### MVC Modules — Use MvcAppFactory <!-- learned: 2026-04-07 -->
-
-All HTML-serving Slim apps (admin, finance, groups, people, v2) **must** use
-`MvcAppFactory::create()`. This centralises base path, body parsing, routing,
-error handling (Tabler-styled HTML pages), and the standard middleware stack.
+Every HTML-serving module (admin, finance, groups, people, v2, ...) calls `MvcAppFactory::create()`. It sets base path, body parsing, routing, the Tabler HTML error handler, and the standard middleware stack. It omits `VersionMiddleware`, which only adds API response headers.
 
 ```php
-// ✅ CORRECT — MVC entry points
 use ChurchCRM\Slim\MvcAppFactory;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
 
@@ -34,171 +28,91 @@ $app = MvcAppFactory::create('/finance', [
 
 require __DIR__ . '/routes/dashboard.php';
 $app->run();
-
-// ❌ WRONG — Don't copy-paste AppFactory + middleware + error handler
-$app = AppFactory::create();
-$app->setBasePath(...);
-// ... 50+ lines of boilerplate ...
 ```
 
-Config options:
-- `dashboardUrl` — path (relative to root) for error page "go back" button
-- `dashboardText` — label for the button
-- `roleMiddleware` — FQCN of role-auth middleware (omit for no role check)
+Config options: `dashboardUrl` (error page "go back" path), `dashboardText` (button label), `roleMiddleware` (role-auth FQCN; omit for none), `displayErrorDetails`, `errorHandler` (module-specific handler that replaces the shared Tabler error page).
 
-`MvcAppFactory` does NOT include `VersionMiddleware` (only useful for API
-response headers, invisible in browser).
+### API module: `AppFactory`
 
-### API Module — Direct AppFactory
-
-`api/index.php` is the only entry point that uses `AppFactory` directly
-with `registerDefaultJsonErrorHandler()`. It includes `VersionMiddleware`.
+`src/api/index.php` uses `AppFactory` directly with `registerDefaultJsonErrorHandler()` and `VersionMiddleware`.
 
 ```php
-// API entry point — NOT MvcAppFactory
 $app = AppFactory::create();
 $app->setBasePath(SlimUtils::getBasePath('/api'));
 $app->addBodyParsingMiddleware();
 $app->addRoutingMiddleware();
-// Error middleware AFTER routing — Slim 4 LIFO means it wraps routing and catches HttpNotFoundException
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
-// ... custom middleware, routes, run
 ```
 
-## Middleware Order (CRITICAL) <!-- learned: 2026-04-07 -->
+## Middleware Order
 
-Slim 4 uses **Last In, First Out (LIFO)** ordering. Middleware added LAST executes FIRST.
+Slim 4 is Last In, First Out: the middleware added last runs first.
 
-### The #1 Rule: Error middleware AFTER routing
-
-`addErrorMiddleware()` **MUST** be called **AFTER** `addRoutingMiddleware()`. This is because
-LIFO means it then wraps routing and catches `HttpNotFoundException` / `HttpMethodNotAllowedException`.
-If error middleware is added BEFORE routing, routing exceptions escape uncaught → **raw PHP 500**.
+Call `addErrorMiddleware()` after `addRoutingMiddleware()` so the error middleware wraps routing and catches `HttpNotFoundException` / `HttpMethodNotAllowedException`. Add custom middleware after the error middleware so it runs before error handling.
 
 ```php
-// ✅ CORRECT — error middleware wraps routing (LIFO)
-$app->addBodyParsingMiddleware();  // 1st added → innermost
-$app->addRoutingMiddleware();      // 2nd added → wraps body parsing
-$errorMiddleware = $app->addErrorMiddleware(true, true, true);  // 3rd added → wraps routing (outermost of these 3)
+$app->addBodyParsingMiddleware();                               // innermost
+$app->addRoutingMiddleware();
+$errorMiddleware = $app->addErrorMiddleware(true, true, true);
 SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);   // or registerDefaultHtmlErrorHandler()
 
-// Then custom middleware (added after error middleware, so they run BEFORE error handling)
 $app->add(new CorsMiddleware());
-$app->add(AuthMiddleware::class);
-
-// ❌ WRONG — error middleware BEFORE routing → 404s become raw 500s
-$errorMiddleware = $app->addErrorMiddleware(true, true, true);  // Added first
-$app->addBodyParsingMiddleware();
-$app->addRoutingMiddleware();  // Added after → routing exceptions NOT caught by error middleware
+$app->add(AuthMiddleware::class);                               // outermost, runs first
 ```
 
-### Full execution order (request flows top-to-bottom)
-
-```
-Code order (add)          LIFO execution order (request)
-─────────────────         ──────────────────────────────
-1. addBodyParsing()       5th — innermost (parses body)
-2. addRouting()           4th — matches route or throws HttpNotFoundException
-3. addErrorMiddleware()   3rd — catches exceptions from routing + inner middleware
-4. add(CorsMiddleware)    2nd — CORS headers
-5. add(AuthMiddleware)    1st — outermost, runs first on request
-```
-
-### Documenting Execution Order in Code <!-- learned: 2026-03-15 -->
-
-Always add a comment documenting the **actual execution order** (not the add order) when the middleware stack is non-obvious. This prevents future developers from accidentally mis-ordering security/redirect middleware:
+Comment the execution order, not the add order, whenever the stack is non-obvious:
 
 ```php
-// ✅ CORRECT - Document execution order, not add order
-// Execution order: VersionMiddleware → AuthMiddleware → ChurchInfoRequiredMiddleware → CorsMiddleware
-$app->add(new CorsMiddleware());              // Added 1st, runs LAST
-$app->add(new ChurchInfoRequiredMiddleware()); // Added 2nd, runs 3rd
-$app->add(AuthMiddleware::class);              // Added 3rd, runs 2nd
-$app->add(VersionMiddleware::class);           // Added 4th, runs FIRST
-
-// ❌ WRONG - Documents add order instead of execution order
-// This causes confusion and security bugs when middleware is reordered
-// Execution order: CorsMiddleware → ChurchInfoRequiredMiddleware → AuthMiddleware → VersionMiddleware
+// Execution order: VersionMiddleware -> AuthMiddleware -> CorsMiddleware
+$app->add(new CorsMiddleware());      // added 1st, runs last
+$app->add(AuthMiddleware::class);     // added 2nd, runs 2nd
+$app->add(VersionMiddleware::class);  // added 3rd, runs first
 ```
 
-## Route Grouping & Prefix Patterns
+## Route grouping
 
-### Basic Group with Middleware
-```php
-// Apply middleware to entire group
-$app->group('/admin', function(RouteCollectorProxy $group) {
-    $group->get('/users', UserController::class . ':list');
-    $group->post('/users', UserController::class . ':create');
-    $group->get('/users/{id}', UserController::class . ':show');
-})->add(AdminRoleAuthMiddleware::class);
-```
+Apply middleware to a whole group with `->add()` after the closure; groups nest.
 
-### Nested Groups
 ```php
-$app->group('/api', function(RouteCollectorProxy $group) {
-    $group->group('/admin', function(RouteCollectorProxy $adminGroup) {
-        $adminGroup->post('/config', ConfigController::class . ':update');
-        $adminGroup->get('/logs', LogController::class . ':list');
+$app->group('/api', function (RouteCollectorProxy $group): void {
+    $group->group('/admin', function (RouteCollectorProxy $adminGroup): void {
+        $adminGroup->get('/logs', function (Request $request, Response $response): Response { ... });
     })->add(AdminRoleAuthMiddleware::class);
-    
-    $group->group('/finance', function(RouteCollectorProxy $finGroup) {
-        $finGroup->get('/reports', ReportController::class . ':index');
-    })->add(FinanceRoleAuthMiddleware::class);
 });
 ```
 
-### Route Parameters
-```php
-$app->get('/person/{id}', function($req, $res, $args) {
-    $personId = (int)$args['id'];  // Always cast to int
-    $person = PersonQuery::create()->findOneById($personId);
-    if ($person === null) {
-        return $res->withStatus(404)->withJson(['error' => 'Not found']);
-    }
-    return $res->withJson(['data' => $person->toArray()]);
-});
-```
+Use inline closures for handlers. Cast route ids: `$personId = (int) $args['id'];`, then look the record up with a Propel query and return a 404 through `SlimUtils::renderErrorJSON()` when it is `null`.
 
-## Response Handling Patterns
+## Response handling
 
-### JSON Success Response
+### JSON
+
 ```php
 use ChurchCRM\Slim\SlimUtils;
 
-return SlimUtils::renderJSON($response, [
-    'data' => $result,
-    'message' => 'Operation successful'
-]);
+return SlimUtils::renderJSON($response, ['data' => $result, 'message' => gettext('Operation successful')]);
 ```
 
-### Error Response with Logging
+`SlimUtils` also offers `renderSuccessJSON()`, `renderStringJSON()`, `renderRedirect()`, and `renderPhoto()`.
+
+### JSON errors
+
 ```php
 try {
     $result = doWork();
     return SlimUtils::renderJSON($response, ['data' => $result]);
 } catch (ValidationException $e) {
-    return SlimUtils::renderErrorJSON(
-        $response,
-        gettext('Validation failed'),
-        ['errors' => $e->getErrors()],
-        400,
-        $e,
-        $request
-    );
+    return SlimUtils::renderErrorJSON($response, gettext('Validation failed'), ['errors' => $e->getErrors()], 400, $e, $request);
 } catch (Throwable $e) {
-    return SlimUtils::renderErrorJSON(
-        $response,
-        gettext('Operation failed'),
-        [],
-        500,
-        $e,
-        $request
-    );
+    return SlimUtils::renderErrorJSON($response, gettext('Operation failed'), [], 500, $e, $request);
 }
 ```
 
-### File Download
+`renderErrorJSON(Response $response, ?string $message = null, array $extra = [], int $status = 500, ?\Throwable $exception = null, ?Request $request = null)` logs the full exception server-side and sends the client a sanitized, localized message with sensitive patterns masked. Route handlers return this response and let `renderErrorJSON()` own error output.
+
+### File download
+
 ```php
 $finfo = new \finfo(FILEINFO_MIME_TYPE);
 $contentType = trim($finfo->file($filePath)) ?: 'application/octet-stream';
@@ -209,10 +123,9 @@ return $response
     ->withBody(new \Slim\Psr7\Stream(fopen($filePath, 'rb')));
 ```
 
-### PhpRenderer View Response
+### PhpRenderer views
 
-There is no container-registered `view` service — construct the renderer in the route,
-pointing it at the module's `views/` directory (`src/admin/routes/system.php:56`).
+Construct the renderer in the route, pointing at the module's `views/` directory:
 
 ```php
 use Slim\Views\PhpRenderer;
@@ -222,18 +135,13 @@ return $view->render($response, 'users.php', [
     'sRootPath' => SystemURLs::getRootPath(),
     'sPageTitle' => gettext('Users'),
     'users' => $allUsers,
-    'stats' => $userStats,
 ]);
 ```
 
-## Obtaining Services — No DI Container <!-- corrected: 2026-09-11 -->
+## Obtaining services
 
-Slim 4 supports a PSR-11 container, but **ChurchCRM does not use one**.
-`MvcAppFactory::create()` (`src/ChurchCRM/Slim/MvcAppFactory.php:35-62`) never calls
-`AppFactory::setContainer()`, so `$app->getContainer()` is `null` and there is no ambient
-`$container` variable in a route file. Services are constructed where they are used.
+Services are constructed where they are used; there is no PSR-11 container and no `$container` variable in a route file. Unpack and cast the parsed body in the route before passing values to the service.
 
-**Pattern** (`src/admin/routes/system.php:941-997`, trimmed):
 ```php
 use ChurchCRM\Service\UserService;
 use ChurchCRM\Utils\InputUtils;
@@ -252,120 +160,40 @@ function adminUserEditorNew(Request $request, Response $response): Response
 }
 ```
 
-`UserService::createUser()` is `createUser(int $personId, array $perms, string $userName): User`
-(`src/ChurchCRM/Service/UserService.php:239`) — the raw parsed body is never passed straight
-through; the route unpacks and casts it first.
+Services with only static methods (`AppIntegrityService`, `LocaleService`, ...) are called statically. Rules: [`service-layer.md`](./service-layer.md).
 
-**Key Points:**
-- Never reference `$container` or `$app->getContainer()` — both are fatal here
-- Construct the service inside the handler; services hold no per-request state worth sharing
-- Services that expose only static methods (`AppIntegrityService`, `LocaleService`, …) are
-  called statically and never instantiated
-- Full rules and real call sites: [`service-layer.md`](./service-layer.md)
+## Common patterns
 
-## Common Patterns
+Email failures log and the request continues:
 
-### Inline Closure Routes
 ```php
-// ✅ CORRECT
-$group->post('/endpoint', function($request, $response, $args) {
-    $data = $request->getParsedBody();
-    return $response->withJson(['success' => true]);
-});
-
-// ❌ WRONG - String references don't work in Slim 4
-$group->post('/endpoint', 'ControllerClass::method');
-```
-
-### Email Handling (Always Catch Failures)
-```php
-// ✅ CORRECT - Log but don't crash
 if (!mail($to, $subject, $body)) {
-    error_log("Email failed to " . $to);
+    error_log('Email failed to ' . $to);
 }
-return $response->withJson(['data' => $result, 'message' => 'Created']);
-
-// ❌ WRONG - Throws 500 error
-if (!mail($to, $subject, $body)) {
-    throw new Exception("Email failed");
-}
+return SlimUtils::renderJSON($response, ['data' => $result, 'message' => gettext('Created')]);
 ```
 
-### Null Safety
-```php
-// ✅ CORRECT - Null coalescing
-echo $notification?->title ?? 'No Title';
+Null safety uses the nullsafe and coalescing operators: `echo $notification?->title ?? 'No Title';`
 
-// ❌ WRONG - TypeError if null
-echo $notification->title;
-```
+## Error handler architecture
 
-## Error Handler Architecture <!-- learned: 2026-04-07 -->
+| `SlimUtils` method | Used by | Renders |
+|--------------------|---------|---------|
+| `registerDefaultHtmlErrorHandler()` | `MvcAppFactory` | Tabler HTML page (Header + `error-page.php` + Footer) for browsers, JSON for AJAX/API |
+| `registerDefaultJsonErrorHandler()` | `src/api/index.php` | JSON for API requests, HTML partial for browser requests |
 
-ChurchCRM has two error handler registration methods in `SlimUtils`:
+Both:
 
-| Method | Used by | Renders |
-|--------|---------|---------|
-| `registerDefaultHtmlErrorHandler()` | `MvcAppFactory` (all MVC modules) | Tabler HTML page (Header + error-page.php + Footer) for browsers, JSON for AJAX/API |
-| `registerDefaultJsonErrorHandler()` | `api/index.php` | JSON for API requests, HTML partial for browser requests |
+- call `setDefaultErrorHandler()` on the error middleware; one handler exists per app, and a later call overwrites the earlier one
+- log via `LoggerUtils::getAppLogger()`
+- sanitize messages via `sanitizeErrorMessage()`
+- map exceptions to HTTP status (404, 403, 405, 500)
+- detect API vs browser via `isApiRequest()` (Accept header, `X-Requested-With`, `/api/` path)
 
-Both methods:
-- Call `setDefaultErrorHandler()` on the error middleware — **only one handler can exist**
-- Log via `LoggerUtils::getAppLogger()` (not a separate Monolog logger)
-- Sanitize messages via `sanitizeErrorMessage()`
-- Map exceptions to proper HTTP status (404, 403, 405, 500)
-- Detect API vs browser via `isApiRequest()` (Accept header, X-Requested-With, /api/ path)
+Register exactly one handler per app, with no rethrow inside it. All logging happens inside the two `registerDefault*` methods.
 
-### Never rethrow in error handlers <!-- learned: 2026-04-07 -->
+## Related
 
-Slim 4's `setDefaultErrorHandler` does NOT chain handlers — calling it
-twice overwrites the first. But if the first handler **rethrows**, the
-rethrown exception may bypass the replacement handler entirely and surface
-as a raw 500.
-
-```php
-// ❌ WRONG — rethrow causes 500 even if a real handler is registered after
-$errorMiddleware->setDefaultErrorHandler(function (...) use ($logger) {
-    $logger->error($exception->getMessage());
-    throw $exception; // ← THIS BREAKS EVERYTHING
-});
-SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware); // overwritten but too late
-
-// ✅ CORRECT — only one handler, no rethrow
-$errorMiddleware = $app->addErrorMiddleware(true, true, true);
-SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
-```
-
-**`setupErrorLogger()` has been removed** — it was dead code that set a
-rethrowing handler always overwritten by the real handler. All logging is
-handled inside `registerDefaultHtmlErrorHandler` and
-`registerDefaultJsonErrorHandler`.
-
-## API Error Handling (Critical)
-
-**ALWAYS use `SlimUtils::renderErrorJSON()` for API errors:**
-
-```php
-// Function signature
-SlimUtils::renderErrorJSON(
-    Response $response,        // Original $response object
-    ?string $message = null,   // User-facing message (localized)
-    array $extra = [],         // Extra data for response
-    int $status = 500,         // HTTP status code
-    ?\Throwable $exception = null,  // Exception for logging
-    ?Request $request = null   // Request for context logging
-): Response
-```
-
-**Behavior:**
-- Server-side: Logs full exception details (trace, file, line)
-- Client receives: Sanitized message only (no traces, file paths, credentials)
-- Message is automatically masked for sensitive patterns
-- Never throws exceptions from route handlers
-
----
-
-## Related Knowledge
-- **Routing & Middleware**: See [Admin MVC Migration](./admin-mvc-migration.md) skill
-- **Authorization**: See authorization-security.md skill
-- **API Development**: See api-development.md skill
+- [Admin MVC Migration](./admin-mvc-migration.md)
+- `authorization-security.md`
+- `api-development.md`

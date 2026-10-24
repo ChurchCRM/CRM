@@ -174,9 +174,11 @@ class TimelineService
         foreach ($rows as $row) {
             $label = EmailLogService::kindLabel((string) $row->getKind());
             $status = (string) $row->getStatus();
-            $header = $status === EmailLogService::STATUS_SENT
-                ? sprintf('%s: %s', $label, $row->getSubject())
-                : sprintf(gettext('%s not sent (%s): %s'), $label, $status, $row->getSubject());
+            $header = match ($status) {
+                EmailLogService::STATUS_SENT => sprintf('%s: %s', $label, $row->getSubject()),
+                EmailLogService::STATUS_QUEUED, EmailLogService::STATUS_SENDING => sprintf(gettext('%s queued: %s'), $label, $row->getSubject()),
+                default => sprintf(gettext('%s not sent (%s): %s'), $label, $status, $row->getSubject()),
+            };
             $item = $this->createTimeLineItem(
                 'email-' . $row->getId(),
                 'email',
@@ -257,6 +259,12 @@ class TimelineService
         if ($dbNote->getDisplayEditedBy() === Person::SELF_VERIFY) {
             return gettext('Self Verification');
         }
+        if ($dbNote->getDisplayEditedBy() === Person::UPGRADE) {
+            return gettext('System Upgrade');
+        }
+        if ($dbNote->getDisplayEditedBy() === Person::SCHEDULED_TASK) {
+            return gettext('Scheduled Task');
+        }
         $editor = PersonQuery::create()->findPk($dbNote->getDisplayEditedBy());
 
         return $editor !== null ? $editor->getFullName() : gettext('Unknown');
@@ -281,6 +289,7 @@ class TimelineService
         'verify-URL'  => 'system',
         'user'        => 'system',
         'delete-note' => 'system',
+        'grade'       => 'system',
         'email'       => 'email',
     ];
 

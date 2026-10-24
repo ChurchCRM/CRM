@@ -277,10 +277,10 @@ if ($emailErrorReason !== '') {
                 { total: recipientCount }
             );
 
-            // No-email warning with link to /v2/email/missing
+            // No-email warning with link to /people/email/missing
             var noEmailEl = document.getElementById('noEmailWarningText');
             if (noEmailCount > 0) {
-                var linkHref = window.CRM.root + '/v2/email/missing';
+                var linkHref = window.CRM.root + '/people/email/missing';
                 var sentence = i18next.t(
                     'Families skipped (no email address on file): {{total}}',
                     { total: noEmailCount }

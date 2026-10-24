@@ -199,7 +199,8 @@ CREATE TABLE `event_types` (
 
 INSERT INTO `event_types` (`type_id`, `type_name`, `type_defstarttime`, `type_defrecurtype`, `type_defrecurDOW`, `type_defrecurDOM`, `type_defrecurDOY`, `type_active`) VALUES
   (1, 'Church Service', '10:30:00', 'weekly', 'Sunday', '', '2016-01-01', 1),
-  (2, 'Sunday School', '09:30:00', 'weekly', 'Sunday', '', '2016-01-01', 1);
+  (2, 'Sunday School', '09:30:00', 'weekly', 'Sunday', '', '2016-01-01', 1),
+  (3, 'Other', '00:00:00', 'none', 'Sunday', '', '2016-01-01', 1);
 
 -- --------------------------------------------------------
 
@@ -317,6 +318,28 @@ CREATE TABLE `family_fam` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `family_email_move_fem`
+-- (member sign-in row 11: one row per family email moved to people, design 10.1)
+--
+
+CREATE TABLE `family_email_move_fem` (
+  `fem_ID`           int(10) unsigned      NOT NULL AUTO_INCREMENT,
+  `fem_fam_ID`       mediumint(9) unsigned NOT NULL,
+  `fem_Email`        varchar(100)          NOT NULL,
+  `fem_Outcome`      enum('pending','head','spouse','held','noted') NOT NULL DEFAULT 'pending',
+  `fem_Reason`       enum('both_have_email','no_adult','other_person') DEFAULT NULL,
+  `fem_per_ID`       mediumint(9) unsigned DEFAULT NULL,
+  `fem_NeedsConfirm` tinyint(1) unsigned   NOT NULL DEFAULT 0,
+  `fem_DateMoved`    datetime              NOT NULL,
+  PRIMARY KEY (`fem_ID`),
+  KEY `fem_fam_idx` (`fem_fam_ID`),
+  KEY `fem_per_idx` (`fem_per_ID`),
+  KEY `fem_outcome_idx` (`fem_Outcome`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `groupprop_master`
 --
 
@@ -414,6 +437,20 @@ INSERT INTO `list_lst` (`lst_ID`, `lst_OptionID`, `lst_OptionSequence`, `lst_Opt
   (5, 7, 7, 'bManageGroups'),
   (5, 8, 8, 'bFinance'),
   (5, 9, 9, 'bNotes'),
+  (6, 4, 1, 'Pre-K'),
+  (6, 5, 2, 'Kindergarten'),
+  (6, 6, 3, '1st'),
+  (6, 7, 4, '2nd'),
+  (6, 8, 5, '3rd'),
+  (6, 9, 6, '4th'),
+  (6, 10, 7, '5th'),
+  (6, 11, 8, '6th'),
+  (6, 12, 9, '7th'),
+  (6, 13, 10, '8th'),
+  (6, 14, 11, '9th'),
+  (6, 15, 12, '10th'),
+  (6, 16, 13, '11th'),
+  (6, 17, 14, '12th'),
   (10, 1, 1, 'Teacher'),
   (10, 2, 2, 'Student'),
   (11, 1, 1, 'Member'),
@@ -538,7 +575,7 @@ CREATE TABLE `person_per` (
   `per_HomePhone` varchar(30) default NULL,
   `per_WorkPhone` varchar(30) default NULL,
   `per_CellPhone` varchar(30) default NULL,
-  `per_Email` varchar(50) default NULL,
+  `per_Email` varchar(100) default NULL,
   `per_WorkEmail` varchar(50) default NULL,
   `per_BirthMonth` tinyint(3) unsigned NOT NULL default '0',
   `per_BirthDay` tinyint(3) unsigned NOT NULL default '0',
@@ -561,10 +598,12 @@ CREATE TABLE `person_per` (
   `per_LinkedIn` varchar(50) default NULL,
   `per_DateDeactivated` date DEFAULT NULL,
   `per_NeedsReview` tinyint(1) unsigned NOT NULL default '0',
+  `per_grd_ID` mediumint(8) unsigned default NULL,
   PRIMARY KEY  (`per_ID`),
   INDEX `idx_per_fam_ID` (`per_fam_ID`),
   INDEX `idx_per_cls_ID` (`per_cls_ID`),
-  INDEX `idx_per_fmr_ID` (`per_fmr_ID`)
+  INDEX `idx_per_fmr_ID` (`per_fmr_ID`),
+  INDEX `idx_per_grd_ID` (`per_grd_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=2 ;
 
 --
@@ -606,7 +645,8 @@ CREATE TABLE `pledge_plg` (
   INDEX `idx_plg_FamID` (`plg_FamID`),
   INDEX `idx_plg_FYID` (`plg_FYID`),
   INDEX `idx_plg_fundID` (`plg_fundID`),
-  INDEX `idx_plg_depID` (`plg_depID`)
+  INDEX `idx_plg_depID` (`plg_depID`),
+  INDEX `idx_plg_GroupKey` (`plg_GroupKey`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
@@ -751,7 +791,6 @@ CREATE TABLE `user_usr` (
   `usr_AddRecords` tinyint(1) unsigned NOT NULL default '0',
   `usr_EditRecords` tinyint(1) unsigned NOT NULL default '0',
   `usr_DeleteRecords` tinyint(1) unsigned NOT NULL default '0',
-  `usr_MenuOptions` tinyint(1) unsigned NOT NULL default '0',
   `usr_ManageGroups` tinyint(1) unsigned NOT NULL default '0',
   `usr_Finance` tinyint(1) unsigned NOT NULL default '0',
   `usr_ManageFundraisers` tinyint(1) unsigned NOT NULL default '0',
@@ -799,13 +838,13 @@ CREATE TABLE `user_usr` (
 
 INSERT INTO `user_usr` (`usr_per_ID`, `usr_Password`, `usr_NeedPasswordChange`, `usr_LastLogin`,
                         `usr_LoginCount`, `usr_FailedLogins`, `usr_AddRecords`, `usr_EditRecords`, `usr_DeleteRecords`,
-                        `usr_MenuOptions`, `usr_ManageGroups`, `usr_Finance`, `usr_Notes`, `usr_Admin`,
+                        `usr_ManageGroups`, `usr_Finance`, `usr_Notes`, `usr_Admin`,
                         `usr_SearchLimit`, `usr_Style`, `usr_showPledges`,
                         `usr_showPayments`, `usr_showSince`, `usr_defaultFY`, `usr_currentDeposit`, `usr_UserName`, `usr_EditSelf`,
                         `usr_CalStart`, `usr_CalEnd`, `usr_CalNoSchool1`, `usr_CalNoSchool2`, `usr_CalNoSchool3`, `usr_CalNoSchool4`,
                         `usr_CalNoSchool5`, `usr_CalNoSchool6`, `usr_CalNoSchool7`, `usr_CalNoSchool8`, `usr_SearchFamily`)
 VALUES
-  (1, '$2y$12$oBq/URJVlaV58kIVAN9oHuDenAzFz8Xe1GneeFdIWEtNdclehz6Hu', 1, '2016-01-01 00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 10, 'skin-red', 0, 0, '2016-01-01', 10, 0, 'Admin', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
+  (1, '$2y$12$oBq/URJVlaV58kIVAN9oHuDenAzFz8Xe1GneeFdIWEtNdclehz6Hu', 1, '2016-01-01 00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 1, 10, 'skin-red', 0, 0, '2016-01-01', 10, 0, 'Admin', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
 
 --
 -- Table structure for table `user_settings`
@@ -954,6 +993,17 @@ CREATE TABLE `tokens` (
   `remainingUses` INT(2) NULL,
   PRIMARY KEY (`token`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+CREATE TABLE `rate_limit_rlm` (
+  `rlm_ID`      int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `rlm_Bucket`  varchar(64)      NOT NULL,
+  `rlm_KeyHash` char(64)         NOT NULL,
+  `rlm_Hits`    int(10) unsigned NOT NULL DEFAULT 0,
+  `rlm_ResetAt` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`rlm_ID`),
+  UNIQUE KEY `rlm_bucket_key_uidx` (`rlm_Bucket`, `rlm_KeyHash`),
+  KEY `rlm_reset_at_idx` (`rlm_ResetAt`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `locations` (
   `location_id` INT NOT NULL AUTO_INCREMENT,
@@ -1309,7 +1359,7 @@ CREATE TABLE `volunteer_swap_vswp` (
 
 CREATE TABLE `volunteer_notification_vntf` (
   `vntf_ID`              int(11)               NOT NULL AUTO_INCREMENT,
-  `vntf_Type`            enum('assignment','reminder','decline_alert','gap_alert','signup_confirm','swap_proposed','swap_resolved','help_offer')
+  `vntf_Type`            enum('assignment','reminder','decline_alert','gap_alert','signup_confirm','swap_proposed','swap_resolved','help_offer','pool_add')
                                                NOT NULL,
   `vntf_Channel`         enum('email')         NOT NULL DEFAULT 'email',
   `vntf_per_ID`          mediumint(9) unsigned NOT NULL,
@@ -1428,11 +1478,159 @@ CREATE TABLE `email_log_eml` (
   `eml_Error`     text                  DEFAULT NULL,
   `eml_MessageID` varchar(255)          DEFAULT NULL,
   `eml_DateSent`  datetime              NOT NULL,
+  `eml_Batch`       varchar(32)         DEFAULT NULL,
+  `eml_Attempts`    tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `eml_NextAttempt` datetime            DEFAULT NULL,
   PRIMARY KEY (`eml_ID`),
   KEY `idx_eml_per_ID`   (`eml_per_ID`),
   KEY `idx_eml_fam_ID`   (`eml_fam_ID`),
   KEY `idx_eml_DateSent` (`eml_DateSent`),
-  KEY `idx_eml_Status`   (`eml_Status`)
+  KEY `idx_eml_Status`   (`eml_Status`),
+  KEY `idx_eml_Batch`    (`eml_Batch`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Member sign-in (#10463, design docs/member-sign-in-design.md §13): person-keyed
+-- sign-in state, email sign-in requests, remembered devices, passkeys, given portal
+-- grants and the sign-in audit. Mirrored in 7.8.3.sql.
+--
+
+CREATE TABLE `person_signin_psi` (
+  `psi_per_ID`            mediumint(9) unsigned NOT NULL,
+  `psi_SessionVersion`    int(11)               NOT NULL DEFAULT 0,
+  `psi_SignInDisabled`    tinyint(1) unsigned   NOT NULL DEFAULT 0,
+  `psi_DisabledBy_usr_ID` mediumint(9) unsigned          DEFAULT NULL,
+  `psi_DisabledAt`        datetime                       DEFAULT NULL,
+  `psi_DisabledReason`    varchar(255)                   DEFAULT NULL,
+  `psi_ProvenEmail`       varchar(255)                   DEFAULT NULL,
+  `psi_ProvenAt`          datetime                       DEFAULT NULL,
+  `psi_UnconfirmedEmail`  varchar(255)                   DEFAULT NULL,
+  `psi_UnconfirmedSource` varchar(32)                    DEFAULT NULL,
+  `psi_UnconfirmedAt`     datetime                       DEFAULT NULL,
+  `psi_FirstSignIn`       datetime                       DEFAULT NULL,
+  `psi_LastSignIn`        datetime                       DEFAULT NULL,
+  `psi_LastMethod`        varchar(20)                    DEFAULT NULL,
+  `psi_LastActivity`      datetime                       DEFAULT NULL,
+  `psi_CalendarToken`     varchar(64)                    DEFAULT NULL,
+  `psi_CalendarSelection` text                           DEFAULT NULL,
+  PRIMARY KEY (`psi_per_ID`),
+  UNIQUE KEY `psi_calendar_token_uidx` (`psi_CalendarToken`),
+  KEY `psi_last_signin_idx`            (`psi_LastSignIn`),
+  CONSTRAINT `fk_psi_person` FOREIGN KEY (`psi_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `person_signin_request_psr` (
+  `psr_ID`          int(11)               NOT NULL AUTO_INCREMENT,
+  `psr_per_ID`      mediumint(9) unsigned NOT NULL,
+  `psr_Email`       varchar(255)          NOT NULL,
+  `psr_TokenHash`   char(64)              NOT NULL,
+  `psr_CodeHash`    char(64)              NOT NULL,
+  `psr_BrowserHash` char(64)              NOT NULL,
+  `psr_Attempts`    int(11)               NOT NULL DEFAULT 0,
+  `psr_CreatedAt`   datetime              NOT NULL,
+  `psr_ExpiresAt`   datetime              NOT NULL,
+  `psr_UsedAt`      datetime                       DEFAULT NULL,
+  `psr_CancelledAt` datetime                       DEFAULT NULL,
+  PRIMARY KEY (`psr_ID`),
+  UNIQUE KEY `psr_token_uidx` (`psr_TokenHash`),
+  KEY `psr_person_idx`        (`psr_per_ID`),
+  KEY `psr_expires_idx`       (`psr_ExpiresAt`),
+  CONSTRAINT `fk_psr_person` FOREIGN KEY (`psr_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `person_email_change_pec` (
+  `pec_ID`          int(11)                  NOT NULL AUTO_INCREMENT,
+  `pec_per_ID`      mediumint(9) unsigned    NOT NULL,
+  `pec_Kind`        enum('change','confirm') NOT NULL,
+  `pec_Email`       varchar(100)             NOT NULL,
+  `pec_TokenHash`   char(64)                 NOT NULL,
+  `pec_CreatedAt`   datetime                 NOT NULL,
+  `pec_ExpiresAt`   datetime                 NOT NULL,
+  `pec_UsedAt`      datetime                          DEFAULT NULL,
+  `pec_CancelledAt` datetime                          DEFAULT NULL,
+  PRIMARY KEY (`pec_ID`),
+  UNIQUE KEY `pec_token_uidx` (`pec_TokenHash`),
+  KEY `pec_person_idx`        (`pec_per_ID`),
+  CONSTRAINT `fk_pec_person` FOREIGN KEY (`pec_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `person_device_pdv` (
+  `pdv_ID`         int(11)                 NOT NULL AUTO_INCREMENT,
+  `pdv_per_ID`     mediumint(9) unsigned   NOT NULL,
+  `pdv_TokenHash`  char(64)                NOT NULL,
+  `pdv_Kind`       enum('browser','app')   NOT NULL DEFAULT 'browser',
+  `pdv_Label`      varchar(255)                     DEFAULT NULL,
+  `pdv_CreatedAt`  datetime                NOT NULL,
+  `pdv_LastUsedAt` datetime                         DEFAULT NULL,
+  `pdv_ExpiresAt`  datetime                NOT NULL,
+  `pdv_RevokedAt`  datetime                         DEFAULT NULL,
+  `pdv_PreviousTokenHash`  char(64)                 DEFAULT NULL,
+  `pdv_PreviousValidUntil` datetime                 DEFAULT NULL,
+  PRIMARY KEY (`pdv_ID`),
+  UNIQUE KEY `pdv_token_uidx` (`pdv_TokenHash`),
+  KEY `pdv_person_idx`        (`pdv_per_ID`),
+  KEY `pdv_previous_token_idx` (`pdv_PreviousTokenHash`),
+  CONSTRAINT `fk_pdv_person` FOREIGN KEY (`pdv_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `person_passkey_ppk` (
+  `ppk_ID`             int(11)               NOT NULL AUTO_INCREMENT,
+  `ppk_per_ID`         mediumint(9) unsigned NOT NULL,
+  `ppk_CredentialId`   text                  NOT NULL,
+  `ppk_CredentialHash` char(64)              NOT NULL,
+  `ppk_PublicKey`      text                  NOT NULL,
+  `ppk_SignCount`      bigint(20)            NOT NULL DEFAULT 0,
+  `ppk_UserHandle`     varchar(128)                   DEFAULT NULL,
+  `ppk_Transports`     varchar(255)                   DEFAULT NULL,
+  `ppk_Label`          varchar(255)                   DEFAULT NULL,
+  `ppk_CreatedAt`      datetime              NOT NULL,
+  `ppk_LastUsedAt`     datetime                       DEFAULT NULL,
+  PRIMARY KEY (`ppk_ID`),
+  UNIQUE KEY `ppk_credential_uidx` (`ppk_CredentialHash`),
+  KEY `ppk_person_idx`             (`ppk_per_ID`),
+  CONSTRAINT `fk_ppk_person` FOREIGN KEY (`ppk_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `portal_grant_pgr` (
+  `pgr_ID`               int(11)               NOT NULL AUTO_INCREMENT,
+  `pgr_per_ID`           mediumint(9) unsigned NOT NULL,
+  `pgr_Capability`       varchar(128)          NOT NULL,
+  `pgr_ScopeType`        varchar(32)           NOT NULL DEFAULT 'none',
+  `pgr_ScopeId`          int(11)               NOT NULL DEFAULT 0,
+  `pgr_EndsAt`           datetime                       DEFAULT NULL,
+  `pgr_Reason`           varchar(255)                   DEFAULT NULL,
+  `pgr_GrantedBy_usr_ID` mediumint(9) unsigned          DEFAULT NULL,
+  `pgr_GrantedAt`        datetime              NOT NULL,
+  PRIMARY KEY (`pgr_ID`),
+  UNIQUE KEY `pgr_person_capability_scope_uidx` (`pgr_per_ID`, `pgr_Capability`, `pgr_ScopeType`, `pgr_ScopeId`),
+  KEY `pgr_capability_idx`                      (`pgr_Capability`),
+  CONSTRAINT `fk_pgr_person` FOREIGN KEY (`pgr_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `portal_signin_audit_psa` (
+  `psa_ID`           int(11)               NOT NULL AUTO_INCREMENT,
+  `psa_Time`         datetime              NOT NULL,
+  `psa_per_ID`       mediumint(9) unsigned          DEFAULT NULL,
+  `psa_Event`        varchar(32)           NOT NULL,
+  `psa_Method`       varchar(20)                    DEFAULT NULL,
+  `psa_Reason`       varchar(64)                    DEFAULT NULL,
+  `psa_Actor_usr_ID` mediumint(9) unsigned          DEFAULT NULL,
+  `psa_Email`        varchar(255)                   DEFAULT NULL,
+  `psa_IP`           varchar(45)                    DEFAULT NULL,
+  `psa_Detail`       varchar(255)                   DEFAULT NULL,
+  PRIMARY KEY (`psa_ID`),
+  KEY `psa_person_time_idx` (`psa_per_ID`, `psa_Time`),
+  KEY `psa_time_idx`        (`psa_Time`),
+  KEY `psa_email_time_idx`  (`psa_Email`, `psa_Time`),
+  KEY `psa_ip_time_idx`     (`psa_IP`, `psa_Time`),
+  CONSTRAINT `fk_psa_person` FOREIGN KEY (`psa_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 update version_ver set ver_update_end = now();

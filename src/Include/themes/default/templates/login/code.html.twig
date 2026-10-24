@@ -1,0 +1,39 @@
+{% extends "layout.html.twig" %}
+
+{#
+  Member sign-in: the answer to every email request, with the box for the code
+  (member sign-in design §6.1). It reads the same whether or not the address
+  can sign in. The code works only in the browser that asked for it.
+
+  Variables: `pageTitle`, `codeError`, `loginUrl`, `staffSignInUrl`,
+  `offerRememberDevice`.
+#}
+
+{% block nav %}{% endblock %}
+
+{% block content %}
+<div class="portal-signin">
+    <form class="portal-card portal-form" id="portalSignInCodeForm" method="post" action="{{ loginUrl }}/code" novalidate>
+        {{ csrf_field() }}
+
+        <h1 class="portal-page-title">{{ gettext('Check your email') }}</h1>
+        <p class="portal-card-text" id="portalSignInAnswer">{{ gettext("If this address can be used to sign in, we've emailed you a code. Nothing after a few minutes? Ask the church office.") }}</p>
+
+        <div class="portal-field">
+            <label class="portal-field-label" for="portalSignInCode">{{ gettext('Code') }}</label>
+            <input class="portal-input portal-signin-code{% if codeError %} is-invalid{% endif %}" type="text" name="code" id="portalSignInCode"
+                   inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" required autofocus>
+            <p class="portal-field-error" id="portalSignInCodeError" role="alert">{{ codeError }}</p>
+        </div>
+
+        {% include 'login/remember-device.html.twig' %}
+
+        <div class="portal-form-actions">
+            <button class="portal-button" type="submit" id="portalSignInCodeSubmit">{{ gettext('Sign in') }}</button>
+            <a class="portal-button portal-button-quiet" href="{{ loginUrl }}" id="portalSignInAgain">{{ gettext('Use a different email address') }}</a>
+        </div>
+    </form>
+
+    {% include 'login/staff-link.html.twig' %}
+</div>
+{% endblock %}

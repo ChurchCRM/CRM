@@ -61,7 +61,12 @@
             {% endif %}
 
             <dt>{{ gettext('Email') }}</dt>
-            <dd data-field="email">{{ profile.email|default('—')|email_wrap }}</dd>
+            <dd data-field="email">
+                {{- profile.email|default('—')|email_wrap -}}
+                {%- if profile.pendingEmail %}
+                <p class="portal-field-hint" id="portal-profile-pending-email">{{ gettext('Waiting for you to confirm %s. Use the link we sent to that address.')|format(profile.pendingEmail) }}</p>
+                {%- endif -%}
+            </dd>
 
             <dt>{{ gettext('Work Email') }}</dt>
             <dd data-field="workEmail">{{ profile.workEmail|default('—')|email_wrap }}</dd>

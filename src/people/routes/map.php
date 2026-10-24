@@ -105,7 +105,8 @@ function getMapView(Request $request, Response $response, array $args): Response
                 'js'        => true,
                 'id'        => 'geocodeAllBtn',
                 'data'      => ['missing-count' => $missingCoordinatesCount],
-                'adminOnly' => true,
+                'adminOnly' => false,
+                'editRecords' => true,
             ],
         ]),
         'mapConfig'        => [

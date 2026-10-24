@@ -25,8 +25,17 @@ class iCal
                     'PRODID:-//ChurchCRM/CRM//NONSGML v' . VersionUtils::getInstalledVersion() . "//EN\r\n" .
                     "CALSCALE:GREGORIAN\r\n" .
                     "METHOD:PUBLISH\r\n" .
-                    'X-WR-CALNAME:' . $CalendarName . "\r\n" .
+                    'X-WR-CALNAME:' . self::escapeText($CalendarName) . "\r\n" .
                     "X-WR-CALDESC:\r\n";
+    }
+
+    /** RFC 5545 §3.3.11 TEXT escaping; control characters are dropped so a value cannot start a new property line. */
+    public static function escapeText(string $text): string
+    {
+        $text = preg_replace('/\r\n|\r|\n/', "\n", $text);
+        $text = preg_replace('/[\x00-\x09\x0B-\x1F\x7F]/', '', $text);
+
+        return str_replace(['\\', ';', ',', "\n"], ['\\\\', '\\;', '\\,', '\\n'], $text);
     }
 
     private function eventToVEVENT(Event $event): string
@@ -35,11 +44,11 @@ class iCal
         $UTC = new \DateTimeZone('UTC');
 
         return "BEGIN:VEVENT\r\n" .
-          'UID:' . $event->getId() . '@' . ChurchMetaData::getChurchName() . "\r\n" .
+          'UID:' . $event->getId() . '@' . self::escapeText(ChurchMetaData::getChurchName()) . "\r\n" .
           'DTSTAMP:' . $now->setTimezone($UTC)->format('Ymd\THis\Z') . "\r\n" .
           'DTSTART:' . $event->getStart()->setTimezone($UTC)->format('Ymd\THis\Z') . "\r\n" .
           'DTEND:' . $event->getEnd()->setTimezone($UTC)->format('Ymd\THis\Z') . "\r\n" .
-          'SUMMARY:' . $event->getTitle() . "\r\n" .
+          'SUMMARY:' . self::escapeText((string) $event->getTitle()) . "\r\n" .
           "END:VEVENT\r\n";
     }
 

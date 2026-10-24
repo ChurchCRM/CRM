@@ -94,7 +94,17 @@
 
             <div class="portal-field">
                 <label class="portal-field-label" for="portal-email">{{ gettext('Email') }}</label>
-                <input class="portal-input" type="email" id="portal-email" name="email" value="{{ profile.email }}" autocomplete="email" inputmode="email">
+                <input class="portal-input" type="email" id="portal-email" name="email" value="{{ profile.email }}" autocomplete="email" inputmode="email"
+                       aria-describedby="portal-email-hint"{% if profile.emailLocked %} readonly{% endif %}>
+                <p class="portal-field-hint" id="portal-email-hint">
+                    {%- if profile.emailLocked -%}
+                        {{ gettext('To change this email, please contact the church office.') }}
+                    {%- elseif profile.pendingEmail -%}
+                        {{ gettext('Waiting for you to confirm %s. Use the link we sent to that address.')|format(profile.pendingEmail) }}
+                    {%- else -%}
+                        {{ gettext('A new address changes only after you use the link we send to it.') }}
+                    {%- endif -%}
+                </p>
                 <p class="portal-field-error" data-error-for="email" role="alert"></p>
             </div>
 

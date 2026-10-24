@@ -72,11 +72,9 @@ require_once __DIR__ . '/Include/Header.php';
                         </a>
                     </div>
                 </div>
-                <?php if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()): ?>
                 <a href="PropertyTypeEditor.php" class="btn btn-primary btn-sm">
                     <i class="fa-solid fa-plus me-1"></i><?= gettext('Add New') ?>
                 </a>
-                <?php endif; ?>
             </div>
         </div>
         <table class="table table-hover table-vcenter card-table">
@@ -88,9 +86,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <?= gettext('In Use') ?>
                         <i class="fa-solid fa-circle-info text-body-secondary ms-1" title="<?= gettext('Number of records using this property type') ?>" data-bs-toggle="tooltip"></i>
                     </th>
-                    <?php if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()): ?>
                     <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
-                    <?php endif; ?>
                 </tr>
             </thead>
             <tbody>
@@ -131,7 +127,6 @@ require_once __DIR__ . '/Include/Header.php';
                         <span class="badge bg-light text-dark">0</span>
                         <?php endif; ?>
                     </td>
-                    <?php if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()): ?>
                     <td class="w-1">
                         <div class="dropdown">
                             <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
@@ -149,21 +144,18 @@ require_once __DIR__ . '/Include/Header.php';
                             </div>
                         </div>
                     </td>
-                    <?php endif; ?>
                 </tr>
                 <?php
             }
             if (!$hasRows): ?>
                 <tr>
-                    <td colspan="<?= AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled() ? '4' : '3' ?>" class="text-center text-body-secondary py-4">
+                    <td colspan="4" class="text-center text-body-secondary py-4">
                         <i class="fa-solid fa-inbox fa-3x mb-3 d-block"></i>
                         <?= gettext('No property types found') ?>
-                        <?php if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()): ?>
                         <br>
                         <a href="PropertyTypeEditor.php" class="btn btn-primary btn-sm mt-2">
                             <i class="fa-solid fa-plus me-1"></i><?= gettext('Add Your First Property Type') ?>
                         </a>
-                        <?php endif; ?>
                     </td>
                 </tr>
             <?php endif; ?>

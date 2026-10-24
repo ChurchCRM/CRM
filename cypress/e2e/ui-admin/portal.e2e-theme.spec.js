@@ -4,7 +4,7 @@
  * Member Portal — #9869 scenario 4, "the theme flow", as ONE end-to-end run.
  *
  * Epic #8977, issue #9869, design `.agents/skills/churchcrm/member-portal-design.md`
- * §3 (P3–P8) and §4; the authoring guide is `docs/portal-themes.md`.
+ * §3 (P3–P8) and §4.
  *
  * The epic's largest promise is the one hardest to prove from a unit of code: a church
  * can make the portal look like their church, over FTP, without a developer and
@@ -137,6 +137,7 @@ describe("Member Portal e2e — #9869 scenario 4, a church themes the portal", (
     it("finds the uploaded folder on Admin → Member Portal and says it is valid", () => {
         adminLogin();
         cy.visit("/admin/member-portal");
+        cy.get("#portal-settings-tab").click();
 
         cy.get("#portalThemeSelect").should("contain.text", "E2E 9869 Church");
         cy.get("#portalThemeSelect").select(GOOD_THEME);
@@ -153,6 +154,7 @@ describe("Member Portal e2e — #9869 scenario 4, a church themes the portal", (
         adminLogin();
         cy.intercept("POST", "**/admin/api/member-portal/theme").as("activate");
         cy.visit("/admin/member-portal");
+        cy.get("#portal-settings-tab").click();
         cy.get("#portalThemeSelect").select(GOOD_THEME);
         cy.get("#portalThemeActivateButton").click();
         cy.wait("@activate").its("response.statusCode").should("eq", 200);
@@ -202,6 +204,7 @@ describe("Member Portal e2e — #9869 scenario 4, a church themes the portal", (
     it("refuses the broken theme, lists the findings, and leaves members alone", () => {
         adminLogin();
         cy.visit("/admin/member-portal");
+        cy.get("#portal-settings-tab").click();
         cy.get("#portalThemeSelect").select(BROKEN_THEME);
         cy.get("#portalThemeActivateButton").click();
 

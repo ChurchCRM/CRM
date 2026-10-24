@@ -6,6 +6,8 @@ use ChurchCRM\Portal\PortalCalendarService;
 use ChurchCRM\Portal\PortalStatsService;
 use ChurchCRM\Portal\ThemeManager;
 use ChurchCRM\Portal\ThemeValidator;
+use ChurchCRM\Service\MemberSignInSettingsService;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -37,6 +39,12 @@ $memberPortalHandler = function (Request $request, Response $response): Response
         $themes[] = $theme;
     }
 
+    $signInSettings = new MemberSignInSettingsService();
+    $signInTooltips = [];
+    foreach (MemberSignInSettingsService::KEYS as $key) {
+        $signInTooltips[$key] = SystemConfig::getTooltip($key);
+    }
+
     $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
         'sPageTitle' => gettext('Member Portal'),
@@ -60,6 +68,18 @@ $memberPortalHandler = function (Request $request, Response $response): Response
         // with the position of its "Show in Member Portal" switch, rendered
         // server-side so the tab needs no round trip on first paint.
         'portalCalendars' => PortalCalendarService::listChoices(),
+        // The Sign-in tab (member sign-in design §11.1).
+        'signIn' => [
+            'values' => $signInSettings->values(),
+            'tooltips' => $signInTooltips,
+            'emailProblem' => $signInSettings->emailProblem(),
+            'passkeyProblem' => $signInSettings->passkeyProblem(),
+            'familyRoles' => $signInSettings->familyRoleChoices(),
+            'classifications' => $signInSettings->classificationChoices(),
+            'officeRecipients' => $signInSettings->officeRecipients(),
+            'maySignInCount' => $signInSettings->maySignInCount(),
+        ],
+        'csrfToken' => CSRFUtils::generateToken(),
     ];
 
     return $renderer->render($response, 'member-portal.php', $pageArgs);

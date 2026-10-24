@@ -193,6 +193,14 @@ class ApprovedPluginRegistry
             return false;
         }
 
+        if (isset($entry['homepage']) && (!is_string($entry['homepage']) || !preg_match('/^https:\/\//i', $entry['homepage']))) {
+            LoggerUtils::getAppLogger()->warning('Approved plugin entry rejected (non-HTTPS homepage)', [
+                'entry' => $entry['id'],
+            ]);
+
+            return false;
+        }
+
         if (!preg_match('/^[a-f0-9]{64}$/i', (string) $entry['sha256'])) {
             LoggerUtils::getAppLogger()->warning('Approved plugin entry rejected (invalid sha256)', [
                 'entry' => $entry['id'],

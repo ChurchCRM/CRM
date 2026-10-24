@@ -258,13 +258,14 @@ if ($bCanManageGroups) {
             <div class="card-body">
                 <div class="birthday-filter d-none alert alert-info mb-3">
                     <?= gettext('Showing students with birthdays in') ?> <span class="month"></span>
-                    <i class="fa-solid fa-xmark float-end birthday-filter-clear" style="cursor:pointer;" title="<?= gettext('Clear filter') ?>"></i>
+                    <i class="fa-solid fa-xmark float-end birthday-filter-clear cursor-pointer" title="<?= gettext('Clear filter') ?>"></i>
                 </div>
-                <div style="overflow: visible;">
+                <div class="overflow-visible">
                     <table id="sundayschool" class="table table-hover data-table w-100">
                         <thead>
                             <tr>
                                 <th><?= gettext('Name') ?></th>
+                                <th><?= gettext('Grade') ?></th>
                                 <th><?= gettext('Age') ?></th>
                                 <th><?= gettext('Mobile') ?></th>
                                 <th><?= gettext('Email') ?></th>
@@ -293,6 +294,7 @@ if ($bCanManageGroups) {
                                         </a>
                                     </div>
                                 </td>
+                                <td><?= InputUtils::escapeHTML($child['grade'] ?? '') ?></td>
                                 <td><?= $hideAge ? '—' : InputUtils::escapeHTML($age) ?></td>
                                 <td>
                                     <?php if ($child['mobilePhone']): ?>
@@ -596,7 +598,7 @@ if ($bCanManageGroups) {
 
             <?php if (count($groupEvents) === 0): ?>
             <div class="card-body text-center text-body-secondary py-4">
-                <i class="fa-solid fa-calendar-xmark mb-2 d-block" style="font-size: 2rem;"></i>
+                <i class="fa-solid fa-calendar-xmark mb-2 d-block empty-state-icon"></i>
                 <p class="mb-2"><?= gettext('No events linked to this class.') ?></p>
                 <p class="small text-body-secondary mb-0">
                     <?= gettext("Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster.") ?>

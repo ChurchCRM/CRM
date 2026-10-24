@@ -1,0 +1,12 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+<section class="portal-card" id="portal-example-rosters">
+    <h1 class="portal-page-title">{{ pageTitle }}</h1>
+    <ul>
+        {% for group in groups %}
+        <li><a href="{{ url('/portal/plugins/portal-example/rosters/' ~ group.id) }}" data-group-id="{{ group.id }}">{{ group.name }}</a></li>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}

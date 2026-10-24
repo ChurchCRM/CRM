@@ -341,6 +341,9 @@ if ($sFormat === 'addtocart') {
         if (!empty($_POST['PrintFamilyRole'])) {
             $headers[] = 'Family Role';
         }
+        if (!empty($_POST['PrintGrade'])) {
+            $headers[] = 'Grade';
+        }
         if (!empty($_POST['PrintGender'])) {
             $headers[] = 'Gender';
         }
@@ -418,7 +421,6 @@ if ($sFormat === 'addtocart') {
         $fam_Zip = '';
         $fam_Country = '';
         $fam_HomePhone = '';
-        $fam_Email = '';
         $fam_WeddingDate = '';
 
         $sCountry = '';
@@ -571,6 +573,9 @@ if ($sFormat === 'addtocart') {
                     }
                     if (isset($_POST['PrintFamilyRole'])) {
                         $row[] = $familyRoles[$per_fmr_ID];
+                    }
+                    if (isset($_POST['PrintGrade'])) {
+                        $row[] = $person?->getGradeName() ?? '';
                     }
                     if (isset($_POST['PrintGender'])) {
                         $row[] = $person->getGenderName();
