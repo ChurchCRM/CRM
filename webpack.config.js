@@ -86,6 +86,7 @@ module.exports = {
     'two-factor-enrollment': './webpack/two-factor-enrollment.js',
     churchcrm: './webpack/skin-main',
     theme: './webpack/theme.js',
+    'sidebar-toggle': './webpack/sidebar-toggle.js',
     'churchcrm-rtl': './webpack/skin-rtl',
     'photo-uploader': './webpack/photo-uploader-entry',
     'root-dashboard': './webpack/root-dashboard',

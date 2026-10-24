@@ -171,6 +171,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
   </script>
   <script src="<?= SystemURLs::assetVersioned('/skin/js/CRMJSOM.js') ?>"></script>
   <script src="<?= SystemURLs::assetVersioned('/skin/js/CommunicationUtils.js') ?>"></script>
+  <script src="<?= SystemURLs::assetVersioned('/skin/v2/sidebar-toggle.min.js') ?>" defer></script>
 
   <!-- ============================================================ -->
   <!-- Sidebar (Tabler vertical navbar)                              -->
@@ -222,6 +223,17 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
               aria-controls="navbar-menu" aria-expanded="false"
               aria-label="<?= gettext('Toggle search') ?>">
         <i class="fa-solid fa-search"></i>
+      </button>
+
+      <!-- The desktop sidebar is independent of the mobile Tabler hamburger. -->
+      <button type="button" id="desktop-sidebar-toggle"
+              class="btn btn-ghost-secondary d-none d-xl-inline-flex align-items-center me-2"
+              aria-controls="sidebar" aria-expanded="true"
+              aria-label="<?= InputUtils::escapeAttribute(gettext('Collapse sidebar')) ?>"
+              title="<?= InputUtils::escapeAttribute(gettext('Collapse sidebar')) ?>"
+              data-collapse-label="<?= InputUtils::escapeAttribute(gettext('Collapse sidebar')) ?>"
+              data-expand-label="<?= InputUtils::escapeAttribute(gettext('Expand sidebar')) ?>">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
       </button>
 
       <!-- Right-side nav items -->
