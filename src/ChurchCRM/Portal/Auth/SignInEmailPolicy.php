@@ -20,6 +20,7 @@ use ChurchCRM\model\ChurchCRM\PortalGrantQuery;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Portal\PortalSelfService;
+use ChurchCRM\Service\EmailSignInService;
 use ChurchCRM\Service\RateLimiter;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
@@ -116,7 +117,8 @@ final class SignInEmailPolicy
      * may have changed `per_Email` from `$oldEmail`. Before the first sign-in
      * the new address is the address on record and works at once. After it,
      * every portal session and remembered device ends, the previous address is
-     * told, and the new address stays unconfirmed. Passkeys stay. Audited.
+     * told, and the new address stays unconfirmed. Passkeys stay. Either way
+     * the sign-in codes and links already emailed stop working. Audited.
      */
     public function recordChange(Person $person, ?string $oldEmail, EmailChangeChannel $channel, ?User $actor): void
     {
@@ -162,6 +164,7 @@ final class SignInEmailPolicy
 
             throw $e;
         }
+        (new EmailSignInService())->cancelOpenRequests($personId, SignInReason::EMAIL_CHANGED, $actor === null ? null : (int) $actor->getId());
 
         if ($channel === EmailChangeChannel::STAFF && $actor?->isAdmin() === true && $this->needsAdministrator($person)) {
             $note = new Note();
@@ -438,6 +441,9 @@ final class SignInEmailPolicy
         $this->clearUnconfirmed($state);
         $state->save();
         $this->cancelOpenLinks($personId, null, $now);
+        if ($changed) {
+            (new EmailSignInService())->cancelOpenRequests($personId, SignInReason::EMAIL_CHANGED);
+        }
 
         SignInAudit::record(
             $changed ? SignInAuditEvent::EMAIL_CHANGED : SignInAuditEvent::EMAIL_CONFIRMED,
