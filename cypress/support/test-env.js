@@ -40,6 +40,15 @@ Cypress.testEnv = (key) => {
     return remembered[key];
 };
 
+/** Mailpit of the stack under test, resolved by exposeMailpitUrl() in cypress/configs/_shared.ts. */
+Cypress.mailpitUrl = () => {
+    const url = Cypress.expose("mailpitUrl");
+    if (!url) {
+        throw new Error("mailpitUrl is not exposed. Call exposeMailpitUrl(config) in this Cypress config's setupNodeEvents.");
+    }
+    return url;
+};
+
 /**
  * Form login that does not go through cy.session(). Specs that call the API
  * before cy.visit() need this: cy.request() replaces the PHP session.
@@ -56,7 +65,7 @@ Cypress.Commands.add("freshAdminFormLogin", (options = {}) => {
         } else {
             cy.clearCookies();
         }
-        cy.visit(options.path || "/session/begin");
+        cy.visit(options.path || "/admin/");
         const userOpts = options.timeout ? { timeout: options.timeout } : undefined;
         const field = (selector, opts) => {
             let input = cy.get(selector, opts);
@@ -70,7 +79,7 @@ Cypress.Commands.add("freshAdminFormLogin", (options = {}) => {
         };
         field("input[name=User]", userOpts).type(username);
         field("input[name=Password]").type(`${password}{enter}`, { log: false });
-        cy.url().should("not.include", "/session/begin");
+        cy.expectStaffSignedIn();
         if (options.sessionCookie) {
             cy.getCookies().should("satisfy", (cookies) =>
                 cookies.some((cookie) => cookie.name.startsWith("CRM-")),

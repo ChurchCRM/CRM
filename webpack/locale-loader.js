@@ -59,8 +59,7 @@ function checkBrowserLocale() {
     }
 
     const alert = document.createElement("div");
-    alert.className = "alert alert-info alert-dismissible";
-    alert.style.marginBottom = "1rem";
+    alert.className = "alert alert-info alert-dismissible mb-3";
 
     const userSettingsUrl = `${window.CRM.root}/v2/user/${window.CRM.userId}#tab-localization`;
 
@@ -70,9 +69,9 @@ function checkBrowserLocale() {
       <div>${window.i18next.t("Your browser language preference differs from your ChurchCRM locale")}.</div>
       <div class="mt-2">
         <a href="${userSettingsUrl}" class="btn btn-sm btn-primary">
-          <i class="fa-solid fa-cog mr-1"></i>${window.i18next.t("Change Your Locale")}
+          <i class="fa-solid fa-cog me-1"></i>${window.i18next.t("Change Your Locale")}
         </a>
-        <button id="dismissBrowserLocaleBtn" class="btn btn-sm btn-secondary ml-2">${window.i18next.t("Dismiss")}</button>
+        <button id="dismissBrowserLocaleBtn" class="btn btn-sm btn-secondary ms-2">${window.i18next.t("Dismiss")}</button>
       </div>
     `;
 

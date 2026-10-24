@@ -1,7 +1,7 @@
 import { defineConfig } from 'cypress'
 import { verifyDownloadTasks } from 'cy-verify-downloads';
 import { registerRowCountGuard } from './row-count-guard';
-import { dbTasks, mailTasks } from './_shared'
+import { dbTasks, mailTasks, exposeMailpitUrl } from './_shared'
 
 import base from './base.config'
 
@@ -9,11 +9,10 @@ import base from './base.config'
  * Cypress config for the sharded UI test suite (cypress/e2e/ui/).
  *
  * This config intentionally includes ONLY the ui/ spec pattern so that
- * cypress-split sees only ui specs when splitting. If docker.config.ts
- * (api + ui combined) were used instead, cypress-split would build its
- * shard from all 157 specs alphabetically — shard-0 would be mostly api
- * specs — and the --spec cypress/e2e/ui/**\/\*.spec.js CLI filter would then
- * find zero matching ui specs in that shard, causing exit-code 1.
+ * the shard split sees only ui specs. If docker.config.ts
+ * (api + ui combined) were used instead, shard-0 would be mostly api specs
+ * and the --spec cypress/e2e/ui/**\/\*.spec.js CLI filter would then find
+ * zero matching ui specs in that shard, causing exit-code 1.
  *
  * CI jobs: test-type.name == "ui-shard-{0,1,2}" in test-root / test-subdir
  * matrices (build-test-package.yml, nightly.yml).
@@ -44,12 +43,9 @@ export default defineConfig({
     'nofundraiser.api.key': 'financeNoFundraiserApiKeyForTesting12345',
     'nofundraiser.username': 'finance.nofundraiser',
     'nofundraiser.password': 'changeme',
-    'selfedit.api.key': 'amandaBlackEditSelfOnlyApiKey12345678901',
-    'selfedit.plus.notes.api.key': 'editSelfPlusNotesApiKeyForTesting12345678901',
     'plainauth.api.key': 'plainAuthReadOnlyApiKeyForTesting12345678901',
-    'limited.api.key': 'limitedUserApiKeyForTesting123456789012345678',
     'editrecords.api.key': 'judithMatthewsEditRecordsNoNotesApiKey1234',
-    'menuoptions.api.key': 'menuOptionsOnlyApiKeyForTesting12345678901',
+    'teamleader.api.key': 'teamLeaderApiKeyForTesting1234567890123456',
     'deceased.api.key': 'deceasedUserApiKeyForTesting1234567890123',
     'inactive.api.key': 'inactiveUserApiKeyForTesting1234567890123',
     'admin.username': 'admin',
@@ -63,18 +59,12 @@ export default defineConfig({
   numTestsKeptInMemory: 0,
   e2e: {
     ...base.e2e,
-    // UI specs only — cypress-split must see only ui/ here so every shard
-    // receives a non-empty subset of ui specs. The api/ suite runs in a
-    // separate non-sharded CI job using docker.config.ts.
+    // UI specs only, so every shard receives a non-empty subset of ui specs.
+    // The api/ suite runs through docker-api.config.ts.
     specPattern: ['cypress/e2e/ui/**/*.spec.js'],
     setupNodeEvents(on, config) {
-      // Register cypress-split for UI spec sharding (SPLIT / SPLIT_INDEX env vars).
-      // Guard: when SPLIT is unset the plugin is a no-op, so it's safe to
-      // require unconditionally, but we skip registration to avoid debug noise.
-      if (process.env.SPLIT) {
-        const cypressSplit = require('cypress-split');
-        cypressSplit(on, config);
-      }
+      // Narrows specPattern to this shard when CI sets SPLIT / SPLIT_INDEX (scripts/shard-specs.js).
+      require('../../scripts/shard-specs').applyShard(config);
       const installLogsPrinter = require('cypress-terminal-report/src/installLogsPrinter');
       installLogsPrinter(on, {
         outputRoot: 'cypress/logs',
@@ -88,6 +78,7 @@ export default defineConfig({
       // dbTasks adds db:query, the direct-MySQL task specs use to assert what has
       // no HTTP surface (#9705); mailTasks adds the Mailpit reads (#9710).
       on('task', { ...verifyDownloadTasks, ...dbTasks, ...mailTasks });
+      exposeMailpitUrl(config);
       // Test-database drift guard (#9769) — read-only row counts, plus the
       // env flag cypress/support/e2e.js checks before arming the guard.
       registerRowCountGuard(on, config);

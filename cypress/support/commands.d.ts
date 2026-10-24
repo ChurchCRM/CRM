@@ -3,7 +3,7 @@
 //
 // This file must stay in sync with the real commands registered in
 // cypress/support/api-commands.js and cypress/support/ui-commands.js.
-// `npm run lint:cypress-commands` (also run in CI) fails when a command is
+// `npm run lint` (also run in CI) fails when a command is
 // declared here but not defined, or defined but not declared.
 // ***********************************************
 
@@ -44,6 +44,11 @@ declare namespace Cypress {
       sessionCookie?: boolean;
     }): Chainable<void>;
 
+    /**
+     * Assert a staff page is signed in: the user menu is there and the sign-in form is not.
+     */
+    expectStaffSignedIn(options?: { timeout?: number }): Chainable<void>;
+
     setupLoginSession(
       sessionName: string,
       username: string,
@@ -55,6 +60,24 @@ declare namespace Cypress {
      * Ensure an admin session is active (optionally forcing a fresh login)
      */
     setupAdminSession(options?: { forceLogin?: boolean }): Chainable<void>;
+
+    /**
+     * Ensure a cached login session for a seed persona (cypress/support/personas-data.js)
+     */
+    setupPersonaSession(persona: string, options?: { forceLogin?: boolean }): Chainable<void>;
+
+    /**
+     * Make an API request with a seed persona's key. Same contract as makePrivateAPICall.
+     * @param persona - Persona name from cypress/support/personas-data.js
+     */
+    personaAPICall(
+      persona: string,
+      method: string,
+      url: string,
+      body?: any,
+      expectedStatus?: number | number[],
+      timeoutMs?: number
+    ): Chainable<any>;
 
     /**
      * Ensure a standard session is active (optionally forcing a fresh login)
@@ -158,12 +181,29 @@ declare namespace Cypress {
     getSystemConfig(name: string): Chainable<string>;
 
     /**
+     * POST /api/email/send as the admin, then send the queued batch through like the composer
+     * does. Yields the send response plus `progress`, the batch's final state (null when
+     * nothing was queued).
+     * @param body - The send payload: personIds, familyIds, subject, body
+     */
+    sendComposerEmailNow(body: Record<string, unknown>): Chainable<any>;
+
+    /**
      * Restore a SystemConfig key to a value captured with getSystemConfig and verify it.
      * Does nothing when value is undefined (the capture never ran).
      * @param name - Config key
      * @param value - Value captured before the spec changed it
      */
     restoreSystemConfig(name: string, value: string | undefined): Chainable<void>;
+
+    /** The calendars shared with members on Admin → Member Portal → Calendars, as {type, id}. */
+    getMemberPortalCalendars(): Chainable<Array<{ type: string; id: number }>>;
+
+    /**
+     * Share these calendars with members (replacing the set). The portal has a Calendar page,
+     * nav entry and home card while at least one is shared. Replaces the browser session cookie.
+     */
+    shareMemberPortalCalendars(visible: Array<{ type: string; id: number }>): Chainable<any>;
 
     /** Run the browser in the church's time zone (sTimeZone), the zone the server counts days in. */
     useChurchTimeZone(): Chainable<void>;
@@ -257,52 +297,26 @@ declare namespace Cypress {
     ): Chainable<any>;
 
     /**
-     * Make API request as an EditSelf-only user (amanda.black, family 20)
-     * Used for testing family-scope authorization (GHSA-jjcj-h3cm-p7x7)
-     * @param method - HTTP method
-     * @param url - Request URL
-     * @param body - Request body
-     * @param expectedStatus - Expected status code (default: 200)
-     * @param timeoutMs - Optional per-request timeout override
+     * Sign in to the Member Portal as a person (id or email), with the
+     * emailed code (cypress/support/member-session.js). The member rule is
+     * opened to everyone for the spec.
      */
-    makePrivateEditSelfAPICall(
+    signInAsMember(who: number | string): Chainable<any>;
+
+    /** Put the member's session back in the browser, signing in the first time. */
+    useMemberSession(who: number | string): Chainable<any>;
+
+    /** A request in the member's session, asserting the status. */
+    makeMemberAPICall(
+      who: number | string,
       method: string,
       url: string,
       body?: any,
-      expectedStatus?: number | number[],
-      timeoutMs?: number
+      expectedStatus?: number | number[]
     ): Chainable<any>;
 
-    /**
-     * Regression sentinel: EditSelf+Notes user (user 100, Lena Black, family 20).
-     * Post-PR#9016 the user is blocked by AuthMiddleware (403). Once EditSelf
-     * exclusivity is relaxed, avatar/nav/photo should assert 200 (FamilyReadMiddleware)
-     * vs 403 (FamilyMiddleware) for a non-own family.
-     */
-    makePrivateEditSelfPlusNotesAPICall(
-      method: string,
-      url: string,
-      body?: any,
-      expectedStatus?: number | number[],
-      timeoutMs?: number
-    ): Chainable<any>;
-
-    /**
-     * Make API request as limited.user (id=4) — usr_Notes=0, usr_Admin=0,
-     * usr_EditRecords=0, usr_EditSelf=1. An EditSelf-ONLY user, blocked by
-     * AuthMiddleware::isEditSelfExclusive() → always returns 403.
-     * Use ONLY for Notes-gated 403 assertions.
-     *
-     * NOT a zero-permission user — that is noperm.user (id=901, EditSelf=0),
-     * which now passes the gate with read-only access (read-default policy).
-     */
-    makePrivateLimitedAPICall(
-      method: string,
-      url: string,
-      body?: any,
-      expectedStatus?: number | number[],
-      timeoutMs?: number
-    ): Chainable<any>;
+    /** Forget the cached member sessions. */
+    forgetMemberSessions(): Chainable<any>;
 
     /**
      * Make API request as judith.matthews (id=95) — usr_EditRecords=1,
@@ -311,20 +325,6 @@ declare namespace Cypress {
      * assertions.
      */
     makePrivateEditRecordsAPICall(
-      method: string,
-      url: string,
-      body?: any,
-      expectedStatus?: number | number[],
-      timeoutMs?: number
-    ): Chainable<any>;
-
-    /**
-     * MenuOptions-only user (id=902): usr_MenuOptions=1, all other perm flags 0,
-     * non-admin, non-EditSelf. Used to verify the EditRecords gate on person/family
-     * property routes (GHSA-4wmp-3v34-g7q8). Passes MenuOptions middleware but is
-     * blocked by EditRecordsRoleAuthMiddleware — expects 403 on record-level routes.
-     */
-    makePrivateMenuOptionsAPICall(
       method: string,
       url: string,
       body?: any,
@@ -605,6 +605,20 @@ declare namespace Cypress {
     }>;
 
     /**
+     * End a sign-in throttle window now (cypress/support/sign-in-throttle.js).
+     * @param bucket - RateLimiter bucket, e.g. "signin.lockout" or "signin.ip"
+     * @param key - One key in the bucket (a user id for "signin.lockout"); all keys when omitted
+     */
+    expireSignInThrottle(bucket: string, key?: string | number | null): Chainable<void>;
+
+    /**
+     * End the grace of the tokens a person's remembered devices just replaced
+     * (cypress/support/remembered-device.js).
+     * @param personId - The person whose devices' previous tokens stop signing in
+     */
+    endDeviceTokenGrace(personId: number): Chainable<void>;
+
+    /**
      * Wait for a Notyf notification with specific text
      * Ensures locales are loaded first (for i18next translations) and verifies notification content
      * @param expectedText - The text to find in the notification
@@ -615,4 +629,7 @@ declare namespace Cypress {
 
   /** Value previously loaded with cy.rememberTestEnv(). */
   function testEnv(key: string): unknown;
+
+  /** Mailpit base URL of the stack under test, without a trailing slash. */
+  function mailpitUrl(): string;
 }

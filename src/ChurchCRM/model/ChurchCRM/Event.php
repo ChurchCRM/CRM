@@ -207,11 +207,9 @@ class Event extends BaseEvent
         $AttendanceRecord->setEvent($this)
         ->setPersonId($PersonId)
         ->setCheckinDate(date('Y-m-d H:i:s'))
-        ->setCheckoutDate(null);
-
-        if ($CheckedInById !== null) {
-            $AttendanceRecord->setCheckinId($CheckedInById);
-        }
+        ->setCheckoutDate(null)
+        ->setCheckoutId(null)
+        ->setCheckinId($CheckedInById);
 
         $AttendanceRecord->save($con);
         HookManager::doAction(Hooks::EVENT_CHECKIN, $AttendanceRecord, $this, $PersonId);
@@ -241,11 +239,8 @@ class Event extends BaseEvent
 
         $AttendanceRecord->setEvent($this)
         ->setPersonId($PersonId)
-        ->setCheckoutDate(date('Y-m-d H:i:s'));
-
-        if ($CheckedOutById !== null) {
-            $AttendanceRecord->setCheckoutId($CheckedOutById);
-        }
+        ->setCheckoutDate(date('Y-m-d H:i:s'))
+        ->setCheckoutId($CheckedOutById);
 
         $AttendanceRecord->save();
         HookManager::doAction(Hooks::EVENT_CHECKOUT, $AttendanceRecord, $this, $PersonId);

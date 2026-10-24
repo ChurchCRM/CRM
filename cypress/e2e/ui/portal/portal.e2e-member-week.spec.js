@@ -28,11 +28,9 @@
  *
  * Personas (cypress/data/seed.sql):
  *
- *   person 100  Lena Black  `usr_EditSelf=1`, no admin flag, so
- *               `User::isEditSelfExclusive()` is true and this login has no admin
- *               shell to fall back to — which is what makes it the right persona for
- *               a portal run. `user_usr.usr_UserName` is `VARCHAR(32)` and her seeded
- *               address is 37 characters, so the login form gets the truncated form.
+ *   person 100  Lena Black, signed in with her email: a member session, with no
+ *               admin shell to fall back to — which is what makes it the right
+ *               persona for a portal run.
  *   person 8    a second pool member, so a requirement can have somebody else in it.
  *
  * `cy.dbQuery` is used only for cleanup and for the one assertion that has no HTTP
@@ -47,8 +45,7 @@
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const VOLUNTEER_URL = "/api/ministries";
 
-const MEMBER_USERNAME = "lena.black.editself.notes@example.com";
-const MEMBER_PASSWORD = "changeme";
+const MEMBER_USERNAME = 100;
 const PERSON_MEMBER = 100;
 const POOL_MEMBER_B = 8;
 
@@ -113,11 +110,8 @@ function daysToNext(dow) {
 }
 
 function memberLogin() {
-    cy.clearCookies();
-    cy.visit("/session/begin");
-    cy.get("input[name=User]").type(MEMBER_USERNAME);
-    cy.get("input[name=Password]").type(`${MEMBER_PASSWORD}{enter}`);
-    cy.url({ timeout: 10000 }).should("include", "/portal");
+    cy.signInAsMember(MEMBER_USERNAME);
+    cy.visit("/portal/");
 }
 
 /**
@@ -258,7 +252,6 @@ describe("Member Portal — #9869 scenario 1, \"a member's week\", as ONE end-to
             originalVersion = resp.body.value ?? resp.body.data ?? "v1";
         });
         setVersion("v2");
-        setConfig("bPortalShowCalendar", "1");
         setConfig("bPortalShowVolunteer", "1");
         setVisibleCalendars([{ type: "calendar", id: CHURCH_CALENDAR_ID }]);
 
@@ -439,6 +432,7 @@ describe("Member Portal — #9869 scenario 1, \"a member's week\", as ONE end-to
                     expect(labels.slice(0, 2)).to.deep.eq(["Home", "Calendar"]);
                     expect(labels).to.include("Volunteering");
                     expect(labels.slice(-2)).to.deep.eq(["My Family", "Profile"]);
+                    expect(labels).to.not.include("Sign-in and devices");
                 },
             );
 
@@ -633,10 +627,10 @@ describe("Member Portal — #9869 scenario 1, \"a member's week\", as ONE end-to
                 assertNoAdminShell();
             }
 
-            // And the one URL that would take a staff login to the dashboard takes
-            // this one straight back to where they belong.
+            // And the one URL that would take a staff login to the dashboard asks
+            // this one to sign in as staff instead.
             cy.visit("/v2/dashboard", { failOnStatusCode: false });
-            cy.url({ timeout: 10000 }).should("include", "/portal");
+            cy.location("pathname", { timeout: 10000 }).should("eq", "/admin/");
         });
     });
 });

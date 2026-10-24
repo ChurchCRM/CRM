@@ -9,6 +9,7 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\ClassificationService;
 use ChurchCRM\Service\ConfirmReportEmailResult;
 use ChurchCRM\Service\ConfirmReportService;
+use ChurchCRM\Service\GradeService;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use ChurchCRM\Slim\SlimUtils;
@@ -32,6 +33,11 @@ $app->post('/report/verify/email', 'sendVerifyReportEmail')->add(new CSRFMiddlew
 
 function viewPeopleVerify(Request $request, Response $response, array $args): Response
 {
+    AuthenticationManager::redirectHomeIfFalse(
+        AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(),
+        'EditRecords'
+    );
+
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
     $queryParams = $request->getQueryParams();
@@ -64,13 +70,13 @@ function viewPeopleVerify(Request $request, Response $response, array $args): Re
  *
  * Route: GET /people/report/verify[?familyId=<int>]
  *
- * Requires the "Create Directory" permission.
+ * Requires the Edit Records permission.
  */
 function generateVerifyReport(Request $request, Response $response, array $args): Response
 {
     AuthenticationManager::redirectHomeIfFalse(
-        AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled(),
-        'MenuOptions'
+        AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(),
+        'EditRecords'
     );
 
     $queryParams = $request->getQueryParams();
@@ -99,13 +105,13 @@ function generateVerifyReport(Request $request, Response $response, array $args)
  *
  * Route: POST /people/report/verify/email (CSRF-protected state-changing action)
  *
- * Requires the "Create Directory" permission.
+ * Requires the Edit Records permission.
  */
 function sendVerifyReportEmail(Request $request, Response $response, array $args): Response
 {
     AuthenticationManager::redirectHomeIfFalse(
-        AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled(),
-        'MenuOptions'
+        AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(),
+        'EditRecords'
     );
 
     // Detect AJAX requests — these get a JSON response instead of a redirect
@@ -236,6 +242,14 @@ function listPeople(Request $request, Response $response, array $args): Response
         }
     }
 
+    $filterByGradeId = '';
+    if (isset($_GET['Grade'])) {
+        $id = InputUtils::filterInt($_GET['Grade']);
+        if ($id === 0 || GradeService::isValid($id)) {
+            $filterByGradeId = (string) $id;
+        }
+    }
+
     $filterByGender = '';
     if (isset($_GET['Gender'])) {
         $id = InputUtils::filterInt($_GET['Gender']);
@@ -274,6 +288,7 @@ function listPeople(Request $request, Response $response, array $args): Response
         'filterByFmrId'                   => $filterByFmrId,
         'filterByFmrOptionId'             => $filterByFmrOptionId,
         'filterByGender'                  => $filterByGender,
+        'filterByGradeId'                 => $filterByGradeId,
         'familyActiveStatus'              => $familyActiveStatus,
         'genderDataCheckCount'            => $personService->getMissingGenderDataCount(),
         'roleDataCheckCount'              => $personService->getMissingRoleDataCount(),

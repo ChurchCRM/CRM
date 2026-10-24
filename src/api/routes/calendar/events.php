@@ -533,9 +533,8 @@ function eventAudienceGuard(Response $response, array $input, array $currentGrou
  * it is a column on `events_event` and it carries an authorization decision, so it is
  * resolved by `resolveEventMinistryId()` and written BEFORE the row is saved. A refused
  * ministry must leave no event behind, which a post-save hook could not guarantee. See the
- * explicit `setMinistryId()` calls in newEvent/updateEvent — and note that `updateEvent`'s
- * `fromArray($input)` would otherwise copy `MinistryId` straight through unchecked (§2.16
- * item 7), which is exactly why that call is followed by an authoritative overwrite.
+ * explicit `setMinistryId()` calls in newEvent/updateEvent — and note that `updateEvent` copies
+ * only an explicit field list, so `MinistryId` never reaches the row from the payload.
  */
 function applyEventExtendedFields(Event $event, array $input): void
 {
@@ -918,14 +917,19 @@ function updateEvent(Request $request, Response $response, array $args): Respons
         return $ministryId;
     }
 
-    // fromArray copies matching property names (Title, Desc, Start, End,
-    // Text, InActive) onto the Event. LinkedGroupId + AttendanceCounts
-    // aren't Event columns; applyEventExtendedFields handles those.
-    $Event->fromArray($input);
-    $Event->setId($id);
-    // MinistryId IS an Event column, so fromArray() above has just copied whatever the
-    // payload said with no authorization at all (§2.16 item 7). Overwrite it with the value
-    // resolveEventMinistryId() authorized — this line is the whole reason that is safe.
+    $fields = [
+        'Title' => 'setTitle', 'Desc' => 'setDesc', 'Text' => 'setText', 'Start' => 'setStart',
+        'End' => 'setEnd', 'InActive' => 'setInActive', 'Type' => 'setType',
+    ];
+    foreach ($fields as $key => $setter) {
+        if (array_key_exists($key, $input)) {
+            $Event->$setter($input[$key]);
+        }
+    }
+    if (array_key_exists('URL', $input)) {
+        $url = trim((string) $input['URL']);
+        $Event->setURL(preg_match('#^https?://\S+$#i', $url) ? $url : null);
+    }
     $Event->setMinistryId($ministryId);
 
     $currentCalendarIds = [];

@@ -50,6 +50,9 @@ import "../src/skin/js/form-utils.js";
 import { initAllPersonSelects, initPersonSelect } from "./common/person-select";
 import { installPageConfig } from "./crm-bootstrap";
 
+// Row/dropdown menus escape overflow-clipping containers
+import "./common/dropdown-overflow";
+
 // Import issue reporter (GitHub issue modal)
 import "../src/skin/js/IssueReporter.js";
 

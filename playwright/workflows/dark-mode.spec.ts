@@ -44,6 +44,7 @@ test.describe('Dark Mode', () => {
         title: 'Dashboard (Dark Mode)',
         category: 'Dashboards',
         purpose: 'Landing dashboard after login — hero shot in dark mode',
+        usedIn: ['website'],
       });
     } finally {
       await setThemeMode(page, 'default');

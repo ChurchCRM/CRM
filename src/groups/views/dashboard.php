@@ -142,7 +142,7 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
                         <i class="fa-solid fa-sitemap"></i> <?= gettext('Groups') ?>
                     </h5>
                 </div>
-                <div class="card-body" style="overflow: visible;">
+                <div class="card-body overflow-visible">
                     <table class="table" id="groupsTable"></table>
                 </div>
             </div>

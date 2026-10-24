@@ -97,7 +97,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <span><?= gettext('Raised') ?></span>
           <strong><?= CurrencyFormatter::formatHtml($totalRaised) ?> / <?= CurrencyFormatter::formatHtml($goalAmount) ?></strong>
         </div>
-        <div class="progress mb-1" style="height:20px;">
+        <div class="progress mb-1 progress-h-20">
           <div class="progress-bar bg-success" role="progressbar"
                style="width:<?= $pct ?>%"
                aria-valuenow="<?= $pct ?>" aria-valuemin="0" aria-valuemax="100">

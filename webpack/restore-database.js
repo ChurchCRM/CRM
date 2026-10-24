@@ -144,7 +144,7 @@ function handleRestoreSubmit($form) {
         $.each(data.Messages, (_index, value) => {
           $("<div>")
             .addClass("alert alert-warning mt-2")
-            .html(`<i class="fa-solid fa-exclamation-triangle mr-2"></i>${value}`)
+            .html(`<i class="fa-solid fa-exclamation-triangle me-2"></i>${value}`)
             .appendTo($messages);
         });
       }
@@ -169,7 +169,7 @@ function handleRestoreSubmit($form) {
 
         if (countdown <= 0) {
           clearInterval(countdownInterval);
-          window.location.href = `${window.CRM.root}/`;
+          window.location.href = `${window.CRM.root}/admin/`;
         }
       }, 1000);
     })

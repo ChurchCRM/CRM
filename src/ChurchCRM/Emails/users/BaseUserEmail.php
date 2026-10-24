@@ -43,7 +43,7 @@ abstract class BaseUserEmail extends BaseEmail
 
     protected function getFullURL(): string
     {
-        return SystemURLs::getURL() . '/session/begin?username=' . $this->user->getUserName();
+        return SystemURLs::getURL() . '/admin/?username=' . rawurlencode($this->user->getUserName());
     }
 
     protected function getButtonText(): string

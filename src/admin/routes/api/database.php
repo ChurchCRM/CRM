@@ -347,7 +347,7 @@ function exportChMeetings(Request $request, Response $response, array $args): Re
             $person->getEmail(),
             $person->getFacebook(),
             '',
-            '',
+            $person->getGradeName() ?? '',
             '',
             '',
             '',

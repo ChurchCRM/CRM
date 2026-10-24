@@ -4,6 +4,7 @@ use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Service\ClassificationService;
+use ChurchCRM\Service\GradeService;
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\SlimUtils;
@@ -60,6 +61,9 @@ $app->group('/api/options', function (RouteCollectorProxy $group): void {
             ->orderByOptionId(\Propel\Runtime\ActiveQuery\Criteria::DESC)
             ->findOne();
         $newOptionId = $maxOptionId ? $maxOptionId->getOptionId() + 1 : 1;
+        if ($listId === GradeService::listId()) {
+            $newOptionId = max($newOptionId, GradeService::FIRST_CUSTOM_OPTION_ID);
+        }
 
         $option = new ListOption();
         $option
@@ -187,6 +191,11 @@ $app->group('/api/options', function (RouteCollectorProxy $group): void {
                     ->filterByType($optionId)
                     ->update(['Type' => 0]);
                 break;
+        }
+        if ($listId === GradeService::listId()) {
+            \ChurchCRM\model\ChurchCRM\PersonQuery::create()
+                ->filterByGradeId($optionId)
+                ->update(['GradeId' => null]);
         }
 
         return SlimUtils::renderSuccessJSON($response);

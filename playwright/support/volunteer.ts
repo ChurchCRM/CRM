@@ -2,16 +2,17 @@ import { type Browser, expect, type Page } from '@playwright/test';
 import path from 'node:path';
 
 import { BASE_URL } from './env';
-import { humanClick, humanSelect } from './human';
+import { rememberedMemberContext, useMemberSignIn } from './member-sign-in';
 
 /**
- * Volunteer Management v2 fixture for the volunteer captures. V2 is off on a
- * fresh install, so the seed turns it on in Admin → Ministry Settings and
- * builds a "Hospitality" ministry through the volunteer API; removeVolunteerSeed()
- * takes both back out, because every workflow shares one database.
+ * Volunteer Management v2 fixture for the volunteer captures. The demo import
+ * turns V2 on and brings a "Hospitality" ministry of its own; the seed replaces it
+ * with this one, built through the volunteer API, because the recording changes its
+ * staffing and the screenshots need it as seeded. removeVolunteerSeed() takes it
+ * back out, because every workflow shares one database.
  *
  * Volunteers are demo people looked up by their demo email, from families no
- * other spec uses. Emily Evans gets a self-service login for the Member Portal.
+ * other spec uses. Emily Evans signs in to the Member Portal with her email.
  */
 
 export const STORAGE_STATE_PATH = path.join(__dirname, '..', '.auth', 'admin.json');
@@ -19,10 +20,6 @@ export const STORAGE_STATE_PATH = path.join(__dirname, '..', '.auth', 'admin.jso
 const API = '/api/ministries';
 const MINISTRY_NAME = 'Hospitality';
 const EVENT_TITLE = 'Sunday Coffee Bar';
-
-const MEMBER_USERNAME = 'emily.evans';
-// Throwaway account on the pipeline's own fresh instance, deleted by removeVolunteerSeed().
-const MEMBER_PASSWORD = 'PortalVolunteer!2026';
 
 const PEOPLE = {
   emily: 'emily.evans@demo.churchcrm.io',
@@ -58,7 +55,7 @@ export interface VolunteerSeed {
 }
 
 let seed: VolunteerSeed | null = null;
-let memberLoginCreated = false;
+let restoreMemberSignIn: (() => Promise<void>) | null = null;
 
 function isoDate(offsetDays: number): string {
   const d = new Date();
@@ -92,25 +89,9 @@ export async function waitForFloatingButtonsToTuck(page: Page): Promise<void> {
   }
 }
 
-/** Ministry Settings is the one home of the V1 / V2 / Both switch. */
+/** The V1 / V2 switch lives on Feature Toggles and new installations start on V2, so specs set it through the Config API. */
 export async function setVolunteerVersion(page: Page, version: 'v1' | 'v2'): Promise<void> {
-  await page.goto('/admin/ministry-settings');
-  const select = page.locator('#ministrySettingsPanel select[name="sVolunteerVersion"]');
-  await expect(select).toBeEnabled({ timeout: 30000 });
-  if ((await select.inputValue()) === version) {
-    return;
-  }
-  await humanSelect(select, version);
-  const saved = page.waitForResponse(
-    (r) => r.url().includes('/admin/api/system/config/') && r.request().method() === 'POST'
-  );
-  await humanClick(page.locator('#ministrySettingsPanel .settings-panel-save'));
-  await saved;
-  // onSave reloads the page so the menu follows the new rollout state.
-  await page.waitForEvent('load', { timeout: 30000 });
-  await expect(page.locator('#ministrySettingsPanel select[name="sVolunteerVersion"]')).toHaveValue(version, {
-    timeout: 30000,
-  });
+  await api(page, 'POST', '/admin/api/system/config/sVolunteerVersion', { value: version });
 }
 
 async function personId(page: Page, email: string): Promise<number> {
@@ -128,14 +109,6 @@ async function deleteMinistry(page: Page, ministryId: number): Promise<void> {
   }
   await api(page, 'POST', `${API}/ministries/${ministryId}`, { active: false });
   await api(page, 'DELETE', `${API}/ministries/${ministryId}`);
-}
-
-async function deleteMemberLogin(page: Page): Promise<void> {
-  const emilyId = await personId(page, PEOPLE.emily);
-  if ((await page.request.get(`/admin/api/user/${emilyId}/permissions`)).ok()) {
-    await api(page, 'DELETE', `/admin/api/user/${emilyId}/`);
-  }
-  memberLoginCreated = false;
 }
 
 async function deleteHospitality(page: Page): Promise<void> {
@@ -325,63 +298,28 @@ export async function seedVolunteerFixture(browser: Browser): Promise<VolunteerS
   }
 }
 
-/** Removes the ministry, its events and Emily's login, and turns V2 back off. */
+/** Removes the ministry and its events and puts the sign-in settings back. V2 stays on: a new installation starts there (#10561). */
 export async function removeVolunteerSeed(browser: Browser): Promise<void> {
   const context = await browser.newContext({ baseURL: BASE_URL, storageState: STORAGE_STATE_PATH });
   const page = await context.newPage();
   try {
     await setVolunteerVersion(page, 'v2');
-    await deleteMemberLogin(page);
     await deleteHospitality(page);
-    await setVolunteerVersion(page, 'v1');
+    await restoreMemberSignIn?.();
   } finally {
     seed = null;
-    memberLoginCreated = false;
+    restoreMemberSignIn = null;
     await context.close();
   }
 }
 
-/** A self-service login for Emily, made the way an administrator makes one. */
-async function ensureMemberLogin(page: Page, emilyId: number): Promise<void> {
-  if (memberLoginCreated) {
-    return;
-  }
-  await deleteMemberLogin(page);
-
-  await page.goto(`/admin/system/users/new?personId=${emilyId}`);
-  await page.locator('#UserName').fill(MEMBER_USERNAME);
-  await page.locator('input[name="accessMode"][value="self"]').check({ force: true });
-  await page.locator('#SaveButton').click();
-  await page.waitForURL(/\/admin\/system\/users$/, { timeout: 30000 });
-
-  await page.goto(`/admin/system/user/${emilyId}/changePassword`);
-  await page.locator('#NewPassword1').fill(MEMBER_PASSWORD);
-  await page.locator('#NewPassword2').fill(MEMBER_PASSWORD);
-  await page.locator('input[type="submit"][name="Submit"]').click();
-  await page.waitForLoadState('load');
-  memberLoginCreated = true;
-}
-
-/** Emily, signed in to the Member Portal in a browser context of her own. */
+/** Emily, signed in to the Member Portal with her email, in a browser context of her own. */
 export async function memberPortalPage(admin: Page, browser: Browser): Promise<Page> {
-  const { personIds } = await ensureVolunteerSeed(admin);
-  await ensureMemberLogin(admin, personIds.emily);
+  await ensureVolunteerSeed(admin);
+  restoreMemberSignIn ??= await useMemberSignIn(admin.request);
 
-  // Playwright Test hands the project's storageState to every new context. Signing in
-  // on top of the admin cookie would regenerate that session id and end the admin
-  // session that every later workflow shares.
-  const context = await browser.newContext({
-    storageState: { cookies: [], origins: [] },
-    baseURL: BASE_URL,
-    viewport: { width: 1440, height: 900 },
-    deviceScaleFactor: 2,
-    timezoneId: 'America/Chicago',
-  });
-  const page = await context.newPage();
-  await page.goto('/session/begin');
-  await page.locator('input[name=User]').fill(MEMBER_USERNAME);
-  await page.locator('input[name=Password]').fill(MEMBER_PASSWORD);
-  await page.locator('input[name=Password]').press('Enter');
-  await page.waitForURL(/\/portal/, { timeout: 30000 });
-  return page;
+  // A context of its own: signing in on top of the admin cookie would end the
+  // admin session that every later workflow shares.
+  const context = await rememberedMemberContext(browser, PEOPLE.emily, 'volunteer');
+  return context.newPage();
 }

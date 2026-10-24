@@ -4,6 +4,7 @@
 
 import "./admin-dashboard.css";
 import "./telemetry-consent";
+import "./former-portal-accounts-notice";
 
 document.addEventListener("DOMContentLoaded", () => {
   // Bootstrap's data API is on window.bootstrap. The page bundle's jQuery
