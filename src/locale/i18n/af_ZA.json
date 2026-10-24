@@ -5997,6 +5997,8 @@
   "Invalid setting name or value": "Ongeldige instellingnaam of waarde",
   "The geocoding service did not answer — try again later": "Die geokoderingsdiens het nie geantwoord nie — probeer later weer",
   "Only the email you sent is shown.": "Slegs die e-pos wat jy gestuur het, word gewys.",
+  "%d Giving Statement": "%d Gee-verklaring",
+  "Repeat events could not be created. Check the application log for details.": "Herhalende gebeure kon nie geskep word nie. Kyk na die toepassingslogboek vir besonderhede.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} voorkoms geskep",
     "other": "\"{{name}}\": {{count}} voorkomste geskep"

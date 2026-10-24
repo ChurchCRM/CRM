@@ -24638,3 +24638,11 @@ msgstr "Dịch vụ mã hóa địa lý không phản hồi — hãy thử lại
 msgid "Only the email you sent is shown."
 msgstr "Chỉ hiển thị email bạn đã gửi."
 
+#: 
+msgid "%d Giving Statement"
+msgstr "Báo cáo đóng góp %d"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Không thể tạo các sự kiện lặp lại. Kiểm tra nhật ký ứng dụng để biết chi tiết."
+

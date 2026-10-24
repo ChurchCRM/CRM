@@ -24635,3 +24635,11 @@ msgstr "De geocoderingsdienst heeft niet gereageerd — probeer het later opnieu
 msgid "Only the email you sent is shown."
 msgstr "Alleen de e-mail die u hebt verzonden wordt getoond."
 
+#: 
+msgid "%d Giving Statement"
+msgstr "%d Geefverklaring"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Herhalende evenementen konden niet worden aangemaakt. Controleer het applicatielogboek voor details."
+

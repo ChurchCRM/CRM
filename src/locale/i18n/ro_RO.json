@@ -6029,6 +6029,8 @@
   "Invalid setting name or value": "Nume sau valoare nevalidă pentru setare",
   "The geocoding service did not answer — try again later": "Serviciul de geocodificare nu a răspuns — încercați din nou mai târziu",
   "Only the email you sent is shown.": "Este afișat doar e-mailul pe care l-ați trimis.",
+  "%d Giving Statement": "Declarație de donații %d",
+  "Repeat events could not be created. Check the application log for details.": "Evenimentele repetitive nu au putut fi create. Verificați jurnalul aplicației pentru detalii.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} apariție creată",
     "other": "\"{{name}}\": {{count}} apariții create"

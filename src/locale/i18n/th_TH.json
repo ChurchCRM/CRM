@@ -5965,6 +5965,8 @@
   "Invalid setting name or value": "ชื่อหรือค่าการตั้งค่าไม่ถูกต้อง",
   "The geocoding service did not answer — try again later": "บริการแปลงที่อยู่เป็นพิกัดไม่ตอบสนอง — โปรดลองอีกครั้งในภายหลัง",
   "Only the email you sent is shown.": "แสดงเฉพาะอีเมลที่คุณส่งเท่านั้น",
+  "%d Giving Statement": "ใบแจ้งการถวาย %d",
+  "Repeat events could not be created. Check the application log for details.": "ไม่สามารถสร้างกิจกรรมซ้ำได้ โปรดตรวจสอบบันทึกแอปพลิเคชันสำหรับรายละเอียด",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：สร้าง {{count}} การเกิดขึ้น",
     "other": "\"{{name}}\"：สร้าง {{count}} การเกิดขึ้น"

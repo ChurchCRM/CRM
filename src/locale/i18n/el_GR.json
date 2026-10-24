@@ -5997,6 +5997,8 @@
   "Invalid setting name or value": "Μη έγκυρο όνομα ή τιμή ρύθμισης",
   "The geocoding service did not answer — try again later": "Η υπηρεσία γεωκωδικοποίησης δεν απάντησε — δοκιμάστε ξανά αργότερα",
   "Only the email you sent is shown.": "Εμφανίζεται μόνο το email που στείλατε.",
+  "%d Giving Statement": "%d Δήλωση Δωρεών",
+  "Repeat events could not be created. Check the application log for details.": "Δεν ήταν δυνατή η δημιουργία επαναλαμβανόμενων εκδηλώσεων. Ελέγξτε το αρχείο καταγραφής της εφαρμογής για λεπτομέρειες.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} γεγονός δημιουργήθηκε",
     "other": "\"{{name}}\": {{count}} γεγονότα δημιουργήθηκαν"

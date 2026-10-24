@@ -24632,3 +24632,11 @@ msgstr "Hindi tumugon ang serbisyo ng geocoding — subukan muli mamaya"
 msgid "Only the email you sent is shown."
 msgstr "Ang email na ipinadala mo lang ang ipinapakita."
 
+#: 
+msgid "%d Giving Statement"
+msgstr "%d Pahayag ng Pagbibigay"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Hindi magawa ang mga paulit-ulit na kaganapan. Suriin ang log ng aplikasyon para sa mga detalye."
+

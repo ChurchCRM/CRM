@@ -24666,3 +24666,11 @@ msgstr "Die geokoderingsdiens het nie geantwoord nie — probeer later weer"
 msgid "Only the email you sent is shown."
 msgstr "Slegs die e-pos wat jy gestuur het, word gewys."
 
+#: 
+msgid "%d Giving Statement"
+msgstr "%d Gee-verklaring"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Herhalende gebeure kon nie geskep word nie. Kyk na die toepassingslogboek vir besonderhede."
+

@@ -24632,3 +24632,11 @@ msgstr "ജിയോകോഡിംഗ് സേവനം പ്രതികര�
 msgid "Only the email you sent is shown."
 msgstr "നിങ്ങൾ അയച്ച ഇമെയിൽ മാത്രമാണ് കാണിക്കുന്നത്."
 
+#: 
+msgid "%d Giving Statement"
+msgstr "%d ദാന പ്രസ്താവന"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "ആവർത്തന ഇവന്റുകൾ സൃഷ്ടിക്കാൻ കഴിഞ്ഞില്ല. വിശദാംശങ്ങൾക്ക് ആപ്ലിക്കേഷൻ ലോഗ് പരിശോധിക്കുക."
+

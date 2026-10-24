@@ -24628,3 +24628,11 @@ msgstr "Layanan geocoding tidak merespons — coba lagi nanti"
 msgid "Only the email you sent is shown."
 msgstr "Hanya email yang Anda kirim yang ditampilkan."
 
+#: 
+msgid "%d Giving Statement"
+msgstr "Laporan Pemberian %d"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Acara berulang tidak dapat dibuat. Periksa log aplikasi untuk detailnya."
+

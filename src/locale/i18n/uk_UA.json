@@ -6061,6 +6061,8 @@
   "Invalid setting name or value": "Неприпустима назва або значення налаштування",
   "The geocoding service did not answer — try again later": "Служба геокодування не відповіла — повторіть спробу пізніше",
   "Only the email you sent is shown.": "Відображається лише надісланий вами електронний лист.",
+  "%d Giving Statement": "Звіт про пожертви %d",
+  "Repeat events could not be created. Check the application log for details.": "Не вдалося створити повторювані події. Деталі див. у журналі програми.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} подія створена",
     "other": "\"{{name}}\": {{count}} подій створено"

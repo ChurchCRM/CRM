@@ -24678,3 +24678,11 @@ msgstr "புவிக்குறியீட்டுச் சேவை ப�
 msgid "Only the email you sent is shown."
 msgstr "நீங்கள் அனுப்பிய மின்னஞ்சல் மட்டுமே காட்டப்படும்."
 
+#: 
+msgid "%d Giving Statement"
+msgstr "%d கொடை அறிக்கை"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "மீண்டும் வரும் நிகழ்வுகளை உருவாக்க முடியவில்லை. விவரங்களுக்கு பயன்பாட்டு பதிவைச் சரிபார்க்கவும்."
+

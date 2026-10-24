@@ -5997,6 +5997,8 @@
   "Invalid setting name or value": "Vigane sätte nimi või väärtus",
   "The geocoding service did not answer — try again later": "Geokodeerimisteenus ei vastanud — proovige hiljem uuesti",
   "Only the email you sent is shown.": "Kuvatakse ainult teie saadetud e-kiri.",
+  "%d Giving Statement": "%d Annetuste aruanne",
+  "Repeat events could not be created. Check the application log for details.": "Korduvaid sündmusi ei õnnestunud luua. Üksikasjade saamiseks vaadake rakenduse logi.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} sündmus loodud",
     "other": "\"{{name}}\": {{count}} sündmust loodud"

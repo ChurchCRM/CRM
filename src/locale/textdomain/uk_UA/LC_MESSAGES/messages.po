@@ -24730,3 +24730,11 @@ msgstr "Служба геокодування не відповіла — пов
 msgid "Only the email you sent is shown."
 msgstr "Відображається лише надісланий вами електронний лист."
 
+#: 
+msgid "%d Giving Statement"
+msgstr "Звіт про пожертви %d"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Не вдалося створити повторювані події. Деталі див. у журналі програми."
+

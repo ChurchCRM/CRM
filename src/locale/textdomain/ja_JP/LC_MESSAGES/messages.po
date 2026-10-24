@@ -24600,3 +24600,11 @@ msgstr "ジオコーディングサービスから応答がありませんでし
 msgid "Only the email you sent is shown."
 msgstr "送信したメールのみが表示されます。"
 
+#: 
+msgid "%d Giving Statement"
+msgstr "%d 献金明細書"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "繰り返しイベントを作成できませんでした。詳細はアプリケーションログを確認してください。"
+

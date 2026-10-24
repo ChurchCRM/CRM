@@ -5965,6 +5965,8 @@
   "Invalid setting name or value": "Nama atau nilai pengaturan tidak valid",
   "The geocoding service did not answer — try again later": "Layanan geocoding tidak merespons — coba lagi nanti",
   "Only the email you sent is shown.": "Hanya email yang Anda kirim yang ditampilkan.",
+  "%d Giving Statement": "Laporan Pemberian %d",
+  "Repeat events could not be created. Check the application log for details.": "Acara berulang tidak dapat dibuat. Periksa log aplikasi untuk detailnya.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：{{count}} kejadian dibuat",
     "other": "\"{{name}}\"：{{count}} kejadian dibuat"

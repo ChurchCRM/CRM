@@ -24666,3 +24666,11 @@ msgstr "Η υπηρεσία γεωκωδικοποίησης δεν απάντη
 msgid "Only the email you sent is shown."
 msgstr "Εμφανίζεται μόνο το email που στείλατε."
 
+#: 
+msgid "%d Giving Statement"
+msgstr "%d Δήλωση Δωρεών"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Δεν ήταν δυνατή η δημιουργία επαναλαμβανόμενων εκδηλώσεων. Ελέγξτε το αρχείο καταγραφής της εφαρμογής για λεπτομέρειες."
+

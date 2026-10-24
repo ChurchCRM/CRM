@@ -5997,6 +5997,8 @@
   "Invalid setting name or value": "ልክ ያልሆነ የቅንብር ስም ወይም እሴት",
   "The geocoding service did not answer — try again later": "የጂኦኮዲንግ አገልግሎቱ ምላሽ አልሰጠም — ቆይተው እንደገና ይሞክሩ",
   "Only the email you sent is shown.": "የሚታየው እርስዎ የላኩት ኢሜይል ብቻ ነው።",
+  "%d Giving Statement": "%d የመስጠት መግለጫ",
+  "Repeat events could not be created. Check the application log for details.": "ተደጋጋሚ ክስተቶች ሊፈጠሩ አልቻሉም። ለዝርዝር መረጃ የመተግበሪያውን ምዝግብ ማስታወሻ ይመልከቱ።",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"፦ {{count}} ቀጠሮ ተፈጥሯል",
     "other": "\"{{name}}\"፦ {{count}} ቀጠሮዎች ተፈጥረዋል"

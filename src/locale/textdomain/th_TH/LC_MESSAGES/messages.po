@@ -24612,3 +24612,11 @@ msgstr "บริการแปลงที่อยู่เป็นพิก
 msgid "Only the email you sent is shown."
 msgstr "แสดงเฉพาะอีเมลที่คุณส่งเท่านั้น"
 
+#: 
+msgid "%d Giving Statement"
+msgstr "ใบแจ้งการถวาย %d"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "ไม่สามารถสร้างกิจกรรมซ้ำได้ โปรดตรวจสอบบันทึกแอปพลิเคชันสำหรับรายละเอียด"
+

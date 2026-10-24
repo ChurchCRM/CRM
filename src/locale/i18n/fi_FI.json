@@ -5997,6 +5997,8 @@
   "Invalid setting name or value": "Virheellinen asetuksen nimi tai arvo",
   "The geocoding service did not answer — try again later": "Geokoodauspalvelu ei vastannut — yritä myöhemmin uudelleen",
   "Only the email you sent is shown.": "Vain lähettämäsi sähköposti näytetään.",
+  "%d Giving Statement": "%d Lahjoitusilmoitus",
+  "Repeat events could not be created. Check the application log for details.": "Toistuvia tapahtumia ei voitu luoda. Tarkista sovelluksen loki lisätietoja varten.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} tapahtuma luotu",
     "other": "\"{{name}}\": {{count}} tapahtumaa luotu"

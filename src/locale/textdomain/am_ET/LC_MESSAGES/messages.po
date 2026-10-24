@@ -24674,3 +24674,11 @@ msgstr "የጂኦኮዲንግ አገልግሎቱ ምላሽ አልሰጠም — �
 msgid "Only the email you sent is shown."
 msgstr "የሚታየው እርስዎ የላኩት ኢሜይል ብቻ ነው።"
 
+#: 
+msgid "%d Giving Statement"
+msgstr "%d የመስጠት መግለጫ"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "ተደጋጋሚ ክስተቶች ሊፈጠሩ አልቻሉም። ለዝርዝር መረጃ የመተግበሪያውን ምዝግብ ማስታወሻ ይመልከቱ።"
+

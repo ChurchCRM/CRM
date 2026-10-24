@@ -5997,6 +5997,8 @@
   "Invalid setting name or value": "Érvénytelen beállításnév vagy érték",
   "The geocoding service did not answer — try again later": "A geokódolási szolgáltatás nem válaszolt — próbálja újra később",
   "Only the email you sent is shown.": "Csak az Ön által küldött e-mail jelenik meg.",
+  "%d Giving Statement": "%d Adománykimutatás",
+  "Repeat events could not be created. Check the application log for details.": "Az ismétlődő eseményeket nem sikerült létrehozni. Részletekért ellenőrizze az alkalmazás naplóját.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} esemény létrehozva",
     "other": "\"{{name}}\": {{count}} esemény létrehozva"

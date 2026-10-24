@@ -5997,6 +5997,8 @@
   "Invalid setting name or value": "सेटिंग का नाम या मान अमान्य है",
   "The geocoding service did not answer — try again later": "जियोकोडिंग सेवा ने जवाब नहीं दिया — बाद में फिर कोशिश करें",
   "Only the email you sent is shown.": "केवल आपके द्वारा भेजा गया ईमेल दिखाया जाता है।",
+  "%d Giving Statement": "%d दान विवरण",
+  "Repeat events could not be created. Check the application log for details.": "दोहराए जाने वाले कार्यक्रम नहीं बनाए जा सके। विवरण के लिए एप्लिकेशन लॉग देखें।",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：{{count}} घटना बनाई गई",
     "other": "\"{{name}}\"：{{count}} घटनाएं बनाई गईं"

@@ -24777,3 +24777,11 @@ msgstr "地理編碼服務未回應 — 請稍後再試"
 msgid "Only the email you sent is shown."
 msgstr "僅顯示您寄出的電子郵件。"
 
+#: 
+msgid "%d Giving Statement"
+msgstr "%d 奉獻報表"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "無法建立重複活動。請查看應用程式日誌了解詳情。"
+

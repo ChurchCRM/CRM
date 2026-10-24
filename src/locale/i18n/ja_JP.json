@@ -5965,6 +5965,8 @@
   "Invalid setting name or value": "設定名または値が無効です",
   "The geocoding service did not answer — try again later": "ジオコーディングサービスから応答がありませんでした — しばらくしてからもう一度お試しください",
   "Only the email you sent is shown.": "送信したメールのみが表示されます。",
+  "%d Giving Statement": "%d 献金明細書",
+  "Repeat events could not be created. Check the application log for details.": "繰り返しイベントを作成できませんでした。詳細はアプリケーションログを確認してください。",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：{{count}} 個の発生が作成されました",
     "other": "\"{{name}}\"：{{count}} 個の発生が作成されました"

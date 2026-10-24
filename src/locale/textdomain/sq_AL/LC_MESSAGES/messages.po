@@ -24656,3 +24656,11 @@ msgstr "Shërbimi i gjeokodimit nuk u përgjigj — provoni përsëri më vonë"
 msgid "Only the email you sent is shown."
 msgstr "Shfaqet vetëm emaili që keni dërguar."
 
+#: 
+msgid "%d Giving Statement"
+msgstr "Deklaratë Dhëniesh %d"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Ngjarjet e përsëritura nuk mund të krijoheshin. Kontrolloni regjistrin e aplikacionit për detaje."
+

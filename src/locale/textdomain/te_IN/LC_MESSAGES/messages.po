@@ -24643,3 +24643,11 @@ msgstr "జియోకోడింగ్ సేవ స్పందించల�
 msgid "Only the email you sent is shown."
 msgstr "మీరు పంపిన ఇమెయిల్ మాత్రమే చూపబడుతుంది."
 
+#: 
+msgid "%d Giving Statement"
+msgstr "%d దాన ప్రకటన"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "పునరావృత ఈవెంట్‌లను సృష్టించలేకపోయాము. వివరాల కోసం అప్లికేషన్ లాగ్‌ను తనిఖీ చేయండి."
+

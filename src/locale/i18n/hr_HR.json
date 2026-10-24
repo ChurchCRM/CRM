@@ -6029,6 +6029,8 @@
   "Invalid setting name or value": "Nevažeći naziv ili vrijednost postavke",
   "The geocoding service did not answer — try again later": "Usluga geokodiranja nije odgovorila — pokušajte ponovno kasnije",
   "Only the email you sent is shown.": "Prikazuje se samo e-pošta koju ste poslali.",
+  "%d Giving Statement": "%d Izjava o davanju",
+  "Repeat events could not be created. Check the application log for details.": "Ponavljajući događaji nisu mogli biti stvoreni. Provjerite zapisnik aplikacije za detalje.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} dogadaj kreiran",
     "other": "\"{{name}}\": {{count}} dogadaja kreirana"

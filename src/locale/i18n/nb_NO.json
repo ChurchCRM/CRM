@@ -5997,6 +5997,8 @@
   "Invalid setting name or value": "Ugyldig innstillingsnavn eller verdi",
   "The geocoding service did not answer — try again later": "Geokodingstjenesten svarte ikke — prøv igjen senere",
   "Only the email you sent is shown.": "Bare e-posten du sendte, vises.",
+  "%d Giving Statement": "%d Giverapport",
+  "Repeat events could not be created. Check the application log for details.": "Gjentaende hendelser kunne ikke opprettes. Sjekk applikasjonsloggen for detaljer.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} forekomst opprettet",
     "other": "\"{{name}}\": {{count}} forekomster opprettet"

@@ -24665,3 +24665,11 @@ msgstr "Geokodeerimisteenus ei vastanud — proovige hiljem uuesti"
 msgid "Only the email you sent is shown."
 msgstr "Kuvatakse ainult teie saadetud e-kiri."
 
+#: 
+msgid "%d Giving Statement"
+msgstr "%d Annetuste aruanne"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Korduvaid sündmusi ei õnnestunud luua. Üksikasjade saamiseks vaadake rakenduse logi."
+

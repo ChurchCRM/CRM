@@ -24666,3 +24666,11 @@ msgstr "Coğrafi kodlama hizmeti yanıt vermedi — daha sonra tekrar deneyin"
 msgid "Only the email you sent is shown."
 msgstr "Yalnızca gönderdiğiniz e-posta gösterilir."
 
+#: 
+msgid "%d Giving Statement"
+msgstr "%d Bağış Beyanı"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Tekrarlayan etkinlikler oluşturulamadı. Ayrıntılar için uygulama günlüğünü kontrol edin."
+

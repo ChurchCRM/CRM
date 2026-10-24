@@ -5997,6 +5997,8 @@
   "Invalid setting name or value": "Jina au thamani ya mpangilio si sahihi",
   "The geocoding service did not answer — try again later": "Huduma ya usimbaji wa kijiografia haikujibu — jaribu tena baadaye",
   "Only the email you sent is shown.": "Barua pepe uliyotuma pekee ndiyo inayoonyeshwa.",
+  "%d Giving Statement": "Taarifa ya Utoaji %d",
+  "Repeat events could not be created. Check the application log for details.": "Matukio yanayojirudia hayakuweza kuundwa. Angalia kumbukumbu ya programu kwa maelezo.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": tukio {{count}} la tarehe limeundwa",
     "other": "\"{{name}}\": matukio {{count}} ya tarehe yameundwa"

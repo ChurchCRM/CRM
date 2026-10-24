@@ -5997,6 +5997,8 @@
   "Invalid setting name or value": "Geçersiz ayar adı veya değeri",
   "The geocoding service did not answer — try again later": "Coğrafi kodlama hizmeti yanıt vermedi — daha sonra tekrar deneyin",
   "Only the email you sent is shown.": "Yalnızca gönderdiğiniz e-posta gösterilir.",
+  "%d Giving Statement": "%d Bağış Beyanı",
+  "Repeat events could not be created. Check the application log for details.": "Tekrarlayan etkinlikler oluşturulamadı. Ayrıntılar için uygulama günlüğünü kontrol edin.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} olay oluşturuldu",
     "other": "\"{{name}}\": {{count}} olay oluşturuldu"
