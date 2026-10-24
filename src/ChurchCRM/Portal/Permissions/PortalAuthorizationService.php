@@ -278,7 +278,7 @@ final class PortalAuthorizationService implements PortalAuthorization
      *
      * @return array<string, true>
      */
-    private static function missingScopes(array $scopes): array
+    public static function missingScopes(array $scopes): array
     {
         $ids = [];
         foreach ($scopes as $scope) {

@@ -219,12 +219,19 @@ final class PortalPermissionsService
         }
 
         $givers = [];
+        $given = [];
         foreach ($this->givenGrantsQuery()->find() as $row) {
-            $personId = (int) $row->getPersonId();
             $scope = new PortalScope((string) $row->getScopeType(), (int) $row->getScopeId());
-            if (!isset($inPopulation[$personId]) || !PortalAuthorizationService::fitsCatalog((string) $row->getCapability(), $scope)) {
+            if (isset($inPopulation[(int) $row->getPersonId()]) && PortalAuthorizationService::fitsCatalog((string) $row->getCapability(), $scope)) {
+                $given[] = [$row, $scope];
+            }
+        }
+        $missing = PortalAuthorizationService::missingScopes(array_column($given, 1));
+        foreach ($given as [$row, $scope]) {
+            if (isset($missing[$scope->key()])) {
                 continue;
             }
+            $personId = (int) $row->getPersonId();
             $giverId = $row->getGrantedByUserId() === null ? null : (int) $row->getGrantedByUserId();
             if ($giverId !== null && !array_key_exists($giverId, $givers)) {
                 $givers[$giverId] = PersonQuery::create()->findPk($giverId)?->getFullName();
