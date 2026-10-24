@@ -194,14 +194,14 @@ PortalSessionStarter::start(
 ```
 
 It does the following, in this order:
-1. **Checks.** It loads the person from the database and applies §4. `STAFF` skips the member rule. `ASSISTED` applies only the four checks listed in §6.5 and none of the others. If any check fails, it writes a "refused" audit row with the reason and throws. No session is started.
+1. **Checks.** It loads the person from the database and applies §4. `STAFF` gets only the blocks for everyone, not the member-only blocks or the member rule. `ASSISTED` applies only the four checks listed in §6.5 and none of the others. If any check fails, it writes a "refused" audit row with the reason and throws. No session is started.
 2. **Starts the session.** It regenerates the session id. It stores the principal and the person's current **session version**: a number on their sign-in row that goes up whenever all their sessions must end.
 3. **Updates the sign-in row:** first and last sign-in time and the method. For an email method, it also records the address that was proven. `ASSISTED` changes none of these.
 4. **Audits.** It writes a "signed in" audit row with the method, and the actor for `ASSISTED`.
 
 **On every portal request**, `PortalSessionMiddleware`:
 - reloads the person and their sign-in row;
-- applies the checks for the session's sign-in method again: all of §4 for the member methods, §4 without the member rule for `STAFF`, and only the four checks in §6.5 for `ASSISTED`;
+- applies the checks for the session's sign-in method again: all of §4 for the member methods, the blocks for everyone for `STAFF`, and only the four checks in §6.5 for `ASSISTED`;
 - ends the session when one of those checks fails, when the session version has changed, or when the idle time has passed;
 - records last activity, except during Login as Person.
 
@@ -281,7 +281,7 @@ Requests over a limit get the same answer screen and no email. They are audited 
 - **Signed in as staff (at `/admin`):**
   - the staff menu's **Member Portal** link opens the staff member's own portal;
   - the portal header's **Admin Console** link goes straight back.
-  - Neither link asks for anything. The portal sees a principal for their own person with method `STAFF`, which gets the §4 blocks but not the member rule.
+  - Neither link asks for anything. The portal sees a principal for their own person with method `STAFF`, which gets the blocks for everyone (§4) but not the member-only blocks or the member rule.
 - **Signed in at `/portal/login`** (email or passkey), by someone who also has a staff account:
   - the portal's **Admin Console** link goes to the `/admin` sign-in page;
   - only a username, password and two-factor sign-in there opens the staff side, and it then replaces the member session.
@@ -423,7 +423,7 @@ Today a plugin has no way into the portal (§2). This proposal adds one, built o
   - pages under `/portal/plugins/<id>/…`;
   - API under `/api/portal/plugins/<id>/…`.
 
-  Both sit behind the portal's session middleware. Each route declares its capability with `RequirePortalCapability`. Pages render with the church's portal theme, from the plugin's own `portal/templates` folder.
+  Both sit behind the portal's session middleware. The routes file receives `$routes` (`PortalPluginRoutes`), not the raw Slim group: its `get`, `post`, `put`, `patch` and `delete` each take a capability (a key or a scoped `RequirePortalCapability`) and add the check themselves, so a route can't be registered without one (deny by default, §14). A GET route must not change data; read-only Login as Person relies on it. Pages render with the church's portal theme, from the plugin's own `portal/templates` folder.
 - **Navigation.** A new optional method, `getPortalNavItems(): array`, returns items shaped `{label, url, icon, capability}`. Each shows only when the person holds the capability.
 - **Turning a plugin off.** Its capabilities, rules, pages and nav items disappear, so every check for them says no. Grants given to people stay stored. They work again if the plugin is turned back on, and are deleted when it is uninstalled.
 - **Trust.** A plugin is trusted code in the same process (#10511 §7). The model gives plugins one consistent way to decide. It doesn't sandbox them.
