@@ -143,7 +143,7 @@ final class PersonPortalAccessService
                 'capabilityLabel' => $definition?->label ?? $grant->capability,
                 'scopeName' => $scopeNames[$grant->scope->key()] ?? null,
                 'status' => $status,
-                'statusLabel' => PortalGrantService::statusLabel($status),
+                'statusLabel' => PortalGrantService::statusLabel($status, $definition),
             ];
         }
 
