@@ -289,7 +289,7 @@ export const gateCoverageTasks = {
  * https://fixtures.invalid/<name>.zip are served from it.
  */
 export const pluginFixtureTasks = {
-  async 'pluginFixtures:write'({ id, version, badSha = false }: { id: string; version: string; badSha?: boolean }) {
+  async 'pluginFixtures:write'({ id, version, badSha = false, source }: { id: string; version: string; badSha?: boolean; source?: string }) {
     const archiver = require('archiver');
     const crypto = require('crypto');
     const fs = require('fs');
@@ -315,6 +315,26 @@ export const pluginFixtureTasks = {
         hooks: []
       };
       const plugin = `<?php\n\nnamespace ChurchCRM\\Plugins\\UpgradeFixture;\n\nuse ChurchCRM\\Plugin\\AbstractPlugin;\n\nclass UpgradeFixturePlugin extends AbstractPlugin\n{\n    public function getId(): string\n    {\n        return '${id}';\n    }\n\n    public function getName(): string\n    {\n        return 'Upgrade Fixture';\n    }\n\n    public function getDescription(): string\n    {\n        return 'Cypress fixture plugin.';\n    }\n\n    public function boot(): void\n    {\n    }\n}\n`;
+      // `source` names a plugin under cypress/fixtures/plugins/ to ship instead of the generated one.
+      const sourceDir = source ? path.resolve(__dirname, '../fixtures/plugins', source) : null;
+      const files: Array<[string, string | Buffer]> = [];
+      if (sourceDir) {
+        const sourceManifest = JSON.parse(fs.readFileSync(path.join(sourceDir, 'plugin.json'), 'utf8'));
+        Object.assign(manifest, sourceManifest, { id, version });
+        const walk = (rel: string): void => {
+          for (const entry of fs.readdirSync(path.join(sourceDir, rel), { withFileTypes: true })) {
+            const child = rel === '' ? entry.name : `${rel}/${entry.name}`;
+            if (entry.isDirectory()) {
+              walk(child);
+            } else if (child !== 'plugin.json') {
+              files.push([child, fs.readFileSync(path.join(sourceDir, child))]);
+            }
+          }
+        };
+        walk('');
+      } else {
+        files.push(['src/UpgradeFixturePlugin.php', plugin]);
+      }
       const zipPath = path.join(dir, zipName);
       await new Promise<void>((resolve, reject) => {
         const out = fs.createWriteStream(zipPath);
@@ -323,12 +343,14 @@ export const pluginFixtureTasks = {
         zip.on('error', reject);
         zip.pipe(out);
         zip.append(JSON.stringify(manifest, null, 2), { name: `${id}/plugin.json`, date: new Date(0) });
-        zip.append(plugin, { name: `${id}/src/UpgradeFixturePlugin.php`, date: new Date(0) });
+        for (const [name, content] of files) {
+          zip.append(content, { name: `${id}/${name}`, date: new Date(0) });
+        }
         zip.finalize();
       });
       plugins.push({
         id,
-        name: 'Upgrade Fixture',
+        name: manifest.name,
         version,
         downloadUrl: `https://fixtures.invalid/${zipName}`,
         sha256: badSha ? '0'.repeat(64) : crypto.createHash('sha256').update(fs.readFileSync(zipPath)).digest('hex'),

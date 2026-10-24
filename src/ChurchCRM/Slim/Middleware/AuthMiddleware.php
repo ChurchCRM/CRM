@@ -9,6 +9,8 @@ use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Portal\Auth\PortalSessionStore;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Volunteer\Middleware\VolunteerPortalMemberMiddleware;
+use ChurchCRM\Volunteer\Service\VolunteerAuthorizationService;
 use ChurchCRM\Utils\RedirectUtils;
 use Laminas\Diactoros\Response;
 use Psr\Http\Message\ServerRequestInterface;
@@ -105,9 +107,11 @@ class AuthMiddleware implements MiddlewareInterface
                         return (new Response())->withStatus(302)->withHeader('Location', $result->nextStepURL);
                     }
                 }
-            } elseif ($this->isPortalPath($request) && PortalSessionStore::has()) {
+            } elseif (($this->isPortalPath($request) || $this->isPortalVolunteerApiPath($request)) && PortalSessionStore::has()) {
                 // A portal session with no staff user (member sign-in design §3).
-                // PortalSessionMiddleware validates it; every other route refuses it below.
+                // PortalSessionMiddleware validates it on /portal and /api/portal, and
+                // VolunteerPortalMemberMiddleware on the volunteer API the portal pages
+                // call; every other route refuses it below.
             } else {
                 $logger = LoggerUtils::getAppLogger();
                 $logger->warning('No authenticated user or session', [
@@ -264,12 +268,17 @@ class AuthMiddleware implements MiddlewareInterface
             return true;
         }
 
-        // The rest of the volunteer API, for a team leader only (#9868). The scope
-        // lookup is memoised per request on the User model, so asking here costs
-        // nothing on the paths that never reach this line.
+        // The rest of the volunteer API, for somebody with team authority only
+        // (#9868; member sign-in design §8.4).
         $user = AuthenticationManager::getCurrentUser();
 
-        return $user instanceof User && $user->isVolunteerTeamLeaderEnabled();
+        return $user instanceof User && (new VolunteerAuthorizationService())->hasTeamAuthority($user);
+    }
+
+    /** `/api/ministries/…` while Volunteer v2 is on: the volunteer API the portal pages call. */
+    private function isPortalVolunteerApiPath(ServerRequestInterface $request): bool
+    {
+        return User::isVolunteerV2Enabled() && VolunteerPortalMemberMiddleware::isVolunteerApiPath($request);
     }
 
     /** `/portal` and `/api/portal`, anchored at the root path and matched by whole segments. */

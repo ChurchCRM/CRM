@@ -10,6 +10,11 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Portal\Auth\PortalContext;
+use ChurchCRM\Portal\Auth\PortalPrincipal;
+use ChurchCRM\Portal\Permissions\CorePortalCapabilities;
+use ChurchCRM\Portal\Permissions\PortalAuthorizationService;
+use ChurchCRM\Portal\Permissions\PortalCapabilityRegistry;
+use ChurchCRM\Portal\Permissions\PortalScope;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use Twig\Extension\AbstractExtension;
@@ -61,6 +66,7 @@ class PortalExtension extends AbstractExtension implements GlobalsInterface
             new TwigFunction('theme_asset', [$this, 'themeAsset']),
             new TwigFunction('csrf_field', [$this, 'csrfField'], ['is_safe' => ['html']]),
             new TwigFunction('nonce', [$this, 'nonce']),
+            new TwigFunction('portal_can', [$this, 'portalCan']),
         ];
     }
 
@@ -127,6 +133,36 @@ class PortalExtension extends AbstractExtension implements GlobalsInterface
     }
 
     /**
+     * Whether the member holds a portal capability (member sign-in design §8.2),
+     * to show or hide a section or a button. `scope` is the record the template
+     * has — a team, a family — or its id; without one, holding the capability on
+     * any scope is enough. The routes and the API check again for themselves.
+     */
+    public function portalCan(string $capability, mixed $scope = null): bool
+    {
+        $principal = PortalContext::principal();
+        if (!$principal instanceof PortalPrincipal) {
+            return false;
+        }
+
+        $authz = new PortalAuthorizationService();
+        if ($scope === null) {
+            return $authz->scopesFor($principal, $capability) !== [];
+        }
+
+        if (!$scope instanceof PortalScope) {
+            $id = is_array($scope) ? ($scope['id'] ?? null) : $scope;
+            if (!is_int($id) && !(is_string($id) && ctype_digit($id))) {
+                return false;
+            }
+            $type = PortalCapabilityRegistry::get($capability)?->scopeType ?? PortalScope::NONE;
+            $scope = new PortalScope($type, (int) $id);
+        }
+
+        return $authz->decide($principal, $capability, $scope)->allowed;
+    }
+
+    /**
      * @return array<string, mixed>
      */
     public function getGlobals(): array
@@ -147,11 +183,11 @@ class PortalExtension extends AbstractExtension implements GlobalsInterface
                 // `bPortalDeveloperMode` (#9864): the template cache is off and
                 // PortalTwig prints the template name in an HTML comment.
                 'developerMode' => PortalTwig::isDeveloperMode(),
-                // The Admin → Member Portal section switches (#9864). A theme
-                // that draws its own home page reads these to decide whether a
-                // section belongs on the page at all.
-                'showCalendar' => SystemConfig::getBooleanValue('bPortalShowCalendar'),
-                'showVolunteer' => SystemConfig::getBooleanValue('bPortalShowVolunteer'),
+                // Whether the calendar and volunteering sections are there for
+                // this member: their switches (#9864) through the capabilities.
+                // A theme drawing its own home page reads these.
+                'showCalendar' => $this->portalCan(CorePortalCapabilities::CALENDAR_VIEW),
+                'showVolunteer' => $this->portalCan(CorePortalCapabilities::VOLUNTEER_USE),
                 'allowBirthdayEdit' => SystemConfig::getBooleanValue('bPortalAllowBirthdayEdit'),
                 // Whether the active theme (or the default it falls back to)
                 // carries these optional files, so the layout can skip a <link>
@@ -288,11 +324,9 @@ class PortalExtension extends AbstractExtension implements GlobalsInterface
             // Empty when nobody has uploaded a photo, like profile.photoUrl.
             'avatarUrl' => PortalSelfService::getPhotoUrl($person, $person),
             'familyId' => (int) $person->getFamId(),
-            // True when this person holds a volunteer `team` scope — including on
-            // a self-service login, which is the whole of the D14 revision (P17,
-            // #9867). MP7 turns it into the "My Teams" nav entry; until then it is
-            // a fact a theme may already render.
-            'isTeamLeader' => $staffUser?->isVolunteerTeamLeaderEnabled() === true,
+            // Kept for themes written before portal_can(); new templates ask
+            // portal_can('volunteer.team.manage') instead.
+            'isTeamLeader' => $this->portalCan(CorePortalCapabilities::TEAM_MANAGE),
             'isStaff' => $staffUser !== null && !$staffUser->isEditSelfExclusive(),
         ];
     }

@@ -4,6 +4,8 @@ use ChurchCRM\Authentication\Exceptions\PasswordChangeException;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Portal\Auth\PortalContext;
+use ChurchCRM\Portal\Permissions\CorePortalCapabilities;
+use ChurchCRM\Portal\Permissions\RequirePortalCapability;
 use ChurchCRM\Portal\PortalAccountPages;
 use ChurchCRM\Portal\PortalNav;
 use ChurchCRM\Portal\PortalSelfService;
@@ -59,7 +61,7 @@ $group->get('/profile/edit', function (Request $request, Response $response) use
         ],
         PortalNav::PROFILE
     );
-});
+})->add(RequirePortalCapability::any(CorePortalCapabilities::PROFILE_EDIT));
 
 // The account pages: password and two-factor, owned by the portal so that every
 // role — member, staff and administrator — stays

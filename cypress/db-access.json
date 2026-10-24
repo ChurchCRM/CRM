@@ -17,6 +17,14 @@
             "kind": "fixture",
             "reason": "Member sign-in row 4 (#10463): a head of household with no birth year and an unconfirmed address (row 11 writes it during the upgrade) have no HTTP surface; the person editor that sets a birth year is a legacy form."
         },
+        "cypress/e2e/api/private/plugins/private.portal.plugin-permissions.spec.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in row 3 (#10463): the portal grants an administrator gives on a plugin's capabilities have no HTTP surface until row 9 adds the person page."
+        },
+        "cypress/e2e/api/private/standard/private.portal.permissions.spec.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in row 2 (#10463): given portal grants, the session timeout behind a portal-only session, and a person's family role and birth year for the adult rule have no HTTP surface until row 9 adds the admin pages."
+        },
         "cypress/e2e/api/private/standard/private.portal.session.spec.js": {
             "kind": "fixture",
             "reason": "Member sign-in row 1 (#10463): Disable sign-in, the session version, the timeouts and the sign-in audit have no HTTP surface until rows 4 and 9 add the admin pages."

@@ -5,12 +5,14 @@ namespace ChurchCRM\Authentication;
 use ChurchCRM\Authentication\AuthenticationProviders\APITokenAuthentication;
 use ChurchCRM\Authentication\AuthenticationProviders\IAuthenticationProvider;
 use ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication;
+use ChurchCRM\Authentication\AuthenticationProviders\PortalMemberAuthentication;
 use ChurchCRM\Authentication\Requests\APITokenAuthenticationRequest;
 use ChurchCRM\Authentication\Requests\AuthenticationRequest;
 use ChurchCRM\Authentication\Requests\LocalTwoFactorTokenRequest;
 use ChurchCRM\Authentication\Requests\LocalUsernamePasswordRequest;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\Portal\Auth\PortalMemberUser;
 use ChurchCRM\Service\NotificationService;
 use ChurchCRM\Utils\ChurchCRMReleaseManager;
 use ChurchCRM\Utils\LoggerUtils;
@@ -23,12 +25,23 @@ class AuthenticationManager
 
     // API-key authentication is stateless: its provider lives for one request and is
     // never written to the session, so an API call can neither create a login session
-    // nor replace the browser session that may arrive with it.
-    private static ?APITokenAuthentication $requestProvider = null;
+    // nor replace the browser session that may arrive with it. A portal member acting
+    // on the volunteer API is held the same way.
+    private static APITokenAuthentication|PortalMemberAuthentication|null $requestProvider = null;
 
     public static function clearRequestProvider(): void
     {
         self::$requestProvider = null;
+    }
+
+    /**
+     * For this request only, the portal session's person is the current user of
+     * the volunteer API (`VolunteerPortalMemberMiddleware`). No staff route sees it:
+     * AuthMiddleware clears it at the start of every request.
+     */
+    public static function actAsPortalMember(PortalMemberUser $member): void
+    {
+        self::$requestProvider = new PortalMemberAuthentication($member);
     }
 
     public static function getAuthenticationProvider(): IAuthenticationProvider

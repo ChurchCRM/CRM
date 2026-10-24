@@ -140,6 +140,48 @@ $app->group('/my-plugin/api', function (RouteCollectorProxy $group) use ($plugin
 
 Pattern: [`plugin-development.md → Plugin Routes`](./plugin-development.md#plugin-routes-routesroutesphp).
 
+### Member Portal pages (optional)
+
+A plugin can add pages, API and nav items to the Member Portal. Each names a portal capability, and only members who hold it see it.
+
+```json
+"portalRoutesFile": "portal/routes.php",
+"portal": {
+    "capabilities": [
+        { "key": "plugin.my-plugin.roster.view", "label": "See a group's roster",
+          "description": "See who is in a group they belong to.", "scopeType": "group" }
+    ]
+}
+```
+
+```php
+// src/MyPluginPlugin.php: who holds it (a rule) and where it shows (a nav item)
+public function getPortalRules(): array
+{
+    return [new CallbackPortalRule('plugin.my-plugin.members', fn (Person $person): array => [
+        new PortalRuleGrant('plugin.my-plugin.roster.view', PortalScope::group(7), 'Member of Choir'),
+    ])];
+}
+
+public function getPortalNavItems(): array
+{
+    return [['label' => 'Rosters', 'url' => '/portal/plugins/my-plugin/rosters',
+             'icon' => 'fa-solid fa-list', 'capability' => 'plugin.my-plugin.roster.view']];
+}
+```
+
+```php
+// portal/routes.php: included for pages ($portalArea 'pages', under /portal/plugins/my-plugin)
+// and for the API ($portalArea 'api', under /api/portal/plugins/my-plugin)
+if ($portalArea === 'pages') {
+    $group->get('/rosters/{groupId:[0-9]+}', function ($request, $response) {
+        return PortalTwig::renderPluginPage($response, 'my-plugin', 'roster.html.twig', ['pageTitle' => 'Roster']);
+    })->add(RequirePortalCapability::onRouteArgument('plugin.my-plugin.roster.view', 'groupId'));
+}
+```
+
+Templates live in `portal/templates/` and extend the church's portal theme (`{% extends "layout.html.twig" %}`). Keys start with `plugin.<id>.`; an undeclared key is always refused. Turning the plugin off removes all of it; grants an administrator gave stay stored and are deleted on uninstall. Reference: [`plugin-development.md → Member Portal`](./plugin-development.md#member-portal-pages-capabilities-and-nav).
+
 ## 5. Translations (optional)
 
 Community plugins keep translations inside the plugin directory.

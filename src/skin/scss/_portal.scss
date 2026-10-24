@@ -492,6 +492,14 @@ html {
     font-size: 0.875rem;
 }
 
+.portal-member-contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.125rem 0.75rem;
+    font-size: 0.875rem;
+    overflow-wrap: anywhere;
+}
+
 .portal-member-badge {
     padding: 0.1rem 0.6rem;
     border-radius: 999px;

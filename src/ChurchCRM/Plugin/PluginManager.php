@@ -3,7 +3,9 @@
 namespace ChurchCRM\Plugin;
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\LoggerUtils;
+use Slim\Routing\RouteCollectorProxy;
 
 /**
  * Manages ChurchCRM plugins: discovery, loading, activation, and lifecycle.
@@ -16,6 +18,12 @@ use ChurchCRM\Utils\LoggerUtils;
  */
 class PluginManager
 {
+    /** `$portalArea` in a plugin's portal routes file: pages under /portal/plugins/{id}. */
+    public const PORTAL_PAGES = 'pages';
+
+    /** `$portalArea` in a plugin's portal routes file: API under /api/portal/plugins/{id}. */
+    public const PORTAL_API = 'api';
+
     /**
      * Base path to plugins directory.
      */
@@ -549,6 +557,16 @@ class PluginManager
     }
 
     /**
+     * Metadata of every discovered plugin, active or not.
+     *
+     * @return array<string, PluginMetadata>
+     */
+    public static function getDiscoveredPluginMetadata(): array
+    {
+        return self::$discoveredPlugins;
+    }
+
+    /**
      * Get all discovered plugins with their status.
      *
      * @return array<int, array{
@@ -957,6 +975,75 @@ class PluginManager
         }
 
         return $menuItems;
+    }
+
+    /**
+     * The Member Portal nav items of the active plugins (member sign-in design
+     * §8.5), each with a root-path URL and an id. Items without a label, a
+     * capability or a `/portal/` URL are dropped.
+     *
+     * @return array<int, array{id: string, label: string, url: string, icon: string, capability: string}>
+     */
+    public static function getPortalNavItems(): array
+    {
+        $items = [];
+        foreach (self::$loadedPlugins as $pluginId => $plugin) {
+            try {
+                foreach (array_values($plugin->getPortalNavItems()) as $index => $item) {
+                    $label = $item['label'] ?? null;
+                    $url = $item['url'] ?? null;
+                    $capability = $item['capability'] ?? null;
+                    if (!is_string($label) || $label === '' || !is_string($capability) || $capability === '' || !is_string($url) || !str_starts_with($url, '/portal/')) {
+                        continue;
+                    }
+                    $items[] = [
+                        'id' => is_string($item['id'] ?? null) ? $item['id'] : 'plugin.' . $pluginId . '.' . $index,
+                        'label' => $label,
+                        'url' => SystemURLs::getRootPath() . $url,
+                        'icon' => is_string($item['icon'] ?? null) ? $item['icon'] : 'fa-solid fa-puzzle-piece',
+                        'capability' => $capability,
+                    ];
+                }
+            } catch (\Throwable $e) {
+                LoggerUtils::getAppLogger()->error("Error getting portal nav items from plugin: {$pluginId}", [
+                    'error' => $e->getMessage(),
+                ]);
+            }
+        }
+
+        return $items;
+    }
+
+    /**
+     * Mount the `portalRoutesFile` of every active plugin under
+     * `{group}/plugins/{id}` (member sign-in design §8.5). The file is included
+     * with `$group` (that sub-group), `$portalArea` (PORTAL_PAGES or PORTAL_API)
+     * and `$plugin`, once for the portal pages and once for its API.
+     */
+    public static function registerPortalRoutes(RouteCollectorProxy $group, string $portalArea): void
+    {
+        foreach (self::$loadedPlugins as $pluginId => $plugin) {
+            $metadata = self::$discoveredPlugins[$pluginId] ?? null;
+            $routesFile = $metadata?->getPortalRoutesFile();
+            if ($routesFile === null || $routesFile === '') {
+                continue;
+            }
+
+            $pluginPath = realpath($metadata->getPath());
+            $routesPath = realpath($metadata->getPath() . '/' . $routesFile);
+            if ($pluginPath === false || $routesPath === false || !str_starts_with($routesPath, $pluginPath . DIRECTORY_SEPARATOR)) {
+                LoggerUtils::getAppLogger()->warning('Plugin portal routes file not found', ['plugin' => $pluginId]);
+                continue;
+            }
+
+            try {
+                $group->group('/plugins/' . $pluginId, function (RouteCollectorProxy $group) use ($routesPath, $portalArea, $plugin): void {
+                    require $routesPath;
+                });
+            } catch (\Throwable $e) {
+                LoggerUtils::getAppLogger()->error("Error loading plugin portal routes: $pluginId", ['error' => $e->getMessage()]);
+            }
+        }
     }
 
     /**

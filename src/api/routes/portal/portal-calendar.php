@@ -5,6 +5,8 @@ use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Portal\Auth\PortalContext;
 use ChurchCRM\Portal\Auth\PortalSessionMiddleware;
+use ChurchCRM\Portal\Permissions\CorePortalCapabilities;
+use ChurchCRM\Portal\Permissions\RequirePortalCapability;
 use ChurchCRM\Portal\PortalApiMiddleware;
 use ChurchCRM\Portal\PortalCalendarService;
 use ChurchCRM\Portal\PortalCalendarSubscription;
@@ -37,7 +39,8 @@ use Slim\Routing\RouteCollectorProxy;
  */
 $app->group('/portal/calendar', function (RouteCollectorProxy $group): void {
     $group->get('/events', 'getPortalCalendarEventsAPI');
-})->add(new PortalApiMiddleware())->add(new PortalSessionMiddleware());
+})->add(RequirePortalCapability::any(CorePortalCapabilities::CALENDAR_VIEW))
+    ->add(new PortalApiMiddleware())->add(new PortalSessionMiddleware());
 
 /*
  * `/api/portal/calendar/subscription` — the member's own iCalendar feed
@@ -60,7 +63,9 @@ $app->group('/portal/calendar/subscription', function (RouteCollectorProxy $grou
     $group->put('', 'putPortalCalendarSubscriptionAPI');
     $group->put('/', 'putPortalCalendarSubscriptionAPI');
     $group->post('/reset', 'resetPortalCalendarSubscriptionAPI');
-})->add(new CSRFMiddleware())->add(new PortalApiMiddleware())->add(new PortalSessionMiddleware());
+})->add(new CSRFMiddleware())
+    ->add(RequirePortalCapability::any(CorePortalCapabilities::CALENDAR_VIEW))
+    ->add(new PortalApiMiddleware())->add(new PortalSessionMiddleware());
 
 /**
  * GET /api/portal/calendar/events?from=YYYY-MM-DD&to=YYYY-MM-DD

@@ -46,6 +46,8 @@ src/plugins/
         ├── src/{PluginClass}.php
         ├── routes/routes.php       # optional
         ├── views/…                 # optional
+        ├── portal/routes.php       # optional — Member Portal pages and API
+        ├── portal/templates/…      # optional — their Twig templates
         └── locale/                 # optional — see Localization below
             ├── textdomain/{locale}/LC_MESSAGES/{plugin-id}.mo
             └── i18n/{locale}.json
@@ -126,6 +128,48 @@ High-level steps:
    translations.
 5. **Before submitting** a community plugin: run the static-analysis
    pass in `plugin-security-scan.md` against your own code.
+
+---
+
+## Member Portal pages (optional)
+
+A plugin can add pages, an API and nav items to the Member Portal
+(member sign-in design §8.5). Each names a **portal capability** the
+plugin declares in `plugin.json`; only members who hold it see it.
+
+```json
+"portalRoutesFile": "portal/routes.php",
+"portal": {
+    "capabilities": [
+        { "key": "plugin.my-plugin.notices", "label": "Read the notice board",
+          "description": "Read the church notice board.", "scopeType": "none" }
+    ]
+}
+```
+
+- **Who holds it:** a rule from `getPortalRules()` (worked out live), or a
+  grant an administrator gives on the person's page.
+- **Pages and API:** `portalRoutesFile` is included with `$group` and
+  `$portalArea` — `'pages'` under `/portal/plugins/{id}/…`, `'api'` under
+  `/api/portal/plugins/{id}/…` — behind the portal session. Guard every
+  route with `RequirePortalCapability`, and render pages with
+  `PortalTwig::renderPluginPage()` from `portal/templates/`.
+- **Nav:** `getPortalNavItems()` returns `{label, url, icon, capability}`.
+- **Off and uninstall:** a disabled plugin's capabilities are refused and
+  its pages and nav disappear; given grants stay and are deleted on
+  uninstall.
+
+```php
+// portal/routes.php
+if ($portalArea === 'pages') {
+    $group->get('/notices', function ($request, $response) {
+        return PortalTwig::renderPluginPage($response, 'my-plugin', 'notices.html.twig', ['pageTitle' => 'Notices']);
+    })->add(RequirePortalCapability::any('plugin.my-plugin.notices'));
+}
+```
+
+A complete example is the Cypress fixture
+`cypress/fixtures/plugins/portal-example/`.
 
 ---
 

@@ -33,6 +33,7 @@ Theme authors: https://docs.churchcrm.io/administration/member-portal-theme-guid
 | P15 | The volunteer member pages are portal Twig templates around the `webpack/portal/` volunteer bundles and `/api/ministries/me/*`. |
 | P16 | Member-facing volunteer functionality exists only in the portal; the admin shell keeps "Ministries". |
 | P17 | Volunteer scopes count for self-service accounts: team leaders manage their own team. Coordinators and managers are staff accounts. |
+| P18 | Every portal page, API route and nav entry names a portal capability (`ChurchCRM\Portal\Permissions`, member sign-in design §8). Core and plugins register capabilities and rules the same way (`plugin-development.md` -> "Member Portal"). |
 
 Out of scope: contribution history and online giving, per-event visibility flags, member directory search (needs a privacy model; the team leader's name-only Add Volunteer picker, #10531, is not that), personal-device check-in, theme editor or upload UI, theming the admin shell.
 
@@ -43,6 +44,7 @@ src/portal/                  index.php, routes/*.php, .htaccess
 src/ChurchCRM/Portal/        ThemeManager, ThemeValidator, PortalTwig, PortalExtension, PortalNav,
                              PortalAccessMiddleware, ThemeAssetStreamer, PortalSelfService, PortalTeams,
                              PortalCalendar*, PortalAccountPages, PortalStatsService, PortalSettings
+src/ChurchCRM/Portal/Permissions/  portal capabilities, rules, grants, RequirePortalCapability
 src/Include/themes/default/  theme.css, images/, templates/**/*.twig (layout, partials, pages, errors)
 src/admin/routes/member-portal.php, src/admin/routes/api/member-portal.php, src/admin/views/member-portal.php
 src/api/routes/portal/       /api/portal/* (portal-me, portal-calendar, portal-emails)
@@ -113,7 +115,8 @@ Both error pages render from the default theme, so they always render. The porta
 | `nonce()` | `SystemURLs::getCSPNonce()` |
 | `church` | `{name, address, city, state, zip, phone, email, website, logoUrl, logoOnDarkUrl, socialLinks}` from `ChurchMetaData`; `socialLinks` is `[{id, label, url, icon}]` |
 | `member` | `{id, firstName, lastName, fullName, email, avatarUrl, familyId, isTeamLeader, isStaff}` |
-| `nav` | `PortalNav` model: `[{id, label, url, icon, active, badge}]` |
+| `portal_can(capability, scope)` | the portal permissions check, for showing a section or button; routes use `RequirePortalCapability` |
+| `nav` | `PortalNav` model: `[{id, label, url, icon, capability, active, badge}]`, each entry shown when the member holds its capability |
 | `flash` | `[{type, message}]` from the session |
 | `portal` | `{rootPath, themeName, locale, isRTL, developerMode}` |
 | `email_wrap` (filter) | escaped address with `<wbr>` after `@` and before each `.` |
@@ -186,10 +189,10 @@ Cards: next portal-visible events, the member's next volunteer assignment and pe
 
 - Read: own person and family.
 - Edit own person: name parts, title/suffix, email, work email, phones, birthday (`bPortalAllowBirthdayEdit`), photo. Writes: `POST /api/portal/me`, `POST /api/portal/me/photo` (calls `Person::setImageFromBase64()` for the member's own record).
-- Edit family (adults only: head/spouse): address, city, state, zip, country, home phone, email, wedding date. Other members are view-only. "Add a family member" (adults only) creates a pending self-registration entry (`Person::SELF_REGISTER`) for staff review. `POST /api/portal/family`, `POST /api/portal/family/members`.
+- Edit family (`portal.family.edit`, an adult of the family): address, city, state, zip, country, home phone, wedding date; email belongs to people, not families. Other members are view-only. "Add a family member" (`portal.family.edit`) creates a pending self-registration entry (`Person::SELF_REGISTER`) for staff review. `POST /api/portal/family`, `POST /api/portal/family/members`.
 - Every write goes through `InputSanitizationMiddleware` and a field allow-list, and writes a timeline `Note` "edited via the Member Portal". Dates travel as ISO `YYYY-MM-DD`, sanitized as `text`; the service parses them strictly, so `2026-02-31` is refused.
 - Photos: the portal serves its own copies because `isLimitedAccessAllowedPath()` confines self-service sessions to `/portal` and `/api/portal`. `GET /api/portal/me/photo` (cached privately for `Photo::CACHE_DURATION_SECONDS`) and `GET /api/portal/family/members/{personId}/photo` (`private, no-store`) serve through the `Photo` object; every `photoUrl` the portal hands out points at them with `?v=<mtime>`. The family photo route is the one place a portal route takes a person id; it checks the id against the actor's own family, and anything else is 404, never 403.
-- Confirm family details (`/portal/family/confirm`, `POST /api/portal/family/confirm`): writes the same `verify` note as `/external/verify`, with `Person::SELF_VERIFY` as the enterer because People -> Verify selects on it. Every family member may confirm. The emailed verify-token link keeps serving people without logins.
+- Confirm family details (`/portal/family/confirm`, `POST /api/portal/family/confirm`): writes the same `verify` note as `/external/verify`, with `Person::SELF_VERIFY` as the enterer because People -> Verify selects on it. Confirming needs `portal.family.confirm` (an adult of the family). The emailed verify-token link keeps serving people without logins.
 - A member with no family (or no person record) gets `family/none.html.twig` with HTTP 200: "You are not currently associated with a family", plus Church Information email as `mailto:` and phone as `tel:` (each omitted when empty; with neither, "Please contact the church office."). The portal 404 is for URLs that do not exist.
 - Password and two-factor: `GET/POST /portal/profile/password` and `GET /portal/profile/two-factor`, in the portal layout for every role, so an administrator who changes a password from the portal stays in the portal. They act on the signed-in account and work with no linked person. `PortalAccountPages` is the single place a portal account page becomes a response; `User::userChangePassword()`, the form ids and the `PasswordChange.js` / `two-factor-enrollment` bundles are shared. `/v2/user/current/changepassword` and `/v2/user/current/manage2fa` render through the same class and stay at those URLs: `LocalAuthentication` returns them as `nextStepURL` for forced flows, which match `REQUEST_URI` to break their own redirect loop. The password template's `formAction` is a variable set by each route, never taken from the request.
 
@@ -204,7 +207,7 @@ Cards: next portal-visible events, the member's next volunteer assignment and pe
 
 ### Volunteering (`/portal/volunteer/schedule`, `/portal/volunteer/opportunities`)
 
-Twig templates (`volunteer/schedule.html.twig`, `volunteer/opportunities.html.twig`) extending the portal layout load the `webpack/portal/volunteer-*.ts` bundles, which render from `/api/ministries/me/*`. The nav carries one **Volunteering** entry pointing at the schedule; the two pages carry a tab bar (*My schedule* / *Find something to do*). The entry and both routes share `PortalNav::isVolunteeringVisible()` (`User::isVolunteerV2Enabled()` and `bPortalShowVolunteer`). The layout loads `bootbox`, and `portal.min.js` defines `window.CRM.escapeHtml` when `CRMJSOM.js` is absent.
+Twig templates (`volunteer/schedule.html.twig`, `volunteer/opportunities.html.twig`) extending the portal layout load the `webpack/portal/volunteer-*.ts` bundles, which render from `/api/ministries/me/*`. The nav carries one **Volunteering** entry pointing at the schedule; the two pages carry a tab bar (*My schedule* / *Find something to do*). The entry and both routes ask the portal capability `portal.volunteer.use`, on while `User::isVolunteerV2Enabled()` and `bPortalShowVolunteer` are. The layout loads `bootbox`, and `portal.min.js` defines `window.CRM.escapeHtml` when `CRMJSOM.js` is absent.
 
 ### My Teams (`/portal/teams`, `/portal/teams/{teamId}`, `/portal/teams/{teamId}/occurrences/{id}`)
 
@@ -215,7 +218,7 @@ For team leaders and staff who lead a team. The team page is the ministry page's
 - No `/api/portal/teams/*` namespace: the index is server-rendered from `PortalTeams`; the other pages call volunteer endpoints that authorize per record, including the team-keyed `GET /volunteer/teams/{id}/qualification-matrix` and `GET /volunteer/teams/{id}/schedules` (behind `VolunteerTeamMiddleware`).
 - `VolunteerCoordinatorRoleAuthMiddleware` admits `isVolunteerCoordinatorEnabled() || isVolunteerTeamLeaderEnabled()`. `isVolunteerCoordinatorEnabled()` stays false for self-service logins, which keeps the Ministries menu heading hidden for them.
 - `teams/occurrence.html.twig` reproduces the ids `occurrence.ts` expects and loads `ministries-occurrence.min.js`; the linked calendar event is named, not linked, because `/event/view/{id}` is an admin-shell page. Its Assign dialog is the admin one, *Record they accepted* box included (#10528).
-- The nav shows `My Teams` only with an explicit `team` grant (`isVolunteerTeamLeaderEnabled()`); `/portal/teams` also admits a coordinator, manager or administrator opening the portal as themselves.
+- The nav entry and every team page ask `volunteer.team.manage` on the team (`RequirePortalCapability`); another team's page is 404. Staff permissions add nothing: a coordinator, manager or administrator opening the portal sees only the teams they lead, and runs the rest from the ministry page.
 - Shared components live in `webpack/ministries/components/` (`ui.ts`, `positions-table.ts`, `qualification-matrix.ts`, `schedules-table.ts`, `occurrences-table.ts`) and take a context object. Each looks up its controls by id and is inert when one is absent. `webpack/common/crm-helpers.ts` installs `window.CRM.escapeHtml`, `escapeAttribute` and `buildActionMenu` when absent; the portal has no DataTables, so its tables are plain tables.
 
 ### Email History (`/portal/email-history`, `/portal/email-history/{id}`)
