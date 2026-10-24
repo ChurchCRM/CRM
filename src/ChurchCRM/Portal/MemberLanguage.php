@@ -128,7 +128,7 @@ final class MemberLanguage
             try {
                 $value = PersonSigninQuery::create()->findPk($personId)?->getLanguage();
             } catch (Throwable $e) {
-                // A database the 7.9.0 upgrade has not reached yet has no column.
+                // A database the 7.8.3 upgrade has not reached yet has no column.
                 LoggerUtils::getAppLogger()->debug('Could not read the member language', ['message' => $e->getMessage()]);
                 $value = null;
             }

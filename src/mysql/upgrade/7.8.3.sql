@@ -421,7 +421,7 @@ ON DUPLICATE KEY UPDATE
   `psi_LastActivity` = GREATEST(COALESCE(`psi_LastActivity`, u.`usr_LastPortalActivity`), COALESCE(u.`usr_LastPortalActivity`, `psi_LastActivity`));
 
 -- A self-service account's language (its ui.locale user setting) becomes the
--- person's portal language, when it is one of the languages 7.9.0 ships
+-- person's portal language, when it is one of the languages 7.8.3 ships
 -- (src/locale/locales.json). A language already on the sign-in row wins.
 INSERT INTO `person_signin_psi` (`psi_per_ID`, `psi_Language`) SELECT
   u.`usr_per_ID`, TRIM(s.`setting_value`)

@@ -132,7 +132,7 @@ describe("7.8.3 upgrade: the release-day cutover", () => {
         });
     });
 
-    it("carries a self-service account's language to the sign-in row when 7.9.0 ships it", () => {
+    it("carries a self-service account's language to the sign-in row when 7.8.3 ships it", () => {
         signInRowOf("selfService").its("psi_Language").should("eq", "fr_FR");
         signInRowOf("unconfirmed").its("psi_Language").should("eq", "es_MX");
         signInRowOf("dormantFlags").its("psi_Language").should("be.null");
