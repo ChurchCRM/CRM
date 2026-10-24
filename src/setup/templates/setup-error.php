@@ -5,14 +5,6 @@ $sPageTitle = 'ChurchCRM – Setup Error';
 
 require_once __DIR__ . '/header.php';
 ?>
-<style>
-    .wizard .content > .body {
-        width: 100%;
-        height: auto;
-        padding: 15px;
-        position: relative;
-    }
-</style>
 <h1 class="text-center">Welcome to ChurchCRM Setup Error</h1>
 <p/><br/>
   <div class="error-page">

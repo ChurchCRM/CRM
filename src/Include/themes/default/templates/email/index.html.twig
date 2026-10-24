@@ -7,8 +7,9 @@
   while it is open.
 
   Variables: `emails`, `page`, `pages`, `total`, `previousUrl`, `nextUrl`
-  (see docs/portal-templates.md). Every date and status word arrives already
-  formatted; the template only prints.
+  (see docs/portal-templates.md). Only mail that was sent is listed, with no
+  delivery status. Every date and label arrives already formatted; the
+  template only prints.
 
   The subject links to the detail page. The rows are a table on a wide screen
   and a stack of blocks on a phone — the same list either way, so the markup
@@ -36,7 +37,6 @@
                     <th scope="col">{{ gettext('Date') }}</th>
                     <th scope="col">{{ gettext('Type') }}</th>
                     <th scope="col">{{ gettext('Subject') }}</th>
-                    <th scope="col">{{ gettext('Status') }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -52,9 +52,6 @@
                         <a class="portal-card-link portal-email-subject"
                            href="{{ url('/portal/email-history/' ~ email.id) }}"
                            data-email-subject>{{ email.subject|default(gettext('(no subject)')) }}</a>
-                    </td>
-                    <td class="portal-table-cell" data-label="{{ gettext('Status') }}">
-                        <span class="portal-email-status is-{{ email.status }}" data-email-status>{{ email.statusLabel }}</span>
                     </td>
                 </tr>
                 {% endfor %}

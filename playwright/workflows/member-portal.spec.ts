@@ -72,7 +72,7 @@ test('admin-member-portal-calendars', async ({ page }, testInfo) => {
   await page.goto('/admin/member-portal');
   await humanClick(page.locator('#portal-calendars-tab'));
   await expect(page.locator('#portal-calendars')).toBeVisible();
-  await expect(page.locator('.portal-calendar-switch:checked')).toHaveCount(2);
+  await expect(page.locator('.portal-calendar-switch:checked')).toHaveCount(demo?.sharedCalendarCount ?? 0);
   await settle(page, 600);
 
   await captureScreen(page, testInfo, {
@@ -80,6 +80,7 @@ test('admin-member-portal-calendars', async ({ page }, testInfo) => {
     title: 'Member Portal Calendars',
     category: 'Admin & Settings',
     purpose: 'Choose which church and holiday calendars members see in the Member Portal.',
+    usedIn: ['docs'],
   });
 });
 
@@ -97,6 +98,7 @@ test.describe('signed in as a member', () => {
       title: 'Member Portal Home Page',
       category: 'People & Families',
       purpose: 'A member signs in to their own portal: upcoming events, family and profile.',
+      usedIn: ['docs'],
     });
   });
 
@@ -138,13 +140,14 @@ test.describe('signed in as a member', () => {
       title: 'Member Portal: My Family',
       category: 'People & Families',
       purpose: 'Members see their household and address, with a new member awaiting review.',
+      usedIn: ['docs'],
     });
   });
 
   test('portal-member-calendar', async ({ page }, testInfo) => {
     await signInAsPortalMember(page);
     await page.goto('/portal/calendar');
-    await expect(page.locator('.portal-calendar-legend-item')).toHaveCount(2);
+    await expect(page.locator('.portal-calendar-legend-item')).toHaveCount(demo?.sharedCalendarCount ?? 0);
     await waitForCalendarEvents(page);
     await listViewWhenNarrow(page);
     await settle(page, 800);
@@ -154,6 +157,7 @@ test.describe('signed in as a member', () => {
       title: 'Member Portal Calendar',
       category: 'Groups & Events',
       purpose: 'Members browse the calendars the church shares, color-coded with a legend.',
+      usedIn: ['docs'],
     });
   });
 
@@ -165,7 +169,9 @@ test.describe('signed in as a member', () => {
     await humanClick(page.locator('#portal-calendar-subscribe'));
     const dialog = page.locator('#portal-calendar-subscribe-dialog');
     await expect(dialog).toBeVisible();
-    await expect(dialog.locator('#portal-calendar-subscribe-choices input[type=checkbox]')).toHaveCount(2);
+    await expect(dialog.locator('#portal-calendar-subscribe-choices input[type=checkbox]')).toHaveCount(
+      demo?.sharedCalendarCount ?? 0,
+    );
     await humanPause(page, 400);
     await settle(page, 600);
 
@@ -174,6 +180,7 @@ test.describe('signed in as a member', () => {
       title: 'Subscribe to the Church Calendar',
       category: 'Groups & Events',
       purpose: 'Members subscribe to the shared church calendars from their own calendar app.',
+      usedIn: ['docs'],
     });
   });
 });

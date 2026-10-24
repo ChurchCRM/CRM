@@ -6,6 +6,7 @@
  * field it belongs to. None of it touches the admin bundle's machinery, so a
  * church theme restyles a portal form by restyling portal CSS.
  */
+import { reloadWhenSignedOut } from "./portal-session";
 import { type PortalToastType, portalToast } from "./portal-toast";
 
 /**
@@ -72,6 +73,7 @@ export async function sendPortalJSON<T = Record<string, unknown>>(
     },
     body: JSON.stringify(body),
   });
+  reloadWhenSignedOut(response.status);
 
   let data = {} as PortalApiResult<T>["data"];
   try {

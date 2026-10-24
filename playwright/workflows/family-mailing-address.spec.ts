@@ -77,6 +77,7 @@ test.describe('Family mailing address', () => {
       title: 'Family Mailing Address',
       category: 'People & Families',
       purpose: 'Show marking a PO Box as the family mailing address while the home address stays on the map',
+      usedIn: ['docs'],
     });
   });
 });

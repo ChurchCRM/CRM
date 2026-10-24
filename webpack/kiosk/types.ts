@@ -2,6 +2,13 @@
  * Kiosk TypeScript Type Definitions
  */
 
+export interface CheckinByPerson {
+  Id: number;
+  FirstName: string;
+  LastName: string;
+  hasPhoto: boolean;
+}
+
 export interface ClassMember {
   displayName: string;
   firstName: string;
@@ -18,6 +25,7 @@ export interface ClassMember {
   birthDay: number | null;
   birthMonth: number | null;
   familyId: number | null;
+  checkedInBy?: CheckinByPerson | null;
   /** True for walk-in guests registered directly on the kiosk */
   isGuest?: boolean;
 }
@@ -38,6 +46,7 @@ export interface PersonApiData {
   birthDay: number | null;
   birthMonth: number | null;
   familyId: number | null;
+  checkedInBy?: CheckinByPerson | null;
   /** True for walk-in guests registered directly on the kiosk */
   isGuest?: boolean;
 }
@@ -91,12 +100,9 @@ export interface AjaxOptions {
   contentType?: string;
 }
 
-export interface FamilyMember {
-  Id: number;
-  FirstName: string;
-  LastName: string;
-  hasPhoto: boolean;
-}
+/** A family member selectable in the "Check-in By" / "Check-out By" modal.
+ * Structurally identical to CheckinByPerson — aliased to avoid drift. */
+export type FamilyMember = CheckinByPerson;
 
 export interface FamilyMembersResponse {
   members: FamilyMember[];
@@ -126,6 +132,8 @@ export interface KioskJSOM {
     kioskName: string,
     bodyContent: string | null,
   ) => string;
+  getFamilyPhotoUrl: (childPersonId: number, memberId: number) => string;
+  updateCheckinByLine: (childPersonId: number, checker: CheckinByPerson | null) => void;
   checkInPerson: (personId: number) => void;
   checkOutPerson: (personId: number) => void;
   checkOutAll: () => void;
@@ -142,7 +150,7 @@ export interface KioskJSOM {
   setCheckinByEnabled: (enabled: boolean) => void;
   resolveCheckinByModal: (checkedByPersonId: number | null) => void;
   cancelCheckinByModal: () => void;
-  cancelScheduledRefresh: () => void;
+  scheduleNextRefresh: (delayMs?: number) => void;
   showGuestRegistrationModal: () => void;
   submitGuestRegistration: () => void;
 }

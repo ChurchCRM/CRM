@@ -206,7 +206,6 @@ describe("Member Portal — responsive (#9869)", () => {
             originalVersion = resp.body.value ?? resp.body.data ?? "v1";
         });
 
-        setConfig("bPortalShowCalendar", "1");
         setConfig("bPortalShowVolunteer", "1");
         setConfig("sVolunteerVersion", "v2");
         setVisibleCalendars([{ type: "calendar", id: CHURCH_CALENDAR_ID }]);

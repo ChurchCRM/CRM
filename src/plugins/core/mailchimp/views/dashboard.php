@@ -44,7 +44,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
     <!-- Account Info Banner -->
     <?php if (!empty($accountInfo['account_name'])) : ?>
-    <div class="alert alert-light border mb-3">
+    <div class="alert bg-surface-secondary border mb-3">
         <div class="d-flex align-items-center">
             <i class="fa-brands fa-mailchimp fa-2x text-warning me-3"></i>
             <div class="flex-grow-1">

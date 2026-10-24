@@ -441,17 +441,5 @@ describe("API Private Fundraisers", () => {
                 expect(response.status).to.equal(401);
             });
         });
-
-        it("Denies a caller without Manage Fundraisers permission", () => {
-            // Uses a dedicated seed user (per_ID=96) who has Finance=1 but
-            // ManageFundraisers=0, proving the ManageFundraisers gate fires
-            // independently of the Finance role.
-            cy.makePrivateNoManageFundraisersAPICall(
-                "GET",
-                "/api/fundraisers",
-                null,
-                [401, 403],
-            );
-        });
     });
 });

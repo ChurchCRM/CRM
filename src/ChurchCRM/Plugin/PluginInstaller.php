@@ -514,6 +514,7 @@ HTACCESS;
 
         // Clear all plugin.{id}.* config keys.
         $removedKeys = self::clearPluginConfig($pluginId);
+        self::deletePortalGrants($pluginId);
 
         $logger->info('Community plugin uninstalled', [
             'plugin' => $pluginId,
@@ -614,6 +615,24 @@ HTACCESS;
         }
 
         return $removed;
+    }
+
+    /**
+     * Delete the portal grants administrators gave on the plugin's capabilities
+     * (member sign-in design §8.5). Turning a plugin off keeps them.
+     */
+    private static function deletePortalGrants(string $pluginId): void
+    {
+        try {
+            \ChurchCRM\model\ChurchCRM\PortalGrantQuery::create()
+                ->filterByCapability(\ChurchCRM\Portal\Permissions\PortalCapabilityRegistry::pluginKeyPrefix($pluginId) . '%', \Propel\Runtime\ActiveQuery\Criteria::LIKE)
+                ->delete();
+        } catch (\Throwable $e) {
+            LoggerUtils::getAppLogger()->warning('Could not delete plugin portal grants', [
+                'plugin' => $pluginId,
+                'error' => $e->getMessage(),
+            ]);
+        }
     }
 
     /**

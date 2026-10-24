@@ -49,7 +49,7 @@ describe("Self-only access — EditSelf account user (limited.user)", () => {
         // "Sign out" lives in the header's account menu ("Hello <first name>").
         cy.get("#portal-account-toggle").click();
         cy.get("#portal-account-menu").contains("Sign out").click();
-        cy.url({ timeout: 10000 }).should("include", "/session/begin");
+        cy.location("pathname", { timeout: 10000 }).should("eq", "/admin/");
     });
 
     it("The old /external/limited-access URL redirects to /portal", () => {
@@ -73,6 +73,12 @@ describe("Self-only access — EditSelf account user (limited.user)", () => {
         // The "portal only" guarantee must hold across every internal MVC app,
         // not just /v2 — each is gated by AuthMiddleware via MvcAppFactory.
         cy.visit("people/dashboard", { failOnStatusCode: false });
+        cy.url().should("include", "/portal");
+    });
+
+    it("Direct visit to LettersAndLabels.php redirects to /portal", () => {
+        login();
+        cy.visit("LettersAndLabels.php", { failOnStatusCode: false });
         cy.url().should("include", "/portal");
     });
 

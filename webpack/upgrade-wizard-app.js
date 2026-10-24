@@ -728,7 +728,7 @@ function setupApplyStep() {
             $("#upgradeRedirectCountdown strong").text(countdown);
             if (countdown <= 0) {
               clearInterval(countdownInterval);
-              window.location.href = `${window.CRM.root}/`;
+              window.location.href = `${window.CRM.root}/admin/`;
             }
           }, 1000);
         }, 1000);

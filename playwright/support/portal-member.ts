@@ -115,14 +115,14 @@ interface PortalCalendarChoice {
 
 export interface PortalDemo {
   member: PortalMember;
+  /** How many calendars the portal shares while the captures run. */
+  sharedCalendarCount: number;
   tearDown(): Promise<void>;
 }
 
 /**
- * The member login plus a calendar worth looking at. The demo events are on no
- * calendar and the portal shows only the calendars an administrator shares, so
- * the events are pinned to the church calendar, which is shared together with
- * the Holidays plugin calendar. tearDown() puts every piece back.
+ * The member login plus a calendar worth looking at: the calendars the demo import
+ * shares, with the Holidays plugin calendar beside them. tearDown() puts every piece back.
  */
 export async function setUpPortalDemo(api: APIRequestContext): Promise<PortalDemo> {
   const undo: Array<() => Promise<unknown>> = [];
@@ -145,11 +145,9 @@ export async function setUpPortalDemo(api: APIRequestContext): Promise<PortalDem
     ).json();
     const choices = calendars as PortalCalendarChoice[];
     const shared = choices.filter((c) => c.visible).map(({ type, id }) => ({ type, id }));
-    const church =
-      choices.find((c) => c.type === 'calendar' && c.visible) ?? choices.find((c) => c.type === 'calendar');
     const holidays = choices.find((c) => c.type === 'system' && c.id >= 10000);
-    if (!church || !holidays) {
-      throw new Error('Expected a church calendar and the Holidays plugin calendar');
+    if (!shared.some((c) => c.type === 'calendar') || !holidays) {
+      throw new Error('Expected the demo church calendars and the Holidays plugin calendar');
     }
 
     undo.push(async () =>
@@ -158,28 +156,15 @@ export async function setUpPortalDemo(api: APIRequestContext): Promise<PortalDem
         'Restore portal calendars',
       ),
     );
+    const visible = shared.some((c) => c.type === 'system' && c.id === holidays.id)
+      ? shared
+      : [...shared, { type: holidays.type, id: holidays.id }];
     await ok(
-      await api.post('/admin/api/member-portal/calendars', {
-        data: { visible: [church, holidays].map(({ type, id }) => ({ type, id })) },
-      }),
+      await api.post('/admin/api/member-portal/calendars', { data: { visible } }),
       'Share portal calendars',
     );
 
-    const { Events } = await (await ok(await api.get('/api/events'), 'List events')).json();
-    for (const event of Events as Array<{ Id: number; PinnedCalendars: number[] }>) {
-      undo.push(async () =>
-        ok(
-          await api.post(`/api/events/${event.Id}`, { data: { PinnedCalendars: event.PinnedCalendars } }),
-          `Restore event ${event.Id}`,
-        ),
-      );
-      await ok(
-        await api.post(`/api/events/${event.Id}`, { data: { PinnedCalendars: [church.id] } }),
-        `Pin event ${event.Id}`,
-      );
-    }
-
-    return { member, tearDown };
+    return { member, sharedCalendarCount: visible.length, tearDown };
   } catch (error) {
     await tearDown().catch(() => undefined);
     throw error;

@@ -6,17 +6,14 @@
  * The person view, family view and photo gallery carry a "Send email" button
  * (data-email-composer + data-email-person-id / data-email-family-id) that opens
  * the composer for that one record; the group view's Email button opens it for
- * the whole group. Both send through POST /api/email/send with ids, one message
- * per recipient, and the outcome is checked in the Mailpit sink.
- *
- * Override Mailpit with `--env mailpitUrl=http://localhost:8070` on a stack with
- * non-default ports.
+ * the whole group. Both queue through POST /api/email/send with ids, one message
+ * per recipient; the composer then sends the batch (#10356), and the outcome is
+ * checked in the Mailpit sink.
  */
-const mailpit = () => Cypress.testEnv("mailpitUrl") || "http://localhost:8025";
 
 const mailpitMessages = (tag) =>
     cy
-        .request({ method: "GET", url: `${mailpit()}/api/v1/messages?limit=100` })
+        .request({ method: "GET", url: `${Cypress.mailpitUrl()}/api/v1/messages?limit=100` })
         .then((resp) => resp.body.messages.filter((m) => m.Subject.includes(tag)));
 
 /** Fills the compose form and submits; returns the send response via the alias. */
@@ -29,10 +26,6 @@ const composeAndSend = (subject, body) => {
     cy.get("#crm-email-send-submit").click();
     return cy.wait("@send");
 };
-
-before(() => {
-    cy.rememberTestEnv(["mailpitUrl"]);
-});
 
 describe("Send email from a record", () => {
     beforeEach(() => {
@@ -65,7 +58,7 @@ describe("Send email from a record", () => {
             expect(request.body).to.deep.include({ personIds: [2], familyIds: [] });
             expect(request.body).to.not.have.property("recipients");
             expect(response.statusCode).to.eq(200);
-            expect(response.body.counts).to.deep.equal({ sent: 1, skipped: 0, failed: 0 });
+            expect(response.body.counts).to.deep.equal({ queued: 1, sent: 0, skipped: 0, failed: 0 });
         });
         cy.get("#crm-email-compose-form .alert-success").should("contain.text", "Email sent to 1 recipient");
 
@@ -109,6 +102,25 @@ describe("Send email from a record", () => {
         cy.get("#crm-email-composer-modal .modal-title").should("contain.text", "Mathew Campbell");
     });
 
+    it("family view: the family's Send button mails the head of household", () => {
+        const tag = `crm-msi11-family-${Date.now()}`;
+        cy.visit("/people/family/2");
+
+        cy.get("#family-email-composer").should("be.visible").click();
+        cy.get("#crm-email-composer-modal").should("be.visible");
+        cy.get("#crm-email-composer-modal .modal-title").should("contain.text", "Hart Family");
+
+        composeAndSend(`Family ${tag}`, "Hello Harts.").then(({ request, response }) => {
+            expect(request.body).to.deep.include({ personIds: [], familyIds: [2] });
+            expect(response.body.counts).to.deep.equal({ queued: 1, sent: 0, skipped: 0, failed: 0 });
+            expect(response.body.queued[0]).to.include({ familyId: 2, email: "constance.hart@example.com" });
+        });
+        cy.get("#crm-email-compose-form .alert-success").should("contain.text", "Email sent to 1 recipient");
+        mailpitMessages(tag).then((messages) => {
+            expect(messages.map((m) => m.To[0].Address)).to.deep.equal(["constance.hart@example.com"]);
+        });
+    });
+
     it("group view: the Email button sends one message per member and lists who was skipped", () => {
         const tag = `crm-9876-group-${Date.now()}`;
         cy.visit("/groups/view/1");
@@ -127,13 +139,50 @@ describe("Send email from a record", () => {
             const expected = response.body.recipients.length;
             composeAndSend(`Group ${tag}`, "Practice moves to 7pm.").then(({ request, response: sendResp }) => {
                 expect(request.body.personIds).to.have.length(expected);
-                expect(sendResp.body.counts.sent).to.equal(expected);
+                expect(sendResp.body.counts.queued).to.equal(expected);
             });
+            cy.get("#crm-email-compose-form .alert-success").should("contain.text", `Email sent to ${expected} recipient`);
             mailpitMessages(tag).then((messages) => {
                 expect(messages).to.have.length(expected);
                 for (const m of messages) expect(m.To).to.have.length(1);
             });
         });
+    });
+});
+
+describe("A send the composer cannot finish stays queued", () => {
+    beforeEach(() => {
+        cy.setupAdminSession();
+    });
+
+    it("tells the sender it is queued, shows it in the history, and the timer job sends it", () => {
+        const tag = `crm-10356-ui-${Date.now()}`;
+        cy.intercept("POST", "**/api/email/batches/*/send", { statusCode: 503, body: {} }).as("batchSend");
+        // The page footer runs the timer jobs too; keep it from sending the row before we look.
+        cy.intercept("POST", "**/api/background/timerjobs", { statusCode: 200, body: { ran: false } });
+        cy.visit("/people/view/2");
+        cy.get("[data-email-composer][data-email-person-id='2']").click();
+        composeAndSend(`Queued ${tag}`, "See you Sunday.");
+        cy.wait("@batchSend");
+
+        cy.get("#crm-email-compose-form .alert-info")
+            .should("contain.text", "Messages queued: 1. They will be sent in the background.")
+            .find("#crm-email-history-link")
+            .should("have.attr", "href")
+            .and("include", "/admin/email/log");
+        cy.get("#crm-email-send-submit").should("contain.text", "Queued").and("be.disabled");
+
+        cy.visit("/admin/email/log");
+        cy.get("#email-queued-count").should("be.visible");
+        cy.contains("[data-email-history-table] tr", `Queued ${tag}`).should("have.attr", "data-email-status", "queued");
+
+        cy.request("POST", "/api/background/timerjobs", { force: true }).its("body.ran").should("eq", true);
+
+        cy.reload();
+        cy.contains("[data-email-history-table] tr", `Queued ${tag}`)
+            .should("have.attr", "data-email-status", "sent")
+            .and("contain.text", "Sent");
+        mailpitMessages(tag).should("have.length", 1);
     });
 });
 

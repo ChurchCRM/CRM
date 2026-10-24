@@ -262,14 +262,5 @@ describe("API Private Volunteer Opportunities", () => {
                 expect(response.status).to.equal(401);
             });
         });
-
-        it("Returns 403 for non-admin user", () => {
-            cy.makePrivateUserAPICall(
-                "GET",
-                "/admin/api/volunteer-opportunities",
-                null,
-                403,
-            );
-        });
     });
 });

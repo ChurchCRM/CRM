@@ -451,7 +451,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         dataSrc:"KioskDevices",
         statusCode: {
           401: function(xhr, error, thrown) {
-            window.location = window.location.origin + '/session/begin?location=' + window.location.pathname;
+            window.location = window.CRM.root + '/admin/';
             return false;
           }
         }
@@ -468,9 +468,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               return '<span class="badge bg-warning text-dark">' + i18next.t('Pending') + '</span>';
             }
             if (isOnline) {
-              return '<span class="badge bg-success">' + i18next.t('Online') + '</span>';
+              return '<span class="badge bg-success-lt text-success">' + i18next.t('Online') + '</span>';
             }
-            return '<span class="badge bg-secondary-lt">' + i18next.t('Offline') + '</span>';
+            return '<span class="badge bg-secondary-lt text-secondary">' + i18next.t('Offline') + '</span>';
           }
         },
         {

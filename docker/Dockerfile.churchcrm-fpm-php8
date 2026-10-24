@@ -8,7 +8,7 @@
 # The release code is copied into the image during build.
 # When container starts, ChurchCRM is ready to serve.
 
-ARG PHP_IMAGE=php:8.4.25-fpm-trixie@sha256:223115611852f585846b5d30f0cd95de8af9b486ca3bf310174a143704fc71e3
+ARG PHP_IMAGE=php:8.4.27-fpm-trixie@sha256:e2d8e787dc775bdbd9d7e0c5e8f2f9ddb41ce5977c8bbaf99a2ba2e7d90fd8ae
 
 # Builder stage: compile PHP extensions only (code comes from release artifact)
 FROM ${PHP_IMAGE} AS builder
@@ -172,7 +172,7 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     /opt/node-install.sh && \
     rm /opt/node-install.sh && \
     /bin/bash -c "source /root/.nvm/nvm.sh && nvm install 24 && npm install -g node-gyp" && \
-    pecl install xdebug && docker-php-ext-enable xdebug
+    for i in 1 2 3; do pecl install xdebug && break; [ "$i" = 3 ] && exit 1; sleep 10; done && docker-php-ext-enable xdebug
 
 # Install Composer with checksum verification
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \

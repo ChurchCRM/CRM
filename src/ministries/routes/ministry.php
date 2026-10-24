@@ -4,10 +4,12 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerTeamQuery;
 use ChurchCRM\Volunteer\Service\VolunteerAuthorizationService;
 use ChurchCRM\Volunteer\Middleware\VolunteerAdminAreaRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\view\PageHeader;
+use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpNotFoundException;
@@ -52,19 +54,38 @@ $app->group('', function (RouteCollectorProxy $group): void {
         // that independently, with the ministry-level entity middleware (D5, §4.5).
         $bIsMinistryCoordinator = $authz->canManageMinistry($currentUser, $ministryId);
 
+        // A team leader of this ministry gets the team-only view, like the portal's My Teams page.
+        $aTeams = [];
         if (!$bIsMinistryCoordinator) {
+            $managedTeamIds = $authz->getManagedTeamIds($currentUser);
+            $ledTeams = $managedTeamIds === [] ? [] : VolunteerTeamQuery::create()
+                ->filterByMinistryId($ministryId)
+                ->filterById($managedTeamIds, Criteria::IN)
+                ->orderByName()
+                ->find();
+            foreach ($ledTeams as $team) {
+                $aTeams[] = ['id' => (int) $team->getId(), 'name' => (string) $team->getName()];
+            }
+        }
+
+        if (!$bIsMinistryCoordinator && $aTeams === []) {
             return SlimUtils::renderRedirect(
                 $response,
                 SystemURLs::getRootPath() . '/v2/access-denied?role=VolunteerCoordinator'
             );
         }
 
+        $bTeamView = !$bIsMinistryCoordinator;
+        $sTeamNames = implode(', ', array_column($aTeams, 'name'));
+
         $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
         return $renderer->render($response, 'ministry-view.php', [
             'sRootPath'      => SystemURLs::getRootPath(),
             'sPageTitle'     => $ministry->getName(),
-            'sPageSubtitle'  => $ministry->getDescription() ?? gettext('Teams, positions and the people who fill them'),
+            'sPageSubtitle'  => $bTeamView
+                ? sprintf(gettext('Your teams: %s'), $sTeamNames)
+                : ($ministry->getDescription() ?? gettext('Teams, positions and the people who fill them')),
             'aBreadcrumbs'   => PageHeader::breadcrumbs([
                 [gettext('Ministries'), '/ministries/dashboard'],
                 [$ministry->getName()],
@@ -74,6 +95,9 @@ $app->group('', function (RouteCollectorProxy $group): void {
             'bMinistryActive' => (bool) $ministry->getActive(),
             'bIsManager'     => $authz->isGlobalManager($currentUser),
             'bIsMinistryCoordinator' => $bIsMinistryCoordinator,
+            'bTeamView'      => $bTeamView,
+            'aTeams'         => $aTeams,
+            'bSundaySchool'  => (bool) $ministry->getSundaySchool(),
             // The New event dialog lists every calendar for the Add Events right (D25).
             'bCanPinAnyCalendar' => $currentUser->canManageEvents(),
             // D23: a team's linked class is a link only for a viewer the Groups module lets in.

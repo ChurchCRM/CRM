@@ -119,6 +119,8 @@ describe("Volunteer v2 D30 — why nothing was generated", () => {
             ministryId = resp.body.ministry.id;
             admin("GET", `${MINISTRIES_URL}/${ministryId}`).then((detail) => {
                 teamId = detail.body.teams[0].id;
+                // The portal's team pages are for the team's leaders, staff included (member sign-in §8.4).
+                admin("POST", "/api/ministries/scopes", { personId: 1, scopeType: "team", scopeId: teamId }, [200, 201]);
                 admin("POST", `${MINISTRIES_URL}/${ministryId}/positions`, { name: `${PREFIX} Teacher`, teamId }, 201).then(
                     (position) => {
                         positionId = position.body.position.id;

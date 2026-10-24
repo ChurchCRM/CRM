@@ -10,9 +10,11 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\verify\FamilyVerificationEmail;
 use ChurchCRM\Emails\notifications\NewPersonOrFamilyEmail;
 use ChurchCRM\model\ChurchCRM\Base\Family as BaseFamily;
+use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\PhotoInterface;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
+use ChurchCRM\Slim\Middleware\Api\FamilyEmailDeprecationMiddleware;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -69,7 +71,7 @@ class Family extends BaseFamily implements PhotoInterface
             $address[] = $this->getZip();
         }
         if (!empty($this->getCountry())) {
-            $address[] = $this->getCountry();
+            $address[] = Countries::toName($this->getCountry());
         }
 
         return implode(' ', $address);
@@ -190,7 +192,7 @@ class Family extends BaseFamily implements PhotoInterface
 
         $country = trim((string) ($parts['Country'] ?? ''));
         if ($country !== '' && Countries::isForeign($country)) {
-            $lines[] = $country;
+            $lines[] = Countries::toName($country);
         }
 
         return implode($separator, $lines);
@@ -228,7 +230,7 @@ class Family extends BaseFamily implements PhotoInterface
             $address[] = $parts['Zip'];
         }
         if ($parts['Country'] !== '') {
-            $address[] = $parts['Country'];
+            $address[] = Countries::toName($parts['Country']);
         }
 
         return implode(' ', $address);
@@ -476,9 +478,31 @@ class Family extends BaseFamily implements PhotoInterface
         return $this->getPeopleByRole('sDirRoleSpouse');
     }
 
+    /**
+     * Heads and spouses. Someone proposed for an existing family counts once
+     * staff approve them on Self Registrations; a family that self-registered
+     * is approved as a whole and keeps its adults.
+     *
+     * @return Person[]
+     */
     public function getAdults(): array
     {
-        return array_merge($this->getHeadPeople(), $this->getSpousePeople());
+        $adults = array_merge($this->getHeadPeople(), $this->getSpousePeople());
+
+        return array_values(array_filter(
+            $adults,
+            fn (Person $person): bool => !self::proposedMemberAwaitsReview((bool) $person->getNeedsReview(), $this->getEnteredBy()),
+        ));
+    }
+
+    /**
+     * Whether a person waits for staff approval as someone proposed for an
+     * existing family. A family that self-registered is approved as a whole.
+     * Takes column values so bulk queries can ask without loading objects.
+     */
+    public static function proposedMemberAwaitsReview(bool $personNeedsReview, ?int $familyEnteredBy): bool
+    {
+        return $personNeedsReview && $familyEnteredBy !== Person::SELF_REGISTER;
     }
 
     public function getChildPeople(): array
@@ -531,21 +555,51 @@ class Family extends BaseFamily implements PhotoInterface
     public function getEmails(): array
     {
         $emails = [];
-        if (!(empty($this->getEmail()))) {
-            $emails[] = $this->getEmail();
-        }
         foreach ($this->getPeopleSorted() as $person) {
-            $email = $person->getEmail();
-            if ($email !== null) {
-                $emails[] = $email;
-            }
-            $email = $person->getWorkEmail();
-            if ($email !== null) {
-                $emails[] = $email;
+            foreach ([$person->getEmail(), $person->getWorkEmail()] as $email) {
+                if (!empty($email)) {
+                    $emails[] = $email;
+                }
             }
         }
 
-        return array_unique($emails);
+        return array_values(array_unique($emails));
+    }
+
+    /**
+     * Who receives mail meant for the whole family: the oldest living, active
+     * head of household with their own email, else the oldest such spouse.
+     */
+    public function getEmailRecipient(): ?Person
+    {
+        foreach ([$this->getHeadPeople(), $this->getSpousePeople()] as $people) {
+            $candidates = array_values(array_filter(
+                $people,
+                fn (Person $person): bool => !$person->isDeceased() && $person->isActive() && trim((string) $person->getEmail()) !== ''
+            ));
+            if ($candidates !== []) {
+                usort($candidates, fn (Person $a, Person $b): int => self::ageSortKey($a) <=> self::ageSortKey($b));
+
+                return $candidates[0];
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * The order the family email goes in (member sign-in design §10.1).
+     *
+     * @return int[] oldest first; unknown birth-date parts sort last
+     */
+    public static function ageSortKey(Person $person): array
+    {
+        return [
+            (int) $person->getBirthYear() ?: 9999,
+            (int) $person->getBirthMonth() ?: 99,
+            (int) $person->getBirthDay() ?: 99,
+            (int) $person->getId(),
+        ];
     }
 
     public function createTimeLineNote($type): void
@@ -767,6 +821,12 @@ class Family extends BaseFamily implements PhotoInterface
     public function toArray(string $keyType = TableMap::TYPE_PHPNAME, bool $includeLazyLoadColumns = true, array $alreadyDumpedObjects = [], bool $includeForeignObjects = false): array
     {
         $array = parent::toArray($keyType, $includeLazyLoadColumns, $alreadyDumpedObjects, $includeForeignObjects);
+        $emailKey = FamilyTableMap::translateFieldName('Email', TableMap::TYPE_PHPNAME, $keyType);
+        if (FamilyEmailDeprecationMiddleware::isHandling()) {
+            $array[$emailKey] = FamilyEmailDeprecationMiddleware::emailOf($this);
+        } else {
+            unset($array[$emailKey]);
+        }
         $array['Address'] = $this->getAddress();
         $array['FamilyString'] = $this->getFamilyString();
         // Additive, read-only mailing-address resolution (#9743). `Address` stays the
