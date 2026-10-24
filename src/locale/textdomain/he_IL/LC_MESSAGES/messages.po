@@ -24660,3 +24660,15 @@ msgstr "החודש שבו כל מי שיש לו כיתה עולה כיתה אח�
 msgid "Through Grade"
 msgstr "עד כיתה"
 
+#: 
+msgid "Invalid setting name or value"
+msgstr "שם ההגדרה או הערך אינם תקינים"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "שירות הקידוד הגאוגרפי לא הגיב — יש לנסות שוב מאוחר יותר"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "מוצגת רק הודעת הדוא״ל ששלחת."
+

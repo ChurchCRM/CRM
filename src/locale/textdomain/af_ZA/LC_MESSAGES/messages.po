@@ -24662,3 +24662,15 @@ msgstr "Die maand waarin almal met 'n graad een graad opskuif. Af skakel outomat
 msgid "Through Grade"
 msgstr "Tot graad"
 
+#: 
+msgid "Invalid setting name or value"
+msgstr "Ongeldige instellingnaam of waarde"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Die geokoderingsdiens het nie geantwoord nie — probeer later weer"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Slegs die e-pos wat jy gestuur het, word gewys."
+

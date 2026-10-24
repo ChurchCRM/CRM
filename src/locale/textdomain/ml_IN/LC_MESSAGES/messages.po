@@ -24628,3 +24628,15 @@ msgstr "ക്ലാസുള്ള എല്ലാവരും ഒരു ക്
 msgid "Through Grade"
 msgstr "ക്ലാസ് വരെ"
 
+#: 
+msgid "Invalid setting name or value"
+msgstr "അസാധുവായ ക്രമീകരണ നാമം അല്ലെങ്കിൽ മൂല്യം"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "ജിയോകോഡിംഗ് സേവനം പ്രതികരിച്ചില്ല — പിന്നീട് വീണ്ടും ശ്രമിക്കുക"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "നിങ്ങൾ അയച്ച ഇമെയിൽ മാത്രമാണ് കാണിക്കുന്നത്."
+

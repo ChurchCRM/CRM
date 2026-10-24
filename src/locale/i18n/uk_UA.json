@@ -6060,6 +6060,9 @@
   "The grades changed after the preview. Review the changes again before applying them.": "Класи змінилися після попереднього перегляду. Перегляньте зміни ще раз перед застосуванням.",
   "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off.": "Місяць, у якому всі, хто має клас, переходять на один клас вище. Вимкнено вимикає автоматичне підвищення.",
   "Through Grade": "До класу",
+  "Invalid setting name or value": "Неприпустима назва або значення налаштування",
+  "The geocoding service did not answer — try again later": "Служба геокодування не відповіла — повторіть спробу пізніше",
+  "Only the email you sent is shown.": "Відображається лише надісланий вами електронний лист.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} подія створена",
     "other": "\"{{name}}\": {{count}} подій створено"

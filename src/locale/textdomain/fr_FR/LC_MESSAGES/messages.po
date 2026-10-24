@@ -24659,3 +24659,15 @@ msgstr "Le mois au cours duquel toute personne ayant un niveau monte d’un nive
 msgid "Through Grade"
 msgstr "Jusqu’au niveau"
 
+#: 
+msgid "Invalid setting name or value"
+msgstr "Nom ou valeur du paramètre non valide"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Le service de géocodage n’a pas répondu — réessayez plus tard"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Seul le courriel que vous avez envoyé est affiché."
+

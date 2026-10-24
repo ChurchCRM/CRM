@@ -6124,6 +6124,9 @@
   "The grades changed after the preview. Review the changes again before applying them.": "تغيّرت الصفوف بعد المعاينة. راجع التغييرات مرة أخرى قبل تطبيقها.",
   "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off.": "الشهر الذي ينتقل فيه كل من لديه صف إلى الصف التالي. إيقاف يُعطّل الترقية التلقائية.",
   "Through Grade": "إلى الصف",
+  "Invalid setting name or value": "اسم الإعداد أو قيمته غير صالح",
+  "The geocoding service did not answer — try again later": "لم تستجب خدمة الترميز الجغرافي — حاول مرة أخرى لاحقًا",
+  "Only the email you sent is shown.": "يُعرض فقط البريد الإلكتروني الذي أرسلته.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "تم إنشاء {{count}} موعد لـ \"{{name}}\"",
     "other": "تم إنشاء {{count}} مواعيد لـ \"{{name}}\""

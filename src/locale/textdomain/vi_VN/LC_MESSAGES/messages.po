@@ -24634,3 +24634,15 @@ msgstr "Tháng mà mọi người có lớp đều lên một lớp. Tắt sẽ 
 msgid "Through Grade"
 msgstr "Đến lớp"
 
+#: 
+msgid "Invalid setting name or value"
+msgstr "Tên hoặc giá trị cài đặt không hợp lệ"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Dịch vụ mã hóa địa lý không phản hồi — hãy thử lại sau"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Chỉ hiển thị email bạn đã gửi."
+

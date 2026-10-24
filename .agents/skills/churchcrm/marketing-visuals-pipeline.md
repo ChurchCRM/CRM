@@ -27,9 +27,9 @@ The pipeline uses Playwright's bundled Chromium (`npm run marketing:install`). S
 
 ### How visuals reach the website
 
-`Marketing: capture screenshots & videos` (`marketing-capture-assets.yml`) captures 8 locales x 3 devices, merges them and uploads the artifact `marketing-visuals-<run id>` (30 day retention). It opens no PR. `Publish visuals` in `ChurchCRM/visuals` downloads that artifact and replaces the repo with that release's set (one release, one orphan commit), served at https://cdn.churchcrm.io/. Images live at `https://cdn.churchcrm.io/<relativePath from manifest.json>` next to `manifest.json` (with a `release` field) and `release.json`. churchcrm.io and docs.churchcrm.io read from there.
+`Marketing: capture screenshots & videos` (`marketing-capture-assets.yml`) is one run with back-to-back jobs: English first (it also records the videos), the other seven locales after it, a merge and check, and on `master` a last job that starts `Publish visuals` in `ChurchCRM/visuals`. The artifact is `marketing-visuals-<run id>` (30 day retention). `Publish visuals` downloads it and replaces the repo with that set (one release, one orphan commit), served at https://cdn.churchcrm.io/. Images live at `https://cdn.churchcrm.io/<relativePath from manifest.json>` next to `manifest.json` (with a `release` field) and `release.json`. churchcrm.io and docs.churchcrm.io read from there. It opens no PR.
 
-On release publish, `release-bookkeeping.yml` job `publish-visuals` starts `Publish visuals` with the capture run for the release commit. With no capture or no `DOCS_RELEASE_TOKEN` (Actions: write on `ChurchCRM/visuals`) it warns, and a maintainer runs `Publish visuals` by hand with the capture run id.
+Run the workflow on `master` only. A run on another branch captures and checks but does not publish. `Release & Start Next` starts it on `master` after the draft exists and never waits for it. The publish job needs `DOCS_RELEASE_TOKEN` (Actions: write on `ChurchCRM/visuals`) and fails without it.
 
 ### Adding a capture in a feature PR
 

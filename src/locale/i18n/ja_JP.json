@@ -5964,6 +5964,9 @@
   "The grades changed after the preview. Review the changes again before applying them.": "プレビューの後に学年が変わりました。適用する前に変更を再度確認してください。",
   "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off.": "学年のある人が全員1学年上がる月。オフにすると自動進級がオフになります。",
   "Through Grade": "終了学年",
+  "Invalid setting name or value": "設定名または値が無効です",
+  "The geocoding service did not answer — try again later": "ジオコーディングサービスから応答がありませんでした — しばらくしてからもう一度お試しください",
+  "Only the email you sent is shown.": "送信したメールのみが表示されます。",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：{{count}} 個の発生が作成されました",
     "other": "\"{{name}}\"：{{count}} 個の発生が作成されました"

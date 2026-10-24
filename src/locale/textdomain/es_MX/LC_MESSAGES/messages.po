@@ -24631,3 +24631,15 @@ msgstr "El mes en el que todas las personas con un grado escolar suben un grado.
 msgid "Through Grade"
 msgstr "Hasta el grado"
 
+#: 
+msgid "Invalid setting name or value"
+msgstr "Nombre o valor de configuración no válido"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "El servicio de geocodificación no respondió — inténtalo de nuevo más tarde"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Solo se muestra el correo electrónico que enviaste."
+

@@ -24688,3 +24688,15 @@ msgstr "Az a hónap, amelyben minden évfolyammal rendelkező személy egy évfo
 msgid "Through Grade"
 msgstr "Évfolyamig"
 
+#: 
+msgid "Invalid setting name or value"
+msgstr "Érvénytelen beállításnév vagy érték"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "A geokódolási szolgáltatás nem válaszolt — próbálja újra később"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Csak az Ön által küldött e-mail jelenik meg."
+

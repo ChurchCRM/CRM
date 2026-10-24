@@ -6028,6 +6028,9 @@
   "The grades changed after the preview. Review the changes again before applying them.": "Ročníky se po náhledu změnily. Před použitím změny znovu zkontrolujte.",
   "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off.": "Měsíc, ve kterém se všichni s ročníkem posunou o jeden ročník výš. Vypnuto vypne automatický postup.",
   "Through Grade": "Do ročníku",
+  "Invalid setting name or value": "Neplatný název nebo hodnota nastavení",
+  "The geocoding service did not answer — try again later": "Geokódovací služba neodpověděla — zkuste to znovu později",
+  "Only the email you sent is shown.": "Zobrazuje se pouze e-mail, který jste odeslali.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} akce vytvořena",
     "other": "\"{{name}}\": {{count}} akcí vytvořeno"

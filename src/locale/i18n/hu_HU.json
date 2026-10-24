@@ -5996,6 +5996,9 @@
   "The grades changed after the preview. Review the changes again before applying them.": "Az évfolyamok az előnézet után megváltoztak. Az alkalmazás előtt tekintse át újra a módosításokat.",
   "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off.": "Az a hónap, amelyben minden évfolyammal rendelkező személy egy évfolyamot lép feljebb. A Ki kikapcsolja az automatikus léptetést.",
   "Through Grade": "Évfolyamig",
+  "Invalid setting name or value": "Érvénytelen beállításnév vagy érték",
+  "The geocoding service did not answer — try again later": "A geokódolási szolgáltatás nem válaszolt — próbálja újra később",
+  "Only the email you sent is shown.": "Csak az Ön által küldött e-mail jelenik meg.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} esemény létrehozva",
     "other": "\"{{name}}\": {{count}} esemény létrehozva"

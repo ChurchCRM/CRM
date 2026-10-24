@@ -5996,6 +5996,9 @@
   "The grades changed after the preview. Review the changes again before applying them.": "Klassid muutusid pärast eelvaadet. Vaadake muudatused enne rakendamist uuesti üle.",
   "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off.": "Kuu, mil kõik, kellel on klass, liiguvad ühe klassi võrra edasi. Väljas lülitab automaatse edutamise välja.",
   "Through Grade": "Klassini",
+  "Invalid setting name or value": "Vigane sätte nimi või väärtus",
+  "The geocoding service did not answer — try again later": "Geokodeerimisteenus ei vastanud — proovige hiljem uuesti",
+  "Only the email you sent is shown.": "Kuvatakse ainult teie saadetud e-kiri.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} sündmus loodud",
     "other": "\"{{name}}\": {{count}} sündmust loodud"

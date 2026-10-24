@@ -5996,6 +5996,9 @@
   "The grades changed after the preview. Review the changes again before applying them.": "Årskurserna ändrades efter förhandsgranskningen. Granska ändringarna igen innan du tillämpar dem.",
   "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off.": "Månaden då alla som har en årskurs flyttas upp en årskurs. Av stänger av automatisk uppflyttning.",
   "Through Grade": "Till årskurs",
+  "Invalid setting name or value": "Ogiltigt inställningsnamn eller värde",
+  "The geocoding service did not answer — try again later": "Geokodningstjänsten svarade inte — försök igen senare",
+  "Only the email you sent is shown.": "Endast det e-postmeddelande du skickade visas.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} förekomst skapad",
     "other": "\"{{name}}\": {{count}} förekomster skapade"

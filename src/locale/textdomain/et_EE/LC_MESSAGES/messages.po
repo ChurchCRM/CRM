@@ -24661,3 +24661,15 @@ msgstr "Kuu, mil kõik, kellel on klass, liiguvad ühe klassi võrra edasi. Väl
 msgid "Through Grade"
 msgstr "Klassini"
 
+#: 
+msgid "Invalid setting name or value"
+msgstr "Vigane sätte nimi või väärtus"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Geokodeerimisteenus ei vastanud — proovige hiljem uuesti"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Kuvatakse ainult teie saadetud e-kiri."
+

@@ -24731,3 +24731,15 @@ msgstr "Måneden da alle med et klassetrinn flyttes opp ett trinn. Av slår av a
 msgid "Through Grade"
 msgstr "Til klassetrinn"
 
+#: 
+msgid "Invalid setting name or value"
+msgstr "Ugyldig innstillingsnavn eller verdi"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Geokodingstjenesten svarte ikke — prøv igjen senere"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Bare e-posten du sendte, vises."
+

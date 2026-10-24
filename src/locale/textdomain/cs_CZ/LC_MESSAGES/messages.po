@@ -24682,3 +24682,15 @@ msgstr "Měsíc, ve kterém se všichni s ročníkem posunou o jeden ročník v�
 msgid "Through Grade"
 msgstr "Do ročníku"
 
+#: 
+msgid "Invalid setting name or value"
+msgstr "Neplatný název nebo hodnota nastavení"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Geokódovací služba neodpověděla — zkuste to znovu později"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Zobrazuje se pouze e-mail, který jste odeslali."
+

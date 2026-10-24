@@ -24662,3 +24662,15 @@ msgstr "Sınıfı olan herkesin bir sınıf yukarı taşındığı ay. Kapalı, 
 msgid "Through Grade"
 msgstr "Bitiş sınıfı"
 
+#: 
+msgid "Invalid setting name or value"
+msgstr "Geçersiz ayar adı veya değeri"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Coğrafi kodlama hizmeti yanıt vermedi — daha sonra tekrar deneyin"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Yalnızca gönderdiğiniz e-posta gösterilir."
+

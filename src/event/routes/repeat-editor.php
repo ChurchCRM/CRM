@@ -8,6 +8,7 @@ use ChurchCRM\Service\EventService;
 use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsRoleAuthMiddleware;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -177,6 +178,10 @@ $app->post('/repeat-editor', function (Request $request, Response $response) {
         $_SESSION['sGlobalMessageClass'] = 'success';
     } catch (\InvalidArgumentException $e) {
         $_SESSION['sGlobalMessage'] = $e->getMessage();
+        $_SESSION['sGlobalMessageClass'] = 'danger';
+    } catch (\Throwable $e) {
+        LoggerUtils::getAppLogger()->error('Repeat event creation failed', ['exception' => $e->getMessage(), 'trace' => $e->getTraceAsString()]);
+        $_SESSION['sGlobalMessage'] = gettext('Repeat events could not be created. Check the application log for details.');
         $_SESSION['sGlobalMessageClass'] = 'danger';
     }
 

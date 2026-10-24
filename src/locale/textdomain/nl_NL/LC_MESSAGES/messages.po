@@ -24631,3 +24631,15 @@ msgstr "De maand waarin iedereen met een klas één klas omhooggaat. Uit schakel
 msgid "Through Grade"
 msgstr "Tot en met klas"
 
+#: 
+msgid "Invalid setting name or value"
+msgstr "Ongeldige instellingsnaam of waarde"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "De geocoderingsdienst heeft niet gereageerd — probeer het later opnieuw"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Alleen de e-mail die u hebt verzonden wordt getoond."
+

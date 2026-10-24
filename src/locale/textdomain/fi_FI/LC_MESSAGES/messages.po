@@ -24629,3 +24629,15 @@ msgstr "Kuukausi, jolloin kaikki, joilla on luokka-aste, siirtyvät yhden asteen
 msgid "Through Grade"
 msgstr "Luokka-asteeseen"
 
+#: 
+msgid "Invalid setting name or value"
+msgstr "Virheellinen asetuksen nimi tai arvo"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Geokoodauspalvelu ei vastannut — yritä myöhemmin uudelleen"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Vain lähettämäsi sähköposti näytetään."
+

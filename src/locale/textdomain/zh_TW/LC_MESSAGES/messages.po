@@ -24773,3 +24773,15 @@ msgstr "所有有年級的人升一個年級的月份。關閉會停用自動升
 msgid "Through Grade"
 msgstr "至年級"
 
+#: 
+msgid "Invalid setting name or value"
+msgstr "設定名稱或值無效"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "地理編碼服務未回應 — 請稍後再試"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "僅顯示您寄出的電子郵件。"
+

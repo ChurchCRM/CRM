@@ -5996,6 +5996,9 @@
   "The grades changed after the preview. Review the changes again before applying them.": "Klasat ndryshuan pas parapamjes. Shqyrtoji ndryshimet përsëri para se t'i zbatosh.",
   "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off.": "Muaji në të cilin të gjithë që kanë një klasë ngjiten një klasë. Fikur e ndalon ngritjen automatike.",
   "Through Grade": "Deri në klasën",
+  "Invalid setting name or value": "Emër ose vlerë e pavlefshme e cilësimit",
+  "The geocoding service did not answer — try again later": "Shërbimi i gjeokodimit nuk u përgjigj — provoni përsëri më vonë",
+  "Only the email you sent is shown.": "Shfaqet vetëm emaili që keni dërguar.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} ngjarje e krijuar",
     "other": "\"{{name}}\": {{count}} ngjarje të krijuara"

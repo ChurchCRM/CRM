@@ -24627,3 +24627,15 @@ msgstr "वह महीना जिसमें जिसकी भी कक�
 msgid "Through Grade"
 msgstr "कक्षा तक"
 
+#: 
+msgid "Invalid setting name or value"
+msgstr "सेटिंग का नाम या मान अमान्य है"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "जियोकोडिंग सेवा ने जवाब नहीं दिया — बाद में फिर कोशिश करें"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "केवल आपके द्वारा भेजा गया ईमेल दिखाया जाता है।"
+

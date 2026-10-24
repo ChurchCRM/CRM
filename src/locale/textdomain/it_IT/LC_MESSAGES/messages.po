@@ -24682,3 +24682,15 @@ msgstr "Il mese in cui tutti coloro che hanno una classe salgono di una classe. 
 msgid "Through Grade"
 msgstr "Fino alla classe"
 
+#: 
+msgid "Invalid setting name or value"
+msgstr "Nome o valore dell’impostazione non valido"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Il servizio di geocodifica non ha risposto — riprova più tardi"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Viene mostrata solo l’email che hai inviato."
+

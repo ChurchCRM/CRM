@@ -5996,6 +5996,9 @@
   "The grades changed after the preview. Review the changes again before applying them.": "Die grade het ná die voorskou verander. Hersien die veranderinge weer voordat jy dit toepas.",
   "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off.": "Die maand waarin almal met 'n graad een graad opskuif. Af skakel outomatiese bevordering af.",
   "Through Grade": "Tot graad",
+  "Invalid setting name or value": "Ongeldige instellingnaam of waarde",
+  "The geocoding service did not answer — try again later": "Die geokoderingsdiens het nie geantwoord nie — probeer later weer",
+  "Only the email you sent is shown.": "Slegs die e-pos wat jy gestuur het, word gewys.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} voorkoms geskep",
     "other": "\"{{name}}\": {{count}} voorkomste geskep"

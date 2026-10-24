@@ -5964,6 +5964,9 @@
   "The grades changed after the preview. Review the changes again before applying them.": "Tingkat berubah setelah pratinjau. Tinjau kembali perubahan sebelum menerapkannya.",
   "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off.": "Bulan saat semua orang yang memiliki tingkat naik satu tingkat. Mati menonaktifkan kenaikan otomatis.",
   "Through Grade": "Sampai tingkat",
+  "Invalid setting name or value": "Nama atau nilai pengaturan tidak valid",
+  "The geocoding service did not answer — try again later": "Layanan geocoding tidak merespons — coba lagi nanti",
+  "Only the email you sent is shown.": "Hanya email yang Anda kirim yang ditampilkan.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：{{count}} kejadian dibuat",
     "other": "\"{{name}}\"：{{count}} kejadian dibuat"

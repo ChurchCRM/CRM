@@ -24629,3 +24629,15 @@ msgstr "O mês em que todas as pessoas com uma série sobem uma série. Desligad
 msgid "Through Grade"
 msgstr "Até a série"
 
+#: 
+msgid "Invalid setting name or value"
+msgstr "Nome ou valor de configuração inválido"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "O serviço de geocodificação não respondeu — tente novamente mais tarde"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Somente o e-mail que você enviou é exibido."
+

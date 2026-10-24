@@ -5996,6 +5996,9 @@
   "The grades changed after the preview. Review the changes again before applying them.": "पूर्वावलोकन के बाद कक्षाएँ बदल गईं। लागू करने से पहले परिवर्तनों की फिर से समीक्षा करें।",
   "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off.": "वह महीना जिसमें जिसकी भी कक्षा है वह एक कक्षा ऊपर जाता है। बंद स्वचालित पदोन्नति बंद कर देता है।",
   "Through Grade": "कक्षा तक",
+  "Invalid setting name or value": "सेटिंग का नाम या मान अमान्य है",
+  "The geocoding service did not answer — try again later": "जियोकोडिंग सेवा ने जवाब नहीं दिया — बाद में फिर कोशिश करें",
+  "Only the email you sent is shown.": "केवल आपके द्वारा भेजा गया ईमेल दिखाया जाता है।",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：{{count}} घटना बनाई गई",
     "other": "\"{{name}}\"：{{count}} घटनाएं बनाई गईं"

@@ -24751,3 +24751,15 @@ msgstr "Luna în care toți cei cu o clasă urcă o clasă. Dezactivat oprește 
 msgid "Through Grade"
 msgstr "Până la clasa"
 
+#: 
+msgid "Invalid setting name or value"
+msgstr "Nume sau valoare nevalidă pentru setare"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Serviciul de geocodificare nu a răspuns — încercați din nou mai târziu"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Este afișat doar e-mailul pe care l-ați trimis."
+

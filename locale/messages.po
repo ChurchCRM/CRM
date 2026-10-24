@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-21 20:18+0000\n"
+"POT-Creation-Date: 2026-10-24 07:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -100,6 +100,10 @@ msgstr ""
 
 #, php-format
 msgid "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max."
+msgstr ""
+
+#, php-format
+msgid "%d Giving Statement"
 msgstr ""
 
 #, php-format
@@ -262,10 +266,6 @@ msgstr[1] ""
 
 #, php-format
 msgid "%d% of interface text is translated for this language."
-msgstr ""
-
-#, php-format
-msgid "%s %d Giving Statement"
 msgstr ""
 
 #, php-format
@@ -14069,9 +14069,6 @@ msgid "Since"
 msgstr ""
 
 msgid "Since this is a fresh installation, restoring will simply load your backup data."
-msgstr ""
-
-msgid "Sincerely"
 msgstr ""
 
 #. Context: countries

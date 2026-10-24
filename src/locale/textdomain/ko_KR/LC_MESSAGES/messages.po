@@ -24624,3 +24624,15 @@ msgstr "학년이 있는 모든 사람이 한 학년 올라가는 달. 끄면 �
 msgid "Through Grade"
 msgstr "종료 학년"
 
+#: 
+msgid "Invalid setting name or value"
+msgstr "설정 이름 또는 값이 유효하지 않습니다"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "지오코딩 서비스가 응답하지 않았습니다 — 나중에 다시 시도하세요"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "직접 보낸 이메일만 표시됩니다."
+

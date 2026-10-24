@@ -5996,6 +5996,9 @@
   "The grades changed after the preview. Review the changes again before applying them.": "പ്രിവ്യൂവിന് ശേഷം ക്ലാസുകൾ മാറി. പ്രയോഗിക്കുന്നതിന് മുമ്പ് മാറ്റങ്ങൾ വീണ്ടും പരിശോധിക്കുക.",
   "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off.": "ക്ലാസുള്ള എല്ലാവരും ഒരു ക്ലാസ് മുകളിലേക്ക് നീങ്ങുന്ന മാസം. ഓഫ് സ്വയമേവയുള്ള സ്ഥാനക്കയറ്റം നിർത്തുന്നു.",
   "Through Grade": "ക്ലാസ് വരെ",
+  "Invalid setting name or value": "അസാധുവായ ക്രമീകരണ നാമം അല്ലെങ്കിൽ മൂല്യം",
+  "The geocoding service did not answer — try again later": "ജിയോകോഡിംഗ് സേവനം പ്രതികരിച്ചില്ല — പിന്നീട് വീണ്ടും ശ്രമിക്കുക",
+  "Only the email you sent is shown.": "നിങ്ങൾ അയച്ച ഇമെയിൽ മാത്രമാണ് കാണിക്കുന്നത്.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} സംഭവം സൃഷ്ടിച്ചു",
     "other": "\"{{name}}\": {{count}} സംഭവങ്ങൾ സൃഷ്ടിച്ചു"
