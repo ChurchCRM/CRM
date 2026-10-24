@@ -65,65 +65,75 @@ $removeButton = static function (string $class, string $dataName, int $id, strin
         </ul>
     <?php endif; ?>
 
-    <div class="subheader mt-3 mb-1"><?= gettext('Portal permissions') ?></div>
-    <ul class="list-unstyled mb-0" id="portal-signin-permissions">
-        <?php foreach ($permissionGroups as $group) : ?>
-            <li class="d-flex align-items-start gap-2 py-1 border-bottom" data-cy="portal-permission-source"
-                data-source="<?= InputUtils::escapeAttribute($group['source']) ?>"
-                <?= $group['grantId'] !== null ? 'data-grant-id="' . (int) $group['grantId'] . '"' : '' ?>>
-                <div class="flex-fill text-break">
-                    <div class="small fw-medium"><?= InputUtils::escapeHTML($group['label']) ?></div>
-                    <?php foreach ($group['items'] as $item) : ?>
-                        <div class="small" data-capability="<?= InputUtils::escapeAttribute($item['capability']) ?>">
-                            <?= InputUtils::escapeHTML($item['capabilityLabel']) ?>
-                            <?php if ($item['scopeName'] !== null && $group['source'] !== EffectiveGrant::SOURCE_RULE) : ?>
-                                <span class="text-secondary">&middot; <?= InputUtils::escapeHTML($item['scopeName']) ?></span>
-                            <?php endif; ?>
-                            <?php if ($item['statusLabel'] !== null) : ?>
-                                <span class="badge bg-secondary-lt text-secondary ms-1" title="<?= InputUtils::escapeAttribute($item['statusLabel']) ?>"><?= gettext('Off') ?></span>
-                            <?php endif; ?>
-                        </div>
-                    <?php endforeach; ?>
-                    <?php if ($group['reason'] !== null) : ?>
-                        <div class="small text-secondary fst-italic"><?= InputUtils::escapeHTML($group['reason']) ?></div>
-                    <?php endif; ?>
-                </div>
-                <?php if ($group['grantId'] !== null) : ?>
-                    <?= $removeButton('portal-signin-remove-grant', 'grant-id', (int) $group['grantId'], gettext('Remove this permission')) ?>
-                <?php endif; ?>
-            </li>
-        <?php endforeach; ?>
-        <?php if ($permissionGroups === []) : ?>
-            <li class="small text-secondary"><?= gettext('None') ?></li>
-        <?php endif; ?>
-    </ul>
+    <button type="button" class="btn btn-link p-0 mt-3 text-decoration-none collapsed" id="portal-signin-permissions-toggle"
+            data-bs-toggle="collapse" data-bs-target="#portal-signin-permissions-section"
+            aria-expanded="false" aria-controls="portal-signin-permissions-section">
+        <i class="fa-solid fa-chevron-down me-1" id="portal-signin-permissions-chevron"></i>
+        <span id="portal-signin-permissions-label"><?= gettext('View Permissions') ?></span>
+        <span class="text-secondary ms-1" id="portal-signin-permissions-count">(<?= count($portalAccess['permissions']) ?>)</span>
+    </button>
 
-    <?php if ($portalAccess['notInEffect'] !== []) : ?>
-        <div class="small text-secondary mt-2"><?= gettext('Given, but not in effect') ?></div>
-        <ul class="list-unstyled mb-0" id="portal-signin-ended-grants">
-            <?php foreach ($portalAccess['notInEffect'] as $grant) : ?>
-                <li class="d-flex align-items-start gap-2 py-1 border-bottom text-secondary" data-cy="portal-ended-grant" data-grant-id="<?= (int) $grant['grantId'] ?>">
-                    <div class="flex-fill small text-break">
-                        <?= InputUtils::escapeHTML($grant['capabilityLabel']) ?>
-                        <?php if ($grant['scope']['name'] !== null) : ?>
-                            &middot; <?= InputUtils::escapeHTML($grant['scope']['name']) ?>
+    <div class="collapse" id="portal-signin-permissions-section">
+        <div class="subheader mt-2 mb-1"><?= gettext('Portal permissions') ?></div>
+        <ul class="list-unstyled mb-0" id="portal-signin-permissions">
+            <?php foreach ($permissionGroups as $group) : ?>
+                <li class="d-flex align-items-start gap-2 py-1 border-bottom" data-cy="portal-permission-source"
+                    data-source="<?= InputUtils::escapeAttribute($group['source']) ?>"
+                    <?= $group['grantId'] !== null ? 'data-grant-id="' . (int) $group['grantId'] . '"' : '' ?>>
+                    <div class="flex-fill text-break">
+                        <div class="small fw-medium"><?= InputUtils::escapeHTML($group['label']) ?></div>
+                        <?php foreach ($group['items'] as $item) : ?>
+                            <div class="small" data-capability="<?= InputUtils::escapeAttribute($item['capability']) ?>">
+                                <?= InputUtils::escapeHTML($item['capabilityLabel']) ?>
+                                <?php if ($item['scopeName'] !== null && $group['source'] !== EffectiveGrant::SOURCE_RULE) : ?>
+                                    <span class="text-secondary">&middot; <?= InputUtils::escapeHTML($item['scopeName']) ?></span>
+                                <?php endif; ?>
+                                <?php if ($item['statusLabel'] !== null) : ?>
+                                    <span class="badge bg-secondary-lt text-secondary ms-1" title="<?= InputUtils::escapeAttribute($item['statusLabel']) ?>"><?= gettext('Off') ?></span>
+                                <?php endif; ?>
+                            </div>
+                        <?php endforeach; ?>
+                        <?php if ($group['reason'] !== null) : ?>
+                            <div class="small text-secondary fst-italic"><?= InputUtils::escapeHTML($group['reason']) ?></div>
                         <?php endif; ?>
-                        <div>
-                            <?= $grant['known']
-                                ? InputUtils::escapeHTML(sprintf(gettext('Ended %s'), (string) $grant['endsOnDisplay']))
-                                : gettext('Its plugin is not installed') ?>
-                        </div>
                     </div>
-                        <?= $removeButton('portal-signin-remove-grant', 'grant-id', (int) $grant['grantId'], gettext('Remove this permission')) ?>
+                    <?php if ($group['grantId'] !== null) : ?>
+                        <?= $removeButton('portal-signin-remove-grant', 'grant-id', (int) $group['grantId'], gettext('Remove this permission')) ?>
+                    <?php endif; ?>
                 </li>
             <?php endforeach; ?>
+            <?php if ($permissionGroups === []) : ?>
+                <li class="small text-secondary"><?= gettext('None') ?></li>
+            <?php endif; ?>
         </ul>
-    <?php endif; ?>
 
-    <button type="button" class="btn btn-sm btn-outline-primary mt-2" id="portal-grant-add"
-            data-bs-toggle="modal" data-bs-target="#portal-grant-modal">
-        <i class="fa-solid fa-plus me-1"></i><?= gettext('Give a permission') ?>
-    </button>
+        <?php if ($portalAccess['notInEffect'] !== []) : ?>
+            <div class="small text-secondary mt-2"><?= gettext('Given, but not in effect') ?></div>
+            <ul class="list-unstyled mb-0" id="portal-signin-ended-grants">
+                <?php foreach ($portalAccess['notInEffect'] as $grant) : ?>
+                    <li class="d-flex align-items-start gap-2 py-1 border-bottom text-secondary" data-cy="portal-ended-grant" data-grant-id="<?= (int) $grant['grantId'] ?>">
+                        <div class="flex-fill small text-break">
+                            <?= InputUtils::escapeHTML($grant['capabilityLabel']) ?>
+                            <?php if ($grant['scope']['name'] !== null) : ?>
+                                &middot; <?= InputUtils::escapeHTML($grant['scope']['name']) ?>
+                            <?php endif; ?>
+                            <div>
+                                <?= $grant['known']
+                                    ? InputUtils::escapeHTML(sprintf(gettext('Ended %s'), (string) $grant['endsOnDisplay']))
+                                    : gettext('Its plugin is not installed') ?>
+                            </div>
+                        </div>
+                            <?= $removeButton('portal-signin-remove-grant', 'grant-id', (int) $grant['grantId'], gettext('Remove this permission')) ?>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        <?php endif; ?>
+
+        <button type="button" class="btn btn-sm btn-outline-primary mt-2" id="portal-grant-add"
+                data-bs-toggle="modal" data-bs-target="#portal-grant-modal">
+            <i class="fa-solid fa-plus me-1"></i><?= gettext('Give a permission') ?>
+        </button>
+    </div>
 </div>
 
 <div class="modal fade" id="portal-grant-modal" tabindex="-1" aria-labelledby="portal-grant-title" aria-hidden="true">

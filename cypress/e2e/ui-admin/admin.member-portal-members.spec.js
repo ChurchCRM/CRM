@@ -239,6 +239,16 @@ describe("Admin → Member Portal members, audit, permissions and the person car
 
         cy.freshAdminFormLogin();
         cy.visit(`/people/view/${PORTAL_PERSON}`);
+        cy.get("#portal-signin-permissions-section").should("not.be.visible");
+        cy.get("#portal-signin-disable").should("be.visible");
+        cy.get("#portal-signin-sign-out").should("be.visible");
+        cy.get("#portal-signin-permissions-toggle")
+            .should("have.attr", "aria-expanded", "false")
+            .and("contain.text", "View Permissions")
+            .click();
+        cy.get("#portal-signin-permissions-section").should("be.visible");
+        cy.get("#portal-signin-permissions-toggle").should("have.attr", "aria-expanded", "true").and("contain.text", "Hide Permissions");
+        cy.get("#portal-signin-permissions-count").invoke("text").as("countBefore", { type: "static" });
         cy.get("#portal-grant-add").click();
         cy.get("#portal-grant-modal").should("be.visible");
         cy.get("#portal-grant-capability").select("volunteer.team.manage");
@@ -253,10 +263,17 @@ describe("Admin → Member Portal members, audit, permissions and the person car
         cy.get("#portal-grant-save").click();
 
         cy.get('#portal-signin-permissions [data-source="given"]', { timeout: 20000 })
-            .should("contain.text", "Given by Church Admin until")
+            .should("be.visible")
+            .and("contain.text", "Given by Church Admin until")
             .and("contain.text", "Manage a team")
             .and("contain.text", `${PREFIX} Hospitality`)
             .and("contain.text", "Leads the greeters this autumn");
+        cy.get("@countBefore").then((countBefore) => {
+            cy.get("#portal-signin-permissions-count").should("have.text", `(${Number(countBefore.replace(/\D/g, "")) + 1})`);
+        });
+        cy.get("#portal-signin-permissions-toggle").should("contain.text", "Hide Permissions").click();
+        cy.get("#portal-signin-permissions-section").should("not.be.visible");
+        cy.get("#portal-signin-permissions-toggle").should("contain.text", "View Permissions");
         cy.visit("/admin/member-portal#portal-permissions");
         cy.get('#portalPermissionsTable tr[data-capability="volunteer.team.manage"]').should("contain.text", "Admin overrides: 1");
 
@@ -268,9 +285,13 @@ describe("Admin → Member Portal members, audit, permissions and the person car
 
         cy.freshAdminFormLogin();
         cy.visit(`/people/view/${PORTAL_PERSON}`);
+        cy.get("#portal-signin-permissions-section").should("not.be.visible");
+        cy.get("#portal-signin-permissions-toggle").click();
         cy.get('#portal-signin-permissions [data-source="given"] .portal-signin-remove-grant').click();
         confirmDialog();
         cy.get('#portal-signin-permissions [data-source="given"]', { timeout: 20000 }).should("not.exist");
+        cy.get("#portal-signin-permissions-section").should("be.visible");
+        cy.get("#portal-signin-permissions-toggle").should("have.attr", "aria-expanded", "true").and("contain.text", "Hide Permissions");
 
         signInAs("limited.user");
         portalNavLabels().should("not.include", "My Teams");
@@ -285,7 +306,7 @@ describe("Admin → Member Portal members, audit, permissions and the person car
         );
         cy.freshAdminFormLogin();
         cy.visit(`/people/view/${PORTAL_PERSON}`);
-        cy.get("#portal-signin-device-list [data-cy=portal-device]").should("have.length", 1).and("contain.text", `${MARK} laptop`);
+        cy.get("#portal-signin-device-list [data-cy=portal-device]").should("have.length", 1).and("be.visible").and("contain.text", `${MARK} laptop`);
         cy.get("#portal-signin-device-list").should("not.contain.text", `${MARK} signed out`);
         cy.get("#portal-signin-device-list .portal-signin-remove-device").click();
         confirmDialog();
@@ -309,6 +330,7 @@ describe("Admin → Member Portal members, audit, permissions and the person car
         cy.get("#portal-signin-devices").should("contain.text", "1");
         cy.get("#portal-signin-passkeys").should("contain.text", "0");
         cy.get("#portal-signin-access").should("not.exist");
+        cy.get("#portal-signin-permissions-toggle").should("not.exist");
         cy.get("#portal-signin-card").should("not.contain.text", `${MARK} tablet`).and("not.contain.text", "Hidden from Edit Records");
         cy.get("#portal-grant-modal").should("not.exist");
     });
@@ -331,6 +353,7 @@ describe("Admin → Member Portal members, audit, permissions and the person car
             cy.get("#portalAuditTable tbody tr:first-child > td").eq(2).should("be.visible").and("have.attr", "data-label", "Event");
             noHorizontalScroll();
             cy.visit(`/people/view/${PORTAL_PERSON}`);
+            cy.get("#portal-signin-permissions-toggle").click();
             cy.get("#portal-signin-permissions").should("be.visible");
             noHorizontalScroll();
         });

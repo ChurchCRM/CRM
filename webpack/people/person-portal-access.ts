@@ -2,7 +2,8 @@
  * The person page's portal devices, passkeys and permissions
  * (src/people/views/partials/portal-signin-access.php), for administrators:
  * sign out a remembered device, remove a passkey or a given permission, and give one.
- * Each posts to /admin/api/person/{id}/sign-in/* and reloads the page.
+ * Each posts to /admin/api/person/{id}/sign-in/* and reloads the page. The permissions
+ * sit behind "View Permissions", closed on load and still open after such a reload.
  */
 
 interface ApiError {
@@ -31,6 +32,61 @@ async function errorMessage(response: Response, fallback: string): Promise<strin
     return body.message || fallback;
   } catch {
     return fallback;
+  }
+}
+
+const PERMISSIONS_OPEN_KEY = "churchcrm.portalSignInPermissionsOpen";
+
+export function reloadSignInCard(): void {
+  const card = document.getElementById("portal-signin-card");
+  if (card && document.getElementById("portal-signin-permissions-section")?.classList.contains("show")) {
+    try {
+      window.sessionStorage.setItem(PERMISSIONS_OPEN_KEY, card.dataset.personId ?? "");
+    } catch {
+      // Storage blocked: the section starts closed again.
+    }
+  }
+  window.location.reload();
+}
+
+function wirePermissionsToggle(card: HTMLElement): void {
+  const section = document.getElementById("portal-signin-permissions-section");
+  const toggle = document.getElementById("portal-signin-permissions-toggle");
+  if (!section || !toggle) {
+    return;
+  }
+  const label = document.getElementById("portal-signin-permissions-label");
+  const chevron = document.getElementById("portal-signin-permissions-chevron");
+  const showState = (open: boolean): void => {
+    if (label) {
+      label.textContent = open ? t("Hide Permissions") : t("View Permissions");
+    }
+    chevron?.classList.toggle("fa-chevron-down", !open);
+    chevron?.classList.toggle("fa-chevron-up", open);
+  };
+  for (const [type, open] of [
+    ["show.bs.collapse", true],
+    ["hide.bs.collapse", false],
+  ] as const) {
+    section.addEventListener(type, (event) => {
+      if (event.target === section) {
+        showState(open);
+      }
+    });
+  }
+
+  let reopen = false;
+  try {
+    reopen = window.sessionStorage.getItem(PERMISSIONS_OPEN_KEY) === card.dataset.personId;
+    window.sessionStorage.removeItem(PERMISSIONS_OPEN_KEY);
+  } catch {
+    // Storage blocked: nothing was kept.
+  }
+  if (reopen) {
+    section.classList.add("show");
+    toggle.classList.remove("collapsed");
+    toggle.setAttribute("aria-expanded", "true");
+    showState(true);
   }
 }
 
@@ -90,7 +146,7 @@ function wireRemovals(card: HTMLElement): void {
               return;
             }
             window.CRM?.notify?.(t(removal.done), { type: "success" });
-            window.location.reload();
+            reloadSignInCard();
           },
         });
       });
@@ -203,7 +259,7 @@ function wireGiveGrant(card: HTMLElement): void {
       return;
     }
     window.CRM?.notify?.(t("The permission was given."), { type: "success" });
-    window.location.reload();
+    reloadSignInCard();
   });
 }
 
@@ -212,6 +268,7 @@ export function initPortalAccess(): void {
   if (!card || !document.getElementById("portal-signin-access")) {
     return;
   }
+  wirePermissionsToggle(card);
   wireRemovals(card);
   wireGiveGrant(card);
 }
