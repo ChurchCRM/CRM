@@ -836,6 +836,24 @@
         </vendor>
     </table>
 
+    <table name="rate_limit_rlm" idMethod="native" phpName="RateLimit" description="Attempt counters for RateLimiter (#10197): one row per bucket and key, counting hits in a window that starts at the first hit. The key is stored only as a SHA-256 hash, and a row is deleted once its window has ended.">
+        <column name="rlm_ID" phpName="Id" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="rlm_Bucket" phpName="Bucket" type="VARCHAR" size="64" required="true"/>
+        <column name="rlm_KeyHash" phpName="KeyHash" type="CHAR" size="64" required="true"/>
+        <column name="rlm_Hits" phpName="Hits" type="INTEGER" size="10" sqlType="int(10) unsigned" required="true" defaultValue="0"/>
+        <column name="rlm_ResetAt" phpName="ResetAt" type="INTEGER" size="10" sqlType="int(10) unsigned" required="true" description="Unix time when the window ends"/>
+        <unique name="rlm_bucket_key_uidx">
+            <unique-column name="rlm_Bucket"/>
+            <unique-column name="rlm_KeyHash"/>
+        </unique>
+        <index name="rlm_reset_at_idx">
+            <index-column name="rlm_ResetAt"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
     <table name="record2property_r2p" idMethod="native" phpName="RecordProperty" isCrossRef="true" description="This table indicates which persons, families, or groups are assigned specific properties and what the values of those properties are.">
         <column name="r2p_pro_ID" phpName="PropertyId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
         <column name="r2p_record_ID" phpName="RecordId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>

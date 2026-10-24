@@ -4,6 +4,7 @@ namespace ChurchCRM\model\ChurchCRM;
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\Exceptions\PasswordChangeException;
+use ChurchCRM\Authentication\SignInThrottle;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\KeyManagerUtils;
 use ChurchCRM\model\ChurchCRM\Base\User as BaseUser;
@@ -717,7 +718,7 @@ class User extends BaseUser
 
     public function isLocked(): bool
     {
-        return SystemConfig::getIntValue('iMaxFailedLogins') > 0 && $this->getFailedLogins() >= SystemConfig::getIntValue('iMaxFailedLogins');
+        return SignInThrottle::isAccountLocked($this);
     }
 
     public function resetPasswordToRandom(): string

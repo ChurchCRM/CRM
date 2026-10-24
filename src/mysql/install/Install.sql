@@ -972,6 +972,17 @@ CREATE TABLE `tokens` (
   PRIMARY KEY (`token`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
+CREATE TABLE `rate_limit_rlm` (
+  `rlm_ID`      int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `rlm_Bucket`  varchar(64)      NOT NULL,
+  `rlm_KeyHash` char(64)         NOT NULL,
+  `rlm_Hits`    int(10) unsigned NOT NULL DEFAULT 0,
+  `rlm_ResetAt` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`rlm_ID`),
+  UNIQUE KEY `rlm_bucket_key_uidx` (`rlm_Bucket`, `rlm_KeyHash`),
+  KEY `rlm_reset_at_idx` (`rlm_ResetAt`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 CREATE TABLE `locations` (
   `location_id` INT NOT NULL AUTO_INCREMENT,
   `location_typeId` INT NOT NULL,
