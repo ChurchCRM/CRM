@@ -133,6 +133,9 @@ describe("API People Hooks - dispatch path regression", () => {
     });
 
     it("Persists a person update made through the API role route", () => {
+        // OptionId 8 exists for custom-field types (list 4), not family roles
+        // (list 2). A global OptionId search accepted it before #10682.
+        cy.makePrivateAdminAPICall("POST", `/api/person/${ids.personUpd}/role/8`, null, 404);
         cy.makePrivateAdminAPICall("POST", `/api/person/${ids.personUpd}/role/3`, null, 200)
             .its("body.success")
             .should("eq", true);

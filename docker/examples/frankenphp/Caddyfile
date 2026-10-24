@@ -29,6 +29,9 @@
 
     # php_server must run before file_server so PHP files are executed, not downloaded
     order php_server before file_server
+
+    # Caddy normally sorts handle before respond. Deny matchers must run first.
+    order respond before handle
 }
 
 :80 {
@@ -37,6 +40,9 @@
 
     # Enable compression for all responses
     encode zstd br gzip
+
+    # HSTS applies once the site is served over HTTPS (Caddy's automatic HTTPS on a real domain).
+    # header Strict-Transport-Security "max-age=31536000"
 
     # ── Security: block access to sensitive paths ─────────────────────────
 
@@ -57,6 +63,17 @@
     # See GHSA-mp2w-4q3r-ppx7.
     @include path /Include /Include/*
     respond @include 404
+
+    # Deny CLI scripts and internal PHP templates/route definitions directly.
+    # These files must only execute through their application's index.php.
+    @cli path /cli /cli/*
+    respond @cli 404
+
+    @internalPhp path_regexp internalphp ^/(v2/templates|admin/views|finance/views|people/views|groups/views|event/views|fundraiser/views|ministries/views)/.*\.php(/|$)
+    respond @internalPhp 404
+
+    @portalRoutes path_regexp portalroutes ^/portal/routes/.*\.php$
+    respond @portalRoutes 404
 
     # Block direct HTTP execution of community/core plugin PHP files (GHSA-37mf-vq43-5qp9).
     # Caddy does not honour .htaccess — this explicit rule is required.
@@ -98,6 +115,39 @@
     # Finance module: /finance/deposits, /finance/pledges, etc.
     handle /finance/* {
         try_files {path} /finance/index.php
+        php_server
+    }
+
+    # Additional Slim applications: member portal, directory, groups,
+    # events, ministries and fundraisers. Preserve direct static assets
+    # (including portal theme CSS) before falling back to each index.php.
+    handle /portal/* {
+        try_files {path} /portal/index.php
+        php_server
+    }
+
+    handle /people/* {
+        try_files {path} /people/index.php
+        php_server
+    }
+
+    handle /groups/* {
+        try_files {path} /groups/index.php
+        php_server
+    }
+
+    handle /event/* {
+        try_files {path} /event/index.php
+        php_server
+    }
+
+    handle /ministries/* {
+        try_files {path} /ministries/index.php
+        php_server
+    }
+
+    handle /fundraiser/* {
+        try_files {path} /fundraiser/index.php
         php_server
     }
 
@@ -156,6 +206,12 @@
 #     respond @tmp_attach 404
 #     @include path /churchcrm/Include/*
 #     respond @include 404
+#     @cli path /churchcrm/cli /churchcrm/cli/*
+#     respond @cli 404
+#     @internalPhp path_regexp internalphp ^/churchcrm/(v2/templates|admin/views|finance/views|people/views|groups/views|event/views|fundraiser/views|ministries/views)/.*\.php(/|$)
+#     respond @internalPhp 404
+#     @portalRoutes path_regexp portalroutes ^/churchcrm/portal/routes/.*\.php$
+#     respond @portalRoutes 404
 #     @pluginPhp path_regexp pluginphp ^/churchcrm/plugins/(community|core)/.+\.(php|phar|phtml|pht|php[3-9])$
 #     respond @pluginPhp 404
 #
@@ -177,6 +233,30 @@
 #     }
 #     handle /churchcrm/finance/* {
 #         try_files {path} /churchcrm/finance/index.php
+#         php_server
+#     }
+#     handle /churchcrm/portal/* {
+#         try_files {path} /churchcrm/portal/index.php
+#         php_server
+#     }
+#     handle /churchcrm/people/* {
+#         try_files {path} /churchcrm/people/index.php
+#         php_server
+#     }
+#     handle /churchcrm/groups/* {
+#         try_files {path} /churchcrm/groups/index.php
+#         php_server
+#     }
+#     handle /churchcrm/event/* {
+#         try_files {path} /churchcrm/event/index.php
+#         php_server
+#     }
+#     handle /churchcrm/ministries/* {
+#         try_files {path} /churchcrm/ministries/index.php
+#         php_server
+#     }
+#     handle /churchcrm/fundraiser/* {
+#         try_files {path} /churchcrm/fundraiser/index.php
 #         php_server
 #     }
 #     handle /churchcrm/kiosk/* {

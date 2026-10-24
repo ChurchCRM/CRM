@@ -37,7 +37,7 @@ describe("Session Login Flows", () => {
             // Locked from the first attempt (seeded over iMaxFailedLogins): no session
             // is granted, so the user never reaches the dashboard or any next step.
             login("locked.user", "changeme");
-            cy.url({ timeout: 10000 }).should("include", "/session/begin");
+            cy.location("pathname", { timeout: 10000 }).should("eq", "/admin/");
             cy.get("input[name=User]").should("exist");
         });
     });

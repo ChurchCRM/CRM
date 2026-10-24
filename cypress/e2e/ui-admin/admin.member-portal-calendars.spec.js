@@ -7,7 +7,8 @@
  *   - the tab MP3 left hidden is now on the page
  *   - every church, ministry and system calendar is listed, each named by its
  *     kind, each with a "Show in Member Portal" switch
- *   - switching a calendar on, and off again, survives a reload
+ *   - each switch saves as it changes; on, and off again, survive a reload
+ *   - a switch the server refuses goes back, with the server's message
  *   - an entry naming no calendar is refused rather than stored
  *
  * Seed facts this relies on: calendar 1 is "Public Calendar" (the calendar a
@@ -26,6 +27,7 @@
 const CHURCH_CALENDAR_ID = 1;
 const CHURCH_CALENDAR_NAME = "Public Calendar";
 const MINISTRY_CALENDAR_NAME = "PORTALCAL Youth Ministry";
+const GONE_CALENDAR_NAME = "PORTALCAL Deleted";
 const VOLUNTEER_VERSION = "sVolunteerVersion";
 let originalVolunteerVersion;
 
@@ -41,7 +43,10 @@ const setVisibleCalendars = (visible) =>
     });
 
 const openCalendarsTab = () => {
+    cy.intercept("POST", "**/admin/api/member-portal/calendars").as("saveCalendars");
     cy.visit("/admin/member-portal");
+    // The page script wires every tab at once; the office-list picker is the visible sign it ran.
+    cy.get("#sMemberSignInNotificationRecipientIDs").should("have.class", "tomselected");
     cy.get("#portal-calendars-tab").should("be.visible").click();
     cy.get("#portal-calendars").should("be.visible");
 };
@@ -109,6 +114,27 @@ describe("Admin → Member Portal → Calendars", () => {
         );
     });
 
+    it("Says above the list whether members see the Calendar page, and has no section switch", () => {
+        openCalendarsTab();
+        cy.get("#portalCalendarSectionPanel").should("not.exist");
+        cy.get("#portalCalendarsRule .portal-calendars-rule-hidden")
+            .should("be.visible")
+            .and("contain.text", "No calendar is switched on, so members do not see the Calendar page.");
+        cy.get("#portalCalendarsRule .portal-calendars-rule-shown").should("not.be.visible");
+
+        calendarRow(CHURCH_CALENDAR_NAME).find(".portal-calendar-switch").check();
+        cy.wait("@saveCalendars");
+        cy.get("#portalCalendarsRule .portal-calendars-rule-shown")
+            .should("be.visible")
+            .and("contain.text", "Members see the Calendar page while at least one calendar is switched on.");
+        cy.get("#portalCalendarsRule .portal-calendars-rule-hidden").should("not.be.visible");
+
+        calendarRow(CHURCH_CALENDAR_NAME).find(".portal-calendar-switch").uncheck();
+        cy.wait("@saveCalendars");
+        cy.get("#portalCalendarsRule .portal-calendars-rule-hidden").should("be.visible");
+        cy.get("#portalCalendarsRule .portal-calendars-rule-shown").should("not.be.visible");
+    });
+
     it("Church, ministry and system calendars are each listed under their own kind", () => {
         openCalendarsTab();
 
@@ -127,25 +153,36 @@ describe("Admin → Member Portal → Calendars", () => {
         });
     });
 
-    it("Switching the church calendar on persists across a reload", () => {
+    it("Has no Save button: each switch saves as it changes", () => {
+        openCalendarsTab();
+        cy.get("#portalCalendarsTable").closest(".card").find("button").should("not.exist");
+        cy.get("#portalCalendarsTable").closest(".card").find(".card-footer").should("contain.text", "Changes save as you make them.");
+    });
+
+    it("Switching the church calendar on saves it, and it survives a reload", () => {
         openCalendarsTab();
 
         calendarRow(CHURCH_CALENDAR_NAME).find(".portal-calendar-switch").should("not.be.checked").check();
-        cy.get("#portalCalendarsSaveButton").click();
-        cy.get("#portalCalendarsStatus").should("contain", "Saved.");
+        cy.wait("@saveCalendars").then(({ request, response }) => {
+            expect(request.body.visible).to.deep.eq([{ type: "calendar", id: CHURCH_CALENDAR_ID }]);
+            expect(response.statusCode).to.eq(200);
+        });
+        cy.contains("Settings saved successfully").should("be.visible");
 
         openCalendarsTab();
         calendarRow(CHURCH_CALENDAR_NAME).find(".portal-calendar-switch").should("be.checked");
     });
 
-    it("Switching it off again persists across a reload", () => {
+    it("Switching it off again saves it, and it survives a reload", () => {
         setVisibleCalendars([{ type: "calendar", id: CHURCH_CALENDAR_ID }]);
         cy.setupAdminSession();
         openCalendarsTab();
 
         calendarRow(CHURCH_CALENDAR_NAME).find(".portal-calendar-switch").should("be.checked").uncheck();
-        cy.get("#portalCalendarsSaveButton").click();
-        cy.get("#portalCalendarsStatus").should("contain", "No calendar is shared with members.");
+        cy.wait("@saveCalendars").then(({ request, response }) => {
+            expect(request.body.visible).to.deep.eq([]);
+            expect(response.statusCode).to.eq(200);
+        });
 
         openCalendarsTab();
         calendarRow(CHURCH_CALENDAR_NAME).find(".portal-calendar-switch").should("not.be.checked");
@@ -155,11 +192,28 @@ describe("Admin → Member Portal → Calendars", () => {
         openCalendarsTab();
 
         calendarRow("Birthdays").find(".portal-calendar-switch").check();
-        cy.get("#portalCalendarsSaveButton").click();
-        cy.get("#portalCalendarsStatus").should("contain", "Saved.");
+        cy.wait("@saveCalendars").its("response.statusCode").should("eq", 200);
 
         openCalendarsTab();
         calendarRow("Birthdays").find(".portal-calendar-switch").should("be.checked");
+    });
+
+    it("A refused switch shows the server's message and goes back", () => {
+        cy.makePrivateAdminAPICall(
+            "POST",
+            "/api/calendars",
+            { Name: GONE_CALENDAR_NAME, ForegroundColor: "#ffffff", BackgroundColor: "#336699" },
+            200,
+        ).then(({ body }) => {
+            cy.setupAdminSession();
+            openCalendarsTab();
+            cy.request({ method: "DELETE", url: `/api/calendars/${body.Id}` });
+
+            calendarRow(GONE_CALENDAR_NAME).find(".portal-calendar-switch").check();
+            cy.wait("@saveCalendars").its("response.statusCode").should("eq", 400);
+            cy.contains(`There is no church calendar with id ${body.Id}.`).should("be.visible");
+            calendarRow(GONE_CALENDAR_NAME).find(".portal-calendar-switch").should("not.be.checked");
+        });
     });
 
     it("An entry that names no calendar is refused, and nothing is stored", () => {

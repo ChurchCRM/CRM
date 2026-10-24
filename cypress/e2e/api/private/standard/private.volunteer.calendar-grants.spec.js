@@ -2,7 +2,7 @@
 
 /**
  * Volunteer v2 D25 — administrators open church calendars to ministries.
- * Design: volunteer-v2-design.md §0.8 D25, §2.16, §4.6; member-portal-design.md §5.3.
+ * Design: docs/design/volunteer-v2.md §0.8 D25, §2.16, §4.6; member-portal-design.md §5.3.
  *
  * Personas (seed.sql): person 1 `admin.api.key` (administrator); person 3 `user.api.key`
  * (tony.wade, no bAddEvent), made coordinator of ministries A and C here, never of B.

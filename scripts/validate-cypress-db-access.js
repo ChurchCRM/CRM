@@ -11,7 +11,7 @@
  * allows that many. The baseline only goes down. Rules:
  * .agents/skills/churchcrm/cypress-testing.md "Database access".
  *
- *   npm run lint:cypress-db-access
+ *   npm run lint
  *   node scripts/validate-cypress-db-access.js --report   counts by category and file
  *   node scripts/validate-cypress-db-access.js --update   lower the baseline after a migration
  */
@@ -24,7 +24,7 @@ const REPO_ROOT = path.join(__dirname, '..');
 const SCAN_ROOT = 'cypress';
 const ALLOWLIST_PATH = 'cypress/db-access.json';
 const APPROVED_KINDS = ['schema', 'fixture'];
-const DB_NAMES = new Set(['dbQuery', 'db:query']);
+const DB_NAMES = new Set(['dbQuery', 'db:query', 'db:upgradeBlock']);
 
 // Upper-case keywords only, so UI strings such as "Select a team" never match.
 const SQL_STATEMENT = new RegExp(

@@ -1,16 +1,12 @@
 ---
 title: "Approved Plugin Registry"
-intent: "Where the community-plugin allowlist lives, how agents must fetch it, and what not to invent"
+intent: "Where the community-plugin allowlist lives and how to edit it"
 tags: ["plugins","registry","community"]
 prereqs: ["[[plugin-system]]", "[[hosted-remote-config]]"]
 complexity: "beginner"
 ---
 
 # Approved Plugin Registry
-
-Use this file instead of guessing a GitHub branch or inventing a marketplace.
-
-## Current product
 
 ChurchCRM installs community plugins only from an allowlist fetched at runtime.
 
@@ -27,24 +23,18 @@ ChurchCRM installs community plugins only from an allowlist fetched at runtime.
 
 ## How to add or bump a plugin
 
-Open a PR with **base `External`** and edit **root** `approved-plugins.json`. Do not put the live allowlist on master unless a separate fallback PR says so.
+Open a PR with base `External` and edit the root `approved-plugins.json`.
 
-Keep **hello-world first** unless the Cypress lifecycle spec is retargeted in the same change. That spec clicks `[data-plugin-id="hello-world"]`.
-
-Current allowlist (restored 2026-09-22 from External history / PR #8928):
-
-1. `hello-world` 1.0.1 — ChurchCRM/community-plugin-hello-world, risk low, SHA `ad1bfa1427b778c052f4c816072c8d9bc2f79cfc07fe481d9dd29be4c448082a`
-2. `meeting-outlines` 1.0.2 — huckjs-sys/meeting-outlines, risk high, SHA `494e6534861ea6a6a74435d0efcbdab7474bca72c54bb9d0d34e994e7f51a81f`
+Keep `hello-world` first: the Cypress lifecycle spec clicks `[data-plugin-id="hello-world"]` (retarget the spec in the same change to reorder).
 
 Review checklist: [`plugin-security-scan.md`](./plugin-security-scan.md).
 
-## Do not do this
+## Rules
 
-- Do not delete `External` or `Notifications`. A 21 Sep 2026 PR-less prune did that; the registry 404'd and UI shard 2 failed (#9969).
-- Do not teach agents that `External` is retired. That was wrong after the restore. See [`hosted-remote-config.md`](./hosted-remote-config.md).
-- Do not call community plugins "future". The URL installer and Browse Approved UI are current product.
-- Do not add a plugin that is not in the allowlist.
-- Do not invent SaaS hosting, payment processing, or install counts in plugin copy.
+- `External` and `Notifications` are live hosts for every install (`hosted-remote-config.md`).
+- Community plugins are current product: the URL installer and Browse Approved UI ship today.
+- Only allowlisted plugins install.
+- Plugin copy sticks to what the plugin does; hosting, payment processing and install counts are out of scope.
 
 ## Core plugins (shipped in the zip)
 

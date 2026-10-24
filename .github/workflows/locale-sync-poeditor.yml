@@ -1,6 +1,6 @@
 name: "Locale: sync"
 
-# Upload terms, then download (docs/locale-pipeline.md). No translation happens here:
+# Upload terms, then download. No translation happens here:
 #   1. upload terms   locale/messages.po -> POEditor, deleting terms that are no longer in the file
 #   2. download       POEditor -> src/locale + locale/terms/missing, opened as a PR on branch
 #                     locale/download/<version>

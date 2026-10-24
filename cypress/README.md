@@ -2,10 +2,14 @@ Cypress tests for ChurchCRM
 
 Overview
 - `cypress/e2e/` — test specs; group by feature (e.g., `auth/`, `family/`, `donations/`).
-- `cypress/fixtures/` — static test data (move from `cypress/data/`).
-- `cypress/support/` — global support files and custom commands.
+- `cypress/data/seed.sql` — test data loaded after `src/mysql/install/Install.sql` (schema comes from Install.sql).
+- `cypress/fixtures/` — static files that specs upload or compare.
+- `cypress/support/` — global support files and custom commands; `support/gates/` holds the permission rows.
 - `cypress/configs/` — environment-specific config files (e.g., `new-system.config.ts`, `docker.config.ts`).
+- `cypress/split-timings.json` — spec durations that balance the CI shards.
 - `cypress/videos/`, `cypress/screenshots/`, `cypress/downloads/` — runtime artifacts (gitignored).
+
+Rules and runbooks live in the skill cards: `.agents/skills/churchcrm/cypress-testing.md` (writing specs and permission tests) and `ci-test-infrastructure.md` (test stack, CI, shards, test database, cleanup guard).
 
 Running tests (recommended)
 - Open interactive runner (local):
@@ -23,9 +27,8 @@ Running tests (recommended)
   npm run test:new-system  # Setup wizard tests
   ```
 
-Quick migration notes
-- Move `cypress/data/` → `cypress/fixtures/` and update usages of `cy.fixture()` accordingly.
-- Docker/CI variants already live under `cypress/configs/` — every `npm run test*` script passes `--config-file cypress/configs/<name>.config.ts`. Do NOT add a root `cypress.config.ts`; Cypress is never asked to auto-detect one here.
+Config files
+- Docker/CI variants live under `cypress/configs/` — every `npm run test*` script passes `--config-file cypress/configs/<name>.config.ts`. Do NOT add a root `cypress.config.ts`; Cypress is never run without an explicit config file.
 
 Best practices
 - Group specs by feature and add tags (e.g., `@smoke`) to allow fast subset runs.

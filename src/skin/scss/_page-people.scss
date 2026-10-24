@@ -1,0 +1,75 @@
+// Page-level styles for people views. Static inline styles move here as named classes.
+
+.icon-fixed-width {
+  width: 1rem;
+  text-align: center;
+}
+
+.photo-zoom-icon {
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.profile-photo-square {
+  aspect-ratio: 1 / 1;
+  max-height: 400px;
+}
+
+.map-canvas-sm {
+  height: 200px;
+}
+
+.email-body-frame {
+  min-height: 420px;
+  background: #fff;
+}
+
+.share-col {
+  width: 45%;
+}
+
+.count-col {
+  width: 60px;
+}
+
+.progress-thin {
+  height: 6px;
+}
+
+.pct-label {
+  min-width: 2.5rem;
+}
+
+.age-stats-chart {
+  min-height: 300px;
+}
+
+.note-preview {
+  max-height: 4.5em;
+  overflow: hidden;
+}
+
+.note-read-more {
+  font-size: 0.8rem;
+}
+
+.cart-col-photo {
+  width: 4.5rem;
+}
+
+.cart-col-role {
+  width: 220px;
+}
+
+.note-view-body {
+  min-height: 4rem;
+}
+
+.empty-state-icon {
+  font-size: 2rem;
+}
+
+.cart-empty-icon {
+  font-size: 3rem;
+  color: var(--tblr-muted);
+}

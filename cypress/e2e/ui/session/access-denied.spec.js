@@ -75,13 +75,6 @@ describe("Access Denied Page", () => {
             cy.contains("Add records permission").should("be.visible");
         });
 
-        it("Should display MenuOptions role description", () => {
-            cy.visit("/v2/access-denied?role=MenuOptions");
-            cy.contains("Permission Required").should("be.visible");
-            cy.get(".callout-warning").should("be.visible");
-            cy.contains("Menu options access").should("be.visible");
-        });
-
         it("Should display Notes role description", () => {
             cy.visit("/v2/access-denied?role=Notes");
             cy.contains("Permission Required").should("be.visible");

@@ -1,7 +1,9 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Portal\Auth\MemberSignInRule;
 use ChurchCRM\Service\DashboardService;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -51,7 +53,10 @@ $app->get('/dashboard', function (Request $request, Response $response): Respons
         'familyRoleStats'    => $familyRoleStats,
         'isAdmin'            => $isAdmin,
         'canEmail'           => $currentUser->isEmailEnabled(),
-        'canLetters'         => $currentUser->isMenuOptionsEnabled(),
+        'canEdit'            => $currentUser->isEditRecordsEnabled(),
+        // Shown once the member sign-in rule lets anyone in (design §11.2).
+        'canFixSignInEmail'  => $currentUser->isEditRecordsEnabled()
+            && MemberSignInRule::idList(SystemConfig::getValue('sMemberSignInClassifications')) !== [],
     ];
 
     return $renderer->render($response, 'dashboard.php', $pageArgs);

@@ -41,24 +41,24 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <?php endif; ?>
         <div class="card">
             <div class="card-body p-0">
-                <div id="map" style="height: 600px; width: 100%;"></div>
+                <div id="map" class="people-map w-100"></div>
             </div>
 
             <!-- Desktop legend (injected into map overlay by Leaflet control) -->
             <div id="map-legend" class="d-none d-sm-block">
                 <?php if ($mapConfig['hasLocation']): ?>
                 <div class="legend-static">
-                    <img src="<?= $sRootPath ?>/skin/icons/church.png" width="14" height="14" alt="" class="legend-church-icon">
+                    <img src="<?= $sRootPath ?>/skin/icons/church.png" width="14" height="14" alt="" class="flex-shrink-0">
                     <span class="legend-label"><?= InputUtils::escapeHTML($mapConfig['churchName']) ?></span>
                 </div>
                 <?php endif; ?>
                 <div class="legend-title"><?= InputUtils::escapeHTML($mapConfig['legendTitle']) ?></div>
                 <?php foreach ($mapConfig['legendItems'] as $item): ?>
-                    <div class="legend-item active" data-legend-id="<?= (int) $item['id'] ?>"
-                         role="button" tabindex="0" aria-pressed="true">
-                        <span class="legend-dot" style="background:<?= InputUtils::escapeAttribute($item['color']) ?>"></span>
+                    <button type="button" class="legend legend-item d-flex" data-legend-id="<?= (int) $item['id'] ?>"
+                            aria-pressed="true" style="--tblr-legend-color: <?= InputUtils::escapeAttribute($item['color']) ?>">
+                        <span class="legend-dot"></span>
                         <span class="legend-label"><?= InputUtils::escapeHTML($item['label']) ?></span>
-                    </div>
+                    </button>
                 <?php endforeach; ?>
             </div>
 
@@ -70,10 +70,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="card-body py-2">
                     <div class="d-flex flex-wrap gap-2">
                         <?php foreach ($mapConfig['legendItems'] as $item): ?>
-                            <div class="legend-item active legend-pill" data-legend-id="<?= (int) $item['id'] ?>">
-                                <span class="legend-dot" style="background:<?= InputUtils::escapeAttribute($item['color']) ?>"></span>
+                            <button type="button" class="legend legend-item legend-pill" data-legend-id="<?= (int) $item['id'] ?>"
+                                    aria-pressed="true" style="--tblr-legend-color: <?= InputUtils::escapeAttribute($item['color']) ?>">
+                                <span class="legend-dot"></span>
                                 <span class="legend-label"><?= InputUtils::escapeHTML($item['label']) ?></span>
-                            </div>
+                            </button>
                         <?php endforeach; ?>
                     </div>
                 </div>
@@ -87,83 +88,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     window.CRM.mapConfig = <?= InputUtils::jsonEncodeForScript($mapConfig) ?>;
 </script>
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/people-map-view.min.js') ?>"></script>
-
-<style nonce="<?= SystemURLs::getCSPNonce() ?>">
-    /* ── Floating map legend (desktop) ──────────────────────────────── */
-    #map-legend {
-        padding: 8px 12px;
-        background: var(--tblr-bg-surface);
-        border-radius: 6px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, .18);
-        min-width: 150px;
-        font-size: .85rem;
-    }
-    .legend-title {
-        font-weight: 600;
-        font-size: .78rem;
-        text-transform: uppercase;
-        letter-spacing: .04em;
-        color: #6c757d;
-        margin-bottom: 6px;
-    }
-
-    /* ── Fixed (non-toggle) legend row: the church ──────────────────── */
-    .legend-static {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        font-weight: 600;
-        padding: 3px 6px 8px;
-        margin-bottom: 4px;
-        border-bottom: 1px solid rgba(0, 0, 0, .1);
-        line-height: 1.6;
-    }
-    .legend-church-icon {
-        flex-shrink: 0;
-    }
-
-    /* ── Shared legend item ─────────────────────────────────────────── */
-    .legend-item {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        padding: 3px 6px;
-        border-radius: 4px;
-        cursor: pointer;
-        user-select: none;
-        transition: opacity .15s, background .15s;
-        line-height: 1.6;
-    }
-    .legend-item:hover {
-        background: rgba(0, 0, 0, .05);
-    }
-    .legend-item.inactive {
-        opacity: .38;
-    }
-    .legend-item.inactive .legend-label {
-        text-decoration: line-through;
-    }
-
-    /* ── Mobile pill variant ────────────────────────────────────────── */
-    .legend-pill {
-        border: 1px solid rgba(0, 0, 0, .12);
-        padding: 4px 10px;
-        background: var(--tblr-bg-surface-secondary);
-    }
-    .legend-pill.inactive {
-        background: var(--tblr-bg-surface-secondary);
-    }
-
-    /* ── Colour dot ─────────────────────────────────────────────────── */
-    .legend-dot {
-        display: inline-block;
-        width: 11px;
-        height: 11px;
-        border-radius: 50%;
-        border: 1px solid rgba(0, 0, 0, .2);
-        flex-shrink: 0;
-    }
-</style>
 
 <?php endif; ?>
 

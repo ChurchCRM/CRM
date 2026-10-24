@@ -8,99 +8,61 @@ complexity: "intermediate"
 
 # Groups MVC Guidelines
 
-Purpose: Define structure, routing, services, and permissions for new group-focused MVC apps (`sundaySchool`, `congregation`).
+Structure, routing, services, and permissions for group-focused MVC pages (`sundayschool`, `congregation`).
 
-## Actual Directory Structure <!-- learned: 2026-03-15 -->
+## Directory Structure
 
-Sub-module routes and views live **inside** the shared `groups/` module — not in separate sub-directories per feature.
+Sub-module routes and views live inside the shared `groups/` module. `src/groups/index.php` is the Slim 4 app and requires each route file.
 
 ```
 src/groups/
-├── index.php                          # Slim 4 app — add require for each new route file here
-├── routes/
-│   ├── dashboard.php                  # /groups/dashboard
-│   └── sundayschool.php               # /groups/sundayschool/*
-└── views/
-    ├── dashboard.php
-    └── sundayschool/
-        ├── dashboard.php              # rendered by sundayschool.php route
-        └── class-view.php
+├── index.php
+├── routes/<submodule>.php     # /groups/<submodule>/*
+└── views/<submodule>/*.php
 ```
 
-**Routes registered in `groups/index.php`:**
-```php
-require __DIR__ . '/routes/dashboard.php';
-require __DIR__ . '/routes/sundayschool.php';   // ← add new route files here
-```
+URL pattern: `/groups/<submodule>/<action>`, e.g. `GET /groups/sundayschool/class/{id:[0-9]+}`.
 
-**Route URL pattern:** `/groups/<submodule>/<action>` e.g.:
-- `GET /groups/sundayschool/dashboard`
-- `GET /groups/sundayschool/class/{id:[0-9]+}`
-
-**PhpRenderer path in route handlers** (from `groups/routes/`):
+Renderer path from a route file:
 ```php
 $renderer = new PhpRenderer(__DIR__ . '/../views/');
 return $renderer->render($response, 'sundayschool/dashboard.php', $pageArgs);
 ```
 
-## Data Flow Pattern
+## Data Flow
 
-Move all data preparation (service calls, ORM queries, computed aggregates) into the **route handler**, not the view. Pass data to the view via `$pageArgs`:
+The route handler prepares all data (service calls, ORM queries, aggregates) and passes it to the view through `$pageArgs`. Views hold HTML only. `PhpRenderer` extracts each key into a local variable.
 
 ```php
 $pageArgs = [
     'sRootPath'  => SystemURLs::getRootPath(),
     'sPageTitle' => gettext('Sunday School Dashboard'),
     'classStats' => $sundaySchoolService->getClassStats(),
-    // ...
 ];
-return $renderer->render($response, 'sundayschool/dashboard.php', $pageArgs);
 ```
 
-PhpRenderer calls `extract($pageArgs)` so each key becomes a local variable in the view.
+## Moving a Pre-MVC Page onto /groups/
 
-## Migration Checklist
+1. Move data logic into a service in `src/ChurchCRM/Service/`.
+2. Add `src/groups/routes/<submodule>.php` with route closures that prepare data.
+3. Add `src/groups/views/<submodule>/` templates.
+4. Require the route file in `src/groups/index.php`.
+5. Point `src/ChurchCRM/Config/Menu/Menu.php` and every other caller at the new `/groups/...` URL.
+6. `git rm` the old PHP file.
+7. Update documentation pages that reference the old URL, or add a page under the matching section.
+8. Rename parameters and variables to camelCase.
 
-When migrating a legacy `src/<module>/LegacyPage.php` to `/groups/<submodule>/<action>`:
-
-1. Create `src/groups/routes/<submodule>.php` — add route closures with data prep logic.
-2. Create `src/groups/views/<submodule>/` — add view templates (HTML only, no service calls).
-3. Register the new route file in `src/groups/index.php`.
-4. Update `src/ChurchCRM/Config/Menu/Menu.php` — change URLs from legacy paths to new `/groups/…` routes.
-5. **Delete** the legacy PHP files with `git rm` — do NOT leave redirects or stubs behind.
-6. Update the Documentation — update any existing Documentation pages that reference old URLs, or create new Documentation pages if none exist.
+Import helpers from `ChurchCRM\Utils\*` (e.g. `DateTimeUtils`, `FiscalYearUtils`); `src/Include/Functions.php` does not exist.
 
 ## Security & Permissions
 
 - Check `AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()` for mutating operations.
-- `ManageGroupRoleAuthMiddleware` is already applied globally in `groups/index.php` — no per-route auth needed for basic access.
+- `ManageGroupRoleAuthMiddleware` is applied to the whole app in `groups/index.php`; routes need no extra auth for basic access.
 - Check `isEmailEnabled()` before rendering email action buttons.
 
 ## API Design
 
-- Keep group-scoped API endpoints under `/api/groups/` (existing Slim API app).
-- Return standardized JSON via `SlimUtils::renderJSON()` and errors via `SlimUtils::renderErrorJSON()`.
+- Group-scoped API endpoints live under `/api/groups/` (existing Slim API app).
+- Return JSON via `SlimUtils::renderJSON()` and errors via `SlimUtils::renderErrorJSON()`.
 
-## Functions.php is gone — use the Utils classes <!-- learned: 2026-07-11 -->
-
-> ⚠️ **`src/Include/Functions.php` no longer exists.** Older guidance told you to
-> `require_once SystemURLs::getDocumentRoot() . '/Include/Functions.php'` in a view whenever a
-> global helper came back undefined. That require is now a **fatal** (file not found). Do not add it.
-
-Its helpers were migrated to namespaced Utils classes — import those instead:
-
-| Old global function | Replacement |
-|---------------------|-------------|
-| `change_date_for_place_holder()` | `ChurchCRM\Utils\DateTimeUtils` |
-| `PrintFYIDSelect()` | `ChurchCRM\Utils\FiscalYearUtils` |
-
-If a view throws `Call to undefined function`, find the migrated Utils class and add a `use`
-statement — never resurrect a global include.
-
-## Documentation Update Requirement <!-- learned: 2026-03-15 -->
-
-After migrating any page, update the Documentation:
-- Search for any existing page referencing the old URLs (e.g., `sundayschool/SundaySchoolDashboard.php`).
-- Update URL references to the new `/groups/…` paths.
-- If no Documentation exists for the feature, create a Documentation page under the appropriate section.
-References: `routing-architecture.md`, `service-layer.md`, `api-development.md`.
+References: `routing-architecture.md`, `service-layer.md`, `api-development.md`, `admin-mvc-migration.md`.

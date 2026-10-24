@@ -16,6 +16,7 @@ test.describe('Groups & Ministry', () => {
       title: 'Ministry Groups',
       category: 'Groups & Events',
       purpose: 'Show ministry group organization and membership',
+      usedIn: ['docs', 'website'],
     });
   });
 });
