@@ -1,0 +1,18 @@
+{% extends "_base.html.twig" %}
+{% block content %}
+  <div class="letterhead">
+    {% if letterhead == 'graphic' and letterhead_image %}
+      <img src="{{ letterhead_image }}" alt="" style="max-width: 170mm; max-height: 28mm;">
+    {% elseif church_logo %}
+      <img src="{{ church_logo }}" alt="">
+    {% endif %}
+    <div class="church-name">{{ church_name }} · {{ church_address }}</div>
+    {% if letterhead != 'none' %}
+      <div class="muted">{{ church_phone }}{% if church_email %} · {{ church_email }}{% endif %}</div>
+    {% endif %}
+  </div>
+  {% block letter_body %}{% endblock %}
+  {% if generated_on %}
+    <div class="muted" style="margin-top: 10mm;">{{ gettext('Generated') }} {{ generated_on }}</div>
+  {% endif %}
+{% endblock %}

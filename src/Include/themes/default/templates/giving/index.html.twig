@@ -1,0 +1,36 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+<div class="portal-giving" id="portal-giving">
+
+    <section class="portal-card">
+        <h1 class="portal-page-title">{{ gettext('My Giving') }}</h1>
+        <p class="portal-card-text">
+            {% if isHousehold %}
+                {{ gettext('This is the household statement. It includes gifts for your family.') }}
+            {% else %}
+                {{ gettext('This statement includes only gifts credited to you.') }}
+            {% endif %}
+        </p>
+    </section>
+
+    <section class="portal-card">
+        <h2 class="portal-card-title">
+            <i class="fa-solid fa-file-invoice-dollar" aria-hidden="true"></i>
+            <span>{{ gettext('Year-end statement') }}</span>
+        </h2>
+        <form method="get" action="{{ url('/portal/giving/statement') }}">
+            <div class="portal-field">
+                <label class="portal-field-label" for="year">{{ gettext('Year') }}</label>
+                <select class="portal-input" name="year" id="year">
+                    {% for option in years %}
+                        <option value="{{ option.value }}"{% if option.value == year %} selected{% endif %}>{{ option.value }}{% if not option.hasGiving %} — {{ gettext('No contributions') }}{% endif %}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="portal-button">{{ gettext('Download statement') }}</button>
+        </form>
+    </section>
+
+</div>
+{% endblock %}
