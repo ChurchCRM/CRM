@@ -17990,10 +17990,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d పన్నుపత్రాలు కుటుంబానికి విజయవంతంగా ఈమెయిల్ చేయబడ్డాయి."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d దానం ప్రకటన"
-
-#: 
 msgid "All classifications"
 msgstr "అన్ని వర్గీకరణలు"
 
@@ -21510,10 +21506,6 @@ msgstr "సైన్ ఇన్ చేశారు"
 #: 
 msgid "Signed up"
 msgstr "నమోదు చేసుకున్నారు"
-
-#: 
-msgid "Sincerely"
-msgstr "భవదీయులు"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."

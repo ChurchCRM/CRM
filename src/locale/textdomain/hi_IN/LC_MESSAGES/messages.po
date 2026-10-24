@@ -17978,10 +17978,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d कर दस्तावेज़ परिवार को सफलतापूर्वक ईमेल किए गए।"
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d दान विवरण"
-
-#: 
 msgid "All classifications"
 msgstr "सभी वर्गीकरण"
 
@@ -21498,10 +21494,6 @@ msgstr "साइन इन किया"
 #: 
 msgid "Signed up"
 msgstr "पंजीकृत"
-
-#: 
-msgid "Sincerely"
-msgstr "सादर"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."

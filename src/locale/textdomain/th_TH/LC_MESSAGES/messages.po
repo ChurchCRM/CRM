@@ -17975,10 +17975,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "ส่งเอกสารภาษีจำนวน %d ไปยังครอบครัวทางอีเมลสำเร็จแล้ว"
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "แถลงการบริจาค %s %d"
-
-#: 
 msgid "All classifications"
 msgstr "การจำแนกทั้งหมด"
 
@@ -21483,10 +21479,6 @@ msgstr "ลงชื่อเข้าใช้แล้ว"
 #: 
 msgid "Signed up"
 msgstr "สมัครแล้ว"
-
-#: 
-msgid "Sincerely"
-msgstr "ด้วยความเคารพ"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."

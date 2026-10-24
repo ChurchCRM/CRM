@@ -18045,10 +18045,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d податковий документ успішно надіслано сім'ї."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d Звіт про пожертви"
-
-#: 
 msgid "All classifications"
 msgstr "Усі класифікації"
 
@@ -21589,10 +21585,6 @@ msgstr "Вхід виконано"
 #: 
 msgid "Signed up"
 msgstr "Записано"
-
-#: 
-msgid "Sincerely"
-msgstr "З повагою"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."

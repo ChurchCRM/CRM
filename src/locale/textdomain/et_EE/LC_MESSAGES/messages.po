@@ -18012,10 +18012,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d maksudeklaratsioon saadeti perele edukalt."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d annetuste aruanne"
-
-#: 
 msgid "All classifications"
 msgstr "Kõik klassifikatsioonid"
 
@@ -21532,10 +21528,6 @@ msgstr "Sisse logitud"
 #: 
 msgid "Signed up"
 msgstr "Registreerunud"
-
-#: 
-msgid "Sincerely"
-msgstr "Lugupidamisega"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."

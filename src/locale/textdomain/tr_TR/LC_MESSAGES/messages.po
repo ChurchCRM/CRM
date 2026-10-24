@@ -18013,10 +18013,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d vergi belgesi aileye başarıyla e-posta ile gönderildi."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d Bağış Açıklaması"
-
-#: 
 msgid "All classifications"
 msgstr "Tüm sınıflandırmalar"
 
@@ -21533,10 +21529,6 @@ msgstr "Giriş yaptı"
 #: 
 msgid "Signed up"
 msgstr "Kaydoldu"
-
-#: 
-msgid "Sincerely"
-msgstr "Saygılarımızla"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."

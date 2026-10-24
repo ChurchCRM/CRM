@@ -18082,10 +18082,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d skattefølge dokument sendt til familien via e-post."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d Gaveerklæring"
-
-#: 
 msgid "All classifications"
 msgstr "Alle klassifiseringer"
 
@@ -21602,10 +21598,6 @@ msgstr "Logget inn"
 #: 
 msgid "Signed up"
 msgstr "Påmeldt"
-
-#: 
-msgid "Sincerely"
-msgstr "Vennlig hilsen"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."

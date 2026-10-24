@@ -18086,10 +18086,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d document fiscal trimis cu succes familiei."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "Declarație de donație %s %d"
-
-#: 
 msgid "All classifications"
 msgstr "Toate clasificările"
 
@@ -21618,10 +21614,6 @@ msgstr "Autentificat"
 #: 
 msgid "Signed up"
 msgstr "Înscris"
-
-#: 
-msgid "Sincerely"
-msgstr "Cu sinceritate"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."

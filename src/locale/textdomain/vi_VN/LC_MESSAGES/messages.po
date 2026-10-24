@@ -18001,10 +18001,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d tài liệu thuế đã được gửi qua email cho gia đình thành công."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "Bảng kê quỹ %s %d"
-
-#: 
 msgid "All classifications"
 msgstr "Tất cả các phân loại"
 
@@ -21509,10 +21505,6 @@ msgstr "Đã đăng nhập"
 #: 
 msgid "Signed up"
 msgstr "Đã đăng ký"
-
-#: 
-msgid "Sincerely"
-msgstr "Trân trọng"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."

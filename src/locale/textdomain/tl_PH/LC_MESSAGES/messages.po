@@ -17979,10 +17979,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d dokumento ng buwis ay matagumpay na ipinadala sa pamilya."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d Pahayag ng Pagbibigay"
-
-#: 
 msgid "All classifications"
 msgstr "Lahat ng klasipikasyon"
 
@@ -21499,10 +21495,6 @@ msgstr "Naka-sign in"
 #: 
 msgid "Signed up"
 msgstr "Nag-sign up"
-
-#: 
-msgid "Sincerely"
-msgstr "Taos-pusong gumagalang"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
