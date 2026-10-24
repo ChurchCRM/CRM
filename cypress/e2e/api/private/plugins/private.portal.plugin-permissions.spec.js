@@ -27,8 +27,10 @@ const db = (sql, params = []) =>
         return result.rows;
     });
 
+const LAST_DAY = new Date(Date.now() + 30 * 86400000).toISOString().slice(0, 10);
+
 const giveGrant = (capability, scopeId = null) =>
-    cy.makePrivateAdminAPICall("POST", `/admin/api/person/${MEMBER.personId}/sign-in/grants`, { capability, scopeId, reason: "Cypress" }, 201);
+    cy.makePrivateAdminAPICall("POST", `/admin/api/person/${MEMBER.personId}/sign-in/grants`, { capability, scopeId, endsOn: LAST_DAY, reason: "Cypress" }, 201);
 
 const pluginGrantCount = () =>
     db("SELECT COUNT(*) AS n FROM portal_grant_pgr WHERE pgr_Capability LIKE ?", [`plugin.${ID}.%`]).then((rows) => Number(rows[0].n));
@@ -92,13 +94,14 @@ describe("Member Portal plugin API (portal capabilities, rules, pages and nav)",
         cy.request(`/api/portal/plugins/${ID}/groups`).its("body.groupIds").should("deep.equal", [MEMBER_GROUP]);
 
         status(NOTICES).should("eq", 403);
+        status(`/api/portal/plugins/${ID}/notices`).should("eq", 403);
     });
 
     it("denies a capability the plugin did not declare, even one given to the person", () => {
         cy.makePrivateAdminAPICall(
             "POST",
             `/admin/api/person/${MEMBER.personId}/sign-in/grants`,
-            { capability: `plugin.${ID}.undeclared`, reason: "Cypress" },
+            { capability: `plugin.${ID}.undeclared`, endsOn: LAST_DAY, reason: "Cypress" },
             400,
         );
         addStoredGrant(MEMBER.personId, `plugin.${ID}.undeclared`).then((grantId) => {
@@ -113,6 +116,7 @@ describe("Member Portal plugin API (portal capabilities, rules, pages and nav)",
         signIn();
         navLinks().should("include", NOTICES);
         cy.request(NOTICES).its("body").should("contain", "portal-example-notices-text");
+        cy.request(`/api/portal/plugins/${ID}/notices`).its("body.notices").should("deep.equal", []);
     });
 
     it("takes away the capabilities, rules, pages and nav with the plugin, and keeps given grants", () => {

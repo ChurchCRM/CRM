@@ -59,7 +59,7 @@ const csrfToken = () =>
 const tomorrow = () => new Date(Date.now() + 86400000).toISOString().slice(0, 10);
 
 /** Gives a portal permission as the administrator; yields the grant id. */
-const giveGrant = (personId, capability, scopeId, endsOn = "") =>
+const giveGrant = (personId, capability, scopeId, endsOn = new Date(Date.now() + 30 * 86400000).toISOString().slice(0, 10)) =>
     inOwnCookieJar(() =>
         cy
             .makePrivateAdminAPICall("POST", `/admin/api/person/${personId}/sign-in/grants`, { capability, scopeId, endsOn, reason: "Cypress" }, 201)

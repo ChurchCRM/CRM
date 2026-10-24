@@ -177,7 +177,7 @@ $themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration
                             </div>
                             <div class="card-body">
                                 <p class="text-secondary">
-                                    <?= gettext('People who are deceased, inactive, in an inactive family, awaiting review or have Disable sign-in on never sign in. These choices decide who else may.') ?>
+                                    <?= gettext('Member sign-in never lets in people who are deceased, inactive, in an inactive family, awaiting review or have Disable sign-in on. These choices decide who else may.') ?>
                                 </p>
                                 <fieldset class="mb-3">
                                     <legend class="form-label"><?= gettext('Family Roles') ?></legend>

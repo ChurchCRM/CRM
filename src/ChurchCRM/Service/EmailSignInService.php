@@ -174,6 +174,31 @@ final class EmailSignInService
         return $this->startSession($request, SignInMethod::EMAIL_CODE);
     }
 
+    /**
+     * Cancels the person's live sign-in requests, so a code or link already
+     * emailed signs nobody in. Audited when it cancelled any.
+     *
+     * @return int how many requests were cancelled
+     */
+    public function cancelOpenRequests(int $personId, SignInReason $reason, ?int $actorUserId = null): int
+    {
+        $now = self::now();
+        $cancelled = $this->liveRequests($now)
+            ->filterByPersonId($personId)
+            ->update(['CancelledAt' => $now->format(self::DB_TIME)]);
+        if ($cancelled > 0) {
+            SignInAudit::record(
+                SignInAuditEvent::REQUEST_CANCELLED,
+                $personId,
+                reason: $reason,
+                actorUserId: $actorUserId,
+                detail: sprintf('requests=%d', $cancelled),
+            );
+        }
+
+        return $cancelled;
+    }
+
     private function sendSignInEmail(Person $person, string $browserSecret, DateTimeImmutable $now): void
     {
         $personId = (int) $person->getId();
@@ -339,6 +364,13 @@ final class EmailSignInService
 
     private function startSession(PersonSigninRequest $request, SignInMethod $method): EmailSignInOutcome
     {
+        $refusal = $this->addressRefusal($request);
+        if ($refusal !== null) {
+            SignInAudit::record(SignInAuditEvent::REFUSED, (int) $request->getPersonId(), $method, $refusal, null, (string) $request->getEmail());
+
+            return EmailSignInOutcome::REFUSED;
+        }
+
         try {
             PortalSessionStarter::start((int) $request->getPersonId(), $method, null, (string) $request->getEmail());
         } catch (PortalSignInRefusedException) {
@@ -346,6 +378,29 @@ final class EmailSignInService
         }
 
         return EmailSignInOutcome::SIGNED_IN;
+    }
+
+    /**
+     * The address a request went to must still be the person's sign-in email
+     * when the code or link is used (§9): their personal email, compared as the
+     * sign-in lookup compares it, confirmed, and shared with nobody else who
+     * may sign in.
+     */
+    private function addressRefusal(PersonSigninRequest $request): ?SignInReason
+    {
+        $personId = (int) $request->getPersonId();
+        $email = MemberSignInRule::normalizeEmail((string) $request->getEmail());
+        $person = PersonQuery::create()->findPk($personId);
+        if (!$person instanceof Person || MemberSignInRule::normalizeEmail((string) $person->getEmail()) !== $email) {
+            return SignInReason::REQUEST_ADDRESS_CHANGED;
+        }
+
+        $candidate = MemberSignInRule::fromSettings()->findSignInCandidate($email);
+        if ($candidate->isAllowed() && (int) $candidate->person?->getId() === $personId) {
+            return null;
+        }
+
+        return $candidate->refusal ?? SignInReason::REQUEST_ADDRESS_CHANGED;
     }
 
     private function liveRequests(DateTimeImmutable $now): PersonSigninRequestQuery

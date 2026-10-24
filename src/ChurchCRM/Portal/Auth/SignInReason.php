@@ -13,8 +13,8 @@ enum SignInReason: string
     case PERSON_NOT_FOUND = 'person_not_found';
     case DECEASED = User::SIGN_IN_BLOCKED_DECEASED;
     case INACTIVE = User::SIGN_IN_BLOCKED_INACTIVE;
-    case FAMILY_INACTIVE = User::SIGN_IN_BLOCKED_FAMILY_INACTIVE;
-    case NEEDS_REVIEW = User::SIGN_IN_BLOCKED_NEEDS_REVIEW;
+    case FAMILY_INACTIVE = 'family_inactive';
+    case NEEDS_REVIEW = 'needs_review';
     case SIGN_IN_DISABLED = User::SIGN_IN_BLOCKED_DISABLED;
     case FAMILY_ROLE = 'family_role';
     case CLASSIFICATION = 'classification';
@@ -24,6 +24,8 @@ enum SignInReason: string
     case NO_EMAIL = 'no_email';
     case SHARED_EMAIL = 'shared_email';
     case EMAIL_UNCONFIRMED = 'email_unconfirmed';
+    case REQUEST_ADDRESS_CHANGED = 'request_address_changed';
+    case EMAIL_CHANGED = 'email_changed';
     case SESSION_VERSION = 'session_version';
     case IDLE = 'idle';
     case REPLACED = 'replaced';
@@ -58,6 +60,8 @@ enum SignInReason: string
             self::NO_EMAIL => gettext('No personal email'),
             self::SHARED_EMAIL => gettext('Their email is shared with someone else'),
             self::EMAIL_UNCONFIRMED => gettext('Their email is not confirmed yet'),
+            self::REQUEST_ADDRESS_CHANGED => gettext('The code or link went to an address that is no longer their email'),
+            self::EMAIL_CHANGED => gettext('Their email changed'),
             self::SESSION_VERSION => gettext('Signed out by a change to their sign-in'),
             self::IDLE => gettext('Idle too long'),
             self::REPLACED => gettext('Replaced by another sign-in'),

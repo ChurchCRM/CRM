@@ -12,11 +12,13 @@ import {
     signInEmail,
     useMemberSignIn,
 } from "../../../support/member-sign-in";
+import { setPasskeySignCount } from "../../../support/member-sign-in-fixtures";
 import {
     addVirtualAuthenticator,
     authenticatorCredentials,
     removeVirtualAuthenticator,
     setUserVerified,
+    signedAssertion,
 } from "../../../support/passkeys";
 
 /**
@@ -307,6 +309,60 @@ describe("Member Portal passkeys", () => {
                 });
             });
             cy.request({ url: "/portal/", followRedirect: false }).its("status").should("eq", 302);
+        });
+    });
+
+    describe("the signature counter", () => {
+        const origin = Cypress.config("baseUrl").replace(/\/$/, "");
+        const rpId = new URL(origin).hostname;
+
+        /** Signs in with the passkey's own key, reporting `signCount`; answers whether a portal session started. */
+        const signInReporting = (credential, signCount) => {
+            cy.clearCookies();
+            return cy.request("/portal/login").then(({ body }) => {
+                const csrf = csrfOf(body);
+                return postPasskeyOptions("/portal/login/passkey/options", csrf, 200).then(({ publicKey }) =>
+                    signedAssertion(credential, { challenge: publicKey.challenge, origin, rpId, signCount }).then((answer) =>
+                        cy
+                            .request({ method: "POST", url: "/portal/login/passkey", form: true, body: { csrf_token: csrf, ...answer } })
+                            .then(() => cy.request({ url: "/api/portal/me", failOnStatusCode: false }))
+                            .then((me) => me.status === 200),
+                    ),
+                );
+            });
+        };
+
+        const storedCount = (count) => setPasskeySignCount(member.personId, count);
+
+        beforeEach(() => {
+            signInWithCode({ remember: false });
+            addPasskeyOnDevicesPage();
+        });
+
+        it("signs in again and again with a synced passkey that always reports 0", () => {
+            storedCount(0);
+            authenticatorCredentials(authenticatorId).then(([credential]) => {
+                signInReporting(credential, 0).should("eq", true);
+                signInReporting(credential, 0).should("eq", true);
+                passkeysOf(member.personId).its("0.ppk_SignCount").then(Number).should("eq", 0);
+            });
+        });
+
+        it("keeps a counter that goes up, and refuses one that goes back", () => {
+            storedCount(0);
+            authenticatorCredentials(authenticatorId).then(([credential]) => {
+                signInReporting(credential, 7).should("eq", true);
+                passkeysOf(member.personId).its("0.ppk_SignCount").then(Number).should("eq", 7);
+                lastAuditId().then((startId) => {
+                    signInReporting(credential, 7).should("eq", false);
+                    signInReporting(credential, 3).should("eq", false);
+                    signInReporting(credential, 0).should("eq", false);
+                    auditSince(startId).then((rows) => {
+                        expect(events(rows)).to.deep.equal(Array(3).fill("refused:passkey:passkey_invalid"));
+                    });
+                });
+                passkeysOf(member.personId).its("0.ppk_SignCount").then(Number).should("eq", 7);
+            });
         });
     });
 

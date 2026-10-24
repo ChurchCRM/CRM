@@ -2,6 +2,9 @@
 
 namespace ChurchCRM\Portal\Auth;
 
+use ChurchCRM\Utils\LoggerUtils;
+use RuntimeException;
+
 /**
  * The portal session's place in the PHP session. It sits beside the staff
  * session (`AuthenticationProvider`) and never inside it, so ending one leaves
@@ -64,10 +67,21 @@ final class PortalSessionStore
         unset($_SESSION[self::PRINCIPAL_KEY], $_SESSION[self::LAST_ACTIVITY_KEY], $_SESSION[self::DEVICE_KEY]);
     }
 
+    /**
+     * @throws RuntimeException when the id cannot be rotated; the caller must not save a principal
+     */
     public static function regenerateId(): void
     {
-        if (session_status() === PHP_SESSION_ACTIVE && !headers_sent()) {
-            session_regenerate_id(true);
+        $reason = match (true) {
+            session_status() !== PHP_SESSION_ACTIVE => 'no active session',
+            headers_sent() => 'headers already sent',
+            !session_regenerate_id(true) => 'session_regenerate_id failed',
+            default => null,
+        };
+        if ($reason !== null) {
+            LoggerUtils::getAppLogger()->error('Portal sign-in stopped: the session id could not be rotated', ['reason' => $reason]);
+
+            throw new RuntimeException('The portal session id could not be rotated: ' . $reason);
         }
     }
 }
