@@ -22,6 +22,7 @@ class TokenQuery extends BaseTokenQuery
             return null;
         }
 
-        return $this->findPk(Token::passwordResetStorageKey($token)) ?? $this->findPk($token);
+        return $this->findPk(Token::passwordResetStorageKey($token))
+            ?? $this->where('Token.Token NOT LIKE ?', 'sha256:%')->findPk($token);
     }
 }

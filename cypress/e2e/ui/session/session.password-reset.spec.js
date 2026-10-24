@@ -261,7 +261,10 @@ describe("Session Password Reset", () => {
             });
             tokenState().should("have.length", 1);
             cy.then(() => resetTokenState(token)).should("have.length", 0);
-            cy.then(() => cy.request(`/session/forgot-password/set/${storageKey}`)).its("body").should("include", "Password Reset Error");
+            for (const prefix of ["sha256:", "SHA256:", "shá256:"]) {
+                cy.then(() => cy.request(`/session/forgot-password/set/${encodeURIComponent(prefix + storageKey.slice(7))}`))
+                    .its("body").should("include", "Password Reset Error");
+            }
             cy.then(() => cy.visit(url()));
             cy.get("#password").type(password, { log: false });
             cy.get("#passwordConfirmation").type(password, { log: false });
