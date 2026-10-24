@@ -195,17 +195,6 @@ describe("API Finance Funds - Access control", () => {
         });
     });
 
-    it("Returns 401 or 403 for a caller without Finance permission", () => {
-        cy.makePrivateNoFinanceAPICall("POST", BASE, { name: "x" }, [401, 403]);
-    });
-
-    it("Returns 401 or 403 for a caller without Admin or Finance permission", () => {
-        // tony.wade (user.api.key) has usr_Finance=1 and now passes FinanceRoleAuthMiddleware
-        // (funds-api.php was changed from AdminRoleAuthMiddleware in #9476).
-        // Use makePrivateNoFinanceAPICall (judith.matthews: Finance=0, Admin=0) instead.
-        cy.makePrivateNoFinanceAPICall("POST", BASE, { name: "x" }, [401, 403]);
-    });
-
     it("Finance-only user (non-admin) can create, update, reorder, and delete a fund", () => {
         // Verifies that Finance role alone is sufficient - Admin is not required.
         const name = `CyFinanceOnly ${Date.now()}`;

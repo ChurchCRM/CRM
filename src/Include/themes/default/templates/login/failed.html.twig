@@ -1,0 +1,29 @@
+{% extends "layout.html.twig" %}
+
+{#
+  Member sign-in: the code, link or passkey was not accepted, or this person
+  can't sign in now. It never says why (design D3, A6); the reason is in the
+  audit.
+
+  After a passkey that didn't sign anyone in (`passkey`), it also points to
+  the email sign-in.
+
+  Variables: `pageTitle`, `loginUrl`, `passkey`.
+#}
+
+{% block nav %}{% endblock %}
+
+{% block content %}
+<div class="portal-signin">
+    <section class="portal-card" id="portalSignInFailed">
+        <h1 class="portal-page-title">{{ gettext('We could not sign you in') }}</h1>
+        <p class="portal-card-text">{{ gettext('Please contact the church office.') }}</p>
+        {% if passkey|default(false) %}
+        <p class="portal-card-text" id="portalSignInFailedPasskey">{{ gettext('You can also sign in with your email address.') }}</p>
+        {% endif %}
+        <div class="portal-form-actions">
+            <a class="portal-button portal-button-quiet" href="{{ loginUrl }}">{{ gettext('Back to sign-in') }}</a>
+        </div>
+    </section>
+</div>
+{% endblock %}

@@ -1,73 +1,8 @@
-/**
- * ChurchCRM Custom Utility Classes
- *
- * This file contains CUSTOM CSS utility classes unique to ChurchCRM.
- * Bootstrap standard utilities are used for common patterns (display, spacing, colors, etc.)
- *
- * See BOOTSTRAP_CONSOLIDATION_GUIDE.md for Bootstrap equivalent classes.
- *
- * Benefits:
- * - Reduced CSS bloat (no duplication with Bootstrap)
- * - Consistent with Bootstrap conventions
- * - CSP compliance (removes need for 'unsafe-inline')
- * - DRY principle (Don't Repeat Yourself)
- *
- * BOOTSTRAP ALTERNATIVES TO USE INSTEAD:
- * - .text-danger (instead of .text-error)
- * - .text-success (instead of .text-success)
- * - .text-warning (instead of .text-warning)
- * - .text-muted (instead of .text-muted)
- * - .text-white (instead of .text-white)
- * - .d-none, .d-block, .d-inline-block (instead of .display-*)
- * - .text-center, .text-right, .text-left (instead of .text-center/right/left)
- * - .m-0, .mx-auto, .mt-5, etc. (instead of .margin-*, .padding-*)
- * - .w-100, .w-75, .w-50 (instead of .width-*)
- *
- * DEPRECATED CLASSES (Migrated to Bootstrap):
- * - .callout, .callout-info, .callout-warning, .callout-danger → Use Bootstrap .alert .alert-info .alert-warning .alert-danger
- * - .ShadedBox, .LightShadedBox → Use Bootstrap .card .card-body or .alert
- * - .box-info, .box-danger, .box-warning → Use Bootstrap .card with .bg-info .bg-danger .bg-warning
- * - .main-box, .main-box-body → Use Bootstrap .card .card-body
- */
-
-/* ============================================
-   CUSTOM INTERACTIVE & UTILITIES (Bootstrap-independent)
-   ============================================ */
-
-/* Custom cursor pointer utility (not in Bootstrap) */
-.cursor-pointer {
-  cursor: pointer;
-}
-
-/* ============================================
-   CUSTOM TYPOGRAPHY & SPACING
-   ============================================ */
-
-/* Pre-formatted text with compact line height */
 .pre-compact {
   line-height: 1.2;
 }
 
-/* Line-height override: BS5 lh-lg uses 2.0 — keep as-is for consistency */
-.lh-lg {
-  line-height: 2;
-}
-
-/* ============================================
-   DEPRECATED/LEGACY CLASSES (Backward Compatibility)
-   ============================================ */
-
-/* Used in password change forms for inline validation errors.
-   Consider migrating to BS5 .text-danger in templates. */
-.form-field-error {
-  color: var(--tblr-danger, #d63939);
-}
-
-/* ============================================
-   PRINT UTILITIES
-   ============================================ */
-
-/* Hide all interactive elements when printing */
+// !important beats the .d-* display utilities and component display rules.
 @media print {
   button.btn,
   a.btn,
@@ -86,51 +21,22 @@
     display: none !important;
   }
 
-  /* Hide tab navigation pills — content is shown inline below */
+  // Tab content prints inline below, so the tab strip is redundant.
   .nav-pills,
   .nav-tabs {
     display: none !important;
   }
 
-  /* Show all tab panes when printing so no content is hidden */
   .tab-pane {
     display: block !important;
     opacity: 1 !important;
   }
 }
 
-/* Hide view photo button when there is no uploaded photo or gravatar */
-/* NOTE: toggled by JS in FamilyView.js - do not remove or rename */
-.hide-if-no-photo {
-  display: none !important;
-}
-
-/* ============================================
-   CURRENCY / MONEY DISPLAY
-   ============================================ */
-
-/**
- * .money — renders the configured currency symbol before (or after) a
- * pre-formatted number using CSS custom properties set on <html>.
- *
- * The number inside the element must already use the configured
- * thousands/decimal separators (use CurrencyFormatter::format() or
- * window.CRM.currency.format() to produce it).
- *
- * Usage: <span class="money">1,234.50</span>
- * With position=before: "$ 1,234.50"
- * With position=after:  "1,234.50 €"
- *
- * The \00a0 (non-breaking space) prevents line-wrapping between symbol and number.
- *
- * Browser compat: Safari < 14 does not substitute CSS custom properties inside
- * the `content` property, so the symbol will not appear on those browsers.
- * No polyfill is provided; this is acceptable graceful degradation.
- *
- * JS consumers: use `window.CRM.currency.symbol` (not
- * `getComputedStyle(html).getPropertyValue('--currency-symbol')`, which returns
- * the value WITH surrounding CSS quotes, e.g. '"$"' not '$').
- */
+// .money renders the configured currency symbol before or after a number that
+// already uses the configured separators (CurrencyFormatter::format()). Header.php
+// sets --currency-symbol and data-currency-position on <html>.
+// Usage: <span class="money">1,234.50</span>
 .money {
   white-space: nowrap;
 

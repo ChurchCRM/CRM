@@ -10,10 +10,8 @@
  * respond to an assignment, sign up for an open slot, and offer to help a
  * ministry that is advertising. Plus the two retired URLs still forward.
  *
- * Persona: person 100, Lena Black — `usr_EditSelf=1`, no admin flag, so
- * `User::isEditSelfExclusive()` is true and this login has no admin shell to
- * fall back to. `user_usr.usr_UserName` is `VARCHAR(32)` and the seeded address
- * is 37 characters, so the login form must be given the truncated form.
+ * Persona: person 100, Lena Black, signed in with her email: a member session,
+ * with no admin shell to fall back to.
  *
  * Order inside every hook is API setup → login → `cy.visit()`, because
  * `cy.request()` rotates the PHP session cookie (cypress-testing.md). Fixtures
@@ -27,8 +25,7 @@ const VOLUNTEER_URL = "/api/ministries";
 const SCHEDULE_URL = "/portal/volunteer/schedule";
 const OPPORTUNITIES_URL = "/portal/volunteer/opportunities";
 
-const MEMBER_USERNAME = "lena.black.editself.notes@example.com";
-const MEMBER_PASSWORD = "changeme";
+const MEMBER_USERNAME = 100;
 const PERSON_MEMBER = 100;
 const POOL_MEMBER_A = 8;
 
@@ -49,11 +46,8 @@ let seriesEnd = "";
 // ── helpers (local functions, NOT cy.* commands — cypress-testing.md) ───────
 
 function freshMemberLogin() {
-    cy.clearCookies();
-    cy.visit("/session/begin");
-    cy.get("input[name=User]").type(MEMBER_USERNAME);
-    cy.get("input[name=Password]").type(MEMBER_PASSWORD + "{enter}");
-    cy.url().should("not.include", "/session/begin");
+    cy.signInAsMember(MEMBER_USERNAME);
+    cy.visit("/portal/");
 }
 
 function adminApi(method, url, body, expectedStatus = 200) {

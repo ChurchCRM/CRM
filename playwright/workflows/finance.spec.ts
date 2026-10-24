@@ -15,6 +15,7 @@ test.describe('Giving', () => {
       title: 'Deposit Entry',
       category: 'Finance & Giving',
       purpose: 'Show deposit slip records — the transactional side of giving',
+      usedIn: ['docs'],
     });
   });
 
@@ -30,6 +31,7 @@ test.describe('Giving', () => {
       title: 'Pledges & Funds',
       category: 'Finance & Giving',
       purpose: 'Show fund/pledge totals and progress',
+      usedIn: ['website'],
     });
   });
 });

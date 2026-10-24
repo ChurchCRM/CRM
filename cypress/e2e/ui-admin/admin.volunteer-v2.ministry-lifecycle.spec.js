@@ -52,12 +52,12 @@ function freshAdminLogin() {
     // One retry: under CI load the submit occasionally lands back on the login
     // page although the server logged the login (a lost cookie on the redirect).
     cy.url().then((url) => {
-        if (url.includes("/session/begin")) {
+        if (new URL(url).pathname === "/admin/") {
             cy.get("input[name=User]").clear().type(Cypress.testEnv("admin.username"));
             cy.get("input[name=Password]").clear().type(Cypress.testEnv("admin.password") + "{enter}");
         }
     });
-    cy.url().should("not.include", "/session/begin");
+    cy.location("pathname").should("not.eq", "/admin/");
 }
 
 function freshCoordinatorLogin() {
@@ -68,12 +68,12 @@ function freshCoordinatorLogin() {
     // One retry: under CI load the submit occasionally lands back on the login
     // page although the server logged the login (a lost cookie on the redirect).
     cy.url().then((url) => {
-        if (url.includes("/session/begin")) {
+        if (new URL(url).pathname === "/admin/") {
             cy.get("input[name=User]").clear().type(Cypress.testEnv("standard.username"));
             cy.get("input[name=Password]").clear().type(Cypress.testEnv("standard.password") + "{enter}");
         }
     });
-    cy.url().should("not.include", "/session/begin");
+    cy.location("pathname").should("not.eq", "/admin/");
 }
 
 function adminApi(method, url, body, expectedStatus = 200) {
@@ -198,7 +198,7 @@ describe("Volunteer v2 — ministry lifecycle (Deactivate, Reactivate, Delete)",
 
     // Every cy.request() below happens in a hook BEFORE the login of the test that
     // follows it: a request after the login rotates the PHP session cookie, the
-    // page's next fetch is a 401 and the shell bounces to /session/begin.
+    // page's next fetch is a 401 and the shell bounces to the /admin/ sign-in.
     describe("as an administrator, on an active ministry", () => {
         beforeEach(() => {
             freshAdminLogin();

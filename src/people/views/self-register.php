@@ -89,7 +89,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <i class="fa-solid fa-check me-1"></i><?= gettext('Approve selected') ?> (<span id="selectedCount">0</span>)
                     </button>
                 </div>
-                <div style="overflow-x: clip; overflow-y: visible;">
+                <div class="table-clip-x">
                     <table id="selfRegistrations" class="table table-bordered data-table">
                         <tbody></tbody>
                     </table>

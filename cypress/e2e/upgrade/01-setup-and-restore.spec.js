@@ -122,7 +122,7 @@ describe('Upgrade via Restore', () => {
             // Continue to login
             cy.get('#setup-footer', { timeout: 10000 }).should('be.visible');
             cy.get('#continue-to-login').should('be.visible').click();
-            cy.url({ timeout: 10000 }).should('include', '/session/begin');
+            cy.location('pathname', { timeout: 10000 }).should('eq', '/admin/');
         });
 
         it('should complete forced password change', () => {
@@ -170,7 +170,7 @@ describe('Upgrade via Restore', () => {
             cy.visit('/login');
             cy.get('input[name=User]').type(setupAdmin.username);
             cy.get('input[name=Password]').type(newAdminPassword + '{enter}');
-            cy.url({ timeout: 15000 }).should('not.include', '/session/begin');
+            cy.expectStaffSignedIn({ timeout: 15000 });
             cy.get('.page, .page-wrapper, .navbar').should('exist');
         });
     });
@@ -185,7 +185,7 @@ describe('Upgrade via Restore', () => {
             cy.visit('/login');
             cy.get('input[name=User]').type(setupAdmin.username);
             cy.get('input[name=Password]').type(newAdminPassword + '{enter}');
-            cy.url({ timeout: 15000 }).should('not.include', '/session/begin');
+            cy.expectStaffSignedIn({ timeout: 15000 });
 
             cy.visit('/admin/system/restore');
             cy.contains('Restore Database').should('be.visible');
@@ -195,7 +195,7 @@ describe('Upgrade via Restore', () => {
             cy.visit('/login');
             cy.get('input[name=User]').type(setupAdmin.username);
             cy.get('input[name=Password]').type(newAdminPassword + '{enter}');
-            cy.url({ timeout: 15000 }).should('not.include', '/session/begin');
+            cy.expectStaffSignedIn({ timeout: 15000 });
 
             cy.visit('/admin/system/restore');
 
@@ -213,9 +213,7 @@ describe('Upgrade via Restore', () => {
             cy.get('#restoreSuccessModal', { timeout: 180000 }).should('be.visible');
 
             // Wait for page to redirect to login after restore completes
-            cy.url({ timeout: 30000 }).should('satisfy', (url) => {
-                return url.includes('/session/begin') || url.includes('/login');
-            });
+            cy.location('pathname', { timeout: 30000 }).should('eq', '/admin/');
         });
     });
 
@@ -275,7 +273,7 @@ describe('Upgrade via Restore', () => {
             cy.get('input[name=Password]').type(verifyPassword + '{enter}');
             // After a successful upgrade, admin credentials must work (post-change for MD5,
             // original restored password for SHA-256 silent migration).
-            cy.url({ timeout: 30000 }).should('not.include', '/session/begin');
+            cy.expectStaffSignedIn({ timeout: 30000 });
         });
 
         it('should report current software version and healthy API after upgrade', () => {
@@ -321,6 +319,23 @@ describe('Upgrade via Restore', () => {
                 expect(response.status).to.equal(200);
                 expect(response.body).to.have.property('families');
                 cy.log(`Found ${response.body.families.length} families after upgrade`);
+            });
+        });
+
+        // churchcrm-6.0.0.sql has a cash payment (row 35) under the key of the Diaz pledge.
+        it('should give a payment that shared a pledge GroupKey its own key (#10725)', function () {
+            if (!upgradeSqlFile.includes('churchcrm-6.0.0')) {
+                this.skip();
+            }
+            const pledgeKey = 'cash|0|9|1|2019-09-19';
+            cy.request(`/api/payments/pledges/${encodeURIComponent(pledgeKey)}`).then(({ body }) => {
+                expect(body.pledgeOrPayment).to.equal('Pledge');
+                expect(body.funds).to.have.length(2);
+            });
+            cy.request(`/api/payments/pledges/${encodeURIComponent(`${pledgeKey}|35`)}`).then(({ body }) => {
+                expect(body.pledgeOrPayment).to.equal('Payment');
+                expect(body.depositId).to.equal(5);
+                expect(body.total).to.be.closeTo(25, 0.01);
             });
         });
     });

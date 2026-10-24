@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
@@ -62,7 +63,7 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
           </div>
 
           <div class="back-link">
-            <a href="<?= SystemURLs::getRootPath() ?>/session/begin"><?= gettext('Use a different account') ?></a>
+            <a href="<?= AuthenticationManager::getStaffSignInURL() ?>"><?= gettext('Use a different account') ?></a>
           </div>
 
         <?php else : ?>
@@ -101,7 +102,7 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
           </div>
 
           <div class="back-link">
-            <a href="<?= SystemURLs::getRootPath() ?>/session/begin"><?= gettext('Use a different account') ?></a>
+            <a href="<?= AuthenticationManager::getStaffSignInURL() ?>"><?= gettext('Use a different account') ?></a>
           </div>
 
         <?php endif; ?>

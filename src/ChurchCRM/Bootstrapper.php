@@ -8,11 +8,13 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ConfigQuery;
 use ChurchCRM\model\ChurchCRM\Version;
+use ChurchCRM\Portal\MemberLanguage;
 use Ramsey\Uuid\Uuid;
 use ChurchCRM\Service\UpgradeService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Utils\RequestUtils;
 use ChurchCRM\Utils\SQLUtils;
 use ChurchCRM\Utils\VersionUtils;
 use Monolog\Handler\StreamHandler;
@@ -119,9 +121,11 @@ class Bootstrapper
         self::initSession();
         
         // Initialize SystemConfig with database values only once during bootstrap
-        // Fallback error handlers (testMYSQLI, systemFailure) will call init() without parameters
+        // Fallback error handlers (testMYSQLI, systemFailure) will call init() without parameters.
+        // Rows of retired keys stay until the database is current, so the upgrade
+        // scripts below can still read them.
         if (!SystemConfig::isInitialized()) {
-            SystemConfig::init(ConfigQuery::create()->find());
+            SystemConfig::init(ConfigQuery::create()->find(), self::isDBCurrent());
         }
 
         self::configureLogging();
@@ -273,12 +277,16 @@ class Bootstrapper
         return self::$bootStrapLogger;
     }
     /**
-     * Gets a LocaleInfo object for the currently configured system sLanguage
-     * 
-     * @return LocaleInfo Current locale information
+     * The request's language: a member session's own (MemberLanguage), else the
+     * staff account's `ui.locale` setting, else the church's `sLanguage`.
      */
     public static function getCurrentLocale(): LocaleInfo
     {
+        $memberLocale = MemberLanguage::forSession();
+        if ($memberLocale !== null) {
+            return new LocaleInfo(SystemConfig::getValue('sLanguage'), $memberLocale);
+        }
+
         $userLocale = "";
         try {
             $userLocale =  AuthenticationManager::getCurrentUser()->getSetting("ui.locale");
@@ -286,6 +294,28 @@ class Bootstrapper
             //maybe user is logged in
         }
         return new LocaleInfo(SystemConfig::getValue('sLanguage'), $userLocale);
+    }
+
+    /**
+     * Runs `$work` with gettext in `$locale`, then puts the request's locale
+     * back. For text meant for someone other than the person making the
+     * request, such as an email to a member in their own language. When the
+     * server has no such locale, `$work` runs in the request's language.
+     */
+    public static function inLocale(string $locale, callable $work): mixed
+    {
+        $previous = setlocale(LC_ALL, '0');
+        if (setlocale(LC_ALL, $locale, $locale . '.UTF-8', $locale . '.utf8') === false) {
+            LoggerUtils::getAppLogger()->warning('Failed to set locale for text in another language; it stays in the request language', ['locale' => $locale]);
+        }
+        setlocale(LC_NUMERIC, 'C');
+        try {
+            return $work();
+        } finally {
+            if ($previous !== false) {
+                setlocale(LC_ALL, $previous);
+            }
+        }
     }
 
     /**
@@ -463,10 +493,9 @@ class Bootstrapper
         // HttpOnly prevents client-side JavaScript from reading the cookie (mitigates XSS cookie theft).
         // SameSite=Lax blocks the cookie from being sent on cross-site POST requests (mitigates CSRF).
         // Secure flag is set when the connection is HTTPS — either directly via $_SERVER['HTTPS']
-        // or behind a TLS-terminating reverse proxy that sets X-Forwarded-Proto (common in
-        // Docker/Kubernetes deployments where the web server sees plain HTTP).
-        $isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
-            || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https');
+        // or behind a TLS-terminating reverse proxy listed in CHURCHCRM_TRUSTED_PROXIES that
+        // sets X-Forwarded-Proto (see RequestUtils::isHttps()).
+        $isHttps = RequestUtils::isHttps();
 
         // The cookie path is scoped to the application root so the cookie is sent for all
         // ChurchCRM routes. getRootPath() returns the admin-configured $sRootPath from Config.php

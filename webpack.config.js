@@ -102,12 +102,14 @@ module.exports = {
     'admin-member-portal': './webpack/admin-member-portal.ts',
     'get-started': './webpack/get-started',
     'church-info': './webpack/church-info',
+    'email-settings': './webpack/email-settings',
     localization: './webpack/localization',
     'system-settings-panel': './webpack/system-settings-panel',
     'kiosk-registration-closed': './webpack/kiosk-registration-closed',
     kiosk: './webpack/kiosk',
     'kiosk-settings': './webpack/kiosk-settings',
     'people-settings': './webpack/people-settings',
+    'admin-grade-names': './webpack/admin-grade-names',
     'people-list': './webpack/people/person-list',
     'people-family-list': './webpack/people/family-list',
     'people-family-view': './webpack/people/family-view',
@@ -116,8 +118,12 @@ module.exports = {
     'people-map-neighbors': './webpack/people/map-neighbors',
     'people-self-register': './webpack/people/self-register',
     'people-labels-modal': './webpack/people/labels-modal',
+    'people-sign-in-email': './webpack/people/sign-in-email.ts',
     'email-history-modal': './webpack/people/email-history-modal',
+    'email-delete-queue': './webpack/people/email-delete-queue',
+    'email-log-table': './webpack/people/email-log-table',
     'error': './webpack/error',
+    'feature-toggles': './webpack/feature-toggles',
     'groups-group-view': './webpack/groups/group-view',
     'groups-sundayschool-dashboard': './webpack/groups-sundayschool-dashboard',
     'groups-sundayschool-class-view': './webpack/groups-sundayschool-class-view',
@@ -131,6 +137,7 @@ module.exports = {
     'event-cart-to-event': './webpack/event-cart-to-event',
     'ministries-dashboard': './webpack/ministries/dashboard',
     'ministries-ministry': './webpack/ministries/ministry',
+    'ministries-team-view': './webpack/ministries/team-view',
     'ministries-occurrence': './webpack/ministries/occurrence',
     'ministries-settings': './webpack/ministries/settings',
     // The core event view's Volunteers card, worded like every V2 screen (D34).
@@ -151,8 +158,12 @@ module.exports = {
     // My Teams (#9868): the team page's four tabs, drawn by the shared ministries
     // components. The occurrence page reuses `ministries-occurrence` unchanged.
     'portal-teams': './webpack/portal/teams.ts',
+    // Passkeys (member sign-in #10463): adding one, and signing in with one.
+    'portal-passkeys': './webpack/portal/portal-passkeys.ts',
     'telemetry': './webpack/telemetry',
     'debug': './webpack/debug',
+    'finance-deposit-editor': './webpack/finance-deposit-editor',
+    'finance-deposit-search': './webpack/finance-deposit-search',
   },
   output: {
     path: path.resolve('./src/skin/v2'),

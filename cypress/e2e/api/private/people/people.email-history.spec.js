@@ -5,7 +5,8 @@
  * per recipient in email_log_eml and readable through GET /api/email/log.
  *
  * Seed rows (cypress/data/seed.sql): ids 1–6 for person 2 (Mathew Campbell), id 7 for
- * person 3 (a password-reset link, no body). Row 4 is a failed composer send.
+ * person 3 (a password-reset link, no body). Row 4 is a failed composer send. Rows
+ * 10–12 for person 3 are one of each kind the labels test reads.
  */
 const adminGet = (url, status = 200) => cy.makePrivateAdminAPICall("GET", url, null, status);
 
@@ -60,25 +61,14 @@ describe("API GET /api/email/log", () => {
     });
 
     it("labels every kind of email it logs, and calls an unknown one Email", () => {
-        const subject = `kind-label-${Date.now()}`;
-        const labels = {
-            volunteerassignment: "Volunteer assignment",
-            volunteerhelpoffer: "Offer to help",
-            email: "Email",
+        const seeded = {
+            10: { kind: "volunteerassignment", kindLabel: "Volunteer assignment" },
+            11: { kind: "volunteerhelpoffer", kindLabel: "Offer to help" },
+            12: { kind: "email", kindLabel: "Email" },
         };
-        const shown = {};
-        cy.wrap(Object.keys(labels)).each((kind) => {
-            cy.dbQuery(
-                "INSERT INTO email_log_eml (eml_per_ID, eml_Address, eml_Kind, eml_Subject, eml_Status, eml_DateSent) VALUES (3, 'kind@example.com', ?, ?, 'skipped', '2000-01-01 00:00:00')",
-                [kind, subject],
-            ).then(({ rows }) => {
-                adminGet(`/api/email/log/${rows.insertId}`).then((resp) => {
-                    shown[kind] = resp.body.kindLabel;
-                });
-            });
+        Object.entries(seeded).forEach(([id, label]) => {
+            adminGet(`/api/email/log/${id}`).its("body").should("include", label);
         });
-        cy.dbQuery("DELETE FROM email_log_eml WHERE eml_Subject = ?", [subject]);
-        cy.wrap(shown).should("deep.equal", labels);
     });
 
     it("lists a family's rows: the family address plus its current members", () => {
@@ -88,7 +78,7 @@ describe("API GET /api/email/log", () => {
         });
     });
 
-    it("unscoped list is for administrators only and can filter by status", () => {
+    it("unscoped list needs the Email permission and can filter by status", () => {
         adminGet("/api/email/log?status=failed").then((resp) => {
             expect(resp.body.total).to.be.at.least(1);
             for (const r of resp.body.rows) expect(r.status).to.eq("failed");
@@ -105,16 +95,28 @@ describe("API GET /api/email/log", () => {
             expect(resp.body.rows).to.be.an("array");
         });
     });
+
+    it("shows a failed row's status without the mail server's error to a non-admin", () => {
+        const failedRow = (resp) => resp.body.rows.find((r) => r.id === 4);
+        cy.makePrivateFinanceOnlyAPICall("GET", "/api/email/log?personId=2&limit=100").then((resp) => {
+            expect(failedRow(resp)).to.include({ status: "failed", error: null });
+        });
+        cy.makePrivateFinanceOnlyAPICall("GET", "/api/email/log?familyId=1&limit=100").then((resp) => {
+            expect(failedRow(resp)).to.include({ status: "failed", error: null });
+        });
+        cy.makePrivateFinanceOnlyAPICall("GET", "/api/email/log/4").its("body.error").should("eq", null);
+        adminGet("/api/email/log?personId=2&limit=100").then((resp) => expect(failedRow(resp).error).to.include("SMTP"));
+    });
 });
 
 describe("Every send writes history rows", () => {
     it("a composer send logs one row per recipient, with the body and the sending user", () => {
         const tag = `crm-9877-${Date.now()}`;
-        cy.makePrivateAdminAPICall("POST", "/api/email/send", {
+        cy.sendComposerEmailNow({
             personIds: [2],
             subject: `Logged ${tag}`,
             body: "First line\nSecond line",
-        }).then((resp) => expect(resp.body.counts.sent).to.eq(1));
+        }).then((result) => expect(result.progress.sent).to.eq(1));
 
         adminGet("/api/email/log?personId=2&limit=1").then((resp) => {
             const row = resp.body.rows[0];

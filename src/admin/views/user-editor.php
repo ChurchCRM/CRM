@@ -6,8 +6,7 @@ use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
-// Derive the access mode for the UI
-$accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom');
+$accessMode = $perms['admin'] ? 'admin' : 'custom';
 
 ?>
 
@@ -28,7 +27,7 @@ $accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom
         <strong><?= gettext('Email is disabled') ?></strong>
         <div class="text-secondary"><?= gettext('New users will not receive a welcome email, and the generated password is never displayed. After creating the account, set one from System Users using Change Password — or configure email first.') ?></div>
     </div>
-    <a href="<?= SystemURLs::getRootPath() ?>/v2/email/dashboard?settings=open" class="btn btn-warning ms-3">
+    <a href="<?= SystemURLs::getRootPath() ?>/admin/email" class="btn btn-warning ms-3">
         <i class="fa-solid fa-envelope me-1"></i><?= gettext('Set up Email') ?>
     </a>
 </div>
@@ -82,7 +81,6 @@ $accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom
         <?php
         $accessModes = [
             ['value' => 'admin', 'icon' => 'fa-user-shield',  'label' => gettext('Administrator'), 'desc' => gettext('Full access — grants all privileges.')],
-            ['value' => 'self',  'icon' => 'fa-user-check',   'label' => gettext('Self-service only'), 'desc' => gettext('Can only review and verify their own family. No other access.')],
             ['value' => 'custom','icon' => 'fa-sliders',      'label' => gettext('Custom'), 'desc' => gettext('Choose specific permissions below.')],
         ];
         ?>
@@ -104,9 +102,8 @@ $accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom
             </div>
         </div>
 
-        <!-- Hidden Admin/EditSelf flags driven by the access-level radio selector -->
+        <!-- Hidden Admin flag driven by the access-level radio selector -->
         <input type="checkbox" class="d-none" name="Admin" id="Admin" value="1"<?= $perms['admin'] ? ' checked' : '' ?>>
-        <input type="checkbox" class="d-none" name="EditSelf" id="EditSelf" value="1"<?= $perms['editSelf'] ? ' checked' : '' ?>>
 
         <!-- People & Families panel: shown only in Custom mode -->
         <div id="pfPanel" class="border rounded mb-3"<?= $accessMode === 'custom' ? '' : ' style="display:none;"' ?>>
@@ -160,7 +157,6 @@ $accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom
             <p class="text-body-secondary small mb-3"><?= gettext('Grant individual permissions') ?>:</p>
             <?php
             $permissions = [
-                ['name' => 'MenuOptions',  'label' => gettext('Manage Properties and Classifications'), 'checked' => $perms['menuOptions']],
                 ['name' => 'ManageGroups', 'label' => gettext('Manage Groups and Roles'),               'checked' => $perms['manageGroups']],
                 ['name' => 'Finance',            'label' => gettext('Manage Donations and Finance'),  'checked' => $perms['finance']],
                 ['name' => 'ManageFundraisers', 'label' => gettext('Manage Fundraisers'),              'checked' => $perms['manageFundraisers']],

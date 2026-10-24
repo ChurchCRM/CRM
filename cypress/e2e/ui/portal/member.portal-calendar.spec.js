@@ -4,16 +4,14 @@
  * Member Portal — the calendar page (MP5, #9866).
  *
  * Design: .agents/skills/churchcrm/member-portal-design.md §5.3.
- *   - nothing shared → the page says so, in those words
+ *   - nothing shared → no Calendar nav entry, page, API or home card
  *   - a church calendar switched on → its events are on the member's calendar,
  *     and a click opens the detail panel
  *   - Birthdays switched on → a first name and a last initial, no age and no
  *     surname
- *   - the Calendar nav entry is behind bPortalShowCalendar, and so is the page
+ *   - one calendar shared → the nav entry, page, API and home card are back
  *
- * Seed persona: user 100, Lena Black (person 100). usr_EditSelf=1 and no admin
- * flag, so she is confined to the portal. usr_UserName is VARCHAR(50)
- * since #9831, so the seeded address is stored whole.
+ * Seed persona: Lena Black (person 100), signed in with her email.
  *
  * Seed facts: calendar 1 is "Public Calendar"; person 5 is Albert Campbell,
  * born on 9 September, which is what the Birthdays assertion reads. The
@@ -23,8 +21,6 @@
  * NOTE: every x-api-key request replaces the browser session cookie with an
  * API-token session, so a member step that follows one has to log in again.
  */
-const MEMBER_USER = "lena.black.editself.notes@example.com";
-const MEMBER_PASSWORD = "changeme";
 
 const CHURCH_CALENDAR_ID = 1;
 const CHURCH_CALENDAR_NAME = "Public Calendar";
@@ -55,12 +51,11 @@ const setConfig = (name, value) =>
         failOnStatusCode: false,
     });
 
+const statusOf = (url) => cy.request({ url, failOnStatusCode: false, followRedirect: false }).its("status");
+
 const loginAsMember = () => {
-    cy.clearCookies();
-    cy.visit("/session/begin");
-    cy.get("input[name=User]").type(MEMBER_USER);
-    cy.get("input[name=Password]").type(`${MEMBER_PASSWORD}{enter}`);
-    cy.url({ timeout: 10000 }).should("include", "/portal");
+    cy.signInAsMember(100);
+    cy.visit("/portal/");
 };
 
 /** Drive FullCalendar to a fixed day, so the spec does not depend on today. */
@@ -88,7 +83,6 @@ after(() => {
 describe("Member Portal calendar", () => {
     after(() => {
         setVisibleCalendars([]);
-        setConfig("bPortalShowCalendar", "1");
         cy.makePrivateAdminAPICall("GET", "/api/events", null, 200).then((resp) => {
             cy.cleanupEvents(
                 (resp.body.Events || []).filter((e) => createdEventTitles.includes(e.Title)).map((e) => e.Id),
@@ -96,14 +90,27 @@ describe("Member Portal calendar", () => {
         });
     });
 
-    it("Says so when no calendar has been shared", () => {
+    it("Has no Calendar nav entry, page, API or home card while no calendar is shared", () => {
         setVisibleCalendars([]);
         loginAsMember();
 
-        cy.visit("/portal/calendar");
-        cy.get("#portal-calendar-empty").should("be.visible");
-        cy.contains("No calendar has been shared with members yet.").should("exist");
-        cy.get("#portal-calendar").should("not.exist");
+        cy.get(".portal-home").should("be.visible");
+        cy.get(".portal-nav-list").should("not.contain", "Calendar");
+        cy.get(".portal-card-calendar").should("not.exist");
+        statusOf("/portal/calendar").should("eq", 404);
+        statusOf(`/api/portal/calendar/events?from=${thisYear()}-05-01&to=${thisYear()}-05-31`).should("eq", 404);
+        statusOf("/api/portal/calendar/subscription").should("eq", 404);
+    });
+
+    it("Brings them back once one calendar is shared", () => {
+        setVisibleCalendars([{ type: "calendar", id: CHURCH_CALENDAR_ID }]);
+        loginAsMember();
+
+        cy.get(".portal-nav-list").should("contain", "Calendar");
+        cy.get(".portal-card-calendar").should("be.visible");
+        statusOf("/portal/calendar").should("eq", 200);
+        statusOf(`/api/portal/calendar/events?from=${thisYear()}-05-01&to=${thisYear()}-05-31`).should("eq", 200);
+        statusOf("/api/portal/calendar/subscription").should("eq", 200);
     });
 
     it("Shows the events of a church calendar that is switched on, and opens their details", () => {
@@ -165,29 +172,12 @@ describe("Member Portal calendar", () => {
         cy.get("#portal-calendar").invoke("text").should("not.match", /\(\d+\)/);
     });
 
-    it("The Calendar nav entry and the page itself are behind bPortalShowCalendar", () => {
-        setVisibleCalendars([{ type: "calendar", id: CHURCH_CALENDAR_ID }]);
-        setConfig("bPortalShowCalendar", "1");
-        loginAsMember();
-        cy.get(".portal-nav-list").should("contain", "Calendar");
-
-        setConfig("bPortalShowCalendar", "0");
-        loginAsMember();
-        cy.get(".portal-nav-list").should("not.contain", "Calendar");
-
-        cy.visit("/portal/calendar", { failOnStatusCode: false });
-        cy.get(".portal-calendar-page").should("not.exist");
-
-        setConfig("bPortalShowCalendar", "1");
-    });
-
     describe("Subscribing to the calendar", () => {
         it("Offers a Subscribe button above the calendar, one checkbox per shared calendar, and a feed address after saving", () => {
             setVisibleCalendars([
                 { type: "calendar", id: CHURCH_CALENDAR_ID },
                 { type: "system", id: BIRTHDAYS_CALENDAR_ID },
             ]);
-            setConfig("bPortalShowCalendar", "1");
             loginAsMember();
 
             cy.visit("/portal/calendar");
@@ -253,7 +243,6 @@ describe("Member Portal calendar", () => {
 
     it("The home page card lists the next events instead of a placeholder", () => {
         setVisibleCalendars([{ type: "calendar", id: CHURCH_CALENDAR_ID }]);
-        setConfig("bPortalShowCalendar", "1");
         loginAsMember();
 
         cy.visit("/portal/");
@@ -266,7 +255,7 @@ describe("Member Portal calendar", () => {
      * The last row of the MP5 scope-split table, delivered on the volunteer branch
      * (#9869): "a member who leads a team sees their ministry's calendar highlighted".
      *
-     * It needed team leadership, which only reaches a self-service login once MP6 has
+     * It needed team leadership, which only reaches a member session once MP6 has
      * landed — which is why it could not ship with #9866.
      */
     describe("a team leader's own ministry (#9869)", () => {

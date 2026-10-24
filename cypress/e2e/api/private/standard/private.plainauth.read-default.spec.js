@@ -20,8 +20,8 @@
  * behavior — Notes permission has always implied "can write notes"; the read-default
  * policy simply removes the accidental read-block for non-EditSelf users.
  *
- * The EditSelf-only restriction (family 20 scoping) is separately covered in
- * private.selfedit.family-scope.spec.js and must be unaffected by this change.
+ * The confinement of an EditSelf-only account is covered by the safety-net spec
+ * cypress/e2e/ui/security/limited-access.spec.js.
  */
 describe("Read-default policy — plain authenticated user can read any family/person", () => {
     // -----------------------------------------------------------------------

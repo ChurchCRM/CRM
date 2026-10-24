@@ -51,7 +51,7 @@ $hasOrphanedFiles = $orphanedCount > 0;
                                     <tr>
                                         <td><?= $index + 1 ?></td>
                                         <td>
-                                            <code class="text-monospace" style="word-break: break-all; font-size: 0.85rem;">
+                                            <code class="text-monospace admin-break-code">
                                                 <?= InputUtils::escapeHTML($filename) ?>
                                             </code>
                                         </td>
