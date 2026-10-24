@@ -110,8 +110,8 @@ const SETTINGS = {
     iRememberDeviceDays: "30",
     bPortalPasskeys: "1",
     sMemberSignInNotificationRecipientIDs: "",
-    bAllowLoginAsUser: "0",
-    bLoginAsUserCanWrite: "0",
+    bAllowLoginAsPerson: "0",
+    bLoginAsPersonCanWrite: "0",
 };
 
 const HASH = (c) => c.repeat(64);

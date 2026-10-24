@@ -6,9 +6,9 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\model\ChurchCRM\LoginAsUserAction;
-use ChurchCRM\model\ChurchCRM\LoginAsUserSession;
-use ChurchCRM\model\ChurchCRM\LoginAsUserSessionQuery;
+use ChurchCRM\model\ChurchCRM\LoginAsPersonAction;
+use ChurchCRM\model\ChurchCRM\LoginAsPersonSession;
+use ChurchCRM\model\ChurchCRM\LoginAsPersonSessionQuery;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonSigninQuery;
@@ -23,47 +23,54 @@ use LogicException;
 use Throwable;
 
 /**
- * Login as User (member sign-in design §6.5): an administrator opens the Member
+ * Login as Person (member sign-in design §6.5): an administrator opens the Member
  * Portal as a person, through the shared step with method ASSISTED.
  *
  * The administrator's staff session is taken out of the PHP session and kept
  * here while it runs. No staff page or staff API can see it, so the only way
  * back to the staff side as themselves is Stop, which puts it back. It keeps its
- * own timeout (`iSessionTimeout`) from the last Login as User request.
+ * own timeout (`iSessionTimeout`) from the last Login as Person request.
  *
- * Every session is a `login_as_user_session_las` row naming both people, and
- * every write made during it a `login_as_user_action_laa` row.
+ * Every session is a `login_as_person_session_lps` row naming both people, and
+ * every write made during it a `login_as_person_action_lpa` row.
  */
-final class LoginAsUser
+final class LoginAsPerson
 {
-    public const STOP_PATH = '/portal/login-as-user/stop';
+    public const STOP_PATH = '/portal/login-as-person/stop';
 
-    private const SESSION_KEY = 'LoginAsUser';
+    private const SESSION_KEY = 'LoginAsPerson';
     private const READ_METHODS = ['GET', 'HEAD', 'OPTIONS'];
 
     public static function isEnabled(): bool
     {
-        return SystemConfig::getBooleanValue('bAllowLoginAsUser');
+        return SystemConfig::getBooleanValue('bAllowLoginAsPerson');
     }
 
     public static function allowsChanges(): bool
     {
-        return SystemConfig::getBooleanValue('bLoginAsUserCanWrite');
+        return SystemConfig::getBooleanValue('bLoginAsPersonCanWrite');
     }
 
-    /** Why an administrator may not log in as this person, or null: deceased, Disable sign-in or a staff account. */
+    /** Why an administrator may not log in as this person, or null: member sign-in off, deceased, Disable sign-in or a staff account. */
     public static function refusalFor(Person $person): ?SignInReason
     {
         return PortalSignInRules::refusalReason($person, PersonSigninQuery::create()->findPk($person->getId()), SignInMethod::ASSISTED);
+    }
+
+    /** The person page's Actions item names the person, e.g. "Login as Pat". */
+    public static function menuLabel(Person $person): string
+    {
+        return sprintf(gettext('Login as %s'), $person->getFirstName() ?: $person->getFullName());
     }
 
     /** For the grayed-out menu item and a refused start. */
     public static function refusalMessage(SignInReason $reason): string
     {
         return match ($reason) {
+            SignInReason::MEMBER_SIGN_IN_OFF => gettext('Member sign-in is off.'),
             SignInReason::DECEASED => gettext('This person is deceased.'),
             SignInReason::SIGN_IN_DISABLED => gettext('Sign-in is disabled for this person.'),
-            SignInReason::STAFF_ACCOUNT => gettext('This person has a staff account. Login as User never opens a staff account.'),
+            SignInReason::STAFF_ACCOUNT => gettext('This person has a staff account. Login as Person never opens a staff account.'),
             default => $reason->label(),
         };
     }
@@ -84,14 +91,14 @@ final class LoginAsUser
     public static function start(Person $person, User $admin): void
     {
         if (self::isActive()) {
-            throw new LogicException('Login as User is already running in this session');
+            throw new LogicException('Login as Person is already running in this session');
         }
         $staffSession = AuthenticationManager::setAsideSessionProvider()
-            ?? throw new LogicException('Login as User needs a signed-in staff session');
+            ?? throw new LogicException('Login as Person needs a signed-in staff session');
 
         try {
             $principal = PortalSessionStarter::start((int) $person->getId(), SignInMethod::ASSISTED, $admin);
-            $history = (new LoginAsUserSession())
+            $history = (new LoginAsPersonSession())
                 ->setActorUserId($principal->actorUserId)
                 ->setPersonId($principal->personId)
                 ->setStarted(self::now());
@@ -111,7 +118,7 @@ final class LoginAsUser
             'actorUserId' => $principal->actorUserId,
             'staffSession' => $staffSession,
         ];
-        LoggerUtils::getAuthLogger()->info('Login as User started', [
+        LoggerUtils::getAuthLogger()->info('Login as Person started', [
             'admin' => $principal->actorUserId,
             'person' => $principal->personId,
             'session' => (int) $history->getId(),
@@ -131,7 +138,7 @@ final class LoginAsUser
             return null;
         }
         SignInAudit::record(SignInAuditEvent::LOGIN_AS_STOPPED, $record['personId'], SignInMethod::ASSISTED, null, $record['actorUserId']);
-        self::finish($record, LoginAsUserEndReason::STOP, true);
+        self::finish($record, LoginAsPersonEndReason::STOP, true);
 
         $admin = UserQuery::create()->findPk($record['actorUserId']);
         if (!$admin instanceof User || !$admin->isAdmin() || !AuthenticationManager::validateUserSessionIsActive(false)) {
@@ -145,7 +152,8 @@ final class LoginAsUser
 
     /**
      * `PortalSessionMiddleware` ended the ASSISTED principal. Idle time ends the
-     * administrator's waiting staff session too; any other reason returns them to it.
+     * administrator's waiting staff session too; any other reason returns them to
+     * it, and their next staff page says why.
      */
     public static function endedByPortal(SignInReason $reason): void
     {
@@ -154,12 +162,14 @@ final class LoginAsUser
             return;
         }
         if ($reason === SignInReason::IDLE) {
-            self::finish($record, LoginAsUserEndReason::TIMEOUT, false);
+            self::finish($record, LoginAsPersonEndReason::TIMEOUT, false);
             AuthenticationManager::endSession(true);
 
             return;
         }
-        self::finish($record, LoginAsUserEndReason::ENDED, true);
+        self::finish($record, $reason === SignInReason::MEMBER_SIGN_IN_OFF ? LoginAsPersonEndReason::MEMBER_SIGN_IN_OFF : LoginAsPersonEndReason::ENDED, true);
+        $_SESSION['sGlobalMessage'] = sprintf(gettext('Login as Person ended: %s'), self::refusalMessage($reason));
+        $_SESSION['sGlobalMessageClass'] = 'warning';
     }
 
     /** The PHP session is being destroyed (sign-out, or a staff session that ended). */
@@ -167,7 +177,7 @@ final class LoginAsUser
     {
         $record = $_SESSION[self::SESSION_KEY] ?? null;
         if (is_array($record)) {
-            self::finish($record, LoginAsUserEndReason::SIGN_OUT, false);
+            self::finish($record, LoginAsPersonEndReason::SIGN_OUT, false);
         }
     }
 
@@ -179,7 +189,7 @@ final class LoginAsUser
             return;
         }
         SignInAudit::record(SignInAuditEvent::SESSION_ENDED, $record['personId'], SignInMethod::ASSISTED, SignInReason::REPLACED, $record['actorUserId']);
-        self::finish($record, LoginAsUserEndReason::SIGN_OUT, false);
+        self::finish($record, LoginAsPersonEndReason::SIGN_OUT, false);
     }
 
     /** False once the waiting staff session has timed out; otherwise it counts this request as activity. */
@@ -192,7 +202,7 @@ final class LoginAsUser
 
     public static function staffPagesClosedMessage(): string
     {
-        return gettext('Staff pages stay closed during Login as User. Press Stop in the banner to go back.');
+        return gettext('Staff pages stay closed during Login as Person. Press Stop in the banner to go back.');
     }
 
     /** For legacy pages, which redirect and exit. */
@@ -218,7 +228,7 @@ final class LoginAsUser
     public static function recordAction(int $historyId, string $method, string $path, ?int $status): void
     {
         try {
-            (new LoginAsUserAction())
+            (new LoginAsPersonAction())
                 ->setSessionId($historyId)
                 ->setTime(self::now())
                 ->setMethod(substr(strtoupper($method), 0, 10))
@@ -226,7 +236,7 @@ final class LoginAsUser
                 ->setStatus($status !== null && $status > 0 ? $status : null)
                 ->save();
         } catch (Throwable $e) {
-            LoggerUtils::getAuthLogger()->error('Could not record a Login as User action', [
+            LoggerUtils::getAuthLogger()->error('Could not record a Login as Person action', [
                 'session' => $historyId,
                 'method' => $method,
                 'path' => $path,
@@ -277,12 +287,12 @@ final class LoginAsUser
         ) {
             return $record;
         }
-        self::finish($record, LoginAsUserEndReason::ENDED, true);
+        self::finish($record, LoginAsPersonEndReason::ENDED, true);
 
         return null;
     }
 
-    private static function finish(array $record, LoginAsUserEndReason $reason, bool $restoreStaffSession): void
+    private static function finish(array $record, LoginAsPersonEndReason $reason, bool $restoreStaffSession): void
     {
         unset($_SESSION[self::SESSION_KEY]);
         if (PortalSessionStore::load()?->isAssisted()) {
@@ -295,18 +305,18 @@ final class LoginAsUser
         }
 
         try {
-            $history = LoginAsUserSessionQuery::create()->findPk((int) ($record['historyId'] ?? 0));
-            if ($history instanceof LoginAsUserSession && $history->getEnded() === null) {
+            $history = LoginAsPersonSessionQuery::create()->findPk((int) ($record['historyId'] ?? 0));
+            if ($history instanceof LoginAsPersonSession && $history->getEnded() === null) {
                 $history->setEnded(self::now())->setEndReason($reason->value)->save();
             }
         } catch (Throwable $e) {
-            LoggerUtils::getAuthLogger()->error('Could not close a Login as User session', [
+            LoggerUtils::getAuthLogger()->error('Could not close a Login as Person session', [
                 'session' => $record['historyId'] ?? null,
                 'error' => $e->getMessage(),
             ]);
         }
 
-        LoggerUtils::getAuthLogger()->info('Login as User ended', [
+        LoggerUtils::getAuthLogger()->info('Login as Person ended', [
             'admin' => $record['actorUserId'] ?? null,
             'person' => $record['personId'] ?? null,
             'session' => $record['historyId'] ?? null,

@@ -266,8 +266,8 @@ function getMemberSignInSettingsAPI(Request $request, Response $response): Respo
  *         @OA\Property(property="iRememberDeviceDays", type="integer", minimum=0, maximum=365, example=30),
  *         @OA\Property(property="bPortalPasskeys", type="boolean"),
  *         @OA\Property(property="sMemberSignInNotificationRecipientIDs", type="array", @OA\Items(type="integer")),
- *         @OA\Property(property="bAllowLoginAsUser", type="boolean"),
- *         @OA\Property(property="bLoginAsUserCanWrite", type="boolean")
+ *         @OA\Property(property="bAllowLoginAsPerson", type="boolean"),
+ *         @OA\Property(property="bLoginAsPersonCanWrite", type="boolean")
  *     )),
  *     @OA\Response(response=200, description="Saved; the stored values come back",
  *         @OA\JsonContent(

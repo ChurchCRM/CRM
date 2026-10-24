@@ -46,8 +46,8 @@ enum SignInAuditEvent: string
             self::SIGN_IN_ENABLED => gettext('Sign-in enabled'),
             self::GRANT_ADDED => gettext('Portal permission given'),
             self::GRANT_REMOVED => gettext('Portal permission removed'),
-            self::LOGIN_AS_STARTED => gettext('Login as User started'),
-            self::LOGIN_AS_STOPPED => gettext('Login as User stopped'),
+            self::LOGIN_AS_STARTED => gettext('Login as Person started'),
+            self::LOGIN_AS_STOPPED => gettext('Login as Person stopped'),
             self::FAMILY_CONFIRMED => gettext('Family details confirmed'),
         };
     }

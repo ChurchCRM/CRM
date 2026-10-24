@@ -12,9 +12,9 @@ use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\VolunteerOpportunityQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerPositionQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerQualification;
-use ChurchCRM\Portal\Auth\LoginAsUser;
+use ChurchCRM\Portal\Auth\LoginAsPerson;
 use ChurchCRM\Service\EmailLogService;
-use ChurchCRM\Service\LoginAsUserHistoryService;
+use ChurchCRM\Service\LoginAsPersonHistoryService;
 use ChurchCRM\Service\PersonPortalAccessService;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\PersonSignInService;
@@ -360,22 +360,27 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
     $portalAccess = $portalSignIn !== null && $currentUser->isAdmin() ? (new PersonPortalAccessService())->forPerson($person) : null;
     $portalGrantChoices = $portalAccess === null ? [] : PortalGrantService::givableCapabilitiesFor($iPersonID);
 
-    // ── Login as User (§6.5, §11.3): administrators only ─────────────────────
-    $loginAsUser = null;
-    $loginAsUserHistory = null;
+    // ── Login as Person (§6.5, §11.3): administrators only ───────────────────
+    $loginAsPerson = null;
+    $loginAsPersonHistory = null;
     if ($currentUser->isAdmin()) {
-        if (LoginAsUser::isEnabled()) {
-            $loginAsUserRefusal = LoginAsUser::refusalFor($person);
-            $loginAsUser = [
-                'refusal' => $loginAsUserRefusal === null ? null : LoginAsUser::refusalMessage($loginAsUserRefusal),
+        if (LoginAsPerson::isEnabled()) {
+            $loginAsPersonRefusal = LoginAsPerson::refusalFor($person);
+            $loginAsPerson = [
+                'refusal' => $loginAsPersonRefusal === null ? null : LoginAsPerson::refusalMessage($loginAsPersonRefusal),
+                'label' => LoginAsPerson::menuLabel($person),
                 'csrfToken' => CSRFUtils::generateToken(),
             ];
         }
-        $loginAsUserHistory = (new LoginAsUserHistoryService())->forPerson($iPersonID);
-        if ($loginAsUserHistory === [] && !LoginAsUser::isEnabled()) {
-            $loginAsUserHistory = null;
+        $loginAsPersonHistory = (new LoginAsPersonHistoryService())->forPerson($iPersonID);
+        if ($loginAsPersonHistory === [] && !LoginAsPerson::isEnabled()) {
+            $loginAsPersonHistory = null;
         }
     }
+
+    // PageInit.php (required above) took the previous request's message, e.g. why
+    // Login as Person ended, out of the session; Footer.php shows it.
+    global $sGlobalMessage, $sGlobalMessageClass;
 
     // ── Render ───────────────────────────────────────────────────────────────
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
@@ -437,11 +442,13 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
         'portalSignInCanManage'  => $currentUser->isAdmin(),
         'portalSignInIsSelf'     => $iPersonID === (int) $currentUser->getPersonId(),
         'portalSignInCsrfToken'  => $portalSignIn === null ? '' : CSRFUtils::generateToken(),
-        // Login as User: the Actions item (null while off or for non-admins) and the history card
-        'loginAsUser'            => $loginAsUser,
-        'loginAsUserHistory'     => $loginAsUserHistory,
+        // Login as Person: the Actions item (null while off or for non-admins) and the history card
+        'loginAsPerson'          => $loginAsPerson,
+        'loginAsPersonHistory'   => $loginAsPersonHistory,
         'portalAccess'           => $portalAccess,
         'portalGrantChoices'     => $portalGrantChoices,
+        'sGlobalMessage'         => $sGlobalMessage ?? '',
+        'sGlobalMessageClass'    => $sGlobalMessageClass ?? 'success',
     ];
 
     return $renderer->render($response, 'person-view.php', $pageArgs);

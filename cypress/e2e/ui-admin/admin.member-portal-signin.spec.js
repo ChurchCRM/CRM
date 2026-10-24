@@ -87,10 +87,10 @@ describe("Admin → Member Portal → Sign-in", () => {
         expectSave("iRememberDeviceDays", "0");
         cy.get("#bPortalPasskeys").uncheck();
         expectSave("bPortalPasskeys", false);
-        cy.get("#bAllowLoginAsUser").check();
-        expectSave("bAllowLoginAsUser", true);
-        cy.get("#bLoginAsUserCanWrite").check();
-        expectSave("bLoginAsUserCanWrite", true);
+        cy.get("#bAllowLoginAsPerson").check();
+        expectSave("bAllowLoginAsPerson", true);
+        cy.get("#bLoginAsPersonCanWrite").check();
+        expectSave("bLoginAsPersonCanWrite", true);
         cy.contains("Settings saved successfully").should("be.visible");
         cy.get("@saveSignIn.all").should("have.length", 10);
 
@@ -103,8 +103,8 @@ describe("Admin → Member Portal → Sign-in", () => {
         cy.get("#iPortalIdleMinutes").should("have.value", "15");
         cy.get("#iRememberDeviceDays").should("have.value", "0");
         cy.get("#bPortalPasskeys").should("not.be.checked");
-        cy.get("#bAllowLoginAsUser").should("be.checked");
-        cy.get("#bLoginAsUserCanWrite").should("be.checked");
+        cy.get("#bAllowLoginAsPerson").should("be.checked");
+        cy.get("#bLoginAsPersonCanWrite").should("be.checked");
     });
 
     it("refreshes the counts, lists and permissions that follow the rule", () => {

@@ -15,7 +15,7 @@ use Propel\Runtime\ActiveQuery\Criteria;
  * The member rule and the email rule (member sign-in design §4), set on
  * Admin → Member Portal → Sign-in. The member rule applies only to the ways in
  * whose `SignInMethod::appliesMemberRule()` is true; staff signing in at the
- * staff page and Login as User skip it.
+ * staff page and Login as Person skip it.
  *
  * Age: a person qualifies from the day they reach the minimum age. With only a
  * birth year they qualify from the January after the year they reach it. With

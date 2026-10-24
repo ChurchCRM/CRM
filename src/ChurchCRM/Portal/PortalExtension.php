@@ -12,7 +12,7 @@ use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Plugin\PluginManager;
-use ChurchCRM\Portal\Auth\LoginAsUser;
+use ChurchCRM\Portal\Auth\LoginAsPerson;
 use ChurchCRM\Portal\Auth\PortalContext;
 use ChurchCRM\Portal\Auth\PortalPrincipal;
 use ChurchCRM\Portal\Permissions\CorePortalCapabilities;
@@ -208,9 +208,9 @@ class PortalExtension extends AbstractExtension implements GlobalsInterface
                 // The per-user colour mode, so the layout can stamp
                 // `data-bs-theme` before first paint: 'auto', 'light' or 'dark'.
                 'colorMode' => $this->getColorMode(),
-                // Login as User (member sign-in design §6.5): who is acting for whom,
+                // Login as Person (member sign-in design §6.5): who is acting for whom,
                 // whether changes are allowed, and Stop. Null otherwise.
-                'loginAsUser' => LoginAsUser::banner(),
+                'loginAsPerson' => LoginAsPerson::banner(),
                 // Pre-rendered fragments the layout has to emit verbatim: the
                 // head/footer HTML active plugins inject, and the two JSON
                 // blobs the bootstrap and locale-loader scripts need. They are
@@ -345,7 +345,7 @@ class PortalExtension extends AbstractExtension implements GlobalsInterface
             'isStaff' => $staffUser !== null && !$staffUser->isEditSelfExclusive(),
             // The password and two-factor pages exist only for a staff session (§6.4).
             'signedInWithPassword' => $staffUser !== null,
-            // During Login as User the only way back is the banner's Stop (§6.5).
+            // During Login as Person the only way back is the banner's Stop (§6.5).
             'adminConsoleUrl' => PortalContext::principal()?->isAssisted() ? '' : self::adminConsoleUrl($person, $staffUser),
         ];
     }

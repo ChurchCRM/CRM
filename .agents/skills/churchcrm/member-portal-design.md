@@ -44,6 +44,7 @@ src/portal/                  index.php, routes/*.php, .htaccess
 src/ChurchCRM/Portal/        ThemeManager, ThemeValidator, PortalTwig, PortalExtension, PortalNav,
                              PortalAccessMiddleware, ThemeAssetStreamer, PortalSelfService, PortalTeams,
                              PortalCalendar*, PortalAccountPages, PortalStatsService, PortalSettings
+src/ChurchCRM/Portal/Auth/   the portal principal and session, member sign-in, devices, passkeys, Login as Person
 src/ChurchCRM/Portal/Permissions/  portal capabilities, rules, grants, RequirePortalCapability
 src/Include/themes/default/  theme.css, images/, templates/**/*.twig (layout, partials, pages, errors)
 src/admin/routes/member-portal.php, src/admin/routes/api/member-portal.php, src/admin/views/member-portal.php
@@ -163,7 +164,7 @@ A bundle treats a missing hook as "this theme does without the feature". Adding 
 - A theme is trusted like any other file the administrator places on the server; never use `|raw` on member data
 - `theme.js` runs under the CSP nonce; inline scripts in theme templates carry `nonce="{{ nonce() }}"`
 - The admin page states "Themes are provided by your church, not by ChurchCRM"
-- Login as User (`ChurchCRM\Portal\Auth\LoginAsUser`, member sign-in design §6.5) sets the administrator's staff session aside while an ASSISTED principal runs, so portal code never sees a staff user then. `LoginAsUserMiddleware` refuses (unless `bLoginAsUserCanWrite`) and records every non-GET request; a new write path needs nothing more. A theme overriding `layout.html.twig` keeps `partials/login-as-user-banner.html.twig`: Stop is the only way back
+- Login as Person (`ChurchCRM\Portal\Auth\LoginAsPerson`, member sign-in design §6.5) sets the administrator's staff session aside while an ASSISTED principal runs, so portal code never sees a staff user then. `LoginAsPersonMiddleware` refuses (unless `bLoginAsPersonCanWrite`) and records every non-GET request; a new write path needs nothing more. A theme overriding `layout.html.twig` keeps `partials/login-as-person-banner.html.twig`: Stop is the only way back
 
 ## Admin -> Member Portal (`/admin/member-portal`)
 

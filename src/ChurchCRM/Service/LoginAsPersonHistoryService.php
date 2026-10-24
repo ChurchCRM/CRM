@@ -2,18 +2,18 @@
 
 namespace ChurchCRM\Service;
 
-use ChurchCRM\model\ChurchCRM\LoginAsUserActionQuery;
-use ChurchCRM\model\ChurchCRM\LoginAsUserSessionQuery;
+use ChurchCRM\model\ChurchCRM\LoginAsPersonActionQuery;
+use ChurchCRM\model\ChurchCRM\LoginAsPersonSessionQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
-use ChurchCRM\Portal\Auth\LoginAsUserEndReason;
+use ChurchCRM\Portal\Auth\LoginAsPersonEndReason;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 /**
- * The Login as User history card (member sign-in design §6.5): the newest
+ * The Login as Person history card (member sign-in design §6.5): the newest
  * sessions with every write made during them, on the person's page and on the
  * administrator's user page.
  */
-final class LoginAsUserHistoryService
+final class LoginAsPersonHistoryService
 {
     public const LIMIT = 25;
 
@@ -22,7 +22,7 @@ final class LoginAsUserHistoryService
      */
     public function forPerson(int $personId): array
     {
-        return $this->present(LoginAsUserSessionQuery::create()->filterByPersonId($personId));
+        return $this->present(LoginAsPersonSessionQuery::create()->filterByPersonId($personId));
     }
 
     /**
@@ -32,11 +32,11 @@ final class LoginAsUserHistoryService
      */
     public function forUser(int $userId): array
     {
-        return $this->present(LoginAsUserSessionQuery::create()->filterByActorUserId($userId)->_or()->filterByPersonId($userId));
+        return $this->present(LoginAsPersonSessionQuery::create()->filterByActorUserId($userId)->_or()->filterByPersonId($userId));
     }
 
     /** @return list<array<string, mixed>> */
-    private function present(LoginAsUserSessionQuery $query): array
+    private function present(LoginAsPersonSessionQuery $query): array
     {
         $sessions = $query->orderByStarted(Criteria::DESC)->orderById(Criteria::DESC)->limit(self::LIMIT)->find();
         if ($sessions->count() === 0) {
@@ -57,7 +57,7 @@ final class LoginAsUserHistoryService
         }
 
         $actions = [];
-        $actionRows = LoginAsUserActionQuery::create()
+        $actionRows = LoginAsPersonActionQuery::create()
             ->filterBySessionId($sessionIds, Criteria::IN)
             ->orderByTime()
             ->orderById()
@@ -82,7 +82,7 @@ final class LoginAsUserHistoryService
                 'personName' => $names[$personId] ?? sprintf(gettext('Person %d'), $personId),
                 'started' => $session->getStarted(),
                 'ended' => $session->getEnded(),
-                'endReason' => LoginAsUserEndReason::tryFrom((string) $session->getEndReason())?->label(),
+                'endReason' => LoginAsPersonEndReason::tryFrom((string) $session->getEndReason())?->label(),
                 'actions' => $actions[(int) $session->getId()] ?? [],
             ];
         }

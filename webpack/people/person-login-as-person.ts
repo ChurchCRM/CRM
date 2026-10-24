@@ -1,6 +1,6 @@
 /**
- * The person page's Login as User item (Actions menu, src/people/views/person-view.php;
- * member sign-in design §6.5): confirms, posts to /admin/api/person/{id}/login-as-user,
+ * The person page's Login as {first name} item (Actions menu, src/people/views/person-view.php;
+ * member sign-in design §6.5): confirms, posts to /admin/api/person/{id}/login-as-person,
  * then opens the Member Portal as the person. A grayed-out item is not wired.
  */
 
@@ -13,7 +13,7 @@ function t(key: string): string {
 }
 
 async function start(item: HTMLElement): Promise<void> {
-  const response = await fetch(`${window.CRM?.root ?? ""}/admin/api/person/${item.dataset.personId}/login-as-user`, {
+  const response = await fetch(`${window.CRM?.root ?? ""}/admin/api/person/${item.dataset.personId}/login-as-person`, {
     method: "POST",
     headers: { "content-type": "application/json", "X-CSRF-Token": item.dataset.csrfToken ?? "" },
     body: "{}",
@@ -25,26 +25,27 @@ async function start(item: HTMLElement): Promise<void> {
     // An answer without JSON is reported with the fallback below.
   }
   if (!response.ok || !body.redirect) {
-    window.CRM?.notify?.(body.message || t("Login as User could not start."), { type: "danger" });
+    window.CRM?.notify?.(body.message || t("Login as Person could not start."), { type: "danger" });
     return;
   }
   window.location.assign(body.redirect);
 }
 
-export function initLoginAsUser(): void {
-  const item = document.getElementById("loginAsUser");
+export function initLoginAsPerson(): void {
+  const item = document.getElementById("loginAsPerson");
   if (!item || item.getAttribute("aria-disabled") === "true") {
     return;
   }
 
+  const label = item.dataset.label || t("Login as Person");
   item.addEventListener("click", (event) => {
     event.preventDefault();
     window.bootbox?.confirm({
-      title: t("Login as User"),
+      title: label,
       message: t(
         "See the Member Portal as this person sees it? Staff pages stay closed until you press Stop, and the session is recorded on this page and on your user page.",
       ),
-      buttons: { confirm: { label: t("Login as User"), className: "btn-warning" } },
+      buttons: { confirm: { label, className: "btn-warning" } },
       callback: (result: boolean) => {
         if (result) {
           void start(item);

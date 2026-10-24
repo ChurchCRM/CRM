@@ -3,7 +3,7 @@
 namespace ChurchCRM\Slim\Middleware;
 
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Portal\Auth\LoginAsUser;
+use ChurchCRM\Portal\Auth\LoginAsPerson;
 use ChurchCRM\Portal\PortalExtension;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -14,15 +14,15 @@ use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 /**
- * Every write request during Login as User (member sign-in design §6.5): refused
- * while `bLoginAsUserCanWrite` is off, and recorded in `login_as_user_action_laa`
+ * Every write request during Login as Person (member sign-in design §6.5): refused
+ * while `bLoginAsPersonCanWrite` is off, and recorded in `login_as_person_action_lpa`
  * either way. Stop itself is neither.
  *
  * Added right after AuthMiddleware in every Slim entry point that authenticates
  * (MvcAppFactory, api/index.php, plugins/index.php). Legacy pages are staff pages,
- * which `AuthenticationManager::ensureAuthentication()` refuses during Login as User.
+ * which `AuthenticationManager::ensureAuthentication()` refuses during Login as Person.
  */
-final class LoginAsUserMiddleware implements MiddlewareInterface
+final class LoginAsPersonMiddleware implements MiddlewareInterface
 {
     use BrowserRequestTrait;
 
@@ -30,16 +30,16 @@ final class LoginAsUserMiddleware implements MiddlewareInterface
     {
         $method = $request->getMethod();
         $path = $request->getUri()->getPath();
-        if (!LoginAsUser::isWriteMethod($method) || LoginAsUser::isStopPath($path) || $request->getHeaderLine('x-api-key') !== '') {
+        if (!LoginAsPerson::isWriteMethod($method) || LoginAsPerson::isStopPath($path) || $request->getHeaderLine('x-api-key') !== '') {
             return $handler->handle($request);
         }
-        $historyId = LoginAsUser::historyId();
+        $historyId = LoginAsPerson::historyId();
         if ($historyId === null) {
             return $handler->handle($request);
         }
 
-        if (!LoginAsUser::allowsChanges()) {
-            LoginAsUser::recordAction($historyId, $method, $path, 403);
+        if (!LoginAsPerson::allowsChanges()) {
+            LoginAsPerson::recordAction($historyId, $method, $path, 403);
 
             return $this->refuse($request);
         }
@@ -49,20 +49,20 @@ final class LoginAsUserMiddleware implements MiddlewareInterface
         register_shutdown_function(static function () use (&$recorded, $historyId, $method, $path): void {
             if (!$recorded) {
                 $status = http_response_code();
-                LoginAsUser::recordAction($historyId, $method, $path, is_int($status) ? $status : null);
+                LoginAsPerson::recordAction($historyId, $method, $path, is_int($status) ? $status : null);
             }
         });
 
         $response = $handler->handle($request);
         $recorded = true;
-        LoginAsUser::recordAction($historyId, $method, $path, $response->getStatusCode());
+        LoginAsPerson::recordAction($historyId, $method, $path, $response->getStatusCode());
 
         return $response;
     }
 
     private function refuse(ServerRequestInterface $request): ResponseInterface
     {
-        $message = gettext('Changes are turned off during Login as User.');
+        $message = gettext('Changes are turned off during Login as Person.');
         if (!$this->isBrowserRequest($request)) {
             return SlimUtils::renderErrorJSON(new Response(), $message, [], 403);
         }

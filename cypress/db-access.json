@@ -65,13 +65,13 @@
             "kind": "fixture",
             "reason": "Member sign-in row 10 (#10463): the sign-in audit has no HTTP surface until row 9, and the importer answers no ids."
         },
-        "cypress/e2e/ui-admin/admin.login-as-user-changes.spec.js": {
+        "cypress/e2e/ui-admin/admin.login-as-person-changes.spec.js": {
             "kind": "fixture",
-            "reason": "Member sign-in row 12 (#10463): a remembered device for the member is written only by the email sign-in flow (row 7), so it is inserted to show a device removed during Login as User names the administrator, then deleted."
+            "reason": "Member sign-in row 12 (#10463): a remembered device for the member is written only by the email sign-in flow (row 7), so it is inserted to show a device removed during Login as Person names the administrator, then deleted."
         },
-        "cypress/e2e/ui-admin/admin.login-as-user-eligibility.spec.js": {
+        "cypress/e2e/ui-admin/admin.login-as-person-eligibility.spec.js": {
             "kind": "fixture",
-            "reason": "Member sign-in row 12 (#10463): a death date is set only through the legacy person editor form, so it is set and cleared in SQL to show a Login as User session ends once the person is deceased."
+            "reason": "Member sign-in row 12 (#10463): a death date is set only through the legacy person editor form, so it is set and cleared in SQL to show a Login as Person session ends once the person is deceased."
         },
         "cypress/e2e/ui-admin/admin.member-portal-members.spec.js": {
             "kind": "fixture",

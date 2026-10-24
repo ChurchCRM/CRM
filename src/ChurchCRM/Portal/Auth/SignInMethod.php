@@ -23,15 +23,16 @@ enum SignInMethod: string
     }
 
     /**
-     * STAFF gets the blocks for everyone but not the member rule (§4, §6.4).
-     * ASSISTED gets neither: only its own three checks (`PortalSignInRules`, §6.5).
+     * The member ways in, which need the member rule and member sign-in on.
+     * STAFF gets the blocks for everyone but neither of these (§4, §6.4).
+     * ASSISTED gets only its own checks (`PortalSignInRules`, §6.5).
      */
     public function appliesMemberRule(): bool
     {
         return $this !== self::STAFF && $this !== self::ASSISTED;
     }
 
-    /** Login as User leaves the member's sign-in times, method and activity alone (§6.5). */
+    /** Login as Person leaves the member's sign-in times, method and activity alone (§6.5). */
     public function updatesSignInRecord(): bool
     {
         return $this !== self::ASSISTED;
@@ -66,7 +67,7 @@ enum SignInMethod: string
             self::DEVICE => gettext('Remembered device'),
             self::PASSKEY => gettext('Passkey'),
             self::STAFF => gettext('From a staff sign-in'),
-            self::ASSISTED => gettext('Login as User'),
+            self::ASSISTED => gettext('Login as Person'),
         };
     }
 }

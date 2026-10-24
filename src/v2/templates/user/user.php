@@ -490,9 +490,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   </div>
 </div>
 
-<?php if ($loginAsUserHistory !== null) : ?>
+<?php if ($loginAsPersonHistory !== null) : ?>
 <div class="mt-3">
-  <?php include SystemURLs::getDocumentRoot() . '/people/views/partials/login-as-user-history.php'; ?>
+  <?php include SystemURLs::getDocumentRoot() . '/people/views/partials/login-as-person-history.php'; ?>
 </div>
 <?php endif; ?>
 

@@ -427,8 +427,8 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
         </div>
         <?php } ?>
 
-        <?php if ($loginAsUserHistory !== null) : ?>
-            <div class="mt-3"><?php include __DIR__ . '/partials/login-as-user-history.php'; ?></div>
+        <?php if ($loginAsPersonHistory !== null) : ?>
+            <div class="mt-3"><?php include __DIR__ . '/partials/login-as-person-history.php'; ?></div>
         <?php endif; ?>
     </div>
     <div class="col-lg-8">
@@ -477,13 +477,13 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
                             <i class="fa-solid fa-power-off me-2"></i><?= ($person->isActive() ? gettext('Set Inactive') : gettext('Set Active')) ?>
                         </a>
                     <?php } ?>
-                    <?php if ($loginAsUser !== null) { ?>
+                    <?php if ($loginAsPerson !== null) { ?>
                         <div class="dropdown-divider"></div>
-                        <?php if ($loginAsUser['refusal'] === null) { ?>
-                            <a class="dropdown-item" href="#" id="loginAsUser" data-person-id="<?= (int) $iPersonID ?>" data-csrf-token="<?= InputUtils::escapeAttribute($loginAsUser['csrfToken']) ?>"><i class="fa-solid fa-user-secret me-2"></i><?= gettext('Login as User') ?></a>
+                        <?php if ($loginAsPerson['refusal'] === null) { ?>
+                            <a class="dropdown-item" href="#" id="loginAsPerson" data-person-id="<?= (int) $iPersonID ?>" data-label="<?= InputUtils::escapeAttribute($loginAsPerson['label']) ?>" data-csrf-token="<?= InputUtils::escapeAttribute($loginAsPerson['csrfToken']) ?>"><i class="fa-solid fa-user-secret me-2"></i><?= InputUtils::escapeHTML($loginAsPerson['label']) ?></a>
                         <?php } else { ?>
-                            <span class="d-block" id="loginAsUserRefusal" tabindex="0" title="<?= InputUtils::escapeAttribute($loginAsUser['refusal']) ?>">
-                                <span class="dropdown-item disabled" id="loginAsUser" aria-disabled="true"><i class="fa-solid fa-user-secret me-2"></i><?= gettext('Login as User') ?><span class="visually-hidden">: <?= InputUtils::escapeHTML($loginAsUser['refusal']) ?></span></span>
+                            <span class="d-block" id="loginAsPersonRefusal" tabindex="0" title="<?= InputUtils::escapeAttribute($loginAsPerson['refusal']) ?>">
+                                <span class="dropdown-item disabled" id="loginAsPerson" aria-disabled="true"><i class="fa-solid fa-user-secret me-2"></i><?= InputUtils::escapeHTML($loginAsPerson['label']) ?><span class="visually-hidden">: <?= InputUtils::escapeHTML($loginAsPerson['refusal']) ?></span></span>
                             </span>
                         <?php } ?>
                     <?php } ?>

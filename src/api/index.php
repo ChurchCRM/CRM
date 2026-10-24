@@ -6,7 +6,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
 use ChurchCRM\Slim\Middleware\CorsMiddleware;
-use ChurchCRM\Slim\Middleware\LoginAsUserMiddleware;
+use ChurchCRM\Slim\Middleware\LoginAsPersonMiddleware;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Volunteer\Middleware\VolunteerPortalMemberMiddleware;
@@ -30,7 +30,7 @@ SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
 
 $app->add(new CorsMiddleware());
 $app->add(new VolunteerPortalMemberMiddleware());
-$app->add(new LoginAsUserMiddleware());
+$app->add(new LoginAsPersonMiddleware());
 $app->add(AuthMiddleware::class);
 $app->add(VersionMiddleware::class);
 

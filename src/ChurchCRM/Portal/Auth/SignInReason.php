@@ -38,6 +38,7 @@ enum SignInReason: string
     case PASSKEY_UNKNOWN = 'passkey_unknown';
     case PASSKEY_INVALID = 'passkey_invalid';
     case STAFF_ACCOUNT = 'staff_account';
+    case MEMBER_SIGN_IN_OFF = 'member_sign_in_off';
 
     /** For staff screens only; a person signing in never sees a reason (D3, A6). */
     public function label(): string
@@ -71,6 +72,7 @@ enum SignInReason: string
             self::PASSKEY_UNKNOWN => gettext('The passkey is not on record, or was removed'),
             self::PASSKEY_INVALID => gettext('The passkey could not be verified'),
             self::STAFF_ACCOUNT => gettext('They have a staff account'),
+            self::MEMBER_SIGN_IN_OFF => gettext('Member sign-in is off'),
         };
     }
 }

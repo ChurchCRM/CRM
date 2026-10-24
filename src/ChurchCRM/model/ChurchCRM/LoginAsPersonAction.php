@@ -8,18 +8,18 @@
 
 namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\model\ChurchCRM\Base\LoginAsUserSession as BaseLoginAsUserSession;
+use ChurchCRM\model\ChurchCRM\Base\LoginAsPersonAction as BaseLoginAsPersonAction;
 
 /**
- * Skeleton subclass for representing a row from the 'login_as_user_session_las' table.
+ * Skeleton subclass for representing a row from the 'login_as_person_action_lpa' table.
  *
- * One row per Login as User session (member sign-in design §6.5): the administrator acting (actor), the person signed in as (subject), when it started and ended, and why it ended: stop, signout, timeout or ended
+ * One row per write request (any method but GET, HEAD and OPTIONS) made during a Login as Person session: method, path without the query string, response status and time
  *
  * You should add additional methods to this class to meet the
  * application requirements.  This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class LoginAsUserSession extends BaseLoginAsUserSession
+class LoginAsPersonAction extends BaseLoginAsPersonAction
 {
 
 }

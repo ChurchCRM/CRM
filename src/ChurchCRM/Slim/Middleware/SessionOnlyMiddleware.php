@@ -17,7 +17,7 @@ use Throwable;
  *
  * AuthMiddleware accepts an `x-api-key` header on every route outside
  * `/api/public`, the MVC modules included, so "only reachable from a page" has
- * to be enforced. Login as User is one such route: it sets the staff session
+ * to be enforced. Login as Person is one such route: it sets the staff session
  * aside, and an API key has none.
  */
 final class SessionOnlyMiddleware implements MiddlewareInterface

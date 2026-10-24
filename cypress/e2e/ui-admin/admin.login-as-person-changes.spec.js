@@ -2,14 +2,14 @@
 
 import { db } from "../../support/member-sign-in";
 
-// Login as User (#10463 row 12, docs/member-sign-in-design.md §6.5, §17): read-only
+// Login as Person (#10463 row 12, docs/member-sign-in-design.md §6.5, §17): read-only
 // unless changes are allowed, every write recorded with both people, and how a
 // session ends.
 const MEMBER = 2; // Mathew Campbell, head of the Campbell family
 const ADMIN = 1;
 const DEVICE_TOKEN = "c".repeat(64);
-const SETTINGS = ["bAllowLoginAsUser", "bLoginAsUserCanWrite", "sVolunteerVersion", "iSessionTimeout"];
-const REFUSED = "Changes are turned off during Login as User.";
+const SETTINGS = ["bAllowLoginAsPerson", "bLoginAsPersonCanWrite", "bMemberSignIn", "sVolunteerVersion", "iSessionTimeout"];
+const REFUSED = "Changes are turned off during Login as Person.";
 
 const admin = (method, url, body = null, status = 200) => cy.makePrivateAdminAPICall(method, url, body, status);
 
@@ -44,11 +44,11 @@ const auditSince = (afterId) =>
 const newestAuditId = () =>
     admin("GET", `admin/api/member-portal/audit?personId=${MEMBER}&length=1`).then(({ body }) => body.rows[0]?.id ?? 0);
 
-const startLoginAsUser = () =>
+const startLoginAsPerson = () =>
     cy.request(`/people/view/${MEMBER}`).then(({ body }) =>
         cy.request({
             method: "POST",
-            url: `/admin/api/person/${MEMBER}/login-as-user`,
+            url: `/admin/api/person/${MEMBER}/login-as-person`,
             headers: { "X-CSRF-Token": body.match(/data-csrf-token="([^"]+)"/)[1] },
             body: {},
         }),
@@ -73,21 +73,21 @@ const portalForm = (token, url) =>
 
 const workPhone = () => cy.request("/api/portal/me").then(({ body }) => body.profile.workPhone);
 
-const stopLoginAsUser = (token) =>
-    cy.request({ method: "POST", url: "/portal/login-as-user/stop", form: true, body: { csrf_token: token }, followRedirect: false });
+const stopLoginAsPerson = (token) =>
+    cy.request({ method: "POST", url: "/portal/login-as-person/stop", form: true, body: { csrf_token: token }, followRedirect: false });
 
 const newestSession = () => {
     cy.visit(`/people/view/${MEMBER}`);
-    return cy.get("#login-as-user-history [data-cy=login-as-user-session]").first();
+    return cy.get("#login-as-person-history [data-cy=login-as-person-session]").first();
 };
 
 const actionsOf = (session) =>
     cy
         .wrap(session)
-        .find("[data-cy=login-as-user-action]")
+        .find("[data-cy=login-as-person-action]")
         .then((items) => [...items].map((item) => item.innerText.replace(/\s+/g, " ").trim().split(" ").slice(0, 3).join(" ")));
 
-describe("Login as User: changes and endings", () => {
+describe("Login as Person: changes and endings", () => {
     const saved = {};
 
     before(() => {
@@ -99,8 +99,9 @@ describe("Login as User: changes and endings", () => {
     });
 
     beforeEach(() => {
-        setSetting("bAllowLoginAsUser", "1");
-        setSetting("bLoginAsUserCanWrite", "0");
+        setSetting("bAllowLoginAsPerson", "1");
+        setSetting("bLoginAsPersonCanWrite", "0");
+        setSetting("bMemberSignIn", "1");
         setSetting("sVolunteerVersion", "v2");
         signInAsAdmin();
     });
@@ -112,9 +113,9 @@ describe("Login as User: changes and endings", () => {
 
     it("refuses every change while changes are off, and records each attempt", () => {
         newestAuditId().then((auditBefore) => {
-            startLoginAsUser();
+            startLoginAsPerson();
             cy.visit("/portal/");
-            cy.get("#login-as-user-changes").should("have.text", "Changes are turned off.");
+            cy.get("#login-as-person-text").should("contain", "logged in as Mathew Campbell in the Member Portal (read-only).");
 
             workPhone().then((before) => {
                 portalToken().then((token) => {
@@ -134,9 +135,9 @@ describe("Login as User: changes and endings", () => {
 
                     cy.visit("/portal/devices");
                     cy.get("#portal-toasts").should("contain", REFUSED);
-                    cy.get("#login-as-user-banner").should("be.visible");
+                    cy.get("#login-as-person-banner").should("be.visible");
                     workPhone().should("eq", before);
-                    stopLoginAsUser(token);
+                    stopLoginAsPerson(token);
                 });
             });
 
@@ -155,7 +156,7 @@ describe("Login as User: changes and endings", () => {
     });
 
     it("records every change with both people when changes are allowed", () => {
-        setSetting("bLoginAsUserCanWrite", "1");
+        setSetting("bLoginAsPersonCanWrite", "1");
         db(
             "INSERT INTO person_device_pdv (pdv_per_ID, pdv_TokenHash, pdv_Kind, pdv_Label, pdv_CreatedAt, pdv_ExpiresAt) VALUES (?, ?, 'browser', 'Row 12 test', NOW(), NOW() + INTERVAL 1 DAY)",
             [MEMBER, DEVICE_TOKEN],
@@ -163,9 +164,9 @@ describe("Login as User: changes and endings", () => {
         db("SELECT pdv_ID FROM person_device_pdv WHERE pdv_TokenHash = ?", [DEVICE_TOKEN]).then((devices) => {
             const deviceId = devices[0].pdv_ID;
             newestAuditId().then((auditBefore) => {
-                startLoginAsUser();
+                startLoginAsPerson();
                 cy.visit("/portal/");
-                cy.get("#login-as-user-changes").should("contain", "Changes are allowed");
+                cy.get("#login-as-person-text").should("contain", "logged in as Mathew Campbell in the Member Portal (changes allowed).");
 
                 workPhone().then((original) => {
                     portalToken().then((token) => {
@@ -174,7 +175,7 @@ describe("Login as User: changes and endings", () => {
                         portalJSON(token, "/api/portal/me", { workPhone: original }).its("status").should("eq", 200);
                         portalJSON(token, "/api/portal/family/confirm", { result: "no-change" }).its("status").should("eq", 200);
                         portalForm(token, `/portal/devices/${deviceId}/sign-out`).its("status").should("eq", 303);
-                        stopLoginAsUser(token);
+                        stopLoginAsPerson(token);
                     });
                 });
 
@@ -199,7 +200,7 @@ describe("Login as User: changes and endings", () => {
 
     it("ends with the timeout reason when the waiting staff session times out", () => {
         newestAuditId().then((auditBefore) => {
-            startLoginAsUser();
+            startLoginAsPerson();
             setSetting("iSessionTimeout", "1");
             cy.wait(2500);
             cy.request({ url: "/portal/", followRedirect: false }).then((response) => {
@@ -219,7 +220,7 @@ describe("Login as User: changes and endings", () => {
     });
 
     it("ends with the sign-out reason on Sign out", () => {
-        startLoginAsUser();
+        startLoginAsPerson();
         cy.request({ url: "/session/end", followRedirect: false }).its("headers.location").should("match", /\/admin\/$/);
         signInAsAdmin();
         newestSession().should("contain", "Signed out");

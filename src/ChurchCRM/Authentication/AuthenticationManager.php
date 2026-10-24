@@ -12,7 +12,7 @@ use ChurchCRM\Authentication\Requests\LocalTwoFactorTokenRequest;
 use ChurchCRM\Authentication\Requests\LocalUsernamePasswordRequest;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\User;
-use ChurchCRM\Portal\Auth\LoginAsUser;
+use ChurchCRM\Portal\Auth\LoginAsPerson;
 use ChurchCRM\Portal\Auth\PortalMemberUser;
 use ChurchCRM\Portal\Auth\PortalPrincipal;
 use ChurchCRM\Portal\Auth\PortalSessionStore;
@@ -69,7 +69,7 @@ class AuthenticationManager
     }
 
     /**
-     * Login as User (member sign-in design §6.5): takes the browser's staff session
+     * Login as Person (member sign-in design §6.5): takes the browser's staff session
      * out of the PHP session while the administrator is in the Member Portal, so no
      * staff page or API sees it, and hands it to the caller to keep.
      */
@@ -140,7 +140,7 @@ class AuthenticationManager
         }
         $logCtx = ['username' => $currentSessionUserName];
 
-        LoginAsUser::endWithSession();
+        LoginAsPerson::endWithSession();
 
         try {
             if (self::hasSessionProvider()) {
@@ -200,7 +200,7 @@ class AuthenticationManager
     /** A staff sign-in replaces a member session in this browser (one principal per session, §6.4). */
     private static function replacePortalSession(): void
     {
-        LoginAsUser::endForNewSignIn();
+        LoginAsPerson::endForNewSignIn();
         $principal = PortalSessionStore::load();
         if (!$principal instanceof PortalPrincipal) {
             return;
@@ -337,8 +337,8 @@ class AuthenticationManager
         // take corrective action to redirect the user to an appropriate login location
         // if the current session is not actually authenticated
 
-        if (LoginAsUser::isActive()) {
-            LoginAsUser::refuseStaffPage();
+        if (LoginAsPerson::isActive()) {
+            LoginAsPerson::refuseStaffPage();
         }
 
         try {

@@ -29,8 +29,8 @@ final class MemberSignInSettingsService
         'iRememberDeviceDays',
         'bPortalPasskeys',
         'sMemberSignInNotificationRecipientIDs',
-        'bAllowLoginAsUser',
-        'bLoginAsUserCanWrite',
+        'bAllowLoginAsPerson',
+        'bLoginAsPersonCanWrite',
     ];
 
     private const FAMILY_ROLE_LIST = 2;
@@ -59,7 +59,7 @@ final class MemberSignInSettingsService
     {
         return match ($key) {
             'bMemberSignIn' => $this->normalizeMemberSignIn($value),
-            'bPortalPasskeys', 'bAllowLoginAsUser', 'bLoginAsUserCanWrite' => self::normalizeBoolean($value),
+            'bPortalPasskeys', 'bAllowLoginAsPerson', 'bLoginAsPersonCanWrite' => self::normalizeBoolean($value),
             'sMemberSignInFamilyRoles' => $this->normalizeListIds($value, self::FAMILY_ROLE_LIST, gettext('Pick family roles from the list.')),
             'sMemberSignInClassifications' => $this->normalizeListIds($value, self::CLASSIFICATION_LIST, gettext('Pick classifications from the list.')),
             'iMemberSignInMinAge', 'iSignInLinkMinutes', 'iMemberSignInRequestsPerIP', 'iPortalIdleMinutes', 'iRememberDeviceDays' => self::normalizeNumber($key, $value),
