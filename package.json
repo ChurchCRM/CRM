@@ -162,6 +162,7 @@
         "minimatch": "^9.0.7",
         "mysql2": "^3.24.6",
         "picomatch": "4.0.7",
+        "pngjs": "^7.0.0",
         "sass": "^1.105.2",
         "sass-loader": "^17.0.1",
         "ts-loader": "^9.6.2",
