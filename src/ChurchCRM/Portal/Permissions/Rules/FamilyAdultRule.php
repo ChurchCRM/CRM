@@ -20,6 +20,9 @@ use DateTimeImmutable;
  * Age is counted the way the member rule counts it: from the birthday itself;
  * with only a birth year, from the January after the 18th birthday's year; with
  * no birth year, a head of household or spouse counts as an adult.
+ *
+ * Like `Family::getAdults()`, someone proposed for an existing family counts
+ * only once staff approve them; a family that self-registered keeps its adults.
  */
 final class FamilyAdultRule implements PortalRule
 {
@@ -34,7 +37,7 @@ final class FamilyAdultRule implements PortalRule
     public function grantsFor(Person $person): iterable
     {
         $family = $person->getFamily();
-        if (!$family instanceof Family || !self::isAdult($person)) {
+        if (!$family instanceof Family || !self::isAdult($person, null, $family)) {
             return;
         }
 
@@ -49,8 +52,13 @@ final class FamilyAdultRule implements PortalRule
         }
     }
 
-    public static function isAdult(Person $person, ?DateTimeImmutable $today = null): bool
+    public static function isAdult(Person $person, ?DateTimeImmutable $today = null, ?Family $family = null): bool
     {
+        $family ??= $person->getFamily();
+        if ($family instanceof Family && self::awaitsReview((bool) $person->getNeedsReview(), (int) $family->getEnteredBy())) {
+            return false;
+        }
+
         if (!in_array((int) $person->getFmrId(), self::headAndSpouseRoleIds(), true)) {
             return false;
         }
@@ -73,6 +81,12 @@ final class FamilyAdultRule implements PortalRule
         }
 
         return [$month, $day] <= [(int) $today->format('n'), (int) $today->format('j')];
+    }
+
+    /** Proposed for an existing family and not yet approved (see `Family::getAdults()`). */
+    private static function awaitsReview(bool $personNeedsReview, int $familyEnteredBy): bool
+    {
+        return $personNeedsReview && $familyEnteredBy !== Person::SELF_REGISTER;
     }
 
     /**

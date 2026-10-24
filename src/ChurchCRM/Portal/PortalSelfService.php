@@ -216,7 +216,7 @@ class PortalSelfService
      */
     public static function isAdultOf(Family $family, Person $person): bool
     {
-        return (int) $person->getFamId() === (int) $family->getId() && FamilyAdultRule::isAdult($person);
+        return (int) $person->getFamId() === (int) $family->getId() && FamilyAdultRule::isAdult($person, null, $family);
     }
 
     private static function mayOnFamily(Person $actor, string $capability, Family $family): bool
