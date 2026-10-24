@@ -16,7 +16,7 @@ class GivingStatementEmail extends BaseEmail
         parent::__construct($toAddresses);
 
         $churchName = ChurchMetaData::getChurchName();
-        $this->mail->Subject = sprintf(gettext('%s %d Giving Statement'), $churchName, $year);
+        $this->mail->Subject = sprintf(gettext('%d Giving Statement'), $year);
         $this->mail->isHTML(false);
         $this->mail->Body = sprintf(
             gettext("Dear %s Family,\n\nPlease find your %d giving statement from %s attached to this email.\n\nIf you have any questions, please contact the church office.\n\nThank you for your generosity."),

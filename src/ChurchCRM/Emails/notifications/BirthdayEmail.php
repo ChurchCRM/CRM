@@ -18,7 +18,7 @@ class BirthdayEmail extends BaseEmail
         $this->person = $person;
         parent::__construct($toAddresses);
         $this->setLogContext((int) $person->getId());
-        $this->mail->Subject = SystemConfig::getValue('sChurchName') . ': ' . $this->getSubSubject();
+        $this->mail->Subject = $this->getSubSubject();
         $this->mail->isHTML(true);
         $this->mail->msgHTML($this->buildMessage());
     }
