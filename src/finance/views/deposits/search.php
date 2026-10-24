@@ -20,6 +20,14 @@ use ChurchCRM\Utils\InputUtils;
  * @var int      $currentFyid     Current fiscal-year ID
  */
 
+ob_start();
+?>
+<a href="#" class="btn btn-success" id="newDepositButton" data-bs-toggle="modal" data-bs-target="#newDepositModal">
+  <i class="fa-solid fa-circle-plus me-1"></i><?= gettext('New Deposit') ?>
+</a>
+<?php
+$sPageHeaderButtons = ob_get_clean();
+
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
@@ -182,9 +190,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <button type="button" id="btnExportPDF" class="btn btn-sm btn-success" disabled data-export-type="pdf">
           <i class="fa-solid fa-file-pdf me-1"></i>PDF
         </button>
-        <a href="#" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#newDepositModal">
-          <i class="fa-solid fa-plus me-1"></i><?= gettext('New Deposit') ?>
-        </a>
       </div>
     </div>
     <div class="card-body p-0">
@@ -221,7 +226,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 $totalAmount  = CurrencyFormatter::formatHtml($deposit['totalAmount'] ?? 0);
                 $isClosed     = (bool) ($deposit['Closed'] ?? false);
                 $tellerName   = InputUtils::escapeHTML($deposit['tellerName'] ?? '');
-                $editUrl      = InputUtils::escapeAttribute($sRootPath . '/DepositSlipEditor.php?DepositSlipID=' . $depositId);
+                $editUrl      = InputUtils::escapeAttribute($sRootPath . '/finance/deposit/' . $depositId);
                 $addPayUrl    = InputUtils::escapeAttribute(
                     $sRootPath . '/finance/pledge/new?type=Payment&depositId=' . $depositId
                     . '&linkBack=' . urlencode('/finance/deposit/search')
@@ -271,6 +276,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 </div><!-- /.container-xl -->
 
-<script src="<?= SystemURLs::assetVersioned('/skin/js/finance-deposit-search.js') ?>"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/finance-deposit-search.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

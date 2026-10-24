@@ -6,8 +6,11 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\Requests\APITokenAuthenticationRequest;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\Portal\Auth\PortalSessionStore;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Volunteer\Middleware\VolunteerPortalMemberMiddleware;
+use ChurchCRM\Volunteer\Service\VolunteerAuthorizationService;
 use ChurchCRM\Utils\RedirectUtils;
 use Laminas\Diactoros\Response;
 use Psr\Http\Message\ServerRequestInterface;
@@ -104,6 +107,11 @@ class AuthMiddleware implements MiddlewareInterface
                         return (new Response())->withStatus(302)->withHeader('Location', $result->nextStepURL);
                     }
                 }
+            } elseif (($this->isPortalPath($request) || $this->isPortalVolunteerApiPath($request)) && PortalSessionStore::has()) {
+                // A portal session with no staff user (member sign-in design §3).
+                // PortalSessionMiddleware validates it on /portal and /api/portal, and
+                // VolunteerPortalMemberMiddleware on the volunteer API the portal pages
+                // call; every other route refuses it below.
             } else {
                 $logger = LoggerUtils::getAppLogger();
                 $logger->warning('No authenticated user or session', [
@@ -136,8 +144,12 @@ class AuthMiddleware implements MiddlewareInterface
      *    serves nothing but allow-listed static files, and staying public is
      *    what keeps a cached portal page from breaking on a logged-out asset
      *    request (design §2.2 step 6).
+     *  - /portal/login/…   — member sign-in by email (member sign-in design
+     *    §6.1), which a signed-out visitor must reach.
+     *  - /portal/email/confirm/… — the page an email-change link opens (member
+     *    sign-in design §9); the token in the link is what identifies the request.
      *
-     * Both are built with the install's root path, so a subdirectory install
+     * Each is built with the install's root path, so a subdirectory install
      * ('/crm/api/public') matches exactly as a root install does.
      */
     private function isPublicPath(ServerRequestInterface $request): bool
@@ -145,7 +157,7 @@ class AuthMiddleware implements MiddlewareInterface
         $path = $request->getUri()->getPath();
         $rootPath = SystemURLs::getRootPath();
 
-        foreach (['/api/public', '/portal/theme'] as $publicPrefix) {
+        foreach (['/api/public', '/portal/theme', '/portal/login', '/portal/email/confirm'] as $publicPrefix) {
             $publicPath = $rootPath . $publicPrefix;
             if ($path === $publicPath || str_starts_with($path, $publicPath . '/')) {
                 return true;
@@ -237,11 +249,8 @@ class AuthMiddleware implements MiddlewareInterface
         $path = $request->getUri()->getPath();
         $rootPath = SystemURLs::getRootPath();
 
-        foreach (['/portal', '/api/portal'] as $allowedPrefix) {
-            $allowedPath = $rootPath . $allowedPrefix;
-            if ($path === $allowedPath || str_starts_with($path, $allowedPath . '/')) {
-                return true;
-            }
+        if ($this->isPortalPath($request)) {
+            return true;
         }
 
         foreach (self::AUTH_FLOW_EXEMPT_PATHS as $exemptPath) {
@@ -263,12 +272,33 @@ class AuthMiddleware implements MiddlewareInterface
             return true;
         }
 
-        // The rest of the volunteer API, for a team leader only (#9868). The scope
-        // lookup is memoised per request on the User model, so asking here costs
-        // nothing on the paths that never reach this line.
+        // The rest of the volunteer API, for somebody with team authority only
+        // (#9868; member sign-in design §8.4).
         $user = AuthenticationManager::getCurrentUser();
 
-        return $user instanceof User && $user->isVolunteerTeamLeaderEnabled();
+        return $user instanceof User && (new VolunteerAuthorizationService())->hasTeamAuthority($user);
+    }
+
+    /** `/api/ministries/…` while Volunteer v2 is on: the volunteer API the portal pages call. */
+    private function isPortalVolunteerApiPath(ServerRequestInterface $request): bool
+    {
+        return User::isVolunteerV2Enabled() && VolunteerPortalMemberMiddleware::isVolunteerApiPath($request);
+    }
+
+    /** `/portal` and `/api/portal`, anchored at the root path and matched by whole segments. */
+    private function isPortalPath(ServerRequestInterface $request): bool
+    {
+        $path = $request->getUri()->getPath();
+        $rootPath = SystemURLs::getRootPath();
+
+        foreach (['/portal', '/api/portal'] as $portalPrefix) {
+            $portalPath = $rootPath . $portalPrefix;
+            if ($path === $portalPath || str_starts_with($path, $portalPath . '/')) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private function isPath(ServerRequestInterface $request, string $pathPart): bool
@@ -299,10 +329,11 @@ class AuthMiddleware implements MiddlewareInterface
             $_SESSION['location'] = $safePath;
         }
 
-        $response = new Response();
-        $redirectUrl = SystemURLs::getRootPath() . '/session/begin';
+        $redirectUrl = $this->isPortalPath($request)
+            ? AuthenticationManager::getPortalLoginURL()
+            : AuthenticationManager::getSessionBeginURL();
 
-        return $response->withStatus(302)->withHeader('Location', $redirectUrl);
+        return (new Response())->withStatus(302)->withHeader('Location', $redirectUrl);
     }
 
 }

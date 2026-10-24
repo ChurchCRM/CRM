@@ -59,8 +59,8 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
 
                 <div class="mb-3">
                     <h6 class="mb-2"><?= gettext('Current $URL[0] value') ?>:</h6>
-                    <div class="p-3 bg-dark rounded" style="font-family: 'Courier New', monospace; word-break: break-all;">
-                        <code class="text-warning" style="font-size: 1.1em;"><?= InputUtils::escapeHTML($urlError['url']) ?></code>
+                    <div class="p-3 bg-dark rounded admin-url-box">
+                        <code class="text-warning admin-code-lg"><?= InputUtils::escapeHTML($urlError['url']) ?></code>
                     </div>
                 </div>
 
@@ -90,14 +90,14 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                     <div class="card-body bg-surface">
                         <div class="mb-2">
                             <small class="text-body-secondary"><?= gettext('Local development') ?>:</small><br>
-                            <code class="text-success" style="font-size: 1em;">$URL[0] = 'http://localhost/';</code>
+                            <code class="text-success admin-code-inherit">$URL[0] = 'http://localhost/';</code>
                         </div>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            <code class="text-success" style="font-size: 1em;">$URL[0] = 'https://www.yourdomain.com/churchcrm/';</code>
+                            <code class="text-success admin-code-inherit">$URL[0] = 'https://www.yourdomain.com/churchcrm/';</code>
                         </div>
                         <div>
                             <small class="text-body-secondary"><?= gettext('Custom port') ?>:</small><br>
-                            <code class="text-success" style="font-size: 1em;">$URL[0] = 'https://www.yourdomain.com:8080/app/';</code>
+                            <code class="text-success admin-code-inherit">$URL[0] = 'https://www.yourdomain.com:8080/app/';</code>
                         </div>
                     </div>
                 </div>
@@ -206,7 +206,7 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                 </div>
                 <div class="card-body p-0">
                     <!-- Progress bar -->
-                    <div class="progress" style="height: 4px; border-radius: 0;">
+                    <div class="progress admin-progress-thin">
                         <div class="progress-bar bg-success" role="progressbar"
                              style="width: <?= round(($completedSteps / $totalSteps) * 100) ?>%"
                              aria-valuenow="<?= round(($completedSteps / $totalSteps) * 100) ?>"
@@ -217,7 +217,7 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                         <?php foreach ($setupChecklist as $step): ?>
                         <li class="list-group-item px-3 py-2">
                             <div class="d-flex align-items-center">
-                                <div class="me-3" style="width: 1.5rem; text-align: center; flex-shrink: 0;">
+                                <div class="me-3 admin-step-icon-box">
                                     <?php if ($step['done']): ?>
                                         <i class="fa-solid fa-circle-check text-success"></i>
                                     <?php else: ?>
@@ -225,7 +225,7 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                                     <?php endif; ?>
                                 </div>
                                 <div class="flex-grow-1 <?= $step['done'] ? 'text-body-secondary' : '' ?>">
-                                    <span class="fw-semibold <?= $step['done'] ? '' : 'text-body' ?>" style="font-size: 0.875rem;">
+                                    <span class="fw-semibold <?= $step['done'] ? '' : 'text-body' ?> fs-4">
                                         <?= $step['label'] ?>
                                     </span>
                                     <?php if (!$step['done']): ?>
@@ -298,7 +298,7 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
 
                         <!-- 3. Configure Email -->
                         <div class="col-md-6 col-lg-4 mb-3">
-                            <a href="<?= SystemURLs::getRootPath() ?>/v2/email/dashboard?settings=open" class="quick-start-card">
+                            <a href="<?= SystemURLs::getRootPath() ?>/admin/email" class="quick-start-card">
                                 <div class="quick-start-icon bg-info">
                                     <i class="fa-solid fa-envelope"></i>
                                 </div>

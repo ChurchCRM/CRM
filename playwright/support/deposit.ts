@@ -44,6 +44,6 @@ export function deleteDemoDeposit(browser: Browser, depositId: number): Promise<
 }
 
 export function addPaymentUrl(depositId: number): string {
-  const linkBack = `/DepositSlipEditor.php?DepositSlipID=${depositId}`;
+  const linkBack = `/finance/deposit/${depositId}`;
   return `/finance/pledge/new?type=Payment&depositId=${depositId}&linkBack=${encodeURIComponent(linkBack)}`;
 }

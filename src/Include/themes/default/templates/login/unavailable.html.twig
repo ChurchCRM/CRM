@@ -1,0 +1,20 @@
+{% extends "layout.html.twig" %}
+
+{#
+  Every /portal/login page while member sign-in is off (member sign-in design §7).
+
+  Variables: `pageTitle`, `staffSignInUrl`.
+#}
+
+{% block nav %}{% endblock %}
+
+{% block content %}
+<div class="portal-signin">
+    <section class="portal-card" id="portalSignInUnavailable">
+        <h1 class="portal-page-title">{{ gettext('Sign in to the Member Portal') }}</h1>
+        <p class="portal-card-text">{{ gettext("Member sign-in isn't available yet. Please contact the church office.") }}</p>
+    </section>
+
+    {% include 'login/staff-link.html.twig' %}
+</div>
+{% endblock %}

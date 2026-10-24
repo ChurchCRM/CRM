@@ -193,8 +193,8 @@ foreach ($monthlyData as $monthData):
     </h3>
     <span class="badge bg-blue-lt ms-auto"><?= (int) $EventYear ?></span>
   </div>
-  <div class="card-body p-0" style="overflow: visible;">
-    <div style="overflow: visible;">
+  <div class="card-body p-0 overflow-visible">
+    <div class="overflow-visible">
       <table class="table table-hover table-vcenter mb-0">
         <thead>
           <tr>
@@ -312,7 +312,7 @@ foreach ($monthlyData as $monthData):
 <div class="card">
   <div class="card-body text-center py-5">
     <div class="mb-3">
-      <i class="fa-solid fa-calendar-xmark text-body-secondary" style="font-size: 3rem;"></i>
+      <i class="fa-solid fa-calendar-xmark text-body-secondary empty-state-icon"></i>
     </div>
     <h3 class="text-body-secondary"><?= gettext('No Events Found') ?></h3>
     <p class="text-body-secondary mb-3">
@@ -336,24 +336,6 @@ foreach ($monthlyData as $monthData):
   </div>
 </div>
 <?php endif; ?>
-
-<style>
-  /* Past events tbody is hidden by default; JS adds .expanded to show it. */
-  tbody.past-events-body {
-    display: none;
-  }
-  tbody.past-events-body.expanded {
-    display: table-row-group;
-  }
-  /* Rotate chevron when the past-events section is open. */
-  .past-events-chevron {
-    display: inline-block;
-    transition: transform 0.2s ease;
-  }
-  .past-events-chevron.rotate-90 {
-    transform: rotate(90deg);
-  }
-</style>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
   // Auto-submit the filter form when the user picks a type or year.

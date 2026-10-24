@@ -1,0 +1,29 @@
+{% extends "layout.html.twig" %}
+
+{#
+  Member sign-in: the page an emailed link opens (member sign-in design §6.1
+  step 4). Opening it changes nothing, so a mail scanner can't use the link up;
+  only pressing Sign in does.
+
+  Variables: `pageTitle`, `firstName`, `churchName`, `confirmUrl`, `loginUrl`,
+  `staffSignInUrl`, `offerRememberDevice`.
+#}
+
+{% block nav %}{% endblock %}
+
+{% block content %}
+<div class="portal-signin">
+    <form class="portal-card portal-form" id="portalSignInConfirmForm" method="post" action="{{ confirmUrl }}">
+        {{ csrf_field() }}
+
+        <p class="portal-card-text" id="portalSignInChurch">{{ churchName }}</p>
+        <h1 class="portal-page-title" id="portalSignInConfirmTitle">{{ gettext('Sign in as %s?')|format(firstName) }}</h1>
+
+        {% include 'login/remember-device.html.twig' %}
+
+        <div class="portal-form-actions">
+            <button class="portal-button" type="submit" id="portalSignInConfirmSubmit">{{ gettext('Sign in') }}</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

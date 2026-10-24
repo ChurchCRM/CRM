@@ -45,6 +45,10 @@ under `{plugin}/locale/textdomain/{locale}/LC_MESSAGES/{plugin-id}.mo`
 and JS `{plugin}/locale/i18n/{locale}.json` flat key/value maps. See
 [`plugin-development.md → Plugin Localization`](../../../.agents/skills/churchcrm/plugin-development.md#plugin-localization-independent-of-poeditor).
 
+## UI and themes
+
+Plugin views share the application shell: use Tabler theme-aware classes/tokens, not fixed light-only `bg-light`, `alert-light` or `table-success` classes. Check **light and dark** at **desktop, tablet and phone** sizes, following [Frontend Development](../../../.agents/skills/churchcrm/frontend-development.md). The existing `npm run lint:ui` scans `src/`, including plugins, for disallowed table variants and static inline styles; lint does **not** replace those browser checks.
+
 ## Before you install anything
 
 Read these three skill files in order:

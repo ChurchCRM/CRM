@@ -47,10 +47,11 @@ access.
 The files under `docker/examples/` illustrate alternative architectures. They
 are **not** working release-image recipes: they build from local Dockerfiles
 rather than the published tags, and the nginx example's build context is wrong
-for the directory it lives in. Its nginx config at `docker/examples/nginx/
-default.conf` has two known defects — every `/Images/*` request returns 403
-because `deny all` is inherited into the allowlist block, and `/setup` without a
-trailing slash returns a JSON 404, which is where a fresh install first lands.
+for the directory it lives in. `docker/examples/nginx/default.conf` routes each
+Slim front controller to its own `index.php`. A new directory with its own
+`index.php` has to be added there. The image allowlist uses `allow all` so it
+does not inherit the parent `deny all`, and each bare front-controller URL
+redirects to the trailing-slash form so `/setup` does not land on a JSON 404.
 An empty named volume normally receives image contents on first mount; a bind
 mount obscures the contents, and a reused named volume keeps stale application
 code across image upgrades. Do not persist the whole document root as an upgrade
@@ -112,7 +113,7 @@ Dockerfiles and workflow helpers. Human publication of a draft triggers the
 normal release event. Workflow runs are serialized; GitHub concurrency retains
 only one pending run, so rerun any displaced release explicitly.
 
-PHP image references pin PHP 8.4.25, Debian Trixie and the multi-platform digest.
+PHP image references pin PHP 8.4.27, Debian Trixie and the multi-platform digest.
 Update both the tag and digest together, keep builder and runtime references
 identical, and rerun production image tests. The `PHP_IMAGE` build argument must
 remain a compatible PHP 8.4+ image of the same server flavor and Debian suite.
