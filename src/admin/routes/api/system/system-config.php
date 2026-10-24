@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\Service\GradePromotionService;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Volunteer\Service\VolunteerEventService;
@@ -93,6 +94,7 @@ function setConfigValueByNameAPI(Request $request, Response $response, array $ar
     }
 
     $volunteerV2WasOn = User::isVolunteerV2Enabled();
+    $gradeDateBefore = in_array($configName, GradePromotionService::DATE_SETTINGS, true) ? SystemConfig::getValue($configName) : null;
 
     // Sanitization is applied centrally in SystemConfig::setValue() — no duplicate call here.
     SystemConfig::setValue($configName, $value);
@@ -100,6 +102,10 @@ function setConfigValueByNameAPI(Request $request, Response $response, array $ar
     // #10357: V2's default type for ministry events arrives when V2 is turned on, not on upgrade.
     if ($configName === 'sVolunteerVersion' && !$volunteerV2WasOn && User::isVolunteerV2Enabled()) {
         VolunteerEventService::addOtherEventType();
+    }
+
+    if ($gradeDateBefore !== null && $gradeDateBefore !== SystemConfig::getValue($configName)) {
+        GradePromotionService::recordDateSet();
     }
 
     // Never return the saved value for password types

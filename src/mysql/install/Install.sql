@@ -199,7 +199,8 @@ CREATE TABLE `event_types` (
 
 INSERT INTO `event_types` (`type_id`, `type_name`, `type_defstarttime`, `type_defrecurtype`, `type_defrecurDOW`, `type_defrecurDOM`, `type_defrecurDOY`, `type_active`) VALUES
   (1, 'Church Service', '10:30:00', 'weekly', 'Sunday', '', '2016-01-01', 1),
-  (2, 'Sunday School', '09:30:00', 'weekly', 'Sunday', '', '2016-01-01', 1);
+  (2, 'Sunday School', '09:30:00', 'weekly', 'Sunday', '', '2016-01-01', 1),
+  (3, 'Other', '00:00:00', 'none', 'Sunday', '', '2016-01-01', 1);
 
 -- --------------------------------------------------------
 
@@ -414,6 +415,20 @@ INSERT INTO `list_lst` (`lst_ID`, `lst_OptionID`, `lst_OptionSequence`, `lst_Opt
   (5, 7, 7, 'bManageGroups'),
   (5, 8, 8, 'bFinance'),
   (5, 9, 9, 'bNotes'),
+  (6, 4, 1, 'Pre-K'),
+  (6, 5, 2, 'Kindergarten'),
+  (6, 6, 3, '1st'),
+  (6, 7, 4, '2nd'),
+  (6, 8, 5, '3rd'),
+  (6, 9, 6, '4th'),
+  (6, 10, 7, '5th'),
+  (6, 11, 8, '6th'),
+  (6, 12, 9, '7th'),
+  (6, 13, 10, '8th'),
+  (6, 14, 11, '9th'),
+  (6, 15, 12, '10th'),
+  (6, 16, 13, '11th'),
+  (6, 17, 14, '12th'),
   (10, 1, 1, 'Teacher'),
   (10, 2, 2, 'Student'),
   (11, 1, 1, 'Member'),
@@ -561,10 +576,12 @@ CREATE TABLE `person_per` (
   `per_LinkedIn` varchar(50) default NULL,
   `per_DateDeactivated` date DEFAULT NULL,
   `per_NeedsReview` tinyint(1) unsigned NOT NULL default '0',
+  `per_grd_ID` mediumint(8) unsigned default NULL,
   PRIMARY KEY  (`per_ID`),
   INDEX `idx_per_fam_ID` (`per_fam_ID`),
   INDEX `idx_per_cls_ID` (`per_cls_ID`),
-  INDEX `idx_per_fmr_ID` (`per_fmr_ID`)
+  INDEX `idx_per_fmr_ID` (`per_fmr_ID`),
+  INDEX `idx_per_grd_ID` (`per_grd_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=2 ;
 
 --
@@ -606,7 +623,8 @@ CREATE TABLE `pledge_plg` (
   INDEX `idx_plg_FamID` (`plg_FamID`),
   INDEX `idx_plg_FYID` (`plg_FYID`),
   INDEX `idx_plg_fundID` (`plg_fundID`),
-  INDEX `idx_plg_depID` (`plg_depID`)
+  INDEX `idx_plg_depID` (`plg_depID`),
+  INDEX `idx_plg_GroupKey` (`plg_GroupKey`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
@@ -751,7 +769,6 @@ CREATE TABLE `user_usr` (
   `usr_AddRecords` tinyint(1) unsigned NOT NULL default '0',
   `usr_EditRecords` tinyint(1) unsigned NOT NULL default '0',
   `usr_DeleteRecords` tinyint(1) unsigned NOT NULL default '0',
-  `usr_MenuOptions` tinyint(1) unsigned NOT NULL default '0',
   `usr_ManageGroups` tinyint(1) unsigned NOT NULL default '0',
   `usr_Finance` tinyint(1) unsigned NOT NULL default '0',
   `usr_ManageFundraisers` tinyint(1) unsigned NOT NULL default '0',
@@ -799,13 +816,13 @@ CREATE TABLE `user_usr` (
 
 INSERT INTO `user_usr` (`usr_per_ID`, `usr_Password`, `usr_NeedPasswordChange`, `usr_LastLogin`,
                         `usr_LoginCount`, `usr_FailedLogins`, `usr_AddRecords`, `usr_EditRecords`, `usr_DeleteRecords`,
-                        `usr_MenuOptions`, `usr_ManageGroups`, `usr_Finance`, `usr_Notes`, `usr_Admin`,
+                        `usr_ManageGroups`, `usr_Finance`, `usr_Notes`, `usr_Admin`,
                         `usr_SearchLimit`, `usr_Style`, `usr_showPledges`,
                         `usr_showPayments`, `usr_showSince`, `usr_defaultFY`, `usr_currentDeposit`, `usr_UserName`, `usr_EditSelf`,
                         `usr_CalStart`, `usr_CalEnd`, `usr_CalNoSchool1`, `usr_CalNoSchool2`, `usr_CalNoSchool3`, `usr_CalNoSchool4`,
                         `usr_CalNoSchool5`, `usr_CalNoSchool6`, `usr_CalNoSchool7`, `usr_CalNoSchool8`, `usr_SearchFamily`)
 VALUES
-  (1, '$2y$12$oBq/URJVlaV58kIVAN9oHuDenAzFz8Xe1GneeFdIWEtNdclehz6Hu', 1, '2016-01-01 00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 10, 'skin-red', 0, 0, '2016-01-01', 10, 0, 'Admin', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
+  (1, '$2y$12$oBq/URJVlaV58kIVAN9oHuDenAzFz8Xe1GneeFdIWEtNdclehz6Hu', 1, '2016-01-01 00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 1, 10, 'skin-red', 0, 0, '2016-01-01', 10, 0, 'Admin', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
 
 --
 -- Table structure for table `user_settings`
@@ -954,6 +971,17 @@ CREATE TABLE `tokens` (
   `remainingUses` INT(2) NULL,
   PRIMARY KEY (`token`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+CREATE TABLE `rate_limit_rlm` (
+  `rlm_ID`      int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `rlm_Bucket`  varchar(64)      NOT NULL,
+  `rlm_KeyHash` char(64)         NOT NULL,
+  `rlm_Hits`    int(10) unsigned NOT NULL DEFAULT 0,
+  `rlm_ResetAt` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`rlm_ID`),
+  UNIQUE KEY `rlm_bucket_key_uidx` (`rlm_Bucket`, `rlm_KeyHash`),
+  KEY `rlm_reset_at_idx` (`rlm_ResetAt`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `locations` (
   `location_id` INT NOT NULL AUTO_INCREMENT,
@@ -1309,7 +1337,7 @@ CREATE TABLE `volunteer_swap_vswp` (
 
 CREATE TABLE `volunteer_notification_vntf` (
   `vntf_ID`              int(11)               NOT NULL AUTO_INCREMENT,
-  `vntf_Type`            enum('assignment','reminder','decline_alert','gap_alert','signup_confirm','swap_proposed','swap_resolved','help_offer')
+  `vntf_Type`            enum('assignment','reminder','decline_alert','gap_alert','signup_confirm','swap_proposed','swap_resolved','help_offer','pool_add')
                                                NOT NULL,
   `vntf_Channel`         enum('email')         NOT NULL DEFAULT 'email',
   `vntf_per_ID`          mediumint(9) unsigned NOT NULL,
@@ -1428,11 +1456,15 @@ CREATE TABLE `email_log_eml` (
   `eml_Error`     text                  DEFAULT NULL,
   `eml_MessageID` varchar(255)          DEFAULT NULL,
   `eml_DateSent`  datetime              NOT NULL,
+  `eml_Batch`       varchar(32)         DEFAULT NULL,
+  `eml_Attempts`    tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `eml_NextAttempt` datetime            DEFAULT NULL,
   PRIMARY KEY (`eml_ID`),
   KEY `idx_eml_per_ID`   (`eml_per_ID`),
   KEY `idx_eml_fam_ID`   (`eml_fam_ID`),
   KEY `idx_eml_DateSent` (`eml_DateSent`),
-  KEY `idx_eml_Status`   (`eml_Status`)
+  KEY `idx_eml_Status`   (`eml_Status`),
+  KEY `idx_eml_Batch`    (`eml_Batch`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 update version_ver set ver_update_end = now();

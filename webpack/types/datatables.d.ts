@@ -66,7 +66,7 @@ interface DataTablesNamespace {
     /**
      * `"none"` suppresses DataTables' own browser alert on an ajax failure, so a
      * page can render its inline error block instead — required on every V2
-     * screen (volunteer-v2-design.md §5.8).
+     * screen (docs/design/volunteer-v2.md §5.8).
      */
     errMode: string;
     [key: string]: unknown;

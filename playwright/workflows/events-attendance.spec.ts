@@ -7,7 +7,8 @@ test.describe('Events & Attendance', () => {
   test('events-calendar-overview', async ({ page }, testInfo) => {
     // A church user checking the event calendar.
     await page.goto('/event/calendars');
-    await expect(page.getByRole('grid')).toBeVisible({ timeout: 20000 });
+    // FullCalendar v7 hashes its class names, sets no grid role and translates its aria-labels.
+    await expect(page.locator('#calendar button').first()).toBeVisible({ timeout: 20000 });
     await settle(page, 800);
 
     await captureScreen(page, testInfo, {
@@ -15,6 +16,7 @@ test.describe('Events & Attendance', () => {
       title: 'Events Calendar',
       category: 'Groups & Events',
       purpose: 'Show the event calendar',
+      usedIn: ['docs'],
     });
   });
 
@@ -51,6 +53,7 @@ test.describe('Events & Attendance', () => {
       title: 'Check-In & Attendance',
       category: 'Groups & Events',
       purpose: 'Show the event check-in / attendance workflow',
+      usedIn: ['website'],
     });
   });
 });

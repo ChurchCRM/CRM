@@ -15,6 +15,7 @@ early_access: false
 tone_instructions: >-
   Concise. Hard blocks only: security, authz, data leak, upgrade breakage,
   missing tests, unwrapped strings, Query View work, date/money contract. No nits.
+  Never post nitpick or trivial-severity comments.
 
 reviews:
   profile: chill
@@ -61,10 +62,14 @@ reviews:
       - name: Authorization and data exposure
         mode: error
         instructions: |
-          Fail if a new or changed route, API endpoint, controller, or query returns
-          or mutates person, family, finance, or admin data without an explicit
-          authorization check (role middleware or permission test), or if a
-          non-Finance user can read finance fields. Pass if no such code changed.
+          Fail if a new or changed PHP route, API endpoint, controller, or query
+          returns or mutates person, family, finance, or admin data without an
+          explicit authorization check (role middleware or permission test), or if a
+          non-Finance user can read finance fields. Pass if no such PHP code changed.
+          A web-server config (Caddyfile, nginx, Apache) that only forwards an
+          existing URL prefix to an existing front controller is not a new route.
+          Do not fail it for authorization the PHP app already applies, and do not
+          ask for new role middleware on that app.
       - name: Schema upgrade safety
         mode: error
         instructions: |
@@ -77,6 +82,12 @@ reviews:
           Fail if the PR fixes a bug or changes user-visible behavior under src/
           without adding or updating a spec in cypress/. Pass for CI, docs,
           tooling, locale, dependency, and refactor-only PRs.
+          Pass when every application change is the unsupported FrankenPHP example:
+          docker/examples/frankenphp/**, docker/Dockerfile.churchcrm-frankenphp,
+          and tests or package.json scripts that only check that example. No image
+          is published and Cypress runs on Apache, so it cannot execute the
+          Caddyfile. A Node (or other) test of the Caddyfile routes, static
+          fallback, and denial order is enough. Do not ask for a Cypress spec.
       - name: No Query View expansion
         mode: error
         instructions: |
@@ -120,7 +131,12 @@ reviews:
   path_instructions:
     - path: "**/*"
       instructions: |
-        Apply maintainer-review-gates.md. Hard blocks only.
+        Report only hard blocks. Do not post nitpicks, trivial or optional suggestions,
+        or "add more cases" comments on a test that already exercises the behavior.
+        If a finding is not a hard block, omit it. That includes findings you would
+        label Minor, Quick win or preventive. Do not ask to broaden a lint rule,
+        validator or regex beyond a case that exists in the repository.
+        Apply maintainer-review-gates.md and docs/contributing/issue-readiness.md. Review issue/PR scope and linked work by evidence; hard blocks only.
         Do not ask for locale:build or messages.po.
     - path: "**/*.{lock,json}"
       instructions: |
@@ -154,6 +170,26 @@ reviews:
       instructions: |
         No .only or .skip. Do not put optional demo values in Cypress seed.
         A feature or bug fix needs a spec when that is the project pattern.
+    - path: "cypress/data/seed.sql"
+      instructions: |
+        Test data only; the schema comes from src/mysql/install/Install.sql. Do not ask
+        for CREATE TABLE here. Inserts name their columns. The ALTER TABLE ... AUTO_INCREMENT
+        lines are deliberate: family_custom and person_custom hold rows past the last id.
+    - path: "cypress/e2e/**/*.{js,ts}"
+      instructions: |
+        A spec deletes what it creates, in after(), through the API. No literal ids of
+        seeded people or families where a name lookup works. A deposit that was closed
+        must be reopened before it can be deleted.
+    - path: "docker/examples/frankenphp/**"
+      instructions: |
+        Unsupported example. No published image and no CI job runs FrankenPHP.
+        Do not ask for Cypress, a Docker test stack, or new PHP authorization
+        on an existing front controller. A committed check of the Caddyfile
+        (routes, static fallback, denial order) is the required test.
+    - path: "docker/Dockerfile.churchcrm-frankenphp"
+      instructions: |
+        Unsupported example. No published image and no CI job runs FrankenPHP.
+        Do not ask for Cypress or a Docker test stack.
     - path: ".github/workflows/**"
       instructions: |
         Pin actions to a commit SHA. No model/LLM calls from Actions.
@@ -210,6 +246,12 @@ knowledge_base:
         applyTo: "**/*.{php,js,ts}"
       - files: ".agents/skills/churchcrm/timezone-handling.md"
         applyTo: "**/*.{php,js,ts}"
+      - files: ".agents/skills/churchcrm/cypress-testing.md"
+        applyTo: "cypress/**/*.{js,ts}"
+      - files: ".agents/skills/churchcrm/ci-test-infrastructure.md"
+        applyTo: "{cypress/data/**,cypress/configs/**,scripts/**,.github/workflows/**,docker/**}"
+      - files: ".agents/skills/churchcrm/db-schema-migration.md"
+        applyTo: "{orm/**,src/mysql/**,cypress/data/**}"
       - files: "CLAUDE.md"
         applyTo: "**/*"
 

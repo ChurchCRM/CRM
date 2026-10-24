@@ -20,12 +20,18 @@ updates:
       # Remove this entry when a newer 2.x release addresses them.
       - dependency-name: "quill"
         versions: ["2.0.3"]
+      # Majors of these are planned upgrades on their own branch, because the
+      # build and the Cypress suite need changes first. Remove an entry to let
+      # Dependabot propose that major.
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "cypress"
+        update-types: ["version-update:semver-major"]
     groups:
-      # UI-critical libraries get their own PR each: a bad patch bump in one of
-      # these regresses visible behavior (tables, calendars, page chrome), so
-      # each needs its own build/lint/CI verification rather than riding along
-      # in the catch-all group below. Groups are matched in order, so these
-      # must be declared before npm-minor-patch to take packages out of it.
+      # Named groups come first; the dev and runtime minor/patch groups take the
+      # rest. UI-critical libraries each get their own PR, because a patch bump
+      # in one of them changes visible behavior (tables, calendars, page chrome)
+      # and needs its own build, lint and CI run.
       tabler:
         patterns:
           - "@tabler/*"
@@ -38,32 +44,20 @@ updates:
           - "@fullcalendar/*"
           - "@full-ui/*"
           - "temporal-polyfill"
-      # Group all remaining minor/patch updates together
-      npm-minor-patch:
-        patterns:
-          - "*"
-        update-types:
-          - "minor"
-          - "patch"
-      # Group dev dependencies separately
-      npm-dev-dependencies:
-        dependency-type: "development"
-        patterns:
-          - "*"
-      # Group TypeScript ecosystem together
+      # TypeScript ecosystem
       typescript:
         patterns:
           - "typescript"
           - "@types/*"
           - "ts-*"
-      # Group testing tools together
+      # Testing tools
       testing:
         patterns:
           - "cypress"
           - "@cypress/*"
           - "jest"
           - "@jest/*"
-      # Group build tools together
+      # Build tools
       build-tools:
         patterns:
           - "webpack"
@@ -71,6 +65,22 @@ updates:
           - "babel-*"
           - "@babel/*"
           - "@biomejs/biome"
+      # Dev-only minor and patch updates, in a PR apart from what ships.
+      npm-dev-minor-patch:
+        dependency-type: "development"
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+      # Runtime minor and patch updates (what ships in the release)
+      npm-runtime-minor-patch:
+        dependency-type: "production"
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
 
   # Composer packages in src directory
   - package-ecosystem: "composer"
@@ -85,13 +95,8 @@ updates:
       prefix: "chore(deps)"
     open-pull-requests-limit: 5
     groups:
-      # Group all minor/patch updates together
-      composer-minor-patch:
-        patterns:
-          - "*"
-        update-types:
-          - "minor"
-          - "patch"
+      # Named groups come first; the dev and runtime minor/patch groups take the
+      # rest.
       # Group Slim framework packages
       slim:
         patterns:
@@ -102,6 +107,23 @@ updates:
         patterns:
           - "propel/*"
           - "perplorm/*"
+      # Dev-only minor and patch updates (`require-dev`), in a PR apart from
+      # what ships.
+      composer-dev:
+        dependency-type: "development"
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+      # Runtime minor/patch updates (what ships in the release)
+      composer-runtime:
+        dependency-type: "production"
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
 
   # GitHub Actions workflows
   - package-ecosystem: "github-actions"

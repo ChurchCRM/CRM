@@ -16,6 +16,10 @@
         "cypress/support/api-commands.js": {
             "kind": "fixture",
             "reason": "Registers cy.dbQuery()."
+        },
+        "cypress/support/sign-in-throttle.js": {
+            "kind": "fixture",
+            "reason": "Ends a sign-in throttle window (#10197) so specs need not wait out a 15-minute lockout; the server still decides what an ended window means."
         }
     },
     "baseline": {

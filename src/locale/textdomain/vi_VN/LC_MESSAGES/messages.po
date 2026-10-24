@@ -409,15 +409,6 @@ msgid "Add Payment"
 msgstr "Thêm thanh toán"
 
 #: 
-#, fuzzy
-msgid "Load Authorized"
-msgstr "Tải các giao dịch được ủy quyền"
-
-#: 
-msgid "Run Transactions"
-msgstr "Chạy giao dịch"
-
-#: 
 msgid "Directory reports"
 msgstr "Báo cáo thư mục"
 
@@ -1771,10 +1762,6 @@ msgid "Login Name"
 msgstr "Tên đăng nhập"
 
 #: 
-msgid "Manage Properties and Classifications"
-msgstr "Quản lý thuộc tính và phân loại"
-
-#: 
 msgid "Manage Groups and Roles"
 msgstr "Quản lý Nhóm và Vai trò"
 
@@ -2258,10 +2245,6 @@ msgstr "Bạn có chắc chắn muốn xóa phần đã chọn"
 #: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "KHÔNG THỂ hoàn tác hành động này và có thể có tác động pháp lý!"
-
-#: 
-msgid "Please ensure this what you want to do."
-msgstr "Hãy đảm bảo điều này những gì bạn muốn làm."
 
 #: 
 msgid "Deposit Type"
@@ -5342,10 +5325,6 @@ msgid "Enter event description..."
 msgstr "Nhập mô tả sự kiện..."
 
 #: 
-msgid "Event ID"
-msgstr "Mã sự kiện"
-
-#: 
 msgid "Enter note text here..."
 msgstr "Nhập nội dung ghi chú tại đây..."
 
@@ -5650,14 +5629,6 @@ msgid "Generate Report"
 msgstr "Xuất báo cáo"
 
 #: 
-msgid "No Cash"
-msgstr "Không có tiền mặt"
-
-#: 
-msgid "No Checks"
-msgstr "Không có chi phiếu"
-
-#: 
 msgid "Payments"
 msgstr "Các khoản đóng góp"
 
@@ -5672,11 +5643,6 @@ msgstr "Tổng nộp"
 #: 
 msgid "Total Payments"
 msgstr "Tổng khoản thu"
-
-#: 
-#, fuzzy
-msgid "payments?"
-msgstr "khoản thanh toán?"
 
 #: 
 msgid "All system files have passed integrity validation."
@@ -6122,10 +6088,6 @@ msgid "Manage Orphaned Files"
 msgstr "Quản lý tệp mồ côi"
 
 #: 
-msgid "Menu options access"
-msgstr "Truy cập tùy chọn menu"
-
-#: 
 msgid "Multiple Copies"
 msgstr "Nhiều bản sao"
 
@@ -6234,10 +6196,6 @@ msgid "User authentication"
 msgstr "Xác thực người dùng"
 
 #: 
-msgid "User must have Menu Options permission"
-msgstr "Người dùng phải có quyền Tùy chọn Menu"
-
-#: 
 msgid "What are Orphaned Files?"
 msgstr "Tệp mồ côi là gì?"
 
@@ -6296,10 +6254,6 @@ msgstr "Th4"
 #: 
 msgid "Aug"
 msgstr "Th8"
-
-#: 
-msgid "Back to Deposits"
-msgstr "Quay lại danh sách gửi tiền"
 
 #: 
 msgid "Back to Families"
@@ -6380,10 +6334,6 @@ msgstr "Ngày"
 #: 
 msgid "Dec"
 msgstr "Th12"
-
-#: 
-msgid "Deposit Navigation"
-msgstr "Điều hướng gửi tiền"
 
 #: 
 msgid "Deposit Statistics"
@@ -6660,10 +6610,6 @@ msgstr "Báo cáo Thuế & Dâng hiến"
 #: 
 msgid "Tax Report Verbiage"
 msgstr "Ngôn từ báo cáo thuế"
-
-#: 
-msgid "Tax Statements (Giving Report)"
-msgstr "Báo cáo thuế (Báo cáo dâng hiến)"
 
 #: 
 msgid "Tax Year Reporting Checklist"
@@ -8143,14 +8089,6 @@ msgid "API Key is required."
 msgstr "Khóa API là bắt buộc."
 
 #: 
-msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
-msgstr "Không thể kết nối đến OpenLP tại %s. Kiểm tra URL máy chủ và đảm bảo OpenLP đang chạy."
-
-#: 
-msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
-msgstr "Không thể kết nối đến OpenLP tại %s. Máy chủ trả về HTTP %d."
-
-#: 
 msgid "Congregation Map"
 msgstr "Bản Đồ Hội Thánh"
 
@@ -9180,10 +9118,6 @@ msgid "Generate and download confirmation letters"
 msgstr "Tao va tai thu xac nhan"
 
 #: 
-msgid "Generate annual giving statements for tax purposes"
-msgstr "Tao bao cao dang hien hang nam cho muc dich thue"
-
-#: 
 msgid "Generate directory listings and printed materials"
 msgstr "Tao danh ba va tai lieu in"
 
@@ -9332,10 +9266,6 @@ msgid "Load demo data"
 msgstr "Tai du lieu mau"
 
 #: 
-msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
-msgstr "Tai cac gia dinh, nguoi, nhom va ban ghi dang hien mau. Cach an toan nhat de hoc ChurchCRM truoc khi nhap du lieu thuc."
-
-#: 
 msgid "Log Files"
 msgstr "Tep nhat ky"
 
@@ -9370,10 +9300,6 @@ msgstr "Quan ly quy dang hien de theo doi tai chinh"
 #: 
 msgid "Manage donations, pledges, and financial records"
 msgstr "Quan ly dang hien, cam ket va ho so tai chinh"
-
-#: 
-msgid "Manage email tools and SMTP configuration"
-msgstr "Quan ly cong cu email va cau hinh SMTP"
 
 #: 
 msgid "Manage families, people, and demographic information"
@@ -9836,10 +9762,6 @@ msgstr "Thong tin chan doan he thong va cau hinh"
 #: 
 msgid "Tags"
 msgstr "The"
-
-#: 
-msgid "Tax Statements"
-msgstr "Bao cao thue"
 
 #: 
 msgid "Teacher"
@@ -10351,10 +10273,6 @@ msgid "Distance Unit"
 msgstr "Đơn vị khoảng cách"
 
 #: 
-msgid "Email Dashboard"
-msgstr "Bảng điều khiển Email"
-
-#: 
 msgid "Email Integrations"
 msgstr "Tích hợp Email"
 
@@ -10369,10 +10287,6 @@ msgstr "Các liên kết email trong chế độ xem nhóm và mọi người"
 #: 
 msgid "Email lists are synced with Mailchimp."
 msgstr "Danh sách email được đồng bộ hóa với Mailchimp."
-
-#: 
-msgid "Enable email in the settings panel below, then configure your SMTP server."
-msgstr "Bật email trong bảng cài đặt bên dưới, sau đó cấu hình máy chủ SMTP của bạn."
 
 #: 
 msgid "External Calendar API Disabled"
@@ -10514,10 +10428,6 @@ msgstr "Lịch Hệ thống"
 #: 
 msgid "System language for the church."
 msgstr "Ngôn ngữ hệ thống cho nhà thờ."
-
-#: 
-msgid "Text Dashboard"
-msgstr "Bảng điều khiển văn bản"
 
 #: 
 msgid "Text Settings"
@@ -12438,10 +12348,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "Email đã bị tắt. Hãy cấu hình email trước khi đặt lại mật khẩu, hoặc sử dụng Đổi mật khẩu."
 
 #: 
-msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
-msgstr "Email đã bị tắt. Hãy bật trong cài đặt Bảng điều khiển Email trước khi kiểm tra."
-
-#: 
 msgid "Enter one of your backup recovery codes"
 msgstr "Nhập một trong các mã khôi phục dự phòng của bạn"
 
@@ -13227,10 +13133,6 @@ msgid "Are you sure you want to delete this note?"
 msgstr "Bạn có chắc muốn xóa ghi chú này không?"
 
 #: 
-msgid "Cancel — wait 1 more minute"
-msgstr "Hủy — chờ thêm 1 phút nữa"
-
-#: 
 msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
 msgstr "Không thể xóa quỹ quyên góp: quỹ này vẫn đang được tham chiếu bởi một hoặc nhiều cam kết tài chính."
 
@@ -13359,14 +13261,6 @@ msgid "Read more"
 msgstr "Đọc thêm"
 
 #: 
-msgid "Refreshing Soon"
-msgstr "Sắp làm mới"
-
-#: 
-msgid "Refreshing in"
-msgstr "Làm mới sau"
-
-#: 
 msgid "That name already exists."
 msgstr "Tên đó đã tồn tại."
 
@@ -13385,10 +13279,6 @@ msgstr "Bạn không có quyền xóa ghi chú này."
 #: 
 msgid "You do not have permission to edit this note."
 msgstr "Bạn không có quyền chỉnh sửa ghi chú này."
-
-#: 
-msgid "seconds"
-msgstr "giây"
 
 #: 
 msgid "Cannot delete event: %d people are currently checked in."
@@ -14015,10 +13905,6 @@ msgid "Foreground Color"
 msgstr "Màu viền"
 
 #: 
-msgid "Fund(s)"
-msgstr "Quỹ"
-
-#: 
 msgid "Generate new code"
 msgstr "Tạo mã mới"
 
@@ -14085,18 +13971,6 @@ msgstr "Quan trọng"
 #: 
 msgid "Importing..."
 msgstr "Dang nhap..."
-
-#: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "Bao gồm các lớp Trường Chúa Nhật và danh sách đăng ký"
-
-#: 
-msgid "Include events and calendars"
-msgstr "Bao gồm sự kiện và lịch"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "Bao gồm dữ liệu tài chính (quỹ dâng hiến, hứa dâng)"
 
 #: 
 msgid "Invalid Entry"
@@ -14271,16 +14145,8 @@ msgid "Open in New Tab"
 msgstr "Mở trong thẻ mới"
 
 #: 
-msgid "Open in new tab"
-msgstr "Mở trong tab mới"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Mở ứng dụng xác thực và quét mã QR này"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "Dữ liệu tùy chọn để bao gồm"
 
 #: 
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
@@ -14409,10 +14275,6 @@ msgstr "Vui lòng chọn một người để đăng ký."
 #: 
 msgid "Please select a role."
 msgstr "Vui lòng chọn một chức vụ."
-
-#: 
-msgid "Please select rows to delete"
-msgstr "Vui lòng chọn các hàng để xóa"
 
 #: 
 msgid "Please try again"
@@ -19009,10 +18871,6 @@ msgid_plural "%d default volunteers assigned"
 msgstr[0] "%d tình nguyện viên mặc định được gán"
 
 #: 
-msgid "%d failed"
-msgstr "%d thất bại"
-
-#: 
 msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
 msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
 msgstr[0] "Vị trí này vẫn cần thêm %d tình nguyện viên. Mở sự kiện để lấp đầy khoảng trống."
@@ -19723,10 +19581,6 @@ msgid "Choose where the schedule's dates come from"
 msgstr "Chọn nguồn ngày của lịch phục vụ"
 
 #: 
-msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
-msgstr "Chọn trải nghiệm tình nguyện mà Hội thánh này dùng, lịch được điền trước bao xa và khi nào gửi nhắc nhở, và kiểm tra các tác vụ nền đang chạy."
-
-#: 
 msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
 msgstr "Chọn ai đảm nhận mỗi vị trí theo mặc định. Lựa chọn được lưu trong lịch phục vụ: họ được phân công cho mọi lần diễn ra tạo ngay bây giờ và những lần do việc bổ sung hằng ngày tạo sau này, khi họ vẫn đủ điều kiện, và được yêu cầu phản hồi trừ khi bạn đặt là đã chấp nhận. Để trống vị trí để phân công theo từng tuần."
 
@@ -19757,10 +19611,6 @@ msgstr "Các sự kiện Hội thánh thuộc một loại được thêm vào l
 #: 
 msgid "Church website"
 msgstr "Trang web Hội thánh"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM có hai cách quản lý tình nguyện viên. Chỉ nên dùng một cách tại một thời điểm; cài đặt bên trái quyết định Hội thánh này thấy cách nào. Việc chuyển đổi ẩn hoặc hiện các trang và mục menu — không bao giờ xóa dữ liệu, nên bạn có thể chuyển lại."
 
 #: 
 msgid "Close event details"
@@ -20087,10 +19937,6 @@ msgid "Email preview"
 msgstr "Xem trước email"
 
 #: 
-msgid "Email sending is disabled"
-msgstr "Việc gửi email đã bị tắt"
-
-#: 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
 msgstr "Việc gửi email chưa được bật. Hãy cấu hình SMTP và bật email trước khi gửi."
 
@@ -20139,10 +19985,6 @@ msgstr "Tiêu đề sự kiện"
 #: 
 msgid "Event type"
 msgstr "Loại sự kiện"
-
-#: 
-msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
-msgstr "Mọi email ChurchCRM đã gửi, mới nhất trước. Mở hồ sơ một người để xem toàn bộ lịch sử của họ."
 
 #: 
 msgid "Every position in this window has the people it needs."
@@ -21283,10 +21125,6 @@ msgstr "Đọc hướng dẫn tạo giao diện"
 #: 
 msgid "Recent Emails"
 msgstr "Email gần đây"
-
-#: 
-msgid "Recent Sends"
-msgstr "Lần gửi gần đây"
 
 #: 
 msgid "Recipient"
@@ -22815,10 +22653,6 @@ msgid "View my schedule"
 msgstr "Xem lịch phục vụ của tôi"
 
 #: 
-msgid "View only"
-msgstr "Chỉ xem"
-
-#: 
 msgid "View person"
 msgstr "Xem thông tin cá nhân"
 
@@ -22849,10 +22683,6 @@ msgstr "Phân công tình nguyện"
 #: 
 msgid "Volunteer declined"
 msgstr "Tình nguyện viên đã từ chối"
-
-#: 
-msgid "Volunteer experience"
-msgstr "Trải nghiệm tình nguyện"
 
 #: 
 msgid "Volunteer positions still need to be filled"
@@ -22991,10 +22821,6 @@ msgstr "Trải nghiệm Quản lý Tình nguyện viên nào đang hoạt độn
 #: 
 msgid "Which events"
 msgstr "Những sự kiện nào"
-
-#: 
-msgid "Which volunteer experience this church uses. The card on the right explains each choice."
-msgstr "Hội thánh này dùng trải nghiệm tình nguyện nào. Thẻ bên phải giải thích từng lựa chọn."
 
 #: 
 msgid "Who is covering"
@@ -23577,4 +23403,1234 @@ msgstr "Không thể xóa gia đình có cam kết dâng hiến hoặc khoản t
 #: 
 msgid "You cannot delete your own account."
 msgstr "Bạn không thể xóa tài khoản của chính mình."
+
+#: 
+msgid "A recurring event needs a last date, so it is back to {{date}}."
+msgstr "Sự kiện lặp lại cần ngày kết thúc, nên đã được đưa về {{date}}."
+
+#: 
+msgid "Add Everyone in Cart to {{ministry}}"
+msgstr "Thêm mọi người trong giỏ chọn vào {{ministry}}"
+
+#: 
+msgid "Add Volunteer to {{ministry}}"
+msgstr "Thêm tình nguyện viên vào {{ministry}}"
+
+#: 
+msgid "Add the class's meetings as a recurring event with {{name}} as its class, then generate again."
+msgstr "Thêm các buổi họp của lớp thành sự kiện lặp lại với lớp là {{name}}, rồi tạo lại."
+
+#: 
+msgid "Add them on the Calendar tab as a recurring event with {{name}} as its class."
+msgstr "Thêm chúng ở thẻ Lịch thành sự kiện lặp lại với lớp là {{name}}."
+
+#: 
+msgid "Covered · {{more}} more welcome"
+msgstr "Đã đủ · còn chào đón thêm {{more}}"
+
+#: 
+msgid "Creates {{total}} events, every year on {{date}} from {{first}} to {{last}}"
+msgstr "Tạo {{total}} sự kiện, mỗi năm vào {{date}} từ {{first}} đến {{last}}"
+
+#: 
+msgid "Creates {{total}} events, every {{day}} from {{first}} to {{last}}"
+msgstr "Tạo {{total}} sự kiện, mỗi {{day}} từ {{first}} đến {{last}}"
+
+#: 
+msgid "Creates {{total}} events, on day {{day}} of each month from {{first}} to {{last}}"
+msgstr "Tạo {{total}} sự kiện, vào ngày {{day}} mỗi tháng từ {{first}} đến {{last}}"
+
+#: 
+msgid "Default volunteer {{number}} for {{position}}"
+msgstr "Tình nguyện viên mặc định {{number}} cho {{position}}"
+
+#: 
+msgid "Default volunteers for {{position}}"
+msgstr "Tình nguyện viên mặc định cho {{position}}"
+
+#: 
+msgctxt "one"
+msgid "Delete ({{count}})"
+msgstr "Xóa ({{count}})"
+
+#: 
+msgctxt "other"
+msgid "Delete ({{count}})"
+msgstr "Xóa ({{count}})"
+
+#: 
+msgctxt "one"
+msgid "Delete events ({{count}})"
+msgstr "Xóa sự kiện ({{count}})"
+
+#: 
+msgctxt "other"
+msgid "Delete events ({{count}})"
+msgstr "Xóa sự kiện ({{count}})"
+
+#: 
+msgctxt "one"
+msgid "Delete {{count}} occurrences? Their assignments, the volunteers' responses, any substitutions and every queued reminder go with them. This cannot be undone."
+msgstr "Xóa {{count}} buổi? Phân công, phản hồi của tình nguyện viên, mọi sự thay thế và mọi lời nhắc trong hàng đợi sẽ bị xóa theo. Không thể hoàn tác."
+
+#: 
+msgctxt "other"
+msgid "Delete {{count}} occurrences? Their assignments, the volunteers' responses, any substitutions and every queued reminder go with them. This cannot be undone."
+msgstr "Xóa {{count}} buổi? Phân công, phản hồi của tình nguyện viên, mọi sự thay thế và mọi lời nhắc trong hàng đợi sẽ bị xóa theo. Không thể hoàn tác."
+
+#: 
+msgid "Filling {{position}}"
+msgstr "Đang bố trí {{position}}"
+
+#: 
+msgid "Full"
+msgstr "Đã đủ"
+
+#: 
+msgid "Full · {{live}} of {{max}}"
+msgstr "Đã đủ · {{live}} trên {{max}}"
+
+#: 
+msgid "Headcount: {{total}}"
+msgstr "Số người tham dự: {{total}}"
+
+#: 
+msgid "Maximum allowed for {{position}}"
+msgstr "Mức tối đa cho phép của {{position}}"
+
+#: 
+msgid "Meetings of {{name}}"
+msgstr "Các buổi họp của {{name}}"
+
+#: 
+msgid "Minimum needed for {{position}}"
+msgstr "Mức tối thiểu cần cho {{position}}"
+
+#: 
+msgid "Move them to {{className}}"
+msgstr "Chuyển họ sang {{className}}"
+
+#: 
+msgid "Needs {{more}} more"
+msgstr "Cần thêm {{more}}"
+
+#: 
+msgid "New position: {{name}}"
+msgstr "Vị trí mới: {{name}}"
+
+#: 
+msgid "New recurring event for {{name}}"
+msgstr "Sự kiện lặp lại mới cho {{name}}"
+
+#: 
+msgid "New recurring event titled {{title}}"
+msgstr "Sự kiện lặp lại mới có tiêu đề {{title}}"
+
+#: 
+msgid "No event was found between {{from}} and {{to}}."
+msgstr "Không tìm thấy sự kiện nào từ {{from}} đến {{to}}."
+
+#: 
+msgid "No events on the calendar use {{name}} as their class between {{from}} and {{to}}."
+msgstr "Không có sự kiện nào trên lịch dùng {{name}} làm lớp từ {{from}} đến {{to}}."
+
+#: 
+msgid "No upcoming events titled {{title}} are on the calendar."
+msgstr "Không có sự kiện sắp tới nào có tiêu đề {{title}} trên lịch."
+
+#: 
+msgid "No {{type}} events between {{from}} and {{to}}."
+msgstr "Không có sự kiện {{type}} nào từ {{from}} đến {{to}}."
+
+#: 
+msgid "No {{type}} events titled {{title}} between {{from}} and {{to}}."
+msgstr "Không có sự kiện {{type}} nào có tiêu đề {{title}} từ {{from}} đến {{to}}."
+
+#: 
+msgid "Nobody is qualified for {{position}} yet"
+msgstr "Chưa có ai đủ điều kiện cho {{position}}"
+
+#: 
+msgid "Not needed this time"
+msgstr "Lần này không cần"
+
+#: 
+msgid "Occurrences are created for events in the next week (through {{date}})."
+msgstr "Các buổi được tạo cho sự kiện trong tuần tới (đến {{date}})."
+
+#: 
+msgctxt "one"
+msgid "Occurrences are created for events in the next {{count}} weeks (through {{date}})."
+msgstr "Các buổi được tạo cho sự kiện trong {{count}} tuần tới (đến {{date}})."
+
+#: 
+msgctxt "other"
+msgid "Occurrences are created for events in the next {{count}} weeks (through {{date}})."
+msgstr "Các buổi được tạo cho sự kiện trong {{count}} tuần tới (đến {{date}})."
+
+#: 
+msgid "Occurrences are created for events through {{date}}, when this schedule ends."
+msgstr "Các buổi được tạo cho sự kiện đến {{date}}, khi lịch này kết thúc."
+
+#: 
+msgid "One event: {{title}}"
+msgstr "Một sự kiện: {{title}}"
+
+#: 
+msgid "Optional · up to {{max}} welcome"
+msgstr "Không bắt buộc · chào đón tối đa {{max}}"
+
+#: 
+msgid "Optional · {{live}} of up to {{max}}"
+msgstr "Không bắt buộc · {{live}} trên tối đa {{max}}"
+
+#: 
+msgid "Plugin upgraded from %1$s to %2$s."
+msgstr "Phần bổ trợ đã được nâng cấp từ %1$s lên %2$s."
+
+#: 
+msgid "Select {{event}}"
+msgstr "Chọn {{event}}"
+
+#: 
+msgid "Select {{when}}"
+msgstr "Chọn {{when}}"
+
+#: 
+msgid "Substitute asked: {{name}}"
+msgstr "Người thay thế được nhờ: {{name}}"
+
+#: 
+msgid "Sunday School: {{name}}"
+msgstr "Trường Chúa Nhật: {{name}}"
+
+#: 
+msgid "Teachers to import: {{total}}"
+msgstr "Giáo viên sẽ nhập: {{total}}"
+
+#: 
+msgid "That is more than {{max}} events. Choose a shorter range."
+msgstr "Nhiều hơn {{max}} sự kiện. Hãy chọn khoảng ngắn hơn."
+
+#: 
+msgctxt "one"
+msgid "They finish {{count}} minutes after the event ends."
+msgstr "Họ kết thúc {{count}} phút sau khi sự kiện kết thúc."
+
+#: 
+msgctxt "other"
+msgid "They finish {{count}} minutes after the event ends."
+msgstr "Họ kết thúc {{count}} phút sau khi sự kiện kết thúc."
+
+#: 
+msgctxt "one"
+msgid "They finish {{count}} minutes before the event ends."
+msgstr "Họ kết thúc {{count}} phút trước khi sự kiện kết thúc."
+
+#: 
+msgctxt "other"
+msgid "They finish {{count}} minutes before the event ends."
+msgstr "Họ kết thúc {{count}} phút trước khi sự kiện kết thúc."
+
+#: 
+msgid "This ministry's events titled {{title}}"
+msgstr "Sự kiện của mục vụ này có tiêu đề {{title}}"
+
+#: 
+msgid "Up to {{max}} welcome"
+msgstr "Chào đón tối đa {{max}}"
+
+#: 
+msgid "Volunteer times must be whole minutes, at most {{max}} from the event"
+msgstr "Thời gian tình nguyện phải là số phút nguyên, cách sự kiện không quá {{max}}"
+
+#: 
+msgctxt "one"
+msgid "Volunteers start {{count}} minutes after the event starts."
+msgstr "Tình nguyện viên bắt đầu {{count}} phút sau khi sự kiện bắt đầu."
+
+#: 
+msgctxt "other"
+msgid "Volunteers start {{count}} minutes after the event starts."
+msgstr "Tình nguyện viên bắt đầu {{count}} phút sau khi sự kiện bắt đầu."
+
+#: 
+msgctxt "one"
+msgid "Volunteers start {{count}} minutes before the event starts."
+msgstr "Tình nguyện viên bắt đầu {{count}} phút trước khi sự kiện bắt đầu."
+
+#: 
+msgctxt "other"
+msgid "Volunteers start {{count}} minutes before the event starts."
+msgstr "Tình nguyện viên bắt đầu {{count}} phút trước khi sự kiện bắt đầu."
+
+#: 
+msgid "You are already helping that day as {{what}}."
+msgstr "Ngày đó bạn đã phục vụ với vai trò {{what}}."
+
+#: 
+msgid "already serving as {{position}}"
+msgstr "đã phục vụ với vai trò {{position}}"
+
+#: 
+msgid "last served {{date}}"
+msgstr "lần phục vụ gần nhất {{date}}"
+
+#: 
+msgctxt "one"
+msgid "{{count}} needed"
+msgstr "Cần {{count}}"
+
+#: 
+msgctxt "other"
+msgid "{{count}} needed"
+msgstr "Cần {{count}}"
+
+#: 
+msgctxt "one"
+msgid "{{count}} occurrences deleted"
+msgstr "Đã xóa {{count}} buổi"
+
+#: 
+msgctxt "other"
+msgid "{{count}} occurrences deleted"
+msgstr "Đã xóa {{count}} buổi"
+
+#: 
+msgctxt "one"
+msgid "{{failed}} of {{count}} occurrences could not be deleted"
+msgstr "Không xóa được {{failed}} trong {{count}} buổi"
+
+#: 
+msgctxt "other"
+msgid "{{failed}} of {{count}} occurrences could not be deleted"
+msgstr "Không xóa được {{failed}} trong {{count}} buổi"
+
+#: 
+msgid "{{live}} assigned, {{min}} needed, room for {{more}} more"
+msgstr "Đã phân công {{live}}, cần {{min}}, còn chỗ cho thêm {{more}}"
+
+#: 
+msgid "{{live}} of up to {{max}}"
+msgstr "{{live}} trên tối đa {{max}}"
+
+#: 
+msgid "{{live}} of {{max}}"
+msgstr "{{live}} trên {{max}}"
+
+#: 
+msgid "{{live}} of {{min}}"
+msgstr "{{live}} trên {{min}}"
+
+#: 
+msgid "{{live}} of {{min}}–{{max}}"
+msgstr "{{live}} trên {{min}}–{{max}}"
+
+#: 
+msgid "{{ministry}} has no events between {{from}} and {{to}}."
+msgstr "{{ministry}} không có sự kiện nào từ {{from}} đến {{to}}."
+
+#: 
+msgid "{{ministry}} has no events titled {{title}} between {{from}} and {{to}}."
+msgstr "{{ministry}} không có sự kiện nào có tiêu đề {{title}} từ {{from}} đến {{to}}."
+
+#: 
+msgid "{{min}} to {{max}} needed"
+msgstr "Cần từ {{min}} đến {{max}}"
+
+#: 
+msgid "{{name}} (no longer qualified)"
+msgstr "{{name}} (không còn đủ điều kiện)"
+
+#: 
+msgid "{{name}} (no upcoming meetings — add its meetings first)"
+msgstr "{{name}} (không có buổi họp sắp tới — hãy thêm buổi họp trước)"
+
+#: 
+msgid "{{name}} (no upcoming meetings)"
+msgstr "{{name}} (không có buổi họp sắp tới)"
+
+#: 
+msgctxt "one"
+msgid "{{name}} ({{count}} upcoming)"
+msgstr "{{name}} ({{count}} sắp tới)"
+
+#: 
+msgctxt "other"
+msgid "{{name}} ({{count}} upcoming)"
+msgstr "{{name}} ({{count}} sắp tới)"
+
+#: 
+msgid "{{name}} does not name the event it follows, so it has nothing to staff."
+msgstr "{{name}} không nêu sự kiện mà nó theo sau, nên không có chỗ để bố trí người."
+
+#: 
+msgid "{{name}} ended on {{date}}, so there are no dates left to generate."
+msgstr "{{name}} đã kết thúc vào {{date}}, nên không còn ngày nào để tạo."
+
+#: 
+msgid "{{name}} has no upcoming meetings on the calendar, so this schedule has nothing to staff."
+msgstr "{{name}} không có buổi họp sắp tới trên lịch, nên lịch này không có chỗ để bố trí người."
+
+#: 
+msgid "{{name}} is no longer qualified, so this place is left open on new occurrences."
+msgstr "{{name}} không còn đủ điều kiện, nên chỗ này để trống ở các buổi mới."
+
+#: 
+msgid "{{name}} starts on {{date}}, after the dates generated now (through {{through}})."
+msgstr "{{name}} bắt đầu vào {{date}}, sau các ngày đang được tạo (đến {{through}})."
+
+#: 
+msgid "{{pending}} not yet confirmed"
+msgstr "{{pending}} chưa được xác nhận"
+
+#: 
+msgid "{{position}}: Max is {{max}} but {{chosen}} default volunteers are chosen. Remove one or raise Max."
+msgstr "{{position}}: Mức tối đa là {{max}} nhưng đã chọn {{chosen}} tình nguyện viên mặc định. Bỏ bớt một người hoặc tăng mức tối đa."
+
+#: 
+msgid "{{team}}: no staffing needs set"
+msgstr "{{team}}: chưa đặt nhu cầu bố trí người"
+
+#: 
+msgid "{{team}}: {{staffing}}"
+msgstr "{{team}}: {{staffing}}"
+
+#: 
+msgctxt "one"
+msgid "{{title}} ({{count}} upcoming)"
+msgstr "{{title}} ({{count}} sắp tới)"
+
+#: 
+msgctxt "other"
+msgid "{{title}} ({{count}} upcoming)"
+msgstr "{{title}} ({{count}} sắp tới)"
+
+#: 
+msgid "{{type}} events (no event chosen yet)"
+msgstr "Sự kiện {{type}} (chưa chọn sự kiện)"
+
+#: 
+msgid "{{type}} events titled {{title}}"
+msgstr "Sự kiện {{type}} có tiêu đề {{title}}"
+
+#: 
+msgid "User must be a staff user"
+msgstr "Người dùng phải là nhân sự"
+
+#: 
+msgid "Enter a new password"
+msgstr "Nhập mật khẩu mới"
+
+#: 
+msgid "%d queued"
+msgstr "%d trong hàng đợi"
+
+#: 
+msgid "%s queued: %s"
+msgstr "%s trong hàng đợi: %s"
+
+#: 
+msgid "Could not delete the queue."
+msgstr "Không xóa được hàng đợi."
+
+#: 
+msgid "Delete Queue"
+msgstr "Xóa hàng đợi"
+
+#: 
+msgid "Delete every queued message? They will not be sent. Queued messages: {{total}}"
+msgstr "Xóa mọi thư trong hàng đợi? Chúng sẽ không được gửi. Thư trong hàng đợi: {{total}}"
+
+#: 
+msgid "Each message is recorded in the person's email history."
+msgstr "Mỗi thư được ghi vào lịch sử email của người đó."
+
+#: 
+msgid "Email batch not found. If it was still queued, an administrator deleted the queue and it will not be sent."
+msgstr "Không tìm thấy lô email. Nếu vẫn còn trong hàng đợi, quản trị viên đã xóa hàng đợi và lô này sẽ không được gửi."
+
+#: 
+msgid "Failed to delete the email queue"
+msgstr "Không xóa được hàng đợi email"
+
+#: 
+msgid "Failed to queue the email"
+msgstr "Không đưa email vào hàng đợi được"
+
+#: 
+msgid "Follow it in the email history"
+msgstr "Theo dõi trong lịch sử email"
+
+#: 
+msgid "Messages queued: {{total}}. They will be sent in the background."
+msgstr "Thư trong hàng đợi: {{total}}. Chúng sẽ được gửi ở nền."
+
+#: 
+msgid "Queued"
+msgstr "Trong hàng đợi"
+
+#: 
+msgid "Queued messages deleted: {{total}}"
+msgstr "Đã xóa thư trong hàng đợi: {{total}}"
+
+#: 
+msgid "Sending"
+msgstr "Đang gửi"
+
+#: 
+msgid "Sending was interrupted before the server answered."
+msgstr "Việc gửi bị gián đoạn trước khi máy chủ trả lời."
+
+#: 
+msgid "Sending… {{done}} of {{total}}"
+msgstr "Đang gửi… {{done}} trên {{total}}"
+
+#: 
+msgid "Still queued, to be sent automatically: {{total}}"
+msgstr "Vẫn trong hàng đợi, sẽ được gửi tự động: {{total}}"
+
+#: 
+msgid "The queue was cleared. Messages that will not be sent: {{total}}"
+msgstr "Hàng đợi đã được xóa. Thư sẽ không được gửi: {{total}}"
+
+#: 
+msgid "This email batch was queued by another user"
+msgstr "Lô email này được người dùng khác đưa vào hàng đợi"
+
+#: 
+msgid "After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved."
+msgstr "Sau khi nhập, bạn có thể dùng Đặt lại cơ sở dữ liệu trên Bảng điều khiển quản trị để xóa mọi dữ liệu và bắt đầu lại. Cấu hình ứng dụng của bạn được giữ nguyên."
+
+#: 
+msgid "Importing demo data..."
+msgstr "Đang nhập dữ liệu mẫu..."
+
+#: 
+msgid "Please do not refresh or navigate away"
+msgstr "Vui lòng không tải lại hoặc rời khỏi trang"
+
+#: 
+msgid "Skip to main content"
+msgstr "Chuyển tới nội dung chính"
+
+#: 
+msgid "Choose None, TLS or SSL for encryption."
+msgstr "Chọn Không có, TLS hoặc SSL cho mã hóa."
+
+#: 
+msgid "Choose an existing person property for Do Not Email."
+msgstr "Chọn một thuộc tính người có sẵn cho Không gửi email."
+
+#: 
+msgid "Copy Church Email must be a valid email address."
+msgstr "Email nhà thờ để sao chép phải là địa chỉ email hợp lệ."
+
+#: 
+msgid "Email Log"
+msgstr "Nhật ký email"
+
+#: 
+msgid "Email is disabled. Enable it in Email Settings before testing."
+msgstr "Email đang tắt. Hãy bật trong Cài đặt email trước khi thử."
+
+#: 
+msgid "Email settings saved successfully"
+msgstr "Đã lưu cài đặt email"
+
+#: 
+msgid "Enable email below, then configure your SMTP server."
+msgstr "Bật email bên dưới, rồi cấu hình máy chủ SMTP."
+
+#: 
+msgid "Every email ChurchCRM sent, newest first"
+msgstr "Mọi email ChurchCRM đã gửi, mới nhất trước"
+
+#: 
+msgid "Find duplicate addresses and people with no email"
+msgstr "Tìm địa chỉ trùng và người không có email"
+
+#: 
+msgid "General"
+msgstr "Chung"
+
+#: 
+msgid "SMTP Server"
+msgstr "Máy chủ SMTP"
+
+#: 
+msgid "SMTP and delivery settings"
+msgstr "Cài đặt SMTP và gửi thư"
+
+#: 
+msgid "SMTP timeout must be a whole number of seconds between 1 and 600."
+msgstr "Thời gian chờ SMTP phải là số giây nguyên từ 1 đến 600."
+
+#: 
+msgid "SMTP username is required when authentication is on."
+msgstr "Bắt buộc có tên người dùng SMTP khi bật xác thực."
+
+#: 
+msgid "Save Email Settings"
+msgstr "Lưu cài đặt email"
+
+#: 
+msgid "Turning this off clears the saved username and password."
+msgstr "Tắt mục này sẽ xóa tên người dùng và mật khẩu đã lưu."
+
+#: 
+msgid "%1$s added %2$s to the %3$s volunteer pool."
+msgstr "%1$s đã thêm %2$s vào nhóm tình nguyện viên của %3$s."
+
+#: 
+msgid "%1$s added %2$s to the %3$s volunteers"
+msgstr "%1$s đã thêm %2$s vào tình nguyện viên của %3$s"
+
+#: 
+msgid "%1$s — still needed: %2$d"
+msgstr "%1$s — vẫn cần: %2$d"
+
+#: 
+msgid "%1$s, who leads %2$s, added %3$s to the %4$s volunteer pool."
+msgstr "%1$s, người dẫn dắt %2$s, đã thêm %3$s vào nhóm tình nguyện viên của %4$s."
+
+#: 
+msgid "%s recorded that you will serve. You are on the schedule."
+msgstr "%s đã ghi nhận bạn sẽ phục vụ. Bạn có trong lịch."
+
+#: 
+msgid "Added and qualified"
+msgstr "Đã thêm và đủ điều kiện"
+
+#: 
+msgid "Choose how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
+msgstr "Chọn lịch được bố trí trước bao lâu và lúc nào gửi lời nhắc, rồi kiểm tra các tác vụ nền đang chạy."
+
+#: 
+msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
+msgstr "Chọn người đã có trong danh bạ hội thánh. Họ gia nhập tình nguyện viên của mục vụ này và điều phối viên được gửi email. Chỉ điều phối viên mới rút được người ra."
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
+msgstr "ChurchCRM có hai cách quản lý tình nguyện viên. Mỗi lúc chỉ dùng một cách; thiết lập trải nghiệm Tình nguyện viên quyết định hội thánh này thấy cách nào. Việc chuyển ẩn hoặc hiện trang và mục menu — không bao giờ xóa dữ liệu, nên bạn có thể chuyển lại."
+
+#: 
+msgid "Daily unfilled-position email time"
+msgstr "Giờ email hằng ngày về vị trí chưa bố trí"
+
+#: 
+msgid "Donation funds, pledges and giving records"
+msgstr "Các quỹ dâng hiến, lời hứa và hồ sơ dâng hiến"
+
+#: 
+msgid "Events and calendars, including the Member Portal calendars"
+msgstr "Sự kiện và lịch, gồm lịch Cổng Hội thánh"
+
+#: 
+msgid "Families, people and groups"
+msgstr "Gia đình, thành viên và nhóm"
+
+#: 
+msgid "How many hours before a volunteer occurrence its coordinators are told about positions still unfilled. Set to 0 to send no such alerts; reminders are not affected."
+msgstr "Bao nhiêu giờ trước một buổi tình nguyện thì điều phối viên được báo về các vị trí còn trống. Đặt 0 để không gửi cảnh báo đó; lời nhắc không bị ảnh hưởng."
+
+#: 
+msgid "How many hours before an occurrence its coordinators are told about positions still unfilled. Set to 0 to send no such alerts; reminders are not affected."
+msgstr "Bao nhiêu giờ trước một buổi thì điều phối viên được báo về các vị trí còn trống. Đặt 0 để không gửi cảnh báo đó; lời nhắc không bị ảnh hưởng."
+
+#: 
+msgid "Internal: last date the daily email listing unfilled volunteer positions was sent (YYYY-MM-DD). Do not edit manually."
+msgstr "Nội bộ: ngày cuối cùng đã gửi email hằng ngày liệt kê các vị trí tình nguyện còn trống (YYYY-MM-DD). Không sửa thủ công."
+
+#: 
+msgid "Load sample families, people, groups, events, volunteer ministries and giving records. The safest way to learn ChurchCRM before committing your real data."
+msgstr "Nạp gia đình, thành viên, nhóm, sự kiện, mục vụ tình nguyện và hồ sơ dâng hiến mẫu. Cách an toàn nhất để học ChurchCRM trước khi nhập dữ liệu thật."
+
+#: 
+msgid "Not authorized to grant this scope"
+msgstr "Không có quyền cấp phạm vi này"
+
+#: 
+msgid "Once a day at this time (church time zone), coordinators get one email listing the unfilled positions that start within the alert lead time plus 24 hours. A gap that opens later in the day is sent on its own."
+msgstr "Mỗi ngày một lần vào giờ này (múi giờ hội thánh), điều phối viên nhận một email liệt kê các vị trí còn trống bắt đầu trong thời gian báo trước cộng 24 giờ. Chỗ trống mở ra muộn hơn trong ngày được gửi riêng."
+
+#: 
+msgid "Only a coordinator can take someone out of the pool."
+msgstr "Chỉ điều phối viên mới rút được người khỏi nhóm."
+
+#: 
+msgid "Only positions of this team can be ticked"
+msgstr "Chỉ có thể đánh dấu các vị trí của đội này"
+
+#: 
+msgid "Open each occurrence to assign the people you need."
+msgstr "Mở từng buổi để phân công những người bạn cần."
+
+#: 
+msgid "Optional. You can tick positions on the grid later too."
+msgstr "Không bắt buộc. Bạn cũng có thể đánh dấu vị trí trên lưới sau."
+
+#: 
+msgid "Qualify them for"
+msgstr "Cho đủ điều kiện cho"
+
+#: 
+msgid "Queue"
+msgstr "Hàng đợi"
+
+#: 
+msgid "Record they accepted"
+msgstr "Ghi nhận họ đã nhận"
+
+#: 
+msgid "Sunday School classes"
+msgstr "Lớp học Trường Chúa Nhật"
+
+#: 
+msgid "The time of day (HH:MM, in the church's time zone) the daily email listing unfilled volunteer positions is sent to coordinators."
+msgstr "Giờ trong ngày (HH:MM, theo múi giờ hội thánh) email hằng ngày liệt kê các vị trí tình nguyện còn trống được gửi cho điều phối viên."
+
+#: 
+msgid "They already said yes. They get a short confirmation instead of a request to respond."
+msgstr "Họ đã đồng ý. Họ nhận xác nhận ngắn thay vì lời mời phản hồi."
+
+#: 
+msgid "They were already a volunteer here, and are now qualified"
+msgstr "Họ đã là tình nguyện viên ở đây và nay đã đủ điều kiện"
+
+#: 
+msgid "This will add sample data to your database"
+msgstr "Thao tác này sẽ thêm dữ liệu mẫu vào cơ sở dữ liệu"
+
+#: 
+msgid "Unfilled-position alert lead time (hours)"
+msgstr "Thời gian báo trước vị trí còn trống (giờ)"
+
+#: 
+msgid "Volunteer Management"
+msgstr "Quản lý tình nguyện viên"
+
+#: 
+msgid "Volunteer ministries, teams, schedules and assignments"
+msgstr "Mục vụ tình nguyện, đội, lịch và phân công"
+
+#: 
+msgid "Volunteer positions to fill in the coming days"
+msgstr "Các vị trí tình nguyện cần bố trí trong những ngày tới"
+
+#: 
+msgid "Volunteers still needed for these upcoming occurrences: %d"
+msgstr "Vẫn cần tình nguyện viên cho các buổi sắp tới này: %d"
+
+#: 
+msgid "What do these mean?"
+msgstr "Những mục này nghĩa là gì?"
+
+#: 
+msgid "Which volunteer experience this church uses"
+msgstr "Hội thánh này dùng trải nghiệm tình nguyện viên nào"
+
+#: 
+msgid "You are on the schedule"
+msgstr "Bạn có trong lịch"
+
+#: 
+msgid "Your coordinator"
+msgstr "Điều phối viên của bạn"
+
+#: 
+msgid "Your teams: %s"
+msgstr "Các đội của bạn: %s"
+
+#: 
+msgid "positionIds must be a list of position ids"
+msgstr "positionIds phải là danh sách mã vị trí"
+
+#: 
+msgid "{{name}} ({{family}} family)"
+msgstr "{{name}} (gia đình {{family}})"
+
+#: 
+msgid "{{name}} assigned and recorded as accepted"
+msgstr "{{name}} đã được phân công và ghi nhận là đã nhận"
+
+#: 
+msgid "Ask an administrator to change your sign-in email."
+msgstr "Nhờ quản trị viên đổi email đăng nhập của bạn."
+
+#: 
+msgid "Email changed by an administrator from %1$s to %2$s"
+msgstr "Quản trị viên đã đổi email từ %1$s thành %2$s"
+
+#: 
+msgid "Only an administrator can change the email of a person with a user account."
+msgstr "Chỉ quản trị viên mới đổi được email của người có tài khoản người dùng."
+
+#: 
+msgid "Fund totals appear here once payments are added."
+msgstr "Tổng số theo quỹ sẽ hiển thị ở đây sau khi thêm khoản thanh toán."
+
+#: 
+msgid "No payments yet"
+msgstr "Chưa có khoản thanh toán nào"
+
+#: 
+msgid "Some payments could not be deleted"
+msgstr "Không thể xóa một số khoản thanh toán"
+
+#: 
+msgid "A string value is required"
+msgstr "Cần có giá trị chuỗi"
+
+#: 
+msgid "Administrator permission required for this setting"
+msgstr "Cài đặt này cần quyền quản trị viên"
+
+#: 
+msgid "Alerts sent: {{sent}}, failed: {{failed}}"
+msgstr "Đã gửi cảnh báo: {{sent}}, thất bại: {{failed}}"
+
+#: 
+msgid "Alerts sent: {{total}}"
+msgstr "Đã gửi cảnh báo: {{total}}"
+
+#: 
+msgid "Assign an event to the kiosk using the dropdown"
+msgstr "Gán một sự kiện cho kiosk bằng danh sách thả xuống"
+
+#: 
+msgid "Awaiting Acceptance"
+msgstr "Đang chờ chấp nhận"
+
+#: 
+msgid "Birthday coming up!"
+msgstr "Sắp đến sinh nhật!"
+
+#: 
+msgid "Check that the event start/end times are correct"
+msgstr "Kiểm tra thời gian bắt đầu và kết thúc của sự kiện có đúng không"
+
+#: 
+msgid "Check the server logs for more details"
+msgstr "Xem nhật ký máy chủ để biết thêm chi tiết"
+
+#: 
+msgid "Check-in Opens Soon"
+msgstr "Sắp mở điểm danh"
+
+#: 
+msgid "Checked-in-by person is not an adult family member"
+msgstr "Người điểm danh vào không phải là thành viên gia đình trưởng thành"
+
+#: 
+msgid "Checked-out-by person is not an adult family member"
+msgstr "Người điểm danh ra không phải là thành viên gia đình trưởng thành"
+
+#: 
+msgid "Checkout all students"
+msgstr "Điểm danh ra cho tất cả học sinh"
+
+#: 
+msgid "Days"
+msgstr "Ngày"
+
+#: 
+msgid "Ensure the group has members"
+msgstr "Hãy chắc chắn nhóm có thành viên"
+
+#: 
+msgid "Ensure the group has members assigned"
+msgstr "Hãy chắc chắn nhóm đã được gán thành viên"
+
+#: 
+msgid "Error Loading Members"
+msgstr "Lỗi khi tải thành viên"
+
+#: 
+msgid "Event Has Ended"
+msgstr "Sự kiện đã kết thúc"
+
+#: 
+msgid "Event not linked to a Group"
+msgstr "Sự kiện chưa được liên kết với nhóm"
+
+#: 
+msgid "Event timing"
+msgstr "Thời gian sự kiện"
+
+#: 
+msgid "Everyone is here!"
+msgstr "Mọi người đã có mặt!"
+
+#: 
+msgid "Failed to send all alerts: {{total}}"
+msgstr "Không thể gửi tất cả cảnh báo: {{total}}"
+
+#: 
+msgid "Failed to send parent alert"
+msgstr "Không thể gửi cảnh báo cho phụ huynh"
+
+#: 
+msgid "Find this kiosk in the device list"
+msgstr "Tìm kiosk này trong danh sách thiết bị"
+
+#: 
+msgid "Group has no members"
+msgstr "Nhóm không có thành viên"
+
+#: 
+msgid "HTTP Status: {{status}}"
+msgstr "Trạng thái HTTP: {{status}}"
+
+#: 
+msgid "Hours"
+msgstr "Giờ"
+
+#: 
+msgid "How to Accept This Kiosk"
+msgstr "Cách chấp nhận kiosk này"
+
+#: 
+msgid "Kiosk Identification"
+msgstr "Nhận dạng kiosk"
+
+#: 
+msgid "Kiosk Ready"
+msgstr "Kiosk đã sẵn sàng"
+
+#: 
+msgid "Log in to ChurchCRM as an administrator"
+msgstr "Đăng nhập vào ChurchCRM với tư cách quản trị viên"
+
+#: 
+msgid "Member is not an adult family member of the roster child"
+msgstr "Thành viên này không phải là thành viên gia đình trưởng thành của em trong danh sách"
+
+#: 
+msgid "Next Steps"
+msgstr "Các bước tiếp theo"
+
+#: 
+msgid "No Group Members Found"
+msgstr "Không tìm thấy thành viên nhóm"
+
+#: 
+msgid "No checked-in students with families to alert"
+msgstr "Không có học sinh đã điểm danh nào có gia đình để cảnh báo"
+
+#: 
+msgid "Parent Alert"
+msgstr "Cảnh báo phụ huynh"
+
+#: 
+msgid "Parent alert sent for {{name}}"
+msgstr "Đã gửi cảnh báo phụ huynh cho {{name}}"
+
+#: 
+msgid "Photo not found"
+msgstr "Không tìm thấy ảnh"
+
+#: 
+msgid "Possible Causes"
+msgstr "Nguyên nhân có thể"
+
+#: 
+msgid "Processing..."
+msgstr "Đang xử lý..."
+
+#: 
+msgid "Recent birthday!"
+msgstr "Mới sinh nhật!"
+
+#: 
+msgid "Refresh member list"
+msgstr "Làm mới danh sách thành viên"
+
+#: 
+msgid "Refresh this kiosk page"
+msgstr "Làm mới trang kiosk này"
+
+#: 
+msgid "Seconds"
+msgstr "Giây"
+
+#: 
+msgid "Send alert to all families"
+msgstr "Gửi cảnh báo cho tất cả gia đình"
+
+#: 
+msgid "Server error - the event may not be linked to a group"
+msgstr "Lỗi máy chủ - sự kiện có thể chưa được liên kết với nhóm"
+
+#: 
+msgid "Student"
+msgstr "Học sinh"
+
+#: 
+msgid "System timeline entries cannot be deleted"
+msgstr "Không thể xóa các mục hệ thống trên dòng thời gian"
+
+#: 
+msgid "System timeline entries cannot be edited"
+msgstr "Không thể chỉnh sửa các mục hệ thống trên dòng thời gian"
+
+#: 
+msgid "Thank you for attending!"
+msgstr "Cảm ơn bạn đã tham dự!"
+
+#: 
+msgid "This kiosk has registered but needs to be accepted by an administrator before it can be used."
+msgstr "Kiosk này đã đăng ký nhưng cần được quản trị viên chấp nhận trước khi sử dụng."
+
+#: 
+msgid "This kiosk is accepted but has no active event assignment."
+msgstr "Kiosk này đã được chấp nhận nhưng chưa có sự kiện nào đang hoạt động được gán."
+
+#: 
+msgid "This kiosk is assigned to an event, but no members are available for check-in."
+msgstr "Kiosk này đã được gán sự kiện nhưng không có thành viên nào để điểm danh."
+
+#: 
+msgid "This page will automatically refresh when check-in opens."
+msgstr "Trang này sẽ tự động làm mới khi mở điểm danh."
+
+#: 
+msgid "This page will automatically update once the kiosk is accepted."
+msgstr "Trang này sẽ tự động cập nhật khi kiosk được chấp nhận."
+
+#: 
+msgid "Today!"
+msgstr "Hôm nay"
+
+#: 
+msgid "Turning {{age}}"
+msgstr "Sắp tròn {{age}} tuổi"
+
+#: 
+msgid "Unable to load group members"
+msgstr "Không thể tải thành viên nhóm"
+
+#: 
+msgid "Unknown user configuration key"
+msgstr "Khóa cấu hình người dùng không xác định"
+
+#: 
+msgid "this person"
+msgstr "người này"
+
+#: 
+msgid "{{name}} has no family on record"
+msgstr "{{name}} chưa có gia đình trong hồ sơ"
+
+#: 
+msgid "%d failed (all time)"
+msgstr "%d thất bại (tổng cộng)"
+
+#: 
+msgid "Failed sends across all email history, including automated messages"
+msgstr "Các lần gửi thất bại trong toàn bộ lịch sử email, bao gồm cả tin nhắn tự động"
+
+#: 
+msgid "View %d failed sends across all email history"
+msgstr "Xem %d lần gửi thất bại trong toàn bộ lịch sử email"
+
+#: 
+msgid "Add New Grade"
+msgstr "Thêm lớp mới"
+
+#: 
+msgid "Change Grade Names"
+msgstr "Đổi tên lớp"
+
+#: 
+msgid "England and Wales"
+msgstr "Anh và xứ Wales"
+
+#: 
+msgid "Every year each person moves to the next grade in this order, and the last grade is cleared."
+msgstr "Mỗi năm mỗi người chuyển lên lớp tiếp theo theo thứ tự này, và lớp cuối cùng được xóa."
+
+#: 
+msgid "Everyone with a grade will move up one grade now, and this will count as this year's promotion."
+msgstr "Mọi người có lớp sẽ lên một lớp ngay bây giờ, và việc này được tính là đợt lên lớp của năm nay."
+
+#: 
+msgid "Finished %s, so the yearly promotion cleared the grade"
+msgstr "Đã hoàn thành %s, nên đợt lên lớp hằng năm đã xóa lớp"
+
+#: 
+msgid "Finished the last grade: %d"
+msgstr "Đã hoàn thành lớp cuối: %d"
+
+#: 
+msgid "Finishing the last grade (grade will be cleared): {{total}}"
+msgstr "Đang hoàn thành lớp cuối (lớp sẽ bị xóa): {{total}}"
+
+#: 
+msgid "From Grade"
+msgstr "Từ lớp"
+
+#: 
+msgid "Grade"
+msgstr "Lớp"
+
+#: 
+msgid "Grade %s cleared when the grade names changed to %s"
+msgstr "Lớp %s đã bị xóa khi tên lớp đổi thành %s"
+
+#: 
+msgid "Grade Names"
+msgstr "Tên lớp"
+
+#: 
+msgid "Grade Promotion"
+msgstr "Đợt lên lớp"
+
+#: 
+msgid "Grade changed from %s to %s by the yearly promotion"
+msgstr "Lớp đổi từ %s sang %s do đợt lên lớp hằng năm"
+
+#: 
+msgid "Grade names not found"
+msgstr "Không tìm thấy tên lớp"
+
+#: 
+msgid "Grades"
+msgstr "Các lớp"
+
+#: 
+msgid "Grades Editor"
+msgstr "Trình sửa lớp"
+
+#: 
+msgid "Grades added"
+msgstr "Đã thêm lớp"
+
+#: 
+msgid "Grades removed"
+msgstr "Đã xóa lớp"
+
+#: 
+msgid "Grades renamed: {{total}}"
+msgstr "Đã đổi tên lớp: {{total}}"
+
+#: 
+msgid "Grades were already promoted this year, on {{date}}. Promoting again moves everyone up another grade."
+msgstr "Các lớp đã được lên lớp trong năm nay, vào {{date}}. Lên lớp lần nữa sẽ chuyển mọi người thêm một lớp."
+
+#: 
+msgid "Grades were promoted by someone else in the meantime. Reload the page to see the new grades."
+msgstr "Trong lúc đó có người khác đã thực hiện lên lớp. Tải lại trang để xem các lớp mới."
+
+#: 
+msgid "Grades you added that match a name in the list and are combined with it"
+msgstr "Các lớp bạn thêm trùng tên trong danh sách và được gộp với tên đó"
+
+#: 
+msgid "Internal: date and time of the last grade promotion. Do not edit manually."
+msgstr "Nội bộ: ngày và giờ của lần lên lớp gần nhất. Không sửa thủ công."
+
+#: 
+msgid "Internal: how the last grade promotion ran and how many people it moved. Do not edit manually."
+msgstr "Nội bộ: lần lên lớp gần nhất chạy thế nào và đã chuyển bao nhiêu người. Không sửa thủ công."
+
+#: 
+msgid "Internal: the country whose grade names were last applied to the grade list. Do not edit manually."
+msgstr "Nội bộ: quốc gia có tên lớp được áp dụng lần cuối cho danh sách lớp. Không sửa thủ công."
+
+#: 
+msgid "Internal: the day the grade promotion date was last changed (YYYY-MM-DD). Do not edit manually."
+msgstr "Nội bộ: ngày lần cuối đổi ngày lên lớp (YYYY-MM-DD). Không sửa thủ công."
+
+#: 
+msgid "Internal: the list that holds the grade names. Do not edit manually."
+msgstr "Nội bộ: danh sách chứa tên lớp. Không sửa thủ công."
+
+#: 
+msgid "Last promotion"
+msgstr "Lần lên lớp gần nhất"
+
+#: 
+msgid "Leave empty for one grade"
+msgstr "Để trống nếu chỉ một lớp"
+
+#: 
+msgid "Moved up: %d"
+msgstr "Đã lên: %d"
+
+#: 
+msgid "Moving up: {{total}}"
+msgstr "Đang lên: {{total}}"
+
+#: 
+msgid "Next automatic promotion"
+msgstr "Lần lên lớp tự động tiếp theo"
+
+#: 
+msgid "Nobody has a grade to promote."
+msgstr "Không ai có lớp để lên."
+
+#: 
+msgid "Northern Ireland"
+msgstr "Bắc Ireland"
+
+#: 
+msgid "People by Grade"
+msgstr "Người theo lớp"
+
+#: 
+msgid "People in a range of school grades, such as Kindergarten through 5th"
+msgstr "Người trong một khoảng lớp học, chẳng hạn từ mẫu giáo đến lớp 5"
+
+#: 
+msgid "People whose grade is cleared: {{total}}"
+msgstr "Người có lớp bị xóa: {{total}}"
+
+#: 
+msgid "Promote Grades"
+msgstr "Thực hiện lên lớp"
+
+#: 
+msgid "Promote Now"
+msgstr "Lên lớp ngay"
+
+#: 
+msgid "Promotion Day"
+msgstr "Ngày lên lớp"
+
+#: 
+msgid "Promotion Month"
+msgstr "Tháng lên lớp"
+
+#: 
+msgid "Renames the grades to the names used in that country. People keep their grade, and grades you added yourself stay."
+msgstr "Đổi tên các lớp thành tên dùng ở quốc gia đó. Mọi người giữ nguyên lớp, và các lớp bạn tự thêm vẫn còn."
+
+#: 
+msgid "Scheduled Task"
+msgstr "Tác vụ đã lên lịch"
+
+#: 
+msgid "Scotland"
+msgstr "Scotland"
+
+#: 
+msgid "The day of that month on which grades are promoted. A day past the end of the month means its last day."
+msgstr "Ngày trong tháng đó mà các lớp được lên lớp. Ngày vượt quá cuối tháng nghĩa là ngày cuối của tháng."
+
+#: 
+msgid "The grades already use these names."
+msgstr "Các lớp đã dùng những tên này."
+
+#: 
+msgid "The grades changed after the preview. Review the changes again before applying them."
+msgstr "Các lớp đã thay đổi sau khi xem trước. Xem lại các thay đổi trước khi áp dụng."
+
+#: 
+msgid "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off."
+msgstr "Tháng mà mọi người có lớp đều lên một lớp. Tắt sẽ tắt việc lên lớp tự động."
+
+#: 
+msgid "Through Grade"
+msgstr "Đến lớp"
 

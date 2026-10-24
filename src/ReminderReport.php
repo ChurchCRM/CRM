@@ -4,6 +4,7 @@ require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -41,8 +42,7 @@ if (isset($_POST['Submit'])) {
 
       <div class="d-flex gap-2">
         <button type="submit" class="btn btn-primary" name="Submit"><?= gettext('Create Report') ?></button>
-        <button type="button" class="btn btn-secondary" name="Cancel"
-                onclick="javascript:document.location='v2/dashboard';"><?= gettext('Cancel') ?></button>
+        <a class="btn btn-secondary" href="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath() . '/v2/dashboard') ?>"><?= gettext('Cancel') ?></a>
       </div>
     </form>
   </div>

@@ -163,6 +163,16 @@ function mailpitBaseUrl(): string {
   return `http://127.0.0.1:${process.env.MAILSERVER_GUI_PORT || 8025}`;
 }
 
+/**
+ * Gives specs that call Mailpit with cy.request() the same URL as the mail
+ * tasks, read with Cypress.mailpitUrl(). Every config that registers
+ * mailTasks calls this.
+ */
+export function exposeMailpitUrl(config: any) {
+  config.expose = { ...config.expose, mailpitUrl: mailpitBaseUrl() };
+  return config;
+}
+
 async function mailpitFetch(path: string, init?: Record<string, unknown>) {
   // A short timeout keeps "no mail server here" from costing the spec a minute.
   const controller = new AbortController();
@@ -186,6 +196,52 @@ async function mailpitFetch(path: string, init?: Record<string, unknown>) {
     clearTimeout(timer);
   }
 }
+
+/**
+ * Lists the PHP files under src/ that attach a role-auth middleware to a route,
+ * a group or an app, so gate-coverage.spec.js can fail when a gate ships without
+ * a gate row or an explicit pending entry. The middleware classes themselves
+ * (src/ChurchCRM) and vendor code are not gates.
+ */
+export const gateCoverageTasks = {
+  'gates:wrapperFiles'() {
+    const fs = require('fs');
+    const path = require('path');
+
+    // Cypress starts with cwd = cypress/configs, not the repo root.
+    let root = process.cwd();
+    for (let i = 0; i < 6 && !fs.existsSync(path.join(root, 'src', 'api', 'index.php')); i++) {
+      const parent = path.dirname(root);
+      if (parent === root) {
+        break;
+      }
+      root = parent;
+    }
+    const src = path.join(root, 'src');
+    if (!fs.existsSync(path.join(src, 'api', 'index.php'))) {
+      throw new Error('gates:wrapperFiles could not find src/ from ' + process.cwd());
+    }
+
+    const pattern = /->add\(\s*(?:new\s+)?\w+RoleAuthMiddleware|roleMiddleware['"]\s*=>\s*\w+RoleAuthMiddleware::class/;
+    const found: string[] = [];
+    const walk = (dir: string) => {
+      for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+        const full = path.join(dir, entry.name);
+        const rel = path.relative(root, full).split(path.sep).join('/');
+        if (entry.isDirectory()) {
+          if (entry.name !== 'vendor' && entry.name !== 'node_modules' && rel !== 'src/ChurchCRM') {
+            walk(full);
+          }
+        } else if (entry.name.endsWith('.php') && pattern.test(fs.readFileSync(full, 'utf8'))) {
+          found.push(rel);
+        }
+      }
+    };
+    walk(src);
+
+    return found.sort();
+  }
+};
 
 /**
  * Fake plugin registry for upgrade specs. The Docker webserver reads
@@ -315,7 +371,7 @@ export function setupCommonNodeEvents(on: any, config: any) {
 
   // Every task must be registered in a single on('task', ...) call — a second
   // registration replaces the first rather than merging with it.
-  const tasks: Record<string, any> = { ...dbTasks, ...mailTasks, ...htaccessTasks, ...pluginFixtureTasks };
+  const tasks: Record<string, any> = { ...dbTasks, ...mailTasks, ...htaccessTasks, ...pluginFixtureTasks, ...gateCoverageTasks };
 
   // Register download verification tasks if available
   try {
@@ -326,6 +382,7 @@ export function setupCommonNodeEvents(on: any, config: any) {
   }
 
   on('task', tasks);
+  exposeMailpitUrl(config);
 
   // Common browser launch options
   on('before:browser:launch', (browser: any, launchOptions: any) => {

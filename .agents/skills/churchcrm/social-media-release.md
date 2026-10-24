@@ -32,7 +32,7 @@ Post to **all four public platforms** for every release. GitHub releases are han
 Run this skill after the release notes have been approved and applied to the
 GitHub release with `gh release edit`. Use those published notes as the source
 of truth for facts and features; social posts can be generated directly from
-them. See [the release process](../../../docs/release-process.md) for the full
+them. See [the release process](../../../docs/maintainers/release-process.md) for the full
 sequence.
 
 ---
@@ -369,4 +369,4 @@ Before finalizing:
 
 - [Release Notes](./release-notes.md) — approved notes on the GitHub release are the source for post facts
 - [GitHub Interaction](./github-interaction.md) — publishing the GitHub release itself
-- [Release Process](../../../docs/release-process.md) — the canonical release sequence
+- [Release Process](../../../docs/maintainers/release-process.md) — the canonical release sequence

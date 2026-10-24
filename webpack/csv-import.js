@@ -128,7 +128,7 @@ $(document).ready(() => {
 
     const $btn = $(this)
       .prop("disabled", true)
-      .html(`<span class="spinner-border spinner-border-sm mr-2"></span>${i18next.t("Importing...")}`);
+      .html(`<span class="spinner-border spinner-border-sm me-2"></span>${i18next.t("Importing...")}`);
 
     $.ajax({
       url: `${window.CRM.root}/admin/api/import/csv/execute`,
@@ -147,7 +147,7 @@ $(document).ready(() => {
       .fail((xhr) => {
         const msg = xhr.responseJSON?.message || i18next.t("Import failed. Please try again.");
         window.CRM.notify(msg, { type: "error", delay: 5000 });
-        $btn.prop("disabled", false).html(`<i class="fa-solid fa-file-import mr-2"></i>${i18next.t("Import Data")}`);
+        $btn.prop("disabled", false).html(`<i class="fa-solid fa-file-import me-2"></i>${i18next.t("Import Data")}`);
       });
   });
 
@@ -188,10 +188,10 @@ function showMappingStep(token, headers, mappings, fields, sample) {
   headers.forEach((header) => {
     const mapped = mappings[header] || null;
     const sampleValue = sample ? (sample[header] ?? "") : "";
-    const rowClass = mapped ? "table-success" : "table-warning";
+    const rowClass = mapped ? "bg-success-lt" : "bg-warning-lt";
     const badge = mapped
-      ? `<span class="badge badge-success"><i class="fa-solid fa-check mr-1"></i>${i18next.t("Auto-mapped")}</span>`
-      : `<span class="badge badge-warning"><i class="fa-solid fa-triangle-exclamation mr-1"></i>${i18next.t("Unmapped")}</span>`;
+      ? `<span class="badge bg-success-lt text-success"><i class="fa-solid fa-check me-1"></i>${i18next.t("Auto-mapped")}</span>`
+      : `<span class="badge bg-warning-lt text-warning"><i class="fa-solid fa-triangle-exclamation me-1"></i>${i18next.t("Unmapped")}</span>`;
 
     const $select = $('<select class="form-control form-control-sm mapping-select">').attr("data-header", header);
     $select.append(
@@ -226,18 +226,20 @@ function showMappingStep(token, headers, mappings, fields, sample) {
     .off("change", ".mapping-select")
     .on("change", ".mapping-select", function () {
       const $row = $(this).closest("tr");
-      $row.removeClass("table-success table-warning table-secondary");
+      $row.removeClass("bg-success-lt bg-warning-lt bg-secondary-lt");
       const val = $(this).val();
       if (val) {
-        $row.addClass("table-success");
+        $row.addClass("bg-success-lt");
         $row
           .find(".badge")
           .replaceWith(
-            `<span class="badge badge-primary"><i class="fa-solid fa-pen mr-1"></i>${i18next.t("Manual")}</span>`,
+            `<span class="badge bg-primary-lt text-primary"><i class="fa-solid fa-pen me-1"></i>${i18next.t("Manual")}</span>`,
           );
       } else {
-        $row.addClass("table-secondary");
-        $row.find(".badge").replaceWith(`<span class="badge badge-secondary">${i18next.t("Ignored")}</span>`);
+        $row.addClass("bg-secondary-lt");
+        $row
+          .find(".badge")
+          .replaceWith(`<span class="badge bg-secondary-lt text-secondary">${i18next.t("Ignored")}</span>`);
       }
     });
 

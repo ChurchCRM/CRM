@@ -8,7 +8,7 @@ test.describe('Communication', () => {
   test('communication-mailing-list', async ({ page }, testInfo) => {
     // Mailing-list selection: add a real group's membership to the cart —
     // the cart IS ChurchCRM's mailing-list-selection mechanism. Not the
-    // /v2/email/dashboard SMTP settings page: that page's actual composer
+    // /admin/email SMTP settings page: that page's actual composer
     // is gated behind SystemConfig::isEmailEnabled(), which requires valid
     // SMTP server settings (SystemConfig.php's hasValidMailServerSettings())
     // in addition to the bEnabledEmail toggle — the demo instance has no

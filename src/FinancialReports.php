@@ -90,7 +90,7 @@ if ($sReportType === '') {
         </select>
       </div>
       <div class="d-flex gap-2">
-        <input type="button" class="btn btn-secondary" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location='v2/dashboard';">
+        <a class="btn btn-secondary" href="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath() . '/v2/dashboard') ?>"><?= gettext('Cancel') ?></a>
         <input type="submit" class="btn btn-primary" name="Submit1" value="<?= gettext('Next') ?>">
       </div>
     </form>
@@ -279,7 +279,7 @@ if ($sReportType === '') {
       <div class="mb-3">
         <label class="form-label" for="minimum"><?= gettext('Minimum Total Amount') ?>:</label>
         <small class="text-secondary d-block mb-1"><?= gettext('0 - No Minimum') ?></small>
-        <input class="form-control" style="width:120px" name="minimum" id="minimum" type="text" value="0">
+        <input class="form-control field-w-120" name="minimum" id="minimum" type="text" value="0">
       </div>
     <?php endif; ?>
 
@@ -369,7 +369,7 @@ if ($sReportType === '') {
     <?php if ($sReportType === 'Voting Members') : ?>
       <div class="mb-3">
         <label class="form-label" for="RequireDonationYears"><?= gettext('Voting members must have made a donation within this many years (0 to not require a donation)') ?>:</label>
-        <input class="form-control" style="width:120px" name="RequireDonationYears" id="RequireDonationYears" type="text" value="0">
+        <input class="form-control field-w-120" name="RequireDonationYears" id="RequireDonationYears" type="text" value="0">
       </div>
     <?php endif; ?>
 
