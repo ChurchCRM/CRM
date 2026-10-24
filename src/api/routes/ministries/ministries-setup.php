@@ -197,6 +197,11 @@ $app->group('/ministries', function (RouteCollectorProxy $group): void {
         $setup->delete('/ministries/{ministryId:[0-9]+}/pool/{personId:[0-9]+}', 'removeVolunteerPoolMember')
             ->add(new VolunteerMinistryMiddleware());
 
+        $setup->post('/teams/{teamId:[0-9]+}/pool/{personId:[0-9]+}', 'addVolunteerTeamPoolMember')
+            ->add(new VolunteerTeamMiddleware());
+
+        $setup->get('/people/search', 'searchVolunteerPoolCandidates');
+
         // "Remove Volunteer" on the ministry page's Volunteers tab: qualifications,
         // upcoming assignments, pool membership and schedule defaults in one call.
         // Ministry-level, so `VolunteerMinistryMiddleware` answers 403 for a team
@@ -1800,6 +1805,88 @@ function addVolunteerPoolMember(Request $request, Response $response): Response
     }
 
     return SlimUtils::renderJSON($response, ['personId' => $personId, 'added' => $added], $added ? 201 : 200);
+}
+
+/**
+ * @OA\Post(
+ *     path="/ministries/teams/{teamId}/pool/{personId}",
+ *     operationId="addVolunteerTeamPoolMember",
+ *     summary="A team leader puts an existing person in the volunteer pool of their team's ministry",
+ *     description="Allowed to a leader of this team and to anyone who may manage it (its ministry's coordinators, global volunteer managers, administrators). The person must be one GET /ministries/people/search can return: not deceased, not deactivated, not in a deactivated family. positionIds optionally qualifies them for positions of THIS team through the ordinary qualification grant, in the same transaction. When the person was not in the pool already, each of the ministry's coordinators (or, when it has none, each global volunteer manager) is emailed who added whom - outbox type pool_add; the added person and the team's other leaders are not. Removing somebody from the pool is not offered here: it stays DELETE /ministries/ministries/{ministryId}/pool/{personId}, which is ministry-level.",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="teamId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\RequestBody(required=false, @OA\JsonContent(
+ *         @OA\Property(property="positionIds", type="array", @OA\Items(type="integer"), description="Positions of this team to qualify them for")
+ *     )),
+ *     @OA\Response(response=400, description="positionIds is not a list of ids, or names a position of another team"),
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="Not authorized for this team, or V2 is not enabled"),
+ *     @OA\Response(response=404, description="No such team or pool group, or the person cannot be added (not found, deceased, deactivated, or in a deactivated family)"),
+ *     @OA\Response(response=409, description="A ticked position is on a team linked to a class in which the person is a Student"),
+ *     @OA\Response(response=200, description="They were already in the pool",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="personId", type="integer"),
+ *             @OA\Property(property="added", type="boolean"),
+ *             @OA\Property(property="qualified", type="array", @OA\Items(type="integer")),
+ *             @OA\Property(property="notified", type="integer", description="How many coordinators were emailed")
+ *         )
+ *     ),
+ *     @OA\Response(response=201, description="Added; same body")
+ * )
+ */
+function addVolunteerTeamPoolMember(Request $request, Response $response): Response
+{
+    /** @var VolunteerTeam $team */
+    $team = $request->getAttribute('volunteerTeam');
+    $personId = (int) SlimUtils::getRouteArgument($request, 'personId');
+
+    $body = (array) $request->getParsedBody();
+    $positionIds = $body['positionIds'] ?? [];
+    if (!is_array($positionIds) || array_filter($positionIds, static fn ($id): bool => filter_var($id, FILTER_VALIDATE_INT) === false) !== []) {
+        return SlimUtils::renderErrorJSON($response, gettext('positionIds must be a list of position ids'), [], 400, null, $request);
+    }
+
+    try {
+        $result = (new VolunteerMinistryService())->addPoolMemberForTeam(
+            $team,
+            $personId,
+            array_map('intval', $positionIds),
+            volunteerSetupActor()
+        );
+    } catch (\Throwable $e) {
+        return volunteerSetupError($request, $response, $e);
+    }
+
+    return SlimUtils::renderJSON($response, ['personId' => $personId] + $result, $result['added'] ? 201 : 200);
+}
+
+/**
+ * @OA\Get(
+ *     path="/ministries/people/search",
+ *     operationId="searchVolunteerPoolCandidates",
+ *     summary="Find people a team leader may add to a volunteer pool",
+ *     description="The Add Volunteer picker of the admin team view and the Member Portal team page. Reachable by a team leader on any kind of login and by coordinators, volunteer managers and administrators. Only people who are not deceased, not deactivated and not in a deactivated family; every word of q must match a first or last name. Returns id, name and family name ONLY - no email, phone, address, photo or age - and at most 20 people, so a team leader cannot page through the directory. Fewer than two characters returns an empty list.",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="q", in="query", required=true, @OA\Schema(type="string", minLength=2, maxLength=100)),
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="No team to lead and no ministry to coordinate, or V2 is not enabled"),
+ *     @OA\Response(response=200, description="Up to 20 people, by last then first name",
+ *         @OA\JsonContent(type="array", @OA\Items(type="object",
+ *             @OA\Property(property="id", type="integer"),
+ *             @OA\Property(property="name", type="string"),
+ *             @OA\Property(property="familyName", type="string")
+ *         ))
+ *     )
+ * )
+ */
+function searchVolunteerPoolCandidates(Request $request, Response $response): Response
+{
+    $text = mb_substr((string) ($request->getQueryParams()['q'] ?? ''), 0, 100);
+
+    return SlimUtils::renderJSON($response, (new VolunteerMinistryService())->searchPoolCandidates($text));
 }
 
 /**

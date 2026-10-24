@@ -60,7 +60,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <div class="card-body p-0">
                         <div class="table-responsive">
                             <table class="table table-hover mb-0">
-                                <thead class="bg-light">
+                                <thead class="bg-surface-secondary">
                                     <tr>
                                         <th><?= gettext('Family Name') ?></th>
                                         <?php if (SystemConfig::getBooleanValue('bUseDonationEnvelopes')): ?>

@@ -71,7 +71,9 @@ class ConfigItem
             if (isset($this->dbConfigItem)) { //and the item exists
             //delete the item
                 $this->dbConfigItem->delete();
+                $this->dbConfigItem = null;
             }
+            $this->value = null;
         } else {
             //if the value is being set to a non-default value
             if (!isset($this->dbConfigItem)) {

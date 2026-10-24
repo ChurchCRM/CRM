@@ -16,51 +16,89 @@
  * Connection defaults mirror docker/.env, which CI exports as real environment
  * variables; DATABASE_PORT lets an isolated stack publish MySQL on another port.
  */
+// A connection failure (DB down, wrong port or credentials) deliberately
+// THROWS rather than being returned as data: it is an infrastructure fault
+// that must fail the run loudly, not something a spec should assert on.
+// Only driver errors from the statement itself are returned by the tasks.
+//
+// The port must match the stack the specs run against: 3306 for the
+// default and ci-root stacks, DATABASE_SUBDIR_PORT (3307) for ci-subdir —
+// the workflows export DATABASE_PORT accordingly, and an isolated local
+// stack on another port must export it too.
+async function openDbConnection(multipleStatements: boolean) {
+  const mysql = require('mysql2/promise');
+  return mysql.createConnection({
+    host: process.env.DATABASE_HOST || '127.0.0.1',
+    port: Number(process.env.DATABASE_PORT || 3306),
+    user: process.env.MYSQL_USER || 'churchcrm',
+    password: process.env.MYSQL_PASSWORD || 'changeme',
+    database: process.env.MYSQL_DATABASE || 'churchcrm',
+    multipleStatements,
+    dateStrings: true
+  });
+}
+
+function driverError(err: any) {
+  return {
+    code: err.code || null,
+    errno: err.errno || null,
+    sqlState: err.sqlState || null,
+    message: err.message || String(err)
+  };
+}
+
+async function closeDbConnection(connection: any) {
+  // A rejected await inside finally would replace the value returned
+  // above, so never let end() reject; destroy() cannot.
+  try {
+    await connection.end();
+  } catch {
+    connection.destroy();
+  }
+}
+
 export const dbTasks = {
   async 'db:query'({ sql, params }: { sql: string; params?: unknown[] }) {
-    const mysql = require('mysql2/promise');
-
-    // A connection failure (DB down, wrong port or credentials) deliberately
-    // THROWS rather than being returned as data: it is an infrastructure fault
-    // that must fail the run loudly, not something a spec should assert on.
-    // Only driver errors from the statement itself are returned below.
-    //
-    // The port must match the stack the specs run against: 3306 for the
-    // default and ci-root stacks, DATABASE_SUBDIR_PORT (3307) for ci-subdir —
-    // the workflows export DATABASE_PORT accordingly, and an isolated local
-    // stack on another port must export it too.
-    const port = Number(process.env.DATABASE_PORT || 3306);
-    const connection = await mysql.createConnection({
-      host: process.env.DATABASE_HOST || '127.0.0.1',
-      port,
-      user: process.env.MYSQL_USER || 'churchcrm',
-      password: process.env.MYSQL_PASSWORD || 'changeme',
-      database: process.env.MYSQL_DATABASE || 'churchcrm',
-      multipleStatements: false,
-      dateStrings: true
-    });
-
+    const connection = await openDbConnection(false);
     try {
       const [rows] = await connection.query(sql, params || []);
       return { rows, error: null };
     } catch (err: any) {
-      return {
-        rows: null,
-        error: {
-          code: err.code || null,
-          errno: err.errno || null,
-          sqlState: err.sqlState || null,
-          message: err.message || String(err)
-        }
-      };
+      return { rows: null, error: driverError(err) };
     } finally {
-      // A rejected await inside finally would replace the value returned
-      // above, so never let end() reject; destroy() cannot.
-      try {
-        await connection.end();
-      } catch {
-        connection.destroy();
-      }
+      await closeDbConnection(connection);
+    }
+  },
+
+  /**
+   * Runs one block of a shipped upgrade script, the text between the lines
+   * `-- BEGIN: <block>` and `-- END: <block>`, so a migration spec tests the
+   * SQL an upgrade actually runs rather than a copy of it.
+   */
+  async 'db:upgradeBlock'({ script, block }: { script: string; block: string }) {
+    const fs = require('fs');
+    const path = require('path');
+
+    // Cypress starts with cwd = cypress/configs, not the repo root.
+    let root = process.cwd();
+    while (!fs.existsSync(path.join(root, 'src', 'mysql', 'upgrade')) && path.dirname(root) !== root) {
+      root = path.dirname(root);
+    }
+    const text = fs.readFileSync(path.join(root, 'src', 'mysql', 'upgrade', path.basename(script)), 'utf8');
+    const begin = text.indexOf(`-- BEGIN: ${block}`);
+    const end = text.indexOf(`-- END: ${block}`, begin);
+    if (begin < 0 || end < 0) {
+      throw new Error(`db:upgradeBlock: no block "${block}" in ${script}`);
+    }
+
+    const connection = await openDbConnection(true);
+    try {
+      await connection.query(text.slice(begin, end));
+      return { error: null };
+    } catch (err: any) {
+      return { error: driverError(err) };
+    } finally {
+      await closeDbConnection(connection);
     }
   }
 };
@@ -163,6 +201,16 @@ function mailpitBaseUrl(): string {
   return `http://127.0.0.1:${process.env.MAILSERVER_GUI_PORT || 8025}`;
 }
 
+/**
+ * Gives specs that call Mailpit with cy.request() the same URL as the mail
+ * tasks, read with Cypress.mailpitUrl(). Every config that registers
+ * mailTasks calls this.
+ */
+export function exposeMailpitUrl(config: any) {
+  config.expose = { ...config.expose, mailpitUrl: mailpitBaseUrl() };
+  return config;
+}
+
 async function mailpitFetch(path: string, init?: Record<string, unknown>) {
   // A short timeout keeps "no mail server here" from costing the spec a minute.
   const controller = new AbortController();
@@ -188,6 +236,52 @@ async function mailpitFetch(path: string, init?: Record<string, unknown>) {
 }
 
 /**
+ * Lists the PHP files under src/ that attach a role-auth middleware to a route,
+ * a group or an app, so gate-coverage.spec.js can fail when a gate ships without
+ * a gate row or an explicit pending entry. The middleware classes themselves
+ * (src/ChurchCRM) and vendor code are not gates.
+ */
+export const gateCoverageTasks = {
+  'gates:wrapperFiles'() {
+    const fs = require('fs');
+    const path = require('path');
+
+    // Cypress starts with cwd = cypress/configs, not the repo root.
+    let root = process.cwd();
+    for (let i = 0; i < 6 && !fs.existsSync(path.join(root, 'src', 'api', 'index.php')); i++) {
+      const parent = path.dirname(root);
+      if (parent === root) {
+        break;
+      }
+      root = parent;
+    }
+    const src = path.join(root, 'src');
+    if (!fs.existsSync(path.join(src, 'api', 'index.php'))) {
+      throw new Error('gates:wrapperFiles could not find src/ from ' + process.cwd());
+    }
+
+    const pattern = /->add\(\s*(?:new\s+)?\w+RoleAuthMiddleware|roleMiddleware['"]\s*=>\s*\w+RoleAuthMiddleware::class/;
+    const found: string[] = [];
+    const walk = (dir: string) => {
+      for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+        const full = path.join(dir, entry.name);
+        const rel = path.relative(root, full).split(path.sep).join('/');
+        if (entry.isDirectory()) {
+          if (entry.name !== 'vendor' && entry.name !== 'node_modules' && rel !== 'src/ChurchCRM') {
+            walk(full);
+          }
+        } else if (entry.name.endsWith('.php') && pattern.test(fs.readFileSync(full, 'utf8'))) {
+          found.push(rel);
+        }
+      }
+    };
+    walk(src);
+
+    return found.sort();
+  }
+};
+
+/**
  * Fake plugin registry for upgrade specs. The Docker webserver reads
  * CHURCHCRM_PLUGIN_FIXTURES (the repo is mounted at /home/ChurchCRM); a
  * registry.json in that directory replaces the remote registry (one approved
@@ -195,7 +289,7 @@ async function mailpitFetch(path: string, init?: Record<string, unknown>) {
  * https://fixtures.invalid/<name>.zip are served from it.
  */
 export const pluginFixtureTasks = {
-  async 'pluginFixtures:write'({ id, version, badSha = false }: { id: string; version: string; badSha?: boolean }) {
+  async 'pluginFixtures:write'({ id, version, badSha = false, source }: { id: string; version: string; badSha?: boolean; source?: string }) {
     const archiver = require('archiver');
     const crypto = require('crypto');
     const fs = require('fs');
@@ -221,6 +315,26 @@ export const pluginFixtureTasks = {
         hooks: []
       };
       const plugin = `<?php\n\nnamespace ChurchCRM\\Plugins\\UpgradeFixture;\n\nuse ChurchCRM\\Plugin\\AbstractPlugin;\n\nclass UpgradeFixturePlugin extends AbstractPlugin\n{\n    public function getId(): string\n    {\n        return '${id}';\n    }\n\n    public function getName(): string\n    {\n        return 'Upgrade Fixture';\n    }\n\n    public function getDescription(): string\n    {\n        return 'Cypress fixture plugin.';\n    }\n\n    public function boot(): void\n    {\n    }\n}\n`;
+      // `source` names a plugin under cypress/fixtures/plugins/ to ship instead of the generated one.
+      const sourceDir = source ? path.resolve(__dirname, '../fixtures/plugins', source) : null;
+      const files: Array<[string, string | Buffer]> = [];
+      if (sourceDir) {
+        const sourceManifest = JSON.parse(fs.readFileSync(path.join(sourceDir, 'plugin.json'), 'utf8'));
+        Object.assign(manifest, sourceManifest, { id, version });
+        const walk = (rel: string): void => {
+          for (const entry of fs.readdirSync(path.join(sourceDir, rel), { withFileTypes: true })) {
+            const child = rel === '' ? entry.name : `${rel}/${entry.name}`;
+            if (entry.isDirectory()) {
+              walk(child);
+            } else if (child !== 'plugin.json') {
+              files.push([child, fs.readFileSync(path.join(sourceDir, child))]);
+            }
+          }
+        };
+        walk('');
+      } else {
+        files.push(['src/UpgradeFixturePlugin.php', plugin]);
+      }
       const zipPath = path.join(dir, zipName);
       await new Promise<void>((resolve, reject) => {
         const out = fs.createWriteStream(zipPath);
@@ -229,12 +343,14 @@ export const pluginFixtureTasks = {
         zip.on('error', reject);
         zip.pipe(out);
         zip.append(JSON.stringify(manifest, null, 2), { name: `${id}/plugin.json`, date: new Date(0) });
-        zip.append(plugin, { name: `${id}/src/UpgradeFixturePlugin.php`, date: new Date(0) });
+        for (const [name, content] of files) {
+          zip.append(content, { name: `${id}/${name}`, date: new Date(0) });
+        }
         zip.finalize();
       });
       plugins.push({
         id,
-        name: 'Upgrade Fixture',
+        name: manifest.name,
         version,
         downloadUrl: `https://fixtures.invalid/${zipName}`,
         sha256: badSha ? '0'.repeat(64) : crypto.createHash('sha256').update(fs.readFileSync(zipPath)).digest('hex'),
@@ -315,7 +431,7 @@ export function setupCommonNodeEvents(on: any, config: any) {
 
   // Every task must be registered in a single on('task', ...) call — a second
   // registration replaces the first rather than merging with it.
-  const tasks: Record<string, any> = { ...dbTasks, ...mailTasks, ...htaccessTasks, ...pluginFixtureTasks };
+  const tasks: Record<string, any> = { ...dbTasks, ...mailTasks, ...htaccessTasks, ...pluginFixtureTasks, ...gateCoverageTasks };
 
   // Register download verification tasks if available
   try {
@@ -326,6 +442,7 @@ export function setupCommonNodeEvents(on: any, config: any) {
   }
 
   on('task', tasks);
+  exposeMailpitUrl(config);
 
   // Common browser launch options
   on('before:browser:launch', (browser: any, launchOptions: any) => {

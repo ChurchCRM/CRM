@@ -2,6 +2,7 @@
 
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\Slim\Middleware\Api\FamilyEmailDeprecationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Setting\PublicRegistrationAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\InputUtils;
@@ -12,8 +13,8 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
 $app->group('/public/register', function (RouteCollectorProxy $group): void {
-    $group->post('/family', 'registerFamilyAPI');
-    $group->post('/family/', 'registerFamilyAPI');
+    $group->post('/family', 'registerFamilyAPI')->add(new FamilyEmailDeprecationMiddleware('public/register-family-api'));
+    $group->post('/family/', 'registerFamilyAPI')->add(new FamilyEmailDeprecationMiddleware('public/register-family-api'));
     $group->post('/person', 'registerPersonAPI');
     $group->post('/person/', 'registerPersonAPI');
 })->add(PublicRegistrationAuthMiddleware::class);
@@ -37,7 +38,7 @@ $app->group('/public/register', function (RouteCollectorProxy $group): void {
  *             @OA\Property(property="Country", type="string", example="US"),
  *             @OA\Property(property="Zip", type="string", example="98101"),
  *             @OA\Property(property="HomePhone", type="string", nullable=true, example="206-555-0100"),
- *             @OA\Property(property="Email", type="string", format="email", nullable=true, example="smith@example.com"),
+ *             @OA\Property(property="Email", type="string", format="email", nullable=true, example="smith@example.com", description="Saved as the first person's email when that person gives none. Families have no email of their own."),
  *             @OA\Property(
  *                 property="people",
  *                 type="array",
@@ -67,7 +68,8 @@ $app->group('/public/register', function (RouteCollectorProxy $group): void {
  *             @OA\Property(property="Address1", type="string"),
  *             @OA\Property(property="City", type="string"),
  *             @OA\Property(property="State", type="string"),
- *             @OA\Property(property="Zip", type="string")
+ *             @OA\Property(property="Zip", type="string"),
+ *             @OA\Property(property="Email", type="string", readOnly=true, deprecated=true, description="Deprecated in 7.8.3: the head of household's email, else the spouse's. Removed with the family email column.")
  *         )
  *     ),
  *     @OA\Response(response=400, description="Validation error",
@@ -117,7 +119,6 @@ function registerFamilyAPI(Request $request, Response $response, array $args): R
     $family->setCountry($familyMetadata['Country'] ?? '');
     $family->setZip($familyMetadata['Zip'] ?? '');
     $family->setHomePhone($familyMetadata['HomePhone'] ?? '');
-    $family->setEmail($familyMetadata['Email'] ?? '');
     $family->setEnteredBy(Person::SELF_REGISTER);
     $family->setDateEntered(new DateTime());
     $family->setNeedsReview(true);
@@ -173,6 +174,11 @@ function registerFamilyAPI(Request $request, Response $response, array $args): R
         }
 
         $familyMembers[] = $person;
+    }
+
+    $registrant = $familyMembers[0];
+    if (trim((string) $registrant->getEmail()) === '' && !empty($familyMetadata['Email'])) {
+        $registrant->setEmail($familyMetadata['Email']);
     }
 
     $family->save();

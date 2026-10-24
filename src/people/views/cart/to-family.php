@@ -92,7 +92,7 @@ $rootPath       = SystemURLs::getRootPath();
                     <label for="assignRoleToAll" class="form-label mb-0 text-secondary small">
                         <?= gettext('Assign role to all') ?>:
                     </label>
-                    <select id="assignRoleToAll" class="form-select form-select-sm" style="width:auto">
+                    <select id="assignRoleToAll" class="form-select form-select-sm w-auto">
                         <option value="">— <?= gettext('pick') ?> —</option>
                         <?php foreach ($familyRoles as $role): ?>
                         <option value="<?= $role->getOptionId() ?>">
@@ -106,9 +106,9 @@ $rootPath       = SystemURLs::getRootPath();
                 <table class="table table-vcenter card-table">
                     <thead>
                         <tr>
-                            <th style="width:52px"></th>
+                            <th class="cart-col-photo"></th>
                             <th><?= gettext('Name') ?></th>
-                            <th style="width:220px"><?= gettext('Family Role') ?></th>
+                            <th class="cart-col-role"><?= gettext('Family Role') ?></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -307,12 +307,6 @@ $rootPath       = SystemURLs::getRootPath();
                                     <?= gettext('Do not auto-format') ?>
                                 </label>
                             </div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="Email" class="form-label"><?= gettext('Email') ?></label>
-                            <input type="email" id="Email" name="Email" class="form-control"
-                                   maxlength="50"
-                                   value="<?= InputUtils::escapeAttribute($formValues['Email'] ?? '') ?>">
                         </div>
                     </div>
                 </fieldset>

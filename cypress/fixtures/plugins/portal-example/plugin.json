@@ -1,0 +1,31 @@
+{
+  "id": "portal-example",
+  "name": "Portal Example",
+  "description": "Cypress fixture plugin: one portal capability from a rule, one only an administrator gives, a page and a nav item.",
+  "version": "1.0.0",
+  "author": "ChurchCRM Team",
+  "type": "community",
+  "minimumCRMVersion": "7.0.0",
+  "mainClass": "ChurchCRM\\Plugins\\PortalExample\\PortalExamplePlugin",
+  "dependencies": [],
+  "settings": [],
+  "menuItems": [],
+  "hooks": [],
+  "portalRoutesFile": "portal/routes.php",
+  "portal": {
+    "capabilities": [
+      {
+        "key": "plugin.portal-example.roster.view",
+        "label": "See a group's roster",
+        "description": "See who is in a group they belong to.",
+        "scopeType": "group"
+      },
+      {
+        "key": "plugin.portal-example.notices",
+        "label": "Read the notice board",
+        "description": "Read the church notice board.",
+        "scopeType": "none"
+      }
+    ]
+  }
+}

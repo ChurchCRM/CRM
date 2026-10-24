@@ -9,6 +9,7 @@ use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
+use ChurchCRM\Service\PersonSignInService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Service\UserService;
 use ChurchCRM\Slim\Middleware\Request\Auth\DeleteRecordRoleAuthMiddleware;
@@ -371,6 +372,45 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
         return SlimUtils::renderJSON($response, ['success' => true]);
     })->add(new EditRecordsRoleAuthMiddleware());
 
+    /**
+     * @OA\Get(
+     *     path="/person/{personId}/sign-in",
+     *     operationId="getPersonSignInStatus",
+     *     summary="Whether a person may sign in to the Member Portal, and why not (EditRecords role required)",
+     *     description="What the person page's Portal sign-in card shows: the blocks for everyone, the member rule and the email rule, Disable sign-in, the last sign-in, and how many devices and passkeys the person has. The administrator's reason for Disable sign-in is returned to administrators only.",
+     *     tags={"People"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer", example=42)),
+     *     @OA\Response(response=200, description="Sign-in status",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="personId", type="integer", example=42),
+     *             @OA\Property(property="memberSignInEnabled", type="boolean"),
+     *             @OA\Property(property="maySignIn", type="boolean"),
+     *             @OA\Property(property="reason", type="string", nullable=true, example="under_minimum_age"),
+     *             @OA\Property(property="reasonLabel", type="string", nullable=true),
+     *             @OA\Property(property="signInDisabled", type="boolean"),
+     *             @OA\Property(property="disabledAt", type="string", nullable=true),
+     *             @OA\Property(property="disabledBy", type="object", nullable=true),
+     *             @OA\Property(property="disabledReason", type="string", nullable=true),
+     *             @OA\Property(property="lastSignIn", type="string", nullable=true),
+     *             @OA\Property(property="devices", type="integer"),
+     *             @OA\Property(property="passkeys", type="integer")
+     *         )
+     *     ),
+     *     @OA\Response(response=401, description="Unauthorized"),
+     *     @OA\Response(response=403, description="EditRecords role required"),
+     *     @OA\Response(response=404, description="Person not found")
+     * )
+     */
+    $group->get('/sign-in', function (Request $request, Response $response): Response {
+        $status = (new PersonSignInService())->statusFor(
+            $request->getAttribute('person'),
+            AuthenticationManager::getCurrentUser()->isAdmin()
+        );
+
+        return SlimUtils::renderJSON($response, $status);
+    })->add(new EditRecordsRoleAuthMiddleware());
+
     // Add person to cart
     $group->post('/addToCart', function (Request $request, Response $response, array $args): Response {
         Cart::addPerson($args['personId']);
@@ -404,7 +444,9 @@ function setPersonRoleAPI(Request $request, Response $response, array $args): Re
     $person = $request->getAttribute('person');
 
     $roleId = (int) $args['roleId'];
-    $role = ListOptionQuery::create()->filterByOptionId($roleId)->findOne();
+    // Family roles belong to list 2 (the same list returned by /persons/roles).
+    // Option IDs are only unique within a list.
+    $role = ListOptionQuery::create()->filterById(2)->filterByOptionId($roleId)->findOne();
 
     if (empty($role)) {
         throw new HttpNotFoundException($request, gettext('The role could not be found.'));

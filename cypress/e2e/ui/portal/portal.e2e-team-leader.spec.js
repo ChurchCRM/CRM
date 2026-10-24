@@ -5,7 +5,7 @@
  * end-to-end run.
  *
  * Epic #8977, issue #9869, design `.agents/skills/churchcrm/member-portal-design.md`
- * §5.5 and P17; `volunteer-v2-design.md` §4.4, §4.6 and the D14 revision.
+ * §5.5 and P17; `docs/design/volunteer-v2.md` §4.4, §4.6 and the D14 revision.
  *
  * `member.portal-teams.spec.js` (MP7) proves each control on the team page works. This
  * run proves the **claim the epic makes about people**: that a church can hand the
@@ -30,7 +30,7 @@
  *        └─ staff one ──────────► the qualified volunteer is on it
  *
  *     …and the refusals, which are half the point:
- *        another team's page ──► the PORTAL's 403, never the admin shell's
+ *        another team's page ──► the PORTAL's 404, never the admin shell's
  *        the admin ministry page ► never renders for this login
  *        a member with no scope ► no nav entry and no pages
  *
@@ -332,7 +332,7 @@ describe("Member Portal — #9869 scenario 2, \"a team leader on a member login\
                 "#volunteer-teams-card",
                 "#volunteer-scope-panel",
                 "#volunteer-help-wanted",
-                "#qualification-add-person",
+                "#qualification-cart-btn",
                 "#qualification-team-filter",
                 "#occurrence-team-filter",
                 "#team-add-btn",
@@ -386,11 +386,20 @@ describe("Member Portal — #9869 scenario 2, \"a team leader on a member login\
             cy.visit(`${TEAMS_URL}/${teamLed}`);
 
             cy.get("#nav-item-volunteers").click();
+            cy.intercept("POST", "**/positions/*/qualifications").as("grantQualification");
             cy.get("#volunteerQualificationsTable tbody .volunteer-qual-toggle", {
                 timeout: 15000,
             })
                 .first()
                 .click();
+            cy.wait("@grantQualification").its("response.statusCode").should("be.oneOf", [200, 201]);
+
+            // The box is disabled while the grant is saved and enabled again once the
+            // server confirms it, so wait for that before reading the database.
+            cy.get("#volunteerQualificationsTable tbody .volunteer-qual-toggle")
+                .first()
+                .should("be.checked")
+                .and("not.be.disabled");
 
             // The tick is a write; read it back from the database rather than the cell
             // it was made in. The position is this team's only one, so any row against
@@ -488,7 +497,7 @@ describe("Member Portal — #9869 scenario 2, \"a team leader on a member login\
             leaderLogin();
             cy.visit(`${TEAMS_URL}/${teamOther}`, { failOnStatusCode: false });
 
-            // The PORTAL's 403, drawn in the member's theme, never the admin shell's
+            // The PORTAL's 404, drawn in the member's theme, never the admin shell's
             // access-denied page (design P10).
             cy.get(".portal-shell", { timeout: 10000 }).should("exist");
             cy.get("#portal-team").should("not.exist");

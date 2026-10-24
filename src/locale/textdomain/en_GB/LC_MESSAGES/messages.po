@@ -26,11 +26,6 @@ msgid "Based on filters below.."
 msgstr "Based on filters below ..."
 
 #: 
-#, fuzzy
-msgid "Load Authorized"
-msgstr "Load Authorised Transactions"
-
-#: 
 msgid "Family Cell Phone"
 msgstr "Family Mobile"
 
@@ -141,10 +136,6 @@ msgstr "Failed to cancel enrolment. Please try again."
 #: 
 msgid "Foreground Color"
 msgstr "Foreground Colour"
-
-#: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "Include Sunday School classes and enrolments"
 
 #: 
 msgid "Two Factor Enrollment Error"

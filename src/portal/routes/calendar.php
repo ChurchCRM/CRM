@@ -1,7 +1,8 @@
 <?php
 
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Portal\Permissions\CorePortalCapabilities;
+use ChurchCRM\Portal\Permissions\RequirePortalCapability;
 use ChurchCRM\Portal\PortalCalendarService;
 use ChurchCRM\Portal\PortalNav;
 use ChurchCRM\Portal\PortalTwig;
@@ -9,7 +10,6 @@ use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Slim\Exception\HttpNotFoundException;
 use Twig\Markup;
 
 // GET /portal/calendar — the church calendar a member may see (design §5.3).
@@ -21,13 +21,6 @@ use Twig\Markup;
 // that are switched on, with their colours — because that is what tells a
 // member what the colours mean before any event has loaded.
 $calendarHandler = function (Request $request, Response $response): Response {
-    if (!SystemConfig::getBooleanValue('bPortalShowCalendar')) {
-        // The section is off for this church, so the page does not exist for
-        // this church either — the same answer a member gets for any other
-        // address the portal does not serve.
-        throw new HttpNotFoundException($request);
-    }
-
     // Ministries this member runs a team for: their own calendars are marked in the
     // legend so a team leader can find the one they read every week (design §5.3).
     $ledMinistryIds = PortalCalendarService::ledMinistryIds();
@@ -78,5 +71,7 @@ $calendarHandler = function (Request $request, Response $response): Response {
     );
 };
 
-$group->get('/calendar', $calendarHandler);
-$group->get('/calendar/', $calendarHandler);
+// With the calendar switched off the page does not exist for this church:
+// RequirePortalCapability answers 404, as for any address the portal does not serve.
+$group->get('/calendar', $calendarHandler)->add(RequirePortalCapability::any(CorePortalCapabilities::CALENDAR_VIEW));
+$group->get('/calendar/', $calendarHandler)->add(RequirePortalCapability::any(CorePortalCapabilities::CALENDAR_VIEW));

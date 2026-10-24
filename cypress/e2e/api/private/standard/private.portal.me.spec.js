@@ -211,6 +211,70 @@ describe("Member Portal API — /api/portal/me and /api/portal/family", () => {
             });
         });
 
+        describe("the deprecated family email", () => {
+            const expectDeprecated = (response, page) => {
+                expect(response.headers.deprecation).to.match(/^@\d+$/);
+                expect(response.headers.link).to.eq(`<https://docs.churchcrm.io/api/private/${page}>; rel="deprecation"; type="text/html"`);
+            };
+
+            let headEmail;
+            let familyBefore;
+
+            beforeEach(() => {
+                cy.makePrivateAdminAPICall("GET", `/api/family/${LENA_FAMILY_ID}`, null, 200).then((response) => {
+                    familyBefore = response.body;
+                    headEmail = response.body.Email;
+                    expect(headEmail, "the head of household's email").to.be.a("string").and.not.eq("");
+                });
+            });
+
+            it("shows an adult the head of household's email, read-only", () => {
+                portalLogin(adultUser);
+                cy.request("/api/portal/family").then((response) => {
+                    expectDeprecated(response, "get-portal-family");
+                    expect(response.body.family.email).to.eq(headEmail);
+                });
+            });
+
+            it("shows it to a member who may not see the family's contacts as empty", () => {
+                const nonAdultFamilyId = 1;
+                portalLogin(nonAdultUser);
+                cy.makePrivateAdminAPICall("GET", `/api/family/${nonAdultFamilyId}`, null, 200).its("body.Email").should("not.eq", "");
+                cy.request("/api/portal/family").then((response) => {
+                    expect(response.body.canSeeContacts).to.eq(false);
+                    expect(response.body.family.email).to.eq("");
+                });
+            });
+
+            it("ignores a posted family email and stores nothing", () => {
+                portalLogin(adultUser);
+                withCsrfToken((token) => {
+                    portalPost("/api/portal/family", { email: "household@example.com" }, token, 200).then((response) => {
+                        expectDeprecated(response, "update-portal-family");
+                        expect(response.body.updated).to.deep.equal([]);
+                        expect(response.body.family.email).to.eq(headEmail);
+                    });
+                });
+                cy.makePrivateAdminAPICall("GET", `/api/family/${LENA_FAMILY_ID}`, null, 200).then((response) => {
+                    expect(response.body.Email).to.eq(headEmail);
+                    expect(response.body.DateLastEdited).to.eq(familyBefore.DateLastEdited);
+                });
+            });
+
+            it("saves the rest of a write that also sends a family email", () => {
+                const phone = `(206) 555-${String(Date.now()).slice(-4)}`;
+                portalLogin(adultUser);
+                withCsrfToken((token) => {
+                    portalPost("/api/portal/family", { email: "household@example.com", homePhone: phone }, token, 200).then((response) => {
+                        expect(response.body.updated).to.deep.equal(["homePhone"]);
+                        expect(response.body.family.homePhone).to.eq(phone);
+                        expect(response.body.family.email).to.eq(headEmail);
+                    });
+                    portalPost("/api/portal/family", { homePhone: familyBefore.HomePhone ?? "" }, token, 200);
+                });
+            });
+        });
+
         it("refuses a member of the family who is not one of its adults", () => {
             portalLogin(nonAdultUser);
             cy.request("/api/portal/family").then((response) => {
@@ -419,29 +483,59 @@ describe("Member Portal API — /api/portal/me and /api/portal/family", () => {
             });
         });
 
+        const proposeMember = (firstName, role) => {
+            portalLogin(adultUser);
+            withCsrfToken((token) => {
+                portalPost("/api/portal/family/members", { firstName, lastName: "Black", role }, token, 200).then(
+                    (response) => {
+                        createdPersonIds.push(response.body.personId);
+                        cy.wrap(response.body.personId).as("proposedId");
+                    },
+                );
+            });
+            return cy
+                .get("@proposedId")
+                .then((personId) => cy.makePrivateAdminAPICall("GET", `/api/person/${personId}`, null, 200));
+        };
+
         [
-            { role: 1, label: "head of household" },
-            { role: 2, label: "spouse" },
+            { role: 1, label: "Head of Household" },
+            { role: 2, label: "Spouse" },
         ].forEach(({ role, label }) => {
-            it(`files a proposed ${label} as a child until staff review them`, () => {
+            it(`keeps a proposed ${label} role and names it in the family timeline`, () => {
                 const firstName = `Adl${role}${String(Date.now()).slice(-6)}`;
-                portalLogin(adultUser);
-                withCsrfToken((token) => {
-                    portalPost("/api/portal/family/members", { firstName, lastName: "Black", role }, token, 200).then(
-                        (response) => {
-                            createdPersonIds.push(response.body.personId);
-                            cy.makePrivateAdminAPICall(
-                                "GET",
-                                `/api/person/${response.body.personId}`,
-                                null,
-                                200,
-                            ).then((person) => {
-                                // sDirRoleChild defaults to 3.
-                                expect(person.body.FmrId).to.eq(3);
-                            });
-                        },
-                    );
+                proposeMember(firstName, role).then((person) => {
+                    expect(person.body.FmrId).to.eq(role);
+                    expect(person.body.NeedsReview).to.eq(true);
                 });
+
+                cy.makePrivateAdminAPICall("GET", `/api/timeline/family/${LENA_FAMILY_ID}`, null, 200).then(
+                    (response) => {
+                        expect(response.body.timeline.map((item) => item.text)).to.include(
+                            `Added through the Member Portal and waiting for review: ${firstName} Black (${label})`,
+                        );
+                    },
+                );
+            });
+        });
+
+        it("escapes the proposed member's name in the family timeline note", () => {
+            const stamp = String(Date.now()).slice(-6);
+            proposeMember(`D'Ann & Bo${stamp}`, 2);
+
+            cy.makePrivateAdminAPICall("GET", `/api/timeline/family/${LENA_FAMILY_ID}`, null, 200).then(
+                (response) => {
+                    expect(response.body.timeline.map((item) => item.text)).to.include(
+                        `Added through the Member Portal and waiting for review: D&#039;Ann &amp; Bo${stamp} Black (Spouse)`,
+                    );
+                },
+            );
+        });
+
+        it("files a role the installation does not offer under the child role", () => {
+            proposeMember(`Unk${String(Date.now()).slice(-6)}`, 99).then((person) => {
+                // sDirRoleChild defaults to 3.
+                expect(person.body.FmrId).to.eq(3);
             });
         });
 

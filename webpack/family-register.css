@@ -1,4 +1,9 @@
-/* ChurchCRM Family Registration Styles */
+:root {
+  --register-accent: #667eea;
+  --register-input-border: #ced4da;
+  --register-danger: #dc3545;
+  --register-success: #28a745;
+}
 
 .register-box {
   width: 90%;
@@ -24,8 +29,7 @@
   margin: 0 -30px 30px -30px;
 }
 
-/* Stepper label: visually hide text on very small screens while keeping it
-   in the accessibility tree for screen readers */
+/* Visually hidden, still read by screen readers */
 @media (max-width: 400px) {
   .bs-stepper-label {
     position: absolute;
@@ -47,7 +51,7 @@
 }
 
 .member-card {
-  border: 1px solid #dee2e6;
+  border: 1px solid var(--tblr-border-color);
   border-radius: 6px;
   margin-bottom: 20px;
   transition: box-shadow 0.3s ease;
@@ -72,8 +76,8 @@
 }
 
 .member-card .card-header {
-  background-color: #f8f9fa;
-  border-bottom: 1px solid #dee2e6;
+  background-color: var(--tblr-bg-surface-secondary);
+  border-bottom: 1px solid var(--tblr-border-color);
   padding: 12px 20px;
   flex-shrink: 0;
   z-index: 1;
@@ -108,13 +112,13 @@
 
 .member-toggle-btn {
   font-size: 0.875rem;
-  color: #667eea;
+  color: var(--register-accent);
   text-decoration: none;
   transition: transform 0.2s ease;
 }
 
 .member-toggle-btn:hover {
-  color: #667eea;
+  color: var(--register-accent);
   text-decoration: none;
 }
 
@@ -122,182 +126,65 @@
   transition: transform 0.2s ease;
 }
 
-/* Ensure form-row inside member cards behaves as a proper grid */
-.member-card .row {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.member-card .mb-3 {
-  margin-bottom: 1rem;
-}
-
-/* Column widths — only enforce at md breakpoint and above so they stack on mobile */
-@media (min-width: 768px) {
-  .member-card .row .col-md-6 {
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
-
-  .member-card .row .col-md-7 {
-    flex: 0 0 58.333333%;
-    max-width: 58.333333%;
-  }
-
-  .member-card .row .col-md-5 {
-    flex: 0 0 41.666667%;
-    max-width: 41.666667%;
-  }
-}
-
-/* Below md: stack all columns full-width */
-@media (max-width: 767.98px) {
-  .member-card .row > [class*="col-"] {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
-}
-
-/* Form control styling for member cards */
-.member-card .form-control,
-.member-card .custom-control-input {
+.member-card .form-control {
   border-radius: 4px;
-  border: 1px solid #ced4da;
+  border: 1px solid var(--register-input-border);
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
 }
 
 .member-card .form-control:focus {
-  border-color: #667eea;
+  border-color: var(--register-accent);
   box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
 }
 
 .member-card .input-group-text {
-  background-color: #f8f9fa;
-  border: 1px solid #ced4da;
+  background-color: var(--tblr-bg-surface-secondary);
+  border: 1px solid var(--register-input-border);
   border-radius: 4px 0 0 4px;
-  color: #667eea;
+  color: var(--register-accent);
 }
 
 .member-card .mb-3 label {
   font-weight: 500;
-  color: #333;
+  color: var(--tblr-body-color);
   margin-bottom: 0.5rem;
 }
 
-/* Ensure form-row spacing is proper */
-.member-card .row {
-  margin-bottom: 0;
-}
-
-/* Select dropdowns */
 .member-card select {
   appearance: none;
-  background: white
+  background: var(--tblr-bg-surface)
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23667eea' d='M6 9L1 4h10z'/%3E%3C/svg%3E")
     no-repeat right 0.75rem center;
   background-size: 12px;
   padding-right: 2rem;
 }
 
-/* Checkbox styling */
-.member-card .custom-control {
-  position: relative;
-  display: block;
-  padding-left: 1.5rem;
-}
-
-.member-card .custom-control-input {
-  position: absolute;
-  left: 0;
-  z-index: -1;
-  width: 1rem;
-  height: 1.25rem;
-  opacity: 0;
-}
-
-.member-card .custom-control-label {
-  position: relative;
-  margin-bottom: 0;
-  color: #666;
-  cursor: pointer;
-}
-
-.member-card .custom-control-label::before {
-  content: "";
-  position: absolute;
-  top: 0.25rem;
-  left: -1.5rem;
-  display: block;
-  width: 1rem;
-  height: 1rem;
-  pointer-events: none;
-  border: 1px solid #adb5bd;
-  border-radius: 0.25rem;
-}
-
-.member-card .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
-  border-color: #667eea;
-  background-color: #667eea;
-}
-
-/* Enabled checkbox styling */
-.member-card .custom-control-input:not(:disabled) ~ .custom-control-label {
-  color: #666;
-  cursor: pointer;
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.member-card .custom-control-input:not(:disabled) ~ .custom-control-label::before {
-  cursor: pointer;
-  pointer-events: auto;
-  background-color: white;
-}
-
-/* Disabled checkbox styling */
-.member-card .custom-control-input:disabled ~ .custom-control-label {
-  color: #999;
-  cursor: not-allowed;
-  opacity: 0.6;
-  pointer-events: none;
-}
-
-.member-card .custom-control-input:disabled ~ .custom-control-label::before {
-  border-color: #ccc;
-  background-color: #f5f5f5;
-  cursor: not-allowed;
-  pointer-events: none;
-}
-
-/* Invalid feedback styling */
 .member-card .invalid-feedback {
   display: block;
-  color: #dc3545;
+  color: var(--register-danger);
   font-size: 0.875rem;
   margin-top: 0.25rem;
 }
 
-/* Focus state for inputs */
 .member-card .form-control.is-valid {
-  border-color: #28a745;
+  border-color: var(--register-success);
 }
 
 .member-card .form-control.is-valid:focus {
-  border-color: #28a745;
+  border-color: var(--register-success);
   box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
 }
 
 .member-card .form-control.is-invalid {
-  border-color: #dc3545;
+  border-color: var(--register-danger);
 }
 
 .member-card .form-control.is-invalid:focus {
-  border-color: #dc3545;
+  border-color: var(--register-danger);
   box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
 }
 
-/* Add/Remove member buttons */
 #add-member-btn {
   margin-bottom: 20px;
   width: 100%;
@@ -317,14 +204,14 @@
 }
 
 .remove-member-btn:hover {
-  background-color: #dc3545;
-  border-color: #dc3545;
+  background-color: var(--register-danger);
+  border-color: var(--register-danger);
   color: white;
 }
 
 .family-count-badge {
   display: inline-block;
-  background-color: #667eea;
+  background-color: var(--register-accent);
   color: white;
   padding: 8px 16px;
   border-radius: 20px;
@@ -332,91 +219,6 @@
   margin-left: 10px;
 }
 
-/* Review section styles */
-.review-section {
-  margin-bottom: 30px;
-  padding: 20px;
-  background-color: #f8f9fa;
-  border-radius: 6px;
-  border-left: 4px solid #667eea;
-}
-
-.review-section h5 {
-  color: #667eea;
-  font-weight: 600;
-  margin-bottom: 15px;
-  display: flex;
-  align-items: center;
-}
-
-.review-section h5 i {
-  margin-right: 10px;
-  font-size: 1.2em;
-}
-
-.review-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 0;
-  border-bottom: 1px solid #dee2e6;
-}
-
-.review-item:last-child {
-  border-bottom: none;
-}
-
-.review-item strong {
-  color: #333;
-}
-
-.review-item span {
-  color: #666;
-}
-
-.registration-success {
-  text-align: center;
-  padding: 40px 20px;
-}
-
-.registration-success i {
-  font-size: 4rem;
-  color: #28a745;
-  margin-bottom: 20px;
-}
-
-.registration-success h3 {
-  color: #28a745;
-  margin-bottom: 10px;
-}
-
-.registration-success p {
-  color: #666;
-  margin-bottom: 20px;
-}
-
-.registration-error {
-  text-align: center;
-  padding: 40px 20px;
-}
-
-.registration-error i {
-  font-size: 4rem;
-  color: #dc3545;
-  margin-bottom: 20px;
-}
-
-.registration-error h3 {
-  color: #dc3545;
-  margin-bottom: 10px;
-}
-
-.registration-error p {
-  color: #666;
-  margin-bottom: 20px;
-}
-
-/* ── Mobile Responsive Overrides ───────────────────────────────── */
 @media (max-width: 767.98px) {
   .register-box {
     width: 100%;
@@ -450,7 +252,6 @@
     font-size: 16px;
   }
 
-  /* Member card spacing */
   .member-card .card-header {
     padding: 10px 14px;
   }
@@ -471,14 +272,13 @@
   .member-card .input-group > .input-group-text:last-child {
     flex: 0 0 100%;
     width: 100%;
-    border-top: 1px solid #ced4da;
-    border-left: 1px solid #ced4da;
+    border-top: 1px solid var(--register-input-border);
+    border-left: 1px solid var(--register-input-border);
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     font-size: 0.8rem;
   }
 
-  /* Nav buttons: full-width stacked on mobile */
   .bs-stepper .content > .mb-3:last-child {
     display: flex;
     flex-direction: column-reverse;
@@ -490,18 +290,15 @@
     margin-right: 0;
   }
 
-  /* Family count badge */
   .family-count-badge {
     padding: 4px 10px;
     font-size: 12px;
   }
 
-  /* Review cards */
   .register-box .card-body {
     padding: 16px;
   }
 
-  /* Register logo */
   .register-logo {
     margin-bottom: 12px;
   }

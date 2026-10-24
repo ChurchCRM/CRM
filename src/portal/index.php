@@ -2,6 +2,9 @@
 
 require_once __DIR__ . '/../Include/LoadConfigs.php';
 
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Plugin\PluginManager;
+use ChurchCRM\Portal\Auth\PortalSessionMiddleware;
 use ChurchCRM\Portal\PortalAccessMiddleware;
 use ChurchCRM\Portal\PortalTwig;
 use ChurchCRM\Slim\Middleware\CSRFMiddleware;
@@ -29,8 +32,11 @@ $app = MvcAppFactory::create('/portal', [
 // logged-out asset request.
 require __DIR__ . '/routes/theme-asset.php';
 
-// Everything else is a portal page: signed-in session, no API keys, CSRF on
-// every state-changing request.
+PluginManager::init(SystemURLs::getDocumentRoot() . '/plugins');
+
+// Everything else is a portal page: a portal session (member sign-in design
+// §5), no API keys, CSRF on every state-changing request. Active plugins add
+// their pages under /portal/plugins/{id} (§8.5).
 $app->group('', function (RouteCollectorProxy $group): void {
     require __DIR__ . '/routes/home.php';
     require __DIR__ . '/routes/calendar.php';
@@ -39,6 +45,7 @@ $app->group('', function (RouteCollectorProxy $group): void {
     require __DIR__ . '/routes/email.php';
     require __DIR__ . '/routes/profile.php';
     require __DIR__ . '/routes/family.php';
-})->add(new CSRFMiddleware())->add(new PortalAccessMiddleware());
+    PluginManager::registerPortalRoutes($group, PluginManager::PORTAL_PAGES);
+})->add(new CSRFMiddleware())->add(new PortalAccessMiddleware())->add(new PortalSessionMiddleware());
 
 $app->run();
