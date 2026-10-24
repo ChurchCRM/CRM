@@ -206,7 +206,8 @@ describe("Admin → Member Portal members, audit, permissions and the person car
         cy.visit("/admin/member-portal#portal-permissions");
         cy.get('#portalPermissionsTable tr[data-capability="portal.family.edit"]')
             .should("contain.text", "Change family details")
-            .and("contain.text", "Adult of the family");
+            .and("contain.text", "Adult of the family")
+            .and("not.contain.text", "Given by an administrator");
         cy.get('#portalPermissionsTable tr[data-capability="volunteer.team.manage"]').should("contain.text", "Team leader");
         cy.get('#portalPermissionsTable tr[data-capability="portal.family.edit"] .portal-holders-open').click();
         cy.get("#portalHoldersModal").should("be.visible");
@@ -243,6 +244,8 @@ describe("Admin → Member Portal members, audit, permissions and the person car
             .and("contain.text", "Manage a team")
             .and("contain.text", `${PREFIX} Hospitality`)
             .and("contain.text", "Leads the greeters this autumn");
+        cy.visit("/admin/member-portal#portal-permissions");
+        cy.get('#portalPermissionsTable tr[data-capability="volunteer.team.manage"]').should("contain.text", "Given by an administrator: 1");
 
         signInAs("limited.user");
         portalNavLabels().should("include", "My Teams");

@@ -62,10 +62,8 @@ function sourceBadges(capability: Capability): string {
           : source.source === "everyone"
             ? "bg-green text-white"
             : "bg-purple text-white";
-      const label =
-        source.source === "given" && capability.givenCount > 0
-          ? `${source.label}: ${capability.givenCount}`
-          : source.label;
+      // The server lists "given" only when someone holds it that way; the number is how many people.
+      const label = source.source === "given" ? `${source.label}: ${capability.givenCount}` : source.label;
       return `<span class="badge ${tone} me-1 mb-1">${escapeHtml(label)}</span>`;
     })
     .join("");

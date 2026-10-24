@@ -101,7 +101,9 @@ describe("Admin → Member Portal permissions and given grants", () => {
             const edit = capabilities["portal.family.edit"];
             expect(edit.owner).to.eq("core");
             expect(edit.scopeType).to.eq("family");
-            expect(edit.sources.map((source) => source.label)).to.deep.eq(["Adult of the family", "Given by an administrator"]);
+            // "Given by an administrator" is listed only once someone was given it.
+            expect(edit.sources.map((source) => source.label)).to.deep.eq(["Adult of the family"]);
+            expect(edit.givenCount).to.eq(0);
             expect(capabilities["portal.profile.edit"].sources[0].label).to.eq("Everyone");
 
             const roster = capabilities[ROSTER];
@@ -190,9 +192,14 @@ describe("Admin → Member Portal permissions and given grants", () => {
             catalog().then((capabilities) => {
                 expect(capabilities[NOTICES].holderCount).to.eq(1);
                 expect(capabilities[NOTICES].givenCount).to.eq(1);
+                expect(capabilities[NOTICES].sources.map((source) => source.source)).to.include("given");
             });
             holders(NOTICES).its("rows.0.personId").should("eq", OTHER);
             cy.makePrivateAdminAPICall("POST", `${grants(OTHER)}/${body.grantId}/remove`, null, 200);
+            catalog().then((capabilities) => {
+                expect(capabilities[NOTICES].givenCount).to.eq(0);
+                expect(capabilities[NOTICES].sources.map((source) => source.source)).to.not.include("given");
+            });
         });
     });
 

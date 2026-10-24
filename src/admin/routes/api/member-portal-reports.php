@@ -167,9 +167,9 @@ function getMemberSignInAuditAPI(Request $request, Response $response): Response
  *             @OA\Property(property="owner", type="string", example="core"),
  *             @OA\Property(property="scopeType", type="string", example="team"),
  *             @OA\Property(property="status", type="string", example="on"),
- *             @OA\Property(property="sources", type="array", @OA\Items(type="object")),
+ *             @OA\Property(property="sources", type="array", description="The rules that grant it, and 'given' only when someone was given it", @OA\Items(type="object")),
  *             @OA\Property(property="holderCount", type="integer"),
- *             @OA\Property(property="givenCount", type="integer")
+ *             @OA\Property(property="givenCount", type="integer", description="Holders who were given it by an administrator")
  *         )))
  *     ),
  *     @OA\Response(response=403, description="Admin role required")

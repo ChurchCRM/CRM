@@ -7,7 +7,8 @@
 ?>
 <div class="tab-pane fade" id="portal-permissions" role="tabpanel">
     <p class="text-secondary" id="portalPermissionsLead">
-        <?= gettext('What members can see and do in the portal, and where each permission comes from. People are counted among everyone the sign-in rules let in, and staff. Give a permission to one person on their page.') ?>
+        <?= gettext('What members can see and do in the portal, and where each permission comes from. People are counted among everyone the sign-in rules let in, and staff.') ?>
+        <?= gettext('An administrator can give any permission to one person on that person\'s page. "Given by an administrator" then shows here, with the number of people who were given it.') ?>
     </p>
     <div class="card">
         <div class="table-clip-x">

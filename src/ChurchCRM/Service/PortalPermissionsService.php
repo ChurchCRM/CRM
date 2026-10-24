@@ -61,25 +61,28 @@ final class PortalPermissionsService
                 }
             }
             $sources += $this->observedSources[$key] ?? [];
+            $sources = array_map(
+                static fn (string $ruleKey, string $label): array => [
+                    'source' => $ruleKey === EveryoneRule::KEY ? EffectiveGrant::SOURCE_EVERYONE : EffectiveGrant::SOURCE_RULE,
+                    'ruleKey' => $ruleKey,
+                    'label' => $label,
+                ],
+                array_keys($sources),
+                array_values($sources),
+            );
+            // Any capability can be given, so "given" is listed only where someone actually holds it that way.
+            $givenCount = self::givenCount($holders[$key] ?? []);
+            if ($givenCount > 0) {
+                $sources[] = ['source' => EffectiveGrant::SOURCE_GIVEN, 'ruleKey' => null, 'label' => gettext('Given by an administrator')];
+            }
 
             $rows[] = $capability + [
                 'ownerName' => PortalGrantService::ownerName($capability['owner']),
                 'statusLabel' => PortalGrantService::statusLabel($capability['status']),
                 'scopeLabel' => PortalGrantService::scopeTypeLabel($capability['scopeType']),
-                'sources' => array_merge(
-                    array_map(
-                        static fn (string $ruleKey, string $label): array => [
-                            'source' => $ruleKey === EveryoneRule::KEY ? EffectiveGrant::SOURCE_EVERYONE : EffectiveGrant::SOURCE_RULE,
-                            'ruleKey' => $ruleKey,
-                            'label' => $label,
-                        ],
-                        array_keys($sources),
-                        array_values($sources),
-                    ),
-                    [['source' => EffectiveGrant::SOURCE_GIVEN, 'ruleKey' => null, 'label' => gettext('Given by an administrator')]],
-                ),
+                'sources' => $sources,
                 'holderCount' => count($holders[$key] ?? []),
-                'givenCount' => $this->givenCount($key),
+                'givenCount' => $givenCount,
             ];
         }
 
@@ -240,9 +243,25 @@ final class PortalPermissionsService
         return $this->holders = $holders;
     }
 
-    private function givenCount(string $capability): int
+    /**
+     * The holders who hold a capability by a given grant, counted once each
+     * however many scopes they were given it on.
+     *
+     * @param array<int, list<array<string, mixed>>> $byPerson
+     */
+    private static function givenCount(array $byPerson): int
     {
-        return $this->givenGrantsQuery()->filterByCapability($capability)->count();
+        $count = 0;
+        foreach ($byPerson as $grants) {
+            foreach ($grants as $grant) {
+                if ($grant['source'] === EffectiveGrant::SOURCE_GIVEN) {
+                    $count++;
+                    break;
+                }
+            }
+        }
+
+        return $count;
     }
 
     private function givenGrantsQuery(): PortalGrantQuery
