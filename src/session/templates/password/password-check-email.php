@@ -10,10 +10,10 @@ $sBodyClass = 'page-auth page-login';
 require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
 ?>
 <main id="main-content" class="forgot-password-container">
-  <div class="forgot-password-card bg-body text-body">
-    <div class="forgot-password-card-logo bg-white rounded"><?= ChurchLogo::img() ?></div>
-    <h2 class="text-body"><?= InputUtils::escapeHTML(ChurchMetaData::getChurchName()) ?></h2>
-    <p class="login-header-tagline text-secondary"><?= gettext('Password Recovery') ?></p>
+  <div class="forgot-password-card">
+    <div class="forgot-password-card-logo"><?= ChurchLogo::img() ?></div>
+    <h2><?= InputUtils::escapeHTML(ChurchMetaData::getChurchName()) ?></h2>
+    <p class="login-header-tagline"><?= gettext('Password Recovery') ?></p>
 
     <div class="alert alert-success text-center" role="status">
       <i class="fa-solid fa-circle-check fa-2x mb-2 d-block"></i>
