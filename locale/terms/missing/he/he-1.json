@@ -1,4 +1,4 @@
 {
-  "%d Giving Statement": "",
-  "Repeat events could not be created. Check the application log for details.": ""
+  "%d Giving Statement": "הצהרת תרומות %d",
+  "Repeat events could not be created. Check the application log for details.": "לא ניתן היה ליצור אירועים חוזרים. בדוק את יומן היישום לפרטים."
 }

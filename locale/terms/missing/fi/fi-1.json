@@ -1,4 +1,4 @@
 {
-  "%d Giving Statement": "",
-  "Repeat events could not be created. Check the application log for details.": ""
+  "%d Giving Statement": "%d Lahjoitusilmoitus",
+  "Repeat events could not be created. Check the application log for details.": "Toistuvia tapahtumia ei voitu luoda. Tarkista sovelluksen loki lisätietoja varten."
 }

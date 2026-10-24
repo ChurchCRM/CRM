@@ -1,4 +1,4 @@
 {
-  "%d Giving Statement": "",
-  "Repeat events could not be created. Check the application log for details.": ""
+  "%d Giving Statement": "%d Výkaz darov",
+  "Repeat events could not be created. Check the application log for details.": "Opakujúce sa udalosti sa nepodarilo vytvoriť. Podrobnosti nájdete v protokole aplikácie."
 }

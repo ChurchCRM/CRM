@@ -1,4 +1,4 @@
 {
-  "%d Giving Statement": "",
-  "Repeat events could not be created. Check the application log for details.": ""
+  "%d Giving Statement": "Declarație de donații %d",
+  "Repeat events could not be created. Check the application log for details.": "Evenimentele repetitive nu au putut fi create. Verificați jurnalul aplicației pentru detalii."
 }

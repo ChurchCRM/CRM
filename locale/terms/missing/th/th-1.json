@@ -1,4 +1,4 @@
 {
-  "%d Giving Statement": "",
-  "Repeat events could not be created. Check the application log for details.": ""
+  "%d Giving Statement": "ใบแจ้งการถวาย %d",
+  "Repeat events could not be created. Check the application log for details.": "ไม่สามารถสร้างกิจกรรมซ้ำได้ โปรดตรวจสอบบันทึกแอปพลิเคชันสำหรับรายละเอียด"
 }

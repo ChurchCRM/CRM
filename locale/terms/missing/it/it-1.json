@@ -1,4 +1,4 @@
 {
-  "%d Giving Statement": "",
-  "Repeat events could not be created. Check the application log for details.": ""
+  "%d Giving Statement": "Dichiarazione delle offerte %d",
+  "Repeat events could not be created. Check the application log for details.": "Impossibile creare gli eventi ripetuti. Controllare il registro dell'applicazione per i dettagli."
 }

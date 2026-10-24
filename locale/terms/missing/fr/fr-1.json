@@ -1,4 +1,4 @@
 {
-  "%d Giving Statement": "",
-  "Repeat events could not be created. Check the application log for details.": ""
+  "%d Giving Statement": "Relevé de dons %d",
+  "Repeat events could not be created. Check the application log for details.": "Les événements récurrents n'ont pas pu être créés. Consultez le journal de l'application pour plus de détails."
 }

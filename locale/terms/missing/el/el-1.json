@@ -1,4 +1,4 @@
 {
-  "%d Giving Statement": "",
-  "Repeat events could not be created. Check the application log for details.": ""
+  "%d Giving Statement": "%d Δήλωση Δωρεών",
+  "Repeat events could not be created. Check the application log for details.": "Δεν ήταν δυνατή η δημιουργία επαναλαμβανόμενων εκδηλώσεων. Ελέγξτε το αρχείο καταγραφής της εφαρμογής για λεπτομέρειες."
 }

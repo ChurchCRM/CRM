@@ -1,4 +1,4 @@
 {
-  "%d Giving Statement": "",
-  "Repeat events could not be created. Check the application log for details.": ""
+  "%d Giving Statement": "%d Spendenübersicht",
+  "Repeat events could not be created. Check the application log for details.": "Wiederholende Ereignisse konnten nicht erstellt werden. Überprüfen Sie das Anwendungsprotokoll für Details."
 }
