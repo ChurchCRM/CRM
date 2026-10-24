@@ -33,6 +33,7 @@ enum SignInAuditEvent: string
     {
         return match ($this) {
             self::EMAIL_REQUESTED => gettext('Sign-in email requested'),
+            self::REQUEST_CANCELLED => gettext('Emailed sign-in code and link cancelled'),
             self::SIGNED_IN => gettext('Signed in'),
             self::REFUSED => gettext('Sign-in refused'),
             self::THROTTLED => gettext('Too many attempts'),
