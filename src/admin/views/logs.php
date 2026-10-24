@@ -96,7 +96,7 @@ $currentLevelLabel = $logLevelMap[$currentLogLevel] ?? 'INFO';
                             </span>
                         </div>
                         <div class="col">
-                            <button class="btn btn-sm btn-danger" id="deleteAllLogs" style="width: auto; padding: 0.25rem 0.75rem;">
+                            <button class="btn btn-sm btn-danger admin-delete-logs-btn" id="deleteAllLogs">
                                 <?= gettext('Delete All') ?>
                             </button>
                         </div>
@@ -190,7 +190,7 @@ $currentLevelLabel = $logLevelMap[$currentLogLevel] ?? 'INFO';
                 </div>
                 <div class="mb-3">
                     <label><?= gettext('Number of lines to display') ?>:</label>
-                    <select class="form-select form-select-sm" id="logLinesLimit" style="width: auto; display: inline-block;">
+                    <select class="form-select form-select-sm w-auto d-inline-block" id="logLinesLimit">
                         <option value="50">50</option>
                         <option value="100" selected>100</option>
                         <option value="500">500</option>
@@ -198,7 +198,7 @@ $currentLevelLabel = $logLevelMap[$currentLogLevel] ?? 'INFO';
                         <option value="all"><?= gettext('All') ?></option>
                     </select>
                 </div>
-                <pre id="logContent" class="bg-body-tertiary text-body border" style="max-height: 500px; overflow-y: auto; padding: 10px; border-radius: 4px; font-size: 12px; font-family: Menlo, Monaco, Consolas, 'Liberation Mono', monospace;"><code style="color: inherit; white-space: pre-wrap;"></code></pre>
+                <pre id="logContent" class="bg-body-tertiary text-body border admin-log-content"><code></code></pre>
                 <div id="logLoading" class="d-none text-center p-3">
                     <i class="fa-solid fa-spinner fa-spin fa-3x"></i>
                     <p><?= gettext('Loading log file...') ?></p>

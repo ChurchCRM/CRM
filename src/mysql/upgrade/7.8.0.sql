@@ -152,7 +152,7 @@ ALTER TABLE `calendars`
 -- ============================================================================
 
 -- ChurchCRM 7.8.0 — Volunteer Management v2 core domain model
--- Implements #9705 (epic #9701); design: .agents/skills/churchcrm/volunteer-v2-design.md §2
+-- Implements #9705 (epic #9701); design: docs/design/volunteer-v2.md §2
 --
 -- Why these tables exist at all, in one line each (the long form, with the
 -- evidence that reuse was insufficient, is design §8.1):

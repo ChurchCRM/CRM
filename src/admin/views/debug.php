@@ -170,7 +170,7 @@ $fmtBytes = static function ($bytes): string {
 <div class="debug-env">
     <div class="card">
         <div class="card-header" id="headingEnvironment">
-            <h4 data-bs-toggle="collapse" data-bs-target="#collapseEnvironment" aria-expanded="false" aria-controls="collapseEnvironment" style="cursor: pointer;">
+            <h4 data-bs-toggle="collapse" data-bs-target="#collapseEnvironment" aria-expanded="false" aria-controls="collapseEnvironment" class="cursor-pointer">
                 <i class="fa fa-server me-2"></i><?= gettext('Environment') ?>
                 <i class="fa fa-chevron-down float-end"></i>
             </h4>
@@ -228,7 +228,7 @@ $fmtBytes = static function ($bytes): string {
                                         <td>
                                             <div class="d-flex align-items-center gap-2">
                                                 <span class="flex-grow-1"><?= $fmtBytes($diskTotal - $diskFree) ?> <span class="text-body-secondary">/ <?= $fmtBytes($diskTotal) ?></span></span>
-                                                <div class="progress flex-grow-1" style="max-width: 200px; height: 6px;">
+                                                <div class="progress flex-grow-1 admin-progress-hairline-disk">
                                                     <div class="progress-bar <?= $usedPct > 90 ? 'bg-danger' : ($usedPct > 75 ? 'bg-warning' : 'bg-success') ?>" style="width: <?= $usedPct ?>%;"></div>
                                                 </div>
                                                 <small class="text-body-secondary"><?= $usedPct ?>%</small>
@@ -304,7 +304,7 @@ $fmtBytes = static function ($bytes): string {
                             sort($modules);
                         ?>
                             <p class="text-body-secondary small mb-2"><?= sprintf(gettext('%d modules loaded'), count($modules)) ?></p>
-                            <div class="d-flex flex-wrap gap-1" style="max-height: 240px; overflow-y: auto;">
+                            <div class="d-flex flex-wrap gap-1 admin-scroll-240">
                                 <?php foreach ($modules as $module): ?>
                                     <span class="badge bg-light text-dark"><?= InputUtils::escapeHTML($module) ?></span>
                                 <?php endforeach; ?>
@@ -324,7 +324,7 @@ $fmtBytes = static function ($bytes): string {
                             <thead>
                                 <tr>
                                     <th><?= gettext('Language') ?></th>
-                                    <th style="text-align: center; width: 100px;"><?= gettext('Installed on Server') ?></th>
+                                    <th class="text-center admin-col-100"><?= gettext('Installed on Server') ?></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -332,10 +332,10 @@ $fmtBytes = static function ($bytes): string {
                                     <?php foreach ($localeInfo['supportedLocales'] as $locale): ?>
                                         <tr>
                                             <td>
-                                                <div style="font-weight: 500; font-size: 0.95em;"><?= InputUtils::escapeHTML($locale['name']) ?></div>
-                                                <small class="text-body-secondary" style="font-size: 0.85em;"><?= InputUtils::escapeHTML($locale['locale']) ?></small>
+                                                <div class="debug-locale-name"><?= InputUtils::escapeHTML($locale['name']) ?></div>
+                                                <small class="text-body-secondary debug-locale-code"><?= InputUtils::escapeHTML($locale['locale']) ?></small>
                                             </td>
-                                            <td style="text-align: center; vertical-align: middle;">
+                                            <td class="text-center align-middle">
                                                 <?php if ($locale['systemAvailable']): ?>
                                                     <span class="badge bg-green-lt text-green"><i class="fa fa-check me-1"></i><?= gettext('Yes') ?></span>
                                                 <?php else: ?>
@@ -413,7 +413,7 @@ $fmtBytes = static function ($bytes): string {
     <div class="card <?= $prereqFailingCount === 0 ? '' : 'border-warning' ?>">
             <div class="card-status-top <?= $prereqFailingCount === 0 ? 'bg-success' : 'bg-warning' ?>"></div>
             <div class="card-header" id="headingPrerequisites">
-                <h4 data-bs-toggle="collapse" data-bs-target="#collapsePrerequisites" aria-expanded="false" aria-controls="collapsePrerequisites" style="cursor: pointer;">
+                <h4 data-bs-toggle="collapse" data-bs-target="#collapsePrerequisites" aria-expanded="false" aria-controls="collapsePrerequisites" class="cursor-pointer">
                     <i class="fa fa-circle-check me-2"></i><?= gettext('Application Prerequisites') ?>
                     <?php if ($prereqFailingCount > 0): ?>
                         <span class="badge bg-warning text-dark ms-2"><?= $prereqFailingCount ?></span>
@@ -456,7 +456,7 @@ $fmtBytes = static function ($bytes): string {
          actionable "does the system support your chosen locale?" state
          remains as a chip in the top status banner. -->
     <!-- Email — extracted from the old "System & Configuration" card so the
-         SMTP status is discoverable at a glance and the /admin/system/debug/email
+         SMTP status is discoverable at a glance and the /admin/email/debug
          page has an inbound entry point. -->
     <?php $mailOk = SystemConfig::hasValidMailServerSettings(); ?>
     <div class="col-12 col-lg-6">
@@ -466,7 +466,7 @@ $fmtBytes = static function ($bytes): string {
             <h4 class="mb-0">
                 <i class="fa fa-envelope me-2"></i><?= gettext('Email') ?>
             </h4>
-            <a href="<?= SystemURLs::getRootPath() ?>/admin/system/debug/email" class="btn btn-sm <?= $mailOk ? 'btn-outline-secondary' : 'btn-warning' ?> ms-auto" title="<?= gettext('Open the email debug tester') ?>">
+            <a href="<?= SystemURLs::getRootPath() ?>/admin/email/debug" class="btn btn-sm <?= $mailOk ? 'btn-outline-secondary' : 'btn-warning' ?> ms-auto" title="<?= gettext('Open the email debug tester') ?>">
                 <i class="fa fa-vial me-1"></i><?= gettext('Test') ?>
             </a>
         </div>
@@ -497,7 +497,7 @@ $fmtBytes = static function ($bytes): string {
     <div class="card <?= $serverConfigMismatch ? 'border-warning' : '' ?>">
             <div class="card-status-top <?= $serverConfigMismatch ? 'bg-warning' : 'bg-success' ?>"></div>
             <div class="card-header" id="headingTimezone">
-                <h4 data-bs-toggle="collapse" data-bs-target="#collapseTimezone" aria-expanded="false" aria-controls="collapseTimezone" style="cursor: pointer;">
+                <h4 data-bs-toggle="collapse" data-bs-target="#collapseTimezone" aria-expanded="false" aria-controls="collapseTimezone" class="cursor-pointer">
                     <i class="fa fa-clock me-2"></i><?= gettext('Timezone Information') ?>
                     <?php if ($serverConfigMismatch): ?>
                         <i class="fa fa-triangle-exclamation text-warning ms-2" id="tz-header-alert" title="<?= gettext('Timezone mismatch detected') ?>"></i>
@@ -641,65 +641,6 @@ $fmtBytes = static function ($bytes): string {
     </div>
     </div>
 </div>
-
-<style nonce="<?= SystemURLs::getCSPNonce() ?>">
-.bg-warning-light {
-    background-color: rgba(255, 193, 7, 0.1) !important;
-}
-
-/* Environment card sits full-width above the grid — its tabs + wide
-   code values (DSN, paths, Apache module list) need the whole row. */
-.debug-env {
-    margin-bottom: 1rem;
-}
-
-/* Deterministic chevron placement on collapsible headers — no floats. */
-.debug-env .card-header h4[data-bs-toggle="collapse"],
-.debug-grid .card-header h4[data-bs-toggle="collapse"] {
-    display: flex;
-    align-items: center;
-    margin-bottom: 0;
-}
-.debug-env .card-header h4[data-bs-toggle="collapse"] .fa-chevron-down,
-.debug-env .card-header h4[data-bs-toggle="collapse"] .fa-chevron-up,
-.debug-grid .card-header h4[data-bs-toggle="collapse"] .fa-chevron-down,
-.debug-grid .card-header h4[data-bs-toggle="collapse"] .fa-chevron-up {
-    margin-left: auto;
-}
-
-/* Environment tabs wrap on narrow widths. */
-.debug-env .nav-tabs { flex-wrap: wrap; }
-
-/* Key/value reference tables — left column = label, right column = value.
-   Caps the label width so long values get room to breathe. */
-.debug-kv > tbody > tr > td:first-child {
-    width: 220px;
-    color: var(--tblr-secondary);
-    font-weight: 500;
-}
-.debug-kv > tbody > tr > td {
-    vertical-align: middle;
-}
-
-/* Inline code chip used for paths / DSN / values. */
-.debug-code {
-    background: var(--tblr-bg-surface-secondary, #f1f5f9);
-    padding: 0.15rem 0.4rem;
-    border-radius: 4px;
-    font-size: 0.85rem;
-    font-family: var(--tblr-font-monospace, monospace);
-    word-break: break-all;
-}
-
-/* Status-banner chips — roomier than a plain Bootstrap badge so icon +
-   label + count don't look cramped. */
-.debug-status-chip,
-.card-body .badge.bg-success-lt,
-.card-body .badge.bg-warning-lt {
-    padding: 0.35em 0.6em;
-    font-size: 0.8125rem;
-}
-</style>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     // Translated strings as a JSON object — never embed raw gettext() output

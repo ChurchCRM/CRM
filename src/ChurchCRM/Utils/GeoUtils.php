@@ -4,6 +4,7 @@ namespace ChurchCRM\Utils;
 
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Service\Geocoding\GeocodeOutcome;
 use ChurchCRM\Service\Geocoding\GeocoderChain;
 
 class GeoUtils
@@ -134,9 +135,27 @@ class GeoUtils
             return ['Latitude' => 0.0, 'Longitude' => 0.0];
         }
 
-        $result = GeocoderChain::fromConfig()->geocode(self::normalizeStreet($address), $city, $state, $zip, $country);
+        $result = self::lookup($address, $city, $state, $zip, $country)->result;
 
         return $result === null ? ['Latitude' => 0.0, 'Longitude' => 0.0] : $result->toLatLong();
+    }
+
+    /**
+     * Like getLatLong(), but says why there are no coordinates: not found or unavailable.
+     * Do not store 0/0 for an unavailable answer; the address may resolve on a later try.
+     */
+    public static function lookup(
+        string $address,
+        ?string $city = null,
+        ?string $state = null,
+        ?string $zip = null,
+        ?string $country = null
+    ): GeocodeOutcome {
+        if (empty(trim($address))) {
+            return GeocodeOutcome::notFound();
+        }
+
+        return GeocoderChain::fromConfig()->lookup(self::normalizeStreet($address), $city, $state, $zip, $country);
     }
 
     /**

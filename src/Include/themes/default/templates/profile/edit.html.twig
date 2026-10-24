@@ -94,7 +94,8 @@
 
             <div class="portal-field">
                 <label class="portal-field-label" for="portal-email">{{ gettext('Email') }}</label>
-                <input class="portal-input" type="email" id="portal-email" name="email" value="{{ profile.email }}" autocomplete="email" inputmode="email">
+                <input class="portal-input" type="email" id="portal-email" name="email" value="{{ profile.email }}" autocomplete="email" inputmode="email" readonly>
+                <p class="portal-field-hint">{{ gettext('Ask an administrator to change your sign-in email.') }}</p>
                 <p class="portal-field-error" data-error-for="email" role="alert"></p>
             </div>
 

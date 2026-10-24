@@ -143,6 +143,7 @@ function main() {
         title: meta.title || workflow,
         category: meta.category || null,
         dark: meta.dark || null,
+        usedIn: meta.usedIn || [],
       });
     }
   }

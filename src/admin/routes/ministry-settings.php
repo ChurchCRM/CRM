@@ -19,18 +19,17 @@ use Slim\Views\PhpRenderer;
 // MvcAppFactory::create(), and AdminRoleAuthMiddleware gates the whole app, so
 // this page is administrators-only without any check of its own.
 //
-// The one home of the Volunteer Management settings (product-owner decision,
-// 2026-09-18, following the Member Portal precedent; the scheduling horizon and
-// the default event type joined them with D31): the rollout state and the
-// reminder lead time used to sit in an admin-only strip on the Ministry
-// Dashboard, which only exists once V2 is on — so the switch that turns V2 on
-// could not be reached from the page that held it. They are deliberately in no
-// System Settings category any more, so this page is where they live.
+// The one home of the Volunteer Management settings, following the Member Portal
+// precedent. They are deliberately in no System Settings category. The page only
+// exists while V2 is on; the V1 / V2 / Both switch is on Feature Toggles.
 $ministrySettingsHandler = function (Request $request, Response $response): Response {
-    $renderer = new PhpRenderer(__DIR__ . '/../views/');
+    // The rollout state (V1 / V2 / Both) is switched on the Feature Toggles page; these
+    // settings only mean something once V2 is on.
+    if (!User::isVolunteerV2Enabled()) {
+        return $response->withHeader('Location', SystemURLs::getRootPath() . '/admin/system/feature-toggles')->withStatus(302);
+    }
 
-    $version = User::getVolunteerVersion();
-    $v2Enabled = User::isVolunteerV2Enabled();
+    $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
     // Delivery health, installation-wide (this is an administrator's page, so
     // no coordinator scoping): terminal failures are the number to act on,
@@ -76,23 +75,19 @@ $ministrySettingsHandler = function (Request $request, Response $response): Resp
             : sprintf(gettext('Not set: use "%s"'), VolunteerEventService::OTHER_EVENT_TYPE_NAME),
     ]);
 
-    $headerButtons = $v2Enabled
-        ? PageHeader::buttons([
-            ['label' => gettext('Open the Ministry Dashboard'), 'url' => '/ministries/dashboard', 'icon' => 'fa-arrow-up-right-from-square'],
-        ])
-        : '';
+    $headerButtons = PageHeader::buttons([
+        ['label' => gettext('Open the Ministry Dashboard'), 'url' => '/ministries/dashboard', 'icon' => 'fa-arrow-up-right-from-square'],
+    ]);
 
     return $renderer->render($response, 'ministry-settings.php', [
         'sRootPath' => SystemURLs::getRootPath(),
         'sPageTitle' => gettext('Ministry Settings'),
-        'sPageSubtitle' => gettext('Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running.'),
+        'sPageSubtitle' => gettext('Choose how far ahead schedules are filled and when reminders go out, and check that the background jobs are running.'),
         'aBreadcrumbs' => PageHeader::breadcrumbs([
             [gettext('Admin'), '/admin/'],
             [gettext('Ministry Settings')],
         ]),
         'sPageHeaderButtons' => $headerButtons,
-        'sVersion' => $version,
-        'bV2Enabled' => $v2Enabled,
         'iLeadHours' => (int) SystemConfig::getValue('iVolunteerReminderLeadHours'),
         'iHorizonWeeks' => VolunteerScheduleService::horizonWeeks(),
         'iMinHorizonWeeks' => VolunteerScheduleService::MIN_HORIZON_WEEKS,

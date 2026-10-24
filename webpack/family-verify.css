@@ -1,5 +1,5 @@
 body {
-  background-color: #f8f9fa;
+  background-color: var(--tblr-bg-surface-secondary);
 }
 
 .card {
@@ -8,7 +8,7 @@ body {
 }
 
 .card-header {
-  border-bottom: 2px solid #e9ecef;
+  border-bottom: 2px solid var(--tblr-border-color);
   border-radius: 8px 8px 0 0;
 }
 
@@ -42,12 +42,6 @@ body {
 .contact-info {
   text-align: center;
   margin-top: 0.5rem;
-}
-
-.contact-info .small {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .btn-close-white {

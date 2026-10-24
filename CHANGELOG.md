@@ -10,6 +10,7 @@ Release notes are stored in the [`changelog/`](./changelog/) folder — one file
 
 | Version | Date | Highlights |
 |---------|------|------------|
+| [7.8.1](./changelog/7.8.1.md) | October 2026 | Student & Children’s Ministry Workflows, Volunteer & Team Coordination, Congregational Communication |
 | [7.8.0](./changelog/7.8.0.md) | October 2026 | Member Portal, Volunteer Scheduling, Your Church's Logo, Fund Categories and Tax Statements, Safer Sign-in |
 | [7.7.1](./changelog/7.7.1.md) | September 2026 | Cart Mailing Labels, Refreshed Branding, Clearer Translations, Smoother Admin Settings |
 | [7.7.0](./changelog/7.7.0.md) | September 2026 | Exciting New Features, 🛠️ Enhancements & Improvements, Global Language Polish |

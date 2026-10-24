@@ -419,29 +419,59 @@ describe("Member Portal API — /api/portal/me and /api/portal/family", () => {
             });
         });
 
+        const proposeMember = (firstName, role) => {
+            portalLogin(adultUser);
+            withCsrfToken((token) => {
+                portalPost("/api/portal/family/members", { firstName, lastName: "Black", role }, token, 200).then(
+                    (response) => {
+                        createdPersonIds.push(response.body.personId);
+                        cy.wrap(response.body.personId).as("proposedId");
+                    },
+                );
+            });
+            return cy
+                .get("@proposedId")
+                .then((personId) => cy.makePrivateAdminAPICall("GET", `/api/person/${personId}`, null, 200));
+        };
+
         [
-            { role: 1, label: "head of household" },
-            { role: 2, label: "spouse" },
+            { role: 1, label: "Head of Household" },
+            { role: 2, label: "Spouse" },
         ].forEach(({ role, label }) => {
-            it(`files a proposed ${label} as a child until staff review them`, () => {
+            it(`keeps a proposed ${label} role and names it in the family timeline`, () => {
                 const firstName = `Adl${role}${String(Date.now()).slice(-6)}`;
-                portalLogin(adultUser);
-                withCsrfToken((token) => {
-                    portalPost("/api/portal/family/members", { firstName, lastName: "Black", role }, token, 200).then(
-                        (response) => {
-                            createdPersonIds.push(response.body.personId);
-                            cy.makePrivateAdminAPICall(
-                                "GET",
-                                `/api/person/${response.body.personId}`,
-                                null,
-                                200,
-                            ).then((person) => {
-                                // sDirRoleChild defaults to 3.
-                                expect(person.body.FmrId).to.eq(3);
-                            });
-                        },
-                    );
+                proposeMember(firstName, role).then((person) => {
+                    expect(person.body.FmrId).to.eq(role);
+                    expect(person.body.NeedsReview).to.eq(true);
                 });
+
+                cy.makePrivateAdminAPICall("GET", `/api/timeline/family/${LENA_FAMILY_ID}`, null, 200).then(
+                    (response) => {
+                        expect(response.body.timeline.map((item) => item.text)).to.include(
+                            `Added through the Member Portal and waiting for review: ${firstName} Black (${label})`,
+                        );
+                    },
+                );
+            });
+        });
+
+        it("escapes the proposed member's name in the family timeline note", () => {
+            const stamp = String(Date.now()).slice(-6);
+            proposeMember(`D'Ann & Bo${stamp}`, 2);
+
+            cy.makePrivateAdminAPICall("GET", `/api/timeline/family/${LENA_FAMILY_ID}`, null, 200).then(
+                (response) => {
+                    expect(response.body.timeline.map((item) => item.text)).to.include(
+                        `Added through the Member Portal and waiting for review: D&#039;Ann &amp; Bo${stamp} Black (Spouse)`,
+                    );
+                },
+            );
+        });
+
+        it("files a role the installation does not offer under the child role", () => {
+            proposeMember(`Unk${String(Date.now()).slice(-6)}`, 99).then((person) => {
+                // sDirRoleChild defaults to 3.
+                expect(person.body.FmrId).to.eq(3);
             });
         });
 

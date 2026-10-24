@@ -154,6 +154,18 @@ describe("API Private Group Operations", () => {
             });
         });
 
+        it("rejects an existing option ID from a different list when adding a member", () => {
+            // Role 8 exists in custom-field type list 4 but not in group 1's
+            // teacher/student list. Rejection must not create a membership.
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/groups/${groupID}/addperson/${testPersonId}`,
+                { RoleID: 8 },
+                400
+            );
+            expectTestPersonAbsent();
+        });
+
         it("Add member to group via POST addperson", () => {
             // Test adding a person to a group (person ID 1)
             addTestPerson(initialRoleId).then((resp) => {
@@ -361,6 +373,17 @@ describe("API Private Group Operations", () => {
                 expect(resp.body).to.exist;
                 expect(resp.body).to.have.property("status");
             });
+        });
+
+        it("rejects default roles that belong to other lists", () => {
+            // This group's one default role has OptionId 1; OptionId 8 exists
+            // elsewhere in list_lst and must never become the group default.
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/groups/${scratchGroupId}/defaultRole`,
+                { roleID: 8 },
+                400
+            );
         });
 
         it("Set default role for group", () => {

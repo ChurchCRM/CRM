@@ -72,15 +72,15 @@ function renderIntro() {
           <p class="text-muted text-center mb-4">${t("Add an extra layer of security to your account")}</p>
           <div class="mb-4">
             <div class="d-flex align-items-start mb-3">
-              <span class="badge bg-primary me-3" style="min-width:28px;padding:6px 0">1</span>
+              <span class="badge bg-primary me-3 two-factor-step-badge">1</span>
               <div><strong>${t("Sign In")}</strong><div class="text-muted small">${t("Enter your username and password as usual")}</div></div>
             </div>
             <div class="d-flex align-items-start mb-3">
-              <span class="badge bg-primary me-3" style="min-width:28px;padding:6px 0">2</span>
+              <span class="badge bg-primary me-3 two-factor-step-badge">2</span>
               <div><strong>${t("One-Time Code")}</strong><div class="text-muted small">${t("Confirm with a code from your authenticator app")}</div></div>
             </div>
             <div class="d-flex align-items-start">
-              <span class="badge bg-primary me-3" style="min-width:28px;padding:6px 0">3</span>
+              <span class="badge bg-primary me-3 two-factor-step-badge">3</span>
               <div><strong>${t("Secure")}</strong><div class="text-muted small">${t("Your account is now protected")}</div></div>
             </div>
           </div>
@@ -134,12 +134,12 @@ function renderQRCode() {
         <div class="card-body">
           <div class="mb-4">
             <h6 class="fw-bold d-flex align-items-center mb-3">
-              <span class="badge bg-primary me-2" style="min-width:24px;padding:4px 0">1</span>${t("Scan QR Code")}
+              <span class="badge bg-primary me-2 two-factor-step-badge-sm">1</span>${t("Scan QR Code")}
             </h6>
             <p class="text-muted small mb-3">${t("Open your authenticator app and scan this QR code")}</p>
             <div class="text-center mb-3">
-              <div class="d-inline-block p-3" style="border:2px solid #dee2e6;border-radius:8px;background-color:#fff">
-                <img id="2faQrCodeDataUri" src="${state.TwoFAQRCodeDataUri}" alt="2FA QR Code" style="max-width:200px;height:auto;display:block">
+              <div class="d-inline-block p-3 two-factor-qr-frame">
+                <img id="2faQrCodeDataUri" src="${state.TwoFAQRCodeDataUri}" alt="2FA QR Code" class="two-factor-qr-image">
               </div>
             </div>
             <p class="text-muted small text-center mb-0">
@@ -149,14 +149,13 @@ function renderQRCode() {
           <hr>
           <div class="mb-3">
             <h6 class="fw-bold d-flex align-items-center mb-3">
-              <span class="badge bg-primary me-2" style="min-width:24px;padding:4px 0">2</span>${t("Verify Code")}
+              <span class="badge bg-primary me-2 two-factor-step-badge-sm">2</span>${t("Verify Code")}
             </h6>
             <p class="text-muted small mb-3">${t("Enter the 6-digit code from your authenticator app")}</p>
             <div class="row justify-content-center">
               <div class="col-sm-8">
-                <input id="totp-input" type="text" maxlength="6" class="form-control form-control-lg text-center"
-                  placeholder="000000" autocomplete="off"
-                  style="font-size:1.75em;letter-spacing:0.5em;font-weight:500;font-family:monospace;border-width:2px;border-color:${state.currentTwoFAPinStatus === "invalid" ? "#dc3545" : "#ced4da"}">
+                <input id="totp-input" type="text" maxlength="6" class="form-control form-control-lg text-center two-factor-pin-input${state.currentTwoFAPinStatus === "invalid" ? " two-factor-pin-invalid" : ""}"
+                  placeholder="000000" autocomplete="off">
               </div>
             </div>
             <div class="row justify-content-center mt-2" aria-live="polite">
@@ -201,7 +200,7 @@ function renderSuccess() {
               <strong>${t("Important")}:</strong>
               <span class="small">${t("Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app.")}</span>
             </div>
-            <div class="bg-surface-secondary border" style="padding:16px;border-radius:4px;font-family:monospace;font-size:0.9em;line-height:2">
+            <div class="bg-surface-secondary border two-factor-backup-codes">
               ${codesHtml}
             </div>
             <div class="mt-4 d-flex justify-content-between align-items-center flex-wrap gap-2">
@@ -239,7 +238,7 @@ function renderStatusEnabled() {
         </div>
         <div class="card-body">
           <div class="text-center mb-4">
-            <span class="badge bg-success" style="font-size:1em;padding:0.4rem 1rem">
+            <span class="badge bg-success two-factor-enabled-badge">
               <i class="fa-solid fa-circle-check me-1"></i>${t("Enabled")}
             </span>
           </div>

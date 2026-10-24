@@ -3,7 +3,7 @@
 /**
  * Volunteer v2 — Event and Calendar integration (#9713, epic #9701).
  *
- * Normative sections of `.agents/skills/churchcrm/volunteer-v2-design.md`:
+ * Normative sections of `docs/design/volunteer-v2.md`:
  * §2.16 (`events_event.event_ministry_id` and its thirteen touch points),
  * §2.9 (occurrence ↔ event, `ON DELETE SET NULL`), §3.5 (where V2 plugs into
  * the event surfaces) and §4.6 (ministry-linked events — the one per-row event

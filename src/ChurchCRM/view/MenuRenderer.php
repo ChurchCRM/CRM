@@ -30,7 +30,7 @@ class MenuRenderer
         $hasCounters = $menuItem->hasCounters();
         ?>
         <li class="nav-item<?= $isActive ? ' active' : '' ?>">
-            <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center nav-row">
                 <a href="<?= InputUtils::escapeAttribute($menuItem->getURI()) ?>"
                    <?= $menuItem->isExternal() ?"target='_blank'" : '' ?>
                    class="nav-link<?= $isActive ? ' active' : '' ?> flex-fill">
@@ -52,7 +52,7 @@ class MenuRenderer
         $hasCounters = $menuItem->hasCounters();
         ?>
         <li class="nav-item">
-            <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center nav-row">
                 <a class="nav-link flex-fill"
                    href="#<?= $collapseId ?>"
                    data-bs-toggle="collapse"

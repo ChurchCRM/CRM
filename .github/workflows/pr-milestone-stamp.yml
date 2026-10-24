@@ -129,6 +129,10 @@ jobs:
 
             console.log(`Attached issues: ${[...linked].join(', ') || '(none)'}`);
 
+            // A failed milestone write must not stop the issue from closing, or the
+            // next linked issue from being handled.
+            const failures = [];
+
             async function stamp(issueNumber, kind, { forceIfClosed = false } = {}) {
               const issue = (await github.rest.issues.get({
                 owner, repo, issue_number: issueNumber,
@@ -145,29 +149,37 @@ jobs:
               } else if (current && !shouldForce) {
                 console.log(`${kind} #${issueNumber} already on ${current} — leave open item`);
               } else {
-                await github.rest.issues.update({
-                  owner,
-                  repo,
-                  issue_number: issueNumber,
-                  milestone: milestone.number,
-                });
-                console.log(`Stamped ${kind} #${issueNumber} (${issue.state}) → ${version}`);
+                try {
+                  await github.rest.issues.update({
+                    owner,
+                    repo,
+                    issue_number: issueNumber,
+                    milestone: milestone.number,
+                  });
+                  console.log(`Stamped ${kind} #${issueNumber} (${issue.state}) → ${version}`);
+                } catch (e) {
+                  failures.push(`milestone on ${kind} #${issueNumber}: ${e.message}`);
+                }
               }
               if (kind === 'issue' && issue.state === 'open') {
-                await github.rest.issues.update({
-                  owner,
-                  repo,
-                  issue_number: issueNumber,
-                  state: 'closed',
-                  state_reason: 'completed',
-                });
-                await github.rest.issues.createComment({
-                  owner,
-                  repo,
-                  issue_number: issueNumber,
-                  body: `Closed by #${prNumber}. Milestone ${version}.`,
-                });
-                console.log(`Closed issue #${issueNumber}`);
+                try {
+                  await github.rest.issues.update({
+                    owner,
+                    repo,
+                    issue_number: issueNumber,
+                    state: 'closed',
+                    state_reason: 'completed',
+                  });
+                  await github.rest.issues.createComment({
+                    owner,
+                    repo,
+                    issue_number: issueNumber,
+                    body: `Closed by #${prNumber}. Milestone ${version}.`,
+                  });
+                  console.log(`Closed issue #${issueNumber}`);
+                } catch (e) {
+                  failures.push(`close issue #${issueNumber}: ${e.message}`);
+                }
               }
             }
 
@@ -178,5 +190,13 @@ jobs:
             }
 
             for (const n of linked) {
-              await stamp(n, 'issue', { forceIfClosed: true });
+              try {
+                await stamp(n, 'issue', { forceIfClosed: true });
+              } catch (e) {
+                failures.push(`issue #${n}: ${e.message}`);
+              }
+            }
+
+            if (failures.length) {
+              core.setFailed(failures.join('\n'));
             }

@@ -11,7 +11,7 @@
  * allows that many. The baseline only goes down. Rules:
  * .agents/skills/churchcrm/cypress-testing.md "Database access".
  *
- *   npm run lint:cypress-db-access
+ *   npm run lint
  *   node scripts/validate-cypress-db-access.js --report   counts by category and file
  *   node scripts/validate-cypress-db-access.js --update   lower the baseline after a migration
  */
