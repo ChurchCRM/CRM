@@ -519,6 +519,41 @@ function paintSignInCounts(body: SignInSaveResponse): void {
   }
 }
 
+/** Why the saved rule lets nobody in, or "" when it lets someone in. */
+function signInRuleWarning(values: Record<string, string>, maySignInCount: number): string {
+  const noFamilyRole = storedIds(values.sMemberSignInFamilyRoles ?? "").length === 0;
+  const noClassification = storedIds(values.sMemberSignInClassifications ?? "").length === 0;
+  if (noFamilyRole && noClassification) {
+    return t(
+      "Nobody can sign in yet: tick at least one family role and at least one classification under Who may sign in.",
+    );
+  }
+  if (noFamilyRole) {
+    return t("Nobody can sign in yet: tick at least one family role under Who may sign in.");
+  }
+  if (noClassification) {
+    return t("Nobody can sign in yet: tick at least one classification under Who may sign in.");
+  }
+  if (maySignInCount === 0) {
+    return t(
+      "No one matches the sign-in rule yet. Tick more family roles or classifications, or lower the minimum age.",
+    );
+  }
+  return "";
+}
+
+/** The warnings beside the Member sign-in switch and the classifications, shown while member sign-in is on. */
+function paintSignInRuleWarning(values: Record<string, string>, maySignInCount: number): void {
+  const warning = values.bMemberSignIn === "1" ? signInRuleWarning(values, maySignInCount) : "";
+  for (const alert of document.querySelectorAll<HTMLElement>("[data-sign-in-rule-warning]")) {
+    const text = alert.querySelector("[data-sign-in-rule-warning-text]");
+    if (text) {
+      text.textContent = warning;
+    }
+    alert.classList.toggle("d-none", warning === "");
+  }
+}
+
 /** The counts, lists and permissions on the other tabs that follow the sign-in rule. */
 function refreshAfterSignInSave(): void {
   void refreshStatistics();
@@ -526,11 +561,17 @@ function refreshAfterSignInSave(): void {
   void loadPermissionsCatalog();
 }
 
-function confirmMemberSignIn(turningOn: boolean): Promise<boolean> {
+function confirmMemberSignIn(turningOn: boolean, ruleWarning: string): Promise<boolean> {
   const maySignIn = document.getElementById("portalStat-maySignIn")?.textContent?.trim() ?? "";
+  const warning =
+    maySignIn === "0" && ruleWarning !== ""
+      ? `<div class="alert alert-warning mt-3 mb-0" id="memberSignInConfirmWarning">
+           <i class="fa-solid fa-triangle-exclamation me-2"></i>${escapeHtml(ruleWarning)}
+         </div>`
+      : "";
   const message = turningOn
     ? `<p>${escapeHtml(t("Everyone the sign-in rules let in can then sign in to the Member Portal with their own email."))}</p>
-       <p class="mb-0 fw-medium">${escapeHtml(t("People who may sign in: {{total}}", { total: maySignIn }))}</p>`
+       <p class="mb-0 fw-medium">${escapeHtml(t("People who may sign in: {{total}}", { total: maySignIn }))}</p>${warning}`
     : `<p class="mb-0">${escapeHtml(
         t(
           "Members who are signed in now are signed out, and nobody can sign in with their email until member sign-in is turned on again.",
@@ -578,9 +619,13 @@ function wireSignInTab(): void {
   }
 
   const controls = signInControls(form);
-  const config = window.CRM?.memberPortalAdmin as { signInValues?: Record<string, string> } | undefined;
+  const config = window.CRM?.memberPortalAdmin as
+    | { signInValues?: Record<string, string>; maySignInCount?: number }
+    | undefined;
   const saved: Record<string, string> = { ...(config?.signInValues ?? {}) };
+  let maySignInCount = config?.maySignInCount ?? 0;
   let queue: Promise<void> = Promise.resolve();
+  paintSignInRuleWarning(saved, maySignInCount);
 
   const save = async (name: string, control: SignInControl): Promise<void> => {
     const sent = control.read();
@@ -603,6 +648,10 @@ function wireSignInTab(): void {
       control.write(saved[name]);
     }
     paintSignInCounts(body);
+    if (typeof body.maySignInCount === "number") {
+      maySignInCount = body.maySignInCount;
+    }
+    paintSignInRuleWarning(saved, maySignInCount);
     const memberSignIn = form.querySelector<HTMLInputElement>('input[name="bMemberSignIn"]');
     if (memberSignIn && !memberSignIn.checked && document.getElementById("memberSignInEmailProblem")) {
       memberSignIn.disabled = true;
@@ -630,7 +679,7 @@ function wireSignInTab(): void {
       if (turningOn) {
         await refreshStatistics();
       }
-      if (await confirmMemberSignIn(turningOn)) {
+      if (await confirmMemberSignIn(turningOn, signInRuleWarning(saved, maySignInCount))) {
         await save(name, control);
       } else {
         control.write(saved[name] ?? (turningOn ? "0" : "1"));

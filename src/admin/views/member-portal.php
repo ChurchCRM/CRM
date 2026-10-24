@@ -150,6 +150,9 @@ $themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration
                                         <a href="<?= SystemURLs::getRootPath() ?>/admin/email" class="ms-1"><?= gettext('Set up email') ?></a>
                                     </div>
                                 <?php endif; ?>
+                                <div class="alert alert-warning mb-0 mt-2 d-none" id="memberSignInNobodyWarning" role="alert" data-sign-in-rule-warning>
+                                    <i class="fa-solid fa-triangle-exclamation me-2"></i><span data-sign-in-rule-warning-text></span>
+                                </div>
                                 <div class="alert alert-warning mb-0 mt-2<?= $signIn['sharedAddresses'] > 0 ? '' : ' d-none' ?>" id="memberSignInSharedEmails">
                                     <i class="fa-solid fa-people-arrows me-2"></i><?= gettext('Shared emails that stop people from signing in') ?>:
                                     <strong data-shared-address-count><?= (int) $signIn['sharedAddresses'] ?></strong>
@@ -187,6 +190,9 @@ $themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration
                                 <fieldset class="mb-3">
                                     <legend class="form-label"><?= gettext('Classifications') ?></legend>
                                     <div class="form-text mb-2"><?= gettext('This is where you decide about guests. The number is how many active people have each classification.') ?></div>
+                                    <div class="alert alert-warning mb-2 d-none" id="memberSignInRuleWarning" data-sign-in-rule-warning>
+                                        <i class="fa-solid fa-triangle-exclamation me-2"></i><span data-sign-in-rule-warning-text></span>
+                                    </div>
                                     <div id="memberSignInClassifications">
                                         <?php foreach ($signIn['classifications'] as $classification): ?>
                                             <label class="form-check">
@@ -570,6 +576,7 @@ $themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration
         'defaultThemeId' => ThemeManager::DEFAULT_THEME,
         'csrfToken' => $csrfToken,
         'signInValues' => $signIn['values'],
+        'maySignInCount' => $signIn['maySignInCount'],
     ]) ?>;
 </script>
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/admin-member-portal.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>

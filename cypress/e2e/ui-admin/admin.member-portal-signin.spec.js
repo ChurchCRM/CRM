@@ -12,6 +12,11 @@ const PERSON_ID = 2;
 
 const EVERYONE_CAPABILITY = "portal.profile.edit";
 
+const NO_CLASSIFICATION = "Nobody can sign in yet: tick at least one classification under Who may sign in.";
+const NO_FAMILY_ROLE = "Nobody can sign in yet: tick at least one family role under Who may sign in.";
+const NO_MATCH = "No one matches the sign-in rule yet.";
+const EMPTY_CLASSIFICATION_ID = 4;
+
 const settings = () => cy.makePrivateAdminAPICall("GET", SETTINGS_URL, null, 200).its("body");
 
 const openSignInTab = () => {
@@ -166,6 +171,7 @@ describe("Admin → Member Portal → Sign-in", () => {
             cy.get("#bMemberSignIn").should("not.be.checked").click();
             cy.get(".bootbox").should("be.visible").and("contain.text", `People who may sign in: ${count}`);
         });
+        cy.get("#memberSignInConfirmWarning").should("not.exist");
         answerConfirm("cancel");
         cy.get("#bMemberSignIn").should("not.be.checked");
         cy.get("@saveSignIn.all").should("have.length", 1);
@@ -177,6 +183,43 @@ describe("Admin → Member Portal → Sign-in", () => {
         cy.get("#bMemberSignIn").should("be.checked");
         cy.reload();
         cy.get("#bMemberSignIn").should("be.checked");
+    });
+
+    it("says why nobody may sign in when asked to turn member sign-in on, and still turns it on", () => {
+        openSignInTab();
+        cy.get("#memberSignInNobodyWarning").should("not.be.visible");
+        cy.get("#bMemberSignIn").should("not.be.checked").click();
+        cy.get(".bootbox").should("be.visible").and("contain.text", "People who may sign in: 0");
+        cy.get("#memberSignInConfirmWarning").should("be.visible").and("contain.text", NO_CLASSIFICATION);
+        answerConfirm("accept");
+        expectSave("bMemberSignIn", true);
+        cy.get("#memberSignInNobodyWarning").should("be.visible").and("contain.text", NO_CLASSIFICATION);
+    });
+
+    it("warns while member sign-in is on and the rule lets nobody in, until it lets someone in", () => {
+        cy.makePrivateAdminAPICall("POST", SETTINGS_URL, { bMemberSignIn: true }, 200);
+        openSignInTab();
+        cy.get("#memberSignInNobodyWarning").should("be.visible").and("contain.text", NO_CLASSIFICATION);
+        cy.get("#memberSignInRuleWarning").should("be.visible").and("contain.text", NO_CLASSIFICATION);
+
+        cy.get(`#memberSignInClassification-${EMPTY_CLASSIFICATION_ID}`).check();
+        expectSave("sMemberSignInClassifications", [EMPTY_CLASSIFICATION_ID]);
+        cy.get("#memberSignInMayCount").should("have.text", "0");
+        cy.get("#memberSignInNobodyWarning").should("be.visible").and("contain.text", NO_MATCH);
+
+        cy.get("#memberSignInClassification-1").check();
+        expectSave("sMemberSignInClassifications", [1, EMPTY_CLASSIFICATION_ID]);
+        cy.get("#memberSignInNobodyWarning").should("not.be.visible");
+        cy.get("#memberSignInRuleWarning").should("not.be.visible");
+
+        cy.get("#memberSignInRole-1").uncheck();
+        expectSave("sMemberSignInFamilyRoles", [2]);
+        cy.get("#memberSignInRole-2").uncheck();
+        expectSave("sMemberSignInFamilyRoles", []);
+        cy.get("#memberSignInNobodyWarning").should("be.visible").and("contain.text", NO_FAMILY_ROLE);
+        cy.get("#memberSignInRuleWarning").should("be.visible").and("contain.text", NO_FAMILY_ROLE);
+        cy.reload();
+        cy.get("#memberSignInNobodyWarning").should("be.visible").and("contain.text", NO_FAMILY_ROLE);
     });
 
     it("asks before turning member sign-in off, saying members are signed out", () => {
