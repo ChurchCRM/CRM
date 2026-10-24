@@ -2,6 +2,7 @@
 
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\Slim\Middleware\Api\FamilyEmailDeprecationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Setting\PublicRegistrationAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\InputUtils;
@@ -12,8 +13,8 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
 $app->group('/public/register', function (RouteCollectorProxy $group): void {
-    $group->post('/family', 'registerFamilyAPI');
-    $group->post('/family/', 'registerFamilyAPI');
+    $group->post('/family', 'registerFamilyAPI')->add(new FamilyEmailDeprecationMiddleware('public/register-family-api'));
+    $group->post('/family/', 'registerFamilyAPI')->add(new FamilyEmailDeprecationMiddleware('public/register-family-api'));
     $group->post('/person', 'registerPersonAPI');
     $group->post('/person/', 'registerPersonAPI');
 })->add(PublicRegistrationAuthMiddleware::class);
@@ -67,7 +68,8 @@ $app->group('/public/register', function (RouteCollectorProxy $group): void {
  *             @OA\Property(property="Address1", type="string"),
  *             @OA\Property(property="City", type="string"),
  *             @OA\Property(property="State", type="string"),
- *             @OA\Property(property="Zip", type="string")
+ *             @OA\Property(property="Zip", type="string"),
+ *             @OA\Property(property="Email", type="string", readOnly=true, deprecated=true, description="Deprecated in 7.9.0: the head of household's email, else the spouse's. Removed with the family email column.")
  *         )
  *     ),
  *     @OA\Response(response=400, description="Validation error",

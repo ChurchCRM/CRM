@@ -52,7 +52,7 @@ describe("API Public Registration", () => {
             registeredFamilyIds.push(resp.body.Id);
             expect(resp.body.Name).to.eq(testFamily.Name);
             expect(resp.body.Address1).to.eq(testFamily.Address1);
-            expect(resp.body).to.not.have.property("Email");
+            expect(resp.body.Email).to.eq("john@example.com");
             memberEmailsOf(resp.body.Id).should("deep.equal", ["john@example.com"]);
         });
     });
@@ -77,7 +77,7 @@ describe("API Public Registration", () => {
             },
         }).then((resp) => {
             registeredFamilyIds.push(resp.body.Id);
-            expect(resp.body).to.not.have.property("Email");
+            expect(resp.body.Email).to.eq("household@example.com");
             memberEmailsOf(resp.body.Id).should("deep.equal", ["household@example.com"]);
         });
     });

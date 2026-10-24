@@ -19,13 +19,13 @@ describe("Families Without Email API", () => {
         });
     });
 
-    it("returns correct family shape, with no family email", () => {
+    it("returns correct family shape, with an empty deprecated Email", () => {
         cy.get("@familiesWithoutEmail").then((response) => {
             if (response.body.families.length === 0) return;
             const family = response.body.families[0];
             expect(family).to.have.property("Id");
             expect(family).to.have.property("Name");
-            expect(family).to.not.have.property("Email");
+            expect(family.Email).to.eq("");
         });
     });
 

@@ -75,8 +75,8 @@ describe("API Private Family", () => {
                     expect(response.body).to.have.property("Name");
                     expect(response.body).to.have.property("Address1");
                     expect(response.body).to.have.property("HomePhone");
+                    expect(response.body).to.have.property("Email");
                     // Verify removed fields are NOT present
-                    expect(response.body).to.not.have.property("Email");
                     expect(response.body).to.not.have.property("CellPhone");
                     expect(response.body).to.not.have.property("WorkPhone");
                 },

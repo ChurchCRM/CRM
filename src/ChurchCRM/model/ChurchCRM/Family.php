@@ -14,6 +14,7 @@ use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\PhotoInterface;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
+use ChurchCRM\Slim\Middleware\Api\FamilyEmailDeprecationMiddleware;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -808,7 +809,12 @@ class Family extends BaseFamily implements PhotoInterface
     public function toArray(string $keyType = TableMap::TYPE_PHPNAME, bool $includeLazyLoadColumns = true, array $alreadyDumpedObjects = [], bool $includeForeignObjects = false): array
     {
         $array = parent::toArray($keyType, $includeLazyLoadColumns, $alreadyDumpedObjects, $includeForeignObjects);
-        unset($array[FamilyTableMap::translateFieldName('Email', TableMap::TYPE_PHPNAME, $keyType)]);
+        $emailKey = FamilyTableMap::translateFieldName('Email', TableMap::TYPE_PHPNAME, $keyType);
+        if (FamilyEmailDeprecationMiddleware::isHandling()) {
+            $array[$emailKey] = FamilyEmailDeprecationMiddleware::emailOf($this);
+        } else {
+            unset($array[$emailKey]);
+        }
         $array['Address'] = $this->getAddress();
         $array['FamilyString'] = $this->getFamilyString();
         // Additive, read-only mailing-address resolution (#9743). `Address` stays the
