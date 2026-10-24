@@ -461,7 +461,7 @@ Under A2, whoever controls a person's personal email can sign in as that person.
 
 The rest of the design still applies to these addresses:
 - the address must belong to exactly one person who may sign in (§4);
-- every change is audited;
+- every change to an existing person's address is audited. A new person's first address (from an import, a registration form, the kiosk or staff adding the person) is the address on record, not a change, so it writes no audit row;
 - the first sign-in is audited with the address it used.
 
 **Unconfirmed addresses.** An unconfirmed address is the person's email for mail at once, but it can't be used to sign in until it is confirmed. Two kinds are unconfirmed:
@@ -803,7 +803,8 @@ This work does not wait for #10511's F0, as George said on 10-10. It is built so
 - **Email changes:**
   - every row of §9, including the notice to the old address and sessions ending;
   - an unconfirmed address can't sign in until one of the three ways confirms it, and each way is tested;
-  - an address set by staff, an import or the API before the person's first sign-in signs in at once, and the audit records who set it;
+  - an address set by staff, an import or the API before the person's first sign-in signs in at once;
+  - the audit records who changed an existing person's address, and a new person's first address writes no audit row;
   - saving a moved family address again doesn't confirm it;
   - bulk confirmation confirms only the rows the staff member may confirm, the server refuses the others, and each one is audited.
 - **Shared addresses:**
