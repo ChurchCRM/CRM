@@ -20,8 +20,9 @@
     * **Help Wanted** — a property of the ministry, not of a team;
     * **Remove Volunteer** — a ministry-level act the API refuses a team leader
       (D5), so it is not offered; it is absent here rather than disabled;
-    * **Add Volunteer / Add from Cart** — both write the ministry's pool, same
-      reason;
+    * **Add from Cart** — a coordinator's bulk write to the ministry's pool. A team
+      leader's **Add Volunteer** is here: one existing person at a time, and the
+      coordinators are emailed;
     * team **rename and delete** — a team is created and named by whoever runs the
       ministry;
     * the Volunteers grid's team picker and the Occurrences tab's **All Teams**
@@ -41,7 +42,7 @@
 #}
 
 {% block content %}
-<div class="portal-team" id="portal-team">
+<div class="portal-team" id="portal-team" data-ministry-name="{{ team.ministryName }}">
 
     <p class="portal-breadcrumb">
         <a href="{{ url('/portal/teams') }}">
@@ -142,6 +143,11 @@
                         <label class="form-label" for="qualification-filter">{{ gettext('Find a volunteer') }}</label>
                         <input type="search" class="form-control" id="qualification-filter"
                                placeholder="{{ gettext('Start typing a name') }}">
+                    </div>
+                    <div class="col-12 col-md-6 ms-md-auto d-flex justify-content-md-end">
+                        <button type="button" class="btn btn-outline-primary" id="qualification-add-person">
+                            <i class="fa-solid fa-user-plus me-1" aria-hidden="true"></i>{{ gettext('Add Volunteer') }}
+                        </button>
                     </div>
                 </div>
 
@@ -349,6 +355,38 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="modal fade" id="addVolunteerModal" tabindex="-1" aria-hidden="true" aria-labelledby="addVolunteerModalTitle">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addVolunteerModalTitle">{{ gettext('Add Volunteer') }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ gettext('Close') }}"></button>
+      </div>
+      <div class="modal-body">
+        <p class="text-body-secondary">
+          {{ gettext("Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out.") }}
+        </p>
+        <div class="mb-3">
+          <label class="form-label" for="add-volunteer-person">{{ gettext('Person') }}</label>
+          <select class="form-select" id="add-volunteer-person" data-placeholder="{{ gettext('Start typing a name') }}"></select>
+        </div>
+        <div class="d-none" id="add-volunteer-positions-row">
+          <div class="form-label">{{ gettext('Qualify them for') }}</div>
+          <div id="add-volunteer-positions"></div>
+          <div class="form-text">{{ gettext('Optional. You can tick positions on the grid later too.') }}</div>
+        </div>
+        <div class="alert alert-danger d-none mt-3" role="alert" id="add-volunteer-form-error">
+          <i class="fa-solid fa-circle-exclamation me-1" aria-hidden="true"></i><span class="volunteer-error-text"></span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">{{ gettext('Cancel') }}</button>
+        <button type="button" class="btn btn-primary" id="add-volunteer-save">{{ gettext('Add') }}</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 {# Staff an event (D22): the same dialog the ministry page has. #}

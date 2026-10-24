@@ -1,8 +1,12 @@
 <?php
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\model\ChurchCRM\PersonSignin;
+use ChurchCRM\model\ChurchCRM\PersonSigninQuery;
+use ChurchCRM\Portal\Auth\PortalContext;
+use ChurchCRM\Portal\Auth\PortalSessionMiddleware;
+use ChurchCRM\Portal\Permissions\CorePortalCapabilities;
+use ChurchCRM\Portal\Permissions\RequirePortalCapability;
 use ChurchCRM\Portal\PortalApiMiddleware;
 use ChurchCRM\Portal\PortalCalendarService;
 use ChurchCRM\Portal\PortalCalendarSubscription;
@@ -22,7 +26,7 @@ use Slim\Routing\RouteCollectorProxy;
  * Three properties hold here, and they are why the portal does not simply call
  * `/api/calendars/{id}/fullcalendar` per calendar:
  *
- *  - **Session only.** `PortalApiMiddleware` refuses an API key outright, so
+ *  - **Session only.** `PortalSessionMiddleware` refuses an API key outright, so
  *    this is not a second, key-shaped way into church events.
  *  - **The administrator chooses the calendars, not the caller.** There is no
  *    calendar id in the URL: the answer is the union of whatever
@@ -35,7 +39,8 @@ use Slim\Routing\RouteCollectorProxy;
  */
 $app->group('/portal/calendar', function (RouteCollectorProxy $group): void {
     $group->get('/events', 'getPortalCalendarEventsAPI');
-})->add(PortalApiMiddleware::class);
+})->add(RequirePortalCapability::any(CorePortalCapabilities::CALENDAR_VIEW))
+    ->add(new PortalApiMiddleware())->add(new PortalSessionMiddleware());
 
 /*
  * `/api/portal/calendar/subscription` — the member's own iCalendar feed
@@ -58,7 +63,9 @@ $app->group('/portal/calendar/subscription', function (RouteCollectorProxy $grou
     $group->put('', 'putPortalCalendarSubscriptionAPI');
     $group->put('/', 'putPortalCalendarSubscriptionAPI');
     $group->post('/reset', 'resetPortalCalendarSubscriptionAPI');
-})->add(new CSRFMiddleware())->add(new PortalApiMiddleware());
+})->add(new CSRFMiddleware())
+    ->add(RequirePortalCapability::any(CorePortalCapabilities::CALENDAR_VIEW))
+    ->add(new PortalApiMiddleware())->add(new PortalSessionMiddleware());
 
 /**
  * GET /api/portal/calendar/events?from=YYYY-MM-DD&to=YYYY-MM-DD
@@ -164,7 +171,7 @@ function getPortalCalendarSubscriptionAPI(Request $request, Response $response):
  */
 function putPortalCalendarSubscriptionAPI(Request $request, Response $response): Response
 {
-    $user = portalCalendarSubscriptionUser($request);
+    $state = portalCalendarSubscriptionState($request);
     $body = $request->getParsedBody();
     $calendars = is_array($body) && isset($body['calendars']) && is_array($body['calendars'])
         ? $body['calendars']
@@ -181,7 +188,7 @@ function putPortalCalendarSubscriptionAPI(Request $request, Response $response):
     );
 
     try {
-        PortalCalendarSubscription::save($user, $calendars);
+        PortalCalendarSubscription::save($state, $calendars);
     } catch (PortalSelfServiceException $e) {
         return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], $e->getStatus(), null, $request);
     }
@@ -202,7 +209,7 @@ function putPortalCalendarSubscriptionAPI(Request $request, Response $response):
  */
 function resetPortalCalendarSubscriptionAPI(Request $request, Response $response): Response
 {
-    PortalCalendarSubscription::reset(portalCalendarSubscriptionUser($request));
+    PortalCalendarSubscription::reset(portalCalendarSubscriptionState($request));
 
     return SlimUtils::renderJSON($response, portalCalendarSubscriptionPayload($request));
 }
@@ -229,8 +236,8 @@ function resetPortalCalendarSubscriptionAPI(Request $request, Response $response
  */
 function portalCalendarSubscriptionPayload(Request $request): array
 {
-    $user = portalCalendarSubscriptionUser($request);
-    $path = PortalCalendarSubscription::feedPath($user);
+    $state = portalCalendarSubscriptionState($request);
+    $path = PortalCalendarSubscription::feedPath($state);
     $url = $path === null ? null : portalCalendarAbsoluteUrl($request, $path);
 
     return [
@@ -244,23 +251,24 @@ function portalCalendarSubscriptionPayload(Request $request): array
         // fall back, so the tap would fail silently. See
         // webpack/portal/portal-calendar-subscribe.ts.
         'webcalUrl' => $url === null ? null : preg_replace('#^https?://#', 'webcal://', $url),
-        'choices' => PortalCalendarSubscription::choices($user),
+        'choices' => PortalCalendarSubscription::choices($state),
     ];
 }
 
 /**
- * The signed-in member's account. `PortalApiMiddleware` has already refused
- * anonymous and API-key callers, so this cannot be null by the time a handler
- * runs; the fallback keeps static analysis honest.
+ * The portal person's sign-in row, which holds their feed (member sign-in
+ * design §13). A person who has never had one gets a new row, saved with
+ * their first selection.
  */
-function portalCalendarSubscriptionUser(Request $request): User
+function portalCalendarSubscriptionState(Request $request): PersonSignin
 {
-    $user = AuthenticationManager::getCurrentUser();
-    if (!$user instanceof User) {
+    $person = PortalContext::person();
+    if ($person === null) {
         throw new HttpForbiddenException($request, gettext('No logged in user'));
     }
 
-    return $user;
+    return PersonSigninQuery::create()->findPk((int) $person->getId())
+        ?? (new PersonSignin())->setPersonId((int) $person->getId());
 }
 
 /**

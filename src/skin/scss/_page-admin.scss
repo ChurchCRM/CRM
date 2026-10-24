@@ -1,0 +1,114 @@
+// Page-level styles for admin views. Static inline styles move here as named classes.
+
+.admin-icon-sm { font-size: 1.5rem; }
+.admin-icon-md { font-size: 2.5rem; }
+.admin-icon-xl { font-size: 3rem; }
+.admin-icon-lg { font-size: 4rem; }
+
+.admin-spinner-md { width: 2.5rem; height: 2.5rem; }
+.admin-spinner-lg { width: 3rem; height: 3rem; }
+
+.admin-step-badge { font-size: 1rem; padding: 0.5em 0.75em; }
+
+.admin-url-box { font-family: "Courier New", monospace; word-break: break-all; }
+.admin-code-lg { font-size: 1.1em; }
+.admin-code-inherit { font-size: 1em; }
+
+.admin-progress-thin { height: 4px; border-radius: 0; }
+.admin-step-icon-box { width: 1.5rem; text-align: center; flex-shrink: 0; }
+
+.admin-break-code { word-break: break-all; font-size: 0.85rem; }
+
+.admin-delete-logs-btn { width: auto; padding: 0.25rem 0.75rem; }
+.admin-log-content {
+  max-height: 500px;
+  overflow-y: auto;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-family: Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+
+  code { color: inherit; white-space: pre-wrap; }
+}
+
+.admin-scroll-300 { max-height: 300px; overflow-y: auto; }
+.admin-scroll-240 { max-height: 240px; overflow-y: auto; }
+.admin-max-w-280 { max-width: 280px; }
+.admin-max-w-480 { max-width: 480px; }
+
+.admin-col-80 { width: 80px; }
+.admin-col-100 { width: 100px; }
+.admin-scroll-anchor { scroll-margin-top: 1rem; }
+.admin-map-canvas { height: 280px; }
+.admin-progress-hairline { height: 6px; }
+.admin-progress-hairline-disk { max-width: 200px; height: 6px; }
+.admin-status-badge-sm { font-size: 0.75rem; }
+
+.debug-locale-name { font-weight: 500; font-size: 0.95em; }
+.debug-locale-code { font-size: 0.85em; }
+
+.bg-warning-light {
+  background-color: rgba(var(--tblr-warning-rgb), 0.1) !important;
+}
+
+.debug-env {
+  margin-bottom: 1rem;
+}
+
+.debug-env .card-header h4[data-bs-toggle="collapse"],
+.debug-grid .card-header h4[data-bs-toggle="collapse"] {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+
+  .fa-chevron-down,
+  .fa-chevron-up {
+    margin-left: auto;
+  }
+}
+
+.debug-env .nav-tabs { flex-wrap: wrap; }
+
+.debug-kv > tbody > tr > td {
+  vertical-align: middle;
+
+  &:first-child {
+    width: 220px;
+    color: var(--tblr-secondary);
+    font-weight: 500;
+  }
+}
+
+.debug-code {
+  background: var(--tblr-bg-surface-secondary);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-family: var(--tblr-font-monospace);
+  word-break: break-all;
+}
+
+.debug-status-chip,
+.card-body .badge.bg-success-lt,
+.card-body .badge.bg-warning-lt {
+  padding: 0.35em 0.6em;
+  font-size: 0.8125rem;
+}
+
+.mailchimp-icon { color: #ffe01b; }
+.admin-pre-line { white-space: pre-line; }
+
+// Phone width: the edge cells give up some padding so the four columns fit
+// whatever font the device falls back to.
+@media (max-width: 575.98px) {
+  .portal-calendars-table {
+    > :is(thead, tbody) > tr > :first-child {
+      padding-left: 0.75rem;
+    }
+
+    > :is(thead, tbody) > tr > :last-child {
+      padding-right: 0.75rem;
+    }
+  }
+}
+

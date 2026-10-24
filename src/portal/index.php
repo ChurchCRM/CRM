@@ -2,7 +2,11 @@
 
 require_once __DIR__ . '/../Include/LoadConfigs.php';
 
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Plugin\PluginManager;
+use ChurchCRM\Portal\Auth\PortalSessionMiddleware;
 use ChurchCRM\Portal\PortalAccessMiddleware;
+use ChurchCRM\Portal\PortalSignInPageMiddleware;
 use ChurchCRM\Portal\PortalTwig;
 use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use ChurchCRM\Slim\MvcAppFactory;
@@ -29,8 +33,21 @@ $app = MvcAppFactory::create('/portal', [
 // logged-out asset request.
 require __DIR__ . '/routes/theme-asset.php';
 
-// Everything else is a portal page: signed-in session, no API keys, CSRF on
-// every state-changing request.
+// Public: the confirm page an email-change link opens (member sign-in design
+// §9). The link alone identifies the request, so it needs no session.
+require __DIR__ . '/routes/email-confirm.php';
+
+PluginManager::init(SystemURLs::getDocumentRoot() . '/plugins');
+
+// Public: member sign-in by email (member sign-in design §6.1). AuthMiddleware
+// lets a signed-out visitor through to /portal/login and nothing else here.
+$app->group('/login', function (RouteCollectorProxy $group): void {
+    require __DIR__ . '/routes/login.php';
+})->add(new CSRFMiddleware())->add(new PortalSignInPageMiddleware());
+
+// Everything else is a portal page: a portal session (member sign-in design
+// §5), no API keys, CSRF on every state-changing request. Active plugins add
+// their pages under /portal/plugins/{id} (§8.5).
 $app->group('', function (RouteCollectorProxy $group): void {
     require __DIR__ . '/routes/home.php';
     require __DIR__ . '/routes/calendar.php';
@@ -38,7 +55,11 @@ $app->group('', function (RouteCollectorProxy $group): void {
     require __DIR__ . '/routes/teams.php';
     require __DIR__ . '/routes/email.php';
     require __DIR__ . '/routes/profile.php';
+    require __DIR__ . '/routes/devices.php';
     require __DIR__ . '/routes/family.php';
-})->add(new CSRFMiddleware())->add(new PortalAccessMiddleware());
+    require __DIR__ . '/routes/directory.php';
+    require __DIR__ . '/routes/login-as-person.php';
+    PluginManager::registerPortalRoutes($group, PluginManager::PORTAL_PAGES);
+})->add(new CSRFMiddleware())->add(new PortalAccessMiddleware())->add(new PortalSessionMiddleware());
 
 $app->run();

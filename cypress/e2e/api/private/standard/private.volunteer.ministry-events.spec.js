@@ -8,14 +8,14 @@
  * `private.volunteer.staff-after-create.spec.js`.
  *
  * Personas (seed.sql): `admin.api.key` (administrator, Add Events); `user.api.key` = person 3,
- * tony.wade, no Add Events, made coordinator of ministry A here; `selfedit.api.key` = person 99,
- * EditSelf-only. Ministries come from the real create API, so each has its own calendar.
+ * tony.wade, no Add Events, made coordinator of ministry A here; person 99 in a member
+ * session. Ministries come from the real create API, so each has its own calendar.
  */
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const ADMIN_KEY = "admin.api.key";
 const COORDINATOR_KEY = "user.api.key";
-const SELFEDIT_KEY = "selfedit.api.key";
+const SELFEDIT_KEY = 99;
 
 const PERSON_COORDINATOR = 3;
 const PERSON_SELFEDIT = 99;
@@ -49,7 +49,11 @@ function dbOk(sql, params = []) {
     });
 }
 
+/** A person id is a member, in their portal session; anything else names an API key. */
 function api(key, method, url, body, expectedStatus = 200) {
+    if (typeof key === "number") {
+        return cy.makeMemberAPICall(key, method, url, body, expectedStatus);
+    }
     return cy.makePrivateAPICall(Cypress.testEnv(key), method, url, body, expectedStatus);
 }
 
@@ -195,7 +199,7 @@ function cleanupFixtures() {
 // ── fixture ────────────────────────────────────────────────────────────────
 
 before(() => {
-    cy.rememberTestEnv(["admin.api.key", "user.api.key", "selfedit.api.key"]);
+    cy.rememberTestEnv(["admin.api.key", "user.api.key"]);
     cy.useChurchTimeZone();
 });
 
@@ -381,7 +385,7 @@ describe("Volunteer v2 D24 — a ministry's events created through core from the
             rowsTitled("Team Leader").should("have.length", 0);
         });
 
-        it("refuses a self-service login even with a ministry scope", () => {
+        it("refuses a member session even with a ministry scope", () => {
             grantScope(PERSON_SELFEDIT, "team", firstTeam.A);
             createEvents(oneEvent("Self Service"), SELFEDIT_KEY, 403);
             grantScope(PERSON_SELFEDIT, "ministry", ministry.A);

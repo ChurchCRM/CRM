@@ -17,7 +17,7 @@ runs:
           echo "| Job | Result |"
           echo "|-----|--------|"
           gh api --paginate "/repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/jobs?per_page=100" \
-            --jq '.jobs[] | select(.name != "test-summary" and .name != "nightly-summary" and .name != "package") | "| \(.name) | \(.conclusion // .status) |"'
+            --jq '.jobs[] | select(.name != "test-summary" and .name != "nightly-summary") | "| \(.name) | \(.conclusion // .status) |"'
           echo ""
           echo "| Cypress artifact | Bytes |"
           echo "|------------------|------:|"

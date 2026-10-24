@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Authentication\SignInThrottle;
 use ChurchCRM\dto\LocaleInfo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
@@ -84,7 +85,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <i class="fa-solid fa-user-slash me-2 flex-shrink-0 fs-3"></i>
               <div>
                 <strong><?= InputUtils::escapeHTML($signInBlockedLabel) ?></strong>
-                <div class="small"><?= gettext('The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again.') ?></div>
+                <div class="small"><?= gettext('Sign-in, sessions and the API key are blocked until this is resolved on the linked person\'s record.') ?></div>
               </div>
             </div>
             <?php endif; ?>
@@ -94,6 +95,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <div>
                 <strong><?= gettext('Account locked') ?></strong>
                 <div class="small"><?= gettext('This account is locked because of too many failed login attempts.') ?></div>
+                <div class="small" data-cy="lockout-minutes-left"><?= sprintf(gettext('Minutes until it unlocks by itself: %d'), SignInThrottle::minutesUntilUnlock($user)) ?></div>
               </div>
             </div>
             <?php endif; ?>
@@ -215,7 +217,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <a id="editSettings" href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="btn btn-outline-secondary">
                   <i class="fa-solid fa-cog me-1"></i><?= gettext("Advanced Settings") ?>
                 </a>
-                <small class="form-hint mt-1"><?= gettext("Manage additional preferences like email delimiters and display options") ?></small>
+                <small class="form-text mt-1"><?= gettext("Manage additional preferences like email delimiters and display options") ?></small>
               </div>
             </div>
           </div>
@@ -249,7 +251,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </span>
                   </label>
                 </div>
-                <small class="form-hint"><?= gettext("Auto follows your OS or browser setting; Light and Dark override it") ?></small>
+                <small class="form-text"><?= gettext("Auto follows your OS or browser setting; Light and Dark override it") ?></small>
               </div>
             </div>
 
@@ -279,7 +281,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                   <button type="button" class="btn-color-swatch rounded-circle<?= $value === $_userPrimary ? ' active' : '' ?>" data-color="<?= $value ?>" style="background-color: <?= $info['hex'] ?>;" title="<?= $info['label'] ?>" aria-label="<?= $info['label'] ?>"></button>
                   <?php endforeach; ?>
                 </div>
-                <small class="form-hint"><?= gettext("Set the accent color used for buttons, links, and active elements") ?></small>
+                <small class="form-text"><?= gettext("Set the accent color used for buttons, links, and active elements") ?></small>
               </div>
             </div>
 
@@ -298,7 +300,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                   <option value="100"<?= $tableVal === '100' ? ' selected' : '' ?>>100</option>
                   <option value="-1"<?= $tableVal === '-1' ? ' selected' : '' ?>><?= gettext("All") ?></option>
                 </select>
-                <small class="form-hint"><?= gettext("Default number of rows shown in data tables. Takes effect on next page load.") ?></small>
+                <small class="form-text"><?= gettext("Default number of rows shown in data tables. Takes effect on next page load.") ?></small>
               </div>
             </div>
           </div>
@@ -313,7 +315,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <div class="col-sm-9">
                 <select id="user-locale-setting" class="form-select">
                 </select>
-                <small class="form-hint"><?= gettext("Override the system default locale") ?>: <strong><?= $viewedUserLocaleInfo->getSystemLocale() ?></strong></small>
+                <small class="form-text"><?= gettext("Override the system default locale") ?>: <strong><?= $viewedUserLocaleInfo->getSystemLocale() ?></strong></small>
               </div>
             </div>
 
@@ -321,7 +323,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="row mb-3">
               <label class="col-sm-3 col-form-label"><?= gettext("Translation Progress") ?></label>
               <div class="col-sm-9">
-                <div class="progress mb-2" style="height: 1.25rem;">
+                <div class="progress mb-2 user-translation-progress">
                   <div class="progress-bar bg-<?= $viewedUserLocaleInfo->getTranslationPercentage() >= 90 ? 'success' : ($viewedUserLocaleInfo->getTranslationPercentage() >= 50 ? 'warning' : 'danger') ?>"
                        role="progressbar"
                        style="width: <?= $viewedUserLocaleInfo->getTranslationPercentage() ?>%"
@@ -331,7 +333,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <?= $viewedUserLocaleInfo->getTranslationPercentage() ?>%
                   </div>
                 </div>
-                <small class="form-hint"><?= gettext("Percentage of strings translated for your current language") ?></small>
+                <small class="form-text"><?= gettext("Percentage of strings translated for your current language") ?></small>
               </div>
             </div>
             <?php endif; ?>
@@ -382,7 +384,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <i class="fa-solid fa-arrows-rotate me-1"></i><?= gettext("Regenerate") ?>
                   </button>
                 </div>
-                <small class="form-hint"><?= gettext("Use this key to authenticate API requests. Regenerating will invalidate the current key.") ?></small>
+                <small class="form-text"><?= gettext("Use this key to authenticate API requests. Regenerating will invalidate the current key.") ?></small>
               </div>
             </div>
 
@@ -403,27 +405,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <!-- Case 1: admin — full access, no individual rows -->
             <div class="text-center py-4">
               <div class="mb-3">
-                <span class="badge bg-warning-lt text-warning px-3 py-2" style="font-size:1rem;">
+                <span class="badge bg-warning-lt text-warning px-3 py-2 fs-3">
                   <i class="fa-solid fa-circle-check me-2"></i><?= gettext("Administrator") ?>
                 </span>
               </div>
               <p class="text-body-secondary mb-0"><?= gettext("Administrators have full access to all features and data. Individual permissions do not apply.") ?></p>
             </div>
-            <?php elseif ($user->isEditSelf()): ?>
-            <!-- Case 2: self-service user — no individual permission rows -->
-            <div class="text-center py-4">
-              <div class="mb-3">
-                <span class="badge bg-info-lt text-info px-3 py-2" style="font-size:1rem;">
-                  <i class="fa-solid fa-user-check me-2"></i><?= gettext("Self-service only") ?>
-                </span>
-              </div>
-              <p class="text-body-secondary mb-0"><?= gettext("This user can only review and update their own family profile. Individual permissions do not apply.") ?></p>
-              <?php if ($isOwnProfile): ?>
-              <p class="text-body-secondary mt-2 mb-0 small"><?= gettext("Contact an administrator to change your permissions.") ?></p>
-              <?php endif; ?>
-            </div>
             <?php else: ?>
-            <!-- Case 3: admin viewing another non-admin user — show full permissions -->
+            <!-- Case 2: a non-admin staff account — show full permissions -->
 
             <!-- People & Families group -->
             <div class="border rounded mb-3">
@@ -460,7 +449,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <hr>
             <?php
             $permissions = [
-                ['label' => gettext("Manage Properties and Classifications"), 'granted' => $user->isMenuOptions()],
                 ['label' => gettext("Manage Groups and Roles"), 'granted' => $user->isManageGroups()],
                 ['label' => gettext("Manage Donations and Finance"), 'granted' => $user->isFinance()],
                 ['label' => gettext("Manage Fundraisers"), 'granted' => $user->isManageFundraisers()],
@@ -488,6 +476,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
   </div>
 </div>
+
+<?php if ($loginAsPersonHistory !== null) : ?>
+<div class="mt-3">
+  <?php include SystemURLs::getDocumentRoot() . '/people/views/partials/login-as-person-history.php'; ?>
+</div>
+<?php endif; ?>
 
 <!-- Photo Uploader -->
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/photo-uploader.min.css') ?>">

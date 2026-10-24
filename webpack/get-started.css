@@ -1,61 +1,7 @@
-/* =========================================================
-   Get Started — onboarding wizard page
-   Bootstrap 4.6.2 / AdminLTE 3 context
-   ========================================================= */
-
-/* ── Constrain to a comfortable reading width ─────────────── */
 .gs-wrap {
   max-width: 900px;
 }
 
-/* ── Hero ─────────────────────────────────────────────────── */
-.gs-hero {
-  background: linear-gradient(135deg, #1565c0 0%, #1a73e8 100%);
-  border-radius: 0.75rem;
-  padding: 2.25rem 2rem;
-  margin-bottom: 2rem;
-  color: #fff;
-  position: relative;
-  overflow: hidden;
-}
-
-.gs-hero::before {
-  content: "";
-  position: absolute;
-  top: -60px;
-  right: -60px;
-  width: 260px;
-  height: 260px;
-  background: rgba(255, 255, 255, 0.07);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.gs-hero::after {
-  content: "";
-  position: absolute;
-  bottom: -40px;
-  right: 60px;
-  width: 140px;
-  height: 140px;
-  background: rgba(255, 255, 255, 0.04);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.gs-hero h2 {
-  font-size: 1.6rem;
-  font-weight: 700;
-  margin-bottom: 0.35rem;
-}
-
-.gs-hero p {
-  font-size: 0.95rem;
-  opacity: 0.85;
-  margin-bottom: 0;
-}
-
-/* ── Section label ────────────────────────────────────────── */
 .gs-section-label {
   font-size: 0.7rem;
   font-weight: 700;
@@ -65,11 +11,10 @@
   margin-bottom: 1rem;
 }
 
-/* ── Option cards ─────────────────────────────────────────── */
 .gs-card {
   background: var(--tblr-bg-surface);
   border: 1px solid var(--tblr-border-color);
-  border-top: 4px solid transparent;
+  border-top: 4px solid var(--gs-accent, transparent);
   border-radius: 0.625rem;
   padding: 1.75rem 1.75rem 1.5rem;
   height: 100%;
@@ -83,11 +28,6 @@
     border-top-color 0.2s ease,
     transform 0.2s ease;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
-  /* reset button defaults */
-  background-color: var(--tblr-bg-surface);
-  width: 100%;
-  text-align: left;
-  -webkit-appearance: none;
 }
 
 .gs-card:hover {
@@ -108,21 +48,24 @@
     0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Colour top-border variants */
+/* --gs-accent and --gs-tint colour the card border, icon and CTA. */
 .gs-card--green {
-  border-top-color: #28a745;
+  --gs-accent: #28a745;
+  --gs-tint: #e8f5e9;
 }
 .gs-card--blue {
-  border-top-color: #007bff;
+  --gs-accent: #007bff;
+  --gs-tint: #e3f2fd;
 }
 .gs-card--teal {
-  border-top-color: #20c997;
+  --gs-accent: #20c997;
+  --gs-tint: #e0f2f1;
 }
 .gs-card--orange {
-  border-top-color: #fd7e14;
+  --gs-accent: #fd7e14;
+  --gs-tint: #fff3e0;
 }
 
-/* Icon wrapper */
 .gs-card-icon {
   width: 3.5rem;
   height: 3.5rem;
@@ -133,26 +76,10 @@
   font-size: 1.4rem;
   margin-bottom: 1.1rem;
   flex-shrink: 0;
+  background: var(--gs-tint);
+  color: var(--gs-accent);
 }
 
-.gs-card--green .gs-card-icon {
-  background: #e8f5e9;
-  color: #28a745;
-}
-.gs-card--blue .gs-card-icon {
-  background: #e3f2fd;
-  color: #007bff;
-}
-.gs-card--teal .gs-card-icon {
-  background: #e0f2f1;
-  color: #20c997;
-}
-.gs-card--orange .gs-card-icon {
-  background: #fff3e0;
-  color: #fd7e14;
-}
-
-/* Title */
 .gs-card h5 {
   font-size: 1rem;
   font-weight: 700;
@@ -160,7 +87,6 @@
   color: var(--tblr-body-color);
 }
 
-/* Body text */
 .gs-card p {
   font-size: 0.85rem;
   color: var(--tblr-secondary-color);
@@ -169,7 +95,6 @@
   margin-bottom: 1.5rem;
 }
 
-/* CTA row */
 .gs-card-cta {
   margin-top: auto;
   display: inline-flex;
@@ -178,26 +103,13 @@
   font-size: 0.82rem;
   font-weight: 600;
   transition: gap 0.15s ease;
-}
-
-.gs-card--green .gs-card-cta {
-  color: #28a745;
-}
-.gs-card--blue .gs-card-cta {
-  color: #007bff;
-}
-.gs-card--teal .gs-card-cta {
-  color: #20c997;
-}
-.gs-card--orange .gs-card-cta {
-  color: #fd7e14;
+  color: var(--gs-accent);
 }
 
 .gs-card:hover .gs-card-cta {
   gap: 0.65rem;
 }
 
-/* ── Divider ──────────────────────────────────────────────── */
 .gs-divider {
   display: flex;
   align-items: center;
@@ -216,7 +128,6 @@
   background: var(--tblr-border-color);
 }
 
-/* ── Plugin strip ─────────────────────────────────────────── */
 .gs-plugin-strip {
   background: var(--tblr-bg-surface-secondary);
   border: 1px solid var(--tblr-border-color);
@@ -264,7 +175,6 @@
   padding: 0.15em 0.45em;
 }
 
-/* ── Skip row ─────────────────────────────────────────────── */
 .gs-skip {
   text-align: center;
   margin-top: 1.75rem;

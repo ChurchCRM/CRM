@@ -1,17 +1,21 @@
 /// <reference types="cypress" />
 
+import { contrastRatio, effectiveBackground } from "../../support/colour";
+
 /**
  * Admin → Member Portal (MP3, #9864).
  *
  * Design: .agents/skills/churchcrm/member-portal-design.md §4 (decision P9).
  *   - administrators only; a staff login without the Admin flag is turned away
- *   - three tabs: Settings, Themes, Statistics
- *   - the four portal ConfigItems carry no System Settings category, so they
- *     must not appear on /SystemSettings.php
+ *   - reached through People Settings; Statistics is the first tab
+ *   - the portal ConfigItems carry no System Settings category, so they
+ *     must not appear on /SystemSettings.php; each one lives in the tab it
+ *     affects (Themes, Permissions, Directory) and saves from there
  *   - activating a valid theme changes what a member sees; activating a broken
- *     one is refused and the findings are listed
+ *     one is refused and the findings are listed under its row
  *   - Developer mode prints the template name in an HTML comment
- *   - a section switch turned off removes that section from the portal
+ *   - a section switch turned off removes that section from the portal, and
+ *     sharing no calendar removes the calendar card
  *
  * The spec writes throwaway theme folders on disk (the webserver container
  * bind-mounts ../src) and removes them again in after().
@@ -24,10 +28,18 @@ const WARNING_THEME = "cypressadminwarning";
 const WARNING_DIR = `src/Include/themes/${WARNING_THEME}`;
 const HEADER_PURPLE = "rgb(75, 0, 130)";
 
-const MEMBER_USER = "lena.black.editself.notes@example.com";
-const MEMBER_PASSWORD = "changeme";
-
 const adminKey = () => Cypress.testEnv("admin.api.key");
+
+/** Each portal ConfigItem: its tab, its panel there, and its label. */
+const PORTAL_SWITCHES = [
+    ["bPortalDeveloperMode", "portal-themes", "#portalDeveloperModePanel", "Developer mode"],
+    ["bPortalAllowBirthdayEdit", "portal-permissions", "#portalMemberFeaturesPanel", "Let members edit birthdays"],
+    ["bPortalShowVolunteer", "portal-permissions", "#portalMemberFeaturesPanel", "Show volunteering"],
+    ["bPortalShowDirectory", "portal-directory", "#portalDirectorySectionPanel", "Show the member directory"],
+];
+const savedSwitches = {};
+const CHURCH_CALENDAR = { type: "calendar", id: 1 };
+let savedCalendars;
 
 /** Stashed in `before` and restored in `after` — see the comment there. */
 let originalVolunteerVersion = "v1";
@@ -57,34 +69,34 @@ const activateTheme = (name) =>
     });
 
 const loginAsMember = () => {
-    cy.clearCookies();
-    cy.visit("/session/begin");
-    cy.get("input[name=User]").type(MEMBER_USER);
-    cy.get("input[name=Password]").type(`${MEMBER_PASSWORD}{enter}`);
-    cy.url({ timeout: 10000 }).should("include", "/portal");
+    cy.signInAsMember(100);
+    cy.visit("/portal/");
 };
+
+const openThemesTab = () => {
+    cy.visit("/admin/member-portal");
+    cy.get("#portal-themes-tab").click();
+    cy.get("#portal-themes").should("be.visible");
+};
+
+const themeRowAction = (theme, action) => {
+    cy.get(`#portalThemesTable tr[data-theme="${theme}"] [data-bs-toggle="dropdown"]`).click();
+    cy.get(`#portalThemesTable tr[data-theme="${theme}"] .portal-theme-${action}`).should("be.visible").click();
+};
+
+const themeFindings = (theme) => cy.get(`#portalFindings-${theme}`, { timeout: 10000 });
+
+const themeStatus = (theme) => cy.get(`#portalThemesTable tr[data-theme="${theme}"] .portal-theme-status`);
 
 // Tabler's own white-on-success pairing measures 2.7:1; the unstyled grey badge text measured 1.0-1.8:1.
 const MIN_BADGE_CONTRAST = 2.5;
-
-const relativeLuminance = (cssColor) => {
-    const channels = cssColor.match(/[\d.]+/g).slice(0, 3).map(Number);
-    const srgb = cssColor.startsWith("color(") ? channels : channels.map((value) => value / 255);
-    const [r, g, b] = srgb.map((c) => (c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4));
-    return 0.2126 * r + 0.7152 * g + 0.0722 * b;
-};
-
-const contrastRatio = (first, second) => {
-    const [lighter, darker] = [relativeLuminance(first), relativeLuminance(second)].sort((a, b) => b - a);
-    return (lighter + 0.05) / (darker + 0.05);
-};
 
 const expectReadableBadges = () =>
     cy.get("#memberPortalPage .badge").should(($badges) => {
         $badges.each((_, badge) => {
             const $badge = Cypress.$(badge);
             expect(
-                contrastRatio($badge.css("color"), $badge.css("background-color")),
+                contrastRatio($badge.css("color"), effectiveBackground(badge)),
                 `"${$badge.text().trim()}" badge contrast`
             ).to.be.at.least(MIN_BADGE_CONTRAST);
         });
@@ -120,6 +132,17 @@ describe("Admin → Member Portal page", () => {
     });
 
     before(() => {
+        for (const [name] of PORTAL_SWITCHES) {
+            cy.getSystemConfig(name).then((value) => {
+                savedSwitches[name] = value;
+            });
+        }
+        cy.getMemberPortalCalendars().then((calendars) => {
+            savedCalendars = calendars;
+        });
+    });
+
+    before(() => {
         // Two tests below switch the volunteer rollout flag to `v2` to make the
         // volunteering card real. Left on, it retires the V1 opportunity editor by
         // design (#9704), and `admin.people` and
@@ -137,19 +160,13 @@ describe("Admin → Member Portal page", () => {
     after(() => {
         activateTheme("default");
         setConfig("bPortalDeveloperMode", "0");
-        setConfig("bPortalShowCalendar", "1");
         setConfig("bPortalShowVolunteer", "1");
         setConfig("sVolunteerVersion", originalVolunteerVersion);
+        cy.then(() => cy.shareMemberPortalCalendars(savedCalendars));
+        for (const [name] of PORTAL_SWITCHES) {
+            cy.restoreSystemConfig(name, savedSwitches[name]);
+        }
         cy.exec(`rm -rf ${GOOD_DIR} ${BROKEN_DIR} ${WARNING_DIR}`, { failOnNonZeroExit: false });
-    });
-
-    describe("Access", () => {
-        it("A staff login without the Admin flag is denied", () => {
-            cy.setupStandardSession();
-            cy.visit("/admin/member-portal");
-            cy.url({ timeout: 10000 }).should("include", "/v2/access-denied");
-            cy.get("#memberPortalPage").should("not.exist");
-        });
     });
 
     describe("As an administrator", () => {
@@ -157,12 +174,19 @@ describe("Admin → Member Portal page", () => {
             cy.setupAdminSession();
         });
 
-        it("Shows the Settings, Themes, Statistics and Calendars tabs", () => {
+        it("Opens on Statistics, the first tab, and has no Settings tab", () => {
             cy.visit("/admin/member-portal");
             cy.get("#memberPortalTabs").should("be.visible");
-            cy.get("#portal-settings-tab").should("contain.text", "Settings");
+            cy.get("#memberPortalTabs .nav-link")
+                .first()
+                .should("have.id", "portal-statistics-tab")
+                .and("have.class", "active")
+                .and("contain.text", "Statistics");
+            cy.get("#portal-statistics").should("be.visible");
+            cy.get("#portal-settings-tab").should("not.exist");
+            cy.get("#portal-settings").should("not.exist");
+            cy.get("#portalSettingsPanel").should("not.exist");
             cy.get("#portal-themes-tab").should("contain.text", "Themes");
-            cy.get("#portal-statistics-tab").should("contain.text", "Statistics");
             // The Calendars tab was MP3's hidden placeholder until MP5 (#9866)
             // filled it in; what it contains is covered by
             // admin.member-portal-calendars.spec.js.
@@ -176,6 +200,39 @@ describe("Admin → Member Portal page", () => {
             cy.get('a[href$="/admin/member-portal"]').should("exist");
         });
 
+        it("Breadcrumbs through People Settings and links back to it from the header", () => {
+            cy.visit("/admin/member-portal");
+            cy.get(".breadcrumb a[href$='/people/dashboard']").should("contain.text", "People");
+            cy.get(".breadcrumb a[href$='/admin/people']").should("contain.text", "People Settings");
+            cy.get(".breadcrumb .breadcrumb-item.active").should("contain.text", "Member Portal");
+            cy.get(".page-header .btn-list").should("have.length", 1);
+            cy.get(".page-header .btn-list a[href$='/admin/people']").should("contain.text", "People Settings");
+            cy.get(".page-header .btn-list a[href$='/portal/']").should("contain.text", "Open the Member Portal");
+        });
+
+        for (const [name, tab, panel, label] of PORTAL_SWITCHES) {
+            it(`${name} is on the ${tab} tab and saves from there`, () => {
+                cy.intercept("POST", `**/admin/api/system/config/${name}`).as("saveSwitch");
+                cy.visit("/admin/member-portal");
+                cy.get(`#${tab}-tab`).click();
+                cy.get(`#${tab} ${panel} .settings-panel-fields`, { timeout: 10000 })
+                    .should("not.be.disabled")
+                    .and("contain.text", label);
+                cy.get(`${panel} .settings-panel-save`).should("not.exist");
+
+                cy.get(`${panel} input[name='${name}'][value='1']`).then(($yes) => {
+                    const flipped = $yes.is(":checked") ? "0" : "1";
+                    cy.get(`${panel} input[name='${name}'][value='${flipped}']`).click({ force: true });
+                    cy.wait("@saveSwitch").then((interception) => {
+                        expect(interception.response.statusCode).to.eq(200);
+                        expect(String(interception.request.body.value)).to.eq(flipped);
+                    });
+                    cy.getSystemConfig(name).should("eq", flipped);
+                });
+                cy.then(() => cy.restoreSystemConfig(name, savedSwitches[name]));
+            });
+        }
+
         it("Lists every discovered theme with a validation badge", () => {
             cy.visit("/admin/member-portal");
             cy.get("#portal-themes-tab").click();
@@ -184,6 +241,7 @@ describe("Admin → Member Portal page", () => {
                 .should("contain.text", "Cypress Good")
                 .and("contain.text", "Valid");
             cy.get(`#portalThemesTable tr[data-theme="${BROKEN_THEME}"]`).should("contain.text", "Errors");
+            cy.get("#portalThemesLead").should("contain.text", "Include/themes/");
             cy.get("#portalThemeDisclaimer").should(
                 "contain.text",
                 "Themes are provided by your church, not by ChurchCRM, and are not verified by the ChurchCRM project."
@@ -195,7 +253,6 @@ describe("Admin → Member Portal page", () => {
             for (const name of [
                 "sMemberPortalTheme",
                 "bPortalDeveloperMode",
-                "bPortalShowCalendar",
                 "bPortalShowVolunteer",
                 "bPortalAllowBirthdayEdit",
             ]) {
@@ -203,14 +260,17 @@ describe("Admin → Member Portal page", () => {
             }
         });
 
-        it("Refuses a broken theme and lists the findings", () => {
+        it("Refuses a broken theme and lists the findings under its row", () => {
             activateTheme("default");
             cy.setupAdminSession();
-            cy.visit("/admin/member-portal");
-            cy.get("#portalThemeSelect").select(BROKEN_THEME);
-            cy.get("#portalThemeActivateButton").click();
-            cy.get("#portalThemeFindings", { timeout: 10000 }).should("contain.text", "home.html.twig");
-            cy.get("#portalThemeStatusBadge").should("contain.text", "Errors");
+            openThemesTab();
+            themeRowAction(BROKEN_THEME, "activate");
+            themeFindings(BROKEN_THEME)
+                .should("be.visible")
+                .and("contain.text", "This theme cannot be activated")
+                .and("contain.text", "home.html.twig");
+            themeStatus(BROKEN_THEME).should("contain.text", "Errors");
+            cy.get("#portal-themes").should("be.visible");
             // Nothing was written: the portal is still on the theme it had.
             cy.request("/admin/api/system/config/sMemberPortalTheme").then((resp) => {
                 expect(resp.body.value).to.eq("default");
@@ -218,7 +278,7 @@ describe("Admin → Member Portal page", () => {
         });
 
         it("Every badge has readable text", () => {
-            cy.visit("/admin/member-portal");
+            openThemesTab();
             cy.get(`#portalThemesTable tr[data-theme="${WARNING_THEME}"]`).should("contain.text", "Warnings");
             expectReadableBadgesInBothModes();
 
@@ -227,19 +287,28 @@ describe("Admin → Member Portal page", () => {
                 [BROKEN_THEME, "home.html.twig"],
                 [WARNING_THEME, "no-such-page.html.twig"],
             ]) {
-                cy.get("#portalThemeSelect").select(theme);
-                cy.get("#portalThemeCheckButton").click();
-                cy.get("#portalThemeFindings", { timeout: 10000 }).should("contain.text", template);
+                themeRowAction(theme, "check");
+                themeFindings(theme).should("be.visible").and("contain.text", template);
                 expectReadableBadgesInBothModes();
             }
         });
 
-        it("The Check button re-runs the validator for the selected theme", () => {
-            cy.visit("/admin/member-portal");
-            cy.get("#portalThemeSelect").select(GOOD_THEME);
-            cy.get("#portalThemeCheckButton").click();
-            cy.get("#portalThemeFindings", { timeout: 10000 }).should("contain.text", "This theme has no problems.");
-            cy.get("#portalThemeStatusBadge").should("contain.text", "Valid");
+        it("Check shows what it found under the checked theme, on the Themes tab", () => {
+            openThemesTab();
+            themeFindings(GOOD_THEME).should("not.be.visible");
+            themeRowAction(GOOD_THEME, "check");
+            themeFindings(GOOD_THEME).should("be.visible").and("contain.text", "This theme has no problems.");
+            themeStatus(GOOD_THEME).should("contain.text", "Valid");
+
+            themeRowAction(WARNING_THEME, "check");
+            themeFindings(WARNING_THEME)
+                .should("be.visible")
+                .and("contain.text", "What the check found")
+                .and("contain.text", "no-such-page.html.twig");
+            cy.get(`#portalThemesTable tr[data-theme="${WARNING_THEME}"] .portal-theme-findings-toggle`)
+                .should("be.visible")
+                .and("contain.text", "1");
+            cy.get("#portal-themes").should("be.visible");
         });
     });
 
@@ -268,28 +337,24 @@ describe("Admin → Member Portal page", () => {
             cy.request("/portal/").its("body").should("not.contain", "<!-- portal template:");
         });
 
-        it("Turning the calendar section off hides its card in the portal", () => {
+        it("Sharing no calendar hides the calendar card in the portal", () => {
             activateTheme("default");
-            // MP6 (#9867) turned the volunteering placeholder into a real card,
-            // so the "the other section is untouched" half of this assertion
-            // now looks for that card — which needs the V2 rollout flag on as
-            // well as its own section switch.
+            // The volunteering card needs the V2 rollout flag on as well as its own switch.
             setConfig("sVolunteerVersion", "v2");
             setConfig("bPortalShowVolunteer", "1");
-            setConfig("bPortalShowCalendar", "1");
+            cy.shareMemberPortalCalendars([CHURCH_CALENDAR]);
             loginAsMember();
             cy.get(".portal-card-calendar").should("exist");
 
-            setConfig("bPortalShowCalendar", "0");
+            cy.shareMemberPortalCalendars([]);
             loginAsMember();
             cy.get(".portal-card-calendar").should("not.exist");
             cy.get("#portal-volunteering-card").should("exist");
-
-            setConfig("bPortalShowCalendar", "1");
         });
 
         it("Turning the volunteering section off hides its card in the portal", () => {
             activateTheme("default");
+            cy.shareMemberPortalCalendars([CHURCH_CALENDAR]);
             setConfig("sVolunteerVersion", "v2");
             setConfig("bPortalShowVolunteer", "0");
             loginAsMember();

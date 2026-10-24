@@ -61,12 +61,6 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
                             (H) <?= InputUtils::escapeHTML($family->getHomePhone()) ?>
                         </div>
                         <?php } ?>
-                        <?php if (!empty($family->getEmail())) { ?>
-                        <div class="mb-2">
-                            <i class="fa-solid fa-fw fa-envelope text-primary"></i>
-                            <?= InputUtils::escapeHTML($family->getEmail()) ?>
-                        </div>
-                        <?php } ?>
                         <?php if ($family->getWeddingDate() !== null) { ?>
                         <div class="mb-2">
                             <i class="fa-solid fa-fw fa-heart text-danger"></i>
@@ -96,7 +90,7 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
 
     <!-- Family Members Section -->
     <div class="card shadow-sm">
-        <div class="card-header bg-light">
+        <div class="card-header bg-surface-secondary">
             <h5 class="mb-0">
                 <i class="fa-solid fa-users text-primary me-2"></i><?= gettext("Family Members") ?>
             </h5>

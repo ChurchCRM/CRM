@@ -4,15 +4,13 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\users\ResetPasswordEmail;
-use ChurchCRM\Emails\users\ResetPasswordTokenEmail;
-use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
 use ChurchCRM\model\ChurchCRM\UserQuery;
+use ChurchCRM\Service\UserService;
 use ChurchCRM\Utils\LoggerUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpBadRequestException;
-use Slim\Exception\HttpNotFoundException;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
@@ -87,32 +85,15 @@ function forgotPassword(Request $request, Response $response, array $args): Resp
     return $renderer->render($response, 'enter-username.php', $pageArgs);
 }
 
-function userPasswordReset(Request $request, Response $response, array $args)
+function userPasswordReset(Request $request, Response $response, array $args): Response
 {
-    $logger = LoggerUtils::getAppLogger();
-    $body = json_decode($request->getBody(), null, 512);
-    $userName = strtolower(trim($body->userName));
-    if (empty($userName)) {
+    $body = json_decode($request->getBody(), true, 512);
+    $userName = trim((string) ($body['userName'] ?? ''));
+    if ($userName === '') {
         throw new HttpBadRequestException($request, gettext('UserName not set'));
     }
 
-    $user = UserQuery::create()->findOneByUserName($userName);
-    if (empty($user) || empty($user->getEmail()) || $user->getSignInBlockedReason() !== null) {
-        throw new HttpNotFoundException($request, gettext('User') . ' [' . $userName . '] ' . gettext('not found or user without an email'));
-    }
-
-    $token = new Token();
-    $token->build('password', $user->getId());
-    $token->save();
-    $email = new ResetPasswordTokenEmail($user, $token->getToken());
-    if (!$email->send()) {
-        // Undelivered token serves no purpose and only widens the exposure
-        // window — drop it so the table doesn't accumulate dead rows.
-        $token->delete();
-        $logger->error('Password reset email failed for user ' . $user->getUserName() . ': ' . $email->getError());
-    } else {
-        $logger->info('Password reset token for ' . $user->getUserName() . ' sent to email address: ' . $user->getEmail());
-    }
+    (new UserService())->requestPasswordReset($userName);
 
     return $response->withStatus(200);
 }

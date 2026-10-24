@@ -172,6 +172,71 @@ describe("CSV Export Page", () => {
         });
     });
 
+    it("exports each person's own email and nothing for a person without one", () => {
+        cy.get("#EnterDate2").invoke("val").should("match", /^\d{4}-\d{2}-\d{2}$/).then((today) =>
+            cy.request({
+                method: "POST",
+                url: "/CSVCreateFile.php",
+                form: true,
+                body: {
+                    FirstName: 1,
+                    Email: 1,
+                    Source: "all",
+                    Gender: 0,
+                    MembershipDate2: today,
+                    BirthDate2: today,
+                    AnniversaryDate2: today,
+                    EnterDate2: today,
+                    Format: "Default",
+                    Submit: "Create File",
+                },
+            }),
+        ).then((response) => {
+            const rows = response.body.split(/\r?\n/).map((line) => line.split(",").map((cell) => cell.replace(/"/g, "").trim()));
+            const emailIdx = rows[0].findIndex((cell) => cell.endsWith("Email"));
+            const rowOf = (first, last) => rows.find((cells) => cells.includes(first) && cells.includes(last));
+            expect(emailIdx).to.be.greaterThan(-1);
+            expect(rowOf("Mark", "Smith")[emailIdx]).to.eq("mark.smith@example.com");
+            expect(rowOf("Mary", "Smith")[emailIdx]).to.eq("");
+        });
+    });
+
+    it("exports each person's grade name in the Grade column (#10189)", () => {
+        cy.get("#EnterDate2").invoke("val").should("match", /^\d{4}-\d{2}-\d{2}$/).as("serverToday", { type: "static" });
+        cy.visit("/PersonEditor.php");
+        cy.get("#FirstName").type("Greta");
+        cy.get("#LastName").type("CsvGrade");
+        cy.get("#Grade").select("8");
+        cy.get("button[name='PersonSubmit']").click();
+        cy.url().should("match", /\/people\/view\/\d+/).then((url) => {
+            const personId = Number(url.match(/\/people\/view\/(\d+)/)[1]);
+            cy.get("@serverToday").then((today) => cy.request({
+                method: "POST",
+                url: "/CSVCreateFile.php",
+                form: true,
+                body: {
+                    FirstName: 1,
+                    PrintGrade: 1,
+                    Source: "all",
+                    Gender: 0,
+                    MembershipDate2: today,
+                    BirthDate2: today,
+                    AnniversaryDate2: today,
+                    EnterDate2: today,
+                    Format: "Default",
+                    Submit: "Create File",
+                },
+            })).then((response) => {
+                const lines = response.body.trim().split(/\r?\n/);
+                const headers = lines[0].split(",").map((header) => header.replace(/"/g, ""));
+                const row = lines.find((line) => line.includes("CsvGrade"));
+                expect(row, "exported row for the graded person").to.exist;
+                expect(row.split(",")[headers.indexOf("Grade")].replace(/"/g, "")).to.eq("3rd");
+            });
+            cy.cleanupPeople([personId]);
+        });
+    });
+
     it("should allow toggling field pills on and off", () => {
         cy.contains(".form-selectgroup-label", "Title").click();
         cy.get('.form-selectgroup-input[name="Title"]').should("be.checked");
@@ -268,7 +333,7 @@ describe("CSV Export Authorization (GHSA-4vj2-gm78-3q63)", () => {
         cy.visit("/CSVExport.php", { failOnStatusCode: false });
 
         // Should be redirected to login (or show auth error)
-        cy.url().should("include", "/session/begin");
+        cy.location("pathname").should("eq", "/admin/");
     });
 
     it("should deny unauthenticated POST to CSVCreateFile.php", () => {

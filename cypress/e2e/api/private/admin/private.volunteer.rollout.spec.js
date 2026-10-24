@@ -79,11 +79,17 @@ describe("Volunteer v2 rollout flag (#9704)", () => {
         setVersion("v1");
     });
 
-    it("defaults to v1 and reports v1 through the config API", () => {
+    it("echoes the value it saved, the default included (#10561)", () => {
+        cy.makePrivateAdminAPICall("POST", SETTING_URL, { value: "v1" }, 200).its("body.value").should("eq", "v1");
+        cy.makePrivateAdminAPICall("POST", SETTING_URL, { value: "v2" }, 200).its("body.value").should("eq", "v2");
+        setVersion("v1");
+    });
+
+    it("keeps an upgraded installation's stored v1 (#10561)", () => {
         expectStoredVersion("v1");
     });
 
-    describe("v1 (default, legacy only)", () => {
+    describe("v1 (legacy only)", () => {
         beforeEach(() => {
             setVersion("v1");
         });

@@ -43,3 +43,7 @@ Serves on `http://localhost`. Edit `examples/frankenphp/Caddyfile` to customize.
 - **Local dev with live reload:** Use `docker/docker-compose.dev.yaml`
 - **CI/test builds:** Use `docker/docker-compose.yaml` with `--profile test` or `--profile ci`
 - **Parallel CI testing:** Use `docker/docker-compose.yaml` + `docker/docker-compose.parallel.yaml`
+
+## Behind a TLS-terminating reverse proxy
+
+ChurchCRM trusts `X-Forwarded-Proto` only from peers listed in the `CHURCHCRM_TRUSTED_PROXIES` environment variable (comma-separated IPs or CIDRs, for example `172.18.0.0/16`). Set it on the PHP container, or the session cookie loses its `Secure` flag and HSTS is not sent.

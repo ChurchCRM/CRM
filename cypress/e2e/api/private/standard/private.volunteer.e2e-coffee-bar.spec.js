@@ -3,7 +3,7 @@
 /**
  * Volunteer v2 — #9714 scenario 1, "Coffee Bar", as ONE end-to-end run.
  *
- * Epic #9701, issue #9714, design `.agents/skills/churchcrm/volunteer-v2-design.md`
+ * Epic #9701, issue #9714, design `docs/design/volunteer-v2.md`
  * §0.4 UC1, §2.17 (the worked example this fixture is), §6.5 row 1.
  *
  * The per-issue specs each prove one seam. This spec proves the *seams hold
@@ -20,9 +20,8 @@
  *       → the volunteer declines         → gapCount becomes 1
  *       → a DIFFERENT volunteer signs up → gapCount returns to 0
  *
- * The two member personas are the seeded EditSelf accounts (D14): person 100
- * (`selfedit.plus.notes.api.key`) is the one who declines, person 99
- * (`selfedit.api.key`) is the one who self-signs-up. They have to be two
+ * The two member personas sign in with their email (D14): person 100 is the
+ * one who declines, person 99 is the one who self-signs-up. They have to be two
  * different people — §6.5 requires the replacement to be somebody else.
  *
  * The acting coordinator is person 3 holding a ministry scope, NOT the
@@ -43,8 +42,8 @@
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const ADMIN_KEY = "admin.api.key";
 const COORDINATOR_KEY = "user.api.key";
-const SELFEDIT_KEY = "selfedit.api.key"; // person 99 — signs up
-const SELFEDIT_NOTES_KEY = "selfedit.plus.notes.api.key"; // person 100 — declines
+const SELFEDIT_KEY = 99; // person 99 — signs up
+const SELFEDIT_NOTES_KEY = 100; // person 100 — declines
 
 const VOLUNTEER_URL = "/api/ministries";
 
@@ -103,14 +102,12 @@ function dbOk(sql, params = []) {
     });
 }
 
+/** A person id is a member, in their portal session; anything else names an API key. */
 function api(key, method, url, body, expectedStatus = 200) {
-    return cy.makePrivateAPICall(
-        Cypress.testEnv(key),
-        method,
-        url,
-        body,
-        expectedStatus,
-    );
+    if (typeof key === "number") {
+        return cy.makeMemberAPICall(key, method, url, body, expectedStatus);
+    }
+    return cy.makePrivateAPICall(Cypress.testEnv(key), method, url, body, expectedStatus);
 }
 
 function setVersion(value) {
@@ -277,7 +274,7 @@ function cleanupFixtures() {
 // ── the fixture, built the way a coordinator would build it ────────────────
 
 before(() => {
-    cy.rememberTestEnv(["admin.api.key", "user.api.key", "selfedit.api.key", "selfedit.plus.notes.api.key"]);
+    cy.rememberTestEnv(["admin.api.key", "user.api.key"]);
     cy.useChurchTimeZone();
 });
 
