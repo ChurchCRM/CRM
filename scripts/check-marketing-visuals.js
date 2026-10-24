@@ -18,14 +18,15 @@
  * checked, not screenshot devices' video field.
  *
  * Exits non-zero (and lists every problem) if anything is missing or
- * suspiciously small, so this can gate CI the same way a failed Playwright
- * assertion would.
+ * suspiciously small, has the wrong viewport dimensions, or lacks contrast
+ * across the image tiles, so this can gate CI like a failed Playwright assertion.
  */
 
 const fs = require('node:fs');
 const path = require('node:path');
+const { PNG } = require('pngjs');
 
-const ARTIFACTS_ROOT = path.join(__dirname, '..', 'playwright', 'artifacts');
+const ARTIFACTS_ROOT = path.resolve(process.argv[2] || path.join(__dirname, '..', 'playwright', 'artifacts'));
 const METADATA_ROOT = path.join(ARTIFACTS_ROOT, 'metadata');
 const VIDEO_DEVICES = new Set(['recordings', 'setup']);
 
@@ -85,6 +86,50 @@ function checkFile(problems, label, filePath, minBytes) {
   }
 }
 
+function checkScreenshot(problems, label, filePath, viewport) {
+  if (!fs.existsSync(filePath)) {
+    return; // checkFile reports the missing file.
+  }
+  try {
+    const { width, height, data } = PNG.sync.read(fs.readFileSync(filePath));
+    // capture.ts writes viewport frames at deviceScaleFactor: 2, not full-page images.
+    if (!viewport || !Number.isInteger(viewport.width) || !Number.isInteger(viewport.height) ||
+        viewport.width <= 0 || viewport.height <= 0) {
+      problems.push(`NO VIEWPORT ${label}: cannot validate image dimensions`);
+    } else if (width !== viewport.width * 2 || height !== viewport.height * 2) {
+      problems.push(`WRONG DIMENSIONS ${label} (${width}x${height}, expected ${viewport.width * 2}x${viewport.height * 2}): ${filePath}`);
+    }
+
+    // Measure local contrast so a flat background cannot pass merely by occupying
+    // many bytes. Sparse real UI still spans several tiles.
+    let contentTiles = 0;
+    for (let row = 0; row < 4; row++) {
+      for (let column = 0; column < 4; column++) {
+        const min = [255, 255, 255];
+        const max = [0, 0, 0];
+        for (let y = Math.floor(row * height / 4); y < Math.floor((row + 1) * height / 4); y += 4) {
+          for (let x = Math.floor(column * width / 4); x < Math.floor((column + 1) * width / 4); x += 4) {
+            const offset = (y * width + x) * 4;
+            for (let channel = 0; channel < 3; channel++) {
+              const value = Math.round(data[offset + channel] * data[offset + 3] / 255 + 255 - data[offset + 3]);
+              min[channel] = Math.min(min[channel], value);
+              max[channel] = Math.max(max[channel], value);
+            }
+          }
+        }
+        if (max.some((value, channel) => value - min[channel] >= 16)) {
+          contentTiles++;
+        }
+      }
+    }
+    if (contentTiles < 2) {
+      problems.push(`BLANK ${label} (${contentTiles}/16 tiles contain contrast, expected >= 2): ${filePath}`);
+    }
+  } catch (error) {
+    problems.push(`INVALID PNG ${label}: ${filePath} (${error.message})`);
+  }
+}
+
 function main() {
   const metadataFiles = listMetadataFiles(METADATA_ROOT);
   if (metadataFiles.length === 0) {
@@ -116,12 +161,18 @@ function main() {
         path.join(ARTIFACTS_ROOT, 'screenshots', locale, device, meta.artifact),
         MIN_SCREENSHOT_BYTES
       );
+      checkScreenshot(
+        problems,
+        `screenshot (${meta.workflow}, ${locale}/${device})`,
+        path.join(ARTIFACTS_ROOT, 'screenshots', locale, device, meta.artifact),
+        meta.viewport
+      );
       checked++;
     }
   }
 
   if (problems.length > 0) {
-    console.error(`Marketing visuals check failed — ${problems.length}/${checked} artifact(s) missing or too small:\n`);
+    console.error(`Marketing visuals check failed — ${problems.length} problem(s) across ${checked} artifact(s):\n`);
     for (const problem of problems) {
       console.error(`  - ${problem}`);
     }

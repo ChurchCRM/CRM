@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-import { captureScreen } from '../support/capture';
+import { captureScreen, defineCapture } from '../support/capture';
 import { addPaymentUrl, createDemoDeposit, deleteDemoDeposit } from '../support/deposit';
 import { humanSelect, humanType, settle } from '../support/human';
 
@@ -17,7 +17,14 @@ test.afterAll(async ({ browser }) => {
 });
 
 test.describe('Giving', () => {
-  test('finance-payment-editor', async ({ page }, testInfo) => {
+  const financePaymentEditorCapture = defineCapture({
+    name: 'finance-payment-editor',
+    locales: 'all',
+    title: 'Payment Entry with Ctrl+Enter',
+    category: 'Finance & Giving',
+    purpose: 'Show a payment being entered on a deposit, with the Ctrl+Enter save-and-next shortcut by the buttons.',
+  });
+  test('finance-payment-editor', financePaymentEditorCapture, async ({ page }, testInfo) => {
     await page.goto(addPaymentUrl(depositId));
     const family = page.locator('#FamilyName-ts-control');
     await expect(family).toBeFocused({ timeout: 15000 });
@@ -35,11 +42,6 @@ test.describe('Giving', () => {
     await expect(page.locator('#fab-container .fab-button').first()).toHaveClass(/fab-hidden/, { timeout: 15000 });
     await settle(page, 600);
 
-    await captureScreen(page, testInfo, {
-      name: 'finance-payment-editor',
-      title: 'Payment Entry with Ctrl+Enter',
-      category: 'Finance & Giving',
-      purpose: 'Show a payment being entered on a deposit, with the Ctrl+Enter save-and-next shortcut by the buttons.',
-    });
+    await captureScreen(page, testInfo, financePaymentEditorCapture);
   });
 });
