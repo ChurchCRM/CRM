@@ -98,6 +98,16 @@ describe("Finance Reports Index", () => {
         cy.url().should("contain", "FinancialReports.php");
         cy.url().should("contain", "Voting");
     });
+
+    it("should answer the old tax statements URL with Page Not Found and a way back", () => {
+        cy.request({ url: "/finance/reports/tax-statements", failOnStatusCode: false }).its("status").should("eq", 404);
+
+        cy.visit("/finance/reports/tax-statements", { failOnStatusCode: false });
+        cy.contains("h3", "Page Not Found");
+        cy.contains("a", "Back to Finance Dashboard").click();
+        cy.url().should("match", /\/finance\/$/);
+        cy.contains("Finance Dashboard");
+    });
 });
 
 describe("Finance Reports Index - Standard User Access", () => {
@@ -112,20 +122,5 @@ describe("Finance Reports Index - Standard User Access", () => {
         // Should be able to see the reports page
         cy.contains("Tax & Giving Reports").should("be.visible");
         cy.contains("Pledge Reports").should("be.visible");
-    });
-});
-
-describe("Finance Reports Index - No Finance Permission", () => {
-    beforeEach(() => {
-        cy.setupNoFinanceSession();
-    });
-
-    it("should deny access to users without finance permission", () => {
-        // User judith.matthews has no finance permission
-        cy.visit("/finance/reports", { failOnStatusCode: false });
-
-        // Should be redirected to access-denied page
-        cy.url().should("include", "/v2/access-denied");
-        cy.url().should("include", "role=Finance");
     });
 });

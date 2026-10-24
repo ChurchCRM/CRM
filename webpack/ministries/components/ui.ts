@@ -274,80 +274,65 @@ export function confirmDelete(title: string, message: string, onConfirm: () => v
 }
 
 /**
- * Keep a row action menu usable inside a horizontally scrolling table.
+ * Keep a sideways-scrolling table's heading row in view while the page scrolls.
  *
- * `.volunteer-scroll-x` sets `overflow-x: auto` so the qualification grid can be
- * wider than the page. Per the CSS Overflow spec that coerces `overflow-y` from
- * `visible` to `auto`, which clips any absolutely-positioned descendant — and a
- * Bootstrap dropdown is exactly that. `data-bs-display="static"` does not help:
- * it only turns Popper off, and the menu is still positioned inside the clipping
- * box.
+ * A sticky cell inside the sideways-scrolling wrapper sticks to the wrapper, not the page, so
+ * the row is copied into a strip above the wrapper that sticks below the page's top bar. The
+ * real row stays in the table, collapsed, for column widths and screen readers.
  *
- * The fix is to take the OPEN menu out of that box altogether. A `position: fixed`
- * element is not clipped by an ancestor's overflow at all, so on `shown.bs.dropdown`
- * the menu is switched to fixed and anchored to the trigger's viewport rectangle,
- * and on `hide.bs.dropdown` it is handed back to Bootstrap untouched. Nothing is
- * moved in the DOM, so Bootstrap's own focus handling, the delegated row-action
- * click handlers and `dropdown-menu-end` alignment all keep working.
- *
- * Coordinates are re-derived on scroll and resize while the menu is open, because
- * a fixed element does not follow the row it belongs to.
+ * Returns the function that copies the row again after the table is re-rendered.
  */
-export function wireUnclippedRowMenus(wrapperId: string): void {
+export function wireStickyHead(wrapperId: string): () => void {
   const wrapper = byId(wrapperId);
-  if (!wrapper) {
-    return;
+  const table = wrapper?.querySelector<HTMLTableElement>(":scope > table");
+  if (!wrapper || !table) {
+    return () => {};
   }
 
-  let open: { menu: HTMLElement; toggle: HTMLElement } | null = null;
+  const copy = document.createElement("table");
+  copy.className = table.className;
+  const strip = document.createElement("div");
+  strip.className = "volunteer-sticky-head";
+  strip.setAttribute("aria-hidden", "true");
+  strip.append(copy);
+  wrapper.before(strip);
 
-  const place = (): void => {
-    if (!open) {
-      return;
+  const sizeColumns = (): void => {
+    const cells = table.tHead?.rows[0]?.cells ?? [];
+    const copies = copy.tHead?.rows[0]?.cells ?? [];
+    copy.style.width = `${table.getBoundingClientRect().width}px`;
+    for (let i = 0; i < cells.length; i++) {
+      // `!important` because a utility such as `.w-1` sets the width that way.
+      copies[i]?.style.setProperty("width", `${cells[i].getBoundingClientRect().width}px`, "important");
     }
-    const rect = open.toggle.getBoundingClientRect();
-    // `dropdown-menu-end` aligns the menu's right edge with the trigger's.
-    open.menu.style.top = `${rect.bottom}px`;
-    open.menu.style.left = `${Math.max(0, rect.right - open.menu.offsetWidth)}px`;
+    strip.scrollLeft = wrapper.scrollLeft;
   };
+  const columns = new ResizeObserver(sizeColumns);
 
-  const release = (): void => {
-    if (!open) {
-      return;
-    }
-    open.menu.classList.remove("volunteer-menu-fixed");
-    open.menu.style.top = "";
-    open.menu.style.left = "";
-    open = null;
-    window.removeEventListener("resize", place);
-    window.removeEventListener("scroll", place, true);
-  };
+  const topBar = [...document.querySelectorAll<HTMLElement>("header")].find((header) =>
+    ["sticky", "fixed"].includes(getComputedStyle(header).position),
+  );
+  if (topBar) {
+    new ResizeObserver(() => strip.style.setProperty("--volunteer-sticky-top", `${topBar.offsetHeight}px`)).observe(
+      topBar,
+    );
+  }
 
-  // `shown`, not `show`: a `.dropdown-menu` without `.show` is `display: none`,
-  // so its width — which right-alignment needs — is zero until Bootstrap has
-  // opened it. The handler runs before the browser paints, so there is no flash.
-  wrapper.addEventListener("shown.bs.dropdown", (event) => {
-    // Bootstrap fires this on the TOGGLE, not on the `.dropdown` wrapper — both
-    // are accepted here so the handler survives either reading.
-    const node = event.target as HTMLElement | null;
-    const toggle = node?.matches("[data-bs-toggle='dropdown']")
-      ? node
-      : (node?.querySelector<HTMLElement>("[data-bs-toggle='dropdown']") ?? null);
-    const menu = toggle?.parentElement?.querySelector<HTMLElement>(".dropdown-menu") ?? null;
-    if (!menu || !toggle) {
-      return;
-    }
-
-    release();
-    open = { menu, toggle };
-    menu.classList.add("volunteer-menu-fixed");
-    place();
-    window.addEventListener("resize", place);
-    // Capture: the wrapper's own scroll does not bubble.
-    window.addEventListener("scroll", place, true);
+  wrapper.addEventListener("scroll", () => {
+    strip.scrollLeft = wrapper.scrollLeft;
+  });
+  strip.addEventListener("scroll", () => {
+    wrapper.scrollLeft = strip.scrollLeft;
   });
 
-  wrapper.addEventListener("hide.bs.dropdown", release);
+  return () => {
+    columns.disconnect();
+    copy.replaceChildren(...(table.tHead ? [table.tHead.cloneNode(true)] : []));
+    columns.observe(table);
+    for (const cell of table.tHead?.rows[0]?.cells ?? []) {
+      columns.observe(cell);
+    }
+  };
 }
 
 /** `YYYY-MM-DD`, `offsetDays` from today, in the browser's own calendar. */

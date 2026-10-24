@@ -340,7 +340,6 @@ class PdfDirectory extends ChurchInfoReport
         global $bDirFamilyPhone;
         global $bDirFamilyWork;
         global $bDirFamilyCell;
-        global $bDirFamilyEmail;
         global $bDirWedding;
         global $bDirAddress;
         global $bDirMailingAddress;
@@ -363,7 +362,7 @@ class PdfDirectory extends ChurchInfoReport
                 $sFamilyStr .= $fam_City . ', ' . $fam_State . ' ' . $fam_Zip . "\n";
             }
             if (Countries::isForeign($fam_Country)) {
-                $sFamilyStr .= $fam_Country . "\n";
+                $sFamilyStr .= Countries::toName($fam_Country) . "\n";
             }
             // Only families that actually mail somewhere other than their primary
             // address get a second block, and only when the reader asked for it (#9743).
@@ -377,9 +376,6 @@ class PdfDirectory extends ChurchInfoReport
 
         if ($bDirFamilyPhone && strlen($fam_HomePhone)) {
             $sFamilyStr .= '   ' . gettext('Phone') . ': ' . $fam_HomePhone . "\n";
-        }
-        if ($bDirFamilyEmail && strlen($fam_Email)) {
-            $sFamilyStr .= '   ' . gettext('Email') . ': ' . $fam_Email . "\n";
         }
         if ($bDirWedding && ($fam_WeddingDate > 0)) {
             $sFamilyStr .= '   ' . gettext('Wedding') . ': ' . date(SystemConfig::getValue('sDateFormatLong'), strtotime($fam_WeddingDate)) . "\n";

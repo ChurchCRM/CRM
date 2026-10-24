@@ -3,7 +3,9 @@
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\Geocoding\GeocoderChain;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Service\GradePromotionService;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -22,6 +24,9 @@ $app->get('/people', function (Request $request, Response $response): Response {
         ]],
         'peoplePeople' => [gettext('People'), 'fa-solid fa-user', [
             'iPersonNameStyle', 'iPersonInitialStyle', 'bHidePersonAddress', 'bHideFriendDate', 'bHideDeceasedFromDirectory',
+        ]],
+        'peopleGrades' => [gettext('Grade Promotion'), 'fa-solid fa-graduation-cap', [
+            'iGradePromotionMonth', 'iGradePromotionDay',
         ]],
         'peopleMap' => [gettext('Map Settings'), 'fa-solid fa-map', [
             'iMapZoom', 'bHideLatLon', 'sGeocoderProviders',
@@ -51,6 +56,8 @@ $app->get('/people', function (Request $request, Response $response): Response {
         'iMapZoom'                             => gettext('Default Map View'),
         'bHideLatLon'                          => gettext('Hide Latitude/Longitude'),
         'sGeocoderProviders'                   => gettext('Geocoding services'),
+        'iGradePromotionMonth'                 => gettext('Promotion Month'),
+        'iGradePromotionDay'                   => gettext('Promotion Day'),
     ];
 
     $sections = [];
@@ -124,10 +131,12 @@ $app->get('/people', function (Request $request, Response $response): Response {
             [gettext('People Settings')],
         ]),
         'sections'      => $sections,
+        'gradePromotion' => gradePromotionSummary(),
         'listLinks'     => [
             [gettext('Person Classifications'), '/admin/system/options?mode=classes', 'fa-tags'],
             [gettext('Person Properties'), '/PropertyList.php?Type=p', 'fa-person-half-dress'],
             [gettext('Person Custom Fields'), '/PersonCustomFieldsEditor.php', 'fa-sliders'],
+            [gettext('Grades'), '/admin/system/options?mode=grades', 'fa-graduation-cap'],
             [gettext('Family Roles'), '/admin/system/options?mode=famroles', 'fa-people-roof'],
             [gettext('Family Properties'), '/PropertyList.php?Type=f', 'fa-people-roof'],
             [gettext('Family Custom Fields'), '/FamilyCustomFieldsEditor.php', 'fa-sliders'],
@@ -137,3 +146,29 @@ $app->get('/people', function (Request $request, Response $response): Response {
 
     return $renderer->render($response, 'people.php', $pageArgs);
 });
+
+/**
+ * @return array{lastAt: string, lastRun: ?string, promotedThisYear: bool, lastBy: ?string, lastResult: ?array, nextDateText: string, preview: array{moved: int, finished: int}}
+ */
+function gradePromotionSummary(): array
+{
+    $status = GradePromotionService::status();
+    $result = $status['lastResult'];
+    $lastBy = null;
+    if ($result !== null) {
+        $userId = (int) ($result['userId'] ?? 0);
+        $lastBy = $userId === Person::SCHEDULED_TASK
+            ? gettext('Scheduled Task')
+            : (PersonQuery::create()->findPk($userId)?->getFullName() ?? gettext('Unknown'));
+    }
+
+    return [
+        'lastAt' => $status['lastAt'],
+        'lastRun' => $status['lastRunText'],
+        'promotedThisYear' => $status['promotedThisYear'],
+        'lastBy' => $lastBy,
+        'lastResult' => $result,
+        'nextDateText' => $status['nextDateText'],
+        'preview' => $status['preview'],
+    ];
+}

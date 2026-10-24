@@ -5,12 +5,15 @@ require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Bootstrapper;
+use ChurchCRM\data\Countries;
+use ChurchCRM\data\States;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Service\FamilyService;
+use ChurchCRM\Service\GradeService;
 use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonCustom;
@@ -18,7 +21,6 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
 use ChurchCRM\Utils\AddressDefaults;
@@ -65,7 +67,6 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
 
 $bErrorFlag = false;
 $sNameError = '';
-$sEmailError = '';
 $sWeddingDateError = '';
 $sSecondAddressError = '';
 
@@ -93,7 +94,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     }
 
     $sCountry = InputUtils::legacyFilterInput($_POST['Country']);
-    $iFamilyMemberRows = InputUtils::legacyFilterInput($_POST['FamCount']);
+    $iFamilyMemberRows = InputUtils::legacyFilterInput($_POST['FamCount'], 'int');
 
     $sState = InputUtils::legacyFilterInput($_POST[$_POST['stateType'] === 'dropDown' ? 'State' : 'StateTextbox']);
 
@@ -129,7 +130,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     }
 
     $sHomePhone = InputUtils::legacyFilterInput($_POST['HomePhone']);
-    $sEmail = InputUtils::legacyFilterInput($_POST['Email']);
     $bSendNewsLetter = isset($_POST['SendNewsLetter']);
 
     $nLatitude = 0.0;
@@ -180,6 +180,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $aBirthMonths[$iCount] = InputUtils::legacyFilterInput($_POST["BirthMonth$iCount"], 'int');
         $aBirthYears[$iCount] = InputUtils::legacyFilterInput($_POST["BirthYear$iCount"], 'int');
         $aClassification[$iCount] = InputUtils::legacyFilterInput($_POST["Classification$iCount"], 'int');
+        $aGrades[$iCount] = GradeService::resolve($_POST["Grade$iCount"] ?? null);
         $aPersonIDs[$iCount] = InputUtils::legacyFilterInput($_POST["PersonID$iCount"], 'int');
         $aUpdateBirthYear[$iCount] = InputUtils::legacyFilterInput($_POST['UpdateBirthYear'], 'int');
 
@@ -234,16 +235,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $dWeddingDate = $dateString;
     }
 
-    // Validate Email
-    if (strlen($sEmail) > 0) {
-        if (MiscUtils::checkEmail($sEmail) === false) {
-            $sEmailError = '<span class="text-danger">'
-                . gettext('Email is Not Valid') . '</span>';
-            $bErrorFlag = true;
-            $sEmail = null;
-        }
-    }
-
     // Validate all the custom fields
     $aCustomData = [];
     while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
@@ -278,21 +269,20 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             ->setAddress1($sAddress1)
             ->setAddress2($sAddress2)
             ->setCity($sCity)
-            ->setState($sState)
+            ->setState(States::keepStoredIfSame($sCountry, $family->getState(), $sState))
             ->setZip($sZip)
-            ->setCountry($sCountry)
+            ->setCountry(Countries::keepStoredIfSame($family->getCountry(), $sCountry))
             ->setSecondAddress1($sSecondAddress1)
             ->setSecondAddress2($sSecondAddress2)
             ->setSecondCity($sSecondCity)
-            ->setSecondState($sSecondState)
+            ->setSecondState(States::keepStoredIfSame($sSecondCountry, $family->getSecondState(), $sSecondState))
             ->setSecondZip($sSecondZip)
-            ->setSecondCountry($sSecondCountry)
+            ->setSecondCountry(Countries::keepStoredIfSame($family->getSecondCountry(), $sSecondCountry))
             ->setSecondIsMailing($bSecondIsMailing)
             ->setHomePhone($sHomePhone)
             ->setSendNewsletter($bSendNewsLetterString)
             ->setEnvelope($nEnvelope)
             ->setWeddingdate($dWeddingDate)
-            ->setEmail($sEmail)
             ->setLatitude($nLatitude)
             ->setLongitude($nLongitude);
 
@@ -359,7 +349,8 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                         ->setBirthDay($aBirthDays[$iCount])
                         ->setBirthMonth($aBirthMonths[$iCount])
                         ->setBirthYear($aBirthYears[$iCount])
-                        ->setClsId($aClassification[$iCount]);
+                        ->setClsId($aClassification[$iCount])
+                        ->setGradeId($aGrades[$iCount]);
                     $person->save();
                     $person->reload();
                     $personCustom = new PersonCustom();
@@ -391,6 +382,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                         ->setBirthMonth($aBirthMonths[$iCount])
                         ->setBirthDay($aBirthDays[$iCount])
                         ->setClsId($aClassification[$iCount])
+                        ->setGradeId($aGrades[$iCount])
                         ->setDateLastEdited(date('YmdHis'))
                         ->setEditedBy(AuthenticationManager::getCurrentUser()->getId());
                     if ($aUpdateBirthYear[$iCount] & 1) {
@@ -460,7 +452,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $sSecondCountry = $family->getSecondCountry();
         $bSecondIsMailing = (bool) $family->getSecondIsMailing();
         $sHomePhone = $family->getHomePhone();
-        $sEmail = $family->getEmail();
         $bSendNewsLetter = $family->getSendNewsletter() === 'TRUE';
         $dWeddingDate = $family->getWeddingdate(SystemConfig::getValue("sDatePickerFormat"));
         $nLatitude = $family->getLatitude();
@@ -502,6 +493,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             $aBirthDays[$iCount] = (int)$per_BirthDay;
             $aBirthYears[$iCount] = $per_BirthYear > 0 ? (int)$per_BirthYear : '';
             $aClassification[$iCount] = (int)$per_cls_ID;
+            $aGrades[$iCount] = GradeService::resolve($per_grd_ID);
             $aPersonIDs[$iCount] = (int)$per_ID;
             $aPerFlag[$iCount] = $per_Flags;
         }
@@ -536,7 +528,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $bNoFormat_WorkPhone = isset($_POST['NoFormat_WorkPhone']);
         $sCellPhone = '';
         $bNoFormat_CellPhone = isset($_POST['NoFormat_CellPhone']);
-        $sEmail = '';
         $bSendNewsLetter = 'TRUE';
         $dWeddingDate = '';
         $nLatitude = 0.0;
@@ -557,6 +548,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             $aBirthMonths[$iCount] = 0;
             $aBirthYears[$iCount] = '';
             $aClassification[$iCount] = 0;
+            $aGrades[$iCount] = null;
             $aPersonIDs[$iCount] = 0;
             $aUpdateBirthYear[$iCount] = 0;
         }
@@ -579,18 +571,13 @@ $aBreadcrumbs = PageHeader::breadcrumbs([
     [gettext('Families'), '/people/family'],
     [($iFamilyID > 0) ? gettext('Edit Family') : gettext('New Family')],
 ]);
-// Attribute-safe copies of the second-address values for the form below.
-// InputUtils::escapeAttribute() makes the same htmlspecialchars() call, but
-// Semgrep's echoed-request taint rule only recognises htmlspecialchars() and
-// htmlentities() as sanitisers, and GitHub code scanning still counts a
-// finding suppressed in the source as an open alert. Spelling the escape out
-// here keeps the scan green without a suppression comment.
-$sSecondAddress1Attr = htmlspecialchars(stripslashes($sSecondAddress1 ?? ''), ENT_QUOTES, 'UTF-8');
-$sSecondAddress2Attr = htmlspecialchars(stripslashes($sSecondAddress2 ?? ''), ENT_QUOTES, 'UTF-8');
-$sSecondCityAttr = htmlspecialchars(stripslashes($sSecondCity ?? ''), ENT_QUOTES, 'UTF-8');
-$sSecondStateAttr = htmlspecialchars(stripslashes($sSecondState ?? ''), ENT_QUOTES, 'UTF-8');
-$sSecondZipAttr = htmlspecialchars(stripslashes($sSecondZip ?? ''), ENT_QUOTES, 'UTF-8');
-$sSecondCountryAttr = htmlspecialchars(stripslashes($sSecondCountry ?? ''), ENT_QUOTES, 'UTF-8');
+$sSecondAddress1Attr = InputUtils::escapeAttribute($sSecondAddress1 ?? '');
+$sSecondAddress2Attr = InputUtils::escapeAttribute($sSecondAddress2 ?? '');
+$sSecondCityAttr = InputUtils::escapeAttribute($sSecondCity ?? '');
+$sSecondStateAttr = InputUtils::escapeAttribute($sSecondState ?? '');
+$sSecondZipAttr = InputUtils::escapeAttribute($sSecondZip ?? '');
+$sSecondCountryAttr = InputUtils::escapeAttribute(Countries::toISO($sSecondCountry));
+$sCountry = Countries::toISO($sCountry);
 
 require_once __DIR__ . '/Include/Header.php';
 ?>
@@ -691,10 +678,7 @@ require_once __DIR__ . '/Include/Header.php';
                 </div>
                 <div class="mb-3 col-12 col-sm-6 col-md-2">
                     <label for="Zip"><?= gettext('Zip') ?>:</label>
-                    <input type="text" id="Zip" name="Zip" class="form-control" <?php
-                    if (SystemConfig::getBooleanValue('bForceUppercaseZip')) {
-                        echo 'style="text-transform:uppercase" ';
-                    }
+                    <input type="text" id="Zip" name="Zip" class="form-control<?= SystemConfig::getBooleanValue('bForceUppercaseZip') ? ' text-uppercase' : '' ?>" <?php
                     echo 'value="' . InputUtils::escapeAttribute($sZip) . '" '; ?> maxlength="10">
                 </div>
                 <div class="mb-3 col-12 col-sm-6 col-md-3">
@@ -784,10 +768,7 @@ require_once __DIR__ . '/Include/Header.php';
                     </div>
                     <div class="mb-3 col-12 col-sm-6 col-md-2">
                         <label for="SecondZip"><?= gettext('Zip') ?>:</label>
-                        <input type="text" id="SecondZip" name="SecondZip" class="form-control" <?php
-                        if (SystemConfig::getBooleanValue('bForceUppercaseZip')) {
-                            echo 'style="text-transform:uppercase" ';
-                        }
+                        <input type="text" id="SecondZip" name="SecondZip" class="form-control<?= SystemConfig::getBooleanValue('bForceUppercaseZip') ? ' text-uppercase' : '' ?>" <?php
                         echo 'value="' . $sSecondZipAttr . '" '; ?> maxlength="10">
                     </div>
                     <div class="mb-3 col-12 col-sm-6 col-md-3">
@@ -824,16 +805,6 @@ require_once __DIR__ . '/Include/Header.php';
                             <label class="form-check-label" for="NoFormat_HomePhone"><?= gettext('No format') ?></label>
                         </span>
                     </div>
-                </div>
-                <div class="mb-3 col-12 col-md-6">
-                    <label for="Email"><?= gettext('Email') ?>:</label>
-                    <div class="input-group">
-                        <span class="input-group-text"><i class="fa-solid fa-at"></i></span>
-                        <input type="email" id="Email" name="Email" class="form-control" value="<?= InputUtils::escapeAttribute($sEmail) ?>" maxlength="100">
-                    </div>
-                    <?php if ($sEmailError) { ?>
-                    <span class="text-danger small"><?= $sEmailError ?></span>
-                    <?php } ?>
                 </div>
             </div>
             <?php if (!SystemConfig::getBooleanValue('bHideFamilyNewsletter')) { /* Newsletter can be hidden - General Settings */ ?>
@@ -924,6 +895,7 @@ require_once __DIR__ . '/Include/Header.php';
                                                 <th><?= gettext('Birth Day') ?></th>
                                                 <th><?= gettext('Birth Year') ?></th>
                                                 <th><?= gettext('Classification') ?></th>
+                                                <th><?= gettext('Grade') ?></th>
                                             </tr>
                                         </thead>
                                         <tbody id="familyMembersTbody">
@@ -1041,6 +1013,14 @@ require_once __DIR__ . '/Include/Header.php';
                                                         ?>
                                                     </select>
                                                 </td>
+                                                <td>
+                                                    <select name="Grade<?= $iCount ?>" class="form-select form-select-sm">
+                                                        <option value=""><?= gettext('Unassigned') ?></option>
+                                                        <?php foreach (GradeService::names() as $gradeId => $gradeName) { ?>
+                                                            <option value="<?= (int) $gradeId ?>"<?= ($aGrades[$iCount] ?? null) === $gradeId ? ' selected' : '' ?>><?= InputUtils::escapeHTML($gradeName) ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </td>
                                             </tr>
                                         <?php } ?>
                                         </tbody>
@@ -1108,6 +1088,7 @@ require_once __DIR__ . '/Include/Header.php';
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM.familyRoles = <?= InputUtils::jsonEncodeForScript($familyRolesJS) ?>;
     window.CRM.classifications = <?= InputUtils::jsonEncodeForScript($classificationsJS) ?>;
+    window.CRM.grades = <?= InputUtils::jsonEncodeForScript(array_map(fn ($id, $name) => ['id' => $id, 'name' => $name], array_keys(GradeService::names()), GradeService::names())) ?>;
     window.CRM.customPhoneFields = <?= InputUtils::jsonEncodeForScript($customPhoneFields ?? []) ?>;
     window.CRM.initialFamilyMemberCount = <?= $iFamilyMemberRows ?>;
     window.CRM.i18n = {

@@ -1,0 +1,61 @@
+// Page-level styles for shared views. Static inline styles move here as named classes.
+
+.dropzone-area {
+  background-color: var(--tblr-bg-surface-secondary);
+  border: 2px dashed var(--tblr-border-color);
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+
+  &:hover,
+  &.dragover {
+    background-color: var(--tblr-bg-surface);
+    border-color: var(--tblr-primary);
+  }
+
+  &.has-file {
+    background-color: var(--tblr-success-lt);
+    border-color: var(--tblr-success);
+  }
+}
+
+// Tabler 1.6 sets no text colour on a solid badge, so a bare `badge bg-*` falls back to a muted grey. A text-* utility still wins.
+.badge {
+  &.bg-primary,
+  &.bg-secondary,
+  &.bg-success,
+  &.bg-danger,
+  &.bg-dark {
+    color: var(--tblr-white);
+  }
+
+  &.bg-warning,
+  &.bg-info,
+  &.bg-light {
+    color: var(--tblr-dark);
+  }
+}
+
+.error-page-logo { margin: 72px auto 0; }
+
+.email-debug-label-col { width: 80px; }
+.email-debug-label-col-wide { width: 140px; }
+
+.debug-smtp-log {
+  max-height: 400px;
+  overflow-y: auto;
+  background: var(--tblr-bg-surface-secondary);
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  font-family: var(--tblr-font-monospace);
+  font-size: 0.82rem;
+  line-height: 1.5;
+
+  br { line-height: 0; }
+}
+
+// Table wrapper that contains horizontal overflow while letting row dropdown
+// menus escape vertically. `clip` (unlike auto/scroll) keeps overflow-y visible.
+.table-clip-x {
+  overflow-x: clip;
+  overflow-y: visible;
+}

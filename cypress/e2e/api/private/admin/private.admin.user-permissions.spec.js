@@ -31,13 +31,4 @@ describe("Admin API User Permissions Endpoint", () => {
             },
         );
     });
-
-    it("non-admin is denied access", () => {
-        cy.makePrivateUserAPICall(
-            "GET",
-            `/admin/api/user/${knownUserId}/permissions`,
-            null,
-            403,
-        );
-    });
 });

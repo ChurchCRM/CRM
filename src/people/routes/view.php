@@ -14,12 +14,14 @@ use ChurchCRM\model\ChurchCRM\VolunteerPositionQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerQualification;
 use ChurchCRM\Service\EmailLogService;
 use ChurchCRM\Service\PersonService;
+use ChurchCRM\Service\PersonSignInService;
 use ChurchCRM\Service\PropertyService;
 use ChurchCRM\Volunteer\Service\VolunteerAssignmentService;
 use ChurchCRM\Volunteer\Service\VolunteerScheduleService;
 use ChurchCRM\Volunteer\Service\VolunteerQualificationService;
 use ChurchCRM\Service\TimelineService;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerOccurrenceQuery;
@@ -346,6 +348,11 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
     // ── Email history (5 most recent; the full list is /people/view/{id}/emails) ──
     $emailHistory = (new EmailLogService())->getForPerson($iPersonID, 1, 5);
 
+    // ── Portal sign-in card (member sign-in design §11.3) ───────────────────
+    $portalSignIn = $currentUser->isEditRecordsEnabled()
+        ? (new PersonSignInService())->statusFor($person, $currentUser->isAdmin())
+        : null;
+
     // ── Render ───────────────────────────────────────────────────────────────
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
@@ -401,6 +408,11 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
         'personTimeline'         => $personTimeline,
         // Email history
         'emailHistory'           => $emailHistory,
+        // Portal sign-in card: null when the viewer lacks Edit Records
+        'portalSignIn'           => $portalSignIn,
+        'portalSignInCanManage'  => $currentUser->isAdmin(),
+        'portalSignInIsSelf'     => $iPersonID === (int) $currentUser->getPersonId(),
+        'portalSignInCsrfToken'  => $portalSignIn === null ? '' : CSRFUtils::generateToken(),
     ];
 
     return $renderer->render($response, 'person-view.php', $pageArgs);

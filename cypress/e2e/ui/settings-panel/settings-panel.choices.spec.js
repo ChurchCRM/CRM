@@ -11,21 +11,6 @@
 describe("Settings Panel — Choice Dropdowns", () => {
     beforeEach(() => cy.setupAdminSession());
 
-    describe("Email Dashboard — SMTP Encryption", () => {
-        it("encryption dropdown has None, TLS, and SSL options", () => {
-            cy.visit("v2/email/dashboard");
-            cy.contains("Email Settings").click();
-            cy.get("#emailSettings", { timeout: 10000 }).should("be.visible");
-
-            cy.get("#emailSettings").within(() => {
-                cy.get("select[name='sPHPMailerSMTPSecure']").should("exist");
-                cy.get("select[name='sPHPMailerSMTPSecure'] option").should("have.length.at.least", 3);
-                cy.get("select[name='sPHPMailerSMTPSecure']").contains("option", "TLS");
-                cy.get("select[name='sPHPMailerSMTPSecure']").contains("option", "SSL");
-            });
-        });
-    });
-
     describe("Finance Dashboard — Settings Panel", () => {
         it("admin can open financial settings panel", () => {
             cy.visit("/finance/");

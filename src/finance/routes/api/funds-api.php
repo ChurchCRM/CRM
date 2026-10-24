@@ -118,7 +118,7 @@ $app->group('/api/funds', function (RouteCollectorProxy $group) use ($fundToArra
      * @OA\Post(
      *     path="/finance/api/funds",
      *     operationId="createDonationFundAdmin",
-     *     summary="Create a new donation fund (Admin only)",
+     *     summary="Create a new donation fund (Finance role or Admin required)",
      *     tags={"Finance"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\RequestBody(
@@ -177,7 +177,7 @@ $app->group('/api/funds', function (RouteCollectorProxy $group) use ($fundToArra
      * @OA\Put(
      *     path="/finance/api/funds/{id}",
      *     operationId="updateDonationFundAdmin",
-     *     summary="Update a donation fund (Admin only)",
+     *     summary="Update a donation fund (Finance role or Admin required)",
      *     tags={"Finance"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer"), description="Fund ID"),
@@ -233,7 +233,7 @@ $app->group('/api/funds', function (RouteCollectorProxy $group) use ($fundToArra
      * @OA\Delete(
      *     path="/finance/api/funds/{id}",
      *     operationId="deleteDonationFundAdmin",
-     *     summary="Delete a donation fund (Admin only)",
+     *     summary="Delete a donation fund (Finance role or Admin required)",
      *     tags={"Finance"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer"), description="Fund ID"),
@@ -268,7 +268,7 @@ $app->group('/api/funds', function (RouteCollectorProxy $group) use ($fundToArra
      * @OA\Patch(
      *     path="/finance/api/funds/{id}/order",
      *     operationId="reorderDonationFundAdmin",
-     *     summary="Move a donation fund up or down in display order (Admin only)",
+     *     summary="Move a donation fund up or down in display order (Finance role or Admin required)",
      *     tags={"Finance"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer"), description="Fund ID"),

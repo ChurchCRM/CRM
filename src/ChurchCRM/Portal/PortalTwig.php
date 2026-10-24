@@ -2,11 +2,10 @@
 
 namespace ChurchCRM\Portal;
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Plugin\PluginManager;
+use ChurchCRM\Portal\Auth\PortalContext;
 use ChurchCRM\Twig\GettextExtension;
 use ChurchCRM\Utils\LoggerUtils;
 use Laminas\Diactoros\Response as Psr7Response;
@@ -308,8 +307,6 @@ class PortalTwig
 
     private static function currentUserIsAdministrator(): bool
     {
-        $user = AuthenticationManager::getCurrentUser();
-
-        return $user instanceof User && $user->isAdmin();
+        return PortalContext::staffUser()?->isAdmin() === true;
     }
 }
