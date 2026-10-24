@@ -5996,6 +5996,9 @@
   "The grades changed after the preview. Review the changes again before applying them.": "முன்னோட்டத்திற்குப் பிறகு வகுப்புகள் மாறின. அவற்றைப் பயன்படுத்துவதற்கு முன் மாற்றங்களை மீண்டும் பார்க்கவும்.",
   "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off.": "வகுப்பு உள்ள அனைவரும் ஒரு வகுப்பு மேலே செல்லும் மாதம். ஆஃப் தானியங்கி உயர்வை அணைக்கிறது.",
   "Through Grade": "வகுப்பு வரை",
+  "Invalid setting name or value": "தவறான அமைப்புப் பெயர் அல்லது மதிப்பு",
+  "The geocoding service did not answer — try again later": "புவிக்குறியீட்டுச் சேவை பதிலளிக்கவில்லை — பின்னர் மீண்டும் முயற்சிக்கவும்",
+  "Only the email you sent is shown.": "நீங்கள் அனுப்பிய மின்னஞ்சல் மட்டுமே காட்டப்படும்.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} நிகழ்வு உருவாக்கப்பட்டது",
     "other": "\"{{name}}\": {{count}} நிகழ்வுகள் உருவாக்கப்பட்டன"

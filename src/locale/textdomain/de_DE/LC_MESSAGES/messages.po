@@ -24738,3 +24738,15 @@ msgstr "Der Monat, in dem alle mit einer Klassenstufe eine Klassenstufe aufrück
 msgid "Through Grade"
 msgstr "Bis Klassenstufe"
 
+#: 
+msgid "Invalid setting name or value"
+msgstr "Ungültiger Einstellungsname oder Wert"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Der Geokodierungsdienst hat nicht geantwortet — versuchen Sie es später erneut"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Es wird nur die von Ihnen gesendete E-Mail angezeigt."
+

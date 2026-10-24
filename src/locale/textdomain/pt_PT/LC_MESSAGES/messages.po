@@ -24780,3 +24780,15 @@ msgstr "O mês em que todas as pessoas com um ano de escolaridade sobem um ano. 
 msgid "Through Grade"
 msgstr "Até ao ano de escolaridade"
 
+#: 
+msgid "Invalid setting name or value"
+msgstr "Nome ou valor de configuração inválido"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "O serviço de geocodificação não respondeu — tente novamente mais tarde"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Só é apresentado o e-mail que enviou."
+

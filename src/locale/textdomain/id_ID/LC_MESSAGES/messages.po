@@ -24624,3 +24624,15 @@ msgstr "Bulan saat semua orang yang memiliki tingkat naik satu tingkat. Mati men
 msgid "Through Grade"
 msgstr "Sampai tingkat"
 
+#: 
+msgid "Invalid setting name or value"
+msgstr "Nama atau nilai pengaturan tidak valid"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Layanan geocoding tidak merespons — coba lagi nanti"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Hanya email yang Anda kirim yang ditampilkan."
+

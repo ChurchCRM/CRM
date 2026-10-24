@@ -6028,6 +6028,9 @@
   "The grades changed after the preview. Review the changes again before applying them.": "Razredi su se promijenili nakon pretpregleda. Ponovno pregledajte promjene prije primjene.",
   "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off.": "Mjesec u kojem svi koji imaju razred prelaze jedan razred više. Isključeno isključuje automatsko napredovanje.",
   "Through Grade": "Do razreda",
+  "Invalid setting name or value": "Nevažeći naziv ili vrijednost postavke",
+  "The geocoding service did not answer — try again later": "Usluga geokodiranja nije odgovorila — pokušajte ponovno kasnije",
+  "Only the email you sent is shown.": "Prikazuje se samo e-pošta koju ste poslali.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} dogadaj kreiran",
     "other": "\"{{name}}\": {{count}} dogadaja kreirana"

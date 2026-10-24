@@ -24639,3 +24639,15 @@ msgstr "తరగతి ఉన్న ప్రతి ఒక్కరూ ఒక �
 msgid "Through Grade"
 msgstr "తరగతి వరకు"
 
+#: 
+msgid "Invalid setting name or value"
+msgstr "చెల్లని సెట్టింగ్ పేరు లేదా విలువ"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "జియోకోడింగ్ సేవ స్పందించలేదు — తర్వాత మళ్లీ ప్రయత్నించండి"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "మీరు పంపిన ఇమెయిల్ మాత్రమే చూపబడుతుంది."
+

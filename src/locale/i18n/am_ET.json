@@ -5996,6 +5996,9 @@
   "The grades changed after the preview. Review the changes again before applying them.": "ክፍሎቹ ከቅድመ እይታው በኋላ ተቀይረዋል። ከመተግበርዎ በፊት ለውጦቹን እንደገና ይገምግሙ።",
   "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off.": "ክፍል ያለው ሁሉ አንድ ክፍል የሚወጣበት ወር። ጠፍቷል ራስ-ሰር እድገትን ያጠፋል።",
   "Through Grade": "እስከ ክፍል",
+  "Invalid setting name or value": "ልክ ያልሆነ የቅንብር ስም ወይም እሴት",
+  "The geocoding service did not answer — try again later": "የጂኦኮዲንግ አገልግሎቱ ምላሽ አልሰጠም — ቆይተው እንደገና ይሞክሩ",
+  "Only the email you sent is shown.": "የሚታየው እርስዎ የላኩት ኢሜይል ብቻ ነው።",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"፦ {{count}} ቀጠሮ ተፈጥሯል",
     "other": "\"{{name}}\"፦ {{count}} ቀጠሮዎች ተፈጥረዋል"

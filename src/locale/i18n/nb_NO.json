@@ -5996,6 +5996,9 @@
   "The grades changed after the preview. Review the changes again before applying them.": "Klassetrinnene ble endret etter forhåndsvisningen. Gå gjennom endringene på nytt før du bruker dem.",
   "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off.": "Måneden da alle med et klassetrinn flyttes opp ett trinn. Av slår av automatisk opprykk.",
   "Through Grade": "Til klassetrinn",
+  "Invalid setting name or value": "Ugyldig innstillingsnavn eller verdi",
+  "The geocoding service did not answer — try again later": "Geokodingstjenesten svarte ikke — prøv igjen senere",
+  "Only the email you sent is shown.": "Bare e-posten du sendte, vises.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} forekomst opprettet",
     "other": "\"{{name}}\": {{count}} forekomster opprettet"

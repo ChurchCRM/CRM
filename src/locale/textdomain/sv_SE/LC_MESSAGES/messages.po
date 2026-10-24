@@ -24751,3 +24751,15 @@ msgstr "Månaden då alla som har en årskurs flyttas upp en årskurs. Av stäng
 msgid "Through Grade"
 msgstr "Till årskurs"
 
+#: 
+msgid "Invalid setting name or value"
+msgstr "Ogiltigt inställningsnamn eller värde"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Geokodningstjänsten svarade inte — försök igen senare"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Endast det e-postmeddelande du skickade visas."
+

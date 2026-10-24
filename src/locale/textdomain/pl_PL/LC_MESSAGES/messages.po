@@ -24750,3 +24750,15 @@ msgstr "Miesiąc, w którym wszyscy z klasą przechodzą o jedną klasę wyżej.
 msgid "Through Grade"
 msgstr "Do klasy"
 
+#: 
+msgid "Invalid setting name or value"
+msgstr "Nieprawidłowa nazwa lub wartość ustawienia"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Usługa geokodowania nie odpowiedziała — spróbuj ponownie później"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Wyświetlana jest tylko wysłana przez Ciebie wiadomość e-mail."
+

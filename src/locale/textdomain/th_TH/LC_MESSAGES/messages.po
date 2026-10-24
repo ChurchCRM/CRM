@@ -24608,3 +24608,15 @@ msgstr "เดือนที่ทุกคนที่มีชั้นเร
 msgid "Through Grade"
 msgstr "ถึงชั้นเรียน"
 
+#: 
+msgid "Invalid setting name or value"
+msgstr "ชื่อหรือค่าการตั้งค่าไม่ถูกต้อง"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "บริการแปลงที่อยู่เป็นพิกัดไม่ตอบสนอง — โปรดลองอีกครั้งในภายหลัง"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "แสดงเฉพาะอีเมลที่คุณส่งเท่านั้น"
+

@@ -24658,3 +24658,15 @@ msgstr "Mjesec u kojem svi koji imaju razred prelaze jedan razred više. Isklju�
 msgid "Through Grade"
 msgstr "Do razreda"
 
+#: 
+msgid "Invalid setting name or value"
+msgstr "Nevažeći naziv ili vrijednost postavke"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Usluga geokodiranja nije odgovorila — pokušajte ponovno kasnije"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Prikazuje se samo e-pošta koju ste poslali."
+

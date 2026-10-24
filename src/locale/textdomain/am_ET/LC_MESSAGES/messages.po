@@ -24670,3 +24670,15 @@ msgstr "ክፍል ያለው ሁሉ አንድ ክፍል የሚወጣበት ወር
 msgid "Through Grade"
 msgstr "እስከ ክፍል"
 
+#: 
+msgid "Invalid setting name or value"
+msgstr "ልክ ያልሆነ የቅንብር ስም ወይም እሴት"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "የጂኦኮዲንግ አገልግሎቱ ምላሽ አልሰጠም — ቆይተው እንደገና ይሞክሩ"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "የሚታየው እርስዎ የላኩት ኢሜይል ብቻ ነው።"
+

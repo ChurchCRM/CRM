@@ -24652,3 +24652,15 @@ msgstr "Muaji në të cilin të gjithë që kanë një klasë ngjiten një klas�
 msgid "Through Grade"
 msgstr "Deri në klasën"
 
+#: 
+msgid "Invalid setting name or value"
+msgstr "Emër ose vlerë e pavlefshme e cilësimit"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Shërbimi i gjeokodimit nuk u përgjigj — provoni përsëri më vonë"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Shfaqet vetëm emaili që keni dërguar."
+

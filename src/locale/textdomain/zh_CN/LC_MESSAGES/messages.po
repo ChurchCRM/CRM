@@ -24698,3 +24698,15 @@ msgstr "所有有年级的人升一个年级的月份。关闭会停用自动升
 msgid "Through Grade"
 msgstr "至年级"
 
+#: 
+msgid "Invalid setting name or value"
+msgstr "设置名称或值无效"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "地理编码服务未响应 — 请稍后重试"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "仅显示您发送的电子邮件。"
+

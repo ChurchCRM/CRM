@@ -5996,6 +5996,9 @@
   "The grades changed after the preview. Review the changes again before applying them.": "Οι τάξεις άλλαξαν μετά την προεπισκόπηση. Ελέγξτε ξανά τις αλλαγές πριν τις εφαρμόσετε.",
   "The month in which everyone with a grade moves up one grade. Off turns automatic promotion off.": "Ο μήνας κατά τον οποίο όλοι όσοι έχουν τάξη ανεβαίνουν μία τάξη. Η απενεργοποίηση κλείνει την αυτόματη προαγωγή.",
   "Through Grade": "Έως τάξη",
+  "Invalid setting name or value": "Μη έγκυρο όνομα ή τιμή ρύθμισης",
+  "The geocoding service did not answer — try again later": "Η υπηρεσία γεωκωδικοποίησης δεν απάντησε — δοκιμάστε ξανά αργότερα",
+  "Only the email you sent is shown.": "Εμφανίζεται μόνο το email που στείλατε.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} γεγονός δημιουργήθηκε",
     "other": "\"{{name}}\": {{count}} γεγονότα δημιουργήθηκαν"
