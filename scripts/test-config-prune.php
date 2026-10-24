@@ -10,8 +10,9 @@
  *
  * A row no ConfigItem declares is deleted only when init() is asked to prune.
  * Bootstrapper asks only once the database is current, so an upgrade script
- * can still read a retired key such as bPortalShowCalendar. plugin.* rows are
- * never deleted. No database is needed: the rows are stand-ins.
+ * can still read a retired key such as bPortalShowCalendar, even after an
+ * earlier upgrade script (7.8.1.php) has called init() itself. plugin.* rows
+ * are never deleted. No database is needed: the rows are stand-ins.
  *
  * Exit codes:
  *   0  — every case passed
@@ -83,8 +84,12 @@ SystemConfig::init(array_values($kept), false);
 $check(!$kept['retired']->deleted, 'database not current: a retired key\'s row is kept for the upgrade');
 $check(!$kept['declared']->deleted && SystemConfig::getValue('sChurchName') === 'Grace Church', 'database not current: a declared key is read');
 
+$upgradeScript = $rows();
+SystemConfig::init(array_values($upgradeScript));
+$check(!$upgradeScript['retired']->deleted, 'an upgrade script\'s own init() keeps a retired key\'s row');
+
 $pruned = $rows();
-SystemConfig::init(array_values($pruned));
+SystemConfig::init(array_values($pruned), true);
 $check($pruned['retired']->deleted, 'database current: a retired key\'s row is deleted');
 $check(!$pruned['declared']->deleted, 'database current: a declared key\'s row stays');
 $check(!$pruned['plugin']->deleted, 'database current: a plugin row stays');
