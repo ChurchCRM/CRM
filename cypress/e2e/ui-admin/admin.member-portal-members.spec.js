@@ -311,7 +311,8 @@ describe("Admin → Member Portal members, audit, permissions and the person car
             cy.get('#portalPermissionsTable tr[data-capability="portal.profile.edit"]').should("be.visible");
             noHorizontalScroll();
             cy.visit("/admin/member-portal#portal-audit");
-            cy.get("#portalAuditTable").should("be.visible");
+            // Each row unrolls into a card, so the event is shown rather than folded away.
+            cy.get("#portalAuditTable tbody tr:first-child > td").eq(2).should("be.visible").and("have.attr", "data-label", "Event");
             noHorizontalScroll();
             cy.visit(`/people/view/${PORTAL_PERSON}`);
             cy.get("#portal-signin-permissions").should("be.visible");

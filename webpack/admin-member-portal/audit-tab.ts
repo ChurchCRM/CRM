@@ -59,28 +59,22 @@ function drawTable(): void {
   table = serverTable<AuditRow>(
     element,
     [
-      {
-        title: t("Time"),
-        render: (row) => `<span class="text-nowrap">${escapeHtml(row.timeDisplay)}</span>`,
-        priority: 1,
-      },
+      { title: t("Time"), render: (row) => `<span class="text-nowrap">${escapeHtml(row.timeDisplay)}</span>` },
       {
         title: t("Person"),
         render: (row) => (row.personId ? personLink(row.personId, row.personName) : muted(t("No match"))),
-        priority: 2,
       },
-      { title: t("Event"), render: eventCell, priority: 3 },
-      { title: t("How"), render: (row) => escapeHtml(row.methodLabel ?? ""), priority: 6 },
-      { title: t("Reason"), render: (row) => escapeHtml(row.reasonLabel ?? ""), priority: 4 },
-      { title: t("By"), render: (row) => (row.actorId ? personLink(row.actorId, row.actorName) : ""), priority: 7 },
+      { title: t("Event"), render: eventCell },
+      { title: t("How"), render: (row) => escapeHtml(row.methodLabel ?? "") },
+      { title: t("Reason"), render: (row) => escapeHtml(row.reasonLabel ?? "") },
+      { title: t("By"), render: (row) => (row.actorId ? personLink(row.actorId, row.actorName) : "") },
       {
         title: t("Address"),
         render: (row) => (row.email ? `<span class="text-break">${escapeHtml(row.email)}</span>` : ""),
-        priority: 5,
       },
     ],
     (start, length) => load(start, length),
-    { searching: false, onError: showError },
+    { searching: false, stackOnNarrowScreens: true, onError: showError },
   );
 }
 

@@ -110,9 +110,14 @@ export function serverTable<T>(
   table: HTMLTableElement,
   columns: ServerColumn<T>[],
   load: PageLoader<T>,
-  options: { searching?: boolean; onError?: (message: string) => void } = {},
+  options: { searching?: boolean; stackOnNarrowScreens?: boolean; onError?: (message: string) => void } = {},
 ): DataTablesApi {
   destroyTable(table);
+  const stack = options.stackOnNarrowScreens ?? false;
+  // Below the lg breakpoint each row becomes a card whose cells name themselves
+  // (.table-stack-md-down in _ui-components.scss), so nothing has to be hidden
+  // behind Responsive's expand control.
+  table.classList.toggle("table-stack-md-down", stack);
   $.fn.dataTable.ext.errMode = "none";
 
   const defaults = (window.CRM?.plugin?.dataTable ?? {}) as Record<string, unknown>;
@@ -121,6 +126,7 @@ export function serverTable<T>(
 
   return $(table).DataTable({
     ...defaults,
+    ...(stack ? { responsive: false } : {}),
     serverSide: true,
     processing: true,
     ordering: false,
@@ -142,6 +148,11 @@ export function serverTable<T>(
       data: null,
       className: column.className ?? "",
       responsivePriority: column.priority,
+      createdCell: stack
+        ? (cell: HTMLTableCellElement) => {
+            cell.dataset.label = column.title;
+          }
+        : undefined,
       render: (_data: unknown, _type: string, row: T) => column.render(row),
     })),
     ajax: (request: DataTablesRequest, callback: (reply: DataTablesReply) => void) => {
