@@ -373,7 +373,7 @@ describe("Member Portal (MP7, #9868) — My Teams", () => {
             });
 
             it("Adds an existing person to the ministry's volunteers from the Volunteers tab (#10531)", () => {
-                login(LEADER_USERNAME, LEADER_PASSWORD);
+                login(LEADER_USERNAME);
                 cy.visit(`${TEAMS_URL}/${teamLed}`);
 
                 cy.get("#nav-item-volunteers").click();
@@ -478,7 +478,7 @@ describe("Member Portal (MP7, #9868) — My Teams", () => {
                     const occurrences = resp.body.occurrences;
                     expect(occurrences.length, "the schedule made more than one date").to.be.greaterThan(1);
 
-                    login(LEADER_USERNAME, LEADER_PASSWORD);
+                    login(LEADER_USERNAME);
                     cy.visit(`${TEAMS_URL}/${teamLed}/occurrences/${occurrences[occurrences.length - 1].id}`);
                 });
 

@@ -5,7 +5,7 @@
  *
  * Person 3 (`user.api.key`, Manage My Ministries) leads one team of the fixture
  * ministry; person 52 coordinates it; person 12 leads the same team too. Person 99
- * (`selfedit.api.key`) is a member-login team leader of another team, for the portal's
+ * is a member team leader of another team, in a member session, for the portal's
  * person search. Seeded people the search must leave out: 55 (deceased), 18 (in the
  * deactivated Ray family), 911 (deactivated).
  */
@@ -14,8 +14,10 @@ const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const TIMERJOBS_LAST_RUN_URL = "/admin/api/system/config/sLastTimerJobsRunDateTime";
 const ADMIN_KEY = "admin.api.key";
 const LEADER_KEY = "user.api.key";
-const MEMBER_LEADER_KEY = "selfedit.api.key";
-const MEMBER_KEY = "selfedit.plus.notes.api.key";
+/** The member team leader, in a member session. */
+const MEMBER_LEADER_KEY = 99;
+/** A member who leads no team. */
+const MEMBER_KEY = 100;
 const STAFF_NO_SCOPE_KEY = "nofinance.api.key";
 const VOLUNTEER_URL = "/api/ministries";
 const SEARCH_URL = `${VOLUNTEER_URL}/people/search`;
@@ -47,7 +49,11 @@ let posSibling = 0;
 let originalVersion = "v1";
 let mailpitAvailable = false;
 
+/** A person id is a member, in their portal session; anything else names an API key. */
 function api(key, method, url, body, expectedStatus = 200) {
+    if (typeof key === "number") {
+        return cy.makeMemberAPICall(key, method, url, body, expectedStatus);
+    }
     return cy.makePrivateAPICall(Cypress.testEnv(key), method, url, body, expectedStatus);
 }
 
@@ -104,7 +110,7 @@ function cleanupFixtures() {
 }
 
 before(() => {
-    cy.rememberTestEnv([ADMIN_KEY, LEADER_KEY, MEMBER_LEADER_KEY, MEMBER_KEY, STAFF_NO_SCOPE_KEY]);
+    cy.rememberTestEnv([ADMIN_KEY, LEADER_KEY, STAFF_NO_SCOPE_KEY]);
 });
 
 describe("Volunteer v2 — a team leader adds someone to the pool (#10531)", () => {
