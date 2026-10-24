@@ -5,7 +5,7 @@ import { BASE_URL, LOCALE, LOCALE_UI_VALUE } from './env';
 
 /**
  * The demo member the Member Portal captures sign in as, with their own email
- * (members have no user account since the 7.9.0 cutover).
+ * (members have no user account since the 7.8.3 cutover).
  *
  * George Carter is the head of the demo Carter family (src/admin/demo/people.json):
  * both parents have photos, and no other capture signs in as anyone in the
