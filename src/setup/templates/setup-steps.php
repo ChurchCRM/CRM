@@ -192,7 +192,7 @@ require_once __DIR__ . '/header.php';
                 <div id="step-database" class="content" role="tabpanel" aria-labelledby="step-database-trigger">
                     <div class="step-intro mb-4">
                         <h4 class="mb-2">Connect Your Database</h4>
-                        <p class="text-body-secondary mb-0">ChurchCRM requires MySQL 5.7+ or MariaDB 10.2+ with full privileges.</p>
+                        <p class="text-body-secondary mb-0">ChurchCRM supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases) with full privileges.</p>
                     </div>
 
                     <div class="form-card">
@@ -301,7 +301,7 @@ require_once __DIR__ . '/header.php';
 </div>
 
 <!-- Setup Progress Modal -->
-<div class="modal fade" id="setupModal" tabindex="-1" role="dialog" aria-labelledby="setupModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+<div class="modal fade" id="setupModal" tabindex="-1" role="dialog" aria-labelledby="setupModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-body text-center py-5">

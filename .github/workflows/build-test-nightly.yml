@@ -10,22 +10,28 @@ name: Build, Test and Package (Nightly)
 #
 # What this workflow covers
 # ─────────────────────────
+# Stage 0 – changes
+#   • A scheduled run asks scripts/nightly-needed.js whether anything the suite tests or ships
+#     changed since the last successful run. If not, the run ends green without the test jobs.
+#     Manual, release and release-branch runs always run.
+#
 # Stage 1 – build
 #   • Builds the PHP 8.4 and 8.5 images. The app suite below uses 8.5.
 #     The pull-request workflow tests the app on 8.4. Nightly uses 8.4
 #     only for the upgrade jobs.
 #
 # Stage 2a – PHP 8.5 full test suite (all jobs run in parallel)
-#   • test-root:             api, admin-ui, ui (3 shards) — root install path
-#   • test-subdir:           api, admin-ui, ui (3 shards) — subdirectory path
+#   • test-root:             api (2 shards), admin-ui (3), ui (4) — root install path
+#   • test-subdir:           api (2 shards), admin-ui (3), ui (4) — subdirectory path
 #   • test-new-system:       setup-wizard (root path)
 #   • test-new-system-subdir setup-wizard (subdir path)
 #   • test-locale-root:      full locale sweep (root)
 #   • test-locale-subdir:    full locale sweep (subdir)
 #
 # Stage 2b – Upgrade tests, one job per database engine
-#   • upgrade-mysql:    PHP 8.4 and 8.5 × ChurchInfo 1.3.1 and ChurchCRM 6.0.0
-#   • upgrade-mariadb:  PHP 8.4 and 8.5 × ChurchInfo 1.3.1 and ChurchCRM 6.0.0
+#   • upgrade-mysql:    MySQL 8.4 LTS (the supported floor) × PHP 8.4 and 8.5 × ChurchInfo 1.3.1 and ChurchCRM 6.0.0,
+#                       plus mysql:lts (newest LTS) and mysql:latest (early warning, may fail) on PHP 8.4 × ChurchInfo 1.3.1
+#   • upgrade-mariadb:  MariaDB 10.11 LTS (the supported floor) × PHP 8.4 and 8.5 × ChurchInfo 1.3.1 and ChurchCRM 6.0.0
 #
 # Stage 3 – Summary
 #   • nightly-summary: always() — job results plus Cypress artifact names
@@ -47,7 +53,8 @@ permissions:
 
 on:
   schedule:
-    - cron: '0 3 * * *'  # offset from build-test-package.yml (0 2) to avoid runner contention
+    # Three slots a day. A slot with no testable change since the last green run costs one short job.
+    - cron: '17 3,11,19 * * *'
   workflow_dispatch:
   release:
     types: [published]
@@ -62,11 +69,41 @@ on:
 
 jobs:
   # ═══════════════════════════════════════════════════════════════════════════
+  # STAGE 0 — Changes
+  # A scheduled run skips the suite when nothing it tests changed since the last green run.
+  # ═══════════════════════════════════════════════════════════════════════════
+  changes:
+    name: Changes since the last green run
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      actions: read
+    runs-on: ubuntu-24.04
+    outputs:
+      run: ${{ steps.decide.outputs.run }}
+      reason: ${{ steps.decide.outputs.reason }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+    - name: Decide
+      id: decide
+      env:
+        GH_TOKEN: ${{ github.token }}
+        EVENT: ${{ github.event_name }}
+        SHA: ${{ github.sha }}
+        BRANCH: ${{ github.ref_name }}
+        REPO: ${{ github.repository }}
+      run: node scripts/nightly-needed.js
+
+  # ═══════════════════════════════════════════════════════════════════════════
   # STAGE 1 — Build
   # Build the app and the PHP 8.4 and 8.5 images; upload them as one artifact.
   # ═══════════════════════════════════════════════════════════════════════════
   build:
     name: PHP 8.4 and 8.5 images
+    needs: changes
+    if: needs.changes.outputs.run == 'true'
     timeout-minutes: 40
     permissions:
       contents: read
@@ -111,7 +148,7 @@ jobs:
   # STAGE 2a — PHP 8.5 full test suite
   # ═══════════════════════════════════════════════════════════════════════════
 
-  # ── Root-path tests: api, admin-ui, and ui (3 shards) ───────────────────
+  # ── Root-path tests: api (2), admin-ui (3) and ui (4 shards) ──────────────────
   test-root:
     name: PHP 8.5 / root / ${{ matrix.test-type.name }}
     needs: build
@@ -124,25 +161,38 @@ jobs:
       fail-fast: false
       matrix:
         test-type:
-          - name: api
+          - name: api-shard-0
             spec: "cypress/e2e/api/**/*.spec.js"
-            config: "cypress/configs/docker.config.ts"
-          - name: admin-ui
-            spec: "cypress/e2e/ui-admin/**/*.spec.js"
-            config: "cypress/configs/docker-admin.config.ts"
-            shard-total: 1
+            config: "cypress/configs/docker-api.config.ts"
+            split-index: "0"
+            shard-total: 2
         include:
-          # ui specs sharded 3× — cypress-split balances by spec file
+          # api, admin-ui and ui specs sharded by recorded duration (cypress/split-timings.json)
           # split-index values are strings to avoid JS falsy coercion of 0
-          - test-type: { name: ui-shard-0, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+          - test-type: { name: api-shard-1, config: "cypress/configs/docker-api.config.ts", spec: "cypress/e2e/api/**/*.spec.js" }
+            split-index: "1"
+            shard-total: 2
+          - test-type: { name: admin-ui-shard-0, config: "cypress/configs/docker-admin.config.ts", spec: "cypress/e2e/ui-admin/**/*.spec.js" }
             split-index: "0"
             shard-total: 3
-          - test-type: { name: ui-shard-1, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+          - test-type: { name: admin-ui-shard-1, config: "cypress/configs/docker-admin.config.ts", spec: "cypress/e2e/ui-admin/**/*.spec.js" }
             split-index: "1"
             shard-total: 3
-          - test-type: { name: ui-shard-2, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+          - test-type: { name: admin-ui-shard-2, config: "cypress/configs/docker-admin.config.ts", spec: "cypress/e2e/ui-admin/**/*.spec.js" }
             split-index: "2"
             shard-total: 3
+          - test-type: { name: ui-shard-0, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+            split-index: "0"
+            shard-total: 4
+          - test-type: { name: ui-shard-1, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+            split-index: "1"
+            shard-total: 4
+          - test-type: { name: ui-shard-2, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+            split-index: "2"
+            shard-total: 4
+          - test-type: { name: ui-shard-3, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+            split-index: "3"
+            shard-total: 4
     steps:
     - name: Checkout
       uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -193,7 +243,7 @@ jobs:
         php-version: '8.5'
         deployment: root
         shard-total: ${{ matrix.test-type.shard-total || matrix.shard-total || '' }}
-        shard-index: ${{ matrix.split-index || '0' }}
+        shard-index: ${{ matrix.test-type.split-index || matrix.split-index || '0' }}
         docker-compose-profile: ci-root
         extra-env: |
           ROW_GUARD_DB_PORT=3306
@@ -203,7 +253,7 @@ jobs:
       if: always()
       run: npm run docker:ci:root:down
 
-  # ── Subdirectory-path tests: api, admin-ui, and ui (3 shards) ────────────
+  # ── Subdirectory-path tests: api (2), admin-ui (3) and ui (4 shards) ─────────────
   test-subdir:
     name: PHP 8.5 / subdir / ${{ matrix.test-type.name }}
     needs: build
@@ -216,24 +266,38 @@ jobs:
       fail-fast: false
       matrix:
         test-type:
-          - name: api
+          - name: api-shard-0
             spec: "cypress/e2e/api/**/*.spec.js"
-            config: "cypress/configs/docker.config.ts"
-          - name: admin-ui
-            spec: "cypress/e2e/ui-admin/**/*.spec.js"
-            config: "cypress/configs/docker-admin.config.ts"
-            shard-total: 1
+            config: "cypress/configs/docker-api.config.ts"
+            split-index: "0"
+            shard-total: 2
         include:
+          # api, admin-ui and ui specs sharded by recorded duration (cypress/split-timings.json)
           # split-index values are strings to avoid JS falsy coercion of 0
-          - test-type: { name: ui-shard-0, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+          - test-type: { name: api-shard-1, config: "cypress/configs/docker-api.config.ts", spec: "cypress/e2e/api/**/*.spec.js" }
+            split-index: "1"
+            shard-total: 2
+          - test-type: { name: admin-ui-shard-0, config: "cypress/configs/docker-admin.config.ts", spec: "cypress/e2e/ui-admin/**/*.spec.js" }
             split-index: "0"
             shard-total: 3
-          - test-type: { name: ui-shard-1, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+          - test-type: { name: admin-ui-shard-1, config: "cypress/configs/docker-admin.config.ts", spec: "cypress/e2e/ui-admin/**/*.spec.js" }
             split-index: "1"
             shard-total: 3
-          - test-type: { name: ui-shard-2, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+          - test-type: { name: admin-ui-shard-2, config: "cypress/configs/docker-admin.config.ts", spec: "cypress/e2e/ui-admin/**/*.spec.js" }
             split-index: "2"
             shard-total: 3
+          - test-type: { name: ui-shard-0, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+            split-index: "0"
+            shard-total: 4
+          - test-type: { name: ui-shard-1, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+            split-index: "1"
+            shard-total: 4
+          - test-type: { name: ui-shard-2, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+            split-index: "2"
+            shard-total: 4
+          - test-type: { name: ui-shard-3, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+            split-index: "3"
+            shard-total: 4
     steps:
     - name: Checkout
       uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -284,7 +348,7 @@ jobs:
         php-version: '8.5'
         deployment: subdir
         shard-total: ${{ matrix.test-type.shard-total || matrix.shard-total || '' }}
-        shard-index: ${{ matrix.split-index || '0' }}
+        shard-index: ${{ matrix.test-type.split-index || matrix.split-index || '0' }}
         base-url: http://127.0.0.1:8080/churchcrm/
         docker-compose-profile: ci-subdir
         extra-env: |
@@ -596,16 +660,20 @@ jobs:
   # ═══════════════════════════════════════════════════════════════════════════
   upgrade-mysql:
     needs: build
-    name: MySQL upgrade / PHP ${{ matrix.php }} / ${{ matrix.schema.label }}
+    name: MySQL upgrade / ${{ matrix.db_image }} / PHP ${{ matrix.php }} / ${{ matrix.schema.label }}
     timeout-minutes: 40
     permissions:
       contents: read
       checks: write
     runs-on: ubuntu-24.04
+    continue-on-error: ${{ matrix.experimental == true }}
+    env:
+      MYSQL_IMAGE: ${{ matrix.db_image }}
     strategy:
       fail-fast: false
       matrix:
         php: ["8.4", "8.5"]
+        db_image: ["mysql:8.4"]
         schema:
           - label: ChurchInfo 1.3.1
             slug: churchinfo-1.3.1
@@ -619,6 +687,28 @@ jobs:
             admin_user: Admin
             admin_pass: changeme
             force_password_change: ''
+        include:
+          # Newest LTS (floats to the next one), on the oldest schema, to catch breakage before hosts move to it.
+          - php: "8.4"
+            db_image: mysql:lts
+            schema:
+              label: ChurchInfo 1.3.1
+              slug: churchinfo-1.3.1
+              sql_file: cypress/fixtures/upgrade/churchinfo-1.3.1.sql
+              admin_user: Admin
+              admin_pass: churchinfoadmin
+              force_password_change: 'true'
+          # Newest release, any track. Early warning only: a failure here does not fail the nightly.
+          - php: "8.4"
+            db_image: mysql:latest
+            experimental: true
+            schema:
+              label: ChurchInfo 1.3.1
+              slug: churchinfo-1.3.1
+              sql_file: cypress/fixtures/upgrade/churchinfo-1.3.1.sql
+              admin_user: Admin
+              admin_pass: churchinfoadmin
+              force_password_change: 'true'
     steps:
     - name: Checkout
       uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -789,6 +879,7 @@ jobs:
   # ═══════════════════════════════════════════════════════════════════════════
   nightly-summary:
     needs:
+      - changes
       - build
       - test-root
       - test-subdir
@@ -808,7 +899,14 @@ jobs:
       uses: ./.github/actions/test-run-summary
 
     - name: Fail the run when a group did not pass
+      env:
+        CHANGES_REASON: ${{ needs.changes.outputs.reason }}
       run: |
+        if [[ "${{ needs.changes.outputs.run }}" == "false" ]]; then
+          echo "**Overall: ✅ NOTHING TO TEST**" >> $GITHUB_STEP_SUMMARY
+          echo "${CHANGES_REASON}. The last green run still covers this commit." >> $GITHUB_STEP_SUMMARY
+          exit 0
+        fi
         # Non-success includes skipped and cancelled, such as when build fails.
         if [[ "${{ needs.build.result }}" != "success" || \
               "${{ needs.test-root.result }}" != "success" || \

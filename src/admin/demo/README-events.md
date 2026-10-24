@@ -3,11 +3,15 @@ Demo event import files
 Files:
 - `events.csv` — event rows. Columns: `id`, `category`, `title`, `description`, `event_text`,
   `start_offset_days`, `start_time`, `duration_minutes`, `link_groups`, `attended_fraction`,
-  `inactive`, `external_url`
-- `calendars.csv` — calendar definitions (currently not imported)
+  `inactive`, `external_url`, `calendars`, `weekday`
+- `calendars.csv` — church calendars the events are pinned to. See "Calendars" below.
+- `volunteers.json` — Volunteer v2 ministries and schedules that staff the events. See
+  "Volunteer v2 data" below.
 - `locations.csv` — optional location records (currently not imported)
 - `attendees.csv` — **no longer imported**; attendance is now seeded from real group memberships
   using `attended_fraction`. See notes below.
+
+All three are imported with the *Include events and calendars* option.
 
 ## Column reference (`events.csv`)
 
@@ -25,6 +29,37 @@ Files:
 | `attended_fraction` | 0.0–1.0; fraction of each linked group's members to check in. Only applied to past events (`event_end < now`). |
 | `inactive` | `true` / `false` |
 | `external_url` | Optional external URL |
+| `calendars` | `;`-separated `calendars.csv` ids the event is pinned to; empty = on no calendar (shown under "Unpinned events") |
+| `weekday` | Optional day name (`Sunday` … `Saturday`). Moves the event to the first such day on or after `start_offset_days`, so a Sunday service lands on a Sunday whatever day the import runs. Rows 7 days apart stay a week apart. |
+
+## Calendars
+
+`calendars.csv` columns: `id`, `name`, `slug`, `description`, `timezone`, `background_color`,
+`foreground_color`, `portal`. A church calendar with the same name is reused, so a repeated import
+adds none. The rows with `portal` = `true` become the calendars the Member Portal shows
+(Admin → Member Portal → Calendars), replacing whatever it showed before. `slug`, `description` and
+`timezone` are not stored.
+
+## Volunteer v2 data
+
+`volunteers.json` turns into ministries, teams, positions, qualified volunteers, coordinators and
+team leaders, schedules and assignments, built through the volunteer services as the administrator
+running the import. It is imported only while Volunteer Management V2 is on, which `config.json`
+does (`sVolunteerVersion`).
+
+- People are named by their `people.json` email.
+- The first team of a ministry renames the team the ministry is created with.
+- A team with a `class` is linked to that Sunday School class; its teachers are qualified for
+  `teacherPosition`. A ministry with `sundaySchool` is imported only with the *Include Sunday School*
+  option.
+- A schedule follows the events of `eventType` titled `title`, or the events linked to `class`.
+  Its occurrences are generated up to the scheduling horizon, so the events it follows must be
+  within it. `defaults` are the volunteers it assigns to every occurrence.
+- `assignments` name the schedule's occurrence by number, counting from 1, and a `status` of
+  `accepted`, `pending` or `declined` (recorded by the coordinator).
+- A ministry that already exists is skipped, so a repeated import adds no volunteer data.
+- No email is sent for any of it: everything the import queues, and the reminders and
+  unfilled-position alerts the background jobs would queue for it, is recorded as skipped.
 
 ## Attendance seeding
 
@@ -59,4 +94,5 @@ because `evt-past-worship` is linked to `Worship Service` (always present).
 - `start`/`end` absolute columns are supported as a fallback when `start_offset_days` is absent
   or non-numeric (backwards compatibility for custom CSV files).
 - Use `id` or an `external_id` field in your importer to avoid duplicates on repeated imports.
-- Suggested demo: 12 events — 4 past (group-linked, with attendance), 2 today, 6 future.
+- The demo has 25 events: 4 past (group-linked, with attendance), 2 today, and 19 future,
+  including four weekly Sunday services and Sunday School classes for the volunteer schedules.

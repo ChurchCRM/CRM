@@ -25,7 +25,7 @@ describe("Admin Debug", () => {
     });
 
     it("View email debug", () => {
-        cy.visit("admin/system/debug/email");
+        cy.visit("admin/email/debug");
 
         // Page title was "Debug Email Connection"; it's now "Email Debug"
         // and the page always renders one of three status cards (config

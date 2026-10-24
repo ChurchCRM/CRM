@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Utils\InputUtils;
 
 /**
  * Shared timeline events partial.
@@ -55,7 +56,7 @@ if (empty($timeline)) { ?>
         <?php foreach ($timeline as $item) {
             if ($currentYear !== $item['year']) {
                 $currentYear = $item['year']; ?>
-                <div class="hr-text timeline-year" data-timeline-year="<?= htmlspecialchars((string)$currentYear) ?>"> <i class="fa-solid fa-calendar-days"></i> <?= $currentYear ?></div>
+                <div class="hr-text timeline-year" data-timeline-year="<?= htmlspecialchars((string)$currentYear) ?>"> <i class="fa-solid fa-calendar-days"></i> <?= InputUtils::escapeHTML((string) $currentYear) ?></div>
             <?php } ?>
             <div class="timeline-event" data-timeline-category="<?= htmlspecialchars($item['category'] ?? 'notes') ?>" data-timeline-year="<?= htmlspecialchars((string)$item['year']) ?>">
                 <div class="timeline-event-icon bg-<?= $item['color'] ?>-lt text-<?= $item['color'] ?>">
@@ -65,8 +66,8 @@ if (empty($timeline)) { ?>
                     <div class="card-body p-2 px-3">
                         <?php if ($item['slim']) { ?>
                             <div class="d-flex align-items-center justify-content-between gap-2">
-                                <span class="text-secondary small"><?= $item['text'] ?> <?= gettext($item['header']) ?></span>
-                                <small class="text-muted flex-shrink-0"><?= $item['datetime'] ?></small>
+                                <span class="text-secondary small"><?= $item['text'] ?> <?= InputUtils::escapeHTML(gettext($item['header'])) ?></span>
+                                <small class="text-muted flex-shrink-0"><?= InputUtils::escapeHTML((string) $item['datetime']) ?></small>
                             </div>
                         <?php } else {
                             // Treat an empty deleteLink/editLink as "no action" — note-type
@@ -90,15 +91,15 @@ if (empty($timeline)) { ?>
                                     <?php if (!empty($item['isPrivate'])) { ?>
                                         <span class="badge bg-warning-lt text-warning"><?= gettext('Private') ?></span>
                                     <?php } ?>
-                                    <small class="text-muted"><?= $item['datetime'] ?></small>
+                                    <small class="text-muted"><?= InputUtils::escapeHTML((string) $item['datetime']) ?></small>
                                 </div>
                             </div>
                             <?php if (!empty($item['text'])) { ?>
-                                <div class="note-preview text-secondary" style="font-size:0.875rem;max-height:4.5em;overflow:hidden;" data-note-id="<?= htmlspecialchars((string)$noteId) ?>"><?= $item['text'] ?></div>
+                                <div class="note-preview text-secondary fs-4" data-note-id="<?= htmlspecialchars((string)$noteId) ?>"><?= $item['text'] ?></div>
                             <?php } ?>
                             <?php if ($hasActions || !empty($item['text'])) { ?>
                                 <div class="d-flex align-items-center justify-content-between mt-2">
-                                    <button type="button" class="btn btn-link btn-sm p-0 note-read-more d-none" style="font-size:0.8rem;">
+                                    <button type="button" class="btn btn-link btn-sm p-0 note-read-more d-none">
                                         <?= gettext('Read more') ?> <i class="fa-solid fa-chevron-down fa-xs"></i>
                                     </button>
                                     <div class="ms-auto d-flex gap-1">

@@ -47,6 +47,8 @@ class PageHeader
      *   - label      (string, required) — visible button text
      *   - icon       (string, optional) — Font Awesome icon class, e.g. 'fa-map'
      *   - adminOnly  (bool, default true) — if true, only rendered for admin users
+     *   - editRecords (bool, default false) — if true, rendered for users with Edit Records (admins included);
+     *                 pair with adminOnly => false
      *
      * Button types (mutually exclusive, checked in this order):
      *   - collapse   string '#targetId'  — Bootstrap collapse toggle
@@ -65,7 +67,8 @@ class PageHeader
      *     js?: bool,
      *     id?: string,
      *     data?: array<string, scalar>,
-     *     adminOnly?: bool
+     *     adminOnly?: bool,
+     *     editRecords?: bool
      * }> $buttons
      * @return string HTML
      */
@@ -75,13 +78,17 @@ class PageHeader
             return '';
         }
 
-        $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
+        $user = AuthenticationManager::getCurrentUser();
+        $isAdmin = $user->isAdmin();
 
         $html = '<div class="btn-list">';
 
         foreach ($buttons as $btn) {
             $adminOnly = $btn['adminOnly'] ?? true;
             if ($adminOnly && !$isAdmin) {
+                continue;
+            }
+            if (!empty($btn['editRecords']) && !$user->isEditRecordsEnabled()) {
                 continue;
             }
 

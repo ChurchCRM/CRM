@@ -83,7 +83,7 @@ function wireProfileForm(): void {
       saveButton.disabled = true;
     }
 
-    void postPortalJSON<{ profile: PortalProfile; updated: string[] }>(
+    void postPortalJSON<{ profile: PortalProfile; updated: string[]; pendingEmail?: string }>(
       `${root()}/api/portal/me`,
       collectFormValues(form),
       getCsrfToken(form),
@@ -96,11 +96,20 @@ function wireProfileForm(): void {
         }
 
         const updated = result.data.updated ?? [];
-        showPortalToast(
-          "success",
-          updated.length === 0 ? t("Nothing had changed, so nothing was saved.") : t("Your details have been saved."),
-        );
+        const pendingEmail = result.data.pendingEmail ?? "";
+        if (pendingEmail !== "") {
+          showPortalToast(
+            "success",
+            withEmail("We sent a link to {{email}}. Your email changes when you use it.", pendingEmail),
+          );
+        } else {
+          showPortalToast(
+            "success",
+            updated.length === 0 ? t("Nothing had changed, so nothing was saved.") : t("Your details have been saved."),
+          );
+        }
         applyProfile(form, result.data.profile ?? {});
+        showPendingEmail(result.data.profile?.pendingEmail);
       })
       .catch(() => {
         showPortalToast("danger", t("Nothing was saved. Please try again."));
@@ -125,6 +134,24 @@ function applyProfile(form: HTMLFormElement, profile: PortalProfile): void {
     }
   }
   updatePhotoPreview(profile);
+}
+
+/** Translate a sentence that names an email address; the English text is the fallback. */
+function withEmail(text: string, email: string): string {
+  const translated =
+    typeof i18next !== "undefined" ? i18next.t(text, { email, interpolation: { escapeValue: false } }) : "";
+  return translated || text.replace("{{email}}", email);
+}
+
+/** Say under the email field which new address is waiting for its link to be used. */
+function showPendingEmail(pendingEmail: unknown): void {
+  const hint = document.getElementById("portal-email-hint");
+  if (hint && typeof pendingEmail === "string" && pendingEmail !== "") {
+    hint.textContent = withEmail(
+      "Waiting for you to confirm {{email}}. Use the link we sent to that address.",
+      pendingEmail,
+    );
+  }
 }
 
 function updatePhotoPreview(profile: PortalProfile): void {

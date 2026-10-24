@@ -261,6 +261,18 @@ describe('01 - Setup Wizard', () => {
             });
         });
 
+        it('should start Volunteer Management on V2, with the "Other" event type (#10561)', () => {
+            cy.visit('/login');
+            cy.get('input[name=User]').type(adminCredentials.username);
+            cy.get('input[name=Password]').type(newAdminPassword + '{enter}');
+            cy.url({ timeout: 15000 }).should('not.include', '/session/begin');
+
+            cy.request('/admin/api/system/config/sVolunteerVersion').its('body.value').should('eq', 'v2');
+            cy.request('/api/events/types').then((response) => {
+                expect(JSON.stringify(response.body)).to.contain('"Name":"Other"');
+            });
+        });
+
         it('should reset admin password back to changeme for subsequent specs', () => {
             // A password set in this spec does not carry into specs 02-04, so specs 02-04
             // cannot know the password set here. Reset to the default 'changeme'

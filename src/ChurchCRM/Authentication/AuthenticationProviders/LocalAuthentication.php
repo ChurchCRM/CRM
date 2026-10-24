@@ -7,9 +7,9 @@ use ChurchCRM\Authentication\AuthenticationResult;
 use ChurchCRM\Authentication\Requests\AuthenticationRequest;
 use ChurchCRM\Authentication\Requests\LocalTwoFactorTokenRequest;
 use ChurchCRM\Authentication\Requests\LocalUsernamePasswordRequest;
+use ChurchCRM\Authentication\SignInThrottle;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Emails\users\LockedEmail;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Utils\DateTimeUtils;
@@ -147,29 +147,31 @@ class LocalAuthentication implements IAuthenticationProvider
             $this->setCurrentUser(null);
             $this->authenticated = false;
             $this->bPendingTwoFactorAuth = false;
+            // Every refusal shows the same message, so the page cannot tell an
+            // unknown, locked or throttled account from a wrong password.
+            $refusal = gettext('Invalid login or password');
             $user = UserQuery::create()->findOneByUserName($AuthenticationRequest->username);
-            if ($user === null) {
-                // Set the error text
+            if (SignInThrottle::isIpThrottled()) {
+                SignInThrottle::spendPasswordCheckTime($AuthenticationRequest->password);
                 $authenticationResult->isAuthenticated = false;
-                $authenticationResult->message = gettext('Invalid login or password');
+                $authenticationResult->message = $refusal;
+                LoggerUtils::getAuthLogger()->warning('Login refused: too many failed logins from this address', $logCtx);
+            } elseif ($user === null) {
+                SignInThrottle::spendPasswordCheckTime($AuthenticationRequest->password);
+                SignInThrottle::recordFailure(null);
+                $authenticationResult->isAuthenticated = false;
+                $authenticationResult->message = $refusal;
+                LoggerUtils::getAuthLogger()->warning('Login attempt for non-existent user', $logCtx);
             } elseif ($user->isLocked()) {
-                // Block the login if a maximum login failure count has been reached
+                SignInThrottle::spendPasswordCheckTime($AuthenticationRequest->password);
+                SignInThrottle::recordFailure(null);
                 $authenticationResult->isAuthenticated = false;
-                $authenticationResult->message = gettext('Too many failed logins: your account has been locked.  Please contact an administrator.');
+                $authenticationResult->message = $refusal;
                 LoggerUtils::getAuthLogger()->warning('Authentication attempt for locked account', $logCtx);
             } elseif (!$user->isPasswordValid($AuthenticationRequest->password)) {
-                // Does the password match?
-
-                // Increment the FailedLogins
-                $user->setFailedLogins($user->getFailedLogins() + 1);
-                $user->save();
-                if (!empty($user->getEmail()) && $user->isLocked()) {
-                    LoggerUtils::getAuthLogger()->warning('Too many failed logins. The account has been locked', $logCtx);
-                    $lockedEmail = new LockedEmail($user);
-                    $lockedEmail->send();
-                }
+                SignInThrottle::recordFailure($user);
                 $authenticationResult->isAuthenticated = false;
-                $authenticationResult->message = gettext('Invalid login or password');
+                $authenticationResult->message = $refusal;
                 LoggerUtils::getAuthLogger()->warning('Invalid login attempt', $logCtx);
             } elseif (($blockedReason = $user->getSignInBlockedReason()) !== null) {
                 LoggerUtils::getAuthLogger()->warning('Login refused: account cannot sign in', $logCtx + ['reason' => $blockedReason]);
@@ -209,8 +211,8 @@ class LocalAuthentication implements IAuthenticationProvider
                 return $authenticationResult;
             }
             // Guard: if the account is already locked (e.g. from a prior OTP failure in
-            // this session), reject without incrementing the counter or re-sending email.
-            if ($this->currentUser->isLocked()) {
+            // this session) or the address is throttled, reject without counting.
+            if ($this->currentUser->isLocked() || SignInThrottle::isIpThrottled()) {
                 // Clear the pending-2FA state so the session cannot resume OTP
                 // brute-forcing after an admin resets usr_FailedLogins.
                 // The user is re-read from the database on every request, which would
@@ -245,13 +247,7 @@ class LocalAuthentication implements IAuthenticationProvider
                 // Count OTP failures toward account lockout, mirroring the wrong-password branch.
                 // Without this, an attacker with a valid password can brute-force the 6-digit
                 // TOTP space without limit (GHSA-f2fq-4rmp-9x8c).
-                $this->currentUser->setFailedLogins($this->currentUser->getFailedLogins() + 1);
-                $this->currentUser->save();
-                if (!empty($this->currentUser->getEmail()) && $this->currentUser->isLocked()) {
-                    LoggerUtils::getAuthLogger()->warning('Too many failed 2FA attempts. The account has been locked', $logCtx);
-                    $lockedEmail = new LockedEmail($this->currentUser);
-                    $lockedEmail->send();
-                }
+                SignInThrottle::recordFailure($this->currentUser);
                 LoggerUtils::getAuthLogger()->info('Invalid 2FA code provided by partially authenticated user', $logCtx);
                 $authenticationResult->isAuthenticated = false;
                 if ($this->currentUser->isLocked()) {

@@ -3,7 +3,7 @@
 /**
  * Volunteer v2 — recurring schedules and occurrence generation (#9708, epic #9701).
  *
- * Normative sections of `.agents/skills/churchcrm/volunteer-v2-design.md`:
+ * Normative sections of `docs/design/volunteer-v2.md`:
  * §2.8 (schedule + its invariants), §2.9 (occurrence, the two unique keys, the
  * "linked rows carry no times of their own" rule), §2.10 (requirement template
  * vs per-occurrence override), §3.3.2 (the schedule half of the API) and §3.4

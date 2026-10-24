@@ -43,7 +43,6 @@ describe("Directory report - letter headings (#10417)", () => {
                     bDirFamilyPhone: "1",
                     bDirFamilyWork: "1",
                     bDirFamilyCell: "1",
-                    bDirFamilyEmail: "1",
                     bDirPersonalPhone: "1",
                     bDirPersonalWork: "1",
                     bDirPersonalCell: "1",

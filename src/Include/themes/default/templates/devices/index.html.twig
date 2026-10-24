@@ -1,0 +1,89 @@
+{% extends "layout.html.twig" %}
+
+{#
+  Sign-in and devices (member sign-in design §6.2): the devices where this
+  member chose to stay signed in, with a way to sign out one or all of them.
+
+  Variables: `pageTitle`, `devices`, `offerRememberDevice` (see
+  docs/portal-templates.md). Every date arrives already formatted.
+
+  Each sign-out is a plain form post carrying `csrf_field()`; signing out every
+  device asks first, inside a <details> so it works without a script.
+#}
+
+{% block content %}
+<div class="portal-devices" id="portal-devices">
+
+    <section class="portal-card" id="portal-devices-remembered">
+        <h1 class="portal-page-title">{{ gettext('Sign-in and devices') }}</h1>
+        <p class="portal-card-text">
+            {{ gettext("These are the phones and computers where you chose to stay signed in. Sign out any you no longer use or don't recognize.") }}
+        </p>
+
+        {% if devices is empty %}
+        <p class="portal-card-text" id="portal-devices-empty">
+            {{ gettext('You are not kept signed in on any device.') }}
+            {% if offerRememberDevice %}
+            {{ gettext('To stay signed in on your own phone or computer, tick "This is my own device" the next time you sign in.') }}
+            {% endif %}
+        </p>
+        {% else %}
+        <table class="portal-table" id="portal-devices-table">
+            <thead>
+                <tr>
+                    <th scope="col">{{ gettext('Device') }}</th>
+                    <th scope="col">{{ gettext('Added') }}</th>
+                    <th scope="col">{{ gettext('Last used') }}</th>
+                    <th scope="col"><span class="visually-hidden">{{ gettext('Actions') }}</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for device in devices %}
+                <tr class="portal-table-row" data-device-row="{{ device.id }}">
+                    <td class="portal-table-cell" data-label="{{ gettext('Device') }}">
+                        <span class="portal-device-label" data-device-label>{{ device.label|default(gettext('Unknown device')) }}</span>
+                        {% if device.isThisDevice %}
+                        <span class="portal-member-badge" data-this-device>{{ gettext('This device') }}</span>
+                        {% endif %}
+                    </td>
+                    <td class="portal-table-cell" data-label="{{ gettext('Added') }}" data-device-added>{{ device.addedAt }}</td>
+                    <td class="portal-table-cell" data-label="{{ gettext('Last used') }}" data-device-last-used>{{ device.lastUsedAt }}</td>
+                    <td class="portal-table-cell portal-table-actions">
+                        <form method="post" action="{{ url('/portal/devices/' ~ device.id ~ '/sign-out') }}">
+                            {{ csrf_field() }}
+                            <button class="portal-button portal-button-quiet" type="submit" data-device-sign-out>{{ gettext('Sign out') }}</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </section>
+
+    {#
+      PASSKEYS (member sign-in row 8, design §6.3) go here, as their own
+      `portal-card` section: the member's passkeys with a remove button on
+      each, and Add a passkey with the shared-computer warning.
+    #}
+
+    <section class="portal-card" id="portal-devices-everywhere">
+        <h2 class="portal-card-title">
+            <i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i>
+            <span>{{ gettext('Sign out every device') }}</span>
+        </h2>
+        <p class="portal-card-text">
+            {{ gettext('This signs you out everywhere, including here, and forgets every device. You can sign in again with your email address.') }}
+        </p>
+        <details class="portal-confirm" id="portal-devices-everywhere-confirm">
+            <summary class="portal-button portal-button-quiet" id="portal-devices-everywhere-open">{{ gettext('Sign out every device') }}</summary>
+            <form class="portal-confirm-body" method="post" action="{{ url('/portal/devices/sign-out-everywhere') }}">
+                {{ csrf_field() }}
+                <p class="portal-card-text">{{ gettext('Sign out every device now?') }}</p>
+                <button class="portal-button portal-button-danger" type="submit" id="portal-devices-everywhere-submit">{{ gettext('Yes, sign out every device') }}</button>
+            </form>
+        </details>
+    </section>
+
+</div>
+{% endblock %}

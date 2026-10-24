@@ -49,9 +49,12 @@ function getEcho(Request $request, Response $response): Response
  */
 function logCSPReportAPI(Request $request, Response $response, array $args): Response
 {
+    $body = (string) $request->getBody()->read(8192);
     try {
-        $input = json_decode($request->getBody(), true, 512);
-        LoggerUtils::getCSPLogger()->warning('CSP violation reported', $input);
+        $input = json_decode($body, true, 8, JSON_THROW_ON_ERROR);
+        if (is_array($input)) {
+            LoggerUtils::getCSPLogger()->warning('CSP violation reported', $input);
+        }
     } catch (\JsonException $e) {
         LoggerUtils::getCSPLogger()->warning('Invalid CSP report JSON: ' . $e->getMessage());
     }

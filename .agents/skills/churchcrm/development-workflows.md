@@ -16,9 +16,9 @@ npm run build
 npm run docker:test:start
 ```
 
-Login on local test: `admin` / `changeme` — never in production.
+Local test login is `admin` / `changeme`. It exists only on the test stack.
 
 After JS/TS/CSS: `npm run build:frontend`.
 Before a PR: `npm run lint`, the matching build, and the smallest Cypress spec that covers the change.
 
-Locale: wrap strings. `locale:build` runs on merge to `master`.
+Wrap UI strings (`i18n-localization.md`).
