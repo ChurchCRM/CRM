@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 
 import { resetUserFixture, resetUserState, resetTokenState, seedResetToken, blockedResetUser, cleanupResetFixture, resetCsrfFixture } from "../../../support/password-reset-fixtures";
+import { absoluteUrl } from "../../../support/urls";
 
 describe("Session Password Reset", () => {
     describe("Password Reset Form", () => {
@@ -281,7 +282,7 @@ describe("Session Password Reset", () => {
         it("allows only one of two concurrent POSTs from separate sessions", () => {
             cy.then(() => seedToken());
             cy.then(() => cy.task("passwordReset:race", {
-                url: new URL(url(), Cypress.config("baseUrl")).href,
+                url: absoluteUrl(url()),
                 password,
             })).then((bodies) => {
                 expect(bodies.filter((body) => body.includes("Password Reset Successful"))).to.have.length(1);

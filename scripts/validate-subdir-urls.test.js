@@ -1,8 +1,9 @@
 const assert = require('node:assert/strict');
 const { test } = require('node:test');
-const { scan, violations } = require('./validate-subdir-urls');
+const { scan, violations, cypressViolations } = require('./validate-subdir-urls');
 
 const flagged = (code) => violations(code).length;
+const cypressFlagged = (code) => cypressViolations(code).length;
 
 test('flags a root-relative URL handed to the browser', () => {
     [
@@ -51,6 +52,30 @@ test('ignores comments, route registrations and values that are not URLs', () =>
         'background: url(data:image/png;base64,AAAA);',
         'const personViewUrl = `${window.CRM.root}/people/view/${id}`;',
     ].forEach((code) => assert.equal(flagged(code), 0, code));
+});
+
+test('flags Cypress constructions that discard the install path', () => {
+    [
+        "new URL('/session/forgot-password/set/' + token, Cypress.config('baseUrl')).href",
+        'new URL(url(), Cypress.config("baseUrl")).href',
+        "fetch('/api/person/1')",
+        "window.location.href = '/people/list'",
+    ].forEach((code) => assert.equal(cypressFlagged(code), 1, code));
+});
+
+test('accepts Cypress requests that Cypress resolves against baseUrl', () => {
+    [
+        "cy.request({ url: '/api/person/1' })",
+        "cy.visit('/people/list')",
+        'cy.intercept("GET", "/api/x")',
+        'new URL(url().replace(/^\\//, ""), Cypress.config("baseUrl")).href',
+        'absoluteUrl(url())',
+        'absoluteUrl("/api/background/timerjobs")',
+        'new URL(response.body.url, Cypress.config("baseUrl")).href',
+        "new URL(redirectResponse.headers.location, Cypress.config('baseUrl')).href",
+        "fetch(window.CRM.root + '/api/person/1')",
+        "window.location.href = '/legacy'; // subdir-ok: external",
+    ].forEach((code) => assert.equal(cypressFlagged(code), 0, code));
 });
 
 test('the source tree has no violations', () => {

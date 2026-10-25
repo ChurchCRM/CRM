@@ -45,7 +45,7 @@ A check that runs locally belongs in the commit and pre-push checkpoint first (`
 
 ## Install path
 
-A site can live under `/churchcrm`. `npm run lint` (`subdir-safe urls`) fails on a root-relative or `./` literal handed to `fetch`, `$.ajax`, `url:`, `location`, `href`, `src`, `action` or `header('Location')`. A line that is deliberately root-relative ends with `// subdir-ok: <reason>`. Build URLs from `SystemURLs::getRootPath()` or `window.CRM.root`.
+A site can live under `/churchcrm`. `npm run lint` (`subdir-safe urls`) fails on a root-relative or `./` literal handed to `fetch`, `$.ajax`, `url:`, `location`, `href`, `src`, `action` or `header('Location')` in `src/` and `webpack/`. It also scans `cypress/`, but only for constructions that bypass Cypress and discard the install path: a literal root-relative first argument to `new URL()`, a zero-arg `url()` call passed to `new URL()`, a raw `fetch('/…')`, or a `location.href` assignment. Cypress resolves root-relative paths in `cy.request` / `cy.visit` / `cy.intercept` against `baseUrl`, so those stay allowed. A line that is deliberately root-relative ends with `// subdir-ok: <reason>`. Build production URLs from `SystemURLs::getRootPath()` or `window.CRM.root`. Build test URLs that leave Cypress with `absoluteUrl()` from `cypress/support/urls.js`.
 
 `cypress/e2e/ui/navigation/install-path-requests.spec.js` loads every page and fails on a same-origin request outside the install path. Bugs in server-built URLs, `.htaccess` or cookie paths show up in the nightly subdirectory run.
 
