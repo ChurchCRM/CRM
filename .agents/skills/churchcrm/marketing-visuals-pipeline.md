@@ -33,7 +33,7 @@ Run the workflow on `master` only. A run on another branch captures and checks b
 
 ### Adding a capture in a feature PR
 
-The capture spec ships in the same PR as the UI change. Images serve your own check and stay uncommitted.
+The capture spec ships in the same PR as the UI change — but only when the change tells or extends a user workflow story. A new screen, settings page, or CRUD operation on its own earns no capture: if there is no church task behind it (something a staff member or volunteer sets out to do, with a reason a church would care — it saves time, protects people or data, or removes a worry), ship the PR with no capture. The spec's purpose text must state the workflow story; a capture whose purpose is only a new screen or a new CRUD operation is rejected in review. Images serve your own check and stay uncommitted.
 
 1. Make a `git worktree` at the PR commit, symlink `node_modules`, then run `composer:install`, `build:webpack`, `build:signatures`
 2. Start the pipeline's own stack: `COMPOSE_PROJECT_NAME=crm-pw-capture npm run docker:ci:new-system:start`. It uses ports 8081 and 3308 (separate from the dev and test stacks) and removes `src/Include/Config.php`, so it runs in the worktree and never in the main checkout
