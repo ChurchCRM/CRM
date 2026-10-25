@@ -13,6 +13,16 @@
             "timeout": 8000,
             "placement": "bottom",
             "align": "right"
+        },
+        {
+            "id": "php2shell-2026-10",
+            "title": "Urgent: PHP security update needed",
+            "message": "A critical PHP flaw (PHP2Shell) lets attackers run code without logging in. Admins: update your server's PHP or Docker image now — details here. Not the admin? Please contact your church's admin about this right away.",
+            "icon": "shield-alert",
+            "type": "danger",
+            "link": "https://churchcrm.io/blog/2026-10-25-php2shell-security-update.html",
+            "adminOnly": false,
+            "targetVersionPattern": "*"
         }
     ]
 }
