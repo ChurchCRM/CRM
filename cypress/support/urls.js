@@ -14,5 +14,14 @@ export function absoluteUrl(path, base = Cypress.config("baseUrl")) {
     // (http://host/churchcrm + api/x → http://host/api/x). Force the slash so the
     // install path is always kept.
     const root = String(base).replace(/\/+$/, "") + "/";
-    return new URL(relative, root).href;
+    const href = new URL(relative, root).href;
+    if (!href.startsWith(root)) {
+        throw new Error(
+            `absoluteUrl dropped the install path\n` +
+            `  path: ${path}\n` +
+            `  base: ${base}\n` +
+            `  got:  ${href}`,
+        );
+    }
+    return href;
 }

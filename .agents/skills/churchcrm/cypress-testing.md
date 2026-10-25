@@ -42,7 +42,9 @@ Every new test is a Cypress E2E spec. Server logic is tested through its route w
 
 A site can live under `/churchcrm`. Cypress resolves root-relative paths in `cy.request`, `cy.visit` and `cy.intercept` against `baseUrl`, so those are fine. Raw `fetch`, `cy.task` and `win.fetch` do not: `new URL('/path', 'http://host/churchcrm/')` drops the install path and hits the origin.
 
-Use `absoluteUrl(path)` from `cypress/support/urls.js` for any URL that leaves Cypress. It strips a leading slash, forces a trailing slash on the base, and resolves so both root and subdirectory installs keep the install path.
+Use `absoluteUrl(path)` from `cypress/support/urls.js` for any URL that leaves Cypress. It strips a leading slash, forces a trailing slash on the base, and resolves so both root and subdirectory installs keep the install path. It throws if the result drops the install path, so a bad call fails at the construction site with the path, base and result.
+
+When a task or raw fetch fails, put the URL, status and a short body snippet in the error. The JUnit artifact only carries the message; without the URL the next person has to reconstruct which host and path were hit.
 
 ```js
 import { absoluteUrl } from "../../../support/urls";

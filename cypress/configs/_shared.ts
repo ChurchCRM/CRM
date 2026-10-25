@@ -24,7 +24,13 @@ export const dbTasks = {
       const csrf = html.match(/name="csrf_token" value="([^"]+)"/);
       const cookie = response.headers.getSetCookie().map((value) => value.split(';')[0]).join('; ');
       if (!csrf || !cookie) {
-        throw new Error('Password reset confirmation did not establish a CSRF session');
+        const snippet = html.replace(/\s+/g, ' ').slice(0, 200);
+        throw new Error(
+          `Password reset confirmation did not establish a CSRF session\n` +
+          `  url: ${url}\n` +
+          `  status: ${response.status}\n` +
+          `  body: ${snippet || '(empty)'}`,
+        );
       }
       return { cookie, csrf: csrf[1] };
     }));
@@ -35,7 +41,7 @@ export const dbTasks = {
         body: new URLSearchParams({ csrf_token: csrf, password, passwordConfirmation: password }),
       });
       if (!response.ok) {
-        throw new Error(`Password reset POST returned HTTP ${response.status}`);
+        throw new Error(`Password reset POST returned HTTP ${response.status} for ${url}`);
       }
       return response.text();
     }));
