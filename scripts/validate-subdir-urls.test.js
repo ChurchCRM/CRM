@@ -69,6 +69,8 @@ test('accepts Cypress requests that Cypress resolves against baseUrl', () => {
         "cy.visit('/people/list')",
         'cy.intercept("GET", "/api/x")',
         'new URL(url().replace(/^\\//, ""), Cypress.config("baseUrl")).href',
+        'absoluteUrl(url())',
+        'absoluteUrl("/api/background/timerjobs")',
         'new URL(response.body.url, Cypress.config("baseUrl")).href',
         "new URL(redirectResponse.headers.location, Cypress.config('baseUrl')).href",
         "fetch(window.CRM.root + '/api/person/1')",

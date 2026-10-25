@@ -16,6 +16,7 @@
  * only flags constructions that bypass Cypress and discard the install path: a literal
  * root-relative first argument to new URL(), a zero-arg url() call passed to new URL()
  * (the password-reset race failure), a raw fetch('/…'), or a location.href assignment.
+ * Use absoluteUrl() from cypress/support/urls.js for raw fetch and cy.task URLs.
  */
 
 const fs = require('fs');
