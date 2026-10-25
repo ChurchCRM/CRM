@@ -281,7 +281,7 @@ describe("Session Password Reset", () => {
         it("allows only one of two concurrent POSTs from separate sessions", () => {
             cy.then(() => seedToken());
             cy.then(() => cy.task("passwordReset:race", {
-                url: new URL(url(), Cypress.config("baseUrl")).href,
+                url: new URL(url().replace(/^\//, ""), Cypress.config("baseUrl")).href,
                 password,
             })).then((bodies) => {
                 expect(bodies.filter((body) => body.includes("Password Reset Successful"))).to.have.length(1);
