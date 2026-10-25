@@ -5447,10 +5447,6 @@ msgid "Submit Registration"
 msgstr "Odoslať registráciu"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Nové heslo bolo vygenerované a odoslané na vašu e-mailovú adresu."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Použiť aktualizáciu teraz"
 
@@ -5495,20 +5491,12 @@ msgid "Login Name is required"
 msgstr "Prihlasovacie meno je povinné"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Po obdržaní e-mailu sa môžete prihlásiť s dočasným heslom a zmeniť ho podľa vašej voľby."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Chyba obnovenia hesla"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Obnovenie hesla úspešné"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Skontrolujte váš e-mail (vrátane priečinka nevyžiadanej pošty) s dočasným heslom."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12340,10 +12328,6 @@ msgstr "E-mail je zakázaný"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "E-mail je zakázaný. Pred resetovaním hesiel nakonfigurujte e-mail alebo použite Zmeniť heslo."
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Zadajte jeden zo záložných obnovovacích kódov"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"

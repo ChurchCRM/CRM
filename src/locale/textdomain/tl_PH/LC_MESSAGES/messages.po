@@ -5441,10 +5441,6 @@ msgid "Submit Registration"
 msgstr "Isumite ang Pagpaparehistro"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Isang bagong password ay nagawa at naipadala sa iyong email address."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Ilapat ang Update Ngayon"
 
@@ -5489,20 +5485,12 @@ msgid "Login Name is required"
 msgstr "Ang Pangalan sa Login ay kinakailangan"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Kapag natanggap mo ang email, maaari kang mag-login gamit ang iyong pansamantalang password at palitan ito ng gusto mo."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Error sa Pag-reset ng Password"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Matagumpay ang Pag-reset ng Password"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Pakitingnan ang iyong email (kasama ang folder ng spam/junk) para sa iyong pansamantalang password."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12318,10 +12306,6 @@ msgstr "Naka-disable ang email"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "Naka-disable ang email. I-configure ang email bago i-reset ang mga password, o gamitin ang Baguhin ang Password."
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Ilagay ang isa sa iyong mga backup recovery code"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"

@@ -5564,10 +5564,6 @@ msgid "Submit Registration"
 msgstr "Skicka registrering"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Ett nytt lösenord har genererats och skickats till din e-postadress."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Tillämpa uppdatering nu"
 
@@ -5612,20 +5608,12 @@ msgid "Login Name is required"
 msgstr "Inloggningsnamn krävs"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "När du har fått e-postmeddelandet kan du logga in med ditt tillfälliga lösenord och ändra det till något du föredrar."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Fel vid återställning av lösenord"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Lösenordsåterställning lyckades"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Kontrollera din e-post (inklusive skräppostmapp) för ditt tillfälliga lösenord."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12441,10 +12429,6 @@ msgstr "E-post är inaktiverad"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "E-post är inaktiverad. Konfigurera e-post innan du återställer lösenord eller använd Ändra lösenord."
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Ange en av dina säkerhetskopierade återställningskoder"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"

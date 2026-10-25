@@ -5441,10 +5441,6 @@ msgid "Submit Registration"
 msgstr "രജിസ്ട്രേഷൻ സമർപ്പിക്കുക"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "ഒരു പുതിയ പാസ്‌വേഡ് ഉണ്ടാക്കി നിങ്ങളുടെ ഇമെയിൽ വിലാസത്തിലേക്ക് അയച്ചു."
-
-#: 
 msgid "Apply Update Now"
 msgstr "ഇപ്പോൾ അപ്‌ഡേറ്റ് പ്രയോഗിക്കുക"
 
@@ -5489,20 +5485,12 @@ msgid "Login Name is required"
 msgstr "ലോഗിൻ നാമം ആവശ്യമാണ്"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "ഇമെയിൽ ലഭിച്ചാൽ, താൽക്കാലിക പാസ്‌വേഡ് ഉപയോഗിച്ച് ലോഗ്-ഇൻ ചെയ്ത് ഇഷ്ടമുള്ളതിലേക്ക് മാറ്റാം."
-
-#: 
 msgid "Password Reset Error"
 msgstr "പാസ്‌വേഡ് റീസെറ്റ് പിശക്"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "പാസ്‌വേഡ് റീസെറ്റ് വിജയകരം"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "ദയവായി ഇമെയിൽ (സ്പാം/ജങ്ക് ഫോൾഡർ ഉൾപ്പെടെ) പരിശോധിക്കൂ."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12318,10 +12306,6 @@ msgstr "ഇമെയിൽ നിഷ്ക്രിയമാക്കിയി�
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "ഇമെയിൽ നിഷ്ക്രിയമാക്കിയിരിക്കുന്നു. പാസ്‌വേഡ് റീസെറ്റ് ചെയ്യുന്നതിന് മുൻപ് ഇമെയിൽ കോൺഫിഗർ ചെയ്യുക, അല്ലെങ്കിൽ പാസ്‌വേഡ് മാറ്റുക ഉപയോഗിക്കുക."
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "നിങ്ങളുടെ ബാക്കപ്പ് റിക്കവറി കോഡുകളിൽ ഒന്ന് നൽകുക"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"
