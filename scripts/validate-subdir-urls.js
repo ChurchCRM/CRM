@@ -10,14 +10,24 @@
  * A line that is deliberately root-relative ends with  // subdir-ok: <reason>
  * Variables and concatenated URLs are not visible here; cypress/e2e/ui/navigation/
  * install-path-requests.spec.js covers them at run time.
+ *
+ * Cypress specs are scanned too, but with a narrower rule. Cypress resolves root-relative
+ * paths in cy.request / cy.visit / cy.intercept against baseUrl, so those are fine. The scan
+ * only flags constructions that bypass Cypress and discard the install path: a literal
+ * root-relative first argument to new URL(), a zero-arg url() call passed to new URL()
+ * (the password-reset race failure), a raw fetch('/…'), or a location.href assignment.
  */
 
 const fs = require('fs');
 const path = require('path');
 
 const root = path.join(__dirname, '..');
-const SCAN_DIRS = ['webpack', 'src'];
-const SKIP = /(^|\/)(vendor|external|node_modules|locale|logs|Images)(\/|$)|\/skin\/v2\/|\.min\.js$/;
+const SCAN_DIRS = [
+    { dir: 'webpack', cypress: false },
+    { dir: 'src', cypress: false },
+    { dir: 'cypress', cypress: true },
+];
+const SKIP = /(^|\/)(vendor|external|node_modules|locale|logs|Images|videos|screenshots|reports)(\/|$)|\/skin\/v2\/|\.min\.js$/;
 const EXTENSIONS = /\.(php|twig|js|ts|tsx|scss|css)$/;
 const ROUTES = 'api|admin|people|finance|groups|v2|event|kiosk|plugins|ministries|fundraiser|session|setup|portal|skin';
 
@@ -33,13 +43,38 @@ const DOT_RELATIVE = new RegExp(`(?:\\bfetch\\s*\\(|\\burl\\s*:|\\$\\.(?:ajax|ge
 const SAFE_ON_LINE = /CRM\.root|getRootPath|assetVersioned|rootPath|subdir-ok:/;
 const ROUTE_REGISTRATION = /\$(?:app|group)->(?:get|post|put|delete|patch|group)\(/;
 
+// Cypress resolves these against baseUrl. Only flag constructions that discard the install path.
+const CYPRESS_NEW_URL_LITERAL = /new\s+URL\s*\(\s*["'`]\/(?!\/)[A-Za-z]/;
+const CYPRESS_NEW_URL_CALL = /new\s+URL\s*\(\s*url\s*\(\s*\)\s*,/;
+const CYPRESS_RAW_FETCH = /\bfetch\s*\(\s*["'`]\/(?!\/)[A-Za-z]/;
+const CYPRESS_LOCATION = /(?:window\.)?location(?:\.href)?\s*=\s*["'`]\/(?!\/)[A-Za-z]/;
+
+function isComment(text) {
+    return /^(\/\/|\*|\/\*|#)/.test(text);
+}
+
 function violations(source) {
     return source.split('\n').flatMap((line, index) => {
         const text = line.trim();
-        if (/^(\/\/|\*|\/\*|#)/.test(text) || SAFE_ON_LINE.test(line) || ROUTE_REGISTRATION.test(line)) {
+        if (isComment(text) || SAFE_ON_LINE.test(line) || ROUTE_REGISTRATION.test(line)) {
             return [];
         }
         return ROOT_RELATIVE.test(line) || HEADER_LOCATION.test(line) || CSS_URL.test(line) || URL_VARIABLE.test(line) || DOT_RELATIVE.test(line) ? [{ line: index + 1, text }] : [];
+    });
+}
+
+function cypressViolations(source) {
+    return source.split('\n').flatMap((line, index) => {
+        const text = line.trim();
+        if (isComment(text) || SAFE_ON_LINE.test(line)) {
+            return [];
+        }
+        const dangerous =
+            CYPRESS_NEW_URL_LITERAL.test(line) ||
+            CYPRESS_NEW_URL_CALL.test(line) ||
+            CYPRESS_RAW_FETCH.test(line) ||
+            CYPRESS_LOCATION.test(line);
+        return dangerous ? [{ line: index + 1, text }] : [];
     });
 }
 
@@ -58,9 +93,9 @@ function sourceFiles(dir) {
 }
 
 function scan(repo = root) {
-    return SCAN_DIRS.flatMap((dir) => sourceFiles(path.join(repo, dir))).flatMap((file) =>
-        violations(fs.readFileSync(file, 'utf8')).map((hit) => ({ file: path.relative(repo, file), ...hit })),
-    );
+    return SCAN_DIRS.flatMap(({ dir, cypress }) => sourceFiles(path.join(repo, dir)).flatMap((file) =>
+        (cypress ? cypressViolations : violations)(fs.readFileSync(file, 'utf8')).map((hit) => ({ file: path.relative(repo, file), ...hit })),
+    ));
 }
 
 if (require.main === module) {
@@ -74,4 +109,4 @@ if (require.main === module) {
     process.exit(found.length ? 1 : 0);
 }
 
-module.exports = { scan, violations };
+module.exports = { scan, violations, cypressViolations };
