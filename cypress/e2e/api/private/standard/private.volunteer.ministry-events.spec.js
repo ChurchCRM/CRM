@@ -350,6 +350,20 @@ describe("Volunteer v2 D24 — a ministry's events created through core from the
             });
         });
 
+        it("puts a monthly-weekday event on the Nth weekday of each month", () => {
+            createEvents(
+                { ...weekly("Second Tuesday", "Sunday", 1, 150), recurrence: { type: "monthly-weekday", wom: 2, dow: "Tuesday" } },
+                COORDINATOR_KEY,
+            ).then((resp) => {
+                expect(resp.body.events.length).to.be.within(4, 6);
+                for (const event of resp.body.events) {
+                    const d = new Date(`${event.start.slice(0, 10)}T12:00:00`);
+                    expect(d.getDay(), event.start).to.eq(2);
+                    expect(d.getDate(), event.start).to.be.within(8, 14);
+                }
+            });
+        });
+
         it("refuses a series over the repeat engine's cap and creates nothing", () => {
             createEvents(weekly("Too Many", "Sunday", 1, 8 * 365), COORDINATOR_KEY, 400).then((resp) => {
                 expect(resp.body.message).to.contain(String(MAX_SERIES));
@@ -428,6 +442,9 @@ describe("Volunteer v2 D24 — a ministry's events created through core from the
             ["an unknown recurrence", { date: undefined, recurrence: { type: "daily" }, rangeStart: isoDate(1), rangeEnd: isoDate(9) }],
             ["weekly without a day", { date: undefined, recurrence: { type: "weekly" }, rangeStart: isoDate(1), rangeEnd: isoDate(9) }],
             ["monthly on day 32", { date: undefined, recurrence: { type: "monthly", dom: 32 }, rangeStart: isoDate(1), rangeEnd: isoDate(90) }],
+            ["monthly-weekday without a week", { date: undefined, recurrence: { type: "monthly-weekday", dow: "Sunday" }, rangeStart: isoDate(1), rangeEnd: isoDate(90) }],
+            ["monthly-weekday in week 6", { date: undefined, recurrence: { type: "monthly-weekday", wom: 6, dow: "Sunday" }, rangeStart: isoDate(1), rangeEnd: isoDate(90) }],
+            ["monthly-weekday without a day", { date: undefined, recurrence: { type: "monthly-weekday", wom: 2 }, rangeStart: isoDate(1), rangeEnd: isoDate(90) }],
             ["yearly on a day that never exists", { date: undefined, recurrence: { type: "yearly", doy: "02-30" }, rangeStart: isoDate(1), rangeEnd: isoDate(400) }],
             ["a range that ends before it starts", { date: undefined, recurrence: { type: "weekly", dow: "Sunday" }, rangeStart: isoDate(9), rangeEnd: isoDate(1) }],
             ["a series with no range", { date: undefined, recurrence: { type: "weekly", dow: "Sunday" } }],

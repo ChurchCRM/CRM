@@ -5,6 +5,7 @@ use ChurchCRM\model\ChurchCRM\CalendarQuery;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\Service\EventService;
+use ChurchCRM\Service\RecurrenceDateGenerator;
 use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsRoleAuthMiddleware;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
@@ -104,6 +105,7 @@ $app->post('/repeat-editor', function (Request $request, Response $response) {
     $sRecurDOW    = InputUtils::legacyFilterInput($body['RecurDOW'] ?? 'Sunday');
     $iRecurDOM    = InputUtils::filterInt($body['RecurDOM'] ?? 1);
     $sRecurDOY    = InputUtils::legacyFilterInput($body['RecurDOY'] ?? '01-01');
+    $iRecurWOM    = InputUtils::filterInt($body['RecurWOM'] ?? 1);
     $sRangeStart  = InputUtils::legacyFilterInput($body['RangeStart'] ?? '');
     $sRangeEnd    = InputUtils::legacyFilterInput($body['RangeEnd'] ?? '');
     $iLinkedGroup = InputUtils::filterInt($body['LinkedGroupId'] ?? 0);
@@ -114,7 +116,6 @@ $app->post('/repeat-editor', function (Request $request, Response $response) {
         }
     }
 
-    $validRecurTypes = ['weekly', 'monthly', 'yearly'];
     $errorMsg = '';
 
     // Strict YYYY-MM-DD validation — comparing two arbitrary strings with > can
@@ -128,7 +129,7 @@ $app->post('/repeat-editor', function (Request $request, Response $response) {
         $errorMsg = gettext('You must select an event type.');
     } elseif (empty($sTitle)) {
         $errorMsg = gettext('Event title is required.');
-    } elseif (!in_array($sRecurType, $validRecurTypes, true)) {
+    } elseif (!in_array($sRecurType, RecurrenceDateGenerator::SUPPORTED_RECUR_TYPES, true)) {
         $errorMsg = gettext('You must select a valid recurrence pattern.');
     } elseif (empty($sRangeStart) || empty($sRangeEnd)) {
         $errorMsg = gettext('You must specify a date range.');
@@ -164,6 +165,7 @@ $app->post('/repeat-editor', function (Request $request, Response $response) {
             'recurDOW'        => $sRecurDOW,
             'recurDOM'        => $iRecurDOM,
             'recurDOY'        => $sRecurDOY,
+            'recurWOM'        => $iRecurWOM,
             'rangeStart'      => $sRangeStart,
             'rangeEnd'        => $sRangeEnd,
             'pinnedCalendars' => $pinnedCalendars,
