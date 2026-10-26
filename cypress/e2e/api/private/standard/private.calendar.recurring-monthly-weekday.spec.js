@@ -81,6 +81,14 @@ describe("API Recurring Events: Nth weekday of the month (#10906)", () => {
         repeat({ RecurWOM: 6 }, 400);
     });
 
+    for (const week of ["2.9", "2abc", 0]) {
+        it(`answers 400 for week ${JSON.stringify(week)}`, () => {
+            repeat({ RecurWOM: week }, 400).then((resp) => {
+                expect(resp.body.message).to.eq("RecurWOM must be a whole number from 1 to 5");
+            });
+        });
+    }
+
     it("answers 400 for an unknown day of the week", () => {
         repeat({ RecurDOW: "Funday" }, 400);
     });

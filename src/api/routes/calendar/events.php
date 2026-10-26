@@ -837,6 +837,14 @@ function createRepeatEvents(Request $request, Response $response, array $args): 
         return SlimUtils::renderErrorJSON($response, gettext('RangeEnd must be on or after RangeStart'), [], 400);
     }
 
+    $recurWom = null;
+    if (isset($input['RecurWOM']) && $input['RecurWOM'] !== '') {
+        $recurWom = filter_var($input['RecurWOM'], FILTER_VALIDATE_INT, ['options' => ['min_range' => 1, 'max_range' => 5]]);
+        if ($recurWom === false) {
+            return SlimUtils::renderErrorJSON($response, gettext('RecurWOM must be a whole number from 1 to 5'), [], 400);
+        }
+    }
+
     try {
         $service = new EventService();
         $result = $service->createRecurringEvents([
@@ -850,7 +858,7 @@ function createRepeatEvents(Request $request, Response $response, array $args): 
             'recurDOW'       => $input['RecurDOW'] ?? null,
             'recurDOM'       => isset($input['RecurDOM']) ? (int) $input['RecurDOM'] : null,
             'recurDOY'       => $input['RecurDOY'] ?? null,
-            'recurWOM'       => isset($input['RecurWOM']) ? (int) $input['RecurWOM'] : null,
+            'recurWOM'       => $recurWom,
             'rangeStart'     => $input['RangeStart'],
             'rangeEnd'       => $input['RangeEnd'],
             'pinnedCalendars' => array_map('intval', is_array($input['PinnedCalendars'] ?? null) ? $input['PinnedCalendars'] : []),
