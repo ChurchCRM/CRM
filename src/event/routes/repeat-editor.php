@@ -105,7 +105,7 @@ $app->post('/repeat-editor', function (Request $request, Response $response) {
     $sRecurDOW    = InputUtils::legacyFilterInput($body['RecurDOW'] ?? 'Sunday');
     $iRecurDOM    = InputUtils::filterInt($body['RecurDOM'] ?? 1);
     $sRecurDOY    = InputUtils::legacyFilterInput($body['RecurDOY'] ?? '01-01');
-    $iRecurWOM    = InputUtils::filterInt($body['RecurWOM'] ?? 1);
+    $iRecurWOM    = InputUtils::filterInt($body['RecurWOM'] ?? 0);
     $sRangeStart  = InputUtils::legacyFilterInput($body['RangeStart'] ?? '');
     $sRangeEnd    = InputUtils::legacyFilterInput($body['RangeEnd'] ?? '');
     $iLinkedGroup = InputUtils::filterInt($body['LinkedGroupId'] ?? 0);
