@@ -13,6 +13,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
  * @var string  $groupKey           Empty string for create; existing key for edit
  * @var int     $familyId           Pre-selected family ID (0 if none)
  * @var string  $familyName         Family display name (empty string if none)
+ * @var int     $personId           Pre-selected person ID (0 if none)
+ * @var string  $personName         Person display name (empty string if none)
  * @var int     $depositId          Current deposit ID (0 if none)
  * @var \Propel\Runtime\Collection\ObjectCollection $funds  Active DonationFund objects
  * @var \Propel\Runtime\Collection\ObjectCollection $openDeposits  Open Deposit objects
@@ -85,6 +87,17 @@ $familySearchHint = SystemConfig::getBooleanValue('bUseDonationEnvelopes')
         </div>
         <div class="card-body">
             <div class="row g-3">
+
+                <!-- Person Selector -->
+                <div class="col-lg-6">
+                    <label class="form-label" for="PersonID"><?= gettext('Person') ?></label>
+                    <select class="form-select" id="PersonID" name="PersonID" data-placeholder="<?= InputUtils::escapeAttribute(gettext('Search by name')) ?>">
+                        <?php if ($personId && $personName): ?>
+                            <option value="<?= (int) $personId ?>" selected><?= InputUtils::escapeHTML($personName) ?></option>
+                        <?php endif; ?>
+                    </select>
+                    <small class="form-text"><?= gettext('Optional. Records who gave; the family is taken from this person.') ?></small>
+                </div>
 
                 <!-- Family Selector -->
                 <div class="col-lg-6">
@@ -392,11 +405,36 @@ $familySearchHint = SystemConfig::getBooleanValue('bUseDonationEnvelopes')
             },
             onChange: function (value) {
                 document.getElementById('FamilyID').value = value;
+                const personTs = document.getElementById('PersonID').tomselect;
+                if (personTs && personTs.getValue()) {
+                    personTs.clear(true);
+                }
             }
         });
         if (!GROUP_KEY && !familyNameEl.value) {
             familyNameEl.tomselect.focus();
         }
+    }
+
+    // ---- Person TomSelect ----
+    const personEl = document.getElementById('PersonID');
+    if (personEl && !personEl.tomselect && window.CRM.initPersonSelect) {
+        window.CRM.initPersonSelect(personEl, {
+            onChange: function (value) {
+                const option = value ? this.options[value] : null;
+                if (!option || option.familyId === undefined) return;
+                const famId = String(option.familyId);
+                const familyTs = familyNameEl ? familyNameEl.tomselect : null;
+                document.getElementById('FamilyID').value = famId;
+                if (!familyTs) return;
+                if (famId !== '0') {
+                    familyTs.addOption({ id: famId, text: option.familyName });
+                    familyTs.setValue(famId, true);
+                } else {
+                    familyTs.clear(true);
+                }
+            }
+        });
     }
 
     // ---- Fund total calculation ----
@@ -480,6 +518,7 @@ $familySearchHint = SystemConfig::getBooleanValue('bUseDonationEnvelopes')
     // ---- Collect form data for API submission ----
     function collectPayload() {
         const familyId = parseInt(document.getElementById('FamilyID').value, 10);
+        const personId = parseInt(document.getElementById('PersonID').value, 10);
         const date     = document.getElementById('Date').value;
         const fyid     = parseInt(fyEl ? fyEl.value : '0', 10);
         const methodEl2 = document.getElementById('Method');
@@ -551,6 +590,7 @@ $familySearchHint = SystemConfig::getBooleanValue('bUseDonationEnvelopes')
 
         return {
             FamilyID:  familyId || null,
+            PersonID:  personId || null,
             Date:      date,
             FYID:      fyid,
             type:      PLEDGE_TYPE,

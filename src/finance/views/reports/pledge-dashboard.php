@@ -235,7 +235,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <table id="familyPledges" class="table table-hover table-vcenter mb-0 w-100">
                     <thead>
                         <tr>
-                            <th><?= gettext('Family Name') ?></th>
+                            <th><?= gettext('Donor') ?></th>
                             <?php if (SystemConfig::getBooleanValue('bUseDonationEnvelopes')): ?>
                             <th><?= gettext('Envelope') ?></th>
                             <?php endif; ?>
@@ -269,10 +269,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 }
                                 ?>
                                 <tr>
-                                    <td class="fw-bold">
-                                        <a href="<?= SystemURLs::getRootPath() ?>/people/family/<?= $family['family_id'] ?>">
-                                            <?= InputUtils::escapeHTML($family['family_name']) ?>
-                                        </a>
+                                    <td class="fw-bold" data-order="<?= InputUtils::escapeAttribute($family['display_name']) ?>">
+                                        <?php $donor = $family; require __DIR__ . '/../partials/donor-name.php'; ?>
                                     </td>
                                     <?php if (SystemConfig::getBooleanValue('bUseDonationEnvelopes')): ?>
                                     <td class="text-body-secondary small">

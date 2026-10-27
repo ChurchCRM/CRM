@@ -41,10 +41,10 @@ $(document).ready(function () {
   // webpack/people/person-group-manager.js — loaded via the
   // people-person-view webpack entry point.
 
-  // Giving History card: load family giving data (Finance role only)
-  if ($("#giving-history-card").length && window.CRM.personFamId > 0) {
+  // Giving History card: load this person's own giving (Finance role only)
+  if ($("#giving-history-card").length) {
     window.CRM.APIRequest({
-      path: "payments/family/" + window.CRM.personFamId + "/list",
+      path: "payments/person/" + window.CRM.currentPersonID + "/list",
     })
       .then(function (resp) {
         var data = resp && resp.data ? resp.data : [];
@@ -69,16 +69,16 @@ $(document).ready(function () {
           }
         });
 
-        $("#person-giving-ytd").text("$" + ytdTotal.toFixed(2));
+        $("#person-giving-ytd").text(window.CRM.currency.format(ytdTotal));
 
         if (ytdTotal > 0) {
           $("#person-ytd-total-badge")
-            .text(i18next.t("YTD") + " $" + ytdTotal.toFixed(2))
+            .text(i18next.t("YTD") + " " + window.CRM.currency.format(ytdTotal))
             .removeClass("d-none");
         }
 
         if (lastPayment) {
-          var safeAmt = window.CRM.escapeHtml("$" + parseFloat(lastPayment.Amount).toFixed(2));
+          var safeAmt = window.CRM.escapeHtml(window.CRM.currency.format(lastPayment.Amount));
           var safeDate = window.CRM.escapeHtml(lastPayment.Date || "");
           var safeFund = window.CRM.escapeHtml(lastPayment.Fund || "");
           var detail = safeFund ? safeAmt + " (" + safeFund + ") — " + safeDate : safeAmt + " — " + safeDate;

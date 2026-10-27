@@ -5,6 +5,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\model\ChurchCRM\DonationFundQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Service\FamilyPledgeSummaryService;
 use ChurchCRM\Utils\FiscalYearUtils;
@@ -94,7 +95,7 @@ $app->group('/pledge', function (RouteCollectorProxy $group): void {
 
     /**
      * Pledge/Payment editor — create mode.
-     * GET /finance/pledge/new[?type=Pledge|Payment][&depositId=N][&familyId=N]
+     * GET /finance/pledge/new[?type=Pledge|Payment][&depositId=N][&familyId=N][&personId=N]
      */
     $group->get('/new', function (Request $request, Response $response): Response {
         $renderer = new PhpRenderer(__DIR__ . '/../views/');
@@ -103,6 +104,7 @@ $app->group('/pledge', function (RouteCollectorProxy $group): void {
         $type = isset($queryParams['type']) && $queryParams['type'] === 'Pledge' ? 'Pledge' : 'Payment';
         $depositId = isset($queryParams['depositId']) ? (int) $queryParams['depositId'] : 0;
         $familyId = isset($queryParams['familyId']) ? (int) $queryParams['familyId'] : 0;
+        $personId = isset($queryParams['personId']) ? (int) $queryParams['personId'] : 0;
         $linkBack = RedirectUtils::getLinkBackFromRequest('');
 
         // Active donation funds
@@ -122,6 +124,15 @@ $app->group('/pledge', function (RouteCollectorProxy $group): void {
         $fiscalYears = [];
         for ($fyId = 1; $fyId <= $currentFyId + 1; $fyId++) {
             $fiscalYears[$fyId] = \ChurchCRM\Service\FinancialService::formatFiscalYear($fyId);
+        }
+
+        $personName = '';
+        $person = $personId ? PersonQuery::create()->findPk($personId) : null;
+        if ($person !== null) {
+            $personName = $person->getFullName();
+            $familyId = (int) $person->getFamId();
+        } else {
+            $personId = 0;
         }
 
         // Pre-populate family name if familyId given
@@ -148,6 +159,8 @@ $app->group('/pledge', function (RouteCollectorProxy $group): void {
             'groupKey'           => '',
             'familyId'           => $familyId,
             'familyName'         => $familyName,
+            'personId'           => $personId,
+            'personName'         => $personName,
             'depositId'          => $depositId,
             'funds'              => $funds,
             'openDeposits'       => $openDeposits,
@@ -263,6 +276,8 @@ $app->group('/pledge', function (RouteCollectorProxy $group): void {
             'groupKey'           => $groupKey,
             'familyId'           => $familyId,
             'familyName'         => $familyName,
+            'personId'           => (int) ($pledge['personId'] ?? 0),
+            'personName'         => $pledge['personName'] ?? '',
             'depositId'          => $depositId,
             'funds'              => $funds,
             'openDeposits'       => $openDeposits,

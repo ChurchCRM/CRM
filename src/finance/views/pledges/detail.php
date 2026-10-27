@@ -14,6 +14,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
  *     groupKey:        string,
  *     familyId:        int,
  *     familyName:      string,
+ *     personId:        int|null,
+ *     personName:      string,
  *     date:            string (Y-m-d),
  *     fyId:            int,
  *     method:          string,
@@ -72,11 +74,24 @@ $methodLabel = $methodLabels[$pledge['method']] ?? InputUtils::escapeHTML($pledg
                         <a href="<?= $sRootPath ?>/people/family/<?= (int) $pledge['familyId'] ?>">
                             <?= InputUtils::escapeHTML($pledge['familyName']) ?>
                         </a>
+                        <?php elseif (!empty($pledge['personId'])): ?>
+                        <?= gettext('No family') ?>
                         <?php else: ?>
                         <?= gettext('Anonymous') ?>
                         <?php endif; ?>
                     </div>
                 </div>
+
+                <?php if (!empty($pledge['personId'])): ?>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="text-muted small mb-1"><?= gettext('Person') ?></div>
+                    <div class="fw-bold">
+                        <a href="<?= $sRootPath ?>/people/view/<?= (int) $pledge['personId'] ?>">
+                            <?= InputUtils::escapeHTML($pledge['personName']) ?>
+                        </a>
+                    </div>
+                </div>
+                <?php endif; ?>
 
                 <div class="col-sm-6 col-lg-3">
                     <div class="text-muted small mb-1"><?= gettext('Date') ?></div>

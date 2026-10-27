@@ -62,7 +62,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <table class="table table-hover mb-0">
                                 <thead class="bg-surface-secondary">
                                     <tr>
-                                        <th><?= gettext('Family Name') ?></th>
+                                        <th><?= gettext('Donor') ?></th>
                                         <?php if (SystemConfig::getBooleanValue('bUseDonationEnvelopes')): ?>
                                         <th><?= gettext('Envelope') ?></th>
                                         <?php endif; ?>
@@ -77,7 +77,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                             <tr>
                                                 <?php if ($isFirstRow): ?>
                                                     <td rowspan="<?= count($family['pledges']) ?>" class="align-middle fw-bold">
-                                                        <?= InputUtils::escapeHTML($family['family_name']) ?>
+                                                        <?php $donor = $family; require __DIR__ . '/../partials/donor-name.php'; ?>
                                                     </td>
                                                     <?php if (SystemConfig::getBooleanValue('bUseDonationEnvelopes')): ?>
                                                     <td rowspan="<?= count($family['pledges']) ?>" class="align-middle">

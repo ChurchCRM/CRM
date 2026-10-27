@@ -50,12 +50,16 @@
 
     columns.push(
       {
-        title: i18next.t("Family"),
+        title: i18next.t("Donor"),
         data: "FamilyString",
-        render: (data) =>
-          data?.trim()
-            ? window.CRM.escapeHtml(data)
-            : `<em class="text-body-secondary">${window.CRM.escapeHtml(i18next.t("Anonymous"))}</em>`,
+        render: (data, _type, row) => {
+          const family = data?.trim() ? window.CRM.escapeHtml(data) : "";
+          if (row.PersonName) {
+            const person = window.CRM.escapeHtml(row.PersonName);
+            return family ? `${person}<div class="small text-body-secondary">${family}</div>` : person;
+          }
+          return family || `<em class="text-body-secondary">${window.CRM.escapeHtml(i18next.t("Anonymous"))}</em>`;
+        },
       },
       {
         title: i18next.t("Check Number"),

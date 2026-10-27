@@ -111,7 +111,7 @@
   },
   "current": {
     "versions": ["7.8.1"],
-    "scripts": ["/mysql/upgrade/7.8.2.sql"],
+    "scripts": ["/mysql/upgrade/7.8.2.sql", "/mysql/upgrade/7.8.2-pledge-person.sql"],
     "dbVersion": "7.8.2"
   }
 }

@@ -59,7 +59,7 @@ describe('Finance: Fund Contributor Drill-down', () => {
                 if ($contribs.find('#fundContributors').length > 0) {
                     cy.get('#fundContributors thead th').then(($headers) => {
                         const headerTexts = [...$headers].map((el) => el.textContent.trim());
-                        expect(headerTexts).to.include('Family Name');
+                        expect(headerTexts).to.include('Donor');
                         expect(headerTexts).to.include('Pledged Amount');
                         expect(headerTexts).to.include('Payments');
                         expect(headerTexts).to.include('Remaining');

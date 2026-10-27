@@ -17,7 +17,7 @@ $sRootPathEsc = InputUtils::escapeAttribute($sRootPath);
  * Variables injected by /finance/routes/fund.php:
  *
  * @var array  $fund            ['id' => int, 'name' => string]
- * @var array  $contributors    Per-family rows: family_id, family_name, envelope, pledged, paid, remaining, percent, status, group_key
+ * @var array  $contributors    Per-donor rows: person_id, person_name, family_id, family_name, display_name, envelope, pledged, paid, remaining, percent, status, group_key
  * @var array  $stats           ['total_pledged', 'total_paid', 'total_remaining', 'contributor_count', 'percent_paid']
  * @var array  $availableYears  [{id, label}, ...]
  * @var int    $selectedFyid
@@ -176,7 +176,7 @@ $statusClasses = [
                 <table id="fundContributors" class="table table-hover table-vcenter mb-0 w-100">
                     <thead>
                         <tr>
-                            <th><?= gettext('Family Name') ?></th>
+                            <th><?= gettext('Donor') ?></th>
                             <?php if (SystemConfig::getBooleanValue('bUseDonationEnvelopes')): ?>
                             <th><?= gettext('Envelope') ?></th>
                             <?php endif; ?>
@@ -198,10 +198,8 @@ $statusClasses = [
                             $groupKey    = $contributor['group_key'];
                             ?>
                             <tr>
-                                <td class="fw-bold">
-                                    <a href="<?= $sRootPathEsc ?>/people/family/<?= (int) $contributor['family_id'] ?>">
-                                        <?= InputUtils::escapeHTML($contributor['family_name']) ?>
-                                    </a>
+                                <td class="fw-bold" data-order="<?= InputUtils::escapeAttribute($contributor['display_name']) ?>">
+                                    <?php $donor = $contributor; require __DIR__ . '/../partials/donor-name.php'; ?>
                                 </td>
                                 <?php if (SystemConfig::getBooleanValue('bUseDonationEnvelopes')): ?>
                                 <td class="text-body-secondary small">

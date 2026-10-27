@@ -113,6 +113,8 @@ foreach ($pledgeObjects as $pledge) {
         'fam_State' => $pledge['FamilyState'] ?? '',
         'fam_Zip' => $pledge['FamilyZip'] ?? '',
         'fam_Country' => $pledge['FamilyCountry'] ?? '',
+        'per_ID' => (int) ($pledge['PerId'] ?? 0),
+        'per_Name' => $pledge['PersonName'] ?? '',
         'plg_date' => $pledge['Date'],
         'plg_amount' => $pledge['Amount'],
         'plg_method' => $pledge['Method'],
@@ -308,8 +310,8 @@ $page = 1;
                 $fun_ID = -1;
             }
             if (!$fam_ID) {
-                $fam_ID = -1;
-                $fam_Name = 'Unassigned';
+                $fam_ID = $aRow['per_ID'] > 0 ? -$aRow['per_ID'] : -1;
+                $fam_Name = $aRow['per_Name'] !== '' ? $aRow['per_Name'] : 'Unassigned';
             }
             // First Deposit Heading
             if (!$currentDepositID && $detail_level != 'summary') {
@@ -388,7 +390,7 @@ $page = 1;
                 if (strlen($plg_comment) > 29) {
                     $plg_comment = mb_substr($plg_comment, 0, 28) . '...';
                 }
-                $fam_Name_Display = $fam_Name . ' - ' . $fam_Address1;
+                $fam_Name_Display = $aRow['per_Name'] !== '' ? $aRow['per_Name'] : $fam_Name . ' - ' . $fam_Address1;
                 if (strlen($fam_Name_Display) > 31) {
                     $fam_Name_Display = mb_substr($fam_Name_Display, 0, 30) . '...';
                 }
@@ -476,8 +478,8 @@ $page = 1;
                 $fun_ID = -1;
             }
             if (!$fam_ID) {
-                $fam_ID = -1;
-                $fam_Name = 'Unassigned';
+                $fam_ID = $aRow['per_ID'] > 0 ? -$aRow['per_ID'] : -1;
+                $fam_Name = $aRow['per_Name'] !== '' ? $aRow['per_Name'] : 'Unassigned';
             }
             // First Fund Heading
             if (!$currentFundName && $detail_level != 'summary') {
@@ -555,7 +557,7 @@ $page = 1;
                 if (strlen($plg_comment) > 29) {
                     $plg_comment = mb_substr($plg_comment, 0, 28) . '...';
                 }
-                $fam_Name = $fam_Name . ' - ' . $fam_Address1;
+                $fam_Name = $aRow['per_Name'] !== '' ? $aRow['per_Name'] : $fam_Name . ' - ' . $fam_Address1;
                 if (strlen($fam_Name) > 31) {
                     $fam_Name = mb_substr($fam_Name, 0, 30) . '...';
                 }
@@ -643,8 +645,8 @@ $page = 1;
                 $fun_ID = -1;
             }
             if (!$fam_ID) {
-                $fam_ID = -1;
-                $fam_Name = 'Unassigned';
+                $fam_ID = $aRow['per_ID'] > 0 ? -$aRow['per_ID'] : -1;
+                $fam_Name = $aRow['per_Name'] !== '' ? $aRow['per_Name'] : 'Unassigned';
                 $fam_Address1 = '';
             }
             // First Family Heading
@@ -719,6 +721,9 @@ $page = 1;
                 $sDeposit ="Dep #$plg_depID $dep_Date";
                 if (strlen($sDeposit) > 22) {
                     $sDeposit = mb_substr($sDeposit, 0, 21) . '...';
+                }
+                if ($aRow['per_Name'] !== '' && $aRow['fam_ID']) {
+                    $plg_comment = trim($aRow['per_Name'] . ' ' . $plg_comment);
                 }
                 if (strlen($plg_comment) > 29) {
                     $plg_comment = mb_substr($plg_comment, 0, 28) . '...';
