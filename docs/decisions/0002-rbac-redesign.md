@@ -1,6 +1,6 @@
 # RFC: ChurchCRM authorization, identity and sensitive-record access
 
-**Status:** Proposed for independent security and architecture review; no implementation approved.  
+**Status:** Accepted — direction accepted 2026-10-27, proposed in this PR for final approval. Implementation is not approved until the F0 gate clears and phase 1 meets its parity gate.  
 **Date:** 2026-10-10  
 **Historical parent:** [#8591](https://github.com/ChurchCRM/CRM/issues/8591) (closed; not the live work queue) · **Design PR:** [#10511](https://github.com/ChurchCRM/CRM/pull/10511)  
 **Authority:** ChurchCRM/CRM code on the default branch; the [member sign-in](https://github.com/ChurchCRM/CRM/blob/feature/member-sign-in/docs/design/member-sign-in.md) design ([#10464](https://github.com/ChurchCRM/CRM/pull/10464), accepted for 7.9.0) is not shipped behavior.
@@ -586,3 +586,21 @@ Each approved coding task must contain: **outcome; authoritative code/schema ref
 [#8591](https://github.com/ChurchCRM/CRM/issues/8591) parent; [#8758](https://github.com/ChurchCRM/CRM/issues/8758) schema; [#8759](https://github.com/ChurchCRM/CRM/issues/8759) middleware; [#8760](https://github.com/ChurchCRM/CRM/issues/8760) role UI; [#8761](https://github.com/ChurchCRM/CRM/issues/8761) menu/inline migration; [#8762](https://github.com/ChurchCRM/CRM/issues/8762) scopes; [#10464](https://github.com/ChurchCRM/CRM/pull/10464) member sign-in proposal; [#9003](https://github.com/ChurchCRM/CRM/issues/9003) staff read; [#9036](https://github.com/ChurchCRM/CRM/issues/9036) notes policy; [#8999](https://github.com/ChurchCRM/CRM/issues/8999) note IDOR; [#1886](https://github.com/ChurchCRM/CRM/issues/1886) custom fields; [#10213](https://github.com/ChurchCRM/CRM/issues/10213) email grant; [#10043](https://github.com/ChurchCRM/CRM/issues/10043) API tokens; [#10191](https://github.com/ChurchCRM/CRM/issues/10191) plugin email; [#10252](https://github.com/ChurchCRM/CRM/issues/10252) reports; [#10206](https://github.com/ChurchCRM/CRM/issues/10206) authorization gaps; [#769](https://github.com/ChurchCRM/CRM/issues/769) data-layer ACL; [#10512](https://github.com/ChurchCRM/CRM/issues/10512) Membership Date; [#10513](https://github.com/ChurchCRM/CRM/issues/10513) Church Members filter; [#10514](https://github.com/ChurchCRM/CRM/issues/10514) small-field audit; [#10518](https://github.com/ChurchCRM/CRM/issues/10518) kiosk audit; [#10520](https://github.com/ChurchCRM/CRM/issues/10520) user-journey audit; [#10686](https://github.com/ChurchCRM/CRM/issues/10686) closed-deposit reopen.
 
 **Review status:** proposal only. D2 composition (union of whole grants, intersection with denies) is decided. Delegation tiers, break-glass, the action catalog, and D1, D3–D8 stay open. No runtime implementation or security remediation is claimed. P6 does not cover account takeover. #8591, #8758–#8762, and #10517 are closed and are not implementation gates.
+
+
+## Maintainer decisions — 2026-10-27 (for final approval)
+
+Decisions recorded 2026-10-27 in the RFC 0002 work-through, for @cwhorton final approval. This section records the decisions; the editorial passes they imply (one phase table, folding restatements, moving takeover to the end) are to be applied on this branch before merge, unless the reviewer accepts this decision log as the disposition.
+
+- **Email change (F-03 area):** On any person email change, send a notice to the old address saying it was changed and, if that is an error, to contact the church office, and log the change to the notes system. Filed as #10917. Family-email cleanup filed as #10918 (removal banner and count) and #10919 (duplicate-email check in the users edit interface, reusing the existing duplicate-email page logic). The F-03 pre-F0 gate stays red until #10649 is explicitly verified as remediating it.
+- **B1 protection:** For password-set and 2FA-disable on sensitive-grant holders, both a second approver and notification to the account holder.
+- **B1 login-as-user:** Limit login-as-user to Member Portal self-service accounts only. Takeover topics sit at the end of the RFC, after the basics.
+- **Roles and migration (B2):** Use the current user table for current roles; new roles are a sum of all roles. One authoritative phase table replaces the two phase definitions. Phase 1 includes new user roles that replace the current roles, plus the new edit workflow, and is only merged when ready to take over and work 100% as today (parity gate). No standalone phase 1 merge unless it is doing something; the target branch only merges to master when it has value, and not until migration is ready.
+- **B3 tracking:** Fresh epic, not reopening #8591. The open RBAC audits #10515, #10516 and #10519 are to be linked to the new epic, not closed. Closes are for anything pre-RBAC that is no longer relevant; no issues have been closed under that rule yet.
+- **B4 schedule:** Architecture only; drop the Oct 30 schedule.
+- **N1:** New features are not held back by the RBAC redesign.
+- **N2:** The real V1 permission table stays in the architecture doc; it is not duplicated in this RFC.
+- **N3:** Superseded — family email is being killed in the next release, so no separate family-email epic is needed.
+- **N4:** V2 banner timing is left to implementation, not specified in this RFC.
+- **N5:** Fold restatements into the main sections; keep each rule once, with cross-references.
+- **Independent review:** @cwhorton Oct 12 review satisfies the RFC's independent security and architecture review request; no separate review is wanted.
