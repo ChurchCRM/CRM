@@ -13,4 +13,6 @@ Cypress.Commands.add("useChurchTimeZone", () =>
     cy.getSystemConfig("sTimeZone").then((zone) => setBrowserTimeZone(zone || "UTC")),
 );
 
+Cypress.Commands.add("useBrowserTimeZone", (timezoneId) => cy.then(() => setBrowserTimeZone(timezoneId)));
+
 Cypress.Commands.add("useHostTimeZone", () => cy.then(() => setBrowserTimeZone("")));

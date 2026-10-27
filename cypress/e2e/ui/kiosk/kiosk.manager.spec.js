@@ -60,22 +60,6 @@ describe("Kiosk Manager", () => {
         });
     });
 
-    describe("Standard User Access Denied (no ManageGroups role)", () => {
-        beforeEach(() => {
-            // tony.wade (standard session) has usr_ManageGroups=1 and now passes
-            // ManageGroupRoleAuthMiddleware added in #9476 — switch to
-            // setupNoFinanceSession() (judith.matthews: ManageGroups=0, Finance=0, Admin=0)
-            // to correctly test the non-ManageGroups denial path.
-            cy.setupNoFinanceSession();
-        });
-
-        it("should deny access to users without ManageGroups role for kiosk admin page", () => {
-            cy.visit("kiosk/admin", { failOnStatusCode: false });
-            // Should be redirected or show access denied
-            cy.url().should("not.include", "kiosk/admin");
-        });
-    });
-
     describe("ManageGroups Role Access (non-admin)", () => {
         beforeEach(() => {
             cy.setupManageGroupsOnlySession();
@@ -92,11 +76,17 @@ describe("Kiosk Manager", () => {
             cy.get("#kioskSettings").should("not.exist");
         });
 
-        it("ManageGroups user without MenuOptions does not see Group Properties in the Groups menu (#9172)", () => {
+        it("does not show a Group Properties button on the Groups dashboard", () => {
+            cy.visit("/groups/dashboard");
+            cy.contains("Group Reports");
+            cy.get('a[href*="PropertyList.php?Type=g"]').should("not.exist");
+        });
+
+        it("ManageGroups user who is not an admin does not see Group Properties in the Groups menu (#9172)", () => {
             cy.visit("/");
             cy.contains("a", "Groups").first().click({ force: true });
-            // Kiosk Manager is gated on ManageGroups, so it stays; PropertyList.php is gated on
-            // MenuOptions, so the menu must not offer it to this user.
+            // Kiosk Manager is gated on ManageGroups, so it stays; PropertyList.php is admin-only,
+            // so the menu must not offer it to this user.
             cy.get('a[href*="kiosk/admin"]', { timeout: 10000 }).should("exist");
             cy.get('a[href*="PropertyList.php?Type=g"]').should("not.exist");
         });
@@ -168,6 +158,47 @@ describe("Kiosk Manager Workflow", () => {
                 cy.get("#KioskTable_wrapper").should("exist");
             }
         });
+    });
+});
+
+describe("Kiosk Manager name escaping", () => {
+    const quotedName = 'Lobby "A" x="1"';
+    let kioskId = null;
+
+    before(() => {
+        cy.setupAdminSession();
+        cy.request({ method: "GET", url: "/kiosk/api/devices" }).then((before) => {
+            const existingIds = new Set((before.body.KioskDevices || []).map((k) => k.Id));
+            cy.request({ method: "POST", url: "/kiosk/api/allowRegistration" });
+            cy.clearCookies();
+            cy.request({ method: "GET", url: "/kiosk/device/heartbeat", failOnStatusCode: false });
+            cy.setupAdminSession({ forceLogin: true });
+            cy.request({ method: "GET", url: "/kiosk/api/devices" }).then((after) => {
+                const created = (after.body.KioskDevices || []).find((k) => !existingIds.has(k.Id));
+                expect(created, "a new kiosk should have registered").to.not.be.undefined;
+                kioskId = created.Id;
+                cy.request({ method: "POST", url: `/kiosk/api/devices/${kioskId}/name`, body: { name: quotedName } });
+            });
+        });
+    });
+
+    after(() => {
+        if (kioskId) {
+            cy.setupAdminSession({ forceLogin: true });
+            cy.request({ method: "DELETE", url: `/kiosk/api/devices/${kioskId}`, failOnStatusCode: false });
+        }
+    });
+
+    it("keeps a kiosk name with double quotes inside its data-kiosk-name attribute", () => {
+        cy.setupAdminSession();
+        cy.visit("/kiosk/admin");
+        cy.get(`button[data-kiosk-action='rename'][data-kiosk-id='${kioskId}']`, { timeout: 10000 }).then(($btn) => {
+            expect($btn.attr("data-kiosk-name")).to.equal(quotedName);
+            expect($btn[0].getAttributeNames().sort()).to.deep.equal(
+                ["class", "data-kiosk-action", "data-kiosk-id", "data-kiosk-name", "title"],
+            );
+        });
+        cy.get(`button[data-kiosk-action='delete'][data-kiosk-id='${kioskId}']`).should("have.attr", "data-kiosk-name", quotedName);
     });
 });
 

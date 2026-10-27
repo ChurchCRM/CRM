@@ -10,24 +10,31 @@ name: Build, Test and Package (Nightly)
 #
 # What this workflow covers
 # ─────────────────────────
+# Stage 0 – changes
+#   • A scheduled run asks scripts/nightly-needed.js whether anything the suite tests or ships
+#     changed since the last successful run. If not, the run ends green without the test jobs.
+#     Manual, release and release-branch runs always run.
+#
 # Stage 1 – build
-#   • Builds PHP 8.4 and 8.5 Docker images and uploads them as a shared
-#     workflow artifact.
+#   • Builds the PHP 8.4 and 8.5 images. The app suite below uses 8.5.
+#     The pull-request workflow tests the app on 8.4. Nightly uses 8.4
+#     only for the upgrade jobs.
 #
 # Stage 2a – PHP 8.5 full test suite (all jobs run in parallel)
-#   • test-root:             api, admin-ui, ui (3 shards) — root install path
-#   • test-subdir:           api, admin-ui, ui (3 shards) — subdirectory path
+#   • test-root:             api (2 shards), admin-ui (3), ui (4) — root install path
+#   • test-subdir:           api (2 shards), admin-ui (3), ui (4) — subdirectory path
 #   • test-new-system:       setup-wizard (root path)
 #   • test-new-system-subdir setup-wizard (subdir path)
 #   • test-locale-root:      full locale sweep (root)
 #   • test-locale-subdir:    full locale sweep (subdir)
 #
-# Stage 2b – Upgrade tests (PHP 8.4 × PHP 8.5, 4 DB groups — parallel with 2a)
-#   • test-upgrade:  churchcrm-mysql | churchcrm-mariadb | v6-mysql | v6-mariadb
-#                    × PHP 8.4 and 8.5
+# Stage 2b – Upgrade tests, one job per database engine
+#   • upgrade-mysql:    MySQL 8.4 LTS (the supported floor) × PHP 8.4 and 8.5 × ChurchInfo 1.3.1 and ChurchCRM 6.0.0,
+#                       plus mysql:lts (newest LTS) and mysql:latest (early warning, may fail) on PHP 8.4 × ChurchInfo 1.3.1
+#   • upgrade-mariadb:  MariaDB 10.11 LTS (the supported floor) × PHP 8.4 and 8.5 × ChurchInfo 1.3.1 and ChurchCRM 6.0.0
 #
 # Stage 3 – Summary
-#   • nightly-summary: always() — reports pass/fail counts to the step summary
+#   • nightly-summary: always() — job results plus Cypress artifact names
 #
 # Concurrency: a new run cancels any in-progress nightly run (safe for
 # scheduled/dispatch/release-publish triggers — you always want the latest
@@ -46,7 +53,8 @@ permissions:
 
 on:
   schedule:
-    - cron: '0 3 * * *'  # offset from build-test-package.yml (0 2) to avoid runner contention
+    # Three slots a day. A slot with no testable change since the last green run costs one short job.
+    - cron: '17 3,11,19 * * *'
   workflow_dispatch:
   release:
     types: [published]
@@ -61,10 +69,41 @@ on:
 
 jobs:
   # ═══════════════════════════════════════════════════════════════════════════
+  # STAGE 0 — Changes
+  # A scheduled run skips the suite when nothing it tests changed since the last green run.
+  # ═══════════════════════════════════════════════════════════════════════════
+  changes:
+    name: Changes since the last green run
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      actions: read
+    runs-on: ubuntu-24.04
+    outputs:
+      run: ${{ steps.decide.outputs.run }}
+      reason: ${{ steps.decide.outputs.reason }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+    - name: Decide
+      id: decide
+      env:
+        GH_TOKEN: ${{ github.token }}
+        EVENT: ${{ github.event_name }}
+        SHA: ${{ github.sha }}
+        BRANCH: ${{ github.ref_name }}
+        REPO: ${{ github.repository }}
+      run: node scripts/nightly-needed.js
+
+  # ═══════════════════════════════════════════════════════════════════════════
   # STAGE 1 — Build
-  # Build the app + PHP 8.4 and 8.5 Docker images; upload as a shared artifact.
+  # Build the app and the PHP 8.4 and 8.5 images; upload them as one artifact.
   # ═══════════════════════════════════════════════════════════════════════════
   build:
+    name: PHP 8.4 and 8.5 images
+    needs: changes
+    if: needs.changes.outputs.run == 'true'
     timeout-minutes: 40
     permissions:
       contents: read
@@ -109,8 +148,9 @@ jobs:
   # STAGE 2a — PHP 8.5 full test suite
   # ═══════════════════════════════════════════════════════════════════════════
 
-  # ── Root-path tests: api, admin-ui, and ui (3 shards) ───────────────────
+  # ── Root-path tests: api (2), admin-ui (3) and ui (4 shards) ──────────────────
   test-root:
+    name: PHP 8.5 / root / ${{ matrix.test-type.name }}
     needs: build
     timeout-minutes: 40
     permissions:
@@ -121,25 +161,38 @@ jobs:
       fail-fast: false
       matrix:
         test-type:
-          - name: api
+          - name: api-shard-0
             spec: "cypress/e2e/api/**/*.spec.js"
-            config: "cypress/configs/docker.config.ts"
-          - name: admin-ui
-            spec: "cypress/e2e/ui-admin/**/*.spec.js"
-            config: "cypress/configs/docker-admin.config.ts"
-            shard-total: 1
+            config: "cypress/configs/docker-api.config.ts"
+            split-index: "0"
+            shard-total: 2
         include:
-          # ui specs sharded 3× — cypress-split balances by spec file
+          # api, admin-ui and ui specs sharded by recorded duration (cypress/split-timings.json)
           # split-index values are strings to avoid JS falsy coercion of 0
-          - test-type: { name: ui-shard-0, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+          - test-type: { name: api-shard-1, config: "cypress/configs/docker-api.config.ts", spec: "cypress/e2e/api/**/*.spec.js" }
+            split-index: "1"
+            shard-total: 2
+          - test-type: { name: admin-ui-shard-0, config: "cypress/configs/docker-admin.config.ts", spec: "cypress/e2e/ui-admin/**/*.spec.js" }
             split-index: "0"
             shard-total: 3
-          - test-type: { name: ui-shard-1, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+          - test-type: { name: admin-ui-shard-1, config: "cypress/configs/docker-admin.config.ts", spec: "cypress/e2e/ui-admin/**/*.spec.js" }
             split-index: "1"
             shard-total: 3
-          - test-type: { name: ui-shard-2, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+          - test-type: { name: admin-ui-shard-2, config: "cypress/configs/docker-admin.config.ts", spec: "cypress/e2e/ui-admin/**/*.spec.js" }
             split-index: "2"
             shard-total: 3
+          - test-type: { name: ui-shard-0, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+            split-index: "0"
+            shard-total: 4
+          - test-type: { name: ui-shard-1, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+            split-index: "1"
+            shard-total: 4
+          - test-type: { name: ui-shard-2, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+            split-index: "2"
+            shard-total: 4
+          - test-type: { name: ui-shard-3, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+            split-index: "3"
+            shard-total: 4
     steps:
     - name: Checkout
       uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -182,49 +235,27 @@ jobs:
         echo "Server ready."
 
     - name: Run Cypress ${{ matrix.test-type.name }} tests (root, PHP 8.5)
-      run: npx cypress run --config-file "${{ matrix.test-type.config }}" --spec "${{ matrix.test-type.spec }}" --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php8.5-root-${{ matrix.test-type.name }}-[suiteName]-[hash].xml
-      env:
-        # Test-database drift guard (#9769): the ci-root database is published on
-        # 3306 (docker-compose.parallel.yaml). Required, so a guard that cannot
-        # reach the database fails the job instead of silently switching off.
-        ROW_GUARD_DB_PORT: "3306"
-        ROW_GUARD_REQUIRED: "1"
-        SPLIT: ${{ matrix.test-type.shard-total || matrix.shard-total || '' }}
-        SPLIT_INDEX: ${{ matrix.split-index }}
-
-    - name: Collect Docker logs on failure
-      if: failure()
-      run: |
-        mkdir -p cypress/logs/docker cypress/logs/php
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root logs > cypress/logs/docker/docker-compose-php8.5-root-${{ matrix.test-type.name }}.log 2>&1 || true
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root ps -a >> cypress/logs/docker/docker-compose-php8.5-root-${{ matrix.test-type.name }}.log 2>&1 || true
-        [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
-
-    - name: Upload debug artifacts
-      if: failure()
-      uses: ./.github/actions/upload-artifact
+      uses: ./.github/actions/run-cypress-tests
       with:
-        name: cypress-artifacts-php8.5-root-${{ matrix.test-type.name }}-${{ github.run_id }}
-        path: |
-          cypress/logs
-          cypress/screenshots
-          cypress/videos
-        retention-days: 15
-        if-no-files-found: ignore
-
-    - name: Test Report
-      uses: ./.github/actions/test-reporter
-      if: always()
-      with:
-        name: 'PHP 8.5: Root (${{ matrix.test-type.name }})'
-        path: cypress/reports/junit-php8.5-root-${{ matrix.test-type.name }}-*.xml
+        config-file: ${{ matrix.test-type.config }}
+        spec: ${{ matrix.test-type.spec }}
+        test-name: ${{ matrix.test-type.name }}
+        php-version: '8.5'
+        deployment: root
+        shard-total: ${{ matrix.test-type.shard-total || matrix.shard-total || '' }}
+        shard-index: ${{ matrix.test-type.split-index || matrix.split-index || '0' }}
+        docker-compose-profile: ci-root
+        extra-env: |
+          ROW_GUARD_DB_PORT=3306
+          ROW_GUARD_REQUIRED=1
 
     - name: Stop Docker
       if: always()
       run: npm run docker:ci:root:down
 
-  # ── Subdirectory-path tests: api, admin-ui, and ui (3 shards) ────────────
+  # ── Subdirectory-path tests: api (2), admin-ui (3) and ui (4 shards) ─────────────
   test-subdir:
+    name: PHP 8.5 / subdir / ${{ matrix.test-type.name }}
     needs: build
     timeout-minutes: 40
     permissions:
@@ -235,24 +266,38 @@ jobs:
       fail-fast: false
       matrix:
         test-type:
-          - name: api
+          - name: api-shard-0
             spec: "cypress/e2e/api/**/*.spec.js"
-            config: "cypress/configs/docker.config.ts"
-          - name: admin-ui
-            spec: "cypress/e2e/ui-admin/**/*.spec.js"
-            config: "cypress/configs/docker-admin.config.ts"
-            shard-total: 1
+            config: "cypress/configs/docker-api.config.ts"
+            split-index: "0"
+            shard-total: 2
         include:
+          # api, admin-ui and ui specs sharded by recorded duration (cypress/split-timings.json)
           # split-index values are strings to avoid JS falsy coercion of 0
-          - test-type: { name: ui-shard-0, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+          - test-type: { name: api-shard-1, config: "cypress/configs/docker-api.config.ts", spec: "cypress/e2e/api/**/*.spec.js" }
+            split-index: "1"
+            shard-total: 2
+          - test-type: { name: admin-ui-shard-0, config: "cypress/configs/docker-admin.config.ts", spec: "cypress/e2e/ui-admin/**/*.spec.js" }
             split-index: "0"
             shard-total: 3
-          - test-type: { name: ui-shard-1, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+          - test-type: { name: admin-ui-shard-1, config: "cypress/configs/docker-admin.config.ts", spec: "cypress/e2e/ui-admin/**/*.spec.js" }
             split-index: "1"
             shard-total: 3
-          - test-type: { name: ui-shard-2, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+          - test-type: { name: admin-ui-shard-2, config: "cypress/configs/docker-admin.config.ts", spec: "cypress/e2e/ui-admin/**/*.spec.js" }
             split-index: "2"
             shard-total: 3
+          - test-type: { name: ui-shard-0, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+            split-index: "0"
+            shard-total: 4
+          - test-type: { name: ui-shard-1, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+            split-index: "1"
+            shard-total: 4
+          - test-type: { name: ui-shard-2, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+            split-index: "2"
+            shard-total: 4
+          - test-type: { name: ui-shard-3, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+            split-index: "3"
+            shard-total: 4
     steps:
     - name: Checkout
       uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -295,45 +340,21 @@ jobs:
         echo "Server ready."
 
     - name: Run Cypress ${{ matrix.test-type.name }} tests (subdir, PHP 8.5)
-      run: npx cypress run --config-file "${{ matrix.test-type.config }}" --spec "${{ matrix.test-type.spec }}" --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php8.5-subdir-${{ matrix.test-type.name }}-[suiteName]-[hash].xml
-      env:
-        CYPRESS_BASE_URL: http://127.0.0.1:8080/churchcrm/
-        # The ci-subdir database is published on DATABASE_SUBDIR_PORT (3307,
-        # docker-compose.parallel.yaml); the db:query Cypress task reads this.
-        DATABASE_PORT: "3307"
-        # Test-database drift guard (#9769): the ci-subdir database is published on
-        # DATABASE_SUBDIR_PORT (3307), not the 3306 default the guard would try.
-        ROW_GUARD_DB_PORT: "3307"
-        ROW_GUARD_REQUIRED: "1"
-        SPLIT: ${{ matrix.test-type.shard-total || matrix.shard-total || '' }}
-        SPLIT_INDEX: ${{ matrix.split-index }}
-
-    - name: Collect Docker logs on failure
-      if: failure()
-      run: |
-        mkdir -p cypress/logs/docker cypress/logs/php
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir logs > cypress/logs/docker/docker-compose-php8.5-subdir-${{ matrix.test-type.name }}.log 2>&1 || true
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir ps -a >> cypress/logs/docker/docker-compose-php8.5-subdir-${{ matrix.test-type.name }}.log 2>&1 || true
-        [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
-
-    - name: Upload debug artifacts
-      if: failure()
-      uses: ./.github/actions/upload-artifact
+      uses: ./.github/actions/run-cypress-tests
       with:
-        name: cypress-artifacts-php8.5-subdir-${{ matrix.test-type.name }}-${{ github.run_id }}
-        path: |
-          cypress/logs
-          cypress/screenshots
-          cypress/videos
-        retention-days: 15
-        if-no-files-found: ignore
-
-    - name: Test Report
-      uses: ./.github/actions/test-reporter
-      if: always()
-      with:
-        name: 'PHP 8.5: Subdirectory (${{ matrix.test-type.name }})'
-        path: cypress/reports/junit-php8.5-subdir-${{ matrix.test-type.name }}-*.xml
+        config-file: ${{ matrix.test-type.config }}
+        spec: ${{ matrix.test-type.spec }}
+        test-name: ${{ matrix.test-type.name }}
+        php-version: '8.5'
+        deployment: subdir
+        shard-total: ${{ matrix.test-type.shard-total || matrix.shard-total || '' }}
+        shard-index: ${{ matrix.test-type.split-index || matrix.split-index || '0' }}
+        base-url: http://127.0.0.1:8080/churchcrm/
+        docker-compose-profile: ci-subdir
+        extra-env: |
+          DATABASE_PORT=3307
+          ROW_GUARD_DB_PORT=3307
+          ROW_GUARD_REQUIRED=1
 
     - name: Stop Docker
       if: always()
@@ -341,6 +362,7 @@ jobs:
 
   # ── New system setup wizard — root path (PHP 8.5) ────────────────────────
   test-new-system:
+    name: PHP 8.5 / setup / root
     needs: build
     timeout-minutes: 40
     permissions:
@@ -391,36 +413,16 @@ jobs:
         echo "Server ready."
 
     - name: Run Cypress tests (setup wizard, PHP 8.5)
-      uses: ./.github/actions/cypress
+      uses: ./.github/actions/run-cypress-tests
       with:
-        command: npx cypress run --config-file cypress/configs/new-system.config.ts --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php8.5-new-system-[suiteName]-[hash].xml
-
-    - name: Collect Docker logs on failure
-      if: failure()
-      run: |
-        mkdir -p cypress/logs/docker cypress/logs/php
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system logs > cypress/logs/docker/docker-compose-php8.5-new-system.log 2>&1 || true
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system ps -a >> cypress/logs/docker/docker-compose-php8.5-new-system.log 2>&1 || true
-        [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
-
-    - name: Upload debug artifacts
-      if: failure()
-      uses: ./.github/actions/upload-artifact
-      with:
-        name: cypress-artifacts-php8.5-new-system-${{ github.run_id }}
-        path: |
-          cypress/logs
-          cypress/screenshots
-          cypress/videos
-        retention-days: 15
-        if-no-files-found: ignore
-
-    - name: Test Report
-      uses: ./.github/actions/test-reporter
-      if: always()
-      with:
-        name: 'PHP 8.5: New System Setup (Root)'
-        path: cypress/reports/junit-php8.5-new-system-*.xml
+        config-file: cypress/configs/new-system.config.ts
+        spec: cypress/e2e/new-system/**/*.spec.js
+        test-name: setup
+        php-version: '8.5'
+        deployment: new-system
+        shard-total: '1'
+        shard-index: '0'
+        docker-compose-profile: ci-new-system
 
     - name: Stop Docker
       if: always()
@@ -428,6 +430,7 @@ jobs:
 
   # ── New system setup wizard — subdirectory path (PHP 8.5) ────────────────
   test-new-system-subdir:
+    name: PHP 8.5 / setup / subdir
     needs: build
     timeout-minutes: 40
     permissions:
@@ -478,38 +481,18 @@ jobs:
         echo "Server ready."
 
     - name: Run Cypress tests (setup wizard subdir, PHP 8.5)
-      uses: ./.github/actions/cypress
+      uses: ./.github/actions/run-cypress-tests
       with:
-        command: npx cypress run --config-file cypress/configs/new-system.config.ts --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php8.5-new-system-subdir-[suiteName]-[hash].xml
-      env:
-        CYPRESS_BASE_URL: http://127.0.0.1:8081/churchcrm/
-
-    - name: Collect Docker logs on failure
-      if: failure()
-      run: |
-        mkdir -p cypress/logs/docker cypress/logs/php
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.subdir.yaml --profile ci-new-system logs > cypress/logs/docker/docker-compose-php8.5-new-system-subdir.log 2>&1 || true
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.subdir.yaml --profile ci-new-system ps -a >> cypress/logs/docker/docker-compose-php8.5-new-system-subdir.log 2>&1 || true
-        [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
-
-    - name: Upload debug artifacts
-      if: failure()
-      uses: ./.github/actions/upload-artifact
-      with:
-        name: cypress-artifacts-php8.5-new-system-subdir-${{ github.run_id }}
-        path: |
-          cypress/logs
-          cypress/screenshots
-          cypress/videos
-        retention-days: 15
-        if-no-files-found: ignore
-
-    - name: Test Report
-      uses: ./.github/actions/test-reporter
-      if: always()
-      with:
-        name: 'PHP 8.5: New System Setup (Subdirectory)'
-        path: cypress/reports/junit-php8.5-new-system-subdir-*.xml
+        config-file: cypress/configs/new-system.config.ts
+        spec: cypress/e2e/new-system/**/*.spec.js
+        test-name: setup
+        php-version: '8.5'
+        deployment: new-system-subdir
+        shard-total: '1'
+        shard-index: '0'
+        base-url: http://127.0.0.1:8081/churchcrm/
+        docker-compose-profile: ci-new-system
+        docker-compose-files: 'docker/docker-compose.yaml,docker/docker-compose.parallel.yaml,docker/docker-compose.subdir.yaml'
 
     - name: Stop Docker
       if: always()
@@ -517,6 +500,7 @@ jobs:
 
   # ── Full locale sweep — root path (PHP 8.5) ─────────────────────────────
   test-locale-root:
+    name: PHP 8.5 / locale / root
     needs: build
     timeout-minutes: 120
     permissions:
@@ -577,34 +561,15 @@ jobs:
         echo "Server ready."
 
     - name: Run full locale sweep (root, PHP 8.5)
-      run: npx cypress run --config-file cypress/configs/locale.config.ts --headless --browser electron --env LOCALE_TIER=full --reporter junit --reporter-options mochaFile=cypress/reports/junit-php8.5-root-locale-[hash].xml
-
-    - name: Collect Docker logs on failure
-      if: failure()
-      run: |
-        mkdir -p cypress/logs/docker cypress/logs/php
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root logs > cypress/logs/docker/docker-compose-php8.5-root-locale.log 2>&1 || true
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root ps -a >> cypress/logs/docker/docker-compose-php8.5-root-locale.log 2>&1 || true
-        [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
-
-    - name: Upload debug artifacts
-      if: failure()
-      uses: ./.github/actions/upload-artifact
+      uses: ./.github/actions/run-cypress-tests
       with:
-        name: cypress-artifacts-php8.5-root-locale-${{ github.run_id }}
-        path: |
-          cypress/logs
-          cypress/screenshots
-          cypress/videos
-        retention-days: 15
-        if-no-files-found: ignore
-
-    - name: Test Report
-      uses: ./.github/actions/test-reporter
-      if: always()
-      with:
-        name: 'PHP 8.5: Root (locale)'
-        path: cypress/reports/junit-php8.5-root-locale-*.xml
+        config-file: cypress/configs/locale.config.ts
+        spec: cypress/e2e/locale/**/*.spec.ts
+        test-name: locale
+        php-version: '8.5'
+        deployment: root
+        cypress-env: LOCALE_TIER=full
+        docker-compose-profile: ci-root
 
     - name: Stop Docker
       if: always()
@@ -612,6 +577,7 @@ jobs:
 
   # ── Full locale sweep — subdirectory path (PHP 8.5) ─────────────────────
   test-locale-subdir:
+    name: PHP 8.5 / locale / subdir
     needs: build
     timeout-minutes: 120
     permissions:
@@ -672,36 +638,16 @@ jobs:
         echo "Server ready."
 
     - name: Run full locale sweep (subdir, PHP 8.5)
-      run: npx cypress run --config-file cypress/configs/locale.config.ts --headless --browser electron --env LOCALE_TIER=full --reporter junit --reporter-options mochaFile=cypress/reports/junit-php8.5-subdir-locale-[hash].xml
-      env:
-        CYPRESS_BASE_URL: http://127.0.0.1:8080/churchcrm/
-
-    - name: Collect Docker logs on failure
-      if: failure()
-      run: |
-        mkdir -p cypress/logs/docker cypress/logs/php
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir logs > cypress/logs/docker/docker-compose-php8.5-subdir-locale.log 2>&1 || true
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir ps -a >> cypress/logs/docker/docker-compose-php8.5-subdir-locale.log 2>&1 || true
-        [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
-
-    - name: Upload debug artifacts
-      if: failure()
-      uses: ./.github/actions/upload-artifact
+      uses: ./.github/actions/run-cypress-tests
       with:
-        name: cypress-artifacts-php8.5-subdir-locale-${{ github.run_id }}
-        path: |
-          cypress/logs
-          cypress/screenshots
-          cypress/videos
-        retention-days: 15
-        if-no-files-found: ignore
-
-    - name: Test Report
-      uses: ./.github/actions/test-reporter
-      if: always()
-      with:
-        name: 'PHP 8.5: Subdirectory (locale)'
-        path: cypress/reports/junit-php8.5-subdir-locale-*.xml
+        config-file: cypress/configs/locale.config.ts
+        spec: cypress/e2e/locale/**/*.spec.ts
+        test-name: locale
+        php-version: '8.5'
+        deployment: subdir
+        base-url: http://127.0.0.1:8080/churchcrm/
+        cypress-env: LOCALE_TIER=full
+        docker-compose-profile: ci-subdir
 
     - name: Stop Docker
       if: always()
@@ -709,52 +655,60 @@ jobs:
 
   # ═══════════════════════════════════════════════════════════════════════════
   # STAGE 2b — Upgrade tests
-  # Mirrors upgrade-tests.yml faithfully; runs PHP 8.4 AND 8.5 × 4 DB groups.
-  # Runs in parallel with Stage 2a — both stages fan out from the same build.
+  # Engine is the job. PHP version and starting schema are the matrix.
+  # The app suite above stays on PHP 8.5.
   # ═══════════════════════════════════════════════════════════════════════════
-  test-upgrade:
+  upgrade-mysql:
     needs: build
-    name: ${{ matrix.group.name }} / PHP ${{ matrix.php-version }}
+    name: MySQL upgrade / ${{ matrix.db_image }} / PHP ${{ matrix.php }} / ${{ matrix.schema.label }}
     timeout-minutes: 40
     permissions:
       contents: read
       checks: write
     runs-on: ubuntu-24.04
+    continue-on-error: ${{ matrix.experimental == true }}
     env:
-      COMPOSE_MYSQL: ${{ matrix.group.database == 'mysql' && '-f docker/docker-compose.mysql.yaml' || '' }}
+      MYSQL_IMAGE: ${{ matrix.db_image }}
     strategy:
       fail-fast: false
       matrix:
-        php-version: ["8.4", "8.5"]
-        group:
-          - name: churchcrm-mysql
-            database: mysql
+        php: ["8.4", "8.5"]
+        db_image: ["mysql:8.4"]
+        schema:
+          - label: ChurchInfo 1.3.1
+            slug: churchinfo-1.3.1
             sql_file: cypress/fixtures/upgrade/churchinfo-1.3.1.sql
             admin_user: Admin
             admin_pass: churchinfoadmin
             force_password_change: 'true'
-            label: 'ChurchInfo 1.3.1'
-          - name: churchcrm-mariadb
-            database: mariadb
-            sql_file: cypress/fixtures/upgrade/churchinfo-1.3.1.sql
-            admin_user: Admin
-            admin_pass: churchinfoadmin
-            force_password_change: 'true'
-            label: 'ChurchInfo 1.3.1'
-          - name: v6-mysql
-            database: mysql
+          - label: ChurchCRM 6.0.0
+            slug: churchcrm-6.0.0
             sql_file: cypress/fixtures/upgrade/churchcrm-6.0.0.sql
             admin_user: Admin
             admin_pass: changeme
             force_password_change: ''
-            label: '6.0.0'
-          - name: v6-mariadb
-            database: mariadb
-            sql_file: cypress/fixtures/upgrade/churchcrm-6.0.0.sql
-            admin_user: Admin
-            admin_pass: changeme
-            force_password_change: ''
-            label: '6.0.0'
+        include:
+          # Newest LTS (floats to the next one), on the oldest schema, to catch breakage before hosts move to it.
+          - php: "8.4"
+            db_image: mysql:lts
+            schema:
+              label: ChurchInfo 1.3.1
+              slug: churchinfo-1.3.1
+              sql_file: cypress/fixtures/upgrade/churchinfo-1.3.1.sql
+              admin_user: Admin
+              admin_pass: churchinfoadmin
+              force_password_change: 'true'
+          # Newest release, any track. Early warning only: a failure here does not fail the nightly.
+          - php: "8.4"
+            db_image: mysql:latest
+            experimental: true
+            schema:
+              label: ChurchInfo 1.3.1
+              slug: churchinfo-1.3.1
+              sql_file: cypress/fixtures/upgrade/churchinfo-1.3.1.sql
+              admin_user: Admin
+              admin_pass: churchinfoadmin
+              force_password_change: 'true'
     steps:
     - name: Checkout
       uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -776,8 +730,8 @@ jobs:
 
     - name: Load Docker image
       run: |
-        docker load < temp/docker-image-${{ matrix.php-version }}.tar.gz
-        docker tag churchcrm/crm:php${{ matrix.php-version }}-test churchcrm/crm:php8-debian
+        docker load < temp/docker-image-${{ matrix.php }}.tar.gz
+        docker tag churchcrm/crm:php${{ matrix.php }}-test churchcrm/crm:php8-debian
 
     - name: Generate file signatures
       run: node scripts/generate-signatures-node.js
@@ -785,8 +739,8 @@ jobs:
     - name: Remove Config.php for fresh install
       run: rm -f src/Include/Config.php
 
-    - name: Start Docker (${{ matrix.group.name }})
-      run: docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml $COMPOSE_MYSQL --profile ci-new-system up -d
+    - name: Start Docker (MySQL)
+      run: docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.mysql.yaml --profile ci-new-system up -d
 
     - name: Wait for server
       run: |
@@ -795,8 +749,8 @@ jobs:
         until curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8081/ | grep -q "302\|200"; do
           if [ $attempt -eq $max_attempts ]; then
             echo "Server failed to respond after $max_attempts attempts"
-            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml $COMPOSE_MYSQL --profile ci-new-system ps -a
-            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml $COMPOSE_MYSQL --profile ci-new-system logs
+            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.mysql.yaml --profile ci-new-system ps -a
+            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.mysql.yaml --profile ci-new-system logs
             exit 1
           fi
           echo "Attempt $attempt/$max_attempts — retrying in 5s..."
@@ -805,42 +759,115 @@ jobs:
         done
         echo "Server ready."
 
-    - name: Run Cypress upgrade test (${{ matrix.group.name }}, PHP ${{ matrix.php-version }})
-      uses: ./.github/actions/cypress
+    - name: Run Cypress upgrade test (MySQL, ${{ matrix.schema.label }})
+      uses: ./.github/actions/run-cypress-tests
       with:
-        command: npx cypress run --config-file cypress/configs/upgrade.config.ts --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php${{ matrix.php-version }}-${{ matrix.group.name }}-[hash].xml
-      env:
-        CYPRESS_UPGRADE_SQL_FILE: ${{ matrix.group.sql_file }}
-        CYPRESS_UPGRADE_ADMIN_USER: ${{ matrix.group.admin_user }}
-        CYPRESS_UPGRADE_ADMIN_PASS: ${{ matrix.group.admin_pass }}
-        CYPRESS_UPGRADE_FORCE_PASSWORD_CHANGE: ${{ matrix.group.force_password_change }}
+        config-file: cypress/configs/upgrade.config.ts
+        spec: cypress/e2e/upgrade/**/*.spec.js
+        test-name: ${{ matrix.schema.slug }}
+        php-version: ${{ matrix.php }}
+        deployment: mysql
+        docker-compose-profile: ci-new-system
+        docker-compose-files: 'docker/docker-compose.yaml,docker/docker-compose.parallel.yaml,docker/docker-compose.mysql.yaml'
+        extra-env: |
+          CYPRESS_UPGRADE_SQL_FILE=${{ matrix.schema.sql_file }}
+          CYPRESS_UPGRADE_ADMIN_USER=${{ matrix.schema.admin_user }}
+          CYPRESS_UPGRADE_ADMIN_PASS=${{ matrix.schema.admin_pass }}
+          CYPRESS_UPGRADE_FORCE_PASSWORD_CHANGE=${{ matrix.schema.force_password_change }}
 
-    - name: Collect Docker logs on failure
-      if: failure()
-      run: |
-        mkdir -p cypress/logs/docker cypress/logs/php
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml $COMPOSE_MYSQL --profile ci-new-system logs > cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-${{ matrix.group.name }}.log 2>&1 || true
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml $COMPOSE_MYSQL --profile ci-new-system ps -a >> cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-${{ matrix.group.name }}.log 2>&1 || true
-        [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
-
-    - name: Upload debug artifacts
-      if: failure()
-      uses: ./.github/actions/upload-artifact
-      with:
-        name: cypress-artifacts-php${{ matrix.php-version }}-${{ matrix.group.name }}-${{ github.run_id }}
-        path: |
-          cypress/logs
-          cypress/screenshots
-          cypress/videos
-        retention-days: 15
-        if-no-files-found: ignore
-
-    - name: Test Report
-      uses: ./.github/actions/test-reporter
+    - name: Stop Docker
       if: always()
+      run: npm run docker:ci:new-system:down
+
+  upgrade-mariadb:
+    needs: build
+    name: MariaDB upgrade / PHP ${{ matrix.php }} / ${{ matrix.schema.label }}
+    timeout-minutes: 40
+    permissions:
+      contents: read
+      checks: write
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ["8.4", "8.5"]
+        schema:
+          - label: ChurchInfo 1.3.1
+            slug: churchinfo-1.3.1
+            sql_file: cypress/fixtures/upgrade/churchinfo-1.3.1.sql
+            admin_user: Admin
+            admin_pass: churchinfoadmin
+            force_password_change: 'true'
+          - label: ChurchCRM 6.0.0
+            slug: churchcrm-6.0.0
+            sql_file: cypress/fixtures/upgrade/churchcrm-6.0.0.sql
+            admin_user: Admin
+            admin_pass: changeme
+            force_password_change: ''
+    steps:
+    - name: Checkout
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+    - name: Set up Node.js
+      uses: ./.github/actions/setup-node
       with:
-        name: 'PHP ${{ matrix.php-version }} / ${{ matrix.group.name }}: Upgrade from ${{ matrix.group.label }}'
-        path: cypress/reports/junit-php${{ matrix.php-version }}-${{ matrix.group.name }}-*.xml
+        node-version-file: '.nvmrc'
+        cache: 'npm'
+
+    - name: Install npm dependencies
+      run: npm ci
+
+    - name: Download build artifact
+      uses: ./.github/actions/download-artifact
+      with:
+        name: nightly-build-${{ github.run_id }}
+        path: .
+
+    - name: Load Docker image
+      run: |
+        docker load < temp/docker-image-${{ matrix.php }}.tar.gz
+        docker tag churchcrm/crm:php${{ matrix.php }}-test churchcrm/crm:php8-debian
+
+    - name: Generate file signatures
+      run: node scripts/generate-signatures-node.js
+
+    - name: Remove Config.php for fresh install
+      run: rm -f src/Include/Config.php
+
+    - name: Start Docker (MariaDB)
+      run: docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system up -d
+
+    - name: Wait for server
+      run: |
+        max_attempts=12
+        attempt=1
+        until curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8081/ | grep -q "302\|200"; do
+          if [ $attempt -eq $max_attempts ]; then
+            echo "Server failed to respond after $max_attempts attempts"
+            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system ps -a
+            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system logs
+            exit 1
+          fi
+          echo "Attempt $attempt/$max_attempts — retrying in 5s..."
+          sleep 5
+          attempt=$((attempt + 1))
+        done
+        echo "Server ready."
+
+    - name: Run Cypress upgrade test (MariaDB, ${{ matrix.schema.label }})
+      uses: ./.github/actions/run-cypress-tests
+      with:
+        config-file: cypress/configs/upgrade.config.ts
+        spec: cypress/e2e/upgrade/**/*.spec.js
+        test-name: ${{ matrix.schema.slug }}
+        php-version: ${{ matrix.php }}
+        deployment: mariadb
+        docker-compose-profile: ci-new-system
+        extra-env: |
+          CYPRESS_UPGRADE_SQL_FILE=${{ matrix.schema.sql_file }}
+          CYPRESS_UPGRADE_ADMIN_USER=${{ matrix.schema.admin_user }}
+          CYPRESS_UPGRADE_ADMIN_PASS=${{ matrix.schema.admin_pass }}
+          CYPRESS_UPGRADE_FORCE_PASSWORD_CHANGE=${{ matrix.schema.force_password_change }}
 
     - name: Stop Docker
       if: always()
@@ -848,11 +875,11 @@ jobs:
 
   # ═══════════════════════════════════════════════════════════════════════════
   # STAGE 3 — Nightly summary
-  # Runs after all test jobs (always) and writes a pass/fail table to the
-  # workflow step summary.
+  # Runs after all test jobs (always) and writes the job and artifact overview.
   # ═══════════════════════════════════════════════════════════════════════════
   nightly-summary:
     needs:
+      - changes
       - build
       - test-root
       - test-subdir
@@ -860,27 +887,27 @@ jobs:
       - test-new-system-subdir
       - test-locale-root
       - test-locale-subdir
-      - test-upgrade
+      - upgrade-mysql
+      - upgrade-mariadb
     if: always()
     runs-on: ubuntu-24.04
     steps:
-    - name: Write summary
+    - name: Checkout
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+    - name: Test overview
+      uses: ./.github/actions/test-run-summary
+
+    - name: Fail the run when a group did not pass
+      env:
+        CHANGES_REASON: ${{ needs.changes.outputs.reason }}
       run: |
-        echo "## Nightly Test Results" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "| Job group | Result |" >> $GITHUB_STEP_SUMMARY
-        echo "|-----------|--------|" >> $GITHUB_STEP_SUMMARY
-        echo "| Build (PHP 8.4 + 8.5 images) | ${{ needs.build.result }} |" >> $GITHUB_STEP_SUMMARY
-        echo "| PHP 8.5 root (api / admin-ui / ui ×3) | ${{ needs.test-root.result }} |" >> $GITHUB_STEP_SUMMARY
-        echo "| PHP 8.5 subdir (api / admin-ui / ui ×3) | ${{ needs.test-subdir.result }} |" >> $GITHUB_STEP_SUMMARY
-        echo "| PHP 8.5 new-system setup (root) | ${{ needs.test-new-system.result }} |" >> $GITHUB_STEP_SUMMARY
-        echo "| PHP 8.5 new-system setup (subdir) | ${{ needs.test-new-system-subdir.result }} |" >> $GITHUB_STEP_SUMMARY
-        echo "| PHP 8.5 full locale sweep (root) | ${{ needs.test-locale-root.result }} |" >> $GITHUB_STEP_SUMMARY
-        echo "| PHP 8.5 full locale sweep (subdir) | ${{ needs.test-locale-subdir.result }} |" >> $GITHUB_STEP_SUMMARY
-        echo "| Upgrade tests (8.4+8.5 × 4 groups) | ${{ needs.test-upgrade.result }} |" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        # Determine overall status — check for non-success so skipped/cancelled
-        # jobs (e.g. when build fails) are also reported as failures.
+        if [[ "${{ needs.changes.outputs.run }}" == "false" ]]; then
+          echo "**Overall: ✅ NOTHING TO TEST**" >> $GITHUB_STEP_SUMMARY
+          echo "${CHANGES_REASON}. The last green run still covers this commit." >> $GITHUB_STEP_SUMMARY
+          exit 0
+        fi
+        # Non-success includes skipped and cancelled, such as when build fails.
         if [[ "${{ needs.build.result }}" != "success" || \
               "${{ needs.test-root.result }}" != "success" || \
               "${{ needs.test-subdir.result }}" != "success" || \
@@ -888,7 +915,8 @@ jobs:
               "${{ needs.test-new-system-subdir.result }}" != "success" || \
               "${{ needs.test-locale-root.result }}" != "success" || \
               "${{ needs.test-locale-subdir.result }}" != "success" || \
-              "${{ needs.test-upgrade.result }}" != "success" ]]; then
+              "${{ needs.upgrade-mysql.result }}" != "success" || \
+              "${{ needs.upgrade-mariadb.result }}" != "success" ]]; then
           echo "**Overall: ❌ FAILED**" >> $GITHUB_STEP_SUMMARY
           echo "One or more test groups failed, were skipped, or were cancelled — check individual job logs above." >> $GITHUB_STEP_SUMMARY
           exit 1

@@ -16,7 +16,8 @@ services:
       - MYSQL_USER=${MYSQL_USER:-churchcrm}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD:-changeme}
     volumes:
-      - ../cypress/data:/docker-entrypoint-initdb.d:ro
+      - ../src/mysql/install/Install.sql:/docker-entrypoint-initdb.d/00-install.sql:ro
+      - ../cypress/data/seed.sql:/docker-entrypoint-initdb.d/10-seed.sql:ro
     hostname: crm-database-root
     healthcheck:
       test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
@@ -35,7 +36,8 @@ services:
       - MYSQL_USER=${MYSQL_USER:-churchcrm}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD:-changeme}
     volumes:
-      - ../cypress/data:/docker-entrypoint-initdb.d:ro
+      - ../src/mysql/install/Install.sql:/docker-entrypoint-initdb.d/00-install.sql:ro
+      - ../cypress/data/seed.sql:/docker-entrypoint-initdb.d/10-seed.sql:ro
     hostname: crm-database-subdir
     healthcheck:
       test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
@@ -60,6 +62,8 @@ services:
     hostname: crm-webserver-root
     env_file:
       - .env
+    environment:
+      - CHURCHCRM_PLUGIN_FIXTURES=/home/ChurchCRM/cypress/fixtures/plugin-registry
     depends_on:
       database-root:
         condition: service_healthy
@@ -93,6 +97,7 @@ services:
     env_file:
       - .env
     environment:
+      - CHURCHCRM_PLUGIN_FIXTURES=/home/ChurchCRM/cypress/fixtures/plugin-registry
       - CHURCHCRM_SUBDIR=churchcrm
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-changeme}
       - MYSQL_DATABASE=${MYSQL_DATABASE:-churchcrm}

@@ -1,9 +1,8 @@
 <?php
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\PeopleReportService;
-use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Auth\StaffRoleAuthMiddleware;
 use ChurchCRM\Utils\CsvExporter;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -13,36 +12,32 @@ use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
 // Reports -> People Reports: the people queries of the frozen Query View
-// (issue #9995) rebuilt as an MVC page on Propel. Admin only, like QueryList.php.
+// (issue #9995) rebuilt as an MVC page on Propel. Open to every staff user, who can
+// already read and export the person list (#9003).
 $app->group('/reports', function (RouteCollectorProxy $group): void {
     $group->get('', 'getPeopleReportsIndex');
     $group->get('/', 'getPeopleReportsIndex');
     $group->get('/{slug:[a-z-]+}', 'getPeopleReport');
     $group->get('/{slug:[a-z-]+}/csv', 'getPeopleReportCsv');
-})->add(AdminRoleAuthMiddleware::class);
+})->add(StaffRoleAuthMiddleware::class);
 
 /**
  * @return array<int, array{href: string, title: string, description: string}>
  */
 function peopleReportLinks(): array
 {
-    $user = AuthenticationManager::getCurrentUser();
-    $links = [
+    return [
         [
             'href' => '/DirectoryReports.php',
             'title' => gettext('People Directory'),
             'description' => gettext('Printable directory of all people, grouped by family'),
         ],
-    ];
-    if ($user->isMenuOptionsEnabled()) {
-        $links[] = [
+        [
             'href' => '/LettersAndLabels.php',
             'title' => gettext('Letters & Mailing Labels'),
             'description' => gettext('Generate letters and mailing labels'),
-        ];
-    }
-
-    return $links;
+        ],
+    ];
 }
 
 function getPeopleReportsIndex(Request $request, Response $response, array $args): Response
@@ -103,6 +98,7 @@ function getPeopleReport(Request $request, Response $response, array $args): Res
         'report' => $report,
         'values' => $values,
         'missing' => $missing,
+        'submitted' => $request->getQueryParams() !== [],
         'options' => $options,
         'rows' => $rows,
         'reportParams' => $reportParams,

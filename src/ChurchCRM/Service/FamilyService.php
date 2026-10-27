@@ -81,6 +81,8 @@ class FamilyService
      *                          all absent; Nominatim cannot resolve a street alone
      *   'no_result'          — Nominatim returned no usable coordinates (address
      *                          exists but could not be matched, or API was unreachable)
+     *   'unavailable'        — no geocoding provider could answer (timeout, rate limit,
+     *                          5xx); the family stays retryable
      *   'error'              — an unexpected exception was thrown
      *
      * @param Family $family
@@ -114,7 +116,15 @@ class FamilyService
 
             $this->logger->debug('geocodeFamilyWithReason: geocoding family ' . $family->getId());
 
-            $coords = GeoUtils::getLatLong($street, $city, $state, $zip, $country);
+            $outcome = GeoUtils::lookup($street, $city, $state, $zip, $country);
+            if ($outcome->isUnavailable()) {
+                $this->logger->warning(
+                    'geocodeFamilyWithReason: geocoding unavailable for family ' . $family->getId()
+                );
+                return ['success' => false, 'reason' => 'unavailable'];
+            }
+
+            $coords = $outcome->result?->toLatLong() ?? ['Latitude' => 0.0, 'Longitude' => 0.0];
             $lat    = (float) $coords['Latitude'];
             $lng    = (float) $coords['Longitude'];
 

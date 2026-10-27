@@ -15,7 +15,7 @@ $app->group('/background', function (RouteCollectorProxy $group): void {
  * @OA\Post(
  *     path="/background/timerjobs",
  *     summary="Trigger background timer jobs (page-load fallback scheduler)",
- *     description="Fallback trigger fired from the page footer on every authenticated page load, for installs that cannot run cron. The jobs are rate limited server-side by iTimerJobsMinIntervalMinutes, so a call inside that window returns ran=false without doing any work. The supported scheduler is the command-line runner (cli/timerjobs.php) driven by cron.",
+ *     description="Fallback trigger fired from the page footer on every authenticated page load, for installs that cannot run cron. The jobs are rate limited server-side by iTimerJobsMinIntervalMinutes, so a call inside that window returns ran=false without doing any work. The supported scheduler is the command-line runner (cli/timerjobs.php) driven by cron. Among the jobs, queued composer email is sent for up to 15 seconds per call.",
  *     tags={"System"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\RequestBody(required=false, @OA\JsonContent(@OA\Property(property="force", type="boolean", description="Administrators only: run now even inside the minimum interval, and top up the volunteer schedules even if today's top-up has run"))),

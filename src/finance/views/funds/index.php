@@ -151,7 +151,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <?php else: ?>
             <div class="card-body p-0">
                 <!-- overflow-x:clip keeps horizontal containment while letting dropdowns escape vertically -->
-                <div style="overflow-x: clip; overflow-y: visible;">
+                <div class="table-clip-x">
                     <table id="fundsTable" class="table table-hover table-vcenter card-table data-table">
                         <thead>
                             <tr>
@@ -243,7 +243,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                                 <?php if ($hasPledges): ?>
                                                     <button type="button" class="dropdown-item text-danger opacity-50"
                                                             disabled
-                                                            style="cursor: not-allowed;"
+                                                            class="cursor-not-allowed"
                                                             title="<?= InputUtils::escapeAttribute(gettext('Cannot delete: fund has associated pledges')) ?>">
                                                         <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
                                                     </button>

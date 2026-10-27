@@ -468,9 +468,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               return '<span class="badge bg-warning text-dark">' + i18next.t('Pending') + '</span>';
             }
             if (isOnline) {
-              return '<span class="badge bg-success">' + i18next.t('Online') + '</span>';
+              return '<span class="badge bg-success-lt text-success">' + i18next.t('Online') + '</span>';
             }
-            return '<span class="badge bg-secondary-lt">' + i18next.t('Offline') + '</span>';
+            return '<span class="badge bg-secondary-lt text-secondary">' + i18next.t('Offline') + '</span>';
           }
         },
         {
@@ -511,7 +511,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             // out. Use data-* attributes (HTML-attr context, safely escaped)
             // and a delegated click handler attached after the DataTable is
             // built. Also CSP-clean (no inline JS), per project rule.
-            var nameAttr = window.CRM.escapeHtml(full.Name);
+            var nameAttr = window.CRM.escapeAttribute(full.Name);
             var buttons = '<div class="btn-group btn-group-sm" role="group">';
             if (!full.Accepted) {
               buttons += '<button class="btn btn-success" data-kiosk-action="accept" data-kiosk-id="' + full.Id + '" title="' + i18next.t('Accept') + '"><i class="fa-solid fa-check me-1"></i>' + i18next.t('Accept') + '</button>';

@@ -197,6 +197,26 @@ describe("Public Calendar - Event Visibility (regression: PR #8981)", () => {
         });
     });
 
+    it("GET /ics escapes TEXT special characters in SUMMARY (RFC 5545)", () => {
+        cy.makePrivateAdminAPICall(
+            "POST",
+            "/api/events/",
+            {
+                Title: "Fish, Chips; Peas\\Beans",
+                Type: eventTypeId,
+                Desc: "",
+                Text: "",
+                Start: eventStart,
+                End: eventEnd,
+                PinnedCalendars: [calendarId],
+            },
+            200,
+        );
+        cy.request(`/api/public/calendar/${accessToken}/ics`).then((resp) => {
+            expect(resp.body).to.include("SUMMARY:Fish\\, Chips\\; Peas\\\\Beans");
+        });
+    });
+
     // -- HTML page --------------------------------------------------------
     it("GET /external/calendars/{token} loads correctly — no 404s, shows timezone option", () => {
         cy.request({

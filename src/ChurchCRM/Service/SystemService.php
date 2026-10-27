@@ -126,6 +126,10 @@ class SystemService
             BirthdayEmailService::run();
         });
 
+        self::runTimerJob('GradePromotionService', static function (): void {
+            GradePromotionService::run();
+        });
+
         // Volunteer Management v2 (#9710, design §3.6). There is no scheduler in
         // ChurchCRM, so these five ARE the scheduler for the volunteer module:
         // schedules are filled to the scheduling horizon once a day (D31),
@@ -156,6 +160,12 @@ class SystemService
                 (new VolunteerAssignmentService())->markCompleted(DateTimeUtils::getToday());
             });
         }
+
+        // Composer email queued by POST /api/email/send that the composer did not finish
+        // sending, and retries that have come due (#10356).
+        self::runTimerJob('EmailQueueService', static function (): void {
+            EmailQueueService::runTimerJob();
+        });
 
         // Fire the CRON_RUN hook so plugins can register scheduled tasks.
         // Each active plugin registers a handler on Hooks::CRON_RUN in boot().

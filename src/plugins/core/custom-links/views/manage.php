@@ -9,7 +9,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <div class="row mb-3">
     <div class="col-12">
         <nav aria-label="breadcrumb">
-            <ol class="breadcrumb mb-0 bg-light">
+            <ol class="breadcrumb mb-0">
                 <li class="breadcrumb-item">
                     <a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard">
                         <i class="fa-solid fa-home"></i>

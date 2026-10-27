@@ -9,7 +9,6 @@ require_once SystemURLs::getDocumentRoot() . '/Include/QuillEditorHelper.php';
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
-<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/repeat-event-editor.min.css') ?>">
 
 <div class="card">
     <div class="card-status-top bg-primary"></div>
@@ -26,7 +25,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <form method="POST" action="<?= $sRootPath ?>/event/repeat-editor" name="RepeatEventsForm">
             <!-- Event Template -->
             <div class="card mb-3">
-                <div class="card-header bg-light">
+                <div class="card-header bg-surface-secondary">
                     <h5 class="mb-0"><?= gettext('Event Template') ?></h5>
                 </div>
                 <div class="card-body">
@@ -90,7 +89,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                  they describe *when* each generated event occurs. The
                  recurrence pattern (what days/months to pick) is separate. -->
             <div class="card mb-3">
-                <div class="card-header bg-light">
+                <div class="card-header bg-surface-secondary">
                     <h5 class="mb-0"><?= gettext('Event Timing') ?></h5>
                 </div>
                 <div class="card-body">
@@ -132,7 +131,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
             <!-- Recurrence Pattern -->
             <div class="card mb-3">
-                <div class="card-header bg-light">
+                <div class="card-header bg-surface-secondary">
                     <h5 class="mb-0"><span class="text-danger">*</span> <?= gettext('Recurrence Pattern') ?></h5>
                 </div>
                 <div class="card-body">
@@ -142,7 +141,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <input class="form-check-input mt-0 me-2" type="radio" name="RecurType" id="recurWeekly"
                                    value="weekly" <?= ($defRecurType === 'weekly') ? 'checked' : '' ?>>
                             <label class="form-check-label me-3 mb-0" for="recurWeekly"><?= gettext('Every week on') ?></label>
-                            <select name="RecurDOW" id="RecurDOW" class="form-select form-select-sm" style="width: auto;"
+                            <select name="RecurDOW" id="RecurDOW" class="form-select form-select-sm w-auto"
                                 <?= ($defRecurType !== 'weekly') ? 'disabled' : '' ?>>
                                 <?php
                                 $days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -157,7 +156,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <input class="form-check-input mt-0 me-2" type="radio" name="RecurType" id="recurMonthly"
                                    value="monthly" <?= ($defRecurType === 'monthly') ? 'checked' : '' ?>>
                             <label class="form-check-label me-3 mb-0" for="recurMonthly"><?= gettext('Every month on the') ?></label>
-                            <select name="RecurDOM" id="RecurDOM" class="form-select form-select-sm" style="width: auto;"
+                            <select name="RecurDOM" id="RecurDOM" class="form-select form-select-sm w-auto"
                                 <?= ($defRecurType !== 'monthly') ? 'disabled' : '' ?>>
                                 <?php for ($d = 1; $d <= 31; $d++): ?>
                                     <option value="<?= $d ?>" <?= ($defRecurDOM === $d) ? 'selected' : '' ?>>
@@ -172,7 +171,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <input class="form-check-input mt-0 me-2" type="radio" name="RecurType" id="recurYearly"
                                    value="yearly" <?= ($defRecurType === 'yearly') ? 'checked' : '' ?>>
                             <label class="form-check-label me-3 mb-0" for="recurYearly"><?= gettext('Every year on') ?></label>
-                            <input type="text" name="RecurDOY" id="RecurDOY" class="form-control form-control-sm" style="width: 100px;"
+                            <input type="text" name="RecurDOY" id="RecurDOY" class="form-control form-control-sm field-w-100"
                                    placeholder="MM-DD"
                                    value="<?= InputUtils::escapeAttribute($defRecurDOY) ?>"
                                    pattern="\d{2}-\d{2}" title="<?= gettext('Format: MM-DD (e.g. 04-12 for April 12)') ?>"
@@ -185,7 +184,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
             <!-- Optional Settings -->
             <div class="card mb-3">
-                <div class="card-header bg-light">
+                <div class="card-header bg-surface-secondary">
                     <h5 class="mb-0"><?= gettext('Optional Settings') ?></h5>
                 </div>
                 <div class="card-body">

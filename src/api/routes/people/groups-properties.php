@@ -5,7 +5,6 @@ use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\model\ChurchCRM\RecordProperty;
 use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\ManageGroupRoleAuthMiddleware;
-use ChurchCRM\Slim\Middleware\Request\Auth\MenuOptionsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Api\GroupMiddleware;
 use ChurchCRM\Slim\Middleware\Api\PropertyMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
@@ -24,13 +23,11 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
     $group->post('/{groupID}/properties/{propertyId}', 'assignPropertyToGroup')
         ->add(new InputSanitizationMiddleware(['value' => 'text']))
         ->add($groupMiddleware)
-        ->add($groupPropertyMiddleware)
-        ->add(ManageGroupRoleAuthMiddleware::class);
+        ->add($groupPropertyMiddleware);
     $group->delete('/{groupID}/properties/{propertyId}', 'unassignPropertyFromGroup')
         ->add($groupMiddleware)
-        ->add($groupPropertyMiddleware)
-        ->add(ManageGroupRoleAuthMiddleware::class);
-})->add(MenuOptionsRoleAuthMiddleware::class);
+        ->add($groupPropertyMiddleware);
+})->add(ManageGroupRoleAuthMiddleware::class);
 
 /**
  * @OA\Get(
@@ -39,7 +36,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
  *     tags={"Groups", "Properties"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Response(response=200, description="Array of group property definitions"),
- *     @OA\Response(response=403, description="MenuOptions role required")
+ *     @OA\Response(response=403, description="ManageGroups role required")
  * )
  */
 function getAllGroupPropertyDefinitions(Request $request, Response $response, array $args): Response
@@ -68,7 +65,7 @@ function getAllGroupPropertyDefinitions(Request $request, Response $response, ar
  *             @OA\Property(property="allowDelete", type="boolean")
  *         ))
  *     ),
- *     @OA\Response(response=403, description="MenuOptions role required"),
+ *     @OA\Response(response=403, description="ManageGroups role required"),
  *     @OA\Response(response=404, description="Group not found")
  * )
  */
@@ -103,7 +100,7 @@ function getGroupAssignedProperties(Request $request, Response $response, array 
 /**
  * @OA\Post(
  *     path="/groups/{groupID}/properties/{propertyId}",
- *     summary="Assign or update a property on a group (ManageGroup role required)",
+ *     summary="Assign or update a property on a group (ManageGroups role required)",
  *     tags={"Groups", "Properties"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="groupID", in="path", required=true, @OA\Schema(type="integer")),
@@ -112,7 +109,7 @@ function getGroupAssignedProperties(Request $request, Response $response, array 
  *         @OA\JsonContent(@OA\Property(property="value", type="string", description="Property value (required only when the property has a prompt)"))
  *     ),
  *     @OA\Response(response=200, description="Property assigned successfully"),
- *     @OA\Response(response=403, description="ManageGroup role required"),
+ *     @OA\Response(response=403, description="ManageGroups role required"),
  *     @OA\Response(response=404, description="Group or property not found")
  * )
  */
@@ -153,14 +150,14 @@ function assignPropertyToGroup(Request $request, Response $response, array $args
 /**
  * @OA\Delete(
  *     path="/groups/{groupID}/properties/{propertyId}",
- *     summary="Remove a property from a group (ManageGroup role required)",
+ *     summary="Remove a property from a group (ManageGroups role required)",
  *     tags={"Groups", "Properties"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="groupID", in="path", required=true, @OA\Schema(type="integer")),
  *     @OA\Parameter(name="propertyId", in="path", required=true, @OA\Schema(type="integer")),
  *     @OA\Response(response=200, description="Property removed successfully"),
  *     @OA\Response(response=404, description="Assignment not found"),
- *     @OA\Response(response=403, description="ManageGroup role required")
+ *     @OA\Response(response=403, description="ManageGroups role required")
  * )
  */
 function unassignPropertyFromGroup(Request $request, Response $response, array $args): Response

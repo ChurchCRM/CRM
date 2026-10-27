@@ -204,7 +204,7 @@ foreach ($arrayToLoop as $fam_ID => $value) {
     echo '<tr>';
     echo '<td>' . $fam_Data . '&nbsp;</td>';
     if ($envelope && $duplicateEnvelopeHash && array_key_exists($envelope, $duplicateEnvelopeHash)) {
-        $tdTag = '<td class="table-danger">';
+        $tdTag = '<td class="bg-danger-lt">';
     } else {
         $duplicateEnvelopeHash[$envelope] = $fam_ID;
         $tdTag = '<td>';

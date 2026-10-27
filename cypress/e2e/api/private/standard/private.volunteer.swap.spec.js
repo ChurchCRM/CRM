@@ -3,7 +3,7 @@
 /**
  * Volunteer v2 — substitution / swap workflow (#9709, epic #9701, D13).
  *
- * Normative sections of `.agents/skills/churchcrm/volunteer-v2-design.md`:
+ * Normative sections of `docs/design/volunteer-v2.md`:
  * §2.13 (the swap row, its lifecycle, the one-transaction approval and the
  * at-most-one-proposed rule), §2.12 (the four `substitute_*` response values),
  * §2.14 / §3.6 (`swap_proposed` and `swap_resolved` outbox rows), §3.3.2 (the

@@ -1,174 +1,91 @@
 ---
 title: "Admin MVC Module Migration"
-intent: "Patterns and steps to migrate legacy pages into the Admin MVC structure"
+intent: "Target Admin/Finance MVC structure and the steps to move a pre-MVC page onto it"
 tags: ["admin","mvc","migration","slim"]
 prereqs: ["[[service-layer]]","[[php-best-practices]]"]
 complexity: "intermediate"
 ---
-- **Routes**: `src/admin/routes/[feature].php` - Define route endpoints
-- **APIs**: `src/admin/routes/api/[feature-api].php` - Admin API endpoints
-- **Services**: `src/ChurchCRM/Service/[Feature]Service.php` - Business logic (shared with APIs)
 
-## Routing Structure
+# Admin MVC Module Migration
 
-### Admin System Pages (consolidated at `/admin/system/`)
+Move a page onto MVC in the PR that touches it. Group pages follow the same steps (`groups-mvc-guidelines.md`).
 
-- **Routes**: `src/admin/routes/system.php`
-- **Views**: `src/admin/views/`
-- **Examples**: `/admin/system/debug`, `/admin/system/backup`
-- **Menu entries**: `src/ChurchCRM/Config/Menu/Menu.php`
-- **Security**: AdminRoleAuthMiddleware
+## Structure
 
-### Admin APIs (NEW - use this for admin APIs)
+- Routes: `src/admin/routes/[feature].php`
+- Admin APIs: `src/admin/routes/api/[feature-api].php`, served at `/admin/api/...`, kebab-case endpoint names, `AdminRoleAuthMiddleware` at router level
+- Views: `src/admin/views/`
+- Services: `src/ChurchCRM/Service/[Feature]Service.php` (shared by routes and APIs)
+- Admin system pages: `/admin/system/...` in `src/admin/routes/system.php`
+- Finance: Slim 4 app `src/finance/index.php`, routes in `src/finance/routes/`, views in `src/finance/views/`, `FinanceRoleAuthMiddleware` (admin or finance permission)
+- Menu entries: `src/ChurchCRM/Config/Menu/Menu.php`
 
-- **Location**: `src/admin/routes/api/` (NOT in `src/api/routes/system/`)
-- **Example**: `orphaned-files.php` contains `/admin/api/orphaned-files/delete-all` endpoint
-- **Routes prefixed**: `/admin/api/` when accessed from frontend
-- **Naming**: Use kebab-case for endpoint names (e.g., `/delete-all`)
-- **Security**: AdminRoleAuthMiddleware applied at router level
+## Migration steps
 
-### Finance Module (consolidated at `/finance/`)
+1. Extract business logic from the pre-MVC PHP file into a Service class.
+2. Add the route in `src/admin/routes/` that calls the Service and passes data to a view.
+3. Add the view in `src/admin/views/`; render initial state server-side.
+4. Add an API in `src/admin/routes/api/` when the UI needs dynamic updates.
+5. Point `Menu.php` and every caller at the new URL: `grep -rn "OldPage.php" src/`.
+6. `git rm` the old file in the same PR. Callers move to the new URL; no redirect stub stays behind.
+7. Rename URL, form and field parameters to camelCase (below).
 
-- **Entry point**: `src/finance/index.php` with Slim 4 app
-- **Routes**: `src/finance/routes/` (dashboard.php, reports.php)
-- **Views**: `src/finance/views/`
-- **Examples**: `/finance/` (dashboard), `/finance/reports`
-- **Security**: FinanceRoleAuthMiddleware (allows admin OR finance permission)
-- **Menu entry**: `src/ChurchCRM/Config/Menu/Menu.php` under "Finance"
-
-### Deprecated locations (DO NOT USE)
-
-- ❌ `src/v2/routes/admin/` - REMOVED (admin routes consolidated to `/admin/system/`)
-- ❌ `src/api/routes/system/` - Legacy admin APIs (no new files here)
-
-## Key Migration Steps
-
-1. **Extract business logic** from the legacy PHP file into a Service class
-2. **Create views** in `src/admin/views/` to render the UI with initial state server-side
-3. **Create routes** in `src/admin/routes/` that call the Service and pass data to views
-4. **Create APIs** in `src/admin/routes/api/` if UI needs dynamic updates (optional)
-5. **Update menu** entries in `src/ChurchCRM/Config/Menu/Menu.php` to point to new route
-
-## Example: User Management Module Migration
-
-### Legacy (mixed concerns)
+### Example split
 
 ```
-src/UserList.php - Mixed HTML, SQL, business logic, hardcoded settings
+src/UserList.php  →
+  src/ChurchCRM/Service/UserService.php   getUserStats(), getUserSettingsConfig()
+  src/admin/views/users.php               stats cards, user table, settings panels
+  src/admin/routes/api/user-admin.php     reset password, delete, 2FA (via UserService)
 ```
 
-### Modern (separated concerns)
-
-```
-src/ChurchCRM/Service/UserService.php
-    - getUserStats() - Statistics + settings config
-    - getUserSettingsConfig() - Dynamic settings from SystemConfig
-
-src/admin/views/users.php
-    - Dashboard with stats cards
-    - User table
-    - Settings panels from config
-
-src/admin/routes/api/user-admin.php
-    - User operations (reset password, delete, 2FA)
-    - All use UserService methods
-```
-
-## Route Example
-
-**src/admin/routes/system.php:**
+### Route
 
 ```php
-use ChurchCRM\dto\SystemURLs;
-use Psr\Http\Message\ResponseInterface as Response;
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Slim\Routing\RouteCollectorProxy;
-use Slim\Views\PhpRenderer;
-
-use ChurchCRM\view\PageHeader;
-
 // Path is relative to the /admin base path set by MvcAppFactory::create()
 $app->get('/system/users', function (Request $request, Response $response): Response {
     $userService = new UserService();
 
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
     return $renderer->render($response, 'users.php', [
-        'sRootPath'          => SystemURLs::getRootPath(),
-        'sPageTitle'         => gettext('System Users'),
-        'sPageSubtitle'      => gettext('Manage system users, permissions, and 2FA'),
-        'aBreadcrumbs'       => PageHeader::breadcrumbs([
+        'sRootPath'     => SystemURLs::getRootPath(),
+        'sPageTitle'    => gettext('System Users'),
+        'sPageSubtitle' => gettext('Manage system users, permissions, and 2FA'),
+        'aBreadcrumbs'  => PageHeader::breadcrumbs([
             [gettext('Admin'), '/admin/'],
             [gettext('System Users')],
         ]),
         'sPageHeaderButtons' => PageHeader::buttons([
-            ['label' => gettext('Settings'), 'icon' => 'fa-cog', 'collapse' => '#userSettings'],
             ['label' => gettext('Add User'), 'url' => '/admin/system/users/new', 'icon' => 'fa-user-plus'],
         ]),
-        'sSettingsCollapseId' => 'userSettings',
         'stats'    => $userService->getUserStats(),
         'settings' => $userService->getUserSettingsConfig(),
     ]);
 });
 ```
 
-## View Example
+### View
 
-**src/admin/views/users.php:**
+`Header.php` renders breadcrumbs, title and subtitle. `PhpRenderer` extracts each `$pageArgs` key into a variable.
 
 ```php
 <?php
 use ChurchCRM\dto\SystemURLs;
-
-// Header
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
-
-<div class="row">
-    <div class="col-lg-3 col-md-6">
-        <div class="small-box bg-aqua">
-            <div class="inner">
-                <h3><?= $data['stats']['total'] ?></h3>
-                <p><?= gettext('Total Users') ?></p>
-            </div>
-        </div>
-    </div>
-    <!-- More stats cards -->
-</div>
-
-<div class="box">
-    <div class="box-header">
-        <h3 class="box-title"><?= gettext('Users') ?></h3>
-    </div>
-    <div class="box-body">
-        <!-- User table/content -->
-    </div>
-</div>
-
-<?php
-// Footer
-require SystemURLs::getDocumentRoot() . '/Include/Footer.php';
-?>
+<h3><?= (int)$stats['total'] ?></h3>
+<p><?= gettext('Total Users') ?></p>
+<?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>
 ```
 
-## API Example
-
-**src/admin/routes/api/user-admin.php:**
+### API
 
 ```php
-use ChurchCRM\Slim\SlimUtils;
-use Psr\Http\Message\ResponseInterface as Response;
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Slim\Routing\RouteCollectorProxy;
-
-// Path is relative to the /admin base path — do not repeat the '/admin' prefix
+// Path is relative to the /admin base path
 $app->group('/api/users', function (RouteCollectorProxy $group): void {
     $group->post('/{userId}/reset-password', function (Request $request, Response $response, array $args): Response {
         try {
-            $userService = new UserService();
-
-            $userId = (int)$args['userId'];
-            $result = $userService->resetPassword($userId);
-            
+            $result = (new UserService())->resetPassword((int)$args['userId']);
             return SlimUtils::renderJSON($response, ['data' => $result]);
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to reset password'), [], 500, $e, $request);
@@ -177,130 +94,71 @@ $app->group('/api/users', function (RouteCollectorProxy $group): void {
 });
 ```
 
-## SystemConfig for Settings Panels
+### Settings panels
 
-**Use dynamic settings configuration:**
+The Service returns settings through `SystemConfig::getSettingsConfig([...keys])`; the view loops over the result.
 
 ```php
-// In Service
-public function getUserSettingsConfig(): array 
+public function getUserSettingsConfig(): array
 {
-    $userSettings = [
-        'iSessionTimeout',
-        'iMaxFailedLogins',
-        'bEnableLostPassword'
-    ];
-    return SystemConfig::getSettingsConfig($userSettings);
+    return SystemConfig::getSettingsConfig(['iSessionTimeout', 'iMaxFailedLogins', 'bEnableLostPassword']);
 }
-
-// In View (example rendering)
-<?php foreach ($data['settings'] as $setting): ?>
-    <div class="form-group">
-        <label><?= $setting['name'] ?></label>
-        <input type="<?= $setting['type'] ?>" 
-               value="<?= $setting['value'] ?>" 
-               name="<?= $setting['category'] ?>" />
-    </div>
-<?php endforeach; ?>
 ```
 
-## Migrating Multi-Form Pages — Action-Switch vs Split Routes <!-- learned: 2026-04-08 -->
+## Multi-form pages
 
-Legacy pages often contain several `<form>` tags that all post to the same URL (Save Name,
-Save Time, Add Count, Delete Count, etc.). When migrating to MVC, choose between two
-patterns based on form complexity:
+A page with several `<form>` tags posting to one URL moves over in one of two shapes:
 
-1. **Single POST handler with Action switch** — one `POST /resource/{id}` route that
-   dispatches on `$body['Action']` (or a hidden `Action` form field). Keeps URLs cleaner
-   and matches the legacy page 1:1, reducing diff risk.
-2. **Split into multiple POST routes** — one route per action:
-   `POST /resource/{id}/name`, `POST /resource/{id}/time`, `POST /resource/{id}/counts`.
-   More REST-conformant and easier to test individually.
-
-Both work. Prefer the Action-switch approach when migrating a legacy multi-form page
-verbatim (all forms share layout/validation); prefer split routes when forms are
-independent, when one form needs different auth, or when you're adding new actions.
+- One `POST /resource/{id}` route that dispatches on a hidden `Action` field. Use it when the forms share layout and validation.
+- One POST route per action (`/resource/{id}/name`, `/resource/{id}/time`). Use it when forms are independent, need different auth, or new actions are added.
 
 ```php
-// Action-switch example (src/event/routes/event-types.php)
 $app->post('/event/types/{id}', function (Request $req, Response $res, array $args): Response {
     $body = (array) $req->getParsedBody();
     $action = $body['Action'] ?? '';
     return match (true) {
-        $action === 'ADD'          => handleAdd($args['id'], $body),
-        $action === 'NAME'         => handleName($args['id'], $body),
-        $action === 'TIME'         => handleTime($args['id'], $body),
-        $action === 'SAVE'         => handleSaveCounts($args['id'], $body),
+        $action === 'ADD'  => handleAdd($args['id'], $body),
+        $action === 'NAME' => handleName($args['id'], $body),
         str_starts_with($action, 'DELETE_') => handleDelete($args['id'], $action),
-        default                    => RedirectUtils::redirect('/event/types/' . (int) $args['id']),
+        default => RedirectUtils::redirect('/event/types/' . (int) $args['id']),
     };
 });
 ```
 
-## URL Parameter Modernization — Drop Legacy Names <!-- learned: 2026-04-09 -->
+## camelCase parameters
 
-When migrating a legacy page to MVC, **rename URL/form parameters to modern camelCase and delete the legacy names entirely**. Do not keep `??` fallbacks for the old names — they create silent ambiguity, ship dead code paths, and the migration is the right moment to break the contract because the page's URL structure is already changing.
-
-**Legacy → modern**:
-
-| Legacy (PascalCase, hungarian, mixed) | Modern (camelCase) |
-|---|---|
-| `EventTypeID`, `EventID`, `WhichType`, `WhichYear`, `EN_tyid`, `EID` | `typeId`, `eventId`, `type`, `year` |
-| `AddedCount`, `EventTypeFilter` | `addedCount`, `typeFilter` |
-| `personID`, `FamilyID` | `personId`, `familyId` |
+Read one name per parameter, in camelCase: `typeId`, `eventId`, `year`, `addedCount`, `typeFilter`, `personId`, `familyId`.
 
 ```php
-// ❌ WRONG — keeps legacy fallback "just in case"
-$eventId = (int) ($args['id'] ?? $params['EID'] ?? $params['calendarAction'] ?? $params['eventId'] ?? 0);
-
-// ✅ CORRECT — modern name only
 $eventId = (int) ($args['id'] ?? 0);
 $typeId  = (int) ($params['typeId'] ?? 0);
 ```
 
-**Update everything in one commit**:
-1. PHP routes — `$args['…']` and `$params['…']` reads
-2. PHP routes — `$body['…']` reads in POST handlers
-3. View files — `name="…"` and `id="…"` on form fields, `<label for="…">`, redirect URLs
-4. Webpack JS — `$('#OldId')` selectors and any URL-building string templates
-5. Cypress specs — selectors, URL assertions, redirect expectations
+Change every place in one commit:
+1. PHP route `$args[...]`, `$params[...]` and `$body[...]` reads
+2. View `name`, `id`, `<label for>` and redirect URLs
+3. Webpack JS selectors and URL templates
+4. Cypress selectors and URL assertions
 
-**No backwards-compat shims**: this is the user's standing rule for migrations — see `MEMORY.md` → "No backward compat shims". Old bookmarks/links to the legacy `*.php` file are already broken by the MVC move; the URL parameter rename is the tail end of the same break, not a new one.
+## Middleware and error handling
 
-## Middleware Order (CRITICAL) <!-- learned: 2026-04-07 -->
-
-> [!NOTE] Full reference
-> [`slim-4-best-practices.md` → Middleware Order](./slim-4-best-practices.md)
-
-For MVC modules, use `MvcAppFactory::create()` which handles all ordering automatically:
+Create MVC apps with `MvcAppFactory::create()`; it sets middleware order and error handling.
 
 ```php
 $app = MvcAppFactory::create('/admin', [
-    'dashboardUrl'  => '/admin/',
-    'dashboardText' => gettext('Return to Admin Dashboard'),
+    'dashboardUrl'   => '/admin/',
+    'dashboardText'  => gettext('Return to Admin Dashboard'),
     'roleMiddleware' => AdminRoleAuthMiddleware::class,
 ]);
 ```
 
-## Entry Point Error Handling
+Non-MVC entry points (API, external, session) add error middleware after `addRoutingMiddleware()`. Reference: [`slim-4-best-practices.md`](./slim-4-best-practices.md) (Middleware Order, Error Handler Architecture).
 
-> [!NOTE] Full reference
-> [`slim-4-best-practices.md` → Error Handler Architecture](./slim-4-best-practices.md)
+## Admin dashboard setup checklist
 
-For MVC modules use `MvcAppFactory`. For non-MVC entry points (API, external, session),
-add error middleware manually — always AFTER `addRoutingMiddleware()`.
-
-## Admin Dashboard Setup Checklist Pattern <!-- learned: 2026-03-19 -->
-
-The admin dashboard (`/admin/`) includes a **Setup Progress checklist** computed in the route and passed to the view. Pattern for adding a new checklist step:
-
-**Route** (`src/admin/routes/dashboard.php`): compute a `$hasX` boolean, add it to `$completedSteps`, and add an entry to `$setupChecklist`.
+`src/admin/routes/dashboard.php` computes the Setup Progress checklist. To add a step, compute a `$hasX` boolean, add it to `$completedSteps`, and append to `$setupChecklist`:
 
 ```php
-// Call PluginManager::init() before any plugin state checks — see plugin-system.md
-PluginManager::init(SystemURLs::getDocumentRoot() . '/plugins');
-$hasPlugins = PluginManager::hasAnyActivePlugin();
-
 $setupChecklist[] = [
     'done'  => $hasPlugins,
     'label' => gettext('Enable Plugins'),
@@ -310,218 +168,19 @@ $setupChecklist[] = [
 ];
 ```
 
-The checklist card auto-hides when `$allDone === true`. The Quick Start shortcuts mirror the checklist steps in the same order.
+Call `PluginManager::init()` before plugin state checks (`plugin-system.md`). The card hides when every step is done; keep the Quick Start shortcuts in the same order.
 
-## Get Started Wizard — /admin/get-started <!-- learned: 2026-03-19 -->
+## Get Started pages
 
-A dedicated onboarding wizard for new installs with 4 data-import paths:
+- `GET /admin/get-started` (landing) is registered in `src/admin/routes/dashboard.php`; view `src/admin/views/get-started.php`; assets `webpack/get-started.js` and `webpack/get-started.css`. Cards use `.gs-card` with a colour modifier inside `.gs-wrap`, and are `<a role="button">` elements so card padding holds.
+- `GET /admin/get-started/manual` is the only route in `src/admin/routes/get-started.php`; view `src/admin/views/get-started-manual.php`. It explains Family first, then People; giving is recorded at family level.
 
-| Card | Link | Notes |
-|------|------|-------|
-| Explore with Demo Data | `#importDemoDataV2` (JS trigger) | `<a role="button">` — never `<button>` (breaks card padding) |
-| Import from a Spreadsheet | `/admin/import/csv` | Slim 4 route; supports core, custom-field, and property mappings |
-| Enter Data Manually | `/admin/get-started/manual` | guided intro page (see below) |
-| Restore a Backup | `/admin/system/restore?context=onboarding` | |
+## Styling
 
-**Files:** View: `src/admin/views/get-started.php`. Route: `GET /get-started` in `src/admin/routes/dashboard.php`. Webpack: `webpack/get-started.js` + `webpack/get-started.css`.
+Use native Tabler classes in the HTML. When a class is missing, put CSS inline in that template. `src/skin/scss/_tabler-bridge.scss` is a temporary bridge for systemic fixes only.
 
-Uses `.gs-card` with top-border accents (`.gs-card--green`, `--blue`, `--teal`, `--orange`) inside `.gs-wrap` (max-width: 900px). Grid: `col-sm-6` (2×2).
+Authentication pages (`src/session/templates/*.php`) are self-contained: a `<style>` block in the template, Tabler variables and colours, a `@media (max-width: 768px)` stack for phones, and visible focus states. Check at 480px and 768px, then run `npm run build && npm run lint`.
 
-## Start Fresh Guided Page — /admin/get-started/manual <!-- learned: 2026-03-19 -->
+## No Redirect Shims
 
-Guided manual-entry intro explaining the Family → Person recommended order. Key content:
-
-- Numbered steps: Add a Family first (shared address/phone) → then add People to it
-- Quick Tips including: **donations are tracked at the family level** — individuals who live alone need a single-person family to record giving against
-- Sidebar: Family vs Person concept explainer + "Have Existing Data?" CSV shortcut
-
-**Files:** View: `src/admin/views/get-started-manual.php`. Route: `GET /get-started/manual` in `src/admin/routes/get-started.php` (registered in `src/admin/index.php` after `dashboard.php`). No webpack entry — inherits admin styles.
-
-**Important:** `GET /get-started` (landing) lives in `dashboard.php`. `routes/get-started.php` only registers `/manual` — do not add a `$group->get('', ...)` handler there or Slim will silently register the same route twice (first wins).
-
-## Tabler Bridge File — TEMPORARY DO NOT USE FOR UX FIXES <!-- learned: 2026-03-21 -->
-
-**CRITICAL:** `src/skin/scss/_tabler-bridge.scss` is a **temporary bridge** that should be removed once entire app is native Tabler.
-
-❌ **DON'T** add CSS to bridge file during UX fixes or feature work
-- Bridge file is meant to be temporary (eventually deleted)
-- UX fixes should use **native Tabler classes** in HTML, not custom CSS
-- Adding custom CSS to bridge perpetuates technical debt
-
-✅ **DO** solve UX problems using:
-- **Native Tabler classes** (`.navbar-brand`, sizing utilities, spacing classes)
-- **Inline CSS** in specific templates (for auth pages)
-- **Layout adjustments** in HTML structure (flexbox, grid, alignment)
-- **Tabler variables** (colors, spacing, breakpoints) if available
-
-**Pattern:** If native Tabler doesn't have a class you need, add it inline to that specific template, NOT to the bridge file.
-
----
-
-## Authentication & Login Pages — Modern Tabler Styling
-
-**When redesigning public-facing authentication pages (login, password reset, 2FA, etc.):**
-
-### Approach: Inline CSS Only
-
-✅ **DO:** Use `<style>` blocks with **inline CSS** directly in the template file
-- Keeps form pages self-contained and isolated
-- Authentication pages are simple (no complex interactions)
-- Avoids polluting global bridge stylesheets
-- Easy to maintain and iterate (all code in one file)
-
-❌ **DON'T:** Add CSS to `_tabler-bridge.scss` or other global files
-- Bridge is temporary and should be deleted once app is fully native Tabler
-- Page-specific styling should stay in templates, not shared infrastructure
-- Keep infrastructure CSS confined to bridge-only systemic changes
-
-### Architecture
-
-**File:** `src/session/templates/[page].php`
-- Single PHP file with embedded `<style>` block
-- Use CSS classes for structure (`.login-hero`, `.btn-sign-in`, etc.)
-- Leverage Tabler colors: `#667eea` (primary), `#764ba2` (dark)
-- Gradient backgrounds: `linear-gradient(135deg, #667eea 0%, #764ba2 100%)`
-
-### Pattern Example
-
-```php
-<?php
-use ChurchCRM\dto\SystemURLs;
-$sPageTitle = gettext('Login');
-require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
-?>
-
-<style>
-  body {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .login-wrapper {
-    display: flex;
-    border-radius: 12px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-    background: white;
-  }
-
-  .login-hero {
-    flex: 1;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    padding: 60px 40px;
-    color: white;
-  }
-
-  .btn-sign-in {
-    width: 100%;
-    padding: 12px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-
-  .btn-sign-in:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
-  }
-
-  /* Responsive */
-  @media (max-width: 768px) {
-    .login-wrapper {
-      flex-direction: column;
-    }
-  }
-</style>
-
-<div class="login-container">
-  <div class="login-wrapper">
-    <!-- Hero and form sections -->
-  </div>
-</div>
-
-<?php require SystemURLs::getDocumentRoot() . '/Include/FooterNotLoggedIn.php'; ?>
-```
-
-### Key CSS Patterns for Auth Pages
-
-| Element | Pattern | Notes |
-|---------|---------|-------|
-| **Background** | `linear-gradient(135deg, #667eea 0%, #764ba2 100%)` | Full-screen gradient |
-| **Card** | `border-radius: 12px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);` | Modern elevation |
-| **Primary Button** | Gradient fill + hover lift (`transform: translateY(-2px)`) | Focus action |
-| **Secondary Button** | White bg + border + hover background | Alternative action |
-| **Focus State** | `box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);` | Accessibility |
-| **Responsive** | `@media (max-width: 768px)` with `flex-direction: column` | Stack on mobile |
-| **Text Colors** | White on gradient (`rgba(255, 255, 255, 0.x)`) | high opacity for text, lower for borders |
-
-### Reusable CSS Utilities for Auth Forms
-
-Once pattern is established, these can be safely copied to new auth pages:
-
-```css
-/* Form group structure */
-.form-group {
-  margin-bottom: 20px;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 500;
-  color: #333;
-  font-size: 14px;
-}
-
-.form-group input {
-  width: 100%;
-  padding: 10px 12px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-.form-group input:focus {
-  outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-}
-```
-
-### Testing & Validation
-
-- Test responsive on mobile (480px, 768px breakpoints)
-- Verify all form inputs have focus states
-- Check button hover effects
-- Ensure logo and images don't have unwanted filters
-- Run `npm run build && npm run lint` before commit
-
-## No Redirect Shims — Hard Rule <!-- learned: 2026-07-12 -->
-
-**Never leave a legacy `src/*.php` file in place as a redirect shim** after migrating its functionality to an MVC route. Shims look harmless but they:
-- Introduce dead code paths that accumulate silently over releases
-- Break the security model (shims bypass middleware added in the new module)
-- Require a second cleanup PR every time
-
-**The correct migration sequence:**
-1. Build the new MVC route, view, and service (the normal MVC migration steps)
-2. Before committing, `grep -rn "LegacyPage.php" src/` to find every caller
-3. Update every caller (menu entries, template links, JS redirects, other PHP files) to use the new URL
-4. `git rm src/LegacyPage.php` — delete it outright
-5. All of the above in **one PR** — no multi-stage "shim then cleanup" pattern
-
-**If you find existing shim files in a PR under review:** treat them as blocking — require the PR author to complete steps 2–4 before merging.
-
-## Files
-
-**Views:** `src/admin/views/`, `src/finance/views/`
-**Routes:** `src/admin/routes/`, `src/finance/routes/`
-**APIs:** `src/admin/routes/api/`
-**Services:** `src/ChurchCRM/Service/`
-**Menu:** `src/ChurchCRM/Config/Menu/Menu.php`
-**Middleware:** `src/ChurchCRM/Slim/Middleware/AdminRoleAuthMiddleware.php`
+A migrated page leaves no stub at the old path. Stubs bypass the new module's middleware and need a cleanup PR later. Find callers with `grep -rn "OldPage.php" src/`, update each (menu, template links, JS redirects, PHP), `git rm` the file, all in one PR. A PR that keeps a redirect stub is blocked until it does this.

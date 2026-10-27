@@ -3,6 +3,29 @@
 describe("API Private Group Operations", () => {
     let groupID = 1; // Use existing group ID for testing
 
+    // The role and settings tests rename, add, delete and toggle things on the
+    // group they target, so they run on a group of their own. Group 1's seeded
+    // roles (Teacher / Student, which standard.person.group-add.spec.js picks by
+    // name) and settings then survive for every later spec in the same run.
+    const scratchGroupName = `Role ops ${Date.now()}`;
+    let scratchGroupId;
+
+    before(() => {
+        cy.makePrivateAdminAPICall("POST", "/api/groups/", { groupName: scratchGroupName }, 200).then((resp) => {
+            scratchGroupId = resp.body.Id;
+        });
+    });
+
+    after(() => {
+        if (scratchGroupId) {
+            cy.makePrivateAdminAPICall("DELETE", `/api/groups/${scratchGroupId}`, null, 200);
+        }
+        cy.makePrivateAdminAPICall("GET", `/api/groups/${groupID}/roles`, null, 200).then((resp) => {
+            const roles = resp.body.map((r) => `${r.OptionId}:${r.OptionName}`).sort();
+            expect(roles, "group 1 roles at end of spec").to.deep.equal(["1:Teacher", "2:Student"]);
+        });
+    });
+
     describe("Group Member Operations", () => {
         // Person 1 is not a seeded member of group 1. The tests below add them,
         // so every membership this describe creates has to be removed again —
@@ -131,6 +154,18 @@ describe("API Private Group Operations", () => {
             });
         });
 
+        it("rejects an existing option ID from a different list when adding a member", () => {
+            // Role 8 exists in custom-field type list 4 but not in group 1's
+            // teacher/student list. Rejection must not create a membership.
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/groups/${groupID}/addperson/${testPersonId}`,
+                { RoleID: 8 },
+                400
+            );
+            expectTestPersonAbsent();
+        });
+
         it("Add member to group via POST addperson", () => {
             // Test adding a person to a group (person ID 1)
             addTestPerson(initialRoleId).then((resp) => {
@@ -236,7 +271,7 @@ describe("API Private Group Operations", () => {
             // Test retrieving available roles for a group
             cy.makePrivateAdminAPICall(
                 "GET",
-                `/api/groups/${groupID}/roles`,
+                `/api/groups/${scratchGroupId}/roles`,
                 null,
                 200
             ).then((resp) => {
@@ -254,7 +289,7 @@ describe("API Private Group Operations", () => {
             const roleNameUnique = "TestRole" + Date.now();
             cy.makePrivateAdminAPICall(
                 "POST",
-                `/api/groups/${groupID}/roles`,
+                `/api/groups/${scratchGroupId}/roles`,
                 {
                     roleName: roleNameUnique,
                 },
@@ -270,7 +305,7 @@ describe("API Private Group Operations", () => {
             const newRoleName = "UpdatedRole" + Date.now();
             cy.makePrivateAdminAPICall(
                 "POST",
-                `/api/groups/${groupID}/roles/1`,
+                `/api/groups/${scratchGroupId}/roles/1`,
                 {
                     groupRoleName: newRoleName,
                 },
@@ -282,7 +317,7 @@ describe("API Private Group Operations", () => {
             // Test setting role sequence/order
             cy.makePrivateAdminAPICall(
                 "POST",
-                `/api/groups/${groupID}/roles/1`,
+                `/api/groups/${scratchGroupId}/roles/1`,
                 {
                     groupRoleOrder: "1",
                 },
@@ -297,17 +332,30 @@ describe("API Private Group Operations", () => {
             const tempRoleName = "TempRoleToDelete" + Date.now();
             cy.makePrivateAdminAPICall(
                 "POST",
-                `/api/groups/${groupID}/roles`,
+                `/api/groups/${scratchGroupId}/roles`,
                 { roleName: tempRoleName },
                 200
             ).then((resp) => {
                 const roleId = resp.body.newRole.roleID;
                 cy.makePrivateAdminAPICall(
                     "DELETE",
-                    `/api/groups/${groupID}/roles/${roleId}`,
+                    `/api/groups/${scratchGroupId}/roles/${roleId}`,
                     null,
                     200
                 );
+            });
+        });
+
+        it("Sanitizes XSS in role name when updating group role", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/groups/${scratchGroupId}/roles/1`,
+                { groupRoleName: "<b>Bold</b>RoleName" },
+                200
+            ).then((resp) => {
+                expect(resp.body).to.have.property("OptionName");
+                expect(resp.body.OptionName).to.not.include("<b>");
+                expect(resp.body.OptionName).to.include("RoleName");
             });
         });
     });
@@ -316,7 +364,7 @@ describe("API Private Group Operations", () => {
         it("Toggle group-specific properties status", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
-                `/api/groups/${groupID}/setGroupSpecificPropertyStatus`,
+                `/api/groups/${scratchGroupId}/setGroupSpecificPropertyStatus`,
                 {
                     GroupSpecificPropertyStatus: true,
                 },
@@ -327,11 +375,22 @@ describe("API Private Group Operations", () => {
             });
         });
 
+        it("rejects default roles that belong to other lists", () => {
+            // This group's one default role has OptionId 1; OptionId 8 exists
+            // elsewhere in list_lst and must never become the group default.
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/groups/${scratchGroupId}/defaultRole`,
+                { roleID: 8 },
+                400
+            );
+        });
+
         it("Set default role for group", () => {
             // Test setting the default role for a group
             cy.makePrivateAdminAPICall(
                 "POST",
-                `/api/groups/${groupID}/defaultRole`,
+                `/api/groups/${scratchGroupId}/defaultRole`,
                 {
                     roleID: 1,
                 },
@@ -343,7 +402,7 @@ describe("API Private Group Operations", () => {
             // Test enabling/disabling group active status
             cy.makePrivateAdminAPICall(
                 "POST",
-                `/api/groups/${groupID}/settings/active/true`,
+                `/api/groups/${scratchGroupId}/settings/active/true`,
                 null,
                 200
             );
@@ -353,7 +412,7 @@ describe("API Private Group Operations", () => {
             // Test enabling/disabling group in email export
             cy.makePrivateAdminAPICall(
                 "POST",
-                `/api/groups/${groupID}/settings/email/export/false`,
+                `/api/groups/${scratchGroupId}/settings/email/export/false`,
                 null,
                 200
             );
@@ -400,6 +459,8 @@ describe("API Private Group Operations", () => {
             ).then((resp) => {
                 expect(resp.body).to.have.property("Name");
                 expect(resp.body.Name).to.not.include("<script>");
+
+                cy.makePrivateAdminAPICall("DELETE", `/api/groups/${resp.body.Id}`, null, 200);
             });
         });
 
@@ -450,19 +511,6 @@ describe("API Private Group Operations", () => {
                 { groupRoleName: "Ghost Role" },
                 404,
             );
-        });
-
-        it("Sanitizes XSS in role name when updating group role", () => {
-            cy.makePrivateAdminAPICall(
-                "POST",
-                `/api/groups/${groupID}/roles/1`,
-                { groupRoleName: "<b>Bold</b>RoleName" },
-                200
-            ).then((resp) => {
-                expect(resp.body).to.have.property("OptionName");
-                expect(resp.body.OptionName).to.not.include("<b>");
-                expect(resp.body.OptionName).to.include("RoleName");
-            });
         });
     });
 

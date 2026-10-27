@@ -51,7 +51,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
             <?php else: ?>
                 <div class="card">
-                    <div class="card-header bg-light">
+                    <div class="card-header bg-surface-secondary">
                         <h5 class="mb-0">
                             <?= gettext('Family Pledges') ?> 
                             <span class="badge bg-primary ms-2"><?= count($familyPledges) ?> <?= gettext('Families') ?></span>
@@ -60,7 +60,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <div class="card-body p-0">
                         <div class="table-responsive">
                             <table class="table table-hover mb-0">
-                                <thead class="bg-light">
+                                <thead class="bg-surface-secondary">
                                     <tr>
                                         <th><?= gettext('Family Name') ?></th>
                                         <?php if (SystemConfig::getBooleanValue('bUseDonationEnvelopes')): ?>

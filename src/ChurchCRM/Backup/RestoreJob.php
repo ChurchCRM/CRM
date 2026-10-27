@@ -239,22 +239,6 @@ class RestoreJob extends JobBase
             // Config key might not exist in restored database - that's OK
             LoggerUtils::getAppLogger()->debug('Could not disable external backup plugin (config may not exist): ' . $e->getMessage());
         }
-
-        // Rebuild views to ensure they are current after restore
-        $this->rebuildViews();
-    }
-
-    private function rebuildViews(): void
-    {
-        LoggerUtils::getAppLogger()->debug('Rebuilding database views after restore');
-        $connection = Propel::getConnection();
-        $viewsFile = SystemURLs::getDocumentRoot() . '/mysql/upgrade/rebuild_views.sql';
-        if (file_exists($viewsFile)) {
-            SQLUtils::sqlImport($viewsFile, $connection);
-            LoggerUtils::getAppLogger()->debug('Database views rebuilt successfully');
-        } else {
-            LoggerUtils::getAppLogger()->warning('Could not find rebuild_views.sql at: ' . $viewsFile);
-        }
     }
 
     /**

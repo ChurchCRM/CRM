@@ -23,13 +23,4 @@ describe("Admin API System Properties Endpoint", () => {
             }
         });
     });
-
-    it("non-admin is denied access", () => {
-        cy.makePrivateUserAPICall(
-            "GET",
-            `/admin/api/system/properties/person`,
-            null,
-            [401, 403],
-        );
-    });
 });

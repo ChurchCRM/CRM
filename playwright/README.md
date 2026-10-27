@@ -43,12 +43,20 @@ npm run docker:ci:new-system:down   # tear down the instance when you're done
    because Playwright only finalizes a video after its browser context
    closes, which happens after the test itself has already returned.
 4. `marketing:check` — `scripts/check-marketing-visuals.js` verifies every
-   capture produced its artifacts.
+   capture produced its artifacts, decodes PNGs, checks their dimensions against
+   the sidecar viewport at 2x scale, and requires contrast in at least two of a
+   4×4 grid of tiles. This catches blank and cropped frames that pass the size
+   minimum. To check a separate artifact directory, run
+   `npm run marketing:check -- /path/to/artifacts`.
 5. `marketing:manifest` — `scripts/generate-marketing-manifest.js` rolls
    every metadata sidecar (see below) into one `playwright/artifacts/manifest.json`.
 
 The instance is left running after a successful (or failed) run so you can
 inspect it — `docker:ci:new-system:down` tears it down explicitly.
+
+Guard fixtures run with `node --test scripts/check-marketing-visuals.test.js`
+(also included in `npm run lint`). They create synthetic PNGs in temporary
+directories outside the publish path; production captures use real demo UI.
 
 ## What it does
 
@@ -95,9 +103,11 @@ inspect it — `docker:ci:new-system:down` tears it down explicitly.
   timestamp, seed version, and artifact filenames. `npm run marketing`
   rolls every sidecar into one `playwright/artifacts/manifest.json` for a
   quick look at a whole run (see "How to run" above).
-- **Artifacts**: screenshots, videos, and `manifest.json` are committed;
-  everything else (the metadata JSON sidecars, `report.json`) is
-  gitignored — see `.gitignore`.
+- **Artifacts**: everything under `playwright/artifacts/` (screenshots,
+  videos, `manifest.json`, metadata sidecars, `report.json`) is generated
+  and gitignored. The capture workflow uploads it as the artifact
+  `marketing-visuals-<run id>`; `ChurchCRM/visuals` publishes it to
+  https://cdn.churchcrm.io/ on release.
 
 ## How to add a workflow
 
@@ -206,8 +216,8 @@ Each screenshot test captures desktop 1440×900, tablet 1024×768 and mobile
   #9663 for what was deliberately descoped there (closed not-planned).
   `manifest.json` (above) is a rollup of the existing sidecars, not that.
 - CI wiring (`.github/workflows/marketing-capture-assets.yml`,
-  `workflow_dispatch`) and its automated update-PR on `master` both exist
-  now — this is no longer a gap.
+  `workflow_dispatch`) exists and uploads the visuals artifact; it opens no
+  PR — this is no longer a gap.
 - Media-quality passes so far only cover what was actually visually
   inspected in this milestone (the system-update banner, timezone warning,
   inactive-record filtering). A new workflow should get the same visual

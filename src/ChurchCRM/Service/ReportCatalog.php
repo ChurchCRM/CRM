@@ -31,7 +31,7 @@ class ReportCatalog
     private static function all(User $user): array
     {
         return [
-            [$user->isAdmin(), [
+            [!$user->isEditSelfExclusive(), [
                 'module'      => gettext('People'),
                 'title'       => gettext('People Reports'),
                 'description' => gettext('Birthdays, anniversaries, volunteers and other people lists with a classification filter'),

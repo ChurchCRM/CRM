@@ -3,6 +3,8 @@
 namespace ChurchCRM\model\ChurchCRM;
 
 use ChurchCRM\model\ChurchCRM\Base\Token as BaseToken;
+use Propel\Runtime\ActiveQuery\Criteria;
+use Propel\Runtime\Connection\ConnectionInterface;
 
 /**
  * Skeleton subclass for representing a row from the 'tokens' table.
@@ -35,6 +37,11 @@ class Token extends BaseToken
         $this->setType($type);
     }
 
+    public static function passwordResetStorageKey(string $token): string
+    {
+        return 'sha256:' . hash('sha256', $token);
+    }
+
     public function isVerifyFamilyToken(): bool
     {
         return self::TYPE_FAMILY_VERIFY === $this->getType();
@@ -61,18 +68,30 @@ class Token extends BaseToken
         return $stillValidDate && $hasUses;
     }
 
-    /**
-     * Consumes one use of the token by decrementing the remaining uses count.
-     * If the token has no remaining uses limit (null), this method does nothing.
-     * Returns true if the token was consumed, false if no uses remain.
-     */
-    public function consume(): bool
+    public function consume(?ConnectionInterface $connection = null): bool
     {
-        if ($this->getRemainingUses() !== null && $this->getRemainingUses() > 0) {
-            $this->setRemainingUses($this->getRemainingUses() - 1);
-            $this->save();
-            return true;
+        $remainingUses = $this->getRemainingUses();
+        if ($remainingUses === null || $remainingUses <= 0) {
+            return false;
         }
-        return false;
+
+        // Compare-and-swap prevents stale objects from consuming the same use twice.
+        $updated = TokenQuery::create()
+            ->filterByToken($this->getToken())
+            ->filterByType($this->getType())
+            ->filterByRemainingUses($remainingUses)
+            ->filterByValidUntilDate(null, Criteria::ISNULL)
+            ->_or()
+            ->filterByValidUntilDate(date('Y-m-d H:i:s'), Criteria::GREATER_THAN)
+            ->update(['RemainingUses' => $remainingUses - 1], $connection);
+
+        if ($updated !== 1) {
+            return false;
+        }
+
+        $this->setRemainingUses($remainingUses - 1);
+        $this->resetModified();
+
+        return true;
     }
 }

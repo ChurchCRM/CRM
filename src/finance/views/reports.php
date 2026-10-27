@@ -74,7 +74,7 @@ $fyMonthName = $monthNames[$iFYMonth] ?? '';
         ];
         foreach ($sections as $section) :
             ?>
-        <div class="list-group-item bg-light fw-bold"><?= InputUtils::escapeHTML($section['title']) ?></div>
+        <div class="list-group-item bg-surface-secondary fw-bold"><?= InputUtils::escapeHTML($section['title']) ?></div>
             <?php foreach ($section['reports'] as $report) : ?>
         <div class="list-group-item">
             <div class="row align-items-center">

@@ -11,6 +11,8 @@
  * What is under test:
  *   - the list returns only the acting member's rows, newest first, with the
  *     same `rows/total/page/limit/pages` envelope the staff endpoint uses
+ *   - only mail that was sent, with no delivery status: queued, failed and
+ *     skipped rows are left out and their ids are 404 (#10356)
  *   - `limit` paginates and is clamped; `page` is sanitized
  *   - list rows never carry the body; the detail route does
  *   - another person's row is 404, not 403 — even a person in the member's own
@@ -61,20 +63,20 @@ describe("Member Portal API — /api/portal/me/emails", () => {
         // subjects carry the run's tag so a re-run never reads the last run's
         // rows. Sent oldest first, so "newest first" is a real assertion.
         for (const n of [1, 2, 3]) {
-            cy.makePrivateAdminAPICall("POST", "/api/email/send", {
+            cy.sendComposerEmailNow({
                 personIds: [LENA_PERSON_ID],
                 subject: `${tag} message ${n}`,
                 body: `Body of message ${n} for Lena`,
-            }).then((resp) => {
-                expect(resp.body.counts.sent).to.eq(1);
-                sentToAddress = resp.body.sent[0].email;
+            }).then((result) => {
+                expect(result.progress.sent).to.eq(1);
+                sentToAddress = result.queued[0].email;
             });
         }
-        cy.makePrivateAdminAPICall("POST", "/api/email/send", {
+        cy.sendComposerEmailNow({
             personIds: [SAMANTHA_PERSON_ID],
             subject: `${tag} not for Lena`,
             body: "This one belongs to Samantha",
-        }).then((resp) => expect(resp.body.counts.sent).to.eq(1));
+        }).then((result) => expect(result.progress.sent).to.eq(1));
     });
 
     describe("The list", () => {
@@ -107,9 +109,9 @@ describe("Member Portal API — /api/portal/me/emails", () => {
                 expect(mine[0]).to.include({
                     kind: "composer",
                     kindLabel: "Message",
-                    status: "sent",
                     hasBody: true,
                 });
+                expect(mine[0]).to.not.have.any.keys("status", "statusLabel", "attempts", "error");
                 expect(mine[0].address, "the row names the address it went to").to.eq(sentToAddress);
             });
         });
@@ -151,6 +153,47 @@ describe("Member Portal API — /api/portal/me/emails", () => {
             });
             portalGet("/api/portal/me/emails?limit=5000").then((resp) => {
                 expect(resp.body.limit, "limit is capped at 100").to.eq(100);
+            });
+        });
+    });
+
+    describe("Only mail that went out", () => {
+        it("Leaves out failed and skipped mail, and answers 404 for it", () => {
+            portalLogin();
+            portalGet("/api/portal/me/emails?limit=100").then((resp) => {
+                const subjects = resp.body.rows.map((r) => r.subject);
+                expect(subjects).to.include(`${tag} message 1`);
+                expect(subjects).to.not.include("Seeded failed message for Lena");
+                expect(subjects).to.not.include("Seeded skipped birthday greeting for Lena");
+            });
+            // Seeded rows 8 (failed) and 9 (skipped) are addressed to Lena.
+            portalGet("/api/portal/me/emails/8", 404);
+            portalGet("/api/portal/me/emails/9", 404);
+        });
+
+        it("Leaves out queued mail until it has been sent", () => {
+            const subject = `${tag} queued`;
+            cy.makePrivateAdminAPICall("POST", "/api/email/send", {
+                personIds: [LENA_PERSON_ID],
+                subject,
+                body: "Waiting in the queue",
+            }).then((sent) => {
+                cy.makePrivateAdminAPICall("GET", `/api/email/log?personId=${LENA_PERSON_ID}&limit=100`).then((log) => {
+                    const queued = log.body.rows.find((r) => r.subject === subject);
+                    expect(queued.status).to.eq("queued");
+
+                    portalLogin();
+                    portalGet("/api/portal/me/emails?limit=100").then((resp) => {
+                        expect(resp.body.rows.map((r) => r.subject)).to.not.include(subject);
+                    });
+                    portalGet(`/api/portal/me/emails/${queued.id}`, 404);
+
+                    cy.makePrivateAdminAPICall("POST", `/api/email/batches/${sent.body.batch}/send`)
+                        .its("body.sent")
+                        .should("eq", 1);
+                    portalLogin();
+                    portalGet(`/api/portal/me/emails/${queued.id}`).its("body.subject").should("eq", subject);
+                });
             });
         });
     });

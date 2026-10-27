@@ -1,6 +1,9 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\model\ChurchCRM\UserConfig;
+use ChurchCRM\model\ChurchCRM\UserConfigQuery;
 use ChurchCRM\Slim\Middleware\Api\UserMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -45,21 +48,64 @@ function genAPIKey(Request $request, Response $response, array $args): Response
  *     @OA\RequestBody(required=true,
  *         @OA\JsonContent(@OA\Property(property="value", type="string"))
  *     ),
- *     @OA\Response(response=200, description="Updated config key/value pair")
+ *     @OA\Response(response=200, description="Updated config key/value pair"),
+ *     @OA\Response(response=400, description="A string value is required"),
+ *     @OA\Response(response=403, description="This setting is administrator-only"),
+ *     @OA\Response(response=404, description="Unknown user configuration key")
  * )
  */
 function updateUserConfig(Request $request, Response $response, array $args): Response
 {
+    /** @var User $user */
     $user = $request->getAttribute('user');
-    $userConfigName = $args['key'];
-    $parsedBody = $request->getParsedBody();
-    $newValue = $parsedBody['value'];
-    $user->setUserConfigString($userConfigName, $newValue);
-    $user->save();
+    $name = (string) $args['key'];
+    $input = $request->getParsedBody();
 
-    if ($user->getUserConfigString($userConfigName) !== $newValue) {
-        throw new \Exception('user config string does not match provided value');
+    // Reject invalid payloads instead of passing arrays or missing values
+    // into a string setting and surfacing PHP/ORM failures as HTTP 500.
+    if (!is_array($input) || !array_key_exists('value', $input) || !is_string($input['value'])) {
+        return SlimUtils::renderErrorJSON($response, gettext('A string value is required'), [], 400);
     }
 
-    return SlimUtils::renderJSON($response, [$userConfigName => $newValue]);
+    $config = UserConfigQuery::create()
+        ->filterByPeronId($user->getId())
+        ->filterByName($name)
+        ->findOne();
+
+    if ($config === null) {
+        // SettingsIndividual.php clones a default when the per-user row does
+        // not exist. Follow that same rule, but authorize BEFORE cloning so
+        // a denied request cannot create a new security-sensitive setting.
+        $default = UserConfigQuery::create()
+            ->filterByPeronId(0)
+            ->filterByName($name)
+            ->findOne();
+        if ($default === null) {
+            return SlimUtils::renderErrorJSON($response, gettext('Unknown user configuration key'), [], 404);
+        }
+        $permission = $default->getPermission();
+    } else {
+        $permission = $config->getPermission();
+    }
+
+    if (!AuthenticationManager::getCurrentUser()->isAdmin() && $permission !== 'TRUE') {
+        return SlimUtils::renderErrorJSON($response, gettext('Administrator permission required for this setting'), [], 403);
+    }
+
+    if ($config === null) {
+        $config = new UserConfig();
+        $config->setPeronId($user->getId())
+            ->setId($default->getId())
+            ->setName($default->getName())
+            ->setValue($default->getValue())
+            ->setType($default->getType())
+            ->setCat($default->getCat())
+            ->setTooltip($default->getTooltip())
+            ->setPermission($default->getPermission());
+    }
+
+    $config->setValue($input['value']);
+    $config->save();
+
+    return SlimUtils::renderJSON($response, [$name => $input['value']]);
 }
