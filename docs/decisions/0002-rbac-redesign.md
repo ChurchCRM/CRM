@@ -604,3 +604,10 @@ Decisions recorded 2026-10-27 in the RFC 0002 work-through, for @cwhorton final 
 - **N4:** V2 banner timing is left to implementation, not specified in this RFC.
 - **N5:** Fold restatements into the main sections; keep each rule once, with cross-references.
 - **Independent review:** @cwhorton Oct 12 review satisfies the RFC's independent security and architecture review request; no separate review is wanted.
+
+
+## Post-RFC architecture recommendations
+
+After this RFC, architecture and design recommendations will follow. Which model (Codex, Claude, or Grok) is best for that architect work is to be recommended at that point, based on the work and current usage then — no model is selected in this RFC itself.
+
+This note is standard for every RFC moving forward: each RFC should carry this post-RFC architecture note, with the model recommendation made when the architecture work starts, not in the RFC.
