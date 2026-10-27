@@ -63,7 +63,7 @@ describe("Communication Menu and Dashboards", () => {
         it("shows Vonage integration status", () => {
             cy.visit("people/text");
             cy.contains("SMS Integration");
-            cy.get(".alert").should("exist");
+            cy.get(".alert:not(.crm-system-notification)").should("exist");
         });
 
         it("shows text tools info", () => {
