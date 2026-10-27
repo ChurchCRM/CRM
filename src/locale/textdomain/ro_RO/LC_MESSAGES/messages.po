@@ -5534,10 +5534,6 @@ msgid "Submit Registration"
 msgstr "Trimite înregistrarea"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "O nouă parolă a fost generată și trimisă la adresa dumneavoastră de e-mail."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Aplică actualizarea acum"
 
@@ -5582,20 +5578,12 @@ msgid "Login Name is required"
 msgstr "Numele de utilizator este obligatoriu"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Odată ce primiți e-mailul, vă puteți autentifica cu parola temporară și o puteți schimba cu una preferată."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Eroare de resetare a parolei"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Resetarea parolei a reușit"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Vă rugăm să vă verificați e-mailul (inclusiv folderul spam/junk) pentru parola temporară."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12419,10 +12407,6 @@ msgstr "E-mailul este dezactivat"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "E-mailul este dezactivat. Configurați e-mailul înainte de a reseta parolele sau utilizați Schimbați parola."
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Introduceți unul dintre codurile de recuperare de rezervă"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"

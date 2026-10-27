@@ -109,7 +109,7 @@
     "scripts": ["/mysql/upgrade/7.8.1.sql", "/mysql/upgrade/7.8.1.php"],
     "dbVersion": "7.8.1"
   },
-  "current": {
+  "pre-7.8.2": {
     "versions": ["7.8.1"],
     "scripts": [
       "/mysql/upgrade/7.8.2.sql",
@@ -117,5 +117,10 @@
       "/mysql/upgrade/7.8.2-tokens-valid-until-datetime.sql"
     ],
     "dbVersion": "7.8.2"
+  },
+  "current": {
+    "versions": ["7.8.2"],
+    "scripts": [],
+    "dbVersion": "7.8.3"
   }
 }

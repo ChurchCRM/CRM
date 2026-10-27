@@ -79,10 +79,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - name: Set up Node.js
-        uses: ./.github/actions/setup-node
-        with:
-          node-version-file: '.nvmrc'
+      - name: Set up Node.js and install npm dependencies
+        uses: ./.github/actions/checkout-node-npm
 
       - name: Clear committed artifacts
         run: rm -rf playwright/artifacts/

@@ -5474,10 +5474,6 @@ msgid "Submit Registration"
 msgstr "Edasta registreerimine"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Uus parool on loodud ja saadetud teie e-posti aadressile."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Rakenda värskendus kohe"
 
@@ -5522,20 +5518,12 @@ msgid "Login Name is required"
 msgstr "Sisselogimise nimi on nõutav"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Kui saate meili, saate sisse logida ajutise parooliga ja muuta selle omale sobivale."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Parooli lähtestamise viga"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Parool on edukalt lähtestatud"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Kontrollige oma e-posti (kaasaarvatud rämpsposti/prügikasti kausta) ajutise parooli jaoks."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12351,10 +12339,6 @@ msgstr "E-post on keelatud"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "E-post on keelatud. Seadistage e-post enne paroolide lähtestamist või kasutage Muuda parooli."
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Sisestage üks oma varundamise taastekoodidest"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"

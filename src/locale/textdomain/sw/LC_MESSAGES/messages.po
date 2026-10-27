@@ -5471,10 +5471,6 @@ msgid "Submit Registration"
 msgstr "Tuma Usajili"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Nenosiri jipya limetengenezwa na kutumwa kwa barua pepe yako."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Tumia Sasisho Sasa"
 
@@ -5519,20 +5515,12 @@ msgid "Login Name is required"
 msgstr "Jina la Kuingia linahitajika"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Ukishapata barua pepe, unaweza kuingia na nenosiri la muda na kulibadilisha kuwa unalolihitaji."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Hitilafu ya Kubadilisha Nenosiri"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Nenosiri Limebadilishwa kwa Mafanikio"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Tafadhali kagua barua pepe yako (pamoja na folda ya takataka) kwa nenosiri lako la muda."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12348,10 +12336,6 @@ msgstr "Barua pepe imezimwa"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "Barua pepe imezimwa. Sanidi barua pepe kabla ya kuweka upya nywila, au tumia Badilisha Nywila."
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Ingiza moja ya nambari zako za urejeshaji wa hifadhi nakala"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"
