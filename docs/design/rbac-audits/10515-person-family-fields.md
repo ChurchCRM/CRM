@@ -70,7 +70,7 @@ A custom field's tier is whatever the church configured. `FieldSecurity` stores 
 | `per_DateDeceased` | T3/T4 | All staff | PersonEditor (EditRecords) | Labels skip deceased people ([`PDFLabel.php:639-642`](https://github.com/ChurchCRM/CRM/blob/914c437b8e87da5db47a2b36419b004407596214/src/Reports/PDFLabel.php#L639-L642)) |
 | `per_Gender` | T1 | All staff; kiosk roster | PersonEditor; portal add member; public register; kiosk guest | — |
 | `per_fmr_ID` (family role) | T1 | All staff; portal | PersonEditor; FamilyEditor; `POST /api/person/{id}/role/{roleId}` (EditRecords); cart to family (AddRecords); portal add member (adult); public register; import | Household label, **not guardianship**. Portal "adult" is derived from it ([`PortalSelfService.php:207`](https://github.com/ChurchCRM/CRM/blob/914c437b8e87da5db47a2b36419b004407596214/src/ChurchCRM/Portal/PortalSelfService.php#L207)) |
-| `per_cls_ID` (classification) | T4 | All staff; person list filter; reports | PersonEditor; FamilyEditor; **kiosk guest registration** ([`device.php:647`](https://github.com/ChurchCRM/CRM/blob/914c437b8e87da5db47a2b36419b004407596214/src/kiosk/routes/device.php#L647)); import | A device principal writes a governance field. Out of scope for #10518 only if the kiosk audit covers it |
+| `per_cls_ID` (classification) | T4 | All staff; person list filter; reports | PersonEditor; FamilyEditor; kiosk guest registration, using the administrator's `iKioskGuestClassification` setting, never the request ([`device.php:647`](https://github.com/ChurchCRM/CRM/blob/914c437b8e87da5db47a2b36419b004407596214/src/kiosk/routes/device.php#L647)); import | The device cannot choose the value; an administrator sets it |
 | `per_fam_ID` | T1, scope key | All staff | PersonEditor; FamilyEditor; cart to family; family delete unlinks members; import | It sets the `EditSelf` and portal family scope ([`User.php:480-528`](https://github.com/ChurchCRM/CRM/blob/914c437b8e87da5db47a2b36419b004407596214/src/ChurchCRM/model/ChurchCRM/User.php#L480-L528)) |
 | `per_Envelope` | T5 | All staff on the profile ([`people/routes/view.php:319`](https://github.com/ChurchCRM/CRM/blob/914c437b8e87da5db47a2b36419b004407596214/src/people/routes/view.php#L319)); person JSON and group roster JSON | PersonEditor only when finance ([`PersonEditor.php:456-458`](https://github.com/ChurchCRM/CRM/blob/914c437b8e87da5db47a2b36419b004407596214/src/PersonEditor.php#L456-L458)); import (Admin) | **Verified:** read is broad, write is finance |
 | `per_DateLastEdited`, `per_DateEntered`, `per_EnteredBy`, `per_EditedBy` | T0 | All staff | Set by writers | The only person-level audit trail besides timeline notes |
@@ -124,7 +124,7 @@ A custom field's tier is whatever the church configured. `FieldSecurity` stores 
 | Timeline | `/api/timeline/person/{id}` | `canReadPerson()` | Note type and private flag | Non-`note` types visible to all staff |
 | Editors | `PersonEditor.php`, `FamilyEditor.php` | Edit/AddRecords | Per-field check on custom fields; finance check on person envelope only | Membership date, classification and family envelope unguarded by field |
 | Portal | `/api/portal/*` | Actor and actor's family | Allowlists ([`PortalSelfService.php:45-73`](https://github.com/ChurchCRM/CRM/blob/914c437b8e87da5db47a2b36419b004407596214/src/ChurchCRM/Portal/PortalSelfService.php#L45-L73)) | Narrowest surface today |
-| Kiosk | `/kiosk/device/*` | Accepted device, assigned event | Allowlisted DTOs | Writes classification on guest registration |
+| Kiosk | `/kiosk/device/*` | Accepted device, assigned event | Allowlisted DTOs | Guest registration applies the configured classification |
 | Public | `/api/public/register/*` | None | Allowlisted setters | Creates records that need review |
 | Labels and letters | `LettersAndLabels.php`, `Reports/PDFLabel.php`, `ConfirmLabels.php`, `NewsLetterLabels.php`, `NameTags.php` | Staff (`PageInit.php`) | Name and mailing address only | Section 5 |
 | People Reports | `/people/reports/{slug}` and `/csv` ([`people/routes/reports.php:17-22`](https://github.com/ChurchCRM/CRM/blob/914c437b8e87da5db47a2b36419b004407596214/src/people/routes/reports.php#L17-L22)) | `StaffRoleAuthMiddleware` | Fixed column sets; property values; membership dates | Bulk by design (#10516) |
@@ -180,7 +180,7 @@ Consequences:
 | Family link (`per_fam_ID`) | EditRecords, AddRecords via cart | Decides whose records a portal user can see and edit | Moving a person changes portal scope at once |
 | Group membership | ManageGroups | None today. Would become a privilege path under P9 | Must be protected before any group grants rights |
 | Envelope | Person: Finance. Family: EditRecords and Finance | Reassigns giving attribution for scanned or envelope entry | Finance integrity |
-| Membership date, classification | EditRecords; kiosk sets classification on guests | Feeds anniversary reports and the Voting Members heuristic | Not voting eligibility (P10) |
+| Membership date, classification | EditRecords; kiosk applies the configured guest classification | Feeds anniversary reports and the Voting Members heuristic | Not voting eligibility (P10) |
 | Inactive / deceased | EditRecords | Hides people from default lists and labels | Lifecycle, not visibility |
 | Notes | Notes flag; private by author | — | D4 |
 | Protected-person marker | Does not exist | — | D1 |
@@ -192,7 +192,7 @@ This is a proposal, not current behavior. "Ordinary" means a standard record. Re
 | Role (template candidate) | Record scope | T1 Directory | T2 Contact | T3 Personal | T4 Governance | T5 Financial id | T6 Confidential | Custom fields |
 |---|---|---|---|---|---|---|---|---|
 | Unauthenticated | — | W (self-register, review queue) | W (same) | W birthday (same) | — | — | — | — |
-| Kiosk device | Assigned event roster | R first/last name, photo | R guardian contact for pickup (per #10518) | — | — (guest classification moves to a default set by an admin) | — | — | — |
+| Kiosk device | Assigned event roster | R first/last name, photo | R guardian contact for pickup (per #10518) | — | — (guest classification stays an admin setting) | — | — | — |
 | Portal member | Self | R/W allowlist | R/W allowlist | R; W birthday if enabled | — | — | — | Per-field portal flag (new) |
 | Portal adult | Own household | R names; W add member | R/W household contact | R | — | — | — | — |
 | Verified guardian (D3) | Linked children | R/W approved child fields | R/W | R/W approved | — | — | — | Approved list |
@@ -239,7 +239,7 @@ Also: split read from write per field (one value does both today), and keep defi
 | V6 | Group-specific person fields have no access control; the display flag is not security | `person-view.php:785-813` |
 | V7 | Property API is stricter than the pages that show the same data | `people-properties.php:24-25` vs profile and People Report |
 | V8 | The `EditSelf` branches in `PersonEditor.php` / `FamilyEditor.php` are unreachable for non-admins | `PageInit.php:26`, `User.php:151` |
-| V9 | Kiosk guest registration writes classification | `device.php:647` |
+| V9 | Kiosk guest registration writes classification from an admin setting (`iKioskGuestClassification`), not from the request. Recorded so RBAC keeps it that way | `device.php:647` |
 | V10 | `FieldSecurity` controls read and write with one value; missing options fail closed | `User.php:795-838` |
 | V11 | Group roster API sends the full nested person row | `people-groups.php:313-339` |
 | V12 | Cart-to-group checks permission only in the service and answers 400, not 403 | `cart.php`, `GroupService.php:87` |
@@ -265,7 +265,7 @@ One user per grant, as RFC 0002 lesson 6 requires. Each test names its entrypoin
 |---|---|---|---|
 | T4 membership date | Editor | EditRecords-only user posts `MembershipDate` | Value unchanged once `membership.date.manage` exists; today it changes (baseline test records that) |
 | T4 membership date | Import | Admin import as a template without the grant | Rejected or skipped with a report |
-| T4 classification | Kiosk | Guest registration posts a classification | Server uses the configured default |
+| T4 classification | Kiosk | Guest registration request carries a `ClassificationId` | Ignored; the configured setting applies (regression for today) |
 | T5 envelope | Editor | EditRecords-only user changes `fam_Envelope` | Rejected; today accepted |
 | T5 envelope | API | Zero-permission user calls `GET /api/person/{id}` and `/api/groups/{id}/members` | No `Envelope` key |
 | T5 scan data | API | Non-finance user calls `GET /api/family/{id}` | No `ScanCheck`, `ScanCredit`, `Envelope` (regression for today's behavior) |
@@ -287,7 +287,7 @@ One user per grant, as RFC 0002 lesson 6 requires. Each test names its entrypoin
 2. **Envelope numbers are finance identifiers** on every read and write path, or explicitly ordinary directory data. Pick one; today there are four rules.
 3. **Presentation flags never count as protection** (hide age, hide wedding date, `prop_PersonDisplay`, `.no-export`). Add this to the invariants.
 4. **Group-specific person fields** need a field class like custom fields before any group-scoped role ships.
-5. **Device principals do not write governance fields.** Kiosk guest classification comes from configuration.
+5. **Device principals do not write governance fields.** Kiosk guest classification already comes from an admin setting; keep that rule for every device and service principal.
 6. **One custom-field evaluator.** All callers go through one policy function that takes the stored option ID.
 
 ## 13. Rollout and rollback
