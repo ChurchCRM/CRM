@@ -5452,10 +5452,6 @@ msgid "Submit Registration"
 msgstr "నమోదును సమర్పించండి"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "కొత్త పాస్‌వర్డ్ జనరేట్ చేయబడింది మరియు మీ ఇమెయిల్ చిరునామాకు పంపబడింది."
-
-#: 
 msgid "Apply Update Now"
 msgstr "ఇప్పుడే అప్‌డేట్‌ను వర్తింపజేయండి"
 
@@ -5500,20 +5496,12 @@ msgid "Login Name is required"
 msgstr "లాగిన్ పేరు అవసరం"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "మీరు ఇమెయిల్ అందుకున్న తర్వాత, మీరు మీ తాత్కాలిక పాస్‌వర్డ్‌తో లాగిన్ అవ్వవచ్చు మరియు మీకు నచ్చిన దానికి మార్చవచ్చు."
-
-#: 
 msgid "Password Reset Error"
 msgstr "పాస్‌వర్డ్ రీసెట్ లోపం"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "పాస్‌వర్డ్ రీసెట్ విజయవంతమైంది"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "దయచేసి మీ తాత్కాలిక పాస్‌వర్డ్ కోసం మీ ఇమెయిల్ (స్పామ్/జంక్ ఫోల్డర్‌తో సహా) తనిఖీ చేయండి."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12329,10 +12317,6 @@ msgstr "ఇమెయిల్ నిలిపివేయబడింది"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "ఇమెయిల్ నిలిపివేయబడింది. పాస్‌వర్డ్‌లు రీసెట్ చేయడానికి ముందు ఇమెయిల్‌ను కాన్ఫిగర్ చేయండి, లేదా పాస్‌వర్డ్ మార్చు ఉపయోగించండి."
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "మీ బ్యాకప్ రికవరీ కోడ్‌లలో ఒకదాన్ని నమోదు చేయండి"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"

@@ -463,7 +463,7 @@ NotificationService::loadSessionNotifications();
 // Render all active notifications as dismissible alerts
 foreach (NotificationService::getNotifications() as $notification) {
 ?>
-      <div class="alert alert-<?= InputUtils::escapeHTML($notification->getType()) ?> alert-dismissible"
+      <div class="alert alert-<?= InputUtils::escapeHTML($notification->getType()) ?> alert-dismissible crm-system-notification"
            role="alert"
            <?= $notification->getId() ? 'data-notification-id="' . InputUtils::escapeAttribute($notification->getId()) . '"' : '' ?>
            <?= $notification->getDismissSettingKey() ? 'data-dismiss-key="' . InputUtils::escapeAttribute($notification->getDismissSettingKey()) . '"' : '' ?>>

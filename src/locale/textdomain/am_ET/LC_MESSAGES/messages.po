@@ -5482,10 +5482,6 @@ msgid "Submit Registration"
 msgstr "ምዝገባውን ላክ"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "አዲስ የይለፍ ቃል ተዘጋጅቶ ወደ ኢሜይል አድራሻዎ ተልኳል።"
-
-#: 
 msgid "Apply Update Now"
 msgstr "አሁኑኑ ማሻሻያውን ተግብር"
 
@@ -5530,20 +5526,12 @@ msgid "Login Name is required"
 msgstr "የመግቢያ ስም ያስፈልጋል"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "ኢሜይሉ እንደደረስዎት በጊዜያዊው የይለፍ ቃል በመግባት ወደሚፈልጉት መቀየር ይችላሉ።"
-
-#: 
 msgid "Password Reset Error"
 msgstr "የይለፍ ቃል ዳግም ማስጀመሪያ ስህተት"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "የይለፍ ቃል ዳግም ማስጀመር ተሳክቷል"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "እባክዎን ለጊዜያዊ የይለፍ ቃልዎ ኢሜይልዎን (አይፈለጌ መልዕክት/spam አቃፊን ጨምሮ) ያረጋግጡ።"
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12359,10 +12347,6 @@ msgstr "ኢሜይል ተሰናክሏል"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "ኢሜይል ተሰናክሏል። ይለፍ ቃሎችን ከዳግም ማስጀመርዎ በፊት ኢሜይልን ያዋቅሩ፣ ወይም ይለፍ ቃል ቀይር ይጠቀሙ።"
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "ከምትኬ መልሶ ማግኛ ኮዶቾ አንዱን ያስገቡ"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"

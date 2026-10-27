@@ -5465,10 +5465,6 @@ msgid "Submit Registration"
 msgstr "Dërgo regjistrimin"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Një fjalëkalim i ri është gjeneruar dhe dërguar në adresën tuaj të email-it."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Apliko përditësimin tani"
 
@@ -5513,20 +5509,12 @@ msgid "Login Name is required"
 msgstr "Kërkohet emri i hyrjes"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Sapo të merrni email-in, mund të hyni me fjalëkalimin tuaj të përkohshëm dhe ta ndryshoni në diçka që preferoni."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Gabim në rivendosjen e fjalëkalimit"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Rivendosja e fjalëkalimit me sukses"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Ju lutem kontrolloni email-in tuaj (përfshirë dosjen spam/junk) për fjalëkalimin tuaj të përkohshëm."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12342,10 +12330,6 @@ msgstr "Emaili është i çaktivizuar"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "Emaili është i çaktivizuar. Konfiguroni emailin para rivendosjes së fjalëkalimeve, ose përdorni Ndrysho Fjalëkalimin."
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Vendosni një nga kodet tuaja rezervë të rikuperimit"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"
