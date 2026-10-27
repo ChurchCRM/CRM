@@ -3,6 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Service\FinancialService;
+use ChurchCRM\Service\PledgeDonor;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\CurrencyFormatter;
@@ -79,7 +80,9 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
      *             @OA\Property(property="Nondeductible_formatted", type="string"),
      *             @OA\Property(property="PledgeOrPayment", type="string"),
      *             @OA\Property(property="Date", type="string", format="date"),
-     *             @OA\Property(property="Fund", type="string")
+     *             @OA\Property(property="Fund", type="string"),
+     *             @OA\Property(property="PersonId", type="integer", nullable=true, description="Person who gave or pledged; null for family-wide rows"),
+     *             @OA\Property(property="Person", type="string", description="That person's full name; empty for family-wide rows")
      *         )))
      *     ),
      *     @OA\Response(response=401, description="Unauthorized"),
@@ -88,56 +91,30 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
      */
     $group->get('/family/{familyId:[0-9]+}/list', function (Request $request, Response $response, array $args): Response {
         $familyId = SlimUtils::getRouteArgument($request, 'familyId');
-        $queryParams = $request->getQueryParams();
-        $fyid = isset($queryParams['fyid']) ? (int) $queryParams['fyid'] : null;
 
-        $query = PledgeQuery::create()->filterByFamId($familyId);
+        return renderGivingHistory($request, $response, PledgeQuery::create()->filterByFamId($familyId));
+    });
 
-        // Three distinct states, not two: a specific FY, an explicit "All Time"
-        // (fyid=0 — no date filter of any kind, not even ShowSince), and no
-        // fyid param at all (legacy/default — fall back to ShowSince). Treating
-        // "fyid=0" and "no fyid param" the same would make the All-Time pill a
-        // lie for any user with a ShowSince preference configured.
-        if ($fyid !== null && $fyid > 0) {
-            // Server-side FY filter: exact FYID match
-            $query->filterByFyId($fyid);
-        } elseif ($fyid === null) {
-            // No fyid param at all: fall back to ShowSince user preference
-            if (!empty(AuthenticationManager::getCurrentUser()->getShowSince())) {
-                $query->filterByDate(AuthenticationManager::getCurrentUser()->getShowSince(), Criteria::GREATER_EQUAL);
-            }
-        }
-        // $fyid === 0 (explicit All Time): no filter of any kind — every record.
+    /**
+     * @OA\Get(
+     *     path="/payments/person/{personId}/list",
+     *     summary="Get pledge and payment history recorded for one person (Finance role required)",
+     *     description="Only rows that name this person. Family-wide rows without a person are listed by /payments/family/{familyId}/list. The fyid parameter and the rows match that endpoint.",
+     *     tags={"Finance"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Parameter(name="fyid", in="query", required=false, description="Fiscal year ID to filter by; 0 for All Time (no filter); omit to fall back to the ShowSince preference", @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="Pledge/payment rows for the person",
+     *         @OA\JsonContent(@OA\Property(property="data", type="array", @OA\Items(type="object")))
+     *     ),
+     *     @OA\Response(response=401, description="Unauthorized"),
+     *     @OA\Response(response=403, description="Finance role required")
+     * )
+     */
+    $group->get('/person/{personId:[0-9]+}/list', function (Request $request, Response $response, array $args): Response {
+        $personId = (int) SlimUtils::getRouteArgument($request, 'personId');
 
-        if (!AuthenticationManager::getCurrentUser()->isShowPayments()) {
-            $query->filterByPledgeOrPayment('Payment', Criteria::NOT_EQUAL);
-        }
-        if (!AuthenticationManager::getCurrentUser()->isShowPledges()) {
-            $query->filterByPledgeOrPayment('Pledge', Criteria::NOT_EQUAL);
-        }
-        $query->joinWithDonationFund();
-        $data = $query->find();
-
-        $rows = [];
-        foreach ($data as $row) {
-            $newRow['FormattedFY'] = $row->getFormattedFY();
-            $newRow['GroupKey'] = $row->getGroupKey();
-            $newRow['Amount'] = $row->getAmount();
-            $newRow['Amount_formatted'] = CurrencyFormatter::format($row->getAmount());
-            $newRow['Nondeductible'] = $row->getNondeductible();
-            $newRow['Nondeductible_formatted'] = CurrencyFormatter::format($row->getNondeductible());
-            $newRow['Schedule'] = $row->getSchedule();
-            $newRow['Method'] = $row->getMethod();
-            $newRow['Comment'] = InputUtils::escapeHTML($row->getComment() ?? '');
-            $newRow['PledgeOrPayment'] = $row->getPledgeOrPayment();
-            $newRow['Date'] = $row->getDate('Y-m-d');
-            $newRow['DateLastEdited'] = $row->getDateLastEdited('Y-m-d');
-            $newRow['EditedBy'] = $row->getPerson() ? $row->getPerson()->getFullName() : '';
-            $newRow['Fund'] = $row->getDonationFund() ? $row->getDonationFund()->getName() : '';
-            $rows[] = $newRow;
-        }
-
-        return SlimUtils::renderJSON($response, ['data' => $rows]);
+        return renderGivingHistory($request, $response, PledgeQuery::create()->filterByPerId($personId));
     });
 
     /**
@@ -161,6 +138,8 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
      *             @OA\Property(property="groupKey", type="string", example="abc123"),
      *             @OA\Property(property="familyId", type="integer", nullable=true, description="Family ID; 0 or null for anonymous donations", example=42),
      *             @OA\Property(property="familyName", type="string", description="Family display name; empty string for anonymous donations", example="Smith Family"),
+     *             @OA\Property(property="personId", type="integer", nullable=true, description="Person who gave or pledged; null for family-wide records", example=7),
+     *             @OA\Property(property="personName", type="string", description="That person's full name; empty string for family-wide records", example="John Smith"),
      *             @OA\Property(property="date", type="string", format="date", example="2025-01-15"),
      *             @OA\Property(property="fyId", type="integer", example=29),
      *             @OA\Property(property="method", type="string", example="CHECK"),
@@ -216,6 +195,7 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
      *         @OA\JsonContent(
      *             required={"Date","FYID","type","FundSplit","iMethod"},
      *             @OA\Property(property="FamilyID", type="integer", nullable=true, description="Family ID — omit or pass null for anonymous/cash donations with no associated family", example=42),
+     *             @OA\Property(property="PersonID", type="integer", nullable=true, description="Person who gave or pledged. When set, FamilyID is replaced by that person's family (null when they have none)", example=7),
      *             @OA\Property(property="Date", type="string", format="date", description="Pledge/payment date", example="2025-01-15"),
      *             @OA\Property(property="FYID", type="integer", description="Fiscal year ID", example=29),
      *             @OA\Property(property="type", type="string", enum={"Pledge","Payment"}, description="Record type", example="Payment"),
@@ -295,6 +275,7 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
      *         @OA\JsonContent(
      *             required={"Date","FYID","type","FundSplit","iMethod"},
      *             @OA\Property(property="FamilyID", type="integer", nullable=true, description="Family ID — omit or pass null for anonymous/cash donations with no associated family", example=42),
+     *             @OA\Property(property="PersonID", type="integer", nullable=true, description="Person who gave or pledged. When set, FamilyID is replaced by that person's family (null when they have none)", example=7),
      *             @OA\Property(property="Date", type="string", format="date", description="Pledge/payment date", example="2025-01-15"),
      *             @OA\Property(property="FYID", type="integer", description="Fiscal year ID", example=29),
      *             @OA\Property(property="type", type="string", enum={"Pledge","Payment"}, description="Record type", example="Payment"),
@@ -406,3 +387,59 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
         }
     });
 })->add(FinanceRoleAuthMiddleware::class);
+
+function renderGivingHistory(Request $request, Response $response, PledgeQuery $query): Response
+{
+    $queryParams = $request->getQueryParams();
+    $fyid = isset($queryParams['fyid']) ? (int) $queryParams['fyid'] : null;
+
+    // Three distinct states, not two: a specific FY, an explicit "All Time"
+    // (fyid=0 — no date filter of any kind, not even ShowSince), and no
+    // fyid param at all (legacy/default — fall back to ShowSince). Treating
+    // "fyid=0" and "no fyid param" the same would make the All-Time pill a
+    // lie for any user with a ShowSince preference configured.
+    if ($fyid !== null && $fyid > 0) {
+        // Server-side FY filter: exact FYID match
+        $query->filterByFyId($fyid);
+    } elseif ($fyid === null) {
+        // No fyid param at all: fall back to ShowSince user preference
+        if (!empty(AuthenticationManager::getCurrentUser()->getShowSince())) {
+            $query->filterByDate(AuthenticationManager::getCurrentUser()->getShowSince(), Criteria::GREATER_EQUAL);
+        }
+    }
+    // $fyid === 0 (explicit All Time): no filter of any kind — every record.
+
+    if (!AuthenticationManager::getCurrentUser()->isShowPayments()) {
+        $query->filterByPledgeOrPayment('Payment', Criteria::NOT_EQUAL);
+    }
+    if (!AuthenticationManager::getCurrentUser()->isShowPledges()) {
+        $query->filterByPledgeOrPayment('Pledge', Criteria::NOT_EQUAL);
+    }
+    $query->joinWithDonationFund();
+    $data = $query->find();
+
+    $donors = PledgeDonor::describe($data);
+
+    $rows = [];
+    foreach ($data as $row) {
+        $newRow['FormattedFY'] = $row->getFormattedFY();
+        $newRow['GroupKey'] = $row->getGroupKey();
+        $newRow['Amount'] = $row->getAmount();
+        $newRow['Amount_formatted'] = CurrencyFormatter::format($row->getAmount());
+        $newRow['Nondeductible'] = $row->getNondeductible();
+        $newRow['Nondeductible_formatted'] = CurrencyFormatter::format($row->getNondeductible());
+        $newRow['Schedule'] = $row->getSchedule();
+        $newRow['Method'] = $row->getMethod();
+        $newRow['Comment'] = InputUtils::escapeHTML($row->getComment() ?? '');
+        $newRow['PledgeOrPayment'] = $row->getPledgeOrPayment();
+        $newRow['Date'] = $row->getDate('Y-m-d');
+        $newRow['DateLastEdited'] = $row->getDateLastEdited('Y-m-d');
+        $newRow['EditedBy'] = $row->getPerson() ? $row->getPerson()->getFullName() : '';
+        $newRow['Fund'] = $row->getDonationFund() ? $row->getDonationFund()->getName() : '';
+        $newRow['PersonId'] = $row->getPerId() ? (int) $row->getPerId() : null;
+        $newRow['Person'] = $donors[PledgeDonor::key($row) ?? '']['person_name'] ?? '';
+        $rows[] = $newRow;
+    }
+
+    return SlimUtils::renderJSON($response, ['data' => $rows]);
+}

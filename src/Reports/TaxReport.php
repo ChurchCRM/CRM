@@ -100,6 +100,7 @@ $rsReport = [];
 // It is kept out of $rsReport on purpose: those keys become the CSV export's column
 // headers, and this report's CSV must not gain columns.
 $famMailingParts = [];
+$rowPersons = [];
 foreach ($pledgeObjects as $pledge) {
     $row = [
         'fam_ID' => $pledge['FamId'],
@@ -121,6 +122,7 @@ foreach ($pledgeObjects as $pledge) {
         'plg_NonDeductible' => $pledge['Nondeductible'] ?? 0,
     ];
     $famMailingParts[$row['fam_ID']] ??= $pledge['Family']['MailingAddress'] ?? [];
+    $rowPersons[] = $pledge['Person'];
     $rsReport[] = $row;
 }
 
@@ -153,6 +155,9 @@ if ($output === 'pdf') {
 
     class PdfTaxReport extends ChurchInfoReport
     {
+        /** @var array<int, string> statement id => addressee, for donors without a family */
+        public array $personAddressees = [];
+
         /**
          * Initialize the PDF document for tax report output.
          */
@@ -163,6 +168,11 @@ if ($output === 'pdf') {
             $this->SetMargins(20, 20);
 
             $this->SetAutoPageBreak(false);
+        }
+
+        public function makeSalutation($famID): string
+        {
+            return $this->personAddressees[(int) $famID] ?? parent::makeSalutation($famID);
         }
 
         /**
@@ -275,9 +285,34 @@ if ($output === 'pdf') {
     // Instantiate the directory class and build the report.
     $pdf = new PdfTaxReport();
 
+    // A person without a family gets a statement of their own, addressed to them;
+    // inside a family statement the memo names the member who gave.
+    $statementRows = [];
+    foreach ($rsReport as $i => $row) {
+        $person = $rowPersons[$i];
+        if ($person !== null && (int) $row['fam_ID'] > 0) {
+            $row['plg_comment'] = trim($person['Name'] . ' ' . $row['plg_comment']);
+        } elseif ($person !== null) {
+            $row['fam_ID'] = -$person['Id'];
+            $row['fam_Name'] = $person['Name'];
+            $row['fam_Address1'] = $person['MailingAddress']['Address1'];
+            $row['fam_Address2'] = $person['MailingAddress']['Address2'];
+            $row['fam_City'] = $person['MailingAddress']['City'];
+            $row['fam_State'] = $person['MailingAddress']['State'];
+            $row['fam_Zip'] = $person['MailingAddress']['Zip'];
+            $row['fam_Country'] = $person['MailingAddress']['Country'];
+            $famMailingParts[$row['fam_ID']] = $person['MailingAddress'];
+            $pdf->personAddressees[$row['fam_ID']] = $person['Name'];
+        }
+        $statementRows[] = $row;
+    }
+    $statementOrder = array_keys($statementRows);
+    usort($statementOrder, fn (int $a, int $b): int => [(int) $statementRows[$a]['fam_ID'], $a] <=> [(int) $statementRows[$b]['fam_ID'], $b]);
+    $statementRows = array_map(fn (int $i): array => $statementRows[$i], $statementOrder);
+
     // Loop through result array
-    $currentFamilyID = -1;  // Initialize to -1 so first record (even with fam_ID=0) creates a new page
-    foreach ($rsReport as $row) {
+    $currentFamilyID = null;
+    foreach ($statementRows as $row) {
         extract($row);
         // The statement is mailed, so every address block on it is the mailing address.
         $famMailing = $famMailingParts[$fam_ID];
@@ -285,7 +320,7 @@ if ($output === 'pdf') {
         // Minimum amount filtering is now handled in FinancialService
         // No need to re-query for minimum amount check
         // Check for new family
-        if ($fam_ID != $currentFamilyID && $currentFamilyID != -1) {
+        if ($currentFamilyID !== null && $fam_ID != $currentFamilyID) {
             //New Family. Finish Previous Family
             $pdf->SetFont('Times', 'B', 10);
             $pdf->Cell(20, $summaryIntervalY / 2, ' ', 0, 1);
@@ -325,7 +360,7 @@ if ($output === 'pdf') {
 
         // Start Page for New Family
         $cnt = 0;
-        if ($fam_ID != $currentFamilyID) {
+        if ($currentFamilyID === null || $fam_ID != $currentFamilyID) {
             $curY = $pdf->startNewPage($fam_ID, $fam_Name, $famMailing, $fam_envelope);
             $summaryDateX = SystemConfig::getValue('leftX');
             $summaryCheckNoX = 40;

@@ -166,6 +166,7 @@ function initializeFamilyView() {
         },
         { title: i18next.t("Fiscal Year"), data: "FormattedFY" },
         { title: i18next.t("Method"), data: "Method" },
+        { title: i18next.t("Person"), data: "Person", defaultContent: "" },
         { title: i18next.t("Comment"), data: "Comment" },
         {
           width: "40px",

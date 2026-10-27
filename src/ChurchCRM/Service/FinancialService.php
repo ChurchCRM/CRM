@@ -14,6 +14,7 @@ use ChurchCRM\model\ChurchCRM\Map\DonationFundTableMap;
 use ChurchCRM\model\ChurchCRM\Map\PledgeTableMap;
 use ChurchCRM\model\ChurchCRM\Pledge;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Utils\CurrencyFormatter;
@@ -175,6 +176,8 @@ class FinancialService
      *   groupKey: string,
      *   familyId: int,
      *   familyName: string,
+     *   personId: int|null,
+     *   personName: string,
      *   date: string,
      *   fyId: int,
      *   method: string,
@@ -211,10 +214,13 @@ class FinancialService
         foreach ($pledges as $pledge) {
             if ($header === null) {
                 $family = $pledge->getFamily();
+                $person = $pledge->getPerId() ? PersonQuery::create()->findPk($pledge->getPerId()) : null;
                 $header = [
                     'groupKey'        => $pledge->getGroupKey(),
                     'familyId'        => (int) $pledge->getFamId(),
                     'familyName'      => $family ? $family->getFamilyString() : '',
+                    'personId'        => $person ? (int) $person->getId() : null,
+                    'personName'      => $person ? $person->getFullName() : '',
                     'date'            => $pledge->getDate('Y-m-d'),
                     'fyId'            => (int) $pledge->getFyId(),
                     'method'          => $pledge->getMethod() ?? '',
@@ -411,6 +417,7 @@ class FinancialService
                 $pledge = new Pledge();
                 $pledge
                     ->setFamId(!empty($payment->FamilyID) ? (int) $payment->FamilyID : null)
+                    ->setPerId($payment->PersonID ?? null)
                     ->setFyId($payment->FYID)
                     ->setDate($payment->Date)
                     ->setAmount($Fund->Amount)
@@ -462,6 +469,26 @@ class FinancialService
     }
 
     /**
+     * A named person decides the family: their gift is booked to their own family,
+     * or to no family when they have none.
+     */
+    private function resolveDonor(object $payment): void
+    {
+        $personId = (int) ($payment->PersonID ?? 0);
+        if ($personId <= 0) {
+            $payment->PersonID = null;
+
+            return;
+        }
+        $person = PersonQuery::create()->findPk($personId);
+        if ($person === null) {
+            throw new \Exception(gettext('Person not found'));
+        }
+        $payment->PersonID = $personId;
+        $payment->FamilyID = (int) $person->getFamId() > 0 ? (int) $person->getFamId() : null;
+    }
+
+    /**
      * Normalise $payment->FundSplit to an array of stdClass objects.
      *
      * The legacy API and the new MVC editor both send FundSplit as a
@@ -492,6 +519,7 @@ class FinancialService
         AuthService::requireUserGroupMembership('bFinance');
         $this->normalizeFundSplit($payment);
         $this->validateFund($payment);
+        $this->resolveDonor($payment);
         $this->validateChecks($payment);
         $this->validateDate($payment);
         $groupKey = $this->insertPledgeorPayment($payment);
@@ -515,6 +543,7 @@ class FinancialService
         AuthService::requireUserGroupMembership('bFinance');
         $this->normalizeFundSplit($payment);
         $this->validateFund($payment);
+        $this->resolveDonor($payment);
         $this->validateChecks($payment, $groupKey);
         $this->validateDate($payment);
 
@@ -586,6 +615,8 @@ class FinancialService
         foreach ($pledges as $row) {
             $family = FamilyQuery::create()->findOneById($row->getFamId());
             $payment->Family = $family?->getFamilyString() ?? '';
+            $person = $row->getPerId() ? PersonQuery::create()->findPk($row->getPerId()) : null;
+            $payment->Person = $person?->getFullName() ?? '';
             $payment->Date = $row->getDate('Y-m-d');
             $payment->FYID = $row->getFyId();
             $payment->iMethod = $row->getMethod();
@@ -709,9 +740,12 @@ class FinancialService
         // Get results and convert to array WITHOUT foreign objects
         // Using addAsColumn() in the query provides Family and Fund names directly
         $collection = $query->find();
+        $donors = PledgeDonor::describe($collection);
         $results = [];
         foreach ($collection as $pledge) {
-            $results[] = $pledge->toArray(TableMap::TYPE_PHPNAME, true, [], false);
+            $row = $pledge->toArray(TableMap::TYPE_PHPNAME, true, [], false);
+            $row['PersonName'] = $donors[PledgeDonor::key($pledge) ?? '']['person_name'] ?? '';
+            $results[] = $row;
         }
         return $results;
     }
@@ -760,6 +794,22 @@ class FinancialService
         // Get results - DO NOT include foreign objects recursively (causes memory exhaustion)
         // Instead, manually fetch only the Family and DonationFund data we need
         $collection = $query->find();
+        $personIds = array_values(array_filter(array_unique(array_map(fn ($pledge) => (int) $pledge->getPerId(), $collection->getData()))));
+        $persons = [];
+        foreach (PersonQuery::create()->filterById($personIds, Criteria::IN)->find() as $person) {
+            $persons[(int) $person->getId()] = [
+                'Id' => (int) $person->getId(),
+                'Name' => $person->getFullName(),
+                'MailingAddress' => [
+                    'Address1' => (string) $person->getAddress1(),
+                    'Address2' => (string) $person->getAddress2(),
+                    'City' => (string) $person->getCity(),
+                    'State' => (string) $person->getState(),
+                    'Zip' => (string) $person->getZip(),
+                    'Country' => (string) $person->getCountry(),
+                ],
+            ];
+        }
         $results = [];
         foreach ($collection as $pledge) {
             // Get basic pledge data without foreign objects
@@ -797,7 +847,8 @@ class FinancialService
             } else {
                 $pledgeData['DonationFund'] = null;
             }
-            
+            $pledgeData['Person'] = $persons[(int) $pledge->getPerId()] ?? null;
+
             $results[] = $pledgeData;
         }
         return $results;

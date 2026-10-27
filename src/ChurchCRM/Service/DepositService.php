@@ -28,6 +28,7 @@ class DepositService {
         'Deposit ID',
         'Pledge ID',
         'Family Name',
+        'Person',
         'Date',
         'Amount',
         'Fund',
@@ -169,9 +170,12 @@ class DepositService {
         // Propel's ObjectCollection::toArray() doesn't call individual model's toArray(),
         // so we iterate to ensure each Pledge's custom toArray() executes (which populates FamilyString).
         // sumAmount_formatted is added here so the API contract (raw + formatted sibling) is met.
-        return array_map(function ($pledge) {
+        $donors = PledgeDonor::describe($items);
+
+        return array_map(function ($pledge) use ($donors) {
             $row = $pledge->toArray();
             $row['sumAmount_formatted'] = CurrencyFormatter::format($row['sumAmount'] ?? null);
+            $row['PersonName'] = $donors[PledgeDonor::key($pledge) ?? '']['person_name'] ?? '';
             return $row;
         }, iterator_to_array($items));
     }
@@ -323,6 +327,7 @@ class DepositService {
             ->orderByDepId()
             ->orderByDate()
             ->find();
+        $donors = PledgeDonor::describe($pledges);
 
         $rows = [];
         foreach ($pledges as $pledge) {
@@ -333,6 +338,7 @@ class DepositService {
                 'depositId'  => (string) $pledge->getDepId(),
                 'pledgeId'   => (string) $pledge->getId(),
                 'familyName' => $family ? (string) $family->getName() : '',
+                'personName' => $donors[PledgeDonor::key($pledge) ?? '']['person_name'] ?? '',
                 'date'       => $dateVal ? $dateVal->format('Y-m-d') : '',
                 'amount'     => (string) $pledge->getAmount(),
                 'fundName'   => $fund ? (string) $fund->getName() : '',

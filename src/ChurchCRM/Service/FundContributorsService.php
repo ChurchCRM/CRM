@@ -9,7 +9,7 @@ use Psr\Log\LoggerInterface;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 /**
- * Service to aggregate pledge/payment data per family for a specific fund and fiscal year.
+ * Service to aggregate pledge/payment data per donor (person or family) for a specific fund and fiscal year.
  *
  * Used by the Fund Summary contributor drill-down page (GET /finance/fund/{fundId}/contributors).
  */
@@ -23,7 +23,7 @@ class FundContributorsService
     }
 
     /**
-     * Get per-family pledge summary for a specific donation fund and fiscal year.
+     * Get per-donor pledge summary for a specific donation fund and fiscal year.
      *
      * @param int $fundId Donation fund ID
      * @param int $fyid   Fiscal year ID, or 0/negative for All Time (no FY filter)
@@ -64,7 +64,7 @@ class FundContributorsService
             ->filterByFundId($fundId)
             ->filterByPledgeOrPayment('Pledge')
             ->filterByAmount(0, Criteria::GREATER_THAN)
-            ->joinWith('Pledge.Family')
+            ->leftJoinWithFamily()
             ->orderByFamId();
         if ($fyid > 0) {
             $pledgesQuery->filterByFyId($fyid);
@@ -76,90 +76,48 @@ class FundContributorsService
             ->filterByFundId($fundId)
             ->filterByPledgeOrPayment('Payment')
             ->filterByAmount(0, Criteria::GREATER_THAN)
-            ->joinWith('Pledge.Family')
+            ->leftJoinWithFamily()
             ->orderByFamId();
         if ($fyid > 0) {
             $paymentsQuery->filterByFyId($fyid);
         }
         $payments = $paymentsQuery->find();
 
-        // Index payments by family ID
-        $paymentsByFamily  = [];  // famId => float
-        $paymentGroupKeys  = [];  // famId => string (first payment group key)
-        $paymentFamilyInfo = [];  // famId => ['family_id', 'family_name', 'envelope']
+        $donors = PledgeDonor::describe($pledges, $payments);
 
+        $paymentsByDonor = [];  // donorKey => float
+        $paymentGroupKeys = [];  // donorKey => first payment group key
         foreach ($payments as $payment) {
-            $famId = (int) $payment->getFamId();
-
-            if (!isset($paymentsByFamily[$famId])) {
-                $paymentsByFamily[$famId] = 0.0;
-            }
-            $paymentsByFamily[$famId] += (float) $payment->getAmount();
-
-            if (!isset($paymentGroupKeys[$famId])) {
-                $paymentGroupKeys[$famId] = (string) $payment->getGroupKey();
-            }
-
-            if (!isset($paymentFamilyInfo[$famId])) {
-                $payFamily = $payment->getFamily();
-                if ($payFamily !== null) {
-                    $paymentFamilyInfo[$famId] = [
-                        'family_id'   => $famId,
-                        'family_name' => (string) $payFamily->getName(),
-                        'envelope'    => (string) ($payFamily->getEnvelope() ?? ''),
-                    ];
-                }
-            }
-        }
-
-        // Build per-family contributor rows from pledges
-        $contributors = [];  // famId => row
-
-        foreach ($pledges as $pledge) {
-            $family = $pledge->getFamily();
-            if ($family === null) {
+            $donorKey = PledgeDonor::key($payment);
+            if ($donorKey === null) {
                 continue;
             }
-
-            $famId       = (int) $family->getId();
-            $pledgeAmount = (float) $pledge->getAmount();
-
-            if (!isset($contributors[$famId])) {
-                $contributors[$famId] = [
-                    'family_id'   => $famId,
-                    'family_name' => (string) $family->getName(),
-                    'envelope'    => (string) ($family->getEnvelope() ?? ''),
-                    'pledged'     => 0.0,
-                    'paid'        => $paymentsByFamily[$famId] ?? 0.0,
-                    // Known limitation: only the first pledge record's group_key is
-                    // stored. Families with multiple pledge records for the same
-                    // fund/FY will have their pledged amounts aggregated correctly,
-                    // but the 'View Pledge' action links to the first record only.
-                    'group_key'   => (string) $pledge->getGroupKey(),
-                ];
-            }
-
-            $contributors[$famId]['pledged'] += $pledgeAmount;
+            $paymentsByDonor[$donorKey] = ($paymentsByDonor[$donorKey] ?? 0.0) + (float) $payment->getAmount();
+            $paymentGroupKeys[$donorKey] ??= (string) $payment->getGroupKey();
         }
 
-        // Backfill payment-only families (paid but no pledge recorded)
-        foreach ($paymentsByFamily as $famId => $paidAmount) {
-            if (isset($contributors[$famId])) {
-                continue; // already created from pledges above
+        $contributors = [];  // donorKey => row
+        foreach ($pledges as $pledge) {
+            $donorKey = PledgeDonor::key($pledge);
+            if ($donorKey === null) {
+                continue;
             }
+            // Known limitation: only the first pledge record's group_key is stored, so
+            // 'View Pledge' links to the first of several pledges for the same fund/FY.
+            $contributors[$donorKey] ??= $donors[$donorKey] + [
+                'pledged'   => 0.0,
+                'paid'      => $paymentsByDonor[$donorKey] ?? 0.0,
+                'group_key' => (string) $pledge->getGroupKey(),
+            ];
+            $contributors[$donorKey]['pledged'] += (float) $pledge->getAmount();
+        }
 
-            if (!isset($paymentFamilyInfo[$famId])) {
-                continue; // no family metadata available, skip
-            }
-
-            $info = $paymentFamilyInfo[$famId];
-            $contributors[$famId] = [
-                'family_id'   => $info['family_id'],
-                'family_name' => $info['family_name'],
-                'envelope'    => $info['envelope'],
-                'pledged'     => 0.0,
-                'paid'        => $paidAmount,
-                'group_key'   => $paymentGroupKeys[$famId] ?? null,
+        // Payment-only donors (paid but no pledge recorded)
+        foreach ($paymentsByDonor as $donorKey => $paidAmount) {
+            $contributors[$donorKey] ??= $donors[$donorKey] + [
+                'pledged'   => 0.0,
+                'paid'      => $paidAmount,
+                'group_key' => $paymentGroupKeys[$donorKey] ?? null,
             ];
         }
 
@@ -167,8 +125,8 @@ class FundContributorsService
         $totalPledged         = 0.0;
         $totalPaid            = 0.0;
         $totalRemaining       = 0.0;
-        // Accumulate each family's contribution capped at their pledge so that
-        // overpayment in one family never masks underpayment in another and
+        // Accumulate each donor's contribution capped at their pledge so that
+        // overpayment by one donor never masks underpayment by another and
         // the aggregate % stays internally consistent with $totalRemaining.
         $pledgeDeficitCovered = 0.0;
 
@@ -195,7 +153,7 @@ class FundContributorsService
                 } else {
                     $status = 'critical';
                 }
-                // Each family contributes at most their pledged amount to the
+                // Each donor contributes at most their pledged amount to the
                 // aggregate coverage so overpayers don't hide underpayers.
                 $pledgeDeficitCovered += min($paid, $pledged);
             }
@@ -210,9 +168,8 @@ class FundContributorsService
         }
         unset($row); // break reference
 
-        // Sort by family name
         usort($contributors, static function (array $a, array $b): int {
-            return strcasecmp($a['family_name'], $b['family_name']);
+            return strcasecmp($a['display_name'], $b['display_name']);
         });
 
         $contributorCount = count($contributors);

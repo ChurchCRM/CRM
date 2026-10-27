@@ -91,7 +91,9 @@ $app->group('/persons', function (RouteCollectorProxy $group): void {
      *             @OA\Property(property="id", type="integer"),
      *             @OA\Property(property="objid", type="integer"),
      *             @OA\Property(property="text", type="string", example="John Smith"),
-     *             @OA\Property(property="uri", type="string", example="/people/view/42")
+     *             @OA\Property(property="uri", type="string", example="/people/view/42"),
+     *             @OA\Property(property="familyId", type="integer", description="0 when the person has no family", example=7),
+     *             @OA\Property(property="familyName", type="string", example="Smith")
      *         ))
      *     ),
      *     @OA\Response(response=401, description="Unauthorized")
@@ -118,6 +120,8 @@ $app->group('/persons', function (RouteCollectorProxy $group): void {
             $values['objid'] = $person->getId();
             $values['text'] = $person->getFullName();
             $values['uri'] = $person->getViewURI();
+            $values['familyId'] = (int) $person->getFamId();
+            $values['familyName'] = $person->getFamily()?->getName() ?? '';
 
             $return[] = $values;
         }

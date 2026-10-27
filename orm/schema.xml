@@ -565,6 +565,7 @@
         <column name="plg_aut_ResultID" phpName="AutResultId" type="SMALLINT" size="9" sqlType="mediumint(9)" required="true" defaultValue="0"/>
         <column name="plg_NonDeductible" phpName="Nondeductible" type="DECIMAL" size="8" scale="2" required="true"/>
         <column name="plg_GroupKey" phpName="GroupKey" type="VARCHAR" size="64" required="true"/>
+        <column name="plg_PerID" phpName="PerId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" description="Person who gave or pledged; NULL when the record belongs to the family as a whole"/>
         <index name="idx_plg_FamID">
             <index-column name="plg_FamID"/>
         </index>
@@ -576,6 +577,9 @@
         </index>
         <index name="idx_plg_depID">
             <index-column name="plg_depID"/>
+        </index>
+        <index name="idx_plg_PerID">
+            <index-column name="plg_PerID"/>
         </index>
         <foreign-key foreignTable="deposit_dep">
             <reference local="plg_depID" foreign="dep_ID"/>

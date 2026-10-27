@@ -11,6 +11,7 @@ use ChurchCRM\model\ChurchCRM\Map\PledgeTableMap;
 use ChurchCRM\model\ChurchCRM\PledgeQuery as ChildPledgeQuery;
 use ChurchCRM\Reports\PdfDepositReport;
 use ChurchCRM\Service\AuthService;
+use ChurchCRM\Service\PledgeDonor;
 use ChurchCRM\Utils\CurrencyFormatter;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Connection\ConnectionInterface;
@@ -288,21 +289,17 @@ class Deposit extends BaseDeposit
         $thisReport->pdf->Write(8, 'Amount');
         $thisReport->curY += 2 * $thisReport->depositSummaryParameters->summary->intervalY;
 
-        //while ($aRow = mysqli_fetch_array($rsPledges))
-        foreach ($this->getPledges() as $payment) {
+        $payments = $this->getPledges();
+        $donors = PledgeDonor::describe($payments);
+        foreach ($payments as $payment) {
             $thisReport->pdf->SetFont('Times', '', 10);
 
             // Format Data
             $checkNo = $payment->getCheckNo();
             $fundName = DonationFundQuery::create()->findOneById($payment->getFundId())->getName();
             $comment = $payment->getComment();
-            //$family = FamilyQuery::create()->findOneById($payment->getFamId());
-            $family = $payment->getFamily();
-            if ($family !== null) {
-                $familyName = $payment->getFamily()->getName();
-            } else {
-                $familyName = gettext('Anonymous');
-            }
+            $donor = $donors[PledgeDonor::key($payment) ?? ''] ?? null;
+            $familyName = $donor !== null ? $donor['display_name'] : gettext('Anonymous');
 
             if (strlen($checkNo) > 8) {
                 $checkNo = '...' . mb_substr($checkNo, -8, 8);

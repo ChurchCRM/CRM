@@ -388,12 +388,25 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
             </div>
         </div>
 
-        <?php if (AuthenticationManager::getCurrentUser()->isFinanceEnabled() && !empty($fam_ID)) { ?>
+        <?php if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
         <!-- Giving History Card (Finance role only) -->
         <div class="card mb-3" id="giving-history-card">
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title m-0"><i class="fa-solid fa-circle-dollar-to-slot me-1"></i> <?= gettext("Giving History") ?></h3>
                 <span id="person-ytd-total-badge" class="badge bg-green-lt text-green ms-2 d-none"></span>
+                <div class="dropdown ms-auto">
+                    <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="<?= InputUtils::escapeAttribute(gettext('Add')) ?>">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/finance/pledge/new?type=Payment&personId=<?= (int) $iPersonID ?>">
+                            <i class="fa-solid fa-hand-holding-dollar me-2"></i><?= gettext('Add Payment') ?>
+                        </a>
+                        <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/finance/pledge/new?type=Pledge&personId=<?= (int) $iPersonID ?>">
+                            <i class="fa-solid fa-file-signature me-2"></i><?= gettext('Add Pledge') ?>
+                        </a>
+                    </div>
+                </div>
             </div>
             <div class="card-body p-0">
                 <div id="giving-history-loading" class="px-3 py-2 text-muted">
@@ -410,15 +423,17 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
                             <strong><?= gettext("Last Gift") ?>:</strong> <span id="person-last-gift">—</span>
                         </li>
                     </ul>
-                    <div class="px-3 pb-2">
-                        <a href="<?= SystemURLs::getRootPath() ?>/people/family/<?= (int)$fam_ID ?>#giving-history" class="btn btn-sm btn-outline-primary w-100">
-                            <i class="fa-solid fa-arrow-up-right-from-square me-1"></i><?= gettext("View Full Family Giving") ?>
-                        </a>
-                    </div>
                 </div>
                 <div id="giving-history-empty" class="d-none px-3 py-2 text-muted">
-                    <i class="fa-solid fa-circle-info me-1"></i> <?= gettext("No giving history found.") ?>
+                    <i class="fa-solid fa-circle-info me-1"></i> <?= gettext("No giving recorded for this person.") ?>
                 </div>
+                <?php if (!empty($fam_ID)) { ?>
+                <div class="px-3 pb-2">
+                    <a href="<?= SystemURLs::getRootPath() ?>/people/family/<?= (int)$fam_ID ?>#giving-history" class="btn btn-sm btn-outline-primary w-100">
+                        <i class="fa-solid fa-arrow-up-right-from-square me-1"></i><?= gettext("View Full Family Giving") ?>
+                    </a>
+                </div>
+                <?php } ?>
             </div>
         </div>
         <?php } ?>
@@ -1067,7 +1082,6 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
             window.CRM.currentPersonID = <?= $iPersonID ?>;
             window.CRM.currentPersonActive = <?= $person->isActive() ? "true" : "false" ?>;
             window.CRM.currentPersonName = <?= InputUtils::jsonEncodeForScript($person->getFullName()) ?>;
-            window.CRM.personFamId = <?= (int)$fam_ID ?>;
             window.CRM.currentFY = <?= json_encode(FinancialService::formatFiscalYear(FiscalYearUtils::getCurrentFiscalYearId() ?? 1)) ?>;
 
             $("#deletePhoto").click(function() {
