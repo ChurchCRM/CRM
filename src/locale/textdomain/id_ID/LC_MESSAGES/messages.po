@@ -5467,10 +5467,6 @@ msgid "Submit Registration"
 msgstr "Kirim Pendaftaran"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Kata sandi baru telah dibuat dan dikirim ke email Anda."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Terapkan Pembaruan Sekarang"
 
@@ -5515,20 +5511,12 @@ msgid "Login Name is required"
 msgstr "Nama Login wajib diisi"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Setelah menerima email, Anda dapat login dengan kata sandi sementara lalu mengubahnya."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Gagal Atur Ulang Kata Sandi"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Atur Ulang Kata Sandi Berhasil"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Silakan cek email Anda (termasuk folder spam) untuk kata sandi sementara."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12336,10 +12324,6 @@ msgstr "Email dinonaktifkan"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "Email dinonaktifkan. Konfigurasikan email sebelum mengatur ulang kata sandi, atau gunakan Ubah Kata Sandi."
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Masukkan salah satu kode pemulihan cadangan Anda"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"

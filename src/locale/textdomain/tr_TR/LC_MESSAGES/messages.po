@@ -5475,10 +5475,6 @@ msgid "Submit Registration"
 msgstr "Kaydı Gönder"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Yeni bir şifre oluşturuldu ve e-posta adresinize gönderildi."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Güncellemeyi Şimdi Uygula"
 
@@ -5523,20 +5519,12 @@ msgid "Login Name is required"
 msgstr "Giriş Adı gereklidir"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "E-postayı aldığınızda, geçici şifrenizle giriş yapabilir ve bunu tercih ettiğiniz bir şifreyle değiştirebilirsiniz."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Şifre Sıfırlama Hatası"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Şifre Sıfırlama Başarılı"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Lütfen geçici şifreniz için e-postanızı (gereksiz/spam klasörü dahil) kontrol edin."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12352,10 +12340,6 @@ msgstr "E-posta devre dışı"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "E-posta devre dışı. Şifreleri sıfırlamadan önce e-postayı yapılandırın veya Şifre Değiştir'i kullanın."
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Yedek kurtarma kodlarınızdan birini girin"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"

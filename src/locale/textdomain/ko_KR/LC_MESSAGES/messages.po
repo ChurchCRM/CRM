@@ -5467,10 +5467,6 @@ msgid "Submit Registration"
 msgstr "등록 제출"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "새 비밀번호가 생성되어 이메일 주소로 전송되었습니다."
-
-#: 
 msgid "Apply Update Now"
 msgstr "지금 업데이트 적용"
 
@@ -5515,20 +5511,12 @@ msgid "Login Name is required"
 msgstr "로그인 이름은 필수입니다"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "이메일을 받으시면 임시 비밀번호로 로그인하여 원하시는 비밀번호로 변경하실 수 있습니다."
-
-#: 
 msgid "Password Reset Error"
 msgstr "비밀번호 재설정 오류"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "비밀번호 재설정 성공"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "임시 비밀번호를 확인하려면 이메일(스팸/정크 폴더 포함)을 확인해 주세요."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12336,10 +12324,6 @@ msgstr "이메일이 비활성화되어 있습니다"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "이메일이 비활성화되어 있습니다. 비밀번호를 재설정하려면 먼저 이메일을 설정하거나 비밀번호 변경을 사용하세요."
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "백업 복구 코드 중 하나를 입력하세요"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"
