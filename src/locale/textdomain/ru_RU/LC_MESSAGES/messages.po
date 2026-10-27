@@ -5532,10 +5532,6 @@ msgid "Submit Registration"
 msgstr "Отправить регистрацию"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Новый пароль создан и отправлен на вашу почту."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Применить обновление сейчас"
 
@@ -5580,20 +5576,12 @@ msgid "Login Name is required"
 msgstr "Имя входа обязательно"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Получив письмо, войдите с временным паролем и смените его."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Ошибка сброса пароля"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Пароль успешно сброшен"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Проверьте почту (включая папку спам) на наличие временного пароля."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12427,10 +12415,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "Электронная почта отключена. Настройте почту перед сбросом паролей или используйте «Изменить пароль»."
 
 #: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Введите один из резервных кодов восстановления"
-
-#: 
 msgid "Enter one of your backup recovery codes to access your account"
 msgstr "Введите один из резервных кодов восстановления для доступа к вашей учётной записи"
 
@@ -18098,10 +18082,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d налоговый документ успешно отправлен семье по электронной почте."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d Отчет о благотворительных взносах"
-
-#: 
 msgid "All classifications"
 msgstr "Все классификации"
 
@@ -21644,10 +21624,6 @@ msgid "Signed up"
 msgstr "Записан(а)"
 
 #: 
-msgid "Sincerely"
-msgstr "С уважением"
-
-#: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
 msgstr "Не удалось сохранить некоторые ваши сведения. Проверьте выделенные поля."
 
@@ -24778,4 +24754,24 @@ msgstr "Месяц, в котором все, у кого есть класс, �
 #: 
 msgid "Through Grade"
 msgstr "По класс"
+
+#: 
+msgid "Invalid setting name or value"
+msgstr "Недопустимое имя или значение настройки"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Служба геокодирования не ответила — повторите попытку позже"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Отображается только отправленное вами письмо."
+
+#: 
+msgid "%d Giving Statement"
+msgstr "Отчет о пожертвованиях %d"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Не удалось создать повторяющиеся события. Подробности смотрите в журнале приложения."
 

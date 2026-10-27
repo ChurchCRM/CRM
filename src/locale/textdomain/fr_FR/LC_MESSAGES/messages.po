@@ -5472,10 +5472,6 @@ msgid "Submit Registration"
 msgstr "Soumettre l'inscription"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Un nouveau mot de passe a été généré et envoyé à votre adresse électronique."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Appliquer la mise à jour maintenant"
 
@@ -5520,20 +5516,12 @@ msgid "Login Name is required"
 msgstr "Un nom d'utilisateur est obligatoire"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Une fois que vous aurez reçu l'e-mail, vous pourrez vous connecter avec votre mot de passe temporaire et le modifier pour en choisir un autre."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Erreur de réinitialisation du mot de passe"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Réinitialisation du mot de passe réussie"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Veuillez vérifier votre boîte mail (y compris le dossier spam/courrier indésirable) pour retrouver votre mot de passe temporaire."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12351,10 +12339,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "La messagerie est désactivée. Configurez la messagerie avant de réinitialiser les mots de passe, ou utilisez Modifier le mot de passe."
 
 #: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Saisissez l'un de vos codes de récupération de secours"
-
-#: 
 msgid "Enter one of your backup recovery codes to access your account"
 msgstr "Saisissez l'un de vos codes de récupération de secours pour accéder à votre compte"
 
@@ -18010,10 +17994,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d document fiscal envoyé par courrier électronique à la famille avec succès."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d déclaration de don"
-
-#: 
 msgid "All classifications"
 msgstr "Toutes les classifications"
 
@@ -21532,10 +21512,6 @@ msgid "Signed up"
 msgstr "Inscrit"
 
 #: 
-msgid "Sincerely"
-msgstr "Cordialement"
-
-#: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
 msgstr "Certaines de vos informations n'ont pas pu être enregistrées. Veuillez vérifier les champs en surbrillance."
 
@@ -24658,4 +24634,24 @@ msgstr "Le mois au cours duquel toute personne ayant un niveau monte d’un nive
 #: 
 msgid "Through Grade"
 msgstr "Jusqu’au niveau"
+
+#: 
+msgid "Invalid setting name or value"
+msgstr "Nom ou valeur du paramètre non valide"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Le service de géocodage n’a pas répondu — réessayez plus tard"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Seul le courriel que vous avez envoyé est affiché."
+
+#: 
+msgid "%d Giving Statement"
+msgstr "Relevé de dons %d"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Les événements récurrents n'ont pas pu être créés. Consultez le journal de l'application pour plus de détails."
 

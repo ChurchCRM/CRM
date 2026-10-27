@@ -194,9 +194,11 @@ function passwordResetRequest(Request $request, Response $response, array $args)
 
     $token = new Token();
     $token->build('password', $user->getId());
+    $rawToken = $token->getToken();
+    $token->setToken(Token::passwordResetStorageKey($rawToken));
     $token->save();
 
-    $email = new ResetPasswordTokenEmail($user, $token->getToken());
+    $email = new ResetPasswordTokenEmail($user, $rawToken);
     if (!$email->send()) {
         $logger->error('Failed to send password reset email for user ' . $user->getUserName() . ': ' . $email->getError());
         $token->delete();

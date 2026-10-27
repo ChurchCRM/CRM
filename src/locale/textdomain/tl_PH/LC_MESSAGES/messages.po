@@ -5441,10 +5441,6 @@ msgid "Submit Registration"
 msgstr "Isumite ang Pagpaparehistro"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Isang bagong password ay nagawa at naipadala sa iyong email address."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Ilapat ang Update Ngayon"
 
@@ -5489,20 +5485,12 @@ msgid "Login Name is required"
 msgstr "Ang Pangalan sa Login ay kinakailangan"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Kapag natanggap mo ang email, maaari kang mag-login gamit ang iyong pansamantalang password at palitan ito ng gusto mo."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Error sa Pag-reset ng Password"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Matagumpay ang Pag-reset ng Password"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Pakitingnan ang iyong email (kasama ang folder ng spam/junk) para sa iyong pansamantalang password."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12320,10 +12308,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "Naka-disable ang email. I-configure ang email bago i-reset ang mga password, o gamitin ang Baguhin ang Password."
 
 #: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Ilagay ang isa sa iyong mga backup recovery code"
-
-#: 
 msgid "Enter one of your backup recovery codes to access your account"
 msgstr "Ilagay ang isa sa iyong mga backup recovery code upang ma-access ang iyong account"
 
@@ -17979,10 +17963,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d dokumento ng buwis ay matagumpay na ipinadala sa pamilya."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d Pahayag ng Pagbibigay"
-
-#: 
 msgid "All classifications"
 msgstr "Lahat ng klasipikasyon"
 
@@ -21501,10 +21481,6 @@ msgid "Signed up"
 msgstr "Nag-sign up"
 
 #: 
-msgid "Sincerely"
-msgstr "Taos-pusong gumagalang"
-
-#: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
 msgstr "May ilan sa mga detalye mo na hindi ma-save. Pakisuri ang mga naka-highlight na field."
 
@@ -24627,4 +24603,24 @@ msgstr "Ang buwan kung kailan umaakyat ng isang baitang ang lahat ng may baitang
 #: 
 msgid "Through Grade"
 msgstr "Hanggang baitang"
+
+#: 
+msgid "Invalid setting name or value"
+msgstr "Hindi wastong pangalan o halaga ng setting"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Hindi tumugon ang serbisyo ng geocoding — subukan muli mamaya"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Ang email na ipinadala mo lang ang ipinapakita."
+
+#: 
+msgid "%d Giving Statement"
+msgstr "%d Pahayag ng Pagbibigay"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Hindi magawa ang mga paulit-ulit na kaganapan. Suriin ang log ng aplikasyon para sa mga detalye."
 

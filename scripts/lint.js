@@ -37,6 +37,7 @@ const checks = {
     'cypress commands': script('validate-cypress-commands.js'),
     'cypress spec coverage': script('validate-cypress-spec-coverage.js'),
     'subdir-safe urls': script('validate-subdir-urls.js'),
+    'pr gates': script('validate-pr-gates.js'),
     'cypress split timings': script('split-timings.js', 'check'),
     'cypress db access': script('validate-cypress-db-access.js'),
     'capture used-in': script('validate-capture-used-in.js'),

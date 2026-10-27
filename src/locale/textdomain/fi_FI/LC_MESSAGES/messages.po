@@ -5442,10 +5442,6 @@ msgid "Submit Registration"
 msgstr "Lähetä rekisteröinti"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Uusi salasana on luotu ja lähetetty sähköpostiisi."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Päivitä nyt"
 
@@ -5490,20 +5486,12 @@ msgid "Login Name is required"
 msgstr "Käyttäjätunnus on pakollinen"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Kun saat sähköpostin, voit kirjautua sisään väliaikaisella salasanalla ja vaihtaa sen haluamaksesi."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Virhe salasanan nollauksessa"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Salasanan nollaus onnistui"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Tarkista sähköpostisi (myös roskapostikansio) löytääksesi väliaikaisen salasanasi."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12321,10 +12309,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "Sähköposti on poistettu käytöstä. Määritä sähköposti ennen salasanojen nollaamista tai käytä Vaihda salasana -toimintoa."
 
 #: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Anna yksi varmuuskopion palautuskoodeistasi"
-
-#: 
 msgid "Enter one of your backup recovery codes to access your account"
 msgstr "Anna yksi varmuuskopion palautuskoodeistasi päästäksesi tilillesi"
 
@@ -17980,10 +17964,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d veroasiakirja lähetetty perheelle onnistuneesti."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d lahjoitussillan osalta"
-
-#: 
 msgid "All classifications"
 msgstr "Kaikki luokittelut"
 
@@ -21502,10 +21482,6 @@ msgid "Signed up"
 msgstr "Ilmoittautunut"
 
 #: 
-msgid "Sincerely"
-msgstr "Ystävällisin terveisin"
-
-#: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
 msgstr "Joitakin tietojasi ei voitu tallentaa. Tarkista korostetut kentät."
 
@@ -24628,4 +24604,24 @@ msgstr "Kuukausi, jolloin kaikki, joilla on luokka-aste, siirtyvät yhden asteen
 #: 
 msgid "Through Grade"
 msgstr "Luokka-asteeseen"
+
+#: 
+msgid "Invalid setting name or value"
+msgstr "Virheellinen asetuksen nimi tai arvo"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Geokoodauspalvelu ei vastannut — yritä myöhemmin uudelleen"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Vain lähettämäsi sähköposti näytetään."
+
+#: 
+msgid "%d Giving Statement"
+msgstr "%d Lahjoitusilmoitus"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Toistuvia tapahtumia ei voitu luoda. Tarkista sovelluksen loki lisätietoja varten."
 

@@ -2612,7 +2612,7 @@ paths:
                 - body
               properties:
                 personIds:
-                  description: 'Person ids to email at their primary address (falls back to the family address)'
+                  description: 'Person ids to email at their own address (a person with none is skipped)'
                   type: array
                   items: { type: integer }
                 familyIds:

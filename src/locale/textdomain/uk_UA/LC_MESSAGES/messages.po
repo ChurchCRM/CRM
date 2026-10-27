@@ -5479,10 +5479,6 @@ msgid "Submit Registration"
 msgstr "Надіслати реєстрацію"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Новий пароль створено та надіслано на вашу адресу електронної пошти."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Застосувати оновлення зараз"
 
@@ -5527,20 +5523,12 @@ msgid "Login Name is required"
 msgstr "Ім'я користувача обов'язкове"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Отримавши електронний лист, ви зможете увійти за допомогою тимчасового пароля та змінити його на зручний для вас."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Помилка скидання пароля"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Скидання пароля успішне"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Будь ласка, перевірте свою електронну пошту (включаючи папку спам), щоб знайти тимчасовий пароль."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12374,10 +12362,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "Електронна пошта вимкнена. Налаштуйте електронну пошту перед скиданням паролів або скористайтеся Зміна пароля."
 
 #: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Введіть один із резервних кодів відновлення"
-
-#: 
 msgid "Enter one of your backup recovery codes to access your account"
 msgstr "Введіть один із резервних кодів відновлення для доступу до облікового запису"
 
@@ -18045,10 +18029,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d податковий документ успішно надіслано сім'ї."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d Звіт про пожертви"
-
-#: 
 msgid "All classifications"
 msgstr "Усі класифікації"
 
@@ -21591,10 +21571,6 @@ msgid "Signed up"
 msgstr "Записано"
 
 #: 
-msgid "Sincerely"
-msgstr "З повагою"
-
-#: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
 msgstr "Не вдалося зберегти деякі ваші відомості. Перевірте виділені поля."
 
@@ -24725,4 +24701,24 @@ msgstr "Місяць, у якому всі, хто має клас, перехо
 #: 
 msgid "Through Grade"
 msgstr "До класу"
+
+#: 
+msgid "Invalid setting name or value"
+msgstr "Неприпустима назва або значення налаштування"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Служба геокодування не відповіла — повторіть спробу пізніше"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Відображається лише надісланий вами електронний лист."
+
+#: 
+msgid "%d Giving Statement"
+msgstr "Звіт про пожертви %d"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Не вдалося створити повторювані події. Деталі див. у журналі програми."
 

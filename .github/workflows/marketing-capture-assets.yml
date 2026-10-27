@@ -1,133 +1,86 @@
 name: "Marketing: capture screenshots & videos"
 
-# Manually run the marketing screenshot/video pipeline end-to-end against a
-# chosen branch, verify every capture it claims to have produced is a real,
-# non-empty file (npm run marketing:check), and upload the result as a run
-# artifact. Nothing is committed to this repo. The visuals are published at
-# https://cdn.churchcrm.io by ChurchCRM/visuals ("Publish visuals"), which
-# downloads this run's artifact. Release bookkeeping starts that when a release
-# is published; the release workflow requires a green run of this workflow on
-# the release commit first.
+# Runs the marketing screenshot/video pipeline end-to-end, verifies every
+# capture it claims to have produced is a real, non-empty file
+# (npm run marketing:check), uploads the result as a run artifact and, on
+# master, publishes it to https://cdn.churchcrm.io. Capture and publish are one
+# run. Nothing is committed to this repo. The release workflow starts this on
+# master after the draft exists and never waits for it.
 #
 # Stages (each its own job, so the Actions UI shows exactly which locale or
 # stage is running or failed):
-#   1. capture   — one job per locale, in parallel. Each installs the
-#                  toolchain, starts its own CI docker stack, runs the setup
-#                  wizard + demo import, and captures that locale's
-#                  screenshots (scripts/capture-all-locales.sh <locale>).
+#   1. capture_en — English alone, first. It also records and publishes the
+#                  videos. The other locales wait for it, so a broken spec
+#                  fails one job instead of eight.
+#   2. capture   — one job per remaining locale, in parallel. Each installs
+#                  the toolchain, starts its own CI docker stack, runs the
+#                  setup wizard + demo import, and captures that locale's
+#                  @all-locales screenshots (scripts/capture-all-locales.sh <locale>).
 #                  Locales can't share one instance in parallel: the locale
-#                  is a DB setting on the shared admin user. Only 'en' also
-#                  records and publishes the videos.
-#   2. merge     — combines every locale's output, re-runs the capture check
+#                  is a DB setting on the shared admin user. Both stages run
+#                  the same composite action, .github/actions/marketing-capture.
+#   3. merge     — combines every locale's output, re-runs the capture check
 #                  and regenerates the manifest, then uploads the artifact.
+#   4. publish   — master only. Starts "Publish visuals" in ChurchCRM/visuals,
+#                  which replaces the published set with this run's artifact.
+#                  That repo owns the publish steps; nothing is copied here.
 #
-# Trigger this from the Actions tab: pick the branch, click "Run workflow".
+# Run it on master from the Actions tab. A run on another branch captures and
+# checks but never publishes.
 
 on:
   workflow_dispatch:
+
+permissions:
+  contents: read
 
 concurrency:
   group: marketing-capture-assets-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
+  # English runs first and alone. It also records the videos. If it fails, no
+  # other locale starts, so a broken spec costs one job, not eight.
+  capture_en:
+    name: "1 — Capture (en)"
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: ./.github/actions/marketing-capture
+        with:
+          locale: en
+
   capture:
-    name: "1 — Capture (${{ matrix.locale }})"
+    name: "2 — Capture (${{ matrix.locale }})"
+    needs: capture_en
     runs-on: ubuntu-24.04
     timeout-minutes: 30
     strategy:
       fail-fast: false
       matrix:
-        locale: [en, es, pt, zh, fr, ru, de, ar]
+        locale: [es, pt, zh, fr, ru, de, ar]
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - name: Set up Node.js
-        uses: ./.github/actions/setup-node
+      - uses: ./.github/actions/marketing-capture
         with:
-          node-version-file: '.nvmrc'
-          cache: 'npm'
-
-      - name: Install npm dependencies
-        run: npm ci
-
-      - name: Set up PHP 8.4
-        uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # 2.40.0
-        with:
-          php-version: '8.4'
-          extensions: pdo_mysql, mysqli, gd, zip, gettext, iconv, mbstring, xml, curl, fileinfo, bcmath
-          coverage: none
-
-      - name: Get Composer cache directory
-        id: composer-cache
-        run: |
-          cd src
-          echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
-
-      - name: Cache Composer packages
-        uses: ./.github/actions/cache
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: ${{ runner.os }}-composer-
-
-      - name: Cache Playwright browsers
-        uses: ./.github/actions/cache
-        with:
-          path: ~/.cache/ms-playwright
-          key: ${{ runner.os }}-playwright-${{ hashFiles('package-lock.json') }}
-
-      - name: Install Playwright browser
-        run: npm run marketing:install
-
-      - name: Capture ${{ matrix.locale }}
-        run: ./scripts/capture-all-locales.sh "${{ matrix.locale }}"
-
-      - name: Dump container logs on failure
-        if: failure()
-        run: |
-          docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system logs --no-color || true
-
-      - name: Tear down Docker stack
-        if: always()
-        run: npm run docker:ci:new-system:down
-
-      - name: Upload ${{ matrix.locale }} captures
-        uses: ./.github/actions/upload-artifact
-        with:
-          name: marketing-locale-${{ matrix.locale }}-${{ github.run_id }}
-          path: |
-            playwright/artifacts/screenshots
-            playwright/artifacts/metadata
-            playwright/artifacts/videos
-          retention-days: 1
-          if-no-files-found: error
-
-      - name: Upload failure output
-        if: failure()
-        uses: ./.github/actions/upload-artifact
-        with:
-          name: marketing-failure-${{ matrix.locale }}-${{ github.run_id }}
-          path: playwright/.playwright-output/
-          # Dot-directory: actions/upload-artifact drops it unless told otherwise.
-          include-hidden-files: true
-          retention-days: 14
-          if-no-files-found: warn
+          locale: ${{ matrix.locale }}
 
   merge:
-    name: "2 — Merge & check"
-    needs: capture
+    name: "3 — Merge & check"
+    needs: [capture_en, capture]
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - name: Set up Node.js
-        uses: ./.github/actions/setup-node
-        with:
-          node-version-file: '.nvmrc'
+      - name: Set up Node.js and install npm dependencies
+        uses: ./.github/actions/checkout-node-npm
 
       - name: Clear committed artifacts
         run: rm -rf playwright/artifacts/
@@ -152,3 +105,26 @@ jobs:
           path: playwright/artifacts/
           retention-days: 30
           if-no-files-found: error
+
+  publish:
+    name: "4 — Publish visuals"
+    needs: merge
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - name: Start "Publish visuals" in the visuals repo
+        env:
+          # Needs Actions: write on ChurchCRM/visuals.
+          GH_TOKEN: ${{ secrets.DOCS_RELEASE_TOKEN }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          if [ -z "${GH_TOKEN:-}" ]; then
+            echo "::error::DOCS_RELEASE_TOKEN is not set. Run 'Publish visuals' in ChurchCRM/visuals by hand with run_id=$RUN_ID."
+            exit 1
+          fi
+          gh workflow run publish.yml -R ChurchCRM/visuals -f run_id="$RUN_ID"
+          echo "Started Publish visuals in ChurchCRM/visuals from capture run $RUN_ID." >> "$GITHUB_STEP_SUMMARY"
+

@@ -5442,10 +5442,6 @@ msgid "Submit Registration"
 msgstr "Enviar registro"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Uma nova senha foi gerada e enviada para seu endereço de e-mail."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Aplicar atualização agora"
 
@@ -5490,20 +5486,12 @@ msgid "Login Name is required"
 msgstr "Nome de login é obrigatório"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Depois de receber o e-mail, você pode fazer login com sua senha temporária e alterá-la para algo que prefira."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Erro de redefinição de senha"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Redefinição de senha bem-sucedida"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Por favor, verifique seu e-mail (incluindo pasta de spam/lixo) para sua senha temporária."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12321,10 +12309,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "O e-mail está desativado. Configure o e-mail antes de redefinir senhas ou use Alterar Senha."
 
 #: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Insira um dos seus códigos de recuperação de backup"
-
-#: 
 msgid "Enter one of your backup recovery codes to access your account"
 msgstr "Insira um dos seus códigos de recuperação de backup para acessar sua conta"
 
@@ -17980,10 +17964,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d documentos fiscais enviados com sucesso para a família."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "Extrato de Doações %s %d"
-
-#: 
 msgid "All classifications"
 msgstr "Todas as classificações"
 
@@ -21502,10 +21482,6 @@ msgid "Signed up"
 msgstr "Inscrito"
 
 #: 
-msgid "Sincerely"
-msgstr "Atenciosamente"
-
-#: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
 msgstr "Alguns dos seus dados não puderam ser salvos. Verifique os campos destacados."
 
@@ -24628,4 +24604,24 @@ msgstr "O mês em que todas as pessoas com uma série sobem uma série. Desligad
 #: 
 msgid "Through Grade"
 msgstr "Até a série"
+
+#: 
+msgid "Invalid setting name or value"
+msgstr "Nome ou valor de configuração inválido"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "O serviço de geocodificação não respondeu — tente novamente mais tarde"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Somente o e-mail que você enviou é exibido."
+
+#: 
+msgid "%d Giving Statement"
+msgstr "Declaração de Doações %d"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Não foi possível criar os eventos recorrentes. Verifique o log do aplicativo para obter detalhes."
 

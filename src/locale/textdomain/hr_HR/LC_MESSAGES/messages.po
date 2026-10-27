@@ -5441,10 +5441,6 @@ msgid "Submit Registration"
 msgstr "Pošalji registraciju"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Generirana je nova lozinka i poslana na vašu adresu e-pošte."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Primijeni ažuriranje sada"
 
@@ -5489,20 +5485,12 @@ msgid "Login Name is required"
 msgstr "Korisničko ime je obavezno"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Nakon što primite e-poruku, možete se prijaviti privremenom lozinkom i promijeniti je u nešto što vam odgovara."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Greška resetiranja lozinke"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Resetiranje lozinke uspješno"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Molim provjerite svoju e-poštu (uključujući mapu neželjene pošte) za privremenu lozinku."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12328,10 +12316,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "E-pošta je onemogućena. Konfigurirajte e-poštu prije resetiranja lozinki ili koristite Promijeni lozinku."
 
 #: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Unesite jedan od vaših rezervnih kodova za oporavak"
-
-#: 
 msgid "Enter one of your backup recovery codes to access your account"
 msgstr "Unesite jedan od vaših rezervnih kodova za oporavak za pristup vašem računu"
 
@@ -17993,10 +17977,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d porezni dokument uspješno poslan po e-pošti obitelji."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "Izjava o darivanju %s %d"
-
-#: 
 msgid "All classifications"
 msgstr "Sve klasifikacije"
 
@@ -21527,10 +21507,6 @@ msgid "Signed up"
 msgstr "Prijavljen/a"
 
 #: 
-msgid "Sincerely"
-msgstr "S poštovanjem"
-
-#: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
 msgstr "Neki vaši podaci nisu mogli biti spremljeni. Provjerite označena polja."
 
@@ -24657,4 +24633,24 @@ msgstr "Mjesec u kojem svi koji imaju razred prelaze jedan razred više. Isklju�
 #: 
 msgid "Through Grade"
 msgstr "Do razreda"
+
+#: 
+msgid "Invalid setting name or value"
+msgstr "Nevažeći naziv ili vrijednost postavke"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Usluga geokodiranja nije odgovorila — pokušajte ponovno kasnije"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Prikazuje se samo e-pošta koju ste poslali."
+
+#: 
+msgid "%d Giving Statement"
+msgstr "%d Izjava o davanju"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Ponavljajući događaji nisu mogli biti stvoreni. Provjerite zapisnik aplikacije za detalje."
 

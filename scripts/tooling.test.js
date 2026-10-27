@@ -56,12 +56,22 @@ afterEach(() => {
 describe('composer-install.js', { skip }, () => {
     const logComposer = 'echo "$@" >> "$LOG"\nexit "${COMPOSER_EXIT:-0}"';
 
-    it('skips without composer when vendor matches composer.lock', () => {
+    it('refreshes metadata when vendor matches composer.lock', () => {
         const root = makeTree();
+        const log = path.join(root, 'composer.log');
+        fakeBin(root, 'composer', logComposer);
         lockWith(root, 'abc', 'abc');
-        const result = run(root, 'composer-install.js');
+        const result = run(root, 'composer-install.js', [], { LOG: log });
         assert.equal(result.status, 0);
-        assert.match(result.stdout, /skipping/);
+        assert.deepEqual(fs.readFileSync(log, 'utf8').trim().split('\n'), ['install --no-dev']);
+    });
+
+    it('fails the build when refreshing metadata fails', () => {
+        const root = makeTree();
+        fakeBin(root, 'composer', logComposer);
+        lockWith(root, 'abc', 'abc');
+        const result = run(root, 'composer-install.js', [], { LOG: path.join(root, 'composer.log'), COMPOSER_EXIT: '3' });
+        assert.equal(result.status, 3);
     });
 
     it('fails with a message when an install is needed and composer is missing', () => {

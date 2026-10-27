@@ -5475,10 +5475,6 @@ msgid "Submit Registration"
 msgstr "Kaydı Gönder"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Yeni bir şifre oluşturuldu ve e-posta adresinize gönderildi."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Güncellemeyi Şimdi Uygula"
 
@@ -5523,20 +5519,12 @@ msgid "Login Name is required"
 msgstr "Giriş Adı gereklidir"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "E-postayı aldığınızda, geçici şifrenizle giriş yapabilir ve bunu tercih ettiğiniz bir şifreyle değiştirebilirsiniz."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Şifre Sıfırlama Hatası"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Şifre Sıfırlama Başarılı"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Lütfen geçici şifreniz için e-postanızı (gereksiz/spam klasörü dahil) kontrol edin."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12354,10 +12342,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "E-posta devre dışı. Şifreleri sıfırlamadan önce e-postayı yapılandırın veya Şifre Değiştir'i kullanın."
 
 #: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Yedek kurtarma kodlarınızdan birini girin"
-
-#: 
 msgid "Enter one of your backup recovery codes to access your account"
 msgstr "Hesabınıza erişmek için yedek kurtarma kodlarınızdan birini girin"
 
@@ -18013,10 +17997,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d vergi belgesi aileye başarıyla e-posta ile gönderildi."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d Bağış Açıklaması"
-
-#: 
 msgid "All classifications"
 msgstr "Tüm sınıflandırmalar"
 
@@ -21535,10 +21515,6 @@ msgid "Signed up"
 msgstr "Kaydoldu"
 
 #: 
-msgid "Sincerely"
-msgstr "Saygılarımızla"
-
-#: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
 msgstr "Bilgilerinizden bazıları kaydedilemedi. Lütfen vurgulanan alanları kontrol edin."
 
@@ -24661,4 +24637,24 @@ msgstr "Sınıfı olan herkesin bir sınıf yukarı taşındığı ay. Kapalı, 
 #: 
 msgid "Through Grade"
 msgstr "Bitiş sınıfı"
+
+#: 
+msgid "Invalid setting name or value"
+msgstr "Geçersiz ayar adı veya değeri"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Coğrafi kodlama hizmeti yanıt vermedi — daha sonra tekrar deneyin"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Yalnızca gönderdiğiniz e-posta gösterilir."
+
+#: 
+msgid "%d Giving Statement"
+msgstr "%d Bağış Beyanı"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Tekrarlayan etkinlikler oluşturulamadı. Ayrıntılar için uygulama günlüğünü kontrol edin."
 

@@ -5474,10 +5474,6 @@ msgid "Submit Registration"
 msgstr "பதிவைச் சமர்ப்பிக்கவும்"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "ஒரு புதிய கடவுச்சொல் உருவாக்கப்பட்டு உங்கள் மின்னஞ்சல் முகவரிக்கு அனுப்பப்பட்டுள்ளது."
-
-#: 
 msgid "Apply Update Now"
 msgstr "புதுப்பிப்பை இப்போது பயன்படுத்தவும்"
 
@@ -5522,20 +5518,12 @@ msgid "Login Name is required"
 msgstr "உள்நுழைவு பெயர் தேவை"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "மின்னஞ்சலைப் பெற்றவுடன், உங்கள் தற்காலிக கடவுச்சொல்லுடன் உள்நுழைந்து அதை நீங்கள் விரும்பும் ஏதாவது ஒன்றிற்கு மாற்றலாம்."
-
-#: 
 msgid "Password Reset Error"
 msgstr "கடவுச்சொல் மீட்டமைப்பு பிழை"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "கடவுச்சொல் மீட்டமைப்பு வெற்றிகரமாக"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "உங்கள் தற்காலிக கடவுச்சொல்லுக்கு உங்கள் மின்னஞ்சலை (ஸ்பேம்/குப்பை கோப்புறை உட்பட) சரிபார்க்கவும்."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12364,10 +12352,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "மின்னஞ்சல் முடக்கப்பட்டுள்ளது. கடவுச்சொற்களை மீட்டமைக்கும் முன் மின்னஞ்சலை உள்ளமைக்கவும் அல்லது கடவுச்சொல் மாற்று பயன்படுத்தவும்."
 
 #: 
-msgid "Enter one of your backup recovery codes"
-msgstr "உங்கள் காப்பு மீட்பு குறியீடுகளில் ஒன்றை உள்ளிடவும்"
-
-#: 
 msgid "Enter one of your backup recovery codes to access your account"
 msgstr "உங்கள் கணக்கை அணுக உங்கள் காப்பு மீட்பு குறியீடுகளில் ஒன்றை உள்ளிடவும்"
 
@@ -18025,10 +18009,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d வரி ஆவணம் குடும்பத்திற்கு வெற்றிகரமாக மின்னஞ்சல் அனுப்பப்பட்டது."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d வழங்குதல் அறிக்கை"
-
-#: 
 msgid "All classifications"
 msgstr "அனைத்து வகைப்பாடுகள்"
 
@@ -21547,10 +21527,6 @@ msgid "Signed up"
 msgstr "பதிவு செய்தார்"
 
 #: 
-msgid "Sincerely"
-msgstr "இப்படிக்கு"
-
-#: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
 msgstr "உங்கள் விவரங்களில் சில சேமிக்கப்படவில்லை. சிறப்பிக்கப்பட்ட புலங்களைச் சரிபார்க்கவும்."
 
@@ -24673,4 +24649,24 @@ msgstr "வகுப்பு உள்ள அனைவரும் ஒரு �
 #: 
 msgid "Through Grade"
 msgstr "வகுப்பு வரை"
+
+#: 
+msgid "Invalid setting name or value"
+msgstr "தவறான அமைப்புப் பெயர் அல்லது மதிப்பு"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "புவிக்குறியீட்டுச் சேவை பதிலளிக்கவில்லை — பின்னர் மீண்டும் முயற்சிக்கவும்"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "நீங்கள் அனுப்பிய மின்னஞ்சல் மட்டுமே காட்டப்படும்."
+
+#: 
+msgid "%d Giving Statement"
+msgstr "%d கொடை அறிக்கை"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "மீண்டும் வரும் நிகழ்வுகளை உருவாக்க முடியவில்லை. விவரங்களுக்கு பயன்பாட்டு பதிவைச் சரிபார்க்கவும்."
 

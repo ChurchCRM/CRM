@@ -71,7 +71,6 @@ class EmailComposerService
                     $skipped[] = self::skip($personId, null, $name, self::SKIP_DO_NOT_EMAIL);
                     continue;
                 }
-                // Person::getEmail() falls back to the family address when the person has none.
                 $email = trim((string) $person->getEmail());
                 if ($email === '') {
                     $skipped[] = self::skip($personId, null, $name, self::SKIP_NO_EMAIL);
@@ -174,14 +173,15 @@ class EmailComposerService
      *   Sincerely,
      *   <full name of the user writing the message>
      *   <church name>
-     * The first word comes from sConfirmSincerely; the report signer setting is not used
-     * because the message is from the person writing it, not from the office.
+     * The first word comes from sConfirmSincerely, and the line is left out when that
+     * setting is blank; the report signer setting is not used because the message is
+     * from the person writing it, not from the office.
      */
     public static function defaultSignature(?User $user): string
     {
-        $sincerely = trim((string) SystemConfig::getValue('sConfirmSincerely')) ?: gettext('Sincerely');
+        $sincerely = trim((string) SystemConfig::getValue('sConfirmSincerely'));
         $name = $user !== null ? trim($user->getFullName()) ?: (string) $user->getUserName() : '';
-        $lines = array_filter([$sincerely . ',', $name, ChurchMetaData::getChurchName()], static fn (string $l): bool => $l !== '');
+        $lines = array_filter([$sincerely !== '' ? $sincerely . ',' : '', $name, ChurchMetaData::getChurchName()], static fn (string $l): bool => $l !== '');
 
         return implode("\n", $lines);
     }

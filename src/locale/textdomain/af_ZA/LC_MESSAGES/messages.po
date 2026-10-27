@@ -5475,10 +5475,6 @@ msgid "Submit Registration"
 msgstr "Dien Inskrywing In"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "'n Nuwe wagwoord is gegenereer en na u e-posadres gestuur."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Pas Opdatering Nou Toe"
 
@@ -5523,20 +5519,12 @@ msgid "Login Name is required"
 msgstr "Aanmeldingsnaam is nodig"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Sodra u die e-pos ontvang, kan u aanmeld met u tydelike wagwoord en dit verander na iets wat u verkies."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Wagwoord Herlaai Fout"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Wagwoord Herlaai Suksesvol"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Kontroleer asseblief u e-pos (insluitend spam/sampokmap) vir u tydelike wagwoord."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12354,10 +12342,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "E-pos is gedeaktiveer. Stel e-pos op voor wagwoordterugstelling, of gebruik Verander wagwoord."
 
 #: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Voer een van u rugsteun-herstelkodes in"
-
-#: 
 msgid "Enter one of your backup recovery codes to access your account"
 msgstr "Voer een van u rugsteun-herstelkodes in om toegang tot u rekening te kry"
 
@@ -18013,10 +17997,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d belastingdokument is suksesvol aan die gesin e-pos gestuur."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d Gawing Verklaring"
-
-#: 
 msgid "All classifications"
 msgstr "Alle klassifikasies"
 
@@ -21535,10 +21515,6 @@ msgid "Signed up"
 msgstr "Ingeskryf"
 
 #: 
-msgid "Sincerely"
-msgstr "Met vriendelike groete"
-
-#: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
 msgstr "Sommige van jou besonderhede kon nie gestoor word nie. Gaan asseblief die gemerkte velde na."
 
@@ -24661,4 +24637,24 @@ msgstr "Die maand waarin almal met 'n graad een graad opskuif. Af skakel outomat
 #: 
 msgid "Through Grade"
 msgstr "Tot graad"
+
+#: 
+msgid "Invalid setting name or value"
+msgstr "Ongeldige instellingnaam of waarde"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Die geokoderingsdiens het nie geantwoord nie — probeer later weer"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Slegs die e-pos wat jy gestuur het, word gewys."
+
+#: 
+msgid "%d Giving Statement"
+msgstr "%d Gee-verklaring"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Herhalende gebeure kon nie geskep word nie. Kyk na die toepassingslogboek vir besonderhede."
 

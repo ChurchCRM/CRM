@@ -5467,10 +5467,6 @@ msgid "Submit Registration"
 msgstr "등록 제출"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "새 비밀번호가 생성되어 이메일 주소로 전송되었습니다."
-
-#: 
 msgid "Apply Update Now"
 msgstr "지금 업데이트 적용"
 
@@ -5515,20 +5511,12 @@ msgid "Login Name is required"
 msgstr "로그인 이름은 필수입니다"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "이메일을 받으시면 임시 비밀번호로 로그인하여 원하시는 비밀번호로 변경하실 수 있습니다."
-
-#: 
 msgid "Password Reset Error"
 msgstr "비밀번호 재설정 오류"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "비밀번호 재설정 성공"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "임시 비밀번호를 확인하려면 이메일(스팸/정크 폴더 포함)을 확인해 주세요."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12338,10 +12326,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "이메일이 비활성화되어 있습니다. 비밀번호를 재설정하려면 먼저 이메일을 설정하거나 비밀번호 변경을 사용하세요."
 
 #: 
-msgid "Enter one of your backup recovery codes"
-msgstr "백업 복구 코드 중 하나를 입력하세요"
-
-#: 
 msgid "Enter one of your backup recovery codes to access your account"
 msgstr "계정에 접근하려면 백업 복구 코드 중 하나를 입력하세요"
 
@@ -17991,10 +17975,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d개의 세금 문서가 가족에게 성공적으로 이메일로 전송되었습니다."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d 기부 명세서"
-
-#: 
 msgid "All classifications"
 msgstr "모든 분류"
 
@@ -21501,10 +21481,6 @@ msgid "Signed up"
 msgstr "신청함"
 
 #: 
-msgid "Sincerely"
-msgstr "드림"
-
-#: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
 msgstr "일부 정보를 저장하지 못했습니다. 강조 표시된 항목을 확인하세요."
 
@@ -24623,4 +24599,24 @@ msgstr "학년이 있는 모든 사람이 한 학년 올라가는 달. 끄면 �
 #: 
 msgid "Through Grade"
 msgstr "종료 학년"
+
+#: 
+msgid "Invalid setting name or value"
+msgstr "설정 이름 또는 값이 유효하지 않습니다"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "지오코딩 서비스가 응답하지 않았습니다 — 나중에 다시 시도하세요"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "직접 보낸 이메일만 표시됩니다."
+
+#: 
+msgid "%d Giving Statement"
+msgstr "%d 헌금 명세서"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "반복 이벤트를 생성할 수 없습니다. 자세한 내용은 애플리케이션 로그를 확인하세요."
 

@@ -26,6 +26,10 @@ intent: How agents commit and push on ChurchCRM.
 - Do not merge `master` into a contributor branch or push to their branch unless asked
 - Do not run `locale:build` or commit `messages.po` on a feature branch
 
+## Docker checkout
+
+Run Docker from the main repository checkout. Before Docker work, ask whether to switch that checkout to the task branch and wait for the user’s answer.
+
 ## Commit freely, push only on approval
 
 `git commit` and `git push` are separate gates.
@@ -69,6 +73,7 @@ check cannot run meaningfully before push.
 - A check must take a few seconds, need no Docker, database, or network, and print its findings to stdout or stderr with a non-zero exit.
 - The pre-commit hook runs only checks scoped to staged files (`locale-check --staged`, the changed-file PHP validators). Whole-repo checks go in `scripts/lint.js`.
 - A check that always exits 0 is not a check. Test a new one against a bad input before you add it.
+- `pr gates` (`scripts/validate-pr-gates.js`) mirrors the CodeRabbit pre-merge checks: it fails a schema change without an upgrade script and untrusted context in a workflow `run:`, and prints notes for a behavior change without a spec, a workflow without a script test, and the UI pass. Add a rule there when a review keeps asking for the same thing.
 
 ## After push
 

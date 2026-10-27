@@ -993,18 +993,6 @@ class Person extends BasePerson implements PhotoInterface
         return $this->isActive() ? gettext('Active') : gettext('Inactive');
     }
 
-    public function getEmail(): ?string
-    {
-        if (parent::getEmail() === null) {
-            $family = $this->getFamily();
-            if ($family !== null) {
-                return $family->getEmail();
-            }
-        }
-
-        return parent::getEmail();
-    }
-
     /**
      * Returns a string of a person's full name initial, formatted as specified by $Style
      * $Style = 0  :  "One character from FirstName and one character from LastName"

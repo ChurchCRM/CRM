@@ -5475,10 +5475,6 @@ msgid "Submit Registration"
 msgstr "Υποβολή Εγγραφής"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Ένας νέος κωδικός πρόσβασης έχει δημιουργηθεί και αποστολεί στη διεύθυνση email σας."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Εφαρμόστε Ενημέρωση Τώρα"
 
@@ -5523,20 +5519,12 @@ msgid "Login Name is required"
 msgstr "Το όνομα σύνδεσης είναι απαραίτητο"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Αφού λάβετε το email, μπορείτε να συνδεθείτε με τον προσωρινό κωδικό πρόσβασης και να τον αλλάξετε σε κάτι που προτιμάτε."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Password Reset Σφάλμα"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Η Επαναφορά Κωδικού Πρόσβασης Ήταν Επιτυχής"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Παρακαλώ ελέγξτε το email σας (συμπεριλαμβανομένου του φακέλου spam/junk) για τον προσωρινό κωδικό πρόσβασης."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12354,10 +12342,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "Το email είναι απενεργοποιημένο. Ρυθμίστε το email πριν επαναφέρετε κωδικούς πρόσβασης ή χρησιμοποιήστε Αλλαγή κωδικού πρόσβασης."
 
 #: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Εισαγάγετε έναν από τους εφεδρικούς κωδικούς ανάκτησής σας"
-
-#: 
 msgid "Enter one of your backup recovery codes to access your account"
 msgstr "Εισαγάγετε έναν από τους εφεδρικούς κωδικούς ανάκτησής σας για να αποκτήσετε πρόσβαση στον λογαριασμό σας"
 
@@ -18013,10 +17997,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d έγγραφο φόρου αποστάλθηκε στην οικογένεια με επιτυχία."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d Δήλωση Παροχής"
-
-#: 
 msgid "All classifications"
 msgstr "Όλες οι ταξινομήσεις"
 
@@ -21535,10 +21515,6 @@ msgid "Signed up"
 msgstr "Εγγράφηκε"
 
 #: 
-msgid "Sincerely"
-msgstr "Με εκτίμηση"
-
-#: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
 msgstr "Ορισμένα από τα στοιχεία σας δεν ήταν δυνατό να αποθηκευτούν. Ελέγξτε τα επισημασμένα πεδία."
 
@@ -24661,4 +24637,24 @@ msgstr "Ο μήνας κατά τον οποίο όλοι όσοι έχουν τ
 #: 
 msgid "Through Grade"
 msgstr "Έως τάξη"
+
+#: 
+msgid "Invalid setting name or value"
+msgstr "Μη έγκυρο όνομα ή τιμή ρύθμισης"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Η υπηρεσία γεωκωδικοποίησης δεν απάντησε — δοκιμάστε ξανά αργότερα"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Εμφανίζεται μόνο το email που στείλατε."
+
+#: 
+msgid "%d Giving Statement"
+msgstr "%d Δήλωση Δωρεών"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Δεν ήταν δυνατή η δημιουργία επαναλαμβανόμενων εκδηλώσεων. Ελέγξτε το αρχείο καταγραφής της εφαρμογής για λεπτομέρειες."
 

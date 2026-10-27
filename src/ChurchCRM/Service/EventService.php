@@ -3,6 +3,7 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\Exceptions\EventDeleteRefusedException;
+use ChurchCRM\model\ChurchCRM\CalendarEvent;
 use ChurchCRM\model\ChurchCRM\CalendarQuery;
 use ChurchCRM\model\ChurchCRM\Event;
 use ChurchCRM\model\ChurchCRM\EventAttendQuery;
@@ -166,11 +167,13 @@ class EventService
         $skipExisting = (bool) ($data['skipExisting'] ?? false);
         $typeId = (int) $type->getId();
 
-        $calendars = null;
+        $calendarIds = [];
         if (!empty($data['pinnedCalendars'])) {
-            $calendars = CalendarQuery::create()
+            $calendarIds = CalendarQuery::create()
                 ->filterById($data['pinnedCalendars'], Criteria::IN)
-                ->find();
+                ->select('Id')
+                ->find()
+                ->toArray();
         }
 
         $occurrenceDates = $this->generateOccurrenceDates(
@@ -227,15 +230,20 @@ class EventService
                     $event->setMinistryId($ministryId);
                 }
 
-                if ($calendars !== null) {
-                    $event->setCalendars($calendars);
-                }
-
                 // Always pass the transaction's connection: a default read
                 // connection could not see these uncommitted rows.
                 $event->save($con);
                 $event->reload(false, $con);
                 $eventId = $event->getId();
+
+                // Join rows are written directly: sharing one Calendar collection
+                // across every event makes each save cascade through all earlier ones.
+                foreach ($calendarIds as $calendarId) {
+                    $pin = new CalendarEvent();
+                    $pin->setCalendarId((int) $calendarId);
+                    $pin->setEventId((int) $eventId);
+                    $pin->save($con);
+                }
 
                 if ($linkedGroupId > 0) {
                     $this->linkGroup((int) $eventId, $linkedGroupId, $con);

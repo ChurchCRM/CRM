@@ -5477,10 +5477,6 @@ msgid "Submit Registration"
 msgstr "Gửi đăng ký"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Mật khẩu mới đã được tạo và gửi vào email của bạn."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Cập nhật ngay"
 
@@ -5525,20 +5521,12 @@ msgid "Login Name is required"
 msgstr "Yêu cầu tên đăng nhập"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Sau khi nhận được email, bạn có thể đăng nhập bằng mật khẩu tạm thời và đổi sang mật khẩu bạn muốn."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Lỗi đặt lại mật khẩu"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Đặt lại mật khẩu thành công"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Vui lòng kiểm tra email của bạn (bao gồm cả thư rác) để lấy mật khẩu tạm thời."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12348,10 +12336,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "Email đã bị tắt. Hãy cấu hình email trước khi đặt lại mật khẩu, hoặc sử dụng Đổi mật khẩu."
 
 #: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Nhập một trong các mã khôi phục dự phòng của bạn"
-
-#: 
 msgid "Enter one of your backup recovery codes to access your account"
 msgstr "Nhập một trong các mã khôi phục dự phòng của bạn để truy cập tài khoản"
 
@@ -18001,10 +17985,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d tài liệu thuế đã được gửi qua email cho gia đình thành công."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "Bảng kê quỹ %s %d"
-
-#: 
 msgid "All classifications"
 msgstr "Tất cả các phân loại"
 
@@ -21511,10 +21491,6 @@ msgid "Signed up"
 msgstr "Đã đăng ký"
 
 #: 
-msgid "Sincerely"
-msgstr "Trân trọng"
-
-#: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
 msgstr "Một số thông tin của bạn không thể lưu. Vui lòng kiểm tra các trường được đánh dấu."
 
@@ -24633,4 +24609,24 @@ msgstr "Tháng mà mọi người có lớp đều lên một lớp. Tắt sẽ 
 #: 
 msgid "Through Grade"
 msgstr "Đến lớp"
+
+#: 
+msgid "Invalid setting name or value"
+msgstr "Tên hoặc giá trị cài đặt không hợp lệ"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Dịch vụ mã hóa địa lý không phản hồi — hãy thử lại sau"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Chỉ hiển thị email bạn đã gửi."
+
+#: 
+msgid "%d Giving Statement"
+msgstr "Báo cáo đóng góp %d"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Không thể tạo các sự kiện lặp lại. Kiểm tra nhật ký ứng dụng để biết chi tiết."
 

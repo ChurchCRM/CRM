@@ -1,22 +1,24 @@
 import { expect, test } from '@playwright/test';
 
-import { captureScreen } from '../support/capture';
+import { captureScreen, defineCapture } from '../support/capture';
 import { settle } from '../support/human';
 
 test.describe('Settings', () => {
   // Nice-to-have (shot list): reinforces the self-hosted/control story.
-  test('settings-user-permissions', async ({ page }, testInfo) => {
+  const settingsUserPermissionsCapture = defineCapture({
+    name: 'settings-user-permissions',
+    locales: 'all',
+    title: 'User Permissions',
+    category: 'Admin & Settings',
+    purpose: 'Show user/permission management — self-hosted control story',
+    usedIn: ['docs', 'website'],
+  });
+  test('settings-user-permissions', settingsUserPermissionsCapture, async ({ page }, testInfo) => {
     await page.goto('/admin/system/users');
     await expect(page.locator('h2')).toBeVisible({ timeout: 15000 });
     await settle(page, 600);
 
-    await captureScreen(page, testInfo, {
-      name: 'settings-user-permissions',
-      title: 'User Permissions',
-      category: 'Admin & Settings',
-      purpose: 'Show user/permission management — self-hosted control story',
-      usedIn: ['docs', 'website'],
-    });
+    await captureScreen(page, testInfo, settingsUserPermissionsCapture);
   });
 
   test('admin-people-settings', async ({ page }, testInfo) => {

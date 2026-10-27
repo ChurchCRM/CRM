@@ -5544,10 +5544,6 @@ msgid "Submit Registration"
 msgstr "Send inn registrering"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Et nytt passord er generert og sendt til din e-postadresse."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Utfør oppdatering nå"
 
@@ -5592,20 +5588,12 @@ msgid "Login Name is required"
 msgstr "Innloggingsnavn er obligatorisk"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Når du mottar e-posten, kan du logge inn med det midlertidige passordet og endre det til noe du foretrekker."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Feil ved tilbakestilling av passord"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Tilbakestilling av passord var vellykket"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Vennligst sjekk e-posten din (inkludert søppelpost-mappen) for ditt midlertidige passord."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12423,10 +12411,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "E-post er deaktivert. Konfigurer e-post før du tilbakestiller passord, eller bruk Endre passord."
 
 #: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Skriv inn en av sikkerhetskopikodene for gjenoppretting"
-
-#: 
 msgid "Enter one of your backup recovery codes to access your account"
 msgstr "Skriv inn en av sikkerhetskopikodene for gjenoppretting for å få tilgang til kontoen din"
 
@@ -18082,10 +18066,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d skattefølge dokument sendt til familien via e-post."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d Gaveerklæring"
-
-#: 
 msgid "All classifications"
 msgstr "Alle klassifiseringer"
 
@@ -21604,10 +21584,6 @@ msgid "Signed up"
 msgstr "Påmeldt"
 
 #: 
-msgid "Sincerely"
-msgstr "Vennlig hilsen"
-
-#: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
 msgstr "Noen av opplysningene dine kunne ikke lagres. Kontroller de markerte feltene."
 
@@ -24730,4 +24706,24 @@ msgstr "Måneden da alle med et klassetrinn flyttes opp ett trinn. Av slår av a
 #: 
 msgid "Through Grade"
 msgstr "Til klassetrinn"
+
+#: 
+msgid "Invalid setting name or value"
+msgstr "Ugyldig innstillingsnavn eller verdi"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Geokodingstjenesten svarte ikke — prøv igjen senere"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Bare e-posten du sendte, vises."
+
+#: 
+msgid "%d Giving Statement"
+msgstr "%d Giverapport"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Gjentaende hendelser kunne ikke opprettes. Sjekk applikasjonsloggen for detaljer."
 

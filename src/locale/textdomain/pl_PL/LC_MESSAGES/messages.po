@@ -5533,10 +5533,6 @@ msgid "Submit Registration"
 msgstr "Wyślij rejestrację"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Nowe hasło wysłano na e-mail."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Zastosuj aktualizację"
 
@@ -5581,20 +5577,12 @@ msgid "Login Name is required"
 msgstr "Login jest wymagany"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Po otrzymaniu e-maila zaloguj się hasłem tymczasowym i zmień je."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Błąd resetowania hasła"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Reset hasła pomyślny"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Sprawdź e-mail (również spam) pod kątem hasła tymczasowego."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12420,10 +12408,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "Poczta e-mail jest wyłączona. Skonfiguruj pocztę przed resetowaniem haseł lub użyj Zmień hasło."
 
 #: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Wprowadź jeden z zapasowych kodów odzyskiwania"
-
-#: 
 msgid "Enter one of your backup recovery codes to access your account"
 msgstr "Wprowadź jeden z zapasowych kodów odzyskiwania, aby uzyskać dostęp do swojego konta"
 
@@ -18085,10 +18069,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d dokument podatkowy został pomyślnie wysłany do rodziny."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d Poświadczenie darowizny"
-
-#: 
 msgid "All classifications"
 msgstr "Wszystkie klasyfikacje"
 
@@ -21619,10 +21599,6 @@ msgid "Signed up"
 msgstr "Zapisano"
 
 #: 
-msgid "Sincerely"
-msgstr "Z poważaniem"
-
-#: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
 msgstr "Nie udało się zapisać niektórych Twoich danych. Sprawdź wyróżnione pola."
 
@@ -24749,4 +24725,24 @@ msgstr "Miesiąc, w którym wszyscy z klasą przechodzą o jedną klasę wyżej.
 #: 
 msgid "Through Grade"
 msgstr "Do klasy"
+
+#: 
+msgid "Invalid setting name or value"
+msgstr "Nieprawidłowa nazwa lub wartość ustawienia"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Usługa geokodowania nie odpowiedziała — spróbuj ponownie później"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Wyświetlana jest tylko wysłana przez Ciebie wiadomość e-mail."
+
+#: 
+msgid "%d Giving Statement"
+msgstr "%d Zestawienie darowizn"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Nie można było utworzyć powtarzających się wydarzeń. Sprawdź dziennik aplikacji, aby uzyskać szczegóły."
 

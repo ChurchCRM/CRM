@@ -5534,10 +5534,6 @@ msgid "Submit Registration"
 msgstr "Trimite înregistrarea"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "O nouă parolă a fost generată și trimisă la adresa dumneavoastră de e-mail."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Aplică actualizarea acum"
 
@@ -5582,20 +5578,12 @@ msgid "Login Name is required"
 msgstr "Numele de utilizator este obligatoriu"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Odată ce primiți e-mailul, vă puteți autentifica cu parola temporară și o puteți schimba cu una preferată."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Eroare de resetare a parolei"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Resetarea parolei a reușit"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Vă rugăm să vă verificați e-mailul (inclusiv folderul spam/junk) pentru parola temporară."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12421,10 +12409,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "E-mailul este dezactivat. Configurați e-mailul înainte de a reseta parolele sau utilizați Schimbați parola."
 
 #: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Introduceți unul dintre codurile de recuperare de rezervă"
-
-#: 
 msgid "Enter one of your backup recovery codes to access your account"
 msgstr "Introduceți unul dintre codurile de recuperare de rezervă pentru a accesa contul"
 
@@ -18086,10 +18070,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d document fiscal trimis cu succes familiei."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "Declarație de donație %s %d"
-
-#: 
 msgid "All classifications"
 msgstr "Toate clasificările"
 
@@ -21620,10 +21600,6 @@ msgid "Signed up"
 msgstr "Înscris"
 
 #: 
-msgid "Sincerely"
-msgstr "Cu sinceritate"
-
-#: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
 msgstr "Unele dintre datele dumneavoastră nu au putut fi salvate. Verificați câmpurile evidențiate."
 
@@ -24750,4 +24726,24 @@ msgstr "Luna în care toți cei cu o clasă urcă o clasă. Dezactivat oprește 
 #: 
 msgid "Through Grade"
 msgstr "Până la clasa"
+
+#: 
+msgid "Invalid setting name or value"
+msgstr "Nume sau valoare nevalidă pentru setare"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Serviciul de geocodificare nu a răspuns — încercați din nou mai târziu"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Este afișat doar e-mailul pe care l-ați trimis."
+
+#: 
+msgid "%d Giving Statement"
+msgstr "Declarație de donații %d"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Evenimentele repetitive nu au putut fi create. Verificați jurnalul aplicației pentru detalii."
 

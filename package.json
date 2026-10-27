@@ -1,6 +1,6 @@
 {
     "name": "churchcrm",
-    "version": "7.8.2",
+    "version": "7.8.3",
     "description": "Free Church CRM Software",
     "repository": {
         "type": "git",
@@ -101,8 +101,7 @@
         "marketing:chrome": "BROWSER_CHANNEL=chrome ./scripts/capture-all-locales.sh",
         "marketing:videos": "node scripts/finalize-marketing-videos.js",
         "marketing:check": "node scripts/check-marketing-visuals.js",
-        "marketing:manifest": "node scripts/generate-marketing-manifest.js",
-        "test:frankenphp-routing": "node --test scripts/test-frankenphp-routing.test.mjs"
+        "marketing:manifest": "node scripts/generate-marketing-manifest.js"
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^7.3.1",
@@ -162,6 +161,7 @@
         "minimatch": "^9.0.7",
         "mysql2": "^3.24.6",
         "picomatch": "4.0.7",
+        "pngjs": "^7.0.0",
         "sass": "^1.105.2",
         "sass-loader": "^17.0.1",
         "ts-loader": "^9.6.2",

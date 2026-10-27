@@ -5444,10 +5444,6 @@ msgid "Submit Registration"
 msgstr "Sla registratie op"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Er is een nieuw wachtwoord gegenereerd en naar uw e-mailadres verzonden."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Update nu toepassen"
 
@@ -5492,20 +5488,12 @@ msgid "Login Name is required"
 msgstr "Gebruikersnaam is verplicht"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Zodra u de e-mail ontvangt, kunt u in loggen met uw tijdelijke wachtwoord. U kunt dit wachtwoord later aanpassen."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Resetten van wachtwoord is mislukt"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Wachtwoord is succesvol gereset"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Controleer uw e-mail (ook uw SPAM) om uw tijdelijke wachtwoord te vinden."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12323,10 +12311,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "E-mail is uitgeschakeld. Configureer e-mail voordat u wachtwoorden opnieuw instelt, of gebruik Wachtwoord wijzigen."
 
 #: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Voer een van uw back-upherstelcodes in"
-
-#: 
 msgid "Enter one of your backup recovery codes to access your account"
 msgstr "Voer een van uw back-upherstelcodes in om toegang te krijgen tot uw account"
 
@@ -17982,10 +17966,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d belastingdocument succesvol naar het gezin gemaild."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d Givingverklaring"
-
-#: 
 msgid "All classifications"
 msgstr "Alle classificaties"
 
@@ -21504,10 +21484,6 @@ msgid "Signed up"
 msgstr "Aangemeld om te dienen"
 
 #: 
-msgid "Sincerely"
-msgstr "Met vriendelijke groet"
-
-#: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
 msgstr "Sommige van uw gegevens konden niet worden opgeslagen. Controleer de gemarkeerde velden."
 
@@ -24630,4 +24606,24 @@ msgstr "De maand waarin iedereen met een klas één klas omhooggaat. Uit schakel
 #: 
 msgid "Through Grade"
 msgstr "Tot en met klas"
+
+#: 
+msgid "Invalid setting name or value"
+msgstr "Ongeldige instellingsnaam of waarde"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "De geocoderingsdienst heeft niet gereageerd — probeer het later opnieuw"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Alleen de e-mail die u hebt verzonden wordt getoond."
+
+#: 
+msgid "%d Giving Statement"
+msgstr "%d Geefverklaring"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Herhalende evenementen konden niet worden aangemaakt. Controleer het applicatielogboek voor details."
 
