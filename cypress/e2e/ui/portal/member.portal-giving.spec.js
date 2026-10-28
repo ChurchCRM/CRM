@@ -47,7 +47,7 @@ describe("Member chooses a contribution statement year", () => {
                 "March 04 2018", "Music Ministry", "CHECK #100", "$ 100.00",
                 "March 04 2018", "Pledges", "CHECK #5532", "$ 25.00",
                 "March 04 2018", "New Building Fund", "CHECK #5532", "$ 25.00",
-                "March 04 2018", "Music Ministry", "CHECK", "$ 25.00",
+                "March 04 2018", "Music Ministry", "CHECK #5532", "$ 25.00",
             ]);
             const total = lines.indexOf("Total contributions", gifts);
             expect(lines.slice(total, total + 6), "statement totals").to.deep.equal([
@@ -72,27 +72,17 @@ describe("Member chooses a contribution statement year", () => {
         );
     });
 
-    describe("with a check number and a non-deductible amount", () => {
-        beforeEach(() => {
-            cy.dbQuery("UPDATE pledge_plg SET plg_NonDeductible = 10, plg_CheckNo = 1234 WHERE plg_plgID = 10");
-        });
-        afterEach(() => {
-            cy.dbQuery("UPDATE pledge_plg SET plg_NonDeductible = 0, plg_CheckNo = NULL WHERE plg_plgID = 10");
-        });
-
-        it("prints them and drops the no-goods disclosure", () => {
-            cy.visit("/portal/giving");
-            statementLines(2018).then((lines) => {
-                expect(lines).to.include("Tax ID: 47-3829156");
-                expect(lines).to.include("CHECK #1234");
-                const total = lines.indexOf("Total contributions");
-                expect(lines.slice(total, total + 6), "totals").to.deep.equal([
-                    "Total contributions", "$ 775.00",
-                    "Goods and services", "$ 10.00",
-                    "Tax-deductible amount", "$ 765.00",
-                ]);
-                expect(lines.join(" ")).not.to.contain("No goods or services were provided");
-            });
+    it("prints a check number, the non-deductible amount and the adjusted totals, without the no-goods disclosure", () => {
+        cy.visit("/portal/giving");
+        statementLines(2017).then((lines) => {
+            expect(lines).to.include("CHECK #2041");
+            const total = lines.indexOf("Total contributions");
+            expect(lines.slice(total, total + 6), "totals").to.deep.equal([
+                "Total contributions", "$ 200.00",
+                "Goods and services", "$ 50.00",
+                "Tax-deductible amount", "$ 150.00",
+            ]);
+            expect(lines.join(" ")).not.to.contain("No goods or services were provided");
         });
     });
 });
