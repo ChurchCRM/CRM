@@ -5441,10 +5441,6 @@ msgid "Submit Registration"
 msgstr "Pošalji registraciju"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Generirana je nova lozinka i poslana na vašu adresu e-pošte."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Primijeni ažuriranje sada"
 
@@ -5489,20 +5485,12 @@ msgid "Login Name is required"
 msgstr "Korisničko ime je obavezno"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Nakon što primite e-poruku, možete se prijaviti privremenom lozinkom i promijeniti je u nešto što vam odgovara."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Greška resetiranja lozinke"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Resetiranje lozinke uspješno"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Molim provjerite svoju e-poštu (uključujući mapu neželjene pošte) za privremenu lozinku."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12326,10 +12314,6 @@ msgstr "E-pošta je onemogućena"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "E-pošta je onemogućena. Konfigurirajte e-poštu prije resetiranja lozinki ili koristite Promijeni lozinku."
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Unesite jedan od vaših rezervnih kodova za oporavak"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"

@@ -5440,10 +5440,6 @@ msgid "Submit Registration"
 msgstr "पंजीकरण सबमिट करें"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "एक नया पासवर्ड तैयार किया गया है और आपके ईमेल पते पर भेज दिया गया है।"
-
-#: 
 msgid "Apply Update Now"
 msgstr "अभी अपडेट लागू करें"
 
@@ -5488,20 +5484,12 @@ msgid "Login Name is required"
 msgstr "लॉगिन नाम आवश्यक है"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "एक बार जब आप ईमेल प्राप्त कर लें, तो आप अपने अस्थायी पासवर्ड से लॉग इन कर सकते हैं और इसे अपनी पसंद के अनुसार बदल सकते हैं।"
-
-#: 
 msgid "Password Reset Error"
 msgstr "पासवर्ड रीसेट त्रुटि"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "पासवर्ड रीसेट सफल रहा"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "कृपया अपने अस्थायी पासवर्ड के लिए अपना ईमेल (स्पैम/जंक फ़ोल्डर सहित) जांचें।"
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12317,10 +12305,6 @@ msgstr "ईमेल अक्षम है"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "ईमेल अक्षम है। पासवर्ड रीसेट करने से पहले ईमेल कॉन्फ़िगर करें, या पासवर्ड बदलें का उपयोग करें।"
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "अपने बैकअप पुनर्प्राप्ति कोड में से एक दर्ज करें"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"

@@ -5474,10 +5474,6 @@ msgid "Submit Registration"
 msgstr "பதிவைச் சமர்ப்பிக்கவும்"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "ஒரு புதிய கடவுச்சொல் உருவாக்கப்பட்டு உங்கள் மின்னஞ்சல் முகவரிக்கு அனுப்பப்பட்டுள்ளது."
-
-#: 
 msgid "Apply Update Now"
 msgstr "புதுப்பிப்பை இப்போது பயன்படுத்தவும்"
 
@@ -5522,20 +5518,12 @@ msgid "Login Name is required"
 msgstr "உள்நுழைவு பெயர் தேவை"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "மின்னஞ்சலைப் பெற்றவுடன், உங்கள் தற்காலிக கடவுச்சொல்லுடன் உள்நுழைந்து அதை நீங்கள் விரும்பும் ஏதாவது ஒன்றிற்கு மாற்றலாம்."
-
-#: 
 msgid "Password Reset Error"
 msgstr "கடவுச்சொல் மீட்டமைப்பு பிழை"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "கடவுச்சொல் மீட்டமைப்பு வெற்றிகரமாக"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "உங்கள் தற்காலிக கடவுச்சொல்லுக்கு உங்கள் மின்னஞ்சலை (ஸ்பேம்/குப்பை கோப்புறை உட்பட) சரிபார்க்கவும்."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12362,10 +12350,6 @@ msgstr "மின்னஞ்சல் முடக்கப்பட்டு�
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "மின்னஞ்சல் முடக்கப்பட்டுள்ளது. கடவுச்சொற்களை மீட்டமைக்கும் முன் மின்னஞ்சலை உள்ளமைக்கவும் அல்லது கடவுச்சொல் மாற்று பயன்படுத்தவும்."
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "உங்கள் காப்பு மீட்பு குறியீடுகளில் ஒன்றை உள்ளிடவும்"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"

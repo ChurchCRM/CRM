@@ -5532,10 +5532,6 @@ msgid "Submit Registration"
 msgstr "Отправить регистрацию"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Новый пароль создан и отправлен на вашу почту."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Применить обновление сейчас"
 
@@ -5580,20 +5576,12 @@ msgid "Login Name is required"
 msgstr "Имя входа обязательно"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Получив письмо, войдите с временным паролем и смените его."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Ошибка сброса пароля"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Пароль успешно сброшен"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Проверьте почту (включая папку спам) на наличие временного пароля."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12425,10 +12413,6 @@ msgstr "Электронная почта отключена"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "Электронная почта отключена. Настройте почту перед сбросом паролей или используйте «Изменить пароль»."
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Введите один из резервных кодов восстановления"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"
