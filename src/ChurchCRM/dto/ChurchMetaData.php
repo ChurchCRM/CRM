@@ -98,6 +98,11 @@ class ChurchMetaData
         return self::readString('sChurchWebSite');
     }
 
+    public static function getChurchTaxId(): string
+    {
+        return self::readString('sChurchTaxId');
+    }
+
     public static function getChurchSocialLinks(): array
     {
         $links = [];

@@ -41,6 +41,7 @@
     <div class="church-address">{{ church_address }}</div>
     {% if letterhead != 'none' %}
       <div class="muted">{{ church_phone }}{% if church_email %} · {{ church_email }}{% endif %}</div>
+      {% if church_tax_id %}<div class="muted">{{ gettext('Tax ID') }}: {{ church_tax_id }}</div>{% endif %}
       {% if church_website or church_social %}
         <div class="muted">
           {% if church_website %}<a href="{{ church_website }}">{{ church_website }}</a>{% endif %}

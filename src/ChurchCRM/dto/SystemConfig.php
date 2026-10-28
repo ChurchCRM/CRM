@@ -255,6 +255,7 @@ class   SystemConfig
             'iKioskGuestClassification'            => new ConfigItem('iKioskGuestClassification', 'choice', '3', gettext('Classification given to walk-in guests registered on a kiosk')),
             'bEnableLostPassword'                  => new ConfigItem('bEnableLostPassword', 'boolean', '1', gettext('Show/Hide Lost Password Link on the login screen')),
             'sChurchWebSite'                       => new ConfigItem('sChurchWebSite', 'text', '', ''),
+            'sChurchTaxId'                         => new ConfigItem('sChurchTaxId', 'text', '', gettext('Church tax ID (EIN) printed on contribution statements')),
             // Church social media accounts. Like the other church-identity
             // items above, these are deliberately absent from
             // buildCategories() so they never appear on the System Settings

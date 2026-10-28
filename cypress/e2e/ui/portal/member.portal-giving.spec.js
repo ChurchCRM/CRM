@@ -29,19 +29,24 @@ describe("Member chooses a contribution statement year", () => {
 
         statementLines(2018).then((lines) => {
             const title = lines.indexOf("Contribution Statement");
-            expect(lines.slice(title - 3, title), "church letterhead").to.deep.equal([
+            const letterhead = lines.slice(lines.indexOf("Main St. Cathedral"), title);
+            expect(letterhead.slice(0, 4), "church details").to.deep.equal([
                 "Main St. Cathedral",
                 "123 Main St Kansas City, MO 64106 United States",
                 "555 123 4234 · demo@churchcrm.io",
+                "Tax ID: 47-3829156",
             ]);
+            expect(letterhead.slice(4).join(""), "website and social links").to.equal(
+                "https://churchcrm.io · X · YouTube · Facebook · Instagram",
+            );
             expect(lines[title + 2], "household name").to.equal("Black");
             const gifts = lines.indexOf("AMOUNT") + 1;
             expect(lines.slice(gifts, gifts + 24), "family 20 payments on 2018-03-04").to.deep.equal([
-                "March 04 2018", "Pledges", "CHECK", "$ 500.00",
-                "March 04 2018", "New Building Fund", "CHECK", "$ 100.00",
-                "March 04 2018", "Music Ministry", "CHECK", "$ 100.00",
-                "March 04 2018", "Pledges", "CHECK", "$ 25.00",
-                "March 04 2018", "New Building Fund", "CHECK", "$ 25.00",
+                "March 04 2018", "Pledges", "CHECK #100", "$ 500.00",
+                "March 04 2018", "New Building Fund", "CHECK #100", "$ 100.00",
+                "March 04 2018", "Music Ministry", "CHECK #100", "$ 100.00",
+                "March 04 2018", "Pledges", "CHECK #5532", "$ 25.00",
+                "March 04 2018", "New Building Fund", "CHECK #5532", "$ 25.00",
                 "March 04 2018", "Music Ministry", "CHECK", "$ 25.00",
             ]);
             const total = lines.indexOf("Total contributions", gifts);
@@ -65,5 +70,29 @@ describe("Member chooses a contribution statement year", () => {
                 expect(response.headers["content-disposition"]).to.contain('filename="2018-Main-St-Cathedral-Black.pdf"');
             }),
         );
+    });
+
+    describe("with a check number and a non-deductible amount", () => {
+        beforeEach(() => {
+            cy.dbQuery("UPDATE pledge_plg SET plg_NonDeductible = 10, plg_CheckNo = 1234 WHERE plg_plgID = 10");
+        });
+        afterEach(() => {
+            cy.dbQuery("UPDATE pledge_plg SET plg_NonDeductible = 0, plg_CheckNo = NULL WHERE plg_plgID = 10");
+        });
+
+        it("prints them and drops the no-goods disclosure", () => {
+            cy.visit("/portal/giving");
+            statementLines(2018).then((lines) => {
+                expect(lines).to.include("Tax ID: 47-3829156");
+                expect(lines).to.include("CHECK #1234");
+                const total = lines.indexOf("Total contributions");
+                expect(lines.slice(total, total + 6), "totals").to.deep.equal([
+                    "Total contributions", "$ 775.00",
+                    "Goods and services", "$ 10.00",
+                    "Tax-deductible amount", "$ 765.00",
+                ]);
+                expect(lines.join(" ")).not.to.contain("No goods or services were provided");
+            });
+        });
     });
 });

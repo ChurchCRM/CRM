@@ -78,6 +78,7 @@ $group->get('/giving/statement', function (Request $request, Response $response)
 
     $gifts = [];
     $total = 0.0;
+    $nonDeductible = 0.0;
     // A pledge row has no donor. Only a household adult receives the family's gifts.
     if ($isHousehold) {
         foreach (
@@ -88,36 +89,40 @@ $group->get('/giving/statement', function (Request $request, Response $response)
         ) {
             $amount = (float) $pledge->getAmount();
             $total += $amount;
+            $nonDeductible += (float) $pledge->getNondeductible();
             $gifts[] = [
                 'date' => DateTimeUtils::formatDate((string) $pledge->getDate('Y-m-d')),
                 'fund' => $pledge->getDonationFund() ? $pledge->getDonationFund()->getName() : '',
-                'method' => (string) $pledge->getMethod(),
+                'method' => trim($pledge->getMethod() . ($pledge->getCheckNo() ? ' #' . $pledge->getCheckNo() : '')),
                 'amount' => CurrencyFormatter::format($amount),
             ];
         }
     }
 
 
+    $letterheadPath = trim((string) SystemConfig::getValue('bDirLetterHead'));
+    $useGraphic = $letterheadPath !== '' && (is_readable($letterheadPath) || (bool) preg_match('#^https://#i', $letterheadPath));
     $start = DateTimeUtils::formatDate($year . '-01-01');
     $end = DateTimeUtils::formatDate($year . '-12-31');
     $disposition = SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline';
 
-    $deductible = $total;
+    $deductible = $total - $nonDeductible;
     $data = [
-        'letterhead' => 'address',
+        'letterhead' => $useGraphic ? 'graphic' : 'address',
+        'letterhead_image' => $useGraphic ? $letterheadPath : null,
         'title' => gettext('Contribution Statement'),
         'date_range' => sprintf(gettext('%s through %s'), $start, $end),
         'opening' => trim(SystemConfig::getValue('sTaxReport1') . ' ' . $start . ' – ' . $end . '.'),
         'closing' => SystemConfig::getValue('sTaxReport2'),
         'questions' => SystemConfig::getValue('sTaxReport3'),
         'signer' => SystemConfig::getValue('sTaxSigner'),
-        'disclosure' => gettext('No goods or services were provided in exchange for these contributions, other than intangible religious benefits.'),
+        'disclosure' => $nonDeductible > 0 ? '' : gettext('No goods or services were provided in exchange for these contributions, other than intangible religious benefits.'),
         'empty_message' => gettext('No contributions were recorded for this period.'),
         'families' => [[
             'salutation' => $isHousehold ? $family->getName() : $actor->getFullName(),
             'address' => $family->getMailingAddressLines(),
             'total' => CurrencyFormatter::format($total),
-            'goods_services' => CurrencyFormatter::format(0),
+            'goods_services' => CurrencyFormatter::format($nonDeductible),
             'deductible' => CurrencyFormatter::format($deductible),
             'gifts' => $gifts,
         ]],

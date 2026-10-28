@@ -55,7 +55,7 @@
       </table>
     {% endif %}
 
-    <p class="disclosure">{{ disclosure }}</p>
+    {% if disclosure %}<p class="disclosure">{{ disclosure }}</p>{% endif %}
 
     <div class="closing">
       <p>{{ closing }}</p>
