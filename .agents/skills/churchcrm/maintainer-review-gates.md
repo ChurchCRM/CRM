@@ -54,6 +54,8 @@ The "Verified" + "No hard blocks" signal replaces an all-checked checkbox list.
 9. Query View freeze — any new feature or filter on `QueryView.php`, `QueryList.php`, or predefined `query_qry` / `queryparameters_qrp` rows for that UI. Point the author at Slim/Tabler MVC + Propel (`src/v2/`), or a reports plugin (`src/plugins/`; `src/plugins/community/` to share). Security-only patches on Query View need an explicit maintainer exception.
 10. Existing Playwright captures — the PR removes, renames or reroutes something that `playwright/` specs, videos or helpers use (an id, route, setting, button, menu entry or aria-label) and does not update them. The capture suite runs on `master` after merge and feeds the release docs, so the break appears late. Same standard as a Cypress selector. Grep `playwright/` for what the diff removes; a capture marked `usedIn` must still exist (`npm run lint`). Locators must not depend on English text (captures run in 8 locales; videos run in `en` only).
 
+11. People with and without a family — a change to a portal, member-facing, giving or family page that works only for a person who has a family. A person can have `per_fam_ID = 0` (seed person 95, `judith.matthews@example.com`). Check both cases: family-only nav entries and pages are hidden or guarded for the no-family person, and everything else still works for them. The PR carries a spec for seed person 95 (`cy.setupNoFinanceSession()`), or it is a hard block under item 7 (#10932).
+
 Comment volume is not a review topic. Wrong or essay comments can be deleted; that is not Request changes.
 
 ### Locale-sensitive values
