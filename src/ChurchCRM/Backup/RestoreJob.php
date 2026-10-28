@@ -15,7 +15,7 @@ use Propel\Runtime\Propel;
 
 class RestoreJob extends JobBase
 {
-    private const array ALLOWED_IMAGE_EXTENSIONS = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'ico', 'bmp', 'tiff', 'tif'];
+    private const array ALLOWED_IMAGE_EXTENSIONS = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
 
     private \SplFileInfo $RestoreFile;
     public array $Messages = [];
