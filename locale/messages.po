@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-28 05:56+0000\n"
+"POT-Creation-Date: 2026-10-28 09:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -340,6 +340,10 @@ msgstr ""
 
 #, php-format
 msgid "%s recorded that you will serve. You are on the schedule."
+msgstr ""
+
+#, php-format
+msgid "%s through %s"
 msgstr ""
 
 #, php-format
@@ -3248,6 +3252,9 @@ msgstr ""
 msgid "Church name, address, or contact details"
 msgstr ""
 
+msgid "Church tax ID (EIN) printed on contribution statements"
+msgstr ""
+
 msgid "Church website"
 msgstr ""
 
@@ -3694,6 +3701,12 @@ msgid "Continue to Dashboard"
 msgstr ""
 
 msgid "Contributing"
+msgstr ""
+
+msgid "Contribution Statement"
+msgstr ""
+
+msgid "Contribution statements are issued to the adults of a household. Please contact the church office if you need one."
 msgstr ""
 
 msgid "Contributor"
@@ -4971,6 +4984,9 @@ msgid "Download failed"
 msgstr ""
 
 msgid "Download returned without attachment headers."
+msgstr ""
+
+msgid "Download statement"
 msgstr ""
 
 msgid "Download the latest release and apply it to your installation."
@@ -7235,6 +7251,9 @@ msgstr ""
 msgid "Generate tax statement documents for donors"
 msgstr ""
 
+msgid "Generated"
+msgstr ""
+
 msgid "Generating..."
 msgstr ""
 
@@ -7375,6 +7394,9 @@ msgid "Goal Amount"
 msgstr ""
 
 msgid "Going"
+msgstr ""
+
+msgid "Goods and services"
 msgstr ""
 
 #. plugin:google-analytics:summary
@@ -7871,9 +7893,6 @@ msgid "How to Accept This Kiosk"
 msgstr ""
 
 msgid "How to Fix"
-msgstr ""
-
-msgid "How to correct this"
 msgstr ""
 
 #. Context: locales
@@ -9850,6 +9869,9 @@ msgstr ""
 msgid "My Family"
 msgstr ""
 
+msgid "My Giving"
+msgstr ""
+
 msgid "My Settings"
 msgstr ""
 
@@ -10221,6 +10243,12 @@ msgstr ""
 msgid "No contact info"
 msgstr ""
 
+msgid "No contributions"
+msgstr ""
+
+msgid "No contributions were recorded for this period."
+msgstr ""
+
 msgid "No contributors found for this fund in the selected fiscal year"
 msgstr ""
 
@@ -10317,6 +10345,9 @@ msgid "No funds have been added yet. Use the form above to add the first fund."
 msgstr ""
 
 msgid "No giving history found."
+msgstr ""
+
+msgid "No goods or services were provided in exchange for these contributions, other than intangible religious benefits."
 msgstr ""
 
 msgid "No group"
@@ -11220,6 +11251,9 @@ msgid "Optional. Everyone qualified for a position of this team becomes a teache
 msgstr ""
 
 msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr ""
+
+msgid "Optional. Printed on contribution statements."
 msgstr ""
 
 msgid "Optional. The class becomes the Linked Group: its roster is who checks in, and a schedule for the class finds these events."
@@ -13226,6 +13260,9 @@ msgstr ""
 msgid "Sample Data"
 msgstr ""
 
+msgid "Sample Family"
+msgstr ""
+
 #. Context: countries
 msgid "San Marino"
 msgstr ""
@@ -14699,6 +14736,12 @@ msgstr ""
 msgid "Tax Documents"
 msgstr ""
 
+msgid "Tax ID"
+msgstr ""
+
+msgid "Tax ID (EIN)"
+msgstr ""
+
 msgid "Tax Report"
 msgstr ""
 
@@ -14712,6 +14755,9 @@ msgid "Tax Year Reporting Checklist"
 msgstr ""
 
 msgid "Tax document email failed to send. Please check your email server settings."
+msgstr ""
+
+msgid "Tax-deductible amount"
 msgstr ""
 
 msgid "Teacher"
@@ -15700,6 +15746,9 @@ msgstr ""
 msgid "This is not one of your teams."
 msgstr ""
 
+msgid "This is the household statement. It includes gifts for your family."
+msgstr ""
+
 msgid "This is the mailing address"
 msgstr ""
 
@@ -16143,6 +16192,9 @@ msgid "Total Subscribers"
 msgstr ""
 
 msgid "Total Users"
+msgstr ""
+
+msgid "Total contributions"
 msgstr ""
 
 #, php-format
@@ -17641,6 +17693,12 @@ msgid "Year, 2 digits"
 msgstr ""
 
 msgid "Year, 4 digits"
+msgstr ""
+
+msgid "Year-end statement"
+msgstr ""
+
+msgid "Year-end statements preview"
 msgstr ""
 
 msgid "Yearly"
