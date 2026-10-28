@@ -5616,10 +5616,6 @@ msgid "Submit Registration"
 msgstr "提交註冊"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "新密碼已生成並發送至您的電子郵件地址。"
-
-#: 
 msgid "Apply Update Now"
 msgstr "立即套用更新"
 
@@ -5664,20 +5660,12 @@ msgid "Login Name is required"
 msgstr "登入名是必填項"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "收到電子郵件後，您可以使用臨時密碼登入，並將其更改為您喜歡的密碼。"
-
-#: 
 msgid "Password Reset Error"
 msgstr "密碼重置錯誤"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "密碼重置成功"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "請檢查您的電子郵件（包括垃圾郵件資料夾）以獲取臨時密碼。"
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12485,10 +12473,6 @@ msgstr "電子郵件已停用"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "電子郵件已停用。請在重設密碼前設定電子郵件，或使用「變更密碼」功能。"
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "請輸入您的其中一個備用恢復碼"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"

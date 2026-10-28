@@ -49,6 +49,7 @@
     "phpmailer/phpmailer": "^7.0.2",
     "pragmarx/google2fa": "^9.0.0",
     "setasign/fpdf": "^1.8.6",
+    "mpdf/mpdf": "^8.2.5",
     "slim/http-cache": "^1.1.0",
     "slim/php-view": "^3.2.0",
     "slim/psr7": "^1.7",

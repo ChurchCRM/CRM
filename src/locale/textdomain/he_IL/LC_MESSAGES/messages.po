@@ -5473,10 +5473,6 @@ msgid "Submit Registration"
 msgstr "שלח רישום"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "סיסמה חדשה נוצרה ונשלחה לכתובת האימייל שלך."
-
-#: 
 msgid "Apply Update Now"
 msgstr "החל עדכון כעת"
 
@@ -5521,20 +5517,12 @@ msgid "Login Name is required"
 msgstr "שם משתמש הוא שדה חובה"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "לאחר שתקבל את האימייל, תוכל להתחבר עם הסיסמה הזמנית ולשנות אותה."
-
-#: 
 msgid "Password Reset Error"
 msgstr "שגיאה באיפוס סיסמה"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "איפוס הסיסמה הצליח"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "אנא בדוק את תיבת האימייל שלך עבור הסיסמה הזמנית."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12350,10 +12338,6 @@ msgstr "הדואר האלקטרוני מושבת"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "הדואר האלקטרוני מושבת. הגדרו דואר אלקטרוני לפני איפוס סיסמאות, או השתמשו בשנה סיסמה."
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "הזינו אחד מקודי השחזור לגיבוי שלכם"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"

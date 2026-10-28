@@ -1280,24 +1280,37 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
         <div class="d-none" id="ministry-event-form-series-fields">
           <div class="row g-2">
-            <div class="col-12 col-md-4 mb-3">
+            <div class="col-12 col-lg-4 mb-3">
               <label class="form-label" for="ministry-event-form-recur-type"><?= gettext('Repeats') ?></label>
               <select class="form-select" id="ministry-event-form-recur-type">
                 <option value="weekly"><?= gettext('Weekly') ?></option>
                 <option value="monthly"><?= gettext('Monthly') ?></option>
+                <option value="monthly-weekday"><?= gettext('Monthly, on a weekday') ?></option>
                 <option value="yearly"><?= gettext('Yearly') ?></option>
               </select>
             </div>
-            <div class="col-12 col-md-8 mb-3" id="ministry-event-form-dow-row">
+            <div class="col-12 col-lg-8 mb-3" id="ministry-event-form-dow-row">
               <label class="form-label" for="ministry-event-form-dow"><?= gettext('Day of the week') ?></label>
               <select class="form-select" id="ministry-event-form-dow"></select>
             </div>
-            <div class="col-12 col-md-8 mb-3 d-none" id="ministry-event-form-dom-row">
+            <div class="col-12 col-lg-8 mb-3 d-none" id="ministry-event-form-wom-row">
+              <label class="form-label" for="ministry-event-form-wom"><?= gettext('Every month on the') ?></label>
+              <div class="d-flex gap-2">
+                <select class="form-select w-auto" id="ministry-event-form-wom" aria-label="<?= InputUtils::escapeAttribute(gettext('Week of the month')) ?>">
+                  <?php foreach ([1 => gettext('1st'), 2 => gettext('2nd'), 3 => gettext('3rd'), 4 => gettext('4th'), 5 => gettext('5th')] as $week => $label): ?>
+                    <option value="<?= $week ?>"><?= InputUtils::escapeHTML($label) ?></option>
+                  <?php endforeach; ?>
+                </select>
+                <select class="form-select" id="ministry-event-form-wom-dow" aria-label="<?= InputUtils::escapeAttribute(gettext('Day of the week')) ?>"></select>
+              </div>
+              <div class="form-text"><?= gettext('Months without a 5th one are skipped.') ?></div>
+            </div>
+            <div class="col-12 col-lg-8 mb-3 d-none" id="ministry-event-form-dom-row">
               <label class="form-label" for="ministry-event-form-dom"><?= gettext('Day of the month') ?></label>
               <input type="number" class="form-control" id="ministry-event-form-dom" min="1" max="31" step="1">
               <div class="form-text"><?= gettext('A day a month does not have falls on its last day.') ?></div>
             </div>
-            <div class="col-12 col-md-8 mb-3 d-none" id="ministry-event-form-doy-row">
+            <div class="col-12 col-lg-8 mb-3 d-none" id="ministry-event-form-doy-row">
               <label class="form-label" for="ministry-event-form-doy-month"><?= gettext('Date each year') ?></label>
               <div class="d-flex gap-2">
                 <select class="form-select" id="ministry-event-form-doy-month" aria-label="<?= InputUtils::escapeAttribute(gettext('Month')) ?>"></select>

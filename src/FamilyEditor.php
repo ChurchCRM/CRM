@@ -411,7 +411,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 
         // Update the custom person fields.
         if ($numCustomFields > 0) {
-            $sSQL = 'REPLACE INTO family_custom SET ';
+            $sSQL = '';
             mysqli_data_seek($rsCustomFields, 0);
 
             while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
@@ -423,13 +423,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                 }
             }
 
-            // chop off the last 2 characters (comma and space) added in the last while loop iteration.
-            $sSQL = mb_substr($sSQL, 0, -2);
-
-            $sSQL .= ", fam_ID = $iFamilyID";
-
-            //Execute the SQL
-            RunQuery($sSQL);
+            RunQuery(CustomFieldUtils::buildUpsertSql('family_custom', 'fam_ID', (int) $iFamilyID, $sSQL));
         }
 
         //Which submit button did they press?

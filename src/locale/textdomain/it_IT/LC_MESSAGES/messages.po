@@ -5494,10 +5494,6 @@ msgid "Submit Registration"
 msgstr "Invia Registrazione"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Una nuova password è stata generata e inviata al tuo indirizzo email."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Applica Aggiornamento Ora"
 
@@ -5542,20 +5538,12 @@ msgid "Login Name is required"
 msgstr "Il nome di accesso è obbligatorio"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Una volta ricevuta l'email, puoi accedere con la tua password temporanea e cambiarla con una che preferisci."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Errore di Ripristino Password"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Ripristino Password Riuscito"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Controlla la tua email (compresa la cartella spam/cestino) per la tua password temporanea."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12371,10 +12359,6 @@ msgstr "Email disabilitata"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "Email disabilitata. Configurare l’email prima di reimpostare le password oppure utilizzare Cambia password."
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Inserire uno dei codici di recupero di riserva"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"

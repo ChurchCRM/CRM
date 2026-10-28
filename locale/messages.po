@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-25 19:34+0000\n"
+"POT-Creation-Date: 2026-10-28 05:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -423,6 +423,9 @@ msgstr ""
 msgid "1. Sunday School Class"
 msgstr ""
 
+msgid "1st"
+msgstr ""
+
 msgid "2-50 characters"
 msgstr ""
 
@@ -435,13 +438,25 @@ msgstr ""
 msgid "2FA Enabled"
 msgstr ""
 
+msgid "2nd"
+msgstr ""
+
 msgid "3. Event"
 msgstr ""
 
 msgid "3. Upload and map"
 msgstr ""
 
+msgid "3rd"
+msgstr ""
+
 msgid "4. Kiosk"
+msgstr ""
+
+msgid "4th"
+msgstr ""
+
+msgid "5th"
 msgstr ""
 
 msgid "A"
@@ -2588,6 +2603,9 @@ msgstr ""
 msgid "Can't mark the only administrator who can sign in as deceased"
 msgstr ""
 
+msgid "Can't remove administrator access from the only administrator who can sign in"
+msgstr ""
+
 msgid "Can't scan?"
 msgstr ""
 
@@ -3118,6 +3136,9 @@ msgid "Choose the team this position serves on"
 msgstr ""
 
 msgid "Choose the theme members see, turn portal sections on or off, and see who is using the portal."
+msgstr ""
+
+msgid "Choose the week of the month, from 1st to 5th"
 msgstr ""
 
 msgid "Choose weekly, monthly or yearly"
@@ -3994,6 +4015,9 @@ msgid "Creates {{total}} events, every {{day}} from {{first}} to {{last}}"
 msgstr ""
 
 msgid "Creates {{total}} events, on day {{day}} of each month from {{first}} to {{last}}"
+msgstr ""
+
+msgid "Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}"
 msgstr ""
 
 msgid "Creating Backup..."
@@ -8318,6 +8342,9 @@ msgstr ""
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr ""
 
+msgid "Invalid day of the week"
+msgstr ""
+
 msgid "Invalid email address"
 msgstr ""
 
@@ -9717,7 +9744,13 @@ msgstr ""
 msgid "Monthly on the"
 msgstr ""
 
+msgid "Monthly, on a weekday"
+msgstr ""
+
 msgid "Months"
+msgstr ""
+
+msgid "Months without a 5th one are skipped."
 msgstr ""
 
 #. Context: countries
@@ -12562,6 +12595,9 @@ msgid "Recruit Volunteers must be true or false"
 msgstr ""
 
 msgid "Recruiting"
+msgstr ""
+
+msgid "RecurWOM must be a whole number from 1 to 5"
 msgstr ""
 
 msgid "Recurrence"
@@ -17343,6 +17379,12 @@ msgid "Wedding Date"
 msgstr ""
 
 msgid "Wednesdays"
+msgstr ""
+
+msgid "Week of the month"
+msgstr ""
+
+msgid "Week of the month must be from 1 to 5"
 msgstr ""
 
 msgid "Weekday, full"

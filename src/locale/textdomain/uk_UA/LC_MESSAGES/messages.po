@@ -5479,10 +5479,6 @@ msgid "Submit Registration"
 msgstr "Надіслати реєстрацію"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Новий пароль створено та надіслано на вашу адресу електронної пошти."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Застосувати оновлення зараз"
 
@@ -5527,20 +5523,12 @@ msgid "Login Name is required"
 msgstr "Ім'я користувача обов'язкове"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Отримавши електронний лист, ви зможете увійти за допомогою тимчасового пароля та змінити його на зручний для вас."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Помилка скидання пароля"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Скидання пароля успішне"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Будь ласка, перевірте свою електронну пошту (включаючи папку спам), щоб знайти тимчасовий пароль."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12372,10 +12360,6 @@ msgstr "Електронна пошта вимкнена"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "Електронна пошта вимкнена. Налаштуйте електронну пошту перед скиданням паролів або скористайтеся Зміна пароля."
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Введіть один із резервних кодів відновлення"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"

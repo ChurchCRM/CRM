@@ -34,6 +34,7 @@ describe("Admin - Church Information Page", () => {
 
         cy.get("#sChurchName").should("exist");
         cy.get("#sChurchWebSite").should("exist");
+        cy.get("#sChurchTaxId").should("exist");
         cy.get("#sChurchPhone").should("exist");
         cy.get("#sChurchEmail").should("exist");
     });
