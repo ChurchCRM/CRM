@@ -3,6 +3,7 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\dto\ChurchMetaData;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\ChurchLogoService;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Twig\GettextExtension;
@@ -51,20 +52,17 @@ class MpdfRenderer implements PdfRendererInterface
         return $data;
     }
 
-    /**
-     * Church-owned logo only. Never the bundled ChurchCRM mark on a letter
-     * a donor receives.
-     */
-    private function churchLogo(): ?string
+    /** The church's logo, else the bundled ChurchCRM logo, so a letter always carries one. */
+    private function churchLogo(): string
     {
         if (ChurchLogoService::hasCustomLogo()) {
             return ChurchLogoService::getLogoPath();
         }
         $configured = ChurchMetaData::getChurchLogoURL();
-        if ($configured !== '' && !str_contains($configured, 'churchcrm-logo')) {
+        if (!str_contains($configured, 'churchcrm-logo')) {
             return $configured;
         }
-        return null;
+        return SystemURLs::getDocumentRoot() . '/Images/churchcrm-logo-ink-blue.svg';
     }
 
     private function makeMpdf(): Mpdf

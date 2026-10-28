@@ -98,16 +98,13 @@ $group->get('/giving/statement', function (Request $request, Response $response)
     }
 
 
-    $letterheadPath = SystemConfig::getValue('bDirLetterHead');
-    $useGraphic = is_string($letterheadPath) && $letterheadPath !== '' && is_readable($letterheadPath);
     $start = DateTimeUtils::formatDate($year . '-01-01');
     $end = DateTimeUtils::formatDate($year . '-12-31');
     $disposition = SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline';
 
     $deductible = $total;
     $data = [
-        'letterhead' => $useGraphic ? 'graphic' : 'address',
-        'letterhead_image' => $useGraphic ? $letterheadPath : null,
+        'letterhead' => 'address',
         'title' => gettext('Contribution Statement'),
         'date_range' => sprintf(gettext('%s through %s'), $start, $end),
         'opening' => trim(SystemConfig::getValue('sTaxReport1') . ' ' . $start . ' – ' . $end . '.'),
