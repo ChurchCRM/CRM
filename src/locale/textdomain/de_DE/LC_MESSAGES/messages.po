@@ -5551,10 +5551,6 @@ msgid "Submit Registration"
 msgstr "Registrierung einreichen"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Ein neues Passwort wurde generiert und an Ihre E-Mail-Adresse gesendet."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Update jetzt anwenden"
 
@@ -5599,20 +5595,12 @@ msgid "Login Name is required"
 msgstr "Anmeldename erforderlich"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Sobald Sie die E-Mail erhalten, können Sie sich mit Ihrem temporären Passwort anmelden und es in ein anderes ändern."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Fehler beim Zurücksetzen des Passworts"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Passwort erfolgreich zurückgesetzt"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Überprüfen Sie Ihre E-Mail (einschließlich Spam-/Junk-Ordner) auf Ihr temporäres Passwort."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12430,10 +12418,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "E-Mail ist deaktiviert. Bitte konfigurieren Sie die E-Mail-Funktion, bevor Sie Passwörter zurücksetzen, oder verwenden Sie Passwort ändern."
 
 #: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Geben Sie einen Ihrer Backup-Wiederherstellungscodes ein"
-
-#: 
 msgid "Enter one of your backup recovery codes to access your account"
 msgstr "Geben Sie einen Ihrer Backup-Wiederherstellungscodes ein, um auf Ihr Konto zuzugreifen"
 
@@ -18089,10 +18073,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d Steuerdokument erfolgreich per E-Mail an die Familie versendet."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d Spendenbescheinigung"
-
-#: 
 msgid "All classifications"
 msgstr "Alle Kategorien"
 
@@ -21611,10 +21591,6 @@ msgid "Signed up"
 msgstr "Eingetragen"
 
 #: 
-msgid "Sincerely"
-msgstr "Herzliche Grüße"
-
-#: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
 msgstr "Einige Ihrer Angaben konnten nicht gespeichert werden. Bitte prüfen Sie die markierten Felder."
 
@@ -24749,4 +24725,12 @@ msgstr "Der Geokodierungsdienst hat nicht geantwortet — versuchen Sie es spät
 #: 
 msgid "Only the email you sent is shown."
 msgstr "Es wird nur die von Ihnen gesendete E-Mail angezeigt."
+
+#: 
+msgid "%d Giving Statement"
+msgstr "%d Spendenübersicht"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Wiederholende Ereignisse konnten nicht erstellt werden. Überprüfen Sie das Anwendungsprotokoll für Details."
 

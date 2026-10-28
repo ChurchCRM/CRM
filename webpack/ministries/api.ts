@@ -1533,7 +1533,13 @@ export interface VolunteerMinistryEventInput {
   startTime: string;
   endTime: string;
   date?: string;
-  recurrence?: { type: "weekly" | "monthly" | "yearly"; dow?: string; dom?: number; doy?: string };
+  recurrence?: {
+    type: "weekly" | "monthly" | "monthly-weekday" | "yearly";
+    dow?: string;
+    dom?: number;
+    doy?: string;
+    wom?: number;
+  };
   rangeStart?: string;
   rangeEnd?: string;
 }

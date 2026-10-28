@@ -277,6 +277,14 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
 <div class="card">
     <div class="card-header">
         <h3 class="card-title"><i class="fa-solid fa-users me-1"></i> <span id="people-title"></span></h3>
+        <div class="card-actions btn-list">
+            <button id="AddAllToCart" type="button" class="btn btn-sm btn-primary">
+                <i class="fa-solid fa-cart-plus me-1"></i> <span id="add-all-cart-text"></span>
+            </button>
+            <button id="RemoveAllFromCart" type="button" class="btn btn-sm btn-outline-danger">
+                <i class="fa-solid fa-trash me-1"></i> <span id="remove-all-cart-text"></span>
+            </button>
+        </div>
     </div>
     <div class="card-body">
         <table id="members" class="table table-vcenter table-hover data-table mb-0">

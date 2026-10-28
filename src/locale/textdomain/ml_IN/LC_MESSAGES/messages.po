@@ -5441,10 +5441,6 @@ msgid "Submit Registration"
 msgstr "രജിസ്ട്രേഷൻ സമർപ്പിക്കുക"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "ഒരു പുതിയ പാസ്‌വേഡ് ഉണ്ടാക്കി നിങ്ങളുടെ ഇമെയിൽ വിലാസത്തിലേക്ക് അയച്ചു."
-
-#: 
 msgid "Apply Update Now"
 msgstr "ഇപ്പോൾ അപ്‌ഡേറ്റ് പ്രയോഗിക്കുക"
 
@@ -5489,20 +5485,12 @@ msgid "Login Name is required"
 msgstr "ലോഗിൻ നാമം ആവശ്യമാണ്"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "ഇമെയിൽ ലഭിച്ചാൽ, താൽക്കാലിക പാസ്‌വേഡ് ഉപയോഗിച്ച് ലോഗ്-ഇൻ ചെയ്ത് ഇഷ്ടമുള്ളതിലേക്ക് മാറ്റാം."
-
-#: 
 msgid "Password Reset Error"
 msgstr "പാസ്‌വേഡ് റീസെറ്റ് പിശക്"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "പാസ്‌വേഡ് റീസെറ്റ് വിജയകരം"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "ദയവായി ഇമെയിൽ (സ്പാം/ജങ്ക് ഫോൾഡർ ഉൾപ്പെടെ) പരിശോധിക്കൂ."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12320,10 +12308,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "ഇമെയിൽ നിഷ്ക്രിയമാക്കിയിരിക്കുന്നു. പാസ്‌വേഡ് റീസെറ്റ് ചെയ്യുന്നതിന് മുൻപ് ഇമെയിൽ കോൺഫിഗർ ചെയ്യുക, അല്ലെങ്കിൽ പാസ്‌വേഡ് മാറ്റുക ഉപയോഗിക്കുക."
 
 #: 
-msgid "Enter one of your backup recovery codes"
-msgstr "നിങ്ങളുടെ ബാക്കപ്പ് റിക്കവറി കോഡുകളിൽ ഒന്ന് നൽകുക"
-
-#: 
 msgid "Enter one of your backup recovery codes to access your account"
 msgstr "അക്കൗണ്ടിൽ പ്രവേശിക്കാൻ നിങ്ങളുടെ ബാക്കപ്പ് റിക്കവറി കോഡുകളിൽ ഒന്ന് നൽകുക"
 
@@ -17979,10 +17963,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d നികുതി രേഖ കുടുംബത്തിന് വിജയകരമായി ഇമെയിൽ ചെയ്തു."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d സദാചരണ പ്രസ്താവന"
-
-#: 
 msgid "All classifications"
 msgstr "എല്ലാ വർഗ്ഗീകരണങ്ങൾ"
 
@@ -21501,10 +21481,6 @@ msgid "Signed up"
 msgstr "സൈൻ അപ്പ് ചെയ്തു"
 
 #: 
-msgid "Sincerely"
-msgstr "വിശ്വസ്തതയോടെ"
-
-#: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
 msgstr "നിങ്ങളുടെ ചില വിവരങ്ങൾ സേവ് ചെയ്യാൻ കഴിഞ്ഞില്ല. ദയവായി അടയാളപ്പെടുത്തിയ ഫീൽഡുകൾ പരിശോധിക്കുക."
 
@@ -24639,4 +24615,12 @@ msgstr "ജിയോകോഡിംഗ് സേവനം പ്രതികര�
 #: 
 msgid "Only the email you sent is shown."
 msgstr "നിങ്ങൾ അയച്ച ഇമെയിൽ മാത്രമാണ് കാണിക്കുന്നത്."
+
+#: 
+msgid "%d Giving Statement"
+msgstr "%d ദാന പ്രസ്താവന"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "ആവർത്തന ഇവന്റുകൾ സൃഷ്ടിക്കാൻ കഴിഞ്ഞില്ല. വിശദാംശങ്ങൾക്ക് ആപ്ലിക്കേഷൻ ലോഗ് പരിശോധിക്കുക."
 

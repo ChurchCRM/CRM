@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-24 07:05+0000\n"
+"POT-Creation-Date: 2026-10-28 05:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -423,6 +423,9 @@ msgstr ""
 msgid "1. Sunday School Class"
 msgstr ""
 
+msgid "1st"
+msgstr ""
+
 msgid "2-50 characters"
 msgstr ""
 
@@ -435,13 +438,25 @@ msgstr ""
 msgid "2FA Enabled"
 msgstr ""
 
+msgid "2nd"
+msgstr ""
+
 msgid "3. Event"
 msgstr ""
 
 msgid "3. Upload and map"
 msgstr ""
 
+msgid "3rd"
+msgstr ""
+
 msgid "4. Kiosk"
+msgstr ""
+
+msgid "4th"
+msgstr ""
+
+msgid "5th"
 msgstr ""
 
 msgid "A"
@@ -535,9 +550,6 @@ msgid "A ministry with that name already exists"
 msgstr ""
 
 msgid "A ministry's own calendar cannot be opened to other ministries"
-msgstr ""
-
-msgid "A new password has been generated and sent to your email address."
 msgstr ""
 
 msgid "A payment is an actual donation received. It will be added to the selected deposit."
@@ -2591,6 +2603,9 @@ msgstr ""
 msgid "Can't mark the only administrator who can sign in as deceased"
 msgstr ""
 
+msgid "Can't remove administrator access from the only administrator who can sign in"
+msgstr ""
+
 msgid "Can't scan?"
 msgstr ""
 
@@ -3123,6 +3138,9 @@ msgstr ""
 msgid "Choose the theme members see, turn portal sections on or off, and see who is using the portal."
 msgstr ""
 
+msgid "Choose the week of the month, from 1st to 5th"
+msgstr ""
+
 msgid "Choose weekly, monthly or yearly"
 msgstr ""
 
@@ -3571,6 +3589,9 @@ msgstr ""
 msgid "Confirm New Password"
 msgstr ""
 
+msgid "Confirm Password"
+msgstr ""
+
 msgid "Confirm Property Deletion"
 msgstr ""
 
@@ -3994,6 +4015,9 @@ msgid "Creates {{total}} events, every {{day}} from {{first}} to {{last}}"
 msgstr ""
 
 msgid "Creates {{total}} events, on day {{day}} of each month from {{first}} to {{last}}"
+msgstr ""
+
+msgid "Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}"
 msgstr ""
 
 msgid "Creating Backup..."
@@ -5552,9 +5576,6 @@ msgid "Enter new user password. Administratively set passwords are not subject t
 msgstr ""
 
 msgid "Enter note text here..."
-msgstr ""
-
-msgid "Enter one of your backup recovery codes"
 msgstr ""
 
 msgid "Enter one of your backup recovery codes to access your account"
@@ -8321,6 +8342,9 @@ msgstr ""
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr ""
 
+msgid "Invalid day of the week"
+msgstr ""
+
 msgid "Invalid email address"
 msgstr ""
 
@@ -9720,7 +9744,13 @@ msgstr ""
 msgid "Monthly on the"
 msgstr ""
 
+msgid "Monthly, on a weekday"
+msgstr ""
+
 msgid "Months"
+msgstr ""
+
+msgid "Months without a 5th one are skipped."
 msgstr ""
 
 #. Context: countries
@@ -10924,9 +10954,6 @@ msgstr ""
 msgid "Once you have a family, add each household member as a person. Assign them a family role (e.g. Head of Household, Spouse, Child)."
 msgstr ""
 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr ""
-
 msgid "Once you submit, our team will receive your registration and reach out to personally welcome your family. If anything looks wrong, use the Previous button to go back and make changes."
 msgstr ""
 
@@ -11802,9 +11829,6 @@ msgstr ""
 msgid "Please check the backup file and try again."
 msgstr ""
 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr ""
-
 msgid "Please choose calendars from the list."
 msgstr ""
 
@@ -12573,6 +12597,9 @@ msgstr ""
 msgid "Recruiting"
 msgstr ""
 
+msgid "RecurWOM must be a whole number from 1 to 5"
+msgstr ""
+
 msgid "Recurrence"
 msgstr ""
 
@@ -12762,6 +12789,9 @@ msgid "Rename Kiosk"
 msgstr ""
 
 msgid "Renames the grades to the names used in that country. People keep their grade, and grades you added yourself stay."
+msgstr ""
+
+msgid "Repeat events could not be created. Check the application log for details."
 msgstr ""
 
 msgid "Repeats"
@@ -17351,6 +17381,12 @@ msgstr ""
 msgid "Wednesdays"
 msgstr ""
 
+msgid "Week of the month"
+msgstr ""
+
+msgid "Week of the month must be from 1 to 5"
+msgstr ""
+
 msgid "Weekday, full"
 msgstr ""
 
@@ -17920,6 +17956,9 @@ msgid "Your new password must not match your old one."
 msgstr ""
 
 msgid "Your password choice is too obvious. Please choose something else."
+msgstr ""
+
+msgid "Your password has been changed. You can now sign in with your new password."
 msgstr ""
 
 msgid "Your password has been updated successfully."

@@ -1,5 +1,7 @@
 /// <reference types="cypress" />
 
+import { absoluteUrl } from "../../../../support/urls";
+
 /**
  * POST /api/background/timerjobs under concurrency — regression coverage for
  * issue #9727.
@@ -39,16 +41,12 @@ describe("API Private Admin - Background Timer Jobs concurrency", () => {
     /**
      * Absolute URL of the timer-job endpoint.
      *
-     * cy.request()/cy.visit() concatenate baseUrl onto a relative URL, but
-     * win.fetch() is the browser's own fetch: it resolves a root-relative path
-     * against the page *origin*, which drops the install's base path. On the
-     * subdirectory profile ("http://host/churchcrm/") the literal
-     * "/api/background/timerjobs" therefore reached http://host/api/... and
-     * 404'd. Composing the URL from baseUrl keeps the base path, and stripping
-     * the trailing slash first avoids a "//api/..." double slash at the root.
+     * cy.request() joins a relative path to baseUrl, but win.fetch() is the
+     * browser's own fetch and resolves a root-relative path against the origin,
+     * which drops the install path on the subdirectory profile. absoluteUrl
+     * keeps the base path for both root and subdirectory installs.
      */
-    const timerJobsUrl = () =>
-        `${Cypress.config("baseUrl").replace(/\/+$/, "")}/api/background/timerjobs`;
+    const timerJobsUrl = () => absoluteUrl("/api/background/timerjobs");
 
     const readConfig = (name) =>
         cy

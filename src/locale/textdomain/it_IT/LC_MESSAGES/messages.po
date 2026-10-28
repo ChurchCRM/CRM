@@ -5494,10 +5494,6 @@ msgid "Submit Registration"
 msgstr "Invia Registrazione"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Una nuova password è stata generata e inviata al tuo indirizzo email."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Applica Aggiornamento Ora"
 
@@ -5542,20 +5538,12 @@ msgid "Login Name is required"
 msgstr "Il nome di accesso è obbligatorio"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Una volta ricevuta l'email, puoi accedere con la tua password temporanea e cambiarla con una che preferisci."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Errore di Ripristino Password"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Ripristino Password Riuscito"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Controlla la tua email (compresa la cartella spam/cestino) per la tua password temporanea."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12373,10 +12361,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "Email disabilitata. Configurare l’email prima di reimpostare le password oppure utilizzare Cambia password."
 
 #: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Inserire uno dei codici di recupero di riserva"
-
-#: 
 msgid "Enter one of your backup recovery codes to access your account"
 msgstr "Inserire uno dei codici di recupero di riserva per accedere all’account"
 
@@ -18032,10 +18016,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d documento fiscale inviato con successo alla famiglia."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "Dichiarazione di donazione %s %d"
-
-#: 
 msgid "All classifications"
 msgstr "Tutte le classificazioni"
 
@@ -21555,10 +21535,6 @@ msgid "Signed up"
 msgstr "Iscritto"
 
 #: 
-msgid "Sincerely"
-msgstr "Cordialmente"
-
-#: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
 msgstr "Non è stato possibile salvare alcuni dei tuoi dati. Controlla i campi evidenziati."
 
@@ -24693,4 +24669,12 @@ msgstr "Il servizio di geocodifica non ha risposto — riprova più tardi"
 #: 
 msgid "Only the email you sent is shown."
 msgstr "Viene mostrata solo l’email che hai inviato."
+
+#: 
+msgid "%d Giving Statement"
+msgstr "Dichiarazione delle offerte %d"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Impossibile creare gli eventi ripetuti. Controllare il registro dell'applicazione per i dettagli."
 

@@ -5541,10 +5541,6 @@ msgid "Submit Registration"
 msgstr "提交注册"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "新密码已生成并发送至您的电子邮件地址。"
-
-#: 
 msgid "Apply Update Now"
 msgstr "立即应用更新"
 
@@ -5589,20 +5585,12 @@ msgid "Login Name is required"
 msgstr "登录名是必填项"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "收到电子邮件后，您可以使用临时密码登录，并将其更改为您喜欢的密码。"
-
-#: 
 msgid "Password Reset Error"
 msgstr "密码重置错误"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "密码重置成功"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "请检查您的电子邮件（包括垃圾邮件文件夹）以获取临时密码。"
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12412,10 +12400,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "电子邮件已禁用。请先配置电子邮件再重置密码，或使用更改密码功能。"
 
 #: 
-msgid "Enter one of your backup recovery codes"
-msgstr "输入您的一个备用恢复代码"
-
-#: 
 msgid "Enter one of your backup recovery codes to access your account"
 msgstr "输入您的一个备用恢复代码以访问您的账户"
 
@@ -18065,10 +18049,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d 份税单已成功邮寄给家庭"
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d 捐献声明"
-
-#: 
 msgid "All classifications"
 msgstr "所有分类"
 
@@ -21575,10 +21555,6 @@ msgid "Signed up"
 msgstr "已报名"
 
 #: 
-msgid "Sincerely"
-msgstr "谨上"
-
-#: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
 msgstr "您的部分资料无法保存。请检查标出的字段。"
 
@@ -24709,4 +24685,12 @@ msgstr "地理编码服务未响应 — 请稍后重试"
 #: 
 msgid "Only the email you sent is shown."
 msgstr "仅显示您发送的电子邮件。"
+
+#: 
+msgid "%d Giving Statement"
+msgstr "%d 奉献报表"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "无法创建重复活动。请查看应用程序日志了解详情。"
 

@@ -5465,10 +5465,6 @@ msgid "Submit Registration"
 msgstr "Odeslat registraci"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Bylo vygenerováno nové heslo a zasláno na vaši e-mailovou adresu."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Použít aktualizaci nyní"
 
@@ -5513,20 +5509,12 @@ msgid "Login Name is required"
 msgstr "Je vyžadováno přihlašovací jméno"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Jakmile obdržíte e-mail, můžete se přihlásit pomocí dočasného hesla a změnit ho na heslo, které vám vyhovuje."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Chyba při obnovení hesla"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Obnovení hesla bylo úspěšné"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Dočasné heslo najdete ve své poště (zkontrolujte také složky se spamem/nevyžádanou poštou)."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12352,10 +12340,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "E-mail je zakázán. Před resetováním hesel nakonfigurujte e-mail nebo použijte Změnit heslo."
 
 #: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Zadejte jeden ze záložních kódů pro obnovení"
-
-#: 
 msgid "Enter one of your backup recovery codes to access your account"
 msgstr "Zadejte jeden ze záložních kódů pro obnovení pro přístup k účtu"
 
@@ -18017,10 +18001,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d daňový dokument byl úspěšně zaslán rodině."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d Výpis darů"
-
-#: 
 msgid "All classifications"
 msgstr "Všechny klasifikace"
 
@@ -21551,10 +21531,6 @@ msgid "Signed up"
 msgstr "Přihlášen(a) ke službě"
 
 #: 
-msgid "Sincerely"
-msgstr "S pozdravem"
-
-#: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
 msgstr "Některé vaše údaje se nepodařilo uložit. Zkontrolujte prosím zvýrazněná pole."
 
@@ -24693,4 +24669,12 @@ msgstr "Geokódovací služba neodpověděla — zkuste to znovu později"
 #: 
 msgid "Only the email you sent is shown."
 msgstr "Zobrazuje se pouze e-mail, který jste odeslali."
+
+#: 
+msgid "%d Giving Statement"
+msgstr "%d Výkaz darů"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Opakující se události se nepodařilo vytvořit. Podrobnosti najdete v protokolu aplikace."
 

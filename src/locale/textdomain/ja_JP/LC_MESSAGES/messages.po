@@ -5439,10 +5439,6 @@ msgid "Submit Registration"
 msgstr "登録を送信"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "新しいパスワードが生成され、メールアドレスに送信されました。"
-
-#: 
 msgid "Apply Update Now"
 msgstr "今すぐ更新を適用"
 
@@ -5487,20 +5483,12 @@ msgid "Login Name is required"
 msgstr "ログイン名は必須です"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "メールを受信したら、一時パスワードでログインし、お好みのパスワードに変更できます。"
-
-#: 
 msgid "Password Reset Error"
 msgstr "パスワードリセットエラー"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "パスワードリセット成功"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "一時パスワードについてメール（スパム/迷惑メールフォルダを含む）を確認してください。"
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12310,10 +12298,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "メールは無効です。パスワードをリセットする前にメールを設定するか、パスワード変更をご使用ください。"
 
 #: 
-msgid "Enter one of your backup recovery codes"
-msgstr "バックアップ回復コードのいずれかを入力してください"
-
-#: 
 msgid "Enter one of your backup recovery codes to access your account"
 msgstr "アカウントにアクセスするには、バックアップ回復コードのいずれかを入力してください"
 
@@ -17963,10 +17947,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "%d件の税務文書が家族に正常にメール送信されました。"
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d 献金報告書"
-
-#: 
 msgid "All classifications"
 msgstr "すべての分類"
 
@@ -21473,10 +21453,6 @@ msgid "Signed up"
 msgstr "申込済み"
 
 #: 
-msgid "Sincerely"
-msgstr "敬具"
-
-#: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
 msgstr "一部の情報を保存できませんでした。強調表示された項目を確認してください。"
 
@@ -24607,4 +24583,12 @@ msgstr "ジオコーディングサービスから応答がありませんでし
 #: 
 msgid "Only the email you sent is shown."
 msgstr "送信したメールのみが表示されます。"
+
+#: 
+msgid "%d Giving Statement"
+msgstr "%d 献金明細書"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "繰り返しイベントを作成できませんでした。詳細はアプリケーションログを確認してください。"
 

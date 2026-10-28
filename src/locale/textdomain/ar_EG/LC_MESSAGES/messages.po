@@ -5474,10 +5474,6 @@ msgid "Submit Registration"
 msgstr "إرسال التسجيل"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "تم إنشاء كلمة مرور جديدة وإرسالها إلى عنوان بريدك الإلكتروني."
-
-#: 
 msgid "Apply Update Now"
 msgstr "طبّق التحديث الآن"
 
@@ -5522,20 +5518,12 @@ msgid "Login Name is required"
 msgstr "اسم تسجيل الدخول مطلوب"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "بمجرد استقبال البريد الإلكتروني، يمكنك تسجيل الدخول باستخدام كلمة المرور المؤقتة وتغييرها إلى ما تفضله."
-
-#: 
 msgid "Password Reset Error"
 msgstr "خطأ في إعادة تعيين كلمة المرور"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "نجحت إعادة تعيين كلمة المرور"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "يرجى التحقق من بريدك الإلكتروني (بما في ذلك مجلد البريد العشوائي) للحصول على كلمة المرور المؤقتة."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12385,10 +12373,6 @@ msgid "Email is disabled. Configure email before resetting passwords, or use Cha
 msgstr "البريد الإلكتروني معطّل. قم بتكوين البريد الإلكتروني قبل إعادة تعيين كلمات المرور، أو استخدم تغيير كلمة المرور."
 
 #: 
-msgid "Enter one of your backup recovery codes"
-msgstr "أدخل أحد رموز الاسترداد الاحتياطية"
-
-#: 
 msgid "Enter one of your backup recovery codes to access your account"
 msgstr "أدخل أحد رموز الاسترداد الاحتياطية للوصول إلى حسابك"
 
@@ -18068,10 +18052,6 @@ msgid "%d tax document emailed to the family successfully."
 msgstr "تم إرسال %d وثيقة ضريبية إلى الأسرة بنجاح عبر البريد الإلكتروني."
 
 #: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d بيان التبرع"
-
-#: 
 msgid "All classifications"
 msgstr "جميع التصنيفات"
 
@@ -21638,10 +21618,6 @@ msgid "Signed up"
 msgstr "مسجَّل"
 
 #: 
-msgid "Sincerely"
-msgstr "مع خالص التحية"
-
-#: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
 msgstr "تعذّر حفظ بعض بياناتك. يُرجى التحقق من الحقول المميزة."
 
@@ -24792,4 +24768,12 @@ msgstr "لم تستجب خدمة الترميز الجغرافي — حاول م
 #: 
 msgid "Only the email you sent is shown."
 msgstr "يُعرض فقط البريد الإلكتروني الذي أرسلته."
+
+#: 
+msgid "%d Giving Statement"
+msgstr "بيان العطاء %d"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "تعذر إنشاء الأحداث المتكررة. تحقق من سجل التطبيق للحصول على التفاصيل."
 
