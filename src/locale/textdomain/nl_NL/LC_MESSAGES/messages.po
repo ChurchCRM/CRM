@@ -5444,10 +5444,6 @@ msgid "Submit Registration"
 msgstr "Sla registratie op"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Er is een nieuw wachtwoord gegenereerd en naar uw e-mailadres verzonden."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Update nu toepassen"
 
@@ -5492,20 +5488,12 @@ msgid "Login Name is required"
 msgstr "Gebruikersnaam is verplicht"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Zodra u de e-mail ontvangt, kunt u in loggen met uw tijdelijke wachtwoord. U kunt dit wachtwoord later aanpassen."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Resetten van wachtwoord is mislukt"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Wachtwoord is succesvol gereset"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Controleer uw e-mail (ook uw SPAM) om uw tijdelijke wachtwoord te vinden."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12321,10 +12309,6 @@ msgstr "E-mail is uitgeschakeld"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "E-mail is uitgeschakeld. Configureer e-mail voordat u wachtwoorden opnieuw instelt, of gebruik Wachtwoord wijzigen."
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Voer een van uw back-upherstelcodes in"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"

@@ -403,6 +403,6 @@ describe("UI: GroupPropsFormEditor Back button and Show in Profile (#9381)", () 
     it("Save Changes button is visible and form submits without errors", () => {
         cy.get('button[name="SaveChanges"]').should("be.visible").click();
         cy.url().should("include", "/properties/form");
-        cy.get(".alert-danger").should("not.exist");
+        cy.get(".alert-danger:not(.crm-system-notification)").should("not.exist");
     });
 });

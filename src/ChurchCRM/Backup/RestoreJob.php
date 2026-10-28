@@ -15,6 +15,8 @@ use Propel\Runtime\Propel;
 
 class RestoreJob extends JobBase
 {
+    private const array ALLOWED_IMAGE_EXTENSIONS = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+
     private \SplFileInfo $RestoreFile;
     public array $Messages = [];
 
@@ -167,18 +169,14 @@ class RestoreJob extends JobBase
     }
 
     /**
-     * Validate that extracted Images directory contains only image files.
-     * Prevents RCE by removing any PHP/script files that may have been
-     * embedded in a malicious backup archive.
+     * Keep only files with a known image extension and image MIME type;
+     * everything else is removed before the directory is copied into the webroot.
      *
      * @param string $dir Path to the extracted Images directory
-     * @throws Exception If executable PHP files are found (aborts restore)
+     * @throws Exception If a rejected file cannot be removed (aborts restore)
      */
     private function validateExtractedImages(string $dir): void
     {
-        // Executable extensions that must never be copied to the webroot
-        $dangerousExtensions = ['php', 'phtml', 'php3', 'php4', 'php5', 'php7', 'phps', 'phar', 'shtml'];
-
         $iterator = new \RecursiveIteratorIterator(
             new \RecursiveDirectoryIterator($dir, \FilesystemIterator::SKIP_DOTS),
             \RecursiveIteratorIterator::LEAVES_ONLY
@@ -195,10 +193,12 @@ class RestoreJob extends JobBase
             $filePath = $file->getPathname();
             $extension = strtolower($file->getExtension());
 
-            // Immediately abort if any executable file is found
-            if (\in_array($extension, $dangerousExtensions, true)) {
-                LoggerUtils::getAppLogger()->error('Restore aborted: dangerous file found in backup archive: ' . $filePath);
-                throw new Exception('Restore aborted: backup archive contains a potentially dangerous file (' . $file->getFilename() . '). This may indicate a compromised backup.');
+            if (!\in_array($extension, self::ALLOWED_IMAGE_EXTENSIONS, true)) {
+                LoggerUtils::getAppLogger()->warning('Restore: removing file with non-image extension from backup: ' . $filePath);
+                if (!unlink($filePath)) {
+                    throw new Exception('Restore aborted: could not remove non-image file from backup (' . $file->getFilename() . '). Check file permissions.');
+                }
+                continue;
             }
 
             // Check MIME type for all other files — remove non-images (see ImageSupportUtils for allowed types)

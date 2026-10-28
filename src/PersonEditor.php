@@ -496,11 +496,8 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
                 }
             }
 
-            // chop off the last 2 characters (comma and space) added in the last while loop iteration.
             if ($sSQL > '') {
-                $sSQL = 'REPLACE INTO person_custom SET ' . $sSQL . ' per_ID = ' . $iPersonID;
-                //Execute the SQL
-                RunQuery($sSQL);
+                RunQuery(CustomFieldUtils::buildUpsertSql('person_custom', 'per_ID', (int) $iPersonID, $sSQL));
             }
         }
 
