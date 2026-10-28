@@ -382,6 +382,26 @@ class CustomFieldUtils
     }
 
     /**
+     * Builds an upsert from the assignments buildSql() produced, so columns the
+     * caller may not see keep their stored values. REPLACE INTO would delete the
+     * row and reset every column that is not listed.
+     *
+     * $table and $keyColumn are code constants, never request input.
+     */
+    public static function buildUpsertSql(string $table, string $keyColumn, int $recordId, string $assignments): string
+    {
+        if ($assignments === '') {
+            return 'INSERT IGNORE INTO ' . $table . ' SET ' . $keyColumn . ' = ' . $recordId;
+        }
+
+        // buildSql() ends every assignment with ", ".
+        $assignments = mb_substr($assignments, 0, -2);
+
+        return 'INSERT INTO ' . $table . ' SET ' . $assignments . ', ' . $keyColumn . ' = ' . $recordId
+            . ' ON DUPLICATE KEY UPDATE ' . $assignments;
+    }
+
+    /**
      * Generates SQL for a custom field update.
      * Migrated from sqlCustomField() in Functions.php.
      */
