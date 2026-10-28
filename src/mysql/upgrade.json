@@ -120,7 +120,7 @@
   },
   "current": {
     "versions": ["7.8.2"],
-    "scripts": [],
+    "scripts": ["/mysql/upgrade/7.8.3.sql"],
     "dbVersion": "7.8.3"
   }
 }

@@ -168,9 +168,15 @@ INSERT INTO `config_cfg` (`cfg_name`, `cfg_value`) VALUES ('bAllowPrereleaseUpgr
 ('sChurchCity','Kansas City'),
 ('sChurchCountry','United States'),
 ('sChurchEmail','demo@churchcrm.io'),
+('sChurchFacebook','https://www.facebook.com/getChurchCRM'),
+('sChurchInstagram','https://www.instagram.com/getchurchcrm/'),
 ('sChurchName','Main St. Cathedral'),
 ('sChurchPhone','555 123 4234'),
 ('sChurchState','MO'),
+('sChurchTaxId','47-3829156'),
+('sChurchWebSite','https://churchcrm.io'),
+('sChurchX','https://x.com/getChurchCRM'),
+('sChurchYouTube','https://www.youtube.com/@getChurchCRM'),
 ('sChurchZip','64106'),
 ('sConfirmSigner','Elder Joe Smith'),
 ('sDefaultCity','Kansas City'),
@@ -1663,7 +1669,8 @@ INSERT INTO `pledge_plg` (`plg_plgID`, `plg_FamID`, `plg_FYID`, `plg_date`, `plg
 (31,0,25,'2021-04-25',1000.00,'Once','CHECK','','2021-04-25',1,'Payment',1,5,111,NULL,'',0,0,0,0.00,'111|9|0|1|2021-04-25'),
 (32,0,25,'2021-04-25',1000.00,'Once','CHECK','','2021-04-25',1,'Payment',1,5,111,NULL,'',0,0,0,0.00,'111|10|0|1|2021-04-25'),
 (33,0,25,'2021-04-25',1000.00,'Once','CHECK','','2021-04-25',1,'Payment',1,5,111,NULL,'',0,0,0,0.00,'111|11|0|1|2021-04-25'),
-(34,0,25,'2021-04-25',1000.00,'Once','CHECK','','2021-04-25',1,'Payment',1,5,111,NULL,'',0,0,0,0.00,'111|12|0|1|2021-04-25');
+(34,0,25,'2021-04-25',1000.00,'Once','CHECK','','2021-04-25',1,'Payment',1,5,111,NULL,'',0,0,0,0.00,'111|12|0|1|2021-04-25'),
+(35,20,21,'2017-06-11',200.00,'Once','CHECK','Dinner tickets','2017-06-11',1,'Payment',1,2,2041,NULL,'',0,0,0,50.00,'2041|2|20|1|2017-06-11');
 
 INSERT INTO `property_pro` (`pro_ID`, `pro_Class`, `pro_prt_ID`, `pro_Name`, `pro_Description`, `pro_Prompt`) VALUES (1,'p',1,'Disabled','has a disability.','What is the nature of the disability?'),
 (2,'f',2,'Single Parent','is a single-parent household.',''),
