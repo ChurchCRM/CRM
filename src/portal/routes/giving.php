@@ -126,9 +126,18 @@ $group->get('/giving/statement', function (Request $request, Response $response)
         ]],
     ];
 
+    $filename = trim(
+        (string) preg_replace(
+            '/[^A-Za-z0-9]+/',
+            '-',
+            (string) iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', implode(' ', [$year, ChurchMetaData::getChurchName(), $family->getName()]))
+        ),
+        '-'
+    ) . '.pdf';
+
     $pdf = (new MpdfRenderer())->renderToString('tax-report', $data);
     $response->getBody()->write($pdf);
     return $response
         ->withHeader('Content-Type', 'application/pdf')
-        ->withHeader('Content-Disposition', $disposition . '; filename="giving-statement-' . $year . '.pdf"');
+        ->withHeader('Content-Disposition', $disposition . '; filename="' . $filename . '"');
 });

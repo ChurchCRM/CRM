@@ -29,9 +29,11 @@ describe("Member chooses a contribution statement year", () => {
 
         statementLines(2018).then((lines) => {
             const title = lines.indexOf("Contribution Statement");
-            expect(lines[title - 2], "church letterhead").to.equal(
-                "Main St. Cathedral · 123 Main St Kansas City, MO 64106 United States",
-            );
+            expect(lines.slice(title - 3, title), "church letterhead").to.deep.equal([
+                "Main St. Cathedral",
+                "123 Main St Kansas City, MO 64106 United States",
+                "555 123 4234 · demo@churchcrm.io",
+            ]);
             expect(lines[title + 2], "household name").to.equal("Black");
             const gifts = lines.indexOf("AMOUNT") + 1;
             expect(lines.slice(gifts, gifts + 24), "family 20 payments on 2018-03-04").to.deep.equal([
@@ -54,5 +56,14 @@ describe("Member chooses a contribution statement year", () => {
             const name = lines.indexOf("Black");
             expect(lines[name + 4]).to.equal("No contributions were recorded for this period.");
         });
+    });
+
+    it("names the statement file with the year, the church and the family", () => {
+        cy.visit("/portal/giving");
+        cy.get("#portal-giving form").then((form) =>
+            cy.request({ url: form.attr("action"), qs: { year: 2018 }, encoding: "binary" }).then((response) => {
+                expect(response.headers["content-disposition"]).to.contain('filename="2018-Main-St-Cathedral-Black.pdf"');
+            }),
+        );
     });
 });
