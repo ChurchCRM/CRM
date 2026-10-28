@@ -3,56 +3,77 @@
 /**
  * Saving the person editor keeps the custom fields the editing user cannot see.
  *
- * Seed person 80 has a value in `c2` ("Father of confession - Other"), a custom
- * field restricted to administrators. The office-staff persona (Edit Records,
- * not Admin) cannot see that field in the editor, so a save from the form must
- * leave its stored value alone. The admin API only reads the value back.
+ * Seed person 2 holds a value in custom fields of every security class: `c2`
+ * (administrators), `c5`/`c6`/`c12` (Finance), `c7` (Notes), `c9` (Manage Groups),
+ * `c11` (Delete Records), plus fields open to every editor. Each persona below sees
+ * only its own classes in the editor. A save from the form must change the visible
+ * field it edited and nothing else, so the admin API snapshot taken before and
+ * after the save differs in that one field only.
  */
 describe("Person editor keeps custom fields the user cannot see", () => {
-    const personId = 80;
-    const hiddenFieldId = "c2";
-    const hiddenValue = "Fr. Join Smith";
-    const visibleField = 'input[name="c3"]';
+    const personId = 2;
+    const editedField = "c3";
     const marker = "Cypress keeps hidden fields";
+    const editedSelector = `input[name="${editedField}"]`;
 
-    const hiddenCustomValue = () =>
+    // persona, then the custom fields it must not see in the editor
+    const cases = [
+        { persona: "office-staff", hidden: ["c2", "c5", "c6", "c7", "c9", "c11", "c12"] },
+        { persona: "staff-all-but-admin", hidden: ["c2"] },
+    ];
+
+    const snapshot = () =>
         cy.makePrivateAdminAPICall("GET", `/api/person/${personId}`, null, 200).then((response) => {
-            const field = response.body.singlePersonCustom.find((item) => item.id === hiddenFieldId);
-            return field ? field.value : null;
+            const values = {};
+            response.body.singlePersonCustom.forEach((item) => {
+                values[item.id] = item.value;
+            });
+            return values;
         });
 
-    const saveVisibleField = (value) => {
+    const saveEditedField = (value) => {
         cy.visit(`/PersonEditor.php?PersonID=${personId}`);
-        cy.get(visibleField).clear();
+        cy.get(editedSelector).clear();
         if (value !== "") {
-            cy.get(visibleField).type(value);
+            cy.get(editedSelector).type(value);
         }
         cy.get('button[name="PersonSubmit"]').click();
         cy.url().should("include", `/people/view/${personId}`);
     };
 
-    beforeEach(() => {
-        cy.setupPersonaSession("office-staff");
-    });
+    cases.forEach(({ persona, hidden }) => {
+        describe(persona, () => {
+            beforeEach(() => {
+                cy.setupPersonaSession(persona);
+            });
 
-    after(() => {
-        cy.setupPersonaSession("office-staff");
-        saveVisibleField("");
-    });
+            after(() => {
+                cy.setupPersonaSession(persona);
+                saveEditedField("");
+            });
 
-    it("does not show the administrator-only field to the editing user", () => {
-        cy.visit(`/PersonEditor.php?PersonID=${personId}`);
-        cy.get(visibleField).should("exist");
-        cy.get(`[name="${hiddenFieldId}"]`).should("not.exist");
-    });
+            it("does not show the fields of other security classes", () => {
+                cy.visit(`/PersonEditor.php?PersonID=${personId}`);
+                cy.get(editedSelector).should("exist");
+                hidden.forEach((field) => {
+                    cy.get(`[name="${field}"]`).should("not.exist");
+                });
+            });
 
-    it("keeps the stored value of the hidden field after a save", () => {
-        hiddenCustomValue().should("eq", hiddenValue);
+            it("changes only the edited field when the form is saved", () => {
+                snapshot().then((before) => {
+                    hidden.forEach((field) => expect(before[field], `seeded ${field}`).to.exist);
 
-        saveVisibleField(marker);
+                    saveEditedField(marker);
 
-        hiddenCustomValue().should("eq", hiddenValue);
-        cy.visit(`/PersonEditor.php?PersonID=${personId}`);
-        cy.get(visibleField).should("have.value", marker);
+                    snapshot().then((after) => {
+                        expect(after[editedField]).to.eq(marker);
+                        const { [editedField]: _beforeEdited, ...beforeRest } = before;
+                        const { [editedField]: _afterEdited, ...afterRest } = after;
+                        expect(afterRest).to.deep.eq(beforeRest);
+                    });
+                });
+            });
+        });
     });
 });
