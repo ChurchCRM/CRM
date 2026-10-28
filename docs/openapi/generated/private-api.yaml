@@ -9,7 +9,7 @@ info:
   license:
     name: MIT
     url: 'https://opensource.org/licenses/MIT'
-  version: 7.8.2
+  version: 7.8.3
 servers:
   -
     url: '{scheme}://{host}/api'
