@@ -10,6 +10,8 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\Config;
+use ChurchCRM\model\ChurchCRM\ConfigQuery;
 use ChurchCRM\model\ChurchCRM\Version;
 use ChurchCRM\Utils\SQLUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -67,15 +69,22 @@ class UpgradeService
         }
 
         //the database isn't at the current version.  Start the upgrade
+        $lockName = null;
         try {
             $connection = Propel::getConnection();
+            $lockName = 'churchcrm-upgrade-' . sha1((string) $connection->query('SELECT DATABASE()')->fetchColumn());
+            $lock = $connection->prepare('SELECT GET_LOCK(?, 0)');
+            $lock->execute([$lockName]);
+            if ((int) $lock->fetchColumn() !== 1) {
+                $lockName = null;
+                throw new \RuntimeException('A database upgrade is already running. Retry after it finishes.');
+            }
 
             $dbUpdatesFile = file_get_contents(SystemURLs::getDocumentRoot() . '/mysql/upgrade.json');
             MiscUtils::throwIfFailed($dbUpdatesFile);
 
             $dbUpdates = json_decode($dbUpdatesFile, true, 512);
 
-            $errorFlag = false;
             $upgradeScriptsExecuted = 0;
             foreach ($dbUpdates as $dbUpdate) {
                 try {
@@ -87,16 +96,40 @@ class UpgradeService
                         $logger->info('New Version: ' . $version->getVersion());
                         $scriptName = null;
                         foreach ($dbUpdate['scripts'] as $dbScript) {
-                            $scriptName = SystemURLs::getDocumentRoot() . $dbScript;
+                            // Legacy string entries deliberately default to unsafe on retry.
+                            $scriptPath = is_string($dbScript) ? $dbScript : $dbScript['path'];
+                            $retryable = is_array($dbScript) && ($dbScript['retryable'] ?? false) === true;
+                            $scriptName = SystemURLs::getDocumentRoot() . $scriptPath;
+                            $progressKey = 'dbUpgrade.' . sha1($dbUpdate['dbVersion'] . ':' . $scriptPath);
+                            $progress = ConfigQuery::create()->findOneByName($progressKey);
+                            if ($progress !== null && $progress->getValue() === 'complete') {
+                                $logger->info('Skipping completed upgrade file: ' . $scriptPath);
+                                continue;
+                            }
+                            if ($progress !== null && !$retryable) {
+                                throw new \RuntimeException(
+                                    "Upgrade file $scriptPath was interrupted and is not safe to retry. "
+                                    . 'Restore a database backup or have an administrator repair this migration before continuing.'
+                                );
+                            }
+                            if ($progress === null) {
+                                $progress = new Config();
+                                $progress->setName($progressKey);
+                            }
+                            // Commit this before executing: DDL can commit even if the request dies.
+                            $progress->setValue('started');
+                            $progress->save($connection);
 
                             $logger->info('Upgrade DB - ' . $scriptName);
                             if (pathinfo($scriptName, PATHINFO_EXTENSION) === 'sql') {
                                 SQLUtils::sqlImport($scriptName, $connection);
                             } elseif (pathinfo($scriptName, PATHINFO_EXTENSION) === 'php') {
-                                require_once $scriptName;
+                                require $scriptName;
                             } else {
                                 throw new \Exception("Invalid upgrade file specified: $scriptName");
                             }
+                            $progress->setValue('complete');
+                            $progress->save($connection);
                         }
                         $version->setUpdateEnd(new \DateTimeImmutable());
                         $version->save();
@@ -105,7 +138,7 @@ class UpgradeService
                         // If no scripts run, then there is no supported upgrade path defined in the JSON file
                         $upgradeScriptsExecuted++;
                     }
-                } catch (\Exception $exc) {
+                } catch (\Throwable $exc) {
                     $logger->error(
                         'Failure executing upgrade script(s): ' . $exc->getMessage(),
                         [
@@ -142,13 +175,18 @@ class UpgradeService
             }
 
             return true;
-        } catch (\Exception $exc) {
+        } catch (\Throwable $exc) {
             $logger->error(
                 'Database upgrade failed: ' . $exc->getMessage(),
                 ['exception' => $exc]
             );
 
             throw $exc; //allow the method requesting the upgrade to handle this failure also.
+        } finally {
+            if ($lockName !== null) {
+                $release = $connection->prepare('SELECT RELEASE_LOCK(?)');
+                $release->execute([$lockName]);
+            }
         }
     }
 }

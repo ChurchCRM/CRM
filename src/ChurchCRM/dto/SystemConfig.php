@@ -406,8 +406,8 @@ class   SystemConfig
                 self::$configs[$config->getName()]->setDBConfigObject($config);
             } else {
                 //there's a config item in the DB that doesn't exist in the current code.
-                //don't delete dynamic keys like plugin.* configs - they're managed by plugins
-                if (strpos($config->getName(), 'plugin.') !== 0) {
+                // Dynamic plugin settings and upgrade checkpoints have their own lifecycle.
+                if (strpos($config->getName(), 'plugin.') !== 0 && strpos($config->getName(), 'dbUpgrade.') !== 0) {
                     $config->delete();
                 }
             }

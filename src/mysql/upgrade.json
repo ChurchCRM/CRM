@@ -1,126 +1,282 @@
 {
   "consolidated-pre-6.0.0": {
     "versions": ["1.2.14", "1.3.0", "1.3.1", "1.3.2"],
-    "scripts": ["/mysql/upgrade/pre-6.0.0-consolidated.sql", "/mysql/upgrade/2.9.0-InnoDB.php"],
+    "scripts": [
+      {
+        "path": "/mysql/upgrade/pre-6.0.0-consolidated.sql",
+        "retryable": false
+      },
+      {
+        "path": "/mysql/upgrade/2.9.0-InnoDB.php",
+        "retryable": false
+      }
+    ],
     "dbVersion": "6.0.0"
   },
   "pre-6.2.0": {
     "versions": ["6.0.0", "6.0.1", "6.0.2", "6.1.0"],
-    "scripts": ["/mysql/upgrade/6.2.0.sql"],
+    "scripts": [
+      {
+        "path": "/mysql/upgrade/6.2.0.sql",
+        "retryable": false
+      }
+    ],
     "dbVersion": "6.2.0"
   },
   "pre-6.3.0": {
     "versions": ["6.2.0"],
-    "scripts": ["/mysql/upgrade/6.3.0.sql"],
+    "scripts": [
+      {
+        "path": "/mysql/upgrade/6.3.0.sql",
+        "retryable": false
+      }
+    ],
     "dbVersion": "6.3.0"
   },
   "pre-6.5.0": {
     "versions": ["6.3.0", "6.4.0"],
-    "scripts": ["/mysql/upgrade/6.5.0.sql"],
+    "scripts": [
+      {
+        "path": "/mysql/upgrade/6.5.0.sql",
+        "retryable": false
+      }
+    ],
     "dbVersion": "6.5.0"
   },
   "pre-6.6.0": {
     "versions": ["6.5.0", "6.5.1", "6.5.2", "6.5.3", "6.5.4"],
-    "scripts": ["/mysql/upgrade/6.6.0.php", "/mysql/upgrade/6.6.0.sql"],
+    "scripts": [
+      {
+        "path": "/mysql/upgrade/6.6.0.php",
+        "retryable": false
+      },
+      {
+        "path": "/mysql/upgrade/6.6.0.sql",
+        "retryable": false
+      }
+    ],
     "dbVersion": "6.6.0"
   },
   "pre-6.7.0": {
     "versions": ["6.6.0", "6.6.1"],
-    "scripts": ["/mysql/upgrade/6.7.0.sql"],
+    "scripts": [
+      {
+        "path": "/mysql/upgrade/6.7.0.sql",
+        "retryable": false
+      }
+    ],
     "dbVersion": "6.7.0"
   },
   "pre-7.0.0": {
     "versions": ["6.7.0", "6.7.1", "6.7.2", "6.7.3", "6.8.0", "6.8.1"],
-    "scripts": ["/mysql/upgrade/7.0.0.sql"],
+    "scripts": [
+      {
+        "path": "/mysql/upgrade/7.0.0.sql",
+        "retryable": false
+      }
+    ],
     "dbVersion": "7.0.0"
   },
   "pre-7.0.2": {
     "versions": ["7.0.0", "7.0.1"],
-    "scripts": ["/mysql/upgrade/7.0.2-2fa.sql"],
+    "scripts": [
+      {
+        "path": "/mysql/upgrade/7.0.2-2fa.sql",
+        "retryable": false
+      }
+    ],
     "dbVersion": "7.0.2"
   },
   "pre-7.1.0": {
     "versions": ["7.0.2", "7.0.3", "7.0.4", "7.0.5"],
-    "scripts": ["/mysql/upgrade/7.1.0-config.sql"],
+    "scripts": [
+      {
+        "path": "/mysql/upgrade/7.1.0-config.sql",
+        "retryable": false
+      }
+    ],
     "dbVersion": "7.1.0"
   },
   "pre-7.2.0": {
     "versions": ["7.1.0", "7.1.1", "7.1.2"],
-    "scripts": ["/mysql/upgrade/7.2.0.sql"],
+    "scripts": [
+      {
+        "path": "/mysql/upgrade/7.2.0.sql",
+        "retryable": false
+      }
+    ],
     "dbVersion": "7.2.0"
   },
   "pre-7.3.1": {
     "versions": ["7.2.0", "7.2.1", "7.2.2", "7.2.3", "7.3.0"],
-    "scripts": ["/mysql/upgrade/7.3.1-cleanup.sql"],
+    "scripts": [
+      {
+        "path": "/mysql/upgrade/7.3.1-cleanup.sql",
+        "retryable": false
+      }
+    ],
     "dbVersion": "7.3.1"
   },
   "pre-7.4.1": {
     "versions": ["7.3.1", "7.3.2", "7.3.3", "7.4.0"],
-    "scripts": ["/mysql/upgrade/7.4.2-editself-exclusive.sql"],
+    "scripts": [
+      {
+        "path": "/mysql/upgrade/7.4.2-editself-exclusive.sql",
+        "retryable": false
+      }
+    ],
     "dbVersion": "7.4.1"
   },
   "pre-7.4.3": {
     "versions": ["7.4.1", "7.4.2"],
-    "scripts": ["/mysql/upgrade/7.4.3.sql"],
+    "scripts": [
+      {
+        "path": "/mysql/upgrade/7.4.3.sql",
+        "retryable": false
+      }
+    ],
     "dbVersion": "7.4.3"
   },
   "pre-7.5.0": {
     "versions": ["7.4.3"],
-    "scripts": ["/mysql/upgrade/7.5.0-fundraiser-fields.sql"],
+    "scripts": [
+      {
+        "path": "/mysql/upgrade/7.5.0-fundraiser-fields.sql",
+        "retryable": false
+      }
+    ],
     "dbVersion": "7.5.0"
   },
   "pre-7.5.1": {
     "versions": ["7.5.0"],
-    "scripts": ["/mysql/upgrade/7.5.1-remove-sMailtoDelimiter.sql"],
+    "scripts": [
+      {
+        "path": "/mysql/upgrade/7.5.1-remove-sMailtoDelimiter.sql",
+        "retryable": false
+      }
+    ],
     "dbVersion": "7.5.1"
   },
   "pre-7.6.0": {
     "versions": ["7.5.1"],
-    "scripts": ["/mysql/upgrade/7.6.0.sql"],
+    "scripts": [
+      {
+        "path": "/mysql/upgrade/7.6.0.sql",
+        "retryable": false
+      }
+    ],
     "dbVersion": "7.6.0"
   },
   "pre-7.6.1": {
     "versions": ["7.6.0"],
-    "scripts": ["/mysql/upgrade/7.6.1-add-anniversary-queries.sql"],
+    "scripts": [
+      {
+        "path": "/mysql/upgrade/7.6.1-add-anniversary-queries.sql",
+        "retryable": false
+      }
+    ],
     "dbVersion": "7.6.1"
   },
   "pre-7.6.2": {
     "versions": ["7.6.1"],
-    "scripts": ["/mysql/upgrade/7.6.2-add-missing-fk-indexes.sql"],
+    "scripts": [
+      {
+        "path": "/mysql/upgrade/7.6.2-add-missing-fk-indexes.sql",
+        "retryable": false
+      }
+    ],
     "dbVersion": "7.6.2"
   },
   "pre-7.6.4": {
     "versions": ["7.6.2", "7.6.3"],
-    "scripts": ["/mysql/upgrade/7.6.4-pledge-denominations.sql"],
+    "scripts": [
+      {
+        "path": "/mysql/upgrade/7.6.4-pledge-denominations.sql",
+        "retryable": false
+      }
+    ],
     "dbVersion": "7.6.4"
   },
   "pre-7.7.0": {
     "versions": ["7.6.4"],
-    "scripts": ["/mysql/upgrade/7.7.0.sql"],
+    "scripts": [
+      {
+        "path": "/mysql/upgrade/7.7.0.sql",
+        "retryable": false
+      }
+    ],
     "dbVersion": "7.7.0"
   },
   "pre-7.8.0": {
     "versions": ["7.7.0", "7.7.1"],
-    "scripts": ["/mysql/upgrade/7.8.0.sql"],
+    "scripts": [
+      {
+        "path": "/mysql/upgrade/7.8.0.sql",
+        "retryable": false
+      }
+    ],
     "dbVersion": "7.8.0"
   },
   "pre-7.8.1": {
     "versions": ["7.8.0"],
-    "scripts": ["/mysql/upgrade/7.8.1.sql", "/mysql/upgrade/7.8.1.php"],
+    "scripts": [
+      {
+        "path": "/mysql/upgrade/7.8.1-drop-email-views.sql",
+        "retryable": true
+      },
+      {
+        "path": "/mysql/upgrade/7.8.1-email-queue.sql",
+        "retryable": true
+      },
+      {
+        "path": "/mysql/upgrade/7.8.1-volunteers.sql",
+        "retryable": true
+      },
+      {
+        "path": "/mysql/upgrade/7.8.1-person-grade.sql",
+        "retryable": true
+      },
+      {
+        "path": "/mysql/upgrade/7.8.1-grade-list.sql",
+        "retryable": true
+      },
+      {
+        "path": "/mysql/upgrade/7.8.1-pledge-rekey.sql",
+        "retryable": true
+      },
+      {
+        "path": "/mysql/upgrade/7.8.1.php",
+        "retryable": false
+      }
+    ],
     "dbVersion": "7.8.1"
   },
   "pre-7.8.2": {
     "versions": ["7.8.1"],
     "scripts": [
-      "/mysql/upgrade/7.8.2.sql",
-      "/mysql/upgrade/7.8.2-pledge-groupkey-index.sql",
-      "/mysql/upgrade/7.8.2-tokens-valid-until-datetime.sql"
+      {
+        "path": "/mysql/upgrade/7.8.2.sql",
+        "retryable": false
+      },
+      {
+        "path": "/mysql/upgrade/7.8.2-pledge-groupkey-index.sql",
+        "retryable": false
+      },
+      {
+        "path": "/mysql/upgrade/7.8.2-tokens-valid-until-datetime.sql",
+        "retryable": false
+      }
     ],
     "dbVersion": "7.8.2"
   },
   "current": {
     "versions": ["7.8.2"],
-    "scripts": ["/mysql/upgrade/7.8.3.sql"],
+    "scripts": [
+      {
+        "path": "/mysql/upgrade/7.8.3.sql",
+        "retryable": false
+      }
+    ],
     "dbVersion": "7.8.3"
   }
 }
