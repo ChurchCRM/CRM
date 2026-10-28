@@ -90,19 +90,25 @@ class PortalNav
             ];
         }
 
-        $entries[] = [
-            'id' => self::GIVING,
-            'label' => gettext('My Giving'),
-            'url' => $rootPath . '/portal/giving',
-            'icon' => 'fa-solid fa-file-invoice-dollar',
-        ];
+        $hasFamily = self::hasFamily();
 
-        $entries[] = [
-            'id' => self::FAMILY,
-            'label' => gettext('My Family'),
-            'url' => $rootPath . '/portal/family',
-            'icon' => 'fa-solid fa-people-roof',
-        ];
+        if ($hasFamily) {
+            $entries[] = [
+                'id' => self::GIVING,
+                'label' => gettext('My Giving'),
+                'url' => $rootPath . '/portal/giving',
+                'icon' => 'fa-solid fa-file-invoice-dollar',
+            ];
+        }
+
+        if ($hasFamily) {
+            $entries[] = [
+                'id' => self::FAMILY,
+                'label' => gettext('My Family'),
+                'url' => $rootPath . '/portal/family',
+                'icon' => 'fa-solid fa-people-roof',
+            ];
+        }
 
         $entries[] = [
             'id' => self::PROFILE,
@@ -148,6 +154,14 @@ class PortalNav
         } catch (Throwable) {
             return true;
         }
+    }
+
+    /** My Giving and My Family belong to a family, so a member without one gets neither entry. */
+    public static function hasFamily(): bool
+    {
+        $user = AuthenticationManager::getCurrentUser();
+
+        return $user instanceof User && $user->getPerson()?->getFamily() !== null;
     }
 
     /**
