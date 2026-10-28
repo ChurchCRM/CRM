@@ -669,7 +669,7 @@ paths:
       tags:
         - Calendar
       summary: 'Create a series of repeat events'
-      description: 'Generates individual event records for each occurrence of a recurring event within a date range. Each created event is independently editable. Shares one recurrence engine with POST /events/generate-recurring: the same recurrence and date range produce the same occurrence dates on both endpoints, and a single call creates at most 366 events.'
+      description: 'Generates individual event records for each occurrence of a recurring event within a date range. RecurType monthly-weekday repeats on the Nth weekday of the month (RecurWOM + RecurDOW, e.g. the 2nd Tuesday); months without a 5th such weekday are skipped. Each created event is independently editable. Shares one recurrence engine with POST /events/generate-recurring: the same recurrence and date range produce the same occurrence dates on both endpoints, and a single call creates at most 366 events.'
       operationId: createRepeatEvents
       requestBody:
         required: true
@@ -710,9 +710,9 @@ paths:
                 RecurType:
                   type: string
                   example: weekly
-                  enum: [weekly, monthly, yearly]
+                  enum: [weekly, monthly, monthly-weekday, yearly]
                 RecurDOW:
-                  description: 'Day of week for weekly recurrence (e.g. Sunday)'
+                  description: 'Day of week for weekly and monthly-weekday recurrence (e.g. Sunday)'
                   type: string
                   example: Sunday
                 RecurDOM:
@@ -723,6 +723,12 @@ paths:
                   description: 'Month-day in MM-DD format for yearly recurrence'
                   type: string
                   example: 04-12
+                RecurWOM:
+                  description: 'Week of the month (1-5) for monthly-weekday recurrence: 2 with RecurDOW Tuesday is the 2nd Tuesday'
+                  type: integer
+                  example: 2
+                  maximum: 5
+                  minimum: 1
                 RangeStart:
                   description: 'First date of the repetition range (inclusive)'
                   type: string
@@ -2871,7 +2877,7 @@ paths:
                   example: '12:00'
                 recurrence:
                   description: 'A series instead of one event'
-                  properties: { type: { type: string, enum: [weekly, monthly, yearly] }, dow: { type: string, example: Sunday }, dom: { type: integer, example: 15 }, doy: { type: string, example: 04-12 } }
+                  properties: { type: { description: 'monthly-weekday repeats on the Nth weekday of the month (wom + dow); months without a 5th such weekday are skipped', type: string, enum: [weekly, monthly, monthly-weekday, yearly] }, dow: { description: 'Day of week for weekly and monthly-weekday', type: string, example: Sunday }, dom: { type: integer, example: 15 }, doy: { type: string, example: 04-12 }, wom: { description: 'Week of the month (1-5), required for monthly-weekday: 2 with dow Tuesday is the 2nd Tuesday', type: integer, example: 2, maximum: 5, minimum: 1 } }
                   type: object
                 rangeStart:
                   type: string
