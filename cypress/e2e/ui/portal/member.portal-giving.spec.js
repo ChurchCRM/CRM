@@ -85,4 +85,11 @@ describe("Member chooses a contribution statement year", () => {
             expect(lines.join(" ")).not.to.contain("No goods or services were provided");
         });
     });
+
+    it("offers no statement to a member who is not an adult of the household", () => {
+        cy.setupLoginSession("giving-non-adult", "limited.user", "changeme");
+        cy.visit("/portal/giving");
+        cy.contains("Contribution statements are issued to the adults of a household").should("be.visible");
+        cy.get("#portal-giving form").should("not.exist");
+    });
 });

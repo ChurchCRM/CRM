@@ -9,11 +9,12 @@
             {% if isHousehold %}
                 {{ gettext('This is the household statement. It includes gifts for your family.') }}
             {% else %}
-                {{ gettext('This statement includes only gifts credited to you.') }}
+                {{ gettext('Contribution statements are issued to the adults of a household. Please contact the church office if you need one.') }}
             {% endif %}
         </p>
     </section>
 
+    {% if isHousehold %}
     <section class="portal-card">
         <h2 class="portal-card-title">
             <i class="fa-solid fa-file-invoice-dollar" aria-hidden="true"></i>
@@ -31,6 +32,7 @@
             <button type="submit" class="portal-button">{{ gettext('Download statement') }}</button>
         </form>
     </section>
+    {% endif %}
 
 </div>
 {% endblock %}

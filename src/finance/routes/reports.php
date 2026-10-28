@@ -24,6 +24,7 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
                 'salutation' => gettext('Sample Family'),
                 'address' => "123 Example St\nAnytown, ST 00000",
                 'total' => \ChurchCRM\Utils\CurrencyFormatter::format(0),
+                'goods_services' => \ChurchCRM\Utils\CurrencyFormatter::format(0),
                 'gifts' => [[
                     'date' => date('Y-m-d'),
                     'fund' => gettext('General'),
