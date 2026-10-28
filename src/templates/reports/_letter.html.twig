@@ -10,6 +10,12 @@
     <div class="church-address">{{ church_address }}</div>
     {% if letterhead != 'none' %}
       <div class="muted">{{ church_phone }}{% if church_email %} · {{ church_email }}{% endif %}</div>
+      {% if church_website or church_social %}
+        <div class="muted">
+          {% if church_website %}<a href="{{ church_website }}">{{ church_website }}</a>{% endif %}
+          {% for link in church_social %}{% if church_website or not loop.first %} · {% endif %}<a href="{{ link.url }}">{{ link.label }}</a>{% endfor %}
+        </div>
+      {% endif %}
     {% endif %}
   </div>
   {% block letter_body %}{% endblock %}

@@ -44,6 +44,8 @@ class MpdfRenderer implements PdfRendererInterface
         $data['church_address'] = ChurchMetaData::getChurchFullAddress();
         $data['church_phone'] = ChurchMetaData::getChurchPhone();
         $data['church_email'] = ChurchMetaData::getChurchEmail();
+        $data['church_website'] = ChurchMetaData::getChurchWebSite();
+        $data['church_social'] = ChurchMetaData::getChurchSocialLinks();
         $data['church_logo'] = $this->churchLogo();
         $data['generated_on'] = date(\ChurchCRM\dto\SystemConfig::getValue('sDateFormatLong') ?: 'Y-m-d');
         return $data;
