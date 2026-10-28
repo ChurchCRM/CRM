@@ -5593,10 +5593,6 @@ msgid "Submit Registration"
 msgstr "Enviar registro"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Uma nova senha foi gerada e enviada para seu endereço de e-mail."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Aplicar atualização agora"
 
@@ -5641,20 +5637,12 @@ msgid "Login Name is required"
 msgstr "Nome de login é obrigatório"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Depois de receber o e-mail, você pode fazer login com sua senha temporária e alterá-la para algo que prefira."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Erro de redefinição de senha"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Redefinição de senha bem-sucedida"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Por favor, verifique seu e-mail (incluindo pasta de spam/lixo) para sua senha temporária."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12470,10 +12458,6 @@ msgstr "E-mail desativado"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "O e-mail está desativado. Configure o e-mail antes de repor palavras-passe ou utilize Alterar Palavra-passe."
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Introduza um dos seus códigos de recuperação de segurança"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"

@@ -5439,10 +5439,6 @@ msgid "Submit Registration"
 msgstr "登録を送信"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "新しいパスワードが生成され、メールアドレスに送信されました。"
-
-#: 
 msgid "Apply Update Now"
 msgstr "今すぐ更新を適用"
 
@@ -5487,20 +5483,12 @@ msgid "Login Name is required"
 msgstr "ログイン名は必須です"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "メールを受信したら、一時パスワードでログインし、お好みのパスワードに変更できます。"
-
-#: 
 msgid "Password Reset Error"
 msgstr "パスワードリセットエラー"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "パスワードリセット成功"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "一時パスワードについてメール（スパム/迷惑メールフォルダを含む）を確認してください。"
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12308,10 +12296,6 @@ msgstr "メールは無効です"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "メールは無効です。パスワードをリセットする前にメールを設定するか、パスワード変更をご使用ください。"
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "バックアップ回復コードのいずれかを入力してください"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"

@@ -5501,10 +5501,6 @@ msgid "Submit Registration"
 msgstr "Regisztráció beküldése"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Az új jelszó generálva és az e-mail címére elküldve."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Frissítés alkalmazása most"
 
@@ -5549,20 +5545,12 @@ msgid "Login Name is required"
 msgstr "Bejelentkezési név megadása kötelező"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Miután megkapta az e-mailt, bejelentkezhet ideiglenes jelszavával, majd megváltoztathatja azt tetszés szerint."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Hiba a jelszó visszaállításakor"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Sikeres jelszó-visszaállítás"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Kérjük, ellenőrizze e-mailjeit (a levélszemét/spam mappát is) az ideiglenes jelszóért."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -12378,10 +12366,6 @@ msgstr "Az e-mail le van tiltva"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "Az e-mail le van tiltva. A jelszavak visszaállítása előtt konfigurálja az e-mailt, vagy használja a Jelszó módosítása funkciót."
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Adja meg az egyik mentési helyreállítási kódját"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"

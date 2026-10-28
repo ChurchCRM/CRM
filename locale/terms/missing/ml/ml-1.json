@@ -1,0 +1,18 @@
+{
+  "Confirm Password": "",
+  "Your password has been changed. You can now sign in with your new password.": "",
+  "1st": "",
+  "2nd": "",
+  "3rd": "",
+  "4th": "",
+  "5th": "",
+  "Can't remove administrator access from the only administrator who can sign in": "",
+  "Choose the week of the month, from 1st to 5th": "",
+  "Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}": "",
+  "Invalid day of the week": "",
+  "Monthly, on a weekday": "",
+  "Months without a 5th one are skipped.": "",
+  "RecurWOM must be a whole number from 1 to 5": "",
+  "Week of the month": "",
+  "Week of the month must be from 1 to 5": ""
+}

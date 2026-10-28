@@ -419,6 +419,10 @@ class UserService
             throw new \RuntimeException(gettext('User not found'));
         }
 
+        if (!$perms['admin'] && $this->isLastSignInCapableAdmin($personId)) {
+            throw new \RuntimeException(gettext("Can't remove administrator access from the only administrator who can sign in"));
+        }
+
         $user->setAddRecords($perms['addRecords'])
             ->setEditRecords($perms['editRecords'])
             ->setDeleteRecords($perms['deleteRecords'])
