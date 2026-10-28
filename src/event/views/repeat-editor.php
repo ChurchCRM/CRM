@@ -166,6 +166,26 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             </select>
                         </div>
 
+                        <!-- Nth weekday of the month -->
+                        <div class="form-check mb-3 d-flex align-items-center flex-wrap row-gap-2">
+                            <input class="form-check-input mt-0 me-2" type="radio" name="RecurType" id="recurMonthlyWeekday"
+                                   value="monthly-weekday">
+                            <label class="form-check-label me-3 mb-0" for="recurMonthlyWeekday"><?= gettext('Every month on the') ?></label>
+                            <select name="RecurWOM" id="RecurWOM" class="form-select form-select-sm w-auto me-2"
+                                    aria-label="<?= gettext('Week of the month') ?>" disabled>
+                                <?php foreach ([1 => gettext('1st'), 2 => gettext('2nd'), 3 => gettext('3rd'), 4 => gettext('4th'), 5 => gettext('5th')] as $week => $label): ?>
+                                    <option value="<?= $week ?>"><?= $label ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                            <select name="RecurDOW" id="RecurMonthDOW" class="form-select form-select-sm w-auto me-2"
+                                    aria-label="<?= gettext('Day of the week') ?>" disabled>
+                                <?php foreach ($days as $day): ?>
+                                    <option value="<?= $day ?>" <?= ($defRecurDOW === $day) ? 'selected' : '' ?>><?= gettext($day) ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                            <small class="text-secondary"><?= gettext('Months without a 5th one are skipped.') ?></small>
+                        </div>
+
                         <!-- Yearly -->
                         <div class="form-check mb-3 d-flex align-items-center flex-wrap">
                             <input class="form-check-input mt-0 me-2" type="radio" name="RecurType" id="recurYearly"
