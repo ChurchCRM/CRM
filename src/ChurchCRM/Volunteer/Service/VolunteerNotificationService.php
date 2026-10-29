@@ -167,8 +167,8 @@ class VolunteerNotificationService
     /**
      * Put a row that has already been sent (or given up on) back in the queue.
      *
-     * The only caller is `POST /assignments/{id}/notify?force=1` — "send it again, I
-     * know". The row is reused rather than duplicated so the dedupe key keeps meaning
+     * Callers: `POST /assignments/{id}/notify?force=1` — "send it again, I know" — and a
+     * fresh decline on a reopened assignment (`enqueueDeclineAlert()`). The row is reused rather than duplicated so the dedupe key keeps meaning
      * what it says and the outbox never grows a second row for the same message.
      */
     public function rearm(VolunteerNotification $notification): VolunteerNotification
@@ -382,6 +382,9 @@ class VolunteerNotificationService
     }
 
     /**
+     * A volunteer who signed back up keeps the same assignment row, and with it the same
+     * dedupe key, so a later decline re-arms the earlier alert rather than finding it done.
+     *
      * @param int[] $coordinatorPersonIds
      *
      * @return VolunteerNotification[]
@@ -390,7 +393,7 @@ class VolunteerNotificationService
     {
         $rows = [];
         foreach ($coordinatorPersonIds as $personId) {
-            $rows[] = $this->enqueue(
+            $row = $this->enqueue(
                 self::TYPE_DECLINE_ALERT,
                 (int) $personId,
                 (int) $assignment->getId(),
@@ -398,6 +401,7 @@ class VolunteerNotificationService
                 DateTimeUtils::getToday(),
                 $this->declineAlertKey((int) $assignment->getId(), (int) $personId)
             );
+            $rows[] = $row->getStatus() === VolunteerNotification::STATUS_PENDING ? $row : $this->rearm($row);
         }
 
         return $rows;

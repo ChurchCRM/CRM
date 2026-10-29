@@ -1032,6 +1032,53 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
             );
         });
 
+        it("sends the decline alert again when the volunteer declines after signing back up", function () {
+            requireMailpit(this);
+
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, PERSON_VOLUNTEER).then(
+                (assignment) => {
+                    const respond = (comment) =>
+                        api(
+                            SELFEDIT_KEY,
+                            "POST",
+                            `${VOLUNTEER_URL}/me/assignments/${assignment.id}/respond`,
+                            { response: "declined", comment },
+                        );
+                    const declineAlerts = () =>
+                        notifications(assignment.id).then((resp) =>
+                            resp.body.notifications.filter((row) => row.type === "decline_alert"),
+                        );
+
+                    respond("First answer");
+                    api(
+                        SELFEDIT_KEY,
+                        "POST",
+                        `${VOLUNTEER_URL}/me/signup`,
+                        { occurrenceId: occurrenceOne, positionId: posEspresso },
+                        201,
+                    );
+                    drain();
+                    declineAlerts().then((alerts) => {
+                        expect(alerts.map((row) => row.status)).to.include("skipped");
+                    });
+
+                    respond("Second answer");
+                    declineAlerts().then((alerts) => {
+                        expect(alerts.map((row) => row.status)).to.deep.eq(
+                            alerts.map(() => "pending"),
+                        );
+                    });
+                    drain();
+                    declineAlerts().then((alerts) => {
+                        expect(alerts).to.have.length.greaterThan(0);
+                        for (const alert of alerts) {
+                            expect(alert.status).to.eq("sent");
+                        }
+                    });
+                },
+            );
+        });
+
         it("names who has taken the declined slot and whether they have accepted", function () {
             requireMailpit(this);
 
