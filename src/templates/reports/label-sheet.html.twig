@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body { margin: 0; padding: 0; font-family: {{ font.family }}; font-size: {{ font_size }}pt; font-weight: {{ font.weight }}; font-style: {{ font.style }}; color: #000; }
+    table { border-collapse: collapse; margin: 0; padding: 0; }
+    td { padding: 0; vertical-align: top; }
+    pre { margin: 0; padding: 0; font-family: {{ font.family }}; font-size: {{ font_size }}pt; font-weight: {{ font.weight }}; font-style: {{ font.style }}; line-height: 1.2; }
+    .empty { margin: 6mm; font-style: italic; }
+  </style>
+</head>
+<body>
+{% set label_w = layout.width %}
+{% set label_h = layout.height %}
+{% set span = layout.gap_x > 0 ? layout.columns * 2 - 1 : layout.columns %}
+{% for sheet in sheets %}
+  <table cellspacing="0" cellpadding="0" style="width: {{ (layout.columns * label_w + (layout.columns - 1) * layout.gap_x)|round(3) }}mm;">
+    {% for row in sheet %}
+    <tr>
+      {% for cell in row %}
+      <td style="width: {{ label_w }}mm; height: {{ label_h }}mm;">
+        {% if cell and cell.photo %}
+        <div style="width: {{ label_w }}mm; height: {{ label_h }}mm; overflow: hidden;">
+          <table cellspacing="0" cellpadding="0" style="width: {{ label_w }}mm;"><tr>
+            <td style="width: {{ cell.photo.width }}mm;"><img src="{{ cell.photo.src }}" alt="" style="width: {{ cell.photo.width }}mm; height: {{ cell.photo.height }}mm;"></td>
+            <td style="padding: 3mm 1mm 0 2mm;"><pre style="font-size: {{ cell.size }}pt;">{{ cell.text }}</pre></td>
+          </tr></table>
+        </div>
+        {% elseif cell %}
+        <div style="width: {{ (label_w - 5)|round(3) }}mm; height: {{ (label_h - 2)|round(3) }}mm; padding: 2mm 2mm 0 3mm; overflow: hidden;"><pre style="font-size: {{ cell.size }}pt;">{{ cell.text }}</pre></div>
+        {% endif %}
+      </td>
+      {% if layout.gap_x > 0 and not loop.last %}<td style="width: {{ layout.gap_x }}mm;"></td>{% endif %}
+      {% endfor %}
+    </tr>
+    {% if layout.gap_y > 0 and not loop.last %}
+    <tr><td colspan="{{ span }}" style="height: {{ layout.gap_y }}mm; font-size: 1pt; line-height: 1pt;"></td></tr>
+    {% endif %}
+    {% endfor %}
+  </table>
+  {% if not loop.last %}<pagebreak />{% endif %}
+{% else %}
+  <p class="empty">{{ gettext('No records were returned from the previous report. Please adjust your filters or date range and try again.') }}</p>
+{% endfor %}
+</body>
+</html>

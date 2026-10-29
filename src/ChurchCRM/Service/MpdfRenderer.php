@@ -23,10 +23,13 @@ class MpdfRenderer implements PdfRendererInterface
         }
     }
 
-    public function renderToString(string $template, array $data): string
+    /**
+     * @param array<string, mixed> $mpdfOptions Mpdf constructor settings that replace the Letter-page defaults, such as a label sheet's format and margins.
+     */
+    public function renderToString(string $template, array $data, array $mpdfOptions = []): string
     {
         $html = $this->twig->render($template . '.html.twig', $this->withChurch($data));
-        $mpdf = $this->makeMpdf();
+        $mpdf = $this->makeMpdf($mpdfOptions);
         $mpdf->WriteHTML($html);
         return $mpdf->Output('', 'S');
     }
@@ -67,9 +70,9 @@ class MpdfRenderer implements PdfRendererInterface
         return SystemURLs::getDocumentRoot() . '/Images/churchcrm-logo-ink-blue.svg';
     }
 
-    private function makeMpdf(): Mpdf
+    private function makeMpdf(array $options = []): Mpdf
     {
-        return new Mpdf([
+        return new Mpdf($options + [
             'mode' => 'utf-8',
             'format' => 'Letter',
             'margin_left' => 15,

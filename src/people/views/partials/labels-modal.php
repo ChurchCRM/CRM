@@ -3,7 +3,7 @@
 /**
  * "Generate Labels" dialog, shared by the cart (#9873) and the People Reports (#10343).
  *
- * Submits a GET to Reports/PDFLabel.php. The report remembers every choice in
+ * Submits a GET to /people/labels. The route remembers every choice in
  * cookies, and the defaults below read them back.
  *
  * Set before including:
@@ -31,7 +31,7 @@ $sLabelFontSize = getLabelFormCookie('labelfontsize');
 <div class="modal fade" id="labelsModal" tabindex="-1" aria-labelledby="labelsModalTitle" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-scrollable">
     <div class="modal-content">
-      <form method="get" action="<?= SystemURLs::getRootPath() ?>/Reports/PDFLabel.php" target="_blank" id="labelsForm">
+      <form method="get" action="<?= SystemURLs::getRootPath() ?>/people/labels" target="_blank" id="labelsForm">
         <?php foreach ($labelsHiddenFields as $name => $value) {
             foreach (is_array($value) ? $value : [$value] as $item) { ?>
           <input type="hidden" name="<?= InputUtils::escapeAttribute(is_array($value) ? $name . '[]' : $name) ?>" value="<?= InputUtils::escapeAttribute((string) $item) ?>">
