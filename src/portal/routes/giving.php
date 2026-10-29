@@ -8,6 +8,7 @@ use ChurchCRM\Portal\PortalSelfService;
 use ChurchCRM\Portal\PortalTwig;
 use ChurchCRM\Service\MpdfRenderer;
 use ChurchCRM\Service\GivingStatementService;
+use ChurchCRM\Utils\FiscalYearUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
@@ -23,20 +24,22 @@ $portalGivingActor = static function (Request $request): ?Person {
 $group->get('/giving', function (Request $request, Response $response) use ($portalGivingActor): Response {
     $actor = $portalGivingActor($request);
     $family = $actor?->getFamily();
-    $currentYear = (int) date('Y');
-    $firstYear = min($currentYear, (int) ($family?->getDateEntered('Y') ?: $currentYear));
+    $today = date('Y-m-d');
+    $currentYear = FiscalYearUtils::getEndYearForDate($today);
+    $entered = $family?->getDateEntered('Y-m-d') ?: $today;
+    $firstYear = min($currentYear, FiscalYearUtils::getEndYearForDate($entered));
     $isHousehold = $family && PortalSelfService::isAdultOf($family, $actor);
     $givingYears = [];
     if ($family && $isHousehold) {
         foreach (PledgeQuery::create()->filterByFamId((int) $family->getId())->filterByPledgeOrPayment('Payment')->find() as $gift) {
-            $givingYears[(int) $gift->getDate('Y')] = true;
+            $givingYears[FiscalYearUtils::getEndYearForDate($gift->getDate('Y-m-d'))] = true;
         }
     }
     $years = [];
     for ($year = $currentYear; $year >= $firstYear; --$year) {
         $years[] = ['value' => $year, 'hasGiving' => isset($givingYears[$year])];
     }
-    $year = max($firstYear, $currentYear - 1);
+    $year = max($firstYear, FiscalYearUtils::getEndYearForDate(date('Y-m-d', strtotime($today . ' -1 year'))));
     return PortalTwig::render(
         $response,
         'giving/index.html.twig',
@@ -66,25 +69,25 @@ $group->get('/giving/statement', function (Request $request, Response $response)
         );
     }
 
-    $year = (int) ($request->getQueryParams()['year'] ?? (date('Y') - 1));
-    if ($year < 1990 || $year > (int) date('Y')) {
-        $year = (int) date('Y') - 1;
+    $year = (int) ($request->getQueryParams()['year'] ?? FiscalYearUtils::getEndYearForDate(date('Y-m-d', strtotime('-1 year'))));
+    $currentEndYear = FiscalYearUtils::getEndYearForDate(date('Y-m-d'));
+    if ($year < 1990 || $year > $currentEndYear) {
+        $year = FiscalYearUtils::getEndYearForDate(date('Y-m-d', strtotime('-1 year')));
     }
 
     $family = $actor->getFamily();
     $isHousehold = PortalSelfService::isAdultOf($family, $actor);
+    $criteria = GivingStatementService::criteriaFromQuery(['familyId' => $family->getId(), 'year' => $year]);
 
     // A pledge row has no donor. Only a household adult receives the family's gifts.
     $statements = $isHousehold
-        ? GivingStatementService::families(GivingStatementService::paymentsByFamily(
-            GivingStatementService::criteriaFromQuery(['familyId' => $family->getId(), 'year' => $year])
-        ))
+        ? GivingStatementService::families(GivingStatementService::paymentsByFamily($criteria))
         : [];
     if ($statements === []) {
         $statements = [GivingStatementService::emptyStatement($family, $isHousehold ? $family->getName() : $actor->getFullName())];
     }
 
-    $data = GivingStatementService::document($statements, $year . '-01-01', $year . '-12-31', 'graphic');
+    $data = GivingStatementService::document($statements, $criteria['dateStart'], $criteria['dateEnd'], 'graphic');
     $disposition = GivingStatementService::contentDisposition(GivingStatementService::fileLabel($year, $family->getName()));
 
     $pdf = (new MpdfRenderer())->renderToString('tax-report', $data);

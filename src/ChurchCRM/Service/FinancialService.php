@@ -655,11 +655,7 @@ class FinancialService
      */
     public static function formatFiscalYear(int $fyId): string
     {
-        if (SystemConfig::getIntValue('iFYMonth') === 1) {
-            return (string) (1996 + $fyId);
-        } else {
-            return (1995 + $fyId) . '/' . mb_substr(1996 + $fyId, 2, 2);
-        }
+        return FiscalYearUtils::getFiscalYearDatesById($fyId)['label'];
     }
 
     /**
@@ -1018,33 +1014,22 @@ class FinancialService
     {
         AuthService::requireUserGroupMembership('bFinance');
 
-        // Use YEAR() aggregation so the DB returns only distinct years, not every row.
-        // withColumn() emits the expression as a SELECT column; groupBy() de-duplicates;
-        // addDescendingOrderByColumn orders by the virtual column (not raw plg_date).
-        $query = PledgeQuery::create()
+        $payments = PledgeQuery::create()
             ->filterByFamId($familyId)
             ->filterByPledgeOrPayment('Payment')
             ->filterByDate(null, Criteria::ISNOTNULL)
-            ->withColumn('YEAR(pledge_plg.plg_date)', 'PaymentYear')
-            ->groupBy('PaymentYear')
-            ->addDescendingOrderByColumn('PaymentYear')
-            ->select(['PaymentYear']);
+            ->find();
 
-        if ($maxYears > 0) {
-            $query->limit($maxYears);
-        }
-
-        $rawYears = $query->find()->toArray();
-
-        // Filter out any non-sensical years (before 1991) and cast to int
         $years = [];
-        foreach ($rawYears as $year) {
-            $y = (int) $year;
-            if ($y > 1990) {
-                $years[] = $y;
+        foreach ($payments as $payment) {
+            $endYear = FiscalYearUtils::getEndYearForDate($payment->getDate('Y-m-d'));
+            if ($endYear > 1990) {
+                $years[$endYear] = true;
             }
         }
+        $years = array_keys($years);
+        rsort($years);
 
-        return $years;
+        return $maxYears > 0 ? array_slice($years, 0, $maxYears) : $years;
     }
 }

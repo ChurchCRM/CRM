@@ -64,10 +64,10 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     // Get pledge date ranges
     $donation = 'no';
     if ($iRequireDonationYears > 0) {
-        $startdate = $iFYID + 1995 - $iRequireDonationYears;
-        $startdate .= '-' . SystemConfig::getValue('iFYMonth') . '-' . '01';
-        $enddate = $iFYID + 1995 + 1;
-        $enddate .= '-' . SystemConfig::getValue('iFYMonth') . '-' . '01';
+        $start = FiscalYearUtils::getFiscalYearDatesById($iFYID - $iRequireDonationYears + 1);
+        $end = FiscalYearUtils::getFiscalYearDatesById($iFYID);
+        $startdate = $start['startDate'];
+        $enddate = date('Y-m-d', strtotime($end['endDate'] . ' +1 day'));
 
         // Get payments only
         $rsPledges = RunPreparedQuery(

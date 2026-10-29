@@ -70,6 +70,34 @@ class FiscalYearUtils
      * @param int $fyid Fiscal year ID
      * @return array{startDate: string, endDate: string, label: string, month: int}
      */
+    /**
+     * Fiscal year that ends in the given calendar year.
+     * When iFYMonth is 1 that is the calendar year itself.
+     */
+    public static function getFiscalYearIdForCalendarYear(int $year): int
+    {
+        return $year - 1996;
+    }
+
+    /**
+     * Date range for the fiscal year that ends in the given calendar year.
+     *
+     * @return array{startDate: string, endDate: string, label: string, month: int}
+     */
+    public static function getFiscalYearDatesForCalendarYear(int $year): array
+    {
+        return self::getFiscalYearDatesById(self::getFiscalYearIdForCalendarYear($year));
+    }
+
+    /**
+     * Calendar year in which the fiscal year of $date ends.
+     */
+    public static function getEndYearForDate(string $date): int
+    {
+        $fyid = self::getFiscalYearIdForDate($date);
+        return (int) substr(self::getFiscalYearDatesById($fyid)['endDate'], 0, 4);
+    }
+
     public static function getFiscalYearDatesById(int $fyid): array
     {
         $iFYMonth = SystemConfig::getIntValue('iFYMonth');

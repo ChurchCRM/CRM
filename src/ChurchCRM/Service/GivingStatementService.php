@@ -39,13 +39,12 @@ class GivingStatementService
         $dateStart = self::validDate(self::scalar($query['DateStart'] ?? ''));
         $dateEnd = self::validDate(self::scalar($query['DateEnd'] ?? ''));
         if ($year >= self::FIRST_YEAR && $year <= $lastYear + 1) {
-            // Year links (family profile, portal) cover the church fiscal year, not a hard-coded calendar year.
-            $fy = FiscalYearUtils::getFiscalYearDatesById($year - 1996);
+            $fy = FiscalYearUtils::getFiscalYearDatesForCalendarYear($year);
             $dateStart = $fy['startDate'];
             $dateEnd = $fy['endDate'];
         }
         if ($dateStart === '' && $dateEnd === '') {
-            $fy = FiscalYearUtils::getFiscalYearDatesById((int) DateTimeUtils::getToday()->format('Y') - 1 - 1996);
+            $fy = FiscalYearUtils::getFiscalYearDatesById(FiscalYearUtils::getCurrentFiscalYearId() - 1);
             $dateStart = $fy['startDate'];
             $dateEnd = $fy['endDate'];
         }

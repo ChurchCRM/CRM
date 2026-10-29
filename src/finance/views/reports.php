@@ -2,24 +2,15 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\FinancialService;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 // Get fiscal year info for display
 $iFYMonth = SystemConfig::getIntValue('iFYMonth');
-$currentYear = (int) date('Y');
-
-if ($iFYMonth === 1) {
-    $fyLabel = (string) $currentYear;
-} else {
-    $currentMonth = (int) date('n');
-    if ($currentMonth >= $iFYMonth) {
-        $fyLabel = $currentYear . '/' . substr((string) ($currentYear + 1), 2, 2);
-    } else {
-        $fyLabel = ($currentYear - 1) . '/' . substr((string) $currentYear, 2, 2);
-    }
-}
+$fyLabel = FinancialService::formatFiscalYear(FiscalYearUtils::getCurrentFiscalYearId());
 
 $monthNames = [
     1 => gettext('January'), 2 => gettext('February'), 3 => gettext('March'),
