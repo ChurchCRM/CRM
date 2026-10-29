@@ -171,15 +171,14 @@ class CustomFieldService
         $this->assertColumn($column);
 
         if ($table === 'person_custom') {
-            // The person_custom table map does not know the cN columns, so the condition is a typed
-            // bound where() on the model query; the value is checked in the same UPDATE.
-            $update = new Criteria(PersonCustomTableMap::DATABASE_NAME);
-            $update->add($table . '.' . $column, null);
-            PersonCustomQuery::create()
-                ->where($table . '.' . $column . ' = ?', $personId, \PDO::PARAM_INT)
-                ->doUpdate($update, Propel::getWriteConnection(PersonCustomTableMap::DATABASE_NAME));
-
-            return;
+            // The generated person_custom table map lists only per_ID; the cN columns are added per
+            // install. Register this one for the request so Criteria can bind a condition on it.
+            $tableMap = Propel::getServiceContainer()
+                ->getDatabaseMap(PersonCustomTableMap::DATABASE_NAME)
+                ->getTable(PersonCustomTableMap::TABLE_NAME);
+            if (!$tableMap->hasColumn($column)) {
+                $tableMap->addColumn($column, strtoupper($column), 'INTEGER', false, null, null);
+            }
         }
 
         $select = new Criteria(PersonCustomTableMap::DATABASE_NAME);
