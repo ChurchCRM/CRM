@@ -31,7 +31,7 @@ describe("Giving statements", () => {
             .invoke("text")
             .then((text) => expect(Number(text)).to.be.greaterThan(0));
         cy.get("#previewTotal").should("not.be.empty");
-        cy.get("#downloadPdf").should("have.attr", "href").and("include", "/tax-statements/pdf").and("include", "DateStart=2018-01-01");
+        cy.get("#downloadPdf").should("have.attr", "href").and("include", "/tax-statements/download").and("include", "DateStart=2018-01-01");
 
         requestBinary(`${statementsPath}/download?${seedYear}`).then(expectPdf);
         requestBinary(`${statementsPath}/download?${seedYear}&letterhead=none&remittance=yes`).then(expectPdf);
