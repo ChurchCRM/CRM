@@ -88,11 +88,10 @@ function generateVerifyReport(Request $request, Response $response, array $args)
         $service = new ConfirmReportService();
         $result = $service->generateDownloadPDF($familyId);
 
-        $disposition = SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline';
         $response->getBody()->write($result['bytes']);
         return $response
             ->withHeader('Content-Type', 'application/pdf')
-            ->withHeader('Content-Disposition', $disposition . '; filename="' . $result['filename'] . '"');
+            ->withHeader('Content-Disposition', ConfirmReportService::contentDisposition($result['filename']));
     } catch (\Throwable $e) {
         LoggerUtils::getAppLogger()->error('generateVerifyReport error: ' . $e->getMessage(), ['exception' => $e]);
         $response->getBody()->write('An error occurred while generating the PDF. Please check the application logs.');
