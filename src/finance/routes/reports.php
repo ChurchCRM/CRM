@@ -57,7 +57,7 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
         $document = GivingStatementService::document($families, $dateStart, $dateEnd, $criteria['letterhead'], $criteria['remittance']);
         $pdf = (new MpdfRenderer())->renderToString('tax-report', $document);
 
-        $label = GivingStatementService::fileLabel((int) substr($dateStart, 0, 4), count($families) === 1 ? $families[0]['salutation'] : '');
+        $label = GivingStatementService::fileLabel((int) substr($dateEnd, 0, 4), count($families) === 1 ? $families[0]['salutation'] : '');
         $response->getBody()->write($pdf);
 
         return $response
