@@ -18,6 +18,10 @@ import { humanClick, humanPause, humanType, settle } from '../support/human';
  * simulated typing/click in an automated recording, so this video shows
  * the deep-link entry point instead: the same "Find Neighbors" button a
  * user clicks from a family's own profile.
+ *
+ * Extended (#10739): after results appear, add all neighbors to the cart
+ * so the volunteer can plan a visit (covers the old "Cart action from the
+ * family map" item).
  */
 test('find-neighbors-search', async ({ page }, testInfo) => {
   await page.goto('/people/family');
@@ -47,10 +51,17 @@ test('find-neighbors-search', async ({ page }, testInfo) => {
   await expect(page.locator('#neighborsTable')).toBeVisible({ timeout: 15000 });
   await settle(page, 2500);
 
+  // Plan a visit: add all shown neighbors to the cart.
+  const addAll = page.locator('#addAllToCart');
+  await expect(addAll).toBeEnabled({ timeout: 10000 });
+  await humanClick(addAll);
+  // Cart notification appears; let it settle so the video shows the action completed.
+  await settle(page, 2000);
+
   await captureScreen(page, testInfo, {
     name: 'find-neighbors-search',
     title: 'Find Neighbors Search',
     category: 'Recordings',
-    purpose: 'Show finding nearby families from a family profile, with results plotted by distance on the map',
+    purpose: 'Show finding nearby families from a family profile, with results plotted by distance on the map, then adding those neighbors to the cart to plan a visit',
   });
 });
