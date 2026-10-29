@@ -99,10 +99,10 @@ describe("Finance Reports Index", () => {
         cy.url().should("contain", "Voting");
     });
 
-    it("should answer the old tax statements URL with Page Not Found and a way back", () => {
-        cy.request({ url: "/finance/reports/tax-statements", failOnStatusCode: false }).its("status").should("eq", 404);
+    it("should answer an unknown reports URL with Page Not Found and a way back", () => {
+        cy.request({ url: "/finance/reports/no-such-report", failOnStatusCode: false }).its("status").should("eq", 404);
 
-        cy.visit("/finance/reports/tax-statements", { failOnStatusCode: false });
+        cy.visit("/finance/reports/no-such-report", { failOnStatusCode: false });
         cy.contains("h3", "Page Not Found");
         cy.contains("a", "Back to Finance Dashboard").click();
         cy.url().should("match", /\/finance\/$/);

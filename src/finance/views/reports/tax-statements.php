@@ -6,7 +6,7 @@ use ChurchCRM\Utils\InputUtils;
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 $selected = static fn (string $key): array => array_map('strval', (array) ($query[$key] ?? []));
-$selectedFamilies = $selected('family');
+$selectedFamilies = array_map('strval', $criteria['familyIds']);
 $selectedClasses = $selected('classList');
 $selectedFunds = $selected('funds');
 $byDeposit = $criteria['byDepositDate'];

@@ -6,6 +6,7 @@ use ChurchCRM\dto\Classification;
 use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\model\ChurchCRM\DonationFundQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\MiscUtils;
 
 /**
@@ -76,7 +77,7 @@ class FinanceReportOptions
         foreach (DepositQuery::create()->orderById('DESC')->limit($limit)->find() as $deposit) {
             $deposits[] = [
                 'id' => (int) $deposit->getId(),
-                'label' => sprintf('%d — %s — %s', $deposit->getId(), $deposit->getDate('Y-m-d'), $deposit->getType()),
+                'label' => sprintf('%d — %s — %s', $deposit->getId(), DateTimeUtils::formatDate((string) $deposit->getDate('Y-m-d')), $deposit->getType()),
             ];
         }
 

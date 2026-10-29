@@ -57,7 +57,7 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
             'query' => $query,
             'criteria' => $criteria,
             'summary' => $summary,
-            'downloadQuery' => http_build_query(array_diff_key($query, ['preview' => true])),
+            'downloadQuery' => http_build_query(array_diff_key($query, ['preview' => true, 'output' => true])),
             'classifications' => FinanceReportOptions::classifications(),
             'families' => FinanceReportOptions::families(),
             'fundGroups' => FinanceReportOptions::fundGroups(),
