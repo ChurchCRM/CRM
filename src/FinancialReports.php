@@ -176,8 +176,14 @@ if ($sReportType === '') {
 
     <?php if (in_array($sReportType, ['Giving Report', 'Advanced Deposit Report', 'Zero Givers'])) :
         $today = date('Y-m-d');
-        $startVal = $sDateStart ? $sDateStart : $today;
-        $endVal = $sDateEnd ? $sDateEnd : $today;
+        if ($sReportType === 'Giving Report' && $sDateStart === '' && $sDateEnd === '') {
+            $fy = FiscalYearUtils::getFiscalYearDatesById(FiscalYearUtils::getCurrentFiscalYearId() - 1);
+            $startVal = $fy['startDate'];
+            $endVal = $fy['endDate'];
+        } else {
+            $startVal = $sDateStart !== '' ? $sDateStart : $today;
+            $endVal = $sDateEnd !== '' ? $sDateEnd : $today;
+        }
         ?>
       <div class="row g-3 mb-3">
         <div class="col-md-4">

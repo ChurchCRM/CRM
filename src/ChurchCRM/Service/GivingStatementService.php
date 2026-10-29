@@ -28,7 +28,7 @@ class GivingStatementService
      */
     public static function criteriaFromQuery(array $query): array
     {
-        $lastYear = (int) DateTimeUtils::getToday()->format('Y') - 1;
+        $currentEndYear = FiscalYearUtils::getEndYearForDate(DateTimeUtils::getToday()->format('Y-m-d'));
         $year = InputUtils::filterInt(self::scalar($query['year'] ?? ''));
         $familyIds = self::intList($query['family'] ?? []);
         $familyId = InputUtils::filterInt(self::scalar($query['familyId'] ?? ''));
@@ -38,7 +38,7 @@ class GivingStatementService
 
         $dateStart = self::validDate(self::scalar($query['DateStart'] ?? ''));
         $dateEnd = self::validDate(self::scalar($query['DateEnd'] ?? ''));
-        if ($year >= self::FIRST_YEAR && $year <= $lastYear + 1) {
+        if ($year >= self::FIRST_YEAR && $year <= $currentEndYear) {
             $fy = FiscalYearUtils::getFiscalYearDatesForCalendarYear($year);
             $dateStart = $fy['startDate'];
             $dateEnd = $fy['endDate'];

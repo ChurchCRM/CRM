@@ -37,7 +37,11 @@ $group->get('/giving', function (Request $request, Response $response) use ($por
     }
     $years = [];
     for ($year = $currentYear; $year >= $firstYear; --$year) {
-        $years[] = ['value' => $year, 'hasGiving' => isset($givingYears[$year])];
+        $years[] = [
+            'value' => $year,
+            'label' => FiscalYearUtils::getFiscalYearDatesForCalendarYear($year)['label'],
+            'hasGiving' => isset($givingYears[$year]),
+        ];
     }
     $year = max($firstYear, FiscalYearUtils::getEndYearForDate(date('Y-m-d', strtotime($today . ' -1 year'))));
     return PortalTwig::render(

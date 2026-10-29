@@ -6,6 +6,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\Service\MpdfRenderer;
 use ChurchCRM\Service\GivingStatementService;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\CsvExporter;
 use ChurchCRM\Utils\InputUtils;
@@ -71,7 +72,8 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
         $year = InputUtils::filterInt($body['year'] ?? '');
         $token = (string) ($body['csrf_token'] ?? '');
 
-        if ($familyId <= 0 || $year < 1991 || $year > (int) date('Y') || !CSRFUtils::validateToken($token, 'tax_email_' . $year, true)) {
+        $currentEndYear = FiscalYearUtils::getEndYearForDate(date('Y-m-d'));
+        if ($familyId <= 0 || $year < 1991 || $year > $currentEndYear || !CSRFUtils::validateToken($token, 'tax_email_' . $year, true)) {
             RedirectUtils::redirect('finance/reports');
         }
 
