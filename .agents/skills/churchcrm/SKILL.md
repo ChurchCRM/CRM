@@ -27,6 +27,12 @@ Load `skill-architecture.md` only when adding or editing a skill.
 | [Volunteer Management v2](./volunteer-v2.md) | Ministries / Volunteer v2 (full design: `docs/design/volunteer-v2.md`) |
 | [Member Portal Design](./member-portal-design.md) | `/portal` and themes |
 
+## Reports
+
+| Skill | When to Use |
+|-------|------------|
+| [Reports](./reports.md) | PDF/CSV reports, mPDF, letterhead, statement downloads |
+
 ## Database
 
 | Skill | When to Use |
