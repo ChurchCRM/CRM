@@ -197,7 +197,7 @@ class GivingStatementService
             'letterhead_image' => $graphic,
             'title' => gettext('Giving Statement'),
             'date_range' => $dateStart === $dateEnd ? $start : sprintf(gettext('%s through %s'), $start, $end),
-            'opening' => trim(SystemConfig::getValue('sTaxReport1') . ' ' . ($dateStart === $dateEnd ? $start : $start . ' – ' . $end) . '.'),
+            'opening' => trim(SystemConfig::getValue('sTaxReport1') . ' ' . ($dateStart === $dateEnd ? $start : sprintf(gettext('%s through %s'), $start, $end)) . '.'),
             'closing' => SystemConfig::getValue('sTaxReport2'),
             'questions' => SystemConfig::getValue('sTaxReport3'),
             'sincerely' => SystemConfig::getValue('sConfirmSincerely'),

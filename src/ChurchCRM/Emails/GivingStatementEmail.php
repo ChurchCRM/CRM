@@ -3,6 +3,7 @@
 namespace ChurchCRM\Emails;
 
 use ChurchCRM\dto\ChurchMetaData;
+use ChurchCRM\Utils\FiscalYearUtils;
 
 class GivingStatementEmail extends BaseEmail
 {
@@ -11,12 +12,13 @@ class GivingStatementEmail extends BaseEmail
         parent::__construct($toAddresses);
 
         $churchName = ChurchMetaData::getChurchName();
-        $this->mail->Subject = sprintf(gettext('%d Giving Statement'), $year);
+        $yearLabel = FiscalYearUtils::getFiscalYearDatesForCalendarYear($year)['label'];
+        $this->mail->Subject = sprintf(gettext('%s Giving Statement'), $yearLabel);
         $this->mail->isHTML(false);
         $this->mail->Body = sprintf(
-            gettext("Dear %s Family,\n\nPlease find your %d giving statement from %s attached to this email.\n\nIf you have any questions, please contact the church office.\n\nThank you for your generosity."),
+            gettext("Dear %s Family,\n\nPlease find your %s giving statement from %s attached to this email.\n\nIf you have any questions, please contact the church office.\n\nThank you for your generosity."),
             $familyName,
-            $year,
+            $yearLabel,
             $churchName
         );
         $this->addStringAttachment($pdf, $filename);
