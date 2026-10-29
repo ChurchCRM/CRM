@@ -712,51 +712,6 @@ class FinancialService
         return $results;
     }
 
-    /**
-     * Get Zero Givers Report data using ORM
-     * 
-     * Security: Checks finance permissions before returning data
-     * Returns families with members (classification 1) who didn't give in the date range
-     *
-     * @param string $dateStart Start date (Y-m-d format)
-     * @param string $dateEnd End date (Y-m-d format)
-     * @return array
-     */
-    public function getZeroGiversReportData(string $dateStart = '', string $dateEnd = ''): array
-    {
-        AuthService::requireUserGroupMembership('bFinance');
-
-        // Get all families with at least one living member (classification ID 1)
-        $familyQuery = FamilyQuery::create()
-            ->usePersonQuery()
-                ->filterByClsId(1)
-                ->filterByLiving()
-            ->endUse();
-
-        // Get family IDs that made payments in the date range
-        $paidFamilyIds = PledgeQuery::create()
-            ->filterForZeroGivers($dateStart, $dateEnd)
-            ->select(['FamId'])
-            ->distinct()
-            ->find()
-            ->toArray();
-
-        // Flatten the array of arrays to just IDs
-        $paidFamilyIds = array_map(function($row) {
-            return is_array($row) ? $row[0] : $row;
-        }, $paidFamilyIds);
-
-        // Exclude families that made payments
-        if (!empty($paidFamilyIds)) {
-            $familyQuery->filterById($paidFamilyIds, Criteria::NOT_IN);
-        }
-
-        return $familyQuery
-            ->orderById()
-            ->find()
-            ->toArray();
-    }
-
     // =========================================================================
     // Dashboard Methods
     // =========================================================================

@@ -101,7 +101,7 @@ if ($sReportType === '') {
     // 2nd Pass - Display filters and other settings
     switch ($sReportType) {
         case 'Giving Report':           $action = 'finance/reports/giving-statements/download'; break;
-        case 'Zero Givers':             $action = 'Reports/ZeroGivers.php'; break;
+        case 'Zero Givers':             $action = 'finance/reports/zero-givers/download'; break;
         case 'Pledge Family Summary':   $action = 'Reports/FamilyPledgeSummary.php'; break;
         case 'Pledge Reminders':        $action = 'Reports/ReminderReport.php'; break;
         case 'Voting Members':          $action = 'Reports/VotingMembers.php'; break;
@@ -332,6 +332,9 @@ if ($sReportType === '') {
           <?php endforeach; ?>
         </div>
       </div>
+    <?php endif; ?>
+
+    <?php if ($sReportType === 'Giving Report') : ?>
       <div class="mb-3">
         <label class="form-label"><?= gettext('Remittance Slip') ?>:</label>
         <div class="d-flex gap-3">

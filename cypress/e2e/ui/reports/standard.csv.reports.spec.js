@@ -126,7 +126,7 @@ describe("csv export", () => {
             cy.get("input[name='DateEnd']").type(getTodayDate(), { force: true });
             
             // Intercept the download to verify CSV content
-            cy.intercept("POST", "**/ZeroGivers.php").as("csvDownload");
+            cy.intercept("POST", "**/finance/reports/zero-givers/download").as("csvDownload");
             
             cy.get("#createReport").click({ force: true });
             
@@ -149,7 +149,7 @@ describe("csv export", () => {
             cy.get("input[name='DateEnd']").clear({ force: true }).type(getTodayDate(), { force: true });
             
             // Intercept the download to verify CSV content
-            cy.intercept("POST", "**/ZeroGivers.php").as("csvDownload");
+            cy.intercept("POST", "**/finance/reports/zero-givers/download").as("csvDownload");
             
             cy.get("#createReport").click({ force: true });
             
