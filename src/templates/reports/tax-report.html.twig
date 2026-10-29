@@ -1,7 +1,7 @@
 {% extends "_letter.html.twig" %}
 {% block letter_body %}
   {% for family in families %}
-    {% if not loop.first %}<pagebreak />{% endif %}
+    {% if not loop.first %}<pagebreak />{% if letterhead == 'none' %}<div class="letterhead-blank"></div>{% endif %}{% endif %}
 
     <div class="meta">
       <h1>{{ title|default(gettext('Contribution Statement')) }}</h1>
