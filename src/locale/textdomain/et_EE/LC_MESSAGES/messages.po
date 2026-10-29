@@ -20188,10 +20188,6 @@ msgid "How often"
 msgstr "Kui tihti"
 
 #: 
-msgid "How to correct this"
-msgstr "Kuidas seda parandada"
-
-#: 
 msgid "I can't"
 msgstr "Ma ei saa"
 

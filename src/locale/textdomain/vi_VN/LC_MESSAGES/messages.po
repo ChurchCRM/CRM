@@ -20167,10 +20167,6 @@ msgid "How often"
 msgstr "Tần suất"
 
 #: 
-msgid "How to correct this"
-msgstr "Cách sửa lỗi này"
-
-#: 
 msgid "I can't"
 msgstr "Tôi không thể"
 

@@ -20155,10 +20155,6 @@ msgid "How often"
 msgstr "എത്ര തവണ"
 
 #: 
-msgid "How to correct this"
-msgstr "ഇത് എങ്ങനെ തിരുത്താം"
-
-#: 
 msgid "I can't"
 msgstr "എനിക്ക് കഴിയില്ല"
 

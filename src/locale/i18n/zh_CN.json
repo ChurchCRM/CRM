@@ -4892,7 +4892,6 @@
   "How many volunteers this event needs. Uncheck a position it does not use.": "此活动需要多少位志愿者。取消勾选它不使用的职位。",
   "How many weeks ahead volunteer occurrences are created for the events each schedule follows, from 1 to 52. A daily background job keeps every schedule filled up to this point.": "为每个排班所跟随的活动提前多少周创建志愿者活动场次，范围为 1 至 52。每日后台任务会让每个排班保持补充到此时间点。",
   "How often": "频率",
-  "How to correct this": "如何更正",
   "I can't": "我无法参加",
   "I'd like to help": "我愿意帮忙",
   "I'll be there": "我会到场",

@@ -20189,10 +20189,6 @@ msgid "How often"
 msgstr "Hoe gereeld"
 
 #: 
-msgid "How to correct this"
-msgstr "Hoe om dit reg te stel"
-
-#: 
 msgid "I can't"
 msgstr "Ek kan nie"
 

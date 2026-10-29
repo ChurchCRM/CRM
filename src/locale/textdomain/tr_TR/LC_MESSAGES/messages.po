@@ -20189,10 +20189,6 @@ msgid "How often"
 msgstr "Ne sıklıkla"
 
 #: 
-msgid "How to correct this"
-msgstr "Bunu nasıl düzeltirsiniz"
-
-#: 
 msgid "I can't"
 msgstr "Gelemem"
 

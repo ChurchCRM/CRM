@@ -20179,10 +20179,6 @@ msgid "How often"
 msgstr "Sa shpesh"
 
 #: 
-msgid "How to correct this"
-msgstr "Si ta korrigjoni"
-
-#: 
 msgid "I can't"
 msgstr "Nuk mundem"
 

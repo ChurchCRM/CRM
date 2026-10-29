@@ -20158,10 +20158,6 @@ msgid "How often"
 msgstr "Hoe vaak"
 
 #: 
-msgid "How to correct this"
-msgstr "Zo corrigeert u dit"
-
-#: 
 msgid "I can't"
 msgstr "Ik kan niet"
 

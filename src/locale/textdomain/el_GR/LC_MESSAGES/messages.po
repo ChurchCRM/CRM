@@ -20189,10 +20189,6 @@ msgid "How often"
 msgstr "Πόσο συχνά"
 
 #: 
-msgid "How to correct this"
-msgstr "Πώς να το διορθώσετε"
-
-#: 
 msgid "I can't"
 msgstr "Δεν μπορώ"
 

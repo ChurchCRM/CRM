@@ -20166,10 +20166,6 @@ msgid "How often"
 msgstr "ఎంత తరచుగా"
 
 #: 
-msgid "How to correct this"
-msgstr "దీన్ని ఎలా సరిదిద్దాలి"
-
-#: 
 msgid "I can't"
 msgstr "నేను రాలేను"
 

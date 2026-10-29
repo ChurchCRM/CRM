@@ -20201,10 +20201,6 @@ msgid "How often"
 msgstr "எவ்வளவு அடிக்கடி"
 
 #: 
-msgid "How to correct this"
-msgstr "இதை எப்படிச் சரிசெய்வது"
-
-#: 
 msgid "I can't"
 msgstr "என்னால் முடியாது"
 

@@ -20272,10 +20272,6 @@ msgid "How often"
 msgstr "Cât de des"
 
 #: 
-msgid "How to correct this"
-msgstr "Cum se corectează"
-
-#: 
 msgid "I can't"
 msgstr "Nu pot"
 

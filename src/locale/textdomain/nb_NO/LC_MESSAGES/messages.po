@@ -20258,10 +20258,6 @@ msgid "How often"
 msgstr "Hvor ofte"
 
 #: 
-msgid "How to correct this"
-msgstr "Slik rettes dette"
-
-#: 
 msgid "I can't"
 msgstr "Jeg kan ikke"
 

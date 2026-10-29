@@ -20209,10 +20209,6 @@ msgid "How often"
 msgstr "Ako často"
 
 #: 
-msgid "How to correct this"
-msgstr "Ako to opraviť"
-
-#: 
 msgid "I can't"
 msgstr "Nemôžem"
 

@@ -20129,10 +20129,6 @@ msgid "How often"
 msgstr "頻度"
 
 #: 
-msgid "How to correct this"
-msgstr "修正方法"
-
-#: 
 msgid "I can't"
 msgstr "参加できません"
 

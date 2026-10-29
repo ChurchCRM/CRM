@@ -20157,10 +20157,6 @@ msgid "How often"
 msgstr "반복 주기"
 
 #: 
-msgid "How to correct this"
-msgstr "수정 방법"
-
-#: 
 msgid "I can't"
 msgstr "참석할 수 없습니다"
 
