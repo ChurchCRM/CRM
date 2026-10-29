@@ -4,11 +4,6 @@ namespace ChurchCRM\Emails;
 
 use ChurchCRM\dto\ChurchMetaData;
 
-/**
- * A family's giving statement for one year: a plain-text message with the PDF attached,
- * sent from the Finance menu's Email Tax Doc action (finance/reports/tax-statements/email).
- * It does not use the email template, so it has no tokens and no button.
- */
 class GivingStatementEmail extends BaseEmail
 {
     public function __construct(array $toAddresses, string $familyName, int $year, string $pdf, string $filename)
