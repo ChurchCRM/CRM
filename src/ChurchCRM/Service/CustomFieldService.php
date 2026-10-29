@@ -171,15 +171,13 @@ class CustomFieldService
         $this->assertColumn($column);
 
         if ($table === 'person_custom') {
-            // The person_custom table map does not know the cN columns, so Criteria cannot bind a
-            // condition on them: find the rows with a typed bound condition, then clear them by key.
-            $matches = PersonCustomQuery::create()
+            // The person_custom table map does not know the cN columns, so the condition is a typed
+            // bound where() on the model query; the value is checked in the same UPDATE.
+            $update = new Criteria(PersonCustomTableMap::DATABASE_NAME);
+            $update->add($table . '.' . $column, null);
+            PersonCustomQuery::create()
                 ->where($table . '.' . $column . ' = ?', $personId, \PDO::PARAM_INT)
-                ->select(['PerId'])
-                ->find();
-            foreach ($matches as $matchId) {
-                $this->updateColumns($table, 'per_ID', (int) $matchId, [$column => null]);
-            }
+                ->doUpdate($update, Propel::getWriteConnection(PersonCustomTableMap::DATABASE_NAME));
 
             return;
         }
