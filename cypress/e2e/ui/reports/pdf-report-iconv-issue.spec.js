@@ -40,7 +40,7 @@ describe("PDF Reports - iconv fallback fix", () => {
         cy.get('input[name="output"][value="pdf"]').check();
 
         // Use the same intercept pattern as tax-report-pdf.spec.js which is known to work
-        cy.intercept("POST", "**/finance/reports/tax-statements/download").as("taxReport");
+        cy.intercept("POST", "**/finance/reports/giving-statements/download").as("taxReport");
         cy.get("#createReport").click();
 
         cy.wait("@taxReport").then((interception) => {
