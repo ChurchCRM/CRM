@@ -98,7 +98,7 @@ $updateEnvelopes = 0;
 
 // Service the action buttons
 if (isset($_POST['PrintReport'])) {
-    RedirectUtils::redirect('Reports/EnvelopeReport.php');
+    RedirectUtils::redirect('finance/reports/envelope-numbers');
 } elseif (isset($_POST['AssignAllFamilies'])) {
     $newEnvNum = $iAssignStartNum;
     $envelopesToWrite = []; // zero it out
