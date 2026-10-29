@@ -62,7 +62,7 @@ class ImageSupportUtils
 
     /**
      * FPDF-supported image types (uppercase, as required by FPDF Image() method).
-     * Used in PDF reports (PdfAttendance.php, etc).
+     * Used in PDF reports (PdfDirectory.php, etc).
      * FPDF does not support GIF or WebP, so we downgrade those to PNG.
      */
     public const FPDF_SUPPORTED_TYPES = ['JPG', 'JPEG', 'PNG'];

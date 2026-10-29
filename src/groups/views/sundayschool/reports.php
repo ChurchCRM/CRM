@@ -15,6 +15,11 @@ $error = $_GET['error'] ?? '';
     <i class="fa-solid fa-triangle-exclamation me-1"></i>
     <?= gettext('At least one group must be selected to make class lists or attendance sheets.') ?>
 </div>
+<?php } elseif ($error === 'dates') { ?>
+<div class="alert alert-danger">
+    <i class="fa-solid fa-triangle-exclamation me-1"></i>
+    <?= gettext('Not a valid date') ?>
+</div>
 <?php } ?>
 
 <div class="card">

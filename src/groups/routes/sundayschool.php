@@ -11,7 +11,10 @@ use ChurchCRM\model\ChurchCRM\KioskAssignmentQuery;
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
 use ChurchCRM\model\ChurchCRM\UserQuery;
+use ChurchCRM\Service\ClassAttendanceService;
 use ChurchCRM\Service\DashboardService;
+use ChurchCRM\Service\FinancialService;
+use ChurchCRM\Service\MpdfRenderer;
 use ChurchCRM\Service\SundaySchoolService;
 use ChurchCRM\Slim\Middleware\Request\Setting\SundaySchoolEnabledMiddleware;
 use ChurchCRM\Utils\FiscalYearUtils;
@@ -33,6 +36,54 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
         return $response
             ->withHeader('Location', SystemURLs::getRootPath() . '/groups/sundayschool/dashboard')
             ->withStatus(302);
+    });
+
+    // Class attendance sheet: students and teachers of each chosen class against the Sundays of the school year.
+    // Needs the group-management role of this app.
+    $group->get('/reports/class-attendance', function (Request $request, Response $response) {
+        $query = $request->getQueryParams();
+        $groupIds = array_slice(array_values(array_filter(array_map('intval', explode(',', (string) ($query['GroupID'] ?? ''))))), 0, 50);
+        $first = InputUtils::filterDate($query['FirstSunday'] ?? '');
+        $last = InputUtils::filterDate($query['LastSunday'] ?? '');
+        if ($first === '' || $last === '' || $first === '1970-01-01' || $last === '1970-01-01' || $last < $first) {
+            return $response
+                ->withHeader('Location', SystemURLs::getRootPath() . '/groups/sundayschool/reports?error=dates')
+                ->withStatus(302);
+        }
+
+        $noSchool = [];
+        for ($i = 1; $i <= 8; $i++) {
+            $date = InputUtils::filterDate($query['NoSchool' . $i] ?? '');
+            if ($date !== '' && $date !== '1970-01-01') {
+                $noSchool[] = $date;
+            }
+        }
+
+        $withPictures = InputUtils::filterInt($query['pictures'] ?? '') === 1;
+        $sundays = ClassAttendanceService::sundays($first, $last, $noSchool);
+        $fiscalYearId = InputUtils::filterInt($query['FYID'] ?? '') ?: FiscalYearUtils::getCurrentFiscalYearId();
+
+        $pdf = (new MpdfRenderer())->renderToString('class-attendance', [
+            'classes' => ClassAttendanceService::classes(
+                $groupIds,
+                InputUtils::filterInt($query['AllRoles'] ?? '') === 1,
+                $withPictures,
+                InputUtils::filterInt($query['ExtraStudents'] ?? ''),
+                InputUtils::filterInt($query['ExtraTeachers'] ?? '')
+            ),
+            'sundays' => $sundays,
+            'months' => ClassAttendanceService::months($sundays),
+            'widths' => ClassAttendanceService::columnWidths(count($sundays), $withPictures),
+            'with_pictures' => $withPictures,
+            'fiscal_year' => FinancialService::formatFiscalYear($fiscalYearId),
+        ], true);
+
+        $filename = 'ClassAttendance' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
+        $response->getBody()->write($pdf);
+
+        return $response
+            ->withHeader('Content-Type', 'application/pdf')
+            ->withHeader('Content-Disposition', (SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline') . '; filename="' . $filename . '"');
     });
 
     // Sunday School Dashboard
@@ -347,7 +398,7 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
         } elseif (isset($post['SubmitClassList'])) {
             RedirectUtils::redirect('Reports/ClassList.php?' . $baseParams);
         } elseif (isset($post['SubmitClassAttendance'])) {
-            $url = 'Reports/ClassAttendance.php?' . $baseParams;
+            $url = 'groups/sundayschool/reports/class-attendance?' . $baseParams;
             for ($i = 1; $i <= 8; $i++) {
                 $val = InputUtils::filterDate($post['NoSchool' . $i] ?? '');
                 if ($val) {
