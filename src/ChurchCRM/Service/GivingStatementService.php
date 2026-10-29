@@ -28,7 +28,7 @@ class GivingStatementService
      */
     public static function criteriaFromQuery(array $query): array
     {
-        $currentEndYear = FiscalYearUtils::getEndYearForDate(DateTimeUtils::getToday()->format('Y-m-d'));
+        $currentEndYear = FiscalYearUtils::endYearForId(FiscalYearUtils::getCurrentFiscalYearId());
         $year = InputUtils::filterInt(self::scalar($query['year'] ?? ''));
         $familyIds = self::intList($query['family'] ?? []);
         $familyId = InputUtils::filterInt(self::scalar($query['familyId'] ?? ''));
@@ -44,7 +44,7 @@ class GivingStatementService
             $dateEnd = $fy['endDate'];
         }
         if ($dateStart === '' && $dateEnd === '') {
-            $fy = FiscalYearUtils::getFiscalYearDatesById(FiscalYearUtils::getCurrentFiscalYearId() - 1);
+            $fy = FiscalYearUtils::previousFiscalYearDates();
             $dateStart = $fy['startDate'];
             $dateEnd = $fy['endDate'];
         }

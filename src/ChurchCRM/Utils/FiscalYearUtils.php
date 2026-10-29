@@ -61,16 +61,6 @@ class FiscalYearUtils
     }
 
     /**
-     * Compute the date range (startDate, endDate, label, month) for a given fiscal year ID.
-     *
-     * This is the inverse of calculateFiscalYearId:
-     *   - Calendar year (iFYMonth == 1): fyid == year - 1996, so year == fyid + 1996
-     *   - Non-calendar year (iFYMonth > 1): fyStartYear == fyid + 1995, fyEndYear == fyid + 1996
-     *
-     * @param int $fyid Fiscal year ID
-     * @return array{startDate: string, endDate: string, label: string, month: int}
-     */
-    /**
      * Fiscal year that ends in the given calendar year.
      * When iFYMonth is 1 that is the calendar year itself.
      */
@@ -89,15 +79,38 @@ class FiscalYearUtils
         return self::getFiscalYearDatesById(self::getFiscalYearIdForCalendarYear($year));
     }
 
-    /**
-     * Calendar year in which the fiscal year of $date ends.
-     */
-    public static function getEndYearForDate(string $date): int
+    /** Calendar year in which this fiscal year ends. */
+    public static function endYearForId(int $fyid): int
     {
-        $fyid = self::getFiscalYearIdForDate($date);
-        return (int) substr(self::getFiscalYearDatesById($fyid)['endDate'], 0, 4);
+        return $fyid + 1996;
     }
 
+    /** Calendar year in which the fiscal year of $date ends. */
+    public static function getEndYearForDate(string $date): int
+    {
+        return self::endYearForId(self::getFiscalYearIdForDate($date));
+    }
+
+    /**
+     * The fiscal year before the current one.
+     *
+     * @return array{startDate: string, endDate: string, label: string, month: int}
+     */
+    public static function previousFiscalYearDates(): array
+    {
+        return self::getFiscalYearDatesById(self::getCurrentFiscalYearId() - 1);
+    }
+
+    /**
+     * Compute the date range (startDate, endDate, label, month) for a given fiscal year ID.
+     *
+     * This is the inverse of calculateFiscalYearId:
+     *   - Calendar year (iFYMonth == 1): fyid == year - 1996, so year == fyid + 1996
+     *   - Non-calendar year (iFYMonth > 1): fyStartYear == fyid + 1995, fyEndYear == fyid + 1996
+     *
+     * @param int $fyid Fiscal year ID
+     * @return array{startDate: string, endDate: string, label: string, month: int}
+     */
     public static function getFiscalYearDatesById(int $fyid): array
     {
         $iFYMonth = SystemConfig::getIntValue('iFYMonth');

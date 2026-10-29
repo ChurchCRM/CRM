@@ -72,7 +72,7 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
         $year = InputUtils::filterInt($body['year'] ?? '');
         $token = (string) ($body['csrf_token'] ?? '');
 
-        $currentEndYear = FiscalYearUtils::getEndYearForDate(date('Y-m-d'));
+        $currentEndYear = FiscalYearUtils::endYearForId(FiscalYearUtils::getCurrentFiscalYearId());
         if ($familyId <= 0 || $year < 1991 || $year > $currentEndYear || !CSRFUtils::validateToken($token, 'tax_email_' . $year, true)) {
             RedirectUtils::redirect('finance/reports');
         }

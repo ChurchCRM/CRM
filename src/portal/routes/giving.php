@@ -25,7 +25,7 @@ $group->get('/giving', function (Request $request, Response $response) use ($por
     $actor = $portalGivingActor($request);
     $family = $actor?->getFamily();
     $today = date('Y-m-d');
-    $currentYear = FiscalYearUtils::getEndYearForDate($today);
+    $currentYear = FiscalYearUtils::endYearForId(FiscalYearUtils::getCurrentFiscalYearId());
     $entered = $family?->getDateEntered('Y-m-d') ?: $today;
     $firstYear = min($currentYear, FiscalYearUtils::getEndYearForDate($entered));
     $isHousehold = $family && PortalSelfService::isAdultOf($family, $actor);
@@ -43,7 +43,7 @@ $group->get('/giving', function (Request $request, Response $response) use ($por
             'hasGiving' => isset($givingYears[$year]),
         ];
     }
-    $year = max($firstYear, FiscalYearUtils::getEndYearForDate(date('Y-m-d', strtotime($today . ' -1 year'))));
+    $year = max($firstYear, FiscalYearUtils::endYearForId(FiscalYearUtils::getCurrentFiscalYearId() - 1));
     return PortalTwig::render(
         $response,
         'giving/index.html.twig',
@@ -73,10 +73,11 @@ $group->get('/giving/statement', function (Request $request, Response $response)
         );
     }
 
-    $year = (int) ($request->getQueryParams()['year'] ?? FiscalYearUtils::getEndYearForDate(date('Y-m-d', strtotime('-1 year'))));
-    $currentEndYear = FiscalYearUtils::getEndYearForDate(date('Y-m-d'));
+    $currentEndYear = FiscalYearUtils::endYearForId(FiscalYearUtils::getCurrentFiscalYearId());
+    $previousEndYear = FiscalYearUtils::endYearForId(FiscalYearUtils::getCurrentFiscalYearId() - 1);
+    $year = (int) ($request->getQueryParams()['year'] ?? $previousEndYear);
     if ($year < 1990 || $year > $currentEndYear) {
-        $year = FiscalYearUtils::getEndYearForDate(date('Y-m-d', strtotime('-1 year')));
+        $year = $previousEndYear;
     }
 
     $family = $actor->getFamily();
