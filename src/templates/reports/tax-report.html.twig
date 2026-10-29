@@ -11,6 +11,7 @@
     <div class="recipient">
       <strong>{{ family.salutation }}</strong><br>
       {{ family.address|nl2br }}
+      {% if family.envelope %}<br><span class="muted">{{ gettext('Envelope') }}: {{ family.envelope }}</span>{% endif %}
     </div>
 
     <p>{{ opening }}</p>
@@ -55,12 +56,34 @@
       </table>
     {% endif %}
 
-    {% if disclosure %}<p class="disclosure">{{ disclosure }}</p>{% endif %}
+    {% set disclosure_text = family.disclosure is defined ? family.disclosure : disclosure %}
+    {% if disclosure_text %}<p class="disclosure">{{ disclosure_text }}</p>{% endif %}
 
     <div class="closing">
       <p>{{ closing }}</p>
       {% if questions %}<p>{{ questions }}</p>{% endif %}
+      {% if sincerely %}<p>{{ sincerely }},</p>{% endif %}
       {% if signer %}<p>{{ signer }}</p>{% endif %}
     </div>
+
+    {% if remittance %}
+      <div class="remittance">
+        <p class="muted">{{ gettext('Please detach this slip and mail with your next gift.') }}</p>
+        <p class="muted"><em>{{ gettext('Please mail you next gift to %s')|format(church_name) }}, {{ church_address }}{% if church_phone %}, {{ gettext('Phone') }}: {{ church_phone }}{% endif %}</em></p>
+        <table>
+          <tr>
+            <td>
+              <strong>{{ family.salutation }}</strong><br>
+              {{ family.address|nl2br }}
+            </td>
+            <td>
+              {{ gettext('Gift Amount') }}:<br><br>
+              {{ gettext('Gift Designation') }}:
+            </td>
+            <td class="line">&nbsp;<br><br>&nbsp;</td>
+          </tr>
+        </table>
+      </div>
+    {% endif %}
   {% endfor %}
 {% endblock %}

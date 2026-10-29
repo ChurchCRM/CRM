@@ -1,6 +1,17 @@
 <?php
 
+use ChurchCRM\Emails\GivingStatementEmail;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\Service\FinanceReportOptions;
+use ChurchCRM\Service\MpdfRenderer;
+use ChurchCRM\Service\GivingStatementService;
+use ChurchCRM\Utils\CSRFUtils;
+use ChurchCRM\Utils\CsvExporter;
+use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -9,41 +20,10 @@ use Slim\Views\PhpRenderer;
 
 $app->group('/reports', function (RouteCollectorProxy $group): void {
 
-
-    // Proof of concept: shared letterhead via mPDF (framework only)
-    $group->get('/pdf-framework-preview', function (Request $request, Response $response): Response {
-        $renderer = new \ChurchCRM\Service\MpdfRenderer();
-        $data = [
-            'letterhead' => 'address',
-            'title' => gettext('Contribution Statement'),
-            'date_range' => gettext('Year-end statements preview'),
-            'empty_message' => gettext('No contributions were recorded for this period.'),
-            'closing' => \ChurchCRM\dto\SystemConfig::getValue('sTaxReport2'),
-            'signer' => \ChurchCRM\dto\SystemConfig::getValue('sTaxSigner'),
-            'families' => [[
-                'salutation' => gettext('Sample Family'),
-                'address' => "123 Example St\nAnytown, ST 00000",
-                'total' => \ChurchCRM\Utils\CurrencyFormatter::format(0),
-                'goods_services' => \ChurchCRM\Utils\CurrencyFormatter::format(0),
-                'gifts' => [[
-                    'date' => date('Y-m-d'),
-                    'fund' => gettext('General'),
-                    'method' => gettext('Check'),
-                    'amount' => \ChurchCRM\Utils\CurrencyFormatter::format(0),
-                ]],
-            ]],
-        ];
-        $pdf = $renderer->renderToString('tax-report', $data);
-        $response->getBody()->write($pdf);
-        return $response
-            ->withHeader('Content-Type', 'application/pdf')
-            ->withHeader('Content-Disposition', 'inline; filename="pdf-framework-preview.pdf"');
-    });
-
-    // Financial Reports selection page (migrated from FinancialReports.php)
+    // Financial Reports selection page
     $group->get('', function (Request $request, Response $response): Response {
         $renderer = new PhpRenderer(__DIR__ . '/../views/');
-        
+
         $pageArgs = [
             'sRootPath' => SystemURLs::getRootPath(),
             'sPageTitle' => gettext('Financial Reports'),
@@ -52,8 +32,113 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
                 [gettext('Financial Reports')],
             ]),
         ];
-        
+
         return $renderer->render($response, 'reports.php', $pageArgs);
+    });
+
+    // Giving Report (tax statements): choose filters, preview the result, then download.
+    $group->get('/tax-statements', function (Request $request, Response $response): Response {
+        $query = $request->getQueryParams();
+        $criteria = GivingStatementService::criteriaFromQuery($query);
+        $summary = ($query['preview'] ?? '') === '1'
+            ? GivingStatementService::summary(GivingStatementService::paymentsByFamily($criteria))
+            : null;
+
+        $renderer = new PhpRenderer(__DIR__ . '/../views/');
+
+        return $renderer->render($response, 'reports/tax-statements.php', [
+            'sRootPath' => SystemURLs::getRootPath(),
+            'sPageTitle' => gettext('Giving Report (Tax Statements)'),
+            'sPageSubtitle' => gettext('Generate annual tax-deductible giving statements for donors. Can be printed or emailed.'),
+            'aBreadcrumbs' => PageHeader::breadcrumbs([
+                [gettext('Financial Reports'), '/finance/reports'],
+                [gettext('Giving Report (Tax Statements)')],
+            ]),
+            'query' => $query,
+            'criteria' => $criteria,
+            'summary' => $summary,
+            'downloadQuery' => http_build_query(array_diff_key($query, ['preview' => true])),
+            'classifications' => FinanceReportOptions::classifications(),
+            'families' => FinanceReportOptions::families(),
+            'fundGroups' => FinanceReportOptions::fundGroups(),
+            'deposits' => FinanceReportOptions::deposits(),
+        ]);
+    });
+
+    $group->get('/tax-statements/pdf', function (Request $request, Response $response): Response {
+        $query = $request->getQueryParams();
+        $criteria = GivingStatementService::criteriaFromQuery($query);
+        $groups = GivingStatementService::paymentsByFamily($criteria);
+        if ($groups === []) {
+            RedirectUtils::redirect('finance/reports/tax-statements?' . http_build_query(array_merge($query, ['preview' => 1])));
+        }
+
+        [$dateStart, $dateEnd] = GivingStatementService::period($criteria);
+        $families = GivingStatementService::families($groups, SystemConfig::getBooleanValue('bUseDonationEnvelopes'));
+        $document = GivingStatementService::document($families, $dateStart, $dateEnd, $criteria['letterhead'], $criteria['remittance']);
+        $pdf = (new MpdfRenderer())->renderToString('tax-report', $document);
+
+        $label = GivingStatementService::fileLabel((int) substr($dateStart, 0, 4), count($families) === 1 ? $families[0]['salutation'] : '');
+        $response->getBody()->write($pdf);
+
+        return $response
+            ->withHeader('Content-Type', 'application/pdf')
+            ->withHeader('Content-Disposition', GivingStatementService::contentDisposition($label));
+    });
+
+    $group->get('/tax-statements/csv', function (Request $request, Response $response): Response {
+        $query = $request->getQueryParams();
+        $groups = GivingStatementService::paymentsByFamily(GivingStatementService::criteriaFromQuery($query));
+        if ($groups === []) {
+            RedirectUtils::redirect('finance/reports/tax-statements?' . http_build_query(array_merge($query, ['preview' => 1])));
+        }
+
+        [$headers, $rows] = GivingStatementService::csv($groups);
+        CsvExporter::create($headers, $rows, 'TaxReport', 'UTF-8', true);
+
+        return $response;
+    });
+
+    // Email one family's statement for a calendar year (Family profile → Finance menu).
+    $group->post('/tax-statements/email', function (Request $request, Response $response): Response {
+        $body = (array) $request->getParsedBody();
+        $familyId = InputUtils::filterInt($body['familyId'] ?? '');
+        $year = InputUtils::filterInt($body['year'] ?? '');
+        $token = (string) ($body['csrf_token'] ?? '');
+
+        if ($familyId <= 0 || $year < 1991 || $year > (int) date('Y') || !CSRFUtils::validateToken($token, 'tax_email_' . $year, true)) {
+            RedirectUtils::redirect('finance/reports');
+        }
+
+        $family = FamilyQuery::create()->findPk($familyId);
+        if ($family === null) {
+            RedirectUtils::redirect('people/family/not-found?id=' . $familyId);
+        }
+        $emails = $family->getEmails();
+        if (empty($emails)) {
+            RedirectUtils::redirect('people/family/' . $familyId . '?TaxEmailError=NoEmail');
+        }
+
+        $criteria = GivingStatementService::criteriaFromQuery(['familyId' => $familyId, 'year' => $year]);
+        $groups = GivingStatementService::paymentsByFamily($criteria);
+        if ($groups === []) {
+            RedirectUtils::redirect('people/family/' . $familyId . '?TaxEmailError=NoData');
+        }
+
+        $families = GivingStatementService::families($groups);
+        $document = GivingStatementService::document($families, $criteria['dateStart'], $criteria['dateEnd']);
+        $pdf = (new MpdfRenderer())->renderToString('tax-report', $document);
+
+        $filename = 'TaxStatement-' . preg_replace('/[^\p{L}\p{N}._-]/u', '_', (string) $family->getName()) . '-' . $year . '.pdf';
+        $mail = new GivingStatementEmail($emails, (string) $family->getName(), $year, $pdf, $filename);
+
+        if ($mail->send()) {
+            RedirectUtils::redirect('people/family/' . $familyId . '?TaxEmailSent=' . $year);
+        }
+        LoggerUtils::getAppLogger()->error('Giving statement email failed to send for family ' . $familyId . ' year ' . $year);
+        RedirectUtils::redirect('people/family/' . $familyId . '?TaxEmailError=SendFailed');
+
+        return $response;
     });
 
 });
