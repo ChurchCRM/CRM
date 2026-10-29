@@ -1113,7 +1113,7 @@ require_once __DIR__ . '/Include/Header.php';
                     while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
                         extract($rowCustomField);
                         if ($customFieldService->canView((int) $custom_FieldSec)) {
-                            echo '<div class="row"><div class="mb-3 col-12 col-md-6"><label for="' . $custom_Field . '">' . $custom_Name . '</label>';
+                            echo '<div class="row"><div class="mb-3 col-12 col-md-6"><label for="' . InputUtils::escapeAttribute($custom_Field) . '">' . InputUtils::escapeHTML($custom_Name) . '</label>';
 
                             if (array_key_exists($custom_Field, $aCustomData)) {
                                 $currentFieldData = trim($aCustomData[$custom_Field]);

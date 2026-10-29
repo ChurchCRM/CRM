@@ -173,7 +173,7 @@ $customFieldService = new CustomFieldService();
                 <div class="col">
                   <div class="form-check">
                     <input class="form-check-input" type="checkbox" name="<?= $customName ?>" value="1" id="<?= $customName ?>" checked>
-                    <label class="form-check-label" for="<?= $customName ?>"><?= $rowCustomField['custom_Name'] ?></label>
+                    <label class="form-check-label" for="<?= $customName ?>"><?= InputUtils::escapeHTML($rowCustomField['custom_Name']) ?></label>
                   </div>
                 </div>
               <?php }

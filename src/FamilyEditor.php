@@ -857,7 +857,7 @@ require_once __DIR__ . '/Include/Header.php';
                         ?>
                         <div class="row">
                             <div class="mb-3 col-12 col-md-6">
-                                <label for="<?= $fam_custom_Field ?>"><?= $fam_custom_Name ?></label>
+                                <label for="<?= InputUtils::escapeAttribute($fam_custom_Field) ?>"><?= InputUtils::escapeHTML($fam_custom_Name) ?></label>
                         <?php $currentFieldData = trim($aCustomData[$fam_custom_Field]);
 
                         CustomFieldUtils::renderForm($type_ID, $fam_custom_Field, $currentFieldData, $fam_custom_Special, !isset($_POST['FamilySubmit']));
