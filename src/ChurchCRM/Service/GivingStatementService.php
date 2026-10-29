@@ -10,11 +10,12 @@ use ChurchCRM\model\ChurchCRM\Pledge;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\DateTimeUtils;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 
 /**
  * Year-end giving statements: the Finance report and the Member Portal build the same
- * `tax-report` document from here.
+ * document from here.
  */
 class GivingStatementService
 {
@@ -38,12 +39,15 @@ class GivingStatementService
         $dateStart = self::validDate(self::scalar($query['DateStart'] ?? ''));
         $dateEnd = self::validDate(self::scalar($query['DateEnd'] ?? ''));
         if ($year >= self::FIRST_YEAR && $year <= $lastYear + 1) {
-            $dateStart = $year . '-01-01';
-            $dateEnd = $year . '-12-31';
+            // Year links (family profile, portal) cover the church fiscal year, not a hard-coded calendar year.
+            $fy = FiscalYearUtils::getFiscalYearDatesById($year - 1996);
+            $dateStart = $fy['startDate'];
+            $dateEnd = $fy['endDate'];
         }
         if ($dateStart === '' && $dateEnd === '') {
-            $dateStart = $lastYear . '-01-01';
-            $dateEnd = $lastYear . '-12-31';
+            $fy = FiscalYearUtils::getFiscalYearDatesById((int) DateTimeUtils::getToday()->format('Y') - 1 - 1996);
+            $dateStart = $fy['startDate'];
+            $dateEnd = $fy['endDate'];
         }
         $dateStart = $dateStart !== '' ? $dateStart : $dateEnd;
         $dateEnd = $dateEnd !== '' ? $dateEnd : $dateStart;
@@ -125,7 +129,7 @@ class GivingStatementService
     }
 
     /**
-     * One entry per family in the shape the `tax-report` template takes.
+     * One entry per family in the shape the giving-statement template takes.
      *
      * @param array<int, Pledge[]> $groups
      */
@@ -179,7 +183,7 @@ class GivingStatementService
     }
 
     /**
-     * The data the `tax-report` template renders.
+     * The data the giving-statement template renders.
      *
      * @param array<int, array<string, mixed>> $families as returned by {@see self::families()}
      */
@@ -192,7 +196,7 @@ class GivingStatementService
         return [
             'letterhead' => $graphic !== null ? 'graphic' : ($letterhead === 'none' ? 'none' : 'address'),
             'letterhead_image' => $graphic,
-            'title' => gettext('Contribution Statement'),
+            'title' => gettext('Giving Statement'),
             'date_range' => $dateStart === $dateEnd ? $start : sprintf(gettext('%s through %s'), $start, $end),
             'opening' => trim(SystemConfig::getValue('sTaxReport1') . ' ' . ($dateStart === $dateEnd ? $start : $start . ' – ' . $end) . '.'),
             'closing' => SystemConfig::getValue('sTaxReport2'),
@@ -206,7 +210,8 @@ class GivingStatementService
     }
 
     /**
-     * Rows for the CSV export: the columns this report has always exported.
+     * Rows for the CSV export. Address columns are the mailing address (the flagged
+     * second address when there is one) so the export matches the letter that is mailed.
      *
      * @param array<int, Pledge[]> $groups
      * @return array{0: string[], 1: array<int, array<int, string|int|float|null>>}
@@ -222,15 +227,16 @@ class GivingStatementService
         foreach ($groups as $payments) {
             foreach ($payments as $pledge) {
                 $family = $pledge->getFamily();
+                $mailing = $family instanceof Family ? $family->getMailingAddressParts() : [];
                 $rows[] = [
                     $pledge->getFamId(),
                     $family?->getName() ?? 'Unassigned',
-                    $family?->getAddress1() ?? '',
-                    $family?->getAddress2() ?? '',
-                    $family?->getCity() ?? '',
-                    $family?->getState() ?? '',
-                    $family?->getZip() ?? '',
-                    $family?->getCountry() ?? '',
+                    $mailing['Address1'] ?? '',
+                    $mailing['Address2'] ?? '',
+                    $mailing['City'] ?? '',
+                    $mailing['State'] ?? '',
+                    $mailing['Zip'] ?? '',
+                    $mailing['Country'] ?? '',
                     $family?->getEnvelope() ?? '',
                     $pledge->getDate('Y-m-d'),
                     $pledge->getAmount(),
