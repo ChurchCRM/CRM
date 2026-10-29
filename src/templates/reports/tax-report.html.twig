@@ -4,7 +4,7 @@
     {% if not loop.first %}<pagebreak />{% if letterhead == 'none' %}<div class="letterhead-blank"></div>{% endif %}{% endif %}
 
     <div class="meta">
-      <h1>{{ title|default(gettext('Contribution Statement')) }}</h1>
+      <h1>{{ title|default(gettext('Giving Statement')) }}</h1>
       <div class="muted">{{ date_range }}</div>
     </div>
 
