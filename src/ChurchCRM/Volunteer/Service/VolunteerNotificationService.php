@@ -19,6 +19,8 @@ use ChurchCRM\model\ChurchCRM\VolunteerNotificationQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerOccurrence;
 use ChurchCRM\model\ChurchCRM\VolunteerOccurrenceQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerPositionQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerResponse;
+use ChurchCRM\model\ChurchCRM\VolunteerResponseQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerScheduleQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerSwap;
 use ChurchCRM\model\ChurchCRM\VolunteerSwapQuery;
@@ -1161,6 +1163,11 @@ class VolunteerNotificationService
             return $this->recordSkipped($row, 'the occurrence has already ended');
         }
 
+        if ($row->getType() === self::TYPE_DECLINE_ALERT
+            && $this->assignmentFor($row)?->getStatus() !== VolunteerAssignment::STATUS_DECLINED) {
+            return $this->recordSkipped($row, 'the volunteer is back on this position');
+        }
+
         $email = $this->buildEmail($row, $recipient, $address, $context);
         if ($email === null) {
             return $this->recordSkipped($row, 'no message could be built for this row');
@@ -1452,13 +1459,16 @@ class VolunteerNotificationService
                 if ($assignment === null) {
                     return null;
                 }
+                $decline = $this->latestDecline((int) $assignment->getId());
 
                 return new VolunteerDeclineAlertEmail(
                     $to,
                     $recipientName,
                     $context,
                     $this->personName((int) $assignment->getPersonId()),
-                    $this->gapForPosition((int) $assignment->getOccurrenceId(), (int) $assignment->getPositionId())
+                    $this->gapForPosition((int) $assignment->getOccurrenceId(), (int) $assignment->getPositionId()),
+                    $decline?->getComment(),
+                    $this->assignedSince($assignment, $decline?->getResponseDate())
                 );
 
             case self::TYPE_HELP_OFFER:
@@ -1593,6 +1603,46 @@ class VolunteerNotificationService
         $gaps = (new VolunteerAssignmentService())->getGaps([$occurrenceId]);
 
         return (int) ($gaps[$occurrenceId]['requirements'][$positionId]['gapCount'] ?? 0);
+    }
+
+    private function latestDecline(int $assignmentId): ?VolunteerResponse
+    {
+        return VolunteerResponseQuery::create()
+            ->filterByAssignmentId($assignmentId)
+            ->filterByResponse(VolunteerResponse::RESPONSE_DECLINED)
+            ->orderByResponseDate(Criteria::DESC)
+            ->orderById(Criteria::DESC)
+            ->findOne();
+    }
+
+    /**
+     * Who took the declined slot: the other live assignments on this position made at or
+     * after the decline.
+     *
+     * @return array<int, array{name: string, accepted: bool}>
+     */
+    private function assignedSince(VolunteerAssignment $declined, ?\DateTimeInterface $declinedAt): array
+    {
+        $query = VolunteerAssignmentQuery::create()
+            ->filterByOccurrenceId((int) $declined->getOccurrenceId())
+            ->filterByPositionId((int) $declined->getPositionId())
+            ->filterById((int) $declined->getId(), Criteria::NOT_EQUAL)
+            ->filterByStatus(VolunteerAssignmentService::LIVE_STATUSES, Criteria::IN)
+            ->orderByAssignedDate()
+            ->orderById();
+        if ($declinedAt !== null) {
+            $query->filterByAssignedDate($declinedAt, Criteria::GREATER_EQUAL);
+        }
+
+        $holders = [];
+        foreach ($query->find() as $assignment) {
+            $holders[] = [
+                'name' => $this->personName((int) $assignment->getPersonId()),
+                'accepted' => $assignment->getStatus() === VolunteerAssignment::STATUS_ACCEPTED,
+            ];
+        }
+
+        return $holders;
     }
 
     /**
