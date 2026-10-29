@@ -16,13 +16,15 @@ const votingMembersRequest = () =>
         body: "FYID=&RequireDonationYears=1&output=pdf",
         encoding: "binary",
         failOnStatusCode: false,
+        followRedirect: false,
     });
 
 describe("Voting Members report - Finance access", () => {
     it("office-staff does not get the report", () => {
         cy.setupPersonaSession("office-staff");
         votingMembersRequest().then((response) => {
-            expect(response.headers["content-type"]).to.not.include("application/pdf");
+            expect(response.status).to.eq(302);
+            expect(response.headers.location).to.include("v2/access-denied?role=Finance");
         });
     });
 
