@@ -968,6 +968,29 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
             });
         });
 
+        it("escapes the decline reason in the mailed alert", function () {
+            requireMailpit(this);
+
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, PERSON_VOLUNTEER).then(
+                (assignment) => {
+                    api(
+                        SELFEDIT_KEY,
+                        "POST",
+                        `${VOLUNTEER_URL}/me/assignments/${assignment.id}/respond`,
+                        { response: "declined", comment: "<b>Away</b> & busy" },
+                    );
+
+                    drain();
+
+                    mailTo(COORDINATOR_EMAIL, "declined").then((message) => {
+                        // The API strips the tags on input; the template escapes the rest.
+                        expect(message.HTML).to.contain("Their reason: Away &amp; busy");
+                        expect(message.HTML).to.not.contain("<b>Away</b>");
+                    });
+                },
+            );
+        });
+
         it("skips the decline alert when the volunteer signs back up before it is sent", () => {
             assign(COORDINATOR_KEY, occurrenceOne, posEspresso, PERSON_VOLUNTEER).then(
                 (assignment) => {
