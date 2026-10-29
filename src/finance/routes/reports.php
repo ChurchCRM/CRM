@@ -6,6 +6,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\Service\FinanceReportOptions;
 use ChurchCRM\Service\MpdfRenderer;
+use ChurchCRM\Service\YearEndGivingService;
 use ChurchCRM\Service\GivingStatementService;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\CsvExporter;
@@ -34,6 +35,27 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
         ];
 
         return $renderer->render($response, 'reports.php', $pageArgs);
+    });
+
+    // Year-end giving: the finance team's starting point for a calendar year's statements.
+    $group->get('/year-end', function (Request $request, Response $response): Response {
+        $years = YearEndGivingService::years();
+        $requested = InputUtils::filterInt($request->getQueryParams()['year'] ?? '');
+        $year = in_array($requested, $years, true) ? $requested : $years[0];
+
+        $renderer = new PhpRenderer(__DIR__ . '/../views/');
+
+        return $renderer->render($response, 'reports/year-end.php', [
+            'sRootPath' => SystemURLs::getRootPath(),
+            'sPageTitle' => gettext('Year-End Giving'),
+            'sPageSubtitle' => gettext('Review the year, then print or email giving statements.'),
+            'aBreadcrumbs' => PageHeader::breadcrumbs([
+                [gettext('Financial Reports'), '/finance/reports'],
+                [gettext('Year-End Giving')],
+            ]),
+            'years' => $years,
+            'overview' => YearEndGivingService::overview($year),
+        ]);
     });
 
     // Giving Report (tax statements): choose filters, preview the result, then download.

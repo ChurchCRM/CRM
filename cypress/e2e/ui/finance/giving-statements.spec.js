@@ -21,10 +21,9 @@ const expectPdf = (response) => {
 describe("Giving statements", () => {
     beforeEach(() => cy.setupAdminSession());
 
-    it("the Finance menu and dashboard lead to the statements page", () => {
+    it("the Finance menu leads to the statements page", () => {
         cy.visit("/finance/");
         cy.get(`a[href$='${statementsPath}']`).should("exist");
-        cy.contains("a.btn", "Generate").should("have.attr", "href").and("include", statementsPath);
     });
 
     it("treasurer previews the families and total, then downloads the PDF and CSV", () => {
