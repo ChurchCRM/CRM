@@ -19,10 +19,10 @@ describe("Finance Reports Index", () => {
         cy.contains("Generate reports for giving statements");
     });
 
-    it("should display Tax & Giving Reports section", () => {
+    it("should display Giving Reports section", () => {
         cy.visit("/finance/reports");
 
-        cy.contains("Tax & Giving Reports");
+        cy.contains("Giving Reports");
         cy.contains("Giving Statements");
         cy.contains("Zero Givers");
     });
@@ -120,7 +120,7 @@ describe("Finance Reports Index - Standard User Access", () => {
         cy.visit("/finance/reports");
         
         // Should be able to see the reports page
-        cy.contains("Tax & Giving Reports").should("be.visible");
+        cy.contains("Giving Reports").should("be.visible");
         cy.contains("Pledge Reports").should("be.visible");
     });
 });
