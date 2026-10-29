@@ -33,7 +33,7 @@ describe("Issue #7854 - Financial Reports Fix", () => {
             cy.get("input[name='DateEnd']").clear({ force: true }).type(getTodayDate(), { force: true });
 
             // Intercept the CSV download to inspect content
-            cy.intercept("POST", "**/AdvancedDeposit.php").as("csvDownload");
+            cy.intercept("POST", "**/finance/reports/advanced-deposit/download").as("csvDownload");
 
             // Generate report
             cy.get("#createReport").click();
@@ -153,7 +153,7 @@ describe("Issue #7854 - Financial Reports Fix", () => {
                 cy.get(`input[name='sort'][value='${sortBy}']`).check({ force: true });
                 cy.get("input[name='output'][value='csv']").check({ force: true });
                 
-                cy.intercept("POST", "**/AdvancedDeposit.php").as("sortedReport");
+                cy.intercept("POST", "**/finance/reports/advanced-deposit/download").as("sortedReport");
                 cy.get("#createReport").click();
 
                 cy.url().then((url) => {

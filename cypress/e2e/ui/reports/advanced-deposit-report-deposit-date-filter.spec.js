@@ -55,7 +55,7 @@ describe("Advanced Deposit Report - Deposit Date Filter (Issue Fix)", () => {
         // Use CSV for reliable response inspection.
         cy.get("input[name='output'][value='csv']").check({ force: true });
 
-        cy.intercept("POST", "**/AdvancedDeposit.php").as("reportRequest");
+        cy.intercept("POST", "**/finance/reports/advanced-deposit/download").as("reportRequest");
         cy.get("#createReport").click();
 
         // The fix ensures the report must NOT redirect to "No Data Found"
@@ -128,7 +128,7 @@ describe("Advanced Deposit Report - Deposit Date Filter (Issue Fix)", () => {
         // PDF is the default output — select explicitly for clarity.
         cy.get("input[name='output'][value='pdf']").check({ force: true });
 
-        cy.intercept("POST", "**/AdvancedDeposit.php").as("pdfReport");
+        cy.intercept("POST", "**/finance/reports/advanced-deposit/download").as("pdfReport");
         cy.get("#createReport").click();
 
         cy.url().should("not.include", "ReturnMessage=NoRows");
@@ -172,7 +172,7 @@ describe("Advanced Deposit Report - Deposit Date Filter (Issue Fix)", () => {
         cy.get("input[name='datetype'][value='Payment']").check({ force: true });
         cy.get("input[name='output'][value='csv']").check({ force: true });
 
-        cy.intercept("POST", "**/AdvancedDeposit.php").as("paymentDateReport");
+        cy.intercept("POST", "**/finance/reports/advanced-deposit/download").as("paymentDateReport");
         cy.get("#createReport").click();
 
         cy.url().should("not.include", "ReturnMessage=NoRows");

@@ -23,7 +23,7 @@ describe("csv export", () => {
             cy.get("input[name='DateEnd']").clear({ force: true }).type(getTodayDate(), { force: true });
             
             // Intercept the download to verify CSV content
-            cy.intercept("POST", "**/AdvancedDeposit.php").as("csvDownload");
+            cy.intercept("POST", "**/finance/reports/advanced-deposit/download").as("csvDownload");
             
             cy.get("#createReport").click();
             

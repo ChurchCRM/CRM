@@ -106,7 +106,7 @@ if ($sReportType === '') {
         case 'Pledge Reminders':        $action = 'Reports/ReminderReport.php'; break;
         case 'Voting Members':          $action = 'Reports/VotingMembers.php'; break;
         case 'Individual Deposit Report': $action = 'Reports/PrintDeposit.php'; break;
-        case 'Advanced Deposit Report': $action = 'Reports/AdvancedDeposit.php'; break;
+        case 'Advanced Deposit Report': $action = 'finance/reports/advanced-deposit/download'; break;
     }
     ?>
     <form method="post" action="<?= $action ?>">

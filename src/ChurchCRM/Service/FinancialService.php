@@ -659,60 +659,6 @@ class FinancialService
     }
 
     /**
-     * Get Advanced Deposit Report data using ORM
-     * 
-     * Security: Checks finance permissions before returning data
-     *
-     * @param string $sort Sort order: 'deposit', 'fund', or 'family'
-     * @param string $dateStart Start date (Y-m-d format)
-     * @param string $dateEnd End date (Y-m-d format)
-     * @param int|null $depositId Optional deposit ID filter
-     * @param array $fundIds Optional fund IDs filter
-     * @param array $familyIds Optional family IDs filter
-     * @param array $methods Optional payment methods filter
-     * @param array $classificationIds Optional classification IDs filter
-     * @return array
-     */
-    public function getAdvancedDepositReportData(
-        string $sort = 'deposit',
-        string $dateStart = '',
-        string $dateEnd = '',
-        ?int $depositId = null,
-        array $fundIds = [],
-        array $familyIds = [],
-        array $methods = [],
-        array $classificationIds = [],
-        string $datetype = 'Payment'
-    ): array {
-        AuthService::requireUserGroupMembership('bFinance');
-
-        $query = PledgeQuery::create()->filterForAdvancedDeposit(
-            $dateStart,
-            $dateEnd,
-            $fundIds,
-            $familyIds,
-            $methods,
-            $classificationIds,
-            $datetype,
-            $sort
-        );
-
-        // Add deposit ID filter if specified
-        if ($depositId > 0) {
-            $query->filterByDepId($depositId);
-        }
-
-        // Get results and convert to array WITHOUT foreign objects
-        // Using addAsColumn() in the query provides Family and Fund names directly
-        $collection = $query->find();
-        $results = [];
-        foreach ($collection as $pledge) {
-            $results[] = $pledge->toArray(TableMap::TYPE_PHPNAME, true, [], false);
-        }
-        return $results;
-    }
-
-    /**
      * Get Zero Givers Report data using ORM
      * 
      * Security: Checks finance permissions before returning data

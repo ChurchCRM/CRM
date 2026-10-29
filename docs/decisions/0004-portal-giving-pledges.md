@@ -236,7 +236,7 @@ The review asked how tax statements and the Advanced Deposit Report treat `Pledg
 
 **Filtered by type, so pledges never appear**
 - Tax statements: `TaxReport.php` and `FamilyTaxReportEmail.php` read `FinancialService::getTaxReportData()`, which uses `PledgeQuery::filterForTaxReport()`: `Payment` rows only.
-- Advanced Deposit Report: `FinancialService::getAdvancedDepositReportData()` uses `PledgeQuery::filterForAdvancedDeposit()`: `Payment` rows only.
+- Advanced Deposit Report: `AdvancedDepositService::records()` uses `PledgeQuery::filterForAdvancedDeposit()`: `Payment` rows only.
 - Zero Givers (`PledgeQuery::filterForZeroGivers()`), Voting Members (`Reports/VotingMembers.php`), the finance dashboard (`FinancialService::getYtdPaymentTotal()`, `getYtdPledgeTotal()`, `getYtdPaymentCount()`, `getYtdDonorFamilyCount()`) `DepositService::getDepositTotal()` and the deposit CSV export (`DepositService::getDepositsForExport()`) all filter by type. `DepositService::getDepositItemsByType()` takes the type as an argument.
 
 **Not filtered by type, correct only because pledges carry no deposit**
