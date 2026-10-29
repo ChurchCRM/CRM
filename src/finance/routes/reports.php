@@ -26,7 +26,7 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
         $pageArgs = [
             'sRootPath' => SystemURLs::getRootPath(),
             'sPageTitle' => gettext('Financial Reports'),
-            'sPageSubtitle' => gettext('Generate reports for tax statements, pledge tracking, and financial analysis.'),
+            'sPageSubtitle' => gettext('Generate reports for giving statements, pledge tracking, and financial analysis.'),
             'aBreadcrumbs' => PageHeader::breadcrumbs([
                 [gettext('Financial Reports')],
             ]),
@@ -35,8 +35,8 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
         return $renderer->render($response, 'reports.php', $pageArgs);
     });
 
-    // Giving Report (tax statements): PDF or CSV for the chosen filters, from the report form or a family link.
-    $group->map(['GET', 'POST'], '/tax-statements/download', function (Request $request, Response $response): Response {
+    // Giving Statement: PDF or CSV for the chosen filters, from the report form or a family link.
+    $group->map(['GET', 'POST'], '/giving-statements/download', function (Request $request, Response $response): Response {
         $input = $request->getMethod() === 'POST' ? (array) $request->getParsedBody() : $request->getQueryParams();
         $criteria = GivingStatementService::criteriaFromQuery($input);
         $groups = GivingStatementService::paymentsByFamily($criteria);
@@ -46,7 +46,7 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
 
         if (($input['output'] ?? 'pdf') === 'csv') {
             [$headers, $rows] = GivingStatementService::csv($groups);
-            CsvExporter::create($headers, $rows, 'TaxReport', 'UTF-8', true);
+            CsvExporter::create($headers, $rows, 'GivingStatement', 'UTF-8', true);
 
             return $response;
         }
@@ -64,8 +64,8 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
             ->withHeader('Content-Disposition', GivingStatementService::contentDisposition($label));
     });
 
-    // Email one family's statement for a calendar year (Family profile → Finance menu).
-    $group->post('/tax-statements/email', function (Request $request, Response $response): Response {
+    // Email one family's giving statement for a year (Family profile → Finance menu).
+    $group->post('/giving-statements/email', function (Request $request, Response $response): Response {
         $body = (array) $request->getParsedBody();
         $familyId = InputUtils::filterInt($body['familyId'] ?? '');
         $year = InputUtils::filterInt($body['year'] ?? '');
@@ -94,7 +94,7 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
         $document = GivingStatementService::document($families, $criteria['dateStart'], $criteria['dateEnd']);
         $pdf = (new MpdfRenderer())->renderToString('tax-report', $document);
 
-        $filename = 'TaxStatement-' . preg_replace('/[^\p{L}\p{N}._-]/u', '_', (string) $family->getName()) . '-' . $year . '.pdf';
+        $filename = 'GivingStatement-' . preg_replace('/[^\p{L}\p{N}._-]/u', '_', (string) $family->getName()) . '-' . $year . '.pdf';
         $mail = new GivingStatementEmail($emails, (string) $family->getName(), $year, $pdf, $filename);
 
         if ($mail->send()) {
