@@ -15,6 +15,11 @@
 | A6 | **Assigning roles:** a holder of `roles.assign` may give any role to another user, never to themselves. Roles holding a sensitive permission need a second approver. Every change is audited and the person is notified. | Settles the D2 grant ceiling and self-escalation rule. |
 | A7 | **Rebuilt setup wizard with an Owner account ("admin 0").** The wizard asks for the real password (no shipped default) and which roles to create. Every install has exactly one Owner. | New. Replaces the seeded `admin`/`changeme` account. |
 | A8 | **Owner is a true superuser,** including highly confidential and safeguarding content. It may assign roles to itself and cannot be deleted or demoted. | **Exception to P6**: the RFC's P6 row needs an amendment naming the Owner. Mitigation in §6. |
+| A9 | **Admin-only split.** CSV export and the People Report CSV move to `export.people`; the email log and text messages to `communication.log.read`; other users' private notes to `notes.private.read` (sensitive). The rest of today's admin-only features stay with Administrator (§4.3). | New permissions; the bulk export gate of #10516 starts from `export.people`. |
+| A10 | **Sensitive at cutover:** `notes.private.read`, every `finance.*` permission and `export.people`. Assigning a role that holds one needs a second approver; the Owner's use of one is audited. | Applies P6-style controls to giving data and bulk export. |
+| A11 | **Second approver:** when the Owner assigns a sensitive role, no approver is needed; it is audited. When anyone else assigns one, the Owner or another holder of `roles.assign` (not the assigner) approves before it takes effect. | Refines A6 so a one-person church can work. |
+| A12 | **Owner on upgrade:** the administrator who runs the upgrade becomes the Owner; the upgrade report names them to every administrator. | New. |
+| A13 | **The cutover release is not an automatic upgrade.** The Bootstrapper's automatic database upgrade (`src/ChurchCRM/Bootstrapper.php`) stops before the cutover script and shows staff a maintenance page; an administrator runs the upgrade wizard, which takes the backup, makes them Owner and runs the cutover. Later releases upgrade automatically again. | New. Removes the scripted-upgrade fallback. |
 
 ## 2. V1 permission table (what exists today)
 
@@ -107,7 +112,7 @@ One built-in role per V1 switch, holding exactly what that switch allows today:
 | People: Edit | `people.update`, `families.update`, `people.properties.assign`, `whycame.update`, `people.verify`, `groups.member-properties.update` |
 | People: Delete | `people.delete`, `families.delete` |
 | Groups: Manage | `groups.manage`, `groups.properties.manage`, `sundayschool.manage` |
-| Finance | `finance.*` permissions listed in the registry (module `bEnabledFinance`) |
+| Finance | `finance.*` permissions listed in the registry (module `bEnabledFinance`), all sensitive (A10) |
 | Fundraisers: Manage | `fundraisers.manage` (module `bEnabledFundraiser`) |
 | Ministries: Manage All | `ministries.manage` (module volunteer v2) |
 | Ministries: Manage Mine | `ministries.manage` scope `my-ministries` |
@@ -123,7 +128,7 @@ Every permission in the registry with `since` ≤ the cutover release, including
 
 ### 4.3 Administrator (A5)
 
-Core administration only. **Proposed** split of today's `isAdmin()`-only features, for review:
+Core administration only. Today's `isAdmin()`-only features are split as follows (**Decided**, A9):
 
 | Today admin-only | Proposed home |
 |---|---|
@@ -194,11 +199,11 @@ All access goes through Propel models and the service; no page writes these tabl
 
 ## 8. Cutover
 
-1. **Upgrade script** (one script, run once):
+1. **Upgrade script** (one script, run once, only from the upgrade wizard; A13):
    1. Refuse to run unless a backup was taken in the same upgrade session (the upgrade wizard's Backup step, `src/admin/views/upgrade.php`, becomes mandatory for this release).
    2. Seed the registry's built-in roles.
    3. For each user: one assignment per switch that is on (A2); `usr_Admin` users get Legacy Administrator (A4).
-   4. Mark the Owner: the lowest-ID active Legacy Administrator who signed in most recently becomes Owner; the upgrade report names them and how to transfer ownership.
+   4. Mark the Owner: the administrator running the upgrade wizard (A12, A13). The report names them to every administrator and says how to transfer ownership.
    5. Verify: for every user, the effective permission set computed from roles equals the set computed from the columns. If any user differs, abort and roll back the transaction.
    6. Drop the `usr_*` permission columns and the two `userconfig_ucfg` permission rows (A3).
 2. **Parity gate before merge:** a fixture set covers every switch alone, every pair, Edit Self with each switch, admin, zero switches, and each module flag off. Each fixture runs the V1 predicates on `master` and the V2 predicates on the branch against the same database and must agree. Cypress specs run as one user per switch (RFC lesson 6).
@@ -220,6 +225,7 @@ Phase 1 is built on a long-lived branch `rbac/phase-1` and merges to `master` on
 | 4 | `AuthorizationService` with union/intersection, Self Service exclusivity, module flags, request cache | 2, 3 | Unit tests with fake principals |
 | 5 | Predicate seam: `User` predicates ask the service | 4 | Parity fixtures green against the service |
 | 6 | Upgrade conversion, verification and column drop (§8) | 3, 5 | Upgrade tests from seeded V1 data, including abort on mismatch |
+| 6a | Hold the automatic upgrade for the cutover release; maintenance page; wizard runs backup, Owner, cutover (A13) | 6 | Auto-upgrade stops at the cutover; wizard path tested end to end |
 | 7 | User editor: role picker replaces the checkboxes; `roles.assign`, no-self, second approver for sensitive, audit, notice | 4 | Cypress per rule |
 | 8 | Owner: flag, safeguards (§6), transfer flow | 3, 4 | Cypress and audit assertions |
 | 9 | Setup wizard rebuild (§9) | 8 | Fresh-install Cypress run |
@@ -233,8 +239,5 @@ After phase 1: church templates and role copies; then per-feature migration of c
 
 Asked one at a time as the design proceeds; recorded here until answered.
 
-- The split in §4.3.
-- Which permissions are `sensitive` at cutover (proposed: `notes.private.read` only).
-- Owner selection on upgrade when several admins exist (§8 step 1.4).
 - Church template catalog for the first release after phase 1.
 - RFC D1, D3, D4, D5, D7, D8 are untouched by phase 1 and stay open.
