@@ -19,16 +19,17 @@ require_once __DIR__ . '/Include/Header.php';
 
 // Is this the second pass?
 if (isset($_POST['SubmitNewsLetter']) || isset($_POST['SubmitConfirmLabels'])) {
-    $sLabelFormat = InputUtils::legacyFilterInput($_POST['labeltype']);
-    $sFontInfo = $_POST['labelfont'];
-    $sFontSize = $_POST['labelfontsize'];
-    $bRecipientNamingMethod = $_POST['recipientnamingmethod'];
-    $sLabelInfo = '&labelfont=' . urlencode($sFontInfo) . '&labelfontsize=' . $sFontSize ."&recipientnamingmethod=" . $bRecipientNamingMethod;
+    $sLabelQuery = http_build_query([
+        'labeltype' => InputUtils::legacyFilterInput($_POST['labeltype']),
+        'labelfont' => $_POST['labelfont'] ?? '',
+        'labelfontsize' => $_POST['labelfontsize'] ?? '',
+        'recipientnamingmethod' => $_POST['recipientnamingmethod'] ?? '',
+    ]);
 
     if (isset($_POST['SubmitNewsLetter'])) {
-        RedirectUtils::redirect('Reports/NewsLetterLabels.php?labeltype=' . $sLabelFormat . $sLabelInfo);
+        RedirectUtils::redirect('people/labels/newsletter?' . $sLabelQuery);
     } elseif (isset($_POST['SubmitConfirmLabels'])) {
-        RedirectUtils::redirect('Reports/ConfirmLabels.php?labeltype=' . $sLabelFormat . $sLabelInfo);
+        RedirectUtils::redirect('people/labels/confirm?' . $sLabelQuery);
     }
 } else {
     $sLabelFormat = 'Tractor';
