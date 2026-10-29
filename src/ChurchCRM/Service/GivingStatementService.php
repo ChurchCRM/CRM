@@ -147,7 +147,7 @@ class GivingStatementService
             }
 
             $families[] = [
-                'salutation' => $family instanceof Family ? $family->getSalutation() : gettext('Dear Friend'),
+                'salutation' => $family instanceof Family ? $family->getName() : gettext('Dear Friend'),
                 'address' => $family instanceof Family ? $family->getMailingAddressLines() : '',
                 'envelope' => $withEnvelope && $family instanceof Family ? (string) $family->getEnvelope() : '',
                 'total' => CurrencyFormatter::format($totals['total'] / 100),
