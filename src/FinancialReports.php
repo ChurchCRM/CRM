@@ -83,7 +83,7 @@ if ($sReportType === '') {
           <option value="Pledge Family Summary"><?= gettext('Pledge Family Summary') ?></option>
           <option value="Pledge Reminders"><?= gettext('Pledge Reminders') ?></option>
           <option value="Voting Members"><?= gettext('Voting Members') ?></option>
-          <option value="Giving Report"><?= gettext('Giving Report (Tax Statements)') ?></option>
+          <option value="Giving Report"><?= gettext('Giving Statements') ?></option>
           <option value="Zero Givers"><?= gettext('Zero Givers') ?></option>
           <option value="Individual Deposit Report"><?= gettext('Individual Deposit Report') ?></option>
           <option value="Advanced Deposit Report"><?= gettext('Advanced Deposit Report') ?></option>
@@ -100,7 +100,7 @@ if ($sReportType === '') {
     $iCalYear = date('Y');
     // 2nd Pass - Display filters and other settings
     switch ($sReportType) {
-        case 'Giving Report':           $action = 'finance/reports/tax-statements/download'; break;
+        case 'Giving Report':           $action = 'finance/reports/giving-statements/download'; break;
         case 'Zero Givers':             $action = 'Reports/ZeroGivers.php'; break;
         case 'Pledge Family Summary':   $action = 'Reports/FamilyPledgeSummary.php'; break;
         case 'Pledge Reminders':        $action = 'Reports/ReminderReport.php'; break;

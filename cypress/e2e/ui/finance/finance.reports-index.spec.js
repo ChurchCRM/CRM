@@ -16,14 +16,14 @@ describe("Finance Reports Index", () => {
     it("should load the reports index page", () => {
         cy.visit("/finance/reports");
         cy.contains("Financial Reports");
-        cy.contains("Generate reports for tax statements");
+        cy.contains("Generate reports for giving statements");
     });
 
     it("should display Tax & Giving Reports section", () => {
         cy.visit("/finance/reports");
 
         cy.contains("Tax & Giving Reports");
-        cy.contains("Giving Report (Tax Statements)");
+        cy.contains("Giving Statements");
         cy.contains("Zero Givers");
     });
 
@@ -62,7 +62,7 @@ describe("Finance Reports Index", () => {
     it("should navigate to Giving Report from link", () => {
         cy.visit("/finance/reports");
 
-        cy.contains("Giving Report (Tax Statements)").click();
+        cy.contains("Giving Statements").click();
         cy.url().should("contain", "FinancialReports.php");
         cy.url().should("contain", "Giving");
         cy.contains("Financial Reports");

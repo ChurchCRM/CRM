@@ -176,7 +176,7 @@ describe("Issue #7854 - Financial Reports Fix", () => {
         });
     });
 
-    describe("Giving Report (Tax Statements) - Large Dataset Handling", () => {
+    describe("Giving Statements - Large Dataset Handling", () => {
         it("should handle large datasets without white screen", () => {
             cy.visit("/FinancialReports.php");
             cy.get("#FinancialReportTypes").select("Giving Report");
@@ -189,7 +189,7 @@ describe("Issue #7854 - Financial Reports Fix", () => {
             // Use CSV output for easier verification
             cy.get("input[name='output'][value='csv']").check({ force: true });
 
-            cy.intercept("POST", "**/finance/reports/tax-statements/download").as("givingReport");
+            cy.intercept("POST", "**/finance/reports/giving-statements/download").as("givingReport");
             cy.get("#createReport").click();
 
             // Wait for response with longer timeout for large datasets
