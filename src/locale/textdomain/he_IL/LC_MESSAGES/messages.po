@@ -20187,10 +20187,6 @@ msgid "How often"
 msgstr "באיזו תדירות"
 
 #: 
-msgid "How to correct this"
-msgstr "איך לתקן זאת"
-
-#: 
 msgid "I can't"
 msgstr "אני לא יכול"
 

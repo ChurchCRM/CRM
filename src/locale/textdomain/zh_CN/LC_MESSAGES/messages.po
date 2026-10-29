@@ -20231,10 +20231,6 @@ msgid "How often"
 msgstr "频率"
 
 #: 
-msgid "How to correct this"
-msgstr "如何更正"
-
-#: 
 msgid "I can't"
 msgstr "我无法参加"
 

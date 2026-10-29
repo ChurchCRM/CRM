@@ -20209,10 +20209,6 @@ msgid "How often"
 msgstr "Con che frequenza"
 
 #: 
-msgid "How to correct this"
-msgstr "Come correggere"
-
-#: 
 msgid "I can't"
 msgstr "Non posso"
 

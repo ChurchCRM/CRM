@@ -20197,10 +20197,6 @@ msgid "How often"
 msgstr "ምን ያህል ጊዜ"
 
 #: 
-msgid "How to correct this"
-msgstr "ይህን እንዴት ማስተካከል ይቻላል"
-
-#: 
 msgid "I can't"
 msgstr "አልችልም"
 

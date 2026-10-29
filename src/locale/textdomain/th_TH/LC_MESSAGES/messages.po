@@ -20141,10 +20141,6 @@ msgid "How often"
 msgstr "บ่อยเพียงใด"
 
 #: 
-msgid "How to correct this"
-msgstr "วิธีแก้ไขเรื่องนี้"
-
-#: 
 msgid "I can't"
 msgstr "ฉันไม่สามารถไปได้"
 

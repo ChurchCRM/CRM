@@ -20215,10 +20215,6 @@ msgid "How often"
 msgstr "Milyen gyakran"
 
 #: 
-msgid "How to correct this"
-msgstr "Így javíthatod"
-
-#: 
 msgid "I can't"
 msgstr "Nem tudok"
 

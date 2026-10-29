@@ -4892,7 +4892,6 @@
   "How many volunteers this event needs. Uncheck a position it does not use.": "กิจกรรมนี้ต้องการอาสาสมัครกี่คน ยกเลิกการติ๊กตำแหน่งที่ไม่ใช้",
   "How many weeks ahead volunteer occurrences are created for the events each schedule follows, from 1 to 52. A daily background job keeps every schedule filled up to this point.": "สร้างรอบอาสาสมัครล่วงหน้ากี่สัปดาห์สำหรับกิจกรรมที่แต่ละตารางเวลาติดตาม ตั้งแต่ 1 ถึง 52 งานเบื้องหลังรายวันจะเติมทุกตารางเวลาให้ถึงจุดนี้",
   "How often": "บ่อยเพียงใด",
-  "How to correct this": "วิธีแก้ไขเรื่องนี้",
   "I can't": "ฉันไม่สามารถไปได้",
   "I'd like to help": "ฉันอยากช่วย",
   "I'll be there": "ฉันจะไป",

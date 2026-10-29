@@ -20265,10 +20265,6 @@ msgid "How often"
 msgstr "Wie oft"
 
 #: 
-msgid "How to correct this"
-msgstr "So korrigieren Sie das"
-
-#: 
 msgid "I can't"
 msgstr "Ich kann nicht"
 

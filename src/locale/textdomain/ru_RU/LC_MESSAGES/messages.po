@@ -20294,10 +20294,6 @@ msgid "How often"
 msgstr "Как часто"
 
 #: 
-msgid "How to correct this"
-msgstr "Как это исправить"
-
-#: 
 msgid "I can't"
 msgstr "Не смогу"
 

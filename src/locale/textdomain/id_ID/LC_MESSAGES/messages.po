@@ -20157,10 +20157,6 @@ msgid "How often"
 msgstr "Seberapa sering"
 
 #: 
-msgid "How to correct this"
-msgstr "Cara memperbaikinya"
-
-#: 
 msgid "I can't"
 msgstr "Saya tidak bisa"
 

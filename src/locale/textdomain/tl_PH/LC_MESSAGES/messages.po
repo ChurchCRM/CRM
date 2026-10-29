@@ -20155,10 +20155,6 @@ msgid "How often"
 msgstr "Gaano kadalas"
 
 #: 
-msgid "How to correct this"
-msgstr "Paano ito itatama"
-
-#: 
 msgid "I can't"
 msgstr "Hindi ko kaya"
 

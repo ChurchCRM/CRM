@@ -20185,10 +20185,6 @@ msgid "How often"
 msgstr "Mara ngapi"
 
 #: 
-msgid "How to correct this"
-msgstr "Jinsi ya kusahihisha hili"
-
-#: 
 msgid "I can't"
 msgstr "Siwezi"
 

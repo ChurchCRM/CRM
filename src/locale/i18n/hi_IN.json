@@ -4918,7 +4918,6 @@
   "How many volunteers this event needs. Uncheck a position it does not use.": "इस आयोजन को कितने स्वयंसेवक चाहिए। जिस पद का यह उपयोग नहीं करता उसका चयन हटाएँ।",
   "How many weeks ahead volunteer occurrences are created for the events each schedule follows, from 1 to 52. A daily background job keeps every schedule filled up to this point.": "हर अनुसूची जिन आयोजनों का अनुसरण करती है उनके लिए स्वयंसेवक अवसर कितने सप्ताह आगे तक बनाए जाते हैं, 1 से 52 तक। एक दैनिक पृष्ठभूमि कार्य हर अनुसूची को इस बिंदु तक भरा रखता है।",
   "How often": "कितनी बार",
-  "How to correct this": "इसे कैसे सुधारें",
   "I can't": "मैं नहीं आ सकता",
   "I'd like to help": "मैं सहायता करना चाहूँगा",
   "I'll be there": "मैं वहाँ रहूँगा",

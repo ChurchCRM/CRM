@@ -20278,10 +20278,6 @@ msgid "How often"
 msgstr "Hur ofta"
 
 #: 
-msgid "How to correct this"
-msgstr "Så här rättar du till det"
-
-#: 
 msgid "I can't"
 msgstr "Jag kan inte"
 

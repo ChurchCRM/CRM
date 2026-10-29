@@ -20156,10 +20156,6 @@ msgid "How often"
 msgstr "Com que frequência"
 
 #: 
-msgid "How to correct this"
-msgstr "Como corrigir"
-
-#: 
 msgid "I can't"
 msgstr "Não posso"
 

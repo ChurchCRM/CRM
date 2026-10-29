@@ -4892,7 +4892,6 @@
   "How many volunteers this event needs. Uncheck a position it does not use.": "この行事に必要な奉仕者の人数を指定します。使わない役割はチェックを外してください。",
   "How many weeks ahead volunteer occurrences are created for the events each schedule follows, from 1 to 52. A daily background job keeps every schedule filled up to this point.": "各スケジュールが従う行事に対して、何週間先まで奉仕者の開催回を作成するかを、1から52で指定します。毎日のバックグラウンドジョブが、すべてのスケジュールをここまで埋めておきます。",
   "How often": "頻度",
-  "How to correct this": "修正方法",
   "I can't": "参加できません",
   "I'd like to help": "お手伝いしたいです",
   "I'll be there": "参加します",
