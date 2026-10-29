@@ -8,7 +8,7 @@ use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 
 /**
- * Utility class for custom field display, form rendering, validation, and SQL generation.
+ * Utility class for custom field display, form rendering, and validation.
  * Migrated from legacy Functions.php — logic preserved as-is.
  */
 class CustomFieldUtils
@@ -382,102 +382,48 @@ class CustomFieldUtils
     }
 
     /**
-     * Builds an upsert from the assignments buildSql() produced, so columns the
-     * caller may not see keep their stored values. REPLACE INTO would delete the
-     * row and reset every column that is not listed.
-     *
-     * $table and $keyColumn are code constants, never request input.
+     * Plain-text form input for a custom field: tags stripped, whitespace trimmed, no SQL escaping.
+     * CustomFieldService writes the values through Propel.
      */
-    public static function buildUpsertSql(string $table, string $keyColumn, int $recordId, string $assignments): string
+    public static function cleanInput(mixed $raw): string
     {
-        if ($assignments === '') {
-            return 'INSERT IGNORE INTO ' . $table . ' SET ' . $keyColumn . ' = ' . $recordId;
-        }
-
-        // buildSql() ends every assignment with ", ".
-        $assignments = mb_substr($assignments, 0, -2);
-
-        return 'INSERT INTO ' . $table . ' SET ' . $assignments . ', ' . $keyColumn . ' = ' . $recordId
-            . ' ON DUPLICATE KEY UPDATE ' . $assignments;
+        return is_string($raw) ? InputUtils::sanitizeText($raw) : '';
     }
 
     /**
-     * Generates SQL for a custom field update.
-     * Migrated from sqlCustomField() in Functions.php.
+     * Converts a validated form value to what the column stores; null stores NULL.
      */
-    public static function buildSql(string &$sSQL, $type, $data, string $col_Name, $special): void
+    public static function toColumnValue(int $type, string $data): ?string
     {
         switch ($type) {
             case 1:
-                switch ($data) {
-                    case 'false':
-                        $data = "'false'";
-                        break;
-                    case 'true':
-                        $data = "'true'";
-                        break;
-                    default:
-                        $data = 'NULL';
-                        break;
-                }
-                $sSQL .= $col_Name . ' = ' . $data . ', ';
-                break;
-
-            case 2:
-                if (strlen($data) > 0) {
-                    $sSQL .= $col_Name . ' = "' . $data . '", ';
-                } else {
-                    $sSQL .= $col_Name . ' = NULL, ';
-                }
-                break;
-
-            case 6:
-            case 10:
-            case 5:
-                if (strlen($data) > 0) {
-                    $sSQL .= $col_Name . " = '" . $data . "', ";
-                } else {
-                    $sSQL .= $col_Name . ' = NULL, ';
-                }
-                break;
+                return $data === 'false' || $data === 'true' ? $data : null;
 
             case 7:
-                if ($data != 'none') {
-                    $sSQL .= $col_Name . " = '" . $data . "', ";
-                } else {
-                    $sSQL .= $col_Name . ' = NULL, ';
-                }
-                break;
+                return $data !== 'none' && $data !== '' ? $data : null;
 
             case 8:
             case 9:
             case 12:
-                $rawValue = is_string($data) ? trim($data) : $data;
-                if ($rawValue === '' || $rawValue === null) {
-                    $sSQL .= $col_Name . ' = NULL, ';
-                } else {
-                    $validatedInt = filter_var($rawValue, FILTER_VALIDATE_INT);
-                    if ($validatedInt === false || $validatedInt === 0) {
-                        $sSQL .= $col_Name . ' = NULL, ';
-                    } else {
-                        $sSQL .= $col_Name . " = '" . $validatedInt . "', ";
-                    }
+                $rawValue = trim($data);
+                if ($rawValue === '') {
+                    return null;
                 }
-                break;
+                $validatedInt = filter_var($rawValue, FILTER_VALIDATE_INT);
 
+                return $validatedInt === false || $validatedInt === 0 ? null : (string) $validatedInt;
+
+            case 2:
             case 3:
             case 4:
+            case 5:
+            case 6:
+            case 10:
             case 11:
-                if (strlen($data) > 0) {
-                    $sSQL .= $col_Name . " = '" . $data . "', ";
-                } else {
-                    $sSQL .= $col_Name . ' = NULL, ';
-                }
-                break;
+                return strlen($data) > 0 ? $data : null;
 
             default:
-                $sSQL .= $col_Name . " = '" . $data . "', ";
-                break;
+                return $data;
         }
     }
 }

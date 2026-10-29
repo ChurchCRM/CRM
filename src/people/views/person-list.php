@@ -8,6 +8,7 @@ use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
+use ChurchCRM\Service\CustomFieldService;
 use ChurchCRM\Service\GradeService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PersonDeleteGuard;
@@ -78,9 +79,10 @@ $allPersonCustomFields = PersonCustomMasterQuery::create()->find();
 // an extra DB round-trip.
 $exportCustomFields = iterator_to_array($allPersonCustomFields, false);
 usort($exportCustomFields, fn($a, $b) => $a->getOrder() <=> $b->getOrder());
+$customFieldService = new CustomFieldService();
 $exportCustomFields = array_values(array_filter(
     $exportCustomFields,
-    fn($cf) => AuthenticationManager::getCurrentUser()->isEnabledSecurity($cf->getFieldSecurity())
+    fn($cf) => $customFieldService->canView($cf->getFieldSecurity())
 ));
 
 // Person custom list
@@ -94,7 +96,7 @@ $CustomMapping = [];
 $CustomList = [];
 
 foreach ($ListItem as $element) {
-    if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($element["FieldSecurity"])) {
+    if ($customFieldService->canView($element["FieldSecurity"])) {
         $CustomList[$element["Name"]] = 0;
         $CustomMapping[$element["Id"]] = ["Name" => $element["Name"],"Elements" => []];
         if (in_array($element["TypeId"], [12])) {
