@@ -52,6 +52,8 @@ class VolunteerDeclineAlertEmail extends BaseVolunteerEmail
 
     protected function buildMessageBody(): string
     {
+        // Plain text: BaseEmail.html.twig escapes {{body}} before nl2br, so the names and the
+        // reason go in raw; InputUtils::escapeHTML() here would escape them twice.
         $opening = sprintf(
             gettext('%s has declined a volunteer assignment.'),
             $this->volunteerName
