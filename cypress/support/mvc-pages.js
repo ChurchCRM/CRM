@@ -46,5 +46,4 @@ export const LEGACY_PAGES = [
     "/SystemSettings.php",
     "/LettersAndLabels.php",
     "/DirectoryReports.php",
-    "/Reports/ClassList.php",
 ];

@@ -11,7 +11,10 @@ use ChurchCRM\model\ChurchCRM\KioskAssignmentQuery;
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
 use ChurchCRM\model\ChurchCRM\UserQuery;
+use ChurchCRM\Service\ClassListService;
 use ChurchCRM\Service\DashboardService;
+use ChurchCRM\Service\FinancialService;
+use ChurchCRM\Service\MpdfRenderer;
 use ChurchCRM\Service\SundaySchoolService;
 use ChurchCRM\Slim\Middleware\Request\Setting\SundaySchoolEnabledMiddleware;
 use ChurchCRM\Utils\FiscalYearUtils;
@@ -33,6 +36,27 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
         return $response
             ->withHeader('Location', SystemURLs::getRootPath() . '/groups/sundayschool/dashboard')
             ->withStatus(302);
+    });
+
+    // Class list: teachers, then students with family contacts, for each chosen class. Needs the group-management role of this app.
+    $group->get('/reports/class-list', function (Request $request, Response $response) {
+        $query = $request->getQueryParams();
+        $groupIds = array_values(array_filter(array_map('intval', explode(',', (string) ($query['GroupID'] ?? '')))));
+        $fiscalYearId = InputUtils::filterInt($query['FYID'] ?? '') ?: FiscalYearUtils::getCurrentFiscalYearId();
+        $withPictures = !empty($query['pictures']);
+
+        $pdf = (new MpdfRenderer())->renderToString('class-list', [
+            'classes' => ClassListService::classes($groupIds, $withPictures),
+            'fiscal_year' => FinancialService::formatFiscalYear($fiscalYearId),
+            'with_pictures' => $withPictures,
+        ]);
+
+        $filename = 'ClassList' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
+        $response->getBody()->write($pdf);
+
+        return $response
+            ->withHeader('Content-Type', 'application/pdf')
+            ->withHeader('Content-Disposition', (SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline') . '; filename="' . $filename . '"');
     });
 
     // Sunday School Dashboard
@@ -345,7 +369,7 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
         if (isset($post['SubmitPhotoBook'])) {
             RedirectUtils::redirect('Reports/PhotoBook.php?' . $baseParams);
         } elseif (isset($post['SubmitClassList'])) {
-            RedirectUtils::redirect('Reports/ClassList.php?' . $baseParams);
+            RedirectUtils::redirect('groups/sundayschool/reports/class-list?' . $baseParams);
         } elseif (isset($post['SubmitClassAttendance'])) {
             $url = 'Reports/ClassAttendance.php?' . $baseParams;
             for ($i = 1; $i <= 8; $i++) {
