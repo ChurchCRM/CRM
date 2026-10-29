@@ -52,36 +52,6 @@ $loadDonorsById = function (array $donatedItems): array {
 };
 
 // ---------------------------------------------------------------------------
-// PDF class: Catalog (migrated from src/Reports/FRCatalog.php)
-// ---------------------------------------------------------------------------
-class PdfFRCatalogReport extends ChurchInfoReport
-{
-    public int $curY = 0;
-    private \ChurchCRM\model\ChurchCRM\FundRaiser $fundraiser;
-
-    public function __construct(\ChurchCRM\model\ChurchCRM\FundRaiser $fundraiser)
-    {
-        parent::__construct('P', 'mm', $this->paperFormat);
-        $this->fundraiser = $fundraiser;
-        $this->SetFont('Times', '', 10);
-        $this->SetMargins(10, 20);
-        $this->addPage();
-        $this->SetAutoPageBreak(true, 25);
-    }
-
-    public function addPage($orientation = '', $size = '', $rotation = 0): void
-    {
-        parent::addPage($orientation, $size, $rotation);
-        $this->SetFont('Times', 'B', 16);
-        $this->Write(8, $this->fundraiser->getTitle() . "\n");
-        $this->curY += 8;
-        $this->Write(8, $this->fundraiser->getDescription() . "\n\n");
-        $this->curY += 8;
-        $this->SetFont('Times', '', 12);
-    }
-}
-
-// ---------------------------------------------------------------------------
 // PDF class: Statement (migrated from src/Reports/FundRaiserStatement.php)
 // ---------------------------------------------------------------------------
 class PdfFundRaiserStatement extends ChurchInfoReport
@@ -223,7 +193,7 @@ $app->get('/{fundraiserId}/reports/certificates', function (Request $request, Re
 // ---------------------------------------------------------------------------
 // GET /fundraiser/{fundraiserId}/reports/catalog — PDF catalog
 // ---------------------------------------------------------------------------
-$app->get('/{fundraiserId}/reports/catalog', function (Request $request, Response $response, array $args) use ($sortDonatedItemsByItemCode, $loadDonorsById): Response {
+$app->get('/{fundraiserId}/reports/catalog', function (Request $request, Response $response, array $args): Response {
     $fundraiserId = (int) $args['fundraiserId'];
 
     $fundraiser = FundRaiserQuery::create()->findOneById($fundraiserId);
@@ -240,74 +210,18 @@ $app->get('/{fundraiserId}/reports/catalog', function (Request $request, Respons
             ->withStatus(302);
     }
 
-    $items = [];
-    foreach (DonatedItemQuery::create()->filterByFrId($fundraiser->getId())->find() as $donatedItem) {
-        $items[] = $donatedItem;
-    }
-    $items  = $sortDonatedItemsByItemCode($items);
-    $donors = $loadDonorsById($items);
+    $pdf = (new MpdfRenderer())->renderToString('fundraiser-catalog', [
+        'fundraiser_title' => $fundraiser->getTitle(),
+        'fundraiser_description' => $fundraiser->getDescription(),
+        'items' => FundraiserItemService::items($fundraiser),
+    ]);
 
-    $pdf = new PdfFRCatalogReport($fundraiser);
-    $pdf->SetTitle($fundraiser->getTitle());
-
-    $idFirstChar = '';
-
-    foreach ($items as $oneItem) {
-        $donor          = $donors[$oneItem->getDonorId()] ?? null;
-        $di_item        = $oneItem->getItem();
-        $di_title       = $oneItem->getTitle();
-        $di_picture     = $oneItem->getPicture() ?? '';
-        $di_description = $oneItem->getDescription();
-        $di_minimum     = $oneItem->getMinimum();
-        $di_estprice    = $oneItem->getEstprice();
-        $per_LastName   = $donor?->getLastName() ?? '';
-        $per_FirstName  = $donor?->getFirstName() ?? '';
-
-        $newIdFirstChar = mb_substr($di_item, 0, 1);
-        $maxYNewPage    = 220;
-        if ($di_picture !== '') {
-            $maxYNewPage = 120;
-        }
-        if ($pdf->GetY() > $maxYNewPage || ($idFirstChar !== '' && $idFirstChar !== $newIdFirstChar)) {
-            $pdf->addPage();
-        }
-        $idFirstChar = $newIdFirstChar;
-
-        $pdf->SetFont('Times', 'B', 12);
-        $pdf->Write(6, $di_item . ': ');
-        $pdf->Write(6, stripslashes($di_title) . "\n");
-
-        if ($di_picture !== '') {
-            $s = getimagesize($di_picture);
-            if ($s !== false && $s[0] > 0) {
-                $h = (100.0 / $s[0]) * $s[1];
-                $pdf->Image($di_picture, $pdf->GetX(), $pdf->GetY(), 100.0, $h);
-                $pdf->SetY($pdf->GetY() + $h);
-            }
-        }
-
-        $pdf->SetFont('Times', '', 12);
-        $pdf->Write(6, stripslashes($di_description) . "\n");
-        if ($di_minimum > 0) {
-            $pdf->Write(6, ChurchInfoReport::convertToLatin1(sprintf(gettext('Minimum bid %s.'), CurrencyFormatter::format($di_minimum))) . '  ');
-        }
-        if ($di_estprice > 0) {
-            $pdf->Write(6, ChurchInfoReport::convertToLatin1(sprintf(gettext('Estimated value %s.'), CurrencyFormatter::format($di_estprice))) . '  ');
-        }
-        if ($per_LastName !== '') {
-            $pdf->Write(6, sprintf(gettext('Donated by %1$s %2$s.'), $per_FirstName, $per_LastName) . "\n");
-        }
-        $pdf->Write(6, "\n");
-    }
-
-    $fileName   = 'FRCatalog' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
-    $pdfContent = $pdf->Output($fileName, 'S');
-    $disposition = SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline';
-    $response->getBody()->write($pdfContent);
+    $fileName = 'FRCatalog' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
+    $response->getBody()->write($pdf);
 
     return $response
         ->withHeader('Content-Type', 'application/pdf')
-        ->withHeader('Content-Disposition', $disposition . '; filename="' . $fileName . '"');
+        ->withHeader('Content-Disposition', (SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline') . '; filename="' . $fileName . '"');
 });
 
 // ---------------------------------------------------------------------------
