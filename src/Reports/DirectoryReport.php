@@ -3,15 +3,14 @@
 require_once __DIR__ . '/../Include/Config.php';
 require_once __DIR__ . '/../Include/PageInit.php';
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Family;
-use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Reports\PdfDirectory;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\Service\CustomFieldService;
 
 // Get and filter the classifications selected
 $aClasses = [];
@@ -102,19 +101,14 @@ $rsCustomFields = RunQuery($sSQL);
 $numCustomFields = mysqli_num_rows($rsCustomFields);
 
 if ($numCustomFields > 0) {
-    // Field security option names (list 5), as DirectoryReports.php maps them for the form.
-    $customFieldSecurity = [];
-    foreach (ListOptionQuery::create()->filterById(5)->find() as $option) {
-        $customFieldSecurity[$option->getOptionId()] = $option->getOptionName();
-    }
-    $currentUser = AuthenticationManager::getCurrentUser();
+    $customFieldService = new CustomFieldService();
 
     while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_ASSOC)) {
         // The form only offers the fields this user may see; a posted bCustomN must not widen that.
         $pdf->addCustomField(
             $rowCustomField['custom_Order'],
             isset($_POST['bCustom' . $rowCustomField['custom_Order']])
-                && $currentUser->isEnabledSecurity($customFieldSecurity[$rowCustomField['custom_FieldSec']] ?? '')
+                && $customFieldService->canView((int) $rowCustomField['custom_FieldSec'])
         );
     }
 }
