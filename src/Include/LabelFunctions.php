@@ -1,65 +1,27 @@
 <?php
 
-use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\Service\LabelSheetService;
 
 // This file contains functions specifically related to address labels
 
 /**
- * Names of the fonts FPDF ships metrics for, in the form fontFromName() parses
- * ("Helvetica", "Helvetica Bold", ...).
+ * Names of the fonts the label sheet offers ("Helvetica", "Helvetica Bold", ...).
  *
  * @return string[]
  */
 function getLabelFontNames(): array
 {
-    // Absolute path: the previous relative 'vendor/setasign/fpdf' only resolved
-    // when the CWD happened to be the web root, and scandir() failing left the
-    // font list silently empty.
-    $sFPDF_PATH = __DIR__ . '/../vendor/setasign/fpdf';
-
-    // FPDF shipped core font metrics as .php up to 1.8.x and as .json from
-    // 1.9.0. Accept both so the list is not empty on either version, and use
-    // pathinfo() rather than a hardcoded length to strip the extension (the
-    // old code hardcoded $len - 4, which is wrong for ".json").
-    $basenames = [];
-    foreach (scandir($sFPDF_PATH . '/font/') ?: [] as $entry) {
-        if (preg_match('/\.(php|json)$/i', $entry)) {
-            $basenames[] = pathinfo($entry, PATHINFO_FILENAME);
-        }
-    }
-
-    // Sort explicitly rather than trusting scandir's ordering. The $family
-    // tracking below only works if a family's base name ("helvetica") is seen
-    // before its variants ("helveticab"), and scandir's sort argument is not
-    // dependable across filesystems -- on a Docker bind mount it was observed
-    // returning "courierbi, courierb, courieri, courier" even with
-    // SCANDIR_SORT_ASCENDING, which yields "Helveticab" instead of
-    // "Helvetica Bold".
-    sort($basenames, SORT_STRING);
-
-    $fontnames = [];
-    $family = ' ';
-    foreach ($basenames as $filename) {
-        if (mb_substr($filename, 0, strlen($family)) != $family) {
-            $family = $filename;
-        }
-        $fontnames[] = MiscUtils::filenameToFontname($filename, $family);
-    }
-
-    $fontnames = array_values(array_unique($fontnames));
-    sort($fontnames);
-
-    return $fontnames;
+    return LabelSheetService::fontNames();
 }
 
 /**
- * Label formats known to PdfLabel.
+ * Label formats known to the label sheet.
  *
  * @return string[]
  */
 function getLabelTypes(): array
 {
-    return ['Tractor', '5160', '5161', '5162', '5163', '5164', '8600', 'L7163'];
+    return LabelSheetService::labelTypes();
 }
 
 /**

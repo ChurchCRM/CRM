@@ -8,7 +8,7 @@ import { pdfText } from "../../../support/pdf-text";
  * NewsLetterLabels.php and ConfirmLabels.php build every label from
  * Family::getMailingAddressLines() — the flagged second address when a family has
  * one, the primary address otherwise — and order the run by the ZIP that is
- * actually printed rather than by the primary ZIP. PDFLabel.php, behind the
+ * actually printed rather than by the primary ZIP. /people/labels, behind the
  * cart's Generate Labels and every People Report's Print Labels, does the same
  * for a person without an address of their own (#10405). Every letter that goes through
  * ChurchInfoReport::startLetterPage() is addressed the same way.
@@ -91,11 +91,11 @@ describe("Mailing address on mailed reports (#9743)", () => {
         expect(lines).to.not.include("742 Evergreen Terrace");
     };
 
-    /** The rows of Reports/PDFLabel.php's CSV output, header dropped. */
+    /** The rows of the /people/labels CSV output, header dropped. */
     const fetchLabelRows = (query) =>
         cy
             .request(
-                `/Reports/PDFLabel.php?${query}&labeltype=5160&labelfont=Helvetica&labelfontsize=10&startrow=1&startcol=1&filetype=CSV`,
+                `/people/labels?${query}&labeltype=5160&labelfont=Helvetica&labelfontsize=10&startrow=1&startcol=1&filetype=CSV`,
             )
             .then((response) => {
                 expect(response.status, "no server error").to.equal(200);
