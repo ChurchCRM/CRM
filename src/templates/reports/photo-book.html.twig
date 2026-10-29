@@ -1,0 +1,29 @@
+{% extends "_base.html.twig" %}
+{% block content %}
+  <style>
+    table.book { width: 100%; border-collapse: collapse; }
+    table.book td { width: 20%; text-align: center; vertical-align: top; padding: 2mm 1mm 5mm 1mm; font-size: 9pt; }
+    .photo { width: 30mm; height: 30mm; border: 0.3pt solid #999; margin: 0 auto 1.5mm auto; }
+    .photo img { width: 30mm; height: 30mm; }
+  </style>
+  {% for section in sections %}
+    <h1>{{ gettext('PhotoBook') }} - {{ section.group }} - {{ section.role }} ({{ section.people|length }}) <span class="muted">{{ fiscal_year }}</span></h1>
+    <table class="book">
+      {% for row in section.people|batch(5, {'name': '', 'photo': ''}) %}
+        <tr>
+          {% for person in row %}
+            <td>
+              {% if person.name %}
+                <div class="photo">{% if person.photo %}<img src="{{ person.photo }}" alt="">{% endif %}</div>
+                {{ person.name }}
+              {% endif %}
+            </td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+    </table>
+    {% if not loop.last %}<pagebreak />{% endif %}
+  {% else %}
+    <p class="empty">{{ gettext('No records were returned from the previous report. Please adjust your filters or date range and try again.') }}</p>
+  {% endfor %}
+{% endblock %}

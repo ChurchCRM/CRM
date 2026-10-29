@@ -12,6 +12,9 @@ use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Service\DashboardService;
+use ChurchCRM\Service\FinancialService;
+use ChurchCRM\Service\MpdfRenderer;
+use ChurchCRM\Service\PhotoBookService;
 use ChurchCRM\Service\SundaySchoolService;
 use ChurchCRM\Slim\Middleware\Request\Setting\SundaySchoolEnabledMiddleware;
 use ChurchCRM\Utils\FiscalYearUtils;
@@ -33,6 +36,25 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
         return $response
             ->withHeader('Location', SystemURLs::getRootPath() . '/groups/sundayschool/dashboard')
             ->withStatus(302);
+    });
+
+    // Photo book: teachers then students of each chosen class. Needs the group-management role of this app.
+    $group->get('/reports/photo-book', function (Request $request, Response $response) {
+        $query = $request->getQueryParams();
+        $groupIds = array_values(array_filter(array_map('intval', explode(',', (string) ($query['GroupID'] ?? '')))));
+        $fiscalYearId = InputUtils::filterInt($query['FYID'] ?? '') ?: FiscalYearUtils::getCurrentFiscalYearId();
+
+        $pdf = (new MpdfRenderer())->renderToString('photo-book', [
+            'sections' => PhotoBookService::sections($groupIds),
+            'fiscal_year' => FinancialService::formatFiscalYear($fiscalYearId),
+        ]);
+
+        $filename = 'PhotoBook' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
+        $response->getBody()->write($pdf);
+
+        return $response
+            ->withHeader('Content-Type', 'application/pdf')
+            ->withHeader('Content-Disposition', (SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline') . '; filename="' . $filename . '"');
     });
 
     // Sunday School Dashboard
@@ -343,7 +365,7 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
             . '&pictures=' . $withPictures;
 
         if (isset($post['SubmitPhotoBook'])) {
-            RedirectUtils::redirect('Reports/PhotoBook.php?' . $baseParams);
+            RedirectUtils::redirect('groups/sundayschool/reports/photo-book?' . $baseParams);
         } elseif (isset($post['SubmitClassList'])) {
             RedirectUtils::redirect('Reports/ClassList.php?' . $baseParams);
         } elseif (isset($post['SubmitClassAttendance'])) {
