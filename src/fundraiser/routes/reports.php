@@ -8,6 +8,8 @@ use ChurchCRM\model\ChurchCRM\PaddleNumQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Reports\ChurchInfoReport;
 use ChurchCRM\Reports\PdfCertificatesReport;
+use ChurchCRM\Service\FundraiserItemService;
+use ChurchCRM\Service\MpdfRenderer;
 use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\InputUtils;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -48,20 +50,6 @@ $loadDonorsById = function (array $donatedItems): array {
 
     return $donors;
 };
-
-// ---------------------------------------------------------------------------
-// PDF class: Bid Sheets (migrated from src/Reports/FRBidSheets.php)
-// ---------------------------------------------------------------------------
-class PdfFRBidSheetsReport extends ChurchInfoReport
-{
-    public function __construct()
-    {
-        parent::__construct('P', 'mm', $this->paperFormat);
-        $this->SetFont('Times', '', 10);
-        $this->SetMargins(15, 25);
-        $this->SetAutoPageBreak(true, 25);
-    }
-}
 
 // ---------------------------------------------------------------------------
 // PDF class: Catalog (migrated from src/Reports/FRCatalog.php)
@@ -137,7 +125,7 @@ class PdfFundRaiserStatement extends ChurchInfoReport
 // ---------------------------------------------------------------------------
 // GET /fundraiser/{fundraiserId}/reports/bid-sheets — PDF bid sheets
 // ---------------------------------------------------------------------------
-$app->get('/{fundraiserId}/reports/bid-sheets', function (Request $request, Response $response, array $args) use ($sortDonatedItemsByItemCode, $loadDonorsById): Response {
+$app->get('/{fundraiserId}/reports/bid-sheets', function (Request $request, Response $response, array $args): Response {
     $fundraiserId = (int) $args['fundraiserId'];
 
     $fundraiser = FundRaiserQuery::create()->findOneById($fundraiserId);
@@ -154,71 +142,16 @@ $app->get('/{fundraiserId}/reports/bid-sheets', function (Request $request, Resp
             ->withStatus(302);
     }
 
-    $items = [];
-    foreach (DonatedItemQuery::create()->filterByFrId($fundraiser->getId())->find() as $donatedItem) {
-        $items[] = $donatedItem;
-    }
-    $items  = $sortDonatedItemsByItemCode($items);
-    $donors = $loadDonorsById($items);
+    $pdf = (new MpdfRenderer())->renderToString('fundraiser-bid-sheets', [
+        'items' => FundraiserItemService::items($fundraiser),
+    ]);
 
-    $pdf = new PdfFRBidSheetsReport();
-    $pdf->SetTitle($fundraiser->getTitle());
-
-    foreach ($items as $oneItem) {
-        $donor          = $donors[$oneItem->getDonorId()] ?? null;
-        $di_item        = $oneItem->getItem();
-        $di_title       = $oneItem->getTitle();
-        $di_description = $oneItem->getDescription();
-        $di_estprice    = $oneItem->getEstprice();
-        $di_minimum     = $oneItem->getMinimum();
-        $per_LastName   = $donor?->getLastName() ?? '';
-        $per_FirstName  = $donor?->getFirstName() ?? '';
-
-        $pdf->addPage();
-
-        $pdf->SetFont('Times', 'B', 24);
-        $pdf->Write(5, $di_item . ":\t");
-        $pdf->Write(5, stripslashes($di_title) . "\n\n");
-        $pdf->SetFont('Times', '', 16);
-        $pdf->Write(8, stripslashes($di_description) . "\n");
-        if ($di_estprice > 0) {
-            $pdf->Write(8, ChurchInfoReport::convertToLatin1(sprintf(gettext('Estimated value %s.'), CurrencyFormatter::format($di_estprice))) . '  ');
-        }
-        if ($per_LastName !== '') {
-            $pdf->Write(8, sprintf(gettext('Donated by %1$s %2$s.'), $per_FirstName, $per_LastName) . "\n");
-        }
-        $pdf->Write(8, "\n");
-
-        $widName    = 100;
-        $widPaddle  = 30;
-        $widBid     = 40;
-        $lineHeight = 7;
-
-        $pdf->SetFont('Times', 'B', 16);
-        $pdf->Cell($widName, $lineHeight, gettext('Name'), 1, 0);
-        $pdf->Cell($widPaddle, $lineHeight, gettext('Paddle'), 1, 0);
-        $pdf->Cell($widBid, $lineHeight, gettext('Bid'), 1, 1);
-
-        if ($di_minimum > 0) {
-            $pdf->Cell($widName, $lineHeight, '', 1, 0);
-            $pdf->Cell($widPaddle, $lineHeight, '', 1, 0);
-            $pdf->Cell($widBid, $lineHeight, CurrencyFormatter::formatForPdf($di_minimum), 1, 1);
-        }
-        for ($i = 0; $i < 20; $i++) {
-            $pdf->Cell($widName, $lineHeight, '', 1, 0);
-            $pdf->Cell($widPaddle, $lineHeight, '', 1, 0);
-            $pdf->Cell($widBid, $lineHeight, '', 1, 1);
-        }
-    }
-
-    $fileName   = 'FRBidSheets' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
-    $pdfContent = $pdf->Output($fileName, 'S');
-    $disposition = SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline';
-    $response->getBody()->write($pdfContent);
+    $fileName = 'FRBidSheets' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
+    $response->getBody()->write($pdf);
 
     return $response
         ->withHeader('Content-Type', 'application/pdf')
-        ->withHeader('Content-Disposition', $disposition . '; filename="' . $fileName . '"');
+        ->withHeader('Content-Disposition', (SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline') . '; filename="' . $fileName . '"');
 });
 
 // ---------------------------------------------------------------------------

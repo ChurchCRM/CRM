@@ -1,0 +1,28 @@
+{% extends "_base.html.twig" %}
+{% block content %}
+  <style>
+    body { font-family: serif; }
+    h1.item { font-size: 22pt; margin: 0 0 4mm 0; }
+    .description { font-size: 14pt; margin: 0 0 3mm 0; }
+    table.bids { width: 100%; border-collapse: collapse; margin-top: 6mm; }
+    table.bids th, table.bids td { border: 0.4pt solid #000; height: 9mm; padding: 0 2mm; font-size: 14pt; text-align: left; }
+    .col-name { width: 55%; }
+    .col-paddle { width: 17%; }
+  </style>
+  {% for item in items %}
+    <h1 class="item">{{ item.code }}: {{ item.title }}</h1>
+    <div class="description">
+      {{ item.description }}
+      {% if item.estimate > 0 %}{{ gettext('Estimated value %s.')|format(item.estimate_text) }}{% endif %}
+      {% if item.donor_last %}{{ gettext('Donated by %1$s %2$s.')|format(item.donor_first, item.donor_last) }}{% endif %}
+    </div>
+    <table class="bids">
+      <tr><th class="col-name">{{ gettext('Name') }}</th><th class="col-paddle">{{ gettext('Paddle') }}</th><th>{{ gettext('Bid') }}</th></tr>
+      {% if item.minimum > 0 %}<tr><td></td><td></td><td>{{ item.minimum_text }}</td></tr>{% endif %}
+      {% for i in 1..20 %}<tr><td></td><td></td><td></td></tr>{% endfor %}
+    </table>
+    {% if not loop.last %}<pagebreak />{% endif %}
+  {% else %}
+    <p class="empty">{{ gettext('No records were returned from the previous report. Please adjust your filters or date range and try again.') }}</p>
+  {% endfor %}
+{% endblock %}
