@@ -1617,7 +1617,8 @@ class VolunteerNotificationService
 
     /**
      * Who took the declined slot: the other live assignments on this position made at or
-     * after the decline.
+     * after the decline. Both dates are to the second, so a co-volunteer assigned in the same
+     * second before the decline is listed too.
      *
      * @return array<int, array{name: string, accepted: bool}>
      */
@@ -1662,7 +1663,8 @@ class VolunteerNotificationService
             if ($positionId !== null && (int) $gap['positionId'] !== $positionId) {
                 continue;
             }
-            $short[(string) $name] = (int) $gap['gapCount'];
+            // Positions on different teams may share a name; add their counts so the total stays right.
+            $short[(string) $name] = ($short[(string) $name] ?? 0) + (int) $gap['gapCount'];
         }
 
         return $short;
