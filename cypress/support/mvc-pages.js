@@ -20,7 +20,7 @@ export const MVC_PAGES = {
         "/people/to-family",
     ],
     groups: ["/groups/", "/groups/dashboard", "/groups/reports", "/groups/sundayschool/dashboard"],
-    finance: ["/finance/", "/finance/dashboard", "/finance/reports", "/finance/reports/tax-statements", "/finance/funds", "/finance/pledge/new"],
+    finance: ["/finance/", "/finance/dashboard", "/finance/reports", "/finance/funds", "/finance/pledge/new"],
     event: ["/event/", "/event/dashboard", "/event/types", "/event/audit", "/event/calendars"],
     fundraiser: ["/fundraiser/", "/fundraiser/editor"],
     ministries: ["/ministries/", "/ministries/dashboard"],

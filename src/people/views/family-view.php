@@ -170,7 +170,7 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
                     <div class="dropdown-divider"></div>
                     <h6 class="dropdown-header"><i class="fa-solid fa-file-invoice-dollar me-1"></i><?= gettext('Tax Documents') ?></h6>
                     <?php foreach ($taxYears as $taxYear) { ?>
-                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/finance/reports/tax-statements/pdf?familyId=<?= $family->getId() ?>&amp;year=<?= (int)$taxYear ?>" target="_blank">
+                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/finance/reports/tax-statements/download?familyId=<?= $family->getId() ?>&amp;year=<?= (int)$taxYear ?>" target="_blank">
                         <i class="fa-solid fa-print me-2"></i><?= sprintf(gettext('Print %d Tax Doc'), (int)$taxYear) ?>
                     </a>
                     <form method="post" action="<?= SystemURLs::getRootPath() ?>/finance/reports/tax-statements/email" class="m-0">

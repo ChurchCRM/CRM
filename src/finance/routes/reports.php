@@ -4,7 +4,6 @@ use ChurchCRM\Emails\GivingStatementEmail;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
-use ChurchCRM\Service\FinanceReportOptions;
 use ChurchCRM\Service\MpdfRenderer;
 use ChurchCRM\Service\GivingStatementService;
 use ChurchCRM\Utils\CSRFUtils;
@@ -36,41 +35,20 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
         return $renderer->render($response, 'reports.php', $pageArgs);
     });
 
-    // Giving Report (tax statements): choose filters, preview the result, then download.
-    $group->get('/tax-statements', function (Request $request, Response $response): Response {
-        $query = $request->getQueryParams();
-        $criteria = GivingStatementService::criteriaFromQuery($query);
-        $summary = ($query['preview'] ?? '') === '1'
-            ? GivingStatementService::summary(GivingStatementService::paymentsByFamily($criteria))
-            : null;
-
-        $renderer = new PhpRenderer(__DIR__ . '/../views/');
-
-        return $renderer->render($response, 'reports/tax-statements.php', [
-            'sRootPath' => SystemURLs::getRootPath(),
-            'sPageTitle' => gettext('Giving Report (Tax Statements)'),
-            'sPageSubtitle' => gettext('Generate annual tax-deductible giving statements for donors. Can be printed or emailed.'),
-            'aBreadcrumbs' => PageHeader::breadcrumbs([
-                [gettext('Financial Reports'), '/finance/reports'],
-                [gettext('Giving Report (Tax Statements)')],
-            ]),
-            'query' => $query,
-            'criteria' => $criteria,
-            'summary' => $summary,
-            'downloadQuery' => http_build_query(array_diff_key($query, ['preview' => true])),
-            'classifications' => FinanceReportOptions::classifications(),
-            'families' => FinanceReportOptions::families(),
-            'fundGroups' => FinanceReportOptions::fundGroups(),
-            'deposits' => FinanceReportOptions::deposits(),
-        ]);
-    });
-
-    $group->get('/tax-statements/pdf', function (Request $request, Response $response): Response {
-        $query = $request->getQueryParams();
-        $criteria = GivingStatementService::criteriaFromQuery($query);
+    // Giving Report (tax statements): PDF or CSV for the chosen filters, from the report form or a family link.
+    $group->map(['GET', 'POST'], '/tax-statements/download', function (Request $request, Response $response): Response {
+        $input = $request->getMethod() === 'POST' ? (array) $request->getParsedBody() : $request->getQueryParams();
+        $criteria = GivingStatementService::criteriaFromQuery($input);
         $groups = GivingStatementService::paymentsByFamily($criteria);
         if ($groups === []) {
-            RedirectUtils::redirect('finance/reports/tax-statements?' . http_build_query(array_merge($query, ['preview' => 1])));
+            RedirectUtils::redirect('FinancialReports.php?ReturnMessage=NoRows&ReportType=Giving%20Report');
+        }
+
+        if (($input['output'] ?? 'pdf') === 'csv') {
+            [$headers, $rows] = GivingStatementService::csv($groups);
+            CsvExporter::create($headers, $rows, 'TaxReport', 'UTF-8', true);
+
+            return $response;
         }
 
         [$dateStart, $dateEnd] = GivingStatementService::period($criteria);
@@ -84,19 +62,6 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
         return $response
             ->withHeader('Content-Type', 'application/pdf')
             ->withHeader('Content-Disposition', GivingStatementService::contentDisposition($label));
-    });
-
-    $group->get('/tax-statements/csv', function (Request $request, Response $response): Response {
-        $query = $request->getQueryParams();
-        $groups = GivingStatementService::paymentsByFamily(GivingStatementService::criteriaFromQuery($query));
-        if ($groups === []) {
-            RedirectUtils::redirect('finance/reports/tax-statements?' . http_build_query(array_merge($query, ['preview' => 1])));
-        }
-
-        [$headers, $rows] = GivingStatementService::csv($groups);
-        CsvExporter::create($headers, $rows, 'TaxReport', 'UTF-8', true);
-
-        return $response;
     });
 
     // Email one family's statement for a calendar year (Family profile → Finance menu).
