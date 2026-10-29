@@ -2,9 +2,11 @@
 
 namespace ChurchCRM\Search;
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Utils\LoggerUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 
@@ -69,7 +71,22 @@ class FamilySearchResultProvider extends BaseSearchResultProvider
         $id = 0;
 
         try {
-            $customFields = FamilyCustomMasterQuery::create()->find();
+            $currentUser = AuthenticationManager::getCurrentUser();
+            $securityNames = [];
+            foreach (ListOptionQuery::create()->filterById(5)->find() as $option) {
+                $securityNames[$option->getOptionId()] = $option->getOptionName();
+            }
+
+            $customFields = [];
+            foreach (FamilyCustomMasterQuery::create()->find() as $customField) {
+                if ($currentUser->isEnabledSecurity($securityNames[$customField->getFieldSecurity()] ?? '')) {
+                    $customFields[] = $customField;
+                }
+            }
+            if ($customFields === []) {
+                return [];
+            }
+
             $familyQuery = FamilyQuery::create()
                     ->joinFamilyCustom()
                     ->useFamilyCustomQuery();
