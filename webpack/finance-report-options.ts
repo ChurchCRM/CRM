@@ -27,3 +27,5 @@ if (typeof window.CRM?.onLocalesReady === "function") {
 } else {
   wire();
 }
+
+export {};
