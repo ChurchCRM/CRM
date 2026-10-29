@@ -24,9 +24,12 @@ class MpdfRenderer implements PdfRendererInterface
         }
     }
 
-    public function renderToString(string $template, array $data): string
+    /**
+     * @param array<string, mixed> $mpdfConfig overrides of the default mPDF page setup (format, margins, ...)
+     */
+    public function renderToString(string $template, array $data, array $mpdfConfig = []): string
     {
-        return $this->build($template, $data)->Output('', 'S');
+        return $this->build($template, $data, $mpdfConfig)->Output('', 'S');
     }
 
     public function render(string $template, array $data, string $filename, string $disposition = 'I'): void
@@ -34,10 +37,10 @@ class MpdfRenderer implements PdfRendererInterface
         $this->build($template, $data)->Output($filename . '.pdf', $disposition === 'D' ? 'D' : 'I');
     }
 
-    private function build(string $template, array $data): Mpdf
+    private function build(string $template, array $data, array $mpdfConfig = []): Mpdf
     {
         $data = $this->withChurch($data);
-        $mpdf = $this->makeMpdf();
+        $mpdf = $this->makeMpdf($mpdfConfig);
         if ($data['text_dir'] === 'rtl') {
             $mpdf->SetDirectionality('rtl');
         }
@@ -78,9 +81,9 @@ class MpdfRenderer implements PdfRendererInterface
         return SystemURLs::getDocumentRoot() . '/Images/churchcrm-logo-ink-blue.svg';
     }
 
-    private function makeMpdf(): Mpdf
+    private function makeMpdf(array $mpdfConfig = []): Mpdf
     {
-        return new Mpdf([
+        return new Mpdf($mpdfConfig + [
             'mode' => 'utf-8',
             'autoScriptToLang' => true,
             'autoLangToFont' => true,
