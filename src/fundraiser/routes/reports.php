@@ -7,7 +7,6 @@ use ChurchCRM\model\ChurchCRM\MultibuyQuery;
 use ChurchCRM\model\ChurchCRM\PaddleNumQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Reports\ChurchInfoReport;
-use ChurchCRM\Reports\PdfCertificatesReport;
 use ChurchCRM\Service\FundraiserItemService;
 use ChurchCRM\Service\MpdfRenderer;
 use ChurchCRM\Utils\CurrencyFormatter;
@@ -127,7 +126,7 @@ $app->get('/{fundraiserId}/reports/bid-sheets', function (Request $request, Resp
 // ---------------------------------------------------------------------------
 // GET /fundraiser/{fundraiserId}/reports/certificates — PDF certificates
 // ---------------------------------------------------------------------------
-$app->get('/{fundraiserId}/reports/certificates', function (Request $request, Response $response, array $args) use ($loadDonorsById): Response {
+$app->get('/{fundraiserId}/reports/certificates', function (Request $request, Response $response, array $args): Response {
     $fundraiserId = (int) $args['fundraiserId'];
 
     $fundraiser = FundRaiserQuery::create()->findOneById($fundraiserId);
@@ -144,50 +143,18 @@ $app->get('/{fundraiserId}/reports/certificates', function (Request $request, Re
             ->withStatus(302);
     }
 
-    // PdfCertificatesReport::addPage() uses these globals
-    global $fr_title, $fr_description, $curY;
-    $fr_title       = $fundraiser->getTitle();
-    $fr_description = $fundraiser->getDescription();
-    $curY           = 0;
+    $pdf = (new MpdfRenderer())->renderToString('fundraiser-certificates', [
+        'fundraiser_title' => $fundraiser->getTitle(),
+        'fundraiser_description' => $fundraiser->getDescription(),
+        'items' => FundraiserItemService::items($fundraiser),
+    ]);
 
-    $items = DonatedItemQuery::create()->filterByFrId($fundraiser->getId())->orderByItem()->find();
-    $donors = $loadDonorsById(iterator_to_array($items));
-
-    $pdf = new PdfCertificatesReport();
-    $pdf->SetTitle($fundraiser->getTitle());
-
-    foreach ($items as $oneItem) {
-        $donor          = $donors[$oneItem->getDonorId()] ?? null;
-        $di_item        = $oneItem->getItem();
-        $di_title       = $oneItem->getTitle();
-        $di_description = $oneItem->getDescription();
-        $di_estprice    = $oneItem->getEstprice();
-        $per_LastName   = $donor?->getLastName() ?? '';
-        $per_FirstName  = $donor?->getFirstName() ?? '';
-
-        $pdf->addPage();
-
-        $pdf->SetFont('Times', 'B', 24);
-        $pdf->Write(8, $di_item . ":\t");
-        $pdf->Write(8, stripslashes($di_title) . "\n\n");
-        $pdf->SetFont('Times', '', 16);
-        $pdf->Write(8, stripslashes($di_description) . "\n");
-        if ($di_estprice > 0) {
-            $pdf->Write(8, ChurchInfoReport::convertToLatin1(sprintf(gettext('Estimated value %s.'), CurrencyFormatter::format($di_estprice))) . '  ');
-        }
-        if ($per_LastName !== '') {
-            $pdf->Write(8, sprintf(gettext('Donated by %1$s %2$s.'), $per_FirstName, $per_LastName) . "\n\n");
-        }
-    }
-
-    $fileName   = 'FRCertificates' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
-    $pdfContent = $pdf->Output($fileName, 'S');
-    $disposition = SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline';
-    $response->getBody()->write($pdfContent);
+    $fileName = 'FRCertificates' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
+    $response->getBody()->write($pdf);
 
     return $response
         ->withHeader('Content-Type', 'application/pdf')
-        ->withHeader('Content-Disposition', $disposition . '; filename="' . $fileName . '"');
+        ->withHeader('Content-Disposition', (SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline') . '; filename="' . $fileName . '"');
 });
 
 // ---------------------------------------------------------------------------
