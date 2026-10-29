@@ -8,15 +8,21 @@ use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Utils\DateTimeUtils;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 /**
- * Zero Givers: families with a living member of classification 1 and no payment in the period.
+ * Zero Givers: families with a living member of classification 1 (Voting Members)
+ * and no payment in the period.
  * Callers authorize: the Finance routes sit behind FinanceRoleAuthMiddleware.
+ *
+ * Classification ID 1 is the historical "Voting Members" / Member classification
+ * used by the original Zero Givers report. No system config currently overrides it.
  */
 class ZeroGiversService
 {
+    /** Voting Members / Member classification. Hard-coded to match legacy report. */
     private const MEMBER_CLASSIFICATION_ID = 1;
 
     /**
@@ -26,8 +32,13 @@ class ZeroGiversService
     {
         $dateStart = self::validDate($query['DateStart'] ?? '');
         $dateEnd = self::validDate($query['DateEnd'] ?? '');
+
+        // Default to the current fiscal year when no dates are supplied.
+        // This codifies FiscalYearUtils for all finance year reports.
         if ($dateStart === '' && $dateEnd === '') {
-            $dateStart = $dateEnd = DateTimeUtils::getTodayDate();
+            $fy = FiscalYearUtils::getFiscalYearDatesById(FiscalYearUtils::getCurrentFiscalYearId());
+            $dateStart = $fy['startDate'];
+            $dateEnd = $fy['endDate'];
         }
         $dateStart = $dateStart !== '' ? $dateStart : $dateEnd;
         $dateEnd = $dateEnd !== '' ? $dateEnd : $dateStart;
@@ -45,7 +56,9 @@ class ZeroGiversService
     }
 
     /**
-     * Each family once, in id order.
+     * Each family once, in id order. Only families that have at least one living
+     * classification-1 member. Inactive / deceased-only families are excluded by
+     * filterByLiving().
      *
      * @return Family[]
      */
@@ -82,13 +95,16 @@ class ZeroGiversService
     /**
      * Template data: one letter per family.
      *
+     * Address uses getMailingAddressLines() which already resolves primary vs
+     * secondary (Address2) mailing address and formats the postal block correctly.
+     *
      * @param Family[] $families
      */
     public static function document(array $families, string $dateStart, string $dateEnd, string $letterhead): array
     {
         $start = DateTimeUtils::formatDate($dateStart);
         $end = DateTimeUtils::formatDate($dateEnd);
-        $graphic = $letterhead === 'graphic' ? self::graphicLetterhead() : null;
+        $graphic = $letterhead === 'graphic' ? MpdfRenderer::graphicLetterhead() : null;
 
         $letters = [];
         foreach ($families as $family) {
@@ -139,16 +155,6 @@ class ZeroGiversService
         $disposition = SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline';
 
         return $disposition . '; filename="ZeroGivers' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf"';
-    }
-
-    private static function graphicLetterhead(): ?string
-    {
-        $path = trim((string) SystemConfig::getValue('bDirLetterHead'));
-        if ($path !== '' && (is_readable($path) || preg_match('#^https://#i', $path))) {
-            return $path;
-        }
-
-        return null;
     }
 
     private static function validDate(mixed $value): string
