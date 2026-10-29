@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ lang|default('en') }}" dir="{{ text_dir|default('ltr') }}">
 <head>
   <meta charset="utf-8">
   <style>
@@ -30,7 +30,7 @@
     .empty { margin: 6mm 0; font-style: italic; color: #555; }
   </style>
 </head>
-<body>
+<body dir="{{ text_dir|default('ltr') }}">
   <div class="letterhead">
     {% if letterhead == 'graphic' and letterhead_image %}
       <img src="{{ letterhead_image }}" alt="" style="max-width: 170mm; max-height: 28mm;">
