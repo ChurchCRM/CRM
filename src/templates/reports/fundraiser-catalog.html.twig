@@ -1,0 +1,32 @@
+{% extends "_base.html.twig" %}
+{% block content %}
+  <style>
+    body { font-family: serif; font-size: 12pt; }
+    h1.fundraiser { font-size: 16pt; margin: 0 0 1mm 0; }
+    .fundraiser-description { font-size: 12pt; margin: 0 0 6mm 0; }
+    .item { margin: 0 0 6mm 0; page-break-inside: avoid; }
+    .item-title { font-weight: bold; margin: 0 0 1mm 0; }
+    .item img { width: 100mm; margin: 0 0 1mm 0; }
+  </style>
+  {% for item in items %}
+    {% if loop.first or item.code|slice(0, 1) != items[loop.index0 - 1].code|slice(0, 1) %}
+      {% if not loop.first %}<pagebreak />{% endif %}
+      <h1 class="fundraiser">{{ fundraiser_title }}</h1>
+      <div class="fundraiser-description">{{ fundraiser_description }}</div>
+    {% endif %}
+    <div class="item">
+      <div class="item-title">{{ item.code }}: {{ item.title }}</div>
+      {% if item.picture %}<div><img src="{{ item.picture }}" alt=""></div>{% endif %}
+      <div>
+        {{ item.description }}
+        {% if item.minimum > 0 %}{{ gettext('Minimum bid %s.')|format(item.minimum_text) }}{% endif %}
+        {% if item.estimate > 0 %}{{ gettext('Estimated value %s.')|format(item.estimate_text) }}{% endif %}
+        {% if item.donor_last %}{{ gettext('Donated by %1$s %2$s.')|format(item.donor_first, item.donor_last) }}{% endif %}
+      </div>
+    </div>
+  {% else %}
+    <h1 class="fundraiser">{{ fundraiser_title }}</h1>
+    <div class="fundraiser-description">{{ fundraiser_description }}</div>
+    <p class="empty">{{ gettext('No records were returned from the previous report. Please adjust your filters or date range and try again.') }}</p>
+  {% endfor %}
+{% endblock %}
