@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-const download = "/finance/reports/tax-statements/download";
+const download = "/finance/reports/giving-statements/download";
 const range = "DateStart=2018-01-01&DateEnd=2018-12-31&datetype=Payment";
 
 const expectPdf = (response) => {
