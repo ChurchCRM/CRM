@@ -44,7 +44,7 @@ describe("Label font selector is populated (#9694)", () => {
     });
 
     it("generates confirm data labels as a PDF instead of a 500", () => {
-        cy.intercept("GET", "**/Reports/ConfirmLabels.php*").as("confirmLabels");
+        cy.intercept("GET", "**/people/labels/confirm*").as("confirmLabels");
 
         cy.get("input[name=SubmitConfirmLabels]").click();
 

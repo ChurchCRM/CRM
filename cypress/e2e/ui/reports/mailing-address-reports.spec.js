@@ -5,7 +5,7 @@ import { pdfText } from "../../../support/pdf-text";
 /**
  * Mail is addressed to the family's mailing address (#9743).
  *
- * NewsLetterLabels.php and ConfirmLabels.php build every label from
+ * The newsletter and confirm label routes build every label from
  * Family::getMailingAddressLines() — the flagged second address when a family has
  * one, the primary address otherwise — and order the run by the ZIP that is
  * actually printed rather than by the primary ZIP. /people/labels, behind the
@@ -134,7 +134,7 @@ describe("Mailing address on mailed reports (#9743)", () => {
         const familyName = "MailLabels" + Cypress._.random(0, 1e6);
         createFamilyWithMailingAddress(familyName);
         // New families receive the newsletter by default, so this one gets a label.
-        fetchPdfLines(`/Reports/NewsLetterLabels.php?${labelQuery}`).then((lines) => {
+        fetchPdfLines(`/people/labels/newsletter?${labelQuery}`).then((lines) => {
             expectLabelLines(lines, familyName);
         });
     });
@@ -143,7 +143,7 @@ describe("Mailing address on mailed reports (#9743)", () => {
         const familyName = "MailConfirm" + Cypress._.random(0, 1e6);
         createFamilyWithMailingAddress(familyName);
         // Confirm labels cover every family.
-        fetchPdfLines(`/Reports/ConfirmLabels.php?${labelQuery}`).then((lines) => {
+        fetchPdfLines(`/people/labels/confirm?${labelQuery}`).then((lines) => {
             expectLabelLines(lines, familyName);
         });
     });

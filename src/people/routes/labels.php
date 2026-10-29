@@ -1,15 +1,19 @@
 <?php
 
 /**
- * People module — mailing labels
+ * People module — labels
  *
- * GET /people/labels  Mailing labels for the cart or a People Report, as a PDF sheet or a CSV.
+ * GET /people/labels             Mailing labels for the cart or a People Report, as a PDF sheet or a CSV.
+ * GET /people/labels/name-tags   Name tags for the cart.
+ * GET /people/labels/newsletter  One label per family that gets the newsletter by mail.
+ * GET /people/labels/confirm     One label per family, for the data confirmation mailing.
  *
- * Open to every staff user, as the cart and People Reports that link here are.
+ * Open to every staff user, as the cart, People Reports and Letters and Labels that link here are.
  */
 
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Service\FamilyLabelService;
 use ChurchCRM\Service\LabelSheetService;
 use ChurchCRM\Service\MailingLabelService;
 use ChurchCRM\Service\PeopleReportService;
@@ -22,11 +26,44 @@ use Slim\Exception\HttpBadRequestException;
 use Slim\Routing\RouteCollectorProxy;
 
 /**
- * Remembers a label form choice for 90 days, so the Generate Labels dialog opens with it next time.
+ * Remembers a label form choice for 90 days, so the label forms open with it next time.
  */
 function rememberLabelChoice(string $name, string $value): void
 {
     setcookie($name, $value, ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/', 'samesite' => 'Lax']);
+}
+
+/**
+ * A query-string value as text; an array or a missing value is empty.
+ */
+function labelQueryText(Request $request, string $key): string
+{
+    $value = $request->getQueryParams()[$key] ?? null;
+
+    return is_string($value) ? $value : '';
+}
+
+/**
+ * The stock, font and font size every label form sends, remembered for the next visit.
+ *
+ * @param int|null $defaultSize the point size for "default"; the stock's own size when null
+ * @return array{type: string, font: string, size: int}
+ */
+function readLabelSheetOptions(Request $request, ?int $defaultSize = null): array
+{
+    $type = labelQueryText($request, 'labeltype');
+    if (!LabelSheetService::hasFormat($type)) {
+        throw new HttpBadRequestException($request, gettext('Invalid request data'));
+    }
+    $font = in_array(labelQueryText($request, 'labelfont'), LabelSheetService::fontNames(), true) ? labelQueryText($request, 'labelfont') : 'Helvetica';
+    $requestedSize = labelQueryText($request, 'labelfontsize');
+    $size = LabelSheetService::fontSize($requestedSize, $defaultSize ?? LabelSheetService::defaultFontSize($type));
+
+    rememberLabelChoice('labeltype', $type);
+    rememberLabelChoice('labelfont', $font);
+    rememberLabelChoice('labelfontsize', $requestedSize === 'default' ? 'default' : (string) $size);
+
+    return ['type' => $type, 'font' => $font, 'size' => $size];
 }
 
 function respondWithLabelPdf(Response $response, string $pdf, string $baseName): Response
@@ -42,22 +79,14 @@ function respondWithLabelPdf(Response $response, string $pdf, string $baseName):
 $app->group('/labels', function (RouteCollectorProxy $group): void {
     $group->get('', function (Request $request, Response $response): Response {
         $query = $request->getQueryParams();
-        $text = static fn (string $key): string => is_string($query[$key] ?? null) ? $query[$key] : '';
+        $text = static fn (string $key): string => labelQueryText($request, $key);
+        ['type' => $labelType, 'font' => $fontName, 'size' => $fontSize] = readLabelSheetOptions($request, 10);
 
-        $labelType = $text('labeltype');
-        if (!LabelSheetService::hasFormat($labelType)) {
-            throw new HttpBadRequestException($request, gettext('Invalid request data'));
-        }
-        $fontName = in_array($text('labelfont'), LabelSheetService::fontNames(), true) ? $text('labelfont') : 'Helvetica';
-        $fontSize = LabelSheetService::fontSize($text('labelfontsize'), 10);
         $mode = $text('groupbymode') === 'fam' ? 'fam' : 'indiv';
         $presort = !empty($text('bulkmailpresort'));
         $quiet = !empty($text('bulkmailquiet'));
         $toParents = $text('toparents') === '1';
 
-        rememberLabelChoice('labeltype', $labelType);
-        rememberLabelChoice('labelfont', $fontName);
-        rememberLabelChoice('labelfontsize', $text('labelfontsize') === 'default' ? 'default' : (string) $fontSize);
         if ($text('groupbymode') !== '') {
             rememberLabelChoice('groupbymode', $mode);
         }
@@ -101,4 +130,30 @@ $app->group('/labels', function (RouteCollectorProxy $group): void {
 
         return respondWithLabelPdf($response, $pdf, 'Labels-');
     });
+
+    $group->get('/name-tags', function (Request $request, Response $response): Response {
+        ['type' => $labelType, 'font' => $fontName, 'size' => $fontSize] = readLabelSheetOptions($request);
+        $layout = LabelSheetService::layout($labelType);
+        $personIds = array_map('intval', array_filter(explode(',', Cart::getCartIdString())));
+
+        $pdf = (new LabelSheetService())->renderPdf(
+            $labelType,
+            FamilyLabelService::nameTagCells($personIds, $layout['width'], $layout['height']),
+            1,
+            1,
+            $fontName,
+            $fontSize
+        );
+
+        return respondWithLabelPdf($response, $pdf, 'NameTags');
+    });
+
+    $familyLabels = static fn (bool $newsletterOnly, string $baseName): callable => static function (Request $request, Response $response) use ($newsletterOnly, $baseName): Response {
+        ['type' => $labelType, 'font' => $fontName, 'size' => $fontSize] = readLabelSheetOptions($request);
+        $cells = FamilyLabelService::familyCells($newsletterOnly, labelQueryText($request, 'recipientnamingmethod') === 'familyname');
+
+        return respondWithLabelPdf($response, (new LabelSheetService())->renderPdf($labelType, $cells, 1, 1, $fontName, $fontSize), $baseName);
+    };
+    $group->get('/newsletter', $familyLabels(true, 'NewsLetterLabels'));
+    $group->get('/confirm', $familyLabels(false, 'ConfirmDataLabels'));
 })->add(StaffRoleAuthMiddleware::class);
