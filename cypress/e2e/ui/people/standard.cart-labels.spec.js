@@ -6,8 +6,8 @@
  * Two regressions are pinned here:
  *
  * 1. The cart page lost its "Generate Labels" form when the cart moved to
- *    /people/cart (#4377). Nothing linked to Reports/PDFLabel.php any more.
- * 2. Reports/PDFLabel.php read the address from the person record only
+ *    /people/cart (#4377). Nothing linked to the labels report any more.
+ * 2. The labels report read the address from the person record only
  *    (0190da3d2), so a household whose address lives on the family record
  *    produced blank labels — every one skipped by "Ignore Incomplete
  *    Addresses", or printed with a name and no street.
@@ -97,7 +97,7 @@ describe("Cart mailing labels (#9873)", () => {
         cy.get("#cartLabels").should("be.visible").click();
 
         cy.get("#labelsModal").should("be.visible");
-        cy.get("#labelsForm").should("have.attr", "action").and("include", "Reports/PDFLabel.php");
+        cy.get("#labelsForm").should("have.attr", "action").and("include", "people/labels");
 
         // Every parameter the report reads has a control.
         cy.get('#labelsForm input[name="groupbymode"]:checked').should("have.value", "indiv");
@@ -118,7 +118,7 @@ describe("Cart mailing labels (#9873)", () => {
     });
 
     it("addresses a person with no address of their own at the family address (CSV)", () => {
-        cy.request(`/Reports/PDFLabel.php?${labelQuery}&filetype=CSV`).then((response) => {
+        cy.request(`/people/labels?${labelQuery}&filetype=CSV`).then((response) => {
             expect(response.status).to.equal(200);
             expect(response.headers["content-type"] || "").to.include("text/csv");
 
@@ -175,7 +175,7 @@ describe("Cart mailing labels (#9873)", () => {
                 });
 
                 const familyQuery = labelQuery.replace("groupbymode=indiv", "groupbymode=fam");
-                cy.request(`/Reports/PDFLabel.php?${familyQuery}&filetype=CSV`).then((response) => {
+                cy.request(`/people/labels?${familyQuery}&filetype=CSV`).then((response) => {
                     expect(response.status).to.equal(200);
                     const rows = String(response.body)
                         .split("\n")
@@ -195,7 +195,7 @@ describe("Cart mailing labels (#9873)", () => {
 
     it("generates the PDF without a server error", () => {
         cy.request({
-            url: `/Reports/PDFLabel.php?${labelQuery}&filetype=PDF`,
+            url: `/people/labels?${labelQuery}&filetype=PDF`,
             encoding: "binary",
         }).then((response) => {
             expect(response.status).to.equal(200);
