@@ -248,6 +248,24 @@ class GivingStatementService
     }
 
     /**
+     * Summary the preview page shows before anything is downloaded.
+     *
+     * @param array<int, Pledge[]> $groups
+     * @return array{families: int, gifts: int, total: string}
+     */
+    public static function summary(array $groups): array
+    {
+        $gifts = 0;
+        $cents = 0;
+        foreach ($groups as $payments) {
+            $gifts += count($payments);
+            $cents += self::totals($payments)['total'];
+        }
+
+        return ['families' => count($groups), 'gifts' => $gifts, 'total' => CurrencyFormatter::format($cents / 100)];
+    }
+
+    /**
      * Content-Disposition for a statement PDF. The ASCII name is the fallback; the UTF-8 name
      * carries the church and family names in any script.
      */
