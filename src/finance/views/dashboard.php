@@ -275,7 +275,7 @@ $sRootPath = SystemURLs::getRootPath();
                                 <p class="mb-0 small text-body-secondary"><?= gettext('Print or email annual giving statements to all donors.') ?></p>
                             </div>
                             <div>
-                                <a href="<?= $sRootPath ?>/finance/reports/tax-statements" class="btn btn-sm btn-primary">
+                                <a href="<?= $sRootPath ?>/finance/reports/year-end" class="btn btn-sm btn-primary">
                                     <i class="fa-solid fa-play"></i> <?= gettext('Generate') ?>
                                 </a>
                             </div>
