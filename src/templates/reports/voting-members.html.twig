@@ -1,0 +1,20 @@
+{% extends "_letter.html.twig" %}
+{% block letter_body %}
+  <h1>{{ gettext('Voting Members') }} {{ fiscal_year }}</h1>
+  {% if families %}
+    <table class="gifts">
+      <thead><tr><th>{{ gettext('Family') }}</th><th>{{ gettext('Members') }}</th></tr></thead>
+      <tbody>
+        {% for family in families %}
+          <tr>
+            <td>{{ family.name }}</td>
+            <td>{% for name in family.members %}{{ name }}{% if not loop.last %}<br>{% endif %}{% endfor %}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <p><strong>{{ gettext('Number of Voting Members') }}: {{ count }}</strong></p>
+  {% else %}
+    <p class="empty">{{ gettext('No records were returned from the previous report. Please adjust your filters or date range and try again.') }}</p>
+  {% endif %}
+{% endblock %}
