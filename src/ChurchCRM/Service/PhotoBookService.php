@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
@@ -128,7 +129,7 @@ class PhotoBookService
             'photo' => $photo,
             'photo_width' => $width,
             'photo_height' => $height,
-            'initials' => mb_strtoupper(mb_substr((string) $person->getFirstName(), 0, 1) . mb_substr((string) $person->getLastName(), 0, 1)),
+            'initials' => $person->getInitial(SystemConfig::getIntValue('iPersonInitialStyle')),
             'details' => $details,
         ];
     }

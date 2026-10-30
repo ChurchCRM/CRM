@@ -566,7 +566,7 @@ key is `RESTRICT`) and the scope rows (no FK, §2.15); the FKs cascade the rest.
 A team may be linked to one Sunday School class, and a class to one team. Core keeps the class —
 its roster, its Student role, attendance, the dashboard, the reports. The link hands V2 exactly one
 thing: who holds the class's **Teacher** role, found by NAME in the class's role list as every core
-Sunday School read finds it (`SundaySchoolService`, the class page, `ClassAttendance.php`, the cart's
+Sunday School read finds it (`SundaySchoolService`, the class page, `ClassAttendanceService`, the cart's
 "Add Teachers"). Those reads keep working unchanged. `VolunteerClassLinkService` owns the rules.
 
 - **Linking** is part of team create/update (`classGroupId`; `null` unlinks) and is a
