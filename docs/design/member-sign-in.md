@@ -30,7 +30,7 @@
 | 10-12 | #10511, Carl's review | N3: families lose the family email, which moves to an adult. |
 | 10-15 | Discord | George approved the design. The work goes on one branch, `feature/member-sign-in`, for 7.9.0. |
 | 10-17 | George's review on this PR | Accepted for 7.9.0, with eleven points to settle. This revision settles them: shared addresses (§4), what ships alone (§16), the cutover's references and rollback (§12), bulk confirmation (§10.1), one administrator (§9), the family API (§10.2), two tabs (§6.2), proxies (§6.1), teenagers (§4), the RFC 0002 edit (§15) and the doc's location. |
-| 10-24 | Discord | George: the member portal work, member sign-in and the directory included, ships in 7.8.3 as an enhancement of the portal. New features such as online giving stay in 7.9.0. |
+| 10-24 | Discord | George: member portal work ships in 7.8.3 as an enhancement of the portal. That is this member sign-in work, and the member directory once its own proposal (§18) is settled. New features such as online giving stay in 7.9.0. |
 
 This document puts those into one design and one delivery plan.
 
@@ -724,7 +724,7 @@ This work does not wait for #10511's F0, as George said on 10-10. It is built so
 | 10 | Email-change rules (§9) | 1, 5 |
 | 11 | Family email moves to people (§10): the SQL in the 7.8.3 upgrade, every reader listed in §2, the directory, CSV, the API and docs | 1 |
 | 12 | Login as Person (§6.5), replacing #10392 | 1, 9 |
-| 13 | Cutover: upgrade script, staff-only Users list, removing "Self-service only", wording, release notes | 1–12 |
+| 13 | Cutover: upgrade script, staff-only Users list, removing "Self-service only", wording, release notes | 1–11 |
 | 14 | Documentation: a docs tracking issue and a docs PR on `release-docs/<version>` | 13, 15 |
 | 15 | A member's portal language: the profile's Language field, the language of portal pages and of mail to the member (§5), carried over from self-service accounts at the cutover (§12) | 2, 5, 13 |
 
