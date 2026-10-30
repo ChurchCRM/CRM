@@ -10,7 +10,6 @@ $selectedFamilies = array_map('strval', $criteria['familyIds']);
 $selectedClasses = $selected('classList');
 $selectedFunds = $selected('funds');
 $byDeposit = $criteria['byDepositDate'];
-$letterhead = $criteria['letterhead'];
 $base = SystemURLs::getRootPath() . '/finance/reports/giving-statements';
 ?>
 
@@ -143,17 +142,6 @@ $base = SystemURLs::getRootPath() . '/finance/reports/giving-statements';
     <div class="card mb-3">
         <div class="card-header"><h3 class="card-title"><?= gettext('Other Settings') ?></h3></div>
         <div class="card-body">
-            <div class="mb-3">
-                <label class="form-label"><?= gettext('Report Heading') ?></label>
-                <div class="d-flex flex-wrap gap-3">
-                    <?php foreach (['graphic' => gettext('Graphic'), 'address' => gettext('Church Address'), 'none' => gettext('Blank')] as $value => $label) : ?>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="letterhead" value="<?= $value ?>" id="letterhead<?= $value ?>" <?= $letterhead === $value ? 'checked' : '' ?>>
-                            <label class="form-check-label" for="letterhead<?= $value ?>"><?= $label ?></label>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-            </div>
             <div class="mb-0">
                 <label class="form-label"><?= gettext('Remittance Slip') ?></label>
                 <div class="d-flex gap-3">

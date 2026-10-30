@@ -40,9 +40,9 @@ describe("Giving statements", () => {
         cy.get("#downloadCsv").should("have.attr", "href").and("include", "output=csv");
     });
 
-    it("the PDF downloads with the default letterhead and with no letterhead plus a remittance slip", () => {
+    it("the PDF downloads with and without a remittance slip", () => {
         requestBinary(`${statementsPath}/download?${seedYear}`).then(expectPdf);
-        requestBinary(`${statementsPath}/download?${seedYear}&letterhead=none&remittance=yes`).then(expectPdf);
+        requestBinary(`${statementsPath}/download?${seedYear}&remittance=yes`).then(expectPdf);
     });
 
     it("a period with no payments keeps the treasurer on the page, and a download sends them back to it", () => {

@@ -24,7 +24,7 @@ class GivingStatementService
     /**
      * Turn untrusted query values into the criteria every other method takes.
      *
-     * @return array{dateStart: string, dateEnd: string, depositId: int, byDepositDate: bool, minimumCents: int, fundIds: int[], familyIds: int[], classificationIds: int[], letterhead: string, remittance: bool}
+     * @return array{dateStart: string, dateEnd: string, depositId: int, byDepositDate: bool, minimumCents: int, fundIds: int[], familyIds: int[], classificationIds: int[], remittance: bool}
      */
     public static function criteriaFromQuery(array $query): array
     {
@@ -54,7 +54,6 @@ class GivingStatementService
             [$dateStart, $dateEnd] = [$dateEnd, $dateStart];
         }
 
-        $letterhead = self::scalar($query['letterhead'] ?? 'address');
 
         return [
             'dateStart' => $dateStart,
@@ -65,7 +64,6 @@ class GivingStatementService
             'fundIds' => self::intList($query['funds'] ?? []),
             'familyIds' => array_values(array_unique($familyIds)),
             'classificationIds' => self::intList($query['classList'] ?? []),
-            'letterhead' => in_array($letterhead, ['graphic', 'address', 'none'], true) ? $letterhead : 'address',
             'remittance' => self::scalar($query['remittance'] ?? 'no') === 'yes',
         ];
     }
@@ -186,14 +184,14 @@ class GivingStatementService
      *
      * @param array<int, array<string, mixed>> $families as returned by {@see self::families()}
      */
-    public static function document(array $families, string $dateStart, string $dateEnd, string $letterhead = 'address', bool $remittance = false): array
+    public static function document(array $families, string $dateStart, string $dateEnd, bool $remittance = false): array
     {
-        $graphic = $letterhead === 'graphic' ? self::graphicLetterhead() : null;
+        $graphic = self::graphicLetterhead();
         $start = DateTimeUtils::formatDate($dateStart);
         $end = DateTimeUtils::formatDate($dateEnd);
 
         return [
-            'letterhead' => $graphic !== null ? 'graphic' : ($letterhead === 'none' ? 'none' : 'address'),
+            'letterhead' => $graphic !== null ? 'graphic' : 'address',
             'letterhead_image' => $graphic,
             'title' => gettext('Giving Statement'),
             'date_range' => $dateStart === $dateEnd ? $start : sprintf(gettext('%s through %s'), $start, $end),

@@ -84,7 +84,7 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
 
         [$dateStart, $dateEnd] = GivingStatementService::period($criteria);
         $families = GivingStatementService::families($groups, SystemConfig::getBooleanValue('bUseDonationEnvelopes'));
-        $document = GivingStatementService::document($families, $dateStart, $dateEnd, $criteria['letterhead'], $criteria['remittance']);
+        $document = GivingStatementService::document($families, $dateStart, $dateEnd, $criteria['remittance']);
         $pdf = (new MpdfRenderer())->renderToString('tax-report', $document);
 
         $label = GivingStatementService::fileLabel((int) substr($dateEnd, 0, 4), count($families) === 1 ? $families[0]['salutation'] : '');
