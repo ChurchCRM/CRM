@@ -120,78 +120,85 @@ if ($bCanManageGroups) {
     </div>
 </div>
 
+    <!-- Action Toolbar (ghost buttons — matches group view) -->
+    <div id="ss-action-toolbar" class="d-flex align-items-center mb-3 gap-2 flex-wrap d-print-none">
+        <a class="btn btn-ghost-success" href="<?= $sRootPath ?>/groups/view/<?= $iGroupId ?>">
+            <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Add Students') ?>
+        </a>
+        <?php if ($bCanManageGroups): ?>
+        <a class="btn btn-ghost-primary" href="<?= $sRootPath ?>/groups/editor/<?= $iGroupId ?>">
+            <i class="fa-solid fa-pen me-1"></i><?= gettext('Edit Class') ?>
+        </a>
+        <?php endif; ?>
+        <div class="dropdown">
+            <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" id="ssReportsDropdownBtn">
+                <i class="fa-solid fa-print me-1"></i><?= gettext('Reports') ?>
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" id="reportClassList" href="<?= $sRootPath ?>/groups/sundayschool/reports/class-list?GroupID=<?= $iGroupId ?>" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-list me-2"></i><?= gettext('Class List') ?>
+                </a>
+                <a class="dropdown-item" id="reportPhotoBook" href="<?= $sRootPath ?>/groups/sundayschool/reports/photo-book?GroupID=<?= $iGroupId ?>" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-book me-2"></i><?= gettext('PhotoBook') ?>
+                </a>
+            </div>
+        </div>
+        <a class="btn btn-ghost-info" href="<?= $sRootPath ?>/people/map?groupId=<?= $iGroupId ?>">
+            <i class="fa-solid fa-map-location-dot me-1"></i><?= gettext('Map') ?>
+        </a>
+        <?php if ($canEmail): ?>
+        <button type="button" class="btn btn-ghost-secondary"
+                data-email-composer
+                data-email-endpoint="groups/<?= (int) $iGroupId ?>/sundayschool/emails"
+                data-email-title="<?= htmlspecialchars(gettext('Email') . ' ' . $iGroupName, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>">
+            <i class="fa-solid fa-paper-plane me-1"></i><?= gettext('Email') ?>
+        </button>
+        <?php endif; ?>
+        <div class="dropdown">
+            <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" id="ssTextDropdownBtn">
+                <i class="fa-solid fa-mobile-screen me-1"></i><?= gettext('Text') ?>
+            </button>
+            <div class="dropdown-menu" id="ssTextDropdownMenu">
+                <div class="text-center py-2 text-body-secondary"><i class="fa-solid fa-spinner fa-spin me-1"></i><?= gettext('Loading...') ?></div>
+            </div>
+        </div>
+        <?php if ($bCanManageGroups): ?>
+        <div class="dropdown ms-auto">
+            <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static">
+                <i class="fa-solid fa-ellipsis-vertical me-1"></i><?= gettext('Actions') ?>
+            </button>
+            <div class="dropdown-menu dropdown-menu-end">
+                <h6 class="dropdown-header"><?= gettext('Copy to Group') ?></h6>
+                <?php if ($aTeacherLink === null): ?>
+                <a class="dropdown-item ss-copy-role" data-role="all" href="#"><i class="fa-solid fa-users me-2"></i><?= gettext('All Members') ?></a>
+                <?php endif; ?>
+                <a class="dropdown-item ss-copy-role" data-role="Student" href="#"><i class="fa-solid fa-child me-2"></i><?= gettext('Students') ?> <span class="badge bg-secondary-lt text-secondary ms-1"><?= $totalStudents ?></span></a>
+                <?php if ($aTeacherLink === null): ?>
+                <a class="dropdown-item ss-copy-role" data-role="Teacher" href="#"><i class="fa-solid fa-person-chalkboard me-2"></i><?= gettext('Teachers') ?> <span class="badge bg-secondary-lt text-secondary ms-1"><?= $teacherCount ?></span></a>
+                <?php endif; ?>
+                <div class="dropdown-divider"></div>
+                <h6 class="dropdown-header"><?= gettext('Move to Group') ?></h6>
+                <?php if ($aTeacherLink === null): ?>
+                <a class="dropdown-item ss-move-role" data-role="all" href="#"><i class="fa-solid fa-users me-2"></i><?= gettext('All Members') ?></a>
+                <?php endif; ?>
+                <a class="dropdown-item ss-move-role" data-role="Student" href="#"><i class="fa-solid fa-child me-2"></i><?= gettext('Students') ?> <span class="badge bg-secondary-lt text-secondary ms-1"><?= $totalStudents ?></span></a>
+                <?php if ($aTeacherLink === null): ?>
+                <a class="dropdown-item ss-move-role" data-role="Teacher" href="#"><i class="fa-solid fa-person-chalkboard me-2"></i><?= gettext('Teachers') ?> <span class="badge bg-secondary-lt text-secondary ms-1"><?= $teacherCount ?></span></a>
+                <?php endif; ?>
+                <?php if ($thisGroup && $thisGroup->getHasSpecialProps()): ?>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="<?= $sRootPath ?>/groups/<?= $iGroupId ?>/properties/form">
+                    <i class="fa-solid fa-rectangle-list me-2"></i><?= gettext('Edit Member Properties Form') ?>
+                </a>
+                <?php endif; ?>
+            </div>
+        </div>
+        <?php endif; ?>
+    </div>
+
 <div class="row">
     <!-- LEFT COLUMN: Actions, Teachers, Students, Birthday Chart -->
     <div class="col-lg-8">
-
-        <!-- Action Toolbar (ghost buttons — matches group view) -->
-        <div id="ss-action-toolbar" class="d-flex align-items-center mb-3 gap-2 flex-wrap d-print-none">
-            <a class="btn btn-ghost-success" href="<?= $sRootPath ?>/groups/view/<?= $iGroupId ?>">
-                <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Add Students') ?>
-            </a>
-            <a class="btn btn-ghost-secondary" id="printClass" href="<?= $sRootPath ?>/groups/sundayschool/reports/photo-book?GroupID=<?= $iGroupId ?>" target="_blank" rel="noopener" title="<?= gettext('Print') ?>">
-                <i class="fa-solid fa-print me-1"></i><?= gettext('Print') ?>
-            </a>
-            <?php if ($bCanManageGroups): ?>
-            <a class="btn btn-ghost-primary" href="<?= $sRootPath ?>/groups/editor/<?= $iGroupId ?>">
-                <i class="fa-solid fa-pen me-1"></i><?= gettext('Edit Class') ?>
-            </a>
-            <?php endif; ?>
-            <a class="btn btn-ghost-info" href="<?= $sRootPath ?>/people/map?groupId=<?= $iGroupId ?>">
-                <i class="fa-solid fa-map-location-dot me-1"></i><?= gettext('Map') ?>
-            </a>
-            <?php if ($canEmail): ?>
-            <button type="button" class="btn btn-ghost-secondary"
-                    data-email-composer
-                    data-email-endpoint="groups/<?= (int) $iGroupId ?>/sundayschool/emails"
-                    data-email-title="<?= htmlspecialchars(gettext('Email') . ' ' . $iGroupName, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>">
-                <i class="fa-solid fa-paper-plane me-1"></i><?= gettext('Email') ?>
-            </button>
-            <?php endif; ?>
-            <div class="dropdown">
-                <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" id="ssTextDropdownBtn">
-                    <i class="fa-solid fa-mobile-screen me-1"></i><?= gettext('Text') ?>
-                </button>
-                <div class="dropdown-menu" id="ssTextDropdownMenu">
-                    <div class="text-center py-2 text-body-secondary"><i class="fa-solid fa-spinner fa-spin me-1"></i><?= gettext('Loading...') ?></div>
-                </div>
-            </div>
-            <?php if ($bCanManageGroups): ?>
-            <div class="dropdown ms-auto">
-                <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static">
-                    <i class="fa-solid fa-ellipsis-vertical me-1"></i><?= gettext('Actions') ?>
-                </button>
-                <div class="dropdown-menu dropdown-menu-end">
-                    <h6 class="dropdown-header"><?= gettext('Copy to Group') ?></h6>
-                    <?php if ($aTeacherLink === null): ?>
-                    <a class="dropdown-item ss-copy-role" data-role="all" href="#"><i class="fa-solid fa-users me-2"></i><?= gettext('All Members') ?></a>
-                    <?php endif; ?>
-                    <a class="dropdown-item ss-copy-role" data-role="Student" href="#"><i class="fa-solid fa-child me-2"></i><?= gettext('Students') ?> <span class="badge bg-secondary-lt text-secondary ms-1"><?= $totalStudents ?></span></a>
-                    <?php if ($aTeacherLink === null): ?>
-                    <a class="dropdown-item ss-copy-role" data-role="Teacher" href="#"><i class="fa-solid fa-person-chalkboard me-2"></i><?= gettext('Teachers') ?> <span class="badge bg-secondary-lt text-secondary ms-1"><?= $teacherCount ?></span></a>
-                    <?php endif; ?>
-                    <div class="dropdown-divider"></div>
-                    <h6 class="dropdown-header"><?= gettext('Move to Group') ?></h6>
-                    <?php if ($aTeacherLink === null): ?>
-                    <a class="dropdown-item ss-move-role" data-role="all" href="#"><i class="fa-solid fa-users me-2"></i><?= gettext('All Members') ?></a>
-                    <?php endif; ?>
-                    <a class="dropdown-item ss-move-role" data-role="Student" href="#"><i class="fa-solid fa-child me-2"></i><?= gettext('Students') ?> <span class="badge bg-secondary-lt text-secondary ms-1"><?= $totalStudents ?></span></a>
-                    <?php if ($aTeacherLink === null): ?>
-                    <a class="dropdown-item ss-move-role" data-role="Teacher" href="#"><i class="fa-solid fa-person-chalkboard me-2"></i><?= gettext('Teachers') ?> <span class="badge bg-secondary-lt text-secondary ms-1"><?= $teacherCount ?></span></a>
-                    <?php endif; ?>
-                    <div class="dropdown-divider"></div>
-                    <?php if ($thisGroup && $thisGroup->getHasSpecialProps()): ?>
-                    <a class="dropdown-item" href="<?= $sRootPath ?>/groups/<?= $iGroupId ?>/properties/form">
-                        <i class="fa-solid fa-rectangle-list me-2"></i><?= gettext('Edit Member Properties Form') ?>
-                    </a>
-                    <?php endif; ?>
-                    <a class="dropdown-item" href="<?= $sRootPath ?>/groups/view/<?= $iGroupId ?>">
-                        <i class="fa-solid fa-eye me-2"></i><?= gettext('Full Group View') ?>
-                    </a>
-                </div>
-            </div>
-            <?php endif; ?>
-        </div>
 
         <!-- Teachers Card -->
         <?php if ($teacherCount > 0): ?>
@@ -470,8 +477,11 @@ if ($bCanManageGroups) {
 
         <!-- About Card -->
         <div class="card mb-3">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><i class="fa-solid fa-circle-info me-2"></i><?= gettext('About') ?></h3>
+                <a class="btn btn-sm btn-outline-secondary ms-auto" id="fullGroupView" href="<?= $sRootPath ?>/groups/view/<?= $iGroupId ?>">
+                    <i class="fa-solid fa-eye me-1"></i><?= gettext('Full Group View') ?>
+                </a>
             </div>
             <div class="card-body">
                 <?php if ($thisGroup && $thisGroup->getDescription()): ?>

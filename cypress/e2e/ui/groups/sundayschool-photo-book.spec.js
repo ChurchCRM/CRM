@@ -9,6 +9,7 @@ describe("Sunday School photo book", () => {
         cy.request({ url: photoBook(ANGELS_CLASS_GROUP_ID), encoding: "binary" }).then((response) => {
             expect(response.headers["content-type"]).to.include("application/pdf");
             expect(response.body.slice(0, 5)).to.eq("%PDF-");
+            expect(response.headers["content-disposition"]).to.include("Angels-class");
         });
     });
 
@@ -42,9 +43,39 @@ describe("Sunday School photo book", () => {
         });
     });
 
-    it("the class page Print button opens that class's photo book", () => {
+    it("the class page Reports menu offers the class list and photo book for that class", () => {
         cy.setupAdminSession();
         cy.visit("/groups/sundayschool/class/1");
-        cy.get("#printClass").should("have.attr", "href").and("include", "reports/photo-book?GroupID=1");
+        cy.get("#ssReportsDropdownBtn").click();
+        cy.get("#reportClassList").should("be.visible").and("have.attr", "href").and("include", "reports/class-list?GroupID=1");
+        cy.get("#reportPhotoBook").should("be.visible").and("have.attr", "href").and("include", "reports/photo-book?GroupID=1");
+    });
+
+    it("the attendance sheet form opens with only that class selected", () => {
+        cy.setupAdminSession();
+        cy.visit("/groups/sundayschool/reports?GroupID=1");
+        cy.get('input[name="GroupID[]"][value="1"]').should("be.checked");
+        cy.get('input[name="GroupID[]"]:checked').should("have.length", 1);
+    });
+
+    it("the class page reports do not open the browser print dialog", () => {
+        cy.setupAdminSession();
+        cy.visit("/groups/sundayschool/class/2", {
+            onBeforeLoad(win) {
+                cy.stub(win, "print").as("print");
+            },
+        });
+        cy.get("#ssReportsDropdownBtn").click();
+        cy.get("#reportPhotoBook").invoke("removeAttr", "target").then(($link) => {
+            $link.on("click", (event) => event.preventDefault());
+        });
+        cy.get("#reportPhotoBook").click();
+        cy.get("@print").should("not.have.been.called");
+    });
+
+    it("the class page opens the full group view from the About card", () => {
+        cy.setupAdminSession();
+        cy.visit("/groups/sundayschool/class/1");
+        cy.get("#fullGroupView").should("be.visible").and("have.attr", "href").and("include", "/groups/view/1");
     });
 });
