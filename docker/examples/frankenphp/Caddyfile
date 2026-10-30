@@ -50,6 +50,12 @@
     @dotfiles path_regexp hidden (^|/)\.
     respond @dotfiles 404
 
+    # Block public HTTP access to build/version metadata (PHP reads it from disk).
+    @metadata path_regexp metadata (^|/)(composer\.json|composer\.lock|package(-lock)?\.json|upgrade\.json|installed\.json)$
+    handle @metadata {
+        respond 404
+    }
+
     # Block access to PHP error/session logs
     @logs path /logs/*
     respond @logs 404
@@ -206,6 +212,10 @@
 #     respond @tmp_attach 404
 #     @include path /churchcrm/Include/*
 #     respond @include 404
+#     @metadata path_regexp metadata (^|/)(composer\.json|composer\.lock|package(-lock)?\.json|upgrade\.json|installed\.json)$
+#     handle @metadata {
+#         respond 404
+#     }
 #     @cli path /churchcrm/cli /churchcrm/cli/*
 #     respond @cli 404
 #     @internalPhp path_regexp internalphp ^/churchcrm/(v2/templates|admin/views|finance/views|people/views|groups/views|event/views|fundraiser/views|ministries/views)/.*\.php(/|$)

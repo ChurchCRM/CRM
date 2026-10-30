@@ -66,7 +66,7 @@ describe("Finance Dashboard", () => {
         cy.contains("Review Donation Funds");
         cy.contains("Church Information");
         cy.contains("Tax Report Verbiage");
-        cy.contains("Generate Tax Statements");
+        cy.contains("Generate Giving Statements");
     });
 
     it("should display Recent Deposits section", () => {

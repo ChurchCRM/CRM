@@ -19,7 +19,7 @@ npm run marketing:screenshots -- --grep "person-.*-profile"   # re-run a subset 
 npm run docker:ci:new-system:down   # tear down when done
 ```
 
-`npm run marketing` installs a fresh instance once, captures the first locale, then applies each remaining locale (`en es pt zh fr ru de ar` by default) through the `locale-set` project and re-runs `screenshots --no-deps`. ChurchCRM resolves locale per request from a DB-stored user preference, so no reinstall or re-seed is needed. `marketing:check` and `marketing:manifest` run once at the end across all locales. Pass locales as arguments to capture a subset.
+`npm run marketing` installs a fresh instance once, captures the first locale (every screenshot for English, tagged captures for other locales), then applies each remaining locale (`en es pt zh fr ru de ar` by default) through the `locale-set` project and re-runs `screenshots --no-deps --grep @all-locales`. ChurchCRM resolves locale per request from a DB-stored user preference, so no reinstall or re-seed is needed. `marketing:check` and `marketing:manifest` run once at the end across all locales. Pass locales as arguments to capture a subset.
 
 The pipeline uses Playwright's bundled Chromium (`npm run marketing:install`). Set `BROWSER_CHANNEL=chrome` (or `npm run marketing:chrome`) to drive system Chrome.
 
@@ -27,13 +27,13 @@ The pipeline uses Playwright's bundled Chromium (`npm run marketing:install`). S
 
 ### How visuals reach the website
 
-`Marketing: capture screenshots & videos` (`marketing-capture-assets.yml`) captures 8 locales x 3 devices, merges them and uploads the artifact `marketing-visuals-<run id>` (30 day retention). It opens no PR. `Publish visuals` in `ChurchCRM/visuals` downloads that artifact and replaces the repo with that release's set (one release, one orphan commit), served at https://cdn.churchcrm.io/. Images live at `https://cdn.churchcrm.io/<relativePath from manifest.json>` next to `manifest.json` (with a `release` field) and `release.json`. churchcrm.io and docs.churchcrm.io read from there.
+`Marketing: capture screenshots & videos` (`marketing-capture-assets.yml`) is one run with back-to-back jobs: English first (it also records the videos), the other seven locales after it, a merge and check, and on `master` a last job that starts `Publish visuals` in `ChurchCRM/visuals`. The artifact is `marketing-visuals-<run id>` (30 day retention). `Publish visuals` downloads it and replaces the repo with that set (one release, one orphan commit), served at https://cdn.churchcrm.io/. Images live at `https://cdn.churchcrm.io/<relativePath from manifest.json>` next to `manifest.json` (with a `release` field) and `release.json`. churchcrm.io and docs.churchcrm.io read from there. It opens no PR.
 
-On release publish, `release-bookkeeping.yml` job `publish-visuals` starts `Publish visuals` with the capture run for the release commit. With no capture or no `DOCS_RELEASE_TOKEN` (Actions: write on `ChurchCRM/visuals`) it warns, and a maintainer runs `Publish visuals` by hand with the capture run id.
+Run the workflow on `master` only. A run on another branch captures and checks but does not publish. `Release & Start Next` starts it on `master` after the draft exists and never waits for it. The publish job needs `DOCS_RELEASE_TOKEN` (Actions: write on `ChurchCRM/visuals`) and fails without it.
 
 ### Adding a capture in a feature PR
 
-The capture spec ships in the same PR as the UI change. Images serve your own check and stay uncommitted.
+The capture spec ships in the same PR as the UI change — but only when the change tells or extends a user workflow story. A new screen, settings page, or CRUD operation on its own earns no capture: if there is no church task behind it (something a staff member or volunteer sets out to do, with a reason a church would care — it saves time, protects people or data, or removes a worry), ship the PR with no capture. The spec's purpose text must state the workflow story; a capture whose purpose is only a new screen or a new CRUD operation is rejected in review. Images serve your own check and stay uncommitted.
 
 1. Make a `git worktree` at the PR commit, symlink `node_modules`, then run `composer:install`, `build:webpack`, `build:signatures`
 2. Start the pipeline's own stack: `export COMPOSE_PROJECT_NAME=crm-pw-capture MAILSERVER_PORT=1026 MAILSERVER_GUI_PORT=8026`, then `npm run docker:ci:new-system:start`. The web server and database use ports 8081 and 3308; Mailpit binds `MAILSERVER_PORT` / `MAILSERVER_GUI_PORT`, which default to the dev stack's 1025 / 8025, so set them. The captures read Mailpit at `MAILSERVER_GUI_PORT` (or `CHURCHCRM_MAILPIT_URL`), so run them in the same shell. The start removes `src/Include/Config.php`, so it runs in the worktree and never in the main checkout
@@ -41,6 +41,21 @@ The capture spec ships in the same PR as the UI change. Images serve your own ch
 4. Open the desktop, tablet and mobile PNGs, fix anything cramped, re-run
 5. Commit the spec only
 6. Tear down: `COMPOSE_PROJECT_NAME=crm-pw-capture npm run docker:ci:new-system:down`
+
+### Choosing capture locales
+
+Screenshots default to English only. Key self-service and staff workflows, plus
+page shots used by the website in the visitor's language, set `locales: 'all'`.
+Declare their options with `defineCapture()`, pass that object as the test's
+second argument and to `captureScreen()`. It supplies `@all-locales` at discovery
+time, before Playwright filters the tests. The screenshots project also filters
+non-English runs, including standalone CI locale jobs. Videos run once in English.
+
+Sidecars and the generated manifest carry `locales: 'all' | 'en'` alongside
+`usedIn`. The gallery filters actual entries by `locale`; English-only cards are
+absent in other languages. Dark-twin links are emitted only when a matching
+locale/device capture exists. Completeness guards must use this locale policy
+rather than expect every capture in every locale.
 
 ### Marking used captures
 

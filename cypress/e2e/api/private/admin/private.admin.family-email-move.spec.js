@@ -6,10 +6,10 @@ import { pdfText } from "../../../../support/pdf-text";
  * Member sign-in row 11: the 7.8.3 upgrade moves each family email to a person
  * (design §10.1). The application no longer writes a family email, so the
  * fixtures are written in SQL; the test then runs the shipped block of
- * src/mysql/upgrade/7.8.3.sql (task db:upgradeBlock) and reads the result
+ * src/mysql/upgrade/7.8.3-member-sign-in.sql (task db:upgradeBlock) and reads the result
  * back through the API wherever there is one.
  */
-const MOVE = { script: "7.8.3.sql", block: "member sign-in row 11, family email moves to people" };
+const MOVE = { script: "7.8.3-member-sign-in.sql", block: "member sign-in row 11, family email moves to people" };
 const tag = `fem${Date.now()}`;
 const addr = (name) => `${name}.${tag}@example.com`;
 

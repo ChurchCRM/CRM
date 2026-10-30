@@ -112,4 +112,31 @@ describe("Standard People", () => {
             }
         });
     });
+
+    it("Add All to Cart adds only the searched people, Remove All empties them", () => {
+        cy.request({
+            method: "DELETE",
+            url: "/api/cart/",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({}),
+        });
+
+        cy.visit("people/list");
+        cy.get("#members tbody tr", { timeout: 10000 }).should("have.length.greaterThan", 0);
+        cy.get("#AddAllToCart").should("be.visible").and("not.be.empty");
+        cy.get("#RemoveAllFromCart").should("be.visible");
+
+        cy.get(".dt-search input").first().type("Emma");
+        cy.get("#members tbody tr").its("length").then((matchCount) => {
+            cy.get("#AddAllToCart").click();
+
+            cy.request({ method: "GET", url: "/api/cart/" }).then((resp) => {
+                expect(resp.body.PeopleCart).to.have.length(matchCount);
+            });
+        });
+
+        cy.get("#RemoveAllFromCart").click();
+        cy.get(".bootbox .btn-danger").click();
+        cy.request({ method: "GET", url: "/api/cart/" }).its("body.PeopleCart").should("have.length", 0);
+    });
 });

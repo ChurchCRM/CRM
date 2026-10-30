@@ -857,7 +857,7 @@
     <table name="tokens" idMethod="native" phpName="Token">
         <column name="token" phpName="Token" type="VARCHAR" primaryKey="true" required="true"/>
         <column name="type" phpName="Type" type="VARCHAR" required="true"/>
-        <column name="valid_until_date" phpName="ValidUntilDate" type="DATE"/>
+        <column name="valid_until_date" phpName="ValidUntilDate" type="TIMESTAMP"/>
         <column name="reference_id" phpName="ReferenceId" type="INTEGER" defaultValue=""/>
         <column name="remainingUses" phpName="RemainingUses" type="INTEGER" defaultValue="0"/>
         <vendor type="mysql">

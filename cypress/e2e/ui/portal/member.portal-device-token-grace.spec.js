@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 
 import { askForEmail, resetEmailSignIn, restoreSettings, signInEmail, useMemberSignIn } from "../../../support/member-sign-in";
+import { absoluteUrl } from "../../../support/urls";
 
 /**
  * The grace for a remembered device's replaced token (#10463,
@@ -117,7 +118,7 @@ describe("Member Portal device token grace", () => {
                     Promise.all(
                         [1, 2].map((tab) =>
                             win
-                                .fetch(`/portal/?tab=${tab}`, { cache: "no-store", credentials: "same-origin", redirect: "manual" })
+                                .fetch(absoluteUrl(`/portal/?tab=${tab}`), { cache: "no-store", credentials: "same-origin", redirect: "manual" })
                                 .then((response) => response.text().then((body) => ({ status: response.status, body }))),
                         ),
                     ),

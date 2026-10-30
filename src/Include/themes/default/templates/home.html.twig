@@ -101,10 +101,8 @@
             </p>
             <p><a class="portal-card-link" href="{{ url('/portal/family') }}">{{ gettext('Update your details') }}</a></p>
             {% else %}
-            {# The same fact My Family itself reports, in one line. The page it
-               links to carries the church office's contact details. #}
             <p class="portal-card-text">{{ gettext('You are not currently associated with a family') }}</p>
-            <p><a class="portal-card-link" href="{{ url('/portal/family') }}">{{ gettext('How to correct this') }}</a></p>
+            <p class="portal-card-text">{{ gettext('Please contact the church office so we may correct our records.') }}</p>
             {% endif %}
         </section>
 

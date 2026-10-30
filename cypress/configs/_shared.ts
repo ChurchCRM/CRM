@@ -110,6 +110,35 @@ function refuseUnlisted({ spec, fixture, sql, upgradeBlock = false }: { spec?: s
 }
 
 export const dbTasks = {
+  async 'passwordReset:race'({ url, password }: { url: string; password: string }) {
+    const sessions = await Promise.all([0, 1].map(async () => {
+      const response = await fetch(url);
+      const html = await response.text();
+      const csrf = html.match(/name="csrf_token" value="([^"]+)"/);
+      const cookie = response.headers.getSetCookie().map((value) => value.split(';')[0]).join('; ');
+      if (!csrf || !cookie) {
+        const snippet = html.replace(/\s+/g, ' ').slice(0, 200);
+        throw new Error(
+          `Password reset confirmation did not establish a CSRF session\n` +
+          `  url: ${url}\n` +
+          `  status: ${response.status}\n` +
+          `  body: ${snippet || '(empty)'}`,
+        );
+      }
+      return { cookie, csrf: csrf[1] };
+    }));
+    return Promise.all(sessions.map(async ({ cookie, csrf }) => {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: { Cookie: cookie, 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({ csrf_token: csrf, password, passwordConfirmation: password }),
+      });
+      if (!response.ok) {
+        throw new Error(`Password reset POST returned HTTP ${response.status} for ${url}`);
+      }
+      return response.text();
+    }));
+  },
   async 'db:query'({ sql, params, spec = null, fixture = null }: { sql: string; params?: unknown[]; spec?: string | null; fixture?: string | null }) {
     refuseUnlisted({ spec, fixture, sql });
     const connection = await openDbConnection(false);

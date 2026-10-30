@@ -13,7 +13,7 @@ use ChurchCRM\Portal\Permissions\PortalAuthorizationService;
  * The Member Portal navigation model: what this member may see, in order.
  *
  * Design §5 fixes the order — Home · Calendar · Volunteering · My Teams ·
- * My Family · Profile. Email History and Sign-in and devices are in the
+ * My Giving · My Family · Profile. Email History and Sign-in and devices are in the
  * header's account menu instead. Each entry names the portal capability it
  * needs and is shown when the member holds it on at least one scope (member
  * sign-in design §8.2), so the menu and the routes ask the same question.
@@ -30,6 +30,7 @@ class PortalNav
     public const CALENDAR = 'calendar';
     public const VOLUNTEER = 'volunteer';
     public const TEAMS = 'teams';
+    public const GIVING = 'giving';
     public const FAMILY = 'family';
     public const PROFILE = 'profile';
 
@@ -73,6 +74,13 @@ class PortalNav
                 'url' => $rootPath . '/portal/teams',
                 'icon' => 'fa-solid fa-people-group',
                 'capability' => CorePortalCapabilities::TEAM_MANAGE,
+            ],
+            [
+                'id' => self::GIVING,
+                'label' => gettext('My Giving'),
+                'url' => $rootPath . '/portal/giving',
+                'icon' => 'fa-solid fa-file-invoice-dollar',
+                'capability' => CorePortalCapabilities::FAMILY_VIEW,
             ],
             [
                 'id' => self::FAMILY,

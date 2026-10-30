@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-import { captureScreen } from '../support/capture';
+import { captureScreen, defineCapture } from '../support/capture';
 import { humanPause, humanSelect, settle } from '../support/human';
 
 test.describe('Events & Attendance', () => {
@@ -20,7 +20,15 @@ test.describe('Events & Attendance', () => {
     });
   });
 
-  test('events-attendance-overview', async ({ page }, testInfo) => {
+  const eventsAttendanceOverviewCapture = defineCapture({
+    name: 'events-attendance-overview',
+    locales: 'all',
+    title: 'Check-In & Attendance',
+    category: 'Groups & Events',
+    purpose: 'Show the event check-in / attendance workflow',
+    usedIn: ['website'],
+  });
+  test('events-attendance-overview', eventsAttendanceOverviewCapture, async ({ page }, testInfo) => {
     // A church user reviewing attendance already recorded for a past event.
     // #EventSelector is sorted newest-first (see event/routes/checkin.php),
     // so index 1 is the furthest-future event — one with no check-ins yet,
@@ -48,12 +56,6 @@ test.describe('Events & Attendance', () => {
     await expect(page.locator('.card', { has: page.locator('.fa-calendar-check') })).toBeVisible({ timeout: 10000 });
     await settle(page, 600);
 
-    await captureScreen(page, testInfo, {
-      name: 'events-attendance-overview',
-      title: 'Check-In & Attendance',
-      category: 'Groups & Events',
-      purpose: 'Show the event check-in / attendance workflow',
-      usedIn: ['website'],
-    });
+    await captureScreen(page, testInfo, eventsAttendanceOverviewCapture);
   });
 });

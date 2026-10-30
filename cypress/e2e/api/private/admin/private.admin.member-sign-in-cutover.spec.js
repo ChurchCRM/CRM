@@ -4,11 +4,11 @@
  * Member sign-in row 13 (#10463): the release-day cutover in the 7.8.3 upgrade
  * (docs/member-sign-in-design.md §12, §17 "Cutover"). The application no longer
  * makes self-service accounts, so the pre-upgrade accounts are fixtures written
- * in SQL; the test then runs the shipped block of src/mysql/upgrade/7.8.3.sql
+ * in SQL; the test then runs the shipped block of src/mysql/upgrade/7.8.3-member-sign-in.sql
  * (task db:upgradeBlock) and reads the result back through the API wherever
  * there is one.
  */
-const CUTOVER = { script: "7.8.3.sql", block: "member sign-in row 13, release-day cutover" };
+const CUTOVER = { script: "7.8.3-member-sign-in.sql", block: "member sign-in row 13, release-day cutover" };
 const SHARED_CHANGEME_HASH = "$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S";
 const tag = `cut${Date.now()}`;
 const token = (index) => `${index}${Date.now().toString(16)}`.padEnd(64, "0");

@@ -20,12 +20,16 @@ describe("API Private Admin User", () => {
 
     it("Reset User Password", () => {
         // Use user 8 (mustchange.user) — see comment at top of file.
+        const inbox = `${Cypress.mailpitUrl()}/api/v1/search?query=${encodeURIComponent("to:herminia.bennett@example.com")}`;
+        cy.request({ method: "DELETE", url: inbox });
         cy.makePrivateAdminAPICall(
             "POST",
             "/admin/api/user/8/password/reset",
             null,
             200,
         );
+        // The sender name is the church, so the subject does not repeat it.
+        cy.request(`${inbox}&limit=1`).its("body.messages.0.Subject").should("eq", "Password Reset");
     });
 
     it("DisableTwoFactor", () => {
