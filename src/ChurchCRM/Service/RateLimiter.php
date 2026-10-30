@@ -92,7 +92,9 @@ final class RateLimiter
 
     /**
      * The address a throttle should count for the current request. IPv6 clients
-     * are counted by their /64, which one subscriber usually holds whole.
+     * are counted by their /64, which one subscriber usually holds whole; an
+     * IPv4-mapped address (::ffff:a.b.c.d) counts as its IPv4 address, or every
+     * mapped client would share one /64.
      */
     public static function clientIpKey(): string
     {
@@ -100,7 +102,11 @@ final class RateLimiter
         if (filter_var($address, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6) === false) {
             return $address;
         }
-        $prefix = substr((string) inet_pton($address), 0, 8) . str_repeat("\0", 8);
+        $packed = (string) inet_pton($address);
+        if (str_starts_with($packed, str_repeat("\0", 10) . "\xff\xff")) {
+            return (string) inet_ntop(substr($packed, 12));
+        }
+        $prefix = substr($packed, 0, 8) . str_repeat("\0", 8);
 
         return inet_ntop($prefix) . '/64';
     }
