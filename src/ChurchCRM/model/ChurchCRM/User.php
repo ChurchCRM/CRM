@@ -606,7 +606,7 @@ class User extends BaseUser
         // Every answer spends one bcrypt check, so its timing cannot tell an existing,
         // unlocked account from the refusals in SignInThrottle (#10197).
         if ($this->isBcryptHash($storedHash)) {
-            return password_verify($password, $storedHash) && !$isBlank;
+            return SignInThrottle::verifyAtTimingCost($password, $storedHash) && !$isBlank;
         }
         SignInThrottle::spendPasswordCheckTime($password);
         if ($isBlank) {
