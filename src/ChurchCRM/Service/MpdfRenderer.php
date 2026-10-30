@@ -24,9 +24,12 @@ class MpdfRenderer implements PdfRendererInterface
         }
     }
 
-    public function renderToString(string $template, array $data, bool $landscape = false): string
+    /**
+     * @param array<string, mixed> $mpdfOptions Mpdf constructor settings that replace the Letter-page defaults, such as a custom format and margins.
+     */
+    public function renderToString(string $template, array $data, bool $landscape = false, array $mpdfOptions = []): string
     {
-        return $this->build($template, $data, $landscape)->Output('', 'S');
+        return $this->build($template, $data, $landscape, $mpdfOptions)->Output('', 'S');
     }
 
     public function render(string $template, array $data, string $filename, string $disposition = 'I'): void
@@ -34,10 +37,10 @@ class MpdfRenderer implements PdfRendererInterface
         $this->build($template, $data)->Output($filename . '.pdf', $disposition === 'D' ? 'D' : 'I');
     }
 
-    private function build(string $template, array $data, bool $landscape = false): Mpdf
+    private function build(string $template, array $data, bool $landscape = false, array $mpdfOptions = []): Mpdf
     {
         $data = $this->withChurch($data);
-        $mpdf = $this->makeMpdf($landscape);
+        $mpdf = $this->makeMpdf($landscape, $mpdfOptions);
         if ($data['text_dir'] === 'rtl') {
             $mpdf->SetDirectionality('rtl');
         }
@@ -78,9 +81,9 @@ class MpdfRenderer implements PdfRendererInterface
         return SystemURLs::getDocumentRoot() . '/Images/churchcrm-logo-ink-blue.svg';
     }
 
-    private function makeMpdf(bool $landscape = false): Mpdf
+    private function makeMpdf(bool $landscape = false, array $mpdfOptions = []): Mpdf
     {
-        return new Mpdf([
+        return new Mpdf($mpdfOptions + [
             'mode' => 'utf-8',
             'autoScriptToLang' => true,
             'autoLangToFont' => true,
