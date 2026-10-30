@@ -16,8 +16,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="list-group-item">
                 <div class="row align-items-center">
                     <div class="col">
-                        <a href="<?= $sRootPath ?>/groups/sundayschool/reports" class="fw-bold text-body"><?= gettext('Sunday School Reports') ?></a>
-                        <div class="text-secondary"><?= gettext('Class lists, attendance sheets, and photo books') ?></div>
+                        <a href="<?= $sRootPath ?>/groups/sundayschool/reports" class="fw-bold text-body"><?= gettext('Sunday School Attendance Sheet') ?></a>
+                        <div class="text-secondary"><?= gettext('A weekly sign-in grid for each class. Class lists and photo books are on the Sunday School dashboard and each class page.') ?></div>
                     </div>
                     <div class="col-auto">
                         <a href="<?= $sRootPath ?>/groups/sundayschool/reports" class="btn btn-sm btn-outline-primary">

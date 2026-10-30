@@ -18773,22 +18773,10 @@ msgstr[0] "%d vullnetar i parazgjedhur u caktua"
 msgstr[1] "%d vullnetarë të parazgjedhur u caktuan"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Për këtë pozicion nevojitet ende %d vullnetar tjetër. Hapni zhvillimin për të mbushur boshllëkun."
-msgstr[1] "Për këtë pozicion nevojiten ende %d vullnetarë të tjerë. Hapni zhvillimin për të mbushur boshllëkun."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d zhvillim i ri"
 msgstr[1] "%d zhvillime të reja"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Për një zhvillim të ardhshëm nevojitet ende %d vullnetar."
-msgstr[1] "Për një zhvillim të ardhshëm nevojiten ende %d vullnetarë."
 
 #: 
 msgid "%s Calendar"
@@ -20853,10 +20841,6 @@ msgstr "Hap shërbesën"
 #: 
 msgid "Open the occurrence"
 msgstr "Hap zhvillimin"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Hapni zhvillimin për të caktuar njerëzit që ju duhen."
 
 #: 
 msgid "Open this team"

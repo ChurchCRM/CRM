@@ -4577,20 +4577,10 @@
     "many": "%d voluntarios por defecto asignados",
     "other": "%d voluntarios por defecto asignados"
   },
-  "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
-    "one": "%d voluntario más aún se necesita para esta posición. Abre la ocurrencia para llenar el hueco.",
-    "many": "%d voluntarios más aún se necesitan para esta posición. Abre la ocurrencia para llenar el hueco.",
-    "other": "%d voluntarios más aún se necesitan para esta posición. Abre la ocurrencia para llenar el hueco."
-  },
   "%d new occurrence": {
     "one": "%d nueva ocurrencia",
     "many": "%d nuevas ocurrencias",
     "other": "%d nuevas ocurrencias"
-  },
-  "%d volunteer is still needed for an upcoming occurrence.": {
-    "one": "%d voluntario aún se necesita para una próxima ocurrencia.",
-    "many": "%d voluntarios aún se necesitan para una próxima ocurrencia.",
-    "other": "%d voluntarios aún se necesitan para una próxima ocurrencia."
   },
   "%s Calendar": "Calendario de %s",
   "%s Family": "Familia %s",
@@ -5117,7 +5107,6 @@
   "Open the Ministry Dashboard": "Abre el Panel del Ministerio",
   "Open the ministry": "Abre el ministerio",
   "Open the occurrence": "Abre la ocurrencia",
-  "Open the occurrence to assign the people you need.": "Abre la ocurrencia para asignar a las personas que necesitas.",
   "Open this team": "Abre este equipo",
   "Opening a calendar to ministries requires Add Events permission": "Abrir un calendario a ministerios requiere permiso Añadir eventos",
   "Optional. Everyone qualified for a position of this team becomes a teacher of the class, and the class page no longer changes its teachers.": "Opcional. Todos calificados para una posición de este equipo se convierten en maestro de la clase, y la página de la clase ya no cambia sus maestros.",
