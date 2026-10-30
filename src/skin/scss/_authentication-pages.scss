@@ -9,7 +9,7 @@ body.page-auth {
 // Login background photo + dark overlay — only for login/auth flow pages.
 // Templates that need this must set $sBodyClass = 'page-auth page-login'.
 body.page-login {
-  background: url('/Images/login-photo.png') center/cover no-repeat fixed;
+  background: url('../Images/login-photo.png') center/cover no-repeat fixed;
 
   &::before {
     content: '';
@@ -30,7 +30,8 @@ body.page-login {
 }
 
 .login-card {
-  background: white;
+  background: var(--tblr-bg-surface, #fff);
+  color: var(--tblr-body-color, #1a1a1a);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
@@ -40,7 +41,7 @@ body.page-login {
 .login-card-header {
   text-align: center;
   padding: 32px 40px 28px;
-  border-bottom: 2px solid #f0f0f0;
+  border-bottom: 2px solid var(--tblr-border-color, #f0f0f0);
   background: linear-gradient(to bottom, rgba(102, 126, 234, 0.03), transparent);
   border-radius: 12px 12px 0 0;
 }
@@ -53,7 +54,7 @@ body.page-login {
 // Segmented pill tab control (rendered when self-registration is enabled)
 .login-tab-control {
   display: flex;
-  background: #f0f2f5;
+  background: var(--tblr-bg-surface-secondary, #f0f2f5);
   border-radius: 50px;
   padding: 4px;
   margin-bottom: 24px;
@@ -68,7 +69,7 @@ body.page-login {
   background: transparent;
   font-weight: 600;
   font-size: 14px;
-  color: #666;
+  color: var(--tblr-secondary-color, #666);
   cursor: pointer;
   transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
   display: flex;
@@ -103,20 +104,20 @@ body.page-login {
   gap: 10px 20px;
   margin-top: 24px;
   padding-top: 18px;
-  border-top: 1px solid #f0f0f0;
+  border-top: 1px solid var(--tblr-border-color, #f0f0f0);
 
   a {
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    color: #888;
+    color: var(--tblr-secondary-color, #888);
     font-size: 12px;
     text-decoration: none;
     transition: color 0.2s;
 
     i {
       font-size: 11px;
-      color: #bbb;
+      color: var(--tblr-secondary-color, #bbb);
       transition: color 0.2s;
     }
 
@@ -130,25 +131,11 @@ body.page-login {
   }
 }
 
-// Form section for the recovery/2FA/error pages
-.login-form-section {
-  padding: 45px 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-// Header with logo and church name on the recovery/2FA/error pages
-.login-form-header {
-  text-align: center;
-  background: linear-gradient(to bottom, rgba(102, 126, 234, 0.03), transparent);
-  border-bottom: 2px solid #f0f0f0;
-  border-radius: 12px 12px 0 0;
-  padding: 30px 40px;
-}
-
 .login-header-logo {
   margin-bottom: 20px;
+  background: #fff;
+  border-radius: 8px;
+  padding: 8px;
   opacity: 0.95;
   transition: opacity 0.2s;
 
@@ -167,7 +154,7 @@ body.page-login {
 .login-header-church-name {
   font-size: 24px;
   font-weight: 800;
-  color: #1a1a1a;
+  color: var(--tblr-body-color, #1a1a1a);
   margin: 0 0 8px 0;
   letter-spacing: -0.5px;
   line-height: 1.3;
@@ -175,7 +162,7 @@ body.page-login {
 
 .login-header-tagline {
   font-size: 13px;
-  color: #666;
+  color: var(--tblr-secondary-color, #666);
   margin: 0;
   font-weight: 500;
   letter-spacing: 0.3px;
@@ -188,7 +175,7 @@ body.page-login {
   h1 {
     font-size: 22px;
     font-weight: 700;
-    color: #1a1a1a;
+    color: var(--tblr-body-color, #1a1a1a);
     margin-bottom: 8px;
     display: flex;
     align-items: center;
@@ -202,7 +189,7 @@ body.page-login {
   }
 
   p {
-    color: #666;
+    color: var(--tblr-secondary-color, #666);
     font-size: 14px;
     margin: 0;
     line-height: 1.5;
@@ -216,7 +203,7 @@ body.page-auth .mb-3 {
     display: block;
     margin-bottom: 8px;
     font-weight: 600;
-    color: #333;
+    color: var(--tblr-body-color, #333);
     font-size: 13px;
     letter-spacing: 0.2px;
   }
@@ -224,26 +211,27 @@ body.page-auth .mb-3 {
   > input:not([type="checkbox"]):not([type="radio"]) {
     width: 100%;
     padding: 12px 14px;
-    border: 1.5px solid #e0e0e0;
+    border: 1.5px solid var(--tblr-border-color, #e0e0e0);
     border-radius: 8px;
     font-size: 14px;
-    background: #fafafa;
+    background: var(--tblr-bg-surface-secondary, #fafafa);
+    color: var(--tblr-body-color, #1a1a1a);
     transition: all 0.2s ease;
 
     &:hover {
-      background: #f5f5f5;
-      border-color: #d5d5d5;
+      background: var(--tblr-bg-surface-secondary, #f5f5f5);
+      border-color: var(--tblr-border-color-active, #d5d5d5);
     }
 
     &:focus {
       outline: none;
-      background: white;
+      background: var(--tblr-bg-surface, #fff);
       border-color: #667eea;
       box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.08);
     }
 
     &::placeholder {
-      color: #aaa;
+      color: var(--tblr-secondary-color, #aaa);
     }
   }
 }
@@ -336,22 +324,7 @@ body.page-auth .alert {
   padding: 12px 16px;
   font-size: 14px;
 
-  &.alert-danger {
-    background-color: #fee;
-    border: 1px solid #fcc;
-    color: #c33;
-  }
-
-  &.alert-warning {
-    background-color: #fff3cd;
-    border: 1px solid #ffc107;
-    color: #856404;
-  }
-
   &.alert-info {
-    background-color: #e7f3ff;
-    border: 1px solid #b3d9ff;
-    color: #004085;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -360,24 +333,6 @@ body.page-auth .alert {
   i {
     font-size: 18px;
     flex-shrink: 0;
-  }
-}
-
-// Back link
-.back-link {
-  text-align: center;
-  margin-top: 20px;
-  font-size: 14px;
-
-  a {
-    color: #667eea;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.2s;
-
-    &:hover {
-      color: #764ba2;
-    }
   }
 }
 
@@ -400,7 +355,8 @@ body.page-auth .alert {
 }
 
 .forgot-password-card {
-  background: white;
+  background: var(--tblr-bg-surface, #fff);
+  color: var(--tblr-body-color, #1a1a1a);
   border-radius: 12px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   padding: 45px 40px;
@@ -411,8 +367,9 @@ body.page-auth .alert {
 .forgot-password-card-logo {
   text-align: center;
   margin-bottom: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #eee;
+  padding: 8px;
+  background: #fff;
+  border-radius: 8px;
 
   img {
     height: auto;
@@ -422,14 +379,14 @@ body.page-auth .alert {
 
 .forgot-password-card h2 {
   text-align: center;
-  color: #1a1a1a;
+  color: var(--tblr-body-color, #1a1a1a);
   font-size: 18px;
   font-weight: 700;
   margin: 0 0 20px 0;
 }
 
 .forgot-password-card h3 {
-  color: #333;
+  color: var(--tblr-body-color, #333);
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 12px;
@@ -437,7 +394,7 @@ body.page-auth .alert {
 }
 
 .forgot-password-card p {
-  color: #666;
+  color: var(--tblr-secondary-color, #666);
   font-size: 13px;
   line-height: 1.6;
   margin-bottom: 25px;
@@ -522,49 +479,6 @@ body.page-auth .alert {
   }
 }
 
-// Success box for password reset confirmation
-.success-box {
-  background: #f0f8f7;
-  border: 2px solid #43d997;
-  border-radius: 8px;
-  padding: 30px 20px;
-  text-align: center;
-}
-
-.success-icon {
-  width: 60px;
-  height: 60px;
-  background: #43d997;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 28px;
-  margin: 0 auto 20px;
-}
-
-.success-box h2 {
-  font-size: 20px;
-  font-weight: 700;
-  color: #2d3748;
-  margin-bottom: 12px;
-}
-
-.success-box p {
-  color: #666;
-  font-size: 14px;
-  line-height: 1.6;
-  margin-bottom: 12px;
-}
-
-.success-box .small {
-  color: #777;
-  font-size: 13px;
-  display: block;
-  margin: 8px 0;
-}
-
 body.page-auth .alert-buttons {
   margin-top: 15px;
   display: flex;
@@ -603,12 +517,12 @@ body.page-auth .btn {
   }
 
   &.btn-secondary {
-    background: #f0f0f0;
-    color: #333;
-    border: 1px solid #ddd;
+    background: var(--tblr-bg-surface-secondary, #f0f0f0);
+    color: var(--tblr-body-color, #333);
+    border: 1px solid var(--tblr-border-color, #ddd);
 
     &:hover {
-      background: #e0e0e0;
+      background: var(--tblr-bg-surface-tertiary, #e0e0e0);
     }
   }
 }
@@ -695,17 +609,12 @@ body.page-auth .btn {
     margin-bottom: 8px;
   }
 
-  .login-form-section {
-    padding: 24px 20px;
-  }
-
   .forgot-password-card {
     padding: 30px 20px;
   }
 
   .forgot-password-card-logo {
     margin-bottom: 15px;
-    padding-bottom: 15px;
   }
 
   .forgot-password-card h2 {

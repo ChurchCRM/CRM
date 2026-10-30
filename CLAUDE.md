@@ -58,4 +58,4 @@ Before triaging or implementing an issue, read [`docs/contributing/issue-readine
 
 ## Tests
 
-Run the failing spec in isolation before committing test fixes. Before a push, run the specs the change touches locally and check UI changes in a browser in light and dark, at desktop, tablet, and phone widths; UI PRs carry screenshots (`git-workflow.md`, `cypress-testing.md`). Do not assume Cypress / Yasumi fixture shapes — read the source. `cy.visit()` paths start with `/`.
+Run the failing spec in isolation before committing test fixes. Before a push, run the specs the change touches locally and check UI changes in a browser in light and dark, at desktop, tablet, and phone widths; UI PRs carry screenshots (`git-workflow.md`, `cypress-testing.md`). Do not assume Cypress / Yasumi fixture shapes — read the source. `cy.visit()` paths start with `/`. Raw `fetch`, `cy.task` and `win.fetch` use `absoluteUrl()` from `cypress/support/urls.js` so a subdirectory install keeps the install path.

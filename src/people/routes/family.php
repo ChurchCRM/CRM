@@ -10,6 +10,7 @@ use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Map\PledgeTableMap;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
+use ChurchCRM\Service\CustomFieldService;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Service\TimelineService;
 use ChurchCRM\Slim\SlimUtils;
@@ -177,9 +178,10 @@ function viewFamily(Request $request, Response $response, array $args): Response
     $appFamilyCustomFields = $rawQry->findOneByFamId($familyId);
 
     $familyCustom = [];
+    $customFieldService = new CustomFieldService();
     if ($appFamilyCustomFields) {
         foreach ($allFamilyCustomFields as $customfield) {
-            if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($customfield->getFieldSecurity())) {
+            if ($customFieldService->canView($customfield->getFieldSecurity())) {
                 $value = $appFamilyCustomFields->getVirtualColumn($customfield->getField());
                 if (!empty($value)) {
                     $item = new PeopleCustomField($customfield, $value);

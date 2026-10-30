@@ -928,10 +928,6 @@ msgid "Voting Members"
 msgstr "வாக்களிக்கும் உறுப்பினர்கள்"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "அறிக்கையை வழங்குதல் (வரி அறிக்கைகள்)"
-
-#: 
 msgid "Zero Givers"
 msgstr "ஜீரோ கொடுப்பவர்கள்"
 
@@ -1729,14 +1725,6 @@ msgstr "அனுமதி"
 #: 
 msgid "System Settings"
 msgstr "கணினி அமைப்புகளை"
-
-#: 
-msgid "Tax Report"
-msgstr "வரி அறிக்கை"
-
-#: 
-msgid "Calendar Year"
-msgstr "காலண்டர் ஆண்டு"
 
 #: 
 msgid "User Editor"
@@ -5474,10 +5462,6 @@ msgid "Submit Registration"
 msgstr "பதிவைச் சமர்ப்பிக்கவும்"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "ஒரு புதிய கடவுச்சொல் உருவாக்கப்பட்டு உங்கள் மின்னஞ்சல் முகவரிக்கு அனுப்பப்பட்டுள்ளது."
-
-#: 
 msgid "Apply Update Now"
 msgstr "புதுப்பிப்பை இப்போது பயன்படுத்தவும்"
 
@@ -5522,20 +5506,12 @@ msgid "Login Name is required"
 msgstr "உள்நுழைவு பெயர் தேவை"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "மின்னஞ்சலைப் பெற்றவுடன், உங்கள் தற்காலிக கடவுச்சொல்லுடன் உள்நுழைந்து அதை நீங்கள் விரும்பும் ஏதாவது ஒன்றிற்கு மாற்றலாம்."
-
-#: 
 msgid "Password Reset Error"
 msgstr "கடவுச்சொல் மீட்டமைப்பு பிழை"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "கடவுச்சொல் மீட்டமைப்பு வெற்றிகரமாக"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "உங்கள் தற்காலிக கடவுச்சொல்லுக்கு உங்கள் மின்னஞ்சலை (ஸ்பேம்/குப்பை கோப்புறை உட்பட) சரிபார்க்கவும்."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -6327,10 +6303,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "தேதி, நிதி, குடும்பம் மற்றும் கட்டண முறை மூலம் வடிகட்டுவதன் மூலம் தனிப்பயனாக்கக்கூடிய அறிக்கை."
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "வரி அறிக்கைகளில் தோன்றும் உரையைத் தனிப்பயனாக்கவும் (sTaxReport1, sTaxReport2, முதலியன)."
-
-#: 
 msgid "Day"
 msgstr "நாள்"
 
@@ -6411,20 +6383,12 @@ msgid "Generate"
 msgstr "உருவாக்கு"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "வரி அறிக்கைகளை உருவாக்கு"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "நன்கொடையாளர்களுக்கு வருடாந்திர வரி விலக்கு அளிக்கும் கொடுப்பனவு அறிக்கைகளை உருவாக்கு. அச்சிடலாம் அல்லது மின்னஞ்சல் செய்யலாம்."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "நிலுவையில் உள்ள உறுதிமொழிகளைக் கொண்ட குடும்பங்களுக்கு நினைவூட்டல் கடிதங்களை உருவாக்கு."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "வரி அறிக்கைகள், உறுதிமொழி கண்காணிப்பு மற்றும் நிதி பகுப்பாய்வுக்கான அறிக்கைகளை உருவாக்கு."
 
 #: 
 msgid "ID"
@@ -6607,10 +6571,6 @@ msgid "System Info"
 msgstr "கணினித் தகவல்"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "வரி மற்றும் நன்கொடை அறிக்கைகள்"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "வரி அறிக்கை வாசகங்கள்"
 
@@ -6637,10 +6597,6 @@ msgstr "மேம்படுத்து"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "பயனர் ஒரு நிர்வாகியாக இருக்க வேண்டும் அல்லது நிதி அனுமதி பெற்றிருக்க வேண்டும்."
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "வரி அறிக்கைகளில் தேவாலயத்தின் பெயர், முகவரி மற்றும் தொடர்புத் தகவல் தோன்றுவதை உறுதிசெய்யவும்."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9155,10 +9111,6 @@ msgstr "நிதி உறுதிமொழி நினைவூட்டல�
 #: 
 msgid "Generate reports on group membership and activities"
 msgstr "குழு உறுப்பினர் மற்றும் நடவடிக்கைகள் பற்றிய அறிக்கைகளை உருவாக்கவும்"
-
-#: 
-msgid "Generate tax statement documents for donors"
-msgstr "நன்கொடையாளர்களுக்கான வரி அறிக்கை ஆவணங்களை உருவாக்கவும்"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -12362,10 +12314,6 @@ msgstr "மின்னஞ்சல் முடக்கப்பட்டு�
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "மின்னஞ்சல் முடக்கப்பட்டுள்ளது. கடவுச்சொற்களை மீட்டமைக்கும் முன் மின்னஞ்சலை உள்ளமைக்கவும் அல்லது கடவுச்சொல் மாற்று பயன்படுத்தவும்."
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "உங்கள் காப்பு மீட்பு குறியீடுகளில் ஒன்றை உள்ளிடவும்"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"
@@ -15987,10 +15935,6 @@ msgid "Please confirm your family information"
 msgstr "உங்கள் குடும்ப தகவலை உறுதிப்படுத்தவும்"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "உங்கள் அடுத்த பரிசை %s-க்கு அஞ்சல் செய்யவும்"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "இந்த நன்கொடைகளை இணைக்க வேறு குடும்பத்தைத் தேர்ந்தெடுக்கவும்"
 
@@ -18021,14 +17965,6 @@ msgid "{{minutes}} min left"
 msgstr "{{minutes}} நிமிடங்கள் மீதம்"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d வரி ஆவணம் குடும்பத்திற்கு வெற்றிகரமாக மின்னஞ்சல் அனுப்பப்பட்டது."
-
-#: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d வழங்குதல் அறிக்கை"
-
-#: 
 msgid "All classifications"
 msgstr "அனைத்து வகைப்பாடுகள்"
 
@@ -18061,28 +17997,8 @@ msgid "Columns per Page"
 msgstr "பக்கத்திற்கு நெடுவரிசைகள்"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "அன்பு %s குடும்பத்தினர்,\n"
-"\n"
-"தயவு செய்து உங்கள் %d வழங்குதல் அறிக்கை %s இலிருந்து இந்த மின்னஞ்சலுடன் இணைக்கப்பட்ட கோப்பாக கண்டறியவும்.\n"
-"\n"
-"ஏதேனும் கேள்விகள் இருந்தால், தயவு செய்து தேவாலய அலுவலகத்தைத் தொடர்பு கொள்ளவும்.\n"
-"\n"
-"உங்கள் தாரளத்திற்கு நன்றி."
-
-#: 
 msgid "Download CSV"
 msgstr "CSV ஐ பதிவிறக்கவும்"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "மின்னஞ்சல் %d வரி ஆவணம்"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18185,10 +18101,6 @@ msgid "Pledged"
 msgstr "உறுதிமொழி"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "அச்சு %d வரி ஆவணம்"
-
-#: 
 msgid "Recent Friends"
 msgstr "சமீபத்திய நண்பர்கள்"
 
@@ -18213,24 +18125,8 @@ msgid "Single Pages"
 msgstr "ஒற்றை பக்கங்கள்"
 
 #: 
-msgid "Tax Documents"
-msgstr "வரி ஆவணங்கள்"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "வரி ஆவணம் மின்னஞ்சல் அனுப்பத் தவறிவிட்டது. உங்கள் மின்னஞ்சல் சேவையக அமைப்புகளைச் சரிபார்க்கவும்."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "இரண்டு அரை-அளவு பக்கங்கள் ஒவ்வொரு ல்யாண்ட்ஸ்கேப் தாளுக்கும் ஒருவருக்கொருவர், புத்தக வரிசையில். \"குறுகிய விளிம்பில் புரட்டு\" என்பதைக் கொண்டு இரட்டை-பக்கம் அச்சு செய்யவும், பின்னர் ஸ்டேக்கை பாதியாக மடிக்கவும். நெடுவரிசைகள் ஒவ்வொரு அரை பக்கத்திற்கும் எண்ணப்படுகின்றன."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "வரி ஆவணம் மின்னஞ்சல் செய்ய முடியாது: அந்த வருடத்திற்கு பணி தரவு கண்டறியப்படவில்லை."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "வரி ஆவணம் மின்னஞ்சல் செய்ய முடியாது: இந்த குடும்பத்திற்கு கோப்பில் மின்னஞ்சல் முகவரி இல்லை."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -20221,10 +20117,6 @@ msgid "How often"
 msgstr "எவ்வளவு அடிக்கடி"
 
 #: 
-msgid "How to correct this"
-msgstr "இதை எப்படிச் சரிசெய்வது"
-
-#: 
 msgid "I can't"
 msgstr "என்னால் முடியாது"
 
@@ -21545,10 +21437,6 @@ msgstr "உள்நுழைந்தார்"
 #: 
 msgid "Signed up"
 msgstr "பதிவு செய்தார்"
-
-#: 
-msgid "Sincerely"
-msgstr "இப்படிக்கு"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
@@ -24673,4 +24561,20 @@ msgstr "வகுப்பு உள்ள அனைவரும் ஒரு �
 #: 
 msgid "Through Grade"
 msgstr "வகுப்பு வரை"
+
+#: 
+msgid "Invalid setting name or value"
+msgstr "தவறான அமைப்புப் பெயர் அல்லது மதிப்பு"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "புவிக்குறியீட்டுச் சேவை பதிலளிக்கவில்லை — பின்னர் மீண்டும் முயற்சிக்கவும்"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "நீங்கள் அனுப்பிய மின்னஞ்சல் மட்டுமே காட்டப்படும்."
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "மீண்டும் வரும் நிகழ்வுகளை உருவாக்க முடியவில்லை. விவரங்களுக்கு பயன்பாட்டு பதிவைச் சரிபார்க்கவும்."
 
