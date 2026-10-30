@@ -32,7 +32,9 @@ final class SignInAuditRetention
      */
     public static function run(bool $force = false): ?array
     {
-        if (!(new RateLimiter(self::DAILY_BUCKET, 1, self::DAY_SECONDS))->attempt(self::DAILY_KEY) && !$force) {
+        $daily = new RateLimiter(self::DAILY_BUCKET, 1, self::DAY_SECONDS);
+        $claimed = $daily->attempt(self::DAILY_KEY);
+        if (!$claimed && !$force) {
             return null;
         }
 
@@ -40,6 +42,22 @@ final class SignInAuditRetention
         $unmatchedBefore = $now->modify('-' . self::UNMATCHED_DAYS . ' days')->format('Y-m-d H:i:s');
         $identifiersBefore = $now->modify('-' . self::IDENTIFIER_DAYS . ' days')->format('Y-m-d H:i:s');
 
+        try {
+            return self::prune($unmatchedBefore, $identifiersBefore);
+        } catch (\Throwable $exception) {
+            // A failed run gives today's slot back, so the next timer run tries again.
+            if ($claimed) {
+                $daily->clear(self::DAILY_KEY);
+            }
+            throw $exception;
+        }
+    }
+
+    /**
+     * @return array{deleted: int, ipCleared: int, emailCleared: int}
+     */
+    private static function prune(string $unmatchedBefore, string $identifiersBefore): array
+    {
         return [
             'deleted' => PortalSigninAuditQuery::create()
                 ->filterByPersonId(null, Criteria::ISNULL)

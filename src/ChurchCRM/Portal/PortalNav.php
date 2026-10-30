@@ -159,9 +159,7 @@ class PortalNav
     /** My Giving and My Family belong to a family, so a member without one gets neither entry. */
     public static function hasFamily(): bool
     {
-        $user = AuthenticationManager::getCurrentUser();
-
-        return $user instanceof User && $user->getPerson()?->getFamily() !== null;
+        return PortalContext::person()?->getFamily() !== null;
     }
 
     /**

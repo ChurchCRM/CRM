@@ -23,6 +23,7 @@
 
 declare(strict_types=1);
 
+use ChurchCRM\Authentication\SignInThrottle;
 use ChurchCRM\model\ChurchCRM\User;
 
 const FLOOR_MS = 20.0;
@@ -70,6 +71,25 @@ check('legacy MD5 account, blank password', $md5, '', false);
 $sha = new User();
 $sha->setPassword(hash('sha256', 'correct horse'));
 check('legacy SHA-256 account, wrong password', $sha, 'wrong', false);
+
+// A hash saved before PHP 8.4 has cost 10, about a quarter of the refusals'
+// cost-12 check. A wrong password against it must take about as long.
+$timed = static function (callable $work): float {
+    $start = hrtime(true);
+    $work();
+
+    return (hrtime(true) - $start) / 1e6;
+};
+$cost10 = new User();
+$cost10->setPassword(password_hash('correct horse', PASSWORD_BCRYPT, ['cost' => 10]));
+$refusalMs = $timed(static fn () => SignInThrottle::spendPasswordCheckTime('wrong'));
+$cost10Ms = $timed(static fn () => $cost10->isPasswordValid('wrong'));
+$case++;
+$ok = $cost10Ms >= 0.6 * $refusalMs && !$cost10->isPasswordValid('wrong');
+if (!$ok) {
+    $failures++;
+}
+printf("%s %d - cost-10 account, wrong password, takes about as long as a refusal (%.1f ms vs %.1f ms)\n", $ok ? 'ok' : 'not ok', $case, $cost10Ms, $refusalMs);
 
 echo $failures === 0 ? "# all {$case} passed\n" : "# {$failures} of {$case} failed\n";
 exit($failures === 0 ? 0 : 1);
