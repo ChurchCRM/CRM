@@ -42,6 +42,9 @@ const streamContents = (binaryBody) => {
 
 const unescapeText = (text) => text.replace(/\\([\\()])/g, "$1");
 
+// mPDF draws "fi", "ff" and the like as one ligature glyph; read them back as letters.
+const LIGATURES = { "\uFB00": "ff", "\uFB01": "fi", "\uFB02": "fl", "\uFB03": "ffi", "\uFB04": "ffl", "\uFB05": "st", "\uFB06": "st" };
+
 // FPDF writes Latin-1. mPDF in utf-8 mode writes UTF-16BE, and letter-spacing
 // splits one line across a TJ array.
 const decodePdfText = (text) => {
@@ -64,7 +67,7 @@ const decodePdfText = (text) => {
     for (let i = start; i < value.length; i += 2) {
         out += String.fromCharCode((value.charCodeAt(i) << 8) | value.charCodeAt(i + 1));
     }
-    return out;
+    return out.replace(/[\uFB00-\uFB06]/g, (ligature) => LIGATURES[ligature]);
 };
 
 const TEXT_OPERATOR = /\[((?:\\.|[^\\\]])*)\]\s*TJ|\(((?:\\.|[^\\)])*)\)\s*Tj/g;

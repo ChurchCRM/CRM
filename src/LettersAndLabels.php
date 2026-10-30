@@ -64,7 +64,7 @@ $sLabelFontSize = (string) ($_COOKIE['labelfontsize'] ?? '');
     <div class="card-footer d-flex flex-wrap gap-2">
       <button type="submit" class="btn btn-primary"><i class="fa-solid fa-file-pdf me-2"></i><?= gettext('Newsletter labels') ?></button>
       <button type="submit" class="btn btn-secondary" formaction="<?= InputUtils::escapeAttribute($sRootPath . '/people/labels/confirm') ?>"><i class="fa-solid fa-file-pdf me-2"></i><?= gettext('Confirm data labels') ?></button>
-      <a class="btn btn-link ms-auto" href="<?= InputUtils::escapeAttribute($sRootPath . '/people/reports') ?>"><?= gettext('Cancel') ?></a>
+      <a class="btn btn-link ms-auto" href="<?= InputUtils::escapeAttribute($sRootPath . '/v2/dashboard') ?>"><?= gettext('Cancel') ?></a>
     </div>
   </form>
 </div>
