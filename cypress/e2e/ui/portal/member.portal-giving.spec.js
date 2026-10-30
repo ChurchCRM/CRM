@@ -96,7 +96,7 @@ describe("Member chooses a contribution statement year", () => {
     });
 
     it("offers no statement to a member who is not an adult of the household", () => {
-        cy.setupLoginSession("giving-non-adult", "limited.user", "changeme");
+        cy.signInAsMember(4);
         cy.visit("/portal/giving");
         cy.contains("Contribution statements are issued to the adults of a household").should("be.visible");
         cy.get("#portal-giving form").should("not.exist");
