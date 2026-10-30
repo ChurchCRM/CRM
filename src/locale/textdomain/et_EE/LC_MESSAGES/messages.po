@@ -18782,22 +18782,10 @@ msgstr[0] "%d vaikimisi vabatahtlik määratud"
 msgstr[1] "%d vaikimisi vabatahtlikku määratud"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Sellele ülesandele on veel vaja %d vabatahtlikku. Ava toimumiskord, et lünk täita."
-msgstr[1] "Sellele ülesandele on veel vaja %d vabatahtlikku. Ava toimumiskord, et lünk täita."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d uus toimumiskord"
 msgstr[1] "%d uut toimumiskorda"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Eesolevale toimumiskorrale on veel vaja %d vabatahtlikku."
-msgstr[1] "Eesolevatele toimumiskordadele on veel vaja %d vabatahtlikku."
 
 #: 
 msgid "%s Calendar"
@@ -20862,10 +20850,6 @@ msgstr "Ava valdkond"
 #: 
 msgid "Open the occurrence"
 msgstr "Ava toimumiskord"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Ava toimumiskord, et määrata vajalikud inimesed."
 
 #: 
 msgid "Open this team"
