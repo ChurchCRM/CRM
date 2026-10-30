@@ -113,6 +113,31 @@ final class SignInThrottle
         password_verify($password, self::TIMING_HASH);
     }
 
+    /**
+     * password_verify() against a stored hash, taking about as long as the
+     * refusals' check at TIMING_HASH's cost. Hashes saved before PHP 8.4 have
+     * cost 10, which runs about four times faster than cost 12 and would tell
+     * an existing account from an unknown one; bcrypt work doubles with each
+     * cost step, so the shortfall is waited out.
+     */
+    public static function verifyAtTimingCost(string $password, string $hash): bool
+    {
+        $started = hrtime(true);
+        $valid = password_verify($password, $hash);
+        $missingSteps = self::bcryptCost(self::TIMING_HASH) - self::bcryptCost($hash);
+        if ($missingSteps > 0) {
+            $elapsedMicroseconds = (hrtime(true) - $started) / 1000;
+            usleep((int) ($elapsedMicroseconds * ((2 ** $missingSteps) - 1)));
+        }
+
+        return $valid;
+    }
+
+    private static function bcryptCost(string $hash): int
+    {
+        return preg_match('/^\$2[aby]\$(\d{2})\$/', $hash, $matches) === 1 ? (int) $matches[1] : 0;
+    }
+
     public static function lockoutSeconds(): int
     {
         return max(1, SystemConfig::getIntValue('iLoginLockoutMinutes')) * 60;
