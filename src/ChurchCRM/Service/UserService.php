@@ -635,10 +635,6 @@ class UserService
 
         TokenQuery::create()
             ->filterByType(Token::TYPE_PASSWORD)
-            ->filterByReferenceId($user->getId())
-            ->delete();
-        TokenQuery::create()
-            ->filterByType(Token::TYPE_PASSWORD)
             ->filterByValidUntilDate(new \DateTime(), Criteria::LESS_THAN)
             ->delete();
 
@@ -654,6 +650,14 @@ class UserService
 
             return;
         }
+        // Earlier links stop working only once the new one is delivered. A link
+        // that expires later came from a newer request, so it is left alone.
+        TokenQuery::create()
+            ->filterByType(Token::TYPE_PASSWORD)
+            ->filterByReferenceId($user->getId())
+            ->filterByToken($token->getToken(), Criteria::NOT_EQUAL)
+            ->filterByValidUntilDate($token->getValidUntilDate(), Criteria::LESS_EQUAL)
+            ->delete();
         $logger->info('Password reset link sent', $logCtx);
     }
 }
