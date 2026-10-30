@@ -305,6 +305,7 @@ class PortalExtension extends AbstractExtension implements GlobalsInterface
                 'familyId' => 0,
                 'isTeamLeader' => false,
                 'isStaff' => false,
+                'signedInWithPassword' => false,
             ];
         }
 
@@ -329,6 +330,8 @@ class PortalExtension extends AbstractExtension implements GlobalsInterface
             // portal_can('volunteer.team.manage') instead.
             'isTeamLeader' => $this->portalCan(CorePortalCapabilities::TEAM_MANAGE),
             'isStaff' => $staffUser !== null && !$staffUser->isEditSelfExclusive(),
+            // The password and two-factor pages exist only for a staff session (§6.4).
+            'signedInWithPassword' => $staffUser !== null,
         ];
     }
 
