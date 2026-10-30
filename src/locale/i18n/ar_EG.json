@@ -4637,14 +4637,6 @@
     "many": "تم تكليف %d متطوعًا افتراضيًا",
     "other": "تم تكليف %d متطوع افتراضي"
   },
-  "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
-    "zero": "لا حاجة إلى مزيد من المتطوعين لهذه المهمة. افتح الموعد لسدّ الثغرة.",
-    "one": "لا يزال مطلوبًا %d متطوع إضافي لهذه المهمة. افتح الموعد لسدّ الثغرة.",
-    "two": "لا يزال مطلوبًا %d متطوعان إضافيان لهذه المهمة. افتح الموعد لسدّ الثغرة.",
-    "few": "لا يزال مطلوبًا %d متطوعين إضافيين لهذه المهمة. افتح الموعد لسدّ الثغرة.",
-    "many": "لا يزال مطلوبًا %d متطوعًا إضافيًا لهذه المهمة. افتح الموعد لسدّ الثغرة.",
-    "other": "لا يزال مطلوبًا %d متطوع إضافي لهذه المهمة. افتح الموعد لسدّ الثغرة."
-  },
   "%d new occurrence": {
     "zero": "لا مواعيد جديدة",
     "one": "%d موعد جديد",
@@ -4652,14 +4644,6 @@
     "few": "%d مواعيد جديدة",
     "many": "%d موعدًا جديدًا",
     "other": "%d موعد جديد"
-  },
-  "%d volunteer is still needed for an upcoming occurrence.": {
-    "zero": "لا متطوعين مطلوبين لموعد قادم.",
-    "one": "لا يزال مطلوبًا %d متطوع لموعد قادم.",
-    "two": "لا يزال مطلوبًا %d متطوعان لموعد قادم.",
-    "few": "لا يزال مطلوبًا %d متطوعين لموعد قادم.",
-    "many": "لا يزال مطلوبًا %d متطوعًا لموعد قادم.",
-    "other": "لا يزال مطلوبًا %d متطوع لموعد قادم."
   },
   "%s Calendar": "تقويم %s",
   "%s Family": "أسرة %s",
@@ -5198,7 +5182,6 @@
   "Open the Ministry Dashboard": "فتح لوحة الخدمة",
   "Open the ministry": "فتح الخدمة",
   "Open the occurrence": "فتح الموعد",
-  "Open the occurrence to assign the people you need.": "افتح الموعد لتكليف الأشخاص الذين تحتاجهم.",
   "Open this team": "فتح هذا الفريق",
   "Opening a calendar to ministries requires Add Events permission": "فتح تقويم للخدمات يتطلب إذن إضافة الفعاليات",
   "Optional. Everyone qualified for a position of this team becomes a teacher of the class, and the class page no longer changes its teachers.": "اختياري. كل من هو مؤهل لمهمة في هذا الفريق يصبح معلمًا للفصل، ولا تغيّر صفحة الفصل معلميه بعد ذلك.",

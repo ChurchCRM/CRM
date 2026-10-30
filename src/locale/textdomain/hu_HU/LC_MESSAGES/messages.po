@@ -18808,22 +18808,10 @@ msgstr[0] "%d alapértelmezett önkéntes beosztva"
 msgstr[1] "%d alapértelmezett önkéntes beosztva"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Ehhez a pozícióhoz még %d önkéntesre van szükség. Nyisd meg az alkalmat a hiány pótlásához."
-msgstr[1] "Ehhez a pozícióhoz még %d önkéntesre van szükség. Nyisd meg az alkalmat a hiány pótlásához."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d új alkalom"
 msgstr[1] "%d új alkalom"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Egy közelgő alkalomhoz még %d önkéntesre van szükség."
-msgstr[1] "Közelgő alkalmakhoz még %d önkéntesre van szükség."
 
 #: 
 msgid "%s Calendar"
@@ -20888,10 +20876,6 @@ msgstr "Szolgálati terület megnyitása"
 #: 
 msgid "Open the occurrence"
 msgstr "Az alkalom megnyitása"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Nyisd meg az alkalmat, hogy beoszd a szükséges embereket."
 
 #: 
 msgid "Open this team"
