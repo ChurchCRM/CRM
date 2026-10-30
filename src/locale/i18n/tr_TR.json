@@ -4557,17 +4557,9 @@
     "one": "%d varsayılan gönüllü atandı",
     "other": "%d varsayılan gönüllü atandı"
   },
-  "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
-    "one": "Bu pozisyon için hâlâ %d gönüllü daha gerekiyor. Boşluğu doldurmak için oluşumu açın.",
-    "other": "Bu pozisyon için hâlâ %d gönüllü daha gerekiyor. Boşluğu doldurmak için oluşumu açın."
-  },
   "%d new occurrence": {
     "one": "%d yeni oluşum",
     "other": "%d yeni oluşum"
-  },
-  "%d volunteer is still needed for an upcoming occurrence.": {
-    "one": "Yaklaşan bir oluşum için hâlâ %d gönüllü gerekiyor.",
-    "other": "Yaklaşan bir oluşum için hâlâ %d gönüllü gerekiyor."
   },
   "%s Calendar": "%s Takvimi",
   "%s Family": "%s Ailesi",
@@ -5090,7 +5082,6 @@
   "Open the Ministry Dashboard": "Hizmet Panosunu aç",
   "Open the ministry": "Hizmeti aç",
   "Open the occurrence": "Oluşumu aç",
-  "Open the occurrence to assign the people you need.": "İhtiyacınız olan kişileri atamak için oluşumu açın.",
   "Open this team": "Bu ekibi aç",
   "Opening a calendar to ministries requires Add Events permission": "Bir takvimi hizmetlere açmak için Etkinlik Ekleme yetkisi gerekir",
   "Optional. Everyone qualified for a position of this team becomes a teacher of the class, and the class page no longer changes its teachers.": "İsteğe bağlı. Bu ekibin bir pozisyonu için yetkili herkes sınıfın öğretmeni olur ve sınıf sayfası artık öğretmenlerini değiştirmez.",

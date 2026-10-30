@@ -18767,25 +18767,11 @@ msgstr[1] "%d zadana volontera dodijeljena"
 msgstr[2] "%d zadanih volontera dodijeljeno"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Za ovu poziciju još je potreban %d volonter. Otvorite termin da popunite prazninu."
-msgstr[1] "Za ovu poziciju još su potrebna %d volontera. Otvorite termin da popunite prazninu."
-msgstr[2] "Za ovu poziciju još je potrebno %d volontera. Otvorite termin da popunite prazninu."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d novi termin"
 msgstr[1] "%d nova termina"
 msgstr[2] "%d novih termina"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Za nadolazeći termin još je potreban %d volonter."
-msgstr[1] "Za nadolazeći termin još su potrebna %d volontera."
-msgstr[2] "Za nadolazeći termin još je potrebno %d volontera."
 
 #: 
 msgid "%s Calendar"
@@ -20854,10 +20840,6 @@ msgstr "Otvori službu"
 #: 
 msgid "Open the occurrence"
 msgstr "Otvori termin"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Otvorite termin i dodijelite ljude koji su vam potrebni."
 
 #: 
 msgid "Open this team"

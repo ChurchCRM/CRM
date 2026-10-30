@@ -4557,17 +4557,9 @@
     "one": "%d voluntário padrão designado",
     "other": "%d voluntários padrão designados"
   },
-  "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
-    "one": "Mais %d voluntário ainda é necessário para esta função. Abra a ocorrência para preencher a vaga.",
-    "other": "Mais %d voluntários ainda são necessários para esta função. Abra a ocorrência para preencher a vaga."
-  },
   "%d new occurrence": {
     "one": "%d nova ocorrência",
     "other": "%d novas ocorrências"
-  },
-  "%d volunteer is still needed for an upcoming occurrence.": {
-    "one": "%d voluntário ainda é necessário para uma próxima ocorrência.",
-    "other": "%d voluntários ainda são necessários para uma próxima ocorrência."
   },
   "%s Calendar": "Calendário de %s",
   "%s Family": "Família %s",
@@ -5090,7 +5082,6 @@
   "Open the Ministry Dashboard": "Abrir o painel do ministério",
   "Open the ministry": "Abrir o ministério",
   "Open the occurrence": "Abrir a ocorrência",
-  "Open the occurrence to assign the people you need.": "Abra a ocorrência para designar as pessoas de que precisa.",
   "Open this team": "Abrir esta equipa",
   "Opening a calendar to ministries requires Add Events permission": "Abrir um calendário a ministérios exige permissão para Adicionar Eventos",
   "Optional. Everyone qualified for a position of this team becomes a teacher of the class, and the class page no longer changes its teachers.": "Opcional. Todos os qualificados para uma função desta equipa tornam-se professores da turma, e a página da turma deixa de alterar seus professores.",

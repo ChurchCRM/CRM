@@ -4557,17 +4557,9 @@
     "one": "%d oletusvapaaehtoinen määrätty",
     "other": "%d oletusvapaaehtoista määrätty"
   },
-  "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
-    "one": "Tähän tehtävään tarvitaan vielä %d vapaaehtoinen lisää. Avaa tapahtumakerta täyttääksesi aukon.",
-    "other": "Tähän tehtävään tarvitaan vielä %d vapaaehtoista lisää. Avaa tapahtumakerta täyttääksesi aukon."
-  },
   "%d new occurrence": {
     "one": "%d uusi tapahtumakerta",
     "other": "%d uutta tapahtumakertaa"
-  },
-  "%d volunteer is still needed for an upcoming occurrence.": {
-    "one": "Tulevalle tapahtumakerralle tarvitaan vielä %d vapaaehtoinen.",
-    "other": "Tuleville tapahtumakerroille tarvitaan vielä %d vapaaehtoista."
   },
   "%s Calendar": "%s-kalenteri",
   "%s Family": "Perhe %s",
@@ -5090,7 +5082,6 @@
   "Open the Ministry Dashboard": "Avaa työalan koontinäkymä",
   "Open the ministry": "Avaa työala",
   "Open the occurrence": "Avaa tapahtumakerta",
-  "Open the occurrence to assign the people you need.": "Avaa tapahtumakerta määrittääksesi tarvitsemasi henkilöt.",
   "Open this team": "Avaa tämä tiimi",
   "Opening a calendar to ministries requires Add Events permission": "Kalenterin avaaminen työaloille vaatii Lisää tapahtumia -oikeuden",
   "Optional. Everyone qualified for a position of this team becomes a teacher of the class, and the class page no longer changes its teachers.": "Valinnainen. Jokainen tämän tiimin tehtävään kelpuutettu tulee luokan opettajaksi, eikä luokan sivu enää muuta sen opettajia.",
