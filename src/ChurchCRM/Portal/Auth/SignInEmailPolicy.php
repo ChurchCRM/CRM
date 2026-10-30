@@ -137,14 +137,14 @@ final class SignInEmailPolicy
 
         $personId = (int) $person->getId();
         $now = $this->now();
-        $state = PersonSigninQuery::create()->findPk($personId);
-        $signedIn = $this->hasSignedIn($state);
         $unconfirmed = false;
         $devicesRevoked = 0;
 
         $connection = Propel::getWriteConnection(PersonSigninTableMap::DATABASE_NAME);
         $connection->beginTransaction();
         try {
+            $state = PersonSigninQuery::create()->filterByPersonId($personId)->lockForUpdate()->findOne($connection);
+            $signedIn = $this->hasSignedIn($state);
             $this->cancelOpenLinks($personId, null, $now);
             if ($signedIn) {
                 $state->endAllSessions();
@@ -256,7 +256,6 @@ final class SignInEmailPolicy
         }
 
         $now = $this->now();
-        $this->cancelOpenLinks($personId, self::KIND_CHANGE, $now);
         if (!$this->sendConfirmEmail($person, $newEmail, $now)) {
             throw new EmailChangeRefusedException(gettext('The confirmation email could not be sent. Please try again later.'), 503);
         }
@@ -290,10 +289,7 @@ final class SignInEmailPolicy
             return false;
         }
 
-        $now = $this->now();
-        $this->cancelOpenLinks($personId, self::KIND_CHANGE, $now);
-
-        return $this->sendConfirmEmail($person, $address, $now);
+        return $this->sendConfirmEmail($person, $address, $this->now());
     }
 
     /** The address the member asked to change to, while its link is still open. */
@@ -398,20 +394,30 @@ final class SignInEmailPolicy
         }
 
         $personId = (int) $person->getId();
-        $state = PersonSigninQuery::create()->findPk($personId);
-        $refusal = $this->confirmRefusal($person, $state, $actor->isAdmin());
-        if ($refusal !== null) {
-            throw new EmailChangeRefusedException($refusal, trim((string) $state?->getUnconfirmedEmail()) === '' ? 409 : 403);
-        }
-        if (!self::sameAddress($state->getUnconfirmedEmail(), $email)) {
-            throw new EmailChangeRefusedException(gettext('The unconfirmed email has changed. Reload the page and try again.'), 409);
-        }
+        // Locked, so an address staged by a save after this read is never cleared unconfirmed.
+        $connection = Propel::getWriteConnection(PersonSigninTableMap::DATABASE_NAME);
+        $connection->beginTransaction();
+        try {
+            $state = PersonSigninQuery::create()->filterByPersonId($personId)->lockForUpdate()->findOne($connection);
+            $refusal = $this->confirmRefusal($person, $state, $actor->isAdmin());
+            if ($refusal !== null) {
+                throw new EmailChangeRefusedException($refusal, trim((string) $state?->getUnconfirmedEmail()) === '' ? 409 : 403);
+            }
+            if (!self::sameAddress($state->getUnconfirmedEmail(), $email)) {
+                throw new EmailChangeRefusedException(gettext('The unconfirmed email has changed. Reload the page and try again.'), 409);
+            }
 
-        $address = (string) $state->getUnconfirmedEmail();
-        $source = (string) $state->getUnconfirmedSource();
-        $this->clearUnconfirmed($state);
-        $state->save();
-        $this->cancelOpenLinks($personId, self::KIND_CONFIRM, $this->now());
+            $address = (string) $state->getUnconfirmedEmail();
+            $source = (string) $state->getUnconfirmedSource();
+            $this->clearUnconfirmed($state);
+            $state->save($connection);
+            $this->cancelOpenLinks($personId, self::KIND_CONFIRM, $this->now());
+            $connection->commit();
+        } catch (Throwable $e) {
+            $connection->rollBack();
+
+            throw $e;
+        }
 
         SignInAudit::record(
             SignInAuditEvent::EMAIL_CONFIRMED,
@@ -541,37 +547,36 @@ final class SignInEmailPolicy
         }
     }
 
+    /** A new change link to `$address`. The open ones before it stop working only once it is sent. */
     private function sendConfirmEmail(Person $person, string $address, DateTimeImmutable $now): bool
     {
-        [$token, $expiresAt] = $this->issueLink((int) $person->getId(), self::KIND_CHANGE, $address, $now);
-        if ((new EmailChangeConfirmEmail($address, $person, self::linkUrl($token), $expiresAt))->send()) {
-            return true;
-        }
+        [$token, $expiresAt, $linkId] = $this->issueLink((int) $person->getId(), self::KIND_CHANGE, $address, $now);
+        $sent = (new EmailChangeConfirmEmail($address, $person, self::linkUrl($token), $expiresAt))->send();
+        $cancel = $sent
+            ? $this->openLinks((int) $person->getId(), self::KIND_CHANGE, $now)->filterById($linkId, Criteria::NOT_EQUAL)
+            : PersonEmailChangeQuery::create()->filterById($linkId);
+        $cancel->update(['CancelledAt' => $now->format('Y-m-d H:i:s')]);
 
-        PersonEmailChangeQuery::create()
-            ->filterByTokenHash(hash('sha256', $token))
-            ->update(['CancelledAt' => $now->format('Y-m-d H:i:s')]);
-
-        return false;
+        return $sent;
     }
 
     /**
-     * @return array{0: string, 1: DateTimeImmutable} the token, which only the email carries, and when it expires
+     * @return array{0: string, 1: DateTimeImmutable, 2: int} the token, which only the email carries, when it expires, and the link's id
      */
     private function issueLink(int $personId, string $kind, string $address, DateTimeImmutable $now): array
     {
         $token = bin2hex(random_bytes(32));
         $expiresAt = $now->modify(sprintf('+%d minutes', max(1, SystemConfig::getIntValue('iSignInLinkMinutes'))));
-        (new PersonEmailChange())
+        $link = (new PersonEmailChange())
             ->setPersonId($personId)
             ->setKind($kind)
             ->setEmail($address)
             ->setTokenHash(hash('sha256', $token))
             ->setCreatedAt($now)
-            ->setExpiresAt($expiresAt)
-            ->save();
+            ->setExpiresAt($expiresAt);
+        $link->save();
 
-        return [$token, $expiresAt];
+        return [$token, $expiresAt, (int) $link->getId()];
     }
 
     private function cancelOpenLinks(int $personId, ?string $kind, DateTimeImmutable $now): void
