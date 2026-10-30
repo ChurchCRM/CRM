@@ -147,15 +147,16 @@ function withEmail(text: string, email: string): string {
   return translated || text.replace("{{email}}", email);
 }
 
-/** Say under the email field which new address is waiting for its link to be used. */
+/** Say under the email field which new address is waiting for its link to be used, if any. */
 function showPendingEmail(pendingEmail: unknown): void {
   const hint = document.getElementById("portal-email-hint");
-  if (hint && typeof pendingEmail === "string" && pendingEmail !== "") {
-    hint.textContent = withEmail(
-      "Waiting for you to confirm {{email}}. Use the link we sent to that address.",
-      pendingEmail,
-    );
+  if (!hint || document.getElementById("portal-email")?.hasAttribute("readonly")) {
+    return;
   }
+  hint.textContent =
+    typeof pendingEmail === "string" && pendingEmail !== ""
+      ? withEmail("Waiting for you to confirm {{email}}. Use the link we sent to that address.", pendingEmail)
+      : t("A new address changes only after you use the link we send to it.");
 }
 
 function updatePhotoPreview(profile: PortalProfile): void {
