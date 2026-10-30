@@ -4597,23 +4597,11 @@
     "many": "%d predvoleného dobrovoľníka pridelených",
     "other": "%d predvolených dobrovoľníkov pridelených"
   },
-  "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
-    "one": "Pre túto pozíciu je stále potrebný %d ďalší dobrovoľník. Otvorte termín a doplňte medzeru.",
-    "few": "Pre túto pozíciu sú stále potrební %d ďalší dobrovoľníci. Otvorte termín a doplňte medzeru.",
-    "many": "Pre túto pozíciu je stále potrebného %d ďalšieho dobrovoľníka. Otvorte termín a doplňte medzeru.",
-    "other": "Pre túto pozíciu je stále potrebných %d ďalších dobrovoľníkov. Otvorte termín a doplňte medzeru."
-  },
   "%d new occurrence": {
     "one": "%d nový termín",
     "few": "%d nové termíny",
     "many": "%d nového termínu",
     "other": "%d nových termínov"
-  },
-  "%d volunteer is still needed for an upcoming occurrence.": {
-    "one": "Na nadchádzajúci termín je stále potrebný %d dobrovoľník.",
-    "few": "Na nadchádzajúci termín sú stále potrební %d dobrovoľníci.",
-    "many": "Na nadchádzajúci termín je stále potrebného %d dobrovoľníka.",
-    "other": "Na nadchádzajúci termín je stále potrebných %d dobrovoľníkov."
   },
   "%s Calendar": "Kalendár %s",
   "%s Family": "Rodina %s",
@@ -5144,7 +5132,6 @@
   "Open the Ministry Dashboard": "Otvoriť prehľad služby",
   "Open the ministry": "Otvoriť službu",
   "Open the occurrence": "Otvoriť termín",
-  "Open the occurrence to assign the people you need.": "Otvorte termín a pridelte ľudí, ktorých potrebujete.",
   "Open this team": "Otvoriť tento tím",
   "Opening a calendar to ministries requires Add Events permission": "Otvorenie kalendára pre služby vyžaduje oprávnenie Pridávať udalosti",
   "Optional. Everyone qualified for a position of this team becomes a teacher of the class, and the class page no longer changes its teachers.": "Nepovinné. Každý kvalifikovaný na pozíciu tohto tímu sa stane učiteľom triedy a stránka triedy už jej učiteľov nemení.",
