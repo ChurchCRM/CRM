@@ -4577,20 +4577,10 @@
     "few": "%d voluntari impliciți repartizați",
     "other": "%d de voluntari impliciți repartizați"
   },
-  "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
-    "one": "Încă un %d voluntar este necesar pentru acest post. Deschideți ocurența pentru a completa golul.",
-    "few": "Încă %d voluntari sunt necesari pentru acest post. Deschideți ocurența pentru a completa golul.",
-    "other": "Încă %d de voluntari sunt necesari pentru acest post. Deschideți ocurența pentru a completa golul."
-  },
   "%d new occurrence": {
     "one": "%d ocurență nouă",
     "few": "%d ocurențe noi",
     "other": "%d de ocurențe noi"
-  },
-  "%d volunteer is still needed for an upcoming occurrence.": {
-    "one": "Încă %d voluntar este necesar pentru o ocurență viitoare.",
-    "few": "Încă %d voluntari sunt necesari pentru o ocurență viitoare.",
-    "other": "Încă %d de voluntari sunt necesari pentru o ocurență viitoare."
   },
   "%s Calendar": "Calendar %s",
   "%s Family": "Familia %s",
@@ -5117,7 +5107,6 @@
   "Open the Ministry Dashboard": "Deschide Panoul slujirii",
   "Open the ministry": "Deschide slujirea",
   "Open the occurrence": "Deschide ocurența",
-  "Open the occurrence to assign the people you need.": "Deschideți ocurența pentru a repartiza persoanele de care aveți nevoie.",
   "Open this team": "Deschide această echipă",
   "Opening a calendar to ministries requires Add Events permission": "Deschiderea unui calendar pentru slujiri necesită permisiunea Adăugare evenimente",
   "Optional. Everyone qualified for a position of this team becomes a teacher of the class, and the class page no longer changes its teachers.": "Opțional. Toți cei calificați pentru un post al acestei echipe devin învățători ai clasei, iar pagina clasei nu își mai schimbă învățătorii.",
