@@ -1,12 +1,10 @@
 /// <reference types="cypress" />
 
 /**
- * Test for ChurchInfoReport null-to-string conversion fix
- *
- * The ConfirmReport generates PDFs with family information including addresses
- * and country fields. These fields can be null from the database, which caused
- * a TypeError in convertToLatin1() when attempting to pass null to a function
- * expecting a string.
+ * The ConfirmReport (mPDF, confirm-report Twig template) prints family information
+ * including addresses and country fields. These fields can be null in the database,
+ * which once caused a TypeError while generating the PDF; every null must render as
+ * an empty value.
  *
  * Pattern: cy.setupAdminSession() + cy.visit() to load session cookies, then
  * cy.intercept() + win.location.href to trigger the PDF — same reason

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="{{ lang|default('en') }}" dir="{{ text_dir|default('ltr') }}">
+<head>
+  <meta charset="utf-8">
+  <style>
+    @page { margin: 16mm 16mm 14mm 16mm; }
+    body { font-family: sans-serif; font-size: 10pt; color: #1a1a1a; line-height: 1.35; }
+    h2 { font-size: 11pt; margin: 5mm 0 1.5mm 0; }
+    .letterhead { border-bottom: 0.4pt solid #bbb; padding-bottom: 3mm; margin-bottom: 5mm; }
+    .letterhead img { max-width: 50mm; max-height: 16mm; margin-bottom: 2mm; }
+    .church-name { font-size: 15pt; font-weight: bold; }
+    .church-address { font-size: 10pt; color: #333; }
+    .muted { color: #555; font-size: 9.5pt; }
+    a { color: #1a4f8a; text-decoration: none; }
+    .date { text-align: {{ text_dir|default('ltr') == 'rtl' ? 'left' : 'right' }}; margin-bottom: 4mm; }
+    .recipient { margin: 0 0 5mm 0; }
+    p { margin: 0 0 2.5mm 0; }
+    table.details { width: 100%; border-collapse: collapse; margin: 3mm 0; }
+    table.details td { padding: 1mm 1.5mm; vertical-align: top; border-bottom: 0.2pt solid #ddd; }
+    table.details td.label { width: 32%; font-weight: bold; }
+    table.members { width: 100%; border-collapse: collapse; }
+    table.members th { border-bottom: 0.6pt solid #1a1a1a; font-size: 8pt; color: #555; padding: 1.5mm 1mm; text-align: {{ text_dir|default('ltr') == 'rtl' ? 'right' : 'left' }}; }
+    table.members td { border-bottom: 0.2pt solid #ddd; padding: 1.2mm 1mm; font-size: 8.5pt; vertical-align: top; }
+    table.members td.custom { font-size: 8pt; color: #333; padding-bottom: 2mm; }
+    table.groups td { padding: 0.8mm 1.5mm; font-size: 9pt; vertical-align: top; }
+    .closing { margin-top: 6mm; }
+  </style>
+</head>
+<body dir="{{ text_dir|default('ltr') }}">
+{% set letterhead_html %}
+  <div class="letterhead">
+    {% if letterhead == 'graphic' and letterhead_image %}
+      <img src="{{ letterhead_image }}" alt="" style="max-width: 170mm; max-height: 28mm;">
+    {% elseif church_logo %}
+      <img src="{{ church_logo }}" alt="">
+    {% endif %}
+    {% if letterhead != 'graphic' or not letterhead_image %}
+      <div class="church-name">{{ church_name }}</div>
+      <div class="church-address">{{ church_address }}</div>
+      <div class="muted">{{ church_phone }}{% if church_email %} · {{ church_email }}{% endif %}</div>
+    {% endif %}
+  </div>
+{% endset %}
+{% for family in families %}
+  {% if not loop.first %}<pagebreak />{% endif %}
+  {{ letterhead_html }}
+
+  <div class="date">{{ generated_on }}</div>
+
+  <div class="recipient">
+    <strong>{{ family.salutation }}</strong><br>
+    {{ family.mailing_address|nl2br }}
+  </div>
+
+  {% if intro %}<p>{{ intro|nl2br }}</p>{% endif %}
+
+  <table class="details">
+    {% for row in family.details %}
+      <tr>
+        <td class="label">{{ row.label }}:</td>
+        <td>{{ row.value }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  {% if family.members %}
+    <h2>{{ gettext('Family Members') }}</h2>
+    <table class="members">
+      <thead>
+        <tr>
+          <th style="width: 24%;">{{ gettext('Name') }}</th>
+          <th style="width: 6%;">{{ gettext('M/F') }}</th>
+          <th style="width: 13%;">{{ gettext('Role') }}</th>
+          <th style="width: 13%;">{{ gettext('Member/Friend') }}</th>
+          <th style="width: 20%;">{{ gettext('Email') }}</th>
+          <th style="width: 12%;">{{ gettext('Birthday') }}</th>
+          <th style="width: 12%;">{{ gettext('Phone') }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for member in family.members %}
+          <tr>
+            <td><strong>{{ member.name }}</strong></td>
+            <td>{{ member.gender }}</td>
+            <td>{{ member.role }}</td>
+            <td>{{ member.classification }}</td>
+            <td>{{ member.email }}</td>
+            <td>{{ member.birthday }}</td>
+            <td>{{ member.cell_phone }}{% if member.work_phone %}<br>{{ gettext('Work') }}: {{ member.work_phone }}{% endif %}</td>
+          </tr>
+          {% if member.custom_fields %}
+            <tr>
+              <td class="custom" colspan="7">
+                {% for field in member.custom_fields %}{{ field.label }}: {{ field.value }}{% if not loop.last %} &nbsp;|&nbsp; {% endif %}{% endfor %}
+              </td>
+            </tr>
+          {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+
+  {% if family.groups %}
+    <h2>{{ gettext('Group Memberships') }}</h2>
+    <table class="groups">
+      {% for membership in family.groups %}
+        <tr>
+          <td><strong>{{ membership.name }}:</strong></td>
+          <td>{{ membership.groups }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% endif %}
+
+  <div class="closing">
+    {% for line in closing %}<p>{{ line|nl2br }}</p>{% endfor %}
+    {% if signer %}
+      <p>{{ sincerely }}</p>
+      <p>{{ signer }}</p>
+    {% endif %}
+  </div>
+{% else %}
+  {{ letterhead_html }}
+{% endfor %}
+</body>
+</html>
