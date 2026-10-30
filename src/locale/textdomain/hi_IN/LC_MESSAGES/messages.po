@@ -18748,22 +18748,10 @@ msgstr[0] "%d डिफ़ॉल्ट स्वयंसेवक नियु�
 msgstr[1] "%d डिफ़ॉल्ट स्वयंसेवक नियुक्त किए गए"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "इस पद के लिए अभी %d और स्वयंसेवक की आवश्यकता है। रिक्ति भरने के लिए अवसर खोलें।"
-msgstr[1] "इस पद के लिए अभी %d और स्वयंसेवकों की आवश्यकता है। रिक्ति भरने के लिए अवसर खोलें।"
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d नया अवसर"
 msgstr[1] "%d नए अवसर"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "आगामी अवसर के लिए अभी %d स्वयंसेवक की आवश्यकता है।"
-msgstr[1] "आगामी अवसर के लिए अभी %d स्वयंसेवकों की आवश्यकता है।"
 
 #: 
 msgid "%s Calendar"
@@ -20828,10 +20816,6 @@ msgstr "सेवकाई खोलें"
 #: 
 msgid "Open the occurrence"
 msgstr "अवसर खोलें"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "जिन लोगों की आपको आवश्यकता है उन्हें नियुक्त करने के लिए अवसर खोलें।"
 
 #: 
 msgid "Open this team"

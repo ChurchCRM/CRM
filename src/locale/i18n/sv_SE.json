@@ -4557,17 +4557,9 @@
     "one": "%d standardvolontär tilldelad",
     "other": "%d standardvolontärer tilldelade"
   },
-  "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
-    "one": "Ytterligare %d volontär behövs fortfarande för denna position. Öppna tillfället för att fylla luckan.",
-    "other": "Ytterligare %d volontärer behövs fortfarande för denna position. Öppna tillfället för att fylla luckan."
-  },
   "%d new occurrence": {
     "one": "%d nytt tillfälle",
     "other": "%d nya tillfällen"
-  },
-  "%d volunteer is still needed for an upcoming occurrence.": {
-    "one": "%d volontär behövs fortfarande för ett kommande tillfälle.",
-    "other": "%d volontärer behövs fortfarande för ett kommande tillfälle."
   },
   "%s Calendar": "Kalender för %s",
   "%s Family": "Familjen %s",
@@ -5090,7 +5082,6 @@
   "Open the Ministry Dashboard": "Öppna tjänsteområdets översikt",
   "Open the ministry": "Öppna tjänsteområdet",
   "Open the occurrence": "Öppna tillfället",
-  "Open the occurrence to assign the people you need.": "Öppna tillfället för att tilldela de personer du behöver.",
   "Open this team": "Öppna det här teamet",
   "Opening a calendar to ministries requires Add Events permission": "Att öppna en kalender för tjänsteområden kräver behörigheten Lägg till aktiviteter",
   "Optional. Everyone qualified for a position of this team becomes a teacher of the class, and the class page no longer changes its teachers.": "Valfritt. Alla som är kvalificerade för en uppgift i det här teamet blir lärare i klassen, och klassens sida ändrar inte längre sina lärare.",
