@@ -1,6 +1,6 @@
 {
     "name": "churchcrm",
-    "version": "7.8.2",
+    "version": "7.8.3",
     "description": "Free Church CRM Software",
     "repository": {
         "type": "git",
@@ -58,7 +58,7 @@
         "logs:clear": "node scripts/clean.js --logs",
         "package": "npm run build && node scripts/package-release.js",
         "test": "npx cypress run --config-file cypress/configs/docker.config.ts",
-        "test:php": "php scripts/test-error-redaction.php && php scripts/test-volunteer-class-link-memo.php && php scripts/test-countries.php && php scripts/test-password-check-timing.php && php scripts/test-portal-session-rotation.php",
+        "test:php": "php scripts/test-error-redaction.php && php scripts/test-volunteer-class-link-memo.php && php scripts/test-countries.php && php scripts/test-geocoder-rest.php && php scripts/test-password-check-timing.php && php scripts/test-portal-session-rotation.php",
         "test:open": "npx cypress open --e2e --config-file cypress/configs/docker.config.ts --browser chrome",
         "test:api": "npx cypress run --config-file cypress/configs/docker.config.ts --spec 'cypress/e2e/api/**/*.spec.js'",
         "test:ui": "npx cypress run --config-file cypress/configs/docker.config.ts --spec 'cypress/e2e/ui/**/*.spec.js'",
@@ -101,8 +101,7 @@
         "marketing:chrome": "BROWSER_CHANNEL=chrome ./scripts/capture-all-locales.sh",
         "marketing:videos": "node scripts/finalize-marketing-videos.js",
         "marketing:check": "node scripts/check-marketing-visuals.js",
-        "marketing:manifest": "node scripts/generate-marketing-manifest.js",
-        "test:frankenphp-routing": "node --test scripts/test-frankenphp-routing.test.mjs"
+        "marketing:manifest": "node scripts/generate-marketing-manifest.js"
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^7.3.1",
@@ -156,13 +155,14 @@
         "cypress-terminal-report": "^7.4.0",
         "datatables.net-plugins": "^3.1.2",
         "dotenv": "^17.4.2",
-        "i18next-cli": "^1.75.3",
+        "i18next-cli": "^1.80.0",
         "i18next-conv": "^17.0.0",
         "mini-css-extract-plugin": "^2.10.2",
         "minimatch": "^9.0.7",
         "mysql2": "^3.24.6",
         "picomatch": "4.0.7",
-        "sass": "^1.105.2",
+        "pngjs": "^7.0.0",
+        "sass": "^1.106.1",
         "sass-loader": "^17.0.1",
         "ts-loader": "^9.6.2",
         "typescript": "^6.0.3",

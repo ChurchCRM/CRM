@@ -38,6 +38,9 @@ run_check() {
     echo "✓ pre-commit: $label passed."
 }
 
+run_check "staged Composer files" "Composer configuration and lock file validation failed." \
+    node scripts/validate-composer-lock.js --staged
+
 run_check "staged translatable strings" "locale-check found issues in the strings you staged." \
     node scripts/locale-check.js --staged
 run_check "changed PHP files" "PHP validation failed in a changed file." \

@@ -928,10 +928,6 @@ msgid "Voting Members"
 msgstr "Wajumbe wa Kupiga Kura"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Ripoti ya Utoaji (Taarifa za Kodi)"
-
-#: 
 msgid "Zero Givers"
 msgstr "Watoa Sifuri"
 
@@ -1729,14 +1725,6 @@ msgstr "Ruhusa"
 #: 
 msgid "System Settings"
 msgstr "Mipangilio ya Mfumo"
-
-#: 
-msgid "Tax Report"
-msgstr "Ripoti ya Kodi"
-
-#: 
-msgid "Calendar Year"
-msgstr "Mwaka wa Kalenda"
 
 #: 
 msgid "User Editor"
@@ -5471,10 +5459,6 @@ msgid "Submit Registration"
 msgstr "Tuma Usajili"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Nenosiri jipya limetengenezwa na kutumwa kwa barua pepe yako."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Tumia Sasisho Sasa"
 
@@ -5519,20 +5503,12 @@ msgid "Login Name is required"
 msgstr "Jina la Kuingia linahitajika"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Ukishapata barua pepe, unaweza kuingia na nenosiri la muda na kulibadilisha kuwa unalolihitaji."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Hitilafu ya Kubadilisha Nenosiri"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Nenosiri Limebadilishwa kwa Mafanikio"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Tafadhali kagua barua pepe yako (pamoja na folda ya takataka) kwa nenosiri lako la muda."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -6320,10 +6296,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "Ripoti inayoweza kubadilishwa kwa kuchuja tarehe, mfuko, familia, na njia ya malipo."
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Badilisha maandishi yanayoonekana kwenye taarifa za kodi."
-
-#: 
 msgid "Day"
 msgstr "Siku"
 
@@ -6404,20 +6376,12 @@ msgid "Generate"
 msgstr "Tengeneza"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Tengeneza Taarifa za Kodi"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Tengeneza taarifa za utoaji zinazopunguzwa kodi. Zinaweza kuchapwa au kutumwa kwa barua pepe."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "Tengeneza barua za ukumbusho kwa familia zenye ahadi ambazo hazijalipwa."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "Tengeneza ripoti za taarifa za kodi, ufuatiliaji wa ahadi, na uchambuzi wa kifedha."
 
 #: 
 msgid "ID"
@@ -6600,10 +6564,6 @@ msgid "System Info"
 msgstr "Taarifa za Mfumo"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "Ripoti za Kodi na Utoaji"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "Maandishi ya Ripoti ya Kodi"
 
@@ -6630,10 +6590,6 @@ msgstr "Sasisha"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "Mtumiaji lazima awe Msimamizi au awe na ruhusa ya Fedha"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Thibitisha jina la kanisa, anwani, na taarifa za mawasiliano zinaonekana kwenye taarifa za kodi."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9145,10 +9101,6 @@ msgstr "Tengeneza barua za kukumbusha ahadi za sadaka"
 #: 
 msgid "Generate reports on group membership and activities"
 msgstr "Tengeneza ripoti za uanachama wa kikundi na shughuli"
-
-#: 
-msgid "Generate tax statement documents for donors"
-msgstr "Tengeneza nyaraka za taarifa ya kodi kwa wafadhili"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -12348,10 +12300,6 @@ msgstr "Barua pepe imezimwa"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "Barua pepe imezimwa. Sanidi barua pepe kabla ya kuweka upya nywila, au tumia Badilisha Nywila."
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Ingiza moja ya nambari zako za urejeshaji wa hifadhi nakala"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"
@@ -15971,10 +15919,6 @@ msgid "Please confirm your family information"
 msgstr "Tafadhali thibitisha taarifa za familia yako"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "Tafadhali tuma zawadi yako inayofuata kwa %s"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Tafadhali chagua familia nyingine ya kushirikisha michango hii"
 
@@ -18005,14 +17949,6 @@ msgid "{{minutes}} min left"
 msgstr "dakika {{minutes}} zimebaki"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "Hati %d ya kodi imetumwa kwa familia kwa mafanikio."
-
-#: 
-msgid "%s %d Giving Statement"
-msgstr "Taarifa ya Utoaji %s %d"
-
-#: 
 msgid "All classifications"
 msgstr "Uainishaji wote"
 
@@ -18045,28 +17981,8 @@ msgid "Columns per Page"
 msgstr "Safu Wima kwa Ukurasa"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "Mpendwa Familia ya %s,\n"
-"\n"
-"Tafadhali pata taarifa yako ya utoaji ya %d kutoka %s iliyoambatishwa kwenye barua pepe hii.\n"
-"\n"
-"Ikiwa una maswali yoyote, tafadhali wasiliana na ofisi ya kanisa.\n"
-"\n"
-"Asante kwa ukarimu wako."
-
-#: 
 msgid "Download CSV"
 msgstr "Pakua CSV"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "Tuma Hati ya Kodi %d kwa Barua Pepe"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18169,10 +18085,6 @@ msgid "Pledged"
 msgstr "Iliyoahidiwa"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "Chapisha Hati ya Kodi %d"
-
-#: 
 msgid "Recent Friends"
 msgstr "Marafiki wa Hivi Karibuni"
 
@@ -18197,24 +18109,8 @@ msgid "Single Pages"
 msgstr "Kurasa Moja Moja"
 
 #: 
-msgid "Tax Documents"
-msgstr "Hati za Kodi"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "Barua pepe ya hati ya kodi imeshindwa kutumwa. Tafadhali angalia mipangilio ya seva ya barua pepe."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "Kurasa mbili za nusu ukubwa zikiwa kando kwa kando kwenye kila karatasi ya mlalo, kwa mpangilio wa kijitabu. Chapisha pande zote mbili kwa \"kugeuza upande mfupi\", kisha kunja rundo katikati. Safu wima huhesabiwa kwa kila nusu ukurasa."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "Haiwezekani kutuma hati ya kodi kwa barua pepe: hakuna data ya malipo iliyopatikana kwa mwaka huo."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "Haiwezekani kutuma hati ya kodi kwa barua pepe: familia hii haina anwani ya barua pepe iliyohifadhiwa."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -20205,10 +20101,6 @@ msgid "How often"
 msgstr "Mara ngapi"
 
 #: 
-msgid "How to correct this"
-msgstr "Jinsi ya kusahihisha hili"
-
-#: 
 msgid "I can't"
 msgstr "Siwezi"
 
@@ -21529,10 +21421,6 @@ msgstr "Ameingia"
 #: 
 msgid "Signed up"
 msgstr "Amejisajili"
-
-#: 
-msgid "Sincerely"
-msgstr "Wako mwaminifu"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
@@ -24657,4 +24545,20 @@ msgstr "Mwezi ambao kila mtu aliye na darasa anahamia darasa moja juu. Kuzima ku
 #: 
 msgid "Through Grade"
 msgstr "Hadi Darasa"
+
+#: 
+msgid "Invalid setting name or value"
+msgstr "Jina au thamani ya mpangilio si sahihi"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Huduma ya usimbaji wa kijiografia haikujibu — jaribu tena baadaye"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Barua pepe uliyotuma pekee ndiyo inayoonyeshwa."
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Matukio yanayojirudia hayakuweza kuundwa. Angalia kumbukumbu ya programu kwa maelezo."
 

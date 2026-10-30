@@ -42,20 +42,57 @@ const streamContents = (binaryBody) => {
 
 const unescapeText = (text) => text.replace(/\\([\\()])/g, "$1");
 
+// FPDF writes Latin-1. mPDF in utf-8 mode writes UTF-16BE, and letter-spacing
+// splits one line across a TJ array.
+const decodePdfText = (text) => {
+    const value = unescapeText(text);
+    if (value.length < 2 || value.length % 2 !== 0) {
+        return value;
+    }
+    const pairs = value.length / 2;
+    let utf16 = 0;
+    for (let i = 0; i < value.length; i += 2) {
+        if (value.charCodeAt(i) < 0x20) {
+            utf16++;
+        }
+    }
+    if (utf16 / pairs < 0.8) {
+        return value;
+    }
+    let out = "";
+    const start = value.charCodeAt(0) === 0xfe && value.charCodeAt(1) === 0xff ? 2 : 0;
+    for (let i = start; i < value.length; i += 2) {
+        out += String.fromCharCode((value.charCodeAt(i) << 8) | value.charCodeAt(i + 1));
+    }
+    return out;
+};
+
+const TEXT_OPERATOR = /\[((?:\\.|[^\\\]])*)\]\s*TJ|\(((?:\\.|[^\\)])*)\)\s*Tj/g;
+
+const textLines = (content) => {
+    const lines = [];
+    for (const match of content.matchAll(TEXT_OPERATOR)) {
+        if (match[1] !== undefined) {
+            const line = Array.from(match[1].matchAll(/\(((?:\\.|[^\\)])*)\)/g), ([, text]) => decodePdfText(text)).join("");
+            if (line !== "") {
+                lines.push(line);
+            }
+        } else {
+            lines.push(decodePdfText(match[2]));
+        }
+    }
+    return lines;
+};
+
 /**
- * The text FPDF wrote into a PDF, one entry per Tj operator — which is one per
- * line of a Cell()/MultiCell() call, so a label's address comes back line for
- * line.
+ * Text drawn into a PDF, one entry per Tj or TJ run. An FPDF Cell() is one
+ * entry. An mPDF line is one entry, including a letter-spaced heading.
  *
  * @param {string} binaryBody a cy.request() body fetched with encoding "binary"
  * @returns {Promise<string[]>}
  */
 export const pdfText = (binaryBody) =>
-    streamContents(binaryBody).then((contents) =>
-        contents.flatMap((content) =>
-            Array.from(content.matchAll(/\(((?:\\.|[^\\)])*)\)\s*Tj/g), ([, text]) => unescapeText(text)),
-        ),
-    );
+    streamContents(binaryBody).then((contents) => contents.flatMap(textLines));
 
 /**
  * Where FPDF drew each line of text and each image, in drawing order, in PDF

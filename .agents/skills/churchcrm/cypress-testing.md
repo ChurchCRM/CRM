@@ -38,6 +38,25 @@ Every new test is a Cypress E2E spec. Server logic is tested through its route w
 - The server counts days in `sTimeZone`; CI's browser is on UTC, a day ahead every evening. A spec that builds dates from the browser clock calls `cy.useChurchTimeZone()` in a root `before()` and `cy.useHostTimeZone()` in a root `after()` (`cypress/support/church-time-zone.js`). Check it locally with `TZ=UTC npx cypress run ...` between 8 pm and midnight Eastern
 - Comment only a CI or Cypress trap, in one line.
 
+## Install path
+
+A site can live under `/churchcrm`. Cypress resolves root-relative paths in `cy.request`, `cy.visit` and `cy.intercept` against `baseUrl`, so those are fine. Raw `fetch`, `cy.task` and `win.fetch` do not: `new URL('/path', 'http://host/churchcrm/')` drops the install path and hits the origin.
+
+Use `absoluteUrl(path)` from `cypress/support/urls.js` for any URL that leaves Cypress. It strips a leading slash, forces a trailing slash on the base, and resolves so both root and subdirectory installs keep the install path. It throws if the result drops the install path, so a bad call fails at the construction site with the path, base and result.
+
+When a task or raw fetch fails, put the URL, status and a short body snippet in the error. The JUnit artifact only carries the message; without the URL the next person has to reconstruct which host and path were hit.
+
+```js
+import { absoluteUrl } from "../../../support/urls";
+
+cy.task("passwordReset:race", { url: absoluteUrl(url()), password });
+fetch(absoluteUrl("/api/background/timerjobs"), { method: "POST" });
+```
+
+`npm run lint` (`subdir-safe urls`) scans `cypress/` for the constructions that discard the install path: a literal root-relative first argument to `new URL()`, a zero-arg `url()` call passed to `new URL()`, a raw `fetch('/…')`, or a `location.href` assignment. A server-provided path that already includes the install prefix stays `new URL(serverPath, baseUrl)` so Cypress does not double the prefix. A deliberate root-relative line ends with `// subdir-ok: <reason>`.
+
+`cypress/e2e/ui/navigation/install-path-requests.spec.js` loads every page and fails on a same-origin request outside the install path. Bugs in server-built URLs, `.htaccess` or cookie paths show up in the nightly subdirectory run.
+
 ## Database access
 
 A behavior spec creates, changes, reads and deletes records through the API or the UI, the way a user or a client would. Take ids from the create response, assert on API reads or the page, clean up with the API (`cy.cleanupEvents()`, deactivate and `DELETE /api/ministries/ministries/{id}`). Never write a row the app would not write: a ministry inserted by SQL has no team, pool group or calendar.

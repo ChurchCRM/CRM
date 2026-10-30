@@ -116,13 +116,15 @@ $app->group('/', function (RouteCollectorProxy $group): void {
         $url         = $setupData['URL'];
 
         $template = file_get_contents($docRoot . '/Include/Config.php.example');
-        $template = str_replace('||DB_SERVER_NAME||', $dbServerName, $template);
-        $template = str_replace('||DB_SERVER_PORT||', $dbServerPort, $template);
-        $template = str_replace('||DB_NAME||', $dbName, $template);
-        $template = str_replace('||DB_USER||', $dbUser, $template);
-        $template = str_replace('||DB_PASSWORD||', $dbPassword, $template);
-        $template = str_replace('||ROOT_PATH||', $rootPath, $template);
-        $template = str_replace('||URL||', $url, $template);
+        $template = strtr($template, [
+            '||DB_SERVER_NAME||' => escape_php_single_quoted($dbServerName),
+            '||DB_SERVER_PORT||' => escape_php_single_quoted($dbServerPort),
+            '||DB_NAME||'        => escape_php_single_quoted($dbName),
+            '||DB_USER||'        => escape_php_single_quoted($dbUser),
+            '||DB_PASSWORD||'    => escape_php_single_quoted($dbPassword),
+            '||ROOT_PATH||'      => escape_php_single_quoted($rootPath),
+            '||URL||'            => escape_php_single_quoted($url),
+        ]);
 
         file_put_contents($configFile, $template);
 
@@ -143,6 +145,12 @@ $app->group('/', function (RouteCollectorProxy $group): void {
 });
 
 
+
+// Config.php.example puts every value in a single-quoted PHP string; strtr() also stops a value containing another placeholder from being re-substituted
+function escape_php_single_quoted($value)
+{
+    return addcslashes($value, "'\\");
+}
 
 function sanitize_db_field($value)
 {
