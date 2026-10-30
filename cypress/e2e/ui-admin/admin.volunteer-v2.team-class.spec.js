@@ -111,6 +111,8 @@ describe("Volunteer v2 — a team linked to a Sunday School class, on screen (D2
             const team = resp.body.teams.find((t) => t.name === TEAM_NAME);
             expect(team.classGroupId).to.eq(classId);
             teamId = team.id;
+            // The portal's team pages are for the team's leaders, staff included (member sign-in §8.4).
+            admin("POST", "/api/ministries/scopes", { personId: 1, scopeType: "team", scopeId: teamId }, [200, 201]);
             const position = resp.body.positions.find((p) => p.teamId === team.id);
             expect(position.name).to.eq("Teacher");
             admin("GET", `/api/ministries/positions/${position.id}/qualifications`, null).then((quals) => {

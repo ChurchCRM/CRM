@@ -7,11 +7,13 @@ use ChurchCRM\model\ChurchCRM\VolunteerOccurrenceQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerScheduleQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerTeamQuery;
 use ChurchCRM\Portal\Auth\PortalContext;
+use ChurchCRM\Portal\Auth\PortalMemberUser;
+use ChurchCRM\Portal\Permissions\CorePortalCapabilities;
+use ChurchCRM\Portal\Permissions\PortalAuthorizationService;
+use ChurchCRM\Portal\Permissions\RequirePortalCapability;
 use ChurchCRM\Portal\PortalNav;
 use ChurchCRM\Portal\PortalTeams;
 use ChurchCRM\Portal\PortalTwig;
-use ChurchCRM\Volunteer\Middleware\VolunteerTeamLeaderMiddleware;
-use ChurchCRM\Volunteer\Service\VolunteerAuthorizationService;
 use ChurchCRM\Volunteer\Service\VolunteerEventService;
 use ChurchCRM\Volunteer\Service\VolunteerScheduleService;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -26,45 +28,29 @@ use Slim\Routing\RouteCollectorProxy;
  *
  * Three pages:
  *
- *   GET /portal/teams                                    the teams this login runs
+ *   GET /portal/teams                                    the teams this person runs
  *   GET /portal/teams/{teamId}                           one team: Positions ·
  *                                                        Volunteers · Schedules ·
  *                                                        Occurrences
  *   GET /portal/teams/{teamId}/occurrences/{occurrenceId} staffing for one date
  *
- * **Two layers of gate, and they are not the same question** (volunteer design
- * §4.5). `VolunteerTeamLeaderMiddleware` on the group answers the coarse one —
- * "does this login have team authority at all" — and each route below answers the
- * per-record one with `VolunteerAuthorizationService::canManageTeam()`, which is
- * the only thing that knows whether THIS team is theirs. A refusal is an
- * `HttpForbiddenException`, so `PortalTwig::createErrorHandler()` draws the
- * portal's own 403 page in the member's theme; a member must never be redirected
- * into the admin shell's access-denied page (design P10).
- *
- * 404 before 403, as every entity middleware in the codebase does it: a team that
- * does not exist is "not found" whether or not the reader could have run it.
+ * Every page needs `volunteer.team.manage` (member sign-in design §8.4). The list
+ * is exactly the teams `scopesFor()` returns, and a team page answers 404 for a
+ * team that is not the person's, whether or not it exists. A STAFF principal gets
+ * the same answer as a member: a coordinator or an administrator runs teams from
+ * the ministry pages, and leads in the portal only the teams they lead.
  *
  * The team and occurrence pages are container markup plus a page config; every
- * fact on them comes from `/api/ministries/*`, where the SAME scope rules are
- * applied again per record. The index is server-rendered because it is a short
- * list of plain reads (`PortalTeams`).
+ * fact on them comes from `/api/ministries/*`, where the same scope rules are
+ * applied again per record. The index is server-rendered (`PortalTeams`).
  */
 $group->group('/teams', function (RouteCollectorProxy $teams): void {
     // ── GET /portal/teams ───────────────────────────────────────────────────
-    //
-    // A ministry coordinator or an administrator passes the group gate and sees
-    // every team under them, which is correct — they may run all of them. Somebody
-    // who reaches this with no team at all is shown the portal's 403 page rather
-    // than an empty list: the page has nothing to offer them and saying so plainly
-    // is better than a blank card.
     $teams->get('', function (Request $request, Response $response): Response {
-        $rows = PortalTeams::listForUser(portalTeamUser($request));
+        $rows = PortalTeams::listForTeamIds(portalTeamIds());
 
         if ($rows === []) {
-            throw new HttpForbiddenException(
-                $request,
-                gettext('You do not lead a volunteer team yet.')
-            );
+            throw new HttpForbiddenException($request, gettext('You do not lead a volunteer team yet.'));
         }
 
         return PortalTwig::render(
@@ -76,15 +62,16 @@ $group->group('/teams', function (RouteCollectorProxy $teams): void {
             ],
             PortalNav::TEAMS
         );
-    });
+    })->add(RequirePortalCapability::any(
+        CorePortalCapabilities::TEAM_MANAGE,
+        gettext('You do not lead a volunteer team yet.')
+    ));
 
     // ── GET /portal/teams/{teamId} ──────────────────────────────────────────
     $teams->get('/{teamId:[0-9]+}', function (Request $request, Response $response, array $args): Response {
-        $teamId = (int) $args['teamId'];
-        $team = PortalTeams::findManagedTeam(portalTeamUser($request), $teamId);
-
+        $team = VolunteerTeamQuery::create()->findPk((int) $args['teamId']);
         if ($team === null) {
-            return portalTeamRefusal($request, $teamId);
+            throw new HttpNotFoundException($request, gettext('Team not found'));
         }
 
         $ministry = VolunteerMinistryQuery::create()->findPk((int) $team->getMinistryId());
@@ -109,44 +96,24 @@ $group->group('/teams', function (RouteCollectorProxy $teams): void {
             ],
             PortalNav::TEAMS
         );
-    });
+    })->add(RequirePortalCapability::onRouteArgument(CorePortalCapabilities::TEAM_MANAGE, 'teamId'));
 
     // ── GET /portal/teams/{teamId}/occurrences/{occurrenceId} ───────────────
     //
-    // The portal's twin of `/ministries/occurrences/{id}`, with the same
-    // per-occurrence authorization: the occurrence must belong to a schedule of
-    // the team in the path, and that team must be one this login runs. Checking
-    // the path team as well as the occurrence's own is what stops a leader of team
-    // A reaching team B's occurrence through a URL that names team A.
+    // The occurrence must belong to a schedule of the team in the path, and that
+    // team must be the person's: a leader of team A cannot reach team B's date
+    // through a URL that names team A.
     $teams->get(
         '/{teamId:[0-9]+}/occurrences/{occurrenceId:[0-9]+}',
         function (Request $request, Response $response, array $args): Response {
             $teamId = (int) $args['teamId'];
             $occurrenceId = (int) $args['occurrenceId'];
-            $user = portalTeamUser($request);
 
-            $team = PortalTeams::findManagedTeam($user, $teamId);
-            if ($team === null) {
-                return portalTeamRefusal($request, $teamId);
-            }
-
+            $team = VolunteerTeamQuery::create()->findPk($teamId);
             $occurrence = VolunteerOccurrenceQuery::create()->findPk($occurrenceId);
-            if ($occurrence === null) {
+            $schedule = $occurrence === null ? null : VolunteerScheduleQuery::create()->findPk((int) $occurrence->getScheduleId());
+            if ($team === null || $schedule === null || (int) $schedule->getTeamId() !== $teamId) {
                 throw new HttpNotFoundException($request, gettext('Occurrence not found'));
-            }
-
-            $schedule = VolunteerScheduleQuery::create()->findPk((int) $occurrence->getScheduleId());
-            if ($schedule === null || (int) $schedule->getTeamId() !== $teamId) {
-                // Not this team's date. "Not found" rather than "forbidden": under
-                // this URL it genuinely is not there, and the reader learns nothing
-                // about another team's schedule either way.
-                throw new HttpNotFoundException($request, gettext('Occurrence not found'));
-            }
-
-            // Belt and braces, and the line that matters if the two checks above
-            // ever drift: the occurrence itself has to be in scope.
-            if (!(new VolunteerAuthorizationService())->canManageOccurrence($user, $occurrence)) {
-                throw new HttpForbiddenException($request, gettext('This is not one of your team\'s dates.'));
             }
 
             $ministry = VolunteerMinistryQuery::create()->findPk((int) $schedule->getMinistryId());
@@ -185,43 +152,31 @@ $group->group('/teams', function (RouteCollectorProxy $teams): void {
                         'offsetNote' => $schedules->offsetSummary($schedule),
                     ],
                     // D26: read-only; the edit link only for a login that can open the admin editor.
-                    'headcount' => $linkedEvent === null ? null : (new VolunteerEventService())->headcount($linkedEvent, $user),
+                    'headcount' => $linkedEvent === null ? null : (new VolunteerEventService())->headcount($linkedEvent, portalTeamViewer()),
                 ],
                 PortalNav::TEAMS
             );
         }
-    );
-})->add(new VolunteerTeamLeaderMiddleware());
+    )->add(RequirePortalCapability::onRouteArgument(CorePortalCapabilities::TEAM_MANAGE, 'teamId'));
+});
 
 /**
- * Team authority still comes from the staff account until the portal
- * permissions model (member sign-in design §8) moves it to the person.
- *
- * @throws HttpForbiddenException
+ * @return int[] the teams the portal session's person may manage
  */
-function portalTeamUser(Request $request): User
+function portalTeamIds(): array
 {
-    $user = PortalContext::staffUser();
-    if (!$user instanceof User) {
-        throw new HttpForbiddenException($request, gettext('You do not lead a volunteer team yet.'));
-    }
+    $principal = PortalContext::principal();
 
-    return $user;
+    return $principal === null
+        ? []
+        : (new PortalAuthorizationService())->scopeIdsForPerson($principal->personId, CorePortalCapabilities::TEAM_MANAGE);
 }
 
 /**
- * 404 for a team that is not there, 403 for one that is but is not theirs.
- *
- * Both answers are drawn by the portal's own error templates. It never returns —
- * the return type only exists so the callers above read as ordinary handlers.
- *
- * @throws HttpNotFoundException|HttpForbiddenException
+ * Who reads an occurrence's headcount card: the staff account behind a STAFF
+ * principal, which may be offered the admin event editor, else the member.
  */
-function portalTeamRefusal(Request $request, int $teamId): Response
+function portalTeamViewer(): User
 {
-    if (VolunteerTeamQuery::create()->findPk($teamId) === null) {
-        throw new HttpNotFoundException($request, gettext('Team not found'));
-    }
-
-    throw new HttpForbiddenException($request, gettext('This is not one of your teams.'));
+    return PortalContext::staffUser() ?? PortalMemberUser::forPerson((int) PortalContext::principal()?->personId);
 }

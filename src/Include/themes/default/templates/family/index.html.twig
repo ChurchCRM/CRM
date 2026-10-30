@@ -4,9 +4,10 @@
   My Family — the address the church writes to, everyone in the household, and
   the two things a member can do about it.
 
-  Variables: `family`, `members`, `canEdit`, `canConfirm`
-  (see docs/portal-templates.md). `canEdit` is true only for the family's
-  adults; every other member sees the same page without the edit controls.
+  Variables: `family`, `members`, `canEdit`, `canConfirm`, `canSeeContacts`
+  (see docs/portal-templates.md). The three flags come from the portal
+  permissions model and are true for the family's adults; other members see
+  the page without the edit controls, the confirm card and the contact details.
 #}
 
 {% block content %}
@@ -84,6 +85,12 @@
                 <span class="portal-member-text">
                     <span class="portal-member-fullname">{{ person.fullName }}</span>
                     <span class="portal-member-role">{{ person.role }}</span>
+                    {% if not person.isSelf and portal_can('portal.family.contacts.view', family) and (person.email or person.cellPhone) %}
+                    <span class="portal-member-contact" data-member-contact="{{ person.id }}">
+                        {% if person.email %}<a href="mailto:{{ person.email }}">{{ person.email|email_wrap }}</a>{% endif %}
+                        {% if person.cellPhone %}<a href="tel:{{ person.cellPhone }}">{{ person.cellPhone }}</a>{% endif %}
+                    </span>
+                    {% endif %}
                 </span>
                 {% if person.isSelf %}
                 <span class="portal-member-badge">{{ gettext('You') }}</span>
