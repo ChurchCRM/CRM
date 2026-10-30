@@ -25,14 +25,12 @@ $isMailChimpActive = PluginManager::isPluginActive('mailchimp');
                class="gs-card gs-card--green"
                data-has-existing-data="<?= !empty($hasExistingData) ? 'true' : 'false' ?>"
                data-person-count="<?= (int)($personCount ?? 0) ?>"
-               data-family-count="<?= (int)($familyCount ?? 0) ?>"
-               data-person-list-url="<?= SystemURLs::getRootPath() ?>/people/list"
-               data-family-list-url="<?= SystemURLs::getRootPath() ?>/family/">
+               data-family-count="<?= (int)($familyCount ?? 0) ?>">
                 <div class="gs-card-icon">
                     <i class="fa-solid fa-flask"></i>
                 </div>
                 <h5><?= gettext('Explore with Demo Data') ?></h5>
-                <p><?= gettext('Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data.') ?></p>
+                <p><?= gettext('Load sample families, people, groups, events, volunteer ministries and giving records. The safest way to learn ChurchCRM before committing your real data.') ?></p>
                 <span class="gs-card-cta">
                     <?= gettext('Load demo data') ?>
                     <i class="fa-solid fa-arrow-right fa-sm"></i>
@@ -111,7 +109,7 @@ $isMailChimpActive = PluginManager::isPluginActive('mailchimp');
                class="gs-plugin-badge"
                data-bs-toggle="tooltip"
                title="<?= gettext('Enable the MailChimp plugin to sync contacts') ?>">
-                <i class="fa-brands fa-mailchimp" style="color: #ffe01b;"></i>
+                <i class="fa-brands fa-mailchimp mailchimp-icon"></i>
                 MailChimp
                 <span class="badge bg-light text-dark border"><?= gettext('Enable') ?></span>
             </a>

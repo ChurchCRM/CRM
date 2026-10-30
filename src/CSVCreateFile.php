@@ -15,6 +15,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Utils\CsvExporter;
+use ChurchCRM\Service\CustomFieldService;
 
 if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
     RedirectUtils::securityRedirect('Admin');
@@ -59,14 +60,7 @@ while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
     $roleSequence[$lst_OptionSequence] = $lst_OptionID;
 }
 
-// Get Field Security List Matrix
-$sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence';
-$rsSecurityGrp = RunQuery($sSQL);
-
-while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
-    extract($aRow);
-    $aSecurityType[$lst_OptionID] = $lst_OptionName;
-}
+$customFieldService = new CustomFieldService();
 
 // Prepare the MySQL query
 $sJoinFamTable = ' LEFT JOIN family_fam ON per_fam_ID = fam_ID ';
@@ -341,6 +335,9 @@ if ($sFormat === 'addtocart') {
         if (!empty($_POST['PrintFamilyRole'])) {
             $headers[] = 'Family Role';
         }
+        if (!empty($_POST['PrintGrade'])) {
+            $headers[] = 'Grade';
+        }
         if (!empty($_POST['PrintGender'])) {
             $headers[] = 'Gender';
         }
@@ -365,7 +362,7 @@ if ($sFormat === 'addtocart') {
         }
         while ($aFamRow = mysqli_fetch_array($rsFamCustomFields)) {
             extract($aFamRow);
-            if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($aSecurityType[$fam_custom_FieldSec])) {
+            if ($customFieldService->canView((int) $fam_custom_FieldSec)) {
                 if (isset($_POST["$fam_custom_Field"])) {
                     $bUsedCustomFields = true;
                     $headers[] = $fam_custom_Name;
@@ -377,7 +374,7 @@ if ($sFormat === 'addtocart') {
     if ($sFormat === 'rollup') {
         while ($aFamRow = mysqli_fetch_array($rsFamCustomFields)) {
             extract($aFamRow);
-            if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($aSecurityType[$fam_custom_FieldSec])) {
+            if ($customFieldService->canView((int) $fam_custom_FieldSec)) {
                 if (isset($_POST["$fam_custom_Field"])) {
                     $bUsedCustomFields = true;
                     $headers[] = $fam_custom_Name;
@@ -572,6 +569,9 @@ if ($sFormat === 'addtocart') {
                     if (isset($_POST['PrintFamilyRole'])) {
                         $row[] = $familyRoles[$per_fmr_ID];
                     }
+                    if (isset($_POST['PrintGrade'])) {
+                        $row[] = $person?->getGradeName() ?? '';
+                    }
                     if (isset($_POST['PrintGender'])) {
                         $row[] = $person->getGenderName();
                     }
@@ -604,7 +604,7 @@ if ($sFormat === 'addtocart') {
                             $type_ID = '';
 
                             extract($aCustomField);
-                            if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($aSecurityType[$custom_FieldSec])) {
+                            if ($customFieldService->canView((int) $custom_FieldSec)) {
                                 if (isset($_POST["$custom_Field"])) {
                                     if ((int)$type_ID === 11) {
                                         $custom_Special = $sCountry;

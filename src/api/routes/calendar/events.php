@@ -60,7 +60,7 @@ $app->group('/events', function (RouteCollectorProxy $group): void {
         'Text'       => 'html',
         // Declared optional so an absent field still reaches the handler's own
         // "Missing required field" check with its existing message (#9821).
-        'RecurType'  => 'enum?:weekly,monthly,yearly',
+        'RecurType'  => 'enum?:weekly,monthly,monthly-weekday,yearly',
         'RangeStart' => 'date?',
         'RangeEnd'   => 'date?',
     ]))->add(new AddEventsRoleAuthMiddleware());
@@ -533,9 +533,8 @@ function eventAudienceGuard(Response $response, array $input, array $currentGrou
  * it is a column on `events_event` and it carries an authorization decision, so it is
  * resolved by `resolveEventMinistryId()` and written BEFORE the row is saved. A refused
  * ministry must leave no event behind, which a post-save hook could not guarantee. See the
- * explicit `setMinistryId()` calls in newEvent/updateEvent — and note that `updateEvent`'s
- * `fromArray($input)` would otherwise copy `MinistryId` straight through unchecked (§2.16
- * item 7), which is exactly why that call is followed by an authoritative overwrite.
+ * explicit `setMinistryId()` calls in newEvent/updateEvent — and note that `updateEvent` copies
+ * only an explicit field list, so `MinistryId` never reaches the row from the payload.
  */
 function applyEventExtendedFields(Event $event, array $input): void
 {
@@ -779,7 +778,7 @@ function newEvent(Request $request, Response $response, array $args): Response
  *     path="/events/repeat",
  *     operationId="createRepeatEvents",
  *     summary="Create a series of repeat events",
- *     description="Generates individual event records for each occurrence of a recurring event within a date range. Each created event is independently editable. Shares one recurrence engine with POST /events/generate-recurring: the same recurrence and date range produce the same occurrence dates on both endpoints, and a single call creates at most 366 events.",
+ *     description="Generates individual event records for each occurrence of a recurring event within a date range. RecurType monthly-weekday repeats on the Nth weekday of the month (RecurWOM + RecurDOW, e.g. the 2nd Tuesday); months without a 5th such weekday are skipped. Each created event is independently editable. Shares one recurrence engine with POST /events/generate-recurring: the same recurrence and date range produce the same occurrence dates on both endpoints, and a single call creates at most 366 events.",
  *     tags={"Calendar"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\RequestBody(required=true, @OA\JsonContent(
@@ -790,10 +789,11 @@ function newEvent(Request $request, Response $response, array $args): Response
  *         @OA\Property(property="Text", type="string", nullable=true, description="Rich text body (HTML allowed)"),
  *         @OA\Property(property="StartTime", type="string", example="09:00", description="Event start time in HH:MM format"),
  *         @OA\Property(property="EndTime", type="string", example="10:30", description="Event end time in HH:MM format"),
- *         @OA\Property(property="RecurType", type="string", enum={"weekly","monthly","yearly"}, example="weekly"),
- *         @OA\Property(property="RecurDOW", type="string", example="Sunday", description="Day of week for weekly recurrence (e.g. Sunday)"),
+ *         @OA\Property(property="RecurType", type="string", enum={"weekly","monthly","monthly-weekday","yearly"}, example="weekly"),
+ *         @OA\Property(property="RecurDOW", type="string", example="Sunday", description="Day of week for weekly and monthly-weekday recurrence (e.g. Sunday)"),
  *         @OA\Property(property="RecurDOM", type="integer", example=1, description="Day of month (1-31) for monthly recurrence"),
  *         @OA\Property(property="RecurDOY", type="string", example="04-12", description="Month-day in MM-DD format for yearly recurrence"),
+ *         @OA\Property(property="RecurWOM", type="integer", minimum=1, maximum=5, example=2, description="Week of the month (1-5) for monthly-weekday recurrence: 2 with RecurDOW Tuesday is the 2nd Tuesday"),
  *         @OA\Property(property="RangeStart", type="string", format="date", example="2026-01-01", description="First date of the repetition range (inclusive)"),
  *         @OA\Property(property="RangeEnd", type="string", format="date", example="2026-12-31", description="Last date of the repetition range (inclusive)"),
  *         @OA\Property(property="PinnedCalendars", type="array", @OA\Items(type="integer"), nullable=true),
@@ -837,6 +837,14 @@ function createRepeatEvents(Request $request, Response $response, array $args): 
         return SlimUtils::renderErrorJSON($response, gettext('RangeEnd must be on or after RangeStart'), [], 400);
     }
 
+    $recurWom = null;
+    if (isset($input['RecurWOM']) && $input['RecurWOM'] !== '') {
+        $recurWom = filter_var($input['RecurWOM'], FILTER_VALIDATE_INT, ['options' => ['min_range' => 1, 'max_range' => 5]]);
+        if ($recurWom === false) {
+            return SlimUtils::renderErrorJSON($response, gettext('RecurWOM must be a whole number from 1 to 5'), [], 400);
+        }
+    }
+
     try {
         $service = new EventService();
         $result = $service->createRecurringEvents([
@@ -850,6 +858,7 @@ function createRepeatEvents(Request $request, Response $response, array $args): 
             'recurDOW'       => $input['RecurDOW'] ?? null,
             'recurDOM'       => isset($input['RecurDOM']) ? (int) $input['RecurDOM'] : null,
             'recurDOY'       => $input['RecurDOY'] ?? null,
+            'recurWOM'       => $recurWom,
             'rangeStart'     => $input['RangeStart'],
             'rangeEnd'       => $input['RangeEnd'],
             'pinnedCalendars' => array_map('intval', is_array($input['PinnedCalendars'] ?? null) ? $input['PinnedCalendars'] : []),
@@ -918,14 +927,19 @@ function updateEvent(Request $request, Response $response, array $args): Respons
         return $ministryId;
     }
 
-    // fromArray copies matching property names (Title, Desc, Start, End,
-    // Text, InActive) onto the Event. LinkedGroupId + AttendanceCounts
-    // aren't Event columns; applyEventExtendedFields handles those.
-    $Event->fromArray($input);
-    $Event->setId($id);
-    // MinistryId IS an Event column, so fromArray() above has just copied whatever the
-    // payload said with no authorization at all (§2.16 item 7). Overwrite it with the value
-    // resolveEventMinistryId() authorized — this line is the whole reason that is safe.
+    $fields = [
+        'Title' => 'setTitle', 'Desc' => 'setDesc', 'Text' => 'setText', 'Start' => 'setStart',
+        'End' => 'setEnd', 'InActive' => 'setInActive', 'Type' => 'setType',
+    ];
+    foreach ($fields as $key => $setter) {
+        if (array_key_exists($key, $input)) {
+            $Event->$setter($input[$key]);
+        }
+    }
+    if (array_key_exists('URL', $input)) {
+        $url = trim((string) $input['URL']);
+        $Event->setURL(preg_match('#^https?://\S+$#i', $url) ? $url : null);
+    }
     $Event->setMinistryId($ministryId);
 
     $currentCalendarIds = [];

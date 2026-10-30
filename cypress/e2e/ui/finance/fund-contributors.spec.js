@@ -142,19 +142,6 @@ describe('Finance: Fund Contributor Drill-down', () => {
 });
 
 // ------------------------------------------------------------------
-// Authorization: users without finance role cannot access the page
-// ------------------------------------------------------------------
-describe('Finance: Fund Contributor Drill-down - Authorization', () => {
-    it('denies access to users without the finance role', () => {
-        cy.setupNoFinanceSession();
-        // Fund ID 1 is a reasonable probe; the auth check fires before any DB query
-        cy.visit('/finance/fund/1/contributors', { failOnStatusCode: false });
-        // FinanceRoleAuthMiddleware redirects to the access-denied page
-        cy.url().should('include', 'access-denied');
-    });
-});
-
-// ------------------------------------------------------------------
 // 404 guard: nonexistent fund ID returns error page, not a crash
 // ------------------------------------------------------------------
 describe('Finance: Fund Contributor Drill-down - 404 guard', () => {

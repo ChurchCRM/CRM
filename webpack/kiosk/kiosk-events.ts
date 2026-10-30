@@ -46,9 +46,7 @@ $(document).on("click", ".checkoutButton", (event) => {
 $(document).on("click", "#refreshBtn", (event) => {
   event.preventDefault();
   kiosk.updateActiveClassMembers();
-  // Reset the 60s smart-refresh cycle so the warning modal doesn't appear
-  // unexpectedly soon after a manual refresh.
-  kiosk.cancelScheduledRefresh();
+  kiosk.scheduleNextRefresh();
 });
 
 $(document).on("click", "#alertAllBtn", (event) => {
@@ -86,11 +84,6 @@ $(document).on("click", "#checkinBySkipBtn", () => {
 // "Check-in By" modal dismissed without making a selection (X / Escape / backdrop click)
 $(document).on("hidden.bs.modal", "#checkinByModal", () => {
   kiosk.cancelCheckinByModal();
-});
-
-// Cancel the pending auto-refresh — resets the 60s cycle from scratch
-$(document).on("click", "#cancelRefreshBtn", () => {
-  kiosk.cancelScheduledRefresh();
 });
 
 // Guest registration FAB

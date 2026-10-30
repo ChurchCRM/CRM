@@ -26,11 +26,6 @@ msgid "Based on filters below.."
 msgstr "Based on filters below ..."
 
 #: 
-#, fuzzy
-msgid "Load Authorized"
-msgstr "Load Authorised Transactions"
-
-#: 
 msgid "Family Cell Phone"
 msgstr "Family Mobile"
 
@@ -78,10 +73,6 @@ msgstr "Post Code"
 #: 
 msgid "Customizable report with filtering by date, fund, family, and payment method."
 msgstr "Customisable report with filtering by date, fund, family, and payment method."
-
-#: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Customise the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
 
 #: 
 msgid "Require all users to enroll in two-factor authentication"
@@ -141,10 +132,6 @@ msgstr "Failed to cancel enrolment. Please try again."
 #: 
 msgid "Foreground Color"
 msgstr "Foreground Colour"
-
-#: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "Include Sunday School classes and enrolments"
 
 #: 
 msgid "Two Factor Enrollment Error"

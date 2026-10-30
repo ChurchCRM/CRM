@@ -64,7 +64,7 @@ $familySearchHint = SystemConfig::getBooleanValue('bUseDonationEnvelopes')
     </div>
 
     <!-- Toast feedback -->
-    <div id="pledge-toast-container" class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index:9999;">
+    <div id="pledge-toast-container" class="toast-container position-fixed bottom-0 end-0 p-3 toast-container-top">
         <div id="pledge-toast" class="toast align-items-center text-white border-0" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="d-flex">
                 <div class="toast-body" id="pledge-toast-body"></div>
@@ -355,7 +355,6 @@ $familySearchHint = SystemConfig::getBooleanValue('bUseDonationEnvelopes')
     const ROOT = window.CRM.root;
     const GROUP_KEY = <?= InputUtils::jsonEncodeForScript($groupKey) ?>;
     const PLEDGE_TYPE = <?= InputUtils::jsonEncodeForScript($type) ?>;
-    const FY_MONTH    = <?= (int) SystemConfig::getIntValue('iFYMonth') ?>;
     const LINK_BACK_RAW = <?= InputUtils::jsonEncodeForScript($linkBack) ?>;
     const LINK_BACK_TARGET = <?= InputUtils::jsonEncodeForScript($linkBack !== '' ? $linkBackTarget : '') ?>;
     const REQUIRE_CHECK_NO = <?= $requireCheckNumber ? 'true' : 'false' ?>;
@@ -453,26 +452,18 @@ $familySearchHint = SystemConfig::getBooleanValue('bUseDonationEnvelopes')
         toggleCheckGroup();
     }
 
-    // ---- Date → auto-resolve FYID (client-side, mirrors FiscalYearUtils::calculateFiscalYearId) ----
+    // ---- Date → auto-resolve FYID via FiscalYearUtils (/api/fiscalyear) ----
     const dateEl = document.getElementById('Date');
     const fyEl   = document.getElementById('FYID');
 
-    function computeFyId(dateStr) {
-        const parts = dateStr.split('-');
-        if (parts.length < 3) { return null; }
-        const year  = parseInt(parts[0], 10);
-        const month = parseInt(parts[1], 10);
-        if (isNaN(year) || isNaN(month)) { return null; }
-        let fyid = year - 1996;
-        if (month >= FY_MONTH && FY_MONTH > 1) { fyid += 1; }
-        return fyid > 0 ? fyid : null;
-    }
-
     if (dateEl && fyEl) {
-        dateEl.addEventListener('change', function () {
-            const fyid = computeFyId(this.value);
-            if (fyid !== null) {
-                fyEl.value = String(fyid);
+        dateEl.addEventListener('change', async function () {
+            if (!this.value) { return; }
+            const res = await fetch(ROOT + '/api/fiscalyear?date=' + encodeURIComponent(this.value));
+            if (!res.ok) { return; }
+            const data = await res.json();
+            if (data.fyId) {
+                fyEl.value = String(data.fyId);
             }
         });
     }
@@ -483,7 +474,7 @@ $familySearchHint = SystemConfig::getBooleanValue('bUseDonationEnvelopes')
         const date     = document.getElementById('Date').value;
         const fyid     = parseInt(fyEl ? fyEl.value : '0', 10);
         const methodEl2 = document.getElementById('Method');
-        // Pledges have no Method dropdown; default to CASH so genGroupKey never receives null iCheckNo
+        // Pledges have no Method dropdown; default to CASH so generateGroupKey never receives null iCheckNo
         const method   = methodEl2 ? methodEl2.value : (PLEDGE_TYPE === 'Pledge' ? 'CASH' : 'CHECK');
         const checkEl  = document.getElementById('CheckNo');
         const checkNo  = checkEl ? checkEl.value : '';

@@ -2,12 +2,10 @@
  * Repeat Event Editor page – client-side logic.
  *
  * Handles:
- *  - Enabling / disabling recurrence-type controls (weekly / monthly / yearly)
+ *  - Enabling / disabling recurrence-type controls (weekly / monthly / Nth weekday / yearly)
  *  - Auto-populating the event title from the selected type
  *  - Client-side form validation (time ordering, date-range ordering)
  */
-
-import "./repeat-event-editor.css";
 
 document.addEventListener("DOMContentLoaded", () => {
   const t = window.i18next ? window.i18next.t.bind(window.i18next) : (s) => s;
@@ -22,10 +20,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const recurDow = document.getElementById("RecurDOW");
     const recurDom = document.getElementById("RecurDOM");
     const recurDoy = document.getElementById("RecurDOY");
+    const recurWom = document.getElementById("RecurWOM");
+    const recurMonthDow = document.getElementById("RecurMonthDOW");
 
     if (recurDow) recurDow.disabled = type !== "weekly";
     if (recurDom) recurDom.disabled = type !== "monthly";
     if (recurDoy) recurDoy.disabled = type !== "yearly";
+    if (recurWom) recurWom.disabled = type !== "monthly-weekday";
+    if (recurMonthDow) recurMonthDow.disabled = type !== "monthly-weekday";
   }
 
   document.querySelectorAll('input[name="RecurType"]').forEach((radio) => {

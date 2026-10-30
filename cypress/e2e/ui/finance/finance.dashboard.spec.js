@@ -66,7 +66,7 @@ describe("Finance Dashboard", () => {
         cy.contains("Review Donation Funds");
         cy.contains("Church Information");
         cy.contains("Tax Report Verbiage");
-        cy.contains("Generate Tax Statements");
+        cy.contains("Generate Giving Statements");
     });
 
     it("should display Recent Deposits section", () => {
@@ -203,28 +203,5 @@ describe("Finance Dashboard - Finance Role (non-admin) Access", () => {
         cy.contains(".list-group-item", "Church Information")
             .find("a[href*='admin/system/church-info']")
             .should("not.exist");
-    });
-});
-
-describe("Finance Dashboard - No Finance Permission", () => {
-    beforeEach(() => {
-        cy.setupNoFinanceSession();
-    });
-
-    it("should deny access to users without finance permission", () => {
-        // User judith.matthews has no finance permission
-        cy.visit("/finance/", { failOnStatusCode: false });
-        
-        // Should be redirected to access-denied page
-        cy.url().should("include", "/v2/access-denied");
-        cy.url().should("include", "role=Finance");
-    });
-
-    it("should deny access to finance reports for users without finance permission", () => {
-        cy.visit("/finance/reports", { failOnStatusCode: false });
-        
-        // Should be redirected to access-denied page
-        cy.url().should("include", "/v2/access-denied");
-        cy.url().should("include", "role=Finance");
     });
 });

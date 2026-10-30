@@ -96,7 +96,7 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
 
     <!-- Family Members Section -->
     <div class="card shadow-sm">
-        <div class="card-header bg-light">
+        <div class="card-header bg-surface-secondary">
             <h5 class="mb-0">
                 <i class="fa-solid fa-users text-primary me-2"></i><?= gettext("Family Members") ?>
             </h5>

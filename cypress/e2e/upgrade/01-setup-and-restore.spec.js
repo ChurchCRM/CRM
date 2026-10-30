@@ -323,5 +323,22 @@ describe('Upgrade via Restore', () => {
                 cy.log(`Found ${response.body.families.length} families after upgrade`);
             });
         });
+
+        // churchcrm-6.0.0.sql has a cash payment (row 35) under the key of the Diaz pledge.
+        it('should give a payment that shared a pledge GroupKey its own key (#10725)', function () {
+            if (!upgradeSqlFile.includes('churchcrm-6.0.0')) {
+                this.skip();
+            }
+            const pledgeKey = 'cash|0|9|1|2019-09-19';
+            cy.request(`/api/payments/pledges/${encodeURIComponent(pledgeKey)}`).then(({ body }) => {
+                expect(body.pledgeOrPayment).to.equal('Pledge');
+                expect(body.funds).to.have.length(2);
+            });
+            cy.request(`/api/payments/pledges/${encodeURIComponent(`${pledgeKey}|35`)}`).then(({ body }) => {
+                expect(body.pledgeOrPayment).to.equal('Payment');
+                expect(body.depositId).to.equal(5);
+                expect(body.total).to.be.closeTo(25, 0.01);
+            });
+        });
     });
 });

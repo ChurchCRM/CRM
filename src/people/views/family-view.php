@@ -3,6 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\Utils\CSRFUtils;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\EventQuery;
@@ -110,25 +111,25 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
 <?php if ($taxEmailSent) { ?>
 <div class="alert alert-success alert-dismissible fade show" role="alert">
     <i class="fa-solid fa-check-circle me-2"></i>
-    <?= sprintf(gettext('%d tax document emailed to the family successfully.'), (int)$taxEmailSent) ?>
+    <?= sprintf(gettext('%d giving statement emailed to the family successfully.'), (int)$taxEmailSent) ?>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="<?= gettext('Close') ?>"></button>
 </div>
 <?php } elseif ($taxEmailError === 'NoEmail') { ?>
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
     <i class="fa-solid fa-triangle-exclamation me-2"></i>
-    <?= gettext('Unable to email tax document: this family has no email address on file.') ?>
+    <?= gettext('Unable to email giving statement: this family has no email address on file.') ?>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="<?= gettext('Close') ?>"></button>
 </div>
 <?php } elseif ($taxEmailError === 'NoData') { ?>
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
     <i class="fa-solid fa-triangle-exclamation me-2"></i>
-    <?= gettext('Unable to email tax document: no payment data found for that year.') ?>
+    <?= gettext('Unable to email giving statement: no payment data found for that year.') ?>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="<?= gettext('Close') ?>"></button>
 </div>
 <?php } elseif ($taxEmailError === 'SendFailed') { ?>
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
     <i class="fa-solid fa-circle-xmark me-2"></i>
-    <?= gettext('Tax document email failed to send. Please check your email server settings.') ?>
+    <?= gettext('Giving statement email failed to send. Please check your email server settings.') ?>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="<?= gettext('Close') ?>"></button>
 </div>
 <?php } ?>
@@ -168,17 +169,17 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
                     </a>
                     <?php if (!empty($taxYears)) { ?>
                     <div class="dropdown-divider"></div>
-                    <h6 class="dropdown-header"><i class="fa-solid fa-file-invoice-dollar me-1"></i><?= gettext('Tax Documents') ?></h6>
+                    <h6 class="dropdown-header"><i class="fa-solid fa-file-invoice-dollar me-1"></i><?= gettext('Giving Statements') ?></h6>
                     <?php foreach ($taxYears as $taxYear) { ?>
-                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/Reports/TaxReport.php?familyId=<?= $family->getId() ?>&amp;year=<?= (int)$taxYear ?>" target="_blank">
-                        <i class="fa-solid fa-print me-2"></i><?= sprintf(gettext('Print %d Tax Doc'), (int)$taxYear) ?>
+                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/finance/reports/giving-statements/download?familyId=<?= $family->getId() ?>&amp;year=<?= (int)$taxYear ?>" target="_blank">
+                        <i class="fa-solid fa-print me-2"></i><?= sprintf(gettext('Print %s Giving Statement'), FiscalYearUtils::getFiscalYearDatesForCalendarYear((int) $taxYear)['label']) ?>
                     </a>
-                    <form method="post" action="<?= SystemURLs::getRootPath() ?>/Reports/FamilyTaxReportEmail.php" class="m-0">
+                    <form method="post" action="<?= SystemURLs::getRootPath() ?>/finance/reports/giving-statements/email" class="m-0">
                         <input type="hidden" name="familyId" value="<?= $family->getId() ?>">
                         <input type="hidden" name="year" value="<?= (int)$taxYear ?>">
                         <?= CSRFUtils::getTokenInputField('tax_email_' . (int)$taxYear) ?>
                         <button type="submit" class="dropdown-item border-0 bg-transparent w-100 text-start">
-                            <i class="fa-solid fa-envelope me-2"></i><?= sprintf(gettext('Email %d Tax Doc'), (int)$taxYear) ?>
+                            <i class="fa-solid fa-envelope me-2"></i><?= sprintf(gettext('Email %s Giving Statement'), FiscalYearUtils::getFiscalYearDatesForCalendarYear((int) $taxYear)['label']) ?>
                         </button>
                     </form>
                     <?php } ?>
@@ -197,9 +198,11 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
                     </button>
                     <div class="dropdown-divider"></div>
                     <?php } ?>
+                    <?php if ($canEditRecords) { ?>
                     <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#confirm-verify">
                         <i class="fa-solid fa-clipboard-check me-2"></i><?= gettext('Verify Info') ?>
                     </a>
+                    <?php } ?>
                     <?php if ($family->hasLatitudeAndLongitude()) { ?>
                     <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/people/map/neighbors?familyId=<?= $family->getId() ?>">
                         <i class="fa-solid fa-people-roof me-2"></i><?= gettext('Find Neighbors') ?>
@@ -262,7 +265,7 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
             if (empty($members)) { return; } ?>
             <div class="mb-1">
                 <?php renderSectionHeader($label, $icon, $color, count($members)); ?>
-                <div style="overflow-x: clip; overflow-y: visible;">
+                <div class="table-clip-x">
                     <table class="table table-vcenter card-table mb-0">
                         <thead>
                             <tr>
@@ -352,7 +355,7 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
         ?>
             <div class="mb-1">
                 <?php renderSectionHeader($label, $icon, $color, count($members)); ?>
-                <div style="overflow-x: clip; overflow-y: visible;">
+                <div class="table-clip-x">
                     <table class="table table-vcenter card-table mb-0">
                         <thead>
                             <tr>
@@ -480,8 +483,7 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
             <div class="position-relative">
                 <a href="#" id="uploadImageTrigger" class="d-block" title="<?= AuthenticationManager::getCurrentUser()->isEditRecordsEnabled() ? gettext("Click to upload photo") : gettext("View Photo") ?>">
                     <img data-image-entity-type="family"
-                         data-image-entity-id="<?= $family->getId() ?>" alt="" class="photo-profile card-img-top w-100 object-fit-cover"
-                         style="aspect-ratio: 1 / 1; max-height: 400px;">
+                         data-image-entity-id="<?= $family->getId() ?>" alt="" class="photo-profile card-img-top w-100 object-fit-cover profile-photo-square">
                 </a>
                 <button type="button"
                         class="photo-view-overlay btn btn-sm position-absolute bottom-0 end-0 m-2 d-none"
@@ -489,32 +491,32 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
                         data-entity-id="<?= $family->getId() ?>"
                         title="<?= gettext('View full photo') ?>"
                         aria-label="<?= gettext('View full photo') ?>">
-                    <i class="fa-solid fa-magnifying-glass" aria-hidden="true" style="color:white; text-shadow: 0 1px 3px rgba(0,0,0,.8);"></i>
+                    <i class="fa-solid fa-magnifying-glass photo-zoom-icon" aria-hidden="true"></i>
                 </button>
             </div>
             <!-- Attributes (below photo) -->
             <div class="card-body">
                 <ul class="list-unstyled mb-0">
                     <li class="mb-1">
-                        <i class="fa-solid fa-circle me-2 <?= $family->isActive() ? 'text-success' : 'text-secondary' ?>" style="width: 1rem; text-align: center;"></i><?= $family->isActive() ? gettext('Active') : gettext('Inactive') ?>
+                        <i class="fa-solid fa-circle me-2 <?= $family->isActive() ? 'text-success' : 'text-secondary' ?> icon-fixed-width"></i><?= $family->isActive() ? gettext('Active') : gettext('Inactive') ?>
                     </li>
-                    <li class="mb-1"><i class="fa-solid fa-person-half-dress me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= $livingMemberCount ?> <?= $livingMemberCount == 1 ? gettext('Member') : gettext('Members') ?><?= ($memberCount > $livingMemberCount) ? ' <span class="text-body-secondary small">(+' . ($memberCount - $livingMemberCount) . ' ' . gettext('deceased') . ')</span>' : '' ?></li>
+                    <li class="mb-1"><i class="fa-solid fa-person-half-dress me-2 text-body-secondary icon-fixed-width"></i><?= $livingMemberCount ?> <?= $livingMemberCount == 1 ? gettext('Member') : gettext('Members') ?><?= ($memberCount > $livingMemberCount) ? ' <span class="text-body-secondary small">(+' . ($memberCount - $livingMemberCount) . ' ' . gettext('deceased') . ')</span>' : '' ?></li>
                     <?php if (!empty($family->getHomePhone())) { ?>
                     <li class="mb-1">
-                        <i class="fa-solid fa-phone me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><a href="tel:<?= InputUtils::escapeAttribute($family->getHomePhone()) ?>"><?= InputUtils::escapeHTML($family->getHomePhone()) ?></a>
+                        <i class="fa-solid fa-phone me-2 text-body-secondary icon-fixed-width"></i><a href="tel:<?= InputUtils::escapeAttribute($family->getHomePhone()) ?>"><?= InputUtils::escapeHTML($family->getHomePhone()) ?></a>
                     </li>
                     <?php } ?>
                     <?php if (!SystemConfig::getBooleanValue("bHideFamilyNewsletter")) { ?>
                     <li class="mb-1">
-                        <i class="fa-solid fa-newspaper me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= gettext("Newsletter") ?>:
+                        <i class="fa-solid fa-newspaper me-2 text-body-secondary icon-fixed-width"></i><?= gettext("Newsletter") ?>:
                         <span class="<?= ($family->isSendNewsletter() ? "text-success" : "text-danger") ?>"><i class="fa-solid fa-<?= ($family->isSendNewsletter() ? "check" : "times") ?>"></i></span>
                     </li>
                     <?php } ?>
                     <?php if ($family->getEnvelope()) { ?>
-                    <li class="mb-1"><i class="fa-solid fa-envelope me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= gettext('Envelope') ?> #<?= $family->getEnvelope() ?></li>
+                    <li class="mb-1"><i class="fa-solid fa-envelope me-2 text-body-secondary icon-fixed-width"></i><?= gettext('Envelope') ?> #<?= $family->getEnvelope() ?></li>
                     <?php } ?>
                     <?php if (!SystemConfig::getBooleanValue("bHideWeddingDate") && !empty($family->getWeddingdate())) { ?>
-                    <li class="mb-1"><i class="fa-solid fa-ring me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= $family->getWeddingDate()->format(SystemConfig::getValue("sDateFormatLong")) ?></li>
+                    <li class="mb-1"><i class="fa-solid fa-ring me-2 text-body-secondary icon-fixed-width"></i><?= $family->getWeddingDate()->format(SystemConfig::getValue("sDateFormatLong")) ?></li>
                     <?php } ?>
                 </ul>
             </div>
@@ -577,7 +579,7 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
                         <i class="fa-solid fa-people-roof me-1"></i><?= gettext('Find Neighbors') ?>
                     </a>
                     <?php endif; ?>
-                    <?php if (!$family->hasLatitudeAndLongitude()) : ?>
+                    <?php if ($canEditRecords && !$family->hasLatitudeAndLongitude()) : ?>
                     <button type="button" class="btn btn-sm btn-outline-success" id="refresh-coordinates-btn"
                             data-family-id="<?= $family->getId() ?>"
                             title="<?= gettext('Automatically detect coordinates using address') ?>">
@@ -588,7 +590,7 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
 
                 <?php if ($family->hasLatitudeAndLongitude()) : ?>
                     <div class="mt-2 rounded overflow-hidden">
-                        <div id="map1" style="height: 200px;"></div>
+                        <div id="map1" class="map-canvas-sm"></div>
                     </div>
                 <?php endif; ?>
             </div>
@@ -631,7 +633,7 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
             <div class="card-body">
                 <ul class="list-unstyled mb-0">
                     <li class="mb-1">
-                        <i class="fa-solid fa-envelope me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><a href="mailto:<?= InputUtils::escapeAttribute($family->getEmail()) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($family->getEmail()) ?></a>
+                        <i class="fa-solid fa-envelope me-2 text-body-secondary icon-fixed-width"></i><a href="mailto:<?= InputUtils::escapeAttribute($family->getEmail()) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($family->getEmail()) ?></a>
                         <?php if ($canSendEmail) : ?>
                         <button class="btn btn-sm btn-ghost-primary ms-1" type="button"
                                 data-email-composer
@@ -651,7 +653,7 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
                     </li>
                     <!-- MailChimp status - populated by JavaScript if plugin is active -->
                     <li class="d-none mb-1" id="mailchimp-status-container">
-                        <i class="fa-regular fa-paper-plane me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i>Mailchimp:
+                        <i class="fa-regular fa-paper-plane me-2 text-body-secondary icon-fixed-width"></i>Mailchimp:
                         <span id="mailchimp-status">... <?= gettext("loading")?> ...</span>
                     </li>
                 </ul>
@@ -671,7 +673,7 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
                     <ul class="list-unstyled mb-0">
                         <?php foreach ($familyCustom as $customField) { ?>
                             <li class="mb-1">
-                                <i class="<?= InputUtils::escapeAttribute($customField->getIcon()) ?> me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= InputUtils::escapeHTML($customField->getDisplayValue()) ?>:
+                                <i class="<?= InputUtils::escapeAttribute($customField->getIcon()) ?> me-2 text-body-secondary icon-fixed-width"></i><?= InputUtils::escapeHTML($customField->getDisplayValue()) ?>:
                                 <?php if ($customField->getLink()) { ?>
                                     <a href="<?= InputUtils::escapeAttribute($customField->getLink()) ?>"><?= InputUtils::escapeHTML($customField->getFormattedValue()) ?></a>
                                 <?php } else {
@@ -804,8 +806,8 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
                     </ul>
                 </div>
             </div>
-            <div style="overflow-x: clip; overflow-y: visible;" class="px-3 pt-2">
-                <table id="pledge-payment-v2-table" class="table table-vcenter card-table" style="width: 100%;">
+            <div class="table-clip-x px-3 pt-2">
+                <table id="pledge-payment-v2-table" class="table table-vcenter card-table w-100">
                     <tbody></tbody>
                     <tfoot>
                         <tr id="giving-summary-row" class="d-none">

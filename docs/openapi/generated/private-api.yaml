@@ -9,7 +9,7 @@ info:
   license:
     name: MIT
     url: 'https://opensource.org/licenses/MIT'
-  version: 7.8.1
+  version: 7.8.3
 servers:
   -
     url: '{scheme}://{host}/api'
@@ -241,6 +241,12 @@ paths:
       responses:
         '200':
           description: 'Updated config key/value pair'
+        '400':
+          description: 'A string value is required'
+        '403':
+          description: 'This setting is administrator-only'
+        '404':
+          description: 'Unknown user configuration key'
       security:
         -
           ApiKeyAuth: []
@@ -396,6 +402,7 @@ paths:
               schema:
                 properties:
                   success: { type: boolean, example: true }
+                  eventId: { description: 'ID of the new event', type: integer, example: 42 }
                 type: object
         '400':
           description: 'Invalid event type, calendar ID or volunteer ministry'
@@ -662,7 +669,7 @@ paths:
       tags:
         - Calendar
       summary: 'Create a series of repeat events'
-      description: 'Generates individual event records for each occurrence of a recurring event within a date range. Each created event is independently editable. Shares one recurrence engine with POST /events/generate-recurring: the same recurrence and date range produce the same occurrence dates on both endpoints, and a single call creates at most 366 events.'
+      description: 'Generates individual event records for each occurrence of a recurring event within a date range. RecurType monthly-weekday repeats on the Nth weekday of the month (RecurWOM + RecurDOW, e.g. the 2nd Tuesday); months without a 5th such weekday are skipped. Each created event is independently editable. Shares one recurrence engine with POST /events/generate-recurring: the same recurrence and date range produce the same occurrence dates on both endpoints, and a single call creates at most 366 events.'
       operationId: createRepeatEvents
       requestBody:
         required: true
@@ -703,9 +710,9 @@ paths:
                 RecurType:
                   type: string
                   example: weekly
-                  enum: [weekly, monthly, yearly]
+                  enum: [weekly, monthly, monthly-weekday, yearly]
                 RecurDOW:
-                  description: 'Day of week for weekly recurrence (e.g. Sunday)'
+                  description: 'Day of week for weekly and monthly-weekday recurrence (e.g. Sunday)'
                   type: string
                   example: Sunday
                 RecurDOM:
@@ -716,6 +723,12 @@ paths:
                   description: 'Month-day in MM-DD format for yearly recurrence'
                   type: string
                   example: 04-12
+                RecurWOM:
+                  description: 'Week of the month (1-5) for monthly-weekday recurrence: 2 with RecurDOW Tuesday is the 2nd Tuesday'
+                  type: integer
+                  example: 2
+                  maximum: 5
+                  minimum: 1
                 RangeStart:
                   description: 'First date of the repetition range (inclusive)'
                   type: string
@@ -1766,7 +1779,7 @@ paths:
       tags:
         - System
       summary: 'Trigger background timer jobs (page-load fallback scheduler)'
-      description: 'Fallback trigger fired from the page footer on every authenticated page load, for installs that cannot run cron. The jobs are rate limited server-side by iTimerJobsMinIntervalMinutes, so a call inside that window returns ran=false without doing any work. The supported scheduler is the command-line runner (cli/timerjobs.php) driven by cron.'
+      description: 'Fallback trigger fired from the page footer on every authenticated page load, for installs that cannot run cron. The jobs are rate limited server-side by iTimerJobsMinIntervalMinutes, so a call inside that window returns ran=false without doing any work. The supported scheduler is the command-line runner (cli/timerjobs.php) driven by cron. Among the jobs, queued composer email is sent for up to 15 seconds per call.'
       requestBody:
         required: false
         content:
@@ -1815,6 +1828,7 @@ paths:
                 properties:
                   Latitude: { type: number, format: float }
                   Longitude: { type: number, format: float }
+                  Status: { description: 'not_found: the services answered and have no such address. unavailable: no service could answer; try again later. Latitude and Longitude are 0 in both cases.', type: string, enum: [found, not_found, unavailable] }
                 type: object
         '400':
           description: 'Empty or invalid request body'
@@ -2592,8 +2606,8 @@ paths:
     post:
       tags:
         - Email
-      summary: 'Send a composer email, one message per recipient, through the configured SMTP server'
-      description: 'Recipients are given as person and family ids, never as addresses: the server resolves each id to its current email address, applies the do-not-email property, skips deceased people, inactive families and ids without an address, deduplicates addresses, and reports every skipped recipient by name. Each recipient receives their own message.'
+      summary: 'Queue a composer email, one message per recipient, for sending through the configured SMTP server'
+      description: 'Recipients are given as person and family ids, never as addresses: the server resolves each id to its current email address, applies the do-not-email property, skips deceased people, inactive families and ids without an address, deduplicates addresses, and reports every skipped recipient by name. Each recipient receives their own message. Nothing is sent inside this request: every message is queued (email history status `queued`) under one batch id and the call returns at once. POST /email/batches/{batch}/send sends the batch now in bounded steps; whatever is left goes out with the timer jobs (cron, or the page-load fallback). `sent` and `failed` are always empty here and are kept for older clients; follow the batch for outcomes.'
       requestBody:
         required: true
         content:
@@ -2604,7 +2618,7 @@ paths:
                 - body
               properties:
                 personIds:
-                  description: 'Person ids to email at their primary address (falls back to the family address)'
+                  description: 'Person ids to email at their own address (a person with none is skipped)'
                   type: array
                   items: { type: integer }
                 familyIds:
@@ -2621,15 +2635,17 @@ paths:
               type: object
       responses:
         '200':
-          description: 'Per-recipient outcome'
+          description: 'Per-recipient outcome of the queueing'
           content:
             application/json:
               schema:
                 properties:
-                  sent: { description: 'Recipients whose message the SMTP server accepted (acceptance is not delivery)', type: array, items: { properties: { personId: { type: integer, nullable: true }, familyId: { type: integer, nullable: true }, name: { type: string }, email: { type: string } }, type: object } }
+                  batch: { description: 'Batch id of the queued messages; null when nobody could be emailed', type: string, example: 3f2a9c0d4b6e8f1a2c3d4e5f60718293, nullable: true }
+                  queued: { description: 'Recipients whose message was queued', type: array, items: { properties: { personId: { type: integer, nullable: true }, familyId: { type: integer, nullable: true }, name: { type: string }, email: { type: string } }, type: object } }
                   skipped: { description: 'Requested recipients that were not emailed', type: array, items: { properties: { personId: { type: integer, nullable: true }, familyId: { type: integer, nullable: true }, name: { type: string }, reason: { type: string, enum: [not-found, no-email, do-not-email, deceased, inactive, duplicate-address] } }, type: object } }
-                  failed: { description: 'Recipients the SMTP server rejected', type: array, items: { properties: { personId: { type: integer, nullable: true }, familyId: { type: integer, nullable: true }, name: { type: string }, email: { type: string }, error: { type: string } }, type: object } }
-                  counts: { properties: { sent: { type: integer }, skipped: { type: integer }, failed: { type: integer } }, type: object }
+                  sent: { description: 'Always empty: sending happens after the request (kept for older clients)', type: array, items: { type: object } }
+                  failed: { description: 'Always empty: sending happens after the request (kept for older clients)', type: array, items: { type: object } }
+                  counts: { properties: { queued: { type: integer }, sent: { description: 'Always 0', type: integer }, skipped: { type: integer }, failed: { description: 'Always 0', type: integer } }, type: object }
                 type: object
         '400':
           description: 'Invalid request: raw addresses, no ids, bad ids, more than 500 ids, or empty subject/body'
@@ -2637,6 +2653,68 @@ paths:
           description: Unauthorized
         '403':
           description: 'Email permission required'
+        '422':
+          description: 'Email sending is disabled or SMTP is not configured'
+      security:
+        -
+          ApiKeyAuth: []
+  '/email/batches/{batch}':
+    get:
+      tags:
+        - Email
+      summary: 'Progress of a queued composer send'
+      description: "Counts of the batch's messages by email history status. Only the user who queued the batch, or an administrator, may read it."
+      parameters:
+        -
+          name: batch
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern: '^[0-9a-f]{32}$'
+      responses:
+        '200':
+          description: 'Batch progress'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailBatchProgress'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Email permission required, or the batch belongs to another user'
+        '404':
+          description: 'No such batch, or every message in it was still queued when an administrator deleted the queue'
+      security:
+        -
+          ApiKeyAuth: []
+  '/email/batches/{batch}/send':
+    post:
+      tags:
+        - Email
+      summary: 'Send the due messages of a queued composer send now'
+      description: "Sends the batch's due messages for up to 15 seconds or 100 messages, then returns its progress. The composer calls it until nothing is due; messages waiting for a retry, and anything left when the composer closes, go out with the timer jobs. Concurrent calls and timer-job runs never send the same message twice. Only the user who queued the batch, or an administrator, may call it."
+      parameters:
+        -
+          name: batch
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern: '^[0-9a-f]{32}$'
+      responses:
+        '200':
+          description: 'Batch progress after this step'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailBatchProgress'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Email permission required, or the batch belongs to another user'
+        '404':
+          description: 'No such batch, or every message in it was still queued when an administrator deleted the queue'
         '422':
           description: 'Email sending is disabled or SMTP is not configured'
       security:
@@ -2799,7 +2877,7 @@ paths:
                   example: '12:00'
                 recurrence:
                   description: 'A series instead of one event'
-                  properties: { type: { type: string, enum: [weekly, monthly, yearly] }, dow: { type: string, example: Sunday }, dom: { type: integer, example: 15 }, doy: { type: string, example: 04-12 } }
+                  properties: { type: { description: 'monthly-weekday repeats on the Nth weekday of the month (wom + dow); months without a 5th such weekday are skipped', type: string, enum: [weekly, monthly, monthly-weekday, yearly] }, dow: { description: 'Day of week for weekly and monthly-weekday', type: string, example: Sunday }, dom: { type: integer, example: 15 }, doy: { type: string, example: 04-12 }, wom: { description: 'Week of the month (1-5), required for monthly-weekday: 2 with dow Tuesday is the 2nd Tuesday', type: integer, example: 2, maximum: 5, minimum: 1 } }
                   type: object
                 rangeStart:
                   type: string
@@ -4465,7 +4543,7 @@ paths:
       tags:
         - Volunteer
       summary: 'Assign a qualified person to a position on this occurrence'
-      description: "Enforces design section 2.11.2: I4 the position belongs to this schedule's ministry (400), I5 the occurrence is neither cancelled nor past (409), I2 an active qualification (403), I3 membership of the ministry's volunteer pool Group unless allowOutsidePool is passed (409) - NOT applied to self sign-up, which tests qualification only (design D19), I1 one row per person per position per occurrence (409). I8 re-uses a declined or cancelled row rather than inserting a second one. I7/D16 - a person already holding ANOTHER position on this occurrence - is allowed unconditionally and returns 201."
+      description: "Enforces design section 2.11.2: I4 the position belongs to this schedule's ministry (400), I5 the occurrence is neither cancelled nor past (409), I2 an active qualification (403), I3 membership of the ministry's volunteer pool Group unless allowOutsidePool is passed (409) - NOT applied to self sign-up, which tests qualification only (design D19), I1 one row per person per position per occurrence (409). I8 re-uses a declined or cancelled row rather than inserting a second one. I7/D16 - a person already holding ANOTHER position on this occurrence - is allowed unconditionally and returns 201. accepted=true (Record they accepted) creates the assignment accepted, with a response row on channel 'coordinator' recorded by the caller, the way an accepted default is (D32); instead of the please-respond 'assignment' message the volunteer gets a 'signup_confirm' confirmation. Reminders are scheduled as for any live assignment. Only a caller who may manage this occurrence can assign at all, so the flag needs no check of its own."
       operationId: createVolunteerAssignment
       parameters:
         -
@@ -4492,6 +4570,10 @@ paths:
                   nullable: true
                 allowOutsidePool:
                   type: boolean
+                accepted:
+                  description: 'Record that the volunteer already said yes'
+                  type: boolean
+                  default: false
                 notes:
                   type: string
                   nullable: true
@@ -5636,6 +5718,97 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  '/ministries/teams/{teamId}/pool/{personId}':
+    post:
+      tags:
+        - Volunteer
+      summary: "A team leader puts an existing person in the volunteer pool of their team's ministry"
+      description: "Allowed to a leader of this team and to anyone who may manage it (its ministry's coordinators, global volunteer managers, administrators). The person must be one GET /ministries/people/search can return: not deceased, not deactivated, not in a deactivated family. positionIds optionally qualifies them for positions of THIS team through the ordinary qualification grant, in the same transaction. When the person was not in the pool already, each of the ministry's coordinators (or, when it has none, each global volunteer manager) is emailed who added whom - outbox type pool_add; the added person and the team's other leaders are not. Removing somebody from the pool is not offered here: it stays DELETE /ministries/ministries/{ministryId}/pool/{personId}, which is ministry-level."
+      operationId: addVolunteerTeamPoolMember
+      parameters:
+        -
+          name: teamId
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              properties:
+                positionIds:
+                  description: 'Positions of this team to qualify them for'
+                  type: array
+                  items: { type: integer }
+              type: object
+      responses:
+        '400':
+          description: 'positionIds is not a list of ids, or names a position of another team'
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this team, or V2 is not enabled'
+        '404':
+          description: 'No such team or pool group, or the person cannot be added (not found, deceased, deactivated, or in a deactivated family)'
+        '409':
+          description: 'A ticked position is on a team linked to a class in which the person is a Student'
+        '200':
+          description: 'They were already in the pool'
+          content:
+            application/json:
+              schema:
+                properties:
+                  personId: { type: integer }
+                  added: { type: boolean }
+                  qualified: { type: array, items: { type: integer } }
+                  notified: { description: 'How many coordinators were emailed', type: integer }
+                type: object
+        '201':
+          description: 'Added; same body'
+      security:
+        -
+          ApiKeyAuth: []
+  /ministries/people/search:
+    get:
+      tags:
+        - Volunteer
+      summary: 'Find people a team leader may add to a volunteer pool'
+      description: 'The Add Volunteer picker of the admin team view and the Member Portal team page. Reachable by a team leader on any kind of login and by coordinators, volunteer managers and administrators. Only people who are not deceased, not deactivated and not in a deactivated family; every word of q must match a first or last name. Returns id, name and family name ONLY - no email, phone, address, photo or age - and at most 20 people, so a team leader cannot page through the directory. Fewer than two characters returns an empty list.'
+      operationId: searchVolunteerPoolCandidates
+      parameters:
+        -
+          name: q
+          in: query
+          required: true
+          schema:
+            type: string
+            maxLength: 100
+            minLength: 2
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'No team to lead and no ministry to coordinate, or V2 is not enabled'
+        '200':
+          description: 'Up to 20 people, by last then first name'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties: { id: { type: integer }, name: { type: string }, familyName: { type: string } }
+                  type: object
+      security:
+        -
+          ApiKeyAuth: []
   '/ministries/ministries/{ministryId}/pool/from-cart':
     post:
       tags:
@@ -6025,7 +6198,7 @@ paths:
       tags:
         - Email
       summary: 'Page through the email history'
-      description: 'Newest first. With personId or familyId the caller must be allowed to view that record; without either the caller must be an administrator (recent sends across everyone).'
+      description: "Newest first. With personId or familyId the caller must be allowed to view that record. Without either it is the email log: an administrator sees everyone's mail, a user with the Email permission only the mail they queued, filtered by status, kind, sentBy and q."
       parameters:
         -
           name: personId
@@ -6041,13 +6214,35 @@ paths:
         -
           name: status
           in: query
-          description: 'Only honoured on the unscoped (admin) list'
+          description: 'Email log only'
           schema:
             type: string
             enum:
               - sent
               - failed
               - skipped
+              - queued
+              - sending
+        -
+          name: kind
+          in: query
+          description: 'Email log only: one email type, e.g. composer or birthday'
+          schema:
+            type: string
+            maxLength: 50
+        -
+          name: sentBy
+          in: query
+          description: 'Email log only: a user id, or automatic for mail no user queued. A user without admin rights may pass only their own id.'
+          schema:
+            type: string
+        -
+          name: q
+          in: query
+          description: "Email log only: every word must appear in the subject, the address or the recipient's name"
+          schema:
+            type: string
+            maxLength: 100
         -
           name: page
           in: query
@@ -6068,16 +6263,18 @@ paths:
             application/json:
               schema:
                 properties:
-                  rows: { type: array, items: { properties: { id: { type: integer }, personId: { type: integer, nullable: true }, familyId: { type: integer, nullable: true }, sentByUserId: { type: integer, nullable: true }, sentBy: { description: 'Name of the user who wrote a composer message', type: string, nullable: true }, address: { type: string }, kind: { type: string }, kindLabel: { type: string }, subject: { type: string }, status: { type: string, enum: [sent, failed, skipped] }, error: { type: string, nullable: true }, dateSent: { type: string }, hasBody: { type: boolean } }, type: object } }
+                  rows: { type: array, items: { properties: { id: { type: integer }, personId: { type: integer, nullable: true }, familyId: { type: integer, nullable: true }, sentByUserId: { type: integer, nullable: true }, sentBy: { description: 'Name of the user who wrote a composer message', type: string, nullable: true }, address: { type: string }, kind: { type: string }, kindLabel: { type: string }, subject: { type: string }, status: { description: 'queued: waiting to be sent (a retry keeps the last error); sending: a run is sending it now', type: string, enum: [sent, failed, skipped, queued, sending] }, statusLabel: { type: string }, attempts: { description: 'Delivery attempts so far', type: integer }, error: { description: "The mail server's error; null for callers without admin rights", type: string, nullable: true }, dateSent: { type: string }, hasBody: { type: boolean }, recipientName: { description: 'Email log only: the person, or else the family, the address belonged to', type: string, nullable: true }, recipientUrl: { description: "Email log only: that record's page", type: string, nullable: true } }, type: object } }
                   total: { type: integer }
                   page: { type: integer }
                   limit: { type: integer }
                   pages: { type: integer }
                 type: object
+        '400':
+          description: 'Invalid status, kind, sentBy or q'
         '401':
           description: Unauthorized
         '403':
-          description: "Not allowed to view this record's history"
+          description: "Not allowed to view this record's history, the Email permission is missing, or sentBy names another sender without admin rights"
       security:
         -
           ApiKeyAuth: []
@@ -6169,12 +6366,53 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  /map/geocode-all:
+    post:
+      tags:
+        - Map
+      summary: 'Geocode all active families missing coordinates'
+      description: "Iterates active families that have a street address but no usable coordinates, geocoding each via the configured geocoding services (Map Settings) at ~1 request/second. Families are taken in ID order; up to 50 per call. Pass 'skip' = the number of families that failed in earlier calls so those are not re-queried, and repeat while 'remaining' > 'skip'. Requires the Edit Records role."
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              properties:
+                skip:
+                  description: 'Families (in ID order) to skip before the batch — the running count of failures from previous calls'
+                  type: integer
+                  default: 0
+                  minimum: 0
+              type: object
+      responses:
+        '200':
+          description: 'Geocoding batch summary'
+          content:
+            application/json:
+              schema:
+                properties:
+                  total: { description: 'Total families missing coordinates before this run', type: integer }
+                  skip: { description: 'Offset applied to this batch (echoed back)', type: integer }
+                  processed: { description: 'Families examined in this batch (0 when skip >= total)', type: integer }
+                  geocoded: { description: 'Families successfully geocoded in this batch', type: integer }
+                  failed: { description: 'Families that could not be geocoded', type: integer }
+                  remaining: { description: 'Families still missing coordinates after this batch, including the ones that failed (run again while remaining > failures so far)', type: integer }
+                  failures: { description: 'Per-family failure details (capped at 20 entries). Empty array when all families were geocoded.', type: array, items: { properties: { id: { description: 'Family ID', type: integer }, name: { description: 'Family name', type: string }, address: { description: 'Full street address', type: string }, editUrl: { description: 'URL to the family editor page', type: string }, reason: { description: "Machine code: 'incomplete_address' | 'no_result' | 'unavailable' | 'error'", type: string } }, type: object } }
+                  failuresTruncated: { description: 'True when failed > 20 and some failures are omitted from the array', type: boolean }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Edit Records role required'
+      security:
+        -
+          ApiKeyAuth: []
   /portal/me/emails:
     get:
       tags:
         - 'Member Portal'
       summary: "A page of the signed-in member's own email history"
-      description: 'Newest first, in the same envelope GET /email/log answers with, but scoped to the acting member: only rows whose eml_per_ID is this person. There is no person id to pass. Rows never carry the body; GET /portal/me/emails/{id} does. Session only — API keys are refused.'
+      description: 'Newest first, in the same envelope GET /email/log answers with, but scoped to the acting member: only rows whose eml_per_ID is this person, and only mail that was sent. Queued, sending, failed and skipped mail is left out, and rows carry no delivery status. There is no person id to pass. Rows never carry the body; GET /portal/me/emails/{id} does. Session only — API keys are refused.'
       operationId: getPortalMyEmails
       parameters:
         -
@@ -6197,7 +6435,7 @@ paths:
             application/json:
               schema:
                 properties:
-                  rows: { type: array, items: { properties: { id: { type: integer }, personId: { type: integer, nullable: true }, address: { type: string }, kind: { type: string }, kindLabel: { type: string }, subject: { type: string }, status: { type: string, enum: [sent, failed, skipped] }, dateSent: { type: string }, hasBody: { type: boolean } }, type: object } }
+                  rows: { type: array, items: { properties: { id: { type: integer }, personId: { type: integer, nullable: true }, address: { type: string }, kind: { type: string }, kindLabel: { type: string }, subject: { type: string }, dateSent: { type: string }, hasBody: { type: boolean } }, type: object } }
                   total: { type: integer }
                   page: { type: integer }
                   limit: { type: integer }
@@ -6212,7 +6450,7 @@ paths:
       tags:
         - 'Member Portal'
       summary: "One email from the signed-in member's own history, with its body"
-      description: "The row is returned only when it was addressed to the acting member. Somebody else's row and an id that does not exist are the same 404, so a member cannot learn that an email exists by asking for it. The body is null for the email classes that never store one (account emails carrying a password or a one-time link)."
+      description: "The row is returned only when it was addressed to the acting member and was sent. Somebody else's row, an unsent row and an id that does not exist are the same 404, so a member cannot learn that an email exists by asking for it. No delivery status is included. The body is null for the email classes that never store one (account emails carrying a password or a one-time link)."
       operationId: getPortalMyEmail
       parameters:
         -
@@ -6626,152 +6864,6 @@ paths:
                 properties:
                   issueBody: { type: string }
                 type: object
-      security:
-        -
-          ApiKeyAuth: []
-  /property-types:
-    get:
-      tags:
-        - System
-      summary: 'List all property types (MenuOptions role required)'
-      parameters:
-        -
-          name: class
-          in: query
-          description: 'Filter by class (p/f/g)'
-          required: false
-          schema:
-            type: string
-      responses:
-        '200':
-          description: 'Array of property types'
-        '401':
-          description: Unauthorized
-        '403':
-          description: 'MenuOptions role required'
-      security:
-        -
-          ApiKeyAuth: []
-    post:
-      tags:
-        - System
-      summary: 'Create a new property type (MenuOptions role required)'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              required:
-                - class
-                - name
-              properties:
-                class:
-                  type: string
-                  enum: [p, f, g]
-                name:
-                  type: string
-                  maxLength: 50
-                description:
-                  type: string
-              type: object
-      responses:
-        '201':
-          description: 'Newly created property type'
-        '400':
-          description: 'Validation error'
-        '401':
-          description: Unauthorized
-        '403':
-          description: 'MenuOptions role required'
-      security:
-        -
-          ApiKeyAuth: []
-  '/property-types/{id}':
-    get:
-      tags:
-        - System
-      summary: 'Get a single property type (MenuOptions role required)'
-      parameters:
-        -
-          name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: 'Property type object'
-        '404':
-          description: 'Property type not found'
-        '401':
-          description: Unauthorized
-        '403':
-          description: 'MenuOptions role required'
-      security:
-        -
-          ApiKeyAuth: []
-    put:
-      tags:
-        - System
-      summary: 'Update a property type (MenuOptions role required)'
-      parameters:
-        -
-          name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              properties:
-                class:
-                  type: string
-                  enum: [p, f, g]
-                name:
-                  type: string
-                  maxLength: 50
-                description:
-                  type: string
-              type: object
-      responses:
-        '200':
-          description: 'Updated property type'
-        '400':
-          description: 'Validation error'
-        '404':
-          description: 'Property type not found'
-        '401':
-          description: Unauthorized
-        '403':
-          description: 'MenuOptions role required'
-      security:
-        -
-          ApiKeyAuth: []
-    delete:
-      tags:
-        - System
-      summary: 'Delete a property type (MenuOptions role required)'
-      parameters:
-        -
-          name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: Deleted
-        '404':
-          description: 'Property type not found'
-        '409':
-          description: 'Property type is still in use by one or more properties'
-        '401':
-          description: Unauthorized
-        '403':
-          description: 'MenuOptions role required'
       security:
         -
           ApiKeyAuth: []
@@ -7922,7 +8014,7 @@ paths:
         '200':
           description: 'Array of person property definitions'
         '403':
-          description: 'MenuOptions role required'
+          description: 'EditRecords role required'
       security:
         -
           ApiKeyAuth: []
@@ -7997,7 +8089,7 @@ paths:
         '200':
           description: 'Array of family property definitions'
         '403':
-          description: 'MenuOptions role required'
+          description: 'EditRecords role required'
       security:
         -
           ApiKeyAuth: []
@@ -8114,28 +8206,6 @@ paths:
           description: 'Record not found'
         '403':
           description: 'EditRecords role required'
-      security:
-        -
-          ApiKeyAuth: []
-  '/people/properties/definition/{propertyId}':
-    delete:
-      tags:
-        - Properties
-      summary: 'Delete a property definition and all its assignments (MenuOptions role required)'
-      parameters:
-        -
-          name: propertyId
-          in: path
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: 'Property definition deleted'
-        '404':
-          description: 'Property not found'
-        '403':
-          description: 'MenuOptions role required'
       security:
         -
           ApiKeyAuth: []
@@ -8344,7 +8414,7 @@ paths:
       tags:
         - People
       summary: "Update a note's text and/or privacy"
-      description: "Only the note's author or an admin may update a note."
+      description: "Only the note's author or an admin may update an ordinary user note; system timeline entries are immutable. Omitting private preserves the stored privacy flag."
       operationId: updateNote
       parameters:
         -
@@ -8394,7 +8464,7 @@ paths:
       tags:
         - People
       summary: 'Delete a note'
-      description: "Deletes the note. Requires Notes permission. Only the note's author or an admin may delete it."
+      description: "Deletes an ordinary user note. Requires Notes permission. Only the note's author or an admin may delete it; system timeline entries cannot be deleted through this API."
       operationId: deleteNote
       parameters:
         -
@@ -8893,6 +8963,8 @@ paths:
       responses:
         '200':
           description: 'Updated membership records for the person in the group'
+        '400':
+          description: 'Role does not belong to this group'
         '403':
           description: 'ManageGroupRole role required'
         '409':
@@ -9043,6 +9115,8 @@ paths:
       responses:
         '200':
           description: 'Default role updated'
+        '400':
+          description: 'Role does not belong to this group'
         '403':
           description: 'ManageGroupRole role required'
       security:
@@ -9399,7 +9473,7 @@ paths:
         '200':
           description: 'Array of group property definitions'
         '403':
-          description: 'MenuOptions role required'
+          description: 'ManageGroups role required'
       security:
         -
           ApiKeyAuth: []
@@ -9427,7 +9501,7 @@ paths:
                   properties: { id: { type: integer }, name: { type: string }, value: { type: string }, prompt: { type: string }, allowEdit: { type: boolean }, allowDelete: { type: boolean } }
                   type: object
         '403':
-          description: 'MenuOptions role required'
+          description: 'ManageGroups role required'
         '404':
           description: 'Group not found'
       security:
@@ -9438,7 +9512,7 @@ paths:
       tags:
         - Groups
         - Properties
-      summary: 'Assign or update a property on a group (ManageGroup role required)'
+      summary: 'Assign or update a property on a group (ManageGroups role required)'
       parameters:
         -
           name: groupID
@@ -9465,7 +9539,7 @@ paths:
         '200':
           description: 'Property assigned successfully'
         '403':
-          description: 'ManageGroup role required'
+          description: 'ManageGroups role required'
         '404':
           description: 'Group or property not found'
       security:
@@ -9475,7 +9549,7 @@ paths:
       tags:
         - Groups
         - Properties
-      summary: 'Remove a property from a group (ManageGroup role required)'
+      summary: 'Remove a property from a group (ManageGroups role required)'
       parameters:
         -
           name: groupID
@@ -9495,7 +9569,7 @@ paths:
         '404':
           description: 'Assignment not found'
         '403':
-          description: 'ManageGroup role required'
+          description: 'ManageGroups role required'
       security:
         -
           ApiKeyAuth: []
@@ -9960,6 +10034,29 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  /admin/api/email/queue:
+    delete:
+      tags:
+        - Admin
+      summary: 'Delete every queued composer message so it is never sent'
+      description: "Deletes the email history rows whose status is `queued`, in every batch. Messages being sent at that moment (`sending`) and the history of sent, failed and skipped mail are left alone. A composer still sending one of the deleted batches gets 404 for it. The deletion is written to the app log with the administrator's name."
+      operationId: deleteEmailQueue
+      responses:
+        '200':
+          description: 'The queue was emptied'
+          content:
+            application/json:
+              schema:
+                properties:
+                  deleted: { description: 'How many queued messages were deleted', type: integer, example: 12 }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden — Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
   /admin/api/import/csv/families:
     get:
       tags:
@@ -10033,44 +10130,170 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /admin/api/map/geocode-all:
-    post:
+  /admin/api/grades/promotion:
+    get:
       tags:
-        - Map
-      summary: 'Geocode all active families missing coordinates'
-      description: "Iterates active families that have a street address but no usable coordinates, geocoding each via the configured geocoding services (Map Settings) at ~1 request/second. Families are taken in ID order; up to 50 per call. Pass 'skip' = the number of families that failed in earlier calls so those are not re-queried, and repeat while 'remaining' > 'skip'. Admin-only."
-      requestBody:
-        required: false
-        content:
-          application/json:
-            schema:
-              properties:
-                skip:
-                  description: 'Families (in ID order) to skip before the batch — the running count of failures from previous calls'
-                  type: integer
-                  default: 0
-                  minimum: 0
-              type: object
+        - Admin
+      summary: 'Get the yearly grade promotion settings, last run and preview'
+      description: 'The promotion month and day, the next automatic promotion date, the last promotion marker and result, and how many people a promotion would move up or clear from the last grade.'
+      operationId: getGradePromotionStatus
       responses:
         '200':
-          description: 'Geocoding batch summary'
+          description: 'Promotion status'
           content:
             application/json:
               schema:
                 properties:
-                  total: { description: 'Total families missing coordinates before this run', type: integer }
-                  skip: { description: 'Offset applied to this batch (echoed back)', type: integer }
-                  processed: { description: 'Families examined in this batch (0 when skip >= total)', type: integer }
-                  geocoded: { description: 'Families successfully geocoded in this batch', type: integer }
-                  failed: { description: 'Families that could not be geocoded', type: integer }
-                  remaining: { description: 'Families still missing coordinates after this batch, including the ones that failed (run again while remaining > failures so far)', type: integer }
-                  failures: { description: 'Per-family failure details (capped at 20 entries). Empty array when all families were geocoded.', type: array, items: { properties: { id: { description: 'Family ID', type: integer }, name: { description: 'Family name', type: string }, address: { description: 'Full street address', type: string }, editUrl: { description: 'URL to the family editor page', type: string }, reason: { description: "Machine code: 'incomplete_address' | 'no_result' | 'error'", type: string } }, type: object } }
-                  failuresTruncated: { description: 'True when failed > 20 and some failures are omitted from the array', type: boolean }
+                  month: { description: '1-12, or 0 when automatic promotion is off', type: integer, example: 6 }
+                  day: { type: integer, example: 1 }
+                  nextDate: { type: string, format: date, example: '2027-06-01', nullable: true }
+                  nextDateText: { type: string, example: 'June 01 2027' }
+                  lastAt: { description: 'Last promotion marker; send it back as expectedLastAt', type: string, example: '2026-06-01 00:05:12.123456' }
+                  lastRunText: { type: string, nullable: true }
+                  promotedThisYear: { type: boolean }
+                  lastResult: { properties: { ranAt: { type: string }, trigger: { type: string, enum: [automatic, manual] }, userId: { type: integer }, moved: { type: integer }, finished: { type: integer } }, type: object, nullable: true }
+                  preview: { properties: { moved: { type: integer }, finished: { type: integer } }, type: object }
                 type: object
         '401':
           description: Unauthorized
         '403':
           description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+    post:
+      tags:
+        - Admin
+      summary: 'Move everyone with a grade up one grade now'
+      description: "Counts as this year's promotion. The last grade is cleared, deceased people are skipped and each moved person gets a timeline note. A browser session must send the CSRF token in X-CSRF-Token; API-key calls do not."
+      operationId: promoteGradesNow
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                expectedLastAt:
+                  description: 'The lastAt the caller was shown; empty when grades were never promoted'
+                  type: string
+                  example: ''
+              type: object
+      responses:
+        '200':
+          description: 'Promotion result and the new status'
+          content:
+            application/json:
+              schema:
+                properties:
+                  result: { properties: { ranAt: { type: string }, trigger: { type: string, example: manual }, userId: { type: integer }, moved: { type: integer }, finished: { type: integer } }, type: object }
+                  status: { description: 'Same shape as GET /admin/api/grades/promotion', type: object }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Admin role required, or the CSRF token is missing'
+        '409':
+          description: "Grades were promoted after the caller's expectedLastAt"
+      security:
+        -
+          ApiKeyAuth: []
+  /admin/api/grades/presets:
+    get:
+      tags:
+        - Admin
+      summary: 'List the grade names available for each country'
+      operationId: listGradePresets
+      responses:
+        '200':
+          description: 'Countries and their grade names'
+          content:
+            application/json:
+              schema:
+                properties:
+                  current: { description: 'Key of the names last applied', type: string, example: us }
+                  presets: { type: array, items: { properties: { key: { type: string, example: england-wales }, name: { type: string, example: 'England and Wales' }, grades: { type: array, items: { type: string, example: 'Year 1' } } }, type: object } }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/admin/api/grades/presets/{key}/preview':
+    get:
+      tags:
+        - Admin
+      summary: "Preview what applying a country's grade names would change"
+      operationId: previewGradePreset
+      parameters:
+        -
+          name: key
+          in: path
+          required: true
+          schema:
+            type: string
+          example: england-wales
+      responses:
+        '200':
+          description: 'The planned changes and the state token to apply them'
+          content:
+            application/json:
+              schema:
+                properties:
+                  preset: { type: string, example: england-wales }
+                  renamed: { type: array, items: { properties: { from: { type: string, example: 1st }, to: { type: string, example: 'Year 2' } }, type: object } }
+                  added: { type: array, items: { type: string, example: Nursery } }
+                  removed: { type: array, items: { properties: { name: { type: string }, people: { type: integer } }, type: object } }
+                  merged: { type: array, items: { properties: { name: { type: string }, people: { type: integer } }, type: object } }
+                  cleared: { description: 'People whose grade a removed grade clears', type: integer }
+                  state: { description: 'Send back as expectedState when applying', type: string }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Admin role required'
+        '404':
+          description: 'No grade names for that key'
+      security:
+        -
+          ApiKeyAuth: []
+  '/admin/api/grades/presets/{key}':
+    post:
+      tags:
+        - Admin
+      summary: "Rename the grades to a country's names, as previewed"
+      description: 'People keep their grade. The plan is checked against expectedState under row locks before anything changes. A browser session must send the CSRF token in X-CSRF-Token; API-key calls do not.'
+      operationId: applyGradePreset
+      parameters:
+        -
+          name: key
+          in: path
+          required: true
+          schema:
+            type: string
+          example: england-wales
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                expectedState:
+                  description: 'The state token from the preview'
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: 'The changes that were applied (same shape as the preview)'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Admin role required, or the CSRF token is missing'
+        '404':
+          description: 'No grade names for that key'
+        '409':
+          description: 'The grades changed after the preview; nothing was changed'
       security:
         -
           ApiKeyAuth: []
@@ -10461,6 +10684,174 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  /admin/api/property-types:
+    get:
+      tags:
+        - Admin
+      summary: 'List all property types'
+      parameters:
+        -
+          name: class
+          in: query
+          description: 'Filter by class (p/f/g)'
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'Array of property types'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden: admin only'
+      security:
+        -
+          ApiKeyAuth: []
+    post:
+      tags:
+        - Admin
+      summary: 'Create a new property type'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - class
+                - name
+              properties:
+                class:
+                  type: string
+                  enum: [p, f, g]
+                name:
+                  type: string
+                  maxLength: 50
+                description:
+                  type: string
+              type: object
+      responses:
+        '201':
+          description: 'Newly created property type'
+        '400':
+          description: 'Validation error'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden: admin only'
+      security:
+        -
+          ApiKeyAuth: []
+  '/admin/api/property-types/{id}':
+    get:
+      tags:
+        - Admin
+      summary: 'Get a single property type'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Property type object'
+        '404':
+          description: 'Property type not found'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden: admin only'
+      security:
+        -
+          ApiKeyAuth: []
+    put:
+      tags:
+        - Admin
+      summary: 'Update a property type'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                class:
+                  type: string
+                  enum: [p, f, g]
+                name:
+                  type: string
+                  maxLength: 50
+                description:
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: 'Updated property type'
+        '400':
+          description: 'Validation error'
+        '404':
+          description: 'Property type not found'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden: admin only'
+      security:
+        -
+          ApiKeyAuth: []
+    delete:
+      tags:
+        - Admin
+      summary: 'Delete a property type'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Deleted
+        '404':
+          description: 'Property type not found'
+        '409':
+          description: 'Property type is still in use by one or more properties'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden: admin only'
+      security:
+        -
+          ApiKeyAuth: []
+  '/admin/api/properties/definition/{propertyId}':
+    delete:
+      tags:
+        - Admin
+      summary: 'Delete a property definition and all its assignments'
+      parameters:
+        -
+          name: propertyId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Property definition deleted'
+        '404':
+          description: 'Property not found'
+        '403':
+          description: 'Forbidden: admin only'
+      security:
+        -
+          ApiKeyAuth: []
   /api/demo/load:
     post:
       tags:
@@ -10473,15 +10864,6 @@ paths:
           application/json:
             schema:
               properties:
-                includeFinancial:
-                  type: boolean
-                  default: false
-                includeEvents:
-                  type: boolean
-                  default: false
-                includeSundaySchool:
-                  type: boolean
-                  default: false
                 force:
                   description: 'Skip the fresh-install guard'
                   type: boolean
@@ -10627,7 +11009,7 @@ paths:
     post:
       tags:
         - Finance
-      summary: 'Create a new donation fund (Admin only)'
+      summary: 'Create a new donation fund (Finance role or Admin required)'
       operationId: createDonationFundAdmin
       requestBody:
         required: true
@@ -10676,7 +11058,7 @@ paths:
     put:
       tags:
         - Finance
-      summary: 'Update a donation fund (Admin only)'
+      summary: 'Update a donation fund (Finance role or Admin required)'
       operationId: updateDonationFundAdmin
       parameters:
         -
@@ -10723,7 +11105,7 @@ paths:
     delete:
       tags:
         - Finance
-      summary: 'Delete a donation fund (Admin only)'
+      summary: 'Delete a donation fund (Finance role or Admin required)'
       operationId: deleteDonationFundAdmin
       parameters:
         -
@@ -10751,7 +11133,7 @@ paths:
     patch:
       tags:
         - Finance
-      summary: 'Move a donation fund up or down in display order (Admin only)'
+      summary: 'Move a donation fund up or down in display order (Finance role or Admin required)'
       operationId: reorderDonationFundAdmin
       parameters:
         -
@@ -11654,6 +12036,50 @@ components:
             Country:
               type: string
           type: object
+      type: object
+    EmailBatchProgress:
+      properties:
+        batch:
+          type: string
+        total:
+          description: 'Messages in the batch; queued messages an administrator deleted are no longer counted'
+          type: integer
+        queued:
+          description: 'Waiting to be sent, due now or waiting for a retry'
+          type: integer
+        sending:
+          description: 'Being sent by a run right now'
+          type: integer
+        sent:
+          description: 'Accepted by the SMTP server (acceptance is not delivery)'
+          type: integer
+        failed:
+          description: 'Refused, or still failing after the last attempt'
+          type: integer
+        skipped:
+          description: "Email was switched off when the message's turn came"
+          type: integer
+        due:
+          description: 'Queued messages that may be sent now'
+          type: integer
+        nextAttempt:
+          description: 'When the earliest retry is due'
+          type: string
+          example: '2026-10-14 10:25:00'
+          nullable: true
+        done:
+          description: 'Nothing is queued or being sent'
+          type: boolean
+        failures:
+          description: "The failed messages and the server's answer"
+          type: array
+          items:
+            properties:
+              address:
+                type: string
+              error:
+                type: string
+            type: object
       type: object
     PortalCalendarSubscription:
       properties:

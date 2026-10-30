@@ -29,6 +29,8 @@ export interface ArtifactMetadata {
   title: string;
   category: string;
   dark: string | null;
+  usedIn: string[];
+  locales: 'all' | 'en';
   device: string;
   viewport: { width: number; height: number };
   /** Null for video-only captures (currently just the `setup` project). */
@@ -49,6 +51,8 @@ export function writeMetadata(destination: string, data: ArtifactMetadata): void
     title: data.title,
     category: data.category,
     dark: data.dark,
+    usedIn: data.usedIn,
+    locales: data.locales,
     product: 'ChurchCRM',
     commit: getCommit(),
     locale: LOCALE,

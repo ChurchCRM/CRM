@@ -24,6 +24,8 @@ function statusLabel(status: string): string {
     sent: i18next.t("Sent"),
     failed: i18next.t("Failed"),
     skipped: i18next.t("Skipped"),
+    queued: i18next.t("Queued"),
+    sending: i18next.t("Sending"),
   };
   return labels[status] || status;
 }

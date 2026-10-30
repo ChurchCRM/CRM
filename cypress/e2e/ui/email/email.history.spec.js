@@ -2,8 +2,9 @@
 
 /**
  * Email history UI (#9877): the Recent Emails card on the person view (5 latest,
- * subject opens a modal with the rendered body), the Show all page (paginated,
- * newest first), the family view card and the admin Recent Sends panel.
+ * subject opens a modal with the rendered body) and the Show all page (paginated,
+ * newest first). The email log table is admin.email-log.spec.js and
+ * email.sender-history.spec.js.
  */
 describe("Email history on the person view", () => {
     beforeEach(() => {
@@ -100,17 +101,5 @@ describe("Email history on the person view", () => {
         cy.visit("/people/view/2");
         cy.get("#timeline .timeline-filter-chip[data-filter='email']").should("be.visible").click();
         cy.get("#timeline .timeline-event[data-timeline-category='email']").should("be.visible").and("contain.text", "Welcome to the choir");
-    });
-});
-
-describe("Email history on the email dashboard", () => {
-    beforeEach(() => {
-        cy.setupAdminSession();
-    });
-
-    it("admin email dashboard shows recent sends with a failed count", () => {
-        cy.visit("/v2/email/dashboard");
-        cy.get("#email-recent-sends").should("be.visible").and("contain.text", "failed");
-        cy.get("#email-recent-sends [data-email-history-table] tbody tr").should("have.length.at.least", 7);
     });
 });

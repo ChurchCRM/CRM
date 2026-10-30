@@ -33,6 +33,7 @@ src/skin/external
 
 # Configuration files with passwords
 src/Include/Config.php
+src/Include/Config.php.*.bak
 orm/propel.php
 
 # Perpl/Propel generated config

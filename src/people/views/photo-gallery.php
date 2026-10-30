@@ -73,7 +73,7 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
 
             <!-- Per-page selector -->
             <div class="col-auto">
-                <select id="perpage-select" class="form-select" style="width:auto">
+                <select id="perpage-select" class="form-select w-auto">
                     <?php foreach ($allowedLimits as $lim): ?>
                         <option value="<?= $lim ?>" <?= ($perPage === $lim) ? 'selected' : '' ?>>
                             <?= $lim ?> / <?= gettext('page') ?>

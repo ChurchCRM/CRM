@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const stateFieldTokens = new WeakMap();
 
   function buildStateSelect(fieldId, fieldName, states, selectedValue) {
-    const $select = $(`<select id="${fieldId}" name="${fieldName}" class="form-control" style="width:100%"></select>`);
+    const $select = $(`<select id="${fieldId}" name="${fieldName}" class="form-control w-100"></select>`);
     const blankLabel = window.i18next ? `— ${i18next.t("Select State")} —` : "— Select State —";
     $select.append(new Option(blankLabel, ""));
 
@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function buildStateInput(fieldId, fieldName, currentValue) {
     const $input = $(
-      `<input type="text" id="${fieldId}" name="${fieldName}" class="form-control" style="width:100%" maxlength="100">`,
+      `<input type="text" id="${fieldId}" name="${fieldName}" class="form-control w-100" maxlength="100">`,
     );
     $input.val(currentValue);
     return $input;

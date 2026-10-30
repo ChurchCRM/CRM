@@ -98,7 +98,7 @@ $updateEnvelopes = 0;
 
 // Service the action buttons
 if (isset($_POST['PrintReport'])) {
-    RedirectUtils::redirect('Reports/EnvelopeReport.php');
+    RedirectUtils::redirect('finance/reports/envelope-numbers');
 } elseif (isset($_POST['AssignAllFamilies'])) {
     $newEnvNum = $iAssignStartNum;
     $envelopesToWrite = []; // zero it out
@@ -204,7 +204,7 @@ foreach ($arrayToLoop as $fam_ID => $value) {
     echo '<tr>';
     echo '<td>' . $fam_Data . '&nbsp;</td>';
     if ($envelope && $duplicateEnvelopeHash && array_key_exists($envelope, $duplicateEnvelopeHash)) {
-        $tdTag = '<td class="table-danger">';
+        $tdTag = '<td class="bg-danger-lt">';
     } else {
         $duplicateEnvelopeHash[$envelope] = $fam_ID;
         $tdTag = '<td>';

@@ -1,6 +1,6 @@
 import { type APIRequestContext, expect, type Page, test } from '@playwright/test';
 
-import { captureScreen } from '../support/capture';
+import { captureScreen, defineCapture } from '../support/capture';
 import { humanClick, humanPause, humanType, settle } from '../support/human';
 import {
   adminRequest,
@@ -72,7 +72,7 @@ test('admin-member-portal-calendars', async ({ page }, testInfo) => {
   await page.goto('/admin/member-portal');
   await humanClick(page.locator('#portal-calendars-tab'));
   await expect(page.locator('#portal-calendars')).toBeVisible();
-  await expect(page.locator('.portal-calendar-switch:checked')).toHaveCount(2);
+  await expect(page.locator('.portal-calendar-switch:checked')).toHaveCount(demo?.sharedCalendarCount ?? 0);
   await settle(page, 600);
 
   await captureScreen(page, testInfo, {
@@ -80,27 +80,38 @@ test('admin-member-portal-calendars', async ({ page }, testInfo) => {
     title: 'Member Portal Calendars',
     category: 'Admin & Settings',
     purpose: 'Choose which church and holiday calendars members see in the Member Portal.',
+    usedIn: ['docs'],
   });
 });
 
 test.describe('signed in as a member', () => {
   test.use({ storageState: { cookies: [], origins: [] } });
 
-  test('portal-member-home', async ({ page }, testInfo) => {
+  const portalMemberHomeCapture = defineCapture({
+    name: 'portal-member-home',
+    locales: 'all',
+    title: 'Member Portal Home Page',
+    category: 'People & Families',
+    purpose: 'A member signs in to their own portal: upcoming events, family and profile.',
+    usedIn: ['docs'],
+  });
+  test('portal-member-home', portalMemberHomeCapture, async ({ page }, testInfo) => {
     await signInAsPortalMember(page);
     await expect(page.locator('.portal-upcoming-item').first()).toBeVisible();
     await expect(page.locator('#portal-home-family-card')).toBeVisible();
     await settle(page, 600);
 
-    await captureScreen(page, testInfo, {
-      name: 'portal-member-home',
-      title: 'Member Portal Home Page',
-      category: 'People & Families',
-      purpose: 'A member signs in to their own portal: upcoming events, family and profile.',
-    });
+    await captureScreen(page, testInfo, portalMemberHomeCapture);
   });
 
-  test('portal-member-add-family-member', async ({ page }, testInfo) => {
+  const portalMemberAddFamilyMemberCapture = defineCapture({
+    name: 'portal-member-add-family-member',
+    locales: 'all',
+    title: 'Member Adds a Family Member',
+    category: 'People & Families',
+    purpose: 'A member proposes a new family member, and the church office reviews it first.',
+  });
+  test('portal-member-add-family-member', portalMemberAddFamilyMemberCapture, async ({ page }, testInfo) => {
     await signInAsPortalMember(page);
     await page.goto('/portal/family');
     await humanClick(page.locator('#portal-add-member-open'));
@@ -113,19 +124,22 @@ test.describe('signed in as a member', () => {
     await waitForAvatars(page);
     await settle(page, 500);
 
-    await captureScreen(page, testInfo, {
-      name: 'portal-member-add-family-member',
-      title: 'Member Adds a Family Member',
-      category: 'People & Families',
-      purpose: 'A member proposes a new family member, and the church office reviews it first.',
-    });
+    await captureScreen(page, testInfo, portalMemberAddFamilyMemberCapture);
 
     await page.setViewportSize({ width: 1440, height: 900 });
     await humanClick(page.locator('#portal-add-member-submit'));
     await expect(dialog).toBeHidden({ timeout: 15000 });
   });
 
-  test('portal-member-family', async ({ page }, testInfo) => {
+  const portalMemberFamilyCapture = defineCapture({
+    name: 'portal-member-family',
+    locales: 'all',
+    title: 'Member Portal: My Family',
+    category: 'People & Families',
+    purpose: 'Members see their household and address, with a new member awaiting review.',
+    usedIn: ['docs'],
+  });
+  test('portal-member-family', portalMemberFamilyCapture, async ({ page }, testInfo) => {
     await signInAsPortalMember(page);
     await page.goto('/portal/family');
     await expect(page.locator('#portal-family-members .portal-member-badge-pending')).toBeVisible();
@@ -133,31 +147,37 @@ test.describe('signed in as a member', () => {
     await waitForAvatars(page);
     await settle(page, 600);
 
-    await captureScreen(page, testInfo, {
-      name: 'portal-member-family',
-      title: 'Member Portal: My Family',
-      category: 'People & Families',
-      purpose: 'Members see their household and address, with a new member awaiting review.',
-    });
+    await captureScreen(page, testInfo, portalMemberFamilyCapture);
   });
 
-  test('portal-member-calendar', async ({ page }, testInfo) => {
+  const portalMemberCalendarCapture = defineCapture({
+    name: 'portal-member-calendar',
+    locales: 'all',
+    title: 'Member Portal Calendar',
+    category: 'Groups & Events',
+    purpose: 'Members browse the calendars the church shares, color-coded with a legend.',
+    usedIn: ['docs'],
+  });
+  test('portal-member-calendar', portalMemberCalendarCapture, async ({ page }, testInfo) => {
     await signInAsPortalMember(page);
     await page.goto('/portal/calendar');
-    await expect(page.locator('.portal-calendar-legend-item')).toHaveCount(2);
+    await expect(page.locator('.portal-calendar-legend-item')).toHaveCount(demo?.sharedCalendarCount ?? 0);
     await waitForCalendarEvents(page);
     await listViewWhenNarrow(page);
     await settle(page, 800);
 
-    await captureScreen(page, testInfo, {
-      name: 'portal-member-calendar',
-      title: 'Member Portal Calendar',
-      category: 'Groups & Events',
-      purpose: 'Members browse the calendars the church shares, color-coded with a legend.',
-    });
+    await captureScreen(page, testInfo, portalMemberCalendarCapture);
   });
 
-  test('portal-member-calendar-subscribe', async ({ page }, testInfo) => {
+  const portalMemberCalendarSubscribeCapture = defineCapture({
+    name: 'portal-member-calendar-subscribe',
+    locales: 'all',
+    title: 'Subscribe to the Church Calendar',
+    category: 'Groups & Events',
+    purpose: 'Members subscribe to the shared church calendars from their own calendar app.',
+    usedIn: ['docs'],
+  });
+  test('portal-member-calendar-subscribe', portalMemberCalendarSubscribeCapture, async ({ page }, testInfo) => {
     await signInAsPortalMember(page);
     await page.goto('/portal/calendar');
     await waitForCalendarEvents(page);
@@ -165,30 +185,29 @@ test.describe('signed in as a member', () => {
     await humanClick(page.locator('#portal-calendar-subscribe'));
     const dialog = page.locator('#portal-calendar-subscribe-dialog');
     await expect(dialog).toBeVisible();
-    await expect(dialog.locator('#portal-calendar-subscribe-choices input[type=checkbox]')).toHaveCount(2);
+    await expect(dialog.locator('#portal-calendar-subscribe-choices input[type=checkbox]')).toHaveCount(
+      demo?.sharedCalendarCount ?? 0,
+    );
     await humanPause(page, 400);
     await settle(page, 600);
 
-    await captureScreen(page, testInfo, {
-      name: 'portal-member-calendar-subscribe',
-      title: 'Subscribe to the Church Calendar',
-      category: 'Groups & Events',
-      purpose: 'Members subscribe to the shared church calendars from their own calendar app.',
-    });
+    await captureScreen(page, testInfo, portalMemberCalendarSubscribeCapture);
   });
 });
 
-test('people-self-register-portal-member', async ({ page }, testInfo) => {
+const peopleSelfRegisterPortalMemberCapture = defineCapture({
+  name: 'people-self-register-portal-member',
+  locales: 'all',
+  title: 'Family Member Awaiting Review',
+  category: 'People & Families',
+  purpose: 'A family member proposed in the portal waits for staff on Self Registrations.',
+});
+test('people-self-register-portal-member', peopleSelfRegisterPortalMemberCapture, async ({ page }, testInfo) => {
   await page.goto('/people/self-register');
   const row = page.locator('#selfRegistrations tbody tr').filter({ hasText: 'Emma Carter' });
   await expect(row).toBeVisible({ timeout: 15000 });
   await keepInView(page, '#selfRegistrations tbody tr.month-group + tr');
   await settle(page, 1000);
 
-  await captureScreen(page, testInfo, {
-    name: 'people-self-register-portal-member',
-    title: 'Family Member Awaiting Review',
-    category: 'People & Families',
-    purpose: 'A family member proposed in the portal waits for staff on Self Registrations.',
-  });
+  await captureScreen(page, testInfo, peopleSelfRegisterPortalMemberCapture);
 });

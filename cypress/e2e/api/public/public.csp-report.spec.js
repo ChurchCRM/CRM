@@ -1,6 +1,15 @@
 /// <reference types="cypress" />
 
 describe("API Public CSP Report", () => {
+    it("should accept an oversized or non-array body without error", () => {
+        cy.request({
+            method: "POST",
+            url: "/api/public/csp-report",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify("x".repeat(20000)),
+        }).its("status").should("eq", 204);
+    });
+
     it("should accept CSP violation report with 204 status", () => {
         const cspReport = {
             "csp-report": {

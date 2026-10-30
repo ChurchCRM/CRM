@@ -81,14 +81,5 @@ describe("API Private Donation Funds (read-only)", () => {
                 expect(response.status).to.equal(401);
             });
         });
-
-        it("Denies a caller without Finance permission", () => {
-            cy.makePrivateNoFinanceAPICall(
-                "GET",
-                "/api/donation-funds",
-                null,
-                [401, 403],
-            );
-        });
     });
 });

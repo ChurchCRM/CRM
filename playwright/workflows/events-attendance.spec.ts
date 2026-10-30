@@ -1,13 +1,14 @@
 import { expect, test } from '@playwright/test';
 
-import { captureScreen } from '../support/capture';
+import { captureScreen, defineCapture } from '../support/capture';
 import { humanPause, humanSelect, settle } from '../support/human';
 
 test.describe('Events & Attendance', () => {
   test('events-calendar-overview', async ({ page }, testInfo) => {
     // A church user checking the event calendar.
     await page.goto('/event/calendars');
-    await expect(page.getByRole('grid')).toBeVisible({ timeout: 20000 });
+    // FullCalendar v7 hashes its class names, sets no grid role and translates its aria-labels.
+    await expect(page.locator('#calendar button').first()).toBeVisible({ timeout: 20000 });
     await settle(page, 800);
 
     await captureScreen(page, testInfo, {
@@ -15,10 +16,19 @@ test.describe('Events & Attendance', () => {
       title: 'Events Calendar',
       category: 'Groups & Events',
       purpose: 'Show the event calendar',
+      usedIn: ['docs'],
     });
   });
 
-  test('events-attendance-overview', async ({ page }, testInfo) => {
+  const eventsAttendanceOverviewCapture = defineCapture({
+    name: 'events-attendance-overview',
+    locales: 'all',
+    title: 'Check-In & Attendance',
+    category: 'Groups & Events',
+    purpose: 'Show the event check-in / attendance workflow',
+    usedIn: ['website'],
+  });
+  test('events-attendance-overview', eventsAttendanceOverviewCapture, async ({ page }, testInfo) => {
     // A church user reviewing attendance already recorded for a past event.
     // #EventSelector is sorted newest-first (see event/routes/checkin.php),
     // so index 1 is the furthest-future event — one with no check-ins yet,
@@ -46,11 +56,6 @@ test.describe('Events & Attendance', () => {
     await expect(page.locator('.card', { has: page.locator('.fa-calendar-check') })).toBeVisible({ timeout: 10000 });
     await settle(page, 600);
 
-    await captureScreen(page, testInfo, {
-      name: 'events-attendance-overview',
-      title: 'Check-In & Attendance',
-      category: 'Groups & Events',
-      purpose: 'Show the event check-in / attendance workflow',
-    });
+    await captureScreen(page, testInfo, eventsAttendanceOverviewCapture);
   });
 });

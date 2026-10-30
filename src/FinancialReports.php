@@ -83,14 +83,14 @@ if ($sReportType === '') {
           <option value="Pledge Family Summary"><?= gettext('Pledge Family Summary') ?></option>
           <option value="Pledge Reminders"><?= gettext('Pledge Reminders') ?></option>
           <option value="Voting Members"><?= gettext('Voting Members') ?></option>
-          <option value="Giving Report"><?= gettext('Giving Report (Tax Statements)') ?></option>
+          <option value="Giving Report"><?= gettext('Giving Statements') ?></option>
           <option value="Zero Givers"><?= gettext('Zero Givers') ?></option>
           <option value="Individual Deposit Report"><?= gettext('Individual Deposit Report') ?></option>
           <option value="Advanced Deposit Report"><?= gettext('Advanced Deposit Report') ?></option>
         </select>
       </div>
       <div class="d-flex gap-2">
-        <input type="button" class="btn btn-secondary" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location='v2/dashboard';">
+        <a class="btn btn-secondary" href="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath() . '/v2/dashboard') ?>"><?= gettext('Cancel') ?></a>
         <input type="submit" class="btn btn-primary" name="Submit1" value="<?= gettext('Next') ?>">
       </div>
     </form>
@@ -100,7 +100,7 @@ if ($sReportType === '') {
     $iCalYear = date('Y');
     // 2nd Pass - Display filters and other settings
     switch ($sReportType) {
-        case 'Giving Report':           $action = 'Reports/TaxReport.php'; break;
+        case 'Giving Report':           $action = 'finance/reports/giving-statements/download'; break;
         case 'Zero Givers':             $action = 'Reports/ZeroGivers.php'; break;
         case 'Pledge Family Summary':   $action = 'Reports/FamilyPledgeSummary.php'; break;
         case 'Pledge Reminders':        $action = 'Reports/ReminderReport.php'; break;
@@ -176,8 +176,14 @@ if ($sReportType === '') {
 
     <?php if (in_array($sReportType, ['Giving Report', 'Advanced Deposit Report', 'Zero Givers'])) :
         $today = date('Y-m-d');
-        $startVal = $sDateStart ? $sDateStart : $today;
-        $endVal = $sDateEnd ? $sDateEnd : $today;
+        if ($sReportType === 'Giving Report' && $sDateStart === '' && $sDateEnd === '') {
+            $fy = FiscalYearUtils::previousFiscalYearDates();
+            $startVal = $fy['startDate'];
+            $endVal = $fy['endDate'];
+        } else {
+            $startVal = $sDateStart !== '' ? $sDateStart : $today;
+            $endVal = $sDateEnd !== '' ? $sDateEnd : $today;
+        }
         ?>
       <div class="row g-3 mb-3">
         <div class="col-md-4">
@@ -279,7 +285,7 @@ if ($sReportType === '') {
       <div class="mb-3">
         <label class="form-label" for="minimum"><?= gettext('Minimum Total Amount') ?>:</label>
         <small class="text-secondary d-block mb-1"><?= gettext('0 - No Minimum') ?></small>
-        <input class="form-control" style="width:120px" name="minimum" id="minimum" type="text" value="0">
+        <input class="form-control field-w-120" name="minimum" id="minimum" type="text" value="0">
       </div>
     <?php endif; ?>
 
@@ -369,7 +375,7 @@ if ($sReportType === '') {
     <?php if ($sReportType === 'Voting Members') : ?>
       <div class="mb-3">
         <label class="form-label" for="RequireDonationYears"><?= gettext('Voting members must have made a donation within this many years (0 to not require a donation)') ?>:</label>
-        <input class="form-control" style="width:120px" name="RequireDonationYears" id="RequireDonationYears" type="text" value="0">
+        <input class="form-control field-w-120" name="RequireDonationYears" id="RequireDonationYears" type="text" value="0">
       </div>
     <?php endif; ?>
 

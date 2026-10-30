@@ -49,6 +49,7 @@ test('admin-church-logo', async ({ page }, testInfo) => {
     title: 'Upload Your Church Logo',
     category: 'Admin & Settings',
     purpose: 'Upload the church logo once and it replaces the ChurchCRM branding in the app.',
+    usedIn: ['docs'],
   });
 });
 
@@ -67,6 +68,7 @@ test.describe('signed out', () => {
       title: 'Sign-In Page with Church Logo',
       category: 'Admin & Settings',
       purpose: "Members and staff sign in under the church's own logo instead of ChurchCRM's.",
+      usedIn: ['docs'],
     });
   });
 });

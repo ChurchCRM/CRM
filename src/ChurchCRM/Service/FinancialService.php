@@ -271,7 +271,7 @@ class FinancialService
 
     public function getViewURI(string $Id): string
     {
-        return SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=' . $Id;
+        return SystemURLs::getRootPath() . '/finance/deposit/' . $Id;
     }
 
     private function validateDate(object $payment): void
@@ -394,17 +394,17 @@ class FinancialService
             if ($Fund->Amount > 0) {  // Only insert a row if this fund has a non-zero amount.
                 if ($sGroupKey === null) {  // GroupKey is shared across all fund rows for one payment.
                     $iAutID = $payment->iAutID ?? null;
-                    // Normalize to string: null/absent FamilyID becomes '' so genGroupKey
+                    // Normalize to string: null/absent FamilyID becomes '' so generateGroupKey
                     // (typed string) doesn't receive null and trigger a PHP 8 deprecation.
                     $famIdStr = (string) ($payment->FamilyID ?? '');
                     if ($payment->iMethod === 'CHECK') {
-                        $sGroupKey = FunctionsUtils::genGroupKey($payment->iCheckNo ?? 'check', $famIdStr, $Fund->FundID, $payment->Date);
+                        $sGroupKey = $this->generateGroupKey($payment->iCheckNo ?? 'check', $famIdStr, $Fund->FundID, $payment->Date);
                     } elseif ($payment->iMethod === 'BANKDRAFT') {
-                        $sGroupKey = FunctionsUtils::genGroupKey($iAutID ?? 'draft', $famIdStr, $Fund->FundID, $payment->Date);
+                        $sGroupKey = $this->generateGroupKey($iAutID ?? 'draft', $famIdStr, $Fund->FundID, $payment->Date);
                     } elseif ($payment->iMethod === 'CREDITCARD') {
-                        $sGroupKey = FunctionsUtils::genGroupKey($iAutID ?? 'credit', $famIdStr, $Fund->FundID, $payment->Date);
+                        $sGroupKey = $this->generateGroupKey($iAutID ?? 'credit', $famIdStr, $Fund->FundID, $payment->Date);
                     } else {
-                        $sGroupKey = FunctionsUtils::genGroupKey('cash', $famIdStr, $Fund->FundID, $payment->Date);
+                        $sGroupKey = $this->generateGroupKey('cash', $famIdStr, $Fund->FundID, $payment->Date);
                     }
                 }
 
@@ -445,6 +445,20 @@ class FinancialService
         }
 
         return $sGroupKey;
+    }
+
+    /**
+     * Returns method|n|family|fund|date with the lowest n that no pledge_plg row uses,
+     * pledge or payment: delete and edit act on every row with the key.
+     */
+    private function generateGroupKey(string $methodSpecificId, string $famId, string $fundId, string $date): string
+    {
+        $uniqueNum = 0;
+        do {
+            $groupKey = implode('|', [$methodSpecificId, $uniqueNum++, $famId, $fundId, $date]);
+        } while (PledgeQuery::create()->filterByGroupKey($groupKey)->exists());
+
+        return $groupKey;
     }
 
     /**
@@ -518,15 +532,17 @@ class FinancialService
                 // causing a second rollBack() on an inactive transaction (PDOException).
                 throw new \InvalidArgumentException('Pledge group not found');
             }
-            // Guard: refuse edits when the associated deposit is already closed.
+            // Guard: refuse edits when any row of the group is in a closed deposit.
             // This check runs inside the transaction so it is safe against concurrent
             // deposit-close operations (no TOCTOU gap).
-            $onePledge = PledgeQuery::create()->filterByGroupKey($groupKey)->findOne($con);
-            if ($onePledge !== null && $onePledge->getDepId()) {
-                $deposit = DepositQuery::create()->findOneById($onePledge->getDepId(), $con);
-                if ($deposit !== null && $deposit->getClosed()) {
-                    throw new \DomainException(gettext('Cannot edit a payment in a closed deposit'));
-                }
+            $inClosedDeposit = PledgeQuery::create()
+                ->filterByGroupKey($groupKey)
+                ->useDepositQuery()
+                    ->filterByClosed(true)
+                ->endUse()
+                ->exists($con);
+            if ($inClosedDeposit) {
+                throw new \DomainException(gettext('Cannot edit a payment in a closed deposit'));
             }
             // Remove orphaned denomination rows. pledge_denominations_pdem has no FK
             // constraint and no Propel model, so we use a parameterized statement on
@@ -639,11 +655,7 @@ class FinancialService
      */
     public static function formatFiscalYear(int $fyId): string
     {
-        if (SystemConfig::getIntValue('iFYMonth') === 1) {
-            return (string) (1996 + $fyId);
-        } else {
-            return (1995 + $fyId) . '/' . mb_substr(1996 + $fyId, 2, 2);
-        }
+        return FiscalYearUtils::getFiscalYearDatesById($fyId)['label'];
     }
 
     /**
@@ -696,93 +708,6 @@ class FinancialService
         $results = [];
         foreach ($collection as $pledge) {
             $results[] = $pledge->toArray(TableMap::TYPE_PHPNAME, true, [], false);
-        }
-        return $results;
-    }
-
-    /**
-     * Get Tax Report (Giving Report) data using ORM
-     * 
-     * Security: Checks finance permissions before returning data
-     *
-     * @param string $dateStart Start date (Y-m-d format)
-     * @param string $dateEnd End date (Y-m-d format)
-     * @param int|null $depositId Optional deposit ID filter
-     * @param int|null $minimumAmount Optional minimum amount filter
-     * @param array $fundIds Optional fund IDs filter
-     * @param array $familyIds Optional family IDs filter
-     * @param array $classificationIds Optional classification IDs filter
-     * @return array
-     */
-    public function getTaxReportData(
-        string $dateStart = '',
-        string $dateEnd = '',
-        ?int $depositId = null,
-        ?int $minimumAmount = null,
-        array $fundIds = [],
-        array $familyIds = [],
-        array $classificationIds = []
-    ): array {
-        AuthService::requireUserGroupMembership('bFinance');
-
-        $query = PledgeQuery::create()->filterForTaxReport(
-            $dateStart,
-            $dateEnd,
-            $fundIds,
-            $familyIds,
-            $classificationIds
-        );
-
-        // Add optional filters
-        if ($depositId > 0) {
-            $query->filterByDepId($depositId);
-        }
-        if ($minimumAmount > 0) {
-            $query->filterByAmount($minimumAmount, Criteria::GREATER_EQUAL);
-        }
-
-        // Get results - DO NOT include foreign objects recursively (causes memory exhaustion)
-        // Instead, manually fetch only the Family and DonationFund data we need
-        $collection = $query->find();
-        $results = [];
-        foreach ($collection as $pledge) {
-            // Get basic pledge data without foreign objects
-            $pledgeData = $pledge->toArray(TableMap::TYPE_PHPNAME, true, [], false);
-            
-            // Manually add only the Family fields we need for Tax Reports
-            $family = $pledge->getFamily();
-            if ($family !== null) {
-                $pledgeData['Family'] = [
-                    'Id' => $family->getId(),
-                    'Name' => $family->getName(),
-                    'Address1' => $family->getAddress1(),
-                    'Address2' => $family->getAddress2(),
-                    'City' => $family->getCity(),
-                    'State' => $family->getState(),
-                    'Zip' => $family->getZip(),
-                    'Country' => $family->getCountry(),
-                    'Envelope' => $family->getEnvelope(),
-                    // Where a statement is mailed: the flagged second address when
-                    // there is one, the primary address otherwise (#9743). Additive —
-                    // the six primary keys above are unchanged.
-                    'MailingAddress' => $family->getMailingAddressParts(),
-                ];
-            } else {
-                $pledgeData['Family'] = null;
-            }
-            
-            // Manually add only the DonationFund name we need
-            $fund = $pledge->getDonationFund();
-            if ($fund !== null) {
-                $pledgeData['DonationFund'] = [
-                    'Id' => $fund->getId(),
-                    'Name' => $fund->getName(),
-                ];
-            } else {
-                $pledgeData['DonationFund'] = null;
-            }
-            
-            $results[] = $pledgeData;
         }
         return $results;
     }
@@ -1089,33 +1014,22 @@ class FinancialService
     {
         AuthService::requireUserGroupMembership('bFinance');
 
-        // Use YEAR() aggregation so the DB returns only distinct years, not every row.
-        // withColumn() emits the expression as a SELECT column; groupBy() de-duplicates;
-        // addDescendingOrderByColumn orders by the virtual column (not raw plg_date).
-        $query = PledgeQuery::create()
+        $payments = PledgeQuery::create()
             ->filterByFamId($familyId)
             ->filterByPledgeOrPayment('Payment')
             ->filterByDate(null, Criteria::ISNOTNULL)
-            ->withColumn('YEAR(pledge_plg.plg_date)', 'PaymentYear')
-            ->groupBy('PaymentYear')
-            ->addDescendingOrderByColumn('PaymentYear')
-            ->select(['PaymentYear']);
+            ->find();
 
-        if ($maxYears > 0) {
-            $query->limit($maxYears);
-        }
-
-        $rawYears = $query->find()->toArray();
-
-        // Filter out any non-sensical years (before 1991) and cast to int
         $years = [];
-        foreach ($rawYears as $year) {
-            $y = (int) $year;
-            if ($y > 1990) {
-                $years[] = $y;
+        foreach ($payments as $payment) {
+            $endYear = FiscalYearUtils::getEndYearForDate($payment->getDate('Y-m-d'));
+            if ($endYear > 1990) {
+                $years[$endYear] = true;
             }
         }
+        $years = array_keys($years);
+        rsort($years);
 
-        return $years;
+        return $maxYears > 0 ? array_slice($years, 0, $maxYears) : $years;
     }
 }

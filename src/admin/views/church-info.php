@@ -76,6 +76,19 @@ $socialPlaceholders = [
                             <?= gettext('Optional. URL for your church website.') ?>
                         </small>
                     </div>
+
+                    <div class="mb-3">
+                        <label for="sChurchTaxId"><?= gettext('Tax ID (EIN)') ?></label>
+                        <input type="text"
+                               class="form-control"
+                               id="sChurchTaxId"
+                               name="sChurchTaxId"
+                               value="<?= InputUtils::escapeHTML($churchInfo['sChurchTaxId']) ?>"
+                               maxlength="50">
+                        <small class="form-text text-body-secondary">
+                            <?= gettext('Optional. Printed on contribution statements.') ?>
+                        </small>
+                    </div>
                 </div>
             </div>
         </div>
@@ -201,7 +214,7 @@ $socialPlaceholders = [
                         </div>
                         <div class="mb-3 col-md-3">
                             <label for="sChurchState"><?= gettext('State') ?> <span class="text-danger">*</span></label>
-                            <div id="sChurchStateContainer" style="width: 100%;"
+                            <div id="sChurchStateContainer" class="w-100"
                                  data-user-selected-state="<?= InputUtils::escapeHTML($churchInfo['sChurchState']) ?>">
                             </div>
                         </div>
@@ -217,7 +230,7 @@ $socialPlaceholders = [
                         </div>
                         <div class="mb-3 col-md-3">
                             <label for="sChurchCountry"><?= gettext('Country') ?> <span class="text-danger">*</span></label>
-                            <select class="form-select" id="sChurchCountry" name="sChurchCountry" style="width: 100%;"
+                            <select class="form-select w-100" id="sChurchCountry" name="sChurchCountry"
                                     data-user-selected="<?= InputUtils::escapeHTML($churchInfo['sChurchCountry']) ?>">
                             </select>
                         </div>
@@ -274,7 +287,7 @@ $socialPlaceholders = [
                     ?>
 
 
-                    <div id="church-location-map" class="mb-2 rounded border<?= $hasCoords ? '' : ' d-none' ?>" style="height:280px;"></div>
+                    <div id="church-location-map" class="mb-2 rounded border admin-map-canvas<?= $hasCoords ? '' : ' d-none' ?>"></div>
                     <div class="alert alert-info mt-3 mb-0<?= $hasCoords ? ' d-none' : '' ?>" id="no-coords-alert">
                         <i class="fa-solid fa-location-dot me-2"></i>
                         <?= gettext('A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above.') ?>

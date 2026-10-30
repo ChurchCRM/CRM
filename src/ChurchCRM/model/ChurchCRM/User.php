@@ -95,7 +95,7 @@ class User extends BaseUser
     //
     //   TIER 1 — user_usr boolean columns (fast, indexed, ORM-generated getters):
     //     usr_Admin, usr_EditSelf, usr_AddRecords, usr_EditRecords,
-    //     usr_DeleteRecords, usr_MenuOptions, usr_ManageGroups,
+    //     usr_DeleteRecords, usr_ManageGroups,
     //     usr_Finance, usr_ManageFundraisers, usr_Notes.
     //     These are the "core" record permissions accessible via isXxx() getters
     //     (e.g. isAddRecords(), isFinance()) or the corresponding isXxxEnabled()
@@ -175,14 +175,6 @@ class User extends BaseUser
             return false;
         }
         return $this->isAdmin() || $this->isDeleteRecords();
-    }
-
-    public function isMenuOptionsEnabled(): bool
-    {
-        if ($this->isEditSelfExclusive()) {
-            return false;
-        }
-        return $this->isAdmin() || $this->isMenuOptions();
     }
 
     public function isManageGroupsEnabled(): bool
@@ -1192,13 +1184,7 @@ class User extends BaseUser
             throw new PasswordChangeException('Old', gettext('Incorrect password supplied for current user'));
         }
 
-        if (!$this->getIsPasswordPermissible($newPassword)) {
-            throw new PasswordChangeException('New', gettext('Your password choice is too obvious. Please choose something else.'));
-        }
-
-        if (strlen($newPassword) < SystemConfig::getIntValue('iMinPasswordLength')) {
-            throw new PasswordChangeException('New', gettext('Your new password must be at least') . ' ' . SystemConfig::getIntValue('iMinPasswordLength') . ' ' . gettext('characters'));
-        }
+        $this->validateNewPassword($newPassword);
 
         if ($newPassword == $oldPassword) {
             throw new PasswordChangeException('New', gettext('Your new password must not match your old one.'));
@@ -1212,6 +1198,21 @@ class User extends BaseUser
         $this->setNeedPasswordChange(false);
         $this->save();
         $this->createTimeLineNote('password-changed');
+    }
+
+    public function validateNewPassword(string $newPassword): void
+    {
+        if (mb_trim($newPassword) === '') {
+            throw new PasswordChangeException('New', gettext('Enter a new password'));
+        }
+
+        if (!$this->getIsPasswordPermissible($newPassword)) {
+            throw new PasswordChangeException('New', gettext('Your password choice is too obvious. Please choose something else.'));
+        }
+
+        if (strlen($newPassword) < SystemConfig::getIntValue('iMinPasswordLength')) {
+            throw new PasswordChangeException('New', gettext('Your new password must be at least') . ' ' . SystemConfig::getIntValue('iMinPasswordLength') . ' ' . gettext('characters'));
+        }
     }
 
     private function getIsPasswordPermissible($newPassword): bool

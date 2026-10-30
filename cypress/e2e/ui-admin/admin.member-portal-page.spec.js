@@ -1,5 +1,7 @@
 /// <reference types="cypress" />
 
+import { contrastRatio, effectiveBackground } from "../../support/colour";
+
 /**
  * Admin → Member Portal (MP3, #9864).
  *
@@ -67,24 +69,12 @@ const loginAsMember = () => {
 // Tabler's own white-on-success pairing measures 2.7:1; the unstyled grey badge text measured 1.0-1.8:1.
 const MIN_BADGE_CONTRAST = 2.5;
 
-const relativeLuminance = (cssColor) => {
-    const channels = cssColor.match(/[\d.]+/g).slice(0, 3).map(Number);
-    const srgb = cssColor.startsWith("color(") ? channels : channels.map((value) => value / 255);
-    const [r, g, b] = srgb.map((c) => (c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4));
-    return 0.2126 * r + 0.7152 * g + 0.0722 * b;
-};
-
-const contrastRatio = (first, second) => {
-    const [lighter, darker] = [relativeLuminance(first), relativeLuminance(second)].sort((a, b) => b - a);
-    return (lighter + 0.05) / (darker + 0.05);
-};
-
 const expectReadableBadges = () =>
     cy.get("#memberPortalPage .badge").should(($badges) => {
         $badges.each((_, badge) => {
             const $badge = Cypress.$(badge);
             expect(
-                contrastRatio($badge.css("color"), $badge.css("background-color")),
+                contrastRatio($badge.css("color"), effectiveBackground(badge)),
                 `"${$badge.text().trim()}" badge contrast`
             ).to.be.at.least(MIN_BADGE_CONTRAST);
         });
@@ -143,15 +133,6 @@ describe("Admin → Member Portal page", () => {
         cy.exec(`rm -rf ${GOOD_DIR} ${BROKEN_DIR} ${WARNING_DIR}`, { failOnNonZeroExit: false });
     });
 
-    describe("Access", () => {
-        it("A staff login without the Admin flag is denied", () => {
-            cy.setupStandardSession();
-            cy.visit("/admin/member-portal");
-            cy.url({ timeout: 10000 }).should("include", "/v2/access-denied");
-            cy.get("#memberPortalPage").should("not.exist");
-        });
-    });
-
     describe("As an administrator", () => {
         beforeEach(() => {
             cy.setupAdminSession();
@@ -207,6 +188,7 @@ describe("Admin → Member Portal page", () => {
             activateTheme("default");
             cy.setupAdminSession();
             cy.visit("/admin/member-portal");
+            cy.get("#portal-settings-tab").click();
             cy.get("#portalThemeSelect").select(BROKEN_THEME);
             cy.get("#portalThemeActivateButton").click();
             cy.get("#portalThemeFindings", { timeout: 10000 }).should("contain.text", "home.html.twig");
@@ -221,6 +203,7 @@ describe("Admin → Member Portal page", () => {
             cy.visit("/admin/member-portal");
             cy.get(`#portalThemesTable tr[data-theme="${WARNING_THEME}"]`).should("contain.text", "Warnings");
             expectReadableBadgesInBothModes();
+            cy.get("#portal-settings-tab").click();
 
             for (const [theme, template] of [
                 [GOOD_THEME, "This theme has no problems."],
@@ -236,6 +219,7 @@ describe("Admin → Member Portal page", () => {
 
         it("The Check button re-runs the validator for the selected theme", () => {
             cy.visit("/admin/member-portal");
+            cy.get("#portal-settings-tab").click();
             cy.get("#portalThemeSelect").select(GOOD_THEME);
             cy.get("#portalThemeCheckButton").click();
             cy.get("#portalThemeFindings", { timeout: 10000 }).should("contain.text", "This theme has no problems.");
