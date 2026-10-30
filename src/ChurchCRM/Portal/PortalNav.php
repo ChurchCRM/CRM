@@ -17,8 +17,9 @@ use ChurchCRM\Portal\Permissions\PortalAuthorizationService;
  * header's account menu instead. Each entry names the portal capability it
  * needs and is shown when the member holds it on at least one scope (member
  * sign-in design §8.2), so the menu and the routes ask the same question.
- * Home needs nothing, and My Family stays for a member with no family, whose
- * page says so. Active plugins add their own entries before My Family.
+ * Home needs nothing. My Giving and My Family need FAMILY_VIEW, which only a
+ * member with a family holds (#10932). Active plugins add their own entries
+ * before My Family.
  *
  * A nav entry is `{id, label, url, icon, capability, active, badge}`; `url` is
  * already prefixed with the install root path, and `icon` is a Font Awesome
@@ -111,13 +112,9 @@ class PortalNav
 
         $principal = PortalContext::principal();
         $authz = new PortalAuthorizationService();
-        // A member with no family keeps My Family: the page tells them so and how
-        // to reach the office (Member Portal design §5.2).
-        $hasNoFamily = (int) PortalContext::person()?->getFamId() === 0;
         $visible = array_filter(
             $entries,
             static fn (array $entry): bool => $entry['capability'] === null
-                || ($entry['id'] === self::FAMILY && $hasNoFamily)
                 || ($principal instanceof PortalPrincipal && $authz->scopesFor($principal, $entry['capability']) !== [])
         );
 
