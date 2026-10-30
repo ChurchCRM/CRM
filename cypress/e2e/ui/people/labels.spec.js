@@ -31,10 +31,12 @@ describe("Label sheets", () => {
 
     it("prints the first label at the start row and column", () => {
         cy.setupAdminSession();
-        const firstText = (url) => fetchPdf(url).then((body) => pdfDrawing(body)).then((drawing) => drawing.find((item) => item.text));
-        firstText(mailing("5160")).then((topLeft) => {
-            firstText(mailing("5160", "&startrow=3&startcol=2")).then((placed) => {
-                expect(placed.text).to.eq(topLeft.text);
+        const drawing = (url) => fetchPdf(url).then((body) => pdfDrawing(body));
+        drawing(mailing("5160")).then((plain) => {
+            const topLeft = plain.find((item) => item.text);
+            drawing(mailing("5160", "&startrow=3&startcol=2")).then((started) => {
+                const placed = started.find((item) => item.text === topLeft.text);
+                expect(placed, `${topLeft.text} on the started sheet`).to.not.equal(undefined);
                 expect(placed.x - topLeft.x, "one 5160 column across").to.be.closeTo((66.675 + 3.175) * MM, 0.5);
                 expect(topLeft.y - placed.y, "two 5160 rows down").to.be.closeTo(2 * 25.4 * MM, 0.5);
             });
@@ -66,12 +68,12 @@ describe("Label sheets", () => {
         cart("DELETE");
     });
 
-    it("sends a self-service user to access denied", () => {
+    it("sends a self-service user back to the portal", () => {
         cy.setupPersonaSession("portal-only");
         [mailing("5160"), NAME_TAGS, familyLabels("newsletter"), familyLabels("confirm")].forEach((url) => {
             cy.request({ url, followRedirect: false, failOnStatusCode: false }).then((response) => {
                 expect(response.status).to.eq(302);
-                expect(response.headers.location).to.include("v2/access-denied");
+                expect(response.headers.location).to.include("/portal");
             });
         });
     });
