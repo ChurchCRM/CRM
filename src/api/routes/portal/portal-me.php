@@ -303,7 +303,8 @@ $app->group('/portal', function (RouteCollectorProxy $group) use (
      *             @OA\Property(property="canSeeContacts", type="boolean", description="portal.family.contacts.view: an adult of the family")
      *         )
      *     ),
-     *     @OA\Response(response=403, description="API-key caller")
+     *     @OA\Response(response=403, description="API-key caller"),
+     *     @OA\Response(response=404, description="The member has no family record")
      * )
      */
     $group->get('/family', function (Request $request, Response $response) use ($portalActor): Response {
