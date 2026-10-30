@@ -412,6 +412,23 @@ class VolunteerAssignmentService
         $connection->beginTransaction();
 
         try {
+            // A double-tapped answer races here: lock the row and re-check, so the second
+            // request is the no-op above and cannot re-arm an alert the first one sent.
+            $lockedStatus = VolunteerAssignmentQuery::create()
+                ->filterById((int) $assignment->getId())
+                ->select(['Status'])
+                ->lockForUpdate()
+                ->findOne($connection);
+            if ($lockedStatus !== $assignment->getStatus()) {
+                $assignment->reload(false, $connection);
+                if ($assignment->getStatus() === $response) {
+                    $connection->commit();
+
+                    return $assignment;
+                }
+                $this->assertTransitionAllowed($assignment, $response);
+            }
+
             $now = DateTimeUtils::getToday();
 
             $assignment->setStatus($response);
