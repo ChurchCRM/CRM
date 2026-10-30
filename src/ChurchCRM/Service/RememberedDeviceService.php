@@ -187,12 +187,16 @@ final class RememberedDeviceService
         }
     }
 
-    /** A new sign-in on this browser replaces whatever device cookie it held. */
+    /** A new sign-in on this browser replaces whatever device cookie it held, its current token or the one just rotated out. */
     public function forgetToken(string $token): void
     {
+        $hash = self::hash($token);
         $device = PersonDeviceQuery::create()
             ->filterByKind(self::KIND_BROWSER)
-            ->findOneByTokenHash(self::hash($token));
+            ->condition('current', 'PersonDevice.TokenHash = ?', $hash)
+            ->condition('previous', 'PersonDevice.PreviousTokenHash = ?', $hash)
+            ->where(['current', 'previous'], Criteria::LOGICAL_OR)
+            ->findOne();
         if ($device instanceof PersonDevice) {
             $this->revoke($device, SignInReason::REPLACED);
         }
