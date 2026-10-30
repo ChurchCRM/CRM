@@ -10,6 +10,7 @@ use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Family;
+use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonCustom;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
@@ -24,6 +25,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
+use Propel\Runtime\Propel;
 use ChurchCRM\Utils\AddressDefaults;
 use ChurchCRM\Service\CustomFieldService;
 
@@ -324,7 +326,6 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
     // The personal email is the member sign-in identity (member sign-in design §9).
     $emailPolicy = new SignInEmailPolicy();
-    $sOldEmail = $person instanceof Person ? (string) $person->getEmail() : '';
     if ($sEmailError === '' && $person instanceof Person) {
         $emailRefusal = $emailPolicy->changeRefusal($person, $sEmail, AuthenticationManager::getCurrentUser());
         if ($emailRefusal !== null) {
@@ -457,9 +458,23 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $person->setEnvelope($iEnvelope);
         }
 
-        $person->save();
-        $person->reload();
-        $emailPolicy->recordChange($person, $personAlreadyExist ? $sOldEmail : null, EmailChangeChannel::STAFF, AuthenticationManager::getCurrentUser());
+        // The save and the sign-in changes it causes commit together, against the
+        // address on record when the row is locked, not when the form was read.
+        $connection = Propel::getWriteConnection(PersonTableMap::DATABASE_NAME);
+        $connection->beginTransaction();
+        try {
+            $sOldEmail = $personAlreadyExist
+                ? (string) PersonQuery::create()->filterById($iPersonID)->lockForUpdate()->select(['Email'])->findOne($connection)
+                : null;
+            $person->save($connection);
+            $person->reload(false, $connection);
+            $emailPolicy->recordChange($person, $sOldEmail, EmailChangeChannel::STAFF, AuthenticationManager::getCurrentUser());
+            $connection->commit();
+        } catch (Throwable $e) {
+            $connection->rollBack();
+
+            throw $e;
+        }
 
         if (!$personAlreadyExist) {
             $iPersonID = $person->getId();
