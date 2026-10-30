@@ -58,12 +58,20 @@ npm run docker:ci:new-system:down   # tear down the instance when you're done
    because Playwright only finalizes a video after its browser context
    closes, which happens after the test itself has already returned.
 4. `marketing:check` — `scripts/check-marketing-visuals.js` verifies every
-   capture produced its artifacts.
+   capture produced its artifacts, decodes PNGs, checks their dimensions against
+   the sidecar viewport at 2x scale, and requires contrast in at least two of a
+   4×4 grid of tiles. This catches blank and cropped frames that pass the size
+   minimum. To check a separate artifact directory, run
+   `npm run marketing:check -- /path/to/artifacts`.
 5. `marketing:manifest` — `scripts/generate-marketing-manifest.js` rolls
    every metadata sidecar (see below) into one `playwright/artifacts/manifest.json`.
 
 The instance is left running after a successful (or failed) run so you can
 inspect it — `docker:ci:new-system:down` tears it down explicitly.
+
+Guard fixtures run with `node --test scripts/check-marketing-visuals.test.js`
+(also included in `npm run lint`). They create synthetic PNGs in temporary
+directories outside the publish path; production captures use real demo UI.
 
 ## What it does
 

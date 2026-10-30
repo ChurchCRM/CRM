@@ -13,7 +13,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 const ROOT = path.join(__dirname, '..');
-const UPGRADE_SQL = 'src/mysql/upgrade/7.8.3.sql';
+const UPGRADE_SQL = 'src/mysql/upgrade/7.8.3-member-sign-in.sql';
 const LOCALES_JSON = 'src/locale/locales.json';
 
 /** The quoted codes in the `IN (...)` list that follows the ui.locale join. */

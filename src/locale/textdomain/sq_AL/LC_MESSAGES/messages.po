@@ -928,10 +928,6 @@ msgid "Voting Members"
 msgstr "Anëtarët votimit"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Dhënia e Raportit (Deklaratat tatimore)"
-
-#: 
 msgid "Zero Givers"
 msgstr "Zero givers"
 
@@ -1730,14 +1726,6 @@ msgstr "Leje"
 #: 
 msgid "System Settings"
 msgstr "Cilësimet e sistemit"
-
-#: 
-msgid "Tax Report"
-msgstr "Tax Raporti"
-
-#: 
-msgid "Calendar Year"
-msgstr "Viti Kalendari"
 
 #: 
 msgid "User Editor"
@@ -5465,10 +5453,6 @@ msgid "Submit Registration"
 msgstr "Dërgo regjistrimin"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Një fjalëkalim i ri është gjeneruar dhe dërguar në adresën tuaj të email-it."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Apliko përditësimin tani"
 
@@ -5513,20 +5497,12 @@ msgid "Login Name is required"
 msgstr "Kërkohet emri i hyrjes"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Sapo të merrni email-in, mund të hyni me fjalëkalimin tuaj të përkohshëm dhe ta ndryshoni në diçka që preferoni."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Gabim në rivendosjen e fjalëkalimit"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Rivendosja e fjalëkalimit me sukses"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Ju lutem kontrolloni email-in tuaj (përfshirë dosjen spam/junk) për fjalëkalimin tuaj të përkohshëm."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -6314,10 +6290,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "Raport i personalizueshëm me filtrim sipas datës, fondit, familjes dhe metodës së pagesës."
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Personalizoni tekstin që shfaqet në deklaratat e taksave (sTaxReport1, sTaxReport2, etj.)."
-
-#: 
 msgid "Day"
 msgstr "Ditë"
 
@@ -6398,20 +6370,12 @@ msgid "Generate"
 msgstr "Gjenero"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Gjenero deklaratat e taksave"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Gjeneroni deklarata vjetore dhurimi të zbritshme nga taksat për dhuruesit. Mund të printohen ose dërgohen me email."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "Gjeneroni letra përkujtese për familjet me zotime të papërfunduara."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "Gjeneroni raporte për deklaratat e taksave, gjurmimin e zotimeve dhe analizën financiare."
 
 #: 
 msgid "ID"
@@ -6594,10 +6558,6 @@ msgid "System Info"
 msgstr "Informacioni i sistemit"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "Raportet e taksave dhe dhurimit"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "Gjuha e raportit të taksave"
 
@@ -6624,10 +6584,6 @@ msgstr "Përmirëso"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "Përdoruesi duhet të jetë administrator ose të ketë lejen e financës"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Verifikoni që emri i kishës, adresa dhe informacioni i kontaktit shfaqen në deklaratat e taksave."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9139,10 +9095,6 @@ msgstr "Gjenero letrat e kujtesës për premtimin"
 #: 
 msgid "Generate reports on group membership and activities"
 msgstr "Gjenero raporte mbi anëtarësinë dhe aktivitetet e grupmesionit"
-
-#: 
-msgid "Generate tax statement documents for donors"
-msgstr "Gjenero dokumente të deklaratës tatimore për donatorët"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -12342,10 +12294,6 @@ msgstr "Emaili është i çaktivizuar"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "Emaili është i çaktivizuar. Konfiguroni emailin para rivendosjes së fjalëkalimeve, ose përdorni Ndrysho Fjalëkalimin."
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Vendosni një nga kodet tuaja rezervë të rikuperimit"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"
@@ -15965,10 +15913,6 @@ msgid "Please confirm your family information"
 msgstr "Ju lutem konfirmoni informacionin e familjes tuaj"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "Ju lutem dërgoni dhurimin tuaj tjetër te %s"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Ju lutem zgjidhni një familje tjetër me të cilën të lidhni këto dhurime"
 
@@ -17999,14 +17943,6 @@ msgid "{{minutes}} min left"
 msgstr "{{minutes}} min të mbetura"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d dokument tatimor i dërguar me sukses në familje me email."
-
-#: 
-msgid "%s %d Giving Statement"
-msgstr "Deklarata e dhurimit %s %d"
-
-#: 
 msgid "All classifications"
 msgstr "Të gjitha klasifikimet"
 
@@ -18039,28 +17975,8 @@ msgid "Columns per Page"
 msgstr "Kolona për faqe"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "I nderuar %s Familje,\n"
-"\n"
-"Ju lutemi gjeni deklaratën tuaj të dhurimit %d nga %s në bashkëlidhje me këtë email.\n"
-"\n"
-"Nëse keni ndonjë pyetje, ju lutemi kontaktoni zyrën e kishës.\n"
-"\n"
-"Faleminderit për bamirësinë tuaj."
-
-#: 
 msgid "Download CSV"
 msgstr "Shkarko CSV"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "Dërgo me email %d Dokument tatimor"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18163,10 +18079,6 @@ msgid "Pledged"
 msgstr "Premtuar"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "Shtyp %d Dokument tatimor"
-
-#: 
 msgid "Recent Friends"
 msgstr "Miqtë e fundit"
 
@@ -18191,24 +18103,8 @@ msgid "Single Pages"
 msgstr "Faqe të vetme"
 
 #: 
-msgid "Tax Documents"
-msgstr "Dokumentet tatimore"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "Dështoi dërgimi i emailit të dokumentit tatimor. Ju lutemi kontrolloni cilësimet e serverit të email-it."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "Dy faqe të gjysëm madhësie krah për krah në secilin fletë të gjerë, në rendin e broshurës. Shtypni me të dyja anët me \"flip në skajin e shkurtër\", pastaj palosni grumbullin në gjysmë. Kolonat numërohen për çdo gjysmë faqeje."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "Nuk është e mundur të dërgohet dokumenti tatimor me email: nuk u gjet ndonjë të dhënë pagese për atë vit."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "Nuk është e mundur të dërgohet dokumenti tatimor me email: kjo familje nuk ka adresë emaili në dosje."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -20199,10 +20095,6 @@ msgid "How often"
 msgstr "Sa shpesh"
 
 #: 
-msgid "How to correct this"
-msgstr "Si ta korrigjoni"
-
-#: 
 msgid "I can't"
 msgstr "Nuk mundem"
 
@@ -21523,10 +21415,6 @@ msgstr "Hyrë"
 #: 
 msgid "Signed up"
 msgstr "Regjistruar"
-
-#: 
-msgid "Sincerely"
-msgstr "Me respekt"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
@@ -24651,4 +24539,20 @@ msgstr "Muaji në të cilin të gjithë që kanë një klasë ngjiten një klas�
 #: 
 msgid "Through Grade"
 msgstr "Deri në klasën"
+
+#: 
+msgid "Invalid setting name or value"
+msgstr "Emër ose vlerë e pavlefshme e cilësimit"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Shërbimi i gjeokodimit nuk u përgjigj — provoni përsëri më vonë"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Shfaqet vetëm emaili që keni dërguar."
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Ngjarjet e përsëritura nuk mund të krijoheshin. Kontrolloni regjistrin e aplikacionit për detaje."
 

@@ -41,7 +41,7 @@ services:
       - no-new-privileges:true
 
   web:
-    image: churchcrm/crm:7.8.0-php8-apache
+    image: churchcrm/crm:latest-php8-apache
     restart: unless-stopped
     depends_on:
       db:

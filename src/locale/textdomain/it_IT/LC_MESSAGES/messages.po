@@ -931,10 +931,6 @@ msgid "Voting Members"
 msgstr "Membri Votanti:"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Dare Relazione (dichiarazioni fiscali)"
-
-#: 
 msgid "Zero Givers"
 msgstr "Zero Givers"
 
@@ -1735,14 +1731,6 @@ msgstr "Autorizzazione"
 #: 
 msgid "System Settings"
 msgstr "Impostazioni di sistema"
-
-#: 
-msgid "Tax Report"
-msgstr "Rapporto fiscale"
-
-#: 
-msgid "Calendar Year"
-msgstr "Anno civile"
 
 #: 
 msgid "User Editor"
@@ -5494,10 +5482,6 @@ msgid "Submit Registration"
 msgstr "Invia Registrazione"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Una nuova password è stata generata e inviata al tuo indirizzo email."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Applica Aggiornamento Ora"
 
@@ -5542,20 +5526,12 @@ msgid "Login Name is required"
 msgstr "Il nome di accesso è obbligatorio"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Una volta ricevuta l'email, puoi accedere con la tua password temporanea e cambiarla con una che preferisci."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Errore di Ripristino Password"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Ripristino Password Riuscito"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Controlla la tua email (compresa la cartella spam/cestino) per la tua password temporanea."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -6343,10 +6319,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "Rapporto personalizzabile con filtraggio per data, fondo, famiglia e metodo di pagamento."
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Personalizza il testo che appare sulle dichiarazioni fiscali (sTaxReport1, sTaxReport2, ecc)."
-
-#: 
 msgid "Day"
 msgstr "Giorno"
 
@@ -6427,20 +6399,12 @@ msgid "Generate"
 msgstr "Genera"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Genera Dichiarazioni Fiscali"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Genera dichiarazioni di donazione deducibili dalle tasse annuali per i donatori. Può essere stampato o inviato via email."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "Genera lettere di promemoria per le famiglie con promesse in sospeso."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "Genera rapporti per dichiarazioni fiscali, monitoraggio delle promesse e analisi finanziaria."
 
 #: 
 msgid "ID"
@@ -6623,10 +6587,6 @@ msgid "System Info"
 msgstr "Informazioni di Sistema"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "Rapporti Fiscali e di Donazione"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "Linguaggio Rapporto Fiscale"
 
@@ -6653,10 +6613,6 @@ msgstr "Aggiorna"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "L'utente deve essere un Amministratore o avere l'autorizzazione Finanza"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Verifica che il nome della chiesa, l'indirizzo e le informazioni di contatto appaiano sulle dichiarazioni fiscali."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9168,10 +9124,6 @@ msgstr "Genera lettere di promemoria degli impegni finanziari"
 #: 
 msgid "Generate reports on group membership and activities"
 msgstr "Genera report sull'appartenenza ai gruppi e le attività"
-
-#: 
-msgid "Generate tax statement documents for donors"
-msgstr "Genera documenti di ricevuta fiscale per i donatori"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -12371,10 +12323,6 @@ msgstr "Email disabilitata"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "Email disabilitata. Configurare l’email prima di reimpostare le password oppure utilizzare Cambia password."
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Inserire uno dei codici di recupero di riserva"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"
@@ -15994,10 +15942,6 @@ msgid "Please confirm your family information"
 msgstr "Conferma le informazioni della tua famiglia"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "Si prega di inviare per posta il prossimo dono a %s"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Seleziona un'altra famiglia a cui associare queste offerte"
 
@@ -18028,14 +17972,6 @@ msgid "{{minutes}} min left"
 msgstr "{{minutes}} min rimanenti"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d documento fiscale inviato con successo alla famiglia."
-
-#: 
-msgid "%s %d Giving Statement"
-msgstr "Dichiarazione di donazione %s %d"
-
-#: 
 msgid "All classifications"
 msgstr "Tutte le classificazioni"
 
@@ -18068,28 +18004,8 @@ msgid "Columns per Page"
 msgstr "Colonne per pagina"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "Caro/a %s Famiglia,\n"
-"\n"
-"Troverai la tua dichiarazione di donazione %d da %s allegata a questa email.\n"
-"\n"
-"Se hai domande, contatta l'ufficio della chiesa.\n"
-"\n"
-"Grazie per la tua generosità."
-
-#: 
 msgid "Download CSV"
 msgstr "Scarica CSV"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "Invia %d documento fiscale per email"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18192,10 +18108,6 @@ msgid "Pledged"
 msgstr "Promesso"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "Stampa %d documento fiscale"
-
-#: 
 msgid "Recent Friends"
 msgstr "Amici recenti"
 
@@ -18220,24 +18132,8 @@ msgid "Single Pages"
 msgstr "Pagine singole"
 
 #: 
-msgid "Tax Documents"
-msgstr "Documenti fiscali"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "Impossibile inviare l'email del documento fiscale. Controlla le impostazioni del server di posta."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "Due pagine di mezza dimensione affiancate su ogni foglio in orizzontale, in ordine di opuscolo. Stampa fronte-retro con \"capovolgimento sul bordo corto\", quindi piega lo stack a metà. Le colonne vengono conteggiate per mezza pagina."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "Impossibile inviare il documento fiscale per email: nessun dato di pagamento trovato per quell'anno."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "Impossibile inviare il documento fiscale per email: questa famiglia non ha un indirizzo email registrato."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -20229,10 +20125,6 @@ msgid "How often"
 msgstr "Con che frequenza"
 
 #: 
-msgid "How to correct this"
-msgstr "Come correggere"
-
-#: 
 msgid "I can't"
 msgstr "Non posso"
 
@@ -21553,10 +21445,6 @@ msgstr "Acceduto"
 #: 
 msgid "Signed up"
 msgstr "Iscritto"
-
-#: 
-msgid "Sincerely"
-msgstr "Cordialmente"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
@@ -24681,4 +24569,20 @@ msgstr "Il mese in cui tutti coloro che hanno una classe salgono di una classe. 
 #: 
 msgid "Through Grade"
 msgstr "Fino alla classe"
+
+#: 
+msgid "Invalid setting name or value"
+msgstr "Nome o valore dell’impostazione non valido"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Il servizio di geocodifica non ha risposto — riprova più tardi"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Viene mostrata solo l’email che hai inviato."
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Impossibile creare gli eventi ripetuti. Controllare il registro dell'applicazione per i dettagli."
 

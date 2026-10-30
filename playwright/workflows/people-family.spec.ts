@@ -2,14 +2,23 @@ import path from 'node:path';
 
 import { expect, test } from '@playwright/test';
 
-import { captureScreen } from '../support/capture';
+import { captureScreen, defineCapture } from '../support/capture';
 import { humanClick, humanPause, humanSelect, humanType, settle } from '../support/human';
 import { uploadDemoPhoto } from '../support/photo';
 
 const KEVIN_THOMAS_PHOTO = path.join(__dirname, '..', '..', 'src', 'admin', 'demo', 'images', 'people', 'kevin.thomas.jpg');
 
 test.describe('People & Families', () => {
-  test('people-family-overview', async ({ page }, testInfo) => {
+  const peopleFamilyOverviewCapture = defineCapture({
+    name: 'people-family-overview',
+    locales: 'all',
+    title: 'Family Profile',
+    category: 'People & Families',
+    dark: 'people-family-overview-dark',
+    purpose: 'Show how ChurchCRM organizes people and families, with member photos and a geocoded address',
+    usedIn: ['docs', 'website'],
+  });
+  test('people-family-overview', peopleFamilyOverviewCapture, async ({ page }, testInfo) => {
     await page.goto('/people/family');
 
     const rows = page.locator('#families tbody tr');
@@ -34,17 +43,17 @@ test.describe('People & Families', () => {
     // below the fold at this viewport regardless of family — the
     // "Geocoded" badge is what's actually visible in frame. See
     // marketing-visuals-pipeline.md's "Map visibility" note.
-    await captureScreen(page, testInfo, {
-      name: 'people-family-overview',
-      title: 'Family Profile',
-      category: 'People & Families',
-      dark: 'people-family-overview-dark',
-      purpose: 'Show how ChurchCRM organizes people and families, with member photos and a geocoded address',
-      usedIn: ['docs', 'website'],
-    });
+    await captureScreen(page, testInfo, peopleFamilyOverviewCapture);
   });
 
-  test('people-family-new-family', async ({ page }, testInfo) => {
+  const peopleFamilyNewFamilyCapture = defineCapture({
+    name: 'people-family-new-family',
+    locales: 'all',
+    title: 'Add a New Family',
+    category: 'People & Families',
+    purpose: 'Show creating a new family and its resulting profile page',
+  });
+  test('people-family-new-family', peopleFamilyNewFamilyCapture, async ({ page }, testInfo) => {
     await page.goto('/FamilyEditor.php');
     await humanPause(page, 500);
 
@@ -81,12 +90,7 @@ test.describe('People & Families', () => {
     await expect(page.getByText('Whitfield', { exact: false }).first()).toBeVisible({ timeout: 10000 });
     await settle(page, 500);
 
-    await captureScreen(page, testInfo, {
-      name: 'people-family-new-family',
-      title: 'Add a New Family',
-      category: 'People & Families',
-      purpose: 'Show creating a new family and its resulting profile page',
-    });
+    await captureScreen(page, testInfo, peopleFamilyNewFamilyCapture);
   });
 
   test('people-map-overview', async ({ page }, testInfo) => {
@@ -116,19 +120,21 @@ test.describe('People & Families', () => {
     });
   });
 
-  test('people-directory-list', async ({ page }, testInfo) => {
+  const peopleDirectoryListCapture = defineCapture({
+    name: 'people-directory-list',
+    locales: 'all',
+    title: 'People Directory',
+    category: 'People & Families',
+    purpose: 'Show the filtered person directory list',
+    usedIn: ['website'],
+  });
+  test('people-directory-list', peopleDirectoryListCapture, async ({ page }, testInfo) => {
     await page.goto('/people/list');
     const rows = page.locator('#members tbody tr');
     await expect(rows.first()).toBeVisible({ timeout: 15000 });
     await settle(page, 500);
 
-    await captureScreen(page, testInfo, {
-      name: 'people-directory-list',
-      title: 'People Directory',
-      category: 'People & Families',
-      purpose: 'Show the filtered person directory list',
-      usedIn: ['website'],
-    });
+    await captureScreen(page, testInfo, peopleDirectoryListCapture);
   });
 
   // Inactive and deceased subjects come from src/admin/demo/people.json

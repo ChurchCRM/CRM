@@ -58,6 +58,7 @@ $app->group('', function (RouteCollectorProxy $group): void {
     require __DIR__ . '/routes/devices.php';
     require __DIR__ . '/routes/family.php';
     require __DIR__ . '/routes/directory.php';
+    require __DIR__ . '/routes/giving.php';
     require __DIR__ . '/routes/login-as-person.php';
     PluginManager::registerPortalRoutes($group, PluginManager::PORTAL_PAGES);
 })->add(new CSRFMiddleware())->add(new PortalAccessMiddleware())->add(new PortalSessionMiddleware());

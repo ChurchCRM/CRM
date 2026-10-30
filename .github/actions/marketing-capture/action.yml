@@ -1,0 +1,83 @@
+name: 'Marketing capture for one locale'
+description: 'Install the toolchain, run scripts/capture-all-locales.sh for one locale and upload its captures. Run actions/checkout first.'
+
+inputs:
+  locale:
+    description: 'Locale to capture (en, es, pt, zh, fr, ru, de, ar)'
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Node.js and npm dependencies
+      uses: ./.github/actions/checkout-node-npm
+
+    - name: Set up PHP 8.4
+      uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # 2.40.0
+      with:
+        php-version: '8.4'
+        extensions: pdo_mysql, mysqli, gd, zip, gettext, iconv, mbstring, xml, curl, fileinfo, bcmath
+        coverage: none
+
+    - name: Get Composer cache directory
+      id: composer-cache
+      shell: bash
+      run: |
+        cd src
+        echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+    - name: Cache Composer packages
+      uses: ./.github/actions/cache
+      with:
+        path: ${{ steps.composer-cache.outputs.dir }}
+        key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+        restore-keys: ${{ runner.os }}-composer-
+
+    - name: Cache Playwright browsers
+      uses: ./.github/actions/cache
+      with:
+        path: ~/.cache/ms-playwright
+        key: ${{ runner.os }}-playwright-${{ hashFiles('package-lock.json') }}
+
+    - name: Install Playwright browser
+      shell: bash
+      run: npm run marketing:install
+
+    - name: Capture ${{ inputs.locale }}
+      shell: bash
+      env:
+        LOCALE: ${{ inputs.locale }}
+      run: ./scripts/capture-all-locales.sh "$LOCALE"
+
+    - name: Dump container logs on failure
+      if: failure()
+      shell: bash
+      run: |
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system logs --no-color || true
+
+    - name: Tear down Docker stack
+      if: always()
+      shell: bash
+      run: npm run docker:ci:new-system:down
+
+    - name: Upload ${{ inputs.locale }} captures
+      uses: ./.github/actions/upload-artifact
+      with:
+        name: marketing-locale-${{ inputs.locale }}-${{ github.run_id }}
+        path: |
+          playwright/artifacts/screenshots
+          playwright/artifacts/metadata
+          playwright/artifacts/videos
+        retention-days: 1
+        if-no-files-found: error
+
+    - name: Upload failure output
+      if: failure()
+      uses: ./.github/actions/upload-artifact
+      with:
+        name: marketing-failure-${{ inputs.locale }}-${{ github.run_id }}
+        path: playwright/.playwright-output/
+        # Dot-directory: actions/upload-artifact drops it unless told otherwise.
+        include-hidden-files: true
+        retention-days: 14
+        if-no-files-found: warn

@@ -17,8 +17,7 @@
  * which captureScreen() writes from the options in the spec, so the spec is the
  * single source of truth for display data.
  *
- * Committed to the repo and published to the website for dynamic screenshot
- * gallery loading.
+ * Generated artifacts are published to the CDN for website gallery loading.
  */
 
 const fs = require('node:fs');
@@ -125,9 +124,11 @@ function main() {
 
   // Group artifacts by workflow name
   const workflowMap = new Map();
+  const available = new Set();
   for (const { locale, device, file } of metadataFiles) {
     const meta = JSON.parse(fs.readFileSync(file, 'utf8'));
     const workflow = meta.workflow;
+    available.add(`${locale}/${device}/${workflow}`);
     if (!workflowMap.has(workflow)) {
       workflowMap.set(workflow, []);
     }
@@ -142,8 +143,9 @@ function main() {
         ...buildArtifactEntry(locale, device, meta),
         title: meta.title || workflow,
         category: meta.category || null,
-        dark: meta.dark || null,
+        dark: meta.dark && available.has(`${locale}/${device}/${meta.dark}`) ? meta.dark : null,
         usedIn: meta.usedIn || [],
+        locales: meta.locales || 'en',
       });
     }
   }
