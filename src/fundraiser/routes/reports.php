@@ -1,13 +1,9 @@
 <?php
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\model\ChurchCRM\DonatedItemQuery;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
-use ChurchCRM\model\ChurchCRM\PersonQuery;
-use ChurchCRM\Reports\ChurchInfoReport;
 use ChurchCRM\Service\FundraiserItemService;
 use ChurchCRM\Service\MpdfRenderer;
-use ChurchCRM\Utils\CurrencyFormatter;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
