@@ -120,9 +120,11 @@ class Bootstrapper
         self::initSession();
         
         // Initialize SystemConfig with database values only once during bootstrap
-        // Fallback error handlers (testMYSQLI, systemFailure) will call init() without parameters
+        // Fallback error handlers (testMYSQLI, systemFailure) will call init() without parameters.
+        // Rows of retired keys stay until the database is current, so the upgrade
+        // scripts below can still read them.
         if (!SystemConfig::isInitialized()) {
-            SystemConfig::init(ConfigQuery::create()->find());
+            SystemConfig::init(ConfigQuery::create()->find(), self::isDBCurrent());
         }
 
         self::configureLogging();
