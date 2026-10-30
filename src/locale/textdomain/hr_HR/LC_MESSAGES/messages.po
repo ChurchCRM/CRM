@@ -921,10 +921,6 @@ msgid "Voting Members"
 msgstr "Glasajući članovi"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Izvještaj o darovima (porezne izjave)"
-
-#: 
 msgid "Zero Givers"
 msgstr "Nema darivatelja"
 
@@ -1712,14 +1708,6 @@ msgstr "Dozvola"
 #: 
 msgid "System Settings"
 msgstr "Sistemske postavke"
-
-#: 
-msgid "Tax Report"
-msgstr "Porezni izvještaj"
-
-#: 
-msgid "Calendar Year"
-msgstr "Kalendarska godina"
 
 #: 
 msgid "User Editor"
@@ -5441,10 +5429,6 @@ msgid "Submit Registration"
 msgstr "Pošalji registraciju"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Generirana je nova lozinka i poslana na vašu adresu e-pošte."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Primijeni ažuriranje sada"
 
@@ -5489,20 +5473,12 @@ msgid "Login Name is required"
 msgstr "Korisničko ime je obavezno"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Nakon što primite e-poruku, možete se prijaviti privremenom lozinkom i promijeniti je u nešto što vam odgovara."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Greška resetiranja lozinke"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Resetiranje lozinke uspješno"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Molim provjerite svoju e-poštu (uključujući mapu neželjene pošte) za privremenu lozinku."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -6292,10 +6268,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "Prilagodljivi izvještaj s filtriranjem prema datumu, fondu, obitelji i načinu plaćanja."
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Prilagodite tekst koji se prikazuje na poreznim izjavama (sTaxReport1, sTaxReport2, itd.)."
-
-#: 
 msgid "Day"
 msgstr "Dan"
 
@@ -6376,20 +6348,12 @@ msgid "Generate"
 msgstr "Generiraj"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Generiraj porezne izjave"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Generirajte godišnje porezno odbatljive izjave o darivanju za darivatelje. Mogu se ispisati ili poslati e-poštom."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "Generirajte pisma podsjetnika za obitelji s neplaćenim zavjetima."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "Generirajte izvještaje za porezne izjave, praćenje zavjeta i financijsku analizu."
 
 #: 
 msgid "ID"
@@ -6572,10 +6536,6 @@ msgid "System Info"
 msgstr "Informacije o sustavu"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "Izvještaji o porezu i darivanju"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "Tekst poreznog izvještaja"
 
@@ -6602,10 +6562,6 @@ msgstr "Nadogradnja"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "Korisnik mora biti administrator ili imati dozvolu za financije"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Provjerite da se naziv župe, adresa i kontaktni podaci prikazuju na poreznim izjavama."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9122,10 +9078,6 @@ msgstr "Generiraj pisma podsjetnika za zavjete"
 #: 
 msgid "Generate reports on group membership and activities"
 msgstr "Generiraj izvještaje o članstvu u skupinama i aktivnostima"
-
-#: 
-msgid "Generate tax statement documents for donors"
-msgstr "Generiraj porezne izjave za darivatelje"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -12326,10 +12278,6 @@ msgstr "E-pošta je onemogućena"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "E-pošta je onemogućena. Konfigurirajte e-poštu prije resetiranja lozinki ili koristite Promijeni lozinku."
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Unesite jedan od vaših rezervnih kodova za oporavak"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"
@@ -15952,10 +15900,6 @@ msgid "Please confirm your family information"
 msgstr "Molimo potvrdite podatke o svojoj obitelji"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "Molimo pošaljite sljedeći dar na %s"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Molimo odaberite drugu obitelj s kojom ćete povezati ove donacije"
 
@@ -17989,14 +17933,6 @@ msgid "{{minutes}} min left"
 msgstr "Preostalo {{minutes}} min"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d porezni dokument uspješno poslan po e-pošti obitelji."
-
-#: 
-msgid "%s %d Giving Statement"
-msgstr "Izjava o darivanju %s %d"
-
-#: 
 msgid "All classifications"
 msgstr "Sve klasifikacije"
 
@@ -18029,28 +17965,8 @@ msgid "Columns per Page"
 msgstr "Stupci po stranici"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "Poštovana obitelj %s,\n"
-"\n"
-"Molimo vas pronađite vašu izjavu o darivanju %d od %s u prilogu ovog e-maila.\n"
-"\n"
-"Ako imate bilo kakvih pitanja, molimo vas kontaktirajte ured crkve.\n"
-"\n"
-"Hvala vam na vašoj velikodušnosti."
-
-#: 
 msgid "Download CSV"
 msgstr "Preuzmite CSV"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "Pošalji e-mail %d porezni dokument"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18153,10 +18069,6 @@ msgid "Pledged"
 msgstr "Obećano"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "Ispis %d porezni dokument"
-
-#: 
 msgid "Recent Friends"
 msgstr "Nedavni prijatelji"
 
@@ -18181,24 +18093,8 @@ msgid "Single Pages"
 msgstr "Pojedinostalne stranice"
 
 #: 
-msgid "Tax Documents"
-msgstr "Porezni dokumenti"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "Neuspješan prijenos e-pošte s poreznim dokumentom. Molimo provjerite postavke e-poštnog poslužitelja."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "Dvije stranice polovične veličine jedna do druge na svakom listu u širokom formatu, redoslijed brošure. Ispis na obje strane s \"prebacivanjem na kratkom rubu\", zatim presavijte grupu na pola. Stupci se broje po pola stranice."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "Nemoguće poslati porezni dokument e-poštom: nisu pronađeni podaci o plaćanju za tu godinu."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "Nemoguće poslati porezni dokument e-poštom: ova obitelj nema e-mail adresu u datoteci."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -20199,10 +20095,6 @@ msgid "How often"
 msgstr "Koliko često"
 
 #: 
-msgid "How to correct this"
-msgstr "Kako to ispraviti"
-
-#: 
 msgid "I can't"
 msgstr "Ne mogu"
 
@@ -21525,10 +21417,6 @@ msgstr "Prijavljen"
 #: 
 msgid "Signed up"
 msgstr "Prijavljen/a"
-
-#: 
-msgid "Sincerely"
-msgstr "S poštovanjem"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
@@ -24657,4 +24545,20 @@ msgstr "Mjesec u kojem svi koji imaju razred prelaze jedan razred više. Isklju�
 #: 
 msgid "Through Grade"
 msgstr "Do razreda"
+
+#: 
+msgid "Invalid setting name or value"
+msgstr "Nevažeći naziv ili vrijednost postavke"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Usluga geokodiranja nije odgovorila — pokušajte ponovno kasnije"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Prikazuje se samo e-pošta koju ste poslali."
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Ponavljajući događaji nisu mogli biti stvoreni. Provjerite zapisnik aplikacije za detalje."
 

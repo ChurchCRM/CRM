@@ -30,7 +30,7 @@ describe("Tax Report PDF Generation - Issue #7906", () => {
         cy.get('input[name="output"][value="pdf"]').check();
         
         // Intercept the report form submission
-        cy.intercept("POST", "**/Reports/TaxReport.php").as("taxReportSubmit");
+        cy.intercept("POST", "**/finance/reports/giving-statements/download").as("taxReportSubmit");
         
         // Submit the form
         cy.get("#createReport").click();
@@ -115,7 +115,7 @@ describe("Tax Report PDF Generation - Issue #7906", () => {
                 cy.get('input[name="output"][value="pdf"]').check();
                 
                 // Intercept the report form submission
-                cy.intercept("POST", "**/Reports/TaxReport.php").as("taxReportDeposit");
+                cy.intercept("POST", "**/finance/reports/giving-statements/download").as("taxReportDeposit");
                 
                 // Submit the form
                 cy.get("#createReport").click();
@@ -159,7 +159,7 @@ describe("Tax Report PDF Generation - Issue #7906", () => {
         cy.get('input[name="output"][value="pdf"]').check();
         
         // Intercept the report form submission
-        cy.intercept("POST", "**/Reports/TaxReport.php").as("letterheadTest");
+        cy.intercept("POST", "**/finance/reports/giving-statements/download").as("letterheadTest");
         
         // Submit the form
         cy.get("#createReport").click();
@@ -190,7 +190,7 @@ describe("Tax Report PDF Generation - Issue #7906", () => {
         cy.get('input[name="output"][value="csv"]').check();
         
         // Intercept the report form submission
-        cy.intercept("POST", "**/Reports/TaxReport.php").as("csvReport");
+        cy.intercept("POST", "**/finance/reports/giving-statements/download").as("csvReport");
         
         // Submit the form
         cy.get("#createReport").click();

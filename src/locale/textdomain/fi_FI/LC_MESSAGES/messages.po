@@ -927,10 +927,6 @@ msgid "Voting Members"
 msgstr "Äänestävät jäsenet"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Lahjoitusraportti (verotusta varten)"
-
-#: 
 msgid "Zero Givers"
 msgstr "Ei-lahjoittajat"
 
@@ -1718,14 +1714,6 @@ msgstr "Lupa"
 #: 
 msgid "System Settings"
 msgstr "Järjestelmäasetukset"
-
-#: 
-msgid "Tax Report"
-msgstr "Veroraportti"
-
-#: 
-msgid "Calendar Year"
-msgstr "Kalenterivuosi"
 
 #: 
 msgid "User Editor"
@@ -5442,10 +5430,6 @@ msgid "Submit Registration"
 msgstr "Lähetä rekisteröinti"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Uusi salasana on luotu ja lähetetty sähköpostiisi."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Päivitä nyt"
 
@@ -5490,20 +5474,12 @@ msgid "Login Name is required"
 msgstr "Käyttäjätunnus on pakollinen"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Kun saat sähköpostin, voit kirjautua sisään väliaikaisella salasanalla ja vaihtaa sen haluamaksesi."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Virhe salasanan nollauksessa"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Salasanan nollaus onnistui"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Tarkista sähköpostisi (myös roskapostikansio) löytääksesi väliaikaisen salasanasi."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -6291,10 +6267,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "Muokattava raportti, jonka voit suodattaa päivämäärän, rahaston, perheen ja maksutavan mukaan."
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Mukauta verohallinnon lausunnoissa näkyvää tekstiä (sTaxReport1, sTaxReport2, jne)."
-
-#: 
 msgid "Day"
 msgstr "Päivä"
 
@@ -6375,20 +6347,12 @@ msgid "Generate"
 msgstr "Luo"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Luo veroilmoitukset"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Luo vuosittaiset vähennyskelpoiset lahjoitusotteet lahjoittajille. Voidaan tulostaa tai lähettää sähköpostitse."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "Luo muistutuskirjeitä perheille, joilla on avoimia maksuasitoumuksia."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "Luo raportteja veroilmoituksia, sitoumusseurantaa ja talousanalyysia varten."
 
 #: 
 msgid "ID"
@@ -6571,10 +6535,6 @@ msgid "System Info"
 msgstr "Järjestelmätiedot"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "Vero- ja lahjoitusraportit"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "Veroraportin tekstit"
 
@@ -6601,10 +6561,6 @@ msgstr "Päivitä"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "Käyttäjän on oltava ylläpitäjä tai hänellä on oltava taloushallinnon oikeudet"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Varmista, että kirkon nimi, osoite ja yhteystiedot näkyvät veroilmoituksissa."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9116,10 +9072,6 @@ msgstr "Luo lupausten muistutuskirjeet"
 #: 
 msgid "Generate reports on group membership and activities"
 msgstr "Luo raportit ryhmäjäsenyydestä ja toiminnasta"
-
-#: 
-msgid "Generate tax statement documents for donors"
-msgstr "Luo verotodistukset lahjoittajille"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -12319,10 +12271,6 @@ msgstr "Sähköposti on poistettu käytöstä"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "Sähköposti on poistettu käytöstä. Määritä sähköposti ennen salasanojen nollaamista tai käytä Vaihda salasana -toimintoa."
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Anna yksi varmuuskopion palautuskoodeistasi"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"
@@ -15942,10 +15890,6 @@ msgid "Please confirm your family information"
 msgstr "Vahvista perhetietosi"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "Lähetä seuraava lahjasi postitse osoitteeseen %s"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Valitse toinen perhe, johon nämä lahjoitukset liitetään"
 
@@ -17976,14 +17920,6 @@ msgid "{{minutes}} min left"
 msgstr "{{minutes}} min jäljellä"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d veroasiakirja lähetetty perheelle onnistuneesti."
-
-#: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d lahjoitussillan osalta"
-
-#: 
 msgid "All classifications"
 msgstr "Kaikki luokittelut"
 
@@ -18016,28 +17952,8 @@ msgid "Columns per Page"
 msgstr "Sarakkeet sivulla"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "Hyvä %s-perhe,\n"
-"\n"
-"Liitteenä on lahjoitussilta vuodelta %s.\n"
-"\n"
-"Jos sinulla on kysymyksiä, ota yhteyttä seurakunnan toimistoon.\n"
-"\n"
-"Kiitos anteliaisuudestasi."
-
-#: 
 msgid "Download CSV"
 msgstr "Lataa CSV"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "Lähetä %d veroasiakirja"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18140,10 +18056,6 @@ msgid "Pledged"
 msgstr "Luvattuna"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "Tulosta %d veroasiakirja"
-
-#: 
 msgid "Recent Friends"
 msgstr "Viimeaikaiset ystävät"
 
@@ -18168,24 +18080,8 @@ msgid "Single Pages"
 msgstr "Yksittäiset sivut"
 
 #: 
-msgid "Tax Documents"
-msgstr "Veroasiakirjat"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "Veroasiakirjan lähettäminen sähköpostitse epäonnistui. Tarkista sähköpostipalvelimen asetukset."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "Kaksi puolikokoa olevaa sivua vierekkäin kullakin vaaka-arkilla, kirjastojen järjestyksessä. Tulosta kaksipuolisesti \"käännä lyhyellä reunalla\", sitten taita pino puoliksi. Sarakkeet lasketaan puoli sivulla."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "Veroasiakirjaa ei voi lähettää sähköpostitse: kyseiselle vuodelle ei löytynyt maksutietoja."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "Veroasiakirjaa ei voi lähettää sähköpostitse: tällä perheellä ei ole sähköpostiosoitetta tiedostoissa."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -20176,10 +20072,6 @@ msgid "How often"
 msgstr "Kuinka usein"
 
 #: 
-msgid "How to correct this"
-msgstr "Näin korjaat tämän"
-
-#: 
 msgid "I can't"
 msgstr "En voi"
 
@@ -21500,10 +21392,6 @@ msgstr "Kirjautunut"
 #: 
 msgid "Signed up"
 msgstr "Ilmoittautunut"
-
-#: 
-msgid "Sincerely"
-msgstr "Ystävällisin terveisin"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
@@ -24628,4 +24516,20 @@ msgstr "Kuukausi, jolloin kaikki, joilla on luokka-aste, siirtyvät yhden asteen
 #: 
 msgid "Through Grade"
 msgstr "Luokka-asteeseen"
+
+#: 
+msgid "Invalid setting name or value"
+msgstr "Virheellinen asetuksen nimi tai arvo"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Geokoodauspalvelu ei vastannut — yritä myöhemmin uudelleen"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Vain lähettämäsi sähköposti näytetään."
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Toistuvia tapahtumia ei voitu luoda. Tarkista sovelluksen loki lisätietoja varten."
 
