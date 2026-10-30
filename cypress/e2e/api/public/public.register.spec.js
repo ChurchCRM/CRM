@@ -82,6 +82,49 @@ describe("API Public Registration", () => {
         });
     });
 
+    it("Saves the family Email on a head of household when a child is listed first", () => {
+        const name = `Cypress Child First ${Date.now()}`;
+        cy.request({
+            method: "POST",
+            url: "/api/public/register/family",
+            body: {
+                Name: name,
+                Address1: "1 Test Street",
+                City: "Testville",
+                State: "TS",
+                Country: "US",
+                Zip: "12345",
+                Email: "household@example.com",
+                people: [
+                    { firstName: "Obed", lastName: "Registrant", gender: 1, role: 3, email: "" },
+                    { firstName: "Ruth", lastName: "Registrant", gender: 2, role: 1, email: "" },
+                ],
+            },
+        }).then((resp) => {
+            registeredFamilyIds.push(resp.body.Id);
+            expect(resp.body.Email, "family recipient").to.eq("household@example.com");
+        });
+    });
+
+    it("Refuses a malformed family Email and saves nothing", () => {
+        const name = `Cypress Bad Email ${Date.now()}`;
+        cy.request({
+            method: "POST",
+            url: "/api/public/register/family",
+            body: {
+                Name: name,
+                Email: "not-an-email",
+                people: [{ firstName: "Ruth", lastName: "Registrant", gender: 2, role: 1, email: "" }],
+            },
+            failOnStatusCode: false,
+        }).then((resp) => {
+            expect(resp.status).to.eq(400);
+            cy.makePrivateAdminAPICall("GET", "/api/families/self-register")
+                .its("body.families")
+                .then((families) => expect(families.map((f) => f.Name)).not.to.include(name));
+        });
+    });
+
     it("Should return validation error for invalid family data", () => {
         const invalidFamily = {
             Name: "", // Empty name should fail validation
