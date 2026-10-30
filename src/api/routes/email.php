@@ -23,7 +23,7 @@ use Slim\Routing\RouteCollectorProxy;
  *         @OA\JsonContent(
  *             required={"subject","body"},
  *             @OA\Property(property="personIds", type="array", @OA\Items(type="integer"),
- *                 description="Person ids to email at their own address"),
+ *                 description="Person ids to email at their own address (a person with none is skipped)"),
  *             @OA\Property(property="familyIds", type="array", @OA\Items(type="integer"),
  *                 description="Family ids to email at the head of household's address, else the spouse's"),
  *             @OA\Property(property="subject", type="string", maxLength=255, description="Subject line (plain text)"),

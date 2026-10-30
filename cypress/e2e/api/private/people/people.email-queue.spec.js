@@ -1,5 +1,7 @@
 /// <reference types="cypress" />
 
+import { absoluteUrl } from "../../../../support/urls";
+
 /**
  * Queued composer email (#10356): POST /api/email/send only queues; the batch is sent by
  * POST /api/email/batches/{batch}/send (the composer) and by the timer jobs, and an
@@ -48,12 +50,12 @@ const runTimerJobs = () => {
     return cy.makePrivateAdminAPICall("POST", "/api/background/timerjobs", {}).its("body.ran").should("eq", true);
 };
 
-/** Several requests at once, outside Cypress's one-at-a-time command queue. Keeps a subdirectory baseUrl. */
+/** Several requests at once, outside Cypress's one-at-a-time command queue. */
 const concurrently = (requests) =>
     cy.then({ timeout: 60000 }, () =>
         Promise.all(
             requests.map(({ method, path, body }) =>
-                fetch(`${Cypress.config("baseUrl").replace(/\/$/, "")}${path}`, {
+                fetch(absoluteUrl(path), {
                     method,
                     credentials: "omit",
                     headers: { "x-api-key": Cypress.testEnv("admin.api.key"), "content-type": "application/json" },

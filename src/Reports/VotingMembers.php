@@ -5,10 +5,14 @@ namespace ChurchCRM\Reports;
 require_once __DIR__ . '/../Include/Config.php';
 require_once __DIR__ . '/../Include/PageInit.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
+
+// Security
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
 
 // Get the Fiscal Year ID out of the query string
 $iFYID = (int) InputUtils::legacyFilterInput($_POST['FYID'], 'int');
@@ -60,10 +64,10 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     // Get pledge date ranges
     $donation = 'no';
     if ($iRequireDonationYears > 0) {
-        $startdate = $iFYID + 1995 - $iRequireDonationYears;
-        $startdate .= '-' . SystemConfig::getValue('iFYMonth') . '-' . '01';
-        $enddate = $iFYID + 1995 + 1;
-        $enddate .= '-' . SystemConfig::getValue('iFYMonth') . '-' . '01';
+        $start = FiscalYearUtils::getFiscalYearDatesById($iFYID - $iRequireDonationYears + 1);
+        $end = FiscalYearUtils::getFiscalYearDatesById($iFYID);
+        $startdate = $start['startDate'];
+        $enddate = date('Y-m-d', strtotime($end['endDate'] . ' +1 day'));
 
         // Get payments only
         $rsPledges = RunPreparedQuery(

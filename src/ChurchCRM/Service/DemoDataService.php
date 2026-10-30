@@ -23,6 +23,7 @@ use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\Pledge;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\VolunteerAssignment;
 use ChurchCRM\model\ChurchCRM\VolunteerAssignmentQuery;
@@ -1784,21 +1785,9 @@ class DemoDataService
         };
     }
 
-    /**
-     * Compute the ChurchCRM fiscal year ID for a given calendar year and month,
-     * respecting the configured iFYMonth setting. Mirrors FiscalYearUtils logic.
-     *
-     * FYID = year − 1996, plus 1 when the given month is at or after the FY start
-     * month (and the FY does not start in January).
-     */
     private function computeFiscalYearId(int $year, int $month): int
     {
-        $fyMonth = SystemConfig::getIntValue('iFYMonth');
-        $fyId    = $year - 1996;
-        if ($month >= $fyMonth && $fyMonth > 1) {
-            $fyId += 1;
-        }
-        return $fyId;
+        return FiscalYearUtils::getFiscalYearIdForDate(sprintf('%04d-%02d-01', $year, $month));
     }
 
     /**
