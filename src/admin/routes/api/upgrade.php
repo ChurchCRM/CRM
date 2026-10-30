@@ -130,7 +130,7 @@ $app->group('/api/upgrade', function (RouteCollectorProxy $group): void {
                     LoggerUtils::getAppLogger()->warning('Discarded unexpected output during upgrade apply', ['output' => $strayOutput]);
                 }
             }
-            return SlimUtils::renderSuccessJSON($response);
+            return SlimUtils::renderJSON($response, ['success' => true, 'databaseUpgradePending' => true]);
         } catch (\Throwable $e) {
             // Return a localized, user-safe error message and log full details server-side
             // Exception details (including file paths) are logged by SlimUtils::renderErrorJSON
