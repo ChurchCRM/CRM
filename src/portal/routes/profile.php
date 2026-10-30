@@ -70,10 +70,21 @@ $group->get('/profile/edit', function (Request $request, Response $response) use
 // /v2/user/current/* URLs still exist alongside these.
 //
 // These two act on the staff account behind a STAFF portal session, not on a
-// person record. A member session has no password to change.
+// person record. A member session has neither page (member sign-in design §6.4).
+
+$staffAccount = static function (Request $request): User {
+    $user = PortalContext::staffUser();
+    if (!$user instanceof User) {
+        throw new HttpNotFoundException($request);
+    }
+
+    return $user;
+};
 
 // GET /portal/profile/password — the form.
-$group->get('/profile/password', function (Request $request, Response $response): Response {
+$group->get('/profile/password', function (Request $request, Response $response) use ($staffAccount): Response {
+    $staffAccount($request);
+
     return PortalAccountPages::renderPasswordForm($response, PortalAccountPages::getPasswordUrl());
 });
 
@@ -83,11 +94,8 @@ $group->get('/profile/password', function (Request $request, Response $response)
 // Both outcomes stay in the portal and on this URL: a success renders the
 // confirmation page, and a rejected password re-renders this form carrying the
 // error, exactly as the /v2 page does for a self-service session.
-$group->post('/profile/password', function (Request $request, Response $response): Response {
-    $user = PortalContext::staffUser();
-    if (!$user instanceof User) {
-        throw new HttpNotFoundException($request);
-    }
+$group->post('/profile/password', function (Request $request, Response $response) use ($staffAccount): Response {
+    $user = $staffAccount($request);
 
     try {
         PortalAccountPages::applyPasswordChange($user, $request->getParsedBody());
@@ -107,6 +115,8 @@ $group->post('/profile/password', function (Request $request, Response $response
 
 // GET /portal/profile/two-factor — enrollment and recovery codes, drawn by the
 // shared two-factor-enrollment bundle against /api/user/current/*.
-$group->get('/profile/two-factor', function (Request $request, Response $response): Response {
+$group->get('/profile/two-factor', function (Request $request, Response $response) use ($staffAccount): Response {
+    $staffAccount($request);
+
     return PortalAccountPages::renderTwoFactor($response);
 });
