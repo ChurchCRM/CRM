@@ -244,6 +244,8 @@ if (!$email->send()) {
 - Applied in `send()`; the last `setReplyTo()` call wins and the message carries one header
 - An invalid address is logged and ignored; `getReplyTo()` returns `null` then
 
+When the response must not wait for SMTP, or show by its timing whether mail went out (member sign-in), send from `ChurchCRM\Utils\AfterResponse::defer(callable)`: the callables run in order once the browser has the response. A path that sends nothing calls `AfterResponse::finishEarly()`, so every answer ends the same way.
+
 Local verification: Mailpit (`http://localhost:8025`, compose `test` profile) lists messages with a `ReplyTo` array via `curl -sS 'http://localhost:8025/api/v1/messages?limit=50'`. The `ci-root` / `ci-subdir` profiles have no SMTP capture, so header assertions are a manual check in Mailpit.
 
 ## TLS Verification

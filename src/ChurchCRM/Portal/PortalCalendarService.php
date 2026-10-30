@@ -2,7 +2,6 @@
 
 namespace ChurchCRM\Portal;
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\FullCalendarEvent;
 use ChurchCRM\dto\SystemCalendars;
 use ChurchCRM\dto\SystemConfig;
@@ -13,9 +12,10 @@ use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Map\EventTableMap;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
-use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\VolunteerTeamQuery;
-use ChurchCRM\Volunteer\Service\VolunteerAuthorizationService;
+use ChurchCRM\Portal\Auth\PortalContext;
+use ChurchCRM\Portal\Permissions\CorePortalCapabilities;
+use ChurchCRM\Portal\Permissions\PortalAuthorizationService;
 use ChurchCRM\SystemCalendars\AnniversariesCalendar;
 use ChurchCRM\SystemCalendars\BirthdaysCalendar;
 use ChurchCRM\SystemCalendars\SystemCalendar;
@@ -104,30 +104,19 @@ class PortalCalendarService
      * reason to read every week. It is a display hint and nothing more: it changes no
      * permission, and a member who leads nothing simply gets an empty list.
      *
-     * "Runs" is `VolunteerAuthorizationService::getManagedTeamIds()` — the member's own
-     * team grants plus every team under a ministry they coordinate — mapped to the
-     * ministries those teams belong to. A global volunteer manager is NOT everyone's
-     * team leader: that method gives them only their explicit grants.
+     * "Runs" is the member's `volunteer.team.manage` scopes (member sign-in design
+     * §8.2) mapped to the ministries those teams belong to.
      *
      * @return array<int, int> ministry ids, de-duplicated
      */
     public static function ledMinistryIds(): array
     {
-        if (!User::isVolunteerV2Enabled()) {
+        $principal = PortalContext::principal();
+        if ($principal === null) {
             return [];
         }
 
-        try {
-            $user = AuthenticationManager::getCurrentUser();
-        } catch (Throwable) {
-            return [];
-        }
-
-        if (!$user instanceof User) {
-            return [];
-        }
-
-        $teamIds = (new VolunteerAuthorizationService())->getManagedTeamIds($user);
+        $teamIds = (new PortalAuthorizationService())->scopeIdsForPerson($principal->personId, CorePortalCapabilities::TEAM_MANAGE);
         if ($teamIds === []) {
             return [];
         }

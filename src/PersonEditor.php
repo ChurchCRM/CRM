@@ -152,7 +152,6 @@ $bFamilyCountry = 0;
 $bFamilyHomePhone = 0;
 $bFamilyWorkPhone = 0;
 $bFamilyCellPhone = 0;
-$bFamilyEmail = 0;
 $bHomeBound = false;
 $aCustomData = [];
 
@@ -571,7 +570,6 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $bFamilyZip = strlen($fam_Zip);
         $bFamilyCountry = strlen($fam_Country);
         $bFamilyHomePhone = strlen($fam_HomePhone);
-        $bFamilyEmail = strlen($fam_Email);
 
         $bFacebook = strlen($per_Facebook);
         $bTwitter = strlen($per_Twitter);
@@ -946,15 +944,7 @@ require_once __DIR__ . '/Include/Header.php';
                 <!-- Emails Column -->
                 <div class="col-12 col-md-6">
                     <div class="mb-3">
-                        <label for="Email">
-                            <?php
-                            if ($bFamilyEmail) {
-                                echo '<span class="text-danger">' . gettext('Email') . ':</span>';
-                            } else {
-                                echo gettext('Email') . ':';
-                            }
-                            ?>
-                        </label>
+                        <label for="Email"><?= gettext('Email') ?>:</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fa-solid fa-at"></i></span>
                             <input type="email" name="Email" id="Email"
