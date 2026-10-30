@@ -18750,22 +18750,10 @@ msgstr[0] "%d voluntário padrão designado"
 msgstr[1] "%d voluntários padrão designados"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Mais %d voluntário ainda é necessário para esta função. Abra a ocorrência para preencher a vaga."
-msgstr[1] "Mais %d voluntários ainda são necessários para esta função. Abra a ocorrência para preencher a vaga."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d nova ocorrência"
 msgstr[1] "%d novas ocorrências"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "%d voluntário ainda é necessário para uma próxima ocorrência."
-msgstr[1] "%d voluntários ainda são necessários para uma próxima ocorrência."
 
 #: 
 msgid "%s Calendar"
@@ -20830,10 +20818,6 @@ msgstr "Abrir o ministério"
 #: 
 msgid "Open the occurrence"
 msgstr "Abrir a ocorrência"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Abra a ocorrência para designar as pessoas de que precisa."
 
 #: 
 msgid "Open this team"
