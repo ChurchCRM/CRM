@@ -21,6 +21,7 @@
         "node": ">=24.0.0"
     },
     "scripts": {
+        "env:check": "node scripts/check-environment.js",
         "audit": "npm audit fix --only=prod --audit-level=high",
         "build": "node scripts/build.js",
         "build:frontend": "NODE_ENV=production npm run build:webpack",
