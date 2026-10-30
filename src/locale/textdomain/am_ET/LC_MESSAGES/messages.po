@@ -927,10 +927,6 @@ msgid "Voting Members"
 msgstr "መራጭ አባላት"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "ሪፖርት መስጠት (የግብር መግለጫዎች)"
-
-#: 
 msgid "Zero Givers"
 msgstr "ዜሮ ሰጪዎች"
 
@@ -1728,14 +1724,6 @@ msgstr "ፍቃድ"
 #: 
 msgid "System Settings"
 msgstr "የሶፍርዌሩ ቅንብር"
-
-#: 
-msgid "Tax Report"
-msgstr "የግብር ሪፖርት"
-
-#: 
-msgid "Calendar Year"
-msgstr "አመት፣ በእትዬጵያ አቆጣጠር"
 
 #: 
 msgid "User Editor"
@@ -6319,10 +6307,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "በቀን፣ በፈንድ፣ በቤተሰብ እና በክፍያ ዘዴ ሊጣራ የሚችል ሪፖርት።"
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "በቀረጥ መግለጫዎች ላይ የሚታየውን ጽሁፍ ያስተካክሉ።"
-
-#: 
 msgid "Day"
 msgstr "ቀን"
 
@@ -6403,20 +6387,12 @@ msgid "Generate"
 msgstr "አውጣ / አዘጋጅ"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "የቀረጥ መግለጫዎችን አውጣ"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "ለለጋሾች ከቀረጥ የሚቀነሱ የዓመት የልገሳ መግለጫዎችን ያውጡ። ሊታተሙ ወይም በኢሜይል ሊላኩ ይችላሉ።"
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "ያልተከፈለ ቃል ኪዳን ላለባቸው ቤተሰቦች የማስታወሻ ደብዳቤዎችን ያውጡ።"
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "ለቀረጥ መግለጫዎች፣ ለቃል ኪዳን ክትትል እና ለፋይናንስ ትንተና ሪፖርቶችን ያውጡ።"
 
 #: 
 msgid "ID"
@@ -6599,10 +6575,6 @@ msgid "System Info"
 msgstr "የሥርዓት መረጃ"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "የቀረጥ እና የልገሳ ሪፖርቶች"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "የቀረጥ ሪፖርት አገላለጽ"
 
@@ -6629,10 +6601,6 @@ msgstr "አሻሽል"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "ተጠቃሚው አስተዳዳሪ መሆን አለበት ወይም የፋይናንስ ፈቃድ ሊኖረው ይገባል"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "የቤተ ክርስቲያን ስም፣ አድራሻ እና መረጃ በቀረጥ መግለጫዎች ላይ መታየቱን ያረጋግጡ።"
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9144,10 +9112,6 @@ msgstr "ተቀባይነት አስታወስ ደብዳቤዎች ስ"
 #: 
 msgid "Generate reports on group membership and activities"
 msgstr "ቡድን ተመዝገብ እና ተግባራት ላይ ሪፖርቶች ስ"
-
-#: 
-msgid "Generate tax statement documents for donors"
-msgstr "ለ ሰባ ገንዘብ መግለጫ ሰነዶች ስ"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -15967,10 +15931,6 @@ msgid "Please confirm your family information"
 msgstr "እባክዎ የቤተሰብ መረጃዎን ያረጋግጡ"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "ቀጣዩን ስጦታዎ ወደ %s ይላኩ"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "እባክዎ እነዚህን መዋጮዎች ለማያያዝ ሌላ ቤተሰብ ይምረጡ"
 
@@ -18001,10 +17961,6 @@ msgid "{{minutes}} min left"
 msgstr "{{minutes}} ደቂቃ ቀርቷል"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d የግብር ሰነድ ለቤተሰብ በተሳካ ሁኔታ በኢሜል ተላልፏል።"
-
-#: 
 msgid "All classifications"
 msgstr "ሁሉም ምድቦች"
 
@@ -18037,28 +17993,8 @@ msgid "Columns per Page"
 msgstr "በጠፍጣፊ ስቱ"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "ውድ %s ቤተሰብ,\n"
-"\n"
-"እባክዎ ከ%s የተወሰደ %d የለገና መግለጫ በዚህ ኢሜል ውስጥ ተያያዥ ይፈልጉ።\n"
-"\n"
-"ቢሆንም ፍርሒ ካላችሁ እባክዎን ወደ ቤተክርስቲያን ቢሮ ያገኙን።\n"
-"\n"
-"ለምግባርዎ 感謝します።"
-
-#: 
 msgid "Download CSV"
 msgstr "CSV አውርድ"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "%d የግብር ሰነድ ኢሜል"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18161,10 +18097,6 @@ msgid "Pledged"
 msgstr "ቃል ገብተሪያ"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "%d የግብር ሰነድ ሞተር"
-
-#: 
 msgid "Recent Friends"
 msgstr "ወላጅ ወገኖች"
 
@@ -18189,24 +18121,8 @@ msgid "Single Pages"
 msgstr "አንድ ቀሎ ገጾች"
 
 #: 
-msgid "Tax Documents"
-msgstr "የግብር ሰነዶች"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "የግብር ሰነድ ኢሜል ምላሽ ይስጥ ሳቅሏል። እባክዎ ኢሜል አገልግሎት ቅንብር ይለካ።"
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "ሁለት ግማሽ-ዓዝ ገጾች በ ዩነስኮ ላይ በ አንድ ሳር ሉሰ ምሊት በ ሳቅላ ዝርዝር.ሞተር-በ ሁለት ገጽታ ከ \"ፍ በ ሸ ጠርዝ\", ከዚያ የ ዛ ክምር ውስጥ በግማሽ fold. አምዶች በግማሽ ገጽ ለእያንዳንዱ ይቆራሙ."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "የግብር ሰነድ ኢሜል መስጠት ተችሏል: ምንም ክፍያ ሂሳብ ለ ደርሶ ዘመን አልተገኘም."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "የግብር ሰነድ ኢሜል መስጠት ተችሏል: ይህ ቤተሰብ በ ፋይል ላይ ምንም ኢሜል አድራሻ ስ."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -24653,10 +24569,6 @@ msgstr "የጂኦኮዲንግ አገልግሎቱ ምላሽ አልሰጠም — �
 #: 
 msgid "Only the email you sent is shown."
 msgstr "የሚታየው እርስዎ የላኩት ኢሜይል ብቻ ነው።"
-
-#: 
-msgid "%d Giving Statement"
-msgstr "%d የመስጠት መግለጫ"
 
 #: 
 msgid "Repeat events could not be created. Check the application log for details."

@@ -928,10 +928,6 @@ msgid "Voting Members"
 msgstr "Голосування членів"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Надання звіту (податкові звіти)"
-
-#: 
 msgid "Zero Givers"
 msgstr "Нульові дарувальники"
 
@@ -1729,14 +1725,6 @@ msgstr "Дозвіл"
 #: 
 msgid "System Settings"
 msgstr "Налаштування системи"
-
-#: 
-msgid "Tax Report"
-msgstr "Податковий звіт"
-
-#: 
-msgid "Calendar Year"
-msgstr "Календарний рік"
 
 #: 
 msgid "User Editor"
@@ -6320,10 +6308,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "Настроюваний звіт із фільтрацією за датою, фондом, сім'єю та способом оплати."
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Налаштуйте текст для податкових виписок."
-
-#: 
 msgid "Day"
 msgstr "День"
 
@@ -6404,20 +6388,12 @@ msgid "Generate"
 msgstr "Згенерувати"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Генерувати податкові виписки"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Створюйте податкові виписки. Можна друкувати або надсилати поштою."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "Генеруйте нагадування для сімей із заборгованістю за обіцянками."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "Звіти для податкових виписок, відстеження обіцянок та аналізу."
 
 #: 
 msgid "ID"
@@ -6600,10 +6576,6 @@ msgid "System Info"
 msgstr "Інформація про систему"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "Податкові звіти та звіти про пожертви"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "Текст податкового звіту"
 
@@ -6630,10 +6602,6 @@ msgstr "Оновити"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "Користувач має бути адміном або мати доступ до фінансів"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Перевірте дані церкви у податкових виписках."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9155,10 +9123,6 @@ msgstr "Створіть листи нагадування про обіцянк
 #: 
 msgid "Generate reports on group membership and activities"
 msgstr "Створіть звіти про членство в групі та діяльність"
-
-#: 
-msgid "Generate tax statement documents for donors"
-msgstr "Створіть податкові документи для донорів"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -15985,10 +15949,6 @@ msgid "Please confirm your family information"
 msgstr "Будь ласка, підтвердьте інформацію про вашу сімʼю"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "Будь ласка, надішліть вашу наступну пожертву на %s"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Будь ласка, оберіть іншу сімʼю, з якою повʼязати ці пожертви"
 
@@ -18025,10 +17985,6 @@ msgid "{{minutes}} min left"
 msgstr "Залишилося {{minutes}} хв"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d податковий документ успішно надіслано сім'ї."
-
-#: 
 msgid "All classifications"
 msgstr "Усі класифікації"
 
@@ -18061,28 +18017,8 @@ msgid "Columns per Page"
 msgstr "Стовпців на сторінку"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "Шановна родина %s,\n"
-"\n"
-"До цього листа додано ваш звіт про пожертви №%d від %s.\n"
-"\n"
-"Якщо у вас є питання, будь ласка, зв'яжіться з офісом церкви.\n"
-"\n"
-"Дякуємо за вашу щедрість."
-
-#: 
 msgid "Download CSV"
 msgstr "Завантажити CSV"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "Надіслати електронною поштою %d податковий документ"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18185,10 +18121,6 @@ msgid "Pledged"
 msgstr "Обіцяне"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "Друк %d податковий документ"
-
-#: 
 msgid "Recent Friends"
 msgstr "Недавні друзі"
 
@@ -18213,24 +18145,8 @@ msgid "Single Pages"
 msgstr "Окремі сторінки"
 
 #: 
-msgid "Tax Documents"
-msgstr "Податкові документи"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "Не вдалося надіслати лист із податковим документом. Перевірте налаштування поштового сервера."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "Дві сторінки половинного розміру поруч на кожному аркуші в альбомній орієнтації в порядку буклета. Друкуйте з обох боків із перегортанням по короткому краю, потім складіть стос навпіл. Стовпці рахуються на півсторінки."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "Неможливо надіслати податковий документ електронною поштою: за цей рік не знайдено даних про платежі."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "Неможливо надіслати податковий документ електронною поштою: для цієї родини не вказано адресу електронної пошти."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -24709,10 +24625,6 @@ msgstr "Служба геокодування не відповіла — пов
 #: 
 msgid "Only the email you sent is shown."
 msgstr "Відображається лише надісланий вами електронний лист."
-
-#: 
-msgid "%d Giving Statement"
-msgstr "Звіт про пожертви %d"
 
 #: 
 msgid "Repeat events could not be created. Check the application log for details."
