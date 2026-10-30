@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-30 05:22+0000\n"
+"POT-Creation-Date: 2026-10-30 08:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -199,12 +199,6 @@ msgstr[0] ""
 msgstr[1] ""
 
 #, php-format
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] ""
-msgstr[1] ""
-
-#, php-format
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] ""
@@ -245,12 +239,6 @@ msgstr[1] ""
 #, php-format
 msgid "%d result for \"%s\""
 msgid_plural "%d results for \"%s\""
-msgstr[0] ""
-msgstr[1] ""
-
-#, php-format
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
 msgstr[0] ""
 msgstr[1] ""
 
@@ -11174,9 +11162,6 @@ msgstr ""
 msgid "Open the occurrence"
 msgstr ""
 
-msgid "Open the occurrence to assign the people you need."
-msgstr ""
-
 msgid "Open this team"
 msgstr ""
 
@@ -15312,6 +15297,14 @@ msgstr ""
 msgid "The position could not be saved"
 msgstr ""
 
+#, php-format
+msgid "The position is now assigned to %s, who has accepted it."
+msgstr ""
+
+#, php-format
+msgid "The position is now assigned to %s, who has not yet accepted it."
+msgstr ""
+
 msgid "The position is still covered, so no action is needed unless you want to adjust the roster."
 msgstr ""
 
@@ -15491,6 +15484,10 @@ msgid "The window ends before it starts"
 msgstr ""
 
 msgid "Their coordinators may pin their ministry's events to this calendar without Add Events permission."
+msgstr ""
+
+#, php-format
+msgid "Their reason: %s"
 msgstr ""
 
 msgid "Theme"
@@ -17010,6 +17007,9 @@ msgstr ""
 msgid "View All Deposits"
 msgstr ""
 
+msgid "View Assignments"
+msgstr ""
+
 msgid "View Buyers"
 msgstr ""
 
@@ -17263,6 +17263,14 @@ msgstr ""
 
 #, php-format
 msgid "Volunteers still needed for these upcoming occurrences: %d"
+msgstr ""
+
+#, php-format
+msgid "Volunteers still needed for this occurrence: %d"
+msgstr ""
+
+#, php-format
+msgid "Volunteers still needed for this position: %d"
 msgstr ""
 
 msgid "Vonage API Key"
