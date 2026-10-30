@@ -39,7 +39,7 @@ V1 authorization is 13 switches plus three implicit rules. Almost every check go
 | 8 | Manage Ministries | `usr_ManageMinistries` | `isManageMinistriesEnabled()` | Every ministry and team (volunteer v2). Also needs the volunteer v2 flag |
 | 9 | Manage My Ministries | `usr_ManageMyMinistries` | `isManageMyMinistriesEnabled()` | Ministries listed for the login in `volunteer_scope_vscp` |
 | 10 | Notes | `usr_Notes` | `isNotesEnabled()`, `canReadNotes()` | Notes on person and family pages and timeline (non-private) |
-| 11 | Edit Self | `usr_EditSelf` | `isEditSelfEnabled()`, `isEditSelfExclusive()` | Own record and own family. **Alone, it shuts off every other switch** (portal-only) |
+| 11 | Edit Self | `usr_EditSelf` | `isEditSelfEnabled()`, `isEditSelfExclusive()` | Own record and own family. **For a non-admin it shuts off every other switch** (portal-only), whatever else is set |
 | 12 | Add Events | `userconfig_ucfg` `bAddEvent` | `isAddEventEnabled()` | Create events and calendars (`AddEventsRoleAuthMiddleware`) |
 | 13 | Email (mailto) | `userconfig_ucfg` `bEmailMailto` | `isEmailEnabled()` | Email-all and mailto links (`EmailRoleAuthMiddleware`) |
 
@@ -48,7 +48,7 @@ V1 authorization is 13 switches plus three implicit rules. Almost every check go
 | Rule | Where | Parity requirement |
 |---|---|---|
 | Any signed-in staff account reads every person and family | `canReadPerson()`, `canReadFamily()` return `true` | Every role, including a role with no permissions, keeps directory read |
-| Edit Self alone means portal-only | `isEditSelfExclusive()` | The mirrored Edit Self role must override every other role exactly as today |
+| Edit Self means portal-only for a non-admin | `isEditSelfExclusive()` | The mirrored Edit Self role must override every other role exactly as today |
 | Module flags gate on top of permissions | `bEnabledFinance`, `bEnabledFundraiser`, volunteer v2 | A flag still turns the module off for everyone, including Owner |
 
 ### 2.3 Gaps the inventory already shows
@@ -166,7 +166,7 @@ public function isFinanceEnabled(): bool
 
 This keeps the ~200 call sites and the 13 role middlewares untouched in phase 1. The service implements the implicit rules of §2.2 itself:
 
-- Self Service exclusive: a user whose only role is Self Service, or whose roles are Self Service plus nothing staff-granting, is denied every staff permission, exactly as `isEditSelfExclusive()` today.
+- Self Service exclusive: a user who holds Self Service is denied every staff permission, whatever other roles they hold, unless they are the Owner or hold Legacy Administrator. This matches `isEditSelfExclusive()` today (`!isAdmin() && isEditSelf()`).
 - Module flags are checked inside `can()`, so a disabled module denies even the Owner.
 - Directory read stays granted to every staff principal.
 
