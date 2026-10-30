@@ -1,0 +1,7 @@
+{% extends "_base.html.twig" %}
+{% block content %}
+  {% block letter_body %}{% endblock %}
+  {% if generated_on %}
+    <div class="generated">{{ gettext('Generated') }} {{ generated_on }}</div>
+  {% endif %}
+{% endblock %}

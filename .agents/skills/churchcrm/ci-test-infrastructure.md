@@ -45,7 +45,7 @@ A check that runs locally belongs in the commit and pre-push checkpoint first (`
 
 ## Install path
 
-A site can live under `/churchcrm`. `npm run lint` (`subdir-safe urls`) fails on a root-relative or `./` literal handed to `fetch`, `$.ajax`, `url:`, `location`, `href`, `src`, `action` or `header('Location')`. A line that is deliberately root-relative ends with `// subdir-ok: <reason>`. Build URLs from `SystemURLs::getRootPath()` or `window.CRM.root`.
+A site can live under `/churchcrm`. `npm run lint` (`subdir-safe urls`) fails on a root-relative or `./` literal handed to `fetch`, `$.ajax`, `url:`, `location`, `href`, `src`, `action` or `header('Location')` in `src/` and `webpack/`. It also scans `cypress/`, but only for constructions that bypass Cypress and discard the install path: a literal root-relative first argument to `new URL()`, a zero-arg `url()` call passed to `new URL()`, a raw `fetch('/…')`, or a `location.href` assignment. Cypress resolves root-relative paths in `cy.request` / `cy.visit` / `cy.intercept` against `baseUrl`, so those stay allowed. A line that is deliberately root-relative ends with `// subdir-ok: <reason>`. Build production URLs from `SystemURLs::getRootPath()` or `window.CRM.root`. Build test URLs that leave Cypress with `absoluteUrl()` from `cypress/support/urls.js`.
 
 `cypress/e2e/ui/navigation/install-path-requests.spec.js` loads every page and fails on a same-origin request outside the install path. Bugs in server-built URLs, `.htaccess` or cookie paths show up in the nightly subdirectory run.
 
@@ -71,7 +71,7 @@ The test database is built from two files, mounted in order by `docker/docker-co
 
 ## Triage a red run
 
-1. Open the run summary. `test-summary` always passes; its table lists every job's result and the Cypress artifacts. Each Cypress job's own summary lists its failed tests, and the job log prints `❌ <suite> <test>` with the assertion. `cypress-junit-*` holds the XML.
+1. Open the run summary. `test-summary` always passes; its table lists every job's result and the Cypress artifacts. Each Cypress job's own summary lists its failed tests, and the job log prints `❌ <suite> <test>` with the assertion. `cypress-junit-*` holds the XML. A task or raw-fetch failure should include the URL, status and a short body snippet; if it does not, that is the first thing to add.
 2. A cloud agent reading logs through an API gets one very long line. Save it to a file, split on `\n`, strip ANSI codes, and grep `❌`, `AssertionError` and `CypressError`.
 3. `Expected '/FamilyEditor.php' to include '/people/family/'` means the save failed, not the navigation. The PHP log is in the `cypress-artifacts-…` artifact (kept one day, with screenshots, videos and Docker logs) under `cypress/logs/php/`.
 4. A red `test-new-system` that restores a database has a restore file problem: the restore page needs a full backup, so the spec restores one the app made.

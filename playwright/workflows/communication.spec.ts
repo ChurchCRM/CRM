@@ -1,11 +1,18 @@
 import { expect, test } from '@playwright/test';
 
-import { captureScreen } from '../support/capture';
+import { captureScreen, defineCapture } from '../support/capture';
 import { gotoFirstActiveGroup } from '../support/groups';
 import { humanClick, settle } from '../support/human';
 
 test.describe('Communication', () => {
-  test('communication-mailing-list', async ({ page }, testInfo) => {
+  const communicationMailingListCapture = defineCapture({
+    name: 'communication-mailing-list',
+    locales: 'all',
+    title: 'Mailing Lists',
+    category: 'Communication',
+    purpose: 'Show selecting a group into the cart as a mailing list',
+  });
+  test('communication-mailing-list', communicationMailingListCapture, async ({ page }, testInfo) => {
     // Mailing-list selection: add a real group's membership to the cart —
     // the cart IS ChurchCRM's mailing-list-selection mechanism. Not the
     // /admin/email SMTP settings page: that page's actual composer
@@ -26,11 +33,6 @@ test.describe('Communication', () => {
     await expect(page.locator('#cart-listing-table tbody tr').first()).toBeVisible({ timeout: 15000 });
     await settle(page, 600);
 
-    await captureScreen(page, testInfo, {
-      name: 'communication-mailing-list',
-      title: 'Mailing Lists',
-      category: 'Communication',
-      purpose: 'Show selecting a group into the cart as a mailing list',
-    });
+    await captureScreen(page, testInfo, communicationMailingListCapture);
   });
 });
