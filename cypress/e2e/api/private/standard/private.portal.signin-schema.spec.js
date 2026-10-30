@@ -109,7 +109,7 @@ const SETTINGS = {
     iMemberSignInMinAge: "13",
     iSignInLinkMinutes: "120",
     iPortalIdleMinutes: "30",
-    iRememberDeviceDays: "30",
+    iRememberDeviceDays: "14",
     bPortalPasskeys: "1",
     sMemberSignInNotificationRecipientIDs: "",
     bAllowLoginAsPerson: "0",
