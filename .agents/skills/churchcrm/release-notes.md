@@ -59,9 +59,11 @@ Put each PR in exactly one place:
 | Where it goes | What belongs there |
 |---|---|
 | **✨ Exciting New Features** | Brand-new capability a user can see or use: a new screen, card, button, report, module or major mode. |
-| **🛠️ Enhancements & Improvements** | Bug fixes, usability polish and visible behavior changes, grouped by the categories below. |
+| **🔒 Security & Sign-In** | Every change a user can feel in security or login: password reset, who receives account email, who can reach what, hardened install and web-server rules, patched runtimes. One plain-language bullet each. No advisory IDs until they are published. |
+| **🛠️ Enhancements & Improvements** | Usability polish and visible behavior changes, grouped by the categories below. |
+| **🐛 Bug Fixes** | Everything that used to be broken for a user: errors, wrong output, layouts that broke, links that went to the wrong place. One bullet each, before → after. |
 | **🌍 Global Language Polish** | Translation fixes, plural/wording fixes and the standard localization line. |
-| **🧰 Behind the Scenes** | Exactly **two lines**: one for *Security & Dependencies*, one for *Testing & Tooling*. |
+| **🧰 Behind the Scenes** | Exactly **two lines**: one for *Security & Dependencies* (library bumps and build-tool advisories only; user-facing security goes in its own section), one for *Testing & Tooling*. |
 | **🤝 For Contributors & AI Agents** | Optional, at most two lines: developer/agent onboarding and project automation changes that matter to contributors (for example, fewer agent tokens or automation that makes no model call). |
 | **🙌 See It for Yourself** | Marketing-capture PRs become at most one line: website and docs screenshots come from the real app and are refreshed *after* publication, never before. |
 | Omitted | Bot syncs (locale imports, marketing visuals, OpenAPI regeneration, changelog sync), version bumps, and docs/agent-guidance changes that don't change how people contribute. |
@@ -77,8 +79,10 @@ Enhancement categories. Use only the ones that have content, and add one when no
 
 Rules:
 
-- Bug fixes never go under New Features.
-- A user-impacting security fix (for example, a permission check that now blocks access) goes under Administration & Ongoing Platform Safety. Only dependency bumps and hardening with no visible effect collapse into the Security line.
+- Bug fixes never go under New Features. They go under Bug Fixes, not Enhancements.
+- Security, login, UX and bug fixes each get their own visible section so a non-technical reader can find them. Do not fold them into Behind the Scenes.
+- A user-impacting security fix (a permission check that now blocks access, a safer reset flow, hardened install rules) goes under Security & Sign-In. Only dependency bumps and build-tool advisories collapse into the Behind the Scenes security line.
+- A flaw in a runtime the administrator maintains (PHP, the database) that the release does not fix on its own goes under Before You Upgrade with the action to take.
 - Merge PRs that ship one outcome, such as two favicon PRs, into one bullet.
 - **Weight by reach, not by PR size.** Ask who notices the change on day one:
   - A brand or look change that every user sees on every screen (logo, sidebar, sign-in pages) is a feature. Put it under New Features.
@@ -89,6 +93,8 @@ Rules:
 ---
 
 ## Step 3 — Write
+
+Write the notes to `changelog/$TAG.md` in the main checkout from the first draft, and keep that file current as sections are added, so the maintainer reads them there. Do not keep the draft in a scratch directory. Leave the file uncommitted until the maintainer approves.
 
 ### Template
 
@@ -110,10 +116,20 @@ Rules:
 
 ---
 
+## 🔒 Security & Sign-In
+* **[Plain-language change]:** [What is safer and what the user or administrator notices.]
+
+---
+
 ## 🛠️ Enhancements & Improvements
 
 ### [Emoji] [Category]
 * **[Key Concept]:** [Before → after, in user terms.]
+
+---
+
+## 🐛 Bug Fixes
+* **[What was broken]:** [Before → after, in user terms.]
 
 ---
 
@@ -162,7 +178,7 @@ Rules:
 - Leave out developer vocabulary (refactor, middleware, endpoint, TomSelect, CI, lint, chore) unless users need it. The two Behind the Scenes lines may name libraries and advisories.
 - Never claim a benefit the change does not deliver. A refactor is not "faster"; a dependency bump is not "more secure" unless it fixes an advisory.
 - State breaking changes, removed features, new runtime requirements and required upgrade steps plainly, in their own `## ⚠️ Before You Upgrade` section placed above New Features.
-- Security: use calm, routine-maintenance framing. If the release fixes a published advisory users must act on, name it accurately. Never hide required security information.
+- Security: use calm, routine-maintenance framing. If the release fixes a published advisory users must act on, name it accurately. Never hide required security information. Name no GHSA or CVE ID for a draft or triage advisory: describe the change in plain words, and add the ID only after the advisory is published.
 - Localization: count the entries in `src/locale/locales.json` at `TARGET` and write "[count] languages" (the Product Truth wording) instead of copying last release's number or "45+". Say "ready for translation": shipping a string does not mean it is translated.
 - Contributors: credit each human author with what they shipped in CRM.
   - The context file's *FYI: work in other repos* section is information, not a credit list. Docs, website and marketing work isn't part of the release. Thank someone for it only when it directly helps users of this release, such as artwork that ships in the app or a docs guide for a feature in this release. Website upkeep, blog posts and social graphics don't qualify.
@@ -194,7 +210,8 @@ Release notes are the third source in the marketing evidence hierarchy, after th
 
 - [ ] Every PR in the User-facing, Localization and Other buckets was read in full and is either in the notes or deliberately omitted.
 - [ ] Every claim traces to a PR description or diff, and menu paths match the code.
-- [ ] Bug fixes are not under New Features.
+- [ ] Bug fixes are under Bug Fixes, not New Features or Enhancements.
+- [ ] Every user-facing security and login change is in Security & Sign-In, in plain words.
 - [ ] Behind the Scenes has exactly two lines.
 - [ ] Localization count was verified at `TARGET`.
 - [ ] The compare link uses `PREV...TAG`.

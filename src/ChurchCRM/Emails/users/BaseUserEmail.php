@@ -2,7 +2,6 @@
 
 namespace ChurchCRM\Emails\users;
 
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\BaseEmail;
 use ChurchCRM\model\ChurchCRM\User;
@@ -16,7 +15,7 @@ abstract class BaseUserEmail extends BaseEmail
         parent::__construct([$user->getEmail()]);
         $this->setLogContext((int) $user->getPersonId());
         $this->user = $user;
-        $this->mail->Subject = SystemConfig::getValue('sChurchName') . ': ' . $this->getSubSubject();
+        $this->mail->Subject = $this->getSubSubject();
         $this->mail->isHTML(true);
         $this->mail->msgHTML($this->buildMessage());
     }
