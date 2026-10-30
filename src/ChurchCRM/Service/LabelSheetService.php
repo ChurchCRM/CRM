@@ -5,8 +5,8 @@ namespace ChurchCRM\Service;
 /**
  * Lays labels out on a sheet of Avery-style label stock and renders the sheet as a PDF.
  *
- * Every size is in millimetres. A cell is `['text' => string, 'size' => ?int, 'photo' => ?array]`,
- * where `size` overrides the sheet's font size and `photo` is `['src' => path, 'width' => mm, 'height' => mm]`.
+ * Every size is in millimetres. A cell is `['text' => string, 'size' => ?int]`, where `size` overrides
+ * the sheet's font size, or a name badge from nameTag().
  * Labels fill a column from the top down and then move to the next column.
  */
 class LabelSheetService
@@ -169,7 +169,7 @@ class LabelSheetService
     public function renderPdf(string $labelType, array $cells, int $startColumn, int $startRow, string $fontName, int $fontSize): string
     {
         $layout = self::layout($labelType);
-        $cells = array_map(static fn (array $cell): array => self::fitCell($cell, $layout['width'], $fontSize), $cells);
+        $cells = array_map(static fn (array $cell): array => isset($cell['tag']) ? $cell : self::fitCell($cell, $layout['width'], $fontSize), $cells);
 
         return (new MpdfRenderer())->renderToString('label-sheet', [
             'layout' => $layout,
@@ -188,7 +188,43 @@ class LabelSheetService
     }
 
     /**
-     * A name tag's photo scaled to fit beside the name in a label of this size.
+     * A name badge: the church name across the top, then the first name large and the last name
+     * smaller, centred in the space beside the photo. Positions are millimetres from the badge's corner.
+     *
+     * @return array{tag: array<string, mixed>}
+     */
+    public static function nameTag(string $firstName, string $lastName, ?string $photoPath, float $width, float $height, int $fontSize): array
+    {
+        $bodyTop = 12.0;
+        $bodyHeight = $height - $bodyTop - 4;
+        $photo = $photoPath !== null ? self::fitPhoto($photoPath, $width * 0.32, $bodyHeight) : null;
+
+        $textLeft = 5.0;
+        if ($photo !== null) {
+            $photo['x'] = $textLeft;
+            $photo['y'] = round($bodyTop + ($bodyHeight - $photo['height']) / 2, 2);
+            $textLeft += $photo['width'] + 4;
+        }
+        $textWidth = $width - $textLeft - 5;
+
+        $firstSize = self::fitFontSize($fontSize, mb_strlen($firstName), $textWidth);
+        $lastSize = self::fitFontSize(min($firstSize, (int) round($fontSize * 0.55)), mb_strlen($lastName), $textWidth);
+        $textHeight = ($firstSize + $lastSize) * 1.2 * 0.3528;
+
+        return ['tag' => [
+            'first' => $firstName,
+            'last' => $lastName,
+            'first_size' => $firstSize,
+            'last_size' => $lastSize,
+            'photo' => $photo,
+            'text_x' => round($textLeft, 2),
+            'text_y' => round($bodyTop + max(0, ($bodyHeight - $textHeight) / 2), 2),
+            'text_width' => round($textWidth, 2),
+        ]];
+    }
+
+    /**
+     * A photo scaled to fit a box, keeping its shape.
      *
      * @return array{src: string, width: float, height: float}|null null when the file is not a readable image
      */
@@ -217,7 +253,7 @@ class LabelSheetService
         foreach (explode("\n", (string) $cell['text']) as $line) {
             $longest = max($longest, mb_strlen($line));
         }
-        $textWidth = isset($cell['photo']) ? $labelWidth - $cell['photo']['width'] - 3 : $labelWidth - 5;
+        $textWidth = $labelWidth - 5;
         $cell['size'] = self::fitFontSize($cell['size'] ?? $fontSize, $longest, $textWidth);
 
         return $cell;

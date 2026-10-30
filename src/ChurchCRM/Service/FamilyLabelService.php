@@ -43,12 +43,12 @@ class FamilyLabelService
     }
 
     /**
-     * A name tag for each person: their photo when they have one, the name and the person's ID.
+     * A name badge for each person, with their photo when one was uploaded.
      *
      * @param int[] $personIds
      * @return array<int, array<string, mixed>>
      */
-    public static function nameTagCells(array $personIds, float $labelWidth, float $labelHeight): array
+    public static function nameTagCells(array $personIds, float $labelWidth, float $labelHeight, int $fontSize): array
     {
         if ($personIds === []) {
             return [];
@@ -57,11 +57,15 @@ class FamilyLabelService
         $cells = [];
         $people = PersonQuery::create()->filterById($personIds)->orderByLastName()->orderByFirstName()->find();
         foreach ($people as $person) {
-            $photo = LabelSheetService::fitPhoto((string) $person->getPhoto()->getPhotoURI(), $labelWidth / 2 - 2, $labelHeight - 2);
-            $name = $photo !== null
-                ? $person->getFirstName() . "\n" . $person->getLastName()
-                : $person->getFirstName() . ' ' . $person->getLastName();
-            $cells[] = ['text' => $name . "\n\n" . $person->getId(), 'photo' => $photo];
+            $photo = $person->getPhoto();
+            $cells[] = LabelSheetService::nameTag(
+                (string) $person->getFirstName(),
+                (string) $person->getLastName(),
+                $photo->hasUploadedPhoto() ? (string) $photo->getPhotoURI() : null,
+                $labelWidth,
+                $labelHeight,
+                $fontSize
+            );
         }
 
         return $cells;

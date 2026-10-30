@@ -138,7 +138,7 @@ $app->group('/labels', function (RouteCollectorProxy $group): void {
 
         $pdf = (new LabelSheetService())->renderPdf(
             $labelType,
-            FamilyLabelService::nameTagCells($personIds, $layout['width'], $layout['height']),
+            FamilyLabelService::nameTagCells($personIds, $layout['width'], $layout['height'], $fontSize),
             1,
             1,
             $fontName,

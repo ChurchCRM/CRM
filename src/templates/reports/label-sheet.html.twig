@@ -4,41 +4,37 @@
   <meta charset="utf-8">
   <style>
     body { margin: 0; padding: 0; font-family: {{ font.family }}; font-size: {{ font_size }}pt; font-weight: {{ font.weight }}; font-style: {{ font.style }}; color: #000; }
-    table { border-collapse: collapse; margin: 0; padding: 0; }
-    td { padding: 0; vertical-align: top; }
-    pre { margin: 0; padding: 0; font-family: {{ font.family }}; font-size: {{ font_size }}pt; font-weight: {{ font.weight }}; font-style: {{ font.style }}; line-height: 1.2; }
+    .label { position: absolute; overflow: hidden; width: {{ layout.width }}mm; height: {{ layout.height }}mm; }
+    .text { position: absolute; overflow: hidden; height: {{ (layout.height - 4)|round(3) }}mm; }
+    pre { margin: 0; padding: 0; font-family: {{ font.family }}; font-weight: {{ font.weight }}; font-style: {{ font.style }}; line-height: 1.2; }
+    .tag-church { position: absolute; overflow: hidden; height: 6mm; font-size: 9pt; font-weight: bold; letter-spacing: 0.5pt; text-transform: uppercase; text-align: center; color: #444; border-bottom: 0.3mm solid #999; }
+    .tag-name { position: absolute; overflow: hidden; text-align: center; line-height: 1.2; }
     .empty { margin: 6mm; font-style: italic; }
   </style>
 </head>
 <body>
-{% set label_w = layout.width %}
-{% set label_h = layout.height %}
-{% set span = layout.gap_x > 0 ? layout.columns * 2 - 1 : layout.columns %}
 {% for sheet in sheets %}
-  <table cellspacing="0" cellpadding="0" style="width: {{ (layout.columns * label_w + (layout.columns - 1) * layout.gap_x)|round(3) }}mm;">
-    {% for row in sheet %}
-    <tr>
-      {% for cell in row %}
-      <td style="width: {{ label_w }}mm; height: {{ label_h }}mm;">
-        {% if cell and cell.photo %}
-        <div style="width: {{ label_w }}mm; height: {{ label_h }}mm; overflow: hidden;">
-          <table cellspacing="0" cellpadding="0" style="width: {{ label_w }}mm;"><tr>
-            <td style="width: {{ cell.photo.width }}mm;"><img src="{{ cell.photo.src }}" alt="" style="width: {{ cell.photo.width }}mm; height: {{ cell.photo.height }}mm;"></td>
-            <td style="padding: 3mm 1mm 0 2mm;"><pre style="font-size: {{ cell.size }}pt;">{{ cell.text }}</pre></td>
-          </tr></table>
-        </div>
-        {% elseif cell %}
-        <div style="width: {{ (label_w - 5)|round(3) }}mm; height: {{ (label_h - 2)|round(3) }}mm; padding: 2mm 2mm 0 3mm; overflow: hidden;"><pre style="font-size: {{ cell.size }}pt;">{{ cell.text }}</pre></div>
+  {% for r, row in sheet %}
+    {% for c, cell in row %}
+      {% if cell %}
+        {% set x = layout.left + c * (layout.width + layout.gap_x) %}
+        {% set y = layout.top + r * (layout.height + layout.gap_y) %}
+        {% if cell.tag %}
+          {% set tag = cell.tag %}
+          <div class="tag-church" style="left: {{ (x + 4)|round(3) }}mm; top: {{ (y + 4)|round(3) }}mm; width: {{ (layout.width - 8)|round(3) }}mm;">{{ church_name }}</div>
+          {% if tag.photo %}
+          <div style="position: absolute; left: {{ (x + tag.photo.x)|round(3) }}mm; top: {{ (y + tag.photo.y)|round(3) }}mm; width: {{ tag.photo.width }}mm; height: {{ tag.photo.height }}mm;"><img src="{{ tag.photo.src }}" alt="" style="width: {{ tag.photo.width }}mm; height: {{ tag.photo.height }}mm;"></div>
+          {% endif %}
+          <div class="tag-name" style="left: {{ (x + tag.text_x)|round(3) }}mm; top: {{ (y + tag.text_y)|round(3) }}mm; width: {{ tag.text_width }}mm;">
+            <div style="font-size: {{ tag.first_size }}pt; font-weight: bold;">{{ tag.first }}</div>
+            <div style="font-size: {{ tag.last_size }}pt;">{{ tag.last }}</div>
+          </div>
+        {% else %}
+          <div class="text" style="left: {{ (x + 3)|round(3) }}mm; top: {{ (y + 2)|round(3) }}mm; width: {{ (layout.width - 5)|round(3) }}mm;"><pre style="font-size: {{ cell.size }}pt;">{{ cell.text }}</pre></div>
         {% endif %}
-      </td>
-      {% if layout.gap_x > 0 and not loop.last %}<td style="width: {{ layout.gap_x }}mm;"></td>{% endif %}
-      {% endfor %}
-    </tr>
-    {% if layout.gap_y > 0 and not loop.last %}
-    <tr><td colspan="{{ span }}" style="height: {{ layout.gap_y }}mm; font-size: 1pt; line-height: 1pt;"></td></tr>
-    {% endif %}
+      {% endif %}
     {% endfor %}
-  </table>
+  {% endfor %}
   {% if not loop.last %}<pagebreak />{% endif %}
 {% else %}
   <p class="empty">{{ gettext('No records were returned from the previous report. Please adjust your filters or date range and try again.') }}</p>
