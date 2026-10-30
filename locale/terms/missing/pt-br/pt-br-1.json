@@ -49,5 +49,11 @@
   "Unable to email giving statement: no payment data found for that year.": "",
   "Unable to email giving statement: this family has no email address on file.": "",
   "Undesignated": "",
-  "Verify church name, address, and contact info appears on giving statements.": ""
+  "Verify church name, address, and contact info appears on giving statements.": "",
+  "The position is now assigned to %s, who has accepted it.": "",
+  "The position is now assigned to %s, who has not yet accepted it.": "",
+  "Their reason: %s": "",
+  "View Assignments": "",
+  "Volunteers still needed for this occurrence: %d": "",
+  "Volunteers still needed for this position: %d": ""
 }

@@ -18851,22 +18851,10 @@ msgstr[0] "%d standardfrivillig tildelt"
 msgstr[1] "%d standardfrivillige tildelt"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "%d frivillig til trengs fortsatt for denne oppgaven. Åpne gjennomføringen for å fylle hullet."
-msgstr[1] "%d frivillige til trengs fortsatt for denne oppgaven. Åpne gjennomføringen for å fylle hullet."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d ny gjennomføring"
 msgstr[1] "%d nye gjennomføringer"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "%d frivillig trengs fortsatt for en kommende gjennomføring."
-msgstr[1] "%d frivillige trengs fortsatt for en kommende gjennomføring."
 
 #: 
 msgid "%s Calendar"
@@ -20931,10 +20919,6 @@ msgstr "Åpne tjenesten"
 #: 
 msgid "Open the occurrence"
 msgstr "Åpne gjennomføringen"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Åpne gjennomføringen for å tildele personene du trenger."
 
 #: 
 msgid "Open this team"

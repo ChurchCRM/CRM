@@ -42,6 +42,14 @@ Locale and RTL come from `MpdfRenderer` (`lang`, `text_dir`). mPDF script fonts 
 - Mailing address comes from `Family::getMailingAddressParts()` (includes Address2 and the secondary flag) when the letter is mailed.
 - An empty result returns to the form with a message.
 
+## People and photos
+
+- A report that lists people shows a photo box for every person, so one layout covers people with and without photos. No "with pictures" option, no per-class variant.
+- Take the photo from `$person->getPhoto()->getPhotoURI()` and use it only when `is_file()` is true.
+- With no photo, fill the same box with `$person->getInitial(SystemConfig::getIntValue('iPersonInitialStyle'))`. Do not build initials by hand.
+- Set image and placeholder sizes inline (`style="width: 8mm; height: 8mm;"`). mPDF ignores a `<style>` rule that targets an `img` inside a cell, and the photo prints at full size.
+- Keep photos small in list reports (about 8 mm). Photo books and directories set their own larger frame.
+
 ## Tests
 
 One Cypress spec per report. Intercept the download route, assert status and `application/pdf` (or CSV). Cover the empty-result path. See `cypress-testing.md`.

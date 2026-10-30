@@ -18741,19 +18741,9 @@ msgid_plural "%d default volunteers assigned"
 msgstr[0] "%d อาสาสมัครเริ่มต้นได้รับการมอบหมาย"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "ตำแหน่งนี้ยังต้องการอาสาสมัครเพิ่มเติม %d คน เปิดการเกิดขึ้นเพื่อเติมช่องว่าง"
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d การเกิดขึ้นใหม่"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "ยังต้องการอาสาสมัคร %d คนสำหรับการเกิดขึ้นที่จะมาถึง"
 
 #: 
 msgid "%s Calendar"
@@ -20814,10 +20804,6 @@ msgstr "เปิดพันธกิจ"
 #: 
 msgid "Open the occurrence"
 msgstr "เปิดรอบ"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "เปิดรอบเพื่อมอบหมายคนที่คุณต้องการ"
 
 #: 
 msgid "Open this team"
