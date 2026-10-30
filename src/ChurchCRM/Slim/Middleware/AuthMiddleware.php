@@ -144,6 +144,8 @@ class AuthMiddleware implements MiddlewareInterface
      *    serves nothing but allow-listed static files, and staying public is
      *    what keeps a cached portal page from breaking on a logged-out asset
      *    request (design §2.2 step 6).
+     *  - /portal/login/…   — member sign-in by email (member sign-in design
+     *    §6.1), which a signed-out visitor must reach.
      *
      * Both are built with the install's root path, so a subdirectory install
      * ('/crm/api/public') matches exactly as a root install does.
@@ -153,7 +155,7 @@ class AuthMiddleware implements MiddlewareInterface
         $path = $request->getUri()->getPath();
         $rootPath = SystemURLs::getRootPath();
 
-        foreach (['/api/public', '/portal/theme'] as $publicPrefix) {
+        foreach (['/api/public', '/portal/theme', '/portal/login'] as $publicPrefix) {
             $publicPath = $rootPath . $publicPrefix;
             if ($path === $publicPath || str_starts_with($path, $publicPath . '/')) {
                 return true;
@@ -325,10 +327,11 @@ class AuthMiddleware implements MiddlewareInterface
             $_SESSION['location'] = $safePath;
         }
 
-        $response = new Response();
-        $redirectUrl = SystemURLs::getRootPath() . '/session/begin';
+        $redirectUrl = $this->isPortalPath($request)
+            ? AuthenticationManager::getPortalLoginURL()
+            : AuthenticationManager::getSessionBeginURL();
 
-        return $response->withStatus(302)->withHeader('Location', $redirectUrl);
+        return (new Response())->withStatus(302)->withHeader('Location', $redirectUrl);
     }
 
 }

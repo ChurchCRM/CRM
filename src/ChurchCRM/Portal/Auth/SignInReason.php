@@ -24,10 +24,16 @@ enum SignInReason: string
     case NO_EMAIL = 'no_email';
     case SHARED_EMAIL = 'shared_email';
     case EMAIL_UNCONFIRMED = 'email_unconfirmed';
+    case REQUEST_ADDRESS_CHANGED = 'request_address_changed';
     case SESSION_VERSION = 'session_version';
     case IDLE = 'idle';
     case REPLACED = 'replaced';
     case SIGNED_OUT_EVERYWHERE = 'signed_out_everywhere';
+    case SIGNED_OUT = 'signed_out';
+    case THROTTLED_ADDRESS = 'throttled_address';
+    case THROTTLED_IP = 'throttled_ip';
+    case THROTTLED_PERSON = 'throttled_person';
+    case TOO_MANY_CODES = 'too_many_codes';
 
     /** For staff screens only; a person signing in never sees a reason (D3, A6). */
     public function label(): string
@@ -47,10 +53,16 @@ enum SignInReason: string
             self::NO_EMAIL => gettext('No personal email'),
             self::SHARED_EMAIL => gettext('Their email is shared with someone else'),
             self::EMAIL_UNCONFIRMED => gettext('Their email is not confirmed yet'),
+            self::REQUEST_ADDRESS_CHANGED => gettext('The code or link went to an address that is no longer their email'),
             self::SESSION_VERSION => gettext('Signed out by a change to their sign-in'),
             self::IDLE => gettext('Idle too long'),
             self::REPLACED => gettext('Replaced by another sign-in'),
             self::SIGNED_OUT_EVERYWHERE => gettext('Signed out everywhere'),
+            self::SIGNED_OUT => gettext('Signed out'),
+            self::THROTTLED_ADDRESS => gettext('Too many sign-in requests for this email address'),
+            self::THROTTLED_IP => gettext('Too many sign-in requests from this IP address'),
+            self::THROTTLED_PERSON => gettext('Too many sign-in emails today'),
+            self::TOO_MANY_CODES => gettext('Too many wrong codes'),
         };
     }
 }

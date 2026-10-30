@@ -222,7 +222,7 @@ export const htaccessTasks = {
  * MAILPIT_URL wins; otherwise MAILSERVER_GUI_PORT (which an isolated local
  * stack sets alongside DATABASE_PORT) on localhost; otherwise Mailpit's 8025.
  */
-function mailpitBaseUrl(): string {
+export function mailpitBaseUrl(): string {
   if (process.env.MAILPIT_URL) {
     return process.env.MAILPIT_URL.replace(/\/+$/, '');
   }
@@ -438,6 +438,19 @@ export const mailTasks = {
   /** One message in full — Text, HTML and the ReplyTo header among them. */
   async 'mail:get'({ id }: { id: string }) {
     return await mailpitFetch(`/api/v1/message/${encodeURIComponent(id)}`);
+  },
+
+  /** Makes the SMTP server refuse every recipient, or accept them again (Mailpit chaos, MP_ENABLE_CHAOS). */
+  async 'mail:refuseRecipients'({ refuse }: { refuse: boolean }) {
+    return await mailpitFetch('/api/v1/chaos', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        Sender: { ErrorCode: 451, Probability: 0 },
+        Recipient: { ErrorCode: 451, Probability: refuse ? 100 : 0 },
+        Authentication: { ErrorCode: 535, Probability: 0 }
+      })
+    });
   }
 };
 

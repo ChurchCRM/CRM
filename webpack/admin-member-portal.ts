@@ -56,7 +56,13 @@ const CALENDARS_STATUS_ID = "portalCalendarsStatus";
 
 const SIGN_IN_FORM_ID = "memberSignInForm";
 const SIGN_IN_SWITCHES = ["bMemberSignIn", "bPortalPasskeys", "bAllowLoginAsUser", "bLoginAsUserCanWrite"];
-const SIGN_IN_NUMBERS = ["iMemberSignInMinAge", "iSignInLinkMinutes", "iPortalIdleMinutes", "iRememberDeviceDays"];
+const SIGN_IN_NUMBERS = [
+  "iMemberSignInMinAge",
+  "iSignInLinkMinutes",
+  "iMemberSignInRequestsPerIP",
+  "iPortalIdleMinutes",
+  "iRememberDeviceDays",
+];
 const SIGN_IN_CHECKBOX_LISTS = ["sMemberSignInFamilyRoles", "sMemberSignInClassifications"];
 const SIGN_IN_OFFICE_LIST = "sMemberSignInNotificationRecipientIDs";
 

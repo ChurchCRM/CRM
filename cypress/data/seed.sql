@@ -159,6 +159,7 @@ INSERT INTO `config_cfg` (`cfg_name`, `cfg_value`) VALUES ('bAllowPrereleaseUpgr
 ('iChurchLatitude','39.1111974'),
 ('iChurchLongitude','-94.5838009'),
 ('iMaxFailedLoginsPerIP','1000'),
+('iMemberSignInRequestsPerIP','1000'),
 ('IncludeDataInNewPersonNotifications',''),
 ('plugin.external-backup.enabled','0'),
 ('plugin.holidays.categories','official,religious'),

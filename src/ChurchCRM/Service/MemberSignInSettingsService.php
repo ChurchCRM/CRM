@@ -24,6 +24,7 @@ final class MemberSignInSettingsService
         'sMemberSignInClassifications',
         'iMemberSignInMinAge',
         'iSignInLinkMinutes',
+        'iMemberSignInRequestsPerIP',
         'iPortalIdleMinutes',
         'iRememberDeviceDays',
         'bPortalPasskeys',
@@ -39,6 +40,7 @@ final class MemberSignInSettingsService
     private const NUMBER_RANGES = [
         'iMemberSignInMinAge' => [0, 120],
         'iSignInLinkMinutes' => [1, 1440],
+        'iMemberSignInRequestsPerIP' => [0, 10000],
         'iPortalIdleMinutes' => [1, 1440],
         'iRememberDeviceDays' => [0, 365],
     ];
@@ -60,7 +62,7 @@ final class MemberSignInSettingsService
             'bPortalPasskeys', 'bAllowLoginAsUser', 'bLoginAsUserCanWrite' => self::normalizeBoolean($value),
             'sMemberSignInFamilyRoles' => $this->normalizeListIds($value, self::FAMILY_ROLE_LIST, gettext('Pick family roles from the list.')),
             'sMemberSignInClassifications' => $this->normalizeListIds($value, self::CLASSIFICATION_LIST, gettext('Pick classifications from the list.')),
-            'iMemberSignInMinAge', 'iSignInLinkMinutes', 'iPortalIdleMinutes', 'iRememberDeviceDays' => self::normalizeNumber($key, $value),
+            'iMemberSignInMinAge', 'iSignInLinkMinutes', 'iMemberSignInRequestsPerIP', 'iPortalIdleMinutes', 'iRememberDeviceDays' => self::normalizeNumber($key, $value),
             'sMemberSignInNotificationRecipientIDs' => $this->normalizeOfficeList($value),
             default => throw new InvalidArgumentException(gettext('Configuration item not found')),
         };
