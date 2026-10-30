@@ -7,6 +7,7 @@ use ChurchCRM\Portal\Auth\PortalContext;
 use ChurchCRM\Portal\Auth\PortalPrincipal;
 use ChurchCRM\Slim\SlimUtils;
 use Closure;
+use Laminas\Diactoros\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -23,6 +24,8 @@ use Slim\Exception\HttpNotFoundException;
  *  - A scope read from the route that is not the person's answers 404 as well,
  *    whether or not it exists, so ids cannot be probed.
  *  - A capability the person does not hold anywhere answers 403.
+ *  - A person with no family, on a route held on the own family, answers 404
+ *    unless the route names the response that explains it.
  *
  * The scope that passed is put on the request as `portalScope`.
  */
@@ -31,13 +34,15 @@ final class RequirePortalCapability implements MiddlewareInterface
     public const SCOPE_ATTRIBUTE = 'portalScope';
 
     /**
-     * @param Closure(ServerRequestInterface, PortalPrincipal): (PortalScope|false|null)|null $resolveScope
-     *        null: held on any scope; false from the closure: no scope applies, let the handler answer
+     * @param Closure(ServerRequestInterface, PortalPrincipal): (PortalScope|false)|null $resolveScope
+     *        null: held on any scope; false from the closure: the person has no family
+     * @param Closure(ResponseInterface): ResponseInterface|null $noFamily
      */
     private function __construct(
         private readonly string $capability,
         private readonly ?Closure $resolveScope,
         private readonly ?string $refusal,
+        private readonly ?Closure $noFamily = null,
     ) {
     }
 
@@ -62,10 +67,13 @@ final class RequirePortalCapability implements MiddlewareInterface
     }
 
     /**
-     * Held on the person's own family. A person with no family passes without a
-     * scope: the handler shows that they are not in a family yet.
+     * Held on the person's own family. A person with no family gets 404, or the
+     * response $noFamily draws, for a page that tells them they are not in a
+     * family yet.
+     *
+     * @param Closure(ResponseInterface): ResponseInterface|null $noFamily
      */
-    public static function onOwnFamily(string $capability, ?string $refusal = null): self
+    public static function onOwnFamily(string $capability, ?string $refusal = null, ?Closure $noFamily = null): self
     {
         return new self(
             $capability,
@@ -76,6 +84,7 @@ final class RequirePortalCapability implements MiddlewareInterface
                 return $familyId > 0 ? PortalScope::family($familyId) : false;
             },
             $refusal,
+            $noFamily,
         );
     }
 
@@ -99,7 +108,11 @@ final class RequirePortalCapability implements MiddlewareInterface
 
         $scope = ($this->resolveScope)($request, $principal);
         if ($scope === false) {
-            return $handler->handle($request);
+            if ($this->noFamily === null || !$authz->decide($principal, $this->capability, $this->anyScope())->capabilityIsLive()) {
+                throw new HttpNotFoundException($request);
+            }
+
+            return ($this->noFamily)(new Response());
         }
 
         $decision = $authz->decide($principal, $this->capability, $scope);
