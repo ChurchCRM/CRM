@@ -932,10 +932,6 @@ msgid "Voting Members"
 msgstr "A szavazás tag"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Giving jelentés (Adóbevallások)"
-
-#: 
 msgid "Zero Givers"
 msgstr "Zero givers"
 
@@ -1747,15 +1743,6 @@ msgstr "Engedély"
 #: 
 msgid "System Settings"
 msgstr "Rendszerbeállítások"
-
-#: 
-msgid "Tax Report"
-msgstr "Adóbeszámoló"
-
-#: 
-#, fuzzy
-msgid "Calendar Year"
-msgstr "Naptári év"
 
 #: 
 msgid "User Editor"
@@ -6338,10 +6325,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "Testreszabható jelentés dátum, alap, család és fizetési mód szerinti szűréssel."
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Szabja testre az adóigazolásokon megjelenő szöveget (sTaxReport1, sTaxReport2 stb.)."
-
-#: 
 msgid "Day"
 msgstr "Nap"
 
@@ -6422,20 +6405,12 @@ msgid "Generate"
 msgstr "Generálás"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Adóigazolások generálása"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Éves adómentes adományozási igazolások generálása. Nyomtatható vagy e-mailben küldhető."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "Emlékeztető levelek generálása a hátralékos vállalással rendelkező családok számára."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "Jelentések készítése adóigazolásokhoz, vállalások követéséhez és pénzügyi elemzésekhez."
 
 #: 
 msgid "ID"
@@ -6618,10 +6593,6 @@ msgid "System Info"
 msgstr "Rendszerinformáció"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "Adó- és adományozási jelentések"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "Adójelentés szövegezése"
 
@@ -6648,10 +6619,6 @@ msgstr "Frissítés"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "A felhasználónak adminisztrátornak kell lennie, vagy pénzügyi jogosultsággal kell rendelkeznie"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Ellenőrizze, hogy a templom neve, címe és elérhetőségei megjelennek-e az adóigazolásokon."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9163,10 +9130,6 @@ msgstr "Felajánlás-emlékeztető levelek készítése"
 #: 
 msgid "Generate reports on group membership and activities"
 msgstr "Csoporttagsági és tevékenységi jelentések készítése"
-
-#: 
-msgid "Generate tax statement documents for donors"
-msgstr "Adóigazolások készítése adományozók számára"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -15985,10 +15948,6 @@ msgid "Please confirm your family information"
 msgstr "Kérjük, erősítse meg a családi adatokat"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "Kérjük, küldje el a következő adományát erre a címre: %s"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Kérjük, válasszon másik családot, amelyhez ezeket az adományokat társítja"
 
@@ -18019,10 +17978,6 @@ msgid "{{minutes}} min left"
 msgstr "{{minutes}} perc van hátra"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d adóbevallási dokumentum sikeresen elküldve a családnak."
-
-#: 
 msgid "All classifications"
 msgstr "Összes besorolás"
 
@@ -18055,28 +18010,8 @@ msgid "Columns per Page"
 msgstr "Oszlopok oldalanként"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "Kedves %s család,\n"
-"\n"
-"Kérjük, keresse meg az Ön %d adományi kimutatását a %s dátumból ebben az e-mailben csatolva.\n"
-"\n"
-"Ha bármilyen kérdésे van, kérjük forduljon a templom irodájához.\n"
-"\n"
-"Köszönjük nagylelkűségéért."
-
-#: 
 msgid "Download CSV"
 msgstr "CSV letöltése"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "%d adóbevallási dokumentum elküldése"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18179,10 +18114,6 @@ msgid "Pledged"
 msgstr "Megígérve"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "%d adóbevallási dokumentum nyomtatása"
-
-#: 
 msgid "Recent Friends"
 msgstr "Közelmúltbeli barátok"
 
@@ -18207,24 +18138,8 @@ msgid "Single Pages"
 msgstr "Egyes oldalak"
 
 #: 
-msgid "Tax Documents"
-msgstr "Adóbevallási dokumentumok"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "Az adóbevallási dokumentum e-mail küldése sikertelen. Kérjük, ellenőrizze az e-mail kiszolgáló beállításait."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "Két fél méretű lap egymás mellett minden fekvő lapon, füzet sorrendben. Kétoldalas nyomtatás \"billen a rövid szélén\", majd hajtsa be az rakást a felére. Az oszlopokat fél oldalanként számoljuk."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "Nem lehet e-mailben elküldeni az adóbevallási dokumentumot: nem találtunk kifizetési adatokat erre az évre."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "Nem lehet e-mailben elküldeni az adóbevallási dokumentumot: ennek a családnak nincs e-mail cím a fájlban."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -18893,22 +18808,10 @@ msgstr[0] "%d alapértelmezett önkéntes beosztva"
 msgstr[1] "%d alapértelmezett önkéntes beosztva"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Ehhez a pozícióhoz még %d önkéntesre van szükség. Nyisd meg az alkalmat a hiány pótlásához."
-msgstr[1] "Ehhez a pozícióhoz még %d önkéntesre van szükség. Nyisd meg az alkalmat a hiány pótlásához."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d új alkalom"
 msgstr[1] "%d új alkalom"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Egy közelgő alkalomhoz még %d önkéntesre van szükség."
-msgstr[1] "Közelgő alkalmakhoz még %d önkéntesre van szükség."
 
 #: 
 msgid "%s Calendar"
@@ -20215,10 +20118,6 @@ msgid "How often"
 msgstr "Milyen gyakran"
 
 #: 
-msgid "How to correct this"
-msgstr "Így javíthatod"
-
-#: 
 msgid "I can't"
 msgstr "Nem tudok"
 
@@ -20977,10 +20876,6 @@ msgstr "Szolgálati terület megnyitása"
 #: 
 msgid "Open the occurrence"
 msgstr "Az alkalom megnyitása"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Nyisd meg az alkalmat, hogy beoszd a szükséges embereket."
 
 #: 
 msgid "Open this team"
@@ -24675,10 +24570,6 @@ msgstr "A geokódolási szolgáltatás nem válaszolt — próbálja újra kés�
 #: 
 msgid "Only the email you sent is shown."
 msgstr "Csak az Ön által küldött e-mail jelenik meg."
-
-#: 
-msgid "%d Giving Statement"
-msgstr "%d Adománykimutatás"
 
 #: 
 msgid "Repeat events could not be created. Check the application log for details."

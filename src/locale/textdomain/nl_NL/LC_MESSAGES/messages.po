@@ -921,10 +921,6 @@ msgid "Voting Members"
 msgstr "Leden met Stemrecht"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Bijdrage Rapportage (Voor belastingdienst)"
-
-#: 
 msgid "Zero Givers"
 msgstr "Zero Givers"
 
@@ -1712,14 +1708,6 @@ msgstr "Toestemming"
 #: 
 msgid "System Settings"
 msgstr "Systeem instellingen"
-
-#: 
-msgid "Tax Report"
-msgstr "Belasting Raport"
-
-#: 
-msgid "Calendar Year"
-msgstr "Kalender Jaar"
 
 #: 
 msgid "User Editor"
@@ -6281,10 +6269,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "Aanpasbaar rapport met filteren op datum, fonds, familie en betalingsmethode."
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Pas de tekst aan die op belastingafschriften verschijnt (sTaxReport1, sTaxReport2, enz.)."
-
-#: 
 msgid "Day"
 msgstr "Dag"
 
@@ -6365,20 +6349,12 @@ msgid "Generate"
 msgstr "Genereren"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Belastingafschriften Genereren"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Genereer jaarlijkse aftrekbare giftafschriften voor donateurs. Kan worden afgedrukt of per e-mail verzonden."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "Genereer herinnerbrieven voor families met openstaande toezeggingen."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "Genereer rapporten voor belastingafschriften, toezeggingsvolgesporing en financiële analyse."
 
 #: 
 msgid "ID"
@@ -6561,10 +6537,6 @@ msgid "System Info"
 msgstr "Systeeminformatie"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "Belasting- en Giftingraporten"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "Belastingrapportformulering"
 
@@ -6591,10 +6563,6 @@ msgstr "Upgrade"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "Gebruiker moet een beheerder zijn of financiële toestemming hebben"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Controleer of kerknaam, adres en contactgegevens op belastingafschriften staan."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9106,10 +9074,6 @@ msgstr "Herinneringsbrieven voor toezeggingen genereren"
 #: 
 msgid "Generate reports on group membership and activities"
 msgstr "Rapporten genereren over groepslidmaatschap en activiteiten"
-
-#: 
-msgid "Generate tax statement documents for donors"
-msgstr "Belastingverklaringen genereren voor donateurs"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -15928,10 +15892,6 @@ msgid "Please confirm your family information"
 msgstr "Bevestig uw gezinsinformatie"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "Stuur uw volgende gave naar %s"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Selecteer een ander gezin om deze giften aan te koppelen"
 
@@ -17962,10 +17922,6 @@ msgid "{{minutes}} min left"
 msgstr "{{minutes}} min resterend"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d belastingdocument succesvol naar het gezin gemaild."
-
-#: 
 msgid "All classifications"
 msgstr "Alle classificaties"
 
@@ -17998,28 +17954,8 @@ msgid "Columns per Page"
 msgstr "Kolommen per pagina"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "Geachte %s Familie,\n"
-"\n"
-"U vindt uw %d givingverklaring van %s als bijlage bij deze e-mail.\n"
-"\n"
-"Heb je vragen, neem dan contact op met het kerkbureau.\n"
-"\n"
-"Bedankt voor uw vrijgevigheid."
-
-#: 
 msgid "Download CSV"
 msgstr "CSV downloaden"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "E-mail %d belastingdocument"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18122,10 +18058,6 @@ msgid "Pledged"
 msgstr "Beloofd"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "Print %d belastingdocument"
-
-#: 
 msgid "Recent Friends"
 msgstr "Recente vrienden"
 
@@ -18150,24 +18082,8 @@ msgid "Single Pages"
 msgstr "Enkele pagina's"
 
 #: 
-msgid "Tax Documents"
-msgstr "Belastingdocumenten"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "E-mail met belastingdocument kon niet worden verzonden. Controleer uw e-mailserverinstellingen."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "Twee halve pagina's naast elkaar op elk landschapvel, in boekjesvolgorde. Print dubbelzijdig met \"flip on short edge\", vouw de stapel dan in tweeën. Kolommen worden per halve pagina geteld."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "Kan belastingdocument niet e-mailen: geen betalingsgegevens voor dat jaar gevonden."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "Kan belastingdocument niet e-mailen: dit gezin heeft geen e-mailadres op bestand."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -18836,22 +18752,10 @@ msgstr[0] "%d standaardvrijwilliger ingeroosterd"
 msgstr[1] "%d standaardvrijwilligers ingeroosterd"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Er is nog %d vrijwilliger nodig voor deze functie. Open het moment om de leemte op te vullen."
-msgstr[1] "Er zijn nog %d vrijwilligers nodig voor deze functie. Open het moment om de leemte op te vullen."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d nieuw moment"
 msgstr[1] "%d nieuwe momenten"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Er is nog %d vrijwilliger nodig voor een komend moment."
-msgstr[1] "Er zijn nog %d vrijwilligers nodig voor een komend moment."
 
 #: 
 msgid "%s Calendar"
@@ -20158,10 +20062,6 @@ msgid "How often"
 msgstr "Hoe vaak"
 
 #: 
-msgid "How to correct this"
-msgstr "Zo corrigeert u dit"
-
-#: 
 msgid "I can't"
 msgstr "Ik kan niet"
 
@@ -20920,10 +20820,6 @@ msgstr "De bediening openen"
 #: 
 msgid "Open the occurrence"
 msgstr "Het moment openen"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Open het moment om de mensen in te roosteren die u nodig hebt."
 
 #: 
 msgid "Open this team"
@@ -24618,10 +24514,6 @@ msgstr "De geocoderingsdienst heeft niet gereageerd — probeer het later opnieu
 #: 
 msgid "Only the email you sent is shown."
 msgstr "Alleen de e-mail die u hebt verzonden wordt getoond."
-
-#: 
-msgid "%d Giving Statement"
-msgstr "%d Geefverklaring"
 
 #: 
 msgid "Repeat events could not be created. Check the application log for details."

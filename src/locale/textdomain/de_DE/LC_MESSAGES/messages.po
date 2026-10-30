@@ -957,10 +957,6 @@ msgid "Voting Members"
 msgstr "Stimmberechtigte Mitglieder:"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Spendenbescheinigung"
-
-#: 
 #, fuzzy
 msgid "Zero Givers"
 msgstr "eGive"
@@ -1781,15 +1777,6 @@ msgstr "Erlaubnis"
 #: 
 msgid "System Settings"
 msgstr "Systemeinstellungen"
-
-#: 
-msgid "Tax Report"
-msgstr "Steuerbericht"
-
-#: 
-#, fuzzy
-msgid "Calendar Year"
-msgstr "Kalenderjahr"
 
 #: 
 msgid "User Editor"
@@ -6388,10 +6375,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "Anpassbarer Bericht mit Filterung nach Datum, Fonds, Familie und Zahlungsmethode."
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Passen Sie den Text an, der in Steuererklärungen angezeigt wird (sTaxReport1, sTaxReport2, usw.)."
-
-#: 
 msgid "Day"
 msgstr "Tag"
 
@@ -6472,20 +6455,12 @@ msgid "Generate"
 msgstr "Generieren"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Steuererklärungen generieren"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Generieren Sie jährliche steuerabzugsfähige Spendenerklärungen für Spender. Kann gedruckt oder per E-Mail versendet werden."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "Generieren Sie Erinnerungsschreiben für Familien mit ausstehenden Zusagen."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "Generieren Sie Berichte für Steuererklärungen, Zusagen-Verfolgung und Finanzanalyse."
 
 #: 
 msgid "ID"
@@ -6668,10 +6643,6 @@ msgid "System Info"
 msgstr "Systeminfo"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "Steuern & Spendenberichte"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "Steuerberichtstext"
 
@@ -6698,10 +6669,6 @@ msgstr "Upgrade"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "Benutzer muss ein Administrator sein oder Finanzberechtigung haben"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Überprüfen Sie, ob Kirchenname, Adresse und Kontaktinformationen auf Steuererklärungen angezeigt werden."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9213,10 +9180,6 @@ msgstr "Erinnerungsschreiben für Spendenverpflichtungen generieren"
 #: 
 msgid "Generate reports on group membership and activities"
 msgstr "Berichte über Gruppenmitgliedschaften und Aktivitäten generieren"
-
-#: 
-msgid "Generate tax statement documents for donors"
-msgstr "Steuerbescheinigungen für Spender generieren"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -16035,10 +15998,6 @@ msgid "Please confirm your family information"
 msgstr "Bitte bestätigen Sie Ihre Familieninformationen"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "Bitte senden Sie Ihre nächste Gabe an %s"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Bitte wählen Sie eine andere Familie aus, der diese Spenden zugeordnet werden sollen"
 
@@ -18069,10 +18028,6 @@ msgid "{{minutes}} min left"
 msgstr "{{minutes}} Min. verbleibend"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d Steuerdokument erfolgreich per E-Mail an die Familie versendet."
-
-#: 
 msgid "All classifications"
 msgstr "Alle Kategorien"
 
@@ -18105,28 +18060,8 @@ msgid "Columns per Page"
 msgstr "Spalten pro Seite"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "Liebe Familie %s,\n"
-"\n"
-"bitte finden Sie anbei Ihre %d Spendenbescheinigung vom %s.\n"
-"\n"
-"Bei Fragen kontaktieren Sie bitte das Gemeindebüro.\n"
-"\n"
-"Vielen Dank für Ihre Großzügigkeit."
-
-#: 
 msgid "Download CSV"
 msgstr "CSV herunterladen"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "%d Steuerdokument per E-Mail versenden"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18229,10 +18164,6 @@ msgid "Pledged"
 msgstr "Zugesagt"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "%d Steuerdokument drucken"
-
-#: 
 msgid "Recent Friends"
 msgstr "Kürzliche Freunde"
 
@@ -18257,24 +18188,8 @@ msgid "Single Pages"
 msgstr "Einzelne Seiten"
 
 #: 
-msgid "Tax Documents"
-msgstr "Steuerdokumente"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "E-Mail für Steuerdokument konnte nicht versendet werden. Bitte überprüfen Sie Ihre E-Mail-Servereinstellungen."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "Zwei halbgroße Seiten nebeneinander auf jedem Querformatblatt in Heftchenreihenfolge. Doppelseitig drucken mit \"auf kurzer Kante wenden\" und dann den Stapel in der Mitte falten. Die Spalten werden pro halbgroße Seite gezählt."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "Steuerdokument kann nicht per E-Mail versendet werden: Keine Zahlungsdaten für dieses Jahr gefunden."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "Steuerdokument kann nicht per E-Mail versendet werden: Diese Familie hat keine E-Mail-Adresse im Dateisystem."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -18943,22 +18858,10 @@ msgstr[0] "%d Standard-Ehrenamtlicher eingeteilt"
 msgstr[1] "%d Standard-Ehrenamtliche eingeteilt"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Für diese Aufgabe wird noch %d weiterer Ehrenamtlicher gebraucht. Öffnen Sie den Termin, um die Lücke zu füllen."
-msgstr[1] "Für diese Aufgabe werden noch %d weitere Ehrenamtliche gebraucht. Öffnen Sie den Termin, um die Lücke zu füllen."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d neuer Termin"
 msgstr[1] "%d neue Termine"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Für einen anstehenden Termin wird noch %d Ehrenamtlicher gebraucht."
-msgstr[1] "Für einen anstehenden Termin werden noch %d Ehrenamtliche gebraucht."
 
 #: 
 msgid "%s Calendar"
@@ -20265,10 +20168,6 @@ msgid "How often"
 msgstr "Wie oft"
 
 #: 
-msgid "How to correct this"
-msgstr "So korrigieren Sie das"
-
-#: 
 msgid "I can't"
 msgstr "Ich kann nicht"
 
@@ -21027,10 +20926,6 @@ msgstr "Dienst öffnen"
 #: 
 msgid "Open the occurrence"
 msgstr "Termin öffnen"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Öffnen Sie den Termin, um die benötigten Personen einzuteilen."
 
 #: 
 msgid "Open this team"
@@ -24725,10 +24620,6 @@ msgstr "Der Geokodierungsdienst hat nicht geantwortet — versuchen Sie es spät
 #: 
 msgid "Only the email you sent is shown."
 msgstr "Es wird nur die von Ihnen gesendete E-Mail angezeigt."
-
-#: 
-msgid "%d Giving Statement"
-msgstr "%d Spendenübersicht"
 
 #: 
 msgid "Repeat events could not be created. Check the application log for details."

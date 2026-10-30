@@ -921,10 +921,6 @@ msgid "Voting Members"
 msgstr "投票権のあるメンバー"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "寄付レポート (納税証明)"
-
-#: 
 msgid "Zero Givers"
 msgstr "寄付ゼロの利用者"
 
@@ -1712,14 +1708,6 @@ msgstr "権限"
 #: 
 msgid "System Settings"
 msgstr "システム設定"
-
-#: 
-msgid "Tax Report"
-msgstr "納税レポート"
-
-#: 
-msgid "Calendar Year"
-msgstr "カレンダー年"
 
 #: 
 msgid "User Editor"
@@ -6274,10 +6262,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "日付、基金、家族、支払い方法でフィルタリングできるカスタマイズ可能なレポート。"
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "税務明細書に表示されるテキストをカスタマイズします（sTaxReport1、sTaxReport2など）。"
-
-#: 
 msgid "Day"
 msgstr "日"
 
@@ -6358,20 +6342,12 @@ msgid "Generate"
 msgstr "生成"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "税務報告書（寄付証明書）の作成"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "寄付者の年間控除対象寄付明細書を生成します。印刷またはメールで送信できます。"
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "未払いの誓約がある家族にリマインダーレターを生成します。"
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "税務明細書、誓約追跡、財務分析のレポートを生成します。"
 
 #: 
 msgid "ID"
@@ -6554,10 +6530,6 @@ msgid "System Info"
 msgstr "システム情報"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "税務と寄付レポート"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "税務レポートの文言"
 
@@ -6584,10 +6556,6 @@ msgstr "アップグレード"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "ユーザーは管理者であるか、財務権限を持っている必要があります"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "教会名、住所、連絡先情報が税務明細書に表示されることを確認します。"
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9094,10 +9062,6 @@ msgstr "献金誓約リマインダーレターを生成"
 #: 
 msgid "Generate reports on group membership and activities"
 msgstr "グループメンバーシップと活動に関するレポートを生成"
-
-#: 
-msgid "Generate tax statement documents for donors"
-msgstr "献金者向け税務証明書を生成"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -15912,10 +15876,6 @@ msgid "Please confirm your family information"
 msgstr "家族情報を確認してください"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "次の献品を %s に郵送してください"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "これらの献金を関連付ける別の家族を選択してください"
 
@@ -17943,10 +17903,6 @@ msgid "{{minutes}} min left"
 msgstr "残り{{minutes}}分"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d件の税務文書が家族に正常にメール送信されました。"
-
-#: 
 msgid "All classifications"
 msgstr "すべての分類"
 
@@ -17979,28 +17935,8 @@ msgid "Columns per Page"
 msgstr "ページあたりの列"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "親愛なる%1$s家族へ、\n"
-"\n"
-"%3$sからの%2$d件の献金報告書をこのメールに添付してありますので、ご確認ください。\n"
-"\n"
-"ご質問がある場合は、教会事務所にお問い合わせください。\n"
-"\n"
-"ご寄付ありがとうございました。"
-
-#: 
 msgid "Download CSV"
 msgstr "CSVをダウンロード"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "%d件の税務文書をメール送信"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18103,10 +18039,6 @@ msgid "Pledged"
 msgstr "誓約された"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "%d件の税務文書を印刷"
-
-#: 
 msgid "Recent Friends"
 msgstr "最近の友人"
 
@@ -18131,24 +18063,8 @@ msgid "Single Pages"
 msgstr "個別ページ"
 
 #: 
-msgid "Tax Documents"
-msgstr "税務文書"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "税務文書のメール送信に失敗しました。メールサーバーの設定を確認してください。"
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "各横向きシートで2つの半ページを並べて、パンフレット順に配置します。「短辺を反転」して両面印刷してから、スタックを半分に折ります。列は半ページごとにカウントされます。"
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "税務文書をメール送信できません：その年の支払いデータが見つかりません。"
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "税務文書をメール送信できません：この家族のファイルにメールアドレスがありません。"
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -18813,19 +18729,9 @@ msgid_plural "%d default volunteers assigned"
 msgstr[0] "%d デフォルト ボランティアが割り当てられました"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "このポジションにはさらに %d 人のボランティアが必要です。ギャップを埋めるために発生を開きます。"
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d 新規発生"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "今後の発生のために %d 人のボランティアが必要です。"
 
 #: 
 msgid "%s Calendar"
@@ -20129,10 +20035,6 @@ msgid "How often"
 msgstr "頻度"
 
 #: 
-msgid "How to correct this"
-msgstr "修正方法"
-
-#: 
 msgid "I can't"
 msgstr "参加できません"
 
@@ -20890,10 +20792,6 @@ msgstr "ミニストリーを開く"
 #: 
 msgid "Open the occurrence"
 msgstr "開催回を開く"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "開催回を開いて、必要な人を割り当ててください。"
 
 #: 
 msgid "Open this team"
@@ -24583,10 +24481,6 @@ msgstr "ジオコーディングサービスから応答がありませんでし
 #: 
 msgid "Only the email you sent is shown."
 msgstr "送信したメールのみが表示されます。"
-
-#: 
-msgid "%d Giving Statement"
-msgstr "%d 献金明細書"
 
 #: 
 msgid "Repeat events could not be created. Check the application log for details."

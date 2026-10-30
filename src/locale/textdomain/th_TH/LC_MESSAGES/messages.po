@@ -933,10 +933,6 @@ msgid "Voting Members"
 msgstr "สมาชิกที่มีสิทธิ์ลงคะแนน"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "รายงานการให้ (ใบแจ้งภาษี)"
-
-#: 
 msgid "Zero Givers"
 msgstr "ผู้ให้ศูนย์"
 
@@ -1724,14 +1720,6 @@ msgstr "สิทธิ์"
 #: 
 msgid "System Settings"
 msgstr "การตั้งค่าระบบ"
-
-#: 
-msgid "Tax Report"
-msgstr "รายงานภาษี"
-
-#: 
-msgid "Calendar Year"
-msgstr "ปีปฏิทิน"
 
 #: 
 msgid "User Editor"
@@ -6286,10 +6274,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "รายงานที่ปรับแต่งได้พร้อมการกรองตามวันที่ กองทุน ครอบครัว และวิธีการชำระเงิน"
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "ปรับแต่งข้อความที่ปรากฏบนใบแจ้งภาษี (sTaxReport1, sTaxReport2 ฯลฯ)"
-
-#: 
 msgid "Day"
 msgstr "วัน"
 
@@ -6370,20 +6354,12 @@ msgid "Generate"
 msgstr "สร้าง"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "สร้างใบแจ้งภาษี"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "สร้างใบแจ้งการให้ที่หักลดหย่อนภาษีประจำปีสำหรับผู้บริจาค สามารถพิมพ์หรือส่งอีเมลได้"
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "สร้างจดหมายเตือนสำหรับครอบครัวที่มีคำมั่นสัญญาค้างชำระ"
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "สร้างรายงานสำหรับใบแจ้งภาษี การติดตามคำมั่นสัญญา และการวิเคราะห์การเงิน"
 
 #: 
 msgid "ID"
@@ -6566,10 +6542,6 @@ msgid "System Info"
 msgstr "ข้อมูลระบบ"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "รายงานภาษีและการให้"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "ถ้อยคำรายงานภาษี"
 
@@ -6596,10 +6568,6 @@ msgstr "อัปเกรด"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "ผู้ใช้ต้องเป็นผู้ดูแลระบบหรือมีสิทธิ์การเงิน"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "ยืนยันว่าชื่อคริสตจักร ที่อยู่ และข้อมูลติดต่อปรากฏบนใบแจ้งภาษี"
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9106,10 +9074,6 @@ msgstr "สร้างจดหมายเตือนคำปฏิญาณ
 #: 
 msgid "Generate reports on group membership and activities"
 msgstr "สร้างรายงานสมาชิกกลุ่มและกิจกรรม"
-
-#: 
-msgid "Generate tax statement documents for donors"
-msgstr "สร้างเอกสารใบแจ้งภาษีสำหรับผู้ถวาย"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -15924,10 +15888,6 @@ msgid "Please confirm your family information"
 msgstr "กรุณายืนยันข้อมูลครอบครัวของคุณ"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "กรุณาส่งเครื่องถวายครั้งต่อไปของคุณไปที่ %s"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "กรุณาเลือกครอบครัวอื่นเพื่อเชื่อมโยงการถวายทรัพย์เหล่านี้"
 
@@ -17955,10 +17915,6 @@ msgid "{{minutes}} min left"
 msgstr "เหลือเวลา {{minutes}} นาที"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "ส่งเอกสารภาษีจำนวน %d ไปยังครอบครัวทางอีเมลสำเร็จแล้ว"
-
-#: 
 msgid "All classifications"
 msgstr "การจำแนกทั้งหมด"
 
@@ -17991,28 +17947,8 @@ msgid "Columns per Page"
 msgstr "คอลัมน์ต่อหน้า"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "ครอบครัว %s ที่เคารพ\n"
-"\n"
-"โปรดดูแถลงการบริจาคจำนวน %d จาก %s ที่แนบมากับอีเมลนี้\n"
-"\n"
-"หากคุณมีคำถามใดๆ โปรดติดต่อสำนักงานโบสถ์\n"
-"\n"
-"ขอบคุณสำหรับความมีน้ำใจของคุณ"
-
-#: 
 msgid "Download CSV"
 msgstr "ดาวน์โหลด CSV"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "อีเมลเอกสารภาษี %d ฉบับ"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18115,10 +18051,6 @@ msgid "Pledged"
 msgstr "สัญญา"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "พิมพ์เอกสารภาษี %d ฉบับ"
-
-#: 
 msgid "Recent Friends"
 msgstr "เพื่อนล่าสุด"
 
@@ -18143,24 +18075,8 @@ msgid "Single Pages"
 msgstr "หน้าเดี่ยว"
 
 #: 
-msgid "Tax Documents"
-msgstr "เอกสารภาษี"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "การส่งอีเมลเอกสารภาษีล้มเหลว โปรดตรวจสอบการตั้งค่าเซิร์ฟเวอร์อีเมลของคุณ"
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "หน้ากระดาษขนาดครึ่งสองหน้าเคียงข้างกันบนแผ่นแนวนอนแต่ละแผ่น ตามลำดับของสมุดเล่ม พิมพ์สองด้านด้วย \"พลิกขอบสั้น\" จากนั้นพับสแต็กครึ่งหนึ่ง คอลัมน์คำนวณต่อครึ่งหน้า"
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "ไม่สามารถส่งอีเมลเอกสารภาษี: ไม่พบข้อมูลการชำระเงินสำหรับปีนั้น"
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "ไม่สามารถส่งอีเมลเอกสารภาษี: ครอบครัวนี้ไม่มีที่อยู่อีเมลในไฟล์"
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -18825,19 +18741,9 @@ msgid_plural "%d default volunteers assigned"
 msgstr[0] "%d อาสาสมัครเริ่มต้นได้รับการมอบหมาย"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "ตำแหน่งนี้ยังต้องการอาสาสมัครเพิ่มเติม %d คน เปิดการเกิดขึ้นเพื่อเติมช่องว่าง"
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d การเกิดขึ้นใหม่"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "ยังต้องการอาสาสมัคร %d คนสำหรับการเกิดขึ้นที่จะมาถึง"
 
 #: 
 msgid "%s Calendar"
@@ -20141,10 +20047,6 @@ msgid "How often"
 msgstr "บ่อยเพียงใด"
 
 #: 
-msgid "How to correct this"
-msgstr "วิธีแก้ไขเรื่องนี้"
-
-#: 
 msgid "I can't"
 msgstr "ฉันไม่สามารถไปได้"
 
@@ -20902,10 +20804,6 @@ msgstr "เปิดพันธกิจ"
 #: 
 msgid "Open the occurrence"
 msgstr "เปิดรอบ"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "เปิดรอบเพื่อมอบหมายคนที่คุณต้องการ"
 
 #: 
 msgid "Open this team"
@@ -24595,10 +24493,6 @@ msgstr "บริการแปลงที่อยู่เป็นพิก
 #: 
 msgid "Only the email you sent is shown."
 msgstr "แสดงเฉพาะอีเมลที่คุณส่งเท่านั้น"
-
-#: 
-msgid "%d Giving Statement"
-msgstr "ใบแจ้งการถวาย %d"
 
 #: 
 msgid "Repeat events could not be created. Check the application log for details."

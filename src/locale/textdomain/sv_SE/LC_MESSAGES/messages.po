@@ -956,10 +956,6 @@ msgid "Voting Members"
 msgstr "Röstberetigad medlemmar"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Insamlingsrapport (skattedeklarationer)"
-
-#: 
 msgid "Zero Givers"
 msgstr "Noll Givers"
 
@@ -1795,15 +1791,6 @@ msgstr "Tillstånd"
 #: 
 msgid "System Settings"
 msgstr "Systeminställningar"
-
-#: 
-msgid "Tax Report"
-msgstr "Skattrapport"
-
-#: 
-#, fuzzy
-msgid "Calendar Year"
-msgstr "Kalender år"
 
 #: 
 msgid "User Editor"
@@ -6401,10 +6388,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "Anpassningsbar rapport med filtrering efter datum, fond, familj och betalningsmetod."
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Anpassa texten som visas på skattebesked (sTaxReport1, sTaxReport2, etc)."
-
-#: 
 msgid "Day"
 msgstr "Dag"
 
@@ -6485,20 +6468,12 @@ msgid "Generate"
 msgstr "Generera"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Generera skattebesked"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Generera årliga skatteavdragsgilla gåvobesked för donatorer. Kan skrivas ut eller skickas via e-post."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "Generera påminnelsebrev till familjer med utestående löften."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "Generera rapporter för skattebesked, spårning av löften och finansiell analys."
 
 #: 
 msgid "ID"
@@ -6681,10 +6656,6 @@ msgid "System Info"
 msgstr "Systeminfo"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "Skatte- & Gåvorapporter"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "Text för skatterapport"
 
@@ -6711,10 +6682,6 @@ msgstr "Uppgradera"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "Användaren måste vara administratör eller ha ekonomibehörighet"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Verifiera att kyrkans namn, adress och kontaktinfo visas på skattebesked."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9226,10 +9193,6 @@ msgstr "Generera påminnelsebrev för givarlöften"
 #: 
 msgid "Generate reports on group membership and activities"
 msgstr "Generera rapporter om gruppmedlemskap och aktiviteter"
-
-#: 
-msgid "Generate tax statement documents for donors"
-msgstr "Generera skattebesked för givare"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -16048,10 +16011,6 @@ msgid "Please confirm your family information"
 msgstr "Bekräfta din familjeinformation"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "Skicka gärna din nästa gåva till %s"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Välj en annan familj att koppla dessa gåvor till"
 
@@ -18082,10 +18041,6 @@ msgid "{{minutes}} min left"
 msgstr "{{minutes}} min kvar"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d skattedokument skickat till familjen via e-post."
-
-#: 
 msgid "All classifications"
 msgstr "Alla klassificeringar"
 
@@ -18118,28 +18073,8 @@ msgid "Columns per Page"
 msgstr "Kolumner per sida"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "Kära %s familj,\n"
-"\n"
-"Vänligen hitta din %d givningsutgift från %s bifogad detta e-postmeddelande.\n"
-"\n"
-"Om du har några frågor, kontakta kyrkkontoret.\n"
-"\n"
-"Tack för din generositet."
-
-#: 
 msgid "Download CSV"
 msgstr "Hämta CSV"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "E-post %d skattedokument"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18242,10 +18177,6 @@ msgid "Pledged"
 msgstr "Lovat"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "Skriv ut %d skattedokument"
-
-#: 
 msgid "Recent Friends"
 msgstr "Senaste vänner"
 
@@ -18270,24 +18201,8 @@ msgid "Single Pages"
 msgstr "Enstaka sidor"
 
 #: 
-msgid "Tax Documents"
-msgstr "Skattedokument"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "E-post för skattedokument kunde inte skickas. Vänligen kontrollera inställningarna för e-postservern."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "Två halvsidors sidor sida vid sida på varje liggande ark, i broschyrordning. Skriv ut dubbelsidig med \"vänd på kort kant\", vika sedan bunten på mitten. Kolumner räknas per halvsida."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "Kan inte skicka skattedokument via e-post: ingen betalningsdata hittad för det året."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "Kan inte skicka skattedokument via e-post: denna familj har ingen e-postadress registrerad."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -18956,22 +18871,10 @@ msgstr[0] "%d standardvolontär tilldelad"
 msgstr[1] "%d standardvolontärer tilldelade"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Ytterligare %d volontär behövs fortfarande för denna position. Öppna tillfället för att fylla luckan."
-msgstr[1] "Ytterligare %d volontärer behövs fortfarande för denna position. Öppna tillfället för att fylla luckan."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d nytt tillfälle"
 msgstr[1] "%d nya tillfällen"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "%d volontär behövs fortfarande för ett kommande tillfälle."
-msgstr[1] "%d volontärer behövs fortfarande för ett kommande tillfälle."
 
 #: 
 msgid "%s Calendar"
@@ -20278,10 +20181,6 @@ msgid "How often"
 msgstr "Hur ofta"
 
 #: 
-msgid "How to correct this"
-msgstr "Så här rättar du till det"
-
-#: 
 msgid "I can't"
 msgstr "Jag kan inte"
 
@@ -21040,10 +20939,6 @@ msgstr "Öppna tjänsteområdet"
 #: 
 msgid "Open the occurrence"
 msgstr "Öppna tillfället"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Öppna tillfället för att tilldela de personer du behöver."
 
 #: 
 msgid "Open this team"
@@ -24738,10 +24633,6 @@ msgstr "Geokodningstjänsten svarade inte — försök igen senare"
 #: 
 msgid "Only the email you sent is shown."
 msgstr "Endast det e-postmeddelande du skickade visas."
-
-#: 
-msgid "%d Giving Statement"
-msgstr "%d Givarapport"
 
 #: 
 msgid "Repeat events could not be created. Check the application log for details."

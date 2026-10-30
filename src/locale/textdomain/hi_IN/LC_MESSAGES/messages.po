@@ -924,10 +924,6 @@ msgid "Voting Members"
 msgstr "मतदान सदस्य"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "दान रिपोर्ट (टैक्स विवरण)"
-
-#: 
 msgid "Zero Givers"
 msgstr "शून्य दानदाता"
 
@@ -1715,14 +1711,6 @@ msgstr "अनुमति"
 #: 
 msgid "System Settings"
 msgstr "सिस्टम सेटिंग्स"
-
-#: 
-msgid "Tax Report"
-msgstr "कर रिपोर्ट"
-
-#: 
-msgid "Calendar Year"
-msgstr "कैलेंडर वर्ष"
 
 #: 
 msgid "User Editor"
@@ -6277,10 +6265,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "तिथि, फंड, परिवार और भुगतान विधि द्वारा फ़िल्टरिंग के साथ अनुकूलन योग्य रिपोर्ट।"
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "कर विवरण पर दिखाई देने वाले टेक्स्ट को अनुकूलित करें (sTaxReport1, sTaxReport2, आदि)।"
-
-#: 
 msgid "Day"
 msgstr "दिन"
 
@@ -6361,20 +6345,12 @@ msgid "Generate"
 msgstr "जनरेट करें"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "कर विवरण जनरेट करें"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "दाताओं के लिए वार्षिक कर-कटौती योग्य दान विवरण जनरेट करें। प्रिंट या ईमेल किया जा सकता है।"
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "बकाया प्रतिज्ञाओं वाले परिवारों के लिए अनुस्मारक पत्र जनरेट करें।"
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "कर विवरण, प्रतिज्ञा ट्रैकिंग और वित्तीय विश्लेषण के लिए रिपोर्ट जनरेट करें।"
 
 #: 
 msgid "ID"
@@ -6557,10 +6533,6 @@ msgid "System Info"
 msgstr "सिस्टम जानकारी"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "कर और दान रिपोर्ट"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "कर रिपोर्ट शब्दावली"
 
@@ -6587,10 +6559,6 @@ msgstr "अपग्रेड"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "उपयोगकर्ता को व्यवस्थापक होना चाहिए या वित्त अनुमति होनी चाहिए"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "सत्यापित करें कि कर विवरण पर चर्च का नाम, पता और संपर्क जानकारी दिखाई देती है।"
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9102,10 +9070,6 @@ msgstr "प्रतिज्ञा अनुस्मारक पत्र त
 #: 
 msgid "Generate reports on group membership and activities"
 msgstr "समूह सदस्यता और गतिविधियों पर रिपोर्ट तैयार करें"
-
-#: 
-msgid "Generate tax statement documents for donors"
-msgstr "दानदाताओं के लिए कर विवरण दस्तावेज़ तैयार करें"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -15924,10 +15888,6 @@ msgid "Please confirm your family information"
 msgstr "कृपया अपनी पारिवारिक जानकारी की पुष्टि करें"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "कृपया अपना अगला दान %s को भेजें"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "कृपया कोई अन्य परिवार चुनें जिनसे इन दानों को जोड़ा जाए"
 
@@ -17958,10 +17918,6 @@ msgid "{{minutes}} min left"
 msgstr "{{minutes}} मिनट शेष"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d कर दस्तावेज़ परिवार को सफलतापूर्वक ईमेल किए गए।"
-
-#: 
 msgid "All classifications"
 msgstr "सभी वर्गीकरण"
 
@@ -17994,28 +17950,8 @@ msgid "Columns per Page"
 msgstr "प्रति पृष्ठ स्तंभ"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "प्रिय %1$s परिवार,\n"
-"\n"
-"कृपया इस ईमेल में %3$s से आपके %2$d दान विवरण को संलग्न पाएं।\n"
-"\n"
-"यदि आपके कोई प्रश्न हैं, तो कृपया चर्च कार्यालय से संपर्क करें।\n"
-"\n"
-"आपकी उदारता के लिए धन्यवाद।"
-
-#: 
 msgid "Download CSV"
 msgstr "CSV डाउनलोड करें"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "%d कर दस्तावेज़ ईमेल करें"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18118,10 +18054,6 @@ msgid "Pledged"
 msgstr "प्रतिज्ञा की गई"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "%d कर दस्तावेज़ प्रिंट करें"
-
-#: 
 msgid "Recent Friends"
 msgstr "हाल के मित्र"
 
@@ -18146,24 +18078,8 @@ msgid "Single Pages"
 msgstr "एकल पृष्ठ"
 
 #: 
-msgid "Tax Documents"
-msgstr "कर दस्तावेज़"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "कर दस्तावेज़ ईमेल भेजने में विफल। कृपया अपनी ईमेल सर्वर सेटिंग की जांच करें।"
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "प्रत्येक लैंडस्केप शीट पर एक दूसरे के बगल में दो आधे आकार के पृष्ठ, पुस्तिका क्रम में। \"छोटी किनारे पर फ़्लिप\" के साथ दोनों ओर प्रिंट करें, फिर स्टैक को आधा में मोड़ें। स्तंभ प्रति आधे पृष्ठ की गणना की जाती है।"
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "कर दस्तावेज़ ईमेल करने में असमर्थ: उस वर्ष के लिए कोई भुगतान डेटा नहीं मिला।"
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "कर दस्तावेज़ ईमेल करने में असमर्थ: इस परिवार के पास फ़ाइल में कोई ईमेल पता नहीं है।"
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -18832,22 +18748,10 @@ msgstr[0] "%d डिफ़ॉल्ट स्वयंसेवक नियु�
 msgstr[1] "%d डिफ़ॉल्ट स्वयंसेवक नियुक्त किए गए"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "इस पद के लिए अभी %d और स्वयंसेवक की आवश्यकता है। रिक्ति भरने के लिए अवसर खोलें।"
-msgstr[1] "इस पद के लिए अभी %d और स्वयंसेवकों की आवश्यकता है। रिक्ति भरने के लिए अवसर खोलें।"
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d नया अवसर"
 msgstr[1] "%d नए अवसर"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "आगामी अवसर के लिए अभी %d स्वयंसेवक की आवश्यकता है।"
-msgstr[1] "आगामी अवसर के लिए अभी %d स्वयंसेवकों की आवश्यकता है।"
 
 #: 
 msgid "%s Calendar"
@@ -20154,10 +20058,6 @@ msgid "How often"
 msgstr "कितनी बार"
 
 #: 
-msgid "How to correct this"
-msgstr "इसे कैसे सुधारें"
-
-#: 
 msgid "I can't"
 msgstr "मैं नहीं आ सकता"
 
@@ -20916,10 +20816,6 @@ msgstr "सेवकाई खोलें"
 #: 
 msgid "Open the occurrence"
 msgstr "अवसर खोलें"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "जिन लोगों की आपको आवश्यकता है उन्हें नियुक्त करने के लिए अवसर खोलें।"
 
 #: 
 msgid "Open this team"
@@ -24614,10 +24510,6 @@ msgstr "जियोकोडिंग सेवा ने जवाब नह�
 #: 
 msgid "Only the email you sent is shown."
 msgstr "केवल आपके द्वारा भेजा गया ईमेल दिखाया जाता है।"
-
-#: 
-msgid "%d Giving Statement"
-msgstr "%d दान विवरण"
 
 #: 
 msgid "Repeat events could not be created. Check the application log for details."

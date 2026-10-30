@@ -929,10 +929,6 @@ msgid "Voting Members"
 msgstr "Jumlah Anggota Voting"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Memberikan pelaporan (laporan pajak)"
-
-#: 
 msgid "Zero Givers"
 msgstr "Tidak ada yang memberi"
 
@@ -1730,14 +1726,6 @@ msgstr "Izin"
 #: 
 msgid "System Settings"
 msgstr "Pengaturan sistem"
-
-#: 
-msgid "Tax Report"
-msgstr "Laporan Pajak"
-
-#: 
-msgid "Calendar Year"
-msgstr "Tahun kalender"
 
 #: 
 msgid "User Editor"
@@ -6302,10 +6290,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "Laporan yang dapat disesuaikan dengan filter tanggal, dana, keluarga, dan metode pembayaran."
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Sesuaikan teks pada laporan pajak/donasi."
-
-#: 
 msgid "Day"
 msgstr "Hari"
 
@@ -6386,20 +6370,12 @@ msgid "Generate"
 msgstr "Buat"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Buat Laporan Donasi"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Buat laporan donasi tahunan. Dapat dicetak atau dikirim email."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "Buat surat pengingat untuk keluarga dengan janji iman yang belum tuntas."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "Buat laporan donasi, pelacakan janji iman, dan analisis keuangan."
 
 #: 
 msgid "ID"
@@ -6582,10 +6558,6 @@ msgid "System Info"
 msgstr "Info Sistem"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "Laporan Donasi"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "Redaksi Laporan Donasi"
 
@@ -6612,10 +6584,6 @@ msgstr "Pembaruan"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "Pengguna harus Admin atau memiliki izin Keuangan"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Pastikan nama gereja dan alamat muncul di laporan donasi."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9122,10 +9090,6 @@ msgstr "Buat surat pengingat janji persembahan"
 #: 
 msgid "Generate reports on group membership and activities"
 msgstr "Buat laporan tentang keanggotaan dan kegiatan grup"
-
-#: 
-msgid "Generate tax statement documents for donors"
-msgstr "Buat dokumen laporan pajak untuk donatur"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -15940,10 +15904,6 @@ msgid "Please confirm your family information"
 msgstr "Harap konfirmasi informasi keluarga Anda"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "Kirimkan persembahan Anda berikutnya ke %s"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Pilih keluarga lain untuk dikaitkan dengan persembahan ini"
 
@@ -17971,10 +17931,6 @@ msgid "{{minutes}} min left"
 msgstr "Sisa {{minutes}} menit"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d dokumen pajak berhasil dikirim ke keluarga melalui email."
-
-#: 
 msgid "All classifications"
 msgstr "Semua klasifikasi"
 
@@ -18007,28 +17963,8 @@ msgid "Columns per Page"
 msgstr "Kolom per Halaman"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "Keluarga %s yang terhormat,\n"
-"\n"
-"Silakan temukan laporan pemberian %d Anda dari %s yang dilampirkan pada email ini.\n"
-"\n"
-"Jika Anda memiliki pertanyaan, silakan hubungi kantor gereja.\n"
-"\n"
-"Terima kasih atas kemurahan hati Anda."
-
-#: 
 msgid "Download CSV"
 msgstr "Unduh CSV"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "Email %d Dokumen Pajak"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18131,10 +18067,6 @@ msgid "Pledged"
 msgstr "Dijanjikan"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "Cetak %d Dokumen Pajak"
-
-#: 
 msgid "Recent Friends"
 msgstr "Teman Baru"
 
@@ -18159,24 +18091,8 @@ msgid "Single Pages"
 msgstr "Halaman Tunggal"
 
 #: 
-msgid "Tax Documents"
-msgstr "Dokumen Pajak"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "Pengiriman email dokumen pajak gagal. Silakan periksa pengaturan server email Anda."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "Dua halaman ukuran setengah berdampingan pada setiap lembar lanskap, dalam urutan brosur. Cetak dua sisi dengan \"balik di tepi pendek\", lalu lipat tumpukan menjadi dua. Kolom dihitung per setengah halaman."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "Tidak dapat mengirim dokumen pajak melalui email: tidak ada data pembayaran yang ditemukan untuk tahun tersebut."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "Tidak dapat mengirim dokumen pajak melalui email: keluarga ini tidak memiliki alamat email di file."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -18841,19 +18757,9 @@ msgid_plural "%d default volunteers assigned"
 msgstr[0] "%d relawan default ditugaskan"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Posisi ini masih membutuhkan %d relawan lagi. Buka kejadian untuk mengisi celah."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d kejadian baru"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "%d relawan masih dibutuhkan untuk kejadian yang akan datang."
 
 #: 
 msgid "%s Calendar"
@@ -20157,10 +20063,6 @@ msgid "How often"
 msgstr "Seberapa sering"
 
 #: 
-msgid "How to correct this"
-msgstr "Cara memperbaikinya"
-
-#: 
 msgid "I can't"
 msgstr "Saya tidak bisa"
 
@@ -20918,10 +20820,6 @@ msgstr "Buka pelayanan"
 #: 
 msgid "Open the occurrence"
 msgstr "Buka kejadian"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Buka kejadian untuk menugaskan orang yang Anda butuhkan."
 
 #: 
 msgid "Open this team"
@@ -24611,10 +24509,6 @@ msgstr "Layanan geocoding tidak merespons — coba lagi nanti"
 #: 
 msgid "Only the email you sent is shown."
 msgstr "Hanya email yang Anda kirim yang ditampilkan."
-
-#: 
-msgid "%d Giving Statement"
-msgstr "Laporan Pemberian %d"
 
 #: 
 msgid "Repeat events could not be created. Check the application log for details."

@@ -939,10 +939,6 @@ msgid "Voting Members"
 msgstr "Bầu chọn thành viên"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Đưa ra Báo cáo (Báo cáo Thuế)"
-
-#: 
 msgid "Zero Givers"
 msgstr "Zero Givers"
 
@@ -1740,14 +1736,6 @@ msgstr "Quyền hạn"
 #: 
 msgid "System Settings"
 msgstr "Hệ thống"
-
-#: 
-msgid "Tax Report"
-msgstr "Báo cáo thuế"
-
-#: 
-msgid "Calendar Year"
-msgstr "Lịch năm"
 
 #: 
 msgid "User Editor"
@@ -6312,10 +6300,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "Báo cáo có thể tùy chỉnh với các bộ lọc."
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Tùy chỉnh văn bản xuất hiện trên báo cáo thuế."
-
-#: 
 msgid "Day"
 msgstr "Ngày"
 
@@ -6396,20 +6380,12 @@ msgid "Generate"
 msgstr "Tạo"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Tạo báo cáo thuế"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Tạo báo cáo dâng hiến khấu trừ thuế hàng năm."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "Tạo thư nhắc nhở cho các gia đình chưa hoàn thành lời hứa."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "Tạo báo cáo thuế, theo dõi lời hứa và phân tích tài chính."
 
 #: 
 msgid "ID"
@@ -6592,10 +6568,6 @@ msgid "System Info"
 msgstr "Thông tin hệ thống"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "Báo cáo Thuế & Dâng hiến"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "Ngôn từ báo cáo thuế"
 
@@ -6622,10 +6594,6 @@ msgstr "Nâng cấp"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "Người dùng phải là Quản trị viên hoặc có quyền Tài chính"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Xác minh tên, địa chỉ và thông tin liên hệ trên báo cáo thuế."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9132,10 +9100,6 @@ msgstr "Tao thu nhac nho cam ket dang hien"
 #: 
 msgid "Generate reports on group membership and activities"
 msgstr "Tao bao cao ve thanh vien nhom va hoat dong"
-
-#: 
-msgid "Generate tax statement documents for donors"
-msgstr "Tao tai lieu bao cao thue cho nguoi dang hien"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -15950,10 +15914,6 @@ msgid "Please confirm your family information"
 msgstr "Vui lòng xác nhận thông tin gia đình của bạn"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "Vui lòng gửi dâng hiến tiếp theo của bạn đến %s"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Vui lòng chọn một gia đình khác để liên kết các khoản dâng hiến này"
 
@@ -17981,10 +17941,6 @@ msgid "{{minutes}} min left"
 msgstr "còn lại {{minutes}} phút"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d tài liệu thuế đã được gửi qua email cho gia đình thành công."
-
-#: 
 msgid "All classifications"
 msgstr "Tất cả các phân loại"
 
@@ -18017,28 +17973,8 @@ msgid "Columns per Page"
 msgstr "Cột Trên Mỗi Trang"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "Thân mến %s Gia đình,\n"
-"\n"
-"Vui lòng tìm bảng kê quỹ %d của bạn từ %s được đính kèm trong email này.\n"
-"\n"
-"Nếu bạn có bất kỳ câu hỏi nào, vui lòng liên hệ với văn phòng nhà thờ.\n"
-"\n"
-"Cảm ơn vì sự hào phóng của bạn."
-
-#: 
 msgid "Download CSV"
 msgstr "Tải xuống CSV"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "Email %d Tài Liệu Thuế"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18141,10 +18077,6 @@ msgid "Pledged"
 msgstr "Cam Kết"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "In %d Tài Liệu Thuế"
-
-#: 
 msgid "Recent Friends"
 msgstr "Bạn Gần Đây"
 
@@ -18169,24 +18101,8 @@ msgid "Single Pages"
 msgstr "Các Trang Duy Nhất"
 
 #: 
-msgid "Tax Documents"
-msgstr "Tài liệu Thuế"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "Không thể gửi email tài liệu thuế. Vui lòng kiểm tra cài đặt máy chủ email của bạn."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "Hai trang nửa kích thước cạnh nhau trên mỗi tờ ngang, theo thứ tự sách. In hai mặt với \"lật trên cạnh ngắn\", sau đó gập đống làm đôi. Các cột được tính trên mỗi nửa trang."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "Không thể gửi email tài liệu thuế: không tìm thấy dữ liệu thanh toán cho năm đó."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "Không thể gửi email tài liệu thuế: gia đình này không có địa chỉ email trong hồ sơ."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -18851,19 +18767,9 @@ msgid_plural "%d default volunteers assigned"
 msgstr[0] "%d tình nguyện viên mặc định được gán"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Vị trí này vẫn cần thêm %d tình nguyện viên. Mở sự kiện để lấp đầy khoảng trống."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d lần xuất hiện mới"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Vẫn cần %d tình nguyện viên cho một sự kiện sắp tới."
 
 #: 
 msgid "%s Calendar"
@@ -20167,10 +20073,6 @@ msgid "How often"
 msgstr "Tần suất"
 
 #: 
-msgid "How to correct this"
-msgstr "Cách sửa lỗi này"
-
-#: 
 msgid "I can't"
 msgstr "Tôi không thể"
 
@@ -20928,10 +20830,6 @@ msgstr "Mở mục vụ"
 #: 
 msgid "Open the occurrence"
 msgstr "Mở lần diễn ra"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Hãy mở lần diễn ra để phân công những người bạn cần."
 
 #: 
 msgid "Open this team"
@@ -24621,10 +24519,6 @@ msgstr "Dịch vụ mã hóa địa lý không phản hồi — hãy thử lại
 #: 
 msgid "Only the email you sent is shown."
 msgstr "Chỉ hiển thị email bạn đã gửi."
-
-#: 
-msgid "%d Giving Statement"
-msgstr "Báo cáo đóng góp %d"
 
 #: 
 msgid "Repeat events could not be created. Check the application log for details."

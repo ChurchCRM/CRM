@@ -3,6 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\Utils\CSRFUtils;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\EventQuery;
@@ -110,25 +111,25 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
 <?php if ($taxEmailSent) { ?>
 <div class="alert alert-success alert-dismissible fade show" role="alert">
     <i class="fa-solid fa-check-circle me-2"></i>
-    <?= sprintf(gettext('%d tax document emailed to the family successfully.'), (int)$taxEmailSent) ?>
+    <?= sprintf(gettext('%d giving statement emailed to the family successfully.'), (int)$taxEmailSent) ?>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="<?= gettext('Close') ?>"></button>
 </div>
 <?php } elseif ($taxEmailError === 'NoEmail') { ?>
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
     <i class="fa-solid fa-triangle-exclamation me-2"></i>
-    <?= gettext('Unable to email tax document: this family has no email address on file.') ?>
+    <?= gettext('Unable to email giving statement: this family has no email address on file.') ?>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="<?= gettext('Close') ?>"></button>
 </div>
 <?php } elseif ($taxEmailError === 'NoData') { ?>
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
     <i class="fa-solid fa-triangle-exclamation me-2"></i>
-    <?= gettext('Unable to email tax document: no payment data found for that year.') ?>
+    <?= gettext('Unable to email giving statement: no payment data found for that year.') ?>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="<?= gettext('Close') ?>"></button>
 </div>
 <?php } elseif ($taxEmailError === 'SendFailed') { ?>
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
     <i class="fa-solid fa-circle-xmark me-2"></i>
-    <?= gettext('Tax document email failed to send. Please check your email server settings.') ?>
+    <?= gettext('Giving statement email failed to send. Please check your email server settings.') ?>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="<?= gettext('Close') ?>"></button>
 </div>
 <?php } ?>
@@ -168,17 +169,17 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
                     </a>
                     <?php if (!empty($taxYears)) { ?>
                     <div class="dropdown-divider"></div>
-                    <h6 class="dropdown-header"><i class="fa-solid fa-file-invoice-dollar me-1"></i><?= gettext('Tax Documents') ?></h6>
+                    <h6 class="dropdown-header"><i class="fa-solid fa-file-invoice-dollar me-1"></i><?= gettext('Giving Statements') ?></h6>
                     <?php foreach ($taxYears as $taxYear) { ?>
-                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/Reports/TaxReport.php?familyId=<?= $family->getId() ?>&amp;year=<?= (int)$taxYear ?>" target="_blank">
-                        <i class="fa-solid fa-print me-2"></i><?= sprintf(gettext('Print %d Tax Doc'), (int)$taxYear) ?>
+                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/finance/reports/giving-statements/download?familyId=<?= $family->getId() ?>&amp;year=<?= (int)$taxYear ?>" target="_blank">
+                        <i class="fa-solid fa-print me-2"></i><?= sprintf(gettext('Print %s Giving Statement'), FiscalYearUtils::getFiscalYearDatesForCalendarYear((int) $taxYear)['label']) ?>
                     </a>
-                    <form method="post" action="<?= SystemURLs::getRootPath() ?>/Reports/FamilyTaxReportEmail.php" class="m-0">
+                    <form method="post" action="<?= SystemURLs::getRootPath() ?>/finance/reports/giving-statements/email" class="m-0">
                         <input type="hidden" name="familyId" value="<?= $family->getId() ?>">
                         <input type="hidden" name="year" value="<?= (int)$taxYear ?>">
                         <?= CSRFUtils::getTokenInputField('tax_email_' . (int)$taxYear) ?>
                         <button type="submit" class="dropdown-item border-0 bg-transparent w-100 text-start">
-                            <i class="fa-solid fa-envelope me-2"></i><?= sprintf(gettext('Email %d Tax Doc'), (int)$taxYear) ?>
+                            <i class="fa-solid fa-envelope me-2"></i><?= sprintf(gettext('Email %s Giving Statement'), FiscalYearUtils::getFiscalYearDatesForCalendarYear((int) $taxYear)['label']) ?>
                         </button>
                     </form>
                     <?php } ?>

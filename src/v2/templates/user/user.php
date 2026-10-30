@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Authentication\SignInThrottle;
 use ChurchCRM\dto\LocaleInfo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
@@ -94,6 +95,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <div>
                 <strong><?= gettext('Account locked') ?></strong>
                 <div class="small"><?= gettext('This account is locked because of too many failed login attempts.') ?></div>
+                <div class="small" data-cy="lockout-minutes-left"><?= sprintf(gettext('Minutes until it unlocks by itself: %d'), SignInThrottle::minutesUntilUnlock($user)) ?></div>
               </div>
             </div>
             <?php endif; ?>

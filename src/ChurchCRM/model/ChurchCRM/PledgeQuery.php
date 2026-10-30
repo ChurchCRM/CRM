@@ -28,6 +28,7 @@ class PledgeQuery extends BasePledgeQuery
      * @param array $fundIds Optional fund IDs to filter
      * @param array $familyIds Optional family IDs to filter
      * @param array $classificationIds Optional classification IDs to filter
+     * @param bool $byDepositDate True to apply the date range to the deposit date instead of the payment date
      * @return self
      */
     public function filterForTaxReport(
@@ -35,24 +36,16 @@ class PledgeQuery extends BasePledgeQuery
         string $dateEnd = '',
         array $fundIds = [],
         array $familyIds = [],
-        array $classificationIds = []
+        array $classificationIds = [],
+        bool $byDepositDate = false
     ): self {
         $this->filterByPledgeOrPayment('Payment');
+        $this->filterByDateRange($dateStart, $dateEnd, $byDepositDate);
 
-        if (!empty($dateStart)) {
-            $this->filterByDate($dateStart, Criteria::GREATER_EQUAL);
-        }
-        if (!empty($dateEnd)) {
-            $this->filterByDate($dateEnd, Criteria::LESS_EQUAL);
-        }
         if (!empty($fundIds)) {
             $this->filterByFundId($fundIds, Criteria::IN);
         }
-        if (!empty($familyIds)) {
-            $this->filterByFamId($familyIds, Criteria::IN);
-        }
-        // Note: Classification filtering is complex and requires post-processing
-        // as it involves a relationship through ListOption. Can be added to service layer if needed.
+        $this->filterByFamiliesAndClassifications($familyIds, $classificationIds);
 
         return $this->leftJoinWithFamily()
             ->leftJoinWithDonationFund()
@@ -88,45 +81,16 @@ class PledgeQuery extends BasePledgeQuery
         $this->filterByPledgeOrPayment('Payment');
         $this->addSelfSelectColumns(); // pin Pledge columns first before any leftJoinWithXxx()
 
-        // Apply date filtering based on selected datetype
-        if ($datetype === 'Deposit') {
-            // Filter by deposit date using a single useDepositQuery() block.
-            // IMPORTANT: Do NOT call innerJoinWithDeposit() before useDepositQuery() —
-            // useDepositQuery() overwrites any prior join registered under the same key,
-            // causing conditions from separate useDepositQuery() calls to reference stale
-            // aliases that no longer match the generated SQL (returning no rows).
-            $depositQuery = $this->useDepositQuery(null, Criteria::INNER_JOIN);
-            if (!empty($dateStart)) {
-                $depositQuery->filterByDate($dateStart, Criteria::GREATER_EQUAL);
-            }
-            if (!empty($dateEnd)) {
-                $depositQuery->filterByDate($dateEnd, Criteria::LESS_EQUAL);
-            }
-            $depositQuery->endUse();
-        } else {
-            // Filter by payment date
-            if (!empty($dateStart)) {
-                $this->filterByDate($dateStart, Criteria::GREATER_EQUAL);
-            }
-            if (!empty($dateEnd)) {
-                $this->filterByDate($dateEnd, Criteria::LESS_EQUAL);
-            }
-            // For payment date, left join is fine since deposit is optional
-            $this->leftJoinWithDeposit();
-        }
-        
+        $this->filterByDateRange($dateStart, $dateEnd, $datetype === 'Deposit');
+
         if (!empty($fundIds)) {
             $this->filterByFundId($fundIds, Criteria::IN);
         }
-        if (!empty($familyIds)) {
-            $this->filterByFamId($familyIds, Criteria::IN);
-        }
+        $this->filterByFamiliesAndClassifications($familyIds, $classificationIds);
         // Handle payment methods - use IN clause (supports array)
         if (!empty($methods)) {
             $this->filterByMethod($methods, Criteria::IN);
         }
-        // Note: Classification filtering is complex and requires post-processing
-        // as it involves a relationship through ListOption. Can be added to service layer if needed.
 
         // Left joins for optional relationships
         $this->leftJoinWithFamily()
@@ -183,5 +147,67 @@ class PledgeQuery extends BasePledgeQuery
         }
 
         return $this->orderByFamId();
+    }
+
+    /**
+     * Apply a date range to the payment date, or to the deposit date the payment was banked on.
+     *
+     * The deposit join is made once inside a single useDepositQuery() block: calling
+     * innerJoinWithDeposit() first, or opening a second useDepositQuery(), leaves
+     * conditions pointing at a stale alias and the query returns no rows.
+     */
+    private function filterByDateRange(string $dateStart, string $dateEnd, bool $byDepositDate): void
+    {
+        if ($byDepositDate) {
+            $depositQuery = $this->useDepositQuery(null, Criteria::INNER_JOIN);
+            if (!empty($dateStart)) {
+                $depositQuery->filterByDate($dateStart, Criteria::GREATER_EQUAL);
+            }
+            if (!empty($dateEnd)) {
+                $depositQuery->filterByDate($dateEnd, Criteria::LESS_EQUAL);
+            }
+            $depositQuery->endUse();
+
+            return;
+        }
+
+        if (!empty($dateStart)) {
+            $this->filterByDate($dateStart, Criteria::GREATER_EQUAL);
+        }
+        if (!empty($dateEnd)) {
+            $this->filterByDate($dateEnd, Criteria::LESS_EQUAL);
+        }
+        $this->leftJoinWithDeposit();
+    }
+
+    /**
+     * Restrict payments to the chosen families, and to families that have a member in one of
+     * the chosen classifications. Both given: a family must satisfy both.
+     */
+    private function filterByFamiliesAndClassifications(array $familyIds, array $classificationIds): void
+    {
+        $familyIds = array_values(array_unique(array_map('intval', $familyIds)));
+
+        if (!empty($classificationIds)) {
+            $classifiedFamilyIds = FamilyQuery::create()
+                ->usePersonQuery()
+                    ->filterByClsId(array_map('intval', $classificationIds), Criteria::IN)
+                ->endUse()
+                ->select('Id')
+                ->distinct()
+                ->find()
+                ->toArray();
+            $classifiedFamilyIds = array_map('intval', $classifiedFamilyIds);
+            $familyIds = empty($familyIds) ? $classifiedFamilyIds : array_values(array_intersect($familyIds, $classifiedFamilyIds));
+
+            // No family qualifies: match nothing rather than dropping the filter.
+            if (empty($familyIds)) {
+                $familyIds = [-1];
+            }
+        }
+
+        if (!empty($familyIds)) {
+            $this->filterByFamId($familyIds, Criteria::IN);
+        }
     }
 }

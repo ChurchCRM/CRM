@@ -158,6 +158,7 @@ INSERT INTO `config_cfg` (`cfg_name`, `cfg_value`) VALUES ('bAllowPrereleaseUpgr
 ('bUseScannedChecks',''),
 ('iChurchLatitude','39.1111974'),
 ('iChurchLongitude','-94.5838009'),
+('iMaxFailedLoginsPerIP','1000'),
 ('IncludeDataInNewPersonNotifications',''),
 ('plugin.external-backup.enabled','0'),
 ('plugin.holidays.categories','official,religious'),
@@ -1734,6 +1735,9 @@ INSERT INTO `property_pro` (`pro_ID`, `pro_Class`, `pro_prt_ID`, `pro_Name`, `pr
 INSERT INTO `propertytype_prt` (`prt_ID`, `prt_Class`, `prt_Name`, `prt_Description`) VALUES (1,'p','General','General Person Properties'),
 (2,'f','General','General Family Properties'),
 (3,'g','General','General Group Properties');
+
+-- locked.user (7) stays locked until 2100: the hash is SHA-256 of '7'.
+INSERT INTO `rate_limit_rlm` (`rlm_ID`, `rlm_Bucket`, `rlm_KeyHash`, `rlm_Hits`, `rlm_ResetAt`) VALUES (1,'signin.lockout','7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451',1,4102444800);
 
 INSERT INTO `record2property_r2p` (`r2p_pro_ID`, `r2p_record_ID`, `r2p_Value`) VALUES (4,7,''),
 (4,8,''),

@@ -928,10 +928,6 @@ msgid "Voting Members"
 msgstr "Hlasovní členové"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Zpráva o darech (daňové výkazy)"
-
-#: 
 msgid "Zero Givers"
 msgstr "Nepřispívači"
 
@@ -1729,14 +1725,6 @@ msgstr "Oprávnení"
 #: 
 msgid "System Settings"
 msgstr "Nastavení systému"
-
-#: 
-msgid "Tax Report"
-msgstr "Daňová sestava"
-
-#: 
-msgid "Calendar Year"
-msgstr "Kalendářní rok"
 
 #: 
 msgid "User Editor"
@@ -6304,10 +6292,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "Přizpůsobitelná zpráva s filtrováním podle data, fondu, rodiny a způsobu platby."
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Přizpůsobte text, který se zobrazuje na daňových výpisech (sTaxReport1, sTaxReport2 atd.)."
-
-#: 
 msgid "Day"
 msgstr "den"
 
@@ -6388,20 +6372,12 @@ msgid "Generate"
 msgstr "Generovat"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Generovat danƮgení výkazy"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Vytvořte pro dárce roční daňově odpočitatelné potvrzení o daru. Lze vytisknout nebo zaslat e-mailem."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "Vytvořte upomínkové dopisy pro rodiny s nesplacenými závazky."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "Vytvořte zprávy pro daňová přiznání, sledování závazků a finanční analýzy."
 
 #: 
 msgid "ID"
@@ -6584,10 +6560,6 @@ msgid "System Info"
 msgstr "Informace o systému"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "Daně a zprávy o dárcové"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "Slovní zpráva o daních"
 
@@ -6614,10 +6586,6 @@ msgstr "Aktualizovat"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "Uživatel musí být správcem nebo mít oprávnění Finance"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Ověřte, zda jsou název kostela, adresa a kontaktní údaje uvedeny na daňových přiznáních."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9134,10 +9102,6 @@ msgstr "Generovat upomínkové dopisy k závazkům"
 #: 
 msgid "Generate reports on group membership and activities"
 msgstr "Generovat sestavy o členství ve skupinách a aktivitách"
-
-#: 
-msgid "Generate tax statement documents for donors"
-msgstr "Generovat daňové potvrzení pro dárce"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -15960,10 +15924,6 @@ msgid "Please confirm your family information"
 msgstr "Potvrďte prosím informace o vaší rodině"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "Zašlete prosím svůj příští dar na %s"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Vyberte prosím jinou rodinu, se kterou chcete tato darování spojit"
 
@@ -17997,10 +17957,6 @@ msgid "{{minutes}} min left"
 msgstr "zbývá {{minutes}} min"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d daňový dokument byl úspěšně zaslán rodině."
-
-#: 
 msgid "All classifications"
 msgstr "Všechny klasifikace"
 
@@ -18033,28 +17989,8 @@ msgid "Columns per Page"
 msgstr "Sloupce na stránku"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "Vážená rodino %s,\n"
-"\n"
-"Najdete přiložený výpis darů číslo %d ze dne %s.\n"
-"\n"
-"Pokud máte nějaké otázky, kontaktujte prosím kostol.\n"
-"\n"
-"Děkujeme vám za vaši štědrost."
-
-#: 
 msgid "Download CSV"
 msgstr "Stáhnout CSV"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "Poslat email %d daňový dokument"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18157,10 +18093,6 @@ msgid "Pledged"
 msgstr "Slíbeno"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "Tisk %d daňový dokument"
-
-#: 
 msgid "Recent Friends"
 msgstr "Nedávní přátelé"
 
@@ -18185,24 +18117,8 @@ msgid "Single Pages"
 msgstr "Jednotlivé stránky"
 
 #: 
-msgid "Tax Documents"
-msgstr "Daňové doklady"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "Odeslání e-mailu s daňovým dokladem se nezdařilo. Zkontrolujte prosím nastavení e-mailového serveru."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "Dvě poloviční stránky vedle sebe na každém listu na šířku v pořadí pro brožuru. Tiskněte oboustranně s otáčením podél kratší hrany a poté stoh přeložte napůl. Sloupce se počítají na půlstránku."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "Daňový doklad nelze odeslat e-mailem: pro daný rok nebyly nalezeny žádné platební údaje."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "Daňový doklad nelze odeslat e-mailem: tato rodina nemá uvedenou e-mailovou adresu."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -18875,25 +18791,11 @@ msgstr[1] "%d výchozí dobrovolníci přiřazeni"
 msgstr[2] "%d výchozích dobrovolníků přiřazeno"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Pro tuto pozici je stále potřeba ještě %d dobrovolník. Otevřete výskyt a vyplňte mezeru."
-msgstr[1] "Pro tuto pozici jsou stále potřeba ještě %d dobrovolníci. Otevřete výskyt a vyplňte mezeru."
-msgstr[2] "Pro tuto pozici je stále potřeba ještě %d dobrovolníků. Otevřete výskyt a vyplňte mezeru."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d nový výskyt"
 msgstr[1] "%d nové výskyty"
 msgstr[2] "%d nových výskytů"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Pro nadcházející výskyt je stále potřeba %d dobrovolník."
-msgstr[1] "Pro nadcházející výskyt jsou stále potřeba %d dobrovolníci."
-msgstr[2] "Pro nadcházející výskyt je stále potřeba %d dobrovolníků."
 
 #: 
 msgid "%s Calendar"
@@ -20203,10 +20105,6 @@ msgid "How often"
 msgstr "Jak často"
 
 #: 
-msgid "How to correct this"
-msgstr "Jak to opravit"
-
-#: 
 msgid "I can't"
 msgstr "Nemohu"
 
@@ -20966,10 +20864,6 @@ msgstr "Otevřít službu"
 #: 
 msgid "Open the occurrence"
 msgstr "Otevřít výskyt"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Otevřete výskyt a přiřaďte lidi, které potřebujete."
 
 #: 
 msgid "Open this team"
@@ -24669,10 +24563,6 @@ msgstr "Geokódovací služba neodpověděla — zkuste to znovu později"
 #: 
 msgid "Only the email you sent is shown."
 msgstr "Zobrazuje se pouze e-mail, který jste odeslali."
-
-#: 
-msgid "%d Giving Statement"
-msgstr "%d Výkaz darů"
 
 #: 
 msgid "Repeat events could not be created. Check the application log for details."

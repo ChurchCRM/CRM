@@ -927,10 +927,6 @@ msgid "Voting Members"
 msgstr "Äänestävät jäsenet"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Lahjoitusraportti (verotusta varten)"
-
-#: 
 msgid "Zero Givers"
 msgstr "Ei-lahjoittajat"
 
@@ -1718,14 +1714,6 @@ msgstr "Lupa"
 #: 
 msgid "System Settings"
 msgstr "Järjestelmäasetukset"
-
-#: 
-msgid "Tax Report"
-msgstr "Veroraportti"
-
-#: 
-msgid "Calendar Year"
-msgstr "Kalenterivuosi"
 
 #: 
 msgid "User Editor"
@@ -6279,10 +6267,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "Muokattava raportti, jonka voit suodattaa päivämäärän, rahaston, perheen ja maksutavan mukaan."
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Mukauta verohallinnon lausunnoissa näkyvää tekstiä (sTaxReport1, sTaxReport2, jne)."
-
-#: 
 msgid "Day"
 msgstr "Päivä"
 
@@ -6363,20 +6347,12 @@ msgid "Generate"
 msgstr "Luo"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Luo veroilmoitukset"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Luo vuosittaiset vähennyskelpoiset lahjoitusotteet lahjoittajille. Voidaan tulostaa tai lähettää sähköpostitse."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "Luo muistutuskirjeitä perheille, joilla on avoimia maksuasitoumuksia."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "Luo raportteja veroilmoituksia, sitoumusseurantaa ja talousanalyysia varten."
 
 #: 
 msgid "ID"
@@ -6559,10 +6535,6 @@ msgid "System Info"
 msgstr "Järjestelmätiedot"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "Vero- ja lahjoitusraportit"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "Veroraportin tekstit"
 
@@ -6589,10 +6561,6 @@ msgstr "Päivitä"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "Käyttäjän on oltava ylläpitäjä tai hänellä on oltava taloushallinnon oikeudet"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Varmista, että kirkon nimi, osoite ja yhteystiedot näkyvät veroilmoituksissa."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9104,10 +9072,6 @@ msgstr "Luo lupausten muistutuskirjeet"
 #: 
 msgid "Generate reports on group membership and activities"
 msgstr "Luo raportit ryhmäjäsenyydestä ja toiminnasta"
-
-#: 
-msgid "Generate tax statement documents for donors"
-msgstr "Luo verotodistukset lahjoittajille"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -15926,10 +15890,6 @@ msgid "Please confirm your family information"
 msgstr "Vahvista perhetietosi"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "Lähetä seuraava lahjasi postitse osoitteeseen %s"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Valitse toinen perhe, johon nämä lahjoitukset liitetään"
 
@@ -17960,10 +17920,6 @@ msgid "{{minutes}} min left"
 msgstr "{{minutes}} min jäljellä"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d veroasiakirja lähetetty perheelle onnistuneesti."
-
-#: 
 msgid "All classifications"
 msgstr "Kaikki luokittelut"
 
@@ -17996,28 +17952,8 @@ msgid "Columns per Page"
 msgstr "Sarakkeet sivulla"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "Hyvä %s-perhe,\n"
-"\n"
-"Liitteenä on lahjoitussilta vuodelta %s.\n"
-"\n"
-"Jos sinulla on kysymyksiä, ota yhteyttä seurakunnan toimistoon.\n"
-"\n"
-"Kiitos anteliaisuudestasi."
-
-#: 
 msgid "Download CSV"
 msgstr "Lataa CSV"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "Lähetä %d veroasiakirja"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18120,10 +18056,6 @@ msgid "Pledged"
 msgstr "Luvattuna"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "Tulosta %d veroasiakirja"
-
-#: 
 msgid "Recent Friends"
 msgstr "Viimeaikaiset ystävät"
 
@@ -18148,24 +18080,8 @@ msgid "Single Pages"
 msgstr "Yksittäiset sivut"
 
 #: 
-msgid "Tax Documents"
-msgstr "Veroasiakirjat"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "Veroasiakirjan lähettäminen sähköpostitse epäonnistui. Tarkista sähköpostipalvelimen asetukset."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "Kaksi puolikokoa olevaa sivua vierekkäin kullakin vaaka-arkilla, kirjastojen järjestyksessä. Tulosta kaksipuolisesti \"käännä lyhyellä reunalla\", sitten taita pino puoliksi. Sarakkeet lasketaan puoli sivulla."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "Veroasiakirjaa ei voi lähettää sähköpostitse: kyseiselle vuodelle ei löytynyt maksutietoja."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "Veroasiakirjaa ei voi lähettää sähköpostitse: tällä perheellä ei ole sähköpostiosoitetta tiedostoissa."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -18834,22 +18750,10 @@ msgstr[0] "%d oletusvapaaehtoinen määrätty"
 msgstr[1] "%d oletusvapaaehtoista määrätty"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Tähän tehtävään tarvitaan vielä %d vapaaehtoinen lisää. Avaa tapahtumakerta täyttääksesi aukon."
-msgstr[1] "Tähän tehtävään tarvitaan vielä %d vapaaehtoista lisää. Avaa tapahtumakerta täyttääksesi aukon."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d uusi tapahtumakerta"
 msgstr[1] "%d uutta tapahtumakertaa"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Tulevalle tapahtumakerralle tarvitaan vielä %d vapaaehtoinen."
-msgstr[1] "Tuleville tapahtumakerroille tarvitaan vielä %d vapaaehtoista."
 
 #: 
 msgid "%s Calendar"
@@ -20156,10 +20060,6 @@ msgid "How often"
 msgstr "Kuinka usein"
 
 #: 
-msgid "How to correct this"
-msgstr "Näin korjaat tämän"
-
-#: 
 msgid "I can't"
 msgstr "En voi"
 
@@ -20918,10 +20818,6 @@ msgstr "Avaa työala"
 #: 
 msgid "Open the occurrence"
 msgstr "Avaa tapahtumakerta"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Avaa tapahtumakerta määrittääksesi tarvitsemasi henkilöt."
 
 #: 
 msgid "Open this team"
@@ -24616,10 +24512,6 @@ msgstr "Geokoodauspalvelu ei vastannut — yritä myöhemmin uudelleen"
 #: 
 msgid "Only the email you sent is shown."
 msgstr "Vain lähettämäsi sähköposti näytetään."
-
-#: 
-msgid "%d Giving Statement"
-msgstr "%d Lahjoitusilmoitus"
 
 #: 
 msgid "Repeat events could not be created. Check the application log for details."

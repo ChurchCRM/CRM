@@ -928,10 +928,6 @@ msgid "Voting Members"
 msgstr "Wajumbe wa Kupiga Kura"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Ripoti ya Utoaji (Taarifa za Kodi)"
-
-#: 
 msgid "Zero Givers"
 msgstr "Watoa Sifuri"
 
@@ -1729,14 +1725,6 @@ msgstr "Ruhusa"
 #: 
 msgid "System Settings"
 msgstr "Mipangilio ya Mfumo"
-
-#: 
-msgid "Tax Report"
-msgstr "Ripoti ya Kodi"
-
-#: 
-msgid "Calendar Year"
-msgstr "Mwaka wa Kalenda"
 
 #: 
 msgid "User Editor"
@@ -6308,10 +6296,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "Ripoti inayoweza kubadilishwa kwa kuchuja tarehe, mfuko, familia, na njia ya malipo."
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Badilisha maandishi yanayoonekana kwenye taarifa za kodi."
-
-#: 
 msgid "Day"
 msgstr "Siku"
 
@@ -6392,20 +6376,12 @@ msgid "Generate"
 msgstr "Tengeneza"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Tengeneza Taarifa za Kodi"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Tengeneza taarifa za utoaji zinazopunguzwa kodi. Zinaweza kuchapwa au kutumwa kwa barua pepe."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "Tengeneza barua za ukumbusho kwa familia zenye ahadi ambazo hazijalipwa."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "Tengeneza ripoti za taarifa za kodi, ufuatiliaji wa ahadi, na uchambuzi wa kifedha."
 
 #: 
 msgid "ID"
@@ -6588,10 +6564,6 @@ msgid "System Info"
 msgstr "Taarifa za Mfumo"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "Ripoti za Kodi na Utoaji"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "Maandishi ya Ripoti ya Kodi"
 
@@ -6618,10 +6590,6 @@ msgstr "Sasisha"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "Mtumiaji lazima awe Msimamizi au awe na ruhusa ya Fedha"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Thibitisha jina la kanisa, anwani, na taarifa za mawasiliano zinaonekana kwenye taarifa za kodi."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9133,10 +9101,6 @@ msgstr "Tengeneza barua za kukumbusha ahadi za sadaka"
 #: 
 msgid "Generate reports on group membership and activities"
 msgstr "Tengeneza ripoti za uanachama wa kikundi na shughuli"
-
-#: 
-msgid "Generate tax statement documents for donors"
-msgstr "Tengeneza nyaraka za taarifa ya kodi kwa wafadhili"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -15955,10 +15919,6 @@ msgid "Please confirm your family information"
 msgstr "Tafadhali thibitisha taarifa za familia yako"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "Tafadhali tuma zawadi yako inayofuata kwa %s"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Tafadhali chagua familia nyingine ya kushirikisha michango hii"
 
@@ -17989,10 +17949,6 @@ msgid "{{minutes}} min left"
 msgstr "dakika {{minutes}} zimebaki"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "Hati %d ya kodi imetumwa kwa familia kwa mafanikio."
-
-#: 
 msgid "All classifications"
 msgstr "Uainishaji wote"
 
@@ -18025,28 +17981,8 @@ msgid "Columns per Page"
 msgstr "Safu Wima kwa Ukurasa"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "Mpendwa Familia ya %s,\n"
-"\n"
-"Tafadhali pata taarifa yako ya utoaji ya %d kutoka %s iliyoambatishwa kwenye barua pepe hii.\n"
-"\n"
-"Ikiwa una maswali yoyote, tafadhali wasiliana na ofisi ya kanisa.\n"
-"\n"
-"Asante kwa ukarimu wako."
-
-#: 
 msgid "Download CSV"
 msgstr "Pakua CSV"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "Tuma Hati ya Kodi %d kwa Barua Pepe"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18149,10 +18085,6 @@ msgid "Pledged"
 msgstr "Iliyoahidiwa"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "Chapisha Hati ya Kodi %d"
-
-#: 
 msgid "Recent Friends"
 msgstr "Marafiki wa Hivi Karibuni"
 
@@ -18177,24 +18109,8 @@ msgid "Single Pages"
 msgstr "Kurasa Moja Moja"
 
 #: 
-msgid "Tax Documents"
-msgstr "Hati za Kodi"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "Barua pepe ya hati ya kodi imeshindwa kutumwa. Tafadhali angalia mipangilio ya seva ya barua pepe."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "Kurasa mbili za nusu ukubwa zikiwa kando kwa kando kwenye kila karatasi ya mlalo, kwa mpangilio wa kijitabu. Chapisha pande zote mbili kwa \"kugeuza upande mfupi\", kisha kunja rundo katikati. Safu wima huhesabiwa kwa kila nusu ukurasa."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "Haiwezekani kutuma hati ya kodi kwa barua pepe: hakuna data ya malipo iliyopatikana kwa mwaka huo."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "Haiwezekani kutuma hati ya kodi kwa barua pepe: familia hii haina anwani ya barua pepe iliyohifadhiwa."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -18863,22 +18779,10 @@ msgstr[0] "Mtu wa kujitolea mteule %d amepangwa"
 msgstr[1] "Watu wa kujitolea wateule %d wamepangwa"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Mtu mmoja zaidi wa kujitolea (%d) bado anahitajika kwa nafasi hii. Fungua tukio ili kuziba pengo."
-msgstr[1] "Watu %d zaidi wa kujitolea bado wanahitajika kwa nafasi hii. Fungua tukio ili kuziba pengo."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "Tukio jipya %d"
 msgstr[1] "Matukio mapya %d"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Mtu wa kujitolea %d bado anahitajika kwa tukio linalokuja."
-msgstr[1] "Watu wa kujitolea %d bado wanahitajika kwa tukio linalokuja."
 
 #: 
 msgid "%s Calendar"
@@ -20185,10 +20089,6 @@ msgid "How often"
 msgstr "Mara ngapi"
 
 #: 
-msgid "How to correct this"
-msgstr "Jinsi ya kusahihisha hili"
-
-#: 
 msgid "I can't"
 msgstr "Siwezi"
 
@@ -20947,10 +20847,6 @@ msgstr "Fungua huduma"
 #: 
 msgid "Open the occurrence"
 msgstr "Fungua tukio la ratiba"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Fungua tukio la ratiba ili kuwapanga watu unaowahitaji."
 
 #: 
 msgid "Open this team"
@@ -24645,10 +24541,6 @@ msgstr "Huduma ya usimbaji wa kijiografia haikujibu — jaribu tena baadaye"
 #: 
 msgid "Only the email you sent is shown."
 msgstr "Barua pepe uliyotuma pekee ndiyo inayoonyeshwa."
-
-#: 
-msgid "%d Giving Statement"
-msgstr "Taarifa ya Utoaji %d"
 
 #: 
 msgid "Repeat events could not be created. Check the application log for details."

@@ -953,10 +953,6 @@ msgid "Voting Members"
 msgstr "Membrii cu drept de vot"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Raport de Donatii (Declaratii Fiscale)"
-
-#: 
 msgid "Zero Givers"
 msgstr "Zero donatori"
 
@@ -1771,15 +1767,6 @@ msgstr "Permisiune"
 #: 
 msgid "System Settings"
 msgstr "Setări system"
-
-#: 
-msgid "Tax Report"
-msgstr "Darea de seamă fiscală"
-
-#: 
-#, fuzzy
-msgid "Calendar Year"
-msgstr "An calendaristic"
 
 #: 
 msgid "User Editor"
@@ -6373,10 +6360,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "Raport personalizabil cu filtrare după dată, fond, familie și metodă de plată."
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Personalizați textul care apare pe declarațiile fiscale (sTaxReport1, sTaxReport2, etc)."
-
-#: 
 msgid "Day"
 msgstr "Zi"
 
@@ -6457,20 +6440,12 @@ msgid "Generate"
 msgstr "Generează"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Generează declarații fiscale"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Generați declarații anuale de donații deductibile fiscal pentru donatori. Pot fi tipărite sau trimise prin e-mail."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "Generați scrisori de reamintire pentru familiile cu angajamente restante."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "Generați rapoarte pentru declarații fiscale, urmărirea angajamentelor și analiză financiară."
 
 #: 
 msgid "ID"
@@ -6653,10 +6628,6 @@ msgid "System Info"
 msgstr "Informații sistem"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "Rapoarte fiscale și donații"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "Limbajul raportului fiscal"
 
@@ -6683,10 +6654,6 @@ msgstr "Actualizare"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "Utilizatorul trebuie să fie administrator sau să aibă permisiuni de finanțe"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Verificați dacă numele, adresa și informațiile de contact ale bisericii apar pe declarațiile fiscale."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9203,10 +9170,6 @@ msgstr "Generați scrisori de reamintire a angajamentelor"
 #: 
 msgid "Generate reports on group membership and activities"
 msgstr "Generați rapoarte despre apartenența la grupuri și activități"
-
-#: 
-msgid "Generate tax statement documents for donors"
-msgstr "Generați documente fiscale pentru donatori"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -16029,10 +15992,6 @@ msgid "Please confirm your family information"
 msgstr "Va rugam sa confirmati informatiile familiei dumneavoastra"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "Va rugam sa trimiteti prin posta urmatorul dar la %s"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Va rugam sa selectati o alta familie cu care sa asociati aceste donatii"
 
@@ -18066,10 +18025,6 @@ msgid "{{minutes}} min left"
 msgstr "{{minutes}} min rămase"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d document fiscal trimis cu succes familiei."
-
-#: 
 msgid "All classifications"
 msgstr "Toate clasificările"
 
@@ -18102,28 +18057,8 @@ msgid "Columns per Page"
 msgstr "Coloane pe pagină"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "Dragi %s Familie,\n"
-"\n"
-"Ve rugăm să găsiți anexată la acest email declarația dumneavoastră de donație %d din %s.\n"
-"\n"
-"Dacă aveți întrebări, vă rugăm să contactați biroul bisericii.\n"
-"\n"
-"Vă mulțumim pentru generozitate."
-
-#: 
 msgid "Download CSV"
 msgstr "Descarcă CSV"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "Trimite %d document fiscal prin email"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18226,10 +18161,6 @@ msgid "Pledged"
 msgstr "Promis"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "Tipărește %d document fiscal"
-
-#: 
 msgid "Recent Friends"
 msgstr "Prieteni recenți"
 
@@ -18254,24 +18185,8 @@ msgid "Single Pages"
 msgstr "Pagini unice"
 
 #: 
-msgid "Tax Documents"
-msgstr "Documente fiscale"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "Eșec la trimiterea email-ului cu document fiscal. Vă rugăm să verificați setările serverului de email."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "Două pagini de jumătate de mărime, una lângă alta, pe fiecare foaie în peisaj, în ordine de broșură. Tipăriți pe ambele fețe cu \"flip pe marginea scurtă\", apoi pliați stiva în jumătate. Coloanele sunt numărate pe jumătate de pagină."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "Imposibil de trimis documentul fiscal prin email: niciun date de plată găsit pentru acel an."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "Imposibil de trimis documentul fiscal prin email: această familie nu are o adresă de email înregistrată."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -18944,25 +18859,11 @@ msgstr[1] "%d voluntari impliciți repartizați"
 msgstr[2] "%d de voluntari impliciți repartizați"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Încă un %d voluntar este necesar pentru acest post. Deschideți ocurența pentru a completa golul."
-msgstr[1] "Încă %d voluntari sunt necesari pentru acest post. Deschideți ocurența pentru a completa golul."
-msgstr[2] "Încă %d de voluntari sunt necesari pentru acest post. Deschideți ocurența pentru a completa golul."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d ocurență nouă"
 msgstr[1] "%d ocurențe noi"
 msgstr[2] "%d de ocurențe noi"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Încă %d voluntar este necesar pentru o ocurență viitoare."
-msgstr[1] "Încă %d voluntari sunt necesari pentru o ocurență viitoare."
-msgstr[2] "Încă %d de voluntari sunt necesari pentru o ocurență viitoare."
 
 #: 
 msgid "%s Calendar"
@@ -20272,10 +20173,6 @@ msgid "How often"
 msgstr "Cât de des"
 
 #: 
-msgid "How to correct this"
-msgstr "Cum se corectează"
-
-#: 
 msgid "I can't"
 msgstr "Nu pot"
 
@@ -21035,10 +20932,6 @@ msgstr "Deschide slujirea"
 #: 
 msgid "Open the occurrence"
 msgstr "Deschide ocurența"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Deschideți ocurența pentru a repartiza persoanele de care aveți nevoie."
 
 #: 
 msgid "Open this team"
@@ -24738,10 +24631,6 @@ msgstr "Serviciul de geocodificare nu a răspuns — încercați din nou mai tâ
 #: 
 msgid "Only the email you sent is shown."
 msgstr "Este afișat doar e-mailul pe care l-ați trimis."
-
-#: 
-msgid "%d Giving Statement"
-msgstr "Declarație de donații %d"
 
 #: 
 msgid "Repeat events could not be created. Check the application log for details."
