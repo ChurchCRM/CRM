@@ -1,10 +1,12 @@
 <?php
 
 use ChurchCRM\Portal\PortalCalendarService;
+use ChurchCRM\Service\MemberSignInSettingsService;
 use ChurchCRM\Portal\PortalStatsService;
 use ChurchCRM\Portal\ThemeException;
 use ChurchCRM\Portal\ThemeManager;
 use ChurchCRM\Portal\ThemeValidator;
+use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -14,9 +16,9 @@ use Slim\Routing\RouteCollectorProxy;
 // Served at /admin/api/member-portal/* — '/admin' is the app base path, and
 // AdminRoleAuthMiddleware already gates every route in this app.
 //
-// Booleans and text on the Admin → Member Portal page save through the
-// existing POST /admin/api/system/config/{name}. Only theme activation needs a
-// route of its own, because the validator has to be able to refuse (design §4).
+// The Settings tab's booleans save through the existing
+// POST /admin/api/system/config/{name}. Theme activation and the Sign-in tab
+// have routes of their own, because their checks have to be able to refuse.
 $app->group('/api/member-portal', function (RouteCollectorProxy $group): void {
     $group->get('/stats', 'getMemberPortalStatsAPI');
     $group->get('/themes', 'listMemberPortalThemesAPI');
@@ -31,6 +33,11 @@ $app->group('/api/member-portal', function (RouteCollectorProxy $group): void {
     // PortalCalendarService::setVisible(), which accepts only entries naming a
     // calendar this installation actually has.
     $group->post('/calendars', 'saveMemberPortalCalendarsAPI');
+    // The Sign-in tab (member sign-in design §11.1). MemberSignInSettingsService
+    // validates every field; the generic config API routes these keys through it too.
+    $group->get('/sign-in', 'getMemberSignInSettingsAPI');
+    $group->post('/sign-in', 'saveMemberSignInSettingsAPI')->add(new CSRFMiddleware());
+    $group->get('/sign-in/office-candidates/{query}', 'searchMemberSignInOfficeCandidatesAPI');
 });
 
 /**
@@ -201,4 +208,111 @@ function saveMemberPortalCalendarsAPI(Request $request, Response $response): Res
         'success' => true,
         'calendars' => PortalCalendarService::listChoices(),
     ]);
+}
+
+/**
+ * @OA\Get(
+ *     path="/admin/api/member-portal/sign-in",
+ *     operationId="getMemberSignInSettings",
+ *     summary="The Member Portal sign-in settings (Admin role required)",
+ *     tags={"Admin"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Response(response=200, description="Stored values, the choices, and why member sign-in or passkeys can't be used",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="values", type="object", example={"bMemberSignIn": "0", "sMemberSignInFamilyRoles": "1,2", "iMemberSignInMinAge": "13"}),
+ *             @OA\Property(property="emailProblem", type="string", nullable=true),
+ *             @OA\Property(property="passkeyProblem", type="string", nullable=true),
+ *             @OA\Property(property="familyRoles", type="array", @OA\Items(type="object")),
+ *             @OA\Property(property="classifications", type="array", @OA\Items(type="object")),
+ *             @OA\Property(property="officeRecipients", type="array", @OA\Items(type="object")),
+ *             @OA\Property(property="maySignInCount", type="integer", description="People the saved settings let in, before the email rule")
+ *         )
+ *     ),
+ *     @OA\Response(response=403, description="Admin role required")
+ * )
+ */
+function getMemberSignInSettingsAPI(Request $request, Response $response): Response
+{
+    $settings = new MemberSignInSettingsService();
+
+    return SlimUtils::renderJSON($response, [
+        'values' => $settings->values(),
+        'emailProblem' => $settings->emailProblem(),
+        'passkeyProblem' => $settings->passkeyProblem(),
+        'familyRoles' => $settings->familyRoleChoices(),
+        'classifications' => $settings->classificationChoices(),
+        'officeRecipients' => $settings->officeRecipients(),
+        'maySignInCount' => $settings->maySignInCount(),
+    ]);
+}
+
+/**
+ * @OA\Post(
+ *     path="/admin/api/member-portal/sign-in",
+ *     operationId="saveMemberSignInSettings",
+ *     summary="Save Member Portal sign-in settings (Admin role required)",
+ *     description="Send any of the sign-in settings. All of them are checked first; if any is wrong, none is saved. Member sign-in can only be turned on while ChurchCRM can send email. Family roles, classifications and the office list may be arrays of ids or comma-separated strings.",
+ *     tags={"Admin"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\RequestBody(required=true, @OA\JsonContent(
+ *         @OA\Property(property="bMemberSignIn", type="boolean"),
+ *         @OA\Property(property="sMemberSignInFamilyRoles", type="array", @OA\Items(type="integer"), example={1, 2}),
+ *         @OA\Property(property="sMemberSignInClassifications", type="array", @OA\Items(type="integer"), example={1, 2}),
+ *         @OA\Property(property="iMemberSignInMinAge", type="integer", minimum=0, maximum=120, example=13),
+ *         @OA\Property(property="iSignInLinkMinutes", type="integer", minimum=1, maximum=1440, example=120),
+ *         @OA\Property(property="iPortalIdleMinutes", type="integer", minimum=1, maximum=1440, example=30),
+ *         @OA\Property(property="iRememberDeviceDays", type="integer", minimum=0, maximum=365, example=30),
+ *         @OA\Property(property="bPortalPasskeys", type="boolean"),
+ *         @OA\Property(property="sMemberSignInNotificationRecipientIDs", type="array", @OA\Items(type="integer")),
+ *         @OA\Property(property="bAllowLoginAsUser", type="boolean"),
+ *         @OA\Property(property="bLoginAsUserCanWrite", type="boolean")
+ *     )),
+ *     @OA\Response(response=200, description="Saved; the stored values come back",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="values", type="object"),
+ *             @OA\Property(property="maySignInCount", type="integer")
+ *         )
+ *     ),
+ *     @OA\Response(response=400, description="A value is wrong; `errors` names each setting and its problem, and nothing was saved"),
+ *     @OA\Response(response=403, description="Admin role required, or an invalid CSRF token")
+ * )
+ */
+function saveMemberSignInSettingsAPI(Request $request, Response $response): Response
+{
+    $input = $request->getParsedBody();
+    if (!is_array($input)) {
+        return SlimUtils::renderErrorJSON($response, gettext('Send the settings as a JSON object.'), [], 400, null, $request);
+    }
+
+    $settings = new MemberSignInSettingsService();
+    $errors = $settings->save($input);
+    if ($errors !== []) {
+        return SlimUtils::renderErrorJSON($response, (string) reset($errors), ['errors' => $errors], 400, null, $request);
+    }
+
+    return SlimUtils::renderJSON($response, ['success' => true, 'values' => $settings->values(), 'maySignInCount' => $settings->maySignInCount()]);
+}
+
+/**
+ * @OA\Get(
+ *     path="/admin/api/member-portal/sign-in/office-candidates/{query}",
+ *     operationId="searchMemberSignInOfficeCandidates",
+ *     summary="Find people who can be on the sign-in office list (Admin role required)",
+ *     description="Living people with their own email whose name or email contains the query. Same shape as GET /api/persons/search/{query}.",
+ *     tags={"Admin"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="query", in="path", required=true, @OA\Schema(type="string", example="smith")),
+ *     @OA\Response(response=200, description="Up to 15 people",
+ *         @OA\JsonContent(type="array", @OA\Items(type="object",
+ *             @OA\Property(property="id", type="integer"),
+ *             @OA\Property(property="objid", type="integer"),
+ *             @OA\Property(property="text", type="string", example="Jane Smith (jane@example.com)")
+ *         ))
+ *     ),
+ *     @OA\Response(response=403, description="Admin role required")
+ * )
+ */
+function searchMemberSignInOfficeCandidatesAPI(Request $request, Response $response, array $args): Response
+{
+    return SlimUtils::renderJSON($response, (new MemberSignInSettingsService())->searchOfficeCandidates((string) ($args['query'] ?? '')));
 }

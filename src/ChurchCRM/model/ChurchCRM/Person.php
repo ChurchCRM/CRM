@@ -89,21 +89,31 @@ class Person extends BasePerson implements PhotoInterface
     }
 
     /**
-     * Why this person may not sign in at all, staff or portal: 'deceased',
-     * 'inactive', or null.
+     * Why this person may not sign in at all, staff or portal (member sign-in
+     * design §4, blocks for everyone): one of the User::SIGN_IN_BLOCKED_*
+     * values, or null. Member sign-in adds its own blocks (`PortalSignInRules`).
      */
     public function getSignInBlockedReason(): ?string
     {
-        return self::signInBlockedReasonFor($this->getDateDeceased(), $this->getDateDeactivated());
+        $state = PersonSigninQuery::create()->findPk($this->getId());
+
+        return self::signInBlockedReasonFor(
+            $this->getDateDeceased(),
+            $this->getDateDeactivated(),
+            $state instanceof PersonSignin && $state->getSignInDisabled(),
+        );
     }
 
-    public static function signInBlockedReasonFor(mixed $dateDeceased, mixed $dateDeactivated): ?string
+    public static function signInBlockedReasonFor(mixed $dateDeceased, mixed $dateDeactivated, bool $signInDisabled = false): ?string
     {
         if (!empty($dateDeceased)) {
             return User::SIGN_IN_BLOCKED_DECEASED;
         }
         if (!empty($dateDeactivated)) {
             return User::SIGN_IN_BLOCKED_INACTIVE;
+        }
+        if ($signInDisabled) {
+            return User::SIGN_IN_BLOCKED_DISABLED;
         }
 
         return null;

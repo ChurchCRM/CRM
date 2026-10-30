@@ -241,7 +241,8 @@ class AuthenticationManager
     }
 
     /**
-     * Ends the current session when its user is deceased or inactive.
+     * Ends the current session when its user may no longer sign in (member
+     * sign-in design §4, blocks for everyone).
      *
      * @return bool false when the session was ended
      */

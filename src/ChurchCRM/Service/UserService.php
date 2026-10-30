@@ -87,7 +87,8 @@ class UserService
 
     /**
      * True when the person is an administrator who can sign in and no other
-     * administrator can. Such a person must not be made deceased or inactive.
+     * administrator can. Such a person must not be made deceased or inactive,
+     * nor have their sign-in disabled.
      */
     public function isLastSignInCapableAdmin(int $personId): bool
     {
