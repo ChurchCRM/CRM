@@ -14,42 +14,6 @@ use ChurchCRM\Utils\InputUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
-// Item codes look like "A1", "B23a"; sort by leading letter, then the numeric
-// run that follows, then any trailing suffix (mirrors the legacy
-// ORDER BY SUBSTR(di_item,1,1), CAST(SUBSTR(di_item,2) AS UNSIGNED), SUBSTR(di_item,4)).
-$sortDonatedItemsByItemCode = function (array $items): array {
-    usort($items, function ($a, $b) {
-        $aItem = (string) $a->getItem();
-        $bItem = (string) $b->getItem();
-        $cmp = strcmp(substr($aItem, 0, 1), substr($bItem, 0, 1));
-        if ($cmp !== 0) {
-            return $cmp;
-        }
-        $cmp = ((int) substr($aItem, 1)) <=> ((int) substr($bItem, 1));
-        if ($cmp !== 0) {
-            return $cmp;
-        }
-        return strcmp(substr($aItem, 3), substr($bItem, 3));
-    });
-
-    return $items;
-};
-
-// Batch-loads the donor Person for each DonatedItem (mirrors the legacy
-// LEFT JOIN person_per ON per_ID=di_donor_ID: a missing/zero donor yields nulls).
-$loadDonorsById = function (array $donatedItems): array {
-    $donorIds = [];
-    foreach ($donatedItems as $donatedItem) {
-        $donorIds[] = $donatedItem->getDonorId();
-    }
-    $donors = [];
-    foreach (PersonQuery::create()->filterById($donorIds)->find() as $donor) {
-        $donors[$donor->getId()] = $donor;
-    }
-
-    return $donors;
-};
-
 // ---------------------------------------------------------------------------
 // PDF class: Statement (migrated from src/Reports/FundRaiserStatement.php)
 // ---------------------------------------------------------------------------
