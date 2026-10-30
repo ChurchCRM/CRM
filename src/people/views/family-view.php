@@ -57,7 +57,7 @@ $headPeople = $family->getHeadPeople();
 $spousePeople = $family->getSpousePeople();
 $keyPeople = array_merge($headPeople, $spousePeople);
 
-$adultsWithEmail = array_values(array_filter($keyPeople, fn ($p) => !$p->isDeceased() && !empty($p->getEmail())));
+$adultsWithEmail = $family->getAdultsWithEmail();
 $familyMailRecipient = $family->getEmailRecipient();
 $familyMailEmail = $familyMailRecipient?->getEmail() ?? '';
 $familyEmailMD5 = $familyMailEmail !== '' ? md5(strtolower($familyMailEmail)) : '';
@@ -644,7 +644,7 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
             </div>
             <div class="card-body">
                 <?php if ($adultsWithEmail === []) : ?>
-                <span class="text-body-secondary" id="family-email-none"><?= gettext('No head of household or spouse has an email address.') ?></span>
+                <span class="text-body-secondary" id="family-email-none"><?= gettext('No head of household or spouse can receive family email.') ?></span>
                 <?php else : ?>
                 <ul class="list-unstyled mb-0">
                     <?php foreach ($adultsWithEmail as $adult) {
