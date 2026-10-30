@@ -168,8 +168,9 @@ class VolunteerNotificationService
      * Put a row that has already been sent (or given up on) back in the queue.
      *
      * Callers: `POST /assignments/{id}/notify?force=1` — "send it again, I know" — and a
-     * fresh decline on a reopened assignment (`enqueueDeclineAlert()`). The row is reused rather than duplicated so the dedupe key keeps meaning
-     * what it says and the outbox never grows a second row for the same message.
+     * fresh decline on a reopened assignment (`enqueueDeclineAlert()`). The row is reused
+     * rather than duplicated so the dedupe key keeps meaning what it says and the outbox
+     * never grows a second row for the same message.
      */
     public function rearm(VolunteerNotification $notification): VolunteerNotification
     {
