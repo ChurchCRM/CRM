@@ -18779,22 +18779,10 @@ msgstr[0] "Mtu wa kujitolea mteule %d amepangwa"
 msgstr[1] "Watu wa kujitolea wateule %d wamepangwa"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Mtu mmoja zaidi wa kujitolea (%d) bado anahitajika kwa nafasi hii. Fungua tukio ili kuziba pengo."
-msgstr[1] "Watu %d zaidi wa kujitolea bado wanahitajika kwa nafasi hii. Fungua tukio ili kuziba pengo."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "Tukio jipya %d"
 msgstr[1] "Matukio mapya %d"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Mtu wa kujitolea %d bado anahitajika kwa tukio linalokuja."
-msgstr[1] "Watu wa kujitolea %d bado wanahitajika kwa tukio linalokuja."
 
 #: 
 msgid "%s Calendar"
@@ -20859,10 +20847,6 @@ msgstr "Fungua huduma"
 #: 
 msgid "Open the occurrence"
 msgstr "Fungua tukio la ratiba"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Fungua tukio la ratiba ili kuwapanga watu unaowahitaji."
 
 #: 
 msgid "Open this team"

@@ -10,6 +10,7 @@ use ChurchCRM\Service\DonationFundService;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
 
 // Security
@@ -23,6 +24,10 @@ if (array_key_exists('ReportType', $_POST)) {
 
 if ($sReportType === '' && array_key_exists('ReportType', $_GET)) {
     $sReportType = InputUtils::legacyFilterInput($_GET['ReportType']);
+}
+
+if ($sReportType === 'Giving Report') {
+    RedirectUtils::redirect('finance/reports/giving-statements');
 }
 
 $sPageTitle = gettext('Financial Reports');
@@ -83,7 +88,6 @@ if ($sReportType === '') {
           <option value="Pledge Family Summary"><?= gettext('Pledge Family Summary') ?></option>
           <option value="Pledge Reminders"><?= gettext('Pledge Reminders') ?></option>
           <option value="Voting Members"><?= gettext('Voting Members') ?></option>
-          <option value="Giving Report"><?= gettext('Giving Statements') ?></option>
           <option value="Zero Givers"><?= gettext('Zero Givers') ?></option>
           <option value="Individual Deposit Report"><?= gettext('Individual Deposit Report') ?></option>
           <option value="Advanced Deposit Report"><?= gettext('Advanced Deposit Report') ?></option>
@@ -100,7 +104,6 @@ if ($sReportType === '') {
     $iCalYear = date('Y');
     // 2nd Pass - Display filters and other settings
     switch ($sReportType) {
-        case 'Giving Report':           $action = 'finance/reports/giving-statements/download'; break;
         case 'Zero Givers':             $action = 'Reports/ZeroGivers.php'; break;
         case 'Pledge Family Summary':   $action = 'Reports/FamilyPledgeSummary.php'; break;
         case 'Pledge Reminders':        $action = 'Reports/ReminderReport.php'; break;
@@ -116,7 +119,7 @@ if ($sReportType === '') {
 
     <?php
     // Filter by Classification and Families
-    if (in_array($sReportType, ['Giving Report', 'Pledge Reminders', 'Pledge Family Summary', 'Advanced Deposit Report'])) {
+    if (in_array($sReportType, ['Pledge Reminders', 'Pledge Family Summary', 'Advanced Deposit Report'])) {
         $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence';
         $rsClassifications = RunQuery($sSQL); ?>
       <div class="mb-3">
@@ -174,16 +177,10 @@ if ($sReportType === '') {
       </div>
     <?php } ?>
 
-    <?php if (in_array($sReportType, ['Giving Report', 'Advanced Deposit Report', 'Zero Givers'])) :
+    <?php if (in_array($sReportType, ['Advanced Deposit Report', 'Zero Givers'])) :
         $today = date('Y-m-d');
-        if ($sReportType === 'Giving Report' && $sDateStart === '' && $sDateEnd === '') {
-            $fy = FiscalYearUtils::previousFiscalYearDates();
-            $startVal = $fy['startDate'];
-            $endVal = $fy['endDate'];
-        } else {
-            $startVal = $sDateStart !== '' ? $sDateStart : $today;
-            $endVal = $sDateEnd !== '' ? $sDateEnd : $today;
-        }
+        $startVal = $sDateStart !== '' ? $sDateStart : $today;
+        $endVal = $sDateEnd !== '' ? $sDateEnd : $today;
         ?>
       <div class="row g-3 mb-3">
         <div class="col-md-4">
@@ -195,7 +192,7 @@ if ($sReportType === '') {
           <input type="text" class="form-control date-picker" name="DateEnd" id="DateEnd" maxlength="10" value="<?= InputUtils::escapeHTML($endVal) ?>">
         </div>
       </div>
-      <?php if (in_array($sReportType, ['Giving Report', 'Advanced Deposit Report'])) :
+      <?php if ($sReportType === 'Advanced Deposit Report') :
           $depChecked = ($datetype !== 'Payment') ? 'checked' : '';
           $payChecked = ($datetype === 'Payment') ? 'checked' : '';
           ?>
@@ -222,7 +219,7 @@ if ($sReportType === '') {
       </div>
     <?php endif; ?>
 
-    <?php if (in_array($sReportType, ['Giving Report', 'Individual Deposit Report', 'Advanced Deposit Report'])) :
+    <?php if (in_array($sReportType, ['Individual Deposit Report', 'Advanced Deposit Report'])) :
         $sSQL = 'SELECT dep_ID, dep_Date, dep_Type FROM deposit_dep ORDER BY dep_ID DESC LIMIT 0,200';
         $rsDeposits = RunQuery($sSQL); ?>
       <div class="mb-3">
@@ -242,7 +239,7 @@ if ($sReportType === '') {
       </div>
     <?php endif; ?>
 
-    <?php if (in_array($sReportType, ['Pledge Family Summary', 'Giving Report', 'Advanced Deposit Report', 'Pledge Reminders'])) :
+    <?php if (in_array($sReportType, ['Pledge Family Summary', 'Advanced Deposit Report', 'Pledge Reminders'])) :
         $funds = DonationFundQuery::create()
             ->orderByActive()
             ->orderByName()
@@ -281,14 +278,6 @@ if ($sReportType === '') {
       </div>
     <?php endif; ?>
 
-    <?php if ($sReportType === 'Giving Report') : ?>
-      <div class="mb-3">
-        <label class="form-label" for="minimum"><?= gettext('Minimum Total Amount') ?>:</label>
-        <small class="text-secondary d-block mb-1"><?= gettext('0 - No Minimum') ?></small>
-        <input class="form-control field-w-120" name="minimum" id="minimum" type="text" value="0">
-      </div>
-    <?php endif; ?>
-
       <h4 class="mt-4 mb-3"><?= gettext('Other Settings') ?></h4>
 
     <?php if ($sReportType === 'Pledge Reminders') : ?>
@@ -320,7 +309,7 @@ if ($sReportType === '') {
       </div>
     <?php endif; ?>
 
-    <?php if (in_array($sReportType, ['Giving Report', 'Zero Givers'])) : ?>
+    <?php if ($sReportType === 'Zero Givers') : ?>
       <div class="mb-3">
         <label class="form-label"><?= gettext('Report Heading') ?>:</label>
         <div class="d-flex gap-3">
@@ -379,7 +368,7 @@ if ($sReportType === '') {
       </div>
     <?php endif; ?>
 
-    <?php if (in_array($sReportType, ['Giving Report', 'Individual Deposit Report', 'Advanced Deposit Report', 'Zero Givers'])) : ?>
+    <?php if (in_array($sReportType, ['Individual Deposit Report', 'Advanced Deposit Report', 'Zero Givers'])) : ?>
       <div class="mb-3">
         <label class="form-label"><?= gettext('Output Method') ?>:</label>
         <div class="d-flex gap-3">

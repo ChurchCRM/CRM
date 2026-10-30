@@ -18757,19 +18757,9 @@ msgid_plural "%d default volunteers assigned"
 msgstr[0] "%d relawan default ditugaskan"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Posisi ini masih membutuhkan %d relawan lagi. Buka kejadian untuk mengisi celah."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d kejadian baru"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "%d relawan masih dibutuhkan untuk kejadian yang akan datang."
 
 #: 
 msgid "%s Calendar"
@@ -20830,10 +20820,6 @@ msgstr "Buka pelayanan"
 #: 
 msgid "Open the occurrence"
 msgstr "Buka kejadian"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Buka kejadian untuk menugaskan orang yang Anda butuhkan."
 
 #: 
 msgid "Open this team"

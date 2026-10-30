@@ -18749,22 +18749,10 @@ msgstr[0] "%d സ്ഥിര സന്നദ്ധസേവകനെ നിയ�
 msgstr[1] "%d സ്ഥിര സന്നദ്ധസേവകനെ നിയോഗിച്ചു"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "ഈ സ്ഥാനത്തിന് ഇനിയും %d സന്നദ്ധസേവകനെ കൂടി ആവശ്യമുണ്ട്. വിടവ് നികത്താൻ തീയതി തുറക്കുക."
-msgstr[1] "ഈ സ്ഥാനത്തിന് ഇനിയും %d സന്നദ്ധസേവകനെ കൂടി ആവശ്യമുണ്ട്. വിടവ് നികത്താൻ തീയതി തുറക്കുക."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d പുതിയ തീയതി"
 msgstr[1] "%d പുതിയ തീയതി"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "വരാനിരിക്കുന്ന ഒരു തീയതിക്ക് ഇനിയും %d സന്നദ്ധസേവകനെ ആവശ്യമുണ്ട്."
-msgstr[1] "വരാനിരിക്കുന്ന ഒരു തീയതിക്ക് ഇനിയും %d സന്നദ്ധസേവകനെ ആവശ്യമുണ്ട്."
 
 #: 
 msgid "%s Calendar"
@@ -20829,10 +20817,6 @@ msgstr "ശുശ്രൂഷ തുറക്കുക"
 #: 
 msgid "Open the occurrence"
 msgstr "തീയതി തുറക്കുക"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "ആവശ്യമുള്ളവരെ നിയോഗിക്കാൻ തീയതി തുറക്കുക."
 
 #: 
 msgid "Open this team"
