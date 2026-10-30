@@ -75,6 +75,8 @@ const events = (rows) => rows.map((row) => `${row.psa_Event}:${row.psa_Method ??
 
 const adminPost = (url, body) => cy.makePrivateAdminAPICall("POST", url, body, 200);
 
+const forgetDevices = () => db("DELETE FROM person_device_pdv WHERE pdv_per_ID IN (?, ?)", [member.personId, spouse.personId]);
+
 describe("Member Portal remembered devices", () => {
     const saved = {};
 
@@ -89,7 +91,7 @@ describe("Member Portal remembered devices", () => {
     beforeEach(() => {
         cy.clearCookies();
         resetEmailSignIn([member.personId, spouse.personId]);
-        db("DELETE FROM person_device_pdv WHERE pdv_per_ID IN (?, ?)", [member.personId, spouse.personId]);
+        forgetDevices();
     });
 
     afterEach(() => {
@@ -104,6 +106,7 @@ describe("Member Portal remembered devices", () => {
     });
 
     after(() => {
+        forgetDevices();
         restoreSettings(saved);
     });
 
@@ -368,6 +371,27 @@ describe("Member Portal remembered devices", () => {
                         expect(events(rows)).to.deep.equal(["signed_in:email_link:", "device_removed::replaced"]);
                     });
                 });
+            });
+        });
+    });
+
+    it("drops the device when the browser still holds the token it just replaced", () => {
+        signInWithCode({ remember: true });
+        saveCookies().then((beforeRotation) => {
+            closeBrowser();
+            cy.visit("/portal/profile");
+            cy.get("#portal-account-toggle").should("contain.text", `Hello ${member.firstName}`);
+            devicesOf(member.personId).its("0.pdv_PreviousTokenHash").should("match", /^[0-9a-f]{64}$/);
+
+            cy.clearCookies();
+            cy.task("mail:clear");
+            askForEmail(spouse.email);
+            signInEmail(spouse.email).then(({ link }) => {
+                useCookies(beforeRotation);
+                cy.visit(link);
+                cy.get("#portalSignInConfirmSubmit").click();
+                cy.location("pathname").should("match", /\/portal\/$/);
+                devicesOf(member.personId).its("0.pdv_RevokedAt").should("not.be.null");
             });
         });
     });

@@ -100,7 +100,7 @@ function wireProfileForm(): void {
         if (pendingEmail !== "") {
           showPortalToast(
             "success",
-            withEmail("We sent a link to {{email}}. Your email changes when you use it.", pendingEmail),
+            t("We sent a link to {{email}}. Your email changes when you use it.", { email: pendingEmail }),
           );
         } else {
           showPortalToast(
@@ -136,13 +136,6 @@ function applyProfile(form: HTMLFormElement, profile: PortalProfile): void {
   updatePhotoPreview(profile);
 }
 
-/** Translate a sentence that names an email address; the English text is the fallback. */
-function withEmail(text: string, email: string): string {
-  const translated =
-    typeof i18next !== "undefined" ? i18next.t(text, { email, interpolation: { escapeValue: false } }) : "";
-  return translated || text.replace("{{email}}", email);
-}
-
 /** Say under the email field which new address is waiting for its link to be used, if any. */
 function showPendingEmail(pendingEmail: unknown): void {
   const hint = document.getElementById("portal-email-hint");
@@ -151,7 +144,7 @@ function showPendingEmail(pendingEmail: unknown): void {
   }
   hint.textContent =
     typeof pendingEmail === "string" && pendingEmail !== ""
-      ? withEmail("Waiting for you to confirm {{email}}. Use the link we sent to that address.", pendingEmail)
+      ? t("Waiting for you to confirm {{email}}. Use the link we sent to that address.", { email: pendingEmail })
       : t("A new address changes only after you use the link we send to it.");
 }
 
