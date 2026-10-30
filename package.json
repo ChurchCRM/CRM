@@ -21,6 +21,7 @@
         "node": ">=24.0.0"
     },
     "scripts": {
+        "env:check": "node scripts/check-environment.js",
         "audit": "npm audit fix --only=prod --audit-level=high",
         "build": "node scripts/build.js",
         "build:frontend": "NODE_ENV=production npm run build:webpack",
@@ -58,7 +59,7 @@
         "logs:clear": "node scripts/clean.js --logs",
         "package": "npm run build && node scripts/package-release.js",
         "test": "npx cypress run --config-file cypress/configs/docker.config.ts",
-        "test:php": "php scripts/test-error-redaction.php && php scripts/test-volunteer-class-link-memo.php && php scripts/test-countries.php && php scripts/test-geocoder-rest.php",
+        "test:php": "php scripts/test-error-redaction.php && php scripts/test-volunteer-class-link-memo.php && php scripts/test-countries.php && php scripts/test-geocoder-rest.php && php scripts/test-password-check-timing.php && php scripts/test-client-ip-key.php && php scripts/test-config-prune.php",
         "test:open": "npx cypress open --e2e --config-file cypress/configs/docker.config.ts --browser chrome",
         "test:api": "npx cypress run --config-file cypress/configs/docker.config.ts --spec 'cypress/e2e/api/**/*.spec.js'",
         "test:ui": "npx cypress run --config-file cypress/configs/docker.config.ts --spec 'cypress/e2e/ui/**/*.spec.js'",
@@ -130,7 +131,7 @@
         "flag-icons": "^7.6.0",
         "fullcalendar": "^7.1.3",
         "heic2any": "^0.0.4",
-        "i18next": "^26.4.7",
+        "i18next": "^26.5.6",
         "inputmask": "^5.0.9",
         "jquery": "^3.7.1",
         "just-validate": "^4.3.0",
@@ -138,7 +139,7 @@
         "marked": "^18.1.1",
         "moment": "^2.31.0",
         "notyf": "^3.10.0",
-        "posthog-js": "^1.438.12",
+        "posthog-js": "^1.438.19",
         "quill": "2.0.2",
         "temporal-polyfill": "^1.0.6",
         "tom-select": "^2.6.2"

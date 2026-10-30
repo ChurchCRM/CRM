@@ -921,10 +921,6 @@ msgid "Voting Members"
 msgstr "വോട്ടർ അംഗങ്ങൾ"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "ദക്ഷിണ റിപ്പോർട്ട് (നികുതി സ്റ്റേറ്റ്‌മെന്റുകൾ)"
-
-#: 
 msgid "Zero Givers"
 msgstr "ദക്ഷിണ നൽകാത്തവർ"
 
@@ -995,10 +991,6 @@ msgstr "പണം"
 #: 
 msgid "Bank Draft"
 msgstr "ബാങ്ക് ഡ്രാഫ്റ്റ്"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0 - ഏറ്റവും കുറഞ്ഞ തുകയില്ല"
 
 #: 
 msgid "Other Settings"
@@ -1259,10 +1251,6 @@ msgstr "ഡേറ്റ ലേബലുകൾ സ്ഥിരീകരിക്�
 #: 
 msgid "Invalid login or password"
 msgstr "അസാധുവായ ലോഗിൻ അല്ലെങ്കിൽ പാസ്‌വേഡ്"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "ലോഗിൻ പലതവണ പരാജയപ്പെട്ടു: നിങ്ങളുടെ അക്കൗണ്ട് ലോക്ക് ചെയ്തിരിക്കുന്നു. ദയവായി അഡ്‌മിനിസ്‌ട്രേറ്ററെ ബന്ധപ്പെടുക."
 
 #: 
 msgid "Email/Username"
@@ -1714,14 +1702,6 @@ msgid "System Settings"
 msgstr "സിസ്റ്റം ക്രമീകരണങ്ങൾ"
 
 #: 
-msgid "Tax Report"
-msgstr "നികുതി റിപ്പോർട്ട്"
-
-#: 
-msgid "Calendar Year"
-msgstr "കലണ്ടർ വർഷം"
-
-#: 
 msgid "User Editor"
 msgstr "ഉപയോക്തൃ എഡിറ്റർ"
 
@@ -2131,24 +2111,12 @@ msgid "Classes"
 msgstr "ക്ലാസ്സുകൾ"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "സൺഡേ സ്‌കൂൾ റിപ്പോർട്ടുകൾ"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "സൺഡേ സ്‌കൂൾ ക്ലാസ്സിൽ ഇല്ലാത്ത വിദ്യാർത്ഥികൾ"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "ക്ലാസ് ലിസ്‌റ്റ് അല്ലെങ്കിൽ ഹാജർ ഷീറ്റ് ഉണ്ടാക്കാൻ കുറഞ്ഞത് ഒരു ഗ്രൂപ്പ് തിരഞ്ഞെടുക്കണം."
-
-#: 
 msgid "Report Details"
 msgstr "റിപ്പോർട്ട് വിശദാംശങ്ങൾ"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "എല്ലാ പങ്കുകളും ലിസ്‌റ്റ് ചെയ്യുക (ടിക്ക് ഇടാതിരുന്നാൽ അദ്ധ്യാപക/വിദ്യാർത്ഥി പങ്കുകൾ മാത്രം)"
 
 #: 
 msgid "First Sunday"
@@ -2169,10 +2137,6 @@ msgstr "അധിക വിദ്യാർത്ഥികൾ"
 #: 
 msgid "Extra Teachers"
 msgstr "അധിക അദ്ധ്യാപകർ"
-
-#: 
-msgid "Create Class List"
-msgstr "ക്ലാസ് ലിസ്‌റ്റ് ഉണ്ടാക്കുക"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4579,14 +4543,6 @@ msgid "PhotoBook"
 msgstr "ഫോട്ടോ ബുക്ക്"
 
 #: 
-msgid "With Photos"
-msgstr "ഫോട്ടോകളോടൊപ്പം"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "ഫോട്ടോ ബുക്ക് ഉണ്ടാക്കുക"
-
-#: 
 msgid "SSE"
 msgstr "ത.ത.കി."
 
@@ -4730,10 +4686,6 @@ msgstr "വാർഷികങ്ങൾ"
 #: 
 msgid "View User"
 msgstr "ഉപയോക്താവ് കാണുക"
-
-#: 
-msgid "not found or user without an email"
-msgstr "കണ്ടെത്തിയില്ല അല്ലെങ്കിൽ ഇമെയിൽ ഇല്ലാത്ത ഉപയോക്താവ്"
 
 #: 
 msgid "UserName not set"
@@ -4928,16 +4880,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "പുതിയ പാസ്‌വേഡ് പഴയതിൽ നിന്ന് വ്യത്യസ്തമാകേണ്ട ഏറ്റവും കുറഞ്ഞ അളവ് (# അക്ഷരങ്ങൾ)\n"
 "ഈ ഫീച്ചർ പ്രവർത്തനരഹിതമാക്കാൻ പൂജ്യം ക്രമീകരിക്കുക"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "അക്കൗണ്ട് ലോക്ക് ചെയ്യുന്നതിന് മുൻപ് അനുവദിക്കേണ്ട പരമാവധി ലോഗിൻ പരാജയങ്ങൾ.\n"
-"ഒരതിരിൽ എത്തിയാൽ അഡ്‌മിൻ വീണ്ടും പ്രവർത്തനക്ഷമമാക്കണം.\n"
-"ഈ ഫീച്ചർ ഓട്ടോ-പാസ്‌വേഡ് ആക്രമണങ്ങളിൽ നിന്ന് സംരക്ഷിക്കുന്നു.\n"
-"പ്രവർത്തനരഹിതമാക്കാൻ പൂജ്യം ക്രമീകരിക്കുക."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -6278,10 +6220,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "തീയതി, ഫണ്ട്, കുടുംബം, പേമെന്റ് രീതി അനുസരിച്ച് ഫിൽട്ടർ ചെയ്യാൻ കഴിയുന്ന ഇഷ്‌ടാനുസൃത റിപ്പോർട്ട്."
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "നികുതി സ്റ്റേറ്റ്‌മെന്റുകളിൽ കാണിക്കുന്ന ടെക്സ്റ്റ് ഇഷ്‌ടാനുസൃതമാക്കൂ."
-
-#: 
 msgid "Day"
 msgstr "ദിവസം"
 
@@ -6362,20 +6300,12 @@ msgid "Generate"
 msgstr "ഉണ്ടാക്കുക"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "നികുതി സ്റ്റേറ്റ്‌മെന്റ് ഉണ്ടാക്കുക"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "ദാതാക്കൾക്ക് ഇൻകം ടാക്‌സ് ദക്ഷിണ സ്റ്റേറ്റ്‌മെന്റ് ഉണ്ടാക്കൂ. പ്രിന്റ് ചെയ്യാം അല്ലെങ്കിൽ ഇമെയിൽ ചെയ്യാം."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "കുടിശ്ശിക സംഭാവന പ്രതിജ്ഞകളുള്ള കുടുംബങ്ങൾക്ക് ഓർമ്മിപ്പിക്കൽ കത്തുകൾ ഉണ്ടാക്കൂ."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "നികുതി സ്റ്റേറ്റ്‌മെന്റ്, പ്രതിജ്ഞ ട്രാക്കിംഗ്, സാമ്പത്തിക വിശകലനം എന്നിവയ്ക്ക് റിപ്പോർട്ട് ഉണ്ടാക്കൂ."
 
 #: 
 msgid "ID"
@@ -6558,10 +6488,6 @@ msgid "System Info"
 msgstr "സിസ്റ്റം വിവരം"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "നികുതി & ദക്ഷിണ റിപ്പോർട്ടുകൾ"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "നികുതി റിപ്പോർട്ട് ഉള്ളടക്കം"
 
@@ -6588,10 +6514,6 @@ msgstr "അപ്‌ഗ്രേഡ്"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "ഉപയോക്താവ് അഡ്‌മിൻ ആകണം അല്ലെങ്കിൽ ധനകാര്യ അനുമതി ഉണ്ടായിരിക്കണം"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "നികുതി സ്റ്റേറ്റ്‌മെന്റിൽ പള്ളി പേര്, വിലാസം, ബന്ധ വിവരം ശരിയാണെന്ന് ഉറപ്പ് വരുത്തൂ."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9105,10 +9027,6 @@ msgid "Generate reports on group membership and activities"
 msgstr "ഗ്രൂപ്പ് അംഗത്വത്തെയും പ്രവർത്തനങ്ങളെയും കുറിച്ചുള്ള റിപ്പോർട്ടുകൾ സൃഷ്ടിക്കുക"
 
 #: 
-msgid "Generate tax statement documents for donors"
-msgstr "ദാതാക്കൾക്ക് നികുതി പ്രസ്താവന രേഖകൾ സൃഷ്ടിക്കുക"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "നിങ്ങളുടെ ഡേറ്റ ChurchCRM-ലേക്ക് നൽകുക"
 
@@ -10049,10 +9967,6 @@ msgstr "നിർബന്ധിത പുനഃഇൻസ്റ്റലേഷ�
 #: 
 msgid "Full Path"
 msgstr "പൂർണ്ണ പാത്ത്"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "ക്ലാസ് ലിസ്‌റ്റുകൾ, ഹാജർ ഷീറ്റുകൾ, ഫോട്ടോ ബുക്കുകൾ സൃഷ്ടിക്കുക"
 
 #: 
 msgid "Installed"
@@ -15925,10 +15839,6 @@ msgid "Please confirm your family information"
 msgstr "നിങ്ങളുടെ കുടുംബ വിവരങ്ങൾ സ്ഥിരീകരിക്കുക"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "അടുത്ത ദാനം %s-ലേക്ക് അയക്കുക"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "ഈ സംഭാവനകൾ ബന്ധിപ്പിക്കാൻ മറ്റൊരു കുടുംബത്തെ തിരഞ്ഞെടുക്കുക"
 
@@ -17959,10 +17869,6 @@ msgid "{{minutes}} min left"
 msgstr "{{minutes}} മിനിറ്റ് ബാക്കി"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d നികുതി രേഖ കുടുംബത്തിന് വിജയകരമായി ഇമെയിൽ ചെയ്തു."
-
-#: 
 msgid "All classifications"
 msgstr "എല്ലാ വർഗ്ഗീകരണങ്ങൾ"
 
@@ -17995,28 +17901,8 @@ msgid "Columns per Page"
 msgstr "പേജിന് നിരകൾ"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "പ്രിയ %1$s കുടുംബം,\n"
-"\n"
-"ഈ ഇമെയിലിൽ ഘടിപ്പിച്ചിരിക്കുന്ന %3$s മുതലുള്ള നിങ്ങളുടെ %2$d സദാചരണ പ്രസ്താവന കാണുക.\n"
-"\n"
-"നിങ്ങൾക്ക് ഏതെങ്കിലും ചോദ്യമുണ്ടെങ്കിൽ, സഭാ ഓഫീസ് ബന്ധപ്പെടുക.\n"
-"\n"
-"നിങ്ങളുടെ ഉദാരതയ്ക്ക് നന്ദി."
-
-#: 
 msgid "Download CSV"
 msgstr "CSV ഡൗൺലോഡ് ചെയ്യുക"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "%d നികുതി രേഖ ഇമെയിൽ ചെയ്യുക"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18119,10 +18005,6 @@ msgid "Pledged"
 msgstr "പ്രതിശ്രുത"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "%d നികുതി രേഖ പ്രിന്റ് ചെയ്യുക"
-
-#: 
 msgid "Recent Friends"
 msgstr "സമീപകാല സുഹൃത്തുക്കൾ"
 
@@ -18147,24 +18029,8 @@ msgid "Single Pages"
 msgstr "ഒരൊറ്റ പേജുകൾ"
 
 #: 
-msgid "Tax Documents"
-msgstr "നികുതി രേഖകൾ"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "നികുതി രേഖ ഇമെയിൽ അയയ്ക്കാൻ പരാജയപ്പെട്ടു. നിങ്ങളുടെ ഇമെയിൽ സർവർ സെറ്റിംഗുകൾ പരിശോധിക്കുക."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "ഓരോ ലാൻഡ്സ്കേപ് ഷീറ്റിലും രണ്ട് അർദ്ധ-വലിപ്പ പേജുകൾ പാർശ്വസമമായി, പുസ്തകത്തിന്റെ ക്രമത്തിൽ. \"ചെറിയ അരികിൽ പിരിക്കുക\" ഉപയോഗിച്ച് രണ്ട് വശങ്ങളും പ്രിന്റ് ചെയ്യുക, തുടർന്ന് സ്റ്റാക് പകുതിയിൽ മടക്കുക. നിരകൾ പ്രതി അർദ്ധ പേജ് കണക്കാക്കുന്നു."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "നികുതി രേഖ ഇമെയിൽ ചെയ്യാൻ കഴിയില്ല: ആ വർഷത്തിന് പേയ്‌മെന്റ് ഡാറ്റ കണ്ടെത്തിയില്ല."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "നികുതി രേഖ ഇമെയിൽ ചെയ്യാൻ കഴിയില്ല: ഈ കുടുംബത്തിന് ഫയലിൽ ഇമെയിൽ വിലാസം ഇല്ല."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -18627,10 +18493,6 @@ msgid "Could not match the church country."
 msgstr "ചർച്ചിന്റെ രാജ്യം പൊരുത്തപ്പെടുത്താൻ കഴിഞ്ഞില്ല."
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "ക്ലാസ് പട്ടികകൾ, ഹാജർ ഷീറ്റുകൾ, ഫോട്ടോ ബുക്കുകൾ"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "ശുശ്രൂഷാ അംഗത്വ പട്ടികകളും സൺഡേ സ്കൂൾ ക്ലാസ് റിപ്പോർട്ടുകളും"
 
@@ -18833,22 +18695,10 @@ msgstr[0] "%d സ്ഥിര സന്നദ്ധസേവകനെ നിയ�
 msgstr[1] "%d സ്ഥിര സന്നദ്ധസേവകനെ നിയോഗിച്ചു"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "ഈ സ്ഥാനത്തിന് ഇനിയും %d സന്നദ്ധസേവകനെ കൂടി ആവശ്യമുണ്ട്. വിടവ് നികത്താൻ തീയതി തുറക്കുക."
-msgstr[1] "ഈ സ്ഥാനത്തിന് ഇനിയും %d സന്നദ്ധസേവകനെ കൂടി ആവശ്യമുണ്ട്. വിടവ് നികത്താൻ തീയതി തുറക്കുക."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d പുതിയ തീയതി"
 msgstr[1] "%d പുതിയ തീയതി"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "വരാനിരിക്കുന്ന ഒരു തീയതിക്ക് ഇനിയും %d സന്നദ്ധസേവകനെ ആവശ്യമുണ്ട്."
-msgstr[1] "വരാനിരിക്കുന്ന ഒരു തീയതിക്ക് ഇനിയും %d സന്നദ്ധസേവകനെ ആവശ്യമുണ്ട്."
 
 #: 
 msgid "%s Calendar"
@@ -20155,10 +20005,6 @@ msgid "How often"
 msgstr "എത്ര തവണ"
 
 #: 
-msgid "How to correct this"
-msgstr "ഇത് എങ്ങനെ തിരുത്താം"
-
-#: 
 msgid "I can't"
 msgstr "എനിക്ക് കഴിയില്ല"
 
@@ -20917,10 +20763,6 @@ msgstr "ശുശ്രൂഷ തുറക്കുക"
 #: 
 msgid "Open the occurrence"
 msgstr "തീയതി തുറക്കുക"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "ആവശ്യമുള്ളവരെ നിയോഗിക്കാൻ തീയതി തുറക്കുക."
 
 #: 
 msgid "Open this team"
@@ -24615,10 +24457,6 @@ msgstr "ജിയോകോഡിംഗ് സേവനം പ്രതികര�
 #: 
 msgid "Only the email you sent is shown."
 msgstr "നിങ്ങൾ അയച്ച ഇമെയിൽ മാത്രമാണ് കാണിക്കുന്നത്."
-
-#: 
-msgid "%d Giving Statement"
-msgstr "%d ദാന പ്രസ്താവന"
 
 #: 
 msgid "Repeat events could not be created. Check the application log for details."

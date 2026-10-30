@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\ChurchLogoService;
@@ -23,20 +24,26 @@ class MpdfRenderer implements PdfRendererInterface
         }
     }
 
-    public function renderToString(string $template, array $data): string
+    public function renderToString(string $template, array $data, bool $landscape = false): string
     {
-        $html = $this->twig->render($template . '.html.twig', $this->withChurch($data));
-        $mpdf = $this->makeMpdf();
-        $mpdf->WriteHTML($html);
-        return $mpdf->Output('', 'S');
+        return $this->build($template, $data, $landscape)->Output('', 'S');
     }
 
     public function render(string $template, array $data, string $filename, string $disposition = 'I'): void
     {
-        $html = $this->twig->render($template . '.html.twig', $this->withChurch($data));
-        $mpdf = $this->makeMpdf();
-        $mpdf->WriteHTML($html);
-        $mpdf->Output($filename . '.pdf', $disposition === 'D' ? 'D' : 'I');
+        $this->build($template, $data)->Output($filename . '.pdf', $disposition === 'D' ? 'D' : 'I');
+    }
+
+    private function build(string $template, array $data, bool $landscape = false): Mpdf
+    {
+        $data = $this->withChurch($data);
+        $mpdf = $this->makeMpdf($landscape);
+        if ($data['text_dir'] === 'rtl') {
+            $mpdf->SetDirectionality('rtl');
+        }
+        $mpdf->WriteHTML($this->twig->render($template . '.html.twig', $data));
+
+        return $mpdf;
     }
 
     private function withChurch(array $data): array
@@ -50,6 +57,10 @@ class MpdfRenderer implements PdfRendererInterface
         $data['church_website'] = preg_match('#^https?://#i', $website) ? $website : '';
         $data['church_social'] = ChurchMetaData::getChurchSocialLinks();
         $data['church_logo'] = $this->churchLogo();
+        $locale = Bootstrapper::getCurrentLocale();
+        $localeCode = str_replace('_', '-', (string) $locale->getLocale());
+        $data['lang'] = str_starts_with($localeCode, 'zh') ? $localeCode : substr($localeCode, 0, 2);
+        $data['text_dir'] = $locale->isRTL() ? 'rtl' : 'ltr';
         $data['generated_on'] = date(\ChurchCRM\dto\SystemConfig::getValue('sDateFormatLong') ?: 'Y-m-d');
         return $data;
     }
@@ -67,11 +78,14 @@ class MpdfRenderer implements PdfRendererInterface
         return SystemURLs::getDocumentRoot() . '/Images/churchcrm-logo-ink-blue.svg';
     }
 
-    private function makeMpdf(): Mpdf
+    private function makeMpdf(bool $landscape = false): Mpdf
     {
         return new Mpdf([
             'mode' => 'utf-8',
-            'format' => 'Letter',
+            'autoScriptToLang' => true,
+            'autoLangToFont' => true,
+            'useSubstitutions' => true,
+            'format' => $landscape ? 'Letter-L' : 'Letter',
             'margin_left' => 15,
             'margin_right' => 15,
             'margin_top' => 16,

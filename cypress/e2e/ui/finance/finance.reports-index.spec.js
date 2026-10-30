@@ -16,14 +16,14 @@ describe("Finance Reports Index", () => {
     it("should load the reports index page", () => {
         cy.visit("/finance/reports");
         cy.contains("Financial Reports");
-        cy.contains("Generate reports for tax statements");
+        cy.contains("Generate reports for giving statements");
     });
 
-    it("should display Tax & Giving Reports section", () => {
+    it("should display Giving Reports section", () => {
         cy.visit("/finance/reports");
 
-        cy.contains("Tax & Giving Reports");
-        cy.contains("Giving Report (Tax Statements)");
+        cy.contains("Giving Reports");
+        cy.contains("Giving Statements");
         cy.contains("Zero Givers");
     });
 
@@ -62,10 +62,8 @@ describe("Finance Reports Index", () => {
     it("should navigate to Giving Report from link", () => {
         cy.visit("/finance/reports");
 
-        cy.contains("Giving Report (Tax Statements)").click();
-        cy.url().should("contain", "FinancialReports.php");
-        cy.url().should("contain", "Giving");
-        cy.contains("Financial Reports");
+        cy.contains("Giving Statements").click();
+        cy.url().should("contain", "/finance/reports/giving-statements");
     });
 
     it("should navigate to Zero Givers from link", () => {
@@ -120,7 +118,7 @@ describe("Finance Reports Index - Standard User Access", () => {
         cy.visit("/finance/reports");
         
         // Should be able to see the reports page
-        cy.contains("Tax & Giving Reports").should("be.visible");
+        cy.contains("Giving Reports").should("be.visible");
         cy.contains("Pledge Reports").should("be.visible");
     });
 });

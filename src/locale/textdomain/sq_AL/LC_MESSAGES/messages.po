@@ -928,10 +928,6 @@ msgid "Voting Members"
 msgstr "Anëtarët votimit"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Dhënia e Raportit (Deklaratat tatimore)"
-
-#: 
 msgid "Zero Givers"
 msgstr "Zero givers"
 
@@ -1007,10 +1003,6 @@ msgstr "Para në dorë"
 #: 
 msgid "Bank Draft"
 msgstr "Draft Bank"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0 - No Minimum"
 
 #: 
 msgid "Other Settings"
@@ -1276,10 +1268,6 @@ msgstr "Konfirmo etiketat të dhënave"
 #: 
 msgid "Invalid login or password"
 msgstr "Login pavlefshme ose regjistrohu"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Shumë hyrje të dështuara: llogaria juaj ka qenë e mbyllur. Ju lutem kontaktoni një administrator."
 
 #: 
 msgid "Email/Username"
@@ -1732,14 +1720,6 @@ msgid "System Settings"
 msgstr "Cilësimet e sistemit"
 
 #: 
-msgid "Tax Report"
-msgstr "Tax Raporti"
-
-#: 
-msgid "Calendar Year"
-msgstr "Viti Kalendari"
-
-#: 
 msgid "User Editor"
 msgstr "User Editor"
 
@@ -2155,24 +2135,12 @@ msgid "Classes"
 msgstr "Klasat"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Raportet e diela Shkolla"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Nxënësit që nuk janë në një klasë të shkollës të së dielës"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Të paktën një grup duhet të zgjidhen për të bërë listat e klasit ose fletë frekuentimit."
-
-#: 
 msgid "Report Details"
 msgstr "Detajet e raportit"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Listoni të gjitha rolet (nëse nuk zgjidhet, do të listohen vetëm rolet Mësues/Nxënës)"
 
 #: 
 msgid "First Sunday"
@@ -2193,10 +2161,6 @@ msgstr "Nxënës shtesë"
 #: 
 msgid "Extra Teachers"
 msgstr "Mësuesit Extra"
-
-#: 
-msgid "Create Class List"
-msgstr "Krijo Lista Class"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4603,14 +4567,6 @@ msgid "PhotoBook"
 msgstr "Albumi i fotografive"
 
 #: 
-msgid "With Photos"
-msgstr "Me fotografi"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Krijo album fotografish"
-
-#: 
 msgid "SSE"
 msgstr "JJL"
 
@@ -4754,10 +4710,6 @@ msgstr "Përvjetorët"
 #: 
 msgid "View User"
 msgstr "Shiko përdoruesin"
-
-#: 
-msgid "not found or user without an email"
-msgstr "nuk u gjet ose përdorues pa email"
 
 #: 
 msgid "UserName not set"
@@ -4952,16 +4904,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Shuma minimale që një fjalëkalim i ri duhet të ndryshojë nga i vjetri (# i karaktereve të ndryshuara)\n"
 "Vendos zero për të çaktivizuar këtë veçori"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Numri maksimal i hyrjeve të dështuara të lejuara para se llogaria e përdoruesit të bllokohet.\n"
-"Kur arrihet maksimumi, një administrator duhet të riaktivizojë llogarinë.\n"
-"Kjo veçori ndihmon në mbrojtjen kundër sulmeve automatike të hamendësimit të fjalëkalimit.\n"
-"Vendos zero për të çaktivizuar këtë veçori."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -6302,10 +6244,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "Raport i personalizueshëm me filtrim sipas datës, fondit, familjes dhe metodës së pagesës."
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Personalizoni tekstin që shfaqet në deklaratat e taksave (sTaxReport1, sTaxReport2, etj.)."
-
-#: 
 msgid "Day"
 msgstr "Ditë"
 
@@ -6386,20 +6324,12 @@ msgid "Generate"
 msgstr "Gjenero"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Gjenero deklaratat e taksave"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Gjeneroni deklarata vjetore dhurimi të zbritshme nga taksat për dhuruesit. Mund të printohen ose dërgohen me email."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "Gjeneroni letra përkujtese për familjet me zotime të papërfunduara."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "Gjeneroni raporte për deklaratat e taksave, gjurmimin e zotimeve dhe analizën financiare."
 
 #: 
 msgid "ID"
@@ -6582,10 +6512,6 @@ msgid "System Info"
 msgstr "Informacioni i sistemit"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "Raportet e taksave dhe dhurimit"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "Gjuha e raportit të taksave"
 
@@ -6612,10 +6538,6 @@ msgstr "Përmirëso"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "Përdoruesi duhet të jetë administrator ose të ketë lejen e financës"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Verifikoni që emri i kishës, adresa dhe informacioni i kontaktit shfaqen në deklaratat e taksave."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9129,10 +9051,6 @@ msgid "Generate reports on group membership and activities"
 msgstr "Gjenero raporte mbi anëtarësinë dhe aktivitetet e grupmesionit"
 
 #: 
-msgid "Generate tax statement documents for donors"
-msgstr "Gjenero dokumente të deklaratës tatimore për donatorët"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "Fut të Dhënat Tuaja në ChurchCRM"
 
@@ -10073,10 +9991,6 @@ msgstr "Detyro Riinstalimin?"
 #: 
 msgid "Full Path"
 msgstr "Rrugja e Plotë"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Gjenero listat e klasave, fletët e prezencës dhe librat e fotografive"
 
 #: 
 msgid "Installed"
@@ -15949,10 +15863,6 @@ msgid "Please confirm your family information"
 msgstr "Ju lutem konfirmoni informacionin e familjes tuaj"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "Ju lutem dërgoni dhurimin tuaj tjetër te %s"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Ju lutem zgjidhni një familje tjetër me të cilën të lidhni këto dhurime"
 
@@ -17983,10 +17893,6 @@ msgid "{{minutes}} min left"
 msgstr "{{minutes}} min të mbetura"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d dokument tatimor i dërguar me sukses në familje me email."
-
-#: 
 msgid "All classifications"
 msgstr "Të gjitha klasifikimet"
 
@@ -18019,28 +17925,8 @@ msgid "Columns per Page"
 msgstr "Kolona për faqe"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "I nderuar %s Familje,\n"
-"\n"
-"Ju lutemi gjeni deklaratën tuaj të dhurimit %d nga %s në bashkëlidhje me këtë email.\n"
-"\n"
-"Nëse keni ndonjë pyetje, ju lutemi kontaktoni zyrën e kishës.\n"
-"\n"
-"Faleminderit për bamirësinë tuaj."
-
-#: 
 msgid "Download CSV"
 msgstr "Shkarko CSV"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "Dërgo me email %d Dokument tatimor"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18143,10 +18029,6 @@ msgid "Pledged"
 msgstr "Premtuar"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "Shtyp %d Dokument tatimor"
-
-#: 
 msgid "Recent Friends"
 msgstr "Miqtë e fundit"
 
@@ -18171,24 +18053,8 @@ msgid "Single Pages"
 msgstr "Faqe të vetme"
 
 #: 
-msgid "Tax Documents"
-msgstr "Dokumentet tatimore"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "Dështoi dërgimi i emailit të dokumentit tatimor. Ju lutemi kontrolloni cilësimet e serverit të email-it."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "Dy faqe të gjysëm madhësie krah për krah në secilin fletë të gjerë, në rendin e broshurës. Shtypni me të dyja anët me \"flip në skajin e shkurtër\", pastaj palosni grumbullin në gjysmë. Kolonat numërohen për çdo gjysmë faqeje."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "Nuk është e mundur të dërgohet dokumenti tatimor me email: nuk u gjet ndonjë të dhënë pagese për atë vit."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "Nuk është e mundur të dërgohet dokumenti tatimor me email: kjo familje nuk ka adresë emaili në dosje."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -18651,10 +18517,6 @@ msgid "Could not match the church country."
 msgstr "Shteti i kishës nuk u përputh dot."
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Listat e klasave, fletët e pjesëmarrjes dhe librat me foto"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "Listat e anëtarëve të shërbesave dhe raportet e klasave të Shkollës së së Dielës"
 
@@ -18857,22 +18719,10 @@ msgstr[0] "%d vullnetar i parazgjedhur u caktua"
 msgstr[1] "%d vullnetarë të parazgjedhur u caktuan"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Për këtë pozicion nevojitet ende %d vullnetar tjetër. Hapni zhvillimin për të mbushur boshllëkun."
-msgstr[1] "Për këtë pozicion nevojiten ende %d vullnetarë të tjerë. Hapni zhvillimin për të mbushur boshllëkun."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d zhvillim i ri"
 msgstr[1] "%d zhvillime të reja"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Për një zhvillim të ardhshëm nevojitet ende %d vullnetar."
-msgstr[1] "Për një zhvillim të ardhshëm nevojiten ende %d vullnetarë."
 
 #: 
 msgid "%s Calendar"
@@ -20179,10 +20029,6 @@ msgid "How often"
 msgstr "Sa shpesh"
 
 #: 
-msgid "How to correct this"
-msgstr "Si ta korrigjoni"
-
-#: 
 msgid "I can't"
 msgstr "Nuk mundem"
 
@@ -20941,10 +20787,6 @@ msgstr "Hap shërbesën"
 #: 
 msgid "Open the occurrence"
 msgstr "Hap zhvillimin"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Hapni zhvillimin për të caktuar njerëzit që ju duhen."
 
 #: 
 msgid "Open this team"
@@ -24639,10 +24481,6 @@ msgstr "Shërbimi i gjeokodimit nuk u përgjigj — provoni përsëri më vonë"
 #: 
 msgid "Only the email you sent is shown."
 msgstr "Shfaqet vetëm emaili që keni dërguar."
-
-#: 
-msgid "%d Giving Statement"
-msgstr "Deklaratë Dhëniesh %d"
 
 #: 
 msgid "Repeat events could not be created. Check the application log for details."

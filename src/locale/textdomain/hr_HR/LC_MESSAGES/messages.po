@@ -921,10 +921,6 @@ msgid "Voting Members"
 msgstr "Glasajući članovi"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Izvještaj o darovima (porezne izjave)"
-
-#: 
 msgid "Zero Givers"
 msgstr "Nema darivatelja"
 
@@ -995,10 +991,6 @@ msgstr "Gotovina"
 #: 
 msgid "Bank Draft"
 msgstr "Bankovni nalog"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0 - Bez minimuma"
 
 #: 
 msgid "Other Settings"
@@ -1259,10 +1251,6 @@ msgstr "Potvrdi naljepnice podataka"
 #: 
 msgid "Invalid login or password"
 msgstr "Nevažeće korisničko ime ili lozinka"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Previše neuspjelih prijava: vaš račun je zaključan. Molim kontaktirajte administratora."
 
 #: 
 msgid "Email/Username"
@@ -1714,14 +1702,6 @@ msgid "System Settings"
 msgstr "Sistemske postavke"
 
 #: 
-msgid "Tax Report"
-msgstr "Porezni izvještaj"
-
-#: 
-msgid "Calendar Year"
-msgstr "Kalendarska godina"
-
-#: 
 msgid "User Editor"
 msgstr "Urednik korisnika"
 
@@ -2131,24 +2111,12 @@ msgid "Classes"
 msgstr "Razredi"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Izvještaji nedjeljne škole"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Učenici koji nisu u razredu nedjeljne škole"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Mora biti odabrana barem jedna skupini za kreiranje popisa razreda ili listova za prisutnost."
-
-#: 
 msgid "Report Details"
 msgstr "Detalji izvještaja"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Popis svih uloga (neoznačeno će prikazati samo uloge učitelja/učenika)"
 
 #: 
 msgid "First Sunday"
@@ -2169,10 +2137,6 @@ msgstr "Dodatni učenici"
 #: 
 msgid "Extra Teachers"
 msgstr "Dodatni učitelji"
-
-#: 
-msgid "Create Class List"
-msgstr "Kreiraj popis razreda"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4578,14 +4542,6 @@ msgid "PhotoBook"
 msgstr "Fotoalbum"
 
 #: 
-msgid "With Photos"
-msgstr "S fotografijama"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Kreiraj fotoalbum"
-
-#: 
 msgid "SSE"
 msgstr "JJI"
 
@@ -4728,10 +4684,6 @@ msgstr "Godišnjice"
 #: 
 msgid "View User"
 msgstr "Prikaži korisnika"
-
-#: 
-msgid "not found or user without an email"
-msgstr "nije pronađeno ili korisnik nema e-poštu"
 
 #: 
 msgid "UserName not set"
@@ -4925,16 +4877,6 @@ msgstr "Duljina vremenskog ograničenja sesije u sekundama\n"
 msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
 "Set to zero to disable this feature"
 msgstr "Minimalni iznos u kojem se nova lozinka mora razlikovati od stare (# promijenjenih znakova)\n"
-"Postavite na nulu za onemogućavanje."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Maksimalni broj dozvoljenih neuspjelih prijava prije zaključavanja korisničkog računa.\n"
-"Nakon dostizanja maksimuma, administrator mora ponovo omogućiti račun.\n"
-"Ova značajka pomaže zaštiti od automatiziranih napada pogađanjem lozinke.\n"
 "Postavite na nulu za onemogućavanje."
 
 #: 
@@ -6280,10 +6222,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "Prilagodljivi izvještaj s filtriranjem prema datumu, fondu, obitelji i načinu plaćanja."
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Prilagodite tekst koji se prikazuje na poreznim izjavama (sTaxReport1, sTaxReport2, itd.)."
-
-#: 
 msgid "Day"
 msgstr "Dan"
 
@@ -6364,20 +6302,12 @@ msgid "Generate"
 msgstr "Generiraj"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Generiraj porezne izjave"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Generirajte godišnje porezno odbatljive izjave o darivanju za darivatelje. Mogu se ispisati ili poslati e-poštom."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "Generirajte pisma podsjetnika za obitelji s neplaćenim zavjetima."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "Generirajte izvještaje za porezne izjave, praćenje zavjeta i financijsku analizu."
 
 #: 
 msgid "ID"
@@ -6560,10 +6490,6 @@ msgid "System Info"
 msgstr "Informacije o sustavu"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "Izvještaji o porezu i darivanju"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "Tekst poreznog izvještaja"
 
@@ -6590,10 +6516,6 @@ msgstr "Nadogradnja"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "Korisnik mora biti administrator ili imati dozvolu za financije"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Provjerite da se naziv župe, adresa i kontaktni podaci prikazuju na poreznim izjavama."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9112,10 +9034,6 @@ msgid "Generate reports on group membership and activities"
 msgstr "Generiraj izvještaje o članstvu u skupinama i aktivnostima"
 
 #: 
-msgid "Generate tax statement documents for donors"
-msgstr "Generiraj porezne izjave za darivatelje"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "Unesite vaše podatke u ChurchCRM"
 
@@ -10056,10 +9974,6 @@ msgstr "Prisili ponovnu instalaciju?"
 #: 
 msgid "Full Path"
 msgstr "Puni put"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Generirajte popise razreda, listove za prisutnost i fotoalbume"
 
 #: 
 msgid "Installed"
@@ -15936,10 +15850,6 @@ msgid "Please confirm your family information"
 msgstr "Molimo potvrdite podatke o svojoj obitelji"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "Molimo pošaljite sljedeći dar na %s"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Molimo odaberite drugu obitelj s kojom ćete povezati ove donacije"
 
@@ -17973,10 +17883,6 @@ msgid "{{minutes}} min left"
 msgstr "Preostalo {{minutes}} min"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d porezni dokument uspješno poslan po e-pošti obitelji."
-
-#: 
 msgid "All classifications"
 msgstr "Sve klasifikacije"
 
@@ -18009,28 +17915,8 @@ msgid "Columns per Page"
 msgstr "Stupci po stranici"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "Poštovana obitelj %s,\n"
-"\n"
-"Molimo vas pronađite vašu izjavu o darivanju %d od %s u prilogu ovog e-maila.\n"
-"\n"
-"Ako imate bilo kakvih pitanja, molimo vas kontaktirajte ured crkve.\n"
-"\n"
-"Hvala vam na vašoj velikodušnosti."
-
-#: 
 msgid "Download CSV"
 msgstr "Preuzmite CSV"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "Pošalji e-mail %d porezni dokument"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18133,10 +18019,6 @@ msgid "Pledged"
 msgstr "Obećano"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "Ispis %d porezni dokument"
-
-#: 
 msgid "Recent Friends"
 msgstr "Nedavni prijatelji"
 
@@ -18161,24 +18043,8 @@ msgid "Single Pages"
 msgstr "Pojedinostalne stranice"
 
 #: 
-msgid "Tax Documents"
-msgstr "Porezni dokumenti"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "Neuspješan prijenos e-pošte s poreznim dokumentom. Molimo provjerite postavke e-poštnog poslužitelja."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "Dvije stranice polovične veličine jedna do druge na svakom listu u širokom formatu, redoslijed brošure. Ispis na obje strane s \"prebacivanjem na kratkom rubu\", zatim presavijte grupu na pola. Stupci se broje po pola stranice."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "Nemoguće poslati porezni dokument e-poštom: nisu pronađeni podaci o plaćanju za tu godinu."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "Nemoguće poslati porezni dokument e-poštom: ova obitelj nema e-mail adresu u datoteci."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -18641,10 +18507,6 @@ msgid "Could not match the church country."
 msgstr "Nije moguće uskladiti državu crkve."
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Popisi razreda, liste prisutnosti i foto knjige"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "Popisi članova službi i izvještaji o razredima nedjeljne škole"
 
@@ -18851,25 +18713,11 @@ msgstr[1] "%d zadana volontera dodijeljena"
 msgstr[2] "%d zadanih volontera dodijeljeno"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Za ovu poziciju još je potreban %d volonter. Otvorite termin da popunite prazninu."
-msgstr[1] "Za ovu poziciju još su potrebna %d volontera. Otvorite termin da popunite prazninu."
-msgstr[2] "Za ovu poziciju još je potrebno %d volontera. Otvorite termin da popunite prazninu."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d novi termin"
 msgstr[1] "%d nova termina"
 msgstr[2] "%d novih termina"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Za nadolazeći termin još je potreban %d volonter."
-msgstr[1] "Za nadolazeći termin još su potrebna %d volontera."
-msgstr[2] "Za nadolazeći termin još je potrebno %d volontera."
 
 #: 
 msgid "%s Calendar"
@@ -20179,10 +20027,6 @@ msgid "How often"
 msgstr "Koliko često"
 
 #: 
-msgid "How to correct this"
-msgstr "Kako to ispraviti"
-
-#: 
 msgid "I can't"
 msgstr "Ne mogu"
 
@@ -20942,10 +20786,6 @@ msgstr "Otvori službu"
 #: 
 msgid "Open the occurrence"
 msgstr "Otvori termin"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Otvorite termin i dodijelite ljude koji su vam potrebni."
 
 #: 
 msgid "Open this team"
@@ -24645,10 +24485,6 @@ msgstr "Usluga geokodiranja nije odgovorila — pokušajte ponovno kasnije"
 #: 
 msgid "Only the email you sent is shown."
 msgstr "Prikazuje se samo e-pošta koju ste poslali."
-
-#: 
-msgid "%d Giving Statement"
-msgstr "%d Izjava o davanju"
 
 #: 
 msgid "Repeat events could not be created. Check the application log for details."

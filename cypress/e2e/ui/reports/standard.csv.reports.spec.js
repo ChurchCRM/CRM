@@ -77,41 +77,6 @@ describe("csv export", () => {
         });
     });
 
-    describe("tax report / giving report", () => {
-        it("should export giving report as CSV", () => {
-            cy.visit("/FinancialReports.php");
-            cy.contains("Financial Reports");
-            cy.get("#FinancialReportTypes").select("Giving Report");
-            cy.get("#FinancialReports").submit();
-            cy.contains("Giving Report");
-            cy.get("input[name='output'][value='csv']").check({ force: true });
-            
-            // Set date range to match test database data (goes back to 2018)
-            cy.get("input[name='DateStart']").clear({ force: true }).type("01/01/2018", { force: true });
-            cy.get("input[name='DateEnd']").clear({ force: true }).type(getTodayDate(), { force: true });
-            
-            // Intercept the download to verify CSV content
-            cy.intercept("POST", "**/TaxReport.php").as("csvDownload");
-            
-            cy.get("#createReport").click();
-            
-            // Check if we got data or a "no data" redirect
-            cy.url().then((url) => {
-                if (url.includes('ReturnMessage=NoRows')) {
-                    // No data found - verify the message is displayed
-                    cy.contains('No Data Found');
-                    cy.contains('No records were returned');
-                } else {
-                    // Data found - verify CSV download
-                    cy.get("@csvDownload").then((interception) => {
-                        expect(interception.response.statusCode).to.equal(200);
-                        expect(interception.response.headers["content-type"]).to.include("text/csv");
-                    });
-                }
-            });
-        });
-    });
-
     describe("zero givers report", () => {
         it("should export zero givers report as CSV", () => {
             cy.visit("/FinancialReports.php");

@@ -191,22 +191,22 @@ describe("Mailing address on mailed reports (#9743)", () => {
 
     it("addresses each giving statement's remittance slip to that statement's family", () => {
         // Seed families 1 and 6 both gave on 2018-03-04; statements run in family order.
-        cy.visit("/FinancialReports.php");
-        cy.get("#FinancialReportTypes").select("Giving Report");
-        cy.get("#FinancialReports").submit();
+        cy.visit("/finance/reports/giving-statements");
         cy.get("#DateStart").clear().type("2018-01-01");
         cy.get("#DateEnd").clear().type("2018-12-31");
         cy.get("#remittanceYes").check();
-        cy.get("#createReport")
-            .closest("form")
-            .then(($form) => {
+        cy.get("#givingReportForm").then(($form) => {
                 const body = new URLSearchParams(new FormData($form[0]));
                 body.append("family[]", "1");
                 body.append("family[]", "6");
                 return cy
                     .request({
                         method: "POST",
-                        url: $form.attr("action"),
+                        // Root-relative path. Cypress resolves it against baseUrl.
+                        // The form action already includes SystemURLs::getRootPath();
+                        // appending /download and handing that to cy.request doubles
+                        // the install path on a subdirectory install.
+                        url: "/finance/reports/giving-statements/download",
                         headers: { "content-type": "application/x-www-form-urlencoded" },
                         body: body.toString(),
                         encoding: "binary",

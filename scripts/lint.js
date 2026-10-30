@@ -40,6 +40,7 @@ const checks = {
     'subdir-safe urls': script('validate-subdir-urls.js'),
     'pr gates': script('validate-pr-gates.js'),
     'cypress split timings': script('split-timings.js', 'check'),
+    'custom field access': script('validate-custom-field-access.js'),
     'cypress db access': script('validate-cypress-db-access.js'),
     'capture used-in': script('validate-capture-used-in.js'),
     'seed data only': script('validate-seed-data-only.js'),

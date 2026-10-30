@@ -928,10 +928,6 @@ msgid "Voting Members"
 msgstr "투표 회원"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "헌금 보고서(세금 증명)"
-
-#: 
 msgid "Zero Givers"
 msgstr "헌금 기록 없음"
 
@@ -1007,10 +1003,6 @@ msgstr "현금"
 #: 
 msgid "Bank Draft"
 msgstr "자동이체"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0 - 제한 없음"
 
 #: 
 msgid "Other Settings"
@@ -1276,10 +1268,6 @@ msgstr "데이터 라벨 확인"
 #: 
 msgid "Invalid login or password"
 msgstr "로그인 또는 비밀번호가 올바르지 않습니다."
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "실패한 로그인 시도가 많아 계정이 잠겼습니다. 관리자에게 문의하세요."
 
 #: 
 msgid "Email/Username"
@@ -1731,14 +1719,6 @@ msgid "System Settings"
 msgstr "시스템 설정"
 
 #: 
-msgid "Tax Report"
-msgstr "세금 보고"
-
-#: 
-msgid "Calendar Year"
-msgstr "연도 선택"
-
-#: 
 msgid "User Editor"
 msgstr "사용자 편집"
 
@@ -2152,24 +2132,12 @@ msgid "Classes"
 msgstr "반 목록"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "주일학교 보고서"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "주일학교 반에 속하지 않은 학생"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "반 명단이나 출석부를 만들려면 최소 한 개의 그룹을 선택해야 합니다."
-
-#: 
 msgid "Report Details"
 msgstr "보고서 상세"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "전체 역할 표시(선택 해제 시 교사/학생만 표시)"
 
 #: 
 msgid "First Sunday"
@@ -2190,10 +2158,6 @@ msgstr "추가 학생"
 #: 
 msgid "Extra Teachers"
 msgstr "추가 교사"
-
-#: 
-msgid "Create Class List"
-msgstr "반 명단 만들기"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4604,14 +4568,6 @@ msgid "PhotoBook"
 msgstr "포토북"
 
 #: 
-msgid "With Photos"
-msgstr "사진 포함"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "포토북 만들기"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4756,10 +4712,6 @@ msgstr "기념일"
 #: 
 msgid "View User"
 msgstr "사용자 보기"
-
-#: 
-msgid "not found or user without an email"
-msgstr "존재하지 않거나 이메일이 없는 사용자"
 
 #: 
 msgid "UserName not set"
@@ -4955,16 +4907,6 @@ msgstr "세션 시간 제한(초)\n"
 msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
 "Set to zero to disable this feature"
 msgstr "새 비밀번호가 기존 비밀번호와 달라야 하는 최소 문자 수\n"
-"0으로 설정하면 기능을 끕니다."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "계정을 잠그기 전 허용할 로그인 실패 횟수입니다.\n"
-"최대 횟수에 도달하면 관리자가 계정을 다시 활성화해야 합니다.\n"
-"자동 비밀번호 추측 공격을 방지하는 데 도움이 됩니다.\n"
 "0으로 설정하면 기능을 끕니다."
 
 #: 
@@ -6302,10 +6244,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "날짜, 기금, 가족 및 결제 방법별로 필터링할 수 있는 사용자 정의 가능한 보고서입니다."
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "세금 명세서에 표시되는 텍스트를 사용자 정의합니다 (sTaxReport1, sTaxReport2 등)."
-
-#: 
 msgid "Day"
 msgstr "일"
 
@@ -6386,20 +6324,12 @@ msgid "Generate"
 msgstr "생성"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "세금 명세서 생성"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "기부자를 위한 연간 세금 공제 가능한 헌금 명세서를 생성합니다. 인쇄하거나 이메일로 보낼 수 있습니다."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "미결 서약이 있는 가족을 위한 알림 편지를 생성합니다."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "세금 명세서, 서약 추적 및 재정 분석을 위한 보고서를 생성합니다."
 
 #: 
 msgid "ID"
@@ -6582,10 +6512,6 @@ msgid "System Info"
 msgstr "시스템 정보"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "세금 및 헌금 보고서"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "세금 보고서 문구"
 
@@ -6612,10 +6538,6 @@ msgstr "업그레이드"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "사용자는 관리자이거나 재정 권한이 있어야 합니다"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "교회 이름, 주소 및 연락처 정보가 세금 명세서에 표시되는지 확인하세요."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9124,10 +9046,6 @@ msgid "Generate reports on group membership and activities"
 msgstr "그룹 교인 및 활동 보고서 생성"
 
 #: 
-msgid "Generate tax statement documents for donors"
-msgstr "기부자를 위한 세금 명세서 문서 생성"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "ChurchCRM에 데이터 가져오기"
 
@@ -10068,10 +9986,6 @@ msgstr "강제 재설치하시겠습니까?"
 #: 
 msgid "Full Path"
 msgstr "전체 경로"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "반 목록, 출석부 및 사진첩 생성"
 
 #: 
 msgid "Installed"
@@ -15940,10 +15854,6 @@ msgid "Please confirm your family information"
 msgstr "가족 정보를 확인해 주세요"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "다음 헌금을 %s로 우편 발송해 주세요"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "이 헌금을 연결할 다른 가정을 선택해 주세요"
 
@@ -17971,10 +17881,6 @@ msgid "{{minutes}} min left"
 msgstr "{{minutes}}분 남음"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d개의 세금 문서가 가족에게 성공적으로 이메일로 전송되었습니다."
-
-#: 
 msgid "All classifications"
 msgstr "모든 분류"
 
@@ -18007,28 +17913,8 @@ msgid "Columns per Page"
 msgstr "페이지당 열 수"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "친애하는 %s 가족께,\n"
-"\n"
-"이 이메일에 %s의 %d 기부 명세서를 첨부합니다.\n"
-"\n"
-"질문이 있으시면 교회 사무실에 문의하시기 바랍니다.\n"
-"\n"
-"관대함에 감사드립니다."
-
-#: 
 msgid "Download CSV"
 msgstr "CSV 다운로드"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "%d개 세금 문서 이메일"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18131,10 +18017,6 @@ msgid "Pledged"
 msgstr "서약함"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "%d개 세금 문서 인쇄"
-
-#: 
 msgid "Recent Friends"
 msgstr "최근 친구"
 
@@ -18159,24 +18041,8 @@ msgid "Single Pages"
 msgstr "단일 페이지"
 
 #: 
-msgid "Tax Documents"
-msgstr "세금 문서"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "세금 문서 이메일 전송 실패. 이메일 서버 설정을 확인하세요."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "각 가로 시트에 나란히 반 크기 페이지 두 개, 소책자 순서로. \"짧은 가장자리에서 뒤집기\"를 사용하여 양면 인쇄한 다음 스택을 반으로 접습니다. 열은 페이지당 절반으로 계산됩니다."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "세금 문서를 이메일할 수 없습니다: 해당 연도에 대한 결제 데이터를 찾을 수 없습니다."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "세금 문서를 이메일할 수 없습니다: 이 가족은 기록된 이메일 주소가 없습니다."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -18639,10 +18505,6 @@ msgid "Could not match the church country."
 msgstr "교회의 국가를 일치시키지 못했습니다."
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "반 명단, 출석부, 사진첩"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "그룹 교인 명단과 주일학교 반 보고서"
 
@@ -18841,19 +18703,9 @@ msgid_plural "%d default volunteers assigned"
 msgstr[0] "%d 기본 자원자가 할당됨"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "이 직책에는 %d 명의 자원자가 더 필요합니다. 공백을 채우기 위해 발생을 엽니다."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d 새로운 발생"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "향후 발생을 위해 %d 명의 자원자가 필요합니다."
 
 #: 
 msgid "%s Calendar"
@@ -20157,10 +20009,6 @@ msgid "How often"
 msgstr "반복 주기"
 
 #: 
-msgid "How to correct this"
-msgstr "수정 방법"
-
-#: 
 msgid "I can't"
 msgstr "참석할 수 없습니다"
 
@@ -20918,10 +20766,6 @@ msgstr "사역 열기"
 #: 
 msgid "Open the occurrence"
 msgstr "회차 열기"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "회차를 열어 필요한 사람을 배정하세요."
 
 #: 
 msgid "Open this team"
@@ -24611,10 +24455,6 @@ msgstr "지오코딩 서비스가 응답하지 않았습니다 — 나중에 다
 #: 
 msgid "Only the email you sent is shown."
 msgstr "직접 보낸 이메일만 표시됩니다."
-
-#: 
-msgid "%d Giving Statement"
-msgstr "%d 헌금 명세서"
 
 #: 
 msgid "Repeat events could not be created. Check the application log for details."

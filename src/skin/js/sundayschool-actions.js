@@ -191,11 +191,6 @@
   }
 
   $(document).ready(() => {
-    // Print button
-    $("#printClass").on("click", () => {
-      window.print();
-    });
-
     // Note: email action is handled by the email-composer.min.js bundle
     // which auto-wires the [data-email-composer] button on the toolbar.
 

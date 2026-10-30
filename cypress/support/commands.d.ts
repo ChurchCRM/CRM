@@ -617,6 +617,13 @@ declare namespace Cypress {
     }>;
 
     /**
+     * End a sign-in throttle window now (cypress/support/sign-in-throttle.js).
+     * @param bucket - RateLimiter bucket, e.g. "signin.lockout" or "signin.ip"
+     * @param key - One key in the bucket (a user id for "signin.lockout"); all keys when omitted
+     */
+    expireSignInThrottle(bucket: string, key?: string | number | null): Chainable<void>;
+
+    /**
      * Wait for a Notyf notification with specific text
      * Ensures locales are loaded first (for i18next translations) and verifies notification content
      * @param expectedText - The text to find in the notification

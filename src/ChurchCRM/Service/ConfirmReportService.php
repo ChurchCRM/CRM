@@ -2,7 +2,6 @@
 
 namespace ChurchCRM\Service;
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Emails\verify\FamilyVerificationEmail;
 use ChurchCRM\model\ChurchCRM\Family;
@@ -171,34 +170,6 @@ class ConfirmReportService
         // Replace non-ASCII bytes with underscore for safe ASCII filename
         $name = preg_replace('/[^\x20-\x7E]+/', '_', $name);
         return trim($name, '_');
-    }
-
-    /**
-     * Person custom fields the signed-in user may see, by each field's security setting.
-     * Without a signed-in user no custom field is included.
-     *
-     * @return list<\ChurchCRM\model\ChurchCRM\PersonCustomMaster>
-     */
-    private function getVisibleCustomFields(): array
-    {
-        if (!AuthenticationManager::isUserAuthenticated()) {
-            return [];
-        }
-
-        $currentUser = AuthenticationManager::getCurrentUser();
-        $securityNames = [];
-        foreach (ListOptionQuery::create()->filterById(5)->find() as $option) {
-            $securityNames[$option->getOptionId()] = $option->getOptionName();
-        }
-
-        $visible = [];
-        foreach (PersonCustomMasterQuery::create()->orderByOrder()->find() as $field) {
-            if ($currentUser->isEnabledSecurity($securityNames[$field->getFieldSecurity()] ?? '')) {
-                $visible[] = $field;
-            }
-        }
-
-        return $visible;
     }
 
     /**
@@ -449,7 +420,7 @@ class ConfirmReportService
      */
     public function sendFamilyEmails(?int $familyId, bool $updated = false): ConfirmReportEmailResult
     {
-        $customFields = $this->getVisibleCustomFields();
+        $customFields = (new CustomFieldService())->getVisiblePersonFields();
 
         $familyQuery = FamilyQuery::create()
             ->usePersonQuery()
