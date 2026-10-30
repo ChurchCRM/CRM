@@ -18783,22 +18783,10 @@ msgstr[0] "%d verstekvrywilliger toegewys"
 msgstr[1] "%d verstekvrywilligers toegewys"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Nog %d vrywilliger word steeds vir hierdie posisie benodig. Maak die geval oop om die gaping te vul."
-msgstr[1] "Nog %d vrywilligers word steeds vir hierdie posisie benodig. Maak die geval oop om die gaping te vul."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d nuwe geval"
 msgstr[1] "%d nuwe gevalle"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "%d vrywilliger word steeds vir 'n komende geval benodig."
-msgstr[1] "%d vrywilligers word steeds vir 'n komende geval benodig."
 
 #: 
 msgid "%s Calendar"
@@ -20863,10 +20851,6 @@ msgstr "Maak die bediening oop"
 #: 
 msgid "Open the occurrence"
 msgstr "Maak die geval oop"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Maak die geval oop om die mense toe te wys wat jy nodig het."
 
 #: 
 msgid "Open this team"

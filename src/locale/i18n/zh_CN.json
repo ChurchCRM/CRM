@@ -4537,14 +4537,8 @@
   "%d default volunteer assigned": {
     "other": "%d 个默认义工已分配"
   },
-  "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
-    "other": "此岗位仍需 %d 名义工。打开发生以填补空缺。"
-  },
   "%d new occurrence": {
     "other": "%d 个新发生"
-  },
-  "%d volunteer is still needed for an upcoming occurrence.": {
-    "other": "即将发生的事件仍需 %d 名义工。"
   },
   "%s Calendar": "%s 日历",
   "%s Family": "%s 家庭",
@@ -5063,7 +5057,6 @@
   "Open the Ministry Dashboard": "打开事工仪表板",
   "Open the ministry": "打开事工",
   "Open the occurrence": "打开活动场次",
-  "Open the occurrence to assign the people you need.": "请打开活动场次，分配您所需要的人员。",
   "Open this team": "打开此团队",
   "Opening a calendar to ministries requires Add Events permission": "向事工开放日历需要“添加活动”权限",
   "Optional. Everyone qualified for a position of this team becomes a teacher of the class, and the class page no longer changes its teachers.": "可选。此团队某个职位的所有合格人员都会成为该班的教师，班级页面不再更改其教师。",
