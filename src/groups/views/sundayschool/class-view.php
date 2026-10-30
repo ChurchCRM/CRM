@@ -129,9 +129,9 @@ if ($bCanManageGroups) {
             <a class="btn btn-ghost-success" href="<?= $sRootPath ?>/groups/view/<?= $iGroupId ?>">
                 <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Add Students') ?>
             </a>
-            <button class="btn btn-ghost-secondary" id="printClass" title="<?= gettext('Print') ?>">
+            <a class="btn btn-ghost-secondary" id="printClass" href="<?= $sRootPath ?>/groups/sundayschool/reports/photo-book?GroupID=<?= $iGroupId ?>" target="_blank" rel="noopener" title="<?= gettext('Print') ?>">
                 <i class="fa-solid fa-print me-1"></i><?= gettext('Print') ?>
-            </button>
+            </a>
             <?php if ($bCanManageGroups): ?>
             <a class="btn btn-ghost-primary" href="<?= $sRootPath ?>/groups/editor/<?= $iGroupId ?>">
                 <i class="fa-solid fa-pen me-1"></i><?= gettext('Edit Class') ?>

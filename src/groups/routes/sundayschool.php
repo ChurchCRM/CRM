@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\EventAttendQuery;
@@ -12,7 +13,7 @@ use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Service\DashboardService;
-use ChurchCRM\Service\FinancialService;
+use ChurchCRM\Service\GivingStatementService;
 use ChurchCRM\Service\MpdfRenderer;
 use ChurchCRM\Service\PhotoBookService;
 use ChurchCRM\Service\SundaySchoolService;
@@ -38,23 +39,36 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
             ->withStatus(302);
     });
 
-    // Photo book: teachers then students of each chosen class. Needs the group-management role of this app.
-    $group->get('/reports/photo-book', function (Request $request, Response $response) {
-        $query = $request->getQueryParams();
-        $groupIds = array_values(array_filter(array_map('intval', explode(',', (string) ($query['GroupID'] ?? '')))));
-        $fiscalYearId = InputUtils::filterInt($query['FYID'] ?? '') ?: FiscalYearUtils::getCurrentFiscalYearId();
+    // Class ids named by ?GroupID=1,2 or, when none is named, every Sunday School class.
+    $classIds = function (Request $request): array {
+        $ids = array_values(array_filter(array_map('intval', explode(',', (string) ($request->getQueryParams()['GroupID'] ?? '')))));
+        if ($ids !== []) {
+            return $ids;
+        }
+
+        return array_map('intval', GroupQuery::create()->filterByType(4)->orderByName()->find()->getPrimaryKeys(false));
+    };
+
+    // Class list: one click from the dashboard or a class page, no form.
+    $group->get('/reports/class-list', function (Request $request, Response $response) use ($classIds) {
+        return $response
+            ->withHeader('Location', SystemURLs::getRootPath() . '/Reports/ClassList.php?GroupID=' . implode(',', $classIds($request))
+                . '&FYID=' . FiscalYearUtils::getCurrentFiscalYearId() . '&AllRoles=1&pictures=1')
+            ->withStatus(302);
+    });
+
+    // Photo book: teachers then students of each class. Needs the group-management role of this app.
+    $group->get('/reports/photo-book', function (Request $request, Response $response) use ($classIds) {
+        $groupIds = $classIds($request);
 
         $pdf = (new MpdfRenderer())->renderToString('photo-book', [
             'sections' => PhotoBookService::sections($groupIds),
-            'fiscal_year' => FinancialService::formatFiscalYear($fiscalYearId),
         ]);
-
-        $filename = 'PhotoBook' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
         $response->getBody()->write($pdf);
 
         return $response
             ->withHeader('Content-Type', 'application/pdf')
-            ->withHeader('Content-Disposition', (SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline') . '; filename="' . $filename . '"');
+            ->withHeader('Content-Disposition', GivingStatementService::contentDisposition(ChurchMetaData::getChurchName() . ' ' . date(SystemConfig::getValue('sDateFilenameFormat'))));
     });
 
     // Sunday School Dashboard

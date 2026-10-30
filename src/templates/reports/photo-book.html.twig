@@ -1,28 +1,47 @@
 {% extends "_base.html.twig" %}
 {% block content %}
   <style>
+    h1 { font-size: 22pt; margin: 0; }
+    h2 { font-size: 14pt; margin: 6mm 0 2mm 0; padding-bottom: 1mm; border-bottom: 0.6pt solid #1a1a1a; }
+    .sub { font-size: 10pt; color: #555; margin: 0 0 2mm 0; }
     table.book { width: 100%; border-collapse: collapse; }
-    table.book td { width: 20%; text-align: center; vertical-align: top; padding: 2mm 1mm 5mm 1mm; font-size: 9pt; }
-    .photo { width: 30mm; height: 30mm; border: 0.3pt solid #999; margin: 0 auto 1.5mm auto; }
-    .photo img { width: 30mm; height: 30mm; }
+    table.book td.cell { width: 25%; text-align: center; vertical-align: top; padding: 3mm 1mm 4mm 1mm; }
+    table.photo { margin: 0 auto 2mm auto; border-collapse: collapse; }
+    table.photo td { text-align: center; vertical-align: middle; padding: 0; }
+    table.photo td.blank { background-color: #eef1f5; border: 0.4pt solid #b8c0cc; }
+    .detail { font-size: 9.5pt; color: #333; line-height: 1.25; }
+    .initials { font-size: 28pt; font-weight: bold; color: #7b8794; }
+    .name { font-size: 13pt; font-weight: bold; line-height: 1.2; }
+    .footer { font-size: 8.5pt; color: #777; text-align: center; }
   </style>
+  <htmlpagefooter name="photobookfooter">
+    <div class="footer">{{ church_name }} · {{ gettext('PhotoBook') }} · {{ generated_on }} · {PAGENO}/{nb}</div>
+  </htmlpagefooter>
+  <sethtmlpagefooter name="photobookfooter" value="on" />
+  {% set last_group_id = null %}
   {% for section in sections %}
-    <h1>{{ gettext('PhotoBook') }} - {{ section.group }} - {{ section.role }} ({{ section.people|length }}) <span class="muted">{{ fiscal_year }}</span></h1>
+    {% if section.group_id != last_group_id %}
+      {% if last_group_id is not null %}<pagebreak />{% endif %}
+      <h1>{{ section.group }}</h1>
+      <div class="sub">{{ generated_on }}</div>
+      {% set last_group_id = section.group_id %}
+    {% endif %}
+    <h2>{{ section.role }} ({{ section.people|length }})</h2>
     <table class="book">
-      {% for row in section.people|batch(5, {'name': '', 'photo': ''}) %}
-        <tr>
+      {% for row in section.people|batch(4, {'name': ''}) %}
+        <tr nobreak="true">
           {% for person in row %}
-            <td>
+            <td class="cell">
               {% if person.name %}
-                <div class="photo">{% if person.photo %}<img src="{{ person.photo }}" alt="">{% endif %}</div>
-                {{ person.name }}
+                <table class="photo" width="{{ person.photo_width }}mm"><tr>{% if person.photo %}<td><img src="{{ person.photo }}" width="{{ person.photo_width }}mm" height="{{ person.photo_height }}mm" alt=""></td>{% else %}<td class="blank" width="{{ person.photo_width }}mm" height="{{ person.photo_height }}mm"><span class="initials">{{ person.initials }}</span></td>{% endif %}</tr></table>
+                <div class="name">{{ person.name }}</div>
+                {% for line in person.details %}<div class="detail">{{ line }}</div>{% endfor %}
               {% endif %}
             </td>
           {% endfor %}
         </tr>
       {% endfor %}
     </table>
-    {% if not loop.last %}<pagebreak />{% endif %}
   {% else %}
     <p class="empty">{{ gettext('No records were returned from the previous report. Please adjust your filters or date range and try again.') }}</p>
   {% endfor %}
