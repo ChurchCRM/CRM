@@ -852,9 +852,8 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
                     );
 
                     mailTo(MEMBER_A_EMAIL).then((message) => {
-                        // The church name prefix is the shape every BaseEmail
-                        // subclass in the tree already uses.
-                        expect(message.Subject).to.contain(churchName);
+                        // The sender name is the church, so the subject does not repeat it.
+                        expect(message.Subject).to.not.contain(`${churchName}:`);
                         expect(message.Subject.toLowerCase()).to.contain("serve");
 
                         const body = `${message.Text || ""}\n${message.HTML || ""}`;
@@ -886,7 +885,7 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
                         SELFEDIT_KEY,
                         "POST",
                         `${VOLUNTEER_URL}/me/assignments/${assignment.id}/respond`,
-                        { response: "declined" },
+                        { response: "declined", comment: "Out of town that weekend" },
                     );
 
                     drain();
@@ -900,11 +899,20 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
                     mailTo(COORDINATOR_EMAIL, "declined").then((message) => {
                         const body = `${message.Text || ""}\n${message.HTML || ""}`;
                         expect(body, "who declined").to.contain("Amanda");
+                        expect(body, "the reason they gave").to.contain(
+                            "Their reason: Out of town that weekend",
+                        );
+                        expect(body, "nobody has taken the slot yet").to.not.contain(
+                            "now assigned to",
+                        );
                         expect(body, "the position still short").to.contain(
                             ESPRESSO_NAME,
                         );
                         expect(body, "the gap link").to.contain("/ministries/occurrences/");
-                        expect(body, "how many are still needed").to.contain("1");
+                        expect(body, "how many are still needed").to.contain(
+                            "Volunteers still needed for this position: 1",
+                        );
+                        expect(body, "the slot is open").to.contain("Fill this gap");
                         // §3.6: a coordinator-facing decline alert replies to the
                         // volunteer who declined.
                         const replyTo = (message.ReplyTo || []).map((r) => r.Address);
@@ -927,6 +935,10 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
                             expect(body, "which positions are short").to.contain(
                                 ESPRESSO_NAME,
                             );
+                            expect(body, "Espresso and Milk Station").to.contain(
+                                "Volunteers still needed for this occurrence: 2",
+                            );
+                            expect(body).to.contain("Fill this gap");
                         },
                     );
                 },
@@ -954,6 +966,186 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
                     });
                 });
             });
+        });
+
+        it("escapes the decline reason in the mailed alert", function () {
+            requireMailpit(this);
+
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, PERSON_VOLUNTEER).then(
+                (assignment) => {
+                    api(
+                        SELFEDIT_KEY,
+                        "POST",
+                        `${VOLUNTEER_URL}/me/assignments/${assignment.id}/respond`,
+                        { response: "declined", comment: "<b>Away</b> & busy" },
+                    );
+
+                    drain();
+
+                    mailTo(COORDINATOR_EMAIL, "declined").then((message) => {
+                        // The API strips the tags on input; the template escapes the rest.
+                        expect(message.HTML).to.contain("Their reason: Away &amp; busy");
+                        expect(message.HTML).to.not.contain("<b>Away</b>");
+                    });
+                },
+            );
+        });
+
+        it("skips the decline alert when the volunteer signs back up before it is sent", () => {
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, PERSON_VOLUNTEER).then(
+                (assignment) => {
+                    api(
+                        SELFEDIT_KEY,
+                        "POST",
+                        `${VOLUNTEER_URL}/me/assignments/${assignment.id}/respond`,
+                        { response: "declined" },
+                    );
+                    api(
+                        SELFEDIT_KEY,
+                        "POST",
+                        `${VOLUNTEER_URL}/me/signup`,
+                        { occurrenceId: occurrenceOne, positionId: posEspresso },
+                        201,
+                    );
+
+                    drain();
+
+                    notifications(assignment.id).then((resp) => {
+                        const alerts = resp.body.notifications.filter(
+                            (row) => row.type === "decline_alert",
+                        );
+                        expect(alerts).to.have.length.greaterThan(0);
+                        for (const alert of alerts) {
+                            expect(alert.status).to.eq("skipped");
+                            expect(alert.lastError).to.eq(
+                                "the volunteer is back on this position",
+                            );
+                        }
+                    });
+                    listMail().then((messages) => {
+                        const declined = messages.filter((message) =>
+                            (message.Subject || "").toLowerCase().includes("declined"),
+                        );
+                        expect(declined).to.have.length(0);
+                    });
+                },
+            );
+        });
+
+        it("sends the decline alert again when the volunteer declines after signing back up", function () {
+            requireMailpit(this);
+
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, PERSON_VOLUNTEER).then(
+                (assignment) => {
+                    const respond = (comment) =>
+                        api(
+                            SELFEDIT_KEY,
+                            "POST",
+                            `${VOLUNTEER_URL}/me/assignments/${assignment.id}/respond`,
+                            { response: "declined", comment },
+                        );
+                    const declineAlerts = () =>
+                        notifications(assignment.id).then((resp) =>
+                            resp.body.notifications.filter((row) => row.type === "decline_alert"),
+                        );
+
+                    respond("First answer");
+                    api(
+                        SELFEDIT_KEY,
+                        "POST",
+                        `${VOLUNTEER_URL}/me/signup`,
+                        { occurrenceId: occurrenceOne, positionId: posEspresso },
+                        201,
+                    );
+                    drain();
+                    declineAlerts().then((alerts) => {
+                        expect(alerts.map((row) => row.status)).to.include("skipped");
+                    });
+
+                    respond("Second answer");
+                    declineAlerts().then((alerts) => {
+                        expect(alerts.map((row) => row.status)).to.deep.eq(
+                            alerts.map(() => "pending"),
+                        );
+                    });
+                    drain();
+                    declineAlerts().then((alerts) => {
+                        expect(alerts).to.have.length.greaterThan(0);
+                        for (const alert of alerts) {
+                            expect(alert.status).to.eq("sent");
+                        }
+                    });
+                },
+            );
+        });
+
+        it("names who has taken the declined slot and whether they have accepted", function () {
+            requireMailpit(this);
+
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, PERSON_VOLUNTEER).then(
+                (assignment) => {
+                    api(
+                        SELFEDIT_KEY,
+                        "POST",
+                        `${VOLUNTEER_URL}/me/assignments/${assignment.id}/respond`,
+                        { response: "declined" },
+                    );
+                    assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A);
+                    assign(COORDINATOR_KEY, occurrenceOne, posMilk, POOL_MEMBER_B);
+
+                    drain();
+
+                    mailTo(COORDINATOR_EMAIL, "declined").then((message) => {
+                        const body = `${message.Text || ""}\n${message.HTML || ""}`;
+                        expect(body).to.contain(
+                            "The position is now assigned to Herminia Hart, who has not yet accepted it.",
+                        );
+                        expect(body, "the replacement has not confirmed").to.not.contain(
+                            "still covered",
+                        );
+                        expect(body, "no reason was given").to.not.contain("Their reason");
+                        expect(body).to.contain("View Assignments");
+                        expect(body).to.not.contain("Fill this gap");
+                    });
+
+                    mailTo(COORDINATOR_EMAIL, "still need to be filled").then((message) => {
+                        const body = `${message.Text || ""}\n${message.HTML || ""}`;
+                        expect(body).to.contain(
+                            "Volunteers still needed for this occurrence: 0",
+                        );
+                        expect(body).to.contain("View Assignments");
+                        expect(body).to.not.contain("Fill this gap");
+                    });
+                },
+            );
+        });
+
+        it("says when the person who took the declined slot has accepted it", function () {
+            requireMailpit(this);
+
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, PERSON_VOLUNTEER).then(
+                (assignment) => {
+                    api(
+                        SELFEDIT_KEY,
+                        "POST",
+                        `${VOLUNTEER_URL}/me/assignments/${assignment.id}/respond`,
+                        { response: "declined" },
+                    );
+                    assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_B, {
+                        accepted: true,
+                    });
+
+                    drain();
+
+                    mailTo(COORDINATOR_EMAIL, "declined").then((message) => {
+                        const body = `${message.Text || ""}\n${message.HTML || ""}`;
+                        expect(body).to.contain(
+                            "The position is now assigned to Jean Hart, who has accepted it.",
+                        );
+                        expect(body).to.contain("The position is still covered");
+                    });
+                },
+            );
         });
 
         it("a coordinator-recorded decline enqueues and sends no decline alert", () => {

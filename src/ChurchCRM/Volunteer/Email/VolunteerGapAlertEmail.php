@@ -39,21 +39,10 @@ class VolunteerGapAlertEmail extends BaseVolunteerEmail
 
     protected function buildMessageBody(): string
     {
-        $total = array_sum($this->shortPositions);
-
-        $opening = sprintf(
-            ngettext(
-                '%d volunteer is still needed for an upcoming occurrence.',
-                '%d volunteers are still needed for an upcoming occurrence.',
-                max(1, $total)
-            ),
-            $total
-        );
-
-        $body = $this->composeBody($opening, gettext('Open the occurrence to assign the people you need.'));
+        $opening = sprintf(gettext('Volunteers still needed for this occurrence: %d'), $this->totalNeeded());
 
         if ($this->shortPositions === []) {
-            return $body;
+            return $opening . "\n\n" . $this->context->describe();
         }
 
         // Which positions, and how short each one is, on their own lines — the
@@ -63,7 +52,12 @@ class VolunteerGapAlertEmail extends BaseVolunteerEmail
             $lines[] = sprintf('%s — %d', $positionName, $needed);
         }
 
-        return $body . "\n\n" . implode("\n", $lines);
+        return $this->composeBody($opening, implode("\n", $lines));
+    }
+
+    private function totalNeeded(): int
+    {
+        return array_sum($this->shortPositions);
     }
 
     protected function getFullURL(): string
@@ -73,6 +67,6 @@ class VolunteerGapAlertEmail extends BaseVolunteerEmail
 
     protected function getButtonText(): string
     {
-        return gettext('Fill this gap');
+        return $this->totalNeeded() > 0 ? gettext('Fill this gap') : gettext('View Assignments');
     }
 }

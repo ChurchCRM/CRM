@@ -238,7 +238,7 @@ $sRootPath = SystemURLs::getRootPath();
                             </div>
                             <div class="flex-grow-1">
                                 <strong><?= gettext('Church Information') ?></strong>
-                                <p class="mb-0 small text-body-secondary"><?= gettext('Verify church name, address, and contact info appears on tax statements.') ?></p>
+                                <p class="mb-0 small text-body-secondary"><?= gettext('Verify church name, address, and contact info appears on giving statements.') ?></p>
                             </div>
                             <div>
                                 <?php if ($isAdmin): ?>
@@ -256,7 +256,7 @@ $sRootPath = SystemURLs::getRootPath();
                             </div>
                             <div class="flex-grow-1">
                                 <strong><?= gettext('Tax Report Verbiage') ?></strong>
-                                <p class="mb-0 small text-body-secondary"><?= gettext('Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc).') ?></p>
+                                <p class="mb-0 small text-body-secondary"><?= gettext('Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc).') ?></p>
                             </div>
                             <div>
                                 <a href="<?= $sRootPath ?>/SystemSettings.php" class="btn btn-sm btn-outline-secondary">
@@ -265,13 +265,13 @@ $sRootPath = SystemURLs::getRootPath();
                             </div>
                         </div>
 
-                        <!-- Generate Tax Statements -->
+                        <!-- Generate Giving Statements -->
                         <div class="list-group-item d-flex align-items-center px-0">
                             <div class="me-3">
                                 <span class="badge bg-primary rounded-circle p-2"><i class="fa-solid fa-file-invoice-dollar"></i></span>
                             </div>
                             <div class="flex-grow-1">
-                                <strong><?= gettext('Generate Tax Statements') ?></strong>
+                                <strong><?= gettext('Generate Giving Statements') ?></strong>
                                 <p class="mb-0 small text-body-secondary"><?= gettext('Print or email annual giving statements to all donors.') ?></p>
                             </div>
                             <div>

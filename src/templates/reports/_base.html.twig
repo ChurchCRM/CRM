@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="{{ lang|default('en') }}" dir="{{ text_dir|default('ltr') }}">
+<head>
+  <meta charset="utf-8">
+  <style>
+    @page { margin: 18mm 16mm 16mm 16mm; }
+    body { font-family: sans-serif; font-size: 11pt; color: #1a1a1a; line-height: 1.4; }
+    h1 { font-size: 17pt; margin: 0 0 1.5mm 0; }
+    .letterhead-blank { height: 38mm; }
+    .letterhead { border-bottom: 0.4pt solid #bbb; padding-bottom: 3mm; margin-bottom: 5mm; }
+    .letterhead img { max-width: 50mm; max-height: 16mm; margin-bottom: 2mm; }
+    .church-name { font-size: 15pt; font-weight: bold; }
+    .church-address { font-size: 10pt; color: #333; }
+    a { color: #1a4f8a; text-decoration: none; }
+    .muted { color: #555; font-size: 9.5pt; }
+    .meta { margin: 4mm 0 5mm 0; }
+    .recipient { margin: 0 0 6mm 0; }
+    table.gifts { width: 100%; border-collapse: collapse; margin: 4mm 0 2mm 0; }
+    table.gifts th { border-bottom: 0.6pt solid #1a1a1a; font-size: 8.5pt; color: #555; text-transform: uppercase; letter-spacing: 0.4px; padding: 2mm 1.5mm; text-align: left; }
+    table.gifts td { border-bottom: 0.2pt solid #ddd; padding: 1.6mm 1.5mm; font-size: 10pt; }
+    table.gifts th.right, table.gifts td.right { text-align: right; }
+    .totals { width: 72mm; margin-left: auto; margin-top: 3mm; border-collapse: collapse; }
+    .totals td { padding: 1.2mm 1.5mm; font-size: 10pt; }
+    .totals .label { text-align: left; }
+    .totals .amount { text-align: right; font-variant-numeric: tabular-nums; }
+    .totals .final td { border-top: 0.6pt solid #1a1a1a; font-weight: bold; padding-top: 2mm; font-size: 11pt; }
+    .disclosure { margin-top: 6mm; font-size: 9pt; color: #555; }
+    .closing { margin-top: 4mm; }
+    .closing p { margin: 0 0 2.5mm 0; }
+    .generated { margin-top: 5mm; font-size: 8.5pt; color: #777; }
+    .remittance { margin-top: 10mm; border-top: 0.5pt dashed #777; padding-top: 4mm; page-break-inside: avoid; }
+    .remittance table { width: 100%; border-collapse: collapse; }
+    .remittance td { padding: 2mm 1.5mm; vertical-align: top; font-size: 10pt; }
+    .remittance .line { border-bottom: 0.4pt solid #555; }
+    .empty { margin: 6mm 0; font-style: italic; color: #555; }
+  </style>
+</head>
+<body dir="{{ text_dir|default('ltr') }}">
+  {% if letterhead == 'none' %}
+    <div class="letterhead-blank"></div>
+  {% else %}
+    <div class="letterhead">
+      {% if letterhead == 'graphic' and letterhead_image %}
+        <img src="{{ letterhead_image }}" alt="" style="max-width: 170mm; max-height: 28mm;">
+      {% elseif church_logo %}
+        <img src="{{ church_logo }}" alt="">
+      {% endif %}
+      <div class="church-name">{{ church_name }}</div>
+      <div class="church-address">{{ church_address }}</div>
+      <div class="muted">{{ church_phone }}{% if church_email %} · {{ church_email }}{% endif %}</div>
+      {% if church_tax_id %}<div class="muted">{{ gettext('Tax ID') }}: {{ church_tax_id }}</div>{% endif %}
+      {% if church_website or church_social %}
+        <div class="muted">
+          {% if church_website %}<a href="{{ church_website }}">{{ church_website }}</a>{% endif %}
+          {% for link in church_social %}{% if church_website or not loop.first %} · {% endif %}<a href="{{ link.url }}">{{ link.label }}</a>{% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+  {% block content %}{% endblock %}
+</body>
+</html>
