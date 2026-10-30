@@ -229,7 +229,7 @@ describe("Session Password Reset", () => {
                     state().should("deep.equal", rows);
                 });
                 cy.request(url()).its("body").should("include", "Password Reset Error");
-                cy.request({ method: "POST", url: "/session/begin", form: true,
+                cy.request({ method: "POST", url: "/admin/", form: true,
                     body: { User: user.usr_UserName, Password: password }, followRedirect: false }).then((response) => {
                     expect(response.status).to.equal(302);
                     expect(response.headers.location).to.include("v2/dashboard");
