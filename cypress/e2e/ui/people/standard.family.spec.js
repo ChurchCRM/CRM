@@ -112,7 +112,7 @@ describe("Standard Family", () => {
         cy.contains("Peter Troy");
         // Address and contact info should be visible
         cy.contains("4222 Clinton Way Los Angeles, CA");
-        cy.get("#family-email-none").should("contain.text", "No head of household or spouse has an email address.");
+        cy.get("#family-email-none").should("contain.text", "No head of household or spouse can receive family email.");
         cy.contains(`${weddingMonth}/${weddingDay}/${weddingYear}`);
 
         // Edit the family — use the toolbar Edit button (FABs removed)
