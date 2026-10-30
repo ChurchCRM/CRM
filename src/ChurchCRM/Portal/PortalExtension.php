@@ -268,6 +268,7 @@ class PortalExtension extends AbstractExtension implements GlobalsInterface
                 'familyId' => 0,
                 'isTeamLeader' => false,
                 'isStaff' => false,
+                'signedInWithPassword' => false,
             ];
         }
 
@@ -294,6 +295,8 @@ class PortalExtension extends AbstractExtension implements GlobalsInterface
             // a fact a theme may already render.
             'isTeamLeader' => $staffUser?->isVolunteerTeamLeaderEnabled() === true,
             'isStaff' => $staffUser !== null && !$staffUser->isEditSelfExclusive(),
+            // The password and two-factor pages exist only for a staff session (§6.4).
+            'signedInWithPassword' => $staffUser !== null,
         ];
     }
 
