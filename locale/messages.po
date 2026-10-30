@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-30 09:11+0000\n"
+"POT-Creation-Date: 2026-10-30 09:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -9023,6 +9023,11 @@ msgstr ""
 msgid "Locked Users"
 msgstr ""
 
+msgid ""
+"Lockout period in minutes\n"
+"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
+msgstr ""
+
 msgid "Log File"
 msgstr ""
 
@@ -9440,8 +9445,14 @@ msgid "Maximum number of People"
 msgstr ""
 
 msgid ""
+"Maximum number of failed logins from one IP address\n"
+"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
+"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
+msgstr ""
+
+msgid ""
 "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
+"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
 "This feature helps to protect against automated password guessing attacks.\n"
 "Set to zero to disable this feature."
 msgstr ""
@@ -9651,6 +9662,10 @@ msgid "Ministry not found"
 msgstr ""
 
 msgid "Minutes"
+msgstr ""
+
+#, php-format
+msgid "Minutes until it unlocks by itself: %d"
 msgstr ""
 
 msgid "Mismatch"
@@ -16122,9 +16137,6 @@ msgstr ""
 msgid "Tonga"
 msgstr ""
 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr ""
-
 #, php-format
 msgid "Too many occurrences (%d) — narrow the date range. Maximum allowed: %d"
 msgstr ""
@@ -18388,9 +18400,6 @@ msgid "no email address"
 msgstr ""
 
 msgid "not found"
-msgstr ""
-
-msgid "not found or user without an email"
 msgstr ""
 
 msgid "of"
