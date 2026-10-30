@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\Portal\Auth\PortalSessionMiddleware;
 use ChurchCRM\Portal\PortalApiMiddleware;
 use ChurchCRM\Portal\PortalSelfService;
 use ChurchCRM\Service\EmailLogService;
@@ -134,4 +135,4 @@ $app->group('/portal/me/emails', function (RouteCollectorProxy $group) use ($por
 
         return SlimUtils::renderJSON($response, $service->toMemberArray($row, true));
     });
-})->add(new PortalApiMiddleware());
+})->add(new PortalApiMiddleware())->add(new PortalSessionMiddleware());

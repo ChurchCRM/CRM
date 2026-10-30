@@ -26,7 +26,7 @@ Theme authors: https://docs.churchcrm.io/administration/member-portal-theme-guid
 | P8 | A broken theme fails loudly (section "Failure behaviour"). |
 | P9 | Configuration lives on Admin -> Member Portal. Values are `ConfigItem`s in `config_cfg` without a System Settings category. |
 | P10 | Landing rule: an Edit-Self-only login lands in `/portal` and cannot reach the admin shell; every other login lands in `/v2/dashboard` and has a "Member Portal" entry in its user menu. In the portal, the account menu's **Admin Console** entry (staff logins) returns to the admin dashboard. |
-| P11 | Every portal API derives the acting person from the session. No route accepts a `personId` naming the actor. |
+| P11 | Every portal API derives the acting person from the portal principal (`PortalContext`). No route accepts a `personId` naming the actor. |
 | P12 | Family scope is the member's own family, through `User::canViewFamily()` / `canEditPerson()`. |
 | P13 | The administrator chooses which calendars the portal shows (section "Calendar"). |
 | P14 | Giving is not part of the portal; the nav reserves no page for it until a payment-gateway design exists. |

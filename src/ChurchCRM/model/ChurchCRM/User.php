@@ -694,14 +694,8 @@ class User extends BaseUser
         if (!is_array($status)) {
             return null;
         }
-        if (!empty($status['DateDeceased'])) {
-            return self::SIGN_IN_BLOCKED_DECEASED;
-        }
-        if (!empty($status['DateDeactivated'])) {
-            return self::SIGN_IN_BLOCKED_INACTIVE;
-        }
 
-        return null;
+        return Person::signInBlockedReasonFor($status['DateDeceased'], $status['DateDeactivated']);
     }
 
     public function getSignInBlockedLabel(): ?string

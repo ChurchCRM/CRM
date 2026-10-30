@@ -1,11 +1,12 @@
 <?php
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\EventQuery;
+use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerOccurrenceQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerScheduleQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerTeamQuery;
+use ChurchCRM\Portal\Auth\PortalContext;
 use ChurchCRM\Portal\PortalNav;
 use ChurchCRM\Portal\PortalTeams;
 use ChurchCRM\Portal\PortalTwig;
@@ -57,7 +58,7 @@ $group->group('/teams', function (RouteCollectorProxy $teams): void {
     // than an empty list: the page has nothing to offer them and saying so plainly
     // is better than a blank card.
     $teams->get('', function (Request $request, Response $response): Response {
-        $rows = PortalTeams::listForUser(AuthenticationManager::getCurrentUser());
+        $rows = PortalTeams::listForUser(portalTeamUser($request));
 
         if ($rows === []) {
             throw new HttpForbiddenException(
@@ -80,7 +81,7 @@ $group->group('/teams', function (RouteCollectorProxy $teams): void {
     // ── GET /portal/teams/{teamId} ──────────────────────────────────────────
     $teams->get('/{teamId:[0-9]+}', function (Request $request, Response $response, array $args): Response {
         $teamId = (int) $args['teamId'];
-        $team = PortalTeams::findManagedTeam(AuthenticationManager::getCurrentUser(), $teamId);
+        $team = PortalTeams::findManagedTeam(portalTeamUser($request), $teamId);
 
         if ($team === null) {
             return portalTeamRefusal($request, $teamId);
@@ -122,7 +123,7 @@ $group->group('/teams', function (RouteCollectorProxy $teams): void {
         function (Request $request, Response $response, array $args): Response {
             $teamId = (int) $args['teamId'];
             $occurrenceId = (int) $args['occurrenceId'];
-            $user = AuthenticationManager::getCurrentUser();
+            $user = portalTeamUser($request);
 
             $team = PortalTeams::findManagedTeam($user, $teamId);
             if ($team === null) {
@@ -191,6 +192,22 @@ $group->group('/teams', function (RouteCollectorProxy $teams): void {
         }
     );
 })->add(new VolunteerTeamLeaderMiddleware());
+
+/**
+ * Team authority still comes from the staff account until the portal
+ * permissions model (member sign-in design §8) moves it to the person.
+ *
+ * @throws HttpForbiddenException
+ */
+function portalTeamUser(Request $request): User
+{
+    $user = PortalContext::staffUser();
+    if (!$user instanceof User) {
+        throw new HttpForbiddenException($request, gettext('You do not lead a volunteer team yet.'));
+    }
+
+    return $user;
+}
 
 /**
  * 404 for a team that is not there, 403 for one that is but is not theirs.

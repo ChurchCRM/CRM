@@ -1,8 +1,10 @@
 <?php
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\model\ChurchCRM\UserQuery;
+use ChurchCRM\Portal\Auth\PortalContext;
+use ChurchCRM\Portal\Auth\PortalSessionMiddleware;
 use ChurchCRM\Portal\PortalApiMiddleware;
 use ChurchCRM\Portal\PortalCalendarService;
 use ChurchCRM\Portal\PortalCalendarSubscription;
@@ -22,7 +24,7 @@ use Slim\Routing\RouteCollectorProxy;
  * Three properties hold here, and they are why the portal does not simply call
  * `/api/calendars/{id}/fullcalendar` per calendar:
  *
- *  - **Session only.** `PortalApiMiddleware` refuses an API key outright, so
+ *  - **Session only.** `PortalSessionMiddleware` refuses an API key outright, so
  *    this is not a second, key-shaped way into church events.
  *  - **The administrator chooses the calendars, not the caller.** There is no
  *    calendar id in the URL: the answer is the union of whatever
@@ -35,7 +37,7 @@ use Slim\Routing\RouteCollectorProxy;
  */
 $app->group('/portal/calendar', function (RouteCollectorProxy $group): void {
     $group->get('/events', 'getPortalCalendarEventsAPI');
-})->add(PortalApiMiddleware::class);
+})->add(new PortalApiMiddleware())->add(new PortalSessionMiddleware());
 
 /*
  * `/api/portal/calendar/subscription` — the member's own iCalendar feed
@@ -58,7 +60,7 @@ $app->group('/portal/calendar/subscription', function (RouteCollectorProxy $grou
     $group->put('', 'putPortalCalendarSubscriptionAPI');
     $group->put('/', 'putPortalCalendarSubscriptionAPI');
     $group->post('/reset', 'resetPortalCalendarSubscriptionAPI');
-})->add(new CSRFMiddleware())->add(new PortalApiMiddleware());
+})->add(new CSRFMiddleware())->add(new PortalApiMiddleware())->add(new PortalSessionMiddleware());
 
 /**
  * GET /api/portal/calendar/events?from=YYYY-MM-DD&to=YYYY-MM-DD
@@ -249,13 +251,14 @@ function portalCalendarSubscriptionPayload(Request $request): array
 }
 
 /**
- * The signed-in member's account. `PortalApiMiddleware` has already refused
- * anonymous and API-key callers, so this cannot be null by the time a handler
- * runs; the fallback keeps static analysis honest.
+ * The account that holds the portal person's feed. The token and selection
+ * stay on user_usr until the release-day cutover moves them to the person's
+ * sign-in row (member sign-in design §12).
  */
 function portalCalendarSubscriptionUser(Request $request): User
 {
-    $user = AuthenticationManager::getCurrentUser();
+    $person = PortalContext::person();
+    $user = $person === null ? null : UserQuery::create()->findPk((int) $person->getId());
     if (!$user instanceof User) {
         throw new HttpForbiddenException($request, gettext('No logged in user'));
     }

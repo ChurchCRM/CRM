@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\Photo;
 use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\Portal\Auth\PortalSessionMiddleware;
 use ChurchCRM\Portal\PortalApiMiddleware;
 use ChurchCRM\Portal\PortalSelfService;
 use ChurchCRM\Portal\PortalSelfServiceException;
@@ -19,12 +20,12 @@ use Slim\Routing\RouteCollectorProxy;
  * Four properties hold for every route in this file, and they are the reason
  * the portal does not reuse `/api/person` and `/api/family` for writes:
  *
- *  - **The actor is the session.** `PortalApiMiddleware` resolves the acting
- *    person from the session and puts it on the request. No route takes a
+ *  - **The actor is the session.** `PortalApiMiddleware` puts the portal
+ *    session's person on the request. No route takes a
  *    `personId` or a `familyId`, so there is no id to tamper with: pointing
  *    one of these endpoints at somebody else is not a permission failure, it
  *    is unexpressible (design P11).
- *  - **Session only.** An API key is refused outright, by the same middleware.
+ *  - **Session only.** `PortalSessionMiddleware` refuses an API key outright.
  *  - **CSRF on every write**, because these are browser requests carrying a
  *    cookie; the portal's forms embed the token and the bundles send it back
  *    in `X-CSRF-Token`.
@@ -443,4 +444,4 @@ $app->group('/portal', function (RouteCollectorProxy $group) use (
             'personId' => (int) $person->getId(),
         ]);
     })->add(new InputSanitizationMiddleware($portalNewMemberFields));
-})->add(new CSRFMiddleware())->add(new PortalApiMiddleware());
+})->add(new CSRFMiddleware())->add(new PortalApiMiddleware())->add(new PortalSessionMiddleware());

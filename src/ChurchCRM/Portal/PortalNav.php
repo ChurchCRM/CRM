@@ -2,10 +2,10 @@
 
 namespace ChurchCRM\Portal;
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\Portal\Auth\PortalContext;
 use Throwable;
 
 /**
@@ -159,9 +159,7 @@ class PortalNav
     /** My Giving and My Family belong to a family, so a member without one gets neither entry. */
     public static function hasFamily(): bool
     {
-        $user = AuthenticationManager::getCurrentUser();
-
-        return $user instanceof User && $user->getPerson()?->getFamily() !== null;
+        return PortalContext::person()?->getFamily() !== null;
     }
 
     /**
@@ -186,8 +184,6 @@ class PortalNav
             return false;
         }
 
-        $user = AuthenticationManager::getCurrentUser();
-
-        return $user instanceof User && $user->isVolunteerTeamLeaderEnabled();
+        return PortalContext::staffUser()?->isVolunteerTeamLeaderEnabled() === true;
     }
 }

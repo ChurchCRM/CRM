@@ -2,7 +2,6 @@
 
 namespace ChurchCRM\Portal;
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\FullCalendarEvent;
 use ChurchCRM\dto\SystemCalendars;
 use ChurchCRM\dto\SystemConfig;
@@ -15,6 +14,7 @@ use ChurchCRM\model\ChurchCRM\Map\EventTableMap;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\VolunteerTeamQuery;
+use ChurchCRM\Portal\Auth\PortalContext;
 use ChurchCRM\Volunteer\Service\VolunteerAuthorizationService;
 use ChurchCRM\SystemCalendars\AnniversariesCalendar;
 use ChurchCRM\SystemCalendars\BirthdaysCalendar;
@@ -117,12 +117,7 @@ class PortalCalendarService
             return [];
         }
 
-        try {
-            $user = AuthenticationManager::getCurrentUser();
-        } catch (Throwable) {
-            return [];
-        }
-
+        $user = PortalContext::staffUser();
         if (!$user instanceof User) {
             return [];
         }

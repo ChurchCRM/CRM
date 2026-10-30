@@ -87,6 +87,27 @@ class Person extends BasePerson implements PhotoInterface
         return !empty($this->getDateDeceased());
     }
 
+    /**
+     * Why this person may not sign in at all, staff or portal: 'deceased',
+     * 'inactive', or null.
+     */
+    public function getSignInBlockedReason(): ?string
+    {
+        return self::signInBlockedReasonFor($this->getDateDeceased(), $this->getDateDeactivated());
+    }
+
+    public static function signInBlockedReasonFor(mixed $dateDeceased, mixed $dateDeactivated): ?string
+    {
+        if (!empty($dateDeceased)) {
+            return User::SIGN_IN_BLOCKED_DECEASED;
+        }
+        if (!empty($dateDeactivated)) {
+            return User::SIGN_IN_BLOCKED_INACTIVE;
+        }
+
+        return null;
+    }
+
     public function getBirthDate(): ?\DateTimeImmutable
     {
         if (
