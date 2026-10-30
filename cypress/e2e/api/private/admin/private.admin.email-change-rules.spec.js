@@ -334,6 +334,24 @@ describe("Sign-in email changes by staff, imports and registration (§9)", () =>
             });
         });
 
+        it("changing back to the proven address sends that address the link that confirms it", () => {
+            replaceSignedInEmail();
+            cy.task("mail:clear");
+            saveEmailInPersonEditor(LENA.id, LENA.email).its("status").should("eq", 302);
+            cy.clearCookies();
+            status(LENA.id).its("unconfirmedEmail").should("eq", LENA.email);
+            mailTo(LENA.email).then((messages) => {
+                expect(messages).to.have.length(1);
+                confirmLinkIn(messages[0]).then((path) => {
+                    useLinkTwice(path).should("deep.eq", ["done", "invalid"]);
+                });
+            });
+            status(LENA.id).then((body) => {
+                expect(body.unconfirmedEmail).to.be.null;
+                expect(body.maySignIn).to.eq(true);
+            });
+        });
+
         it("staff with Edit Records can't confirm a replacement address; an administrator can", () => {
             replaceSignedInEmail();
             cy.makePrivateEditRecordsAPICall("GET", `/api/person/${LENA.id}/sign-in`, null, 200).then(({ body }) => {
