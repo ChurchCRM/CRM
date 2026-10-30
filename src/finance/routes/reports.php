@@ -4,6 +4,7 @@ use ChurchCRM\Emails\GivingStatementEmail;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\Service\FinanceReportOptions;
 use ChurchCRM\Service\MpdfRenderer;
 use ChurchCRM\Service\GivingStatementService;
 use ChurchCRM\Utils\FiscalYearUtils;
@@ -36,13 +37,42 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
         return $renderer->render($response, 'reports.php', $pageArgs);
     });
 
+    // Giving Statements: choose filters, preview the result, then download.
+    $group->get('/giving-statements', function (Request $request, Response $response): Response {
+        $query = $request->getQueryParams();
+        $criteria = GivingStatementService::criteriaFromQuery($query);
+        $summary = ($query['preview'] ?? '') === '1'
+            ? GivingStatementService::summary(GivingStatementService::paymentsByFamily($criteria))
+            : null;
+
+        $renderer = new PhpRenderer(__DIR__ . '/../views/');
+
+        return $renderer->render($response, 'reports/giving-statements.php', [
+            'sRootPath' => SystemURLs::getRootPath(),
+            'sPageTitle' => gettext('Giving Statements'),
+            'sPageSubtitle' => gettext('Generate annual tax-deductible giving statements for donors. Can be printed or emailed.'),
+            'aBreadcrumbs' => PageHeader::breadcrumbs([
+                [gettext('Financial Reports'), '/finance/reports'],
+                [gettext('Giving Statements')],
+            ]),
+            'query' => $query,
+            'criteria' => $criteria,
+            'summary' => $summary,
+            'downloadQuery' => http_build_query(array_diff_key($query, ['preview' => true, 'output' => true])),
+            'classifications' => FinanceReportOptions::classifications(),
+            'families' => FinanceReportOptions::families(),
+            'fundGroups' => FinanceReportOptions::fundGroups(),
+            'deposits' => FinanceReportOptions::deposits(),
+        ]);
+    });
+
     // Giving Statement: PDF or CSV for the chosen filters, from the report form or a family link.
     $group->map(['GET', 'POST'], '/giving-statements/download', function (Request $request, Response $response): Response {
         $input = $request->getMethod() === 'POST' ? (array) $request->getParsedBody() : $request->getQueryParams();
         $criteria = GivingStatementService::criteriaFromQuery($input);
         $groups = GivingStatementService::paymentsByFamily($criteria);
         if ($groups === []) {
-            RedirectUtils::redirect('FinancialReports.php?ReturnMessage=NoRows&ReportType=Giving%20Report');
+            RedirectUtils::redirect('finance/reports/giving-statements?' . http_build_query(array_merge($input, ['preview' => 1, 'output' => null])));
         }
 
         if (($input['output'] ?? 'pdf') === 'csv') {
