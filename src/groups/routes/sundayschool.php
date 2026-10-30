@@ -55,9 +55,8 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
     // Class list: teachers, then students with family contacts, for each class. One click, no form.
     $group->get('/reports/class-list', function (Request $request, Response $response) use ($classIds) {
         $pdf = (new MpdfRenderer())->renderToString('class-list', [
-            'classes' => ClassListService::classes($classIds($request), true),
+            'classes' => ClassListService::classes($classIds($request)),
             'fiscal_year' => FinancialService::formatFiscalYear(FiscalYearUtils::getCurrentFiscalYearId()),
-            'with_pictures' => true,
         ]);
         $fileLabel = trim(ChurchMetaData::getChurchName() . ' ClassList ' . date(SystemConfig::getValue('sDateFilenameFormat')));
         $response->getBody()->write($pdf);

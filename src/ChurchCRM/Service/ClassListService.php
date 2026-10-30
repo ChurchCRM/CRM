@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
@@ -17,7 +18,7 @@ class ClassListService
      * @param int[] $groupIds
      * @return array<int, array{name: string, teachers: string[], liaisons: string[], students: array<int, array<string, mixed>>}>
      */
-    public static function classes(array $groupIds, bool $withPictures): array
+    public static function classes(array $groupIds): array
     {
         $classes = [];
         foreach ($groupIds as $groupId) {
@@ -52,10 +53,11 @@ class ClassListService
                     $entry = trim($person->getFullName() . ' ' . ($family?->getHomePhone() ?? ''));
                     $class[$roleName === 'Teacher' ? 'teachers' : 'liaisons'][] = $entry;
                 } elseif ($roleName === 'Student') {
-                    $photo = $withPictures ? (string) $person->getPhoto()->getPhotoURI() : '';
+                    $photo = (string) $person->getPhoto()->getPhotoURI();
                     $class['students'][] = [
                         'name' => $person->getFullName(),
                         'birthday' => DateTimeUtils::formatForDatePicker($person->getBirthYear() . '-' . $person->getBirthMonth() . '-' . $person->getBirthDay()),
+                        'initials' => $person->getInitial(SystemConfig::getIntValue('iPersonInitialStyle')),
                         'photo' => $photo !== '' && is_file($photo) ? $photo : '',
                         'properties' => $person->getPropertiesString(),
                         'parents' => $family === null ? '' : (string) $family->getSalutation(),
