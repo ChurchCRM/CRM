@@ -55,7 +55,6 @@ class VolunteerEventService
     /** Hard cap on one Calendar tab listing, the occurrence list's number (design M9). */
     public const MAX_EVENT_LIST = VolunteerScheduleService::MAX_OCCURRENCE_LIST;
 
-    private const WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
     /** The event type added for a ministry's own events when V2 is turned on (D31, #10357). */
     public const OTHER_EVENT_TYPE_NAME = 'Other';
@@ -307,7 +306,7 @@ class VolunteerEventService
     /**
      * @param array<string, mixed> $input
      *
-     * @return array{type: string, dow: ?string, dom: ?int, doy: ?string, rangeStart: string, rangeEnd: string}
+     * @return array{type: string, dow: ?string, dom: ?int, doy: ?string, wom: ?int, rangeStart: string, rangeEnd: string}
      *
      * @throws VolunteerException
      */
@@ -326,15 +325,22 @@ class VolunteerEventService
         $dow = null;
         $dom = null;
         $doy = null;
+        $wom = null;
+        if ($type === RecurrenceDateGenerator::RECUR_WEEKLY || $type === RecurrenceDateGenerator::RECUR_MONTHLY_WEEKDAY) {
+            $index = RecurrenceDateGenerator::weekdayIndex((string) ($recurrence['dow'] ?? ''));
+            if ($index === null) {
+                throw VolunteerException::invalid(gettext('Choose the day of the week'));
+            }
+            $dow = RecurrenceDateGenerator::WEEKDAYS[$index];
+        }
         switch ($type) {
             case RecurrenceDateGenerator::RECUR_WEEKLY:
-                foreach (self::WEEKDAYS as $weekday) {
-                    if (strcasecmp($weekday, trim((string) ($recurrence['dow'] ?? ''))) === 0) {
-                        $dow = $weekday;
-                    }
-                }
-                if ($dow === null) {
-                    throw VolunteerException::invalid(gettext('Choose the day of the week'));
+                break;
+
+            case RecurrenceDateGenerator::RECUR_MONTHLY_WEEKDAY:
+                $wom = $this->positiveInt($recurrence['wom'] ?? null);
+                if ($wom === null || $wom > 5) {
+                    throw VolunteerException::invalid(gettext('Choose the week of the month, from 1st to 5th'));
                 }
                 break;
 
@@ -363,6 +369,7 @@ class VolunteerEventService
             'dow' => $dow,
             'dom' => $dom,
             'doy' => $doy,
+            'wom' => $wom,
             'rangeStart' => $rangeStart,
             'rangeEnd' => $rangeEnd,
         ];
@@ -409,6 +416,7 @@ class VolunteerEventService
             'recurDOW' => $series['dow'],
             'recurDOM' => $series['dom'],
             'recurDOY' => $series['doy'],
+            'recurWOM' => $series['wom'],
             'rangeStart' => $series['rangeStart'],
             'rangeEnd' => $series['rangeEnd'],
             'pinnedCalendars' => $calendarIds,

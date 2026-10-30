@@ -85,10 +85,11 @@ $app->group('/ministries', function (RouteCollectorProxy $group): void {
  *         @OA\Property(property="startTime", type="string", example="09:00"),
  *         @OA\Property(property="endTime", type="string", example="12:00"),
  *         @OA\Property(property="recurrence", type="object", description="A series instead of one event",
- *             @OA\Property(property="type", type="string", enum={"weekly","monthly","yearly"}),
- *             @OA\Property(property="dow", type="string", example="Sunday"),
+ *             @OA\Property(property="type", type="string", enum={"weekly","monthly","monthly-weekday","yearly"}, description="monthly-weekday repeats on the Nth weekday of the month (wom + dow); months without a 5th such weekday are skipped"),
+ *             @OA\Property(property="dow", type="string", example="Sunday", description="Day of week for weekly and monthly-weekday"),
  *             @OA\Property(property="dom", type="integer", example=15),
- *             @OA\Property(property="doy", type="string", example="04-12")
+ *             @OA\Property(property="doy", type="string", example="04-12"),
+ *             @OA\Property(property="wom", type="integer", minimum=1, maximum=5, example=2, description="Week of the month (1-5), required for monthly-weekday: 2 with dow Tuesday is the 2nd Tuesday")
  *         ),
  *         @OA\Property(property="rangeStart", type="string", format="date"),
  *         @OA\Property(property="rangeEnd", type="string", format="date", description="Required for a series")

@@ -56,12 +56,15 @@ function getMapFamilies(Request $request, Response $response, array $args): Resp
 {
     $params  = $request->getQueryParams();
     $groupId = isset($params['groupId']) ? (int) $params['groupId'] : null;
+    $cartIds = $_SESSION['aPeopleCart'] ?? [];
+    // Members without coordinates are geocoded below, which can wait on a slow geocoder.
+    // Release the session lock so the user's other requests do not wait too.
+    session_write_close();
 
     $items = [];
 
     if ($groupId !== null && $groupId === 0) {
         // Cart view — return persons currently in the people cart (session)
-        $cartIds = $_SESSION['aPeopleCart'] ?? [];
         if (!empty($cartIds)) {
             $persons = PersonQuery::create()
                 ->filterById($cartIds)
@@ -325,6 +328,8 @@ function geocodeAllFamilies(Request $request, Response $response, array $args): 
 {
     // Allow extended execution time for the throttled Nominatim loop (~1 req/sec × up to 50 families)
     set_time_limit(240);
+    // Release the session lock so the user's other requests do not wait for the batch.
+    session_write_close();
 
     $input = $request->getParsedBody();
     $skip = is_array($input) && isset($input['skip']) && is_numeric($input['skip']) ? (int) $input['skip'] : 0;

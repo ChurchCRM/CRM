@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# CRM #10048 — captures all 7 marketing screenshots in all 8 locales,
+# Capture every screenshot in English and the key captures in all 8 locales,
 # 3 device sizes each, then validates and regenerates the manifest once
 # at the end.
 #
@@ -76,7 +76,7 @@ if [ "$FIRST_LOCALE" = "en" ]; then
   run_step "marketing:screenshots (${FIRST_LOCALE})" env CHURCHCRM_LOCALE="$FIRST_LOCALE" BROWSER_CHANNEL="$BROWSER_CHANNEL" npm run marketing:screenshots
   run_step "Generating marketing videos" npm run marketing:videos
 else
-  run_step "Capturing screenshots for ${FIRST_LOCALE}" env CHURCHCRM_LOCALE="$FIRST_LOCALE" BROWSER_CHANNEL="$BROWSER_CHANNEL" npx playwright test --config=playwright/playwright.config.ts --project=screenshots
+  run_step "Capturing screenshots for ${FIRST_LOCALE}" env CHURCHCRM_LOCALE="$FIRST_LOCALE" BROWSER_CHANNEL="$BROWSER_CHANNEL" npx playwright test --config=playwright/playwright.config.ts --project=screenshots --grep @all-locales
   # 'setup' still wrote metadata claiming its videos; with no finalize step
   # those files never land, so drop the claims before marketing:check.
   run_step "Dropping unpublished video metadata" rm -rf playwright/artifacts/metadata/setup playwright/artifacts/metadata/recordings
@@ -95,9 +95,9 @@ for locale in "${REMAINING_LOCALES[@]}"; do
   fi
 
   if [ -n "$BROWSER_CHANNEL" ]; then
-    run_step "Capturing screenshots for ${locale}" env CHURCHCRM_LOCALE="$locale" BROWSER_CHANNEL="$BROWSER_CHANNEL" npx playwright test --config=playwright/playwright.config.ts --project=screenshots --no-deps
+    run_step "Capturing screenshots for ${locale}" env CHURCHCRM_LOCALE="$locale" BROWSER_CHANNEL="$BROWSER_CHANNEL" npx playwright test --config=playwright/playwright.config.ts --project=screenshots --no-deps --grep @all-locales
   else
-    run_step "Capturing screenshots for ${locale}" env CHURCHCRM_LOCALE="$locale" npx playwright test --config=playwright/playwright.config.ts --project=screenshots --no-deps
+    run_step "Capturing screenshots for ${locale}" env CHURCHCRM_LOCALE="$locale" npx playwright test --config=playwright/playwright.config.ts --project=screenshots --no-deps --grep @all-locales
   fi
   i=$((i + 1))
 done
@@ -111,6 +111,6 @@ echo "▶ Regenerating manifest.json (once, across all locales)" >&2
 run_step "Regenerating manifest" npm run marketing:manifest
 
 echo "" >&2
-echo "✅ Done. Expect ~175 PNGs across 8 locales — verify with:" >&2
+echo "✅ Done. English captures plus key captures across the other locales — verify with:" >&2
 echo "   find playwright/artifacts/screenshots -name '*.png' | wc -l" >&2
 echo "   node -e \"const m=require('./playwright/artifacts/manifest.json'); const byLocale={}; m.forEach(e=>byLocale[e.locale]=(byLocale[e.locale]||0)+1); console.log(byLocale)\"" >&2

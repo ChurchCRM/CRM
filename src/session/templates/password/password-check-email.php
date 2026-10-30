@@ -10,39 +10,24 @@ $sPageTitle = gettext("Password Reset Successful");
 $sBodyClass = 'page-auth page-login';
 require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
 ?>
+<main id="main-content" class="forgot-password-container">
+  <div class="forgot-password-card">
+    <div class="forgot-password-card-logo"><?= ChurchLogo::img() ?></div>
+    <h2><?= InputUtils::escapeHTML(ChurchMetaData::getChurchName()) ?></h2>
+    <p class="login-header-tagline"><?= gettext('Password Recovery') ?></p>
 
+    <div class="alert alert-success text-center" role="status">
+      <i class="fa-solid fa-circle-check fa-2x mb-2 d-block"></i>
+      <h3 class="h5 mb-2"><?= gettext("Password Reset Successful") ?></h3>
+      <?= gettext('Your password has been changed. You can now sign in with your new password.') ?>
+    </div>
 
-<div class="login-container">
-  <div class="login-wrapper">
-    <!-- Success Section -->
-    <div class="login-form-section">
-      <div class="login-form-inner">
-        <!-- Header with Logo and Church Name -->
-        <div class="login-form-header">
-          <div class="login-header-logo">
-            <?= ChurchLogo::img() ?>
-          </div>
-          <h2 class="login-header-church-name"><?= InputUtils::escapeHTML(ChurchMetaData::getChurchName()) ?></h2>
-          <p class="login-header-tagline"><?= gettext('Password Recovery') ?></p>
-        </div>
-
-        <div class="success-box">
-          <div class="success-icon">
-            <i class="fa-solid fa-check"></i>
-          </div>
-          <h2><?= gettext("Password Reset Successful") ?></h2>
-          <p><?= gettext("A new password has been generated and sent to your email address.") ?></p>
-          <span class="small"><?= gettext("Please check your email (including spam/junk folder) for your temporary password.") ?></span>
-          <span class="small"><?= gettext("Once you receive the email, you can log in with your temporary password and change it to something you prefer.") ?></span>
-        </div>
-
-        <a href="<?= AuthenticationManager::getStaffSignInURL() ?>" class="btn-sign-in">
-          <i class="fa-solid fa-right-to-bracket"></i>
-          <?= gettext("Go to Login") ?>
-        </a>
-      </div>
+    <div class="d-grid">
+      <a href="<?= AuthenticationManager::getStaffSignInURL() ?>" class="btn btn-primary">
+        <i class="fa-solid fa-right-to-bracket me-2"></i><?= gettext("Go to Login") ?>
+      </a>
     </div>
   </div>
-</div>
+</main>
 <?php
 require(SystemURLs::getDocumentRoot() ."/Include/FooterNotLoggedIn.php");

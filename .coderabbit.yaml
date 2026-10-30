@@ -70,6 +70,14 @@ reviews:
           existing URL prefix to an existing front controller is not a new route.
           Do not fail it for authorization the PHP app already applies, and do not
           ask for new role middleware on that app.
+      - name: UI validation recorded
+        mode: error
+        instructions: |
+          Applies only when the PR changes UI: files under src/skin/, webpack/, or
+          a Twig or PHP view that renders HTML. Fail if the PR description does not
+          state that the changed pages were checked in light and dark themes at
+          desktop, tablet (about 820px) and phone width. Pass for PRs that change
+          no UI. Read the description only; do not post this as an inline comment.
       - name: Schema upgrade safety
         mode: error
         instructions: |
@@ -79,8 +87,10 @@ reviews:
       - name: Tests for behavior changes
         mode: error
         instructions: |
-          Fail if the PR fixes a bug or changes user-visible behavior under src/
-          without adding or updating a spec in cypress/. Pass for CI, docs,
+          Fail if the PR fixes a bug or changes user-visible behavior under src/ or
+          webpack/ without adding or updating a spec in cypress/. Pass when the PR
+          description names an existing spec that already exercises the changed
+          path, and that spec exists in the repository. Pass for CI, docs,
           tooling, locale, dependency, and refactor-only PRs.
           Pass when every application change is the unsupported FrankenPHP example:
           docker/examples/frankenphp/**, docker/Dockerfile.churchcrm-frankenphp,
@@ -138,6 +148,8 @@ reviews:
         validator or regex beyond a case that exists in the repository.
         Apply maintainer-review-gates.md and docs/contributing/issue-readiness.md. Review issue/PR scope and linked work by evidence; hard blocks only.
         Do not ask for locale:build or messages.po.
+        Do not post the light/dark and tablet/phone UI pass as an inline comment; the
+        "UI validation recorded" pre-merge check reads the PR description for it.
     - path: "**/*.{lock,json}"
       instructions: |
         Dependency bump. Read release notes for breaking changes, security fixes,
@@ -194,6 +206,10 @@ reviews:
       instructions: |
         Pin actions to a commit SHA. No model/LLM calls from Actions.
         pull_request_target must not checkout or execute the PR head.
+        Untrusted context (head_ref, titles, bodies, branch names) goes through env:,
+        never into a run: script. A changed job graph, ref, or failure path needs an
+        assertion in scripts/*.test.js; scripts/validate-pr-gates.js checks the first
+        locally.
 
   finishing_touches:
     docstrings:

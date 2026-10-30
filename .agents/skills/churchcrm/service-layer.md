@@ -145,7 +145,7 @@ The policy (single occurrence cap, caller title/times override event-type defaul
 
 ## Geocoding
 
-`GeoUtils::getLatLong($street, $city, $state, $zip, $country)` is the only entry point for geocoding; every caller (family save, person, church info, bulk action, `/api/geocoder/address`) goes through it. It asks `GeocoderChain::fromConfig()`, which reads `sGeocoderProviders` ("Nominatim" by default; "Nominatim, US Census" adds the US Census Bureau) and lazily yields a `GeocodeResult` per provider that finds the address. A time budget stops starting new providers late in a request.
+`GeoUtils::getLatLong($street, $city, $state, $zip, $country)` is the only entry point for geocoding; every caller (family save, person, church info, bulk action, `/api/geocoder/address`) goes through it. It asks `GeocoderChain::fromConfig()`, which reads `sGeocoderProviders` ("Nominatim" by default; "Nominatim, US Census" adds the US Census Bureau) and lazily yields a `GeocodeResult` per provider that finds the address. A time budget stops starting new providers late in a request. A provider still unavailable after its retries rests for `GeocoderChain::REST_SECONDS` (or its Retry-After, when longer) and answers unavailable at once, so a request that geocodes many addresses waits for it only once. A route that geocodes more than one address releases the session lock first (`session_write_close()`), so the user's other requests do not wait for it.
 
 Provider applicability comes from the record's country, then `sDefaultCountry`, then `sChurchCountry`. When all are blank, `supports()` receives null and a country-limited provider declines. Pass the record's country to `getLatLong()`.
 

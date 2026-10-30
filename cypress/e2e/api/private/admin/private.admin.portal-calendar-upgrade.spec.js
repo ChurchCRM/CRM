@@ -6,9 +6,9 @@
  * calendar is shared. The application no longer reads or writes the switch, so
  * its pre-upgrade row is a fixture written in SQL, after the calendars are
  * shared through the API; the test then runs the shipped block of
- * src/mysql/upgrade/7.8.3.sql (task db:upgradeBlock).
+ * src/mysql/upgrade/7.8.3-member-sign-in.sql (task db:upgradeBlock).
  */
-const BLOCK = { script: "7.8.3.sql", block: "member portal calendar follows the shared calendars" };
+const BLOCK = { script: "7.8.3-member-sign-in.sql", block: "member portal calendar follows the shared calendars" };
 const CHURCH_CALENDAR = { type: "calendar", id: 1 };
 
 const db = (sql, params = []) =>
