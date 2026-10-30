@@ -1,12 +1,14 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Authentication\Exceptions\PasswordChangeException;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Emails\users\ResetPasswordEmail;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
 use ChurchCRM\model\ChurchCRM\UserQuery;
+use ChurchCRM\Service\PasswordResetService;
 use ChurchCRM\Service\UserService;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -18,49 +20,51 @@ $app->group('/forgot-password', function (RouteCollectorProxy $group): void {
     if (SystemConfig::getBooleanValue('bEnableLostPassword') && SystemConfig::isEmailEnabled()) {
         $group->get('/reset-request', 'forgotPassword');
         $group->post('/reset-request', 'userPasswordReset');
-        $group->get('/set/{token}', function (Request $request, Response $response, array $args): Response {
+        $group->map(['GET', 'POST'], '/set/{token}', function (Request $request, Response $response, array $args): Response {
             $renderer = new PhpRenderer('templates');
             $logger = LoggerUtils::getAppLogger();
-            $token = TokenQuery::create()->findPk($args['token']);
-            
-            // Validate token and reset password
-            if ($token === null) {
-                $logger->warning('Password reset attempted with non-existent token: ' . $args['token']);
-                return $renderer->render($response, 'error.php', ['sRootPath' => SystemURLs::getRootPath()]);
-            }
-            
-            if (!$token->isPasswordResetToken() || !$token->isValid()) {
-                $logger->warning('Password reset attempted with invalid token: ' . $args['token']);
-                return $renderer->render($response, 'error.php', ['sRootPath' => SystemURLs::getRootPath()]);
-            }
-            
-            $user = UserQuery::create()->findPk($token->getReferenceId());
-            if ($user === null) {
-                $logger->warning('Password reset token found but associated user does not exist: ' . $token->getReferenceId());
-                return $renderer->render($response, 'error.php', ['sRootPath' => SystemURLs::getRootPath()]);
-            }
-            
-            if (!$token->consume()) {
-                $logger->warning('Password reset token could not be consumed for user: ' . $user->getUserName());
-                return $renderer->render($response, 'error.php', ['sRootPath' => SystemURLs::getRootPath()]);
-            }
-            
-            if ($user->getSignInBlockedReason() !== null) {
-                $logger->warning('Password reset token used for an account that cannot sign in: ' . $user->getUserName());
-                return $renderer->render($response, 'error.php', ['sRootPath' => SystemURLs::getRootPath()]);
+            $response = $response->withHeader('Cache-Control', 'no-store')->withHeader('Referrer-Policy', 'no-referrer');
+            $errorPage = fn (): Response => $renderer->render($response, 'error.php', ['sRootPath' => SystemURLs::getRootPath()]);
+            $token = TokenQuery::create()->findPasswordResetToken($args['token']);
+            if ($token === null || !$token->isPasswordResetToken() || !$token->isValid()) {
+                return $errorPage();
             }
 
-            $password = $user->resetPasswordToRandom();
-            $user->save();
-            $logger->info('Password reset for user ' . $user->getUserName());
-            
-            $email = new ResetPasswordEmail($user, $password);
-            if ($email->send()) {
-                return $renderer->render($response, 'password/password-check-email.php', ['sRootPath' => SystemURLs::getRootPath()]);
-            } else {
-                $logger->error('Failed to send password reset email for user ' . $user->getUserName() . ': ' . $email->getError());
-                return $renderer->render($response, 'error.php', ['sRootPath' => SystemURLs::getRootPath()]);
+            $user = UserQuery::create()->findPk($token->getReferenceId());
+            if ($user === null || $user->getSignInBlockedReason() !== null) {
+                return $errorPage();
             }
+
+            $pageArgs = [
+                'sRootPath' => SystemURLs::getRootPath(),
+                'token' => $args['token'],
+                'minPasswordLength' => SystemConfig::getIntValue('iMinPasswordLength'),
+                'error' => null,
+            ];
+            if ($request->getMethod() === 'POST') {
+                $body = $request->getParsedBody();
+                if (!is_array($body) || !CSRFUtils::verifyRequest($body)) {
+                    return $errorPage();
+                }
+
+                try {
+                    $password = is_string($body['password'] ?? null) ? $body['password'] : '';
+                    $confirmation = is_string($body['passwordConfirmation'] ?? null) ? $body['passwordConfirmation'] : '';
+                    if ($password !== $confirmation) {
+                        throw new PasswordChangeException('New', gettext('Passwords do not match'));
+                    }
+                    if (!(new PasswordResetService())->reset($token, $user, $password)) {
+                        return $errorPage();
+                    }
+                    $logger->info('Password reset for user ' . $user->getUserName());
+
+                    return $renderer->render($response, 'password/password-check-email.php', ['sRootPath' => SystemURLs::getRootPath()]);
+                } catch (PasswordChangeException $error) {
+                    $pageArgs['error'] = $error->getMessage();
+                }
+            }
+
+            return $renderer->render($response, 'password/set-password.php', $pageArgs);
         });
     } else {
         $group->get('/{foo:.*}', function (Request $request, Response $response, array $args): Response {

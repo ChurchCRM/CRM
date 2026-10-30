@@ -12,6 +12,7 @@ use ChurchCRM\Utils\FunctionsUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\view\PageHeader;
+use ChurchCRM\Service\CustomFieldService;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
@@ -91,9 +92,6 @@ $app->post('/{groupID:[0-9]+}/members/{personID:[0-9]+}/properties', function (R
 
     $body = (array) $request->getParsedBody();
 
-    // Phone country fallback (needed for phone-type fields)
-    $sPhoneCountry = $thisPerson->getCountry() ?? '';
-
     $propMasterRows = GroupPropMasterQuery::create()->filterByGrpId($iGroupID)->orderByPropId()->find();
 
     $aPropErrors  = [];
@@ -104,27 +102,18 @@ $app->post('/{groupID:[0-9]+}/members/{personID:[0-9]+}/properties', function (R
         $prop_Field = $propRow->getField();
         $type_ID    = $propRow->getTypeId();
 
-        $currentFieldData = InputUtils::legacyFilterInput($body[$prop_Field] ?? '');
+        $currentFieldData = CustomFieldUtils::cleanInput($body[$prop_Field] ?? '');
         $bErrorFlag |= !CustomFieldUtils::validate($type_ID, $currentFieldData, $prop_Field, $aPropErrors);
         $aPersonProps[$prop_Field] = $currentFieldData;
     }
 
     if (!$bErrorFlag) {
-        // Build UPDATE SQL
-        $sSQL = 'UPDATE groupprop_' . $iGroupID . ' SET ';
-
-        foreach ($propMasterRows as $propRow) {
-            $prop_Field       = $propRow->getField();
-            $type_ID          = $propRow->getTypeId();
-            $currentFieldData = trim((string) ($aPersonProps[$prop_Field] ?? ''));
-            CustomFieldUtils::buildSql($sSQL, $type_ID, $currentFieldData, $prop_Field, $sPhoneCountry);
+        try {
+            (new CustomFieldService())->saveGroupPropertyValues($iGroupID, $iPersonID, $aPersonProps);
+            $updateResult = true;
+        } catch (\PDOException | \Propel\Runtime\Exception\PropelException $e) {
+            $updateResult = false;
         }
-
-        // Chop trailing ', '
-        $sSQL  = mb_substr($sSQL, 0, -2);
-        $sSQL .= ' WHERE per_ID = ' . $iPersonID;
-
-        $updateResult = FunctionsUtils::runQuery($sSQL, false);
 
         if (!$updateResult) {
             $logger->error('Failed to update group member properties', [
