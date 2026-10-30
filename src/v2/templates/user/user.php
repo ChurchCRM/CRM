@@ -77,7 +77,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             $isLocked       = $user->isLocked();
             $mustChange     = $user->getNeedPasswordChange();
             $failedLogins   = $user->getFailedLogins();
-            $maxFailedLogins = SystemConfig::getIntValue('iMaxFailedLogins');
+            $maxFailedLogins = SignInThrottle::maxFailedLogins();
             ?>
             <?php $signInBlockedLabel = $user->getSignInBlockedLabel(); ?>
             <?php if ($signInBlockedLabel !== null): ?>

@@ -288,19 +288,23 @@ function getAllRolesAPI(Request $request, Response $response, array $args): Resp
  */
 function getEmailDupesAPI(Request $request, Response $response, array $args): Response
 {
-    $idsByEmail = [];
-    $rows = PersonQuery::create()
-        ->filterByEmail('', Criteria::NOT_EQUAL)
-        ->select(['Id', 'Email'])
-        ->orderById()
+    $emailKey = 'LOWER(TRIM(' . PersonTableMap::COL_PER_EMAIL . '))';
+    $shared = PersonQuery::create()
+        ->withColumn($emailKey, 'EmailKey')
+        ->withColumn('GROUP_CONCAT(' . PersonTableMap::COL_PER_ID . ' ORDER BY ' . PersonTableMap::COL_PER_ID . ')', 'Ids')
+        ->withColumn('MIN(' . PersonTableMap::COL_PER_ID . ')', 'FirstId')
+        ->withColumn('COUNT(*)', 'Sharers')
+        ->where($emailKey . " <> ''")
+        ->groupBy('EmailKey')
+        ->having('Sharers > ?', 1, \PDO::PARAM_INT)
+        ->orderBy('FirstId')
+        ->select(['EmailKey', 'Ids'])
         ->find();
-    foreach ($rows as $row) {
-        $key = strtolower(trim((string) $row['Email']));
-        if ($key !== '') {
-            $idsByEmail[$key][] = (int) $row['Id'];
-        }
+
+    $idsByEmail = [];
+    foreach ($shared as $row) {
+        $idsByEmail[$row['EmailKey']] = array_map('intval', explode(',', $row['Ids']));
     }
-    $idsByEmail = array_filter($idsByEmail, fn (array $ids): bool => count($ids) > 1);
 
     $people = [];
     if ($idsByEmail !== []) {
