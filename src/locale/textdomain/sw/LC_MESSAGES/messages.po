@@ -1005,10 +1005,6 @@ msgid "Bank Draft"
 msgstr "Rasimu ya Benki"
 
 #: 
-msgid "0 - No Minimum"
-msgstr "0 - Hakuna Kiwango cha Chini"
-
-#: 
 msgid "Other Settings"
 msgstr "Mipangilio Mingine"
 
@@ -1272,10 +1268,6 @@ msgstr "Thibitisha lebo za data"
 #: 
 msgid "Invalid login or password"
 msgstr "Kuingia au nenosiri batili"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Ingizo nyingi sana ambazo hazijafaulu: akaunti yako imefungwa. Tafadhali wasiliana na msimamizi."
 
 #: 
 msgid "Email/Username"
@@ -2140,24 +2132,12 @@ msgid "Classes"
 msgstr "Madarasa"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Ripoti za Shule ya Jumapili"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Wanafunzi wasio katika Darasa la Shule ya Jumapili"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Angalau kundi moja lazima lichaguliwe kutengeneza orodha za darasa au karatasi za mahudhurio."
-
-#: 
 msgid "Report Details"
 msgstr "Ripoti Maelezo"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Orodhesha Majukumu yote (isiyochaguliwa itaorodhesha majukumu ya Mwalimu/Mwanafunzi pekee)"
 
 #: 
 msgid "First Sunday"
@@ -2178,10 +2158,6 @@ msgstr "Wanafunzi wa Ziada"
 #: 
 msgid "Extra Teachers"
 msgstr "Walimu wa Ziada"
-
-#: 
-msgid "Create Class List"
-msgstr "Unda Orodha ya Darasa"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4593,14 +4569,6 @@ msgid "PhotoBook"
 msgstr "Kitabu cha Picha"
 
 #: 
-msgid "With Photos"
-msgstr "Na Picha"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Unda Kitabu cha Picha"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4745,11 +4713,6 @@ msgstr "Maadhimisho ya miaka"
 #: 
 msgid "View User"
 msgstr "Tazama Mtumiaji"
-
-#: 
-#, fuzzy
-msgid "not found or user without an email"
-msgstr "hakuna kupatikana au mtumiaji bila barua pepe"
 
 #: 
 msgid "UserName not set"
@@ -4946,16 +4909,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Kiasi cha chini ambacho nenosiri jipya lazima litofautiane na lile la zamani (# ya herufi zimebadilishwa)\n"
 "Weka hadi sufuri ili kuzima kipengele hiki"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Idadi ya juu zaidi ya walioshindwa kuingia ili kuruhusu kabla ya akaunti ya mtumiaji kufungwa.\n"
-"Mara tu kiwango cha juu kitakapofikiwa, msimamizi lazima awashe tena akaunti.\n"
-"Kipengele hiki husaidia kulinda dhidi ya mashambulizi ya kubahatisha kiotomatiki ya nenosiri.\n"
-"Weka hadi sufuri ili kuzima kipengele hiki."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -10043,10 +9996,6 @@ msgstr "Lazimisha Usakinishaji Upya?"
 #: 
 msgid "Full Path"
 msgstr "Njia Kamili"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Tengeneza orodha za madarasa, karatasi za mahudhurio, na albamu za picha"
 
 #: 
 msgid "Installed"
@@ -18571,10 +18520,6 @@ msgstr "Haikuweza kunakili anwani ya kanisa."
 #: 
 msgid "Could not match the church country."
 msgstr "Haikuweza kulinganisha nchi ya kanisa."
-
-#: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Orodha za darasa, karatasi za mahudhurio, na vitabu vya picha"
 
 #: 
 msgid "Group membership lists and Sunday School class reports"

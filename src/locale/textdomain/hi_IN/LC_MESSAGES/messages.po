@@ -996,10 +996,6 @@ msgid "Bank Draft"
 msgstr "बैंक ड्राफ्ट"
 
 #: 
-msgid "0 - No Minimum"
-msgstr "0 - कोई न्यूनतम नहीं"
-
-#: 
 msgid "Other Settings"
 msgstr "अन्य सेटिंग्स"
 
@@ -1258,10 +1254,6 @@ msgstr "डेटा लेबल की पुष्टि करें"
 #: 
 msgid "Invalid login or password"
 msgstr "अमान्य लॉगिन या पासवर्ड"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "बहुत अधिक विफल लॉगिन: आपका खाता लॉक कर दिया गया है। कृपया व्यवस्थापक से संपर्क करें।"
 
 #: 
 msgid "Email/Username"
@@ -2122,24 +2114,12 @@ msgid "Classes"
 msgstr "कक्षाएं"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "संडे स्कूल रिपोर्ट"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "छात्र जो संडे स्कूल कक्षा में नहीं हैं"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "कक्षा सूची या उपस्थिति पत्रक बनाने के लिए कम से कम एक समूह का चयन किया जाना चाहिए।"
-
-#: 
 msgid "Report Details"
 msgstr "रिपोर्ट विवरण"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "सभी भूमिकाओं को सूचीबद्ध करें (अनचेक करने पर केवल शिक्षक/छात्र भूमिकाएं सूचीबद्ध होंगी)"
 
 #: 
 msgid "First Sunday"
@@ -2160,10 +2140,6 @@ msgstr "अतिरिक्त छात्र"
 #: 
 msgid "Extra Teachers"
 msgstr "अतिरिक्त शिक्षक"
-
-#: 
-msgid "Create Class List"
-msgstr "कक्षा सूची बनाएँ"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4570,14 +4546,6 @@ msgid "PhotoBook"
 msgstr "फ़ोटोबुक"
 
 #: 
-msgid "With Photos"
-msgstr "फ़ोटो के साथ"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "फ़ोटोबुक बनाएं"
-
-#: 
 msgid "SSE"
 msgstr "दक्षिण-दक्षिण-पूर्व"
 
@@ -4721,10 +4689,6 @@ msgstr "वर्षगाँठ"
 #: 
 msgid "View User"
 msgstr "उपयोगकर्ता देखें"
-
-#: 
-msgid "not found or user without an email"
-msgstr "नहीं मिला या उपयोगकर्ता के पास ईमेल नहीं है"
 
 #: 
 msgid "UserName not set"
@@ -4918,13 +4882,6 @@ msgstr "सेकंड में सत्र टाइमआउट अवध�
 msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
 "Set to zero to disable this feature"
 msgstr "नया पासवर्ड पुराने से कितना अलग होना चाहिए।"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "खाता लॉक होने से पहले अधिकतम विफल लॉगिन प्रयास।"
 
 #: 
 msgid "PDF handling mode.\n"
@@ -10012,10 +9969,6 @@ msgstr "बलपूर्वक पुनः स्थापित करें
 #: 
 msgid "Full Path"
 msgstr "पूर्ण पथ"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "कक्षा सूचियाँ, उपस्थिति पत्रक और फ़ोटो बुक तैयार करें"
 
 #: 
 msgid "Installed"
@@ -18540,10 +18493,6 @@ msgstr "कलीसिया का पता कॉपी नहीं कि�
 #: 
 msgid "Could not match the church country."
 msgstr "कलीसिया का देश मिलान नहीं किया जा सका।"
-
-#: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "कक्षा सूचियाँ, उपस्थिति पत्रक और फ़ोटो पुस्तकें"
 
 #: 
 msgid "Group membership lists and Sunday School class reports"

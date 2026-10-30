@@ -55,5 +55,18 @@
   "Their reason: %s": "",
   "View Assignments": "",
   "Volunteers still needed for this occurrence: %d": "",
-  "Volunteers still needed for this position: %d": ""
+  "Volunteers still needed for this position: %d": "",
+  "A weekly sign-in grid for each class. Class lists and photo books are on the Sunday School dashboard and each class page.": "",
+  "A weekly sign-in grid for the school year, one column for each Sunday": "",
+  "Age %d": "",
+  "At least one group must be selected to make an attendance sheet.": "",
+  "Attendance Sheet": "",
+  "Class List": "",
+  "Download PDF": "",
+  "Lockout period in minutes\nA locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period.": "",
+  "Maximum number of failed logins from one IP address\nFailed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\nSet to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address.": "",
+  "Maximum number of failed logins to allow before a user account is locked.\nA locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\nThis feature helps to protect against automated password guessing attacks.\nSet to zero to disable this feature.": "",
+  "Minutes until it unlocks by itself: %d": "",
+  "Sunday School Attendance Sheet": "",
+  "Sundays with no class are left off the sheet.": ""
 }

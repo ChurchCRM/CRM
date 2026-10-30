@@ -1004,10 +1004,6 @@ msgid "Bank Draft"
 msgstr "የባንክ ረቂቅ"
 
 #: 
-msgid "0 - No Minimum"
-msgstr "0 - ምንም ዝቅተኛ"
-
-#: 
 msgid "Other Settings"
 msgstr "ሌሎች ቅንብሮች"
 
@@ -1271,10 +1267,6 @@ msgstr "የውሂብ መለያዎችን ያረጋግጡ"
 #: 
 msgid "Invalid login or password"
 msgstr "ልክ ያልሆነ መግቢያ ወይም የይለፍ ቃል"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "በጣም ብዙ ያልተሳኩ መግቢያዎች፡ መለያህ ተቆልፏል። እባክዎ አስተዳዳሪን ያግኙ።"
 
 #: 
 msgid "Email/Username"
@@ -2139,24 +2131,12 @@ msgid "Classes"
 msgstr "ክፍሎች"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "የሰንበት ትምህርት ቤቶች ዘገባዎች"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "ተማሪዎች በሰንበት ትምህርት ቤት ውስጥ አይደሉም"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "የክፍል ዝርዝሮችን ወይም የመከታተያ ወረቀቶችን ለማዘጋጀት ቢያንስ አንድ ቡድን መመረጥ አለበት"
-
-#: 
 msgid "Report Details"
 msgstr "ዝርዝሮችን ሪፖርት ያድርጉ"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "ሁሉንም ሚናዎች ይዘርዝሩ (ያልተመረጠ የአስተማሪ/የተማሪ ሚናዎችን ይዘረዝራል)"
 
 #: 
 msgid "First Sunday"
@@ -2177,10 +2157,6 @@ msgstr "ተጨማሪ ተማሪዎች"
 #: 
 msgid "Extra Teachers"
 msgstr "ተጨማሪ አስተማሪዎች"
-
-#: 
-msgid "Create Class List"
-msgstr "የክፍል ዝርዝር ይፍጠሩ"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4595,14 +4571,6 @@ msgid "PhotoBook"
 msgstr "የፎቶ መጽሐፍ"
 
 #: 
-msgid "With Photos"
-msgstr "ከፎቶዎች ጋር "
-
-#: 
-msgid "Create PhotoBook"
-msgstr "የፎቶ መጽሐፍ ፍጠር"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4747,11 +4715,6 @@ msgstr "ክብረ በዓሎች"
 #: 
 msgid "View User"
 msgstr "ተጠቃሚን ይመልከቱ"
-
-#: 
-#, fuzzy
-msgid "not found or user without an email"
-msgstr "አልተገኘም ወይም ኢሜል የሌለው ተጠቃሚ አለ"
 
 #: 
 msgid "UserName not set"
@@ -4949,17 +4912,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "አዲስ የይለፍ ቃል ከአሮጌው የተለየ መሆን ያለበት ዝቅተኛው መጠን (# ፊደሎች ተለውጠዋል)\n"
 "ይህንን ባህሪ ለማሰናከል ወደ ዜሮ ያቀናብሩ"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "\n"
-"የተጠቃሚዉ መለያ ከመቆለፉ በፊት የሚፈቀደው ከፍተኛው ያልተሳኩ መግቢያዎች ብዛት ፣\n"
-"አንዴ ከፍተኛው ከደረሰ አስተዳዳሪው መለያውን እንደገና ማንቃት አለበት።\n"
-"ይህ ባህሪ አውቶማቲክ የይለፍ ቃል ግምታዊ ጥቃቶችን ለመከላከል ይረዳል።\n"
-"ይህንን ባህሪ ለማሰናከል ወደ ዜሮ ያቀናብሩ።"
 
 #: 
 msgid "PDF handling mode.\n"
@@ -10054,10 +10006,6 @@ msgstr "ገድብ ድግመ-ገቢ?"
 #: 
 msgid "Full Path"
 msgstr "ሙሉ መንገድ"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "ክፍል ዝርዝሮች ሐሳብ ስዕል እና ሥዕል መጽሐፍ ስ"
 
 #: 
 msgid "Installed"
@@ -18583,10 +18531,6 @@ msgstr "የቤተ ክርስቲያኑን አድራሻ መቅዳት አልተቻ�
 #: 
 msgid "Could not match the church country."
 msgstr "የቤተ ክርስቲያኑን አገር ማዛመድ አልተቻለም።"
-
-#: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "የክፍል ዝርዝሮች፣ የመገኘት ወረቀቶች እና የፎቶ መጻሕፍት"
 
 #: 
 msgid "Group membership lists and Sunday School class reports"

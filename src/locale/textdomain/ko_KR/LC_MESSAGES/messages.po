@@ -1005,10 +1005,6 @@ msgid "Bank Draft"
 msgstr "자동이체"
 
 #: 
-msgid "0 - No Minimum"
-msgstr "0 - 제한 없음"
-
-#: 
 msgid "Other Settings"
 msgstr "기타 설정"
 
@@ -1272,10 +1268,6 @@ msgstr "데이터 라벨 확인"
 #: 
 msgid "Invalid login or password"
 msgstr "로그인 또는 비밀번호가 올바르지 않습니다."
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "실패한 로그인 시도가 많아 계정이 잠겼습니다. 관리자에게 문의하세요."
 
 #: 
 msgid "Email/Username"
@@ -2140,24 +2132,12 @@ msgid "Classes"
 msgstr "반 목록"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "주일학교 보고서"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "주일학교 반에 속하지 않은 학생"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "반 명단이나 출석부를 만들려면 최소 한 개의 그룹을 선택해야 합니다."
-
-#: 
 msgid "Report Details"
 msgstr "보고서 상세"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "전체 역할 표시(선택 해제 시 교사/학생만 표시)"
 
 #: 
 msgid "First Sunday"
@@ -2178,10 +2158,6 @@ msgstr "추가 학생"
 #: 
 msgid "Extra Teachers"
 msgstr "추가 교사"
-
-#: 
-msgid "Create Class List"
-msgstr "반 명단 만들기"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4592,14 +4568,6 @@ msgid "PhotoBook"
 msgstr "포토북"
 
 #: 
-msgid "With Photos"
-msgstr "사진 포함"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "포토북 만들기"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4744,10 +4712,6 @@ msgstr "기념일"
 #: 
 msgid "View User"
 msgstr "사용자 보기"
-
-#: 
-msgid "not found or user without an email"
-msgstr "존재하지 않거나 이메일이 없는 사용자"
 
 #: 
 msgid "UserName not set"
@@ -4943,16 +4907,6 @@ msgstr "세션 시간 제한(초)\n"
 msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
 "Set to zero to disable this feature"
 msgstr "새 비밀번호가 기존 비밀번호와 달라야 하는 최소 문자 수\n"
-"0으로 설정하면 기능을 끕니다."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "계정을 잠그기 전 허용할 로그인 실패 횟수입니다.\n"
-"최대 횟수에 도달하면 관리자가 계정을 다시 활성화해야 합니다.\n"
-"자동 비밀번호 추측 공격을 방지하는 데 도움이 됩니다.\n"
 "0으로 설정하면 기능을 끕니다."
 
 #: 
@@ -10032,10 +9986,6 @@ msgstr "강제 재설치하시겠습니까?"
 #: 
 msgid "Full Path"
 msgstr "전체 경로"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "반 목록, 출석부 및 사진첩 생성"
 
 #: 
 msgid "Installed"
@@ -18553,10 +18503,6 @@ msgstr "교회 주소를 복사하지 못했습니다."
 #: 
 msgid "Could not match the church country."
 msgstr "교회의 국가를 일치시키지 못했습니다."
-
-#: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "반 명단, 출석부, 사진첩"
 
 #: 
 msgid "Group membership lists and Sunday School class reports"

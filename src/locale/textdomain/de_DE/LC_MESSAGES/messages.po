@@ -1036,10 +1036,6 @@ msgid "Bank Draft"
 msgstr "Scheck"
 
 #: 
-msgid "0 - No Minimum"
-msgstr "0 - kein Minimum"
-
-#: 
 msgid "Other Settings"
 msgstr "Weitere Einstellungen"
 
@@ -1315,10 +1311,6 @@ msgstr "Bestätige Datenaufkleber"
 #: 
 msgid "Invalid login or password"
 msgstr "Ungültiges Passwort"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Zu viele fehlgeschlagene Anmeldungen: Dein Konto wurde gesperrt. Melde dich bei dem Administrator."
 
 #: 
 msgid "Email/Username"
@@ -2208,25 +2200,12 @@ msgid "Classes"
 msgstr "Klassen"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Bericht zur Sonntagsschule"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Schüler, die in keiner Sontagsschulklasse sind"
 
 #: 
-#, fuzzy
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Erzeuge Gruppen- und Anwesenheitslisten"
-
-#: 
 msgid "Report Details"
 msgstr "Reportdetails"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Rollenliste (Deaktivierung wird nur Lehrer/Schülerrollen zeigen)"
 
 #: 
 #, fuzzy
@@ -2252,10 +2231,6 @@ msgstr "Zusatzstudenten"
 #, fuzzy
 msgid "Extra Teachers"
 msgstr "Zusatzlehrer"
-
-#: 
-msgid "Create Class List"
-msgstr "Erstelle Gruppenliste"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4670,14 +4645,6 @@ msgid "PhotoBook"
 msgstr "Fotoalbum"
 
 #: 
-msgid "With Photos"
-msgstr "Mit Fotos"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Fotoalbum erstellen"
-
-#: 
 msgid "SSE"
 msgstr "SSO"
 
@@ -4822,11 +4789,6 @@ msgstr "Jahrestage"
 #: 
 msgid "View User"
 msgstr "Benutzer anzeigen"
-
-#: 
-#, fuzzy
-msgid "not found or user without an email"
-msgstr "keine gefunden oder Benutzer ohne E-Mails"
 
 #: 
 msgid "UserName not set"
@@ -5024,16 +4986,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Mindestumfang, um den sich ein neues Passwort vom alten unterscheiden muss (Anzahl der geänderten Zeichen)\n"
 "Auf 0 setzen, um diese Funktion zu deaktivieren"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Maximale Anzahl fehlgeschlagener Anmeldungen, die zugelassen werden, bevor ein Benutzerkonto gesperrt wird.\n"
-"Sobald das Maximum erreicht ist, muss ein Administrator das Konto wieder aktivieren.\n"
-"Diese Funktion dient dem Schutz vor automatischen Angriffen durch das Erraten von Passwörtern.\n"
-"Stellen Sie den Wert 0 ein, um diese Funktion zu deaktivieren."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -10122,10 +10074,6 @@ msgstr "Neuinstallation erzwingen?"
 #: 
 msgid "Full Path"
 msgstr "Vollständiger Pfad"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Klassenlisten, Anwesenheitslisten und Fotobücher erstellen"
 
 #: 
 msgid "Installed"
@@ -18650,10 +18598,6 @@ msgstr "Die Gemeindeadresse konnte nicht übernommen werden."
 #: 
 msgid "Could not match the church country."
 msgstr "Das Land der Gemeinde konnte nicht zugeordnet werden."
-
-#: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Klassenlisten, Anwesenheitslisten und Fotobücher"
 
 #: 
 msgid "Group membership lists and Sunday School class reports"

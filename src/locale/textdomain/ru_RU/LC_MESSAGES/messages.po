@@ -1029,10 +1029,6 @@ msgid "Bank Draft"
 msgstr "Банковский чек"
 
 #: 
-msgid "0 - No Minimum"
-msgstr "0 - Нет Минимальный"
-
-#: 
 msgid "Other Settings"
 msgstr "Другие настройки"
 
@@ -1304,10 +1300,6 @@ msgstr "Подтвердите метки данных"
 #: 
 msgid "Invalid login or password"
 msgstr "Неверный Логин или пароль"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Слишком много неудачных попыток: ваша учетная запись была заблокирована. Пожалуйста, свяжитесь с администратором."
 
 #: 
 msgid "Email/Username"
@@ -2195,24 +2187,12 @@ msgid "Classes"
 msgstr "Классы"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Воскресная школа Отчеты"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Учащиеся вне класса воскресной школы"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "По крайней мере, одна группа должна быть выбрана, чтобы сделать списки классов или посещения листов."
-
-#: 
 msgid "Report Details"
 msgstr "Детали отчета"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Список всех категорий (при отключенном флажке будут отображаться только категории учителя / ученика)"
 
 #: 
 #, fuzzy
@@ -2238,10 +2218,6 @@ msgstr "Дополнительные Студенты"
 #, fuzzy
 msgid "Extra Teachers"
 msgstr "Дополнительные Преподаватели"
-
-#: 
-msgid "Create Class List"
-msgstr "Создать список классов"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4652,14 +4628,6 @@ msgid "PhotoBook"
 msgstr "Фотоальбом"
 
 #: 
-msgid "With Photos"
-msgstr "С фотографиями"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Создать фотоальбом"
-
-#: 
 msgid "SSE"
 msgstr "Ю-ЮВ"
 
@@ -4803,10 +4771,6 @@ msgstr "Годовщины"
 #: 
 msgid "View User"
 msgstr "Посмотреть пользователя"
-
-#: 
-msgid "not found or user without an email"
-msgstr "не найден или у пользователя нет электронной почты"
 
 #: 
 msgid "UserName not set"
@@ -5001,16 +4965,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Минимальное количество символов, на которое новый пароль должен отличаться от старого (Кол-во символов изменено)\n"
 "Чтобы отключить эту функцию установите значение \"ноль\""
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Максимальное количество неудачных попыток входа, допустимых до блокировки учетной записи пользователя.\n"
-"После достижения предела, администратор должен вновь включить данную учетную запись.\n"
-"Данная функция помогает защитить от взлома автоматическим подбором пароля.\n"
-"Чтобы отключить эту функцию установите значение \"ноль\"."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -10117,10 +10071,6 @@ msgstr "Принудительная переустановка?"
 #: 
 msgid "Full Path"
 msgstr "Полный путь"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Формирование списков классов, листов посещаемости и фотоальбомов"
 
 #: 
 msgid "Installed"
@@ -18659,10 +18609,6 @@ msgstr "Не удалось скопировать адрес церкви."
 #: 
 msgid "Could not match the church country."
 msgstr "Не удалось определить страну церкви."
-
-#: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Списки классов, листы посещаемости и фотоальбомы"
 
 #: 
 msgid "Group membership lists and Sunday School class reports"
