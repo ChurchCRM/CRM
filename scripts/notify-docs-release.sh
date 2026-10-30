@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Ask docs.churchcrm.io to stage or publish one ChurchCRM release.
-# GH_TOKEN must be able to send repository_dispatch to that repo (Actions: write).
+# GH_TOKEN must be able to send repository_dispatch to that repo (Contents: write).
 # VERSION is the release tag. MERGE=true publishes; MERGE=false only stages the pin pull request.
 set -euo pipefail
 
@@ -9,7 +9,7 @@ DOCS_REPO="${DOCS_REPO:-ChurchCRM/docs.churchcrm.io}"
 MERGE="${MERGE:-false}"
 
 if [ -z "${GH_TOKEN:-}" ]; then
-  echo "::warning::DOCS_RELEASE_TOKEN is not set. The docs site was not updated. The token needs Actions: write on ${DOCS_REPO}."
+  echo "::warning::DOCS_RELEASE_TOKEN is not set. The docs site was not updated. The token needs Contents: write on ${DOCS_REPO}."
   exit 0
 fi
 

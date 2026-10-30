@@ -61,6 +61,47 @@ class FiscalYearUtils
     }
 
     /**
+     * Fiscal year that ends in the given calendar year.
+     * When iFYMonth is 1 that is the calendar year itself.
+     */
+    public static function getFiscalYearIdForCalendarYear(int $year): int
+    {
+        return $year - 1996;
+    }
+
+    /**
+     * Date range for the fiscal year that ends in the given calendar year.
+     *
+     * @return array{startDate: string, endDate: string, label: string, month: int}
+     */
+    public static function getFiscalYearDatesForCalendarYear(int $year): array
+    {
+        return self::getFiscalYearDatesById(self::getFiscalYearIdForCalendarYear($year));
+    }
+
+    /** Calendar year in which this fiscal year ends. */
+    public static function endYearForId(int $fyid): int
+    {
+        return $fyid + 1996;
+    }
+
+    /** Calendar year in which the fiscal year of $date ends. */
+    public static function getEndYearForDate(string $date): int
+    {
+        return self::endYearForId(self::getFiscalYearIdForDate($date));
+    }
+
+    /**
+     * The fiscal year before the current one.
+     *
+     * @return array{startDate: string, endDate: string, label: string, month: int}
+     */
+    public static function previousFiscalYearDates(): array
+    {
+        return self::getFiscalYearDatesById(self::getCurrentFiscalYearId() - 1);
+    }
+
+    /**
      * Compute the date range (startDate, endDate, label, month) for a given fiscal year ID.
      *
      * This is the inverse of calculateFiscalYearId:

@@ -54,6 +54,44 @@ describe("API Repeat Events", () => {
             });
         });
 
+        it("Pins every occurrence of a long weekly series to the calendar (#10828)", () => {
+            const DAY_MS = 24 * 60 * 60 * 1000;
+            const start = new Date(Date.UTC(2045, 0, 1) + (Date.now() % 1000) * DAY_MS);
+            const startDate = start.toISOString().slice(0, 10);
+            const endDate = new Date(start.getTime() + 60 * 7 * DAY_MS)
+                .toISOString()
+                .slice(0, 10);
+
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/events/repeat",
+                {
+                    Title: "API Pinned Series " + Date.now(),
+                    Type: eventTypeId,
+                    StartTime: "09:00",
+                    EndTime: "10:00",
+                    RecurType: "weekly",
+                    RecurDOW: "Sunday",
+                    RangeStart: startDate,
+                    RangeEnd: endDate,
+                    PinnedCalendars: [1],
+                },
+                200,
+            ).then((response) => {
+                const ids = response.body.eventIds;
+                createdEventIds.push(...ids);
+                expect(ids.length).to.be.at.least(59);
+
+                [ids[0], ids[ids.length - 1]].forEach((id) => {
+                    cy.makePrivateAdminAPICall("GET", `/api/events/${id}`, null, 200).then(
+                        (resp) => {
+                            expect(resp.body.PinnedCalendars).to.deep.equal([1]);
+                        },
+                    );
+                });
+            });
+        });
+
         it("Creates monthly repeat events", () => {
             cy.makePrivateAdminAPICall(
                 "POST",

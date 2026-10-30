@@ -1,6 +1,11 @@
 # Disable directory listings
 Options -Indexes
 
+# Metadata is read locally by PHP; it should never be served over HTTP.
+<FilesMatch "^(composer\.json|composer\.lock|package\.json|package-lock\.json|upgrade\.json|installed\.json)$">
+    Require all denied
+</FilesMatch>
+
 RewriteEngine On
 
 # Automatically handle subdirectory installations

@@ -928,10 +928,6 @@ msgid "Voting Members"
 msgstr "Stemlede"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Opgawe (Belastingstate)"
-
-#: 
 msgid "Zero Givers"
 msgstr "Nul gewers"
 
@@ -1729,14 +1725,6 @@ msgstr "Toestemming"
 #: 
 msgid "System Settings"
 msgstr "Stelselinstellings"
-
-#: 
-msgid "Tax Report"
-msgstr "Belastingverslag"
-
-#: 
-msgid "Calendar Year"
-msgstr "Kalenderjaar"
 
 #: 
 msgid "User Editor"
@@ -5475,10 +5463,6 @@ msgid "Submit Registration"
 msgstr "Dien Inskrywing In"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "'n Nuwe wagwoord is gegenereer en na u e-posadres gestuur."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Pas Opdatering Nou Toe"
 
@@ -5523,20 +5507,12 @@ msgid "Login Name is required"
 msgstr "Aanmeldingsnaam is nodig"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Sodra u die e-pos ontvang, kan u aanmeld met u tydelike wagwoord en dit verander na iets wat u verkies."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Wagwoord Herlaai Fout"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Wagwoord Herlaai Suksesvol"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Kontroleer asseblief u e-pos (insluitend spam/sampokmap) vir u tydelike wagwoord."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -6324,10 +6300,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "Pasmaakbare verslag met filtrering op datum, fonds, familie en betalingsmetode."
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Pas die teks aan wat op belastingstate voorkom (sTaxReport1, sTaxReport2, ens)."
-
-#: 
 msgid "Day"
 msgstr "Dag"
 
@@ -6408,20 +6380,12 @@ msgid "Generate"
 msgstr "Genereer"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Genereer Belasting State"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Genereer jaarlikse belastingaftrekbare gawingstate vir skenkers. Kan gedruk of per e-pos gestuur word."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "Genereer herinnringsbriefs vir gesinne met uitstaande beloftes."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "Genereer verslae vir belastingstukke, belofte-sporing en finansiële analise."
 
 #: 
 msgid "ID"
@@ -6604,10 +6568,6 @@ msgid "System Info"
 msgstr "Stelselinligting"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "Belasting & Gawings Verslae"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "Belasting Verslag Taal"
 
@@ -6634,10 +6594,6 @@ msgstr "Opgradering"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "Gebruiker moet 'n Admin wees of Finansietoestemming hê"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Verifieer dat kerkynaam, adres en kontakinfo op belastingstate verskyn."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9149,10 +9105,6 @@ msgstr "Genereer verbintenis-herinnerings-briewe"
 #: 
 msgid "Generate reports on group membership and activities"
 msgstr "Genereer verslae oor ministerie-lidmaatskap en aktiwiteite"
-
-#: 
-msgid "Generate tax statement documents for donors"
-msgstr "Genereer belastingsverklaring-dokumente vir donateurs"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -12352,10 +12304,6 @@ msgstr "E-pos is gedeaktiveer"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "E-pos is gedeaktiveer. Stel e-pos op voor wagwoordterugstelling, of gebruik Verander wagwoord."
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Voer een van u rugsteun-herstelkodes in"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"
@@ -15975,10 +15923,6 @@ msgid "Please confirm your family information"
 msgstr "Bevestig asseblief jou gesininligting"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "Stuur asseblief jou volgende gawe aan %s"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Kies asseblief 'n ander gesin waarmee hierdie skenkings geassosieer moet word"
 
@@ -18009,14 +17953,6 @@ msgid "{{minutes}} min left"
 msgstr "{{minutes}} min oor"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d belastingdokument is suksesvol aan die gesin e-pos gestuur."
-
-#: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d Gawing Verklaring"
-
-#: 
 msgid "All classifications"
 msgstr "Alle klassifikasies"
 
@@ -18049,28 +17985,8 @@ msgid "Columns per Page"
 msgstr "Kolomme per bladsy"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "Geagte %s-gesin,\n"
-"\n"
-"Asseblief vind u %d gawingverklaring van %s aangeheg aan hierdie e-pos.\n"
-"\n"
-"Indien u enige vrae het, kontak asseblief die kerkkantoar.\n"
-"\n"
-"Dankie vir u gulle toewending."
-
-#: 
 msgid "Download CSV"
 msgstr "Laai CSV af"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "E-pos %d belastingdokument"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18173,10 +18089,6 @@ msgid "Pledged"
 msgstr "Betoe"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "Druk %d belastingdokument"
-
-#: 
 msgid "Recent Friends"
 msgstr "Onlangse vriende"
 
@@ -18201,24 +18113,8 @@ msgid "Single Pages"
 msgstr "Enkel bladsye"
 
 #: 
-msgid "Tax Documents"
-msgstr "Belastingdokumente"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "Belastingdokument e-pos kon nie gestuur word nie. Kontroleer asseblief u e-poslêerbediener-instellings."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "Twee halfsybladsye langs mekaar op elke landskapblad, in boekjievolgorde. Druk dubbelsy met \"flip op kort rand\", vou dan die stapel in die helfte. Kolomme word per halfblad getel."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "Kon nie belastingdokument e-pos nie: geen betalingdata vir daardie jaar gevind."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "Kon nie belastingdokument e-pos nie: hierdie gesin het geen e-posadres op lêer nie."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -20209,10 +20105,6 @@ msgid "How often"
 msgstr "Hoe gereeld"
 
 #: 
-msgid "How to correct this"
-msgstr "Hoe om dit reg te stel"
-
-#: 
 msgid "I can't"
 msgstr "Ek kan nie"
 
@@ -21533,10 +21425,6 @@ msgstr "Aangemeld"
 #: 
 msgid "Signed up"
 msgstr "Ingeskryf"
-
-#: 
-msgid "Sincerely"
-msgstr "Met vriendelike groete"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
@@ -24661,4 +24549,20 @@ msgstr "Die maand waarin almal met 'n graad een graad opskuif. Af skakel outomat
 #: 
 msgid "Through Grade"
 msgstr "Tot graad"
+
+#: 
+msgid "Invalid setting name or value"
+msgstr "Ongeldige instellingnaam of waarde"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Die geokoderingsdiens het nie geantwoord nie — probeer later weer"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Slegs die e-pos wat jy gestuur het, word gewys."
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Herhalende gebeure kon nie geskep word nie. Kyk na die toepassingslogboek vir besonderhede."
 

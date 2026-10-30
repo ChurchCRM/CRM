@@ -1,0 +1,20 @@
+{% extends "_letter.html.twig" %}
+{% block letter_body %}
+  <h1>{{ gettext('Envelope Numbers') }}</h1>
+  {% if rows %}
+    <table class="gifts">
+      <thead><tr><th>{{ gettext('Envelope') }}</th><th>{{ gettext('Family') }}</th><th>{{ gettext('Envelope') }}</th><th>{{ gettext('Family') }}</th></tr></thead>
+      <tbody>
+        {% for pair in rows|batch(2, {'envelope': '', 'family': ''}) %}
+          <tr>
+            {% for row in pair %}
+              <td>{{ row.envelope }}</td><td>{{ row.family }}</td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p class="empty">{{ gettext('No records were returned from the previous report. Please adjust your filters or date range and try again.') }}</p>
+  {% endif %}
+{% endblock %}

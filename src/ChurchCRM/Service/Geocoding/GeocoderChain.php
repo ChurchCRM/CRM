@@ -19,8 +19,10 @@ use Psr\Log\NullLogger;
  * result, so stopping at the first usable one never contacts the rest.
  *
  * A provider that is unavailable (timeout, 429, 5xx) is retried with backoff inside
- * TIME_BUDGET_SECONDS, then the next provider is tried. lookup() tells "not found"
- * from "unavailable".
+ * TIME_BUDGET_SECONDS, then the next provider is tried. A provider still unavailable
+ * after its retries rests for REST_SECONDS (or its Retry-After, when longer): it
+ * answers "unavailable" at once, so a request that geocodes many addresses waits
+ * for it only once. lookup() tells "not found" from "unavailable".
  */
 class GeocoderChain
 {
@@ -31,6 +33,9 @@ class GeocoderChain
 
     /** Extra attempts after a provider reports unavailable. */
     public const MAX_RETRIES = 2;
+
+    /** How long a provider still unavailable after its retries is not asked again. */
+    public const REST_SECONDS = 60;
 
     /** Longest a single request may take, before the remaining budget shortens it. */
     private const REQUEST_TIMEOUT_SECONDS = 10;
@@ -43,6 +48,9 @@ class GeocoderChain
 
     /** @var array<string, GeocoderProviderInterface[]> providers per ranking string, resolved once per request */
     private static array $resolved = [];
+
+    /** @var array<string, float> provider name => time until which it rests */
+    private static array $restingUntil = [];
 
     /** @var GeocoderProviderInterface[] */
     private array $providers;
@@ -206,7 +214,18 @@ class GeocoderChain
                 continue;
             }
 
+            if ((self::$restingUntil[$provider->getName()] ?? 0.0) > $this->now()) {
+                $this->logger->debug('Geocoding: ' . $provider->getName() . ' skipped, resting after it was unavailable');
+                yield GeocodeOutcome::unavailable();
+                continue;
+            }
+
             $outcome = $this->ask($provider, $startedAt, $street, $city, $state, $zip, $country);
+            if ($outcome->isUnavailable()) {
+                $restSeconds = max(static::REST_SECONDS, $outcome->retryAfterSeconds ?? 0);
+                self::$restingUntil[$provider->getName()] = $this->now() + $restSeconds;
+                $this->logger->warning('Geocoding: ' . $provider->getName() . ' still unavailable, not asking it again for ' . $restSeconds . ' s');
+            }
             if ($outcome->isFound()) {
                 $result = $outcome->result;
                 $this->logger->debug('Geocoding: ' . $provider->getName() . ' found lat=' . $result?->latitude . ', lng=' . $result?->longitude);
@@ -254,5 +273,10 @@ class GeocoderChain
     protected function pause(float $seconds): void
     {
         usleep((int) ($seconds * 1_000_000));
+    }
+
+    protected function now(): float
+    {
+        return microtime(true);
     }
 }
