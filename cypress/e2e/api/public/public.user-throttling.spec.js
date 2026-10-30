@@ -205,5 +205,28 @@ describe("API sign-in throttling (#10197)", () => {
                 });
             });
         });
+
+        it("keeps the earlier link when the new email cannot be sent", function () {
+            if (!mailpitAvailable) {
+                this.skip();
+            }
+            let savedSmtpHost;
+            cy.getSystemConfig("sSMTPHost").then((value) => {
+                savedSmtpHost = value;
+            });
+            resetRequest(LOCKOUT_USER);
+            resetMailTo(LOCKOUT_EMAIL).then((messages) => {
+                expect(messages).to.have.length(1);
+                cy.task("mail:get", { id: messages[0].ID }).then(({ body }) => {
+                    const link = `${body.HTML || ""} ${body.Text || ""}`.match(/\/session\/forgot-password\/set\/[0-9a-f]+/);
+                    expect(link, "reset link in the first email").to.not.eq(null);
+                    setConfig("sSMTPHost", "127.0.0.1:9");
+                    resetRequest(LOCKOUT_USER).then((resp) => expect(resp.body).to.deep.eq({ success: true }));
+                    cy.then(() => cy.restoreSystemConfig("sSMTPHost", savedSmtpHost));
+                    resetMailTo(LOCKOUT_EMAIL).should("have.length", 1);
+                    cy.request(link[0]).its("body").should("include", 'id="setPasswordForm"');
+                });
+            });
+        });
     });
 });
