@@ -55,6 +55,8 @@ fetch(absoluteUrl("/api/background/timerjobs"), { method: "POST" });
 
 `npm run lint` (`subdir-safe urls`) scans `cypress/` for the constructions that discard the install path: a literal root-relative first argument to `new URL()`, a zero-arg `url()` call passed to `new URL()`, a raw `fetch('/…')`, or a `location.href` assignment. A server-provided path that already includes the install prefix stays `new URL(serverPath, baseUrl)` so Cypress does not double the prefix. A deliberate root-relative line ends with `// subdir-ok: <reason>`.
 
+**Form actions that already contain the root path.** A form `action` (or any server-rendered URL) built with `SystemURLs::getRootPath()` / `$sRootPath` already includes the install prefix on a subdirectory install (`/churchcrm/finance/reports/giving-statements`). Concatenating it (or passing it raw) to `cy.request` / `cy.visit` makes Cypress resolve it against `baseUrl` again, producing `/churchcrm/churchcrm/…` and a 404. The PR workflow only runs the root path, so this only fails in the nightly subdirectory suite. Prefer a known relative path (`"/finance/reports/giving-statements/download"`) or strip the base path and call `absoluteUrl(relative)`. Do not hand a full root-relative action that already includes the install path straight to Cypress.
+
 `cypress/e2e/ui/navigation/install-path-requests.spec.js` loads every page and fails on a same-origin request outside the install path. Bugs in server-built URLs, `.htaccess` or cookie paths show up in the nightly subdirectory run.
 
 ## Database access
