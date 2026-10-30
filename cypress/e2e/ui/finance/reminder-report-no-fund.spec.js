@@ -4,7 +4,7 @@
  * Issue #9803: Reminder Report returns 500 when no fund is selected.
  * @see https://github.com/ChurchCRM/CRM/issues/9803
  *
- * With no fund checked, Reports/ReminderReport.php never assigned the fund
+ * With no fund checked, the old Reminder Report never assigned the fund
  * filter string and then passed it to a parameter typed `string`, so the first
  * family that qualified for a letter threw a TypeError (HTTP 500). No fund
  * selected must mean "all funds in the chosen fiscal year", not a crash.
@@ -14,7 +14,7 @@
  * reach the letter-generation path that used to crash.
  *
  * The response is asserted through cy.intercept because cy.intercept in
- * Cypress 15 does not buffer binary bodies; the Content-Length header FPDF
+ * Cypress 15 does not buffer binary bodies; the Content-Length header the response
  * sends is used for the size check instead of the body.
  */
 describe("Reminder Report fund selection - Issue #9803", () => {
@@ -42,7 +42,7 @@ describe("Reminder Report fund selection - Issue #9803", () => {
         cy.get("#FinancialReports").submit();
         cy.contains("Financial Reports: Pledge Reminders");
         cy.get('select[name="FYID"]').select(fiscalYearId);
-        cy.intercept("POST", "**/Reports/ReminderReport.php").as("reminderReport");
+        cy.intercept("POST", "**/finance/reports/pledge-reminders/download").as("reminderReport");
     });
 
     it("generates a PDF across all funds when no fund is selected", () => {

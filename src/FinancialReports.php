@@ -103,7 +103,7 @@ if ($sReportType === '') {
         case 'Giving Report':           $action = 'finance/reports/giving-statements/download'; break;
         case 'Zero Givers':             $action = 'Reports/ZeroGivers.php'; break;
         case 'Pledge Family Summary':   $action = 'Reports/FamilyPledgeSummary.php'; break;
-        case 'Pledge Reminders':        $action = 'Reports/ReminderReport.php'; break;
+        case 'Pledge Reminders':        $action = 'finance/reports/pledge-reminders/download'; break;
         case 'Voting Members':          $action = 'Reports/VotingMembers.php'; break;
         case 'Individual Deposit Report': $action = 'Reports/PrintDeposit.php'; break;
         case 'Advanced Deposit Report': $action = 'Reports/AdvancedDeposit.php'; break;
