@@ -25,7 +25,7 @@
                 <label class="portal-field-label" for="year">{{ gettext('Year') }}</label>
                 <select class="portal-input" name="year" id="year">
                     {% for option in years %}
-                        <option value="{{ option.value }}"{% if option.value == year %} selected{% endif %}>{{ option.value }}{% if not option.hasGiving %} — {{ gettext('No contributions') }}{% endif %}</option>
+                        <option value="{{ option.value }}"{% if option.value == year %} selected{% endif %}>{{ option.label|default(option.value) }}{% if not option.hasGiving %} — {{ gettext('No contributions') }}{% endif %}</option>
                     {% endfor %}
                 </select>
             </div>
