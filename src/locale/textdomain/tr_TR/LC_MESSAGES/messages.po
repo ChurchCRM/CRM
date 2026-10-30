@@ -1005,10 +1005,6 @@ msgid "Bank Draft"
 msgstr "Banka taslağı"
 
 #: 
-msgid "0 - No Minimum"
-msgstr "0 - Minimum Yok"
-
-#: 
 msgid "Other Settings"
 msgstr "Diğer ayarlar"
 
@@ -1272,10 +1268,6 @@ msgstr "Veri etiketlerini onaylayın"
 #: 
 msgid "Invalid login or password"
 msgstr "geçersiz giriş yada şifre"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Çok fazla başarısız giriş: Hesabınız kilitlendi. Lütfen bir yöneticiyle iletişime geçin."
 
 #: 
 msgid "Email/Username"
@@ -2140,24 +2132,12 @@ msgid "Classes"
 msgstr "Sınıf"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Pazar Okulu Raporları"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Pazar okulu sınıfında olmayan öğrenciler"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Sınıf listeleri veya katılım sayfaları yapmak için en az bir grup seçilmelidir."
-
-#: 
 msgid "Report Details"
 msgstr "Rapor Ayrıntıları"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Tüm rolleri listeleyin (kontrolsüz sadece öğretmen/öğrenci rollerini listeleyecektir)"
 
 #: 
 msgid "First Sunday"
@@ -2178,10 +2158,6 @@ msgstr "Ekstra öğrenciler"
 #: 
 msgid "Extra Teachers"
 msgstr "Ekstra Öğretmenler"
-
-#: 
-msgid "Create Class List"
-msgstr "Sınıf Listesi Oluştur"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4595,14 +4571,6 @@ msgid "PhotoBook"
 msgstr "Fotoğraf kitabı"
 
 #: 
-msgid "With Photos"
-msgstr "Fotoğraf ile"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Fotoğraf kitabı oluştur"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4747,11 +4715,6 @@ msgstr "Yıldönümleri"
 #: 
 msgid "View User"
 msgstr "Kullanıcıyı görüntüle"
-
-#: 
-#, fuzzy
-msgid "not found or user without an email"
-msgstr "E -posta olmadan bulunamadı veya kullanıcı"
 
 #: 
 msgid "UserName not set"
@@ -4949,16 +4912,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Yeni bir şifre eskisinden farklı olması gereken minimum miktar (karakterlerin# değişmesi)\n"
 "Bu özelliği devre dışı bırakmak için sıfıra ayarlayın"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Bir kullanıcı hesabı kilitlenmeden önce izin verecek maksimum başarısız giriş sayısı.\n"
-"Maksimuma ulaşıldıktan sonra, bir yöneticinin hesabı yeniden etkinleştirmesi gerekir.\n"
-"Bu özellik, otomatik şifre tahmin saldırılarına karşı korunmaya yardımcı olur.\n"
-"Bu özelliği devre dışı bırakmak için sıfıra ayarlayın."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -10047,10 +10000,6 @@ msgstr "Zorla Yeniden Yükle?"
 #: 
 msgid "Full Path"
 msgstr "Tam Yol"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Sınıf listeleri, yoklama çizelgeleri ve fotoğraf albümleri oluştur"
 
 #: 
 msgid "Installed"
@@ -18577,10 +18526,6 @@ msgid "Could not match the church country."
 msgstr "Kilise ülkesi eşleştirilemedi."
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Sınıf listeleri, yoklama çizelgeleri ve fotoğraf albümleri"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "Hizmet üyelik listeleri ve Pazar Okulu sınıf raporları"
 
@@ -18783,22 +18728,10 @@ msgstr[0] "%d varsayılan gönüllü atandı"
 msgstr[1] "%d varsayılan gönüllü atandı"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Bu pozisyon için hâlâ %d gönüllü daha gerekiyor. Boşluğu doldurmak için oluşumu açın."
-msgstr[1] "Bu pozisyon için hâlâ %d gönüllü daha gerekiyor. Boşluğu doldurmak için oluşumu açın."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d yeni oluşum"
 msgstr[1] "%d yeni oluşum"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Yaklaşan bir oluşum için hâlâ %d gönüllü gerekiyor."
-msgstr[1] "Yaklaşan bir oluşum için hâlâ %d gönüllü gerekiyor."
 
 #: 
 msgid "%s Calendar"
@@ -20863,10 +20796,6 @@ msgstr "Hizmeti aç"
 #: 
 msgid "Open the occurrence"
 msgstr "Oluşumu aç"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "İhtiyacınız olan kişileri atamak için oluşumu açın."
 
 #: 
 msgid "Open this team"

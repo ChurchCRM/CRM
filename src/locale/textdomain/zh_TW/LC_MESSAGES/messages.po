@@ -1033,10 +1033,6 @@ msgid "Bank Draft"
 msgstr "銀行匯票"
 
 #: 
-msgid "0 - No Minimum"
-msgstr "0  - 不設最低"
-
-#: 
 msgid "Other Settings"
 msgstr "其他設置"
 
@@ -1308,10 +1304,6 @@ msgstr "確認數據標籤"
 #: 
 msgid "Invalid login or password"
 msgstr "無效的登錄名或密碼"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "太多次登入失敗: 您的帳戶已被鎖定。請與管理員聯繫。"
 
 #: 
 msgid "Email/Username"
@@ -2204,25 +2196,12 @@ msgid "Classes"
 msgstr "科室"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "主日學報告"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "學生不在主日課程"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "必須選擇至少一組類列表或出勤表。"
-
-#: 
 msgid "Report Details"
 msgstr "報告詳情"
-
-#: 
-#, fuzzy
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "列出所有角色（未選中將僅列出教師/學生角色）"
 
 #: 
 #, fuzzy
@@ -2248,10 +2227,6 @@ msgstr "額外的學生"
 #, fuzzy
 msgid "Extra Teachers"
 msgstr "額外的教師"
-
-#: 
-msgid "Create Class List"
-msgstr "創建類列表"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4682,14 +4657,6 @@ msgid "PhotoBook"
 msgstr "相簿"
 
 #: 
-msgid "With Photos"
-msgstr "相片"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "創建相簿"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4837,11 +4804,6 @@ msgstr "紀念日"
 #: 
 msgid "View User"
 msgstr "查看用戶"
-
-#: 
-#, fuzzy
-msgid "not found or user without an email"
-msgstr "沒有找到或沒有電子郵件的用戶"
 
 #: 
 msgid "UserName not set"
@@ -5049,14 +5011,6 @@ msgstr "通訊超時（以秒為單位）設置為零以禁用通訊超時。"
 msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
 "Set to zero to disable this feature"
 msgstr "新密碼必須與舊密碼不同的最小數量（更改的字符數）設置為零以禁用此功能"
-
-#: 
-#, fuzzy
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "鎖定用戶帳戶之前允許的最大登錄失敗次數。達到最大值後，管理員必須重新啟用該帳戶。此功能有助於防止自動密碼猜測攻擊。設置為零可禁用此功能。"
 
 #: 
 #, fuzzy
@@ -10180,10 +10134,6 @@ msgstr "強制重新安裝？"
 #: 
 msgid "Full Path"
 msgstr "完整路徑"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "產生班級列表、簽到表和相簿"
 
 #: 
 msgid "Installed"
@@ -18703,10 +18653,6 @@ msgid "Could not match the church country."
 msgstr "無法匹配教會所在國家。"
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "班級名單、點名表和相簿"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "小組成員名單和主日學班級報告"
 
@@ -18905,19 +18851,9 @@ msgid_plural "%d default volunteers assigned"
 msgstr[0] "%d 個預設義工已指派"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "此職位仍需 %d 名義工。開啟發生以填補空缺。"
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d 個新發生"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "即將發生的事件仍需 %d 名義工。"
 
 #: 
 msgid "%s Calendar"
@@ -20978,10 +20914,6 @@ msgstr "開啟事工"
 #: 
 msgid "Open the occurrence"
 msgstr "開啟活動場次"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "請開啟活動場次，分配您所需要的人員。"
 
 #: 
 msgid "Open this team"

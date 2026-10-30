@@ -1029,10 +1029,6 @@ msgid "Bank Draft"
 msgstr "Банковский чек"
 
 #: 
-msgid "0 - No Minimum"
-msgstr "0 - Нет Минимальный"
-
-#: 
 msgid "Other Settings"
 msgstr "Другие настройки"
 
@@ -1304,10 +1300,6 @@ msgstr "Подтвердите метки данных"
 #: 
 msgid "Invalid login or password"
 msgstr "Неверный Логин или пароль"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Слишком много неудачных попыток: ваша учетная запись была заблокирована. Пожалуйста, свяжитесь с администратором."
 
 #: 
 msgid "Email/Username"
@@ -2195,24 +2187,12 @@ msgid "Classes"
 msgstr "Классы"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Воскресная школа Отчеты"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Учащиеся вне класса воскресной школы"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "По крайней мере, одна группа должна быть выбрана, чтобы сделать списки классов или посещения листов."
-
-#: 
 msgid "Report Details"
 msgstr "Детали отчета"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Список всех категорий (при отключенном флажке будут отображаться только категории учителя / ученика)"
 
 #: 
 #, fuzzy
@@ -2238,10 +2218,6 @@ msgstr "Дополнительные Студенты"
 #, fuzzy
 msgid "Extra Teachers"
 msgstr "Дополнительные Преподаватели"
-
-#: 
-msgid "Create Class List"
-msgstr "Создать список классов"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4652,14 +4628,6 @@ msgid "PhotoBook"
 msgstr "Фотоальбом"
 
 #: 
-msgid "With Photos"
-msgstr "С фотографиями"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Создать фотоальбом"
-
-#: 
 msgid "SSE"
 msgstr "Ю-ЮВ"
 
@@ -4803,10 +4771,6 @@ msgstr "Годовщины"
 #: 
 msgid "View User"
 msgstr "Посмотреть пользователя"
-
-#: 
-msgid "not found or user without an email"
-msgstr "не найден или у пользователя нет электронной почты"
 
 #: 
 msgid "UserName not set"
@@ -5001,16 +4965,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Минимальное количество символов, на которое новый пароль должен отличаться от старого (Кол-во символов изменено)\n"
 "Чтобы отключить эту функцию установите значение \"ноль\""
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Максимальное количество неудачных попыток входа, допустимых до блокировки учетной записи пользователя.\n"
-"После достижения предела, администратор должен вновь включить данную учетную запись.\n"
-"Данная функция помогает защитить от взлома автоматическим подбором пароля.\n"
-"Чтобы отключить эту функцию установите значение \"ноль\"."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -10117,10 +10071,6 @@ msgstr "Принудительная переустановка?"
 #: 
 msgid "Full Path"
 msgstr "Полный путь"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Формирование списков классов, листов посещаемости и фотоальбомов"
 
 #: 
 msgid "Installed"
@@ -18661,10 +18611,6 @@ msgid "Could not match the church country."
 msgstr "Не удалось определить страну церкви."
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Списки классов, листы посещаемости и фотоальбомы"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "Списки участников служений и отчёты по классам воскресной школы"
 
@@ -18875,28 +18821,12 @@ msgstr[2] "Назначено %d волонтёров по умолчанию"
 msgstr[3] "Назначено %d волонтёра по умолчанию"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Для этой позиции всё ещё нужен ещё %d волонтёр. Откройте проведение, чтобы закрыть пробел."
-msgstr[1] "Для этой позиции всё ещё нужно ещё %d волонтёра. Откройте проведение, чтобы закрыть пробел."
-msgstr[2] "Для этой позиции всё ещё нужно ещё %d волонтёров. Откройте проведение, чтобы закрыть пробел."
-msgstr[3] "Для этой позиции всё ещё нужно ещё %d волонтёра. Откройте проведение, чтобы закрыть пробел."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d новое проведение"
 msgstr[1] "%d новых проведения"
 msgstr[2] "%d новых проведений"
 msgstr[3] "%d нового проведения"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Для предстоящего проведения всё ещё нужен %d волонтёр."
-msgstr[1] "Для предстоящего проведения всё ещё нужно %d волонтёра."
-msgstr[2] "Для предстоящего проведения всё ещё нужно %d волонтёров."
-msgstr[3] "Для предстоящего проведения всё ещё нужно %d волонтёра."
 
 #: 
 msgid "%s Calendar"
@@ -20969,10 +20899,6 @@ msgstr "Открыть служение"
 #: 
 msgid "Open the occurrence"
 msgstr "Открыть проведение"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Откройте проведение, чтобы назначить нужных людей."
 
 #: 
 msgid "Open this team"

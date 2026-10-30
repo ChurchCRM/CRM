@@ -1004,10 +1004,6 @@ msgid "Bank Draft"
 msgstr "బ్యాంక్ డ్రాఫ్ట్"
 
 #: 
-msgid "0 - No Minimum"
-msgstr "0-కనీసం లేదు"
-
-#: 
 msgid "Other Settings"
 msgstr "ఇతర సెట్టింగ్‌లు"
 
@@ -1266,10 +1262,6 @@ msgstr "డేటా లేబుళ్లను ధృవీకరించు"
 #: 
 msgid "Invalid login or password"
 msgstr "చెల్లని లాగిన్ లేదా పాస్‌వర్డ్"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "చాలా ఎక్కువ విఫలమైన లాగిన్‌లు: మీ ఖాతా లాక్ చేయబడింది. దయచేసి నిర్వాహకుడిని సంప్రదించండి."
 
 #: 
 msgid "Email/Username"
@@ -2130,24 +2122,12 @@ msgid "Classes"
 msgstr "తరగతులు"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "సండే స్కూల్ నివేదికలు"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "ఆదివారం పాఠశాల తరగతిలో లేని విద్యార్థులు"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "తరగతి జాబితాలు లేదా హాజరు షీట్లను చేయడానికి కనీసం ఒక గ్రూప్‌ను ఎంచుకోవాలి."
-
-#: 
 msgid "Report Details"
 msgstr "నివేదిక వివరాలు"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "అన్ని పాత్రలను జాబితా చేయండి (అన్‌చెక్ చేస్తే ఉపాధ్యాయ/విద్యార్థి పాత్రలను మాత్రమే జాబితా చేస్తుంది)"
 
 #: 
 msgid "First Sunday"
@@ -2168,10 +2148,6 @@ msgstr "అదనపు విద్యార్థులు"
 #: 
 msgid "Extra Teachers"
 msgstr "అదనపు ఉపాధ్యాయులు"
-
-#: 
-msgid "Create Class List"
-msgstr "తరగతి జాబితాను సృష్టించండి"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4578,14 +4554,6 @@ msgid "PhotoBook"
 msgstr "ఫోటో పుస్తకం"
 
 #: 
-msgid "With Photos"
-msgstr "ఫోటోలతో"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "ఫోటో పుస్తకం సృష్టించండి"
-
-#: 
 msgid "SSE"
 msgstr "దక్షిణ-ఆగ్నేయం"
 
@@ -4729,10 +4697,6 @@ msgstr "వార్షికోత్సవాలు"
 #: 
 msgid "View User"
 msgstr "యూజర్‌ను చూడండి"
-
-#: 
-msgid "not found or user without an email"
-msgstr "కనుగొనబడలేదు లేదా ఇమెయిల్ లేని వినియోగదారు"
 
 #: 
 msgid "UserName not set"
@@ -4927,16 +4891,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "కొత్త పాస్‌వర్డ్ పాతదాని నుండి భిన్నంగా ఉండవలసిన కనీస మొత్తం (మార్చబడిన అక్షరాల #)\n"
 "ఈ ఫీచర్‌ను నిలిపివేయడానికి సున్నాకు సెట్ చేయండి"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "వినియోగదారు ఖాతా లాక్ అయ్యే ముందు అనుమతించే విఫల లాగిన్‌ల గరిష్ట సంఖ్య.\n"
-"గరిష్టానికి చేరుకున్న తర్వాత, నిర్వాహకుడు ఖాతాను మళ్ళీ ప్రారంభించాలి.\n"
-"ఈ ఫీచర్ ఆటోమేటెడ్ పాస్‌వర్డ్ అంచనా దాడుల నుండి రక్షించడానికి సహాయపడుతుంది.\n"
-"ఈ ఫీచర్‌ను నిలిపివేయడానికి సున్నాకు సెట్ చేయండి."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -10024,10 +9978,6 @@ msgstr "బలవంతంగా మళ్ళీ వ్యవస్థాపి�
 #: 
 msgid "Full Path"
 msgstr "పూర్తి మార్గం"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "తరగతి జాబితాలు, హాజరు షీట్‌లు మరియు ఫోటో పుస్తకాలు రూపొందించండి"
 
 #: 
 msgid "Installed"
@@ -18554,10 +18504,6 @@ msgid "Could not match the church country."
 msgstr "చర్చి దేశాన్ని సరిపోల్చలేకపోయింది."
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "తరగతి జాబితాలు, హాజరు పత్రాలు మరియు ఫోటో పుస్తకాలు"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "పరిచర్య సభ్యుల జాబితాలు మరియు ఆదివారపు బడి తరగతి నివేదికలు"
 
@@ -18760,22 +18706,10 @@ msgstr[0] "%d డిఫాల్ట్ స్వచ్ఛంద సేవకు�
 msgstr[1] "%d డిఫాల్ట్ స్వచ్ఛంద సేవకులు నియమించబడ్డారు"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "ఈ స్థానానికి ఇంకా %d మరో స్వచ్ఛంద సేవకుడు అవసరం. ఖాళీని నింపడానికి సందర్భాన్ని తెరవండి."
-msgstr[1] "ఈ స్థానానికి ఇంకా %d మంది మరో స్వచ్ఛంద సేవకులు అవసరం. ఖాళీని నింపడానికి సందర్భాన్ని తెరవండి."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d కొత్త సందర్భం"
 msgstr[1] "%d కొత్త సందర్భాలు"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "రాబోయే సందర్భానికి ఇంకా %d స్వచ్ఛంద సేవకుడు అవసరం."
-msgstr[1] "రాబోయే సందర్భానికి ఇంకా %d మంది స్వచ్ఛంద సేవకులు అవసరం."
 
 #: 
 msgid "%s Calendar"
@@ -20840,10 +20774,6 @@ msgstr "పరిచర్యను తెరవండి"
 #: 
 msgid "Open the occurrence"
 msgstr "సందర్భాన్ని తెరవండి"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "మీకు కావలసిన వ్యక్తులను నియమించడానికి సందర్భాన్ని తెరవండి."
 
 #: 
 msgid "Open this team"

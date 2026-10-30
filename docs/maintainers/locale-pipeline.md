@@ -31,7 +31,7 @@ The branch name says what the branch holds. Uploading is a workflow step, never 
 | Branch | Holds | Made by | Merged? |
 |---|---|---|---|
 | `locale/terms/<version>-<YYYYMMDD-HHMMSS>` | New source strings in `locale/messages.po` | `Locale: terms` (`locale-generate-terms.yml`) | Yes, after review |
-| `locale/download/<version>` | What POEditor returned: `src/locale` and the `locale/terms/missing/` batches | `Locale: sync` (`locale-sync-poeditor.yml`) | Yes, after a quick scan |
+| `locale/download/<version>` | What POEditor returned: `src/locale` and the `locale/terms/missing/` batches | `Locale: sync` (`locale-sync-poeditor.yml`) | The workflow squash-merges it when every JSON file parses and every path is a download file. Invalid JSON or any other path leaves the PR open |
 | `locale/translate/<version>-<YYYY-MM-DD>-<HHMMSS>` | Translated batches | the translation agent (`/locale-translate`) | **No.** The push is the upload. Delete it once its uploads are green |
 
 | Workflow | Flow | Does |
@@ -52,7 +52,7 @@ Each trigger is scoped to what only its own stage produces.
 
 Every step is idempotent: the terms upload does nothing when POEditor already matches `messages.po`, and the translation upload skips empty and already-accepted terms. So a manual, daily or dispatched run is always safe.
 
-A PR merged with `GITHUB_TOKEN` starts no workflows. Merge terms and download PRs as yourself (or a GitHub App) so the next stage starts.
+A PR merged with `GITHUB_TOKEN` starts no workflows. Merge a terms PR as yourself (or a GitHub App) so `Locale: sync` starts. The download PR is the exception: `Locale: sync` squash-merges it with `GITHUB_TOKEN`. That merge starts nothing, which is what the download stage wants. An invalid JSON file or a path outside `src/locale/i18n/`, `src/locale/textdomain/<locale>/LC_MESSAGES/messages.po|mo`, and `locale/terms/missing/<locale>/*.json` leaves the PR open.
 
 ### Rules for translation agents
 
@@ -66,7 +66,7 @@ A PR merged with `GITHUB_TOKEN` starts no workflows. Merge terms and download PR
 | Workflow | Trigger | Does | Needs |
 |---|---|---|---|
 | `locale-generate-terms.yml` | push to `master` touching `src/**` except `src/locale/i18n/**` and `src/locale/textdomain/**`, manual | runs `npm run locale:build`, opens the terms PR | — |
-| `locale-sync-poeditor.yml` | push to `master` touching `locale/messages.po` (after a 30 minute settle), daily 00:00 UTC, manual, dispatched by the upload workflow with `upload_terms=false` | 1. `poeditor-upload-terms.js` (skips when POEditor matches; verifies after; refuses a large deletion), 2. downloads JSON/PO/MO + missing batches and opens the download PR | `POEDITOR_TOKEN` (the one secret for download, upload and terms) |
+| `locale-sync-poeditor.yml` | push to `master` touching `locale/messages.po` (after a 30 minute settle), daily 00:00 UTC, manual, dispatched by the upload workflow with `upload_terms=false` | 1. `poeditor-upload-terms.js` (skips when POEditor matches; verifies after; refuses a large deletion), 2. downloads JSON/PO/MO + missing batches, opens the download PR, and squash-merges it when `locale-download-gate.js` passes | `POEDITOR_TOKEN` (the one secret for download, upload and terms) |
 | `locale-upload-missing.yml` | push to `locale/translate/**` (`locale/terms/missing/**`), manual (`locales`, `sync` inputs) | runs `poeditor-upload-missing.js --yes --no-download` for the changed locales, then dispatches the sync | `POEDITOR_TOKEN`, `actions: write` |
 
 The upload workflow runs one at a time (`concurrency: locale-upload-missing`) because POEditor accepts one upload per ~20 seconds. Each push starts its own download, which queues behind any download already running.
@@ -92,6 +92,6 @@ Send each form under its own slot or context key; a pipe-joined `"A|B"` is store
 
 ## Planned
 
-- Auto-merge the terms and download PRs behind a path-allowlist and file-validity check (needs a GitHub App token, since PRs merged with `GITHUB_TOKEN` start no follow-up workflow).
+- Auto-merge the terms PR behind a path-allowlist (needs a GitHub App token, since a `GITHUB_TOKEN` merge starts no `Locale: sync`).
 - Start the translation agent from the merged download PR instead of a fixed schedule.
 - Release check: fail readiness when `locale/terms/missing/` is not empty.

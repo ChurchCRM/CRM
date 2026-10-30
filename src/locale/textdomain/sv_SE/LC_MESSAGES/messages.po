@@ -1034,10 +1034,6 @@ msgid "Bank Draft"
 msgstr "Bankcheck"
 
 #: 
-msgid "0 - No Minimum"
-msgstr "0 - inga minimum"
-
-#: 
 msgid "Other Settings"
 msgstr "Övriga inställningar"
 
@@ -1315,10 +1311,6 @@ msgstr "Bekräfta informations etikett"
 #: 
 msgid "Invalid login or password"
 msgstr "Ogiltig användernamn eller lösenord"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "För många felaktiga inloggningar:  ditt konto är låst.  Kontaka administratören."
 
 #: 
 msgid "Email/Username"
@@ -2222,25 +2214,12 @@ msgid "Classes"
 msgstr "Klasser"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Söndagskola rapporter"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Elever som inte är i en söndagsskoleklass"
 
 #: 
-#, fuzzy
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Åtminstone en grupp måste väljas för att skapa grupplister eller närvarolister"
-
-#: 
 msgid "Report Details"
 msgstr "Rapportera detaljer"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Lista alla roller (ej markerad kommer bara att lista lärare / studentroller)"
 
 #: 
 #, fuzzy
@@ -2266,10 +2245,6 @@ msgstr "Ytterligare studenter"
 #, fuzzy
 msgid "Extra Teachers"
 msgstr "Ytterligare lärare"
-
-#: 
-msgid "Create Class List"
-msgstr "Skapa klasslista"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4683,14 +4658,6 @@ msgid "PhotoBook"
 msgstr "fotobok"
 
 #: 
-msgid "With Photos"
-msgstr "Med foton"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Skapa PhotoBook"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4835,11 +4802,6 @@ msgstr "årsdagar"
 #: 
 msgid "View User"
 msgstr "Visa användare"
-
-#: 
-#, fuzzy
-msgid "not found or user without an email"
-msgstr "ingen hittad eller användare utan e-post"
 
 #: 
 msgid "UserName not set"
@@ -5037,16 +4999,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Minsta som ett nytt lösenord måste skilja sig från det gamla (antalet tecken har ändrats)\n"
 "Ställ in på noll för att inaktivera den här funktionen"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Maximalt antal misslyckade inloggningar för att tillåta innan ett användarkonto är låst.\n"
-"När det maximala har uppnåtts måste en administratör aktivera kontot igen.\n"
-"Den här funktionen hjälper dig att skydda mot automatiska gissningsangrepp. \n"
-"Ställ in på noll för att inaktivera den här funktionen."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -10135,10 +10087,6 @@ msgstr "Tvinga ominstallation?"
 #: 
 msgid "Full Path"
 msgstr "Fullständig sökväg"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Generera klasslistor, närvarolistor och fotoböcker"
 
 #: 
 msgid "Installed"
@@ -18665,10 +18613,6 @@ msgid "Could not match the church country."
 msgstr "Det gick inte att matcha kyrkans land."
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Klasslistor, närvarolistor och fotoalbum"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "Medlemslistor för verksamheter och rapporter för söndagsskoleklasser"
 
@@ -18871,22 +18815,10 @@ msgstr[0] "%d standardvolontär tilldelad"
 msgstr[1] "%d standardvolontärer tilldelade"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Ytterligare %d volontär behövs fortfarande för denna position. Öppna tillfället för att fylla luckan."
-msgstr[1] "Ytterligare %d volontärer behövs fortfarande för denna position. Öppna tillfället för att fylla luckan."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d nytt tillfälle"
 msgstr[1] "%d nya tillfällen"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "%d volontär behövs fortfarande för ett kommande tillfälle."
-msgstr[1] "%d volontärer behövs fortfarande för ett kommande tillfälle."
 
 #: 
 msgid "%s Calendar"
@@ -20951,10 +20883,6 @@ msgstr "Öppna tjänsteområdet"
 #: 
 msgid "Open the occurrence"
 msgstr "Öppna tillfället"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Öppna tillfället för att tilldela de personer du behöver."
 
 #: 
 msgid "Open this team"
