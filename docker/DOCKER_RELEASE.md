@@ -9,7 +9,12 @@ Stable releases publish `churchcrm/crm:<version>-php8-apache` and
 GitHub updates `latest-php8-apache` / `latest-php8-fpm`, and `latest`, which is
 the Apache image. Prefer a version tag or image digest for production
 deployments. Re-running a build can replace a version tag; DockerHub tag
-immutability is a separate registry policy.
+immutability is a separate registry policy. The one exception is the production
+compose file: `docker/production/compose.yaml` intentionally tracks
+`latest-php8-apache` rather than a versioned tag, per the latest-only support
+policy (anything outside latest is unsupported, and an unstable build gets
+deleted or fast-followed), so new compose deployments always land on the
+current release without a per-release pin bump.
 
 Apache is the supported variant. The FPM tags are published, but they require a
 web server in front and ChurchCRM's routing depends on Apache's rewrite rules,

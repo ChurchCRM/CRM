@@ -75,10 +75,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "Customisable report with filtering by date, fund, family, and payment method."
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Customise the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Require all users to enrol in two-factor authentication"
 

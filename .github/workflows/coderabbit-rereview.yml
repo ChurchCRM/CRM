@@ -1,0 +1,41 @@
+name: "PR: ask CodeRabbit to review again"
+
+# CodeRabbit keeps CHANGES_REQUESTED until it reviews again, even after every thread is
+# resolved. This asks it to review once all threads are resolved, so its state shows whether
+# anything still blocks. A schedule, not a thread event: PRs from forks get a read-only token
+# on pull_request events. Deterministic only, no model call.
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: coderabbit-rereview
+  cancel-in-progress: false
+
+jobs:
+  rereview:
+    name: Ask for a fresh review
+    if: github.repository == 'ChurchCRM/CRM'
+    timeout-minutes: 5
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout script
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+          sparse-checkout: |
+            scripts/coderabbit-rereview.js
+          sparse-checkout-cone-mode: false
+
+      - name: Comment on PRs whose threads are all resolved
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9
+        with:
+          script: |
+            await require('./scripts/coderabbit-rereview.js').run({ github, context, core });
