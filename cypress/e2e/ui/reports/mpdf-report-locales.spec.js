@@ -30,6 +30,7 @@ const translation = (locale) =>
 const fetchReport = () => cy.request({ url: REPORT, encoding: "binary" });
 
 describe("mPDF reports follow the user's language", () => {
+    before(() => cy.rememberTestEnv(["admin.api.key"]));
     beforeEach(() => cy.setupAdminSession());
     after(() => setLocale("en_US"));
 
