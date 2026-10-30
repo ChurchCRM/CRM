@@ -193,8 +193,10 @@ $base = SystemURLs::getRootPath() . '/finance/reports/giving-statements';
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= gettext('Close') ?></button>
-                <a class="btn btn-outline-secondary" id="modalCsv" href="#"><i class="fa-solid fa-file-csv me-1"></i><?= gettext('Download CSV') ?></a>
-                <a class="btn btn-primary" id="modalPdf" href="#" target="_blank" rel="noopener"><i class="fa-solid fa-file-pdf me-1"></i><?= gettext('Download PDF') ?></a>
+                <form method="post" action="<?= InputUtils::escapeAttribute($base . '/download') ?>" id="modalDownload" class="d-flex gap-2 m-0">
+                    <button type="submit" class="btn btn-outline-secondary" id="modalCsv" name="output" value="csv"><i class="fa-solid fa-file-csv me-1"></i><?= gettext('Download CSV') ?></button>
+                    <button type="submit" class="btn btn-primary" id="modalPdf" name="output" value="pdf" formtarget="_blank"><i class="fa-solid fa-file-pdf me-1"></i><?= gettext('Download PDF') ?></button>
+                </form>
             </div>
         </div>
     </div>

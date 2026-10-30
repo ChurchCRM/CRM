@@ -1,16 +1,15 @@
 /**
  * Report option pages: every `<select data-report-select>` becomes a searchable multi-select, and its
  * `data-select-all` / `data-clear-all` buttons (value = the select's id) pick or clear every option.
- * A form with `data-preview-url` shows its preview in the `#givingPreviewModal` popup instead of reloading;
- * if the request fails the form submits normally.
+ * A form with `data-preview-url` posts its filters there and shows the summary in the `#givingPreviewModal`
+ * popup instead of reloading; the popup's own form posts the same filters to download the PDF or CSV, so a long
+ * family selection never lands in a URL. If the request fails the form submits normally.
  */
 
 interface PreviewSummary {
   families: number;
   gifts: number;
   total: string;
-  pdfUrl: string;
-  csvUrl: string;
 }
 function enhance(select: HTMLSelectElement): void {
   if (!window.TomSelect) {
@@ -28,7 +27,7 @@ function enhance(select: HTMLSelectElement): void {
   });
 }
 
-function showPreview(summary: PreviewSummary): void {
+function showPreview(summary: PreviewSummary, filters: URLSearchParams): void {
   const modal = document.getElementById("givingPreviewModal");
   if (!modal) {
     return;
@@ -45,15 +44,18 @@ function showPreview(summary: PreviewSummary): void {
   text("modalFamilies", String(summary.families));
   text("modalGifts", String(summary.gifts));
   text("modalTotal", summary.total);
-  for (const [id, url] of [
-    ["modalPdf", summary.pdfUrl],
-    ["modalCsv", summary.csvUrl],
-  ] as const) {
-    const link = document.getElementById(id) as HTMLAnchorElement | null;
-    if (link) {
-      link.href = url;
-      link.classList.toggle("d-none", !has);
-    }
+  const download = document.getElementById("modalDownload");
+  if (download) {
+    download.classList.toggle("d-none", !has);
+    download.querySelectorAll("input[data-filter]").forEach((input) => input.remove());
+    filters.forEach((value, key) => {
+      const input = document.createElement("input");
+      input.type = "hidden";
+      input.name = key;
+      input.value = value;
+      input.dataset.filter = "1";
+      download.prepend(input);
+    });
   }
   window.bootstrap.Modal.getOrCreateInstance(modal).show();
 }
@@ -65,24 +67,29 @@ function wirePreview(form: HTMLFormElement): void {
   }
   form.addEventListener("submit", (event) => {
     event.preventDefault();
-    const params = new URLSearchParams();
+    const filters = new URLSearchParams();
     for (const [key, value] of new FormData(form).entries()) {
       if (typeof value === "string" && key !== "preview") {
-        params.append(key, value);
+        filters.append(key, value);
       }
     }
     const button = form.querySelector<HTMLButtonElement>("button[type=submit]");
     if (button) {
       button.disabled = true;
     }
-    fetch(`${previewUrl}?${params.toString()}`, { credentials: "same-origin", headers: { Accept: "application/json" } })
+    fetch(previewUrl, {
+      method: "POST",
+      credentials: "same-origin",
+      headers: { Accept: "application/json", "Content-Type": "application/x-www-form-urlencoded" },
+      body: filters.toString(),
+    })
       .then((response) => {
         if (!response.ok) {
           throw new Error(String(response.status));
         }
         return response.json() as Promise<PreviewSummary>;
       })
-      .then(showPreview)
+      .then((summary) => showPreview(summary, filters))
       .catch(() => form.submit())
       .finally(() => {
         if (button) {

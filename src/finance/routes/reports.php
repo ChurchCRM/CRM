@@ -67,17 +67,13 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
         ]);
     });
 
-    // The preview popup: the same summary as ?preview=1, plus the download links for these filters.
-    $group->get('/giving-statements/preview', function (Request $request, Response $response): Response {
-        $query = $request->getQueryParams();
-        $summary = GivingStatementService::summary(GivingStatementService::paymentsByFamily(GivingStatementService::criteriaFromQuery($query)));
-        $download = SystemURLs::getRootPath() . '/finance/reports/giving-statements/download?';
-        $filters = http_build_query(array_diff_key($query, ['preview' => true, 'output' => true]));
+    // The preview popup: the same summary as ?preview=1. The filters arrive in a POST body so a long family selection does not hit a URL length limit.
+    $group->map(['GET', 'POST'], '/giving-statements/preview', function (Request $request, Response $response): Response {
+        $input = $request->getMethod() === 'POST' ? (array) $request->getParsedBody() : $request->getQueryParams();
 
-        return SlimUtils::renderJSON($response, $summary + [
-            'pdfUrl' => $download . 'output=pdf&' . $filters,
-            'csvUrl' => $download . 'output=csv&' . $filters,
-        ]);
+        return SlimUtils::renderJSON($response, GivingStatementService::summary(
+            GivingStatementService::paymentsByFamily(GivingStatementService::criteriaFromQuery($input))
+        ));
     });
 
     // Giving Statement: PDF or CSV for the chosen filters, from the report form or a family link.

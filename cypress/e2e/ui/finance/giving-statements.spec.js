@@ -38,8 +38,9 @@ describe("Giving statements", () => {
             .invoke("text")
             .then((text) => expect(Number(text)).to.be.greaterThan(0));
         cy.get("#modalTotal").should("not.be.empty");
-        cy.get("#modalPdf").should("have.attr", "href").and("include", "/giving-statements/download").and("include", "DateStart=2018-01-01");
-        cy.get("#modalCsv").should("have.attr", "href").and("include", "output=csv");
+        cy.get("#modalDownload").should("have.attr", "method", "post").and("have.attr", "action").and("include", "/giving-statements/download");
+        cy.get("#modalDownload input[name='DateStart']").should("have.value", "2018-01-01");
+        cy.get("#modalDownload input[name='preview']").should("not.exist");
     });
 
     it("a preview with no payments says so in the popup and offers no downloads", () => {
@@ -50,7 +51,23 @@ describe("Giving statements", () => {
 
         cy.get("#givingPreviewModal").should("be.visible");
         cy.get("#modalEmpty").should("be.visible");
-        cy.get("#modalPdf").should("not.be.visible");
+        cy.get("#modalDownload").should("not.be.visible");
+    });
+
+    it("a long family selection previews through a POST body, not the URL", () => {
+        const body = new URLSearchParams(`${seedYear}&minimum=0`);
+        for (let id = 1; id <= 800; id++) {
+            body.append("family[]", String(id));
+        }
+        cy.request({
+            method: "POST",
+            url: `${statementsPath}/preview`,
+            headers: { "content-type": "application/x-www-form-urlencoded" },
+            body: body.toString(),
+        }).then((response) => {
+            expect(response.status).to.eq(200);
+            expect(response.body.families).to.be.greaterThan(0);
+        });
     });
 
     it("the preview URL still renders the summary on the page", () => {
