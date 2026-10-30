@@ -16,11 +16,13 @@ import { type PortalToastType, portalToast } from "./portal-toast";
  * loader initialises — importing the npm package instead would bundle a second,
  * never-initialised instance whose `t()` returns nothing. The English literal
  * is the fallback, so a page still reads correctly before the locale files
- * arrive or when a key has no translation.
+ * arrive or when a key has no translation. `values` fill the `{{name}}`
+ * placeholders of either.
  */
-export function t(text: string): string {
-  const translated = typeof i18next !== "undefined" ? i18next.t(text) : "";
-  return translated || text;
+export function t(text: string, values: Record<string, string> = {}): string {
+  const translated =
+    typeof i18next !== "undefined" ? i18next.t(text, { ...values, interpolation: { escapeValue: false } }) : "";
+  return translated || text.replace(/\{\{(\w+)\}\}/g, (placeholder, name: string) => values[name] ?? placeholder);
 }
 
 /** What a portal API answers with, whether it worked or not. */

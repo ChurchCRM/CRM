@@ -271,6 +271,25 @@ describe("A member changes their own email in the portal (§9)", () => {
         });
     });
 
+    it("keeps the open link when the next one can't be sent", () => {
+        const firstEmail = `lena.first.${Date.now()}@example.com`;
+        signInToPortal();
+        saveProfile({ email: firstEmail }).its("status").should("eq", 200);
+        cy.getSystemConfig("sSMTPHost").then((smtpHost) => {
+            cy.makePrivateAdminAPICall("POST", "/admin/api/system/config/sSMTPHost", { value: "127.0.0.1:9" }, 200);
+            saveProfile({ email: `lena.second.${Date.now()}@example.com` }).its("status").should("eq", 503);
+            cy.restoreSystemConfig("sSMTPHost", smtpHost);
+        });
+        mailTo(firstEmail).then((messages) =>
+            confirmLinkIn(messages[0]).then((path) => {
+                inFreshBrowser(() => {
+                    openLink(path).then(({ body }) => pressConfirm(path, body).should("eq", "done"));
+                });
+            }),
+        );
+        profile().its("email").should("eq", firstEmail);
+    });
+
     it("a link stops working once the person is given a portal grant", () => {
         const newEmail = `lena.late.${Date.now()}@example.com`;
         signInToPortal();
