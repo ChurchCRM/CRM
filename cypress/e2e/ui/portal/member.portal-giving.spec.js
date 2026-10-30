@@ -24,7 +24,7 @@ const statementLines = (year) =>
 
 describe("Member chooses a contribution statement year", () => {
     beforeEach(() => {
-        cy.setupLoginSession("giving-member", "lena.black.editself.notes@example.com", "changeme");
+        cy.signInAsMember(100);
     });
 
     it("lists family years and prints the household gifts for a year that has them", () => {
