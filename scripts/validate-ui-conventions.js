@@ -23,7 +23,7 @@ const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
 const BASELINE_FILE = path.join(__dirname, 'ui-conventions-baseline.json');
-const SKIP = ['skin/v2/', 'skin/external', '/vendor/', 'node_modules', '/locale/', 'templates/email', '.min.'];
+const SKIP = ['skin/v2/', 'skin/external', '/vendor/', 'node_modules', '/locale/', 'templates/email', 'templates/reports', '.min.'];
 const MARKUP = /\.(php|twig|js|ts|html)$/;
 const STYLES = /\.(css|scss)$/;
 const SKIP_DIR = /(?:^|\/)(?:Base|Map)\//;

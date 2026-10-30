@@ -1,13 +1,5 @@
 -- ChurchCRM 7.8.3 upgrade script
 
--- Member sign-in row 0 (#10197): counters for login throttling and temporary lockouts.
-CREATE TABLE IF NOT EXISTS `rate_limit_rlm` (
-  `rlm_ID`      int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `rlm_Bucket`  varchar(64)      NOT NULL,
-  `rlm_KeyHash` char(64)         NOT NULL,
-  `rlm_Hits`    int(10) unsigned NOT NULL DEFAULT 0,
-  `rlm_ResetAt` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`rlm_ID`),
-  UNIQUE KEY `rlm_bucket_key_uidx` (`rlm_Bucket`, `rlm_KeyHash`),
-  KEY `rlm_reset_at_idx` (`rlm_ResetAt`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- The bundled church_letterhead.jpg is retired. Clear the setting where it still points at
+-- the stock image; a path the church chose itself stays.
+DELETE FROM `config_cfg` WHERE `cfg_name` = 'bDirLetterHead' AND `cfg_value` IN ('../Images/church_letterhead.jpg', 'Images/church_letterhead.jpg', 'src/Images/church_letterhead.jpg');
