@@ -928,10 +928,6 @@ msgid "Voting Members"
 msgstr "Hääletusliikmed"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Aruande esitamine (maksudeklaratsioonid)"
-
-#: 
 msgid "Zero Givers"
 msgstr "Null andjad"
 
@@ -1729,14 +1725,6 @@ msgstr "Luba"
 #: 
 msgid "System Settings"
 msgstr "Süsteemisätted"
-
-#: 
-msgid "Tax Report"
-msgstr "Maksuaruanne"
-
-#: 
-msgid "Calendar Year"
-msgstr "Kalendriaasta"
 
 #: 
 msgid "User Editor"
@@ -6311,10 +6299,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "Kohandatav aruanne kuupäeva, fondi, perekonna ja maksemeetodi järgi filtreerimisega."
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Kohandage maksu aruannetes kuvatavat teksti (sTaxReport1, sTaxReport2 jne)."
-
-#: 
 msgid "Day"
 msgstr "Päev"
 
@@ -6395,20 +6379,12 @@ msgid "Generate"
 msgstr "Loo"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Loo maksuaruanded"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Looge annetajate jaoks aastased maksust mahaarvatatavad andmise aruanded. Saab printida või e-postiga saata."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "Looge meeldetuletused peredele koos väljaolevate lubaduste."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "Looge aruanded maksumäärusest, lubaduste jälgimisest ja finantsianalüüsist."
 
 #: 
 msgid "ID"
@@ -6591,10 +6567,6 @@ msgid "System Info"
 msgstr "Süsteemi teave"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "Maksu- ja andmise aruanded"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "Maksuaruande tekst"
 
@@ -6621,10 +6593,6 @@ msgstr "Täienda"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "Kasutaja peab olema administraator või omama finantsi õigust"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Veenduge, et kiriku nimi, aadress ja kontaktteave kuvatakse maksuaruannetes."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9136,10 +9104,6 @@ msgstr "Looge annetuste lubaduste meeldetuletuskirju"
 #: 
 msgid "Generate reports on group membership and activities"
 msgstr "Looge aruandeid grupi liikmeskonna ja tegevuste kohta"
-
-#: 
-msgid "Generate tax statement documents for donors"
-msgstr "Looge annetajatele maksudeklaratsiooni dokumente"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -15958,10 +15922,6 @@ msgid "Please confirm your family information"
 msgstr "Palun kinnita oma pere andmed"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "Palun saada oma järgmine annetus aadressile %s"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Palun vali teine pere, kellega seostada need annetused"
 
@@ -17992,10 +17952,6 @@ msgid "{{minutes}} min left"
 msgstr "Jäänud {{minutes}} min"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d maksudeklaratsioon saadeti perele edukalt."
-
-#: 
 msgid "All classifications"
 msgstr "Kõik klassifikatsioonid"
 
@@ -18028,28 +17984,8 @@ msgid "Columns per Page"
 msgstr "Veerud lehe kaupa"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "Kallis %s pere,\n"
-"\n"
-"Leiate oma %d annetuste aruande kuupäevast %s selle e-kirja juurde lisatuna.\n"
-"\n"
-"Kui teil on küsimusi, võtke ühendust kirikutoimistusse.\n"
-"\n"
-"Täname teid andelikkuse eest."
-
-#: 
 msgid "Download CSV"
 msgstr "Laadi alla CSV"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "Saada %d maksudeklaratsioon e-postiga"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18152,10 +18088,6 @@ msgid "Pledged"
 msgstr "Lubatud"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "Prindi %d maksudeklaratsioon"
-
-#: 
 msgid "Recent Friends"
 msgstr "Hiljutised sõbrad"
 
@@ -18180,24 +18112,8 @@ msgid "Single Pages"
 msgstr "Üksikud lehed"
 
 #: 
-msgid "Tax Documents"
-msgstr "Maksudeklaratsioonid"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "Maksudeklaratsiooni e-postiga saatmine nurjus. Palun kontrollige oma e-posti serveri seadistusi."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "Kaks poole suurusega lehte kõrvuti igal maastikulehekalal, brošüüri järjekorras. Printida kahepoolselt valikuga \"pööra lühikesele küljele\", seejärel voltida virnas poole võrra. Veerud loendatakse poole lehega."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "Maksudeklaratsiooni e-postiga saatmine pole võimalik: selle aasta makseteavet ei leitud."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "Maksudeklaratsiooni e-postiga saatmine pole võimalik: sellel perel pole failides e-posti aadressi."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -24644,10 +24560,6 @@ msgstr "Geokodeerimisteenus ei vastanud — proovige hiljem uuesti"
 #: 
 msgid "Only the email you sent is shown."
 msgstr "Kuvatakse ainult teie saadetud e-kiri."
-
-#: 
-msgid "%d Giving Statement"
-msgstr "%d Annetuste aruanne"
 
 #: 
 msgid "Repeat events could not be created. Check the application log for details."

@@ -925,10 +925,6 @@ msgid "Voting Members"
 msgstr "Membres votants"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Rapport des dons (Déclarations fiscales)"
-
-#: 
 msgid "Zero Givers"
 msgstr "Zéro donateurs"
 
@@ -1726,14 +1722,6 @@ msgstr "Permission"
 #: 
 msgid "System Settings"
 msgstr "Réglages Système"
-
-#: 
-msgid "Tax Report"
-msgstr "Rapport de Taxe"
-
-#: 
-msgid "Calendar Year"
-msgstr "Année civile"
 
 #: 
 msgid "User Editor"
@@ -6309,10 +6297,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "Rapport personnalisable avec filtrage par date, fonds, famille et méthode de paiement."
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Personnalisez le texte qui apparaît sur les déclarations fiscales (sTaxReport1, sTaxReport2, etc)."
-
-#: 
 msgid "Day"
 msgstr "Jour"
 
@@ -6393,20 +6377,12 @@ msgid "Generate"
 msgstr "Générer"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Générer des déclarations fiscales"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Générez les relevés de dons annuels déductibles des impôts pour les donateurs. Peuvent être imprimés ou envoyés par courriel."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "Générez des lettres de rappel pour les familles avec des promesses en attente."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "Générez des rapports pour les déclarations fiscales, le suivi des promesses et l'analyse financière."
 
 #: 
 msgid "ID"
@@ -6589,10 +6565,6 @@ msgid "System Info"
 msgstr "Informations système"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "Rapports fiscaux et de dons"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "Libellé du rapport fiscal"
 
@@ -6619,10 +6591,6 @@ msgstr "Mettre à niveau"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "L'utilisateur doit être un administrateur ou avoir la permission de finances"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Vérifiez que le nom de l'église, l'adresse et les informations de contact apparaissent sur les déclarations fiscales."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9134,10 +9102,6 @@ msgstr "Générer des lettres de rappel d'engagement financier"
 #: 
 msgid "Generate reports on group membership and activities"
 msgstr "Générer des rapports sur l'appartenance aux groupes et les activités"
-
-#: 
-msgid "Generate tax statement documents for donors"
-msgstr "Générer des documents de reçu fiscal pour les donateurs"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -15956,10 +15920,6 @@ msgid "Please confirm your family information"
 msgstr "Veuillez confirmer vos informations familiales"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "Veuillez envoyer votre prochain don à %s"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Veuillez sélectionner une autre famille à laquelle associer ces dons"
 
@@ -17990,10 +17950,6 @@ msgid "{{minutes}} min left"
 msgstr "{{minutes}} min restantes"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d document fiscal envoyé par courrier électronique à la famille avec succès."
-
-#: 
 msgid "All classifications"
 msgstr "Toutes les classifications"
 
@@ -18026,28 +17982,8 @@ msgid "Columns per Page"
 msgstr "Colonnes par page"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "Chère famille %s,\n"
-"\n"
-"Veuillez trouver ci-joint votre déclaration de don de %d de %s.\n"
-"\n"
-"Si vous avez des questions, veuillez contacter le bureau de l'Église.\n"
-"\n"
-"Merci de votre générosité."
-
-#: 
 msgid "Download CSV"
 msgstr "Télécharger CSV"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "Envoyer par courrier électronique %d document fiscal"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18150,10 +18086,6 @@ msgid "Pledged"
 msgstr "Promis"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "Imprimer %d document fiscal"
-
-#: 
 msgid "Recent Friends"
 msgstr "Amis récents"
 
@@ -18178,24 +18110,8 @@ msgid "Single Pages"
 msgstr "Pages simples"
 
 #: 
-msgid "Tax Documents"
-msgstr "Documents fiscaux"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "L'envoi du courrier électronique du document fiscal a échoué. Veuillez vérifier les paramètres de votre serveur de messagerie."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "Deux pages de demi-taille côte à côte sur chaque feuille en mode paysage, dans l'ordre du livret. Imprimer recto-verso avec « retourner sur le bord court », puis plier la pile en deux. Les colonnes sont comptées par demi-page."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "Impossible d'envoyer par courrier électronique le document fiscal : aucune donnée de paiement trouvée pour cette année."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "Impossible d'envoyer par courrier électronique le document fiscal : cette famille n'a pas d'adresse e-mail dans le dossier."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -24642,10 +24558,6 @@ msgstr "Le service de géocodage n’a pas répondu — réessayez plus tard"
 #: 
 msgid "Only the email you sent is shown."
 msgstr "Seul le courriel que vous avez envoyé est affiché."
-
-#: 
-msgid "%d Giving Statement"
-msgstr "Relevé de dons %d"
 
 #: 
 msgid "Repeat events could not be created. Check the application log for details."
