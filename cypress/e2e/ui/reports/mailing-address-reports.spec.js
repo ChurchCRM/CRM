@@ -202,7 +202,11 @@ describe("Mailing address on mailed reports (#9743)", () => {
                 return cy
                     .request({
                         method: "POST",
-                        url: `${$form.attr("action")}/download`,
+                        // Root-relative path. Cypress resolves it against baseUrl.
+                        // The form action already includes SystemURLs::getRootPath();
+                        // appending /download and handing that to cy.request doubles
+                        // the install path on a subdirectory install.
+                        url: "/finance/reports/giving-statements/download",
                         headers: { "content-type": "application/x-www-form-urlencoded" },
                         body: body.toString(),
                         encoding: "binary",
