@@ -3,6 +3,7 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\Exceptions\EventDeleteRefusedException;
+use ChurchCRM\model\ChurchCRM\CalendarEvent;
 use ChurchCRM\model\ChurchCRM\CalendarQuery;
 use ChurchCRM\model\ChurchCRM\Event;
 use ChurchCRM\model\ChurchCRM\EventAttendQuery;
@@ -33,10 +34,12 @@ use Propel\Runtime\Propel;
  * - **Cap** — a single call creates at most self::MAX_REPEAT_OCCURRENCES events.
  *   The cap is expressed in occurrences rather than calendar span because that is
  *   the unit that bounds the actual work (rows written in one request) and it is
- *   meaningful for all three recurrence types — a calendar horizon short enough to
+ *   meaningful for every recurrence type — a calendar horizon short enough to
  *   protect weekly recurrence would make yearly recurrence pointless.
  * - **Recurrence** — a caller-supplied recurType wins and its day fields fall back
  *   to the event type's defaults, then to the legacy literals (Sunday / 1st / 01-01).
+ *   The week of the month (monthly-weekday) has no event-type default: the caller
+ *   must supply it.
  *   When no recurType is supplied it is read from the event type, which must then
  *   also supply the matching day field; an incomplete event type is rejected rather
  *   than silently defaulted.
@@ -95,6 +98,7 @@ class EventService
      *   recurDOW?: string|null,
      *   recurDOM?: int|null,
      *   recurDOY?: string|null,
+     *   recurWOM?: int|null,
      *   rangeStart: string,
      *   rangeEnd: string,
      *   linkedGroupId?: int,
@@ -149,7 +153,7 @@ class EventService
             throw new \InvalidArgumentException(gettext('Range start must be before range end'));
         }
 
-        [$recurType, $dow, $dom, $doy] = $this->resolveRecurrence($data, $type);
+        [$recurType, $dow, $dom, $doy, $wom] = $this->resolveRecurrence($data, $type);
 
         // Normalize start/end time to HH:MM:SS so we don't end up appending
         // ":00" to a string that already includes seconds (e.g. "09:00:00"
@@ -166,11 +170,13 @@ class EventService
         $skipExisting = (bool) ($data['skipExisting'] ?? false);
         $typeId = (int) $type->getId();
 
-        $calendars = null;
+        $calendarIds = [];
         if (!empty($data['pinnedCalendars'])) {
-            $calendars = CalendarQuery::create()
+            $calendarIds = CalendarQuery::create()
                 ->filterById($data['pinnedCalendars'], Criteria::IN)
-                ->find();
+                ->select('Id')
+                ->find()
+                ->toArray();
         }
 
         $occurrenceDates = $this->generateOccurrenceDates(
@@ -179,7 +185,8 @@ class EventService
             $dom,
             $doy,
             $rangeStart,
-            $rangeEnd
+            $rangeEnd,
+            $wom
         );
 
         if (count($occurrenceDates) > self::MAX_REPEAT_OCCURRENCES) {
@@ -227,15 +234,20 @@ class EventService
                     $event->setMinistryId($ministryId);
                 }
 
-                if ($calendars !== null) {
-                    $event->setCalendars($calendars);
-                }
-
                 // Always pass the transaction's connection: a default read
                 // connection could not see these uncommitted rows.
                 $event->save($con);
                 $event->reload(false, $con);
                 $eventId = $event->getId();
+
+                // Join rows are written directly: sharing one Calendar collection
+                // across every event makes each save cascade through all earlier ones.
+                foreach ($calendarIds as $calendarId) {
+                    $pin = new CalendarEvent();
+                    $pin->setCalendarId((int) $calendarId);
+                    $pin->setEventId((int) $eventId);
+                    $pin->save($con);
+                }
 
                 if ($linkedGroupId > 0) {
                     $this->linkGroup((int) $eventId, $linkedGroupId, $con);
@@ -387,7 +399,7 @@ class EventService
      * comes from the event type, the event type must be complete — silently
      * defaulting a mis-configured type to "Sundays" would create the wrong events.
      *
-     * @return array{0: string, 1: string|null, 2: int|null, 3: string|null} recurType, dow, dom, doy
+     * @return array{0: string, 1: string|null, 2: int|null, 3: string|null, 4: int|null} recurType, dow, dom, doy, wom
      *
      * @throws \InvalidArgumentException when the event type's recurrence is incomplete
      */
@@ -405,7 +417,7 @@ class EventService
         $typeIsSource = $callerRecurType === null;
 
         $dow = $this->firstNonEmptyString($data['recurDOW'] ?? null, $type->getDefRecurDOW());
-        if ($recurType === RecurrenceDateGenerator::RECUR_WEEKLY) {
+        if ($recurType === RecurrenceDateGenerator::RECUR_WEEKLY || $recurType === RecurrenceDateGenerator::RECUR_MONTHLY_WEEKDAY) {
             if ($dow === null && $typeIsSource) {
                 throw new \InvalidArgumentException(gettext('Event type has no day-of-week configured for weekly recurrence'));
             }
@@ -432,7 +444,12 @@ class EventService
             $doy ??= '01-01';
         }
 
-        return [$recurType, $dow, $dom > 0 ? $dom : null, $doy];
+        $wom = isset($data['recurWOM']) ? (int) $data['recurWOM'] : null;
+        if ($recurType === RecurrenceDateGenerator::RECUR_MONTHLY_WEEKDAY && ($wom === null || $wom < 1 || $wom > 5)) {
+            throw new \InvalidArgumentException(gettext('Choose the week of the month, from 1st to 5th'));
+        }
+
+        return [$recurType, $dow, $dom > 0 ? $dom : null, $doy, $wom];
     }
 
     /**
@@ -442,12 +459,13 @@ class EventService
      * itself lives in the event-free RecurrenceDateGenerator so other modules can
      * reuse it without dragging in event persistence.
      *
-     * @param string      $recurType  One of: weekly, monthly, yearly
-     * @param string|null $dow        Day of week name (e.g. "Sunday") — used when $recurType is 'weekly'
+     * @param string      $recurType  One of: weekly, monthly, monthly-weekday, yearly
+     * @param string|null $dow        Day of week name (e.g. "Sunday") — used when $recurType is 'weekly' or 'monthly-weekday'
      * @param int|null    $dom        Day of month (1–31) — used when $recurType is 'monthly'
      * @param string|null $doy        Month-day string in MM-DD format (e.g. "04-12") — used when $recurType is 'yearly'
      * @param \DateTime   $rangeStart Inclusive start of the date range
      * @param \DateTime   $rangeEnd   Inclusive end of the date range
+     * @param int|null    $wom        Week of the month (1–5) — used when $recurType is 'monthly-weekday'
      *
      * @return \DateTime[]
      */
@@ -457,9 +475,10 @@ class EventService
         ?int $dom,
         ?string $doy,
         \DateTime $rangeStart,
-        \DateTime $rangeEnd
+        \DateTime $rangeEnd,
+        ?int $wom = null
     ): array {
-        return $this->recurrenceDateGenerator->generate($recurType, $dow, $dom, $doy, $rangeStart, $rangeEnd);
+        return $this->recurrenceDateGenerator->generate($recurType, $dow, $dom, $doy, $rangeStart, $rangeEnd, $wom);
     }
 
     /**

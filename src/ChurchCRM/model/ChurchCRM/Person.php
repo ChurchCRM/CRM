@@ -13,6 +13,7 @@ use ChurchCRM\model\ChurchCRM\Base\Person as BasePerson;
 use ChurchCRM\PhotoInterface;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
+use ChurchCRM\Service\CustomFieldService;
 use ChurchCRM\Service\GradeService;
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Utils\CustomFieldUtils;
@@ -837,9 +838,10 @@ class Person extends BasePerson implements PhotoInterface
         $name_func,
         array $exportCustomDefs
     ): array {
+        $customFieldService = new CustomFieldService();
         $rawQry = PersonCustomQuery::create();
         foreach ($allPersonCustomFields as $customfield) {
-            if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($customfield->getFieldSecurity())) {
+            if ($customFieldService->canView($customfield->getFieldSecurity())) {
                 $rawQry->addAsColumn(
                     str_replace(['.', '(', ')'], '', $customfield->getId()),
                     $customfield->getId()
@@ -1014,18 +1016,6 @@ class Person extends BasePerson implements PhotoInterface
         return $this->isActive() ? gettext('Active') : gettext('Inactive');
     }
 
-    public function getEmail(): ?string
-    {
-        if (parent::getEmail() === null) {
-            $family = $this->getFamily();
-            if ($family !== null) {
-                return $family->getEmail();
-            }
-        }
-
-        return parent::getEmail();
-    }
-
     /**
      * Returns a string of a person's full name initial, formatted as specified by $Style
      * $Style = 0  :  "One character from FirstName and one character from LastName"
@@ -1121,15 +1111,7 @@ class Person extends BasePerson implements PhotoInterface
 
     public function getVisibleCustomFieldDefinitions(): array
     {
-        $currentUser = AuthenticationManager::getCurrentUser();
-        $allFields = PersonCustomMasterQuery::create()->orderByOrder()->find();
-        $visibleFields = [];
-        foreach ($allFields as $field) {
-            if ($currentUser->isEnabledSecurity($field->getFieldSecurity())) {
-                $visibleFields[] = $field;
-            }
-        }
-        return $visibleFields;
+        return (new CustomFieldService())->getVisiblePersonFields();
     }
 
     /**

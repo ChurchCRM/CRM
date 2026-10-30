@@ -25,7 +25,7 @@
 # Allowed extensions (must stay in sync with ALLOWED_IMAGE_EXTENSIONS in
 # src/ChurchCRM/Backup/RestoreJob.php and the nginx location block in
 # docker/examples/nginx/default.conf):
-#   jpg, jpeg, png, gif, webp, ico, bmp, tiff, tif
+#   jpg, jpeg, png, gif, webp
 # plus the bundled brand SVG filenames matched below.
 
 # ── 1. Disable PHP execution ─────────────────────────
@@ -60,7 +60,7 @@
     RewriteRule ^ - [L]
 
     # Allow safe image extensions (case-insensitive via [NC] flag)
-    RewriteCond %{REQUEST_URI} \.(jpg|jpeg|png|gif|webp|ico|bmp|tiff|tif)$ [NC]
+    RewriteCond %{REQUEST_URI} \.(jpg|jpeg|png|gif|webp)$ [NC]
     RewriteRule ^ - [L]
 
     # Block everything else (including extension-less files and other SVG)

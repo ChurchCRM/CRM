@@ -420,7 +420,7 @@ class ConfirmReportService
      */
     public function sendFamilyEmails(?int $familyId, bool $updated = false): ConfirmReportEmailResult
     {
-        $customFields = PersonCustomMasterQuery::create()->orderByOrder()->find();
+        $customFields = (new CustomFieldService())->getVisiblePersonFields();
 
         $familyQuery = FamilyQuery::create()
             ->usePersonQuery()

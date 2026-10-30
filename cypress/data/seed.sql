@@ -28,8 +28,8 @@ DELETE FROM `userconfig_ucfg`;
 DELETE FROM `user_settings`;
 DELETE FROM `user_usr`;
 
-ALTER TABLE `person_custom` ADD COLUMN `c1` mediumint(9) DEFAULT NULL, ADD COLUMN `c2` varchar(50) DEFAULT NULL, ADD COLUMN `c3` varchar(100) DEFAULT NULL, ADD COLUMN `c4` tinyint(4) DEFAULT NULL;
-ALTER TABLE `family_custom` ADD COLUMN `c1` mediumint(9) DEFAULT NULL, ADD COLUMN `c2` varchar(30) DEFAULT NULL, ADD COLUMN `c3` enum('winter','spring','summer','fall') DEFAULT NULL, ADD COLUMN `c4` tinyint(4) DEFAULT NULL;
+ALTER TABLE `person_custom` ADD COLUMN `c1` mediumint(9) DEFAULT NULL, ADD COLUMN `c2` varchar(50) DEFAULT NULL, ADD COLUMN `c3` varchar(100) DEFAULT NULL, ADD COLUMN `c4` tinyint(4) DEFAULT NULL, ADD COLUMN `c5` varchar(100) DEFAULT NULL, ADD COLUMN `c6` date DEFAULT NULL, ADD COLUMN `c7` text DEFAULT NULL, ADD COLUMN `c8` year(4) DEFAULT NULL, ADD COLUMN `c9` enum('false','true') DEFAULT NULL, ADD COLUMN `c10` enum('winter','spring','summer','fall') DEFAULT NULL, ADD COLUMN `c11` int(11) DEFAULT NULL, ADD COLUMN `c12` decimal(10,2) DEFAULT NULL, ADD COLUMN `c13` varchar(30) DEFAULT NULL;
+ALTER TABLE `family_custom` ADD COLUMN `c1` mediumint(9) DEFAULT NULL, ADD COLUMN `c2` varchar(30) DEFAULT NULL, ADD COLUMN `c3` enum('winter','spring','summer','fall') DEFAULT NULL, ADD COLUMN `c4` tinyint(4) DEFAULT NULL, ADD COLUMN `c5` varchar(100) DEFAULT NULL, ADD COLUMN `c6` decimal(10,2) DEFAULT NULL, ADD COLUMN `c7` text DEFAULT NULL, ADD COLUMN `c8` year(4) DEFAULT NULL, ADD COLUMN `c9` enum('false','true') DEFAULT NULL, ADD COLUMN `c10` int(11) DEFAULT NULL, ADD COLUMN `c11` date DEFAULT NULL;
 
 CREATE TABLE `groupprop_2` (
   `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
@@ -169,9 +169,15 @@ INSERT INTO `config_cfg` (`cfg_name`, `cfg_value`) VALUES ('bAllowPrereleaseUpgr
 ('sChurchCity','Kansas City'),
 ('sChurchCountry','United States'),
 ('sChurchEmail','demo@churchcrm.io'),
+('sChurchFacebook','https://www.facebook.com/getChurchCRM'),
+('sChurchInstagram','https://www.instagram.com/getchurchcrm/'),
 ('sChurchName','Main St. Cathedral'),
 ('sChurchPhone','555 123 4234'),
 ('sChurchState','MO'),
+('sChurchTaxId','47-3829156'),
+('sChurchWebSite','https://churchcrm.io'),
+('sChurchX','https://x.com/getChurchCRM'),
+('sChurchYouTube','https://www.youtube.com/@getChurchCRM'),
 ('sChurchZip','64106'),
 ('sConfirmSigner','Elder Joe Smith'),
 ('sDefaultCity','Kansas City'),
@@ -278,6 +284,20 @@ INSERT INTO `family_custom_master` (`fam_custom_Order`, `fam_custom_Field`, `fam
 (2,'c2','Emergency Phone',NULL,1,11),
 (3,'c3','Vacation Season',NULL,1,7),
 (4,'c4','Family Custom Drop Down List',25,1,12);
+
+-- Mixed-type, mixed-security custom fields for permission tests. FieldSec options (list 5):
+-- 1 bAll, 2 bAdmin, 4 bEditRecords, 7 bManageGroups, 8 bFinance, 9 bNotes.
+INSERT INTO `family_custom_master` (`fam_custom_Order`, `fam_custom_Field`, `fam_custom_Name`, `fam_custom_Special`, `fam_custom_FieldSec`, `type_ID`) VALUES
+(5,'c5','Envelope Audit Note',NULL,8,4),
+(6,'c6','Pledge Campaign Amount',NULL,8,10),
+(7,'c7','Home Visit Notes',NULL,9,5),
+(8,'c8','Family Since Year',NULL,1,6),
+(9,'c9','Newsletter By Mail',NULL,7,1),
+(10,'c10','Housing Support Level',NULL,2,8),
+(11,'c11','Last Home Visit',NULL,4,2);
+INSERT INTO `family_custom` (`fam_ID`, `c5`, `c6`, `c7`, `c8`, `c9`, `c10`, `c11`) VALUES
+(1,'Envelope audit 2026',600.00,'Home visit due in spring.',2001,'true',2,'2026-03-15')
+ON DUPLICATE KEY UPDATE `c5`=VALUES(`c5`), `c6`=VALUES(`c6`), `c7`=VALUES(`c7`), `c8`=VALUES(`c8`), `c9`=VALUES(`c9`), `c10`=VALUES(`c10`), `c11`=VALUES(`c11`);
 
 INSERT INTO `family_fam` (`fam_ID`, `fam_Name`, `fam_Address1`, `fam_Address2`, `fam_City`, `fam_State`, `fam_Zip`, `fam_Country`, `fam_SecondAddress1`, `fam_SecondAddress2`, `fam_SecondCity`, `fam_SecondState`, `fam_SecondZip`, `fam_SecondCountry`, `fam_SecondIsMailing`, `fam_HomePhone`, `fam_Email`, `fam_WeddingDate`, `fam_DateEntered`, `fam_DateLastEdited`, `fam_EnteredBy`, `fam_EditedBy`, `fam_scanCheck`, `fam_scanCredit`, `fam_SendNewsLetter`, `fam_DateDeactivated`, `fam_Latitude`, `fam_Longitude`, `fam_Envelope`, `fam_NeedsReview`) VALUES (1,'Campbell','3259 Daisy Dr','','Denton','AR','','United States',NULL,NULL,NULL,NULL,NULL,NULL,0,'(728) 139-0768','',NULL,'2009-12-25 07:19:06','2016-11-19 15:50:57',1,1,NULL,NULL,'FALSE',NULL,33.174318,-97.0673599,0,0),
 (2,'Hart','4878 Valley View Ln','','Grand Rapids','ND','','United States',NULL,NULL,NULL,NULL,NULL,NULL,0,'(042) 989-4488','',NULL,'2009-04-13 01:17:12','2016-11-19 15:53:10',1,1,NULL,NULL,'FALSE',NULL,47.9132828,-97.0864844,0,0),
@@ -1502,6 +1522,20 @@ INSERT INTO `person_custom_master` (`custom_Order`, `custom_Field`, `custom_Name
 (3,'c3','Highest Degree Received',NULL,1,4),
 (4,'c4','My Custom Drop Down List',24,1,12);
 
+INSERT INTO `person_custom_master` (`custom_Order`, `custom_Field`, `custom_Name`, `custom_Special`, `custom_FieldSec`, `type_ID`) VALUES
+(5,'c5','Giving Review Note',NULL,8,4),
+(6,'c6','Tithe Start Date',NULL,8,2),
+(7,'c7','Pastoral Care Notes',NULL,9,5),
+(8,'c8','Baptism Year',NULL,1,6),
+(9,'c9','Background Check Cleared',NULL,7,1),
+(10,'c10','Preferred Season',NULL,4,7),
+(11,'c11','Household Size',NULL,5,8),
+(12,'c12','Annual Pledge Amount',NULL,8,10),
+(13,'c13','Backup Phone',NULL,3,11);
+INSERT INTO `person_custom` (`per_ID`, `c2`, `c5`, `c6`, `c7`, `c8`, `c9`, `c10`, `c11`, `c12`, `c13`) VALUES
+(2,'Spiritual director note','Pledge reviewed 2026','2024-01-07','Hospital visit scheduled; keep confidential.',2009,'true','fall',4,1250.00,'(555) 010-1313')
+ON DUPLICATE KEY UPDATE `c2`=VALUES(`c2`), `c5`=VALUES(`c5`), `c6`=VALUES(`c6`), `c7`=VALUES(`c7`), `c8`=VALUES(`c8`), `c9`=VALUES(`c9`), `c10`=VALUES(`c10`), `c11`=VALUES(`c11`), `c12`=VALUES(`c12`), `c13`=VALUES(`c13`);
+
 INSERT INTO `person_per` (`per_ID`, `per_Title`, `per_FirstName`, `per_MiddleName`, `per_LastName`, `per_Suffix`, `per_Address1`, `per_Address2`, `per_City`, `per_State`, `per_Zip`, `per_Country`, `per_HomePhone`, `per_WorkPhone`, `per_CellPhone`, `per_Email`, `per_WorkEmail`, `per_BirthMonth`, `per_BirthDay`, `per_BirthYear`, `per_MembershipDate`, `per_DateDeceased`, `per_Gender`, `per_fmr_ID`, `per_cls_ID`, `per_fam_ID`, `per_Envelope`, `per_DateLastEdited`, `per_DateEntered`, `per_EnteredBy`, `per_EditedBy`, `per_FriendDate`, `per_Flags`, `per_Facebook`, `per_Twitter`, `per_LinkedIn`, `per_DateDeactivated`, `per_NeedsReview`, `per_grd_ID`) VALUES (1,NULL,'Church',NULL,'Admin',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,NULL,NULL,0,0,0,0,NULL,NULL,'2004-08-25 18:00:00',1,0,NULL,0,NULL,NULL,NULL,NULL,0,NULL),
 (2,'Mr','Mathew','','Campbell','','3259 Daisy Dr','','Denton','AR','','USA','(728)-139-0768','','(003)-025-4087','mathew.campbell@example.com',NULL,6,15,1970,NULL,NULL,1,1,1,1,NULL,NULL,'2009-12-25 07:19:06',1,0,NULL,0,NULL,NULL,NULL,NULL,0,NULL),
 (3,'Mr','Tony','','Campbell','','9889 Lone Wolf Trail','','Worcester','ME','','USA','(221) 294-5282','','(820) 203-5704','tony.wade@example.com','',3,3,1945,NULL,NULL,1,0,2,0,0,'2016-11-19 16:07:39','2006-05-18 08:07:27',1,1,NULL,0,NULL,NULL,NULL,NULL,0,NULL),
@@ -1664,7 +1698,8 @@ INSERT INTO `pledge_plg` (`plg_plgID`, `plg_FamID`, `plg_FYID`, `plg_date`, `plg
 (31,0,25,'2021-04-25',1000.00,'Once','CHECK','','2021-04-25',1,'Payment',1,5,111,NULL,'',0,0,0,0.00,'111|9|0|1|2021-04-25'),
 (32,0,25,'2021-04-25',1000.00,'Once','CHECK','','2021-04-25',1,'Payment',1,5,111,NULL,'',0,0,0,0.00,'111|10|0|1|2021-04-25'),
 (33,0,25,'2021-04-25',1000.00,'Once','CHECK','','2021-04-25',1,'Payment',1,5,111,NULL,'',0,0,0,0.00,'111|11|0|1|2021-04-25'),
-(34,0,25,'2021-04-25',1000.00,'Once','CHECK','','2021-04-25',1,'Payment',1,5,111,NULL,'',0,0,0,0.00,'111|12|0|1|2021-04-25');
+(34,0,25,'2021-04-25',1000.00,'Once','CHECK','','2021-04-25',1,'Payment',1,5,111,NULL,'',0,0,0,0.00,'111|12|0|1|2021-04-25'),
+(35,20,21,'2017-06-11',200.00,'Once','CHECK','Dinner tickets','2017-06-11',1,'Payment',1,2,2041,NULL,'',0,0,0,50.00,'2041|2|20|1|2017-06-11');
 
 INSERT INTO `property_pro` (`pro_ID`, `pro_Class`, `pro_prt_ID`, `pro_Name`, `pro_Description`, `pro_Prompt`) VALUES (1,'p',1,'Disabled','has a disability.','What is the nature of the disability?'),
 (2,'f',2,'Single Parent','is a single-parent household.',''),
@@ -1896,7 +1931,7 @@ INSERT INTO `version_ver` (`ver_ID`, `ver_version`, `ver_update_start`, `ver_upd
 (91,'7.7.1','2026-09-19 05:49:02','2026-09-19 05:49:02'),
 (92,'7.8.0','2026-09-26 19:44:44','2026-09-26 19:44:44'),
 (93,'7.8.1','2026-10-10 20:13:31','2026-10-10 20:13:31'),
-(94,'7.8.2','2026-10-18 23:31:54','2026-10-18 23:31:54');
+(94,'7.8.2','2026-10-18 23:31:54','2026-10-18 23:31:54'),(95,'7.8.3','2026-10-25 17:26:57','2026-10-25 17:26:57');
 
 -- Next ids. family_custom and person_custom keep rows past the last family and person, so a
 -- counter left at max+1 hands a new family an id that table already holds.

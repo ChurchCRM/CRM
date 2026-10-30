@@ -1470,7 +1470,7 @@ CREATE TABLE `email_log_eml` (
 --
 -- Member sign-in (#10463, design docs/member-sign-in-design.md §13): person-keyed
 -- sign-in state, email sign-in requests, remembered devices, passkeys, given portal
--- grants and the sign-in audit. Mirrored in 7.8.3.sql.
+-- grants and the sign-in audit. Mirrored in 7.8.3-member-sign-in.sql.
 --
 
 CREATE TABLE `person_signin_psi` (

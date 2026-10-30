@@ -40,6 +40,7 @@ $app->group('', function (RouteCollectorProxy $group): void {
     require __DIR__ . '/routes/email.php';
     require __DIR__ . '/routes/profile.php';
     require __DIR__ . '/routes/family.php';
+    require __DIR__ . '/routes/giving.php';
 })->add(new CSRFMiddleware())->add(new PortalAccessMiddleware())->add(new PortalSessionMiddleware());
 
 $app->run();
