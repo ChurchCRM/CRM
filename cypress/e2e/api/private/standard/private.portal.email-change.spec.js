@@ -88,6 +88,7 @@ describe("A member changes their own email in the portal (§9)", () => {
     const saved = {};
 
     let lastEmailLogId;
+    let savedSmtpHost;
 
     before(() => {
         useMemberSignIn(saved);
@@ -108,6 +109,8 @@ describe("A member changes their own email in the portal (§9)", () => {
     });
 
     afterEach(() => {
+        cy.restoreSystemConfig("sSMTPHost", savedSmtpHost);
+        savedSmtpHost = undefined;
         cy.clearCookies();
         db("UPDATE person_per SET per_Email = ? WHERE per_ID = ?", [LENA.email, LENA.id]);
         db("UPDATE person_per SET per_Email = ? WHERE per_ID = ?", [AMANDA.email, AMANDA.id]);
@@ -256,9 +259,13 @@ describe("A member changes their own email in the portal (§9)", () => {
         signInToPortal();
         saveProfile({ email: firstEmail }).its("status").should("eq", 200);
         cy.getSystemConfig("sSMTPHost").then((smtpHost) => {
+            savedSmtpHost = smtpHost;
             cy.makePrivateAdminAPICall("POST", "/admin/api/system/config/sSMTPHost", { value: "127.0.0.1:9" }, 200);
-            saveProfile({ email: `lena.second.${Date.now()}@example.com` }).its("status").should("eq", 503);
-            cy.restoreSystemConfig("sSMTPHost", smtpHost);
+        });
+        saveProfile({ email: `lena.second.${Date.now()}@example.com` }).its("status").should("eq", 503);
+        cy.then(() => {
+            cy.restoreSystemConfig("sSMTPHost", savedSmtpHost);
+            savedSmtpHost = undefined;
         });
         mailTo(firstEmail).then((messages) =>
             confirmLinkIn(messages[0]).then((path) => {
