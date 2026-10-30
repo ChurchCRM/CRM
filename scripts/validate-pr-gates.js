@@ -5,7 +5,7 @@
  * contributor learns about them before the push instead of from a review thread.
  *
  * Fails (exit 1):
- *   - the Propel schema or Install.sql changed without a src/mysql/upgrade/ script and upgrade.json
+ *   - the Propel schema or Install.sql changed without a src/mysql/upgrade/ script that upgrade.json lists
  *   - a workflow or action passes untrusted GitHub context straight into a `run:` script
  * Warns (exit 0, printed): behavior changes without a Cypress spec or script test, a changed
  * workflow without a script test, and UI files that need the light/dark, tablet/phone pass.
@@ -49,10 +49,20 @@ function injections(source) {
     });
 }
 
-function gates(files) {
+const upgradeJsonLists = (script) => {
+    try {
+        return fs.readFileSync(path.join(root, 'src/mysql/upgrade.json'), 'utf8').includes(`/${script.replace(/^src\//, '')}"`);
+    } catch {
+        return false;
+    }
+};
+
+function gates(files, isListed = upgradeJsonLists) {
     const fail = [];
     const warn = [];
-    if (files.some(isSchema) && !(files.some((f) => f.startsWith('src/mysql/upgrade/')) && files.includes('src/mysql/upgrade.json'))) {
+    const scripts = files.filter((f) => f.startsWith('src/mysql/upgrade/'));
+    const hasEntry = files.includes('src/mysql/upgrade.json') || scripts.some(isListed);
+    if (files.some(isSchema) && !(scripts.length && hasEntry)) {
         fail.push('Schema changed without a src/mysql/upgrade/ script and an upgrade.json entry.');
     }
     const behavior = files.filter(isBehavior);

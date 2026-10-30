@@ -63,9 +63,7 @@ describe("Finance Reports Index", () => {
         cy.visit("/finance/reports");
 
         cy.contains("Giving Statements").click();
-        cy.url().should("contain", "FinancialReports.php");
-        cy.url().should("contain", "Giving");
-        cy.contains("Financial Reports");
+        cy.url().should("contain", "/finance/reports/giving-statements");
     });
 
     it("should navigate to Zero Givers from link", () => {
