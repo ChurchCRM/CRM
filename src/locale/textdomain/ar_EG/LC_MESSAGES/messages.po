@@ -18854,16 +18854,6 @@ msgstr[4] "تم تكليف %d متطوعًا افتراضيًا"
 msgstr[5] "تم تكليف %d متطوع افتراضي"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "لا حاجة إلى مزيد من المتطوعين لهذه المهمة. افتح الموعد لسدّ الثغرة."
-msgstr[1] "لا يزال مطلوبًا %d متطوع إضافي لهذه المهمة. افتح الموعد لسدّ الثغرة."
-msgstr[2] "لا يزال مطلوبًا %d متطوعان إضافيان لهذه المهمة. افتح الموعد لسدّ الثغرة."
-msgstr[3] "لا يزال مطلوبًا %d متطوعين إضافيين لهذه المهمة. افتح الموعد لسدّ الثغرة."
-msgstr[4] "لا يزال مطلوبًا %d متطوعًا إضافيًا لهذه المهمة. افتح الموعد لسدّ الثغرة."
-msgstr[5] "لا يزال مطلوبًا %d متطوع إضافي لهذه المهمة. افتح الموعد لسدّ الثغرة."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "لا مواعيد جديدة"
@@ -18872,16 +18862,6 @@ msgstr[2] "%d موعدان جديدان"
 msgstr[3] "%d مواعيد جديدة"
 msgstr[4] "%d موعدًا جديدًا"
 msgstr[5] "%d موعد جديد"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "لا متطوعين مطلوبين لموعد قادم."
-msgstr[1] "لا يزال مطلوبًا %d متطوع لموعد قادم."
-msgstr[2] "لا يزال مطلوبًا %d متطوعان لموعد قادم."
-msgstr[3] "لا يزال مطلوبًا %d متطوعين لموعد قادم."
-msgstr[4] "لا يزال مطلوبًا %d متطوعًا لموعد قادم."
-msgstr[5] "لا يزال مطلوبًا %d متطوع لموعد قادم."
 
 #: 
 msgid "%s Calendar"
@@ -20962,10 +20942,6 @@ msgstr "فتح الخدمة"
 #: 
 msgid "Open the occurrence"
 msgstr "فتح الموعد"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "افتح الموعد لتكليف الأشخاص الذين تحتاجهم."
 
 #: 
 msgid "Open this team"

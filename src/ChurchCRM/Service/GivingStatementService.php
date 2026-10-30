@@ -2,7 +2,6 @@
 
 namespace ChurchCRM\Service;
 
-use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\model\ChurchCRM\Family;
@@ -24,7 +23,7 @@ class GivingStatementService
     /**
      * Turn untrusted query values into the criteria every other method takes.
      *
-     * @return array{dateStart: string, dateEnd: string, depositId: int, byDepositDate: bool, minimumCents: int, fundIds: int[], familyIds: int[], classificationIds: int[], letterhead: string, remittance: bool}
+     * @return array{dateStart: string, dateEnd: string, depositId: int, byDepositDate: bool, minimumCents: int, fundIds: int[], familyIds: int[], classificationIds: int[], remittance: bool}
      */
     public static function criteriaFromQuery(array $query): array
     {
@@ -54,7 +53,6 @@ class GivingStatementService
             [$dateStart, $dateEnd] = [$dateEnd, $dateStart];
         }
 
-        $letterhead = self::scalar($query['letterhead'] ?? 'address');
 
         return [
             'dateStart' => $dateStart,
@@ -65,7 +63,6 @@ class GivingStatementService
             'fundIds' => self::intList($query['funds'] ?? []),
             'familyIds' => array_values(array_unique($familyIds)),
             'classificationIds' => self::intList($query['classList'] ?? []),
-            'letterhead' => in_array($letterhead, ['graphic', 'address', 'none'], true) ? $letterhead : 'address',
             'remittance' => self::scalar($query['remittance'] ?? 'no') === 'yes',
         ];
     }
@@ -186,14 +183,14 @@ class GivingStatementService
      *
      * @param array<int, array<string, mixed>> $families as returned by {@see self::families()}
      */
-    public static function document(array $families, string $dateStart, string $dateEnd, string $letterhead = 'address', bool $remittance = false): array
+    public static function document(array $families, string $dateStart, string $dateEnd, bool $remittance = false): array
     {
-        $graphic = $letterhead === 'graphic' ? self::graphicLetterhead() : null;
+        $graphic = self::graphicLetterhead();
         $start = DateTimeUtils::formatDate($dateStart);
         $end = DateTimeUtils::formatDate($dateEnd);
 
         return [
-            'letterhead' => $graphic !== null ? 'graphic' : ($letterhead === 'none' ? 'none' : 'address'),
+            'letterhead' => $graphic !== null ? 'graphic' : 'address',
             'letterhead_image' => $graphic,
             'title' => gettext('Giving Statement'),
             'date_range' => $dateStart === $dateEnd ? $start : sprintf(gettext('%s through %s'), $start, $end),
@@ -253,6 +250,24 @@ class GivingStatementService
     }
 
     /**
+     * Summary the preview page shows before anything is downloaded.
+     *
+     * @param array<int, Pledge[]> $groups
+     * @return array{families: int, gifts: int, total: string}
+     */
+    public static function summary(array $groups): array
+    {
+        $gifts = 0;
+        $cents = 0;
+        foreach ($groups as $payments) {
+            $gifts += count($payments);
+            $cents += self::totals($payments)['total'];
+        }
+
+        return ['families' => count($groups), 'gifts' => $gifts, 'total' => CurrencyFormatter::format($cents / 100)];
+    }
+
+    /**
      * Content-Disposition for a statement PDF. The ASCII name is the fallback; the UTF-8 name
      * carries the church and family names in any script.
      */
@@ -272,7 +287,7 @@ class GivingStatementService
 
     public static function fileLabel(int $year, string $familyName = ''): string
     {
-        return trim($year . ' ' . ChurchMetaData::getChurchName() . ' ' . $familyName);
+        return $familyName === '' ? 'GivingStatements-' . $year : 'GivingStatement-' . $year . '-' . $familyName;
     }
 
     /**
@@ -326,9 +341,11 @@ class GivingStatementService
     {
         $ids = [];
         foreach ((array) $values as $value) {
-            $id = InputUtils::filterInt(self::scalar($value));
-            if ($id > 0) {
-                $ids[$id] = $id;
+            foreach (explode(',', self::scalar($value)) as $part) {
+                $id = InputUtils::filterInt($part);
+                if ($id > 0) {
+                    $ids[$id] = $id;
+                }
             }
         }
 

@@ -18875,28 +18875,12 @@ msgstr[2] "Назначено %d волонтёров по умолчанию"
 msgstr[3] "Назначено %d волонтёра по умолчанию"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Для этой позиции всё ещё нужен ещё %d волонтёр. Откройте проведение, чтобы закрыть пробел."
-msgstr[1] "Для этой позиции всё ещё нужно ещё %d волонтёра. Откройте проведение, чтобы закрыть пробел."
-msgstr[2] "Для этой позиции всё ещё нужно ещё %d волонтёров. Откройте проведение, чтобы закрыть пробел."
-msgstr[3] "Для этой позиции всё ещё нужно ещё %d волонтёра. Откройте проведение, чтобы закрыть пробел."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d новое проведение"
 msgstr[1] "%d новых проведения"
 msgstr[2] "%d новых проведений"
 msgstr[3] "%d нового проведения"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Для предстоящего проведения всё ещё нужен %d волонтёр."
-msgstr[1] "Для предстоящего проведения всё ещё нужно %d волонтёра."
-msgstr[2] "Для предстоящего проведения всё ещё нужно %d волонтёров."
-msgstr[3] "Для предстоящего проведения всё ещё нужно %d волонтёра."
 
 #: 
 msgid "%s Calendar"
@@ -20969,10 +20953,6 @@ msgstr "Открыть служение"
 #: 
 msgid "Open the occurrence"
 msgstr "Открыть проведение"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Откройте проведение, чтобы назначить нужных людей."
 
 #: 
 msgid "Open this team"
