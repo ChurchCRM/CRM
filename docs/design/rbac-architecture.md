@@ -12,7 +12,7 @@
 | A3 | **Drop the V1 permission columns at cutover.** The upgrade converts them to role assignments and removes them in the same script. Rollback is a database restore. | Supersedes "preserve legacy `usr_*` flags during 7.x" (§9 step 2). |
 | A4 | **Legacy Administrator role.** Every account with `usr_Admin` today gets it. It holds every permission that exists on cutover day and is **frozen**: permissions added later are not added to it. | Settles the D2 "administrator wildcard" question for existing admins. |
 | A5 | **New Administrator template is core system administration only** (users, roles, settings, system). Finance, people, groups and the rest are separate roles a church adds. | Settles the D2 wildcard question for new admins: no wildcard. |
-| A6 | **Assigning roles:** a holder of `roles.assign` may give any role to another user, never to themselves. Roles holding a sensitive permission need a second approver. Every change is audited and the person is notified. | Settles the D2 grant ceiling and self-escalation rule. |
+| A6 | **Assigning roles:** a holder of `roles.assign` may give another user only a role whose permissions the assigner already holds, never to themselves; the Owner may give any role. Roles holding a sensitive permission need a second approver. Every change is audited and the person is notified. | Settles the D2 grant ceiling and self-escalation rule. |
 | A7 | **Rebuilt setup wizard with an Owner account ("admin 0").** The wizard asks for the real password (no shipped default) and which roles to create. Every install has exactly one Owner. | New. Replaces the seeded `admin`/`changeme` account. |
 | A8 | **Owner is a true superuser,** including highly confidential and safeguarding content. It may assign roles to itself and cannot be deleted or demoted. | **Exception to P6**: the RFC's P6 row needs an amendment naming the Owner. Mitigation in §6. |
 | A9 | **Admin-only split.** CSV export and the People Report CSV move to `export.people`; the email log and text messages to `communication.log.read`; other users' private notes to `notes.private.read` (sensitive). The rest of today's admin-only features stay with Administrator (§4.3). | New permissions; the bulk export gate of #10516 starts from `export.people`. |
@@ -226,7 +226,7 @@ Phase 1 is built on a long-lived branch `rbac/phase-1` and merges to `master` on
 | 5 | Predicate seam: `User` predicates ask the service | 4 | Parity fixtures green against the service |
 | 6 | Upgrade conversion, verification and column drop (§8) | 3, 5 | Upgrade tests from seeded V1 data, including abort on mismatch |
 | 6a | Hold the automatic upgrade for the cutover release; maintenance page; wizard runs backup, Owner, cutover (A13) | 6 | Auto-upgrade stops at the cutover; wizard path tested end to end |
-| 7 | User editor: role picker replaces the checkboxes; `roles.assign`, no-self, second approver for sensitive, audit, notice | 4 | Cypress per rule |
+| 7 | User editor: role picker replaces the checkboxes; `roles.assign`, grant ceiling, no-self, second approver for sensitive, audit, notice | 4 | Cypress per rule |
 | 8 | Owner: flag, safeguards (§6), transfer flow | 3, 4 | Cypress and audit assertions |
 | 9 | Setup wizard rebuild (§9) | 8 | Fresh-install Cypress run |
 | 10 | Admin-only split (§4.3): new permissions for export, communication log, private notes | 2 | Callers moved; negative tests |
