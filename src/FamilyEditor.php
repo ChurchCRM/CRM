@@ -25,6 +25,7 @@ use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
 use ChurchCRM\Utils\AddressDefaults;
+use ChurchCRM\Service\CustomFieldService;
 
 $sPageTitle = gettext('Family Editor');
 $sPageSubtitle = gettext('Create and edit family information and relationships');
@@ -57,14 +58,7 @@ $sSQL = 'SELECT family_custom_master.* FROM family_custom_master ORDER BY fam_cu
 $rsCustomFields = RunQuery($sSQL);
 $numCustomFields = mysqli_num_rows($rsCustomFields);
 
-// Get Field Security List Matrix
-$sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence';
-$rsSecurityGrp = RunQuery($sSQL);
-
-while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
-    extract($aRow);
-    $aSecurityType[$lst_OptionID] = $lst_OptionName;
-}
+$customFieldService = new CustomFieldService();
 
 $bErrorFlag = false;
 $sNameError = '';
@@ -253,12 +247,14 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
         extract($rowCustomField);
 
-        $currentFieldData = InputUtils::legacyFilterInput($_POST[$fam_custom_Field]);
+        if ($customFieldService->canView((int) $fam_custom_FieldSec)) {
+            $currentFieldData = CustomFieldUtils::cleanInput($_POST[$fam_custom_Field] ?? '');
 
-        $bErrorFlag |= !CustomFieldUtils::validate($type_ID, $currentFieldData, $fam_custom_Field, $aCustomErrors);
+            $bErrorFlag |= !CustomFieldUtils::validate($type_ID, $currentFieldData, $fam_custom_Field, $aCustomErrors);
 
-        // assign processed value locally to $aPersonProps so we can use it to generate the form later
-        $aCustomData[$fam_custom_Field] = $currentFieldData;
+            // assign processed value locally to $aPersonProps so we can use it to generate the form later
+            $aCustomData[$fam_custom_Field] = $currentFieldData;
+        }
     }
 
     //If no errors, then let's update...
@@ -330,7 +326,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         //If the user added a new record, we need to key back to the route to the FamilyView page
         if ($iFamilyID < 1) {
             $iFamilyID = $family->getId();
-            RunPreparedQuery('INSERT INTO `family_custom` (`fam_ID`) VALUES (?)', 'i', [$iFamilyID]);
+            $customFieldService->ensureFamilyRow($iFamilyID);
 
             // Add property if assigned
             if ($iPropertyID) {
@@ -409,27 +405,9 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             $family->updateLanLng();
         }
 
-        // Update the custom person fields.
+        // Update the custom family fields.
         if ($numCustomFields > 0) {
-            $sSQL = 'REPLACE INTO family_custom SET ';
-            mysqli_data_seek($rsCustomFields, 0);
-
-            while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
-                extract($rowCustomField);
-                if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($aSecurityType[$fam_custom_FieldSec])) {
-                    $currentFieldData = trim($aCustomData[$fam_custom_Field]);
-
-                    CustomFieldUtils::buildSql($sSQL, $type_ID, $currentFieldData, $fam_custom_Field, $sCountry);
-                }
-            }
-
-            // chop off the last 2 characters (comma and space) added in the last while loop iteration.
-            $sSQL = mb_substr($sSQL, 0, -2);
-
-            $sSQL .= ", fam_ID = $iFamilyID";
-
-            //Execute the SQL
-            RunQuery($sSQL);
+            $customFieldService->saveFamilyValues((int) $iFamilyID, $aCustomData);
         }
 
         //Which submit button did they press?
@@ -875,11 +853,11 @@ require_once __DIR__ . '/Include/Header.php';
                 mysqli_data_seek($rsCustomFields, 0);
                 while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
                     extract($rowCustomField);
-                    if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($aSecurityType[$fam_custom_FieldSec])) {
+                    if ($customFieldService->canView((int) $fam_custom_FieldSec)) {
                         ?>
                         <div class="row">
                             <div class="mb-3 col-12 col-md-6">
-                                <label for="<?= $fam_custom_Field ?>"><?= $fam_custom_Name ?></label>
+                                <label for="<?= InputUtils::escapeAttribute($fam_custom_Field) ?>"><?= InputUtils::escapeHTML($fam_custom_Name) ?></label>
                         <?php $currentFieldData = trim($aCustomData[$fam_custom_Field]);
 
                         CustomFieldUtils::renderForm($type_ID, $fam_custom_Field, $currentFieldData, $fam_custom_Special, !isset($_POST['FamilySubmit']));

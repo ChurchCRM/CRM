@@ -2,7 +2,6 @@
 
 namespace ChurchCRM\Emails\notifications;
 
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Emails\BaseEmail;
 
 class NotificationEmail extends BaseEmail
@@ -18,7 +17,7 @@ class NotificationEmail extends BaseEmail
         $this->notificationSource = $notificationSource;
         $this->eventName = $eventName;
         parent::__construct($toAddresses);
-        $this->mail->Subject = SystemConfig::getValue('sChurchName') . ': ' . $this->getSubSubject();
+        $this->mail->Subject = $this->getSubSubject();
         $this->mail->isHTML(true);
         $this->mail->msgHTML($this->buildMessage());
     }

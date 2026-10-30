@@ -19,6 +19,13 @@ export interface CaptureOptions {
   dark?: string;
   /** Where a page links this capture. A used capture is never deleted: `npm run lint`. */
   usedIn?: ReadonlyArray<'docs' | 'website'>;
+  /** Omit for English only. */
+  locales?: 'all';
+}
+
+/** Expose capture options to Playwright while it registers and filters tests. */
+export function defineCapture(options: CaptureOptions): CaptureOptions & { tag: string[] } {
+  return { ...options, tag: options.locales === 'all' ? ['@all-locales'] : [] };
 }
 
 /**
@@ -71,6 +78,10 @@ export async function captureScreen(page: Page, testInfo: TestInfo, opts: Captur
       `Test title "${testInfo.title}" must match capture name "${opts.name}" so the post-run video ` +
         'finalize step (scripts/finalize-marketing-videos.js) can match them up.'
     );
+  }
+
+  if (!VIDEO_ONLY_PROJECTS.has(testInfo.project.name) && LOCALE !== 'en' && opts.locales !== 'all') {
+    return;
   }
 
   // Video-only projects (the bootstrap 'setup' recordings, plus any other
@@ -174,7 +185,8 @@ async function captureAtViewport(
     title: opts.title,
     category: opts.category,
     dark: opts.dark ?? null,
-    usedIn: opts.usedIn ?? [],
+    usedIn: [...(opts.usedIn ?? [])],
+    locales: opts.locales ?? 'en',
     device,
     viewport: { width: viewport.width, height: viewport.height },
     screenshot: screenshotPath,

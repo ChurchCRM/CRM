@@ -3371,8 +3371,8 @@ single Twig template `src/templates/email/BaseEmail.html.twig` and the branding 
 |---|---|---|---|---|---|
 | `VolunteerAssignmentEmail` | outbox type `assignment` | the volunteer | responsible coordinator | `/portal/volunteer/schedule` | *View my schedule* |
 | `VolunteerReminderEmail` | outbox type `reminder` | the volunteer | responsible coordinator | `/portal/volunteer/schedule` | *View my schedule* |
-| `VolunteerDeclineAlertEmail` | outbox type `decline_alert` | coordinators in scope | the volunteer who declined | `/ministries/occurrences/{id}` | *Fill this gap* |
-| `VolunteerGapAlertEmail` | outbox type `gap_alert` | coordinators in scope | none (no single volunteer) | `/ministries/occurrences/{id}` | *Fill this gap* |
+| `VolunteerDeclineAlertEmail` | outbox type `decline_alert` | coordinators in scope | the volunteer who declined | `/ministries/occurrences/{id}` | *Fill this gap*; *View Assignments* when nothing is still needed |
+| `VolunteerGapAlertEmail` | outbox type `gap_alert` | coordinators in scope | none (no single volunteer) | `/ministries/occurrences/{id}` | *Fill this gap*; *View Assignments* when nothing is still needed |
 | `VolunteerGapAlertBatchEmail` | a recipient's batched `gap_alert` rows (#10529), one message a day | coordinators in scope | none | `/ministries/dashboard` (a team leader without Manage My Ministries: `/portal/teams`) | *Open the Ministry Dashboard* / *My Teams* |
 | `VolunteerSignupConfirmEmail` | outbox type `signup_confirm`: self sign-up, or an assignment recorded as accepted in the Assign dialog (#10528), whose `recordedBy` context switches the wording to *"{coordinator} recorded that you will serve. You are on the schedule."* | the volunteer | responsible coordinator | `/portal/volunteer/schedule` | *View my schedule* |
 | `VolunteerSwapProposedEmail` | outbox type `swap_proposed` | coordinators in scope | the proposing volunteer | `/ministries/dashboard` | *Review this request* |
@@ -3397,8 +3397,15 @@ subclass in the tree and gain no email-routing logic of their own.
   `BaseEmail::getCommonTokens()`).
 
 Gap and decline alerts additionally carry the number still needed and the list of positions short;
-the unfilled-position alert's list is its one position. The daily batch (subject *Volunteer positions
-to fill in the coming days*) gives the total still needed, then one paragraph per occurrence in date
+the unfilled-position alert's list is its one position. A decline alert is built when the drain
+sends it: it carries the volunteer's reason when they gave one, and one line per person assigned
+to that position since the decline (*The position is now assigned to {name}, who has (not yet)
+accepted it.*). It says the position is still covered only when nobody more is needed and
+everyone assigned since has accepted. The drain skips it (`skipped`) when the volunteer is back on
+that position.
+
+The daily batch (subject *Volunteer positions to fill in the coming days*) gives the total still
+needed, then one paragraph per occurrence in date
 order: when, the ministry and team, each position with *{position}: needs {n} more*, and the
 occurrence's link (the portal's copy of the date for a team leader without Manage My Ministries).
 Swap messages carry both names and the decision.

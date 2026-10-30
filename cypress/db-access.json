@@ -16,6 +16,10 @@
         "cypress/support/api-commands.js": {
             "kind": "fixture",
             "reason": "Registers cy.dbQuery()."
+        },
+        "cypress/support/password-reset-fixtures.js": {
+            "kind": "fixture",
+            "reason": "Deterministic password-reset token fixtures (including legacy/expired links) and exact user/token snapshots and restoration for #10201. Password hashes and token uses have no HTTP read surface; the spec exercises GET and POST through HTTP."
         }
     },
     "baseline": {

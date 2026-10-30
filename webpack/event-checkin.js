@@ -120,7 +120,7 @@ function displayPersonDetails(element, person) {
   }
 
   if (person?.objid) {
-    const personViewUrl = `/people/view/${person.objid}`;
+    const personViewUrl = `${window.CRM.root}/people/view/${person.objid}`;
 
     // Compact inline display with name and check icon
     const html =
