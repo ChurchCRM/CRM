@@ -2,11 +2,10 @@
 
 require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
-require_once __DIR__ . '/Include/LabelFunctions.php';
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\LabelSheetService;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
 
 $sPageTitle = gettext('Letters and Mailing Labels');
@@ -17,62 +16,57 @@ $aBreadcrumbs = PageHeader::breadcrumbs([
 ]);
 require_once __DIR__ . '/Include/Header.php';
 
-// Is this the second pass?
-if (isset($_POST['SubmitNewsLetter']) || isset($_POST['SubmitConfirmLabels'])) {
-    $sLabelQuery = http_build_query([
-        'labeltype' => InputUtils::legacyFilterInput($_POST['labeltype']),
-        'labelfont' => $_POST['labelfont'] ?? '',
-        'labelfontsize' => $_POST['labelfontsize'] ?? '',
-        'recipientnamingmethod' => $_POST['recipientnamingmethod'] ?? '',
-    ]);
-
-    if (isset($_POST['SubmitNewsLetter'])) {
-        RedirectUtils::redirect('people/labels/newsletter?' . $sLabelQuery);
-    } elseif (isset($_POST['SubmitConfirmLabels'])) {
-        RedirectUtils::redirect('people/labels/confirm?' . $sLabelQuery);
-    }
-} else {
-    $sLabelFormat = 'Tractor';
-}
+$sRootPath = SystemURLs::getRootPath();
+$sLabelType = (string) ($_COOKIE['labeltype'] ?? '');
+$sLabelFont = (string) ($_COOKIE['labelfont'] ?? '');
+$sLabelFontSize = (string) ($_COOKIE['labelfontsize'] ?? '');
 ?>
-<div class="row">
-  <div class="col-lg-12">
-    <div class="card">
-      <div class="card-header d-flex align-items-center">
-        <h3 class="card-title"><?= gettext('People Reports')?></h3>
-      </div>
-      <div class="card-body">
-        <form method="post" action="LettersAndLabels.php">
-            <div class="table-responsive">
-
-          <table class="table">
-<?php
-LabelSelect('labeltype');
-FontSelect('labelfont');
-FontSizeSelect('labelfontsize');
-?>
-            <tr>
-              <td class="text-secondary"><?= gettext("Recipient Naming Method")?>:</td>
-              <td>
-                <select name="recipientnamingmethod" class="form-select">
-                  <option value="salutationutility"><?= gettext("Salutation Utility") ?></option>
-                  <option value="familyname"><?= gettext("Family Name") ?></option>
-                </select>
-              </td>
-            </tr>
-
-          </table>
-            </div>
-            <div>
-              <input type="submit" class="btn btn-secondary" name="SubmitNewsLetter" value="<?= gettext('Newsletter labels') ?>">
-              <input type="submit" class="btn btn-secondary" name="SubmitConfirmLabels" value="<?= gettext('Confirm data labels') ?>">
-              <a class="btn btn-warning" href="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath() . '/v2/dashboard') ?>"><?= gettext('Cancel') ?></a>
-            </div>
-
-        </form>
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title"><?= gettext('Family Labels') ?></h3>
+  </div>
+  <form method="get" action="<?= InputUtils::escapeAttribute($sRootPath . '/people/labels/newsletter') ?>" target="_blank">
+    <div class="card-body">
+      <div class="row g-3">
+        <div class="col-md-6 col-lg-3">
+          <label class="form-label" for="labeltype"><?= gettext('Label Type') ?></label>
+          <select class="form-select" name="labeltype" id="labeltype">
+            <?php foreach (LabelSheetService::labelTypes() as $type) { ?>
+              <option value="<?= InputUtils::escapeAttribute($type) ?>" <?= $sLabelType === $type ? 'selected' : '' ?>><?= InputUtils::escapeHTML(gettext($type)) ?></option>
+            <?php } ?>
+          </select>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <label class="form-label" for="labelfont"><?= gettext('Font') ?></label>
+          <select class="form-select" name="labelfont" id="labelfont">
+            <?php foreach (LabelSheetService::fontNames() as $font) { ?>
+              <option value="<?= InputUtils::escapeAttribute($font) ?>" <?= $sLabelFont === $font ? 'selected' : '' ?>><?= InputUtils::escapeHTML($font) ?></option>
+            <?php } ?>
+          </select>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <label class="form-label" for="labelfontsize"><?= gettext('Font Size') ?></label>
+          <select class="form-select" name="labelfontsize" id="labelfontsize">
+            <?php foreach (LabelSheetService::fontSizes() as $size) { ?>
+              <option value="<?= InputUtils::escapeAttribute((string) $size) ?>" <?= $sLabelFontSize === (string) $size ? 'selected' : '' ?>><?= InputUtils::escapeHTML(gettext((string) $size)) ?></option>
+            <?php } ?>
+          </select>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <label class="form-label" for="recipientnamingmethod"><?= gettext('Recipient Naming Method') ?></label>
+          <select class="form-select" name="recipientnamingmethod" id="recipientnamingmethod">
+            <option value="salutationutility"><?= gettext('Salutation Utility') ?></option>
+            <option value="familyname"><?= gettext('Family Name') ?></option>
+          </select>
+        </div>
       </div>
     </div>
-  </div>
+    <div class="card-footer d-flex flex-wrap gap-2">
+      <button type="submit" class="btn btn-primary"><i class="fa-solid fa-file-pdf me-2"></i><?= gettext('Newsletter labels') ?></button>
+      <button type="submit" class="btn btn-secondary" formaction="<?= InputUtils::escapeAttribute($sRootPath . '/people/labels/confirm') ?>"><i class="fa-solid fa-file-pdf me-2"></i><?= gettext('Confirm data labels') ?></button>
+      <a class="btn btn-link ms-auto" href="<?= InputUtils::escapeAttribute($sRootPath . '/people/reports') ?>"><?= gettext('Cancel') ?></a>
+    </div>
+  </form>
 </div>
 <?php
 require_once __DIR__ . '/Include/Footer.php';

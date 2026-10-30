@@ -36,7 +36,7 @@ class LabelSheetService
     private const BOTTOM_SLACK = 2.0;
 
     /**
-     * @return string[] the formats offered for mailing labels; the name-tag stock is left out
+     * @return string[] every format except the name-tag stock
      */
     public static function labelTypes(): array
     {
@@ -49,7 +49,7 @@ class LabelSheetService
     }
 
     /**
-     * The font names offered on the label forms: "Helvetica", "Helvetica Bold", "Helvetica Bold Italic", ...
+     * The supported font names: "Helvetica", "Helvetica Bold", "Helvetica Bold Italic", ...
      *
      * @return string[]
      */
@@ -69,7 +69,17 @@ class LabelSheetService
     }
 
     /**
-     * A font name from a label form as CSS values. Only these values reach the page, never the name itself.
+     * The selectable point sizes; "default" takes the fallback size in fontSize().
+     *
+     * @return array<int, int|string>
+     */
+    public static function fontSizes(): array
+    {
+        return ['default', 6, 7, 8, 9, 10, 11, 12, 14, 16, 18];
+    }
+
+    /**
+     * A font name as CSS values. Only these values reach the template, never the name itself.
      *
      * @return array{family: string, weight: string, style: string}
      */
@@ -85,7 +95,7 @@ class LabelSheetService
     }
 
     /**
-     * The point size a form value asks for, or $fallback for "default" and anything that is not a size.
+     * The point size $requested asks for, or $fallback for "default" and anything that is not a size.
      */
     public static function fontSize(mixed $requested, int $fallback): int
     {
@@ -207,7 +217,7 @@ class LabelSheetService
         }
         $textWidth = $width - $textLeft - 5;
 
-        $firstSize = self::fitFontSize($fontSize, mb_strlen($firstName), $textWidth);
+        $firstSize = self::fitFontSize($fontSize, mb_strlen($firstName), $textWidth, 0.75);
         $lastSize = self::fitFontSize(min($firstSize, (int) round($fontSize * 0.55)), mb_strlen($lastName), $textWidth);
         $textHeight = ($firstSize + $lastSize) * 1.2 * 0.3528;
 
@@ -220,6 +230,7 @@ class LabelSheetService
             'text_x' => round($textLeft, 2),
             'text_y' => round($bodyTop + max(0, ($bodyHeight - $textHeight) / 2), 2),
             'text_width' => round($textWidth, 2),
+            'text_height' => round($textHeight + 0.2, 2),
         ]];
     }
 
@@ -261,14 +272,14 @@ class LabelSheetService
 
     /**
      * The font size that fits a line of $characters across $width millimetres, never above $size.
-     * Glyph width is estimated at 0.6 em, which holds for the proportional and bold faces on the forms.
+     * $em is the average glyph width: 0.6 holds for the supported faces, bold display text needs more.
      */
-    public static function fitFontSize(int $size, int $characters, float $width): int
+    public static function fitFontSize(int $size, int $characters, float $width, float $em = 0.6): int
     {
         if ($characters < 1) {
             return $size;
         }
-        $fitting = (int) floor($width / ($characters * 0.6 * 0.3528));
+        $fitting = (int) floor($width / ($characters * $em * 0.3528));
 
         return max(4, min($size, $fitting));
     }

@@ -7,8 +7,7 @@ use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 
 /**
- * Labels with no recipient list of their own: one per family for the newsletter and the data
- * confirmation mailing, one per cart member for name tags.
+ * Family address labels and personal name badges.
  */
 class FamilyLabelService
 {

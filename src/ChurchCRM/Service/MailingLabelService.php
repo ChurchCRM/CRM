@@ -146,7 +146,7 @@ class MailingLabelService
     /**
      * @param array<int, string[]> $entries person id => label modes: "indiv" labels the person by
      *                                      name, "fam" gives their household one label. A person
-     *                                      can have both (#10343).
+     *                                      can have both.
      * @return array<int, array<string, string>>
      */
     public static function labels(array $entries, int $bulk, bool $toParents, bool $onlyComplete): array
@@ -183,9 +183,8 @@ class MailingLabelService
                     }
                     $doneFamilies[$row['per_fam_ID']] = true;
 
-                    // One label per household (#9873): the adults' salutation when an adult of the
-                    // family is listed, else the children's (so a class list still gets "To the
-                    // parents of"), else the family name.
+                    // One label per household: the adults' salutation when an adult of the
+                    // family is listed, else the children's ("To the parents of"), else the family name.
                     $names = self::householdNames($row['per_fam_ID'], $adultRoles, $childRoles, $householdIds);
                     foreach (['adult', 'child', 'other'] as $group) {
                         if ($names[$group] !== null) {
@@ -207,7 +206,7 @@ class MailingLabelService
                         $name = "To the parents of:\n" . $name;
                     }
 
-                    // A person's own address wins; otherwise the family's mailing address (#9873).
+                    // A person's own address wins; otherwise the family's mailing address.
                     $address = self::address($row);
                     $street = $address['Address1'];
                     if ($address['Address2'] !== '') {
@@ -294,7 +293,7 @@ class MailingLabelService
      */
     private static function row(Person $person): array
     {
-        // The flagged second address when the family has one, the primary otherwise (#10405).
+        // The flagged second address when the family has one, the primary otherwise.
         $family = $person->getFamily()?->getMailingAddressParts() ?? [];
 
         return [

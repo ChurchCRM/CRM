@@ -13,20 +13,19 @@
  */
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\LabelSheetService;
 use ChurchCRM\Utils\InputUtils;
-
-require_once SystemURLs::getDocumentRoot() . '/Include/LabelFunctions.php';
 
 $labelsHiddenFields ??= [];
 $labelsGrouping ??= null;
 
-$bGroupByFamily = getLabelFormCookie('groupbymode') === 'fam';
-$bBulkMailPresort = (bool) getLabelFormCookie('bulkmailpresort');
-$bBulkMailQuiet = $bBulkMailPresort && (bool) getLabelFormCookie('bulkmailquiet');
-$bToParents = (bool) getLabelFormCookie('toparents');
-$sLabelType = getLabelFormCookie('labeltype');
-$sLabelFont = getLabelFormCookie('labelfont');
-$sLabelFontSize = getLabelFormCookie('labelfontsize');
+$bGroupByFamily = ($_COOKIE['groupbymode'] ?? '') === 'fam';
+$bBulkMailPresort = (bool) ($_COOKIE['bulkmailpresort'] ?? '');
+$bBulkMailQuiet = $bBulkMailPresort && (bool) ($_COOKIE['bulkmailquiet'] ?? '');
+$bToParents = (bool) ($_COOKIE['toparents'] ?? '');
+$sLabelType = (string) ($_COOKIE['labeltype'] ?? '');
+$sLabelFont = (string) ($_COOKIE['labelfont'] ?? '');
+$sLabelFontSize = (string) ($_COOKIE['labelfontsize'] ?? '');
 ?>
 <div class="modal fade" id="labelsModal" tabindex="-1" aria-labelledby="labelsModalTitle" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-scrollable">
@@ -81,7 +80,7 @@ $sLabelFontSize = getLabelFormCookie('labelfontsize');
             <div class="col-md-4">
               <label class="form-label" for="labeltype"><?= gettext('Label Type') ?></label>
               <select class="form-select" name="labeltype" id="labeltype">
-                <?php foreach (getLabelTypes() as $type) { ?>
+                <?php foreach (LabelSheetService::labelTypes() as $type) { ?>
                   <option value="<?= InputUtils::escapeAttribute($type) ?>" <?= $sLabelType === $type ? 'selected' : '' ?>><?= InputUtils::escapeHTML(gettext($type)) ?></option>
                 <?php } ?>
               </select>
@@ -89,7 +88,7 @@ $sLabelFontSize = getLabelFormCookie('labelfontsize');
             <div class="col-md-4">
               <label class="form-label" for="labelfont"><?= gettext('Font') ?></label>
               <select class="form-select" name="labelfont" id="labelfont">
-                <?php foreach (getLabelFontNames() as $font) { ?>
+                <?php foreach (LabelSheetService::fontNames() as $font) { ?>
                   <option value="<?= InputUtils::escapeAttribute($font) ?>" <?= $sLabelFont === $font ? 'selected' : '' ?>><?= InputUtils::escapeHTML($font) ?></option>
                 <?php } ?>
               </select>
@@ -97,7 +96,7 @@ $sLabelFontSize = getLabelFormCookie('labelfontsize');
             <div class="col-md-4">
               <label class="form-label" for="labelfontsize"><?= gettext('Font Size') ?></label>
               <select class="form-select" name="labelfontsize" id="labelfontsize">
-                <?php foreach (getLabelFontSizes() as $size) { ?>
+                <?php foreach (LabelSheetService::fontSizes() as $size) { ?>
                   <option value="<?= InputUtils::escapeAttribute((string) $size) ?>" <?= $sLabelFontSize === (string) $size ? 'selected' : '' ?>><?= InputUtils::escapeHTML(gettext((string) $size)) ?></option>
                 <?php } ?>
               </select>

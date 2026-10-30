@@ -25,7 +25,7 @@ class MpdfRenderer implements PdfRendererInterface
     }
 
     /**
-     * @param array<string, mixed> $mpdfOptions Mpdf constructor settings that replace the Letter-page defaults, such as a label sheet's format and margins.
+     * @param array<string, mixed> $mpdfOptions Mpdf constructor settings that replace the Letter-page defaults, such as a custom format and margins.
      */
     public function renderToString(string $template, array $data, bool $landscape = false, array $mpdfOptions = []): string
     {

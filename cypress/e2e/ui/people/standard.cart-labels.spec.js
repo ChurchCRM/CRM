@@ -1,28 +1,8 @@
 /// <reference types="cypress" />
 
-/**
- * Mailing labels from the cart (#9873).
- *
- * Two regressions are pinned here:
- *
- * 1. The cart page lost its "Generate Labels" form when the cart moved to
- *    /people/cart (#4377). Nothing linked to the labels report any more.
- * 2. The labels report read the address from the person record only
- *    (0190da3d2), so a household whose address lives on the family record
- *    produced blank labels — every one skipped by "Ignore Incomplete
- *    Addresses", or printed with a name and no street.
- *
- * The family is created through the family editor, which stores the address on
- * the family and creates the member without one — the normal shape of a
- * household. The CSV output is asserted because this repo has no PDF text
- * parser; the PDF run is checked for status, content type and the absence of
- * PHP error text, as the other report specs do.
- *
- * Person-over-family precedence is not exercised here: the person editor hides
- * the address card for anyone in a family and no API sets a member's address,
- * so a family member cannot be given an address of their own from a test.
- */
-describe("Cart mailing labels (#9873)", () => {
+// The family editor stores the address on the family and creates the member without one.
+// Person-over-family precedence is not tested: no UI or API gives a family member an address of their own.
+describe("Cart mailing labels", () => {
     const familyName = "Labelfamily" + Cypress._.random(0, 1e6);
     const memberFirstName = "Addressless";
     const street = "742 Evergreen Terrace";
@@ -33,19 +13,8 @@ describe("Cart mailing labels (#9873)", () => {
     const labelQuery =
         "labeltype=5160&labelfont=Helvetica&labelfontsize=10&groupbymode=indiv&onlyfull=1&startrow=1&startcol=1";
 
-    /**
-     * Direct form login, as in confirm-reports.spec.js: a fresh PHP session
-     * uncontaminated by earlier specs, and the cart lives in that session.
-     */
-
-    const emptyCart = () => {
-        cy.request({
-            method: "DELETE",
-            url: "/api/cart/",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({}),
-        });
-    };
+    const cart = (method, body = {}) =>
+        cy.request({ method, url: "/api/cart/", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
 
     before(() => {
         cy.freshAdminFormLogin();
@@ -81,13 +50,8 @@ describe("Cart mailing labels (#9873)", () => {
 
     beforeEach(() => {
         cy.freshAdminFormLogin();
-        emptyCart();
-        cy.request({
-            method: "POST",
-            url: "/api/cart/",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ Family: familyId }),
-        });
+        cart("DELETE");
+        cart("POST", { Family: familyId });
         cy.visit("/people/cart");
         cy.contains("Cart Functions");
         cy.contains(memberFirstName);
@@ -99,7 +63,6 @@ describe("Cart mailing labels (#9873)", () => {
         cy.get("#labelsModal").should("be.visible");
         cy.get("#labelsForm").should("have.attr", "action").and("include", "people/labels");
 
-        // Every parameter the report reads has a control.
         cy.get('#labelsForm input[name="groupbymode"]:checked').should("have.value", "indiv");
         cy.get("#labelsForm select[name=labeltype] option").should("have.length.greaterThan", 0);
         cy.get("#labelsForm select[name=labelfont] option").should("have.length.greaterThan", 0);
@@ -109,7 +72,6 @@ describe("Cart mailing labels (#9873)", () => {
         cy.get("#labelsForm input[name=onlyfull]").should("be.checked");
         cy.get("#labelsForm select[name=filetype] option").should("have.length", 2);
 
-        // Quiet presort is only meaningful when presorting.
         cy.get("#bulkmailquiet").should("be.disabled");
         cy.get("#bulkmailpresort").check();
         cy.get("#bulkmailquiet").should("not.be.disabled");
@@ -131,10 +93,7 @@ describe("Cart mailing labels (#9873)", () => {
     });
 
     it("prints one label per household when grouped by family (CSV)", () => {
-        // Two adults and a child of one family in the cart used to produce two
-        // labels, one for the adults and one for the children. Grouped by
-        // family means one label, addressed to the adults.
-        // Labels cap the name at 33 characters, so keep these short.
+        // Labels cap the name at 33 characters.
         const stamp = String(Cypress._.random(0, 1e5));
         const household = "Hh" + stamp;
         const adults = ["Ann" + stamp, "Ben" + stamp];
@@ -166,13 +125,8 @@ describe("Cart mailing labels (#9873)", () => {
             .should("include", "/people/family/")
             .then((pathname) => {
                 const householdId = Number(pathname.split("/").pop());
-                emptyCart();
-                cy.request({
-                    method: "POST",
-                    url: "/api/cart/",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ Family: householdId }),
-                });
+                cart("DELETE");
+                cart("POST", { Family: householdId });
 
                 const familyQuery = labelQuery.replace("groupbymode=indiv", "groupbymode=fam");
                 cy.request(`/people/labels?${familyQuery}&filetype=CSV`).then((response) => {
@@ -203,7 +157,6 @@ describe("Cart mailing labels (#9873)", () => {
             const body = String(response.body);
             expect(body.slice(0, 5)).to.equal("%PDF-");
             expect(body).to.not.include("Fatal error");
-            expect(body).to.not.include("FPDF error");
         });
     });
 });

@@ -2,31 +2,12 @@
 
 import { pdfText } from "../../../support/pdf-text";
 
-/**
- * Mail is addressed to the family's mailing address (#9743).
- *
- * The newsletter and confirm label routes build every label from
- * Family::getMailingAddressLines() — the flagged second address when a family has
- * one, the primary address otherwise — and order the run by the ZIP that is
- * actually printed rather than by the primary ZIP. /people/labels, behind the
- * cart's Generate Labels and every People Report's Print Labels, does the same
- * for a person without an address of their own (#10405). Every letter that goes through
- * ChurchInfoReport::startLetterPage() is addressed the same way.
- *
- * The PDFs are fetched with cy.request() (cy.visit() only accepts text/html) and
- * their text is read back with pdfText(), so each test asserts the address
- * that was actually printed, not just that a PDF came back.
- */
-describe("Mailing address on mailed reports (#9743)", () => {
+// Mail goes to the family's mailing address: the flagged second address when there is one.
+describe("Mailing address on mailed reports", () => {
     const createdFamilyIds = [];
 
     const labelQuery =
         "labeltype=Tractor&labelfont=Helvetica&labelfontsize=default&recipientnamingmethod=familyname";
-
-    /**
-     * Direct form login, as in confirm-reports.spec.js: a fresh PHP session
-     * uncontaminated by earlier tests.
-     */
 
     /**
      * Creates a family whose flagged second address is in a different ZIP.
@@ -119,7 +100,6 @@ describe("Mailing address on mailed reports (#9743)", () => {
 
     beforeEach(() => {
         cy.freshAdminFormLogin();
-        cy.visit("/LettersAndLabels.php");
     });
 
     after(() => {
@@ -148,7 +128,7 @@ describe("Mailing address on mailed reports (#9743)", () => {
         });
     });
 
-    it("prints the second address on labels generated from the cart (#10405)", () => {
+    it("prints the second address on labels generated from the cart", () => {
         const familyName = "MailCart" + Cypress._.random(0, 1e6);
         createFamilyWithMailingAddress(familyName, { members: ["Carta"] }).then((familyId) => {
             cartRequest("DELETE", {});
@@ -159,7 +139,7 @@ describe("Mailing address on mailed reports (#9743)", () => {
         });
     });
 
-    it("prints the second address on People Report labels (#10405)", () => {
+    it("prints the second address on People Report labels", () => {
         const familyName = "MailReport" + Cypress._.random(0, 1e6);
         createFamilyWithMailingAddress(familyName, { members: ["Bday"], birthMonth: "11" });
         fetchLabelRows("report=birthdays&month=11&groupbymode=indiv").then((rows) =>

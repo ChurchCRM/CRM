@@ -8,7 +8,7 @@
     .text { position: absolute; overflow: hidden; height: {{ (layout.height - 4)|round(3) }}mm; }
     pre { margin: 0; padding: 0; font-family: {{ font.family }}; font-weight: {{ font.weight }}; font-style: {{ font.style }}; line-height: 1.2; }
     .tag-church { position: absolute; overflow: hidden; height: 6mm; font-size: 9pt; font-weight: bold; letter-spacing: 0.5pt; text-transform: uppercase; text-align: center; color: #444; border-bottom: 0.3mm solid #999; }
-    .tag-name { position: absolute; overflow: hidden; text-align: center; line-height: 1.2; }
+    .tag-name { position: absolute; overflow: auto; text-align: center; line-height: 1.2; }
     .empty { margin: 6mm; font-style: italic; }
   </style>
 </head>
@@ -25,7 +25,7 @@
           {% if tag.photo %}
           <div style="position: absolute; left: {{ (x + tag.photo.x)|round(3) }}mm; top: {{ (y + tag.photo.y)|round(3) }}mm; width: {{ tag.photo.width }}mm; height: {{ tag.photo.height }}mm;"><img src="{{ tag.photo.src }}" alt="" style="width: {{ tag.photo.width }}mm; height: {{ tag.photo.height }}mm;"></div>
           {% endif %}
-          <div class="tag-name" style="left: {{ (x + tag.text_x)|round(3) }}mm; top: {{ (y + tag.text_y)|round(3) }}mm; width: {{ tag.text_width }}mm;">
+          <div class="tag-name" style="left: {{ (x + tag.text_x)|round(3) }}mm; top: {{ (y + tag.text_y)|round(3) }}mm; width: {{ tag.text_width }}mm; height: {{ tag.text_height }}mm;">
             <div style="font-size: {{ tag.first_size }}pt; font-weight: bold;">{{ tag.first }}</div>
             <div style="font-size: {{ tag.last_size }}pt;">{{ tag.last }}</div>
           </div>
