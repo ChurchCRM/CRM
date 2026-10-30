@@ -18767,19 +18767,9 @@ msgid_plural "%d default volunteers assigned"
 msgstr[0] "%d tình nguyện viên mặc định được gán"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Vị trí này vẫn cần thêm %d tình nguyện viên. Mở sự kiện để lấp đầy khoảng trống."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d lần xuất hiện mới"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Vẫn cần %d tình nguyện viên cho một sự kiện sắp tới."
 
 #: 
 msgid "%s Calendar"
@@ -20840,10 +20830,6 @@ msgstr "Mở mục vụ"
 #: 
 msgid "Open the occurrence"
 msgstr "Mở lần diễn ra"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Hãy mở lần diễn ra để phân công những người bạn cần."
 
 #: 
 msgid "Open this team"

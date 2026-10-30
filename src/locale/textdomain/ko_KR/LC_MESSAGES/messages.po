@@ -18757,19 +18757,9 @@ msgid_plural "%d default volunteers assigned"
 msgstr[0] "%d 기본 자원자가 할당됨"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "이 직책에는 %d 명의 자원자가 더 필요합니다. 공백을 채우기 위해 발생을 엽니다."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d 새로운 발생"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "향후 발생을 위해 %d 명의 자원자가 필요합니다."
 
 #: 
 msgid "%s Calendar"
@@ -20830,10 +20820,6 @@ msgstr "사역 열기"
 #: 
 msgid "Open the occurrence"
 msgstr "회차 열기"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "회차를 열어 필요한 사람을 배정하세요."
 
 #: 
 msgid "Open this team"

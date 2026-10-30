@@ -18749,22 +18749,10 @@ msgstr[0] "%d default na boluntaryo ang naitalaga"
 msgstr[1] "%d default na boluntaryo ang naitalaga"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "%d pang boluntaryo ang kailangan pa para sa posisyong ito. Buksan ang pagkakataon para punan ang kulang."
-msgstr[1] "%d pang boluntaryo ang kailangan pa para sa posisyong ito. Buksan ang pagkakataon para punan ang kulang."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d bagong pagkakataon"
 msgstr[1] "%d bagong pagkakataon"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "%d boluntaryo ang kailangan pa para sa paparating na pagkakataon."
-msgstr[1] "%d boluntaryo ang kailangan pa para sa paparating na pagkakataon."
 
 #: 
 msgid "%s Calendar"
@@ -20829,10 +20817,6 @@ msgstr "Buksan ang ministeryo"
 #: 
 msgid "Open the occurrence"
 msgstr "Buksan ang pagkakataon"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Buksan ang pagkakataon para italaga ang mga taong kailangan mo."
 
 #: 
 msgid "Open this team"
