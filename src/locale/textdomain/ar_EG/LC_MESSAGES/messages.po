@@ -1004,10 +1004,6 @@ msgid "Bank Draft"
 msgstr "حوالة مصرفية"
 
 #: 
-msgid "0 - No Minimum"
-msgstr "0 - لا يوجد حد أدنى"
-
-#: 
 msgid "Other Settings"
 msgstr "اعدادات اخرى"
 
@@ -1270,10 +1266,6 @@ msgstr "تسميات البيانات تأكيد"
 #: 
 msgid "Invalid login or password"
 msgstr "معلومات الدخول خاطئة او كلمة المرور خاطئة"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "الكثير من عمليات تسجيل الدخول الفاشلة: تم قفل حسابك.  يرجى الاتصال بالمسؤول."
 
 #: 
 msgid "Email/Username"
@@ -2138,24 +2130,12 @@ msgid "Classes"
 msgstr "الفصول"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "تقارير التربية الكنسية"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "المخدومين ليسوا مسجلين فى فصول التربية الكنسية"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "يجب تحديد مجموعة واحدة على الأقل لجعل القوائم فئة أو ورقة الحضور."
-
-#: 
 msgid "Report Details"
 msgstr "تفاصيل التقارير"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "قائمة بجميع الأدوار (دون رادع قائمة الإرادة أدوار المعلم / الطالب فقط)"
 
 #: 
 msgid "First Sunday"
@@ -2176,10 +2156,6 @@ msgstr "طلاب إضافية"
 #: 
 msgid "Extra Teachers"
 msgstr "المعلمون إضافية"
-
-#: 
-msgid "Create Class List"
-msgstr "إنشاء قائمة الفئة"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4593,14 +4569,6 @@ msgid "PhotoBook"
 msgstr "الصور PhotoBook"
 
 #: 
-msgid "With Photos"
-msgstr "مع الصور"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "إنشاء الصور PhotoBook"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4745,11 +4713,6 @@ msgstr "المناسبات"
 #: 
 msgid "View User"
 msgstr "عرض العضو"
-
-#: 
-#, fuzzy
-msgid "not found or user without an email"
-msgstr "لم يتم العثور على المستخدم أو البريد الإلكتروني دون"
 
 #: 
 msgid "UserName not set"
@@ -4945,13 +4908,6 @@ msgstr "مدة الجلسة المهلة في ثواني محدد من الصف�
 msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
 "Set to zero to disable this feature"
 msgstr "الحد الأدنى أن كلمة المرور الجديدة يجب أن تختلف من واحدة من العمر (# من الشخصيات تغيرت) مجموعة من الصفر لتعطيل هذه الميزة"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "الحد الأقصى لعدد عمليات تسجيل الدخول الفاشلة المسموح بها قبل مقفل حساب المستخدم. مرة واحدة تم الوصول إلى الحد الأقصى، مسؤول يجب إعادة تمكين الحساب. هذه الميزة تساعد على حماية ضد هجمات كلمة التخمين الآلي. تعيين إلى صفر لتعطيل هذه الميزة."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -10074,10 +10030,6 @@ msgstr "إعادة تثبيت قسرا؟"
 #: 
 msgid "Full Path"
 msgstr "المسار الكامل"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "إنشاء قوائم الفئات وأوراق الحضور والكتب الفوتوغرافية"
 
 #: 
 msgid "Installed"
@@ -18630,10 +18582,6 @@ msgstr "تعذّر نسخ عنوان الكنيسة."
 #: 
 msgid "Could not match the church country."
 msgstr "تعذّر مطابقة بلد الكنيسة."
-
-#: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "قوائم الفصول وكشوف الحضور وألبومات الصور"
 
 #: 
 msgid "Group membership lists and Sunday School class reports"
