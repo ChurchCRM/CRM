@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Portal\Auth\EmailChangeChannel;
@@ -111,6 +112,9 @@ function registerFamilyAPI(Request $request, Response $response, array $args): R
     if (empty($familyMetadata['Name'])) {
         return SlimUtils::renderJSON($response, ['error' => gettext('Family name is required')], 400);
     }
+    if (!empty($familyMetadata['Email']) && filter_var($familyMetadata['Email'], FILTER_VALIDATE_EMAIL) === false) {
+        return SlimUtils::renderJSON($response, ['error' => gettext('Invalid email address')], 400);
+    }
 
     $family = new Family();
     $family->setName($familyMetadata['Name']);
@@ -178,9 +182,19 @@ function registerFamilyAPI(Request $request, Response $response, array $args): R
         $familyMembers[] = $person;
     }
 
-    $registrant = $familyMembers[0];
-    if (trim((string) $registrant->getEmail()) === '' && !empty($familyMetadata['Email'])) {
-        $registrant->setEmail($familyMetadata['Email']);
+    if (!empty($familyMetadata['Email'])) {
+        // Family-wide mail goes to a head of household or spouse, so the family address belongs on one.
+        $adultRoleIds = array_merge(
+            explode(',', SystemConfig::getValue('sDirRoleHead')),
+            explode(',', SystemConfig::getValue('sDirRoleSpouse'))
+        );
+        $adults = array_filter($familyMembers, fn (Person $member): bool => in_array((string) $member->getFmrId(), $adultRoleIds, true));
+        foreach ($adults !== [] ? $adults : $familyMembers as $member) {
+            if (trim((string) $member->getEmail()) === '') {
+                $member->setEmail($familyMetadata['Email']);
+                break;
+            }
+        }
     }
 
     $family->save();
