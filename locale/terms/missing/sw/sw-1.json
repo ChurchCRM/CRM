@@ -68,5 +68,7 @@
   "Maximum number of failed logins to allow before a user account is locked.\nA locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\nThis feature helps to protect against automated password guessing attacks.\nSet to zero to disable this feature.": "",
   "Minutes until it unlocks by itself: %d": "",
   "Sunday School Attendance Sheet": "",
-  "Sundays with no class are left off the sheet.": ""
+  "Sundays with no class are left off the sheet.": "",
+  "Database Upgrade": "",
+  "Your database is being updated. Please keep this page open until the upgrade finishes.": ""
 }
