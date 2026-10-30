@@ -212,7 +212,7 @@ The member-facing area; design in [`member-portal-design.md`](./member-portal-de
 | Component | Location |
 |-----------|----------|
 | Entry point | `src/portal/index.php`, no module role middleware, `'errorHandler' => PortalTwig::createErrorHandler()` |
-| Page gate | `ChurchCRM\Portal\PortalAccessMiddleware` + `CSRFMiddleware` on the route group |
+| Page gate | `ChurchCRM\Portal\Auth\PortalSessionMiddleware`, then `PortalAccessMiddleware` + `CSRFMiddleware`, on the route group. `/api/portal/*` groups use `PortalSessionMiddleware` + `PortalApiMiddleware`. Portal code reads who it serves from `PortalContext`, never `AuthenticationManager::getCurrentUser()` |
 | Routes | `src/portal/routes/*.php`: page files use `$group` inside the gated group; `theme-asset.php` is public and uses `$app` |
 | Views | Twig: `src/Include/themes/default/templates/**/*.twig` |
 | `.htaccess` | `src/portal/.htaccess` blocks `routes/*.php` and routes the rest through `index.php` |

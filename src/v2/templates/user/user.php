@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Authentication\SignInThrottle;
 use ChurchCRM\dto\LocaleInfo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
@@ -76,7 +77,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             $isLocked       = $user->isLocked();
             $mustChange     = $user->getNeedPasswordChange();
             $failedLogins   = $user->getFailedLogins();
-            $maxFailedLogins = SystemConfig::getIntValue('iMaxFailedLogins');
+            $maxFailedLogins = SignInThrottle::maxFailedLogins();
             ?>
             <?php $signInBlockedLabel = $user->getSignInBlockedLabel(); ?>
             <?php if ($signInBlockedLabel !== null): ?>
@@ -84,7 +85,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <i class="fa-solid fa-user-slash me-2 flex-shrink-0 fs-3"></i>
               <div>
                 <strong><?= InputUtils::escapeHTML($signInBlockedLabel) ?></strong>
-                <div class="small"><?= gettext('The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again.') ?></div>
+                <div class="small"><?= gettext('Sign-in, sessions and the API key are blocked until this is resolved on the linked person\'s record.') ?></div>
               </div>
             </div>
             <?php endif; ?>
@@ -94,6 +95,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <div>
                 <strong><?= gettext('Account locked') ?></strong>
                 <div class="small"><?= gettext('This account is locked because of too many failed login attempts.') ?></div>
+                <div class="small" data-cy="lockout-minutes-left"><?= sprintf(gettext('Minutes until it unlocks by itself: %d'), SignInThrottle::minutesUntilUnlock($user)) ?></div>
               </div>
             </div>
             <?php endif; ?>

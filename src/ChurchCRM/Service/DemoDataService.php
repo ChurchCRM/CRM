@@ -23,6 +23,7 @@ use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\Pledge;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\VolunteerAssignment;
 use ChurchCRM\model\ChurchCRM\VolunteerAssignmentQuery;
@@ -318,7 +319,6 @@ class DemoDataService
                 $contact = $famData['contact'] ?? [];
                 $phone = $contact['phone'] ?? [];
                 $family->setHomePhone($phone['home'] ?? null);
-                $family->setEmail($contact['email'] ?? null);
 
                 // Override first family's wedding date to today, otherwise use JSON data
                 if ($familyIndex === 0) {
@@ -368,7 +368,7 @@ class DemoDataService
                 $this->familyMap[$family->getId()] = $family;
                 $this->importResult['imported']['families']++;
 
-                // Build family-email → family-id map for financial data import
+                // contact.email in people.json only links the family to finance.json; families have no email.
                 $contactEmail = strtolower(trim($contact['email'] ?? ''));
                 if ($contactEmail !== '') {
                     $this->familyEmailToId[$contactEmail] = $family->getId();
@@ -1785,21 +1785,9 @@ class DemoDataService
         };
     }
 
-    /**
-     * Compute the ChurchCRM fiscal year ID for a given calendar year and month,
-     * respecting the configured iFYMonth setting. Mirrors FiscalYearUtils logic.
-     *
-     * FYID = year − 1996, plus 1 when the given month is at or after the FY start
-     * month (and the FY does not start in January).
-     */
     private function computeFiscalYearId(int $year, int $month): int
     {
-        $fyMonth = SystemConfig::getIntValue('iFYMonth');
-        $fyId    = $year - 1996;
-        if ($month >= $fyMonth && $fyMonth > 1) {
-            $fyId += 1;
-        }
-        return $fyId;
+        return FiscalYearUtils::getFiscalYearIdForDate(sprintf('%04d-%02d-01', $year, $month));
     }
 
     /**

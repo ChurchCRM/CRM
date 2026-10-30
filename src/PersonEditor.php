@@ -23,6 +23,7 @@ use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
 use ChurchCRM\Utils\AddressDefaults;
+use ChurchCRM\Service\CustomFieldService;
 
 $sPageTitle = gettext('Person Editor');
 $sPageSubtitle = gettext('Add or edit individual person records');
@@ -68,14 +69,7 @@ if (!$isNewPerson) {
     RedirectUtils::redirect('v2/dashboard');
 }
 
-// Get Field Security List Matrix
-$sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence';
-$rsSecurityGrp = RunQuery($sSQL);
-
-while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
-    extract($aRow);
-    $aSecurityType[$lst_OptionID] = $lst_OptionName;
-}
+$customFieldService = new CustomFieldService();
 
 // Get the list of custom person fields
 $sSQL = 'SELECT person_custom_master.* FROM person_custom_master ORDER BY custom_Order';
@@ -158,7 +152,6 @@ $bFamilyCountry = 0;
 $bFamilyHomePhone = 0;
 $bFamilyWorkPhone = 0;
 $bFamilyCellPhone = 0;
-$bFamilyEmail = 0;
 $bHomeBound = false;
 $aCustomData = [];
 
@@ -345,8 +338,8 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
         extract($rowCustomField);
 
-        if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($aSecurityType[$custom_FieldSec])) {
-            $currentFieldData = InputUtils::legacyFilterInput($_POST[$custom_Field]);
+        if ($customFieldService->canView((int) $custom_FieldSec)) {
+            $currentFieldData = CustomFieldUtils::cleanInput($_POST[$custom_Field] ?? '');
 
             $bErrorFlag |= !CustomFieldUtils::validate($type_ID, $currentFieldData, $custom_Field, $aCustomErrors);
 
@@ -486,22 +479,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
         // Update the custom person fields.
         if ($numCustomFields > 0) {
-            mysqli_data_seek($rsCustomFields, 0);
-            $sSQL = '';
-            while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
-                extract($rowCustomField);
-                if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($aSecurityType[$custom_FieldSec])) {
-                    $currentFieldData = trim($aCustomData[$custom_Field]);
-                    CustomFieldUtils::buildSql($sSQL, $type_ID, $currentFieldData, $custom_Field, $sPhoneCountry);
-                }
-            }
-
-            // chop off the last 2 characters (comma and space) added in the last while loop iteration.
-            if ($sSQL > '') {
-                $sSQL = 'REPLACE INTO person_custom SET ' . $sSQL . ' per_ID = ' . $iPersonID;
-                //Execute the SQL
-                RunQuery($sSQL);
-            }
+            $customFieldService->savePersonValues((int) $iPersonID, $aCustomData);
         }
 
         // Check for redirection to another page after saving information: (ie. PersonEditor.php?previousPage=prev.php?a=1;b=2;c=3)
@@ -592,7 +570,6 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $bFamilyZip = strlen($fam_Zip);
         $bFamilyCountry = strlen($fam_Country);
         $bFamilyHomePhone = strlen($fam_HomePhone);
-        $bFamilyEmail = strlen($fam_Email);
 
         $bFacebook = strlen($per_Facebook);
         $bTwitter = strlen($per_Twitter);
@@ -967,15 +944,7 @@ require_once __DIR__ . '/Include/Header.php';
                 <!-- Emails Column -->
                 <div class="col-12 col-md-6">
                     <div class="mb-3">
-                        <label for="Email">
-                            <?php
-                            if ($bFamilyEmail) {
-                                echo '<span class="text-danger">' . gettext('Email') . ':</span>';
-                            } else {
-                                echo gettext('Email') . ':';
-                            }
-                            ?>
-                        </label>
+                        <label for="Email"><?= gettext('Email') ?>:</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fa-solid fa-at"></i></span>
                             <input type="email" name="Email" id="Email"
@@ -1133,8 +1102,8 @@ require_once __DIR__ . '/Include/Header.php';
                     mysqli_data_seek($rsCustomFields, 0);
                     while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
                         extract($rowCustomField);
-                        if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($aSecurityType[$custom_FieldSec])) {
-                            echo '<div class="row"><div class="mb-3 col-12 col-md-6"><label for="' . $custom_Field . '">' . $custom_Name . '</label>';
+                        if ($customFieldService->canView((int) $custom_FieldSec)) {
+                            echo '<div class="row"><div class="mb-3 col-12 col-md-6"><label for="' . InputUtils::escapeAttribute($custom_Field) . '">' . InputUtils::escapeHTML($custom_Name) . '</label>';
 
                             if (array_key_exists($custom_Field, $aCustomData)) {
                                 $currentFieldData = trim($aCustomData[$custom_Field]);

@@ -927,10 +927,6 @@ msgid "Voting Members"
 msgstr "ఓటింగ్ సభ్యులు"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "నివేదిక ఇవ్వడం (పన్ను ప్రకటనలు)"
-
-#: 
 msgid "Zero Givers"
 msgstr "జీరో ఇచ్చేవారు"
 
@@ -1723,14 +1719,6 @@ msgstr "అనుమతి"
 #: 
 msgid "System Settings"
 msgstr "సిస్టమ్ సెట్టింగులు"
-
-#: 
-msgid "Tax Report"
-msgstr "పన్ను నివేదిక"
-
-#: 
-msgid "Calendar Year"
-msgstr "క్యాలెండర్ సంవత్సరం"
 
 #: 
 msgid "User Editor"
@@ -5452,10 +5440,6 @@ msgid "Submit Registration"
 msgstr "నమోదును సమర్పించండి"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "కొత్త పాస్‌వర్డ్ జనరేట్ చేయబడింది మరియు మీ ఇమెయిల్ చిరునామాకు పంపబడింది."
-
-#: 
 msgid "Apply Update Now"
 msgstr "ఇప్పుడే అప్‌డేట్‌ను వర్తింపజేయండి"
 
@@ -5500,20 +5484,12 @@ msgid "Login Name is required"
 msgstr "లాగిన్ పేరు అవసరం"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "మీరు ఇమెయిల్ అందుకున్న తర్వాత, మీరు మీ తాత్కాలిక పాస్‌వర్డ్‌తో లాగిన్ అవ్వవచ్చు మరియు మీకు నచ్చిన దానికి మార్చవచ్చు."
-
-#: 
 msgid "Password Reset Error"
 msgstr "పాస్‌వర్డ్ రీసెట్ లోపం"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "పాస్‌వర్డ్ రీసెట్ విజయవంతమైంది"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "దయచేసి మీ తాత్కాలిక పాస్‌వర్డ్ కోసం మీ ఇమెయిల్ (స్పామ్/జంక్ ఫోల్డర్‌తో సహా) తనిఖీ చేయండి."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -6301,10 +6277,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "తేదీ, నిధి, కుటుంబం మరియు చెల్లింపు పద్ధతి ద్వారా ఫిల్టరింగ్‌తో అనుకూలీకరించదగిన నివేదిక."
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "పన్ను ప్రకటనలలో కనిపించే వచనాన్ని అనుకూలీకరించండి (sTaxReport1, sTaxReport2, మొదలైనవి)."
-
-#: 
 msgid "Day"
 msgstr "రోజు"
 
@@ -6385,20 +6357,12 @@ msgid "Generate"
 msgstr "సృష్టించు"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "పన్ను స్టేట్‌మెంట్‌లను రూపొందించండి"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "దాతల కోసం వార్షిక పన్ను-మినహాయింపు విరాళాల స్టేట్‌మెంట్‌లను రూపొందించండి. ప్రింట్ చేయవచ్చు లేదా ఇమెయిల్ చేయవచ్చు."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "బకాయి ఉన్న వాగ్దానాలు ఉన్న కుటుంబాల కోసం రిమైండర్ లేఖలను రూపొందించండి."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "పన్ను స్టేట్‌మెంట్‌లు, వాగ్దానం ట్రాకింగ్ మరియు ఆర్థిక విశ్లేషణ కోసం నివేదికలను రూపొందించండి."
 
 #: 
 msgid "ID"
@@ -6581,10 +6545,6 @@ msgid "System Info"
 msgstr "సిస్టమ్ సమాచారం"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "పన్ను & విరాళాల నివేదికలు"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "పన్ను నివేదిక వర్బియేజ్"
 
@@ -6611,10 +6571,6 @@ msgstr "అప్‌గ్రేడ్"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "వినియోగదారు తప్పనిసరిగా అడ్మిన్ అయి ఉండాలి లేదా ఫైనాన్స్ అనుమతి కలిగి ఉండాలి"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "పన్ను స్టేట్‌మెంట్‌లపై చర్చి పేరు, చిరునామా మరియు సంప్రదింపు సమాచారం కనిపిస్తుందని ధృవీకరించండి."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9126,10 +9082,6 @@ msgstr "ప్రతిజ్ఞ స్మారక లేఖలు రూపొ
 #: 
 msgid "Generate reports on group membership and activities"
 msgstr "సమూహ సభ్యత్వం మరియు కార్యకలాపాలపై నివేదికలు రూపొందించండి"
-
-#: 
-msgid "Generate tax statement documents for donors"
-msgstr "దాతలకు పన్ను ప్రకటన పత్రాలు రూపొందించండి"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -12329,10 +12281,6 @@ msgstr "ఇమెయిల్ నిలిపివేయబడింది"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "ఇమెయిల్ నిలిపివేయబడింది. పాస్‌వర్డ్‌లు రీసెట్ చేయడానికి ముందు ఇమెయిల్‌ను కాన్ఫిగర్ చేయండి, లేదా పాస్‌వర్డ్ మార్చు ఉపయోగించండి."
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "మీ బ్యాకప్ రికవరీ కోడ్‌లలో ఒకదాన్ని నమోదు చేయండి"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"
@@ -15952,10 +15900,6 @@ msgid "Please confirm your family information"
 msgstr "దయచేసి మీ కుటుంబ సమాచారాన్ని నిర్ధారించండి"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "దయచేసి మీ తదుపరి కానుకను %s కి పంపండి"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "దయచేసి ఈ విరాళాలను అనుసంధానించడానికి మరొక కుటుంబాన్ని ఎంచుకొండి"
 
@@ -17986,14 +17930,6 @@ msgid "{{minutes}} min left"
 msgstr "{{minutes}} నిమిషాలు మిగిలి ఉన్నాయి"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d పన్నుపత్రాలు కుటుంబానికి విజయవంతంగా ఈమెయిల్ చేయబడ్డాయి."
-
-#: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d దానం ప్రకటన"
-
-#: 
 msgid "All classifications"
 msgstr "అన్ని వర్గీకరణలు"
 
@@ -18026,28 +17962,8 @@ msgid "Columns per Page"
 msgstr "పేజీకు నిలువు వరుసలు"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "ప్రియ %1$s కుటుంబం,\n"
-"\n"
-"దయచేసి ఈ ఈమెయిల్‌కు జోడించిన %3$s నుండి మీ %2$d దానం ప్రకటన కనుగొనండి.\n"
-"\n"
-"మీకు ఏవైనా ప్రశ్నలు ఉంటే, దయచేసి చర్చ్ కార్యాలయాన్ని సంప్రదించండి.\n"
-"\n"
-"మీ దానం కోసం థ్యాంక్ యు."
-
-#: 
 msgid "Download CSV"
 msgstr "CSVని డౌన్‌లోడ్ చేయండి"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "%d పన్నుపత్రాన్ని ఈమెయిల్ చేయండి"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18150,10 +18066,6 @@ msgid "Pledged"
 msgstr "ప్రతిజ్ఞ చేసిన"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "%d పన్నుపత్రాన్ని ముద్రించండి"
-
-#: 
 msgid "Recent Friends"
 msgstr "సమీప స్నేహితులు"
 
@@ -18178,24 +18090,8 @@ msgid "Single Pages"
 msgstr "ఏకైక పేజీలు"
 
 #: 
-msgid "Tax Documents"
-msgstr "పన్నుపత్రాలు"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "పన్నుపత్ర ఈమెయిల్ పంపడం విఫలమైంది. దయచేసి మీ ఈమెయిల్ సర్వర్ సెట్టింగ్‌లను చెక్ చేయండి."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "ప్రతి ల్యాండ్‌స్కేప్ షీట్‌లో ఒక పక్కకు రెండు సగం పరిమాణ పేజీలు, పుస్తకం క్రమంలో. \"చిన్న అంచుపై ఫ్లిప్\" తో ద్విపార్శ్వ ముద్రణ, తరువాత స్టాక్‌ను సగానికి మడవండి. నిలువు వరుసలు సగం పేజీకు లెక్కించబడతాయి."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "పన్నుపత్రాన్ని ఈమెయిల్ చేయలేని: ఆ సంవత్సరానికి చెల్లింపు డేటా కనుగొనబడలేదు."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "పన్నుపత్రాన్ని ఈమెయిల్ చేయలేని: ఈ కుటుంబానికి ఫైల్‌లో ఈమెయిల్ చిరునామా లేదు."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -18864,22 +18760,10 @@ msgstr[0] "%d డిఫాల్ట్ స్వచ్ఛంద సేవకు�
 msgstr[1] "%d డిఫాల్ట్ స్వచ్ఛంద సేవకులు నియమించబడ్డారు"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "ఈ స్థానానికి ఇంకా %d మరో స్వచ్ఛంద సేవకుడు అవసరం. ఖాళీని నింపడానికి సందర్భాన్ని తెరవండి."
-msgstr[1] "ఈ స్థానానికి ఇంకా %d మంది మరో స్వచ్ఛంద సేవకులు అవసరం. ఖాళీని నింపడానికి సందర్భాన్ని తెరవండి."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d కొత్త సందర్భం"
 msgstr[1] "%d కొత్త సందర్భాలు"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "రాబోయే సందర్భానికి ఇంకా %d స్వచ్ఛంద సేవకుడు అవసరం."
-msgstr[1] "రాబోయే సందర్భానికి ఇంకా %d మంది స్వచ్ఛంద సేవకులు అవసరం."
 
 #: 
 msgid "%s Calendar"
@@ -20186,10 +20070,6 @@ msgid "How often"
 msgstr "ఎంత తరచుగా"
 
 #: 
-msgid "How to correct this"
-msgstr "దీన్ని ఎలా సరిదిద్దాలి"
-
-#: 
 msgid "I can't"
 msgstr "నేను రాలేను"
 
@@ -20950,10 +20830,6 @@ msgid "Open the occurrence"
 msgstr "సందర్భాన్ని తెరవండి"
 
 #: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "మీకు కావలసిన వ్యక్తులను నియమించడానికి సందర్భాన్ని తెరవండి."
-
-#: 
 msgid "Open this team"
 msgstr "ఈ బృందాన్ని తెరవండి"
 
@@ -21510,10 +21386,6 @@ msgstr "సైన్ ఇన్ చేశారు"
 #: 
 msgid "Signed up"
 msgstr "నమోదు చేసుకున్నారు"
-
-#: 
-msgid "Sincerely"
-msgstr "భవదీయులు"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
@@ -24638,4 +24510,20 @@ msgstr "తరగతి ఉన్న ప్రతి ఒక్కరూ ఒక �
 #: 
 msgid "Through Grade"
 msgstr "తరగతి వరకు"
+
+#: 
+msgid "Invalid setting name or value"
+msgstr "చెల్లని సెట్టింగ్ పేరు లేదా విలువ"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "జియోకోడింగ్ సేవ స్పందించలేదు — తర్వాత మళ్లీ ప్రయత్నించండి"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "మీరు పంపిన ఇమెయిల్ మాత్రమే చూపబడుతుంది."
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "పునరావృత ఈవెంట్‌లను సృష్టించలేకపోయాము. వివరాల కోసం అప్లికేషన్ లాగ్‌ను తనిఖీ చేయండి."
 

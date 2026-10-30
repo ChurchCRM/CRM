@@ -3,8 +3,8 @@
 namespace ChurchCRM\Search;
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\model\ChurchCRM\FamilyCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\Service\CustomFieldService;
 use ChurchCRM\Utils\LoggerUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 
@@ -40,8 +40,6 @@ class FamilySearchResultProvider extends BaseSearchResultProvider
                 ->filterByName("%$SearchQuery%", Criteria::LIKE)
                 ->_or()
                 ->filterByHomePhone("%$SearchQuery%", Criteria::LIKE)
-                ->_or()
-                ->filterByEmail("%$SearchQuery%", Criteria::LIKE)
                 ->limit(SystemConfig::getIntValue('bSearchIncludeFamiliesMax'))
                 ->find();
 
@@ -69,7 +67,11 @@ class FamilySearchResultProvider extends BaseSearchResultProvider
         $id = 0;
 
         try {
-            $customFields = FamilyCustomMasterQuery::create()->find();
+            $customFields = (new CustomFieldService())->getVisibleFamilyFields();
+            if ($customFields === []) {
+                return [];
+            }
+
             $familyQuery = FamilyQuery::create()
                     ->joinFamilyCustom()
                     ->useFamilyCustomQuery();

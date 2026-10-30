@@ -921,10 +921,6 @@ msgid "Voting Members"
 msgstr "Hlasujúci členovia"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Prehľad darov (daňové výpisy)"
-
-#: 
 msgid "Zero Givers"
 msgstr "Nulový darcovia"
 
@@ -1712,14 +1708,6 @@ msgstr "Oprávnenie"
 #: 
 msgid "System Settings"
 msgstr "Systémové nastavenia"
-
-#: 
-msgid "Tax Report"
-msgstr "Daňová správa"
-
-#: 
-msgid "Calendar Year"
-msgstr "Kalendárny rok"
 
 #: 
 msgid "User Editor"
@@ -5447,10 +5435,6 @@ msgid "Submit Registration"
 msgstr "Odoslať registráciu"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Nové heslo bolo vygenerované a odoslané na vašu e-mailovú adresu."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Použiť aktualizáciu teraz"
 
@@ -5495,20 +5479,12 @@ msgid "Login Name is required"
 msgstr "Prihlasovacie meno je povinné"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Po obdržaní e-mailu sa môžete prihlásiť s dočasným heslom a zmeniť ho podľa vašej voľby."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Chyba obnovenia hesla"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Obnovenie hesla úspešné"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Skontrolujte váš e-mail (vrátane priečinka nevyžiadanej pošty) s dočasným heslom."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -6300,10 +6276,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "Prispôsobiteľná správa s filtrovaním podľa dátumu, fondu, rodiny a spôsobu platby."
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Prispôsobte text, ktorý sa zobrazuje na daňových výkazoch (sTaxReport1, sTaxReport2, atď)."
-
-#: 
 msgid "Day"
 msgstr "Deň"
 
@@ -6384,20 +6356,12 @@ msgid "Generate"
 msgstr "Generovať"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Generovať daňové výkazy"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Generujte ročné daňovo uznateľné výkazy darovania pre darcov. Môžu byť vytlačené alebo zaslané e-mailom."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "Generujte upomínacie listy pre rodiny s nesplnenými záväzkami."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "Generujte správy pre daňové výkazy, sledovanie záväzkov a finančnú analýzu."
 
 #: 
 msgid "ID"
@@ -6580,10 +6544,6 @@ msgid "System Info"
 msgstr "Informácie o systéme"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "Daňové správy a správy o darovaní"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "Text daňovej správy"
 
@@ -6610,10 +6570,6 @@ msgstr "Aktualizácia"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "Používateľ musí byť správca alebo mať oprávnenie na financie"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Overte, či sa názov cirkvi, adresa a kontaktné informácie zobrazujú na daňových výkazoch."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9135,10 +9091,6 @@ msgstr "Generovať upomínacie listy o záväzkoch"
 #: 
 msgid "Generate reports on group membership and activities"
 msgstr "Generovať správy o členstve v skupinách a aktivitách"
-
-#: 
-msgid "Generate tax statement documents for donors"
-msgstr "Generovať dokumenty daňových výkazov pre darcov"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -12340,10 +12292,6 @@ msgstr "E-mail je zakázaný"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "E-mail je zakázaný. Pred resetovaním hesiel nakonfigurujte e-mail alebo použite Zmeniť heslo."
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Zadajte jeden zo záložných obnovovacích kódov"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"
@@ -15969,10 +15917,6 @@ msgid "Please confirm your family information"
 msgstr "Potvrdte prosím informácie o vašej rodine"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "Prosím pošlite váš ďalší dar na adresu %s"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Prosím vyberte inú rodinu, s ktorou chcete priradiť tieto dary"
 
@@ -18009,14 +17953,6 @@ msgid "{{minutes}} min left"
 msgstr "Zostáva {{minutes}} min"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d daňový dokument bol úspešne zaslané rodine."
-
-#: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d Výkaz darov"
-
-#: 
 msgid "All classifications"
 msgstr "Všetky klasifikácie"
 
@@ -18049,28 +17985,8 @@ msgid "Columns per Page"
 msgstr "Stĺpce na stránku"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "Milovaná rodina %s,\n"
-"\n"
-"Nájdete v prílohe svojho výkazu darov číslo %d z dňa %s.\n"
-"\n"
-"Ak máte akékoľvek otázky, kontaktujte prosím kostol.\n"
-"\n"
-"Ďakujeme za vašu štedrosť."
-
-#: 
 msgid "Download CSV"
 msgstr "Stiahnuť CSV"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "Poslať email %d daňový dokument"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18173,10 +18089,6 @@ msgid "Pledged"
 msgstr "Zaväzujem sa"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "Tlač %d daňový dokument"
-
-#: 
 msgid "Recent Friends"
 msgstr "Nedávní priatelia"
 
@@ -18201,24 +18113,8 @@ msgid "Single Pages"
 msgstr "Jednotlivé stránky"
 
 #: 
-msgid "Tax Documents"
-msgstr "Daňové doklady"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "Odoslanie e-mailu s daňovým dokladom zlyhalo. Skontrolujte nastavenia e-mailového servera."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "Dve polovičné stránky vedľa seba na každom liste na šírku v poradí pre brožúru. Tlačte obojstranne s otáčaním pozdĺž kratšej hrany a potom stoh prehnite na polovicu. Stĺpce sa počítajú na polstranu."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "Daňový doklad sa nepodarilo odoslať e-mailom: pre daný rok sa nenašli žiadne platobné údaje."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "Daňový doklad sa nepodarilo odoslať e-mailom: táto rodina nemá uvedenú e-mailovú adresu."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -18895,28 +18791,12 @@ msgstr[2] "%d predvoleného dobrovoľníka pridelených"
 msgstr[3] "%d predvolených dobrovoľníkov pridelených"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Pre túto pozíciu je stále potrebný %d ďalší dobrovoľník. Otvorte termín a doplňte medzeru."
-msgstr[1] "Pre túto pozíciu sú stále potrební %d ďalší dobrovoľníci. Otvorte termín a doplňte medzeru."
-msgstr[2] "Pre túto pozíciu je stále potrebného %d ďalšieho dobrovoľníka. Otvorte termín a doplňte medzeru."
-msgstr[3] "Pre túto pozíciu je stále potrebných %d ďalších dobrovoľníkov. Otvorte termín a doplňte medzeru."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d nový termín"
 msgstr[1] "%d nové termíny"
 msgstr[2] "%d nového termínu"
 msgstr[3] "%d nových termínov"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Na nadchádzajúci termín je stále potrebný %d dobrovoľník."
-msgstr[1] "Na nadchádzajúci termín sú stále potrební %d dobrovoľníci."
-msgstr[2] "Na nadchádzajúci termín je stále potrebného %d dobrovoľníka."
-msgstr[3] "Na nadchádzajúci termín je stále potrebných %d dobrovoľníkov."
 
 #: 
 msgid "%s Calendar"
@@ -20229,10 +20109,6 @@ msgid "How often"
 msgstr "Ako často"
 
 #: 
-msgid "How to correct this"
-msgstr "Ako to opraviť"
-
-#: 
 msgid "I can't"
 msgstr "Nemôžem"
 
@@ -20995,10 +20871,6 @@ msgid "Open the occurrence"
 msgstr "Otvoriť termín"
 
 #: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Otvorte termín a pridelte ľudí, ktorých potrebujete."
-
-#: 
 msgid "Open this team"
 msgstr "Otvoriť tento tím"
 
@@ -21557,10 +21429,6 @@ msgstr "Prihlásený"
 #: 
 msgid "Signed up"
 msgstr "Prihlásený(á)"
-
-#: 
-msgid "Sincerely"
-msgstr "S úctou"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
@@ -24693,4 +24561,20 @@ msgstr "Mesiac, v ktorom všetci s ročníkom postúpia o jeden ročník. Vypnut
 #: 
 msgid "Through Grade"
 msgstr "Po ročník"
+
+#: 
+msgid "Invalid setting name or value"
+msgstr "Neplatný názov alebo hodnota nastavenia"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Geokódovacia služba neodpovedala — skúste to znova neskôr"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Zobrazuje sa iba e-mail, ktorý ste odoslali."
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Opakujúce sa udalosti sa nepodarilo vytvoriť. Podrobnosti nájdete v protokole aplikácie."
 

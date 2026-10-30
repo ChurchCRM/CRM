@@ -3,12 +3,12 @@
 require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\ClassificationService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
+use ChurchCRM\Service\CustomFieldService;
 
 $sPageTitle = gettext('Directory reports');
 $sPageSubtitle = gettext('Generate directory listings and printed materials');
@@ -46,14 +46,7 @@ $aDirRoleHead = explode(',', SystemConfig::getValue('sDirRoleHead'));
 $aDirRoleSpouse = explode(',', SystemConfig::getValue('sDirRoleSpouse'));
 $aDirRoleChild = explode(',', SystemConfig::getValue('sDirRoleChild'));
 
-// Get Field Security List Matrix
-$sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence';
-$rsSecurityGrp = RunQuery($sSQL);
-
-while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
-    extract($aRow);
-    $aSecurityType[$lst_OptionID] = $lst_OptionName;
-}
+$customFieldService = new CustomFieldService();
 
 ?>
 <?php if (!array_key_exists('cartdir', $_GET)) : ?>
@@ -157,7 +150,6 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
               'bDirFamilyPhone'    => ['label' => gettext('Family Home Phone'), 'checked' => true],
               'bDirFamilyWork'     => ['label' => gettext('Family Work Phone'), 'checked' => true],
               'bDirFamilyCell'     => ['label' => gettext('Family Cell Phone'), 'checked' => true],
-              'bDirFamilyEmail'    => ['label' => gettext('Family Email'), 'checked' => true],
               'bDirPersonalPhone'  => ['label' => gettext('Personal Home Phone'), 'checked' => true],
               'bDirPersonalWork'   => ['label' => gettext('Personal Work Phone'), 'checked' => true],
               'bDirPersonalCell'   => ['label' => gettext('Personal Cell Phone'), 'checked' => true],
@@ -175,12 +167,12 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
           <?php endforeach;
           if ($numCustomFields > 0) {
               while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_ASSOC)) {
-                  if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($aSecurityType[$rowCustomField['custom_FieldSec']])) {
+                  if ($customFieldService->canView((int) $rowCustomField['custom_FieldSec'])) {
                       $customName = 'bCustom' . $rowCustomField['custom_Order']; ?>
                 <div class="col">
                   <div class="form-check">
                     <input class="form-check-input" type="checkbox" name="<?= $customName ?>" value="1" id="<?= $customName ?>" checked>
-                    <label class="form-check-label" for="<?= $customName ?>"><?= $rowCustomField['custom_Name'] ?></label>
+                    <label class="form-check-label" for="<?= $customName ?>"><?= InputUtils::escapeHTML($rowCustomField['custom_Name']) ?></label>
                   </div>
                 </div>
               <?php }

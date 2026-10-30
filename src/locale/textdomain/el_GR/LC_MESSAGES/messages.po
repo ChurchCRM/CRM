@@ -928,10 +928,6 @@ msgid "Voting Members"
 msgstr "Μέλη που ψηφίζουν"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Έκθεση Δόσεως (Φορολογικές καταστάσεις)"
-
-#: 
 msgid "Zero Givers"
 msgstr "Μηδενικοί Δωρητές"
 
@@ -1729,14 +1725,6 @@ msgstr "Αδεια"
 #: 
 msgid "System Settings"
 msgstr "Ρυθμίσεις συστήματος"
-
-#: 
-msgid "Tax Report"
-msgstr "Φορολογική Έκθεση"
-
-#: 
-msgid "Calendar Year"
-msgstr "Ημερολογιακό έτος"
 
 #: 
 msgid "User Editor"
@@ -5475,10 +5463,6 @@ msgid "Submit Registration"
 msgstr "Υποβολή Εγγραφής"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Ένας νέος κωδικός πρόσβασης έχει δημιουργηθεί και αποστολεί στη διεύθυνση email σας."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Εφαρμόστε Ενημέρωση Τώρα"
 
@@ -5523,20 +5507,12 @@ msgid "Login Name is required"
 msgstr "Το όνομα σύνδεσης είναι απαραίτητο"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Αφού λάβετε το email, μπορείτε να συνδεθείτε με τον προσωρινό κωδικό πρόσβασης και να τον αλλάξετε σε κάτι που προτιμάτε."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Password Reset Σφάλμα"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Η Επαναφορά Κωδικού Πρόσβασης Ήταν Επιτυχής"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Παρακαλώ ελέγξτε το email σας (συμπεριλαμβανομένου του φακέλου spam/junk) για τον προσωρινό κωδικό πρόσβασης."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -6324,10 +6300,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "Προσαρμόσιμη αναφορά με φιλτράρισμα ανά ημερομηνία, ταμείο, οικογένεια και τρόπο πληρωμής."
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Προσαρμόστε το κείμενο που εμφανίζεται στις φορολογικές βεβαιώσεις."
-
-#: 
 msgid "Day"
 msgstr "Ημέρα"
 
@@ -6408,20 +6380,12 @@ msgid "Generate"
 msgstr "Δημιουργία"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Δημιουργία φορολογικών βεβαιώσεων"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Δημιουργία ετήσιων φορολογικών βεβαιώσεων δωρεών. Μπορούν να εκτυπωθούν ή να σταλούν με email."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "Δημιουργία υπενθυμίσεων για οικογένειες με εκκρεμείς υποσχέσεις προσφοράς."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "Δημιουργία αναφορών για φορολογικές βεβαιώσεις, παρακολούθηση υποσχέσεων και οικονομική ανάλυση."
 
 #: 
 msgid "ID"
@@ -6604,10 +6568,6 @@ msgid "System Info"
 msgstr "Πληροφορίες Συστήματος"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "Αναφορές Φόρων & Προσφορών"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "Κείμενο φορολογικής αναφοράς"
 
@@ -6634,10 +6594,6 @@ msgstr "Αναβάθμιση"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "Ο χρήστης πρέπει να είναι Admin ή να έχει άδεια Finance"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Επαληθεύστε ότι το όνομα και η διεύθυνση της εκκλησίας εμφανίζονται στις βεβαιώσεις."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9149,10 +9105,6 @@ msgstr "Δημιουργία υπενθυμιστικών επιστολών ο�
 #: 
 msgid "Generate reports on group membership and activities"
 msgstr "Δημιουργία αναφορών για τα μέλη ομάδων και τις δραστηριότητες"
-
-#: 
-msgid "Generate tax statement documents for donors"
-msgstr "Δημιουργία φορολογικών βεβαιώσεων για δωρητές"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -12352,10 +12304,6 @@ msgstr "Το email είναι απενεργοποιημένο"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "Το email είναι απενεργοποιημένο. Ρυθμίστε το email πριν επαναφέρετε κωδικούς πρόσβασης ή χρησιμοποιήστε Αλλαγή κωδικού πρόσβασης."
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Εισαγάγετε έναν από τους εφεδρικούς κωδικούς ανάκτησής σας"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"
@@ -15975,10 +15923,6 @@ msgid "Please confirm your family information"
 msgstr "Παρακαλώ επιβεβαιώστε τα στοιχεία της οικογένειάς σας"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "Παρακαλώ αποστείλετε την επόμενη προσφορά σας στο %s"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Παρακαλώ επιλέξτε άλλη οικογένεια με την οποία θα συσχετιστούν αυτές οι προσφορές"
 
@@ -18009,14 +17953,6 @@ msgid "{{minutes}} min left"
 msgstr "{{minutes}} λεπτά απομένουν"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d έγγραφο φόρου αποστάλθηκε στην οικογένεια με επιτυχία."
-
-#: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d Δήλωση Παροχής"
-
-#: 
 msgid "All classifications"
 msgstr "Όλες οι ταξινομήσεις"
 
@@ -18049,28 +17985,8 @@ msgid "Columns per Page"
 msgstr "Στήλες ανά σελίδα"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "Αγαπητή %s Οικογένεια,\n"
-"\n"
-"Parakaloμε βρείτε τη δήλωση παροχής %d από %s που επισυνάπτεται σε αυτό το email.\n"
-"\n"
-"Εάν έχετε οποιεσδήποτε ερωτήσεις, παρακαλώ επικοινωνήστε με το γραφείο της εκκλησίας.\n"
-"\n"
-"Ευχαριστούμε για τη γενναιοδωρία σας."
-
-#: 
 msgid "Download CSV"
 msgstr "Κατεβάστε CSV"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "Email %d Έγγραφο Φόρου"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18173,10 +18089,6 @@ msgid "Pledged"
 msgstr "Υποσχέθηκε"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "Εκτύπωση %d Έγγραφο Φόρου"
-
-#: 
 msgid "Recent Friends"
 msgstr "Πρόσφατοι Φίλοι"
 
@@ -18201,24 +18113,8 @@ msgid "Single Pages"
 msgstr "Μεμονωμένες Σελίδες"
 
 #: 
-msgid "Tax Documents"
-msgstr "Έγγραφα Φόρου"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "Το email του εγγράφου φόρου δεν κατάφερε να αποσταλεί. Παρακαλώ ελέγξτε τις ρυθμίσεις του διακομιστή email σας."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "Δύο σελίδες μισού μεγέθους δίπλα δίπλα σε κάθε φύλλο τοπίου, σε σειρά εκδόσεων. Εκτύπωση διπλής όψης με \"flip on short edge\", στη συνέχεια διπλώστε τη στοίβα στη μέση. Οι στήλες μετρώνται ανά μισή σελίδα."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "Δεν είναι δυνατή η αποστολή email του εγγράφου φόρου: δεν βρέθηκαν στοιχεία πληρωμής για εκείνο το έτος."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "Δεν είναι δυνατή η αποστολή email του εγγράφου φόρου: αυτή η οικογένεια δεν έχει διεύθυνση email στο αρχείο."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -18887,22 +18783,10 @@ msgstr[0] "%d προεπιλεγμένος εθελοντής ανατέθηκε
 msgstr[1] "%d προεπιλεγμένοι εθελοντές ανατέθηκαν"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Χρειάζεται ακόμη %d εθελοντής για αυτή τη θέση. Ανοίξτε την πραγματοποίηση για να καλύψετε το κενό."
-msgstr[1] "Χρειάζονται ακόμη %d εθελοντές για αυτή τη θέση. Ανοίξτε την πραγματοποίηση για να καλύψετε το κενό."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d νέα πραγματοποίηση"
 msgstr[1] "%d νέες πραγματοποιήσεις"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Χρειάζεται ακόμη %d εθελοντής για μια προσεχή πραγματοποίηση."
-msgstr[1] "Χρειάζονται ακόμη %d εθελοντές για μια προσεχή πραγματοποίηση."
 
 #: 
 msgid "%s Calendar"
@@ -20209,10 +20093,6 @@ msgid "How often"
 msgstr "Πόσο συχνά"
 
 #: 
-msgid "How to correct this"
-msgstr "Πώς να το διορθώσετε"
-
-#: 
 msgid "I can't"
 msgstr "Δεν μπορώ"
 
@@ -20973,10 +20853,6 @@ msgid "Open the occurrence"
 msgstr "Άνοιγμα της πραγματοποίησης"
 
 #: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Ανοίξτε την πραγματοποίηση για να αναθέσετε τα άτομα που χρειάζεστε."
-
-#: 
 msgid "Open this team"
 msgstr "Άνοιγμα αυτής της ομάδας"
 
@@ -21533,10 +21409,6 @@ msgstr "Συνδέθηκε"
 #: 
 msgid "Signed up"
 msgstr "Εγγράφηκε"
-
-#: 
-msgid "Sincerely"
-msgstr "Με εκτίμηση"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
@@ -24661,4 +24533,20 @@ msgstr "Ο μήνας κατά τον οποίο όλοι όσοι έχουν τ
 #: 
 msgid "Through Grade"
 msgstr "Έως τάξη"
+
+#: 
+msgid "Invalid setting name or value"
+msgstr "Μη έγκυρο όνομα ή τιμή ρύθμισης"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Η υπηρεσία γεωκωδικοποίησης δεν απάντησε — δοκιμάστε ξανά αργότερα"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Εμφανίζεται μόνο το email που στείλατε."
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Δεν ήταν δυνατή η δημιουργία επαναλαμβανόμενων εκδηλώσεων. Ελέγξτε το αρχείο καταγραφής της εφαρμογής για λεπτομέρειες."
 

@@ -1,9 +1,8 @@
 <?php
 
-use ChurchCRM\Emails\users\LockedEmail;
-use ChurchCRM\Emails\users\ResetPasswordTokenEmail;
-use ChurchCRM\model\ChurchCRM\Token;
+use ChurchCRM\Authentication\SignInThrottle;
 use ChurchCRM\model\ChurchCRM\UserQuery;
+use ChurchCRM\Service\UserService;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -41,7 +40,7 @@ $app->group('/public/user', function (RouteCollectorProxy $group): void {
  *             @OA\Property(property="apiKey", type="string", example="abc123xyz")
  *         )
  *     ),
- *     @OA\Response(response=401, description="Invalid username or password"),
+ *     @OA\Response(response=401, description="Invalid username or password. Unknown, locked and throttled accounts get the same answer."),
  *     @OA\Response(
  *         response=202,
  *         description="Password valid but 2FA verification required",
@@ -55,48 +54,47 @@ function userLogin(Request $request, Response $response, array $args): Response
 {
     $logger = LoggerUtils::getAuthLogger();
     $body = json_decode($request->getBody(), true, 512);
+    $password = (string) ($body['password'] ?? '');
 
-    // Use a generic error message to prevent username enumeration
+    // One answer for every refusal, so a caller cannot tell an unknown, locked,
+    // throttled or blocked account from a wrong password.
     $genericError = gettext('Invalid login or password');
 
     if (empty($body['userName'])) {
         throw new HttpUnauthorizedException($request, $genericError);
     }
+    $logCtx = ['username' => $body['userName']];
+
+    if (SignInThrottle::isIpThrottled()) {
+        SignInThrottle::spendPasswordCheckTime($password);
+        $logger->warning('API login refused: too many failed logins from this address', $logCtx);
+        throw new HttpUnauthorizedException($request, $genericError);
+    }
 
     $user = UserQuery::create()->findOneByUserName($body['userName']);
     if ($user === null) {
-        // Return same error as wrong password to prevent username enumeration
-        $logger->warning('API login attempt for non-existent user', ['username' => $body['userName']]);
+        SignInThrottle::spendPasswordCheckTime($password);
+        SignInThrottle::recordFailure(null);
+        $logger->warning('API login attempt for non-existent user', $logCtx);
         throw new HttpUnauthorizedException($request, $genericError);
     }
 
-    // Check account lockout before attempting password validation
-    // Use same generic error to prevent username enumeration via locked-account message
     if ($user->isLocked()) {
-        $logger->warning('API login attempt for locked account', ['username' => $user->getUserName()]);
+        SignInThrottle::spendPasswordCheckTime($password);
+        SignInThrottle::recordFailure(null);
+        $logger->warning('API login attempt for locked account', $logCtx);
         throw new HttpUnauthorizedException($request, $genericError);
     }
 
-    $password = $body['password'] ?? '';
     if (!$user->isPasswordValid($password)) {
-        // Increment failed login counter
-        $user->setFailedLogins($user->getFailedLogins() + 1);
-        $user->save();
-
-        // Send locked email if account just became locked
-        if ($user->isLocked() && !empty($user->getEmail())) {
-            $logger->warning('API login: account locked after too many failures', ['username' => $user->getUserName()]);
-            $lockedEmail = new LockedEmail($user);
-            $lockedEmail->send();
-        }
-
-        $logger->warning('API login: invalid password', ['username' => $user->getUserName()]);
+        SignInThrottle::recordFailure($user);
+        $logger->warning('API login: invalid password', $logCtx);
         throw new HttpUnauthorizedException($request, $genericError);
     }
 
     $blockedReason = $user->getSignInBlockedReason();
     if ($blockedReason !== null) {
-        $logger->warning('API login refused: account cannot sign in', ['username' => $user->getUserName(), 'reason' => $blockedReason]);
+        $logger->warning('API login refused: account cannot sign in', $logCtx + ['reason' => $blockedReason]);
         throw new HttpUnauthorizedException($request, $genericError);
     }
 
@@ -120,17 +118,9 @@ function userLogin(Request $request, Response $response, array $args): Response
         $recoveryValid = !$otpValid && $user->isTwoFaRecoveryCodeValid($otp);
 
         if (!$otpValid && !$recoveryValid) {
-            // Count OTP failures toward account lockout, mirroring the wrong-password branch.
-            // Without this, an attacker with a valid password can brute-force the 6-digit
-            // TOTP space without limit (GHSA-f2fq-4rmp-9x8c).
-            $user->setFailedLogins($user->getFailedLogins() + 1);
-            $user->save();
-            if ($user->isLocked() && !empty($user->getEmail())) {
-                $logger->warning('API login: account locked after too many 2FA failures', ['username' => $user->getUserName()]);
-                $lockedEmail = new LockedEmail($user);
-                $lockedEmail->send();
-            }
-            $logger->warning('API login: invalid 2FA code', ['username' => $user->getUserName()]);
+            // OTP failures count toward the account lock too (GHSA-f2fq-4rmp-9x8c).
+            SignInThrottle::recordFailure($user);
+            $logger->warning('API login: invalid 2FA code', $logCtx);
             throw new HttpUnauthorizedException($request, $genericError);
         }
 
@@ -171,8 +161,6 @@ function userLogin(Request $request, Response $response, array $args): Response
  */
 function passwordResetRequest(Request $request, Response $response, array $args): Response
 {
-    $logger = LoggerUtils::getAppLogger();
-
     $body = json_decode($request->getBody(), true, 512);
     $userName = trim($body['userName'] ?? '');
 
@@ -180,30 +168,7 @@ function passwordResetRequest(Request $request, Response $response, array $args)
         throw new HttpBadRequestException($request, gettext('Login Name is required'));
     }
 
-    $user = UserQuery::create()->findOneByUserName($userName);
-    if (empty($user) || empty($user->getEmail())) {
-        // Don't reveal whether user exists (security best practice)
-        $logger->warning('Password reset requested for non-existent user: ' . $userName);
-        return SlimUtils::renderJSON($response, ['success' => true]);
-    }
+    (new UserService())->requestPasswordReset($userName);
 
-    if ($user->getSignInBlockedReason() !== null) {
-        $logger->warning('Password reset requested for an account that cannot sign in: ' . $userName);
-        return SlimUtils::renderJSON($response, ['success' => true]);
-    }
-
-    $token = new Token();
-    $token->build('password', $user->getId());
-    $token->save();
-
-    $email = new ResetPasswordTokenEmail($user, $token->getToken());
-    if (!$email->send()) {
-        $logger->error('Failed to send password reset email for user ' . $user->getUserName() . ': ' . $email->getError());
-        $token->delete();
-        // Still return success to user (don't expose email issues)
-        return SlimUtils::renderJSON($response, ['success' => true]);
-    }
-
-    $logger->info('Password reset token sent for user: ' . $user->getUserName());
     return SlimUtils::renderJSON($response, ['success' => true]);
 }

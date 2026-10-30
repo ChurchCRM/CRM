@@ -142,15 +142,9 @@ describe("API Private Photo and Avatar - Family", () => {
             });
         });
 
-        it("should return family email or head email", () => {
-            cy.makePrivateAdminAPICall(
-                "GET",
-                `/api/family/${testFamilyId}/avatar`,
-                null,
-                200
-            ).then((response) => {
-                // Email may be null or string, but should exist as property
-                expect(response.body).to.have.property("email");
+        it("should return the head of household's email", () => {
+            cy.makePrivateAdminAPICall("GET", `/api/family/${testFamilyId}/avatar`, null, 200).then((response) => {
+                expect(response.body.email).to.eq("rafael.dixon@example.com");
             });
         });
 

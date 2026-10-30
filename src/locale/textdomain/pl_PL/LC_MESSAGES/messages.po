@@ -952,10 +952,6 @@ msgid "Voting Members"
 msgstr "Członkowie Głosujący:"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Wykaz Datków (Wyciąg na potrzeby Fiskusa)"
-
-#: 
 msgid "Zero Givers"
 msgstr "Zerowe Datki"
 
@@ -1770,15 +1766,6 @@ msgstr "Uprawnienia"
 #: 
 msgid "System Settings"
 msgstr "Ustawienia Systemu"
-
-#: 
-msgid "Tax Report"
-msgstr "Raport Podatkowy"
-
-#: 
-#, fuzzy
-msgid "Calendar Year"
-msgstr "Rok Kalendarzowy"
 
 #: 
 msgid "User Editor"
@@ -5533,10 +5520,6 @@ msgid "Submit Registration"
 msgstr "Wyślij rejestrację"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Nowe hasło wysłano na e-mail."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Zastosuj aktualizację"
 
@@ -5581,20 +5564,12 @@ msgid "Login Name is required"
 msgstr "Login jest wymagany"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Po otrzymaniu e-maila zaloguj się hasłem tymczasowym i zmień je."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Błąd resetowania hasła"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Reset hasła pomyślny"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Sprawdź e-mail (również spam) pod kątem hasła tymczasowego."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -6384,10 +6359,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "Raport z filtrowaniem wg daty, funduszu, rodziny i metody."
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Dostosuj tekst na oświadczeniach podatkowych."
-
-#: 
 msgid "Day"
 msgstr "Dzień"
 
@@ -6468,20 +6439,12 @@ msgid "Generate"
 msgstr "Generuj"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Generuj oświadczenia podatkowe"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Generuj oświadczenia podatkowe. Można drukować lub wysłać e-mailem."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "Generuj przypomnienia dla zalegających z deklaracjami."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "Raporty do celów podatkowych i analiz finansowych."
 
 #: 
 msgid "ID"
@@ -6664,10 +6627,6 @@ msgid "System Info"
 msgstr "Info o systemie"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "Raporty podatkowe i darowizn"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "Tekst raportu podatkowego"
 
@@ -6694,10 +6653,6 @@ msgstr "Aktualizuj"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "Wymagane uprawnienia administratora lub finansowe"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Sprawdź, czy dane kościoła są poprawne na oświadczeniach."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9214,10 +9169,6 @@ msgstr "Wygeneruj listy z przypomnieniami o zobowiązaniach"
 #: 
 msgid "Generate reports on group membership and activities"
 msgstr "Wygeneruj raporty o członkostwie w grupach i aktywnościach"
-
-#: 
-msgid "Generate tax statement documents for donors"
-msgstr "Wygeneruj dokumenty podatkowe dla ofiarodawców"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -12418,10 +12369,6 @@ msgstr "Poczta e-mail jest wyłączona"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "Poczta e-mail jest wyłączona. Skonfiguruj pocztę przed resetowaniem haseł lub użyj Zmień hasło."
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Wprowadź jeden z zapasowych kodów odzyskiwania"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"
@@ -16044,10 +15991,6 @@ msgid "Please confirm your family information"
 msgstr "Proszę potwierdzić dane swojej rodziny"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "Proszę przesłać kolejną darowiznę na adres: %s"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Proszę wybrać inną rodzinę, z którą powiązać te ofiary"
 
@@ -18081,14 +18024,6 @@ msgid "{{minutes}} min left"
 msgstr "Pozostało {{minutes}} min"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d dokument podatkowy został pomyślnie wysłany do rodziny."
-
-#: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d Poświadczenie darowizny"
-
-#: 
 msgid "All classifications"
 msgstr "Wszystkie klasyfikacje"
 
@@ -18121,28 +18056,8 @@ msgid "Columns per Page"
 msgstr "Kolumny na stronę"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "Kochana Rodzino %s,\n"
-"\n"
-"W załączniku znajduje się Twoje poświadczenie darowizny nr %d z dnia %s.\n"
-"\n"
-"Jeśli masz jakiekolwiek pytania, skontaktuj się z biurem kościoła.\n"
-"\n"
-"Dziękujemy za Twoją hojność."
-
-#: 
 msgid "Download CSV"
 msgstr "Pobierz CSV"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "Wyślij email %d dokument podatkowy"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18245,10 +18160,6 @@ msgid "Pledged"
 msgstr "Zaangażowany"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "Drukuj %d dokument podatkowy"
-
-#: 
 msgid "Recent Friends"
 msgstr "Ostatni przyjaciele"
 
@@ -18273,24 +18184,8 @@ msgid "Single Pages"
 msgstr "Pojedyncze strony"
 
 #: 
-msgid "Tax Documents"
-msgstr "Dokumenty podatkowe"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "Nie udało się wysłać wiadomości e-mail z dokumentem podatkowym. Sprawdź ustawienia serwera poczty."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "Dwie strony o połowie rozmiaru obok siebie na każdym arkuszu poziomym, w kolejności broszury. Drukuj dwustronnie z odwracaniem wzdłuż krótszej krawędzi, a następnie złóż stos na pół. Kolumny są liczone na połowę strony."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "Nie można wysłać dokumentu podatkowego e-mailem: nie znaleziono danych o wpłatach za ten rok."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "Nie można wysłać dokumentu podatkowego e-mailem: ta rodzina nie ma zapisanego adresu e-mail."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -18963,25 +18858,11 @@ msgstr[1] "Przydzielono %d domyślnych wolontariuszy"
 msgstr[2] "Przydzielono %d domyślnych wolontariuszy"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Do tej funkcji nadal potrzeba %d wolontariusza. Otwórz termin, aby uzupełnić lukę."
-msgstr[1] "Do tej funkcji nadal potrzeba %d wolontariuszy. Otwórz termin, aby uzupełnić lukę."
-msgstr[2] "Do tej funkcji nadal potrzeba %d wolontariuszy. Otwórz termin, aby uzupełnić lukę."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d nowy termin"
 msgstr[1] "%d nowe terminy"
 msgstr[2] "%d nowych terminów"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Na nadchodzący termin nadal potrzeba %d wolontariusza."
-msgstr[1] "Na nadchodzący termin nadal potrzeba %d wolontariuszy."
-msgstr[2] "Na nadchodzący termin nadal potrzeba %d wolontariuszy."
 
 #: 
 msgid "%s Calendar"
@@ -20291,10 +20172,6 @@ msgid "How often"
 msgstr "Jak często"
 
 #: 
-msgid "How to correct this"
-msgstr "Jak to poprawić"
-
-#: 
 msgid "I can't"
 msgstr "Nie mogę"
 
@@ -21056,10 +20933,6 @@ msgid "Open the occurrence"
 msgstr "Otwórz termin"
 
 #: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Otwórz termin, aby przydzielić potrzebne osoby."
-
-#: 
 msgid "Open this team"
 msgstr "Otwórz ten zespół"
 
@@ -21617,10 +21490,6 @@ msgstr "Zalogowano"
 #: 
 msgid "Signed up"
 msgstr "Zapisano"
-
-#: 
-msgid "Sincerely"
-msgstr "Z poważaniem"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
@@ -24749,4 +24618,20 @@ msgstr "Miesiąc, w którym wszyscy z klasą przechodzą o jedną klasę wyżej.
 #: 
 msgid "Through Grade"
 msgstr "Do klasy"
+
+#: 
+msgid "Invalid setting name or value"
+msgstr "Nieprawidłowa nazwa lub wartość ustawienia"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Usługa geokodowania nie odpowiedziała — spróbuj ponownie później"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Wyświetlana jest tylko wysłana przez Ciebie wiadomość e-mail."
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Nie można było utworzyć powtarzających się wydarzeń. Sprawdź dziennik aplikacji, aby uzyskać szczegóły."
 

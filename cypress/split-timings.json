@@ -1193,10 +1193,6 @@
       "duration": 4000
     },
     {
-      "spec": "cypress/e2e/ui/finance/tax-report-pdf.spec.js",
-      "duration": 10000
-    },
-    {
       "spec": "cypress/e2e/ui/fundraiser/fundraiser.delete-operations.spec.js",
       "duration": 5000
     },

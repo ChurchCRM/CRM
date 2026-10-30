@@ -10,6 +10,7 @@ use ChurchCRM\dto\Cart;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\Service\CustomFieldService;
 
 // Get and filter the classifications selected
 $aClasses = [];
@@ -56,7 +57,6 @@ $bDirBirthday = isset($_POST['bDirBirthday']);
 $bDirFamilyPhone = isset($_POST['bDirFamilyPhone']);
 $bDirFamilyWork = isset($_POST['bDirFamilyWork']);
 $bDirFamilyCell = isset($_POST['bDirFamilyCell']);
-$bDirFamilyEmail = isset($_POST['bDirFamilyEmail']);
 $bDirPersonalPhone = isset($_POST['bDirPersonalPhone']);
 $bDirPersonalWork = isset($_POST['bDirPersonalWork']);
 $bDirPersonalCell = isset($_POST['bDirPersonalCell']);
@@ -100,10 +100,14 @@ $rsCustomFields = RunQuery($sSQL);
 $numCustomFields = mysqli_num_rows($rsCustomFields);
 
 if ($numCustomFields > 0) {
+    $customFieldService = new CustomFieldService();
+
     while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_ASSOC)) {
+        // The form only offers the fields this user may see; a posted bCustomN must not widen that.
         $pdf->addCustomField(
             $rowCustomField['custom_Order'],
             isset($_POST['bCustom' . $rowCustomField['custom_Order']])
+                && $customFieldService->canView((int) $rowCustomField['custom_FieldSec'])
         );
     }
 }
@@ -278,7 +282,7 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
         $sHomePhone = !empty($per_HomePhone) ? $per_HomePhone : ($fam_HomePhone ?? '');
         $sWorkPhone = $per_WorkPhone ?? '';
         $sCellPhone = $per_CellPhone ?? '';
-        $sEmail = !empty($per_Email) ? $per_Email : ($fam_Email ?? '');
+        $sEmail = $per_Email ?? '';
 
         if ($bDirAddress) {
             if (strlen($sAddress1)) {
@@ -312,7 +316,7 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
             $TempStr = $sCellPhone;
             $OutStr .= '   ' . gettext('Cell') . ': ' . $TempStr ."\n";
         }
-        if (($bDirFamilyEmail || $bDirPersonalEmail) && strlen($sEmail)) {
+        if ($bDirPersonalEmail && strlen($sEmail)) {
             $OutStr .= '   ' . gettext('Email') . ': ' . $sEmail ."\n";
         }
         if ($bDirPersonalWorkEmail && strlen($per_WorkEmail)) {

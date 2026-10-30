@@ -2,10 +2,14 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\Authentication\SignInThrottle;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Emails\users\NewAccountEmail;
+use ChurchCRM\Emails\users\ResetPasswordTokenEmail;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\Token;
+use ChurchCRM\model\ChurchCRM\TokenQuery;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\UserConfig;
 use ChurchCRM\model\ChurchCRM\UserConfigQuery;
@@ -43,20 +47,11 @@ class UserService
             ->select(['failedLogins', 'twoFactorAuthSecret'])
             ->find();
 
-        $maxFailedLogins = SystemConfig::getIntValue('iMaxFailedLogins');
         $totalUsers = $users->count();
-        $activeUsers = 0;
-        $lockedUsers = 0;
+        $lockedUsers = count($this->getLockedUsers());
         $usersWithTwoFactor = 0;
 
-        // Process results in memory to avoid multiple DB queries
         foreach ($users as $user) {
-            if ($user['failedLogins'] >= $maxFailedLogins) {
-                $lockedUsers++;
-            } else {
-                $activeUsers++;
-            }
-
             if (!empty($user['twoFactorAuthSecret'])) {
                 $usersWithTwoFactor++;
             }
@@ -64,7 +59,7 @@ class UserService
 
         return [
             'total' => $totalUsers,
-            'active' => $activeUsers,
+            'active' => $totalUsers - $lockedUsers,
             'locked' => $lockedUsers,
             'twoFactor' => $usersWithTwoFactor
         ];
@@ -87,13 +82,13 @@ class UserService
      */
     public function isUserLocked(User $user): bool
     {
-        $maxFailedLogins = SystemConfig::getIntValue('iMaxFailedLogins');
-        return $maxFailedLogins > 0 && $user->getFailedLogins() >= $maxFailedLogins;
+        return $user->isLocked();
     }
 
     /**
      * True when the person is an administrator who can sign in and no other
-     * administrator can. Such a person must not be made deceased or inactive.
+     * administrator can. Such a person must not be made deceased or inactive,
+     * nor have their sign-in disabled.
      */
     public function isLastSignInCapableAdmin(int $personId): bool
     {
@@ -115,15 +110,20 @@ class UserService
     }
 
     /**
-     * Get users with failed login attempts
-     * @return User[]|ObjectCollection
+     * Users whose account is locked right now
+     * @return User[]
      */
-    public function getLockedUsers()
+    public function getLockedUsers(): array
     {
-        $maxFailedLogins = SystemConfig::getIntValue('iMaxFailedLogins');
-        return UserQuery::create()
+        $maxFailedLogins = SignInThrottle::maxFailedLogins();
+        if ($maxFailedLogins < 1) {
+            return [];
+        }
+        $candidates = UserQuery::create()
             ->filterByFailedLogins(['min' => $maxFailedLogins])
             ->find();
+
+        return array_values(array_filter($candidates->getData(), fn (User $user): bool => $user->isLocked()));
     }
 
     /**
@@ -147,6 +147,8 @@ class UserService
         $userSettings = [
             'iSessionTimeout',
             'iMaxFailedLogins',
+            'iLoginLockoutMinutes',
+            'iMaxFailedLoginsPerIP',
             'bEnableLostPassword',
             'bSendUserDeletedEmail',
             'iMinPasswordLength',
@@ -419,6 +421,10 @@ class UserService
             throw new \RuntimeException(gettext('User not found'));
         }
 
+        if (!$perms['admin'] && $this->isLastSignInCapableAdmin($personId)) {
+            throw new \RuntimeException(gettext("Can't remove administrator access from the only administrator who can sign in"));
+        }
+
         $user->setAddRecords($perms['addRecords'])
             ->setEditRecords($perms['editRecords'])
             ->setDeleteRecords($perms['deleteRecords'])
@@ -621,5 +627,81 @@ class UserService
                 $userConfig->save();
             }
         }
+    }
+
+    /**
+     * Emails a reset link when the login name belongs to an account that may
+     * sign in and has an email. Callers answer the same way whatever happens.
+     */
+    public function requestPasswordReset(string $userName): void
+    {
+        $logger = LoggerUtils::getAuthLogger();
+        $logCtx = ['username' => $userName];
+
+        if (SignInThrottle::isIpThrottled()) {
+            $logger->warning('Password reset request throttled for this address', $logCtx);
+
+            return;
+        }
+        SignInThrottle::recordIpAttempt();
+
+        $user = UserQuery::create()->findOneByUserName($userName);
+        if ($user === null || empty($user->getEmail())) {
+            $logger->warning('Password reset requested for an unknown user or a user without an email', $logCtx);
+
+            return;
+        }
+        if ($user->getSignInBlockedReason() !== null) {
+            $logger->warning('Password reset requested for an account that cannot sign in', $logCtx);
+
+            return;
+        }
+        if (!SignInThrottle::allowPasswordResetEmail($user)) {
+            $logger->warning('Password reset request throttled for this account', $logCtx);
+
+            return;
+        }
+
+        TokenQuery::create()
+            ->filterByType(Token::TYPE_PASSWORD)
+            ->filterByValidUntilDate(new \DateTime(), Criteria::LESS_THAN)
+            ->delete();
+
+        $token = new Token();
+        $token->build(Token::TYPE_PASSWORD, $user->getId());
+        // A later request's link always expires later, so "expires sooner" means "older".
+        $latest = TokenQuery::create()
+            ->filterByType(Token::TYPE_PASSWORD)
+            ->filterByReferenceId($user->getId())
+            ->orderByValidUntilDate(Criteria::DESC)
+            ->findOne();
+        if ($latest !== null && $token->getValidUntilDate() <= $latest->getValidUntilDate()) {
+            $token->setValidUntilDate((clone $latest->getValidUntilDate())->modify('+1 second'));
+        }
+        $rawToken = $token->getToken();
+        $token->setToken(Token::passwordResetStorageKey($rawToken));
+        $token->save();
+        $email = new ResetPasswordTokenEmail($user, $rawToken);
+        if (!$email->send()) {
+            $token->delete();
+            $logger->error('Password reset email failed', $logCtx + ['error' => $email->getError()]);
+
+            return;
+        }
+        // Earlier links stop working only once the new one is delivered. Two
+        // requests that raced to the same expiry keep the link with the larger
+        // stored key, so exactly one of them survives.
+        TokenQuery::create()
+            ->filterByType(Token::TYPE_PASSWORD)
+            ->filterByReferenceId($user->getId())
+            ->filterByValidUntilDate($token->getValidUntilDate(), Criteria::LESS_THAN)
+            ->delete();
+        TokenQuery::create()
+            ->filterByType(Token::TYPE_PASSWORD)
+            ->filterByReferenceId($user->getId())
+            ->filterByValidUntilDate($token->getValidUntilDate())
+            ->filterByToken($token->getToken(), Criteria::LESS_THAN)
+            ->delete();
+        $logger->info('Password reset link sent', $logCtx);
     }
 }

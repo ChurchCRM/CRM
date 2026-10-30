@@ -308,12 +308,6 @@ $rootPath       = SystemURLs::getRootPath();
                                 </label>
                             </div>
                         </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="Email" class="form-label"><?= gettext('Email') ?></label>
-                            <input type="email" id="Email" name="Email" class="form-control"
-                                   maxlength="50"
-                                   value="<?= InputUtils::escapeAttribute($formValues['Email'] ?? '') ?>">
-                        </div>
                     </div>
                 </fieldset>
             </div><!-- /card-body -->

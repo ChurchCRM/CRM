@@ -928,10 +928,6 @@ msgid "Voting Members"
 msgstr "חברים בעלי זכות הצבעה"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "דוח נתינה (דוחות מס)"
-
-#: 
 msgid "Zero Givers"
 msgstr "אפס נותנים"
 
@@ -1729,14 +1725,6 @@ msgstr "הרשאה"
 #: 
 msgid "System Settings"
 msgstr "הגדרות מערכת"
-
-#: 
-msgid "Tax Report"
-msgstr "דוח מס"
-
-#: 
-msgid "Calendar Year"
-msgstr "שנה לוח שנה"
 
 #: 
 msgid "User Editor"
@@ -5473,10 +5461,6 @@ msgid "Submit Registration"
 msgstr "שלח רישום"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "סיסמה חדשה נוצרה ונשלחה לכתובת האימייל שלך."
-
-#: 
 msgid "Apply Update Now"
 msgstr "החל עדכון כעת"
 
@@ -5521,20 +5505,12 @@ msgid "Login Name is required"
 msgstr "שם משתמש הוא שדה חובה"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "לאחר שתקבל את האימייל, תוכל להתחבר עם הסיסמה הזמנית ולשנות אותה."
-
-#: 
 msgid "Password Reset Error"
 msgstr "שגיאה באיפוס סיסמה"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "איפוס הסיסמה הצליח"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "אנא בדוק את תיבת האימייל שלך עבור הסיסמה הזמנית."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -6322,10 +6298,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "דוח הניתן להתאמה עם סינון לפי תאריך, קרן, משפחה ואמצעי תשלום."
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "התאם אישית את הטקסט המופיע בהצהרות מס."
-
-#: 
 msgid "Day"
 msgstr "יום"
 
@@ -6406,20 +6378,12 @@ msgid "Generate"
 msgstr "הפק"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "הפק הצהרות מס"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "הפק אישורי תרומה לצרכי מס. ניתן להדפיס או לשלוח במייל."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "הפק מכתבי תזכורת למשפחות עם התחייבויות פתוחות."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "הפק דוחות למס, מעקב התחייבויות וניתוח פיננסי."
 
 #: 
 msgid "ID"
@@ -6602,10 +6566,6 @@ msgid "System Info"
 msgstr "פרטי מערכת"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "דוחות מס ותרומות"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "נוסח דוח מס"
 
@@ -6632,10 +6592,6 @@ msgstr "שדרוג"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "המשתמש חייב להיות מנהל או בעל הרשאת כספים"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "ודא ששם הקהילה, הכתובת ופרטי הקשר מופיעים בדוחות."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9147,10 +9103,6 @@ msgstr "יצירת מכתבי תזכורת להתחייבויות כספיות"
 #: 
 msgid "Generate reports on group membership and activities"
 msgstr "יצירת דוחות על חברות בקבוצות ופעילויות"
-
-#: 
-msgid "Generate tax statement documents for donors"
-msgstr "יצירת מסמכי דוח מס לתורמים"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -12350,10 +12302,6 @@ msgstr "הדואר האלקטרוני מושבת"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "הדואר האלקטרוני מושבת. הגדרו דואר אלקטרוני לפני איפוס סיסמאות, או השתמשו בשנה סיסמה."
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "הזינו אחד מקודי השחזור לגיבוי שלכם"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"
@@ -15973,10 +15921,6 @@ msgid "Please confirm your family information"
 msgstr "אנא אשר את פרטי המשפחה שלך"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "אנא שלח את תרומתך הבאה בדואר אל %s"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "אנא בחר משפחה אחרת לשיוך תרומות אלו"
 
@@ -18007,14 +17951,6 @@ msgid "{{minutes}} min left"
 msgstr "נותרו {{minutes}} דקות"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d מסמכי מס נשלחו למשפחה בהצלחה."
-
-#: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d הצהרת תרומה"
-
-#: 
 msgid "All classifications"
 msgstr "כל הסיווגים"
 
@@ -18047,28 +17983,8 @@ msgid "Columns per Page"
 msgstr "עמודות לכל עמוד"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "משפחה %s יקרה,\n"
-"\n"
-"אנא מצא את הצהרת התרומה %d שלך מ-%s המצורפת לדוא\"ל זה.\n"
-"\n"
-"אם יש לך שאלות כלשהן, אנא פנה למשרד הכנסיה.\n"
-"\n"
-"תודה על הנדיבות שלך."
-
-#: 
 msgid "Download CSV"
 msgstr "הורד CSV"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "דוא\"ל %d מסמך מס"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18171,10 +18087,6 @@ msgid "Pledged"
 msgstr "התחייבות"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "הדפס %d מסמך מס"
-
-#: 
 msgid "Recent Friends"
 msgstr "חברים עדכניים"
 
@@ -18199,24 +18111,8 @@ msgid "Single Pages"
 msgstr "עמודים בודדים"
 
 #: 
-msgid "Tax Documents"
-msgstr "מסמכי מס"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "הדוא\"ל של מסמך המס נכשל בשליחה. אנא בדוק את הגדרות שרת הדוא\"ל שלך."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "שני עמודים בגודל חצי זה לצד זה בכל דף נוף, בסדר חוברת. הדפס דו-צדדי עם \"flip on short edge\", ואז קפל את הערמה לחצי. עמודות נספרות לכל חצי עמוד."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "לא יכול לשלוח דוא\"ל מסמך מס: לא נמצאו נתוני תשלום לשנה זו."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "לא יכול לשלוח דוא\"ל מסמך מס: למשפחה זו אין כתובת דוא\"ל בקובץ."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -18885,22 +18781,10 @@ msgstr[0] "%d מתנדב ברירת מחדל שובץ"
 msgstr[1] "%d מתנדבי ברירת מחדל שובצו"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "עדיין נדרש עוד %d מתנדב לתפקיד זה. פתחו את המופע כדי למלא את החסר."
-msgstr[1] "עדיין נדרשים עוד %d מתנדבים לתפקיד זה. פתחו את המופע כדי למלא את החסר."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d מופע חדש"
 msgstr[1] "%d מופעים חדשים"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "עדיין נדרש %d מתנדב למופע קרוב."
-msgstr[1] "עדיין נדרשים %d מתנדבים למופע קרוב."
 
 #: 
 msgid "%s Calendar"
@@ -20207,10 +20091,6 @@ msgid "How often"
 msgstr "באיזו תדירות"
 
 #: 
-msgid "How to correct this"
-msgstr "איך לתקן זאת"
-
-#: 
 msgid "I can't"
 msgstr "אני לא יכול"
 
@@ -20971,10 +20851,6 @@ msgid "Open the occurrence"
 msgstr "פתיחת המופע"
 
 #: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "פתחו את המופע כדי לשבץ את האנשים שאתם צריכים."
-
-#: 
 msgid "Open this team"
 msgstr "פתיחת צוות זה"
 
@@ -21531,10 +21407,6 @@ msgstr "מחובר"
 #: 
 msgid "Signed up"
 msgstr "נרשם"
-
-#: 
-msgid "Sincerely"
-msgstr "בכבוד רב"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
@@ -24659,4 +24531,20 @@ msgstr "החודש שבו כל מי שיש לו כיתה עולה כיתה אח�
 #: 
 msgid "Through Grade"
 msgstr "עד כיתה"
+
+#: 
+msgid "Invalid setting name or value"
+msgstr "שם ההגדרה או הערך אינם תקינים"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "שירות הקידוד הגאוגרפי לא הגיב — יש לנסות שוב מאוחר יותר"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "מוצגת רק הודעת הדוא״ל ששלחת."
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "לא ניתן היה ליצור אירועים חוזרים. בדוק את יומן היישום לפרטים."
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-21 20:18+0000\n"
+"POT-Creation-Date: 2026-10-30 09:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -167,6 +167,10 @@ msgid "%d files will be permanently deleted."
 msgstr ""
 
 #, php-format
+msgid "%d giving statement emailed to the family successfully."
+msgstr ""
+
+#, php-format
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] ""
@@ -191,12 +195,6 @@ msgstr ""
 #, php-format
 msgid "%d month old"
 msgid_plural "%d months old"
-msgstr[0] ""
-msgstr[1] ""
-
-#, php-format
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
 msgstr[0] ""
 msgstr[1] ""
 
@@ -245,16 +243,6 @@ msgstr[0] ""
 msgstr[1] ""
 
 #, php-format
-msgid "%d tax document emailed to the family successfully."
-msgstr ""
-
-#, php-format
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] ""
-msgstr[1] ""
-
-#, php-format
 msgid "%d year old"
 msgid_plural "%d years old"
 msgstr[0] ""
@@ -262,10 +250,6 @@ msgstr[1] ""
 
 #, php-format
 msgid "%d% of interface text is translated for this language."
-msgstr ""
-
-#, php-format
-msgid "%s %d Giving Statement"
 msgstr ""
 
 #, php-format
@@ -278,6 +262,10 @@ msgstr ""
 
 #, php-format
 msgid "%s Fundraisers"
+msgstr ""
+
+#, php-format
+msgid "%s Giving Statement"
 msgstr ""
 
 #, php-format
@@ -343,6 +331,10 @@ msgid "%s recorded that you will serve. You are on the schedule."
 msgstr ""
 
 #, php-format
+msgid "%s through %s"
+msgstr ""
+
+#, php-format
 msgid "%s was the Head of this family and has been marked deceased. Please assign a new Head of Household."
 msgstr ""
 
@@ -387,9 +379,6 @@ msgid ""
 "- **Automatic Sync**: Hooks into person/family updates to keep MailChimp in sync"
 msgstr ""
 
-msgid "0 - No Minimum"
-msgstr ""
-
 #. plugin:vonage:section:1:content
 msgid ""
 "1. Create a Vonage account at https://dashboard.nexmo.com/sign-up (new accounts include free trial credit)\n"
@@ -423,6 +412,9 @@ msgstr ""
 msgid "1. Sunday School Class"
 msgstr ""
 
+msgid "1st"
+msgstr ""
+
 msgid "2-50 characters"
 msgstr ""
 
@@ -435,13 +427,25 @@ msgstr ""
 msgid "2FA Enabled"
 msgstr ""
 
+msgid "2nd"
+msgstr ""
+
 msgid "3. Event"
 msgstr ""
 
 msgid "3. Upload and map"
 msgstr ""
 
+msgid "3rd"
+msgstr ""
+
 msgid "4. Kiosk"
+msgstr ""
+
+msgid "4th"
+msgstr ""
+
+msgid "5th"
 msgstr ""
 
 msgid "A"
@@ -535,9 +539,6 @@ msgid "A ministry with that name already exists"
 msgstr ""
 
 msgid "A ministry's own calendar cannot be opened to other ministries"
-msgstr ""
-
-msgid "A new password has been generated and sent to your email address."
 msgstr ""
 
 msgid "A payment is an actual donation received. It will be added to the selected deposit."
@@ -661,6 +662,12 @@ msgid "A volunteer manager can run this ministry without a grant. Add a coordina
 msgstr ""
 
 msgid "A wedding date cannot be in the future."
+msgstr ""
+
+msgid "A weekly sign-in grid for each class. Class lists and photo books are on the Sunday School dashboard and each class page."
+msgstr ""
+
+msgid "A weekly sign-in grid for the school year, one column for each Sunday"
 msgstr ""
 
 msgid "AM / PM"
@@ -1234,6 +1241,10 @@ msgid "After importing, you can use Reset Database on the Admin Dashboard to cle
 msgstr ""
 
 msgid "Age"
+msgstr ""
+
+#, php-format
+msgid "Age %d"
 msgstr ""
 
 msgid "Age / Years Married"
@@ -1890,7 +1901,7 @@ msgstr ""
 msgid "At least one fund must have a non-zero amount."
 msgstr ""
 
-msgid "At least one group must be selected to make class lists or attendance sheets."
+msgid "At least one group must be selected to make an attendance sheet."
 msgstr ""
 
 msgid "At least one personId or familyId is required"
@@ -1907,6 +1918,9 @@ msgid "Attendance Count Categories"
 msgstr ""
 
 msgid "Attendance Counts"
+msgstr ""
+
+msgid "Attendance Sheet"
 msgstr ""
 
 msgid "Attendance record deleted."
@@ -2535,9 +2549,6 @@ msgstr ""
 msgid "Calendar Settings"
 msgstr ""
 
-msgid "Calendar Year"
-msgstr ""
-
 msgid "Calendar address"
 msgstr ""
 
@@ -2589,6 +2600,9 @@ msgid "Can't delete yourself"
 msgstr ""
 
 msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr ""
+
+msgid "Can't remove administrator access from the only administrator who can sign in"
 msgstr ""
 
 msgid "Can't scan?"
@@ -3123,6 +3137,9 @@ msgstr ""
 msgid "Choose the theme members see, turn portal sections on or off, and see who is using the portal."
 msgstr ""
 
+msgid "Choose the week of the month, from 1st to 5th"
+msgstr ""
+
 msgid "Choose weekly, monthly or yearly"
 msgstr ""
 
@@ -3230,6 +3247,9 @@ msgstr ""
 msgid "Church name, address, or contact details"
 msgstr ""
 
+msgid "Church tax ID (EIN) printed on contribution statements"
+msgstr ""
+
 msgid "Church website"
 msgstr ""
 
@@ -3272,10 +3292,10 @@ msgstr ""
 msgid "Class / Group"
 msgstr ""
 
-msgid "Class List Export"
+msgid "Class List"
 msgstr ""
 
-msgid "Class lists, attendance sheets, and photo books"
+msgid "Class List Export"
 msgstr ""
 
 msgid "Class must be one of p, f, or g"
@@ -3571,6 +3591,9 @@ msgstr ""
 msgid "Confirm New Password"
 msgstr ""
 
+msgid "Confirm Password"
+msgstr ""
+
 msgid "Confirm Property Deletion"
 msgstr ""
 
@@ -3673,6 +3696,9 @@ msgid "Continue to Dashboard"
 msgstr ""
 
 msgid "Contributing"
+msgstr ""
+
+msgid "Contribution statements are issued to the adults of a household. Please contact the church office if you need one."
 msgstr ""
 
 msgid "Contributor"
@@ -3870,9 +3896,6 @@ msgstr ""
 msgid "Create Backup"
 msgstr ""
 
-msgid "Create Class List"
-msgstr ""
-
 msgid "Create Deposit"
 msgstr ""
 
@@ -3904,9 +3927,6 @@ msgid "Create New Fund Raiser"
 msgstr ""
 
 msgid "Create New Fundraiser"
-msgstr ""
-
-msgid "Create PhotoBook"
 msgstr ""
 
 msgid "Create Repeat Events"
@@ -3994,6 +4014,9 @@ msgid "Creates {{total}} events, every {{day}} from {{first}} to {{last}}"
 msgstr ""
 
 msgid "Creates {{total}} events, on day {{day}} of each month from {{first}} to {{last}}"
+msgstr ""
+
+msgid "Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}"
 msgstr ""
 
 msgid "Creating Backup..."
@@ -4149,7 +4172,7 @@ msgstr ""
 msgid "Customize the look and feel of the application"
 msgstr ""
 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
+msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
 msgstr ""
 
 msgid "Cyan"
@@ -4329,7 +4352,7 @@ msgstr ""
 msgid ""
 "Dear %s Family,\n"
 "\n"
-"Please find your %d giving statement from %s attached to this email.\n"
+"Please find your %s giving statement from %s attached to this email.\n"
 "\n"
 "If you have any questions, please contact the church office.\n"
 "\n"
@@ -4943,10 +4966,16 @@ msgstr ""
 msgid "Download OpenLP"
 msgstr ""
 
+msgid "Download PDF"
+msgstr ""
+
 msgid "Download failed"
 msgstr ""
 
 msgid "Download returned without attachment headers."
+msgstr ""
+
+msgid "Download statement"
 msgstr ""
 
 msgid "Download the latest release and apply it to your installation."
@@ -5179,15 +5208,15 @@ msgid "Email"
 msgstr ""
 
 #, php-format
-msgid "Email %d Tax Doc"
-msgstr ""
-
-#, php-format
 msgid "Email %s"
 msgstr ""
 
 #, php-format
 msgid "Email %s Family"
+msgstr ""
+
+#, php-format
+msgid "Email %s Giving Statement"
 msgstr ""
 
 msgid "Email Address"
@@ -5554,9 +5583,6 @@ msgstr ""
 msgid "Enter note text here..."
 msgstr ""
 
-msgid "Enter one of your backup recovery codes"
-msgstr ""
-
 msgid "Enter one of your backup recovery codes to access your account"
 msgstr ""
 
@@ -5618,6 +5644,9 @@ msgid "Envelope Manager"
 msgstr ""
 
 msgid "Envelope Number"
+msgstr ""
+
+msgid "Envelope Numbers"
 msgstr ""
 
 msgid "Environment"
@@ -7148,6 +7177,9 @@ msgstr ""
 msgid "Generate Coordinates"
 msgstr ""
 
+msgid "Generate Giving Statements"
+msgstr ""
+
 msgid "Generate Labels"
 msgstr ""
 
@@ -7160,9 +7192,6 @@ msgstr ""
 msgid "Generate Statements for Selected"
 msgstr ""
 
-msgid "Generate Tax Statements"
-msgstr ""
-
 msgid "Generate again closer to its first date."
 msgstr ""
 
@@ -7170,9 +7199,6 @@ msgid "Generate and download confirmation letters"
 msgstr ""
 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
-msgstr ""
-
-msgid "Generate class lists, attendance sheets, and photo books"
 msgstr ""
 
 msgid "Generate directory listings and printed materials"
@@ -7205,13 +7231,13 @@ msgstr ""
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr ""
 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
+msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
 msgstr ""
 
 msgid "Generate reports on group membership and activities"
 msgstr ""
 
-msgid "Generate tax statement documents for donors"
+msgid "Generated"
 msgstr ""
 
 msgid "Generating..."
@@ -7320,7 +7346,16 @@ msgstr ""
 msgid "Giving History"
 msgstr ""
 
-msgid "Giving Report (Tax Statements)"
+msgid "Giving Reports"
+msgstr ""
+
+msgid "Giving Statement"
+msgstr ""
+
+msgid "Giving Statements"
+msgstr ""
+
+msgid "Giving statement email failed to send. Please check your email server settings."
 msgstr ""
 
 msgid "Go"
@@ -7354,6 +7389,9 @@ msgid "Goal Amount"
 msgstr ""
 
 msgid "Going"
+msgstr ""
+
+msgid "Goods and services"
 msgstr ""
 
 #. plugin:google-analytics:summary
@@ -7852,9 +7890,6 @@ msgstr ""
 msgid "How to Fix"
 msgstr ""
 
-msgid "How to correct this"
-msgstr ""
-
 #. Context: locales
 msgid "Hungarian"
 msgstr ""
@@ -8319,6 +8354,9 @@ msgid "Invalid date format"
 msgstr ""
 
 msgid "Invalid date format for rangeStart or rangeEnd"
+msgstr ""
+
+msgid "Invalid day of the week"
 msgstr ""
 
 msgid "Invalid email address"
@@ -8891,9 +8929,6 @@ msgstr ""
 msgid "Links"
 msgstr ""
 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr ""
-
 msgid "List members eligible to vote based on giving history and membership criteria."
 msgstr ""
 
@@ -8986,6 +9021,11 @@ msgid "Locked"
 msgstr ""
 
 msgid "Locked Users"
+msgstr ""
+
+msgid ""
+"Lockout period in minutes\n"
+"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
 msgstr ""
 
 msgid "Log File"
@@ -9405,8 +9445,14 @@ msgid "Maximum number of People"
 msgstr ""
 
 msgid ""
+"Maximum number of failed logins from one IP address\n"
+"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
+"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
+msgstr ""
+
+msgid ""
 "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
+"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
 "This feature helps to protect against automated password guessing attacks.\n"
 "Set to zero to disable this feature."
 msgstr ""
@@ -9618,6 +9664,10 @@ msgstr ""
 msgid "Minutes"
 msgstr ""
 
+#, php-format
+msgid "Minutes until it unlocks by itself: %d"
+msgstr ""
+
 msgid "Mismatch"
 msgstr ""
 
@@ -9720,7 +9770,13 @@ msgstr ""
 msgid "Monthly on the"
 msgstr ""
 
+msgid "Monthly, on a weekday"
+msgstr ""
+
 msgid "Months"
+msgstr ""
+
+msgid "Months without a 5th one are skipped."
 msgstr ""
 
 #. Context: countries
@@ -9818,6 +9874,9 @@ msgid "My Account"
 msgstr ""
 
 msgid "My Family"
+msgstr ""
+
+msgid "My Giving"
 msgstr ""
 
 msgid "My Settings"
@@ -10191,6 +10250,12 @@ msgstr ""
 msgid "No contact info"
 msgstr ""
 
+msgid "No contributions"
+msgstr ""
+
+msgid "No contributions were recorded for this period."
+msgstr ""
+
 msgid "No contributors found for this fund in the selected fiscal year"
 msgstr ""
 
@@ -10287,6 +10352,9 @@ msgid "No funds have been added yet. Use the form above to add the first fund."
 msgstr ""
 
 msgid "No giving history found."
+msgstr ""
+
+msgid "No goods or services were provided in exchange for these contributions, other than intangible religious benefits."
 msgstr ""
 
 msgid "No group"
@@ -10924,9 +10992,6 @@ msgstr ""
 msgid "Once you have a family, add each household member as a person. Assign them a family role (e.g. Head of Household, Spouse, Child)."
 msgstr ""
 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr ""
-
 msgid "Once you submit, our team will receive your registration and reach out to personally welcome your family. If anything looks wrong, use the Previous button to go back and make changes."
 msgstr ""
 
@@ -11113,9 +11178,6 @@ msgstr ""
 msgid "Open the occurrence"
 msgstr ""
 
-msgid "Open the occurrence to assign the people you need."
-msgstr ""
-
 msgid "Open this team"
 msgstr ""
 
@@ -11193,6 +11255,9 @@ msgid "Optional. Everyone qualified for a position of this team becomes a teache
 msgstr ""
 
 msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr ""
+
+msgid "Optional. Printed on contribution statements."
 msgstr ""
 
 msgid "Optional. The class becomes the Linked Group: its roster is who checks in, and a schedule for the class finds these events."
@@ -11802,9 +11867,6 @@ msgstr ""
 msgid "Please check the backup file and try again."
 msgstr ""
 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr ""
-
 msgid "Please choose calendars from the list."
 msgstr ""
 
@@ -11923,7 +11985,7 @@ msgid "Please let us know whether you can make it by accepting or declining on y
 msgstr ""
 
 #, php-format
-msgid "Please mail you next gift to %s"
+msgid "Please mail your next gift to %s"
 msgstr ""
 
 msgid "Please map at least one column before importing"
@@ -12216,7 +12278,7 @@ msgid "Print"
 msgstr ""
 
 #, php-format
-msgid "Print %d Tax Doc"
+msgid "Print %s Giving Statement"
 msgstr ""
 
 msgid "Print Labels"
@@ -12573,6 +12635,9 @@ msgstr ""
 msgid "Recruiting"
 msgstr ""
 
+msgid "RecurWOM must be a whole number from 1 to 5"
+msgstr ""
+
 msgid "Recurrence"
 msgstr ""
 
@@ -12762,6 +12827,9 @@ msgid "Rename Kiosk"
 msgstr ""
 
 msgid "Renames the grades to the names used in that country. People keep their grade, and grades you added yourself stay."
+msgstr ""
+
+msgid "Repeat events could not be created. Check the application log for details."
 msgstr ""
 
 msgid "Repeats"
@@ -14071,9 +14139,6 @@ msgstr ""
 msgid "Since this is a fresh installation, restoring will simply load your backup data."
 msgstr ""
 
-msgid "Sincerely"
-msgstr ""
-
 #. Context: countries
 msgid "Singapore"
 msgstr ""
@@ -14478,6 +14543,9 @@ msgstr ""
 msgid "Sunday School"
 msgstr ""
 
+msgid "Sunday School Attendance Sheet"
+msgstr ""
+
 msgid "Sunday School Class"
 msgstr ""
 
@@ -14493,9 +14561,6 @@ msgstr ""
 msgid "Sunday School Module"
 msgstr ""
 
-msgid "Sunday School Reports"
-msgstr ""
-
 msgid "Sunday School classes"
 msgstr ""
 
@@ -14509,6 +14574,9 @@ msgid "Sunday School: {{name}}"
 msgstr ""
 
 msgid "Sundays"
+msgstr ""
+
+msgid "Sundays with no class are left off the sheet."
 msgstr ""
 
 #. plugin:external-backup:section:5:title
@@ -14666,13 +14734,10 @@ msgstr ""
 msgid "Target family not found"
 msgstr ""
 
-msgid "Tax & Giving Reports"
+msgid "Tax ID"
 msgstr ""
 
-msgid "Tax Documents"
-msgstr ""
-
-msgid "Tax Report"
+msgid "Tax ID (EIN)"
 msgstr ""
 
 msgid "Tax Report Verbiage"
@@ -14684,7 +14749,7 @@ msgstr ""
 msgid "Tax Year Reporting Checklist"
 msgstr ""
 
-msgid "Tax document email failed to send. Please check your email server settings."
+msgid "Tax-deductible amount"
 msgstr ""
 
 msgid "Teacher"
@@ -15251,6 +15316,14 @@ msgstr ""
 msgid "The position could not be saved"
 msgstr ""
 
+#, php-format
+msgid "The position is now assigned to %s, who has accepted it."
+msgstr ""
+
+#, php-format
+msgid "The position is now assigned to %s, who has not yet accepted it."
+msgstr ""
+
 msgid "The position is still covered, so no action is needed unless you want to adjust the roster."
 msgstr ""
 
@@ -15430,6 +15503,10 @@ msgid "The window ends before it starts"
 msgstr ""
 
 msgid "Their coordinators may pin their ministry's events to this calendar without Add Events permission."
+msgstr ""
+
+#, php-format
+msgid "Their reason: %s"
 msgstr ""
 
 msgid "Theme"
@@ -15671,6 +15748,9 @@ msgid "This is not one of your team's dates."
 msgstr ""
 
 msgid "This is not one of your teams."
+msgstr ""
+
+msgid "This is the household statement. It includes gifts for your family."
 msgstr ""
 
 msgid "This is the mailing address"
@@ -16057,9 +16137,6 @@ msgstr ""
 msgid "Tonga"
 msgstr ""
 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr ""
-
 #, php-format
 msgid "Too many occurrences (%d) — narrow the date range. Maximum allowed: %d"
 msgstr ""
@@ -16116,6 +16193,9 @@ msgid "Total Subscribers"
 msgstr ""
 
 msgid "Total Users"
+msgstr ""
+
+msgid "Total contributions"
 msgstr ""
 
 #, php-format
@@ -16335,10 +16415,10 @@ msgstr ""
 msgid "Unable to display map: church address has not been geocoded yet."
 msgstr ""
 
-msgid "Unable to email tax document: no payment data found for that year."
+msgid "Unable to email giving statement: no payment data found for that year."
 msgstr ""
 
-msgid "Unable to email tax document: this family has no email address on file."
+msgid "Unable to email giving statement: this family has no email address on file."
 msgstr ""
 
 msgid "Unable to list web server modules (non-Apache SAPI)."
@@ -16381,6 +16461,9 @@ msgid "Understand deployments"
 msgstr ""
 
 msgid "Understand feature usage"
+msgstr ""
+
+msgid "Undesignated"
 msgstr ""
 
 msgid "Unexpected Person Id"
@@ -16897,7 +16980,7 @@ msgstr ""
 msgid "Verify People"
 msgstr ""
 
-msgid "Verify church name, address, and contact info appears on tax statements."
+msgid "Verify church name, address, and contact info appears on giving statements."
 msgstr ""
 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -16938,6 +17021,9 @@ msgid "View All"
 msgstr ""
 
 msgid "View All Deposits"
+msgstr ""
+
+msgid "View Assignments"
 msgstr ""
 
 msgid "View Buyers"
@@ -17195,6 +17281,14 @@ msgstr ""
 msgid "Volunteers still needed for these upcoming occurrences: %d"
 msgstr ""
 
+#, php-format
+msgid "Volunteers still needed for this occurrence: %d"
+msgstr ""
+
+#, php-format
+msgid "Volunteers still needed for this position: %d"
+msgstr ""
+
 msgid "Vonage API Key"
 msgstr ""
 
@@ -17352,6 +17446,12 @@ msgid "Wedding Date"
 msgstr ""
 
 msgid "Wednesdays"
+msgstr ""
+
+msgid "Week of the month"
+msgstr ""
+
+msgid "Week of the month must be from 1 to 5"
 msgstr ""
 
 msgid "Weekday, full"
@@ -17559,9 +17659,6 @@ msgstr ""
 msgid "Wishing you a wonderful birthday!"
 msgstr ""
 
-msgid "With Photos"
-msgstr ""
-
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr ""
 
@@ -17608,6 +17705,9 @@ msgid "Year, 2 digits"
 msgstr ""
 
 msgid "Year, 4 digits"
+msgstr ""
+
+msgid "Year-end statement"
 msgstr ""
 
 msgid "Yearly"
@@ -17923,6 +18023,9 @@ msgid "Your new password must not match your old one."
 msgstr ""
 
 msgid "Your password choice is too obvious. Please choose something else."
+msgstr ""
+
+msgid "Your password has been changed. You can now sign in with your new password."
 msgstr ""
 
 msgid "Your password has been updated successfully."
@@ -18297,9 +18400,6 @@ msgid "no email address"
 msgstr ""
 
 msgid "not found"
-msgstr ""
-
-msgid "not found or user without an email"
 msgstr ""
 
 msgid "of"

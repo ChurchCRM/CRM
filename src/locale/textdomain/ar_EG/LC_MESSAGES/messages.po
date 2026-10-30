@@ -927,10 +927,6 @@ msgid "Voting Members"
 msgstr "أعضاء التصويت"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "إعطاء تقرير (البيانات الضريبية)"
-
-#: 
 msgid "Zero Givers"
 msgstr "صفر المانحون"
 
@@ -1727,14 +1723,6 @@ msgstr "الإذن"
 #: 
 msgid "System Settings"
 msgstr "اعدادات النظام"
-
-#: 
-msgid "Tax Report"
-msgstr "تقرير الضرائب"
-
-#: 
-msgid "Calendar Year"
-msgstr "تقويم سنوي"
 
 #: 
 msgid "User Editor"
@@ -5474,10 +5462,6 @@ msgid "Submit Registration"
 msgstr "إرسال التسجيل"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "تم إنشاء كلمة مرور جديدة وإرسالها إلى عنوان بريدك الإلكتروني."
-
-#: 
 msgid "Apply Update Now"
 msgstr "طبّق التحديث الآن"
 
@@ -5522,20 +5506,12 @@ msgid "Login Name is required"
 msgstr "اسم تسجيل الدخول مطلوب"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "بمجرد استقبال البريد الإلكتروني، يمكنك تسجيل الدخول باستخدام كلمة المرور المؤقتة وتغييرها إلى ما تفضله."
-
-#: 
 msgid "Password Reset Error"
 msgstr "خطأ في إعادة تعيين كلمة المرور"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "نجحت إعادة تعيين كلمة المرور"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "يرجى التحقق من بريدك الإلكتروني (بما في ذلك مجلد البريد العشوائي) للحصول على كلمة المرور المؤقتة."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -6331,10 +6307,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "تقرير قابل للتخصيص مع التصفية حسب التاريخ والصندوق والعائلة وطريقة الدفع."
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "خصص النص الذي يظهر على كشوف الضرائب (sTaxReport1, sTaxReport2, وما إلى ذلك)."
-
-#: 
 msgid "Day"
 msgstr "اليوم"
 
@@ -6415,20 +6387,12 @@ msgid "Generate"
 msgstr "إنشاء"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "إنشاء بيانات الضرائب"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "أنشئ بيانات الإعطاء المعفاة من الضرائب سنويا للمانحين. يمكن طباعتها أو إرسالها بالبريد الإلكتروني."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "أنشئ رسائل تذكير للعائلات التي لديها تعهدات معلقة."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "أنشئ تقارير لبيانات الضرائب وتتبع التعهدات والتحليل المالي."
 
 #: 
 msgid "ID"
@@ -6611,10 +6575,6 @@ msgid "System Info"
 msgstr "معلومات النظام"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "تقارير الضرائب والإعطاء"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "صياغة تقرير الضريبة"
 
@@ -6641,10 +6601,6 @@ msgstr "ترقية"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "يجب أن يكون المستخدم مسؤولا أو لديه إذن مالي"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "تحقق من ظهور اسم الكنيسة والعنوان ومعلومات الاتصال على بيانات الضرائب."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9176,10 +9132,6 @@ msgstr "إنشاء رسائل تذكير التعهد"
 #: 
 msgid "Generate reports on group membership and activities"
 msgstr "إنشاء تقارير عن عضوية الجماعة والأنشطة"
-
-#: 
-msgid "Generate tax statement documents for donors"
-msgstr "إنشاء وثائق البيانات الضريبية للمانحين"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -12383,10 +12335,6 @@ msgstr "البريد الإلكتروني معطّل"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "البريد الإلكتروني معطّل. قم بتكوين البريد الإلكتروني قبل إعادة تعيين كلمات المرور، أو استخدم تغيير كلمة المرور."
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "أدخل أحد رموز الاسترداد الاحتياطية"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"
@@ -16018,10 +15966,6 @@ msgid "Please confirm your family information"
 msgstr "يرجى تأكيد معلومات عائلتك"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "يرجى إرسال هديتك التالية بالبريد إلى %s"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "يرجى اختيار عائلة أخرى لربط هذه التبرعات بها"
 
@@ -18064,14 +18008,6 @@ msgid "{{minutes}} min left"
 msgstr "متبقٍ {{minutes}} دقيقة"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "تم إرسال %d وثيقة ضريبية إلى الأسرة بنجاح عبر البريد الإلكتروني."
-
-#: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d بيان التبرع"
-
-#: 
 msgid "All classifications"
 msgstr "جميع التصنيفات"
 
@@ -18104,28 +18040,8 @@ msgid "Columns per Page"
 msgstr "الأعمدة لكل صفحة"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "عائلة %s الكريمة،\n"
-"\n"
-"يرجى العثور على بيان التبرع %d الخاص بك من %s مرفقاً بهذا البريد الإلكتروني.\n"
-"\n"
-"إذا كان لديك أي أسئلة، يرجى التواصل مع مكتب الكنيسة.\n"
-"\n"
-"شكراً لك على كرمك."
-
-#: 
 msgid "Download CSV"
 msgstr "تحميل CSV"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "إرسال %d وثيقة ضريبية عبر البريد الإلكتروني"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18228,10 +18144,6 @@ msgid "Pledged"
 msgstr "التزم"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "طباعة %d وثيقة ضريبية"
-
-#: 
 msgid "Recent Friends"
 msgstr "الأصدقاء الأخيرون"
 
@@ -18256,24 +18168,8 @@ msgid "Single Pages"
 msgstr "صفحات منفردة"
 
 #: 
-msgid "Tax Documents"
-msgstr "الوثائق الضريبية"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "فشل إرسال بريد وثيقة ضريبية. يرجى التحقق من إعدادات خادم البريد الإلكتروني الخاص بك."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "صفحتان نصف الحجم جنباً إلى جنب على كل ورقة بصيغة أفقية، بترتيب الكراس. طباعة الجانبين مع \"التقليب على الحافة القصيرة\"، ثم طي المكدس في النصف. يتم حساب الأعمدة لكل نصف صفحة."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "لا يمكن إرسال وثيقة ضريبية عبر البريد الإلكتروني: لم يتم العثور على بيانات دفع لتلك السنة."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "لا يمكن إرسال وثيقة ضريبية عبر البريد الإلكتروني: هذه الأسرة ليس لديها عنوان بريد إلكتروني في الملف."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -18958,16 +18854,6 @@ msgstr[4] "تم تكليف %d متطوعًا افتراضيًا"
 msgstr[5] "تم تكليف %d متطوع افتراضي"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "لا حاجة إلى مزيد من المتطوعين لهذه المهمة. افتح الموعد لسدّ الثغرة."
-msgstr[1] "لا يزال مطلوبًا %d متطوع إضافي لهذه المهمة. افتح الموعد لسدّ الثغرة."
-msgstr[2] "لا يزال مطلوبًا %d متطوعان إضافيان لهذه المهمة. افتح الموعد لسدّ الثغرة."
-msgstr[3] "لا يزال مطلوبًا %d متطوعين إضافيين لهذه المهمة. افتح الموعد لسدّ الثغرة."
-msgstr[4] "لا يزال مطلوبًا %d متطوعًا إضافيًا لهذه المهمة. افتح الموعد لسدّ الثغرة."
-msgstr[5] "لا يزال مطلوبًا %d متطوع إضافي لهذه المهمة. افتح الموعد لسدّ الثغرة."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "لا مواعيد جديدة"
@@ -18976,16 +18862,6 @@ msgstr[2] "%d موعدان جديدان"
 msgstr[3] "%d مواعيد جديدة"
 msgstr[4] "%d موعدًا جديدًا"
 msgstr[5] "%d موعد جديد"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "لا متطوعين مطلوبين لموعد قادم."
-msgstr[1] "لا يزال مطلوبًا %d متطوع لموعد قادم."
-msgstr[2] "لا يزال مطلوبًا %d متطوعان لموعد قادم."
-msgstr[3] "لا يزال مطلوبًا %d متطوعين لموعد قادم."
-msgstr[4] "لا يزال مطلوبًا %d متطوعًا لموعد قادم."
-msgstr[5] "لا يزال مطلوبًا %d متطوع لموعد قادم."
 
 #: 
 msgid "%s Calendar"
@@ -20304,10 +20180,6 @@ msgid "How often"
 msgstr "كم مرة"
 
 #: 
-msgid "How to correct this"
-msgstr "كيفية التصحيح"
-
-#: 
 msgid "I can't"
 msgstr "لا أستطيع"
 
@@ -21072,10 +20944,6 @@ msgid "Open the occurrence"
 msgstr "فتح الموعد"
 
 #: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "افتح الموعد لتكليف الأشخاص الذين تحتاجهم."
-
-#: 
 msgid "Open this team"
 msgstr "فتح هذا الفريق"
 
@@ -21636,10 +21504,6 @@ msgstr "مسجَّل الدخول"
 #: 
 msgid "Signed up"
 msgstr "مسجَّل"
-
-#: 
-msgid "Sincerely"
-msgstr "مع خالص التحية"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
@@ -24780,4 +24644,20 @@ msgstr "الشهر الذي ينتقل فيه كل من لديه صف إلى ا�
 #: 
 msgid "Through Grade"
 msgstr "إلى الصف"
+
+#: 
+msgid "Invalid setting name or value"
+msgstr "اسم الإعداد أو قيمته غير صالح"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "لم تستجب خدمة الترميز الجغرافي — حاول مرة أخرى لاحقًا"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "يُعرض فقط البريد الإلكتروني الذي أرسلته."
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "تعذر إنشاء الأحداث المتكررة. تحقق من سجل التطبيق للحصول على التفاصيل."
 

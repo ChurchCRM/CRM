@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Portal\Auth\MemberSignInRule;
 use ChurchCRM\Portal\ThemeManager;
 use ChurchCRM\Portal\ThemeValidator;
 use ChurchCRM\Utils\InputUtils;
@@ -12,7 +13,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
  *
  * Variables from the route: $themes, $activeTheme, $activeThemeExists,
  * $developerMode, $showCalendar, $showVolunteer, $allowBirthdayEdit, $stats,
- * $portalCalendars.
+ * $portalCalendars, $signIn, $csrfToken.
  *
  * Every theme was validated server-side by the route, so each entry carries a
  * badge on first paint without a round trip. The page's behaviour lives in
@@ -75,6 +76,11 @@ $themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration
         <li class="nav-item" role="presentation">
             <a class="nav-link" id="portal-settings-tab" data-bs-toggle="tab" href="#portal-settings" role="tab">
                 <i class="fa-solid fa-sliders me-2"></i><?= gettext('Settings') ?>
+            </a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="portal-signin-tab" data-bs-toggle="tab" href="#portal-signin" role="tab">
+                <i class="fa-solid fa-right-to-bracket me-2"></i><?= gettext('Sign-in') ?>
             </a>
         </li>
         <li class="nav-item" role="presentation">
@@ -154,6 +160,170 @@ $themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration
                     <div id="portalSettingsPanel"></div>
                 </div>
             </div>
+        </div>
+
+        <!-- ============================= Sign-in ============================ -->
+        <div class="tab-pane fade" id="portal-signin" role="tabpanel">
+            <?php
+            $signInValues = $signIn['values'];
+            $memberSignInOn = $signInValues['bMemberSignIn'] === '1';
+            $tickedRoles = MemberSignInRule::idList($signInValues['sMemberSignInFamilyRoles']);
+            $tickedClassifications = MemberSignInRule::idList($signInValues['sMemberSignInClassifications']);
+            $switchRow = static function (string $key, string $label, bool $on, array $tooltips, bool $disabled = false): string {
+                return '<label class="form-check form-switch mb-1">'
+                    . '<input class="form-check-input" type="checkbox" id="' . $key . '" name="' . $key . '" value="1"'
+                    . ($on ? ' checked' : '') . ($disabled ? ' disabled' : '') . '>'
+                    . '<span class="form-check-label fw-medium">' . InputUtils::escapeHTML($label) . '</span>'
+                    . '</label>'
+                    . '<div class="form-text mb-2">' . InputUtils::escapeHTML($tooltips[$key]) . '</div>'
+                    . '<div class="invalid-feedback d-block" data-error-for="' . $key . '"></div>';
+            };
+            $numberField = static function (string $key, string $label, string $value, int $min, int $max, array $tooltips): string {
+                return '<div class="mb-3">'
+                    . '<label class="form-label" for="' . $key . '">' . InputUtils::escapeHTML($label) . '</label>'
+                    . '<input type="number" class="form-control w-auto" id="' . $key . '" name="' . $key . '"'
+                    . ' min="' . $min . '" max="' . $max . '" step="1" required value="' . InputUtils::escapeAttribute($value) . '">'
+                    . '<div class="form-text">' . InputUtils::escapeHTML($tooltips[$key]) . '</div>'
+                    . '<div class="invalid-feedback d-block" data-error-for="' . $key . '"></div>'
+                    . '</div>';
+            };
+            ?>
+            <form id="memberSignInForm" novalidate autocomplete="off">
+                <div class="row row-cards">
+                    <div class="col-12">
+                        <div class="card" id="memberSignInCard">
+                            <div class="card-header">
+                                <h3 class="card-title mb-0">
+                                    <i class="fa-solid fa-envelope-open-text me-2"></i><?= gettext('Member sign-in') ?>
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <?= $switchRow('bMemberSignIn', gettext('Let members sign in with their email'), $memberSignInOn, $signIn['tooltips'], $signIn['emailProblem'] !== null && !$memberSignInOn) ?>
+                                <?php if ($signIn['emailProblem'] !== null): ?>
+                                    <div class="alert alert-warning mb-0 mt-2" id="memberSignInEmailProblem">
+                                        <i class="fa-solid fa-triangle-exclamation me-2"></i><?= InputUtils::escapeHTML($signIn['emailProblem']) ?>
+                                        <a href="<?= SystemURLs::getRootPath() ?>/admin/email" class="ms-1"><?= gettext('Set up email') ?></a>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-xl-6">
+                        <div class="card h-100" id="memberSignInWhoCard">
+                            <div class="card-header">
+                                <h3 class="card-title mb-0">
+                                    <i class="fa-solid fa-user-check me-2"></i><?= gettext('Who may sign in') ?>
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <p class="text-secondary">
+                                    <?= gettext('Member sign-in never lets in people who are deceased, inactive, in an inactive family, awaiting review or have Disable sign-in on. These choices decide who else may.') ?>
+                                </p>
+                                <fieldset class="mb-3">
+                                    <legend class="form-label"><?= gettext('Family Roles') ?></legend>
+                                    <div id="memberSignInFamilyRoles">
+                                        <?php foreach ($signIn['familyRoles'] as $role): ?>
+                                            <label class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="sMemberSignInFamilyRoles"
+                                                       id="memberSignInRole-<?= (int) $role['id'] ?>"
+                                                       value="<?= (int) $role['id'] ?>"
+                                                       <?= in_array((int) $role['id'], $tickedRoles, true) ? 'checked' : '' ?>>
+                                                <span class="form-check-label"><?= InputUtils::escapeHTML($role['name']) ?></span>
+                                            </label>
+                                        <?php endforeach; ?>
+                                    </div>
+                                    <div class="invalid-feedback d-block" data-error-for="sMemberSignInFamilyRoles"></div>
+                                </fieldset>
+                                <fieldset class="mb-3">
+                                    <legend class="form-label"><?= gettext('Classifications') ?></legend>
+                                    <div class="form-text mb-2"><?= gettext('This is where you decide about guests. The number is how many active people have each classification.') ?></div>
+                                    <div id="memberSignInClassifications">
+                                        <?php foreach ($signIn['classifications'] as $classification): ?>
+                                            <label class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="sMemberSignInClassifications"
+                                                       id="memberSignInClassification-<?= (int) $classification['id'] ?>"
+                                                       value="<?= (int) $classification['id'] ?>"
+                                                       <?= in_array((int) $classification['id'], $tickedClassifications, true) ? 'checked' : '' ?>>
+                                                <span class="form-check-label">
+                                                    <?= InputUtils::escapeHTML($classification['name']) ?>
+                                                    <span class="badge bg-secondary text-white ms-1" data-cy="classification-count"><?= (int) $classification['activeCount'] ?></span>
+                                                </span>
+                                            </label>
+                                        <?php endforeach; ?>
+                                    </div>
+                                    <div class="invalid-feedback d-block" data-error-for="sMemberSignInClassifications"></div>
+                                </fieldset>
+                                <?= $numberField('iMemberSignInMinAge', gettext('Minimum age'), $signInValues['iMemberSignInMinAge'], 0, 120, $signIn['tooltips']) ?>
+                            </div>
+                            <div class="card-footer text-secondary">
+                                <?= sprintf(gettext('People the saved settings let in: %s'), '<strong id="memberSignInMayCount">' . (int) $signIn['maySignInCount'] . '</strong>') ?>
+                                <div class="small"><?= gettext('Each of them also needs their own email that nobody else uses.') ?></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-xl-6">
+                        <div class="card mb-3" id="memberSignInSessionsCard">
+                            <div class="card-header">
+                                <h3 class="card-title mb-0">
+                                    <i class="fa-solid fa-clock me-2"></i><?= gettext('Codes, sessions and devices') ?>
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <?= $numberField('iSignInLinkMinutes', gettext('Link and code lifetime (minutes)'), $signInValues['iSignInLinkMinutes'], 1, 1440, $signIn['tooltips']) ?>
+                                <?= $numberField('iMemberSignInRequestsPerIP', gettext('Sign-in emails per IP address per hour'), $signInValues['iMemberSignInRequestsPerIP'], 0, 10000, $signIn['tooltips']) ?>
+                                <?= $numberField('iPortalIdleMinutes', gettext('Idle time (minutes)'), $signInValues['iPortalIdleMinutes'], 1, 1440, $signIn['tooltips']) ?>
+                                <?= $numberField('iRememberDeviceDays', gettext('Keep me signed in (days)'), $signInValues['iRememberDeviceDays'], 0, 365, $signIn['tooltips']) ?>
+                                <?= $switchRow('bPortalPasskeys', gettext('Passkeys'), $signInValues['bPortalPasskeys'] === '1', $signIn['tooltips']) ?>
+                                <?php if ($signIn['passkeyProblem'] !== null): ?>
+                                    <div class="text-warning small" id="memberSignInPasskeyProblem">
+                                        <i class="fa-solid fa-triangle-exclamation me-1"></i><?= InputUtils::escapeHTML($signIn['passkeyProblem']) ?>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                        <div class="card mb-3" id="memberSignInOfficeCard">
+                            <div class="card-header">
+                                <h3 class="card-title mb-0">
+                                    <i class="fa-solid fa-bell me-2"></i><?= gettext('Office list') ?>
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <label class="form-label" for="sMemberSignInNotificationRecipientIDs"><?= InputUtils::escapeHTML($signIn['tooltips']['sMemberSignInNotificationRecipientIDs']) ?></label>
+                                <select multiple class="form-select" id="sMemberSignInNotificationRecipientIDs" name="sMemberSignInNotificationRecipientIDs"
+                                        data-placeholder="<?= InputUtils::escapeAttribute(gettext('Type a name or email')) ?>">
+                                    <?php foreach ($signIn['officeRecipients'] as $recipient): ?>
+                                        <option value="<?= (int) $recipient['id'] ?>" selected><?= InputUtils::escapeHTML($recipient['text']) ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                                <div class="form-text"><?= gettext('Only people with their own email can be added.') ?></div>
+                                <div class="invalid-feedback d-block" data-error-for="sMemberSignInNotificationRecipientIDs"></div>
+                            </div>
+                        </div>
+
+                        <div class="card" id="memberSignInLoginAsCard">
+                            <div class="card-header">
+                                <h3 class="card-title mb-0">
+                                    <i class="fa-solid fa-user-secret me-2"></i><?= gettext('Login as User') ?>
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <?= $switchRow('bAllowLoginAsUser', gettext('Allow Login as User'), $signInValues['bAllowLoginAsUser'] === '1', $signIn['tooltips']) ?>
+                                <?= $switchRow('bLoginAsUserCanWrite', gettext('Allow changes during Login as User'), $signInValues['bLoginAsUserCanWrite'] === '1', $signIn['tooltips']) ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center flex-wrap gap-2 mt-3">
+                    <button type="submit" class="btn btn-primary" id="memberSignInSaveButton">
+                        <i class="fa-solid fa-floppy-disk me-2"></i><?= gettext('Save sign-in settings') ?>
+                    </button>
+                    <span class="text-secondary" id="memberSignInStatus" role="status"></span>
+                </div>
+            </form>
         </div>
 
         <!-- ============================= Themes ============================= -->
@@ -445,6 +615,7 @@ $themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration
     window.CRM.memberPortalAdmin = <?= InputUtils::jsonEncodeForScript([
         'activeTheme' => $activeTheme,
         'defaultThemeId' => ThemeManager::DEFAULT_THEME,
+        'csrfToken' => $csrfToken,
     ]) ?>;
 </script>
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/admin-member-portal.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>

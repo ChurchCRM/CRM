@@ -928,10 +928,6 @@ msgid "Voting Members"
 msgstr "Голосування членів"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Надання звіту (податкові звіти)"
-
-#: 
 msgid "Zero Givers"
 msgstr "Нульові дарувальники"
 
@@ -1729,14 +1725,6 @@ msgstr "Дозвіл"
 #: 
 msgid "System Settings"
 msgstr "Налаштування системи"
-
-#: 
-msgid "Tax Report"
-msgstr "Податковий звіт"
-
-#: 
-msgid "Calendar Year"
-msgstr "Календарний рік"
 
 #: 
 msgid "User Editor"
@@ -5479,10 +5467,6 @@ msgid "Submit Registration"
 msgstr "Надіслати реєстрацію"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Новий пароль створено та надіслано на вашу адресу електронної пошти."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Застосувати оновлення зараз"
 
@@ -5527,20 +5511,12 @@ msgid "Login Name is required"
 msgstr "Ім'я користувача обов'язкове"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Отримавши електронний лист, ви зможете увійти за допомогою тимчасового пароля та змінити його на зручний для вас."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Помилка скидання пароля"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Скидання пароля успішне"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Будь ласка, перевірте свою електронну пошту (включаючи папку спам), щоб знайти тимчасовий пароль."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -6332,10 +6308,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "Настроюваний звіт із фільтрацією за датою, фондом, сім'єю та способом оплати."
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Налаштуйте текст для податкових виписок."
-
-#: 
 msgid "Day"
 msgstr "День"
 
@@ -6416,20 +6388,12 @@ msgid "Generate"
 msgstr "Згенерувати"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Генерувати податкові виписки"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Створюйте податкові виписки. Можна друкувати або надсилати поштою."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "Генеруйте нагадування для сімей із заборгованістю за обіцянками."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "Звіти для податкових виписок, відстеження обіцянок та аналізу."
 
 #: 
 msgid "ID"
@@ -6612,10 +6576,6 @@ msgid "System Info"
 msgstr "Інформація про систему"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "Податкові звіти та звіти про пожертви"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "Текст податкового звіту"
 
@@ -6642,10 +6602,6 @@ msgstr "Оновити"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "Користувач має бути адміном або мати доступ до фінансів"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Перевірте дані церкви у податкових виписках."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9167,10 +9123,6 @@ msgstr "Створіть листи нагадування про обіцянк
 #: 
 msgid "Generate reports on group membership and activities"
 msgstr "Створіть звіти про членство в групі та діяльність"
-
-#: 
-msgid "Generate tax statement documents for donors"
-msgstr "Створіть податкові документи для донорів"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -12372,10 +12324,6 @@ msgstr "Електронна пошта вимкнена"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "Електронна пошта вимкнена. Налаштуйте електронну пошту перед скиданням паролів або скористайтеся Зміна пароля."
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Введіть один із резервних кодів відновлення"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"
@@ -16001,10 +15949,6 @@ msgid "Please confirm your family information"
 msgstr "Будь ласка, підтвердьте інформацію про вашу сімʼю"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "Будь ласка, надішліть вашу наступну пожертву на %s"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Будь ласка, оберіть іншу сімʼю, з якою повʼязати ці пожертви"
 
@@ -18041,14 +17985,6 @@ msgid "{{minutes}} min left"
 msgstr "Залишилося {{minutes}} хв"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d податковий документ успішно надіслано сім'ї."
-
-#: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d Звіт про пожертви"
-
-#: 
 msgid "All classifications"
 msgstr "Усі класифікації"
 
@@ -18081,28 +18017,8 @@ msgid "Columns per Page"
 msgstr "Стовпців на сторінку"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "Шановна родина %s,\n"
-"\n"
-"До цього листа додано ваш звіт про пожертви №%d від %s.\n"
-"\n"
-"Якщо у вас є питання, будь ласка, зв'яжіться з офісом церкви.\n"
-"\n"
-"Дякуємо за вашу щедрість."
-
-#: 
 msgid "Download CSV"
 msgstr "Завантажити CSV"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "Надіслати електронною поштою %d податковий документ"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18205,10 +18121,6 @@ msgid "Pledged"
 msgstr "Обіцяне"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "Друк %d податковий документ"
-
-#: 
 msgid "Recent Friends"
 msgstr "Недавні друзі"
 
@@ -18233,24 +18145,8 @@ msgid "Single Pages"
 msgstr "Окремі сторінки"
 
 #: 
-msgid "Tax Documents"
-msgstr "Податкові документи"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "Не вдалося надіслати лист із податковим документом. Перевірте налаштування поштового сервера."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "Дві сторінки половинного розміру поруч на кожному аркуші в альбомній орієнтації в порядку буклета. Друкуйте з обох боків із перегортанням по короткому краю, потім складіть стос навпіл. Стовпці рахуються на півсторінки."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "Неможливо надіслати податковий документ електронною поштою: за цей рік не знайдено даних про платежі."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "Неможливо надіслати податковий документ електронною поштою: для цієї родини не вказано адресу електронної пошти."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -18927,28 +18823,12 @@ msgstr[2] "Призначено %d волонтерів за замовчува�
 msgstr[3] "Призначено %d волонтера за замовчуванням"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Для цієї позиції все ще потрібен ще %d волонтер. Відкрийте проведення, щоб закрити прогалину."
-msgstr[1] "Для цієї позиції все ще потрібні ще %d волонтери. Відкрийте проведення, щоб закрити прогалину."
-msgstr[2] "Для цієї позиції все ще потрібно ще %d волонтерів. Відкрийте проведення, щоб закрити прогалину."
-msgstr[3] "Для цієї позиції все ще потрібно ще %d волонтера. Відкрийте проведення, щоб закрити прогалину."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d нове проведення"
 msgstr[1] "%d нові проведення"
 msgstr[2] "%d нових проведень"
 msgstr[3] "%d нового проведення"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Для майбутнього проведення все ще потрібен %d волонтер."
-msgstr[1] "Для майбутнього проведення все ще потрібні %d волонтери."
-msgstr[2] "Для майбутнього проведення все ще потрібно %d волонтерів."
-msgstr[3] "Для майбутнього проведення все ще потрібно %d волонтера."
 
 #: 
 msgid "%s Calendar"
@@ -20261,10 +20141,6 @@ msgid "How often"
 msgstr "Як часто"
 
 #: 
-msgid "How to correct this"
-msgstr "Як це виправити"
-
-#: 
 msgid "I can't"
 msgstr "Не зможу"
 
@@ -21027,10 +20903,6 @@ msgid "Open the occurrence"
 msgstr "Відкрити проведення"
 
 #: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Відкрийте проведення, щоб призначити потрібних людей."
-
-#: 
 msgid "Open this team"
 msgstr "Відкрити цю команду"
 
@@ -21589,10 +21461,6 @@ msgstr "Вхід виконано"
 #: 
 msgid "Signed up"
 msgstr "Записано"
-
-#: 
-msgid "Sincerely"
-msgstr "З повагою"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
@@ -24725,4 +24593,20 @@ msgstr "Місяць, у якому всі, хто має клас, перехо
 #: 
 msgid "Through Grade"
 msgstr "До класу"
+
+#: 
+msgid "Invalid setting name or value"
+msgstr "Неприпустима назва або значення налаштування"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Служба геокодування не відповіла — повторіть спробу пізніше"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Відображається лише надісланий вами електронний лист."
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Не вдалося створити повторювані події. Деталі див. у журналі програми."
 

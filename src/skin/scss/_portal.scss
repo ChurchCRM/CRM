@@ -262,7 +262,7 @@ html {
     padding: 0.1rem 0.5rem;
     border-radius: 999px;
     background-color: var(--portal-accent);
-    color: var(--portal-text);
+    color: var(--portal-warning-contrast);
     font-size: 0.75rem;
 }
 
@@ -345,7 +345,7 @@ html {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-block-end: 0;
+    margin-block: 1rem 0;
 }
 
 // Avatars --------------------------------------------------------------------
@@ -492,17 +492,26 @@ html {
     font-size: 0.875rem;
 }
 
+.portal-member-contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.125rem 0.75rem;
+    font-size: 0.875rem;
+    overflow-wrap: anywhere;
+}
+
 .portal-member-badge {
     padding: 0.1rem 0.6rem;
     border-radius: 999px;
     background-color: var(--portal-accent);
-    color: var(--portal-text);
+    color: var(--portal-warning-contrast);
     font-size: 0.75rem;
 }
 
 .portal-member-badge-pending {
     background-color: transparent;
     border: 1px solid var(--portal-warning);
+    color: var(--portal-text);
 }
 
 // Forms ----------------------------------------------------------------------
@@ -585,6 +594,32 @@ textarea.portal-input {
 .portal-choice input {
     inline-size: 1.15rem;
     block-size: 1.15rem;
+}
+
+// Member sign-in ---------------------------------------------------------------
+
+.portal-signin {
+    inline-size: 100%;
+    max-inline-size: 30rem;
+    margin-inline: auto;
+}
+
+// Two classes: the core bundle caps `input[type=text]` at 100%, which outranks one.
+.portal-input.portal-signin-code {
+    max-inline-size: 12rem;
+    font-size: 1.5rem;
+    letter-spacing: 0.3em;
+    font-variant-numeric: tabular-nums;
+}
+
+.portal-signin-staff {
+    margin: 0;
+    text-align: center;
+    font-size: 0.875rem;
+}
+
+.portal-signin-staff a {
+    color: var(--portal-muted);
 }
 
 // Dialogs --------------------------------------------------------------------
