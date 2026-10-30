@@ -324,7 +324,12 @@ final class SignInEmailPolicy
     /**
      * Spends an emailed link and applies it: a `change` link makes its address
      * the person's proven email, a `confirm` link confirms the unconfirmed
-     * address it names. Each link works once.
+     * address it names. Each link works once, and a link whose change fails to
+     * save stays usable.
+     *
+     * A `change` link is checked against who may change the email again: a staff
+     * account or grants given since it was sent need an administrator. Behind a
+     * STAFF portal session the staff actor is the person's own account.
      *
      * @return PersonEmailChange|null the link used, or null when it can't be used
      */
@@ -336,17 +341,22 @@ final class SignInEmailPolicy
         }
 
         $now = $this->now();
-        $spent = $this->openLinks(null, null, $now)
-            ->filterById($link->getId())
-            ->update(['UsedAt' => $now->format('Y-m-d H:i:s')]);
-        $person = PersonQuery::create()->findPk((int) $link->getPersonId());
-        if ($spent !== 1 || !$person instanceof Person) {
-            return null;
-        }
+        $connection = Propel::getWriteConnection(PersonSigninTableMap::DATABASE_NAME);
+        $connection->beginTransaction();
+        try {
+            $spent = $this->openLinks(null, null, $now)
+                ->filterById($link->getId())
+                ->update(['UsedAt' => $now->format('Y-m-d H:i:s')], $connection);
+            $person = PersonQuery::create()->findPk((int) $link->getPersonId(), $connection);
+            $applied = $spent === 1 && $person instanceof Person && ($link->getKind() === self::KIND_CHANGE
+                ? $this->memberMayChange($person, UserQuery::create()->findPk((int) $person->getId(), $connection)) && $this->applyChangeLink($person, $link, $now)
+                : $this->applyConfirmLink($person, $link, $now));
+            $connection->commit();
+        } catch (Throwable $e) {
+            $connection->rollBack();
 
-        $applied = $link->getKind() === self::KIND_CHANGE
-            ? $this->applyChangeLink($person, $link, $now)
-            : $this->applyConfirmLink($person, $link, $now);
+            throw $e;
+        }
 
         return $applied ? $link : null;
     }
@@ -507,14 +517,16 @@ final class SignInEmailPolicy
     /**
      * The person's previous address, and the address they proved by signing in
      * when that is another one. Only the proven address gets the link that
-     * confirms an unconfirmed replacement.
+     * confirms an unconfirmed replacement, even when the replacement is the
+     * proven address again (A to B, then back to A).
      */
     private function sendNotices(Person $person, ?PersonSignin $state, string $oldEmail, string $newEmail, string $by, bool $withConfirmLink): void
     {
         $proven = trim((string) $state?->getProvenEmail());
         $recipients = [];
         foreach ([$oldEmail, $proven] as $address) {
-            if ($address !== '' && !self::sameAddress($address, $newEmail)) {
+            $getsConfirmLink = $withConfirmLink && $address === $proven;
+            if ($address !== '' && ($getsConfirmLink || !self::sameAddress($address, $newEmail))) {
                 $recipients[MemberSignInRule::normalizeEmail($address)] = $address;
             }
         }
