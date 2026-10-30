@@ -92,7 +92,7 @@ $group->get('/giving/statement', function (Request $request, Response $response)
         $statements = [GivingStatementService::emptyStatement($family, $isHousehold ? $family->getName() : $actor->getFullName())];
     }
 
-    $data = GivingStatementService::document($statements, $criteria['dateStart'], $criteria['dateEnd'], 'graphic');
+    $data = GivingStatementService::document($statements, $criteria['dateStart'], $criteria['dateEnd']);
     $disposition = GivingStatementService::contentDisposition(GivingStatementService::fileLabel($year, $family->getName()));
 
     $pdf = (new MpdfRenderer())->renderToString('tax-report', $data);

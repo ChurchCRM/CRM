@@ -18859,25 +18859,11 @@ msgstr[1] "%d voluntari impliciți repartizați"
 msgstr[2] "%d de voluntari impliciți repartizați"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Încă un %d voluntar este necesar pentru acest post. Deschideți ocurența pentru a completa golul."
-msgstr[1] "Încă %d voluntari sunt necesari pentru acest post. Deschideți ocurența pentru a completa golul."
-msgstr[2] "Încă %d de voluntari sunt necesari pentru acest post. Deschideți ocurența pentru a completa golul."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d ocurență nouă"
 msgstr[1] "%d ocurențe noi"
 msgstr[2] "%d de ocurențe noi"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Încă %d voluntar este necesar pentru o ocurență viitoare."
-msgstr[1] "Încă %d voluntari sunt necesari pentru o ocurență viitoare."
-msgstr[2] "Încă %d de voluntari sunt necesari pentru o ocurență viitoare."
 
 #: 
 msgid "%s Calendar"
@@ -20946,10 +20932,6 @@ msgstr "Deschide slujirea"
 #: 
 msgid "Open the occurrence"
 msgstr "Deschide ocurența"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Deschideți ocurența pentru a repartiza persoanele de care aveți nevoie."
 
 #: 
 msgid "Open this team"
