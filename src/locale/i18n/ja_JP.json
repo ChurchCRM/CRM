@@ -4537,14 +4537,8 @@
   "%d default volunteer assigned": {
     "other": "%d デフォルト ボランティアが割り当てられました"
   },
-  "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
-    "other": "このポジションにはさらに %d 人のボランティアが必要です。ギャップを埋めるために発生を開きます。"
-  },
   "%d new occurrence": {
     "other": "%d 新規発生"
-  },
-  "%d volunteer is still needed for an upcoming occurrence.": {
-    "other": "今後の発生のために %d 人のボランティアが必要です。"
   },
   "%s Calendar": "%s カレンダー",
   "%s Family": "%s 家族",
@@ -5063,7 +5057,6 @@
   "Open the Ministry Dashboard": "ミニストリーダッシュボードを開く",
   "Open the ministry": "ミニストリーを開く",
   "Open the occurrence": "開催回を開く",
-  "Open the occurrence to assign the people you need.": "開催回を開いて、必要な人を割り当ててください。",
   "Open this team": "このチームを開く",
   "Opening a calendar to ministries requires Add Events permission": "カレンダーをミニストリーに公開するには、行事追加権限が必要です",
   "Optional. Everyone qualified for a position of this team becomes a teacher of the class, and the class page no longer changes its teachers.": "任意。このチームの役割の資格を持つ全員が、クラスの教師になり、クラスのページでは教師を変更できなくなります。",

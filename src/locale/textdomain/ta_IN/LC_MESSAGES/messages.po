@@ -18795,22 +18795,10 @@ msgstr[0] "%d இயல்புநிலை தன்னார்வலர் �
 msgstr[1] "%d இயல்புநிலை தன்னார்வலர்கள் நியமிக்கப்பட்டனர்"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "இந்தப் பொறுப்புக்கு இன்னும் %d தன்னார்வலர் தேவை. இடைவெளியை நிரப்ப நிகழ்வைத் திறக்கவும்."
-msgstr[1] "இந்தப் பொறுப்புக்கு இன்னும் %d தன்னார்வலர்கள் தேவை. இடைவெளியை நிரப்ப நிகழ்வைத் திறக்கவும்."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d புதிய நிகழ்வு"
 msgstr[1] "%d புதிய நிகழ்வுகள்"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "வரவிருக்கும் நிகழ்வுக்கு இன்னும் %d தன்னார்வலர் தேவை."
-msgstr[1] "வரவிருக்கும் நிகழ்வுக்கு இன்னும் %d தன்னார்வலர்கள் தேவை."
 
 #: 
 msgid "%s Calendar"
@@ -20875,10 +20863,6 @@ msgstr "ஊழியத்தைத் திற"
 #: 
 msgid "Open the occurrence"
 msgstr "நிகழ்வைத் திற"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "உங்களுக்குத் தேவையான நபர்களை நியமிக்க நிகழ்வைத் திறக்கவும்."
 
 #: 
 msgid "Open this team"
