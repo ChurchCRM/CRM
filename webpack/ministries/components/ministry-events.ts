@@ -383,15 +383,17 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
       ].join("");
     }
 
-    const dow = field<HTMLSelectElement>("dow");
-    if (dow && dow.options.length === 0) {
-      // 2023-01-01 was a Sunday, so day `i` of that week names WEEKDAYS[i] in the reader's language.
-      dow.innerHTML = WEEKDAYS.map(
-        (day, index) =>
-          `<option value="${day}">${escapeHtml(
-            new Date(2023, 0, 1 + index).toLocaleDateString(appLocale(), { weekday: "long" }),
-          )}</option>`,
-      ).join("");
+    for (const name of ["dow", "wom-dow"]) {
+      const dow = field<HTMLSelectElement>(name);
+      if (dow && dow.options.length === 0) {
+        // 2023-01-01 was a Sunday, so day `i` of that week names WEEKDAYS[i] in the reader's language.
+        dow.innerHTML = WEEKDAYS.map(
+          (day, index) =>
+            `<option value="${day}">${escapeHtml(
+              new Date(2023, 0, 1 + index).toLocaleDateString(appLocale(), { weekday: "long" }),
+            )}</option>`,
+        ).join("");
+      }
     }
 
     const month = field<HTMLSelectElement>("doy-month");
@@ -440,6 +442,7 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
     const type = value("recur-type");
     show(field("dow-row"), type === "weekly");
     show(field("dom-row"), type === "monthly");
+    show(field("wom-row"), type === "monthly-weekday");
     show(field("doy-row"), type === "yearly");
     renderPreview();
   }
@@ -448,6 +451,9 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
     const type = value("recur-type") as Recurrence["type"];
     if (type === "monthly") {
       return { type, dom: Number(value("dom")) };
+    }
+    if (type === "monthly-weekday") {
+      return { type, wom: Number(value("wom")), dow: value("wom-dow") };
     }
     if (type === "yearly") {
       return { type, doy: `${value("doy-month")}-${value("doy-day").padStart(2, "0")}` };
@@ -470,6 +476,19 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
       day.setDate(day.getDate() + ((WEEKDAYS.indexOf(rule.dow ?? "Sunday") - day.getDay() + 7) % 7));
       for (; day <= end && dates.length <= MAX_SERIES_EVENTS; day.setDate(day.getDate() + 7)) {
         dates.push(new Date(day));
+      }
+    } else if (rule.type === "monthly-weekday") {
+      const weekday = WEEKDAYS.indexOf(rule.dow ?? "Sunday");
+      for (
+        const month = new Date(start.getFullYear(), start.getMonth(), 1, 12);
+        month <= end && dates.length <= MAX_SERIES_EVENTS;
+        month.setMonth(month.getMonth() + 1)
+      ) {
+        const day = 1 + ((weekday - month.getDay() + 7) % 7) + ((rule.wom ?? 1) - 1) * 7;
+        const date = new Date(month.getFullYear(), month.getMonth(), day, 12);
+        if (date.getMonth() === month.getMonth() && date >= start && date <= end) {
+          dates.push(date);
+        }
       }
     } else if (rule.type === "monthly") {
       for (
@@ -522,6 +541,12 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
       if (rule.type === "weekly") {
         text = tText("Creates {{total}} events, every {{day}} from {{first}} to {{last}}", {
           ...range,
+          day: dates[0].toLocaleDateString(appLocale(), { weekday: "long" }),
+        });
+      } else if (rule.type === "monthly-weekday") {
+        text = tText("Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}", {
+          ...range,
+          week: field<HTMLSelectElement>("wom")?.selectedOptions[0]?.textContent ?? "",
           day: dates[0].toLocaleDateString(appLocale(), { weekday: "long" }),
         });
       } else if (rule.type === "monthly") {
@@ -622,6 +647,7 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
     set("end-time", "10:00");
     set("recur-type", "weekly");
     set("dom", "1");
+    set("wom", "1");
     set("doy-month", "01");
     set("doy-day", "1");
 
@@ -895,7 +921,7 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
       field(name)?.addEventListener("change", syncKind);
     }
     field("recur-type")?.addEventListener("change", syncRecurrence);
-    for (const name of ["dow", "dom", "doy-month", "doy-day"]) {
+    for (const name of ["dow", "dom", "wom", "wom-dow", "doy-month", "doy-day"]) {
       field(name)?.addEventListener("input", renderPreview);
       field(name)?.addEventListener("change", renderPreview);
     }

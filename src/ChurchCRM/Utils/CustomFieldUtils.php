@@ -8,7 +8,7 @@ use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 
 /**
- * Utility class for custom field display, form rendering, validation, and SQL generation.
+ * Utility class for custom field display, form rendering, and validation.
  * Migrated from legacy Functions.php — logic preserved as-is.
  */
 class CustomFieldUtils
@@ -149,54 +149,55 @@ class CustomFieldUtils
      */
     public static function renderForm($type, string $fieldname, $data, ?string $special, bool $bFirstPassFlag): void
     {
+        $fieldAttr = InputUtils::escapeAttribute($fieldname);
         switch ($type) {
             case 1:
                 echo '<div class="mb-3">' .
-                '<div class="form-check"><input type="radio" class="form-check-input" id="' . $fieldname . '_yes" name="' . $fieldname . '" value="true"' . ($data === 'true' ? ' checked' : '') . '><label class="form-check-label" for="' . $fieldname . '_yes">' . gettext('Yes') . '</label></div>' .
-                '<div class="form-check"><input type="radio" class="form-check-input" id="' . $fieldname . '_no" name="' . $fieldname . '" value="false"' . ($data === 'false' ? ' checked' : '') . '><label class="form-check-label" for="' . $fieldname . '_no">' . gettext('No') . '</label></div>' .
-                '<div class="form-check"><input type="radio" class="form-check-input" id="' . $fieldname . '_unknown" name="' . $fieldname . '" value=""' . (strlen($data) === 0 ? ' checked' : '') . '><label class="form-check-label" for="' . $fieldname . '_unknown">' . gettext('Unknown') . '</label></div>' .
+                '<div class="form-check"><input type="radio" class="form-check-input" id="' . $fieldAttr . '_yes" name="' . $fieldAttr . '" value="true"' . ($data === 'true' ? ' checked' : '') . '><label class="form-check-label" for="' . $fieldAttr . '_yes">' . gettext('Yes') . '</label></div>' .
+                '<div class="form-check"><input type="radio" class="form-check-input" id="' . $fieldAttr . '_no" name="' . $fieldAttr . '" value="false"' . ($data === 'false' ? ' checked' : '') . '><label class="form-check-label" for="' . $fieldAttr . '_no">' . gettext('No') . '</label></div>' .
+                '<div class="form-check"><input type="radio" class="form-check-input" id="' . $fieldAttr . '_unknown" name="' . $fieldAttr . '" value=""' . (strlen($data) === 0 ? ' checked' : '') . '><label class="form-check-label" for="' . $fieldAttr . '_unknown">' . gettext('Unknown') . '</label></div>' .
                 '</div>';
                 break;
 
             case 2:
                 echo '<div class="input-group">' .
                 '<span class="input-group-text"><i class="fa-solid fa-calendar"></i></span>' .
-                '<input class="form-control date-picker" type="text" id="' . $fieldname . '" name="' . $fieldname . '" value="' . DateTimeUtils::formatForDatePicker($data) . '" placeholder="' . SystemConfig::getValueForAttr("sDatePickerPlaceHolder") . '"> ' .
+                '<input class="form-control date-picker" type="text" id="' . $fieldAttr . '" name="' . $fieldAttr . '" value="' . InputUtils::escapeAttribute(DateTimeUtils::formatForDatePicker($data)) . '" placeholder="' . SystemConfig::getValueForAttr("sDatePickerPlaceHolder") . '"> ' .
                 '</div>';
                 break;
 
             case 3:
                 echo '<div class="input-group">' .
                 '<span class="input-group-text"><i class="fa-solid fa-font"></i></span>' .
-                '<input class="form-control" type="text" id="' . $fieldname . '" name="' . $fieldname . '" maxlength="50" value="' . InputUtils::escapeAttribute($data) . '">' .
+                '<input class="form-control" type="text" id="' . $fieldAttr . '" name="' . $fieldAttr . '" maxlength="50" value="' . InputUtils::escapeAttribute($data) . '">' .
                 '</div>';
                 break;
 
             case 4:
                 echo '<div class="input-group">' .
                 '<span class="input-group-text"><i class="fa-solid fa-align-left"></i></span>' .
-                '<textarea class="form-control" id="' . $fieldname . '" name="' . $fieldname . '" rows="2" maxlength="100">' . InputUtils::escapeHTML($data) . '</textarea>' .
+                '<textarea class="form-control" id="' . $fieldAttr . '" name="' . $fieldAttr . '" rows="2" maxlength="100">' . InputUtils::escapeHTML($data) . '</textarea>' .
                 '</div>';
                 break;
 
             case 5:
                 echo '<div class="input-group">' .
                 '<span class="input-group-text"><i class="fa-solid fa-paragraph"></i></span>' .
-                '<textarea class="form-control" id="' . $fieldname . '" name="' . $fieldname . '" rows="4" maxlength="65535">' . InputUtils::escapeHTML($data) . '</textarea>' .
+                '<textarea class="form-control" id="' . $fieldAttr . '" name="' . $fieldAttr . '" rows="4" maxlength="65535">' . InputUtils::escapeHTML($data) . '</textarea>' .
                 '</div>';
                 break;
 
             case 6:
                 echo '<div class="input-group">' .
                 '<span class="input-group-text"><i class="fa-solid fa-calendar-days"></i></span>' .
-                '<input class="form-control" type="text" id="' . $fieldname . '" name="' . $fieldname . '" maxlength="4" value="' . InputUtils::escapeAttribute($data) . '" placeholder="YYYY">' .
+                '<input class="form-control" type="text" id="' . $fieldAttr . '" name="' . $fieldAttr . '" maxlength="4" value="' . InputUtils::escapeAttribute($data) . '" placeholder="YYYY">' .
                 '</div>';
                 break;
 
             case 7:
                 echo '<div class="input-group">' .
                 '<span class="input-group-text"><i class="fa-solid fa-leaf"></i></span>' .
-                '<select id="' . $fieldname . '" name="' . $fieldname . '" class="form-select">';
+                '<select id="' . $fieldAttr . '" name="' . $fieldAttr . '" class="form-select">';
                 echo '  <option value="none">' . gettext('Select Season') . '</option>';
                 echo '  <option value="winter"';
                 if ($data == 'winter') {
@@ -224,7 +225,7 @@ class CustomFieldUtils
             case 8:
                 echo '<div class="input-group">' .
                 '<span class="input-group-text"><i class="fa-solid fa-hashtag"></i></span>' .
-                '<input class="form-control" type="text" id="' . $fieldname . '" name="' . $fieldname . '" maxlength="11" value="' . InputUtils::escapeAttribute($data) . '">' .
+                '<input class="form-control" type="text" id="' . $fieldAttr . '" name="' . $fieldAttr . '" maxlength="11" value="' . InputUtils::escapeAttribute($data) . '">' .
                 '</div>';
                 break;
 
@@ -240,7 +241,7 @@ class CustomFieldUtils
 
                 echo '<div class="input-group">';
                 echo '<span class="input-group-text"><i class="fa-solid fa-person-half-dress"></i></span>';
-                echo '<select id="' . $fieldname . '" name="' . $fieldname . '" class="form-select">';
+                echo '<select id="' . $fieldAttr . '" name="' . $fieldAttr . '" class="form-select">';
                 echo '<option value="0"' . ($data <= 0 ? ' selected' : '') . '>' . gettext('Unassigned') . '</option>';
                 echo '<option value="" disabled>-----------------------</option>';
 
@@ -255,7 +256,7 @@ class CustomFieldUtils
             case 10:
                 echo '<div class="input-group">';
                 echo '<span class="input-group-text"><i class="fa-solid fa-dollar-sign"></i></span>';
-                echo '<input class="form-control" type="text" id="' . $fieldname . '" name="' . $fieldname . '" maxlength="13" value="' . InputUtils::escapeAttribute($data) . '">';
+                echo '<input class="form-control" type="text" id="' . $fieldAttr . '" name="' . $fieldAttr . '" maxlength="13" value="' . InputUtils::escapeAttribute($data) . '">';
                 echo '</div>';
                 break;
 
@@ -269,12 +270,12 @@ class CustomFieldUtils
 
                 echo '<div class="input-group">';
                 echo '<span class="input-group-text"><i class="fa-solid fa-phone"></i></span>';
-                echo '<input class="form-control" type="text" id="' . $fieldname . '" name="' . $fieldname . '" maxlength="30" value="' . InputUtils::escapeAttribute($data) . '" data-phone-mask=\'{"mask": "' . SystemConfig::getValueForAttr('sPhoneFormat') . '"}\'>';
+                echo '<input class="form-control" type="text" id="' . $fieldAttr . '" name="' . $fieldAttr . '" maxlength="30" value="' . InputUtils::escapeAttribute($data) . '" data-phone-mask=\'{"mask": "' . SystemConfig::getValueForAttr('sPhoneFormat') . '"}\'>';
                 echo '<span class="input-group-text gap-2">';
-                echo '<input class="form-check-input mt-0" type="checkbox" id="' . $fieldname . 'noformat" name="' . $fieldname . 'noformat" value="1"';
+                echo '<input class="form-check-input mt-0" type="checkbox" id="' . $fieldAttr . 'noformat" name="' . $fieldAttr . 'noformat" value="1"';
                 echo $checked;
                 echo '>';
-                echo '<label class="form-check-label" for="' . $fieldname . 'noformat">' . gettext('No format') . '</label>';
+                echo '<label class="form-check-label" for="' . $fieldAttr . 'noformat">' . gettext('No format') . '</label>';
                 echo '</span></div>';
                 break;
 
@@ -286,7 +287,7 @@ class CustomFieldUtils
 
                 echo '<div class="input-group">';
                 echo '<span class="input-group-text"><i class="fa-solid fa-list"></i></span>';
-                echo '<select class="form-select" id="' . $fieldname . '" name="' . $fieldname . '">';
+                echo '<select class="form-select" id="' . $fieldAttr . '" name="' . $fieldAttr . '">';
                 echo '<option value="0">' . gettext('Unassigned') . '</option>';
                 echo '<option value="" disabled>-----------------------</option>';
 
@@ -382,82 +383,48 @@ class CustomFieldUtils
     }
 
     /**
-     * Generates SQL for a custom field update.
-     * Migrated from sqlCustomField() in Functions.php.
+     * Plain-text form input for a custom field: tags stripped, whitespace trimmed, no SQL escaping.
+     * CustomFieldService writes the values through Propel.
      */
-    public static function buildSql(string &$sSQL, $type, $data, string $col_Name, $special): void
+    public static function cleanInput(mixed $raw): string
+    {
+        return is_string($raw) ? InputUtils::sanitizeText($raw) : '';
+    }
+
+    /**
+     * Converts a validated form value to what the column stores; null stores NULL.
+     */
+    public static function toColumnValue(int $type, string $data): ?string
     {
         switch ($type) {
             case 1:
-                switch ($data) {
-                    case 'false':
-                        $data = "'false'";
-                        break;
-                    case 'true':
-                        $data = "'true'";
-                        break;
-                    default:
-                        $data = 'NULL';
-                        break;
-                }
-                $sSQL .= $col_Name . ' = ' . $data . ', ';
-                break;
-
-            case 2:
-                if (strlen($data) > 0) {
-                    $sSQL .= $col_Name . ' = "' . $data . '", ';
-                } else {
-                    $sSQL .= $col_Name . ' = NULL, ';
-                }
-                break;
-
-            case 6:
-            case 10:
-            case 5:
-                if (strlen($data) > 0) {
-                    $sSQL .= $col_Name . " = '" . $data . "', ";
-                } else {
-                    $sSQL .= $col_Name . ' = NULL, ';
-                }
-                break;
+                return $data === 'false' || $data === 'true' ? $data : null;
 
             case 7:
-                if ($data != 'none') {
-                    $sSQL .= $col_Name . " = '" . $data . "', ";
-                } else {
-                    $sSQL .= $col_Name . ' = NULL, ';
-                }
-                break;
+                return $data !== 'none' && $data !== '' ? $data : null;
 
             case 8:
             case 9:
             case 12:
-                $rawValue = is_string($data) ? trim($data) : $data;
-                if ($rawValue === '' || $rawValue === null) {
-                    $sSQL .= $col_Name . ' = NULL, ';
-                } else {
-                    $validatedInt = filter_var($rawValue, FILTER_VALIDATE_INT);
-                    if ($validatedInt === false || $validatedInt === 0) {
-                        $sSQL .= $col_Name . ' = NULL, ';
-                    } else {
-                        $sSQL .= $col_Name . " = '" . $validatedInt . "', ";
-                    }
+                $rawValue = trim($data);
+                if ($rawValue === '') {
+                    return null;
                 }
-                break;
+                $validatedInt = filter_var($rawValue, FILTER_VALIDATE_INT);
 
+                return $validatedInt === false || $validatedInt === 0 ? null : (string) $validatedInt;
+
+            case 2:
             case 3:
             case 4:
+            case 5:
+            case 6:
+            case 10:
             case 11:
-                if (strlen($data) > 0) {
-                    $sSQL .= $col_Name . " = '" . $data . "', ";
-                } else {
-                    $sSQL .= $col_Name . ' = NULL, ';
-                }
-                break;
+                return strlen($data) > 0 ? $data : null;
 
             default:
-                $sSQL .= $col_Name . " = '" . $data . "', ";
-                break;
+                return $data;
         }
     }
 }

@@ -8,7 +8,7 @@ use ChurchCRM\Utils\DateTimeUtils;
  * Event-free recurrence date math.
  *
  * Produces the set of occurrence dates described by a recurrence pattern
- * (weekly / monthly / yearly) inside an inclusive date range. It knows nothing
+ * (weekly / monthly / Nth weekday of the month / yearly) inside an inclusive date range. It knows nothing
  * about events, calendars or the database, so any module that needs "the dates
  * this thing repeats on" can reuse it instead of growing another copy of the
  * same switch statement.
@@ -21,6 +21,9 @@ class RecurrenceDateGenerator
     public const RECUR_WEEKLY = 'weekly';
     public const RECUR_MONTHLY = 'monthly';
     public const RECUR_YEARLY = 'yearly';
+    public const RECUR_MONTHLY_WEEKDAY = 'monthly-weekday';
+
+    public const WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
     /**
      * Recurrence types this generator understands.
@@ -28,6 +31,7 @@ class RecurrenceDateGenerator
     public const SUPPORTED_RECUR_TYPES = [
         self::RECUR_WEEKLY,
         self::RECUR_MONTHLY,
+        self::RECUR_MONTHLY_WEEKDAY,
         self::RECUR_YEARLY,
     ];
 
@@ -37,16 +41,17 @@ class RecurrenceDateGenerator
      * Every returned DateTime is anchored at midnight — callers apply their own
      * time-of-day.
      *
-     * @param string      $recurType  One of: weekly, monthly, yearly
-     * @param string|null $dow        Day of week name (e.g. "Sunday") — used when $recurType is 'weekly'
+     * @param string      $recurType  One of: weekly, monthly, monthly-weekday, yearly
+     * @param string|null $dow        Day of week name (e.g. "Sunday") — used when $recurType is 'weekly' or 'monthly-weekday'
      * @param int|null    $dom        Day of month (1–31) — used when $recurType is 'monthly'
      * @param string|null $doy        Month-day string in MM-DD format (e.g. "04-12") — used when $recurType is 'yearly'
      * @param \DateTime   $rangeStart Inclusive start of the date range
      * @param \DateTime   $rangeEnd   Inclusive end of the date range
+     * @param int|null    $wom        Week of the month (1–5) — used when $recurType is 'monthly-weekday'
      *
      * @return \DateTime[] Occurrence dates in ascending order; empty for an unknown $recurType
      *
-     * @throws \InvalidArgumentException if $doy is not in MM-DD format
+     * @throws \InvalidArgumentException if $doy is not in MM-DD format, or $dow / $wom is invalid for 'monthly-weekday'
      */
     public function generate(
         string $recurType,
@@ -54,11 +59,13 @@ class RecurrenceDateGenerator
         ?int $dom,
         ?string $doy,
         \DateTime $rangeStart,
-        \DateTime $rangeEnd
+        \DateTime $rangeEnd,
+        ?int $wom = null
     ): array {
         return match ($recurType) {
             self::RECUR_WEEKLY => $this->generateWeeklyDates($dow ?? 'Sunday', $rangeStart, $rangeEnd),
             self::RECUR_MONTHLY => $this->generateMonthlyDates($dom ?? 1, $rangeStart, $rangeEnd),
+            self::RECUR_MONTHLY_WEEKDAY => $this->generateMonthlyWeekdayDates($wom ?? 1, $dow ?? 'Sunday', $rangeStart, $rangeEnd),
             self::RECUR_YEARLY => $this->generateYearlyDates($doy ?? '01-01', $rangeStart, $rangeEnd),
             default => [],
         };
@@ -133,6 +140,71 @@ class RecurrenceDateGenerator
         }
 
         return $dates;
+    }
+
+    /**
+     * Generate "Nth weekday of the month" occurrence dates within a range.
+     *
+     * One event per month, on the $wom-th $dow (e.g. the 2nd Tuesday). Months
+     * without a 5th such weekday are skipped, like Feb 29 for yearly.
+     *
+     * @param int       $wom        Week of the month (1–5)
+     * @param string    $dow        Day name, e.g. "Sunday"
+     * @param \DateTime $rangeStart Inclusive start
+     * @param \DateTime $rangeEnd   Inclusive end
+     *
+     * @return \DateTime[]
+     *
+     * @throws \InvalidArgumentException if $wom is not 1–5 or $dow is not a day name
+     */
+    private function generateMonthlyWeekdayDates(int $wom, string $dow, \DateTime $rangeStart, \DateTime $rangeEnd): array
+    {
+        if ($wom < 1 || $wom > 5) {
+            throw new \InvalidArgumentException(gettext('Week of the month must be from 1 to 5'));
+        }
+        $targetDay = self::weekdayIndex($dow);
+        if ($targetDay === null) {
+            throw new \InvalidArgumentException(gettext('Invalid day of the week'));
+        }
+
+        $dates = [];
+        $current = clone $rangeStart;
+        $current->setDate((int) $current->format('Y'), (int) $current->format('m'), 1);
+        $current->setTime(0, 0, 0);
+
+        while ($current <= $rangeEnd) {
+            $year = (int) $current->format('Y');
+            $month = (int) $current->format('m');
+            $firstWeekday = (int) $current->format('w');
+            $day = 1 + (($targetDay - $firstWeekday + 7) % 7) + ($wom - 1) * 7;
+
+            if ($day <= DateTimeUtils::getDaysInMonth($month, $year)) {
+                $occurrence = new \DateTime(sprintf('%04d-%02d-%02d', $year, $month, $day));
+                $occurrence->setTime(0, 0, 0);
+
+                if ($occurrence >= $rangeStart && $occurrence <= $rangeEnd) {
+                    $dates[] = $occurrence;
+                }
+            }
+
+            $current->modify('+1 month');
+        }
+
+        return $dates;
+    }
+
+    /**
+     * The 0 (Sunday) – 6 (Saturday) index of a day name, case-insensitive; null when it is not one.
+     */
+    public static function weekdayIndex(string $dow): ?int
+    {
+        foreach (self::WEEKDAYS as $index => $weekday) {
+            if (strcasecmp($weekday, trim($dow)) === 0) {
+                return $index;
+            }
+        }
+
+        return null;
     }
 
     /**

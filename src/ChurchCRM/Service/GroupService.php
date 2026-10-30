@@ -58,21 +58,7 @@ class GroupService
             FunctionsUtils::runQuery($sSQL);
         }
 
-        // Reset any group specific property fields of type "Person from Group" with this person assigned
-        $sSQL = 'SELECT grp_ID, prop_Field FROM groupprop_master WHERE type_ID = 9 AND prop_Special = ' . $groupID;
-        $result = FunctionsUtils::runQuery($sSQL);
-        while ($aRow = mysqli_fetch_array($result)) {
-            $sSQL = 'UPDATE groupprop_' . $aRow['grp_ID'] . ' SET ' . $aRow['prop_Field'] . ' = NULL WHERE ' . $aRow['prop_Field'] . ' = ' . $personID;
-            FunctionsUtils::runQuery($sSQL);
-        }
-
-        // Reset any custom person fields of type "Person from Group" with this person assigned
-        $sSQL = 'SELECT custom_Field FROM person_custom_master WHERE type_ID = 9 AND custom_Special = ' . $groupID;
-        $result = FunctionsUtils::runQuery($sSQL);
-        while ($aRow = mysqli_fetch_array($result)) {
-            $sSQL = 'UPDATE person_custom SET ' . $aRow['custom_Field'] . ' = NULL WHERE ' . $aRow['custom_Field'] . ' = ' . $personID;
-            FunctionsUtils::runQuery($sSQL);
-        }
+        (new CustomFieldService())->clearGroupMemberReferences((int) $groupID, (int) $personID);
     }
 
     /**

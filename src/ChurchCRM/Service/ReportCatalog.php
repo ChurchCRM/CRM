@@ -48,7 +48,7 @@ class ReportCatalog
             [$user->isFinanceEnabled(), [
                 'module'      => gettext('Finance'),
                 'title'       => gettext('Financial Reports'),
-                'description' => gettext('Generate reports for tax statements, pledge tracking, and financial analysis.'),
+                'description' => gettext('Generate reports for giving statements, pledge tracking, and financial analysis.'),
                 'url'         => 'finance/reports',
                 'icon'        => 'fa-file-invoice',
             ]],
