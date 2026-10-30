@@ -3,7 +3,8 @@
  * `data-select-all` / `data-clear-all` buttons (value = the select's id) pick or clear every option.
  * A form with `data-preview-url` posts its filters there and shows the summary in the `#givingPreviewModal`
  * popup instead of reloading; the popup's own form posts the same filters to download the PDF or CSV, so a long
- * family selection never lands in a URL. If the request fails the form submits normally.
+ * family selection never lands in a URL. The selected families travel as one comma-separated `family` value, so
+ * PHP's `max_input_vars` cannot cut a large selection. If the request fails the form submits normally.
  */
 
 interface PreviewSummary {
@@ -68,10 +69,19 @@ function wirePreview(form: HTMLFormElement): void {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     const filters = new URLSearchParams();
+    const families: string[] = [];
     for (const [key, value] of new FormData(form).entries()) {
-      if (typeof value === "string" && key !== "preview") {
+      if (typeof value !== "string" || key === "preview") {
+        continue;
+      }
+      if (key === "family[]") {
+        families.push(value);
+      } else {
         filters.append(key, value);
       }
+    }
+    if (families.length > 0) {
+      filters.append("family", families.join(","));
     }
     const button = form.querySelector<HTMLButtonElement>("button[type=submit]");
     if (button) {

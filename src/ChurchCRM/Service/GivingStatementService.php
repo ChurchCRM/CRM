@@ -341,9 +341,11 @@ class GivingStatementService
     {
         $ids = [];
         foreach ((array) $values as $value) {
-            $id = InputUtils::filterInt(self::scalar($value));
-            if ($id > 0) {
-                $ids[$id] = $id;
+            foreach (explode(',', self::scalar($value)) as $part) {
+                $id = InputUtils::filterInt($part);
+                if ($id > 0) {
+                    $ids[$id] = $id;
+                }
             }
         }
 

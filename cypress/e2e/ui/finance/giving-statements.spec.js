@@ -43,6 +43,18 @@ describe("Giving statements", () => {
         cy.get("#modalDownload input[name='preview']").should("not.exist");
     });
 
+    it("Add All Families previews and downloads with the whole selection as one value", () => {
+        cy.visit(statementsPath);
+        cy.get("#DateStart").invoke("val", "2018-01-01");
+        cy.get("#DateEnd").invoke("val", "2018-12-31");
+        cy.get("[data-select-all='family']").click();
+        cy.get("#previewReport").click();
+
+        cy.get("#givingPreviewModal").should("be.visible");
+        cy.get("#modalDownload input[name='family']").invoke("val").should("include", ",");
+        cy.get("#modalDownload input[name='family[]']").should("not.exist");
+    });
+
     it("a preview with no payments says so in the popup and offers no downloads", () => {
         cy.visit(statementsPath);
         cy.get("#DateStart").invoke("val", "1991-01-01");
@@ -54,11 +66,9 @@ describe("Giving statements", () => {
         cy.get("#modalDownload").should("not.be.visible");
     });
 
-    it("a long family selection previews through a POST body, not the URL", () => {
+    it("a long family selection previews through a POST body as one value, so max_input_vars cannot cut it", () => {
         const body = new URLSearchParams(`${seedYear}&minimum=0`);
-        for (let id = 1; id <= 800; id++) {
-            body.append("family[]", String(id));
-        }
+        body.append("family", Array.from({ length: 1500 }, (_, index) => index + 1).join(","));
         cy.request({
             method: "POST",
             url: `${statementsPath}/preview`,
