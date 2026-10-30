@@ -82,6 +82,7 @@
         </dl>
     </section>
 
+    {% if member.signedInWithPassword %}
     <section class="portal-card" id="portal-profile-security">
         <h2 class="portal-card-title">
             <i class="fa-solid fa-lock" aria-hidden="true"></i>
@@ -99,6 +100,7 @@
             </a>
         </p>
     </section>
+    {% endif %}
 
 </div>
 {% endblock %}
