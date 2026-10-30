@@ -275,21 +275,25 @@ describe("A member changes their own email in the portal (§9)", () => {
         const newEmail = `lena.late.${Date.now()}@example.com`;
         signInToPortal();
         saveProfile({ email: newEmail }).its("status").should("eq", 200);
-        db(
-            "INSERT INTO portal_grant_pgr (pgr_per_ID, pgr_Capability, pgr_Reason, pgr_GrantedBy_usr_ID, pgr_GrantedAt) VALUES (?, 'volunteer.team.manage', 'Email change spec', 1, NOW())",
-            [LENA.id],
-        );
-        mailTo(newEmail).then((messages) =>
-            confirmLinkIn(messages[0]).then((path) => {
-                inFreshBrowser(() => {
-                    openLink(path).then(({ body }) => {
-                        pressConfirm(path, body).should("eq", "invalid");
-                        pressConfirm(path, body).should("eq", "invalid");
+        cy.makePrivateAdminAPICall(
+            "POST",
+            `/admin/api/person/${LENA.id}/sign-in/grants`,
+            { capability: "portal.family.contacts.view", scopeId: 3, endsOn: new Date(Date.now() + 30 * 86400000).toISOString().slice(0, 10), reason: "Email change spec" },
+            201,
+        ).then(({ body: grant }) => {
+            mailTo(newEmail).then((messages) =>
+                confirmLinkIn(messages[0]).then((path) => {
+                    inFreshBrowser(() => {
+                        openLink(path).then(({ body }) => {
+                            pressConfirm(path, body).should("eq", "invalid");
+                            pressConfirm(path, body).should("eq", "invalid");
+                        });
                     });
-                });
-            }),
-        );
-        db("SELECT per_Email FROM person_per WHERE per_ID = ?", [LENA.id]).its("0.per_Email").should("eq", LENA.email);
+                }),
+            );
+            profile().its("email").should("eq", LENA.email);
+            cy.makePrivateAdminAPICall("POST", `/admin/api/person/${LENA.id}/sign-in/grants/${grant.grantId}/remove`, null, [200, 404]);
+        });
     });
 
     it("a family adult can't change another member's email", () => {
