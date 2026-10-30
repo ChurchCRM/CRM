@@ -12,8 +12,6 @@ complexity: "intermediate"
 
 Business logic lives in `src/ChurchCRM/Service/`. Service methods hold domain logic, database operations, and validation, and pages, APIs, and MVC routes all call them. Services use Propel ORM only. List current services with `ls src/ChurchCRM/Service/`; the finance service is `FinancialService`.
 
-A service does not know its callers. Its names and comments describe what it does, never which route, page, form, button, report, or menu uses it (`one label per family`, not `for the newsletter page` or `from the cart`). Caller context belongs in the route or view.
-
 ## Obtaining a Service
 
 Construct the service where you use it. There is no dependency-injection container; `$app->getContainer()` is `null`.
