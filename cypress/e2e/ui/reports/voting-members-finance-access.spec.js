@@ -11,7 +11,7 @@ import { pdfText } from "../../../support/pdf-text";
 const votingMembersRequest = () =>
     cy.request({
         method: "POST",
-        url: "Reports/VotingMembers.php",
+        url: "finance/reports/voting-members/download",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: "FYID=&RequireDonationYears=1&output=pdf",
         encoding: "binary",
@@ -35,6 +35,21 @@ describe("Voting Members report - Finance access", () => {
                 expect(response.headers["content-type"]).to.include("application/pdf");
                 return pdfText(response.body).then((lines) => {
                     expect(lines.join(" ")).to.include("Voting Members");
+                });
+            });
+        });
+    });
+
+    it("lists the members and their count, with or without a donation requirement", () => {
+        cy.setupPersonaSession("finance-only");
+        ["0", "2"].forEach((years) => {
+            cy.request({
+                url: `finance/reports/voting-members/download?FYID=&RequireDonationYears=${years}`,
+                encoding: "binary",
+            }).then((response) => {
+                expect(response.headers["content-type"]).to.include("application/pdf");
+                return pdfText(response.body).then((lines) => {
+                    expect(lines.join(" ")).to.include("Number of Voting Members");
                 });
             });
         });
