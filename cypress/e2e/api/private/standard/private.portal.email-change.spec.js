@@ -271,6 +271,27 @@ describe("A member changes their own email in the portal (§9)", () => {
         });
     });
 
+    it("a link stops working once the person is given a portal grant", () => {
+        const newEmail = `lena.late.${Date.now()}@example.com`;
+        signInToPortal();
+        saveProfile({ email: newEmail }).its("status").should("eq", 200);
+        db(
+            "INSERT INTO portal_grant_pgr (pgr_per_ID, pgr_Capability, pgr_Reason, pgr_GrantedBy_usr_ID, pgr_GrantedAt) VALUES (?, 'volunteer.team.manage', 'Email change spec', 1, NOW())",
+            [LENA.id],
+        );
+        mailTo(newEmail).then((messages) =>
+            confirmLinkIn(messages[0]).then((path) => {
+                inFreshBrowser(() => {
+                    openLink(path).then(({ body }) => {
+                        pressConfirm(path, body).should("eq", "invalid");
+                        pressConfirm(path, body).should("eq", "invalid");
+                    });
+                });
+            }),
+        );
+        db("SELECT per_Email FROM person_per WHERE per_ID = ?", [LENA.id]).its("0.per_Email").should("eq", LENA.email);
+    });
+
     it("a family adult can't change another member's email", () => {
         signInToPortal();
         saveProfile({ personId: AMANDA.id, id: AMANDA.id, email: "household.change@example.com" }).its("status").should("eq", 200);

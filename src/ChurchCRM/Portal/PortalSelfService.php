@@ -7,6 +7,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Portal\Auth\EmailChangeRefusedException;
@@ -23,6 +24,8 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\ORMUtils;
 use DateTime;
 use DateTimeImmutable;
+use Propel\Runtime\Propel;
+use Throwable;
 
 /**
  * Everything a member may change about themselves and their family, and the
@@ -290,27 +293,37 @@ class PortalSelfService
             );
         }
 
-        if ($requestedEmail !== null) {
-            try {
-                $emailPolicy->requestChange($actor, $requestedEmail, PortalContext::staffUser());
-            } catch (EmailChangeRefusedException $e) {
-                throw new PortalSelfServiceException($e->getMessage(), ['email: ' . $e->getMessage()], $e->getStatus());
+        // The edits and the email change link commit together: a failed save sends
+        // no link, and a link that is refused or can't be sent saves no edit.
+        $connection = Propel::getWriteConnection(PersonTableMap::DATABASE_NAME);
+        $connection->beginTransaction();
+        try {
+            if ($changed !== []) {
+                $actor->setDateLastEdited(new DateTime());
+                $actor->setEditedBy((int) $actor->getId());
+                // The model's own "Updated" note would say nothing about where the edit
+                // came from; the portal writes a more specific one in its place.
+                $actor->saveWithoutUpdateNote();
             }
-        }
+            if ($newLanguage !== null) {
+                MemberLanguage::choose((int) $actor->getId(), $newLanguage);
+                $changed[] = 'language';
+            }
+            if ($changed !== []) {
+                self::writeEditNote($actor, $actor, null, $changed, self::personFieldLabels());
+            }
+            if ($requestedEmail !== null) {
+                $emailPolicy->requestChange($actor, $requestedEmail, PortalContext::staffUser());
+            }
+            $connection->commit();
+        } catch (EmailChangeRefusedException $e) {
+            $connection->rollBack();
 
-        if ($changed !== []) {
-            $actor->setDateLastEdited(new DateTime());
-            $actor->setEditedBy((int) $actor->getId());
-            // The model's own "Updated" note would say nothing about where the edit
-            // came from; the portal writes a more specific one in its place.
-            $actor->saveWithoutUpdateNote();
-        }
-        if ($newLanguage !== null) {
-            MemberLanguage::choose((int) $actor->getId(), $newLanguage);
-            $changed[] = 'language';
-        }
-        if ($changed !== []) {
-            self::writeEditNote($actor, $actor, null, $changed, self::personFieldLabels());
+            throw new PortalSelfServiceException($e->getMessage(), ['email: ' . $e->getMessage()], $e->getStatus());
+        } catch (Throwable $e) {
+            $connection->rollBack();
+
+            throw $e;
         }
 
         return ['profile' => self::getProfile($actor), 'updated' => $changed, 'pendingEmail' => (string) $requestedEmail];
