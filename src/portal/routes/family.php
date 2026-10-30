@@ -102,7 +102,7 @@ $group->get('/family', function (Request $request, Response $response) use ($por
         ),
         PortalNav::FAMILY
     );
-})->add(RequirePortalCapability::onOwnFamily(CorePortalCapabilities::FAMILY_VIEW));
+})->add(RequirePortalCapability::onOwnFamily(CorePortalCapabilities::FAMILY_VIEW, noFamily: $portalFamilyNone));
 
 // GET /portal/family/edit — the form that POSTs to /api/portal/family.
 $group->get('/family/edit', function (Request $request, Response $response) use ($portalFamilyView, $portalFamilyNone): Response {
@@ -129,7 +129,8 @@ $group->get('/family/edit', function (Request $request, Response $response) use 
     );
 })->add(RequirePortalCapability::onOwnFamily(
     CorePortalCapabilities::FAMILY_EDIT,
-    gettext('Only an adult of your family can change these details. Please contact the church office.')
+    gettext('Only an adult of your family can change these details. Please contact the church office.'),
+    $portalFamilyNone
 ));
 
 // GET /portal/family/confirm — "are these details still right?", the portal's
@@ -148,5 +149,6 @@ $group->get('/family/confirm', function (Request $request, Response $response) u
     );
 })->add(RequirePortalCapability::onOwnFamily(
     CorePortalCapabilities::FAMILY_CONFIRM,
-    gettext('Only an adult of your family can confirm these details. Please contact the church office.')
+    gettext('Only an adult of your family can confirm these details. Please contact the church office.'),
+    $portalFamilyNone
 ));
