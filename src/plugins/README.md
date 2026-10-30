@@ -155,8 +155,9 @@ plugin declares in `plugin.json`; only members who hold it see it.
   (`PortalPluginRoutes`) has `get`, `post`, `put`, `patch` and `delete`,
   and each takes the route's capability as its third argument: a key, or
   a `RequirePortalCapability` for a scoped check. A route without one
-  can't be added. Render pages with `PortalTwig::renderPluginPage()` from
-  `portal/templates/`.
+  can't be added. Plugins are trusted code, so this guards against a
+  forgotten check, not against a hostile plugin. Render pages with
+  `PortalTwig::renderPluginPage()` from `portal/templates/`.
 - **Reads and writes:** a `get` route only reads; change data in `post`,
   `put`, `patch` or `delete`. The portal tells reads from writes by the
   method: a read-only Login as Person session lets GET and HEAD through
