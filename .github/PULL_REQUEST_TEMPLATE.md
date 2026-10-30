@@ -19,7 +19,7 @@ Fixes #
 
 ## Validation
 
-<!-- Relevant tests/commands and results. Include only checks that exercise this change. -->
+<!-- Relevant tests/commands and results. Include only checks that exercise this change. For a behavior change, name the Cypress spec that covers it. -->
 
 ## Risk / compatibility
 
@@ -27,4 +27,4 @@ Fixes #
 
 ## Screenshots
 
-<!-- UI changes only. -->
+<!-- UI changes only. State that light and dark were checked at desktop, tablet (~820px) and phone width. -->

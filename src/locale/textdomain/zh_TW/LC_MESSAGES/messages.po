@@ -955,10 +955,6 @@ msgid "Voting Members"
 msgstr "有投票權的成員"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "給報告（稅單）"
-
-#: 
 msgid "Zero Givers"
 msgstr "零言官群體"
 
@@ -1776,15 +1772,6 @@ msgstr "允許"
 #: 
 msgid "System Settings"
 msgstr "系統設置"
-
-#: 
-msgid "Tax Report"
-msgstr "稅務報告"
-
-#: 
-#, fuzzy
-msgid "Calendar Year"
-msgstr "日曆年份"
 
 #: 
 msgid "User Editor"
@@ -5616,10 +5603,6 @@ msgid "Submit Registration"
 msgstr "提交註冊"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "新密碼已生成並發送至您的電子郵件地址。"
-
-#: 
 msgid "Apply Update Now"
 msgstr "立即套用更新"
 
@@ -5664,20 +5647,12 @@ msgid "Login Name is required"
 msgstr "登入名是必填項"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "收到電子郵件後，您可以使用臨時密碼登入，並將其更改為您喜歡的密碼。"
-
-#: 
 msgid "Password Reset Error"
 msgstr "密碼重置錯誤"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "密碼重置成功"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "請檢查您的電子郵件（包括垃圾郵件資料夾）以獲取臨時密碼。"
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -6463,10 +6438,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "可自定義報告，可按日期、基金、家庭和付款方式過濾。"
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "自定義出現在稅務聲明上的文本。"
-
-#: 
 msgid "Day"
 msgstr "日"
 
@@ -6547,20 +6518,12 @@ msgid "Generate"
 msgstr "生成"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "生成稅務聲明"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "為捐贈者生成年度免稅奉獻聲明。可以列印或發送電子郵件。"
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "為有未完成認獻的家庭生成提醒信函。"
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "生成稅務聲明、認獻追踪和財務分析報告。"
 
 #: 
 msgid "ID"
@@ -6743,10 +6706,6 @@ msgid "System Info"
 msgstr "系統資訊"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "稅務與奉獻報告"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "稅務報告用詞"
 
@@ -6773,10 +6732,6 @@ msgstr "升級"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "使用者必須是管理員或具有財務權限"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "核實教會名稱、地址和聯絡資訊出現在稅務聲明上。"
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9283,10 +9238,6 @@ msgstr "產生奉獻承諾提醒信函"
 #: 
 msgid "Generate reports on group membership and activities"
 msgstr "產生小組成員和活動報告"
-
-#: 
-msgid "Generate tax statement documents for donors"
-msgstr "為奉獻者產生稅務報表文件"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -12485,10 +12436,6 @@ msgstr "電子郵件已停用"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "電子郵件已停用。請在重設密碼前設定電子郵件，或使用「變更密碼」功能。"
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "請輸入您的其中一個備用恢復碼"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"
@@ -16105,10 +16052,6 @@ msgid "Please confirm your family information"
 msgstr "請確認您的家庭資訊"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "請將您下一次的奉獻郵寄至 %s"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "請選擇另一個家庭以關聯這些奉獻"
 
@@ -18136,14 +18079,6 @@ msgid "{{minutes}} min left"
 msgstr "剩餘 {{minutes}} 分鐘"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d 份稅單已成功郵寄給家庭"
-
-#: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d 捐獻聲明"
-
-#: 
 msgid "All classifications"
 msgstr "所有分類"
 
@@ -18176,28 +18111,8 @@ msgid "Columns per Page"
 msgstr "每頁列數"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "親愛的 %s 一家，\n"
-"\n"
-"請查收本電郵附件中的 %d 份來自 %s 的捐獻聲明。\n"
-"\n"
-"如有任何問題，請聯絡教堂辦公室。\n"
-"\n"
-"感謝您的慷慨奉獻。"
-
-#: 
 msgid "Download CSV"
 msgstr "下載 CSV"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "郵寄 %d 份稅單"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18300,10 +18215,6 @@ msgid "Pledged"
 msgstr "承諾"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "打印 %d 份稅單"
-
-#: 
 msgid "Recent Friends"
 msgstr "最近的朋友"
 
@@ -18328,24 +18239,8 @@ msgid "Single Pages"
 msgstr "單個頁面"
 
 #: 
-msgid "Tax Documents"
-msgstr "稅單"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "稅單電郵發送失敗。請檢查您的電郵服務器設置"
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "在每個橫向頁上並排放置兩個半尺寸頁面，按小冊子順序排列。雙面打印，使用 flip on short edge，然後將堆棧對折。每個半頁統計列數"
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "無法郵寄稅單：未發現該年份的付款數據"
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "無法郵寄稅單：該家庭在文件中沒有電郵地址"
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -20326,10 +20221,6 @@ msgid "How often"
 msgstr "頻率"
 
 #: 
-msgid "How to correct this"
-msgstr "如何更正"
-
-#: 
 msgid "I can't"
 msgstr "我無法參加"
 
@@ -21648,10 +21539,6 @@ msgstr "已登入"
 #: 
 msgid "Signed up"
 msgstr "已報名"
-
-#: 
-msgid "Sincerely"
-msgstr "謹上"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
@@ -24772,4 +24659,20 @@ msgstr "所有有年級的人升一個年級的月份。關閉會停用自動升
 #: 
 msgid "Through Grade"
 msgstr "至年級"
+
+#: 
+msgid "Invalid setting name or value"
+msgstr "設定名稱或值無效"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "地理編碼服務未回應 — 請稍後再試"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "僅顯示您寄出的電子郵件。"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "無法建立重複活動。請查看應用程式日誌了解詳情。"
 

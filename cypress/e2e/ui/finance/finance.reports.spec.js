@@ -19,7 +19,7 @@ describe("Financial Reports", () => {
 
     it("Navigate to Giving Report from Reports Index", () => {
         cy.visit("/finance/reports");
-        cy.contains("Giving Report (Tax Statements)").click();
+        cy.contains("Giving Statements").click();
         cy.url().should("contain", "FinancialReports.php");
         cy.contains("Financial Reports");
     });
