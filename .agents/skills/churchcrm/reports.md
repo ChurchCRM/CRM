@@ -31,6 +31,8 @@ Letter is the default page. A report that needs another format or margins passes
 
 `MpdfRenderer` fills `church_name`, address, phone, email, tax ID, website, social, and logo. The template prints them. `letterhead` is `address`, `graphic`, or `none`. `none` reserves blank space on every page so the letter still aligns.
 
+A PDF that holds one letter per family or person (a giving statement run for many families) starts every letter with the letterhead: `{% include "_letterhead.html.twig" %}` right after each `<pagebreak />`, not only once at the top. A roster that continues across pages (class list, attendance sheet, photo book) needs no repeat.
+
 Locale and RTL come from `MpdfRenderer` (`lang`, `text_dir`). mPDF script fonts cover CJK, Thai, Indic, Ethiopic, Hebrew, and Arabic names.
 
 ## Data rules
