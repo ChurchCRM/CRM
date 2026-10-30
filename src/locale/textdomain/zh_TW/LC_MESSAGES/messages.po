@@ -18905,19 +18905,9 @@ msgid_plural "%d default volunteers assigned"
 msgstr[0] "%d 個預設義工已指派"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "此職位仍需 %d 名義工。開啟發生以填補空缺。"
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d 個新發生"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "即將發生的事件仍需 %d 名義工。"
 
 #: 
 msgid "%s Calendar"
@@ -20978,10 +20968,6 @@ msgstr "開啟事工"
 #: 
 msgid "Open the occurrence"
 msgstr "開啟活動場次"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "請開啟活動場次，分配您所需要的人員。"
 
 #: 
 msgid "Open this team"

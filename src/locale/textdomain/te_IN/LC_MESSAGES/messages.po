@@ -18760,22 +18760,10 @@ msgstr[0] "%d డిఫాల్ట్ స్వచ్ఛంద సేవకు�
 msgstr[1] "%d డిఫాల్ట్ స్వచ్ఛంద సేవకులు నియమించబడ్డారు"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "ఈ స్థానానికి ఇంకా %d మరో స్వచ్ఛంద సేవకుడు అవసరం. ఖాళీని నింపడానికి సందర్భాన్ని తెరవండి."
-msgstr[1] "ఈ స్థానానికి ఇంకా %d మంది మరో స్వచ్ఛంద సేవకులు అవసరం. ఖాళీని నింపడానికి సందర్భాన్ని తెరవండి."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d కొత్త సందర్భం"
 msgstr[1] "%d కొత్త సందర్భాలు"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "రాబోయే సందర్భానికి ఇంకా %d స్వచ్ఛంద సేవకుడు అవసరం."
-msgstr[1] "రాబోయే సందర్భానికి ఇంకా %d మంది స్వచ్ఛంద సేవకులు అవసరం."
 
 #: 
 msgid "%s Calendar"
@@ -20840,10 +20828,6 @@ msgstr "పరిచర్యను తెరవండి"
 #: 
 msgid "Open the occurrence"
 msgstr "సందర్భాన్ని తెరవండి"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "మీకు కావలసిన వ్యక్తులను నియమించడానికి సందర్భాన్ని తెరవండి."
 
 #: 
 msgid "Open this team"
