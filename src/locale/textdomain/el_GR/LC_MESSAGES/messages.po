@@ -18783,22 +18783,10 @@ msgstr[0] "%d προεπιλεγμένος εθελοντής ανατέθηκε
 msgstr[1] "%d προεπιλεγμένοι εθελοντές ανατέθηκαν"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Χρειάζεται ακόμη %d εθελοντής για αυτή τη θέση. Ανοίξτε την πραγματοποίηση για να καλύψετε το κενό."
-msgstr[1] "Χρειάζονται ακόμη %d εθελοντές για αυτή τη θέση. Ανοίξτε την πραγματοποίηση για να καλύψετε το κενό."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d νέα πραγματοποίηση"
 msgstr[1] "%d νέες πραγματοποιήσεις"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Χρειάζεται ακόμη %d εθελοντής για μια προσεχή πραγματοποίηση."
-msgstr[1] "Χρειάζονται ακόμη %d εθελοντές για μια προσεχή πραγματοποίηση."
 
 #: 
 msgid "%s Calendar"
@@ -20863,10 +20851,6 @@ msgstr "Άνοιγμα της διακονίας"
 #: 
 msgid "Open the occurrence"
 msgstr "Άνοιγμα της πραγματοποίησης"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Ανοίξτε την πραγματοποίηση για να αναθέσετε τα άτομα που χρειάζεστε."
 
 #: 
 msgid "Open this team"
