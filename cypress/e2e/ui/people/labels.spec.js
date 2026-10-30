@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import { pdfText } from "../../../support/pdf-text";
+import { pdfDrawing, pdfText } from "../../../support/pdf-text";
 
 // Seed: July birthdays give the Birthdays report rows. Lena Black (100) and Samantha Black (102)
 // have photos. The church is "Main St. Cathedral".
@@ -10,6 +10,8 @@ const mailing = (labelType, extra = "") =>
 const familyLabels = (kind) =>
     `/people/labels/${kind}?labeltype=5160&labelfont=Helvetica&labelfontsize=default&recipientnamingmethod=familyname`;
 const NAME_TAGS = "/people/labels/name-tags?labeltype=74536&labelfont=Times&labelfontsize=36";
+
+const MM = 72 / 25.4;
 
 const fetchPdf = (url) =>
     cy.request({ url, encoding: "binary" }).then((response) => {
@@ -27,9 +29,16 @@ describe("Label sheets", () => {
         STOCKS.forEach((labelType) => fetchPdf(mailing(labelType)));
     });
 
-    it("prints from a start row and column", () => {
+    it("prints the first label at the start row and column", () => {
         cy.setupAdminSession();
-        fetchPdf(mailing("5160", "&startrow=3&startcol=2"));
+        const firstText = (url) => fetchPdf(url).then((body) => pdfDrawing(body)).then((drawing) => drawing.find((item) => item.text));
+        firstText(mailing("5160")).then((topLeft) => {
+            firstText(mailing("5160", "&startrow=3&startcol=2")).then((placed) => {
+                expect(placed.text).to.eq(topLeft.text);
+                expect(placed.x - topLeft.x, "one 5160 column across").to.be.closeTo((66.675 + 3.175) * MM, 0.5);
+                expect(topLeft.y - placed.y, "two 5160 rows down").to.be.closeTo(2 * 25.4 * MM, 0.5);
+            });
+        });
     });
 
     it("rejects an unknown label stock", () => {

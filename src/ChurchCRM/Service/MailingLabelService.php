@@ -181,7 +181,6 @@ class MailingLabelService
                     if ($row['per_fam_ID'] === 0 || isset($doneFamilies[$row['per_fam_ID']])) {
                         continue;
                     }
-                    $doneFamilies[$row['per_fam_ID']] = true;
 
                     // One label per household: the adults' salutation when an adult of the
                     // family is listed, else the children's ("To the parents of"), else the family name.
@@ -215,6 +214,9 @@ class MailingLabelService
 
                     if (!$onlyComplete || ($street !== '' && $address['City'] !== '' && $address['State'] !== '' && $address['Zip'] !== '')) {
                         $labels[] = ['Name' => $name, 'Address' => $street, 'City' => $address['City'], 'State' => $address['State'], 'Zip' => $address['Zip']];
+                        if ($mode === 'fam') {
+                            $doneFamilies[$row['per_fam_ID']] = true;
+                        }
                     }
                 }
             }
@@ -449,9 +451,9 @@ class MailingLabelService
         $out = [];
 
         $passes = [
-            ['ZIP-5', self::ZIP5_MIN_BUNDLE, static fn (array $label): ?string => (string) (int) mb_substr($label['Zip'], 0, 5), 'Bundle '],
-            ['ZIP-3', self::ZIP3_MIN_BUNDLE, static fn (array $label): ?string => (string) (int) mb_substr($label['Zip'], 0, 3), 'Bundle '],
-            ['ADC', self::ADC_MIN_BUNDLE, static fn (array $label): ?string => $adc[(int) mb_substr($label['Zip'], 0, 3)] ?? null, 'Bundle ADC '],
+            ['ZIP-5', self::ZIP5_MIN_BUNDLE, static fn (array $label): ?string => self::zipPrefix($label['Zip'], 5), 'Bundle '],
+            ['ZIP-3', self::ZIP3_MIN_BUNDLE, static fn (array $label): ?string => self::zipPrefix($label['Zip'], 3), 'Bundle '],
+            ['ADC', self::ADC_MIN_BUNDLE, static fn (array $label): ?string => $adc[(int) self::zipPrefix($label['Zip'], 3)] ?? null, 'Bundle ADC '],
         ];
         foreach ($passes as [$kind, $minimum, $keyOf, $bundleName]) {
             $groups = [];
@@ -465,6 +467,7 @@ class MailingLabelService
                 if (count($indexes) < $minimum) {
                     continue;
                 }
+                $key = (string) $key;
                 $note = '******* Presort ' . $kind . ' ' . $key;
                 $out[] = self::heading($note, '** ' . count($indexes) . ' Addresses in ' . $bundleName . $key . ' *', $total, $note . '  ');
                 foreach ($indexes as $index) {
@@ -483,6 +486,14 @@ class MailingLabelService
         }
 
         return $out;
+    }
+
+    /**
+     * The first $length digits of a ZIP, leading zeros kept, or null when the ZIP does not start with them.
+     */
+    private static function zipPrefix(string $zip, int $length): ?string
+    {
+        return preg_match('/^\d{' . $length . '}/', $zip, $match) === 1 ? $match[0] : null;
     }
 
     /**

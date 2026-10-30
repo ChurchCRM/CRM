@@ -29,7 +29,7 @@ class LabelSheetService
         'L7163' => ['name' => 'L7163', 'paper' => 'A4', 'left' => 5, 'top' => 15, 'NX' => 2, 'NY' => 7, 'gapX' => 2.5, 'gapY' => 0, 'width' => 99.1, 'height' => 38.1, 'size' => 10],
     ];
 
-    private const FONT_FAMILIES = ['Courier', 'Helvetica', 'Symbol', 'Times', 'Zapfdingbats'];
+    private const FONT_FAMILIES = ['Courier', 'Helvetica', 'Times'];
     private const CSS_FAMILIES = ['courier' => 'monospace', 'times' => 'serif'];
 
     /** Free space kept below the last row so rounding never starts a stray page. */
@@ -57,11 +57,7 @@ class LabelSheetService
     {
         $names = [];
         foreach (self::FONT_FAMILIES as $family) {
-            $names[] = $family;
-            if (in_array($family, ['Symbol', 'Zapfdingbats'], true)) {
-                continue;
-            }
-            array_push($names, $family . ' Bold', $family . ' Bold Italic', $family . ' Italic');
+            array_push($names, $family, $family . ' Bold', $family . ' Bold Italic', $family . ' Italic');
         }
         sort($names);
 
@@ -179,7 +175,7 @@ class LabelSheetService
     public function renderPdf(string $labelType, array $cells, int $startColumn, int $startRow, string $fontName, int $fontSize): string
     {
         $layout = self::layout($labelType);
-        $cells = array_map(static fn (array $cell): array => isset($cell['tag']) ? $cell : self::fitCell($cell, $layout['width'], $fontSize), $cells);
+        $cells = array_map(static fn (array $cell): array => isset($cell['tag']) ? $cell : self::fitCell($cell, $layout['width'], $layout['height'], $fontSize), $cells);
 
         return (new MpdfRenderer())->renderToString('label-sheet', [
             'layout' => $layout,
@@ -252,20 +248,19 @@ class LabelSheetService
     }
 
     /**
-     * Sets the cell's font size to the largest that keeps its longest line inside the label.
-     * The text is not wrapped, so a line wider than the label would be cut off.
+     * Sets the cell's font size to the largest that keeps its longest line and all its lines inside the label.
+     * The text is not wrapped, so a line wider than the label at the 4 pt floor is cut off.
      *
      * @param array<string, mixed> $cell
      * @return array<string, mixed>
      */
-    public static function fitCell(array $cell, float $labelWidth, int $fontSize): array
+    public static function fitCell(array $cell, float $labelWidth, float $labelHeight, int $fontSize): array
     {
-        $longest = 0;
-        foreach (explode("\n", (string) $cell['text']) as $line) {
-            $longest = max($longest, mb_strlen($line));
-        }
-        $textWidth = $labelWidth - 5;
-        $cell['size'] = self::fitFontSize($cell['size'] ?? $fontSize, $longest, $textWidth);
+        $lines = explode("\n", (string) $cell['text']);
+        $longest = max(array_map('mb_strlen', $lines));
+        $size = self::fitFontSize($cell['size'] ?? $fontSize, $longest, $labelWidth - 5);
+        $tallest = (int) floor(($labelHeight - 4) / (count($lines) * 1.2 * 0.3528));
+        $cell['size'] = max(4, min($size, $tallest));
 
         return $cell;
     }

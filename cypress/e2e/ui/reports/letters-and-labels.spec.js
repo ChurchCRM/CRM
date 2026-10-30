@@ -12,6 +12,8 @@ describe("Letters and Labels", () => {
             .should((names) => {
                 expect(names).to.include("Helvetica");
                 expect(names).to.include("Helvetica Bold");
+                expect(names).to.not.include("Symbol");
+                expect(names).to.not.include("Zapfdingbats");
             });
     });
 

@@ -95,7 +95,7 @@ export const pdfText = (binaryBody) =>
     streamContents(binaryBody).then((contents) => contents.flatMap(textLines));
 
 /**
- * Where FPDF drew each line of text and each image, in drawing order, in PDF
+ * Where FPDF or mPDF drew each line of text and each image, in drawing order, in PDF
  * points from the bottom left of the page: a line as `{ text, x, y }` at its
  * baseline, an image as `{ image: true, x, y, width, height }` from its bottom
  * left corner. A booklet sheet shifts its right-hand page across, so compare
@@ -109,12 +109,12 @@ export const pdfDrawing = (binaryBody) =>
         contents.flatMap((content) =>
             Array.from(
                 content.matchAll(
-                    /BT ([\d.]+) ([\d.]+) Td \(((?:\\.|[^\\)])*)\) Tj|q ([\d.]+) 0 0 ([\d.]+) ([\d.]+) ([\d.]+) cm \/I\d+ Do/g,
+                    /BT ([\d.]+) ([\d.]+) Td\s+\(((?:\\.|[^\\)])*)\) Tj|q ([\d.]+) 0 0 ([\d.]+) ([\d.]+) ([\d.]+) cm \/I\d+ Do/g,
                 ),
                 ([, x, y, text, width, height, imageX, imageY]) =>
                     text === undefined
                         ? { image: true, x: Number(imageX), y: Number(imageY), width: Number(width), height: Number(height) }
-                        : { text: unescapeText(text), x: Number(x), y: Number(y) },
+                        : { text: decodePdfText(text), x: Number(x), y: Number(y) },
             ),
         ),
     );
