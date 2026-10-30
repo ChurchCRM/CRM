@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-28 09:09+0000\n"
+"POT-Creation-Date: 2026-10-30 05:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -103,10 +103,6 @@ msgid "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or r
 msgstr ""
 
 #, php-format
-msgid "%d Giving Statement"
-msgstr ""
-
-#, php-format
 msgid "%d Orphaned Files Detected"
 msgstr ""
 
@@ -168,6 +164,10 @@ msgstr ""
 
 #, php-format
 msgid "%d files will be permanently deleted."
+msgstr ""
+
+#, php-format
+msgid "%d giving statement emailed to the family successfully."
 msgstr ""
 
 #, php-format
@@ -249,10 +249,6 @@ msgstr[0] ""
 msgstr[1] ""
 
 #, php-format
-msgid "%d tax document emailed to the family successfully."
-msgstr ""
-
-#, php-format
 msgid "%d volunteer is still needed for an upcoming occurrence."
 msgid_plural "%d volunteers are still needed for an upcoming occurrence."
 msgstr[0] ""
@@ -278,6 +274,10 @@ msgstr ""
 
 #, php-format
 msgid "%s Fundraisers"
+msgstr ""
+
+#, php-format
+msgid "%s Giving Statement"
 msgstr ""
 
 #, php-format
@@ -2551,9 +2551,6 @@ msgstr ""
 msgid "Calendar Settings"
 msgstr ""
 
-msgid "Calendar Year"
-msgstr ""
-
 msgid "Calendar address"
 msgstr ""
 
@@ -3703,9 +3700,6 @@ msgstr ""
 msgid "Contributing"
 msgstr ""
 
-msgid "Contribution Statement"
-msgstr ""
-
 msgid "Contribution statements are issued to the adults of a household. Please contact the church office if you need one."
 msgstr ""
 
@@ -4186,7 +4180,7 @@ msgstr ""
 msgid "Customize the look and feel of the application"
 msgstr ""
 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
+msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
 msgstr ""
 
 msgid "Cyan"
@@ -4366,7 +4360,7 @@ msgstr ""
 msgid ""
 "Dear %s Family,\n"
 "\n"
-"Please find your %d giving statement from %s attached to this email.\n"
+"Please find your %s giving statement from %s attached to this email.\n"
 "\n"
 "If you have any questions, please contact the church office.\n"
 "\n"
@@ -5219,15 +5213,15 @@ msgid "Email"
 msgstr ""
 
 #, php-format
-msgid "Email %d Tax Doc"
-msgstr ""
-
-#, php-format
 msgid "Email %s"
 msgstr ""
 
 #, php-format
 msgid "Email %s Family"
+msgstr ""
+
+#, php-format
+msgid "Email %s Giving Statement"
 msgstr ""
 
 msgid "Email Address"
@@ -5655,6 +5649,9 @@ msgid "Envelope Manager"
 msgstr ""
 
 msgid "Envelope Number"
+msgstr ""
+
+msgid "Envelope Numbers"
 msgstr ""
 
 msgid "Environment"
@@ -7185,6 +7182,9 @@ msgstr ""
 msgid "Generate Coordinates"
 msgstr ""
 
+msgid "Generate Giving Statements"
+msgstr ""
+
 msgid "Generate Labels"
 msgstr ""
 
@@ -7195,9 +7195,6 @@ msgid "Generate Statement"
 msgstr ""
 
 msgid "Generate Statements for Selected"
-msgstr ""
-
-msgid "Generate Tax Statements"
 msgstr ""
 
 msgid "Generate again closer to its first date."
@@ -7242,13 +7239,10 @@ msgstr ""
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr ""
 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
+msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
 msgstr ""
 
 msgid "Generate reports on group membership and activities"
-msgstr ""
-
-msgid "Generate tax statement documents for donors"
 msgstr ""
 
 msgid "Generated"
@@ -7360,7 +7354,16 @@ msgstr ""
 msgid "Giving History"
 msgstr ""
 
-msgid "Giving Report (Tax Statements)"
+msgid "Giving Reports"
+msgstr ""
+
+msgid "Giving Statement"
+msgstr ""
+
+msgid "Giving Statements"
+msgstr ""
+
+msgid "Giving statement email failed to send. Please check your email server settings."
 msgstr ""
 
 msgid "Go"
@@ -11981,7 +11984,7 @@ msgid "Please let us know whether you can make it by accepting or declining on y
 msgstr ""
 
 #, php-format
-msgid "Please mail you next gift to %s"
+msgid "Please mail your next gift to %s"
 msgstr ""
 
 msgid "Please map at least one column before importing"
@@ -12274,7 +12277,7 @@ msgid "Print"
 msgstr ""
 
 #, php-format
-msgid "Print %d Tax Doc"
+msgid "Print %s Giving Statement"
 msgstr ""
 
 msgid "Print Labels"
@@ -13258,9 +13261,6 @@ msgid "Sample Amount"
 msgstr ""
 
 msgid "Sample Data"
-msgstr ""
-
-msgid "Sample Family"
 msgstr ""
 
 #. Context: countries
@@ -14730,19 +14730,10 @@ msgstr ""
 msgid "Target family not found"
 msgstr ""
 
-msgid "Tax & Giving Reports"
-msgstr ""
-
-msgid "Tax Documents"
-msgstr ""
-
 msgid "Tax ID"
 msgstr ""
 
 msgid "Tax ID (EIN)"
-msgstr ""
-
-msgid "Tax Report"
 msgstr ""
 
 msgid "Tax Report Verbiage"
@@ -14752,9 +14743,6 @@ msgid "Tax Report signer"
 msgstr ""
 
 msgid "Tax Year Reporting Checklist"
-msgstr ""
-
-msgid "Tax document email failed to send. Please check your email server settings."
 msgstr ""
 
 msgid "Tax-deductible amount"
@@ -16414,10 +16402,10 @@ msgstr ""
 msgid "Unable to display map: church address has not been geocoded yet."
 msgstr ""
 
-msgid "Unable to email tax document: no payment data found for that year."
+msgid "Unable to email giving statement: no payment data found for that year."
 msgstr ""
 
-msgid "Unable to email tax document: this family has no email address on file."
+msgid "Unable to email giving statement: this family has no email address on file."
 msgstr ""
 
 msgid "Unable to list web server modules (non-Apache SAPI)."
@@ -16460,6 +16448,9 @@ msgid "Understand deployments"
 msgstr ""
 
 msgid "Understand feature usage"
+msgstr ""
+
+msgid "Undesignated"
 msgstr ""
 
 msgid "Unexpected Person Id"
@@ -16976,7 +16967,7 @@ msgstr ""
 msgid "Verify People"
 msgstr ""
 
-msgid "Verify church name, address, and contact info appears on tax statements."
+msgid "Verify church name, address, and contact info appears on giving statements."
 msgstr ""
 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -17696,9 +17687,6 @@ msgid "Year, 4 digits"
 msgstr ""
 
 msgid "Year-end statement"
-msgstr ""
-
-msgid "Year-end statements preview"
 msgstr ""
 
 msgid "Yearly"
