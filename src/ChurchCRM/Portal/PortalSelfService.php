@@ -69,7 +69,6 @@ class PortalSelfService
         'zip' => ['getZip', 'setZip'],
         'country' => ['getCountry', 'setCountry'],
         'homePhone' => ['getHomePhone', 'setHomePhone'],
-        'email' => ['getEmail', 'setEmail'],
     ];
 
     /**
@@ -163,7 +162,6 @@ class PortalSelfService
                 'zip' => (string) $family->getZip(),
                 'country' => (string) $family->getCountry(),
                 'homePhone' => (string) $family->getHomePhone(),
-                'email' => (string) $family->getEmail(),
                 'weddingDate' => (string) ($family->getWeddingdate('Y-m-d') ?? ''),
             ],
             'members' => $members,
@@ -521,7 +519,6 @@ class PortalSelfService
             'zip' => gettext('Zip'),
             'country' => gettext('Country'),
             'homePhone' => gettext('Home Phone'),
-            'email' => gettext('Email'),
             'weddingDate' => gettext('Wedding Date'),
         ];
     }

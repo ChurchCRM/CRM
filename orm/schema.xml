@@ -32,7 +32,7 @@
         <column name="per_HomePhone" phpName="HomePhone" type="VARCHAR" size="30"/>
         <column name="per_WorkPhone" phpName="WorkPhone" type="VARCHAR" size="30"/>
         <column name="per_CellPhone" phpName="CellPhone" type="VARCHAR" size="30"/>
-        <column name="per_Email" phpName="Email" type="VARCHAR" size="50"/>
+        <column name="per_Email" phpName="Email" type="VARCHAR" size="100"/>
         <column name="per_WorkEmail" phpName="WorkEmail" type="VARCHAR" size="50"/>
         <column name="per_BirthMonth" phpName="BirthMonth" type="TINYINT" size="3" sqlType="tinyint(3) unsigned"
                 required="true" defaultValue="0"/>
@@ -170,7 +170,7 @@
                 sqlType="tinyint(1) unsigned" required="true" defaultValue="0"
                 description="When true the second address is the family's mailing address; otherwise it is a second home"/>
         <column name="fam_HomePhone" phpName="HomePhone" type="VARCHAR" size="30"/>
-        <column name="fam_Email" phpName="Email" type="VARCHAR" size="100"/>
+        <column name="fam_Email" phpName="Email" type="VARCHAR" size="100" description="Unused since 7.8.3: the upgrade moves each family email to a person (family_email_move_fem). Dropped in a later release."/>
         <column name="fam_WeddingDate" phpName="Weddingdate" type="DATE"/>
         <column name="fam_DateEntered" phpName="DateEntered" type="TIMESTAMP" required="true"/>
         <column name="fam_DateLastEdited" phpName="DateLastEdited" type="TIMESTAMP"/>
@@ -198,6 +198,35 @@
             <parameter name="rule2" value="{column: fam_name, validator: NotBlank}" />
             <parameter name="rule3" value="{column: fam_name, validator: Length, options: {min: 2, max: 50}}" />
         </behavior>
+    </table>
+
+    <table name="family_email_move_fem" idMethod="native" phpName="FamilyEmailMove" description="One row per family email the 7.8.3 upgrade moved to people (member sign-in design 10.1). fem_per_ID is the person who has the address afterwards: the head or spouse who received it, or the person who already held it. fem_NeedsConfirm marks an address moved into a family of two or more living, active people, which may not be used to sign in until staff confirm it. Dropped together with fam_Email.">
+        <column name="fem_ID" phpName="Id" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="fem_fam_ID" phpName="FamilyId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true"/>
+        <column name="fem_Email" phpName="Email" type="VARCHAR" size="100" required="true"/>
+        <column name="fem_Outcome" phpName="Outcome" type="CHAR" sqlType="enum('pending','head','spouse','held','noted')" required="true" defaultValue="pending"/>
+        <column name="fem_Reason" phpName="Reason" type="CHAR" sqlType="enum('both_have_email','no_adult','other_person')"/>
+        <column name="fem_per_ID" phpName="PersonId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
+        <column name="fem_NeedsConfirm" phpName="NeedsConfirm" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0"/>
+        <column name="fem_DateMoved" phpName="DateMoved" type="TIMESTAMP" required="true"/>
+        <foreign-key foreignTable="family_fam" phpName="Family">
+            <reference local="fem_fam_ID" foreign="fam_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="person_per" phpName="Person">
+            <reference local="fem_per_ID" foreign="per_ID"/>
+        </foreign-key>
+        <index name="fem_fam_idx">
+            <index-column name="fem_fam_ID"/>
+        </index>
+        <index name="fem_per_idx">
+            <index-column name="fem_per_ID"/>
+        </index>
+        <index name="fem_outcome_idx">
+            <index-column name="fem_Outcome"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
     </table>
     <table name="family_custom_master" idMethod="native" phpName="FamilyCustomMaster">
         <column name="fam_custom_Order" phpName="Order" type="SMALLINT" required="true" defaultValue="0"/>

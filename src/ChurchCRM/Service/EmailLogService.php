@@ -120,7 +120,7 @@ class EmailLogService
     }
 
     /**
-     * Finds the person (primary or work email) or family behind an address.
+     * Finds the person (primary or work email) behind an address.
      *
      * @return array{personId: ?int, familyId: ?int}
      */
@@ -135,11 +135,6 @@ class EmailLogService
             ?? PersonQuery::create()->filterByWorkEmail($address)->orderById()->findOne();
         if ($person !== null) {
             $link['personId'] = (int) $person->getId();
-        } else {
-            $family = FamilyQuery::create()->filterByEmail($address)->orderById()->findOne();
-            if ($family !== null) {
-                $link['familyId'] = (int) $family->getId();
-            }
         }
         $this->resolved[$key] = $link;
 

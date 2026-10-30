@@ -27,8 +27,8 @@ final class PortalSignInRules
             return SignInReason::SIGN_IN_DISABLED;
         }
 
-        // Row 4 adds the remaining blocks for everyone here (family deactivated,
-        // awaiting review) and, when $method->appliesMemberRule(), the member rule.
+        // Row 4 adds, when $method->appliesMemberRule(), the blocks for member
+        // sign-in only (family deactivated, awaiting review) and the member rule.
 
         return null;
     }

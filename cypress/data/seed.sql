@@ -318,7 +318,7 @@ INSERT INTO `family_fam` (`fam_ID`, `fam_Name`, `fam_Address1`, `fam_Address2`, 
 (19,'Kennedy','9481 Wycliff Ave','','Long Beach','KY','','United States',NULL,NULL,NULL,NULL,NULL,NULL,0,'(306) 408-4342','',NULL,'2014-11-23 09:17:25','2016-11-19 15:53:40',1,1,NULL,NULL,'FALSE',NULL,37.8393332,-84.2700179,0,0),
 (20,'Black','4307 Avondale Ave','','Shiloh','CT','','United States',NULL,NULL,NULL,NULL,NULL,NULL,0,'(828) 463-5829','',NULL,'2014-05-10 06:07:19','2016-11-19 15:50:25',1,1,NULL,NULL,'FALSE',NULL,33.4250486,-112.3982715,0,0),
 (21,'Smith','123 Main St.','','Seattle','WA','98121','US',NULL,NULL,NULL,NULL,NULL,NULL,0,'(206) 555-5555','',NULL,'2017-04-15 17:19:26','2021-04-25 09:45:44',-1,1,NULL,NULL,'FALSE',NULL,NULL,NULL,0,1),
-(23,'Turner','4590 Maple Ave',NULL,'Austin','TX','78701','US',NULL,NULL,NULL,NULL,NULL,NULL,0,'(512) 555-0148','turner.family@example.com',NULL,'2021-04-25 10:50:11',NULL,-1,0,NULL,NULL,'FALSE',NULL,NULL,NULL,0,1),
+(23,'Turner','4590 Maple Ave',NULL,'Austin','TX','78701','US',NULL,NULL,NULL,NULL,NULL,NULL,0,'(512) 555-0148',NULL,NULL,'2021-04-25 10:50:11',NULL,-1,0,NULL,NULL,'FALSE',NULL,NULL,NULL,0,1),
 (42,'Master','123 Main St.',NULL,'Kansas City','MO','98001','US',NULL,NULL,NULL,NULL,NULL,NULL,0,'',NULL,NULL,'2021-04-25 21:52:35','2025-01-01 00:00:00',-1,0,NULL,NULL,'FALSE',NULL,NULL,NULL,0,1);
 
 INSERT INTO `fundraiser_fr` (`fr_ID`, `fr_date`, `fr_title`, `fr_description`, `fr_EnteredBy`, `fr_EnteredDate`, `fr_EndDate`, `fr_Status`, `fr_GoalAmount`, `fr_Type`, `fr_fund_ID`) VALUES (1,'2016-11-19','2016 Car Wash','Youth Car Wash',1,'2016-11-19',NULL,'Active',NULL,'Auction',NULL),
