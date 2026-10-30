@@ -28,7 +28,7 @@ describe("Member chooses a contribution statement year", () => {
         cy.get('#year option[value="2025"]').should("contain.text", "No contributions");
 
         statementLines(2018).then((lines) => {
-            const title = lines.indexOf("Contribution Statement");
+            const title = lines.indexOf("Giving Statement");
             const letterhead = lines.slice(lines.indexOf("Main St. Cathedral"), title);
             expect(letterhead.slice(0, 4), "church details").to.deep.equal([
                 "Main St. Cathedral",

@@ -1,15 +1,14 @@
 <?php
 
 use ChurchCRM\dto\ChurchMetaData;
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Portal\PortalNav;
 use ChurchCRM\Portal\PortalSelfService;
 use ChurchCRM\Portal\PortalTwig;
 use ChurchCRM\Service\MpdfRenderer;
-use ChurchCRM\Utils\CurrencyFormatter;
-use ChurchCRM\Utils\DateTimeUtils;
+use ChurchCRM\Service\GivingStatementService;
+use ChurchCRM\Utils\FiscalYearUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
@@ -25,20 +24,26 @@ $portalGivingActor = static function (Request $request): ?Person {
 $group->get('/giving', function (Request $request, Response $response) use ($portalGivingActor): Response {
     $actor = $portalGivingActor($request);
     $family = $actor?->getFamily();
-    $currentYear = (int) date('Y');
-    $firstYear = min($currentYear, (int) ($family?->getDateEntered('Y') ?: $currentYear));
+    $today = date('Y-m-d');
+    $currentYear = FiscalYearUtils::endYearForId(FiscalYearUtils::getCurrentFiscalYearId());
+    $entered = $family?->getDateEntered('Y-m-d') ?: $today;
+    $firstYear = min($currentYear, FiscalYearUtils::getEndYearForDate($entered));
     $isHousehold = $family && PortalSelfService::isAdultOf($family, $actor);
     $givingYears = [];
     if ($family && $isHousehold) {
         foreach (PledgeQuery::create()->filterByFamId((int) $family->getId())->filterByPledgeOrPayment('Payment')->find() as $gift) {
-            $givingYears[(int) $gift->getDate('Y')] = true;
+            $givingYears[FiscalYearUtils::getEndYearForDate($gift->getDate('Y-m-d'))] = true;
         }
     }
     $years = [];
     for ($year = $currentYear; $year >= $firstYear; --$year) {
-        $years[] = ['value' => $year, 'hasGiving' => isset($givingYears[$year])];
+        $years[] = [
+            'value' => $year,
+            'label' => FiscalYearUtils::getFiscalYearDatesForCalendarYear($year)['label'],
+            'hasGiving' => isset($givingYears[$year]),
+        ];
     }
-    $year = max($firstYear, $currentYear - 1);
+    $year = max($firstYear, FiscalYearUtils::endYearForId(FiscalYearUtils::getCurrentFiscalYearId() - 1));
     return PortalTwig::render(
         $response,
         'giving/index.html.twig',
@@ -68,78 +73,31 @@ $group->get('/giving/statement', function (Request $request, Response $response)
         );
     }
 
-    $year = (int) ($request->getQueryParams()['year'] ?? (date('Y') - 1));
-    if ($year < 1990 || $year > (int) date('Y')) {
-        $year = (int) date('Y') - 1;
+    $currentEndYear = FiscalYearUtils::endYearForId(FiscalYearUtils::getCurrentFiscalYearId());
+    $previousEndYear = FiscalYearUtils::endYearForId(FiscalYearUtils::getCurrentFiscalYearId() - 1);
+    $year = (int) ($request->getQueryParams()['year'] ?? $previousEndYear);
+    if ($year < 1990 || $year > $currentEndYear) {
+        $year = $previousEndYear;
     }
 
     $family = $actor->getFamily();
     $isHousehold = PortalSelfService::isAdultOf($family, $actor);
+    $criteria = GivingStatementService::criteriaFromQuery(['familyId' => $family->getId(), 'year' => $year]);
 
-    $gifts = [];
-    $total = 0.0;
-    $nonDeductible = 0.0;
     // A pledge row has no donor. Only a household adult receives the family's gifts.
-    if ($isHousehold) {
-        foreach (
-            PledgeQuery::create()
-                ->filterForTaxReport($year . '-01-01', $year . '-12-31', [], [(int) $family->getId()], [])
-                ->orderById()
-                ->find() as $pledge
-        ) {
-            $amount = (float) $pledge->getAmount();
-            $total += $amount;
-            $nonDeductible += (float) $pledge->getNondeductible();
-            $gifts[] = [
-                'date' => DateTimeUtils::formatDate((string) $pledge->getDate('Y-m-d')),
-                'fund' => $pledge->getDonationFund() ? $pledge->getDonationFund()->getName() : '',
-                'method' => trim($pledge->getMethod() . ($pledge->getCheckNo() ? ' #' . $pledge->getCheckNo() : '')),
-                'amount' => CurrencyFormatter::format($amount),
-            ];
-        }
+    $statements = $isHousehold
+        ? GivingStatementService::families(GivingStatementService::paymentsByFamily($criteria))
+        : [];
+    if ($statements === []) {
+        $statements = [GivingStatementService::emptyStatement($family, $isHousehold ? $family->getName() : $actor->getFullName())];
     }
 
-
-    $letterheadPath = trim((string) SystemConfig::getValue('bDirLetterHead'));
-    $useGraphic = $letterheadPath !== '' && (is_readable($letterheadPath) || (bool) preg_match('#^https://#i', $letterheadPath));
-    $start = DateTimeUtils::formatDate($year . '-01-01');
-    $end = DateTimeUtils::formatDate($year . '-12-31');
-    $disposition = SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline';
-
-    $deductible = $total - $nonDeductible;
-    $data = [
-        'letterhead' => $useGraphic ? 'graphic' : 'address',
-        'letterhead_image' => $useGraphic ? $letterheadPath : null,
-        'title' => gettext('Contribution Statement'),
-        'date_range' => sprintf(gettext('%s through %s'), $start, $end),
-        'opening' => trim(SystemConfig::getValue('sTaxReport1') . ' ' . $start . ' – ' . $end . '.'),
-        'closing' => SystemConfig::getValue('sTaxReport2'),
-        'questions' => SystemConfig::getValue('sTaxReport3'),
-        'signer' => SystemConfig::getValue('sTaxSigner'),
-        'disclosure' => $nonDeductible > 0 ? '' : gettext('No goods or services were provided in exchange for these contributions, other than intangible religious benefits.'),
-        'empty_message' => gettext('No contributions were recorded for this period.'),
-        'families' => [[
-            'salutation' => $isHousehold ? $family->getName() : $actor->getFullName(),
-            'address' => $family->getMailingAddressLines(),
-            'total' => CurrencyFormatter::format($total),
-            'goods_services' => CurrencyFormatter::format($nonDeductible),
-            'deductible' => CurrencyFormatter::format($deductible),
-            'gifts' => $gifts,
-        ]],
-    ];
-
-    $filename = trim(
-        (string) preg_replace(
-            '/[^A-Za-z0-9]+/',
-            '-',
-            (string) iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', implode(' ', [$year, ChurchMetaData::getChurchName(), $family->getName()]))
-        ),
-        '-'
-    ) . '.pdf';
+    $data = GivingStatementService::document($statements, $criteria['dateStart'], $criteria['dateEnd'], 'graphic');
+    $disposition = GivingStatementService::contentDisposition(GivingStatementService::fileLabel($year, $family->getName()));
 
     $pdf = (new MpdfRenderer())->renderToString('tax-report', $data);
     $response->getBody()->write($pdf);
     return $response
         ->withHeader('Content-Type', 'application/pdf')
-        ->withHeader('Content-Disposition', $disposition . '; filename="' . $filename . '"');
+        ->withHeader('Content-Disposition', $disposition);
 });
