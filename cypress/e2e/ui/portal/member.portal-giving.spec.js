@@ -1,15 +1,26 @@
 /// <reference types="cypress" />
 
 import { pdfText } from "../../../support/pdf-text";
+import { absoluteUrl } from "../../../support/urls";
+
+// The form action is a browser path and already includes the install root.
+// Cypress concatenates a root-relative url onto baseUrl, so requesting that
+// action under /churchcrm asks for /churchcrm/churchcrm/portal/...
+const statementRequest = (year) =>
+    cy.get("#portal-giving form").then((form) => {
+        const action = form.attr("action");
+        const root = new URL(Cypress.config("baseUrl")).pathname.replace(/\/+$/, "");
+        expect(action, "statement form").to.equal(`${root}/portal/giving/statement`);
+        const path = root && action.startsWith(`${root}/`) ? action.slice(root.length) : action;
+        return cy.request({ url: absoluteUrl(path), qs: { year }, encoding: "binary" });
+    });
 
 const statementLines = (year) =>
-    cy.get("#portal-giving form").then((form) =>
-        cy.request({ url: form.attr("action"), qs: { year }, encoding: "binary" }).then((response) => {
-            expect(response.status).to.equal(200);
-            expect(response.headers["content-type"]).to.contain("application/pdf");
-            return pdfText(response.body);
-        }),
-    );
+    statementRequest(year).then((response) => {
+        expect(response.status).to.equal(200);
+        expect(response.headers["content-type"]).to.contain("application/pdf");
+        return pdfText(response.body);
+    });
 
 describe("Member chooses a contribution statement year", () => {
     beforeEach(() => {
@@ -65,11 +76,9 @@ describe("Member chooses a contribution statement year", () => {
 
     it("names the statement file with the year, the church and the family", () => {
         cy.visit("/portal/giving");
-        cy.get("#portal-giving form").then((form) =>
-            cy.request({ url: form.attr("action"), qs: { year: 2018 }, encoding: "binary" }).then((response) => {
-                expect(response.headers["content-disposition"]).to.contain('filename="2018-Main-St-Cathedral-Black.pdf"');
-            }),
-        );
+        statementRequest(2018).then((response) => {
+            expect(response.headers["content-disposition"]).to.contain('filename="2018-Main-St-Cathedral-Black.pdf"');
+        });
     });
 
     it("prints a check number, the non-deductible amount and the adjusted totals, without the no-goods disclosure", () => {
