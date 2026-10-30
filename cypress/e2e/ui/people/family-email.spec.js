@@ -2,13 +2,18 @@
 
 /**
  * Member sign-in row 11 (design §10.2): families have no email of their own.
- * Seed family 2 (Hart): head Constance and spouse Marion each have an email.
+ * Seed family 2 (Hart): head Constance (person 6) and spouse Marion each have an email.
  */
 describe("Family email belongs to the adults", () => {
     const hartFamilyId = 2;
+    const constanceId = 6;
 
     beforeEach(() => {
         cy.setupAdminSession();
+    });
+
+    afterEach(() => {
+        cy.makePrivateAdminAPICall("POST", `/api/person/${constanceId}/activate/true`, null, 200);
     });
 
     it("shows each adult's own email on the family page", () => {
@@ -22,6 +27,14 @@ describe("Family email belongs to the adults", () => {
         cy.get("#family-email-composer")
             .should("have.attr", "data-email-family-id", String(hartFamilyId))
             .and("have.attr", "data-email-address", "constance.hart@example.com");
+    });
+
+    it("leaves an inactive adult out of the card and the family email", () => {
+        cy.makePrivateAdminAPICall("POST", `/api/person/${constanceId}/activate/false`, null, 200);
+        cy.visit(`/people/family/${hartFamilyId}`);
+        cy.get("#family-email-card [data-family-adult-email]").should("have.length", 1);
+        cy.get("#family-email-card").should("not.contain.text", "constance.hart@example.com");
+        cy.get("#family-email-composer").should("have.attr", "data-email-address", "marion.sutton@example.com");
     });
 
     it("has no Email field in the family editor", () => {

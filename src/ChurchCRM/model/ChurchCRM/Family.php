@@ -557,16 +557,13 @@ class Family extends BaseFamily implements PhotoInterface
     }
 
     /**
-     * Who receives mail meant for the whole family: the oldest living, active
-     * head of household with their own email, else the oldest such spouse.
+     * Who receives mail meant for the whole family: the oldest head of
+     * household who can (see getAdultsWithEmail()), else the oldest such spouse.
      */
     public function getEmailRecipient(): ?Person
     {
         foreach ([$this->getHeadPeople(), $this->getSpousePeople()] as $people) {
-            $candidates = array_values(array_filter(
-                $people,
-                fn (Person $person): bool => !$person->isDeceased() && $person->isActive() && trim((string) $person->getEmail()) !== ''
-            ));
+            $candidates = array_values(array_filter($people, fn (Person $person): bool => $this->canReceiveFamilyEmail($person)));
             if ($candidates !== []) {
                 usort($candidates, fn (Person $a, Person $b): int => self::ageSortKey($a) <=> self::ageSortKey($b));
 
@@ -575,6 +572,29 @@ class Family extends BaseFamily implements PhotoInterface
         }
 
         return null;
+    }
+
+    /**
+     * Heads of household and spouses who can receive mail for the whole family:
+     * living, active, with their own email, and, as in getAdults(), not awaiting
+     * review unless the whole family registered itself.
+     *
+     * @return Person[]
+     */
+    public function getAdultsWithEmail(): array
+    {
+        return array_values(array_filter(
+            array_merge($this->getHeadPeople(), $this->getSpousePeople()),
+            fn (Person $person): bool => $this->canReceiveFamilyEmail($person)
+        ));
+    }
+
+    private function canReceiveFamilyEmail(Person $person): bool
+    {
+        return !$person->isDeceased()
+            && $person->isActive()
+            && trim((string) $person->getEmail()) !== ''
+            && ($this->getEnteredBy() === Person::SELF_REGISTER || !$person->getNeedsReview());
     }
 
     /**
