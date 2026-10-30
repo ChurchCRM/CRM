@@ -3,7 +3,9 @@ name: "Locale: sync"
 # Upload terms, then download. No translation happens here:
 #   1. upload terms   locale/messages.po -> POEditor, deleting terms that are no longer in the file
 #   2. download       POEditor -> src/locale + locale/terms/missing, opened as a PR on branch
-#                     locale/download/<version>
+#                     locale/download/<version>, then squash-merged when every JSON
+#                     file parses and every path stays in the download trees.
+#                     Invalid JSON or an unexpected path leaves the PR open.
 #
 # Two flows end here:
 #   terms flow      merged terms PR -> (30 minute settle) -> upload terms -> download
@@ -357,7 +359,13 @@ jobs:
       with:
         name: locale-changes
 
+    - name: Decide whether this download can merge
+      id: gate
+      if: steps.fresh.outputs.stale != 'true'
+      run: node locale/scripts/lib/locale-download-gate.js
+
     - name: Create Pull Request
+      id: cpr
       if: steps.fresh.outputs.stale != 'true'
       uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8
       with:
@@ -365,6 +373,10 @@ jobs:
         base: master
         branch: 'locale/download/${{ needs.setup.outputs.version }}'
         delete-branch: true
+        add-paths: |
+          src/locale/i18n
+          src/locale/textdomain
+          locale/terms/missing
         labels: |
           localization
         milestone: ${{ needs.setup.outputs.version }}
@@ -402,3 +414,13 @@ jobs:
           
           **Manual Run Options:**
           ${{ inputs.skip_audit == true && '- ⏩ Audit skipped' || '- 🔍 Full download and audit' }}
+
+    # GITHUB_TOKEN on purpose. This merge starts no later workflow: the download
+    # touches none of the paths that start Locale: terms, and a token merge
+    # fires no push. The terms PR stays a person's merge so Locale: sync runs.
+    - name: Merge the download PR
+      if: steps.fresh.outputs.stale != 'true' && steps.gate.outputs.merge == 'true' && steps.cpr.outputs.pull-request-operation != 'closed'
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PR: ${{ steps.cpr.outputs.pull-request-number }}
+      run: gh pr merge "$PR" --squash --delete-branch

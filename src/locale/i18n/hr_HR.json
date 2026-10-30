@@ -4577,20 +4577,10 @@
     "few": "%d zadana volontera dodijeljena",
     "other": "%d zadanih volontera dodijeljeno"
   },
-  "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
-    "one": "Za ovu poziciju još je potreban %d volonter. Otvorite termin da popunite prazninu.",
-    "few": "Za ovu poziciju još su potrebna %d volontera. Otvorite termin da popunite prazninu.",
-    "other": "Za ovu poziciju još je potrebno %d volontera. Otvorite termin da popunite prazninu."
-  },
   "%d new occurrence": {
     "one": "%d novi termin",
     "few": "%d nova termina",
     "other": "%d novih termina"
-  },
-  "%d volunteer is still needed for an upcoming occurrence.": {
-    "one": "Za nadolazeći termin još je potreban %d volonter.",
-    "few": "Za nadolazeći termin još su potrebna %d volontera.",
-    "other": "Za nadolazeći termin još je potrebno %d volontera."
   },
   "%s Calendar": "Kalendar %s",
   "%s Family": "Obitelj %s",
@@ -5117,7 +5107,6 @@
   "Open the Ministry Dashboard": "Otvori nadzornu ploču službe",
   "Open the ministry": "Otvori službu",
   "Open the occurrence": "Otvori termin",
-  "Open the occurrence to assign the people you need.": "Otvorite termin i dodijelite ljude koji su vam potrebni.",
   "Open this team": "Otvori ovaj tim",
   "Opening a calendar to ministries requires Add Events permission": "Otvaranje kalendara službama zahtijeva ovlaštenje Dodavanje događaja",
   "Optional. Everyone qualified for a position of this team becomes a teacher of the class, and the class page no longer changes its teachers.": "Neobavezno. Svatko kvalificiran za poziciju ovog tima postaje učitelj razreda, a stranica razreda više ne mijenja njegove učitelje.",

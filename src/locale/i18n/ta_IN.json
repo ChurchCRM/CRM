@@ -4557,17 +4557,9 @@
     "one": "%d இயல்புநிலை தன்னார்வலர் நியமிக்கப்பட்டார்",
     "other": "%d இயல்புநிலை தன்னார்வலர்கள் நியமிக்கப்பட்டனர்"
   },
-  "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
-    "one": "இந்தப் பொறுப்புக்கு இன்னும் %d தன்னார்வலர் தேவை. இடைவெளியை நிரப்ப நிகழ்வைத் திறக்கவும்.",
-    "other": "இந்தப் பொறுப்புக்கு இன்னும் %d தன்னார்வலர்கள் தேவை. இடைவெளியை நிரப்ப நிகழ்வைத் திறக்கவும்."
-  },
   "%d new occurrence": {
     "one": "%d புதிய நிகழ்வு",
     "other": "%d புதிய நிகழ்வுகள்"
-  },
-  "%d volunteer is still needed for an upcoming occurrence.": {
-    "one": "வரவிருக்கும் நிகழ்வுக்கு இன்னும் %d தன்னார்வலர் தேவை.",
-    "other": "வரவிருக்கும் நிகழ்வுக்கு இன்னும் %d தன்னார்வலர்கள் தேவை."
   },
   "%s Calendar": "%s நாட்காட்டி",
   "%s Family": "%s குடும்பம்",
@@ -5090,7 +5082,6 @@
   "Open the Ministry Dashboard": "ஊழிய டாஷ்போர்டைத் திற",
   "Open the ministry": "ஊழியத்தைத் திற",
   "Open the occurrence": "நிகழ்வைத் திற",
-  "Open the occurrence to assign the people you need.": "உங்களுக்குத் தேவையான நபர்களை நியமிக்க நிகழ்வைத் திறக்கவும்.",
   "Open this team": "இந்தக் குழுவைத் திற",
   "Opening a calendar to ministries requires Add Events permission": "நாட்காட்டியை ஊழியங்களுக்குத் திறக்க நிகழ்ச்சிகளைச் சேர்க்கும் அனுமதி தேவை",
   "Optional. Everyone qualified for a position of this team becomes a teacher of the class, and the class page no longer changes its teachers.": "விருப்பத்தேர்வு. இந்தக் குழுவின் ஒரு பொறுப்புக்குத் தகுதி பெற்ற ஒவ்வொருவரும் வகுப்பின் ஆசிரியர் ஆவார், வகுப்புப் பக்கம் இனி அதன் ஆசிரியர்களை மாற்றாது.",
