@@ -27,7 +27,7 @@ describe("Issue #7864 - Advanced Deposit Report Summary Data Fund Totals", () =>
         const month = String(today.getMonth() + 1).padStart(2, '0');
         const day = String(today.getDate()).padStart(2, '0');
         const year = today.getFullYear();
-        return `${month}/${day}/${year}`;
+        return `${year}-${month}-${day}`;
     };
 
     describe("Summary Data Report - Fund Totals Display", () => {
@@ -37,9 +37,9 @@ describe("Issue #7864 - Advanced Deposit Report Summary Data Fund Totals", () =>
             cy.get(".page-title").contains("Financial Reports").should("be.visible");
 
             // Select Advanced Deposit Report
-            cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
-            cy.get("#FinancialReports").submit();
-            cy.contains("Advanced Deposit Report").should("be.visible");
+            cy.visit("/finance/reports/deposits");
+            cy.get("#depositAdvancedSettings > summary").click();
+            cy.contains("Deposit Reports").should("be.visible");
 
             // CRITICAL: Select "Summary Data" report type (this is where the bug occurred)
             cy.get("input[name='detail_level'][value='summary']").check({ force: true });
@@ -48,11 +48,11 @@ describe("Issue #7864 - Advanced Deposit Report Summary Data Fund Totals", () =>
             cy.get("input[name='output'][value='csv']").check({ force: true });
 
             // Set broad date range to capture all test data with multiple funds
-            cy.get("input[name='DateStart']").clear({ force: true }).type("01/01/2018", { force: true });
+            cy.get("input[name='DateStart']").clear({ force: true }).type("2018-01-01", { force: true });
             cy.get("input[name='DateEnd']").clear({ force: true }).type(getTodayDate(), { force: true });
 
             // Intercept the CSV download
-            cy.intercept("POST", "**/AdvancedDeposit.php").as("csvDownload");
+            cy.intercept("POST", "**/finance/reports/deposits/download").as("csvDownload");
 
             // Generate report
             cy.get("#createReport").click();
@@ -137,9 +137,8 @@ describe("Issue #7864 - Advanced Deposit Report Summary Data Fund Totals", () =>
         });
 
         it("should display individual fund totals with 'deposit' sort order", () => {
-            cy.visit("/FinancialReports.php");
-            cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
-            cy.get("#FinancialReports").submit();
+            cy.visit("/finance/reports/deposits");
+            cy.get("#depositAdvancedSettings > summary").click();
 
             // Summary Data report type
             cy.get("input[name='detail_level'][value='summary']").check({ force: true });
@@ -148,10 +147,10 @@ describe("Issue #7864 - Advanced Deposit Report Summary Data Fund Totals", () =>
             cy.get("input[name='sort'][value='deposit']").check({ force: true });
             
             cy.get("input[name='output'][value='csv']").check({ force: true });
-            cy.get("input[name='DateStart']").clear({ force: true }).type("01/01/2018", { force: true });
+            cy.get("input[name='DateStart']").clear({ force: true }).type("2018-01-01", { force: true });
             cy.get("input[name='DateEnd']").clear({ force: true }).type(getTodayDate(), { force: true });
 
-            cy.intercept("POST", "**/AdvancedDeposit.php").as("reportGeneration");
+            cy.intercept("POST", "**/finance/reports/deposits/download").as("reportGeneration");
             cy.get("#createReport").click();
 
             cy.url().then((url) => {
@@ -165,9 +164,8 @@ describe("Issue #7864 - Advanced Deposit Report Summary Data Fund Totals", () =>
         });
 
         it("should display individual fund totals with 'fund' sort order", () => {
-            cy.visit("/FinancialReports.php");
-            cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
-            cy.get("#FinancialReports").submit();
+            cy.visit("/finance/reports/deposits");
+            cy.get("#depositAdvancedSettings > summary").click();
 
             // Summary Data report type
             cy.get("input[name='detail_level'][value='summary']").check({ force: true });
@@ -176,10 +174,10 @@ describe("Issue #7864 - Advanced Deposit Report Summary Data Fund Totals", () =>
             cy.get("input[name='sort'][value='fund']").check({ force: true });
             
             cy.get("input[name='output'][value='csv']").check({ force: true });
-            cy.get("input[name='DateStart']").clear({ force: true }).type("01/01/2018", { force: true });
+            cy.get("input[name='DateStart']").clear({ force: true }).type("2018-01-01", { force: true });
             cy.get("input[name='DateEnd']").clear({ force: true }).type(getTodayDate(), { force: true });
 
-            cy.intercept("POST", "**/AdvancedDeposit.php").as("reportGeneration");
+            cy.intercept("POST", "**/finance/reports/deposits/download").as("reportGeneration");
             cy.get("#createReport").click();
 
             cy.url().then((url) => {
@@ -193,9 +191,8 @@ describe("Issue #7864 - Advanced Deposit Report Summary Data Fund Totals", () =>
         });
 
         it("should display individual fund totals with 'family' sort order", () => {
-            cy.visit("/FinancialReports.php");
-            cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
-            cy.get("#FinancialReports").submit();
+            cy.visit("/finance/reports/deposits");
+            cy.get("#depositAdvancedSettings > summary").click();
 
             // Summary Data report type
             cy.get("input[name='detail_level'][value='summary']").check({ force: true });
@@ -204,10 +201,10 @@ describe("Issue #7864 - Advanced Deposit Report Summary Data Fund Totals", () =>
             cy.get("input[name='sort'][value='family']").check({ force: true });
             
             cy.get("input[name='output'][value='csv']").check({ force: true });
-            cy.get("input[name='DateStart']").clear({ force: true }).type("01/01/2018", { force: true });
+            cy.get("input[name='DateStart']").clear({ force: true }).type("2018-01-01", { force: true });
             cy.get("input[name='DateEnd']").clear({ force: true }).type(getTodayDate(), { force: true });
 
-            cy.intercept("POST", "**/AdvancedDeposit.php").as("reportGeneration");
+            cy.intercept("POST", "**/finance/reports/deposits/download").as("reportGeneration");
             cy.get("#createReport").click();
 
             cy.url().then((url) => {
@@ -224,16 +221,15 @@ describe("Issue #7864 - Advanced Deposit Report Summary Data Fund Totals", () =>
     describe("Summary Data vs Detail Level comparison", () => {
         it("should generate both summary and detail reports without errors", () => {
             // Test Summary Data
-            cy.visit("/FinancialReports.php");
-            cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
-            cy.get("#FinancialReports").submit();
+            cy.visit("/finance/reports/deposits");
+            cy.get("#depositAdvancedSettings > summary").click();
 
             cy.get("input[name='detail_level'][value='summary']").check({ force: true });
             cy.get("input[name='output'][value='csv']").check({ force: true });
-            cy.get("input[name='DateStart']").clear({ force: true }).type("01/01/2018", { force: true });
+            cy.get("input[name='DateStart']").clear({ force: true }).type("2018-01-01", { force: true });
             cy.get("input[name='DateEnd']").clear({ force: true }).type(getTodayDate(), { force: true });
 
-            cy.intercept("POST", "**/AdvancedDeposit.php").as("summaryReport");
+            cy.intercept("POST", "**/finance/reports/deposits/download").as("summaryReport");
             cy.get("#createReport").click();
 
             cy.url().then((url) => {
@@ -244,16 +240,15 @@ describe("Issue #7864 - Advanced Deposit Report Summary Data Fund Totals", () =>
                 }
 
                 // Now test Detail level for comparison
-                cy.visit("/FinancialReports.php");
-                cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
-                cy.get("#FinancialReports").submit();
+                cy.visit("/finance/reports/deposits");
+                cy.get("#depositAdvancedSettings > summary").click();
 
                 cy.get("input[name='detail_level'][value='detail']").check({ force: true });
                 cy.get("input[name='output'][value='csv']").check({ force: true });
-                cy.get("input[name='DateStart']").clear({ force: true }).type("01/01/2018", { force: true });
+                cy.get("input[name='DateStart']").clear({ force: true }).type("2018-01-01", { force: true });
                 cy.get("input[name='DateEnd']").clear({ force: true }).type(getTodayDate(), { force: true });
 
-                cy.intercept("POST", "**/AdvancedDeposit.php").as("detailReport");
+                cy.intercept("POST", "**/finance/reports/deposits/download").as("detailReport");
                 cy.get("#createReport").click();
 
                 cy.url().then((detailUrl) => {
