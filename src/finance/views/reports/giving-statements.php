@@ -48,7 +48,7 @@ $base = SystemURLs::getRootPath() . '/finance/reports/giving-statements';
 </div>
 <?php endif; ?>
 
-<form method="get" action="<?= InputUtils::escapeAttribute($base) ?>" id="givingReportForm">
+<form method="get" action="<?= InputUtils::escapeAttribute($base) ?>" id="givingReportForm" data-preview-url="<?= InputUtils::escapeAttribute($base . '/preview') ?>">
     <input type="hidden" name="preview" value="1">
     <div class="card mb-3">
         <div class="card-header"><h3 class="card-title"><?= gettext('Filters') ?></h3></div>
@@ -163,6 +163,42 @@ $base = SystemURLs::getRootPath() . '/finance/reports/giving-statements';
         <button type="submit" class="btn btn-primary" id="previewReport"><i class="fa-solid fa-eye me-1"></i><?= gettext('Preview') ?></button>
     </div>
 </form>
+
+<div class="modal fade" id="givingPreviewModal" tabindex="-1" aria-labelledby="givingPreviewTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="givingPreviewTitle"><?= gettext('Preview') ?></h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= InputUtils::escapeAttribute(gettext('Close')) ?>"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-3" id="modalSummary">
+                    <div class="col-4">
+                        <div class="text-secondary"><?= gettext('Families') ?></div>
+                        <div class="h2 mb-0" id="modalFamilies"></div>
+                    </div>
+                    <div class="col-4">
+                        <div class="text-secondary"><?= gettext('Payments') ?></div>
+                        <div class="h2 mb-0" id="modalGifts"></div>
+                    </div>
+                    <div class="col-4">
+                        <div class="text-secondary"><?= gettext('Total') ?></div>
+                        <div class="h2 mb-0" id="modalTotal"></div>
+                    </div>
+                </div>
+                <div class="alert alert-warning mb-0 d-none" id="modalEmpty" role="alert">
+                    <strong><?= gettext('No Data Found') ?></strong>
+                    <?= gettext('No records were returned from the previous report. Please adjust your filters or date range and try again.') ?>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= gettext('Close') ?></button>
+                <a class="btn btn-outline-secondary" id="modalCsv" href="#"><i class="fa-solid fa-file-csv me-1"></i><?= gettext('Download CSV') ?></a>
+                <a class="btn btn-primary" id="modalPdf" href="#" target="_blank" rel="noopener"><i class="fa-solid fa-file-pdf me-1"></i><?= gettext('Download PDF') ?></a>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/finance-report-options.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

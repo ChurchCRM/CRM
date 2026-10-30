@@ -26,18 +26,48 @@ describe("Giving statements", () => {
         cy.get(`a[href$='${statementsPath}']`).should("exist");
     });
 
-    it("treasurer previews the families and total, then gets the download links", () => {
+    it("treasurer previews the families and total in a popup, then gets the download links", () => {
         cy.visit(statementsPath);
         cy.get("#DateStart").invoke("val", "2018-01-01");
         cy.get("#DateEnd").invoke("val", "2018-12-31");
         cy.get("#previewReport").click();
 
+        cy.get("#givingPreviewModal").should("be.visible");
+        cy.location("search").should("not.include", "preview=1");
+        cy.get("#modalFamilies")
+            .invoke("text")
+            .then((text) => expect(Number(text)).to.be.greaterThan(0));
+        cy.get("#modalTotal").should("not.be.empty");
+        cy.get("#modalPdf").should("have.attr", "href").and("include", "/giving-statements/download").and("include", "DateStart=2018-01-01");
+        cy.get("#modalCsv").should("have.attr", "href").and("include", "output=csv");
+    });
+
+    it("a preview with no payments says so in the popup and offers no downloads", () => {
+        cy.visit(statementsPath);
+        cy.get("#DateStart").invoke("val", "1991-01-01");
+        cy.get("#DateEnd").invoke("val", "1991-01-31");
+        cy.get("#previewReport").click();
+
+        cy.get("#givingPreviewModal").should("be.visible");
+        cy.get("#modalEmpty").should("be.visible");
+        cy.get("#modalPdf").should("not.be.visible");
+    });
+
+    it("the preview URL still renders the summary on the page", () => {
+        cy.visit(`${statementsPath}?preview=1&${seedYear}`);
         cy.get("#previewFamilies")
             .invoke("text")
             .then((text) => expect(Number(text)).to.be.greaterThan(0));
-        cy.get("#previewTotal").should("not.be.empty");
-        cy.get("#downloadPdf").should("have.attr", "href").and("include", "/giving-statements/download").and("include", "DateStart=2018-01-01");
-        cy.get("#downloadCsv").should("have.attr", "href").and("include", "output=csv");
+        cy.get("#downloadPdf").should("have.attr", "href").and("include", "/giving-statements/download");
+    });
+
+    it("the PDF is named for the report and the year", () => {
+        cy.request({ url: `${statementsPath}/download?${seedYear}`, encoding: "binary" }).then((response) => {
+            expect(response.headers["content-disposition"]).to.match(/filename="GivingStatements-2018\.pdf"/);
+        });
+        cy.request({ url: `${statementsPath}/download?familyId=1&year=2018`, encoding: "binary" }).then((response) => {
+            expect(response.headers["content-disposition"]).to.match(/filename="GivingStatement-2018-[A-Za-z-]+\.pdf"/);
+        });
     });
 
     it("the PDF downloads with and without a remittance slip", () => {

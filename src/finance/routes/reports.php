@@ -6,6 +6,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\Service\FinanceReportOptions;
 use ChurchCRM\Service\MpdfRenderer;
+use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Service\GivingStatementService;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\CSRFUtils;
@@ -63,6 +64,19 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
             'families' => FinanceReportOptions::families(),
             'fundGroups' => FinanceReportOptions::fundGroups(),
             'deposits' => FinanceReportOptions::deposits(),
+        ]);
+    });
+
+    // The preview popup: the same summary as ?preview=1, plus the download links for these filters.
+    $group->get('/giving-statements/preview', function (Request $request, Response $response): Response {
+        $query = $request->getQueryParams();
+        $summary = GivingStatementService::summary(GivingStatementService::paymentsByFamily(GivingStatementService::criteriaFromQuery($query)));
+        $download = SystemURLs::getRootPath() . '/finance/reports/giving-statements/download?';
+        $filters = http_build_query(array_diff_key($query, ['preview' => true, 'output' => true]));
+
+        return SlimUtils::renderJSON($response, $summary + [
+            'pdfUrl' => $download . 'output=pdf&' . $filters,
+            'csvUrl' => $download . 'output=csv&' . $filters,
         ]);
     });
 

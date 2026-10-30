@@ -2,7 +2,6 @@
 
 namespace ChurchCRM\Service;
 
-use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\model\ChurchCRM\Family;
@@ -288,7 +287,7 @@ class GivingStatementService
 
     public static function fileLabel(int $year, string $familyName = ''): string
     {
-        return trim($year . ' ' . ChurchMetaData::getChurchName() . ' ' . $familyName);
+        return $familyName === '' ? 'GivingStatements-' . $year : 'GivingStatement-' . $year . '-' . $familyName;
     }
 
     /**
