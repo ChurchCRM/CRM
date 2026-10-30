@@ -32,7 +32,7 @@ $dbPort = '||DB_SERVER_PORT||';
 // Database user (must have SELECT, INSERT, UPDATE, DELETE, ALTER privileges)
 $sUSER = '||DB_USER||';
 
-// Database password (special chars are allowed, do NOT add quotes)
+// Database password (special chars are allowed; the setup wizard escapes ' and \, do NOT add quotes)
 $sPASSWORD = '||DB_PASSWORD||';
 
 // Database name where ChurchCRM tables are located

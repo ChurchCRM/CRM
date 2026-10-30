@@ -954,10 +954,6 @@ msgid "Voting Members"
 msgstr "Stemmeberettigede medlemmer"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Å gi Rapport (Tax Uttalelser)"
-
-#: 
 msgid "Zero Givers"
 msgstr "Null Givers"
 
@@ -1793,15 +1789,6 @@ msgstr "Person"
 #: 
 msgid "System Settings"
 msgstr "System Innstillinger"
-
-#: 
-msgid "Tax Report"
-msgstr "Skatt Rapporter"
-
-#: 
-#, fuzzy
-msgid "Calendar Year"
-msgstr "Kalenderår"
 
 #: 
 msgid "User Editor"
@@ -5544,10 +5531,6 @@ msgid "Submit Registration"
 msgstr "Send inn registrering"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "Et nytt passord er generert og sendt til din e-postadresse."
-
-#: 
 msgid "Apply Update Now"
 msgstr "Utfør oppdatering nå"
 
@@ -5592,20 +5575,12 @@ msgid "Login Name is required"
 msgstr "Innloggingsnavn er obligatorisk"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "Når du mottar e-posten, kan du logge inn med det midlertidige passordet og endre det til noe du foretrekker."
-
-#: 
 msgid "Password Reset Error"
 msgstr "Feil ved tilbakestilling av passord"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "Tilbakestilling av passord var vellykket"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "Vennligst sjekk e-posten din (inkludert søppelpost-mappen) for ditt midlertidige passord."
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -6393,10 +6368,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "Tilpassbar rapport med filtrering etter dato, fond, familie og betalingsmetode."
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Tilpass teksten som vises på årsoppgaver (sTaxReport1, sTaxReport2, osv.)."
-
-#: 
 msgid "Day"
 msgstr "Dag"
 
@@ -6477,20 +6448,12 @@ msgid "Generate"
 msgstr "Generer"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Generer årsoppgaver"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Generer årlige fradragsberettigede gaveoppgaver for givere. Kan skrives ut eller sendes per e-post."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "Generer purrebrev til familier med utestående løfter."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "Generer rapporter for årsoppgaver, sporing av løfter og økonomisk analyse."
 
 #: 
 msgid "ID"
@@ -6673,10 +6636,6 @@ msgid "System Info"
 msgstr "Systeminfo"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "Skatt- og gaverapporter"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "Tekst på årsoppgave"
 
@@ -6703,10 +6662,6 @@ msgstr "Oppgrader"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "Bruker må være administrator eller ha økonomitillatelse"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Verifiser at kirkens navn, adresse og kontaktinfo vises på årsoppgavene."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9218,10 +9173,6 @@ msgstr "Generer påminnelsesbrev for giverløfter"
 #: 
 msgid "Generate reports on group membership and activities"
 msgstr "Generer rapporter om gruppemedlemskap og aktiviteter"
-
-#: 
-msgid "Generate tax statement documents for donors"
-msgstr "Generer skatteoppgaver for givere"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -12421,10 +12372,6 @@ msgstr "E-post er deaktivert"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "E-post er deaktivert. Konfigurer e-post før du tilbakestiller passord, eller bruk Endre passord."
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "Skriv inn en av sikkerhetskopikodene for gjenoppretting"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"
@@ -16044,10 +15991,6 @@ msgid "Please confirm your family information"
 msgstr "Bekreft familieinformasjonen din"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "Send din neste gave til %s"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Velg en annen familie å knytte disse gavene til"
 
@@ -18078,14 +18021,6 @@ msgid "{{minutes}} min left"
 msgstr "{{minutes}} min igjen"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d skattefølge dokument sendt til familien via e-post."
-
-#: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d Gaveerklæring"
-
-#: 
 msgid "All classifications"
 msgstr "Alle klassifiseringer"
 
@@ -18118,28 +18053,8 @@ msgid "Columns per Page"
 msgstr "Kolonner per side"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "Kjære %s Familie,\n"
-"\n"
-"Vennligst finn din %d gaveerklæring fra %s vedlagt denne e-posten.\n"
-"\n"
-"Hvis du har spørsmål, kontakt kirkens kontor.\n"
-"\n"
-"Takk for din sjenerøsitet."
-
-#: 
 msgid "Download CSV"
 msgstr "Last ned CSV"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "E-post %d skattefølge dokument"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18242,10 +18157,6 @@ msgid "Pledged"
 msgstr "Lovet"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "Skriv ut %d skattefølge dokument"
-
-#: 
 msgid "Recent Friends"
 msgstr "Nylige venner"
 
@@ -18270,24 +18181,8 @@ msgid "Single Pages"
 msgstr "Enkelte sider"
 
 #: 
-msgid "Tax Documents"
-msgstr "Skattefølge dokument"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "Skattefølge dokument-e-post kunne ikke sendes. Vennligst sjekk innstillingene for e-postserveren din."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "To halvsidestørrelsessider side ved side på hvert liggende ark, i brosjyrerekkefølge. Skriv ut dobbeltsidig med \"flip på kortkant\", og fold deretter bunken i to. Kolonner telles per halvside."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "Kan ikke e-post skattefølge dokument: ingen betalingsdata funnet for det året."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "Kan ikke e-post skattefølge dokument: denne familien har ingen e-postadresse på fil."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -20278,10 +20173,6 @@ msgid "How often"
 msgstr "Hvor ofte"
 
 #: 
-msgid "How to correct this"
-msgstr "Slik rettes dette"
-
-#: 
 msgid "I can't"
 msgstr "Jeg kan ikke"
 
@@ -21602,10 +21493,6 @@ msgstr "Logget inn"
 #: 
 msgid "Signed up"
 msgstr "Påmeldt"
-
-#: 
-msgid "Sincerely"
-msgstr "Vennlig hilsen"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
@@ -24730,4 +24617,20 @@ msgstr "Måneden da alle med et klassetrinn flyttes opp ett trinn. Av slår av a
 #: 
 msgid "Through Grade"
 msgstr "Til klassetrinn"
+
+#: 
+msgid "Invalid setting name or value"
+msgstr "Ugyldig innstillingsnavn eller verdi"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "Geokodingstjenesten svarte ikke — prøv igjen senere"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "Bare e-posten du sendte, vises."
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "Gjentaende hendelser kunne ikke opprettes. Sjekk applikasjonsloggen for detaljer."
 

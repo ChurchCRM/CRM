@@ -76,6 +76,19 @@ $socialPlaceholders = [
                             <?= gettext('Optional. URL for your church website.') ?>
                         </small>
                     </div>
+
+                    <div class="mb-3">
+                        <label for="sChurchTaxId"><?= gettext('Tax ID (EIN)') ?></label>
+                        <input type="text"
+                               class="form-control"
+                               id="sChurchTaxId"
+                               name="sChurchTaxId"
+                               value="<?= InputUtils::escapeHTML($churchInfo['sChurchTaxId']) ?>"
+                               maxlength="50">
+                        <small class="form-text text-body-secondary">
+                            <?= gettext('Optional. Printed on contribution statements.') ?>
+                        </small>
+                    </div>
                 </div>
             </div>
         </div>

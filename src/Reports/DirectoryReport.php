@@ -10,6 +10,7 @@ use ChurchCRM\dto\Cart;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\Service\CustomFieldService;
 
 // Get and filter the classifications selected
 $aClasses = [];
@@ -99,10 +100,14 @@ $rsCustomFields = RunQuery($sSQL);
 $numCustomFields = mysqli_num_rows($rsCustomFields);
 
 if ($numCustomFields > 0) {
+    $customFieldService = new CustomFieldService();
+
     while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_ASSOC)) {
+        // The form only offers the fields this user may see; a posted bCustomN must not widen that.
         $pdf->addCustomField(
             $rowCustomField['custom_Order'],
             isset($_POST['bCustom' . $rowCustomField['custom_Order']])
+                && $customFieldService->canView((int) $rowCustomField['custom_FieldSec'])
         );
     }
 }

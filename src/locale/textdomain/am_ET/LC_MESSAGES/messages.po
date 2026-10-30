@@ -927,10 +927,6 @@ msgid "Voting Members"
 msgstr "መራጭ አባላት"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "ሪፖርት መስጠት (የግብር መግለጫዎች)"
-
-#: 
 msgid "Zero Givers"
 msgstr "ዜሮ ሰጪዎች"
 
@@ -1728,14 +1724,6 @@ msgstr "ፍቃድ"
 #: 
 msgid "System Settings"
 msgstr "የሶፍርዌሩ ቅንብር"
-
-#: 
-msgid "Tax Report"
-msgstr "የግብር ሪፖርት"
-
-#: 
-msgid "Calendar Year"
-msgstr "አመት፣ በእትዬጵያ አቆጣጠር"
 
 #: 
 msgid "User Editor"
@@ -5482,10 +5470,6 @@ msgid "Submit Registration"
 msgstr "ምዝገባውን ላክ"
 
 #: 
-msgid "A new password has been generated and sent to your email address."
-msgstr "አዲስ የይለፍ ቃል ተዘጋጅቶ ወደ ኢሜይል አድራሻዎ ተልኳል።"
-
-#: 
 msgid "Apply Update Now"
 msgstr "አሁኑኑ ማሻሻያውን ተግብር"
 
@@ -5530,20 +5514,12 @@ msgid "Login Name is required"
 msgstr "የመግቢያ ስም ያስፈልጋል"
 
 #: 
-msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
-msgstr "ኢሜይሉ እንደደረስዎት በጊዜያዊው የይለፍ ቃል በመግባት ወደሚፈልጉት መቀየር ይችላሉ።"
-
-#: 
 msgid "Password Reset Error"
 msgstr "የይለፍ ቃል ዳግም ማስጀመሪያ ስህተት"
 
 #: 
 msgid "Password Reset Successful"
 msgstr "የይለፍ ቃል ዳግም ማስጀመር ተሳክቷል"
-
-#: 
-msgid "Please check your email (including spam/junk folder) for your temporary password."
-msgstr "እባክዎን ለጊዜያዊ የይለፍ ቃልዎ ኢሜይልዎን (አይፈለጌ መልዕክት/spam አቃፊን ጨምሮ) ያረጋግጡ።"
 
 #: 
 msgid "Please do not close this window or refresh the page."
@@ -6331,10 +6307,6 @@ msgid "Customizable report with filtering by date, fund, family, and payment met
 msgstr "በቀን፣ በፈንድ፣ በቤተሰብ እና በክፍያ ዘዴ ሊጣራ የሚችል ሪፖርት።"
 
 #: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "በቀረጥ መግለጫዎች ላይ የሚታየውን ጽሁፍ ያስተካክሉ።"
-
-#: 
 msgid "Day"
 msgstr "ቀን"
 
@@ -6415,20 +6387,12 @@ msgid "Generate"
 msgstr "አውጣ / አዘጋጅ"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "የቀረጥ መግለጫዎችን አውጣ"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "ለለጋሾች ከቀረጥ የሚቀነሱ የዓመት የልገሳ መግለጫዎችን ያውጡ። ሊታተሙ ወይም በኢሜይል ሊላኩ ይችላሉ።"
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "ያልተከፈለ ቃል ኪዳን ላለባቸው ቤተሰቦች የማስታወሻ ደብዳቤዎችን ያውጡ።"
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "ለቀረጥ መግለጫዎች፣ ለቃል ኪዳን ክትትል እና ለፋይናንስ ትንተና ሪፖርቶችን ያውጡ።"
 
 #: 
 msgid "ID"
@@ -6611,10 +6575,6 @@ msgid "System Info"
 msgstr "የሥርዓት መረጃ"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "የቀረጥ እና የልገሳ ሪፖርቶች"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "የቀረጥ ሪፖርት አገላለጽ"
 
@@ -6641,10 +6601,6 @@ msgstr "አሻሽል"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "ተጠቃሚው አስተዳዳሪ መሆን አለበት ወይም የፋይናንስ ፈቃድ ሊኖረው ይገባል"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "የቤተ ክርስቲያን ስም፣ አድራሻ እና መረጃ በቀረጥ መግለጫዎች ላይ መታየቱን ያረጋግጡ።"
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9156,10 +9112,6 @@ msgstr "ተቀባይነት አስታወስ ደብዳቤዎች ስ"
 #: 
 msgid "Generate reports on group membership and activities"
 msgstr "ቡድን ተመዝገብ እና ተግባራት ላይ ሪፖርቶች ስ"
-
-#: 
-msgid "Generate tax statement documents for donors"
-msgstr "ለ ሰባ ገንዘብ መግለጫ ሰነዶች ስ"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -12359,10 +12311,6 @@ msgstr "ኢሜይል ተሰናክሏል"
 #: 
 msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
 msgstr "ኢሜይል ተሰናክሏል። ይለፍ ቃሎችን ከዳግም ማስጀመርዎ በፊት ኢሜይልን ያዋቅሩ፣ ወይም ይለፍ ቃል ቀይር ይጠቀሙ።"
-
-#: 
-msgid "Enter one of your backup recovery codes"
-msgstr "ከምትኬ መልሶ ማግኛ ኮዶቾ አንዱን ያስገቡ"
 
 #: 
 msgid "Enter one of your backup recovery codes to access your account"
@@ -15983,10 +15931,6 @@ msgid "Please confirm your family information"
 msgstr "እባክዎ የቤተሰብ መረጃዎን ያረጋግጡ"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "ቀጣዩን ስጦታዎ ወደ %s ይላኩ"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "እባክዎ እነዚህን መዋጮዎች ለማያያዝ ሌላ ቤተሰብ ይምረጡ"
 
@@ -18017,14 +17961,6 @@ msgid "{{minutes}} min left"
 msgstr "{{minutes}} ደቂቃ ቀርቷል"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d የግብር ሰነድ ለቤተሰብ በተሳካ ሁኔታ በኢሜል ተላልፏል።"
-
-#: 
-msgid "%s %d Giving Statement"
-msgstr "%s %d የለገና መግለጫ"
-
-#: 
 msgid "All classifications"
 msgstr "ሁሉም ምድቦች"
 
@@ -18057,28 +17993,8 @@ msgid "Columns per Page"
 msgstr "በጠፍጣፊ ስቱ"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "ውድ %s ቤተሰብ,\n"
-"\n"
-"እባክዎ ከ%s የተወሰደ %d የለገና መግለጫ በዚህ ኢሜል ውስጥ ተያያዥ ይፈልጉ።\n"
-"\n"
-"ቢሆንም ፍርሒ ካላችሁ እባክዎን ወደ ቤተክርስቲያን ቢሮ ያገኙን።\n"
-"\n"
-"ለምግባርዎ 感謝します።"
-
-#: 
 msgid "Download CSV"
 msgstr "CSV አውርድ"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "%d የግብር ሰነድ ኢሜል"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18181,10 +18097,6 @@ msgid "Pledged"
 msgstr "ቃል ገብተሪያ"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "%d የግብር ሰነድ ሞተር"
-
-#: 
 msgid "Recent Friends"
 msgstr "ወላጅ ወገኖች"
 
@@ -18209,24 +18121,8 @@ msgid "Single Pages"
 msgstr "አንድ ቀሎ ገጾች"
 
 #: 
-msgid "Tax Documents"
-msgstr "የግብር ሰነዶች"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "የግብር ሰነድ ኢሜል ምላሽ ይስጥ ሳቅሏል። እባክዎ ኢሜል አገልግሎት ቅንብር ይለካ።"
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "ሁለት ግማሽ-ዓዝ ገጾች በ ዩነስኮ ላይ በ አንድ ሳር ሉሰ ምሊት በ ሳቅላ ዝርዝር.ሞተር-በ ሁለት ገጽታ ከ \"ፍ በ ሸ ጠርዝ\", ከዚያ የ ዛ ክምር ውስጥ በግማሽ fold. አምዶች በግማሽ ገጽ ለእያንዳንዱ ይቆራሙ."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "የግብር ሰነድ ኢሜል መስጠት ተችሏል: ምንም ክፍያ ሂሳብ ለ ደርሶ ዘመን አልተገኘም."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "የግብር ሰነድ ኢሜል መስጠት ተችሏል: ይህ ቤተሰብ በ ፋይል ላይ ምንም ኢሜል አድራሻ ስ."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -20217,10 +20113,6 @@ msgid "How often"
 msgstr "ምን ያህል ጊዜ"
 
 #: 
-msgid "How to correct this"
-msgstr "ይህን እንዴት ማስተካከል ይቻላል"
-
-#: 
 msgid "I can't"
 msgstr "አልችልም"
 
@@ -21541,10 +21433,6 @@ msgstr "ገብተዋል"
 #: 
 msgid "Signed up"
 msgstr "ተመዝግቧል"
-
-#: 
-msgid "Sincerely"
-msgstr "ከሰላምታ ጋር"
 
 #: 
 msgid "Some of your details could not be saved. Please check the highlighted fields."
@@ -24669,4 +24557,20 @@ msgstr "ክፍል ያለው ሁሉ አንድ ክፍል የሚወጣበት ወር
 #: 
 msgid "Through Grade"
 msgstr "እስከ ክፍል"
+
+#: 
+msgid "Invalid setting name or value"
+msgstr "ልክ ያልሆነ የቅንብር ስም ወይም እሴት"
+
+#: 
+msgid "The geocoding service did not answer — try again later"
+msgstr "የጂኦኮዲንግ አገልግሎቱ ምላሽ አልሰጠም — ቆይተው እንደገና ይሞክሩ"
+
+#: 
+msgid "Only the email you sent is shown."
+msgstr "የሚታየው እርስዎ የላኩት ኢሜይል ብቻ ነው።"
+
+#: 
+msgid "Repeat events could not be created. Check the application log for details."
+msgstr "ተደጋጋሚ ክስተቶች ሊፈጠሩ አልቻሉም። ለዝርዝር መረጃ የመተግበሪያውን ምዝግብ ማስታወሻ ይመልከቱ።"
 

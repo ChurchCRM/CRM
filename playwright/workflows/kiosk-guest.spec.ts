@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-import { captureScreen } from '../support/capture';
+import { captureScreen, defineCapture } from '../support/capture';
 import { humanClick, humanType, settle } from '../support/human';
 import { type KioskDemo, KIOSK_GUEST, setUpKioskDemo } from '../support/kiosk-guest';
 
@@ -23,7 +23,14 @@ test.afterAll(async () => {
 });
 
 test.describe('Kiosk walk-in guests', () => {
-  test('kiosk-guest-form', async ({ page, context }, testInfo) => {
+  const kioskGuestFormCapture = defineCapture({
+    name: 'kiosk-guest-form',
+    locales: 'all',
+    title: 'Kiosk Walk-In Guest Form',
+    category: 'Events & Attendance',
+    purpose: 'Show the Register Walk-In Guest form on the kiosk: name plus a phone number or email, with optional birth date',
+  });
+  test('kiosk-guest-form', kioskGuestFormCapture, async ({ page, context }, testInfo) => {
     await demo.attachKiosk(context);
     await page.goto('/kiosk/');
     await expect(page.locator('#notCheckedInList .kiosk-member').first()).toBeVisible({ timeout: 15000 });
@@ -36,15 +43,17 @@ test.describe('Kiosk walk-in guests', () => {
     await humanType(modal.locator('#guestEmail'), KIOSK_GUEST.email);
     await settle(page, 800);
 
-    await captureScreen(page, testInfo, {
-      name: 'kiosk-guest-form',
-      title: 'Kiosk Walk-In Guest Form',
-      category: 'Events & Attendance',
-      purpose: 'Show the Register Walk-In Guest form on the kiosk: name plus a phone number or email, with optional birth date',
-    });
+    await captureScreen(page, testInfo, kioskGuestFormCapture);
   });
 
-  test('kiosk-guest-checked-in', async ({ page, context }, testInfo) => {
+  const kioskGuestCheckedInCapture = defineCapture({
+    name: 'kiosk-guest-checked-in',
+    locales: 'all',
+    title: 'Kiosk Guest Checked In',
+    category: 'Events & Attendance',
+    purpose: 'Show a walk-in guest checked in on the kiosk, marked with a Guest badge in the Checked In list',
+  });
+  test('kiosk-guest-checked-in', kioskGuestCheckedInCapture, async ({ page, context }, testInfo) => {
     await demo.attachKiosk(context);
     await page.goto('/kiosk/');
     await expect(page.locator('#notCheckedInList .kiosk-member').first()).toBeVisible({ timeout: 15000 });
@@ -64,12 +73,7 @@ test.describe('Kiosk walk-in guests', () => {
     await expect(page.locator('.kiosk-notification')).toHaveCount(0, { timeout: 10000 });
     await settle(page, 800);
 
-    await captureScreen(page, testInfo, {
-      name: 'kiosk-guest-checked-in',
-      title: 'Kiosk Guest Checked In',
-      category: 'Events & Attendance',
-      purpose: 'Show a walk-in guest checked in on the kiosk, marked with a Guest badge in the Checked In list',
-    });
+    await captureScreen(page, testInfo, kioskGuestCheckedInCapture);
   });
 
   test('kiosk-guest-review', async ({ page }, testInfo) => {
