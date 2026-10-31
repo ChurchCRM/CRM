@@ -125,6 +125,18 @@ updates:
           - "minor"
           - "patch"
 
+  - package-ecosystem: "composer"
+    directory: "/tests/php"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    labels:
+      - "dependencies"
+      - "Package Dependencies"
+    commit-message:
+      prefix: "chore(deps)"
+    open-pull-requests-limit: 2
+
   # GitHub Actions workflows
   - package-ecosystem: "github-actions"
     directory: "/"
