@@ -108,7 +108,7 @@ if ($sReportType === '') {
     $iCalYear = date('Y');
     // 2nd Pass - Display filters and other settings
     switch ($sReportType) {
-        case 'Zero Givers':             $action = 'Reports/ZeroGivers.php'; break;
+        case 'Zero Givers':             $action = 'finance/reports/zero-givers/download'; break;
         case 'Pledge Family Summary':   $action = 'Reports/FamilyPledgeSummary.php'; break;
         case 'Pledge Reminders':        $action = 'Reports/ReminderReport.php'; break;
         case 'Voting Members':          $action = 'Reports/VotingMembers.php'; break;
@@ -270,19 +270,6 @@ if ($sReportType === '') {
               <label class="form-check-label" for="letterhead<?= $val ?>"><?= $label ?></label>
             </div>
           <?php endforeach; ?>
-        </div>
-      </div>
-      <div class="mb-3">
-        <label class="form-label"><?= gettext('Remittance Slip') ?>:</label>
-        <div class="d-flex gap-3">
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="remittance" value="yes" id="remittanceYes">
-            <label class="form-check-label" for="remittanceYes"><?= gettext('Yes') ?></label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="remittance" value="no" id="remittanceNo" checked>
-            <label class="form-check-label" for="remittanceNo"><?= gettext('No') ?></label>
-          </div>
         </div>
       </div>
     <?php endif; ?>

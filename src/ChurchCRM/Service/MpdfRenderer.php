@@ -64,7 +64,7 @@ class MpdfRenderer implements PdfRendererInterface
         $localeCode = str_replace('_', '-', (string) $locale->getLocale());
         $data['lang'] = str_starts_with($localeCode, 'zh') ? $localeCode : substr($localeCode, 0, 2);
         $data['text_dir'] = $locale->isRTL() ? 'rtl' : 'ltr';
-        $data['generated_on'] = date(\ChurchCRM\dto\SystemConfig::getValue('sDateFormatLong') ?: 'Y-m-d');
+        $data['generated_on'] = date(SystemConfig::getValue('sDateFormatLong') ?: 'Y-m-d');
         return $data;
     }
 
@@ -79,6 +79,21 @@ class MpdfRenderer implements PdfRendererInterface
             return $configured;
         }
         return SystemURLs::getDocumentRoot() . '/Images/churchcrm-logo-ink-blue.svg';
+    }
+
+    /**
+     * Resolve a custom graphic letterhead path (bDirLetterHead).
+     * Returns the path only when it is readable or an https URL.
+     * Shared by all letter-style mPDF reports.
+     */
+    public static function graphicLetterhead(): ?string
+    {
+        $path = trim((string) SystemConfig::getValue('bDirLetterHead'));
+        if ($path !== '' && (is_readable($path) || preg_match('#^https://#i', $path))) {
+            return $path;
+        }
+
+        return null;
     }
 
     private function makeMpdf(bool $landscape = false, array $mpdfOptions = []): Mpdf
