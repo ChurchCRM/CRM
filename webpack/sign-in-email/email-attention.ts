@@ -405,12 +405,6 @@ export function wireEmailAttentionTools(options: AttentionToolsOptions): Attenti
     document.body.appendChild(element);
     element.addEventListener("click", onModalClick);
     element.addEventListener("change", onModalChange);
-    element.addEventListener("hidden.bs.modal", () => {
-      if (element?.dataset.changed === "1") {
-        element.dataset.changed = "";
-        options.onChanged();
-      }
-    });
     return element;
   }
 
@@ -543,7 +537,7 @@ export function wireEmailAttentionTools(options: AttentionToolsOptions): Attenti
       renderConfirm();
       return;
     }
-    modal().dataset.changed = "1";
+    options.onChanged();
     const changed = result.changed
       .map(
         (row) =>

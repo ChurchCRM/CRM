@@ -414,15 +414,17 @@ class PortalSelfService
         if ($result === self::CONFIRM_CHANGE_NEEDED) {
             $note->setText(InputUtils::escapeHTML($comment));
         }
-        $note->save();
 
         $principal = PortalContext::principal();
-        SignInAudit::record(
-            SignInAuditEvent::FAMILY_CONFIRMED,
-            (int) $actor->getId(),
-            $principal?->method,
-            actorUserId: $principal?->actorUserId,
-            detail: sprintf('family=%d; note=%d; result=%s', (int) $family->getId(), (int) $note->getId(), $result),
+        SignInAudit::withChange(
+            static fn () => $note->save(),
+            static fn (): ?int => SignInAudit::record(
+                SignInAuditEvent::FAMILY_CONFIRMED,
+                (int) $actor->getId(),
+                $principal?->method,
+                actorUserId: $principal?->actorUserId,
+                detail: sprintf('family=%d; note=%d; result=%s', (int) $family->getId(), (int) $note->getId(), $result),
+            ),
         );
     }
 
