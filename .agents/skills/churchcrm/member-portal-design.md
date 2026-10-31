@@ -195,6 +195,7 @@ Cards: next portal-visible events, the member's next volunteer assignment and pe
 
 - Read: own person and family.
 - Edit own person: name parts, title/suffix, email, work email, phones, birthday (`bPortalAllowBirthdayEdit`), photo. Writes: `POST /api/portal/me`, `POST /api/portal/me/photo` (calls `Person::setImageFromBase64()` for the member's own record).
+- Language (`psi_Language`, `ChurchCRM\Portal\MemberLanguage`): the profile form's Language field, "Church default" (`sLanguage`) or a language from `locales.json`. `Bootstrapper::getCurrentLocale()` resolves every request: a member session and Login as Person use the person's language, a STAFF session the staff account's `ui.locale`, a signed-out page `sLanguage`. Emails to the member are built in their language (`MemberLanguage::inLanguageOf()`), the office notice in the church's (`inChurchLanguage()`). No field in a STAFF session.
 - Edit family (`portal.family.edit`, an adult of the family): address, city, state, zip, country, home phone, wedding date; email belongs to people, not families. Other members are view-only. "Add a family member" (`portal.family.edit`) creates a pending self-registration entry (`Person::SELF_REGISTER`) for staff review. `POST /api/portal/family`, `POST /api/portal/family/members`.
 - Every write goes through `InputSanitizationMiddleware` and a field allow-list, and writes a timeline `Note` "edited via the Member Portal". Dates travel as ISO `YYYY-MM-DD`, sanitized as `text`; the service parses them strictly, so `2026-02-31` is refused.
 - Photos: the portal serves its own copies because `isLimitedAccessAllowedPath()` confines self-service sessions to `/portal` and `/api/portal`. `GET /api/portal/me/photo` (cached privately for `Photo::CACHE_DURATION_SECONDS`) and `GET /api/portal/family/members/{personId}/photo` (`private, no-store`) serve through the `Photo` object; every `photoUrl` the portal hands out points at them with `?v=<mtime>`. The family photo route is the one place a portal route takes a person id; it checks the id against the actor's own family, and anything else is 404, never 403.
@@ -242,7 +243,7 @@ What the church has emailed this member, newest first, paginated; reached from t
 | Item | Where |
 |---|---|
 | `calendars.ministry_id` (nullable, indexed, FK to `volunteer_ministry_vmin`) | `orm/schema.xml`, `Install.sql` |
-| `person_signin_psi.psi_LastActivity`, `psi_CalendarToken` (UNIQUE), `psi_CalendarSelection` (the `user_usr` columns are no longer read) | `orm/schema.xml`, `Install.sql` |
+| `person_signin_psi.psi_LastActivity`, `psi_CalendarToken` (UNIQUE), `psi_CalendarSelection` (the `user_usr` columns are no longer read), `psi_Language` (NULL = the church's) | `orm/schema.xml`, `Install.sql` |
 | Config items listed above, no System Settings category | `SystemConfig::buildConfigs()` |
 
 ## Tests

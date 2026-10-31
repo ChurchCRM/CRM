@@ -178,6 +178,47 @@ describe("Member Portal API — /api/portal/me and /api/portal/family", () => {
         });
     });
 
+    describe("POST /api/portal/me — language", () => {
+        after(() => {
+            portalLogin(adultUser);
+            withCsrfToken((token) => portalPost("/api/portal/me", { language: "" }, token, 200));
+        });
+
+        it("saves a language the installation ships, and an empty one for the church's", () => {
+            portalLogin(adultUser);
+            withCsrfToken((token) => {
+                portalPost("/api/portal/me", { language: "fr_FR" }, token, 200).then((response) => {
+                    expect(response.body.updated).to.deep.eq(["language"]);
+                    expect(response.body.profile.language).to.eq("fr_FR");
+                });
+                portalPost("/api/portal/me", { language: "fr_FR" }, token, 200).its("body.updated").should("deep.eq", []);
+                portalPost("/api/portal/me", { language: "" }, token, 200).then((response) => {
+                    expect(response.body.updated).to.deep.eq(["language"]);
+                    expect(response.body.profile.language).to.eq("");
+                });
+            });
+            cy.makePrivateAdminAPICall("GET", `/api/timeline/person/${LENA_PERSON_ID}`, null, 200).then((response) => {
+                expect(JSON.stringify(response.body.timeline)).to.contain("Edited via the Member Portal: Language");
+            });
+        });
+
+        it("refuses a language the installation does not ship, and saves nothing else", () => {
+            const phone = `(206) 555-${String(Date.now()).slice(-4)}`;
+            portalLogin(adultUser);
+            withCsrfToken((token) => {
+                portalPost("/api/portal/me", { language: "xx_XX", workPhone: phone }, token, 400)
+                    .its("body.failures")
+                    .should("include", "language: Please choose a language from the list.");
+            });
+            cy.request("/api/portal/me")
+                .its("body.profile")
+                .should((profile) => {
+                    expect(profile.language).to.eq("");
+                    expect(profile.workPhone).to.not.eq(phone);
+                });
+        });
+    });
+
     describe("POST /api/portal/family — the adult-of-the-family rule", () => {
         it("lets an adult save the family address, ignoring a familyId in the body", () => {
             const address = `${String(Date.now()).slice(-5)} Avondale Ave`;
