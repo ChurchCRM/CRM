@@ -641,8 +641,7 @@ function wireSignInTab(): void {
   let queue: Promise<void> = Promise.resolve();
   paintSignInRuleWarning(saved, maySignInCount);
 
-  const save = async (name: string, control: SignInControl): Promise<void> => {
-    const sent = control.read();
+  const save = async (name: string, control: SignInControl, sent: SignInValue): Promise<void> => {
     const { ok, body } = await postJSON<SignInSaveResponse>(
       "/admin/api/member-portal/sign-in",
       { [name]: sent },
@@ -684,17 +683,18 @@ function wireSignInTab(): void {
     if (!control) {
       return;
     }
+    const wanted = control.read();
     if (name !== "bMemberSignIn") {
-      enqueue(() => save(name, control));
+      enqueue(() => save(name, control, wanted));
       return;
     }
-    const turningOn = control.read() === true;
+    const turningOn = wanted === true;
     enqueue(async () => {
       if (turningOn) {
         await refreshStatistics();
       }
       if (await confirmMemberSignIn(turningOn, signInRuleWarning(saved, maySignInCount))) {
-        await save(name, control);
+        await save(name, control, wanted);
       } else {
         control.write(saved[name] ?? (turningOn ? "0" : "1"));
       }

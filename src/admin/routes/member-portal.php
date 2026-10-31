@@ -96,7 +96,8 @@ $memberPortalHandler = function (Request $request, Response $response): Response
 
 /**
  * The Members tab's lists, in the order the design gives them. The one-time
- * "Family emails not moved" list shows only while the 7.8.3 move left rows.
+ * "Family emails not moved" list shows only while the 7.8.3 move left rows
+ * whose address it did not move.
  *
  * @return list<array{id: string, label: string, icon: string}>
  */
@@ -109,7 +110,7 @@ function memberPortalListChoices(): array
         ['id' => MemberSignInListService::EMAIL_ATTENTION, 'label' => gettext('Email needs attention'), 'icon' => 'fa-envelope-circle-check'],
         ['id' => MemberSignInListService::FAMILIES_CONFIRMED, 'label' => gettext('Families confirmed, last 30 days'), 'icon' => 'fa-house-circle-check'],
     ];
-    if (FamilyEmailMoveQuery::create()->count() > 0) {
+    if (FamilyEmailMoveQuery::create()->filterByOutcome('noted')->count() > 0) {
         $lists[] = ['id' => MemberSignInListService::FAMILY_EMAILS_NOT_MOVED, 'label' => gettext('Family emails not moved'), 'icon' => 'fa-envelope-open'];
     }
 

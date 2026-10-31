@@ -29,8 +29,9 @@ use Propel\Runtime\ActiveQuery\Criteria;
 /**
  * Portal permissions an administrator gives one person (member sign-in design
  * §8.3 source 3, §8.6): a capability, a scope, an optional last day and a
- * reason. Every grant and removal is audited with the administrator, and the
- * person's worked-out grants are forgotten so the change applies at once.
+ * reason. Every grant and removal is audited with the administrator, or not
+ * made, and the person's worked-out grants are forgotten so the change applies
+ * at once.
  *
  * The reason stays on the grant; the audit records only what was given, on
  * what, and until when (§14).
@@ -100,16 +101,17 @@ final class PortalGrantService
         $grant->setEndsAt($endsAt)
             ->setReason($reason)
             ->setGrantedByUserId((int) $actor->getId())
-            ->setGrantedAt($now)
-            ->save();
-
-        PortalAuthorizationService::forget($personId);
-        SignInAudit::record(
-            SignInAuditEvent::GRANT_ADDED,
-            $personId,
-            actorUserId: (int) $actor->getId(),
-            detail: self::auditDetail($grant),
+            ->setGrantedAt($now);
+        SignInAudit::withChange(
+            static fn () => $grant->save(),
+            static fn (): ?int => SignInAudit::record(
+                SignInAuditEvent::GRANT_ADDED,
+                $personId,
+                actorUserId: (int) $actor->getId(),
+                detail: self::auditDetail($grant),
+            ),
         );
+        PortalAuthorizationService::forget($personId);
 
         return $grant;
     }
@@ -126,10 +128,11 @@ final class PortalGrantService
         }
 
         $detail = self::auditDetail($grant);
-        $grant->delete();
-
+        SignInAudit::withChange(
+            static fn () => $grant->delete(),
+            static fn (): ?int => SignInAudit::record(SignInAuditEvent::GRANT_REMOVED, $personId, actorUserId: (int) $actor->getId(), detail: $detail),
+        );
         PortalAuthorizationService::forget($personId);
-        SignInAudit::record(SignInAuditEvent::GRANT_REMOVED, $personId, actorUserId: (int) $actor->getId(), detail: $detail);
     }
 
     /**

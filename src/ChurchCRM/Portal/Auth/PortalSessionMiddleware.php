@@ -113,7 +113,15 @@ final class PortalSessionMiddleware implements MiddlewareInterface
         $this->recordActivity($principal, $state);
         PortalContext::set($principal, $person, $staffUser);
 
-        $response = $handler->handle($request->withAttribute(self::PRINCIPAL_ATTRIBUTE, $principal));
+        try {
+            $response = $handler->handle($request->withAttribute(self::PRINCIPAL_ATTRIBUTE, $principal));
+        } catch (Throwable $error) {
+            if ($deviceToken instanceof RememberedDeviceToken) {
+                RememberedDeviceCookie::sendWithError($deviceToken);
+            }
+
+            throw $error;
+        }
 
         return $deviceToken instanceof RememberedDeviceToken ? RememberedDeviceCookie::with($response, $deviceToken) : $response;
     }
