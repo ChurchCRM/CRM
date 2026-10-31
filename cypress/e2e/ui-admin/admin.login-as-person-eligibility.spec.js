@@ -97,6 +97,7 @@ const auditSince = (personId, afterId) =>
 
 describe("Login as Person eligibility", () => {
     const saved = {};
+    const registeredIds = [];
 
     before(() => {
         SETTINGS.forEach((name) => {
@@ -122,6 +123,10 @@ describe("Login as Person eligibility", () => {
         db("UPDATE person_per SET per_DateDeceased = NULL WHERE per_ID = ?", [TARGET]);
     });
 
+    after(() => {
+        cy.cleanupPeople(registeredIds);
+    });
+
     describe("still opens, page after page, where a member could not sign in", () => {
         it("an inactive person", () => {
             admin("POST", `api/person/${INACTIVE}/activate/false`);
@@ -139,9 +144,9 @@ describe("Login as Person eligibility", () => {
             cy.request("POST", "/api/public/register/person", { firstName: "Rowtwelve", lastName: "Review" }).then(
                 ({ body }) => {
                     const personId = Number(body.Id);
+                    registeredIds.push(personId);
                     signInStatus(personId).its("reason").should("eq", "needs_review");
                     opensAndStops(personId, "Rowtwelve Review");
-                    cy.cleanupPeople([personId]);
                 },
             );
         });

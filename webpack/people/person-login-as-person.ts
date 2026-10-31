@@ -15,11 +15,17 @@ function t(key: string): string {
 }
 
 async function start(item: HTMLElement): Promise<void> {
-  const response = await fetch(`${window.CRM?.root ?? ""}/admin/api/person/${item.dataset.personId}/login-as-person`, {
-    method: "POST",
-    headers: { "content-type": "application/json", "X-CSRF-Token": item.dataset.csrfToken ?? "" },
-    body: "{}",
-  });
+  let response: Response;
+  try {
+    response = await fetch(`${window.CRM?.root ?? ""}/admin/api/person/${item.dataset.personId}/login-as-person`, {
+      method: "POST",
+      headers: { "content-type": "application/json", "X-CSRF-Token": item.dataset.csrfToken ?? "" },
+      body: "{}",
+    });
+  } catch {
+    window.CRM?.notify?.(t("Login as Person could not start."), { type: "danger" });
+    return;
+  }
   let body: { message?: string; redirect?: string } = {};
   try {
     body = await response.json();
