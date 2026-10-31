@@ -73,6 +73,10 @@
             "kind": "fixture",
             "reason": "Member sign-in row 10 (#10463): an address moved from the family email and \"has signed in\" have no HTTP surface until rows 5 and 9."
         },
+        "cypress/e2e/ui/portal/member.portal-passkeys.spec.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in row 8 (#10463): the stored WebAuthn fields (credential id hash, public key, user handle, sign counter) and the sign-in settings have no HTTP surface, and the audit is read in SQL because an API-key call would replace the member's portal session; the person's email is put back after the staff change."
+        },
         "cypress/e2e/ui/portal/member.portal-remembered-devices.spec.js": {
             "kind": "fixture",
             "reason": "Member sign-in row 7 (#10463): the stored device rows (only a token hash), the sign-in audit, the idle time and the remembered-device days have no HTTP surface until row 9; a refusal is made by unticking the person's classification."

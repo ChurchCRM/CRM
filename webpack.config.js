@@ -159,6 +159,8 @@ module.exports = {
     // My Teams (#9868): the team page's four tabs, drawn by the shared ministries
     // components. The occurrence page reuses `ministries-occurrence` unchanged.
     'portal-teams': './webpack/portal/teams.ts',
+    // Passkeys (member sign-in #10463): adding one, and signing in with one.
+    'portal-passkeys': './webpack/portal/portal-passkeys.ts',
     'telemetry': './webpack/telemetry',
     'debug': './webpack/debug',
     'finance-deposit-editor': './webpack/finance-deposit-editor',

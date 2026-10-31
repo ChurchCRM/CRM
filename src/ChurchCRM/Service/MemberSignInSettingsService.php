@@ -3,10 +3,10 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Portal\Auth\MemberSignInRule;
+use ChurchCRM\Portal\Auth\PasskeySite;
 use InvalidArgumentException;
 use Propel\Runtime\ActiveQuery\Criteria;
 
@@ -131,19 +131,7 @@ final class MemberSignInSettingsService
     /** Why members won't be offered passkeys on this site, or null. */
     public function passkeyProblem(): ?string
     {
-        $parts = parse_url((string) SystemURLs::getURL());
-        $host = strtolower((string) ($parts['host'] ?? ''));
-        if ($host === '') {
-            return gettext('Passkeys need the site address to be set in Config.php.');
-        }
-        if (filter_var(trim($host, '[]'), FILTER_VALIDATE_IP) !== false) {
-            return gettext('Passkeys need a host name, not an IP address, in the site address.');
-        }
-        if (($parts['scheme'] ?? '') !== 'https' && $host !== 'localhost') {
-            return gettext('Passkeys need the site to be served over HTTPS. Members are not offered passkeys until it is.');
-        }
-
-        return null;
+        return PasskeySite::addressProblem();
     }
 
     /**

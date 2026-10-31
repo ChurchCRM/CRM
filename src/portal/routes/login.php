@@ -3,17 +3,23 @@
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\model\ChurchCRM\PersonSigninRequest;
 use ChurchCRM\Portal\Auth\EmailSignInOutcome;
+use ChurchCRM\Portal\Auth\PasskeySignInOutcome;
+use ChurchCRM\Portal\Auth\PasskeySite;
 use ChurchCRM\Portal\Auth\PortalSessionStore;
 use ChurchCRM\Portal\Auth\RememberedDeviceCookie;
+use ChurchCRM\Portal\PortalExtension;
 use ChurchCRM\Portal\PortalSignInPages;
 use ChurchCRM\Portal\PortalTwig;
 use ChurchCRM\Service\EmailSignInService;
+use ChurchCRM\Service\PasskeyService;
+use ChurchCRM\Slim\SlimUtils;
 use Laminas\Diactoros\Response as Psr7Response;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
-// Member sign-in by email (member sign-in design §6.1, §7). Public: every page
-// here works signed out, and none of them says whether an address may sign in.
+// Member sign-in by email or passkey (member sign-in design §6.1, §6.3, §7).
+// Public: every page here works signed out, and none of them says whether an
+// address may sign in.
 
 $renderLoginPage = static function (Response $response, string $template, array $model = []): Response {
     return PortalTwig::render($response, $template, $model + [
@@ -43,7 +49,11 @@ $loginForm = static function (Request $request, Response $response) use ($render
         return $redirect(PortalSignInPages::landingUrl());
     }
 
-    return $renderLoginPage($response, 'login/request.html.twig', ['email' => '', 'emailError' => '']);
+    return $renderLoginPage($response, 'login/request.html.twig', [
+        'email' => '',
+        'emailError' => '',
+        'passkeySignIn' => PasskeySite::isAvailable($request),
+    ]);
 };
 $group->get('', $loginForm);
 $group->get('/', $loginForm);
@@ -54,6 +64,7 @@ $group->post('', function (Request $request, Response $response) use ($renderLog
         return $renderLoginPage($response, 'login/request.html.twig', [
             'email' => $typed,
             'emailError' => gettext('Enter your email address.'),
+            'passkeySignIn' => PasskeySite::isAvailable($request),
         ]);
     }
 
@@ -103,4 +114,40 @@ $group->post('/confirm/{token:[0-9a-f]{64}}', function (Request $request, Respon
     }
 
     return $finishSignIn($request, $response, $outcome);
+});
+
+$group->post('/passkey/options', function (Request $request, Response $response): Response {
+    if (!PasskeySite::isAvailable($request)) {
+        return SlimUtils::renderJSON($response, ['message' => gettext('Passkeys cannot be used here.')], 404);
+    }
+
+    return SlimUtils::renderJSON($response, ['publicKey' => (new PasskeyService())->signInOptions()]);
+});
+
+$group->post('/passkey', function (Request $request, Response $response) use ($renderLoginPage, $redirect): Response {
+    if (!PasskeySite::isAvailable($request)) {
+        return $redirect(PortalSignInPages::loginUrl());
+    }
+
+    $body = (array) $request->getParsedBody();
+    $binary = static fn (string $name): string => (string) PasskeyService::fromBase64Url((string) ($body[$name] ?? ''));
+    $outcome = (new PasskeyService())->signIn(
+        $binary('credentialId'),
+        $binary('clientDataJSON'),
+        $binary('authenticatorData'),
+        $binary('signature'),
+        $binary('userHandle'),
+    );
+    if ($outcome === PasskeySignInOutcome::EXPIRED) {
+        PortalExtension::addFlash('warning', gettext('That took too long. Please try again.'));
+
+        return $redirect(PortalSignInPages::loginUrl());
+    }
+    if ($outcome === PasskeySignInOutcome::FAILED) {
+        return $renderLoginPage($response, 'login/failed.html.twig', ['passkey' => true]);
+    }
+
+    $response = PortalSignInPages::withoutBrowserCookie($redirect(PortalSignInPages::landingUrl()));
+
+    return PortalSignInPages::rememberDevice($request, $response, false);
 });
