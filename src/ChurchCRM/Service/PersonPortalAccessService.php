@@ -38,12 +38,13 @@ final class PersonPortalAccessService
             $permission['reason'] = $permission['grantId'] === null ? null : ($reasons[$permission['grantId']] ?? null);
         }
         unset($permission);
+        $inEffect = array_flip(array_filter(array_column($permissions, 'grantId')));
 
         return [
             'devices' => $this->devices($personId),
             'passkeys' => $this->passkeys($personId),
             'permissions' => $permissions,
-            'notInEffect' => array_values(array_filter($stored, static fn (array $grant): bool => $grant['ended'] || !$grant['known'])),
+            'notInEffect' => array_values(array_filter($stored, static fn (array $grant): bool => !isset($inEffect[$grant['grantId']]))),
         ];
     }
 
