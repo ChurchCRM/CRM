@@ -3,6 +3,7 @@
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\FamilyPledgeReportService;
 use ChurchCRM\Service\MpdfRenderer;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -29,7 +30,7 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
         $fy = FiscalYearUtils::getFiscalYearDatesById($fiscalYearId);
         $pdf = (new MpdfRenderer())->renderToString('family-pledge-summary', $report + [
             'fiscal_year' => FiscalYearUtils::formatFiscalYearLabel($fiscalYearId),
-            'date_range' => $fy['startDate'] . ' – ' . $fy['endDate'],
+            'date_range' => DateTimeUtils::formatDate($fy['startDate']) . ' – ' . DateTimeUtils::formatDate($fy['endDate']),
         ]);
 
         $filename = 'FamilyPledgeSummary' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
@@ -37,6 +38,7 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
 
         return $response
             ->withHeader('Content-Type', 'application/pdf')
+            ->withHeader('Cache-Control', 'private, no-store')
             ->withHeader('Content-Disposition', (SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline') . '; filename="' . $filename . '"');
     });
 });
