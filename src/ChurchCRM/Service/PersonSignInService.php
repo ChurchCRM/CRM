@@ -126,6 +126,7 @@ final class PersonSignInService
     public function signOutEverywhere(Person $person, ?User $actor): int
     {
         $personId = (int) $person->getId();
+        $actorUserId = $actor === null ? null : (int) $actor->getPersonId();
         $connection = Propel::getWriteConnection(PersonSigninTableMap::DATABASE_NAME);
         $connection->beginTransaction();
         try {
@@ -134,6 +135,7 @@ final class PersonSignInService
                 ->filterByPersonId($personId)
                 ->filterByRevokedAt(null, Criteria::ISNULL)
                 ->update(RememberedDeviceService::revokedValues($this->now()), $connection);
+            (new EmailSignInService())->cancelOpenRequests($personId, SignInReason::SIGNED_OUT_EVERYWHERE, $actorUserId, $connection);
             $connection->commit();
         } catch (Throwable $e) {
             $connection->rollBack();
@@ -141,8 +143,6 @@ final class PersonSignInService
             throw $e;
         }
 
-        $actorUserId = $actor === null ? null : (int) $actor->getPersonId();
-        (new EmailSignInService())->cancelOpenRequests($personId, SignInReason::SIGNED_OUT_EVERYWHERE, $actorUserId);
         SignInAudit::record(
             SignInAuditEvent::SESSION_ENDED,
             $personId,

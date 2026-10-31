@@ -234,6 +234,42 @@ describe("Member Portal remembered devices", () => {
         cy.location("pathname").should("match", /\/portal\/login$/);
     });
 
+    it("reloads again for the next ended session once a save after the reload worked", () => {
+        signInWithCode({ remember: true });
+        cy.visit("/portal/profile/edit");
+        closeBrowser();
+        cy.window().then((win) => {
+            win.beforeTheFirstReload = true;
+        });
+        cy.get("#portal-profile-save").click();
+        cy.window().should("not.have.property", "beforeTheFirstReload");
+        cy.get("#portal-profile-save").click();
+        cy.contains("Nothing had changed, so nothing was saved.").should("be.visible");
+
+        closeBrowser();
+        cy.window().then((win) => {
+            win.beforeTheSecondReload = true;
+        });
+        cy.get("#portal-profile-save").click();
+        cy.window().should("not.have.property", "beforeTheSecondReload");
+        cy.get("#portal-account-toggle").should("contain.text", `Hello ${member.firstName}`);
+    });
+
+    it("replaces the device token even when the page it opens fails", () => {
+        signInWithCode({ remember: true });
+        cy.getCookie(DEVICE_COOKIE).then((first) => {
+            closeBrowser();
+            cy.request({ url: "/portal/email-history/999999999", failOnStatusCode: false, followRedirect: false })
+                .its("status")
+                .should("eq", 404);
+            cy.getCookie(DEVICE_COOKIE).its("value").should("not.eq", first.value);
+
+            cy.endDeviceTokenGrace(member.personId);
+            closeBrowser();
+            expectSignedIn();
+        });
+    });
+
     it("lists the devices on Sign-in and devices, and signing one out stops it and its session", () => {
         signInWithCode({ remember: true });
         saveCookies().then((otherDevice) => {
