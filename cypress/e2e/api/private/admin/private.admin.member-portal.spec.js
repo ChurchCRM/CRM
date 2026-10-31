@@ -169,7 +169,7 @@ describe("API Private Admin Member Portal", () => {
         it("Counts a portal sign-in and lists it first", () => {
             cy.request({
                 method: "POST",
-                url: "/session/begin",
+                url: "/admin/",
                 form: true,
                 body: { User: MEMBER_USER, Password: MEMBER_PASSWORD },
                 followRedirect: false,

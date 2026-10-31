@@ -29,12 +29,12 @@ function freshAdminLogin() {
     cy.get("input[name=User]").type(Cypress.testEnv("admin.username"));
     cy.get("input[name=Password]").type(Cypress.testEnv("admin.password") + "{enter}");
     cy.url().then((url) => {
-        if (url.includes("/session/begin")) {
+        if (/\/admin\/$/.test(new URL(url).pathname)) {
             cy.get("input[name=User]").clear().type(Cypress.testEnv("admin.username"));
             cy.get("input[name=Password]").clear().type(Cypress.testEnv("admin.password") + "{enter}");
         }
     });
-    cy.url().should("not.include", "/session/begin");
+    cy.location("pathname").should("not.match", /\/admin\/$/);
 }
 
 function adminApi(method, url, body, expectedStatus = 200) {

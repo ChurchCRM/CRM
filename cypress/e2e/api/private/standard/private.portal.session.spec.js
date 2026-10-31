@@ -125,11 +125,11 @@ describe("Member Portal session (portal principal)", () => {
             .should("eq", 401);
         cy.request({ url: "/v2/dashboard", followRedirect: false }).then((response) => {
             expect(response.status).to.eq(302);
-            expect(response.redirectedToUrl).to.include("/session/begin");
+            expect(response.redirectedToUrl).to.match(/\/admin\/$/);
         });
         cy.request({ url: "/PropertyList.php", followRedirect: false }).then((response) => {
             expect(response.status).to.eq(302);
-            expect(response.redirectedToUrl).to.include("/session/begin");
+            expect(response.redirectedToUrl).to.match(/\/admin\/$/);
         });
     });
 

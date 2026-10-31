@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Portal\Auth;
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonSignin;
 use ChurchCRM\model\ChurchCRM\PersonSigninQuery;
@@ -70,6 +71,10 @@ final class PortalSessionStarter
             $state instanceof PersonSignin ? (int) $state->getSessionVersion() : 0,
             $actorUserId,
         );
+        // Last before the save, so a failed sign-in leaves the staff session as it was.
+        if ($method->replacesStaffSession()) {
+            AuthenticationManager::endStaffSession();
+        }
         PortalSessionStore::save($principal);
         SignInAudit::record(
             SignInAuditEvent::SIGNED_IN,

@@ -2,12 +2,15 @@
 
 namespace ChurchCRM\Portal;
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\LocaleInfo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Portal\Auth\PortalContext;
 use ChurchCRM\Portal\Auth\PortalPrincipal;
@@ -306,6 +309,7 @@ class PortalExtension extends AbstractExtension implements GlobalsInterface
                 'isTeamLeader' => false,
                 'isStaff' => false,
                 'signedInWithPassword' => false,
+                'adminConsoleUrl' => '',
             ];
         }
 
@@ -332,7 +336,25 @@ class PortalExtension extends AbstractExtension implements GlobalsInterface
             'isStaff' => $staffUser !== null && !$staffUser->isEditSelfExclusive(),
             // The password and two-factor pages exist only for a staff session (§6.4).
             'signedInWithPassword' => $staffUser !== null,
+            'adminConsoleUrl' => self::adminConsoleUrl($person, $staffUser),
         ];
+    }
+
+    /**
+     * Where Admin Console goes (§6.4): straight back from a staff session, or to
+     * the staff sign-in from a member session whose person also has a staff
+     * account, which only a staff sign-in there may open.
+     */
+    private static function adminConsoleUrl(Person $person, ?User $staffUser): string
+    {
+        $user = $staffUser ?? UserQuery::create()->findPk($person->getId());
+        if (!$user instanceof User || $user->isEditSelfExclusive()) {
+            return '';
+        }
+
+        return $staffUser !== null
+            ? SystemURLs::getRootPath() . '/v2/dashboard'
+            : AuthenticationManager::getStaffSignInURL();
     }
 
     /**

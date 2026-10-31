@@ -5,8 +5,7 @@
   (member sign-in design §6.1). It reads the same whether or not the address
   can sign in. The code works only in the browser that asked for it.
 
-  Variables: `pageTitle`, `codeError`, `loginUrl`, `staffSignInUrl`,
-  `offerRememberDevice`.
+  Variables: `pageTitle`, `codeError`, `loginUrl`, `offerRememberDevice`.
 #}
 
 {% block nav %}{% endblock %}
@@ -33,7 +32,5 @@
             <a class="portal-button portal-button-quiet" href="{{ loginUrl }}" id="portalSignInAgain">{{ gettext('Use a different email address') }}</a>
         </div>
     </form>
-
-    {% include 'login/staff-link.html.twig' %}
 </div>
 {% endblock %}

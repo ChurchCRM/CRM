@@ -361,7 +361,7 @@ export async function memberPortalPage(admin: Page, browser: Browser): Promise<P
     timezoneId: 'America/Chicago',
   });
   const page = await context.newPage();
-  await page.goto('/session/begin');
+  await page.goto('/admin/');
   await page.locator('input[name=User]').fill(MEMBER_USERNAME);
   await page.locator('input[name=Password]').fill(MEMBER_PASSWORD);
   await page.locator('input[name=Password]').press('Enter');

@@ -333,7 +333,7 @@ describe("CSV Export Authorization (GHSA-4vj2-gm78-3q63)", () => {
         cy.visit("/CSVExport.php", { failOnStatusCode: false });
 
         // Should be redirected to login (or show auth error)
-        cy.url().should("include", "/session/begin");
+        cy.location("pathname").should("match", /\/admin\/$/);
     });
 
     it("should deny unauthenticated POST to CSVCreateFile.php", () => {

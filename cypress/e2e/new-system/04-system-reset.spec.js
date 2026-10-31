@@ -32,7 +32,10 @@ describe('04 - System Reset', () => {
         cy.get('input[name=User]', { timeout: 15000 }).type(adminCredentials.username);
         cy.get('input[name=Password]').type(password);
         cy.get('input[name=Password]').type('{enter}');
-        cy.url({ timeout: 30000 }).should('not.include', '/session/begin');
+        // Signed in: the forced password change, or a page with the user menu
+        // (the Admin Dashboard at /admin/ while the admin is the only person).
+        cy.get('#OldPassword, a[href$="/session/end"]', { timeout: 30000 }).should('exist');
+        cy.get('#UserBox, #PasswordBox').should('not.exist');
 
         // After a DB reset the admin has NeedPasswordChange=true; complete the forced form if needed.
         // The forced form uses button[type=submit] (login-box layout, not card layout).

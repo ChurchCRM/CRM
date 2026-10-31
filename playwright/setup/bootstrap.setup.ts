@@ -65,7 +65,7 @@ setup('setup-church-info', async ({ page }, testInfo) => {
   await page.locator('#setup-success').waitFor({ state: 'visible', timeout: 120000 });
   await humanPause(page, 800);
   await humanClick(page.locator('#continue-to-login'));
-  await page.waitForURL(/\/session\/begin/, { timeout: 30000 });
+  await page.waitForURL(/\/admin\/$/, { timeout: 30000 });
 
   // First admin login — forced password change.
   await page.goto('/login');
@@ -125,7 +125,7 @@ setup('demo-data-import', async ({ page }, testInfo) => {
   await humanType(page.locator('input[name=Password]'), ADMIN_WORKING_PASSWORD);
   await humanPause(page, 300);
   await page.locator('input[name=Password]').press('Enter');
-  await page.waitForURL((url) => !url.pathname.includes('/session/begin'), { timeout: 15000 });
+  await page.waitForURL((url) => !/\/admin\/?$/.test(url.pathname), { timeout: 15000 });
 
   await uploadDemoPhoto(page, 'person', ADMIN_PERSON_ID, ADMIN_PHOTO);
 

@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\Utils\InputUtils;
@@ -22,7 +23,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
     </div>
 
     <div class="d-grid">
-      <a href="<?= SystemURLs::getRootPath() ?>/session/begin" class="btn btn-primary">
+      <a href="<?= AuthenticationManager::getStaffSignInURL() ?>" class="btn btn-primary">
         <i class="fa-solid fa-right-to-bracket me-2"></i><?= gettext("Go to Login") ?>
       </a>
     </div>

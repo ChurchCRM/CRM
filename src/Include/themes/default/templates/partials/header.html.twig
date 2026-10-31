@@ -12,7 +12,8 @@
   Its items, in order:
     1. Email History — what the church has emailed this member
     2. Change Password — a staff session only; members have no password
-    3. Admin Console — staff logins only
+    3. Admin Console — back to the staff side from a staff session, or to the
+       staff sign-in when a member session's person also has a staff account
     4. Sign out
 #}
 <header class="portal-header">
@@ -54,10 +55,8 @@
                         <span>{{ gettext('Change Password') }}</span>
                     </a>
                     {% endif %}
-                    {# Every staff login — not only an administrator — needs a way
-                       back to the admin area it came from. #}
-                    {% if member.isStaff %}
-                    <a class="portal-account-item" role="menuitem" href="{{ url('/v2/dashboard') }}">
+                    {% if member.adminConsoleUrl %}
+                    <a class="portal-account-item" role="menuitem" href="{{ member.adminConsoleUrl }}" id="portalAccountAdminConsole">
                         <i class="fa-solid fa-gauge" aria-hidden="true"></i>
                         <span>{{ gettext('Admin Console') }}</span>
                     </a>
