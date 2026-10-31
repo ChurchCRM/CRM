@@ -37,8 +37,19 @@ class FundRaiserStatementService
             $people[$person->getId()] = $person;
         }
 
+        // A buyer who holds several paddles gets one statement listing every paddle number.
+        $paddleNumbers = [];
+        foreach ($paddles as $paddle) {
+            $paddleNumbers[$paddle->getPnPerId()][] = $paddle->getPnNum();
+        }
+
         $statements = [];
         foreach ($paddles as $paddle) {
+            if (!isset($paddleNumbers[$paddle->getPnPerId()])) {
+                continue;
+            }
+            $numbers = $paddleNumbers[$paddle->getPnPerId()];
+            unset($paddleNumbers[$paddle->getPnPerId()]);
             $buyer = $people[$paddle->getPnPerId()] ?? null;
             $family = $buyer?->getFamily();
 
@@ -88,7 +99,7 @@ class FundRaiserStatementService
             $statements[] = [
                 'salutation' => $family !== null ? $family->getSalutation() : gettext('Dear Friend'),
                 'address' => $family !== null ? $family->getMailingAddressLines() : '',
-                'paddle' => (string) $paddle->getPnNum(),
+                'paddle' => implode(', ', $numbers),
                 'buyer' => $buyer !== null ? trim($buyer->getFirstName() . ' ' . $buyer->getLastName()) : '',
                 'donated' => array_map(
                     static fn (DonatedItem $item): array => self::line($item, 1, $contacts[$item->getBuyerId()] ?? null),
@@ -130,7 +141,7 @@ class FundRaiserStatementService
             'quantity' => $quantity,
             'title' => (string) $item->getTitle(),
             'name' => $contact !== null ? trim($contact->getFirstName() . ' ' . $contact->getLastName()) : '',
-            'phone' => (string) ($contact?->getFamily()?->getHomePhone() ?? ''),
+            'phone' => (string) ($contact?->getBestPhone() ?: ($contact?->getFamily()?->getHomePhone() ?? '')),
             'email' => (string) ($contact?->getEmail() ?? ''),
             'amount' => CurrencyFormatter::format($quantity * self::cents($item->getSellprice()) / 100),
         ];

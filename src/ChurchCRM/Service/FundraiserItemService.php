@@ -71,7 +71,13 @@ class FundraiserItemService
         }
 
         $root = realpath(SystemURLs::getDocumentRoot());
-        $path = $root === false ? false : realpath($root . '/' . ltrim($picture, '/'));
+        if ($root === false) {
+            return '';
+        }
+        $path = str_starts_with($picture, '/') ? realpath($picture) : false;
+        if ($path === false || !str_starts_with($path, $root . DIRECTORY_SEPARATOR) || !is_file($path)) {
+            $path = realpath($root . '/' . ltrim($picture, '/'));
+        }
         if ($path === false || !str_starts_with($path, $root . DIRECTORY_SEPARATOR) || !is_file($path)) {
             return '';
         }

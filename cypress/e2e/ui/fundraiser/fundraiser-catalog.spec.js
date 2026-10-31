@@ -1,13 +1,22 @@
 /// <reference types="cypress" />
 
-const CATALOG = "/fundraiser/1/reports/catalog";
+import { pdfText } from "../../../support/pdf-text";
+
+// Seed fundraiser 3: Spring Silent Auction.
+const CATALOG = "/fundraiser/3/reports/catalog";
 
 describe("Fundraiser catalog PDF", () => {
-    it("a fundraiser manager gets the PDF", () => {
+    it("prints the seeded silent-auction catalog", () => {
         cy.setupStandardSession();
         cy.request({ url: CATALOG, encoding: "binary" }).then((response) => {
             expect(response.headers["content-type"]).to.include("application/pdf");
-            expect(response.body.slice(0, 5)).to.eq("%PDF-");
+            return pdfText(response.body).then((lines) => {
+                const text = lines.join(" ");
+                expect(text).to.include("Spring Silent Auction");
+                expect(text).to.include("A1: Weekend at the church cabin");
+                expect(text).to.include("B1: Pie assortment");
+                expect(text).to.include("Donated by Albert Campbell");
+            });
         });
     });
 

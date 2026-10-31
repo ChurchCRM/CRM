@@ -1,13 +1,21 @@
 /// <reference types="cypress" />
 
-const BID_SHEETS = "/fundraiser/1/reports/bid-sheets";
+import { pdfText } from "../../../support/pdf-text";
+
+// Seed fundraiser 2: Spring Silent Auction, item A1.
+const BID_SHEETS = "/fundraiser/3/reports/bid-sheets";
 
 describe("Fundraiser bid sheets PDF", () => {
-    it("a fundraiser manager gets the PDF", () => {
+    it("prints the seeded silent-auction items", () => {
         cy.setupStandardSession();
         cy.request({ url: BID_SHEETS, encoding: "binary" }).then((response) => {
             expect(response.headers["content-type"]).to.include("application/pdf");
-            expect(response.body.slice(0, 5)).to.eq("%PDF-");
+            return pdfText(response.body).then((lines) => {
+                const text = lines.join(" ");
+                expect(text).to.include("A1: Weekend at the church cabin");
+                expect(text).to.include("Donated by Mathew Campbell");
+                expect(text).to.include("Handmade quilt");
+            });
         });
     });
 
