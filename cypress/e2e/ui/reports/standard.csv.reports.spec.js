@@ -13,17 +13,17 @@ describe("csv export", () => {
         it("should export advanced deposit report as CSV", () => {
             cy.visit("/FinancialReports.php");
             cy.contains("Financial Reports");
-            cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
-            cy.get("#FinancialReports").submit();
-            cy.contains("Advanced Deposit Report");
+            cy.visit("/finance/reports/deposits");
+            cy.get("#depositAdvancedSettings > summary").click();
+            cy.contains("Deposit Reports");
             cy.get("input[name='output'][value='csv']").check({ force: true });
             
             // Set date range to match test database data (goes back to 2018)
-            cy.get("input[name='DateStart']").clear({ force: true }).type("01/01/2018", { force: true });
+            cy.get("input[name='DateStart']").clear({ force: true }).type("2018-01-01", { force: true });
             cy.get("input[name='DateEnd']").clear({ force: true }).type(getTodayDate(), { force: true });
             
             // Intercept the download to verify CSV content
-            cy.intercept("POST", "**/AdvancedDeposit.php").as("csvDownload");
+            cy.intercept("POST", "**/finance/reports/deposits/download").as("csvDownload");
             
             cy.get("#createReport").click();
             
@@ -46,9 +46,9 @@ describe("csv export", () => {
         it("should handle advanced deposit report with multiple filters", () => {
             cy.visit("/FinancialReports.php");
             cy.contains("Financial Reports");
-            cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
-            cy.get("#FinancialReports").submit();
-            cy.contains("Advanced Deposit Report");
+            cy.visit("/finance/reports/deposits");
+            cy.get("#depositAdvancedSettings > summary").click();
+            cy.contains("Deposit Reports");
             cy.get("input[name='output'][value='csv']").check({ force: true });
 
             // Select first classification option if available
@@ -61,7 +61,7 @@ describe("csv export", () => {
             });
 
             // Set date range
-            cy.get("input[name='DateStart']").clear({ force: true }).type("10/28/2015", { force: true });
+            cy.get("input[name='DateStart']").clear({ force: true }).type("2015-10-28", { force: true });
             cy.get("input[name='DateEnd']").clear({ force: true }).type(getTodayDate(), { force: true });
 
             // Select a deposit if available
@@ -73,7 +73,7 @@ describe("csv export", () => {
             });
 
             cy.get("#createReport").click({ force: true });
-            cy.url().should("include", "/FinancialReports.php");
+            cy.url().should("include", "/finance/reports/deposits");
         });
     });
 
@@ -110,7 +110,7 @@ describe("csv export", () => {
             cy.contains("Zero Givers");
             cy.get("input[name='output'][value='csv']").check({ force: true });
             
-            cy.get("input[name='DateStart']").clear({ force: true }).type("10/28/2024", { force: true });
+            cy.get("input[name='DateStart']").clear({ force: true }).type("2024-10-28", { force: true });
             cy.get("input[name='DateEnd']").clear({ force: true }).type(getTodayDate(), { force: true });
             
             // Intercept the download to verify CSV content
@@ -140,5 +140,5 @@ function formatDate(date) {
     const month = String(date.getMonth() + 1).padStart(2, "0");
     const day = String(date.getDate()).padStart(2, "0");
     const year = date.getFullYear();
-    return `${month}/${day}/${year}`;
+    return `${year}-${month}-${day}`;
 }

@@ -1005,10 +1005,6 @@ msgid "Bank Draft"
 msgstr "הוראת קבע בנקאית"
 
 #: 
-msgid "0 - No Minimum"
-msgstr "0 - אין מינימום"
-
-#: 
 msgid "Other Settings"
 msgstr "הגדרות אחרות"
 
@@ -1272,10 +1268,6 @@ msgstr "אשר תוויות נתונים"
 #: 
 msgid "Invalid login or password"
 msgstr "שם משתמש או סיסמה לא תקינים"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "יותר מדי ניסיונות כניסה כושלים: חשבונך ננעל. אנא צור קשר עם מנהל המערכת."
 
 #: 
 msgid "Email/Username"
@@ -2140,24 +2132,12 @@ msgid "Classes"
 msgstr "שיעורים"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "דוחות בית ספר יום ראשון"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "תלמידים שלא בכיתת בית ספר יום ראשון"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "יש לבחור לפחות קבוצה אחת כדי ליצור רשימות כיתה או דפי נוכחות"
-
-#: 
 msgid "Report Details"
 msgstr "פרטי הדוח"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "הצג את כל התפקידים (לא מסומן יציג רק תפקידי מורה/תלמיד)"
 
 #: 
 msgid "First Sunday"
@@ -2178,10 +2158,6 @@ msgstr "תלמידים נוספים"
 #: 
 msgid "Extra Teachers"
 msgstr "מורים נוספים"
-
-#: 
-msgid "Create Class List"
-msgstr "צור רשימת כיתה"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4595,14 +4571,6 @@ msgid "PhotoBook"
 msgstr "אלבום תמונות"
 
 #: 
-msgid "With Photos"
-msgstr "עם תמונות"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "צור אלבום תמונות"
-
-#: 
 msgid "SSE"
 msgstr "דרום-דרום-מזרח"
 
@@ -4747,11 +4715,6 @@ msgstr "ימי שנה"
 #: 
 msgid "View User"
 msgstr "הצג משתמש"
-
-#: 
-#, fuzzy
-msgid "not found or user without an email"
-msgstr "לא נמצא או משתמש ללא אימייל"
 
 #: 
 msgid "UserName not set"
@@ -4948,16 +4911,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "כמות מינימלית שסיסמה חדשה חייבת להיות שונה מהישנה (# תווים ששונו)\n"
 "הגדר לאפס כדי לבטל תכונה זו"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "מספר מקסימלי של ניסיונות התחברות כושלים לפני נעילת חשבון משתמש.\n"
-"לאחר הגעה למקסימום, מנהל מערכת חייב להפעיל מחדש את החשבון.\n"
-"תכונה זו עוזרת להגן מפני התקפות ניחוש סיסמאות אוטומטיות.\n"
-"הגדר לאפס כדי לבטל תכונה זו."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -10045,10 +9998,6 @@ msgstr "כפיית התקנה מחדש?"
 #: 
 msgid "Full Path"
 msgstr "נתיב מלא"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "יצירת רשימות כיתה, גליונות נוכחות ואלבומי תמונות"
 
 #: 
 msgid "Installed"
@@ -18573,10 +18522,6 @@ msgstr "לא ניתן להעתיק את כתובת הקהילה."
 #: 
 msgid "Could not match the church country."
 msgstr "לא ניתן להתאים את מדינת הקהילה."
-
-#: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "רשימות כיתה, דפי נוכחות וספרי תמונות"
 
 #: 
 msgid "Group membership lists and Sunday School class reports"

@@ -49,6 +49,8 @@ A site can live under `/churchcrm`. `npm run lint` (`subdir-safe urls`) fails on
 
 `cypress/e2e/ui/navigation/install-path-requests.spec.js` loads every page and fails on a same-origin request outside the install path. Bugs in server-built URLs, `.htaccess` or cookie paths show up in the nightly subdirectory run.
 
+A form `action` that already includes `SystemURLs::getRootPath()` and is then passed to `cy.request` doubles the install path on subdirectory runs (see `cypress-testing.md` → Install path). The lint does not catch that dynamic construction; the nightly subdirectory suite does.
+
 ## Test database
 
 The test database is built from two files, mounted in order by `docker/docker-compose*.yaml`: `src/mysql/install/Install.sql` (`00-install.sql`), then `cypress/data/seed.sql` (`10-seed.sql`). `npm run docker:test:reset:db` (`scripts/reset-test-db.js`) drops the database and loads both again. The `new-system` job starts empty and installs through the wizard.

@@ -1030,10 +1030,6 @@ msgid "Bank Draft"
 msgstr "Weksel"
 
 #: 
-msgid "0 - No Minimum"
-msgstr "0 - bez Minimum"
-
-#: 
 msgid "Other Settings"
 msgstr "Inne Ustawienia"
 
@@ -1305,10 +1301,6 @@ msgstr "Potwierdź data labels"
 #: 
 msgid "Invalid login or password"
 msgstr "Nieprawidłowa Nazwa Użytkownika lub Hasło"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Zbyt wiele niepoprawnych logowań: twoje konto zostało zablokowane. Prosimy o kontakt z administratorem."
 
 #: 
 msgid "Email/Username"
@@ -2197,24 +2189,12 @@ msgid "Classes"
 msgstr "Klasy"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Raport Szkoły Niedzielnej"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Uczniowie nie przypisani do klas"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Przynajmniej jedna grupa musi być zaznaczona aby utworzyć klasę lub listę obecności"
-
-#: 
 msgid "Report Details"
 msgstr "Szczegóły raportu"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Wymień wszystkie role (odznaczenie wyświetli tylko role Nauczyciel/Uczeń)"
 
 #: 
 #, fuzzy
@@ -2240,10 +2220,6 @@ msgstr "Dodatkowi Uczniowie"
 #, fuzzy
 msgid "Extra Teachers"
 msgstr "Dodatkowi Nauczyciele"
-
-#: 
-msgid "Create Class List"
-msgstr "Utwórz Listę Klas"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4651,14 +4627,6 @@ msgid "PhotoBook"
 msgstr "Książka zdjęć"
 
 #: 
-msgid "With Photos"
-msgstr "Ze zdjęciami"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Utwórz książkę zdjęć"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4802,10 +4770,6 @@ msgstr "Rocznice"
 #: 
 msgid "View User"
 msgstr "Zobacz użytkownika"
-
-#: 
-msgid "not found or user without an email"
-msgstr "nie znaleziono lub użytkownik bez adresu e-mail"
 
 #: 
 msgid "UserName not set"
@@ -5003,16 +4967,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Określ o ile nowe hasło musi różnić się do starego\n"
 "(# liczba zmienionych znaków)\n"
-"Ustaw zero by wyłączyć tę funkcję"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Maksymalna liczba nieudanych logowań po których konto użytkownika zostanie zablokowane.\n"
-"Po zablokowaniu tylko administrator może odblokować konto.\n"
-"Funkcja służy ochronie przed automatycznym zgadywaniem haseł.\n"
 "Ustaw zero by wyłączyć tę funkcję"
 
 #: 
@@ -10111,10 +10065,6 @@ msgstr "Wymusić ponowną instalację?"
 #: 
 msgid "Full Path"
 msgstr "Pełna ścieżka"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Wygeneruj listy klas, arkusze obecności i albumy zdjęć"
 
 #: 
 msgid "Installed"
@@ -18646,10 +18596,6 @@ msgstr "Nie można skopiować adresu parafii."
 #: 
 msgid "Could not match the church country."
 msgstr "Nie można dopasować kraju parafii."
-
-#: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Listy klas, listy obecności i albumy ze zdjęciami"
 
 #: 
 msgid "Group membership lists and Sunday School class reports"

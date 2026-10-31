@@ -43,7 +43,7 @@ The direction is accepted with changes ([decision on #10885](https://github.com/
 - Code is cited by symbol on upstream `master` as of 2026-10-24 (`f0524f646`), unless marked as member sign-in.
 
 **Today**
-- `fam_SendNewsLetter` is a per-family yes/no flag. It drives the printed newsletter labels (`Reports/NewsLetterLabels.php`) and the confirm report.
+- `fam_SendNewsLetter` is a per-family yes/no flag. It drives the printed newsletter labels (`/people/labels/newsletter`) and the confirm report.
 - The core plugin `src/plugins/core/mailchimp` (added in 7.0.0, library `drewm/mailchimp-api`) takes one API key.
   - The `defaultListId` setting is never read.
   - `MailChimpPlugin::getGroupMailChimpListId()` always returns null, so the group handlers (`onGroupMemberAdded`, `onGroupMemberRemoved`) never do anything. The group sync that `plugin.json` describes doesn't exist.

@@ -993,10 +993,6 @@ msgid "Bank Draft"
 msgstr "ബാങ്ക് ഡ്രാഫ്റ്റ്"
 
 #: 
-msgid "0 - No Minimum"
-msgstr "0 - ഏറ്റവും കുറഞ്ഞ തുകയില്ല"
-
-#: 
 msgid "Other Settings"
 msgstr "മറ്റ് ക്രമീകരണങ്ങൾ"
 
@@ -1255,10 +1251,6 @@ msgstr "ഡേറ്റ ലേബലുകൾ സ്ഥിരീകരിക്�
 #: 
 msgid "Invalid login or password"
 msgstr "അസാധുവായ ലോഗിൻ അല്ലെങ്കിൽ പാസ്‌വേഡ്"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "ലോഗിൻ പലതവണ പരാജയപ്പെട്ടു: നിങ്ങളുടെ അക്കൗണ്ട് ലോക്ക് ചെയ്തിരിക്കുന്നു. ദയവായി അഡ്‌മിനിസ്‌ട്രേറ്ററെ ബന്ധപ്പെടുക."
 
 #: 
 msgid "Email/Username"
@@ -2119,24 +2111,12 @@ msgid "Classes"
 msgstr "ക്ലാസ്സുകൾ"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "സൺഡേ സ്‌കൂൾ റിപ്പോർട്ടുകൾ"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "സൺഡേ സ്‌കൂൾ ക്ലാസ്സിൽ ഇല്ലാത്ത വിദ്യാർത്ഥികൾ"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "ക്ലാസ് ലിസ്‌റ്റ് അല്ലെങ്കിൽ ഹാജർ ഷീറ്റ് ഉണ്ടാക്കാൻ കുറഞ്ഞത് ഒരു ഗ്രൂപ്പ് തിരഞ്ഞെടുക്കണം."
-
-#: 
 msgid "Report Details"
 msgstr "റിപ്പോർട്ട് വിശദാംശങ്ങൾ"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "എല്ലാ പങ്കുകളും ലിസ്‌റ്റ് ചെയ്യുക (ടിക്ക് ഇടാതിരുന്നാൽ അദ്ധ്യാപക/വിദ്യാർത്ഥി പങ്കുകൾ മാത്രം)"
 
 #: 
 msgid "First Sunday"
@@ -2157,10 +2137,6 @@ msgstr "അധിക വിദ്യാർത്ഥികൾ"
 #: 
 msgid "Extra Teachers"
 msgstr "അധിക അദ്ധ്യാപകർ"
-
-#: 
-msgid "Create Class List"
-msgstr "ക്ലാസ് ലിസ്‌റ്റ് ഉണ്ടാക്കുക"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4567,14 +4543,6 @@ msgid "PhotoBook"
 msgstr "ഫോട്ടോ ബുക്ക്"
 
 #: 
-msgid "With Photos"
-msgstr "ഫോട്ടോകളോടൊപ്പം"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "ഫോട്ടോ ബുക്ക് ഉണ്ടാക്കുക"
-
-#: 
 msgid "SSE"
 msgstr "ത.ത.കി."
 
@@ -4718,10 +4686,6 @@ msgstr "വാർഷികങ്ങൾ"
 #: 
 msgid "View User"
 msgstr "ഉപയോക്താവ് കാണുക"
-
-#: 
-msgid "not found or user without an email"
-msgstr "കണ്ടെത്തിയില്ല അല്ലെങ്കിൽ ഇമെയിൽ ഇല്ലാത്ത ഉപയോക്താവ്"
 
 #: 
 msgid "UserName not set"
@@ -4916,16 +4880,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "പുതിയ പാസ്‌വേഡ് പഴയതിൽ നിന്ന് വ്യത്യസ്തമാകേണ്ട ഏറ്റവും കുറഞ്ഞ അളവ് (# അക്ഷരങ്ങൾ)\n"
 "ഈ ഫീച്ചർ പ്രവർത്തനരഹിതമാക്കാൻ പൂജ്യം ക്രമീകരിക്കുക"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "അക്കൗണ്ട് ലോക്ക് ചെയ്യുന്നതിന് മുൻപ് അനുവദിക്കേണ്ട പരമാവധി ലോഗിൻ പരാജയങ്ങൾ.\n"
-"ഒരതിരിൽ എത്തിയാൽ അഡ്‌മിൻ വീണ്ടും പ്രവർത്തനക്ഷമമാക്കണം.\n"
-"ഈ ഫീച്ചർ ഓട്ടോ-പാസ്‌വേഡ് ആക്രമണങ്ങളിൽ നിന്ന് സംരക്ഷിക്കുന്നു.\n"
-"പ്രവർത്തനരഹിതമാക്കാൻ പൂജ്യം ക്രമീകരിക്കുക."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -10013,10 +9967,6 @@ msgstr "നിർബന്ധിത പുനഃഇൻസ്റ്റലേഷ�
 #: 
 msgid "Full Path"
 msgstr "പൂർണ്ണ പാത്ത്"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "ക്ലാസ് ലിസ്‌റ്റുകൾ, ഹാജർ ഷീറ്റുകൾ, ഫോട്ടോ ബുക്കുകൾ സൃഷ്ടിക്കുക"
 
 #: 
 msgid "Installed"
@@ -18541,10 +18491,6 @@ msgstr "ചർച്ച് വിലാസം പകർത്താൻ കഴി
 #: 
 msgid "Could not match the church country."
 msgstr "ചർച്ചിന്റെ രാജ്യം പൊരുത്തപ്പെടുത്താൻ കഴിഞ്ഞില്ല."
-
-#: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "ക്ലാസ് പട്ടികകൾ, ഹാജർ ഷീറ്റുകൾ, ഫോട്ടോ ബുക്കുകൾ"
 
 #: 
 msgid "Group membership lists and Sunday School class reports"

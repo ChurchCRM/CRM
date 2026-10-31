@@ -30,7 +30,7 @@ class PeopleReportService
 {
     public const UNASSIGNED_CLASSIFICATION = 0;
 
-    /** Mailing-label modes, as Reports/PDFLabel.php names them: by person, or one per household. */
+    /** Mailing-label modes: by person, or one per household. */
     public const LABEL_PERSON = 'indiv';
     public const LABEL_HOUSEHOLD = 'fam';
 

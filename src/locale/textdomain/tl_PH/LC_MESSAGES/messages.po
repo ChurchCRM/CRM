@@ -993,10 +993,6 @@ msgid "Bank Draft"
 msgstr "Tseke ng Bangko"
 
 #: 
-msgid "0 - No Minimum"
-msgstr "0 - Walang Minimum"
-
-#: 
 msgid "Other Settings"
 msgstr "Iba pang mga Setting"
 
@@ -1255,10 +1251,6 @@ msgstr "Kumpirmahin ang mga label ng datos"
 #: 
 msgid "Invalid login or password"
 msgstr "Hindi wastong login o password"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Napakaraming bagsak na login: ang iyong account ay nalock na. Makipag-ugnayan sa isang administrator."
 
 #: 
 msgid "Email/Username"
@@ -2119,24 +2111,12 @@ msgid "Classes"
 msgstr "Mga Klase"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Mga Ulat ng Paaralan ng Linggo"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Mga Estudyanteng wala sa Klase ng Paaralan ng Linggo"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Kahit isang grupo ay dapat napili para gumawa ng mga listahan ng klase o mga sheet ng presensya."
-
-#: 
 msgid "Report Details"
 msgstr "Mga Detalye ng Ulat"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Ilista ang lahat ng Papel (ang hindi naka-check ay maglilista ng mga papel ng Guro/Estudyante lamang)"
 
 #: 
 msgid "First Sunday"
@@ -2157,10 +2137,6 @@ msgstr "Karagdagang mga Estudyante"
 #: 
 msgid "Extra Teachers"
 msgstr "Karagdagang mga Guro"
-
-#: 
-msgid "Create Class List"
-msgstr "Lumikha ng Listahan ng Klase"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4567,14 +4543,6 @@ msgid "PhotoBook"
 msgstr "PhotoBook"
 
 #: 
-msgid "With Photos"
-msgstr "May Mga Larawan"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Lumikha ng PhotoBook"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4718,10 +4686,6 @@ msgstr "Mga Anibersaryo"
 #: 
 msgid "View User"
 msgstr "Tingnan ang User"
-
-#: 
-msgid "not found or user without an email"
-msgstr "hindi nahanap o user na walang email"
 
 #: 
 msgid "UserName not set"
@@ -4916,16 +4880,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Pinakamaliit na halaga na dapat magkaiba ang bagong password sa luma (# ng mga karakter na binago)\n"
 "Itakda sa zero para huwag paganahin ang tampok na ito"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Pinakamataas na bilang ng mga bagsak na login na pinapayagan bago malock ang user account.\n"
-"Kapag naabot na ang maximum, isang administrator ang kailangang muling paganahin ang account.\n"
-"Ang tampok na ito ay tumutulong na protektahan laban sa mga awtomatikong pag-atake sa paghula ng password.\n"
-"Itakda sa zero para huwag paganahin ang tampok na ito."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -10013,10 +9967,6 @@ msgstr "Puwersahing Muling I-install?"
 #: 
 msgid "Full Path"
 msgstr "Buong Path"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Gumawa ng mga listahan ng klase, mga sheet ng presensya, at mga photo book"
 
 #: 
 msgid "Installed"
@@ -18541,10 +18491,6 @@ msgstr "Hindi makopya ang address ng simbahan."
 #: 
 msgid "Could not match the church country."
 msgstr "Hindi matukoy ang bansa ng simbahan."
-
-#: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Mga listahan ng klase, mga attendance sheet, at mga photo book"
 
 #: 
 msgid "Group membership lists and Sunday School class reports"

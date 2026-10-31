@@ -120,9 +120,11 @@ class Bootstrapper
         self::initSession();
         
         // Initialize SystemConfig with database values only once during bootstrap
-        // Fallback error handlers (testMYSQLI, systemFailure) will call init() without parameters
+        // Fallback error handlers (testMYSQLI, systemFailure) will call init() without parameters.
+        // Rows of retired keys stay until the database is current, so the upgrade
+        // scripts below can still read them.
         if (!SystemConfig::isInitialized()) {
-            SystemConfig::init(ConfigQuery::create()->find());
+            SystemConfig::init(ConfigQuery::create()->find(), self::isDBCurrent());
         }
 
         self::configureLogging();
@@ -136,17 +138,38 @@ class Bootstrapper
                 if (session_status() !== PHP_SESSION_ACTIVE) {
                     @session_start();
                 }
-                if (!empty($_SESSION['dbUpgradeJustRan']) || !empty($_SESSION['dbUpgradeError'])) {
-                    // Issue 1 fix: skip retry if upgrade just ran or previously failed —
-                    // prevents infinite redirect loop when auto-upgrade throws an exception.
-                    unset($_SESSION['dbUpgradeJustRan']);
-                    self::$bootStrapLogger->info('Database auto-upgrade just ran or failed; continuing normally.');
+                if (!empty($_SESSION['dbUpgradeError'])) {
+                    // Keep a failed upgrade on the error page until an administrator repairs it.
+                    $upgradePath = SystemURLs::getRootPath() . '/external/system/db-upgrade';
+                    if (parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH) !== $upgradePath) {
+                        RedirectUtils::redirect('external/system/db-upgrade');
+                    }
+                    self::$initialized = true;
+                    return;
                 } else {
                     try {
                         self::$bootStrapLogger->info("Auto-upgrading database from $dbVersion to $softwareVersion");
-                        UpgradeService::upgradeDatabaseVersion();
+                        if (!UpgradeService::upgradeDatabaseVersion(true)) {
+                            $_SESSION['dbUpgradePending'] = true;
+                            $upgradePath = SystemURLs::getRootPath() . '/external/system/db-upgrade';
+                            if (parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH) !== $upgradePath) {
+                                RedirectUtils::redirect('external/system/db-upgrade');
+                            }
+                            // Keep requests away from application tables until the schema is current.
+                            self::$initialized = true;
+                            return;
+                        }
                         self::$bootStrapLogger->info('Database auto-upgrade completed successfully');
-                    } catch (\Exception $e) {
+                    } catch (\Throwable $e) {
+                        if ($e->getCode() === 409) {
+                            $_SESSION['dbUpgradePending'] = true;
+                            $upgradePath = SystemURLs::getRootPath() . '/external/system/db-upgrade';
+                            if (parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH) !== $upgradePath) {
+                                RedirectUtils::redirect('external/system/db-upgrade');
+                            }
+                            self::$initialized = true;
+                            return;
+                        }
                         // Issue 2 fix: log the full exception detail but store only a generic
                         // message in session — the error page is unauthenticated, so we must
                         // not expose SQL, table names, or filesystem paths.

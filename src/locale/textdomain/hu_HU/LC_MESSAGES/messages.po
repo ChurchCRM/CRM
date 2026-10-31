@@ -1010,10 +1010,6 @@ msgid "Bank Draft"
 msgstr "Bank-tervezet"
 
 #: 
-msgid "0 - No Minimum"
-msgstr "0 - Nincs Minimum"
-
-#: 
 msgid "Other Settings"
 msgstr "Egyéb beállítások"
 
@@ -1282,10 +1278,6 @@ msgstr "Még adatfeliratokat"
 #: 
 msgid "Invalid login or password"
 msgstr "Érvénytelen login vagy jelszó"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Túl sok sikertelen bejelentkezési: fiókját zárolták. Kérjük, forduljon a rendszergazda."
 
 #: 
 msgid "Email/Username"
@@ -2173,24 +2165,12 @@ msgid "Classes"
 msgstr "Osztályok"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Vasárnapi Iskola jelentések"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Diákok, akik nem járnak vasárnapi iskolai osztályba"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Legalább egy csoportot úgy kell megválasztani, hogy a class listák vagy jelenléti ív."
-
-#: 
 msgid "Report Details"
 msgstr "Jelentés részletei"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Minden szerepkör listázása (ha nincs bejelölve, csak a Tanár/Diák szerepköröket listázza)"
 
 #: 
 #, fuzzy
@@ -2216,10 +2196,6 @@ msgstr "Extra Hallgatók"
 #, fuzzy
 msgid "Extra Teachers"
 msgstr "Extra Tanárok"
-
-#: 
-msgid "Create Class List"
-msgstr "Create Class List"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4626,14 +4602,6 @@ msgid "PhotoBook"
 msgstr "Fotókönyv"
 
 #: 
-msgid "With Photos"
-msgstr "Fotókkal"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Fotókönyv létrehozása"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4777,10 +4745,6 @@ msgstr "Évfordulók"
 #: 
 msgid "View User"
 msgstr "Felhasználó megtekintése"
-
-#: 
-msgid "not found or user without an email"
-msgstr "nem található vagy felhasználó e-mail nélkül"
 
 #: 
 msgid "UserName not set"
@@ -4975,16 +4939,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Az az alapösszeg, amely egy új jelszónak eltérnie kell a régitől (megváltozott karakterek száma)\n"
 "Hallgatólagos értékre állítsa, hogy letiltsa ezt a funkciót"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "A megengedett sikertelen bejelentkezések maximális száma, mielőtt egy felhasználó fiók zárolva lenne.\n"
-"Amint a maximum elérte, a rendszergazdának újra kell engedélyeznie a fiókot.\n"
-"Ez a funkció segít megvédeni az automatizált jelszó-találgatási támadások ellen.\n"
-"Hallgatólagos értékre állítsa, hogy letiltsa ezt a funkciót."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -10072,10 +10026,6 @@ msgstr "Kényszerített újratelepítés?"
 #: 
 msgid "Full Path"
 msgstr "Teljes elérési út"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Osztálylisták, jelenléti ívek és fotóalbumok készítése"
 
 #: 
 msgid "Installed"
@@ -18600,10 +18550,6 @@ msgstr "A gyülekezet címét nem sikerült átmásolni."
 #: 
 msgid "Could not match the church country."
 msgstr "A gyülekezet országát nem sikerült megfeleltetni."
-
-#: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Osztálylisták, jelenléti ívek és fotókönyvek"
 
 #: 
 msgid "Group membership lists and Sunday School class reports"
