@@ -999,10 +999,6 @@ msgid "Bank Draft"
 msgstr "Pankkivekseli"
 
 #: 
-msgid "0 - No Minimum"
-msgstr "0 - Ei vähimmäismäärää"
-
-#: 
 msgid "Other Settings"
 msgstr "Muut asetukset"
 
@@ -1261,10 +1257,6 @@ msgstr "Vahvista tietotarrat"
 #: 
 msgid "Invalid login or password"
 msgstr "Virheellinen käyttäjätunnus tai salasana"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Liian monta epäonnistunutta kirjautumista: tilisi on lukittu. Ota yhteyttä ylläpitäjään."
 
 #: 
 msgid "Email/Username"
@@ -2125,24 +2117,12 @@ msgid "Classes"
 msgstr "Luokat"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Pyhäkoulun raportit"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Oppilaat, jotka eivät ole pyhäkoululuokassa"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Vähintään yksi ryhmä on valittava luokkaluetteloiden tai läsnäololistojen luomiseksi."
-
-#: 
 msgid "Report Details"
 msgstr "Raportin tiedot"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Listaa kaikki roolit (jos valitsematta, listataan vain opettajat/oppilaat)"
 
 #: 
 msgid "First Sunday"
@@ -2163,10 +2143,6 @@ msgstr "Ylimääräiset oppilaat"
 #: 
 msgid "Extra Teachers"
 msgstr "Ylimääräiset opettajat"
-
-#: 
-msgid "Create Class List"
-msgstr "Luo luokkaluettelo"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4573,14 +4549,6 @@ msgid "PhotoBook"
 msgstr "Kuvakirja"
 
 #: 
-msgid "With Photos"
-msgstr "Kuvilla"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Luo kuvakirja"
-
-#: 
 msgid "SSE"
 msgstr "EKA"
 
@@ -4724,10 +4692,6 @@ msgstr "Vuosipäivät"
 #: 
 msgid "View User"
 msgstr "Näytä käyttäjä"
-
-#: 
-msgid "not found or user without an email"
-msgstr "ei löytynyt tai käyttäjällä ei ole sähköpostia"
 
 #: 
 msgid "UserName not set"
@@ -4920,13 +4884,6 @@ msgstr "Istunnon aikakatkaisu sekunneissa. Aseta nollaksi poistaaksesi aikakatka
 msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
 "Set to zero to disable this feature"
 msgstr "Vähimmäismäärä merkkejä, joiden verran uuden salasanan on poikettava vanhasta. Aseta nollaksi poistaaksesi ominaisuuden."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Epäonnistuneiden kirjautumisyritysten enimmäismäärä ennen tilin lukitsemista. Tämän jälkeen ylläpitäjän on avattava tili. Aseta nollaksi poistaaksesi ominaisuuden."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -10014,10 +9971,6 @@ msgstr "Pakota uudelleenasennus?"
 #: 
 msgid "Full Path"
 msgstr "Täysi polku"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Luo luokkaluetteloita, läsnäololistoja ja valokuvakirjoja"
 
 #: 
 msgid "Installed"
@@ -18542,10 +18495,6 @@ msgstr "Seurakunnan osoitetta ei voitu kopioida."
 #: 
 msgid "Could not match the church country."
 msgstr "Seurakunnan maata ei voitu täsmäyttää."
-
-#: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Luokkaluettelot, osallistumislistat ja valokuvakirjat"
 
 #: 
 msgid "Group membership lists and Sunday School class reports"

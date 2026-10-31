@@ -35,11 +35,11 @@ describe("Sunday School photo book", () => {
         });
     });
 
-    it("the class list shortcut leads to the class list report", () => {
+    it("the class list shortcut returns the class list PDF for every class", () => {
         cy.setupAdminSession();
-        cy.request({ url: "groups/sundayschool/reports/class-list", followRedirect: false }).then((response) => {
-            expect(response.status).to.eq(302);
-            expect(response.headers.location).to.include("Reports/ClassList.php?GroupID=");
+        cy.request({ url: "groups/sundayschool/reports/class-list", encoding: "binary" }).then((response) => {
+            expect(response.headers["content-type"]).to.include("application/pdf");
+            expect(response.body.slice(0, 5)).to.eq("%PDF-");
         });
     });
 

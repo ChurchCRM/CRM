@@ -1002,10 +1002,6 @@ msgid "Bank Draft"
 msgstr "Chèque"
 
 #: 
-msgid "0 - No Minimum"
-msgstr "0 - Pas de minimum"
-
-#: 
 msgid "Other Settings"
 msgstr "Autres réglages"
 
@@ -1269,10 +1265,6 @@ msgstr "Confirmer les données des étiquettes"
 #: 
 msgid "Invalid login or password"
 msgstr "Identifiant ou Mot de passe invalide"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Trop d'échecs d'authentification : votre compte a été verrouillé. Veuillez contacter un administrateur."
 
 #: 
 msgid "Email/Username"
@@ -2137,24 +2129,12 @@ msgid "Classes"
 msgstr "Classes"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Rapports école du dimanche"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Les étudiants qui ne sont pas à l'école du dimanche"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Au moins un groupe doit être sélectionné pour faire des listes de classe ou des feuilles de présence."
-
-#: 
 msgid "Report Details"
 msgstr "Détails des rapports"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Lister tous les Rôles (en décochant, vous listerez uniquement les rôles Moniteur/Etudiant)"
 
 #: 
 msgid "First Sunday"
@@ -2175,10 +2155,6 @@ msgstr "Les étudiants supplémentaires"
 #: 
 msgid "Extra Teachers"
 msgstr "Les moniteurs supplémentaires"
-
-#: 
-msgid "Create Class List"
-msgstr "Créer une liste des classes"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4592,14 +4568,6 @@ msgid "PhotoBook"
 msgstr "Trombinoscope"
 
 #: 
-msgid "With Photos"
-msgstr "Avec les photos"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Créer un trombinoscope"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4744,11 +4712,6 @@ msgstr "Anniversaires de Mariage"
 #: 
 msgid "View User"
 msgstr "Voir l'utilisateur"
-
-#: 
-#, fuzzy
-msgid "not found or user without an email"
-msgstr "introuvable ou utilisateur sans e-mail"
 
 #: 
 msgid "UserName not set"
@@ -4945,16 +4908,6 @@ msgstr "Délai d'expiration de la session en secondes\n"
 msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
 "Set to zero to disable this feature"
 msgstr "Nombre minimal de caractères à changer lors d'un changement de mot de passe. Mettre zéro pour désactiver cette fonctionnalité."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Nombre maximal d'échecs de connexion à autoriser avant qu'un compte utilisateur ne soit verrouillé.\n"
-"Une fois le maximum atteint, un administrateur doit réactiver le compte.\n"
-"Cette fonctionnalité permet de se protéger contre les attaques automatisées par devinette de mot de passe.\n"
-"Réglez sur zéro pour désactiver cette fonction."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -10044,10 +9997,6 @@ msgstr "Forcer la Réinstallation ?"
 #: 
 msgid "Full Path"
 msgstr "Chemin Complet"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Générer des listes de classe, des feuilles de présence et des albums photos"
 
 #: 
 msgid "Installed"
@@ -18572,10 +18521,6 @@ msgstr "Impossible de copier l'adresse de l'église."
 #: 
 msgid "Could not match the church country."
 msgstr "Impossible de faire correspondre le pays de l'église."
-
-#: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Listes de classe, feuilles d'présence et albums photo"
 
 #: 
 msgid "Group membership lists and Sunday School class reports"

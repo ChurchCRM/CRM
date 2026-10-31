@@ -32,6 +32,7 @@ $addPaymentUrl = $sRootPath . '/finance/pledge/new?type=Payment&depositId=' . $d
 ob_start();
 ?>
 <div class="btn-list">
+  <a class="btn btn-outline-primary" href="<?= InputUtils::escapeAttribute($sRootPath . '/finance/reports/deposits?deposit=' . $depositId) ?>"><?= gettext('Deposit Reports') ?></a>
   <a href="<?= InputUtils::escapeAttribute($prevDeposit ? $sRootPath . '/finance/deposit/' . $prevDeposit->getId() : '#') ?>"
      class="btn btn-sm btn-outline-secondary<?= $prevDeposit ? '' : ' disabled' ?>"<?= $prevDeposit ? '' : ' aria-disabled="true" tabindex="-1"' ?>>
     <i class="fa-solid fa-chevron-left me-1"></i><?= gettext('Previous') ?>
@@ -154,7 +155,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </a>
             <?php endif; ?>
             <button type="button" class="btn btn-outline-secondary ms-auto" id="generateDepositReport" data-deposit-id="<?= $depositId ?>">
-              <i class="fa-solid fa-file-pdf me-1"></i><?= gettext('Generate Report') ?>
+              <i class="fa-solid fa-file-pdf me-1"></i><?= gettext('Print Bank Slip') ?>
             </button>
           </div>
         </form>

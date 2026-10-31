@@ -19,8 +19,6 @@ Define the `ConfigItem` in `SystemConfig::buildConfigs()` (that persists the val
 
 The booleans save through `POST /admin/api/system/config/{name}`. `sMemberPortalTheme` saves through `POST /admin/api/member-portal/theme`, which runs `ThemeManager::validate()` and answers 409 with the findings when the theme cannot render.
 
-The **Sign-in** tab owns the keys in `MemberSignInSettingsService::KEYS` and saves them through `POST /admin/api/member-portal/sign-in`, all or none. The generic config API routes those keys through the same `normalize()`, so a rule such as "member sign-in only while email works" holds whichever way a value is written.
-
 ### Retiring a key
 
 Remove the `ConfigItem` and carry its meaning over in the release's upgrade SQL, which may still read the old `config_cfg` row and must delete it. Only `Bootstrapper` prunes rows no `ConfigItem` declares (`SystemConfig::init($rows, true)`), and only once the database is current, so the upgrade runs before they go. An upgrade script that calls `SystemConfig::init($rows)` itself keeps them.

@@ -993,10 +993,6 @@ msgid "Bank Draft"
 msgstr "Cheque administrativo"
 
 #: 
-msgid "0 - No Minimum"
-msgstr "0 - Não há mínimo"
-
-#: 
 msgid "Other Settings"
 msgstr "Outras Configurações"
 
@@ -1255,10 +1251,6 @@ msgstr "Corfirma conteúdo das etiquetas"
 #: 
 msgid "Invalid login or password"
 msgstr "Login ou senha inválidos"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Muitos tentativas de logins: sua conta foi bloqueada. Entre em contato com um administrador."
 
 #: 
 msgid "Email/Username"
@@ -2119,24 +2111,12 @@ msgid "Classes"
 msgstr "Turmas"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Relatório da Escola Bíblica Dominical"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Alunos sem turmas na Escola Bíblica Dominical"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Ao menos um grupo deve ser selecionado para gerar listas de turmas ou listas de presença"
-
-#: 
 msgid "Report Details"
 msgstr "Detalhes do Relatório"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Listar todos os papéis (desmarcado listará somente os papéis de Professor / Aluno)"
 
 #: 
 msgid "First Sunday"
@@ -2157,10 +2137,6 @@ msgstr "Alunos extras"
 #: 
 msgid "Extra Teachers"
 msgstr "Professores extras"
-
-#: 
-msgid "Create Class List"
-msgstr "Criar uma lista da classe"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4567,14 +4543,6 @@ msgid "PhotoBook"
 msgstr "Fotolivro"
 
 #: 
-msgid "With Photos"
-msgstr "Com Fotos"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Criar Fotolivro"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4718,10 +4686,6 @@ msgstr "Aniversários"
 #: 
 msgid "View User"
 msgstr "Ver Usuário"
-
-#: 
-msgid "not found or user without an email"
-msgstr "Não encontrado ou usuário sem um E-mail"
 
 #: 
 msgid "UserName not set"
@@ -4916,16 +4880,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Quantidade mínima que uma nova senha deve diferenciar da antiga\n"
 "(número de caracteres alterados)\n"
-"Defina 0 para desativar esse recurso."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Número máximo de tentativas de login permitidas antes da conta ser bloqueada.\n"
-"Quando atingir o máximo, um administrador deve reativar a conta.\n"
-"Esse recurso ajuda a proteger contra ataques de identificação de senha.\n"
 "Defina 0 para desativar esse recurso."
 
 #: 
@@ -10014,10 +9968,6 @@ msgstr "Forçar reinstalação?"
 #: 
 msgid "Full Path"
 msgstr "Caminho completo"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Gerar listas de classes, folhas de presença e álbuns de fotos"
 
 #: 
 msgid "Installed"
@@ -18542,10 +18492,6 @@ msgstr "Não foi possível copiar o endereço da igreja."
 #: 
 msgid "Could not match the church country."
 msgstr "Não foi possível identificar o país da igreja."
-
-#: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Listas de turma, folhas de presença e álbuns de fotos"
 
 #: 
 msgid "Group membership lists and Sunday School class reports"

@@ -151,6 +151,17 @@ Every portal notice is a toast in the fixed `#portal-toasts` container (rendered
 
 Dark mode: the default `theme.css` has a `[data-bs-theme="dark"]` block that a theme may override. Fonts come from `self`, `fonts.googleapis.com` or `fonts.gstatic.com` (the CSP). Portal CSS uses logical properties, so RTL needs no extra stylesheet.
 
+### Buttons and spacing
+
+The default templates own the spacing. A theme that overrides a template keeps it.
+
+- A row of actions is `.portal-action-row` or `.portal-form-actions`: flex, wrap, `0.5rem` gap. The main action is `.portal-button`. The action beside it is `.portal-button-quiet`.
+- Volunteer and team templates use Bootstrap `.btn` because the shared bundles look those classes up. `portal.min.css` paints `.btn-primary` and `.btn-outline-primary` from `--portal-primary`, so a theme's colour reaches them. Success and danger buttons stay semantic.
+- The calendar toolbar hook is `.portal-fc-toolbar`. Core CSS gives each button the portal radius and `0.5rem` before the next sibling. A theme recolours with the tokens and keeps that gap.
+- Home cards are two columns from the tablet width up. At desktop, the calendar card spans half the row only when the volunteering card is absent, so four cards stay two rows of two.
+
+A full portal on Admin → Member Portal: show the calendar and share the church's public calendar (birthdays and anniversaries are optional; they show a first name and last initial); show volunteering when ministry management is on v2; leave developer mode off. Birthday editing is the church's choice. Off hides the birthday. The system theme, or a copy that only sets the tokens above, is the look these rules describe.
+
 ### Template contract
 
 `layout.html.twig` defines blocks `head_extra`, `header`, `nav`, `hero`, `content`, `sidebar`, `footer`, `scripts_extra`. Page templates fill `content` and optionally `hero` and `sidebar`. Partials are named, so a theme can override `partials/nav.html.twig` alone. Variables, ids and `data-` hooks per template are in https://docs.churchcrm.io/administration/member-portal-template-reference.

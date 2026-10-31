@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-30 09:52+0000\n"
+"POT-Creation-Date: 2026-10-30 19:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -4234,6 +4234,9 @@ msgstr ""
 msgid "Database Restored Successfully!"
 msgstr ""
 
+msgid "Database Upgrade"
+msgstr ""
+
 msgid "Database Upgrade Failed"
 msgstr ""
 
@@ -6486,6 +6489,9 @@ msgid "Family Id"
 msgstr ""
 
 msgid "Family Info"
+msgstr ""
+
+msgid "Family Labels"
 msgstr ""
 
 msgid "Family Listing"
@@ -17995,6 +18001,9 @@ msgid "Your current address will stop working straight away. Anyone you gave it 
 msgstr ""
 
 msgid "Your database already contains data"
+msgstr ""
+
+msgid "Your database is being updated. Please keep this page open until the upgrade finishes."
 msgstr ""
 
 msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
