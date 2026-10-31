@@ -956,14 +956,6 @@ msgid "Zero Givers"
 msgstr "Zerowe Datki"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Raport "
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Zaawansowany Raport"
-
-#: 
 msgid "Next"
 msgstr "Następny"
 
@@ -988,10 +980,6 @@ msgid "Apply Report Dates To"
 msgstr "Przypisz Daty Raportu do"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "Data Deposit (Domyślna)"
-
-#: 
 msgid "Payment Date"
 msgstr "Data Płatności:"
 
@@ -1014,10 +1002,6 @@ msgid "Filter by Payment Type"
 msgstr "Sortuj wg. Sposobu Płatności"
 
 #: 
-msgid "All Methods"
-msgstr "Wszystkie Sposoby"
-
-#: 
 msgid "Check"
 msgstr "Czek"
 
@@ -1028,10 +1012,6 @@ msgstr "Gotówka"
 #: 
 msgid "Bank Draft"
 msgstr "Weksel"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0 - bez Minimum"
 
 #: 
 msgid "Other Settings"
@@ -1305,10 +1285,6 @@ msgstr "Potwierdź data labels"
 #: 
 msgid "Invalid login or password"
 msgstr "Nieprawidłowa Nazwa Użytkownika lub Hasło"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Zbyt wiele niepoprawnych logowań: twoje konto zostało zablokowane. Prosimy o kontakt z administratorem."
 
 #: 
 msgid "Email/Username"
@@ -2197,24 +2173,12 @@ msgid "Classes"
 msgstr "Klasy"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Raport Szkoły Niedzielnej"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Uczniowie nie przypisani do klas"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Przynajmniej jedna grupa musi być zaznaczona aby utworzyć klasę lub listę obecności"
-
-#: 
 msgid "Report Details"
 msgstr "Szczegóły raportu"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Wymień wszystkie role (odznaczenie wyświetli tylko role Nauczyciel/Uczeń)"
 
 #: 
 #, fuzzy
@@ -2240,10 +2204,6 @@ msgstr "Dodatkowi Uczniowie"
 #, fuzzy
 msgid "Extra Teachers"
 msgstr "Dodatkowi Nauczyciele"
-
-#: 
-msgid "Create Class List"
-msgstr "Utwórz Listę Klas"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4651,14 +4611,6 @@ msgid "PhotoBook"
 msgstr "Książka zdjęć"
 
 #: 
-msgid "With Photos"
-msgstr "Ze zdjęciami"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Utwórz książkę zdjęć"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4802,10 +4754,6 @@ msgstr "Rocznice"
 #: 
 msgid "View User"
 msgstr "Zobacz użytkownika"
-
-#: 
-msgid "not found or user without an email"
-msgstr "nie znaleziono lub użytkownik bez adresu e-mail"
 
 #: 
 msgid "UserName not set"
@@ -5003,16 +4951,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Określ o ile nowe hasło musi różnić się do starego\n"
 "(# liczba zmienionych znaków)\n"
-"Ustaw zero by wyłączyć tę funkcję"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Maksymalna liczba nieudanych logowań po których konto użytkownika zostanie zablokowane.\n"
-"Po zablokowaniu tylko administrator może odblokować konto.\n"
-"Funkcja służy ochronie przed automatycznym zgadywaniem haseł.\n"
 "Ustaw zero by wyłączyć tę funkcję"
 
 #: 
@@ -5654,10 +5592,6 @@ msgstr "Usuń wybrane"
 #: 
 msgid "Funds"
 msgstr "Fundusze"
-
-#: 
-msgid "Generate Report"
-msgstr "Generuj raport"
 
 #: 
 msgid "Payments"
@@ -6355,10 +6289,6 @@ msgid "Current Deposit"
 msgstr "Obecna wpłata"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Raport z filtrowaniem wg daty, funduszu, rodziny i metody."
-
-#: 
 msgid "Day"
 msgstr "Dzień"
 
@@ -6369,10 +6299,6 @@ msgstr "Gru"
 #: 
 msgid "Deposit Statistics"
 msgstr "Statystyki wpłat"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Szczegółowe zestawienie pojedynczego dowodu wpłaty."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -10111,10 +10037,6 @@ msgstr "Wymusić ponowną instalację?"
 #: 
 msgid "Full Path"
 msgstr "Pełna ścieżka"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Wygeneruj listy klas, arkusze obecności i albumy zdjęć"
 
 #: 
 msgid "Installed"
@@ -18648,10 +18570,6 @@ msgid "Could not match the church country."
 msgstr "Nie można dopasować kraju parafii."
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Listy klas, listy obecności i albumy ze zdjęciami"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "Listy członków wspólnot oraz sprawozdania z klas szkółki niedzielnej"
 
@@ -18858,25 +18776,11 @@ msgstr[1] "Przydzielono %d domyślnych wolontariuszy"
 msgstr[2] "Przydzielono %d domyślnych wolontariuszy"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Do tej funkcji nadal potrzeba %d wolontariusza. Otwórz termin, aby uzupełnić lukę."
-msgstr[1] "Do tej funkcji nadal potrzeba %d wolontariuszy. Otwórz termin, aby uzupełnić lukę."
-msgstr[2] "Do tej funkcji nadal potrzeba %d wolontariuszy. Otwórz termin, aby uzupełnić lukę."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d nowy termin"
 msgstr[1] "%d nowe terminy"
 msgstr[2] "%d nowych terminów"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Na nadchodzący termin nadal potrzeba %d wolontariusza."
-msgstr[1] "Na nadchodzący termin nadal potrzeba %d wolontariuszy."
-msgstr[2] "Na nadchodzący termin nadal potrzeba %d wolontariuszy."
 
 #: 
 msgid "%s Calendar"
@@ -20945,10 +20849,6 @@ msgstr "Otwórz posługę"
 #: 
 msgid "Open the occurrence"
 msgstr "Otwórz termin"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Otwórz termin, aby przydzielić potrzebne osoby."
 
 #: 
 msgid "Open this team"

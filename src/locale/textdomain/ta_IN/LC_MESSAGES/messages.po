@@ -932,14 +932,6 @@ msgid "Zero Givers"
 msgstr "ஜீரோ கொடுப்பவர்கள்"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "தனிப்பட்ட வைப்பு அறிக்கை"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "மேம்பட்ட வைப்பு அறிக்கை"
-
-#: 
 msgid "Next"
 msgstr "அடுத்தது"
 
@@ -961,10 +953,6 @@ msgstr "அறிக்கை முடிவு தேதி"
 #, fuzzy
 msgid "Apply Report Dates To"
 msgstr "அறிக்கை தேதிகளுக்கு இங்கு விண்ணப்பிக்கவும்"
-
-#: 
-msgid "Deposit Date (Default)"
-msgstr "டெபாசிட் தேதி (இயல்புநிலை)"
 
 #: 
 msgid "Payment Date"
@@ -989,10 +977,6 @@ msgid "Filter by Payment Type"
 msgstr "கட்டண வகையின்படி வடிகட்டவும்"
 
 #: 
-msgid "All Methods"
-msgstr "அனைத்து முறைகள்"
-
-#: 
 msgid "Check"
 msgstr "காசோலை"
 
@@ -1003,10 +987,6 @@ msgstr "பணம்"
 #: 
 msgid "Bank Draft"
 msgstr "வங்கி வரைவு"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0 - குறைந்தபட்சம் இல்லை"
 
 #: 
 msgid "Other Settings"
@@ -1272,10 +1252,6 @@ msgstr " தகவல்/தரவு விவரத்துணுக்கு
 #: 
 msgid "Invalid login or password"
 msgstr "தவறான உள்நுழைவு அல்லது கடவுச்சொல்"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "பல தோல்வியுற்ற உள்நுழைவுகள்: உங்கள் கணக்கு பூட்டப்பட்டுள்ளது. நிர்வாகியைத் தொடர்பு கொள்ளவும்."
 
 #: 
 msgid "Email/Username"
@@ -2140,24 +2116,12 @@ msgid "Classes"
 msgstr "வகுப்புகள்"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "ஞாயிறு பள்ளி அறிக்கைகள்"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "ஞாயிறு பள்ளி வகுப்பில் மாணவர்கள் இல்லை"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "வகுப்புப் பட்டியல்கள் அல்லது வருகைத் தாளை உருவாக்க குறைந்தபட்சம் ஒரு குழுவையாவது தேர்ந்தெடுக்க வேண்டும்."
-
-#: 
 msgid "Report Details"
 msgstr "அறிக்கை விவரங்கள்"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "அனைத்து வேலைகளையும்/பாத்திரங்களையும் பட்டியலிடுங்கள் (தேர்வு செய்யப்படாதது ஆசிரியர்/மாணவர் வேலைகளையும்/பாத்திரங்களை மட்டும் பட்டியலிடும்)"
 
 #: 
 msgid "First Sunday"
@@ -2178,10 +2142,6 @@ msgstr "கூடுதல் மாணவர்கள்"
 #: 
 msgid "Extra Teachers"
 msgstr "கூடுதல் ஆசிரியர்கள்"
-
-#: 
-msgid "Create Class List"
-msgstr "வகுப்பு பட்டியலை உருவாக்கவும்"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4592,14 +4552,6 @@ msgid "PhotoBook"
 msgstr "புகைப்பட புத்தகம்"
 
 #: 
-msgid "With Photos"
-msgstr "புகைப்படங்களுடன்"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "புகைப்பட புத்தகத்தை உருவாக்கவும்"
-
-#: 
 msgid "SSE"
 msgstr "எஸ்எஸ்இ (SSE)"
 
@@ -4744,11 +4696,6 @@ msgstr "ஆண்டுவிழாக்கள்"
 #: 
 msgid "View User"
 msgstr "பயனரைக் காண்க"
-
-#: 
-#, fuzzy
-msgid "not found or user without an email"
-msgstr "மின்னஞ்சல் இல்லாமல் இல்லை அல்லது பயனர் இல்லை"
 
 #: 
 msgid "UserName not set"
@@ -4945,16 +4892,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "புதிய கடவுச்சொல் பழையவற்றிலிருந்து வேறுபட வேண்டிய குறைந்தபட்சத் தொகை (# எழுத்துகள் மாற்றப்பட்டுள்ளன)\n"
 "இந்த அம்சத்தை முடக்க பூஜ்ஜியமாக அமைக்கவும்"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "ஒரு பயனர் கணக்கு பூட்டப்படுவதற்கு முன் அனுமதிக்கப்படும் தோல்வியுற்ற உள்நுழைவுகளின் அதிகபட்ச எண்ணிக்கை.\n"
-"அதிகபட்சத்தை அடைந்ததும், நிர்வாகி கணக்கை மீண்டும் இயக்க வேண்டும்.\n"
-"இந்த அம்சம் தானியங்கு கடவுச்சொல் யூகிக்கும் தாக்குதல்களிலிருந்து பாதுகாக்க உதவுகிறது.\n"
-"இந்த அம்சத்தை முடக்க பூஜ்ஜியமாக அமைக்கவும்."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -5596,10 +5533,6 @@ msgstr "தேர்ந்தெடுக்கப்பட்டதை நீ�
 #: 
 msgid "Funds"
 msgstr "நிதிகள்"
-
-#: 
-msgid "Generate Report"
-msgstr "அறிக்கையை உருவாக்குதல்"
 
 #: 
 msgid "Payments"
@@ -6299,10 +6232,6 @@ msgid "Current Deposit"
 msgstr "நடப்பு வைப்பு"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "தேதி, நிதி, குடும்பம் மற்றும் கட்டண முறை மூலம் வடிகட்டுவதன் மூலம் தனிப்பயனாக்கக்கூடிய அறிக்கை."
-
-#: 
 msgid "Day"
 msgstr "நாள்"
 
@@ -6313,10 +6242,6 @@ msgstr "டிசம்பர்"
 #: 
 msgid "Deposit Statistics"
 msgstr "வைப்புத்தொகை புள்ளிவிவரங்கள்"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "ஒற்றை வைப்பு சீட்டின் விரிவான விவரம். "
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -10053,10 +9978,6 @@ msgstr "வலுக்கட்டாயமாக மீண்டும் ந�
 #: 
 msgid "Full Path"
 msgstr "முழு பாதை"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "வகுப்பு பட்டியல்கள், வருகைப் பதிவேடுகள் மற்றும் புகைப்படப் புத்தகங்களை உருவாக்கவும்"
 
 #: 
 msgid "Installed"
@@ -18589,10 +18510,6 @@ msgid "Could not match the church country."
 msgstr "திருச்சபையின் நாட்டைப் பொருத்த முடியவில்லை."
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "வகுப்புப் பட்டியல்கள், வருகைத் தாள்கள் மற்றும் புகைப்பட நூல்கள்"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "ஊழிய உறுப்பினர் பட்டியல்கள் மற்றும் ஞாயிறு பள்ளி வகுப்பு அறிக்கைகள்"
 
@@ -18795,22 +18712,10 @@ msgstr[0] "%d இயல்புநிலை தன்னார்வலர் �
 msgstr[1] "%d இயல்புநிலை தன்னார்வலர்கள் நியமிக்கப்பட்டனர்"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "இந்தப் பொறுப்புக்கு இன்னும் %d தன்னார்வலர் தேவை. இடைவெளியை நிரப்ப நிகழ்வைத் திறக்கவும்."
-msgstr[1] "இந்தப் பொறுப்புக்கு இன்னும் %d தன்னார்வலர்கள் தேவை. இடைவெளியை நிரப்ப நிகழ்வைத் திறக்கவும்."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d புதிய நிகழ்வு"
 msgstr[1] "%d புதிய நிகழ்வுகள்"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "வரவிருக்கும் நிகழ்வுக்கு இன்னும் %d தன்னார்வலர் தேவை."
-msgstr[1] "வரவிருக்கும் நிகழ்வுக்கு இன்னும் %d தன்னார்வலர்கள் தேவை."
 
 #: 
 msgid "%s Calendar"
@@ -20875,10 +20780,6 @@ msgstr "ஊழியத்தைத் திற"
 #: 
 msgid "Open the occurrence"
 msgstr "நிகழ்வைத் திற"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "உங்களுக்குத் தேவையான நபர்களை நியமிக்க நிகழ்வைத் திறக்கவும்."
 
 #: 
 msgid "Open this team"

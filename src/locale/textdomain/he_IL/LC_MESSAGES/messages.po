@@ -932,14 +932,6 @@ msgid "Zero Givers"
 msgstr "אפס נותנים"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "דוח הפקדות פרטני"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "דוח הפקדות מתקדם"
-
-#: 
 msgid "Next"
 msgstr "הבא"
 
@@ -961,10 +953,6 @@ msgstr "תאריך סיום דוח"
 #, fuzzy
 msgid "Apply Report Dates To"
 msgstr "החל תאריכי דוח על"
-
-#: 
-msgid "Deposit Date (Default)"
-msgstr "תאריך הפקדה (ברירת מחדל)"
 
 #: 
 msgid "Payment Date"
@@ -989,10 +977,6 @@ msgid "Filter by Payment Type"
 msgstr "סנן לפי סוג תשלום"
 
 #: 
-msgid "All Methods"
-msgstr "כל השיטות"
-
-#: 
 msgid "Check"
 msgstr "צ'ק"
 
@@ -1003,10 +987,6 @@ msgstr "מזומן"
 #: 
 msgid "Bank Draft"
 msgstr "הוראת קבע בנקאית"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0 - אין מינימום"
 
 #: 
 msgid "Other Settings"
@@ -1272,10 +1252,6 @@ msgstr "אשר תוויות נתונים"
 #: 
 msgid "Invalid login or password"
 msgstr "שם משתמש או סיסמה לא תקינים"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "יותר מדי ניסיונות כניסה כושלים: חשבונך ננעל. אנא צור קשר עם מנהל המערכת."
 
 #: 
 msgid "Email/Username"
@@ -2140,24 +2116,12 @@ msgid "Classes"
 msgstr "שיעורים"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "דוחות בית ספר יום ראשון"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "תלמידים שלא בכיתת בית ספר יום ראשון"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "יש לבחור לפחות קבוצה אחת כדי ליצור רשימות כיתה או דפי נוכחות"
-
-#: 
 msgid "Report Details"
 msgstr "פרטי הדוח"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "הצג את כל התפקידים (לא מסומן יציג רק תפקידי מורה/תלמיד)"
 
 #: 
 msgid "First Sunday"
@@ -2178,10 +2142,6 @@ msgstr "תלמידים נוספים"
 #: 
 msgid "Extra Teachers"
 msgstr "מורים נוספים"
-
-#: 
-msgid "Create Class List"
-msgstr "צור רשימת כיתה"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4595,14 +4555,6 @@ msgid "PhotoBook"
 msgstr "אלבום תמונות"
 
 #: 
-msgid "With Photos"
-msgstr "עם תמונות"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "צור אלבום תמונות"
-
-#: 
 msgid "SSE"
 msgstr "דרום-דרום-מזרח"
 
@@ -4747,11 +4699,6 @@ msgstr "ימי שנה"
 #: 
 msgid "View User"
 msgstr "הצג משתמש"
-
-#: 
-#, fuzzy
-msgid "not found or user without an email"
-msgstr "לא נמצא או משתמש ללא אימייל"
 
 #: 
 msgid "UserName not set"
@@ -4948,16 +4895,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "כמות מינימלית שסיסמה חדשה חייבת להיות שונה מהישנה (# תווים ששונו)\n"
 "הגדר לאפס כדי לבטל תכונה זו"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "מספר מקסימלי של ניסיונות התחברות כושלים לפני נעילת חשבון משתמש.\n"
-"לאחר הגעה למקסימום, מנהל מערכת חייב להפעיל מחדש את החשבון.\n"
-"תכונה זו עוזרת להגן מפני התקפות ניחוש סיסמאות אוטומטיות.\n"
-"הגדר לאפס כדי לבטל תכונה זו."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -5595,10 +5532,6 @@ msgstr "מחק בחירה"
 #: 
 msgid "Funds"
 msgstr "קרנות"
-
-#: 
-msgid "Generate Report"
-msgstr "הפק דוח"
 
 #: 
 msgid "Payments"
@@ -6294,10 +6227,6 @@ msgid "Current Deposit"
 msgstr "הפקדה נוכחית"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "דוח הניתן להתאמה עם סינון לפי תאריך, קרן, משפחה ואמצעי תשלום."
-
-#: 
 msgid "Day"
 msgstr "יום"
 
@@ -6308,10 +6237,6 @@ msgstr "דצמ'"
 #: 
 msgid "Deposit Statistics"
 msgstr "סטטיסטיקת הפקדות"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "פירוט של שובר הפקדה בודד."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -10045,10 +9970,6 @@ msgstr "כפיית התקנה מחדש?"
 #: 
 msgid "Full Path"
 msgstr "נתיב מלא"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "יצירת רשימות כיתה, גליונות נוכחות ואלבומי תמונות"
 
 #: 
 msgid "Installed"
@@ -18575,10 +18496,6 @@ msgid "Could not match the church country."
 msgstr "לא ניתן להתאים את מדינת הקהילה."
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "רשימות כיתה, דפי נוכחות וספרי תמונות"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "רשימות חברי קבוצות ודוחות כיתות בית הספר של יום ראשון"
 
@@ -18781,22 +18698,10 @@ msgstr[0] "%d מתנדב ברירת מחדל שובץ"
 msgstr[1] "%d מתנדבי ברירת מחדל שובצו"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "עדיין נדרש עוד %d מתנדב לתפקיד זה. פתחו את המופע כדי למלא את החסר."
-msgstr[1] "עדיין נדרשים עוד %d מתנדבים לתפקיד זה. פתחו את המופע כדי למלא את החסר."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d מופע חדש"
 msgstr[1] "%d מופעים חדשים"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "עדיין נדרש %d מתנדב למופע קרוב."
-msgstr[1] "עדיין נדרשים %d מתנדבים למופע קרוב."
 
 #: 
 msgid "%s Calendar"
@@ -20861,10 +20766,6 @@ msgstr "פתיחת השירות"
 #: 
 msgid "Open the occurrence"
 msgstr "פתיחת המופע"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "פתחו את המופע כדי לשבץ את האנשים שאתם צריכים."
 
 #: 
 msgid "Open this team"

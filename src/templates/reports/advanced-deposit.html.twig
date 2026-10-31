@@ -1,0 +1,56 @@
+{% extends "_letter.html.twig" %}
+{% block letter_body %}
+  <htmlpagefooter name="advanced-deposit-footer">
+    <div class="generated" style="text-align: right;">{{ gettext('Page') }} {PAGENO}</div>
+  </htmlpagefooter>
+  <sethtmlpagefooter name="advanced-deposit-footer" value="on" />
+
+  <h1>{{ gettext('Deposit Report') }}</h1>
+  {% for line in summary_lines %}<div class="muted">{{ line }}</div>{% endfor %}
+
+  <table class="gifts">
+    {% if detail %}
+      <thead>
+        <tr>
+          {% for column in columns %}<th class="{{ column.align }}">{{ column.label }}</th>{% endfor %}
+        </tr>
+      </thead>
+    {% endif %}
+    <tbody>
+      {% for group in groups %}
+        {% if group.subgroups %}
+          <tr><td colspan="5" style="padding-top: 4mm;"><strong>{{ group.title }}</strong></td></tr>
+        {% endif %}
+        {% for subgroup in group.subgroups %}
+          {% for row in subgroup.rows %}
+            <tr>
+              {% for column in columns %}<td class="{{ column.align }}">{{ attribute(row, column.key) }}</td>{% endfor %}
+            </tr>
+          {% endfor %}
+          <tr>
+            <td colspan="3" class="right"><em>{{ subgroup.total.label }}</em></td>
+            <td class="right"><em>{{ subgroup.total.count }}</em></td>
+            <td class="right"><em>{{ subgroup.total.amount }}</em></td>
+          </tr>
+        {% endfor %}
+        <tr>
+          <td colspan="3" class="right"><strong>{{ group.total.label }}</strong></td>
+          <td class="right"><strong>{{ group.total.count }}</strong></td>
+          <td class="right"><strong>{{ group.total.amount }}</strong></td>
+        </tr>
+      {% endfor %}
+      <tr>
+        <td colspan="3" class="right" style="border-top: 0.6pt solid #1a1a1a;"><strong>{{ report_total.label }}</strong></td>
+        <td class="right" style="border-top: 0.6pt solid #1a1a1a;"><strong>{{ report_total.count }}</strong></td>
+        <td class="right" style="border-top: 0.6pt solid #1a1a1a;"><strong>{{ report_total.amount }}</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 style="font-size: 12pt; margin: 6mm 0 1mm 0;">{{ gettext('Funds') }}</h2>
+  <table class="totals" style="width: 100%;">
+    {% for fund in fund_totals %}
+      <tr><td class="label">{{ fund.name }}</td><td class="amount">{{ fund.amount }}</td></tr>
+    {% endfor %}
+  </table>
+{% endblock %}

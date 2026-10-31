@@ -936,14 +936,6 @@ msgid "Zero Givers"
 msgstr "Zero givers"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Egyéni Deposit jelentés"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Advanced Deposit Jelentés"
-
-#: 
 msgid "Next"
 msgstr "Következő"
 
@@ -968,10 +960,6 @@ msgid "Apply Report Dates To"
 msgstr "Alkalmazás Jelentés Dátumok To"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "Deposit Date (Alapértelmezett)"
-
-#: 
 msgid "Payment Date"
 msgstr "Kifizetés dátuma"
 
@@ -994,10 +982,6 @@ msgid "Filter by Payment Type"
 msgstr "Szűrés Fizetés típusa"
 
 #: 
-msgid "All Methods"
-msgstr "All módszerek"
-
-#: 
 msgid "Check"
 msgstr "Ellenőrzés"
 
@@ -1008,10 +992,6 @@ msgstr "Készpénz"
 #: 
 msgid "Bank Draft"
 msgstr "Bank-tervezet"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0 - Nincs Minimum"
 
 #: 
 msgid "Other Settings"
@@ -1282,10 +1262,6 @@ msgstr "Még adatfeliratokat"
 #: 
 msgid "Invalid login or password"
 msgstr "Érvénytelen login vagy jelszó"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Túl sok sikertelen bejelentkezési: fiókját zárolták. Kérjük, forduljon a rendszergazda."
 
 #: 
 msgid "Email/Username"
@@ -2173,24 +2149,12 @@ msgid "Classes"
 msgstr "Osztályok"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Vasárnapi Iskola jelentések"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Diákok, akik nem járnak vasárnapi iskolai osztályba"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Legalább egy csoportot úgy kell megválasztani, hogy a class listák vagy jelenléti ív."
-
-#: 
 msgid "Report Details"
 msgstr "Jelentés részletei"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Minden szerepkör listázása (ha nincs bejelölve, csak a Tanár/Diák szerepköröket listázza)"
 
 #: 
 #, fuzzy
@@ -2216,10 +2180,6 @@ msgstr "Extra Hallgatók"
 #, fuzzy
 msgid "Extra Teachers"
 msgstr "Extra Tanárok"
-
-#: 
-msgid "Create Class List"
-msgstr "Create Class List"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4626,14 +4586,6 @@ msgid "PhotoBook"
 msgstr "Fotókönyv"
 
 #: 
-msgid "With Photos"
-msgstr "Fotókkal"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Fotókönyv létrehozása"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4777,10 +4729,6 @@ msgstr "Évfordulók"
 #: 
 msgid "View User"
 msgstr "Felhasználó megtekintése"
-
-#: 
-msgid "not found or user without an email"
-msgstr "nem található vagy felhasználó e-mail nélkül"
 
 #: 
 msgid "UserName not set"
@@ -4975,16 +4923,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Az az alapösszeg, amely egy új jelszónak eltérnie kell a régitől (megváltozott karakterek száma)\n"
 "Hallgatólagos értékre állítsa, hogy letiltsa ezt a funkciót"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "A megengedett sikertelen bejelentkezések maximális száma, mielőtt egy felhasználó fiók zárolva lenne.\n"
-"Amint a maximum elérte, a rendszergazdának újra kell engedélyeznie a fiókot.\n"
-"Ez a funkció segít megvédeni az automatizált jelszó-találgatási támadások ellen.\n"
-"Hallgatólagos értékre állítsa, hogy letiltsa ezt a funkciót."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -5622,10 +5560,6 @@ msgstr "Kiválasztott törlése"
 #: 
 msgid "Funds"
 msgstr "Alapok"
-
-#: 
-msgid "Generate Report"
-msgstr "Jelentés generálása"
 
 #: 
 msgid "Payments"
@@ -6321,10 +6255,6 @@ msgid "Current Deposit"
 msgstr "Jelenlegi befizetés"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Testreszabható jelentés dátum, alap, család és fizetési mód szerinti szűréssel."
-
-#: 
 msgid "Day"
 msgstr "Nap"
 
@@ -6335,10 +6265,6 @@ msgstr "Dec"
 #: 
 msgid "Deposit Statistics"
 msgstr "Befizetési statisztikák"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Egyetlen befizetési bizonylat részletes lebontása."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -10072,10 +9998,6 @@ msgstr "Kényszerített újratelepítés?"
 #: 
 msgid "Full Path"
 msgstr "Teljes elérési út"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Osztálylisták, jelenléti ívek és fotóalbumok készítése"
 
 #: 
 msgid "Installed"
@@ -18602,10 +18524,6 @@ msgid "Could not match the church country."
 msgstr "A gyülekezet országát nem sikerült megfeleltetni."
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Osztálylisták, jelenléti ívek és fotókönyvek"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "Csoporttag-listák és vasárnapi iskolai osztályjelentések"
 
@@ -18808,22 +18726,10 @@ msgstr[0] "%d alapértelmezett önkéntes beosztva"
 msgstr[1] "%d alapértelmezett önkéntes beosztva"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Ehhez a pozícióhoz még %d önkéntesre van szükség. Nyisd meg az alkalmat a hiány pótlásához."
-msgstr[1] "Ehhez a pozícióhoz még %d önkéntesre van szükség. Nyisd meg az alkalmat a hiány pótlásához."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d új alkalom"
 msgstr[1] "%d új alkalom"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Egy közelgő alkalomhoz még %d önkéntesre van szükség."
-msgstr[1] "Közelgő alkalmakhoz még %d önkéntesre van szükség."
 
 #: 
 msgid "%s Calendar"
@@ -20888,10 +20794,6 @@ msgstr "Szolgálati terület megnyitása"
 #: 
 msgid "Open the occurrence"
 msgstr "Az alkalom megnyitása"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Nyisd meg az alkalmat, hogy beoszd a szükséges embereket."
 
 #: 
 msgid "Open this team"

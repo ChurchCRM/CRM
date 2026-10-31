@@ -20,24 +20,7 @@ describe("Financial Reports", () => {
     it("Navigate to Giving Report from Reports Index", () => {
         cy.visit("/finance/reports");
         cy.contains("Giving Statements").click();
-        cy.url().should("contain", "FinancialReports.php");
-        cy.contains("Financial Reports");
-    });
-
-    it("Giving Report", () => {
-        cy.visit("FinancialReports.php");
-        cy.contains("Financial Reports");
-        cy.get("#FinancialReportTypes").select("Giving Report");
-        cy.get("#FinancialReports").submit();
-        cy.contains("Financial Reports: Giving Report");
-
-        cy.get("#DateStart").clear().type("2005-11-11");
-        cy.get("#DateEnd").clear().type("2025-11-11");
-
-        cy.get('input[name="output"][value="csv"]').check();
-
-        cy.get("#createReport").click();
-        cy.verifyDownload(".csv", { contains: true });
+        cy.url().should("contain", "/finance/reports/giving-statements");
     });
 
     it("Pledge Family Summary", () => {
@@ -147,9 +130,9 @@ describe("Financial Reports", () => {
     it("Individual Deposit Report", () => {
         cy.visit("FinancialReports.php");
         cy.contains("Financial Reports");
-        cy.get("#FinancialReportTypes").select("Individual Deposit Report");
-        cy.get("#FinancialReports").submit();
-        cy.contains("Financial Reports: Individual Deposit Report");
+        cy.visit("/finance/reports/deposits");
+        cy.get("#depositAdvancedSettings > summary").click();
+        cy.contains("Deposit Reports");
         cy.window().then(function (win) {
             win.document
                 .getElementById("createReport")
@@ -173,9 +156,9 @@ describe("Financial Reports", () => {
     it("Advanced Deposit Report", () => {
         cy.visit("FinancialReports.php");
         cy.contains("Financial Reports");
-        cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
-        cy.get("#FinancialReports").submit();
-        cy.contains("Financial Reports: Advanced Deposit Report");
+        cy.visit("/finance/reports/deposits");
+        cy.get("#depositAdvancedSettings > summary").click();
+        cy.contains("Deposit Reports");
         cy.window().then(function (win) {
             win.document
                 .getElementById("createReport")

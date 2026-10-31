@@ -27,6 +27,7 @@ ob_start();
 </a>
 <?php
 $sPageHeaderButtons = ob_get_clean();
+$sPageHeaderButtons .= '<a class="btn btn-outline-primary" href="' . InputUtils::escapeAttribute($sRootPath . '/finance/reports/deposits') . '">' . gettext('Deposit Reports') . '</a>';
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>

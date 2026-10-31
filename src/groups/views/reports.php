@@ -16,8 +16,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="list-group-item">
                 <div class="row align-items-center">
                     <div class="col">
-                        <a href="<?= $sRootPath ?>/groups/sundayschool/reports" class="fw-bold text-body"><?= gettext('Sunday School Reports') ?></a>
-                        <div class="text-secondary"><?= gettext('Class lists, attendance sheets, and photo books') ?></div>
+                        <a href="<?= $sRootPath ?>/groups/sundayschool/reports" class="fw-bold text-body"><?= gettext('Sunday School Attendance Sheet') ?></a>
+                        <div class="text-secondary"><?= gettext('A weekly sign-in grid for each class. Class lists and photo books are on the Sunday School dashboard and each class page.') ?></div>
                     </div>
                     <div class="col-auto">
                         <a href="<?= $sRootPath ?>/groups/sundayschool/reports" class="btn btn-sm btn-outline-primary">
@@ -89,12 +89,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <h3 class="card-title"><?= gettext('Select Fields to Include') ?></h3>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="<?= $sRootPath ?>/Reports/GroupReport.php">
+                    <form method="POST" action="<?= $sRootPath ?>/groups/reports/group-directory">
 
                         <input type="hidden" name="GroupID"     value="<?= InputUtils::escapeAttribute((int) $iGroupID) ?>">
                         <input type="hidden" name="GroupRole"   value="<?= InputUtils::escapeAttribute($groupRole) ?>">
                         <input type="hidden" name="OnlyCart"    value="0">
-                        <input type="hidden" name="ReportModel" value="<?= InputUtils::escapeAttribute((int) $reportModel) ?>">
 
                         <div class="mb-4">
                             <div class="d-flex align-items-center justify-content-between mb-2">

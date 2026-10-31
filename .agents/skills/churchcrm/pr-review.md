@@ -34,6 +34,7 @@ Answer before reading code:
 - Does another open PR already cover the same issue? Read its comments first: a maintainer may have a plan for it. Do not open a competing PR.
 - Does it meet the issue rule in `git-workflow.md`? Missing it is a hard block.
 - Does the goal belong in this milestone? Passing gates still does not mean merge if maintainers disagree with the goal.
+- Does it add a subsystem, table family, auth model, plugin API or cross-cutting middleware, or change a documented design? Find the linked RFC or design (`docs/decisions/`, `docs/design/`, epic, issue) and the maintainer's approval. Report both; missing is a hard block (gates item 12).
 - Does it extend Query View / predefined `query_qry` reports? If yes, Request changes. New reports are MVC + Propel or a plugin.
 
 Leave the contributor branch as it is: merge `master`, resolve conflicts, or push only when the maintainer asks.
@@ -46,7 +47,7 @@ Credit the contributor. When their PR leaves the project better than before but 
 
 ## Phase 2 — Review the full branch diff
 
-Review `origin/master...<branch>`, not only the latest commit.
+Review `origin/master...<branch>`, not only the latest commit. After a rebase, preserve independent additions to shared test commands, check that the PR merges against the current base, and verify CI runs reference the latest head SHA.
 
 ```bash
 git fetch origin
@@ -101,6 +102,37 @@ Apply only the sections that match the changed files. Hard-block items are also 
 - [ ] TLS verification on outbound HTTPS
 - [ ] AuthZ on protected routes
 - [ ] Free of injection, XSS, open redirect, and member-data leaks
+
+### RBAC / authorization (hard block)
+
+Applies to any change to a route, API, middleware, permission check, session, admin setting, plugin hook or role-gated control (gates item 11). Read `authorization-security.md`.
+
+- [ ] Every new or changed route sits behind a named middleware
+- [ ] The acting person or user comes from the session, never a request id
+- [ ] Object ids in the request are checked against what the caller may see (`FamilyMiddleware`, `canViewFamily()`, `CustomFieldService::canView()`)
+- [ ] API-key callers are refused or scoped on purpose
+- [ ] A portal or member session cannot reach a staff route; no path raises one session type to another
+- [ ] Admin-only settings and actions use the admin middleware
+- [ ] Revoking a user, role or permission ends access on the next request
+- [ ] Menu entries and buttons use the same permission as the route they open
+- [ ] Cypress covers the denied user, not only the allowed one
+- [ ] The draft names who can reach each entry point and what changed versus `master`
+
+For a large auth PR, run a security-focused sub agent over the diff and verify its findings against the code before you report them.
+
+### PDF / mPDF reports
+
+Applies when a PR changes report data, rendering, templates, routes, exports or shared PDF helpers. Load `reports.md` and trace the complete call path against current master; include all merged consumers of a shared helper in the review scope.
+
+- [ ] Discover renderer construction, wrappers, direct mPDF calls, downloads and email/portal consumers. Read current master and the branch; an open migration PR is not proof of merged behavior
+- [ ] Check service/route/view/template/test placement, fixed template stems and their matching filenames, stable module URLs and download basenames. Resolve local assets through the document root and browser URLs through the install root; preserve supported APIs
+- [ ] Check locale-sensitive display dates, currency, gettext phrases, Unicode/script fonts and RTL direction through the entire document. Keep storage/API dates ISO and template/file identifiers untranslated
+- [ ] Verify escaping in the actual Twig environment, including injected environments, cached templates and shared partials. Trace intentionally formatted fields and test literal markup in names, addresses and memos; follow `reports.md` for response/CSV safety
+- [ ] Preserve merged renderer helpers, page options, letterhead modes, photos and repeated-page behavior. Keep report-specific stock dimensions separate from ordinary page defaults
+- [ ] Cover the persona workflow, accurate totals/grouping, empty/error filter preservation, allowed and denied callers, and supported output formats using the current test policy in `cypress-testing.md`
+- [ ] State content-test, visual PDF, locale/RTL and physical-stock evidence separately. A valid PDF header or generated screenshot is not proof of layout or printer alignment; identify every unverified item before assessing merge readiness
+
+The review states the affected consumers, enforced permissions, compatibility changes, tests actually run and remaining visual/physical checks. Keep inventories in the PR evidence; maintain reusable rules in the skill cards.
 
 ### Frontend & UI
 
@@ -174,7 +206,7 @@ The docs PR stays separate from the feature PR and waits for the release.
 
 ## Phase 6 — Draft the review (do not post yet)
 
-Use the output block in `maintainer-review-gates.md`.
+Use the output block in `maintainer-review-gates.md`. The draft always contains the RBAC line and the design-approval line, even when the answer is "no RBAC impact: <why>" or "no architectural change".
 
 - Hard blocks → `REQUEST_CHANGES`
 - Follow-ups only → `COMMENT`

@@ -33,6 +33,7 @@ $app->group('', function (RouteCollectorProxy $group): void {
     require __DIR__ . '/routes/donors.php';
     require __DIR__ . '/routes/batch-winner.php';
     require __DIR__ . '/routes/reports.php';
+    require __DIR__ . '/routes/statement.php';
 })->add(new CSRFMiddleware())->add(new FundraiserEnabledMiddleware());
 
 $app->run();

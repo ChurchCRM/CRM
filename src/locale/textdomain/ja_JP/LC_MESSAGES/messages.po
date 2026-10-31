@@ -925,14 +925,6 @@ msgid "Zero Givers"
 msgstr "寄付ゼロの利用者"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "個別入金レポート"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "詳細入金レポート"
-
-#: 
 msgid "Next"
 msgstr "次"
 
@@ -951,10 +943,6 @@ msgstr "レポート終了日"
 #: 
 msgid "Apply Report Dates To"
 msgstr "レポート日付の適用先"
-
-#: 
-msgid "Deposit Date (Default)"
-msgstr "入金日 (デフォルト)"
 
 #: 
 msgid "Payment Date"
@@ -977,10 +965,6 @@ msgid "Filter by Payment Type"
 msgstr "支払いタイプでフィルター"
 
 #: 
-msgid "All Methods"
-msgstr "すべての方法"
-
-#: 
 msgid "Check"
 msgstr "小切手"
 
@@ -991,10 +975,6 @@ msgstr "現金"
 #: 
 msgid "Bank Draft"
 msgstr "銀行振込"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0 - 制限なし"
 
 #: 
 msgid "Other Settings"
@@ -1255,10 +1235,6 @@ msgstr "データラベルの確認"
 #: 
 msgid "Invalid login or password"
 msgstr "ログイン名またはパスワードが無効です"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "ログイン失敗回数が多すぎます。アカウントがロックされました。管理者に連絡してください。"
 
 #: 
 msgid "Email/Username"
@@ -2119,24 +2095,12 @@ msgid "Classes"
 msgstr "クラス"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "日曜学校レポート"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "日曜学校のクラスに所属していない生徒"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "名簿または出席簿を作成するには、少なくとも1つのグループを選択する必要があります。"
-
-#: 
 msgid "Report Details"
 msgstr "レポート詳細"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "すべての役割を表示 (チェックなしは教師/生徒のみ)"
 
 #: 
 msgid "First Sunday"
@@ -2157,10 +2121,6 @@ msgstr "予備生徒"
 #: 
 msgid "Extra Teachers"
 msgstr "予備教師"
-
-#: 
-msgid "Create Class List"
-msgstr "クラス名簿を作成"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4567,14 +4527,6 @@ msgid "PhotoBook"
 msgstr "フォトブック"
 
 #: 
-msgid "With Photos"
-msgstr "写真付き"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "フォトブックを作成"
-
-#: 
 msgid "SSE"
 msgstr "南南東"
 
@@ -4718,10 +4670,6 @@ msgstr "記念日"
 #: 
 msgid "View User"
 msgstr "ユーザーを表示"
-
-#: 
-msgid "not found or user without an email"
-msgstr "見つからない、またはメールのないユーザー"
 
 #: 
 msgid "UserName not set"
@@ -4916,16 +4864,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "新しいパスワードが古いパスワードと異なる必要がある最小量（変更された文字数）\n"
 "この機能を無効にするには0に設定"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "ユーザーアカウントがロックされる前に許可される最大ログイン失敗回数。\n"
-"最大に達すると、管理者がアカウントを再有効化する必要があります。\n"
-"この機能は、自動パスワード推測攻撃から保護するのに役立ちます。\n"
-"この機能を無効にするには0に設定。"
 
 #: 
 msgid "PDF handling mode.\n"
@@ -5561,10 +5499,6 @@ msgstr "選択を削除"
 #: 
 msgid "Funds"
 msgstr "資金"
-
-#: 
-msgid "Generate Report"
-msgstr "レポートを生成"
 
 #: 
 msgid "Payments"
@@ -6258,10 +6192,6 @@ msgid "Current Deposit"
 msgstr "現在の預金"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "日付、基金、家族、支払い方法でフィルタリングできるカスタマイズ可能なレポート。"
-
-#: 
 msgid "Day"
 msgstr "日"
 
@@ -6272,10 +6202,6 @@ msgstr "12月"
 #: 
 msgid "Deposit Statistics"
 msgstr "預金統計"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "単一の預金伝票の詳細な内訳。"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -10004,10 +9930,6 @@ msgstr "強制再インストールしますか？"
 #: 
 msgid "Full Path"
 msgstr "フルパス"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "クラスリスト、出席簿、フォトブックを生成"
 
 #: 
 msgid "Installed"
@@ -18527,10 +18449,6 @@ msgid "Could not match the church country."
 msgstr "教会の国を一致させることができませんでした。"
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "クラス名簿、出席表、フォトブック"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "グループの会員名簿と教会学校クラスのレポート"
 
@@ -18729,19 +18647,9 @@ msgid_plural "%d default volunteers assigned"
 msgstr[0] "%d デフォルト ボランティアが割り当てられました"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "このポジションにはさらに %d 人のボランティアが必要です。ギャップを埋めるために発生を開きます。"
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d 新規発生"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "今後の発生のために %d 人のボランティアが必要です。"
 
 #: 
 msgid "%s Calendar"
@@ -20802,10 +20710,6 @@ msgstr "ミニストリーを開く"
 #: 
 msgid "Open the occurrence"
 msgstr "開催回を開く"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "開催回を開いて、必要な人を割り当ててください。"
 
 #: 
 msgid "Open this team"

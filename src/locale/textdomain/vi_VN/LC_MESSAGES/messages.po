@@ -943,14 +943,6 @@ msgid "Zero Givers"
 msgstr "Zero Givers"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Báo cáo tiền gửi cá nhân"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Báo cáo tiền gửi nâng cao"
-
-#: 
 msgid "Next"
 msgstr "Tiếp"
 
@@ -972,10 +964,6 @@ msgstr "Ngày kết thúc báo cáo"
 #, fuzzy
 msgid "Apply Report Dates To"
 msgstr "Áp dụng Ngày Báo cáo Cho"
-
-#: 
-msgid "Deposit Date (Default)"
-msgstr "Ngày gửi tiền (Mặc định)"
 
 #: 
 msgid "Payment Date"
@@ -1000,10 +988,6 @@ msgid "Filter by Payment Type"
 msgstr "Lọc theo Hình thức Thanh toán"
 
 #: 
-msgid "All Methods"
-msgstr "Tất cả các phương pháp"
-
-#: 
 msgid "Check"
 msgstr "Kiểm tra"
 
@@ -1014,10 +998,6 @@ msgstr "Tiền mặt"
 #: 
 msgid "Bank Draft"
 msgstr "Dự thảo ngân hàng"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0 - Không có tối thiểu"
 
 #: 
 msgid "Other Settings"
@@ -1283,10 +1263,6 @@ msgstr "Xác nhận nhãn dữ liệu"
 #: 
 msgid "Invalid login or password"
 msgstr "Đăng nhập hoặc mật khẩu không hợp lệ"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Quá nhiều lần đăng nhập không thành công: tài khoản của bạn đã bị khóa. Vui lòng liên hệ với quản trị viên."
 
 #: 
 msgid "Email/Username"
@@ -2151,24 +2127,12 @@ msgid "Classes"
 msgstr "Lớp học"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Báo cáo Trường Chúa Nhật"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Những học viên không có trong lớp Trường Chúa Nhật"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Ít nhất một nhóm phải được chọn để lập danh sách lớp hoặc phiếu điểm danh."
-
-#: 
 msgid "Report Details"
 msgstr "Báo cáo chi tiết"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Liệt kê tất cả các vai trò (bỏ chọn sẽ chỉ liệt kê các vai trò của Giáo viên / Học sinh)"
 
 #: 
 msgid "First Sunday"
@@ -2189,10 +2153,6 @@ msgstr "Học sinh thêm"
 #: 
 msgid "Extra Teachers"
 msgstr "Giáo viên bổ sung"
-
-#: 
-msgid "Create Class List"
-msgstr "Tạo danh sách lớp"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4606,14 +4566,6 @@ msgid "PhotoBook"
 msgstr "Sách ảnh"
 
 #: 
-msgid "With Photos"
-msgstr "Với những tấm hình"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Tạo sách ảnh"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4758,11 +4710,6 @@ msgstr "Kỷ niệm ngày cưới"
 #: 
 msgid "View User"
 msgstr "Xem thành viên"
-
-#: 
-#, fuzzy
-msgid "not found or user without an email"
-msgstr "không tìm thấy hoặc người dùng không có email"
 
 #: 
 msgid "UserName not set"
@@ -4958,13 +4905,6 @@ msgstr "Độ dài thời gian chờ của phiên tính bằng giây. Đặt th�
 msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
 "Set to zero to disable this feature"
 msgstr "Số tiền tối thiểu mà mật khẩu mới phải khác mật khẩu cũ (# ký tự đã thay đổi).  Đặt thành 0 để tắt tính năng này"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Số lần đăng nhập không thành công tối đa cho phép trước khi tài khoản người dùng bị khóa. Khi đã đạt đến mức tối đa, quản trị viên phải kích hoạt lại tài khoản. Tính năng này giúp bảo vệ khỏi các cuộc tấn công đoán mật khẩu tự động. Đặt thành 0 để tắt tính năng này. Chế độ xử lý PDF. 1 = Hộp thoại Lưu tệp. 2 = Mở trong cửa sổ trình duyệt hiện tại"
 
 #: 
 msgid "PDF handling mode.\n"
@@ -5599,10 +5539,6 @@ msgstr "Xóa mục đã chọn"
 #: 
 msgid "Funds"
 msgstr "Các quỹ"
-
-#: 
-msgid "Generate Report"
-msgstr "Xuất báo cáo"
 
 #: 
 msgid "Payments"
@@ -6296,10 +6232,6 @@ msgid "Current Deposit"
 msgstr "Đợt đóng góp hiện tại"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Báo cáo có thể tùy chỉnh với các bộ lọc."
-
-#: 
 msgid "Day"
 msgstr "Ngày"
 
@@ -6310,10 +6242,6 @@ msgstr "Th12"
 #: 
 msgid "Deposit Statistics"
 msgstr "Thống kê gửi tiền"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Chi tiết phân tích của một phiếu gửi tiền đơn lẻ."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -10042,10 +9970,6 @@ msgstr "Buoc cai dat lai?"
 #: 
 msgid "Full Path"
 msgstr "Duong dan day du"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Tao danh sach lop, bang diem danh va so anh"
 
 #: 
 msgid "Installed"
@@ -18565,10 +18489,6 @@ msgid "Could not match the church country."
 msgstr "Không thể khớp quốc gia của Hội thánh."
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Danh sách lớp, bảng điểm danh và sách ảnh"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "Danh sách thành viên nhóm và báo cáo lớp Trường Chúa nhật"
 
@@ -18767,19 +18687,9 @@ msgid_plural "%d default volunteers assigned"
 msgstr[0] "%d tình nguyện viên mặc định được gán"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Vị trí này vẫn cần thêm %d tình nguyện viên. Mở sự kiện để lấp đầy khoảng trống."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d lần xuất hiện mới"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Vẫn cần %d tình nguyện viên cho một sự kiện sắp tới."
 
 #: 
 msgid "%s Calendar"
@@ -20840,10 +20750,6 @@ msgstr "Mở mục vụ"
 #: 
 msgid "Open the occurrence"
 msgstr "Mở lần diễn ra"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Hãy mở lần diễn ra để phân công những người bạn cần."
 
 #: 
 msgid "Open this team"

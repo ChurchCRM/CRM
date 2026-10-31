@@ -37,7 +37,7 @@ $fyMonthName = $monthNames[$iFYMonth] ?? '';
             [
                 'title' => gettext('Giving Reports'),
                 'reports' => [
-                    ['href' => '/FinancialReports.php?ReportType=Giving%20Report', 'title' => gettext('Giving Statements'), 'description' => gettext('Generate annual tax-deductible giving statements for donors. Can be printed or emailed.')],
+                    ['href' => '/finance/reports/giving-statements', 'title' => gettext('Giving Statements'), 'description' => gettext('Generate annual tax-deductible giving statements for donors. Can be printed or emailed.')],
                     ['href' => '/FinancialReports.php?ReportType=Zero%20Givers', 'title' => gettext('Zero Givers'), 'description' => gettext('Identify members who have not made any donations within a date range.')],
                 ],
             ],
@@ -52,8 +52,7 @@ $fyMonthName = $monthNames[$iFYMonth] ?? '';
             [
                 'title' => gettext('Deposit Reports'),
                 'reports' => [
-                    ['href' => '/FinancialReports.php?ReportType=Individual%20Deposit%20Report', 'title' => gettext('Individual Deposit Report'), 'description' => gettext('Detailed breakdown of a single deposit slip.')],
-                    ['href' => '/FinancialReports.php?ReportType=Advanced%20Deposit%20Report', 'title' => gettext('Advanced Deposit Report'), 'description' => gettext('Customizable report with filtering by date, fund, family, and payment method.')],
+                    ['href' => '/finance/reports/deposits', 'title' => gettext('Deposit Reports'), 'description' => gettext('Review payments, download PDF or CSV, or print a bank slip for one deposit.')],
                 ],
             ],
             [

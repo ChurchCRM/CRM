@@ -1,0 +1,7 @@
+<table class="denom">
+  <tr><th>{{ label }}</th><th>{{ gettext('Count') }}</th><th>{{ gettext('Total') }}</th></tr>
+  {% for value in values %}
+    <tr><td>{{ value }}</td><td style="width: 14mm;"></td><td style="width: 14mm;"></td></tr>
+  {% endfor %}
+  <tr><td colspan="3">{{ total_label }}</td></tr>
+</table>

@@ -925,14 +925,6 @@ msgid "Zero Givers"
 msgstr "Walang Nagbigay"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Indibidwal na Ulat ng Deposito"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Advanced na Ulat ng Deposito"
-
-#: 
 msgid "Next"
 msgstr "Susunod"
 
@@ -951,10 +943,6 @@ msgstr "Petsa ng Pagtatapos ng Ulat"
 #: 
 msgid "Apply Report Dates To"
 msgstr "Ilapat ang mga Petsa ng Ulat Sa"
-
-#: 
-msgid "Deposit Date (Default)"
-msgstr "Petsa ng Deposito (Default)"
 
 #: 
 msgid "Payment Date"
@@ -977,10 +965,6 @@ msgid "Filter by Payment Type"
 msgstr "I-filter ayon sa Uri ng Pagbabayad"
 
 #: 
-msgid "All Methods"
-msgstr "Lahat ng Paraan"
-
-#: 
 msgid "Check"
 msgstr "Tseke"
 
@@ -991,10 +975,6 @@ msgstr "Pera"
 #: 
 msgid "Bank Draft"
 msgstr "Tseke ng Bangko"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0 - Walang Minimum"
 
 #: 
 msgid "Other Settings"
@@ -1255,10 +1235,6 @@ msgstr "Kumpirmahin ang mga label ng datos"
 #: 
 msgid "Invalid login or password"
 msgstr "Hindi wastong login o password"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Napakaraming bagsak na login: ang iyong account ay nalock na. Makipag-ugnayan sa isang administrator."
 
 #: 
 msgid "Email/Username"
@@ -2119,24 +2095,12 @@ msgid "Classes"
 msgstr "Mga Klase"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Mga Ulat ng Paaralan ng Linggo"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Mga Estudyanteng wala sa Klase ng Paaralan ng Linggo"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Kahit isang grupo ay dapat napili para gumawa ng mga listahan ng klase o mga sheet ng presensya."
-
-#: 
 msgid "Report Details"
 msgstr "Mga Detalye ng Ulat"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Ilista ang lahat ng Papel (ang hindi naka-check ay maglilista ng mga papel ng Guro/Estudyante lamang)"
 
 #: 
 msgid "First Sunday"
@@ -2157,10 +2121,6 @@ msgstr "Karagdagang mga Estudyante"
 #: 
 msgid "Extra Teachers"
 msgstr "Karagdagang mga Guro"
-
-#: 
-msgid "Create Class List"
-msgstr "Lumikha ng Listahan ng Klase"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4567,14 +4527,6 @@ msgid "PhotoBook"
 msgstr "PhotoBook"
 
 #: 
-msgid "With Photos"
-msgstr "May Mga Larawan"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Lumikha ng PhotoBook"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4718,10 +4670,6 @@ msgstr "Mga Anibersaryo"
 #: 
 msgid "View User"
 msgstr "Tingnan ang User"
-
-#: 
-msgid "not found or user without an email"
-msgstr "hindi nahanap o user na walang email"
 
 #: 
 msgid "UserName not set"
@@ -4916,16 +4864,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Pinakamaliit na halaga na dapat magkaiba ang bagong password sa luma (# ng mga karakter na binago)\n"
 "Itakda sa zero para huwag paganahin ang tampok na ito"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Pinakamataas na bilang ng mga bagsak na login na pinapayagan bago malock ang user account.\n"
-"Kapag naabot na ang maximum, isang administrator ang kailangang muling paganahin ang account.\n"
-"Ang tampok na ito ay tumutulong na protektahan laban sa mga awtomatikong pag-atake sa paghula ng password.\n"
-"Itakda sa zero para huwag paganahin ang tampok na ito."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -5563,10 +5501,6 @@ msgstr "Burahin ang mga Napili"
 #: 
 msgid "Funds"
 msgstr "Mga Pondo"
-
-#: 
-msgid "Generate Report"
-msgstr "Gumawa ng Ulat"
 
 #: 
 msgid "Payments"
@@ -6262,10 +6196,6 @@ msgid "Current Deposit"
 msgstr "Kasalukuyang Deposito"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Pasadyang ulat na may pag-filter ayon sa petsa, pondo, pamilya, at paraan ng pagbabayad."
-
-#: 
 msgid "Day"
 msgstr "Araw"
 
@@ -6276,10 +6206,6 @@ msgstr "Dis"
 #: 
 msgid "Deposit Statistics"
 msgstr "Mga Istatistika ng Deposito"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Detalyadong breakdown ng isang solong deposit slip."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -10013,10 +9939,6 @@ msgstr "Puwersahing Muling I-install?"
 #: 
 msgid "Full Path"
 msgstr "Buong Path"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Gumawa ng mga listahan ng klase, mga sheet ng presensya, at mga photo book"
 
 #: 
 msgid "Installed"
@@ -18543,10 +18465,6 @@ msgid "Could not match the church country."
 msgstr "Hindi matukoy ang bansa ng simbahan."
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Mga listahan ng klase, mga attendance sheet, at mga photo book"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "Mga listahan ng miyembro ng grupo at mga ulat ng klase sa Sunday School"
 
@@ -18749,22 +18667,10 @@ msgstr[0] "%d default na boluntaryo ang naitalaga"
 msgstr[1] "%d default na boluntaryo ang naitalaga"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "%d pang boluntaryo ang kailangan pa para sa posisyong ito. Buksan ang pagkakataon para punan ang kulang."
-msgstr[1] "%d pang boluntaryo ang kailangan pa para sa posisyong ito. Buksan ang pagkakataon para punan ang kulang."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d bagong pagkakataon"
 msgstr[1] "%d bagong pagkakataon"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "%d boluntaryo ang kailangan pa para sa paparating na pagkakataon."
-msgstr[1] "%d boluntaryo ang kailangan pa para sa paparating na pagkakataon."
 
 #: 
 msgid "%s Calendar"
@@ -20829,10 +20735,6 @@ msgstr "Buksan ang ministeryo"
 #: 
 msgid "Open the occurrence"
 msgstr "Buksan ang pagkakataon"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Buksan ang pagkakataon para italaga ang mga taong kailangan mo."
 
 #: 
 msgid "Open this team"

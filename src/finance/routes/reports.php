@@ -4,8 +4,11 @@ use ChurchCRM\Emails\GivingStatementEmail;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\Service\FinanceReportOptions;
 use ChurchCRM\Service\MpdfRenderer;
+use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Service\GivingStatementService;
+use ChurchCRM\Service\YearEndGivingService;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\CsvExporter;
@@ -36,13 +39,72 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
         return $renderer->render($response, 'reports.php', $pageArgs);
     });
 
+    // Year-end giving: the finance team's starting point for a year's statements.
+    $group->get('/year-end', function (Request $request, Response $response): Response {
+        $years = YearEndGivingService::years();
+        $requested = InputUtils::filterInt($request->getQueryParams()['year'] ?? '');
+        $year = in_array($requested, $years, true) ? $requested : $years[0];
+
+        $renderer = new PhpRenderer(__DIR__ . '/../views/');
+
+        return $renderer->render($response, 'reports/year-end.php', [
+            'sRootPath' => SystemURLs::getRootPath(),
+            'sPageTitle' => gettext('Year-End Giving'),
+            'sPageSubtitle' => gettext('Review the year, then print or email giving statements.'),
+            'aBreadcrumbs' => PageHeader::breadcrumbs([
+                [gettext('Financial Reports'), '/finance/reports'],
+                [gettext('Year-End Giving')],
+            ]),
+            'years' => $years,
+            'overview' => YearEndGivingService::overview($year),
+        ]);
+    });
+
+    // Giving Statements: choose filters, preview the result, then download.
+    $group->get('/giving-statements', function (Request $request, Response $response): Response {
+        $query = $request->getQueryParams();
+        $criteria = GivingStatementService::criteriaFromQuery($query);
+        $summary = ($query['preview'] ?? '') === '1'
+            ? GivingStatementService::summary(GivingStatementService::paymentsByFamily($criteria))
+            : null;
+
+        $renderer = new PhpRenderer(__DIR__ . '/../views/');
+
+        return $renderer->render($response, 'reports/giving-statements.php', [
+            'sRootPath' => SystemURLs::getRootPath(),
+            'sPageTitle' => gettext('Giving Statements'),
+            'sPageSubtitle' => gettext('Generate annual tax-deductible giving statements for donors. Can be printed or emailed.'),
+            'aBreadcrumbs' => PageHeader::breadcrumbs([
+                [gettext('Financial Reports'), '/finance/reports'],
+                [gettext('Giving Statements')],
+            ]),
+            'query' => $query,
+            'criteria' => $criteria,
+            'summary' => $summary,
+            'downloadQuery' => http_build_query(array_diff_key($query, ['preview' => true, 'output' => true])),
+            'classifications' => FinanceReportOptions::classifications(),
+            'families' => FinanceReportOptions::families(),
+            'fundGroups' => FinanceReportOptions::fundGroups(),
+            'deposits' => FinanceReportOptions::deposits(),
+        ]);
+    });
+
+    // The preview popup: the same summary as ?preview=1. The filters arrive in a POST body so a long family selection does not hit a URL length limit.
+    $group->map(['GET', 'POST'], '/giving-statements/preview', function (Request $request, Response $response): Response {
+        $input = $request->getMethod() === 'POST' ? (array) $request->getParsedBody() : $request->getQueryParams();
+
+        return SlimUtils::renderJSON($response, GivingStatementService::summary(
+            GivingStatementService::paymentsByFamily(GivingStatementService::criteriaFromQuery($input))
+        ));
+    });
+
     // Giving Statement: PDF or CSV for the chosen filters, from the report form or a family link.
     $group->map(['GET', 'POST'], '/giving-statements/download', function (Request $request, Response $response): Response {
         $input = $request->getMethod() === 'POST' ? (array) $request->getParsedBody() : $request->getQueryParams();
         $criteria = GivingStatementService::criteriaFromQuery($input);
         $groups = GivingStatementService::paymentsByFamily($criteria);
         if ($groups === []) {
-            RedirectUtils::redirect('FinancialReports.php?ReturnMessage=NoRows&ReportType=Giving%20Report');
+            RedirectUtils::redirect('finance/reports/giving-statements?' . http_build_query(array_merge($input, ['preview' => 1, 'output' => null])));
         }
 
         if (($input['output'] ?? 'pdf') === 'csv') {
@@ -54,7 +116,7 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
 
         [$dateStart, $dateEnd] = GivingStatementService::period($criteria);
         $families = GivingStatementService::families($groups, SystemConfig::getBooleanValue('bUseDonationEnvelopes'));
-        $document = GivingStatementService::document($families, $dateStart, $dateEnd, $criteria['letterhead'], $criteria['remittance']);
+        $document = GivingStatementService::document($families, $dateStart, $dateEnd, $criteria['remittance']);
         $pdf = (new MpdfRenderer())->renderToString('tax-report', $document);
 
         $label = GivingStatementService::fileLabel((int) substr($dateEnd, 0, 4), count($families) === 1 ? $families[0]['salutation'] : '');

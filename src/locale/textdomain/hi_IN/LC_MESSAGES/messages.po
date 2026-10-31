@@ -928,14 +928,6 @@ msgid "Zero Givers"
 msgstr "शून्य दानदाता"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "व्यक्तिगत जमा रिपोर्ट"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "उन्नत जमा रिपोर्ट"
-
-#: 
 msgid "Next"
 msgstr "अगला"
 
@@ -954,10 +946,6 @@ msgstr "रिपोर्ट समाप्ति तिथि"
 #: 
 msgid "Apply Report Dates To"
 msgstr "रिपोर्ट तिथियां इन पर लागू करें"
-
-#: 
-msgid "Deposit Date (Default)"
-msgstr "जमा तिथि (डिफ़ॉल्ट)"
 
 #: 
 msgid "Payment Date"
@@ -980,10 +968,6 @@ msgid "Filter by Payment Type"
 msgstr "भुगतान प्रकार द्वारा फ़िल्टर करें"
 
 #: 
-msgid "All Methods"
-msgstr "सभी विधियां"
-
-#: 
 msgid "Check"
 msgstr "चेक"
 
@@ -994,10 +978,6 @@ msgstr "नकद"
 #: 
 msgid "Bank Draft"
 msgstr "बैंक ड्राफ्ट"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0 - कोई न्यूनतम नहीं"
 
 #: 
 msgid "Other Settings"
@@ -1258,10 +1238,6 @@ msgstr "डेटा लेबल की पुष्टि करें"
 #: 
 msgid "Invalid login or password"
 msgstr "अमान्य लॉगिन या पासवर्ड"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "बहुत अधिक विफल लॉगिन: आपका खाता लॉक कर दिया गया है। कृपया व्यवस्थापक से संपर्क करें।"
 
 #: 
 msgid "Email/Username"
@@ -2122,24 +2098,12 @@ msgid "Classes"
 msgstr "कक्षाएं"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "संडे स्कूल रिपोर्ट"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "छात्र जो संडे स्कूल कक्षा में नहीं हैं"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "कक्षा सूची या उपस्थिति पत्रक बनाने के लिए कम से कम एक समूह का चयन किया जाना चाहिए।"
-
-#: 
 msgid "Report Details"
 msgstr "रिपोर्ट विवरण"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "सभी भूमिकाओं को सूचीबद्ध करें (अनचेक करने पर केवल शिक्षक/छात्र भूमिकाएं सूचीबद्ध होंगी)"
 
 #: 
 msgid "First Sunday"
@@ -2160,10 +2124,6 @@ msgstr "अतिरिक्त छात्र"
 #: 
 msgid "Extra Teachers"
 msgstr "अतिरिक्त शिक्षक"
-
-#: 
-msgid "Create Class List"
-msgstr "कक्षा सूची बनाएँ"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4570,14 +4530,6 @@ msgid "PhotoBook"
 msgstr "फ़ोटोबुक"
 
 #: 
-msgid "With Photos"
-msgstr "फ़ोटो के साथ"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "फ़ोटोबुक बनाएं"
-
-#: 
 msgid "SSE"
 msgstr "दक्षिण-दक्षिण-पूर्व"
 
@@ -4721,10 +4673,6 @@ msgstr "वर्षगाँठ"
 #: 
 msgid "View User"
 msgstr "उपयोगकर्ता देखें"
-
-#: 
-msgid "not found or user without an email"
-msgstr "नहीं मिला या उपयोगकर्ता के पास ईमेल नहीं है"
 
 #: 
 msgid "UserName not set"
@@ -4918,13 +4866,6 @@ msgstr "सेकंड में सत्र टाइमआउट अवध�
 msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
 "Set to zero to disable this feature"
 msgstr "नया पासवर्ड पुराने से कितना अलग होना चाहिए।"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "खाता लॉक होने से पहले अधिकतम विफल लॉगिन प्रयास।"
 
 #: 
 msgid "PDF handling mode.\n"
@@ -5562,10 +5503,6 @@ msgstr "चयनित हटाएं"
 #: 
 msgid "Funds"
 msgstr "निधि"
-
-#: 
-msgid "Generate Report"
-msgstr "रिपोर्ट तैयार करें"
 
 #: 
 msgid "Payments"
@@ -6261,10 +6198,6 @@ msgid "Current Deposit"
 msgstr "वर्तमान जमा"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "तिथि, फंड, परिवार और भुगतान विधि द्वारा फ़िल्टरिंग के साथ अनुकूलन योग्य रिपोर्ट।"
-
-#: 
 msgid "Day"
 msgstr "दिन"
 
@@ -6275,10 +6208,6 @@ msgstr "दिसंबर"
 #: 
 msgid "Deposit Statistics"
 msgstr "जमा सांख्यिकी"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "एकल जमा पर्ची का विस्तृत विवरण।"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -10012,10 +9941,6 @@ msgstr "बलपूर्वक पुनः स्थापित करें
 #: 
 msgid "Full Path"
 msgstr "पूर्ण पथ"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "कक्षा सूचियाँ, उपस्थिति पत्रक और फ़ोटो बुक तैयार करें"
 
 #: 
 msgid "Installed"
@@ -18542,10 +18467,6 @@ msgid "Could not match the church country."
 msgstr "कलीसिया का देश मिलान नहीं किया जा सका।"
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "कक्षा सूचियाँ, उपस्थिति पत्रक और फ़ोटो पुस्तकें"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "सेवकाई सदस्यता सूचियाँ और रविवार स्कूल कक्षा रिपोर्ट"
 
@@ -18748,22 +18669,10 @@ msgstr[0] "%d डिफ़ॉल्ट स्वयंसेवक नियु�
 msgstr[1] "%d डिफ़ॉल्ट स्वयंसेवक नियुक्त किए गए"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "इस पद के लिए अभी %d और स्वयंसेवक की आवश्यकता है। रिक्ति भरने के लिए अवसर खोलें।"
-msgstr[1] "इस पद के लिए अभी %d और स्वयंसेवकों की आवश्यकता है। रिक्ति भरने के लिए अवसर खोलें।"
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d नया अवसर"
 msgstr[1] "%d नए अवसर"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "आगामी अवसर के लिए अभी %d स्वयंसेवक की आवश्यकता है।"
-msgstr[1] "आगामी अवसर के लिए अभी %d स्वयंसेवकों की आवश्यकता है।"
 
 #: 
 msgid "%s Calendar"
@@ -20828,10 +20737,6 @@ msgstr "सेवकाई खोलें"
 #: 
 msgid "Open the occurrence"
 msgstr "अवसर खोलें"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "जिन लोगों की आपको आवश्यकता है उन्हें नियुक्त करने के लिए अवसर खोलें।"
 
 #: 
 msgid "Open this team"

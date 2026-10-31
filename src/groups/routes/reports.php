@@ -1,9 +1,15 @@
 <?php
 
+use ChurchCRM\dto\Cart;
+use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\GroupPropMasterQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
+use ChurchCRM\Service\GivingStatementService;
+use ChurchCRM\Service\GroupReportService;
+use ChurchCRM\Service\MpdfRenderer;
+use ChurchCRM\Service\PhotoBookService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -46,9 +52,6 @@ $app->post('/reports', function (Request $request, Response $response) {
             ->withStatus(302);
     }
 
-    // ReportModel: 1 = filter by selected role, 2 = all roles in group
-    $reportModel = ($groupRole !== '' && $groupRole !== '0') ? 1 : 2;
-
     $propFields = GroupPropMasterQuery::create()
         ->filterByGrpId($iGroupID)
         ->orderByPropId()
@@ -65,9 +68,59 @@ $app->post('/reports', function (Request $request, Response $response) {
         'step'        => 2,
         'iGroupID'    => $iGroupID,
         'groupRole'   => $groupRole,
-        'reportModel' => $reportModel,
         'propFields'  => $propFields,
     ];
 
     return $renderer->render($response, 'reports.php', $pageArgs);
+});
+
+// Step 3 — Group directory PDF. Needs the group-management role of this app.
+$app->post('/reports/group-directory', function (Request $request, Response $response) {
+    $body = (array) $request->getParsedBody();
+    $groupId = InputUtils::filterInt($body['GroupID'] ?? '');
+    $roleId = InputUtils::filterInt($body['GroupRole'] ?? '');
+
+    $fields = array_values(array_filter(GroupReportService::FIELDS, fn (string $field) => !empty($body[$field . 'Enable'])));
+    $propertyIds = [];
+    foreach (array_keys($body) as $name) {
+        if (preg_match('/^(c\d+)enable$/', (string) $name, $match) === 1) {
+            $propertyIds[] = $match[1];
+        }
+    }
+    $onlyPersonIds = !empty($body['OnlyCart']) ? array_map('intval', array_filter(explode(',', Cart::getCartIdString()))) : null;
+
+    $report = (new GroupReportService())->build($groupId, $roleId, $fields, $propertyIds, $onlyPersonIds);
+    if ($report === null) {
+        return $response
+            ->withHeader('Location', SystemURLs::getRootPath() . '/groups/reports')
+            ->withStatus(302);
+    }
+
+    $pdf = (new MpdfRenderer())->renderToString('group-directory', $report);
+
+    $fileLabel = trim(ChurchMetaData::getChurchName() . ' ' . $report['title'] . ' ' . date(SystemConfig::getValue('sDateFilenameFormat')));
+    $response->getBody()->write($pdf);
+
+    return $response
+        ->withHeader('Content-Type', 'application/pdf')
+        ->withHeader('Content-Disposition', GivingStatementService::contentDisposition($fileLabel));
+});
+
+// Photo book: the members of each named group with their photos, or every Sunday School class when none is named.
+$app->get('/reports/photo-book', function (Request $request, Response $response) {
+    $groupIds = array_values(array_filter(array_map('intval', explode(',', (string) ($request->getQueryParams()['GroupID'] ?? '')))));
+    if ($groupIds === []) {
+        $groupIds = array_map('intval', GroupQuery::create()->filterByType(4)->orderByName()->find()->getPrimaryKeys(false));
+    }
+
+    $pdf = (new MpdfRenderer())->renderToString('photo-book', [
+        'sections' => PhotoBookService::sections($groupIds),
+    ]);
+    $groupName = count($groupIds) === 1 ? (string) GroupQuery::create()->findOneById($groupIds[0])?->getName() : '';
+    $fileLabel = trim(ChurchMetaData::getChurchName() . ' ' . $groupName . ' ' . date(SystemConfig::getValue('sDateFilenameFormat')));
+    $response->getBody()->write($pdf);
+
+    return $response
+        ->withHeader('Content-Type', 'application/pdf')
+        ->withHeader('Content-Disposition', GivingStatementService::contentDisposition($fileLabel));
 });

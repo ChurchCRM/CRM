@@ -10,6 +10,15 @@
  * below, so a church theme that only redefines them recolours every page.
  * `portal.min.css` already carries these same values as its fallbacks, which
  * is why a theme.css of a dozen lines is a complete theme.
+ *
+ * Buttons. Put each action in `.portal-action-row` or `.portal-form-actions`.
+ * Those rows wrap and leave 0.5rem between controls. The main action is
+ * `.portal-button`; the one beside it is `.portal-button-quiet`. Volunteer
+ * and team pages keep Bootstrap `.btn` because shared scripts look for it;
+ * `portal.min.css` paints `.btn-primary` and `.btn-outline-primary` from
+ * `--portal-primary`. The calendar toolbar is `.portal-fc-toolbar`; its
+ * buttons already have the same gap and radius. Recolour with the tokens
+ * below and leave that gap in place.
  */
 
 :root {

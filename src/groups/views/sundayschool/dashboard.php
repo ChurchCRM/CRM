@@ -189,9 +189,20 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <i class="fa-solid fa-plus me-1"></i><?= gettext('Add New Class') ?>
                 </button>
             <?php } ?>
-            <a href="<?= $sRootPath ?>/groups/sundayschool/reports" class="btn btn-outline-primary">
-                <i class="fa-solid fa-file-pdf me-1"></i><?= gettext('Reports') ?>
+            <a href="<?= $sRootPath ?>/groups/reports/photo-book" target="_blank" rel="noopener" class="btn btn-outline-primary">
+                <i class="fa-solid fa-book me-1"></i><?= gettext('PhotoBook') ?>
             </a>
+            <a href="<?= $sRootPath ?>/groups/sundayschool/reports/class-list" target="_blank" rel="noopener" class="btn btn-outline-primary">
+                <i class="fa-solid fa-list me-1"></i><?= gettext('Class List') ?>
+            </a>
+            <a href="<?= $sRootPath ?>/groups/sundayschool/reports" class="btn btn-outline-primary">
+                <i class="fa-solid fa-clipboard-check me-1"></i><?= gettext('Attendance Sheet') ?>
+            </a>
+            <?php if ($canManageGroups) { ?>
+            <a href="<?= $sRootPath ?>/groups/reports" class="btn btn-outline-primary">
+                <i class="fa-solid fa-address-book me-1"></i><?= gettext('Group Directory') ?>
+            </a>
+            <?php } ?>
             <a href="<?= $sRootPath ?>/api/groups/sundayschool/export/classlist" class="btn btn-outline-info">
                 <i class="fa-solid fa-file-csv me-1"></i><?= gettext('Class List Export') ?>
             </a>
