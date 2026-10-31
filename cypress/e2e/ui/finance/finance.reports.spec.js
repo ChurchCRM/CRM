@@ -130,9 +130,9 @@ describe("Financial Reports", () => {
     it("Individual Deposit Report", () => {
         cy.visit("FinancialReports.php");
         cy.contains("Financial Reports");
-        cy.get("#FinancialReportTypes").select("Individual Deposit Report");
-        cy.get("#FinancialReports").submit();
-        cy.contains("Financial Reports: Individual Deposit Report");
+        cy.visit("/finance/reports/deposits");
+        cy.get("#depositAdvancedSettings > summary").click();
+        cy.contains("Deposit Reports");
         cy.window().then(function (win) {
             win.document
                 .getElementById("createReport")
@@ -156,9 +156,9 @@ describe("Financial Reports", () => {
     it("Advanced Deposit Report", () => {
         cy.visit("FinancialReports.php");
         cy.contains("Financial Reports");
-        cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
-        cy.get("#FinancialReports").submit();
-        cy.contains("Financial Reports: Advanced Deposit Report");
+        cy.visit("/finance/reports/deposits");
+        cy.get("#depositAdvancedSettings > summary").click();
+        cy.contains("Deposit Reports");
         cy.window().then(function (win) {
             win.document
                 .getElementById("createReport")

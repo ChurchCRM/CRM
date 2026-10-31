@@ -4,6 +4,19 @@ import { captureScreen, defineCapture } from '../support/capture';
 import { settle } from '../support/human';
 
 test.describe('Giving', () => {
+  const depositReports = defineCapture({
+    name: 'finance-deposit-reports',
+    locales: 'all',
+    title: 'Review deposit payments',
+    category: 'Finance & Giving',
+    purpose: 'Help a treasurer review payments and prepare a selected deposit for the bank',
+  });
+  test('finance-deposit-reports', depositReports, async ({ page }, testInfo) => {
+    await page.goto('/finance/reports/deposits');
+    await expect(page.locator('#depositReportForm')).toBeVisible();
+    await captureScreen(page, testInfo, depositReports);
+  });
+
   const financeDepositEntryCapture = defineCapture({
     name: 'finance-deposit-entry',
     locales: 'all',

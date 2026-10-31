@@ -3,6 +3,14 @@ const deny = ["office-staff", "groups-only", "notes-only-staff", "zero-permissio
 
 export const FINANCE_GATES = [
     {
+        id: "finance-deposit-reports",
+        audience: "standard",
+        classification: "finance",
+        page: "/finance/reports/deposits",
+        allow,
+        deny,
+    },
+    {
         id: "finance-app",
         audience: "standard",
         classification: "finance",

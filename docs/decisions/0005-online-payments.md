@@ -589,7 +589,7 @@ See F2. Framing stays forbidden (`X-Frame-Options: SAMEORIGIN`; cross-site ifram
 ### 5.4 Reports
 - Moved to RFC 0004 §5: the "Anonymous" label, the LEFT JOINs and refund netting in the pledge summaries (GIV-02), and the donor count (GIV-05). They are what make this RFC's negative rows net.
 - Deposit PDF totals CREDITCARD, BANKDRAFT and CRYPTO (non-cash) beside the CHECK and CASH totals (`Deposit::getTotalChecks()`, `getTotalCash()` and the counts), plus an Online gross/fees/net summary. CSV adds person, source, gateway, external ref, fee. OFX uses `sGivingCurrency`.
-- Advanced Deposit: CRYPTO label in the method blocks of all three sort layouts (deposit, fund, family) of `Reports/AdvancedDeposit.php`; Given by, Source, Gateway filters.
+- Advanced Deposit: CRYPTO label in the method blocks of all three sort layouts (deposit, fund, family) of `AdvancedDepositService` (`METHOD_LABELS`); Given by, Source, Gateway filters.
 - **New (GIV-44):** online by gateway (gross, covered, fees, net); recurring forecast; past-due; disputes; non-cash register (8283/8282). #9313's per-person reports are RFC 0004's GIV-43.
 - **Families:** RFC 0004 §5 covers family delete and the family donation move. This RFC adds: the move is refused while the family owns a pending, active, past_due or review recurring gift.
 

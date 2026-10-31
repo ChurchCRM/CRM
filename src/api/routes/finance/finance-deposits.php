@@ -1,7 +1,8 @@
 <?php
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\model\ChurchCRM\PledgeQuery;
+use ChurchCRM\Service\DepositReportService;
+use ChurchCRM\Service\DepositReportRenderer;
 use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\Service\DepositService;
 use ChurchCRM\Utils\CsvExporter;
@@ -186,8 +187,8 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
         $id = (int) $args['id'];
 
         // If there are no payments for this deposit, return a controlled response
-        $paymentsCount = PledgeQuery::create()->filterByDepId($id)->count();
-        if ($paymentsCount === 0) {
+        $report = DepositReportService::report($id);
+        if ($report === null) {
             // Some clients and probes use HEAD; respond with appropriate status without throwing
             if (strtoupper($request->getMethod()) === 'HEAD') {
                 return $response->withStatus(404);
@@ -196,8 +197,14 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
             return SlimUtils::renderJSON($response->withStatus(404), ['message' => 'No Payments on this Deposit']);
         }
 
-        $request->getAttribute('deposit')->getPDF();
-        return SlimUtils::renderSuccessJSON($response);
+        $response = $response->withHeader('Content-Type', 'application/pdf')
+            ->withHeader('Content-Disposition', DepositReportService::contentDisposition($id))
+            ->withHeader('Cache-Control', 'private, no-store');
+        if ($request->getMethod() !== 'HEAD') {
+            $response->getBody()->write(DepositReportRenderer::create()->renderToString('deposit', $report));
+        }
+
+        return $response;
     })->add(DepositMiddleware::class);
 
     /**
