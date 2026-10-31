@@ -24437,3 +24437,419 @@ msgstr "Alleen de e-mail die u hebt verzonden wordt getoond."
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "Herhalende evenementen konden niet worden aangemaakt. Controleer het applicatielogboek voor details."
 
+#: 
+msgid "Confirm Password"
+msgstr "Wachtwoord bevestigen"
+
+#: 
+msgid "Your password has been changed. You can now sign in with your new password."
+msgstr "Uw wachtwoord is gewijzigd. U kunt nu inloggen met uw nieuwe wachtwoord."
+
+#: 
+msgid "1st"
+msgstr "1e"
+
+#: 
+msgid "2nd"
+msgstr "2e"
+
+#: 
+msgid "3rd"
+msgstr "3e"
+
+#: 
+msgid "4th"
+msgstr "4e"
+
+#: 
+msgid "5th"
+msgstr "5e"
+
+#: 
+msgid "Can't remove administrator access from the only administrator who can sign in"
+msgstr "Kan de beheerderstoegang niet verwijderen van de enige beheerder die kan inloggen"
+
+#: 
+msgid "Choose the week of the month, from 1st to 5th"
+msgstr "Kies de week van de maand, van de 1e tot de 5e"
+
+#: 
+msgid "Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}"
+msgstr "Maakt {{total}} evenementen, op de {{week}} {{day}} van elke maand van {{first}} tot {{last}}"
+
+#: 
+msgid "Invalid day of the week"
+msgstr "Ongeldige dag van de week"
+
+#: 
+msgid "Monthly, on a weekday"
+msgstr "Maandelijks, op een weekdag"
+
+#: 
+msgid "Months without a 5th one are skipped."
+msgstr "Maanden zonder een 5e worden overgeslagen."
+
+#: 
+msgid "RecurWOM must be a whole number from 1 to 5"
+msgstr "RecurWOM moet een geheel getal van 1 tot 5 zijn"
+
+#: 
+msgid "Week of the month"
+msgstr "Week van de maand"
+
+#: 
+msgid "Week of the month must be from 1 to 5"
+msgstr "De week van de maand moet van 1 tot 5 zijn"
+
+#: 
+msgid "%s through %s"
+msgstr "%s tot %s"
+
+#: 
+msgid "Church tax ID (EIN) printed on contribution statements"
+msgstr "Kerk belasting-ID (EIN) afgedrukt op bijdrageoverzichten"
+
+#: 
+msgid "Contribution statements are issued to the adults of a household. Please contact the church office if you need one."
+msgstr "Bijdrageoverzichten worden uitgegeven aan de volwassenen van een huishouden. Neem contact op met het kerkkantoor als u er een nodig heeft."
+
+#: 
+msgid "Download statement"
+msgstr "Overzicht downloaden"
+
+#: 
+msgid "Generated"
+msgstr "Gegenereerd"
+
+#: 
+msgid "Goods and services"
+msgstr "Goederen en diensten"
+
+#: 
+msgid "My Giving"
+msgstr "Mijn giften"
+
+#: 
+msgid "No contributions"
+msgstr "Geen bijdragen"
+
+#: 
+msgid "No contributions were recorded for this period."
+msgstr "Er zijn geen bijdragen geregistreerd voor deze periode."
+
+#: 
+msgid "No goods or services were provided in exchange for these contributions, other than intangible religious benefits."
+msgstr "Er zijn geen goederen of diensten geleverd in ruil voor deze bijdragen, behalve immateriële religieuze voordelen."
+
+#: 
+msgid "Optional. Printed on contribution statements."
+msgstr "Optioneel. Afgedrukt op bijdrageoverzichten."
+
+#: 
+msgid "Tax ID"
+msgstr "Belasting-ID"
+
+#: 
+msgid "Tax ID (EIN)"
+msgstr "Belasting-ID (EIN)"
+
+#: 
+msgid "Tax-deductible amount"
+msgstr "Fiscaal aftrekbaar bedrag"
+
+#: 
+msgid "This is the household statement. It includes gifts for your family."
+msgstr "Dit is het huishoudenoverzicht. Het bevat giften voor uw familie."
+
+#: 
+msgid "Total contributions"
+msgstr "Totale bijdragen"
+
+#: 
+msgid "Year-end statement"
+msgstr "Jaareinde-overzicht"
+
+#: 
+msgid "%d giving statement emailed to the family successfully."
+msgstr "%d giftenoverzicht succesvol per e-mail naar de familie gestuurd."
+
+#: 
+msgid "%s Giving Statement"
+msgstr "%s Giftenoverzicht"
+
+#: 
+msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "Pas de tekst aan die op giftenoverzichten verschijnt (sTaxReport1, sTaxReport2, enz.)."
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %s giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Beste familie %s,\n"
+"\n"
+"Bij deze e-mail vindt u uw %s giftenoverzicht van %s als bijlage.\n"
+"\n"
+"Als u vragen heeft, neem dan contact op met het kerkkantoor.\n"
+"\n"
+"Dank u voor uw vrijgevigheid."
+
+#: 
+msgid "Email %s Giving Statement"
+msgstr "%s Giftenoverzicht per e-mail verzenden"
+
+#: 
+msgid "Envelope Numbers"
+msgstr "Envelopnummers"
+
+#: 
+msgid "Generate Giving Statements"
+msgstr "Giftenoverzichten genereren"
+
+#: 
+msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
+msgstr "Rapporten genereren voor giftenoverzichten, belofte-tracking en financiële analyse."
+
+#: 
+msgid "Giving Reports"
+msgstr "Giftenrapporten"
+
+#: 
+msgid "Giving Statement"
+msgstr "Giftenoverzicht"
+
+#: 
+msgid "Giving Statements"
+msgstr "Giftenoverzichten"
+
+#: 
+msgid "Giving statement email failed to send. Please check your email server settings."
+msgstr "Het e-mailen van het giftenoverzicht is mislukt. Controleer uw e-mailserverinstellingen."
+
+#: 
+msgid "Please mail your next gift to %s"
+msgstr "Stuur uw volgende gift per post naar %s"
+
+#: 
+msgid "Print %s Giving Statement"
+msgstr "%s Giftenoverzicht afdrukken"
+
+#: 
+msgid "Unable to email giving statement: no payment data found for that year."
+msgstr "Kan giftenoverzicht niet per e-mail verzenden: geen betalingsgegevens gevonden voor dat jaar."
+
+#: 
+msgid "Unable to email giving statement: this family has no email address on file."
+msgstr "Kan giftenoverzicht niet per e-mail verzenden: deze familie heeft geen e-mailadres geregistreerd."
+
+#: 
+msgid "Undesignated"
+msgstr "Niet aangewezen"
+
+#: 
+msgid "Verify church name, address, and contact info appears on giving statements."
+msgstr "Controleer of de naam van de kerk, het adres en contactgegevens op de giftenoverzichten verschijnen."
+
+#: 
+msgid "The position is now assigned to %s, who has accepted it."
+msgstr "De positie is nu toegewezen aan %s, die deze heeft geaccepteerd."
+
+#: 
+msgid "The position is now assigned to %s, who has not yet accepted it."
+msgstr "De positie is nu toegewezen aan %s, die deze nog niet heeft geaccepteerd."
+
+#: 
+msgid "Their reason: %s"
+msgstr "Hun reden: %s"
+
+#: 
+msgid "View Assignments"
+msgstr "Toewijzingen bekijken"
+
+#: 
+msgid "Volunteers still needed for this occurrence: %d"
+msgstr "Nog vrijwilligers nodig voor deze gelegenheid: %d"
+
+#: 
+msgid "Volunteers still needed for this position: %d"
+msgstr "Nog vrijwilligers nodig voor deze positie: %d"
+
+#: 
+msgid "A weekly sign-in grid for each class. Class lists and photo books are on the Sunday School dashboard and each class page."
+msgstr "Een wekelijks aanmeldingsraster voor elke klas. Klassenlijsten en fotoboeken staan op het dashboard van de zondagsschool en op elke klaspagina."
+
+#: 
+msgid "A weekly sign-in grid for the school year, one column for each Sunday"
+msgstr "Een wekelijks aanmeldingsraster voor het schooljaar, één kolom voor elke zondag"
+
+#: 
+msgid "Age %d"
+msgstr "Leeftijd %d"
+
+#: 
+msgid "At least one group must be selected to make an attendance sheet."
+msgstr "Er moet ten minste één groep worden geselecteerd om een aanwezigheidsblad te maken."
+
+#: 
+msgid "Attendance Sheet"
+msgstr "Aanwezigheidsblad"
+
+#: 
+msgid "Class List"
+msgstr "Klassenlijst"
+
+#: 
+msgid "Download PDF"
+msgstr "PDF downloaden"
+
+#: 
+msgid "Lockout period in minutes\n"
+"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
+msgstr "Vergrendelingsperiode in minuten\n"
+"Een vergrendeld account ontgrendelt zichzelf na dit aantal minuten. Mislukte inlogpogingen vanaf één IP-adres worden over dezelfde periode geteld."
+
+#: 
+msgid "Maximum number of failed logins from one IP address\n"
+"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
+"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
+msgstr "Maximaal aantal mislukte inlogpogingen vanaf één IP-adres\n"
+"Mislukte inlogpogingen en verzoeken om wachtwoordherstel vanaf één IP-adres tellen mee voor deze limiet binnen de vergrendelingsperiode. Zodra deze is bereikt, wordt inloggen vanaf dat adres geweigerd tot de periode eindigt.\n"
+"Stel in op nul om deze functie uit te schakelen, bijvoorbeeld wanneer iedereen ChurchCRM bereikt via één proxyadres."
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "Maximaal aantal mislukte inlogpogingen toegestaan voordat een gebruikersaccount wordt vergrendeld.\n"
+"Een vergrendeld account ontgrendelt zichzelf na de vergrendelingsperiode, of eerder wanneer een beheerder de mislukte inlogpogingen reset.\n"
+"Deze functie helpt te beschermen tegen geautomatiseerde wachtwoordraad-aanvallen.\n"
+"Stel in op nul om deze functie uit te schakelen."
+
+#: 
+msgid "Minutes until it unlocks by itself: %d"
+msgstr "Minuten tot het zichzelf ontgrendelt: %d"
+
+#: 
+msgid "Sunday School Attendance Sheet"
+msgstr "Aanwezigheidsblad zondagsschool"
+
+#: 
+msgid "Sundays with no class are left off the sheet."
+msgstr "Zondagen zonder les worden van het blad weggelaten."
+
+#: 
+msgid "Database Upgrade"
+msgstr "Database-upgrade"
+
+#: 
+msgid "Your database is being updated. Please keep this page open until the upgrade finishes."
+msgstr "Uw database wordt bijgewerkt. Houd deze pagina open totdat de upgrade is voltooid."
+
+#: 
+msgid "Family Labels"
+msgstr "Familielabels"
+
+#: 
+msgid "%s – Total"
+msgstr "%s – Totaal"
+
+#: 
+msgid "Bill"
+msgstr "Biljet"
+
+#: 
+msgid "Choose a deposit or enter both report dates."
+msgstr "Kies een storting of voer beide rapportdatums in."
+
+#: 
+msgid "Choose one deposit to review its payments or print its bank slip. A selected deposit overrides the date range."
+msgstr "Kies één storting om de betalingen te bekijken of de bankslip af te drukken. Een geselecteerde storting overschrijft het datumbereik."
+
+#: 
+msgid "Coin"
+msgstr "Munt"
+
+#: 
+msgid "Deposit Report"
+msgstr "Stortingsrapport"
+
+#: 
+msgid "Download Report"
+msgstr "Rapport downloaden"
+
+#: 
+msgid "Enter valid report dates."
+msgstr "Voer geldige rapportdatums in."
+
+#: 
+msgid "Invalid report filters."
+msgstr "Ongeldige rapportfilters."
+
+#: 
+msgid "Invalid report options."
+msgstr "Ongeldige rapportopties."
+
+#: 
+msgid "Leave filters empty to include all payments. These settings apply to the report, not the bank slip."
+msgstr "Laat filters leeg om alle betalingen op te nemen. Deze instellingen gelden voor het rapport, niet voor de bankslip."
+
+#: 
+msgid "No records were returned. Adjust your filters and try again."
+msgstr "Er zijn geen records geretourneerd. Pas uw filters aan en probeer het opnieuw."
+
+#: 
+msgid "Prepare for the Bank"
+msgstr "Voorbereiden voor de bank"
+
+#: 
+msgid "Preview Totals"
+msgstr "Totalen voorvertonen"
+
+#: 
+msgid "Print Bank Slip"
+msgstr "Bankslip afdrukken"
+
+#: 
+msgid "Print the selected deposit in full, with cash and check totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
+msgstr "Druk de geselecteerde storting volledig af, met contant- en chequetotalen, telbladen en getuigenregels. Rapportfilters worden genegeerd. Elektronische betalingen blijven in de samenvatting en zijn uitgesloten van het fysieke bankticket-totaal."
+
+#: 
+msgid "Review Payments"
+msgstr "Betalingen bekijken"
+
+#: 
+msgid "Review payments for a period, or prepare one deposit for the bank."
+msgstr "Bekijk betalingen voor een periode of bereid één storting voor de bank voor."
+
+#: 
+msgid "Review payments, download PDF or CSV, or print a bank slip for one deposit."
+msgstr "Bekijk betalingen, download PDF of CSV, of druk een bankslip af voor één storting."
+
+#: 
+msgid "Select a valid deposit."
+msgstr "Selecteer een geldige storting."
+
+#: 
+msgid "Select one deposit to print a bank slip."
+msgstr "Selecteer één storting om een bankslip af te drukken."
+
+#: 
+msgid "The report end date must be on or after the start date."
+msgstr "De einddatum van het rapport moet op of na de startdatum liggen."
+
+#: 
+msgid "Total Cash"
+msgstr "Totaal contant"
+
+#: 
+msgid "Total Coin"
+msgstr "Totaal munten"
+
+#: 
+msgid "Witness"
+msgstr "Getuige"
+
