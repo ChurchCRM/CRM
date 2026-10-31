@@ -1,0 +1,19 @@
+{% extends "_letter.html.twig" %}
+{% block letter_body %}
+  <h1>{{ gettext('Voting Members — Review List') }}</h1>
+  <p>{{ gettext('Church leadership must confirm eligibility under the church bylaws. This list only shows people matching the selected filters.') }}</p>
+  {% for rule in rules %}<p>{{ rule }}</p>{% endfor %}
+  <p><strong>{{ gettext('People matching filters') }}: {{ count }}</strong></p>
+  <p>{{ gettext('People omitted because required dates are missing') }}: {{ unknown }}</p>
+  <table class="gifts">
+    <thead><tr><th>{{ gettext('Photo') }}</th><th>{{ gettext('Name') }}</th><th>{{ gettext('Family') }}</th></tr></thead>
+    <tbody>
+      {% for person in people %}
+        <tr>
+          <td>{% if person.photo %}<img src="{{ person.photo }}" alt="" style="width: 8mm; height: 8mm;">{% else %}<div style="width: 8mm; height: 8mm;">{{ person.initials }}</div>{% endif %}</td>
+          <td>{{ person.name }}</td><td>{{ person.family }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

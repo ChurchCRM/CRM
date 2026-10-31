@@ -58,7 +58,7 @@ $fyMonthName = $monthNames[$iFYMonth] ?? '';
             [
                 'title' => gettext('Membership Reports'),
                 'reports' => [
-                    ['href' => '/FinancialReports.php?ReportType=Voting%20Members', 'title' => gettext('Voting Members'), 'description' => gettext('List members eligible to vote based on giving history and membership criteria.')],
+                    ['href' => '/finance/reports/voting-members', 'title' => gettext('Voting Members'), 'description' => gettext('Prepare a list for church review using classifications and optional age, membership, and family giving filters.')],
                 ],
             ],
         ];
