@@ -6,7 +6,7 @@ use DateTimeImmutable;
 
 /**
  * Who a portal session belongs to (member sign-in design §3): a person, never a
- * user account. `actorUserId` is set only for Login as User, where it is the
+ * user account. `actorUserId` is set only for Login as Person, where it is the
  * administrator acting for the person.
  */
 final class PortalPrincipal

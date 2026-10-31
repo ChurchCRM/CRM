@@ -96,6 +96,10 @@ function wireProfileForm(): void {
         }
 
         const updated = result.data.updated ?? [];
+        if (updated.includes("language")) {
+          window.location.reload();
+          return;
+        }
         const pendingEmail = result.data.pendingEmail ?? "";
         if (pendingEmail !== "") {
           showPortalToast(

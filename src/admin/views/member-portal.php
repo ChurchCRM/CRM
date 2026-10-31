@@ -259,12 +259,12 @@ $themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration
                         <div class="card" id="memberSignInLoginAsCard">
                             <div class="card-header">
                                 <h3 class="card-title mb-0">
-                                    <i class="fa-solid fa-user-secret me-2"></i><?= gettext('Login as User') ?>
+                                    <i class="fa-solid fa-user-secret me-2"></i><?= gettext('Login as Person') ?>
                                 </h3>
                             </div>
                             <div class="card-body">
-                                <?= $switchRow('bAllowLoginAsUser', gettext('Allow Login as User'), $signInValues['bAllowLoginAsUser'] === '1', $signIn['tooltips']) ?>
-                                <?= $switchRow('bLoginAsUserCanWrite', gettext('Allow changes during Login as User'), $signInValues['bLoginAsUserCanWrite'] === '1', $signIn['tooltips']) ?>
+                                <?= $switchRow('bAllowLoginAsPerson', gettext('Allow Login as Person'), $signInValues['bAllowLoginAsPerson'] === '1', $signIn['tooltips']) ?>
+                                <?= $switchRow('bLoginAsPersonCanWrite', gettext('Allow changes during Login as Person'), $signInValues['bLoginAsPersonCanWrite'] === '1', $signIn['tooltips']) ?>
                             </div>
                         </div>
                     </div>

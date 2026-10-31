@@ -119,7 +119,6 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
     </div>
     <div class="card-body border-bottom py-2 text-body-secondary small">
         <span class="me-3"><i class="fa-solid fa-circle-check text-danger me-1"></i><?= gettext('Admin') ?></span>
-        <span class="me-3"><i class="fa-solid fa-user-check text-warning me-1"></i><?= gettext('Self-service') ?></span>
         <span><i class="fa-solid fa-cog text-azure me-1"></i><?= gettext('Custom') ?></span>
     </div>
     <div class="card-body overflow-visible">
@@ -148,8 +147,6 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
                             <td class="text-center">
                                 <?php if ($user->isAdmin()): ?>
                                 <i class="fa-solid fa-circle-check text-danger fs-4" title="<?= gettext('Administrator') ?>"></i>
-                                <?php elseif ($user->isEditSelf()): ?>
-                                <i class="fa-solid fa-user-check text-warning fs-4" title="<?= gettext('Self-service only') ?>"></i>
                                 <?php else: ?>
                                 <i class="fa-solid fa-cog text-azure fs-4" title="<?= gettext('Custom permissions') ?>"></i>
                                 <?php endif; ?>

@@ -2222,7 +2222,7 @@ member surface:
 `isVolunteerV2Enabled()` — exactly one volunteer entry, `/api/ministries/me/`, because the portal's
 volunteering templates load bundles that call that API. The member MVC pages are
 `/portal/volunteer/schedule` and `/portal/volunteer/opportunities`. Both branches consult the
-function, so the member surface is reachable by session and by API key (`cy.makePrivateEditSelfAPICall()`, §6.6).
+function, so the member surface is reachable by session and by API key (§6.6).
 
 **Why this is safe.** The allowed paths are matched literally with `str_starts_with()`, anchored at
 the install's root path (`SystemURLs::getRootPath()`), so `/api/person/1/api/ministries/me/…` or a
@@ -2978,8 +2978,8 @@ Reusable seed objects (verified in `seed.sql`):
 | Standard user (all flags but Admin) | person 3, `user.api.key` | coordinator once granted a scope |
 | Notes-only user | person 900, `plainauth.api.key` | the "no volunteer rights" negative case |
 | Zero-permission user | person 901 | **its seeded API key has no env var in any config** — use `plainauth` instead, or add the env var |
-| EditSelf-exclusive user | person 99, `selfedit.api.key` | **the volunteer persona** (D14) |
-| EditSelf + Notes | person 100, `selfedit.plus.notes.api.key` | second volunteer, for the swap counterparty |
+| Member (no account) | person 99, `cy.makeMemberAPICall(99, …)` | **the volunteer persona** (D14) |
+| Member (no account) | person 100, `cy.makeMemberAPICall(100, …)` | second volunteer, for the swap counterparty |
 | Group "Angels class" | grp 1 (type 4, Teacher/Student roles) | a pool group with real members |
 | Group "Worship Service" | grp 10 (**type 1 = Ministry**) | the natural pool for a Worship fixture |
 | Family Riley | fam 18 (8 members) | bulk pool members |
@@ -3023,11 +3023,11 @@ Idempotency is awkward to prove through E2E, so each case has a prescribed shape
 | Duplicate scope grant | `POST /scopes` twice; second is `200` with the same id, not `409` and not a duplicate row |
 | Concurrent double-submit | not testable through Cypress; the DB unique keys are the guarantee, and each unique key has a spec proving the second write is rejected |
 
-**Authorization negatives** (§4.8): use person 900 (`plainauth`) or person 99 (`selfedit`); a strict
+**Authorization negatives** (§4.8): use person 900 (`plainauth`) or person 99 (a member session); a strict
 `403` assertion needs a non-admin caller, because admin bypasses every role middleware except `AdminRoleAuthMiddleware`.
 
-**Member-surface specs authenticate with `cy.makePrivateEditSelfAPICall()`** (person 99). That only
-works because §4.7's exemption covers the API-key branch as well as the session branch.
+**Member-surface specs use a member session:** `cy.makeMemberAPICall(99, …)` signs person 99 in with
+an emailed code (`cypress/support/member-session.js`); there are no self-service accounts.
 
 ### 6.7 Other rules that bite
 

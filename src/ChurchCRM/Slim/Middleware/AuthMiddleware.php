@@ -7,7 +7,9 @@ use ChurchCRM\Authentication\Requests\APITokenAuthenticationRequest;
 use ChurchCRM\Authentication\StaffSignInPage;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\Portal\Auth\LoginAsPerson;
 use ChurchCRM\Portal\Auth\PortalSessionStore;
+use ChurchCRM\Portal\PortalExtension;
 use ChurchCRM\Portal\Auth\RememberedDeviceCookie;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -75,6 +77,12 @@ class AuthMiddleware implements MiddlewareInterface
                     $response = new Response();
                     $response->getBody()->write(json_encode(SlimUtils::buildErrorPayload(gettext('Account has limited permissions. Contact an administrator.'), 403)));
                     return $response->withStatus(403)->withHeader('Content-Type', 'application/json');
+                }
+            } elseif (LoginAsPerson::isActive()) {
+                // Login as Person (member sign-in design §6.5): the administrator's staff
+                // session is set aside, and every staff route stays closed until Stop.
+                if (!$this->isPortalPath($request) && !$this->isPortalVolunteerApiPath($request)) {
+                    return $this->refuseDuringLoginAsPerson($request);
                 }
             } elseif (AuthenticationManager::validateUserSessionIsActive(!$this->isPath($request, 'background'))) {
                 // validate the user session; however, do not update tLastOperation if the requested path is "/background"
@@ -315,6 +323,23 @@ class AuthMiddleware implements MiddlewareInterface
         // so use in_array to check if the segment exists anywhere in the path
         $pathAry = explode('/', $request->getUri()->getPath());
         return in_array($pathPart, $pathAry, true);
+    }
+
+    private function refuseDuringLoginAsPerson(ServerRequestInterface $request): ResponseInterface
+    {
+        if ($this->isBrowserRequest($request)) {
+            PortalExtension::addFlash('warning', LoginAsPerson::staffPagesClosedMessage());
+            $response = (new Response())->withStatus(302)->withHeader('Location', SystemURLs::getRootPath() . '/portal/');
+        } else {
+            $response = SlimUtils::renderErrorJSON(new Response(), LoginAsPerson::staffPagesClosedMessage(), [], 403);
+        }
+
+        $historyId = LoginAsPerson::historyId();
+        if ($historyId !== null && LoginAsPerson::isWriteMethod($request->getMethod())) {
+            LoginAsPerson::recordAction($historyId, $request->getMethod(), $request->getUri()->getPath(), $response->getStatusCode());
+        }
+
+        return $response;
     }
 
     /**

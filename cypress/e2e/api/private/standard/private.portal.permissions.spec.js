@@ -4,20 +4,19 @@
  * Member sign-in, row 2 (#10463): the portal permissions model
  * (docs/member-sign-in-design.md §8, §4 "Teenagers", §17 "Portal permissions").
  *
- * A portal-only session is reached through the real STAFF path: sign in, open
- * the portal, then let the staff session time out (iSessionTimeout = 1).
- * Given grants, the timeouts and a person's role and birth year have no HTTP
- * surface yet (row 9 adds the admin pages), so they are set with cy.dbQuery().
+ * Members sign in with their email (a portal-only session); the administrator
+ * signs in at /admin and opens the portal (a STAFF principal). Given grants and
+ * a person's role and birth year are set with cy.dbQuery().
  */
 
-const LEADER = { username: "lena.black.editself.notes@example.com", password: "changeme", personId: 100 };
-const NON_ADULT = { username: "limited.user", password: "changeme", personId: 4, familyId: 1 };
+const LEADER = { personId: 100 };
+const NON_ADULT = { personId: 4, familyId: 1 };
 const ADMIN = { username: "admin", password: "changeme" };
 const AMANDA_EMAIL = "amanda.black@example.com";
 const MATHEW_EMAIL = "mathew.campbell@example.com";
 const PREFIX = "PERM10463";
 const VERSION_URL = "/admin/api/system/config/sVolunteerVersion";
-const touchedConfig = ["iSessionTimeout", "bPortalShowVolunteer"];
+const touchedConfig = ["bPortalShowVolunteer"];
 
 let ministryId = 0;
 let teamLed = 0;
@@ -37,15 +36,14 @@ const setConfig = (name, value) =>
         [name, value],
     );
 
-const signIn = ({ username, password }) => {
-    cy.clearCookies();
-    cy.request({ method: "POST", url: "/session/begin", form: true, body: { User: username, Password: password } });
+const signIn = ({ username, password, personId }) => {
+    if (username === undefined) {
+        cy.signInAsMember(personId);
+    } else {
+        cy.clearCookies();
+        cy.request({ method: "POST", url: "/admin/", form: true, body: { User: username, Password: password } });
+    }
     cy.request("/portal/").its("status").should("eq", 200);
-};
-
-const endStaffSession = () => {
-    setConfig("iSessionTimeout", "1");
-    cy.wait(2100);
 };
 
 const status = (url) => cy.request({ url, failOnStatusCode: false, followRedirect: false }).its("status");
@@ -166,7 +164,6 @@ describe("Member Portal permissions (portal permissions model)", () => {
     describe("Team leaders", () => {
         it("manages only their own team in a portal-only session, and gets 404 for another", () => {
             signIn(LEADER);
-            endStaffSession();
 
             cy.request("/portal/teams").then((response) => {
                 expect(response.body).to.contain(`${PREFIX} Greeters`);
@@ -185,7 +182,6 @@ describe("Member Portal permissions (portal permissions model)", () => {
 
         it("loses the capability on the next request when removed from the team", () => {
             signIn(LEADER);
-            endStaffSession();
             status(`/portal/teams/${teamLed}`).should("eq", 200);
 
             cy.then(() => cy.makePrivateAdminAPICall("DELETE", `/api/ministries/scopes/${leaderScopeId}`, null, [200, 204]));
@@ -287,7 +283,6 @@ describe("Member Portal permissions (portal permissions model)", () => {
         it("lets a member run a team they were given, through the volunteer API too, until it ends", () => {
             giveGrant(LEADER.personId, "volunteer.team.manage", "team", teamOther, "NULL");
             signIn(LEADER);
-            endStaffSession();
             status(`/portal/teams/${teamOther}`).should("eq", 200);
             status(`/api/ministries/teams/${teamOther}`).should("eq", 200);
 
@@ -335,7 +330,6 @@ describe("Member Portal permissions (portal permissions model)", () => {
 
         it("denies volunteering and team management while volunteering is switched off", () => {
             signIn(LEADER);
-            endStaffSession();
             status(`/portal/teams/${teamLed}`).should("eq", 200);
 
             setConfig("bPortalShowVolunteer", "0");

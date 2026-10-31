@@ -18,7 +18,7 @@ use InvalidArgumentException;
 final class PortalSessionStarter
 {
     /**
-     * @param User|null   $actor       the administrator, for ASSISTED (Login as User) only
+     * @param User|null   $actor       the administrator, for ASSISTED (Login as Person) only
      * @param string|null $provenEmail for an email method, the address the code or link went to
      * @param string|null $auditDetail non-secret context for the audit row this step writes
      *
@@ -32,7 +32,7 @@ final class PortalSessionStarter
         ?string $auditDetail = null,
     ): PortalPrincipal {
         if ($method === SignInMethod::ASSISTED && !$actor instanceof User) {
-            throw new InvalidArgumentException('Login as User needs the acting administrator');
+            throw new InvalidArgumentException('Login as Person needs the acting administrator');
         }
         $actorUserId = $method === SignInMethod::ASSISTED ? (int) $actor->getId() : null;
         $provenEmail = $method->isEmail() && $provenEmail !== null && trim($provenEmail) !== '' ? trim($provenEmail) : null;
@@ -72,12 +72,15 @@ final class PortalSessionStarter
             $actorUserId,
         );
         // Last before the save, so a failed sign-in leaves the staff session as it was.
+        if ($method !== SignInMethod::ASSISTED) {
+            LoginAsPerson::endForNewSignIn();
+        }
         if ($method->replacesStaffSession()) {
             AuthenticationManager::endStaffSession();
         }
         PortalSessionStore::save($principal);
         SignInAudit::record(
-            SignInAuditEvent::SIGNED_IN,
+            $method === SignInMethod::ASSISTED ? SignInAuditEvent::LOGIN_AS_STARTED : SignInAuditEvent::SIGNED_IN,
             $personId,
             $method,
             null,

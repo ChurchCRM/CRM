@@ -21,6 +21,10 @@
             "kind": "schema",
             "reason": "Migration spec for the 7.8.3 block that retires bPortalShowCalendar: the application no longer reads or writes the switch, so its pre-upgrade config row and the upgrade block are reached in SQL."
         },
+        "cypress/e2e/api/private/admin/private.admin.member-sign-in-cutover.spec.js": {
+            "kind": "schema",
+            "reason": "Migration spec for the 7.8.3 release-day cutover (member sign-in row 13): the application no longer makes self-service accounts, so the pre-upgrade accounts, their per-user rows, the history that names them and the upgrade block are reached in SQL."
+        },
         "cypress/e2e/api/private/admin/private.admin.member-portal-lists.spec.js": {
             "kind": "fixture",
             "reason": "Member sign-in row 9 (#10463): shared and unconfirmed emails, past sign-in times, the 7.8.3 family email move rows, an emailed family confirmation and an old refusal are fixtures with no HTTP surface; the upgrade, the email link and row 10 write them."
@@ -65,6 +69,14 @@
             "kind": "fixture",
             "reason": "Member sign-in row 10 (#10463): the sign-in audit has no HTTP surface until row 9, and the importer answers no ids."
         },
+        "cypress/e2e/ui-admin/admin.login-as-person-changes.spec.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in row 12 (#10463): a remembered device for the member is written only by the email sign-in flow (row 7), so it is inserted to show a device removed during Login as Person names the administrator, then deleted."
+        },
+        "cypress/e2e/ui-admin/admin.login-as-person-eligibility.spec.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in row 12 (#10463): a death date is set only through the legacy person editor form, so it is set and cleared in SQL to show a Login as Person session ends once the person is deceased."
+        },
         "cypress/e2e/ui-admin/admin.member-portal-members.spec.js": {
             "kind": "fixture",
             "reason": "Member sign-in row 9 (#10463): a shared email, the 7.8.3 family email move rows and remembered devices (rows 7 and 11 write them) are fixtures with no HTTP surface; the portal's verify note is removed afterwards because notes have no delete API for a member confirmation."
@@ -72,6 +84,10 @@
         "cypress/e2e/ui/people/person-signin-email.spec.js": {
             "kind": "fixture",
             "reason": "Member sign-in row 10 (#10463): an address moved from the family email and \"has signed in\" have no HTTP surface until rows 5 and 9."
+        },
+        "cypress/e2e/ui/portal/member.portal-locale.spec.js": {
+            "kind": "fixture",
+            "reason": "Member language (#10463): a stored language this installation no longer ships cannot be written through the app, so it is set in SQL, and each test starts from Church default."
         },
         "cypress/e2e/ui/portal/member.portal-passkeys.spec.js": {
             "kind": "fixture",
@@ -89,6 +105,10 @@
             "kind": "fixture",
             "reason": "Member sign-in row 5 (#10463): Disable sign-in and an unconfirmed moved address are set, and the audit read, in SQL; row 9 adds their admin pages."
         },
+        "cypress/e2e/ui/security/limited-access.spec.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in row 13 (#10463): the 7.8.3 upgrade removes every self-service account and nothing creates one, so the account the confinement safety net is tested with is inserted in SQL."
+        },
         "cypress/support/api-commands.js": {
             "kind": "fixture",
             "reason": "Registers cy.dbQuery()."
@@ -99,7 +119,7 @@
         },
         "cypress/support/member-session.js": {
             "kind": "fixture",
-            "reason": "Member sign-in (#10463): opens the member rule for a spec that acts as a member and puts the seed's settings back after it."
+            "reason": "Member sign-in row 13 (#10463): opens the member rule for a spec that acts as a member and puts the seed's settings back after it; members have no account to sign in with since the cutover."
         },
         "cypress/support/remembered-device.js": {
             "kind": "fixture",

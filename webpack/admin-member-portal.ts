@@ -57,7 +57,7 @@ interface PortalStats {
 const CALENDARS_TABLE_ID = "portalCalendarsTable";
 
 const SIGN_IN_FORM_ID = "memberSignInForm";
-const SIGN_IN_SWITCHES = ["bMemberSignIn", "bPortalPasskeys", "bAllowLoginAsUser", "bLoginAsUserCanWrite"];
+const SIGN_IN_SWITCHES = ["bMemberSignIn", "bPortalPasskeys", "bAllowLoginAsPerson", "bLoginAsPersonCanWrite"];
 const SIGN_IN_NUMBERS = [
   "iMemberSignInMinAge",
   "iSignInLinkMinutes",

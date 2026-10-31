@@ -15,10 +15,10 @@ const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const ADMIN_KEY = "admin.api.key";
 const COORDINATOR_KEY = "user.api.key";
 const PLAINAUTH_KEY = "plainauth.api.key";
-const SELFEDIT_KEY = "selfedit.api.key";
+const SELFEDIT_KEY = 99;
 
 const PERSON_COORDINATOR = 3; // tony.wade — a ministry scope on A only
-const PERSON_VOLUNTEER = 99; // the EditSelf-only volunteer
+const PERSON_VOLUNTEER = 99; // the volunteer, a member session
 
 const CHURCH_SERVICE_TYPE = 1;
 const SUNDAY_SCHOOL_GROUP_TYPE = 4;
@@ -71,7 +71,11 @@ function dbOk(sql, params = []) {
     });
 }
 
+/** A person id is a member, in their portal session; anything else names an API key. */
 function api(key, method, url, body, expectedStatus = 200) {
+    if (typeof key === "number") {
+        return cy.makeMemberAPICall(key, method, url, body, expectedStatus);
+    }
     return cy.makePrivateAPICall(Cypress.testEnv(key), method, url, body, expectedStatus);
 }
 
@@ -211,7 +215,7 @@ function shifted(wallClock, minutes) {
 // ── fixture ────────────────────────────────────────────────────────────────
 
 before(() => {
-    cy.rememberTestEnv(["admin.api.key", "user.api.key", "selfedit.api.key", "plainauth.api.key"]);
+    cy.rememberTestEnv(["admin.api.key", "user.api.key", "plainauth.api.key"]);
     cy.useChurchTimeZone();
 });
 

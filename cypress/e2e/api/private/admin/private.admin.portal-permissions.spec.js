@@ -154,9 +154,10 @@ describe("Admin → Member Portal permissions and given grants", () => {
                         });
                         holders(ROSTER).then((body) => {
                             expect(body.total).to.eq(inGroups.length);
-                            const limited = body.rows.find((row) => row.personId === 4);
-                            expect(limited.grants.map((grant) => grant.sourceLabel)).to.include("Member of Angels class");
-                            expect(limited.grants[0].scope).to.include({ type: "group", id: 1, name: "Angels class" });
+                            // Herminia Bennett (8): in Angels class, and in the population through her staff account.
+                            const herminia = body.rows.find((row) => row.personId === 8);
+                            expect(herminia.grants.map((grant) => grant.sourceLabel)).to.include("Member of Angels class");
+                            expect(herminia.grants[0].scope).to.include({ type: "group", id: 1, name: "Angels class" });
                         });
                     });
                 });

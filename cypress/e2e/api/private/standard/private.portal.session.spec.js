@@ -4,8 +4,8 @@
  * Member sign-in, row 1 (#10463): the portal principal, the shared step and
  * PortalSessionMiddleware (docs/member-sign-in-design.md §3, §5, §6.4, §11.2).
  *
- * A signed-in staff or self-service session that opens the portal becomes a
- * STAFF portal session for its own person. Once the staff session itself has
+ * A signed-in staff session that opens the portal becomes a STAFF portal
+ * session for its own person. Once the staff session itself has
  * timed out (iSessionTimeout), only the portal session is left: that is the
  * "portal principal, no user" request the portal must accept and every staff
  * route must refuse. Disable sign-in also blocks the staff session (row 4). The
@@ -14,7 +14,6 @@
  */
 
 const staffUser = { username: "tony.wade@example.com", password: "basicjoe", personId: 3 };
-const memberUser = { username: "lena.black.editself.notes@example.com", password: "changeme", personId: 100 };
 const touchedConfig = ["iSessionTimeout", "iPortalIdleMinutes"];
 
 const db = (sql, params = []) =>
@@ -31,7 +30,7 @@ const setConfig = (name, value) =>
 
 const signIn = ({ username, password }) => {
     cy.clearCookies();
-    cy.request({ method: "POST", url: "/session/begin", form: true, body: { User: username, Password: password } });
+    cy.request({ method: "POST", url: "/admin/", form: true, body: { User: username, Password: password } });
 };
 
 const openPortal = () => cy.request("/portal/").its("status").should("eq", 200);
@@ -66,19 +65,17 @@ describe("Member Portal session (portal principal)", () => {
                 db("DELETE FROM config_cfg WHERE cfg_name = ?", [name]);
             }
         });
-        db("UPDATE person_signin_psi SET psi_SignInDisabled = 0 WHERE psi_per_ID IN (?, ?)", [
-            staffUser.personId,
-            memberUser.personId,
-        ]);
+        db("UPDATE person_signin_psi SET psi_SignInDisabled = 0 WHERE psi_per_ID = ?", [staffUser.personId]);
         cy.clearCookies();
     });
 
-    it("starts a STAFF portal session for a self-service sign-in and audits it without secrets", () => {
+    it("starts a STAFF portal session for a staff sign-in and audits it without secrets", () => {
+        db("DELETE FROM person_signin_psi WHERE psi_per_ID = ?", [staffUser.personId]);
         lastAuditId().then((startId) => {
-            signIn(memberUser);
+            signIn(staffUser);
             openPortal();
 
-            db("SELECT * FROM person_signin_psi WHERE psi_per_ID = ?", [memberUser.personId]).then((rows) => {
+            db("SELECT * FROM person_signin_psi WHERE psi_per_ID = ?", [staffUser.personId]).then((rows) => {
                 expect(rows).to.have.length(1);
                 expect(rows[0].psi_LastMethod).to.eq("staff");
                 expect(rows[0].psi_FirstSignIn).to.not.be.null;
@@ -90,7 +87,7 @@ describe("Member Portal session (portal principal)", () => {
             cy.getCookies().then((cookies) => {
                 const sessionValues = cookies.filter((c) => c.name.startsWith("CRM-")).map((c) => c.value);
                 expect(sessionValues).to.not.be.empty;
-                auditRowsSince(memberUser.personId, startId).then((rows) => {
+                auditRowsSince(staffUser.personId, startId).then((rows) => {
                     const signedIn = rows.filter((row) => row.psa_Event === "signed_in");
                     expect(signedIn).to.have.length(1);
                     expect(signedIn[0].psa_Method).to.eq("staff");
@@ -100,7 +97,7 @@ describe("Member Portal session (portal principal)", () => {
                     expect(signedIn[0].psa_IP).to.be.a("string").and.not.be.empty;
 
                     const stored = JSON.stringify(rows);
-                    expect(stored).to.not.include(memberUser.password);
+                    expect(stored).to.not.include(staffUser.password);
                     sessionValues.forEach((value) => expect(stored).to.not.include(value));
                 });
             });

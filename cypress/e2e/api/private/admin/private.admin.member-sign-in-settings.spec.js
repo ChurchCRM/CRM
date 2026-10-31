@@ -17,8 +17,8 @@ const KEYS = [
     "iRememberDeviceDays",
     "bPortalPasskeys",
     "sMemberSignInNotificationRecipientIDs",
-    "bAllowLoginAsUser",
-    "bLoginAsUserCanWrite",
+    "bAllowLoginAsPerson",
+    "bLoginAsPersonCanWrite",
 ];
 
 const settings = () => cy.makePrivateAdminAPICall("GET", URL, null, 200).its("body");
@@ -67,8 +67,8 @@ describe("Member sign-in settings API", () => {
             iRememberDeviceDays: 0,
             bPortalPasskeys: false,
             sMemberSignInNotificationRecipientIDs: [2, 6],
-            bAllowLoginAsUser: true,
-            bLoginAsUserCanWrite: true,
+            bAllowLoginAsPerson: true,
+            bLoginAsPersonCanWrite: true,
         }).then(({ body }) => {
             expect(body.values).to.include({
                 sMemberSignInFamilyRoles: "1,2,3",
@@ -79,8 +79,8 @@ describe("Member sign-in settings API", () => {
                 iRememberDeviceDays: "0",
                 bPortalPasskeys: "0",
                 sMemberSignInNotificationRecipientIDs: "2,6",
-                bAllowLoginAsUser: "1",
-                bLoginAsUserCanWrite: "1",
+                bAllowLoginAsPerson: "1",
+                bLoginAsPersonCanWrite: "1",
             });
             expect(body.maySignInCount).to.be.a("number").and.be.greaterThan(0);
         });

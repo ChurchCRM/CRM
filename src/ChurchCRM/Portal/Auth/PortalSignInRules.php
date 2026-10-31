@@ -2,9 +2,11 @@
 
 namespace ChurchCRM\Portal\Auth;
 
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonSignin;
+use ChurchCRM\model\ChurchCRM\UserQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 /**
@@ -22,6 +24,10 @@ final class PortalSignInRules
     ): ?SignInReason {
         if (!$person instanceof Person) {
             return SignInReason::PERSON_NOT_FOUND;
+        }
+
+        if ($method === SignInMethod::ASSISTED) {
+            return self::loginAsPersonRefusal($person, $state);
         }
 
         $blocked = Person::signInBlockedReasonFor(
@@ -45,6 +51,30 @@ final class PortalSignInRules
         }
 
         return ($memberRule ?? MemberSignInRule::fromSettings())->check($person);
+    }
+
+    /**
+     * Login as Person checks only these, at the start and on every request (design
+     * §6.5): the office may need to see what an inactive person, a deactivated
+     * family, someone awaiting review or outside the member rule, or someone with
+     * no usable email would see. It shows the portal only while members can reach it.
+     */
+    private static function loginAsPersonRefusal(Person $person, ?PersonSignin $state): ?SignInReason
+    {
+        if (!SystemConfig::getBooleanValue('bMemberSignIn')) {
+            return SignInReason::MEMBER_SIGN_IN_OFF;
+        }
+        if (!empty($person->getDateDeceased())) {
+            return SignInReason::DECEASED;
+        }
+        if ($state instanceof PersonSignin && $state->getSignInDisabled()) {
+            return SignInReason::SIGN_IN_DISABLED;
+        }
+        if (UserQuery::create()->filterByPersonId($person->getId())->exists()) {
+            return SignInReason::STAFF_ACCOUNT;
+        }
+
+        return null;
     }
 
     /**

@@ -39,7 +39,7 @@ final class PortalContext
 
     /**
      * The signed-in staff account, only when the portal session came from it
-     * (method STAFF). Never set for a member session or for Login as User, so
+     * (method STAFF). Never set for a member session or for Login as Person, so
      * nothing a member does in the portal can act with staff authority.
      */
     public static function staffUser(): ?User

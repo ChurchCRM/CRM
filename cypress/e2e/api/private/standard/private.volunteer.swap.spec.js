@@ -11,7 +11,7 @@
  * `withdraw`, both on the member surface).
  *
  * The fixture is UC2 / §2.17's Worship: one ministry, one team, two exactly-one
- * positions, and the EditSelf-exclusive volunteer persona (person 99) as the
+ * positions, and the volunteer persona (person 99, a member session) as the
  * assignee who proposes — because "the volunteer proposes a substitute who has
  * already agreed" is the product decision this issue implements, and the person
  * who proposes must be the assignee.
@@ -34,14 +34,14 @@
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const ADMIN_KEY = "admin.api.key";
 const COORDINATOR_KEY = "user.api.key";
-const SELFEDIT_KEY = "selfedit.api.key";
-const SELFEDIT_NOTES_KEY = "selfedit.plus.notes.api.key";
+const SELFEDIT_KEY = 99;
+const SELFEDIT_NOTES_KEY = 100;
 
 const VOLUNTEER_URL = "/api/ministries";
 
 const PERSON_COORDINATOR = 3; // tony.wade
-const PERSON_ASSIGNEE = 99; // EditSelf-exclusive — the volunteer persona (D14)
-const PERSON_SUBSTITUTE = 100; // EditSelf + Notes — the swap counterparty
+const PERSON_ASSIGNEE = 99; // the volunteer persona (D14), a member session
+const PERSON_SUBSTITUTE = 100; // the swap counterparty, a member session
 const PERSON_UNQUALIFIED_SUB = 5;
 
 const CHURCH_SERVICE_TYPE = 1;
@@ -72,7 +72,11 @@ function dbOk(sql, params = []) {
     });
 }
 
+/** A person id is a member, in their portal session; anything else names an API key. */
 function api(key, method, url, body, expectedStatus = 200) {
+    if (typeof key === "number") {
+        return cy.makeMemberAPICall(key, method, url, body, expectedStatus);
+    }
     return cy.makePrivateAPICall(Cypress.testEnv(key), method, url, body, expectedStatus);
 }
 
@@ -265,7 +269,7 @@ function propose(assignmentId, substitutePersonId, status = 201, key = SELFEDIT_
 // ── fixture ────────────────────────────────────────────────────────────────
 
 before(() => {
-    cy.rememberTestEnv(["admin.api.key", "user.api.key", "selfedit.api.key", "selfedit.plus.notes.api.key", "plainauth.api.key"]);
+    cy.rememberTestEnv(["admin.api.key", "user.api.key", "plainauth.api.key"]);
     cy.useChurchTimeZone();
 });
 

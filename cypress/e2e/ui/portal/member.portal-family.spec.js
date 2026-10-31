@@ -3,13 +3,13 @@
 /**
  * Member Portal (MP4, #9865) — My Family self-service.
  *
- * Two seeded personas carry the adult-of-the-family rule:
- *   - Lena Black (user 100, person 100, family 20) has family role 2 (Spouse),
- *     which `sDirRoleSpouse` names, so she is one of the family's adults and
- *     may change its address.
- *   - limited.user (user 4, Darren Campbell, person 4, family 1) has family
- *     role 4 (Other Relative), which is neither `sDirRoleHead` nor
- *     `sDirRoleSpouse`, so the family page is read-only for him.
+ * Two seeded personas, signed in with their email, carry the adult-of-the-family rule:
+ *   - Lena Black (person 100, family 20) has family role 2 (Spouse), which
+ *     `sDirRoleSpouse` names, so she is one of the family's adults and may
+ *     change its address.
+ *   - Darren Campbell (person 4, family 1) has family role 4 (Other Relative),
+ *     which is neither `sDirRoleHead` nor `sDirRoleSpouse`, so the family page
+ *     is read-only for him.
  *
  * Design: .agents/skills/churchcrm/member-portal-design.md §5.2.
  *   - adults edit the family address; everybody else views it
@@ -23,16 +23,12 @@ before(() => {
 });
 
 describe("Member Portal — My Family", () => {
-    const adultUser = "lena.black.editself.notes@example.com";
-    const nonAdultUser = "limited.user";
-    const password = "changeme";
+    const adultUser = 100;
+    const nonAdultUser = 4;
 
-    const loginAs = (username) => {
-        cy.clearCookies();
-        cy.visit("/session/begin");
-        cy.get("input[name=User]").type(username);
-        cy.get("input[name=Password]").type(password + "{enter}");
-        cy.url({ timeout: 10000 }).should("include", "/portal");
+    const loginAs = (personId) => {
+        cy.signInAsMember(personId);
+        cy.visit("/portal/");
     };
 
     // Local helper — NOT a cy.* command. Needed because the assertions at the
@@ -40,10 +36,10 @@ describe("Member Portal — My Family", () => {
     // the browser's PHP session.
     const freshAdminLogin = () => {
         cy.clearCookies();
-        cy.visit("/session/begin");
+        cy.visit("/admin/");
         cy.get("input[name=User]").type(Cypress.testEnv("admin.username"));
         cy.get("input[name=Password]").type(Cypress.testEnv("admin.password") + "{enter}");
-        cy.url().should("not.include", "/session/begin");
+        cy.location("pathname").should("not.match", /\/admin\/?$/);
     };
 
     /** The members the portal proposed, found again on the pending list by first name. */

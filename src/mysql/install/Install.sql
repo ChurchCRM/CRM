@@ -1513,6 +1513,7 @@ CREATE TABLE `person_signin_psi` (
   `psi_LastActivity`      datetime                       DEFAULT NULL,
   `psi_CalendarToken`     varchar(64)                    DEFAULT NULL,
   `psi_CalendarSelection` text                           DEFAULT NULL,
+  `psi_Language`          varchar(20)                    DEFAULT NULL,
   PRIMARY KEY (`psi_per_ID`),
   UNIQUE KEY `psi_calendar_token_uidx` (`psi_CalendarToken`),
   KEY `psi_last_signin_idx`            (`psi_LastSignIn`),
@@ -1631,6 +1632,33 @@ CREATE TABLE `portal_signin_audit_psa` (
   KEY `psa_ip_time_idx`     (`psa_IP`, `psa_Time`),
   CONSTRAINT `fk_psa_person` FOREIGN KEY (`psa_per_ID`)
       REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `login_as_person_session_lps` (
+  `lps_ID`           int(11)               NOT NULL AUTO_INCREMENT,
+  `lps_Actor_usr_ID` mediumint(9) unsigned NOT NULL,
+  `lps_per_ID`       mediumint(9) unsigned NOT NULL,
+  `lps_Started`      datetime              NOT NULL,
+  `lps_Ended`        datetime                       DEFAULT NULL,
+  `lps_EndReason`    varchar(16)                    DEFAULT NULL,
+  PRIMARY KEY (`lps_ID`),
+  KEY `lps_person_started_idx` (`lps_per_ID`, `lps_Started`),
+  KEY `lps_actor_started_idx`  (`lps_Actor_usr_ID`, `lps_Started`),
+  CONSTRAINT `fk_lps_person` FOREIGN KEY (`lps_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `login_as_person_action_lpa` (
+  `lpa_ID`     int(11)              NOT NULL AUTO_INCREMENT,
+  `lpa_lps_ID` int(11)              NOT NULL,
+  `lpa_Time`   datetime             NOT NULL,
+  `lpa_Method` varchar(10)          NOT NULL,
+  `lpa_Path`   varchar(255)         NOT NULL,
+  `lpa_Status` smallint(5) unsigned          DEFAULT NULL,
+  PRIMARY KEY (`lpa_ID`),
+  KEY `lpa_session_time_idx` (`lpa_lps_ID`, `lpa_Time`),
+  CONSTRAINT `fk_lpa_session` FOREIGN KEY (`lpa_lps_ID`)
+      REFERENCES `login_as_person_session_lps` (`lps_ID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 update version_ver set ver_update_end = now();

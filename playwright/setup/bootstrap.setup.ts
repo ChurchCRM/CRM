@@ -125,7 +125,8 @@ setup('demo-data-import', async ({ page }, testInfo) => {
   await humanType(page.locator('input[name=Password]'), ADMIN_WORKING_PASSWORD);
   await humanPause(page, 300);
   await page.locator('input[name=Password]').press('Enter');
-  await page.waitForURL((url) => !/\/admin\/?$/.test(url.pathname), { timeout: 15000 });
+  // An administrator signed in at /admin/ stays there, on the Admin Dashboard.
+  await expect(page.locator('input[name=Password]')).toHaveCount(0, { timeout: 15000 });
 
   await uploadDemoPhoto(page, 'person', ADMIN_PERSON_ID, ADMIN_PHOTO);
 

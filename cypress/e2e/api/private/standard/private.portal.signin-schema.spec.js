@@ -24,6 +24,7 @@ const TABLES = {
         "psi_LastActivity",
         "psi_CalendarToken",
         "psi_CalendarSelection",
+        "psi_Language",
     ],
     person_signin_request_psr: [
         "psr_ID",
@@ -110,8 +111,8 @@ const SETTINGS = {
     iRememberDeviceDays: "14",
     bPortalPasskeys: "1",
     sMemberSignInNotificationRecipientIDs: "",
-    bAllowLoginAsUser: "0",
-    bLoginAsUserCanWrite: "0",
+    bAllowLoginAsPerson: "0",
+    bLoginAsPersonCanWrite: "0",
 };
 
 const HASH = (c) => c.repeat(64);

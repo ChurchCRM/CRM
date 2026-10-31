@@ -39,6 +39,7 @@ $app->group('/api/member-portal', function (RouteCollectorProxy $group): void {
     $group->get('/sign-in', 'getMemberSignInSettingsAPI');
     $group->post('/sign-in', 'saveMemberSignInSettingsAPI')->add(new CSRFMiddleware());
     $group->get('/sign-in/office-candidates/{query}', 'searchMemberSignInOfficeCandidatesAPI');
+    $group->post('/former-accounts-notice/dismiss', 'dismissMemberPortalFormerAccountsNoticeAPI')->add(new CSRFMiddleware());
 });
 
 /**
@@ -266,8 +267,8 @@ function getMemberSignInSettingsAPI(Request $request, Response $response): Respo
  *         @OA\Property(property="iRememberDeviceDays", type="integer", minimum=0, maximum=365, example=14),
  *         @OA\Property(property="bPortalPasskeys", type="boolean"),
  *         @OA\Property(property="sMemberSignInNotificationRecipientIDs", type="array", @OA\Items(type="integer")),
- *         @OA\Property(property="bAllowLoginAsUser", type="boolean"),
- *         @OA\Property(property="bLoginAsUserCanWrite", type="boolean")
+ *         @OA\Property(property="bAllowLoginAsPerson", type="boolean"),
+ *         @OA\Property(property="bLoginAsPersonCanWrite", type="boolean")
  *     )),
  *     @OA\Response(response=200, description="Saved; the stored values come back",
  *         @OA\JsonContent(
@@ -323,4 +324,23 @@ function saveMemberSignInSettingsAPI(Request $request, Response $response): Resp
 function searchMemberSignInOfficeCandidatesAPI(Request $request, Response $response, array $args): Response
 {
     return SlimUtils::renderJSON($response, (new MemberSignInSettingsService())->searchOfficeCandidates((string) ($args['query'] ?? '')));
+}
+
+/**
+ * @OA\Post(
+ *     path="/admin/api/member-portal/former-accounts-notice/dismiss",
+ *     operationId="dismissMemberPortalFormerAccountsNotice",
+ *     summary="Hide the Admin Dashboard notice about the removed self-service accounts (Admin role required)",
+ *     description="The 7.8.3 upgrade removes self-service accounts and records how many. The Admin Dashboard asks to turn member sign-in on until it is on or this is called.",
+ *     tags={"Admin"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Response(response=200, description="Dismissed", @OA\JsonContent(@OA\Property(property="success", type="boolean", example=true))),
+ *     @OA\Response(response=403, description="Admin role required, or the CSRF token was missing")
+ * )
+ */
+function dismissMemberPortalFormerAccountsNoticeAPI(Request $request, Response $response): Response
+{
+    (new MemberSignInSettingsService())->dismissFormerAccountsNotice();
+
+    return SlimUtils::renderSuccessJSON($response);
 }

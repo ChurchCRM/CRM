@@ -1736,7 +1736,7 @@
          columns name the staff account that acted, with no foreign key, so the
          record keeps the id after that account is deleted. -->
     <table name="person_signin_psi" idMethod="native" phpName="PersonSignin"
-           description="Member sign-in state for one person: Disable sign-in, session version, proven and unconfirmed email, sign-in times and the calendar feed">
+           description="Member sign-in state for one person: Disable sign-in, session version, proven and unconfirmed email, sign-in times, the calendar feed and the portal language">
         <column name="psi_per_ID" phpName="PersonId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" required="true"/>
         <column name="psi_SessionVersion" phpName="SessionVersion" type="INTEGER" required="true" defaultValue="0"
                 description="Raised whenever every portal session of this person must end"/>
@@ -1758,6 +1758,8 @@
         <column name="psi_LastActivity" phpName="LastActivity" type="TIMESTAMP"/>
         <column name="psi_CalendarToken" phpName="CalendarToken" type="VARCHAR" size="64"/>
         <column name="psi_CalendarSelection" phpName="CalendarSelection" type="LONGVARCHAR"/>
+        <column name="psi_Language" phpName="Language" type="VARCHAR" size="20"
+                description="The language the person chose for the Member Portal and its emails; NULL follows the church's sLanguage"/>
         <foreign-key foreignTable="person_per" name="PersonSigninPerson" phpName="Person"
                      refPhpName="PersonSignin" onDelete="cascade">
             <reference local="psi_per_ID" foreign="per_ID"/>
@@ -1954,6 +1956,52 @@
         <index name="psa_ip_time_idx">
             <index-column name="psa_IP"/>
             <index-column name="psa_Time"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
+    <table name="login_as_person_session_lps" idMethod="native" phpName="LoginAsPersonSession"
+           description="One row per Login as Person session (member sign-in design §6.5): the administrator acting (actor), the person signed in as (subject), when it started and ended, and why it ended: stop, signout, timeout, ended or signin_off">
+        <column name="lps_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="lps_Actor_usr_ID" phpName="ActorUserId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true"/>
+        <column name="lps_per_ID" phpName="PersonId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true"/>
+        <column name="lps_Started" phpName="Started" type="TIMESTAMP" required="true"/>
+        <column name="lps_Ended" phpName="Ended" type="TIMESTAMP"/>
+        <column name="lps_EndReason" phpName="EndReason" type="VARCHAR" size="16"/>
+        <foreign-key foreignTable="person_per" name="LoginAsPersonSessionPerson" phpName="Person"
+                     refPhpName="LoginAsPersonSession" onDelete="cascade">
+            <reference local="lps_per_ID" foreign="per_ID"/>
+        </foreign-key>
+        <index name="lps_person_started_idx">
+            <index-column name="lps_per_ID"/>
+            <index-column name="lps_Started"/>
+        </index>
+        <index name="lps_actor_started_idx">
+            <index-column name="lps_Actor_usr_ID"/>
+            <index-column name="lps_Started"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
+    <table name="login_as_person_action_lpa" idMethod="native" phpName="LoginAsPersonAction"
+           description="One row per write request (any method but GET, HEAD and OPTIONS) made during a Login as Person session: method, path without the query string, response status and time">
+        <column name="lpa_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="lpa_lps_ID" phpName="SessionId" type="INTEGER" required="true"/>
+        <column name="lpa_Time" phpName="Time" type="TIMESTAMP" required="true"/>
+        <column name="lpa_Method" phpName="Method" type="VARCHAR" size="10" required="true"/>
+        <column name="lpa_Path" phpName="Path" type="VARCHAR" size="255" required="true"/>
+        <column name="lpa_Status" phpName="Status" type="SMALLINT" sqlType="smallint(5) unsigned"/>
+        <foreign-key foreignTable="login_as_person_session_lps" name="LoginAsPersonActionSession" phpName="Session"
+                     refPhpName="Action" onDelete="cascade">
+            <reference local="lpa_lps_ID" foreign="lps_ID"/>
+        </foreign-key>
+        <index name="lpa_session_time_idx">
+            <index-column name="lpa_lps_ID"/>
+            <index-column name="lpa_Time"/>
         </index>
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>

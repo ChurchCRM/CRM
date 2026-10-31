@@ -4,6 +4,7 @@ namespace ChurchCRM\Portal\Auth;
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonSignin;
@@ -32,13 +33,13 @@ use Throwable;
  *
  *  - refuses API keys: the portal acts only for the session's own person;
  *  - reloads the person and their sign-in row, and ends the portal session when
- *    the rules no longer hold, the session version changed, or it sat idle for
- *    `iPortalIdleMinutes`;
+ *    the rules no longer hold, the session version changed, it sat idle for
+ *    `iPortalIdleMinutes`, or it is a member's session and member sign-in is off;
  *  - turns a signed-in staff session into a STAFF principal for its own person
  *    through the shared step (§6.4);
  *  - otherwise starts a DEVICE session from a remembered device's cookie, and
  *    replaces its token (§6.2);
- *  - records the activity, except during Login as User.
+ *  - records the activity, except during Login as Person.
  *
  * A STAFF principal outlives its staff session's own timeout: from then on it
  * is a portal session like any other, and staff routes refuse it.
@@ -51,9 +52,13 @@ final class PortalSessionMiddleware implements MiddlewareInterface
 
     private const ACTIVITY_WRITE_SECONDS = 60;
 
+    /** @var array{personId: int, timedOut: bool}|null */
+    private ?array $endedLoginAsPerson = null;
+
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         PortalContext::reset();
+        $this->endedLoginAsPerson = null;
 
         if ($request->getHeaderLine('x-api-key') !== '') {
             throw new HttpForbiddenException(
@@ -63,7 +68,13 @@ final class PortalSessionMiddleware implements MiddlewareInterface
         }
 
         $staffUser = PortalContext::activeStaffUser();
-        [$principal, $person, $state] = $this->currentSession($staffUser);
+        $memberSignInOn = EmailSignInService::isEnabled();
+        [$principal, $person, $state] = $this->currentSession($staffUser, $memberSignInOn);
+        if ($this->endedLoginAsPerson !== null) {
+            PortalContext::set(null, null, null);
+
+            return $this->loginAsPersonEnded($request, $this->endedLoginAsPerson);
+        }
 
         if ($staffUser instanceof User && !$principal instanceof PortalPrincipal) {
             try {
@@ -78,7 +89,9 @@ final class PortalSessionMiddleware implements MiddlewareInterface
         }
 
         $deviceToken = null;
-        if (!$principal instanceof PortalPrincipal && !$staffUser instanceof User && RememberedDeviceCookie::isPresent($request) && EmailSignInService::isEnabled()) {
+        // Checked before resume(), which replaces the token and signs the device out
+        // when the shared step refuses: a device waits while member sign-in is off.
+        if (!$principal instanceof PortalPrincipal && !$staffUser instanceof User && RememberedDeviceCookie::isPresent($request) && $memberSignInOn) {
             $deviceToken = (new RememberedDeviceService())->resume(RememberedDeviceCookie::read($request));
             if (!$deviceToken instanceof RememberedDeviceToken) {
                 PortalContext::set(null, null, null);
@@ -119,7 +132,7 @@ final class PortalSessionMiddleware implements MiddlewareInterface
      *
      * @return array{0: PortalPrincipal|null, 1: Person|null, 2: PersonSignin|null}
      */
-    private function currentSession(?User $staffUser): array
+    private function currentSession(?User $staffUser, bool $memberSignInOn): array
     {
         $principal = PortalSessionStore::load();
         if (!$principal instanceof PortalPrincipal) {
@@ -130,6 +143,9 @@ final class PortalSessionMiddleware implements MiddlewareInterface
         $state = PersonSigninQuery::create()->findPk($principal->personId);
 
         $reason = PortalSignInRules::refusalReason($person, $state, $principal->method);
+        if ($reason === null && !$memberSignInOn && $principal->method->appliesMemberRule()) {
+            $reason = SignInReason::MEMBER_SIGN_IN_OFF;
+        }
         if ($reason === null && $principal->sessionVersion !== ($state instanceof PersonSignin ? (int) $state->getSessionVersion() : 0)) {
             $reason = SignInReason::SESSION_VERSION;
         }
@@ -143,6 +159,9 @@ final class PortalSessionMiddleware implements MiddlewareInterface
         if ($reason === null && $deviceId !== null && RememberedDeviceService::isSignedOut($deviceId)) {
             $reason = SignInReason::DEVICE_REMOVED;
         }
+        if ($reason === null && $principal->isAssisted() && !LoginAsPerson::keepStaffSessionAlive()) {
+            $reason = SignInReason::IDLE;
+        }
 
         if ($reason !== null) {
             PortalSessionStore::clear();
@@ -153,11 +172,37 @@ final class PortalSessionMiddleware implements MiddlewareInterface
                 $reason,
                 $principal->actorUserId,
             );
+            if ($principal->isAssisted()) {
+                LoginAsPerson::endedByPortal($reason);
+                $this->endedLoginAsPerson = ['personId' => $principal->personId, 'timedOut' => $reason === SignInReason::IDLE];
+            }
 
             return [null, null, null];
         }
 
         return [$principal, $person, $state];
+    }
+
+    /**
+     * After a timeout the administrator signs in again; after any other end their
+     * staff session is back, on the person's page.
+     *
+     * @param array{personId: int, timedOut: bool} $ended
+     */
+    private function loginAsPersonEnded(ServerRequestInterface $request, array $ended): ResponseInterface
+    {
+        if (!$this->isBrowserRequest($request)) {
+            $response = new Response();
+            $response->getBody()->write(json_encode(SlimUtils::buildErrorPayload(gettext('No logged in user'), 401)));
+
+            return $response->withStatus(401)->withHeader('Content-Type', 'application/json');
+        }
+
+        $location = $ended['timedOut']
+            ? AuthenticationManager::getStaffSignInURL()
+            : SystemURLs::getRootPath() . '/people/view/' . $ended['personId'];
+
+        return (new Response())->withStatus(302)->withHeader('Location', $location);
     }
 
     private function isIdle(): bool
@@ -173,7 +218,7 @@ final class PortalSessionMiddleware implements MiddlewareInterface
 
     /**
      * A staff session on this browser owns the portal session only when it is
-     * that person's STAFF principal, or that administrator's Login as User.
+     * that person's STAFF principal, or that administrator's Login as Person.
      * Anything else was left by somebody else and is replaced.
      */
     private static function belongsToStaffSession(PortalPrincipal $principal, User $staffUser): bool

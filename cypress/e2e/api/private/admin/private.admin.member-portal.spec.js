@@ -21,9 +21,6 @@ const WARNING_THEME = "cypressapiwarn";
 const BROKEN_THEME = "cypressapibroken";
 const THEME_DIRS = [GOOD_THEME, WARNING_THEME, BROKEN_THEME].map((id) => `src/Include/themes/${id}`);
 
-// usr_UserName is VARCHAR(50) since #9831, so the seeded address is stored whole.
-const MEMBER_USER = "lena.black.editself.notes@example.com";
-const MEMBER_PASSWORD = "changeme";
 const MEMBER_PERSON_ID = 100;
 
 describe("API Private Admin Member Portal", () => {
@@ -167,20 +164,14 @@ describe("API Private Admin Member Portal", () => {
         });
 
         it("Counts a portal sign-in and lists it first", () => {
-            cy.request({
-                method: "POST",
-                url: "/admin/",
-                form: true,
-                body: { User: MEMBER_USER, Password: MEMBER_PASSWORD },
-                followRedirect: false,
-            });
+            cy.signInAsMember(MEMBER_PERSON_ID);
             cy.request("/portal/");
 
             cy.makePrivateAdminAPICall("GET", "/admin/api/member-portal/stats", null, 200).then((after) => {
                 expect(after.body.signedIn24Hours).to.be.at.least(1);
                 expect(after.body.activeNow).to.be.at.least(1);
                 expect(after.body.recentSignIns[0].personId).to.eq(MEMBER_PERSON_ID);
-                expect(after.body.recentSignIns[0].method).to.eq("staff");
+                expect(after.body.recentSignIns[0].method).to.eq("email_code");
                 expect(after.body.recentSignIns[0].lastSignIn).to.match(/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/);
                 expect(after.body.recentSignIns[0].lastActivity).to.match(/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/);
             });

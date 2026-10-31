@@ -2,7 +2,8 @@
 
 // Seeded data: person 1 is an administrator and person 95 (Judith Kennedy) has
 // a staff account; person 10 has no account. Person 3 (tony.wade) is a
-// non-admin with Edit Records.
+// non-admin with Edit Records. Members have no account, so the portal side of
+// this rule is member.portal-profile.spec.js.
 describe("Email of a person who has a staff account", () => {
     const stamp = Cypress._.random(0, 1e6);
     const changed = `locked.${stamp}@example.com`;

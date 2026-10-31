@@ -29,8 +29,8 @@ final class MemberSignInSettingsService
         'iRememberDeviceDays',
         'bPortalPasskeys',
         'sMemberSignInNotificationRecipientIDs',
-        'bAllowLoginAsUser',
-        'bLoginAsUserCanWrite',
+        'bAllowLoginAsPerson',
+        'bLoginAsPersonCanWrite',
     ];
 
     private const FAMILY_ROLE_LIST = 2;
@@ -59,7 +59,7 @@ final class MemberSignInSettingsService
     {
         return match ($key) {
             'bMemberSignIn' => $this->normalizeMemberSignIn($value),
-            'bPortalPasskeys', 'bAllowLoginAsUser', 'bLoginAsUserCanWrite' => self::normalizeBoolean($value),
+            'bPortalPasskeys', 'bAllowLoginAsPerson', 'bLoginAsPersonCanWrite' => self::normalizeBoolean($value),
             'sMemberSignInFamilyRoles' => $this->normalizeListIds($value, self::FAMILY_ROLE_LIST, gettext('Pick family roles from the list.')),
             'sMemberSignInClassifications' => $this->normalizeListIds($value, self::CLASSIFICATION_LIST, gettext('Pick classifications from the list.')),
             'iMemberSignInMinAge', 'iSignInLinkMinutes', 'iMemberSignInRequestsPerIP', 'iPortalIdleMinutes', 'iRememberDeviceDays' => self::normalizeNumber($key, $value),
@@ -94,9 +94,31 @@ final class MemberSignInSettingsService
             foreach ($values as $key => $value) {
                 SystemConfig::setValue($key, $value);
             }
+            if (($values['bMemberSignIn'] ?? '') === '1') {
+                $this->dismissFormerAccountsNotice();
+            }
         }
 
         return $errors;
+    }
+
+    /**
+     * How many self-service accounts the 7.8.3 upgrade removed, while the
+     * Admin Dashboard should still ask to turn member sign-in on (design §12);
+     * 0 once sign-in is on or the notice was dismissed.
+     */
+    public function formerAccountsToNotify(): int
+    {
+        if (SystemConfig::getBooleanValue('bMemberSignIn')) {
+            return 0;
+        }
+
+        return max(0, SystemConfig::getIntValue('iMemberSignInFormerAccounts'));
+    }
+
+    public function dismissFormerAccountsNotice(): void
+    {
+        SystemConfig::setValue('iMemberSignInFormerAccounts', '0');
     }
 
     /**

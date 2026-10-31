@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * MIT License. This file is part of the Propel package.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace ChurchCRM\model\ChurchCRM;
+
+use ChurchCRM\model\ChurchCRM\Base\LoginAsPersonSession as BaseLoginAsPersonSession;
+
+/**
+ * Skeleton subclass for representing a row from the 'login_as_person_session_lps' table.
+ *
+ * One row per Login as Person session (member sign-in design §6.5): the administrator acting (actor), the person signed in as (subject), when it started and ended, and why it ended: stop, signout, timeout, ended or signin_off
+ *
+ * You should add additional methods to this class to meet the
+ * application requirements.  This class will only be generated as
+ * long as it does not already exist in the output directory.
+ */
+class LoginAsPersonSession extends BaseLoginAsPersonSession
+{
+
+}

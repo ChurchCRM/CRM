@@ -351,6 +351,129 @@ CREATE TABLE IF NOT EXISTS `person_email_change_pec` (
       REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- Member sign-in row 12 (#10463): the Login as Person history (design §6.5, §13).
+-- One row per session an administrator spends signed in to the Member Portal as a
+-- person, and one row per write request made during it.
+CREATE TABLE IF NOT EXISTS `login_as_person_session_lps` (
+  `lps_ID`           int(11)               NOT NULL AUTO_INCREMENT,
+  `lps_Actor_usr_ID` mediumint(9) unsigned NOT NULL,
+  `lps_per_ID`       mediumint(9) unsigned NOT NULL,
+  `lps_Started`      datetime              NOT NULL,
+  `lps_Ended`        datetime                       DEFAULT NULL,
+  `lps_EndReason`    varchar(16)                    DEFAULT NULL,
+  PRIMARY KEY (`lps_ID`),
+  KEY `lps_person_started_idx` (`lps_per_ID`, `lps_Started`),
+  KEY `lps_actor_started_idx`  (`lps_Actor_usr_ID`, `lps_Started`),
+  CONSTRAINT `fk_lps_person` FOREIGN KEY (`lps_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `login_as_person_action_lpa` (
+  `lpa_ID`     int(11)              NOT NULL AUTO_INCREMENT,
+  `lpa_lps_ID` int(11)              NOT NULL,
+  `lpa_Time`   datetime             NOT NULL,
+  `lpa_Method` varchar(10)          NOT NULL,
+  `lpa_Path`   varchar(255)         NOT NULL,
+  `lpa_Status` smallint(5) unsigned          DEFAULT NULL,
+  PRIMARY KEY (`lpa_ID`),
+  KEY `lpa_session_time_idx` (`lpa_lps_ID`, `lpa_Time`),
+  CONSTRAINT `fk_lpa_session` FOREIGN KEY (`lpa_lps_ID`)
+      REFERENCES `login_as_person_session_lps` (`lps_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Member sign-in (#10463): the language a person chose for the Member Portal and
+-- the emails it sends them. NULL follows the church's sLanguage.
+SET @_sql = IF(
+    (SELECT COUNT(*) FROM information_schema.COLUMNS
+     WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'person_signin_psi' AND COLUMN_NAME = 'psi_Language') = 0,
+    'ALTER TABLE `person_signin_psi` ADD COLUMN `psi_Language` varchar(20) DEFAULT NULL AFTER `psi_CalendarSelection`',
+    'DO 0'
+);
+PREPARE _s FROM @_sql;
+EXECUTE _s;
+DEALLOCATE PREPARE _s;
+
+-- ============================================================================
+-- BEGIN: member sign-in row 13, release-day cutover (design 12)
+-- ============================================================================
+-- Every account's calendar feed token, feed selection and last portal activity
+-- move to the person's sign-in row, staff accounts included, so no feed address
+-- changes; the usr_PortalCalendar* and usr_LastPortalActivity columns are no
+-- longer read. A self-service account's language moves there too. Values
+-- already on the sign-in row win, and the unconfirmed email the family email
+-- move left there is untouched. Then every self-service
+-- account (usr_EditSelf = 1 and not an administrator, User::isEditSelfExclusive())
+-- is deleted with its per-user rows, and the number deleted is kept for the
+-- dashboard notice. Member sign-in stays off. Safe to run again. What the
+-- account wrote (notes, edits, volunteer rows, email history) keeps its id,
+-- which is the person's id, so it still names the person.
+
+INSERT INTO `person_signin_psi` (`psi_per_ID`, `psi_CalendarToken`, `psi_CalendarSelection`, `psi_LastActivity`) SELECT
+  u.`usr_per_ID`, NULLIF(TRIM(u.`usr_PortalCalendarToken`), ''), NULLIF(u.`usr_PortalCalendarSelection`, ''), u.`usr_LastPortalActivity`
+FROM `user_usr` u
+JOIN `person_per` p ON p.`per_ID` = u.`usr_per_ID`
+WHERE NULLIF(TRIM(u.`usr_PortalCalendarToken`), '') IS NOT NULL
+   OR NULLIF(u.`usr_PortalCalendarSelection`, '') IS NOT NULL
+   OR u.`usr_LastPortalActivity` IS NOT NULL
+ON DUPLICATE KEY UPDATE
+  `psi_CalendarToken` = COALESCE(`psi_CalendarToken`, NULLIF(TRIM(u.`usr_PortalCalendarToken`), '')),
+  `psi_CalendarSelection` = COALESCE(`psi_CalendarSelection`, NULLIF(u.`usr_PortalCalendarSelection`, '')),
+  `psi_LastActivity` = GREATEST(COALESCE(`psi_LastActivity`, u.`usr_LastPortalActivity`), COALESCE(u.`usr_LastPortalActivity`, `psi_LastActivity`));
+
+-- A self-service account's language (its ui.locale user setting) becomes the
+-- person's portal language, when it is one of the languages 7.8.3 ships
+-- (src/locale/locales.json). A language already on the sign-in row wins.
+INSERT INTO `person_signin_psi` (`psi_per_ID`, `psi_Language`) SELECT
+  u.`usr_per_ID`, TRIM(s.`setting_value`)
+FROM `user_usr` u
+JOIN `person_per` p ON p.`per_ID` = u.`usr_per_ID`
+JOIN `user_settings` s ON s.`user_id` = u.`usr_per_ID` AND s.`setting_name` = 'ui.locale'
+WHERE u.`usr_EditSelf` = 1 AND u.`usr_Admin` = 0
+  AND CAST(TRIM(s.`setting_value`) AS BINARY) IN (
+  'af_ZA', 'sq_AL', 'am_ET', 'ar_EG', 'zh_CN', 'zh_TW', 'hr_HR', 'cs_CZ', 'nl_NL', 'en_AU',
+  'en_CA', 'en_GB', 'en_JM', 'en_ZA', 'en_US', 'et_EE', 'tl_PH', 'fi_FI', 'fr_FR', 'de_DE',
+  'el_GR', 'he_IL', 'hi_IN', 'hu_HU', 'id_ID', 'it_IT', 'ja_JP', 'ko_KR', 'ml_IN', 'nb_NO',
+  'pl_PL', 'pt_BR', 'pt_PT', 'ro_RO', 'ru_RU', 'sk_SK', 'es_AR', 'es_CO', 'es_SV', 'es_MX',
+  'es_ES', 'sw', 'sv_SE', 'ta_IN', 'te_IN', 'th_TH', 'tr_TR', 'uk_UA', 'vi_VN'
+  )
+ON DUPLICATE KEY UPDATE
+  `psi_Language` = COALESCE(`psi_Language`, TRIM(s.`setting_value`));
+
+SET @msi_former_accounts = (SELECT COUNT(*) FROM `user_usr` WHERE `usr_EditSelf` = 1 AND `usr_Admin` = 0);
+
+INSERT INTO `config_cfg` (`cfg_name`, `cfg_value`) SELECT 'iMemberSignInFormerAccounts', @msi_former_accounts
+FROM DUAL WHERE @msi_former_accounts > 0
+ON DUPLICATE KEY UPDATE `cfg_value` = CAST(`cfg_value` AS UNSIGNED) + @msi_former_accounts;
+
+-- nte_EnteredBy -4 is Person::UPGRADE, shown as "System Upgrade" on the timeline.
+INSERT INTO `note_nte` (`nte_per_ID`, `nte_fam_ID`, `nte_Private`, `nte_Text`, `nte_DateEntered`, `nte_EnteredBy`, `nte_EditedBy`, `nte_Type`) SELECT
+  u.`usr_per_ID`, 0, 0, 'Member Portal account removed by the upgrade', NOW(), -4, 0, 'user'
+FROM `user_usr` u
+JOIN `person_per` p ON p.`per_ID` = u.`usr_per_ID`
+WHERE u.`usr_EditSelf` = 1 AND u.`usr_Admin` = 0;
+
+DELETE c FROM `userconfig_ucfg` c
+JOIN `user_usr` u ON u.`usr_per_ID` = c.`ucfg_per_id`
+WHERE u.`usr_EditSelf` = 1 AND u.`usr_Admin` = 0;
+
+DELETE s FROM `user_settings` s
+JOIN `user_usr` u ON u.`usr_per_ID` = s.`user_id`
+WHERE u.`usr_EditSelf` = 1 AND u.`usr_Admin` = 0;
+
+DELETE t FROM `tokens` t
+JOIN `user_usr` u ON u.`usr_per_ID` = t.`reference_id`
+WHERE t.`type` = 'password' AND u.`usr_EditSelf` = 1 AND u.`usr_Admin` = 0;
+
+-- The account lockout and password reset limits are keyed by the account id
+-- (SignInThrottle), stored as RateLimiter::hashKey() does.
+DELETE r FROM `rate_limit_rlm` r
+JOIN `user_usr` u ON r.`rlm_KeyHash` = SHA2(CAST(u.`usr_per_ID` AS CHAR), 256)
+WHERE r.`rlm_Bucket` IN ('signin.lockout', 'password-reset.account') AND u.`usr_EditSelf` = 1 AND u.`usr_Admin` = 0;
+
+DELETE FROM `user_usr` WHERE `usr_EditSelf` = 1 AND `usr_Admin` = 0;
+
+-- END: member sign-in row 13, release-day cutover
+
 -- ============================================================================
 -- BEGIN: member portal calendar follows the shared calendars
 -- ============================================================================

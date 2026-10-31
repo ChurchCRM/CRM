@@ -282,14 +282,15 @@ class LocalAuthentication implements IAuthenticationProvider
         }
 
         // The session stores only the user id, so the user is read from the database
-        // on the first call of each request. A deleted user ends the session.
+        // on the first call of each request. A deleted user ends the session, and the
+        // caller picks the sign-in page: /portal/login for a portal page.
         $user = $this->getCurrentUser();
         if (!$user instanceof User) {
             LoggerUtils::getAuthLogger()->debug(
                 'User with active session no longer exists in the database.  Expiring session',
                 ['userId' => $this->currentUserId]
             );
-            AuthenticationManager::endSession();
+            AuthenticationManager::endSession(true);
             $authenticationResult->isAuthenticated = false;
 
             return $authenticationResult;

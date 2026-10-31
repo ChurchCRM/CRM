@@ -22,8 +22,7 @@ const PUBLIC_CALENDAR_ID = 1;
 const SEEDED_EVENT_TITLE = "Christmas Service";
 const WINDOW_AROUND_SEEDED_EVENT = { from: "2016-12-01", to: "2016-12-31" };
 
-const MEMBER_USER = "lena.black.editself.notes@example.com";
-const MEMBER_PASSWORD = "changeme";
+const MEMBER_PERSON_ID = 100;
 
 const EVENTS_URL = "/api/portal/calendar/events";
 
@@ -38,23 +37,9 @@ const setVisibleCalendars = (visible) =>
         failOnStatusCode: false,
     });
 
-/**
- * Log in the way a browser does. An x-api-key request replaces the session
- * cookie with an API-token session, so every admin set-up step above has to be
- * followed by this before the portal endpoint is asked anything.
- */
+/** Sign in the way a member does: Lena Black (person 100), with the emailed code. */
 const loginAsMember = () => {
-    cy.clearCookies();
-    cy.request("/session/begin");
-    cy.request({
-        method: "POST",
-        url: "/admin/",
-        form: true,
-        body: { User: MEMBER_USER, Password: MEMBER_PASSWORD },
-        followRedirect: false,
-    }).then((response) => {
-        expect(response.status, "the member's login").to.be.oneOf([200, 302]);
-    });
+    cy.signInAsMember(MEMBER_PERSON_ID);
 };
 
 const getEvents = (query = {}) =>

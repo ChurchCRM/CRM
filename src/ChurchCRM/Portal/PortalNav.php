@@ -13,11 +13,13 @@ use ChurchCRM\Portal\Permissions\PortalAuthorizationService;
  * The Member Portal navigation model: what this member may see, in order.
  *
  * Design §5 fixes the order — Home · Calendar · Volunteering · My Teams ·
- * My Giving · My Family · Profile — and member sign-in row 7 adds Sign-in and devices. Each entry names the portal capability it needs and is
- * shown when the member holds it on at least one scope (member sign-in design
- * §8.2), so the menu and the routes ask the same question. Home needs nothing.
- * My Giving and My Family need FAMILY_VIEW, which only a member with a family
- * holds (#10932). Active plugins add their own entries before My Family.
+ * My Giving · My Family · Profile. Email History and Sign-in and devices are in the
+ * header's account menu instead. Each entry names the portal capability it
+ * needs and is shown when the member holds it on at least one scope (member
+ * sign-in design §8.2), so the menu and the routes ask the same question.
+ * Home needs nothing. My Giving and My Family need FAMILY_VIEW, which only a
+ * member with a family holds (#10932). Active plugins add their own entries
+ * before My Family.
  *
  * A nav entry is `{id, label, url, icon, capability, active, badge}`; `url` is
  * already prefixed with the install root path, and `icon` is a Font Awesome
@@ -32,7 +34,6 @@ class PortalNav
     public const GIVING = 'giving';
     public const FAMILY = 'family';
     public const PROFILE = 'profile';
-    public const DEVICES = 'devices';
 
     /**
      * @return array<int, array{id: string, label: string, url: string, icon: string, capability: string|null, active: bool, badge: string}>
@@ -95,13 +96,6 @@ class PortalNav
                 'url' => $rootPath . '/portal/profile',
                 'icon' => 'fa-solid fa-user',
                 'capability' => CorePortalCapabilities::PROFILE_EDIT,
-            ],
-            [
-                'id' => self::DEVICES,
-                'label' => gettext('Sign-in and devices'),
-                'url' => $rootPath . '/portal/devices',
-                'icon' => 'fa-solid fa-mobile-screen-button',
-                'capability' => CorePortalCapabilities::DEVICES_MANAGE,
             ],
         ];
 
