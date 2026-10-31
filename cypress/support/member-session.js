@@ -3,7 +3,7 @@
 // does: an emailed code (design §6.1), read from Mailpit. The member rule is
 // opened to everyone for the spec and put back to the seed's settings after it.
 
-import { askForEmail, db, mailTo, postCode, setConfig, waitForMail } from "./member-sign-in";
+import { askForEmail, mailTo, postCode, waitForMail } from "./member-sign-in";
 
 const RULE_KEYS = ["bMemberSignIn", "sMemberSignInFamilyRoles", "sMemberSignInClassifications", "iMemberSignInMinAge"];
 const BUCKETS = ["portal-signin.address", "portal-signin.ip", "portal-signin.person"];
@@ -11,6 +11,15 @@ const SESSION_COOKIE = /^CRM-[0-9a-f]{32}$/;
 
 const sessions = {};
 let ruleOpened = false;
+
+const db = (sql, params = []) =>
+    cy.dbQuery(sql, params, { fixture: "cypress/support/member-session.js" }).then((result) => {
+        expect(result.error, sql).to.be.null;
+        return result.rows;
+    });
+
+const setConfig = (name, value) =>
+    db("INSERT INTO config_cfg (cfg_name, cfg_value) VALUES (?, ?) ON DUPLICATE KEY UPDATE cfg_value = VALUES(cfg_value)", [name, value]);
 
 const openMemberRule = () => {
     ruleOpened = true;
@@ -44,8 +53,9 @@ const emailOf = (who) =>
 /**
  * Signs in to the Member Portal with an emailed code, as a person id or an
  * email address; the browser then holds that member's session.
+ * `rememberDevice` ticks Stay signed in on this device.
  */
-Cypress.Commands.add("signInAsMember", (who) => {
+Cypress.Commands.add("signInAsMember", (who, { rememberDevice = false } = {}) => {
     openMemberRule();
     BUCKETS.forEach((bucket) => cy.expireSignInThrottle(bucket));
     cy.clearCookies();
@@ -67,7 +77,7 @@ Cypress.Commands.add("signInAsMember", (who) => {
         .then(({ body }) => {
             const code = `${body.Text || ""}`.match(/Your code\s+(\d{6})/);
             expect(code, "code in the sign-in email").to.not.eq(null);
-            return postCode(code[1]);
+            return postCode(code[1], rememberDevice ? { rememberDevice: "1" } : {});
         })
         .then((response) => {
             expect(response.status, "code accepted").to.eq(200);

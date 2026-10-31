@@ -13,6 +13,8 @@ import {
     useMemberSignIn,
     waitForMail,
 } from "../../../support/member-sign-in";
+import { resetSignIn } from "../../../support/member-sign-in-fixtures";
+import { markEmailUnconfirmed } from "../../../support/sign-in-email-fixtures";
 
 /**
  * Member sign-in row 5 (#10463): addresses that may not sign in
@@ -27,12 +29,6 @@ const office = [
     { personId: 16, email: "alicia.wood@example.com" },
 ];
 const mathew = { personId: 2, email: "mathew.campbell@example.com" };
-
-const signInState = (personId, column, value) =>
-    db(
-        `INSERT INTO person_signin_psi (psi_per_ID, ${column}) VALUES (?, ?) ON DUPLICATE KEY UPDATE ${column} = VALUES(${column})`,
-        [personId, value],
-    );
 
 const cases = [
     {
@@ -70,10 +66,7 @@ const cases = [
         email: mathew.email,
         reason: "email_unconfirmed",
         personId: mathew.personId,
-        setup: () => {
-            signInState(mathew.personId, "psi_UnconfirmedEmail", mathew.email);
-            signInState(mathew.personId, "psi_UnconfirmedSource", "family_email");
-        },
+        setup: () => markEmailUnconfirmed(mathew.personId, "family_email"),
     },
     { title: "an address nobody has", email: "nobody.10463@example.com", reason: "no_match", personId: null },
 ];
@@ -101,10 +94,7 @@ describe("Member Portal sign-in refusals", () => {
     });
 
     afterEach(() => {
-        db(
-            "UPDATE person_signin_psi SET psi_SignInDisabled = 0, psi_DisabledBy_usr_ID = NULL, psi_DisabledAt = NULL, psi_DisabledReason = NULL, psi_UnconfirmedEmail = NULL, psi_UnconfirmedSource = NULL WHERE psi_per_ID = ?",
-            [mathew.personId],
-        );
+        resetSignIn([mathew.personId]);
     });
 
     after(() => {

@@ -8,7 +8,12 @@
  * Every x-api-key request replaces the browser session, so each UI step that
  * follows one signs in again. Darren Campbell (person 4) and Lena Black (person
  * 100, spouse in the Black family) sign in to the portal with their email.
+ * An unconfirmed moved address and labelled remembered devices are support fixtures.
  */
+
+import { addRememberedDevice } from "../../support/member-sign-in-fixtures";
+import { signInStatus } from "../../support/sign-in-audit";
+import { markEmailUnconfirmed } from "../../support/sign-in-email-fixtures";
 
 const SETTINGS_URL = "/admin/api/member-portal/sign-in";
 const RULE = { sMemberSignInFamilyRoles: [1, 2, 3], sMemberSignInClassifications: [1, 2], iMemberSignInMinAge: 13 };
@@ -133,11 +138,7 @@ describe("Admin → Member Portal members, audit, permissions and the person car
     });
 
     it("confirms an unconfirmed moved address from the Email needs attention list", () => {
-        db(
-            `INSERT INTO person_signin_psi (psi_per_ID, psi_UnconfirmedEmail, psi_UnconfirmedSource, psi_UnconfirmedAt)
-             VALUES (14, 'nathan.lewis@example.com', 'family_email', NOW())
-             ON DUPLICATE KEY UPDATE psi_UnconfirmedEmail = VALUES(psi_UnconfirmedEmail), psi_UnconfirmedSource = VALUES(psi_UnconfirmedSource), psi_UnconfirmedAt = VALUES(psi_UnconfirmedAt)`,
-        );
+        markEmailUnconfirmed(14, "family_email");
         cy.freshAdminFormLogin();
         cy.visit("/admin/member-portal#portal-members");
         cy.get("#memberList-email-attention").click();
@@ -151,9 +152,7 @@ describe("Admin → Member Portal members, audit, permissions and the person car
         cy.visit("/admin/member-portal#portal-audit");
         cy.get("#portalAuditEvent").select("email_confirmed");
         cy.get("#portalAuditTable tbody tr").first().should("contain.text", "Nathan Lewis").and("contain.text", "Church Admin");
-        db("SELECT psi_UnconfirmedEmail AS email FROM person_signin_psi WHERE psi_per_ID = 14").then(([row]) => {
-            expect(row.email).to.be.null;
-        });
+        signInStatus(14).its("unconfirmedEmail").should("be.null");
     });
 
     it("lists a family a member confirmed in the portal, with who confirmed, and audits it", () => {
@@ -377,12 +376,8 @@ describe("Admin → Member Portal members, audit, permissions and the person car
     });
 
     it("lists a person's remembered devices and lets an administrator sign one out", () => {
-        db(
-            `INSERT INTO person_device_pdv (pdv_per_ID, pdv_TokenHash, pdv_Kind, pdv_Label, pdv_CreatedAt, pdv_LastUsedAt, pdv_ExpiresAt, pdv_RevokedAt) VALUES
-             (?, SHA2('${MARK}-a', 256), 'browser', '${MARK} laptop', NOW(), NOW(), NOW() + INTERVAL 20 DAY, NULL),
-             (?, SHA2('${MARK}-b', 256), 'browser', '${MARK} signed out', NOW(), NOW(), NOW() + INTERVAL 20 DAY, NOW())`,
-            [PORTAL_PERSON, PORTAL_PERSON],
-        );
+        addRememberedDevice(PORTAL_PERSON, { label: `${MARK} laptop`, expiresInDays: 20 });
+        addRememberedDevice(PORTAL_PERSON, { label: `${MARK} signed out`, expiresInDays: 20, signedOut: true });
         cy.freshAdminFormLogin();
         cy.visit(`/people/view/${PORTAL_PERSON}`);
         cy.get("#portal-signin-device-list [data-cy=portal-device]").should("have.length", 1).and("be.visible").and("contain.text", `${MARK} laptop`);
@@ -400,11 +395,7 @@ describe("Admin → Member Portal members, audit, permissions and the person car
             endsOn: new Date(Date.now() + 30 * 86400000).toISOString().slice(0, 10),
             reason: "Hidden from Edit Records",
         }, 201);
-        db(
-            `INSERT INTO person_device_pdv (pdv_per_ID, pdv_TokenHash, pdv_Kind, pdv_Label, pdv_CreatedAt, pdv_ExpiresAt)
-             VALUES (?, SHA2('${MARK}-c', 256), 'browser', '${MARK} tablet', NOW(), NOW() + INTERVAL 20 DAY)`,
-            [PORTAL_PERSON],
-        );
+        addRememberedDevice(PORTAL_PERSON, { label: `${MARK} tablet`, expiresInDays: 20 });
         cy.setupStandardSession({ forceLogin: true });
         cy.visit(`/people/view/${PORTAL_PERSON}`);
         cy.get("#portal-signin-status").should("exist");

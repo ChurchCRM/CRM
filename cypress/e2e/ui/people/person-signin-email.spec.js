@@ -7,27 +7,17 @@
  *
  * Seed people: 2 Mathew (no account), 100 Lena (no account), 3 Tony (a staff
  * account). judith.matthews has Edit Records and is not an
- * administrator. The family email move and "has signed in" have no HTTP
- * surface until rows 5 and 9, so they are set with cy.dbQuery().
+ * administrator. An address moved from the family email and one replaced after
+ * a sign-in are support fixtures.
  */
+
+import { resetSignIn } from "../../../support/member-sign-in-fixtures";
+import { markEmailUnconfirmed, markReplacedAfterSignIn } from "../../../support/sign-in-email-fixtures";
 
 const MATHEW = { id: 2, email: "mathew.campbell@example.com" };
 const LENA = { id: 100, email: "lena.walker@example.com" };
 const TONY = { id: 3 };
 const JUDITH = { username: "judith.matthews@example.com", password: "noMoney$" };
-
-const db = (sql, params = []) =>
-    cy.dbQuery(sql, params).then((result) => {
-        expect(result.error, sql).to.be.null;
-        return result.rows;
-    });
-
-const unconfirmed = (personId, email, source) =>
-    db(
-        "INSERT INTO person_signin_psi (psi_per_ID, psi_ProvenEmail, psi_ProvenAt, psi_UnconfirmedEmail, psi_UnconfirmedSource, psi_UnconfirmedAt) VALUES (?, ?, ?, ?, ?, NOW()) " +
-            "ON DUPLICATE KEY UPDATE psi_UnconfirmedEmail = VALUES(psi_UnconfirmedEmail), psi_UnconfirmedSource = VALUES(psi_UnconfirmedSource)",
-        [personId, source === "family_email" ? null : "old.address@example.com", source === "family_email" ? null : "2026-01-01 00:00:00", email, source],
-    );
 
 const signInAs = ({ username, password }) => {
     cy.clearCookies();
@@ -39,11 +29,11 @@ const signInAs = ({ username, password }) => {
 
 describe("Sign-in email on the person page and the person editor (§9)", () => {
     afterEach(() => {
-        db("DELETE FROM person_signin_psi WHERE psi_per_ID IN (?, ?)", [MATHEW.id, LENA.id]);
+        resetSignIn([MATHEW.id, LENA.id]);
     });
 
     it("lets an administrator confirm an email moved from the family email", () => {
-        unconfirmed(MATHEW.id, MATHEW.email, "family_email");
+        markEmailUnconfirmed(MATHEW.id, "family_email");
         cy.freshAdminFormLogin();
         cy.visit(`/people/view/${MATHEW.id}`);
         cy.get("#portal-signin-unconfirmed").should("contain", MATHEW.email).and("contain", "Moved from the family email");
@@ -57,7 +47,7 @@ describe("Sign-in email on the person page and the person editor (§9)", () => {
     });
 
     it("shows staff with Edit Records why they can't confirm a replacement address", () => {
-        unconfirmed(LENA.id, LENA.email, "staff");
+        markReplacedAfterSignIn(LENA.id, "old.address@example.com");
         signInAs(JUDITH);
         cy.visit(`/people/view/${LENA.id}`);
         cy.get("#portal-signin-unconfirmed").should("contain", LENA.email).and("contain", "Changed by staff after the person signed in");
@@ -71,7 +61,7 @@ describe("Sign-in email on the person page and the person editor (§9)", () => {
         cy.get("#Email").should("have.attr", "readonly");
         cy.get("#EmailHint").should("contain", "Only an administrator can change the email");
 
-        unconfirmed(LENA.id, LENA.email, "staff");
+        markReplacedAfterSignIn(LENA.id, "old.address@example.com");
         cy.visit(`/PersonEditor.php?PersonID=${LENA.id}`);
         cy.get("#Email").should("not.have.attr", "readonly");
         cy.get("#EmailHint").should("contain", "signs them out everywhere");

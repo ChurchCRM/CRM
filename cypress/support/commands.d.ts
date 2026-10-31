@@ -196,6 +196,13 @@ declare namespace Cypress {
      */
     restoreSystemConfig(name: string, value: string | undefined): Chainable<void>;
 
+    /**
+     * Set a SystemConfig key through POST /admin/api/system/config/{name}, which applies
+     * the same checks as the settings pages. Capture the value first and put it back
+     * with restoreSystemConfig.
+     */
+    setSystemConfig(name: string, value: string | number): Chainable<any>;
+
     /** The calendars shared with members on Admin → Member Portal → Calendars, as {type, id}. */
     getMemberPortalCalendars(): Chainable<Array<{ type: string; id: number }>>;
 
@@ -301,7 +308,7 @@ declare namespace Cypress {
      * emailed code (cypress/support/member-session.js). The member rule is
      * opened to everyone for the spec.
      */
-    signInAsMember(who: number | string): Chainable<any>;
+    signInAsMember(who: number | string, options?: { rememberDevice?: boolean }): Chainable<any>;
 
     /** Put the member's session back in the browser, signing in the first time. */
     useMemberSession(who: number | string): Chainable<any>;
@@ -595,10 +602,12 @@ declare namespace Cypress {
      *
      * @param sql - SQL statement, with `?` placeholders for params
      * @param params - Values bound to the `?` placeholders
+     * @param options - `fixture`: the cypress/support file making the call, approved in cypress/db-access.json
      */
     dbQuery(
       sql: string,
-      params?: unknown[]
+      params?: unknown[],
+      options?: { fixture?: string | null }
     ): Chainable<{
       rows: any;
       error: { code: string; errno: number; sqlState: string; message: string } | null;

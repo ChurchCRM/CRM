@@ -2,7 +2,8 @@
 
 /**
  * Member sign-in (#10463, docs/member-sign-in-design.md §13): the person-keyed
- * tables every later row builds on, and the new settings with their defaults.
+ * tables every later row builds on, how the application reads rows it never
+ * writes, and the new settings with their defaults.
  */
 
 const TABLES = {
@@ -226,6 +227,17 @@ describe("Member sign-in schema", () => {
     it("declares the member sign-in settings with the design's defaults", () => {
         Object.entries(SETTINGS).forEach(([name, value]) => {
             cy.getSystemConfig(name).should("eq", value);
+        });
+    });
+
+    it("ignores a stored grant whose scope type does not match its capability", () => {
+        db(
+            `INSERT INTO portal_grant_pgr (pgr_per_ID, pgr_Capability, pgr_ScopeType, pgr_ScopeId, pgr_Reason, pgr_GrantedBy_usr_ID, pgr_GrantedAt)
+             VALUES (4, 'portal.family.contacts.view', 'team', 1, 'Schema spec', 1, NOW())`,
+        ).then(({ insertId }) => {
+            cy.signInAsMember(4);
+            cy.request("/api/portal/family").its("body.canSeeContacts").should("eq", false);
+            db("DELETE FROM portal_grant_pgr WHERE pgr_ID = ?", [insertId]);
         });
     });
 });

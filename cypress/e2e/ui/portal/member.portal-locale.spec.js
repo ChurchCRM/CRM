@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import { db } from "../../../support/member-sign-in";
+import { clearLanguages, storeLanguage } from "../../../support/member-sign-in-fixtures";
 
 /**
  * Member Portal — the page's language (MP8 #9869, member sign-in #10463).
@@ -113,11 +113,11 @@ describe("Member Portal — the page's language", () => {
     });
 
     beforeEach(() => {
-        db("UPDATE person_signin_psi SET psi_Language = NULL WHERE psi_per_ID IN (?, ?)", [LENA, ALICE]);
+        clearLanguages([LENA, ALICE]);
     });
 
     after(() => {
-        db("UPDATE person_signin_psi SET psi_Language = NULL WHERE psi_per_ID IN (?, ?)", [LENA, ALICE]);
+        clearLanguages([LENA, ALICE]);
         setStaffLanguage("");
         cy.restoreSystemConfig("sLanguage", savedLanguage);
         cy.then(() => cy.shareMemberPortalCalendars(savedCalendars));
@@ -190,10 +190,7 @@ describe("Member Portal — the page's language", () => {
     });
 
     it("falls back to the church's language when the stored one is no longer shipped", () => {
-        db(
-            "INSERT INTO person_signin_psi (psi_per_ID, psi_Language) VALUES (?, 'xx_XX') ON DUPLICATE KEY UPDATE psi_Language = 'xx_XX'",
-            [LENA],
-        );
+        storeLanguage(LENA, "xx_XX");
         cy.signInAsMember(LENA);
         cy.visit("/portal/profile/edit");
         cy.get("#portal-language").should("have.value", "");
