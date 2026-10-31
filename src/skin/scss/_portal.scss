@@ -512,6 +512,14 @@ html {
     font-size: 0.875rem;
 }
 
+.portal-member-contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.125rem 0.75rem;
+    font-size: 0.875rem;
+    overflow-wrap: anywhere;
+}
+
 .portal-member-badge {
     padding: 0.1rem 0.6rem;
     border-radius: 999px;
@@ -606,6 +614,32 @@ textarea.portal-input {
 .portal-choice input {
     inline-size: 1.15rem;
     block-size: 1.15rem;
+}
+
+// Member sign-in ---------------------------------------------------------------
+
+.portal-signin {
+    inline-size: 100%;
+    max-inline-size: 30rem;
+    margin-inline: auto;
+}
+
+// Two classes: the core bundle caps `input[type=text]` at 100%, which outranks one.
+.portal-input.portal-signin-code {
+    max-inline-size: 12rem;
+    font-size: 1.5rem;
+    letter-spacing: 0.3em;
+    font-variant-numeric: tabular-nums;
+}
+
+.portal-signin-staff {
+    margin: 0;
+    text-align: center;
+    font-size: 0.875rem;
+}
+
+.portal-signin-staff a {
+    color: var(--portal-muted);
 }
 
 // Dialogs --------------------------------------------------------------------
@@ -802,6 +836,16 @@ textarea.portal-input {
     background-color: var(--portal-surface-alt);
     color: var(--portal-text);
     filter: none;
+}
+
+.portal-button-danger {
+    background-color: var(--portal-danger);
+    color: var(--portal-danger-contrast);
+}
+
+.portal-button-danger:hover,
+.portal-button-danger:focus-visible {
+    color: var(--portal-danger-contrast);
 }
 
 // Footer ---------------------------------------------------------------------
@@ -1227,6 +1271,31 @@ textarea.portal-input {
     background-color: #ffffff;
 }
 
+// Sign-in and devices ----------------------------------------------------------
+
+.portal-device-label {
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.portal-table-actions::before {
+    content: none;
+}
+
+// "Sign out every device" asks first in a <details>, so it needs no script.
+.portal-confirm > summary {
+    inline-size: fit-content;
+    list-style: none;
+}
+
+.portal-confirm > summary::-webkit-details-marker {
+    display: none;
+}
+
+.portal-confirm-body {
+    margin-block-start: 0.75rem;
+}
+
 // Tablet and up --------------------------------------------------------------
 
 @media (min-width: 768px) {
@@ -1330,6 +1399,21 @@ textarea.portal-input {
     .portal-table-cell:nth-child(4) {
         white-space: nowrap;
         inline-size: 1%;
+    }
+
+    // The devices list gives the device's name the room instead.
+    .portal-devices .portal-table-cell:nth-child(1) {
+        white-space: normal;
+        inline-size: auto;
+    }
+
+    .portal-devices .portal-table-cell:nth-child(3) {
+        white-space: nowrap;
+        inline-size: 1%;
+    }
+
+    .portal-table-actions {
+        text-align: end;
     }
 }
 

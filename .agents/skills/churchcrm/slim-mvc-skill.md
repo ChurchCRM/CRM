@@ -53,7 +53,7 @@ Each module's entry point is `src/<module>/index.php` and its routes live in `sr
 | `/groups` | `ManageGroupRoleAuthMiddleware` | Sunday School is part of this module: `routes/sundayschool.php` behind `SundaySchoolEnabledMiddleware`, views in `views/sundayschool/`. |
 | `/ministries` | none at module level; gates per route group | Group carries `CSRFMiddleware` and `VolunteerV2EnabledMiddleware`. |
 | `/people` | none at module level | Per-route permission checks. |
-| `/portal` | none at module level; `PortalAccessMiddleware` gates the page group | Member Portal. Twig-rendered from `Include/themes/`. `GET /portal/theme/{name}/{path}` is public (`AuthMiddleware::isPublicPath()`); everything else needs a signed-in session and refuses API keys. See [`routing-architecture.md`](./routing-architecture.md) and [`member-portal-design.md`](./member-portal-design.md). |
+| `/portal` | none at module level; `PortalSessionMiddleware` + `PortalAccessMiddleware` gate the page group | Member Portal. Twig-rendered from `Include/themes/`. `GET /portal/theme/{name}/{path}`, `/portal/login` and `/portal/email/confirm/{token}` are public (`AuthMiddleware::isPublicPath()`); everything else needs a portal session (a staff session opening the portal becomes one) and refuses API keys. See [`routing-architecture.md`](./routing-architecture.md) and [`member-portal-design.md`](./member-portal-design.md). |
 | `/v2` | none at module level | Server-rendered initial state for the JS/TS frontend. |
 
 ## Bespoke apps

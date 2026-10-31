@@ -95,6 +95,20 @@ describe("Member Portal — My Family", () => {
             cy.get('[data-person-row="103"] .portal-avatar-initials').should("exist");
         });
 
+        it("shows no family email on the family page, the edit form or the confirm page", () => {
+            loginAs(adultUser);
+            cy.visit("/portal/family");
+            cy.get("#portal-family-address [data-field=homePhone]").should("exist");
+            cy.get("#portal-family-address [data-field=email]").should("not.exist");
+            cy.visit("/portal/family/edit");
+            cy.get("#portal-family-homePhone").should("exist");
+            cy.get("#portal-family-email").should("not.exist");
+            cy.get('form input[name="email"]').should("not.exist");
+            cy.visit("/portal/family/confirm");
+            cy.contains("dt", "Home Phone").should("exist");
+            cy.contains("dt", /^Email$/).should("not.exist");
+        });
+
         it("edits the family address, sees the toast, and the change survives a reload", () => {
             const stamp = String(Date.now()).slice(-5);
             const newAddress = `${stamp} Avondale Ave`;

@@ -624,6 +624,13 @@ declare namespace Cypress {
     expireSignInThrottle(bucket: string, key?: string | number | null): Chainable<void>;
 
     /**
+     * End the grace of the tokens a person's remembered devices just replaced
+     * (cypress/support/remembered-device.js).
+     * @param personId - The person whose devices' previous tokens stop signing in
+     */
+    endDeviceTokenGrace(personId: number): Chainable<void>;
+
+    /**
      * Wait for a Notyf notification with specific text
      * Ensures locales are loaded first (for i18next translations) and verifies notification content
      * @param expectedText - The text to find in the notification

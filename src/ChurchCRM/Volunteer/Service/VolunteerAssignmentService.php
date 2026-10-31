@@ -2580,7 +2580,7 @@ class VolunteerAssignmentService
     /** @throws VolunteerException */
     private function assertCanDecideSwap(VolunteerSwap $swap, VolunteerAssignment $assignment, User $actor): void
     {
-        if (!$this->authz->canManageAssignment($actor, $assignment)) {
+        if (!$this->authz->canDecideSwapFor($actor, $assignment)) {
             throw VolunteerException::forbidden(gettext('Not authorized for this substitution request'));
         }
 

@@ -26,13 +26,14 @@ Theme authors: https://docs.churchcrm.io/administration/member-portal-theme-guid
 | P8 | A broken theme fails loudly (section "Failure behaviour"). |
 | P9 | Configuration lives on Admin -> Member Portal. Values are `ConfigItem`s in `config_cfg` without a System Settings category. |
 | P10 | Landing rule: an Edit-Self-only login lands in `/portal` and cannot reach the admin shell; every other login lands in `/v2/dashboard` and has a "Member Portal" entry in its user menu. In the portal, the account menu's **Admin Console** entry (staff logins) returns to the admin dashboard. |
-| P11 | Every portal API derives the acting person from the session. No route accepts a `personId` naming the actor. |
+| P11 | Every portal API derives the acting person from the portal principal (`PortalContext`). No route accepts a `personId` naming the actor. |
 | P12 | Family scope is the member's own family, through `User::canViewFamily()` / `canEditPerson()`. |
 | P13 | The administrator chooses which calendars the portal shows (section "Calendar"). |
 | P14 | Giving is not part of the portal; the nav reserves no page for it until a payment-gateway design exists. |
 | P15 | The volunteer member pages are portal Twig templates around the `webpack/portal/` volunteer bundles and `/api/ministries/me/*`. |
 | P16 | Member-facing volunteer functionality exists only in the portal; the admin shell keeps "Ministries". |
 | P17 | Volunteer scopes count for self-service accounts: team leaders manage their own team. Coordinators and managers are staff accounts. |
+| P18 | Every portal page, API route and nav entry names a portal capability (`ChurchCRM\Portal\Permissions`, member sign-in design §8). Core and plugins register capabilities and rules the same way (`plugin-development.md` -> "Member Portal"). |
 
 Out of scope: contribution history and online giving, per-event visibility flags, member directory search (needs a privacy model; the team leader's name-only Add Volunteer picker, #10531, is not that), personal-device check-in, theme editor or upload UI, theming the admin shell.
 
@@ -43,6 +44,7 @@ src/portal/                  index.php, routes/*.php, .htaccess
 src/ChurchCRM/Portal/        ThemeManager, ThemeValidator, PortalTwig, PortalExtension, PortalNav,
                              PortalAccessMiddleware, ThemeAssetStreamer, PortalSelfService, PortalTeams,
                              PortalCalendar*, PortalAccountPages, PortalStatsService, PortalSettings
+src/ChurchCRM/Portal/Permissions/  portal capabilities, rules, grants, RequirePortalCapability
 src/Include/themes/default/  theme.css, images/, templates/**/*.twig (layout, partials, pages, errors)
 src/admin/routes/member-portal.php, src/admin/routes/api/member-portal.php, src/admin/views/member-portal.php
 src/api/routes/portal/       /api/portal/* (portal-me, portal-calendar, portal-emails)
@@ -53,11 +55,11 @@ src/skin/scss/_portal.scss   part of portal.min.css
 ## Request flow
 
 1. Login lands by the P10 rule. `/external/limited-access` redirects to `/portal`. The portal is always on.
-2. `AuthMiddleware` redirects an Edit-Self-only browser request outside `isLimitedAccessAllowedPath()` to `/portal`. The allowed paths include `/portal`, `/api/portal`, the auth-flow pages, `/api/ministries/me/` and `/api/ministries/` (team leaders). `/volunteer` and other admin areas stay closed. API-key calls from these accounts get 403. `Include/PageInit.php` applies the same rule to PHP pages; `AuthenticationManager::getDefaultLandingPath()` picks the post-login destination.
-3. `src/portal/index.php` mounts `PortalAccessMiddleware` (302 to login when unauthenticated, API keys refused) and `CSRFMiddleware` on the page group.
+2. A request with a portal principal and no staff session passes `AuthMiddleware` only on `/portal`, `/api/portal` and the volunteer API (`/api/ministries/`). `AuthMiddleware` redirects an Edit-Self-only browser request outside `isLimitedAccessAllowedPath()` to `/portal`. The allowed paths include `/portal`, `/api/portal`, the auth-flow pages, `/api/ministries/me/` and `/api/ministries/` (team leaders). `/volunteer` and other admin areas stay closed. API-key calls from these accounts get 403. `Include/PageInit.php` applies the same rule to PHP pages; `AuthenticationManager::getDefaultLandingPath()` picks the post-login destination.
+3. `src/portal/index.php` mounts `PortalSessionMiddleware` (the portal principal: a member session, or a staff session opening the portal as its own person; it ends the session on a block, a session-version change or idle time), then `PortalAccessMiddleware` (302 to `/portal/login` when signed out, API keys refused) and `CSRFMiddleware`, on the page group. `/api/portal/*` groups use `PortalSessionMiddleware` + `PortalApiMiddleware`. Portal code reads who it serves from `PortalContext`, never `AuthenticationManager::getCurrentUser()`.
 4. A route handler builds a view-model and calls `PortalTwig::render($response, 'calendar/index.html.twig', $model, PortalNav::CALENDAR)`. The loader order is active theme, then default theme; a theme file with the same relative path wins.
 5. `layout.html.twig` emits core CSS, `portal.min.css`, the theme's `theme.css`, the nav and flash partials, the page block, the footer, then scripts (core bundle, i18next, locale loader, `portal.min.js`, the page bundle, `theme.js`), all with the CSP nonce.
-6. `GET /portal/theme/<name>/<path>` streams a theme file when `<name>` is a real theme folder, `<path>` is clean and relative (no empty, `.` or `..` segment, leading slash, drive letter, backslash or NUL), the extension is in `ThemeAssetStreamer::ALLOWED_TYPES`, and the `realpath()` of the file is a regular file inside the theme folder's `realpath()`. A symlink leaving the theme is refused like any miss. The response carries `Content-Type`, an `ETag` from mtime and size, `Cache-Control: public, max-age=31536000` (URLs carry `?v=<filemtime>`), and 304 on `If-None-Match`. Every miss is a plain-text 404. The route is public (`AuthMiddleware::isPublicPath()`).
+6. `GET /portal/theme/<name>/<path>` streams a theme file when `<name>` is a real theme folder, `<path>` is clean and relative (no empty, `.` or `..` segment, leading slash, drive letter, backslash or NUL), the extension is in `ThemeAssetStreamer::ALLOWED_TYPES`, and the `realpath()` of the file is a regular file inside the theme folder's `realpath()`. A symlink leaving the theme is refused like any miss. The response carries `Content-Type`, an `ETag` from mtime and size, `Cache-Control: public, max-age=31536000` (URLs carry `?v=<filemtime>`), and 304 on `If-None-Match`. Every miss is a plain-text 404. The route is public (`AuthMiddleware::isPublicPath()`), like `/portal/login` and `/portal/email/confirm/{token}`; a public page calls `PortalTwig::preparePage()` itself.
 
 ## Who lands where
 
@@ -113,7 +115,8 @@ Both error pages render from the default theme, so they always render. The porta
 | `nonce()` | `SystemURLs::getCSPNonce()` |
 | `church` | `{name, address, city, state, zip, phone, email, website, logoUrl, logoOnDarkUrl, socialLinks}` from `ChurchMetaData`; `socialLinks` is `[{id, label, url, icon}]` |
 | `member` | `{id, firstName, lastName, fullName, email, avatarUrl, familyId, isTeamLeader, isStaff}` |
-| `nav` | `PortalNav` model: `[{id, label, url, icon, active, badge}]` |
+| `portal_can(capability, scope)` | the portal permissions check, for showing a section or button; routes use `RequirePortalCapability` |
+| `nav` | `PortalNav` model: `[{id, label, url, icon, capability, active, badge}]`, each entry shown when the member holds its capability |
 | `flash` | `[{type, message}]` from the session |
 | `portal` | `{rootPath, themeName, locale, isRTL, developerMode}` |
 | `email_wrap` (filter) | escaped address with `<wbr>` after `@` and before each `.` |
@@ -197,10 +200,10 @@ Cards: next portal-visible events, the member's next volunteer assignment and pe
 
 - Read: own person and family.
 - Edit own person: name parts, title/suffix, email, work email, phones, birthday (`bPortalAllowBirthdayEdit`), photo. Writes: `POST /api/portal/me`, `POST /api/portal/me/photo` (calls `Person::setImageFromBase64()` for the member's own record).
-- Edit family (adults only: head/spouse): address, city, state, zip, country, home phone, email, wedding date. Other members are view-only. "Add a family member" (adults only) creates a pending self-registration entry (`Person::SELF_REGISTER`) for staff review. `POST /api/portal/family`, `POST /api/portal/family/members`.
+- Edit family (`portal.family.edit`, an adult of the family): address, city, state, zip, country, home phone, wedding date; email belongs to people, not families. Other members are view-only. "Add a family member" (`portal.family.edit`) creates a pending self-registration entry (`Person::SELF_REGISTER`) for staff review. `POST /api/portal/family`, `POST /api/portal/family/members`.
 - Every write goes through `InputSanitizationMiddleware` and a field allow-list, and writes a timeline `Note` "edited via the Member Portal". Dates travel as ISO `YYYY-MM-DD`, sanitized as `text`; the service parses them strictly, so `2026-02-31` is refused.
 - Photos: the portal serves its own copies because `isLimitedAccessAllowedPath()` confines self-service sessions to `/portal` and `/api/portal`. `GET /api/portal/me/photo` (cached privately for `Photo::CACHE_DURATION_SECONDS`) and `GET /api/portal/family/members/{personId}/photo` (`private, no-store`) serve through the `Photo` object; every `photoUrl` the portal hands out points at them with `?v=<mtime>`. The family photo route is the one place a portal route takes a person id; it checks the id against the actor's own family, and anything else is 404, never 403.
-- Confirm family details (`/portal/family/confirm`, `POST /api/portal/family/confirm`): writes the same `verify` note as `/external/verify`, with `Person::SELF_VERIFY` as the enterer because People -> Verify selects on it. Every family member may confirm. The emailed verify-token link keeps serving people without logins.
+- Confirm family details (`/portal/family/confirm`, `POST /api/portal/family/confirm`): writes the same `verify` note as `/external/verify`, with `Person::SELF_VERIFY` as the enterer because People -> Verify selects on it. Confirming needs `portal.family.confirm` (an adult of the family). The emailed verify-token link keeps serving people without logins.
 - A member with no family (or no person record) gets `family/none.html.twig` with HTTP 200: "You are not currently associated with a family", plus Church Information email as `mailto:` and phone as `tel:` (each omitted when empty; with neither, "Please contact the church office."). The portal 404 is for URLs that do not exist.
 - Password and two-factor: `GET/POST /portal/profile/password` and `GET /portal/profile/two-factor`, in the portal layout for every role, so an administrator who changes a password from the portal stays in the portal. They act on the signed-in account and work with no linked person. `PortalAccountPages` is the single place a portal account page becomes a response; `User::userChangePassword()`, the form ids and the `PasswordChange.js` / `two-factor-enrollment` bundles are shared. `/v2/user/current/changepassword` and `/v2/user/current/manage2fa` render through the same class and stay at those URLs: `LocalAuthentication` returns them as `nextStepURL` for forced flows, which match `REQUEST_URI` to break their own redirect loop. The password template's `formAction` is a variable set by each route, never taken from the request.
 
@@ -215,7 +218,7 @@ Cards: next portal-visible events, the member's next volunteer assignment and pe
 
 ### Volunteering (`/portal/volunteer/schedule`, `/portal/volunteer/opportunities`)
 
-Twig templates (`volunteer/schedule.html.twig`, `volunteer/opportunities.html.twig`) extending the portal layout load the `webpack/portal/volunteer-*.ts` bundles, which render from `/api/ministries/me/*`. The nav carries one **Volunteering** entry pointing at the schedule; the two pages carry a tab bar (*My schedule* / *Find something to do*). The entry and both routes share `PortalNav::isVolunteeringVisible()` (`User::isVolunteerV2Enabled()` and `bPortalShowVolunteer`). The layout loads `bootbox`, and `portal.min.js` defines `window.CRM.escapeHtml` when `CRMJSOM.js` is absent.
+Twig templates (`volunteer/schedule.html.twig`, `volunteer/opportunities.html.twig`) extending the portal layout load the `webpack/portal/volunteer-*.ts` bundles, which render from `/api/ministries/me/*`. The nav carries one **Volunteering** entry pointing at the schedule; the two pages carry a tab bar (*My schedule* / *Find something to do*). The entry and both routes ask the portal capability `portal.volunteer.use`, on while `User::isVolunteerV2Enabled()` and `bPortalShowVolunteer` are. The layout loads `bootbox`, and `portal.min.js` defines `window.CRM.escapeHtml` when `CRMJSOM.js` is absent.
 
 ### My Teams (`/portal/teams`, `/portal/teams/{teamId}`, `/portal/teams/{teamId}/occurrences/{id}`)
 
@@ -226,14 +229,14 @@ For team leaders and staff who lead a team. The team page is the ministry page's
 - No `/api/portal/teams/*` namespace: the index is server-rendered from `PortalTeams`; the other pages call volunteer endpoints that authorize per record, including the team-keyed `GET /volunteer/teams/{id}/qualification-matrix` and `GET /volunteer/teams/{id}/schedules` (behind `VolunteerTeamMiddleware`).
 - `VolunteerCoordinatorRoleAuthMiddleware` admits `isVolunteerCoordinatorEnabled() || isVolunteerTeamLeaderEnabled()`. `isVolunteerCoordinatorEnabled()` stays false for self-service logins, which keeps the Ministries menu heading hidden for them.
 - `teams/occurrence.html.twig` reproduces the ids `occurrence.ts` expects and loads `ministries-occurrence.min.js`; the linked calendar event is named, not linked, because `/event/view/{id}` is an admin-shell page. Its Assign dialog is the admin one, *Record they accepted* box included (#10528).
-- The nav shows `My Teams` only with an explicit `team` grant (`isVolunteerTeamLeaderEnabled()`); `/portal/teams` also admits a coordinator, manager or administrator opening the portal as themselves.
+- The nav entry and every team page ask `volunteer.team.manage` on the team (`RequirePortalCapability`); another team's page is 404. Staff permissions add nothing: a coordinator, manager or administrator opening the portal sees only the teams they lead, and runs the rest from the ministry page.
 - Shared components live in `webpack/ministries/components/` (`ui.ts`, `positions-table.ts`, `qualification-matrix.ts`, `schedules-table.ts`, `occurrences-table.ts`) and take a context object. Each looks up its controls by id and is inert when one is absent. `webpack/common/crm-helpers.ts` installs `window.CRM.escapeHtml`, `escapeAttribute` and `buildActionMenu` when absent; the portal has no DataTables, so its tables are plain tables.
 
 ### Email History (`/portal/email-history`, `/portal/email-history/{id}`)
 
 What the church has emailed this member, newest first, paginated; reached from the account menu (`PortalNav` gets no active id for these pages). Rows come from `email_log_eml` through `EmailLogService`.
 
-- List (`email/index.html.twig`): Date, Type (`EmailLogService::kindLabel()`), Subject (link; "(no subject)" when empty), Status. Failed and Skipped use `--portal-danger` / `--portal-warning`. `EmailLogService::DEFAULT_PAGE_SIZE` per page, `?page=` driven. Server-rendered, no bundle. Empty state: "The church has not emailed you yet." One `<table>` at every width, stacked on a phone by `_portal.scss` (`data-label` pattern).
+- List (`email/index.html.twig`): Date, Type (`EmailLogService::kindLabel()`), Subject (link; "(no subject)" when empty). Only mail that went out (`sent` rows) is listed, with no delivery status; an unsent row is the same 404 as somebody else's. `EmailLogService::DEFAULT_PAGE_SIZE` per page, `?page=` driven. Server-rendered, no bundle. Empty state: "The church has not emailed you yet." One `<table>` at every width, stacked on a phone by `_portal.scss` (`data-label` pattern).
 - Detail (`email/show.html.twig`): the stored body renders in `<iframe sandbox srcdoc="...">` only; an empty `sandbox` gives an opaque origin with no scripts, forms or navigation, and Twig autoescaping fills the attribute. The frame has a fixed height and scrolls. An account email (body never stored) says "The content of this email was not kept."
 - API: `GET /api/portal/me/emails?page=&limit=` and `GET /api/portal/me/emails/{id}`, session only. A row that is not this person's and a missing id are the same 404.
 - Only rows whose `eml_per_ID` is this person appear. Mail to a family's shared address (`eml_per_ID` NULL, `eml_fam_ID` set) is left out; showing it to every adult of the household is a privacy decision (`EmailLogService::getForFamily()` would serve it).
