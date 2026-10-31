@@ -1,3 +1,5 @@
+import { escapeHtml } from "../utils/escape-html";
+
 /**
  * The person page's Login as {first name} item (Actions menu, src/people/views/person-view.php;
  * member sign-in design §6.5): confirms, posts to /admin/api/person/{id}/login-as-person,
@@ -37,7 +39,8 @@ export function initLoginAsPerson(): void {
     return;
   }
 
-  const label = item.dataset.label || t("Login as Person");
+  // Bootbox renders the title and button label as HTML; the first name is member-editable.
+  const label = escapeHtml(item.dataset.label || t("Login as Person"));
   item.addEventListener("click", (event) => {
     event.preventDefault();
     window.bootbox?.confirm({
