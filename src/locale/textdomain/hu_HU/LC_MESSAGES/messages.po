@@ -936,14 +936,6 @@ msgid "Zero Givers"
 msgstr "Zero givers"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Egyéni Deposit jelentés"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Advanced Deposit Jelentés"
-
-#: 
 msgid "Next"
 msgstr "Következő"
 
@@ -968,10 +960,6 @@ msgid "Apply Report Dates To"
 msgstr "Alkalmazás Jelentés Dátumok To"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "Deposit Date (Alapértelmezett)"
-
-#: 
 msgid "Payment Date"
 msgstr "Kifizetés dátuma"
 
@@ -992,10 +980,6 @@ msgstr "Minden betétek dátumtartományban"
 #, fuzzy
 msgid "Filter by Payment Type"
 msgstr "Szűrés Fizetés típusa"
-
-#: 
-msgid "All Methods"
-msgstr "All módszerek"
 
 #: 
 msgid "Check"
@@ -5578,10 +5562,6 @@ msgid "Funds"
 msgstr "Alapok"
 
 #: 
-msgid "Generate Report"
-msgstr "Jelentés generálása"
-
-#: 
 msgid "Payments"
 msgstr "Fizetések"
 
@@ -6275,10 +6255,6 @@ msgid "Current Deposit"
 msgstr "Jelenlegi befizetés"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Testreszabható jelentés dátum, alap, család és fizetési mód szerinti szűréssel."
-
-#: 
 msgid "Day"
 msgstr "Nap"
 
@@ -6289,10 +6265,6 @@ msgstr "Dec"
 #: 
 msgid "Deposit Statistics"
 msgstr "Befizetési statisztikák"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Egyetlen befizetési bizonylat részletes lebontása."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."

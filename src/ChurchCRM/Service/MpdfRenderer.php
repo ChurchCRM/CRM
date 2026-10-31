@@ -18,15 +18,44 @@ class MpdfRenderer implements PdfRendererInterface
 
     public function __construct(?Environment $twig = null)
     {
-        $this->twig = $twig ?? new Environment(new FilesystemLoader(__DIR__ . '/../../templates/reports'));
+        $loader = $twig?->getLoader() ?? new FilesystemLoader(__DIR__ . '/../../templates/reports');
+        $this->twig = new Environment(new EscapedReportLoader($loader), [
+            'autoescape' => 'html',
+            'charset' => $twig?->getCharset() ?? 'UTF-8',
+            'strict_variables' => $twig?->isStrictVariables() ?? false,
+        ]);
+        if ($twig !== null) {
+            foreach ($twig->getExtensions() as $extension) {
+                if (!$this->twig->hasExtension($extension::class)) {
+                    $this->twig->addExtension($extension);
+                }
+            }
+            foreach ($twig->getFunctions() as $function) {
+                $this->twig->addFunction($function);
+            }
+            foreach ($twig->getFilters() as $filter) {
+                if (!in_array($filter->getName(), ['escape', 'e', 'raw'], true)) {
+                    $this->twig->addFilter($filter);
+                }
+            }
+            foreach ($twig->getTests() as $test) {
+                $this->twig->addTest($test);
+            }
+            foreach ($twig->getGlobals() as $name => $value) {
+                $this->twig->addGlobal($name, $value);
+            }
+        }
         if (!$this->twig->hasExtension(GettextExtension::class)) {
             $this->twig->addExtension(new GettextExtension());
         }
     }
 
-    public function renderToString(string $template, array $data, bool $landscape = false): string
+    /**
+     * @param array<string, mixed> $mpdfOptions Mpdf constructor settings that replace the Letter-page defaults, such as a custom format and margins.
+     */
+    public function renderToString(string $template, array $data, bool $landscape = false, array $mpdfOptions = []): string
     {
-        return $this->build($template, $data, $landscape)->Output('', 'S');
+        return $this->build($template, $data, $landscape, $mpdfOptions)->Output('', 'S');
     }
 
     public function render(string $template, array $data, string $filename, string $disposition = 'I'): void
@@ -34,10 +63,10 @@ class MpdfRenderer implements PdfRendererInterface
         $this->build($template, $data)->Output($filename . '.pdf', $disposition === 'D' ? 'D' : 'I');
     }
 
-    private function build(string $template, array $data, bool $landscape = false): Mpdf
+    private function build(string $template, array $data, bool $landscape = false, array $mpdfOptions = []): Mpdf
     {
         $data = $this->withChurch($data);
-        $mpdf = $this->makeMpdf($landscape);
+        $mpdf = $this->makeMpdf($landscape, $mpdfOptions);
         if ($data['text_dir'] === 'rtl') {
             $mpdf->SetDirectionality('rtl');
         }
@@ -61,7 +90,7 @@ class MpdfRenderer implements PdfRendererInterface
         $localeCode = str_replace('_', '-', (string) $locale->getLocale());
         $data['lang'] = str_starts_with($localeCode, 'zh') ? $localeCode : substr($localeCode, 0, 2);
         $data['text_dir'] = $locale->isRTL() ? 'rtl' : 'ltr';
-        $data['generated_on'] = date(\ChurchCRM\dto\SystemConfig::getValue('sDateFormatLong') ?: 'Y-m-d');
+        $data['generated_on'] = date(SystemConfig::getValue('sDateFormatLong') ?: 'Y-m-d');
         return $data;
     }
 
@@ -78,9 +107,24 @@ class MpdfRenderer implements PdfRendererInterface
         return SystemURLs::getDocumentRoot() . '/Images/churchcrm-logo-ink-blue.svg';
     }
 
-    private function makeMpdf(bool $landscape = false): Mpdf
+    /**
+     * Resolve a custom graphic letterhead path (bDirLetterHead).
+     * Returns the path only when it is readable or an https URL.
+     * Shared by all letter-style mPDF reports.
+     */
+    public static function graphicLetterhead(): ?string
     {
-        return new Mpdf([
+        $path = trim((string) SystemConfig::getValue('bDirLetterHead'));
+        if ($path !== '' && (is_readable($path) || preg_match('#^https://#i', $path))) {
+            return $path;
+        }
+
+        return null;
+    }
+
+    private function makeMpdf(bool $landscape = false, array $mpdfOptions = []): Mpdf
+    {
+        return new Mpdf($mpdfOptions + [
             'mode' => 'utf-8',
             'autoScriptToLang' => true,
             'autoLangToFont' => true,

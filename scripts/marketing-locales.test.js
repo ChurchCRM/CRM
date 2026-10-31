@@ -9,7 +9,7 @@ const root = path.join(__dirname, '..');
 const allLocales = `portal-member-home portal-member-family portal-member-add-family-member
 portal-member-calendar portal-member-calendar-subscribe people-self-register-portal-member
 volunteer-portal-schedule volunteer-portal-opportunities kiosk-guest-form kiosk-guest-checked-in
-people-family-new-family events-attendance-overview finance-deposit-entry finance-payment-editor
+people-family-new-family events-attendance-overview finance-deposit-entry finance-deposit-reports finance-payment-editor
 communication-mailing-list volunteer-occurrence-staffing volunteer-assign-picker dashboard-admin
 dashboard-sundayschool dashboard-finance dashboard-people dashboard-hero finance-pledge-report
 people-directory-list people-family-overview settings-user-permissions`.split(/\s+/).sort();

@@ -928,14 +928,6 @@ msgid "Zero Givers"
 msgstr "शून्य दानदाता"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "व्यक्तिगत जमा रिपोर्ट"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "उन्नत जमा रिपोर्ट"
-
-#: 
 msgid "Next"
 msgstr "अगला"
 
@@ -956,10 +948,6 @@ msgid "Apply Report Dates To"
 msgstr "रिपोर्ट तिथियां इन पर लागू करें"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "जमा तिथि (डिफ़ॉल्ट)"
-
-#: 
 msgid "Payment Date"
 msgstr "भुगतान तिथि"
 
@@ -978,10 +966,6 @@ msgstr "तिथि सीमा के भीतर सभी जमा"
 #: 
 msgid "Filter by Payment Type"
 msgstr "भुगतान प्रकार द्वारा फ़िल्टर करें"
-
-#: 
-msgid "All Methods"
-msgstr "सभी विधियां"
 
 #: 
 msgid "Check"
@@ -5521,10 +5505,6 @@ msgid "Funds"
 msgstr "निधि"
 
 #: 
-msgid "Generate Report"
-msgstr "रिपोर्ट तैयार करें"
-
-#: 
 msgid "Payments"
 msgstr "भुगतान"
 
@@ -6218,10 +6198,6 @@ msgid "Current Deposit"
 msgstr "वर्तमान जमा"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "तिथि, फंड, परिवार और भुगतान विधि द्वारा फ़िल्टरिंग के साथ अनुकूलन योग्य रिपोर्ट।"
-
-#: 
 msgid "Day"
 msgstr "दिन"
 
@@ -6232,10 +6208,6 @@ msgstr "दिसंबर"
 #: 
 msgid "Deposit Statistics"
 msgstr "जमा सांख्यिकी"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "एकल जमा पर्ची का विस्तृत विवरण।"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."

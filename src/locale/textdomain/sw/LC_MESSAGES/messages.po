@@ -932,14 +932,6 @@ msgid "Zero Givers"
 msgstr "Watoa Sifuri"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Ripoti ya Amana ya Mtu binafsi"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Ripoti ya Juu ya Amana"
-
-#: 
 msgid "Next"
 msgstr "Inayofuata"
 
@@ -963,10 +955,6 @@ msgid "Apply Report Dates To"
 msgstr "Tekeleza Tarehe za Ripoti Kwa"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "Tarehe ya Kuweka amana (Chaguomsingi)"
-
-#: 
 msgid "Payment Date"
 msgstr "Siku ya malipo"
 
@@ -987,10 +975,6 @@ msgstr "Amana zote ndani ya kipindi cha tarehe"
 #, fuzzy
 msgid "Filter by Payment Type"
 msgstr "Chuja kwa Aina ya Malipo"
-
-#: 
-msgid "All Methods"
-msgstr "Mbinu Zote"
 
 #: 
 msgid "Check"
@@ -5548,10 +5532,6 @@ msgid "Funds"
 msgstr "Mifuko/Fedha"
 
 #: 
-msgid "Generate Report"
-msgstr "Tengeneza Ripoti"
-
-#: 
 msgid "Payments"
 msgstr "Malipo"
 
@@ -6245,10 +6225,6 @@ msgid "Current Deposit"
 msgstr "Amana ya Sasa"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Ripoti inayoweza kubadilishwa kwa kuchuja tarehe, mfuko, familia, na njia ya malipo."
-
-#: 
 msgid "Day"
 msgstr "Siku"
 
@@ -6259,10 +6235,6 @@ msgstr "Des"
 #: 
 msgid "Deposit Statistics"
 msgstr "Takwimu za Amana"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Mchanganuo wa kina wa hati moja ya amana."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."

@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 const ANGELS_CLASS_GROUP_ID = 1;
-const photoBook = (groupIds) => `groups/sundayschool/reports/photo-book?GroupID=${groupIds}`;
+const photoBook = (groupIds) => `groups/reports/photo-book?GroupID=${groupIds}`;
 
 describe("Sunday School photo book", () => {
     it("a group manager gets the PDF", () => {
@@ -30,7 +30,7 @@ describe("Sunday School photo book", () => {
 
     it("without a class it makes the book for every Sunday School class", () => {
         cy.setupAdminSession();
-        cy.request({ url: "groups/sundayschool/reports/photo-book", encoding: "binary" }).then((response) => {
+        cy.request({ url: "groups/reports/photo-book", encoding: "binary" }).then((response) => {
             expect(response.headers["content-type"]).to.include("application/pdf");
         });
     });

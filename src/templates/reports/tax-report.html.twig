@@ -1,4 +1,5 @@
 {% extends "_letter.html.twig" %}
+{% set show_tax_id = true %}
 {% block letter_body %}
   {% for family in families %}
     {% if not loop.first %}

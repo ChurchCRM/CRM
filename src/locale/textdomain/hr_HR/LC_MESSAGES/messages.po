@@ -925,14 +925,6 @@ msgid "Zero Givers"
 msgstr "Nema darivatelja"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Individualni izvještaj o uplati"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Napredni izvještaj o uplati"
-
-#: 
 msgid "Next"
 msgstr "Sljedeće"
 
@@ -953,10 +945,6 @@ msgid "Apply Report Dates To"
 msgstr "Primijeni datume izvještaja na"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "Datum uplate (zadano)"
-
-#: 
 msgid "Payment Date"
 msgstr "Datum plaćanja"
 
@@ -975,10 +963,6 @@ msgstr "Sve uplate unutar datumskog raspona"
 #: 
 msgid "Filter by Payment Type"
 msgstr "Filtriraj po vrsti plaćanja"
-
-#: 
-msgid "All Methods"
-msgstr "Sve metode"
 
 #: 
 msgid "Check"
@@ -5519,10 +5503,6 @@ msgid "Funds"
 msgstr "Fondovi"
 
 #: 
-msgid "Generate Report"
-msgstr "Generiraj izvještaj"
-
-#: 
 msgid "Payments"
 msgstr "Uplate"
 
@@ -6218,10 +6198,6 @@ msgid "Current Deposit"
 msgstr "Trenutna uplata"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Prilagodljivi izvještaj s filtriranjem prema datumu, fondu, obitelji i načinu plaćanja."
-
-#: 
 msgid "Day"
 msgstr "Dan"
 
@@ -6232,10 +6208,6 @@ msgstr "Pro"
 #: 
 msgid "Deposit Statistics"
 msgstr "Statistika uplata"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Detaljni pregled jedne uplatnice."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -24489,4 +24461,420 @@ msgstr "Prikazuje se samo e-pošta koju ste poslali."
 #: 
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "Ponavljajući događaji nisu mogli biti stvoreni. Provjerite zapisnik aplikacije za detalje."
+
+#: 
+msgid "Confirm Password"
+msgstr "Potvrdi lozinku"
+
+#: 
+msgid "Your password has been changed. You can now sign in with your new password."
+msgstr "Vaša lozinka je promijenjena. Sada se možete prijaviti novom lozinkom."
+
+#: 
+msgid "1st"
+msgstr "1."
+
+#: 
+msgid "2nd"
+msgstr "2."
+
+#: 
+msgid "3rd"
+msgstr "3."
+
+#: 
+msgid "4th"
+msgstr "4."
+
+#: 
+msgid "5th"
+msgstr "5."
+
+#: 
+msgid "Can't remove administrator access from the only administrator who can sign in"
+msgstr "Nije moguće ukloniti administratorski pristup jedinom administratoru koji se može prijaviti"
+
+#: 
+msgid "Choose the week of the month, from 1st to 5th"
+msgstr "Odaberite tjedan mjeseca, od 1. do 5."
+
+#: 
+msgid "Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}"
+msgstr "Stvara {{total}} događaja, na {{week}} {{day}} svakog mjeseca od {{first}} do {{last}}"
+
+#: 
+msgid "Invalid day of the week"
+msgstr "Nevažeći dan u tjednu"
+
+#: 
+msgid "Monthly, on a weekday"
+msgstr "Mjesečno, na radni dan"
+
+#: 
+msgid "Months without a 5th one are skipped."
+msgstr "Mjeseci bez 5. tjedna se preskaču."
+
+#: 
+msgid "RecurWOM must be a whole number from 1 to 5"
+msgstr "RecurWOM mora biti cijeli broj od 1 do 5"
+
+#: 
+msgid "Week of the month"
+msgstr "Tjedan mjeseca"
+
+#: 
+msgid "Week of the month must be from 1 to 5"
+msgstr "Tjedan mjeseca mora biti od 1 do 5"
+
+#: 
+msgid "%s through %s"
+msgstr "%s do %s"
+
+#: 
+msgid "Church tax ID (EIN) printed on contribution statements"
+msgstr "Porezni identifikacijski broj crkve (EIN) ispisano na izjavama o doprinosima"
+
+#: 
+msgid "Contribution statements are issued to the adults of a household. Please contact the church office if you need one."
+msgstr "Izjave o doprinosima izdaju se odraslima u kućanstvu. Kontaktirajte crkveni ured ako vam treba jedna."
+
+#: 
+msgid "Download statement"
+msgstr "Preuzmi izjavu"
+
+#: 
+msgid "Generated"
+msgstr "Generirano"
+
+#: 
+msgid "Goods and services"
+msgstr "Roba i usluge"
+
+#: 
+msgid "My Giving"
+msgstr "Moji darovi"
+
+#: 
+msgid "No contributions"
+msgstr "Nema doprinosa"
+
+#: 
+msgid "No contributions were recorded for this period."
+msgstr "Za ovo razdoblje nisu zabilježeni doprinosi."
+
+#: 
+msgid "No goods or services were provided in exchange for these contributions, other than intangible religious benefits."
+msgstr "U zamjenu za ove doprinose nisu pružene robe ili usluge, osim nematerijalnih vjerskih pogodnosti."
+
+#: 
+msgid "Optional. Printed on contribution statements."
+msgstr "Neobavezno. Ispisano na izjavama o doprinosima."
+
+#: 
+msgid "Tax ID"
+msgstr "Porezni ID"
+
+#: 
+msgid "Tax ID (EIN)"
+msgstr "Porezni ID (EIN)"
+
+#: 
+msgid "Tax-deductible amount"
+msgstr "Iznos koji se može odbiti od poreza"
+
+#: 
+msgid "This is the household statement. It includes gifts for your family."
+msgstr "Ovo je izjava kućanstva. Uključuje darove za vašu obitelj."
+
+#: 
+msgid "Total contributions"
+msgstr "Ukupni doprinosi"
+
+#: 
+msgid "Year-end statement"
+msgstr "Izjava na kraju godine"
+
+#: 
+msgid "%d giving statement emailed to the family successfully."
+msgstr "%d izjava o darovima uspješno poslana e-poštom obitelji."
+
+#: 
+msgid "%s Giving Statement"
+msgstr "Izjava o darovima %s"
+
+#: 
+msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "Prilagodite tekst koji se pojavljuje na izjavama o darovima (sTaxReport1, sTaxReport2 itd.)."
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %s giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Draga obitelj %s,\n"
+"\n"
+"U privitku ovog e-maila nalazi se vaša izjava o darovima %s za %s.\n"
+"\n"
+"Ako imate pitanja, kontaktirajte crkveni ured.\n"
+"\n"
+"Hvala na vašoj velikodušnosti."
+
+#: 
+msgid "Email %s Giving Statement"
+msgstr "Pošalji izjavu o darovima %s e-poštom"
+
+#: 
+msgid "Envelope Numbers"
+msgstr "Brojevi omotnica"
+
+#: 
+msgid "Generate Giving Statements"
+msgstr "Generiraj izjave o darovima"
+
+#: 
+msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
+msgstr "Generiraj izvješća za izjave o darovima, praćenje obećanja i financijsku analizu."
+
+#: 
+msgid "Giving Reports"
+msgstr "Izvješća o darovima"
+
+#: 
+msgid "Giving Statement"
+msgstr "Izjava o darovima"
+
+#: 
+msgid "Giving Statements"
+msgstr "Izjave o darovima"
+
+#: 
+msgid "Giving statement email failed to send. Please check your email server settings."
+msgstr "Slanje e-pošte s izjavom o darovima nije uspjelo. Provjerite postavke poslužitelja e-pošte."
+
+#: 
+msgid "Please mail your next gift to %s"
+msgstr "Pošaljite svoj sljedeći dar poštom na %s"
+
+#: 
+msgid "Print %s Giving Statement"
+msgstr "Ispiši izjavu o darovima %s"
+
+#: 
+msgid "Unable to email giving statement: no payment data found for that year."
+msgstr "Nije moguće poslati izjavu o darovima e-poštom: nisu pronađeni podaci o plaćanjima za tu godinu."
+
+#: 
+msgid "Unable to email giving statement: this family has no email address on file."
+msgstr "Nije moguće poslati izjavu o darovima e-poštom: ova obitelj nema registriranu e-mail adresu."
+
+#: 
+msgid "Undesignated"
+msgstr "Neoznačeno"
+
+#: 
+msgid "Verify church name, address, and contact info appears on giving statements."
+msgstr "Provjerite da se naziv crkve, adresa i kontakt podaci pojavljuju na izjavama o darovima."
+
+#: 
+msgid "The position is now assigned to %s, who has accepted it."
+msgstr "Pozicija je sada dodijeljena %s, koji ju je prihvatio."
+
+#: 
+msgid "The position is now assigned to %s, who has not yet accepted it."
+msgstr "Pozicija je sada dodijeljena %s, koji je još nije prihvatio."
+
+#: 
+msgid "Their reason: %s"
+msgstr "Njihov razlog: %s"
+
+#: 
+msgid "View Assignments"
+msgstr "Prikaži dodjele"
+
+#: 
+msgid "Volunteers still needed for this occurrence: %d"
+msgstr "Volonteri su još potrebni za ovu priliku: %d"
+
+#: 
+msgid "Volunteers still needed for this position: %d"
+msgstr "Volonteri su još potrebni za ovu poziciju: %d"
+
+#: 
+msgid "A weekly sign-in grid for each class. Class lists and photo books are on the Sunday School dashboard and each class page."
+msgstr "Tjedna mreža prijave za svaki razred. Popisi razreda i fotoalbumi nalaze se na nadzornoj ploči nedjeljne škole i na stranici svakog razreda."
+
+#: 
+msgid "A weekly sign-in grid for the school year, one column for each Sunday"
+msgstr "Tjedna mreža prijave za školsku godinu, jedan stupac za svaku nedjelju"
+
+#: 
+msgid "Age %d"
+msgstr "Dob %d"
+
+#: 
+msgid "At least one group must be selected to make an attendance sheet."
+msgstr "Mora se odabrati najmanje jedna grupa za izradu lista nazočnosti."
+
+#: 
+msgid "Attendance Sheet"
+msgstr "List nazočnosti"
+
+#: 
+msgid "Class List"
+msgstr "Popis razreda"
+
+#: 
+msgid "Download PDF"
+msgstr "Preuzmi PDF"
+
+#: 
+msgid "Lockout period in minutes\n"
+"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
+msgstr "Razdoblje zaključavanja u minutama\n"
+"Zaključani račun se sam otključava nakon ovog broja minuta. Neuspješne prijave s jedne IP adrese broje se tijekom istog razdoblja."
+
+#: 
+msgid "Maximum number of failed logins from one IP address\n"
+"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
+"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
+msgstr "Maksimalan broj neuspješnih prijava s jedne IP adrese\n"
+"Neuspješne prijave i zahtjevi za resetiranje lozinke s jedne IP adrese broje se prema ovoj granici unutar razdoblja zaključavanja. Nakon što se dostigne, prijava s te adrese se odbija do kraja razdoblja.\n"
+"Postavite na nulu za onemogućavanje ove značajke, na primjer kada svi pristupaju ChurchCRM-u putem jedne proxy adrese."
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "Maksimalan broj neuspješnih prijava dopuštenih prije zaključavanja korisničkog računa.\n"
+"Zaključani račun se sam otključava nakon razdoblja zaključavanja ili ranije kada administrator resetira neuspješne prijave.\n"
+"Ova značajka pomaže u zaštiti od automatiziranih napada pogađanja lozinki.\n"
+"Postavite na nulu za onemogućavanje ove značajke."
+
+#: 
+msgid "Minutes until it unlocks by itself: %d"
+msgstr "Minuta do samootključavanja: %d"
+
+#: 
+msgid "Sunday School Attendance Sheet"
+msgstr "List nazočnosti nedjeljne škole"
+
+#: 
+msgid "Sundays with no class are left off the sheet."
+msgstr "Nedjelje bez nastave izostavljene su s lista."
+
+#: 
+msgid "Database Upgrade"
+msgstr "Nadogradnja baze podataka"
+
+#: 
+msgid "Your database is being updated. Please keep this page open until the upgrade finishes."
+msgstr "Vaša baza podataka se ažurira. Ostavite ovu stranicu otvorenu dok nadogradnja ne završi."
+
+#: 
+msgid "Family Labels"
+msgstr "Obiteljske oznake"
+
+#: 
+msgid "%s – Total"
+msgstr "%s – Ukupno"
+
+#: 
+msgid "Bill"
+msgstr "Novčanica"
+
+#: 
+msgid "Choose a deposit or enter both report dates."
+msgstr "Odaberite depozit ili unesite oba datuma izvješća."
+
+#: 
+msgid "Choose one deposit to review its payments or print its bank slip. A selected deposit overrides the date range."
+msgstr "Odaberite jedan depozit za pregled njegovih plaćanja ili ispis bankovnog potvrde. Odabrani depozit nadjačava raspon datuma."
+
+#: 
+msgid "Coin"
+msgstr "Kovanica"
+
+#: 
+msgid "Deposit Report"
+msgstr "Izvješće o depozitu"
+
+#: 
+msgid "Download Report"
+msgstr "Preuzmi izvješće"
+
+#: 
+msgid "Enter valid report dates."
+msgstr "Unesite valjane datume izvješća."
+
+#: 
+msgid "Invalid report filters."
+msgstr "Nevažeći filtri izvješća."
+
+#: 
+msgid "Invalid report options."
+msgstr "Nevažeće opcije izvješća."
+
+#: 
+msgid "Leave filters empty to include all payments. These settings apply to the report, not the bank slip."
+msgstr "Ostavite filtre prazne za uključivanje svih plaćanja. Ove postavke primjenjuju se na izvješće, a ne na bankovnu potvrdu."
+
+#: 
+msgid "No records were returned. Adjust your filters and try again."
+msgstr "Nisu vraćeni zapisi. Prilagodite filtre i pokušajte ponovno."
+
+#: 
+msgid "Prepare for the Bank"
+msgstr "Pripremi za banku"
+
+#: 
+msgid "Preview Totals"
+msgstr "Pregled ukupnih iznosa"
+
+#: 
+msgid "Print Bank Slip"
+msgstr "Ispiši bankovnu potvrdu"
+
+#: 
+msgid "Print the selected deposit in full, with cash and check totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
+msgstr "Ispišite odabrani depozit u cijelosti, s ukupnim iznosima gotovine i čekova, listovima brojanja i linijama svjedoka. Filtri izvješća se zanemaruju. Elektronička plaćanja ostaju u sažetku i isključena su iz ukupnog fizičkog bankovnog tiketa."
+
+#: 
+msgid "Review Payments"
+msgstr "Pregled plaćanja"
+
+#: 
+msgid "Review payments for a period, or prepare one deposit for the bank."
+msgstr "Pregledajte plaćanja za razdoblje ili pripremite jedan depozit za banku."
+
+#: 
+msgid "Review payments, download PDF or CSV, or print a bank slip for one deposit."
+msgstr "Pregledajte plaćanja, preuzmite PDF ili CSV ili ispišite bankovnu potvrdu za jedan depozit."
+
+#: 
+msgid "Select a valid deposit."
+msgstr "Odaberite valjani depozit."
+
+#: 
+msgid "Select one deposit to print a bank slip."
+msgstr "Odaberite jedan depozit za ispis bankovne potvrde."
+
+#: 
+msgid "The report end date must be on or after the start date."
+msgstr "Datum završetka izvješća mora biti na ili nakon datuma početka."
+
+#: 
+msgid "Total Cash"
+msgstr "Ukupno gotovina"
+
+#: 
+msgid "Total Coin"
+msgstr "Ukupno kovanice"
+
+#: 
+msgid "Witness"
+msgstr "Svjedok"
 

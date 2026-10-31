@@ -958,14 +958,6 @@ msgid "Zero Givers"
 msgstr "Null Givers"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Individuell Deposit Rapporter"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Avansert Deposit Rapporter"
-
-#: 
 msgid "Next"
 msgstr "Neste"
 
@@ -990,10 +982,6 @@ msgid "Apply Report Dates To"
 msgstr "Påfør Rapport datoer"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "Innskudd Dato (Standard)"
-
-#: 
 msgid "Payment Date"
 msgstr "Betalingsdato"
 
@@ -1014,10 +1002,6 @@ msgstr "Alle innskudd innen datointervall"
 #, fuzzy
 msgid "Filter by Payment Type"
 msgstr "Filtrer etter betaling Type"
-
-#: 
-msgid "All Methods"
-msgstr "Alle metoder"
 
 #: 
 msgid "Check"
@@ -5623,10 +5607,6 @@ msgid "Funds"
 msgstr "Fond"
 
 #: 
-msgid "Generate Report"
-msgstr "Generer rapport"
-
-#: 
 msgid "Payments"
 msgstr "Betalinger"
 
@@ -6320,10 +6300,6 @@ msgid "Current Deposit"
 msgstr "Gjeldende innskudd"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Tilpassbar rapport med filtrering etter dato, fond, familie og betalingsmetode."
-
-#: 
 msgid "Day"
 msgstr "Dag"
 
@@ -6334,10 +6310,6 @@ msgstr "des."
 #: 
 msgid "Deposit Statistics"
 msgstr "Innskuddsstatistikk"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Detaljert spesifikasjon av en enkelt innskuddsseddel."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -24565,4 +24537,420 @@ msgstr "Bare e-posten du sendte, vises."
 #: 
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "Gjentaende hendelser kunne ikke opprettes. Sjekk applikasjonsloggen for detaljer."
+
+#: 
+msgid "Confirm Password"
+msgstr "Bekreft passord"
+
+#: 
+msgid "Your password has been changed. You can now sign in with your new password."
+msgstr "Passordet ditt er endret. Du kan nå logge inn med det nye passordet."
+
+#: 
+msgid "1st"
+msgstr "1."
+
+#: 
+msgid "2nd"
+msgstr "2."
+
+#: 
+msgid "3rd"
+msgstr "3."
+
+#: 
+msgid "4th"
+msgstr "4."
+
+#: 
+msgid "5th"
+msgstr "5."
+
+#: 
+msgid "Can't remove administrator access from the only administrator who can sign in"
+msgstr "Kan ikke fjerne administratorrettigheter fra den eneste administratoren som kan logge inn"
+
+#: 
+msgid "Choose the week of the month, from 1st to 5th"
+msgstr "Velg uke i måneden, fra 1. til 5."
+
+#: 
+msgid "Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}"
+msgstr "Oppretter {{total}} hendelser, på {{week}} {{day}} hver måned fra {{first}} til {{last}}"
+
+#: 
+msgid "Invalid day of the week"
+msgstr "Ugyldig ukedag"
+
+#: 
+msgid "Monthly, on a weekday"
+msgstr "Månedlig, på en ukedag"
+
+#: 
+msgid "Months without a 5th one are skipped."
+msgstr "Måneder uten en 5. hoppes over."
+
+#: 
+msgid "RecurWOM must be a whole number from 1 to 5"
+msgstr "RecurWOM må være et heltall fra 1 til 5"
+
+#: 
+msgid "Week of the month"
+msgstr "Uke i måneden"
+
+#: 
+msgid "Week of the month must be from 1 to 5"
+msgstr "Uke i måneden må være fra 1 til 5"
+
+#: 
+msgid "%s through %s"
+msgstr "%s til %s"
+
+#: 
+msgid "Church tax ID (EIN) printed on contribution statements"
+msgstr "Kirkens skatte-ID (EIN) trykt på bidragsoppgaver"
+
+#: 
+msgid "Contribution statements are issued to the adults of a household. Please contact the church office if you need one."
+msgstr "Bidragsoppgaver utstedes til de voksne i en husstand. Kontakt kirkekontoret hvis du trenger en."
+
+#: 
+msgid "Download statement"
+msgstr "Last ned oppgave"
+
+#: 
+msgid "Generated"
+msgstr "Generert"
+
+#: 
+msgid "Goods and services"
+msgstr "Varer og tjenester"
+
+#: 
+msgid "My Giving"
+msgstr "Mine gaver"
+
+#: 
+msgid "No contributions"
+msgstr "Ingen bidrag"
+
+#: 
+msgid "No contributions were recorded for this period."
+msgstr "Ingen bidrag ble registrert for denne perioden."
+
+#: 
+msgid "No goods or services were provided in exchange for these contributions, other than intangible religious benefits."
+msgstr "Ingen varer eller tjenester ble levert i bytte mot disse bidragene, bortsett fra immaterielle religiøse fordeler."
+
+#: 
+msgid "Optional. Printed on contribution statements."
+msgstr "Valgfritt. Trykt på bidragsoppgaver."
+
+#: 
+msgid "Tax ID"
+msgstr "Skatte-ID"
+
+#: 
+msgid "Tax ID (EIN)"
+msgstr "Skatte-ID (EIN)"
+
+#: 
+msgid "Tax-deductible amount"
+msgstr "Skattefradragsberettiget beløp"
+
+#: 
+msgid "This is the household statement. It includes gifts for your family."
+msgstr "Dette er husstandsoppgaven. Den inkluderer gaver for familien din."
+
+#: 
+msgid "Total contributions"
+msgstr "Totale bidrag"
+
+#: 
+msgid "Year-end statement"
+msgstr "Årssluttoppgave"
+
+#: 
+msgid "%d giving statement emailed to the family successfully."
+msgstr "%d gaveoppgave sendt på e-post til familien med suksess."
+
+#: 
+msgid "%s Giving Statement"
+msgstr "%s Gaveoppgave"
+
+#: 
+msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "Tilpass teksten som vises på gaveoppgaver (sTaxReport1, sTaxReport2 osv.)."
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %s giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Kjære familie %s,\n"
+"\n"
+"Vedlagt denne e-posten finner du din %s gaveoppgave fra %s.\n"
+"\n"
+"Hvis du har spørsmål, kontakt kirkekontoret.\n"
+"\n"
+"Takk for din generøsitet."
+
+#: 
+msgid "Email %s Giving Statement"
+msgstr "Send %s Gaveoppgave på e-post"
+
+#: 
+msgid "Envelope Numbers"
+msgstr "Konvoluttnumre"
+
+#: 
+msgid "Generate Giving Statements"
+msgstr "Generer gaveoppgaver"
+
+#: 
+msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
+msgstr "Generer rapporter for gaveoppgaver, løftesporing og finansiell analyse."
+
+#: 
+msgid "Giving Reports"
+msgstr "Gaverapporter"
+
+#: 
+msgid "Giving Statement"
+msgstr "Gaveoppgave"
+
+#: 
+msgid "Giving Statements"
+msgstr "Gaveoppgaver"
+
+#: 
+msgid "Giving statement email failed to send. Please check your email server settings."
+msgstr "E-posten med gaveoppgaven kunne ikke sendes. Sjekk e-postserverinnstillingene."
+
+#: 
+msgid "Please mail your next gift to %s"
+msgstr "Send din neste gave med post til %s"
+
+#: 
+msgid "Print %s Giving Statement"
+msgstr "Skriv ut %s Gaveoppgave"
+
+#: 
+msgid "Unable to email giving statement: no payment data found for that year."
+msgstr "Kan ikke sende gaveoppgave på e-post: ingen betalingsdata funnet for det året."
+
+#: 
+msgid "Unable to email giving statement: this family has no email address on file."
+msgstr "Kan ikke sende gaveoppgave på e-post: denne familien har ingen e-postadresse registrert."
+
+#: 
+msgid "Undesignated"
+msgstr "Ikke angitt"
+
+#: 
+msgid "Verify church name, address, and contact info appears on giving statements."
+msgstr "Verifiser at kirkens navn, adresse og kontaktinformasjon vises på gaveoppgaver."
+
+#: 
+msgid "The position is now assigned to %s, who has accepted it."
+msgstr "Stillingen er nå tildelt %s, som har akseptert den."
+
+#: 
+msgid "The position is now assigned to %s, who has not yet accepted it."
+msgstr "Stillingen er nå tildelt %s, som ennå ikke har akseptert den."
+
+#: 
+msgid "Their reason: %s"
+msgstr "Deres grunn: %s"
+
+#: 
+msgid "View Assignments"
+msgstr "Vis tildelinger"
+
+#: 
+msgid "Volunteers still needed for this occurrence: %d"
+msgstr "Frivillige trengs fortsatt for denne forekomsten: %d"
+
+#: 
+msgid "Volunteers still needed for this position: %d"
+msgstr "Frivillige trengs fortsatt for denne stillingen: %d"
+
+#: 
+msgid "A weekly sign-in grid for each class. Class lists and photo books are on the Sunday School dashboard and each class page."
+msgstr "Et ukentlig påloggingsrutenett for hver klasse. Klasselister og fotoalbum er på søndagsskolens dashbord og hver klasseside."
+
+#: 
+msgid "A weekly sign-in grid for the school year, one column for each Sunday"
+msgstr "Et ukentlig påloggingsrutenett for skoleåret, én kolonne for hver søndag"
+
+#: 
+msgid "Age %d"
+msgstr "Alder %d"
+
+#: 
+msgid "At least one group must be selected to make an attendance sheet."
+msgstr "Minst én gruppe må velges for å lage et tilstedeværelsesark."
+
+#: 
+msgid "Attendance Sheet"
+msgstr "Tilstedeværelsesark"
+
+#: 
+msgid "Class List"
+msgstr "Klasseliste"
+
+#: 
+msgid "Download PDF"
+msgstr "Last ned PDF"
+
+#: 
+msgid "Lockout period in minutes\n"
+"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
+msgstr "Låseperiode i minutter\n"
+"En låst konto låser seg opp av seg selv etter så mange minutter. Mislykkede pålogginger fra én IP-adresse telles over samme periode."
+
+#: 
+msgid "Maximum number of failed logins from one IP address\n"
+"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
+"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
+msgstr "Maksimalt antall mislykkede pålogginger fra én IP-adresse\n"
+"Mislykkede pålogginger og forespørsler om tilbakestilling av passord fra én IP-adresse teller mot denne grensen innen låseperioden. Når den er nådd, nektes pålogging fra den adressen til perioden er over.\n"
+"Sett til null for å deaktivere denne funksjonen, for eksempel når alle når ChurchCRM gjennom én proxyadresse."
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "Maksimalt antall mislykkede pålogginger tillatt før en brukerkonto låses.\n"
+"En låst konto låser seg opp av seg selv etter låseperioden, eller tidligere når en administrator tilbakestiller dens mislykkede pålogginger.\n"
+"Denne funksjonen hjelper til med å beskytte mot automatiserte passordgjettingangrep.\n"
+"Sett til null for å deaktivere denne funksjonen."
+
+#: 
+msgid "Minutes until it unlocks by itself: %d"
+msgstr "Minutter til den låser seg opp av seg selv: %d"
+
+#: 
+msgid "Sunday School Attendance Sheet"
+msgstr "Søndagsskolens tilstedeværelsesark"
+
+#: 
+msgid "Sundays with no class are left off the sheet."
+msgstr "Søndager uten undervisning utelates fra arket."
+
+#: 
+msgid "Database Upgrade"
+msgstr "Databaseoppgradering"
+
+#: 
+msgid "Your database is being updated. Please keep this page open until the upgrade finishes."
+msgstr "Databasen din oppdateres. Hold denne siden åpen til oppgraderingen er ferdig."
+
+#: 
+msgid "Family Labels"
+msgstr "Familieetiketter"
+
+#: 
+msgid "%s – Total"
+msgstr "%s – Totalt"
+
+#: 
+msgid "Bill"
+msgstr "Seddel"
+
+#: 
+msgid "Choose a deposit or enter both report dates."
+msgstr "Velg en innskudd eller angi begge rapportdatoene."
+
+#: 
+msgid "Choose one deposit to review its payments or print its bank slip. A selected deposit overrides the date range."
+msgstr "Velg ett innskudd for å gjennomgå betalingene eller skrive ut bankkvitteringen. Et valgt innskudd overstyrer datoperioden."
+
+#: 
+msgid "Coin"
+msgstr "Mynt"
+
+#: 
+msgid "Deposit Report"
+msgstr "Innskuddsrapport"
+
+#: 
+msgid "Download Report"
+msgstr "Last ned rapport"
+
+#: 
+msgid "Enter valid report dates."
+msgstr "Angi gyldige rapportdatoer."
+
+#: 
+msgid "Invalid report filters."
+msgstr "Ugyldige rapportfiltre."
+
+#: 
+msgid "Invalid report options."
+msgstr "Ugyldige rapportalternativer."
+
+#: 
+msgid "Leave filters empty to include all payments. These settings apply to the report, not the bank slip."
+msgstr "La filtrene stå tomme for å inkludere alle betalinger. Disse innstillingene gjelder rapporten, ikke bankkvitteringen."
+
+#: 
+msgid "No records were returned. Adjust your filters and try again."
+msgstr "Ingen poster ble returnert. Juster filtrene og prøv igjen."
+
+#: 
+msgid "Prepare for the Bank"
+msgstr "Forbered for banken"
+
+#: 
+msgid "Preview Totals"
+msgstr "Forhåndsvis totaler"
+
+#: 
+msgid "Print Bank Slip"
+msgstr "Skriv ut bankkvittering"
+
+#: 
+msgid "Print the selected deposit in full, with cash and check totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
+msgstr "Skriv ut det valgte innskuddet i sin helhet, med kontant- og sjekktotaler, telleark og vitnelinjer. Rapportfiltre ignoreres. Elektroniske betalinger forblir i sammendraget og utelates fra den fysiske bankbillettens total."
+
+#: 
+msgid "Review Payments"
+msgstr "Gjennomgå betalinger"
+
+#: 
+msgid "Review payments for a period, or prepare one deposit for the bank."
+msgstr "Gjennomgå betalinger for en periode, eller forbered ett innskudd for banken."
+
+#: 
+msgid "Review payments, download PDF or CSV, or print a bank slip for one deposit."
+msgstr "Gjennomgå betalinger, last ned PDF eller CSV, eller skriv ut en bankkvittering for ett innskudd."
+
+#: 
+msgid "Select a valid deposit."
+msgstr "Velg et gyldig innskudd."
+
+#: 
+msgid "Select one deposit to print a bank slip."
+msgstr "Velg ett innskudd for å skrive ut en bankkvittering."
+
+#: 
+msgid "The report end date must be on or after the start date."
+msgstr "Rapportens sluttdato må være på eller etter startdatoen."
+
+#: 
+msgid "Total Cash"
+msgstr "Total kontant"
+
+#: 
+msgid "Total Coin"
+msgstr "Total mynter"
+
+#: 
+msgid "Witness"
+msgstr "Vitne"
 

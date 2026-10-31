@@ -932,14 +932,6 @@ msgid "Zero Givers"
 msgstr "ஜீரோ கொடுப்பவர்கள்"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "தனிப்பட்ட வைப்பு அறிக்கை"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "மேம்பட்ட வைப்பு அறிக்கை"
-
-#: 
 msgid "Next"
 msgstr "அடுத்தது"
 
@@ -963,10 +955,6 @@ msgid "Apply Report Dates To"
 msgstr "அறிக்கை தேதிகளுக்கு இங்கு விண்ணப்பிக்கவும்"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "டெபாசிட் தேதி (இயல்புநிலை)"
-
-#: 
 msgid "Payment Date"
 msgstr "கட்டணம் தேதி"
 
@@ -987,10 +975,6 @@ msgstr "அனைத்து வைப்புகளும் தேதி வ
 #, fuzzy
 msgid "Filter by Payment Type"
 msgstr "கட்டண வகையின்படி வடிகட்டவும்"
-
-#: 
-msgid "All Methods"
-msgstr "அனைத்து முறைகள்"
 
 #: 
 msgid "Check"
@@ -5551,10 +5535,6 @@ msgid "Funds"
 msgstr "நிதிகள்"
 
 #: 
-msgid "Generate Report"
-msgstr "அறிக்கையை உருவாக்குதல்"
-
-#: 
 msgid "Payments"
 msgstr "கொடுப்பனவுகள்"
 
@@ -6252,10 +6232,6 @@ msgid "Current Deposit"
 msgstr "நடப்பு வைப்பு"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "தேதி, நிதி, குடும்பம் மற்றும் கட்டண முறை மூலம் வடிகட்டுவதன் மூலம் தனிப்பயனாக்கக்கூடிய அறிக்கை."
-
-#: 
 msgid "Day"
 msgstr "நாள்"
 
@@ -6266,10 +6242,6 @@ msgstr "டிசம்பர்"
 #: 
 msgid "Deposit Statistics"
 msgstr "வைப்புத்தொகை புள்ளிவிவரங்கள்"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "ஒற்றை வைப்பு சீட்டின் விரிவான விவரம். "
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."

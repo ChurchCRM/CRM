@@ -3,21 +3,24 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\model\ChurchCRM\Group;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
+use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 
 /**
- * Photo book: for each class, its teachers and then its students, with their photos.
+ * Photo book: for each group, its members with their photos. A Sunday School class lists its
+ * teachers and then its students; any other group lists each role in list order.
  */
 class PhotoBookService
 {
     public const FRAME_WIDTH_MM = 38;
     public const FRAME_HEIGHT_MM = 46;
 
-    private const ROLES = ['Teacher', 'Student'];
+    private const CLASS_ROLES = ['Teacher', 'Student'];
 
     /**
      * @param int[] $groupIds
@@ -32,12 +35,8 @@ class PhotoBookService
                 continue;
             }
 
-            foreach (self::ROLES as $roleName) {
-                $role = ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionName($roleName)->findOne();
-                if ($role === null) {
-                    continue;
-                }
-
+            foreach (self::rolesOf($group) as $role) {
+                $roleName = (string) $role->getOptionName();
                 $memberships = Person2group2roleP2g2rQuery::create()
                     ->filterByGroup($group)
                     ->filterByRoleId($role->getOptionId())
@@ -50,14 +49,30 @@ class PhotoBookService
 
                 $people = [];
                 foreach ($memberships as $membership) {
-                    $people[] = self::describe($membership->getPerson(), $roleName === 'Teacher');
+                    $people[] = self::describe($membership->getPerson(), !$group->isSundaySchool() || $roleName === 'Teacher');
                 }
 
-                $sections[] = ['group_id' => (int) $group->getId(), 'group' => (string) $group->getName(), 'role' => $roleName === 'Teacher' ? gettext('Teachers') : gettext('Students'), 'people' => $people];
+                $sections[] = ['group_id' => (int) $group->getId(), 'group' => (string) $group->getName(), 'role' => $group->isSundaySchool() ? ($roleName === 'Teacher' ? gettext('Teachers') : gettext('Students')) : $roleName, 'people' => $people];
             }
         }
 
         return self::sizeBlanksLikePhotos($sections);
+    }
+
+    /** @return ListOption[] */
+    private static function rolesOf(Group $group): array
+    {
+        $options = ListOptionQuery::create()->filterById($group->getRoleListId())->orderByOptionSequence()->find()->getArrayCopy();
+        if (!$group->isSundaySchool()) {
+            return $options;
+        }
+
+        $byName = [];
+        foreach ($options as $option) {
+            $byName[$option->getOptionName()] = $option;
+        }
+
+        return array_values(array_filter(array_map(fn (string $name): ?ListOption => $byName[$name] ?? null, self::CLASS_ROLES)));
     }
 
     /** A person without a photo gets a blank the size of the first photo in the book. */

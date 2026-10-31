@@ -18,7 +18,6 @@ use ChurchCRM\Service\DashboardService;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Service\GivingStatementService;
 use ChurchCRM\Service\MpdfRenderer;
-use ChurchCRM\Service\PhotoBookService;
 use ChurchCRM\Service\SundaySchoolService;
 use ChurchCRM\Slim\Middleware\Request\Setting\SundaySchoolEnabledMiddleware;
 use ChurchCRM\Utils\FiscalYearUtils;
@@ -107,22 +106,6 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
         ], true);
 
         $fileLabel = 'ClassAttendance ' . date(SystemConfig::getValue('sDateFilenameFormat'));
-        $response->getBody()->write($pdf);
-
-        return $response
-            ->withHeader('Content-Type', 'application/pdf')
-            ->withHeader('Content-Disposition', GivingStatementService::contentDisposition($fileLabel));
-    });
-
-    // Photo book: teachers then students of each class. Needs the group-management role of this app.
-    $group->get('/reports/photo-book', function (Request $request, Response $response) use ($classIds) {
-        $groupIds = $classIds($request);
-
-        $pdf = (new MpdfRenderer())->renderToString('photo-book', [
-            'sections' => PhotoBookService::sections($groupIds),
-        ]);
-        $className = count($groupIds) === 1 ? (string) GroupQuery::create()->findOneById($groupIds[0])?->getName() : '';
-        $fileLabel = trim(ChurchMetaData::getChurchName() . ' ' . $className . ' ' . date(SystemConfig::getValue('sDateFilenameFormat')));
         $response->getBody()->write($pdf);
 
         return $response
