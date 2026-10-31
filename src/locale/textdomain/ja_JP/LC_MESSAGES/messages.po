@@ -925,14 +925,6 @@ msgid "Zero Givers"
 msgstr "寄付ゼロの利用者"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "個別入金レポート"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "詳細入金レポート"
-
-#: 
 msgid "Next"
 msgstr "次"
 
@@ -953,10 +945,6 @@ msgid "Apply Report Dates To"
 msgstr "レポート日付の適用先"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "入金日 (デフォルト)"
-
-#: 
 msgid "Payment Date"
 msgstr "支払日"
 
@@ -975,10 +963,6 @@ msgstr "日付範囲内のすべての入金"
 #: 
 msgid "Filter by Payment Type"
 msgstr "支払いタイプでフィルター"
-
-#: 
-msgid "All Methods"
-msgstr "すべての方法"
 
 #: 
 msgid "Check"
@@ -5517,10 +5501,6 @@ msgid "Funds"
 msgstr "資金"
 
 #: 
-msgid "Generate Report"
-msgstr "レポートを生成"
-
-#: 
 msgid "Payments"
 msgstr "支払い"
 
@@ -6212,10 +6192,6 @@ msgid "Current Deposit"
 msgstr "現在の預金"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "日付、基金、家族、支払い方法でフィルタリングできるカスタマイズ可能なレポート。"
-
-#: 
 msgid "Day"
 msgstr "日"
 
@@ -6226,10 +6202,6 @@ msgstr "12月"
 #: 
 msgid "Deposit Statistics"
 msgstr "預金統計"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "単一の預金伝票の詳細な内訳。"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."

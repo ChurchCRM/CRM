@@ -932,14 +932,6 @@ msgid "Zero Givers"
 msgstr "Нульові дарувальники"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Індивідуальний звіт про депозит"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Розширений звіт про депозит"
-
-#: 
 msgid "Next"
 msgstr "Далі"
 
@@ -963,10 +955,6 @@ msgid "Apply Report Dates To"
 msgstr "Застосувати дати звітів до"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "Дата вкладу (за замовчуванням)"
-
-#: 
 msgid "Payment Date"
 msgstr "Дата оплати"
 
@@ -987,10 +975,6 @@ msgstr "Усі депозити в межах діапазону дат"
 #, fuzzy
 msgid "Filter by Payment Type"
 msgstr "Фільтрувати за типом оплати"
-
-#: 
-msgid "All Methods"
-msgstr "Усі методи"
 
 #: 
 msgid "Check"
@@ -5556,10 +5540,6 @@ msgid "Funds"
 msgstr "Фонди"
 
 #: 
-msgid "Generate Report"
-msgstr "Згенерувати звіт"
-
-#: 
 msgid "Payments"
 msgstr "Платежі"
 
@@ -6257,10 +6237,6 @@ msgid "Current Deposit"
 msgstr "Поточний депозит"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Настроюваний звіт із фільтрацією за датою, фондом, сім'єю та способом оплати."
-
-#: 
 msgid "Day"
 msgstr "День"
 
@@ -6271,10 +6247,6 @@ msgstr "Груд"
 #: 
 msgid "Deposit Statistics"
 msgstr "Статистика депозитів"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Детальна розшифровка однієї депозитної квитанції."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."

@@ -925,14 +925,6 @@ msgid "Zero Givers"
 msgstr "Zero Givers"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Individuele Storting Rapport"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Geavanceerd Storting Rapport"
-
-#: 
 msgid "Next"
 msgstr "Volgende"
 
@@ -953,10 +945,6 @@ msgid "Apply Report Dates To"
 msgstr "Rapportage Datums 'tot' toepassen"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "Storting Datum (Standaard)"
-
-#: 
 msgid "Payment Date"
 msgstr "Betalings Datum"
 
@@ -975,10 +963,6 @@ msgstr "Alle Stortingen tussen datums"
 #: 
 msgid "Filter by Payment Type"
 msgstr "Filter op betalingstype"
-
-#: 
-msgid "All Methods"
-msgstr "Alle Methodes"
 
 #: 
 msgid "Check"
@@ -5522,10 +5506,6 @@ msgid "Funds"
 msgstr "Fondsen"
 
 #: 
-msgid "Generate Report"
-msgstr "Rapport genereren"
-
-#: 
 msgid "Payments"
 msgstr "Betalingen"
 
@@ -6219,10 +6199,6 @@ msgid "Current Deposit"
 msgstr "Huidge Storting"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Aanpasbaar rapport met filteren op datum, fonds, familie en betalingsmethode."
-
-#: 
 msgid "Day"
 msgstr "Dag"
 
@@ -6233,10 +6209,6 @@ msgstr "Dec"
 #: 
 msgid "Deposit Statistics"
 msgstr "Stortingsstatistieken"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Gedetailleerde uitsplitsing van een enkel stortingsbon."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."

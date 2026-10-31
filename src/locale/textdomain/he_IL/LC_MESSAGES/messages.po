@@ -932,14 +932,6 @@ msgid "Zero Givers"
 msgstr "אפס נותנים"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "דוח הפקדות פרטני"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "דוח הפקדות מתקדם"
-
-#: 
 msgid "Next"
 msgstr "הבא"
 
@@ -963,10 +955,6 @@ msgid "Apply Report Dates To"
 msgstr "החל תאריכי דוח על"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "תאריך הפקדה (ברירת מחדל)"
-
-#: 
 msgid "Payment Date"
 msgstr "תאריך תשלום"
 
@@ -987,10 +975,6 @@ msgstr "כל ההפקדות בטווח התאריכים"
 #, fuzzy
 msgid "Filter by Payment Type"
 msgstr "סנן לפי סוג תשלום"
-
-#: 
-msgid "All Methods"
-msgstr "כל השיטות"
 
 #: 
 msgid "Check"
@@ -5550,10 +5534,6 @@ msgid "Funds"
 msgstr "קרנות"
 
 #: 
-msgid "Generate Report"
-msgstr "הפק דוח"
-
-#: 
 msgid "Payments"
 msgstr "תשלומים"
 
@@ -6247,10 +6227,6 @@ msgid "Current Deposit"
 msgstr "הפקדה נוכחית"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "דוח הניתן להתאמה עם סינון לפי תאריך, קרן, משפחה ואמצעי תשלום."
-
-#: 
 msgid "Day"
 msgstr "יום"
 
@@ -6261,10 +6237,6 @@ msgstr "דצמ'"
 #: 
 msgid "Deposit Statistics"
 msgstr "סטטיסטיקת הפקדות"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "פירוט של שובר הפקדה בודד."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."

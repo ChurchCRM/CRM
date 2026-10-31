@@ -931,14 +931,6 @@ msgid "Zero Givers"
 msgstr "Ei-lahjoittajat"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Yksittäinen talletusraportti"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Tarkennettu talletusraportti"
-
-#: 
 msgid "Next"
 msgstr "Seuraava"
 
@@ -959,10 +951,6 @@ msgid "Apply Report Dates To"
 msgstr "Käytä raportin päivämääriä kohteeseen"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "Talletuspäivä (oletus)"
-
-#: 
 msgid "Payment Date"
 msgstr "Maksupäivä"
 
@@ -981,10 +969,6 @@ msgstr "Kaikki talletukset aikavälillä"
 #: 
 msgid "Filter by Payment Type"
 msgstr "Suodata maksutavan mukaan"
-
-#: 
-msgid "All Methods"
-msgstr "Kaikki maksutavat"
 
 #: 
 msgid "Check"
@@ -5523,10 +5507,6 @@ msgid "Funds"
 msgstr "Rahastot"
 
 #: 
-msgid "Generate Report"
-msgstr "Luo raportti"
-
-#: 
 msgid "Payments"
 msgstr "Maksut"
 
@@ -6220,10 +6200,6 @@ msgid "Current Deposit"
 msgstr "Nykyinen talletusliuska"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Muokattava raportti, jonka voit suodattaa päivämäärän, rahaston, perheen ja maksutavan mukaan."
-
-#: 
 msgid "Day"
 msgstr "Päivä"
 
@@ -6234,10 +6210,6 @@ msgstr "Joulu"
 #: 
 msgid "Deposit Statistics"
 msgstr "Talletusliuskan tilastot"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Yksittäisen talletusliuskan yksityiskohtainen erittely."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."

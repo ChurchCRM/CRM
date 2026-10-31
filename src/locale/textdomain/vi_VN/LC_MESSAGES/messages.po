@@ -943,14 +943,6 @@ msgid "Zero Givers"
 msgstr "Zero Givers"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Báo cáo tiền gửi cá nhân"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Báo cáo tiền gửi nâng cao"
-
-#: 
 msgid "Next"
 msgstr "Tiếp"
 
@@ -974,10 +966,6 @@ msgid "Apply Report Dates To"
 msgstr "Áp dụng Ngày Báo cáo Cho"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "Ngày gửi tiền (Mặc định)"
-
-#: 
 msgid "Payment Date"
 msgstr "Ngày thanh toán"
 
@@ -998,10 +986,6 @@ msgstr "Tất cả các khoản tiền gửi trong phạm vi ngày"
 #, fuzzy
 msgid "Filter by Payment Type"
 msgstr "Lọc theo Hình thức Thanh toán"
-
-#: 
-msgid "All Methods"
-msgstr "Tất cả các phương pháp"
 
 #: 
 msgid "Check"
@@ -5557,10 +5541,6 @@ msgid "Funds"
 msgstr "Các quỹ"
 
 #: 
-msgid "Generate Report"
-msgstr "Xuất báo cáo"
-
-#: 
 msgid "Payments"
 msgstr "Các khoản đóng góp"
 
@@ -6252,10 +6232,6 @@ msgid "Current Deposit"
 msgstr "Đợt đóng góp hiện tại"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Báo cáo có thể tùy chỉnh với các bộ lọc."
-
-#: 
 msgid "Day"
 msgstr "Ngày"
 
@@ -6266,10 +6242,6 @@ msgstr "Th12"
 #: 
 msgid "Deposit Statistics"
 msgstr "Thống kê gửi tiền"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Chi tiết phân tích của một phiếu gửi tiền đơn lẻ."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."

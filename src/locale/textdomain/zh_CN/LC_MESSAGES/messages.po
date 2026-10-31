@@ -958,14 +958,6 @@ msgid "Zero Givers"
 msgstr "零言官群体"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "个人存款报告"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "预付订金报告"
-
-#: 
 msgid "Next"
 msgstr "下"
 
@@ -990,10 +982,6 @@ msgid "Apply Report Dates To"
 msgstr "应用报告日期"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "存款日期（默认）"
-
-#: 
 msgid "Payment Date"
 msgstr "付款日期"
 
@@ -1014,10 +1002,6 @@ msgstr "日期范围内的所有存款"
 #, fuzzy
 msgid "Filter by Payment Type"
 msgstr "过滤器的付款方式"
-
-#: 
-msgid "All Methods"
-msgstr "所有方法"
 
 #: 
 msgid "Check"
@@ -5617,10 +5601,6 @@ msgid "Funds"
 msgstr "基金"
 
 #: 
-msgid "Generate Report"
-msgstr "生成报告"
-
-#: 
 msgid "Payments"
 msgstr "付款"
 
@@ -6312,10 +6292,6 @@ msgid "Current Deposit"
 msgstr "当前存款"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "可自定义报告，可按日期、基金、家庭和付款方式过滤。"
-
-#: 
 msgid "Day"
 msgstr "日"
 
@@ -6326,10 +6302,6 @@ msgstr "十二月"
 #: 
 msgid "Deposit Statistics"
 msgstr "存款统计"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "单个存款单的详细明细。"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."

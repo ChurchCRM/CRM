@@ -932,14 +932,6 @@ msgid "Zero Givers"
 msgstr "Zero givers"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Raporti i depozitave individuale"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Avancuar Raporti Depozita"
-
-#: 
 msgid "Next"
 msgstr "Tjetra"
 
@@ -963,10 +955,6 @@ msgid "Apply Report Dates To"
 msgstr "Aplikoni Raporti Datat Për"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "Data Depozita (Default)"
-
-#: 
 msgid "Payment Date"
 msgstr "Data e pagesës"
 
@@ -987,10 +975,6 @@ msgstr "Të gjitha depozitat brenda datës varg"
 #, fuzzy
 msgid "Filter by Payment Type"
 msgstr "Filter sipas llojit të pagesave"
-
-#: 
-msgid "All Methods"
-msgstr "Të gjitha Metodat"
 
 #: 
 msgid "Check"
@@ -5543,10 +5527,6 @@ msgid "Funds"
 msgstr "Fondet"
 
 #: 
-msgid "Generate Report"
-msgstr "Gjenero raport"
-
-#: 
 msgid "Payments"
 msgstr "Pagesat"
 
@@ -6240,10 +6220,6 @@ msgid "Current Deposit"
 msgstr "Depozita aktuale"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Raport i personalizueshëm me filtrim sipas datës, fondit, familjes dhe metodës së pagesës."
-
-#: 
 msgid "Day"
 msgstr "Ditë"
 
@@ -6254,10 +6230,6 @@ msgstr "Dhj"
 #: 
 msgid "Deposit Statistics"
 msgstr "Statistikat e depozitave"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Zbërthimi i detajuar i një flete depozite të vetme."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."

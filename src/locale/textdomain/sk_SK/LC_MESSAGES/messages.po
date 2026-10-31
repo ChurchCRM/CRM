@@ -925,14 +925,6 @@ msgid "Zero Givers"
 msgstr "Nulový darcovia"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Prehľad jednotlivých vkladov"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Rozšírený prehľad vkladov"
-
-#: 
 msgid "Next"
 msgstr "Ďalší"
 
@@ -953,10 +945,6 @@ msgid "Apply Report Dates To"
 msgstr "Použiť dátumy správy na"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "Dátum vkladu (predvolený)"
-
-#: 
 msgid "Payment Date"
 msgstr "Dátum platby"
 
@@ -975,10 +963,6 @@ msgstr "Všetky vklady v rozsahu dátumov"
 #: 
 msgid "Filter by Payment Type"
 msgstr "Filtrovať podľa typu platby"
-
-#: 
-msgid "All Methods"
-msgstr "Všetky metódy"
 
 #: 
 msgid "Check"
@@ -5524,10 +5508,6 @@ msgid "Funds"
 msgstr "Fondy"
 
 #: 
-msgid "Generate Report"
-msgstr "Vygenerovať správu"
-
-#: 
 msgid "Payments"
 msgstr "Platby"
 
@@ -6225,10 +6205,6 @@ msgid "Current Deposit"
 msgstr "Aktuálny vklad"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Prispôsobiteľná správa s filtrovaním podľa dátumu, fondu, rodiny a spôsobu platby."
-
-#: 
 msgid "Day"
 msgstr "Deň"
 
@@ -6239,10 +6215,6 @@ msgstr "Dec"
 #: 
 msgid "Deposit Statistics"
 msgstr "Štatistiky vkladov"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Podrobný rozpis jedného vkladového dokladu."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
