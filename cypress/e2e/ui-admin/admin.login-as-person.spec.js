@@ -1,5 +1,7 @@
 /// <reference types="cypress" />
 
+import { askForEmail, postCode, resetEmailSignIn, restoreSettings, signInEmail, useMemberSignIn } from "../../support/member-sign-in";
+
 // Login as Person (#10463 row 12, docs/member-sign-in-design.md §6.5, §11.3, §17).
 const MEMBER = 2; // Mathew Campbell
 const INACTIVE = 10; // Tom Hart, made inactive below
@@ -7,6 +9,9 @@ const DECEASED = 19; // Laurie Ray
 const STAFF = 3; // Tony Campbell, an Edit Records user
 const DISABLED = 6; // Constance Hart, Disable sign-in set below
 const ADMIN = 1;
+const JON = { personId: 57, email: "jon.olson@example.com" }; // a member who may sign in
+const NO_BANNER_THEME = "e2elapnobanner";
+const NO_BANNER_DIR = `src/Include/themes/${NO_BANNER_THEME}`;
 
 const csrfFrom = (html) => {
     const match = html.match(/data-csrf-token="([^"]+)"/);
@@ -76,9 +81,10 @@ const expectGrayedOutAndRefused = (personId, reason, stored) => {
 
 describe("Login as Person", () => {
     const saved = {};
+    const memberSignIn = {};
 
     before(() => {
-        ["bAllowLoginAsPerson", "bLoginAsPersonCanWrite", "bMemberSignIn"].forEach((name) => {
+        ["bAllowLoginAsPerson", "bLoginAsPersonCanWrite", "bMemberSignIn", "sMemberPortalTheme"].forEach((name) => {
             cy.getSystemConfig(name).then((value) => {
                 saved[name] = value;
             });
@@ -94,7 +100,9 @@ describe("Login as Person", () => {
     });
 
     after(() => {
+        restoreSettings(memberSignIn);
         Object.entries(saved).forEach(([name, value]) => cy.restoreSystemConfig(name, value));
+        cy.exec(`rm -rf ${NO_BANNER_DIR}`, { failOnNonZeroExit: false });
         admin("POST", `admin/api/person/${DISABLED}/sign-in/enable`, null, [200, 409]);
         admin("POST", `api/person/${INACTIVE}/activate/true`);
     });
@@ -193,6 +201,53 @@ describe("Login as Person", () => {
         });
         cy.visit("/v2/dashboard");
         cy.location("pathname").should("match", /\/v2\/dashboard$/);
+    });
+
+    it("shows the person's name as text in the confirm dialog", () => {
+        const markup = 'Login as <img id="login-as-markup" src="x">';
+        cy.intercept("GET", `**/people/view/${MEMBER}`, (request) => {
+            request.continue((response) => {
+                response.body = response.body.replace('data-label="Login as Mathew"', `data-label="${Cypress._.escape(markup)}"`);
+            });
+        });
+        cy.visit(`/people/view/${MEMBER}`);
+        cy.get("#person-actions-dropdown").click();
+        cy.get("#loginAsPerson").click();
+        cy.get(".bootbox .modal-title").should("have.text", markup);
+        cy.get(".bootbox .btn-warning").should("have.text", markup);
+        cy.get("#login-as-markup").should("not.exist");
+    });
+
+    it("ends Login as Person when a member signs in in the same browser", () => {
+        // With changes off the sign-in form's POST is refused like any other write.
+        setSetting("bLoginAsPersonCanWrite", "1");
+        useMemberSignIn(memberSignIn);
+        resetEmailSignIn([JON.personId]);
+        cy.freshAdminFormLogin();
+        startLoginAsPerson(MEMBER).its("status").should("eq", 200);
+        newestAuditId(MEMBER).then((afterId) => {
+            askForEmail(JON.email);
+            signInEmail(JON.email).then(({ code }) => postCode(code).its("status").should("eq", 200));
+            cy.request("/api/portal/me").its("body.profile.id").should("eq", JON.personId);
+            cy.request({ url: `/api/person/${MEMBER}`, failOnStatusCode: false }).its("status").should("eq", 401);
+            auditSince(MEMBER, afterId).should("deep.equal", [
+                { event: "session_ended", method: "assisted", reason: "replaced", actorId: ADMIN },
+            ]);
+        });
+    });
+
+    it("adds the banner with Stop to a theme layout that leaves it out", () => {
+        cy.writeFile(
+            `${NO_BANNER_DIR}/templates/layout.html.twig`,
+            '<!doctype html>\n<html><head><title>No banner</title></head>\n<body class="portal-body">{% block content %}{% endblock %}</body></html>\n',
+        );
+        setSetting("sMemberPortalTheme", NO_BANNER_THEME).its("status").should("eq", 200);
+        cy.freshAdminFormLogin();
+        startLoginAsPerson(MEMBER).its("status").should("eq", 200);
+        cy.visit("/portal/");
+        cy.get("#login-as-person-banner").should("contain", "logged in as Mathew Campbell");
+        cy.get("#login-as-person-stop").click();
+        cy.location("pathname").should("match", new RegExp(`/people/view/${MEMBER}$`));
     });
 
     it("leaves the member's activity, sign-in record and statistics alone", () => {
