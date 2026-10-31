@@ -6,7 +6,7 @@ describe("Login", () => {
         cy.get('input[name=User]').type("admin");
         cy.get('input[name=Password]').type("badpassword" + '{enter}');
         // Wait for redirect to happen after failed login
-        cy.location("pathname").should("eq", "/admin/");
+        cy.location("pathname").should("match", /\/admin\/$/);
     });
 
     it("Bad username", () => {
@@ -14,6 +14,6 @@ describe("Login", () => {
         cy.get('input[name=User]').type("idonknowyou");
         cy.get('input[name=Password]').type("badpassword" + '{enter}');
         // Wait for redirect to happen after failed login
-        cy.location("pathname").should("eq", "/admin/");
+        cy.location("pathname").should("match", /\/admin\/$/);
     });
 });

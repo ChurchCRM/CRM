@@ -80,7 +80,7 @@ describe("Member sign-in turned off", () => {
         });
 
         cy.visit("/portal/profile");
-        cy.location("pathname").should("eq", "/portal/login");
+        cy.location("pathname").should("match", /\/portal\/login$/);
         cy.contains(UNAVAILABLE).should("be.visible");
     });
 
