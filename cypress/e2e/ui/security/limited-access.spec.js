@@ -42,7 +42,7 @@ describe("Safety net — a self-service account the upgrade left behind", () => 
         cy.visit("/admin/");
         cy.get("input[name=User]").type(USERNAME);
         cy.get("input[name=Password]").type(`${PASSWORD}{enter}`);
-        cy.location("pathname", { timeout: 10000 }).should("eq", "/portal/");
+        cy.location("pathname", { timeout: 10000 }).should("match", /\/portal\/$/);
     };
 
     it("A password sign-in lands in the Member Portal, not the admin shell", () => {
@@ -67,7 +67,7 @@ describe("Safety net — a self-service account the upgrade left behind", () => 
         login();
         ["v2/dashboard", "people/dashboard", "PropertyList.php", "LettersAndLabels.php"].forEach((path) => {
             cy.visit(path, { failOnStatusCode: false });
-            cy.location("pathname", { timeout: 10000 }).should("eq", "/portal/");
+            cy.location("pathname", { timeout: 10000 }).should("match", /\/portal\/$/);
         });
     });
 

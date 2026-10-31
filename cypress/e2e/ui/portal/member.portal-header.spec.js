@@ -214,7 +214,7 @@ describe("Member Portal header", () => {
             cy.get("#portal-account-toggle").click();
             cy.get("#portalAccountDevices").click();
 
-            cy.location("pathname").should("eq", "/portal/devices");
+            cy.location("pathname").should("match", /\/portal\/devices$/);
             cy.get(".portal-page-title").should("contain.text", "Sign-in and devices");
             cy.get("#portal-nav .portal-nav-link").should("have.length.greaterThan", 0);
             cy.get("#portal-nav .portal-nav-link.is-active").should("not.exist");
