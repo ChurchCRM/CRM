@@ -79,6 +79,8 @@ describe('05 - Post-Reset Verification', () => {
             cy.visit('/');
 
             cy.location('pathname', { timeout: 30000 }).should('match', /\/admin\/$/);
+
+            cy.get('input[name=User]', { timeout: 30000 }).should('be.visible');
         });
 
         it('should login with default credentials after reset', () => {
