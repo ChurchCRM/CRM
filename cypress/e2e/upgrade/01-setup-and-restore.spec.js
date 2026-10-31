@@ -123,6 +123,7 @@ describe('Upgrade via Restore', () => {
             cy.get('#setup-footer', { timeout: 10000 }).should('be.visible');
             cy.get('#continue-to-login').should('be.visible').click();
             cy.location('pathname', { timeout: 10000 }).should('match', /\/admin\/$/);
+            cy.get('input[name=User]', { timeout: 10000 }).should('be.visible');
         });
 
         it('should complete forced password change', () => {
@@ -214,6 +215,7 @@ describe('Upgrade via Restore', () => {
 
             // Wait for page to redirect to login after restore completes
             cy.location('pathname', { timeout: 30000 }).should('match', /\/admin\/$/);
+            cy.get('input[name=User]', { timeout: 30000 }).should('be.visible');
         });
     });
 
