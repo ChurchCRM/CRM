@@ -1,27 +1,16 @@
 -- Rename sTaxReport settings to Giving Statement names.
--- Copy each old value to the new key when the new key does not yet exist,
--- so churches keep their saved text. The old rows stay for downgrade safety.
+-- Copy each old value to the new key, then delete the old rows.
 
-INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`)
-SELECT 0, 'sGivingStatementOpening', `cfg_value`
-FROM `config_cfg`
-WHERE `cfg_name` = 'sTaxReport1'
-  AND NOT EXISTS (SELECT 1 FROM `config_cfg` AS c2 WHERE c2.`cfg_name` = 'sGivingStatementOpening');
+INSERT IGNORE INTO `config_cfg` (`cfg_name`, `cfg_value`)
+SELECT 'sGivingStatementOpening', `cfg_value` FROM `config_cfg` WHERE `cfg_name` = 'sTaxReport1';
 
-INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`)
-SELECT 0, 'sGivingStatementClosing', `cfg_value`
-FROM `config_cfg`
-WHERE `cfg_name` = 'sTaxReport2'
-  AND NOT EXISTS (SELECT 1 FROM `config_cfg` AS c2 WHERE c2.`cfg_name` = 'sGivingStatementClosing');
+INSERT IGNORE INTO `config_cfg` (`cfg_name`, `cfg_value`)
+SELECT 'sGivingStatementClosing', `cfg_value` FROM `config_cfg` WHERE `cfg_name` = 'sTaxReport2';
 
-INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`)
-SELECT 0, 'sGivingStatementQuestions', `cfg_value`
-FROM `config_cfg`
-WHERE `cfg_name` = 'sTaxReport3'
-  AND NOT EXISTS (SELECT 1 FROM `config_cfg` AS c2 WHERE c2.`cfg_name` = 'sGivingStatementQuestions');
+INSERT IGNORE INTO `config_cfg` (`cfg_name`, `cfg_value`)
+SELECT 'sGivingStatementQuestions', `cfg_value` FROM `config_cfg` WHERE `cfg_name` = 'sTaxReport3';
 
-INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`)
-SELECT 0, 'sGivingStatementSigner', `cfg_value`
-FROM `config_cfg`
-WHERE `cfg_name` = 'sTaxSigner'
-  AND NOT EXISTS (SELECT 1 FROM `config_cfg` AS c2 WHERE c2.`cfg_name` = 'sGivingStatementSigner');
+INSERT IGNORE INTO `config_cfg` (`cfg_name`, `cfg_value`)
+SELECT 'sGivingStatementSigner', `cfg_value` FROM `config_cfg` WHERE `cfg_name` = 'sTaxSigner';
+
+DELETE FROM `config_cfg` WHERE `cfg_name` IN ('sTaxReport1', 'sTaxReport2', 'sTaxReport3', 'sTaxSigner');
