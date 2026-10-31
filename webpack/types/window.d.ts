@@ -282,6 +282,8 @@ interface CRMNamespace {
   /** ChurchCRM's configured locale, e.g. `en_US` (src/Include/Header.php). */
   locale?: string;
   settingsPanel?: CRMSettingsPanel;
+  /** A fresh panel per container, for pages with several. */
+  SettingsPanel?: new () => CRMSettingsPanel;
   timeZone?: string;
   plugins?: CRMPlugins;
   plugin?: CRMPluginDefaults;
@@ -387,6 +389,9 @@ interface Window {
       getOrCreateInstance(el: Element): BootstrapModalInstance;
       getInstance(el: Element): BootstrapModalInstance | null;
       new (el: Element, options?: Record<string, unknown>): BootstrapModalInstance;
+    };
+    Collapse?: {
+      getOrCreateInstance(el: Element, options?: Record<string, unknown>): { show(): void; hide(): void };
     };
   };
 }

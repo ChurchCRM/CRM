@@ -5,6 +5,7 @@ namespace ChurchCRM\Service;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\PersonDevice;
 use ChurchCRM\model\ChurchCRM\PersonDeviceQuery;
+use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Portal\Auth\PortalSessionStarter;
 use ChurchCRM\Portal\Auth\PortalSessionStore;
 use ChurchCRM\Portal\Auth\PortalSignInRefusedException;
@@ -165,12 +166,15 @@ final class RememberedDeviceService
         return $rows;
     }
 
-    /** The member signs out one of their own devices. False when it isn't theirs or is already signed out. */
-    public function signOutDevice(int $personId, int $deviceId): bool
+    /**
+     * The member, or an administrator on the person page, signs out one of the
+     * person's devices. False when it isn't theirs or is already signed out.
+     */
+    public function signOutDevice(int $personId, int $deviceId, ?User $actor = null): bool
     {
         $device = PersonDeviceQuery::create()->filterByPersonId($personId)->findPk($deviceId);
 
-        return $device instanceof PersonDevice && $this->revoke($device, SignInReason::SIGNED_OUT);
+        return $device instanceof PersonDevice && $this->revoke($device, SignInReason::SIGNED_OUT, $actor);
     }
 
     /** Sign out forgets the device this session was kept on. */
@@ -299,7 +303,7 @@ final class RememberedDeviceService
         return true;
     }
 
-    private function revoke(PersonDevice $device, SignInReason $reason): bool
+    private function revoke(PersonDevice $device, SignInReason $reason, ?User $actor = null): bool
     {
         $revoked = PersonDeviceQuery::create()
             ->filterById($device->getId())
@@ -309,7 +313,13 @@ final class RememberedDeviceService
             return false;
         }
 
-        SignInAudit::record(SignInAuditEvent::DEVICE_REMOVED, (int) $device->getPersonId(), reason: $reason, detail: $device->getLabel());
+        SignInAudit::record(
+            SignInAuditEvent::DEVICE_REMOVED,
+            (int) $device->getPersonId(),
+            reason: $reason,
+            actorUserId: $actor === null ? null : (int) $actor->getId(),
+            detail: $device->getLabel(),
+        );
 
         return true;
     }

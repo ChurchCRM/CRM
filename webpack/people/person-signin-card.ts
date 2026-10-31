@@ -5,6 +5,8 @@
  * which posts to /api/person/{id}/sign-in/confirm-email. Each reloads the page.
  */
 
+import { reloadSignInCard } from "./person-portal-access";
+
 interface ApiError {
   message?: string;
 }
@@ -76,7 +78,7 @@ function wireDisable(card: HTMLElement): void {
       return;
     }
     window.CRM?.notify?.(t("Sign-in is disabled for this person."), { type: "success" });
-    window.location.reload();
+    reloadSignInCard();
   });
 }
 
@@ -91,7 +93,7 @@ function wireEnable(card: HTMLElement): void {
       return;
     }
     window.CRM?.notify?.(t("Sign-in is enabled for this person."), { type: "success" });
-    window.location.reload();
+    reloadSignInCard();
   });
 }
 
@@ -110,7 +112,7 @@ function wireSignOutEverywhere(card: HTMLElement): void {
       return;
     }
     window.CRM?.notify?.(t("This person is signed out of the Member Portal everywhere."), { type: "success" });
-    window.location.reload();
+    reloadSignInCard();
   };
 
   button.addEventListener("click", () => {
@@ -151,7 +153,7 @@ function wireConfirmEmail(card: HTMLElement): void {
       return;
     }
     window.CRM?.notify?.(t("The email is confirmed. It can now be used to sign in."), { type: "success" });
-    window.location.reload();
+    reloadSignInCard();
   };
 
   button.addEventListener("click", () => {

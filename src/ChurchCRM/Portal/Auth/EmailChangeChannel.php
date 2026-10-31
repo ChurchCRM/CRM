@@ -14,4 +14,6 @@ enum EmailChangeChannel: string
     case API = 'api';
     case REGISTRATION = 'registration';
     case PORTAL = 'portal';
+    /** Fix shared emails, on the Email needs attention list: an address two people shared was cleared. */
+    case SHARED_EMAIL_FIX = 'shared_email_fix';
 }

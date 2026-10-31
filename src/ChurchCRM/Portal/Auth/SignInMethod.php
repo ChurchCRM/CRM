@@ -43,4 +43,17 @@ enum SignInMethod: string
     {
         return $this !== self::STAFF && $this !== self::ASSISTED;
     }
+
+    /** For staff screens: the admin lists and the audit view. */
+    public function label(): string
+    {
+        return match ($this) {
+            self::EMAIL_LINK => gettext('Email link'),
+            self::EMAIL_CODE => gettext('Email code'),
+            self::DEVICE => gettext('Remembered device'),
+            self::PASSKEY => gettext('Passkey'),
+            self::STAFF => gettext('From a staff sign-in'),
+            self::ASSISTED => gettext('Login as User'),
+        };
+    }
 }

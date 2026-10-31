@@ -278,7 +278,7 @@ final class PortalAuthorizationService implements PortalAuthorization
      *
      * @return array<string, true>
      */
-    private static function missingScopes(array $scopes): array
+    public static function missingScopes(array $scopes): array
     {
         $ids = [];
         foreach ($scopes as $scope) {
@@ -322,7 +322,7 @@ final class PortalAuthorizationService implements PortalAuthorization
      * A grant counts only for a known capability on a scope of its type. A
      * plugin's rule may give only that plugin's own capabilities.
      */
-    private static function fitsCatalog(string $capability, PortalScope $scope, ?string $ruleOwner = null): bool
+    public static function fitsCatalog(string $capability, PortalScope $scope, ?string $ruleOwner = null): bool
     {
         $definition = PortalCapabilityRegistry::get($capability);
 

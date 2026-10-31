@@ -17,7 +17,7 @@ const AMANDA_EMAIL = "amanda.black@example.com";
 const MATHEW_EMAIL = "mathew.campbell@example.com";
 const PREFIX = "PERM10463";
 const VERSION_URL = "/admin/api/system/config/sVolunteerVersion";
-const touchedConfig = ["iSessionTimeout", "bPortalShowCalendar", "bPortalShowVolunteer"];
+const touchedConfig = ["iSessionTimeout", "bPortalShowVolunteer"];
 
 let ministryId = 0;
 let teamLed = 0;
@@ -89,8 +89,12 @@ function cleanupFixtures() {
 
 describe("Member Portal permissions (portal permissions model)", () => {
     const savedConfig = {};
+    let savedCalendars;
 
     before(() => {
+        cy.getMemberPortalCalendars().then((calendars) => {
+            savedCalendars = calendars;
+        });
         db(`SELECT cfg_name, cfg_value FROM config_cfg WHERE cfg_name IN (${touchedConfig.map(() => "?").join(", ")})`, touchedConfig).then(
             (rows) => {
                 rows.forEach((row) => {
@@ -156,6 +160,7 @@ describe("Member Portal permissions (portal permissions model)", () => {
     after(() => {
         cleanupFixtures();
         cy.makePrivateAdminAPICall("POST", VERSION_URL, { value: originalVersion }, 200);
+        cy.then(() => cy.shareMemberPortalCalendars(savedCalendars));
     });
 
     describe("Team leaders", () => {
@@ -313,14 +318,18 @@ describe("Member Portal permissions (portal permissions model)", () => {
     });
 
     describe("Feature switches", () => {
-        it("denies the calendar to everyone while it is switched off", () => {
+        it("denies the calendar to everyone while no calendar is shared", () => {
+            cy.shareMemberPortalCalendars([{ type: "calendar", id: 1 }]);
             signIn(LEADER);
             status("/portal/calendar").should("eq", 200);
             status("/api/portal/calendar/events").should("eq", 200);
+            navIds().should("include", "/portal/calendar");
 
-            setConfig("bPortalShowCalendar", "0");
+            cy.shareMemberPortalCalendars([]);
+            signIn(LEADER);
             status("/portal/calendar").should("eq", 404);
             status("/api/portal/calendar/events").should("eq", 404);
+            status("/api/portal/calendar/subscription").should("eq", 404);
             navIds().should("not.include", "/portal/calendar");
         });
 

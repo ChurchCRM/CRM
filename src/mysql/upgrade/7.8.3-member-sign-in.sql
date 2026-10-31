@@ -350,3 +350,16 @@ CREATE TABLE IF NOT EXISTS `person_email_change_pec` (
   CONSTRAINT `fk_pec_person` FOREIGN KEY (`pec_per_ID`)
       REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ============================================================================
+-- BEGIN: member portal calendar follows the shared calendars
+-- ============================================================================
+-- bPortalShowCalendar is retired: the portal shows its calendar while at least
+-- one calendar is shared with members (aPortalCalendars). An install that had
+-- the switch off ('0' or '', as PHP reads it) keeps the calendar hidden by
+-- sharing none. Safe to run again.
+SET @portal_calendar_off = (SELECT COUNT(*) FROM `config_cfg`
+  WHERE `cfg_name` = 'bPortalShowCalendar' AND `cfg_value` IN ('', '0'));
+DELETE FROM `config_cfg` WHERE `cfg_name` = 'aPortalCalendars' AND @portal_calendar_off > 0;
+DELETE FROM `config_cfg` WHERE `cfg_name` = 'bPortalShowCalendar';
+-- END: member portal calendar follows the shared calendars

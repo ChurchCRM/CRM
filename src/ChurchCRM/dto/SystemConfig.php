@@ -273,7 +273,6 @@ class   SystemConfig
             // admin page, Admin → Member Portal (design P9, §4).
             'sMemberPortalTheme'                   => new ConfigItem('sMemberPortalTheme', 'text', 'default', gettext('Folder name of the Member Portal theme to use, from Include/themes/. "default" is the system theme that ships with ChurchCRM.')),
             'bPortalDeveloperMode'                 => new ConfigItem('bPortalDeveloperMode', 'boolean', '0', gettext('Turn off the Member Portal template cache and print the name of each template in an HTML comment. For theme designers; leave off in normal use.')),
-            'bPortalShowCalendar'                  => new ConfigItem('bPortalShowCalendar', 'boolean', '1', gettext('Show the church calendar in the Member Portal.')),
             'bPortalShowVolunteer'                 => new ConfigItem('bPortalShowVolunteer', 'boolean', '1', gettext('Show volunteering and team pages in the Member Portal.')),
             'bPortalAllowBirthdayEdit'             => new ConfigItem('bPortalAllowBirthdayEdit', 'boolean', '0', gettext('Let members change their own and their family members\' birthdays in the Member Portal.')),
             // The calendars the Member Portal shows, as a JSON list of
@@ -387,14 +386,17 @@ class   SystemConfig
     }
 
     /**
-     * @param \ChurchCRM\model\ChurchCRM\Config[] $configs
+     * @param \ChurchCRM\model\ChurchCRM\Config[]|null $configs the stored rows
+     * @param bool $pruneUnknown delete rows no ConfigItem declares. Only Bootstrapper
+     *                           passes true, once the database is current, so an
+     *                           upgrade script can still read a retired key
      */
-    public static function init($configs = null): void
+    public static function init($configs = null, bool $pruneUnknown = false): void
     {
         self::$configs = self::buildConfigs();
         self::$categories = self::buildCategories();
         if (!empty($configs)) {
-            self::scrapeDBConfigs($configs);
+            self::scrapeDBConfigs($configs, $pruneUnknown);
         }
     }
 
@@ -414,13 +416,13 @@ class   SystemConfig
     /**
      * @param \ChurchCRM\model\ChurchCRM\Config[] $configs
      */
-    private static function scrapeDBConfigs($configs): void
+    private static function scrapeDBConfigs($configs, bool $pruneUnknown): void
     {
         foreach ($configs as $config) {
             if (isset(self::$configs[$config->getName()])) {
                 //if the current config set defined by code contains the current config retrieved from the db, then cache it
                 self::$configs[$config->getName()]->setDBConfigObject($config);
-            } else {
+            } elseif ($pruneUnknown) {
                 //there's a config item in the DB that doesn't exist in the current code.
                 //don't delete dynamic keys like plugin.* configs - they're managed by plugins
                 if (strpos($config->getName(), 'plugin.') !== 0) {

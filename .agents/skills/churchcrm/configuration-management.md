@@ -15,11 +15,15 @@ Define the `ConfigItem` in `SystemConfig::buildConfigs()` (that persists the val
 
 ### Member Portal settings
 
-`/admin/member-portal` (`src/admin/routes/member-portal.php`, `src/admin/views/member-portal.php`) hosts the portal's settings on its **Settings** tab through the Settings Panel component. Its `ConfigItem`s (`sMemberPortalTheme`, `bPortalDeveloperMode`, `bPortalShowCalendar`, `bPortalShowVolunteer`, `bPortalAllowBirthdayEdit`) are declared in `buildConfigs()`.
+`/admin/member-portal` (`src/admin/routes/member-portal.php`, `src/admin/views/member-portal.php`) hosts the portal's settings, each in the tab it affects, through the Settings Panel component: `bPortalDeveloperMode` on Themes, `bPortalAllowBirthdayEdit` and `bPortalShowVolunteer` on Permissions. Its `ConfigItem`s (`sMemberPortalTheme`, `aPortalCalendars` and those three) are declared in `buildConfigs()`. The Calendars tab saves `aPortalCalendars` one switch at a time; the portal shows its calendar while at least one calendar is switched on.
 
-The booleans save through `POST /admin/api/system/config/{name}`. `sMemberPortalTheme` saves through `POST /admin/api/member-portal/theme`, which runs `ThemeManager::validate()` and answers 409 with the findings when the theme cannot render.
+The booleans auto-save through `POST /admin/api/system/config/{name}`. `sMemberPortalTheme` saves through `POST /admin/api/member-portal/theme`, which runs `ThemeManager::validate()` and answers 409 with the findings when the theme cannot render.
 
-The **Sign-in** tab owns the keys in `MemberSignInSettingsService::KEYS` and saves them through `POST /admin/api/member-portal/sign-in`, all or none. The generic config API routes those keys through the same `normalize()`, so a rule such as "member sign-in only while email works" holds whichever way a value is written.
+The **Sign-in** tab owns the keys in `MemberSignInSettingsService::KEYS`. Each control saves as it changes by posting that one key to `POST /admin/api/member-portal/sign-in` (any subset, all or none); a refused value goes back to the saved one, and turning member sign-in on or off asks first. The generic config API routes those keys through the same `normalize()`, so a rule such as "member sign-in only while email works" holds whichever way a value is written.
+
+### Retiring a key
+
+Remove the `ConfigItem` and carry its meaning over in the release's upgrade SQL, which may still read the old `config_cfg` row and must delete it. Only `Bootstrapper` prunes rows no `ConfigItem` declares (`SystemConfig::init($rows, true)`), and only once the database is current, so the upgrade runs before they go. An upgrade script that calls `SystemConfig::init($rows)` itself keeps them.
 
 ## SystemConfig
 

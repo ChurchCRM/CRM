@@ -10,7 +10,8 @@ use ChurchCRM\Utils\InputUtils;
  * turn Disable sign-in on or off and sign the person out everywhere.
  *
  * Variables: $portalSignIn (PersonSignInService::statusFor()), $portalSignInCanManage,
- * $portalSignInIsSelf, $portalSignInCsrfToken, $iPersonID.
+ * $portalSignInIsSelf, $portalSignInCsrfToken, $iPersonID, and for administrators
+ * $portalAccess and $portalGrantChoices (partials/portal-signin-access.php).
  * Behaviour: webpack/people/person-signin-card.ts.
  */
 ?>
@@ -75,6 +76,9 @@ use ChurchCRM\Utils\InputUtils;
             <li class="mb-1" id="portal-signin-devices"><i class="fa-solid fa-laptop me-2 text-body-secondary"></i><?= sprintf(gettext('Remembered devices: %d'), (int) $portalSignIn['devices']) ?></li>
             <li class="mb-1" id="portal-signin-passkeys"><i class="fa-solid fa-key me-2 text-body-secondary"></i><?= sprintf(gettext('Passkeys: %d'), (int) $portalSignIn['passkeys']) ?></li>
         </ul>
+        <?php if ($portalAccess !== null) : ?>
+            <?php include __DIR__ . '/portal-signin-access.php'; ?>
+        <?php endif; ?>
     </div>
     <?php if ($portalSignInCanManage) : ?>
         <div class="card-footer d-flex flex-wrap gap-2">

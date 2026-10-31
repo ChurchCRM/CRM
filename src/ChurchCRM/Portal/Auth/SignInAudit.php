@@ -2,11 +2,14 @@
 
 namespace ChurchCRM\Portal\Auth;
 
+use ChurchCRM\model\ChurchCRM\Map\PortalSigninAuditTableMap;
 use ChurchCRM\model\ChurchCRM\PortalSigninAudit;
 use ChurchCRM\model\ChurchCRM\PortalSigninAuditQuery;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use DateTimeImmutable;
+use Propel\Runtime\Propel;
+use RuntimeException;
 use Throwable;
 
 /**
@@ -59,6 +62,31 @@ final class SignInAudit
             ]);
 
             return null;
+        }
+    }
+
+    /**
+     * Makes a change and writes its row in one transaction. When the row
+     * cannot be written, the change is rolled back and an exception thrown:
+     * for a change whose row is its only record of who made it.
+     *
+     * @param callable(): mixed      $change
+     * @param callable(): (int|null) $record writes the row with record()
+     */
+    public static function withChange(callable $change, callable $record): void
+    {
+        $connection = Propel::getWriteConnection(PortalSigninAuditTableMap::DATABASE_NAME);
+        $connection->beginTransaction();
+        try {
+            $change();
+            if ($record() === null) {
+                throw new RuntimeException('The member sign-in audit row could not be written, so the change was not made');
+            }
+            $connection->commit();
+        } catch (Throwable $e) {
+            $connection->rollBack();
+
+            throw $e;
         }
     }
 
