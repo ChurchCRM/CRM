@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-31 09:48+0000\n"
+"POT-Creation-Date: 2026-10-31 10:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -167,6 +167,10 @@ msgid "%d files will be permanently deleted."
 msgstr ""
 
 #, php-format
+msgid "%d gifts have no family. They cannot be on a statement."
+msgstr ""
+
+#, php-format
 msgid "%d giving statement emailed to the family successfully."
 msgstr ""
 
@@ -205,6 +209,10 @@ msgstr[0] ""
 msgstr[1] ""
 
 #, php-format
+msgid "%d open deposits dated in this year. Close them so every gift is final before statements go out."
+msgstr ""
+
+#, php-format
 msgid "%d orphaned files were detected on your server."
 msgstr ""
 
@@ -213,6 +221,10 @@ msgid "%d past event"
 msgid_plural "%d past events"
 msgstr[0] ""
 msgstr[1] ""
+
+#, php-format
+msgid "%d payments are not on any deposit yet."
+msgstr ""
 
 #, php-format
 msgid "%d person"
@@ -2585,6 +2597,9 @@ msgstr ""
 msgid "Campaigns Sent"
 msgstr ""
 
+msgid "Can be emailed"
+msgstr ""
+
 msgid "Can only review and verify their own family. No other access."
 msgstr ""
 
@@ -3424,6 +3439,9 @@ msgid "Closest"
 msgstr ""
 
 msgid "Closing"
+msgstr ""
+
+msgid "Closing line"
 msgstr ""
 
 #. Context: countries
@@ -5872,13 +5890,22 @@ msgstr ""
 msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
 msgstr ""
 
+msgid "Every deposit dated in this year is closed."
+msgstr ""
+
 msgid "Every email ChurchCRM sent, newest first"
+msgstr ""
+
+msgid "Every gift belongs to a family."
 msgstr ""
 
 msgid "Every matching occurrence between From and To will get its own event at the same Start/End time."
 msgstr ""
 
 msgid "Every month on the"
+msgstr ""
+
+msgid "Every payment in this year is on a deposit."
 msgstr ""
 
 msgid "Every position in this window has the people it needs."
@@ -7205,6 +7232,9 @@ msgstr ""
 msgid "Generate Statements for Selected"
 msgstr ""
 
+msgid "Generate Tax Statements"
+msgstr ""
+
 msgid "Generate again closer to its first date."
 msgstr ""
 
@@ -7357,6 +7387,9 @@ msgid "Give the team a name"
 msgstr ""
 
 msgid "Giving History"
+msgstr ""
+
+msgid "Giving Report (Tax Statements)"
 msgstr ""
 
 msgid "Giving Reports"
@@ -11231,6 +11264,9 @@ msgstr ""
 msgid "Opening a calendar to ministries requires Add Events permission"
 msgstr ""
 
+msgid "Opening line"
+msgstr ""
+
 msgid "Opens a 2-minute window for devices to register at"
 msgstr ""
 
@@ -12315,6 +12351,9 @@ msgstr ""
 msgid "Print Labels"
 msgstr ""
 
+msgid "Print and mail"
+msgstr ""
+
 msgid "Print name tags"
 msgstr ""
 
@@ -13100,6 +13139,9 @@ msgid "Review the plugin files on disk before enabling. Unverified plugins run w
 msgstr ""
 
 msgid "Review the request on the volunteer dashboard and approve or reject it."
+msgstr ""
+
+msgid "Review the year, then print or email giving statements."
 msgstr ""
 
 msgid "Review this request"
@@ -14179,6 +14221,9 @@ msgstr ""
 msgid "Signature definition file signature failed validation"
 msgstr ""
 
+msgid "Signed by"
+msgstr ""
+
 msgid "Signed in"
 msgstr ""
 
@@ -14948,6 +14993,9 @@ msgid "Thank you. The church office has your answer."
 msgstr ""
 
 msgid "Thank you. The church office will review this before it is added."
+msgstr ""
+
+msgid "Thank-you line"
 msgstr ""
 
 msgid "Thanks for letting us know."
@@ -17044,6 +17092,9 @@ msgstr ""
 msgid "Verify church name, address, and contact info appears on giving statements."
 msgstr ""
 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr ""
+
 msgid "Verify fund names and descriptions are accurate for statements."
 msgstr ""
 
@@ -17769,6 +17820,9 @@ msgid "Year, 2 digits"
 msgstr ""
 
 msgid "Year, 4 digits"
+msgstr ""
+
+msgid "Year-End Giving"
 msgstr ""
 
 msgid "Year-end statement"
