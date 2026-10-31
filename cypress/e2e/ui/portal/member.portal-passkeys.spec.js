@@ -12,6 +12,7 @@ import {
     signInEmail,
     useMemberSignIn,
 } from "../../../support/member-sign-in";
+import { setPasskeySignCount } from "../../../support/member-sign-in-fixtures";
 import {
     addVirtualAuthenticator,
     authenticatorCredentials,
@@ -338,7 +339,7 @@ describe("Member Portal passkeys", () => {
     });
 
     describe("the signature counter", () => {
-        const storedCount = (count) => db("UPDATE person_passkey_ppk SET ppk_SignCount = ? WHERE ppk_per_ID = ?", [count, member.personId]);
+        const storedCount = (count) => setPasskeySignCount(member.personId, count);
 
         beforeEach(() => {
             signInWithCode({ remember: false });

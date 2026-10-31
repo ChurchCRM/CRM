@@ -284,6 +284,8 @@ class   SystemConfig
             // install starts with. Read and written through
             // ChurchCRM\Portal\PortalCalendarService, never by hand.
             'aPortalCalendars'                     => new ConfigItem('aPortalCalendars', 'json', '[]', gettext('Calendars the Member Portal shows to members, chosen on Admin -> Member Portal -> Calendars.')),
+            'bPortalShowDirectory'                 => new ConfigItem('bPortalShowDirectory', 'boolean', '0', gettext('Show the member directory in the Member Portal.')),
+            'aPortalDirectory'                     => new ConfigItem('aPortalDirectory', 'json', '{}', gettext('Who the Member Portal directory lists, who can see it and what it shows, chosen on Admin -> Member Portal -> Directory.')),
             // Member sign-in (#10463, design §11.1, §13). No category: their home
             // is the Admin → Member Portal → Sign-in tab.
             'bMemberSignIn'                        => new ConfigItem('bMemberSignIn', 'boolean', '0', gettext('Let members sign in to the Member Portal with their own email address. It can only be turned on while email sending works.')),

@@ -64,7 +64,9 @@ A behavior spec creates, changes, reads and deletes records through the API or t
 `cy.dbQuery()` is for two things only:
 
 - a dedicated schema spec: columns, UNIQUE keys, foreign keys and their ON DELETE rules, enum domains, migrations (`private.volunteer.setup.spec.js` for Volunteer v2). A constraint test goes in such a spec, not in a behavior spec
-- a deterministic fixture or reset utility that does not stand in for the rule under test
+- a deterministic fixture or reset utility that does not stand in for the rule under test: a named function in `cypress/support/` for a state no route writes, or for time passing (`member-sign-in-fixtures.js`: a passkey, a grant's last day, an expired link). It passes its own file, `cy.dbQuery(sql, params, { fixture: "cypress/support/<file>.js" })`
+
+Settings go through `cy.setSystemConfig()` (the admin API checks them); capture with `cy.getSystemConfig()` and put back with `cy.restoreSystemConfig()`. An x-api-key request answers with its own session cookie, so a step between a sign-in and the pages it opens runs in `inOwnCookieJar()` (`cypress/support/cookie-jar.js`).
 
 ```js
 // Not: POST, then SELECT event_id FROM events_event WHERE event_title = ?
@@ -73,7 +75,7 @@ cy.makePrivateAdminAPICall("POST", "/api/events", event, 200).then(({ body }) =>
 });
 ```
 
-`npm run lint` runs `scripts/validate-cypress-db-access.js` over `cypress/`. A file may use SQL only when `cypress/db-access.json` approves it (`kind` `schema` or `fixture`, and a `reason`) or its baseline allows that many uses. The baseline only goes down: after moving a spec to the API, run `node scripts/validate-cypress-db-access.js --update`. `--report` prints the counts by category. If an endpoint lacks what a real client needs (an id, a field), fix the endpoint; do not add one only for tests.
+`npm run lint` runs `scripts/validate-cypress-db-access.js` over `cypress/`. A file may use SQL only when `cypress/db-access.json` approves it (`kind` `schema` or `fixture`, and a `reason`) or its baseline allows that many uses. Approval is for schema specs and support utilities; a behavior spec sits on the baseline. The baseline only goes down: after moving a spec to the API, run `node scripts/validate-cypress-db-access.js --update`. `--report` prints the counts by category. The `db:query` and `db:upgradeBlock` tasks enforce the same list at run time: they refuse a spec the list does not name, and only an approved schema spec changes the schema or runs an upgrade block. If an endpoint lacks what a real client needs (an id, a field), fix the endpoint; do not add one only for tests.
 
 ## PDF reports
 

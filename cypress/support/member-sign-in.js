@@ -1,6 +1,9 @@
 // Shared steps for the member email sign-in specs (#10463, design §6.1).
-// The settings, throttles and audit have no HTTP surface until row 9's admin
-// pages, so they are set and read in SQL.
+// Settings go through the admin API, which checks them as the Sign-in tab does.
+// The throttle windows, sign-in requests and stored audit rows have no HTTP
+// surface, so they are ended and read in SQL.
+
+import { inOwnCookieJar } from "./cookie-jar";
 
 export const ANSWER = "If this address can be used to sign in";
 
@@ -22,27 +25,26 @@ const BUCKETS = [
     "portal-signin.throttle-audit",
 ];
 
-export const db = (sql, params = []) =>
-    cy.dbQuery(sql, params).then((result) => {
-        expect(result.error, sql).to.be.null;
-        return result.rows;
-    });
+const checked = (sql) => (result) => {
+    expect(result.error, sql).to.be.null;
+    return result.rows;
+};
 
-export const setConfig = (name, value) =>
-    db(
-        "INSERT INTO config_cfg (cfg_name, cfg_value) VALUES (?, ?) ON DUPLICATE KEY UPDATE cfg_value = VALUES(cfg_value)",
-        [name, String(value)],
-    );
+/** A spec's own SQL; cypress/db-access.json must list the spec. */
+export const db = (sql, params = []) => cy.dbQuery(sql, params).then(checked(sql));
+
+const fixtureDb = (sql, params = []) => cy.dbQuery(sql, params, { fixture: "cypress/support/member-sign-in.js" }).then(checked(sql));
+
+/** Sets one setting through the admin API, keeping the browser's session. */
+export const setConfig = (name, value) => inOwnCookieJar(() => cy.setSystemConfig(name, String(value)));
 
 /** Saves the sign-in settings, then turns member sign-in on with the given rule. */
 export const useMemberSignIn = (saved, overrides = {}) => {
-    db(`SELECT cfg_name, cfg_value FROM config_cfg WHERE cfg_name IN (${SETTINGS.map(() => "?").join(",")})`, SETTINGS).then(
-        (rows) => {
-            rows.forEach((row) => {
-                saved[row.cfg_name] = row.cfg_value;
-            });
-        },
-    );
+    SETTINGS.forEach((name) => {
+        cy.getSystemConfig(name).then((value) => {
+            saved[name] = value;
+        });
+    });
     const settings = {
         bMemberSignIn: "1",
         sMemberSignInFamilyRoles: "1,2",
@@ -56,31 +58,25 @@ export const useMemberSignIn = (saved, overrides = {}) => {
 };
 
 export const restoreSettings = (saved) => {
-    SETTINGS.forEach((name) => {
-        if (Object.hasOwn(saved, name)) {
-            setConfig(name, saved[name]);
-        } else {
-            db("DELETE FROM config_cfg WHERE cfg_name = ?", [name]);
-        }
-    });
+    SETTINGS.forEach((name) => cy.restoreSystemConfig(name, saved[name]));
 };
 
 export const resetEmailSignIn = (personIds = []) => {
     BUCKETS.forEach((bucket) => cy.expireSignInThrottle(bucket));
     if (personIds.length > 0) {
-        db(`DELETE FROM person_signin_request_psr WHERE psr_per_ID IN (${personIds.map(() => "?").join(",")})`, personIds);
+        fixtureDb(`DELETE FROM person_signin_request_psr WHERE psr_per_ID IN (${personIds.map(() => "?").join(",")})`, personIds);
     }
     cy.task("mail:clear");
 };
 
 export const lastAuditId = () =>
-    db("SELECT COALESCE(MAX(psa_ID), 0) AS id FROM portal_signin_audit_psa").then((rows) => Number(rows[0].id));
+    fixtureDb("SELECT COALESCE(MAX(psa_ID), 0) AS id FROM portal_signin_audit_psa").then((rows) => Number(rows[0].id));
 
 export const auditSince = (afterId) =>
-    db("SELECT * FROM portal_signin_audit_psa WHERE psa_ID > ? ORDER BY psa_ID", [afterId]);
+    fixtureDb("SELECT * FROM portal_signin_audit_psa WHERE psa_ID > ? ORDER BY psa_ID", [afterId]);
 
 export const requestsFor = (personId) =>
-    db("SELECT * FROM person_signin_request_psr WHERE psr_per_ID = ? ORDER BY psr_ID", [personId]);
+    fixtureDb("SELECT * FROM person_signin_request_psr WHERE psr_per_ID = ? ORDER BY psr_ID", [personId]);
 
 const csrfToken = (html) => {
     const match = html.match(/name="csrf_token" value="([^"]+)"/);

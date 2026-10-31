@@ -1,7 +1,7 @@
 import { defineConfig } from 'cypress'
 import { verifyDownloadTasks } from 'cy-verify-downloads';
 import { registerRowCountGuard } from './row-count-guard';
-import { dbTasks, mailTasks, exposeMailpitUrl } from './_shared'
+import { dbTasks, mailTasks, exposeMailpitUrl, trackCurrentSpec } from './_shared'
 
 import base from './base.config'
 
@@ -57,6 +57,8 @@ export default defineConfig({
   },
   retries: 0,
   numTestsKeptInMemory: 0,
+  // before:spec fires in `cypress open` too, so the database tasks know their caller.
+  experimentalInteractiveRunEvents: true,
   e2e: {
     ...base.e2e,
     // UI specs only, so every shard receives a non-empty subset of ui specs.
@@ -82,6 +84,8 @@ export default defineConfig({
       // Test-database drift guard (#9769) — read-only row counts, plus the
       // env flag cypress/support/e2e.js checks before arming the guard.
       registerRowCountGuard(on, config);
+      // db:query and db:upgradeBlock answer only the files cypress/db-access.json lists (#10377).
+      trackCurrentSpec(on);
       on('before:browser:launch', (browser, launchOptions) => {
         if (browser.name === 'chrome') {
           launchOptions.args.push('--disable-dev-shm-usage');

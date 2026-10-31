@@ -156,6 +156,7 @@ module.exports = {
     // Member Portal calendar (#9866): FullCalendar for /portal/calendar. Its own
     // entry so the tiny `portal` bundle every page loads stays tiny.
     'portal-calendar': './webpack/portal/portal-calendar.ts',
+    'portal-directory': './webpack/portal/portal-directory.ts',
     // My Teams (#9868): the team page's four tabs, drawn by the shared ministries
     // components. The occurrence page reuses `ministries-occurrence` unchanged.
     'portal-teams': './webpack/portal/teams.ts',

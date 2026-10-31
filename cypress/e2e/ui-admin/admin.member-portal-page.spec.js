@@ -8,9 +8,9 @@ import { contrastRatio, effectiveBackground } from "../../support/colour";
  * Design: .agents/skills/churchcrm/member-portal-design.md §4 (decision P9).
  *   - administrators only; a staff login without the Admin flag is turned away
  *   - reached through People Settings; Statistics is the first tab
- *   - the four portal ConfigItems carry no System Settings category, so they
+ *   - the portal ConfigItems carry no System Settings category, so they
  *     must not appear on /SystemSettings.php; each one lives in the tab it
- *     affects (Themes, Permissions) and saves from there
+ *     affects (Themes, Permissions, Directory) and saves from there
  *   - activating a valid theme changes what a member sees; activating a broken
  *     one is refused and the findings are listed under its row
  *   - Developer mode prints the template name in an HTML comment
@@ -35,6 +35,7 @@ const PORTAL_SWITCHES = [
     ["bPortalDeveloperMode", "portal-themes", "#portalDeveloperModePanel", "Developer mode"],
     ["bPortalAllowBirthdayEdit", "portal-permissions", "#portalMemberFeaturesPanel", "Let members edit birthdays"],
     ["bPortalShowVolunteer", "portal-permissions", "#portalMemberFeaturesPanel", "Show volunteering"],
+    ["bPortalShowDirectory", "portal-directory", "#portalDirectorySectionPanel", "Show the member directory"],
 ];
 const savedSwitches = {};
 const CHURCH_CALENDAR = { type: "calendar", id: 1 };

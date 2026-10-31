@@ -6,8 +6,13 @@
  * Seed people: 2 Mathew (head, Member, 1970), 5 Albert (child), 43 Natalie (head, Guest),
  * 88 Cecil (child, no birth year), 18 Kathryn (inactive family), 19 Laurie (deceased),
  * 911 (inactive), 104 Mark (awaiting review), 3 and 35 (share tony.wade@example.com),
- * 1 Church Admin (no email).
+ * 1 Church Admin (no email). A birth year is cleared in the person editor; an address
+ * moved from the family email is a support fixture.
  */
+
+import { resetSignIn } from "../../../../support/member-sign-in-fixtures";
+import { savePersonEditor } from "../../../../support/person-editor";
+import { markEmailUnconfirmed } from "../../../../support/sign-in-email-fixtures";
 
 const SETTINGS_URL = "/admin/api/member-portal/sign-in";
 const RULE_KEYS = ["sMemberSignInFamilyRoles", "sMemberSignInClassifications", "iMemberSignInMinAge"];
@@ -22,12 +27,6 @@ const expectReason = (personId, reason) =>
     });
 
 const setRule = (settings) => cy.makePrivateAdminAPICall("POST", SETTINGS_URL, settings, 200);
-
-const db = (sql, params = []) =>
-    cy.dbQuery(sql, params).then((result) => {
-        expect(result.error, sql).to.be.null;
-        return result.rows;
-    });
 
 describe("Member sign-in rule (person sign-in status)", () => {
     const saved = {};
@@ -45,8 +44,7 @@ describe("Member sign-in rule (person sign-in status)", () => {
     });
 
     afterEach(() => {
-        db("UPDATE person_per SET per_BirthYear = 1970 WHERE per_ID = 2");
-        db("DELETE FROM person_signin_psi WHERE psi_per_ID = 2");
+        resetSignIn([2]);
     });
 
     after(() => {
@@ -82,12 +80,19 @@ describe("Member sign-in rule (person sign-in status)", () => {
         expectReason(2, null);
     });
 
-    it("with no birth year lets in a head of household but not a child", () => {
-        expectReason(88, "age_unknown");
-        db("UPDATE person_per SET per_BirthYear = NULL WHERE per_ID = 2");
-        expectReason(2, null);
-        setRule({ iMemberSignInMinAge: 0 });
-        expectReason(88, null);
+    describe("with no birth year", () => {
+        afterEach(() => {
+            savePersonEditor(2, { BirthYear: 1970 }).its("status").should("eq", 302);
+            cy.clearCookies();
+        });
+
+        it("lets in a head of household but not a child", () => {
+            expectReason(88, "age_unknown");
+            savePersonEditor(2, { BirthYear: "" }).its("status").should("eq", 302);
+            expectReason(2, null);
+            setRule({ iMemberSignInMinAge: 0 });
+            expectReason(88, null);
+        });
     });
 
     it("applies the blocks for everyone before the member rule", () => {
@@ -124,11 +129,9 @@ describe("Member sign-in rule (person sign-in status)", () => {
     });
 
     it("refuses an unconfirmed address until it is confirmed", () => {
-        db(
-            "INSERT INTO person_signin_psi (psi_per_ID, psi_UnconfirmedEmail, psi_UnconfirmedSource, psi_UnconfirmedAt) VALUES (2, 'Mathew.Campbell@example.com', 'family_email', NOW()) ON DUPLICATE KEY UPDATE psi_UnconfirmedEmail = VALUES(psi_UnconfirmedEmail)",
-        );
+        markEmailUnconfirmed(2, "family_email");
         expectReason(2, "email_unconfirmed");
-        db("UPDATE person_signin_psi SET psi_UnconfirmedEmail = NULL, psi_UnconfirmedSource = NULL WHERE psi_per_ID = 2");
+        cy.makePrivateAdminAPICall("POST", "/api/person/2/sign-in/confirm-email", { email: "mathew.campbell@example.com" }, 200);
         expectReason(2, null);
     });
 

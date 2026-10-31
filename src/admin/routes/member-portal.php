@@ -4,6 +4,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\FamilyEmailMoveQuery;
 use ChurchCRM\Portal\PortalCalendarService;
+use ChurchCRM\Portal\PortalDirectoryService;
 use ChurchCRM\Portal\PortalStatsService;
 use ChurchCRM\Portal\ThemeManager;
 use ChurchCRM\Portal\ThemeValidator;
@@ -68,6 +69,10 @@ $memberPortalHandler = function (Request $request, Response $response): Response
         // with the position of its "Show in Member Portal" switch, rendered
         // server-side so the tab needs no round trip on first paint.
         'portalCalendars' => PortalCalendarService::listChoices(),
+        'directory' => [
+            'settings' => PortalDirectoryService::settings(),
+            'classifications' => $signInSettings->classificationChoices(),
+        ],
         // The Sign-in tab (member sign-in design §11.1).
         'signIn' => [
             'values' => $signInSettings->values(),

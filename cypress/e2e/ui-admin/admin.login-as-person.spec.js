@@ -47,15 +47,14 @@ const admin = (method, url, body = null, status = 200) => cy.makePrivateAdminAPI
 
 const setSetting = (name, value) => admin("POST", `admin/api/system/config/${name}`, { value });
 
-const auditFor = (personId) =>
-    admin("GET", `admin/api/member-portal/audit?personId=${personId}&length=100`).then(({ body }) => body.rows);
+const auditFor = (personId, afterId = 0) =>
+    admin("GET", `admin/api/member-portal/audit?personId=${personId}&afterId=${afterId}&length=100`).then(({ body }) => body.rows);
 
 const newestAuditId = (personId) => auditFor(personId).then((rows) => (rows.length > 0 ? rows[0].id : 0));
 
 const auditSince = (personId, afterId) =>
-    auditFor(personId).then((rows) =>
+    auditFor(personId, afterId).then((rows) =>
         rows
-            .filter((row) => row.id > afterId)
             .reverse()
             .map((row) => ({ event: row.event, method: row.method, reason: row.reason, actorId: row.actorId })),
     );

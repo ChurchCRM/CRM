@@ -1,6 +1,9 @@
 /// <reference types="cypress" />
 
+import { inOwnCookieJar } from "../../../../support/cookie-jar";
 import { askForEmail, postCode, resetEmailSignIn, restoreSettings, signInEmail, useMemberSignIn } from "../../../../support/member-sign-in";
+import { endPortalGrant, expireEmailChangeLinks } from "../../../../support/member-sign-in-fixtures";
+import { auditRowsSince, newestAuditId } from "../../../../support/sign-in-audit";
 
 /**
  * Member sign-in row 10 (#10463): a member changes their own email in the
@@ -9,8 +12,8 @@ import { askForEmail, postCode, resetEmailSignIn, restoreSettings, signInEmail, 
  *
  * Persona: Lena Black (person 100, family 20, spouse), signed in by email at
  * /portal/login. Amanda Black (99) is in her family.
- * Given grants, an expired link, the proven email and the audit have no HTTP
- * surface until rows 5 and 9, so they are set and read with cy.dbQuery().
+ * The proven email has no HTTP surface, so it is read with cy.dbQuery(); the
+ * hooks put the people, their links and the email history back.
  */
 
 const LENA = { id: 100, email: "lena.walker@example.com" };
@@ -21,9 +24,6 @@ const db = (sql, params = []) =>
         expect(result.error, sql).to.be.null;
         return result.rows;
     });
-
-const lastAuditId = () =>
-    db("SELECT COALESCE(MAX(psa_ID), 0) AS id FROM portal_signin_audit_psa").then((rows) => Number(rows[0].id));
 
 const signInToPortal = () => {
     cy.clearCookies();
@@ -116,7 +116,6 @@ describe("A member changes their own email in the portal (§9)", () => {
         db("UPDATE person_per SET per_Email = ? WHERE per_ID = ?", [AMANDA.email, AMANDA.id]);
         db("DELETE FROM person_signin_psi WHERE psi_per_ID = ?", [LENA.id]);
         db("DELETE FROM person_email_change_pec WHERE pec_per_ID = ?", [LENA.id]);
-        db("DELETE FROM portal_grant_pgr WHERE pgr_Reason = 'Email change spec'");
         db("DELETE FROM person_signin_request_psr WHERE psr_per_ID = ?", [LENA.id]);
         cy.expireSignInThrottle("email-change.person");
     });
@@ -124,7 +123,7 @@ describe("A member changes their own email in the portal (§9)", () => {
     it("sends a link to the new address and a notice to the old one, and changes the email only when the link is used", () => {
         const newEmail = `lena.own.${Date.now()}@example.com`;
         signInToPortal();
-        lastAuditId().then((startId) => {
+        newestAuditId().then((startId) => {
             saveProfile({ email: newEmail }).then((response) => {
                 expect(response.status).to.eq(200);
                 expect(response.body.pendingEmail).to.eq(newEmail);
@@ -146,7 +145,9 @@ describe("A member changes their own email in the portal (§9)", () => {
                         openLink(path).then(({ state, body }) => {
                             expect(state).to.eq("confirm");
                             expect(body).to.contain(newEmail);
-                            db("SELECT per_Email FROM person_per WHERE per_ID = ?", [LENA.id]).its("0.per_Email").should("eq", LENA.email);
+                            inOwnCookieJar(() =>
+                                cy.makePrivateAdminAPICall("GET", `/api/person/${LENA.id}`, null, 200).its("body.Email").should("eq", LENA.email),
+                            );
                             pressConfirm(path, body).should("eq", "done");
                             pressConfirm(path, body).should("eq", "invalid");
                         });
@@ -159,11 +160,12 @@ describe("A member changes their own email in the portal (§9)", () => {
                 expect(body.pendingEmail).to.eq("");
             });
             db("SELECT psi_ProvenEmail FROM person_signin_psi WHERE psi_per_ID = ?", [LENA.id]).its("0.psi_ProvenEmail").should("eq", newEmail);
-            db("SELECT * FROM portal_signin_audit_psa WHERE psa_per_ID = ? AND psa_ID > ? AND psa_Event LIKE 'email_%'", [LENA.id, startId]).then((rows) => {
+            auditRowsSince(LENA.id, startId).then((all) => {
+                const rows = all.filter((row) => row.event.startsWith("email_"));
                 expect(rows).to.have.length(1);
-                expect(rows[0].psa_Event).to.eq("email_changed");
-                expect(rows[0].psa_Email).to.eq(newEmail);
-                expect(rows[0].psa_Detail).to.eq(`from=${LENA.email}; via=portal`);
+                expect(rows[0].event).to.eq("email_changed");
+                expect(rows[0].email).to.eq(newEmail);
+                expect(rows[0].detail).to.eq(`from=${LENA.email}; via=portal`);
             });
         });
     });
@@ -177,6 +179,7 @@ describe("A member changes their own email in the portal (§9)", () => {
             });
         };
         signInToPortal();
+        newestAuditId().as("startId");
         cy.getCookies().then((memberBrowser) => {
             cy.clearCookies();
             askForEmail(LENA.email);
@@ -191,9 +194,11 @@ describe("A member changes their own email in the portal (§9)", () => {
 
                     useCookies(otherBrowser);
                     postCode(code).its("body").should("include", "That code did not work");
-                    db("SELECT psa_Reason FROM portal_signin_audit_psa WHERE psa_per_ID = ? AND psa_Event = 'request_cancelled' ORDER BY psa_ID DESC LIMIT 1", [LENA.id])
-                        .its("0.psa_Reason")
-                        .should("eq", "email_changed");
+                    cy.get("@startId").then((startId) =>
+                        auditRowsSince(LENA.id, startId).then((rows) => {
+                            expect(rows.filter((row) => row.event === "request_cancelled").map((row) => row.reason)).to.deep.eq(["email_changed"]);
+                        }),
+                    );
                 });
             });
         });
@@ -210,7 +215,7 @@ describe("A member changes their own email in the portal (§9)", () => {
             inFreshBrowser(() => openLink(path).its("state").should("eq", "invalid"));
         });
         mailTo(second).then((messages) => confirmLinkIn(messages[0])).then((path) => {
-            db("UPDATE person_email_change_pec SET pec_ExpiresAt = '2000-01-01 00:00:00' WHERE pec_per_ID = ? AND pec_UsedAt IS NULL AND pec_CancelledAt IS NULL", [LENA.id]);
+            expireEmailChangeLinks(LENA.id);
             inFreshBrowser(() => openLink(path).its("state").should("eq", "invalid"));
         });
         profile().then((body) => {
@@ -239,19 +244,34 @@ describe("A member changes their own email in the portal (§9)", () => {
         profile().its("middleName").should("not.eq", "Refused");
     });
 
-    it("a person with a given portal grant can't change their own email while the grant lasts", () => {
-        db(
-            "INSERT INTO portal_grant_pgr (pgr_per_ID, pgr_Capability, pgr_Reason, pgr_GrantedBy_usr_ID, pgr_GrantedAt) VALUES (?, 'volunteer.team.manage', 'Email change spec', 1, NOW())",
-            [LENA.id],
-        );
-        signInToPortal();
-        profile().its("emailLocked").should("eq", true);
-        cy.request("/portal/profile/edit").its("body").should("match", /id="portal-email"[^>]*readonly/);
-        saveProfile({ email: `lena.granted.${Date.now()}@example.com` }).its("status").should("eq", 403);
-        cy.task("mail:list", { limit: 10 }).its("body.messages").should("have.length", 0);
+    describe("with a given portal grant", () => {
+        let grantId = 0;
 
-        db("UPDATE portal_grant_pgr SET pgr_EndsAt = DATE_SUB(NOW(), INTERVAL 1 DAY) WHERE pgr_Reason = 'Email change spec'");
-        profile().its("emailLocked").should("eq", false);
+        beforeEach(() => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/admin/api/person/${LENA.id}/sign-in/grants`,
+                { capability: "portal.family.contacts.view", scopeId: 3, endsOn: new Date(Date.now() + 30 * 86400000).toISOString().slice(0, 10), reason: "Email change spec" },
+                201,
+            ).then(({ body }) => {
+                grantId = body.grantId;
+            });
+        });
+
+        afterEach(() => {
+            cy.makePrivateAdminAPICall("POST", `/admin/api/person/${LENA.id}/sign-in/grants/${grantId}/remove`, null, [200, 404]);
+        });
+
+        it("a person with a given portal grant can't change their own email while the grant lasts", () => {
+            signInToPortal();
+            profile().its("emailLocked").should("eq", true);
+            cy.request("/portal/profile/edit").its("body").should("match", /id="portal-email"[^>]*readonly/);
+            saveProfile({ email: `lena.granted.${Date.now()}@example.com` }).its("status").should("eq", 403);
+            cy.task("mail:list", { limit: 10 }).its("body.messages").should("have.length", 0);
+
+            endPortalGrant(grantId);
+            profile().its("emailLocked").should("eq", false);
+        });
     });
 
     it("keeps the open link when the next one can't be sent", () => {
@@ -281,21 +301,25 @@ describe("A member changes their own email in the portal (§9)", () => {
         const newEmail = `lena.late.${Date.now()}@example.com`;
         signInToPortal();
         saveProfile({ email: newEmail }).its("status").should("eq", 200);
-        db(
-            "INSERT INTO portal_grant_pgr (pgr_per_ID, pgr_Capability, pgr_Reason, pgr_GrantedBy_usr_ID, pgr_GrantedAt) VALUES (?, 'volunteer.team.manage', 'Email change spec', 1, NOW())",
-            [LENA.id],
-        );
-        mailTo(newEmail).then((messages) =>
-            confirmLinkIn(messages[0]).then((path) => {
-                inFreshBrowser(() => {
-                    openLink(path).then(({ body }) => {
-                        pressConfirm(path, body).should("eq", "invalid");
-                        pressConfirm(path, body).should("eq", "invalid");
+        cy.makePrivateAdminAPICall(
+            "POST",
+            `/admin/api/person/${LENA.id}/sign-in/grants`,
+            { capability: "portal.family.contacts.view", scopeId: 3, endsOn: new Date(Date.now() + 30 * 86400000).toISOString().slice(0, 10), reason: "Email change spec" },
+            201,
+        ).then(({ body: grant }) => {
+            mailTo(newEmail).then((messages) =>
+                confirmLinkIn(messages[0]).then((path) => {
+                    inFreshBrowser(() => {
+                        openLink(path).then(({ body }) => {
+                            pressConfirm(path, body).should("eq", "invalid");
+                            pressConfirm(path, body).should("eq", "invalid");
+                        });
                     });
-                });
-            }),
-        );
-        db("SELECT per_Email FROM person_per WHERE per_ID = ?", [LENA.id]).its("0.per_Email").should("eq", LENA.email);
+                }),
+            );
+            profile().its("email").should("eq", LENA.email);
+            cy.makePrivateAdminAPICall("POST", `/admin/api/person/${LENA.id}/sign-in/grants/${grant.grantId}/remove`, null, [200, 404]);
+        });
     });
 
     it("a family adult can't change another member's email", () => {

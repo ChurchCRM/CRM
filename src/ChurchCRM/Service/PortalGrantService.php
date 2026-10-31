@@ -385,6 +385,10 @@ final class PortalGrantService
                     'label' => sprintf(gettext('Off for everyone: "%s" is switched off'), gettext('Show volunteering')),
                     'url' => '/admin/member-portal#portal-permissions',
                 ],
+                'bPortalShowDirectory' => [
+                    'label' => sprintf(gettext('Off for everyone: "%s" is switched off'), gettext('Show the member directory')),
+                    'url' => '/admin/member-portal#portal-directory',
+                ],
                 default => null,
             };
         }
