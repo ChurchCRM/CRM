@@ -103,9 +103,45 @@ const staffChangesEmail = (email) => {
     cy.clearCookies();
 };
 
+/** The site's own origin, without the install path: what a browser reports in its answer. */
+const siteOrigin = () => new URL(Cypress.config("baseUrl")).origin;
+
+/**
+ * Signs in with the passkey's own key, reporting `signCount`; `signed` overrides
+ * what is signed and `sent` what is posted. Answers whether a portal session started.
+ */
+const signInReporting = (credential, signCount, signed = {}, sent = {}) => {
+    cy.clearCookies();
+    return cy.request("/portal/login").then(({ body }) => {
+        const csrf = csrfOf(body);
+        return postPasskeyOptions("/portal/login/passkey/options", csrf, 200).then(({ publicKey }) =>
+            signedAssertion(credential, {
+                challenge: publicKey.challenge,
+                origin: siteOrigin(),
+                rpId: new URL(siteOrigin()).hostname,
+                signCount,
+                ...signed,
+            }).then((answer) =>
+                cy
+                    .request({ method: "POST", url: "/portal/login/passkey", form: true, body: { csrf_token: csrf, ...answer, ...sent } })
+                    .then(() => cy.request({ url: "/api/portal/me", failOnStatusCode: false }))
+                    .then((me) => me.status === 200),
+            ),
+        );
+    });
+};
+
 describe("Member Portal passkeys", () => {
     const saved = {};
     let authenticatorId;
+
+    before(function () {
+        // A passkey works only on the site's own host name (PasskeySite::requestProblem); a run
+        // that browses the site by IP address, as the nightly subdirectory job does, cannot use one.
+        if (new URL(Cypress.config("baseUrl")).hostname !== "localhost") {
+            this.skip();
+        }
+    });
 
     before(() => {
         cy.task("mail:available").its("available").should("eq", true);
@@ -273,65 +309,36 @@ describe("Member Portal passkeys", () => {
     });
 
     it("refuses an answer from another origin or with a bad signature, naming the passkey's person", () => {
-        const origin = Cypress.config("baseUrl").replace(/\/$/, "");
         signInWithCode({ remember: false });
         addPasskeyOnDevicesPage();
         authenticatorCredentials(authenticatorId).then(([credential]) => {
-            const answerFrom = (csrf, clientOrigin) =>
-                postPasskeyOptions("/portal/login/passkey/options", csrf, 200).then(({ publicKey }) =>
-                    cy.request({
-                        method: "POST",
-                        url: "/portal/login/passkey",
-                        form: true,
-                        body: {
-                            csrf_token: csrf,
-                            credentialId: base64ToBase64Url(credential.credentialId),
-                            clientDataJSON: textToBase64Url(
-                                JSON.stringify({ type: "webauthn.get", challenge: publicKey.challenge, origin: clientOrigin }),
-                            ),
-                            authenticatorData: "AAAA",
-                            signature: "AAAA",
-                            userHandle: base64ToBase64Url(credential.userHandle),
-                        },
-                    }),
-                );
-
-            cy.clearCookies();
-            cy.request("/portal/login").then(({ body }) => {
-                const csrf = csrfOf(body);
-                lastAuditId().then((startId) => {
-                    answerFrom(csrf, "http://evil-localhost").its("body").should("include", "portalSignInFailed");
-                    answerFrom(csrf, origin).its("body").should("include", "portalSignInFailed");
-                    auditSince(startId).then((rows) => {
-                        expect(events(rows)).to.deep.equal(["refused:passkey:passkey_invalid", "refused:passkey:passkey_invalid"]);
-                        rows.forEach((row) => expect(row.psa_per_ID).to.eq(member.personId));
-                    });
+            lastAuditId().then((startId) => {
+                signInReporting(credential, 100, { origin: "http://evil-localhost" }).should("eq", false);
+                signInReporting(credential, 100, {}, { signature: "AAAA" }).should("eq", false);
+                auditSince(startId).then((rows) => {
+                    expect(events(rows)).to.deep.equal(["refused:passkey:passkey_invalid", "refused:passkey:passkey_invalid"]);
+                    rows.forEach((row) => expect(row.psa_per_ID).to.eq(member.personId));
                 });
             });
-            cy.request({ url: "/portal/", followRedirect: false }).its("status").should("eq", 302);
+            signInReporting(credential, 100).should("eq", true);
+        });
+    });
+
+    it("refuses a signed answer from a device that did not verify the member", () => {
+        signInWithCode({ remember: false });
+        addPasskeyOnDevicesPage();
+        authenticatorCredentials(authenticatorId).then(([credential]) => {
+            lastAuditId().then((startId) => {
+                signInReporting(credential, 100, { flags: 0x01 }).should("eq", false);
+                auditSince(startId).then((rows) => {
+                    expect(events(rows)).to.deep.equal(["refused:passkey:passkey_invalid"]);
+                });
+            });
+            signInReporting(credential, 100).should("eq", true);
         });
     });
 
     describe("the signature counter", () => {
-        const origin = Cypress.config("baseUrl").replace(/\/$/, "");
-        const rpId = new URL(origin).hostname;
-
-        /** Signs in with the passkey's own key, reporting `signCount`; answers whether a portal session started. */
-        const signInReporting = (credential, signCount) => {
-            cy.clearCookies();
-            return cy.request("/portal/login").then(({ body }) => {
-                const csrf = csrfOf(body);
-                return postPasskeyOptions("/portal/login/passkey/options", csrf, 200).then(({ publicKey }) =>
-                    signedAssertion(credential, { challenge: publicKey.challenge, origin, rpId, signCount }).then((answer) =>
-                        cy
-                            .request({ method: "POST", url: "/portal/login/passkey", form: true, body: { csrf_token: csrf, ...answer } })
-                            .then(() => cy.request({ url: "/api/portal/me", failOnStatusCode: false }))
-                            .then((me) => me.status === 200),
-                    ),
-                );
-            });
-        };
-
         const storedCount = (count) => setPasskeySignCount(member.personId, count);
 
         beforeEach(() => {
@@ -512,7 +519,7 @@ describe("Member Portal passkeys", () => {
     });
 
     it("stops checking passkey answers from an IP address after 20 failures in an hour", () => {
-        const origin = Cypress.config("baseUrl").replace(/\/$/, "");
+        const origin = siteOrigin();
         const failOnce = (csrf, index) =>
             postPasskeyOptions("/portal/login/passkey/options", csrf, 200).then(({ publicKey }) =>
                 cy

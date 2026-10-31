@@ -68,9 +68,10 @@ const signerFor = async (pkcs8) => {
 /**
  * An assertion signed with a virtual authenticator credential's private key and
  * a chosen signature counter, as a synced passkey (always 0) or a cloned key
- * (a counter that went back) would send it.
+ * (a counter that went back) would send it. `flags` is the authenticator data's
+ * flag byte: 0x05 is user present and verified, 0x01 present only.
  */
-export const signedAssertion = (credential, { challenge, origin, rpId, signCount }) =>
+export const signedAssertion = (credential, { challenge, origin, rpId, signCount, flags = 0x05 }) =>
     cy.wrap(
         (async () => {
             const subtle = window.crypto.subtle;
@@ -78,7 +79,7 @@ export const signedAssertion = (credential, { challenge, origin, rpId, signCount
             const clientData = new TextEncoder().encode(JSON.stringify({ type: "webauthn.get", challenge, origin, crossOrigin: false }));
             const rpIdHash = new Uint8Array(await subtle.digest("SHA-256", new TextEncoder().encode(rpId)));
             const counter = [24, 16, 8, 0].map((shift) => (signCount >>> shift) & 0xff);
-            const authenticatorData = new Uint8Array([...rpIdHash, 0x05, ...counter]);
+            const authenticatorData = new Uint8Array([...rpIdHash, flags, ...counter]);
             const clientDataHash = new Uint8Array(await subtle.digest("SHA-256", clientData));
             const signature = await sign(new Uint8Array([...authenticatorData, ...clientDataHash]));
             return {

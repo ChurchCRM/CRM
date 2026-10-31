@@ -47,9 +47,6 @@ final class PortalSessionStarter
             throw new PortalSignInRefusedException($refusal);
         }
 
-        if ($method->replacesStaffSession()) {
-            AuthenticationManager::endStaffSession();
-        }
         if ($method->regeneratesSessionId()) {
             PortalSessionStore::regenerateId();
         }
@@ -74,6 +71,10 @@ final class PortalSessionStarter
             $state instanceof PersonSignin ? (int) $state->getSessionVersion() : 0,
             $actorUserId,
         );
+        // Last before the save, so a failed sign-in leaves the staff session as it was.
+        if ($method->replacesStaffSession()) {
+            AuthenticationManager::endStaffSession();
+        }
         PortalSessionStore::save($principal);
         SignInAudit::record(
             $method === SignInMethod::ASSISTED ? SignInAuditEvent::LOGIN_AS_STARTED : SignInAuditEvent::SIGNED_IN,
