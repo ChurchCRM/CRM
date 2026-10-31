@@ -329,11 +329,17 @@ class AuthMiddleware implements MiddlewareInterface
     {
         if ($this->isBrowserRequest($request)) {
             PortalExtension::addFlash('warning', LoginAsPerson::staffPagesClosedMessage());
-
-            return (new Response())->withStatus(302)->withHeader('Location', SystemURLs::getRootPath() . '/portal/');
+            $response = (new Response())->withStatus(302)->withHeader('Location', SystemURLs::getRootPath() . '/portal/');
+        } else {
+            $response = SlimUtils::renderErrorJSON(new Response(), LoginAsPerson::staffPagesClosedMessage(), [], 403);
         }
 
-        return SlimUtils::renderErrorJSON(new Response(), LoginAsPerson::staffPagesClosedMessage(), [], 403);
+        $historyId = LoginAsPerson::historyId();
+        if ($historyId !== null && LoginAsPerson::isWriteMethod($request->getMethod())) {
+            LoginAsPerson::recordAction($historyId, $request->getMethod(), $request->getUri()->getPath(), $response->getStatusCode());
+        }
+
+        return $response;
     }
 
     /**

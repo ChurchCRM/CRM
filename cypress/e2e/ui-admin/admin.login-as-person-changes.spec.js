@@ -132,6 +132,13 @@ describe("Login as Person: changes and endings", () => {
                         expect(response.status).to.eq(403);
                         expect(response.body.message).to.eq(REFUSED);
                     });
+                    portalJSON(token, `/api/person/${MEMBER}/role/2`).then((response) => {
+                        expect(response.status).to.eq(403);
+                        expect(response.body.message).to.include("Staff pages stay closed");
+                    });
+                    cy.request({ method: "POST", url: `/PersonEditor.php?PersonID=${MEMBER}`, form: true, body: {}, followRedirect: false, failOnStatusCode: false })
+                        .its("status")
+                        .should("eq", 302);
 
                     cy.visit("/portal/devices");
                     cy.get("#portal-toasts").should("contain", REFUSED);
@@ -148,8 +155,10 @@ describe("Login as Person: changes and endings", () => {
                 actionsOf(session).should("deep.equal", [
                     "POST /api/portal/me 403",
                     "POST /api/portal/family/confirm 403",
-                    "POST /portal/devices/sign-out-everywhere 403",
+                    "POST /portal/devices/sign-out-everywhere 303",
                     "POST /api/ministries/me/swaps/1/withdraw 403",
+                    `POST /api/person/${MEMBER}/role/2 403`,
+                    "POST /PersonEditor.php 302",
                 ]);
             });
         });
