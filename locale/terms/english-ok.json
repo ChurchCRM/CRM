@@ -657,7 +657,8 @@
   ],
   "pt-BR": [
     "Azure",
-    "{{team}}: {{staffing}}"
+    "{{team}}: {{staffing}}",
+    "%s – Total"
   ],
   "pt-br": [
     "AM / PM",
