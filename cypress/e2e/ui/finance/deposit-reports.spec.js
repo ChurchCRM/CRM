@@ -92,3 +92,32 @@ describe("Treasurer: review a deposit and prepare it for the bank", () => {
         });
     });
 });
+
+describe("Finance reviewer: deposit reports across themes and screen sizes", () => {
+    for (const theme of ["light", "dark"]) {
+        for (const [device, width] of [["desktop", 1440], ["tablet", 820], ["phone", 390]]) {
+            it(`keeps review and bank actions usable on ${theme} ${device}`, () => {
+                cy.setupPersonaSession("finance-only");
+                cy.viewport(width, 900);
+                cy.visit("/finance/reports/deposits");
+                cy.document().then((doc) => doc.documentElement.setAttribute("data-bs-theme", theme));
+                cy.get("#createReport").should("be.visible");
+                cy.get("#depositAdvancedSettings").should("not.have.attr", "open");
+                cy.document().then((doc) => {
+                    expect(doc.documentElement.scrollWidth).to.be.at.most(doc.documentElement.clientWidth);
+                });
+                cy.screenshot(`deposit-report-${theme}-${device}`, { capture: "fullPage" });
+                cy.get("#depositAdvancedSettings > summary").click();
+                cy.get("input[name='sort'][value='family']").check();
+                cy.get("#DateStart").invoke("val", "1900-01-01");
+                cy.get("#DateEnd").invoke("val", "1900-01-01");
+                cy.get("#previewDepositReport").click();
+                cy.get("#depositReportError").should("contain", "No records");
+                cy.get("input[name='sort'][value='family']").should("be.checked");
+                cy.get("#depositAdvancedSettings").should("have.attr", "open");
+                cy.get("#printBankSlip").click();
+                cy.get("#depositReportError").should("contain", "Select one deposit");
+            });
+        }
+    }
+});
