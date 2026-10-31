@@ -102,13 +102,17 @@ function givePersonPortalGrantAPI(Request $request, Response $response): Respons
     $input = $request->getParsedBody();
     $input = is_array($input) ? $input : [];
     $text = static fn (string $name): string => is_scalar($input[$name] ?? null) ? (string) $input[$name] : '';
+    $scopeId = $text('scopeId') === '' ? null : filter_var($text('scopeId'), FILTER_VALIDATE_INT, ['options' => ['min_range' => 1]]);
+    if ($scopeId === false) {
+        return SlimUtils::renderErrorJSON($response, gettext('Choose what the permission is for.'), [], 400, null, $request);
+    }
 
     try {
         $grant = (new PortalGrantService())->give(
             $request->getAttribute('person'),
             AuthenticationManager::getCurrentUser(),
             $text('capability'),
-            $text('scopeId') === '' ? null : (int) $text('scopeId'),
+            $scopeId,
             $text('endsOn'),
             $text('reason'),
         );
