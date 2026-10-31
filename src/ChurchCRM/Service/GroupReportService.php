@@ -110,7 +110,7 @@ class GroupReportService
                 ];
             }
 
-            $people[] = ['name' => $person->getFormattedName(3), 'lines' => $lines];
+            $people[] = ['name' => $person->getFullName(), 'lines' => $lines];
         }
 
         return ['title' => $title, 'people' => $people];

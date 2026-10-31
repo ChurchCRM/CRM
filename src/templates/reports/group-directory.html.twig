@@ -2,9 +2,7 @@
 {% block content %}
   <style>
     h1 { border: 0.4pt solid #1a1a1a; text-align: center; padding: 2mm; font-size: 15pt; }
-    .entry { margin-bottom: 3mm; }
-    .entry .name { font-weight: bold; }
-    .entry .line { padding-left: 4mm; font-size: 10pt; }
+    .line { font-size: 10pt; }
   </style>
   <htmlpagefooter name="pageNumber"><div style="text-align: center; font-size: 8pt; font-style: italic;">{{ gettext('Page') }} {PAGENO}</div></htmlpagefooter>
   <sethtmlpagefooter name="pageNumber" value="on" />
@@ -12,12 +10,11 @@
   {% if people %}
     <columns column-count="2" column-gap="8" />
     {% for person in people %}
-      <div class="entry" style="page-break-inside: avoid;">
-        <div class="name">{{ person.name }}</div>
-        {% for line in person.lines %}
-          <div class="line">{% if line.label %}{{ line.label }}: {% endif %}{{ line.value }}</div>
-        {% endfor %}
-      </div>
+      <table width="100%" nobreak="true"><tr><td>
+        <b>{{ person.name }}</b>
+        {% for line in person.lines %}<br><span class="line">&emsp;{% if line.label %}{{ line.label }}: {% endif %}{{ line.value }}</span>{% endfor %}
+        <div style="font-size: 8pt;">&nbsp;</div>
+      </td></tr></table>
     {% endfor %}
     <columns column-count="1" />
   {% else %}

@@ -62,9 +62,9 @@ class CustomFieldUtils
      * because the same method feeds multiple output contexts:
      *   - HTML views        → InputUtils::escapeHTML()  (required)
      *   - HTML attributes   → InputUtils::escapeAttribute()  (required)
-     *   - CSV rows          → no HTML escaping (CSVCreateFile.php)
-     *   - PDF (TCPDF)       → no HTML escaping (PdfDirectory.php)
-     *   - Plain-text reports → no escaping (GroupReportService.php; the Twig template escapes)
+     *   - CSV rows          → no HTML escaping
+     *   - PDF (TCPDF)       → no HTML escaping
+     *   - Plain-text reports → no escaping (Twig templates escape)
      *
      * HTML/browser-context callers MUST escape the return value.
      */

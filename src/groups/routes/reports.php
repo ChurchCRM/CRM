@@ -1,12 +1,15 @@
 <?php
 
 use ChurchCRM\dto\Cart;
+use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\GroupPropMasterQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
+use ChurchCRM\Service\GivingStatementService;
 use ChurchCRM\Service\GroupReportService;
 use ChurchCRM\Service\MpdfRenderer;
+use ChurchCRM\Service\PhotoBookService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -95,10 +98,29 @@ $app->post('/reports/group-directory', function (Request $request, Response $res
 
     $pdf = (new MpdfRenderer())->renderToString('group-directory', $report);
 
-    $filename = 'GroupDirectory-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
+    $fileLabel = trim(ChurchMetaData::getChurchName() . ' ' . $report['title'] . ' ' . date(SystemConfig::getValue('sDateFilenameFormat')));
     $response->getBody()->write($pdf);
 
     return $response
         ->withHeader('Content-Type', 'application/pdf')
-        ->withHeader('Content-Disposition', (SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline') . '; filename="' . $filename . '"');
+        ->withHeader('Content-Disposition', GivingStatementService::contentDisposition($fileLabel));
+});
+
+// Photo book: the members of each named group with their photos, or every Sunday School class when none is named.
+$app->get('/reports/photo-book', function (Request $request, Response $response) {
+    $groupIds = array_values(array_filter(array_map('intval', explode(',', (string) ($request->getQueryParams()['GroupID'] ?? '')))));
+    if ($groupIds === []) {
+        $groupIds = array_map('intval', GroupQuery::create()->filterByType(4)->orderByName()->find()->getPrimaryKeys(false));
+    }
+
+    $pdf = (new MpdfRenderer())->renderToString('photo-book', [
+        'sections' => PhotoBookService::sections($groupIds),
+    ]);
+    $groupName = count($groupIds) === 1 ? (string) GroupQuery::create()->findOneById($groupIds[0])?->getName() : '';
+    $fileLabel = trim(ChurchMetaData::getChurchName() . ' ' . $groupName . ' ' . date(SystemConfig::getValue('sDateFilenameFormat')));
+    $response->getBody()->write($pdf);
+
+    return $response
+        ->withHeader('Content-Type', 'application/pdf')
+        ->withHeader('Content-Disposition', GivingStatementService::contentDisposition($fileLabel));
 });
