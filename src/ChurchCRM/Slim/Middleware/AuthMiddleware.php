@@ -146,8 +146,10 @@ class AuthMiddleware implements MiddlewareInterface
      *    request (design §2.2 step 6).
      *  - /portal/login/…   — member sign-in by email (member sign-in design
      *    §6.1), which a signed-out visitor must reach.
+     *  - /portal/email/confirm/… — the page an email-change link opens (member
+     *    sign-in design §9); the token in the link is what identifies the request.
      *
-     * Both are built with the install's root path, so a subdirectory install
+     * Each is built with the install's root path, so a subdirectory install
      * ('/crm/api/public') matches exactly as a root install does.
      */
     private function isPublicPath(ServerRequestInterface $request): bool
@@ -155,7 +157,7 @@ class AuthMiddleware implements MiddlewareInterface
         $path = $request->getUri()->getPath();
         $rootPath = SystemURLs::getRootPath();
 
-        foreach (['/api/public', '/portal/theme', '/portal/login'] as $publicPrefix) {
+        foreach (['/api/public', '/portal/theme', '/portal/login', '/portal/email/confirm'] as $publicPrefix) {
             $publicPath = $rootPath . $publicPrefix;
             if ($path === $publicPath || str_starts_with($path, $publicPath . '/')) {
                 return true;

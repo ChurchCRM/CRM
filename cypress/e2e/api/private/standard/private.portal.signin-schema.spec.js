@@ -38,6 +38,17 @@ const TABLES = {
         "psr_UsedAt",
         "psr_CancelledAt",
     ],
+    person_email_change_pec: [
+        "pec_ID",
+        "pec_per_ID",
+        "pec_Kind",
+        "pec_Email",
+        "pec_TokenHash",
+        "pec_CreatedAt",
+        "pec_ExpiresAt",
+        "pec_UsedAt",
+        "pec_CancelledAt",
+    ],
     person_device_pdv: [
         "pdv_ID",
         "pdv_per_ID",
@@ -124,7 +135,7 @@ describe("Member sign-in schema", () => {
         db(
             `SELECT rc.TABLE_NAME AS tbl, rc.REFERENCED_TABLE_NAME AS parent, rc.DELETE_RULE AS rule
                FROM information_schema.REFERENTIAL_CONSTRAINTS rc
-              WHERE rc.CONSTRAINT_SCHEMA = DATABASE() AND rc.TABLE_NAME IN (?, ?, ?, ?, ?, ?)`,
+              WHERE rc.CONSTRAINT_SCHEMA = DATABASE() AND rc.TABLE_NAME IN (${Object.keys(TABLES).map(() => "?").join(", ")})`,
             Object.keys(TABLES),
         ).then((rows) => {
             expect(rows.map((row) => row.tbl)).to.have.members(Object.keys(TABLES));
@@ -146,6 +157,10 @@ describe("Member sign-in schema", () => {
                     (psr_per_ID, psr_Email, psr_TokenHash, psr_CodeHash, psr_BrowserHash, psr_CreatedAt, psr_ExpiresAt)
                  VALUES (?, 'cascade@example.com', ?, ?, ?, NOW(), NOW())`,
                 [personId, HASH("a"), HASH("b"), HASH("c")],
+            );
+            db(
+                "INSERT INTO person_email_change_pec (pec_per_ID, pec_Kind, pec_Email, pec_TokenHash, pec_CreatedAt, pec_ExpiresAt) VALUES (?, 'change', 'cascade@example.com', ?, NOW(), NOW())",
+                [personId, HASH("g")],
             );
             db(
                 "INSERT INTO person_device_pdv (pdv_per_ID, pdv_TokenHash, pdv_CreatedAt, pdv_ExpiresAt) VALUES (?, ?, NOW(), NOW())",
@@ -188,6 +203,11 @@ describe("Member sign-in schema", () => {
                 expect(second.error.code).to.eq("ER_DUP_ENTRY");
             });
             db("DELETE FROM person_device_pdv WHERE pdv_ID = ?", [first.insertId]);
+        });
+        const link = "INSERT INTO person_email_change_pec (pec_per_ID, pec_Kind, pec_Email, pec_TokenHash, pec_CreatedAt, pec_ExpiresAt) VALUES (1, 'confirm', 'x@example.com', ?, NOW(), NOW())";
+        db(link, [HASH("h")]).then((first) => {
+            cy.dbQuery(link, [HASH("h")]).its("error.code").should("eq", "ER_DUP_ENTRY");
+            db("DELETE FROM person_email_change_pec WHERE pec_ID = ?", [first.insertId]);
         });
     });
 

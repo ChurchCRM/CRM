@@ -33,6 +33,10 @@ $app = MvcAppFactory::create('/portal', [
 // logged-out asset request.
 require __DIR__ . '/routes/theme-asset.php';
 
+// Public: the confirm page an email-change link opens (member sign-in design
+// §9). The link alone identifies the request, so it needs no session.
+require __DIR__ . '/routes/email-confirm.php';
+
 PluginManager::init(SystemURLs::getDocumentRoot() . '/plugins');
 
 // Public: member sign-in by email (member sign-in design §6.1). AuthMiddleware

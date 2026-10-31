@@ -213,13 +213,13 @@ The member-facing area; design in [`member-portal-design.md`](./member-portal-de
 |-----------|----------|
 | Entry point | `src/portal/index.php`, no module role middleware, `'errorHandler' => PortalTwig::createErrorHandler()` |
 | Page gate | `ChurchCRM\Portal\Auth\PortalSessionMiddleware`, then `PortalAccessMiddleware` + `CSRFMiddleware`, on the route group. `/api/portal/*` groups use `PortalSessionMiddleware` + `PortalApiMiddleware`. Portal code reads who it serves from `PortalContext`, never `AuthenticationManager::getCurrentUser()` |
-| Routes | `src/portal/routes/*.php`: page files use `$group` inside the gated group; `theme-asset.php` is public and uses `$app` |
+| Routes | `src/portal/routes/*.php`: page files use `$group` inside the gated group; `theme-asset.php` and `email-confirm.php` are public and use `$app`; `login.php` is its own public `/login` group |
 | Views | Twig: `src/Include/themes/default/templates/**/*.twig` |
 | `.htaccess` | `src/portal/.htaccess` blocks `routes/*.php` and routes the rest through `index.php` |
 
-**Landing rule instead of a role gate.** Every login may open the portal. An `isEditSelfExclusive()` session is confined to it: `AuthMiddleware::isLimitedAccessAllowedPath()` allows `/portal`, `/api/portal`, the auth-flow pages and `/api/ministries/me/`, and redirects everything else to `/portal/`. `Include/PageInit.php` applies the same rule to PHP pages, and `AuthenticationManager::getDefaultLandingPath()` picks the post-login destination.
+**Landing rule instead of a role gate.** Every login may open the portal, and a member session (no account, signed in at `/portal/login`) passes `AuthMiddleware` only on `/portal`, `/api/portal` and the volunteer API (`/api/ministries/`). An `isEditSelfExclusive()` session is confined to it: `AuthMiddleware::isLimitedAccessAllowedPath()` allows `/portal`, `/api/portal`, the auth-flow pages and `/api/ministries/me/`, and redirects everything else to `/portal/`. `Include/PageInit.php` applies the same rule to PHP pages, and `AuthenticationManager::getDefaultLandingPath()` picks the post-login destination.
 
-**One public route.** `GET /portal/theme/{name}/{path}` streams theme assets without a session. `AuthMiddleware::isPublicPath()` includes it, and `PortalAccessMiddleware` sits on the page group instead of the app. A missing asset returns a bare 404.
+**Public routes.** `GET /portal/theme/{name}/{path}` (theme assets), `/portal/login` (member sign-in) and `/portal/email/confirm/{token}` (an email-change link) work without a session. `AuthMiddleware::isPublicPath()` includes them, and the session and access middlewares sit on the page group instead of the app. A public page calls `PortalTwig::preparePage()` itself. A missing asset returns a bare 404.
 
 **Theme templates.** `ChurchCRM\Portal\PortalTwig::render()` turns a portal page into a response. The loader order is active theme, then default theme; `@default/...` addresses core. A render failure shows administrators `errors/theme-error.html.twig` and members `errors/unavailable.html.twig` (both from the default theme) and logs through `LoggerUtils::getAppLogger()` and `error_log()`.
 

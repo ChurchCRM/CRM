@@ -150,6 +150,8 @@ $app->group('/portal', function (RouteCollectorProxy $group) use (
      *                 @OA\Property(property="firstName", type="string", example="Lena"),
      *                 @OA\Property(property="lastName", type="string", example="Black"),
      *                 @OA\Property(property="email", type="string", example="lena@example.com"),
+     *                 @OA\Property(property="pendingEmail", type="string", description="The new address the member asked for, while its confirmation link is open; empty otherwise"),
+     *                 @OA\Property(property="emailLocked", type="boolean", description="True when only an administrator may change this email: the person has a staff account or given portal permissions"),
      *                 @OA\Property(property="cellPhone", type="string", example="(206) 555-0100"),
      *                 @OA\Property(property="birthday", type="string", example="1971-12-24", description="ISO date, empty when unknown"),
      *                 @OA\Property(property="photoUrl", type="string"),
@@ -172,7 +174,7 @@ $app->group('/portal', function (RouteCollectorProxy $group) use (
      *     path="/portal/me",
      *     operationId="updatePortalMe",
      *     summary="Update the signed-in member's own profile",
-     *     description="Applies the allow-listed fields present in the body to the member's own person record and writes a timeline note naming what changed. Anything else in the body is ignored. Birthday is accepted only when bPortalAllowBirthdayEdit is on.",
+     *     description="Applies the allow-listed fields present in the body to the member's own person record and writes a timeline note naming what changed. Anything else in the body is ignored. Birthday is accepted only when bPortalAllowBirthdayEdit is on. A new email is not saved: a confirmation link goes to the new address, a notice goes to the old one, and the change happens when the link is used (member sign-in design §9).",
      *     tags={"Member Portal"},
      *     @OA\RequestBody(required=true,
      *         @OA\JsonContent(
@@ -193,11 +195,14 @@ $app->group('/portal', function (RouteCollectorProxy $group) use (
      *         @OA\JsonContent(type="object",
      *             @OA\Property(property="success", type="boolean", example=true),
      *             @OA\Property(property="profile", type="object"),
-     *             @OA\Property(property="updated", type="array", @OA\Items(type="string"), description="The fields that actually changed")
+     *             @OA\Property(property="updated", type="array", @OA\Items(type="string"), description="The fields that actually changed"),
+     *             @OA\Property(property="pendingEmail", type="string", description="The new email a confirmation link was sent to; empty when the email did not change")
      *         )
      *     ),
-     *     @OA\Response(response=400, description="Validation error"),
-     *     @OA\Response(response=403, description="API-key caller, or an invalid CSRF token")
+     *     @OA\Response(response=400, description="Validation error, or an email that is empty or not valid"),
+     *     @OA\Response(response=403, description="API-key caller, an invalid CSRF token, or an email only an administrator may change"),
+     *     @OA\Response(response=429, description="Too many email change requests in an hour"),
+     *     @OA\Response(response=503, description="The confirmation email could not be sent")
      * )
      */
     $group->post('/me', function (Request $request, Response $response) use ($portalActor, $portalError): Response {

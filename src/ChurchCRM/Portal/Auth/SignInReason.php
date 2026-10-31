@@ -25,6 +25,7 @@ enum SignInReason: string
     case SHARED_EMAIL = 'shared_email';
     case EMAIL_UNCONFIRMED = 'email_unconfirmed';
     case REQUEST_ADDRESS_CHANGED = 'request_address_changed';
+    case EMAIL_CHANGED = 'email_changed';
     case SESSION_VERSION = 'session_version';
     case IDLE = 'idle';
     case REPLACED = 'replaced';
@@ -54,6 +55,7 @@ enum SignInReason: string
             self::SHARED_EMAIL => gettext('Their email is shared with someone else'),
             self::EMAIL_UNCONFIRMED => gettext('Their email is not confirmed yet'),
             self::REQUEST_ADDRESS_CHANGED => gettext('The code or link went to an address that is no longer their email'),
+            self::EMAIL_CHANGED => gettext('Their email changed'),
             self::SESSION_VERSION => gettext('Signed out by a change to their sign-in'),
             self::IDLE => gettext('Idle too long'),
             self::REPLACED => gettext('Replaced by another sign-in'),

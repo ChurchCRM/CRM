@@ -9,12 +9,15 @@ use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
+use ChurchCRM\Portal\Auth\EmailChangeRefusedException;
+use ChurchCRM\Portal\Auth\SignInEmailPolicy;
 use ChurchCRM\Service\PersonSignInService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Service\UserService;
 use ChurchCRM\Slim\Middleware\Request\Auth\DeleteRecordRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Api\PersonMiddleware;
+use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\DateTimeUtils;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -393,6 +396,12 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
      *             @OA\Property(property="disabledBy", type="object", nullable=true),
      *             @OA\Property(property="disabledReason", type="string", nullable=true),
      *             @OA\Property(property="lastSignIn", type="string", nullable=true),
+     *             @OA\Property(property="unconfirmedEmail", type="string", nullable=true, description="An address that receives mail but may not sign in until confirmed"),
+     *             @OA\Property(property="unconfirmedSource", type="string", nullable=true, example="family_email", description="family_email, staff, import or api"),
+     *             @OA\Property(property="unconfirmedSourceLabel", type="string", nullable=true),
+     *             @OA\Property(property="unconfirmedAt", type="string", nullable=true),
+     *             @OA\Property(property="canConfirmEmail", type="boolean", description="Whether the caller may confirm the unconfirmed email"),
+     *             @OA\Property(property="confirmEmailRefusal", type="string", nullable=true, description="Why the caller may not confirm it"),
      *             @OA\Property(property="devices", type="integer"),
      *             @OA\Property(property="passkeys", type="integer")
      *         )
@@ -410,6 +419,35 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
 
         return SlimUtils::renderJSON($response, $status);
     })->add(new EditRecordsRoleAuthMiddleware());
+
+    /**
+     * @OA\Post(
+     *     path="/person/{personId}/sign-in/confirm-email",
+     *     operationId="confirmPersonSignInEmail",
+     *     summary="Confirm a person's unconfirmed email after checking who they are (EditRecords role required)",
+     *     description="An unconfirmed address receives mail but may not be used to sign in (member sign-in design §9). Staff with Edit Records may confirm an address moved from the family email; a replacement address after the person's first sign-in, and any address of a person with a staff account or given portal permissions, only an administrator. Writes an email_confirmed audit row.",
+     *     tags={"People"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer", example=42)),
+     *     @OA\RequestBody(required=true, @OA\JsonContent(required={"email"}, @OA\Property(property="email", type="string", description="The unconfirmed address being confirmed", example="pat@example.com"))),
+     *     @OA\Response(response=200, description="Confirmed", @OA\JsonContent(@OA\Property(property="success", type="boolean", example=true))),
+     *     @OA\Response(response=403, description="EditRecords role required, an invalid CSRF token, or an address only an administrator may confirm"),
+     *     @OA\Response(response=404, description="Person not found"),
+     *     @OA\Response(response=409, description="No unconfirmed email, or it is not the address sent")
+     * )
+     */
+    $group->post('/sign-in/confirm-email', function (Request $request, Response $response): Response {
+        $input = $request->getParsedBody();
+        $email = is_array($input) && is_string($input['email'] ?? null) ? $input['email'] : '';
+
+        try {
+            (new SignInEmailPolicy())->confirmByStaff($request->getAttribute('person'), $email, AuthenticationManager::getCurrentUser());
+        } catch (EmailChangeRefusedException $e) {
+            return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], $e->getStatus(), null, $request);
+        }
+
+        return SlimUtils::renderSuccessJSON($response);
+    })->add(new CSRFMiddleware())->add(new EditRecordsRoleAuthMiddleware());
 
     // Add person to cart
     $group->post('/addToCart', function (Request $request, Response $response, array $args): Response {

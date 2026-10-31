@@ -7,8 +7,12 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\Portal\Auth\EmailChangeRefusedException;
+use ChurchCRM\Portal\Auth\PortalContext;
+use ChurchCRM\Portal\Auth\SignInEmailPolicy;
 use ChurchCRM\Portal\Permissions\CorePortalCapabilities;
 use ChurchCRM\Portal\Permissions\PortalAuthorizationService;
 use ChurchCRM\Portal\Permissions\PortalScope;
@@ -18,6 +22,8 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\ORMUtils;
 use DateTime;
 use DateTimeImmutable;
+use Propel\Runtime\Propel;
+use Throwable;
 
 /**
  * Everything a member may change about themselves and their family, and the
@@ -44,6 +50,8 @@ class PortalSelfService
      * The person fields a member may change, each mapped to its model getter
      * and setter. `birthday` is deliberately absent: it is a composite of three
      * columns gated by `bPortalAllowBirthdayEdit`, so it is handled on its own.
+     * So is `email`, the sign-in identity: a new address takes effect only when
+     * the link sent to it is used (member sign-in design §9).
      *
      * @var array<string, array{0: string, 1: string}>
      */
@@ -53,7 +61,6 @@ class PortalSelfService
         'middleName' => ['getMiddleName', 'setMiddleName'],
         'lastName' => ['getLastName', 'setLastName'],
         'suffix' => ['getSuffix', 'setSuffix'],
-        'email' => ['getEmail', 'setEmail'],
         'workEmail' => ['getWorkEmail', 'setWorkEmail'],
         'homePhone' => ['getHomePhone', 'setHomePhone'],
         'cellPhone' => ['getCellPhone', 'setCellPhone'],
@@ -103,6 +110,7 @@ class PortalSelfService
     public static function getProfile(Person $actor): array
     {
         $family = $actor->getFamily();
+        $emailPolicy = new SignInEmailPolicy();
 
         return [
             'id' => (int) $actor->getId(),
@@ -112,6 +120,8 @@ class PortalSelfService
             'lastName' => (string) $actor->getLastName(),
             'suffix' => (string) $actor->getSuffix(),
             'email' => (string) $actor->getEmail(),
+            'pendingEmail' => (string) $emailPolicy->pendingEmail($actor),
+            'emailLocked' => !$emailPolicy->memberMayChange($actor, PortalContext::staffUser()),
             'workEmail' => (string) $actor->getWorkEmail(),
             'homePhone' => (string) $actor->getHomePhone(),
             'cellPhone' => (string) $actor->getCellPhone(),
@@ -230,22 +240,32 @@ class PortalSelfService
 
     /**
      * Apply the allow-listed person fields present in `$body` to the acting
-     * member, write the timeline note, and hand back the refreshed profile.
+     * member, write the timeline note, and hand back the refreshed profile. A
+     * new email is not saved: a link goes to it, and `pendingEmail` names it.
      *
      * @param array<string, mixed> $body
      *
-     * @return array{profile: array<string, mixed>, updated: array<int, string>}
+     * @return array{profile: array<string, mixed>, updated: array<int, string>, pendingEmail: string}
      *
-     * @throws PortalSelfServiceException when the model refuses the result
+     * @throws PortalSelfServiceException when the model or the email rules refuse the result
      */
     public static function updateProfile(Person $actor, array $body): array
     {
         $changed = [];
-
-        $emailLocked = $actor->isUser();
+        $emailPolicy = new SignInEmailPolicy();
+        $requestedEmail = array_key_exists('email', $body) ? trim(self::asString($body['email'])) : null;
+        if ($requestedEmail !== null && SignInEmailPolicy::sameAddress($requestedEmail, $actor->getEmail())) {
+            $requestedEmail = null;
+        }
+        if ($requestedEmail !== null) {
+            $refusal = $emailPolicy->requestRefusal($actor, $requestedEmail, PortalContext::staffUser());
+            if ($refusal !== null) {
+                throw new PortalSelfServiceException($refusal->getMessage(), ['email: ' . $refusal->getMessage()], $refusal->getStatus());
+            }
+        }
 
         foreach (self::PERSON_FIELDS as $field => [$getter, $setter]) {
-            if (!array_key_exists($field, $body) || ($field === 'email' && $emailLocked)) {
+            if (!array_key_exists($field, $body)) {
                 continue;
             }
             $value = self::asString($body[$field]);
@@ -262,25 +282,41 @@ class PortalSelfService
             }
         }
 
-        if ($changed === []) {
-            return ['profile' => self::getProfile($actor), 'updated' => []];
-        }
-
-        if (!$actor->validate()) {
+        if ($changed !== [] && !$actor->validate()) {
             throw new PortalSelfServiceException(
                 gettext('Some of your details could not be saved. Please check the highlighted fields.'),
                 ORMUtils::getValidationErrors($actor->getValidationFailures())
             );
         }
 
-        $actor->setDateLastEdited(new DateTime());
-        $actor->setEditedBy((int) $actor->getId());
-        // The model's own "Updated" note would say nothing about where the edit
-        // came from; the portal writes a more specific one in its place.
-        $actor->saveWithoutUpdateNote();
-        self::writeEditNote($actor, $actor, null, $changed, self::personFieldLabels());
+        // The edits and the email change link commit together: a failed save sends
+        // no link, and a link that is refused or can't be sent saves no edit.
+        $connection = Propel::getWriteConnection(PersonTableMap::DATABASE_NAME);
+        $connection->beginTransaction();
+        try {
+            if ($changed !== []) {
+                $actor->setDateLastEdited(new DateTime());
+                $actor->setEditedBy((int) $actor->getId());
+                // The model's own "Updated" note would say nothing about where the edit
+                // came from; the portal writes a more specific one in its place.
+                $actor->saveWithoutUpdateNote();
+                self::writeEditNote($actor, $actor, null, $changed, self::personFieldLabels());
+            }
+            if ($requestedEmail !== null) {
+                $emailPolicy->requestChange($actor, $requestedEmail, PortalContext::staffUser());
+            }
+            $connection->commit();
+        } catch (EmailChangeRefusedException $e) {
+            $connection->rollBack();
 
-        return ['profile' => self::getProfile($actor), 'updated' => $changed];
+            throw new PortalSelfServiceException($e->getMessage(), ['email: ' . $e->getMessage()], $e->getStatus());
+        } catch (Throwable $e) {
+            $connection->rollBack();
+
+            throw $e;
+        }
+
+        return ['profile' => self::getProfile($actor), 'updated' => $changed, 'pendingEmail' => (string) $requestedEmail];
     }
 
     /**
