@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\Portal\Permissions\EffectiveGrant;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 
 /*
@@ -120,9 +121,13 @@ $removeButton = static function (string $class, string $dataName, int $id, strin
                                 &middot; <?= InputUtils::escapeHTML($grant['scope']['name']) ?>
                             <?php endif; ?>
                             <div>
-                                <?= $grant['known']
-                                    ? InputUtils::escapeHTML(sprintf(gettext('Ended %s'), (string) $grant['endsOnDisplay']))
-                                    : gettext('Its plugin is not installed') ?>
+                                <?php if (!$grant['known']) : ?>
+                                    <?= gettext('Its plugin is not installed') ?>
+                                <?php elseif ($grant['ended']) : ?>
+                                    <?= InputUtils::escapeHTML(sprintf(gettext('Ended %s'), (string) $grant['endsOnDisplay'])) ?>
+                                <?php else : ?>
+                                    <?= gettext('What it was given for no longer exists') ?>
+                                <?php endif; ?>
                             </div>
                         </div>
                             <?= $removeButton('portal-signin-remove-grant', 'grant-id', (int) $grant['grantId'], gettext('Remove this permission')) ?>
@@ -144,7 +149,7 @@ $removeButton = static function (string $class, string $dataName, int $id, strin
 
 <div class="modal fade" id="portal-grant-modal" tabindex="-1" aria-labelledby="portal-grant-title" aria-hidden="true">
     <div class="modal-dialog">
-        <form class="modal-content" id="portal-grant-form" novalidate autocomplete="off">
+        <form class="modal-content" id="portal-grant-form" method="post" novalidate autocomplete="off">
             <div class="modal-header">
                 <h5 class="modal-title" id="portal-grant-title"><?= gettext('Give a portal permission') ?></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= gettext('Close') ?>"></button>
@@ -183,7 +188,7 @@ $removeButton = static function (string $class, string $dataName, int $id, strin
                 </div>
                 <div class="mb-3">
                     <label class="form-label required" for="portal-grant-ends"><?= gettext('Last day') ?></label>
-                    <input type="date" class="form-control is-empty" id="portal-grant-ends" name="endsOn" required>
+                    <input type="date" class="form-control is-empty" id="portal-grant-ends" name="endsOn" min="<?= DateTimeUtils::getTodayDate() ?>" required>
                     <div class="form-text"><?= gettext('The permission ends after this day. It can be given again.') ?></div>
                 </div>
                 <div>

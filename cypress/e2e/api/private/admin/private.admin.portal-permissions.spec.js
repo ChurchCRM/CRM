@@ -256,6 +256,9 @@ describe("Admin → Member Portal permissions and given grants", () => {
         give(CHILD, { capability: "no.such.capability" }, 400);
         give(CHILD, { capability: "portal.family.edit" }, 400);
         give(CHILD, { capability: "portal.family.edit", scopeId: 987654 }, 400);
+        give(CHILD, { capability: "portal.family.edit", scopeId: "3abc" }, 400).its("body.message").should("eq", "Choose what the permission is for.");
+        give(CHILD, { capability: "portal.family.edit", scopeId: "99999999999999999999" }, 400);
+        give(CHILD, { capability: "portal.calendar.view", scopeId: "x" }, 400);
         give(CHILD, { capability: "portal.calendar.view", endsOn: "" }, 400)
             .its("body.message")
             .should("eq", "Choose the last day of this permission.");
