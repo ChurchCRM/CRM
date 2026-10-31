@@ -145,7 +145,7 @@ describe("Session Password Reset", () => {
             cy.visit("/session/forgot-password/set/bad-token-123");
 
             cy.get(".alert-buttons").contains("Back to Login").click();
-            cy.location("pathname").should("eq", "/admin/");
+            cy.location("pathname").should("match", /\/admin\/$/);
         });
     });
 
