@@ -5,6 +5,7 @@ namespace ChurchCRM\Service;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonSigninQuery;
@@ -16,6 +17,7 @@ use ChurchCRM\Portal\Auth\SignInEmailPolicy;
 use ChurchCRM\Utils\LoggerUtils;
 use DateTime;
 use Propel\Runtime\ActiveQuery\Criteria;
+use Propel\Runtime\Propel;
 use Throwable;
 
 /**
@@ -107,7 +109,7 @@ final class SignInEmailFixService
      * keeper and the people who lose it, as the preview showed them; a row
      * whose sharers changed since then is skipped, and one the actor may not
      * apply is refused. The people who lose it have their personal email
-     * cleared through the staff email-change rule (§9).
+     * cleared through the staff email-change rule (§9), all of them or none.
      *
      * @param list<array{email: string, keeperId: int, loserIds: int[]}> $requested
      *
@@ -150,10 +152,14 @@ final class SignInEmailFixService
             }
 
             try {
-                $this->clearEmails($loserIds, $actor);
+                $cleared = $this->clearEmails($address, $loserIds, $actor);
             } catch (Throwable $e) {
                 LoggerUtils::getAppLogger()->error('Fix shared emails could not change an address', ['exception' => $e]);
                 $result['refused'][] = $outcome + ['reason' => gettext('This address could not be changed. Open Fix shared emails again to see where it stands.')];
+                continue;
+            }
+            if (!$cleared) {
+                $result['skipped'][] = $outcome + ['reason' => gettext('The people sharing this address have changed. Open Fix shared emails again.')];
                 continue;
             }
             $result['changed'][] = $outcome + ['keeper' => $row['keeper'], 'losers' => $row['losers']];
@@ -267,21 +273,43 @@ final class SignInEmailFixService
     }
 
     /**
+     * Clears the address of everyone given, in one transaction. False, with
+     * nothing changed, when one of them no longer has that address.
+     *
      * @param int[] $personIds
      */
-    private function clearEmails(array $personIds, User $actor): void
+    private function clearEmails(string $address, array $personIds, User $actor): bool
     {
-        foreach (PersonQuery::create()->filterById($personIds, Criteria::IN)->find() as $person) {
-            $oldEmail = $person->getEmail();
-            if ($this->policy->changeRefusal($person, null, $actor) !== null) {
-                throw new EmailChangeRefusedException('Refused while clearing a shared email', 403);
+        $connection = Propel::getWriteConnection(PersonTableMap::DATABASE_NAME);
+        $connection->beginTransaction();
+        try {
+            $people = iterator_to_array(PersonQuery::create()->filterById($personIds, Criteria::IN)->lockForUpdate()->find($connection));
+            if (count($people) !== count($personIds) || !array_all($people, static fn (Person $person): bool => MemberSignInRule::normalizeEmail((string) $person->getEmail()) === $address)) {
+                $connection->rollBack();
+
+                return false;
             }
-            $person->setEmail(null)
-                ->setDateLastEdited(new DateTime())
-                ->setEditedBy((int) $actor->getPersonId())
-                ->save();
-            $this->policy->recordChange($person, $oldEmail, EmailChangeChannel::SHARED_EMAIL_FIX, $actor);
+            foreach ($people as $person) {
+                if ($this->policy->changeRefusal($person, null, $actor) !== null) {
+                    throw new EmailChangeRefusedException('Refused while clearing a shared email', 403);
+                }
+            }
+            foreach ($people as $person) {
+                $oldEmail = $person->getEmail();
+                $person->setEmail(null)
+                    ->setDateLastEdited(new DateTime())
+                    ->setEditedBy((int) $actor->getPersonId())
+                    ->save($connection);
+                $this->policy->recordChange($person, $oldEmail, EmailChangeChannel::SHARED_EMAIL_FIX, $actor);
+            }
+            $connection->commit();
+        } catch (Throwable $e) {
+            $connection->rollBack();
+
+            throw $e;
         }
+
+        return true;
     }
 
     public static function byHandLabel(string $reason): string

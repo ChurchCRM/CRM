@@ -174,9 +174,6 @@ function wireGiveGrant(card: HTMLElement): void {
   let scopeSelect: TomSelectInstance | null = null;
 
   if (ends) {
-    const today = new Date();
-    const pad = (n: number): string => String(n).padStart(2, "0");
-    ends.min = `${today.getFullYear()}-${pad(today.getMonth() + 1)}-${pad(today.getDate())}`;
     const markEmpty = (): void => {
       ends.classList.toggle("is-empty", ends.value === "");
     };
