@@ -1,0 +1,20 @@
+{% extends "_letter.html.twig" %}
+{% block letter_body %}
+  {% for letter in letters %}
+    {% if not loop.first %}<pagebreak />{% endif %}
+
+    <div class="recipient">
+      <strong>{{ letter.salutation }}</strong><br>
+      {{ letter.address|nl2br }}
+    </div>
+
+    <p>{{ opening }}</p>
+
+    <div class="closing">
+      {% if thanks %}<p>{{ thanks }}</p>{% endif %}
+      {% if questions %}<p>{{ questions }}</p>{% endif %}
+      {% if sincerely %}<p>{{ sincerely }},</p>{% endif %}
+      {% if signer %}<p>{{ signer }}</p>{% endif %}
+    </div>
+  {% endfor %}
+{% endblock %}

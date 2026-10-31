@@ -79,6 +79,9 @@ cy.makePrivateAdminAPICall("POST", "/api/events", event, 200).then(({ body }) =>
 
 ## PDF reports
 
+- Include names, memos and addresses containing HTML metacharacters and Unicode in route-level regressions. Check that text stays literal and totals remain correct. Use the current test policy above; avoid adding standalone PHP scripts for report behavior.
+- A PDF content assertion, a screenshot's existence and a physical stock-alignment pass are separate evidence. Record each pass explicitly; inspect generated screenshots before claiming visual validation.
+
 - Assert report text with `pdfText()` from `cypress/support/pdf-text.js`: `cy.request({ encoding: "binary" })`, inflate each FlateDecode stream with `DecompressionStream("deflate")`, collect the `(text) Tj` operands. No PDF parser dependency needed
 - Assert a sequence after a unique marker, not `includes` alone, so the test proves which record printed what
 - The directory report pre-selects classifications (Unassigned people never print); `DELETE /api/family/{id}` only unlinks members, use `?deleteMembers=true` when the test created people

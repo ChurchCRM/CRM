@@ -6,6 +6,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\Calendar;
 use ChurchCRM\model\ChurchCRM\CalendarQuery;
 use ChurchCRM\model\ChurchCRM\Deposit;
+use ChurchCRM\model\ChurchCRM\DonatedItem;
 use ChurchCRM\model\ChurchCRM\DonationFund;
 use ChurchCRM\model\ChurchCRM\DonationFundQuery;
 use ChurchCRM\model\ChurchCRM\Event;
@@ -18,7 +19,9 @@ use ChurchCRM\model\ChurchCRM\Group;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\Multibuy;
 use ChurchCRM\model\ChurchCRM\Note;
+use ChurchCRM\model\ChurchCRM\PaddleNum;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
@@ -54,6 +57,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\FileSystemUtils;
 use ChurchCRM\dto\SystemURLs;
 use DateTime;
+use DateTimeImmutable;
 use Exception;
 use JsonException;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -103,6 +107,8 @@ class DemoDataService
     private array $groupNameToId = [];
     /** @var array<string,int> family contact email (lowercase) → family DB id */
     private array $familyEmailToId = [];
+    /** @var array<string,int> person email (lowercase) → person DB id */
+    private array $personEmailToId = [];
     private $logger;
 
     public function __construct()
@@ -126,6 +132,7 @@ class DemoDataService
             }
 
             $emailMap = $this->importCongregation();
+            $this->personEmailToId = $emailMap;
 
             $this->importGroups($emailMap);
             $this->importEvents($this->importCalendars());
@@ -1534,7 +1541,7 @@ class DemoDataService
         $fundMap = $this->importDonationFunds($data['funds'] ?? []);
 
         // 2. Create fundraisers
-        $this->importFundRaisers($data['fundraisers'] ?? [], $prevYear, $currYear);
+        $this->importFundRaisers($data['fundraisers'] ?? [], $fundMap, $prevYear, $currYear);
 
         // 3. Create pledges for all families
         $givingFamilies = $data['giving_families'] ?? [];
@@ -1583,24 +1590,135 @@ class DemoDataService
         return $fundMap;
     }
 
-    /** @param array<array<string,mixed>> $fundraisers */
-    private function importFundRaisers(array $fundraisers, int $prevYear, int $currYear): void
+    /**
+     * @param array<array<string,mixed>> $fundraisers
+     * @param array<string,int>          $fundMap
+     */
+    private function importFundRaisers(array $fundraisers, array $fundMap, int $prevYear, int $currYear): void
     {
         foreach ($fundraisers as $fr) {
+            $title = (string) ($fr['title'] ?? 'Fundraiser');
             try {
-                $year        = ($fr['year'] ?? 'prev') === 'prev' ? $prevYear : $currYear;
-                $enteredYear = ($fr['entered_year'] ?? 'prev') === 'prev' ? $prevYear : $currYear;
-
                 $fundraiser = new FundRaiser();
-                $fundraiser->setTitle($fr['title'] ?? 'Fundraiser');
-                $fundraiser->setDate(sprintf('%04d-%02d-%02d', $year, (int)$fr['month'], (int)$fr['day']));
-                $fundraiser->setEnteredDate(sprintf('%04d-%02d-%02d', $enteredYear, (int)$fr['entered_month'], (int)$fr['entered_day']));
+                $fundraiser->setTitle($title);
+                $fundraiser->setDescription((string) ($fr['description'] ?? ''));
+                $fundraiser->setType((string) ($fr['type'] ?? 'Auction'));
+                $fundraiser->setStatus((string) ($fr['status'] ?? 'Active'));
+                $fundraiser->setDate($this->demoFundraiserDate($fr, 'date_offset_days', $prevYear, $currYear));
+                $fundraiser->setEnteredDate($this->demoFundraiserDate($fr, 'entered_offset_days', $prevYear, $currYear, true));
+                $endDate = $this->demoFundraiserEndDate($fr, $prevYear, $currYear);
+                if ($endDate !== null) {
+                    $fundraiser->setEndDate($endDate);
+                }
+                if (isset($fr['goal']) && $fr['goal'] !== '') {
+                    $fundraiser->setGoalAmount((float) $fr['goal']);
+                }
+                $fundName = (string) ($fr['fund'] ?? '');
+                if ($fundName !== '' && isset($fundMap[$fundName])) {
+                    $fundraiser->setFundId($fundMap[$fundName]);
+                }
                 $fundraiser->save();
                 $this->importResult['imported']['fundraisers']++;
+
+                foreach ($fr['paddles'] ?? [] as $paddle) {
+                    $personId = $this->demoPersonId((string) ($paddle['email'] ?? ''));
+                    if ($personId === null) {
+                        continue;
+                    }
+                    $row = new PaddleNum();
+                    $row->setPnFrId($fundraiser->getId());
+                    $row->setPnNum((int) ($paddle['number'] ?? 0));
+                    $row->setPnPerId($personId);
+                    $row->save();
+                }
+
+                $enteredOn = $fundraiser->getEnteredDate();
+                $entered = $enteredOn instanceof \DateTimeInterface ? $enteredOn->format('Y-m-d') : (string) $enteredOn;
+                foreach ($fr['items'] ?? [] as $item) {
+                    $donorId = $this->demoPersonId((string) ($item['donor'] ?? ''));
+                    if ($donorId === null) {
+                        continue;
+                    }
+                    $buyerEmail = (string) ($item['buyer'] ?? '');
+                    $buyerId = $buyerEmail === '' ? 0 : $this->demoPersonId($buyerEmail);
+                    if ($buyerId === null) {
+                        continue;
+                    }
+                    $donated = new DonatedItem();
+                    $donated->setItem((string) ($item['code'] ?? ''));
+                    $donated->setFrId($fundraiser->getId());
+                    $donated->setDonorId($donorId);
+                    $donated->setBuyerId($buyerId);
+                    $donated->setMultibuy(!empty($item['multibuy']) ? 1 : 0);
+                    $donated->setTitle((string) ($item['title'] ?? ''));
+                    $donated->setDescription((string) ($item['description'] ?? ''));
+                    $donated->setSellprice((float) ($item['sell'] ?? 0));
+                    $donated->setEstprice((float) ($item['estimate'] ?? 0));
+                    $donated->setMinimum((float) ($item['minimum'] ?? 0));
+                    $donated->setMaterialValue((float) ($item['material'] ?? 0));
+                    $donated->setEnteredby(1);
+                    $donated->setEntereddate($entered);
+                    $donated->save();
+
+                    foreach ($item['purchases'] ?? [] as $purchase) {
+                        $buyer = $this->demoPersonId((string) ($purchase['email'] ?? ''));
+                        if ($buyer === null) {
+                            continue;
+                        }
+                        $multibuy = new Multibuy();
+                        $multibuy->setMbPerId($buyer);
+                        $multibuy->setMbItemId($donated->getId());
+                        $multibuy->setMbCount((int) ($purchase['count'] ?? 1));
+                        $multibuy->save();
+                    }
+                }
             } catch (Exception $e) {
-                $this->addWarning("Fundraiser '{$fr['title']}' import failed: {$e->getMessage()}");
+                $this->addWarning("Fundraiser '{$title}' import failed: {$e->getMessage()}");
             }
         }
+    }
+
+    /** A fixed month/day in prev or curr year, or a day offset from today. */
+    private function demoFundraiserDate(array $fr, string $offsetKey, int $prevYear, int $currYear, bool $entered = false): string
+    {
+        if (isset($fr[$offsetKey])) {
+            return (new DateTimeImmutable('today'))->modify(sprintf('%+d days', (int) $fr[$offsetKey]))->format('Y-m-d');
+        }
+
+        $yearKey = $entered ? ($fr['entered_year'] ?? 'prev') : ($fr['year'] ?? 'prev');
+        $year = $yearKey === 'prev' ? $prevYear : $currYear;
+        $month = (int) ($entered ? ($fr['entered_month'] ?? 1) : ($fr['month'] ?? 1));
+        $day = (int) ($entered ? ($fr['entered_day'] ?? 1) : ($fr['day'] ?? 1));
+
+        return sprintf('%04d-%02d-%02d', $year, $month, $day);
+    }
+
+    /** @param array<string,mixed> $fr */
+    private function demoFundraiserEndDate(array $fr, int $prevYear, int $currYear): ?string
+    {
+        if (isset($fr['end_offset_days'])) {
+            return (new DateTimeImmutable('today'))->modify(sprintf('%+d days', (int) $fr['end_offset_days']))->format('Y-m-d');
+        }
+        if (!isset($fr['end_month'], $fr['end_day'])) {
+            return null;
+        }
+        $year = (($fr['year'] ?? 'prev') === 'prev') ? $prevYear : $currYear;
+
+        return sprintf('%04d-%02d-%02d', $year, (int) $fr['end_month'], (int) $fr['end_day']);
+    }
+
+    private function demoPersonId(string $email): ?int
+    {
+        $email = strtolower(trim($email));
+        if ($email === '') {
+            return null;
+        }
+        $id = $this->personEmailToId[$email] ?? null;
+        if ($id === null) {
+            $this->addWarning("Fundraiser person '{$email}' was not imported");
+        }
+
+        return $id;
     }
 
     /**
