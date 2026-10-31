@@ -102,7 +102,7 @@ describe("Treasurer prepares a voting review list under church bylaws", () => {
     it("chooses its own classifications and downloads matching people, including those without a family", () => {
         cy.setupPersonaSession("finance-only");
         cy.visit("/finance/reports");
-        cy.get('a[href$="/finance/reports/voting-members"]').click();
+        cy.get('#financeReports a.btn[href$="/finance/reports/voting-members"]').should("have.length", 1).click();
         cy.get("#votingClasses").select([String(classificationId)]);
         cy.get("#votingAsOf").clear().type("2025-10-31");
         cy.intercept("POST", "**/finance/reports/voting-members/download").as("report");
@@ -151,7 +151,7 @@ describe("Treasurer prepares a voting review list under church bylaws", () => {
 
     it("rejects invalid dates and bounds while preserving the submitted filters", () => {
         cy.setupPersonaSession("finance-only");
-        [{ AsOf: "2025-02-30" }, { MinimumAge: -1 }, { RequireDonationYears: 101 }, { MembershipMonths: "abc" }, { classList: [999999] }, { classList: [] }].forEach((invalid) => {
+        [{ AsOf: "2025-02-30" }, { AsOf: "2025-10-31\u0000" }, { MinimumAge: -1 }, { RequireDonationYears: 101 }, { MembershipMonths: "abc" }, { classList: [999999] }, { classList: [] }].forEach((invalid) => {
             download(criteria(invalid)).then((response) => {
                 expect(response.status).to.eq(422);
                 expect(response.headers["content-type"]).to.include("text/html");

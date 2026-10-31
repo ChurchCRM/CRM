@@ -31,7 +31,8 @@ class VotingMembersService
 
             return (int) $value;
         };
-        $asOf = is_string($input['AsOf']) ? DateTimeImmutable::createFromFormat('!Y-m-d', $input['AsOf']) : false;
+        $asOf = is_string($input['AsOf']) && preg_match('/^\d{4}-\d{2}-\d{2}$/D', $input['AsOf'])
+            ? DateTimeImmutable::createFromFormat('!Y-m-d', $input['AsOf']) : false;
         if (!$asOf || $asOf->format('Y-m-d') !== $input['AsOf'] || $asOf->format('Y') < '1900' || $asOf->format('Y') > '2200') {
             throw new InvalidArgumentException(gettext('Enter a valid review date between 1900 and 2200.'));
         }
