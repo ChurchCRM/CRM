@@ -1,7 +1,7 @@
 {% extends "_letter.html.twig" %}
 {% block letter_body %}
   <h1>{{ gettext('Pledge Summary By Family') }}</h1>
-  <div class="muted">{{ gettext('Fiscal Year') }}: {{ fiscal_year }}{% if funds %} · {{ gettext('Funds') }}: {{ funds|join(', ') }}{% endif %}</div>
+  <div class="muted">{{ gettext('Fiscal Year') }}: {{ fiscal_year }}{% if date_range %} ({{ date_range }}){% endif %}{% if funds %} · {{ gettext('Funds') }}: {{ funds|join(', ') }}{% endif %}</div>
   <table class="gifts">
     <thead>
       <tr>
