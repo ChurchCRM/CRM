@@ -1,5 +1,7 @@
 /// <reference types="cypress" />
 
+import { pdfText } from "../../../support/pdf-text";
+
 const zeroGivers = (output) =>
     cy.request({
         method: "POST",
@@ -12,6 +14,31 @@ const zeroGivers = (output) =>
     });
 
 describe("Zero Givers report", () => {
+    const familyIds = [];
+    const activeName = `ZeroActive${Date.now()}`;
+    const inactiveName = `ZeroInactive${Date.now()}`;
+
+    before(() => {
+        cy.setupAdminSession();
+        [activeName, inactiveName].forEach((name) => {
+            cy.visit("/FamilyEditor.php");
+            cy.get("#FamilyName").type(name);
+            ["Ann", "Ben"].forEach((firstName, index) => {
+                cy.get(`input[name="FirstName${index + 1}"]`).type(firstName);
+                cy.get(`select[name="Classification${index + 1}"]`).select("1", { force: true });
+            });
+            cy.get('button[name="FamilySubmit"]').click();
+            cy.location("pathname").should("match", /\/people\/family\/\d+$/).then((pathname) => {
+                familyIds.push(Number(pathname.split("/").pop()));
+            });
+        });
+        cy.then(() => cy.request("POST", `/api/family/${familyIds[1]}/activate/false`));
+    });
+
+    after(() => {
+        cy.cleanupFamilies(familyIds);
+    });
+
     it("finance staff get the PDF letters", () => {
         cy.setupPersonaSession("finance-only");
         zeroGivers("pdf").then((response) => {
@@ -25,6 +52,25 @@ describe("Zero Givers report", () => {
         zeroGivers("csv").then((response) => {
             expect(response.headers["content-type"]).to.include("text/csv");
             expect(response.body).to.include("fam_ID");
+        });
+    });
+
+    it("includes each active family once and omits inactive families from CSV and PDF", () => {
+        cy.setupPersonaSession("finance-only");
+        zeroGivers("csv").then((response) => {
+            expect(response.status).to.eq(200);
+            const ids = response.body.trim().split(/\r?\n/).slice(1).map((row) => row.split(",")[0]);
+            expect(ids.filter((id) => id === String(familyIds[0]))).to.have.length(1);
+            expect(ids).not.to.include(String(familyIds[1]));
+        });
+        zeroGivers("pdf").then((response) => {
+            expect(response.status).to.eq(200);
+            expect(response.headers["content-type"]).to.include("application/pdf");
+            return pdfText(response.body).then((lines) => {
+                const text = lines.join(" ");
+                expect(text).to.include(activeName);
+                expect(text).not.to.include(inactiveName);
+            });
         });
     });
 

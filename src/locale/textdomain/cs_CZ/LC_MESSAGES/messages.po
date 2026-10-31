@@ -1005,10 +1005,6 @@ msgid "Bank Draft"
 msgstr "Bankovní převod"
 
 #: 
-msgid "0 - No Minimum"
-msgstr "0 - žádné minimum"
-
-#: 
 msgid "Other Settings"
 msgstr "Ostatní nastavení"
 
@@ -1272,10 +1268,6 @@ msgstr "Popisky potvrzovacích dat"
 #: 
 msgid "Invalid login or password"
 msgstr "Nesprávné přihlašovací jméno nebo heslo"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Příliš mnoho neúspěšných přihlášení: váš účet byl zablokován.  Kontaktujte prosím správce."
 
 #: 
 msgid "Email/Username"
@@ -2140,24 +2132,12 @@ msgid "Classes"
 msgstr "Třídy"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Sestavy o nedělní škole"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Žáci, kteří nejsou ve třídě nedělní školy"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Alespoň jedna skupina musí být vybrána pro vytvoření třídních seznamů nebo prezenčních listin."
-
-#: 
 msgid "Report Details"
 msgstr "Detaily sestavy"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Vypsat všechny role (nezaškrtnuté vypíše pouze role učitel/žák)"
 
 #: 
 msgid "First Sunday"
@@ -2178,10 +2158,6 @@ msgstr "Extra žáci"
 #: 
 msgid "Extra Teachers"
 msgstr "Extra učitelé"
-
-#: 
-msgid "Create Class List"
-msgstr "Vytvořit třídní seznam"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4589,14 +4565,6 @@ msgid "PhotoBook"
 msgstr "Fotokniha"
 
 #: 
-msgid "With Photos"
-msgstr "S fotkami"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Vytvořit fotoknihu"
-
-#: 
 msgid "SSE"
 msgstr "JJV"
 
@@ -4740,10 +4708,6 @@ msgstr "Výročí"
 #: 
 msgid "View User"
 msgstr "Zobrazit uživatele"
-
-#: 
-msgid "not found or user without an email"
-msgstr "nenalezen nebo uživatel bez e-mailu"
 
 #: 
 msgid "UserName not set"
@@ -4938,16 +4902,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Jak moc se musí nové heslo lišit od starého (# změněných znaků).\n"
 "Nastavením na nulu tuto funkci zakážete"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Maximální počet neúspěšných přihlášení před uzamčením uživatelského účtu.\n"
-"Po dosažení maximálního počtu musí správce účet znovu povolit.\n"
-"Tato funkce pomáhá chránit před automatizovanými útoky hádajícími hesla.\n"
-"Nastavením na nulu tuto funkci zakážete."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -10044,10 +9998,6 @@ msgstr "Vynutit přeinstalaci?"
 #: 
 msgid "Full Path"
 msgstr "Úplná cesta"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Generovat seznamy tříd, prezenční listiny a fotoalba"
 
 #: 
 msgid "Installed"
@@ -18581,10 +18531,6 @@ msgid "Could not match the church country."
 msgstr "Zemi církve se nepodařilo přiřadit."
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Seznamy tříd, prezenční listiny a fotoknihy"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "Seznamy členů skupin a přehledy tříd nedělní školy"
 
@@ -18791,25 +18737,11 @@ msgstr[1] "%d výchozí dobrovolníci přiřazeni"
 msgstr[2] "%d výchozích dobrovolníků přiřazeno"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Pro tuto pozici je stále potřeba ještě %d dobrovolník. Otevřete výskyt a vyplňte mezeru."
-msgstr[1] "Pro tuto pozici jsou stále potřeba ještě %d dobrovolníci. Otevřete výskyt a vyplňte mezeru."
-msgstr[2] "Pro tuto pozici je stále potřeba ještě %d dobrovolníků. Otevřete výskyt a vyplňte mezeru."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d nový výskyt"
 msgstr[1] "%d nové výskyty"
 msgstr[2] "%d nových výskytů"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Pro nadcházející výskyt je stále potřeba %d dobrovolník."
-msgstr[1] "Pro nadcházející výskyt jsou stále potřeba %d dobrovolníci."
-msgstr[2] "Pro nadcházející výskyt je stále potřeba %d dobrovolníků."
 
 #: 
 msgid "%s Calendar"
@@ -20878,10 +20810,6 @@ msgstr "Otevřít službu"
 #: 
 msgid "Open the occurrence"
 msgstr "Otevřít výskyt"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Otevřete výskyt a přiřaďte lidi, které potřebujete."
 
 #: 
 msgid "Open this team"

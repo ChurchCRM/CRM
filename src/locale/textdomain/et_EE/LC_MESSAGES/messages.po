@@ -1005,10 +1005,6 @@ msgid "Bank Draft"
 msgstr "Panga mustand"
 
 #: 
-msgid "0 - No Minimum"
-msgstr "0 - miinimum puudub"
-
-#: 
 msgid "Other Settings"
 msgstr "Muud seaded"
 
@@ -1272,10 +1268,6 @@ msgstr "Kinnitage andmesildid"
 #: 
 msgid "Invalid login or password"
 msgstr "Vale nimi või parool"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Liiga palju ebaõnnestunud sisselogimisi: teie konto on lukustatud. Palun pöörduge administraatori poole."
 
 #: 
 msgid "Email/Username"
@@ -2140,24 +2132,12 @@ msgid "Classes"
 msgstr "Klassid"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Pühapäevakooli auanded"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Õpilased, kes ei käi pühapäevakooli klassis"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Klasside või osalemislehtede koostamiseks tuleb valida vähemalt üks rühm."
-
-#: 
 msgid "Report Details"
 msgstr "Aruande üksikasjad"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Loetle kõik rollid (märkimata loend sisaldab ainult õpetaja / õpilase rolle)"
 
 #: 
 msgid "First Sunday"
@@ -2178,10 +2158,6 @@ msgstr "Lisaõpilased"
 #: 
 msgid "Extra Teachers"
 msgstr "Lisaõpetajad"
-
-#: 
-msgid "Create Class List"
-msgstr "Loo klassiloend"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4594,14 +4570,6 @@ msgid "PhotoBook"
 msgstr "Fotoraamat"
 
 #: 
-msgid "With Photos"
-msgstr "Fotodega"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Looge fotoraamat"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4746,11 +4714,6 @@ msgstr "Tähtpäevad"
 #: 
 msgid "View User"
 msgstr "Kuva kasutaja"
-
-#: 
-#, fuzzy
-msgid "not found or user without an email"
-msgstr "ei leitud ega kasuta ilma e-kirjata"
 
 #: 
 msgid "UserName not set"
@@ -4948,16 +4911,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Minimaalne summa, mis uus parool peab vanast erinema (tähemärkide arvu muudetud)\n"
 "Selle funktsiooni keelamiseks seadke null"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Maksimaalne ebaõnnestunud sisselogimiste arv enne kasutajakonto lukustamist.\n"
-"Kui maksimum on saavutatud, peab administraator konto uuesti lubama.\n"
-"See funktsioon aitab kaitsta paroolide automatiseeritud äraarvamise rünnakute eest.\n"
-"Selle funktsiooni keelamiseks seadke null."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -10046,10 +9999,6 @@ msgstr "Sundida uuesti installima?"
 #: 
 msgid "Full Path"
 msgstr "Täistee"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Looge klassinimekirju, kohaloleku lehti ja fotoalbumeid"
 
 #: 
 msgid "Installed"
@@ -18576,10 +18525,6 @@ msgid "Could not match the church country."
 msgstr "Koguduse riiki ei õnnestunud sobitada."
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Klassinimekirjad, kohaloleku lehed ja fotoraamatud"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "Rühmade liikmete nimekirjad ja pühapäevakooli klasside aruanded"
 
@@ -18782,22 +18727,10 @@ msgstr[0] "%d vaikimisi vabatahtlik määratud"
 msgstr[1] "%d vaikimisi vabatahtlikku määratud"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Sellele ülesandele on veel vaja %d vabatahtlikku. Ava toimumiskord, et lünk täita."
-msgstr[1] "Sellele ülesandele on veel vaja %d vabatahtlikku. Ava toimumiskord, et lünk täita."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d uus toimumiskord"
 msgstr[1] "%d uut toimumiskorda"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Eesolevale toimumiskorrale on veel vaja %d vabatahtlikku."
-msgstr[1] "Eesolevatele toimumiskordadele on veel vaja %d vabatahtlikku."
 
 #: 
 msgid "%s Calendar"
@@ -20862,10 +20795,6 @@ msgstr "Ava valdkond"
 #: 
 msgid "Open the occurrence"
 msgstr "Ava toimumiskord"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Ava toimumiskord, et määrata vajalikud inimesed."
 
 #: 
 msgid "Open this team"

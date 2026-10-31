@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Authentication\SignInThrottle;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Emails\users\AccountDeletedEmail;
 use ChurchCRM\Emails\users\ResetPasswordEmail;
@@ -102,8 +103,7 @@ $app->group('/api/user/{userId:[0-9]+}', function (RouteCollectorProxy $group): 
      */
     $group->post('/login/reset', function (Request $request, Response $response, array $args): Response {
         $user = $request->getAttribute('user');
-        $user->setFailedLogins(0);
-        $user->save();
+        SignInThrottle::unlockAccount($user);
         $user->createTimeLineNote('login-reset');
         $email = new UnlockedEmail($user);
         if (!$email->send()) {

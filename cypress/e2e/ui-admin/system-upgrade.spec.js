@@ -317,7 +317,7 @@ describe("System Upgrade Page", () => {
             cy.get("#doBackup").should("not.be.disabled");
         });
 
-        it("should apply update and show completion step", () => {
+        it("should continue database upgrades before reporting completion", () => {
             cy.intercept("GET", "**/admin/api/upgrade/preview", {
                 statusCode: 200,
                 body: previewFixture,
@@ -330,17 +330,13 @@ describe("System Upgrade Page", () => {
 
             cy.intercept("POST", "**/admin/api/upgrade/do-upgrade", {
                 statusCode: 200,
-                body: {},
+                body: { success: true, databaseUpgradePending: true },
             }).as("doUpgrade");
 
-            // The do-upgrade success handler fires a 1s setTimeout that:
-            //   1. calls GET /session/end (logs the user out server-side)
-            //   2. starts a 5s countdown then navigates to window.location.href = '/'
-            // Both of these corrupt the cy.session('admin-session') cache and cause
-            // every subsequent test to get a 302 to /session/begin.
-            // Intercept both to keep the page alive and the session intact.
-            cy.intercept("GET", "**/session/end", { statusCode: 200, body: "" }).as("sessionEnd");
-            cy.intercept("GET", "/", { statusCode: 200, body: "<html><body></body></html>" }).as("rootRedirect");
+            cy.intercept("GET", "**/external/system/db-upgrade", {
+                statusCode: 200,
+                body: '<html><body><h1>Database Upgrade</h1><p>Waiting for the next database file.</p></body></html>',
+            }).as("databaseContinuation");
 
             cy.visit("/admin/system/upgrade");
 
@@ -363,11 +359,9 @@ describe("System Upgrade Page", () => {
             // Wait for do-upgrade API call
             cy.wait("@doUpgrade", { timeout: 15000 });
 
-            // Success alert should appear
-            cy.get("#applyStatus .alert-success").should("be.visible");
-
-            // Stepper should advance to Complete step
-            cy.get("#step-complete", { timeout: 5000 }).should("be.visible");
+            cy.wait("@databaseContinuation");
+            cy.location("pathname").should("include", "/external/system/db-upgrade");
+            cy.contains("Waiting for the next database file.").should("be.visible");
         });
 
         it("should reset download state when force re-install is confirmed", () => {

@@ -1032,10 +1032,6 @@ msgid "Bank Draft"
 msgstr "Cheque administrativo"
 
 #: 
-msgid "0 - No Minimum"
-msgstr "0 - Não há mínimo"
-
-#: 
 msgid "Other Settings"
 msgstr "Outras Configurações"
 
@@ -1313,10 +1309,6 @@ msgstr "Corfirma conteúdo das etiquetas"
 #: 
 msgid "Invalid login or password"
 msgstr "Login ou senha inválidos"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Muitos não logins: sua conta foi bloqueada. Entre em contato com um administrador."
 
 #: 
 msgid "Email/Username"
@@ -2227,25 +2219,12 @@ msgid "Classes"
 msgstr "Classes"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Relatório da Escola Bíblica Dominical"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Alunos sem Classe na Escola Bíblica Dominical"
 
 #: 
-#, fuzzy
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Gerar controle de freqüências às aulas"
-
-#: 
 msgid "Report Details"
 msgstr "Detalhes do Relatório"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Listar todos os papéis (desmarcado listará somente os papéis de Professor / Aluno)"
 
 #: 
 #, fuzzy
@@ -2271,10 +2250,6 @@ msgstr "Alunos extras"
 #, fuzzy
 msgid "Extra Teachers"
 msgstr "Professores extras"
-
-#: 
-msgid "Create Class List"
-msgstr "Criar uma lista da classe"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4711,14 +4686,6 @@ msgid "PhotoBook"
 msgstr "Fotolivro"
 
 #: 
-msgid "With Photos"
-msgstr "Com Fotos"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Criar Fotolivro"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4863,11 +4830,6 @@ msgstr "Aniversários"
 #: 
 msgid "View User"
 msgstr "Ver Utilizador"
-
-#: 
-#, fuzzy
-msgid "not found or user without an email"
-msgstr "Não encontrado ou utilizador sem um E-mail"
 
 #: 
 msgid "UserName not set"
@@ -5066,16 +5028,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 msgstr "Quantidade mínima que uma nova senha deve diferir da antiga\n"
 "(# de caracteres alterados)\n"
 "Defina para zero para desativar esse recurso"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Número máximo de logins com falha para permitir antes que uma conta de utilizador seja bloqueada.\n"
-"Quando o máximo for atingido, um administrador deverá reativar a conta.\n"
-"Esse recurso ajuda a proteger contra ataques automatizados de identificação da senha. \n"
-"Defina para zero para desativar esse recurso."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -10164,10 +10116,6 @@ msgstr "Forçar reinstalação?"
 #: 
 msgid "Full Path"
 msgstr "Caminho completo"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Gerar listas de turmas, folhas de presenças e álbuns de fotografias"
 
 #: 
 msgid "Installed"
@@ -18694,10 +18642,6 @@ msgid "Could not match the church country."
 msgstr "Não foi possível identificar o país da igreja."
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Listas de turma, folhas de presença e álbuns de fotos"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "Listas de membros de ministérios e relatórios das turmas da Escola Dominical"
 
@@ -18900,22 +18844,10 @@ msgstr[0] "%d voluntário padrão designado"
 msgstr[1] "%d voluntários padrão designados"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Mais %d voluntário ainda é necessário para esta função. Abra a ocorrência para preencher a vaga."
-msgstr[1] "Mais %d voluntários ainda são necessários para esta função. Abra a ocorrência para preencher a vaga."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d nova ocorrência"
 msgstr[1] "%d novas ocorrências"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "%d voluntário ainda é necessário para uma próxima ocorrência."
-msgstr[1] "%d voluntários ainda são necessários para uma próxima ocorrência."
 
 #: 
 msgid "%s Calendar"
@@ -20980,10 +20912,6 @@ msgstr "Abrir o ministério"
 #: 
 msgid "Open the occurrence"
 msgstr "Abrir a ocorrência"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Abra a ocorrência para designar as pessoas de que precisa."
 
 #: 
 msgid "Open this team"

@@ -1005,10 +1005,6 @@ msgid "Bank Draft"
 msgstr "Bankkonsep"
 
 #: 
-msgid "0 - No Minimum"
-msgstr "0 - Geen minimum nie"
-
-#: 
 msgid "Other Settings"
 msgstr "Ander instellings"
 
@@ -1272,10 +1268,6 @@ msgstr "Bevestig data-etikette"
 #: 
 msgid "Invalid login or password"
 msgstr "Ongeldige aanmelding of wagwoord"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Te veel mislukte aanmeldings: u rekening is gesluit. Kontak 'n administrateur."
 
 #: 
 msgid "Email/Username"
@@ -2140,24 +2132,12 @@ msgid "Classes"
 msgstr "Klasse"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Sondagskoolverslae"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Studente wat nie in 'n Sondagskoolklas is nie"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Ten minste een groep moet gekies word om klaslyste of bywoningsblaaie op te stel."
-
-#: 
 msgid "Report Details"
 msgstr "Verslagbesonderhede"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Lys alle rolle (nie gemerk nie, sal slegs onderwyser- / studentrolle bevat)"
 
 #: 
 msgid "First Sunday"
@@ -2178,10 +2158,6 @@ msgstr "Ekstra studente"
 #: 
 msgid "Extra Teachers"
 msgstr "Ekstra onderwysers"
-
-#: 
-msgid "Create Class List"
-msgstr "Skep klaslys"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4595,14 +4571,6 @@ msgid "PhotoBook"
 msgstr "Fotoboek"
 
 #: 
-msgid "With Photos"
-msgstr "Met Foto's"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Skep Fotoboek"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4747,11 +4715,6 @@ msgstr "Herdenkings"
 #: 
 msgid "View User"
 msgstr "Bekyk gebruiker"
-
-#: 
-#, fuzzy
-msgid "not found or user without an email"
-msgstr "geen gevind of gebruiker sonder 'n e-pos nie"
 
 #: 
 msgid "UserName not set"
@@ -4949,16 +4912,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Minimum bedrag wat 'n nuwe wagwoord moet verskil van die ou wagwoord (aantal karakters verander)\n"
 "Stel op nul om hierdie funksie uit te skakel"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Maksimum aantal mislukte aanmeldings om toe te laat voordat 'n gebruikersrekening gesluit word.\n"
-"Sodra die maksimum bereik is, moet 'n administrateur die rekening weer inskakel.\n"
-"Hierdie funksie help om te beskerm teen aanvalle van outomatiese wagwoordraai.\n"
-"Stel op nul om hierdie funksie uit te skakel."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -10047,10 +10000,6 @@ msgstr "Dwing Herinstallasie Af?"
 #: 
 msgid "Full Path"
 msgstr "Volledige Pad"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Genereer klaslyste, bywoning-blaaie, en foto-boeke"
 
 #: 
 msgid "Installed"
@@ -18577,10 +18526,6 @@ msgid "Could not match the church country."
 msgstr "Kon nie die kerk se land pas nie."
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Klaslyste, bywoningsstate en foto-albums"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "Groeplidmaatskaplyste en Sondagskoolklasverslae"
 
@@ -18783,22 +18728,10 @@ msgstr[0] "%d verstekvrywilliger toegewys"
 msgstr[1] "%d verstekvrywilligers toegewys"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Nog %d vrywilliger word steeds vir hierdie posisie benodig. Maak die geval oop om die gaping te vul."
-msgstr[1] "Nog %d vrywilligers word steeds vir hierdie posisie benodig. Maak die geval oop om die gaping te vul."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d nuwe geval"
 msgstr[1] "%d nuwe gevalle"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "%d vrywilliger word steeds vir 'n komende geval benodig."
-msgstr[1] "%d vrywilligers word steeds vir 'n komende geval benodig."
 
 #: 
 msgid "%s Calendar"
@@ -20863,10 +20796,6 @@ msgstr "Maak die bediening oop"
 #: 
 msgid "Open the occurrence"
 msgstr "Maak die geval oop"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Maak die geval oop om die mense toe te wys wat jy nodig het."
 
 #: 
 msgid "Open this team"

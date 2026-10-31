@@ -993,10 +993,6 @@ msgid "Bank Draft"
 msgstr "Bankovni nalog"
 
 #: 
-msgid "0 - No Minimum"
-msgstr "0 - Bez minimuma"
-
-#: 
 msgid "Other Settings"
 msgstr "Ostale postavke"
 
@@ -1255,10 +1251,6 @@ msgstr "Potvrdi naljepnice podataka"
 #: 
 msgid "Invalid login or password"
 msgstr "Nevažeće korisničko ime ili lozinka"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Previše neuspjelih prijava: vaš račun je zaključan. Molim kontaktirajte administratora."
 
 #: 
 msgid "Email/Username"
@@ -2119,24 +2111,12 @@ msgid "Classes"
 msgstr "Razredi"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Izvještaji nedjeljne škole"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Učenici koji nisu u razredu nedjeljne škole"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Mora biti odabrana barem jedna skupini za kreiranje popisa razreda ili listova za prisutnost."
-
-#: 
 msgid "Report Details"
 msgstr "Detalji izvještaja"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Popis svih uloga (neoznačeno će prikazati samo uloge učitelja/učenika)"
 
 #: 
 msgid "First Sunday"
@@ -2157,10 +2137,6 @@ msgstr "Dodatni učenici"
 #: 
 msgid "Extra Teachers"
 msgstr "Dodatni učitelji"
-
-#: 
-msgid "Create Class List"
-msgstr "Kreiraj popis razreda"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4566,14 +4542,6 @@ msgid "PhotoBook"
 msgstr "Fotoalbum"
 
 #: 
-msgid "With Photos"
-msgstr "S fotografijama"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Kreiraj fotoalbum"
-
-#: 
 msgid "SSE"
 msgstr "JJI"
 
@@ -4716,10 +4684,6 @@ msgstr "Godišnjice"
 #: 
 msgid "View User"
 msgstr "Prikaži korisnika"
-
-#: 
-msgid "not found or user without an email"
-msgstr "nije pronađeno ili korisnik nema e-poštu"
 
 #: 
 msgid "UserName not set"
@@ -4913,16 +4877,6 @@ msgstr "Duljina vremenskog ograničenja sesije u sekundama\n"
 msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
 "Set to zero to disable this feature"
 msgstr "Minimalni iznos u kojem se nova lozinka mora razlikovati od stare (# promijenjenih znakova)\n"
-"Postavite na nulu za onemogućavanje."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Maksimalni broj dozvoljenih neuspjelih prijava prije zaključavanja korisničkog računa.\n"
-"Nakon dostizanja maksimuma, administrator mora ponovo omogućiti račun.\n"
-"Ova značajka pomaže zaštiti od automatiziranih napada pogađanjem lozinke.\n"
 "Postavite na nulu za onemogućavanje."
 
 #: 
@@ -10020,10 +9974,6 @@ msgstr "Prisili ponovnu instalaciju?"
 #: 
 msgid "Full Path"
 msgstr "Puni put"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Generirajte popise razreda, listove za prisutnost i fotoalbume"
 
 #: 
 msgid "Installed"
@@ -18557,10 +18507,6 @@ msgid "Could not match the church country."
 msgstr "Nije moguće uskladiti državu crkve."
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Popisi razreda, liste prisutnosti i foto knjige"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "Popisi članova službi i izvještaji o razredima nedjeljne škole"
 
@@ -18767,25 +18713,11 @@ msgstr[1] "%d zadana volontera dodijeljena"
 msgstr[2] "%d zadanih volontera dodijeljeno"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Za ovu poziciju još je potreban %d volonter. Otvorite termin da popunite prazninu."
-msgstr[1] "Za ovu poziciju još su potrebna %d volontera. Otvorite termin da popunite prazninu."
-msgstr[2] "Za ovu poziciju još je potrebno %d volontera. Otvorite termin da popunite prazninu."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d novi termin"
 msgstr[1] "%d nova termina"
 msgstr[2] "%d novih termina"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Za nadolazeći termin još je potreban %d volonter."
-msgstr[1] "Za nadolazeći termin još su potrebna %d volontera."
-msgstr[2] "Za nadolazeći termin još je potrebno %d volontera."
 
 #: 
 msgid "%s Calendar"
@@ -20854,10 +20786,6 @@ msgstr "Otvori službu"
 #: 
 msgid "Open the occurrence"
 msgstr "Otvori termin"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Otvorite termin i dodijelite ljude koji su vam potrebni."
 
 #: 
 msgid "Open this team"

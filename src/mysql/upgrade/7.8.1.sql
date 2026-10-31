@@ -18,11 +18,45 @@ DROP VIEW IF EXISTS `email_list`;
 --
 -- Existing rows were each one attempt, except the skipped ones, which never tried.
 
-ALTER TABLE `email_log_eml`
-  ADD COLUMN `eml_Batch`       varchar(32)         DEFAULT NULL AFTER `eml_DateSent`,
-  ADD COLUMN `eml_Attempts`    tinyint(3) unsigned NOT NULL DEFAULT 0 AFTER `eml_Batch`,
-  ADD COLUMN `eml_NextAttempt` datetime            DEFAULT NULL AFTER `eml_Attempts`,
-  ADD KEY `idx_eml_Batch` (`eml_Batch`);
+SET @upgrade_sql = IF(
+  (SELECT COUNT(*) FROM information_schema.COLUMNS
+   WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'email_log_eml' AND COLUMN_NAME = 'eml_Batch') = 0,
+  'ALTER TABLE `email_log_eml` ADD COLUMN `eml_Batch` varchar(32) DEFAULT NULL AFTER `eml_DateSent`',
+  'DO 0'
+);
+PREPARE upgrade_stmt FROM @upgrade_sql;
+EXECUTE upgrade_stmt;
+DEALLOCATE PREPARE upgrade_stmt;
+
+SET @upgrade_sql = IF(
+  (SELECT COUNT(*) FROM information_schema.COLUMNS
+   WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'email_log_eml' AND COLUMN_NAME = 'eml_Attempts') = 0,
+  'ALTER TABLE `email_log_eml` ADD COLUMN `eml_Attempts` tinyint(3) unsigned NOT NULL DEFAULT 0 AFTER `eml_Batch`',
+  'DO 0'
+);
+PREPARE upgrade_stmt FROM @upgrade_sql;
+EXECUTE upgrade_stmt;
+DEALLOCATE PREPARE upgrade_stmt;
+
+SET @upgrade_sql = IF(
+  (SELECT COUNT(*) FROM information_schema.COLUMNS
+   WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'email_log_eml' AND COLUMN_NAME = 'eml_NextAttempt') = 0,
+  'ALTER TABLE `email_log_eml` ADD COLUMN `eml_NextAttempt` datetime DEFAULT NULL AFTER `eml_Attempts`',
+  'DO 0'
+);
+PREPARE upgrade_stmt FROM @upgrade_sql;
+EXECUTE upgrade_stmt;
+DEALLOCATE PREPARE upgrade_stmt;
+
+SET @upgrade_sql = IF(
+  (SELECT COUNT(*) FROM information_schema.STATISTICS
+   WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'email_log_eml' AND INDEX_NAME = 'idx_eml_Batch') = 0,
+  'ALTER TABLE `email_log_eml` ADD KEY `idx_eml_Batch` (`eml_Batch`)',
+  'DO 0'
+);
+PREPARE upgrade_stmt FROM @upgrade_sql;
+EXECUTE upgrade_stmt;
+DEALLOCATE PREPARE upgrade_stmt;
 
 UPDATE `email_log_eml` SET `eml_Attempts` = 1 WHERE `eml_Status` IN ('sent', 'failed');
 
@@ -47,9 +81,25 @@ ALTER TABLE `volunteer_notification_vntf`
 -- school year (Pre-K 4 ... 12th 17), so switching to another country's
 -- grade names renames options without touching anyone's grade.
 
-ALTER TABLE `person_per`
-  ADD COLUMN `per_grd_ID` mediumint(8) unsigned DEFAULT NULL AFTER `per_NeedsReview`,
-  ADD INDEX `idx_per_grd_ID` (`per_grd_ID`);
+SET @upgrade_sql = IF(
+  (SELECT COUNT(*) FROM information_schema.COLUMNS
+   WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'person_per' AND COLUMN_NAME = 'per_grd_ID') = 0,
+  'ALTER TABLE `person_per` ADD COLUMN `per_grd_ID` mediumint(8) unsigned DEFAULT NULL AFTER `per_NeedsReview`',
+  'DO 0'
+);
+PREPARE upgrade_stmt FROM @upgrade_sql;
+EXECUTE upgrade_stmt;
+DEALLOCATE PREPARE upgrade_stmt;
+
+SET @upgrade_sql = IF(
+  (SELECT COUNT(*) FROM information_schema.STATISTICS
+   WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'person_per' AND INDEX_NAME = 'idx_per_grd_ID') = 0,
+  'ALTER TABLE `person_per` ADD INDEX `idx_per_grd_ID` (`per_grd_ID`)',
+  'DO 0'
+);
+PREPARE upgrade_stmt FROM @upgrade_sql;
+EXECUTE upgrade_stmt;
+DEALLOCATE PREPARE upgrade_stmt;
 
 -- List IDs below 10 are reserved for permanent lists, but group role lists
 -- used to take MAX(lst_ID)+1, so a database that started on ChurchInfo can

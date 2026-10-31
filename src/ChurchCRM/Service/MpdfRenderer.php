@@ -24,9 +24,9 @@ class MpdfRenderer implements PdfRendererInterface
         }
     }
 
-    public function renderToString(string $template, array $data): string
+    public function renderToString(string $template, array $data, bool $landscape = false): string
     {
-        return $this->build($template, $data)->Output('', 'S');
+        return $this->build($template, $data, $landscape)->Output('', 'S');
     }
 
     public function render(string $template, array $data, string $filename, string $disposition = 'I'): void
@@ -34,10 +34,10 @@ class MpdfRenderer implements PdfRendererInterface
         $this->build($template, $data)->Output($filename . '.pdf', $disposition === 'D' ? 'D' : 'I');
     }
 
-    private function build(string $template, array $data): Mpdf
+    private function build(string $template, array $data, bool $landscape = false): Mpdf
     {
         $data = $this->withChurch($data);
-        $mpdf = $this->makeMpdf();
+        $mpdf = $this->makeMpdf($landscape);
         if ($data['text_dir'] === 'rtl') {
             $mpdf->SetDirectionality('rtl');
         }
@@ -93,14 +93,14 @@ class MpdfRenderer implements PdfRendererInterface
         return null;
     }
 
-    private function makeMpdf(): Mpdf
+    private function makeMpdf(bool $landscape = false): Mpdf
     {
         return new Mpdf([
             'mode' => 'utf-8',
             'autoScriptToLang' => true,
             'autoLangToFont' => true,
             'useSubstitutions' => true,
-            'format' => 'Letter',
+            'format' => $landscape ? 'Letter-L' : 'Letter',
             'margin_left' => 15,
             'margin_right' => 15,
             'margin_top' => 16,

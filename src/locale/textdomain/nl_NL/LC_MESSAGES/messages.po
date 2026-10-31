@@ -993,10 +993,6 @@ msgid "Bank Draft"
 msgstr "Bank Overschrijving"
 
 #: 
-msgid "0 - No Minimum"
-msgstr "0- Geen Minimum"
-
-#: 
 msgid "Other Settings"
 msgstr "Andere Instellingen"
 
@@ -1255,10 +1251,6 @@ msgstr "Bevestig data Etiketten"
 #: 
 msgid "Invalid login or password"
 msgstr "Onjuist login of wachtwoord"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Teveel mislukte logins: uw toegang is geblokkeerd. Neem contact op met een beheerder."
 
 #: 
 msgid "Email/Username"
@@ -2119,24 +2111,12 @@ msgid "Classes"
 msgstr "Catechisatiegroepen"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Catechisatie rapporten"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Niet deelnemende leerlingen"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Er moet minstens één groep worden geselecteerd om een lijst te maken"
-
-#: 
 msgid "Report Details"
 msgstr "Rapport gegevens"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Weergave van alle rollen."
 
 #: 
 msgid "First Sunday"
@@ -2157,10 +2137,6 @@ msgstr "Extra leerlingen"
 #: 
 msgid "Extra Teachers"
 msgstr "Extra Onderwijzers"
-
-#: 
-msgid "Create Class List"
-msgstr "Maak overzicht van de catechisatiegroepen"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4569,14 +4545,6 @@ msgid "PhotoBook"
 msgstr "Fotoboek"
 
 #: 
-msgid "With Photos"
-msgstr "Met foto's"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Maak een fotoboek"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4720,10 +4688,6 @@ msgstr "Gedenkdagen"
 #: 
 msgid "View User"
 msgstr "Weergave gebruiker"
-
-#: 
-msgid "not found or user without an email"
-msgstr "Niets gevonden of gebruiker zonder e-mail"
 
 #: 
 msgid "UserName not set"
@@ -4918,16 +4882,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Minimum aantal tekens dat een nieuw wachtwoord moet verschillen van het oude (# tekens gewijzigd)\n"
 "Stel in op nul om deze functie uit te schakelen"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Maximaal aantal mislukte aanmeldingen dat is toegestaan voordat een gebruikersaccount wordt vergrendeld.\n"
-"Zodra het maximum is bereikt, moet een beheerder het account opnieuw inschakelen.\n"
-"Deze functie helpt bij het beschermen tegen geautomatiseerde aanvallen op het raden van wachtwoorden.\n"
-"Stel in op nul om deze functie uit te schakelen."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -10016,10 +9970,6 @@ msgstr "Herinstallatie forceren?"
 #: 
 msgid "Full Path"
 msgstr "Volledig Pad"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Genereer klassenlijsten, aanwezigheidslijsten en fotoboeken"
 
 #: 
 msgid "Installed"
@@ -18546,10 +18496,6 @@ msgid "Could not match the church country."
 msgstr "Het land van de kerk kon niet worden gevonden."
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Klaslijsten, aanwezigheidslijsten en fotoboeken"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "Ledenlijsten van bedieningen en rapporten van zondagsschoolklassen"
 
@@ -18752,22 +18698,10 @@ msgstr[0] "%d standaardvrijwilliger ingeroosterd"
 msgstr[1] "%d standaardvrijwilligers ingeroosterd"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Er is nog %d vrijwilliger nodig voor deze functie. Open het moment om de leemte op te vullen."
-msgstr[1] "Er zijn nog %d vrijwilligers nodig voor deze functie. Open het moment om de leemte op te vullen."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d nieuw moment"
 msgstr[1] "%d nieuwe momenten"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Er is nog %d vrijwilliger nodig voor een komend moment."
-msgstr[1] "Er zijn nog %d vrijwilligers nodig voor een komend moment."
 
 #: 
 msgid "%s Calendar"
@@ -20832,10 +20766,6 @@ msgstr "De bediening openen"
 #: 
 msgid "Open the occurrence"
 msgstr "Het moment openen"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Open het moment om de mensen in te roosteren die u nodig hebt."
 
 #: 
 msgid "Open this team"

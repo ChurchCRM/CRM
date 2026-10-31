@@ -1,0 +1,37 @@
+{% extends "_base.html.twig" %}
+{% block content %}
+  <style>
+    table.roster { width: 100%; border-collapse: collapse; }
+    table.roster td { vertical-align: top; padding: 1.6mm 1.5mm; border-bottom: 0.2pt solid #ddd; font-size: 10pt; }
+    .flag { font-weight: bold; font-size: 9pt; }
+    .staff { font-weight: bold; font-size: 10pt; margin: 0 0 1mm 0; }
+  </style>
+  {% for class in classes %}
+    <h1>{{ class.name }} <span class="muted">{{ fiscal_year }}</span></h1>
+    {% if class.teachers %}<p class="staff">{{ class.teachers|join(', ') }}</p>{% endif %}
+    {% if class.liaisons %}<p class="staff">{{ gettext('Liaison') }}: {{ class.liaisons|join(', ') }}</p>{% endif %}
+    <table class="roster">
+      {% for student in class.students %}
+        <tr>
+          <td style="width: 10mm;">
+            {% if student.photo %}<img src="{{ student.photo }}" alt="" style="width: 8mm; height: 8mm;">{% else %}<table style="width: 8mm; height: 8mm; background-color: #e9ecef;"><tr><td style="width: 8mm; height: 8mm; padding: 0; border: 0; text-align: center; vertical-align: middle; color: #6c757d; font-size: 9pt;">{{ student.initials }}</td></tr></table>{% endif %}
+          </td>
+          <td style="width: 45mm;">
+            {{ student.name }}
+            {% if student.properties %}<div class="flag">!!! {{ student.properties|join(', ') }}</div>{% endif %}
+          </td>
+          <td style="width: 24mm; white-space: nowrap;">{{ student.birthday }}</td>
+          <td>
+            {{ student.parents }}
+            {% if student.address %}<div class="muted">{{ student.address }}</div>{% endif %}
+          </td>
+          <td style="width: 30mm; white-space: nowrap;">{{ student.phone }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+    <p class="generated">{{ generated_on }}</p>
+    {% if not loop.last %}<pagebreak />{% endif %}
+  {% else %}
+    <p class="empty">{{ gettext('No records were returned from the previous report. Please adjust your filters or date range and try again.') }}</p>
+  {% endfor %}
+{% endblock %}

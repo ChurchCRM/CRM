@@ -18,7 +18,7 @@ use Propel\Runtime\Connection\ConnectionInterface;
 class Token extends BaseToken
 {
     public const TYPE_FAMILY_VERIFY = 'verifyFamily';
-    private const TYPE_PASSWORD = 'password';
+    public const TYPE_PASSWORD = 'password';
 
     public function build($type, $referenceId): void
     {

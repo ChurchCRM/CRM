@@ -16,7 +16,6 @@ require __DIR__ . '/routes/dashboard.php';
 require __DIR__ . '/routes/reports.php';
 require __DIR__ . '/routes/envelope-report.php';
 require __DIR__ . '/routes/zero-givers.php';
-require __DIR__ . '/routes/envelope-report.php';
 require __DIR__ . '/routes/pledges.php';
 require __DIR__ . '/routes/fund.php';
 require __DIR__ . '/routes/deposits.php';

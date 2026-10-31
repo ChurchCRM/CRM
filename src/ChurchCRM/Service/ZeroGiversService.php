@@ -56,9 +56,7 @@ class ZeroGiversService
     }
 
     /**
-     * Each family once, in id order. Only families that have at least one living
-     * classification-1 member. Inactive / deceased-only families are excluded by
-     * filterByLiving().
+     * Active families with a living classification-1 member, once each in id order.
      *
      * @return Family[]
      */
@@ -87,6 +85,7 @@ class ZeroGiversService
 
         return FamilyQuery::create()
             ->filterById($zeroGiverIds, Criteria::IN)
+            ->filterByDateDeactivated(null)
             ->orderById()
             ->find()
             ->getArrayCopy();
