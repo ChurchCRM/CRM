@@ -71,10 +71,6 @@ msgid "Zip Code"
 msgstr "Post Code"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Customisable report with filtering by date, fund, family, and payment method."
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Require all users to enrol in two-factor authentication"
 

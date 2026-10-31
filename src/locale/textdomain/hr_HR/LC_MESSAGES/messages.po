@@ -925,14 +925,6 @@ msgid "Zero Givers"
 msgstr "Nema darivatelja"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Individualni izvještaj o uplati"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Napredni izvještaj o uplati"
-
-#: 
 msgid "Next"
 msgstr "Sljedeće"
 
@@ -953,10 +945,6 @@ msgid "Apply Report Dates To"
 msgstr "Primijeni datume izvještaja na"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "Datum uplate (zadano)"
-
-#: 
 msgid "Payment Date"
 msgstr "Datum plaćanja"
 
@@ -975,10 +963,6 @@ msgstr "Sve uplate unutar datumskog raspona"
 #: 
 msgid "Filter by Payment Type"
 msgstr "Filtriraj po vrsti plaćanja"
-
-#: 
-msgid "All Methods"
-msgstr "Sve metode"
 
 #: 
 msgid "Check"
@@ -5519,10 +5503,6 @@ msgid "Funds"
 msgstr "Fondovi"
 
 #: 
-msgid "Generate Report"
-msgstr "Generiraj izvještaj"
-
-#: 
 msgid "Payments"
 msgstr "Uplate"
 
@@ -6218,10 +6198,6 @@ msgid "Current Deposit"
 msgstr "Trenutna uplata"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Prilagodljivi izvještaj s filtriranjem prema datumu, fondu, obitelji i načinu plaćanja."
-
-#: 
 msgid "Day"
 msgstr "Dan"
 
@@ -6232,10 +6208,6 @@ msgstr "Pro"
 #: 
 msgid "Deposit Statistics"
 msgstr "Statistika uplata"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Detaljni pregled jedne uplatnice."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."

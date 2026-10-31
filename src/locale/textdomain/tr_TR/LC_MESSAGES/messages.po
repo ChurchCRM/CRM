@@ -932,14 +932,6 @@ msgid "Zero Givers"
 msgstr "Sıfır Vericiler"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Bireysel Depozito Raporu"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Gelişmiş Depozito Raporu"
-
-#: 
 msgid "Next"
 msgstr "Sonraki"
 
@@ -963,10 +955,6 @@ msgid "Apply Report Dates To"
 msgstr "Rapor tarihlerini uygulayın"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "Depozito Tarihi (Varsayılan)"
-
-#: 
 msgid "Payment Date"
 msgstr "Ödeme tarihi"
 
@@ -987,10 +975,6 @@ msgstr "Tarih aralığı içindeki tüm depozitolar"
 #, fuzzy
 msgid "Filter by Payment Type"
 msgstr "Ödeme Türüne Göre Filtre"
-
-#: 
-msgid "All Methods"
-msgstr "Tüm yöntemler"
 
 #: 
 msgid "Check"
@@ -5552,10 +5536,6 @@ msgid "Funds"
 msgstr "Fonlar"
 
 #: 
-msgid "Generate Report"
-msgstr "Rapor Oluştur"
-
-#: 
 msgid "Payments"
 msgstr "Ödemeler"
 
@@ -6249,10 +6229,6 @@ msgid "Current Deposit"
 msgstr "Mevcut Para Yatırma"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Tarih, fon, aile ve ödeme yöntemine göre filtreleme yapılabilen özelleştirilebilir rapor."
-
-#: 
 msgid "Day"
 msgstr "Gün"
 
@@ -6263,10 +6239,6 @@ msgstr "Ara"
 #: 
 msgid "Deposit Statistics"
 msgstr "Para Yatırma İstatistikleri"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Tek bir para yatırma makbuzunun ayrıntılı dökümü."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."

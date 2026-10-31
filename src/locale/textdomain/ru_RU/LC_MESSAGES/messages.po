@@ -955,14 +955,6 @@ msgid "Zero Givers"
 msgstr "Нулевые Givers"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Персональный отчет Депозит"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Расширенный Депозит Сообщить"
-
-#: 
 msgid "Next"
 msgstr "Вперёд"
 
@@ -987,10 +979,6 @@ msgid "Apply Report Dates To"
 msgstr "Применить Сообщить даты, чтобы"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "Депозит Дата (по умолчанию)"
-
-#: 
 msgid "Payment Date"
 msgstr "Дата выплаты"
 
@@ -1011,10 +999,6 @@ msgstr "Все вклады в пределах диапазона дат"
 #, fuzzy
 msgid "Filter by Payment Type"
 msgstr "Фильтр по Тип компенсации"
-
-#: 
-msgid "All Methods"
-msgstr "Все методы"
 
 #: 
 msgid "Check"
@@ -5609,10 +5593,6 @@ msgid "Funds"
 msgstr "Фонды"
 
 #: 
-msgid "Generate Report"
-msgstr "Создать отчет"
-
-#: 
 msgid "Payments"
 msgstr "Платежи"
 
@@ -6310,10 +6290,6 @@ msgid "Current Deposit"
 msgstr "Текущий депозит"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Настраиваемый отчет с фильтрами."
-
-#: 
 msgid "Day"
 msgstr "День"
 
@@ -6324,10 +6300,6 @@ msgstr "Дек"
 #: 
 msgid "Deposit Statistics"
 msgstr "Статистика депозитов"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Детальный разбор одного депозита."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."

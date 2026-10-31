@@ -52,8 +52,7 @@ $fyMonthName = $monthNames[$iFYMonth] ?? '';
             [
                 'title' => gettext('Deposit Reports'),
                 'reports' => [
-                    ['href' => '/FinancialReports.php?ReportType=Individual%20Deposit%20Report', 'title' => gettext('Individual Deposit Report'), 'description' => gettext('Detailed breakdown of a single deposit slip.')],
-                    ['href' => '/FinancialReports.php?ReportType=Advanced%20Deposit%20Report', 'title' => gettext('Advanced Deposit Report'), 'description' => gettext('Customizable report with filtering by date, fund, family, and payment method.')],
+                    ['href' => '/finance/reports/deposits', 'title' => gettext('Deposit Reports'), 'description' => gettext('Review payments, download PDF or CSV, or print a bank slip for one deposit.')],
                 ],
             ],
             [

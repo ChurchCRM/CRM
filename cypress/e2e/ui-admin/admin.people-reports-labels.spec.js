@@ -13,7 +13,7 @@ const namesIn = (csv) =>
         .map((line) => line.split(",")[1].replace(/"/g, ""));
 
 const labelNames = (query) =>
-    cy.request(`/Reports/PDFLabel.php?${query}&${LABEL_OPTIONS}`).then((response) => namesIn(response.body));
+    cy.request(`/people/labels?${query}&${LABEL_OPTIONS}`).then((response) => namesIn(response.body));
 
 // The dialog opens the labels in a new tab, so request exactly what the form would send.
 const submitLabelsDialog = (groupbymode) => {
@@ -42,7 +42,7 @@ describe("People Reports: Print Labels (#10343)", () => {
         cy.get("#printLabels").click();
 
         cy.get("#labelsModal").should("be.visible");
-        cy.get("#labelsForm").should("have.attr", "action").and("include", "Reports/PDFLabel.php");
+        cy.get("#labelsForm").should("have.attr", "action").and("include", "people/labels");
         cy.get('#labelsForm input[type=hidden][name="report"]').should("have.value", "birthdays-anniversaries");
         cy.get('#labelsForm input[type=hidden][name="month"]').should("have.value", "7");
         cy.get('#labelsForm input[type=hidden][name="classification[]"]').should("have.value", "0");

@@ -2,62 +2,108 @@
 
 This guide is the starting point for contributors changing the ChurchCRM core application. User and administrator instructions belong on [docs.churchcrm.io](https://docs.churchcrm.io).
 
-## Prerequisites
+## Shared environment setup
 
-Before running any ChurchCRM build, test, or Docker command, install:
+Humans, CI, and coding agents use the same commands. Run setup while network
+access is available, then retain dependencies and images for offline work.
+Setup does not change application behavior or install real church data.
 
-- PHP and Composer (version in `src/composer.json`)
-- Node.js with npm (version in `package.json` `engines`, `.nvmrc`)
-- Docker Desktop or Docker Engine with Docker Compose v2
-- Git and Git LFS
+### Choose a setup path
 
-Verify the tools before continuing:
+| Path | Host prerequisites | Command |
+| --- | --- | --- |
+| Native build and PHP tests | Git, Bash, Node 24/npm, PHP 8.4+, Composer | `bash scripts/setup-dev.sh` |
+| Container build and PHP tests | Git, Bash, Node 24+, running Docker Engine and Compose v2 | `bash scripts/setup-dev.sh --docker` |
+| Native build and integration stack | Native prerequisites plus Docker Engine/Compose v2, curl, Cypress OS libraries | `bash scripts/setup-dev.sh --integration` |
 
-```bash
-php --version
-composer --version
-node --version
-npm --version
-docker --version
-docker compose version
-```
+The container path provisions PHP, Composer, and Node using the existing
+[docker/Dockerfile.churchcrm-apache-php8](docker/Dockerfile.churchcrm-apache-php8)
+and [dev Compose stack](docker/docker-compose.dev.yaml). It leaves the dev stack
+running. Run its tools inside the container (see below). Native setup uses the
+host's installed runtimes; it never changes OS repositories or uses sudo to
+replace them. Missing prerequisites stop setup with a diagnostic.
 
-After cloning the repository, install the Node.js dependencies before using the npm scripts:
+Native setup runs locked `npm ci`, the full build (Composer dependencies, ORM,
+frontend, signatures), PHP readiness checks, and lint. It explicitly defers the
+Cypress download to integration setup. Integration setup installs Cypress,
+retries a failed download once with `--force`, verifies the executable/OS
+libraries, builds/pulls the existing test images, starts services, and checks
+readiness. It fails if any step fails. Install browser OS libraries through your
+OS package manager before integration setup; the script does not elevate privileges.
 
-```bash
-npm install
-```
+Use a disposable checkout. Setup's Docker paths write `src/Include/Config.php`
+using [docker/Config.php](docker/Config.php). The local placeholders in
+[docker/.env](docker/.env) are database `churchcrm`, user `churchcrm`, password
+`changeme`, host `database:3306` inside Docker. They are development fixtures.
 
-## Primary local setup
+PHP requirements come from [src/composer.json](src/composer.json): PDO, bcmath,
+curl, fileinfo, filter, gd, gettext, iconv, mbstring, mysqli, session, zip, zlib.
+The [installer](src/ChurchCRM/Service/AppIntegrityService.php) also checks UTF-8
+PCRE, Phar, SimpleXML, GD functions, rewriting, and writable Include/Images
+(including Person/Family) directories. The image supplies pdo_mysql for the ORM,
+XML, exif, intl, and OPcache too. Check the web user's permissions separately
+from CLI PHP. Versions are defined by `.nvmrc`, `package.json`, and
+`src/composer.json`; CI uses PHP 8.4.
 
-ChurchCRM maintainers develop with PHP, Composer, Node.js, and npm installed locally. Docker runs the application stack used for testing.
+### Check readiness without installing anything
 
-From the repository root:
-
-```bash
-npm install
-npm run build
-npm run docker:test:start
-```
-
-Open `http://localhost` and sign in with `admin` / `changeme`.
-
-## Building Without a Local PHP/Composer/Node.js Toolchain
-
-The development Docker image includes PHP, Composer, and Node/npm, so the host needs only `docker`, `docker compose`, and `npm` (to invoke the wrapper scripts below). Without `npm` on the host, use the raw `docker compose exec` command at the end of this section.
-
-```bash
-npm run docker:dev:start   # bring up the development stack (builds the image on first run)
-npm run docker:dev:build   # composer install + the full `npm run build`, inside the container
-npm run docker:dev:watch   # webpack --watch, inside the container, for an active edit session
-```
-
-These run `npm install && npm run build` from the primary setup inside the `webserver` container, against the repository bind-mounted at `/home/ChurchCRM`. Without `npm` on the host, run the equivalent directly:
+These checks run before application tests and work without internet access:
 
 ```bash
-docker compose -f docker/docker-compose.dev.yaml exec webserver bash -c \
-  "source /root/.nvm/nvm.sh && cd /home/ChurchCRM && npm ci && npm run build"
+npm run env:check -- static
+npm run env:check -- php
+npm run env:check -- integration
+npm run env:check -- integration --services
 ```
+
+| Mode | Checks |
+| --- | --- |
+| `static` (default) | Node version, Git, PHP version, Composer, Biome and TypeScript executables |
+| `php` | Static checks plus required extensions, vendor autoloader, actual Composer platform requirements |
+| `integration` | PHP checks plus Docker daemon, Compose, Cypress verification, built frontend and signatures |
+| `integration --services` | Also running test services, database health, HTTP login page |
+
+Every failed check prints a remedy and exits nonzero. Passing means these
+prerequisites are available, not that tests pass or dependency caches match a
+changed lockfile. After changing lockfiles, rerun setup online. Use `npm run lint`,
+`npm run build:php:validate`, `npm run test:php`, and focused Cypress specs for
+verification. Standalone PHP tests require the vendor tree but no running stack.
+PHP/Composer are needed even for full lint, which validates the Composer lock.
+
+For the container path, run the same checks and tests inside the dev image:
+
+```bash
+docker compose -f docker/docker-compose.dev.yaml exec -T webserver bash -c \
+  'source /root/.nvm/nvm.sh && cd /home/ChurchCRM && npm run env:check -- php && npm run test:php'
+```
+
+Use the native integration path for host-side Cypress. The dev and test stacks
+share default ports; stop one before starting the other. `--services` checks the
+test Compose project, not the dev stack. Docker's CLI alone is insufficient;
+the executing user must have access to a running daemon.
+
+### Services and offline sessions
+
+The existing test stack runs Apache with rewriting, MariaDB 10.11, and Mailpit v1.
+On a fresh database it loads `src/mysql/install/Install.sql`, then
+`cypress/data/seed.sql`, and waits for DB health before starting the webserver.
+Open `http://localhost` with local test login `admin` / `changeme`.
+Mailpit captures SMTP at `mailserver:1025` and exposes its inbox on port 8025.
+Host-side Cypress uses database `127.0.0.1:3306` by default. See
+[docker/README.md](docker/README.md) for profiles and port overrides;
+`CYPRESS_BASE_URL` selects the HTTP target when using a non-default port.
+
+Keep `node_modules/` (including dev/optional packages), `src/vendor/`, built
+assets/signatures, Cypress's binary cache, and Docker images between setup and
+offline work. Repeat readiness checks after resuming; services may need restarting
+with `npm run docker:test:start`. Lockfile/image/runtime changes can require a
+new online setup. No readiness check fetches missing packages.
+
+`npm run docker:test:reset:db` destroys and recreates only the disposable fixture
+database. Stop with `npm run docker:test:stop`; `docker:test:down` removes volumes.
+For Playwright captures, use the separate worktree/project in
+[marketing-visuals-pipeline.md](.agents/skills/churchcrm/marketing-visuals-pipeline.md)
+and prepare Chromium plus OS libraries online with `npm run marketing:install`.
 
 ## Services
 

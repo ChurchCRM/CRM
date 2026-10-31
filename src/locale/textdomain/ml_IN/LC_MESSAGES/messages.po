@@ -925,14 +925,6 @@ msgid "Zero Givers"
 msgstr "ദക്ഷിണ നൽകാത്തവർ"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "വ്യക്തിഗത ഡിപ്പോസിറ്റ് റിപ്പോർട്ട്"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "വിപുലമായ ഡിപ്പോസിറ്റ് റിപ്പോർട്ട്"
-
-#: 
 msgid "Next"
 msgstr "അടുത്തത്"
 
@@ -953,10 +945,6 @@ msgid "Apply Report Dates To"
 msgstr "റിപ്പോർട്ട് തീയതികൾ ബാധകമാക്കുക"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "ഡിപ്പോസിറ്റ് തീയതി (ഡിഫോൾട്ട്)"
-
-#: 
 msgid "Payment Date"
 msgstr "പേമെന്റ് തീയതി"
 
@@ -975,10 +963,6 @@ msgstr "തീയതി ശ്രേണിക്കുള്ളിലെ എല�
 #: 
 msgid "Filter by Payment Type"
 msgstr "പേമെന്റ് തരം അനുസരിച്ച് ഫിൽട്ടർ ചെയ്യുക"
-
-#: 
-msgid "All Methods"
-msgstr "എല്ലാ രീതികളും"
 
 #: 
 msgid "Check"
@@ -5519,10 +5503,6 @@ msgid "Funds"
 msgstr "ഫണ്ടുകൾ"
 
 #: 
-msgid "Generate Report"
-msgstr "റിപ്പോർട്ട് ഉണ്ടാക്കുക"
-
-#: 
 msgid "Payments"
 msgstr "പേമെന്റുകൾ"
 
@@ -6216,10 +6196,6 @@ msgid "Current Deposit"
 msgstr "നിലവിലെ ഡിപ്പോസിറ്റ്"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "തീയതി, ഫണ്ട്, കുടുംബം, പേമെന്റ് രീതി അനുസരിച്ച് ഫിൽട്ടർ ചെയ്യാൻ കഴിയുന്ന ഇഷ്‌ടാനുസൃത റിപ്പോർട്ട്."
-
-#: 
 msgid "Day"
 msgstr "ദിവസം"
 
@@ -6230,10 +6206,6 @@ msgstr "ഡിസ"
 #: 
 msgid "Deposit Statistics"
 msgstr "ഡിപ്പോസിറ്റ് സ്ഥിതിവിവരം"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "ഒരൊറ്റ ഡിപ്പോസിറ്റ് സ്ലിപ്പിന്റെ വിശദ വിഭജനം."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."

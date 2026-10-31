@@ -962,14 +962,6 @@ msgid "Zero Givers"
 msgstr "eGive"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Individueller Bericht über Einzahlungen"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Eerweiterter Einzahlungsbericht"
-
-#: 
 msgid "Next"
 msgstr "Nächste"
 
@@ -994,10 +986,6 @@ msgid "Apply Report Dates To"
 msgstr "Orden Berichtsdatum zu:"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "Einzahlungsdatum (Voreinstellung)"
-
-#: 
 msgid "Payment Date"
 msgstr "Zahlungstermin:"
 
@@ -1018,10 +1006,6 @@ msgstr "Alle Einzahlungen im Zeitraum"
 #, fuzzy
 msgid "Filter by Payment Type"
 msgstr "Nach Zahlungsart filtern"
-
-#: 
-msgid "All Methods"
-msgstr "Alle Methoden"
 
 #: 
 msgid "Check"
@@ -5626,10 +5610,6 @@ msgid "Funds"
 msgstr "Geldmittel"
 
 #: 
-msgid "Generate Report"
-msgstr "Bericht generieren"
-
-#: 
 msgid "Payments"
 msgstr "Zahlungen"
 
@@ -6323,10 +6303,6 @@ msgid "Current Deposit"
 msgstr "Aktuelle Einzahlung"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Anpassbarer Bericht mit Filterung nach Datum, Fonds, Familie und Zahlungsmethode."
-
-#: 
 msgid "Day"
 msgstr "Tag"
 
@@ -6337,10 +6313,6 @@ msgstr "Dezember"
 #: 
 msgid "Deposit Statistics"
 msgstr "Einzahlungsstatistiken"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Detaillierte Aufschlüsselung einer einzelnen Einzahlungsschein."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
