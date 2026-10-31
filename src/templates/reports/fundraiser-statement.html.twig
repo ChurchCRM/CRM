@@ -1,0 +1,82 @@
+{% extends "_letter.html.twig" %}
+{% block letter_body %}
+  {% for statement in statements %}
+    {% if not loop.first %}<pagebreak />{% endif %}
+
+    <div class="recipient">
+      <strong>{{ statement.salutation }}</strong><br>
+      {{ statement.address|nl2br }}
+    </div>
+
+    <h1>{{ fundraiser_title }}</h1>
+
+    {% if statement.donated %}
+    <h2>{{ gettext('Donated Items') }}</h2>
+    <table class="gifts">
+      <thead>
+        <tr>
+          <th>{{ gettext('Item') }}</th>
+          <th>{{ gettext('Name') }}</th>
+          <th>{{ gettext('Buyer') }}</th>
+          <th>{{ gettext('Phone') }}</th>
+          <th>{{ gettext('Email') }}</th>
+          <th class="right">{{ gettext('Amount') }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for line in statement.donated %}
+          <tr>
+            <td>{{ line.item }}</td>
+            <td>{{ line.title }}</td>
+            <td>{{ line.name }}</td>
+            <td>{{ line.phone }}</td>
+            <td>{{ line.email }}</td>
+            <td class="right">{{ line.amount }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endif %}
+
+    {% if statement.purchases %}
+    <h2>{{ gettext('Purchased Items') }}</h2>
+    <table class="gifts">
+      <thead>
+        <tr>
+          <th>{{ gettext('Item') }}</th>
+          <th>{{ gettext('Qty') }}</th>
+          <th>{{ gettext('Name') }}</th>
+          <th>{{ gettext('Donor') }}</th>
+          <th>{{ gettext('Phone') }}</th>
+          <th>{{ gettext('Email') }}</th>
+          <th class="right">{{ gettext('Amount') }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for line in statement.purchases %}
+          <tr>
+            <td>{{ line.item }}</td>
+            <td>{{ line.quantity }}</td>
+            <td>{{ line.title }}</td>
+            <td>{{ line.name }}</td>
+            <td>{{ line.phone }}</td>
+            <td>{{ line.email }}</td>
+            <td class="right">{{ line.amount }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endif %}
+
+    <p><strong>{{ gettext('Total of all purchases: %s')|format(statement.total) }}</strong></p>
+
+    <div class="closing">
+      <p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</p>
+      <p>{{ gettext('Buyer #') }} {{ statement.paddle }} : {{ statement.buyer }} : {{ gettext('Total purchases: %s')|format(statement.total) }} : {{ gettext('Amount paid: ________________') }}</p>
+      <p>{{ gettext('Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __') }}</p>
+      <p style="text-align: right;">{{ gettext('Signature') }} ____________________________________</p>
+    </div>
+  {% else %}
+    <p class="empty">{{ gettext('No records were returned from the previous report. Please adjust your filters or date range and try again.') }}</p>
+  {% endfor %}
+{% endblock %}
