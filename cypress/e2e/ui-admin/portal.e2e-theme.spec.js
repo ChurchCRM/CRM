@@ -49,8 +49,8 @@ const BROKEN_DIR = `src/Include/themes/${BROKEN_THEME}`;
 /** A colour no default token uses, so "it changed" cannot be a coincidence. */
 const THEME_TEAL = "rgb(0, 105, 107)";
 
-const MEMBER_USER = "lena.black.editself.notes@example.com";
-const MEMBER_PASSWORD = "changeme";
+/** Lena Black, who signs in with her email. */
+const MEMBER_PERSON_ID = 100;
 
 /** Every portal page the member can open — the theme has to reach all of them. */
 const PORTAL_PAGES = [
@@ -87,11 +87,8 @@ function adminLogin() {
 }
 
 function memberLogin() {
-    cy.clearCookies();
-    cy.visit("/session/begin");
-    cy.get("input[name=User]").type(MEMBER_USER);
-    cy.get("input[name=Password]").type(`${MEMBER_PASSWORD}{enter}`);
-    cy.url({ timeout: 10000 }).should("include", "/portal");
+    cy.signInAsMember(MEMBER_PERSON_ID);
+    cy.visit("/portal/");
 }
 
 function openThemesTab() {

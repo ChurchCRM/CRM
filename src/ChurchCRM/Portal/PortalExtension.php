@@ -358,7 +358,7 @@ class PortalExtension extends AbstractExtension implements GlobalsInterface
     private static function adminConsoleUrl(Person $person, ?User $staffUser): string
     {
         $user = $staffUser ?? UserQuery::create()->findPk($person->getId());
-        if (!$user instanceof User || $user->isEditSelfExclusive()) {
+        if (!$user instanceof User) {
             return '';
         }
 

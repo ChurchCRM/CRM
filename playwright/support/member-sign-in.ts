@@ -1,4 +1,6 @@
 import { type APIRequestContext, type Browser, type BrowserContext, expect, type Page, request } from '@playwright/test';
+import fs from 'node:fs';
+import path from 'node:path';
 
 import { ADMIN_USERNAME, ADMIN_WORKING_PASSWORD, BASE_URL, MAILPIT_URL } from './env';
 import { humanClick, humanPause, humanType } from './human';
@@ -163,15 +165,53 @@ export async function signInFirstMember(page: Page, alreadyAsked?: string): Prom
   throw new Error('No demo member got a sign-in code. Is Mailpit reachable at CHURCHCRM_MAILPIT_URL?');
 }
 
+const MEMBER_CONTEXT = {
+  baseURL: BASE_URL,
+  viewport: { width: 1440, height: 900 },
+  deviceScaleFactor: 2,
+  timezoneId: 'America/Chicago',
+};
+
 /** A browser context of its own, so a sign-in there never touches the admin session the other captures share. */
 export function freshContext(browser: Browser): Promise<BrowserContext> {
-  return browser.newContext({
-    storageState: { cookies: [], origins: [] },
-    baseURL: BASE_URL,
-    viewport: { width: 1440, height: 900 },
-    deviceScaleFactor: 2,
-    timezoneId: 'America/Chicago',
-  });
+  return browser.newContext({ ...MEMBER_CONTEXT, storageState: { cookies: [], origins: [] } });
+}
+
+/**
+ * A browser context signed in to the Member Portal as one fixed person, for the
+ * captures that need that person's own family or schedule. The person ticks
+ * "This is my own device", and the context's cookies are saved to
+ * playwright/.auth/member-<name>.json each time the device signs them in again,
+ * because its token changes at every use. So only the first run on an instance
+ * waits for an emailed code, and the locale passes never reach the limit of
+ * five sign-in emails a day for one person.
+ */
+export async function rememberedMemberContext(browser: Browser, email: string, name: string): Promise<BrowserContext> {
+  const statePath = path.join(__dirname, '..', '.auth', `member-${name}.json`);
+  if (fs.existsSync(statePath)) {
+    const context = await browser.newContext({ ...MEMBER_CONTEXT, storageState: statePath });
+    const page = await context.newPage();
+    await page.goto('/portal/');
+    if (new URL(page.url()).pathname.endsWith('/portal/') && (await page.locator('.portal-shell').count()) > 0) {
+      await context.storageState({ path: statePath });
+      await page.close();
+      return context;
+    }
+    await context.close();
+  }
+
+  const context = await freshContext(browser);
+  const page = await context.newPage();
+  await askForCode(page, email);
+  const code = await signInCode(email);
+  if (!code) {
+    throw new Error(`No sign-in code reached ${email}. Is Mailpit reachable at CHURCHCRM_MAILPIT_URL?`);
+  }
+  await enterCode(page, code);
+  fs.mkdirSync(path.dirname(statePath), { recursive: true });
+  await context.storageState({ path: statePath });
+  await page.close();
+  return context;
 }
 
 export async function signInAsStaffAdmin(page: Page): Promise<void> {

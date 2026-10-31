@@ -21,6 +21,10 @@
             "kind": "schema",
             "reason": "Migration spec for the 7.8.3 block that retires bPortalShowCalendar: the application no longer reads or writes the switch, so its pre-upgrade config row and the upgrade block are reached in SQL."
         },
+        "cypress/e2e/api/private/admin/private.admin.member-sign-in-cutover.spec.js": {
+            "kind": "schema",
+            "reason": "Migration spec for the 7.8.3 release-day cutover (member sign-in row 13): the application no longer makes self-service accounts, so the pre-upgrade accounts, their per-user rows, the history that names them and the upgrade block are reached in SQL."
+        },
         "cypress/e2e/api/private/admin/private.admin.member-portal-lists.spec.js": {
             "kind": "fixture",
             "reason": "Member sign-in row 9 (#10463): shared and unconfirmed emails, past sign-in times, the 7.8.3 family email move rows, an emailed family confirmation and an old refusal are fixtures with no HTTP surface; the upgrade, the email link and row 10 write them."
@@ -81,6 +85,10 @@
             "kind": "fixture",
             "reason": "Member sign-in row 10 (#10463): an address moved from the family email and \"has signed in\" have no HTTP surface until rows 5 and 9."
         },
+        "cypress/e2e/ui/portal/member.portal-locale.spec.js": {
+            "kind": "fixture",
+            "reason": "Member language (#10463): a stored language this installation no longer ships cannot be written through the app, so it is set in SQL, and each test starts from Church default."
+        },
         "cypress/e2e/ui/portal/member.portal-passkeys.spec.js": {
             "kind": "fixture",
             "reason": "Member sign-in row 8 (#10463): the stored WebAuthn fields (credential id hash, public key, user handle, sign counter) and the sign-in settings have no HTTP surface, and the audit is read in SQL because an API-key call would replace the member's portal session; the person's email is put back after the staff change."
@@ -97,6 +105,10 @@
             "kind": "fixture",
             "reason": "Member sign-in row 5 (#10463): Disable sign-in and an unconfirmed moved address are set, and the audit read, in SQL; row 9 adds their admin pages."
         },
+        "cypress/e2e/ui/security/limited-access.spec.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in row 13 (#10463): the 7.8.3 upgrade removes every self-service account and nothing creates one, so the account the confinement safety net is tested with is inserted in SQL."
+        },
         "cypress/support/api-commands.js": {
             "kind": "fixture",
             "reason": "Registers cy.dbQuery()."
@@ -107,7 +119,7 @@
         },
         "cypress/support/member-session.js": {
             "kind": "fixture",
-            "reason": "Member sign-in (#10463): opens the member rule for a spec that acts as a member and puts the seed's settings back after it."
+            "reason": "Member sign-in row 13 (#10463): opens the member rule for a spec that acts as a member and puts the seed's settings back after it; members have no account to sign in with since the cutover."
         },
         "cypress/support/remembered-device.js": {
             "kind": "fixture",

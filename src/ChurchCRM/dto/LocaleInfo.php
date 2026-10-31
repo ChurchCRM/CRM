@@ -2,6 +2,8 @@
 
 namespace ChurchCRM\dto;
 
+use ChurchCRM\model\ChurchCRM\UserSetting;
+
 class LocaleInfo
 {
     public $systemLocale;
@@ -20,12 +22,18 @@ class LocaleInfo
      */
     private static $translationDataCache = null;
 
+    /**
+     * @param UserSetting|string|null $userLocale a staff account's `ui.locale` setting, or a member's language
+     */
     public function __construct($locale, $userLocale)
     {
         $this->systemLocale = $locale;
         $this->locale = $locale;
-        if (!empty($userLocale)) {
-            $this->locale = $userLocale->getValue();
+        if ($userLocale instanceof UserSetting) {
+            $userLocale = $userLocale->getValue();
+        }
+        if (is_string($userLocale) && $userLocale !== '') {
+            $this->locale = $userLocale;
         }
         
         // Load locales.json - throw exception if missing (broken installation)

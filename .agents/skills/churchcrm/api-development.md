@@ -173,7 +173,7 @@ Every new endpoint ships with a Cypress API spec in the same PR, run locally bef
 - Happy path with seeded data: seed through existing APIs in `before()`, clean up in `after()`, assert status 200 and response shape and values
 - Empty path, e.g. a person with no records
 - 401 with no API key or session
-- 403 for a role-restricted caller (the `limited.user` inline-key pattern when seeded users are too privileged)
+- 403 for a role-restricted caller (`cy.makePrivateNoPermAPICall()`, every flag off, when seeded users are too privileged)
 - 404 for a nonexistent entity id
 
 Run: `npx cypress run --config-file cypress/configs/docker.config.ts --spec "<path>"`.

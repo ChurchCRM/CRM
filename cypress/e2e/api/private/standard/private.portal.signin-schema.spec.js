@@ -24,6 +24,7 @@ const TABLES = {
         "psi_LastActivity",
         "psi_CalendarToken",
         "psi_CalendarSelection",
+        "psi_Language",
     ],
     person_signin_request_psr: [
         "psr_ID",

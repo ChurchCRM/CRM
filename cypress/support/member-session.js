@@ -1,6 +1,7 @@
-// Acting as a member in specs (#10463): a spec reaches the Member Portal as a
-// member does, with an emailed code (design §6.1) read from Mailpit. The member
-// rule is opened to everyone for the spec and put back to the seed's settings after it.
+// Acting as a member in specs (#10463 row 13). The release-day cutover removed
+// the self-service accounts, so a spec reaches the Member Portal as a member
+// does: an emailed code (design §6.1), read from Mailpit. The member rule is
+// opened to everyone for the spec and put back to the seed's settings after it.
 
 import { askForEmail, db, mailTo, postCode, setConfig, waitForMail } from "./member-sign-in";
 

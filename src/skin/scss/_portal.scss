@@ -206,6 +206,12 @@ html {
     text-decoration: none;
 }
 
+// Icons differ in width; a fixed box keeps the labels in one column.
+.portal-account-item > i {
+    flex: 0 0 1.25em;
+    text-align: center;
+}
+
 .portal-account-item:hover,
 .portal-account-item:focus-visible {
     background-color: var(--portal-surface-alt);

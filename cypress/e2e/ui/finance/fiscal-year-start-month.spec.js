@@ -92,7 +92,7 @@ describe("Giving reports follow the fiscal year start month", () => {
             expect(text).to.include("July 01 2016 through June 30 2017");
         });
 
-        cy.setupLoginSession("giving-member", "lena.black.editself.notes@example.com", "changeme");
+        cy.signInAsMember(100);
         cy.visit("/portal/giving");
         cy.get('#year option[value="2018"]').should("have.text", "2017/18");
         cy.get('#year option[value="2017"]').should("have.text", "2016/17");

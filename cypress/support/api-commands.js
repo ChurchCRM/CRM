@@ -85,37 +85,6 @@ Cypress.Commands.add("makePrivateNoManageFundraisersAPICall", privateApiCall("no
 
 Cypress.Commands.add("makePrivatePlainAuthAPICall", privateApiCall("plainauth.api.key"));
 
-Cypress.Commands.add("makePrivateEditSelfAPICall", privateApiCall("selfedit.api.key"));
-
-/**
- * EditSelf+Notes user — regression sentinel for FamilyReadMiddleware vs FamilyMiddleware.
- *
- * User: lena.black (ID 100, family 20) with usr_EditSelf=1, usr_Notes=1 in DB.
- *
- * Post-PR#9016 (EditSelf exclusive mode): User::isEditSelfExclusive() (checked by AuthMiddleware)
- * returns true for any non-admin user with isEditSelf()=true, regardless of Notes. AuthMiddleware
- * therefore blocks this user (403) before reaching FamilyReadMiddleware or FamilyMiddleware.
- *
- * Future use: if EditSelf exclusivity is ever relaxed to permit EditSelf+Notes, this user
- * should get 200 on avatar/nav/photo (FamilyReadMiddleware, canReadFamily=true) and 403 on
- * full profile/notes for non-own family 1 (FamilyMiddleware, canViewFamily=false). That
- * would make these tests detect a FamilyReadMiddleware→FamilyMiddleware regression.
- */
-Cypress.Commands.add("makePrivateEditSelfPlusNotesAPICall", privateApiCall("selfedit.plus.notes.api.key"));
-
-// limited.user (id=4): usr_Notes=0, usr_Admin=0, usr_EditRecords=0,
-// usr_EditSelf=1 — an EditSelf-ONLY user (NOT a zero-permission user).
-// EditSelf is exclusive, so AuthMiddleware::isEditSelfExclusive() blocks
-// this user → always returns 403.
-// Use this fixture ONLY to verify that Notes-gated endpoints return 403.
-// Do NOT use for routes that should return 200 for authenticated users
-// (e.g. timeline) — use makePrivateEditRecordsAPICall instead.
-//
-// For a genuinely zero-permission user (all flags 0, EditSelf=0) see
-// noperm.user (id=901), which now passes the gate with read-only access
-// under the read-default policy (#9003).
-Cypress.Commands.add("makePrivateLimitedAPICall", privateApiCall("limited.api.key"));
-
 // judith.matthews (id=95): usr_EditRecords=1, usr_Notes=0, usr_Admin=0.
 // Passes AuthMiddleware (has EditRecords permission) but canReadNotes()
 // returns false (no Notes flag). Use for testing routes that should

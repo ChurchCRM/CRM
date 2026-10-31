@@ -3,9 +3,11 @@
 use ChurchCRM\dto\Photo;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Portal\Auth\PortalSessionMiddleware;
+use ChurchCRM\Portal\MemberLanguage;
 use ChurchCRM\Portal\Permissions\CorePortalCapabilities;
 use ChurchCRM\Portal\Permissions\RequirePortalCapability;
 use ChurchCRM\Portal\PortalApiMiddleware;
+use ChurchCRM\Portal\PortalExtension;
 use ChurchCRM\Portal\PortalSelfService;
 use ChurchCRM\Portal\PortalSelfServiceException;
 use ChurchCRM\Slim\Middleware\Api\FamilyEmailDeprecationMiddleware;
@@ -55,6 +57,8 @@ $portalPersonFields = [
     // that is not a real calendar day. The sanitizer has no 'date' type yet, so
     // 'text' does the tag-stripping and the service does the parsing.
     'birthday' => 'text',
+    // A locale from src/locale/locales.json, or empty for the church's language.
+    'language' => 'text',
 ];
 
 /** The fields `POST /api/portal/family` accepts. */
@@ -155,7 +159,8 @@ $app->group('/portal', function (RouteCollectorProxy $group) use (
      *                 @OA\Property(property="cellPhone", type="string", example="(206) 555-0100"),
      *                 @OA\Property(property="birthday", type="string", example="1971-12-24", description="ISO date, empty when unknown"),
      *                 @OA\Property(property="photoUrl", type="string"),
-     *                 @OA\Property(property="canEditBirthday", type="boolean", description="Mirrors bPortalAllowBirthdayEdit")
+     *                 @OA\Property(property="canEditBirthday", type="boolean", description="Mirrors bPortalAllowBirthdayEdit"),
+     *                 @OA\Property(property="language", type="string", example="fr_FR", description="The language the member chose for the portal and its emails; empty for the church's language")
      *             )
      *         )
      *     ),
@@ -174,7 +179,7 @@ $app->group('/portal', function (RouteCollectorProxy $group) use (
      *     path="/portal/me",
      *     operationId="updatePortalMe",
      *     summary="Update the signed-in member's own profile",
-     *     description="Applies the allow-listed fields present in the body to the member's own person record and writes a timeline note naming what changed. Anything else in the body is ignored. Birthday is accepted only when bPortalAllowBirthdayEdit is on. A new email is not saved: a confirmation link goes to the new address, a notice goes to the old one, and the change happens when the link is used (member sign-in design §9).",
+     *     description="Applies the allow-listed fields present in the body to the member's own person record and writes a timeline note naming what changed. Anything else in the body is ignored. Birthday is accepted only when bPortalAllowBirthdayEdit is on. A new email is not saved: a confirmation link goes to the new address, a notice goes to the old one, and the change happens when the link is used (member sign-in design §9). Language is ignored in a staff session, which keeps the staff account's own setting.",
      *     tags={"Member Portal"},
      *     @OA\RequestBody(required=true,
      *         @OA\JsonContent(
@@ -188,7 +193,8 @@ $app->group('/portal', function (RouteCollectorProxy $group) use (
      *             @OA\Property(property="homePhone", type="string"),
      *             @OA\Property(property="cellPhone", type="string"),
      *             @OA\Property(property="workPhone", type="string"),
-     *             @OA\Property(property="birthday", type="string", example="1971-12-24")
+     *             @OA\Property(property="birthday", type="string", example="1971-12-24"),
+     *             @OA\Property(property="language", type="string", example="fr_FR", description="A locale from src/locale/locales.json, or empty for the church's language")
      *         )
      *     ),
      *     @OA\Response(response=200, description="The saved profile",
@@ -206,10 +212,15 @@ $app->group('/portal', function (RouteCollectorProxy $group) use (
      * )
      */
     $group->post('/me', function (Request $request, Response $response) use ($portalActor, $portalError): Response {
+        $actor = $portalActor($request);
         try {
-            $result = PortalSelfService::updateProfile($portalActor($request), (array) $request->getParsedBody());
+            $result = PortalSelfService::updateProfile($actor, (array) $request->getParsedBody());
         } catch (PortalSelfServiceException $e) {
             return $portalError($response, $e);
+        }
+        if (in_array('language', $result['updated'], true)) {
+            // The page reloads in the new language, so it says so in that language.
+            PortalExtension::addFlash('success', MemberLanguage::inLanguageOf((int) $actor->getId(), static fn (): string => gettext('Your details have been saved.')));
         }
 
         return SlimUtils::renderJSON($response, array_merge(['success' => true], $result));

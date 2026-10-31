@@ -6,8 +6,8 @@
  * person page's devices, passkeys and portal permissions (§11.3, §8.3).
  *
  * Every x-api-key request replaces the browser session, so each UI step that
- * follows one signs in again. limited.user (person 4) and lena.black (person
- * 100, spouse in the Black family) reach the portal from their staff sign-in.
+ * follows one signs in again. Darren Campbell (person 4) and Lena Black (person
+ * 100, spouse in the Black family) sign in to the portal with their email.
  */
 
 const SETTINGS_URL = "/admin/api/member-portal/sign-in";
@@ -23,14 +23,6 @@ const db = (sql, params = []) =>
         expect(result.error, sql).to.be.null;
         return result.rows;
     });
-
-const signInAs = (username, password = "changeme") => {
-    cy.clearCookies();
-    cy.visit("/session/begin");
-    cy.get("input[name=User]").type(username);
-    cy.get("input[name=Password]").type(`${password}{enter}`);
-    cy.location("pathname", { timeout: 20000 }).should("not.match", /\/admin\/$/);
-};
 
 const portalNavLabels = () =>
     cy.request("/portal/").then((response) => {
@@ -165,7 +157,7 @@ describe("Admin → Member Portal members, audit, permissions and the person car
     });
 
     it("lists a family a member confirmed in the portal, with who confirmed, and audits it", () => {
-        signInAs("lena.black.editself.notes@example.com");
+        cy.signInAsMember(100);
         cy.visit("/portal/family/confirm");
         cy.get("#portal-confirm-submit").click();
         cy.get(".portal-flash-success", { timeout: 10000 }).should("be.visible");
@@ -234,11 +226,11 @@ describe("Admin → Member Portal members, audit, permissions and the person car
 
         cy.get("#portal-statistics-tab").click();
         cy.get("#portalStat-maySignIn").invoke("text").should("match", /^\d+$/);
-        cy.get("#portalRecentSignInsTable").should("contain.text", "Lena Black").and("contain.text", "From a staff sign-in");
+        cy.get("#portalRecentSignInsTable").should("contain.text", "Lena Black").and("contain.text", "Email code");
     });
 
     it("gives a team permission on the person page, which opens My Teams in the portal, and removes it", () => {
-        signInAs("limited.user");
+        cy.signInAsMember(PORTAL_PERSON);
         portalNavLabels().should("not.include", "My Teams");
 
         cy.freshAdminFormLogin();
@@ -289,7 +281,7 @@ describe("Admin → Member Portal members, audit, permissions and the person car
         cy.visit("/admin/member-portal#portal-permissions");
         cy.get('#portalPermissionsTable tr[data-capability="volunteer.team.manage"]').should("contain.text", "Admin overrides: 1");
 
-        signInAs("limited.user");
+        cy.signInAsMember(PORTAL_PERSON);
         portalNavLabels().should("include", "My Teams");
         cy.then(() => cy.request(`/portal/teams/${teamId}`).its("status").should("eq", 200));
         cy.visit("/portal/teams");
@@ -305,7 +297,7 @@ describe("Admin → Member Portal members, audit, permissions and the person car
         cy.get("#portal-signin-permissions-section").should("be.visible");
         cy.get("#portal-signin-permissions-toggle").should("have.attr", "aria-expanded", "true").and("contain.text", "Hide Permissions");
 
-        signInAs("limited.user");
+        cy.signInAsMember(PORTAL_PERSON);
         portalNavLabels().should("not.include", "My Teams");
     });
 

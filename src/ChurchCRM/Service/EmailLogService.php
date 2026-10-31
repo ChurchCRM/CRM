@@ -6,7 +6,6 @@ use ChurchCRM\model\ChurchCRM\EmailLog;
 use ChurchCRM\model\ChurchCRM\EmailLogQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
-use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use PHPMailer\PHPMailer\PHPMailer;
@@ -286,14 +285,8 @@ class EmailLogService
      */
     public function toArray(EmailLog $row, bool $withBody = false): array
     {
-        $sentBy = null;
-        if ($row->getUsrId() !== null) {
-            $user = UserQuery::create()->findPk($row->getUsrId());
-            if ($user !== null) {
-                $person = $user->getPerson();
-                $sentBy = $person !== null ? $person->getFullName() : $user->getUserName();
-            }
-        }
+        // A user id is the person id, so the sender's name outlives a deleted account.
+        $sentBy = $row->getUsrId() === null ? null : PersonQuery::create()->findPk((int) $row->getUsrId())?->getFullName();
         $out = [
             'id'           => (int) $row->getId(),
             'personId'     => $row->getPerId() !== null ? (int) $row->getPerId() : null,

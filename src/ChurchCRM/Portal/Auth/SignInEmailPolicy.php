@@ -19,6 +19,7 @@ use ChurchCRM\model\ChurchCRM\PersonSigninQuery;
 use ChurchCRM\model\ChurchCRM\PortalGrantQuery;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\UserQuery;
+use ChurchCRM\Portal\MemberLanguage;
 use ChurchCRM\Portal\PortalSelfService;
 use ChurchCRM\Service\EmailSignInService;
 use ChurchCRM\Service\RateLimiter;
@@ -77,8 +78,7 @@ final class SignInEmailPolicy
 
     /**
      * A person with a staff account or given portal grants, whose email only
-     * an administrator may change or confirm. Self-service accounts are not
-     * staff accounts: the release-day cutover removes them.
+     * an administrator may change or confirm.
      */
     public function needsAdministrator(Person $person): bool
     {
@@ -99,10 +99,8 @@ final class SignInEmailPolicy
         }
 
         $found = [];
-        foreach (UserQuery::create()->filterByPersonId($personIds, Criteria::IN)->find() as $user) {
-            if (!$user->isEditSelfExclusive()) {
-                $found[(int) $user->getPersonId()] = true;
-            }
+        foreach (UserQuery::create()->filterByPersonId($personIds, Criteria::IN)->select(['PersonId'])->find() as $personId) {
+            $found[(int) $personId] = true;
         }
 
         $now = $this->now();
@@ -565,7 +563,10 @@ final class SignInEmailPolicy
                 [$token, $expiresAt] = $this->issueLink((int) $person->getId(), self::KIND_CONFIRM, $newEmail, $this->now());
                 $confirmUrl = self::linkUrl($token);
             }
-            (new EmailChangeNoticeEmail($address, $person, $oldEmail, $newEmail, $by, $confirmUrl, $expiresAt))->send();
+            MemberLanguage::inLanguageOf(
+                (int) $person->getId(),
+                static fn (): bool => (new EmailChangeNoticeEmail($address, $person, $oldEmail, $newEmail, $by, $confirmUrl, $expiresAt))->send()
+            );
         }
     }
 
@@ -573,7 +574,10 @@ final class SignInEmailPolicy
     private function sendConfirmEmail(Person $person, string $address, DateTimeImmutable $now): bool
     {
         [$token, $expiresAt, $linkId] = $this->issueLink((int) $person->getId(), self::KIND_CHANGE, $address, $now);
-        $sent = (new EmailChangeConfirmEmail($address, $person, self::linkUrl($token), $expiresAt))->send();
+        $sent = MemberLanguage::inLanguageOf(
+            (int) $person->getId(),
+            static fn (): bool => (new EmailChangeConfirmEmail($address, $person, self::linkUrl($token), $expiresAt))->send()
+        );
         $cancel = $sent
             ? $this->openLinks((int) $person->getId(), self::KIND_CHANGE, $now)->filterById($linkId, Criteria::NOT_EQUAL)
             : PersonEmailChangeQuery::create()->filterById($linkId);
