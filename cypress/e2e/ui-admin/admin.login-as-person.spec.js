@@ -218,6 +218,16 @@ describe("Login as Person", () => {
         cy.get("#login-as-markup").should("not.exist");
     });
 
+    it("says so when the start request never reaches the server", () => {
+        cy.intercept("POST", `**/admin/api/person/${MEMBER}/login-as-person`, { forceNetworkError: true });
+        cy.visit(`/people/view/${MEMBER}`);
+        cy.get("#person-actions-dropdown").click();
+        cy.get("#loginAsPerson").click();
+        cy.get(".bootbox .btn-warning").click();
+        cy.contains("Login as Person could not start.").should("be.visible");
+        cy.location("pathname").should("match", new RegExp(`/people/view/${MEMBER}$`));
+    });
+
     it("ends Login as Person when a member signs in in the same browser", () => {
         // With changes off the sign-in form's POST is refused like any other write.
         setSetting("bLoginAsPersonCanWrite", "1");
