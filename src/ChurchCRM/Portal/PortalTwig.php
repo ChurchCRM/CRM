@@ -5,6 +5,7 @@ namespace ChurchCRM\Portal;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Plugin\PluginManager;
+use ChurchCRM\Portal\Auth\LoginAsPerson;
 use ChurchCRM\Portal\Auth\PortalContext;
 use ChurchCRM\Twig\GettextExtension;
 use ChurchCRM\Utils\LoggerUtils;
@@ -174,7 +175,7 @@ class PortalTwig
             if ($pluginTemplates !== null && $loader instanceof FilesystemLoader) {
                 $loader->addPath($pluginTemplates, 'plugin');
             }
-            $html = $twig->render($template, $model);
+            $html = self::withLoginAsPersonBanner($twig, $twig->render($template, $model));
         } catch (ThemeException | TwigError $e) {
             return self::renderThemeFailure($response, $e, $activeNavId);
         }
@@ -191,6 +192,21 @@ class PortalTwig
         $response->getBody()->write($html);
 
         return $response->withHeader('Content-Type', 'text/html; charset=UTF-8');
+    }
+
+    /**
+     * Stop is the only way back from Login as Person, so a page whose theme
+     * layout leaves the banner out gets it right after `<body>`.
+     */
+    private static function withLoginAsPersonBanner(Environment $twig, string $html): string
+    {
+        if (str_contains($html, 'id="login-as-person-banner"') || !LoginAsPerson::isActive()) {
+            return $html;
+        }
+        $banner = $twig->render('@default/partials/login-as-person-banner.html.twig');
+        $withBanner = preg_replace_callback('/<body\b[^>]*>/i', static fn (array $body): string => $body[0] . $banner, $html, 1, $found);
+
+        return $found === 1 ? $withBanner : $banner . $html;
     }
 
     /**
