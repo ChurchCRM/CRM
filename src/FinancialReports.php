@@ -109,7 +109,7 @@ if ($sReportType === '') {
     // 2nd Pass - Display filters and other settings
     switch ($sReportType) {
         case 'Zero Givers':             $action = 'finance/reports/zero-givers/download'; break;
-        case 'Pledge Family Summary':   $action = 'Reports/FamilyPledgeSummary.php'; break;
+        case 'Pledge Family Summary':   $action = 'finance/reports/family-pledge-summary/download'; break;
         case 'Pledge Reminders':        $action = 'Reports/ReminderReport.php'; break;
         case 'Voting Members':          $action = 'Reports/VotingMembers.php'; break;
     }

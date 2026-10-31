@@ -1,0 +1,37 @@
+{% extends "_letter.html.twig" %}
+{% block letter_body %}
+  <h1>{{ gettext('Pledge Summary By Family') }}</h1>
+  <div class="muted">{{ gettext('Fiscal Year') }}: {{ fiscal_year }}{% if date_range %} ({{ date_range }}){% endif %}{% if funds %} · {{ gettext('Funds') }}: {{ funds|join(', ') }}{% endif %}</div>
+  <table class="gifts">
+    <thead>
+      <tr>
+        <th>{{ gettext('Name') }}</th>
+        <th>{{ gettext('Method') }}</th>
+        <th>{{ gettext('Fund') }}</th>
+        <th class="right">{{ gettext('Pledge') }}</th>
+        <th class="right">{{ gettext('Paid') }}</th>
+        <th class="right">{{ gettext('Owe') }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in rows %}
+        <tr>
+          <td>{{ row.name }}</td>
+          <td>{{ row.method }}</td>
+          <td>{{ row.fund }}</td>
+          <td class="right">{{ row.pledged }}</td>
+          <td class="right">{{ row.paid }}</td>
+          <td class="right">{{ row.owed }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+    <tfoot>
+      <tr>
+        <th colspan="3">{{ gettext('Total') }}</th>
+        <th class="right">{{ totals.pledged }}</th>
+        <th class="right">{{ totals.paid }}</th>
+        <th class="right">{{ totals.owed }}</th>
+      </tr>
+    </tfoot>
+  </table>
+{% endblock %}
