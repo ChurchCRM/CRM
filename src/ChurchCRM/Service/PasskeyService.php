@@ -328,13 +328,14 @@ final class PasskeyService
         if (!$passkey instanceof PersonPasskey) {
             return false;
         }
-        $passkey->delete();
-
-        SignInAudit::record(
-            SignInAuditEvent::PASSKEY_REMOVED,
-            $personId,
-            actorUserId: $actor === null ? null : (int) $actor->getId(),
-            detail: $passkey->getLabel(),
+        SignInAudit::withChange(
+            static fn () => $passkey->delete(),
+            static fn (): ?int => SignInAudit::record(
+                SignInAuditEvent::PASSKEY_REMOVED,
+                $personId,
+                actorUserId: $actor === null ? null : (int) $actor->getId(),
+                detail: $passkey->getLabel(),
+            ),
         );
 
         return true;
@@ -473,6 +474,9 @@ final class PasskeyService
      */
     private static function takeSignInChallenge(string $clientDataJson): ?string
     {
+        if (strlen($clientDataJson) > self::MAX_CLIENT_DATA_BYTES) {
+            return null;
+        }
         $clientData = json_decode($clientDataJson, true);
         $named = is_array($clientData) && is_string($clientData['challenge'] ?? null) ? $clientData['challenge'] : '';
         $expiresAt = $_SESSION[self::SESSION_KEY][self::SIGN_IN][$named] ?? null;
