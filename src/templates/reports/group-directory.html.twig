@@ -1,0 +1,23 @@
+{% extends "_base.html.twig" %}
+{% block content %}
+  <style>
+    h1 { border: 0.4pt solid #1a1a1a; text-align: center; padding: 2mm; font-size: 15pt; }
+    .line { font-size: 10pt; }
+  </style>
+  <htmlpagefooter name="pageNumber"><div style="text-align: center; font-size: 8pt; font-style: italic;">{{ gettext('Page') }} {PAGENO}</div></htmlpagefooter>
+  <sethtmlpagefooter name="pageNumber" value="on" />
+  <h1>{{ title }}</h1>
+  {% if people %}
+    <columns column-count="2" column-gap="8" />
+    {% for person in people %}
+      <table width="100%" nobreak="true"><tr><td>
+        <b>{{ person.name }}</b>
+        {% for line in person.lines %}<br><span class="line">&emsp;{% if line.label %}{{ line.label }}: {% endif %}{{ line.value }}</span>{% endfor %}
+        <div style="font-size: 8pt;">&nbsp;</div>
+      </td></tr></table>
+    {% endfor %}
+    <columns column-count="1" />
+  {% else %}
+    <p class="empty">{{ gettext('No records were returned from the previous report. Please adjust your filters or date range and try again.') }}</p>
+  {% endif %}
+{% endblock %}
