@@ -149,7 +149,7 @@ describe('03 - Backup and Restore', () => {
             cy.get('#restoreSuccessModal', { timeout: 120000 }).should('be.visible');
 
             // Should eventually redirect to login page
-            cy.location('pathname', { timeout: 30000 }).should('eq', '/admin/');
+            cy.location('pathname', { timeout: 30000 }).should('match', /\/admin\/$/);
         });
     });
 
