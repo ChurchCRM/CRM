@@ -164,7 +164,7 @@ A bundle treats a missing hook as "this theme does without the feature". Adding 
 - A theme is trusted like any other file the administrator places on the server; never use `|raw` on member data
 - `theme.js` runs under the CSP nonce; inline scripts in theme templates carry `nonce="{{ nonce() }}"`
 - The admin page states "Themes are provided by your church, not by ChurchCRM"
-- Login as Person (`ChurchCRM\Portal\Auth\LoginAsPerson`, member sign-in design §6.5) sets the administrator's staff session aside while an ASSISTED principal runs, so portal code never sees a staff user then. `LoginAsPersonMiddleware` refuses (unless `bLoginAsPersonCanWrite`) and records every non-GET request; a new write path needs nothing more. A theme overriding `layout.html.twig` keeps `partials/login-as-person-banner.html.twig`: Stop is the only way back
+- Login as Person (`ChurchCRM\Portal\Auth\LoginAsPerson`, member sign-in design §6.5) sets the administrator's staff session aside while an ASSISTED principal runs, so portal code never sees a staff user then. `LoginAsPersonMiddleware` refuses (unless `bLoginAsPersonCanWrite`) and records every non-GET request; a new write path needs nothing more. A theme overriding `layout.html.twig` keeps `partials/login-as-person-banner.html.twig`: Stop is the only way back, so `PortalTwig` adds the banner after `<body>` to a page that leaves it out
 
 ## Admin -> Member Portal (`/admin/member-portal`)
 
