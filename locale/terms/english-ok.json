@@ -652,7 +652,8 @@
     "am / pm",
     "Offline",
     "Individual",
-    "{{team}}: {{staffing}}"
+    "{{team}}: {{staffing}}",
+    "%s – Total"
   ],
   "pt-BR": [
     "Azure",
