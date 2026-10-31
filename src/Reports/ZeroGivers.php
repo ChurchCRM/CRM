@@ -106,7 +106,7 @@ if ($output === 'pdf') {
                 $DateString = date('M j, Y', strtotime($sDateStart)) . ' - ' . date('M j, Y', strtotime($sDateEnd));
             }
 
-            $blurb = SystemConfig::getValue('sTaxReport1') . ' ' . $DateString . ' ' . SystemConfig::getValue('sZeroGivers');
+            $blurb = SystemConfig::getValue('sGivingStatementOpening') . ' ' . $DateString . ' ' . SystemConfig::getValue('sZeroGivers');
             $this->writeAt(SystemConfig::getValue('leftX'), $curY, $blurb);
 
             return $curY + 30 * SystemConfig::getValue('incrementY');
@@ -124,7 +124,7 @@ if ($output === 'pdf') {
             $curY += 3 * SystemConfig::getValue('incrementY');
             $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sConfirmSincerely') . ',');
             $curY += 4 * SystemConfig::getValue('incrementY');
-            $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sTaxSigner'));
+            $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sGivingStatementSigner'));
         }
     }
 

@@ -191,7 +191,7 @@ INSERT INTO `config_cfg` (`cfg_name`, `cfg_value`) VALUES ('bAllowPrereleaseUpgr
 ('sSMTPHost','mailserver:1025'),
 ('sSMTPPass',''),
 ('sSMTPUser',''),
-('sTaxSigner','Elder Joe Smith'),
+('sGivingStatementSigner','Elder Joe Smith'),
 ('sTimeZone','America/Detroit'),
 ('sTwoFASecretKey','ChangeThisToASecureRandomStringBeforeUse'),
 ('sVolunteerVersion','v1');

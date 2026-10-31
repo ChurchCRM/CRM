@@ -255,8 +255,8 @@ $sRootPath = SystemURLs::getRootPath();
                                 <span class="badge bg-info rounded-circle p-2"><i class="fa-solid fa-file-lines"></i></span>
                             </div>
                             <div class="flex-grow-1">
-                                <strong><?= gettext('Tax Report Verbiage') ?></strong>
-                                <p class="mb-0 small text-body-secondary"><?= gettext('Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc).') ?></p>
+                                <strong><?= gettext('Giving Statement Text') ?></strong>
+                                <p class="mb-0 small text-body-secondary"><?= gettext('Customize the opening, closing, and contact text that appears on giving statements.') ?></p>
                             </div>
                             <div>
                                 <a href="<?= $sRootPath ?>/SystemSettings.php" class="btn btn-sm btn-outline-secondary">
