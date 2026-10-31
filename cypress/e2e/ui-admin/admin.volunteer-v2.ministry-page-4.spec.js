@@ -57,12 +57,12 @@ function freshAdminLogin() {
     // One retry: under CI load the submit occasionally lands back on the login
     // page although the server logged the login (a lost cookie on the redirect).
     cy.url().then((url) => {
-        if (new URL(url).pathname === "/admin/") {
+        if (/\/admin\/$/.test(new URL(url).pathname)) {
             cy.get("input[name=User]").clear().type(Cypress.testEnv("admin.username"));
             cy.get("input[name=Password]").clear().type(Cypress.testEnv("admin.password") + "{enter}");
         }
     });
-    cy.location("pathname").should("not.eq", "/admin/");
+    cy.location("pathname").should("not.match", /\/admin\/$/);
 }
 
 function adminApi(method, url, body, expectedStatus = 200) {
