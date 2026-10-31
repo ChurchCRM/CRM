@@ -4,6 +4,7 @@ namespace ChurchCRM\Service;
 
 use ChurchCRM\model\ChurchCRM\DonatedItem;
 use ChurchCRM\model\ChurchCRM\DonatedItemQuery;
+use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
 use ChurchCRM\model\ChurchCRM\MultibuyQuery;
 use ChurchCRM\model\ChurchCRM\PaddleNumQuery;
 use ChurchCRM\model\ChurchCRM\Person;
@@ -23,10 +24,11 @@ class FundRaiserStatementService
      */
     public static function document(int $fundraiserId, ?array $paddleIds = null): array
     {
+        $title = (string) FundRaiserQuery::create()->findOneById($fundraiserId)?->getTitle();
         $query = PaddleNumQuery::create()->filterByPnFrId($fundraiserId)->orderByPnNum();
         if ($paddleIds !== null) {
             if ($paddleIds === []) {
-                return ['letterhead' => 'address', 'statements' => []];
+                return ['letterhead' => 'address', 'statements' => [], 'fundraiser_title' => $title];
             }
             $query->filterByPnId($paddleIds);
         }
@@ -37,34 +39,27 @@ class FundRaiserStatementService
             $people[$person->getId()] = $person;
         }
 
-        // A buyer who holds several paddles gets one statement listing every paddle number.
-        $paddleNumbers = [];
+        // One statement per household: paddle holders in the same family share it, and a buyer with no family stands alone.
+        $households = [];
         foreach ($paddles as $paddle) {
-            $paddleNumbers[$paddle->getPnPerId()][] = $paddle->getPnNum();
+            $buyer = $people[$paddle->getPnPerId()] ?? null;
+            $key = $buyer?->getFamId() ? 'f' . $buyer->getFamId() : 'p' . $paddle->getPnPerId();
+            $households[$key]['numbers'][] = $paddle->getPnNum();
+            $households[$key]['personIds'][] = $paddle->getPnPerId();
+            $households[$key]['holders'][$paddle->getPnPerId()] = $buyer !== null ? trim($buyer->getFirstName() . ' ' . $buyer->getLastName()) : '';
+            $households[$key]['family'] = $buyer?->getFamily();
         }
 
         $statements = [];
-        foreach ($paddles as $paddle) {
-            if (!isset($paddleNumbers[$paddle->getPnPerId()])) {
-                continue;
-            }
-            $numbers = $paddleNumbers[$paddle->getPnPerId()];
-            unset($paddleNumbers[$paddle->getPnPerId()]);
-            $buyer = $people[$paddle->getPnPerId()] ?? null;
-            $family = $buyer?->getFamily();
+        foreach ($households as $household) {
+            $personIds = array_values(array_unique($household['personIds']));
+            $family = $household['family'];
 
-            $donated = [];
-            foreach (DonatedItemQuery::create()->filterByFrId($fundraiserId)->filterByDonorId($paddle->getPnPerId())->find() as $item) {
-                $donated[] = $item;
-            }
-            $purchased = [];
-            foreach (DonatedItemQuery::create()->filterByFrId($fundraiserId)->filterByBuyerId($paddle->getPnPerId())->find() as $item) {
-                $purchased[] = $item;
-            }
+            $donated = iterator_to_array(DonatedItemQuery::create()->filterByFrId($fundraiserId)->filterByDonorId($personIds)->find(), false);
+            $purchased = iterator_to_array(DonatedItemQuery::create()->filterByFrId($fundraiserId)->filterByBuyerId($personIds)->find(), false);
 
             // A multibuy row counts only when its item belongs to this fundraiser.
-            $multibuys = [];
-            $multibuyRows = MultibuyQuery::create()->filterByMbPerId($paddle->getPnPerId())->find();
+            $multibuyRows = MultibuyQuery::create()->filterByMbPerId($personIds)->find();
             $multibuyItems = [];
             $itemIds = [];
             foreach ($multibuyRows as $row) {
@@ -99,8 +94,8 @@ class FundRaiserStatementService
             $statements[] = [
                 'salutation' => $family !== null ? $family->getSalutation() : gettext('Dear Friend'),
                 'address' => $family !== null ? $family->getMailingAddressLines() : '',
-                'paddle' => implode(', ', $numbers),
-                'buyer' => $buyer !== null ? trim($buyer->getFirstName() . ' ' . $buyer->getLastName()) : '',
+                'paddle' => implode(', ', $household['numbers']),
+                'buyer' => implode(', ', array_filter($household['holders'])),
                 'donated' => array_map(
                     static fn (DonatedItem $item): array => self::line($item, 1, $contacts[$item->getBuyerId()] ?? null),
                     $donated
@@ -110,7 +105,7 @@ class FundRaiserStatementService
             ];
         }
 
-        return ['letterhead' => 'address', 'statements' => $statements];
+        return ['letterhead' => 'address', 'statements' => $statements, 'fundraiser_title' => $title];
     }
 
     /**

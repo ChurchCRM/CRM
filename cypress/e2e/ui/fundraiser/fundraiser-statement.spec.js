@@ -33,6 +33,7 @@ describe("Fundraiser buyer statements", () => {
                 const text = lines.join(" ");
                 expect(text).to.include("Handmade ornaments");
                 expect(text).to.include("Cocoa mix");
+                expect(text).to.include("Buyer # 7, 8");
             });
         });
     });

@@ -37,7 +37,7 @@ $app->map(['GET', 'POST'], '/{fundraiserId}/reports/statement', function (Reques
 
     $pdf = (new MpdfRenderer())->renderToString('fundraiser-statement', FundRaiserStatementService::document($fundraiserId, $paddleIds));
 
-    $fileName = 'FundRaiserStatement' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
+    $fileName = 'FundraiserStatement-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
     $response->getBody()->write($pdf);
 
     return $response

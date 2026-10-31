@@ -333,12 +333,12 @@ INSERT INTO `donateditem_di` (`di_ID`, `di_item`, `di_FR_ID`, `di_donor_ID`, `di
 (1,'A1',3,2,6,0,'Weekend at the church cabin','Two nights at the cabin the church keeps for retreats.',275.00,400.00,150.00,0.00,1,'2026-03-02',NULL),
 (2,'A2',3,4,7,0,'Handmade quilt','A queen quilt stitched by the quilting circle.',180.00,250.00,75.00,80.00,1,'2026-03-02',NULL),
 (3,'B1',3,5,14,0,'Pie assortment','Four pies baked for the auction dinner.',40.00,60.00,20.00,18.00,1,'2026-03-04',NULL),
-(4,'B3',3,6,7,0,'Sunday casserole','A family casserole, delivered the Sunday after the auction.',25.00,30.00,15.00,12.00,1,'2026-03-04',NULL),
+(4,'B3',3,5,7,0,'Sunday casserole','A family casserole, delivered the Sunday after the auction.',25.00,30.00,15.00,12.00,1,'2026-03-04',NULL),
 (5,'R1',5,4,0,0,'Harvest quilt','The quilt drawn at the Thanksgiving potluck.',0.00,300.00,0.00,80.00,1,'2026-10-01',NULL),
 (6,'G1',6,5,0,0,'Table centerpiece','A seasonal centerpiece for the gala tables.',0.00,75.00,40.00,25.00,1,'2026-09-20',NULL),
 (7,'G2',6,2,0,0,'Welcome gift basket','Coffee, jam, and a church cookbook.',0.00,50.00,25.00,20.00,1,'2026-09-20',NULL),
 (8,'C1',7,4,0,1,'Handmade ornaments','Boxed glass ornaments from the youth craft sale.',8.00,12.00,5.00,3.00,1,'2026-11-02',NULL),
-(9,'C2',7,7,6,0,'Cocoa mix','A jar of homemade cocoa mix.',12.00,15.00,8.00,4.00,1,'2026-11-02',NULL),
+(9,'C2',7,5,6,0,'Cocoa mix','A jar of homemade cocoa mix.',12.00,15.00,8.00,4.00,1,'2026-11-02',NULL),
 (10,'D1',7,2,0,0,'Nativity print','A framed print of the church nativity window.',0.00,45.00,20.00,15.00,1,'2026-11-02',NULL);
 
 INSERT INTO `paddlenum_pn` (`pn_ID`, `pn_fr_ID`, `pn_Num`, `pn_per_ID`) VALUES

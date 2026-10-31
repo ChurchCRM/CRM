@@ -31,7 +31,7 @@ $app->get('/{fundraiserId}/reports/bid-sheets', function (Request $request, Resp
         'items' => FundraiserItemService::items($fundraiser),
     ]);
 
-    $fileName = 'FRBidSheets' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
+    $fileName = 'FundraiserBidSheets-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
     $response->getBody()->write($pdf);
 
     return $response
@@ -65,7 +65,7 @@ $app->get('/{fundraiserId}/reports/certificates', function (Request $request, Re
         'items' => FundraiserItemService::items($fundraiser),
     ]);
 
-    $fileName = 'FRCertificates' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
+    $fileName = 'FundraiserCertificates-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
     $response->getBody()->write($pdf);
 
     return $response
@@ -99,7 +99,7 @@ $app->get('/{fundraiserId}/reports/catalog', function (Request $request, Respons
         'items' => FundraiserItemService::items($fundraiser),
     ]);
 
-    $fileName = 'FRCatalog' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
+    $fileName = 'FundraiserCatalog-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
     $response->getBody()->write($pdf);
 
     return $response

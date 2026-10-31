@@ -8,7 +8,10 @@
       {{ statement.address|nl2br }}
     </div>
 
-    <h1>{{ gettext('Donated Items') }}</h1>
+    <h1>{{ fundraiser_title }}</h1>
+
+    {% if statement.donated %}
+    <h2>{{ gettext('Donated Items') }}</h2>
     <table class="gifts">
       <thead>
         <tr>
@@ -33,8 +36,10 @@
         {% endfor %}
       </tbody>
     </table>
+    {% endif %}
 
-    <h1>{{ gettext('Purchased Items') }}</h1>
+    {% if statement.purchases %}
+    <h2>{{ gettext('Purchased Items') }}</h2>
     <table class="gifts">
       <thead>
         <tr>
@@ -61,6 +66,7 @@
         {% endfor %}
       </tbody>
     </table>
+    {% endif %}
 
     <p><strong>{{ gettext('Total of all purchases: %s')|format(statement.total) }}</strong></p>
 
