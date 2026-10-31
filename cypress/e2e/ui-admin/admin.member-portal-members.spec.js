@@ -29,7 +29,7 @@ const signInAs = (username, password = "changeme") => {
     cy.visit("/session/begin");
     cy.get("input[name=User]").type(username);
     cy.get("input[name=Password]").type(`${password}{enter}`);
-    cy.location("pathname", { timeout: 20000 }).should("not.eq", "/admin/");
+    cy.location("pathname", { timeout: 20000 }).should("not.match", /\/admin\/$/);
 };
 
 const portalNavLabels = () =>
