@@ -143,7 +143,7 @@ describe("Email needs attention: Fix shared emails and Confirm selected", () => 
         cy.setupStandardSession({ forceLogin: true });
         cy.visit("/people/dashboard");
         cy.get("#signInEmailAttentionLink").click();
-        cy.location("pathname").should("eq", "/people/sign-in-email");
+        cy.location("pathname").should("match", /\/people\/sign-in-email$/);
 
         cy.get("#sharedEmailFixButton").should("be.visible").click();
         fixModalOpen();

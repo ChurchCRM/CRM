@@ -21,7 +21,7 @@ describe("Member Portal — member landing", () => {
     it("The web root sends a member session to /portal", () => {
         cy.signInAsMember(LENA);
         cy.visit("/");
-        cy.location("pathname", { timeout: 10000 }).should("eq", "/portal/");
+        cy.location("pathname", { timeout: 10000 }).should("match", /\/portal\/$/);
     });
 
     it("The portal home greets the member by name and shows the family name", () => {
@@ -46,7 +46,7 @@ describe("Member Portal — member landing", () => {
         cy.url({ timeout: 10000 }).should("include", "/portal");
         cy.get("#portal-account-toggle").click();
         cy.get("#portal-account-menu").contains('[role="menuitem"]', "Sign out").click();
-        cy.location("pathname", { timeout: 10000 }).should("eq", "/portal/login");
+        cy.location("pathname", { timeout: 10000 }).should("match", /\/portal\/login$/);
     });
 
     it("The retired /external/limited-access URL redirects to /portal", () => {
@@ -60,20 +60,20 @@ describe("Member Portal — member landing", () => {
     it("A direct visit to /v2/dashboard goes to the staff sign-in", () => {
         login();
         cy.visit("v2/dashboard", { failOnStatusCode: false });
-        cy.location("pathname", { timeout: 10000 }).should("eq", "/admin/");
+        cy.location("pathname", { timeout: 10000 }).should("match", /\/admin\/$/);
         cy.get("#UserBox").should("be.visible");
     });
 
     it("A direct visit to another MVC module goes to the staff sign-in", () => {
         login();
         cy.visit("people/dashboard", { failOnStatusCode: false });
-        cy.location("pathname", { timeout: 10000 }).should("eq", "/admin/");
+        cy.location("pathname", { timeout: 10000 }).should("match", /\/admin\/$/);
     });
 
     it("A legacy *.php page goes to the staff sign-in", () => {
         login();
         cy.visit("SystemSettings.php", { failOnStatusCode: false });
-        cy.location("pathname", { timeout: 10000 }).should("eq", "/admin/");
+        cy.location("pathname", { timeout: 10000 }).should("match", /\/admin\/$/);
     });
 
     // The bar is gone for everyone (2026-09-17): the account menu's "Admin

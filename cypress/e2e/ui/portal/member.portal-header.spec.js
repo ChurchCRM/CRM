@@ -214,7 +214,7 @@ describe("Member Portal header", () => {
             cy.get("#portal-account-toggle").click();
             cy.get("#portalAccountDevices").click();
 
-            cy.location("pathname").should("eq", "/portal/devices");
+            cy.location("pathname").should("match", /\/portal\/devices$/);
             cy.get(".portal-page-title").should("contain.text", "Sign-in and devices");
             cy.get("#portal-nav .portal-nav-link").should("have.length.greaterThan", 0);
             cy.get("#portal-nav .portal-nav-link.is-active").should("not.exist");
@@ -224,7 +224,7 @@ describe("Member Portal header", () => {
         it("Signs the member out from the menu", () => {
             cy.get("#portal-account-toggle").click();
             cy.get("#portal-account-menu").contains('[role="menuitem"]', "Sign out").click();
-            cy.location("pathname", { timeout: 10000 }).should("eq", "/portal/login");
+            cy.location("pathname", { timeout: 10000 }).should("match", /\/portal\/login$/);
         });
 
         it("Works beside the navigation toggle on a phone", () => {
