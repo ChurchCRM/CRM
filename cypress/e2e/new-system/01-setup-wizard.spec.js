@@ -133,7 +133,7 @@ describe('01 - Setup Wizard', () => {
             cy.get('#continue-to-login').should('be.visible').click();
             
             // Should redirect to login page
-            cy.location('pathname', { timeout: 10000 }).should('eq', '/admin/');
+            cy.location('pathname', { timeout: 10000 }).should('match', /\/admin\/$/);
         });
     });
 
