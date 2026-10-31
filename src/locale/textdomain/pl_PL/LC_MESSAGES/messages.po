@@ -956,14 +956,6 @@ msgid "Zero Givers"
 msgstr "Zerowe Datki"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Raport "
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Zaawansowany Raport"
-
-#: 
 msgid "Next"
 msgstr "Następny"
 
@@ -988,10 +980,6 @@ msgid "Apply Report Dates To"
 msgstr "Przypisz Daty Raportu do"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "Data Deposit (Domyślna)"
-
-#: 
 msgid "Payment Date"
 msgstr "Data Płatności:"
 
@@ -1012,10 +1000,6 @@ msgstr "Wszystkie deposits w przedziale czasowym"
 #, fuzzy
 msgid "Filter by Payment Type"
 msgstr "Sortuj wg. Sposobu Płatności"
-
-#: 
-msgid "All Methods"
-msgstr "Wszystkie Sposoby"
 
 #: 
 msgid "Check"
@@ -5610,10 +5594,6 @@ msgid "Funds"
 msgstr "Fundusze"
 
 #: 
-msgid "Generate Report"
-msgstr "Generuj raport"
-
-#: 
 msgid "Payments"
 msgstr "Płatności"
 
@@ -6309,10 +6289,6 @@ msgid "Current Deposit"
 msgstr "Obecna wpłata"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Raport z filtrowaniem wg daty, funduszu, rodziny i metody."
-
-#: 
 msgid "Day"
 msgstr "Dzień"
 
@@ -6323,10 +6299,6 @@ msgstr "Gru"
 #: 
 msgid "Deposit Statistics"
 msgstr "Statystyki wpłat"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Szczegółowe zestawienie pojedynczego dowodu wpłaty."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."

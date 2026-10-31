@@ -931,14 +931,6 @@ msgid "Zero Givers"
 msgstr "صفر المانحون"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "تقرير الإيداع فرد"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "تقرير الإيداع المتقدم"
-
-#: 
 msgid "Next"
 msgstr "التالى"
 
@@ -962,10 +954,6 @@ msgid "Apply Report Dates To"
 msgstr "تطبيق تواريخ تقرير إلى"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "إيداع التسجيل (افتراضي)"
-
-#: 
 msgid "Payment Date"
 msgstr "تاريخ الدفع"
 
@@ -986,10 +974,6 @@ msgstr "جميع الودائع في نطاق التاريخ"
 #, fuzzy
 msgid "Filter by Payment Type"
 msgstr "فلتر حسب نوع الدفع"
-
-#: 
-msgid "All Methods"
-msgstr "كل الطرق"
 
 #: 
 msgid "Check"
@@ -5554,10 +5538,6 @@ msgid "Funds"
 msgstr "الصناديق"
 
 #: 
-msgid "Generate Report"
-msgstr "إنشاء تقرير"
-
-#: 
 msgid "Payments"
 msgstr "المدفوعات"
 
@@ -6259,10 +6239,6 @@ msgid "Current Deposit"
 msgstr "الإيداع الحالي"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "تقرير قابل للتخصيص مع التصفية حسب التاريخ والصندوق والعائلة وطريقة الدفع."
-
-#: 
 msgid "Day"
 msgstr "اليوم"
 
@@ -6273,10 +6249,6 @@ msgstr "ديسمبر"
 #: 
 msgid "Deposit Statistics"
 msgstr "إحصائيات الإيداع"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "تفصيل تفصيلي لقسيمة إيداع واحدة."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."

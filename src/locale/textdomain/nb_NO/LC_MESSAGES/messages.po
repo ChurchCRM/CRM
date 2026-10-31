@@ -958,14 +958,6 @@ msgid "Zero Givers"
 msgstr "Null Givers"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Individuell Deposit Rapporter"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Avansert Deposit Rapporter"
-
-#: 
 msgid "Next"
 msgstr "Neste"
 
@@ -990,10 +982,6 @@ msgid "Apply Report Dates To"
 msgstr "Påfør Rapport datoer"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "Innskudd Dato (Standard)"
-
-#: 
 msgid "Payment Date"
 msgstr "Betalingsdato"
 
@@ -1014,10 +1002,6 @@ msgstr "Alle innskudd innen datointervall"
 #, fuzzy
 msgid "Filter by Payment Type"
 msgstr "Filtrer etter betaling Type"
-
-#: 
-msgid "All Methods"
-msgstr "Alle metoder"
 
 #: 
 msgid "Check"
@@ -5623,10 +5607,6 @@ msgid "Funds"
 msgstr "Fond"
 
 #: 
-msgid "Generate Report"
-msgstr "Generer rapport"
-
-#: 
 msgid "Payments"
 msgstr "Betalinger"
 
@@ -6320,10 +6300,6 @@ msgid "Current Deposit"
 msgstr "Gjeldende innskudd"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Tilpassbar rapport med filtrering etter dato, fond, familie og betalingsmetode."
-
-#: 
 msgid "Day"
 msgstr "Dag"
 
@@ -6334,10 +6310,6 @@ msgstr "des."
 #: 
 msgid "Deposit Statistics"
 msgstr "Innskuddsstatistikk"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Detaljert spesifikasjon av en enkelt innskuddsseddel."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."

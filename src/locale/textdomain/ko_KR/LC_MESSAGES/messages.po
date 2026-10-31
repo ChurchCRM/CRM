@@ -932,14 +932,6 @@ msgid "Zero Givers"
 msgstr "헌금 기록 없음"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "개별 입금 보고서"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "상세 입금 보고서"
-
-#: 
 msgid "Next"
 msgstr "다음"
 
@@ -963,10 +955,6 @@ msgid "Apply Report Dates To"
 msgstr "보고 기간 적용 대상"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "입금일(기본)"
-
-#: 
 msgid "Payment Date"
 msgstr "헌금일"
 
@@ -987,10 +975,6 @@ msgstr "기간 내 모든 입금 내역서"
 #, fuzzy
 msgid "Filter by Payment Type"
 msgstr "헌금 방식 필터"
-
-#: 
-msgid "All Methods"
-msgstr "모든 방식"
 
 #: 
 msgid "Check"
@@ -5545,10 +5529,6 @@ msgid "Funds"
 msgstr "기금"
 
 #: 
-msgid "Generate Report"
-msgstr "보고서 생성"
-
-#: 
 msgid "Payments"
 msgstr "결제"
 
@@ -6240,10 +6220,6 @@ msgid "Current Deposit"
 msgstr "현재 입금"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "날짜, 기금, 가족 및 결제 방법별로 필터링할 수 있는 사용자 정의 가능한 보고서입니다."
-
-#: 
 msgid "Day"
 msgstr "일"
 
@@ -6254,10 +6230,6 @@ msgstr "12월"
 #: 
 msgid "Deposit Statistics"
 msgstr "입금 통계"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "단일 입금 전표의 상세 분석입니다."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
