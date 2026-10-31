@@ -181,7 +181,7 @@ final class LoginAsPerson
         }
     }
 
-    /** A username and password sign-in starts a new identity in this browser. */
+    /** A sign-in, staff or member, starts a new identity in this browser. */
     public static function endForNewSignIn(): void
     {
         $record = $_SESSION[self::SESSION_KEY] ?? null;
@@ -192,12 +192,17 @@ final class LoginAsPerson
         self::finish($record, LoginAsPersonEndReason::SIGN_OUT, false);
     }
 
-    /** False once the waiting staff session has timed out; otherwise it counts this request as activity. */
+    /**
+     * False once the waiting staff session has timed out or its user is no longer
+     * an administrator; otherwise it counts this request as activity.
+     */
     public static function keepStaffSessionAlive(): bool
     {
         $staffSession = ($_SESSION[self::SESSION_KEY] ?? [])['staffSession'] ?? null;
 
-        return $staffSession instanceof LocalAuthentication && $staffSession->validateUserSessionIsActive(true)->isAuthenticated;
+        return $staffSession instanceof LocalAuthentication
+            && $staffSession->validateUserSessionIsActive(true)->isAuthenticated
+            && $staffSession->getCurrentUser()?->isAdmin() === true;
     }
 
     public static function staffPagesClosedMessage(): string
@@ -208,6 +213,11 @@ final class LoginAsPerson
     /** For legacy pages, which redirect and exit. */
     public static function refuseStaffPage(): never
     {
+        $historyId = self::historyId();
+        $method = (string) ($_SERVER['REQUEST_METHOD'] ?? 'GET');
+        if ($historyId !== null && self::isWriteMethod($method)) {
+            self::recordAction($historyId, $method, (string) parse_url((string) ($_SERVER['REQUEST_URI'] ?? ''), PHP_URL_PATH), 302);
+        }
         PortalExtension::addFlash('warning', self::staffPagesClosedMessage());
         RedirectUtils::redirect('portal/');
 

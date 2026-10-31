@@ -72,6 +72,9 @@ final class PortalSessionStarter
             $actorUserId,
         );
         // Last before the save, so a failed sign-in leaves the staff session as it was.
+        if ($method !== SignInMethod::ASSISTED) {
+            LoginAsPerson::endForNewSignIn();
+        }
         if ($method->replacesStaffSession()) {
             AuthenticationManager::endStaffSession();
         }
