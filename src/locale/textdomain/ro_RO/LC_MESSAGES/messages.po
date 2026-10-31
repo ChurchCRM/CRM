@@ -6404,10 +6404,6 @@ msgid "Let's get your system set up and ready to use"
 msgstr "Să vă configurăm sistemul pentru a fi gata de utilizare"
 
 #: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "Listați membrii eligibili să voteze pe baza istoricului de donații și a criteriilor de apartenență."
-
-#: 
 msgid "Location"
 msgstr "Locație"
 
@@ -9844,10 +9840,6 @@ msgstr "Vizualizați membrii grupului, rolurile și proprietățile"
 #: 
 msgid "View transaction details for a pledge payment"
 msgstr "Vizualizează detaliile tranzacției pentru o plată de angajament"
-
-#: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "Membrii cu drept de vot trebuie să fi făcut o ofertă în ultimii atâția ani (0 pentru a nu necesita o ofertă)"
 
 #: 
 msgid "We could not find the family you were looking for."

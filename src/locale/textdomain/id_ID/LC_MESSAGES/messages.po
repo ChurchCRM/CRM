@@ -6334,10 +6334,6 @@ msgid "Let's get your system set up and ready to use"
 msgstr "Mari siapkan sistem Anda agar siap digunakan"
 
 #: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "Daftar jemaat yang berhak memberikan suara berdasarkan kriteria."
-
-#: 
 msgid "Location"
 msgstr "Lokasi"
 
@@ -9764,10 +9760,6 @@ msgstr "Lihat anggota grup, peran, dan properti"
 #: 
 msgid "View transaction details for a pledge payment"
 msgstr "Lihat detail transaksi untuk pembayaran janji persembahan"
-
-#: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "Anggota dengan hak suara harus telah memberikan persembahan dalam beberapa tahun terakhir ini (0 untuk tidak mensyaratkan persembahan)"
 
 #: 
 msgid "We could not find the family you were looking for."
