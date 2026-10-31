@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-30 19:40+0000\n"
+"POT-Creation-Date: 2026-10-31 07:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -336,6 +336,10 @@ msgstr ""
 
 #, php-format
 msgid "%s was the Head of this family and has been marked deceased. Please assign a new Head of Household."
+msgstr ""
+
+#, php-format
+msgid "%s – Total"
 msgstr ""
 
 #, php-format
@@ -1205,9 +1209,6 @@ msgstr ""
 msgid "Adults"
 msgstr ""
 
-msgid "Advanced Deposit Report"
-msgstr ""
-
 msgid "Advanced Operations"
 msgstr ""
 
@@ -1305,9 +1306,6 @@ msgid "All MailChimp subscribers are in ChurchCRM!"
 msgstr ""
 
 msgid "All Members"
-msgstr ""
-
-msgid "All Methods"
 msgstr ""
 
 msgid "All Months"
@@ -2322,6 +2320,9 @@ msgstr ""
 msgid "Bid Sheets"
 msgstr ""
 
+msgid "Bill"
+msgstr ""
+
 msgid "Birth & Family"
 msgstr ""
 
@@ -3034,6 +3035,9 @@ msgstr ""
 msgid "Choose a day of the month from 1 to 31"
 msgstr ""
 
+msgid "Choose a deposit or enter both report dates."
+msgstr ""
+
 msgid "Choose a group..."
 msgstr ""
 
@@ -3083,6 +3087,9 @@ msgid "Choose how you'd like to populate your database. You can always use a dif
 msgstr ""
 
 msgid "Choose map provider"
+msgstr ""
+
+msgid "Choose one deposit to review its payments or print its bank slip. A selected deposit overrides the date range."
 msgstr ""
 
 msgid "Choose opportunities..."
@@ -3430,6 +3437,9 @@ msgid "Code incomplete"
 msgstr ""
 
 msgid "Code is invalid"
+msgstr ""
+
+msgid "Coin"
 msgstr ""
 
 msgid "Collation"
@@ -4166,9 +4176,6 @@ msgstr ""
 msgid "Custom properties for this group"
 msgstr ""
 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr ""
-
 msgid "Customize the look and feel of the application"
 msgstr ""
 
@@ -4711,13 +4718,13 @@ msgstr ""
 msgid "Deposit Date"
 msgstr ""
 
-msgid "Deposit Date (Default)"
-msgstr ""
-
 msgid "Deposit Details"
 msgstr ""
 
 msgid "Deposit ID"
+msgstr ""
+
+msgid "Deposit Report"
 msgstr ""
 
 msgid "Deposit Reports"
@@ -4769,9 +4776,6 @@ msgid "Destination directory does not exist. Please verify ChurchCRM is installe
 msgstr ""
 
 msgid "Destructive Operation"
-msgstr ""
-
-msgid "Detailed breakdown of a single deposit slip."
 msgstr ""
 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -4970,6 +4974,9 @@ msgid "Download OpenLP"
 msgstr ""
 
 msgid "Download PDF"
+msgstr ""
+
+msgid "Download Report"
 msgstr ""
 
 msgid "Download failed"
@@ -5605,6 +5612,9 @@ msgid "Enter the 6-digit code from your authenticator app"
 msgstr ""
 
 msgid "Enter the 6-digit code from your authenticator app to complete login"
+msgstr ""
+
+msgid "Enter valid report dates."
 msgstr ""
 
 msgid "Enter your current password"
@@ -7189,9 +7199,6 @@ msgstr ""
 msgid "Generate Labels"
 msgstr ""
 
-msgid "Generate Report"
-msgstr ""
-
 msgid "Generate Statement"
 msgstr ""
 
@@ -8198,9 +8205,6 @@ msgstr ""
 msgid "Individual"
 msgstr ""
 
-msgid "Individual Deposit Report"
-msgstr ""
-
 #. Context: countries
 msgid "Indonesia"
 msgstr ""
@@ -8402,6 +8406,12 @@ msgid "Invalid payment data"
 msgstr ""
 
 msgid "Invalid person ID"
+msgstr ""
+
+msgid "Invalid report filters."
+msgstr ""
+
+msgid "Invalid report options."
 msgstr ""
 
 msgid "Invalid request data"
@@ -8814,6 +8824,9 @@ msgid "Leave both at 0 to serve exactly when the event happens. Moving the event
 msgstr ""
 
 msgid "Leave empty for one grade"
+msgstr ""
+
+msgid "Leave filters empty to include all payments. These settings apply to the report, not the bank slip."
 msgstr ""
 
 msgid "Leave open"
@@ -10499,6 +10512,9 @@ msgid "No qualifications yet."
 msgstr ""
 
 msgid "No records were returned from the previous report. Please adjust your filters or date range and try again."
+msgstr ""
+
+msgid "No records were returned. Adjust your filters and try again."
 msgstr ""
 
 msgid "No release notes available for this version."
@@ -12250,6 +12266,9 @@ msgstr ""
 msgid "Pre-flight"
 msgstr ""
 
+msgid "Prepare for the Bank"
+msgstr ""
+
 msgid "Prerequisites"
 msgstr ""
 
@@ -12263,6 +12282,9 @@ msgid "Prev"
 msgstr ""
 
 msgid "Preview"
+msgstr ""
+
+msgid "Preview Totals"
 msgstr ""
 
 msgid "Previous"
@@ -12287,6 +12309,9 @@ msgstr ""
 msgid "Print %s Giving Statement"
 msgstr ""
 
+msgid "Print Bank Slip"
+msgstr ""
+
 msgid "Print Labels"
 msgstr ""
 
@@ -12294,6 +12319,9 @@ msgid "Print name tags"
 msgstr ""
 
 msgid "Print or email annual giving statements to all donors."
+msgstr ""
+
+msgid "Print the selected deposit in full, with cash and check totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
 msgstr ""
 
 msgid "Printable directory of all people, grouped by family"
@@ -13038,6 +13066,9 @@ msgstr ""
 msgid "Review Donation Funds"
 msgstr ""
 
+msgid "Review Payments"
+msgstr ""
+
 msgid "Review and clean up files not associated with any record"
 msgstr ""
 
@@ -13045,6 +13076,12 @@ msgid "Review new families and individuals who signed up on your public registra
 msgstr ""
 
 msgid "Review now"
+msgstr ""
+
+msgid "Review payments for a period, or prepare one deposit for the bank."
+msgstr ""
+
+msgid "Review payments, download PDF or CSV, or print a bank slip for one deposit."
 msgstr ""
 
 msgid "Review self registrations"
@@ -13625,6 +13662,9 @@ msgstr ""
 msgid "Select a person"
 msgstr ""
 
+msgid "Select a valid deposit."
+msgstr ""
+
 msgid "Select all"
 msgstr ""
 
@@ -13659,6 +13699,9 @@ msgid "Select month"
 msgstr ""
 
 msgid "Select none"
+msgstr ""
+
+msgid "Select one deposit to print a bank slip."
 msgstr ""
 
 msgid "Select role"
@@ -15378,6 +15421,9 @@ msgstr ""
 msgid "The recurrence must say how the events repeat"
 msgstr ""
 
+msgid "The report end date must be on or after the start date."
+msgstr ""
+
 #, php-format
 msgid "The request for %1$s to serve in place of %2$s has been approved."
 msgstr ""
@@ -16162,7 +16208,13 @@ msgstr ""
 msgid "Total Campaigns"
 msgstr ""
 
+msgid "Total Cash"
+msgstr ""
+
 msgid "Total Check-ins"
+msgstr ""
+
+msgid "Total Coin"
 msgstr ""
 
 msgid "Total Deposit"
@@ -17669,6 +17721,9 @@ msgid "Without Vonage, text actions will open your device's native SMS app or co
 msgstr ""
 
 msgid "Without a scheduler these jobs only run when somebody loads a page, so a quiet weekday sends no scheduled mail at all. Add a cron entry that runs the task runner hourly, as the same user your web server runs as"
+msgstr ""
+
+msgid "Witness"
 msgstr ""
 
 msgid "Work"
