@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-31 10:21+0000\n"
+"POT-Creation-Date: 2026-10-31 17:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1802,6 +1802,10 @@ msgstr ""
 msgid "As an admin, please also review the"
 msgstr ""
 
+#, php-format
+msgid "As of: %s"
+msgstr ""
+
 msgid "As part of the restore, external backups have been disabled. If you wish to continue automatic backups, re-enable the External Backup plugin in Admin > Plugins."
 msgstr ""
 
@@ -1915,6 +1919,10 @@ msgid "At least one group must be selected to make an attendance sheet."
 msgstr ""
 
 msgid "At least one personId or familyId is required"
+msgstr ""
+
+#, php-format
+msgid "At least one positive family payment in the selected %d fiscal years, through the review date: %s"
 msgstr ""
 
 #, php-format
@@ -2253,6 +2261,9 @@ msgid "Bank"
 msgstr ""
 
 msgid "Bank Draft"
+msgstr ""
+
+msgid "Baptism, electoral-roll applications, residence, communicant status, attendance, good standing, and local exceptions must be checked separately where your bylaws require them. Membership duration is not proof of attendance."
 msgstr ""
 
 #. Context: countries
@@ -3080,6 +3091,9 @@ msgstr ""
 msgid "Choose an event..."
 msgstr ""
 
+msgid "Choose an existing classification."
+msgstr ""
+
 msgid "Choose an existing event type"
 msgstr ""
 
@@ -3087,6 +3101,9 @@ msgid "Choose an existing person property for Do Not Email."
 msgstr ""
 
 msgid "Choose at least one calendar to subscribe to."
+msgstr ""
+
+msgid "Choose at least one classification to review."
 msgstr ""
 
 msgid "Choose events"
@@ -3117,6 +3134,9 @@ msgid "Choose specific permissions below."
 msgstr ""
 
 msgid "Choose the calendars you want in your own calendar app."
+msgstr ""
+
+msgid "Choose the classifications your church uses. No classification is assumed to confer voting rights."
 msgstr ""
 
 msgid "Choose the date each year as MM-DD"
@@ -3260,6 +3280,9 @@ msgstr ""
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr ""
 
+msgid "Church leadership must confirm eligibility under the church bylaws. This list only shows people matching the selected filters."
+msgstr ""
+
 msgid "Church name is required."
 msgstr ""
 
@@ -3333,6 +3356,13 @@ msgid "Classification given to walk-in guests registered on a kiosk"
 msgstr ""
 
 msgid "Classifications"
+msgstr ""
+
+msgid "Classifications to review"
+msgstr ""
+
+#, php-format
+msgid "Classifications: %s"
 msgstr ""
 
 msgid "Clean Up Files"
@@ -4402,6 +4432,9 @@ msgstr ""
 msgid "Deceased"
 msgstr ""
 
+msgid "Deceased people, inactive people and classifications, and inactive or pending-review families and people are excluded."
+msgstr ""
+
 msgid "Deceased — cannot sign in"
 msgstr ""
 
@@ -4997,6 +5030,9 @@ msgstr ""
 msgid "Download Report"
 msgstr ""
 
+msgid "Download Review List"
+msgstr ""
+
 msgid "Download failed"
 msgstr ""
 
@@ -5587,6 +5623,9 @@ msgstr ""
 msgid "Enter a street address first."
 msgstr ""
 
+msgid "Enter a valid review date between 1900 and 2200."
+msgstr ""
+
 msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
 msgstr ""
 
@@ -5633,6 +5672,9 @@ msgid "Enter the 6-digit code from your authenticator app to complete login"
 msgstr ""
 
 msgid "Enter valid report dates."
+msgstr ""
+
+msgid "Enter whole numbers within the displayed limits."
 msgstr ""
 
 msgid "Enter your current password"
@@ -6935,6 +6977,9 @@ msgstr ""
 msgid "Fiscal Year"
 msgstr ""
 
+msgid "Fiscal years to check (0–100; 0 means no giving requirement)"
+msgstr ""
+
 msgid "Fix Settings"
 msgstr ""
 
@@ -7399,6 +7444,9 @@ msgid "Giving Statement"
 msgstr ""
 
 msgid "Giving Statements"
+msgstr ""
+
+msgid "Giving is recorded by family, not individual. Enable this only when your bylaws allow a family payment to satisfy this criterion. This does not prove that each person donated. The window includes the selected fiscal year and ends no later than the review date."
 msgstr ""
 
 msgid "Giving statement email failed to send. Please check your email server settings."
@@ -8780,6 +8828,9 @@ msgstr ""
 msgid "Last date"
 msgstr ""
 
+msgid "Last fiscal year to include"
+msgstr ""
+
 msgid "Last login"
 msgstr ""
 
@@ -8979,9 +9030,6 @@ msgid "Linked Groups"
 msgstr ""
 
 msgid "Links"
-msgstr ""
-
-msgid "List members eligible to vote based on giving history and membership criteria."
 msgstr ""
 
 msgid "List not found"
@@ -9650,6 +9698,13 @@ msgstr ""
 msgid "Minimum Total Amount"
 msgstr ""
 
+msgid "Minimum age (0–120)"
+msgstr ""
+
+#, php-format
+msgid "Minimum age: %d"
+msgstr ""
+
 msgid ""
 "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
 "Set to zero to disable this feature"
@@ -9663,6 +9718,13 @@ msgid "Minimum length a user may set their password to"
 msgstr ""
 
 msgid "Minimum length is"
+msgstr ""
+
+msgid "Minimum membership duration in months (0–1200)"
+msgstr ""
+
+#, php-format
+msgid "Minimum membership duration: %d months"
 msgstr ""
 
 msgid "Minimum needed for {{position}}"
@@ -10347,6 +10409,9 @@ msgstr ""
 msgid "No donated items yet."
 msgstr ""
 
+msgid "No donation requirement."
+msgstr ""
+
 msgid "No email"
 msgstr ""
 
@@ -10497,6 +10562,9 @@ msgid "No people found"
 msgstr ""
 
 msgid "No people match these filters."
+msgstr ""
+
+msgid "No people match these filters. Check missing birth or membership dates and adjust your criteria."
 msgstr ""
 
 msgid "No people match your current filters."
@@ -11291,6 +11359,9 @@ msgstr ""
 msgid "Optional detailed description of this property type"
 msgstr ""
 
+msgid "Optional family giving requirement"
+msgstr ""
+
 msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
 msgstr ""
 
@@ -11658,7 +11729,13 @@ msgstr ""
 msgid "People in a range of school grades, such as Kindergarten through 5th"
 msgstr ""
 
+msgid "People matching filters"
+msgstr ""
+
 msgid "People not in"
+msgstr ""
+
+msgid "People omitted because required dates are missing"
 msgstr ""
 
 msgid "People to assign"
@@ -12300,6 +12377,12 @@ msgid "Possible Causes"
 msgstr ""
 
 msgid "Pre-flight"
+msgstr ""
+
+msgid "Prepare a list for church review using classifications and optional age, membership, and family giving filters."
+msgstr ""
+
+msgid "Prepare a list for church review using your bylaws."
 msgstr ""
 
 msgid "Prepare for the Bank"
@@ -13112,6 +13195,9 @@ msgid "Review Payments"
 msgstr ""
 
 msgid "Review and clean up files not associated with any record"
+msgstr ""
+
+msgid "Review date"
 msgstr ""
 
 msgid "Review new families and individuals who signed up on your public registration form"
@@ -16860,6 +16946,9 @@ msgstr ""
 msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
 msgstr ""
 
+msgid "Use your church bylaws to choose the filters, then have authorized church leadership review the list. Matching these filters does not establish voting eligibility. This report does not record eligibility or conduct an election."
+msgstr ""
+
 msgid "Used as the default start time when creating events of this type."
 msgstr ""
 
@@ -17439,7 +17528,7 @@ msgstr ""
 msgid "Voting Members"
 msgstr ""
 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
+msgid "Voting Members — Review List"
 msgstr ""
 
 msgid "W"
@@ -18197,6 +18286,9 @@ msgid "Zero"
 msgstr ""
 
 msgid "Zero Givers"
+msgstr ""
+
+msgid "Zero disables an optional requirement. Age requires a complete birth date; membership duration requires a membership date. People missing required dates are omitted and counted separately. Deceased people, inactive people and classifications, and inactive or pending-review families and people are always excluded; current classification and status are used, not historical status."
 msgstr ""
 
 #. Context: countries
