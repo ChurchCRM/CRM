@@ -50,7 +50,8 @@
     "SHA1 Hash",
     "am / pm",
     "{{team}}: {{staffing}}",
-    "General"
+    "General",
+    "%s – Total"
   ],
   "es-CO": [
     "AM / PM",
