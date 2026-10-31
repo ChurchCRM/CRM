@@ -49,7 +49,7 @@ describe("Pledge Family Summary report", () => {
                     expect(text).to.include("New Building Fund");
                     expect(text).to.include("11.00");
                     expect(text).to.include("333.00");
-                    expect(text).to.include("Total");
+                    expect(text).to.match(/\bTotal\s+\$\s*344\.00\s+\$\s*0\.00\s+\$\s*344\.00\b/i);
                 }),
             );
         });
