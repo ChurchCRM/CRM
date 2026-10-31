@@ -18,7 +18,33 @@ class MpdfRenderer implements PdfRendererInterface
 
     public function __construct(?Environment $twig = null)
     {
-        $this->twig = $twig ?? new Environment(new FilesystemLoader(__DIR__ . '/../../templates/reports'));
+        $loader = $twig?->getLoader() ?? new FilesystemLoader(__DIR__ . '/../../templates/reports');
+        $this->twig = new Environment(new EscapedReportLoader($loader), [
+            'autoescape' => 'html',
+            'charset' => $twig?->getCharset() ?? 'UTF-8',
+            'strict_variables' => $twig?->isStrictVariables() ?? false,
+        ]);
+        if ($twig !== null) {
+            foreach ($twig->getExtensions() as $extension) {
+                if (!$this->twig->hasExtension($extension::class)) {
+                    $this->twig->addExtension($extension);
+                }
+            }
+            foreach ($twig->getFunctions() as $function) {
+                $this->twig->addFunction($function);
+            }
+            foreach ($twig->getFilters() as $filter) {
+                if (!in_array($filter->getName(), ['escape', 'e', 'raw'], true)) {
+                    $this->twig->addFilter($filter);
+                }
+            }
+            foreach ($twig->getTests() as $test) {
+                $this->twig->addTest($test);
+            }
+            foreach ($twig->getGlobals() as $name => $value) {
+                $this->twig->addGlobal($name, $value);
+            }
+        }
         if (!$this->twig->hasExtension(GettextExtension::class)) {
             $this->twig->addExtension(new GettextExtension());
         }
