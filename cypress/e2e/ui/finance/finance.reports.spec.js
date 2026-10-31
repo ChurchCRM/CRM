@@ -75,32 +75,6 @@ describe("Financial Reports", () => {
         });
     });
 
-    it("Voting Members", () => {
-        cy.visit("FinancialReports.php");
-        cy.contains("Financial Reports");
-        cy.get("#FinancialReportTypes").select("Voting Members");
-        cy.get("#FinancialReports").submit();
-        cy.contains("Financial Reports: Voting Members");
-        cy.window().then(function (win) {
-            win.document
-                .getElementById("createReport")
-                .addEventListener("click", () => {
-                    setTimeout(function () {
-                        win.location.reload();
-                    }, 10_000);
-                });
-
-            /* Make sure the file exists */
-            cy.intercept("/", (req) => {
-                req.reply((res) => {
-                    expect(res.statusCode).to.equal(200);
-                });
-            });
-
-            cy.get("#createReport").click();
-        });
-    });
-
     it("Zero Givers", () => {
         cy.visit("FinancialReports.php");
         cy.contains("Financial Reports");

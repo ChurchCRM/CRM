@@ -91,8 +91,7 @@ describe("Finance Reports Index", () => {
         cy.visit("/finance/reports");
 
         cy.contains("Voting Members").click();
-        cy.url().should("contain", "FinancialReports.php");
-        cy.url().should("contain", "Voting");
+        cy.url().should("contain", "/finance/reports/voting-members");
     });
 
     it("should answer the old tax statements URL with Page Not Found and a way back", () => {

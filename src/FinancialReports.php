@@ -26,6 +26,10 @@ if ($sReportType === '' && array_key_exists('ReportType', $_GET)) {
     $sReportType = InputUtils::legacyFilterInput($_GET['ReportType']);
 }
 
+if ($sReportType === 'Voting Members') {
+    RedirectUtils::redirect('finance/reports/voting-members');
+}
+
 if ($sReportType === 'Giving Report') {
     RedirectUtils::redirect('finance/reports/giving-statements');
 }
@@ -111,7 +115,6 @@ if ($sReportType === '') {
         case 'Zero Givers':             $action = 'finance/reports/zero-givers/download'; break;
         case 'Pledge Family Summary':   $action = 'finance/reports/family-pledge-summary/download'; break;
         case 'Pledge Reminders':        $action = 'Reports/ReminderReport.php'; break;
-        case 'Voting Members':          $action = 'finance/reports/voting-members/download'; break;
     }
     ?>
     <form method="post" action="<?= $action ?>">
@@ -197,7 +200,7 @@ if ($sReportType === '') {
 
     <?php endif; ?>
 
-    <?php if (in_array($sReportType, ['Pledge Reminders', 'Pledge Family Summary', 'Voting Members'])) : ?>
+    <?php if (in_array($sReportType, ['Pledge Reminders', 'Pledge Family Summary'])) : ?>
       <div class="mb-3">
         <label class="form-label" for="FYID"><?= gettext('Fiscal Year') ?>:</label>
         <?php FiscalYearUtils::renderYearSelect('FYID', $iFYID); ?>
@@ -271,13 +274,6 @@ if ($sReportType === '') {
             </div>
           <?php endforeach; ?>
         </div>
-      </div>
-    <?php endif; ?>
-
-    <?php if ($sReportType === 'Voting Members') : ?>
-      <div class="mb-3">
-        <label class="form-label" for="RequireDonationYears"><?= gettext('Voting members must have made a donation within this many years (0 to not require a donation)') ?>:</label>
-        <input class="form-control field-w-120" name="RequireDonationYears" id="RequireDonationYears" type="text" value="0">
       </div>
     <?php endif; ?>
 
