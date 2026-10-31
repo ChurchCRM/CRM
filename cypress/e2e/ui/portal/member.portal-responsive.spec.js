@@ -23,15 +23,11 @@
  * shell's sidebar appears, which the portal does not have but which is still the
  * desktop the guidelines fix.
  *
- * Seed persona: user 100, Lena Black — usr_EditSelf=1, confined to the portal. Her
- * username is stored truncated to the column's 32 characters.
+ * Seed persona: Lena Black (person 100), signed in with her email.
  *
  * NOTE: every x-api-key request replaces the browser session cookie with an API-token
  * session, so all API setup happens before the login, once, in `before`.
  */
-
-const MEMBER_USER = "lena.black.editself.notes@example.com";
-const MEMBER_PASSWORD = "changeme";
 
 const CHURCH_CALENDAR_ID = 1;
 const MEMBER_PERSON_ID = 100;
@@ -95,11 +91,8 @@ const setVisibleCalendars = (visible) =>
     });
 
 const loginAsMember = () => {
-    cy.clearCookies();
-    cy.visit("/session/begin");
-    cy.get("input[name=User]").type(MEMBER_USER);
-    cy.get("input[name=Password]").type(`${MEMBER_PASSWORD}{enter}`);
-    cy.url({ timeout: 10000 }).should("include", "/portal");
+    cy.signInAsMember(100);
+    cy.visit("/portal/");
 };
 
 /** Describe an element well enough to go and fix it. */

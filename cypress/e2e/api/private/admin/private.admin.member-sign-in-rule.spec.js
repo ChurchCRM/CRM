@@ -140,7 +140,6 @@ describe("Member sign-in rule (person sign-in status)", () => {
     it("is open to Edit Records and closed to everyone else", () => {
         cy.makePrivateEditRecordsAPICall("GET", "/api/person/2/sign-in", null, 200);
         cy.makePrivateNoPermAPICall("GET", "/api/person/2/sign-in", null, 403);
-        cy.makePrivateEditSelfAPICall("GET", "/api/person/2/sign-in", null, 403);
         cy.makePrivateAdminAPICall("GET", "/api/person/99999/sign-in", null, 404);
     });
 });

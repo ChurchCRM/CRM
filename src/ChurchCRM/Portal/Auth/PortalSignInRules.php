@@ -6,7 +6,6 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonSignin;
-use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 
@@ -71,8 +70,7 @@ final class PortalSignInRules
         if ($state instanceof PersonSignin && $state->getSignInDisabled()) {
             return SignInReason::SIGN_IN_DISABLED;
         }
-        $user = UserQuery::create()->findPk($person->getId());
-        if ($user instanceof User && !$user->isEditSelfExclusive()) {
+        if (UserQuery::create()->filterByPersonId($person->getId())->exists()) {
             return SignInReason::STAFF_ACCOUNT;
         }
 

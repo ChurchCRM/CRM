@@ -10,7 +10,6 @@ use ChurchCRM\Portal\Auth\SignInEmailPolicy;
 use ChurchCRM\Portal\Permissions\CorePortalCapabilities;
 use ChurchCRM\Portal\Permissions\RequirePortalCapability;
 use ChurchCRM\Portal\PortalExtension;
-use ChurchCRM\Portal\PortalNav;
 use ChurchCRM\Portal\PortalSelfService;
 use ChurchCRM\Portal\PortalSignInPages;
 use ChurchCRM\Portal\PortalTwig;
@@ -58,8 +57,7 @@ $group->group('/devices', function (RouteCollectorProxy $devices) use ($devicesA
                 'passkeys' => (new PasskeyService())->listForPerson((int) $person->getId()),
                 'passkeyAddProblem' => PasskeyService::addProblem($request, $principal),
                 'emailToConfirm' => PasskeyService::emailToConfirm($person, $principal),
-            ],
-            PortalNav::DEVICES
+            ]
         );
     });
 

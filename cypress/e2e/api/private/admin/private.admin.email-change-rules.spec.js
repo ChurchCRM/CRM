@@ -16,8 +16,8 @@ import {
  * whether an address may sign in is tried at /portal/login and read from
  * GET /api/person/{id}/sign-in.
  *
- * Seed people: 2 Mathew (head, Member, no account), 100 Lena (spouse, a
- * self-service account, which is not a staff account), 3 Tony (a staff account).
+ * Seed people: 2 Mathew (head, Member, no account), 100 Lena (spouse, no
+ * account), 3 Tony (a staff account).
  * judith.matthews (95) has Edit Records and is not an administrator.
  *
  * The family email move, devices, passkeys, grants and the audit have no HTTP
@@ -442,15 +442,6 @@ describe("Sign-in email changes by staff, imports and registration (§9)", () =>
             cy.makePrivateEditRecordsAPICall("POST", `/api/person/${MATHEW.id}/sign-in/confirm-email`, { email: MATHEW.email }, 403);
             cy.makePrivateAdminAPICall("POST", `/api/person/${MATHEW.id}/sign-in/confirm-email`, { email: MATHEW.email }, 200);
             status(MATHEW.id).its("maySignIn").should("eq", true);
-        });
-
-        it("doesn't count a self-service account as a staff account", () => {
-            const newEmail = `lena.staff.${Date.now()}@example.com`;
-            saveEmailInPersonEditor(LENA.id, newEmail).its("status").should("eq", 302);
-            status(LENA.id).then((body) => {
-                expect(body.maySignIn).to.eq(true);
-                expect(body.unconfirmedEmail).to.be.null;
-            });
         });
     });
 

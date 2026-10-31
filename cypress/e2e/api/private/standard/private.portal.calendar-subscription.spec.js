@@ -13,21 +13,16 @@
  *     is confined to the calendars the administrator currently shares with
  *     members and to nothing else about the member who owns it.
  *
- * Seed persona: user 100, Lena Black. usr_EditSelf=1, no admin flag, family 20.
- * usr_UserName is VARCHAR(50) since #9831, so the seeded address is stored
- * whole.
+ * Seed persona: Lena Black (person 100, family 20), signed in with her email. Her
+ * feed lives on her sign-in row (person_signin_psi, member sign-in design §13).
  *
  * Seed facts: calendar 1 is "Public Calendar", calendar 2 is "Private
  * Calendar", the church is "Main St. Cathedral", and system calendar 0 is
  * Birthdays. The feed's window is today − 3 months … today + 18 months, so the
  * events these tests look for are created inside it rather than taken from the
  * 2016 fixtures.
- *
- * NOTE: every x-api-key request replaces the browser session cookie with an
- * API-token session, so a member step that follows one has to log in again.
  */
-const MEMBER_USER = "lena.black.editself.notes@example.com";
-const MEMBER_PASSWORD = "changeme";
+const MEMBER_PERSON_ID = 100;
 
 const CHURCH_CALENDAR_ID = 1;
 const CHURCH_CALENDAR_NAME = "Public Calendar";
@@ -55,19 +50,9 @@ const setVisibleCalendars = (visible) =>
         failOnStatusCode: false,
     });
 
-/** Log in the way a browser does, so cy.request() inherits a real session. */
+/** Sign in the way a member does, so cy.request() inherits a real session. */
 const loginAsMember = () => {
-    cy.clearCookies();
-    cy.request("/session/begin");
-    cy.request({
-        method: "POST",
-        url: "/admin/",
-        form: true,
-        body: { User: MEMBER_USER, Password: MEMBER_PASSWORD },
-        followRedirect: false,
-    }).then((response) => {
-        expect(response.status, "the member's login").to.be.oneOf([200, 302]);
-    });
+    cy.signInAsMember(MEMBER_PERSON_ID);
 };
 
 /** The session CSRF token, read out of a rendered portal form as a browser would. */

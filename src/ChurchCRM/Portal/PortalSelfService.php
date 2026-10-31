@@ -136,6 +136,7 @@ class PortalSelfService
             'photoUrl' => self::getPhotoUrl($actor, $actor),
             'hasPhoto' => $actor->getPhoto()->hasUploadedPhoto(),
             'canEditBirthday' => PortalSettings::allowsBirthdayEdit(),
+            'language' => MemberLanguage::chosenBy((int) $actor->getId()) ?? '',
         ];
     }
 
@@ -265,6 +266,7 @@ class PortalSelfService
                 throw new PortalSelfServiceException($refusal->getMessage(), ['email: ' . $refusal->getMessage()], $refusal->getStatus());
             }
         }
+        $newLanguage = self::requestedLanguage($actor, $body);
 
         foreach (self::PERSON_FIELDS as $field => [$getter, $setter]) {
             if (!array_key_exists($field, $body)) {
@@ -302,6 +304,12 @@ class PortalSelfService
                 // The model's own "Updated" note would say nothing about where the edit
                 // came from; the portal writes a more specific one in its place.
                 $actor->saveWithoutUpdateNote();
+            }
+            if ($newLanguage !== null) {
+                MemberLanguage::choose((int) $actor->getId(), $newLanguage);
+                $changed[] = 'language';
+            }
+            if ($changed !== []) {
                 self::writeEditNote($actor, $actor, null, $changed, self::personFieldLabels());
             }
             if ($requestedEmail !== null) {
@@ -319,6 +327,31 @@ class PortalSelfService
         }
 
         return ['profile' => self::getProfile($actor), 'updated' => $changed, 'pendingEmail' => (string) $requestedEmail];
+    }
+
+    /**
+     * The language the member picked, when it differs from the one stored: an
+     * empty string for the church's. A staff session keeps its account's own
+     * setting, so it has no choice to make here.
+     *
+     * @param array<string, mixed> $body
+     *
+     * @throws PortalSelfServiceException for a language this installation does not ship
+     */
+    private static function requestedLanguage(Person $actor, array $body): ?string
+    {
+        if (!array_key_exists('language', $body) || !MemberLanguage::appliesTo(PortalContext::principal())) {
+            return null;
+        }
+
+        $language = trim(self::asString($body['language']));
+        if ($language !== '' && !MemberLanguage::isAvailable($language)) {
+            $message = gettext('Please choose a language from the list.');
+
+            throw new PortalSelfServiceException($message, ['language: ' . $message]);
+        }
+
+        return $language === (MemberLanguage::storedFor((int) $actor->getId()) ?? '') ? null : $language;
     }
 
     /**
@@ -483,8 +516,8 @@ class PortalSelfService
 
     /**
      * Replace the acting member's own photo. The avatar endpoint this
-     * delegates to is behind `EditRecords`, which a self-service login never
-     * has, so the portal calls the model the same way that route does.
+     * delegates to is behind `EditRecords`, which a member never has, so the
+     * portal calls the model the same way that route does.
      *
      * @throws PortalSelfServiceException
      */
@@ -496,7 +529,7 @@ class PortalSelfService
 
         // setImageFromBase64() writes its own 'photo' timeline note and stamps
         // the person as edited, so nothing further is needed here.
-        $actor->setImageFromBase64($imageBase64);
+        $actor->setImageFromBase64($imageBase64, (int) $actor->getId());
     }
 
     // -- Internals -----------------------------------------------------------
@@ -573,6 +606,7 @@ class PortalSelfService
             'cellPhone' => gettext('Mobile Phone'),
             'workPhone' => gettext('Work Phone'),
             'birthday' => gettext('Birthday'),
+            'language' => gettext('Language'),
         ];
     }
 

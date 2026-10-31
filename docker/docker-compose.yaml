@@ -18,7 +18,8 @@ services:
   mailserver:
     # Also part of the CI profiles: the seeded SMTP host is mailserver:1025, so without it
     # every send in CI fails and nothing can assert delivery. Specs read the sink at :8025.
-    profiles: [test, ci-root, ci-subdir]
+    # The marketing captures (ci-new-system) read member sign-in codes from it.
+    profiles: [test, ci-root, ci-subdir, ci-new-system]
     image: axllent/mailpit:v1
     environment:
       # Lets a spec make the SMTP server refuse mail (PUT /api/v1/chaos); off until a spec asks.

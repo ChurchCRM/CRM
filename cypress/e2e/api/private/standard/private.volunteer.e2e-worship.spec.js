@@ -27,9 +27,8 @@
  * acceptance has to survive being replaced, and the replacement has to be
  * traceable back to the row it replaced.
  *
- * Person 99 (`selfedit.api.key`) is the volunteer; person 100
- * (`selfedit.plus.notes.api.key`) is the substitute — both EditSelf-exclusive
- * D14 accounts, reaching the member surface through §4.7's exemption.
+ * Person 99 is the volunteer; person 100 is the substitute — both members
+ * in their portal sessions (cy.makeMemberAPICall), reaching the member surface.
  *
  * Cleanup runs in `before` as well as `after` (`cypress-testing.md`).
  */
@@ -37,8 +36,8 @@
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const ADMIN_KEY = "admin.api.key";
 const COORDINATOR_KEY = "user.api.key";
-const SELFEDIT_KEY = "selfedit.api.key"; // person 99 — the assigned volunteer
-const SELFEDIT_NOTES_KEY = "selfedit.plus.notes.api.key"; // person 100 — the substitute
+const SELFEDIT_KEY = 99; // person 99 — the assigned volunteer
+const SELFEDIT_NOTES_KEY = 100; // person 100 — the substitute
 
 const VOLUNTEER_URL = "/api/ministries";
 
@@ -92,14 +91,12 @@ function dbOk(sql, params = []) {
     });
 }
 
+/** A person id is a member, in their portal session; anything else names an API key. */
 function api(key, method, url, body, expectedStatus = 200) {
-    return cy.makePrivateAPICall(
-        Cypress.testEnv(key),
-        method,
-        url,
-        body,
-        expectedStatus,
-    );
+    if (typeof key === "number") {
+        return cy.makeMemberAPICall(key, method, url, body, expectedStatus);
+    }
+    return cy.makePrivateAPICall(Cypress.testEnv(key), method, url, body, expectedStatus);
 }
 
 function setVersion(value) {
@@ -270,7 +267,7 @@ function cleanupFixtures() {
 // ── fixture ────────────────────────────────────────────────────────────────
 
 before(() => {
-    cy.rememberTestEnv(["admin.api.key", "user.api.key", "selfedit.api.key", "selfedit.plus.notes.api.key"]);
+    cy.rememberTestEnv(["admin.api.key", "user.api.key"]);
     cy.useChurchTimeZone();
 });
 
