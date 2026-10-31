@@ -64,7 +64,8 @@
     "am / pm",
     "Individual",
     "{{team}}: {{staffing}}",
-    "General"
+    "General",
+    "%s – Total"
   ],
   "es-MX": [
     "AM / PM",
