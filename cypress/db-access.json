@@ -17,9 +17,21 @@
             "kind": "schema",
             "reason": "Migration spec for the 7.8.3 family email move (member sign-in row 11): the app no longer writes a family email, so the fixtures, the upgrade block and its marker table are reached in SQL."
         },
+        "cypress/e2e/api/private/admin/private.admin.portal-calendar-upgrade.spec.js": {
+            "kind": "schema",
+            "reason": "Migration spec for the 7.8.3 block that retires bPortalShowCalendar: the application no longer reads or writes the switch, so its pre-upgrade config row and the upgrade block are reached in SQL."
+        },
+        "cypress/e2e/api/private/admin/private.admin.member-portal-lists.spec.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in row 9 (#10463): shared and unconfirmed emails, past sign-in times, the 7.8.3 family email move rows, an emailed family confirmation and an old refusal are fixtures with no HTTP surface; the upgrade, the email link and row 10 write them."
+        },
         "cypress/e2e/api/private/admin/private.admin.member-sign-in-rule.spec.js": {
             "kind": "fixture",
             "reason": "Member sign-in row 4 (#10463): a head of household with no birth year and an unconfirmed address (row 11 writes it during the upgrade) have no HTTP surface; the person editor that sets a birth year is a legacy form."
+        },
+        "cypress/e2e/api/private/admin/private.admin.portal-permissions.spec.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in row 9 (#10463): remembered devices and passkeys are written by rows 7 and 8, so the removal fixtures are inserted; the staff and group membership counts are read to check the Permissions tab's holder counts independently."
         },
         "cypress/e2e/api/private/plugins/private.portal.plugin-permissions.spec.js": {
             "kind": "fixture",
@@ -53,9 +65,17 @@
             "kind": "fixture",
             "reason": "Member sign-in row 10 (#10463): the sign-in audit has no HTTP surface until row 9, and the importer answers no ids."
         },
+        "cypress/e2e/ui-admin/admin.member-portal-members.spec.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in row 9 (#10463): a shared email, the 7.8.3 family email move rows and remembered devices (rows 7 and 11 write them) are fixtures with no HTTP surface; the portal's verify note is removed afterwards because notes have no delete API for a member confirmation."
+        },
         "cypress/e2e/ui/people/person-signin-email.spec.js": {
             "kind": "fixture",
             "reason": "Member sign-in row 10 (#10463): an address moved from the family email and \"has signed in\" have no HTTP surface until rows 5 and 9."
+        },
+        "cypress/e2e/ui/portal/member.portal-remembered-devices.spec.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in row 7 (#10463): the stored device rows (only a token hash), the sign-in audit, the idle time and the remembered-device days have no HTTP surface until row 9; a refusal is made by unticking the person's classification."
         },
         "cypress/e2e/ui/portal/member.portal-sign-in-email.spec.js": {
             "kind": "fixture",
@@ -73,9 +93,21 @@
             "kind": "fixture",
             "reason": "Member sign-in row 5 (#10463): turns member sign-in on, ends the sign-in throttle windows and reads the sign-in audit and requests, none of which has an HTTP surface until row 9."
         },
+        "cypress/support/member-session.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in (#10463): opens the member rule for a spec that acts as a member and puts the seed's settings back after it."
+        },
+        "cypress/support/remembered-device.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in (#10463): ends the one-minute grace of a remembered device's replaced token, so specs need not wait it out; the server still decides what an ended grace means."
+        },
         "cypress/support/sign-in-audit-retention.js": {
             "kind": "fixture",
             "reason": "Member sign-in (#10463): audit rows from weeks ago for the retention spec; only time makes them, and the audit has no HTTP surface until the admin pages."
+        },
+        "cypress/support/sign-in-email-fixtures.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in row 9b (#10463): an address moved from the family email (written only by the 7.8.3 upgrade) or replaced after a sign-in, and the shared personal emails Fix shared emails resolves, have no HTTP surface but the legacy person editor form, which also audits and mails; each spec's seed emails, sign-in rows and grants are put back."
         },
         "cypress/support/sign-in-throttle.js": {
             "kind": "fixture",

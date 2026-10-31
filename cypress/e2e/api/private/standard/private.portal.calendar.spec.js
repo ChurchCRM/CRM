@@ -7,7 +7,8 @@
  *   - session only: an API key is refused, because the portal derives the
  *     acting person from the session (P11)
  *   - the answer is the union of the calendars the administrator switched on;
- *     there is no calendar id in the URL to point somewhere else
+ *     there is no calendar id in the URL to point somewhere else, and while
+ *     none is switched on the API is not there (404)
  *   - `from` and `to` are plain days; a reversed range is a 400 and the window
  *     is clamped to 62 days
  *   - the shaping — and so the timezone — is the one the admin calendar API
@@ -89,15 +90,11 @@ describe("Member Portal calendar API", () => {
         });
     });
 
-    it("Answers an empty list when no calendar is shared", () => {
+    it("Is not there while no calendar is shared", () => {
         setVisibleCalendars([]);
         loginAsMember();
 
-        getEvents(WINDOW_AROUND_SEEDED_EVENT).then((response) => {
-            expect(response.status).to.eq(200);
-            expect(response.body.hasVisibleCalendars).to.eq(false);
-            expect(response.body.events).to.have.length(0);
-        });
+        getEvents(WINDOW_AROUND_SEEDED_EVENT).its("status").should("eq", 404);
     });
 
     it("Returns only the events of the calendars that are switched on", () => {
@@ -169,6 +166,7 @@ describe("Member Portal calendar API", () => {
     });
 
     it("Refuses a reversed range", () => {
+        setVisibleCalendars([{ type: "calendar", id: PRIVATE_CALENDAR_ID }]);
         loginAsMember();
 
         getEvents({ from: "2026-09-30", to: "2026-09-01" }).then((response) => {
@@ -177,6 +175,7 @@ describe("Member Portal calendar API", () => {
     });
 
     it("Refuses a range bound that is not a date", () => {
+        setVisibleCalendars([{ type: "calendar", id: PRIVATE_CALENDAR_ID }]);
         loginAsMember();
 
         getEvents({ from: "nonsense" }).then((response) => {

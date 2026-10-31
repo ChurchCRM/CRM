@@ -71,7 +71,7 @@ $calendarHandler = function (Request $request, Response $response): Response {
     );
 };
 
-// With the calendar switched off the page does not exist for this church:
+// While no calendar is shared with members the page does not exist for this church:
 // RequirePortalCapability answers 404, as for any address the portal does not serve.
 $group->get('/calendar', $calendarHandler)->add(RequirePortalCapability::any(CorePortalCapabilities::CALENDAR_VIEW));
 $group->get('/calendar/', $calendarHandler)->add(RequirePortalCapability::any(CorePortalCapabilities::CALENDAR_VIEW));

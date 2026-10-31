@@ -62,7 +62,7 @@ This document puts those into one design and one delivery plan.
 | D1 | A member session is a portal principal for a person. Members have no `user_usr` row. Their sign-in data lives in new person-keyed tables. | §3 |
 | D2 | This work starts now, built to the shape of #10511's typed principal and `decide()`, without waiting for its F0. It gets a milestone when it is scheduled. | §15, §16 |
 | D3 | The sign-in page shows the same answer whether or not the address can sign in. | §6.1 |
-| D4 | Passkeys are in the first release. Staying signed in is the member's choice, device by device. The box is never ticked for them, and a device stays signed in for 30 days by default. | §6.2, §6.3 |
+| D4 | Passkeys are in the first release. Staying signed in is the member's choice, device by device. The box is never ticked for them, and a device stays signed in for 14 days by default. | §6.2, §6.3 |
 | D5 | **Who may sign in:** family roles; classifications, which is where guests are decided; and a minimum age of 13. Deceased and inactive people, and people with Disable sign-in on, can't sign in at all. Members also can't while their family is deactivated or they are awaiting review; those two don't block staff (§4). In the portal, an adult is a head of household or spouse who is 18 or older. | §4 |
 | D6 | The personal email is the sign-in identity. §9 controls who may change it, and when a new address may be used to sign in. | §9 |
 | D7 | The web root goes to `/portal/login` while member sign-in is on, and to `/admin` while it is off. `/admin` is the staff sign-in page, and `/session/begin` redirects to it. | §7 |
@@ -254,7 +254,7 @@ Requests over a limit get the same answer screen and no email. They are audited 
   - Under it: *"Tick this only on your own phone or computer, never on a shared or public one."*
   - Without it, nothing is kept on the device. The session ends after the idle time (A5) or when the browser closes.
 - When the member ticks the box, ChurchCRM sets a long-lived cookie (`HttpOnly`, `Secure`, `SameSite=Lax`, path `/portal`). The cookie carries a random token, and only its hash is stored.
-- When the portal session has gone idle, the cookie starts a new one through the shared step, with method `DEVICE`. The rule is checked again. The token is replaced at each use, and it lasts the set number of days (default 30).
+- When the portal session has gone idle, the cookie starts a new one through the shared step, with method `DEVICE`. The rule is checked again. The token is replaced at each use, and it lasts the set number of days (default 14), counted from the day the box was ticked.
 - **Two tabs.** Two tabs, or two requests at once, can arrive with the same cookie. So the previous token stays good for 60 seconds after it is replaced, on that device only.
   - A request using it gets a session through the shared step, with every check, but doesn't replace the token again.
   - After the 60 seconds it signs nothing in.
@@ -564,7 +564,7 @@ The Member Portal page sits at People → People Settings → Member Portal. Its
 - **Who may sign in:** family roles, classifications with counts (guests included) and the minimum age.
 - **Link and code lifetime:** default 2 hours.
 - **Idle time:** default 30 minutes.
-- **Keep me signed in:** how many days a device stays signed in after the member ticks **This is my own device** (default 30). Setting it to 0 removes the box.
+- **Keep me signed in:** how many days a device stays signed in after the member ticks **This is my own device** (default 14). Setting it to 0 removes the box.
 - **Passkeys:** on or off, with the HTTPS and host-name check.
 - **Office list:** people to email about failed attempts. Only people with an email can be added.
 - **Login as Person:** the two switches from §6.5.
@@ -650,7 +650,7 @@ New tables. All are keyed by `per_ID` with `ON DELETE CASCADE`, except the capab
 - **Settings** (in `config_cfg`):
   - `bMemberSignIn`;
   - the member rule settings;
-  - `iSignInLinkMinutes` (120), `iPortalIdleMinutes` (30), `iRememberDeviceDays` (30);
+  - `iSignInLinkMinutes` (120), `iPortalIdleMinutes` (30), `iRememberDeviceDays` (14);
   - `bPortalPasskeys` (on);
   - the office list;
   - `bAllowLoginAsPerson` (off) and `bLoginAsPersonCanWrite` (off);

@@ -7,6 +7,7 @@ use ChurchCRM\Authentication\Requests\APITokenAuthenticationRequest;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Portal\Auth\PortalSessionStore;
+use ChurchCRM\Portal\Auth\RememberedDeviceCookie;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Volunteer\Middleware\VolunteerPortalMemberMiddleware;
@@ -112,6 +113,9 @@ class AuthMiddleware implements MiddlewareInterface
                 // PortalSessionMiddleware validates it on /portal and /api/portal, and
                 // VolunteerPortalMemberMiddleware on the volunteer API the portal pages
                 // call; every other route refuses it below.
+            } elseif ($this->isPortalPath($request) && RememberedDeviceCookie::isPresent($request)) {
+                // A remembered device (§6.2): PortalSessionMiddleware starts its
+                // session, or sends the visitor to /portal/login.
             } else {
                 $logger = LoggerUtils::getAppLogger();
                 $logger->warning('No authenticated user or session', [

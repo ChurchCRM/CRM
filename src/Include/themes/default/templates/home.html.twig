@@ -12,14 +12,15 @@
   `portal.min.js` from `/api/ministries/me/assignments`. The card is
   server-rendered empty and stays useful if that request fails.
 
-  The section switches on Admin → Member Portal (#9864) still decide whether a
-  section belongs on the page at all: `portal.showCalendar` for the calendar
-  card, `showVolunteering` for the volunteering one. A theme drawing its own
-  home page filters the same way.
+  Whether a section belongs on the page at all: `portal.showCalendar` for the
+  calendar card (true while a calendar is shared with members), and
+  `showVolunteering` for the volunteering one. A theme drawing its own home
+  page filters the same way.
 
   Variables: `pageTitle`; `upcomingEvents` ({title, when, start, allDay,
   calendarName} for each of the next three events; `when` is the server's text,
-  which portal.ts replaces from `start`) and `hasVisibleCalendars`;
+  which portal.ts replaces from `start`) and `hasVisibleCalendars` (the same as
+  `portal.showCalendar`);
   `showVolunteering` (whether the volunteering card is rendered at all);
   `familySummary` (`{name, memberCount}`, or null when the member has no family
   record); `profile` (the same view-model the Profile page renders, or null for
@@ -46,9 +47,7 @@
                 <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
                 <span>{{ gettext('Church calendar') }}</span>
             </h2>
-            {% if not hasVisibleCalendars %}
-            <p class="portal-card-text">{{ gettext('No calendar has been shared with members yet.') }}</p>
-            {% elseif upcomingEvents is empty %}
+            {% if upcomingEvents is empty %}
             <p class="portal-card-text">{{ gettext('Nothing is on the calendar just now.') }}</p>
             {% else %}
             <ul class="portal-upcoming-list">

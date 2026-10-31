@@ -191,6 +191,15 @@ declare namespace Cypress {
      */
     restoreSystemConfig(name: string, value: string | undefined): Chainable<void>;
 
+    /** The calendars shared with members on Admin → Member Portal → Calendars, as {type, id}. */
+    getMemberPortalCalendars(): Chainable<Array<{ type: string; id: number }>>;
+
+    /**
+     * Share these calendars with members (replacing the set). The portal has a Calendar page,
+     * nav entry and home card while at least one is shared. Replaces the browser session cookie.
+     */
+    shareMemberPortalCalendars(visible: Array<{ type: string; id: number }>): Chainable<any>;
+
     /** Run the browser in the church's time zone (sTimeZone), the zone the server counts days in. */
     useChurchTimeZone(): Chainable<void>;
 
@@ -281,6 +290,28 @@ declare namespace Cypress {
       expectedStatus?: number | number[],
       timeoutMs?: number
     ): Chainable<any>;
+
+    /**
+     * Sign in to the Member Portal as a person (id or email), with the
+     * emailed code (cypress/support/member-session.js). The member rule is
+     * opened to everyone for the spec.
+     */
+    signInAsMember(who: number | string): Chainable<any>;
+
+    /** Put the member's session back in the browser, signing in the first time. */
+    useMemberSession(who: number | string): Chainable<any>;
+
+    /** A request in the member's session, asserting the status. */
+    makeMemberAPICall(
+      who: number | string,
+      method: string,
+      url: string,
+      body?: any,
+      expectedStatus?: number | number[]
+    ): Chainable<any>;
+
+    /** Forget the cached member sessions. */
+    forgetMemberSessions(): Chainable<any>;
 
     /**
      * Make API request as an EditSelf-only user (amanda.black, family 20)
@@ -622,6 +653,13 @@ declare namespace Cypress {
      * @param key - One key in the bucket (a user id for "signin.lockout"); all keys when omitted
      */
     expireSignInThrottle(bucket: string, key?: string | number | null): Chainable<void>;
+
+    /**
+     * End the grace of the tokens a person's remembered devices just replaced
+     * (cypress/support/remembered-device.js).
+     * @param personId - The person whose devices' previous tokens stop signing in
+     */
+    endDeviceTokenGrace(personId: number): Chainable<void>;
 
     /**
      * Wait for a Notyf notification with specific text

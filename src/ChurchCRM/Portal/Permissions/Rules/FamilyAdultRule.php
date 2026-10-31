@@ -5,12 +5,14 @@ namespace ChurchCRM\Portal\Permissions\Rules;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Portal\Permissions\BulkPortalRule;
 use ChurchCRM\Portal\Permissions\CorePortalCapabilities;
-use ChurchCRM\Portal\Permissions\PortalRule;
 use ChurchCRM\Portal\Permissions\PortalRuleGrant;
 use ChurchCRM\Portal\Permissions\PortalScope;
 use ChurchCRM\Utils\DateTimeUtils;
 use DateTimeImmutable;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 /**
  * Adult of the family (member sign-in design §4 "Teenagers", §8.3): a head of
@@ -24,10 +26,16 @@ use DateTimeImmutable;
  * Like `Family::getAdults()`, someone proposed for an existing family counts
  * only once staff approve them; a family that self-registered keeps its adults.
  */
-final class FamilyAdultRule implements PortalRule
+final class FamilyAdultRule implements BulkPortalRule
 {
     public const KEY = 'core.family-adult';
     public const ADULT_AGE = 18;
+
+    private const CAPABILITIES = [
+        CorePortalCapabilities::FAMILY_CONTACTS_VIEW,
+        CorePortalCapabilities::FAMILY_EDIT,
+        CorePortalCapabilities::FAMILY_CONFIRM,
+    ];
 
     public function getKey(): string
     {
@@ -41,14 +49,46 @@ final class FamilyAdultRule implements PortalRule
             return;
         }
 
-        $scope = PortalScope::family((int) $family->getId());
-        $label = sprintf(gettext('Adult of the %s family'), (string) $family->getName());
-        foreach ([
-            CorePortalCapabilities::FAMILY_CONTACTS_VIEW,
-            CorePortalCapabilities::FAMILY_EDIT,
-            CorePortalCapabilities::FAMILY_CONFIRM,
-        ] as $capability) {
-            yield new PortalRuleGrant($capability, $scope, $label);
+        yield from self::grants((int) $family->getId(), (string) $family->getName());
+    }
+
+    public function getSourceName(): string
+    {
+        return gettext('Adult of the family');
+    }
+
+    public function getCapabilityKeys(): array
+    {
+        return self::CAPABILITIES;
+    }
+
+    public function grantsForPeople(array $personIds): iterable
+    {
+        $roleIds = self::headAndSpouseRoleIds();
+        if ($roleIds === []) {
+            return;
+        }
+        $today = new DateTimeImmutable('today', DateTimeUtils::getConfiguredTimezone());
+
+        foreach (array_chunk($personIds, 1000) as $chunk) {
+            $rows = PersonQuery::create()
+                ->filterById($chunk, Criteria::IN)
+                ->filterByFmrId($roleIds, Criteria::IN)
+                ->joinFamily(null, Criteria::INNER_JOIN)
+                ->withColumn('Family.Name', 'FamilyName')
+                ->withColumn('Family.EnteredBy', 'FamilyEnteredBy')
+                ->select(['Id', 'FamId', 'FmrId', 'BirthYear', 'BirthMonth', 'BirthDay', 'NeedsReview', 'FamilyName', 'FamilyEnteredBy'])
+                ->find();
+            foreach ($rows as $row) {
+                if (Family::proposedMemberAwaitsReview((bool) $row['NeedsReview'], $row['FamilyEnteredBy'] === null ? null : (int) $row['FamilyEnteredBy'])) {
+                    continue;
+                }
+                if (self::isAdultBy((int) $row['FmrId'], (int) $row['BirthYear'], (int) $row['BirthMonth'], (int) $row['BirthDay'], $today)) {
+                    foreach (self::grants((int) $row['FamId'], (string) $row['FamilyName']) as $grant) {
+                        yield (int) $row['Id'] => $grant;
+                    }
+                }
+            }
         }
     }
 
@@ -59,11 +99,21 @@ final class FamilyAdultRule implements PortalRule
             return false;
         }
 
-        if (!in_array((int) $person->getFmrId(), self::headAndSpouseRoleIds(), true)) {
+        return self::isAdultBy(
+            (int) $person->getFmrId(),
+            (int) $person->getBirthYear(),
+            (int) $person->getBirthMonth(),
+            (int) $person->getBirthDay(),
+            $today,
+        );
+    }
+
+    private static function isAdultBy(int $roleId, int $birthYear, int $month, int $day, ?DateTimeImmutable $today = null): bool
+    {
+        if (!in_array($roleId, self::headAndSpouseRoleIds(), true)) {
             return false;
         }
 
-        $birthYear = (int) $person->getBirthYear();
         if ($birthYear <= 0) {
             return true;
         }
@@ -74,13 +124,22 @@ final class FamilyAdultRule implements PortalRule
             return $birthYear < $cutoffYear;
         }
 
-        $month = (int) $person->getBirthMonth();
-        $day = (int) $person->getBirthDay();
         if ($month <= 0 || $day <= 0) {
             return false;
         }
 
         return [$month, $day] <= [(int) $today->format('n'), (int) $today->format('j')];
+    }
+
+    /**
+     * @return list<PortalRuleGrant>
+     */
+    private static function grants(int $familyId, string $familyName): array
+    {
+        $scope = PortalScope::family($familyId);
+        $label = sprintf(gettext('Adult of the %s family'), $familyName);
+
+        return array_map(static fn (string $capability): PortalRuleGrant => new PortalRuleGrant($capability, $scope, $label), self::CAPABILITIES);
     }
 
     /**

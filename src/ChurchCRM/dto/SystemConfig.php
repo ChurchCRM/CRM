@@ -273,7 +273,6 @@ class   SystemConfig
             // admin page, Admin → Member Portal (design P9, §4).
             'sMemberPortalTheme'                   => new ConfigItem('sMemberPortalTheme', 'text', 'default', gettext('Folder name of the Member Portal theme to use, from Include/themes/. "default" is the system theme that ships with ChurchCRM.')),
             'bPortalDeveloperMode'                 => new ConfigItem('bPortalDeveloperMode', 'boolean', '0', gettext('Turn off the Member Portal template cache and print the name of each template in an HTML comment. For theme designers; leave off in normal use.')),
-            'bPortalShowCalendar'                  => new ConfigItem('bPortalShowCalendar', 'boolean', '1', gettext('Show the church calendar in the Member Portal.')),
             'bPortalShowVolunteer'                 => new ConfigItem('bPortalShowVolunteer', 'boolean', '1', gettext('Show volunteering and team pages in the Member Portal.')),
             'bPortalAllowBirthdayEdit'             => new ConfigItem('bPortalAllowBirthdayEdit', 'boolean', '0', gettext('Let members change their own and their family members\' birthdays in the Member Portal.')),
             // The calendars the Member Portal shows, as a JSON list of
@@ -294,7 +293,7 @@ class   SystemConfig
             'iSignInLinkMinutes'                   => new ConfigItem('iSignInLinkMinutes', 'number', '120', gettext('How many minutes a Member Portal sign-in code and link stay valid.')),
             'iMemberSignInRequestsPerIP'           => new ConfigItem('iMemberSignInRequestsPerIP', 'number', '20', gettext('How many Member Portal sign-in emails one IP address can ask for in an hour. Set to 0 for no limit, for example when everyone reaches ChurchCRM through one address.')),
             'iPortalIdleMinutes'                   => new ConfigItem('iPortalIdleMinutes', 'number', '30', gettext('How many idle minutes end a Member Portal session.')),
-            'iRememberDeviceDays'                  => new ConfigItem('iRememberDeviceDays', 'number', '30', gettext('How many days a device stays signed in to the Member Portal after the member chooses to stay signed in. Set to 0 to remove the choice.')),
+            'iRememberDeviceDays'                  => new ConfigItem('iRememberDeviceDays', 'number', '14', gettext('How many days a device stays signed in to the Member Portal after the member chooses to stay signed in. Set to 0 to remove the choice.')),
             'bPortalPasskeys'                      => new ConfigItem('bPortalPasskeys', 'boolean', '1', gettext('Let members add passkeys and sign in to the Member Portal with them.')),
             'sMemberSignInNotificationRecipientIDs' => new ConfigItem('sMemberSignInNotificationRecipientIDs', 'text', '', gettext('People to email when someone could not sign in to the Member Portal')),
             'bAllowLoginAsUser'                    => new ConfigItem('bAllowLoginAsUser', 'boolean', '0', gettext('Let administrators open a member\'s Member Portal as that member, from the person\'s Actions menu.')),
@@ -387,14 +386,17 @@ class   SystemConfig
     }
 
     /**
-     * @param \ChurchCRM\model\ChurchCRM\Config[] $configs
+     * @param \ChurchCRM\model\ChurchCRM\Config[]|null $configs the stored rows
+     * @param bool $pruneUnknown delete rows no ConfigItem declares. Only Bootstrapper
+     *                           passes true, once the database is current, so an
+     *                           upgrade script can still read a retired key
      */
-    public static function init($configs = null): void
+    public static function init($configs = null, bool $pruneUnknown = false): void
     {
         self::$configs = self::buildConfigs();
         self::$categories = self::buildCategories();
         if (!empty($configs)) {
-            self::scrapeDBConfigs($configs);
+            self::scrapeDBConfigs($configs, $pruneUnknown);
         }
     }
 
@@ -414,13 +416,13 @@ class   SystemConfig
     /**
      * @param \ChurchCRM\model\ChurchCRM\Config[] $configs
      */
-    private static function scrapeDBConfigs($configs): void
+    private static function scrapeDBConfigs($configs, bool $pruneUnknown): void
     {
         foreach ($configs as $config) {
             if (isset(self::$configs[$config->getName()])) {
                 //if the current config set defined by code contains the current config retrieved from the db, then cache it
                 self::$configs[$config->getName()]->setDBConfigObject($config);
-            } else {
+            } elseif ($pruneUnknown) {
                 //there's a config item in the DB that doesn't exist in the current code.
                 //don't delete dynamic keys like plugin.* configs - they're managed by plugins
                 if (strpos($config->getName(), 'plugin.') !== 0) {

@@ -297,8 +297,8 @@ class PortalCalendarService
     }
 
     /**
-     * Whether any calendar at all is shared with members — what the portal
-     * calendar's empty state and the home page card ask.
+     * Whether any calendar at all is shared with members: while none is, the
+     * portal has no calendar (`portal.calendar.view` is off for everyone).
      */
     public static function hasVisibleCalendars(): bool
     {

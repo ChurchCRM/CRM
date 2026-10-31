@@ -24,6 +24,7 @@ use ChurchCRM\Utils\KeyManagerUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use DateTimeImmutable;
 use Propel\Runtime\ActiveQuery\Criteria;
+use Propel\Runtime\Connection\ConnectionInterface;
 use Throwable;
 
 /**
@@ -179,12 +180,12 @@ final class EmailSignInService
      *
      * @return int how many requests were cancelled
      */
-    public function cancelOpenRequests(int $personId, SignInReason $reason, ?int $actorUserId = null): int
+    public function cancelOpenRequests(int $personId, SignInReason $reason, ?int $actorUserId = null, ?ConnectionInterface $connection = null): int
     {
         $now = self::now();
         $cancelled = $this->liveRequests($now)
             ->filterByPersonId($personId)
-            ->update(['CancelledAt' => $now->format(self::DB_TIME)]);
+            ->update(['CancelledAt' => $now->format(self::DB_TIME)], $connection);
         if ($cancelled > 0) {
             SignInAudit::record(
                 SignInAuditEvent::REQUEST_CANCELLED,

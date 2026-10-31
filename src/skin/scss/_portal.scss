@@ -814,6 +814,16 @@ textarea.portal-input {
     filter: none;
 }
 
+.portal-button-danger {
+    background-color: var(--portal-danger);
+    color: var(--portal-danger-contrast);
+}
+
+.portal-button-danger:hover,
+.portal-button-danger:focus-visible {
+    color: var(--portal-danger-contrast);
+}
+
 // Footer ---------------------------------------------------------------------
 
 .portal-footer {
@@ -1222,6 +1232,31 @@ textarea.portal-input {
     background-color: #ffffff;
 }
 
+// Sign-in and devices ----------------------------------------------------------
+
+.portal-device-label {
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.portal-table-actions::before {
+    content: none;
+}
+
+// "Sign out every device" asks first in a <details>, so it needs no script.
+.portal-confirm > summary {
+    inline-size: fit-content;
+    list-style: none;
+}
+
+.portal-confirm > summary::-webkit-details-marker {
+    display: none;
+}
+
+.portal-confirm-body {
+    margin-block-start: 0.75rem;
+}
+
 // Tablet and up --------------------------------------------------------------
 
 @media (min-width: 768px) {
@@ -1325,6 +1360,21 @@ textarea.portal-input {
     .portal-table-cell:nth-child(4) {
         white-space: nowrap;
         inline-size: 1%;
+    }
+
+    // The devices list gives the device's name the room instead.
+    .portal-devices .portal-table-cell:nth-child(1) {
+        white-space: normal;
+        inline-size: auto;
+    }
+
+    .portal-devices .portal-table-cell:nth-child(3) {
+        white-space: nowrap;
+        inline-size: 1%;
+    }
+
+    .portal-table-actions {
+        text-align: end;
     }
 }
 

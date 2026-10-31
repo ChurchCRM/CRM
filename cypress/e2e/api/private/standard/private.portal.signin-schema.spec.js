@@ -59,6 +59,8 @@ const TABLES = {
         "pdv_LastUsedAt",
         "pdv_ExpiresAt",
         "pdv_RevokedAt",
+        "pdv_PreviousTokenHash",
+        "pdv_PreviousValidUntil",
     ],
     person_passkey_ppk: [
         "ppk_ID",
@@ -105,7 +107,7 @@ const SETTINGS = {
     iMemberSignInMinAge: "13",
     iSignInLinkMinutes: "120",
     iPortalIdleMinutes: "30",
-    iRememberDeviceDays: "30",
+    iRememberDeviceDays: "14",
     bPortalPasskeys: "1",
     sMemberSignInNotificationRecipientIDs: "",
     bAllowLoginAsUser: "0",
@@ -208,6 +210,15 @@ describe("Member sign-in schema", () => {
         db(link, [HASH("h")]).then((first) => {
             cy.dbQuery(link, [HASH("h")]).its("error.code").should("eq", "ER_DUP_ENTRY");
             db("DELETE FROM person_email_change_pec WHERE pec_ID = ?", [first.insertId]);
+        });
+    });
+
+    it("indexes a device's previous token hash without making it unique", () => {
+        db(
+            "SELECT INDEX_NAME, NON_UNIQUE FROM information_schema.STATISTICS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'person_device_pdv' AND COLUMN_NAME = 'pdv_PreviousTokenHash'",
+        ).then((rows) => {
+            expect(rows.map((row) => row.INDEX_NAME)).to.deep.equal(["pdv_previous_token_idx"]);
+            expect(Number(rows[0].NON_UNIQUE)).to.eq(1);
         });
     });
 
