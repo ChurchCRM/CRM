@@ -6341,10 +6341,6 @@ msgid "Let's get your system set up and ready to use"
 msgstr "Laat ons jou stelsel oprig en gereed maak vir gebruik"
 
 #: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "Lys van lede wat stem mag stem op grond van gawingshistoriek en lidmaatskapsкритeria."
-
-#: 
 msgid "Location"
 msgstr "Ligging"
 
@@ -9776,10 +9772,6 @@ msgstr "Bekyk groeplede, rolle, en eienskappe"
 #: 
 msgid "View transaction details for a pledge payment"
 msgstr "Kyk transaksie-besonderhede vir 'n verbintenis-betaling"
-
-#: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "Stemmende lede moet 'n donasie binne hierdie baie jare gemaak het (0 om geen donasie te vereis nie)"
 
 #: 
 msgid "We could not find the family you were looking for."

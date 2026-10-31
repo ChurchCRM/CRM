@@ -6480,10 +6480,6 @@ msgid "Let's get your system set up and ready to use"
 msgstr "讓我們設置好您的系統並準備就緒"
 
 #: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "根據捐贈歷史和成員標準列出有投票資格的成員。"
-
-#: 
 msgid "Location"
 msgstr "地點"
 
@@ -9910,10 +9906,6 @@ msgstr "檢視小組成員、角色和屬性"
 #: 
 msgid "View transaction details for a pledge payment"
 msgstr "檢視奉獻承諾付款的交易詳情"
-
-#: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "有投票權的會眾必須在近幾年內有過奉獻（0 表示不要求奉獻）"
 
 #: 
 msgid "We could not find the family you were looking for."

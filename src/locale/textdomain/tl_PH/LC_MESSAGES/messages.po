@@ -6308,10 +6308,6 @@ msgid "Let's get your system set up and ready to use"
 msgstr "Ihanda natin ang iyong sistema para magamit"
 
 #: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "Ilista ang mga miyembro na karapat-dapat bumoto batay sa kasaysayan ng pagbibigay at pamantayan ng pagiging miyembro."
-
-#: 
 msgid "Location"
 msgstr "Lokasyon"
 
@@ -9743,10 +9739,6 @@ msgstr "Tingnan ang mga miyembro ng grupo, mga papel, at mga katangian"
 #: 
 msgid "View transaction details for a pledge payment"
 msgstr "Tingnan ang mga detalye ng transaksyon para sa isang pagbabayad ng pangako"
-
-#: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "Ang mga miyembrong may boto ay dapat nagbigay ng donasyon sa loob ng napakaraming taon (0 para hindi kinakailangan ang donasyon)"
 
 #: 
 msgid "We could not find the family you were looking for."
