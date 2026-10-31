@@ -33,9 +33,8 @@ const signInAsAdmin = () =>
     });
 
 const auditSince = (afterId) =>
-    admin("GET", `admin/api/member-portal/audit?personId=${MEMBER}&length=100`).then(({ body }) =>
+    admin("GET", `admin/api/member-portal/audit?personId=${MEMBER}&afterId=${afterId}&length=100`).then(({ body }) =>
         body.rows
-            .filter((row) => row.id > afterId)
             .reverse()
             .map((row) => ({ event: row.event, reason: row.reason, actorId: row.actorId })),
     );

@@ -45,6 +45,8 @@ export default defineConfig({
   },
   retries: 0,
   numTestsKeptInMemory: 0,
+  // before:spec fires in `cypress open` too, so the database tasks know their caller.
+  experimentalInteractiveRunEvents: true,
   e2e: {
     ...base.e2e,
     // Admin UI specs (cypress/e2e/ui-admin) run as a dedicated parallel CI job

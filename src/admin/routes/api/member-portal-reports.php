@@ -119,6 +119,7 @@ function getMemberPortalListAPI(Request $request, Response $response, array $arg
  *     @OA\Parameter(name="from", in="query", description="First day, YYYY-MM-DD", @OA\Schema(type="string", format="date")),
  *     @OA\Parameter(name="to", in="query", description="Last day, YYYY-MM-DD, inclusive", @OA\Schema(type="string", format="date")),
  *     @OA\Parameter(name="event", in="query", @OA\Schema(type="string", example="refused")),
+ *     @OA\Parameter(name="afterId", in="query", description="Only rows written after this audit row", @OA\Schema(type="integer")),
  *     @OA\Parameter(name="start", in="query", @OA\Schema(type="integer", default=0)),
  *     @OA\Parameter(name="length", in="query", @OA\Schema(type="integer", default=25, maximum=100)),
  *     @OA\Response(response=200, description="The page",
@@ -147,6 +148,7 @@ function getMemberSignInAuditAPI(Request $request, Response $response): Response
             $text('event'),
             $start,
             $length,
+            isset($params['afterId']) ? (int) $params['afterId'] : null,
         );
     } catch (InvalidArgumentException $e) {
         return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400, null, $request);
