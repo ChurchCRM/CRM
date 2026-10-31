@@ -9,6 +9,9 @@ import {
     useMemberSignIn,
     waitForMail,
 } from "../../../../support/member-sign-in";
+import { addPasskey, recordFamilyEmailMoves } from "../../../../support/member-sign-in-fixtures";
+import { markEmailUnconfirmed } from "../../../../support/sign-in-email-fixtures";
+import { auditRowsSince, auditSince, newestAuditId } from "../../../../support/sign-in-audit";
 
 /**
  * Member sign-in row 10 (#10463): the sign-in email is a credential
@@ -20,8 +23,9 @@ import {
  * account), 3 Tony (a staff account).
  * judith.matthews (95) has Edit Records and is not an administrator.
  *
- * The family email move, devices, passkeys, grants and the audit have no HTTP
- * surface until rows 7, 8 and 9, so they are set and read with cy.dbQuery().
+ * The family email move and a passkey are support fixtures; the proven email
+ * and the move's confirmation flag are read with cy.dbQuery(), and the hooks put
+ * the people back.
  */
 
 const MATHEW = { id: 2, email: "mathew.campbell@example.com" };
@@ -34,12 +38,6 @@ const db = (sql, params = []) =>
         expect(result.error, sql).to.be.null;
         return result.rows;
     });
-
-const lastAuditId = () =>
-    db("SELECT COALESCE(MAX(psa_ID), 0) AS id FROM portal_signin_audit_psa").then((rows) => Number(rows[0].id));
-
-const auditSince = (personId, afterId) =>
-    db("SELECT * FROM portal_signin_audit_psa WHERE psa_per_ID = ? AND psa_ID > ? ORDER BY psa_ID", [personId, afterId]);
 
 const status = (personId) => cy.makePrivateAdminAPICall("GET", `/api/person/${personId}/sign-in`, null, 200).its("body");
 
@@ -120,47 +118,44 @@ const useLinkTwice = (path) =>
         return press().then((first) => press().then((second) => [first, second]));
     });
 
-/** Signs in at /portal/login with the emailed code, in the current cookie jar. */
-const signInByEmail = (address) => {
+/** Signs in at /portal/login with the emailed code, in the current cookie jar; `fields` adds e.g. `{ rememberDevice: "1" }`. */
+const signInByEmail = (address, fields = {}) => {
     cy.clearCookies();
     resetEmailSignIn();
     askForEmail(address);
-    return signInEmail(address).then(({ code }) => postCode(code));
+    return signInEmail(address).then(({ code }) => postCode(code, fields));
 };
 
 /** Whether /portal/login emails a sign-in code to the address. The email follows the answer, once the request is audited. */
 const signInCodeSentTo = (address) => {
     cy.clearCookies();
     resetEmailSignIn();
-    return lastAuditId().then((startId) => {
+    return newestAuditId().then((startId) => {
         askForEmail(address);
-        return db("SELECT COUNT(*) AS n FROM portal_signin_audit_psa WHERE psa_ID > ? AND psa_Event = 'email_requested' AND psa_Email = ?", [
-            startId,
-            address,
-        ]).then((rows) =>
-            Number(rows[0].n) === 0
-                ? false
-                : waitForMail(address).then((messages) => messages.some((m) => (m.Subject || "").includes("Your Member Portal sign-in code"))),
+        return auditSince(startId, { event: "email_requested" }).then((rows) =>
+            rows.some((row) => String(row.email).toLowerCase() === address.toLowerCase())
+                ? waitForMail(address).then((messages) => messages.some((m) => (m.Subject || "").includes("Your Member Portal sign-in code")))
+                : false,
         );
     });
 };
 
 const markFamilyEmailMoved = (person, familyId) => {
-    db(
-        "INSERT INTO person_signin_psi (psi_per_ID, psi_UnconfirmedEmail, psi_UnconfirmedSource, psi_UnconfirmedAt) VALUES (?, ?, 'family_email', NOW()) " +
-            "ON DUPLICATE KEY UPDATE psi_UnconfirmedEmail = VALUES(psi_UnconfirmedEmail), psi_UnconfirmedSource = VALUES(psi_UnconfirmedSource)",
-        [person.id, person.email],
-    );
-    db(
-        "INSERT INTO family_email_move_fem (fem_fam_ID, fem_Email, fem_Outcome, fem_per_ID, fem_NeedsConfirm, fem_DateMoved) VALUES (?, ?, 'head', ?, 1, NOW())",
-        [familyId, person.email, person.id],
-    );
+    markEmailUnconfirmed(person.id, "family_email");
+    recordFamilyEmailMoves([{ familyId, email: person.email, outcome: "head", personId: person.id, needsConfirm: true }]);
 };
 
-const giveGrant = (personId) =>
-    db(
-        "INSERT INTO portal_grant_pgr (pgr_per_ID, pgr_Capability, pgr_Reason, pgr_GrantedBy_usr_ID, pgr_GrantedAt) VALUES (?, 'volunteer.team.manage', 'Email change spec', 1, NOW())",
-        [personId],
+const giveGrant = (personId, familyId) =>
+    cy.makePrivateAdminAPICall(
+        "POST",
+        `/admin/api/person/${personId}/sign-in/grants`,
+        {
+            capability: "portal.family.contacts.view",
+            scopeId: familyId,
+            endsOn: new Date(Date.now() + 30 * 86400000).toISOString().slice(0, 10),
+            reason: "Email change spec",
+        },
+        201,
     );
 
 describe("Sign-in email changes by staff, imports and registration (§9)", () => {
@@ -205,7 +200,7 @@ describe("Sign-in email changes by staff, imports and registration (§9)", () =>
 
     it("before the first sign-in, a staff change is the address on record: it signs in at once and is audited", () => {
         const newEmail = `mathew.${Date.now()}@example.com`;
-        lastAuditId().then((startId) => {
+        newestAuditId().then((startId) => {
             saveEmailInPersonEditor(MATHEW.id, newEmail).its("status").should("eq", 302);
 
             status(MATHEW.id).then((body) => {
@@ -214,11 +209,11 @@ describe("Sign-in email changes by staff, imports and registration (§9)", () =>
             });
             mailTo(MATHEW.email).should("have.length", 0);
             signInCodeSentTo(newEmail).should("eq", true);
-            auditSince(MATHEW.id, startId).then((rows) => {
-                expect(rows[0].psa_Event).to.eq("email_changed");
-                expect(rows[0].psa_Actor_usr_ID).to.eq(JUDITH.id);
-                expect(rows[0].psa_Email).to.eq(newEmail);
-                expect(rows[0].psa_Detail).to.eq(`from=${MATHEW.email}; via=staff`);
+            auditRowsSince(MATHEW.id, startId).then((rows) => {
+                expect(rows[0].event).to.eq("email_changed");
+                expect(rows[0].actorId).to.eq(JUDITH.id);
+                expect(rows[0].email).to.eq(newEmail);
+                expect(rows[0].detail).to.eq(`from=${MATHEW.email}; via=staff`);
             });
         });
     });
@@ -227,17 +222,17 @@ describe("Sign-in email changes by staff, imports and registration (§9)", () =>
         const newEmail = `mathew.moved.${Date.now()}@example.com`;
         cy.clearCookies();
         resetEmailSignIn([MATHEW.id]);
-        lastAuditId().then((startId) => {
+        newestAuditId().then((startId) => {
             askForEmail(MATHEW.email);
             signInEmail(MATHEW.email).then(({ code }) => {
                 keepingSession(() => saveEmailInPersonEditor(MATHEW.id, newEmail).its("status").should("eq", 302));
                 postCode(code).its("body").should("include", "That code did not work");
                 cy.request({ url: "/api/portal/me", failOnStatusCode: false }).its("status").should("eq", 401);
-                auditSince(MATHEW.id, startId).then((rows) => {
-                    const cancelled = rows.filter((row) => row.psa_Event === "request_cancelled");
+                auditRowsSince(MATHEW.id, startId).then((rows) => {
+                    const cancelled = rows.filter((row) => row.event === "request_cancelled");
                     expect(cancelled).to.have.length(1);
-                    expect(cancelled[0].psa_Reason).to.eq("email_changed");
-                    expect(cancelled[0].psa_Actor_usr_ID).to.eq(JUDITH.id);
+                    expect(cancelled[0].reason).to.eq("email_changed");
+                    expect(cancelled[0].actorId).to.eq(JUDITH.id);
                 });
             });
         });
@@ -245,7 +240,6 @@ describe("Sign-in email changes by staff, imports and registration (§9)", () =>
 
     describe("after the first sign-in", () => {
         const newEmail = `lena.replaced.${Date.now()}@example.com`;
-        const randomHash = () => Array.from({ length: 64 }, () => Math.floor(Math.random() * 16).toString(16)).join("");
 
         const replaceSignedInEmail = () => {
             signInByEmail(LENA.email);
@@ -255,18 +249,11 @@ describe("Sign-in email changes by staff, imports and registration (§9)", () =>
         };
 
         it("ends every session and remembered device, keeps passkeys, tells the old address and leaves the new one unconfirmed", () => {
-            lastAuditId().then((startId) => {
-                signInByEmail(LENA.email);
+            newestAuditId().then((startId) => {
+                signInByEmail(LENA.email, { rememberDevice: "1" });
                 cy.request("/api/portal/me").its("body.profile.id").should("eq", LENA.id);
                 db("SELECT psi_ProvenEmail FROM person_signin_psi WHERE psi_per_ID = ?", [LENA.id]).its("0.psi_ProvenEmail").should("eq", LENA.email);
-                db(
-                    "INSERT INTO person_device_pdv (pdv_per_ID, pdv_TokenHash, pdv_Kind, pdv_CreatedAt, pdv_ExpiresAt) VALUES (?, ?, 'browser', NOW(), DATE_ADD(NOW(), INTERVAL 30 DAY))",
-                    [LENA.id, randomHash()],
-                );
-                db(
-                    "INSERT INTO person_passkey_ppk (ppk_per_ID, ppk_CredentialId, ppk_CredentialHash, ppk_PublicKey, ppk_CreatedAt) VALUES (?, 'cypress-credential', ?, 'cypress-key', NOW())",
-                    [LENA.id, randomHash()],
-                );
+                addPasskey(LENA.id);
                 cy.task("mail:clear");
 
                 keepingSession(() => {
@@ -274,13 +261,9 @@ describe("Sign-in email changes by staff, imports and registration (§9)", () =>
                 });
 
                 cy.request({ url: "/api/portal/me", failOnStatusCode: false }).its("status").should("eq", 401);
-                db("SELECT pdv_RevokedAt FROM person_device_pdv WHERE pdv_per_ID = ?", [LENA.id]).its("0.pdv_RevokedAt").should("not.be.null");
-                db("SELECT COUNT(*) AS n FROM person_passkey_ppk WHERE ppk_per_ID = ?", [LENA.id]).its("0.n").should("eq", 1);
-                db("SELECT psi_UnconfirmedEmail, psi_UnconfirmedSource FROM person_signin_psi WHERE psi_per_ID = ?", [LENA.id]).then((rows) => {
-                    expect(rows[0].psi_UnconfirmedEmail).to.eq(newEmail);
-                    expect(rows[0].psi_UnconfirmedSource).to.eq("staff");
-                });
                 status(LENA.id).then((body) => {
+                    expect(body.devices, "the remembered device is signed out").to.eq(0);
+                    expect(body.passkeys).to.eq(1);
                     expect(body.reason).to.eq("email_unconfirmed");
                     expect(body.unconfirmedEmail).to.eq(newEmail);
                     expect(body.unconfirmedSource).to.eq("staff");
@@ -294,20 +277,20 @@ describe("Sign-in email changes by staff, imports and registration (§9)", () =>
                 mailTo(newEmail).should("have.length", 0);
                 signInCodeSentTo(newEmail).should("eq", false);
 
-                auditSince(LENA.id, startId).then((rows) => {
-                    const changed = rows.find((row) => row.psa_Event === "email_changed");
-                    expect(changed.psa_Actor_usr_ID).to.eq(JUDITH.id);
-                    expect(changed.psa_Email).to.eq(newEmail);
-                    expect(changed.psa_Detail).to.eq(`from=${LENA.email}; via=staff; unconfirmed=yes; devices=1`);
-                    const ended = rows.filter((row) => row.psa_Event === "session_ended");
-                    expect(ended.map((row) => row.psa_Reason)).to.include("session_version");
+                auditRowsSince(LENA.id, startId).then((rows) => {
+                    const changed = rows.find((row) => row.event === "email_changed");
+                    expect(changed.actorId).to.eq(JUDITH.id);
+                    expect(changed.email).to.eq(newEmail);
+                    expect(changed.detail).to.eq(`from=${LENA.email}; via=staff; unconfirmed=yes; devices=1`);
+                    const ended = rows.filter((row) => row.event === "session_ended");
+                    expect(ended.map((row) => row.reason)).to.include("session_version");
                 });
             });
         });
 
         it("the link in the notice to the proven address confirms the new address", () => {
             replaceSignedInEmail();
-            lastAuditId().then((startId) => {
+            newestAuditId().then((startId) => {
                 mailTo(LENA.email).then((messages) => confirmLinkIn(messages[0])).then((path) => {
                     openLink(path).then(({ state, body }) => {
                         expect(state).to.eq("confirm");
@@ -323,13 +306,13 @@ describe("Sign-in email changes by staff, imports and registration (§9)", () =>
                     });
                     openLink(path).its("state").should("eq", "invalid");
                 });
-                auditSince(LENA.id, startId).then((all) => {
-                    const rows = all.filter((row) => row.psa_Event.startsWith("email_c"));
+                auditRowsSince(LENA.id, startId).then((all) => {
+                    const rows = all.filter((row) => row.event.startsWith("email_c"));
                     expect(rows).to.have.length(1);
-                    expect(rows[0].psa_Event).to.eq("email_confirmed");
-                    expect(rows[0].psa_Actor_usr_ID).to.be.null;
-                    expect(rows[0].psa_Email).to.eq(newEmail);
-                    expect(rows[0].psa_Detail).to.eq("via=link_to_previous_address; source=staff");
+                    expect(rows[0].event).to.eq("email_confirmed");
+                    expect(rows[0].actorId).to.be.null;
+                    expect(rows[0].email).to.eq(newEmail);
+                    expect(rows[0].detail).to.eq("via=link_to_previous_address; source=staff");
                 });
             });
         });
@@ -363,12 +346,12 @@ describe("Sign-in email changes by staff, imports and registration (§9)", () =>
             status(LENA.id).its("reason").should("eq", "email_unconfirmed");
 
             signInCodeSentTo(newEmail).should("eq", false);
-            lastAuditId().then((startId) => {
+            newestAuditId().then((startId) => {
                 cy.makePrivateAdminAPICall("POST", `/api/person/${LENA.id}/sign-in/confirm-email`, { email: newEmail }, 200);
                 status(LENA.id).its("maySignIn").should("eq", true);
                 signInCodeSentTo(newEmail).should("eq", true);
-                auditSince(LENA.id, startId).then((rows) => {
-                    expect(rows.filter((row) => row.psa_Event === "email_confirmed").map((row) => `${row.psa_Actor_usr_ID}:${row.psa_Detail}`)).to.deep.eq([
+                auditRowsSince(LENA.id, startId).then((rows) => {
+                    expect(rows.filter((row) => row.event === "email_confirmed").map((row) => `${row.actorId}:${row.detail}`)).to.deep.eq([
                         "1:via=person_page; source=staff",
                     ]);
                 });
@@ -382,13 +365,13 @@ describe("Sign-in email changes by staff, imports and registration (§9)", () =>
             markFamilyEmailMoved(MATHEW, 1);
             status(MATHEW.id).its("reason").should("eq", "email_unconfirmed");
 
-            lastAuditId().then((startId) => {
+            newestAuditId().then((startId) => {
                 saveEmailInPersonEditor(MATHEW.id, MATHEW.email.toUpperCase()).its("status").should("eq", 302);
                 status(MATHEW.id).then((body) => {
                     expect(body.reason).to.eq("email_unconfirmed");
                     expect(body.unconfirmedSource).to.eq("family_email");
                 });
-                auditSince(MATHEW.id, startId).should("have.length", 0);
+                auditRowsSince(MATHEW.id, startId).should("have.length", 0);
 
                 cy.makePrivateEditRecordsAPICall("GET", `/api/person/${MATHEW.id}/sign-in`, null, 200)
                     .its("body.canConfirmEmail")
@@ -398,8 +381,8 @@ describe("Sign-in email changes by staff, imports and registration (§9)", () =>
                 status(MATHEW.id).its("maySignIn").should("eq", true);
                 signInCodeSentTo(MATHEW.email).should("eq", true);
                 db("SELECT fem_NeedsConfirm FROM family_email_move_fem WHERE fem_per_ID = ?", [MATHEW.id]).its("0.fem_NeedsConfirm").should("eq", 0);
-                auditSince(MATHEW.id, startId).then((rows) => {
-                    expect(rows.filter((row) => row.psa_Event.startsWith("email_c")).map((row) => `${row.psa_Event}:${row.psa_Actor_usr_ID}:${row.psa_Detail}`)).to.deep.eq([
+                auditRowsSince(MATHEW.id, startId).then((rows) => {
+                    expect(rows.filter((row) => row.event.startsWith("email_c")).map((row) => `${row.event}:${row.actorId}:${row.detail}`)).to.deep.eq([
                         `email_confirmed:${JUDITH.id}:via=person_page; source=family_email`,
                     ]);
                 });
@@ -428,7 +411,7 @@ describe("Sign-in email changes by staff, imports and registration (§9)", () =>
         });
 
         it("lets only an administrator change or confirm the email of a person with a given grant", () => {
-            giveGrant(MATHEW.id);
+            giveGrant(MATHEW.id, 3);
             markFamilyEmailMoved(MATHEW, 1);
 
             saveEmailInPersonEditor(MATHEW.id, "mathew.elsewhere@example.com").then((response) => {
@@ -462,14 +445,14 @@ describe("Sign-in email changes by staff, imports and registration (§9)", () =>
 
     it("a registration form's address is the address on record, with no email change audited", () => {
         const email = `registered.${Date.now()}@example.com`;
-        lastAuditId().then((startId) => {
+        newestAuditId().then((startId) => {
             cy.request({
                 method: "POST",
                 url: "/api/public/register/person",
                 body: { firstName: "Reggie", lastName: "Emailchange", gender: "1", email },
             }).then(({ body }) => {
                 const personId = Number(body.Id);
-                auditSince(personId, startId).should("have.length", 0);
+                auditRowsSince(personId, startId).should("have.length", 0);
                 cy.cleanupPeople([personId]);
             });
         });

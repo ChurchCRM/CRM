@@ -28,14 +28,15 @@ final class SignInAuditService
     public const MAX_PAGE_SIZE = 100;
 
     /**
-     * @param string|null $from first day, Y-m-d, in the church's time zone
-     * @param string|null $to   last day, Y-m-d, inclusive
+     * @param string|null $from    first day, Y-m-d, in the church's time zone
+     * @param string|null $to      last day, Y-m-d, inclusive
+     * @param int|null    $afterId only rows written after this audit row
      *
      * @return array{total: int, filtered: int, rows: list<array<string, mixed>>}
      *
      * @throws InvalidArgumentException for a malformed date, a range that ends before it starts, or an unknown event
      */
-    public function page(?int $personId, ?string $from, ?string $to, ?string $event, int $start = 0, int $length = self::DEFAULT_PAGE_SIZE): array
+    public function page(?int $personId, ?string $from, ?string $to, ?string $event, int $start = 0, int $length = self::DEFAULT_PAGE_SIZE, ?int $afterId = null): array
     {
         $start = max(0, $start);
         $length = max(1, min(self::MAX_PAGE_SIZE, $length));
@@ -62,6 +63,9 @@ final class SignInAuditService
         }
         if ($eventCase !== null) {
             $query->filterByEvent($eventCase->value);
+        }
+        if ($afterId !== null) {
+            $query->filterById($afterId, Criteria::GREATER_THAN);
         }
         $filtered = (clone $query)->count();
 

@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 
-import { db } from "../../support/member-sign-in";
+import { inOwnCookieJar } from "../../support/cookie-jar";
+import { savePersonEditor } from "../../support/person-editor";
 
 // Login as Person eligibility (#10463 row 12, docs/member-sign-in-design.md §6.5, §17):
 // only deceased, Disable sign-in, a staff account and member sign-in turned off refuse
@@ -88,9 +89,8 @@ const newestAuditId = (personId) =>
     admin("GET", `admin/api/member-portal/audit?personId=${personId}&length=1`).then(({ body }) => body.rows[0]?.id ?? 0);
 
 const auditSince = (personId, afterId) =>
-    admin("GET", `admin/api/member-portal/audit?personId=${personId}&length=100`).then(({ body }) =>
+    admin("GET", `admin/api/member-portal/audit?personId=${personId}&afterId=${afterId}&length=100`).then(({ body }) =>
         body.rows
-            .filter((row) => row.id > afterId)
             .reverse()
             .map((row) => ({ event: row.event, reason: row.reason, actorId: row.actorId })),
     );
@@ -120,7 +120,6 @@ describe("Login as Person eligibility", () => {
         admin("POST", `api/family/${TURNER_FAMILY}/activate/true`);
         admin("POST", `admin/api/person/${TARGET}/sign-in/enable`, null, [200, 409]);
         admin("DELETE", `admin/api/user/${TARGET}/`, null, [200, 404]);
-        db("UPDATE person_per SET per_DateDeceased = NULL WHERE per_ID = ?", [TARGET]);
     });
 
     after(() => {
@@ -195,12 +194,19 @@ describe("Login as Person eligibility", () => {
             });
         };
 
-        it("deceased", () => {
-            endsOnNextRequest(
-                () => db("UPDATE person_per SET per_DateDeceased = CURDATE() WHERE per_ID = ?", [TARGET]),
-                "deceased",
-                "This person is deceased.",
-            );
+        describe("deceased", () => {
+            afterEach(() => {
+                savePersonEditor(TARGET, { IsDeceased: false }).its("status").should("eq", 302);
+                cy.clearCookies();
+            });
+
+            it("deceased", () => {
+                endsOnNextRequest(
+                    () => inOwnCookieJar(() => savePersonEditor(TARGET, { IsDeceased: true }).its("status").should("eq", 302)),
+                    "deceased",
+                    "This person is deceased.",
+                );
+            });
         });
 
         it("Disable sign-in", () => {
