@@ -138,7 +138,7 @@ describe("Login as Person", () => {
         cy.get(".bootbox .modal-title").should("have.text", "Login as Mathew");
         cy.get(".bootbox .btn-warning").click();
 
-        cy.location("pathname").should("eq", "/portal/");
+        cy.location("pathname").should("match", /\/portal\/$/);
         cy.get("#login-as-person-banner")
             .should("contain", "logged in as Mathew Campbell in the Member Portal (read-only).");
         cy.get("#portal-account-toggle").click();
@@ -160,14 +160,14 @@ describe("Login as Person", () => {
         startLoginAsPerson(MEMBER).its("status").should("eq", 200);
 
         cy.visit("/v2/dashboard");
-        cy.location("pathname").should("eq", "/portal/");
+        cy.location("pathname").should("match", /\/portal\/$/);
         cy.get("#portal-toasts").should("contain", "Staff pages stay closed during Login as Person.");
         cy.get("#login-as-person-banner").should("be.visible");
 
         cy.visit(`/PersonEditor.php?PersonID=${MEMBER}`);
-        cy.location("pathname").should("eq", "/portal/");
+        cy.location("pathname").should("match", /\/portal\/$/);
         cy.visit("/admin/");
-        cy.location("pathname").should("eq", "/portal/");
+        cy.location("pathname").should("match", /\/portal\/$/);
         cy.request({ url: `/api/person/${MEMBER}`, failOnStatusCode: false }).then((response) => {
             expect(response.status).to.eq(403);
             expect(response.body.message).to.include("Staff pages stay closed");
@@ -192,7 +192,7 @@ describe("Login as Person", () => {
             expect(response.headers.location).to.match(new RegExp(`/people/view/${MEMBER}$`));
         });
         cy.visit("/v2/dashboard");
-        cy.location("pathname").should("eq", "/v2/dashboard");
+        cy.location("pathname").should("match", /\/v2\/dashboard$/);
     });
 
     it("leaves the member's activity, sign-in record and statistics alone", () => {
