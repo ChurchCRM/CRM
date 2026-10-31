@@ -13,7 +13,41 @@
     justify-content: center;
 }
 
+// Volunteer and team templates use Bootstrap buttons. Paint the primary ones
+// from the portal tokens so a theme's --portal-primary reaches them.
+.portal-body .btn-primary {
+    background-color: var(--portal-primary);
+    border-color: var(--portal-primary);
+    color: var(--portal-primary-contrast);
+}
+
+.portal-body .btn-primary:hover,
+.portal-body .btn-primary:focus-visible {
+    background-color: var(--portal-primary);
+    border-color: var(--portal-primary);
+    color: var(--portal-primary-contrast);
+    filter: brightness(1.1);
+}
+
+.portal-body .btn-outline-primary {
+    background-color: transparent;
+    border-color: var(--portal-primary);
+    color: var(--portal-primary);
+}
+
+.portal-body .btn-outline-primary:hover,
+.portal-body .btn-outline-primary:focus-visible {
+    background-color: var(--portal-primary);
+    border-color: var(--portal-primary);
+    color: var(--portal-primary-contrast);
+    filter: none;
+}
+
 // Below `sm` the actions are a full-width stack; above it they sit in a row.
+.volunteer-card-actions {
+    gap: 0.5rem;
+}
+
 .volunteer-card-actions .volunteer-touch-target {
     inline-size: 100%;
 }
@@ -34,7 +68,7 @@
 .portal-subnav-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.25rem;
+    gap: 0.5rem;
     margin: 0;
     padding: 0;
     list-style: none;
