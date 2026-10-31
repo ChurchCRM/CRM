@@ -2,7 +2,6 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\FamilyPledgeReportService;
-use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Service\MpdfRenderer;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
@@ -27,8 +26,10 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
             RedirectUtils::redirect('FinancialReports.php?ReturnMessage=NoRows&ReportType=Pledge%20Family%20Summary');
         }
 
+        $fy = FiscalYearUtils::getFiscalYearDatesById($fiscalYearId);
         $pdf = (new MpdfRenderer())->renderToString('family-pledge-summary', $report + [
-            'fiscal_year' => FinancialService::formatFiscalYear($fiscalYearId),
+            'fiscal_year' => FiscalYearUtils::formatFiscalYearLabel($fiscalYearId),
+            'date_range' => $fy['startDate'] . ' – ' . $fy['endDate'],
         ]);
 
         $filename = 'FamilyPledgeSummary' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
