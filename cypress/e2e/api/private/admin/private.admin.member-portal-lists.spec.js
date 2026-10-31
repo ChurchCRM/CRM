@@ -269,6 +269,11 @@ describe("Admin → Member Portal lists, audit and statistics", () => {
             const byEmail = Object.fromEntries(body.rows.map((row) => [row.email, row]));
             expect(byEmail[`${MARK}-shared@example.com`].summary).to.eq("Matches: Constance Hart, Marion Hart");
             expect(byEmail[`${MARK}-send@example.com`].summary).to.eq("The email could not be sent.");
+
+            audit({ afterId: String(byEmail[`${MARK}-shared@example.com`].id - 1) }).then((since) => {
+                expect(since.rows.map((row) => row.email)).to.deep.eq([`${MARK}-shared@example.com`, `${MARK}-send@example.com`]);
+                expect(since.filtered).to.eq(2);
+            });
         });
 
         cy.makePrivateAdminAPICall("GET", "/admin/api/member-portal/audit?from=2026-02-30", null, 400);

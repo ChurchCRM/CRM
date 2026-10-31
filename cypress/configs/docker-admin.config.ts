@@ -56,6 +56,8 @@ export default defineConfig({
   },
   retries: 0,
   numTestsKeptInMemory: 0,
+  // before:spec fires in `cypress open` too, so the database tasks know their caller.
+  experimentalInteractiveRunEvents: true,
   e2e: {
     ...base.e2e,
     // Admin UI specs live here; the main UI suite (docker.config.ts) excludes

@@ -89,9 +89,8 @@ const newestAuditId = (personId) =>
     admin("GET", `admin/api/member-portal/audit?personId=${personId}&length=1`).then(({ body }) => body.rows[0]?.id ?? 0);
 
 const auditSince = (personId, afterId) =>
-    admin("GET", `admin/api/member-portal/audit?personId=${personId}&length=100`).then(({ body }) =>
+    admin("GET", `admin/api/member-portal/audit?personId=${personId}&afterId=${afterId}&length=100`).then(({ body }) =>
         body.rows
-            .filter((row) => row.id > afterId)
             .reverse()
             .map((row) => ({ event: row.event, reason: row.reason, actorId: row.actorId })),
     );

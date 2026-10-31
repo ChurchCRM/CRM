@@ -57,6 +57,8 @@ export default defineConfig({
   },
   retries: 0,
   numTestsKeptInMemory: 0,
+  // before:spec fires in `cypress open` too, so the database tasks know their caller.
+  experimentalInteractiveRunEvents: true,
   e2e: {
     ...base.e2e,
     // UI specs only, so every shard receives a non-empty subset of ui specs.

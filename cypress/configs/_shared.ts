@@ -84,10 +84,6 @@ function databaseAccess() {
 
 function refuseUnlisted({ spec, fixture, sql, upgradeBlock = false }: { spec?: string | null; fixture?: string | null; sql?: string; upgradeBlock?: boolean }) {
   const caller = currentSpec || spec || null;
-  if (caller === null) {
-    // `cypress open` without experimentalInteractiveRunEvents; the lint guard still applies.
-    return;
-  }
   const { approved = {}, baseline = {} } = databaseAccess();
   const changesSchema = upgradeBlock || (sql !== undefined && SCHEMA_CHANGE.test(sql));
   let problem: string | null = null;
@@ -97,6 +93,8 @@ function refuseUnlisted({ spec, fixture, sql, upgradeBlock = false }: { spec?: s
     } else if (changesSchema) {
       problem = `the support fixture ${fixture} may not change the schema`;
     }
+  } else if (caller === null) {
+    problem = 'no spec is running, so the caller is unknown (the config needs trackCurrentSpec and experimentalInteractiveRunEvents)';
   } else if (changesSchema) {
     if (approved[caller]?.kind !== 'schema') {
       problem = `${caller} is not an approved schema spec, so it may not change the schema or run an upgrade block`;
