@@ -38,6 +38,17 @@ final class RememberedDeviceCookie
         return $response->withAddedHeader('Set-Cookie', self::header($token->value, max(1, $token->expiresAt->getTimestamp() - time())));
     }
 
+    /**
+     * Sends the new token with whatever response the error handler renders,
+     * for a request that failed after its token was replaced.
+     */
+    public static function sendWithError(RememberedDeviceToken $token): void
+    {
+        if ($token->value !== null && !headers_sent()) {
+            header('Set-Cookie: ' . self::header($token->value, max(1, $token->expiresAt->getTimestamp() - time())), false);
+        }
+    }
+
     /** The cookie's path matches `with()` exactly, or the browser would keep the old one. */
     public static function without(ResponseInterface $response): ResponseInterface
     {
