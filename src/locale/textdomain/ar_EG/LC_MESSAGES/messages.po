@@ -24581,3 +24581,419 @@ msgstr "يُعرض فقط البريد الإلكتروني الذي أرسلت�
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "تعذر إنشاء الأحداث المتكررة. تحقق من سجل التطبيق للحصول على التفاصيل."
 
+#: 
+msgid "Confirm Password"
+msgstr "تأكيد كلمة المرور"
+
+#: 
+msgid "Your password has been changed. You can now sign in with your new password."
+msgstr "تم تغيير كلمة المرور الخاصة بك. يمكنك الآن تسجيل الدخول باستخدام كلمة المرور الجديدة."
+
+#: 
+msgid "1st"
+msgstr "الأول"
+
+#: 
+msgid "2nd"
+msgstr "الثاني"
+
+#: 
+msgid "3rd"
+msgstr "الثالث"
+
+#: 
+msgid "4th"
+msgstr "الرابع"
+
+#: 
+msgid "5th"
+msgstr "الخامس"
+
+#: 
+msgid "Can't remove administrator access from the only administrator who can sign in"
+msgstr "لا يمكن إزالة صلاحية المسؤول من المسؤول الوحيد الذي يمكنه تسجيل الدخول"
+
+#: 
+msgid "Choose the week of the month, from 1st to 5th"
+msgstr "اختر أسبوع الشهر، من الأول إلى الخامس"
+
+#: 
+msgid "Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}"
+msgstr "ينشئ {{total}} أحداث، في {{week}} {{day}} من كل شهر من {{first}} إلى {{last}}"
+
+#: 
+msgid "Invalid day of the week"
+msgstr "يوم الأسبوع غير صالح"
+
+#: 
+msgid "Monthly, on a weekday"
+msgstr "شهريًا، في يوم من أيام الأسبوع"
+
+#: 
+msgid "Months without a 5th one are skipped."
+msgstr "يتم تخطي الأشهر التي لا تحتوي على أسبوع خامس."
+
+#: 
+msgid "RecurWOM must be a whole number from 1 to 5"
+msgstr "يجب أن يكون RecurWOM رقمًا صحيحًا من 1 إلى 5"
+
+#: 
+msgid "Week of the month"
+msgstr "أسبوع الشهر"
+
+#: 
+msgid "Week of the month must be from 1 to 5"
+msgstr "يجب أن يكون أسبوع الشهر من 1 إلى 5"
+
+#: 
+msgid "%s through %s"
+msgstr "%s إلى %s"
+
+#: 
+msgid "Church tax ID (EIN) printed on contribution statements"
+msgstr "الرقم الضريبي للكنيسة (EIN) المطبوع على كشوف المساهمات"
+
+#: 
+msgid "Contribution statements are issued to the adults of a household. Please contact the church office if you need one."
+msgstr "يتم إصدار كشوف المساهمات للبالغين في الأسرة. يرجى الاتصال بمكتب الكنيسة إذا كنت بحاجة إلى واحد."
+
+#: 
+msgid "Download statement"
+msgstr "تنزيل الكشف"
+
+#: 
+msgid "Generated"
+msgstr "تم إنشاؤه"
+
+#: 
+msgid "Goods and services"
+msgstr "السلع والخدمات"
+
+#: 
+msgid "My Giving"
+msgstr "عطاياي"
+
+#: 
+msgid "No contributions"
+msgstr "لا توجد مساهمات"
+
+#: 
+msgid "No contributions were recorded for this period."
+msgstr "لم يتم تسجيل أي مساهمات لهذه الفترة."
+
+#: 
+msgid "No goods or services were provided in exchange for these contributions, other than intangible religious benefits."
+msgstr "لم يتم تقديم أي سلع أو خدمات مقابل هذه المساهمات، بخلاف الفوائد الدينية غير الملموسة."
+
+#: 
+msgid "Optional. Printed on contribution statements."
+msgstr "اختياري. مطبوع على كشوف المساهمات."
+
+#: 
+msgid "Tax ID"
+msgstr "الرقم الضريبي"
+
+#: 
+msgid "Tax ID (EIN)"
+msgstr "الرقم الضريبي (EIN)"
+
+#: 
+msgid "Tax-deductible amount"
+msgstr "المبلغ القابل للخصم الضريبي"
+
+#: 
+msgid "This is the household statement. It includes gifts for your family."
+msgstr "هذا هو كشف الأسرة. يتضمن العطايا لعائلتك."
+
+#: 
+msgid "Total contributions"
+msgstr "إجمالي المساهمات"
+
+#: 
+msgid "Year-end statement"
+msgstr "كشف نهاية العام"
+
+#: 
+msgid "%d giving statement emailed to the family successfully."
+msgstr "تم إرسال %d كشف عطايا إلى الأسرة بنجاح عبر البريد الإلكتروني."
+
+#: 
+msgid "%s Giving Statement"
+msgstr "كشف عطايا %s"
+
+#: 
+msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "خصص النص الذي يظهر على كشوف العطايا (sTaxReport1 و sTaxReport2 وما إلى ذلك)."
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %s giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "عائلة %s العزيزة،\n"
+"\n"
+"يرجى العثور على كشف عطايا %s الخاص بكم من %s مرفقًا بهذا البريد الإلكتروني.\n"
+"\n"
+"إذا كان لديكم أي أسئلة، يرجى الاتصال بمكتب الكنيسة.\n"
+"\n"
+"شكرًا لكرمكم."
+
+#: 
+msgid "Email %s Giving Statement"
+msgstr "إرسال كشف عطايا %s عبر البريد الإلكتروني"
+
+#: 
+msgid "Envelope Numbers"
+msgstr "أرقام المظاريف"
+
+#: 
+msgid "Generate Giving Statements"
+msgstr "إنشاء كشوف العطايا"
+
+#: 
+msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
+msgstr "إنشاء تقارير لكشوف العطايا وتتبع التعهدات والتحليل المالي."
+
+#: 
+msgid "Giving Reports"
+msgstr "تقارير العطايا"
+
+#: 
+msgid "Giving Statement"
+msgstr "كشف العطايا"
+
+#: 
+msgid "Giving Statements"
+msgstr "كشوف العطايا"
+
+#: 
+msgid "Giving statement email failed to send. Please check your email server settings."
+msgstr "فشل إرسال بريد كشف العطايا. يرجى التحقق من إعدادات خادم البريد الإلكتروني."
+
+#: 
+msgid "Please mail your next gift to %s"
+msgstr "يرجى إرسال عطيتكم التالية بالبريد إلى %s"
+
+#: 
+msgid "Print %s Giving Statement"
+msgstr "طباعة كشف عطايا %s"
+
+#: 
+msgid "Unable to email giving statement: no payment data found for that year."
+msgstr "تعذر إرسال كشف العطايا عبر البريد الإلكتروني: لم يتم العثور على بيانات دفع لتلك السنة."
+
+#: 
+msgid "Unable to email giving statement: this family has no email address on file."
+msgstr "تعذر إرسال كشف العطايا عبر البريد الإلكتروني: هذه الأسرة ليس لديها عنوان بريد إلكتروني مسجل."
+
+#: 
+msgid "Undesignated"
+msgstr "غير مخصص"
+
+#: 
+msgid "Verify church name, address, and contact info appears on giving statements."
+msgstr "تحقق من ظهور اسم الكنيسة والعنوان ومعلومات الاتصال على كشوف العطايا."
+
+#: 
+msgid "The position is now assigned to %s, who has accepted it."
+msgstr "تم تعيين المنصب الآن إلى %s، الذي قبله."
+
+#: 
+msgid "The position is now assigned to %s, who has not yet accepted it."
+msgstr "تم تعيين المنصب الآن إلى %s، الذي لم يقبله بعد."
+
+#: 
+msgid "Their reason: %s"
+msgstr "سببهم: %s"
+
+#: 
+msgid "View Assignments"
+msgstr "عرض التعيينات"
+
+#: 
+msgid "Volunteers still needed for this occurrence: %d"
+msgstr "لا يزال هناك حاجة إلى متطوعين لهذه المناسبة: %d"
+
+#: 
+msgid "Volunteers still needed for this position: %d"
+msgstr "لا يزال هناك حاجة إلى متطوعين لهذا المنصب: %d"
+
+#: 
+msgid "A weekly sign-in grid for each class. Class lists and photo books are on the Sunday School dashboard and each class page."
+msgstr "شبكة تسجيل أسبوعية لكل فصل. قوائم الفصول وألبومات الصور موجودة على لوحة مدرسة الأحد وصفحة كل فصل."
+
+#: 
+msgid "A weekly sign-in grid for the school year, one column for each Sunday"
+msgstr "شبكة تسجيل أسبوعية للعام الدراسي، عمود واحد لكل أحد"
+
+#: 
+msgid "Age %d"
+msgstr "العمر %d"
+
+#: 
+msgid "At least one group must be selected to make an attendance sheet."
+msgstr "يجب اختيار مجموعة واحدة على الأقل لإنشاء ورقة حضور."
+
+#: 
+msgid "Attendance Sheet"
+msgstr "ورقة الحضور"
+
+#: 
+msgid "Class List"
+msgstr "قائمة الفصل"
+
+#: 
+msgid "Download PDF"
+msgstr "تنزيل PDF"
+
+#: 
+msgid "Lockout period in minutes\n"
+"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
+msgstr "فترة القفل بالدقائق\n"
+"يتم إلغاء قفل الحساب المقفل تلقائيًا بعد هذا العدد من الدقائق. يتم احتساب محاولات تسجيل الدخول الفاشلة من عنوان IP واحد خلال نفس الفترة."
+
+#: 
+msgid "Maximum number of failed logins from one IP address\n"
+"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
+"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
+msgstr "الحد الأقصى لعدد محاولات تسجيل الدخول الفاشلة من عنوان IP واحد\n"
+"تُحتسب محاولات تسجيل الدخول الفاشلة وطلبات إعادة تعيين كلمة المرور من عنوان IP واحد ضمن هذا الحد خلال فترة القفل. بمجرد الوصول إليه، يُرفض تسجيل الدخول من ذلك العنوان حتى تنتهي الفترة.\n"
+"اضبط على صفر لتعطيل هذه الميزة، على سبيل المثال عندما يصل الجميع إلى ChurchCRM عبر عنوان وكيل واحد."
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "الحد الأقصى لعدد محاولات تسجيل الدخول الفاشلة المسموح بها قبل قفل حساب المستخدم.\n"
+"يتم إلغاء قفل الحساب المقفل تلقائيًا بعد فترة القفل، أو في وقت أقرب عندما يعيد المسؤول تعيين محاولات تسجيل الدخول الفاشلة.\n"
+"تساعد هذه الميزة في الحماية من هجمات تخمين كلمة المرور الآلية.\n"
+"اضبط على صفر لتعطيل هذه الميزة."
+
+#: 
+msgid "Minutes until it unlocks by itself: %d"
+msgstr "دقائق حتى يتم إلغاء القفل تلقائيًا: %d"
+
+#: 
+msgid "Sunday School Attendance Sheet"
+msgstr "ورقة حضور مدرسة الأحد"
+
+#: 
+msgid "Sundays with no class are left off the sheet."
+msgstr "يتم استبعاد أيام الأحد التي لا يوجد فيها فصل من الورقة."
+
+#: 
+msgid "Database Upgrade"
+msgstr "ترقية قاعدة البيانات"
+
+#: 
+msgid "Your database is being updated. Please keep this page open until the upgrade finishes."
+msgstr "يتم تحديث قاعدة بياناتك. يرجى إبقاء هذه الصفحة مفتوحة حتى تنتهي الترقية."
+
+#: 
+msgid "Family Labels"
+msgstr "تسميات العائلة"
+
+#: 
+msgid "%s – Total"
+msgstr "%s – الإجمالي"
+
+#: 
+msgid "Bill"
+msgstr "ورقة نقدية"
+
+#: 
+msgid "Choose a deposit or enter both report dates."
+msgstr "اختر إيداعًا أو أدخل كلا تاريخي التقرير."
+
+#: 
+msgid "Choose one deposit to review its payments or print its bank slip. A selected deposit overrides the date range."
+msgstr "اختر إيداعًا واحدًا لمراجعة مدفوعاته أو طباعة قسيمة البنك الخاصة به. يتجاوز الإيداع المحدد نطاق التاريخ."
+
+#: 
+msgid "Coin"
+msgstr "عملة معدنية"
+
+#: 
+msgid "Deposit Report"
+msgstr "تقرير الإيداع"
+
+#: 
+msgid "Download Report"
+msgstr "تنزيل التقرير"
+
+#: 
+msgid "Enter valid report dates."
+msgstr "أدخل تواريخ تقرير صالحة."
+
+#: 
+msgid "Invalid report filters."
+msgstr "مرشحات التقرير غير صالحة."
+
+#: 
+msgid "Invalid report options."
+msgstr "خيارات التقرير غير صالحة."
+
+#: 
+msgid "Leave filters empty to include all payments. These settings apply to the report, not the bank slip."
+msgstr "اترك المرشحات فارغة لتضمين جميع المدفوعات. تنطبق هذه الإعدادات على التقرير، وليس على قسيمة البنك."
+
+#: 
+msgid "No records were returned. Adjust your filters and try again."
+msgstr "لم يتم إرجاع أي سجلات. قم بتعديل المرشحات وحاول مرة أخرى."
+
+#: 
+msgid "Prepare for the Bank"
+msgstr "التحضير للبنك"
+
+#: 
+msgid "Preview Totals"
+msgstr "معاينة الإجماليات"
+
+#: 
+msgid "Print Bank Slip"
+msgstr "طباعة قسيمة البنك"
+
+#: 
+msgid "Print the selected deposit in full, with cash and check totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
+msgstr "اطبع الإيداع المحدد بالكامل، مع إجماليات النقد والشيكات وأوراق العد وخطوط الشهود. يتم تجاهل مرشحات التقرير. تبقى المدفوعات الإلكترونية في الملخص وتُستبعد من إجمالي تذكرة البنك المادية."
+
+#: 
+msgid "Review Payments"
+msgstr "مراجعة المدفوعات"
+
+#: 
+msgid "Review payments for a period, or prepare one deposit for the bank."
+msgstr "راجع المدفوعات لفترة، أو أعد إيداعًا واحدًا للبنك."
+
+#: 
+msgid "Review payments, download PDF or CSV, or print a bank slip for one deposit."
+msgstr "راجع المدفوعات أو قم بتنزيل PDF أو CSV أو اطبع قسيمة بنك لإيداع واحد."
+
+#: 
+msgid "Select a valid deposit."
+msgstr "اختر إيداعًا صالحًا."
+
+#: 
+msgid "Select one deposit to print a bank slip."
+msgstr "اختر إيداعًا واحدًا لطباعة قسيمة البنك."
+
+#: 
+msgid "The report end date must be on or after the start date."
+msgstr "يجب أن يكون تاريخ انتهاء التقرير في أو بعد تاريخ البدء."
+
+#: 
+msgid "Total Cash"
+msgstr "إجمالي النقد"
+
+#: 
+msgid "Total Coin"
+msgstr "إجمالي العملات المعدنية"
+
+#: 
+msgid "Witness"
+msgstr "شاهد"
+
