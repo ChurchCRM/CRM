@@ -150,6 +150,7 @@ describe('03 - Backup and Restore', () => {
 
             // Should eventually redirect to login page
             cy.location('pathname', { timeout: 30000 }).should('match', /\/admin\/$/);
+            cy.get('input[name=User]', { timeout: 30000 }).should('be.visible');
         });
     });
 
