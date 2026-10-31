@@ -252,6 +252,8 @@ describe("Admin → Member Portal members, audit, permissions and the person car
         cy.get("#portal-grant-scope-group .ts-control input").type(PREFIX);
         cy.get(".ts-dropdown .option").contains(`${PREFIX} Hospitality`).click();
         const lastDay = new Date(Date.now() + 60 * 86400000).toISOString().slice(0, 10);
+        cy.get("#portal-grant-form").should("have.attr", "method", "post");
+        cy.get("#portal-grant-ends").should("have.attr", "min").and("match", /^\d{4}-\d{2}-\d{2}$/);
         cy.get("#portal-grant-ends").should("have.class", "is-empty").type(lastDay);
         cy.get("#portal-grant-ends").should("not.have.class", "is-empty").clear();
         cy.get("#portal-grant-ends").should("have.class", "is-empty").and("have.attr", "required");
@@ -296,6 +298,32 @@ describe("Admin → Member Portal members, audit, permissions and the person car
 
         cy.signInAsMember(PORTAL_PERSON);
         portalNavLabels().should("not.include", "My Teams");
+    });
+
+    it("lists a permission whose team was deleted as not in effect, where it can be removed", () => {
+        const lastDay = new Date(Date.now() + 60 * 86400000).toISOString().slice(0, 10);
+        cy.makePrivateAdminAPICall("POST", `${MINISTRIES_URL}/${ministryId}/teams`, { name: `${PREFIX} Closing` }, 201).then(({ body: created }) => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/admin/api/person/${PORTAL_PERSON}/sign-in/grants`,
+                { capability: "volunteer.team.manage", scopeId: created.team.id, endsOn: lastDay, reason: "Runs the team that is closing" },
+                201,
+            ).then(({ body: grant }) => {
+                cy.makePrivateAdminAPICall("DELETE", `/api/ministries/teams/${created.team.id}`, null, [200, 204]);
+
+                cy.freshAdminFormLogin();
+                cy.visit(`/people/view/${PORTAL_PERSON}`);
+                cy.get("#portal-signin-permissions-toggle").click();
+                cy.get(`#portal-signin-permissions [data-grant-id="${grant.grantId}"]`).should("not.exist");
+                cy.get(`#portal-signin-ended-grants [data-grant-id="${grant.grantId}"]`)
+                    .should("contain.text", "Manage a team")
+                    .and("contain.text", "What it was given for no longer exists")
+                    .find(".portal-signin-remove-grant")
+                    .click();
+                confirmDialog();
+                cy.get(`#portal-signin-ended-grants [data-grant-id="${grant.grantId}"]`, { timeout: 20000 }).should("not.exist");
+            });
+        });
     });
 
     it("offers only the permissions and scopes the person does not hold yet", () => {

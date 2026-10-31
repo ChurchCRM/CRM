@@ -78,6 +78,8 @@ before(() => {
 });
 
 describe("Admin → Member Portal → Calendars", () => {
+    let goneCalendarId = null;
+
     before(() => {
         withVolunteerV2(() => {
             removeMinistryCalendar();
@@ -94,6 +96,9 @@ describe("Admin → Member Portal → Calendars", () => {
         // Leave the installation as the seed had it: nothing shared.
         setVisibleCalendars([]);
         withVolunteerV2(removeMinistryCalendar);
+        if (goneCalendarId !== null) {
+            cy.makePrivateAdminAPICall("DELETE", `/api/calendars/${goneCalendarId}`, null, [200, 404]);
+        }
     });
 
     beforeEach(() => {
@@ -205,6 +210,7 @@ describe("Admin → Member Portal → Calendars", () => {
             { Name: GONE_CALENDAR_NAME, ForegroundColor: "#ffffff", BackgroundColor: "#336699" },
             200,
         ).then(({ body }) => {
+            goneCalendarId = body.Id;
             cy.setupAdminSession();
             openCalendarsTab();
             cy.request({ method: "DELETE", url: `/api/calendars/${body.Id}` });
