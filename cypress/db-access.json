@@ -17,6 +17,10 @@
             "kind": "fixture",
             "reason": "Registers cy.dbQuery()."
         },
+        "cypress/e2e/api/private/admin/private.admin.config-rename-upgrade.spec.js": {
+            "kind": "schema",
+            "reason": "Upgrade migration spec (#10987): verifies 7.8.3-rename-tax-report-settings.sql copies old config values to new keys and deletes old rows; the upgrade script has no HTTP surface."
+        },
         "cypress/support/sign-in-throttle.js": {
             "kind": "fixture",
             "reason": "Ends a sign-in throttle window (#10197) so specs need not wait out a 15-minute lockout; the server still decides what an ended window means."

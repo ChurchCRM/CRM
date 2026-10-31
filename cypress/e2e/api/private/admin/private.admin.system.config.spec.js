@@ -161,11 +161,11 @@ describe("API Private Admin System Config", () => {
     });
 
     describe("Config Sanitization (content configs - markup preserved)", () => {
-        it("POST content config preserves PDF markup (sTaxReport1)", () => {
+        it("POST content config preserves PDF markup (sGivingStatementOpening)", () => {
             const pdfMarkup = '<table border="1"><tr><td>Tax Report</td></tr></table>';
             cy.makePrivateAdminAPICall(
                 "POST",
-                "/admin/api/system/config/sTaxReport1",
+                "/admin/api/system/config/sGivingStatementOpening",
                 { value: pdfMarkup },
                 200,
             ).then((resp) => {
