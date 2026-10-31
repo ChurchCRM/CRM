@@ -5,7 +5,7 @@ import { LEGACY_PAGES, MVC_PAGES } from "../../../../support/mvc-pages";
 // A member session opening a staff page is sent to the staff sign-in.
 const expectStaffSignIn = (page) => {
     cy.visit(page, { failOnStatusCode: false });
-    cy.location("pathname").should("eq", "/admin/");
+    cy.location("pathname").should("match", /\/admin\/$/);
     cy.get("#UserBox").should("be.visible");
 };
 

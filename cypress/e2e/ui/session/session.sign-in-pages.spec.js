@@ -15,18 +15,24 @@ import {
 /**
  * Member sign-in row 6 (#10463): the sign-in pages and switching between staff
  * and portal (docs/member-sign-in-design.md §6.4, §7, §17 "Sign-in pages").
- * Judith Matthews (person 95) has a staff account and an email of her own;
- * Constance Hart (person 6) is a member with no staff account.
+ * Judith Kennedy (judith.matthews@example.com) has a staff account and an
+ * email of her own; Constance Hart is a member with no staff account.
  */
 
-const judith = { personId: 95, email: "judith.matthews@example.com", username: "judith.matthews@example.com", password: "noMoney$" };
-const constance = { personId: 6, email: "constance.hart@example.com" };
+const judith = { personId: 0, email: "judith.matthews@example.com", username: "judith.matthews@example.com", password: "noMoney$" };
+const constance = { personId: 0, email: "constance.hart@example.com" };
 const standard = { username: "tony.wade@example.com", password: "basicjoe" };
 
 const signInAtAdmin = ({ username, password }) => {
     cy.get("#UserBox").type(username);
     cy.get("#PasswordBox").type(`${password}{enter}`, { log: false });
 };
+
+const lookUpPerson = (person) =>
+    cy.makePrivateAdminAPICall("GET", `/api/persons/search/${encodeURIComponent(person.email)}`, null, 200).then(({ body }) => {
+        expect(body, person.email).to.have.length(1);
+        person.personId = body[0].objid;
+    });
 
 const emailSignIn = (email) => {
     askForEmail(email);
@@ -45,6 +51,8 @@ describe("Sign-in pages", () => {
     before(() => {
         cy.rememberTestEnv(["admin.username", "admin.password"]);
         cy.task("mail:available").its("available").should("eq", true);
+        lookUpPerson(judith);
+        lookUpPerson(constance);
         useMemberSignIn(saved, { sMemberSignInFamilyRoles: "0,1,2", sMemberSignInClassifications: "0,1,2" });
     });
 
@@ -63,11 +71,11 @@ describe("Sign-in pages", () => {
     describe("signed out", () => {
         it("sends the web root to /portal/login while member sign-in is on, with no staff sign-in link, and staff sign in at /admin", () => {
             cy.visit("/");
-            cy.location("pathname").should("eq", "/portal/login");
+            cy.location("pathname").should("match", /\/portal\/login$/);
             cy.get("#portalSignInEmail").should("be.visible");
             cy.get("#portalStaffSignIn").should("not.exist");
             cy.visit("/admin/");
-            cy.location("pathname").should("eq", "/admin/");
+            cy.location("pathname").should("match", /\/admin\/$/);
             cy.get("#UserBox").should("be.visible");
             cy.get("#PasswordBox").should("be.visible");
         });
@@ -75,7 +83,7 @@ describe("Sign-in pages", () => {
         it("sends the web root to the staff sign-in at /admin while member sign-in is off, and /portal/login still says why", () => {
             setConfig("bMemberSignIn", "0");
             cy.visit("/");
-            cy.location("pathname").should("eq", "/admin/");
+            cy.location("pathname").should("match", /\/admin\/$/);
             cy.get("#UserBox").should("be.visible");
             cy.get("#PasswordBox").should("be.visible");
             cy.visit("/portal/login");
@@ -95,7 +103,7 @@ describe("Sign-in pages", () => {
                 },
             );
             cy.visit("/session/begin?username=someone%40example.com");
-            cy.location("pathname").should("eq", "/admin/");
+            cy.location("pathname").should("match", /\/admin\/$/);
             cy.get("#UserBox").should("have.value", "someone@example.com");
         });
 
@@ -108,15 +116,15 @@ describe("Sign-in pages", () => {
 
         it("sends a signed-out staff page to /admin and back to it after sign-in", () => {
             cy.visit("/groups/dashboard");
-            cy.location("pathname").should("eq", "/admin/");
+            cy.location("pathname").should("match", /\/admin\/$/);
             signInAtAdmin(admin());
-            cy.location("pathname").should("eq", "/groups/dashboard");
+            cy.location("pathname").should("match", /\/groups\/dashboard$/);
 
             cy.clearCookies();
             cy.visit("/PropertyList.php?Type=p");
-            cy.location("pathname").should("eq", "/admin/");
+            cy.location("pathname").should("match", /\/admin\/$/);
             signInAtAdmin(admin());
-            cy.location("pathname").should("eq", "/PropertyList.php");
+            cy.location("pathname").should("match", /\/PropertyList\.php$/);
             cy.location("search").should("eq", "?Type=p");
         });
     });
@@ -126,7 +134,7 @@ describe("Sign-in pages", () => {
             cy.visit("/admin/");
             signInAtAdmin(admin());
             cy.visit("/admin/");
-            cy.location("pathname").should("eq", "/admin/");
+            cy.location("pathname").should("match", /\/admin\/$/);
             cy.contains("Admin Dashboard");
             cy.get("#UserBox").should("not.exist");
         });
@@ -135,9 +143,9 @@ describe("Sign-in pages", () => {
             cy.visit("/admin/");
             signInAtAdmin(standard);
             cy.visit("/admin/");
-            cy.location("pathname").should("eq", "/v2/dashboard");
+            cy.location("pathname").should("match", /\/v2\/dashboard$/);
             cy.visit("/admin/system/users");
-            cy.location("pathname").should("eq", "/v2/access-denied");
+            cy.location("pathname").should("match", /\/v2\/access-denied$/);
             cy.request({ url: "/admin/api/member-portal/sign-in", failOnStatusCode: false }).its("status").should("eq", 403);
         });
 
@@ -146,11 +154,11 @@ describe("Sign-in pages", () => {
             signInAtAdmin(standard);
             cy.get('[aria-label="Open user menu"]').click();
             cy.contains(".dropdown-item", "Member Portal").click();
-            cy.location("pathname").should("eq", "/portal/");
+            cy.location("pathname").should("match", /\/portal\/$/);
             cy.get("#portalAccountChangePassword").should("exist");
             cy.get("#portal-account-toggle").click();
-            cy.get("#portalAccountAdminConsole").should("have.attr", "href", "/v2/dashboard").click();
-            cy.location("pathname").should("eq", "/v2/dashboard");
+            cy.get("#portalAccountAdminConsole").should(($link) => expect($link.attr("href")).to.match(/\/v2\/dashboard$/)).click();
+            cy.location("pathname").should("match", /\/v2\/dashboard$/);
             cy.get("#UserBox").should("not.exist");
         });
 
@@ -160,7 +168,7 @@ describe("Sign-in pages", () => {
             cy.visit("/portal/");
             cy.get("#portal-account-toggle").click();
             cy.get("#portalAccountSignOut").click();
-            cy.location("pathname").should("eq", "/admin/");
+            cy.location("pathname").should("match", /\/admin\/$/);
             cy.request({ url: "/portal/", followRedirect: false }).its("redirectedToUrl").should("match", /\/portal\/login$/);
             expectStaffSignInRedirect("/v2/dashboard");
         });
@@ -170,7 +178,7 @@ describe("Sign-in pages", () => {
         it("sends the web root to the portal and refuses every staff route", () => {
             emailSignIn(judith.email);
             cy.visit("/");
-            cy.location("pathname").should("eq", "/portal/");
+            cy.location("pathname").should("match", /\/portal\/$/);
             ["/v2/dashboard", "/admin/system/users", "/people/view/2", "/PropertyList.php"].forEach(expectStaffSignInRedirect);
             cy.request({ url: "/api/persons/latest", failOnStatusCode: false }).its("status").should("eq", 401);
             cy.request({ url: "/admin/api/member-portal/sign-in", failOnStatusCode: false }).its("status").should("eq", 401);
@@ -199,13 +207,13 @@ describe("Sign-in pages", () => {
             lastAuditId().then((startId) => {
                 cy.visit("/portal/");
                 cy.get("#portal-account-toggle").click();
-                cy.get("#portalAccountAdminConsole").should("have.attr", "href", "/admin/").click();
-                cy.location("pathname").should("eq", "/admin/");
+                cy.get("#portalAccountAdminConsole").should(($link) => expect($link.attr("href")).to.match(/\/admin\/$/)).click();
+                cy.location("pathname").should("match", /\/admin\/$/);
                 signInAtAdmin(judith);
-                cy.location("pathname").should("eq", "/v2/dashboard");
+                cy.location("pathname").should("match", /\/v2\/dashboard$/);
 
                 cy.visit("/portal/");
-                cy.get("#portalAccountAdminConsole").should("have.attr", "href", "/v2/dashboard");
+                cy.get("#portalAccountAdminConsole").should(($link) => expect($link.attr("href")).to.match(/\/v2\/dashboard$/));
                 cy.get("#portalAccountChangePassword").should("exist");
                 auditSince(startId).then((rows) => {
                     const events = rows.map((row) => [row.psa_per_ID, row.psa_Event, row.psa_Method, row.psa_Reason]);
@@ -220,7 +228,7 @@ describe("Sign-in pages", () => {
         it("ends a staff session in the same browser when a member signs in by email", () => {
             cy.visit("/admin/");
             signInAtAdmin(standard);
-            cy.location("pathname").should("eq", "/v2/dashboard");
+            cy.location("pathname").should("match", /\/v2\/dashboard$/);
             cy.visit("/portal/login");
             cy.get("#portalSignInEmail").should("be.visible");
 

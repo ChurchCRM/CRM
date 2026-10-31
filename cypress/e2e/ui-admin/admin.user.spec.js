@@ -32,7 +32,7 @@ describe("Admin User Password", () => {
             cy.visit(`admin/system/users/new?personId=${PERSON_ID}`);
             cy.contains("User Editor");
             cy.get("#SaveButton").click();
-            cy.location("pathname").should("eq", "/admin/system/users");
+            cy.location("pathname").should("match", /\/admin\/system\/users$/);
         });
 
         after(() => {

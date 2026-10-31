@@ -45,7 +45,7 @@ describe("After the release-day cutover", () => {
                 .and("contain.text", "People who used to sign in to the Member Portal: 3");
             cy.get("#former-portal-accounts-email").should("contain.text", "email (SMTP) must work before you turn it on");
             cy.get("#former-portal-accounts-email-setup").should("not.exist");
-            cy.get("#former-portal-accounts-turn-on").should("have.attr", "href", "/admin/member-portal#portal-signin");
+            cy.get("#former-portal-accounts-turn-on").should(($link) => expect($link.attr("href")).to.match(/\/admin\/member-portal#portal-signin$/));
 
             cy.intercept("POST", "**/admin/api/member-portal/former-accounts-notice/dismiss").as("dismiss");
             cy.get(`${NOTICE} .js-dismiss-former-portal-accounts`).click();
@@ -64,7 +64,7 @@ describe("After the release-day cutover", () => {
             setConfig("sSMTPHost", "");
             cy.setupAdminSession();
             cy.visit("/admin/");
-            cy.get("#former-portal-accounts-email-setup").should("have.attr", "href", "/admin/email");
+            cy.get("#former-portal-accounts-email-setup").should(($link) => expect($link.attr("href")).to.match(/\/admin\/email$/));
         });
 
         it("is not shown while member sign-in is on", () => {

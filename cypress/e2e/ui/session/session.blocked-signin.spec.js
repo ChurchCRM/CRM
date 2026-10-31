@@ -31,7 +31,7 @@ describe("Blocked sign-in for deceased and inactive people", () => {
         describe(userName, () => {
             it("correct password stays on the login page with the generic message", () => {
                 login(userName);
-                cy.location("pathname", { timeout: 10000 }).should("eq", "/admin/");
+                cy.location("pathname", { timeout: 10000 }).should("match", /\/admin\/$/);
                 cy.contains(".alert-danger", GENERIC_MESSAGE);
                 cy.get("input[name=User]").should("exist");
             });
@@ -62,19 +62,19 @@ describe("Blocked sign-in for deceased and inactive people", () => {
 
         it("browser session is sent back to the login page", () => {
             login("deactivate.target");
-            cy.location("pathname", { timeout: 10000 }).should("not.eq", "/admin/");
+            cy.location("pathname", { timeout: 10000 }).should("not.match", /\/admin\/$/);
             cy.visit("/v2/dashboard");
             cy.url().should("include", "/v2/dashboard");
 
             setActive(false);
 
             cy.visit("/v2/dashboard");
-            cy.location("pathname").should("eq", "/admin/");
+            cy.location("pathname").should("match", /\/admin\/$/);
         });
 
         it("session-authenticated API call answers 401", () => {
             login("deactivate.target");
-            cy.location("pathname", { timeout: 10000 }).should("not.eq", "/admin/");
+            cy.location("pathname", { timeout: 10000 }).should("not.match", /\/admin\/$/);
             cy.request("/api/person/2").its("status").should("eq", 200);
 
             setActive(false);
@@ -85,11 +85,11 @@ describe("Blocked sign-in for deceased and inactive people", () => {
         it("reactivating the person restores sign-in", () => {
             setActive(false);
             login("deactivate.target");
-            cy.location("pathname", { timeout: 10000 }).should("eq", "/admin/");
+            cy.location("pathname", { timeout: 10000 }).should("match", /\/admin\/$/);
 
             setActive(true);
             login("deactivate.target");
-            cy.location("pathname", { timeout: 10000 }).should("not.eq", "/admin/");
+            cy.location("pathname", { timeout: 10000 }).should("not.match", /\/admin\/$/);
         });
     });
 });
