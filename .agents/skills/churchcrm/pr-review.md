@@ -34,6 +34,7 @@ Answer before reading code:
 - Does another open PR already cover the same issue? Read its comments first: a maintainer may have a plan for it. Do not open a competing PR.
 - Does it meet the issue rule in `git-workflow.md`? Missing it is a hard block.
 - Does the goal belong in this milestone? Passing gates still does not mean merge if maintainers disagree with the goal.
+- Does it add a subsystem, table family, auth model, plugin API or cross-cutting middleware, or change a documented design? Find the linked RFC or design (`docs/decisions/`, `docs/design/`, epic, issue) and the maintainer's approval. Report both; missing is a hard block (gates item 12).
 - Does it extend Query View / predefined `query_qry` reports? If yes, Request changes. New reports are MVC + Propel or a plugin.
 
 Leave the contributor branch as it is: merge `master`, resolve conflicts, or push only when the maintainer asks.
@@ -46,7 +47,7 @@ Credit the contributor. When their PR leaves the project better than before but 
 
 ## Phase 2 — Review the full branch diff
 
-Review `origin/master...<branch>`, not only the latest commit.
+Review `origin/master...<branch>`, not only the latest commit. After a rebase, preserve independent additions to shared test commands, check that the PR merges against the current base, and verify CI runs reference the latest head SHA.
 
 ```bash
 git fetch origin
@@ -102,6 +103,32 @@ Apply only the sections that match the changed files. Hard-block items are also 
 - [ ] AuthZ on protected routes
 - [ ] Free of injection, XSS, open redirect, and member-data leaks
 
+### RBAC / authorization (hard block)
+
+Applies to any change to a route, API, middleware, permission check, session, admin setting, plugin hook or role-gated control (gates item 11). Read `authorization-security.md`.
+
+- [ ] Every new or changed route sits behind a named middleware
+- [ ] The acting person or user comes from the session, never a request id
+- [ ] Object ids in the request are checked against what the caller may see (`FamilyMiddleware`, `canViewFamily()`, `CustomFieldService::canView()`)
+- [ ] API-key callers are refused or scoped on purpose
+- [ ] A portal or member session cannot reach a staff route; no path raises one session type to another
+- [ ] Admin-only settings and actions use the admin middleware
+- [ ] Revoking a user, role or permission ends access on the next request
+- [ ] Menu entries and buttons use the same permission as the route they open
+- [ ] Cypress covers the denied user, not only the allowed one
+- [ ] The draft names who can reach each entry point and what changed versus `master`
+
+For a large auth PR, run a security-focused sub agent over the diff and verify its findings against the code before you report them.
+
+### PDF / mPDF reports
+
+Apply [reports.md](reports.md), including its review-evidence checklist, to changes in report data, routes, rendering, templates, exports and shared PDF helpers. Trace all current merged consumers; record only concrete findings and unverified checks in the review.
+
+- [ ] Dates, money, labels and fiscal years follow the `reports.md` Data rules and are formatted in the service
+- [ ] The template holds no date format, currency symbol, separator or English literal (grep the diff for `$`, `€`, `number_format`, `date(`, `default('`)
+- [ ] A spec runs the report under non-US settings, or the review says the locale check was not run
+- [ ] A report that loops one letter per recipient includes `_letter-break.html.twig` between letters, and a spec or a render with two or more recipients shows the letterhead on each
+
 ### Frontend & UI
 
 Rules live in `frontend-development.md`; check the diff against it.
@@ -137,6 +164,8 @@ Rules live in `frontend-development.md`; check the diff against it.
 - [ ] Spec regenerated when annotations changed
 
 ### Testing (hard block if a feature or bug fix has none)
+
+- [ ] PHP behavior has focused Nette coverage in the matching suite/layer/feature package; review shared bootstrap, isolation and evidence using `ci-test-infrastructure.md`. Keep HTTP permission and browser workflow coverage where those boundaries matter
 
 - [ ] Free of `console.log`, `var_dump`, `dd()`, `.skip`, `.only`
 - [ ] New API endpoints have Cypress API coverage when that is the project pattern
@@ -174,7 +203,7 @@ The docs PR stays separate from the feature PR and waits for the release.
 
 ## Phase 6 — Draft the review (do not post yet)
 
-Use the output block in `maintainer-review-gates.md`.
+Use the output block in `maintainer-review-gates.md`. The draft always contains the RBAC line and the design-approval line, even when the answer is "no RBAC impact: <why>" or "no architectural change".
 
 - Hard blocks → `REQUEST_CHANGES`
 - Follow-ups only → `COMMENT`

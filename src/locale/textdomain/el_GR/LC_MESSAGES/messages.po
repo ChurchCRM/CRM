@@ -928,20 +928,8 @@ msgid "Voting Members"
 msgstr "Μέλη που ψηφίζουν"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Έκθεση Δόσεως (Φορολογικές καταστάσεις)"
-
-#: 
 msgid "Zero Givers"
 msgstr "Μηδενικοί Δωρητές"
-
-#: 
-msgid "Individual Deposit Report"
-msgstr "Ατομική Έκθεση Κατάθεσης"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Σύνθετη αναφορά κατάθεσης"
 
 #: 
 msgid "Next"
@@ -967,10 +955,6 @@ msgid "Apply Report Dates To"
 msgstr "Εφαρμογή ημερομηνιών αναφοράς σε"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "Ημερομηνία κατάθεσης (Προεπιλογή)"
-
-#: 
 msgid "Payment Date"
 msgstr "Ημερομηνία πληρωμής"
 
@@ -993,10 +977,6 @@ msgid "Filter by Payment Type"
 msgstr "Φιλτράρισμα κατά τύπο πληρωμής"
 
 #: 
-msgid "All Methods"
-msgstr "Όλες οι Μέθοδοι"
-
-#: 
 msgid "Check"
 msgstr "Ελεγχος"
 
@@ -1007,10 +987,6 @@ msgstr "Μετρητά"
 #: 
 msgid "Bank Draft"
 msgstr "Τραπεζική επιταγή"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0 - Όχι ελάχιστο"
 
 #: 
 msgid "Other Settings"
@@ -1276,10 +1252,6 @@ msgstr "Επιβεβαιώστε τις ετικέτες δεδομένων"
 #: 
 msgid "Invalid login or password"
 msgstr "Μη έγκυρη είσοδος ή κωδικός πρόσβασης"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Πάρα πολλές αποτυχημένες συνδέσεις: ο λογαριασμός σας έχει κλειδωθεί. Επικοινωνήστε με έναν διαχειριστή."
 
 #: 
 msgid "Email/Username"
@@ -1731,14 +1703,6 @@ msgid "System Settings"
 msgstr "Ρυθμίσεις συστήματος"
 
 #: 
-msgid "Tax Report"
-msgstr "Φορολογική Έκθεση"
-
-#: 
-msgid "Calendar Year"
-msgstr "Ημερολογιακό έτος"
-
-#: 
 msgid "User Editor"
 msgstr "Επεξεργαστής χρήστη"
 
@@ -2152,24 +2116,12 @@ msgid "Classes"
 msgstr "Τάξεις"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Εκθέσεις Κυριακάτικων Σχολείων"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Μαθητές όχι σε τάξη Καθηχητικού"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Τουλάχιστον μία ομάδα πρέπει να επιλεγεί για τη δημιουργία καταλόγων μαθημάτων ή φύλλων παρουσίας."
-
-#: 
 msgid "Report Details"
 msgstr "Λεπτομέρειες αναφοράς"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Καταχωρίστε όλους τους ρόλους (η μη επιλεγμένη θα εμφανίσει μόνο ρόλους δασκάλου/μαθητή)"
 
 #: 
 msgid "First Sunday"
@@ -2190,10 +2142,6 @@ msgstr "Επιπλέον Μαθητές"
 #: 
 msgid "Extra Teachers"
 msgstr "Επιπλέον Δάσκαλοι"
-
-#: 
-msgid "Create Class List"
-msgstr "Δημιουργία λίστας τάξεων"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4607,14 +4555,6 @@ msgid "PhotoBook"
 msgstr "Photobook"
 
 #: 
-msgid "With Photos"
-msgstr "Με Φωτογραφίες"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Δημιουργία Photobook"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4759,11 +4699,6 @@ msgstr "επετείους"
 #: 
 msgid "View User"
 msgstr "Προβολή χρήστη"
-
-#: 
-#, fuzzy
-msgid "not found or user without an email"
-msgstr "δεν βρέθηκε ή χρήστης χωρίς email"
 
 #: 
 msgid "UserName not set"
@@ -4961,16 +4896,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Ελάχιστο ποσό που πρέπει να διαφέρει ένας νέος κωδικός πρόσβασης από τον παλιό (# χαρακτήρες άλλαξαν)\n"
 "Ορίστε στο μηδέν για να απενεργοποιήσετε αυτήν τη δυνατότητα"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Μέγιστος αριθμός αποτυχημένων συνδέσεων που πρέπει να επιτραπούν πριν κλειδωθεί ένας λογαριασμός χρήστη.\n"
-"Μόλις επιτευχθεί το μέγιστο, ένας διαχειριστής πρέπει να ενεργοποιήσει ξανά τον λογαριασμό.\n"
-"Αυτή η δυνατότητα βοηθά στην προστασία από αυτοματοποιημένες επιθέσεις εικασίας κωδικών πρόσβασης.\n"
-"Ορίστε στο μηδέν για να απενεργοποιήσετε αυτήν τη δυνατότητα."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -5609,10 +5534,6 @@ msgstr "Διαγραφή επιλεγμένων"
 #: 
 msgid "Funds"
 msgstr "Ταμεία / Πόροι"
-
-#: 
-msgid "Generate Report"
-msgstr "Δημιουργία αναφοράς"
 
 #: 
 msgid "Payments"
@@ -6308,14 +6229,6 @@ msgid "Current Deposit"
 msgstr "Τρέχουσα κατάθεση"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Προσαρμόσιμη αναφορά με φιλτράρισμα ανά ημερομηνία, ταμείο, οικογένεια και τρόπο πληρωμής."
-
-#: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Προσαρμόστε το κείμενο που εμφανίζεται στις φορολογικές βεβαιώσεις."
-
-#: 
 msgid "Day"
 msgstr "Ημέρα"
 
@@ -6326,10 +6239,6 @@ msgstr "Δεκ"
 #: 
 msgid "Deposit Statistics"
 msgstr "Στατιστικά Κατάθεσης"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Λεπτομερής ανάλυση ενός μεμονωμένου παραστατικού κατάθεσης."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6396,20 +6305,12 @@ msgid "Generate"
 msgstr "Δημιουργία"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Δημιουργία φορολογικών βεβαιώσεων"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Δημιουργία ετήσιων φορολογικών βεβαιώσεων δωρεών. Μπορούν να εκτυπωθούν ή να σταλούν με email."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "Δημιουργία υπενθυμίσεων για οικογένειες με εκκρεμείς υποσχέσεις προσφοράς."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "Δημιουργία αναφορών για φορολογικές βεβαιώσεις, παρακολούθηση υποσχέσεων και οικονομική ανάλυση."
 
 #: 
 msgid "ID"
@@ -6438,10 +6339,6 @@ msgstr "Ιουν"
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "Ας ρυθμίσουμε το σύστημά σας για χρήση"
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "Λίστα μελών με δικαίωμα ψήφου βάσει ιστορικού προσφορών και κριτηρίων μέλους."
 
 #: 
 msgid "Location"
@@ -6592,10 +6489,6 @@ msgid "System Info"
 msgstr "Πληροφορίες Συστήματος"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "Αναφορές Φόρων & Προσφορών"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "Κείμενο φορολογικής αναφοράς"
 
@@ -6622,10 +6515,6 @@ msgstr "Αναβάθμιση"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "Ο χρήστης πρέπει να είναι Admin ή να έχει άδεια Finance"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Επαληθεύστε ότι το όνομα και η διεύθυνση της εκκλησίας εμφανίζονται στις βεβαιώσεις."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9139,10 +9028,6 @@ msgid "Generate reports on group membership and activities"
 msgstr "Δημιουργία αναφορών για τα μέλη ομάδων και τις δραστηριότητες"
 
 #: 
-msgid "Generate tax statement documents for donors"
-msgstr "Δημιουργία φορολογικών βεβαιώσεων για δωρητές"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "Εισαγωγή δεδομένων στο ChurchCRM"
 
@@ -9889,10 +9774,6 @@ msgid "View transaction details for a pledge payment"
 msgstr "Προβολή λεπτομερειών συναλλαγής για πληρωμή οικονομικής δέσμευσης"
 
 #: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "Τα μέλη με δικαίωμα ψήφου πρέπει να έχουν κάνει προσφορά εντός αυτών των ετών (0 για να μην απαιτείται προσφορά)"
-
-#: 
 msgid "We could not find the family you were looking for."
 msgstr "Δεν μπορέσαμε να βρούμε την οικογένεια που αναζητούσατε."
 
@@ -10083,10 +9964,6 @@ msgstr "Αναγκαστική επανεγκατάσταση;"
 #: 
 msgid "Full Path"
 msgstr "Πλήρης διαδρομή"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Δημιουργία λιστών τάξεων, φύλλων παρουσίας και φωτογραφικών λευκωμάτων"
 
 #: 
 msgid "Installed"
@@ -15959,10 +15836,6 @@ msgid "Please confirm your family information"
 msgstr "Παρακαλώ επιβεβαιώστε τα στοιχεία της οικογένειάς σας"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "Παρακαλώ αποστείλετε την επόμενη προσφορά σας στο %s"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Παρακαλώ επιλέξτε άλλη οικογένεια με την οποία θα συσχετιστούν αυτές οι προσφορές"
 
@@ -17993,10 +17866,6 @@ msgid "{{minutes}} min left"
 msgstr "{{minutes}} λεπτά απομένουν"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d έγγραφο φόρου αποστάλθηκε στην οικογένεια με επιτυχία."
-
-#: 
 msgid "All classifications"
 msgstr "Όλες οι ταξινομήσεις"
 
@@ -18029,28 +17898,8 @@ msgid "Columns per Page"
 msgstr "Στήλες ανά σελίδα"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "Αγαπητή %s Οικογένεια,\n"
-"\n"
-"Parakaloμε βρείτε τη δήλωση παροχής %d από %s που επισυνάπτεται σε αυτό το email.\n"
-"\n"
-"Εάν έχετε οποιεσδήποτε ερωτήσεις, παρακαλώ επικοινωνήστε με το γραφείο της εκκλησίας.\n"
-"\n"
-"Ευχαριστούμε για τη γενναιοδωρία σας."
-
-#: 
 msgid "Download CSV"
 msgstr "Κατεβάστε CSV"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "Email %d Έγγραφο Φόρου"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18153,10 +18002,6 @@ msgid "Pledged"
 msgstr "Υποσχέθηκε"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "Εκτύπωση %d Έγγραφο Φόρου"
-
-#: 
 msgid "Recent Friends"
 msgstr "Πρόσφατοι Φίλοι"
 
@@ -18181,24 +18026,8 @@ msgid "Single Pages"
 msgstr "Μεμονωμένες Σελίδες"
 
 #: 
-msgid "Tax Documents"
-msgstr "Έγγραφα Φόρου"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "Το email του εγγράφου φόρου δεν κατάφερε να αποσταλεί. Παρακαλώ ελέγξτε τις ρυθμίσεις του διακομιστή email σας."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "Δύο σελίδες μισού μεγέθους δίπλα δίπλα σε κάθε φύλλο τοπίου, σε σειρά εκδόσεων. Εκτύπωση διπλής όψης με \"flip on short edge\", στη συνέχεια διπλώστε τη στοίβα στη μέση. Οι στήλες μετρώνται ανά μισή σελίδα."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "Δεν είναι δυνατή η αποστολή email του εγγράφου φόρου: δεν βρέθηκαν στοιχεία πληρωμής για εκείνο το έτος."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "Δεν είναι δυνατή η αποστολή email του εγγράφου φόρου: αυτή η οικογένεια δεν έχει διεύθυνση email στο αρχείο."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -18661,10 +18490,6 @@ msgid "Could not match the church country."
 msgstr "Δεν ήταν δυνατή η αντιστοίχιση της χώρας της εκκλησίας."
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Λίστες τάξεων, φύλλα παρουσιών και φωτογραφικά λευκώματα"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "Λίστες μελών διακονιών και αναφορές τάξεων Κατηχητικού"
 
@@ -18867,22 +18692,10 @@ msgstr[0] "%d προεπιλεγμένος εθελοντής ανατέθηκε
 msgstr[1] "%d προεπιλεγμένοι εθελοντές ανατέθηκαν"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Χρειάζεται ακόμη %d εθελοντής για αυτή τη θέση. Ανοίξτε την πραγματοποίηση για να καλύψετε το κενό."
-msgstr[1] "Χρειάζονται ακόμη %d εθελοντές για αυτή τη θέση. Ανοίξτε την πραγματοποίηση για να καλύψετε το κενό."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d νέα πραγματοποίηση"
 msgstr[1] "%d νέες πραγματοποιήσεις"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Χρειάζεται ακόμη %d εθελοντής για μια προσεχή πραγματοποίηση."
-msgstr[1] "Χρειάζονται ακόμη %d εθελοντές για μια προσεχή πραγματοποίηση."
 
 #: 
 msgid "%s Calendar"
@@ -20947,10 +20760,6 @@ msgstr "Άνοιγμα της διακονίας"
 #: 
 msgid "Open the occurrence"
 msgstr "Άνοιγμα της πραγματοποίησης"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Ανοίξτε την πραγματοποίηση για να αναθέσετε τα άτομα που χρειάζεστε."
 
 #: 
 msgid "Open this team"
@@ -24645,10 +24454,6 @@ msgstr "Η υπηρεσία γεωκωδικοποίησης δεν απάντη
 #: 
 msgid "Only the email you sent is shown."
 msgstr "Εμφανίζεται μόνο το email που στείλατε."
-
-#: 
-msgid "%d Giving Statement"
-msgstr "%d Δήλωση Δωρεών"
 
 #: 
 msgid "Repeat events could not be created. Check the application log for details."

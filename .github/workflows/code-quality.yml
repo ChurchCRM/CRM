@@ -48,5 +48,8 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: npm ci
-      - name: Lint (typecheck, Biome, UI, icon, Cypress, SQL, and locale script checks)
+      - uses: ./.github/actions/composer-install
+      - name: Install PHP test tooling
+        run: npm run test:php:install
+      - name: Lint and fast regression tests
         run: npm run lint

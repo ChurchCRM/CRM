@@ -14,6 +14,7 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\Utils\PdfFilename;
 
 /**
  * Family-data confirmation report: one sheet per family showing what is on record, with the
@@ -33,24 +34,6 @@ class ConfirmReportService
 
     /** @var array<string,string> Cache for ListOption role name lookups (key: "listId:optionId"). */
     private array $roleNameCache = [];
-
-    /**
-     * Content-Disposition for a report PDF. The ASCII name is the fallback; the UTF-8 name keeps
-     * family names written in any script.
-     */
-    public static function contentDisposition(string $filename): string
-    {
-        $disposition = SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline';
-        $ascii = trim((string) preg_replace('/[^A-Za-z0-9._-]+/', '_', $filename), '_');
-        $utf8 = trim((string) preg_replace('/[^\p{L}\p{N}._-]+/u', '_', $filename), '_');
-
-        return sprintf(
-            '%s; filename="%s"; filename*=UTF-8\'\'%s',
-            $disposition,
-            $ascii !== '' ? $ascii : 'ConfirmReport.pdf',
-            rawurlencode($utf8 !== '' ? $utf8 : 'ConfirmReport.pdf')
-        );
-    }
 
     /**
      * Every family that can receive an email: at least one valid address among the family's own
@@ -102,7 +85,7 @@ class ConfirmReportService
      * Generate a combined download PDF for all active families (or one specific family).
      *
      * @param int|null $familyId If set, only include that one family.
-     * @return array{bytes: string, filename: string} PDF bytes and suggested filename.
+     * @return array{bytes: string, label: string} PDF bytes and report filename label.
      */
     public function generateDownloadPDF(?int $familyId): array
     {
@@ -113,14 +96,14 @@ class ConfirmReportService
             $sheets[] = $this->familySheet($family, $this->livingMembers($family), []);
         }
 
-        $filename = 'ConfirmReport' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
+        $label = 'ConfirmReport-' . date(SystemConfig::getValue('sDateFilenameFormat'));
         if ($familyId !== null && count($families) === 1) {
-            $filename = 'ConfirmReport-' . $families[0]->getName() . '.pdf';
+            $label = 'ConfirmReport-' . $families[0]->getName();
         }
 
         $bytes = (new MpdfRenderer())->renderToString('confirm-report', $this->document($sheets, 'graphic'));
 
-        return ['bytes' => $bytes, 'filename' => $filename];
+        return ['bytes' => $bytes, 'label' => $label];
     }
 
     /**
@@ -153,7 +136,7 @@ class ConfirmReportService
 
             $mail = new FamilyVerificationEmail($target['emails'], $famName, null, $updated);
             $mail->setLogContext(null, (int) $family->getId(), $senderId);
-            $mail->addStringAttachment($pdfBytes, 'ConfirmReportEmail-' . self::attachmentLabel($famName) . '-' . $dateStamp . '.pdf');
+            $mail->addStringAttachment($pdfBytes, PdfFilename::create('ConfirmReportEmail-' . $famName . '-' . $dateStamp));
 
             if ($mail->send()) {
                 $sentCount++;
@@ -324,7 +307,7 @@ class ConfirmReportService
      */
     private function document(array $sheets, string $letterhead): array
     {
-        $graphic = $letterhead === 'graphic' ? self::graphicLetterhead() : null;
+        $graphic = $letterhead === 'graphic' ? MpdfRenderer::graphicLetterhead() : null;
         $closing = [];
         foreach (['sConfirm2', 'sConfirm3', 'sConfirm4', 'sConfirm5', 'sConfirm6'] as $key) {
             $text = trim((string) SystemConfig::getValue($key));
@@ -343,16 +326,6 @@ class ConfirmReportService
             'signer' => $signer,
             'families' => $sheets,
         ];
-    }
-
-    private static function graphicLetterhead(): ?string
-    {
-        $path = trim((string) SystemConfig::getValue('bDirLetterHead'));
-        if ($path !== '' && (is_readable($path) || preg_match('#^https://#i', $path))) {
-            return $path;
-        }
-
-        return null;
     }
 
     private function birthday(Person $member): string
@@ -438,11 +411,5 @@ class ConfirmReportService
         }
 
         return $this->roleNameCache[$key];
-    }
-
-    /** A family name safe for an attachment filename: no path separators, quotes or line breaks. */
-    private static function attachmentLabel(string $name): string
-    {
-        return trim((string) preg_replace('/[^\p{L}\p{N}._-]+/u', '_', $name), '_');
     }
 }

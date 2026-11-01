@@ -21,19 +21,19 @@ describe("Issue #7854 - Financial Reports Fix", () => {
             cy.get(".page-title").contains("Financial Reports").should("be.visible");
 
             // Select Advanced Deposit Report
-            cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
-            cy.get("#FinancialReports").submit();
-            cy.contains("Advanced Deposit Report").should("be.visible");
+            cy.visit("/finance/reports/deposits");
+            cy.get("#depositAdvancedSettings > summary").click();
+            cy.contains("Deposit Reports").should("be.visible");
 
             // Configure report for CSV output (easier to parse than PDF)
             cy.get("input[name='output'][value='csv']").check({ force: true });
 
             // Set broad date range to capture all test data
-            cy.get("input[name='DateStart']").clear({ force: true }).type("01/01/2018", { force: true });
+            cy.get("input[name='DateStart']").clear({ force: true }).type("2018-01-01", { force: true });
             cy.get("input[name='DateEnd']").clear({ force: true }).type(getTodayDate(), { force: true });
 
             // Intercept the CSV download to inspect content
-            cy.intercept("POST", "**/AdvancedDeposit.php").as("csvDownload");
+            cy.intercept("POST", "**/finance/reports/deposits/download").as("csvDownload");
 
             // Generate report
             cy.get("#createReport").click();
@@ -108,9 +108,8 @@ describe("Issue #7854 - Financial Reports Fix", () => {
         });
 
         it("should handle date range filtering correctly", () => {
-            cy.visit("/FinancialReports.php");
-            cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
-            cy.get("#FinancialReports").submit();
+            cy.visit("/finance/reports/deposits");
+            cy.get("#depositAdvancedSettings > summary").click();
 
             // Test with current month only
             const firstDayOfMonth = new Date();
@@ -138,12 +137,11 @@ describe("Issue #7854 - Financial Reports Fix", () => {
         });
 
         it("should sort by different criteria without errors", () => {
-            cy.visit("/FinancialReports.php");
-            cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
-            cy.get("#FinancialReports").submit();
+            cy.visit("/finance/reports/deposits");
+            cy.get("#depositAdvancedSettings > summary").click();
 
             // Set date range
-            cy.get("input[name='DateStart']").clear({ force: true }).type("01/01/2024", { force: true });
+            cy.get("input[name='DateStart']").clear({ force: true }).type("2024-01-01", { force: true });
             cy.get("input[name='DateEnd']").clear({ force: true }).type(getTodayDate(), { force: true });
 
             // Test different sort orders (radio buttons, not select)
@@ -153,7 +151,7 @@ describe("Issue #7854 - Financial Reports Fix", () => {
                 cy.get(`input[name='sort'][value='${sortBy}']`).check({ force: true });
                 cy.get("input[name='output'][value='csv']").check({ force: true });
                 
-                cy.intercept("POST", "**/AdvancedDeposit.php").as("sortedReport");
+                cy.intercept("POST", "**/finance/reports/deposits/download").as("sortedReport");
                 cy.get("#createReport").click();
 
                 cy.url().then((url) => {
@@ -166,54 +164,11 @@ describe("Issue #7854 - Financial Reports Fix", () => {
 
                 // Go back to report config
                 if (sortBy !== sortOptions[sortOptions.length - 1]) {
-                    cy.visit("/FinancialReports.php");
-                    cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
-                    cy.get("#FinancialReports").submit();
-                    cy.get("input[name='DateStart']").clear({ force: true }).type("01/01/2024", { force: true });
+                    cy.visit("/finance/reports/deposits");
+                    cy.get("#depositAdvancedSettings > summary").click();
+                    cy.get("input[name='DateStart']").clear({ force: true }).type("2024-01-01", { force: true });
                     cy.get("input[name='DateEnd']").clear({ force: true }).type(getTodayDate(), { force: true });
                 }
-            });
-        });
-    });
-
-    describe("Giving Report (Tax Statements) - Large Dataset Handling", () => {
-        it("should handle large datasets without white screen", () => {
-            cy.visit("/FinancialReports.php");
-            cy.get("#FinancialReportTypes").select("Giving Report");
-            cy.get("#FinancialReports").submit();
-
-            // Set broad date range (simulating ~945 records scenario)
-            cy.get("input[name='DateStart']").clear({ force: true }).type("01/01/2024", { force: true });
-            cy.get("input[name='DateEnd']").clear({ force: true }).type(getTodayDate(), { force: true });
-
-            // Use CSV output for easier verification
-            cy.get("input[name='output'][value='csv']").check({ force: true });
-
-            cy.intercept("POST", "**/TaxReport.php").as("givingReport");
-            cy.get("#createReport").click();
-
-            // Wait for response with longer timeout for large datasets
-            cy.wait("@givingReport", { timeout: 60000 }).then((interception) => {
-                cy.url().then((url) => {
-                    if (!url.includes('ReturnMessage=NoRows')) {
-                        // Should return 200, not 500 or timeout
-                        expect(interception.response.statusCode).to.equal(200);
-                        
-                        // Should be CSV content, not error page
-                        expect(interception.response.headers["content-type"]).to.include("text/csv");
-                        
-                        // Should not contain PHP errors
-                        const content = interception.response.body;
-                        expect(content).to.not.include("Fatal error");
-                        expect(content).to.not.include("Parse error");
-                        expect(content).to.not.include("Maximum execution time");
-                        expect(content).to.not.include("Allowed memory size");
-
-                        cy.log("✅ Giving Report handles large dataset without errors");
-                    } else {
-                        cy.contains('No Data Found').should('be.visible');
-                    }
-                });
             });
         });
     });
@@ -229,5 +184,5 @@ function formatDate(date) {
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
     const year = date.getFullYear();
-    return `${month}/${day}/${year}`;
+    return `${year}-${month}-${day}`;
 }

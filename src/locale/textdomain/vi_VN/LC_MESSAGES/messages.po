@@ -939,20 +939,8 @@ msgid "Voting Members"
 msgstr "Bầu chọn thành viên"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Đưa ra Báo cáo (Báo cáo Thuế)"
-
-#: 
 msgid "Zero Givers"
 msgstr "Zero Givers"
-
-#: 
-msgid "Individual Deposit Report"
-msgstr "Báo cáo tiền gửi cá nhân"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Báo cáo tiền gửi nâng cao"
 
 #: 
 msgid "Next"
@@ -978,10 +966,6 @@ msgid "Apply Report Dates To"
 msgstr "Áp dụng Ngày Báo cáo Cho"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "Ngày gửi tiền (Mặc định)"
-
-#: 
 msgid "Payment Date"
 msgstr "Ngày thanh toán"
 
@@ -1004,10 +988,6 @@ msgid "Filter by Payment Type"
 msgstr "Lọc theo Hình thức Thanh toán"
 
 #: 
-msgid "All Methods"
-msgstr "Tất cả các phương pháp"
-
-#: 
 msgid "Check"
 msgstr "Kiểm tra"
 
@@ -1018,10 +998,6 @@ msgstr "Tiền mặt"
 #: 
 msgid "Bank Draft"
 msgstr "Dự thảo ngân hàng"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0 - Không có tối thiểu"
 
 #: 
 msgid "Other Settings"
@@ -1287,10 +1263,6 @@ msgstr "Xác nhận nhãn dữ liệu"
 #: 
 msgid "Invalid login or password"
 msgstr "Đăng nhập hoặc mật khẩu không hợp lệ"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Quá nhiều lần đăng nhập không thành công: tài khoản của bạn đã bị khóa. Vui lòng liên hệ với quản trị viên."
 
 #: 
 msgid "Email/Username"
@@ -1742,14 +1714,6 @@ msgid "System Settings"
 msgstr "Hệ thống"
 
 #: 
-msgid "Tax Report"
-msgstr "Báo cáo thuế"
-
-#: 
-msgid "Calendar Year"
-msgstr "Lịch năm"
-
-#: 
 msgid "User Editor"
 msgstr "Trình chỉnh sửa người dùng"
 
@@ -2163,24 +2127,12 @@ msgid "Classes"
 msgstr "Lớp học"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Báo cáo Trường Chúa Nhật"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Những học viên không có trong lớp Trường Chúa Nhật"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Ít nhất một nhóm phải được chọn để lập danh sách lớp hoặc phiếu điểm danh."
-
-#: 
 msgid "Report Details"
 msgstr "Báo cáo chi tiết"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Liệt kê tất cả các vai trò (bỏ chọn sẽ chỉ liệt kê các vai trò của Giáo viên / Học sinh)"
 
 #: 
 msgid "First Sunday"
@@ -2201,10 +2153,6 @@ msgstr "Học sinh thêm"
 #: 
 msgid "Extra Teachers"
 msgstr "Giáo viên bổ sung"
-
-#: 
-msgid "Create Class List"
-msgstr "Tạo danh sách lớp"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4618,14 +4566,6 @@ msgid "PhotoBook"
 msgstr "Sách ảnh"
 
 #: 
-msgid "With Photos"
-msgstr "Với những tấm hình"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Tạo sách ảnh"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4770,11 +4710,6 @@ msgstr "Kỷ niệm ngày cưới"
 #: 
 msgid "View User"
 msgstr "Xem thành viên"
-
-#: 
-#, fuzzy
-msgid "not found or user without an email"
-msgstr "không tìm thấy hoặc người dùng không có email"
 
 #: 
 msgid "UserName not set"
@@ -4970,13 +4905,6 @@ msgstr "Độ dài thời gian chờ của phiên tính bằng giây. Đặt th�
 msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
 "Set to zero to disable this feature"
 msgstr "Số tiền tối thiểu mà mật khẩu mới phải khác mật khẩu cũ (# ký tự đã thay đổi).  Đặt thành 0 để tắt tính năng này"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Số lần đăng nhập không thành công tối đa cho phép trước khi tài khoản người dùng bị khóa. Khi đã đạt đến mức tối đa, quản trị viên phải kích hoạt lại tài khoản. Tính năng này giúp bảo vệ khỏi các cuộc tấn công đoán mật khẩu tự động. Đặt thành 0 để tắt tính năng này. Chế độ xử lý PDF. 1 = Hộp thoại Lưu tệp. 2 = Mở trong cửa sổ trình duyệt hiện tại"
 
 #: 
 msgid "PDF handling mode.\n"
@@ -5611,10 +5539,6 @@ msgstr "Xóa mục đã chọn"
 #: 
 msgid "Funds"
 msgstr "Các quỹ"
-
-#: 
-msgid "Generate Report"
-msgstr "Xuất báo cáo"
 
 #: 
 msgid "Payments"
@@ -6308,14 +6232,6 @@ msgid "Current Deposit"
 msgstr "Đợt đóng góp hiện tại"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Báo cáo có thể tùy chỉnh với các bộ lọc."
-
-#: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Tùy chỉnh văn bản xuất hiện trên báo cáo thuế."
-
-#: 
 msgid "Day"
 msgstr "Ngày"
 
@@ -6326,10 +6242,6 @@ msgstr "Th12"
 #: 
 msgid "Deposit Statistics"
 msgstr "Thống kê gửi tiền"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Chi tiết phân tích của một phiếu gửi tiền đơn lẻ."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6396,20 +6308,12 @@ msgid "Generate"
 msgstr "Tạo"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Tạo báo cáo thuế"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Tạo báo cáo dâng hiến khấu trừ thuế hàng năm."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "Tạo thư nhắc nhở cho các gia đình chưa hoàn thành lời hứa."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "Tạo báo cáo thuế, theo dõi lời hứa và phân tích tài chính."
 
 #: 
 msgid "ID"
@@ -6438,10 +6342,6 @@ msgstr "Th6"
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "Hãy thiết lập hệ thống của bạn sẵn sàng sử dụng"
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "Danh sách thành viên đủ điều kiện bầu cử."
 
 #: 
 msgid "Location"
@@ -6592,10 +6492,6 @@ msgid "System Info"
 msgstr "Thông tin hệ thống"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "Báo cáo Thuế & Dâng hiến"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "Ngôn từ báo cáo thuế"
 
@@ -6622,10 +6518,6 @@ msgstr "Nâng cấp"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "Người dùng phải là Quản trị viên hoặc có quyền Tài chính"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Xác minh tên, địa chỉ và thông tin liên hệ trên báo cáo thuế."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9134,10 +9026,6 @@ msgid "Generate reports on group membership and activities"
 msgstr "Tao bao cao ve thanh vien nhom va hoat dong"
 
 #: 
-msgid "Generate tax statement documents for donors"
-msgstr "Tao tai lieu bao cao thue cho nguoi dang hien"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "Dua du lieu cua ban vao ChurchCRM"
 
@@ -9884,10 +9772,6 @@ msgid "View transaction details for a pledge payment"
 msgstr "Xem chi tiet giao dich cho khoan thanh toan cam ket dang hien"
 
 #: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "Thanh vien co quyen bo phieu phai da dang hien trong so nam nay (0 de khong yeu cau dang hien)"
-
-#: 
 msgid "We could not find the family you were looking for."
 msgstr "Chung toi khong tim thay gia dinh ban dang tim."
 
@@ -10078,10 +9962,6 @@ msgstr "Buoc cai dat lai?"
 #: 
 msgid "Full Path"
 msgstr "Duong dan day du"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Tao danh sach lop, bang diem danh va so anh"
 
 #: 
 msgid "Installed"
@@ -15950,10 +15830,6 @@ msgid "Please confirm your family information"
 msgstr "Vui lòng xác nhận thông tin gia đình của bạn"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "Vui lòng gửi dâng hiến tiếp theo của bạn đến %s"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Vui lòng chọn một gia đình khác để liên kết các khoản dâng hiến này"
 
@@ -17981,10 +17857,6 @@ msgid "{{minutes}} min left"
 msgstr "còn lại {{minutes}} phút"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d tài liệu thuế đã được gửi qua email cho gia đình thành công."
-
-#: 
 msgid "All classifications"
 msgstr "Tất cả các phân loại"
 
@@ -18017,28 +17889,8 @@ msgid "Columns per Page"
 msgstr "Cột Trên Mỗi Trang"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "Thân mến %s Gia đình,\n"
-"\n"
-"Vui lòng tìm bảng kê quỹ %d của bạn từ %s được đính kèm trong email này.\n"
-"\n"
-"Nếu bạn có bất kỳ câu hỏi nào, vui lòng liên hệ với văn phòng nhà thờ.\n"
-"\n"
-"Cảm ơn vì sự hào phóng của bạn."
-
-#: 
 msgid "Download CSV"
 msgstr "Tải xuống CSV"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "Email %d Tài Liệu Thuế"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18141,10 +17993,6 @@ msgid "Pledged"
 msgstr "Cam Kết"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "In %d Tài Liệu Thuế"
-
-#: 
 msgid "Recent Friends"
 msgstr "Bạn Gần Đây"
 
@@ -18169,24 +18017,8 @@ msgid "Single Pages"
 msgstr "Các Trang Duy Nhất"
 
 #: 
-msgid "Tax Documents"
-msgstr "Tài liệu Thuế"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "Không thể gửi email tài liệu thuế. Vui lòng kiểm tra cài đặt máy chủ email của bạn."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "Hai trang nửa kích thước cạnh nhau trên mỗi tờ ngang, theo thứ tự sách. In hai mặt với \"lật trên cạnh ngắn\", sau đó gập đống làm đôi. Các cột được tính trên mỗi nửa trang."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "Không thể gửi email tài liệu thuế: không tìm thấy dữ liệu thanh toán cho năm đó."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "Không thể gửi email tài liệu thuế: gia đình này không có địa chỉ email trong hồ sơ."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -18649,10 +18481,6 @@ msgid "Could not match the church country."
 msgstr "Không thể khớp quốc gia của Hội thánh."
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Danh sách lớp, bảng điểm danh và sách ảnh"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "Danh sách thành viên nhóm và báo cáo lớp Trường Chúa nhật"
 
@@ -18851,19 +18679,9 @@ msgid_plural "%d default volunteers assigned"
 msgstr[0] "%d tình nguyện viên mặc định được gán"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Vị trí này vẫn cần thêm %d tình nguyện viên. Mở sự kiện để lấp đầy khoảng trống."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d lần xuất hiện mới"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Vẫn cần %d tình nguyện viên cho một sự kiện sắp tới."
 
 #: 
 msgid "%s Calendar"
@@ -20924,10 +20742,6 @@ msgstr "Mở mục vụ"
 #: 
 msgid "Open the occurrence"
 msgstr "Mở lần diễn ra"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Hãy mở lần diễn ra để phân công những người bạn cần."
 
 #: 
 msgid "Open this team"
@@ -24617,10 +24431,6 @@ msgstr "Dịch vụ mã hóa địa lý không phản hồi — hãy thử lại
 #: 
 msgid "Only the email you sent is shown."
 msgstr "Chỉ hiển thị email bạn đã gửi."
-
-#: 
-msgid "%d Giving Statement"
-msgstr "Báo cáo đóng góp %d"
 
 #: 
 msgid "Repeat events could not be created. Check the application log for details."

@@ -27,31 +27,143 @@
   ],
   "fundraisers": [
     {
-      "title": "Spring Gala Dinner",
+      "title": "Spring Silent Auction",
+      "description": "Dinner and a silent auction for the building fund. Bids close Saturday night.",
+      "type": "Silent Auction",
+      "status": "Closed",
+      "goal": "8000.00",
+      "fund": "Building Fund",
       "year": "prev",
       "month": 4,
-      "day": 12,
+      "day": 18,
+      "end_month": 4,
+      "end_day": 19,
       "entered_year": "prev",
       "entered_month": 3,
-      "entered_day": 1
+      "entered_day": 1,
+      "paddles": [
+        { "number": 101, "email": "nancy.hernandez@demo.churchcrm.io" },
+        { "number": 102, "email": "carol.williams@demo.churchcrm.io" },
+        { "number": 104, "email": "jason.johnson85@demo.churchcrm.io" }
+      ],
+      "items": [
+        {
+          "code": "A1",
+          "title": "Weekend at the church cabin",
+          "description": "Two nights at the cabin the church keeps for retreats.",
+          "donor": "jason.johnson85@demo.churchcrm.io",
+          "buyer": "nancy.hernandez@demo.churchcrm.io",
+          "estimate": "400.00",
+          "minimum": "150.00",
+          "sell": "275.00"
+        },
+        {
+          "code": "A2",
+          "title": "Handmade quilt",
+          "description": "A queen quilt stitched by the quilting circle.",
+          "donor": "carol.williams@demo.churchcrm.io",
+          "buyer": "mary.hernandez@demo.churchcrm.io",
+          "estimate": "250.00",
+          "minimum": "75.00",
+          "sell": "180.00",
+          "material": "80.00"
+        },
+        {
+          "code": "B1",
+          "title": "Sunday casserole",
+          "description": "A family casserole, delivered the Sunday after the auction.",
+          "donor": "nancy.hernandez@demo.churchcrm.io",
+          "buyer": "mary.hernandez@demo.churchcrm.io",
+          "estimate": "30.00",
+          "minimum": "15.00",
+          "sell": "25.00",
+          "material": "12.00"
+        }
+      ]
     },
     {
-      "title": "Youth Summer Retreat Fund",
-      "year": "prev",
-      "month": 6,
-      "day": 15,
-      "entered_year": "prev",
-      "entered_month": 5,
-      "entered_day": 1
+      "title": "Harvest Quilt Raffle",
+      "description": "A handmade quilt, drawn at the Thanksgiving potluck. Ticket sales support local outreach.",
+      "type": "Raffle",
+      "status": "Active",
+      "goal": "1200.00",
+      "fund": "Missions & Outreach",
+      "date_offset_days": 21,
+      "end_offset_days": 21,
+      "entered_offset_days": -20,
+      "paddles": [{ "number": 12, "email": "nancy.hernandez@demo.churchcrm.io" }],
+      "items": [
+        {
+          "code": "R1",
+          "title": "Harvest quilt",
+          "description": "The quilt drawn at the Thanksgiving potluck.",
+          "donor": "carol.williams@demo.churchcrm.io",
+          "estimate": "300.00",
+          "material": "80.00"
+        }
+      ]
     },
     {
-      "title": "Christmas Outreach Drive",
-      "year": "prev",
-      "month": 12,
-      "day": 14,
-      "entered_year": "prev",
-      "entered_month": 11,
-      "entered_day": 1
+      "title": "Fall Festival Gala",
+      "description": "A dinner and dance that raises scholarship money for the youth ministry.",
+      "type": "Gala",
+      "status": "Planning",
+      "goal": "15000.00",
+      "fund": "Youth Ministry",
+      "date_offset_days": 45,
+      "entered_offset_days": -14,
+      "paddles": [{ "number": 18, "email": "jason.johnson85@demo.churchcrm.io" }],
+      "items": [
+        {
+          "code": "G1",
+          "title": "Welcome gift basket",
+          "description": "Coffee, jam, and a church cookbook.",
+          "donor": "jason.johnson85@demo.churchcrm.io",
+          "estimate": "50.00",
+          "minimum": "25.00",
+          "material": "20.00"
+        }
+      ]
+    },
+    {
+      "title": "Christmas Bazaar",
+      "description": "Crafts, a bake table, and a small raffle during the first weekend of Advent.",
+      "type": "Mixed",
+      "status": "Active",
+      "goal": "4000.00",
+      "fund": "Building Fund",
+      "date_offset_days": 60,
+      "end_offset_days": 61,
+      "entered_offset_days": -10,
+      "paddles": [
+        { "number": 7, "email": "nancy.hernandez@demo.churchcrm.io" },
+        { "number": 8, "email": "carol.williams@demo.churchcrm.io" }
+      ],
+      "items": [
+        {
+          "code": "C1",
+          "title": "Handmade ornaments",
+          "description": "Boxed glass ornaments from the youth craft sale.",
+          "donor": "carol.williams@demo.churchcrm.io",
+          "multibuy": true,
+          "estimate": "12.00",
+          "minimum": "5.00",
+          "sell": "8.00",
+          "material": "3.00",
+          "purchases": [{ "email": "nancy.hernandez@demo.churchcrm.io", "count": 4 }]
+        },
+        {
+          "code": "C2",
+          "title": "Cocoa mix",
+          "description": "A jar of homemade cocoa mix.",
+          "donor": "carol.williams@demo.churchcrm.io",
+          "buyer": "nancy.hernandez@demo.churchcrm.io",
+          "estimate": "15.00",
+          "minimum": "8.00",
+          "sell": "12.00",
+          "material": "4.00"
+        }
+      ]
     }
   ],
   "giving_families": [

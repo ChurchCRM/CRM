@@ -924,20 +924,8 @@ msgid "Voting Members"
 msgstr "मतदान सदस्य"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "दान रिपोर्ट (टैक्स विवरण)"
-
-#: 
 msgid "Zero Givers"
 msgstr "शून्य दानदाता"
-
-#: 
-msgid "Individual Deposit Report"
-msgstr "व्यक्तिगत जमा रिपोर्ट"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "उन्नत जमा रिपोर्ट"
 
 #: 
 msgid "Next"
@@ -960,10 +948,6 @@ msgid "Apply Report Dates To"
 msgstr "रिपोर्ट तिथियां इन पर लागू करें"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "जमा तिथि (डिफ़ॉल्ट)"
-
-#: 
 msgid "Payment Date"
 msgstr "भुगतान तिथि"
 
@@ -984,10 +968,6 @@ msgid "Filter by Payment Type"
 msgstr "भुगतान प्रकार द्वारा फ़िल्टर करें"
 
 #: 
-msgid "All Methods"
-msgstr "सभी विधियां"
-
-#: 
 msgid "Check"
 msgstr "चेक"
 
@@ -998,10 +978,6 @@ msgstr "नकद"
 #: 
 msgid "Bank Draft"
 msgstr "बैंक ड्राफ्ट"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0 - कोई न्यूनतम नहीं"
 
 #: 
 msgid "Other Settings"
@@ -1262,10 +1238,6 @@ msgstr "डेटा लेबल की पुष्टि करें"
 #: 
 msgid "Invalid login or password"
 msgstr "अमान्य लॉगिन या पासवर्ड"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "बहुत अधिक विफल लॉगिन: आपका खाता लॉक कर दिया गया है। कृपया व्यवस्थापक से संपर्क करें।"
 
 #: 
 msgid "Email/Username"
@@ -1717,14 +1689,6 @@ msgid "System Settings"
 msgstr "सिस्टम सेटिंग्स"
 
 #: 
-msgid "Tax Report"
-msgstr "कर रिपोर्ट"
-
-#: 
-msgid "Calendar Year"
-msgstr "कैलेंडर वर्ष"
-
-#: 
 msgid "User Editor"
 msgstr "उपयोगकर्ता संपादक"
 
@@ -2134,24 +2098,12 @@ msgid "Classes"
 msgstr "कक्षाएं"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "संडे स्कूल रिपोर्ट"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "छात्र जो संडे स्कूल कक्षा में नहीं हैं"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "कक्षा सूची या उपस्थिति पत्रक बनाने के लिए कम से कम एक समूह का चयन किया जाना चाहिए।"
-
-#: 
 msgid "Report Details"
 msgstr "रिपोर्ट विवरण"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "सभी भूमिकाओं को सूचीबद्ध करें (अनचेक करने पर केवल शिक्षक/छात्र भूमिकाएं सूचीबद्ध होंगी)"
 
 #: 
 msgid "First Sunday"
@@ -2172,10 +2124,6 @@ msgstr "अतिरिक्त छात्र"
 #: 
 msgid "Extra Teachers"
 msgstr "अतिरिक्त शिक्षक"
-
-#: 
-msgid "Create Class List"
-msgstr "कक्षा सूची बनाएँ"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4582,14 +4530,6 @@ msgid "PhotoBook"
 msgstr "फ़ोटोबुक"
 
 #: 
-msgid "With Photos"
-msgstr "फ़ोटो के साथ"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "फ़ोटोबुक बनाएं"
-
-#: 
 msgid "SSE"
 msgstr "दक्षिण-दक्षिण-पूर्व"
 
@@ -4733,10 +4673,6 @@ msgstr "वर्षगाँठ"
 #: 
 msgid "View User"
 msgstr "उपयोगकर्ता देखें"
-
-#: 
-msgid "not found or user without an email"
-msgstr "नहीं मिला या उपयोगकर्ता के पास ईमेल नहीं है"
 
 #: 
 msgid "UserName not set"
@@ -4930,13 +4866,6 @@ msgstr "सेकंड में सत्र टाइमआउट अवध�
 msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
 "Set to zero to disable this feature"
 msgstr "नया पासवर्ड पुराने से कितना अलग होना चाहिए।"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "खाता लॉक होने से पहले अधिकतम विफल लॉगिन प्रयास।"
 
 #: 
 msgid "PDF handling mode.\n"
@@ -5574,10 +5503,6 @@ msgstr "चयनित हटाएं"
 #: 
 msgid "Funds"
 msgstr "निधि"
-
-#: 
-msgid "Generate Report"
-msgstr "रिपोर्ट तैयार करें"
 
 #: 
 msgid "Payments"
@@ -6273,14 +6198,6 @@ msgid "Current Deposit"
 msgstr "वर्तमान जमा"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "तिथि, फंड, परिवार और भुगतान विधि द्वारा फ़िल्टरिंग के साथ अनुकूलन योग्य रिपोर्ट।"
-
-#: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "कर विवरण पर दिखाई देने वाले टेक्स्ट को अनुकूलित करें (sTaxReport1, sTaxReport2, आदि)।"
-
-#: 
 msgid "Day"
 msgstr "दिन"
 
@@ -6291,10 +6208,6 @@ msgstr "दिसंबर"
 #: 
 msgid "Deposit Statistics"
 msgstr "जमा सांख्यिकी"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "एकल जमा पर्ची का विस्तृत विवरण।"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6361,20 +6274,12 @@ msgid "Generate"
 msgstr "जनरेट करें"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "कर विवरण जनरेट करें"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "दाताओं के लिए वार्षिक कर-कटौती योग्य दान विवरण जनरेट करें। प्रिंट या ईमेल किया जा सकता है।"
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "बकाया प्रतिज्ञाओं वाले परिवारों के लिए अनुस्मारक पत्र जनरेट करें।"
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "कर विवरण, प्रतिज्ञा ट्रैकिंग और वित्तीय विश्लेषण के लिए रिपोर्ट जनरेट करें।"
 
 #: 
 msgid "ID"
@@ -6403,10 +6308,6 @@ msgstr "जून"
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "आइए आपके सिस्टम को सेट अप करें और उपयोग के लिए तैयार करें"
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "दान इतिहास और सदस्यता मानदंडों के आधार पर मतदान के योग्य सदस्यों की सूची बनाएं।"
 
 #: 
 msgid "Location"
@@ -6557,10 +6458,6 @@ msgid "System Info"
 msgstr "सिस्टम जानकारी"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "कर और दान रिपोर्ट"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "कर रिपोर्ट शब्दावली"
 
@@ -6587,10 +6484,6 @@ msgstr "अपग्रेड"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "उपयोगकर्ता को व्यवस्थापक होना चाहिए या वित्त अनुमति होनी चाहिए"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "सत्यापित करें कि कर विवरण पर चर्च का नाम, पता और संपर्क जानकारी दिखाई देती है।"
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9104,10 +8997,6 @@ msgid "Generate reports on group membership and activities"
 msgstr "समूह सदस्यता और गतिविधियों पर रिपोर्ट तैयार करें"
 
 #: 
-msgid "Generate tax statement documents for donors"
-msgstr "दानदाताओं के लिए कर विवरण दस्तावेज़ तैयार करें"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "अपना डेटा ChurchCRM में लाएँ"
 
@@ -9854,10 +9743,6 @@ msgid "View transaction details for a pledge payment"
 msgstr "प्रतिज्ञा भुगतान के लिए लेनदेन विवरण देखें"
 
 #: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "मतदान सदस्यों ने इतने वर्षों के भीतर दान दिया होना चाहिए (दान की आवश्यकता न होने पर 0)"
-
-#: 
 msgid "We could not find the family you were looking for."
 msgstr "हम वह परिवार नहीं ढूँढ सके जिसे आप खोज रहे थे।"
 
@@ -10048,10 +9933,6 @@ msgstr "बलपूर्वक पुनः स्थापित करें
 #: 
 msgid "Full Path"
 msgstr "पूर्ण पथ"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "कक्षा सूचियाँ, उपस्थिति पत्रक और फ़ोटो बुक तैयार करें"
 
 #: 
 msgid "Installed"
@@ -15924,10 +15805,6 @@ msgid "Please confirm your family information"
 msgstr "कृपया अपनी पारिवारिक जानकारी की पुष्टि करें"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "कृपया अपना अगला दान %s को भेजें"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "कृपया कोई अन्य परिवार चुनें जिनसे इन दानों को जोड़ा जाए"
 
@@ -17958,10 +17835,6 @@ msgid "{{minutes}} min left"
 msgstr "{{minutes}} मिनट शेष"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d कर दस्तावेज़ परिवार को सफलतापूर्वक ईमेल किए गए।"
-
-#: 
 msgid "All classifications"
 msgstr "सभी वर्गीकरण"
 
@@ -17994,28 +17867,8 @@ msgid "Columns per Page"
 msgstr "प्रति पृष्ठ स्तंभ"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "प्रिय %1$s परिवार,\n"
-"\n"
-"कृपया इस ईमेल में %3$s से आपके %2$d दान विवरण को संलग्न पाएं।\n"
-"\n"
-"यदि आपके कोई प्रश्न हैं, तो कृपया चर्च कार्यालय से संपर्क करें।\n"
-"\n"
-"आपकी उदारता के लिए धन्यवाद।"
-
-#: 
 msgid "Download CSV"
 msgstr "CSV डाउनलोड करें"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "%d कर दस्तावेज़ ईमेल करें"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18118,10 +17971,6 @@ msgid "Pledged"
 msgstr "प्रतिज्ञा की गई"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "%d कर दस्तावेज़ प्रिंट करें"
-
-#: 
 msgid "Recent Friends"
 msgstr "हाल के मित्र"
 
@@ -18146,24 +17995,8 @@ msgid "Single Pages"
 msgstr "एकल पृष्ठ"
 
 #: 
-msgid "Tax Documents"
-msgstr "कर दस्तावेज़"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "कर दस्तावेज़ ईमेल भेजने में विफल। कृपया अपनी ईमेल सर्वर सेटिंग की जांच करें।"
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "प्रत्येक लैंडस्केप शीट पर एक दूसरे के बगल में दो आधे आकार के पृष्ठ, पुस्तिका क्रम में। \"छोटी किनारे पर फ़्लिप\" के साथ दोनों ओर प्रिंट करें, फिर स्टैक को आधा में मोड़ें। स्तंभ प्रति आधे पृष्ठ की गणना की जाती है।"
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "कर दस्तावेज़ ईमेल करने में असमर्थ: उस वर्ष के लिए कोई भुगतान डेटा नहीं मिला।"
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "कर दस्तावेज़ ईमेल करने में असमर्थ: इस परिवार के पास फ़ाइल में कोई ईमेल पता नहीं है।"
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -18626,10 +18459,6 @@ msgid "Could not match the church country."
 msgstr "कलीसिया का देश मिलान नहीं किया जा सका।"
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "कक्षा सूचियाँ, उपस्थिति पत्रक और फ़ोटो पुस्तकें"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "सेवकाई सदस्यता सूचियाँ और रविवार स्कूल कक्षा रिपोर्ट"
 
@@ -18832,22 +18661,10 @@ msgstr[0] "%d डिफ़ॉल्ट स्वयंसेवक नियु�
 msgstr[1] "%d डिफ़ॉल्ट स्वयंसेवक नियुक्त किए गए"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "इस पद के लिए अभी %d और स्वयंसेवक की आवश्यकता है। रिक्ति भरने के लिए अवसर खोलें।"
-msgstr[1] "इस पद के लिए अभी %d और स्वयंसेवकों की आवश्यकता है। रिक्ति भरने के लिए अवसर खोलें।"
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d नया अवसर"
 msgstr[1] "%d नए अवसर"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "आगामी अवसर के लिए अभी %d स्वयंसेवक की आवश्यकता है।"
-msgstr[1] "आगामी अवसर के लिए अभी %d स्वयंसेवकों की आवश्यकता है।"
 
 #: 
 msgid "%s Calendar"
@@ -20912,10 +20729,6 @@ msgstr "सेवकाई खोलें"
 #: 
 msgid "Open the occurrence"
 msgstr "अवसर खोलें"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "जिन लोगों की आपको आवश्यकता है उन्हें नियुक्त करने के लिए अवसर खोलें।"
 
 #: 
 msgid "Open this team"
@@ -24610,10 +24423,6 @@ msgstr "जियोकोडिंग सेवा ने जवाब नह�
 #: 
 msgid "Only the email you sent is shown."
 msgstr "केवल आपके द्वारा भेजा गया ईमेल दिखाया जाता है।"
-
-#: 
-msgid "%d Giving Statement"
-msgstr "%d दान विवरण"
 
 #: 
 msgid "Repeat events could not be created. Check the application log for details."

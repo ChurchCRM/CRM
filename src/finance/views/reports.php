@@ -2,24 +2,15 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\FinancialService;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 // Get fiscal year info for display
 $iFYMonth = SystemConfig::getIntValue('iFYMonth');
-$currentYear = (int) date('Y');
-
-if ($iFYMonth === 1) {
-    $fyLabel = (string) $currentYear;
-} else {
-    $currentMonth = (int) date('n');
-    if ($currentMonth >= $iFYMonth) {
-        $fyLabel = $currentYear . '/' . substr((string) ($currentYear + 1), 2, 2);
-    } else {
-        $fyLabel = ($currentYear - 1) . '/' . substr((string) $currentYear, 2, 2);
-    }
-}
+$fyLabel = FinancialService::formatFiscalYear(FiscalYearUtils::getCurrentFiscalYearId());
 
 $monthNames = [
     1 => gettext('January'), 2 => gettext('February'), 3 => gettext('March'),
@@ -44,9 +35,9 @@ $fyMonthName = $monthNames[$iFYMonth] ?? '';
         <?php
         $sections = [
             [
-                'title' => gettext('Tax & Giving Reports'),
+                'title' => gettext('Giving Reports'),
                 'reports' => [
-                    ['href' => '/FinancialReports.php?ReportType=Giving%20Report', 'title' => gettext('Giving Report (Tax Statements)'), 'description' => gettext('Generate annual tax-deductible giving statements for donors. Can be printed or emailed.')],
+                    ['href' => '/finance/reports/giving-statements', 'title' => gettext('Giving Statements'), 'description' => gettext('Generate annual tax-deductible giving statements for donors. Can be printed or emailed.')],
                     ['href' => '/FinancialReports.php?ReportType=Zero%20Givers', 'title' => gettext('Zero Givers'), 'description' => gettext('Identify members who have not made any donations within a date range.')],
                 ],
             ],
@@ -61,14 +52,13 @@ $fyMonthName = $monthNames[$iFYMonth] ?? '';
             [
                 'title' => gettext('Deposit Reports'),
                 'reports' => [
-                    ['href' => '/FinancialReports.php?ReportType=Individual%20Deposit%20Report', 'title' => gettext('Individual Deposit Report'), 'description' => gettext('Detailed breakdown of a single deposit slip.')],
-                    ['href' => '/FinancialReports.php?ReportType=Advanced%20Deposit%20Report', 'title' => gettext('Advanced Deposit Report'), 'description' => gettext('Customizable report with filtering by date, fund, family, and payment method.')],
+                    ['href' => '/finance/reports/deposits', 'title' => gettext('Deposit Reports'), 'description' => gettext('Review payments, download PDF or CSV, or print a bank slip for one deposit.')],
                 ],
             ],
             [
                 'title' => gettext('Membership Reports'),
                 'reports' => [
-                    ['href' => '/FinancialReports.php?ReportType=Voting%20Members', 'title' => gettext('Voting Members'), 'description' => gettext('List members eligible to vote based on giving history and membership criteria.')],
+                    ['href' => '/finance/reports/voting-members', 'title' => gettext('Voting Members'), 'description' => gettext('Prepare a list for church review using classifications and optional age, membership, and family giving filters.')],
                 ],
             ],
         ];

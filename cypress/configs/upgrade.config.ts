@@ -21,6 +21,8 @@ export default defineConfig({
     // Must match the value used in 01-setup-and-restore.spec.js.
     'admin.post.upgrade.password': 'PostMigrateP@ss9012!',
   },
+  // Resumable upgrades refresh once per migration file (30 from ChurchInfo 1.3.1).
+  redirectionLimit: 100,
   pageLoadTimeout: 120000,
   defaultCommandTimeout: 60000,
   requestTimeout: 120000,

@@ -53,6 +53,11 @@ $bLockURL = false;
 //$debugBootstrapper = true;
 Bootstrapper::init($sSERVERNAME, $dbPort, $sUSER, $sPASSWORD, $sDATABASE, $sRootPath, $bLockURL, $URL);
 
+// Upgrade continuation pages must not write settings into an older schema.
+if (!Bootstrapper::isDBCurrent()) {
+    return;
+}
+
 // Initialize KeyManager with 2FA secret from SystemConfig
 $twoFASecretKey = SystemConfig::getValue('sTwoFASecretKey');
 

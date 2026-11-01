@@ -837,9 +837,5 @@ function initializeGroupView() {
 }
 
 $(document).ready(() => {
-  $("#printGroup").on("click", () => {
-    window.print();
-  });
-
   window.CRM.onLocalesReady(initializeGroupView);
 });

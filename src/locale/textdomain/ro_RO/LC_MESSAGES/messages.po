@@ -953,20 +953,8 @@ msgid "Voting Members"
 msgstr "Membrii cu drept de vot"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Raport de Donatii (Declaratii Fiscale)"
-
-#: 
 msgid "Zero Givers"
 msgstr "Zero donatori"
-
-#: 
-msgid "Individual Deposit Report"
-msgstr "Raport Individual de Depozit"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Raport Avansat de Depozit"
 
 #: 
 msgid "Next"
@@ -993,10 +981,6 @@ msgid "Apply Report Dates To"
 msgstr "Aplică Datele Raportului La"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "Data de depozit (implicit)"
-
-#: 
 msgid "Payment Date"
 msgstr "Data de Plata"
 
@@ -1019,10 +1003,6 @@ msgid "Filter by Payment Type"
 msgstr "Filtrare după Tipul Plății"
 
 #: 
-msgid "All Methods"
-msgstr "Toate metodele"
-
-#: 
 msgid "Check"
 msgstr "Verificare"
 
@@ -1033,10 +1013,6 @@ msgstr "Numerar"
 #: 
 msgid "Bank Draft"
 msgstr "Ordin de plată bancar"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0 - nici un minim"
 
 #: 
 msgid "Other Settings"
@@ -1310,10 +1286,6 @@ msgstr "Confirmați etichetele datelor"
 #: 
 msgid "Invalid login or password"
 msgstr "Parola sau autentificare invalida"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Prea multe încercări eșuate de autentificare: contul dvs. a fost blocat. Vă rugăm să contactați un administrator"
 
 #: 
 msgid "Email/Username"
@@ -1773,15 +1745,6 @@ msgid "System Settings"
 msgstr "Setări system"
 
 #: 
-msgid "Tax Report"
-msgstr "Darea de seamă fiscală"
-
-#: 
-#, fuzzy
-msgid "Calendar Year"
-msgstr "An calendaristic"
-
-#: 
 msgid "User Editor"
 msgstr "Utilizator Editor"
 
@@ -2207,24 +2170,12 @@ msgid "Classes"
 msgstr "Clase"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Rapoarte de Școală Duminicală"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Studenți care nu sunt în școala Dumincală"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Cel puțin un grup trebuie să fie selectate pentru a face liste de clasă sau foi de prezență."
-
-#: 
 msgid "Report Details"
 msgstr "Detalii raport"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Listează toate rolurile (neselectate vor afișa doar rolurile pentru Profesor/Stundet"
 
 #: 
 #, fuzzy
@@ -2250,10 +2201,6 @@ msgstr "Elevii Extra"
 #, fuzzy
 msgid "Extra Teachers"
 msgstr "Profesorii Extra"
-
-#: 
-msgid "Create Class List"
-msgstr "Creați Clasa Lista"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4668,14 +4615,6 @@ msgid "PhotoBook"
 msgstr "AlbumFoto"
 
 #: 
-msgid "With Photos"
-msgstr "Cu poze"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Crează album foto"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4820,11 +4759,6 @@ msgstr "Aniversări"
 #: 
 msgid "View User"
 msgstr "Vizualizare utilizator"
-
-#: 
-#, fuzzy
-msgid "not found or user without an email"
-msgstr "negăsit sau utilizator fără email"
 
 #: 
 msgid "UserName not set"
@@ -5022,13 +4956,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Suma minimă cu care o nouă parolă trebuie să difere de cea veche (# de caractere schimbate)\n"
 "Setați la zero pentru a dezactiva această funcționalitate"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Acesta este numărul maxim de încercări eșuate de autentificare permise înainte ca un cont de utilizator să fie blocat. Odată ce numărul maxim a fost atins, un administrator trebuie să reactiveze contul. Această funcționalitate ajută la protejarea împotriva atacurilor automate de ghicit parole. Setați la zero pentru a dezactiva această funcționalitate"
 
 #: 
 msgid "PDF handling mode.\n"
@@ -5668,10 +5595,6 @@ msgstr "Șterge selecția"
 #: 
 msgid "Funds"
 msgstr "Fonduri"
-
-#: 
-msgid "Generate Report"
-msgstr "Generează raport"
 
 #: 
 msgid "Payments"
@@ -6369,14 +6292,6 @@ msgid "Current Deposit"
 msgstr "Depozit curent"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Raport personalizabil cu filtrare după dată, fond, familie și metodă de plată."
-
-#: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Personalizați textul care apare pe declarațiile fiscale (sTaxReport1, sTaxReport2, etc)."
-
-#: 
 msgid "Day"
 msgstr "Zi"
 
@@ -6387,10 +6302,6 @@ msgstr "Dec"
 #: 
 msgid "Deposit Statistics"
 msgstr "Statistici depozit"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Defalcare detaliată a unui singur borderou de depozit."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6457,20 +6368,12 @@ msgid "Generate"
 msgstr "Generează"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Generează declarații fiscale"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Generați declarații anuale de donații deductibile fiscal pentru donatori. Pot fi tipărite sau trimise prin e-mail."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "Generați scrisori de reamintire pentru familiile cu angajamente restante."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "Generați rapoarte pentru declarații fiscale, urmărirea angajamentelor și analiză financiară."
 
 #: 
 msgid "ID"
@@ -6499,10 +6402,6 @@ msgstr "Iun"
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "Să vă configurăm sistemul pentru a fi gata de utilizare"
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "Listați membrii eligibili să voteze pe baza istoricului de donații și a criteriilor de apartenență."
 
 #: 
 msgid "Location"
@@ -6653,10 +6552,6 @@ msgid "System Info"
 msgstr "Informații sistem"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "Rapoarte fiscale și donații"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "Limbajul raportului fiscal"
 
@@ -6683,10 +6578,6 @@ msgstr "Actualizare"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "Utilizatorul trebuie să fie administrator sau să aibă permisiuni de finanțe"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Verificați dacă numele, adresa și informațiile de contact ale bisericii apar pe declarațiile fiscale."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9205,10 +9096,6 @@ msgid "Generate reports on group membership and activities"
 msgstr "Generați rapoarte despre apartenența la grupuri și activități"
 
 #: 
-msgid "Generate tax statement documents for donors"
-msgstr "Generați documente fiscale pentru donatori"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "Introduceți datele în ChurchCRM"
 
@@ -9955,10 +9842,6 @@ msgid "View transaction details for a pledge payment"
 msgstr "Vizualizează detaliile tranzacției pentru o plată de angajament"
 
 #: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "Membrii cu drept de vot trebuie să fi făcut o ofertă în ultimii atâția ani (0 pentru a nu necesita o ofertă)"
-
-#: 
 msgid "We could not find the family you were looking for."
 msgstr "Nu am putut găsi familia pe care o căutați."
 
@@ -10149,10 +10032,6 @@ msgstr "Forțați reinstalarea?"
 #: 
 msgid "Full Path"
 msgstr "Cale completă"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Generați liste de clasă, foi de prezență și albume foto"
 
 #: 
 msgid "Installed"
@@ -16029,10 +15908,6 @@ msgid "Please confirm your family information"
 msgstr "Va rugam sa confirmati informatiile familiei dumneavoastra"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "Va rugam sa trimiteti prin posta urmatorul dar la %s"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Va rugam sa selectati o alta familie cu care sa asociati aceste donatii"
 
@@ -18066,10 +17941,6 @@ msgid "{{minutes}} min left"
 msgstr "{{minutes}} min rămase"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d document fiscal trimis cu succes familiei."
-
-#: 
 msgid "All classifications"
 msgstr "Toate clasificările"
 
@@ -18102,28 +17973,8 @@ msgid "Columns per Page"
 msgstr "Coloane pe pagină"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "Dragi %s Familie,\n"
-"\n"
-"Ve rugăm să găsiți anexată la acest email declarația dumneavoastră de donație %d din %s.\n"
-"\n"
-"Dacă aveți întrebări, vă rugăm să contactați biroul bisericii.\n"
-"\n"
-"Vă mulțumim pentru generozitate."
-
-#: 
 msgid "Download CSV"
 msgstr "Descarcă CSV"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "Trimite %d document fiscal prin email"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18226,10 +18077,6 @@ msgid "Pledged"
 msgstr "Promis"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "Tipărește %d document fiscal"
-
-#: 
 msgid "Recent Friends"
 msgstr "Prieteni recenți"
 
@@ -18254,24 +18101,8 @@ msgid "Single Pages"
 msgstr "Pagini unice"
 
 #: 
-msgid "Tax Documents"
-msgstr "Documente fiscale"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "Eșec la trimiterea email-ului cu document fiscal. Vă rugăm să verificați setările serverului de email."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "Două pagini de jumătate de mărime, una lângă alta, pe fiecare foaie în peisaj, în ordine de broșură. Tipăriți pe ambele fețe cu \"flip pe marginea scurtă\", apoi pliați stiva în jumătate. Coloanele sunt numărate pe jumătate de pagină."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "Imposibil de trimis documentul fiscal prin email: niciun date de plată găsit pentru acel an."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "Imposibil de trimis documentul fiscal prin email: această familie nu are o adresă de email înregistrată."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -18734,10 +18565,6 @@ msgid "Could not match the church country."
 msgstr "Țara bisericii nu a putut fi potrivită."
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Liste de clasă, fișe de prezență și albume foto"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "Liste cu credincioșii din slujiri și rapoarte ale claselor Școlii duminicale"
 
@@ -18944,25 +18771,11 @@ msgstr[1] "%d voluntari impliciți repartizați"
 msgstr[2] "%d de voluntari impliciți repartizați"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Încă un %d voluntar este necesar pentru acest post. Deschideți ocurența pentru a completa golul."
-msgstr[1] "Încă %d voluntari sunt necesari pentru acest post. Deschideți ocurența pentru a completa golul."
-msgstr[2] "Încă %d de voluntari sunt necesari pentru acest post. Deschideți ocurența pentru a completa golul."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d ocurență nouă"
 msgstr[1] "%d ocurențe noi"
 msgstr[2] "%d de ocurențe noi"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Încă %d voluntar este necesar pentru o ocurență viitoare."
-msgstr[1] "Încă %d voluntari sunt necesari pentru o ocurență viitoare."
-msgstr[2] "Încă %d de voluntari sunt necesari pentru o ocurență viitoare."
 
 #: 
 msgid "%s Calendar"
@@ -21031,10 +20844,6 @@ msgstr "Deschide slujirea"
 #: 
 msgid "Open the occurrence"
 msgstr "Deschide ocurența"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Deschideți ocurența pentru a repartiza persoanele de care aveți nevoie."
 
 #: 
 msgid "Open this team"
@@ -24734,10 +24543,6 @@ msgstr "Serviciul de geocodificare nu a răspuns — încercați din nou mai tâ
 #: 
 msgid "Only the email you sent is shown."
 msgstr "Este afișat doar e-mailul pe care l-ați trimis."
-
-#: 
-msgid "%d Giving Statement"
-msgstr "Declarație de donații %d"
 
 #: 
 msgid "Repeat events could not be created. Check the application log for details."

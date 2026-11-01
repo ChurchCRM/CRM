@@ -1,12 +1,18 @@
 /// <reference types="cypress" />
 
+import { pdfText } from "../../../support/pdf-text";
+
+// Seeded in cypress/data/seed.sql. Fundraiser 1 stays empty so create/delete tests can use it.
+const SEEDED_AUCTION = 3;
+const SEEDED_RAFFLE = 5;
+
 /**
  * E2E tests for the /fundraiser/* Slim MVC module.
  *
  * Seed data (cypress/data/seed.sql):
- *   - fundraiser_fr ID 1: "2016 Car Wash" (Youth Car Wash)
- *   - donateditem_di:  empty (tests create items as needed)
- *   - paddlenum_pn:    empty (tests create paddles as needed)
+ *   - fundraiser_fr ID 1: "2016 Car Wash" (Youth Car Wash), with no items or paddles
+ *   - later fundraisers have donated items, paddles, and one multibuy
+ *   - tests that create items or paddles use fundraiser 1
  *
  * All routes require ManageFundraisers. tony.wade (standard session) has
  * ManageFundraisers=1 and is used throughout.
@@ -25,6 +31,11 @@ describe("Fund Raiser", () => {
     it("View All", () => {
         cy.visit("/fundraiser/");
         cy.contains("Fundraiser Listing");
+        cy.get("body").should("contain.text", "Summer Harvest Raffle");
+        cy.get("body").should("contain.text", "Fall Festival Gala");
+        cy.get("body").should("contain.text", "Christmas Bazaar");
+        cy.get("body").should("contain.text", "Spring Silent Auction");
+        cy.get("body").should("contain.text", "2016 Car Wash");
     });
 
     it("View By Filter Date ", () => {
@@ -397,102 +408,63 @@ describe("Fund Raiser", () => {
         cy.get("body").should("not.contain", "Finance Reports");
     });
 
-    it("view page shows Bid Sheets for an Auction fundraiser", () => {
+    it("view page shows the seeded silent auction and its reports", () => {
+        cy.visit(`/fundraiser/view/${SEEDED_AUCTION}`);
+        cy.contains("Spring Silent Auction");
+        cy.contains("Weekend at the church cabin");
+        cy.contains("a", "Bid Sheets").should("have.attr", "href").and("include", `/fundraiser/${SEEDED_AUCTION}/reports/bid-sheets`);
+        cy.contains("a", "Catalog").should("exist");
+        cy.contains("a", "Certificates").should("exist");
+        cy.contains("a", "Buyer Statements").should("exist");
+    });
+
+    it("view page hides Bid Sheets/Catalog/Certificates for the seeded raffle but keeps Buyer Statements", () => {
+        cy.visit(`/fundraiser/view/${SEEDED_RAFFLE}`);
+        cy.contains("Summer Harvest Raffle");
+        cy.contains("a", "Bid Sheets").should("not.exist");
+        cy.contains("a", "Catalog").should("not.exist");
+        cy.contains("a", "Certificates").should("not.exist");
+        cy.contains("a", "Buyer Statements").should("exist");
+        cy.contains("Donated Items").should("exist");
+        cy.contains("a", "Add Item").should("exist");
+    });
+
+    it("catalog and certificates routes redirect away for the seeded raffle", () => {
         cy.request({
-            method: "POST",
-            url: "/api/fundraisers",
-            body: { title: `CY Auction Reports ${Date.now()}`, type: "Auction" },
-            headers: { "Content-Type": "application/json" },
-        }).then((res) => {
-            const id = res.body.fundraiser.id;
-            cy.visit(`/fundraiser/view/${id}`);
-            cy.contains("a", "Bid Sheets").should("exist");
-            cy.contains("a", "Catalog").should("exist");
-            cy.contains("a", "Certificates").should("exist");
-            cy.contains("a", "Buyer Statements").should("exist");
+            url: `/fundraiser/${SEEDED_RAFFLE}/reports/catalog`,
+            followRedirect: false,
+            failOnStatusCode: false,
+        }).then((catalogRes) => {
+            expect(catalogRes.status).to.eq(302);
+            expect(catalogRes.headers.location).to.include(`/fundraiser/view/${SEEDED_RAFFLE}`);
+        });
+        cy.request({
+            url: `/fundraiser/${SEEDED_RAFFLE}/reports/certificates`,
+            followRedirect: false,
+            failOnStatusCode: false,
+        }).then((certRes) => {
+            expect(certRes.status).to.eq(302);
+            expect(certRes.headers.location).to.include(`/fundraiser/view/${SEEDED_RAFFLE}`);
         });
     });
 
-    it("view page hides Bid Sheets/Catalog/Certificates for a Raffle fundraiser but keeps Buyer Statements", () => {
+    it("bid-sheets route redirects away for the seeded raffle", () => {
         cy.request({
-            method: "POST",
-            url: "/api/fundraisers",
-            body: { title: `CY Raffle Reports ${Date.now()}`, type: "Raffle" },
-            headers: { "Content-Type": "application/json" },
-        }).then((res) => {
-            const id = res.body.fundraiser.id;
-            cy.visit(`/fundraiser/view/${id}`);
-            cy.contains("a", "Bid Sheets").should("not.exist");
-            cy.contains("a", "Catalog").should("not.exist");
-            cy.contains("a", "Certificates").should("not.exist");
-            cy.contains("a", "Buyer Statements").should("exist");
-            // Donated Items itself stays — Batch Winner Entry depends on it to record drawing winners.
-            cy.contains("Donated Items").should("exist");
-            cy.contains("a", "Add Item").should("exist");
+            url: `/fundraiser/${SEEDED_RAFFLE}/reports/bid-sheets`,
+            followRedirect: false,
+            failOnStatusCode: false,
+        }).then((reportRes) => {
+            expect(reportRes.status).to.eq(302);
+            expect(reportRes.headers.location).to.include(`/fundraiser/view/${SEEDED_RAFFLE}`);
         });
     });
 
-    it("catalog and certificates routes redirect away for a Raffle fundraiser", () => {
-        cy.request({
-            method: "POST",
-            url: "/api/fundraisers",
-            body: { title: `CY Raffle Catalog Route ${Date.now()}`, type: "Raffle" },
-            headers: { "Content-Type": "application/json" },
-        }).then((res) => {
-            const id = res.body.fundraiser.id;
-            cy.request({
-                url: `/fundraiser/${id}/reports/catalog`,
-                followRedirect: false,
-                failOnStatusCode: false,
-            }).then((catalogRes) => {
-                expect(catalogRes.status).to.eq(302);
-                expect(catalogRes.headers.location).to.include(`/fundraiser/view/${id}`);
-            });
-            cy.request({
-                url: `/fundraiser/${id}/reports/certificates`,
-                followRedirect: false,
-                failOnStatusCode: false,
-            }).then((certRes) => {
-                expect(certRes.status).to.eq(302);
-                expect(certRes.headers.location).to.include(`/fundraiser/view/${id}`);
-            });
-        });
-    });
-
-    it("bid-sheets route redirects away for a non-eligible fundraiser type", () => {
-        cy.request({
-            method: "POST",
-            url: "/api/fundraisers",
-            body: { title: `CY Raffle Route ${Date.now()}`, type: "Raffle" },
-            headers: { "Content-Type": "application/json" },
-        }).then((res) => {
-            const id = res.body.fundraiser.id;
-            cy.request({
-                url: `/fundraiser/${id}/reports/bid-sheets`,
-                followRedirect: false,
-                failOnStatusCode: false,
-            }).then((reportRes) => {
-                expect(reportRes.status).to.eq(302);
-                expect(reportRes.headers.location).to.include(`/fundraiser/view/${id}`);
-            });
-        });
-    });
-
-    it("editor page hides 'Generate Bid Sheets' and 'Generate Catalog' for a Raffle fundraiser", () => {
-        cy.request({
-            method: "POST",
-            url: "/api/fundraisers",
-            body: { title: `CY Editor Raffle ${Date.now()}`, type: "Raffle" },
-            headers: { "Content-Type": "application/json" },
-        }).then((res) => {
-            const id = res.body.fundraiser.id;
-            cy.visit(`/fundraiser/editor/${id}`);
-            cy.contains("Generate Bid Sheets").should("not.exist");
-            cy.contains("Generate Catalog").should("not.exist");
-            cy.contains("Generate Certificates").should("not.exist");
-            // Add Donated Item stays — Batch Winner Entry depends on donated items to record drawing winners.
-            cy.contains("a", "Add Donated Item").should("exist");
-        });
+    it("editor page hides report links for the seeded raffle", () => {
+        cy.visit(`/fundraiser/editor/${SEEDED_RAFFLE}`);
+        cy.contains("Generate Bid Sheets").should("not.exist");
+        cy.contains("Generate Catalog").should("not.exist");
+        cy.contains("Generate Certificates").should("not.exist");
+        cy.contains("a", "Add Donated Item").should("exist");
     });
 
     it("view page redirects to listing for unknown fundraiser", () => {
@@ -512,15 +484,16 @@ describe("Fund Raiser", () => {
 
     it("status filter narrows listing without error", () => {
         cy.visit("/fundraiser/?filterStatus=Active");
-        cy.contains("Fundraiser Listing");
-        // The page should not contain a PHP error trace
+        cy.get("#fundraisers").should("contain.text", "Summer Harvest Raffle");
+        cy.contains("Spring Silent Auction").should("not.exist");
         cy.get("body").should("not.contain", "Fatal error");
         cy.get("body").should("not.contain", "Uncaught");
     });
 
     it("type filter narrows listing without error", () => {
-        cy.visit("/fundraiser/?filterType=Auction");
-        cy.contains("Fundraiser Listing");
+        cy.visit("/fundraiser/?filterType=Raffle");
+        cy.get("body").should("contain.text", "Summer Harvest Raffle");
+        cy.get("body").should("not.contain.text", "2016 Car Wash");
         cy.get("body").should("not.contain", "Fatal error");
     });
 
@@ -542,6 +515,7 @@ describe("Fund Raiser", () => {
     it("listing header reflects the applied status filter and hides the archive card", () => {
         cy.visit("/fundraiser/?filterStatus=Closed");
         cy.get(".card-title").first().should("contain.text", "Closed Fundraisers");
+        cy.get("#fundraisers").should("contain.text", "Spring Silent Auction");
         cy.get("#archiveCollapse").should("not.exist");
     });
 
@@ -566,27 +540,39 @@ describe("Fund Raiser", () => {
     // beforeEach and is faster than cy.visit for binary responses.
     // -----------------------------------------------------------------------
 
-    it("bid-sheets returns application/pdf", () => {
-        cy.request("/fundraiser/1/reports/bid-sheets")
-            .its("headers.content-type")
-            .should("include", "application/pdf");
+    it("bid-sheets returns the seeded silent-auction items", () => {
+        cy.request({ url: `/fundraiser/${SEEDED_AUCTION}/reports/bid-sheets`, encoding: "binary" }).then((response) => {
+            expect(response.headers["content-type"]).to.include("application/pdf");
+            return pdfText(response.body).then((lines) => {
+                expect(lines.join(" ")).to.include("Weekend at the church cabin");
+            });
+        });
     });
 
-    it("certificates returns application/pdf", () => {
-        cy.request("/fundraiser/1/reports/certificates")
-            .its("headers.content-type")
-            .should("include", "application/pdf");
+    it("certificates returns the seeded silent-auction items", () => {
+        cy.request({ url: `/fundraiser/${SEEDED_AUCTION}/reports/certificates`, encoding: "binary" }).then((response) => {
+            expect(response.headers["content-type"]).to.include("application/pdf");
+            return pdfText(response.body).then((lines) => {
+                expect(lines.join(" ")).to.include("Handmade quilt");
+            });
+        });
     });
 
-    it("catalog returns application/pdf", () => {
-        cy.request("/fundraiser/1/reports/catalog")
-            .its("headers.content-type")
-            .should("include", "application/pdf");
+    it("catalog returns the seeded silent-auction items", () => {
+        cy.request({ url: `/fundraiser/${SEEDED_AUCTION}/reports/catalog`, encoding: "binary" }).then((response) => {
+            expect(response.headers["content-type"]).to.include("application/pdf");
+            return pdfText(response.body).then((lines) => {
+                expect(lines.join(" ")).to.include("Spring Silent Auction");
+            });
+        });
     });
 
-    it("statement (GET) returns application/pdf", () => {
-        cy.request("/fundraiser/1/reports/statement")
-            .its("headers.content-type")
-            .should("include", "application/pdf");
+    it("statement returns the seeded silent-auction buyers", () => {
+        cy.request({ url: `/fundraiser/${SEEDED_AUCTION}/reports/statement`, encoding: "binary" }).then((response) => {
+            expect(response.headers["content-type"]).to.include("application/pdf");
+            return pdfText(response.body).then((lines) => {
+                expect(lines.join(" ")).to.include("Constance & Marion Hart");
+            });
+        });
     });
 });

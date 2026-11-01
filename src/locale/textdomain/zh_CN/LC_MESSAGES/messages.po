@@ -954,20 +954,8 @@ msgid "Voting Members"
 msgstr "有投票权的成员"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "给报告（税单）"
-
-#: 
 msgid "Zero Givers"
 msgstr "零言官群体"
-
-#: 
-msgid "Individual Deposit Report"
-msgstr "个人存款报告"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "预付订金报告"
 
 #: 
 msgid "Next"
@@ -994,10 +982,6 @@ msgid "Apply Report Dates To"
 msgstr "应用报告日期"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "存款日期（默认）"
-
-#: 
 msgid "Payment Date"
 msgstr "付款日期"
 
@@ -1020,10 +1004,6 @@ msgid "Filter by Payment Type"
 msgstr "过滤器的付款方式"
 
 #: 
-msgid "All Methods"
-msgstr "所有方法"
-
-#: 
 msgid "Check"
 msgstr "查"
 
@@ -1034,10 +1014,6 @@ msgstr "现金"
 #: 
 msgid "Bank Draft"
 msgstr "银行汇票"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0  - 不设最低"
 
 #: 
 msgid "Other Settings"
@@ -1311,10 +1287,6 @@ msgstr "确认数据标签"
 #: 
 msgid "Invalid login or password"
 msgstr "无效的登录名或密码"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "太多次失败登录您的帐户已被锁定。请与管理员联系。"
 
 #: 
 msgid "Email/Username"
@@ -1774,15 +1746,6 @@ msgid "System Settings"
 msgstr "系统设置"
 
 #: 
-msgid "Tax Report"
-msgstr "税务报告"
-
-#: 
-#, fuzzy
-msgid "Calendar Year"
-msgstr "日历年份"
-
-#: 
 msgid "User Editor"
 msgstr "用户编辑器"
 
@@ -2212,24 +2175,12 @@ msgid "Classes"
 msgstr "科室"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "主日学报告"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "学生不在主日课程"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "必须选择至少一组类列表或出勤表。"
-
-#: 
 msgid "Report Details"
 msgstr "报告详情"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "列出所有角色（未选中将仅列出教士/学生角色）"
 
 #: 
 #, fuzzy
@@ -2255,10 +2206,6 @@ msgstr "额外的学生"
 #, fuzzy
 msgid "Extra Teachers"
 msgstr "额外的教师"
-
-#: 
-msgid "Create Class List"
-msgstr "创建类列表"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4673,14 +4620,6 @@ msgid "PhotoBook"
 msgstr "相簿"
 
 #: 
-msgid "With Photos"
-msgstr "相片"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "创建相簿"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4827,11 +4766,6 @@ msgstr "纪念日"
 #: 
 msgid "View User"
 msgstr "查看用户"
-
-#: 
-#, fuzzy
-msgid "not found or user without an email"
-msgstr "没有找到或没有电子邮件的用户"
 
 #: 
 msgid "UserName not set"
@@ -5029,16 +4963,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "新密码必须不同于旧密码的最小数量（已更改的字符数）\n"
 "设置为零以禁用此功能"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "用户帐户锁定之前允许的最大失败登录次数。\n"
-"一旦达到最大值，管理员必须重新启用该帐户。\n"
-"此功能有助于防止自动密码猜测攻击。\n"
-"设置为零以禁用此功能。"
 
 #: 
 msgid "PDF handling mode.\n"
@@ -5675,10 +5599,6 @@ msgstr "删除选中项"
 #: 
 msgid "Funds"
 msgstr "基金"
-
-#: 
-msgid "Generate Report"
-msgstr "生成报告"
 
 #: 
 msgid "Payments"
@@ -6372,14 +6292,6 @@ msgid "Current Deposit"
 msgstr "当前存款"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "可自定义报告，可按日期、基金、家庭和付款方式过滤。"
-
-#: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "自定义出现在税务声明上的文本。"
-
-#: 
 msgid "Day"
 msgstr "日"
 
@@ -6390,10 +6302,6 @@ msgstr "十二月"
 #: 
 msgid "Deposit Statistics"
 msgstr "存款统计"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "单个存款单的详细明细。"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6460,20 +6368,12 @@ msgid "Generate"
 msgstr "生成"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "生成税务声明"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "为捐助者生成年度免税奉献声明。可以打印或发送电子邮件。"
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "为有未完成认献的家庭生成提醒信函。"
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "生成税务声明、认献追踪和财务分析报告。"
 
 #: 
 msgid "ID"
@@ -6502,10 +6402,6 @@ msgstr "六月"
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "让我们设置好您的系统并准备就绪"
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "根据捐赠历史和成员标准列出有投票资格的成员。"
 
 #: 
 msgid "Location"
@@ -6656,10 +6552,6 @@ msgid "System Info"
 msgstr "系统信息"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "税务与奉献报告"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "税务报告措辞"
 
@@ -6686,10 +6578,6 @@ msgstr "升级"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "用户必须是管理员或具有财务权限"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "核实教会名称、地址和联系信息出现在税务声明上。"
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9198,10 +9086,6 @@ msgid "Generate reports on group membership and activities"
 msgstr "生成小组成员和活动报告"
 
 #: 
-msgid "Generate tax statement documents for donors"
-msgstr "为奉献者生成税务报表文件"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "将您的数据导入 ChurchCRM"
 
@@ -9948,10 +9832,6 @@ msgid "View transaction details for a pledge payment"
 msgstr "查看奉献承诺付款的交易详情"
 
 #: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "有投票权的成员必须在近几年内有过奉献（0 表示不要求奉献）"
-
-#: 
 msgid "We could not find the family you were looking for."
 msgstr "我们找不到您要查找的家庭。"
 
@@ -10142,10 +10022,6 @@ msgstr "强制重新安装？"
 #: 
 msgid "Full Path"
 msgstr "完整路径"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "生成班级列表、签到表和照片册"
 
 #: 
 msgid "Installed"
@@ -16014,10 +15890,6 @@ msgid "Please confirm your family information"
 msgstr "请确认您的家庭信息"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "请将您的下一次奉献邮寄至 %s"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "请选择另一个家庭与这些奉献关联"
 
@@ -18045,10 +17917,6 @@ msgid "{{minutes}} min left"
 msgstr "剩余 {{minutes}} 分钟"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d 份税单已成功邮寄给家庭"
-
-#: 
 msgid "All classifications"
 msgstr "所有分类"
 
@@ -18081,28 +17949,8 @@ msgid "Columns per Page"
 msgstr "每页列数"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "亲爱的 %s 一家，\n"
-"\n"
-"请查收本邮件附件中的 %d 份来自 %s 的捐献声明。\n"
-"\n"
-"如有任何问题，请联系教堂办公室。\n"
-"\n"
-"感谢您的慷慨奉献。"
-
-#: 
 msgid "Download CSV"
 msgstr "下载 CSV"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "邮寄 %d 份税单"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18205,10 +18053,6 @@ msgid "Pledged"
 msgstr "承诺"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "打印 %d 份税单"
-
-#: 
 msgid "Recent Friends"
 msgstr "最近的朋友"
 
@@ -18233,24 +18077,8 @@ msgid "Single Pages"
 msgstr "单个页面"
 
 #: 
-msgid "Tax Documents"
-msgstr "税单"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "税单邮件发送失败。请检查您的电子邮件服务器设置"
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "在每个横向页上并排放置两个半尺寸页面，按小册子顺序排列。双面打印，使用 flip on short edge，然后将堆栈对折。每个半页统计列数"
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "无法邮寄税单：未发现该年份的付款数据"
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "无法邮寄税单：该家庭在文件中没有电子邮件地址"
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -18713,10 +18541,6 @@ msgid "Could not match the church country."
 msgstr "无法匹配教会所在国家。"
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "班级名单、点名表和相册"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "小组成员名单和主日学班级报告"
 
@@ -18915,19 +18739,9 @@ msgid_plural "%d default volunteers assigned"
 msgstr[0] "%d 个默认义工已分配"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "此岗位仍需 %d 名义工。打开发生以填补空缺。"
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d 个新发生"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "即将发生的事件仍需 %d 名义工。"
 
 #: 
 msgid "%s Calendar"
@@ -20988,10 +20802,6 @@ msgstr "打开事工"
 #: 
 msgid "Open the occurrence"
 msgstr "打开活动场次"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "请打开活动场次，分配您所需要的人员。"
 
 #: 
 msgid "Open this team"
@@ -24683,10 +24493,422 @@ msgid "Only the email you sent is shown."
 msgstr "仅显示您发送的电子邮件。"
 
 #: 
-msgid "%d Giving Statement"
-msgstr "%d 奉献报表"
-
-#: 
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "无法创建重复活动。请查看应用程序日志了解详情。"
+
+#: 
+msgid "Confirm Password"
+msgstr "确认密码"
+
+#: 
+msgid "Your password has been changed. You can now sign in with your new password."
+msgstr "您的密码已更改。现在可以使用新密码登录。"
+
+#: 
+msgid "1st"
+msgstr "第1"
+
+#: 
+msgid "2nd"
+msgstr "第2"
+
+#: 
+msgid "3rd"
+msgstr "第3"
+
+#: 
+msgid "4th"
+msgstr "第4"
+
+#: 
+msgid "5th"
+msgstr "第5"
+
+#: 
+msgid "Can't remove administrator access from the only administrator who can sign in"
+msgstr "无法移除唯一可登录管理员的管理员权限"
+
+#: 
+msgid "Choose the week of the month, from 1st to 5th"
+msgstr "选择月份中的周，从第1周到第5周"
+
+#: 
+msgid "Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}"
+msgstr "创建 {{total}} 个事件，在每月 {{week}} {{day}}，从 {{first}} 到 {{last}}"
+
+#: 
+msgid "Invalid day of the week"
+msgstr "无效的星期几"
+
+#: 
+msgid "Monthly, on a weekday"
+msgstr "每月，在工作日"
+
+#: 
+msgid "Months without a 5th one are skipped."
+msgstr "没有第5周的月份将被跳过。"
+
+#: 
+msgid "RecurWOM must be a whole number from 1 to 5"
+msgstr "RecurWOM 必须是 1 到 5 的整数"
+
+#: 
+msgid "Week of the month"
+msgstr "月份中的周"
+
+#: 
+msgid "Week of the month must be from 1 to 5"
+msgstr "月份中的周必须为 1 到 5"
+
+#: 
+msgid "%s through %s"
+msgstr "%s 至 %s"
+
+#: 
+msgid "Church tax ID (EIN) printed on contribution statements"
+msgstr "打印在奉献报表上的教会税号 (EIN)"
+
+#: 
+msgid "Contribution statements are issued to the adults of a household. Please contact the church office if you need one."
+msgstr "奉献报表发给家庭中的成年人。如需一份，请联系教会办公室。"
+
+#: 
+msgid "Download statement"
+msgstr "下载报表"
+
+#: 
+msgid "Generated"
+msgstr "已生成"
+
+#: 
+msgid "Goods and services"
+msgstr "商品与服务"
+
+#: 
+msgid "My Giving"
+msgstr "我的奉献"
+
+#: 
+msgid "No contributions"
+msgstr "无奉献"
+
+#: 
+msgid "No contributions were recorded for this period."
+msgstr "此期间未记录任何奉献。"
+
+#: 
+msgid "No goods or services were provided in exchange for these contributions, other than intangible religious benefits."
+msgstr "除无形宗教利益外，未为这些奉献提供任何商品或服务。"
+
+#: 
+msgid "Optional. Printed on contribution statements."
+msgstr "可选。打印在奉献报表上。"
+
+#: 
+msgid "Tax ID"
+msgstr "税号"
+
+#: 
+msgid "Tax ID (EIN)"
+msgstr "税号 (EIN)"
+
+#: 
+msgid "Tax-deductible amount"
+msgstr "可抵税金额"
+
+#: 
+msgid "This is the household statement. It includes gifts for your family."
+msgstr "这是家庭报表。包含您家庭的奉献。"
+
+#: 
+msgid "Total contributions"
+msgstr "奉献总计"
+
+#: 
+msgid "Year-end statement"
+msgstr "年终报表"
+
+#: 
+msgid "%d giving statement emailed to the family successfully."
+msgstr "%d 份奉献报表已成功通过电子邮件发送给家庭。"
+
+#: 
+msgid "%s Giving Statement"
+msgstr "%s 奉献报表"
+
+#: 
+msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "自定义奉献报表上显示的文本（sTaxReport1、sTaxReport2 等）。"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %s giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "亲爱的 %s 家庭：\n"
+"\n"
+"请查收附件中的 %s 年 %s 奉献报表。\n"
+"\n"
+"如有任何问题，请联系教会办公室。\n"
+"\n"
+"感谢您的慷慨奉献。"
+
+#: 
+msgid "Email %s Giving Statement"
+msgstr "通过电子邮件发送 %s 奉献报表"
+
+#: 
+msgid "Envelope Numbers"
+msgstr "信封编号"
+
+#: 
+msgid "Generate Giving Statements"
+msgstr "生成奉献报表"
+
+#: 
+msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
+msgstr "生成奉献报表、承诺跟踪和财务分析报告。"
+
+#: 
+msgid "Giving Reports"
+msgstr "奉献报告"
+
+#: 
+msgid "Giving Statement"
+msgstr "奉献报表"
+
+#: 
+msgid "Giving Statements"
+msgstr "奉献报表"
+
+#: 
+msgid "Giving statement email failed to send. Please check your email server settings."
+msgstr "奉献报表电子邮件发送失败。请检查电子邮件服务器设置。"
+
+#: 
+msgid "Please mail your next gift to %s"
+msgstr "请将下一笔奉献邮寄至 %s"
+
+#: 
+msgid "Print %s Giving Statement"
+msgstr "打印 %s 奉献报表"
+
+#: 
+msgid "Unable to email giving statement: no payment data found for that year."
+msgstr "无法通过电子邮件发送奉献报表：未找到该年的付款数据。"
+
+#: 
+msgid "Unable to email giving statement: this family has no email address on file."
+msgstr "无法通过电子邮件发送奉献报表：此家庭没有记录的电子邮件地址。"
+
+#: 
+msgid "Undesignated"
+msgstr "未指定"
+
+#: 
+msgid "Verify church name, address, and contact info appears on giving statements."
+msgstr "验证教会名称、地址和联系信息是否出现在奉献报表上。"
+
+#: 
+msgid "The position is now assigned to %s, who has accepted it."
+msgstr "该职位现已分配给 %s，对方已接受。"
+
+#: 
+msgid "The position is now assigned to %s, who has not yet accepted it."
+msgstr "该职位现已分配给 %s，对方尚未接受。"
+
+#: 
+msgid "Their reason: %s"
+msgstr "他们的理由：%s"
+
+#: 
+msgid "View Assignments"
+msgstr "查看分配"
+
+#: 
+msgid "Volunteers still needed for this occurrence: %d"
+msgstr "此次活动仍需志愿者：%d"
+
+#: 
+msgid "Volunteers still needed for this position: %d"
+msgstr "此职位仍需志愿者：%d"
+
+#: 
+msgid "A weekly sign-in grid for each class. Class lists and photo books are on the Sunday School dashboard and each class page."
+msgstr "每个班级的每周签到表。班级名单和相册位于主日学仪表板和每个班级页面。"
+
+#: 
+msgid "A weekly sign-in grid for the school year, one column for each Sunday"
+msgstr "学年每周签到表，每个周日一列"
+
+#: 
+msgid "Age %d"
+msgstr "年龄 %d"
+
+#: 
+msgid "At least one group must be selected to make an attendance sheet."
+msgstr "必须至少选择一个组才能制作出勤表。"
+
+#: 
+msgid "Attendance Sheet"
+msgstr "出勤表"
+
+#: 
+msgid "Class List"
+msgstr "班级名单"
+
+#: 
+msgid "Download PDF"
+msgstr "下载 PDF"
+
+#: 
+msgid "Lockout period in minutes\n"
+"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
+msgstr "锁定时间（分钟）\n"
+"锁定的账户在此分钟数后自动解锁。同一时间段内来自一个 IP 地址的失败登录会被计数。"
+
+#: 
+msgid "Maximum number of failed logins from one IP address\n"
+"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
+"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
+msgstr "来自一个 IP 地址的最大失败登录次数\n"
+"在锁定时间内，来自一个 IP 地址的失败登录和密码重置请求计入此限制。达到限制后，该地址的登录将被拒绝，直到时间段结束。\n"
+"设为零以禁用此功能，例如当所有人都通过一个代理地址访问 ChurchCRM 时。"
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "在用户账户被锁定之前允许的最大失败登录次数。\n"
+"锁定的账户在锁定时间后自动解锁，或在管理员重置失败登录时提前解锁。\n"
+"此功能有助于防止自动密码猜测攻击。\n"
+"设为零以禁用此功能。"
+
+#: 
+msgid "Minutes until it unlocks by itself: %d"
+msgstr "自动解锁前剩余分钟数：%d"
+
+#: 
+msgid "Sunday School Attendance Sheet"
+msgstr "主日学出勤表"
+
+#: 
+msgid "Sundays with no class are left off the sheet."
+msgstr "没有课程的周日将从表格中省略。"
+
+#: 
+msgid "Database Upgrade"
+msgstr "数据库升级"
+
+#: 
+msgid "Your database is being updated. Please keep this page open until the upgrade finishes."
+msgstr "您的数据库正在更新。请保持此页面打开，直到升级完成。"
+
+#: 
+msgid "Family Labels"
+msgstr "家庭标签"
+
+#: 
+msgid "%s – Total"
+msgstr "%s – 总计"
+
+#: 
+msgid "Bill"
+msgstr "纸币"
+
+#: 
+msgid "Choose a deposit or enter both report dates."
+msgstr "选择一笔存款或输入两个报告日期。"
+
+#: 
+msgid "Choose one deposit to review its payments or print its bank slip. A selected deposit overrides the date range."
+msgstr "选择一笔存款以审查其付款或打印银行凭条。选定的存款将覆盖日期范围。"
+
+#: 
+msgid "Coin"
+msgstr "硬币"
+
+#: 
+msgid "Deposit Report"
+msgstr "存款报告"
+
+#: 
+msgid "Download Report"
+msgstr "下载报告"
+
+#: 
+msgid "Enter valid report dates."
+msgstr "输入有效的报告日期。"
+
+#: 
+msgid "Invalid report filters."
+msgstr "无效的报告筛选器。"
+
+#: 
+msgid "Invalid report options."
+msgstr "无效的报告选项。"
+
+#: 
+msgid "Leave filters empty to include all payments. These settings apply to the report, not the bank slip."
+msgstr "将筛选器留空以包含所有付款。这些设置适用于报告，而非银行凭条。"
+
+#: 
+msgid "No records were returned. Adjust your filters and try again."
+msgstr "未返回任何记录。请调整筛选器后重试。"
+
+#: 
+msgid "Prepare for the Bank"
+msgstr "准备送银行"
+
+#: 
+msgid "Preview Totals"
+msgstr "预览总计"
+
+#: 
+msgid "Print Bank Slip"
+msgstr "打印银行凭条"
+
+#: 
+msgid "Print the selected deposit in full, with cash and check totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
+msgstr "完整打印所选存款，包括现金和支票总计、计数表和证人行。报告筛选器被忽略。电子支付保留在摘要中，并从实体银行票据总计中排除。"
+
+#: 
+msgid "Review Payments"
+msgstr "审查付款"
+
+#: 
+msgid "Review payments for a period, or prepare one deposit for the bank."
+msgstr "审查一段时间内的付款，或准备一笔存款送银行。"
+
+#: 
+msgid "Review payments, download PDF or CSV, or print a bank slip for one deposit."
+msgstr "审查付款、下载 PDF 或 CSV，或为一笔存款打印银行凭条。"
+
+#: 
+msgid "Select a valid deposit."
+msgstr "选择有效的存款。"
+
+#: 
+msgid "Select one deposit to print a bank slip."
+msgstr "选择一笔存款以打印银行凭条。"
+
+#: 
+msgid "The report end date must be on or after the start date."
+msgstr "报告结束日期必须等于或晚于开始日期。"
+
+#: 
+msgid "Total Cash"
+msgstr "现金总计"
+
+#: 
+msgid "Total Coin"
+msgstr "硬币总计"
+
+#: 
+msgid "Witness"
+msgstr "证人"
 

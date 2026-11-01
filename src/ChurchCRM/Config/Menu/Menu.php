@@ -488,6 +488,9 @@ class Menu
         $depositsMenu->addSubMenu(new MenuItem(gettext('View All Deposits'), 'finance/deposit/search', $isFinanceEnabled, 'fa-list'));
         $depositsMenu->addSubMenu(new MenuItem(gettext('Pledge Dashboard'), 'finance/pledge/dashboard', $isFinanceEnabled, 'fa-handshake'));
         $depositsMenu->addSubMenu(new MenuItem(gettext('Edit Deposit Slip'), 'finance/deposit/' . (int) ($_SESSION['iCurrentDeposit'] ?? 0), $isFinanceEnabled, 'fa-pen-to-square'));
+        $depositsMenu->addSubMenu(new MenuItem(gettext('Financial Reports'), 'finance/reports', $isFinanceEnabled, 'fa-file-invoice-dollar'));
+        $depositsMenu->addSubMenu(new MenuItem(gettext('Year-End Giving'), 'finance/reports/year-end', $isFinanceEnabled, 'fa-calendar-check'));
+        $depositsMenu->addSubMenu(new MenuItem(gettext('Giving Statements'), 'finance/reports/giving-statements', $isFinanceEnabled, 'fa-envelope-open-text'));
 
         if ($isFinanceEnabled) {
             $adminMenu = new MenuItem(gettext('Admin'), '', $isFinanceEnabled);

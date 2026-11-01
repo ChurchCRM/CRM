@@ -921,20 +921,8 @@ msgid "Voting Members"
 msgstr "Mga Miyembrong May Boto"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Ulat ng Pag-aambag (Mga Pahayag sa Buwis)"
-
-#: 
 msgid "Zero Givers"
 msgstr "Walang Nagbigay"
-
-#: 
-msgid "Individual Deposit Report"
-msgstr "Indibidwal na Ulat ng Deposito"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Advanced na Ulat ng Deposito"
 
 #: 
 msgid "Next"
@@ -957,10 +945,6 @@ msgid "Apply Report Dates To"
 msgstr "Ilapat ang mga Petsa ng Ulat Sa"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "Petsa ng Deposito (Default)"
-
-#: 
 msgid "Payment Date"
 msgstr "Petsa ng Pagbabayad"
 
@@ -981,10 +965,6 @@ msgid "Filter by Payment Type"
 msgstr "I-filter ayon sa Uri ng Pagbabayad"
 
 #: 
-msgid "All Methods"
-msgstr "Lahat ng Paraan"
-
-#: 
 msgid "Check"
 msgstr "Tseke"
 
@@ -995,10 +975,6 @@ msgstr "Pera"
 #: 
 msgid "Bank Draft"
 msgstr "Tseke ng Bangko"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0 - Walang Minimum"
 
 #: 
 msgid "Other Settings"
@@ -1259,10 +1235,6 @@ msgstr "Kumpirmahin ang mga label ng datos"
 #: 
 msgid "Invalid login or password"
 msgstr "Hindi wastong login o password"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Napakaraming bagsak na login: ang iyong account ay nalock na. Makipag-ugnayan sa isang administrator."
 
 #: 
 msgid "Email/Username"
@@ -1714,14 +1686,6 @@ msgid "System Settings"
 msgstr "Mga Setting ng Sistema"
 
 #: 
-msgid "Tax Report"
-msgstr "Ulat sa Buwis"
-
-#: 
-msgid "Calendar Year"
-msgstr "Taon ng Kalendaryo"
-
-#: 
 msgid "User Editor"
 msgstr "Editor ng User"
 
@@ -2131,24 +2095,12 @@ msgid "Classes"
 msgstr "Mga Klase"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Mga Ulat ng Paaralan ng Linggo"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Mga Estudyanteng wala sa Klase ng Paaralan ng Linggo"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Kahit isang grupo ay dapat napili para gumawa ng mga listahan ng klase o mga sheet ng presensya."
-
-#: 
 msgid "Report Details"
 msgstr "Mga Detalye ng Ulat"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Ilista ang lahat ng Papel (ang hindi naka-check ay maglilista ng mga papel ng Guro/Estudyante lamang)"
 
 #: 
 msgid "First Sunday"
@@ -2169,10 +2121,6 @@ msgstr "Karagdagang mga Estudyante"
 #: 
 msgid "Extra Teachers"
 msgstr "Karagdagang mga Guro"
-
-#: 
-msgid "Create Class List"
-msgstr "Lumikha ng Listahan ng Klase"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4579,14 +4527,6 @@ msgid "PhotoBook"
 msgstr "PhotoBook"
 
 #: 
-msgid "With Photos"
-msgstr "May Mga Larawan"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Lumikha ng PhotoBook"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4730,10 +4670,6 @@ msgstr "Mga Anibersaryo"
 #: 
 msgid "View User"
 msgstr "Tingnan ang User"
-
-#: 
-msgid "not found or user without an email"
-msgstr "hindi nahanap o user na walang email"
 
 #: 
 msgid "UserName not set"
@@ -4928,16 +4864,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Pinakamaliit na halaga na dapat magkaiba ang bagong password sa luma (# ng mga karakter na binago)\n"
 "Itakda sa zero para huwag paganahin ang tampok na ito"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Pinakamataas na bilang ng mga bagsak na login na pinapayagan bago malock ang user account.\n"
-"Kapag naabot na ang maximum, isang administrator ang kailangang muling paganahin ang account.\n"
-"Ang tampok na ito ay tumutulong na protektahan laban sa mga awtomatikong pag-atake sa paghula ng password.\n"
-"Itakda sa zero para huwag paganahin ang tampok na ito."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -5575,10 +5501,6 @@ msgstr "Burahin ang mga Napili"
 #: 
 msgid "Funds"
 msgstr "Mga Pondo"
-
-#: 
-msgid "Generate Report"
-msgstr "Gumawa ng Ulat"
 
 #: 
 msgid "Payments"
@@ -6274,14 +6196,6 @@ msgid "Current Deposit"
 msgstr "Kasalukuyang Deposito"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Pasadyang ulat na may pag-filter ayon sa petsa, pondo, pamilya, at paraan ng pagbabayad."
-
-#: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "I-customize ang teksto na lumalabas sa mga pahayag ng buwis (sTaxReport1, sTaxReport2, atbp)."
-
-#: 
 msgid "Day"
 msgstr "Araw"
 
@@ -6292,10 +6206,6 @@ msgstr "Dis"
 #: 
 msgid "Deposit Statistics"
 msgstr "Mga Istatistika ng Deposito"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Detalyadong breakdown ng isang solong deposit slip."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6362,20 +6272,12 @@ msgid "Generate"
 msgstr "Gumawa"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Gumawa ng mga Pahayag sa Buwis"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Gumawa ng mga taunang pahayag ng pagbibigay na mababawas sa buwis para sa mga nagbibigay. Maaaring i-print o i-email."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "Gumawa ng mga sulat ng paalala para sa mga pamilyang may mga natitirang pangako."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "Gumawa ng mga ulat para sa mga pahayag ng buwis, pagsubaybay ng pangako, at pagsusuri ng pananalapi."
 
 #: 
 msgid "ID"
@@ -6404,10 +6306,6 @@ msgstr "Hun"
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "Ihanda natin ang iyong sistema para magamit"
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "Ilista ang mga miyembro na karapat-dapat bumoto batay sa kasaysayan ng pagbibigay at pamantayan ng pagiging miyembro."
 
 #: 
 msgid "Location"
@@ -6558,10 +6456,6 @@ msgid "System Info"
 msgstr "Impormasyon ng Sistema"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "Mga Ulat sa Buwis at Pagbibigay"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "Teksto ng Ulat sa Buwis"
 
@@ -6588,10 +6482,6 @@ msgstr "Mag-upgrade"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "Ang user ay dapat Admin o may pahintulot sa Pananalapi"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "I-verify na ang pangalan ng simbahan, address, at impormasyon ng pakikipag-ugnayan ay lumalabas sa mga pahayag ng buwis."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9105,10 +8995,6 @@ msgid "Generate reports on group membership and activities"
 msgstr "Gumawa ng mga ulat sa pagiging miyembro ng grupo at mga aktibidad"
 
 #: 
-msgid "Generate tax statement documents for donors"
-msgstr "Gumawa ng mga dokumento ng pahayag sa buwis para sa mga nagbibigay"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "Ilagay ang Iyong Data sa ChurchCRM"
 
@@ -9855,10 +9741,6 @@ msgid "View transaction details for a pledge payment"
 msgstr "Tingnan ang mga detalye ng transaksyon para sa isang pagbabayad ng pangako"
 
 #: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "Ang mga miyembrong may boto ay dapat nagbigay ng donasyon sa loob ng napakaraming taon (0 para hindi kinakailangan ang donasyon)"
-
-#: 
 msgid "We could not find the family you were looking for."
 msgstr "Hindi namin mahanap ang pamilyang hinahanap mo."
 
@@ -10049,10 +9931,6 @@ msgstr "Puwersahing Muling I-install?"
 #: 
 msgid "Full Path"
 msgstr "Buong Path"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Gumawa ng mga listahan ng klase, mga sheet ng presensya, at mga photo book"
 
 #: 
 msgid "Installed"
@@ -15925,10 +15803,6 @@ msgid "Please confirm your family information"
 msgstr "Mangyaring kumpirmahin ang impormasyon ng iyong pamilya"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "Mangyaring ipadala ang iyong susunod na handog sa %s"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Mangyaring pumili ng ibang pamilya upang iugnay ang mga donasyong ito"
 
@@ -17959,10 +17833,6 @@ msgid "{{minutes}} min left"
 msgstr "{{minutes}} min na lang"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d dokumento ng buwis ay matagumpay na ipinadala sa pamilya."
-
-#: 
 msgid "All classifications"
 msgstr "Lahat ng klasipikasyon"
 
@@ -17995,28 +17865,8 @@ msgid "Columns per Page"
 msgstr "Mga Haligi bawat Pahina"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "Mahal na %s Pamilya,\n"
-"\n"
-"Mangyaring hanapin ang inyong %d pahayag ng pagbibigay mula sa %s na naka-attach sa email na ito.\n"
-"\n"
-"Kung mayroon kayong anumang katanungan, mangyaring makipag-ugnayan sa opisina ng simbahan.\n"
-"\n"
-"Merci para sa inyong pagiging maunawa."
-
-#: 
 msgid "Download CSV"
 msgstr "I-download ang CSV"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "Email %d Dokumento ng Buwis"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18119,10 +17969,6 @@ msgid "Pledged"
 msgstr "Nangako"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "Mag-print ng %d Dokumento ng Buwis"
-
-#: 
 msgid "Recent Friends"
 msgstr "Mga Kaibigan na Kamakailan"
 
@@ -18147,24 +17993,8 @@ msgid "Single Pages"
 msgstr "Mga Natatanging Pahina"
 
 #: 
-msgid "Tax Documents"
-msgstr "Mga Dokumento ng Buwis"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "Nabigo ang pagpadala ng email ng dokumento ng buwis. Mangyaring suriin ang iyong mga setting ng email server."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "Dalawang pahina ng kalahating sukat na magkakasama sa bawat landscape sheet, sa pagkakasunod-sunod ng buklet. Mag-print ng double-sided na may \"flip on short edge\", pagkatapos ay ibasin ang stack sa kalahati. Ang mga haligi ay kinabibilangan bawat kalahating pahina."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "Hindi kayang mag-email ng dokumento ng buwis: walang nahanap na data ng pagbabayad para sa taong iyon."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "Hindi kayang mag-email ng dokumento ng buwis: ang pamilyang ito ay walang email address sa file."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -18627,10 +18457,6 @@ msgid "Could not match the church country."
 msgstr "Hindi matukoy ang bansa ng simbahan."
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Mga listahan ng klase, mga attendance sheet, at mga photo book"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "Mga listahan ng miyembro ng grupo at mga ulat ng klase sa Sunday School"
 
@@ -18833,22 +18659,10 @@ msgstr[0] "%d default na boluntaryo ang naitalaga"
 msgstr[1] "%d default na boluntaryo ang naitalaga"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "%d pang boluntaryo ang kailangan pa para sa posisyong ito. Buksan ang pagkakataon para punan ang kulang."
-msgstr[1] "%d pang boluntaryo ang kailangan pa para sa posisyong ito. Buksan ang pagkakataon para punan ang kulang."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d bagong pagkakataon"
 msgstr[1] "%d bagong pagkakataon"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "%d boluntaryo ang kailangan pa para sa paparating na pagkakataon."
-msgstr[1] "%d boluntaryo ang kailangan pa para sa paparating na pagkakataon."
 
 #: 
 msgid "%s Calendar"
@@ -20913,10 +20727,6 @@ msgstr "Buksan ang ministeryo"
 #: 
 msgid "Open the occurrence"
 msgstr "Buksan ang pagkakataon"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Buksan ang pagkakataon para italaga ang mga taong kailangan mo."
 
 #: 
 msgid "Open this team"
@@ -24611,10 +24421,6 @@ msgstr "Hindi tumugon ang serbisyo ng geocoding — subukan muli mamaya"
 #: 
 msgid "Only the email you sent is shown."
 msgstr "Ang email na ipinadala mo lang ang ipinapakita."
-
-#: 
-msgid "%d Giving Statement"
-msgstr "%d Pahayag ng Pagbibigay"
 
 #: 
 msgid "Repeat events could not be created. Check the application log for details."

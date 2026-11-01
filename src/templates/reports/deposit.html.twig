@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    @page ticket { margin: 0; }
+    @page summary { margin: 14mm 12mm 14mm 12mm; }
+    body { font-family: sans-serif; font-size: 10pt; color: #1a1a1a; }
+    .abs { position: absolute; font-family: monospace; font-size: 10pt; line-height: 8mm; height: 8mm; white-space: nowrap; }
+    .abs.right { text-align: right; }
+    .stub-title { position: absolute; font-family: monospace; font-weight: bold; font-size: 20pt; line-height: 8mm; white-space: nowrap; }
+    .stub-block { position: absolute; font-size: 9pt; }
+    h2 { font-size: 10pt; margin: 0 0 1mm 0; }
+    table.denom { border-collapse: collapse; }
+    table.denom th, table.denom td { border: 0.3pt solid #1a1a1a; padding: 0 1.5mm; height: 10mm; text-align: left; font-size: 9pt; }
+    table.sum { border-collapse: collapse; width: 100%; }
+    table.sum td { padding: 0.8mm 0; font-size: 9pt; }
+    table.sum td.amount { text-align: right; }
+    table.sum tr.total td { border-top: 0.6pt solid #1a1a1a; font-weight: bold; }
+    h1 { font-size: 17pt; margin: 0 0 3mm 0; }
+    table.gifts { width: 100%; border-collapse: collapse; margin: 3mm 0 2mm 0; }
+    table.gifts th { border-bottom: 0.6pt solid #1a1a1a; font-size: 8.5pt; color: #555; text-transform: uppercase; padding: 1.5mm; text-align: left; }
+    table.gifts td { border-bottom: 0.2pt solid #ddd; padding: 1.3mm 1.5mm; font-size: 9pt; }
+    table.gifts th.right, table.gifts td.right { text-align: right; }
+    table.gifts tr.total td { border-top: 0.6pt solid #1a1a1a; border-bottom: none; font-weight: bold; }
+    .comment { margin: 4mm 0; }
+    .witness { width: 90mm; margin-top: 8mm; border-collapse: collapse; }
+    .witness td { padding-top: 5mm; font-size: 9pt; }
+    .witness td.line { border-bottom: 0.4pt solid #1a1a1a; width: 65mm; }
+    .generated { margin-top: 5mm; font-size: 8.5pt; color: #777; }
+  </style>
+</head>
+<body>
+{% if ticket %}
+  <div style="page: ticket">&nbsp;
+    {% for item in ticket.items %}
+      <div class="abs{{ item.align == 'right' ? ' right' : '' }}" style="left: {{ item.left }}mm; top: {{ item.top }}mm;{% if item.width is defined %} width: {{ item.width }}mm;{% endif %}">{{ item.text }}</div>
+    {% endfor %}
+
+    <div class="stub-title" style="left: {{ ticket.title_x }}mm; top: {{ ticket.perforation_y }}mm;">{{ gettext('Deposit #%d')|format(id) }}</div>
+    <div class="abs" style="left: {{ ticket.date_x }}mm; top: {{ ticket.perforation_y }}mm; font-family: sans-serif;">{{ ticket.date }}</div>
+
+    {% if bill_counts %}
+      <div class="stub-block" style="left: {{ ticket.stub_x }}mm; top: {{ ticket.stub_y }}mm;">
+        {% include '_deposit_denominations.html.twig' with {label: gettext('Coin'), values: coins, total_label: gettext('Total Coin')} only %}
+      </div>
+      <div class="stub-block" style="left: {{ ticket.stub_x + 70 }}mm; top: {{ ticket.stub_y }}mm;">
+        {% include '_deposit_denominations.html.twig' with {label: gettext('Bill'), values: bills, total_label: gettext('Total Cash')} only %}
+      </div>
+    {% endif %}
+
+    <div class="stub-block" style="left: {{ ticket.totals_x }}mm; top: {{ ticket.stub_y }}mm; width: 65mm;">
+      {% include '_deposit_totals.html.twig' %}
+    </div>
+  </div>
+{% endif %}
+
+<div style="page: summary">
+  <div>{{ church_name }}</div>
+  <h1>{{ gettext('Deposit #%d')|format(id) }}</h1>
+  <div>{{ gettext('Deposit Date') }}: {{ date }}</div>
+
+  <table class="gifts">
+    <thead>
+      <tr>
+        <th class="right">{{ gettext('Check #') }}</th>
+        <th>{{ gettext('Fund') }}</th>
+        <th>{{ gettext('Payment Method') }}</th>
+        <th>{{ gettext('Family') }}</th>
+        <th>{{ gettext('Comment') }}</th>
+        <th class="right">{{ gettext('Amount') }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for payment in payments %}
+        <tr>
+          <td class="right">{{ payment.check_no }}</td>
+          <td>{{ payment.fund }}</td>
+          <td>{{ payment.method }}</td>
+          <td>{{ payment.from }}</td>
+          <td>{{ payment.memo }}</td>
+          <td class="right">{{ payment.amount }}</td>
+        </tr>
+      {% endfor %}
+      <tr class="total"><td colspan="5">{{ gettext('Total') }}</td><td class="right">{{ total }}</td></tr>
+    </tbody>
+  </table>
+
+  {% if comment %}<div class="comment"><strong>{{ gettext('Deposit Comment') }}:</strong> {{ comment }}</div>{% endif %}
+
+  <table style="width: 100%; margin-top: 4mm;">
+    <tr>
+      {% if bill_counts %}
+        <td style="width: 50%; vertical-align: top;">
+          {% include '_deposit_denominations.html.twig' with {label: gettext('Coin'), values: coins, total_label: gettext('Total Coin')} only %}
+          <br>
+          {% include '_deposit_denominations.html.twig' with {label: gettext('Bill'), values: bills, total_label: gettext('Total Cash')} only %}
+        </td>
+      {% endif %}
+      <td style="vertical-align: top;">
+        {% include '_deposit_totals.html.twig' %}
+      </td>
+    </tr>
+  </table>
+
+  <table class="witness">
+    {% for n in 1..3 %}
+      <tr><td>{{ gettext('Witness') }} {{ n }}</td><td class="line">&nbsp;</td></tr>
+    {% endfor %}
+  </table>
+  {% if generated_on %}<div class="generated">{{ gettext('Generated') }} {{ generated_on }}</div>{% endif %}
+</div>
+</body>
+</html>

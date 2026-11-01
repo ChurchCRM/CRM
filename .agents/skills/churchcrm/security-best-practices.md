@@ -11,7 +11,7 @@ Incoming vuln report: `security-report-triage.md`.
 
 ## Always
 
-- Escape on output: `InputUtils::escapeHTML()` / `escapeAttribute()`
+- Escape on output: `InputUtils::escapeHTML()` / `escapeAttribute()`. For PDF/template rendering, verify the actual renderer configuration and follow `reports.md`; template interpolation alone does not establish escaping.
 - Sanitize on input: `sanitizeText()` (no HTML) or `sanitizeHTML()` (Quill / rich text)
 - JSON in `<script>`: `InputUtils::jsonEncodeForScript()`
 - DB: ORM with bound values

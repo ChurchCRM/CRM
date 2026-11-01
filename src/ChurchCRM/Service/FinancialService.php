@@ -655,197 +655,7 @@ class FinancialService
      */
     public static function formatFiscalYear(int $fyId): string
     {
-        if (SystemConfig::getIntValue('iFYMonth') === 1) {
-            return (string) (1996 + $fyId);
-        } else {
-            return (1995 + $fyId) . '/' . mb_substr(1996 + $fyId, 2, 2);
-        }
-    }
-
-    /**
-     * Get Advanced Deposit Report data using ORM
-     * 
-     * Security: Checks finance permissions before returning data
-     *
-     * @param string $sort Sort order: 'deposit', 'fund', or 'family'
-     * @param string $dateStart Start date (Y-m-d format)
-     * @param string $dateEnd End date (Y-m-d format)
-     * @param int|null $depositId Optional deposit ID filter
-     * @param array $fundIds Optional fund IDs filter
-     * @param array $familyIds Optional family IDs filter
-     * @param array $methods Optional payment methods filter
-     * @param array $classificationIds Optional classification IDs filter
-     * @return array
-     */
-    public function getAdvancedDepositReportData(
-        string $sort = 'deposit',
-        string $dateStart = '',
-        string $dateEnd = '',
-        ?int $depositId = null,
-        array $fundIds = [],
-        array $familyIds = [],
-        array $methods = [],
-        array $classificationIds = [],
-        string $datetype = 'Payment'
-    ): array {
-        AuthService::requireUserGroupMembership('bFinance');
-
-        $query = PledgeQuery::create()->filterForAdvancedDeposit(
-            $dateStart,
-            $dateEnd,
-            $fundIds,
-            $familyIds,
-            $methods,
-            $classificationIds,
-            $datetype,
-            $sort
-        );
-
-        // Add deposit ID filter if specified
-        if ($depositId > 0) {
-            $query->filterByDepId($depositId);
-        }
-
-        // Get results and convert to array WITHOUT foreign objects
-        // Using addAsColumn() in the query provides Family and Fund names directly
-        $collection = $query->find();
-        $results = [];
-        foreach ($collection as $pledge) {
-            $results[] = $pledge->toArray(TableMap::TYPE_PHPNAME, true, [], false);
-        }
-        return $results;
-    }
-
-    /**
-     * Get Tax Report (Giving Report) data using ORM
-     * 
-     * Security: Checks finance permissions before returning data
-     *
-     * @param string $dateStart Start date (Y-m-d format)
-     * @param string $dateEnd End date (Y-m-d format)
-     * @param int|null $depositId Optional deposit ID filter
-     * @param int|null $minimumAmount Optional minimum amount filter
-     * @param array $fundIds Optional fund IDs filter
-     * @param array $familyIds Optional family IDs filter
-     * @param array $classificationIds Optional classification IDs filter
-     * @return array
-     */
-    public function getTaxReportData(
-        string $dateStart = '',
-        string $dateEnd = '',
-        ?int $depositId = null,
-        ?int $minimumAmount = null,
-        array $fundIds = [],
-        array $familyIds = [],
-        array $classificationIds = []
-    ): array {
-        AuthService::requireUserGroupMembership('bFinance');
-
-        $query = PledgeQuery::create()->filterForTaxReport(
-            $dateStart,
-            $dateEnd,
-            $fundIds,
-            $familyIds,
-            $classificationIds
-        );
-
-        // Add optional filters
-        if ($depositId > 0) {
-            $query->filterByDepId($depositId);
-        }
-        if ($minimumAmount > 0) {
-            $query->filterByAmount($minimumAmount, Criteria::GREATER_EQUAL);
-        }
-
-        // Get results - DO NOT include foreign objects recursively (causes memory exhaustion)
-        // Instead, manually fetch only the Family and DonationFund data we need
-        $collection = $query->find();
-        $results = [];
-        foreach ($collection as $pledge) {
-            // Get basic pledge data without foreign objects
-            $pledgeData = $pledge->toArray(TableMap::TYPE_PHPNAME, true, [], false);
-            
-            // Manually add only the Family fields we need for Tax Reports
-            $family = $pledge->getFamily();
-            if ($family !== null) {
-                $pledgeData['Family'] = [
-                    'Id' => $family->getId(),
-                    'Name' => $family->getName(),
-                    'Address1' => $family->getAddress1(),
-                    'Address2' => $family->getAddress2(),
-                    'City' => $family->getCity(),
-                    'State' => $family->getState(),
-                    'Zip' => $family->getZip(),
-                    'Country' => $family->getCountry(),
-                    'Envelope' => $family->getEnvelope(),
-                    // Where a statement is mailed: the flagged second address when
-                    // there is one, the primary address otherwise (#9743). Additive —
-                    // the six primary keys above are unchanged.
-                    'MailingAddress' => $family->getMailingAddressParts(),
-                ];
-            } else {
-                $pledgeData['Family'] = null;
-            }
-            
-            // Manually add only the DonationFund name we need
-            $fund = $pledge->getDonationFund();
-            if ($fund !== null) {
-                $pledgeData['DonationFund'] = [
-                    'Id' => $fund->getId(),
-                    'Name' => $fund->getName(),
-                ];
-            } else {
-                $pledgeData['DonationFund'] = null;
-            }
-            
-            $results[] = $pledgeData;
-        }
-        return $results;
-    }
-
-    /**
-     * Get Zero Givers Report data using ORM
-     * 
-     * Security: Checks finance permissions before returning data
-     * Returns families with members (classification 1) who didn't give in the date range
-     *
-     * @param string $dateStart Start date (Y-m-d format)
-     * @param string $dateEnd End date (Y-m-d format)
-     * @return array
-     */
-    public function getZeroGiversReportData(string $dateStart = '', string $dateEnd = ''): array
-    {
-        AuthService::requireUserGroupMembership('bFinance');
-
-        // Get all families with at least one living member (classification ID 1)
-        $familyQuery = FamilyQuery::create()
-            ->usePersonQuery()
-                ->filterByClsId(1)
-                ->filterByLiving()
-            ->endUse();
-
-        // Get family IDs that made payments in the date range
-        $paidFamilyIds = PledgeQuery::create()
-            ->filterForZeroGivers($dateStart, $dateEnd)
-            ->select(['FamId'])
-            ->distinct()
-            ->find()
-            ->toArray();
-
-        // Flatten the array of arrays to just IDs
-        $paidFamilyIds = array_map(function($row) {
-            return is_array($row) ? $row[0] : $row;
-        }, $paidFamilyIds);
-
-        // Exclude families that made payments
-        if (!empty($paidFamilyIds)) {
-            $familyQuery->filterById($paidFamilyIds, Criteria::NOT_IN);
-        }
-
-        return $familyQuery
-            ->orderById()
-            ->find()
-            ->toArray();
+        return FiscalYearUtils::getFiscalYearDatesById($fyId)['label'];
     }
 
     // =========================================================================
@@ -1105,33 +915,22 @@ class FinancialService
     {
         AuthService::requireUserGroupMembership('bFinance');
 
-        // Use YEAR() aggregation so the DB returns only distinct years, not every row.
-        // withColumn() emits the expression as a SELECT column; groupBy() de-duplicates;
-        // addDescendingOrderByColumn orders by the virtual column (not raw plg_date).
-        $query = PledgeQuery::create()
+        $payments = PledgeQuery::create()
             ->filterByFamId($familyId)
             ->filterByPledgeOrPayment('Payment')
             ->filterByDate(null, Criteria::ISNOTNULL)
-            ->withColumn('YEAR(pledge_plg.plg_date)', 'PaymentYear')
-            ->groupBy('PaymentYear')
-            ->addDescendingOrderByColumn('PaymentYear')
-            ->select(['PaymentYear']);
+            ->find();
 
-        if ($maxYears > 0) {
-            $query->limit($maxYears);
-        }
-
-        $rawYears = $query->find()->toArray();
-
-        // Filter out any non-sensical years (before 1991) and cast to int
         $years = [];
-        foreach ($rawYears as $year) {
-            $y = (int) $year;
-            if ($y > 1990) {
-                $years[] = $y;
+        foreach ($payments as $payment) {
+            $endYear = FiscalYearUtils::getEndYearForDate($payment->getDate('Y-m-d'));
+            if ($endYear > 1990) {
+                $years[$endYear] = true;
             }
         }
+        $years = array_keys($years);
+        rsort($years);
 
-        return $years;
+        return $maxYears > 0 ? array_slice($years, 0, $maxYears) : $years;
     }
 }

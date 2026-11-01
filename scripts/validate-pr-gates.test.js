@@ -8,6 +8,12 @@ test('fails a schema change without an upgrade script and upgrade.json', () => {
     assert.equal(gates(['orm/schema.xml', 'src/mysql/upgrade/7.9.0.sql', 'src/mysql/upgrade.json']).fail.length, 0);
 });
 
+test('accepts a schema change whose upgrade script upgrade.json already lists', () => {
+    const files = ['orm/schema.xml', 'src/mysql/upgrade/7.9.0.sql'];
+    assert.equal(gates(files, () => true).fail.length, 0);
+    assert.equal(gates(files, () => false).fail.length, 1);
+});
+
 test('warns on behavior without a spec and accepts a covering spec', () => {
     assert.equal(gates(['src/people/views/list.php']).warn.some((m) => m.startsWith('Behavior changed')), true);
     assert.equal(gates(['webpack/event-checkin.js', 'cypress/e2e/ui/x.spec.js']).warn.some((m) => m.startsWith('Behavior changed')), false);
@@ -17,6 +23,13 @@ test('warns on behavior without a spec and accepts a covering spec', () => {
 test('warns on a workflow without a script test', () => {
     assert.equal(gates(['.github/workflows/a.yml']).warn.some((m) => m.startsWith('Workflow')), true);
     assert.equal(gates(['.github/workflows/a.yml', 'scripts/a.test.js']).warn.some((m) => m.startsWith('Workflow')), false);
+});
+
+test('recognizes discovered PHP suites as behavior coverage', () => {
+    for (const suite of ['unit', 'integration']) {
+        assert.equal(gates(['src/ChurchCRM/Service/Example.php', `tests/php/${suite}/Service/ExampleTest.php`]).warn.some((message) => message.startsWith('Behavior changed')), false);
+    }
+    assert.equal(gates(['src/ChurchCRM/Service/Example.php', 'tests/php/fixtures/example.php']).warn.some((message) => message.startsWith('Behavior changed')), true);
 });
 
 test('reminds about the UI pass for skin, webpack and template files', () => {

@@ -162,7 +162,9 @@ class   SystemConfig
             'iMinPasswordLength'                   => new ConfigItem('iMinPasswordLength', 'number', '8', gettext('Minimum length a user may set their password to')),
             'iMinPasswordChange'                   => new ConfigItem('iMinPasswordChange', 'number', '4', gettext("Minimum amount that a new password must differ from the old one (# of characters changed)\nSet to zero to disable this feature")),
             'aDisallowedPasswords'                 => new ConfigItem('aDisallowedPasswords', 'text', 'password,god,jesus,church,christian', gettext('A comma-separated list of disallowed (too obvious) passwords.')),
-            'iMaxFailedLogins'                     => new ConfigItem('iMaxFailedLogins', 'number', '5', gettext("Maximum number of failed logins to allow before a user account is locked.\nOnce the maximum has been reached, an administrator must re-enable the account.\nThis feature helps to protect against automated password guessing attacks.\nSet to zero to disable this feature.")),
+            'iMaxFailedLogins'                     => new ConfigItem('iMaxFailedLogins', 'number', '5', gettext("Maximum number of failed logins to allow before a user account is locked.\nA locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\nThis feature helps to protect against automated password guessing attacks.\nSet to zero to disable this feature.")),
+            'iLoginLockoutMinutes'                 => new ConfigItem('iLoginLockoutMinutes', 'number', '15', gettext("Lockout period in minutes\nA locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period.")),
+            'iMaxFailedLoginsPerIP'                => new ConfigItem('iMaxFailedLoginsPerIP', 'number', '20', gettext("Maximum number of failed logins from one IP address\nFailed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\nSet to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address.")),
             'iPDFOutputType'                       => new ConfigItem('iPDFOutputType', 'number', '1', gettext("PDF handling mode.\n1 = Save File dialog\n2 = Open in current browser window")),
             'sDefaultCity'                         => new ConfigItem('sDefaultCity', 'text', '', gettext('Default City')),
             'sDefaultState'                        => new ConfigItem('sDefaultState', 'text', '', gettext('Default State - Must be 2-letter abbreviation!')),
@@ -371,14 +373,17 @@ class   SystemConfig
     }
 
     /**
-     * @param \ChurchCRM\model\ChurchCRM\Config[] $configs
+     * @param \ChurchCRM\model\ChurchCRM\Config[]|null $configs the stored rows
+     * @param bool $pruneUnknown delete rows no ConfigItem declares. Only Bootstrapper
+     *                           passes true, once the database is current, so an
+     *                           upgrade script can still read a retired key
      */
-    public static function init($configs = null): void
+    public static function init($configs = null, bool $pruneUnknown = false): void
     {
         self::$configs = self::buildConfigs();
         self::$categories = self::buildCategories();
         if (!empty($configs)) {
-            self::scrapeDBConfigs($configs);
+            self::scrapeDBConfigs($configs, $pruneUnknown);
         }
     }
 
@@ -398,13 +403,13 @@ class   SystemConfig
     /**
      * @param \ChurchCRM\model\ChurchCRM\Config[] $configs
      */
-    private static function scrapeDBConfigs($configs): void
+    private static function scrapeDBConfigs($configs, bool $pruneUnknown): void
     {
         foreach ($configs as $config) {
             if (isset(self::$configs[$config->getName()])) {
                 //if the current config set defined by code contains the current config retrieved from the db, then cache it
                 self::$configs[$config->getName()]->setDBConfigObject($config);
-            } else {
+            } elseif ($pruneUnknown) {
                 //there's a config item in the DB that doesn't exist in the current code.
                 //don't delete dynamic keys like plugin.* configs - they're managed by plugins
                 if (strpos($config->getName(), 'plugin.') !== 0) {

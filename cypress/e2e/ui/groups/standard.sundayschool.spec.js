@@ -187,8 +187,7 @@ describe("Standard Sunday School", () => {
     it("Reports page loads with form elements", () => {
         cy.visit("groups/sundayschool/reports");
         cy.contains("Report Details");
-        cy.get('select[name="GroupID[]"]').should("exist");
-        cy.get('select[name="FYID"]').should("exist");
+        cy.get('input[name="GroupID[]"]').should("exist");
         cy.get('input[name="FirstSunday"]').should("exist");
         cy.get('input[name="LastSunday"]').should("exist");
         cy.get('input[name="NoSchool1"]').should("exist");
@@ -196,11 +195,16 @@ describe("Standard Sunday School", () => {
         cy.get('input[name="ExtraTeachers"]').should("exist");
     });
 
-    it("Reports page has submit buttons for all report types", () => {
+    it("Reports page is the attendance sheet form", () => {
         cy.visit("groups/sundayschool/reports");
-        cy.get('button[name="SubmitClassList"]').should("exist").and("contain", "Create Class List");
         cy.get('button[name="SubmitClassAttendance"]').should("exist").and("contain", "Create Attendance Sheet");
-        cy.get('button[name="SubmitPhotoBook"]').should("exist").and("contain", "Create PhotoBook");
+    });
+
+    it("Dashboard has one-click PhotoBook and Class List reports", () => {
+        cy.visit("groups/sundayschool/dashboard");
+        cy.get('a[href$="/groups/reports/photo-book"]').should("be.visible");
+        cy.get('a[href$="/groups/sundayschool/reports/class-list"]').should("be.visible");
+        cy.get('a[href$="/groups/reports"]').should("be.visible");
     });
 
     it("Reports page shows error when no group selected", () => {
@@ -240,7 +244,7 @@ describe("Standard Sunday School", () => {
 
     it("Dashboard quick actions have working links", () => {
         cy.visit("groups/sundayschool/dashboard");
-        cy.get('a[href*="/groups/sundayschool/reports"]').should("exist").and("contain", "Reports");
+        cy.get('a[href$="/groups/sundayschool/reports"]').should("exist").and("contain", "Attendance Sheet");
         cy.get('a[href*="/api/groups/sundayschool/export/classlist"]').should("exist").and("contain", "Class List Export");
         cy.get('a[href*="/api/groups/sundayschool/export/email"]').should("exist").and("contain", "Email Export");
     });

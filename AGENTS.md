@@ -21,7 +21,7 @@ Load the card for the task. Do not load every skill.
 | i18n | `i18n-localization.md` |
 | Security | `security-best-practices.md` → `authorization-security.md` |
 | Plugin | `plugin-system.md` → `plugin-registry.md` |
-| Tests | `cypress-testing.md` |
+| Tests | `ci-test-infrastructure.md` → PHP tests or `cypress-testing.md` |
 | API | `api-development.md` → `service-layer.md` |
 
 Always-on:
@@ -37,110 +37,13 @@ Keep these heading names (this file links them):
 
 ## Environment
 
-For a cold checkout, start with [DEVELOPING.md](DEVELOPING.md). Provision the
-following during the Codex cloud **setup phase**, while internet access is
-available; the agent phase must use installed dependencies and cached images.
-
-### Runtimes and prerequisites
-
-- Use PHP **8.4** for parity with CI; the supported minimum is **8.4+**
-  ([src/composer.json](src/composer.json),
-  [.github/workflows/build-test-package.yml](.github/workflows/build-test-package.yml)).
-  Install Composer and Node.js **24** with npm ([.nvmrc](.nvmrc),
-  [package.json](package.json)). PHP/Composer must be on the host PATH for the
-  primary build; the dev-container alternative below supplies them in Docker.
-- Composer requires `PDO`, `bcmath`, `curl`, `fileinfo`, `filter`, `gd`, `gettext`,
-  `iconv`, `mbstring`, `mysqli`, `session`, `zip`, and `zlib`. The
-  [installer checks](src/ChurchCRM/Service/AppIntegrityService.php) additionally
-  require UTF-8 PCRE, Phar (`PharData`), SimpleXML (`SimpleXMLElement`), GD image
-  functions, and URL rewriting. Enable `pdo_mysql` for the ORM. The existing
-  [Apache Dockerfile](docker/Dockerfile.churchcrm-apache-php8) supplies these,
-  plus `exif`, `intl`, OPcache, and XML support; reuse it for runtime parity.
-  Run `composer --working-dir=src check-platform-reqs --no-dev` after installing
-  dependencies to check the actual PHP runtime, not Composer's platform override.
-- A running Docker Engine and **Compose v2** are needed for integration tests.
-  The [test stack](docker/docker-compose.yaml) supplies Apache with `mod_rewrite`,
-  **MariaDB 10.11**, and **Mailpit v1** (SMTP sink). No external database or SMTP
-  account is needed. Git is required; see [DEVELOPING.md](DEVELOPING.md) for tools.
-- The web process needs writable `src/Include/`, `src/Images/`,
-  `src/Images/Family/`, and `src/Images/Person/` (installer filesystem checks).
-  The Compose stacks mount `src/` as the document root and fixture photo folders
-  as the Person/Family directories. Check permissions as the web user.
-
-### Online setup and running an instance
-
-Run from the repo root on a disposable development checkout with the tools above:
-
-```bash
-php --version
-composer --version
-node --version
-docker info
-docker compose version
-npm ci
-npm run build
-composer --working-dir=src check-platform-reqs --no-dev
-npx --no-install cypress install
-npx --no-install cypress verify
-npm run docker:test:start
-docker compose -f docker/docker-compose.yaml --profile test ps
-curl --fail --silent --show-error --retry 20 --retry-connrefused --retry-delay 2 \
-  --output /dev/null http://localhost/session/begin
-```
-
-`npm ci` installs the locked npm dependencies, including dev/optional packages
-needed by lint (Biome's platform binary) and Cypress. `npm run build` installs
-locked production Composer packages into `src/vendor/` and generates ORM classes
-in parallel with the frontend build, then generates signatures ([scripts/build.js](scripts/build.js),
-[scripts/composer-install.js](scripts/composer-install.js)). Keep `node_modules/`,
-`src/vendor/`, generated assets, and the Cypress binary cache for the agent phase.
-Provision the browser's OS libraries during setup too; `cypress verify` must pass
-there. Run `npm run lint` during setup to prove the offline tools are installed.
-
-`docker:test:start` writes the local `src/Include/Config.php` from
-[docker/Config.php](docker/Config.php), builds the test web image, and starts all
-three services. Do this online so the web image and MariaDB/Mailpit images are
-cached before the agent phase. A resumed agent must check `docker info`, restart
-services if needed, and repeat the HTTP check; setup-time processes may not survive.
-If Docker is unavailable, provision a Docker-capable task environment before
-claiming integration verification; PHP/Node alone only cover static/build work.
-
-The database initializes with `src/mysql/install/Install.sql` **then**
-`cypress/data/seed.sql` on a fresh data directory. Compose waits for database
-health before starting Apache. The local-only database placeholders are
-`churchcrm` / `changeme`, database `churchcrm`, host `database:3306` inside Docker
-([docker/.env](docker/.env)); host-side Cypress connects to `127.0.0.1:3306`.
-Open `http://localhost` with test login `admin` / `changeme`; Mailpit is at
-`http://localhost:8025` (SMTP `mailserver:1025` inside Docker).
-Use only disposable fixtures. Reset them with `npm run docker:test:reset:db`.
-Stop with `npm run docker:test:stop`; `npm run docker:test:down` removes volumes.
-
-For an environment without host PHP/Composer, use the existing dev image:
-`npm run docker:dev:start`, then `npm run docker:dev:build` (online). See
-[DEVELOPING.md](DEVELOPING.md#building-without-a-local-phpcomposernodejs-toolchain).
-It shares the default ports with the test stack, so run one stack at a time.
-
-For Playwright work, load
-[marketing-visuals-pipeline.md](.agents/skills/churchcrm/marketing-visuals-pipeline.md)
-first: use its separate worktree and Compose project, and run
-`npm run marketing:install` online to cache Chromium and its OS dependencies.
-The pipeline removes `src/Include/Config.php`; keep it off the dev checkout.
-
-### Verify before a PR
-
-- Run **`npm run lint`** before pushing (the mandatory Biome checkpoint also
-  runs typechecking and repository checks; [.githooks/pre-push](.githooks/pre-push)).
-  Use `npx --no-install` for focused tool runs so an absent tool fails locally.
-- Run the matching build: `npm run build:frontend` for JS/TS/CSS,
-  `npm run build:php` for Composer dependencies, or `npm run build` for the full
-  application. For PHP, run `npm run build:php:validate`; focused standalone
-  checks are available through `npm run test:php` ([package.json](package.json)).
-- For UI/behavior changes, reset the seeded test DB, then run the affected specs:
-  `npx --no-install cypress run --config-file cypress/configs/docker.config.ts --spec "<actual-spec-path>"`.
-  Follow the browser/device checks in [Tests](#tests) and the linked skill cards.
-- Docs-only work needs no application build or Cypress run
-  ([issue-readiness.md](docs/contributing/issue-readiness.md#write-for-the-human-first)).
-  Report checks actually run and any environment blockers in the PR description.
+Canonical setup and verification: [DEVELOPING.md](DEVELOPING.md#shared-environment-setup).
+Run `npm run env:check -- php` before PHP work, or
+`npm run env:check -- integration --services` before integration tests.
+Prepare dependencies, browsers, and service images while network access is
+available. The readiness check uses installed tools and never installs packages.
+Use the existing Compose stacks; Playwright captures still require the separate
+worktree/project described in `marketing-visuals-pipeline.md`.
 
 ## Updating a skill
 

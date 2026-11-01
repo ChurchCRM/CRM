@@ -1,0 +1,94 @@
+{% extends "_letter.html.twig" %}
+{% block letter_body %}
+  {% for letter in letters %}
+    {% if not loop.first %}{% include "_letter-break.html.twig" %}{% endif %}
+
+    <div class="recipient">
+      <strong>{{ letter.salutation }}</strong><br>
+      {{ letter.address|nl2br }}
+    </div>
+
+    <p>{{ opening }}</p>
+
+    {% if letter.pledges %}
+      <table class="gifts">
+        <thead>
+          <tr>
+            <th colspan="3">{{ gettext('Pledges') }}</th>
+          </tr>
+          <tr>
+            <th>{{ gettext('Date') }}</th>
+            <th>{{ gettext('Fund') }}</th>
+            <th class="right">{{ gettext('Amount') }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for pledge in letter.pledges %}
+            <tr>
+              <td>{{ pledge.date }}</td>
+              <td>{{ pledge.fund }}</td>
+              <td class="right">{{ pledge.amount }}</td>
+            </tr>
+          {% endfor %}
+          {% if letter.pledge_total %}
+            <tr>
+              <td></td>
+              <td><strong>{{ gettext('Total') }}</strong></td>
+              <td class="right"><strong>{{ letter.pledge_total }}</strong></td>
+            </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>{{ no_pledge }}</p>
+    {% endif %}
+
+    {% if letter.payments %}
+      <table class="gifts">
+        <thead>
+          <tr>
+            <th colspan="6">{{ gettext('Payments') }}</th>
+          </tr>
+          <tr>
+            <th>{{ gettext('Date') }}</th>
+            <th>{{ gettext('Check Number') }}</th>
+            <th>{{ gettext('Payment Method') }}</th>
+            <th>{{ gettext('Fund') }}</th>
+            <th>{{ gettext('Comment') }}</th>
+            <th class="right">{{ gettext('Amount') }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for payment in letter.payments %}
+            <tr>
+              <td>{{ payment.date }}</td>
+              <td>{{ payment.check_no }}</td>
+              <td>{{ payment.method }}</td>
+              <td>{{ payment.fund }}</td>
+              <td>{{ payment.memo }}</td>
+              <td class="right">{{ payment.amount }}</td>
+            </tr>
+          {% endfor %}
+          {% if letter.payment_total %}
+            <tr>
+              <td colspan="4"></td>
+              <td><strong>{{ gettext('Total') }}</strong></td>
+              <td class="right"><strong>{{ letter.payment_total }}</strong></td>
+            </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>{{ no_payments }}</p>
+    {% endif %}
+
+    {% for line in letter.due %}
+      <p>{{ line }}</p>
+    {% endfor %}
+
+    <div class="closing">
+      {% if sincerely %}<p>{{ sincerely }},</p>{% endif %}
+      {% if signer %}<p>{{ signer }}</p>{% endif %}
+    </div>
+  {% endfor %}
+{% endblock %}

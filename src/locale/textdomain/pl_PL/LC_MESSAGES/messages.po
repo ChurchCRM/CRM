@@ -952,20 +952,8 @@ msgid "Voting Members"
 msgstr "Członkowie Głosujący:"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Wykaz Datków (Wyciąg na potrzeby Fiskusa)"
-
-#: 
 msgid "Zero Givers"
 msgstr "Zerowe Datki"
-
-#: 
-msgid "Individual Deposit Report"
-msgstr "Raport "
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Zaawansowany Raport"
 
 #: 
 msgid "Next"
@@ -992,10 +980,6 @@ msgid "Apply Report Dates To"
 msgstr "Przypisz Daty Raportu do"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "Data Deposit (Domyślna)"
-
-#: 
 msgid "Payment Date"
 msgstr "Data Płatności:"
 
@@ -1018,10 +1002,6 @@ msgid "Filter by Payment Type"
 msgstr "Sortuj wg. Sposobu Płatności"
 
 #: 
-msgid "All Methods"
-msgstr "Wszystkie Sposoby"
-
-#: 
 msgid "Check"
 msgstr "Czek"
 
@@ -1032,10 +1012,6 @@ msgstr "Gotówka"
 #: 
 msgid "Bank Draft"
 msgstr "Weksel"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0 - bez Minimum"
 
 #: 
 msgid "Other Settings"
@@ -1309,10 +1285,6 @@ msgstr "Potwierdź data labels"
 #: 
 msgid "Invalid login or password"
 msgstr "Nieprawidłowa Nazwa Użytkownika lub Hasło"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Zbyt wiele niepoprawnych logowań: twoje konto zostało zablokowane. Prosimy o kontakt z administratorem."
 
 #: 
 msgid "Email/Username"
@@ -1772,15 +1744,6 @@ msgid "System Settings"
 msgstr "Ustawienia Systemu"
 
 #: 
-msgid "Tax Report"
-msgstr "Raport Podatkowy"
-
-#: 
-#, fuzzy
-msgid "Calendar Year"
-msgstr "Rok Kalendarzowy"
-
-#: 
 msgid "User Editor"
 msgstr "Edytor Użytkowników"
 
@@ -2210,24 +2173,12 @@ msgid "Classes"
 msgstr "Klasy"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Raport Szkoły Niedzielnej"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Uczniowie nie przypisani do klas"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Przynajmniej jedna grupa musi być zaznaczona aby utworzyć klasę lub listę obecności"
-
-#: 
 msgid "Report Details"
 msgstr "Szczegóły raportu"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Wymień wszystkie role (odznaczenie wyświetli tylko role Nauczyciel/Uczeń)"
 
 #: 
 #, fuzzy
@@ -2253,10 +2204,6 @@ msgstr "Dodatkowi Uczniowie"
 #, fuzzy
 msgid "Extra Teachers"
 msgstr "Dodatkowi Nauczyciele"
-
-#: 
-msgid "Create Class List"
-msgstr "Utwórz Listę Klas"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4664,14 +4611,6 @@ msgid "PhotoBook"
 msgstr "Książka zdjęć"
 
 #: 
-msgid "With Photos"
-msgstr "Ze zdjęciami"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Utwórz książkę zdjęć"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4815,10 +4754,6 @@ msgstr "Rocznice"
 #: 
 msgid "View User"
 msgstr "Zobacz użytkownika"
-
-#: 
-msgid "not found or user without an email"
-msgstr "nie znaleziono lub użytkownik bez adresu e-mail"
 
 #: 
 msgid "UserName not set"
@@ -5016,16 +4951,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Określ o ile nowe hasło musi różnić się do starego\n"
 "(# liczba zmienionych znaków)\n"
-"Ustaw zero by wyłączyć tę funkcję"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Maksymalna liczba nieudanych logowań po których konto użytkownika zostanie zablokowane.\n"
-"Po zablokowaniu tylko administrator może odblokować konto.\n"
-"Funkcja służy ochronie przed automatycznym zgadywaniem haseł.\n"
 "Ustaw zero by wyłączyć tę funkcję"
 
 #: 
@@ -5667,10 +5592,6 @@ msgstr "Usuń wybrane"
 #: 
 msgid "Funds"
 msgstr "Fundusze"
-
-#: 
-msgid "Generate Report"
-msgstr "Generuj raport"
 
 #: 
 msgid "Payments"
@@ -6368,14 +6289,6 @@ msgid "Current Deposit"
 msgstr "Obecna wpłata"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Raport z filtrowaniem wg daty, funduszu, rodziny i metody."
-
-#: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Dostosuj tekst na oświadczeniach podatkowych."
-
-#: 
 msgid "Day"
 msgstr "Dzień"
 
@@ -6386,10 +6299,6 @@ msgstr "Gru"
 #: 
 msgid "Deposit Statistics"
 msgstr "Statystyki wpłat"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Szczegółowe zestawienie pojedynczego dowodu wpłaty."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6456,20 +6365,12 @@ msgid "Generate"
 msgstr "Generuj"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Generuj oświadczenia podatkowe"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Generuj oświadczenia podatkowe. Można drukować lub wysłać e-mailem."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "Generuj przypomnienia dla zalegających z deklaracjami."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "Raporty do celów podatkowych i analiz finansowych."
 
 #: 
 msgid "ID"
@@ -6498,10 +6399,6 @@ msgstr "Cze"
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "Skonfigurujmy Twój system, by był gotowy do pracy"
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "Lista osób uprawnionych do głosowania wg darowizn i stażu."
 
 #: 
 msgid "Location"
@@ -6652,10 +6549,6 @@ msgid "System Info"
 msgstr "Info o systemie"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "Raporty podatkowe i darowizn"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "Tekst raportu podatkowego"
 
@@ -6682,10 +6575,6 @@ msgstr "Aktualizuj"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "Wymagane uprawnienia administratora lub finansowe"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Sprawdź, czy dane kościoła są poprawne na oświadczeniach."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9204,10 +9093,6 @@ msgid "Generate reports on group membership and activities"
 msgstr "Wygeneruj raporty o członkostwie w grupach i aktywnościach"
 
 #: 
-msgid "Generate tax statement documents for donors"
-msgstr "Wygeneruj dokumenty podatkowe dla ofiarodawców"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "Wprowadź swoje dane do ChurchCRM"
 
@@ -9954,10 +9839,6 @@ msgid "View transaction details for a pledge payment"
 msgstr "Wyświetl szczegóły transakcji wpłaty zobowiązania"
 
 #: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "Członkowie z prawem głosu muszą złożyć ofiarę w ciągu tylu lat (0, aby nie wymagać ofiary)"
-
-#: 
 msgid "We could not find the family you were looking for."
 msgstr "Nie udało się znaleźć szukanej rodziny."
 
@@ -10148,10 +10029,6 @@ msgstr "Wymusić ponowną instalację?"
 #: 
 msgid "Full Path"
 msgstr "Pełna ścieżka"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Wygeneruj listy klas, arkusze obecności i albumy zdjęć"
 
 #: 
 msgid "Installed"
@@ -16028,10 +15905,6 @@ msgid "Please confirm your family information"
 msgstr "Proszę potwierdzić dane swojej rodziny"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "Proszę przesłać kolejną darowiznę na adres: %s"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Proszę wybrać inną rodzinę, z którą powiązać te ofiary"
 
@@ -18065,10 +17938,6 @@ msgid "{{minutes}} min left"
 msgstr "Pozostało {{minutes}} min"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d dokument podatkowy został pomyślnie wysłany do rodziny."
-
-#: 
 msgid "All classifications"
 msgstr "Wszystkie klasyfikacje"
 
@@ -18101,28 +17970,8 @@ msgid "Columns per Page"
 msgstr "Kolumny na stronę"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "Kochana Rodzino %s,\n"
-"\n"
-"W załączniku znajduje się Twoje poświadczenie darowizny nr %d z dnia %s.\n"
-"\n"
-"Jeśli masz jakiekolwiek pytania, skontaktuj się z biurem kościoła.\n"
-"\n"
-"Dziękujemy za Twoją hojność."
-
-#: 
 msgid "Download CSV"
 msgstr "Pobierz CSV"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "Wyślij email %d dokument podatkowy"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18225,10 +18074,6 @@ msgid "Pledged"
 msgstr "Zaangażowany"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "Drukuj %d dokument podatkowy"
-
-#: 
 msgid "Recent Friends"
 msgstr "Ostatni przyjaciele"
 
@@ -18253,24 +18098,8 @@ msgid "Single Pages"
 msgstr "Pojedyncze strony"
 
 #: 
-msgid "Tax Documents"
-msgstr "Dokumenty podatkowe"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "Nie udało się wysłać wiadomości e-mail z dokumentem podatkowym. Sprawdź ustawienia serwera poczty."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "Dwie strony o połowie rozmiaru obok siebie na każdym arkuszu poziomym, w kolejności broszury. Drukuj dwustronnie z odwracaniem wzdłuż krótszej krawędzi, a następnie złóż stos na pół. Kolumny są liczone na połowę strony."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "Nie można wysłać dokumentu podatkowego e-mailem: nie znaleziono danych o wpłatach za ten rok."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "Nie można wysłać dokumentu podatkowego e-mailem: ta rodzina nie ma zapisanego adresu e-mail."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -18733,10 +18562,6 @@ msgid "Could not match the church country."
 msgstr "Nie można dopasować kraju parafii."
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Listy klas, listy obecności i albumy ze zdjęciami"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "Listy członków wspólnot oraz sprawozdania z klas szkółki niedzielnej"
 
@@ -18943,25 +18768,11 @@ msgstr[1] "Przydzielono %d domyślnych wolontariuszy"
 msgstr[2] "Przydzielono %d domyślnych wolontariuszy"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Do tej funkcji nadal potrzeba %d wolontariusza. Otwórz termin, aby uzupełnić lukę."
-msgstr[1] "Do tej funkcji nadal potrzeba %d wolontariuszy. Otwórz termin, aby uzupełnić lukę."
-msgstr[2] "Do tej funkcji nadal potrzeba %d wolontariuszy. Otwórz termin, aby uzupełnić lukę."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d nowy termin"
 msgstr[1] "%d nowe terminy"
 msgstr[2] "%d nowych terminów"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Na nadchodzący termin nadal potrzeba %d wolontariusza."
-msgstr[1] "Na nadchodzący termin nadal potrzeba %d wolontariuszy."
-msgstr[2] "Na nadchodzący termin nadal potrzeba %d wolontariuszy."
 
 #: 
 msgid "%s Calendar"
@@ -21030,10 +20841,6 @@ msgstr "Otwórz posługę"
 #: 
 msgid "Open the occurrence"
 msgstr "Otwórz termin"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Otwórz termin, aby przydzielić potrzebne osoby."
 
 #: 
 msgid "Open this team"
@@ -24735,10 +24542,422 @@ msgid "Only the email you sent is shown."
 msgstr "Wyświetlana jest tylko wysłana przez Ciebie wiadomość e-mail."
 
 #: 
-msgid "%d Giving Statement"
-msgstr "%d Zestawienie darowizn"
-
-#: 
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "Nie można było utworzyć powtarzających się wydarzeń. Sprawdź dziennik aplikacji, aby uzyskać szczegóły."
+
+#: 
+msgid "Confirm Password"
+msgstr "Potwierdź hasło"
+
+#: 
+msgid "Your password has been changed. You can now sign in with your new password."
+msgstr "Twoje hasło zostało zmienione. Możesz teraz zalogować się nowym hasłem."
+
+#: 
+msgid "1st"
+msgstr "1."
+
+#: 
+msgid "2nd"
+msgstr "2."
+
+#: 
+msgid "3rd"
+msgstr "3."
+
+#: 
+msgid "4th"
+msgstr "4."
+
+#: 
+msgid "5th"
+msgstr "5."
+
+#: 
+msgid "Can't remove administrator access from the only administrator who can sign in"
+msgstr "Nie można usunąć dostępu administratora jedynemu administratorowi, który może się zalogować"
+
+#: 
+msgid "Choose the week of the month, from 1st to 5th"
+msgstr "Wybierz tydzień miesiąca, od 1. do 5."
+
+#: 
+msgid "Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}"
+msgstr "Tworzy {{total}} wydarzeń, w {{week}} {{day}} każdego miesiąca od {{first}} do {{last}}"
+
+#: 
+msgid "Invalid day of the week"
+msgstr "Nieprawidłowy dzień tygodnia"
+
+#: 
+msgid "Monthly, on a weekday"
+msgstr "Miesięcznie, w dzień roboczy"
+
+#: 
+msgid "Months without a 5th one are skipped."
+msgstr "Miesiące bez 5. tygodnia są pomijane."
+
+#: 
+msgid "RecurWOM must be a whole number from 1 to 5"
+msgstr "RecurWOM musi być liczbą całkowitą od 1 do 5"
+
+#: 
+msgid "Week of the month"
+msgstr "Tydzień miesiąca"
+
+#: 
+msgid "Week of the month must be from 1 to 5"
+msgstr "Tydzień miesiąca musi być od 1 do 5"
+
+#: 
+msgid "%s through %s"
+msgstr "%s do %s"
+
+#: 
+msgid "Church tax ID (EIN) printed on contribution statements"
+msgstr "Numer identyfikacji podatkowej kościoła (EIN) drukowany na zestawieniach darowizn"
+
+#: 
+msgid "Contribution statements are issued to the adults of a household. Please contact the church office if you need one."
+msgstr "Zestawienia darowizn są wydawane dorosłym członkom gospodarstwa domowego. Skontaktuj się z biurem kościoła, jeśli potrzebujesz zestawienia."
+
+#: 
+msgid "Download statement"
+msgstr "Pobierz zestawienie"
+
+#: 
+msgid "Generated"
+msgstr "Wygenerowano"
+
+#: 
+msgid "Goods and services"
+msgstr "Towary i usługi"
+
+#: 
+msgid "My Giving"
+msgstr "Moje ofiary"
+
+#: 
+msgid "No contributions"
+msgstr "Brak darowizn"
+
+#: 
+msgid "No contributions were recorded for this period."
+msgstr "W tym okresie nie zarejestrowano żadnych darowizn."
+
+#: 
+msgid "No goods or services were provided in exchange for these contributions, other than intangible religious benefits."
+msgstr "W zamian za te darowizny nie świadczono żadnych towarów ani usług, poza niematerialnymi korzyściami religijnymi."
+
+#: 
+msgid "Optional. Printed on contribution statements."
+msgstr "Opcjonalne. Drukowane na zestawieniach darowizn."
+
+#: 
+msgid "Tax ID"
+msgstr "Numer podatkowy"
+
+#: 
+msgid "Tax ID (EIN)"
+msgstr "Numer podatkowy (EIN)"
+
+#: 
+msgid "Tax-deductible amount"
+msgstr "Kwota podlegająca odliczeniu podatkowemu"
+
+#: 
+msgid "This is the household statement. It includes gifts for your family."
+msgstr "To jest zestawienie gospodarstwa domowego. Obejmuje ofiary dla Twojej rodziny."
+
+#: 
+msgid "Total contributions"
+msgstr "Łączne darowizny"
+
+#: 
+msgid "Year-end statement"
+msgstr "Zestawienie roczne"
+
+#: 
+msgid "%d giving statement emailed to the family successfully."
+msgstr "%d zestawienie ofiar zostało pomyślnie wysłane e-mailem do rodziny."
+
+#: 
+msgid "%s Giving Statement"
+msgstr "Zestawienie ofiar %s"
+
+#: 
+msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "Dostosuj tekst wyświetlany na zestawieniach ofiar (sTaxReport1, sTaxReport2 itp.)."
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %s giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Droga rodzino %s,\n"
+"\n"
+"W załączeniu do tego e-maila znajduje się Twoje zestawienie ofiar %s za %s.\n"
+"\n"
+"W razie pytań skontaktuj się z biurem kościoła.\n"
+"\n"
+"Dziękujemy za Twoją hojność."
+
+#: 
+msgid "Email %s Giving Statement"
+msgstr "Wyślij zestawienie ofiar %s e-mailem"
+
+#: 
+msgid "Envelope Numbers"
+msgstr "Numery kopert"
+
+#: 
+msgid "Generate Giving Statements"
+msgstr "Generuj zestawienia ofiar"
+
+#: 
+msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
+msgstr "Generuj raporty dla zestawień ofiar, śledzenia zobowiązań i analizy finansowej."
+
+#: 
+msgid "Giving Reports"
+msgstr "Raporty ofiar"
+
+#: 
+msgid "Giving Statement"
+msgstr "Zestawienie ofiar"
+
+#: 
+msgid "Giving Statements"
+msgstr "Zestawienia ofiar"
+
+#: 
+msgid "Giving statement email failed to send. Please check your email server settings."
+msgstr "Nie udało się wysłać e-maila z zestawieniem ofiar. Sprawdź ustawienia serwera e-mail."
+
+#: 
+msgid "Please mail your next gift to %s"
+msgstr "Proszę wysłać następną ofiarę pocztą na adres %s"
+
+#: 
+msgid "Print %s Giving Statement"
+msgstr "Drukuj zestawienie ofiar %s"
+
+#: 
+msgid "Unable to email giving statement: no payment data found for that year."
+msgstr "Nie można wysłać zestawienia ofiar e-mailem: nie znaleziono danych o płatnościach za ten rok."
+
+#: 
+msgid "Unable to email giving statement: this family has no email address on file."
+msgstr "Nie można wysłać zestawienia ofiar e-mailem: ta rodzina nie ma zarejestrowanego adresu e-mail."
+
+#: 
+msgid "Undesignated"
+msgstr "Nieokreślone"
+
+#: 
+msgid "Verify church name, address, and contact info appears on giving statements."
+msgstr "Sprawdź, czy nazwa kościoła, adres i dane kontaktowe pojawiają się na zestawieniach ofiar."
+
+#: 
+msgid "The position is now assigned to %s, who has accepted it."
+msgstr "Stanowisko jest teraz przypisane do %s, który je przyjął."
+
+#: 
+msgid "The position is now assigned to %s, who has not yet accepted it."
+msgstr "Stanowisko jest teraz przypisane do %s, który jeszcze go nie przyjął."
+
+#: 
+msgid "Their reason: %s"
+msgstr "Ich powód: %s"
+
+#: 
+msgid "View Assignments"
+msgstr "Wyświetl przypisania"
+
+#: 
+msgid "Volunteers still needed for this occurrence: %d"
+msgstr "Nadal potrzebni wolontariusze na to wydarzenie: %d"
+
+#: 
+msgid "Volunteers still needed for this position: %d"
+msgstr "Nadal potrzebni wolontariusze na to stanowisko: %d"
+
+#: 
+msgid "A weekly sign-in grid for each class. Class lists and photo books are on the Sunday School dashboard and each class page."
+msgstr "Tygodniowa siatka logowania dla każdej klasy. Listy klas i albumy zdjęć znajdują się na pulpicie szkoły niedzielnej i na stronie każdej klasy."
+
+#: 
+msgid "A weekly sign-in grid for the school year, one column for each Sunday"
+msgstr "Tygodniowa siatka logowania na rok szkolny, jedna kolumna na każdą niedzielę"
+
+#: 
+msgid "Age %d"
+msgstr "Wiek %d"
+
+#: 
+msgid "At least one group must be selected to make an attendance sheet."
+msgstr "Aby utworzyć listę obecności, należy wybrać co najmniej jedną grupę."
+
+#: 
+msgid "Attendance Sheet"
+msgstr "Lista obecności"
+
+#: 
+msgid "Class List"
+msgstr "Lista klasy"
+
+#: 
+msgid "Download PDF"
+msgstr "Pobierz PDF"
+
+#: 
+msgid "Lockout period in minutes\n"
+"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
+msgstr "Okres blokady w minutach\n"
+"Zablokowane konto odblokowuje się automatycznie po tylu minutach. Nieudane logowania z jednego adresu IP są liczone w tym samym okresie."
+
+#: 
+msgid "Maximum number of failed logins from one IP address\n"
+"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
+"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
+msgstr "Maksymalna liczba nieudanych logowań z jednego adresu IP\n"
+"Nieudane logowania i prośby o zresetowanie hasła z jednego adresu IP liczą się do tego limitu w okresie blokady. Po jego osiągnięciu logowanie z tego adresu jest odrzucane do końca okresu.\n"
+"Ustaw na zero, aby wyłączyć tę funkcję, np. gdy wszyscy uzyskują dostęp do ChurchCRM przez jeden adres proxy."
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "Maksymalna liczba nieudanych logowań dozwolona przed zablokowaniem konta użytkownika.\n"
+"Zablokowane konto odblokowuje się automatycznie po okresie blokady lub wcześniej, gdy administrator zresetuje nieudane logowania.\n"
+"Ta funkcja pomaga chronić przed automatycznymi atakami zgadywania haseł.\n"
+"Ustaw na zero, aby wyłączyć tę funkcję."
+
+#: 
+msgid "Minutes until it unlocks by itself: %d"
+msgstr "Minut do automatycznego odblokowania: %d"
+
+#: 
+msgid "Sunday School Attendance Sheet"
+msgstr "Lista obecności szkoły niedzielnej"
+
+#: 
+msgid "Sundays with no class are left off the sheet."
+msgstr "Niedziele bez zajęć są pomijane na liście."
+
+#: 
+msgid "Database Upgrade"
+msgstr "Aktualizacja bazy danych"
+
+#: 
+msgid "Your database is being updated. Please keep this page open until the upgrade finishes."
+msgstr "Twoja baza danych jest aktualizowana. Pozostaw tę stronę otwartą do zakończenia aktualizacji."
+
+#: 
+msgid "Family Labels"
+msgstr "Etykiety rodzinne"
+
+#: 
+msgid "%s – Total"
+msgstr "%s – Razem"
+
+#: 
+msgid "Bill"
+msgstr "Banknot"
+
+#: 
+msgid "Choose a deposit or enter both report dates."
+msgstr "Wybierz wpłatę lub wprowadź obie daty raportu."
+
+#: 
+msgid "Choose one deposit to review its payments or print its bank slip. A selected deposit overrides the date range."
+msgstr "Wybierz jedną wpłatę, aby przejrzeć jej płatności lub wydrukować dowód bankowy. Wybrana wpłata zastępuje zakres dat."
+
+#: 
+msgid "Coin"
+msgstr "Moneta"
+
+#: 
+msgid "Deposit Report"
+msgstr "Raport wpłat"
+
+#: 
+msgid "Download Report"
+msgstr "Pobierz raport"
+
+#: 
+msgid "Enter valid report dates."
+msgstr "Wprowadź prawidłowe daty raportu."
+
+#: 
+msgid "Invalid report filters."
+msgstr "Nieprawidłowe filtry raportu."
+
+#: 
+msgid "Invalid report options."
+msgstr "Nieprawidłowe opcje raportu."
+
+#: 
+msgid "Leave filters empty to include all payments. These settings apply to the report, not the bank slip."
+msgstr "Pozostaw filtry puste, aby uwzględnić wszystkie płatności. Te ustawienia dotyczą raportu, a nie dowodu bankowego."
+
+#: 
+msgid "No records were returned. Adjust your filters and try again."
+msgstr "Nie zwrócono żadnych rekordów. Dostosuj filtry i spróbuj ponownie."
+
+#: 
+msgid "Prepare for the Bank"
+msgstr "Przygotuj do banku"
+
+#: 
+msgid "Preview Totals"
+msgstr "Podgląd sum"
+
+#: 
+msgid "Print Bank Slip"
+msgstr "Drukuj dowód bankowy"
+
+#: 
+msgid "Print the selected deposit in full, with cash and check totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
+msgstr "Wydrukuj wybraną wpłatę w całości, z sumami gotówki i czeków, arkuszami liczenia i liniami świadków. Filtry raportu są ignorowane. Płatności elektroniczne pozostają w podsumowaniu i są wykluczone z sumy fizycznego biletu bankowego."
+
+#: 
+msgid "Review Payments"
+msgstr "Przeglądaj płatności"
+
+#: 
+msgid "Review payments for a period, or prepare one deposit for the bank."
+msgstr "Przeglądaj płatności za okres lub przygotuj jedną wpłatę do banku."
+
+#: 
+msgid "Review payments, download PDF or CSV, or print a bank slip for one deposit."
+msgstr "Przeglądaj płatności, pobierz PDF lub CSV albo wydrukuj dowód bankowy dla jednej wpłaty."
+
+#: 
+msgid "Select a valid deposit."
+msgstr "Wybierz prawidłową wpłatę."
+
+#: 
+msgid "Select one deposit to print a bank slip."
+msgstr "Wybierz jedną wpłatę, aby wydrukować dowód bankowy."
+
+#: 
+msgid "The report end date must be on or after the start date."
+msgstr "Data końcowa raportu musi być równa lub późniejsza niż data początkowa."
+
+#: 
+msgid "Total Cash"
+msgstr "Suma gotówki"
+
+#: 
+msgid "Total Coin"
+msgstr "Suma monet"
+
+#: 
+msgid "Witness"
+msgstr "Świadek"
 

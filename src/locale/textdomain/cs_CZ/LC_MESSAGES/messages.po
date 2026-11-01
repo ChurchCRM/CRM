@@ -928,20 +928,8 @@ msgid "Voting Members"
 msgstr "Hlasovní členové"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Zpráva o darech (daňové výkazy)"
-
-#: 
 msgid "Zero Givers"
 msgstr "Nepřispívači"
-
-#: 
-msgid "Individual Deposit Report"
-msgstr "Zpráva o individuálním vkladu"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Pokročilá zpráva o vkladech"
 
 #: 
 msgid "Next"
@@ -967,10 +955,6 @@ msgid "Apply Report Dates To"
 msgstr "Použít data hlášení na"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "Datum vkladu (výchozí)"
-
-#: 
 msgid "Payment Date"
 msgstr "Datum platby"
 
@@ -993,10 +977,6 @@ msgid "Filter by Payment Type"
 msgstr "Filtrovat podle typu platby"
 
 #: 
-msgid "All Methods"
-msgstr "Všechny metody"
-
-#: 
 msgid "Check"
 msgstr "Šek"
 
@@ -1007,10 +987,6 @@ msgstr "Hotovost"
 #: 
 msgid "Bank Draft"
 msgstr "Bankovní převod"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0 - žádné minimum"
 
 #: 
 msgid "Other Settings"
@@ -1276,10 +1252,6 @@ msgstr "Popisky potvrzovacích dat"
 #: 
 msgid "Invalid login or password"
 msgstr "Nesprávné přihlašovací jméno nebo heslo"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Příliš mnoho neúspěšných přihlášení: váš účet byl zablokován.  Kontaktujte prosím správce."
 
 #: 
 msgid "Email/Username"
@@ -1731,14 +1703,6 @@ msgid "System Settings"
 msgstr "Nastavení systému"
 
 #: 
-msgid "Tax Report"
-msgstr "Daňová sestava"
-
-#: 
-msgid "Calendar Year"
-msgstr "Kalendářní rok"
-
-#: 
 msgid "User Editor"
 msgstr "Editor uživatelů"
 
@@ -2152,24 +2116,12 @@ msgid "Classes"
 msgstr "Třídy"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Sestavy o nedělní škole"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Žáci, kteří nejsou ve třídě nedělní školy"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Alespoň jedna skupina musí být vybrána pro vytvoření třídních seznamů nebo prezenčních listin."
-
-#: 
 msgid "Report Details"
 msgstr "Detaily sestavy"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Vypsat všechny role (nezaškrtnuté vypíše pouze role učitel/žák)"
 
 #: 
 msgid "First Sunday"
@@ -2190,10 +2142,6 @@ msgstr "Extra žáci"
 #: 
 msgid "Extra Teachers"
 msgstr "Extra učitelé"
-
-#: 
-msgid "Create Class List"
-msgstr "Vytvořit třídní seznam"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4601,14 +4549,6 @@ msgid "PhotoBook"
 msgstr "Fotokniha"
 
 #: 
-msgid "With Photos"
-msgstr "S fotkami"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Vytvořit fotoknihu"
-
-#: 
 msgid "SSE"
 msgstr "JJV"
 
@@ -4752,10 +4692,6 @@ msgstr "Výročí"
 #: 
 msgid "View User"
 msgstr "Zobrazit uživatele"
-
-#: 
-msgid "not found or user without an email"
-msgstr "nenalezen nebo uživatel bez e-mailu"
 
 #: 
 msgid "UserName not set"
@@ -4950,16 +4886,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Jak moc se musí nové heslo lišit od starého (# změněných znaků).\n"
 "Nastavením na nulu tuto funkci zakážete"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Maximální počet neúspěšných přihlášení před uzamčením uživatelského účtu.\n"
-"Po dosažení maximálního počtu musí správce účet znovu povolit.\n"
-"Tato funkce pomáhá chránit před automatizovanými útoky hádajícími hesla.\n"
-"Nastavením na nulu tuto funkci zakážete."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -5599,10 +5525,6 @@ msgstr "Odstranit vybrané"
 #: 
 msgid "Funds"
 msgstr "Fondy"
-
-#: 
-msgid "Generate Report"
-msgstr "Generovat zprávu"
 
 #: 
 msgid "Payments"
@@ -6300,14 +6222,6 @@ msgid "Current Deposit"
 msgstr "Aktuální vklad"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Přizpůsobitelná zpráva s filtrováním podle data, fondu, rodiny a způsobu platby."
-
-#: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Přizpůsobte text, který se zobrazuje na daňových výpisech (sTaxReport1, sTaxReport2 atd.)."
-
-#: 
 msgid "Day"
 msgstr "den"
 
@@ -6318,10 +6232,6 @@ msgstr "pro"
 #: 
 msgid "Deposit Statistics"
 msgstr "Statistika vkladu"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Podrobný rozpis jednoho vkladového lístku."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6388,20 +6298,12 @@ msgid "Generate"
 msgstr "Generovat"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Generovat danƮgení výkazy"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Vytvořte pro dárce roční daňově odpočitatelné potvrzení o daru. Lze vytisknout nebo zaslat e-mailem."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "Vytvořte upomínkové dopisy pro rodiny s nesplacenými závazky."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "Vytvořte zprávy pro daňová přiznání, sledování závazků a finanční analýzy."
 
 #: 
 msgid "ID"
@@ -6430,10 +6332,6 @@ msgstr "čen"
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "Pojďme nastavit váš systém a připravit jej k použití."
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "Seznam členů s hlasovacím právem na základě historie darů a kritérií členství."
 
 #: 
 msgid "Location"
@@ -6584,10 +6482,6 @@ msgid "System Info"
 msgstr "Informace o systému"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "Daně a zprávy o dárcové"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "Slovní zpráva o daních"
 
@@ -6614,10 +6508,6 @@ msgstr "Aktualizovat"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "Uživatel musí být správcem nebo mít oprávnění Finance"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Ověřte, zda jsou název kostela, adresa a kontaktní údaje uvedeny na daňových přiznáních."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9136,10 +9026,6 @@ msgid "Generate reports on group membership and activities"
 msgstr "Generovat sestavy o členství ve skupinách a aktivitách"
 
 #: 
-msgid "Generate tax statement documents for donors"
-msgstr "Generovat daňové potvrzení pro dárce"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "Importujte svá data do ChurchCRM"
 
@@ -9886,10 +9772,6 @@ msgid "View transaction details for a pledge payment"
 msgstr "Zobrazit podrobnosti transakce pro platbu závazku"
 
 #: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "Hlasující členové musí učinit dar v tomto počtu let (0 pro nevyžadování daru)"
-
-#: 
 msgid "We could not find the family you were looking for."
 msgstr "Rodinu, kterou jste hledali, se nepodařilo najít."
 
@@ -10080,10 +9962,6 @@ msgstr "Vynutit přeinstalaci?"
 #: 
 msgid "Full Path"
 msgstr "Úplná cesta"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Generovat seznamy tříd, prezenční listiny a fotoalba"
 
 #: 
 msgid "Installed"
@@ -15960,10 +15838,6 @@ msgid "Please confirm your family information"
 msgstr "Potvrďte prosím informace o vaší rodině"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "Zašlete prosím svůj příští dar na %s"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Vyberte prosím jinou rodinu, se kterou chcete tato darování spojit"
 
@@ -17997,10 +17871,6 @@ msgid "{{minutes}} min left"
 msgstr "zbývá {{minutes}} min"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d daňový dokument byl úspěšně zaslán rodině."
-
-#: 
 msgid "All classifications"
 msgstr "Všechny klasifikace"
 
@@ -18033,28 +17903,8 @@ msgid "Columns per Page"
 msgstr "Sloupce na stránku"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "Vážená rodino %s,\n"
-"\n"
-"Najdete přiložený výpis darů číslo %d ze dne %s.\n"
-"\n"
-"Pokud máte nějaké otázky, kontaktujte prosím kostol.\n"
-"\n"
-"Děkujeme vám za vaši štědrost."
-
-#: 
 msgid "Download CSV"
 msgstr "Stáhnout CSV"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "Poslat email %d daňový dokument"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18157,10 +18007,6 @@ msgid "Pledged"
 msgstr "Slíbeno"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "Tisk %d daňový dokument"
-
-#: 
 msgid "Recent Friends"
 msgstr "Nedávní přátelé"
 
@@ -18185,24 +18031,8 @@ msgid "Single Pages"
 msgstr "Jednotlivé stránky"
 
 #: 
-msgid "Tax Documents"
-msgstr "Daňové doklady"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "Odeslání e-mailu s daňovým dokladem se nezdařilo. Zkontrolujte prosím nastavení e-mailového serveru."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "Dvě poloviční stránky vedle sebe na každém listu na šířku v pořadí pro brožuru. Tiskněte oboustranně s otáčením podél kratší hrany a poté stoh přeložte napůl. Sloupce se počítají na půlstránku."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "Daňový doklad nelze odeslat e-mailem: pro daný rok nebyly nalezeny žádné platební údaje."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "Daňový doklad nelze odeslat e-mailem: tato rodina nemá uvedenou e-mailovou adresu."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -18665,10 +18495,6 @@ msgid "Could not match the church country."
 msgstr "Zemi církve se nepodařilo přiřadit."
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Seznamy tříd, prezenční listiny a fotoknihy"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "Seznamy členů skupin a přehledy tříd nedělní školy"
 
@@ -18875,25 +18701,11 @@ msgstr[1] "%d výchozí dobrovolníci přiřazeni"
 msgstr[2] "%d výchozích dobrovolníků přiřazeno"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Pro tuto pozici je stále potřeba ještě %d dobrovolník. Otevřete výskyt a vyplňte mezeru."
-msgstr[1] "Pro tuto pozici jsou stále potřeba ještě %d dobrovolníci. Otevřete výskyt a vyplňte mezeru."
-msgstr[2] "Pro tuto pozici je stále potřeba ještě %d dobrovolníků. Otevřete výskyt a vyplňte mezeru."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d nový výskyt"
 msgstr[1] "%d nové výskyty"
 msgstr[2] "%d nových výskytů"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Pro nadcházející výskyt je stále potřeba %d dobrovolník."
-msgstr[1] "Pro nadcházející výskyt jsou stále potřeba %d dobrovolníci."
-msgstr[2] "Pro nadcházející výskyt je stále potřeba %d dobrovolníků."
 
 #: 
 msgid "%s Calendar"
@@ -20962,10 +20774,6 @@ msgstr "Otevřít službu"
 #: 
 msgid "Open the occurrence"
 msgstr "Otevřít výskyt"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Otevřete výskyt a přiřaďte lidi, které potřebujete."
 
 #: 
 msgid "Open this team"
@@ -24667,10 +24475,422 @@ msgid "Only the email you sent is shown."
 msgstr "Zobrazuje se pouze e-mail, který jste odeslali."
 
 #: 
-msgid "%d Giving Statement"
-msgstr "%d Výkaz darů"
-
-#: 
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "Opakující se události se nepodařilo vytvořit. Podrobnosti najdete v protokolu aplikace."
+
+#: 
+msgid "Confirm Password"
+msgstr "Potvrdit heslo"
+
+#: 
+msgid "Your password has been changed. You can now sign in with your new password."
+msgstr "Vaše heslo bylo změněno. Nyní se můžete přihlásit novým heslem."
+
+#: 
+msgid "1st"
+msgstr "1."
+
+#: 
+msgid "2nd"
+msgstr "2."
+
+#: 
+msgid "3rd"
+msgstr "3."
+
+#: 
+msgid "4th"
+msgstr "4."
+
+#: 
+msgid "5th"
+msgstr "5."
+
+#: 
+msgid "Can't remove administrator access from the only administrator who can sign in"
+msgstr "Nelze odebrat přístup správce jedinému správci, který se může přihlásit"
+
+#: 
+msgid "Choose the week of the month, from 1st to 5th"
+msgstr "Vyberte týden měsíce, od 1. do 5."
+
+#: 
+msgid "Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}"
+msgstr "Vytvoří {{total}} událostí, v {{week}} {{day}} každého měsíce od {{first}} do {{last}}"
+
+#: 
+msgid "Invalid day of the week"
+msgstr "Neplatný den v týdnu"
+
+#: 
+msgid "Monthly, on a weekday"
+msgstr "Měsíčně, v pracovní den"
+
+#: 
+msgid "Months without a 5th one are skipped."
+msgstr "Měsíce bez 5. týdne jsou přeskočeny."
+
+#: 
+msgid "RecurWOM must be a whole number from 1 to 5"
+msgstr "RecurWOM musí být celé číslo od 1 do 5"
+
+#: 
+msgid "Week of the month"
+msgstr "Týden měsíce"
+
+#: 
+msgid "Week of the month must be from 1 to 5"
+msgstr "Týden měsíce musí být od 1 do 5"
+
+#: 
+msgid "%s through %s"
+msgstr "%s do %s"
+
+#: 
+msgid "Church tax ID (EIN) printed on contribution statements"
+msgstr "Daňové identifikační číslo církve (EIN) vytištěné na výpisech příspěvků"
+
+#: 
+msgid "Contribution statements are issued to the adults of a household. Please contact the church office if you need one."
+msgstr "Výpisy příspěvků jsou vydávány dospělým členům domácnosti. Kontaktujte kancelář církve, pokud nějaký potřebujete."
+
+#: 
+msgid "Download statement"
+msgstr "Stáhnout výpis"
+
+#: 
+msgid "Generated"
+msgstr "Vygenerováno"
+
+#: 
+msgid "Goods and services"
+msgstr "Zboží a služby"
+
+#: 
+msgid "My Giving"
+msgstr "Moje dary"
+
+#: 
+msgid "No contributions"
+msgstr "Žádné příspěvky"
+
+#: 
+msgid "No contributions were recorded for this period."
+msgstr "Za toto období nebyly zaznamenány žádné příspěvky."
+
+#: 
+msgid "No goods or services were provided in exchange for these contributions, other than intangible religious benefits."
+msgstr "Za tyto příspěvky nebylo poskytnuto žádné zboží ani služby, kromě nehmotných náboženských výhod."
+
+#: 
+msgid "Optional. Printed on contribution statements."
+msgstr "Volitelné. Vytištěno na výpisech příspěvků."
+
+#: 
+msgid "Tax ID"
+msgstr "Daňové ID"
+
+#: 
+msgid "Tax ID (EIN)"
+msgstr "Daňové ID (EIN)"
+
+#: 
+msgid "Tax-deductible amount"
+msgstr "Částka odečitatelná od daně"
+
+#: 
+msgid "This is the household statement. It includes gifts for your family."
+msgstr "Toto je výpis domácnosti. Zahrnuje dary pro vaši rodinu."
+
+#: 
+msgid "Total contributions"
+msgstr "Celkové příspěvky"
+
+#: 
+msgid "Year-end statement"
+msgstr "Výpis na konci roku"
+
+#: 
+msgid "%d giving statement emailed to the family successfully."
+msgstr "%d výpis darů úspěšně odeslán e-mailem rodině."
+
+#: 
+msgid "%s Giving Statement"
+msgstr "Výpis darů %s"
+
+#: 
+msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "Přizpůsobte text, který se zobrazuje na výpisech darů (sTaxReport1, sTaxReport2 atd.)."
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %s giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Vážená rodino %s,\n"
+"\n"
+"V příloze tohoto e-mailu naleznete svůj výpis darů %s za %s.\n"
+"\n"
+"Pokud máte nějaké otázky, kontaktujte kancelář církve.\n"
+"\n"
+"Děkujeme za vaši štědrost."
+
+#: 
+msgid "Email %s Giving Statement"
+msgstr "Odeslat výpis darů %s e-mailem"
+
+#: 
+msgid "Envelope Numbers"
+msgstr "Čísla obálek"
+
+#: 
+msgid "Generate Giving Statements"
+msgstr "Generovat výpisy darů"
+
+#: 
+msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
+msgstr "Generovat zprávy pro výpisy darů, sledování závazků a finanční analýzu."
+
+#: 
+msgid "Giving Reports"
+msgstr "Zprávy o darech"
+
+#: 
+msgid "Giving Statement"
+msgstr "Výpis darů"
+
+#: 
+msgid "Giving Statements"
+msgstr "Výpisy darů"
+
+#: 
+msgid "Giving statement email failed to send. Please check your email server settings."
+msgstr "E-mail s výpisem darů se nepodařilo odeslat. Zkontrolujte nastavení e-mailového serveru."
+
+#: 
+msgid "Please mail your next gift to %s"
+msgstr "Pošlete svůj další dar poštou na %s"
+
+#: 
+msgid "Print %s Giving Statement"
+msgstr "Vytisknout výpis darů %s"
+
+#: 
+msgid "Unable to email giving statement: no payment data found for that year."
+msgstr "Nelze odeslat výpis darů e-mailem: pro daný rok nebyla nalezena žádná platební data."
+
+#: 
+msgid "Unable to email giving statement: this family has no email address on file."
+msgstr "Nelze odeslat výpis darů e-mailem: tato rodina nemá registrovanou e-mailovou adresu."
+
+#: 
+msgid "Undesignated"
+msgstr "Neurčeno"
+
+#: 
+msgid "Verify church name, address, and contact info appears on giving statements."
+msgstr "Ověřte, že se název církve, adresa a kontaktní údaje zobrazují na výpisech darů."
+
+#: 
+msgid "The position is now assigned to %s, who has accepted it."
+msgstr "Pozice je nyní přidělena %s, který ji přijal."
+
+#: 
+msgid "The position is now assigned to %s, who has not yet accepted it."
+msgstr "Pozice je nyní přidělena %s, který ji ještě nepřijal."
+
+#: 
+msgid "Their reason: %s"
+msgstr "Jejich důvod: %s"
+
+#: 
+msgid "View Assignments"
+msgstr "Zobrazit přiřazení"
+
+#: 
+msgid "Volunteers still needed for this occurrence: %d"
+msgstr "Dobrovolníci stále potřební pro tuto příležitost: %d"
+
+#: 
+msgid "Volunteers still needed for this position: %d"
+msgstr "Dobrovolníci stále potřební pro tuto pozici: %d"
+
+#: 
+msgid "A weekly sign-in grid for each class. Class lists and photo books are on the Sunday School dashboard and each class page."
+msgstr "Týdenní přihlašovací mřížka pro každou třídu. Seznamy tříd a fotoalba jsou na nástěnce nedělní školy a na stránce každé třídy."
+
+#: 
+msgid "A weekly sign-in grid for the school year, one column for each Sunday"
+msgstr "Týdenní přihlašovací mřížka pro školní rok, jeden sloupec pro každou neděli"
+
+#: 
+msgid "Age %d"
+msgstr "Věk %d"
+
+#: 
+msgid "At least one group must be selected to make an attendance sheet."
+msgstr "Pro vytvoření prezenční listiny musí být vybrána alespoň jedna skupina."
+
+#: 
+msgid "Attendance Sheet"
+msgstr "Prezenční listina"
+
+#: 
+msgid "Class List"
+msgstr "Seznam třídy"
+
+#: 
+msgid "Download PDF"
+msgstr "Stáhnout PDF"
+
+#: 
+msgid "Lockout period in minutes\n"
+"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
+msgstr "Období uzamčení v minutách\n"
+"Uzamčený účet se sám odemkne po tomto počtu minut. Neúspěšná přihlášení z jedné IP adresy se počítají za stejné období."
+
+#: 
+msgid "Maximum number of failed logins from one IP address\n"
+"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
+"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
+msgstr "Maximální počet neúspěšných přihlášení z jedné IP adresy\n"
+"Neúspěšná přihlášení a žádosti o reset hesla z jedné IP adresy se počítají do tohoto limitu v období uzamčení. Po jeho dosažení je přihlášení z této adresy odmítnuto do konce období.\n"
+"Nastavte na nulu pro deaktivaci této funkce, například když všichni přistupují k ChurchCRM přes jednu proxy adresu."
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "Maximální počet neúspěšných přihlášení povolených před uzamčením uživatelského účtu.\n"
+"Uzamčený účet se sám odemkne po období uzamčení nebo dříve, když správce resetuje neúspěšná přihlášení.\n"
+"Tato funkce pomáhá chránit před automatizovanými útoky hádání hesel.\n"
+"Nastavte na nulu pro deaktivaci této funkce."
+
+#: 
+msgid "Minutes until it unlocks by itself: %d"
+msgstr "Minut do automatického odemčení: %d"
+
+#: 
+msgid "Sunday School Attendance Sheet"
+msgstr "Prezenční listina nedělní školy"
+
+#: 
+msgid "Sundays with no class are left off the sheet."
+msgstr "Neděle bez výuky jsou z listiny vynechány."
+
+#: 
+msgid "Database Upgrade"
+msgstr "Aktualizace databáze"
+
+#: 
+msgid "Your database is being updated. Please keep this page open until the upgrade finishes."
+msgstr "Vaše databáze se aktualizuje. Ponechte tuto stránku otevřenou, dokud aktualizace neskončí."
+
+#: 
+msgid "Family Labels"
+msgstr "Rodinné štítky"
+
+#: 
+msgid "%s – Total"
+msgstr "%s – Celkem"
+
+#: 
+msgid "Bill"
+msgstr "Bankovka"
+
+#: 
+msgid "Choose a deposit or enter both report dates."
+msgstr "Vyberte vklad nebo zadejte obě data zprávy."
+
+#: 
+msgid "Choose one deposit to review its payments or print its bank slip. A selected deposit overrides the date range."
+msgstr "Vyberte jeden vklad pro kontrolu jeho plateb nebo tisk bankovního potvrzení. Vybraný vklad přepíše rozsah dat."
+
+#: 
+msgid "Coin"
+msgstr "Mince"
+
+#: 
+msgid "Deposit Report"
+msgstr "Zpráva o vkladu"
+
+#: 
+msgid "Download Report"
+msgstr "Stáhnout zprávu"
+
+#: 
+msgid "Enter valid report dates."
+msgstr "Zadejte platná data zprávy."
+
+#: 
+msgid "Invalid report filters."
+msgstr "Neplatné filtry zprávy."
+
+#: 
+msgid "Invalid report options."
+msgstr "Neplatné možnosti zprávy."
+
+#: 
+msgid "Leave filters empty to include all payments. These settings apply to the report, not the bank slip."
+msgstr "Ponechte filtry prázdné pro zahrnutí všech plateb. Tato nastavení se vztahují na zprávu, nikoli na bankovní potvrzení."
+
+#: 
+msgid "No records were returned. Adjust your filters and try again."
+msgstr "Nebyly vráceny žádné záznamy. Upravte filtry a zkuste to znovu."
+
+#: 
+msgid "Prepare for the Bank"
+msgstr "Připravit pro banku"
+
+#: 
+msgid "Preview Totals"
+msgstr "Náhled součtů"
+
+#: 
+msgid "Print Bank Slip"
+msgstr "Vytisknout bankovní potvrzení"
+
+#: 
+msgid "Print the selected deposit in full, with cash and check totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
+msgstr "Vytiskněte vybraný vklad v plném rozsahu, s součty hotovosti a šeků, sčítacími listy a řádky svědků. Filtry zprávy jsou ignorovány. Elektronické platby zůstávají v souhrnu a jsou vyloučeny z celkového fyzického bankovního tiketu."
+
+#: 
+msgid "Review Payments"
+msgstr "Kontrola plateb"
+
+#: 
+msgid "Review payments for a period, or prepare one deposit for the bank."
+msgstr "Kontrolujte platby za období nebo připravte jeden vklad pro banku."
+
+#: 
+msgid "Review payments, download PDF or CSV, or print a bank slip for one deposit."
+msgstr "Kontrolujte platby, stáhněte PDF nebo CSV nebo vytiskněte bankovní potvrzení pro jeden vklad."
+
+#: 
+msgid "Select a valid deposit."
+msgstr "Vyberte platný vklad."
+
+#: 
+msgid "Select one deposit to print a bank slip."
+msgstr "Vyberte jeden vklad pro tisk bankovního potvrzení."
+
+#: 
+msgid "The report end date must be on or after the start date."
+msgstr "Datum konce zprávy musí být stejné nebo pozdější než datum začátku."
+
+#: 
+msgid "Total Cash"
+msgstr "Celkem hotovost"
+
+#: 
+msgid "Total Coin"
+msgstr "Celkem mince"
+
+#: 
+msgid "Witness"
+msgstr "Svědek"
 

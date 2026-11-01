@@ -188,6 +188,189 @@ paths:
                   error: { type: string, example: 'Validation Error' }
                   failures: { type: array, items: { type: string } }
                 type: object
+  '/public/portal-calendar/{token}/calendar.ics':
+    get:
+      tags:
+        - 'Member Portal'
+      summary: "A member's Member Portal calendar feed (iCalendar)"
+      description: 'Serves the events of the calendars a member subscribed to in the Member Portal, as an RFC 5545 VCALENDAR covering three months back to eighteen months ahead. No session: the token in the path is the credential, and it grants read access to those calendars and to nothing else. The feed is always narrowed to the calendars the administrator currently shares with members, so un-sharing a calendar removes it from every feed immediately. An unknown or retired token is a bare 404, indistinguishable from an account that has no feed.'
+      operationId: getPortalCalendarFeed
+      parameters:
+        -
+          name: token
+          in: path
+          description: "The member's feed token, 64 hex characters, from the Subscribe dialog on the portal calendar page"
+          required: true
+          schema:
+            type: string
+            example: 4f3c…
+      responses:
+        '200':
+          description: 'An iCalendar document'
+          content:
+            text/calendar:
+              schema:
+                type: string
+                format: binary
+        '404':
+          description: 'Unknown token, a token that has been reset, or an account with no feed'
+  /public/echo:
+    get:
+      tags:
+        - Utility
+      summary: 'Health check / echo'
+      description: 'Returns a simple echo response. Useful for verifying the API is reachable.'
+      operationId: getEcho
+      responses:
+        '200':
+          description: 'Echo response'
+          content:
+            application/json:
+              schema:
+                properties:
+                  message: { type: string, example: echo }
+                type: object
+  /public/csp-report:
+    post:
+      tags:
+        - Utility
+      summary: 'Log a Content Security Policy violation report'
+      description: 'Receives browser-generated CSP violation reports and logs them server-side.'
+      operationId: logCSPReport
+      requestBody:
+        description: 'CSP violation report object (browser-generated)'
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+            example:
+              csp-report:
+                document-uri: 'https://example.com'
+                violated-directive: script-src
+      responses:
+        '204':
+          description: 'Report logged successfully (no content)'
+  /public/data/countries:
+    get:
+      tags:
+        - Lookups
+      summary: 'List all countries'
+      description: 'Returns the full list of countries used in address fields.'
+      operationId: getCountries
+      responses:
+        '200':
+          description: 'Array of country objects'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties: { code: { type: string, example: US }, name: { type: string, example: 'United States' } }
+                  type: object
+  '/public/data/countries/{countryCode}/states':
+    get:
+      tags:
+        - Lookups
+      summary: 'List states/provinces for a country'
+      description: 'Returns all states or provinces for the given ISO country code.'
+      operationId: getStates
+      parameters:
+        -
+          name: countryCode
+          in: path
+          description: 'ISO 3166-1 alpha-2 country code'
+          required: true
+          schema:
+            type: string
+            example: US
+      responses:
+        '200':
+          description: 'Array of state/province objects'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties: { code: { type: string, example: WA }, name: { type: string, example: Washington } }
+                  type: object
+  /public/user/login:
+    post:
+      tags:
+        - Auth
+      summary: 'Log in and retrieve an API key'
+      description: 'Authenticates a user by username and password and returns their API key for use in subsequent authenticated requests.'
+      operationId: userLogin
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - userName
+                - password
+              properties:
+                userName:
+                  type: string
+                  example: admin
+                password:
+                  type: string
+                  format: password
+                  example: secret
+                otp:
+                  description: 'One-time password or recovery code for 2FA (required when 202 is returned)'
+                  type: string
+                  example: '123456'
+              type: object
+      responses:
+        '200':
+          description: 'Login successful'
+          content:
+            application/json:
+              schema:
+                properties:
+                  apiKey: { type: string, example: abc123xyz }
+                type: object
+        '401':
+          description: 'Invalid username or password. Unknown, locked and throttled accounts get the same answer.'
+        '202':
+          description: 'Password valid but 2FA verification required'
+          content:
+            application/json:
+              schema:
+                properties:
+                  requiresOTP: { type: boolean, example: true }
+                type: object
+  /public/user/password-reset:
+    post:
+      tags:
+        - Auth
+      summary: 'Request a password reset email'
+      description: 'Sends a password reset link to the email address associated with the given username. Always returns success to avoid user enumeration.'
+      operationId: passwordResetRequest
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - userName
+              properties:
+                userName:
+                  type: string
+                  example: admin
+              type: object
+      responses:
+        '200':
+          description: 'Request accepted (email sent if account exists)'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: true }
+                type: object
+        '400':
+          description: 'userName field is required'
   '/public/calendar/{CalendarAccessToken}/events':
     get:
       tags:
@@ -268,189 +451,6 @@ paths:
                   type: object
         '404':
           description: 'Invalid or expired access token'
-  '/public/portal-calendar/{token}/calendar.ics':
-    get:
-      tags:
-        - 'Member Portal'
-      summary: "A member's Member Portal calendar feed (iCalendar)"
-      description: 'Serves the events of the calendars a member subscribed to in the Member Portal, as an RFC 5545 VCALENDAR covering three months back to eighteen months ahead. No session: the token in the path is the credential, and it grants read access to those calendars and to nothing else. The feed is always narrowed to the calendars the administrator currently shares with members, so un-sharing a calendar removes it from every feed immediately. An unknown or retired token is a bare 404, indistinguishable from an account that has no feed.'
-      operationId: getPortalCalendarFeed
-      parameters:
-        -
-          name: token
-          in: path
-          description: "The member's feed token, 64 hex characters, from the Subscribe dialog on the portal calendar page"
-          required: true
-          schema:
-            type: string
-            example: 4f3c…
-      responses:
-        '200':
-          description: 'An iCalendar document'
-          content:
-            text/calendar:
-              schema:
-                type: string
-                format: binary
-        '404':
-          description: 'Unknown token, a token that has been reset, or an account with no feed'
-  /public/echo:
-    get:
-      tags:
-        - Utility
-      summary: 'Health check / echo'
-      description: 'Returns a simple echo response. Useful for verifying the API is reachable.'
-      operationId: getEcho
-      responses:
-        '200':
-          description: 'Echo response'
-          content:
-            application/json:
-              schema:
-                properties:
-                  message: { type: string, example: echo }
-                type: object
-  /public/csp-report:
-    post:
-      tags:
-        - Utility
-      summary: 'Log a Content Security Policy violation report'
-      description: 'Receives browser-generated CSP violation reports and logs them server-side.'
-      operationId: logCSPReport
-      requestBody:
-        description: 'CSP violation report object (browser-generated)'
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-            example:
-              csp-report:
-                document-uri: 'https://example.com'
-                violated-directive: script-src
-      responses:
-        '204':
-          description: 'Report logged successfully (no content)'
-  /public/user/login:
-    post:
-      tags:
-        - Auth
-      summary: 'Log in and retrieve an API key'
-      description: 'Authenticates a user by username and password and returns their API key for use in subsequent authenticated requests.'
-      operationId: userLogin
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              required:
-                - userName
-                - password
-              properties:
-                userName:
-                  type: string
-                  example: admin
-                password:
-                  type: string
-                  format: password
-                  example: secret
-                otp:
-                  description: 'One-time password or recovery code for 2FA (required when 202 is returned)'
-                  type: string
-                  example: '123456'
-              type: object
-      responses:
-        '200':
-          description: 'Login successful'
-          content:
-            application/json:
-              schema:
-                properties:
-                  apiKey: { type: string, example: abc123xyz }
-                type: object
-        '401':
-          description: 'Invalid username or password'
-        '202':
-          description: 'Password valid but 2FA verification required'
-          content:
-            application/json:
-              schema:
-                properties:
-                  requiresOTP: { type: boolean, example: true }
-                type: object
-  /public/user/password-reset:
-    post:
-      tags:
-        - Auth
-      summary: 'Request a password reset email'
-      description: 'Sends a password reset link to the email address associated with the given username. Always returns success to avoid user enumeration.'
-      operationId: passwordResetRequest
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              required:
-                - userName
-              properties:
-                userName:
-                  type: string
-                  example: admin
-              type: object
-      responses:
-        '200':
-          description: 'Request accepted (email sent if account exists)'
-          content:
-            application/json:
-              schema:
-                properties:
-                  success: { type: boolean, example: true }
-                type: object
-        '400':
-          description: 'userName field is required'
-  /public/data/countries:
-    get:
-      tags:
-        - Lookups
-      summary: 'List all countries'
-      description: 'Returns the full list of countries used in address fields.'
-      operationId: getCountries
-      responses:
-        '200':
-          description: 'Array of country objects'
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  properties: { code: { type: string, example: US }, name: { type: string, example: 'United States' } }
-                  type: object
-  '/public/data/countries/{countryCode}/states':
-    get:
-      tags:
-        - Lookups
-      summary: 'List states/provinces for a country'
-      description: 'Returns all states or provinces for the given ISO country code.'
-      operationId: getStates
-      parameters:
-        -
-          name: countryCode
-          in: path
-          description: 'ISO 3166-1 alpha-2 country code'
-          required: true
-          schema:
-            type: string
-            example: US
-      responses:
-        '200':
-          description: 'Array of state/province objects'
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  properties: { code: { type: string, example: WA }, name: { type: string, example: Washington } }
-                  type: object
 tags:
   -
     name: Utility

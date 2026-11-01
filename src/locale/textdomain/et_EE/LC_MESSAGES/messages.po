@@ -928,20 +928,8 @@ msgid "Voting Members"
 msgstr "Hääletusliikmed"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Aruande esitamine (maksudeklaratsioonid)"
-
-#: 
 msgid "Zero Givers"
 msgstr "Null andjad"
-
-#: 
-msgid "Individual Deposit Report"
-msgstr "Individuaalse sissetuleku aruanne"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Täpsem sissetulekuaruanne"
 
 #: 
 msgid "Next"
@@ -967,10 +955,6 @@ msgid "Apply Report Dates To"
 msgstr "Rakenda aruande kuupäevad"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "Sissetuleku kuupäev (vaikimisi)"
-
-#: 
 msgid "Payment Date"
 msgstr "Makse kuupäev"
 
@@ -993,10 +977,6 @@ msgid "Filter by Payment Type"
 msgstr "Filtreeri makse tüübi järgi"
 
 #: 
-msgid "All Methods"
-msgstr "Kõik meetodid"
-
-#: 
 msgid "Check"
 msgstr "Tšekk"
 
@@ -1007,10 +987,6 @@ msgstr "Sularaha"
 #: 
 msgid "Bank Draft"
 msgstr "Panga mustand"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0 - miinimum puudub"
 
 #: 
 msgid "Other Settings"
@@ -1276,10 +1252,6 @@ msgstr "Kinnitage andmesildid"
 #: 
 msgid "Invalid login or password"
 msgstr "Vale nimi või parool"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Liiga palju ebaõnnestunud sisselogimisi: teie konto on lukustatud. Palun pöörduge administraatori poole."
 
 #: 
 msgid "Email/Username"
@@ -1731,14 +1703,6 @@ msgid "System Settings"
 msgstr "Süsteemisätted"
 
 #: 
-msgid "Tax Report"
-msgstr "Maksuaruanne"
-
-#: 
-msgid "Calendar Year"
-msgstr "Kalendriaasta"
-
-#: 
 msgid "User Editor"
 msgstr "Kasutaja muutja"
 
@@ -2152,24 +2116,12 @@ msgid "Classes"
 msgstr "Klassid"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Pühapäevakooli auanded"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Õpilased, kes ei käi pühapäevakooli klassis"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Klasside või osalemislehtede koostamiseks tuleb valida vähemalt üks rühm."
-
-#: 
 msgid "Report Details"
 msgstr "Aruande üksikasjad"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Loetle kõik rollid (märkimata loend sisaldab ainult õpetaja / õpilase rolle)"
 
 #: 
 msgid "First Sunday"
@@ -2190,10 +2142,6 @@ msgstr "Lisaõpilased"
 #: 
 msgid "Extra Teachers"
 msgstr "Lisaõpetajad"
-
-#: 
-msgid "Create Class List"
-msgstr "Loo klassiloend"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4606,14 +4554,6 @@ msgid "PhotoBook"
 msgstr "Fotoraamat"
 
 #: 
-msgid "With Photos"
-msgstr "Fotodega"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Looge fotoraamat"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4758,11 +4698,6 @@ msgstr "Tähtpäevad"
 #: 
 msgid "View User"
 msgstr "Kuva kasutaja"
-
-#: 
-#, fuzzy
-msgid "not found or user without an email"
-msgstr "ei leitud ega kasuta ilma e-kirjata"
 
 #: 
 msgid "UserName not set"
@@ -4960,16 +4895,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Minimaalne summa, mis uus parool peab vanast erinema (tähemärkide arvu muudetud)\n"
 "Selle funktsiooni keelamiseks seadke null"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Maksimaalne ebaõnnestunud sisselogimiste arv enne kasutajakonto lukustamist.\n"
-"Kui maksimum on saavutatud, peab administraator konto uuesti lubama.\n"
-"See funktsioon aitab kaitsta paroolide automatiseeritud äraarvamise rünnakute eest.\n"
-"Selle funktsiooni keelamiseks seadke null."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -5608,10 +5533,6 @@ msgstr "Kustuta valitud"
 #: 
 msgid "Funds"
 msgstr "Vahendid"
-
-#: 
-msgid "Generate Report"
-msgstr "Loo aruanne"
 
 #: 
 msgid "Payments"
@@ -6307,14 +6228,6 @@ msgid "Current Deposit"
 msgstr "Praegune deposiit"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Kohandatav aruanne kuupäeva, fondi, perekonna ja maksemeetodi järgi filtreerimisega."
-
-#: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Kohandage maksu aruannetes kuvatavat teksti (sTaxReport1, sTaxReport2 jne)."
-
-#: 
 msgid "Day"
 msgstr "Päev"
 
@@ -6325,10 +6238,6 @@ msgstr "Det"
 #: 
 msgid "Deposit Statistics"
 msgstr "Deposiidi statistika"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Ühe deposiidi lehega üksikasjalik jaotus."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6395,20 +6304,12 @@ msgid "Generate"
 msgstr "Loo"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Loo maksuaruanded"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Looge annetajate jaoks aastased maksust mahaarvatatavad andmise aruanded. Saab printida või e-postiga saata."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "Looge meeldetuletused peredele koos väljaolevate lubaduste."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "Looge aruanded maksumäärusest, lubaduste jälgimisest ja finantsianalüüsist."
 
 #: 
 msgid "ID"
@@ -6437,10 +6338,6 @@ msgstr "Jun"
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "Kohandame oma süsteemi kasutamiseks valmis"
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "Loetelu liikmetest, kes on hääletamisel lubatud andmise ajaloo ja liikmekriteeriumite alusel."
 
 #: 
 msgid "Location"
@@ -6591,10 +6488,6 @@ msgid "System Info"
 msgstr "Süsteemi teave"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "Maksu- ja andmise aruanded"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "Maksuaruande tekst"
 
@@ -6621,10 +6514,6 @@ msgstr "Täienda"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "Kasutaja peab olema administraator või omama finantsi õigust"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Veenduge, et kiriku nimi, aadress ja kontaktteave kuvatakse maksuaruannetes."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9138,10 +9027,6 @@ msgid "Generate reports on group membership and activities"
 msgstr "Looge aruandeid grupi liikmeskonna ja tegevuste kohta"
 
 #: 
-msgid "Generate tax statement documents for donors"
-msgstr "Looge annetajatele maksudeklaratsiooni dokumente"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "Importige oma andmed ChurchCRM-i"
 
@@ -9888,10 +9773,6 @@ msgid "View transaction details for a pledge payment"
 msgstr "Vaadake lubaduse makse tehingu üksikasju"
 
 #: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "Hääletavad liikmed peavad olema annetanud selle arvu aastate jooksul (0, et annetust mitte nõuda)"
-
-#: 
 msgid "We could not find the family you were looking for."
 msgstr "Me ei leidnud perekonda, mida otsisite."
 
@@ -10082,10 +9963,6 @@ msgstr "Sundida uuesti installima?"
 #: 
 msgid "Full Path"
 msgstr "Täistee"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Looge klassinimekirju, kohaloleku lehti ja fotoalbumeid"
 
 #: 
 msgid "Installed"
@@ -15958,10 +15835,6 @@ msgid "Please confirm your family information"
 msgstr "Palun kinnita oma pere andmed"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "Palun saada oma järgmine annetus aadressile %s"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Palun vali teine pere, kellega seostada need annetused"
 
@@ -17992,10 +17865,6 @@ msgid "{{minutes}} min left"
 msgstr "Jäänud {{minutes}} min"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d maksudeklaratsioon saadeti perele edukalt."
-
-#: 
 msgid "All classifications"
 msgstr "Kõik klassifikatsioonid"
 
@@ -18028,28 +17897,8 @@ msgid "Columns per Page"
 msgstr "Veerud lehe kaupa"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "Kallis %s pere,\n"
-"\n"
-"Leiate oma %d annetuste aruande kuupäevast %s selle e-kirja juurde lisatuna.\n"
-"\n"
-"Kui teil on küsimusi, võtke ühendust kirikutoimistusse.\n"
-"\n"
-"Täname teid andelikkuse eest."
-
-#: 
 msgid "Download CSV"
 msgstr "Laadi alla CSV"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "Saada %d maksudeklaratsioon e-postiga"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18152,10 +18001,6 @@ msgid "Pledged"
 msgstr "Lubatud"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "Prindi %d maksudeklaratsioon"
-
-#: 
 msgid "Recent Friends"
 msgstr "Hiljutised sõbrad"
 
@@ -18180,24 +18025,8 @@ msgid "Single Pages"
 msgstr "Üksikud lehed"
 
 #: 
-msgid "Tax Documents"
-msgstr "Maksudeklaratsioonid"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "Maksudeklaratsiooni e-postiga saatmine nurjus. Palun kontrollige oma e-posti serveri seadistusi."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "Kaks poole suurusega lehte kõrvuti igal maastikulehekalal, brošüüri järjekorras. Printida kahepoolselt valikuga \"pööra lühikesele küljele\", seejärel voltida virnas poole võrra. Veerud loendatakse poole lehega."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "Maksudeklaratsiooni e-postiga saatmine pole võimalik: selle aasta makseteavet ei leitud."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "Maksudeklaratsiooni e-postiga saatmine pole võimalik: sellel perel pole failides e-posti aadressi."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -18660,10 +18489,6 @@ msgid "Could not match the church country."
 msgstr "Koguduse riiki ei õnnestunud sobitada."
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Klassinimekirjad, kohaloleku lehed ja fotoraamatud"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "Rühmade liikmete nimekirjad ja pühapäevakooli klasside aruanded"
 
@@ -18866,22 +18691,10 @@ msgstr[0] "%d vaikimisi vabatahtlik määratud"
 msgstr[1] "%d vaikimisi vabatahtlikku määratud"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Sellele ülesandele on veel vaja %d vabatahtlikku. Ava toimumiskord, et lünk täita."
-msgstr[1] "Sellele ülesandele on veel vaja %d vabatahtlikku. Ava toimumiskord, et lünk täita."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d uus toimumiskord"
 msgstr[1] "%d uut toimumiskorda"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Eesolevale toimumiskorrale on veel vaja %d vabatahtlikku."
-msgstr[1] "Eesolevatele toimumiskordadele on veel vaja %d vabatahtlikku."
 
 #: 
 msgid "%s Calendar"
@@ -20946,10 +20759,6 @@ msgstr "Ava valdkond"
 #: 
 msgid "Open the occurrence"
 msgstr "Ava toimumiskord"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Ava toimumiskord, et määrata vajalikud inimesed."
 
 #: 
 msgid "Open this team"
@@ -24644,10 +24453,6 @@ msgstr "Geokodeerimisteenus ei vastanud — proovige hiljem uuesti"
 #: 
 msgid "Only the email you sent is shown."
 msgstr "Kuvatakse ainult teie saadetud e-kiri."
-
-#: 
-msgid "%d Giving Statement"
-msgstr "%d Annetuste aruanne"
 
 #: 
 msgid "Repeat events could not be created. Check the application log for details."

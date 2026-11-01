@@ -5,7 +5,7 @@
  * contributor learns about them before the push instead of from a review thread.
  *
  * Fails (exit 1):
- *   - the Propel schema or Install.sql changed without a src/mysql/upgrade/ script and upgrade.json
+ *   - the Propel schema or Install.sql changed without a src/mysql/upgrade/ script that upgrade.json lists
  *   - a workflow or action passes untrusted GitHub context straight into a `run:` script
  * Warns (exit 0, printed): behavior changes without a Cypress spec or script test, a changed
  * workflow without a script test, and UI files that need the light/dark, tablet/phone pass.
@@ -27,7 +27,7 @@ const UNTRUSTED =
 const isSchema = (file) => file === 'orm/schema.xml' || file === 'src/mysql/install/Install.sql';
 const isUpgrade = (file) => file.startsWith('src/mysql/upgrade/') || file === 'src/mysql/upgrade.json';
 const isWorkflow = (file) => /^\.github\/(workflows|actions)\//.test(file);
-const isTest = (file) => file.startsWith('cypress/') || /^scripts\/.*\.test\.js$/.test(file) || /^locale\/scripts\/.*\.test\.js$/.test(file);
+const isTest = (file) => file.startsWith('cypress/') || /^tests\/php\/(unit|integration)\/.*Test\.php$/.test(file) || /^scripts\/.*\.test\.js$/.test(file) || /^locale\/scripts\/.*\.test\.js$/.test(file);
 const isBehavior = (file) =>
     (/^src\/.*\.(php|twig)$/.test(file) && !/^src\/(vendor|mysql|locale)\//.test(file)) ||
     (/^webpack\/.*\.(js|ts|tsx)$/.test(file) && !file.endsWith('.test.js'));
@@ -49,15 +49,25 @@ function injections(source) {
     });
 }
 
-function gates(files) {
+const upgradeJsonLists = (script) => {
+    try {
+        return fs.readFileSync(path.join(root, 'src/mysql/upgrade.json'), 'utf8').includes(`/${script.replace(/^src\//, '')}"`);
+    } catch {
+        return false;
+    }
+};
+
+function gates(files, isListed = upgradeJsonLists) {
     const fail = [];
     const warn = [];
-    if (files.some(isSchema) && !(files.some((f) => f.startsWith('src/mysql/upgrade/')) && files.includes('src/mysql/upgrade.json'))) {
+    const scripts = files.filter((f) => f.startsWith('src/mysql/upgrade/'));
+    const hasEntry = files.includes('src/mysql/upgrade.json') || scripts.some(isListed);
+    if (files.some(isSchema) && !(scripts.length && hasEntry)) {
         fail.push('Schema changed without a src/mysql/upgrade/ script and an upgrade.json entry.');
     }
     const behavior = files.filter(isBehavior);
     if (behavior.length && !files.some(isTest)) {
-        warn.push(`Behavior changed (${behavior[0]}${behavior.length > 1 ? ` +${behavior.length - 1}` : ''}) with no Cypress spec or script test. Name the spec that covers it in the PR body.`);
+        warn.push(`Behavior changed (${behavior[0]}${behavior.length > 1 ? ` +${behavior.length - 1}` : ''}) with no PHP, Cypress or script test. Name the test that covers it in the PR body.`);
     }
     const workflows = files.filter(isWorkflow);
     if (workflows.length && !files.some((f) => /^scripts\/.*\.test\.js$/.test(f))) {

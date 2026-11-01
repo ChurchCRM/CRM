@@ -928,20 +928,8 @@ msgid "Voting Members"
 msgstr "Oy kullanan üyeler"
 
 #: 
-msgid "Giving Report (Tax Statements)"
-msgstr "Rapor Verme (Vergi Tabloları)"
-
-#: 
 msgid "Zero Givers"
 msgstr "Sıfır Vericiler"
-
-#: 
-msgid "Individual Deposit Report"
-msgstr "Bireysel Depozito Raporu"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Gelişmiş Depozito Raporu"
 
 #: 
 msgid "Next"
@@ -967,10 +955,6 @@ msgid "Apply Report Dates To"
 msgstr "Rapor tarihlerini uygulayın"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "Depozito Tarihi (Varsayılan)"
-
-#: 
 msgid "Payment Date"
 msgstr "Ödeme tarihi"
 
@@ -993,10 +977,6 @@ msgid "Filter by Payment Type"
 msgstr "Ödeme Türüne Göre Filtre"
 
 #: 
-msgid "All Methods"
-msgstr "Tüm yöntemler"
-
-#: 
 msgid "Check"
 msgstr "Kontrol"
 
@@ -1007,10 +987,6 @@ msgstr "Nakit"
 #: 
 msgid "Bank Draft"
 msgstr "Banka taslağı"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0 - Minimum Yok"
 
 #: 
 msgid "Other Settings"
@@ -1276,10 +1252,6 @@ msgstr "Veri etiketlerini onaylayın"
 #: 
 msgid "Invalid login or password"
 msgstr "geçersiz giriş yada şifre"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Çok fazla başarısız giriş: Hesabınız kilitlendi. Lütfen bir yöneticiyle iletişime geçin."
 
 #: 
 msgid "Email/Username"
@@ -1731,14 +1703,6 @@ msgid "System Settings"
 msgstr "Sistem ayarları"
 
 #: 
-msgid "Tax Report"
-msgstr "Vergi raporu"
-
-#: 
-msgid "Calendar Year"
-msgstr "Takvim yılı"
-
-#: 
 msgid "User Editor"
 msgstr "Kullanıcı editörü"
 
@@ -2152,24 +2116,12 @@ msgid "Classes"
 msgstr "Sınıf"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Pazar Okulu Raporları"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Pazar okulu sınıfında olmayan öğrenciler"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Sınıf listeleri veya katılım sayfaları yapmak için en az bir grup seçilmelidir."
-
-#: 
 msgid "Report Details"
 msgstr "Rapor Ayrıntıları"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Tüm rolleri listeleyin (kontrolsüz sadece öğretmen/öğrenci rollerini listeleyecektir)"
 
 #: 
 msgid "First Sunday"
@@ -2190,10 +2142,6 @@ msgstr "Ekstra öğrenciler"
 #: 
 msgid "Extra Teachers"
 msgstr "Ekstra Öğretmenler"
-
-#: 
-msgid "Create Class List"
-msgstr "Sınıf Listesi Oluştur"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4607,14 +4555,6 @@ msgid "PhotoBook"
 msgstr "Fotoğraf kitabı"
 
 #: 
-msgid "With Photos"
-msgstr "Fotoğraf ile"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Fotoğraf kitabı oluştur"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4759,11 +4699,6 @@ msgstr "Yıldönümleri"
 #: 
 msgid "View User"
 msgstr "Kullanıcıyı görüntüle"
-
-#: 
-#, fuzzy
-msgid "not found or user without an email"
-msgstr "E -posta olmadan bulunamadı veya kullanıcı"
 
 #: 
 msgid "UserName not set"
@@ -4961,16 +4896,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Yeni bir şifre eskisinden farklı olması gereken minimum miktar (karakterlerin# değişmesi)\n"
 "Bu özelliği devre dışı bırakmak için sıfıra ayarlayın"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Bir kullanıcı hesabı kilitlenmeden önce izin verecek maksimum başarısız giriş sayısı.\n"
-"Maksimuma ulaşıldıktan sonra, bir yöneticinin hesabı yeniden etkinleştirmesi gerekir.\n"
-"Bu özellik, otomatik şifre tahmin saldırılarına karşı korunmaya yardımcı olur.\n"
-"Bu özelliği devre dışı bırakmak için sıfıra ayarlayın."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -5609,10 +5534,6 @@ msgstr "Seçilenleri Sil"
 #: 
 msgid "Funds"
 msgstr "Fonlar"
-
-#: 
-msgid "Generate Report"
-msgstr "Rapor Oluştur"
 
 #: 
 msgid "Payments"
@@ -6308,14 +6229,6 @@ msgid "Current Deposit"
 msgstr "Mevcut Para Yatırma"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Tarih, fon, aile ve ödeme yöntemine göre filtreleme yapılabilen özelleştirilebilir rapor."
-
-#: 
-msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Vergi beyannamelerinde görünen metni özelleştirin (sTaxReport1, sTaxReport2, vb.)."
-
-#: 
 msgid "Day"
 msgstr "Gün"
 
@@ -6326,10 +6239,6 @@ msgstr "Ara"
 #: 
 msgid "Deposit Statistics"
 msgstr "Para Yatırma İstatistikleri"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Tek bir para yatırma makbuzunun ayrıntılı dökümü."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6396,20 +6305,12 @@ msgid "Generate"
 msgstr "Oluştur"
 
 #: 
-msgid "Generate Tax Statements"
-msgstr "Vergi Beyannameleri Oluştur"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Bağışçılar için vergiden düşülebilir yıllık bağış beyannameleri oluşturun. Yazdırılabilir veya e-postalanabilir."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr "Ödenmemiş taahhütleri olan aileler için hatırlatma mektupları oluşturun."
-
-#: 
-msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
-msgstr "Vergi beyannameleri, taahhüt takibi ve finansal analiz için raporlar oluşturun."
 
 #: 
 msgid "ID"
@@ -6438,10 +6339,6 @@ msgstr "Haz"
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "Sisteminizi kuralım ve kullanıma hazır hale getirelim"
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "Bağış geçmişi ve üyelik kriterlerine göre oy kullanmaya uygun üyeleri listeleyin."
 
 #: 
 msgid "Location"
@@ -6592,10 +6489,6 @@ msgid "System Info"
 msgstr "Sistem Bilgisi"
 
 #: 
-msgid "Tax & Giving Reports"
-msgstr "Vergi ve Bağış Raporları"
-
-#: 
 msgid "Tax Report Verbiage"
 msgstr "Vergi Raporu Metni"
 
@@ -6622,10 +6515,6 @@ msgstr "Yükselt"
 #: 
 msgid "User must be an Admin or have Finance permission"
 msgstr "Kullanıcı Yönetici olmalı veya Finans iznine sahip olmalıdır"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Kilise adının, adresinin ve iletişim bilgilerinin vergi beyannamelerinde göründüğünü doğrulayın."
 
 #: 
 msgid "Verify fund names and descriptions are accurate for statements."
@@ -9139,10 +9028,6 @@ msgid "Generate reports on group membership and activities"
 msgstr "Grup üyeliği ve faaliyetler hakkında raporlar oluştur"
 
 #: 
-msgid "Generate tax statement documents for donors"
-msgstr "Bağışçılar için vergi beyanı belgeleri oluştur"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "Verilerinizi ChurchCRM'e Aktarın"
 
@@ -9889,10 +9774,6 @@ msgid "View transaction details for a pledge payment"
 msgstr "Bir bağış taahhüdü ödemesi için işlem ayrıntılarını görüntüle"
 
 #: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "Oy kullanan üyelerin bu kadar yıl içinde bağışta bulunmuş olması gerekir (bağış gerektirmemek için 0)"
-
-#: 
 msgid "We could not find the family you were looking for."
 msgstr "Aradığınız aileyi bulamadık."
 
@@ -10083,10 +9964,6 @@ msgstr "Zorla Yeniden Yükle?"
 #: 
 msgid "Full Path"
 msgstr "Tam Yol"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Sınıf listeleri, yoklama çizelgeleri ve fotoğraf albümleri oluştur"
 
 #: 
 msgid "Installed"
@@ -15959,10 +15836,6 @@ msgid "Please confirm your family information"
 msgstr "Aile bilgilerinizi onaylayın"
 
 #: 
-msgid "Please mail you next gift to %s"
-msgstr "Bir sonraki bağışınızı %s adresine posta ile gönderin"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Bu bağışları ilişilendirmek için başka bir aile seçin"
 
@@ -17993,10 +17866,6 @@ msgid "{{minutes}} min left"
 msgstr "{{minutes}} dk kaldı"
 
 #: 
-msgid "%d tax document emailed to the family successfully."
-msgstr "%d vergi belgesi aileye başarıyla e-posta ile gönderildi."
-
-#: 
 msgid "All classifications"
 msgstr "Tüm sınıflandırmalar"
 
@@ -18029,28 +17898,8 @@ msgid "Columns per Page"
 msgstr "Sayfa Başına Sütunlar"
 
 #: 
-msgid "Dear %s Family,\n"
-"\n"
-"Please find your %d giving statement from %s attached to this email.\n"
-"\n"
-"If you have any questions, please contact the church office.\n"
-"\n"
-"Thank you for your generosity."
-msgstr "Sevgili %s Ailesi,\n"
-"\n"
-"Lütfen %s tarihinden itibaren %d bağış beyannamenizi bu e-postaya ektedir.\n"
-"\n"
-"Sorunuz varsa lütfen kilise ofisine başvurun.\n"
-"\n"
-"Cömertliğiniz için teşekkür ederiz."
-
-#: 
 msgid "Download CSV"
 msgstr "CSV İndir"
-
-#: 
-msgid "Email %d Tax Doc"
-msgstr "%d Vergi Belgesi E-posta"
 
 #: 
 msgid "Enable or disable the Finance module and sidebar menu."
@@ -18153,10 +18002,6 @@ msgid "Pledged"
 msgstr "Söz Verilen"
 
 #: 
-msgid "Print %d Tax Doc"
-msgstr "%d Vergi Belgesi Yazdır"
-
-#: 
 msgid "Recent Friends"
 msgstr "Son Arkadaşlar"
 
@@ -18181,24 +18026,8 @@ msgid "Single Pages"
 msgstr "Tek Sayfalar"
 
 #: 
-msgid "Tax Documents"
-msgstr "Vergi Belgeleri"
-
-#: 
-msgid "Tax document email failed to send. Please check your email server settings."
-msgstr "Vergi belgesi e-postası gönderilemedi. Lütfen e-posta sunucu ayarlarınızı kontrol edin."
-
-#: 
 msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr "Her yatay sayfada yan yana iki yarım boyutlu sayfa, kitapçık sırasında. \"Kısa kenardan çevir\" ile çift taraflı yazdırın, ardından yığını yarısına katlayın. Sütunlar yarım sayfa başına sayılır."
-
-#: 
-msgid "Unable to email tax document: no payment data found for that year."
-msgstr "Vergi belgesi e-posta ile gönderilemez: o yıl için ödeme verisi bulunamadı."
-
-#: 
-msgid "Unable to email tax document: this family has no email address on file."
-msgstr "Vergi belgesi e-posta ile gönderilemez: bu ailenin dosyada e-posta adresi yok."
 
 #: 
 msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
@@ -18661,10 +18490,6 @@ msgid "Could not match the church country."
 msgstr "Kilise ülkesi eşleştirilemedi."
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Sınıf listeleri, yoklama çizelgeleri ve fotoğraf albümleri"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "Hizmet üyelik listeleri ve Pazar Okulu sınıf raporları"
 
@@ -18867,22 +18692,10 @@ msgstr[0] "%d varsayılan gönüllü atandı"
 msgstr[1] "%d varsayılan gönüllü atandı"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Bu pozisyon için hâlâ %d gönüllü daha gerekiyor. Boşluğu doldurmak için oluşumu açın."
-msgstr[1] "Bu pozisyon için hâlâ %d gönüllü daha gerekiyor. Boşluğu doldurmak için oluşumu açın."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d yeni oluşum"
 msgstr[1] "%d yeni oluşum"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Yaklaşan bir oluşum için hâlâ %d gönüllü gerekiyor."
-msgstr[1] "Yaklaşan bir oluşum için hâlâ %d gönüllü gerekiyor."
 
 #: 
 msgid "%s Calendar"
@@ -20947,10 +20760,6 @@ msgstr "Hizmeti aç"
 #: 
 msgid "Open the occurrence"
 msgstr "Oluşumu aç"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "İhtiyacınız olan kişileri atamak için oluşumu açın."
 
 #: 
 msgid "Open this team"
@@ -24645,10 +24454,6 @@ msgstr "Coğrafi kodlama hizmeti yanıt vermedi — daha sonra tekrar deneyin"
 #: 
 msgid "Only the email you sent is shown."
 msgstr "Yalnızca gönderdiğiniz e-posta gösterilir."
-
-#: 
-msgid "%d Giving Statement"
-msgstr "%d Bağış Beyanı"
 
 #: 
 msgid "Repeat events could not be created. Check the application log for details."
