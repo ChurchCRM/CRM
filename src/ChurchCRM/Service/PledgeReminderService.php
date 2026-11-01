@@ -9,7 +9,6 @@ use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Utils\CurrencyFormatter;
-use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -168,6 +167,7 @@ class PledgeReminderService
         }
 
         $fundName = static fn (?int $fundId): string => $funds[(int) $fundId] ?? gettext('Undesignated');
+        $dateFormat = SystemConfig::getValue('sDateFormatLong') ?: 'Y-m-d';
 
         $due = [];
         foreach ($funds as $fundId => $name) {
@@ -183,15 +183,15 @@ class PledgeReminderService
             'salutation' => $family->getSalutation(),
             'address' => $family->getMailingAddressLines(),
             'pledges' => array_map(static fn ($pledge): array => [
-                'date' => DateTimeUtils::formatDate($pledge->getDate('Y-m-d')),
+                'date' => (string) $pledge->getDate($dateFormat),
                 'fund' => $fundName($pledge->getFundId()),
                 'amount' => CurrencyFormatter::format($pledge->getAmount()),
             ], $pledges),
             'pledge_total' => count($pledges) > 1 ? CurrencyFormatter::format(array_sum($pledgedByFund) / 100) : '',
             'payments' => array_map(static fn ($payment): array => [
-                'date' => DateTimeUtils::formatDate($payment->getDate('Y-m-d')),
+                'date' => (string) $payment->getDate($dateFormat),
                 'check_no' => (string) ($payment->getCheckNo() ?? ''),
-                'method' => (string) $payment->getMethod(),
+                'method' => self::methodLabel((string) $payment->getMethod()),
                 'fund' => $fundName($payment->getFundId()),
                 'memo' => (string) $payment->getComment(),
                 'amount' => CurrencyFormatter::format($payment->getAmount()),
@@ -230,6 +230,17 @@ class PledgeReminderService
         $names = array_map(static fn (int $id): string => $funds[$id], $selectedFunds);
 
         return ' ' . (count($names) === 1 ? gettext('for fund') : gettext('for funds')) . ' ' . implode(', ', $names);
+    }
+
+    private static function methodLabel(string $method): string
+    {
+        return match ($method) {
+            'CHECK' => gettext('Check'),
+            'CASH' => gettext('Cash'),
+            'CREDITCARD' => gettext('Credit Card'),
+            'BANKDRAFT' => gettext('Bank Draft'),
+            default => $method,
+        };
     }
 
     private static function scalar(mixed $value): string

@@ -36,8 +36,8 @@ describe("Reminder Report with a payment that has no check number - Issue #10183
                 const lower = lines.map((line) => line.toLowerCase());
                 const firstPayment = lower.indexOf("amount", lower.indexOf("check number")) + 1;
                 expect(lines.slice(firstPayment, firstPayment + 3), "date, method, fund").to.deep.equal([
-                    "March 04 2018",
-                    "CASH",
+                    "03/04/2018",
+                    "Cash",
                     "Pledges",
                 ]);
             });
