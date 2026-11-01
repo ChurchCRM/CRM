@@ -41,8 +41,8 @@ not make that entire historical file idempotent.
 
 Run the Service and Controller integration packages with the commands in
 [PHP tests](../../tests/php/README.md#integration-tests). The runner creates a
-temporary application copy and the tests create disposable databases. Fixed SQL
-fixtures preserve the pre-change migration for schema and data equivalence.
+temporary application copy and the tests create disposable databases. Small test schemas and generated scripts exercise checkpointing, interruption
+and concurrent requests.
 The HTTP test covers root and subdirectory continuation through Bootstrapper and
 the Slim route, using an available local port.
 

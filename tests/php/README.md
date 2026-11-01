@@ -46,7 +46,6 @@ where possible; use View for rendered templates and Controller for HTTP flows.
 | `unit/Data`, `unit/Dto`, `unit/Slim` | Existing application utility packages |
 | `integration/Service/<feature>` | Database behavior and upgrades |
 | `integration/Controller/<feature>` | Requests through bootstrap and routes |
-| `fixtures/<feature>` | Stable inputs shared by tests |
 
 Create a package when it has a test. Place a new `*Test.php` beside the behavior it
 tests and require `tests/php/bootstrap.php` using `__DIR__`; discovery is automatic.
@@ -80,5 +79,5 @@ npm run test:php:integration
 Use `-- Service` or `-- Controller/System/UpgradeContinuationTest.php` to focus
 the integration suite. Tests require `integration/bootstrap.php`, which checks
 isolation and database settings before connecting. Missing prerequisites fail
-the requested suite. Upgrade equivalence uses the checked-in historical SQL
-fixtures; their source revisions are recorded beside them.
+the requested suite. Upgrade tests create small schemas and SQL/PHP scripts to
+exercise checkpointing, interruption, concurrency and request continuation.

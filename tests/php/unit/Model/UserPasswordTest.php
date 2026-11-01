@@ -30,7 +30,7 @@ $blankHash->setPassword($blankHash->hashPassword(''));
 $checkPassword('account holding a hash of a blank password, blank password', $blankHash, '', false);
 
 $md5 = new User();
-$md5->setPassword(md5('correct horse'));
+$md5->setPassword('3cb4e732631f47e6eb961f34554b7cde');
 $checkPassword('legacy MD5 account, wrong password', $md5, 'wrong', false);
 $checkPassword('legacy MD5 account, blank password', $md5, '', false);
 

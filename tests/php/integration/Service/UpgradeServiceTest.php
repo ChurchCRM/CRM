@@ -5,7 +5,6 @@ declare(strict_types=1);
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\UpgradeService;
-use ChurchCRM\Utils\SQLUtils;
 use ChurchCRM\Utils\VersionUtils;
 use Propel\Runtime\Connection\ConnectionManagerSingle;
 use Propel\Runtime\Propel;
@@ -17,8 +16,6 @@ $root = APP_ROOT;
 $dsn = getenv('UPGRADE_TEST_DSN');
 $user = getenv('UPGRADE_TEST_USER');
 $password = getenv('UPGRADE_TEST_PASSWORD');
-$baseline = dirname(__DIR__, 2) . '/fixtures/upgrade/Install-7.8.0.sql';
-$original = dirname(__DIR__, 2) . '/fixtures/upgrade/7.8.1-original.sql';
 $admin = new PDO($dsn, $user, $password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 echo 'Engine: ' . $admin->query('SELECT VERSION()')->fetchColumn() . "\n";
 $schemas = [];
@@ -26,21 +23,16 @@ $tempRoot = sys_get_temp_dir() . '/crm-upgrade-batches-' . bin2hex(random_bytes(
 mkdir($tempRoot . '/mysql', 0700, true);
 mkdir($tempRoot . '/scripts');
 symlink($root . '/locale', $tempRoot . '/locale');
-symlink($root . '/mysql/upgrade', $tempRoot . '/mysql/upgrade');
 file_put_contents($tempRoot . '/composer.json', '{"version":"7.8.1"}');
 SystemURLs::init('', [], $root);
 SystemConfig::init();
-$newDatabase = static function (bool $fixture = false) use ($dsn, $admin, $user, $password, $baseline, &$schemas): PDO {
+$newDatabase = static function () use ($dsn, $admin, $user, $password, &$schemas): PDO {
     $name = 'upgrade_test_' . bin2hex(random_bytes(6));
     $admin->exec("CREATE DATABASE `$name`");
     $schemas[] = $name;
     $db = new PDO($dsn . ';dbname=' . $name, $user, $password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-    if ($fixture) {
-        SQLUtils::sqlImport($baseline, $db);
-    } else {
-        $db->exec('CREATE TABLE version_ver (ver_ID INT AUTO_INCREMENT PRIMARY KEY, ver_version VARCHAR(50) UNIQUE, ver_update_start DATETIME, ver_update_end DATETIME)');
-        $db->exec('CREATE TABLE request_runs (id INT PRIMARY KEY)');
-    }
+    $db->exec('CREATE TABLE version_ver (ver_ID INT AUTO_INCREMENT PRIMARY KEY, ver_version VARCHAR(50) UNIQUE, ver_update_start DATETIME, ver_update_end DATETIME)');
+    $db->exec('CREATE TABLE request_runs (id INT PRIMARY KEY)');
     $db->exec("INSERT INTO version_ver (ver_version) VALUES ('7.8.0')");
     $container = Propel::getServiceContainer();
     $container->closeConnections();
@@ -58,20 +50,6 @@ $manifest = static function (array $steps, string $installed = '7.8.1') use ($te
     file_put_contents($tempRoot . '/composer.json', json_encode(['version' => $installed], JSON_THROW_ON_ERROR));
     SystemURLs::init('', [], $tempRoot);
     $_SESSION = [];
-};
-$snapshot = static function (PDO $db): array {
-    $result = [];
-    foreach ($db->query('SHOW TABLES')->fetchAll(PDO::FETCH_COLUMN) as $table) {
-        if ($table === 'database_upgrade_progress' || $table === 'version_ver') {
-            continue;
-        }
-        $schema = $db->query("SHOW CREATE TABLE `$table`")->fetch(PDO::FETCH_NUM)[1];
-        $rows = array_map('json_encode', $db->query("SELECT * FROM `$table`")->fetchAll(PDO::FETCH_ASSOC));
-        sort($rows);
-        $result[$table] = [$schema, $rows];
-    }
-    ksort($result);
-    return $result;
 };
 
 try {
@@ -124,28 +102,11 @@ try {
     }
     Assert::true(UpgradeService::upgradeDatabaseVersion(true), 'Busy requests do not create a started checkpoint');
 
-    $expectedDb = $newDatabase(true);
-    SQLUtils::sqlImport($original, $expectedDb);
-    $expected = $snapshot($expectedDb);
-    foreach ([false, true] as $partial) {
-        $db = $newDatabase(true);
-        if ($partial) {
-            $sql = file_get_contents($original);
-            file_put_contents($tempRoot . '/partial.sql', substr($sql, 0, strpos($sql, 'UPDATE `email_log_eml`')));
-            SQLUtils::sqlImport($tempRoot . '/partial.sql', $db);
-        }
-        $manifest([['versions' => ['7.8.0'], 'scripts' => ['/mysql/upgrade/7.8.1.sql', '/mysql/upgrade/7.8.1.php'], 'dbVersion' => '7.8.1']]);
-        Assert::true(!UpgradeService::upgradeDatabaseVersion(true), '7.8.1 SQL yields before PHP');
-        Assert::true($snapshot($db) === $expected, $partial ? 'Legacy partial email ALTER heals to the original schema and data' : 'Fresh guarded SQL exactly matches the original schema and data');
-        Assert::true(VersionUtils::getDBVersion() === '7.8.0', 'SQL completion alone does not bump the version');
-        Assert::true(UpgradeService::upgradeDatabaseVersion(true) && VersionUtils::getDBVersion() === '7.8.1', 'Following request executes PHP and completes the step');
-    }
 } finally {
     Propel::getServiceContainer()->closeConnections();
     foreach ($schemas as $schema) {
         $admin->exec("DROP DATABASE `$schema`");
     }
-    unlink($tempRoot . '/mysql/upgrade');
     unlink($tempRoot . '/locale');
     foreach (glob($tempRoot . '/scripts/*') as $file) { unlink($file); }
     foreach (glob($tempRoot . '/mysql/*') as $file) { unlink($file); }

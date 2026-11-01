@@ -15,7 +15,7 @@ Commands, setup and package layout: [`tests/php/README.md`](../../../tests/php/R
 - Mirror the code's layer and feature inside the appropriate suite. Test services and models directly; test rendered HTML in View packages; exercise HTTP behavior through Controller integration tests.
 - Keep unit tests independent of database, network and application configuration. Inject controlled collaborators and clocks. Use exact assertions for values and expected exceptions for failure paths.
 - Run database/HTTP tests through the integration command, which isolates application files. Give each test its own database and restore resources in `finally`.
-- Use fixed historical fixtures for upgrade equivalence. Runtime defaults and report HTML checks do not prove PDF layout or browser workflows; retain focused Cypress and visual verification.
+- Use small generated schemas and scripts for upgrade mechanics. Runtime defaults and report HTML checks do not prove PDF layout or browser workflows; retain focused Cypress and visual verification.
 - Run the affected package before the full local lint checkpoint. PHP tests run serially in separate processes, preserving static-state isolation and reducing timing interference.
 
 ## Pipeline
