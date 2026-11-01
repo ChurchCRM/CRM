@@ -114,7 +114,7 @@
         "@uppy/image-editor": "^4.2.0",
         "@uppy/webcam": "^5.1.0",
         "@uppy/xhr-upload": "^5.2.0",
-        "apexcharts": "^6.10.0",
+        "apexcharts": "^8.5.0",
         "avatar-initials": "^6.0.0",
         "bootbox": "^6.0.4",
         "bootstrap": "^5.3.8",
