@@ -20,7 +20,7 @@ function uploadThroughUppy() {
 }
 
 // cy.request() replaces the PHP session's authentication, so each test signs in
-// after its API calls.
+// with a fresh form login after its API calls.
 const removeStoredLetterhead = () => cy.makePrivateAdminAPICall("DELETE", LETTERHEAD_API_URL, null, 200);
 const storeLetterhead = () =>
     cy.makePrivateAdminAPICall("POST", LETTERHEAD_API_URL, { imgBase64: `data:image/png;base64,${LETTERHEAD_PNG_BASE64}` }, 200);
@@ -29,7 +29,7 @@ const hasLetterhead = () => cy.makePrivateAdminAPICall("GET", LETTERHEAD_API_URL
 describe("Admin - Report Settings page", () => {
     beforeEach(() => {
         removeStoredLetterhead();
-        cy.setupAdminSession();
+        cy.freshAdminFormLogin({ enabled: true });
     });
 
     after(() => {
@@ -63,17 +63,18 @@ describe("Admin - Report Settings page", () => {
 
     it("keeps the letterhead when the removal is cancelled, and removes it when confirmed", () => {
         storeLetterhead();
-        cy.setupAdminSession();
+        cy.freshAdminFormLogin({ enabled: true });
         cy.visit("/admin/system/report-settings");
         cy.get("#church-letterhead-preview").should("be.visible");
 
         cy.get("#church-letterhead-remove-btn").click();
-        cy.get(".bootbox .btn-secondary").click();
+        cy.get(".bootbox .bootbox-cancel").click();
+        cy.get(".bootbox").should("not.exist");
         cy.get("#church-letterhead-preview").should("be.visible");
 
         cy.intercept("DELETE", `**${LETTERHEAD_API_URL}`).as("removeLetterhead");
         cy.get("#church-letterhead-remove-btn").click();
-        cy.get(".bootbox .btn-danger").click();
+        cy.get(".bootbox .bootbox-accept").click();
         cy.wait("@removeLetterhead").its("response.statusCode").should("eq", 200);
 
         cy.get("#church-letterhead-default-note", { timeout: 10000 }).should("be.visible");
