@@ -7,6 +7,26 @@ import { buildAdminAPIUrl } from "./api-utils";
 const LETTERHEAD_API_PATH = "system/letterhead";
 
 document.addEventListener("DOMContentLoaded", () => {
+  const t = (key) => (window.i18next ? i18next.t(key) : key);
+
+  document.getElementById("church-letterhead-remove-btn")?.addEventListener("click", () => {
+    window.bootbox.confirm({
+      title: t("Letterhead"),
+      message: t("Remove the letterhead? Letters will print the church name and address."),
+      buttons: {
+        cancel: { label: t("Cancel"), className: "btn-secondary" },
+        confirm: { label: t("Remove"), className: "btn-danger" },
+      },
+      callback: (confirmed) => {
+        if (confirmed) {
+          window.CRM.AdminAPIRequest({ method: "DELETE", path: LETTERHEAD_API_PATH }).done(() =>
+            window.location.reload(),
+          );
+        }
+      },
+    });
+  });
+
   const uploadBtn = document.getElementById("church-letterhead-upload-btn");
   if (!uploadBtn || typeof window._CRM_createPhotoUploader !== "function") {
     return;
@@ -20,12 +40,8 @@ document.addEventListener("DOMContentLoaded", () => {
     photoWidth: 2400,
     photoHeight: 600,
     webcam: false,
-    title: window.i18next ? i18next.t("Letterhead") : "Letterhead",
+    title: t("Letterhead"),
     onComplete: () => window.location.reload(),
   });
   uploadBtn.addEventListener("click", () => window.CRM.photoUploader.show());
-
-  document.getElementById("church-letterhead-remove-btn")?.addEventListener("click", () => {
-    window.CRM.AdminAPIRequest({ method: "DELETE", path: LETTERHEAD_API_PATH }).done(() => window.location.reload());
-  });
 });

@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\LetterheadService;
+use ChurchCRM\Service\MpdfRenderer;
 use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
@@ -36,7 +37,7 @@ $letterheadUrl = LetterheadService::getUrlPath();
                 </button>
                 <?php else: ?>
                 <span class="text-body-secondary small ms-2" id="church-letterhead-default-note">
-                    <i class="fa-solid fa-circle-info me-1"></i><?= gettext('Using the church name and address') ?>
+                    <i class="fa-solid fa-circle-info me-1"></i><?= MpdfRenderer::graphicLetterhead() !== null ? gettext('Using the letterhead image set in System Settings') : gettext('Using the church name and address') ?>
                 </span>
                 <?php endif; ?>
 

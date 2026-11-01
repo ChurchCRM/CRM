@@ -108,7 +108,7 @@ class MpdfRenderer
      */
     public static function graphicLetterhead(): ?string
     {
-        if (LetterheadService::hasUploaded()) {
+        if (LetterheadService::hasUploaded() && is_readable(LetterheadService::getPath())) {
             return LetterheadService::getPath();
         }
 

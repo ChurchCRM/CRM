@@ -1,5 +1,7 @@
 /// <reference types="cypress" />
 
+import { absoluteUrl } from "../../../../support/urls";
+
 /**
  * API tests for the letterhead endpoints and the PDFs that print it
  *
@@ -15,7 +17,7 @@ const VALID_PNG_DATA_URI =
 
 const LETTERHEAD_URL = "/admin/api/system/letterhead";
 const ZERO_GIVERS = "/finance/reports/zero-givers/download";
-const resolveUrl = (url) => new URL(url, Cypress.config("baseUrl")).href;
+const LETTERHEAD_CONFIG_URL = "/admin/api/system/config/bDirLetterHead";
 
 const countImages = (letterhead) =>
     cy
@@ -30,11 +32,15 @@ const countImages = (letterhead) =>
 
 describe("API Private Admin Letterhead", () => {
     let originalBase64 = null;
+    let originalConfigPath = "";
 
     before(() => {
+        cy.makePrivateAdminAPICall("GET", LETTERHEAD_CONFIG_URL, null, 200).then((response) => {
+            originalConfigPath = response.body.value ?? "";
+        });
         cy.makePrivateAdminAPICall("GET", LETTERHEAD_URL, null, 200).then((response) => {
             if (response.body.hasLetterhead) {
-                cy.request({ url: resolveUrl(response.body.url), encoding: "base64" }).then((image) => {
+                cy.request({ url: absoluteUrl(response.body.url), encoding: "base64" }).then((image) => {
                     originalBase64 = image.body;
                 });
             }
@@ -46,6 +52,7 @@ describe("API Private Admin Letterhead", () => {
     });
 
     after(() => {
+        cy.makePrivateAdminAPICall("POST", LETTERHEAD_CONFIG_URL, { value: originalConfigPath }, 200);
         if (originalBase64 !== null) {
             cy.makePrivateAdminAPICall("POST", LETTERHEAD_URL, { imgBase64: `data:image/png;base64,${originalBase64}` }, 200);
         } else {
@@ -64,7 +71,7 @@ describe("API Private Admin Letterhead", () => {
         cy.makePrivateAdminAPICall("POST", LETTERHEAD_URL, { imgBase64: VALID_PNG_DATA_URI }, 200).then((response) => {
             expect(response.body).to.have.property("hasLetterhead", true);
             expect(response.body.url).to.match(/church-letterhead\.png\?v=[0-9a-f]+$/);
-            cy.request({ url: resolveUrl(response.body.url), encoding: "base64" }).then((image) => {
+            cy.request({ url: absoluteUrl(response.body.url), encoding: "base64" }).then((image) => {
                 expect(image.status).to.eq(200);
                 expect(image.headers["content-type"]).to.include("image/png");
             });
@@ -85,6 +92,7 @@ describe("API Private Admin Letterhead", () => {
     });
 
     it("prints the uploaded image on a graphic-letterhead PDF and falls back to the address block when removed", () => {
+        cy.makePrivateAdminAPICall("POST", LETTERHEAD_CONFIG_URL, { value: "" }, 200);
         countImages("none").then((withoutImage) => {
             cy.makePrivateAdminAPICall("POST", LETTERHEAD_URL, { imgBase64: VALID_PNG_DATA_URI }, 200);
             countImages("graphic").then((withLetterhead) => {
