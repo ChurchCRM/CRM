@@ -160,6 +160,8 @@ Rules live in `frontend-development.md`; check the diff against it.
 
 ### Testing (hard block if a feature or bug fix has none)
 
+- [ ] PHP behavior has focused Nette coverage in the matching suite/layer/feature package; review shared bootstrap, isolation and evidence using `ci-test-infrastructure.md`. Keep HTTP permission and browser workflow coverage where those boundaries matter
+
 - [ ] Free of `console.log`, `var_dump`, `dd()`, `.skip`, `.only`
 - [ ] New API endpoints have Cypress API coverage when that is the project pattern
 - [ ] UI specs follow a role's workflow (`cypress-testing.md`): save, delete, filter, export and the denied user, not CRUD or page-renders

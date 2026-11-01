@@ -51,6 +51,9 @@ function checkEnvironment({ mode, services }, run = command, exists = (file) => 
         check(`PHP extensions (${extensions.join(', ')})`, succeeds('php', ['-r', code]),
             'Enable the listed extensions in CLI PHP; docker/Dockerfile.churchcrm-apache-php8 supplies them.');
         check('Composer vendor autoloader', exists('src/vendor/autoload.php'), 'Run npm run build:php online.');
+        check('PHP test runner', exists('tests/php/vendor/bin/tester'), 'Run npm run test:php:install online.');
+        check('PHP test platform requirements', succeeds('composer', ['--working-dir=tests/php', 'check-platform-reqs']),
+            'Run npm run test:php:install and enable missing CLI extensions.');
         check('Composer platform requirements', succeeds('composer', ['--working-dir=src', 'check-platform-reqs', '--no-dev']),
             'Run npm run build:php and enable missing extensions; run composer --working-dir=src check-platform-reqs --no-dev for details.');
     }
