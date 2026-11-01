@@ -102,6 +102,7 @@ module.exports = {
     'admin-member-portal': './webpack/admin-member-portal.ts',
     'get-started': './webpack/get-started',
     'church-info': './webpack/church-info',
+    'report-settings': './webpack/report-settings',
     'email-settings': './webpack/email-settings',
     localization: './webpack/localization',
     'system-settings-panel': './webpack/system-settings-panel',

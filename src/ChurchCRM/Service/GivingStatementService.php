@@ -53,7 +53,6 @@ class GivingStatementService
             [$dateStart, $dateEnd] = [$dateEnd, $dateStart];
         }
 
-
         return [
             'dateStart' => $dateStart,
             'dateEnd' => $dateEnd,
@@ -185,7 +184,7 @@ class GivingStatementService
      */
     public static function document(array $families, string $dateStart, string $dateEnd, bool $remittance = false): array
     {
-        $graphic = self::graphicLetterhead();
+        $graphic = MpdfRenderer::graphicLetterhead();
         $start = DateTimeUtils::formatDate($dateStart);
         $end = DateTimeUtils::formatDate($dateEnd);
 
@@ -288,16 +287,6 @@ class GivingStatementService
         }
 
         return ['total' => $total, 'nonDeductible' => $nonDeductible];
-    }
-
-    private static function graphicLetterhead(): ?string
-    {
-        $path = trim((string) SystemConfig::getValue('bDirLetterHead'));
-        if ($path !== '' && (is_readable($path) || preg_match('#^https://#i', $path))) {
-            return $path;
-        }
-
-        return null;
     }
 
     /** Query values arrive as strings or arrays; anything that is not a scalar reads as empty. */
