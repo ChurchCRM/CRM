@@ -4,6 +4,34 @@ import { captureScreen, defineCapture } from '../support/capture';
 import { settle } from '../support/human';
 
 test.describe('Giving', () => {
+  const votingReview = defineCapture({
+    name: 'finance-voting-review',
+    locales: 'en',
+    title: 'Prepare a voting review list',
+    category: 'Finance & Giving',
+    purpose: 'Help a treasurer choose church-specific criteria and prepare a list for leadership to review before a congregational meeting',
+  });
+  test('finance-voting-review', votingReview, async ({ page }, testInfo) => {
+    await page.goto('/finance/reports/voting-members');
+    await expect(page.locator('#votingMembersForm')).toBeVisible();
+    await page.locator('#votingClasses').selectOption({ index: 0 });
+    await page.locator('#votingAge').fill('18');
+    await captureScreen(page, testInfo, votingReview);
+  });
+
+  const depositReports = defineCapture({
+    name: 'finance-deposit-reports',
+    locales: 'all',
+    title: 'Review deposit payments',
+    category: 'Finance & Giving',
+    purpose: 'Help a treasurer review payments and prepare a selected deposit for the bank',
+  });
+  test('finance-deposit-reports', depositReports, async ({ page }, testInfo) => {
+    await page.goto('/finance/reports/deposits');
+    await expect(page.locator('#depositReportForm')).toBeVisible();
+    await captureScreen(page, testInfo, depositReports);
+  });
+
   const financeDepositEntryCapture = defineCapture({
     name: 'finance-deposit-entry',
     locales: 'all',

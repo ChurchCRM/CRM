@@ -957,14 +957,6 @@ msgid "Zero Givers"
 msgstr "Zero donatori"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Raport Individual de Depozit"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Raport Avansat de Depozit"
-
-#: 
 msgid "Next"
 msgstr "Următorul"
 
@@ -989,10 +981,6 @@ msgid "Apply Report Dates To"
 msgstr "Aplică Datele Raportului La"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "Data de depozit (implicit)"
-
-#: 
 msgid "Payment Date"
 msgstr "Data de Plata"
 
@@ -1013,10 +1001,6 @@ msgstr "Toate depozitele în intervalul de date"
 #, fuzzy
 msgid "Filter by Payment Type"
 msgstr "Filtrare după Tipul Plății"
-
-#: 
-msgid "All Methods"
-msgstr "Toate metodele"
 
 #: 
 msgid "Check"
@@ -5613,10 +5597,6 @@ msgid "Funds"
 msgstr "Fonduri"
 
 #: 
-msgid "Generate Report"
-msgstr "Generează raport"
-
-#: 
 msgid "Payments"
 msgstr "Plăți"
 
@@ -6312,10 +6292,6 @@ msgid "Current Deposit"
 msgstr "Depozit curent"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Raport personalizabil cu filtrare după dată, fond, familie și metodă de plată."
-
-#: 
 msgid "Day"
 msgstr "Zi"
 
@@ -6326,10 +6302,6 @@ msgstr "Dec"
 #: 
 msgid "Deposit Statistics"
 msgstr "Statistici depozit"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Defalcare detaliată a unui singur borderou de depozit."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6430,10 +6402,6 @@ msgstr "Iun"
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "Să vă configurăm sistemul pentru a fi gata de utilizare"
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "Listați membrii eligibili să voteze pe baza istoricului de donații și a criteriilor de apartenență."
 
 #: 
 msgid "Location"
@@ -9872,10 +9840,6 @@ msgstr "Vizualizați membrii grupului, rolurile și proprietățile"
 #: 
 msgid "View transaction details for a pledge payment"
 msgstr "Vizualizează detaliile tranzacției pentru o plată de angajament"
-
-#: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "Membrii cu drept de vot trebuie să fi făcut o ofertă în ultimii atâția ani (0 pentru a nu necesita o ofertă)"
 
 #: 
 msgid "We could not find the family you were looking for."

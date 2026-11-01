@@ -932,14 +932,6 @@ msgid "Zero Givers"
 msgstr "Нульові дарувальники"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Індивідуальний звіт про депозит"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Розширений звіт про депозит"
-
-#: 
 msgid "Next"
 msgstr "Далі"
 
@@ -963,10 +955,6 @@ msgid "Apply Report Dates To"
 msgstr "Застосувати дати звітів до"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "Дата вкладу (за замовчуванням)"
-
-#: 
 msgid "Payment Date"
 msgstr "Дата оплати"
 
@@ -987,10 +975,6 @@ msgstr "Усі депозити в межах діапазону дат"
 #, fuzzy
 msgid "Filter by Payment Type"
 msgstr "Фільтрувати за типом оплати"
-
-#: 
-msgid "All Methods"
-msgstr "Усі методи"
 
 #: 
 msgid "Check"
@@ -5556,10 +5540,6 @@ msgid "Funds"
 msgstr "Фонди"
 
 #: 
-msgid "Generate Report"
-msgstr "Згенерувати звіт"
-
-#: 
 msgid "Payments"
 msgstr "Платежі"
 
@@ -6257,10 +6237,6 @@ msgid "Current Deposit"
 msgstr "Поточний депозит"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Настроюваний звіт із фільтрацією за датою, фондом, сім'єю та способом оплати."
-
-#: 
 msgid "Day"
 msgstr "День"
 
@@ -6271,10 +6247,6 @@ msgstr "Груд"
 #: 
 msgid "Deposit Statistics"
 msgstr "Статистика депозитів"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Детальна розшифровка однієї депозитної квитанції."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6375,10 +6347,6 @@ msgstr "Черв"
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "Давайте налаштуємо вашу систему до роботи"
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "Список членів, які мають право голосу."
 
 #: 
 msgid "Location"
@@ -9822,10 +9790,6 @@ msgstr "Переглядайте членів групи, ролі та влас
 #: 
 msgid "View transaction details for a pledge payment"
 msgstr "Переглядайте деталі операції для платежу обіцянки"
-
-#: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "Члени голосування повинні зробити пожертву протягом цього кількох років (0, щоб не вимагати пожертви)"
 
 #: 
 msgid "We could not find the family you were looking for."

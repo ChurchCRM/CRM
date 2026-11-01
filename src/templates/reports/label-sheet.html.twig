@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body { margin: 0; padding: 0; font-family: {{ font.family }}; font-size: {{ font_size }}pt; font-weight: {{ font.weight }}; font-style: {{ font.style }}; color: #000; }
+    .label { position: absolute; overflow: hidden; width: {{ layout.width }}mm; height: {{ layout.height }}mm; }
+    .text { position: absolute; overflow: hidden; height: {{ (layout.height - 4)|round(3) }}mm; }
+    pre { margin: 0; padding: 0; font-family: {{ font.family }}; font-weight: {{ font.weight }}; font-style: {{ font.style }}; line-height: 1.2; }
+    .tag-church { position: absolute; overflow: hidden; height: 6mm; font-size: 9pt; font-weight: bold; letter-spacing: 0.5pt; text-transform: uppercase; text-align: center; color: #444; border-bottom: 0.3mm solid #999; }
+    .tag-name { position: absolute; overflow: auto; text-align: center; line-height: 1.2; }
+    .empty { margin: 6mm; font-style: italic; }
+  </style>
+</head>
+<body>
+{% for sheet in sheets %}
+  {% for r, row in sheet %}
+    {% for c, cell in row %}
+      {% if cell %}
+        {% set x = layout.left + c * (layout.width + layout.gap_x) %}
+        {% set y = layout.top + r * (layout.height + layout.gap_y) %}
+        {% if cell.tag %}
+          {% set tag = cell.tag %}
+          <div class="tag-church" style="left: {{ (x + 4)|round(3) }}mm; top: {{ (y + 4)|round(3) }}mm; width: {{ (layout.width - 8)|round(3) }}mm;">{{ church_name }}</div>
+          {% if tag.photo %}
+          <div style="position: absolute; left: {{ (x + tag.photo.x)|round(3) }}mm; top: {{ (y + tag.photo.y)|round(3) }}mm; width: {{ tag.photo.width }}mm; height: {{ tag.photo.height }}mm;"><img src="{{ tag.photo.src }}" alt="" style="width: {{ tag.photo.width }}mm; height: {{ tag.photo.height }}mm;"></div>
+          {% endif %}
+          <div class="tag-name" style="left: {{ (x + tag.text_x)|round(3) }}mm; top: {{ (y + tag.text_y)|round(3) }}mm; width: {{ tag.text_width }}mm; height: {{ tag.text_height }}mm;">
+            <div style="font-size: {{ tag.first_size }}pt; font-weight: bold;">{{ tag.first }}</div>
+            <div style="font-size: {{ tag.last_size }}pt;">{{ tag.last }}</div>
+          </div>
+        {% else %}
+          <div class="text" style="left: {{ (x + 3)|round(3) }}mm; top: {{ (y + 2)|round(3) }}mm; width: {{ (layout.width - 5)|round(3) }}mm;"><pre style="font-size: {{ cell.size }}pt;">{{ cell.text }}</pre></div>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+  {% if not loop.last %}<pagebreak />{% endif %}
+{% else %}
+  <p class="empty">{{ gettext('No records were returned from the previous report. Please adjust your filters or date range and try again.') }}</p>
+{% endfor %}
+</body>
+</html>

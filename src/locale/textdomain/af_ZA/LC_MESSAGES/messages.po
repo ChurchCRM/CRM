@@ -932,14 +932,6 @@ msgid "Zero Givers"
 msgstr "Nul gewers"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Individuele depositoverslag"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Gevorderde depositoverslag"
-
-#: 
 msgid "Next"
 msgstr "Volgende"
 
@@ -963,10 +955,6 @@ msgid "Apply Report Dates To"
 msgstr "Pas verslagdatums toe op"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "Deposito datum (verstek)"
-
-#: 
 msgid "Payment Date"
 msgstr "Betaaldatum"
 
@@ -987,10 +975,6 @@ msgstr "Alle deposito's binne datumbereik"
 #, fuzzy
 msgid "Filter by Payment Type"
 msgstr "Filtreer volgens betalingstipe"
-
-#: 
-msgid "All Methods"
-msgstr "Alle metodes"
 
 #: 
 msgid "Check"
@@ -5552,10 +5536,6 @@ msgid "Funds"
 msgstr "Fondse"
 
 #: 
-msgid "Generate Report"
-msgstr "Genereer Verslag"
-
-#: 
 msgid "Payments"
 msgstr "Betalings"
 
@@ -6249,10 +6229,6 @@ msgid "Current Deposit"
 msgstr "Huidigas Deposito"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Pasmaakbare verslag met filtrering op datum, fonds, familie en betalingsmetode."
-
-#: 
 msgid "Day"
 msgstr "Dag"
 
@@ -6263,10 +6239,6 @@ msgstr "Des"
 #: 
 msgid "Deposit Statistics"
 msgstr "Deposito Statistieke"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Gedetailleerde afbreking van 'n enkele deposito sluipweg."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6367,10 +6339,6 @@ msgstr "Jun"
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "Laat ons jou stelsel oprig en gereed maak vir gebruik"
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "Lys van lede wat stem mag stem op grond van gawingshistoriek en lidmaatskapsкритeria."
 
 #: 
 msgid "Location"
@@ -9804,10 +9772,6 @@ msgstr "Bekyk groeplede, rolle, en eienskappe"
 #: 
 msgid "View transaction details for a pledge payment"
 msgstr "Kyk transaksie-besonderhede vir 'n verbintenis-betaling"
-
-#: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "Stemmende lede moet 'n donasie binne hierdie baie jare gemaak het (0 om geen donasie te vereis nie)"
 
 #: 
 msgid "We could not find the family you were looking for."

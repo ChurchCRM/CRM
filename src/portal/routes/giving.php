@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Utils\PdfResponse;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
@@ -93,11 +94,8 @@ $group->get('/giving/statement', function (Request $request, Response $response)
     }
 
     $data = GivingStatementService::document($statements, $criteria['dateStart'], $criteria['dateEnd']);
-    $disposition = GivingStatementService::contentDisposition(GivingStatementService::fileLabel($year, $family->getName()));
+    $fileLabel = GivingStatementService::fileLabel($year, $family->getName());
 
     $pdf = (new MpdfRenderer())->renderToString('tax-report', $data);
-    $response->getBody()->write($pdf);
-    return $response
-        ->withHeader('Content-Type', 'application/pdf')
-        ->withHeader('Content-Disposition', $disposition);
+    return PdfResponse::create($response, $pdf, $fileLabel);
 });

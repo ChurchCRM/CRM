@@ -2,7 +2,6 @@
 
 namespace ChurchCRM\Service;
 
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
@@ -53,12 +52,12 @@ class ClassListService
                     $entry = trim($person->getFullName() . ' ' . ($family?->getHomePhone() ?? ''));
                     $class[$roleName === 'Teacher' ? 'teachers' : 'liaisons'][] = $entry;
                 } elseif ($roleName === 'Student') {
-                    $photo = (string) $person->getPhoto()->getPhotoURI();
+                    $portrait = ReportPhoto::forPerson($person);
                     $class['students'][] = [
                         'name' => $person->getFullName(),
                         'birthday' => DateTimeUtils::formatForDatePicker($person->getBirthYear() . '-' . $person->getBirthMonth() . '-' . $person->getBirthDay()),
-                        'initials' => $person->getInitial(SystemConfig::getIntValue('iPersonInitialStyle')),
-                        'photo' => $photo !== '' && is_file($photo) ? $photo : '',
+                        'initials' => $portrait['initials'],
+                        'photo' => $portrait['photo'],
                         'properties' => $person->getPropertiesString(),
                         'parents' => $family === null ? '' : (string) $family->getSalutation(),
                         'phone' => $family === null ? '' : (string) $family->getHomePhone(),

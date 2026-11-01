@@ -931,14 +931,6 @@ msgid "Zero Givers"
 msgstr "ዜሮ ሰጪዎች"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "የግለሰብ ተቀማጭ ገንዘብ ሪፖርት"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "የላቀ የተቀማጭ ገንዘብ ሪፖርት"
-
-#: 
 msgid "Next"
 msgstr "ቀጥሎ"
 
@@ -962,10 +954,6 @@ msgid "Apply Report Dates To"
 msgstr "የሪፖርት ቀኖችን አመልክት"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "ገንዘብ ማስገብያ ቀን (ነባሪ)"
-
-#: 
 msgid "Payment Date"
 msgstr "የክፍያ ቀን"
 
@@ -986,10 +974,6 @@ msgstr "በተወሰነ ቀን  ውስጥ ያለ ሁሉም ተቀማጭ ገን�
 #, fuzzy
 msgid "Filter by Payment Type"
 msgstr "በክፍያ አይነት አጣራ"
-
-#: 
-msgid "All Methods"
-msgstr "ሁሉም ዘዴዎች"
 
 #: 
 msgid "Check"
@@ -5558,10 +5542,6 @@ msgid "Funds"
 msgstr "ፈንዶች / ገንዘቦች"
 
 #: 
-msgid "Generate Report"
-msgstr "ሪፖርት አውጣ"
-
-#: 
 msgid "Payments"
 msgstr "ክፍያዎች"
 
@@ -6255,10 +6235,6 @@ msgid "Current Deposit"
 msgstr "የአሁኑ ተቀማጭ"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "በቀን፣ በፈንድ፣ በቤተሰብ እና በክፍያ ዘዴ ሊጣራ የሚችል ሪፖርት።"
-
-#: 
 msgid "Day"
 msgstr "ቀን"
 
@@ -6269,10 +6245,6 @@ msgstr "ዲሴምበር"
 #: 
 msgid "Deposit Statistics"
 msgstr "የተቀማጭ ስታቲስቲክስ"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "የአንድ ተቀማጭ ወረቀት ዝርዝር መግለጫ።"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6373,10 +6345,6 @@ msgstr "ጁን"
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "ስርዓትዎን እናዋቅር እና ለጥቅም እናዘጋጅ"
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "በልገሳ ታሪክ እና በአባልነት መስፈርቶች መሰረት ድምጽ ለመስጠት ብቁ የሆኑ አባላትን ይዘርዝሩ።"
 
 #: 
 msgid "Location"
@@ -9810,10 +9778,6 @@ msgstr "ቡድን አባላት ሚና እና ምንጭ ይተንትን"
 #: 
 msgid "View transaction details for a pledge payment"
 msgstr "ተቀባይነት ገንዘብ ለ ሰበአት ዝርዝር ይተንትን"
-
-#: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "ድምጽ ይታወቅ አባላት ይህ ብዙ ዓመታት ውስጥ ጋብ ስቴት ሰበአት (0 ጋብ ሲመልሱ አለም)"
 
 #: 
 msgid "We could not find the family you were looking for."

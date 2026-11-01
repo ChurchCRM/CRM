@@ -202,8 +202,9 @@ describe("Standard Sunday School", () => {
 
     it("Dashboard has one-click PhotoBook and Class List reports", () => {
         cy.visit("groups/sundayschool/dashboard");
-        cy.get('a[href$="/groups/sundayschool/reports/photo-book"]').should("be.visible");
+        cy.get('a[href$="/groups/reports/photo-book"]').should("be.visible");
         cy.get('a[href$="/groups/sundayschool/reports/class-list"]').should("be.visible");
+        cy.get('a[href$="/groups/reports"]').should("be.visible");
     });
 
     it("Reports page shows error when no group selected", () => {

@@ -90,10 +90,10 @@ describe("Giving statements", () => {
 
     it("the PDF is named for the report and the year", () => {
         cy.request({ url: `${statementsPath}/download?${seedYear}`, encoding: "binary" }).then((response) => {
-            expect(response.headers["content-disposition"]).to.match(/filename="GivingStatements-2018\.pdf"/);
+            expect(response.headers["content-disposition"]).to.match(/filename="[^"]+-GivingStatements-2018\.pdf"/);
         });
         cy.request({ url: `${statementsPath}/download?familyId=1&year=2018`, encoding: "binary" }).then((response) => {
-            expect(response.headers["content-disposition"]).to.match(/filename="GivingStatement-2018-[A-Za-z-]+\.pdf"/);
+            expect(response.headers["content-disposition"]).to.match(/filename="[^"]+-GivingStatement-2018-[A-Za-z-]+\.pdf"/);
         });
     });
 

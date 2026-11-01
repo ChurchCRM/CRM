@@ -925,14 +925,6 @@ msgid "Zero Givers"
 msgstr "Walang Nagbigay"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Indibidwal na Ulat ng Deposito"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Advanced na Ulat ng Deposito"
-
-#: 
 msgid "Next"
 msgstr "Susunod"
 
@@ -953,10 +945,6 @@ msgid "Apply Report Dates To"
 msgstr "Ilapat ang mga Petsa ng Ulat Sa"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "Petsa ng Deposito (Default)"
-
-#: 
 msgid "Payment Date"
 msgstr "Petsa ng Pagbabayad"
 
@@ -975,10 +963,6 @@ msgstr "Lahat ng deposito sa loob ng hanay ng petsa"
 #: 
 msgid "Filter by Payment Type"
 msgstr "I-filter ayon sa Uri ng Pagbabayad"
-
-#: 
-msgid "All Methods"
-msgstr "Lahat ng Paraan"
 
 #: 
 msgid "Check"
@@ -5519,10 +5503,6 @@ msgid "Funds"
 msgstr "Mga Pondo"
 
 #: 
-msgid "Generate Report"
-msgstr "Gumawa ng Ulat"
-
-#: 
 msgid "Payments"
 msgstr "Mga Pagbabayad"
 
@@ -6216,10 +6196,6 @@ msgid "Current Deposit"
 msgstr "Kasalukuyang Deposito"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Pasadyang ulat na may pag-filter ayon sa petsa, pondo, pamilya, at paraan ng pagbabayad."
-
-#: 
 msgid "Day"
 msgstr "Araw"
 
@@ -6230,10 +6206,6 @@ msgstr "Dis"
 #: 
 msgid "Deposit Statistics"
 msgstr "Mga Istatistika ng Deposito"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Detalyadong breakdown ng isang solong deposit slip."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6334,10 +6306,6 @@ msgstr "Hun"
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "Ihanda natin ang iyong sistema para magamit"
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "Ilista ang mga miyembro na karapat-dapat bumoto batay sa kasaysayan ng pagbibigay at pamantayan ng pagiging miyembro."
 
 #: 
 msgid "Location"
@@ -9771,10 +9739,6 @@ msgstr "Tingnan ang mga miyembro ng grupo, mga papel, at mga katangian"
 #: 
 msgid "View transaction details for a pledge payment"
 msgstr "Tingnan ang mga detalye ng transaksyon para sa isang pagbabayad ng pangako"
-
-#: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "Ang mga miyembrong may boto ay dapat nagbigay ng donasyon sa loob ng napakaraming taon (0 para hindi kinakailangan ang donasyon)"
 
 #: 
 msgid "We could not find the family you were looking for."

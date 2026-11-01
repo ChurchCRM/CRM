@@ -116,7 +116,7 @@ describe("Deposit editor: what a treasurer does", () => {
             cy.contains("No payments on this deposit");
 
             addPayment(id, 1, 15);
-            cy.intercept("HEAD", `**/api/deposits/${id}/pdf*`).as("pdf");
+            cy.intercept("HEAD", `**/finance/reports/print-deposit/download*`).as("pdf");
             cy.visit(`/finance/deposit/${id}`);
             cy.get("#generateDepositReport").click();
             cy.wait("@pdf").its("response.statusCode").should("eq", 200);

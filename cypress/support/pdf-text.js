@@ -42,6 +42,9 @@ const streamContents = (binaryBody) => {
 
 const unescapeText = (text) => text.replace(/\\([\\()])/g, "$1");
 
+// mPDF draws "fi", "ff" and the like as one ligature glyph; read them back as letters.
+const LIGATURES = { "\uFB00": "ff", "\uFB01": "fi", "\uFB02": "fl", "\uFB03": "ffi", "\uFB04": "ffl", "\uFB05": "st", "\uFB06": "st" };
+
 // FPDF writes Latin-1. mPDF in utf-8 mode writes UTF-16BE, and letter-spacing
 // splits one line across a TJ array.
 const decodePdfText = (text) => {
@@ -64,7 +67,7 @@ const decodePdfText = (text) => {
     for (let i = start; i < value.length; i += 2) {
         out += String.fromCharCode((value.charCodeAt(i) << 8) | value.charCodeAt(i + 1));
     }
-    return out;
+    return out.replace(/[\uFB00-\uFB06]/g, (ligature) => LIGATURES[ligature]);
 };
 
 const TEXT_OPERATOR = /\[((?:\\.|[^\\\]])*)\]\s*TJ|\(((?:\\.|[^\\)])*)\)\s*Tj/g;
@@ -95,7 +98,7 @@ export const pdfText = (binaryBody) =>
     streamContents(binaryBody).then((contents) => contents.flatMap(textLines));
 
 /**
- * Where FPDF drew each line of text and each image, in drawing order, in PDF
+ * Where FPDF or mPDF drew each line of text and each image, in drawing order, in PDF
  * points from the bottom left of the page: a line as `{ text, x, y }` at its
  * baseline, an image as `{ image: true, x, y, width, height }` from its bottom
  * left corner. A booklet sheet shifts its right-hand page across, so compare
@@ -109,12 +112,12 @@ export const pdfDrawing = (binaryBody) =>
         contents.flatMap((content) =>
             Array.from(
                 content.matchAll(
-                    /BT ([\d.]+) ([\d.]+) Td \(((?:\\.|[^\\)])*)\) Tj|q ([\d.]+) 0 0 ([\d.]+) ([\d.]+) ([\d.]+) cm \/I\d+ Do/g,
+                    /BT ([\d.]+) ([\d.]+) Td\s+\(((?:\\.|[^\\)])*)\) Tj|q ([\d.]+) 0 0 ([\d.]+) ([\d.]+) ([\d.]+) cm \/I\d+ Do/g,
                 ),
                 ([, x, y, text, width, height, imageX, imageY]) =>
                     text === undefined
                         ? { image: true, x: Number(imageX), y: Number(imageY), width: Number(width), height: Number(height) }
-                        : { text: unescapeText(text), x: Number(x), y: Number(y) },
+                        : { text: decodePdfText(text), x: Number(x), y: Number(y) },
             ),
         ),
     );

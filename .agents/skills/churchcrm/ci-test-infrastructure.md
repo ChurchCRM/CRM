@@ -1,11 +1,22 @@
 ---
 title: CI and test infrastructure
-intent: How the Cypress CI jobs, shards, test database and cleanup guard fit together, and how to triage a red run. Load this when CI fails, a spec is added or removed, or the schema or seed changes.
+intent: How PHP and Cypress tests run locally and in CI. Load this when adding tests, changing test infrastructure, or investigating a red run.
 ---
 
 # CI and test infrastructure
 
-Writing a spec or a permission test: `cypress-testing.md`. Workflow map: `docs/maintainers/github-actions.md`.
+Writing a Cypress spec or a permission test: `cypress-testing.md`. Workflow map: `docs/maintainers/github-actions.md`.
+
+## PHP tests
+
+Commands, setup and package layout: [`tests/php/README.md`](../../../tests/php/README.md).
+
+- Use Nette assertions and the shared bootstrap in automatically discovered `*Test.php` files. Let the framework own discovery, failures and reports.
+- Mirror the code's layer and feature inside the appropriate suite. Test services and models directly; test rendered HTML in View packages; exercise HTTP behavior through Controller integration tests.
+- Keep unit tests independent of database, network and application configuration. Inject controlled collaborators and clocks. Use exact assertions for values and expected exceptions for failure paths.
+- Run database/HTTP tests through the integration command, which isolates application files. Give each test its own database and restore resources in `finally`.
+- Use small generated schemas and scripts for upgrade mechanics. Runtime defaults and report HTML checks do not prove PDF layout or browser workflows; retain focused Cypress and visual verification.
+- Run the affected package before the full local lint checkpoint. PHP tests run serially in separate processes, preserving static-state isolation and reducing timing interference.
 
 ## Pipeline
 
@@ -25,7 +36,7 @@ npm run docker:test:down        # remove containers and volumes
 npm run docker:test:reset:db    # rebuild the test database: Install.sql, then cypress/data/seed.sql
 npm run test                    # all Cypress specs, headless
 npm run test:open               # interactive
-npm run test:php                # PHP regression tests, no Docker or database needed
+npm run test:php                # fast PHP regression suite
 ```
 
 Dev stack: `npm run docker:dev:start`, `docker:dev:stop`, `docker:dev:logs`. Compose profiles: `test` and `ci` in `docker/docker-compose.yaml`; `ci-root`, `ci-subdir` and `ci-new-system` in `docker/docker-compose.parallel.yaml`; the dev stack in `docker/docker-compose.dev.yaml`. CI runs the `docker:ci:*` scripts from `package.json`.

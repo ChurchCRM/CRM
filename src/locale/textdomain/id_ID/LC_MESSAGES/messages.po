@@ -933,14 +933,6 @@ msgid "Zero Givers"
 msgstr "Tidak ada yang memberi"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Laporan simpanan individu"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Laporan tabungan detail"
-
-#: 
 msgid "Next"
 msgstr "berikutnya"
 
@@ -964,10 +956,6 @@ msgid "Apply Report Dates To"
 msgstr "Setujui tanggal pelaporan pada tanggal"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "Tanggal penyimpanan (standar)"
-
-#: 
 msgid "Payment Date"
 msgstr "Tanggal pembayaran"
 
@@ -988,10 +976,6 @@ msgstr "Semua simpanan di dalam kurun tanggal"
 #, fuzzy
 msgid "Filter by Payment Type"
 msgstr "Sortir berdasarkan tipe pembayaran"
-
-#: 
-msgid "All Methods"
-msgstr "Semua metode "
 
 #: 
 msgid "Check"
@@ -5547,10 +5531,6 @@ msgid "Funds"
 msgstr "Dana/Pos Kas"
 
 #: 
-msgid "Generate Report"
-msgstr "Buat Laporan"
-
-#: 
 msgid "Payments"
 msgstr "Pembayaran"
 
@@ -6242,10 +6222,6 @@ msgid "Current Deposit"
 msgstr "Setoran Saat Ini"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Laporan yang dapat disesuaikan dengan filter tanggal, dana, keluarga, dan metode pembayaran."
-
-#: 
 msgid "Day"
 msgstr "Hari"
 
@@ -6256,10 +6232,6 @@ msgstr "Des"
 #: 
 msgid "Deposit Statistics"
 msgstr "Statistik Setoran"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Rincian detail dari satu slip setoran."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6360,10 +6332,6 @@ msgstr "Jun"
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "Mari siapkan sistem Anda agar siap digunakan"
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "Daftar jemaat yang berhak memberikan suara berdasarkan kriteria."
 
 #: 
 msgid "Location"
@@ -9792,10 +9760,6 @@ msgstr "Lihat anggota grup, peran, dan properti"
 #: 
 msgid "View transaction details for a pledge payment"
 msgstr "Lihat detail transaksi untuk pembayaran janji persembahan"
-
-#: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "Anggota dengan hak suara harus telah memberikan persembahan dalam beberapa tahun terakhir ini (0 untuk tidak mensyaratkan persembahan)"
 
 #: 
 msgid "We could not find the family you were looking for."

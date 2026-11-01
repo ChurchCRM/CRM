@@ -47,7 +47,7 @@ Credit the contributor. When their PR leaves the project better than before but 
 
 ## Phase 2 — Review the full branch diff
 
-Review `origin/master...<branch>`, not only the latest commit.
+Review `origin/master...<branch>`, not only the latest commit. After a rebase, preserve independent additions to shared test commands, check that the PR merges against the current base, and verify CI runs reference the latest head SHA.
 
 ```bash
 git fetch origin
@@ -120,6 +120,15 @@ Applies to any change to a route, API, middleware, permission check, session, ad
 
 For a large auth PR, run a security-focused sub agent over the diff and verify its findings against the code before you report them.
 
+### PDF / mPDF reports
+
+Apply [reports.md](reports.md), including its review-evidence checklist, to changes in report data, routes, rendering, templates, exports and shared PDF helpers. Trace all current merged consumers; record only concrete findings and unverified checks in the review.
+
+- [ ] Dates, money, labels and fiscal years follow the `reports.md` Data rules and are formatted in the service
+- [ ] The template holds no date format, currency symbol, separator or English literal (grep the diff for `$`, `€`, `number_format`, `date(`, `default('`)
+- [ ] A spec runs the report under non-US settings, or the review says the locale check was not run
+- [ ] A report that loops one letter per recipient includes `_letter-break.html.twig` between letters, and a spec or a render with two or more recipients shows the letterhead on each
+
 ### Frontend & UI
 
 Rules live in `frontend-development.md`; check the diff against it.
@@ -155,6 +164,8 @@ Rules live in `frontend-development.md`; check the diff against it.
 - [ ] Spec regenerated when annotations changed
 
 ### Testing (hard block if a feature or bug fix has none)
+
+- [ ] PHP behavior has focused Nette coverage in the matching suite/layer/feature package; review shared bootstrap, isolation and evidence using `ci-test-infrastructure.md`. Keep HTTP permission and browser workflow coverage where those boundaries matter
 
 - [ ] Free of `console.log`, `var_dump`, `dd()`, `.skip`, `.only`
 - [ ] New API endpoints have Cypress API coverage when that is the project pattern

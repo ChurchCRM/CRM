@@ -932,14 +932,6 @@ msgid "Zero Givers"
 msgstr "אפס נותנים"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "דוח הפקדות פרטני"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "דוח הפקדות מתקדם"
-
-#: 
 msgid "Next"
 msgstr "הבא"
 
@@ -963,10 +955,6 @@ msgid "Apply Report Dates To"
 msgstr "החל תאריכי דוח על"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "תאריך הפקדה (ברירת מחדל)"
-
-#: 
 msgid "Payment Date"
 msgstr "תאריך תשלום"
 
@@ -987,10 +975,6 @@ msgstr "כל ההפקדות בטווח התאריכים"
 #, fuzzy
 msgid "Filter by Payment Type"
 msgstr "סנן לפי סוג תשלום"
-
-#: 
-msgid "All Methods"
-msgstr "כל השיטות"
 
 #: 
 msgid "Check"
@@ -5550,10 +5534,6 @@ msgid "Funds"
 msgstr "קרנות"
 
 #: 
-msgid "Generate Report"
-msgstr "הפק דוח"
-
-#: 
 msgid "Payments"
 msgstr "תשלומים"
 
@@ -6247,10 +6227,6 @@ msgid "Current Deposit"
 msgstr "הפקדה נוכחית"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "דוח הניתן להתאמה עם סינון לפי תאריך, קרן, משפחה ואמצעי תשלום."
-
-#: 
 msgid "Day"
 msgstr "יום"
 
@@ -6261,10 +6237,6 @@ msgstr "דצמ'"
 #: 
 msgid "Deposit Statistics"
 msgstr "סטטיסטיקת הפקדות"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "פירוט של שובר הפקדה בודד."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6365,10 +6337,6 @@ msgstr "יוני"
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "בוא נגדיר את המערכת שלך ונכין אותה לשימוש"
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "רשימת חברים בעלי זכות הצבעה לפי היסטוריית תרומות."
 
 #: 
 msgid "Location"
@@ -9802,10 +9770,6 @@ msgstr "צפייה בחברי קבוצה, תפקידים ומאפיינים"
 #: 
 msgid "View transaction details for a pledge payment"
 msgstr "צפייה בפרטי עסקה עבור תשלום התחייבות כספית"
-
-#: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "חברים בעלי זכות הצבעה חייבים לתרום תוך מספר שנים זה (0 כדי לא לדרוש תרומה)"
 
 #: 
 msgid "We could not find the family you were looking for."

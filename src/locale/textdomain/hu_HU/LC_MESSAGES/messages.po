@@ -936,14 +936,6 @@ msgid "Zero Givers"
 msgstr "Zero givers"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Egyéni Deposit jelentés"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Advanced Deposit Jelentés"
-
-#: 
 msgid "Next"
 msgstr "Következő"
 
@@ -968,10 +960,6 @@ msgid "Apply Report Dates To"
 msgstr "Alkalmazás Jelentés Dátumok To"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "Deposit Date (Alapértelmezett)"
-
-#: 
 msgid "Payment Date"
 msgstr "Kifizetés dátuma"
 
@@ -992,10 +980,6 @@ msgstr "Minden betétek dátumtartományban"
 #, fuzzy
 msgid "Filter by Payment Type"
 msgstr "Szűrés Fizetés típusa"
-
-#: 
-msgid "All Methods"
-msgstr "All módszerek"
 
 #: 
 msgid "Check"
@@ -5578,10 +5562,6 @@ msgid "Funds"
 msgstr "Alapok"
 
 #: 
-msgid "Generate Report"
-msgstr "Jelentés generálása"
-
-#: 
 msgid "Payments"
 msgstr "Fizetések"
 
@@ -6275,10 +6255,6 @@ msgid "Current Deposit"
 msgstr "Jelenlegi befizetés"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Testreszabható jelentés dátum, alap, család és fizetési mód szerinti szűréssel."
-
-#: 
 msgid "Day"
 msgstr "Nap"
 
@@ -6289,10 +6265,6 @@ msgstr "Dec"
 #: 
 msgid "Deposit Statistics"
 msgstr "Befizetési statisztikák"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Egyetlen befizetési bizonylat részletes lebontása."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6393,10 +6365,6 @@ msgstr "Jún"
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "Kezdjük el a rendszer beállítását a használatba vételhez"
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "A szavazásra jogosult tagok listázása az adományozási múlt és a tagsági kritériumok alapján."
 
 #: 
 msgid "Location"
@@ -9830,10 +9798,6 @@ msgstr "Csoporttagok, szerepek és tulajdonságok megtekintése"
 #: 
 msgid "View transaction details for a pledge payment"
 msgstr "Felajánlási befizetés tranzakciós részleteinek megtekintése"
-
-#: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "A szavazati joggal rendelkező tagoknak ennyi éven belül kellett adományt tenniük (0 = nem szükséges adomány)"
 
 #: 
 msgid "We could not find the family you were looking for."

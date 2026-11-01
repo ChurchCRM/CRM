@@ -26,8 +26,18 @@ if ($sReportType === '' && array_key_exists('ReportType', $_GET)) {
     $sReportType = InputUtils::legacyFilterInput($_GET['ReportType']);
 }
 
+if ($sReportType === 'Voting Members') {
+    RedirectUtils::redirect('finance/reports/voting-members');
+}
+
 if ($sReportType === 'Giving Report') {
     RedirectUtils::redirect('finance/reports/giving-statements');
+}
+
+if (in_array($sReportType, ['Individual Deposit Report', 'Advanced Deposit Report'], true)) {
+    $input = array_merge($_GET, $_POST);
+    unset($input['ReportType']);
+    RedirectUtils::redirect('finance/reports/deposits?' . http_build_query($input));
 }
 
 $sPageTitle = gettext('Financial Reports');
@@ -89,8 +99,6 @@ if ($sReportType === '') {
           <option value="Pledge Reminders"><?= gettext('Pledge Reminders') ?></option>
           <option value="Voting Members"><?= gettext('Voting Members') ?></option>
           <option value="Zero Givers"><?= gettext('Zero Givers') ?></option>
-          <option value="Individual Deposit Report"><?= gettext('Individual Deposit Report') ?></option>
-          <option value="Advanced Deposit Report"><?= gettext('Advanced Deposit Report') ?></option>
         </select>
       </div>
       <div class="d-flex gap-2">
@@ -104,12 +112,9 @@ if ($sReportType === '') {
     $iCalYear = date('Y');
     // 2nd Pass - Display filters and other settings
     switch ($sReportType) {
-        case 'Zero Givers':             $action = 'Reports/ZeroGivers.php'; break;
-        case 'Pledge Family Summary':   $action = 'Reports/FamilyPledgeSummary.php'; break;
-        case 'Pledge Reminders':        $action = 'Reports/ReminderReport.php'; break;
-        case 'Voting Members':          $action = 'Reports/VotingMembers.php'; break;
-        case 'Individual Deposit Report': $action = 'Reports/PrintDeposit.php'; break;
-        case 'Advanced Deposit Report': $action = 'Reports/AdvancedDeposit.php'; break;
+        case 'Zero Givers':             $action = 'finance/reports/zero-givers/download'; break;
+        case 'Pledge Family Summary':   $action = 'finance/reports/family-pledge-summary/download'; break;
+        case 'Pledge Reminders':        $action = 'finance/reports/pledge-reminders/download'; break;
     }
     ?>
     <form method="post" action="<?= $action ?>">
@@ -119,7 +124,7 @@ if ($sReportType === '') {
 
     <?php
     // Filter by Classification and Families
-    if (in_array($sReportType, ['Pledge Reminders', 'Pledge Family Summary', 'Advanced Deposit Report'])) {
+    if (in_array($sReportType, ['Pledge Reminders', 'Pledge Family Summary'])) {
         $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence';
         $rsClassifications = RunQuery($sSQL); ?>
       <div class="mb-3">
@@ -177,7 +182,7 @@ if ($sReportType === '') {
       </div>
     <?php } ?>
 
-    <?php if (in_array($sReportType, ['Advanced Deposit Report', 'Zero Givers'])) :
+    <?php if ($sReportType === 'Zero Givers') :
         $today = date('Y-m-d');
         $startVal = $sDateStart !== '' ? $sDateStart : $today;
         $endVal = $sDateEnd !== '' ? $sDateEnd : $today;
@@ -192,54 +197,17 @@ if ($sReportType === '') {
           <input type="text" class="form-control date-picker" name="DateEnd" id="DateEnd" maxlength="10" value="<?= InputUtils::escapeHTML($endVal) ?>">
         </div>
       </div>
-      <?php if ($sReportType === 'Advanced Deposit Report') :
-          $depChecked = ($datetype !== 'Payment') ? 'checked' : '';
-          $payChecked = ($datetype === 'Payment') ? 'checked' : '';
-          ?>
-        <div class="mb-3">
-          <label class="form-label"><?= gettext('Apply Report Dates To') ?>:</label>
-          <div class="d-flex gap-3">
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="datetype" value="Deposit" id="datetypeDeposit" <?= $depChecked ?>>
-              <label class="form-check-label" for="datetypeDeposit"><?= gettext('Deposit Date (Default)') ?></label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="datetype" value="Payment" id="datetypePayment" <?= $payChecked ?>>
-              <label class="form-check-label" for="datetypePayment"><?= gettext('Payment Date') ?></label>
-            </div>
-          </div>
-        </div>
-      <?php endif; ?>
+
     <?php endif; ?>
 
-    <?php if (in_array($sReportType, ['Pledge Reminders', 'Pledge Family Summary', 'Voting Members'])) : ?>
+    <?php if (in_array($sReportType, ['Pledge Reminders', 'Pledge Family Summary'])) : ?>
       <div class="mb-3">
         <label class="form-label" for="FYID"><?= gettext('Fiscal Year') ?>:</label>
         <?php FiscalYearUtils::renderYearSelect('FYID', $iFYID); ?>
       </div>
     <?php endif; ?>
 
-    <?php if (in_array($sReportType, ['Individual Deposit Report', 'Advanced Deposit Report'])) :
-        $sSQL = 'SELECT dep_ID, dep_Date, dep_Type FROM deposit_dep ORDER BY dep_ID DESC LIMIT 0,200';
-        $rsDeposits = RunQuery($sSQL); ?>
-      <div class="mb-3">
-        <label class="form-label" for="deposit"><?= gettext('Filter by Deposit') ?>:</label>
-        <?php if ($sReportType !== 'Individual Deposit Report') : ?>
-          <small class="text-secondary d-block mb-1"><?= gettext('If deposit is selected, date criteria will be ignored.') ?></small>
-        <?php endif; ?>
-        <select class="form-select" name="deposit" id="deposit">
-          <?php if ($sReportType !== 'Individual Deposit Report') : ?>
-            <option value="0" selected><?= gettext('All deposits within date range') ?></option>
-          <?php endif; ?>
-          <?php while ($aRow = mysqli_fetch_array($rsDeposits)) {
-              extract($aRow);
-              echo '<option value="' . (int)$dep_ID . '">' . (int)$dep_ID . ' — ' . InputUtils::escapeHTML($dep_Date) . ' — ' . InputUtils::escapeHTML($dep_Type) . '</option>';
-          } ?>
-        </select>
-      </div>
-    <?php endif; ?>
-
-    <?php if (in_array($sReportType, ['Pledge Family Summary', 'Advanced Deposit Report', 'Pledge Reminders'])) :
+    <?php if (in_array($sReportType, ['Pledge Family Summary', 'Pledge Reminders'])) :
         $funds = DonationFundQuery::create()
             ->orderByActive()
             ->orderByName()
@@ -261,20 +229,6 @@ if ($sReportType === '') {
           <button type="button" id="addAllFunds" class="btn btn-sm btn-secondary"><?= gettext('Add All Funds') ?></button>
           <button type="button" id="clearAllFunds" class="btn btn-sm btn-secondary"><?= gettext('Clear All Funds') ?></button>
         </div>
-      </div>
-    <?php endif; ?>
-
-    <?php if ($sReportType === 'Advanced Deposit Report') : ?>
-      <div class="mb-3">
-        <label class="form-label"><?= gettext('Filter by Payment Type') ?>:</label>
-        <small class="text-secondary d-block mb-1"><?= gettext('Use Ctrl Key to select multiple') ?></small>
-        <select class="form-select" name="method[]" size="5" multiple>
-          <option value="0" selected><?= gettext('All Methods') ?></option>
-          <option value="CHECK"><?= gettext('Check') ?></option>
-          <option value="CASH"><?= gettext('Cash') ?></option>
-          <option value="CREDITCARD"><?= gettext('Credit Card') ?></option>
-          <option value="BANKDRAFT"><?= gettext('Bank Draft') ?></option>
-        </select>
       </div>
     <?php endif; ?>
 
@@ -321,54 +275,9 @@ if ($sReportType === '') {
           <?php endforeach; ?>
         </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label"><?= gettext('Remittance Slip') ?>:</label>
-        <div class="d-flex gap-3">
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="remittance" value="yes" id="remittanceYes">
-            <label class="form-check-label" for="remittanceYes"><?= gettext('Yes') ?></label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="remittance" value="no" id="remittanceNo" checked>
-            <label class="form-check-label" for="remittanceNo"><?= gettext('No') ?></label>
-          </div>
-        </div>
-      </div>
     <?php endif; ?>
 
-    <?php if ($sReportType === 'Advanced Deposit Report') : ?>
-      <div class="mb-3">
-        <label class="form-label"><?= gettext('Sort Data by') ?>:</label>
-        <div class="d-flex gap-3">
-          <?php foreach (['deposit' => gettext('Deposit'), 'fund' => gettext('Fund'), 'family' => gettext('Family')] as $val => $label) : ?>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="sort" value="<?= $val ?>" id="sort<?= $val ?>" <?= $val === 'deposit' ? 'checked' : '' ?>>
-              <label class="form-check-label" for="sort<?= $val ?>"><?= $label ?></label>
-            </div>
-          <?php endforeach; ?>
-        </div>
-      </div>
-      <div class="mb-3">
-        <label class="form-label"><?= gettext('Report Type') ?>:</label>
-        <div class="d-flex gap-3">
-          <?php foreach (['detail' => gettext('All Data'), 'medium' => gettext('Moderate Detail'), 'summary' => gettext('Summary Data')] as $val => $label) : ?>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="detail_level" value="<?= $val ?>" id="detail<?= $val ?>" <?= $val === 'detail' ? 'checked' : '' ?>>
-              <label class="form-check-label" for="detail<?= $val ?>"><?= $label ?></label>
-            </div>
-          <?php endforeach; ?>
-        </div>
-      </div>
-    <?php endif; ?>
-
-    <?php if ($sReportType === 'Voting Members') : ?>
-      <div class="mb-3">
-        <label class="form-label" for="RequireDonationYears"><?= gettext('Voting members must have made a donation within this many years (0 to not require a donation)') ?>:</label>
-        <input class="form-control field-w-120" name="RequireDonationYears" id="RequireDonationYears" type="text" value="0">
-      </div>
-    <?php endif; ?>
-
-    <?php if (in_array($sReportType, ['Individual Deposit Report', 'Advanced Deposit Report', 'Zero Givers'])) : ?>
+    <?php if ($sReportType === 'Zero Givers') : ?>
       <div class="mb-3">
         <label class="form-label"><?= gettext('Output Method') ?>:</label>
         <div class="d-flex gap-3">

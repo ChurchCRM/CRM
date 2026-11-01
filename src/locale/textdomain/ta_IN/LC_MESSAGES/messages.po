@@ -932,14 +932,6 @@ msgid "Zero Givers"
 msgstr "ஜீரோ கொடுப்பவர்கள்"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "தனிப்பட்ட வைப்பு அறிக்கை"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "மேம்பட்ட வைப்பு அறிக்கை"
-
-#: 
 msgid "Next"
 msgstr "அடுத்தது"
 
@@ -963,10 +955,6 @@ msgid "Apply Report Dates To"
 msgstr "அறிக்கை தேதிகளுக்கு இங்கு விண்ணப்பிக்கவும்"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "டெபாசிட் தேதி (இயல்புநிலை)"
-
-#: 
 msgid "Payment Date"
 msgstr "கட்டணம் தேதி"
 
@@ -987,10 +975,6 @@ msgstr "அனைத்து வைப்புகளும் தேதி வ
 #, fuzzy
 msgid "Filter by Payment Type"
 msgstr "கட்டண வகையின்படி வடிகட்டவும்"
-
-#: 
-msgid "All Methods"
-msgstr "அனைத்து முறைகள்"
 
 #: 
 msgid "Check"
@@ -5551,10 +5535,6 @@ msgid "Funds"
 msgstr "நிதிகள்"
 
 #: 
-msgid "Generate Report"
-msgstr "அறிக்கையை உருவாக்குதல்"
-
-#: 
 msgid "Payments"
 msgstr "கொடுப்பனவுகள்"
 
@@ -6252,10 +6232,6 @@ msgid "Current Deposit"
 msgstr "நடப்பு வைப்பு"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "தேதி, நிதி, குடும்பம் மற்றும் கட்டண முறை மூலம் வடிகட்டுவதன் மூலம் தனிப்பயனாக்கக்கூடிய அறிக்கை."
-
-#: 
 msgid "Day"
 msgstr "நாள்"
 
@@ -6266,10 +6242,6 @@ msgstr "டிசம்பர்"
 #: 
 msgid "Deposit Statistics"
 msgstr "வைப்புத்தொகை புள்ளிவிவரங்கள்"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "ஒற்றை வைப்பு சீட்டின் விரிவான விவரம். "
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6370,10 +6342,6 @@ msgstr "ஜூன்"
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "உங்கள் கணினியை அமைத்து, பயன்படுத்தத் தயாராக வைப்போம்"
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "வரலாறு மற்றும் உறுப்பினர் அளவுகோல்களைக் கொடுத்து வாக்களிக்கத் தகுதியுள்ள உறுப்பினர்களைப் பட்டியலிடுங்கள்."
 
 #: 
 msgid "Location"
@@ -9810,10 +9778,6 @@ msgstr "குழு உறுப்பினர்கள், பாத்தி
 #: 
 msgid "View transaction details for a pledge payment"
 msgstr "நிதி உறுதிமொழி பணம் செலுத்தலின் பரிவர்த்தனை விவரங்களைக் காண்"
-
-#: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "வாக்களிக்கும் உறுப்பினர்கள் இத்தனை ஆண்டுகளுக்குள் ஒரு காணிக்கை அளித்திருக்க வேண்டும் (காணிக்கை தேவையில்லை என்றால் 0)"
 
 #: 
 msgid "We could not find the family you were looking for."

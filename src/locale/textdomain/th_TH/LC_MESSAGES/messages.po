@@ -937,14 +937,6 @@ msgid "Zero Givers"
 msgstr "ผู้ให้ศูนย์"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "รายงานการฝากบุคคล"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "รายงานการฝากขั้นสูง"
-
-#: 
 msgid "Next"
 msgstr "ถัดไป"
 
@@ -965,10 +957,6 @@ msgid "Apply Report Dates To"
 msgstr "ใช้วันที่รายงานกับ"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "วันที่ฝาก (ค่าเริ่มต้น)"
-
-#: 
 msgid "Payment Date"
 msgstr "วันที่ชำระเงิน"
 
@@ -987,10 +975,6 @@ msgstr "การฝากทั้งหมดในช่วงวันที
 #: 
 msgid "Filter by Payment Type"
 msgstr "กรองตามประเภทการชำระเงิน"
-
-#: 
-msgid "All Methods"
-msgstr "ทุกวิธี"
 
 #: 
 msgid "Check"
@@ -5529,10 +5513,6 @@ msgid "Funds"
 msgstr "กองทุน"
 
 #: 
-msgid "Generate Report"
-msgstr "สร้างรายงาน"
-
-#: 
 msgid "Payments"
 msgstr "การชำระเงิน"
 
@@ -6224,10 +6204,6 @@ msgid "Current Deposit"
 msgstr "การฝากปัจจุบัน"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "รายงานที่ปรับแต่งได้พร้อมการกรองตามวันที่ กองทุน ครอบครัว และวิธีการชำระเงิน"
-
-#: 
 msgid "Day"
 msgstr "วัน"
 
@@ -6238,10 +6214,6 @@ msgstr "ธ.ค."
 #: 
 msgid "Deposit Statistics"
 msgstr "สถิติการฝาก"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "รายละเอียดของใบนำฝากเดียว"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6342,10 +6314,6 @@ msgstr "มิ.ย."
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "มาตั้งค่าระบบของคุณและพร้อมใช้งาน"
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "รายการสมาชิกที่มีสิทธิ์ลงคะแนนตามประวัติการให้และเกณฑ์สมาชิกภาพ"
 
 #: 
 msgid "Location"
@@ -9774,10 +9742,6 @@ msgstr "ดูสมาชิกกลุ่ม บทบาท และคุ�
 #: 
 msgid "View transaction details for a pledge payment"
 msgstr "ดูรายละเอียดธุรกรรมสำหรับการถวายตามคำปฏิญาณ"
-
-#: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "สมาชิกผู้มีสิทธิ์ลงคะแนนต้องมีการถวายภายในจำนวนปีนี้ (0 หมายถึงไม่ต้องมีการถวาย)"
 
 #: 
 msgid "We could not find the family you were looking for."

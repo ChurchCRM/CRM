@@ -932,14 +932,6 @@ msgid "Zero Givers"
 msgstr "Μηδενικοί Δωρητές"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Ατομική Έκθεση Κατάθεσης"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Σύνθετη αναφορά κατάθεσης"
-
-#: 
 msgid "Next"
 msgstr "Επόμενο"
 
@@ -963,10 +955,6 @@ msgid "Apply Report Dates To"
 msgstr "Εφαρμογή ημερομηνιών αναφοράς σε"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "Ημερομηνία κατάθεσης (Προεπιλογή)"
-
-#: 
 msgid "Payment Date"
 msgstr "Ημερομηνία πληρωμής"
 
@@ -987,10 +975,6 @@ msgstr "Όλες οι καταθέσεις εντός του εύρους ημε
 #, fuzzy
 msgid "Filter by Payment Type"
 msgstr "Φιλτράρισμα κατά τύπο πληρωμής"
-
-#: 
-msgid "All Methods"
-msgstr "Όλες οι Μέθοδοι"
 
 #: 
 msgid "Check"
@@ -5552,10 +5536,6 @@ msgid "Funds"
 msgstr "Ταμεία / Πόροι"
 
 #: 
-msgid "Generate Report"
-msgstr "Δημιουργία αναφοράς"
-
-#: 
 msgid "Payments"
 msgstr "Πληρωμές"
 
@@ -6249,10 +6229,6 @@ msgid "Current Deposit"
 msgstr "Τρέχουσα κατάθεση"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Προσαρμόσιμη αναφορά με φιλτράρισμα ανά ημερομηνία, ταμείο, οικογένεια και τρόπο πληρωμής."
-
-#: 
 msgid "Day"
 msgstr "Ημέρα"
 
@@ -6263,10 +6239,6 @@ msgstr "Δεκ"
 #: 
 msgid "Deposit Statistics"
 msgstr "Στατιστικά Κατάθεσης"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Λεπτομερής ανάλυση ενός μεμονωμένου παραστατικού κατάθεσης."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6367,10 +6339,6 @@ msgstr "Ιουν"
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "Ας ρυθμίσουμε το σύστημά σας για χρήση"
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "Λίστα μελών με δικαίωμα ψήφου βάσει ιστορικού προσφορών και κριτηρίων μέλους."
 
 #: 
 msgid "Location"
@@ -9804,10 +9772,6 @@ msgstr "Προβολή μελών ομάδας, ρόλων και ιδιοτήτ
 #: 
 msgid "View transaction details for a pledge payment"
 msgstr "Προβολή λεπτομερειών συναλλαγής για πληρωμή οικονομικής δέσμευσης"
-
-#: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "Τα μέλη με δικαίωμα ψήφου πρέπει να έχουν κάνει προσφορά εντός αυτών των ετών (0 για να μην απαιτείται προσφορά)"
 
 #: 
 msgid "We could not find the family you were looking for."

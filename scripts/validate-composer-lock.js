@@ -5,8 +5,8 @@ const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
 
-function validateComposerLock(root, staged = false) {
-    const files = ['src/composer.json', 'src/composer.lock'];
+function validateComposerLock(root, staged = false, relative = 'src') {
+    const files = [`${relative}/composer.json`, `${relative}/composer.lock`];
     if (staged) {
         const changed = execFileSync('git', ['diff', '--cached', '--name-only', '--', ...files], { cwd: root, encoding: 'utf8' });
         if (!changed.trim()) {
@@ -28,7 +28,7 @@ function validateComposerLock(root, staged = false) {
         ], { cwd: directory, encoding: 'utf8', env: { ...process.env, COMPOSER_DISABLE_NETWORK: '1' } });
         if (result.status !== 0) {
             process.stderr.write(result.error ? `${result.error.message}\n` : `${result.stdout}${result.stderr}`);
-            process.stderr.write('Refresh with composer update --lock --no-install --working-dir=src, then stage both Composer files.\n');
+            process.stderr.write(`Refresh with composer update --lock --no-install --working-dir=${relative}, then stage both Composer files.\n`);
         }
         return result.status ?? 1;
     } finally {
@@ -38,7 +38,8 @@ function validateComposerLock(root, staged = false) {
 
 if (require.main === module) {
     try {
-        process.exitCode = validateComposerLock(path.join(__dirname, '..'), process.argv.includes('--staged'));
+        const results = ['src', 'tests/php'].map((directory) => validateComposerLock(path.join(__dirname, '..'), process.argv.includes('--staged'), directory));
+        process.exitCode = results.some((status) => status !== 0) ? 1 : 0;
     } catch (error) {
         console.error(error.message);
         process.exitCode = 1;

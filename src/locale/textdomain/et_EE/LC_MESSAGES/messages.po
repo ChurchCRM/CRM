@@ -932,14 +932,6 @@ msgid "Zero Givers"
 msgstr "Null andjad"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Individuaalse sissetuleku aruanne"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Täpsem sissetulekuaruanne"
-
-#: 
 msgid "Next"
 msgstr "Järgmine"
 
@@ -963,10 +955,6 @@ msgid "Apply Report Dates To"
 msgstr "Rakenda aruande kuupäevad"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "Sissetuleku kuupäev (vaikimisi)"
-
-#: 
 msgid "Payment Date"
 msgstr "Makse kuupäev"
 
@@ -987,10 +975,6 @@ msgstr "Kõik sissetulekud ajavahemikus"
 #, fuzzy
 msgid "Filter by Payment Type"
 msgstr "Filtreeri makse tüübi järgi"
-
-#: 
-msgid "All Methods"
-msgstr "Kõik meetodid"
 
 #: 
 msgid "Check"
@@ -5551,10 +5535,6 @@ msgid "Funds"
 msgstr "Vahendid"
 
 #: 
-msgid "Generate Report"
-msgstr "Loo aruanne"
-
-#: 
 msgid "Payments"
 msgstr "Maksed"
 
@@ -6248,10 +6228,6 @@ msgid "Current Deposit"
 msgstr "Praegune deposiit"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Kohandatav aruanne kuupäeva, fondi, perekonna ja maksemeetodi järgi filtreerimisega."
-
-#: 
 msgid "Day"
 msgstr "Päev"
 
@@ -6262,10 +6238,6 @@ msgstr "Det"
 #: 
 msgid "Deposit Statistics"
 msgstr "Deposiidi statistika"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Ühe deposiidi lehega üksikasjalik jaotus."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6366,10 +6338,6 @@ msgstr "Jun"
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "Kohandame oma süsteemi kasutamiseks valmis"
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "Loetelu liikmetest, kes on hääletamisel lubatud andmise ajaloo ja liikmekriteeriumite alusel."
 
 #: 
 msgid "Location"
@@ -9803,10 +9771,6 @@ msgstr "Vaadake grupi liikmeid, rolle ja omadusi"
 #: 
 msgid "View transaction details for a pledge payment"
 msgstr "Vaadake lubaduse makse tehingu üksikasju"
-
-#: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "Hääletavad liikmed peavad olema annetanud selle arvu aastate jooksul (0, et annetust mitte nõuda)"
 
 #: 
 msgid "We could not find the family you were looking for."
