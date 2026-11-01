@@ -2050,20 +2050,8 @@ msgid "Liaison"
 msgstr "Liaison"
 
 #: 
-msgid "City, State, Zip"
-msgstr "City, State, Zip"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Send nyhetsbrev"
-
-#: 
-msgid "Member Name"
-msgstr "Medlemsnavn"
-
-#: 
-msgid "Adult/Child"
-msgstr "Voksen / barn"
 
 #: 
 #, fuzzy

@@ -1973,20 +1973,8 @@ msgid "Liaison"
 msgstr "Hubungan"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Kota, Negara Bagian, Zip"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Kirim Newsletter"
-
-#: 
-msgid "Member Name"
-msgstr "Nama anggota"
-
-#: 
-msgid "Adult/Child"
-msgstr "Orang dewasa / anak-anak"
 
 #: 
 msgid "Cell Phone"

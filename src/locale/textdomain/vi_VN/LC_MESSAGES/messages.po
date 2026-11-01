@@ -1983,20 +1983,8 @@ msgid "Liaison"
 msgstr "Liên lạc"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Thành phố, Tiểu bang, Zip"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Gửi bản tin"
-
-#: 
-msgid "Member Name"
-msgstr "Tên thành viên"
-
-#: 
-msgid "Adult/Child"
-msgstr "Người lớn / Trẻ em"
 
 #: 
 msgid "Cell Phone"

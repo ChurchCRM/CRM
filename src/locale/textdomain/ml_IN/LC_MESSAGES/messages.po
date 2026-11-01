@@ -1955,20 +1955,8 @@ msgid "Liaison"
 msgstr "ബന്ധം"
 
 #: 
-msgid "City, State, Zip"
-msgstr "നഗരം, സംസ്ഥാനം, പിൻകോഡ്"
-
-#: 
 msgid "Send Newsletter"
 msgstr "ന്യൂസ്‌ലെറ്റർ അയക്കുക"
-
-#: 
-msgid "Member Name"
-msgstr "അംഗ നാമം"
-
-#: 
-msgid "Adult/Child"
-msgstr "മുതിർന്നവർ/കുട്ടി"
 
 #: 
 msgid "Cell Phone"

@@ -1955,20 +1955,8 @@ msgid "Liaison"
 msgstr "Liaison"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Stad, Provincie, Postcode"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Stuur Nieuwsbrief"
-
-#: 
-msgid "Member Name"
-msgstr "Naam van Lid"
-
-#: 
-msgid "Adult/Child"
-msgstr "Volwassene / kind"
 
 #: 
 msgid "Cell Phone"

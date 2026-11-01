@@ -2038,20 +2038,8 @@ msgid "Liaison"
 msgstr "Freundschaft"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Stadt, Bundesland, Postleitzahl"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Newsletter zuschicken"
-
-#: 
-msgid "Member Name"
-msgstr "Name des Mitglieds"
-
-#: 
-msgid "Adult/Child"
-msgstr "Erwachsener/Kind"
 
 #: 
 #, fuzzy

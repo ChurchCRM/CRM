@@ -1971,20 +1971,8 @@ msgid "Liaison"
 msgstr "አገናኝ"
 
 #: 
-msgid "City, State, Zip"
-msgstr "ከተማ፣ ግዛት፣ ዚፕ"
-
-#: 
 msgid "Send Newsletter"
 msgstr "ጋዜጣ ላክ"
-
-#: 
-msgid "Member Name"
-msgstr "የአባል ስም"
-
-#: 
-msgid "Adult/Child"
-msgstr "አዋቂ/ልጅ"
 
 #: 
 msgid "Cell Phone"

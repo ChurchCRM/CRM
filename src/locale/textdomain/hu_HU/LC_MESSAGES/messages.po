@@ -2004,20 +2004,8 @@ msgid "Liaison"
 msgstr "Kapcsolat"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Város, Állam, Zip"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Küldés Hírlevél"
-
-#: 
-msgid "Member Name"
-msgstr "Felhasználói név"
-
-#: 
-msgid "Adult/Child"
-msgstr "Felnőtt / Gyermek"
 
 #: 
 #, fuzzy

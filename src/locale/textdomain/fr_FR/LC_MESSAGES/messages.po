@@ -1969,20 +1969,8 @@ msgid "Liaison"
 msgstr "Liaison"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Ville, État, Code postal"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Envoyer une Lettre de Nouvelles"
-
-#: 
-msgid "Member Name"
-msgstr "Nom du Membre"
-
-#: 
-msgid "Adult/Child"
-msgstr "Adulte / Enfant"
 
 #: 
 msgid "Cell Phone"

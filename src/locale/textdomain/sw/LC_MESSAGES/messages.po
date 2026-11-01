@@ -1972,20 +1972,8 @@ msgid "Liaison"
 msgstr "Uhusiano"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Jiji, Jimbo, Zip"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Tuma Jarida"
-
-#: 
-msgid "Member Name"
-msgstr "Jina la Mwanachama"
-
-#: 
-msgid "Adult/Child"
-msgstr "Mtu mzima/Mtoto"
 
 #: 
 msgid "Cell Phone"

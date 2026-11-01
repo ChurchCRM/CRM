@@ -1961,20 +1961,8 @@ msgid "Liaison"
 msgstr "Yhteyshenkilö"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Kaupunki, lääni, postinumero"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Lähetä uutiskirje"
-
-#: 
-msgid "Member Name"
-msgstr "Jäsenen nimi"
-
-#: 
-msgid "Adult/Child"
-msgstr "Aikuinen/Lapsi"
 
 #: 
 msgid "Cell Phone"

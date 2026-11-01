@@ -1958,20 +1958,8 @@ msgid "Liaison"
 msgstr "संपर्क सूत्र"
 
 #: 
-msgid "City, State, Zip"
-msgstr "शहर, राज्य, ज़िप"
-
-#: 
 msgid "Send Newsletter"
 msgstr "न्यूज़लेटर भेजें"
-
-#: 
-msgid "Member Name"
-msgstr "सदस्य का नाम"
-
-#: 
-msgid "Adult/Child"
-msgstr "वयस्क/बच्चा"
 
 #: 
 msgid "Cell Phone"

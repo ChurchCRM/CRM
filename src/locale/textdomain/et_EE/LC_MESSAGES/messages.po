@@ -1972,20 +1972,8 @@ msgid "Liaison"
 msgstr "Suhe"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Linn, osariik, indeks"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Saada infoleht"
-
-#: 
-msgid "Member Name"
-msgstr "Liikme nimi"
-
-#: 
-msgid "Adult/Child"
-msgstr "Täiskasvanu / laps"
 
 #: 
 msgid "Cell Phone"

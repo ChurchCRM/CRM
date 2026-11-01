@@ -1966,20 +1966,8 @@ msgid "Liaison"
 msgstr "సంపర్కం"
 
 #: 
-msgid "City, State, Zip"
-msgstr "నగరం, రాష్ట్రం, పిన్ కోడ్"
-
-#: 
 msgid "Send Newsletter"
 msgstr "వార్తాలేఖ పంపండి"
-
-#: 
-msgid "Member Name"
-msgstr "సభ్యుని పేరు"
-
-#: 
-msgid "Adult/Child"
-msgstr "వయోజన/పిల్లలు"
 
 #: 
 msgid "Cell Phone"

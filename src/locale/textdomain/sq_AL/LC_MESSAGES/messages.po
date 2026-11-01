@@ -1974,20 +1974,8 @@ msgid "Liaison"
 msgstr "Ndërlidhje"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Qyteti, Shteti, Zip"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Dërgo lajme me email"
-
-#: 
-msgid "Member Name"
-msgstr "Anëtar Emri"
-
-#: 
-msgid "Adult/Child"
-msgstr "Adult / Fëmija"
 
 #: 
 #, fuzzy

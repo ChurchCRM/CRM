@@ -1972,20 +1972,8 @@ msgid "Liaison"
 msgstr "담당자"
 
 #: 
-msgid "City, State, Zip"
-msgstr "시/도, 우편번호"
-
-#: 
 msgid "Send Newsletter"
 msgstr "소식지 발송"
-
-#: 
-msgid "Member Name"
-msgstr "이름"
-
-#: 
-msgid "Adult/Child"
-msgstr "성인/어린이"
 
 #: 
 msgid "Cell Phone"
