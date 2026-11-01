@@ -1970,20 +1970,8 @@ msgid "Liaison"
 msgstr "اتصال"
 
 #: 
-msgid "City, State, Zip"
-msgstr "رمز ولاية المدينة"
-
-#: 
 msgid "Send Newsletter"
 msgstr "إرسال النشرة الإخبارية"
-
-#: 
-msgid "Member Name"
-msgstr "اسم العضو"
-
-#: 
-msgid "Adult/Child"
-msgstr "تعليم الكبار / الأطفال"
 
 #: 
 msgid "Cell Phone"

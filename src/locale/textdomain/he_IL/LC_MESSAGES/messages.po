@@ -1972,20 +1972,8 @@ msgid "Liaison"
 msgstr "איש קשר"
 
 #: 
-msgid "City, State, Zip"
-msgstr "עיר, מדינה, מיקוד"
-
-#: 
 msgid "Send Newsletter"
 msgstr "שלח עלון"
-
-#: 
-msgid "Member Name"
-msgstr "שם החבר"
-
-#: 
-msgid "Adult/Child"
-msgstr "מבוגר/ילד"
 
 #: 
 msgid "Cell Phone"

@@ -2030,20 +2030,8 @@ msgid "Liaison"
 msgstr "联络"
 
 #: 
-msgid "City, State, Zip"
-msgstr "市，州，邮政编码"
-
-#: 
 msgid "Send Newsletter"
 msgstr "发送通讯"
-
-#: 
-msgid "Member Name"
-msgstr "会员名称"
-
-#: 
-msgid "Adult/Child"
-msgstr "成人/儿童"
 
 #: 
 #, fuzzy

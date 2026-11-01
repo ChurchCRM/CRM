@@ -1955,20 +1955,8 @@ msgid "Liaison"
 msgstr "Tagaugnay"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Lungsod, Estado, Zip"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Magpadala ng Newsletter"
-
-#: 
-msgid "Member Name"
-msgstr "Pangalan ng Miyembro"
-
-#: 
-msgid "Adult/Child"
-msgstr "Matanda/Bata"
 
 #: 
 msgid "Cell Phone"

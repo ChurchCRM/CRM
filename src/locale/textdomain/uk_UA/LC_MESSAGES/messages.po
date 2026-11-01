@@ -1972,20 +1972,8 @@ msgid "Liaison"
 msgstr "Зв'язок"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Місто, штат, поштовий індекс"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Надіслати бюлетень"
-
-#: 
-msgid "Member Name"
-msgstr "Ім'я учасника"
-
-#: 
-msgid "Adult/Child"
-msgstr "Дорослий / дитина"
 
 #: 
 msgid "Cell Phone"

@@ -1972,20 +1972,8 @@ msgid "Liaison"
 msgstr "Skakeling"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Poskode"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Stuur nuusbrief"
-
-#: 
-msgid "Member Name"
-msgstr "Lidnaam"
-
-#: 
-msgid "Adult/Child"
-msgstr "Volwasse / kind"
 
 #: 
 msgid "Cell Phone"

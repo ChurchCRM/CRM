@@ -1957,20 +1957,8 @@ msgid "Liaison"
 msgstr "Relación"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Ciudad, Estado, Código Postal"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Enviar Newsletter"
-
-#: 
-msgid "Member Name"
-msgstr "Nombre de miembro"
-
-#: 
-msgid "Adult/Child"
-msgstr "Adulto/Pequeño"
 
 #: 
 msgid "Cell Phone"

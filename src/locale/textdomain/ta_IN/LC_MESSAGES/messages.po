@@ -1972,20 +1972,8 @@ msgid "Liaison"
 msgstr "தொடர்பு"
 
 #: 
-msgid "City, State, Zip"
-msgstr "நகரம், மாநிலம், ஜிப்"
-
-#: 
 msgid "Send Newsletter"
 msgstr "செய்திமடல் அனுப்பவும்"
-
-#: 
-msgid "Member Name"
-msgstr "உறுப்பினர் பெயர்"
-
-#: 
-msgid "Adult/Child"
-msgstr "பெரியவர்/குழந்தை"
 
 #: 
 msgid "Cell Phone"

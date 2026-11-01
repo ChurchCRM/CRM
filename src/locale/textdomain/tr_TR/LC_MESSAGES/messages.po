@@ -1972,20 +1972,8 @@ msgid "Liaison"
 msgstr "İrtibat"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Şehir posta kodu"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Bülten gönder"
-
-#: 
-msgid "Member Name"
-msgstr "Üye adı"
-
-#: 
-msgid "Adult/Child"
-msgstr "Yetişkin/çocuk"
 
 #: 
 msgid "Cell Phone"

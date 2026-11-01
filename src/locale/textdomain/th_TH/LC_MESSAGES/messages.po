@@ -1967,20 +1967,8 @@ msgid "Liaison"
 msgstr "ผู้ประสานงาน"
 
 #: 
-msgid "City, State, Zip"
-msgstr "เมือง รัฐ รหัสไปรษณีย์"
-
-#: 
 msgid "Send Newsletter"
 msgstr "ส่งจดหมายข่าว"
-
-#: 
-msgid "Member Name"
-msgstr "ชื่อสมาชิก"
-
-#: 
-msgid "Adult/Child"
-msgstr "ผู้ใหญ่/เด็ก"
 
 #: 
 msgid "Cell Phone"

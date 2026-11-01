@@ -2034,20 +2034,8 @@ msgid "Liaison"
 msgstr "聯絡"
 
 #: 
-msgid "City, State, Zip"
-msgstr "市，州，郵政編碼"
-
-#: 
 msgid "Send Newsletter"
 msgstr "發送通訊"
-
-#: 
-msgid "Member Name"
-msgstr "會員名稱"
-
-#: 
-msgid "Adult/Child"
-msgstr "成人/兒童"
 
 #: 
 #, fuzzy

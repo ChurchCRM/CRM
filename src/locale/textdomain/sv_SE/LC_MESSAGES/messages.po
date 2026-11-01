@@ -2052,20 +2052,8 @@ msgid "Liaison"
 msgstr "Förknippat med"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Stad, län, postkod"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Skicka nyhetsbrev"
-
-#: 
-msgid "Member Name"
-msgstr "Medelmmar namn"
-
-#: 
-msgid "Adult/Child"
-msgstr "Vuxen/barn"
 
 #: 
 #, fuzzy

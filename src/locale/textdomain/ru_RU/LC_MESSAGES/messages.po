@@ -2026,20 +2026,8 @@ msgid "Liaison"
 msgstr "Связь"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Город, Район, Страна"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Отправить бюллетень"
-
-#: 
-msgid "Member Name"
-msgstr "Имя Пользователя"
-
-#: 
-msgid "Adult/Child"
-msgstr "Взрослый / ребенок"
 
 #: 
 #, fuzzy

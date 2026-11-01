@@ -1978,20 +1978,8 @@ msgid "Liaison"
 msgstr "Collegamento"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Città stato CAP"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Invia Newsletter"
-
-#: 
-msgid "Member Name"
-msgstr "Nome del membro"
-
-#: 
-msgid "Adult/Child"
-msgstr "Adulto / Bambino"
 
 #: 
 msgid "Cell Phone"

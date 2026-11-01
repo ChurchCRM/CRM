@@ -46,10 +46,6 @@ msgid "Fall"
 msgstr "Autumn"
 
 #: 
-msgid "City, State, Zip"
-msgstr "City, Post Code"
-
-#: 
 msgid "Cell Phone"
 msgstr "Mobile Phone"
 

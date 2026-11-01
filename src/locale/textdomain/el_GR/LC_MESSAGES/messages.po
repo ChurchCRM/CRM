@@ -1972,20 +1972,8 @@ msgid "Liaison"
 msgstr "Σύνδεσμος"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Πόλη, Πολιτεία, Τ.Κ"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Αποστολή ενημερωτικού δελτίου"
-
-#: 
-msgid "Member Name"
-msgstr "Ονομα μέλους"
-
-#: 
-msgid "Adult/Child"
-msgstr "Ενήλικος/Παιδί"
 
 #: 
 msgid "Cell Phone"

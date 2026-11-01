@@ -1955,20 +1955,8 @@ msgid "Liaison"
 msgstr "Veza"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Grad, Županija, Poštanski broj"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Pošalji bilten"
-
-#: 
-msgid "Member Name"
-msgstr "Ime člana"
-
-#: 
-msgid "Adult/Child"
-msgstr "Odrasli/Dijete"
 
 #: 
 msgid "Cell Phone"

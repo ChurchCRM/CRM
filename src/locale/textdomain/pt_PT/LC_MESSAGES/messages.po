@@ -2056,20 +2056,8 @@ msgid "Liaison"
 msgstr "Ligação"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Cidade, Estado, CEP"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Enviar Newsletter"
-
-#: 
-msgid "Member Name"
-msgstr "Nome do Membro"
-
-#: 
-msgid "Adult/Child"
-msgstr "Adulto/Criança"
 
 #: 
 #, fuzzy
