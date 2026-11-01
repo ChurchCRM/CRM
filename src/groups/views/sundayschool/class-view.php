@@ -138,9 +138,17 @@ if ($bCanManageGroups) {
                 <a class="dropdown-item" id="reportClassList" href="<?= $sRootPath ?>/groups/sundayschool/reports/class-list?GroupID=<?= $iGroupId ?>" target="_blank" rel="noopener">
                     <i class="fa-solid fa-list me-2"></i><?= gettext('Class List') ?>
                 </a>
-                <a class="dropdown-item" id="reportPhotoBook" href="<?= $sRootPath ?>/groups/sundayschool/reports/photo-book?GroupID=<?= $iGroupId ?>" target="_blank" rel="noopener">
+                <a class="dropdown-item" id="reportPhotoBook" href="<?= $sRootPath ?>/groups/reports/photo-book?GroupID=<?= $iGroupId ?>" target="_blank" rel="noopener">
                     <i class="fa-solid fa-book me-2"></i><?= gettext('PhotoBook') ?>
                 </a>
+                <?php if ($bCanManageGroups): ?>
+                <form method="POST" action="<?= $sRootPath ?>/groups/reports">
+                    <input type="hidden" name="GroupID" value="<?= (int) $iGroupId ?>">
+                    <button type="submit" class="dropdown-item">
+                        <i class="fa-solid fa-address-book me-2"></i><?= gettext('Group Directory') ?>
+                    </button>
+                </form>
+                <?php endif; ?>
             </div>
         </div>
         <a class="btn btn-ghost-info" href="<?= $sRootPath ?>/people/map?groupId=<?= $iGroupId ?>">

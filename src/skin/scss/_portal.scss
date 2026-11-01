@@ -206,12 +206,6 @@ html {
     text-decoration: none;
 }
 
-// Icons differ in width; a fixed box keeps the labels in one column.
-.portal-account-item > i {
-    flex: 0 0 1.25em;
-    text-align: center;
-}
-
 .portal-account-item:hover,
 .portal-account-item:focus-visible {
     background-color: var(--portal-surface-alt);
@@ -351,7 +345,8 @@ html {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-block: 1rem 0;
+    margin-block-start: 1rem;
+    margin-block-end: 0;
 }
 
 // Avatars --------------------------------------------------------------------
@@ -397,6 +392,15 @@ html {
 .portal-detail-list dd {
     margin: 0 0 0.75rem;
     overflow-wrap: anywhere;
+}
+
+.portal-detail-list:has(+ .portal-action-row) dd:last-of-type,
+.portal-detail-list:has(+ .portal-member-list) dd:last-of-type {
+    margin-block-end: 0;
+}
+
+.portal-detail-list + .portal-member-list {
+    margin-block-start: 1rem;
 }
 
 // Compact variant for a home-page card: the label stays above its value at
@@ -469,7 +473,7 @@ html {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    padding-block: 0.5rem;
+    padding-block: 0.75rem;
     border-block-end: 1px solid var(--portal-border);
 }
 
@@ -477,10 +481,20 @@ html {
     border-block-end: 0;
 }
 
+// The signed-in member. The fill extends into the card padding; the matching
+// padding keeps this row's photo lined up with the others. The block margin
+// keeps the fill off the rows above and below.
 .portal-member.is-self {
-    background-color: var(--portal-surface-alt);
+    margin-block: 0.35rem;
+    margin-inline: -0.75rem;
+    padding-inline: 0.75rem;
+    border-block-end: 0;
     border-radius: var(--portal-radius);
-    padding-inline: 0.5rem;
+    background-color: var(--portal-surface-alt);
+}
+
+.portal-member:has(+ .portal-member.is-self) {
+    border-block-end: 0;
 }
 
 .portal-member-text {
@@ -496,14 +510,6 @@ html {
 .portal-member-role {
     color: var(--portal-muted);
     font-size: 0.875rem;
-}
-
-.portal-member-contact {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.125rem 0.75rem;
-    font-size: 0.875rem;
-    overflow-wrap: anywhere;
 }
 
 .portal-member-badge {
@@ -587,7 +593,7 @@ textarea.portal-input {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-block-start: 0.5rem;
+    margin-block-start: 1rem;
 }
 
 .portal-choice {
@@ -600,22 +606,6 @@ textarea.portal-input {
 .portal-choice input {
     inline-size: 1.15rem;
     block-size: 1.15rem;
-}
-
-// Member sign-in ---------------------------------------------------------------
-
-.portal-signin {
-    inline-size: 100%;
-    max-inline-size: 30rem;
-    margin-inline: auto;
-}
-
-// Two classes: the core bundle caps `input[type=text]` at 100%, which outranks one.
-.portal-input.portal-signin-code {
-    max-inline-size: 12rem;
-    font-size: 1.5rem;
-    letter-spacing: 0.3em;
-    font-variant-numeric: tabular-nums;
 }
 
 // Dialogs --------------------------------------------------------------------
@@ -631,6 +621,10 @@ textarea.portal-input {
 
 .portal-dialog::backdrop {
     background-color: rgba(0, 0, 0, 0.5);
+}
+
+.portal-body .modal-footer {
+    gap: 0.5rem;
 }
 
 // Flash ----------------------------------------------------------------------
@@ -810,16 +804,6 @@ textarea.portal-input {
     filter: none;
 }
 
-.portal-button-danger {
-    background-color: var(--portal-danger);
-    color: var(--portal-danger-contrast);
-}
-
-.portal-button-danger:hover,
-.portal-button-danger:focus-visible {
-    color: var(--portal-danger-contrast);
-}
-
 // Footer ---------------------------------------------------------------------
 
 .portal-footer {
@@ -837,13 +821,20 @@ textarea.portal-input {
     gap: 0.5rem;
 }
 
+.portal-footer-church {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 1rem;
+    row-gap: 0.35rem;
+}
+
 .portal-footer-church-name {
     font-weight: 600;
     color: var(--portal-text);
 }
 
 .portal-footer-detail {
-    margin-inline-start: 0.75rem;
     color: inherit;
 }
 
@@ -972,10 +963,18 @@ textarea.portal-input {
 }
 
 // FullCalendar emits hashed class names; `headerToolbarClass` in
-// portal-calendar.ts is the only stable hook for its 34px toolbar buttons.
+// portal-calendar.ts is the only stable hook for its toolbar buttons.
+// Adjacent buttons in a group share an edge. A gap and a full radius on
+// each one keeps prev/next and Month/Week/List from reading as one control.
 .portal-fc-toolbar button {
     min-block-size: 44px;
     min-inline-size: 44px;
+    margin: 0;
+    border-radius: var(--portal-radius);
+}
+
+.portal-fc-toolbar button + button {
+    margin-inline-start: 0.5rem;
 }
 
 .portal-calendar-grid {
@@ -1228,41 +1227,6 @@ textarea.portal-input {
     background-color: #ffffff;
 }
 
-// Sign-in and devices ----------------------------------------------------------
-
-.portal-device-label {
-    font-weight: 600;
-    overflow-wrap: anywhere;
-}
-
-.portal-table-actions::before {
-    content: none;
-}
-
-// "Sign out every device" asks first in a <details>, so it needs no script.
-.portal-confirm > summary {
-    inline-size: fit-content;
-    list-style: none;
-}
-
-.portal-confirm > summary::-webkit-details-marker {
-    display: none;
-}
-
-.portal-confirm-body {
-    margin-block-start: 0.75rem;
-}
-
-.portal-passkey-add {
-    margin-block-start: 1rem;
-}
-
-.portal-passkey-signin {
-    margin-block-start: 1.25rem;
-    padding-block-start: 1rem;
-    border-block-start: 1px solid var(--portal-border);
-}
-
 // Tablet and up --------------------------------------------------------------
 
 @media (min-width: 768px) {
@@ -1367,30 +1331,17 @@ textarea.portal-input {
         white-space: nowrap;
         inline-size: 1%;
     }
-
-    // The devices list gives the device's name the room instead.
-    .portal-devices .portal-table-cell:nth-child(1) {
-        white-space: normal;
-        inline-size: auto;
-    }
-
-    .portal-devices .portal-table-cell:nth-child(3) {
-        white-space: nowrap;
-        inline-size: 1%;
-    }
-
-    .portal-table-actions {
-        text-align: end;
-    }
 }
 
 @media (min-width: 992px) {
-    .portal-card-grid {
+    // Three cards (calendar, family, profile): one row, calendar twice as wide.
+    // With the volunteering card the tablet's two columns stay, so the four
+    // cards sit as two rows instead of one card alone under a full row.
+    .portal-card-grid:not(:has(.portal-card-volunteering)) {
         grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
-    // The calendar card carries a list, so it spans two columns.
-    .portal-card-calendar {
+    .portal-card-grid:not(:has(.portal-card-volunteering)) .portal-card-calendar {
         grid-column: span 2;
     }
 }

@@ -34,7 +34,9 @@ Thanks @author. One short paragraph of what the PR does.
 **Verified:**
 - ✓ [specific item]
 - ✓ [specific item]
-- ✓ [specific item]
+- ✓ RBAC: [entry point, who can reach it, the check that enforces it, change vs master] or "no RBAC impact: [why]"
+
+**Design approval:** [RFC or design link and the maintainer who approved it] or "no architectural change".
 
 No hard blocks.
 ```
@@ -53,6 +55,8 @@ The "Verified" + "No hard blocks" signal replaces an all-checked checkbox list.
 8. Repo process — issue rule in `git-workflow.md` not met; title or body that describes different work than the diff.
 9. Query View freeze — any new feature or filter on `QueryView.php`, `QueryList.php`, or predefined `query_qry` / `queryparameters_qrp` rows for that UI. Point the author at Slim/Tabler MVC + Propel (`src/v2/`), or a reports plugin (`src/plugins/`; `src/plugins/community/` to share). Security-only patches on Query View need an explicit maintainer exception.
 10. Existing Playwright captures — the PR removes, renames or reroutes something that `playwright/` specs, videos or helpers use (an id, route, setting, button, menu entry or aria-label) and does not update them. The capture suite runs on `master` after merge and feeds the release docs, so the break appears late. Same standard as a Cypress selector. Grep `playwright/` for what the diff removes; a capture marked `usedIn` must still exist (`npm run lint`). Locators must not depend on English text (captures run in 8 locales; videos run in `en` only).
+11. RBAC impact — the PR adds or changes a route, API endpoint, middleware, permission or role check, session or sign-in flow, a query that returns another person's data, an admin setting, a plugin hook, or a UI control shown or hidden by role. For each changed entry point the review states who can reach it (anonymous, API key, member/portal session, staff user with which permission, admin), what the code enforces (name the middleware or check), and what changed versus `master` (privilege gained, lost, or newly reachable). Request changes on: a missing check; a check that trusts a client-supplied id; a role widened by default; a path from a lower session type to a higher one (portal to staff, API key to session); authority that outlives its revoked source; a low role that can disable or lock out a higher one. See `authorization-security.md`.
+12. Architecture without an approved RFC — the PR adds a subsystem, a new table family, a new session or auth model, a plugin API, or a cross-cutting middleware, or changes a documented design. It links the design (an RFC in `docs/decisions/`, a doc in `docs/design/`, or the linked epic or issue) and a maintainer's approval of it (a comment, label, or the RFC's Status line). Without both, the review says so and asks that the design be approved first. Agents report whether approval exists and by whom; they never approve an RFC or judge it for the maintainer.
 
 Comment volume is not a review topic. Wrong or essay comments can be deleted; that is not Request changes.
 
@@ -64,6 +68,8 @@ Applies when the PR reads, writes, validates, or displays a date, time, number, 
 - Parse input as ISO or naive `sTimeZone` wall-clock. `sDateFormat*`, `sTimeZone`, and `sLanguage` drive **display** only.
 - Store event DATETIME columns as naive wall-clock in `sTimeZone`.
 - Keep one calendar contract per route (for example, space-separated datetime stays space-separated).
+
+Report and PDF output reads the same settings (`reports.md` Data rules): dates through `DateTimeUtils::formatDate()`, money through `CurrencyFormatter`, labels through `gettext()`, all formatted in the service. A template or service that hardcodes a date format, currency symbol, separator, English word or database code is a hard block.
 
 ISO-only validation on an API field is **correct**. Parsing `23/09/2026` because the church display format is `d/m/Y` is a hard block.
 
@@ -83,7 +89,7 @@ If hard blocks stay open and the author goes quiet, maintainers may close the PR
 
 1. Thank the contributor. Say what the PR does after reading the file list.
 2. Check title + body against the current file list.
-3. Hard blocks first (Request changes).
+3. Hard blocks first (Request changes). Every draft states RBAC impact and design approval, including "no RBAC impact: <why>".
 4. Then a **checkbox list of what is still open** (never CI).
 5. If there are no hard blocks, event is Comment.
 6. Close only when the maintainer answers yes to a direct question.
@@ -103,7 +109,9 @@ Thanks @author. One short paragraph of what the PR does.
 
 **Verified:**
 - ✓ [specific item]
-- ✓ [specific item]
+- ✓ RBAC: [entry point, who can reach it, the check that enforces it, change vs master] or "no RBAC impact: [why]"
+
+**Design approval:** [RFC or design link and the maintainer who approved it] or "no architectural change".
 
 No hard blocks.
 ```
@@ -116,6 +124,14 @@ Thanks @author. One short paragraph of what the PR does.
 ## Hard blocks
 
 - [specific issue that requires changes]
+
+## RBAC impact
+
+- [entry point: who can reach it, the check that enforces it, change vs master] or "no RBAC impact: [why]"
+
+## Design approval
+
+- [RFC or design link and approving maintainer] or "no architectural change" or "missing: approve the design first"
 
 ## Still open
 

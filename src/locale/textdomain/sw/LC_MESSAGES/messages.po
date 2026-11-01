@@ -932,14 +932,6 @@ msgid "Zero Givers"
 msgstr "Watoa Sifuri"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Ripoti ya Amana ya Mtu binafsi"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Ripoti ya Juu ya Amana"
-
-#: 
 msgid "Next"
 msgstr "Inayofuata"
 
@@ -961,10 +953,6 @@ msgstr "Tarehe ya Mwisho ya Ripoti"
 #, fuzzy
 msgid "Apply Report Dates To"
 msgstr "Tekeleza Tarehe za Ripoti Kwa"
-
-#: 
-msgid "Deposit Date (Default)"
-msgstr "Tarehe ya Kuweka amana (Chaguomsingi)"
 
 #: 
 msgid "Payment Date"
@@ -989,10 +977,6 @@ msgid "Filter by Payment Type"
 msgstr "Chuja kwa Aina ya Malipo"
 
 #: 
-msgid "All Methods"
-msgstr "Mbinu Zote"
-
-#: 
 msgid "Check"
 msgstr "Angalia"
 
@@ -1003,10 +987,6 @@ msgstr "Fedha taslimu"
 #: 
 msgid "Bank Draft"
 msgstr "Rasimu ya Benki"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0 - Hakuna Kiwango cha Chini"
 
 #: 
 msgid "Other Settings"
@@ -1272,10 +1252,6 @@ msgstr "Thibitisha lebo za data"
 #: 
 msgid "Invalid login or password"
 msgstr "Kuingia au nenosiri batili"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Ingizo nyingi sana ambazo hazijafaulu: akaunti yako imefungwa. Tafadhali wasiliana na msimamizi."
 
 #: 
 msgid "Email/Username"
@@ -2140,24 +2116,12 @@ msgid "Classes"
 msgstr "Madarasa"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Ripoti za Shule ya Jumapili"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Wanafunzi wasio katika Darasa la Shule ya Jumapili"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Angalau kundi moja lazima lichaguliwe kutengeneza orodha za darasa au karatasi za mahudhurio."
-
-#: 
 msgid "Report Details"
 msgstr "Ripoti Maelezo"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Orodhesha Majukumu yote (isiyochaguliwa itaorodhesha majukumu ya Mwalimu/Mwanafunzi pekee)"
 
 #: 
 msgid "First Sunday"
@@ -2178,10 +2142,6 @@ msgstr "Wanafunzi wa Ziada"
 #: 
 msgid "Extra Teachers"
 msgstr "Walimu wa Ziada"
-
-#: 
-msgid "Create Class List"
-msgstr "Unda Orodha ya Darasa"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4593,14 +4553,6 @@ msgid "PhotoBook"
 msgstr "Kitabu cha Picha"
 
 #: 
-msgid "With Photos"
-msgstr "Na Picha"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Unda Kitabu cha Picha"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4745,11 +4697,6 @@ msgstr "Maadhimisho ya miaka"
 #: 
 msgid "View User"
 msgstr "Tazama Mtumiaji"
-
-#: 
-#, fuzzy
-msgid "not found or user without an email"
-msgstr "hakuna kupatikana au mtumiaji bila barua pepe"
 
 #: 
 msgid "UserName not set"
@@ -4946,16 +4893,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Kiasi cha chini ambacho nenosiri jipya lazima litofautiane na lile la zamani (# ya herufi zimebadilishwa)\n"
 "Weka hadi sufuri ili kuzima kipengele hiki"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Idadi ya juu zaidi ya walioshindwa kuingia ili kuruhusu kabla ya akaunti ya mtumiaji kufungwa.\n"
-"Mara tu kiwango cha juu kitakapofikiwa, msimamizi lazima awashe tena akaunti.\n"
-"Kipengele hiki husaidia kulinda dhidi ya mashambulizi ya kubahatisha kiotomatiki ya nenosiri.\n"
-"Weka hadi sufuri ili kuzima kipengele hiki."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -5593,10 +5530,6 @@ msgstr "Futa Vilivyochaguliwa"
 #: 
 msgid "Funds"
 msgstr "Mifuko/Fedha"
-
-#: 
-msgid "Generate Report"
-msgstr "Tengeneza Ripoti"
 
 #: 
 msgid "Payments"
@@ -6292,10 +6225,6 @@ msgid "Current Deposit"
 msgstr "Amana ya Sasa"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Ripoti inayoweza kubadilishwa kwa kuchuja tarehe, mfuko, familia, na njia ya malipo."
-
-#: 
 msgid "Day"
 msgstr "Siku"
 
@@ -6306,10 +6235,6 @@ msgstr "Des"
 #: 
 msgid "Deposit Statistics"
 msgstr "Takwimu za Amana"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Mchanganuo wa kina wa hati moja ya amana."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6410,10 +6335,6 @@ msgstr "Jun"
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "Wacha tuweke mfumo wako sawa na tayari kutumika"
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "Orodhesha wanachama wanaostahili kupiga kura kulingana na historia ya utoaji na vigezo vya uanachama."
 
 #: 
 msgid "Location"
@@ -9849,10 +9770,6 @@ msgid "View transaction details for a pledge payment"
 msgstr "Tazama maelezo ya muamala kwa malipo ya ahadi ya sadaka"
 
 #: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "Washiriki wenye haki ya kupiga kura lazima wawe wametoa sadaka ndani ya miaka hii mingi (0 kwa kutohitaji sadaka)"
-
-#: 
 msgid "We could not find the family you were looking for."
 msgstr "Hatukuweza kupata familia uliyokuwa unaichatafuta."
 
@@ -10043,10 +9960,6 @@ msgstr "Lazimisha Usakinishaji Upya?"
 #: 
 msgid "Full Path"
 msgstr "Njia Kamili"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Tengeneza orodha za madarasa, karatasi za mahudhurio, na albamu za picha"
 
 #: 
 msgid "Installed"
@@ -18571,10 +18484,6 @@ msgstr "Haikuweza kunakili anwani ya kanisa."
 #: 
 msgid "Could not match the church country."
 msgstr "Haikuweza kulinganisha nchi ya kanisa."
-
-#: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Orodha za darasa, karatasi za mahudhurio, na vitabu vya picha"
 
 #: 
 msgid "Group membership lists and Sunday School class reports"

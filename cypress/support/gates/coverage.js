@@ -58,6 +58,7 @@ export const COVERAGE = {
     "src/people/routes/text.php": { rows: ["people-text-page"] },
     "src/people/routes/sign-in-email.php": { rows: ["sign-in-email-page"] },
     "src/people/routes/reports.php": { spec: "cypress/e2e/ui/reports/people-reports.staff-access.spec.js" },
+    "src/people/routes/labels.php": { spec: "cypress/e2e/ui/people/labels.spec.js" },
 
     "src/event/index.php": { rows: ["event-app"] },
     "src/event/routes/audit.php": ADD_EVENT_ROLE,

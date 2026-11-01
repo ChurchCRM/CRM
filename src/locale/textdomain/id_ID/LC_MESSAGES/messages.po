@@ -933,14 +933,6 @@ msgid "Zero Givers"
 msgstr "Tidak ada yang memberi"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Laporan simpanan individu"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Laporan tabungan detail"
-
-#: 
 msgid "Next"
 msgstr "berikutnya"
 
@@ -962,10 +954,6 @@ msgstr "Tanggal akhir laporan"
 #, fuzzy
 msgid "Apply Report Dates To"
 msgstr "Setujui tanggal pelaporan pada tanggal"
-
-#: 
-msgid "Deposit Date (Default)"
-msgstr "Tanggal penyimpanan (standar)"
 
 #: 
 msgid "Payment Date"
@@ -990,10 +978,6 @@ msgid "Filter by Payment Type"
 msgstr "Sortir berdasarkan tipe pembayaran"
 
 #: 
-msgid "All Methods"
-msgstr "Semua metode "
-
-#: 
 msgid "Check"
 msgstr "Periksa"
 
@@ -1004,10 +988,6 @@ msgstr "Uang"
 #: 
 msgid "Bank Draft"
 msgstr "Draf Bank"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0-tidak ada minimum"
 
 #: 
 msgid "Other Settings"
@@ -1273,10 +1253,6 @@ msgstr "Konfirmasikan label data"
 #: 
 msgid "Invalid login or password"
 msgstr "Login atau kata sandi salah"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Terlalu banyak login gagal: akun Anda telah dikunci. Silakan hubungi administrator."
 
 #: 
 msgid "Email/Username"
@@ -2141,24 +2117,12 @@ msgid "Classes"
 msgstr "Kelas"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Laporan Sekolah Minggu"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Siswa tidak mengikuti Kelas Sekolah Minggu"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Setidaknya satu kelompok harus dipilih untuk membuat daftar kelas atau lembar kehadiran."
-
-#: 
 msgid "Report Details"
 msgstr "Detail Laporan"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Daftar semua Peran (tidak dicentang akan mencantumkan peran Guru / Siswa saja)"
 
 #: 
 msgid "First Sunday"
@@ -2179,10 +2143,6 @@ msgstr "Siswa tambahan"
 #: 
 msgid "Extra Teachers"
 msgstr "Pengajar Ekstra"
-
-#: 
-msgid "Create Class List"
-msgstr "Buat Daftar Kelas"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4596,14 +4556,6 @@ msgid "PhotoBook"
 msgstr "Buku Foto"
 
 #: 
-msgid "With Photos"
-msgstr "Dengan Foto"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Buat Buku Foto"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4748,11 +4700,6 @@ msgstr "Peringatan"
 #: 
 msgid "View User"
 msgstr "Lihat Pengguna"
-
-#: 
-#, fuzzy
-msgid "not found or user without an email"
-msgstr "tidak ditemukan atau pengguna tanpa email"
 
 #: 
 msgid "UserName not set"
@@ -4948,13 +4895,6 @@ msgstr "Panjang batas waktu sesi dalam detik Ditetapkan ke nol untuk menonaktifk
 msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
 "Set to zero to disable this feature"
 msgstr "Jumlah minimum yang harus berbeda dengan kata sandi baru dari kata sandi lama (# karakter yang diubah) Setel ke nol untuk menonaktifkan fitur ini"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Jumlah maksimum gagal login untuk dibolehkan sebelum akun pengguna dikunci. Setelah maksimum tercapai, administrator harus mengaktifkan kembali akun. Fitur ini membantu melindungi dari serangan tebakan kata sandi otomatis. Setel ke nol untuk menonaktifkan fitur ini."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -5589,10 +5529,6 @@ msgstr "Hapus yang Dipilih"
 #: 
 msgid "Funds"
 msgstr "Dana/Pos Kas"
-
-#: 
-msgid "Generate Report"
-msgstr "Buat Laporan"
 
 #: 
 msgid "Payments"
@@ -6286,10 +6222,6 @@ msgid "Current Deposit"
 msgstr "Setoran Saat Ini"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Laporan yang dapat disesuaikan dengan filter tanggal, dana, keluarga, dan metode pembayaran."
-
-#: 
 msgid "Day"
 msgstr "Hari"
 
@@ -6300,10 +6232,6 @@ msgstr "Des"
 #: 
 msgid "Deposit Statistics"
 msgstr "Statistik Setoran"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Rincian detail dari satu slip setoran."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6404,10 +6332,6 @@ msgstr "Jun"
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "Mari siapkan sistem Anda agar siap digunakan"
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "Daftar jemaat yang berhak memberikan suara berdasarkan kriteria."
 
 #: 
 msgid "Location"
@@ -9838,10 +9762,6 @@ msgid "View transaction details for a pledge payment"
 msgstr "Lihat detail transaksi untuk pembayaran janji persembahan"
 
 #: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "Anggota dengan hak suara harus telah memberikan persembahan dalam beberapa tahun terakhir ini (0 untuk tidak mensyaratkan persembahan)"
-
-#: 
 msgid "We could not find the family you were looking for."
 msgstr "Kami tidak dapat menemukan keluarga yang Anda cari."
 
@@ -10032,10 +9952,6 @@ msgstr "Paksa Instal Ulang?"
 #: 
 msgid "Full Path"
 msgstr "Path Lengkap"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Buat daftar kelas, lembar kehadiran, dan buku foto"
 
 #: 
 msgid "Installed"
@@ -18553,10 +18469,6 @@ msgstr "Alamat gereja tidak dapat disalin."
 #: 
 msgid "Could not match the church country."
 msgstr "Negara gereja tidak dapat dicocokkan."
-
-#: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Daftar kelas, lembar kehadiran, dan buku foto"
 
 #: 
 msgid "Group membership lists and Sunday School class reports"

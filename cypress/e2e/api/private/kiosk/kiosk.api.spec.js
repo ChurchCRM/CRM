@@ -41,12 +41,11 @@ describe("Kiosk API - Admin Operations", () => {
             }).then((response) => {
                 expect(response.status).to.equal(200);
                 expect(response.body).to.have.property("visibleUntil");
-                // visibleUntil is now an ISO 8601 string (DateTime::ATOM, e.g.
-                // "2026-04-25T01:06:54-04:00") instead of the legacy PHP
-                // {date, timezone_type, timezone} serialization. Validate by
-                // parsing — Date.parse returns NaN on bad input.
-                expect(response.body.visibleUntil).to.be.a("string");
-                expect(Number.isNaN(Date.parse(response.body.visibleUntil))).to.equal(false);
+                expect(response.body.visibleUntil).to.match(/T\d{2}:\d{2}:\d{2}[+-]\d{2}:\d{2}$/);
+                expect(Date.parse(response.body.visibleUntil) - Date.now()).to.be.within(100000, 125000);
+                cy.request("/admin/api/system/config/sKioskVisibilityTimestamp").then((stored) => {
+                    expect(stored.body.value).to.equal(response.body.visibleUntil);
+                });
             });
         });
     });

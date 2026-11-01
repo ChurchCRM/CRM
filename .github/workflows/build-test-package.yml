@@ -121,8 +121,21 @@ jobs:
 
     - uses: ./.github/actions/checkout-node-npm
 
-    - name: Lint (typecheck, Biome, UI, Cypress, SQL, and locale script checks)
+    - uses: ./.github/actions/composer-install
+
+    - name: Install PHP test tooling
+      run: npm run test:php:install
+
+    - name: Lint and fast regression tests
       run: npm run lint
+
+    - name: Upload PHP test results
+      if: always()
+      uses: ./.github/actions/upload-artifact
+      with:
+        name: php-unit-${{ github.run_id }}
+        path: temp/php-tests/*.xml
+        if-no-files-found: ignore
 
   build:
     # Locale PRs only touch translations. Skip here, not in `configure`: a skipped
@@ -162,9 +175,6 @@ jobs:
 
     - name: Validate PHP syntax
       run: npm run build:php:validate:all
-
-    - name: Run PHP error-redaction tests
-      run: npm run test:php
 
     - name: Build Docker images
       run: |

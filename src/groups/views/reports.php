@@ -89,12 +89,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <h3 class="card-title"><?= gettext('Select Fields to Include') ?></h3>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="<?= $sRootPath ?>/Reports/GroupReport.php">
+                    <form method="POST" action="<?= $sRootPath ?>/groups/reports/group-directory">
 
                         <input type="hidden" name="GroupID"     value="<?= InputUtils::escapeAttribute((int) $iGroupID) ?>">
                         <input type="hidden" name="GroupRole"   value="<?= InputUtils::escapeAttribute($groupRole) ?>">
                         <input type="hidden" name="OnlyCart"    value="0">
-                        <input type="hidden" name="ReportModel" value="<?= InputUtils::escapeAttribute((int) $reportModel) ?>">
 
                         <div class="mb-4">
                             <div class="d-flex align-items-center justify-content-between mb-2">

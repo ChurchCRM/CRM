@@ -22,7 +22,7 @@ export const MVC_PAGES = {
         "/people/to-family",
     ],
     groups: ["/groups/", "/groups/dashboard", "/groups/reports", "/groups/sundayschool/dashboard"],
-    finance: ["/finance/", "/finance/dashboard", "/finance/reports", "/finance/reports/giving-statements", "/finance/funds", "/finance/pledge/new"],
+    finance: ["/finance/", "/finance/dashboard", "/finance/reports", "/finance/reports/giving-statements", "/finance/reports/year-end", "/finance/funds", "/finance/pledge/new"],
     event: ["/event/", "/event/dashboard", "/event/types", "/event/audit", "/event/calendars"],
     fundraiser: ["/fundraiser/", "/fundraiser/editor"],
     ministries: ["/ministries/", "/ministries/dashboard"],
@@ -48,5 +48,4 @@ export const LEGACY_PAGES = [
     "/SystemSettings.php",
     "/LettersAndLabels.php",
     "/DirectoryReports.php",
-    "/Reports/ClassList.php",
 ];

@@ -36,27 +36,7 @@
   </style>
 </head>
 <body dir="{{ text_dir|default('ltr') }}">
-  {% if letterhead == 'none' %}
-    <div class="letterhead-blank"></div>
-  {% else %}
-    <div class="letterhead">
-      {% if letterhead == 'graphic' and letterhead_image %}
-        <img src="{{ letterhead_image }}" alt="" style="max-width: 170mm; max-height: 28mm;">
-      {% elseif church_logo %}
-        <img src="{{ church_logo }}" alt="">
-      {% endif %}
-      <div class="church-name">{{ church_name }}</div>
-      <div class="church-address">{{ church_address }}</div>
-      <div class="muted">{{ church_phone }}{% if church_email %} · {{ church_email }}{% endif %}</div>
-      {% if church_tax_id %}<div class="muted">{{ gettext('Tax ID') }}: {{ church_tax_id }}</div>{% endif %}
-      {% if church_website or church_social %}
-        <div class="muted">
-          {% if church_website %}<a href="{{ church_website }}">{{ church_website }}</a>{% endif %}
-          {% for link in church_social %}{% if church_website or not loop.first %} · {% endif %}<a href="{{ link.url }}">{{ link.label }}</a>{% endfor %}
-        </div>
-      {% endif %}
-    </div>
-  {% endif %}
+  {% include "_letterhead.html.twig" %}
   {% block content %}{% endblock %}
 </body>
 </html>

@@ -932,14 +932,6 @@ msgid "Zero Givers"
 msgstr "Null andjad"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Individuaalse sissetuleku aruanne"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Täpsem sissetulekuaruanne"
-
-#: 
 msgid "Next"
 msgstr "Järgmine"
 
@@ -961,10 +953,6 @@ msgstr "Aruande lõppkuupäev"
 #, fuzzy
 msgid "Apply Report Dates To"
 msgstr "Rakenda aruande kuupäevad"
-
-#: 
-msgid "Deposit Date (Default)"
-msgstr "Sissetuleku kuupäev (vaikimisi)"
 
 #: 
 msgid "Payment Date"
@@ -989,10 +977,6 @@ msgid "Filter by Payment Type"
 msgstr "Filtreeri makse tüübi järgi"
 
 #: 
-msgid "All Methods"
-msgstr "Kõik meetodid"
-
-#: 
 msgid "Check"
 msgstr "Tšekk"
 
@@ -1003,10 +987,6 @@ msgstr "Sularaha"
 #: 
 msgid "Bank Draft"
 msgstr "Panga mustand"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0 - miinimum puudub"
 
 #: 
 msgid "Other Settings"
@@ -1272,10 +1252,6 @@ msgstr "Kinnitage andmesildid"
 #: 
 msgid "Invalid login or password"
 msgstr "Vale nimi või parool"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Liiga palju ebaõnnestunud sisselogimisi: teie konto on lukustatud. Palun pöörduge administraatori poole."
 
 #: 
 msgid "Email/Username"
@@ -2140,24 +2116,12 @@ msgid "Classes"
 msgstr "Klassid"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Pühapäevakooli auanded"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Õpilased, kes ei käi pühapäevakooli klassis"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Klasside või osalemislehtede koostamiseks tuleb valida vähemalt üks rühm."
-
-#: 
 msgid "Report Details"
 msgstr "Aruande üksikasjad"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Loetle kõik rollid (märkimata loend sisaldab ainult õpetaja / õpilase rolle)"
 
 #: 
 msgid "First Sunday"
@@ -2178,10 +2142,6 @@ msgstr "Lisaõpilased"
 #: 
 msgid "Extra Teachers"
 msgstr "Lisaõpetajad"
-
-#: 
-msgid "Create Class List"
-msgstr "Loo klassiloend"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4594,14 +4554,6 @@ msgid "PhotoBook"
 msgstr "Fotoraamat"
 
 #: 
-msgid "With Photos"
-msgstr "Fotodega"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Looge fotoraamat"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4746,11 +4698,6 @@ msgstr "Tähtpäevad"
 #: 
 msgid "View User"
 msgstr "Kuva kasutaja"
-
-#: 
-#, fuzzy
-msgid "not found or user without an email"
-msgstr "ei leitud ega kasuta ilma e-kirjata"
 
 #: 
 msgid "UserName not set"
@@ -4948,16 +4895,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Minimaalne summa, mis uus parool peab vanast erinema (tähemärkide arvu muudetud)\n"
 "Selle funktsiooni keelamiseks seadke null"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Maksimaalne ebaõnnestunud sisselogimiste arv enne kasutajakonto lukustamist.\n"
-"Kui maksimum on saavutatud, peab administraator konto uuesti lubama.\n"
-"See funktsioon aitab kaitsta paroolide automatiseeritud äraarvamise rünnakute eest.\n"
-"Selle funktsiooni keelamiseks seadke null."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -5596,10 +5533,6 @@ msgstr "Kustuta valitud"
 #: 
 msgid "Funds"
 msgstr "Vahendid"
-
-#: 
-msgid "Generate Report"
-msgstr "Loo aruanne"
 
 #: 
 msgid "Payments"
@@ -6295,10 +6228,6 @@ msgid "Current Deposit"
 msgstr "Praegune deposiit"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Kohandatav aruanne kuupäeva, fondi, perekonna ja maksemeetodi järgi filtreerimisega."
-
-#: 
 msgid "Day"
 msgstr "Päev"
 
@@ -6309,10 +6238,6 @@ msgstr "Det"
 #: 
 msgid "Deposit Statistics"
 msgstr "Deposiidi statistika"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Ühe deposiidi lehega üksikasjalik jaotus."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6413,10 +6338,6 @@ msgstr "Jun"
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "Kohandame oma süsteemi kasutamiseks valmis"
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "Loetelu liikmetest, kes on hääletamisel lubatud andmise ajaloo ja liikmekriteeriumite alusel."
 
 #: 
 msgid "Location"
@@ -9852,10 +9773,6 @@ msgid "View transaction details for a pledge payment"
 msgstr "Vaadake lubaduse makse tehingu üksikasju"
 
 #: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "Hääletavad liikmed peavad olema annetanud selle arvu aastate jooksul (0, et annetust mitte nõuda)"
-
-#: 
 msgid "We could not find the family you were looking for."
 msgstr "Me ei leidnud perekonda, mida otsisite."
 
@@ -10046,10 +9963,6 @@ msgstr "Sundida uuesti installima?"
 #: 
 msgid "Full Path"
 msgstr "Täistee"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Looge klassinimekirju, kohaloleku lehti ja fotoalbumeid"
 
 #: 
 msgid "Installed"
@@ -18574,10 +18487,6 @@ msgstr "Koguduse aadressi ei õnnestunud kopeerida."
 #: 
 msgid "Could not match the church country."
 msgstr "Koguduse riiki ei õnnestunud sobitada."
-
-#: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Klassinimekirjad, kohaloleku lehed ja fotoraamatud"
 
 #: 
 msgid "Group membership lists and Sunday School class reports"

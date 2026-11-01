@@ -165,6 +165,36 @@ class CustomFieldService
         }
     }
 
+    /**
+     * Reads the property values of one group's members (`groupprop_N`).
+     * Group properties have no field security; the caller has already authorised the group.
+     *
+     * @param int[] $personIds
+     * @return array<int, array<string, ?string>> person id => property id (c1, c2, ...) => stored value
+     */
+    public function getGroupPropertyValues(int $groupId, array $personIds): array
+    {
+        $table = 'groupprop_' . $groupId;
+        $this->assertTable($table);
+
+        $personIds = array_values(array_unique(array_map('intval', $personIds)));
+        if ($personIds === []) {
+            return [];
+        }
+
+        $statement = Propel::getConnection(PersonCustomTableMap::DATABASE_NAME)->prepare(
+            'SELECT * FROM `' . $table . '` WHERE per_ID IN (' . implode(',', array_fill(0, count($personIds), '?')) . ')'
+        );
+        $statement->execute($personIds);
+
+        $values = [];
+        foreach ($statement->fetchAll(\PDO::FETCH_ASSOC) as $row) {
+            $values[(int) $row['per_ID']] = $row;
+        }
+
+        return $values;
+    }
+
     private function clearColumn(string $table, string $column, int $personId): void
     {
         $this->assertTable($table);

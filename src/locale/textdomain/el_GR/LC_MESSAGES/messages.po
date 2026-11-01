@@ -932,14 +932,6 @@ msgid "Zero Givers"
 msgstr "Μηδενικοί Δωρητές"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Ατομική Έκθεση Κατάθεσης"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Σύνθετη αναφορά κατάθεσης"
-
-#: 
 msgid "Next"
 msgstr "Επόμενο"
 
@@ -961,10 +953,6 @@ msgstr "Ημερομηνία λήξης αναφοράς"
 #, fuzzy
 msgid "Apply Report Dates To"
 msgstr "Εφαρμογή ημερομηνιών αναφοράς σε"
-
-#: 
-msgid "Deposit Date (Default)"
-msgstr "Ημερομηνία κατάθεσης (Προεπιλογή)"
 
 #: 
 msgid "Payment Date"
@@ -989,10 +977,6 @@ msgid "Filter by Payment Type"
 msgstr "Φιλτράρισμα κατά τύπο πληρωμής"
 
 #: 
-msgid "All Methods"
-msgstr "Όλες οι Μέθοδοι"
-
-#: 
 msgid "Check"
 msgstr "Ελεγχος"
 
@@ -1003,10 +987,6 @@ msgstr "Μετρητά"
 #: 
 msgid "Bank Draft"
 msgstr "Τραπεζική επιταγή"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0 - Όχι ελάχιστο"
 
 #: 
 msgid "Other Settings"
@@ -1272,10 +1252,6 @@ msgstr "Επιβεβαιώστε τις ετικέτες δεδομένων"
 #: 
 msgid "Invalid login or password"
 msgstr "Μη έγκυρη είσοδος ή κωδικός πρόσβασης"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Πάρα πολλές αποτυχημένες συνδέσεις: ο λογαριασμός σας έχει κλειδωθεί. Επικοινωνήστε με έναν διαχειριστή."
 
 #: 
 msgid "Email/Username"
@@ -2140,24 +2116,12 @@ msgid "Classes"
 msgstr "Τάξεις"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Εκθέσεις Κυριακάτικων Σχολείων"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Μαθητές όχι σε τάξη Καθηχητικού"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Τουλάχιστον μία ομάδα πρέπει να επιλεγεί για τη δημιουργία καταλόγων μαθημάτων ή φύλλων παρουσίας."
-
-#: 
 msgid "Report Details"
 msgstr "Λεπτομέρειες αναφοράς"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Καταχωρίστε όλους τους ρόλους (η μη επιλεγμένη θα εμφανίσει μόνο ρόλους δασκάλου/μαθητή)"
 
 #: 
 msgid "First Sunday"
@@ -2178,10 +2142,6 @@ msgstr "Επιπλέον Μαθητές"
 #: 
 msgid "Extra Teachers"
 msgstr "Επιπλέον Δάσκαλοι"
-
-#: 
-msgid "Create Class List"
-msgstr "Δημιουργία λίστας τάξεων"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4595,14 +4555,6 @@ msgid "PhotoBook"
 msgstr "Photobook"
 
 #: 
-msgid "With Photos"
-msgstr "Με Φωτογραφίες"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Δημιουργία Photobook"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4747,11 +4699,6 @@ msgstr "επετείους"
 #: 
 msgid "View User"
 msgstr "Προβολή χρήστη"
-
-#: 
-#, fuzzy
-msgid "not found or user without an email"
-msgstr "δεν βρέθηκε ή χρήστης χωρίς email"
 
 #: 
 msgid "UserName not set"
@@ -4949,16 +4896,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Ελάχιστο ποσό που πρέπει να διαφέρει ένας νέος κωδικός πρόσβασης από τον παλιό (# χαρακτήρες άλλαξαν)\n"
 "Ορίστε στο μηδέν για να απενεργοποιήσετε αυτήν τη δυνατότητα"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Μέγιστος αριθμός αποτυχημένων συνδέσεων που πρέπει να επιτραπούν πριν κλειδωθεί ένας λογαριασμός χρήστη.\n"
-"Μόλις επιτευχθεί το μέγιστο, ένας διαχειριστής πρέπει να ενεργοποιήσει ξανά τον λογαριασμό.\n"
-"Αυτή η δυνατότητα βοηθά στην προστασία από αυτοματοποιημένες επιθέσεις εικασίας κωδικών πρόσβασης.\n"
-"Ορίστε στο μηδέν για να απενεργοποιήσετε αυτήν τη δυνατότητα."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -5597,10 +5534,6 @@ msgstr "Διαγραφή επιλεγμένων"
 #: 
 msgid "Funds"
 msgstr "Ταμεία / Πόροι"
-
-#: 
-msgid "Generate Report"
-msgstr "Δημιουργία αναφοράς"
 
 #: 
 msgid "Payments"
@@ -6296,10 +6229,6 @@ msgid "Current Deposit"
 msgstr "Τρέχουσα κατάθεση"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Προσαρμόσιμη αναφορά με φιλτράρισμα ανά ημερομηνία, ταμείο, οικογένεια και τρόπο πληρωμής."
-
-#: 
 msgid "Day"
 msgstr "Ημέρα"
 
@@ -6310,10 +6239,6 @@ msgstr "Δεκ"
 #: 
 msgid "Deposit Statistics"
 msgstr "Στατιστικά Κατάθεσης"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Λεπτομερής ανάλυση ενός μεμονωμένου παραστατικού κατάθεσης."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6414,10 +6339,6 @@ msgstr "Ιουν"
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "Ας ρυθμίσουμε το σύστημά σας για χρήση"
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "Λίστα μελών με δικαίωμα ψήφου βάσει ιστορικού προσφορών και κριτηρίων μέλους."
 
 #: 
 msgid "Location"
@@ -9853,10 +9774,6 @@ msgid "View transaction details for a pledge payment"
 msgstr "Προβολή λεπτομερειών συναλλαγής για πληρωμή οικονομικής δέσμευσης"
 
 #: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "Τα μέλη με δικαίωμα ψήφου πρέπει να έχουν κάνει προσφορά εντός αυτών των ετών (0 για να μην απαιτείται προσφορά)"
-
-#: 
 msgid "We could not find the family you were looking for."
 msgstr "Δεν μπορέσαμε να βρούμε την οικογένεια που αναζητούσατε."
 
@@ -10047,10 +9964,6 @@ msgstr "Αναγκαστική επανεγκατάσταση;"
 #: 
 msgid "Full Path"
 msgstr "Πλήρης διαδρομή"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Δημιουργία λιστών τάξεων, φύλλων παρουσίας και φωτογραφικών λευκωμάτων"
 
 #: 
 msgid "Installed"
@@ -18575,10 +18488,6 @@ msgstr "Δεν ήταν δυνατή η αντιγραφή της διεύθυν
 #: 
 msgid "Could not match the church country."
 msgstr "Δεν ήταν δυνατή η αντιστοίχιση της χώρας της εκκλησίας."
-
-#: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Λίστες τάξεων, φύλλα παρουσιών και φωτογραφικά λευκώματα"
 
 #: 
 msgid "Group membership lists and Sunday School class reports"

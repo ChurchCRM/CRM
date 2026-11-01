@@ -955,14 +955,6 @@ msgid "Zero Givers"
 msgstr "Нулевые Givers"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Персональный отчет Депозит"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Расширенный Депозит Сообщить"
-
-#: 
 msgid "Next"
 msgstr "Вперёд"
 
@@ -987,10 +979,6 @@ msgid "Apply Report Dates To"
 msgstr "Применить Сообщить даты, чтобы"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "Депозит Дата (по умолчанию)"
-
-#: 
 msgid "Payment Date"
 msgstr "Дата выплаты"
 
@@ -1013,10 +1001,6 @@ msgid "Filter by Payment Type"
 msgstr "Фильтр по Тип компенсации"
 
 #: 
-msgid "All Methods"
-msgstr "Все методы"
-
-#: 
 msgid "Check"
 msgstr "чек"
 
@@ -1027,10 +1011,6 @@ msgstr "Наличные"
 #: 
 msgid "Bank Draft"
 msgstr "Банковский чек"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0 - Нет Минимальный"
 
 #: 
 msgid "Other Settings"
@@ -1304,10 +1284,6 @@ msgstr "Подтвердите метки данных"
 #: 
 msgid "Invalid login or password"
 msgstr "Неверный Логин или пароль"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Слишком много неудачных попыток: ваша учетная запись была заблокирована. Пожалуйста, свяжитесь с администратором."
 
 #: 
 msgid "Email/Username"
@@ -2195,24 +2171,12 @@ msgid "Classes"
 msgstr "Классы"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Воскресная школа Отчеты"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Учащиеся вне класса воскресной школы"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "По крайней мере, одна группа должна быть выбрана, чтобы сделать списки классов или посещения листов."
-
-#: 
 msgid "Report Details"
 msgstr "Детали отчета"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Список всех категорий (при отключенном флажке будут отображаться только категории учителя / ученика)"
 
 #: 
 #, fuzzy
@@ -2238,10 +2202,6 @@ msgstr "Дополнительные Студенты"
 #, fuzzy
 msgid "Extra Teachers"
 msgstr "Дополнительные Преподаватели"
-
-#: 
-msgid "Create Class List"
-msgstr "Создать список классов"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4652,14 +4612,6 @@ msgid "PhotoBook"
 msgstr "Фотоальбом"
 
 #: 
-msgid "With Photos"
-msgstr "С фотографиями"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Создать фотоальбом"
-
-#: 
 msgid "SSE"
 msgstr "Ю-ЮВ"
 
@@ -4803,10 +4755,6 @@ msgstr "Годовщины"
 #: 
 msgid "View User"
 msgstr "Посмотреть пользователя"
-
-#: 
-msgid "not found or user without an email"
-msgstr "не найден или у пользователя нет электронной почты"
 
 #: 
 msgid "UserName not set"
@@ -5001,16 +4949,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Минимальное количество символов, на которое новый пароль должен отличаться от старого (Кол-во символов изменено)\n"
 "Чтобы отключить эту функцию установите значение \"ноль\""
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Максимальное количество неудачных попыток входа, допустимых до блокировки учетной записи пользователя.\n"
-"После достижения предела, администратор должен вновь включить данную учетную запись.\n"
-"Данная функция помогает защитить от взлома автоматическим подбором пароля.\n"
-"Чтобы отключить эту функцию установите значение \"ноль\"."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -5653,10 +5591,6 @@ msgstr "Удалить выбранное"
 #: 
 msgid "Funds"
 msgstr "Фонды"
-
-#: 
-msgid "Generate Report"
-msgstr "Создать отчет"
 
 #: 
 msgid "Payments"
@@ -6356,10 +6290,6 @@ msgid "Current Deposit"
 msgstr "Текущий депозит"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Настраиваемый отчет с фильтрами."
-
-#: 
 msgid "Day"
 msgstr "День"
 
@@ -6370,10 +6300,6 @@ msgstr "Дек"
 #: 
 msgid "Deposit Statistics"
 msgstr "Статистика депозитов"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Детальный разбор одного депозита."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6474,10 +6400,6 @@ msgstr "Июн"
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "Давайте настроим вашу систему"
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "Список имеющих право голоса."
 
 #: 
 msgid "Location"
@@ -9923,10 +9845,6 @@ msgid "View transaction details for a pledge payment"
 msgstr "Просмотреть детали транзакции для платежа по обязательству"
 
 #: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "Участники с правом голоса должны были сделать пожертвование в течение этого количества лет (0 — не требовать пожертвования)"
-
-#: 
 msgid "We could not find the family you were looking for."
 msgstr "Мы не смогли найти семью, которую вы искали."
 
@@ -10117,10 +10035,6 @@ msgstr "Принудительная переустановка?"
 #: 
 msgid "Full Path"
 msgstr "Полный путь"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Формирование списков классов, листов посещаемости и фотоальбомов"
 
 #: 
 msgid "Installed"
@@ -18661,10 +18575,6 @@ msgid "Could not match the church country."
 msgstr "Не удалось определить страну церкви."
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Списки классов, листы посещаемости и фотоальбомы"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "Списки участников служений и отчёты по классам воскресной школы"
 
@@ -24661,4 +24571,420 @@ msgstr "Отображается только отправленное вами 
 #: 
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "Не удалось создать повторяющиеся события. Подробности смотрите в журнале приложения."
+
+#: 
+msgid "Confirm Password"
+msgstr "Подтвердите пароль"
+
+#: 
+msgid "Your password has been changed. You can now sign in with your new password."
+msgstr "Ваш пароль был изменён. Теперь вы можете войти с новым паролем."
+
+#: 
+msgid "1st"
+msgstr "1-я"
+
+#: 
+msgid "2nd"
+msgstr "2-я"
+
+#: 
+msgid "3rd"
+msgstr "3-я"
+
+#: 
+msgid "4th"
+msgstr "4-я"
+
+#: 
+msgid "5th"
+msgstr "5-я"
+
+#: 
+msgid "Can't remove administrator access from the only administrator who can sign in"
+msgstr "Невозможно удалить права администратора у единственного администратора, который может войти"
+
+#: 
+msgid "Choose the week of the month, from 1st to 5th"
+msgstr "Выберите неделю месяца, с 1-й по 5-ю"
+
+#: 
+msgid "Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}"
+msgstr "Создаёт {{total}} событий, в {{week}} {{day}} каждого месяца с {{first}} по {{last}}"
+
+#: 
+msgid "Invalid day of the week"
+msgstr "Недействительный день недели"
+
+#: 
+msgid "Monthly, on a weekday"
+msgstr "Ежемесячно, в будний день"
+
+#: 
+msgid "Months without a 5th one are skipped."
+msgstr "Месяцы без 5-й недели пропускаются."
+
+#: 
+msgid "RecurWOM must be a whole number from 1 to 5"
+msgstr "RecurWOM должен быть целым числом от 1 до 5"
+
+#: 
+msgid "Week of the month"
+msgstr "Неделя месяца"
+
+#: 
+msgid "Week of the month must be from 1 to 5"
+msgstr "Неделя месяца должна быть от 1 до 5"
+
+#: 
+msgid "%s through %s"
+msgstr "%s по %s"
+
+#: 
+msgid "Church tax ID (EIN) printed on contribution statements"
+msgstr "Налоговый идентификатор церкви (EIN), напечатанный на выписках о пожертвованиях"
+
+#: 
+msgid "Contribution statements are issued to the adults of a household. Please contact the church office if you need one."
+msgstr "Выписки о пожертвованиях выдаются взрослым членам семьи. Свяжитесь с церковным офисом, если вам нужна одна."
+
+#: 
+msgid "Download statement"
+msgstr "Скачать выписку"
+
+#: 
+msgid "Generated"
+msgstr "Сгенерировано"
+
+#: 
+msgid "Goods and services"
+msgstr "Товары и услуги"
+
+#: 
+msgid "My Giving"
+msgstr "Мои пожертвования"
+
+#: 
+msgid "No contributions"
+msgstr "Нет пожертвований"
+
+#: 
+msgid "No contributions were recorded for this period."
+msgstr "За этот период не было зарегистрировано пожертвований."
+
+#: 
+msgid "No goods or services were provided in exchange for these contributions, other than intangible religious benefits."
+msgstr "В обмен на эти пожертвования не предоставлялись товары или услуги, кроме нематериальных религиозных преимуществ."
+
+#: 
+msgid "Optional. Printed on contribution statements."
+msgstr "Необязательно. Печатается на выписках о пожертвованиях."
+
+#: 
+msgid "Tax ID"
+msgstr "Налоговый идентификатор"
+
+#: 
+msgid "Tax ID (EIN)"
+msgstr "Налоговый идентификатор (EIN)"
+
+#: 
+msgid "Tax-deductible amount"
+msgstr "Сумма, подлежащая налоговому вычету"
+
+#: 
+msgid "This is the household statement. It includes gifts for your family."
+msgstr "Это семейная выписка. Она включает пожертвования для вашей семьи."
+
+#: 
+msgid "Total contributions"
+msgstr "Общие пожертвования"
+
+#: 
+msgid "Year-end statement"
+msgstr "Годовая выписка"
+
+#: 
+msgid "%d giving statement emailed to the family successfully."
+msgstr "%d выписка о пожертвованиях успешно отправлена семье по электронной почте."
+
+#: 
+msgid "%s Giving Statement"
+msgstr "Выписка о пожертвованиях %s"
+
+#: 
+msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "Настройте текст, который появляется на выписках о пожертвованиях (sTaxReport1, sTaxReport2 и т. д.)."
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %s giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Дорогая семья %s,\n"
+"\n"
+"Во вложении к этому письму ваша выписка о пожертвованиях %s за %s.\n"
+"\n"
+"Если у вас есть вопросы, свяжитесь с церковным офисом.\n"
+"\n"
+"Спасибо за вашу щедрость."
+
+#: 
+msgid "Email %s Giving Statement"
+msgstr "Отправить выписку о пожертвованиях %s по электронной почте"
+
+#: 
+msgid "Envelope Numbers"
+msgstr "Номера конвертов"
+
+#: 
+msgid "Generate Giving Statements"
+msgstr "Сгенерировать выписки о пожертвованиях"
+
+#: 
+msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
+msgstr "Сгенерировать отчёты для выписок о пожертвованиях, отслеживания обещаний и финансового анализа."
+
+#: 
+msgid "Giving Reports"
+msgstr "Отчёты о пожертвованиях"
+
+#: 
+msgid "Giving Statement"
+msgstr "Выписка о пожертвованиях"
+
+#: 
+msgid "Giving Statements"
+msgstr "Выписки о пожертвованиях"
+
+#: 
+msgid "Giving statement email failed to send. Please check your email server settings."
+msgstr "Не удалось отправить электронное письмо с выпиской о пожертвованиях. Проверьте настройки почтового сервера."
+
+#: 
+msgid "Please mail your next gift to %s"
+msgstr "Пожалуйста, отправьте ваше следующее пожертвование почтой на %s"
+
+#: 
+msgid "Print %s Giving Statement"
+msgstr "Распечатать выписку о пожертвованиях %s"
+
+#: 
+msgid "Unable to email giving statement: no payment data found for that year."
+msgstr "Невозможно отправить выписку о пожертвованиях по электронной почте: данные о платежах за этот год не найдены."
+
+#: 
+msgid "Unable to email giving statement: this family has no email address on file."
+msgstr "Невозможно отправить выписку о пожертвованиях по электронной почте: у этой семьи нет зарегистрированного адреса электронной почты."
+
+#: 
+msgid "Undesignated"
+msgstr "Не назначено"
+
+#: 
+msgid "Verify church name, address, and contact info appears on giving statements."
+msgstr "Проверьте, что название церкви, адрес и контактная информация отображаются на выписках о пожертвованиях."
+
+#: 
+msgid "The position is now assigned to %s, who has accepted it."
+msgstr "Позиция теперь назначена %s, который её принял."
+
+#: 
+msgid "The position is now assigned to %s, who has not yet accepted it."
+msgstr "Позиция теперь назначена %s, который ещё не принял её."
+
+#: 
+msgid "Their reason: %s"
+msgstr "Их причина: %s"
+
+#: 
+msgid "View Assignments"
+msgstr "Просмотреть назначения"
+
+#: 
+msgid "Volunteers still needed for this occurrence: %d"
+msgstr "Для этого случая всё ещё нужны волонтёры: %d"
+
+#: 
+msgid "Volunteers still needed for this position: %d"
+msgstr "Для этой позиции всё ещё нужны волонтёры: %d"
+
+#: 
+msgid "A weekly sign-in grid for each class. Class lists and photo books are on the Sunday School dashboard and each class page."
+msgstr "Еженедельная сетка регистрации для каждого класса. Списки классов и фотоальбомы находятся на панели воскресной школы и на странице каждого класса."
+
+#: 
+msgid "A weekly sign-in grid for the school year, one column for each Sunday"
+msgstr "Еженедельная сетка регистрации на учебный год, один столбец на каждое воскресенье"
+
+#: 
+msgid "Age %d"
+msgstr "Возраст %d"
+
+#: 
+msgid "At least one group must be selected to make an attendance sheet."
+msgstr "Необходимо выбрать хотя бы одну группу, чтобы создать лист посещаемости."
+
+#: 
+msgid "Attendance Sheet"
+msgstr "Лист посещаемости"
+
+#: 
+msgid "Class List"
+msgstr "Список класса"
+
+#: 
+msgid "Download PDF"
+msgstr "Скачать PDF"
+
+#: 
+msgid "Lockout period in minutes\n"
+"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
+msgstr "Период блокировки в минутах\n"
+"Заблокированная учётная запись разблокируется автоматически через это количество минут. Неудачные попытки входа с одного IP-адреса учитываются за тот же период."
+
+#: 
+msgid "Maximum number of failed logins from one IP address\n"
+"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
+"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
+msgstr "Максимальное количество неудачных попыток входа с одного IP-адреса\n"
+"Неудачные попытки входа и запросы на сброс пароля с одного IP-адреса учитываются в этом лимите в течение периода блокировки. После достижения лимита вход с этого адреса отклоняется до окончания периода.\n"
+"Установите ноль, чтобы отключить эту функцию, например, когда все получают доступ к ChurchCRM через один прокси-адрес."
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "Максимальное количество неудачных попыток входа до блокировки учётной записи пользователя.\n"
+"Заблокированная учётная запись разблокируется автоматически после периода блокировки или раньше, если администратор сбрасывает неудачные попытки.\n"
+"Эта функция помогает защитить от автоматизированных атак подбора пароля.\n"
+"Установите ноль, чтобы отключить эту функцию."
+
+#: 
+msgid "Minutes until it unlocks by itself: %d"
+msgstr "Минут до автоматической разблокировки: %d"
+
+#: 
+msgid "Sunday School Attendance Sheet"
+msgstr "Лист посещаемости воскресной школы"
+
+#: 
+msgid "Sundays with no class are left off the sheet."
+msgstr "Воскресенья без занятий не включаются в лист."
+
+#: 
+msgid "Database Upgrade"
+msgstr "Обновление базы данных"
+
+#: 
+msgid "Your database is being updated. Please keep this page open until the upgrade finishes."
+msgstr "Ваша база данных обновляется. Пожалуйста, оставьте эту страницу открытой до завершения обновления."
+
+#: 
+msgid "Family Labels"
+msgstr "Семейные ярлыки"
+
+#: 
+msgid "%s – Total"
+msgstr "%s – Итого"
+
+#: 
+msgid "Bill"
+msgstr "Купюра"
+
+#: 
+msgid "Choose a deposit or enter both report dates."
+msgstr "Выберите депозит или введите обе даты отчёта."
+
+#: 
+msgid "Choose one deposit to review its payments or print its bank slip. A selected deposit overrides the date range."
+msgstr "Выберите один депозит, чтобы просмотреть его платежи или распечатать банковский слип. Выбранный депозит переопределяет диапазон дат."
+
+#: 
+msgid "Coin"
+msgstr "Монета"
+
+#: 
+msgid "Deposit Report"
+msgstr "Отчёт о депозите"
+
+#: 
+msgid "Download Report"
+msgstr "Скачать отчёт"
+
+#: 
+msgid "Enter valid report dates."
+msgstr "Введите действительные даты отчёта."
+
+#: 
+msgid "Invalid report filters."
+msgstr "Недействительные фильтры отчёта."
+
+#: 
+msgid "Invalid report options."
+msgstr "Недействительные параметры отчёта."
+
+#: 
+msgid "Leave filters empty to include all payments. These settings apply to the report, not the bank slip."
+msgstr "Оставьте фильтры пустыми, чтобы включить все платежи. Эти настройки применяются к отчёту, а не к банковскому слипу."
+
+#: 
+msgid "No records were returned. Adjust your filters and try again."
+msgstr "Записи не найдены. Измените фильтры и попробуйте снова."
+
+#: 
+msgid "Prepare for the Bank"
+msgstr "Подготовить для банка"
+
+#: 
+msgid "Preview Totals"
+msgstr "Предварительный просмотр итогов"
+
+#: 
+msgid "Print Bank Slip"
+msgstr "Печать банковского слипа"
+
+#: 
+msgid "Print the selected deposit in full, with cash and check totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
+msgstr "Распечатайте выбранный депозит полностью, с итогами наличных и чеков, листами подсчёта и строками свидетелей. Фильтры отчёта игнорируются. Электронные платежи остаются в сводке и исключаются из итога физического банковского билета."
+
+#: 
+msgid "Review Payments"
+msgstr "Просмотр платежей"
+
+#: 
+msgid "Review payments for a period, or prepare one deposit for the bank."
+msgstr "Просмотрите платежи за период или подготовьте один депозит для банка."
+
+#: 
+msgid "Review payments, download PDF or CSV, or print a bank slip for one deposit."
+msgstr "Просмотрите платежи, скачайте PDF или CSV или распечатайте банковский слип для одного депозита."
+
+#: 
+msgid "Select a valid deposit."
+msgstr "Выберите действительный депозит."
+
+#: 
+msgid "Select one deposit to print a bank slip."
+msgstr "Выберите один депозит для печати банковского слипа."
+
+#: 
+msgid "The report end date must be on or after the start date."
+msgstr "Дата окончания отчёта должна быть равна или позже даты начала."
+
+#: 
+msgid "Total Cash"
+msgstr "Итого наличные"
+
+#: 
+msgid "Total Coin"
+msgstr "Итого монеты"
+
+#: 
+msgid "Witness"
+msgstr "Свидетель"
 

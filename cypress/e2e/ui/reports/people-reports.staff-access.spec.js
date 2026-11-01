@@ -3,7 +3,7 @@
 // Seed users: noperm.user (901) has every permission flag off; tony.wade (3, the
 // standard user) has Delete Records; Darren Campbell (4) signs in to the portal as a member.
 // Seed July birthdays give the Birthdays report rows.
-const LABELS = "/Reports/PDFLabel.php?report=birthdays&month=7&labeltype=5160&labelfont=Helvetica&labelfontsize=10&startrow=1&startcol=1&filetype=CSV";
+const LABELS = "/people/labels?report=birthdays&month=7&labeltype=5160&labelfont=Helvetica&labelfontsize=10&startrow=1&startcol=1&filetype=CSV";
 
 const noPermSession = () => cy.setupLoginSession("people-reports-noperm", "noperm.user", "changeme");
 

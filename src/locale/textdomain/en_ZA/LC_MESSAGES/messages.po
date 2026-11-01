@@ -160,11 +160,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Set the encryption system to use - SSL (deprecated) or TLS"
 
 #: 
-#, fuzzy
-msgid "not found or user without an email"
-msgstr "not found or user without an email"
-
-#: 
 msgid "invalid event type id"
 msgstr "invalid event type ID"
 
@@ -179,10 +174,6 @@ msgstr "Invalid List ID"
 #: 
 msgid "Default Zip"
 msgstr "Default Postcode"
-
-#: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Customisable report with filtering by date, fund, family, and payment method."
 
 #. plugin:google-analytics:section:2:content
 #: 

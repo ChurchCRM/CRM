@@ -1585,7 +1585,7 @@
       "duration": 12500
     },
     {
-      "spec": "cypress/e2e/ui/reports/labels-font-select.spec.js",
+      "spec": "cypress/e2e/ui/reports/letters-and-labels.spec.js",
       "duration": 6500
     },
     {

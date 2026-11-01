@@ -1,11 +1,22 @@
 ---
 title: CI and test infrastructure
-intent: How the Cypress CI jobs, shards, test database and cleanup guard fit together, and how to triage a red run. Load this when CI fails, a spec is added or removed, or the schema or seed changes.
+intent: How PHP and Cypress tests run locally and in CI. Load this when adding tests, changing test infrastructure, or investigating a red run.
 ---
 
 # CI and test infrastructure
 
-Writing a spec or a permission test: `cypress-testing.md`. Workflow map: `docs/maintainers/github-actions.md`.
+Writing a Cypress spec or a permission test: `cypress-testing.md`. Workflow map: `docs/maintainers/github-actions.md`.
+
+## PHP tests
+
+Commands, setup and package layout: [`tests/php/README.md`](../../../tests/php/README.md).
+
+- Use Nette assertions and the shared bootstrap in automatically discovered `*Test.php` files. Let the framework own discovery, failures and reports.
+- Mirror the code's layer and feature inside the appropriate suite. Test services and models directly; test rendered HTML in View packages; exercise HTTP behavior through Controller integration tests.
+- Keep unit tests independent of database, network and application configuration. Inject controlled collaborators and clocks. Use exact assertions for values and expected exceptions for failure paths.
+- Run database/HTTP tests through the integration command, which isolates application files. Give each test its own database and restore resources in `finally`.
+- Use small generated schemas and scripts for upgrade mechanics. Runtime defaults and report HTML checks do not prove PDF layout or browser workflows; retain focused Cypress and visual verification.
+- Run the affected package before the full local lint checkpoint. PHP tests run serially in separate processes, preserving static-state isolation and reducing timing interference.
 
 ## Pipeline
 
@@ -25,7 +36,7 @@ npm run docker:test:down        # remove containers and volumes
 npm run docker:test:reset:db    # rebuild the test database: Install.sql, then cypress/data/seed.sql
 npm run test                    # all Cypress specs, headless
 npm run test:open               # interactive
-npm run test:php                # PHP regression tests, no Docker or database needed
+npm run test:php                # fast PHP regression suite
 ```
 
 Dev stack: `npm run docker:dev:start`, `docker:dev:stop`, `docker:dev:logs`. Compose profiles: `test` and `ci` in `docker/docker-compose.yaml`; `ci-root`, `ci-subdir` and `ci-new-system` in `docker/docker-compose.parallel.yaml`; the dev stack in `docker/docker-compose.dev.yaml`. CI runs the `docker:ci:*` scripts from `package.json`.
@@ -48,6 +59,8 @@ A check that runs locally belongs in the commit and pre-push checkpoint first (`
 A site can live under `/churchcrm`. `npm run lint` (`subdir-safe urls`) fails on a root-relative or `./` literal handed to `fetch`, `$.ajax`, `url:`, `location`, `href`, `src`, `action` or `header('Location')` in `src/` and `webpack/`. It also scans `cypress/`, but only for constructions that bypass Cypress and discard the install path: a literal root-relative first argument to `new URL()`, a zero-arg `url()` call passed to `new URL()`, a raw `fetch('/…')`, or a `location.href` assignment. Cypress resolves root-relative paths in `cy.request` / `cy.visit` / `cy.intercept` against `baseUrl`, so those stay allowed. A line that is deliberately root-relative ends with `// subdir-ok: <reason>`. Build production URLs from `SystemURLs::getRootPath()` or `window.CRM.root`. Build test URLs that leave Cypress with `absoluteUrl()` from `cypress/support/urls.js`.
 
 `cypress/e2e/ui/navigation/install-path-requests.spec.js` loads every page and fails on a same-origin request outside the install path. Bugs in server-built URLs, `.htaccess` or cookie paths show up in the nightly subdirectory run.
+
+A form `action` that already includes `SystemURLs::getRootPath()` and is then passed to `cy.request` doubles the install path on subdirectory runs (see `cypress-testing.md` → Install path). The lint does not catch that dynamic construction; the nightly subdirectory suite does.
 
 ## Test database
 

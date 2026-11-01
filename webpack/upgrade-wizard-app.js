@@ -706,6 +706,10 @@ function setupApplyStep() {
       }),
     })
       .done((_data) => {
+        if (_data.databaseUpgradePending) {
+          window.location.href = `${window.CRM.root}/external/system/db-upgrade`;
+          return;
+        }
         $spinner.removeClass("active");
 
         $applyStatus.html(`<div class="alert alert-success">
