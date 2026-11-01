@@ -23,7 +23,7 @@ class GroupReportService
      * @param string[]   $fields         FIELDS entries to print
      * @param string[]   $propertyIds    group property ids (c1, c2, ...) to print
      * @param int[]|null $onlyPersonIds  limit to these people (the cart); null for everyone
-     * @return array{title: string, people: array<int, array{name: string, lines: array<int, array{label: string, value: string}>}>}|null null when the group does not exist
+     * @return array{title: string, group_name: string, people: array<int, array{name: string, lines: array<int, array{label: string, value: string}>}>}|null null when the group does not exist
      */
     public function build(int $groupId, int $roleId, array $fields, array $propertyIds, ?array $onlyPersonIds = null): ?array
     {
@@ -113,7 +113,7 @@ class GroupReportService
             $people[] = ['name' => $person->getFullName(), 'lines' => $lines];
         }
 
-        return ['title' => $title, 'people' => $people];
+        return ['title' => $title, 'group_name' => $group->getName(), 'people' => $people];
     }
 
     /**

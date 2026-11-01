@@ -1,5 +1,7 @@
 <?php
 
+use ChurchCRM\Utils\PdfResponse;
+use ChurchCRM\Utils\PdfFilename;
 use ChurchCRM\Emails\GivingStatementEmail;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
@@ -120,11 +122,7 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
         $pdf = (new MpdfRenderer())->renderToString('tax-report', $document);
 
         $label = GivingStatementService::fileLabel((int) substr($dateEnd, 0, 4), count($families) === 1 ? $families[0]['salutation'] : '');
-        $response->getBody()->write($pdf);
-
-        return $response
-            ->withHeader('Content-Type', 'application/pdf')
-            ->withHeader('Content-Disposition', GivingStatementService::contentDisposition($label));
+        return PdfResponse::create($response, $pdf, $label);
     });
 
     // Email one family's giving statement for a year (Family profile → Finance menu).
@@ -158,7 +156,7 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
         $document = GivingStatementService::document($families, $criteria['dateStart'], $criteria['dateEnd']);
         $pdf = (new MpdfRenderer())->renderToString('tax-report', $document);
 
-        $filename = 'GivingStatement-' . preg_replace('/[^\p{L}\p{N}._-]/u', '_', (string) $family->getName()) . '-' . $year . '.pdf';
+        $filename = PdfFilename::create(GivingStatementService::fileLabel($year, (string) $family->getName()));
         $mail = new GivingStatementEmail($emails, (string) $family->getName(), $year, $pdf, $filename);
 
         if ($mail->send()) {

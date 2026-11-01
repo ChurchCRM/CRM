@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Utils\PdfResponse;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
@@ -37,10 +38,6 @@ $app->map(['GET', 'POST'], '/{fundraiserId}/reports/statement', function (Reques
 
     $pdf = (new MpdfRenderer())->renderToString('fundraiser-statement', FundRaiserStatementService::document($fundraiserId, $paddleIds));
 
-    $fileName = 'FundraiserStatement-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
-    $response->getBody()->write($pdf);
-
-    return $response
-        ->withHeader('Content-Type', 'application/pdf')
-        ->withHeader('Content-Disposition', (SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline') . '; filename="' . $fileName . '"');
+    $fileLabel = 'FundraiserStatement-' . date(SystemConfig::getValue('sDateFilenameFormat'));
+    return PdfResponse::create($response, $pdf, $fileLabel);
 });

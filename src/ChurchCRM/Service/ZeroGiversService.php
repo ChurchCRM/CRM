@@ -149,11 +149,9 @@ class ZeroGiversService
         return [$headers, $rows];
     }
 
-    public static function contentDisposition(): string
+    public static function fileLabel(): string
     {
-        $disposition = SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline';
-
-        return $disposition . '; filename="ZeroGivers' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf"';
+        return 'ZeroGivers-' . date(SystemConfig::getValue('sDateFilenameFormat'));
     }
 
     private static function validDate(mixed $value): string

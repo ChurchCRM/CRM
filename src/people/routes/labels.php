@@ -20,6 +20,7 @@ use ChurchCRM\Service\PeopleReportService;
 use ChurchCRM\Slim\Middleware\Request\Auth\StaffRoleAuthMiddleware;
 use ChurchCRM\Utils\CsvExporter;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\PdfResponse;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpBadRequestException;
@@ -68,12 +69,8 @@ function readLabelSheetOptions(Request $request, ?int $defaultSize = null): arra
 
 function respondWithLabelPdf(Response $response, string $pdf, string $baseName): Response
 {
-    $filename = $baseName . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
-    $response->getBody()->write($pdf);
-
-    return $response
-        ->withHeader('Content-Type', 'application/pdf')
-        ->withHeader('Content-Disposition', (SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline') . '; filename="' . $filename . '"');
+    $label = $baseName . '-' . date(SystemConfig::getValue('sDateFilenameFormat'));
+    return PdfResponse::create($response, $pdf, $label);
 }
 
 $app->group('/labels', function (RouteCollectorProxy $group): void {
@@ -128,7 +125,7 @@ $app->group('/labels', function (RouteCollectorProxy $group): void {
             $fontSize
         );
 
-        return respondWithLabelPdf($response, $pdf, 'Labels-');
+        return respondWithLabelPdf($response, $pdf, 'Labels');
     });
 
     $group->get('/name-tags', function (Request $request, Response $response): Response {

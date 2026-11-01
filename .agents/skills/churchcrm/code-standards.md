@@ -18,7 +18,7 @@ PHP 8.4+. Versions: `package.json`, `composer.json`. Review: `maintainer-review-
 - Redirects: `RedirectUtils` — not raw `header('Location')`
 - UI and styling: `frontend-development.md` is the only rule set (Tabler, light and dark, desktop/tablet/phone, `npm run lint`). Wrap `gettext()` / `i18next.t()`
 - JS: page logic goes in a `webpack/` entry, registered in `webpack.config.js` and loaded with one `<script src="<?= SystemURLs::assetVersioned('/skin/v2/NAME.min.js') ?>">`. No inline `<script>` blocks for page logic; a one-line config handoff with `InputUtils::jsonEncodeForScript()` is fine. Read `window.CRM` at run time (inside `onLocalesReady`), never at module load (`webpack-typescript.md`)
-- Reports: never extend `QueryView.php` / `QueryList.php` or add `query_qry` rows (#9921). Core reports → `src/v2/` route + controller + Twig. One church's needs → a plugin in `src/plugins/` (shareable in `src/plugins/community/`)
+- Reports: follow [reports.md](reports.md). Church-specific reports belong in a shareable plugin (`plugin-system.md`).
 - Custom fields: `CustomFieldService` decides who may see a field (`canView()`) and writes values; pages and reports never map FieldSecurity or write `person_custom` / `family_custom` themselves (`npm run lint` checks)
 - Tests with behavior changes
 - `package.json` scripts are one command or a short `&&` chain of npm scripts. Shell logic (`||`, `&`, pipes, `cp`, `rm`, `find`) goes in `scripts/*.js` (Node, cross-platform)

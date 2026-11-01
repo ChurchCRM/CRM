@@ -17,7 +17,7 @@ describe("Group directory report", () => {
         cy.request(groupDirectory({ GroupID: SEEDED_GROUP_ID, GroupRole: "", AddressEnable: "1", EmailEnable: "1", GroupRoleEnable: "1" })).then((response) => {
             expect(response.status).to.eq(200);
             expect(response.headers["content-type"]).to.include("application/pdf");
-            expect(response.headers["content-disposition"]).to.include("Group-Directory");
+            expect(response.headers["content-disposition"]).to.include("GroupDirectory");
             expect(response.body.slice(0, 5)).to.eq("%PDF-");
         });
     });
