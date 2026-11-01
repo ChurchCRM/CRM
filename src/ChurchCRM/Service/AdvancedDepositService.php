@@ -7,6 +7,7 @@ use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\PdfFilename;
 
 /**
  * Advanced Deposit Report: payments (never pledges, ADR 0004 section 6) filtered by date, deposit,
@@ -238,7 +239,7 @@ class AdvancedDepositService
 
     public static function fileLabel(): string
     {
-        return 'DepositReport-' . date(SystemConfig::getValue('sDateFilenameFormat'));
+        return PdfFilename::dated('DepositReport');
     }
 
     public static function csvContentDisposition(): string

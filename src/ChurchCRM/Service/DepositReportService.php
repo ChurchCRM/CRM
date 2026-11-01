@@ -8,6 +8,7 @@ use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\PdfFilename;
 
 /**
  * Print Deposit: the bank deposit ticket (positioned on the preprinted QuickBooks stock) and the
@@ -109,7 +110,7 @@ class DepositReportService
 
     public static function fileLabel(int $depositId): string
     {
-        return 'DepositSlip-' . $depositId . '-' . date(SystemConfig::getValue('sDateFilenameFormat'));
+        return PdfFilename::dated('DepositSlip-' . $depositId);
     }
 
     /**

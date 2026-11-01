@@ -11,6 +11,12 @@ class RedirectUtils
      *
      * @throws \Exception
      */
+    /** Back to the Financial Reports form with its "no records" message for the named report. */
+    public static function noReportRows(string $reportType): void
+    {
+        self::redirect('FinancialReports.php?ReturnMessage=NoRows&ReportType=' . rawurlencode($reportType));
+    }
+
     public static function redirect(string $sRelativeURL): void
     {
         if (substr($sRelativeURL, 0, 1) != '/') {

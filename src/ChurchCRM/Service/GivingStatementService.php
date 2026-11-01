@@ -185,13 +185,11 @@ class GivingStatementService
      */
     public static function document(array $families, string $dateStart, string $dateEnd, bool $remittance = false): array
     {
-        $graphic = self::graphicLetterhead();
         $start = DateTimeUtils::formatDate($dateStart);
         $end = DateTimeUtils::formatDate($dateEnd);
 
         return [
-            'letterhead' => $graphic !== null ? 'graphic' : 'address',
-            'letterhead_image' => $graphic,
+            ...MpdfRenderer::letterhead(),
             'title' => gettext('Giving Statement'),
             'date_range' => $dateStart === $dateEnd ? $start : sprintf(gettext('%s through %s'), $start, $end),
             'opening' => trim(SystemConfig::getValue('sTaxReport1') . ' ' . ($dateStart === $dateEnd ? $start : sprintf(gettext('%s through %s'), $start, $end)) . '.'),
@@ -288,16 +286,6 @@ class GivingStatementService
         }
 
         return ['total' => $total, 'nonDeductible' => $nonDeductible];
-    }
-
-    private static function graphicLetterhead(): ?string
-    {
-        $path = trim((string) SystemConfig::getValue('bDirLetterHead'));
-        if ($path !== '' && (is_readable($path) || preg_match('#^https://#i', $path))) {
-            return $path;
-        }
-
-        return null;
     }
 
     /** Query values arrive as strings or arrays; anything that is not a scalar reads as empty. */

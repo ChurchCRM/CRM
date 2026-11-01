@@ -3,11 +3,12 @@
 use ChurchCRM\Utils\PdfResponse;
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Classification;
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\MpdfRenderer;
 use ChurchCRM\Service\VotingMembersService;
 use ChurchCRM\view\PageHeader;
+use ChurchCRM\Utils\PdfFilename;
+use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -26,7 +27,7 @@ $app->group('/reports/voting-members', function (RouteCollectorProxy $group): vo
         return $page($response, $request->getQueryParams());
     });
     $group->map(['GET', 'POST'], '/download', function (Request $request, Response $response) use ($page): Response {
-        $input = $request->getMethod() === 'POST' ? (array) $request->getParsedBody() : $request->getQueryParams();
+        $input = SlimUtils::requestInput($request);
         // A blank fiscal year uses the current fiscal year.
         if (($input['FYID'] ?? null) === '') {
             unset($input['FYID']);
@@ -41,8 +42,7 @@ $app->group('/reports/voting-members', function (RouteCollectorProxy $group): vo
             return $page($response, $input, gettext('No people match these filters. Check missing birth or membership dates and adjust your criteria.'));
         }
         $pdf = (new MpdfRenderer())->renderToString('voting-members', $report);
-        $date = preg_replace('/[^A-Za-z0-9._-]/', '_', date(SystemConfig::getValue('sDateFilenameFormat')));
-        $fileLabel = 'VotingMembers-' . $date;
+        $fileLabel = PdfFilename::dated('VotingMembers');
         return PdfResponse::create($response, $pdf, $fileLabel);
     });
 })->add(function (Request $request, $handler): Response {

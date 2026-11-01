@@ -93,7 +93,7 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
 
     // The preview popup: the same summary as ?preview=1. The filters arrive in a POST body so a long family selection does not hit a URL length limit.
     $group->map(['GET', 'POST'], '/giving-statements/preview', function (Request $request, Response $response): Response {
-        $input = $request->getMethod() === 'POST' ? (array) $request->getParsedBody() : $request->getQueryParams();
+        $input = SlimUtils::requestInput($request);
 
         return SlimUtils::renderJSON($response, GivingStatementService::summary(
             GivingStatementService::paymentsByFamily(GivingStatementService::criteriaFromQuery($input))
@@ -102,7 +102,7 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
 
     // Giving Statement: PDF or CSV for the chosen filters, from the report form or a family link.
     $group->map(['GET', 'POST'], '/giving-statements/download', function (Request $request, Response $response): Response {
-        $input = $request->getMethod() === 'POST' ? (array) $request->getParsedBody() : $request->getQueryParams();
+        $input = SlimUtils::requestInput($request);
         $criteria = GivingStatementService::criteriaFromQuery($input);
         $groups = GivingStatementService::paymentsByFamily($criteria);
         if ($groups === []) {

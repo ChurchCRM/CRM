@@ -1,10 +1,10 @@
 <?php
 
 use ChurchCRM\Utils\PdfResponse;
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
 use ChurchCRM\Service\FundraiserItemService;
 use ChurchCRM\Service\MpdfRenderer;
+use ChurchCRM\Utils\PdfFilename;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
@@ -32,7 +32,7 @@ $app->get('/{fundraiserId}/reports/bid-sheets', function (Request $request, Resp
         'items' => FundraiserItemService::items($fundraiser),
     ]);
 
-    $fileLabel = 'FundraiserBidSheets-' . date(SystemConfig::getValue('sDateFilenameFormat'));
+    $fileLabel = PdfFilename::dated('FundraiserBidSheets');
     return PdfResponse::create($response, $pdf, $fileLabel);
 });
 
@@ -62,7 +62,7 @@ $app->get('/{fundraiserId}/reports/certificates', function (Request $request, Re
         'items' => FundraiserItemService::items($fundraiser),
     ]);
 
-    $fileLabel = 'FundraiserCertificates-' . date(SystemConfig::getValue('sDateFilenameFormat'));
+    $fileLabel = PdfFilename::dated('FundraiserCertificates');
     return PdfResponse::create($response, $pdf, $fileLabel);
 });
 
@@ -92,6 +92,6 @@ $app->get('/{fundraiserId}/reports/catalog', function (Request $request, Respons
         'items' => FundraiserItemService::items($fundraiser),
     ]);
 
-    $fileLabel = 'FundraiserCatalog-' . date(SystemConfig::getValue('sDateFilenameFormat'));
+    $fileLabel = PdfFilename::dated('FundraiserCatalog');
     return PdfResponse::create($response, $pdf, $fileLabel);
 });

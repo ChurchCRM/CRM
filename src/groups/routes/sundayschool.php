@@ -25,6 +25,7 @@ use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
 use ChurchCRM\Volunteer\Service\VolunteerClassLinkService;
+use ChurchCRM\Utils\PdfFilename;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -56,7 +57,7 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
             'classes' => ClassListService::classes($classIds($request)),
             'fiscal_year' => FinancialService::formatFiscalYear(FiscalYearUtils::getCurrentFiscalYearId()),
         ]);
-        $fileLabel = trim('ClassList ' . date(SystemConfig::getValue('sDateFilenameFormat')));
+        $fileLabel = trim(PdfFilename::dated('ClassList'));
         return PdfResponse::create($response, $pdf, $fileLabel);
     });
 
@@ -100,7 +101,7 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
             'fiscal_year' => FinancialService::formatFiscalYear($fiscalYearId),
         ], true);
 
-        $fileLabel = 'ClassAttendance ' . date(SystemConfig::getValue('sDateFilenameFormat'));
+        $fileLabel = PdfFilename::dated('ClassAttendance');
         return PdfResponse::create($response, $pdf, $fileLabel);
     });
 

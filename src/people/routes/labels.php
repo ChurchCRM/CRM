@@ -21,6 +21,7 @@ use ChurchCRM\Slim\Middleware\Request\Auth\StaffRoleAuthMiddleware;
 use ChurchCRM\Utils\CsvExporter;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\PdfResponse;
+use ChurchCRM\Utils\PdfFilename;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpBadRequestException;
@@ -69,7 +70,7 @@ function readLabelSheetOptions(Request $request, ?int $defaultSize = null): arra
 
 function respondWithLabelPdf(Response $response, string $pdf, string $baseName): Response
 {
-    $label = $baseName . '-' . date(SystemConfig::getValue('sDateFilenameFormat'));
+    $label = PdfFilename::dated($baseName);
     return PdfResponse::create($response, $pdf, $label);
 }
 

@@ -12,6 +12,7 @@ use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\PdfFilename;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 /**
@@ -61,11 +62,8 @@ class PledgeReminderService
             }
         }
 
-        $graphic = MpdfRenderer::graphicLetterhead();
-
         return [
-            'letterhead' => $graphic !== null ? 'graphic' : 'address',
-            'letterhead_image' => $graphic,
+            ...MpdfRenderer::letterhead(),
             'opening' => trim(rtrim((string) SystemConfig::getValue('sReminder1')) . ' ' . FiscalYearUtils::formatFiscalYearLabel($criteria['fiscalYearId']) . $fundClause . '.'),
             'no_pledge' => trim((string) SystemConfig::getValue('sReminderNoPledge') . ($fundClause !== '' ? ' (' . trim($fundClause) . ')' : '')),
             'no_payments' => (string) SystemConfig::getValue('sReminderNoPayments'),
@@ -77,7 +75,7 @@ class PledgeReminderService
 
     public static function fileLabel(): string
     {
-        return 'PledgeReminders-' . date(SystemConfig::getValue('sDateFilenameFormat'));
+        return PdfFilename::dated('PledgeReminders');
     }
 
     /**

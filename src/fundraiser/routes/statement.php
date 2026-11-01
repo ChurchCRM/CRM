@@ -1,12 +1,12 @@
 <?php
 
 use ChurchCRM\Utils\PdfResponse;
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
 use ChurchCRM\Service\FundRaiserStatementService;
 use ChurchCRM\Service\MpdfRenderer;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\PdfFilename;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
@@ -38,6 +38,6 @@ $app->map(['GET', 'POST'], '/{fundraiserId}/reports/statement', function (Reques
 
     $pdf = (new MpdfRenderer())->renderToString('fundraiser-statement', FundRaiserStatementService::document($fundraiserId, $paddleIds));
 
-    $fileLabel = 'FundraiserStatement-' . date(SystemConfig::getValue('sDateFilenameFormat'));
+    $fileLabel = PdfFilename::dated('FundraiserStatement');
     return PdfResponse::create($response, $pdf, $fileLabel);
 });

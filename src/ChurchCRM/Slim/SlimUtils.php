@@ -555,6 +555,12 @@ class SlimUtils
     /**
      * Get an integer query parameter from the request URI
      */
+    /** The form fields of a POST, else the query string: reports take their options either way. */
+    public static function requestInput(Request $request): array
+    {
+        return $request->getMethod() === 'POST' ? (array) $request->getParsedBody() : $request->getQueryParams();
+    }
+
     public static function getURIParamInt(Request $request, string $paramName): int
     {
         $value = self::getUriParamString($request, $paramName);

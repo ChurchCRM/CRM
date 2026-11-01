@@ -118,6 +118,23 @@ class MpdfRenderer
         return null;
     }
 
+    /**
+     * The letterhead keys every letter template takes: the graphic letterhead when one is set,
+     * else the church address block. `address` skips the graphic; `none` leaves blank space for
+     * pre-printed stationery.
+     *
+     * @return array{letterhead: string, letterhead_image: ?string}
+     */
+    public static function letterhead(string $choice = 'auto'): array
+    {
+        if ($choice === 'none') {
+            return ['letterhead' => 'none', 'letterhead_image' => null];
+        }
+        $graphic = $choice === 'address' ? null : self::graphicLetterhead();
+
+        return ['letterhead' => $graphic !== null ? 'graphic' : 'address', 'letterhead_image' => $graphic];
+    }
+
     private function makeMpdf(bool $landscape = false, array $mpdfOptions = []): Mpdf
     {
         return new Mpdf($mpdfOptions + [

@@ -10,6 +10,7 @@ PHP 8.4+. Versions: `package.json`, `composer.json`. Review: `maintainer-review-
 - ORM for DB. No new `RunQuery()` / raw SQL
 - Business logic in `src/ChurchCRM/Service/`. A service never names its callers (route, page, form, cart, report); see `service-layer.md`
 - No pass-through shells: a function, class, or page that only forwards to another (a wrapper around a service method, a page that POSTs to itself to redirect) is deleted and its callers use the target directly
+- A value an object cannot work without is a constructor argument. Setters and fluent methods are for optional values
 - `use` imports. Explicit `?int $param = null`
 - Deleted `Functions.php` globals → `ChurchCRM\Utils\*`
 - IDs: `(int)` or `InputUtils::filterInt()`

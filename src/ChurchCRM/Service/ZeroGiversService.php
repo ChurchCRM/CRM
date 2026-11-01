@@ -10,6 +10,7 @@ use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\PdfFilename;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 /**
@@ -103,7 +104,6 @@ class ZeroGiversService
     {
         $start = DateTimeUtils::formatDate($dateStart);
         $end = DateTimeUtils::formatDate($dateEnd);
-        $graphic = $letterhead === 'graphic' ? MpdfRenderer::graphicLetterhead() : null;
 
         $letters = [];
         foreach ($families as $family) {
@@ -114,8 +114,7 @@ class ZeroGiversService
         }
 
         return [
-            'letterhead' => $graphic !== null ? 'graphic' : ($letterhead === 'none' ? 'none' : 'address'),
-            'letterhead_image' => $graphic,
+            ...MpdfRenderer::letterhead($letterhead),
             'opening' => trim(SystemConfig::getValue('sTaxReport1') . ' ' . ($dateStart === $dateEnd ? $start : $start . ' – ' . $end) . ' ' . SystemConfig::getValue('sZeroGivers')),
             'thanks' => SystemConfig::getValue('sZeroGivers2'),
             'questions' => SystemConfig::getValue('sZeroGivers3'),
@@ -151,7 +150,7 @@ class ZeroGiversService
 
     public static function fileLabel(): string
     {
-        return 'ZeroGivers-' . date(SystemConfig::getValue('sDateFilenameFormat'));
+        return PdfFilename::dated('ZeroGivers');
     }
 
     private static function validDate(mixed $value): string

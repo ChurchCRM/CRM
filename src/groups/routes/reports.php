@@ -11,6 +11,7 @@ use ChurchCRM\Service\MpdfRenderer;
 use ChurchCRM\Service\PhotoBookService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
+use ChurchCRM\Utils\PdfFilename;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
@@ -97,7 +98,7 @@ $app->post('/reports/group-directory', function (Request $request, Response $res
 
     $pdf = (new MpdfRenderer())->renderToString('group-directory', $report);
 
-    $fileLabel = trim('GroupDirectory ' . $report['group_name'] . ' ' . date(SystemConfig::getValue('sDateFilenameFormat')));
+    $fileLabel = PdfFilename::dated(trim('GroupDirectory ' . $report['group_name']));
     return PdfResponse::create($response, $pdf, $fileLabel);
 });
 
@@ -112,6 +113,6 @@ $app->get('/reports/photo-book', function (Request $request, Response $response)
         'sections' => PhotoBookService::sections($groupIds),
     ]);
     $groupName = count($groupIds) === 1 ? (string) GroupQuery::create()->findOneById($groupIds[0])?->getName() : '';
-    $fileLabel = trim('PhotoBook ' . $groupName . ' ' . date(SystemConfig::getValue('sDateFilenameFormat')));
+    $fileLabel = PdfFilename::dated(trim('PhotoBook ' . $groupName));
     return PdfResponse::create($response, $pdf, $fileLabel);
 });
