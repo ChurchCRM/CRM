@@ -1,0 +1,137 @@
+{% extends "layout.html.twig" %}
+
+{#
+  Directory — the people the church lists, with the details Admin → Member Portal → Directory
+  chooses to share.
+
+  Variables: `groups` (each `letter` and `entries`), `entryCount`, `browse`, `query`,
+  `truncated`, `searchMinLength` and `searchLimit`. With `browse` false the church allows search
+  only: `groups` holds just the matches for `query`, and nothing before a query is typed. An
+  entry is a family (`kind` "family", several `members`) or one person (`kind` "person", one
+  member). An empty string or list is a detail the church does not show.
+#}
+
+{% macro avatar(item, large) %}
+    {% if item.photoUrl %}
+    <img class="portal-avatar{% if large %} portal-avatar-lg{% endif %}" src="{{ item.photoUrl }}" alt="" loading="lazy">
+    {% else %}
+    <span class="portal-avatar portal-avatar-initials{% if large %} portal-avatar-lg{% endif %}" aria-hidden="true">{{ item.initials }}</span>
+    {% endif %}
+{% endmacro %}
+
+{% macro contacts(member) %}
+    {% set phones = [
+        ['homePhone', gettext('Home'), member.homePhone],
+        ['cellPhone', gettext('Cell'), member.cellPhone],
+        ['workPhone', gettext('Work'), member.workPhone],
+    ] %}
+    {% if member.birthday or member.homePhone or member.cellPhone or member.workPhone or member.email or member.workEmail %}
+    <span class="portal-member-contact" data-directory-contact="{{ member.id }}">
+        {% if member.birthday %}<span data-field="birthday">{{ gettext('Birthday') }} {{ member.birthday }}</span>{% endif %}
+        {% for phone in phones %}{% if phone[2] %}<a href="tel:{{ phone[2] }}" data-field="{{ phone[0] }}">{{ phone[1] }} {{ phone[2] }}</a>{% endif %}{% endfor %}
+        {% if member.email %}<a href="mailto:{{ member.email }}" data-field="email">{{ member.email|email_wrap }}</a>{% endif %}
+        {% if member.workEmail %}<a href="mailto:{{ member.workEmail }}" data-field="workEmail">{{ member.workEmail|email_wrap }}</a>{% endif %}
+    </span>
+    {% endif %}
+{% endmacro %}
+
+{% block content %}
+<div class="portal-directory"{% if browse %} data-directory-browse{% endif %}>
+
+    <section class="portal-card">
+        <h1 class="portal-page-title">{{ gettext('Directory') }}</h1>
+        <form class="portal-directory-search" method="get" action="{{ url('/portal/directory') }}" role="search">
+            <label class="portal-field-label" for="portal-directory-search">{{ gettext('Find someone') }}</label>
+            <div class="portal-directory-search-row">
+                <input class="portal-input" type="search" name="q" id="portal-directory-search" value="{{ query }}" autocomplete="off"
+                       placeholder="{{ gettext('Type a name') }}"{% if not browse %} minlength="{{ searchMinLength }}" required{% endif %}>
+                {% if not browse %}
+                <button class="portal-button" type="submit" id="portal-directory-search-button">
+                    <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                    <span>{{ gettext('Search') }}</span>
+                </button>
+                {% endif %}
+            </div>
+        </form>
+        {% if browse and entryCount > 0 %}
+        <nav class="portal-directory-letters" aria-label="{{ gettext('Jump to a letter') }}">
+            {% for group in groups %}
+            <a href="#portal-directory-{{ group.letter }}" data-directory-letter="{{ group.letter }}">{{ group.letter }}</a>
+            {% endfor %}
+        </nav>
+        {% endif %}
+        {% if not browse and query|length < searchMinLength %}
+        <p class="portal-card-text" id="portal-directory-prompt">{{ gettext('Type at least %d letters of a name, then search.')|format(searchMinLength) }}</p>
+        {% elseif truncated %}
+        <p class="portal-card-text" id="portal-directory-truncated">{{ gettext('Showing the first %d matches. Type more of the name to find the person you are looking for.')|format(searchLimit) }}</p>
+        {% elseif entryCount == 0 and (query or not browse) %}
+        <p class="portal-card-text" id="portal-directory-none">{{ gettext('Nobody in the directory matches that name.') }}</p>
+        {% elseif entryCount == 0 %}
+        <p class="portal-card-text" id="portal-directory-empty">{{ gettext('Nobody is listed in the directory yet.') }}</p>
+        {% endif %}
+    </section>
+
+    <p class="portal-card-text" id="portal-directory-no-match" hidden>{{ gettext('Nobody in the directory matches that name.') }}</p>
+
+    {# One grid for every entry: browsing, a full-width letter heading starts each letter;
+       search results have no headings, so matches fill every column. #}
+    <div class="portal-directory-grid">
+        {% for group in groups %}
+            {% if browse and not query %}
+            <h2 class="portal-directory-letter" id="portal-directory-{{ group.letter }}" data-directory-heading="{{ group.letter }}">{{ group.letter }}</h2>
+            {% endif %}
+            {% for entry in group.entries %}
+            <article class="portal-card portal-directory-entry" data-directory-entry="{{ entry.kind }}-{{ entry.id }}" data-letter="{{ group.letter }}" data-search="{{ entry.searchText }}">
+                <header class="portal-directory-entry-header">
+                    {{ _self.avatar(entry, true) }}
+                    <div class="portal-member-text">
+                        <h3 class="portal-card-title">{{ entry.name }}</h3>
+                        {% if entry.kind == 'person' %}{{ _self.contacts(entry.members[0]) }}{% endif %}
+                    </div>
+                </header>
+
+                {% if entry.address or entry.mailingAddress or entry.homePhone or entry.anniversary %}
+                <dl class="portal-card-details">
+                    {% if entry.address %}
+                    <dt>{{ gettext('Address') }}</dt>
+                    <dd data-field="address">{% for line in entry.address %}{{ line }}{% if not loop.last %}<br>{% endif %}{% endfor %}</dd>
+                    {% endif %}
+                    {% if entry.mailingAddress %}
+                    <dt>{{ gettext('Mailing Address') }}</dt>
+                    <dd data-field="mailingAddress">{% for line in entry.mailingAddress %}{{ line }}{% if not loop.last %}<br>{% endif %}{% endfor %}</dd>
+                    {% endif %}
+                    {% if entry.homePhone %}
+                    <dt>{{ gettext('Home Phone') }}</dt>
+                    <dd data-field="familyHomePhone"><a href="tel:{{ entry.homePhone }}">{{ entry.homePhone }}</a></dd>
+                    {% endif %}
+                    {% if entry.anniversary %}
+                    <dt>{{ gettext('Anniversary') }}</dt>
+                    <dd data-field="anniversary">{{ entry.anniversary }}</dd>
+                    {% endif %}
+                </dl>
+                {% endif %}
+
+                {% if entry.kind == 'family' %}
+                <ul class="portal-member-list">
+                    {% for member in entry.members %}
+                    <li class="portal-member" data-directory-member="{{ member.id }}">
+                        {{ _self.avatar(member, false) }}
+                        <span class="portal-member-text">
+                            <span class="portal-member-fullname">{{ member.name }}</span>
+                            {{ _self.contacts(member) }}
+                        </span>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </article>
+            {% endfor %}
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}
+
+{% block scripts_extra %}
+<script src="{{ asset('/skin/v2/portal-directory.min.js') }}"></script>
+{% endblock %}

@@ -15,7 +15,7 @@ Define the `ConfigItem` in `SystemConfig::buildConfigs()` (that persists the val
 
 ### Member Portal settings
 
-`/admin/member-portal` (`src/admin/routes/member-portal.php`, `src/admin/views/member-portal.php`) hosts the portal's settings, each in the tab it affects, through the Settings Panel component: `bPortalDeveloperMode` on Themes, `bPortalAllowBirthdayEdit` and `bPortalShowVolunteer` on Permissions. Its `ConfigItem`s (`sMemberPortalTheme`, `aPortalCalendars` and those three) are declared in `buildConfigs()`. The Calendars tab saves `aPortalCalendars` one switch at a time; the portal shows its calendar while at least one calendar is switched on.
+`/admin/member-portal` (`src/admin/routes/member-portal.php`, `src/admin/views/member-portal.php`) hosts the portal's settings, each in the tab it affects, through the Settings Panel component: `bPortalDeveloperMode` on Themes, `bPortalAllowBirthdayEdit` and `bPortalShowVolunteer` on Permissions, `bPortalShowDirectory` on Directory. Its `ConfigItem`s (`sMemberPortalTheme`, `aPortalCalendars` and those four) are declared in `buildConfigs()`. The Calendars tab saves `aPortalCalendars` one switch at a time; the portal shows its calendar while at least one calendar is switched on.
 
 The booleans auto-save through `POST /admin/api/system/config/{name}`. `sMemberPortalTheme` saves through `POST /admin/api/member-portal/theme`, which runs `ThemeManager::validate()` and answers 409 with the findings when the theme cannot render.
 

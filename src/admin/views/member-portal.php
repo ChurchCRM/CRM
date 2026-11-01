@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Portal\Auth\MemberSignInRule;
+use ChurchCRM\Portal\PortalDirectoryService;
 use ChurchCRM\Portal\ThemeManager;
 use ChurchCRM\Portal\ThemeValidator;
 use ChurchCRM\Utils\DateTimeUtils;
@@ -103,6 +104,11 @@ $themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration
         <li class="nav-item" role="presentation" id="portal-calendars-tab-item">
             <a class="nav-link" id="portal-calendars-tab" data-bs-toggle="tab" href="#portal-calendars" role="tab">
                 <i class="fa-solid fa-calendar-days me-2"></i><?= gettext('Calendars') ?>
+            </a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="portal-directory-tab" data-bs-toggle="tab" href="#portal-directory" role="tab">
+                <i class="fa-solid fa-address-book me-2"></i><?= gettext('Directory') ?>
             </a>
         </li>
     </ul>
@@ -562,6 +568,116 @@ $themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration
                 </div>
                 <div class="card-footer text-secondary"><?= gettext('Changes save as you make them.') ?></div>
             </div>
+        </div>
+
+        <!-- ============================ Directory =========================== -->
+        <?php
+        $directorySettings = $directory['settings'];
+        $directoryChecks = static function (string $name, array $ticked) use ($directory): string {
+            $html = '';
+            foreach ($directory['classifications'] as $classification) {
+                $id = (int) $classification['id'];
+                $html .= '<label class="form-check">'
+                    . '<input class="form-check-input" type="checkbox" name="' . $name . '" id="portalDirectory-' . $name . '-' . $id . '" value="' . $id . '"' . (in_array($id, $ticked, true) ? ' checked' : '') . '>'
+                    . '<span class="form-check-label">' . InputUtils::escapeHTML($classification['name'])
+                    . ' <span class="badge bg-secondary text-white ms-1">' . (int) $classification['activeCount'] . '</span></span>'
+                    . '</label>';
+            }
+
+            return $html;
+        };
+        $directoryFields = [
+            'address' => gettext('Primary Address'),
+            'mailingAddress' => gettext('Mailing Address if Different'),
+            'homePhone' => gettext('Family Home Phone'),
+            'personalPhone' => gettext('Personal Home Phone'),
+            'workPhone' => gettext('Personal Work Phone'),
+            'cellPhone' => gettext('Personal Cell Phone'),
+            'email' => gettext('Personal Email'),
+            'workEmail' => gettext('Personal Work/Other Email'),
+            'photo' => gettext('Photos'),
+        ];
+        $directoryDateModes = [
+            PortalDirectoryService::DATE_WITH_YEAR => gettext('Show with year'),
+            PortalDirectoryService::DATE_WITHOUT_YEAR => gettext('Show without year'),
+            PortalDirectoryService::DATE_HIDDEN => gettext('Do not show'),
+        ];
+        ?>
+        <div class="tab-pane fade" id="portal-directory" role="tabpanel">
+            <div id="portalDirectorySectionPanel" class="mb-3"></div>
+
+            <form id="portalDirectoryForm" novalidate>
+                <div class="row row-cards">
+                    <div class="col-12 col-lg-6">
+                        <div class="card h-100">
+                            <div class="card-header">
+                                <h3 class="card-title"><i class="fa-solid fa-users me-2"></i><?= gettext('Who is listed') ?></h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-text mb-2"><?= gettext('People with these classifications appear in the directory. The number is how many active people have each classification.') ?></div>
+                                <?= $directoryChecks('listed', $directorySettings['listed']) ?>
+                                <fieldset class="mt-3">
+                                    <legend class="form-label"><?= gettext('Search method') ?></legend>
+                                    <label class="form-check">
+                                        <input class="form-check-input" type="radio" name="browse" id="portalDirectory-browse-1" value="1" <?= $directorySettings['browse'] ? 'checked' : '' ?>>
+                                        <span class="form-check-label"><?= gettext('Browse the full directory') ?></span>
+                                        <span class="form-check-description"><?= gettext('Everyone listed, A to Z, with a search box.') ?></span>
+                                    </label>
+                                    <label class="form-check">
+                                        <input class="form-check-input" type="radio" name="browse" id="portalDirectory-browse-0" value="0" <?= $directorySettings['browse'] ? '' : 'checked' ?>>
+                                        <span class="form-check-label"><?= gettext('Search only') ?></span>
+                                        <span class="form-check-description"><?= sprintf(gettext('Members type at least %d letters of a name and see up to %d matches. The full list is never shown.'), PortalDirectoryService::SEARCH_MIN_LENGTH, PortalDirectoryService::SEARCH_LIMIT) ?></span>
+                                    </label>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div class="card h-100">
+                            <div class="card-header">
+                                <h3 class="card-title"><i class="fa-solid fa-eye me-2"></i><?= gettext('Who can see it') ?></h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-text mb-2"><?= gettext('Members with these classifications find Directory in the Member Portal menu.') ?></div>
+                                <?= $directoryChecks('viewers', $directorySettings['viewers']) ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title"><i class="fa-solid fa-list-check me-2"></i><?= gettext('Information to Include') ?></h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12 col-md-6">
+                                        <?php foreach ($directoryFields as $field => $label): ?>
+                                            <label class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="fields" id="portalDirectory-field-<?= $field ?>" value="<?= $field ?>" <?= $directorySettings['fields'][$field] ? 'checked' : '' ?>>
+                                                <span class="form-check-label"><?= $label ?></span>
+                                            </label>
+                                        <?php endforeach; ?>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <?php foreach (['birthday' => gettext('Birthday'), 'anniversary' => gettext('Wedding Anniversary')] as $dateField => $dateLabel): ?>
+                                            <div class="mb-3">
+                                                <label class="form-label" for="portalDirectory-<?= $dateField ?>"><?= $dateLabel ?></label>
+                                                <select class="form-select" name="<?= $dateField ?>" id="portalDirectory-<?= $dateField ?>">
+                                                    <?php foreach ($directoryDateModes as $mode => $modeLabel): ?>
+                                                        <option value="<?= $mode ?>" <?= $directorySettings[$dateField] === $mode ? 'selected' : '' ?>><?= $modeLabel ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                        <?php endforeach; ?>
+                                        <div class="form-text"><?= gettext('A person whose record hides their age never shows a birth year.') ?></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer text-secondary"><?= gettext('Changes save as you make them.') ?></div>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
 
     </div>

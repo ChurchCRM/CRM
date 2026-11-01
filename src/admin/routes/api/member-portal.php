@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\Portal\PortalCalendarService;
+use ChurchCRM\Portal\PortalDirectoryService;
 use ChurchCRM\Service\MemberSignInListService;
 use ChurchCRM\Service\MemberSignInSettingsService;
 use ChurchCRM\Portal\PortalStatsService;
@@ -34,6 +35,9 @@ $app->group('/api/member-portal', function (RouteCollectorProxy $group): void {
     // PortalCalendarService::setVisible(), which accepts only entries naming a
     // calendar this installation actually has.
     $group->post('/calendars', 'saveMemberPortalCalendarsAPI');
+    // PortalDirectoryService::save() validates every part of the body.
+    $group->get('/directory', 'getMemberPortalDirectoryAPI');
+    $group->post('/directory', 'saveMemberPortalDirectoryAPI')->add(new CSRFMiddleware());
     // The Sign-in tab (member sign-in design §11.1). MemberSignInSettingsService
     // validates every field; the generic config API routes these keys through it too.
     $group->get('/sign-in', 'getMemberSignInSettingsAPI');
@@ -343,4 +347,35 @@ function dismissMemberPortalFormerAccountsNoticeAPI(Request $request, Response $
     (new MemberSignInSettingsService())->dismissFormerAccountsNotice();
 
     return SlimUtils::renderSuccessJSON($response);
+}
+
+/**
+ * GET /admin/api/member-portal/directory — who the directory lists, who can see it and what it shows.
+ */
+function getMemberPortalDirectoryAPI(Request $request, Response $response): Response
+{
+    return SlimUtils::renderJSON($response, ['settings' => PortalDirectoryService::settings()]);
+}
+
+/**
+ * POST /admin/api/member-portal/directory {"listed": [1], "viewers": [1], "fields": {...},
+ * "birthday": "withoutYear", "anniversary": "withoutYear"} — any subset of the parts.
+ *
+ *   400 — a part is malformed or names a classification or field that does not exist
+ *   200 — saved; the whole stored choice comes back
+ */
+function saveMemberPortalDirectoryAPI(Request $request, Response $response): Response
+{
+    $input = $request->getParsedBody();
+    if (!is_array($input)) {
+        return SlimUtils::renderErrorJSON($response, gettext('Send the directory settings as a JSON object.'), [], 400, null, $request);
+    }
+
+    try {
+        $settings = PortalDirectoryService::save($input);
+    } catch (\InvalidArgumentException $e) {
+        return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400, null, $request);
+    }
+
+    return SlimUtils::renderJSON($response, ['success' => true, 'settings' => $settings]);
 }

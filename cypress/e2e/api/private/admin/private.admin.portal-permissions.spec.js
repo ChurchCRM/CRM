@@ -120,11 +120,15 @@ describe("Admin → Member Portal permissions and given grants", () => {
     });
 
     it("names the switch that turns a permission off for everyone, and links to where it is set", () => {
+        cy.getSystemConfig("bPortalShowDirectory").as("showDirectory");
         cy.getSystemConfig("bPortalShowVolunteer").then((showVolunteer) => {
             cy.getMemberPortalCalendars().then((shared) => {
                 cy.makePrivateAdminAPICall("POST", "/admin/api/system/config/bPortalShowVolunteer", { value: "0" }, 200);
+                cy.makePrivateAdminAPICall("POST", "/admin/api/system/config/bPortalShowDirectory", { value: "0" }, 200);
                 cy.shareMemberPortalCalendars([]);
                 catalog().then((capabilities) => {
+                    expect(capabilities["portal.directory.view"].statusLabel).to.eq('Off for everyone: "Show the member directory" is switched off');
+                    expect(capabilities["portal.directory.view"].statusUrl).to.eq("/admin/member-portal#portal-directory");
                     expect(capabilities["portal.volunteer.use"].statusLabel).to.eq('Off for everyone: "Show volunteering" is switched off');
                     expect(capabilities["portal.volunteer.use"].statusUrl).to.eq("/admin/member-portal#portal-permissions");
                     expect(capabilities["portal.calendar.view"].statusLabel).to.eq("Off for everyone: no calendar is shared with members");
@@ -135,6 +139,7 @@ describe("Admin → Member Portal permissions and given grants", () => {
                 cy.restoreSystemConfig("bPortalShowVolunteer", showVolunteer);
             });
         });
+        cy.get("@showDirectory").then((showDirectory) => cy.restoreSystemConfig("bPortalShowDirectory", showDirectory));
     });
 
     it("counts holders among everyone the rules let in and staff, from each rule's own data", () => {

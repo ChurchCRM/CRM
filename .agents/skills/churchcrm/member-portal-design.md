@@ -35,7 +35,7 @@ Theme authors: https://docs.churchcrm.io/administration/member-portal-theme-guid
 | P17 | Volunteer scopes count for members: a team leader manages their own team in the portal (`volunteer.team.manage`). Coordinators and managers are staff accounts. |
 | P18 | Every portal page, API route and nav entry names a portal capability (`ChurchCRM\Portal\Permissions`, member sign-in design §8). Core and plugins register capabilities and rules the same way (`plugin-development.md` -> "Member Portal"). |
 
-Out of scope: contribution history and online giving, per-event visibility flags, member directory search (needs a privacy model; the team leader's name-only Add Volunteer picker, #10531, is not that), personal-device check-in, theme editor or upload UI, theming the admin shell.
+Out of scope: contribution history and online giving, per-event visibility flags, personal-device check-in, theme editor or upload UI, theming the admin shell. The member directory (below) is a draft that needs a privacy model first: whether a member can leave themselves out of the portal and printed directories is open in #10869 (design: `docs/design/member-directory.md`, #10870), and #10524's protected-household policy must apply. The team leader's name-only Add Volunteer picker (#10531) is not a directory.
 
 ## Layout on disk
 
@@ -187,12 +187,13 @@ Administrators only, under People Settings (breadcrumb and header button), one p
 - **Permissions:** the portal permissions (member sign-in design), under a "What members can use" panel for `bPortalAllowBirthdayEdit` and `bPortalShowVolunteer`.
 - **Themes:** discovered folders (`listThemes()`, "System default" first) with display name, author, overridden-template count and validation badge. Each row's Check and Activate show their findings under that row; activation goes through `POST /admin/api/member-portal/theme` so it can refuse. Developer mode sits below the list.
 - **Calendars:** one list of church calendars, ministry calendars and system calendars with a "Show in Member Portal" switch each, saved as it changes. Members see the Calendar page, its nav entry, its API and the home card (`portal.calendar.view`, Twig `portal.showCalendar`) while at least one calendar is switched on; a line above the list says which.
+- **Directory:** `bPortalShowDirectory` on top; below it the classifications that are listed and the ones that may see it (both Member by default), the printed directory's "Information to Include" checkboxes, Birthday and Wedding Anniversary as "Show with year", "Show without year" (default) or "Do not show", and the search method: "Browse the full directory" (default) or "Search only". Changes auto-save through `POST /admin/api/member-portal/directory`, which `PortalDirectoryService::save()` validates.
 
-The three booleans use the Settings Panel component and auto-save through `POST /admin/api/system/config/{name}`. The Sign-in tab saves each control as it changes; every tab says "Changes save as you make them" and has no Save button.
+The four booleans use the Settings Panel component and auto-save through `POST /admin/api/system/config/{name}`. The Sign-in tab saves each control as it changes; every tab says "Changes save as you make them" and has no Save button.
 
-Admin APIs: `/admin/api/member-portal/{stats,themes,theme/{name}/validation,theme,calendars}`.
+Admin APIs: `/admin/api/member-portal/{stats,themes,theme/{name}/validation,theme,calendars,directory}`.
 
-Config items: `sMemberPortalTheme`, `bPortalDeveloperMode`, `bPortalShowVolunteer`, `bPortalAllowBirthdayEdit`, `aPortalCalendars`.
+Config items: `sMemberPortalTheme`, `bPortalDeveloperMode`, `bPortalShowVolunteer`, `bPortalAllowBirthdayEdit`, `bPortalShowDirectory`, `aPortalCalendars`, `aPortalDirectory`.
 
 ## Screens and APIs
 
@@ -222,6 +223,13 @@ Cards: next portal-visible events, the member's next volunteer assignment and pe
 - UI: FullCalendar (month/agenda/list, read-only), one colour per calendar, an event detail panel. Legend entries are `<button aria-pressed data-calendar-key>` toggles that hide and show a calendar's events in place; the choice persists in `localStorage` `churchcrm.portal.calendar.hidden` (every access guarded). A theme without the toggle markup keeps a plain legend.
 - Subscribe: a **Subscribe** button opens a dialog with one checkbox per shared calendar and returns one address, `/api/public/portal-calendar/{token}/calendar.ics`. The token (32 random bytes as hex, `psi_CalendarToken`) is the credential because calendar apps cannot sign in; **Reset link** (`POST /api/portal/calendar/subscription/reset`) retires it at once. The feed serves the member's selection (`psi_CalendarSelection`, `"<type>:<id>"` strings) intersected with the calendars shared now, includes only events, applies the same privacy rewriting, and answers an unknown token with a bare 404. Format: RFC 5545, three months back to eighteen months ahead, `VALUE=DATE` for whole-day and virtual events, UTC for timed ones, `CATEGORIES` naming the source calendar; built by `PortalCalendarFeed`. API: `GET/PUT /api/portal/calendar/subscription`.
 - Volunteer occurrences not linked to an event live under "My Volunteer Schedule", not on calendars.
+
+### Directory (`/portal/directory`)
+
+- Capability `portal.directory.view`: feature switch `bPortalShowDirectory`, granted by `DirectoryViewerRule` to people whose classification is in the viewer list. The rule reads the setting on every request.
+- `PortalDirectoryService` decides who is listed: the listed classifications, alive, active, not awaiting review, outside deactivated families. `withRecordPolicy()` is where #10524's protected-household policy applies. A family with two or more listed people is one entry (head, spouse, children, others, as the printed directory orders them); anyone else is a person entry. A field the administrator leaves off is never read into an entry. A person with Hide Age never shows a birth year.
+- `GET /api/portal/directory` returns the same groups the page renders. `GET /api/portal/directory/{person|family}/{id}/photo` serves a photo only of someone the directory shows (`private, no-store`); anything else is 404.
+- Browsing, the page lists every entry, filters by name in the browser (`webpack/portal/portal-directory.ts`) and links each first letter. Search only, `PortalDirectoryService::find()` answers nothing below `SEARCH_MIN_LENGTH` characters and at most `SEARCH_LIMIT` entries, on the page (`?q=`) and the API alike, so the whole list never leaves the server.
 
 ### Volunteering (`/portal/volunteer/schedule`, `/portal/volunteer/opportunities`)
 

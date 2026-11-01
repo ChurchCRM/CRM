@@ -327,7 +327,12 @@ describe("Admin → Member Portal members, audit, permissions and the person car
     });
 
     it("offers only the permissions and scopes the person does not hold yet", () => {
+        const given = `/admin/api/person/${PORTAL_PERSON}/sign-in/grants`;
+        let givenId = 0;
         let leaderScopeId = 0;
+        cy.makePrivateAdminAPICall("POST", given, { capability: "portal.directory.view", endsOn: new Date(Date.now() + 30 * 86400000).toISOString().slice(0, 10), reason: "Given already" }, 201).then(({ body }) => {
+            givenId = body.grantId;
+        });
         cy.makePrivateAdminAPICall("POST", `${MINISTRIES_URL}/${ministryId}/teams`, { name: `${PREFIX} Ushers` }, 201);
         cy.makePrivateAdminAPICall("POST", "/api/ministries/scopes", { personId: PORTAL_PERSON, scopeType: "team", scopeId: teamId }, 201).then(({ body }) => {
             leaderScopeId = body.scope.id;
@@ -340,8 +345,8 @@ describe("Admin → Member Portal members, audit, permissions and the person car
         cy.get("#portal-grant-none-left").should("not.exist");
         cy.get("#portal-grant-add").should("be.enabled").click();
         cy.get("#portal-grant-modal").should("be.visible");
-        // Everyone's own are not offered again.
-        ["portal.profile.edit", "portal.calendar.view"].forEach((key) => {
+        // Everyone's own, and the one given above, are not offered again.
+        ["portal.profile.edit", "portal.calendar.view", "portal.directory.view"].forEach((key) => {
             cy.get(`#portal-grant-capability option[value="${key}"]`).should("not.exist");
         });
         cy.get('#portal-grant-capability option[value="portal.family.contacts.view"]').should("exist");
@@ -354,12 +359,13 @@ describe("Admin → Member Portal members, audit, permissions and the person car
             .should("contain.text", `${PREFIX} Ushers (${PREFIX} Hospitality)`)
             .and("not.contain.text", `${PREFIX} Hospitality (${PREFIX} Hospitality)`);
 
-        // Mathew Campbell is an adult of the Campbell family (1).
+        // Mathew Campbell is an adult of the Campbell family (1) and a Member, which the directory rule lets in.
         cy.visit("/people/view/2");
         cy.get("#portal-signin-permissions-toggle").click();
         cy.get('#portal-signin-permissions [data-source="rule"]').should("contain.text", "Change family details");
         cy.get("#portal-grant-add").click();
         cy.get("#portal-grant-modal").should("be.visible");
+        cy.get('#portal-grant-capability option[value="portal.directory.view"]').should("not.exist");
         cy.get('#portal-grant-capability option[value="portal.family.edit"]').should("have.attr", "data-held-scopes", "1");
         cy.intercept("GET", "/admin/api/member-portal/grant-scopes/family*").as("families");
         cy.get("#portal-grant-capability").select("portal.family.edit");
@@ -371,6 +377,7 @@ describe("Admin → Member Portal members, audit, permissions and the person car
         cy.get(".ts-dropdown").should("not.contain.text", "Campbell (Denton)");
 
         cy.then(() => {
+            cy.makePrivateAdminAPICall("POST", `${given}/${givenId}/remove`, null, 200);
             cy.makePrivateAdminAPICall("DELETE", `/api/ministries/scopes/${leaderScopeId}`, null, 200);
         });
     });
