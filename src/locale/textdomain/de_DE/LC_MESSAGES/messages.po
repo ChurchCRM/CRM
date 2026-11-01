@@ -1682,10 +1682,6 @@ msgid "Properties"
 msgstr "Einstellungen"
 
 #: 
-msgid "Pledge Reminder Report"
-msgstr "Bericht zur Erinnerung an Spendenzusagen"
-
-#: 
 msgid "Restore Database"
 msgstr "Datenbank wiederherstellen"
 
@@ -9094,10 +9090,6 @@ msgid "Generate phone directory"
 msgstr "Telefonverzeichnis generieren"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "Erinnerungsschreiben für Spendenverpflichtungen generieren"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "Berichte über Gruppenmitgliedschaften und Aktivitäten generieren"
 
@@ -15980,10 +15972,6 @@ msgstr "Gültige Beispiele"
 #: 
 msgid "What this plugin does"
 msgstr "Was dieses Plugin tut"
-
-#: 
-msgid "for all funds"
-msgstr "für alle Fonds"
 
 #: 
 msgid "for fund"

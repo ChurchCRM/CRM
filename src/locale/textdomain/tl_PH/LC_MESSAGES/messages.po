@@ -1614,10 +1614,6 @@ msgid "Properties"
 msgstr "Mga Katangian"
 
 #: 
-msgid "Pledge Reminder Report"
-msgstr "Ulat ng Paalala sa Pangako"
-
-#: 
 msgid "Restore Database"
 msgstr "I-restore ang Database"
 
@@ -8987,10 +8983,6 @@ msgid "Generate phone directory"
 msgstr "Gumawa ng direktoryo ng telepono"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "Gumawa ng mga sulat ng paalala sa pangako"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "Gumawa ng mga ulat sa pagiging miyembro ng grupo at mga aktibidad"
 
@@ -15873,10 +15865,6 @@ msgstr "Mga Wastong Halimbawa"
 #: 
 msgid "What this plugin does"
 msgstr "Ano ang ginagawa ng plugin na ito"
-
-#: 
-msgid "for all funds"
-msgstr "para sa lahat ng pondo"
 
 #: 
 msgid "for fund"

@@ -1631,10 +1631,6 @@ msgid "Properties"
 msgstr "속성"
 
 #: 
-msgid "Pledge Reminder Report"
-msgstr "서약 독촉 보고서"
-
-#: 
 msgid "Restore Database"
 msgstr "데이터베이스 복원"
 
@@ -9006,10 +9002,6 @@ msgid "Generate phone directory"
 msgstr "전화번호부 생성"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "서약 알림 편지 생성"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "그룹 교인 및 활동 보고서 생성"
 
@@ -15888,10 +15880,6 @@ msgstr "유효한 예시"
 #: 
 msgid "What this plugin does"
 msgstr "이 플러그인의 기능"
-
-#: 
-msgid "for all funds"
-msgstr "모든 기금에 대해"
 
 #: 
 msgid "for fund"

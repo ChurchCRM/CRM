@@ -1631,10 +1631,6 @@ msgid "Properties"
 msgstr "Özellikleri"
 
 #: 
-msgid "Pledge Reminder Report"
-msgstr "Rehin Hatırlatma Raporu"
-
-#: 
 msgid "Restore Database"
 msgstr "Veritabanını geri yükle"
 
@@ -9020,10 +9016,6 @@ msgid "Generate phone directory"
 msgstr "Telefon rehberi oluştur"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "Bağış taahhüdü hatırlatma mektupları oluştur"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "Grup üyeliği ve faaliyetler hakkında raporlar oluştur"
 
@@ -15906,10 +15898,6 @@ msgstr "Geçerli Örnekler"
 #: 
 msgid "What this plugin does"
 msgstr "Bu eklenti ne yapar"
-
-#: 
-msgid "for all funds"
-msgstr "tüm fonlar için"
 
 #: 
 msgid "for fund"

@@ -1631,10 +1631,6 @@ msgid "Properties"
 msgstr "Ιδιότητες"
 
 #: 
-msgid "Pledge Reminder Report"
-msgstr "Αναφορά υπενθύμισης δέσμευσης"
-
-#: 
 msgid "Restore Database"
 msgstr "Επαναφορά βάσης δεδομένων"
 
@@ -9020,10 +9016,6 @@ msgid "Generate phone directory"
 msgstr "Δημιουργία τηλεφωνικού καταλόγου"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "Δημιουργία υπενθυμιστικών επιστολών οικονομικών δεσμεύσεων"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "Δημιουργία αναφορών για τα μέλη ομάδων και τις δραστηριότητες"
 
@@ -15906,10 +15898,6 @@ msgstr "Έγκυρα Παραδείγματα"
 #: 
 msgid "What this plugin does"
 msgstr "Τι κάνει αυτή η προσθήκη"
-
-#: 
-msgid "for all funds"
-msgstr "για όλα τα κονδύλια"
 
 #: 
 msgid "for fund"
