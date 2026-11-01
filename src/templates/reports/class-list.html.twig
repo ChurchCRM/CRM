@@ -7,6 +7,7 @@
     .staff { font-weight: bold; font-size: 10pt; margin: 0 0 1mm 0; }
   </style>
   {% for class in classes %}
+    {% if not loop.first %}{% include "_letter-break.html.twig" %}{% endif %}
     <h1>{{ class.name }} <span class="muted">{{ fiscal_year }}</span></h1>
     {% if class.teachers %}<p class="staff">{{ class.teachers|join(', ') }}</p>{% endif %}
     {% if class.liaisons %}<p class="staff">{{ gettext('Liaison') }}: {{ class.liaisons|join(', ') }}</p>{% endif %}
@@ -30,7 +31,6 @@
       {% endfor %}
     </table>
     <p class="generated">{{ generated_on }}</p>
-    {% if not loop.last %}<pagebreak />{% endif %}
   {% else %}
     <p class="empty">{{ gettext('No records were returned from the previous report. Please adjust your filters or date range and try again.') }}</p>
   {% endfor %}

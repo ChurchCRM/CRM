@@ -7,6 +7,7 @@ use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\ChurchLogoService;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Twig\GettextExtension;
 use Mpdf\Mpdf;
 use Twig\Environment;
@@ -85,7 +86,7 @@ class MpdfRenderer
         $localeCode = str_replace('_', '-', (string) $locale->getLocale());
         $data['lang'] = str_starts_with($localeCode, 'zh') ? $localeCode : substr($localeCode, 0, 2);
         $data['text_dir'] = $locale->isRTL() ? 'rtl' : 'ltr';
-        $data['generated_on'] = date(SystemConfig::getValue('sDateFormatLong') ?: 'Y-m-d');
+        $data['generated_on'] = DateTimeUtils::formatDate(DateTimeUtils::getToday());
         return $data;
     }
 

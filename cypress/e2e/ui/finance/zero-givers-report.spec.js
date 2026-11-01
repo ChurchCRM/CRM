@@ -74,6 +74,21 @@ describe("Zero Givers report", () => {
         });
     });
 
+    it("repeats the letterhead on every family's letter", () => {
+        cy.setupAdminSession();
+        cy.request("/admin/api/system/config/sChurchName").its("body.value").then((churchName) => {
+            zeroGivers("csv").then((csv) => {
+                const letters = csv.body.trim().split(/\r?\n/).length - 1;
+                expect(letters).to.be.greaterThan(1);
+                zeroGivers("pdf").then((pdf) =>
+                    pdfText(pdf.body).then((lines) => {
+                        expect(lines.filter((line) => line.includes(churchName)).length).to.be.at.least(letters);
+                    }),
+                );
+            });
+        });
+    });
+
     it("office staff are sent to access denied", () => {
         cy.setupPersonaSession("office-staff");
         zeroGivers("pdf").then((response) => {

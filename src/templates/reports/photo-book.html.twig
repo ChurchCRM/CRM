@@ -21,7 +21,7 @@
   {% set last_group_id = null %}
   {% for section in sections %}
     {% if section.group_id != last_group_id %}
-      {% if last_group_id is not null %}<pagebreak />{% endif %}
+      {% if last_group_id is not null %}{% include "_letter-break.html.twig" %}{% endif %}
       <h1>{{ section.group }}</h1>
       <div class="sub">{{ generated_on }}</div>
       {% set last_group_id = section.group_id %}

@@ -114,7 +114,7 @@ if ($sReportType === '') {
     switch ($sReportType) {
         case 'Zero Givers':             $action = 'finance/reports/zero-givers/download'; break;
         case 'Pledge Family Summary':   $action = 'finance/reports/family-pledge-summary/download'; break;
-        case 'Pledge Reminders':        $action = 'Reports/ReminderReport.php'; break;
+        case 'Pledge Reminders':        $action = 'finance/reports/pledge-reminders/download'; break;
     }
     ?>
     <form method="post" action="<?= $action ?>">
