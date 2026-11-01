@@ -7,8 +7,7 @@
     table.grid th { font-weight: bold; background-color: #f2f2f2; height: 5.5mm; }
     table.grid th.title { text-align: left; font-size: 10pt; }
     table.grid td.name { text-align: left; font-size: 9pt; }
-    table.grid td.photo { padding: 0; }
-    table.grid td.photo img { height: 10mm; }
+    table.grid td.photo { padding: 0; vertical-align: middle; }
     table.grid .closed { background-color: #c8c8c8; }
     table.grid tr.total td { font-weight: bold; }
   </style>
@@ -32,7 +31,7 @@
           <tbody>
             {% for person in table.rows %}
               <tr>
-                {% if with_pictures %}<td class="photo" style="width: {{ widths.photo }}mm;">{% if person.photo %}<img src="{{ person.photo }}" alt="">{% endif %}</td>{% endif %}
+                {% if with_pictures %}<td class="photo" style="width: {{ widths.photo }}mm;">{% include '_person-photo.html.twig' with {'person': person} only %}</td>{% endif %}
                 <td class="name" style="width: {{ widths.name }}mm;">{{ person.name }}</td>
                 {% for sunday in sundays %}<td class="{{ sunday.closed ? 'closed' : '' }}"></td>{% endfor %}
               </tr>
