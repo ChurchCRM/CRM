@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Utils\PdfResponse;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
 use ChurchCRM\Service\FundraiserItemService;
@@ -31,12 +32,8 @@ $app->get('/{fundraiserId}/reports/bid-sheets', function (Request $request, Resp
         'items' => FundraiserItemService::items($fundraiser),
     ]);
 
-    $fileName = 'FundraiserBidSheets-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
-    $response->getBody()->write($pdf);
-
-    return $response
-        ->withHeader('Content-Type', 'application/pdf')
-        ->withHeader('Content-Disposition', (SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline') . '; filename="' . $fileName . '"');
+    $fileLabel = 'FundraiserBidSheets-' . date(SystemConfig::getValue('sDateFilenameFormat'));
+    return PdfResponse::create($response, $pdf, $fileLabel);
 });
 
 // ---------------------------------------------------------------------------
@@ -65,12 +62,8 @@ $app->get('/{fundraiserId}/reports/certificates', function (Request $request, Re
         'items' => FundraiserItemService::items($fundraiser),
     ]);
 
-    $fileName = 'FundraiserCertificates-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
-    $response->getBody()->write($pdf);
-
-    return $response
-        ->withHeader('Content-Type', 'application/pdf')
-        ->withHeader('Content-Disposition', (SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline') . '; filename="' . $fileName . '"');
+    $fileLabel = 'FundraiserCertificates-' . date(SystemConfig::getValue('sDateFilenameFormat'));
+    return PdfResponse::create($response, $pdf, $fileLabel);
 });
 
 // ---------------------------------------------------------------------------
@@ -99,10 +92,6 @@ $app->get('/{fundraiserId}/reports/catalog', function (Request $request, Respons
         'items' => FundraiserItemService::items($fundraiser),
     ]);
 
-    $fileName = 'FundraiserCatalog-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
-    $response->getBody()->write($pdf);
-
-    return $response
-        ->withHeader('Content-Type', 'application/pdf')
-        ->withHeader('Content-Disposition', (SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline') . '; filename="' . $fileName . '"');
+    $fileLabel = 'FundraiserCatalog-' . date(SystemConfig::getValue('sDateFilenameFormat'));
+    return PdfResponse::create($response, $pdf, $fileLabel);
 });

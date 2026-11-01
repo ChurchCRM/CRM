@@ -267,24 +267,6 @@ class GivingStatementService
         return ['families' => count($groups), 'gifts' => $gifts, 'total' => CurrencyFormatter::format($cents / 100)];
     }
 
-    /**
-     * Content-Disposition for a statement PDF. The ASCII name is the fallback; the UTF-8 name
-     * carries the church and family names in any script.
-     */
-    public static function contentDisposition(string $label): string
-    {
-        $disposition = SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline';
-        $ascii = trim((string) preg_replace('/[^A-Za-z0-9]+/', '-', $label), '-');
-        $utf8 = trim((string) preg_replace('/[^\p{L}\p{N}]+/u', '-', $label), '-');
-
-        return sprintf(
-            '%s; filename="%s.pdf"; filename*=UTF-8\'\'%s.pdf',
-            $disposition,
-            $ascii !== '' ? $ascii : 'giving-statement',
-            rawurlencode($utf8 !== '' ? $utf8 : 'giving-statement')
-        );
-    }
-
     public static function fileLabel(int $year, string $familyName = ''): string
     {
         return $familyName === '' ? 'GivingStatements-' . $year : 'GivingStatement-' . $year . '-' . $familyName;

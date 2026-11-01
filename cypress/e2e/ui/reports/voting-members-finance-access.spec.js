@@ -166,7 +166,8 @@ describe("Treasurer prepares a voting review list under church bylaws", () => {
             cy.makePrivateAdminAPICall("POST", "admin/api/system/config/iPDFOutputType", { value }, 200);
             cy.setupAdminSession();
             download(criteria()).then((response) => {
-                expect(response.headers["content-disposition"]).to.match(new RegExp(`^${value === "1" ? "attachment" : "inline"}; filename="VotingMembers[A-Za-z0-9._-]*\\.pdf"$`));
+                expect(response.headers["content-disposition"]).to.match(new RegExp(`^${value === "1" ? "attachment" : "inline"};`));
+                expect(response.headers["content-disposition"]).to.match(/filename="[^"]+-VotingMembers-[A-Za-z0-9-]*\.pdf"; filename\*=/);
             });
         });
     });

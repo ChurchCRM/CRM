@@ -236,11 +236,9 @@ class AdvancedDepositService
         return ['count' => count($records), 'total' => self::money(array_sum(array_column($records, 'cents')))];
     }
 
-    public static function contentDisposition(): string
+    public static function fileLabel(): string
     {
-        $disposition = SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline';
-
-        return $disposition . '; filename="DepositReport-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf"';
+        return 'DepositReport-' . date(SystemConfig::getValue('sDateFilenameFormat'));
     }
 
     public static function csvContentDisposition(): string

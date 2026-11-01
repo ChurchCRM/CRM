@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Utils\PdfResponse;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\EnvelopeReportService;
 use ChurchCRM\Service\MpdfRenderer;
@@ -11,11 +12,7 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
     $group->get('/envelope-numbers', function (Request $request, Response $response): Response {
         $pdf = (new MpdfRenderer())->renderToString('envelope-numbers', ['rows' => EnvelopeReportService::assignments()]);
 
-        $filename = 'EnvelopeAssignments-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
-        $response->getBody()->write($pdf);
-
-        return $response
-            ->withHeader('Content-Type', 'application/pdf')
-            ->withHeader('Content-Disposition', (SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline') . '; filename="' . $filename . '"');
+        $fileLabel = 'EnvelopeAssignments-' . date(SystemConfig::getValue('sDateFilenameFormat'));
+        return PdfResponse::create($response, $pdf, $fileLabel);
     });
 });

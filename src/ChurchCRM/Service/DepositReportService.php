@@ -107,11 +107,9 @@ class DepositReportService
         ];
     }
 
-    public static function contentDisposition(int $depositId): string
+    public static function fileLabel(int $depositId): string
     {
-        $disposition = SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline';
-
-        return $disposition . '; filename="ChurchCRM-DepositReport-' . $depositId . '-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf"';
+        return 'DepositSlip-' . $depositId . '-' . date(SystemConfig::getValue('sDateFilenameFormat'));
     }
 
     /**

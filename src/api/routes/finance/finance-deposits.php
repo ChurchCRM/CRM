@@ -2,7 +2,8 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\DepositReportService;
-use ChurchCRM\Service\DepositReportRenderer;
+use ChurchCRM\Service\MpdfRenderer;
+use ChurchCRM\Utils\PdfResponse;
 use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\Service\DepositService;
 use ChurchCRM\Utils\CsvExporter;
@@ -197,14 +198,9 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
             return SlimUtils::renderJSON($response->withStatus(404), ['message' => 'No Payments on this Deposit']);
         }
 
-        $response = $response->withHeader('Content-Type', 'application/pdf')
-            ->withHeader('Content-Disposition', DepositReportService::contentDisposition($id))
-            ->withHeader('Cache-Control', 'private, no-store');
-        if ($request->getMethod() !== 'HEAD') {
-            $response->getBody()->write(DepositReportRenderer::create()->renderToString('deposit', $report));
-        }
+        $pdf = $request->getMethod() === 'HEAD' ? '' : (new MpdfRenderer())->renderToString('deposit', $report);
 
-        return $response;
+        return PdfResponse::create($response, $pdf, DepositReportService::fileLabel($id));
     })->add(DepositMiddleware::class);
 
     /**

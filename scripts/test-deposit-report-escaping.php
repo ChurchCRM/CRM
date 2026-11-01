@@ -3,10 +3,9 @@
 require __DIR__ . '/../src/vendor/autoload.php';
 
 use ChurchCRM\Service\AdvancedDepositService;
-use ChurchCRM\Service\DepositReportRenderer;
 use ChurchCRM\Service\MpdfRenderer;
 
-$renderer = DepositReportRenderer::create();
+$renderer = new MpdfRenderer();
 $twig = (new ReflectionProperty(MpdfRenderer::class, 'twig'))->getValue($renderer);
 $text = '<b>Offering & "Review"</b>';
 $common = [

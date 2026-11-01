@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Utils\PdfResponse;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\FamilyPledgeReportService;
 use ChurchCRM\Service\MpdfRenderer;
@@ -33,12 +34,7 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
             'date_range' => DateTimeUtils::formatDate($fy['startDate']) . ' – ' . DateTimeUtils::formatDate($fy['endDate']),
         ]);
 
-        $filename = 'FamilyPledgeSummary' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
-        $response->getBody()->write($pdf);
-
-        return $response
-            ->withHeader('Content-Type', 'application/pdf')
-            ->withHeader('Cache-Control', 'private, no-store')
-            ->withHeader('Content-Disposition', (SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline') . '; filename="' . $filename . '"');
+        $fileLabel = 'FamilyPledgeSummary-' . date(SystemConfig::getValue('sDateFilenameFormat'));
+        return PdfResponse::create($response, $pdf, $fileLabel);
     });
 });

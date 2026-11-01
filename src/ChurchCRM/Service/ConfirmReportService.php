@@ -14,6 +14,7 @@ use ChurchCRM\Reports\ChurchInfoReport;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\Utils\PdfFilename;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 /**
@@ -160,28 +161,15 @@ class ConfirmReportService
     }
 
     /**
-     * Sanitize a string for safe use in a Content-Disposition filename parameter.
-     * Replaces path separators, CR/LF, quotes, and non-ASCII characters with underscores.
-     */
-    private static function sanitizeFilename(string $name): string
-    {
-        // Strip path separators, header-injection chars (CR/LF), and double-quotes
-        $name = preg_replace('/[\/\\\\\r\n"]+/', '_', $name);
-        // Replace non-ASCII bytes with underscore for safe ASCII filename
-        $name = preg_replace('/[^\x20-\x7E]+/', '_', $name);
-        return trim($name, '_');
-    }
-
-    /**
      * Generate a combined download PDF for all families (or one specific family).
      *
      * @param int|null $familyId If set, only include that one family.
-     * @return array{bytes: string, filename: string} PDF bytes and suggested filename.
+     * @return array{bytes: string, label: string} PDF bytes and report filename suffix.
      */
     public function generateDownloadPDF(?int $familyId): array
     {
         $pdf = new ConfirmDownloadPdf();
-        $filename = 'ConfirmReport' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
+        $label = 'ConfirmReport-' . date(SystemConfig::getValue('sDateFilenameFormat'));
 
         $customFields = PersonCustomMasterQuery::create()->orderByOrder()->find();
 
@@ -196,7 +184,7 @@ class ConfirmReportService
 
         foreach ($families as $family) {
             if ($familyId !== null) {
-                $filename = 'ConfirmReport-' . self::sanitizeFilename($family->getName()) . '.pdf';
+                $label = 'ConfirmReport-' . $family->getName();
             }
 
             $curY = $pdf->startNewPage($family);
@@ -405,7 +393,7 @@ class ConfirmReportService
             $pdf->AddPage();
         }
 
-        return ['bytes' => $pdf->Output($filename, 'S'), 'filename' => $filename];
+        return ['bytes' => $pdf->Output('', 'S'), 'label' => $label];
     }
 
     /**
@@ -669,14 +657,14 @@ class ConfirmReportService
 
             // Email the PDF
             if (!empty($emaillist)) {
-                $pdfBytes = $pdf->Output('ConfirmReportEmail-' . $famId . '-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'S');
+                $pdfBytes = $pdf->Output('', 'S');
                 $subject = $famName . ' Family Information Review';
                 if ($updated) {
                     $subject .= ' ** Updated **';
                 }
 
                 $mail = new FamilyVerificationEmail($emaillist, $famName);
-                $attachmentFilename = 'ConfirmReportEmail-' . self::sanitizeFilename($famName) . '-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
+                $attachmentFilename = PdfFilename::create('ConfirmReportEmail-' . $famName . '-' . date(SystemConfig::getValue('sDateFilenameFormat')));
                 $mail->addStringAttachment($pdfBytes, $attachmentFilename);
 
                 if ($mail->send()) {

@@ -12,7 +12,7 @@ use Mpdf\Mpdf;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
-class MpdfRenderer implements PdfRendererInterface
+class MpdfRenderer
 {
     private Environment $twig;
 
@@ -56,11 +56,6 @@ class MpdfRenderer implements PdfRendererInterface
     public function renderToString(string $template, array $data, bool $landscape = false, array $mpdfOptions = []): string
     {
         return $this->build($template, $data, $landscape, $mpdfOptions)->Output('', 'S');
-    }
-
-    public function render(string $template, array $data, string $filename, string $disposition = 'I'): void
-    {
-        $this->build($template, $data)->Output($filename . '.pdf', $disposition === 'D' ? 'D' : 'I');
     }
 
     private function build(string $template, array $data, bool $landscape = false, array $mpdfOptions = []): Mpdf

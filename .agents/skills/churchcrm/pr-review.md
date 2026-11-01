@@ -122,17 +122,7 @@ For a large auth PR, run a security-focused sub agent over the diff and verify i
 
 ### PDF / mPDF reports
 
-Applies when a PR changes report data, rendering, templates, routes, exports or shared PDF helpers. Load `reports.md` and trace the complete call path against current master; include all merged consumers of a shared helper in the review scope.
-
-- [ ] Discover renderer construction, wrappers, direct mPDF calls, downloads and email/portal consumers. Read current master and the branch; an open migration PR is not proof of merged behavior
-- [ ] Check service/route/view/template/test placement, fixed template stems and their matching filenames, stable module URLs and download basenames. Resolve local assets through the document root and browser URLs through the install root; preserve supported APIs
-- [ ] Check locale-sensitive display dates, currency, gettext phrases, Unicode/script fonts and RTL direction through the entire document. Keep storage/API dates ISO and template/file identifiers untranslated
-- [ ] Verify escaping in the actual Twig environment, including injected environments, cached templates and shared partials. Trace intentionally formatted fields and test literal markup in names, addresses and memos; follow `reports.md` for response/CSV safety
-- [ ] Preserve merged renderer helpers, page options, letterhead modes, photos and repeated-page behavior. Keep report-specific stock dimensions separate from ordinary page defaults
-- [ ] Cover the persona workflow, accurate totals/grouping, empty/error filter preservation, allowed and denied callers, and supported output formats using the current test policy in `cypress-testing.md`
-- [ ] State content-test, visual PDF, locale/RTL and physical-stock evidence separately. A valid PDF header or generated screenshot is not proof of layout or printer alignment; identify every unverified item before assessing merge readiness
-
-The review states the affected consumers, enforced permissions, compatibility changes, tests actually run and remaining visual/physical checks. Keep inventories in the PR evidence; maintain reusable rules in the skill cards.
+Apply [reports.md](reports.md), including its review-evidence checklist, to changes in report data, routes, rendering, templates, exports and shared PDF helpers. Trace all current merged consumers; record only concrete findings and unverified checks in the review.
 
 ### Frontend & UI
 

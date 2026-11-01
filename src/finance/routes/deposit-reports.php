@@ -3,7 +3,8 @@
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\Service\AdvancedDepositService;
-use ChurchCRM\Service\DepositReportRenderer;
+use ChurchCRM\Service\MpdfRenderer;
+use ChurchCRM\Utils\PdfResponse;
 use ChurchCRM\Service\DepositReportService;
 use ChurchCRM\Service\FinanceReportOptions;
 use ChurchCRM\Slim\SlimUtils;
@@ -80,14 +81,9 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
             return $page($response, $input, $id > 0
                 ? gettext('No Payments on this Deposit') : gettext('Select one deposit to print a bank slip.'));
         }
-        $response = $response->withHeader('Content-Type', 'application/pdf')
-            ->withHeader('Content-Disposition', DepositReportService::contentDisposition($id))
-            ->withHeader('Cache-Control', 'private, no-store');
-        if ($request->getMethod() !== 'HEAD') {
-            $response->getBody()->write(DepositReportRenderer::create()->renderToString('deposit', $report));
-        }
+        $pdf = $request->getMethod() === 'HEAD' ? '' : (new MpdfRenderer())->renderToString('deposit', $report);
 
-        return $response;
+        return PdfResponse::create($response, $pdf, DepositReportService::fileLabel($id));
     };
 
     $download = static function (Request $request, Response $response) use ($inputFor, $page, $bankSlip): Response {
@@ -114,11 +110,9 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
                 ->withHeader('Content-Disposition', AdvancedDepositService::csvContentDisposition())
                 ->withHeader('Cache-Control', 'private, no-store');
         }
-        $response->getBody()->write(DepositReportRenderer::create()->renderToString('advanced-deposit', AdvancedDepositService::document($records, $criteria)));
+        $pdf = (new MpdfRenderer())->renderToString('advanced-deposit', AdvancedDepositService::document($records, $criteria));
 
-        return $response->withHeader('Content-Type', 'application/pdf')
-            ->withHeader('Content-Disposition', AdvancedDepositService::contentDisposition())
-            ->withHeader('Cache-Control', 'private, no-store');
+        return PdfResponse::create($response, $pdf, AdvancedDepositService::fileLabel());
     };
 
     $group->map(['GET', 'POST'], '/deposits/download', $download);

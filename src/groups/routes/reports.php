@@ -1,12 +1,11 @@
 <?php
 
+use ChurchCRM\Utils\PdfResponse;
 use ChurchCRM\dto\Cart;
-use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\GroupPropMasterQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
-use ChurchCRM\Service\GivingStatementService;
 use ChurchCRM\Service\GroupReportService;
 use ChurchCRM\Service\MpdfRenderer;
 use ChurchCRM\Service\PhotoBookService;
@@ -98,12 +97,8 @@ $app->post('/reports/group-directory', function (Request $request, Response $res
 
     $pdf = (new MpdfRenderer())->renderToString('group-directory', $report);
 
-    $fileLabel = trim(ChurchMetaData::getChurchName() . ' ' . $report['title'] . ' ' . date(SystemConfig::getValue('sDateFilenameFormat')));
-    $response->getBody()->write($pdf);
-
-    return $response
-        ->withHeader('Content-Type', 'application/pdf')
-        ->withHeader('Content-Disposition', GivingStatementService::contentDisposition($fileLabel));
+    $fileLabel = trim('GroupDirectory ' . $report['group_name'] . ' ' . date(SystemConfig::getValue('sDateFilenameFormat')));
+    return PdfResponse::create($response, $pdf, $fileLabel);
 });
 
 // Photo book: the members of each named group with their photos, or every Sunday School class when none is named.
@@ -117,10 +112,6 @@ $app->get('/reports/photo-book', function (Request $request, Response $response)
         'sections' => PhotoBookService::sections($groupIds),
     ]);
     $groupName = count($groupIds) === 1 ? (string) GroupQuery::create()->findOneById($groupIds[0])?->getName() : '';
-    $fileLabel = trim(ChurchMetaData::getChurchName() . ' ' . $groupName . ' ' . date(SystemConfig::getValue('sDateFilenameFormat')));
-    $response->getBody()->write($pdf);
-
-    return $response
-        ->withHeader('Content-Type', 'application/pdf')
-        ->withHeader('Content-Disposition', GivingStatementService::contentDisposition($fileLabel));
+    $fileLabel = trim('PhotoBook ' . $groupName . ' ' . date(SystemConfig::getValue('sDateFilenameFormat')));
+    return PdfResponse::create($response, $pdf, $fileLabel);
 });
