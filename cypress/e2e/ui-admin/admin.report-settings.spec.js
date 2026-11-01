@@ -67,12 +67,16 @@ describe("Admin - Report Settings page", () => {
         cy.visit("/admin/system/report-settings");
         cy.get("#church-letterhead-preview").should("be.visible");
 
+        let deleteRequests = 0;
+        cy.intercept("DELETE", `**${LETTERHEAD_API_URL}`, () => {
+            deleteRequests += 1;
+        }).as("removeLetterhead");
         cy.get("#church-letterhead-remove-btn").click();
         cy.get(".bootbox .bootbox-cancel").click();
         cy.get(".bootbox").should("not.exist");
         cy.get("#church-letterhead-preview").should("be.visible");
+        cy.then(() => expect(deleteRequests).to.eq(0));
 
-        cy.intercept("DELETE", `**${LETTERHEAD_API_URL}`).as("removeLetterhead");
         cy.get("#church-letterhead-remove-btn").click();
         cy.get(".bootbox .bootbox-accept").click();
         cy.wait("@removeLetterhead").its("response.statusCode").should("eq", 200);
