@@ -250,11 +250,11 @@ describe("Mailing address on mailed reports", () => {
          * the PDF's text lines are handed back.
          */
         const submitDirectoryForm = () =>
-            cy.get('form[action="Reports/DirectoryReport.php"]').then(($form) =>
+            cy.get('form[action$="/people/reports/directory"]').then(($form) =>
                 cy
                     .request({
                         method: "POST",
-                        url: "Reports/DirectoryReport.php",
+                        url: "people/reports/directory",
                         headers: { "content-type": "application/x-www-form-urlencoded" },
                         body: new URLSearchParams(new FormData($form[0])).toString(),
                         encoding: "binary",
@@ -320,7 +320,7 @@ describe("Mailing address on mailed reports", () => {
                 submitDirectoryForm().then((lines) => {
                     const at = lines.findIndex((line) => /Mailing Address: PO Box 1204$/.test(line));
                     expect(at, "the family's Mailing Address line").to.be.greaterThan(-1);
-                    expect(lines[at + 1]).to.match(/Othertown, IL {2}62998$/);
+                    expect(lines[at + 1]).to.match(/Othertown, IL +62998$/);
                     // Beneath the primary address, which still prints.
                     const primary = lines.findIndex((line) => line.includes("742 Evergreen Terrace"));
                     expect(primary).to.be.greaterThan(-1).and.to.be.lessThan(at);

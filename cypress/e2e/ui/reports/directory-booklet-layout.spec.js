@@ -8,11 +8,14 @@
  * page out as one half of a landscape sheet and imposes the pages two-up in
  * booklet order, padded to a multiple of four pages, so the sheets can be
  * printed double sided and folded in half.
+ *
+ * mPDF lays out the half-size pages; PdfBookletImposer then places them two per
+ * sheet with FPDI, so the sheet sizes and the even page count are unchanged.
  */
 
 const directoryRequest = (layout, extra = {}) => ({
     method: "POST",
-    url: "Reports/DirectoryReport.php",
+    url: "people/reports/directory",
     form: true,
     encoding: "binary",
     failOnStatusCode: false,
