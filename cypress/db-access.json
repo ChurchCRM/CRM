@@ -9,6 +9,22 @@
             "kind": "fixture",
             "reason": "Read-only row counts for the test-database drift guard (#9769)."
         },
+        "cypress/e2e/api/private/admin/private.admin.family-email-move.spec.js": {
+            "kind": "schema",
+            "reason": "Migration spec for the 7.8.3 family email move (member sign-in row 11): the app no longer writes a family email, so the fixtures, the upgrade block and its marker table are reached in SQL."
+        },
+        "cypress/e2e/api/private/admin/private.admin.portal-calendar-upgrade.spec.js": {
+            "kind": "schema",
+            "reason": "Migration spec for the 7.8.3 block that retires bPortalShowCalendar: the application no longer reads or writes the switch, so its pre-upgrade config row and the upgrade block are reached in SQL."
+        },
+        "cypress/e2e/api/private/admin/private.admin.member-sign-in-cutover.spec.js": {
+            "kind": "schema",
+            "reason": "Migration spec for the 7.8.3 release-day cutover (member sign-in row 13): the application no longer makes self-service accounts, so the pre-upgrade accounts, their per-user rows, the history that names them and the upgrade block are reached in SQL."
+        },
+        "cypress/e2e/api/private/standard/private.portal.signin-schema.spec.js": {
+            "kind": "schema",
+            "reason": "Member sign-in schema spec (#10463): the person-keyed tables, their foreign keys, ON DELETE rules and unique token hashes, and how the application reads a stored grant it would never write, have no HTTP surface."
+        },
         "cypress/e2e/api/private/standard/private.volunteer.setup.spec.js": {
             "kind": "schema",
             "reason": "Volunteer v2 schema spec (#9705): columns, UNIQUE keys, foreign keys, ON DELETE rules and enum domains have no HTTP surface."
@@ -16,6 +32,30 @@
         "cypress/support/api-commands.js": {
             "kind": "fixture",
             "reason": "Registers cy.dbQuery()."
+        },
+        "cypress/support/member-sign-in.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in row 5 (#10463): turns member sign-in on, ends the sign-in throttle windows and reads the sign-in audit and requests, none of which has an HTTP surface until row 9."
+        },
+        "cypress/support/member-sign-in-fixtures.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in (#10463, #10377): named fixtures for states no HTTP route writes (a passkey, which only a WebAuthn ceremony registers; a remembered device with a chosen label; the 7.8.3 family email move rows; a person awaiting review; a stored grant the give API refuses; a language the profile page no longer offers) and for time passing (a grant's last day, an expired link or sign-in request, old audit rows, past sign-ins and confirmations), with the resets that remove them."
+        },
+        "cypress/support/member-session.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in row 13 (#10463): opens the member rule for a spec that acts as a member and puts the seed's settings back after it; members have no account to sign in with since the cutover."
+        },
+        "cypress/support/remembered-device.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in (#10463): ends the one-minute grace of a remembered device's replaced token, so specs need not wait it out; the server still decides what an ended grace means."
+        },
+        "cypress/support/sign-in-audit-retention.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in (#10463): audit rows from weeks ago for the retention spec; only time makes them, and the audit has no HTTP surface until the admin pages."
+        },
+        "cypress/support/sign-in-email-fixtures.js": {
+            "kind": "fixture",
+            "reason": "Member sign-in row 9b (#10463): an address moved from the family email (written only by the 7.8.3 upgrade) or replaced after a sign-in, and the shared personal emails Fix shared emails resolves, have no HTTP surface but the legacy person editor form, which also audits and mails; each spec's seed emails, sign-in rows and grants are put back."
         },
         "cypress/support/sign-in-throttle.js": {
             "kind": "fixture",
@@ -27,9 +67,13 @@
         }
     },
     "baseline": {
+        "cypress/e2e/api/private/admin/private.admin.email-change-rules.spec.js": 26,
+        "cypress/e2e/api/private/admin/private.admin.member-portal-lists.spec.js": 29,
+        "cypress/e2e/api/private/admin/private.admin.portal-permissions.spec.js": 17,
         "cypress/e2e/api/private/admin/private.volunteer.rollout.spec.js": 19,
-        "cypress/e2e/api/private/people/families.envelope-search.spec.js": 4,
-        "cypress/e2e/api/private/people/people.email-history.spec.js": 4,
+        "cypress/e2e/api/private/plugins/private.portal.plugin-permissions.spec.js": 13,
+        "cypress/e2e/api/private/standard/private.portal.email-change.spec.js": 17,
+        "cypress/e2e/api/private/standard/private.portal.session.spec.js": 21,
         "cypress/e2e/api/private/standard/private.volunteer.anchored.spec.js": 90,
         "cypress/e2e/api/private/standard/private.volunteer.assignment.spec.js": 67,
         "cypress/e2e/api/private/standard/private.volunteer.authorization.spec.js": 45,
@@ -59,6 +103,8 @@
         "cypress/e2e/api/private/standard/private.volunteer.swap.spec.js": 60,
         "cypress/e2e/api/private/standard/private.volunteer.team-class.spec.js": 47,
         "cypress/e2e/api/private/standard/private.volunteer.team-leader.spec.js": 37,
+        "cypress/e2e/ui-admin/admin.csvimport-email-audit.spec.js": 7,
+        "cypress/e2e/ui-admin/admin.member-portal-members.spec.js": 23,
         "cypress/e2e/ui-admin/admin.ministry-settings.spec.js": 6,
         "cypress/e2e/ui-admin/admin.user-editor.spec.js": 11,
         "cypress/e2e/ui-admin/admin.volunteer-v2.anchored.spec.js": 17,
@@ -80,10 +126,15 @@
         "cypress/e2e/ui/people/volunteer-v2.member.spec.js": 47,
         "cypress/e2e/ui/portal/member.portal-calendar-legend.spec.js": 9,
         "cypress/e2e/ui/portal/member.portal-opportunities-layout.spec.js": 31,
+        "cypress/e2e/ui/portal/member.portal-passkeys.spec.js": 11,
+        "cypress/e2e/ui/portal/member.portal-remembered-devices.spec.js": 6,
+        "cypress/e2e/ui/portal/member.portal-sign-in-email.spec.js": 1,
+        "cypress/e2e/ui/portal/member.portal-sign-in-refusals.spec.js": 1,
         "cypress/e2e/ui/portal/member.portal-teams.spec.js": 39,
         "cypress/e2e/ui/portal/member.portal-volunteer.spec.js": 46,
         "cypress/e2e/ui/portal/portal.e2e-member-week.spec.js": 42,
         "cypress/e2e/ui/portal/portal.e2e-team-leader.spec.js": 37,
+        "cypress/e2e/ui/security/limited-access.spec.js": 7,
         "cypress/e2e/ui/session/session.empty-password.spec.js": 8
     }
 }

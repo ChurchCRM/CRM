@@ -1,0 +1,25 @@
+{#
+  Login as Person (member sign-in design §6.5): an administrator is seeing the
+  portal as this person. It says so on every page, says whether changes are
+  allowed, and holds Stop, the only way back to the staff side.
+#}
+{% if portal.loginAsPerson %}
+<div class="portal-login-as-person" id="login-as-person-banner" role="status" aria-label="{{ gettext('Login as Person') }}">
+    <div class="portal-login-as-person-inner">
+        <i class="fa-solid fa-user-secret portal-login-as-person-icon" aria-hidden="true"></i>
+        <p class="portal-login-as-person-text" id="login-as-person-text">
+            {% if portal.loginAsPerson.allowsChanges %}
+                {{ gettext("You're logged in as %s in the Member Portal (changes allowed).")|format(portal.loginAsPerson.personName) }}
+            {% else %}
+                {{ gettext("You're logged in as %s in the Member Portal (read-only).")|format(portal.loginAsPerson.personName) }}
+            {% endif %}
+        </p>
+        <form method="post" action="{{ portal.loginAsPerson.stopUrl }}" class="portal-login-as-person-stop">
+            {{ csrf_field() }}
+            <button type="submit" class="portal-button" id="login-as-person-stop">
+                <i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i>{{ gettext('Stop') }}
+            </button>
+        </form>
+    </div>
+</div>
+{% endif %}

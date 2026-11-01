@@ -3,6 +3,8 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\UserQuery;
+use ChurchCRM\Portal\Auth\LoginAsPerson;
+use ChurchCRM\Service\LoginAsPersonHistoryService;
 use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -45,9 +47,19 @@ function viewUser(Request $request, Response $response, array $args): Response
         return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/v2/user/not-found?id=' . $args['id']);
     }
 
+    // Login as Person history (member sign-in design §6.5): administrators only
+    $loginAsPersonHistory = null;
+    if ($curUser->isAdmin()) {
+        $loginAsPersonHistory = (new LoginAsPersonHistoryService())->forUser($userId);
+        if ($loginAsPersonHistory === [] && !LoginAsPerson::isEnabled()) {
+            $loginAsPersonHistory = null;
+        }
+    }
+
     $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
         'user' => $user,
+        'loginAsPersonHistory' => $loginAsPersonHistory,
     ];
 
     return $renderer->render($response, 'user.php', $pageArgs);

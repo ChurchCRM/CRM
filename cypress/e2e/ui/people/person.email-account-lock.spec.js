@@ -1,9 +1,10 @@
 /// <reference types="cypress" />
 
-// GHSA-5xh2-3xjw-wr7j. Seeded data: person 1 is an administrator and person 99
-// has a login; person 10 has no login. Person 3 (tony.wade) is a non-admin
-// with Edit Records.
-describe("Email of a person who has a login", () => {
+// Seeded data: person 1 is an administrator and person 95 (Judith Kennedy) has
+// a staff account; person 10 has no account. Person 3 (tony.wade) is a
+// non-admin with Edit Records. Members have no account, so the portal side of
+// this rule is member.portal-profile.spec.js.
+describe("Email of a person who has a staff account", () => {
     const stamp = Cypress._.random(0, 1e6);
     const changed = `locked.${stamp}@example.com`;
     let original = "";
@@ -23,21 +24,23 @@ describe("Email of a person who has a login", () => {
         it("sees the email read-only on an account holder", () => {
             cy.visit("/PersonEditor.php?PersonID=1");
             cy.get("#Email").should("have.attr", "readonly");
+            cy.get("#EmailHint").should("contain", "Only an administrator can change the email");
         });
 
         it("keeps the stored email when a posted change is forced through", () => {
-            cy.visit("/PersonEditor.php?PersonID=99");
+            cy.visit("/PersonEditor.php?PersonID=95");
             cy.get("#Email")
                 .invoke("val")
                 .then((before) => {
                     cy.get("#Email").invoke("removeAttr", "readonly").clear().type(changed);
                     cy.get('button[name="PersonSubmit"]').click();
-                    cy.visit("/PersonEditor.php?PersonID=99");
+                    cy.contains("Only an administrator can change the email").should("exist");
+                    cy.visit("/PersonEditor.php?PersonID=95");
                     cy.get("#Email").should("have.value", before);
                 });
         });
 
-        it("can still edit the email of a person without a login", () => {
+        it("can still edit the email of a person without an account", () => {
             cy.visit("/PersonEditor.php?PersonID=10");
             cy.get("#Email").should("not.have.attr", "readonly");
         });
@@ -47,7 +50,7 @@ describe("Email of a person who has a login", () => {
         beforeEach(() => cy.setupAdminSession());
 
         it("changes the email and the person's timeline records it", () => {
-            cy.visit("/PersonEditor.php?PersonID=99");
+            cy.visit("/PersonEditor.php?PersonID=95");
             cy.get("#Email").should("not.have.attr", "readonly");
             cy.get("#Email")
                 .invoke("val")
@@ -55,18 +58,18 @@ describe("Email of a person who has a login", () => {
                     original = val;
                 });
 
-            saveEmail(99, changed);
+            saveEmail(95, changed);
 
-            cy.visit("/PersonEditor.php?PersonID=99");
+            cy.visit("/PersonEditor.php?PersonID=95");
             cy.get("#Email").should("have.value", changed);
-            cy.visit("/people/view/99");
+            cy.visit("/people/view/95");
             cy.contains("Email changed by an administrator").should("exist");
             cy.contains(changed).should("exist");
         });
 
         after(() => {
             cy.setupAdminSession();
-            saveEmail(99, original);
+            saveEmail(95, original);
         });
     });
 });

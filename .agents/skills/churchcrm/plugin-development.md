@@ -198,6 +198,20 @@ $app->group('/my-plugin/api', function (RouteCollectorProxy $group) use ($plugin
 
 Plugin URLs: `/plugins/management` (admin UI), `/plugins/api/...` (management API, see `src/plugins/routes/api/management.php`), `/plugins/{plugin-name}/*` (plugin routes).
 
+## Member Portal: pages, capabilities and nav
+
+A plugin reaches the Member Portal only through portal capabilities, which the portal permissions model (`ChurchCRM\Portal\Permissions`, member sign-in design §8.5) decides for core and plugins alike.
+
+| Piece | Where | Notes |
+|-------|-------|-------|
+| Capabilities | `plugin.json` -> `portal.capabilities[]`: `key`, `label`, `description`, `scopeType` | `key` = `plugin.<id>.<name>`; `scopeType` is `none`, `family`, `team`, `ministry`, `group` or the plugin's own word. An undeclared key is always refused |
+| Rules | `getPortalRules(): PortalRule[]` (`CallbackPortalRule` for a closure) | evaluated live per request; return `PortalRuleGrant(capability, scope, label)` |
+| Pages and API | `plugin.json` -> `portalRoutesFile` | included twice, with `$routes` and `$portalArea` (`'pages'` under `/portal/plugins/<id>`, `'api'` under `/api/portal/plugins/<id>`), behind the portal session. `$routes` is a `PortalPluginRoutes`: `get`/`post`/`put`/`patch`/`delete($pattern, $handler, $capability)`, where `$capability` is a key or a `RequirePortalCapability`; no route goes in without one. A `get` route only reads: a read-only Login as Person session lets GET and HEAD through and refuses the other methods |
+| Templates | `portal/templates/*.html.twig`, rendered by `PortalTwig::renderPluginPage()` | extend `layout.html.twig`; `portal_can()` hides sections |
+| Nav | `getPortalNavItems(): [{label, url, icon, capability, id?}]` | shown when `scopesFor(capability)` is not empty, before My Family |
+
+Turning the plugin off removes its capabilities from every check, and its rules, pages and nav. Given grants stay stored and work again when it is turned back on; `PluginInstaller::uninstall()` deletes them. Defaults in `AbstractPlugin` return empty lists. The plugin is trusted code; the model gives it one way to decide, not a sandbox.
+
 ## What a Plugin Can and Cannot Do
 
 Every plugin is held to this contract. Capability tags match `ApprovedPluginRegistry::KNOWN_PERMISSIONS`; declare each tag the plugin exercises in its approved-registry entry. For a behavior outside this list, open an issue before shipping. New tags are added by PR.

@@ -26,6 +26,9 @@
  *     out here, up to 1000 messages or 5 minutes per run. Without cron they go
  *     out on page loads instead: the first one after iTimerJobsMinIntervalMinutes
  *     (15 by default) sends for up to 15 seconds;
+ *   - **the member sign-in audit retention**, once a day: rows that name no
+ *     person go after 30 days, IP addresses and the addresses typed on
+ *     refused or throttled sign-ins after 90;
  *   - every plugin listening on the CRON_RUN hook.
  *
  * Install a cron entry that runs it hourly, as the same user your web server

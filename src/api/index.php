@@ -6,8 +6,10 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
 use ChurchCRM\Slim\Middleware\CorsMiddleware;
+use ChurchCRM\Slim\Middleware\LoginAsPersonMiddleware;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Volunteer\Middleware\VolunteerPortalMemberMiddleware;
 use Slim\Factory\AppFactory;
 
 // Get base path by combining $sRootPath from Config.php with /api endpoint
@@ -27,6 +29,8 @@ $errorMiddleware = $app->addErrorMiddleware(\ChurchCRM\dto\SystemConfig::debugEn
 SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
 
 $app->add(new CorsMiddleware());
+$app->add(new VolunteerPortalMemberMiddleware());
+$app->add(new LoginAsPersonMiddleware());
 $app->add(AuthMiddleware::class);
 $app->add(VersionMiddleware::class);
 
@@ -49,6 +53,7 @@ require __DIR__ . '/routes/people/groups-properties.php';
 require __DIR__ . '/routes/people/groups-form-props.php';
 require __DIR__ . '/routes/people/people-person.php';
 require __DIR__ . '/routes/people/people-persons.php';
+require __DIR__ . '/routes/people/people-sign-in-email.php';
 require __DIR__ . '/routes/people/people-properties.php';
 require __DIR__ . '/routes/people/notes.php';
 require __DIR__ . '/routes/people/timeline.php';
@@ -56,6 +61,7 @@ require __DIR__ . '/routes/people/people-attendance.php';
 require __DIR__ . '/routes/portal/portal-calendar.php';
 require __DIR__ . '/routes/portal/portal-emails.php';
 require __DIR__ . '/routes/portal/portal-me.php';
+require __DIR__ . '/routes/portal/portal-plugins.php';
 require __DIR__ . '/routes/public/public.php';
 require __DIR__ . '/routes/public/public-data.php';
 require __DIR__ . '/routes/public/public-calendar.php';

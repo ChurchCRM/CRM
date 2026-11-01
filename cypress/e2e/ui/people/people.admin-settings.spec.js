@@ -65,6 +65,7 @@ describe("People Settings hub", () => {
                 ["Family Properties", "PropertyList.php?Type=f"],
                 ["Family Custom Fields", "FamilyCustomFieldsEditor.php"],
                 ["Volunteer Opportunities", "VolunteerOpportunityEditor.php"],
+                ["Member Portal", "/admin/member-portal"],
             ].forEach(([label, href]) => {
                 cy.get(".container-fluid a.card")
                     .contains(label)

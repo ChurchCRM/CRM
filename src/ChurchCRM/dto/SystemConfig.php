@@ -273,7 +273,6 @@ class   SystemConfig
             // admin page, Admin → Member Portal (design P9, §4).
             'sMemberPortalTheme'                   => new ConfigItem('sMemberPortalTheme', 'text', 'default', gettext('Folder name of the Member Portal theme to use, from Include/themes/. "default" is the system theme that ships with ChurchCRM.')),
             'bPortalDeveloperMode'                 => new ConfigItem('bPortalDeveloperMode', 'boolean', '0', gettext('Turn off the Member Portal template cache and print the name of each template in an HTML comment. For theme designers; leave off in normal use.')),
-            'bPortalShowCalendar'                  => new ConfigItem('bPortalShowCalendar', 'boolean', '1', gettext('Show the church calendar in the Member Portal.')),
             'bPortalShowVolunteer'                 => new ConfigItem('bPortalShowVolunteer', 'boolean', '1', gettext('Show volunteering and team pages in the Member Portal.')),
             'bPortalAllowBirthdayEdit'             => new ConfigItem('bPortalAllowBirthdayEdit', 'boolean', '0', gettext('Let members change their own and their family members\' birthdays in the Member Portal.')),
             // The calendars the Member Portal shows, as a JSON list of
@@ -285,6 +284,24 @@ class   SystemConfig
             // install starts with. Read and written through
             // ChurchCRM\Portal\PortalCalendarService, never by hand.
             'aPortalCalendars'                     => new ConfigItem('aPortalCalendars', 'json', '[]', gettext('Calendars the Member Portal shows to members, chosen on Admin -> Member Portal -> Calendars.')),
+            // Member sign-in (#10463, design §11.1, §13). No category: their home
+            // is the Admin → Member Portal → Sign-in tab.
+            'bMemberSignIn'                        => new ConfigItem('bMemberSignIn', 'boolean', '0', gettext('Let members sign in to the Member Portal with their own email address. It can only be turned on while email sending works.')),
+            'sMemberSignInFamilyRoles'             => new ConfigItem('sMemberSignInFamilyRoles', 'text', '1,2', gettext('Family roles whose members may sign in to the Member Portal, as a comma-separated list of role ids.')),
+            'sMemberSignInClassifications'         => new ConfigItem('sMemberSignInClassifications', 'text', '', gettext('Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids.')),
+            'iMemberSignInMinAge'                  => new ConfigItem('iMemberSignInMinAge', 'number', '13', gettext('Youngest age at which a person may sign in to the Member Portal. When the birth date is unknown, only a head of household or spouse qualifies.')),
+            'iSignInLinkMinutes'                   => new ConfigItem('iSignInLinkMinutes', 'number', '120', gettext('How many minutes a Member Portal sign-in code and link stay valid.')),
+            'iMemberSignInRequestsPerIP'           => new ConfigItem('iMemberSignInRequestsPerIP', 'number', '20', gettext('How many Member Portal sign-in emails one IP address can ask for in an hour. Set to 0 for no limit, for example when everyone reaches ChurchCRM through one address.')),
+            'iPortalIdleMinutes'                   => new ConfigItem('iPortalIdleMinutes', 'number', '30', gettext('How many idle minutes end a Member Portal session.')),
+            'iRememberDeviceDays'                  => new ConfigItem('iRememberDeviceDays', 'number', '14', gettext('How many days a device stays signed in to the Member Portal after the member chooses to stay signed in. Set to 0 to remove the choice.')),
+            'bPortalPasskeys'                      => new ConfigItem('bPortalPasskeys', 'boolean', '1', gettext('Let members add passkeys and sign in to the Member Portal with them.')),
+            'sMemberSignInNotificationRecipientIDs' => new ConfigItem('sMemberSignInNotificationRecipientIDs', 'text', '', gettext('People to email when someone could not sign in to the Member Portal')),
+            'bAllowLoginAsPerson'                  => new ConfigItem('bAllowLoginAsPerson', 'boolean', '0', gettext('Let administrators open a person\'s Member Portal as that person, from the person\'s Actions menu, while member sign-in is on.')),
+            'bLoginAsPersonCanWrite'               => new ConfigItem('bLoginAsPersonCanWrite', 'boolean', '0', gettext('Allow changes while an administrator uses Login as Person. When off, Login as Person is read-only.')),
+            // Set by the 7.8.3 upgrade (design §12): how many self-service accounts it
+            // removed. The Admin Dashboard asks to turn member sign-in on while it is
+            // above 0; dismissing the notice or turning sign-in on sets it to 0.
+            'iMemberSignInFormerAccounts'          => new ConfigItem('iMemberSignInFormerAccounts', 'number', '0'),
             'sChurchLogoURL'                       => new ConfigItem('sChurchLogoURL', 'text', '', gettext('Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application\'s own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo.')),
             'bEnableExternalCalendarAPI'           => new ConfigItem('bEnableExternalCalendarAPI', 'boolean', '0', gettext('Allow unauthenticated reads of events from the external calendar API')),
             'sCalendarEmbedOrigins'                => new ConfigItem('sCalendarEmbedOrigins', 'text', '*', gettext('Space-separated list of origins allowed to embed the public external calendar page in an <iframe> (CSP frame-ancestors). Default "*" allows any origin. Restrict to specific origins for tighter security, e.g. "https://mysite.org https://embed.example.com".')),

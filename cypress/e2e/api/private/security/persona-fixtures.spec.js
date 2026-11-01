@@ -2,12 +2,12 @@
 
 import { PERSONAS, personaNames } from "../../../../support/personas-data";
 
-describe("Persona fixtures: every persona's API key still authenticates", () => {
-    personaNames.forEach((name) => {
-        const { confinedToPortal } = PERSONAS[name];
-
-        it(`${name} ${confinedToPortal ? "is confined to the portal (403)" : "reads people (200)"}`, () => {
-            cy.personaAPICall(name, "GET", "/api/person/1", null, confinedToPortal ? 403 : 200);
+describe("Persona fixtures: every staff persona's API key still authenticates", () => {
+    personaNames
+        .filter((name) => PERSONAS[name].apiKey)
+        .forEach((name) => {
+            it(`${name} reads people (200)`, () => {
+                cy.personaAPICall(name, "GET", "/api/person/1", null, 200);
+            });
         });
-    });
 });

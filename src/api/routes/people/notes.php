@@ -43,7 +43,7 @@ function noteToArray(Note $note): array
 //   - EditSelf: own family's persons only
 //   - Notes=1 alone (no EditRecords/EditSelf): cannot write person notes
 // This matches the existing test contracts in private.plainauth.read-default.spec.js
-// and private.selfedit.family-scope.spec.js.
+// and limited-access.spec.js.
 // ---------------------------------------------------------------------------
 $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): void {
     /**

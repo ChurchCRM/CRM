@@ -141,6 +141,7 @@ $app->get('/people', function (Request $request, Response $response): Response {
             [gettext('Family Properties'), '/PropertyList.php?Type=f', 'fa-people-roof'],
             [gettext('Family Custom Fields'), '/FamilyCustomFieldsEditor.php', 'fa-sliders'],
             [gettext('Volunteer Opportunities'), '/VolunteerOpportunityEditor.php', 'fa-handshake-angle'],
+            [gettext('Member Portal'), '/admin/member-portal', 'fa-house-user'],
         ],
     ];
 

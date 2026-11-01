@@ -9,9 +9,12 @@ Cypress.Commands.add("personaAPICall", (persona, method, url, body, expectedStat
 );
 
 // cy.setupPersonaSession(persona, options)
-// Cached form-login session for a persona, named after it.
+// Cached form-login session for a staff persona, named after it; a portal persona's member session.
 Cypress.Commands.add("setupPersonaSession", (persona, options = {}) => {
-    const { login } = personaDefinition(persona);
+    const { login, member } = personaDefinition(persona);
+    if (member) {
+        return cy.useMemberSession(member);
+    }
     const sessionName = `persona-${persona}`;
 
     if (login.usernameKey) {

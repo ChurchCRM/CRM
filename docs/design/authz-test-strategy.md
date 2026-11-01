@@ -38,7 +38,7 @@ A persona is a seed user plus a stated intent. Names follow the candidate templa
 | `groups-only` | kyle.kioskonly (905) | Manage Groups | Group / Team Leader |
 | `notes-only-staff` | john.plainauth (900) | Notes | none |
 | `zero-permission-staff` | noperm.user (901) | none | Read-Only Staff |
-| `portal-only` | limited.user (4) | Edit Self | Member / Household |
+| `portal-only` | Darren Campbell (4), a member session with no user account | none | Member / Household |
 
 A persona is added when a surface needs it. The kiosk device and API token personas arrive with the kiosk and token slices.
 

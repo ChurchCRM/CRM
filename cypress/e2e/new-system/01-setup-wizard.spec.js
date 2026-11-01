@@ -133,7 +133,8 @@ describe('01 - Setup Wizard', () => {
             cy.get('#continue-to-login').should('be.visible').click();
             
             // Should redirect to login page
-            cy.url({ timeout: 10000 }).should('include', '/session/begin');
+            cy.location('pathname', { timeout: 10000 }).should('match', /\/admin\/$/);
+            cy.get('input[name=User]', { timeout: 10000 }).should('be.visible');
         });
     });
 
@@ -219,19 +220,14 @@ describe('01 - Setup Wizard', () => {
             cy.visit('/login');
             cy.get('input[name=User]').type(adminCredentials.username);
             cy.get('input[name=Password]').type(newAdminPassword + '{enter}');
-
-            // Should redirect away from login
-            cy.url({ timeout: 15000 }).should('not.include', '/session/begin');
-
-            // Should be on some page (dashboard or admin)
-            cy.get('body').should('exist');
+            cy.expectStaffSignedIn({ timeout: 15000 });
         });
 
         it('should show admin dashboard after church info is configured', () => {
             cy.visit('/login');
             cy.get('input[name=User]').type(adminCredentials.username);
             cy.get('input[name=Password]').type(newAdminPassword + '{enter}');
-            cy.url({ timeout: 15000 }).should('not.include', '/session/begin');
+            cy.expectStaffSignedIn({ timeout: 15000 });
 
             cy.url().then((url) => {
                 cy.log('Redirected to: ' + url);
@@ -245,7 +241,7 @@ describe('01 - Setup Wizard', () => {
             cy.visit('/login');
             cy.get('input[name=User]').type(adminCredentials.username);
             cy.get('input[name=Password]').type(newAdminPassword + '{enter}');
-            cy.url({ timeout: 15000 }).should('not.include', '/session/begin');
+            cy.expectStaffSignedIn({ timeout: 15000 });
 
             // Check people API - should return mostly empty (only admin user)
             cy.request({
@@ -265,7 +261,7 @@ describe('01 - Setup Wizard', () => {
             cy.visit('/login');
             cy.get('input[name=User]').type(adminCredentials.username);
             cy.get('input[name=Password]').type(newAdminPassword + '{enter}');
-            cy.url({ timeout: 15000 }).should('not.include', '/session/begin');
+            cy.expectStaffSignedIn({ timeout: 15000 });
 
             cy.request('/admin/api/system/config/sVolunteerVersion').its('body.value').should('eq', 'v2');
             cy.request('/api/events/types').then((response) => {
@@ -280,7 +276,7 @@ describe('01 - Setup Wizard', () => {
             cy.visit('/login');
             cy.get('input[name=User]').type(adminCredentials.username);
             cy.get('input[name=Password]').type(newAdminPassword + '{enter}');
-            cy.url({ timeout: 15000 }).should('not.include', '/session/begin');
+            cy.expectStaffSignedIn({ timeout: 15000 });
 
             cy.visit('/v2/user/current/changepassword');
             cy.get('#OldPassword').type(newAdminPassword);
@@ -299,7 +295,7 @@ describe('01 - Setup Wizard', () => {
             cy.visit('/login');
             cy.get('input[name=User]').type(adminCredentials.username);
             cy.get('input[name=Password]').type(adminCredentials.password + '{enter}');
-            cy.url({ timeout: 15000 }).should('not.include', '/session/begin');
+            cy.expectStaffSignedIn({ timeout: 15000 });
         };
 
         it('should not show "Forgot password?" link on the login page', () => {

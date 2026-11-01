@@ -87,7 +87,8 @@ class UserService
 
     /**
      * True when the person is an administrator who can sign in and no other
-     * administrator can. Such a person must not be made deceased or inactive.
+     * administrator can. Such a person must not be made deceased or inactive,
+     * nor have their sign-in disabled.
      */
     public function isLastSignInCapableAdmin(int $personId): bool
     {
@@ -114,7 +115,7 @@ class UserService
      */
     public function getLockedUsers(): array
     {
-        $maxFailedLogins = SystemConfig::getIntValue('iMaxFailedLogins');
+        $maxFailedLogins = SignInThrottle::maxFailedLogins();
         if ($maxFailedLogins < 1) {
             return [];
         }
@@ -189,67 +190,38 @@ class UserService
     }
 
     /**
-     * Derive the canonical permission flags from a POST body.
+     * Resolves the access mode and every permission from the submitted form body.
      *
-     * The three access modes are mutually exclusive:
-     *   - admin:  Admin=1, EditSelf=0, all module perms as submitted (ignored by server for admin)
-     *   - self:   Admin=0, EditSelf=1, all module perms cleared
-     *   - custom: Admin=0, EditSelf=0, module perms as submitted
-     *
-     * An additional EditSelf-exclusivity rule (defense-in-depth, #9079) clears all
-     * module permissions when EditSelf=1 && Admin=0, regardless of what the form sent.
-     *
-     * @param array $body POST body
-     * @return array Normalized permission flags keyed by camelCase name
-     */
-    /**
-     * Resolves access mode and all permissions from the submitted form body.
-     *
-     * Mode logic (admin/editSelf) is enforced here; individual module permissions
-     * are read generically from the body and default to 0 when absent. EditSelf
-     * is exclusive — no module permissions apply when it is set (#9079).
+     * Two modes: admin (Admin=1) and custom (Admin=0, the module permissions as
+     * submitted, each 0 when absent). Every account made or saved here is a staff
+     * account: the self-service mode went with the release-day cutover (member
+     * sign-in design §12), so EditSelf is always 0.
      */
     public function normalizeAccessMode(array $body): array
     {
-        $accessMode = $body['accessMode'] ?? 'custom';
-
-        if ($accessMode === 'admin') {
-            $admin    = 1;
-            $editSelf = 0;
-        } elseif ($accessMode === 'self') {
-            $admin    = 0;
-            $editSelf = 1;
-        } else {
-            $admin    = 0;
-            $editSelf = 0;
-        }
-
         return array_merge(
-            ['admin' => $admin, 'editSelf' => $editSelf],
-            $this->extractModulePerms($body, (bool) $editSelf)
+            ['admin' => ($body['accessMode'] ?? 'custom') === 'admin' ? 1 : 0, 'editSelf' => 0],
+            $this->extractModulePerms($body)
         );
     }
 
     /**
      * Reads individual module permissions from the form body.
-     * All default to 0 if absent. Zeroes everything when editSelf is active
-     * because EditSelf is exclusive — no module permissions apply (#9079).
-     * Adding a new permission only requires adding it here.
+     * All default to 0 if absent. Adding a new permission only requires adding it here.
      */
-    private function extractModulePerms(array $body, bool $editSelf): array
+    private function extractModulePerms(array $body): array
     {
-        $allow = !$editSelf;
         return [
-            'addRecords'        => $allow && isset($body['AddRecords'])        ? 1 : 0,
-            'editRecords'       => $allow && isset($body['EditRecords'])       ? 1 : 0,
-            'deleteRecords'     => $allow && isset($body['DeleteRecords'])     ? 1 : 0,
-            'manageGroups'      => $allow && isset($body['ManageGroups'])      ? 1 : 0,
-            'finance'           => $allow && isset($body['Finance'])           ? 1 : 0,
-            'manageFundraisers' => $allow && isset($body['ManageFundraisers']) ? 1 : 0,
-            'manageMinistries'  => $allow && isset($body['ManageMinistries'])  ? 1 : 0,
-            'manageMyMinistries' => $allow && isset($body['ManageMyMinistries']) ? 1 : 0,
-            'notes'             => $allow && isset($body['Notes'])             ? 1 : 0,
-            'addEvent'          => $allow && isset($body['AddEvent'])          ? 1 : 0,
+            'addRecords'        => isset($body['AddRecords'])        ? 1 : 0,
+            'editRecords'       => isset($body['EditRecords'])       ? 1 : 0,
+            'deleteRecords'     => isset($body['DeleteRecords'])     ? 1 : 0,
+            'manageGroups'      => isset($body['ManageGroups'])      ? 1 : 0,
+            'finance'           => isset($body['Finance'])           ? 1 : 0,
+            'manageFundraisers' => isset($body['ManageFundraisers']) ? 1 : 0,
+            'manageMinistries'  => isset($body['ManageMinistries'])  ? 1 : 0,
+            'manageMyMinistries' => isset($body['ManageMyMinistries']) ? 1 : 0,
+            'notes'             => isset($body['Notes'])             ? 1 : 0,
+            'addEvent'          => isset($body['AddEvent'])          ? 1 : 0,
         ];
     }
 
@@ -668,6 +640,15 @@ class UserService
 
         $token = new Token();
         $token->build(Token::TYPE_PASSWORD, $user->getId());
+        // A later request's link always expires later, so "expires sooner" means "older".
+        $latest = TokenQuery::create()
+            ->filterByType(Token::TYPE_PASSWORD)
+            ->filterByReferenceId($user->getId())
+            ->orderByValidUntilDate(Criteria::DESC)
+            ->findOne();
+        if ($latest !== null && $token->getValidUntilDate() <= $latest->getValidUntilDate()) {
+            $token->setValidUntilDate((clone $latest->getValidUntilDate())->modify('+1 second'));
+        }
         $rawToken = $token->getToken();
         $token->setToken(Token::passwordResetStorageKey($rawToken));
         $token->save();
@@ -678,13 +659,19 @@ class UserService
 
             return;
         }
-        // Earlier links stop working only once the new one is delivered. A link
-        // that expires later came from a newer request, so it is left alone.
+        // Earlier links stop working only once the new one is delivered. Two
+        // requests that raced to the same expiry keep the link with the larger
+        // stored key, so exactly one of them survives.
         TokenQuery::create()
             ->filterByType(Token::TYPE_PASSWORD)
             ->filterByReferenceId($user->getId())
-            ->filterByToken($token->getToken(), Criteria::NOT_EQUAL)
-            ->filterByValidUntilDate($token->getValidUntilDate(), Criteria::LESS_EQUAL)
+            ->filterByValidUntilDate($token->getValidUntilDate(), Criteria::LESS_THAN)
+            ->delete();
+        TokenQuery::create()
+            ->filterByType(Token::TYPE_PASSWORD)
+            ->filterByReferenceId($user->getId())
+            ->filterByValidUntilDate($token->getValidUntilDate())
+            ->filterByToken($token->getToken(), Criteria::LESS_THAN)
             ->delete();
         $logger->info('Password reset link sent', $logCtx);
     }

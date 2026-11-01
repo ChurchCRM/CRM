@@ -20,8 +20,6 @@ const POSITIONS = ["Song Leader", "Scripture Reader", "Opening Prayer", "Sound B
 /** Enough rows that the page scrolls well past the grid's first rows at 900px tall. */
 const POOL_PEOPLE = Array.from({ length: 28 }, (_, i) => i + 2);
 
-const LEADER_USERNAME = "lena.black.editself.notes@example.com";
-const LEADER_PASSWORD = "changeme";
 const PERSON_LEADER = 100;
 
 let ministryId = 0;
@@ -46,11 +44,7 @@ function cleanupFixtures() {
 }
 
 function leaderLogin() {
-    cy.clearCookies();
-    cy.visit("/session/begin");
-    cy.get("input[name=User]").type(LEADER_USERNAME);
-    cy.get("input[name=Password]").type(`${LEADER_PASSWORD}{enter}`);
-    cy.url({ timeout: 10000 }).should("not.include", "/session/begin");
+    cy.signInAsMember(PERSON_LEADER);
 }
 
 /** `firstPane` is the tab the page opens on: once it has loaded, the tab strip is wired. */

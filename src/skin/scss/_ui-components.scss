@@ -43,3 +43,72 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+// An empty optional date input still shows its format (mm/dd/yyyy); the page script
+// sets .is-empty until a date is entered, so the format reads as a hint, not a value.
+.form-control[type="date"].is-empty {
+  color: var(--tblr-secondary);
+}
+
+/* A data table with more columns than a phone or tablet in portrait can show
+   unrolls into one card per row below the lg breakpoint (the -md-down naming
+   of Bootstrap's modal-fullscreen-md-down). Each cell prints its column name
+   from data-label, so the header row is moved off-screen rather than removed
+   and a screen reader still reads a table. */
+@media (max-width: 991.98px) {
+  .table.table-stack-md-down {
+    > thead {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    > tbody,
+    > tbody > tr,
+    > tbody > tr > td {
+      display: block;
+      width: 100%;
+    }
+
+    > tbody > tr {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--tblr-border-color);
+    }
+
+    > tbody > tr > td {
+      position: relative;
+      padding: 0.2rem 0 0.2rem 6.5rem;
+      border-bottom-width: 0;
+      text-align: start;
+
+      &::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        top: 0.35rem;
+        width: 6rem;
+        color: var(--tblr-secondary);
+        font-size: 0.7rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      &:empty {
+        display: none;
+      }
+
+      // DataTables' "no rows" and "loading" cells span the table and have no label.
+      &[colspan] {
+        padding-left: 0;
+        text-align: center;
+
+        &::before {
+          content: none;
+        }
+      }
+    }
+  }
+}

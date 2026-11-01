@@ -5,7 +5,7 @@
  *
  * The portal's API is session-only by design: `PortalApiMiddleware` refuses an
  * API key outright, so these tests establish a real browser session with the
- * login form and then use `cy.request()`, which shares that session's cookie.
+ * emailed code and then use `cy.request()`, which shares that session's cookie.
  * No `x-api-key` is sent on those calls, so the PHP session survives them.
  *
  * What is under test (design §5.2, P11, P12):
@@ -20,26 +20,22 @@
  *     not read `/api/person/{id}/photo`, and a photo outside the member's
  *     own family is 404, never 403
  *
- * Personas: Lena Black (user 100, person 100, family 20, role 2 = Spouse, an
- * adult of her family) and limited.user (user 4, person 4, family 1, role 4 =
- * Other Relative, not an adult of his).
+ * Personas, signed in with their email: Lena Black (person 100, family 20,
+ * role 2 = Spouse, an adult of her family) and Darren Campbell (person 4,
+ * family 1, role 4 = Other Relative, not an adult of his).
  */
 describe("Member Portal API — /api/portal/me and /api/portal/family", () => {
-    const adultUser = "lena.black.editself.notes@example.com";
-    const nonAdultUser = "limited.user";
-    const password = "changeme";
+    const adultUser = 100;
+    const nonAdultUser = 4;
 
     const LENA_PERSON_ID = 100;
     const LENA_FAMILY_ID = 20;
     const OTHER_FAMILY_ID = 1;
 
-    /** Sign in with the login form so cy.request() inherits a real session. */
-    const portalLogin = (username) => {
-        cy.clearCookies();
-        cy.visit("/session/begin");
-        cy.get("input[name=User]").type(username);
-        cy.get("input[name=Password]").type(password + "{enter}");
-        cy.url({ timeout: 10000 }).should("include", "/portal");
+    /** Sign in with the emailed code so cy.request() inherits a real session. */
+    const portalLogin = (personId) => {
+        cy.signInAsMember(personId);
+        cy.visit("/portal/");
     };
 
     /**
@@ -71,12 +67,6 @@ describe("Member Portal API — /api/portal/me and /api/portal/family", () => {
     describe("Who may call it", () => {
         it("refuses an API-key caller, even an administrator's key", () => {
             cy.makePrivateAdminAPICall("GET", "/api/portal/me", null, 403);
-        });
-
-        it("refuses an Edit-Self account's API key too", () => {
-            // AuthMiddleware already blocks an EditSelf-exclusive key before
-            // the portal middleware is reached; either way the answer is 403.
-            cy.makePrivateEditSelfAPICall("GET", "/api/portal/me", null, 403);
         });
 
         it("answers a signed-in member with their own record", () => {
@@ -188,6 +178,47 @@ describe("Member Portal API — /api/portal/me and /api/portal/family", () => {
         });
     });
 
+    describe("POST /api/portal/me — language", () => {
+        after(() => {
+            portalLogin(adultUser);
+            withCsrfToken((token) => portalPost("/api/portal/me", { language: "" }, token, 200));
+        });
+
+        it("saves a language the installation ships, and an empty one for the church's", () => {
+            portalLogin(adultUser);
+            withCsrfToken((token) => {
+                portalPost("/api/portal/me", { language: "fr_FR" }, token, 200).then((response) => {
+                    expect(response.body.updated).to.deep.eq(["language"]);
+                    expect(response.body.profile.language).to.eq("fr_FR");
+                });
+                portalPost("/api/portal/me", { language: "fr_FR" }, token, 200).its("body.updated").should("deep.eq", []);
+                portalPost("/api/portal/me", { language: "" }, token, 200).then((response) => {
+                    expect(response.body.updated).to.deep.eq(["language"]);
+                    expect(response.body.profile.language).to.eq("");
+                });
+            });
+            cy.makePrivateAdminAPICall("GET", `/api/timeline/person/${LENA_PERSON_ID}`, null, 200).then((response) => {
+                expect(JSON.stringify(response.body.timeline)).to.contain("Edited via the Member Portal: Language");
+            });
+        });
+
+        it("refuses a language the installation does not ship, and saves nothing else", () => {
+            const phone = `(206) 555-${String(Date.now()).slice(-4)}`;
+            portalLogin(adultUser);
+            withCsrfToken((token) => {
+                portalPost("/api/portal/me", { language: "xx_XX", workPhone: phone }, token, 400)
+                    .its("body.failures")
+                    .should("include", "language: Please choose a language from the list.");
+            });
+            cy.request("/api/portal/me")
+                .its("body.profile")
+                .should((profile) => {
+                    expect(profile.language).to.eq("");
+                    expect(profile.workPhone).to.not.eq(phone);
+                });
+        });
+    });
+
     describe("POST /api/portal/family — the adult-of-the-family rule", () => {
         it("lets an adult save the family address, ignoring a familyId in the body", () => {
             const address = `${String(Date.now()).slice(-5)} Avondale Ave`;
@@ -208,6 +239,70 @@ describe("Member Portal API — /api/portal/me and /api/portal/family", () => {
             // parameter that could have reached it.
             cy.makePrivateAdminAPICall("GET", `/api/family/${OTHER_FAMILY_ID}`, null, 200).then((response) => {
                 expect(response.body.Address1).to.not.eq(address);
+            });
+        });
+
+        describe("the deprecated family email", () => {
+            const expectDeprecated = (response, page) => {
+                expect(response.headers.deprecation).to.match(/^@\d+$/);
+                expect(response.headers.link).to.eq(`<https://docs.churchcrm.io/api/private/${page}>; rel="deprecation"; type="text/html"`);
+            };
+
+            let headEmail;
+            let familyBefore;
+
+            beforeEach(() => {
+                cy.makePrivateAdminAPICall("GET", `/api/family/${LENA_FAMILY_ID}`, null, 200).then((response) => {
+                    familyBefore = response.body;
+                    headEmail = response.body.Email;
+                    expect(headEmail, "the head of household's email").to.be.a("string").and.not.eq("");
+                });
+            });
+
+            it("shows an adult the head of household's email, read-only", () => {
+                portalLogin(adultUser);
+                cy.request("/api/portal/family").then((response) => {
+                    expectDeprecated(response, "get-portal-family");
+                    expect(response.body.family.email).to.eq(headEmail);
+                });
+            });
+
+            it("shows it to a member who may not see the family's contacts as empty", () => {
+                const nonAdultFamilyId = 1;
+                portalLogin(nonAdultUser);
+                cy.makePrivateAdminAPICall("GET", `/api/family/${nonAdultFamilyId}`, null, 200).its("body.Email").should("not.eq", "");
+                cy.request("/api/portal/family").then((response) => {
+                    expect(response.body.canSeeContacts).to.eq(false);
+                    expect(response.body.family.email).to.eq("");
+                });
+            });
+
+            it("ignores a posted family email and stores nothing", () => {
+                portalLogin(adultUser);
+                withCsrfToken((token) => {
+                    portalPost("/api/portal/family", { email: "household@example.com" }, token, 200).then((response) => {
+                        expectDeprecated(response, "update-portal-family");
+                        expect(response.body.updated).to.deep.equal([]);
+                        expect(response.body.family.email).to.eq(headEmail);
+                    });
+                });
+                cy.makePrivateAdminAPICall("GET", `/api/family/${LENA_FAMILY_ID}`, null, 200).then((response) => {
+                    expect(response.body.Email).to.eq(headEmail);
+                    expect(response.body.DateLastEdited).to.eq(familyBefore.DateLastEdited);
+                });
+            });
+
+            it("saves the rest of a write that also sends a family email", () => {
+                const phone = `(206) 555-${String(Date.now()).slice(-4)}`;
+                portalLogin(adultUser);
+                withCsrfToken((token) => {
+                    portalPost("/api/portal/family", { email: "household@example.com", homePhone: phone }, token, 200).then((response) => {
+                        expect(response.body.updated).to.deep.equal(["homePhone"]);
+                        expect(response.body.family.homePhone).to.eq(phone);
+                        expect(response.body.family.email).to.eq(headEmail);
+                    });
+                    portalPost("/api/portal/family", { homePhone: familyBefore.HomePhone ?? "" }, token, 200);
+                });
             });
         });
 
@@ -273,11 +368,19 @@ describe("Member Portal API — /api/portal/me and /api/portal/family", () => {
         // instead; these tests are the contract for that.
         //
         // Seeded photo files live in cypress/data/images/people, which the test
-        // stack bind-mounts as Images/Person. Lena (person 100) deliberately has
-        // no tracked fixture: the tests below upload her one through the portal,
-        // the same way the member does, so nothing here overwrites a tracked file
-        // (issue #9777). Samantha (person 102, the same family) does have one and
-        // is only ever read.
+        // stack bind-mounts as Images/Person. The tests below upload Lena's
+        // (person 100) through the portal, the same way the member does, and put
+        // the tracked 100.png back afterwards. Samantha (person 102, the same
+        // family) has one too and is only ever read.
+        const LENA_PHOTO = "cypress/data/images/people/100.png";
+        let lenaPhoto = null;
+        before(() =>
+            cy.readFile(LENA_PHOTO, null).then((bytes) => {
+                lenaPhoto = bytes;
+            }),
+        );
+        after(() => cy.writeFile(LENA_PHOTO, lenaPhoto, null));
+
         const PNG_1PX =
             "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==";
 

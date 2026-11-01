@@ -11,7 +11,7 @@
  * Business rule under test (read-default policy, #9003):
  *  - A zero-permission user CAN log in and READ people and family records.
  *    They are NOT redirected to the Member Portal — that confinement is
- *    reserved for EditSelf-only users (see limited-access.spec.js).
+ *    reserved for EditSelf-only accounts (the safety net in limited-access.spec.js).
  *  - They CANNOT write anything: no add/edit/delete of person or family, and no
  *    access to finance, notes, admin, or menu-option pages.
  *
@@ -19,8 +19,8 @@
  * User::isEditSelfExclusive(), replacing the removed hasNoAdminPermissions().
  * Zero-permission users fall through it; EditSelf-only users do not.
  *
- * Contrast: limited.user (EditSelf=1, person 4, family 1) IS confined to the
- * Member Portal at /portal — see limited-access.spec.js.
+ * Contrast: an EditSelf-only account IS confined to the Member Portal at
+ * /portal — see limited-access.spec.js.
  */
 describe("Zero-Permission User (EditSelf=0, all flags 0)", () => {
     const noPermUser = "noperm.user";
@@ -32,7 +32,7 @@ describe("Zero-Permission User (EditSelf=0, all flags 0)", () => {
         cy.visit("session/begin");
         cy.get("input[name=User]").type(noPermUser);
         cy.get("input[name=Password]").type(noPermPassword + "{enter}");
-        cy.url({ timeout: 10000 }).should("not.include", "/session/begin");
+        cy.location("pathname", { timeout: 10000 }).should("not.match", /\/admin\/$/);
     };
 
     describe("Can log in and read people/families", () => {
@@ -241,7 +241,7 @@ describe("Zero-Permission User (EditSelf=0, all flags 0)", () => {
             // Open the user-menu dropdown, then click the 'Sign out' link
             cy.get('[aria-label="Open user menu"]').click();
             cy.contains("Sign out").click();
-            cy.url().should("include", "/session/begin");
+            cy.location("pathname").should("match", /\/admin\/$/);
         });
     });
 });

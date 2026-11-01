@@ -33,7 +33,7 @@ use Slim\Routing\RouteCollectorProxy;
  *                 @OA\Property(property="personId", type="integer", nullable=true),
  *                 @OA\Property(property="familyId", type="integer", nullable=true),
  *                 @OA\Property(property="sentByUserId", type="integer", nullable=true),
- *                 @OA\Property(property="sentBy", type="string", nullable=true, description="Name of the user who wrote a composer message"),
+ *                 @OA\Property(property="sentBy", type="string", nullable=true, description="Name of the person who wrote a composer message"),
  *                 @OA\Property(property="address", type="string"),
  *                 @OA\Property(property="kind", type="string"),
  *                 @OA\Property(property="kindLabel", type="string"),

@@ -1,12 +1,16 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Authentication\StaffSignInPage;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Plugin\PluginManager;
+use ChurchCRM\Service\MemberSignInSettingsService;
 use ChurchCRM\Service\SystemService;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -43,8 +47,18 @@ $app->get('/get-started', function (Request $request, Response $response) {
     return $renderer->render($response, 'get-started.php', $pageArgs);
 });
 
-// Match /admin root path
-$app->get('/', function (Request $request, Response $response) {
+// The /admin root (member sign-in design §7): the staff sign-in page when no
+// staff session is active (signed out, or a member session), the Admin
+// Dashboard for an administrator, and the staff dashboard for other staff.
+// AuthMiddleware and AdminRoleAuthMiddleware let this one path through.
+$app->map(['GET', 'POST'], '/', function (Request $request, Response $response) {
+    if ($request->getMethod() === 'POST' || !AuthenticationManager::validateUserSessionIsActive(false)) {
+        return StaffSignInPage::handle($request, $response);
+    }
+    if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
+        return $response->withStatus(302)->withHeader('Location', SystemURLs::getRootPath() . '/v2/dashboard');
+    }
+
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
     // Setup progress checklist
@@ -151,6 +165,9 @@ $app->get('/', function (Request $request, Response $response) {
         'timerJobsStaleHours'  => SystemService::getTimerJobsStaleHours(),
         'timerJobsLastRun'     => $timerJobsLastRun?->format('Y-m-d H:i:s'),
         'timerJobsCronCommand' => '/usr/bin/php ' . SystemURLs::getDocumentRoot() . '/cli/timerjobs.php',
+        'formerPortalAccounts' => (new MemberSignInSettingsService())->formerAccountsToNotify(),
+        'hasEmail'             => $hasEmail,
+        'csrfToken'            => CSRFUtils::generateToken(),
     ];
 
     return $renderer->render($response, 'dashboard.php', $pageArgs);

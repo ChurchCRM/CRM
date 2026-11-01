@@ -10,7 +10,8 @@
  *     409 — the validator found errors; nothing is written
  *     200 — activated; warnings come back with it
  *   GET  /admin/api/member-portal/theme/{name}/validation — the "Check" button
- *   GET  /admin/api/member-portal/stats — the statistics tab's numbers
+ *   GET  /admin/api/member-portal/stats — the statistics tab's numbers, from
+ *        the person sign-in rows (member sign-in row 9)
  *
  * The spec writes throwaway theme folders on disk (the webserver container
  * bind-mounts ../src) and removes them again in after().
@@ -20,9 +21,6 @@ const WARNING_THEME = "cypressapiwarn";
 const BROKEN_THEME = "cypressapibroken";
 const THEME_DIRS = [GOOD_THEME, WARNING_THEME, BROKEN_THEME].map((id) => `src/Include/themes/${id}`);
 
-// usr_UserName is VARCHAR(50) since #9831, so the seeded address is stored whole.
-const MEMBER_USER = "lena.black.editself.notes@example.com";
-const MEMBER_PASSWORD = "changeme";
 const MEMBER_PERSON_ID = 100;
 
 describe("API Private Admin Member Portal", () => {
@@ -147,7 +145,7 @@ describe("API Private Admin Member Portal", () => {
         it("Returns the documented shape", () => {
             cy.makePrivateAdminAPICall("GET", "/admin/api/member-portal/stats", null, 200).then((resp) => {
                 for (const key of [
-                    "totalAccounts",
+                    "maySignIn",
                     "activeNow",
                     "signedIn24Hours",
                     "signedIn7Days",
@@ -159,69 +157,23 @@ describe("API Private Admin Member Portal", () => {
                 }
                 expect(resp.body.activeWindowMinutes).to.eq(15);
                 expect(resp.body.recentSignIns).to.be.an("array");
-                // The seed carries three self-service accounts: lena.black,
-                // amanda.black and limited.user.
-                expect(resp.body.totalAccounts).to.be.at.least(3);
                 expect(resp.body.signedIn30Days).to.be.at.least(resp.body.signedIn7Days);
                 expect(resp.body.signedIn7Days).to.be.at.least(resp.body.signedIn24Hours);
+                expect(resp.body.maySignIn).to.be.at.least(resp.body.neverSignedIn);
             });
         });
 
-        it("Counts a member sign-in and lists it first", () => {
-            cy.makePrivateAdminAPICall("GET", "/admin/api/member-portal/stats", null, 200).then((before) => {
-                cy.request({
-                    method: "POST",
-                    url: "/session/begin",
-                    form: true,
-                    body: { User: MEMBER_USER, Password: MEMBER_PASSWORD },
-                    followRedirect: false,
-                });
-
-                cy.makePrivateAdminAPICall("GET", "/admin/api/member-portal/stats", null, 200).then((after) => {
-                    expect(after.body.signedIn24Hours).to.be.at.least(1);
-                    expect(after.body.totalAccounts).to.eq(before.body.totalAccounts);
-                    expect(after.body.neverSignedIn).to.be.at.most(before.body.neverSignedIn);
-                    expect(after.body.recentSignIns[0].personId).to.eq(MEMBER_PERSON_ID);
-                    expect(after.body.recentSignIns[0].userName).to.eq(MEMBER_USER);
-                    expect(after.body.recentSignIns[0].lastLogin).to.match(/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/);
-                });
-            });
-        });
-
-        it("Stamps usr_LastPortalActivity on a portal request and leaves it alone for five minutes", () => {
-            // A real member session, then a portal page: the middleware stamps.
-            cy.request({
-                method: "POST",
-                url: "/session/begin",
-                form: true,
-                body: { User: MEMBER_USER, Password: MEMBER_PASSWORD },
-                followRedirect: false,
-            });
+        it("Counts a portal sign-in and lists it first", () => {
+            cy.signInAsMember(MEMBER_PERSON_ID);
             cy.request("/portal/");
 
-            cy.makePrivateAdminAPICall("GET", "/admin/api/member-portal/stats", null, 200).then((first) => {
-                const member = first.body.recentSignIns.find((row) => row.personId === MEMBER_PERSON_ID);
-                expect(member, "the member appears in the recent sign-ins").to.exist;
-                expect(member.lastPortalActivity).to.match(/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/);
-                expect(first.body.activeNow).to.be.at.least(1);
-
-                // The API-key call above replaced the browser session, so sign
-                // in again — the throttle must hold across that, because it
-                // compares the stored value and not a session flag.
-                cy.request({
-                    method: "POST",
-                    url: "/session/begin",
-                    form: true,
-                    body: { User: MEMBER_USER, Password: MEMBER_PASSWORD },
-                    followRedirect: false,
-                });
-                cy.request("/portal/");
-                cy.request("/portal/");
-
-                cy.makePrivateAdminAPICall("GET", "/admin/api/member-portal/stats", null, 200).then((second) => {
-                    const again = second.body.recentSignIns.find((row) => row.personId === MEMBER_PERSON_ID);
-                    expect(again.lastPortalActivity).to.eq(member.lastPortalActivity);
-                });
+            cy.makePrivateAdminAPICall("GET", "/admin/api/member-portal/stats", null, 200).then((after) => {
+                expect(after.body.signedIn24Hours).to.be.at.least(1);
+                expect(after.body.activeNow).to.be.at.least(1);
+                expect(after.body.recentSignIns[0].personId).to.eq(MEMBER_PERSON_ID);
+                expect(after.body.recentSignIns[0].method).to.eq("email_code");
+                expect(after.body.recentSignIns[0].lastSignIn).to.match(/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/);
+                expect(after.body.recentSignIns[0].lastActivity).to.match(/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/);
             });
         });
     });

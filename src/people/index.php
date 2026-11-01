@@ -22,5 +22,6 @@ require __DIR__ . '/routes/self-register.php';
 require __DIR__ . '/routes/map.php';
 require __DIR__ . '/routes/reports.php';
 require __DIR__ . '/routes/labels.php';
+require __DIR__ . '/routes/sign-in-email.php';
 
 $app->run();

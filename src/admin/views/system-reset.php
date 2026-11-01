@@ -233,7 +233,7 @@ $(document).ready(function () {
                                      '<code>' + username + '</code> / <code>' + password + '</code>' +
                                      '</div>',
                             callback: function () {
-                                window.location.href = window.CRM.root + "/";
+                                window.location.href = window.CRM.root + "/admin/";
                             }
                         });
                     })

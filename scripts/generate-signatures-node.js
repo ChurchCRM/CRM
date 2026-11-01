@@ -29,6 +29,7 @@ const excludes = [
   /^Images\/church-logo\.png$/,
   /^vendor\/.*\/example\//,
   /^vendor\/.*\/tests\//,
+  /^vendor\/.*\/_test\//,
   /^vendor\/.*\/docs\//,
   // Community plugins are installed at runtime and must never be shipped in
   // signatures.json (they'd otherwise be reported as orphans on every install).

@@ -42,6 +42,10 @@ Cypress.Commands.add("getSystemConfig", (name) => {
         .then((response) => String(response.body.value));
 });
 
+Cypress.Commands.add("setSystemConfig", (name, value) =>
+    cy.makePrivateAdminAPICall("POST", `admin/api/system/config/${name}`, { value: String(value) }, 200),
+);
+
 // Put a SystemConfig key back to a value captured with getSystemConfig, then
 // confirm it. Restore the captured value, never a literal: setValue() deletes
 // the config_cfg row when the value equals the default, so writing the default
@@ -54,6 +58,18 @@ Cypress.Commands.add("restoreSystemConfig", (name, value) => {
     cy.makePrivateAdminAPICall("POST", `admin/api/system/config/${name}`, { value }, 200);
     cy.getSystemConfig(name).should("eq", value);
 });
+
+// The calendars Admin -> Member Portal -> Calendars shares with members, as {type, id}.
+// The portal has a Calendar page while at least one is shared.
+Cypress.Commands.add("getMemberPortalCalendars", () =>
+    cy
+        .makePrivateAdminAPICall("GET", "/admin/api/member-portal/calendars", null, 200)
+        .then((response) => response.body.calendars.filter((calendar) => calendar.visible).map(({ type, id }) => ({ type, id }))),
+);
+
+Cypress.Commands.add("shareMemberPortalCalendars", (visible) =>
+    cy.makePrivateAdminAPICall("POST", "/admin/api/member-portal/calendars", { visible }, 200),
+);
 
 Cypress.Commands.add("makePrivateUserAPICall", privateApiCall("user.api.key"));
 
@@ -72,37 +88,6 @@ Cypress.Commands.add("makePrivateNoFinanceAPICall", privateApiCall("nofinance.ap
 Cypress.Commands.add("makePrivateNoManageFundraisersAPICall", privateApiCall("nofundraiser.api.key"));
 
 Cypress.Commands.add("makePrivatePlainAuthAPICall", privateApiCall("plainauth.api.key"));
-
-Cypress.Commands.add("makePrivateEditSelfAPICall", privateApiCall("selfedit.api.key"));
-
-/**
- * EditSelf+Notes user — regression sentinel for FamilyReadMiddleware vs FamilyMiddleware.
- *
- * User: lena.black (ID 100, family 20) with usr_EditSelf=1, usr_Notes=1 in DB.
- *
- * Post-PR#9016 (EditSelf exclusive mode): User::isEditSelfExclusive() (checked by AuthMiddleware)
- * returns true for any non-admin user with isEditSelf()=true, regardless of Notes. AuthMiddleware
- * therefore blocks this user (403) before reaching FamilyReadMiddleware or FamilyMiddleware.
- *
- * Future use: if EditSelf exclusivity is ever relaxed to permit EditSelf+Notes, this user
- * should get 200 on avatar/nav/photo (FamilyReadMiddleware, canReadFamily=true) and 403 on
- * full profile/notes for non-own family 1 (FamilyMiddleware, canViewFamily=false). That
- * would make these tests detect a FamilyReadMiddleware→FamilyMiddleware regression.
- */
-Cypress.Commands.add("makePrivateEditSelfPlusNotesAPICall", privateApiCall("selfedit.plus.notes.api.key"));
-
-// limited.user (id=4): usr_Notes=0, usr_Admin=0, usr_EditRecords=0,
-// usr_EditSelf=1 — an EditSelf-ONLY user (NOT a zero-permission user).
-// EditSelf is exclusive, so AuthMiddleware::isEditSelfExclusive() blocks
-// this user → always returns 403.
-// Use this fixture ONLY to verify that Notes-gated endpoints return 403.
-// Do NOT use for routes that should return 200 for authenticated users
-// (e.g. timeline) — use makePrivateEditRecordsAPICall instead.
-//
-// For a genuinely zero-permission user (all flags 0, EditSelf=0) see
-// noperm.user (id=901), which now passes the gate with read-only access
-// under the read-default policy (#9003).
-Cypress.Commands.add("makePrivateLimitedAPICall", privateApiCall("limited.api.key"));
 
 // judith.matthews (id=95): usr_EditRecords=1, usr_Notes=0, usr_Admin=0.
 // Passes AuthMiddleware (has EditRecords permission) but canReadNotes()
@@ -176,9 +161,10 @@ Cypress.Commands.add(
 // assert them against the database itself (#9705). The task resolves with
 // `{ rows, error }` rather than rejecting, so a spec can assert that a write
 // was refused (ER_DUP_ENTRY, ER_NO_REFERENCED_ROW_2, ...) without failing the
-// test run.
-Cypress.Commands.add("dbQuery", (sql, params = []) => {
-    return cy.task("db:query", { sql, params }, { log: false });
+// test run. It runs only for the files cypress/db-access.json lets use the
+// database (#10377); a fixture in cypress/support/ names its own file.
+Cypress.Commands.add("dbQuery", (sql, params = [], { fixture = null } = {}) => {
+    return cy.task("db:query", { sql, params, spec: Cypress.spec.relative, fixture }, { log: false });
 });
 
 // ---------------------------------------------------------------------------

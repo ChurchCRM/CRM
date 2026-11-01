@@ -24,7 +24,7 @@ const REPO_ROOT = path.join(__dirname, '..');
 const SCAN_ROOT = 'cypress';
 const ALLOWLIST_PATH = 'cypress/db-access.json';
 const APPROVED_KINDS = ['schema', 'fixture'];
-const DB_NAMES = new Set(['dbQuery', 'db:query']);
+const DB_NAMES = new Set(['dbQuery', 'db:query', 'db:upgradeBlock']);
 
 // Upper-case keywords only, so UI strings such as "Select a team" never match.
 const SQL_STATEMENT = new RegExp(

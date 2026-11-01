@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
@@ -56,7 +57,7 @@ $rootPath = SystemURLs::getRootPath();
       <?php endif; ?>
     </div>
     <div class="form-footer justify-content-center">
-      <a href="<?= $rootPath ?>/session/begin"><?= gettext('Use a different account') ?></a>
+      <a href="<?= AuthenticationManager::getStaffSignInURL() ?>"><?= gettext('Use a different account') ?></a>
     </div>
   </div>
 </main>

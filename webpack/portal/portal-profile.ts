@@ -83,7 +83,7 @@ function wireProfileForm(): void {
       saveButton.disabled = true;
     }
 
-    void postPortalJSON<{ profile: PortalProfile; updated: string[] }>(
+    void postPortalJSON<{ profile: PortalProfile; updated: string[]; pendingEmail?: string }>(
       `${root()}/api/portal/me`,
       collectFormValues(form),
       getCsrfToken(form),
@@ -96,11 +96,24 @@ function wireProfileForm(): void {
         }
 
         const updated = result.data.updated ?? [];
-        showPortalToast(
-          "success",
-          updated.length === 0 ? t("Nothing had changed, so nothing was saved.") : t("Your details have been saved."),
-        );
+        if (updated.includes("language")) {
+          window.location.reload();
+          return;
+        }
+        const pendingEmail = result.data.pendingEmail ?? "";
+        if (pendingEmail !== "") {
+          showPortalToast(
+            "success",
+            t("We sent a link to {{email}}. Your email changes when you use it.", { email: pendingEmail }),
+          );
+        } else {
+          showPortalToast(
+            "success",
+            updated.length === 0 ? t("Nothing had changed, so nothing was saved.") : t("Your details have been saved."),
+          );
+        }
         applyProfile(form, result.data.profile ?? {});
+        showPendingEmail(result.data.profile?.pendingEmail);
       })
       .catch(() => {
         showPortalToast("danger", t("Nothing was saved. Please try again."));
@@ -125,6 +138,18 @@ function applyProfile(form: HTMLFormElement, profile: PortalProfile): void {
     }
   }
   updatePhotoPreview(profile);
+}
+
+/** Say under the email field which new address is waiting for its link to be used, if any. */
+function showPendingEmail(pendingEmail: unknown): void {
+  const hint = document.getElementById("portal-email-hint");
+  if (!hint || document.getElementById("portal-email")?.hasAttribute("readonly")) {
+    return;
+  }
+  hint.textContent =
+    typeof pendingEmail === "string" && pendingEmail !== ""
+      ? t("Waiting for you to confirm {{email}}. Use the link we sent to that address.", { email: pendingEmail })
+      : t("A new address changes only after you use the link we send to it.");
 }
 
 function updatePhotoPreview(profile: PortalProfile): void {

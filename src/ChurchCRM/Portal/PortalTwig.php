@@ -2,11 +2,11 @@
 
 namespace ChurchCRM\Portal;
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Plugin\PluginManager;
+use ChurchCRM\Portal\Auth\LoginAsPerson;
+use ChurchCRM\Portal\Auth\PortalContext;
 use ChurchCRM\Twig\GettextExtension;
 use ChurchCRM\Utils\LoggerUtils;
 use Laminas\Diactoros\Response as Psr7Response;
@@ -134,8 +134,48 @@ class PortalTwig
         array $model = [],
         ?string $activeNavId = null
     ): ResponseInterface {
+        return self::renderTemplate($response, $template, $model, $activeNavId, null);
+    }
+
+    /**
+     * Render a plugin's portal page (member sign-in design §8.5): a template
+     * from the plugin's own `portal/templates` folder, addressed there as
+     * `@plugin/...`, that extends the church's portal theme.
+     *
+     * @param array<string, mixed> $model
+     */
+    public static function renderPluginPage(
+        ResponseInterface $response,
+        string $pluginId,
+        string $template,
+        array $model = [],
+        ?string $activeNavId = null
+    ): ResponseInterface {
+        $metadata = PluginManager::getPluginMetadata($pluginId);
+        if ($metadata === null || PluginManager::getPlugin($pluginId) === null) {
+            throw new \RuntimeException('Plugin is not active: ' . $pluginId);
+        }
+
+        return self::renderTemplate($response, '@plugin/' . $template, $model, $activeNavId, $metadata->getPath() . '/portal/templates');
+    }
+
+    /**
+     * @param array<string, mixed> $model
+     */
+    private static function renderTemplate(
+        ResponseInterface $response,
+        string $template,
+        array $model,
+        ?string $activeNavId,
+        ?string $pluginTemplates
+    ): ResponseInterface {
         try {
-            $html = self::create($activeNavId)->render($template, $model);
+            $twig = self::create($activeNavId);
+            $loader = $twig->getLoader();
+            if ($pluginTemplates !== null && $loader instanceof FilesystemLoader) {
+                $loader->addPath($pluginTemplates, 'plugin');
+            }
+            $html = self::withLoginAsPersonBanner($twig, $twig->render($template, $model));
         } catch (ThemeException | TwigError $e) {
             return self::renderThemeFailure($response, $e, $activeNavId);
         }
@@ -152,6 +192,21 @@ class PortalTwig
         $response->getBody()->write($html);
 
         return $response->withHeader('Content-Type', 'text/html; charset=UTF-8');
+    }
+
+    /**
+     * Stop is the only way back from Login as Person, so a page whose theme
+     * layout leaves the banner out gets it right after `<body>`.
+     */
+    private static function withLoginAsPersonBanner(Environment $twig, string $html): string
+    {
+        if (str_contains($html, 'id="login-as-person-banner"') || !LoginAsPerson::isActive()) {
+            return $html;
+        }
+        $banner = $twig->render('@default/partials/login-as-person-banner.html.twig');
+        $withBanner = preg_replace_callback('/<body\b[^>]*>/i', static fn (array $body): string => $body[0] . $banner, $html, 1, $found);
+
+        return $found === 1 ? $withBanner : $banner . $html;
     }
 
     /**
@@ -308,8 +363,6 @@ class PortalTwig
 
     private static function currentUserIsAdministrator(): bool
     {
-        $user = AuthenticationManager::getCurrentUser();
-
-        return $user instanceof User && $user->isAdmin();
+        return PortalContext::staffUser()?->isAdmin() === true;
     }
 }

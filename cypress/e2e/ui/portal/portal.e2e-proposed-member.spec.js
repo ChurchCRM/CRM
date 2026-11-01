@@ -5,16 +5,15 @@
  * every reader of `Family::getAdults()` leaves them out until staff approve them. A family
  * that self-registered as a whole is pending too, and keeps its adults.
  *
- * Family 20 (Black): Amanda (head), Lena (spouse, the portal login), Samantha and Serenity.
+ * Family 20 (Black): Amanda (head), Lena (spouse, signed in to the portal with her email), Samantha and Serenity.
  */
-const MEMBER = "lena.black.editself.notes@example.com";
-const PASSWORD = "changeme";
 const FAMILY_ID = 20;
 const LENA_ID = 100;
 const SAMANTHA_ID = 102;
 const SPOUSE_ROLE = 2;
 const STUDENT_ROLE = 2;
 const ANNIVERSARIES_CALENDAR = 1;
+const FAMILY_ADULT_CAPABILITIES = ["portal.family.contacts.view", "portal.family.edit", "portal.family.confirm"];
 
 const run = String(Date.now()).slice(-6);
 const spouseFirstName = `Pat${run}`;
@@ -30,17 +29,7 @@ const pendingFamily = {
 
 const admin = (method, url, body = null, status = 200) => cy.makePrivateAdminAPICall(method, url, body, status);
 
-const memberLogin = () => {
-    cy.clearCookies();
-    cy.request("/session/begin");
-    cy.request({
-        method: "POST",
-        url: "/session/begin",
-        form: true,
-        body: { User: MEMBER, Password: PASSWORD },
-        followRedirect: false,
-    });
-};
+const memberLogin = () => cy.useMemberSession(LENA_ID);
 
 const memberPost = (url, body) => {
     cy.request("/portal/profile/edit").then((page) => {
@@ -69,6 +58,14 @@ const parentEmails = (groupId) =>
     admin("GET", `/api/groups/${groupId}/sundayschool/emails`).then((response) =>
         response.body.recipients.map((recipient) => recipient.email),
     );
+
+// The person card's portal permissions, as an administrator sees them.
+const portalPermission = (personId, capability) => {
+    cy.setupAdminSession();
+    cy.visit(`/people/view/${personId}`);
+    cy.get("#portal-signin-permissions").should("exist");
+    return cy.get("body").then(($body) => $body.find(`#portal-signin-permissions [data-capability="${capability}"]`).length);
+};
 
 const emailLogTotal = (personId) =>
     admin("GET", `/api/email/log?personId=${personId}`).then((response) => response.body.total);
@@ -191,6 +188,12 @@ describe("A family member proposed in the Member Portal", () => {
             });
         });
 
+        it("holds none of the family adult's portal permissions", () => {
+            FAMILY_ADULT_CAPABILITIES.forEach((capability) => {
+                portalPermission(spouseId, capability).should("eq", 0);
+            });
+        });
+
         it("leaves the family salutation on the staff anniversary calendar alone", () => {
             admin("GET", `/api/systemcalendars/${ANNIVERSARIES_CALENDAR}/events/${FAMILY_ID}`).then((response) => {
                 expect(response.body[0].Title).to.eq("Anniversary: Amanda & Lena Black");
@@ -249,6 +252,12 @@ describe("A family member proposed in the Member Portal", () => {
                 const spouse = response.body.members.find((member) => member.id === spouseId);
                 expect(spouse.awaitingReview).to.eq(false);
                 expect(spouse.isAdult).to.eq(true);
+            });
+        });
+
+        it("holds the family adult's portal permissions", () => {
+            FAMILY_ADULT_CAPABILITIES.forEach((capability) => {
+                portalPermission(spouseId, capability).should("eq", 1);
             });
         });
 
