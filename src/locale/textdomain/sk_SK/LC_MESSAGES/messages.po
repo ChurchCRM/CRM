@@ -925,14 +925,6 @@ msgid "Zero Givers"
 msgstr "Nulový darcovia"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Prehľad jednotlivých vkladov"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Rozšírený prehľad vkladov"
-
-#: 
 msgid "Next"
 msgstr "Ďalší"
 
@@ -951,10 +943,6 @@ msgstr "Dátum konca správy"
 #: 
 msgid "Apply Report Dates To"
 msgstr "Použiť dátumy správy na"
-
-#: 
-msgid "Deposit Date (Default)"
-msgstr "Dátum vkladu (predvolený)"
 
 #: 
 msgid "Payment Date"
@@ -977,10 +965,6 @@ msgid "Filter by Payment Type"
 msgstr "Filtrovať podľa typu platby"
 
 #: 
-msgid "All Methods"
-msgstr "Všetky metódy"
-
-#: 
 msgid "Check"
 msgstr "Šek"
 
@@ -991,10 +975,6 @@ msgstr "Hotovosť"
 #: 
 msgid "Bank Draft"
 msgstr "Bankový prevod"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0 – Bez minima"
 
 #: 
 msgid "Other Settings"
@@ -1255,10 +1235,6 @@ msgstr "Potvrdiť štítky údajov"
 #: 
 msgid "Invalid login or password"
 msgstr "Neplatné prihlasovacie meno alebo heslo"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Príliš veľa neúspešných prihlásení: váš účet bol zablokovaný. Kontaktujte administrátora."
 
 #: 
 msgid "Email/Username"
@@ -1636,10 +1612,6 @@ msgstr "Trieda"
 #: 
 msgid "Properties"
 msgstr "Vlastnosti"
-
-#: 
-msgid "Pledge Reminder Report"
-msgstr "Správa o pripomienkach záväzkov"
 
 #: 
 msgid "Restore Database"
@@ -2119,24 +2091,12 @@ msgid "Classes"
 msgstr "Triedy"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Správy nedeľnej školy"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Žiaci nezaradení do triedy nedeľnej školy"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Na vytvorenie zoznamov tried alebo prezenčných listín musí byť vybraná aspoň jedna skupina."
-
-#: 
 msgid "Report Details"
 msgstr "Detaily správy"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Zobraziť všetky roly (nezaškrtnuté zobrazí iba roly Učiteľ/Žiak)"
 
 #: 
 msgid "First Sunday"
@@ -2157,10 +2117,6 @@ msgstr "Ďalší žiaci"
 #: 
 msgid "Extra Teachers"
 msgstr "Ďalší učitelia"
-
-#: 
-msgid "Create Class List"
-msgstr "Vytvoriť zoznam triedy"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4566,14 +4522,6 @@ msgid "PhotoBook"
 msgstr "Fotokniha"
 
 #: 
-msgid "With Photos"
-msgstr "S fotografiami"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Vytvoriť fotoknihu"
-
-#: 
 msgid "SSE"
 msgstr "JJV"
 
@@ -4716,10 +4664,6 @@ msgstr "Výročia"
 #: 
 msgid "View User"
 msgstr "Zobraziť používateľa"
-
-#: 
-msgid "not found or user without an email"
-msgstr "nenájdené alebo používateľ bez e-mailu"
 
 #: 
 msgid "UserName not set"
@@ -4915,17 +4859,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Minimálny počet znakov, o ktoré sa nové heslo musí líšiť od starého\n"
 "Nastavte na nulu na deaktiváciu\n"
-""
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Maximálny počet neúspešných prihlásení pred zablokovaním účtu.\n"
-"Po dosiahnutí maxima musí administrátor účet znova povoliť.\n"
-"Táto funkcia chráni pred automatizovanými útokmi na hádanie hesla.\n"
-"Nastavte na nulu na deaktiváciu.\n"
 ""
 
 #: 
@@ -5569,10 +5502,6 @@ msgstr "Odstrániť vybrané"
 #: 
 msgid "Funds"
 msgstr "Fondy"
-
-#: 
-msgid "Generate Report"
-msgstr "Vygenerovať správu"
 
 #: 
 msgid "Payments"
@@ -6272,10 +6201,6 @@ msgid "Current Deposit"
 msgstr "Aktuálny vklad"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Prispôsobiteľná správa s filtrovaním podľa dátumu, fondu, rodiny a spôsobu platby."
-
-#: 
 msgid "Day"
 msgstr "Deň"
 
@@ -6286,10 +6211,6 @@ msgstr "Dec"
 #: 
 msgid "Deposit Statistics"
 msgstr "Štatistiky vkladov"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Podrobný rozpis jedného vkladového dokladu."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6390,10 +6311,6 @@ msgstr "Jún"
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "Nastavíme váš systém a pripravíme ho na používanie"
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "Zoznam členov oprávnených hlasovať na základe histórie darovania a kritérií členstva."
 
 #: 
 msgid "Location"
@@ -9085,10 +9002,6 @@ msgid "Generate phone directory"
 msgstr "Generovať telefónny adresár"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "Generovať upomínacie listy o záväzkoch"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "Generovať správy o členstve v skupinách a aktivitách"
 
@@ -9839,10 +9752,6 @@ msgid "View transaction details for a pledge payment"
 msgstr "Zobraziť detaily transakcie pre platbu záväzku"
 
 #: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "Hlasujúci členovia musia byť darovali v priebehu tohto počtu rokov (0 ak sa darovanie nevyžaduje)"
-
-#: 
 msgid "We could not find the family you were looking for."
 msgstr "Nenašli sme rodinu, ktorú ste hľadali."
 
@@ -10033,10 +9942,6 @@ msgstr "Vynútiť preinštalovanie?"
 #: 
 msgid "Full Path"
 msgstr "Úplná cesta"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Generovať zoznamy tried, hárok dochádzky a fotoalbomy"
 
 #: 
 msgid "Installed"
@@ -15989,10 +15894,6 @@ msgid "What this plugin does"
 msgstr "Čo tento doplnok robí"
 
 #: 
-msgid "for all funds"
-msgstr "pre všetky fondy"
-
-#: 
 msgid "for fund"
 msgstr "pre fond"
 
@@ -18575,10 +18476,6 @@ msgstr "Adresu cirkvi sa nepodarilo skopírovať."
 #: 
 msgid "Could not match the church country."
 msgstr "Krajinu cirkvi sa nepodarilo priradiť."
-
-#: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Zoznamy tried, prezenčné listiny a fotoalbumy"
 
 #: 
 msgid "Group membership lists and Sunday School class reports"

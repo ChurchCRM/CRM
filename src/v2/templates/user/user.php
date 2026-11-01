@@ -77,7 +77,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             $isLocked       = $user->isLocked();
             $mustChange     = $user->getNeedPasswordChange();
             $failedLogins   = $user->getFailedLogins();
-            $maxFailedLogins = SignInThrottle::maxFailedLogins();
+            $maxFailedLogins = SystemConfig::getIntValue('iMaxFailedLogins');
             ?>
             <?php $signInBlockedLabel = $user->getSignInBlockedLabel(); ?>
             <?php if ($signInBlockedLabel !== null): ?>
@@ -85,7 +85,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <i class="fa-solid fa-user-slash me-2 flex-shrink-0 fs-3"></i>
               <div>
                 <strong><?= InputUtils::escapeHTML($signInBlockedLabel) ?></strong>
-                <div class="small"><?= gettext('Sign-in, sessions and the API key are blocked until this is resolved on the linked person\'s record.') ?></div>
+                <div class="small"><?= gettext('The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again.') ?></div>
               </div>
             </div>
             <?php endif; ?>

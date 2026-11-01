@@ -1,0 +1,19 @@
+{
+  "name": "churchcrm/php-tests",
+  "description": "Development-only PHP regression tests for ChurchCRM",
+  "type": "project",
+  "license": "MIT",
+  "require": {
+    "php": ">=8.4"
+  },
+  "require-dev": {
+    "nette/tester": "^2.7"
+  },
+  "config": {
+    "allow-plugins": false,
+    "platform": {
+      "php": "8.4.0"
+    },
+    "sort-packages": true
+  }
+}

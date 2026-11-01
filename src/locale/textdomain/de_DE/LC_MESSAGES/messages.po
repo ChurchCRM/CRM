@@ -962,14 +962,6 @@ msgid "Zero Givers"
 msgstr "eGive"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Individueller Bericht über Einzahlungen"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Eerweiterter Einzahlungsbericht"
-
-#: 
 msgid "Next"
 msgstr "Nächste"
 
@@ -994,10 +986,6 @@ msgid "Apply Report Dates To"
 msgstr "Orden Berichtsdatum zu:"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "Einzahlungsdatum (Voreinstellung)"
-
-#: 
 msgid "Payment Date"
 msgstr "Zahlungstermin:"
 
@@ -1020,10 +1008,6 @@ msgid "Filter by Payment Type"
 msgstr "Nach Zahlungsart filtern"
 
 #: 
-msgid "All Methods"
-msgstr "Alle Methoden"
-
-#: 
 msgid "Check"
 msgstr "Scheck"
 
@@ -1034,10 +1018,6 @@ msgstr "Bat"
 #: 
 msgid "Bank Draft"
 msgstr "Scheck"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0 - kein Minimum"
 
 #: 
 msgid "Other Settings"
@@ -1315,10 +1295,6 @@ msgstr "Bestätige Datenaufkleber"
 #: 
 msgid "Invalid login or password"
 msgstr "Ungültiges Passwort"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Zu viele fehlgeschlagene Anmeldungen: Dein Konto wurde gesperrt. Melde dich bei dem Administrator."
 
 #: 
 msgid "Email/Username"
@@ -1704,10 +1680,6 @@ msgstr "Klasse"
 #: 
 msgid "Properties"
 msgstr "Einstellungen"
-
-#: 
-msgid "Pledge Reminder Report"
-msgstr "Bericht zur Erinnerung an Spendenzusagen"
 
 #: 
 msgid "Restore Database"
@@ -2208,25 +2180,12 @@ msgid "Classes"
 msgstr "Klassen"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Bericht zur Sonntagsschule"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Schüler, die in keiner Sontagsschulklasse sind"
 
 #: 
-#, fuzzy
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Erzeuge Gruppen- und Anwesenheitslisten"
-
-#: 
 msgid "Report Details"
 msgstr "Reportdetails"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Rollenliste (Deaktivierung wird nur Lehrer/Schülerrollen zeigen)"
 
 #: 
 #, fuzzy
@@ -2252,10 +2211,6 @@ msgstr "Zusatzstudenten"
 #, fuzzy
 msgid "Extra Teachers"
 msgstr "Zusatzlehrer"
-
-#: 
-msgid "Create Class List"
-msgstr "Erstelle Gruppenliste"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4670,14 +4625,6 @@ msgid "PhotoBook"
 msgstr "Fotoalbum"
 
 #: 
-msgid "With Photos"
-msgstr "Mit Fotos"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Fotoalbum erstellen"
-
-#: 
 msgid "SSE"
 msgstr "SSO"
 
@@ -4822,11 +4769,6 @@ msgstr "Jahrestage"
 #: 
 msgid "View User"
 msgstr "Benutzer anzeigen"
-
-#: 
-#, fuzzy
-msgid "not found or user without an email"
-msgstr "keine gefunden oder Benutzer ohne E-Mails"
 
 #: 
 msgid "UserName not set"
@@ -5024,16 +4966,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Mindestumfang, um den sich ein neues Passwort vom alten unterscheiden muss (Anzahl der geänderten Zeichen)\n"
 "Auf 0 setzen, um diese Funktion zu deaktivieren"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Maximale Anzahl fehlgeschlagener Anmeldungen, die zugelassen werden, bevor ein Benutzerkonto gesperrt wird.\n"
-"Sobald das Maximum erreicht ist, muss ein Administrator das Konto wieder aktivieren.\n"
-"Diese Funktion dient dem Schutz vor automatischen Angriffen durch das Erraten von Passwörtern.\n"
-"Stellen Sie den Wert 0 ein, um diese Funktion zu deaktivieren."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -5672,10 +5604,6 @@ msgstr "Ausgewählte löschen"
 #: 
 msgid "Funds"
 msgstr "Geldmittel"
-
-#: 
-msgid "Generate Report"
-msgstr "Bericht generieren"
 
 #: 
 msgid "Payments"
@@ -6371,10 +6299,6 @@ msgid "Current Deposit"
 msgstr "Aktuelle Einzahlung"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Anpassbarer Bericht mit Filterung nach Datum, Fonds, Familie und Zahlungsmethode."
-
-#: 
 msgid "Day"
 msgstr "Tag"
 
@@ -6385,10 +6309,6 @@ msgstr "Dezember"
 #: 
 msgid "Deposit Statistics"
 msgstr "Einzahlungsstatistiken"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Detaillierte Aufschlüsselung einer einzelnen Einzahlungsschein."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6489,10 +6409,6 @@ msgstr "Juni"
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "Lassen Sie uns Ihr System einrichten und bereit machen"
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "Listen Sie Mitglieder auf, die auf Grundlage der Spendenhistorie und Mitgliedschaftskriterien wahlberechtigt sind."
 
 #: 
 msgid "Location"
@@ -9174,10 +9090,6 @@ msgid "Generate phone directory"
 msgstr "Telefonverzeichnis generieren"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "Erinnerungsschreiben für Spendenverpflichtungen generieren"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "Berichte über Gruppenmitgliedschaften und Aktivitäten generieren"
 
@@ -9928,10 +9840,6 @@ msgid "View transaction details for a pledge payment"
 msgstr "Transaktionsdetails für eine Spendenzahlung anzeigen"
 
 #: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "Stimmberechtigte Mitglieder müssen innerhalb dieser Anzahl von Jahren eine Spende geleistet haben (0, um keine Spende zu verlangen)"
-
-#: 
 msgid "We could not find the family you were looking for."
 msgstr "Die gesuchte Familie konnte nicht gefunden werden."
 
@@ -10122,10 +10030,6 @@ msgstr "Neuinstallation erzwingen?"
 #: 
 msgid "Full Path"
 msgstr "Vollständiger Pfad"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Klassenlisten, Anwesenheitslisten und Fotobücher erstellen"
 
 #: 
 msgid "Installed"
@@ -16070,10 +15974,6 @@ msgid "What this plugin does"
 msgstr "Was dieses Plugin tut"
 
 #: 
-msgid "for all funds"
-msgstr "für alle Fonds"
-
-#: 
 msgid "for fund"
 msgstr "für Fonds"
 
@@ -18650,10 +18550,6 @@ msgstr "Die Gemeindeadresse konnte nicht übernommen werden."
 #: 
 msgid "Could not match the church country."
 msgstr "Das Land der Gemeinde konnte nicht zugeordnet werden."
-
-#: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Klassenlisten, Anwesenheitslisten und Fotobücher"
 
 #: 
 msgid "Group membership lists and Sunday School class reports"
@@ -24624,4 +24520,420 @@ msgstr "Es wird nur die von Ihnen gesendete E-Mail angezeigt."
 #: 
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "Wiederholende Ereignisse konnten nicht erstellt werden. Überprüfen Sie das Anwendungsprotokoll für Details."
+
+#: 
+msgid "Confirm Password"
+msgstr "Passwort bestätigen"
+
+#: 
+msgid "Your password has been changed. You can now sign in with your new password."
+msgstr "Ihr Passwort wurde geändert. Sie können sich jetzt mit Ihrem neuen Passwort anmelden."
+
+#: 
+msgid "1st"
+msgstr "1."
+
+#: 
+msgid "2nd"
+msgstr "2."
+
+#: 
+msgid "3rd"
+msgstr "3."
+
+#: 
+msgid "4th"
+msgstr "4."
+
+#: 
+msgid "5th"
+msgstr "5."
+
+#: 
+msgid "Can't remove administrator access from the only administrator who can sign in"
+msgstr "Der Administratorzugriff kann nicht vom einzigen Administrator entfernt werden, der sich anmelden kann"
+
+#: 
+msgid "Choose the week of the month, from 1st to 5th"
+msgstr "Wählen Sie die Woche des Monats, von der 1. bis zur 5."
+
+#: 
+msgid "Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}"
+msgstr "Erstellt {{total}} Ereignisse am {{week}} {{day}} jedes Monats von {{first}} bis {{last}}"
+
+#: 
+msgid "Invalid day of the week"
+msgstr "Ungültiger Wochentag"
+
+#: 
+msgid "Monthly, on a weekday"
+msgstr "Monatlich, an einem Wochentag"
+
+#: 
+msgid "Months without a 5th one are skipped."
+msgstr "Monate ohne eine 5. werden übersprungen."
+
+#: 
+msgid "RecurWOM must be a whole number from 1 to 5"
+msgstr "RecurWOM muss eine ganze Zahl von 1 bis 5 sein"
+
+#: 
+msgid "Week of the month"
+msgstr "Woche des Monats"
+
+#: 
+msgid "Week of the month must be from 1 to 5"
+msgstr "Die Woche des Monats muss von 1 bis 5 sein"
+
+#: 
+msgid "%s through %s"
+msgstr "%s bis %s"
+
+#: 
+msgid "Church tax ID (EIN) printed on contribution statements"
+msgstr "Kirchensteuer-ID (EIN) auf den Spendenbescheinigungen gedruckt"
+
+#: 
+msgid "Contribution statements are issued to the adults of a household. Please contact the church office if you need one."
+msgstr "Spendenbescheinigungen werden an die Erwachsenen eines Haushalts ausgestellt. Bitte kontaktieren Sie das Kirchenbüro, wenn Sie eine benötigen."
+
+#: 
+msgid "Download statement"
+msgstr "Bescheinigung herunterladen"
+
+#: 
+msgid "Generated"
+msgstr "Generiert"
+
+#: 
+msgid "Goods and services"
+msgstr "Waren und Dienstleistungen"
+
+#: 
+msgid "My Giving"
+msgstr "Meine Spenden"
+
+#: 
+msgid "No contributions"
+msgstr "Keine Spenden"
+
+#: 
+msgid "No contributions were recorded for this period."
+msgstr "Für diesen Zeitraum wurden keine Spenden erfasst."
+
+#: 
+msgid "No goods or services were provided in exchange for these contributions, other than intangible religious benefits."
+msgstr "Für diese Spenden wurden keine Waren oder Dienstleistungen bereitgestellt, außer immateriellen religiösen Vorteilen."
+
+#: 
+msgid "Optional. Printed on contribution statements."
+msgstr "Optional. Auf den Spendenbescheinigungen gedruckt."
+
+#: 
+msgid "Tax ID"
+msgstr "Steuer-ID"
+
+#: 
+msgid "Tax ID (EIN)"
+msgstr "Steuer-ID (EIN)"
+
+#: 
+msgid "Tax-deductible amount"
+msgstr "Steuerlich absetzbarer Betrag"
+
+#: 
+msgid "This is the household statement. It includes gifts for your family."
+msgstr "Dies ist die Haushaltsbescheinigung. Sie enthält Spenden für Ihre Familie."
+
+#: 
+msgid "Total contributions"
+msgstr "Gesamtspenden"
+
+#: 
+msgid "Year-end statement"
+msgstr "Jahresendbescheinigung"
+
+#: 
+msgid "%d giving statement emailed to the family successfully."
+msgstr "%d Spendenbescheinigung erfolgreich per E-Mail an die Familie gesendet."
+
+#: 
+msgid "%s Giving Statement"
+msgstr "%s Spendenbescheinigung"
+
+#: 
+msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "Passen Sie den Text an, der auf den Spendenbescheinigungen erscheint (sTaxReport1, sTaxReport2 usw.)."
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %s giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Liebe Familie %s,\n"
+"\n"
+"Bitte finden Sie Ihre %s Spendenbescheinigung von %s im Anhang dieser E-Mail.\n"
+"\n"
+"Bei Fragen wenden Sie sich bitte an das Kirchenbüro.\n"
+"\n"
+"Vielen Dank für Ihre Großzügigkeit."
+
+#: 
+msgid "Email %s Giving Statement"
+msgstr "%s Spendenbescheinigung per E-Mail senden"
+
+#: 
+msgid "Envelope Numbers"
+msgstr "Umschlagnummern"
+
+#: 
+msgid "Generate Giving Statements"
+msgstr "Spendenbescheinigungen generieren"
+
+#: 
+msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
+msgstr "Berichte für Spendenbescheinigungen, Versprechenverfolgung und Finanzanalyse generieren."
+
+#: 
+msgid "Giving Reports"
+msgstr "Spendenberichte"
+
+#: 
+msgid "Giving Statement"
+msgstr "Spendenbescheinigung"
+
+#: 
+msgid "Giving Statements"
+msgstr "Spendenbescheinigungen"
+
+#: 
+msgid "Giving statement email failed to send. Please check your email server settings."
+msgstr "Die E-Mail der Spendenbescheinigung konnte nicht gesendet werden. Bitte überprüfen Sie Ihre E-Mail-Server-Einstellungen."
+
+#: 
+msgid "Please mail your next gift to %s"
+msgstr "Bitte senden Sie Ihre nächste Spende per Post an %s"
+
+#: 
+msgid "Print %s Giving Statement"
+msgstr "%s Spendenbescheinigung drucken"
+
+#: 
+msgid "Unable to email giving statement: no payment data found for that year."
+msgstr "Spendenbescheinigung kann nicht per E-Mail gesendet werden: keine Zahlungsdaten für dieses Jahr gefunden."
+
+#: 
+msgid "Unable to email giving statement: this family has no email address on file."
+msgstr "Spendenbescheinigung kann nicht per E-Mail gesendet werden: diese Familie hat keine E-Mail-Adresse hinterlegt."
+
+#: 
+msgid "Undesignated"
+msgstr "Nicht zugewiesen"
+
+#: 
+msgid "Verify church name, address, and contact info appears on giving statements."
+msgstr "Überprüfen Sie, dass Kirchenname, Adresse und Kontaktinformationen auf den Spendenbescheinigungen erscheinen."
+
+#: 
+msgid "The position is now assigned to %s, who has accepted it."
+msgstr "Die Position ist jetzt %s zugewiesen, der sie angenommen hat."
+
+#: 
+msgid "The position is now assigned to %s, who has not yet accepted it."
+msgstr "Die Position ist jetzt %s zugewiesen, der sie noch nicht angenommen hat."
+
+#: 
+msgid "Their reason: %s"
+msgstr "Ihr Grund: %s"
+
+#: 
+msgid "View Assignments"
+msgstr "Zuweisungen anzeigen"
+
+#: 
+msgid "Volunteers still needed for this occurrence: %d"
+msgstr "Für diese Gelegenheit werden noch Freiwillige benötigt: %d"
+
+#: 
+msgid "Volunteers still needed for this position: %d"
+msgstr "Für diese Position werden noch Freiwillige benötigt: %d"
+
+#: 
+msgid "A weekly sign-in grid for each class. Class lists and photo books are on the Sunday School dashboard and each class page."
+msgstr "Ein wöchentliches Anmelde-Raster für jede Klasse. Klassenlisten und Fotoalben befinden sich auf dem Sonntagsschul-Dashboard und jeder Klassenseite."
+
+#: 
+msgid "A weekly sign-in grid for the school year, one column for each Sunday"
+msgstr "Ein wöchentliches Anmelde-Raster für das Schuljahr, eine Spalte für jeden Sonntag"
+
+#: 
+msgid "Age %d"
+msgstr "Alter %d"
+
+#: 
+msgid "At least one group must be selected to make an attendance sheet."
+msgstr "Mindestens eine Gruppe muss ausgewählt werden, um ein Anwesenheitsblatt zu erstellen."
+
+#: 
+msgid "Attendance Sheet"
+msgstr "Anwesenheitsblatt"
+
+#: 
+msgid "Class List"
+msgstr "Klassenliste"
+
+#: 
+msgid "Download PDF"
+msgstr "PDF herunterladen"
+
+#: 
+msgid "Lockout period in minutes\n"
+"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
+msgstr "Sperrzeit in Minuten\n"
+"Ein gesperrtes Konto entsperrt sich nach dieser Anzahl von Minuten selbst. Fehlgeschlagene Anmeldungen von einer IP-Adresse werden über denselben Zeitraum gezählt."
+
+#: 
+msgid "Maximum number of failed logins from one IP address\n"
+"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
+"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
+msgstr "Maximale Anzahl fehlgeschlagener Anmeldungen von einer IP-Adresse\n"
+"Fehlgeschlagene Anmeldungen und Passwort-Zurücksetzungsanfragen von einer IP-Adresse zählen zu diesem Limit innerhalb der Sperrzeit. Sobald es erreicht ist, wird die Anmeldung von dieser Adresse bis zum Ende der Periode abgelehnt.\n"
+"Auf null setzen, um diese Funktion zu deaktivieren, z. B. wenn alle ChurchCRM über eine Proxy-Adresse erreichen."
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "Maximale Anzahl fehlgeschlagener Anmeldungen, bevor ein Benutzerkonto gesperrt wird.\n"
+"Ein gesperrtes Konto entsperrt sich nach der Sperrzeit selbst oder früher, wenn ein Administrator die fehlgeschlagenen Anmeldungen zurücksetzt.\n"
+"Diese Funktion hilft, vor automatisierten Passwort-Rateangriffen zu schützen.\n"
+"Auf null setzen, um diese Funktion zu deaktivieren."
+
+#: 
+msgid "Minutes until it unlocks by itself: %d"
+msgstr "Minuten bis zur Selbstentsperrung: %d"
+
+#: 
+msgid "Sunday School Attendance Sheet"
+msgstr "Sonntagsschul-Anwesenheitsblatt"
+
+#: 
+msgid "Sundays with no class are left off the sheet."
+msgstr "Sonntage ohne Unterricht werden vom Blatt weggelassen."
+
+#: 
+msgid "Database Upgrade"
+msgstr "Datenbank-Upgrade"
+
+#: 
+msgid "Your database is being updated. Please keep this page open until the upgrade finishes."
+msgstr "Ihre Datenbank wird aktualisiert. Bitte lassen Sie diese Seite geöffnet, bis das Upgrade abgeschlossen ist."
+
+#: 
+msgid "Family Labels"
+msgstr "Familienetiketten"
+
+#: 
+msgid "%s – Total"
+msgstr "%s – Gesamt"
+
+#: 
+msgid "Bill"
+msgstr "Schein"
+
+#: 
+msgid "Choose a deposit or enter both report dates."
+msgstr "Wählen Sie eine Einzahlung oder geben Sie beide Berichtsdaten ein."
+
+#: 
+msgid "Choose one deposit to review its payments or print its bank slip. A selected deposit overrides the date range."
+msgstr "Wählen Sie eine Einzahlung, um ihre Zahlungen zu überprüfen oder ihren Bankbeleg zu drucken. Eine ausgewählte Einzahlung überschreibt den Datumsbereich."
+
+#: 
+msgid "Coin"
+msgstr "Münze"
+
+#: 
+msgid "Deposit Report"
+msgstr "Einzahlungsbericht"
+
+#: 
+msgid "Download Report"
+msgstr "Bericht herunterladen"
+
+#: 
+msgid "Enter valid report dates."
+msgstr "Geben Sie gültige Berichtsdaten ein."
+
+#: 
+msgid "Invalid report filters."
+msgstr "Ungültige Berichtsfilter."
+
+#: 
+msgid "Invalid report options."
+msgstr "Ungültige Berichtsoptionen."
+
+#: 
+msgid "Leave filters empty to include all payments. These settings apply to the report, not the bank slip."
+msgstr "Lassen Sie die Filter leer, um alle Zahlungen einzuschließen. Diese Einstellungen gelten für den Bericht, nicht für den Bankbeleg."
+
+#: 
+msgid "No records were returned. Adjust your filters and try again."
+msgstr "Es wurden keine Datensätze zurückgegeben. Passen Sie Ihre Filter an und versuchen Sie es erneut."
+
+#: 
+msgid "Prepare for the Bank"
+msgstr "Für die Bank vorbereiten"
+
+#: 
+msgid "Preview Totals"
+msgstr "Summenvorschau"
+
+#: 
+msgid "Print Bank Slip"
+msgstr "Bankbeleg drucken"
+
+#: 
+msgid "Print the selected deposit in full, with cash and check totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
+msgstr "Drucken Sie die ausgewählte Einzahlung vollständig mit Bargeld- und Schecksummen, Zählblättern und Zeugenzeilen. Berichtsfilter werden ignoriert. Elektronische Zahlungen bleiben in der Zusammenfassung und sind von der physischen Bankticket-Summe ausgeschlossen."
+
+#: 
+msgid "Review Payments"
+msgstr "Zahlungen überprüfen"
+
+#: 
+msgid "Review payments for a period, or prepare one deposit for the bank."
+msgstr "Überprüfen Sie Zahlungen für einen Zeitraum oder bereiten Sie eine Einzahlung für die Bank vor."
+
+#: 
+msgid "Review payments, download PDF or CSV, or print a bank slip for one deposit."
+msgstr "Überprüfen Sie Zahlungen, laden Sie PDF oder CSV herunter oder drucken Sie einen Bankbeleg für eine Einzahlung."
+
+#: 
+msgid "Select a valid deposit."
+msgstr "Wählen Sie eine gültige Einzahlung."
+
+#: 
+msgid "Select one deposit to print a bank slip."
+msgstr "Wählen Sie eine Einzahlung, um einen Bankbeleg zu drucken."
+
+#: 
+msgid "The report end date must be on or after the start date."
+msgstr "Das Enddatum des Berichts muss am oder nach dem Startdatum liegen."
+
+#: 
+msgid "Total Cash"
+msgstr "Gesamt Bargeld"
+
+#: 
+msgid "Total Coin"
+msgstr "Gesamt Münzen"
+
+#: 
+msgid "Witness"
+msgstr "Zeuge"
 

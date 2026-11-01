@@ -2,13 +2,9 @@
 
 use ChurchCRM\dto\Photo;
 use ChurchCRM\model\ChurchCRM\Person;
-use ChurchCRM\Portal\Auth\PortalSessionMiddleware;
-use ChurchCRM\Portal\Permissions\CorePortalCapabilities;
-use ChurchCRM\Portal\Permissions\RequirePortalCapability;
 use ChurchCRM\Portal\PortalApiMiddleware;
 use ChurchCRM\Portal\PortalSelfService;
 use ChurchCRM\Portal\PortalSelfServiceException;
-use ChurchCRM\Slim\Middleware\Api\FamilyEmailDeprecationMiddleware;
 use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\SlimUtils;
@@ -23,12 +19,12 @@ use Slim\Routing\RouteCollectorProxy;
  * Four properties hold for every route in this file, and they are the reason
  * the portal does not reuse `/api/person` and `/api/family` for writes:
  *
- *  - **The actor is the session.** `PortalApiMiddleware` puts the portal
- *    session's person on the request. No route takes a
+ *  - **The actor is the session.** `PortalApiMiddleware` resolves the acting
+ *    person from the session and puts it on the request. No route takes a
  *    `personId` or a `familyId`, so there is no id to tamper with: pointing
  *    one of these endpoints at somebody else is not a permission failure, it
  *    is unexpressible (design P11).
- *  - **Session only.** `PortalSessionMiddleware` refuses an API key outright.
+ *  - **Session only.** An API key is refused outright, by the same middleware.
  *  - **CSRF on every write**, because these are browser requests carrying a
  *    cookie; the portal's forms embed the token and the bundles send it back
  *    in `X-CSRF-Token`.
@@ -208,8 +204,7 @@ $app->group('/portal', function (RouteCollectorProxy $group) use (
         }
 
         return SlimUtils::renderJSON($response, array_merge(['success' => true], $result));
-    })->add(new InputSanitizationMiddleware($portalPersonFields))
-        ->add(RequirePortalCapability::any(CorePortalCapabilities::PROFILE_EDIT));
+    })->add(new InputSanitizationMiddleware($portalPersonFields));
 
     /**
      * @OA\Post(
@@ -264,7 +259,7 @@ $app->group('/portal', function (RouteCollectorProxy $group) use (
             'success' => true,
             'profile' => PortalSelfService::getProfile($actor),
         ]);
-    })->add(RequirePortalCapability::any(CorePortalCapabilities::PROFILE_EDIT));
+    });
 
     /**
      * @OA\Get(
@@ -290,17 +285,13 @@ $app->group('/portal', function (RouteCollectorProxy $group) use (
      *     path="/portal/family",
      *     operationId="getPortalFamily",
      *     summary="The signed-in member's own family",
-     *     description="Returns the acting member's family, its members, and what this member may do with it. Other members' email and cellPhone are empty unless the member holds portal.family.contacts.view (an adult of the family). The family is the member's own; there is no family id to pass.",
+     *     description="Returns the acting member's family, its members, and whether this member is one of the adults who may change it. The family is the member's own; there is no family id to pass.",
      *     tags={"Member Portal"},
      *     @OA\Response(response=200, description="The member's family",
      *         @OA\JsonContent(type="object",
-     *             @OA\Property(property="family", type="object", nullable=true,
-     *                 @OA\Property(property="email", type="string", readOnly=true, deprecated=true, description="Deprecated in 7.8.3: the head of household's email, else the spouse's, empty unless the member may see it. Removed with the family email column.")
-     *             ),
+     *             @OA\Property(property="family", type="object", nullable=true),
      *             @OA\Property(property="members", type="array", @OA\Items(type="object")),
-     *             @OA\Property(property="canEdit", type="boolean", description="portal.family.edit: an adult of the family"),
-     *             @OA\Property(property="canConfirm", type="boolean", description="portal.family.confirm: an adult of the family"),
-     *             @OA\Property(property="canSeeContacts", type="boolean", description="portal.family.contacts.view: an adult of the family")
+     *             @OA\Property(property="canEdit", type="boolean", description="True for the family's head or spouse")
      *         )
      *     ),
      *     @OA\Response(response=403, description="API-key caller")
@@ -308,8 +299,7 @@ $app->group('/portal', function (RouteCollectorProxy $group) use (
      */
     $group->get('/family', function (Request $request, Response $response) use ($portalActor): Response {
         return SlimUtils::renderJSON($response, PortalSelfService::getFamilyView($portalActor($request)));
-    })->add(new FamilyEmailDeprecationMiddleware('private/get-portal-family'))
-        ->add(RequirePortalCapability::onOwnFamily(CorePortalCapabilities::FAMILY_VIEW));
+    });
 
     /**
      * @OA\Post(
@@ -327,16 +317,14 @@ $app->group('/portal', function (RouteCollectorProxy $group) use (
      *             @OA\Property(property="zip", type="string"),
      *             @OA\Property(property="country", type="string"),
      *             @OA\Property(property="homePhone", type="string"),
-     *             @OA\Property(property="email", type="string", deprecated=true, description="Deprecated in 7.8.3 and ignored: families have no email. A member changes their own email on their profile."),
+     *             @OA\Property(property="email", type="string"),
      *             @OA\Property(property="weddingDate", type="string", example="2004-06-12")
      *         )
      *     ),
      *     @OA\Response(response=200, description="The saved family",
      *         @OA\JsonContent(
      *             @OA\Property(property="success", type="boolean", example=true),
-     *             @OA\Property(property="family", type="object",
-     *                 @OA\Property(property="email", type="string", readOnly=true, deprecated=true, description="Deprecated in 7.8.3: the head of household's email, else the spouse's, empty unless the member may see it. Removed with the family email column.")
-     *             ),
+     *             @OA\Property(property="family", type="object"),
      *             @OA\Property(property="updated", type="array", @OA\Items(type="string"))
      *         )
      *     ),
@@ -353,19 +341,14 @@ $app->group('/portal', function (RouteCollectorProxy $group) use (
         }
 
         return SlimUtils::renderJSON($response, array_merge(['success' => true], $result));
-    })->add(new FamilyEmailDeprecationMiddleware('private/update-portal-family', 'email'))
-        ->add(new InputSanitizationMiddleware($portalFamilyFields))
-        ->add(RequirePortalCapability::onOwnFamily(
-            CorePortalCapabilities::FAMILY_EDIT,
-            gettext('Only an adult of your family can change these details. Please contact the church office.')
-        ));
+    })->add(new InputSanitizationMiddleware($portalFamilyFields));
 
     /**
      * @OA\Post(
      *     path="/portal/family/confirm",
      *     operationId="confirmPortalFamily",
      *     summary="Confirm the member's family details are current",
-     *     description="Writes exactly the note the emailed verify link writes — type 'verify', entered by SELF_VERIFY, the text 'No Changes' or the member's comment — so a portal confirmation reaches the People → Verify dashboard the same way a token-link one does. Needs portal.family.confirm: an adult of the family.",
+     *     description="Writes exactly the note the emailed verify link writes — type 'verify', entered by SELF_VERIFY, the text 'No Changes' or the member's comment — so a portal confirmation reaches the People → Verify dashboard the same way a token-link one does.",
      *     tags={"Member Portal"},
      *     @OA\RequestBody(required=true,
      *         @OA\JsonContent(required={"result"},
@@ -377,7 +360,6 @@ $app->group('/portal', function (RouteCollectorProxy $group) use (
      *         @OA\JsonContent(@OA\Property(property="success", type="boolean", example=true))
      *     ),
      *     @OA\Response(response=400, description="No choice made, or a change requested with no comment"),
-     *     @OA\Response(response=403, description="Not an adult of this family"),
      *     @OA\Response(response=404, description="The member has no family record")
      * )
      */
@@ -394,11 +376,7 @@ $app->group('/portal', function (RouteCollectorProxy $group) use (
         }
 
         return SlimUtils::renderSuccessJSON($response);
-    })->add(new InputSanitizationMiddleware($portalConfirmFields))
-        ->add(RequirePortalCapability::onOwnFamily(
-            CorePortalCapabilities::FAMILY_CONFIRM,
-            gettext('Only an adult of your family can confirm these details. Please contact the church office.')
-        ));
+    })->add(new InputSanitizationMiddleware($portalConfirmFields));
 
     /**
      * @OA\Get(
@@ -425,7 +403,7 @@ $app->group('/portal', function (RouteCollectorProxy $group) use (
         // Not cached: on a shared browser the next member signed in could be served it
         // without the family check running again.
         return $portalPhoto($response, (int) $member->getId())->withHeader('Cache-Control', 'private, no-store');
-    })->add(RequirePortalCapability::onOwnFamily(CorePortalCapabilities::FAMILY_VIEW));
+    });
 
     /**
      * @OA\Post(
@@ -464,9 +442,5 @@ $app->group('/portal', function (RouteCollectorProxy $group) use (
             'success' => true,
             'personId' => (int) $person->getId(),
         ]);
-    })->add(new InputSanitizationMiddleware($portalNewMemberFields))
-        ->add(RequirePortalCapability::onOwnFamily(
-            CorePortalCapabilities::FAMILY_EDIT,
-            gettext('Only an adult of your family can change these details. Please contact the church office.')
-        ));
-})->add(new CSRFMiddleware())->add(new PortalApiMiddleware())->add(new PortalSessionMiddleware());
+    })->add(new InputSanitizationMiddleware($portalNewMemberFields));
+})->add(new CSRFMiddleware())->add(new PortalApiMiddleware());

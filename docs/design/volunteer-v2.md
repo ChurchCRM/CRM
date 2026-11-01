@@ -566,7 +566,7 @@ key is `RESTRICT`) and the scope rows (no FK, §2.15); the FKs cascade the rest.
 A team may be linked to one Sunday School class, and a class to one team. Core keeps the class —
 its roster, its Student role, attendance, the dashboard, the reports. The link hands V2 exactly one
 thing: who holds the class's **Teacher** role, found by NAME in the class's role list as every core
-Sunday School read finds it (`SundaySchoolService`, the class page, `ClassAttendance.php`, the cart's
+Sunday School read finds it (`SundaySchoolService`, the class page, `ClassAttendanceService`, the cart's
 "Add Teachers"). Those reads keep working unchanged. `VolunteerClassLinkService` owns the rules.
 
 - **Linking** is part of team create/update (`classGroupId`; `null` unlinks) and is a
@@ -1489,7 +1489,7 @@ returns an **empty body** with the reason in the HTTP reason phrase (S2). It rea
 | Area | Path prefix | Gate |
 |---|---|---|
 | Coordinator MVC | `/ministries/dashboard`, `/ministries/{id}`, `/ministries/occurrences/{id}` | `VolunteerCoordinatorRoleAuthMiddleware` on the group. `/ministries` with no id is a 302 to the dashboard, inside the same group and behind the same gate; the sidebar's **Ministries** heading (§5.0) is the list |
-| Member MVC | `/portal/volunteer/schedule`, `/portal/volunteer/opportunities` (Member Portal pages) | **no role gate** — per-record authorization only, by authenticated person (D14). The rollout flag still applies: the portal capability `portal.volunteer.use` (member sign-in design §8.4) gates both the route and the nav entry |
+| Member MVC | `/portal/volunteer/schedule`, `/portal/volunteer/opportunities` (Member Portal pages) | **no role gate** — per-record authorization only, by authenticated person (D14). The rollout flag still applies: `PortalNav::isVolunteeringVisible()` gates both the route and the nav entry |
 | Coordinator API | `/api/ministries/...` | `VolunteerCoordinatorRoleAuthMiddleware` + `VolunteerV2EnabledMiddleware` on the group; per-entity middleware per route |
 | Member API | `/api/ministries/me/...` | `VolunteerV2EnabledMiddleware` only — every authenticated person is potentially a volunteer |
 | Global-manager-only API | `POST /api/ministries/ministries`, `DELETE /api/ministries/ministries/{id}`, `GET /api/ministries/scopes` | `ManageMinistriesRoleAuthMiddleware` on those routes |
@@ -1662,7 +1662,7 @@ are the contract; read the class for signatures.
 | Surface | File | Change |
 |---|---|---|
 | Sidebar menu | `src/ChurchCRM/Config/Menu/Menu.php` (registry) | One **Ministries** heading — see §5.0 — `'Ministries' => self::getMinistriesMenu($currentUser, $isVolunteerCoordinator)`, built the way `getGroupMenu()` builds its per-group entries. Visibility booleans are computed once in `buildMenuItems()` like the others. **Menu visibility mirrors the route middleware exactly.** |
-| Member menu entry | `ChurchCRM\Portal\PortalNav` | The member surface is the portal's **Volunteering** entry, built by `PortalNav::build()` and gated by the portal capability `portal.volunteer.use`. A volunteer with no assignments still sees it: it is where they find open opportunities. |
+| Member menu entry | `ChurchCRM\Portal\PortalNav` | The member surface is the portal's **Volunteering** entry, built by `PortalNav::build()` and gated by `PortalNav::isVolunteeringVisible()`. A volunteer with no assignments still sees it: it is where they find open opportunities. |
 | Person view tab | `src/people/views/person-view.php` (the tab nav and the Volunteer pane); route args in `src/people/routes/view.php` | **Direct edit** (F15). The route passes the rollout state; the view renders the V1 pane, the V2 pane, or both (§3.8). The V2 pane lists the person's qualifications and upcoming assignments, read-only, linking into `/ministries`. A `Hooks::PERSON_VIEW_TABS` filter is open question D-8. |
 | Event editor | `webpack/event-form.js` beside `#linkedGroupSelect` | the ministry select (§2.16 item 10) |
 | Event API | `src/api/routes/calendar/events.php` `applyEventExtendedFields()`, `getEvent` | §2.16 items 7–9 |
@@ -2308,8 +2308,8 @@ schedule through the Member Portal, which their user menu links to.
 
 | Where | Heading / entry | Icon | Shown to | Entries |
 |---|---|---|---|---|
-| Member Portal nav | **Volunteering** | `fa-solid fa-handshake-angle` | every member holding `portal.volunteer.use`: everyone, while the rollout flag `User::isVolunteerV2Enabled()` **and** the administrator's `bPortalShowVolunteer` switch are on | links to *My schedule* (S5); the page's own tab bar carries *Find something to do* (S6). The route and the entry ask the same predicate, so the portal never offers a page it will then 404 |
-| Member Portal nav | **My Teams** | `fa-solid fa-people-group` | a person holding `volunteer.team.manage` on a team: a `team` scope row (the portal's team-leader rule) or a grant an administrator gave them (member sign-in design §8). A coordinator, manager or administrator is **not** a team leader (§4.4) and gets no entry — their way into a team is the ministry page | `/portal/teams`, then one team page each with Positions · Volunteers · Schedules · Dates, and an occurrence page under it (Member Portal §5.5). The routes ask the same capability, and another team's page is 404 |
+| Member Portal nav | **Volunteering** | `fa-solid fa-handshake-angle` | every member, while `PortalNav::isVolunteeringVisible()` — the rollout flag `User::isVolunteerV2Enabled()` **and** the administrator's `bPortalShowVolunteer` switch (read defensively: undeclared means on, MP3 declares it) | links to *My schedule* (S5); the page's own tab bar carries *Find something to do* (S6). The route and the entry ask the same predicate, so the portal never offers a page it will then 404 |
+| Member Portal nav | **My Teams** | `fa-solid fa-people-group` | a member who holds an explicit `team` grant (`User::isVolunteerTeamLeaderEnabled()`), while volunteering is visible at all. A coordinator, manager or administrator is **not** a team leader (§4.4) and gets no entry — their way into a team is the ministry page | `/portal/teams`, then one team page each with Positions · Volunteers · Schedules · Dates, and an occurrence page under it (Member Portal §5.5). The route is more generous than the entry: it also admits a coordinator-or-above who opens the portal as themselves |
 | Admin sidebar | **Ministries** | `fa-sitemap` | a volunteer coordinator-or-above (`User::isVolunteerCoordinatorEnabled()` — the same predicate `VolunteerCoordinatorRoleAuthMiddleware` asks; **false** for a self-service login, D14) | *Dashboard* (S1), then **one entry per ministry the viewer may administer**, by name, linking to `/ministries/{id}` (S3) — the administration surface |
 
 The per-ministry entries are built exactly the way the Groups heading builds its per-group

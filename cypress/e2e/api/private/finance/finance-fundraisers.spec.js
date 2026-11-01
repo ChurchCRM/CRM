@@ -25,6 +25,14 @@ describe("API Private Fundraisers", () => {
             ).then((response) => {
                 expect(response.body).to.have.property("fundraisers");
                 expect(response.body.fundraisers).to.be.an("array");
+                const titles = response.body.fundraisers.map((fundraiser) => fundraiser.title);
+                expect(titles).to.include.members([
+                    "2016 Car Wash",
+                    "Spring Silent Auction",
+                    "Summer Harvest Raffle",
+                    "Fall Festival Gala",
+                    "Christmas Bazaar",
+                ]);
             });
         });
     });
@@ -205,11 +213,14 @@ describe("API Private Fundraisers", () => {
     });
 
     describe("DELETE /api/fundraisers/{id} - Delete fundraiser", () => {
-        // TODO: add 409 coverage for "fundraiser has donated items" once a
-        // DonatedItem REST API exists to seed the dependency. Seed data has
-        // fundraiser id=1 but zero donated items, so a 409 test against seed
-        // data is not reliable. The PHP route already blocks via
-        // DonatedItemQuery::filterByFrId()->count().
+        it("refuses to delete the seeded silent auction while its donated items remain", () => {
+            cy.makePrivateAdminAPICall("DELETE", "/api/fundraisers/3", null, 409).then((response) => {
+                expect(response.body.message).to.include("4 donated items");
+            });
+            cy.makePrivateAdminAPICall("GET", "/api/fundraisers/3", null, 200).then((response) => {
+                expect(response.body.fundraiser.title).to.eq("Spring Silent Auction");
+            });
+        });
 
         it("Returns 404 for non-existent fundraiser", () => {
             cy.makePrivateAdminAPICall(

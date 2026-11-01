@@ -760,6 +760,7 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
                             }
                         }
                         if (!empty($data['HomePhone'])) $family->setHomePhone($data['HomePhone']);
+                        if (!empty($data['Email']))    $family->setEmail($data['Email']);
                         if (!empty($data['Envelope'])) $family->setEnvelope((int) $data['Envelope']);
                         if (!empty($data['WeddingDate'])) {
                             // A bare 4-digit year (e.g. "2020") must not be passed to strtotime()

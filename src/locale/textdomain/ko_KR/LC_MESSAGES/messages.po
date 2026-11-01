@@ -932,14 +932,6 @@ msgid "Zero Givers"
 msgstr "헌금 기록 없음"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "개별 입금 보고서"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "상세 입금 보고서"
-
-#: 
 msgid "Next"
 msgstr "다음"
 
@@ -961,10 +953,6 @@ msgstr "보고 종료일"
 #, fuzzy
 msgid "Apply Report Dates To"
 msgstr "보고 기간 적용 대상"
-
-#: 
-msgid "Deposit Date (Default)"
-msgstr "입금일(기본)"
 
 #: 
 msgid "Payment Date"
@@ -989,10 +977,6 @@ msgid "Filter by Payment Type"
 msgstr "헌금 방식 필터"
 
 #: 
-msgid "All Methods"
-msgstr "모든 방식"
-
-#: 
 msgid "Check"
 msgstr "수표"
 
@@ -1003,10 +987,6 @@ msgstr "현금"
 #: 
 msgid "Bank Draft"
 msgstr "자동이체"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0 - 제한 없음"
 
 #: 
 msgid "Other Settings"
@@ -1272,10 +1252,6 @@ msgstr "데이터 라벨 확인"
 #: 
 msgid "Invalid login or password"
 msgstr "로그인 또는 비밀번호가 올바르지 않습니다."
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "실패한 로그인 시도가 많아 계정이 잠겼습니다. 관리자에게 문의하세요."
 
 #: 
 msgid "Email/Username"
@@ -1653,10 +1629,6 @@ msgstr "분류"
 #: 
 msgid "Properties"
 msgstr "속성"
-
-#: 
-msgid "Pledge Reminder Report"
-msgstr "서약 독촉 보고서"
 
 #: 
 msgid "Restore Database"
@@ -2140,24 +2112,12 @@ msgid "Classes"
 msgstr "반 목록"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "주일학교 보고서"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "주일학교 반에 속하지 않은 학생"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "반 명단이나 출석부를 만들려면 최소 한 개의 그룹을 선택해야 합니다."
-
-#: 
 msgid "Report Details"
 msgstr "보고서 상세"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "전체 역할 표시(선택 해제 시 교사/학생만 표시)"
 
 #: 
 msgid "First Sunday"
@@ -2178,10 +2138,6 @@ msgstr "추가 학생"
 #: 
 msgid "Extra Teachers"
 msgstr "추가 교사"
-
-#: 
-msgid "Create Class List"
-msgstr "반 명단 만들기"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4592,14 +4548,6 @@ msgid "PhotoBook"
 msgstr "포토북"
 
 #: 
-msgid "With Photos"
-msgstr "사진 포함"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "포토북 만들기"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4744,10 +4692,6 @@ msgstr "기념일"
 #: 
 msgid "View User"
 msgstr "사용자 보기"
-
-#: 
-msgid "not found or user without an email"
-msgstr "존재하지 않거나 이메일이 없는 사용자"
 
 #: 
 msgid "UserName not set"
@@ -4943,16 +4887,6 @@ msgstr "세션 시간 제한(초)\n"
 msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
 "Set to zero to disable this feature"
 msgstr "새 비밀번호가 기존 비밀번호와 달라야 하는 최소 문자 수\n"
-"0으로 설정하면 기능을 끕니다."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "계정을 잠그기 전 허용할 로그인 실패 횟수입니다.\n"
-"최대 횟수에 도달하면 관리자가 계정을 다시 활성화해야 합니다.\n"
-"자동 비밀번호 추측 공격을 방지하는 데 도움이 됩니다.\n"
 "0으로 설정하면 기능을 끕니다."
 
 #: 
@@ -5589,10 +5523,6 @@ msgstr "선택 항목 삭제"
 #: 
 msgid "Funds"
 msgstr "기금"
-
-#: 
-msgid "Generate Report"
-msgstr "보고서 생성"
 
 #: 
 msgid "Payments"
@@ -6286,10 +6216,6 @@ msgid "Current Deposit"
 msgstr "현재 입금"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "날짜, 기금, 가족 및 결제 방법별로 필터링할 수 있는 사용자 정의 가능한 보고서입니다."
-
-#: 
 msgid "Day"
 msgstr "일"
 
@@ -6300,10 +6226,6 @@ msgstr "12월"
 #: 
 msgid "Deposit Statistics"
 msgstr "입금 통계"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "단일 입금 전표의 상세 분석입니다."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6404,10 +6326,6 @@ msgstr "6월"
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "시스템을 설정하고 사용할 준비를 하겠습니다"
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "헌금 내역 및 회원 기준에 따라 투표 자격이 있는 회원을 나열합니다."
 
 #: 
 msgid "Location"
@@ -9084,10 +9002,6 @@ msgid "Generate phone directory"
 msgstr "전화번호부 생성"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "서약 알림 편지 생성"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "그룹 교인 및 활동 보고서 생성"
 
@@ -9838,10 +9752,6 @@ msgid "View transaction details for a pledge payment"
 msgstr "서약 납부의 거래 세부 정보 보기"
 
 #: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "투표 교인은 이 기간(년) 이내에 헌금을 해야 합니다 (헌금 불필요 시 0)"
-
-#: 
 msgid "We could not find the family you were looking for."
 msgstr "찾으시는 가족을 찾을 수 없습니다."
 
@@ -10032,10 +9942,6 @@ msgstr "강제 재설치하시겠습니까?"
 #: 
 msgid "Full Path"
 msgstr "전체 경로"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "반 목록, 출석부 및 사진첩 생성"
 
 #: 
 msgid "Installed"
@@ -15976,10 +15882,6 @@ msgid "What this plugin does"
 msgstr "이 플러그인의 기능"
 
 #: 
-msgid "for all funds"
-msgstr "모든 기금에 대해"
-
-#: 
 msgid "for fund"
 msgstr "기금에 대해"
 
@@ -18553,10 +18455,6 @@ msgstr "교회 주소를 복사하지 못했습니다."
 #: 
 msgid "Could not match the church country."
 msgstr "교회의 국가를 일치시키지 못했습니다."
-
-#: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "반 명단, 출석부, 사진첩"
 
 #: 
 msgid "Group membership lists and Sunday School class reports"
@@ -24513,4 +24411,420 @@ msgstr "직접 보낸 이메일만 표시됩니다."
 #: 
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "반복 이벤트를 생성할 수 없습니다. 자세한 내용은 애플리케이션 로그를 확인하세요."
+
+#: 
+msgid "Confirm Password"
+msgstr "비밀번호 확인"
+
+#: 
+msgid "Your password has been changed. You can now sign in with your new password."
+msgstr "비밀번호가 변경되었습니다. 이제 새 비밀번호로 로그인할 수 있습니다."
+
+#: 
+msgid "1st"
+msgstr "1주차"
+
+#: 
+msgid "2nd"
+msgstr "2주차"
+
+#: 
+msgid "3rd"
+msgstr "3주차"
+
+#: 
+msgid "4th"
+msgstr "4주차"
+
+#: 
+msgid "5th"
+msgstr "5주차"
+
+#: 
+msgid "Can't remove administrator access from the only administrator who can sign in"
+msgstr "로그인할 수 있는 유일한 관리자의 관리자 권한을 제거할 수 없습니다"
+
+#: 
+msgid "Choose the week of the month, from 1st to 5th"
+msgstr "월의 주를 선택하세요 (1주차부터 5주차까지)"
+
+#: 
+msgid "Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}"
+msgstr "매월 {{week}} {{day}}에 {{total}}개의 이벤트를 생성합니다 ({{first}}부터 {{last}}까지)"
+
+#: 
+msgid "Invalid day of the week"
+msgstr "유효하지 않은 요일"
+
+#: 
+msgid "Monthly, on a weekday"
+msgstr "매월, 평일에"
+
+#: 
+msgid "Months without a 5th one are skipped."
+msgstr "5주차가 없는 달은 건너뜁니다."
+
+#: 
+msgid "RecurWOM must be a whole number from 1 to 5"
+msgstr "RecurWOM은 1에서 5 사이의 정수여야 합니다"
+
+#: 
+msgid "Week of the month"
+msgstr "월의 주"
+
+#: 
+msgid "Week of the month must be from 1 to 5"
+msgstr "월의 주는 1에서 5 사이여야 합니다"
+
+#: 
+msgid "%s through %s"
+msgstr "%s부터 %s까지"
+
+#: 
+msgid "Church tax ID (EIN) printed on contribution statements"
+msgstr "헌금 명세서에 인쇄된 교회 세금 ID (EIN)"
+
+#: 
+msgid "Contribution statements are issued to the adults of a household. Please contact the church office if you need one."
+msgstr "헌금 명세서는 가정의 성인에게 발급됩니다. 필요하시면 교회 사무실에 문의하세요."
+
+#: 
+msgid "Download statement"
+msgstr "명세서 다운로드"
+
+#: 
+msgid "Generated"
+msgstr "생성됨"
+
+#: 
+msgid "Goods and services"
+msgstr "상품 및 서비스"
+
+#: 
+msgid "My Giving"
+msgstr "내 헌금"
+
+#: 
+msgid "No contributions"
+msgstr "헌금 없음"
+
+#: 
+msgid "No contributions were recorded for this period."
+msgstr "이 기간에 기록된 헌금이 없습니다."
+
+#: 
+msgid "No goods or services were provided in exchange for these contributions, other than intangible religious benefits."
+msgstr "이 헌금에 대해 무형의 종교적 혜택 외에 상품이나 서비스가 제공되지 않았습니다."
+
+#: 
+msgid "Optional. Printed on contribution statements."
+msgstr "선택 사항. 헌금 명세서에 인쇄됩니다."
+
+#: 
+msgid "Tax ID"
+msgstr "세금 ID"
+
+#: 
+msgid "Tax ID (EIN)"
+msgstr "세금 ID (EIN)"
+
+#: 
+msgid "Tax-deductible amount"
+msgstr "세금 공제 가능 금액"
+
+#: 
+msgid "This is the household statement. It includes gifts for your family."
+msgstr "이것은 가정 명세서입니다. 가족에 대한 헌금이 포함됩니다."
+
+#: 
+msgid "Total contributions"
+msgstr "총 헌금"
+
+#: 
+msgid "Year-end statement"
+msgstr "연말 명세서"
+
+#: 
+msgid "%d giving statement emailed to the family successfully."
+msgstr "%d개의 헌금 명세서가 가족에게 성공적으로 이메일로 전송되었습니다."
+
+#: 
+msgid "%s Giving Statement"
+msgstr "%s 헌금 명세서"
+
+#: 
+msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "헌금 명세서에 표시되는 텍스트를 사용자 지정합니다 (sTaxReport1, sTaxReport2 등)."
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %s giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "%s 가족 여러분께\n"
+"\n"
+"이 이메일에 %s년 %s 헌금 명세서를 첨부합니다.\n"
+"\n"
+"질문이 있으시면 교회 사무실에 문의하세요.\n"
+"\n"
+"후원해 주셔서 감사합니다."
+
+#: 
+msgid "Email %s Giving Statement"
+msgstr "%s 헌금 명세서 이메일 전송"
+
+#: 
+msgid "Envelope Numbers"
+msgstr "봉투 번호"
+
+#: 
+msgid "Generate Giving Statements"
+msgstr "헌금 명세서 생성"
+
+#: 
+msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
+msgstr "헌금 명세서, 서약 추적 및 재무 분석을 위한 보고서를 생성합니다."
+
+#: 
+msgid "Giving Reports"
+msgstr "헌금 보고서"
+
+#: 
+msgid "Giving Statement"
+msgstr "헌금 명세서"
+
+#: 
+msgid "Giving Statements"
+msgstr "헌금 명세서"
+
+#: 
+msgid "Giving statement email failed to send. Please check your email server settings."
+msgstr "헌금 명세서 이메일 전송에 실패했습니다. 이메일 서버 설정을 확인하세요."
+
+#: 
+msgid "Please mail your next gift to %s"
+msgstr "다음 헌금을 %s로 우편 발송해 주세요"
+
+#: 
+msgid "Print %s Giving Statement"
+msgstr "%s 헌금 명세서 인쇄"
+
+#: 
+msgid "Unable to email giving statement: no payment data found for that year."
+msgstr "헌금 명세서를 이메일로 보낼 수 없습니다: 해당 연도의 결제 데이터를 찾을 수 없습니다."
+
+#: 
+msgid "Unable to email giving statement: this family has no email address on file."
+msgstr "헌금 명세서를 이메일로 보낼 수 없습니다: 이 가족에게 등록된 이메일 주소가 없습니다."
+
+#: 
+msgid "Undesignated"
+msgstr "지정되지 않음"
+
+#: 
+msgid "Verify church name, address, and contact info appears on giving statements."
+msgstr "교회 이름, 주소 및 연락처 정보가 헌금 명세서에 표시되는지 확인하세요."
+
+#: 
+msgid "The position is now assigned to %s, who has accepted it."
+msgstr "해당 직위는 이제 %s에게 할당되었으며, 수락되었습니다."
+
+#: 
+msgid "The position is now assigned to %s, who has not yet accepted it."
+msgstr "해당 직위는 이제 %s에게 할당되었으나, 아직 수락되지 않았습니다."
+
+#: 
+msgid "Their reason: %s"
+msgstr "이유: %s"
+
+#: 
+msgid "View Assignments"
+msgstr "할당 보기"
+
+#: 
+msgid "Volunteers still needed for this occurrence: %d"
+msgstr "이 행사에 아직 필요한 자원봉사자: %d"
+
+#: 
+msgid "Volunteers still needed for this position: %d"
+msgstr "이 직위에 아직 필요한 자원봉사자: %d"
+
+#: 
+msgid "A weekly sign-in grid for each class. Class lists and photo books are on the Sunday School dashboard and each class page."
+msgstr "각 반의 주간 출석 그리드. 반 목록과 사진첩은 주일학교 대시보드와 각 반 페이지에 있습니다."
+
+#: 
+msgid "A weekly sign-in grid for the school year, one column for each Sunday"
+msgstr "학년 주간 출석 그리드, 각 주일마다 한 열"
+
+#: 
+msgid "Age %d"
+msgstr "나이 %d"
+
+#: 
+msgid "At least one group must be selected to make an attendance sheet."
+msgstr "출석표를 만들려면 적어도 하나의 그룹을 선택해야 합니다."
+
+#: 
+msgid "Attendance Sheet"
+msgstr "출석표"
+
+#: 
+msgid "Class List"
+msgstr "반 목록"
+
+#: 
+msgid "Download PDF"
+msgstr "PDF 다운로드"
+
+#: 
+msgid "Lockout period in minutes\n"
+"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
+msgstr "잠금 기간(분)\n"
+"잠긴 계정은 이 분 후에 자동으로 잠금 해제됩니다. 하나의 IP 주소에서 실패한 로그인은 같은 기간에 계산됩니다."
+
+#: 
+msgid "Maximum number of failed logins from one IP address\n"
+"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
+"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
+msgstr "하나의 IP 주소에서 최대 실패 로그인 수\n"
+"잠금 기간 내에 하나의 IP 주소에서 실패한 로그인과 비밀번호 재설정 요청이 이 한도에 계산됩니다. 한도에 도달하면 해당 주소에서의 로그인은 기간이 끝날 때까지 거부됩니다.\n"
+"이 기능을 비활성화하려면 0으로 설정하세요. 예를 들어 모든 사람이 하나의 프록시 주소를 통해 ChurchCRM에 액세스하는 경우입니다."
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "사용자 계정이 잠기기 전에 허용되는 최대 실패 로그인 수.\n"
+"잠긴 계정은 잠금 기간 후에 자동으로 잠금 해제되거나 관리자가 실패한 로그인을 재설정하면 더 빨리 잠금 해제됩니다.\n"
+"이 기능은 자동화된 비밀번호 추측 공격으로부터 보호하는 데 도움이 됩니다.\n"
+"이 기능을 비활성화하려면 0으로 설정하세요."
+
+#: 
+msgid "Minutes until it unlocks by itself: %d"
+msgstr "자동 잠금 해제까지 남은 분: %d"
+
+#: 
+msgid "Sunday School Attendance Sheet"
+msgstr "주일학교 출석표"
+
+#: 
+msgid "Sundays with no class are left off the sheet."
+msgstr "수업이 없는 주일은 시트에서 제외됩니다."
+
+#: 
+msgid "Database Upgrade"
+msgstr "데이터베이스 업그레이드"
+
+#: 
+msgid "Your database is being updated. Please keep this page open until the upgrade finishes."
+msgstr "데이터베이스가 업데이트되고 있습니다. 업그레이드가 완료될 때까지 이 페이지를 열어 두세요."
+
+#: 
+msgid "Family Labels"
+msgstr "가족 라벨"
+
+#: 
+msgid "%s – Total"
+msgstr "%s – 합계"
+
+#: 
+msgid "Bill"
+msgstr "지폐"
+
+#: 
+msgid "Choose a deposit or enter both report dates."
+msgstr "입금을 선택하거나 두 보고서 날짜를 모두 입력하세요."
+
+#: 
+msgid "Choose one deposit to review its payments or print its bank slip. A selected deposit overrides the date range."
+msgstr "결제를 검토하거나 은행 전표를 인쇄할 입금을 하나 선택하세요. 선택한 입금은 날짜 범위를 덮어씁니다."
+
+#: 
+msgid "Coin"
+msgstr "동전"
+
+#: 
+msgid "Deposit Report"
+msgstr "입금 보고서"
+
+#: 
+msgid "Download Report"
+msgstr "보고서 다운로드"
+
+#: 
+msgid "Enter valid report dates."
+msgstr "유효한 보고서 날짜를 입력하세요."
+
+#: 
+msgid "Invalid report filters."
+msgstr "유효하지 않은 보고서 필터."
+
+#: 
+msgid "Invalid report options."
+msgstr "유효하지 않은 보고서 옵션."
+
+#: 
+msgid "Leave filters empty to include all payments. These settings apply to the report, not the bank slip."
+msgstr "모든 결제를 포함하려면 필터를 비워 두세요. 이 설정은 보고서에 적용되며 은행 전표에는 적용되지 않습니다."
+
+#: 
+msgid "No records were returned. Adjust your filters and try again."
+msgstr "반환된 기록이 없습니다. 필터를 조정하고 다시 시도하세요."
+
+#: 
+msgid "Prepare for the Bank"
+msgstr "은행용 준비"
+
+#: 
+msgid "Preview Totals"
+msgstr "합계 미리보기"
+
+#: 
+msgid "Print Bank Slip"
+msgstr "은행 전표 인쇄"
+
+#: 
+msgid "Print the selected deposit in full, with cash and check totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
+msgstr "선택한 입금을 현금 및 수표 합계, 계수 시트 및 증인 행과 함께 전체 인쇄합니다. 보고서 필터는 무시됩니다. 전자 결제는 요약에 남고 물리적 은행 티켓 합계에서 제외됩니다."
+
+#: 
+msgid "Review Payments"
+msgstr "결제 검토"
+
+#: 
+msgid "Review payments for a period, or prepare one deposit for the bank."
+msgstr "기간 동안의 결제를 검토하거나 은행용 입금 하나를 준비합니다."
+
+#: 
+msgid "Review payments, download PDF or CSV, or print a bank slip for one deposit."
+msgstr "결제를 검토하고 PDF 또는 CSV를 다운로드하거나 하나의 입금에 대한 은행 전표를 인쇄합니다."
+
+#: 
+msgid "Select a valid deposit."
+msgstr "유효한 입금을 선택하세요."
+
+#: 
+msgid "Select one deposit to print a bank slip."
+msgstr "은행 전표를 인쇄할 입금을 하나 선택하세요."
+
+#: 
+msgid "The report end date must be on or after the start date."
+msgstr "보고서 종료 날짜는 시작 날짜 이후여야 합니다."
+
+#: 
+msgid "Total Cash"
+msgstr "현금 합계"
+
+#: 
+msgid "Total Coin"
+msgstr "동전 합계"
+
+#: 
+msgid "Witness"
+msgstr "증인"
 

@@ -116,16 +116,6 @@ describe("API sign-in throttling (#10197)", () => {
                 });
             });
         });
-
-        it("an unknown user takes about as long as a wrong password", () => {
-            cy.expireSignInThrottle("signin.ip");
-            login(LOCKOUT_USER, "wrong_password").then((wrongPassword) => {
-                login("no_such_user_10197", "wrong_password").then((unknownUser) => {
-                    expectRefused(unknownUser);
-                    expect(unknownUser.duration, "unknown user (ms)").to.be.at.least(0.5 * wrongPassword.duration);
-                });
-            });
-        });
     });
 
     describe("Per-IP throttle", () => {

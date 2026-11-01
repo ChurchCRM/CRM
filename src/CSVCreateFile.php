@@ -415,6 +415,7 @@ if ($sFormat === 'addtocart') {
         $fam_Zip = '';
         $fam_Country = '';
         $fam_HomePhone = '';
+        $fam_Email = '';
         $fam_WeddingDate = '';
 
         $sCountry = '';

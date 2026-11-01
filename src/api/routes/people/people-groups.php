@@ -20,7 +20,6 @@ use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\SundaySchoolService;
-use ChurchCRM\Slim\Middleware\Api\FamilyEmailDeprecationMiddleware;
 use ChurchCRM\Slim\Middleware\Api\GroupMiddleware;
 use ChurchCRM\Slim\Middleware\Api\PersonMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
@@ -302,17 +301,12 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
     /**
      * @OA\Get(
      *     path="/groups/{groupID}/members",
-     *     operationId="getGroupMembers",
      *     summary="Get members of a group with family address info",
      *     tags={"Groups"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="groupID", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Group members enriched with family address fields",
-     *         @OA\JsonContent(@OA\Property(property="Person2group2roleP2g2rs", type="array", @OA\Items(type="object",
-     *             @OA\Property(property="Person", type="object",
-     *                 @OA\Property(property="Family", ref="#/components/schemas/Family", description="Present when the person is in a family")
-     *             )
-     *         )))
+     *         @OA\JsonContent(@OA\Property(property="Person2group2roleP2g2rs", type="array", @OA\Items(type="object")))
      *     )
      * )
      */
@@ -338,7 +332,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         }
 
         return SlimUtils::renderJSON($response, ['Person2group2roleP2g2rs' => $members->toArray()]);
-    })->add(new FamilyEmailDeprecationMiddleware('private/get-group-members'));
+    });
 
     /**
      * @OA\Get(

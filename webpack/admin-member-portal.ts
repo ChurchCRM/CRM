@@ -1,8 +1,8 @@
 /**
  * Admin → Member Portal (#9864) — the page's behaviour.
  *
- * Five tabs are rendered server-side (Statistics, Settings, Sign-in, Themes,
- * Calendars); this bundle adds the six things that need the browser:
+ * Four tabs are rendered server-side (Statistics, Settings, Themes, Calendars);
+ * this bundle adds the five things that need the browser:
  *
  *   1. the Settings Panel component for the four portal ConfigItems, which
  *      saves through POST /admin/api/system/config/{name};
@@ -13,10 +13,7 @@
  *      the active theme alone;
  *   4. a refresh of the statistics numbers when that tab is opened;
  *   5. the Calendars tab's save, which posts the switched-on calendars to
- *      POST /admin/api/member-portal/calendars;
- *   6. the Sign-in tab's save, which posts every sign-in setting to
- *      POST /admin/api/member-portal/sign-in. The server checks them all and
- *      saves none when one is wrong, naming each problem.
+ *      POST /admin/api/member-portal/calendars.
  *
  * Every user-visible string goes through i18next — the *global* instance the
  * locale loader initialises, never a bundled copy, which would be empty — and
@@ -54,31 +51,7 @@ const STATUS_BADGE_ID = "portalThemeStatusBadge";
 const CALENDARS_TABLE_ID = "portalCalendarsTable";
 const CALENDARS_STATUS_ID = "portalCalendarsStatus";
 
-const SIGN_IN_FORM_ID = "memberSignInForm";
-const SIGN_IN_SWITCHES = ["bMemberSignIn", "bPortalPasskeys", "bAllowLoginAsUser", "bLoginAsUserCanWrite"];
-const SIGN_IN_NUMBERS = [
-  "iMemberSignInMinAge",
-  "iSignInLinkMinutes",
-  "iMemberSignInRequestsPerIP",
-  "iPortalIdleMinutes",
-  "iRememberDeviceDays",
-];
-const SIGN_IN_CHECKBOX_LISTS = ["sMemberSignInFamilyRoles", "sMemberSignInClassifications"];
-const SIGN_IN_OFFICE_LIST = "sMemberSignInNotificationRecipientIDs";
-
-interface SignInSaveResponse {
-  success?: boolean;
-  message?: string;
-  errors?: Record<string, string>;
-  maySignInCount?: number;
-}
-
 const root = (): string => window.CRM?.root ?? "";
-
-const csrfToken = (): string => {
-  const config = window.CRM?.memberPortalAdmin as { csrfToken?: string } | undefined;
-  return config?.csrfToken ?? "";
-};
 
 /**
  * Translate through the global i18next the locale loader set up. A bundled
@@ -387,135 +360,10 @@ function wireCalendarControls(): void {
   });
 }
 
-function collectSignInSettings(form: HTMLFormElement): Record<string, unknown> {
-  const settings: Record<string, unknown> = {};
-  for (const name of SIGN_IN_SWITCHES) {
-    const input = form.querySelector<HTMLInputElement>(`input[name="${name}"]`);
-    if (input) {
-      settings[name] = input.checked;
-    }
-  }
-  for (const name of SIGN_IN_NUMBERS) {
-    const input = form.querySelector<HTMLInputElement>(`input[name="${name}"]`);
-    if (input) {
-      settings[name] = input.value.trim();
-    }
-  }
-  for (const name of SIGN_IN_CHECKBOX_LISTS) {
-    settings[name] = Array.from(form.querySelectorAll<HTMLInputElement>(`input[name="${name}"]:checked`), (input) =>
-      Number.parseInt(input.value, 10),
-    );
-  }
-  const office = form.querySelector<HTMLSelectElement>(`select[name="${SIGN_IN_OFFICE_LIST}"]`);
-  if (office) {
-    const picked = office.tomselect ? office.tomselect.getValue() : Array.from(office.selectedOptions, (o) => o.value);
-    settings[SIGN_IN_OFFICE_LIST] = (Array.isArray(picked) ? picked : picked.split(","))
-      .filter((value) => value !== "")
-      .map((value) => Number.parseInt(value, 10));
-  }
-  return settings;
-}
-
-function paintSignInErrors(form: HTMLFormElement, errors: Record<string, string>): void {
-  for (const slot of form.querySelectorAll<HTMLElement>("[data-error-for]")) {
-    slot.textContent = errors[slot.dataset.errorFor ?? ""] ?? "";
-  }
-  for (const input of form.querySelectorAll<HTMLElement>(".is-invalid")) {
-    input.classList.remove("is-invalid");
-  }
-  for (const name of Object.keys(errors)) {
-    for (const input of form.querySelectorAll<HTMLElement>(`[name="${name}"]`)) {
-      input.classList.add("is-invalid");
-    }
-  }
-}
-
-async function saveSignInSettings(form: HTMLFormElement, button: HTMLButtonElement | null): Promise<void> {
-  const status = document.getElementById("memberSignInStatus");
-  setBusy(button, true);
-  if (status) {
-    status.textContent = "";
-  }
-
-  const response = await fetch(`${root()}/admin/api/member-portal/sign-in`, {
-    method: "POST",
-    headers: { "content-type": "application/json", "X-CSRF-Token": csrfToken() },
-    body: JSON.stringify(collectSignInSettings(form)),
-  });
-  setBusy(button, false);
-
-  let body: SignInSaveResponse | null = null;
-  try {
-    body = await response.json();
-  } catch {
-    body = null;
-  }
-
-  if (response.status === 400 && body?.errors) {
-    paintSignInErrors(form, body.errors);
-    window.CRM?.notify?.(t("Some sign-in settings need fixing. Nothing was saved."), { type: "danger" });
-    return;
-  }
-  if (!response.ok) {
-    window.CRM?.notify?.(t("The sign-in settings could not be saved."), { type: "danger" });
-    return;
-  }
-
-  paintSignInErrors(form, {});
-  const count = document.getElementById("memberSignInMayCount");
-  if (count && typeof body?.maySignInCount === "number") {
-    count.textContent = String(body.maySignInCount);
-  }
-  const memberSignIn = form.querySelector<HTMLInputElement>('input[name="bMemberSignIn"]');
-  if (memberSignIn && !memberSignIn.checked && document.getElementById("memberSignInEmailProblem")) {
-    memberSignIn.disabled = true;
-  }
-  if (status) {
-    status.textContent = t("Saved.");
-  }
-  window.CRM?.notify?.(t("The sign-in settings were saved."), { type: "success" });
-}
-
-function wireSignInTab(): void {
-  const form = document.getElementById(SIGN_IN_FORM_ID) as HTMLFormElement | null;
-  if (!form) {
-    return;
-  }
-
-  const office = form.querySelector<HTMLSelectElement>(`select[name="${SIGN_IN_OFFICE_LIST}"]`);
-  if (office && typeof window.CRM?.initPersonSelect === "function") {
-    window.CRM.initPersonSelect(office, {
-      endpoint: "/admin/api/member-portal/sign-in/office-candidates/",
-      plugins: ["remove_button"],
-    });
-  }
-
-  const button = document.getElementById("memberSignInSaveButton") as HTMLButtonElement | null;
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    void saveSignInSettings(form, button);
-  });
-}
-
-/** Open the tab a link points at, such as /admin/member-portal#portal-signin. */
-function openTabFromHash(): void {
-  const hash = window.location.hash;
-  if (!/^#portal-[a-z-]+$/.test(hash)) {
-    return;
-  }
-  const link = document.getElementById(`${hash.slice(1)}-tab`);
-  const tabs = (window.bootstrap as unknown as { Tab?: { getOrCreateInstance(el: Element): { show(): void } } }).Tab;
-  if (link && tabs) {
-    tabs.getOrCreateInstance(link).show();
-  }
-}
-
 function start(): void {
   wireThemeControls();
   wireSettingsPanel();
   wireCalendarControls();
-  wireSignInTab();
-  openTabFromHash();
   document.getElementById("portal-statistics-tab")?.addEventListener("click", () => {
     void refreshStatistics();
   });

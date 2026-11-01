@@ -12,7 +12,6 @@ use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
 use ChurchCRM\Service\ConfirmReportService;
 use ChurchCRM\Service\FinancialService;
-use ChurchCRM\Slim\Middleware\Api\FamilyEmailDeprecationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
@@ -73,25 +72,28 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
     /**
      * @OA\Get(
      *     path="/families/email/without",
-     *     operationId="getFamiliesWithoutEmail",
      *     summary="Get families with no email address on record",
      *     tags={"Families"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Response(response=200, description="Families without any email address",
      *         @OA\JsonContent(
      *             @OA\Property(property="count", type="integer"),
-     *             @OA\Property(property="families", type="array", @OA\Items(ref="#/components/schemas/Family"))
+     *             @OA\Property(property="families", type="array", @OA\Items(type="object"))
      *         )
      *     )
      * )
      */
     $group->get('/email/without', function (Request $request, Response $response, array $args): Response {
-        // Families where no member has an Email or WorkEmail. Uses raw PDO (via
-        // Propel::getConnection()) because Propel 2's ->having() does not reliably
-        // accept raw SQL strings — the GROUP BY + HAVING aggregation requires it.
+        // Find families with no email. Use database-level filtering instead of loading all families
+        // and filtering in PHP. Only return family IDs that meet the criteria:
+        // - Family.Email is empty (NULL or '') AND
+        // - No people in the family have Email or WorkEmail set
+        // Uses raw PDO (via Propel::getConnection()) because Propel 2's ->having() does not
+        // reliably accept raw SQL strings — the GROUP BY + HAVING aggregation requires it.
         $connection = Propel::getConnection();
         $sql = 'SELECT fam_ID FROM family_fam'
              . ' LEFT JOIN person_per ON person_per.per_fam_ID = family_fam.fam_ID'
+             . " WHERE (fam_Email IS NULL OR fam_Email = '')"
              . ' GROUP BY fam_ID'
              . " HAVING MAX(COALESCE(person_per.per_Email, '')) = ''"
              . " AND MAX(COALESCE(person_per.per_WorkEmail, '')) = ''";
@@ -110,7 +112,7 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
         }
 
         return SlimUtils::renderJSON($response, ['count' => count($familiesWithoutEmails), 'families' => $familiesWithoutEmails]);
-    })->add(new FamilyEmailDeprecationMiddleware('private/get-families-without-email'));
+    });
 
     /**
      * @OA\Get(
@@ -148,19 +150,11 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
     /**
      * @OA\Get(
      *     path="/families/self-register",
-     *     operationId="getSelfRegisteredFamilies",
      *     summary="Get self-registered families still awaiting review",
      *     tags={"Families"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Response(response=200, description="Self-registered families awaiting review, ordered by date entered descending",
-     *         @OA\JsonContent(@OA\Property(property="families", type="array", @OA\Items(allOf={
-     *             @OA\Schema(ref="#/components/schemas/Family"),
-     *             @OA\Schema(
-     *                 @OA\Property(property="Members", type="array", @OA\Items(type="string"), description="Members' first names"),
-     *                 @OA\Property(property="MemberEmails", type="array", @OA\Items(type="string")),
-     *                 @OA\Property(property="MemberPhones", type="array", @OA\Items(type="string"))
-     *             )
-     *         })))
+     *         @OA\JsonContent(@OA\Property(property="families", type="array", @OA\Items(type="object")))
      *     )
      * )
      */
@@ -204,19 +198,16 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
         unset($row);
 
         return SlimUtils::renderJSON($response, ['families' => $rows]);
-    })->add(new FamilyEmailDeprecationMiddleware('private/get-self-registered-families'));
+    });
 
     /**
      * @OA\Get(
      *     path="/families/self-verify",
-     *     operationId="getSelfVerifiedFamilies",
      *     summary="Get the last 100 families with self-verification notes",
      *     tags={"Families"},
      *     security={{"ApiKeyAuth":{}}},
-     *     @OA\Response(response=200, description="Self-verification notes, each with the family that wrote it",
-     *         @OA\JsonContent(@OA\Property(property="families", type="array", @OA\Items(type="object",
-     *             @OA\Property(property="Family", ref="#/components/schemas/Family")
-     *         )))
+     *     @OA\Response(response=200, description="Families that submitted self-verification notes",
+     *         @OA\JsonContent(@OA\Property(property="families", type="array", @OA\Items(type="object")))
      *     )
      * )
      */
@@ -229,8 +220,7 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
             ->find();
 
         return SlimUtils::renderJSON($response, ['families' => $verificationNotes->toArray()]);
-    })->add(new FamilyEmailDeprecationMiddleware('private/get-self-verified-families'))
-        ->add(new EditRecordsRoleAuthMiddleware());
+    })->add(new EditRecordsRoleAuthMiddleware());
 
     /**
      * @OA\Get(

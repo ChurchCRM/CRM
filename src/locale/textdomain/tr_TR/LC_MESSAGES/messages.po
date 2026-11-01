@@ -932,14 +932,6 @@ msgid "Zero Givers"
 msgstr "Sıfır Vericiler"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Bireysel Depozito Raporu"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Gelişmiş Depozito Raporu"
-
-#: 
 msgid "Next"
 msgstr "Sonraki"
 
@@ -961,10 +953,6 @@ msgstr "Rapor Bitiş Tarihi"
 #, fuzzy
 msgid "Apply Report Dates To"
 msgstr "Rapor tarihlerini uygulayın"
-
-#: 
-msgid "Deposit Date (Default)"
-msgstr "Depozito Tarihi (Varsayılan)"
 
 #: 
 msgid "Payment Date"
@@ -989,10 +977,6 @@ msgid "Filter by Payment Type"
 msgstr "Ödeme Türüne Göre Filtre"
 
 #: 
-msgid "All Methods"
-msgstr "Tüm yöntemler"
-
-#: 
 msgid "Check"
 msgstr "Kontrol"
 
@@ -1003,10 +987,6 @@ msgstr "Nakit"
 #: 
 msgid "Bank Draft"
 msgstr "Banka taslağı"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0 - Minimum Yok"
 
 #: 
 msgid "Other Settings"
@@ -1272,10 +1252,6 @@ msgstr "Veri etiketlerini onaylayın"
 #: 
 msgid "Invalid login or password"
 msgstr "geçersiz giriş yada şifre"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Çok fazla başarısız giriş: Hesabınız kilitlendi. Lütfen bir yöneticiyle iletişime geçin."
 
 #: 
 msgid "Email/Username"
@@ -1653,10 +1629,6 @@ msgstr "Sınıf"
 #: 
 msgid "Properties"
 msgstr "Özellikleri"
-
-#: 
-msgid "Pledge Reminder Report"
-msgstr "Rehin Hatırlatma Raporu"
 
 #: 
 msgid "Restore Database"
@@ -2140,24 +2112,12 @@ msgid "Classes"
 msgstr "Sınıf"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Pazar Okulu Raporları"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Pazar okulu sınıfında olmayan öğrenciler"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Sınıf listeleri veya katılım sayfaları yapmak için en az bir grup seçilmelidir."
-
-#: 
 msgid "Report Details"
 msgstr "Rapor Ayrıntıları"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Tüm rolleri listeleyin (kontrolsüz sadece öğretmen/öğrenci rollerini listeleyecektir)"
 
 #: 
 msgid "First Sunday"
@@ -2178,10 +2138,6 @@ msgstr "Ekstra öğrenciler"
 #: 
 msgid "Extra Teachers"
 msgstr "Ekstra Öğretmenler"
-
-#: 
-msgid "Create Class List"
-msgstr "Sınıf Listesi Oluştur"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4595,14 +4551,6 @@ msgid "PhotoBook"
 msgstr "Fotoğraf kitabı"
 
 #: 
-msgid "With Photos"
-msgstr "Fotoğraf ile"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Fotoğraf kitabı oluştur"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4747,11 +4695,6 @@ msgstr "Yıldönümleri"
 #: 
 msgid "View User"
 msgstr "Kullanıcıyı görüntüle"
-
-#: 
-#, fuzzy
-msgid "not found or user without an email"
-msgstr "E -posta olmadan bulunamadı veya kullanıcı"
 
 #: 
 msgid "UserName not set"
@@ -4949,16 +4892,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Yeni bir şifre eskisinden farklı olması gereken minimum miktar (karakterlerin# değişmesi)\n"
 "Bu özelliği devre dışı bırakmak için sıfıra ayarlayın"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Bir kullanıcı hesabı kilitlenmeden önce izin verecek maksimum başarısız giriş sayısı.\n"
-"Maksimuma ulaşıldıktan sonra, bir yöneticinin hesabı yeniden etkinleştirmesi gerekir.\n"
-"Bu özellik, otomatik şifre tahmin saldırılarına karşı korunmaya yardımcı olur.\n"
-"Bu özelliği devre dışı bırakmak için sıfıra ayarlayın."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -5597,10 +5530,6 @@ msgstr "Seçilenleri Sil"
 #: 
 msgid "Funds"
 msgstr "Fonlar"
-
-#: 
-msgid "Generate Report"
-msgstr "Rapor Oluştur"
 
 #: 
 msgid "Payments"
@@ -6296,10 +6225,6 @@ msgid "Current Deposit"
 msgstr "Mevcut Para Yatırma"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Tarih, fon, aile ve ödeme yöntemine göre filtreleme yapılabilen özelleştirilebilir rapor."
-
-#: 
 msgid "Day"
 msgstr "Gün"
 
@@ -6310,10 +6235,6 @@ msgstr "Ara"
 #: 
 msgid "Deposit Statistics"
 msgstr "Para Yatırma İstatistikleri"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Tek bir para yatırma makbuzunun ayrıntılı dökümü."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6414,10 +6335,6 @@ msgstr "Haz"
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "Sisteminizi kuralım ve kullanıma hazır hale getirelim"
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "Bağış geçmişi ve üyelik kriterlerine göre oy kullanmaya uygun üyeleri listeleyin."
 
 #: 
 msgid "Location"
@@ -9099,10 +9016,6 @@ msgid "Generate phone directory"
 msgstr "Telefon rehberi oluştur"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "Bağış taahhüdü hatırlatma mektupları oluştur"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "Grup üyeliği ve faaliyetler hakkında raporlar oluştur"
 
@@ -9853,10 +9766,6 @@ msgid "View transaction details for a pledge payment"
 msgstr "Bir bağış taahhüdü ödemesi için işlem ayrıntılarını görüntüle"
 
 #: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "Oy kullanan üyelerin bu kadar yıl içinde bağışta bulunmuş olması gerekir (bağış gerektirmemek için 0)"
-
-#: 
 msgid "We could not find the family you were looking for."
 msgstr "Aradığınız aileyi bulamadık."
 
@@ -10047,10 +9956,6 @@ msgstr "Zorla Yeniden Yükle?"
 #: 
 msgid "Full Path"
 msgstr "Tam Yol"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Sınıf listeleri, yoklama çizelgeleri ve fotoğraf albümleri oluştur"
 
 #: 
 msgid "Installed"
@@ -15995,10 +15900,6 @@ msgid "What this plugin does"
 msgstr "Bu eklenti ne yapar"
 
 #: 
-msgid "for all funds"
-msgstr "tüm fonlar için"
-
-#: 
 msgid "for fund"
 msgstr "fon için"
 
@@ -18575,10 +18476,6 @@ msgstr "Kilise adresi kopyalanamadı."
 #: 
 msgid "Could not match the church country."
 msgstr "Kilise ülkesi eşleştirilemedi."
-
-#: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Sınıf listeleri, yoklama çizelgeleri ve fotoğraf albümleri"
 
 #: 
 msgid "Group membership lists and Sunday School class reports"

@@ -932,14 +932,6 @@ msgid "Zero Givers"
 msgstr "Нульові дарувальники"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Індивідуальний звіт про депозит"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Розширений звіт про депозит"
-
-#: 
 msgid "Next"
 msgstr "Далі"
 
@@ -961,10 +953,6 @@ msgstr "Дата завершення звіту"
 #, fuzzy
 msgid "Apply Report Dates To"
 msgstr "Застосувати дати звітів до"
-
-#: 
-msgid "Deposit Date (Default)"
-msgstr "Дата вкладу (за замовчуванням)"
 
 #: 
 msgid "Payment Date"
@@ -989,10 +977,6 @@ msgid "Filter by Payment Type"
 msgstr "Фільтрувати за типом оплати"
 
 #: 
-msgid "All Methods"
-msgstr "Усі методи"
-
-#: 
 msgid "Check"
 msgstr "Перевірте"
 
@@ -1003,10 +987,6 @@ msgstr "Готівкою"
 #: 
 msgid "Bank Draft"
 msgstr "Банківський чек"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0 - відсутність мінімуму"
 
 #: 
 msgid "Other Settings"
@@ -1272,10 +1252,6 @@ msgstr "Підтвердьте мітки даних"
 #: 
 msgid "Invalid login or password"
 msgstr "Недійсний логін або пароль"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Забагато невдалих входів: ваш обліковий запис заблоковано. Зверніться до адміністратора."
 
 #: 
 msgid "Email/Username"
@@ -1653,10 +1629,6 @@ msgstr "Клас"
 #: 
 msgid "Properties"
 msgstr "Властивості"
-
-#: 
-msgid "Pledge Reminder Report"
-msgstr "Звіт про нагадування про заставу"
 
 #: 
 msgid "Restore Database"
@@ -2140,24 +2112,12 @@ msgid "Classes"
 msgstr "Заняття"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Звіти недільної школи"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Студенти, які не відвідують клас недільної школи"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Для складання списків занять або листів відвідуваності потрібно вибрати принаймні одну групу."
-
-#: 
 msgid "Report Details"
 msgstr "Деталі звіту"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Перерахувати всі ролі (не позначений прапорець перераховуватиме лише ролі викладача / студента)"
 
 #: 
 msgid "First Sunday"
@@ -2178,10 +2138,6 @@ msgstr "Додаткові студенти"
 #: 
 msgid "Extra Teachers"
 msgstr "Додаткові викладачі"
-
-#: 
-msgid "Create Class List"
-msgstr "Створити список класів"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4595,14 +4551,6 @@ msgid "PhotoBook"
 msgstr "Фотокнига"
 
 #: 
-msgid "With Photos"
-msgstr "З фотографіями"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Створіть PhotoBook"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4747,11 +4695,6 @@ msgstr "Ювілеї"
 #: 
 msgid "View User"
 msgstr "Переглянути користувача"
-
-#: 
-#, fuzzy
-msgid "not found or user without an email"
-msgstr "жодного знайденого або користувача без електронної пошти"
 
 #: 
 msgid "UserName not set"
@@ -4949,16 +4892,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Мінімальна кількість, яку новий пароль повинен відрізнятися від старого (змінено кількість символів)\n"
 "Встановіть нуль, щоб вимкнути цю функцію"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Максимальна кількість невдалих входів, які слід дозволити до блокування облікового запису користувача.\n"
-"Після досягнення максимуму адміністратор повинен знову ввімкнути обліковий запис.\n"
-"Ця функція допомагає захистити від автоматизованих атак вгадування паролів.\n"
-"Встановіть нуль, щоб вимкнути цю функцію."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -5601,10 +5534,6 @@ msgstr "Видалити вибране"
 #: 
 msgid "Funds"
 msgstr "Фонди"
-
-#: 
-msgid "Generate Report"
-msgstr "Згенерувати звіт"
 
 #: 
 msgid "Payments"
@@ -6304,10 +6233,6 @@ msgid "Current Deposit"
 msgstr "Поточний депозит"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Настроюваний звіт із фільтрацією за датою, фондом, сім'єю та способом оплати."
-
-#: 
 msgid "Day"
 msgstr "День"
 
@@ -6318,10 +6243,6 @@ msgstr "Груд"
 #: 
 msgid "Deposit Statistics"
 msgstr "Статистика депозитів"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Детальна розшифровка однієї депозитної квитанції."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6422,10 +6343,6 @@ msgstr "Черв"
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "Давайте налаштуємо вашу систему до роботи"
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "Список членів, які мають право голосу."
 
 #: 
 msgid "Location"
@@ -9117,10 +9034,6 @@ msgid "Generate phone directory"
 msgstr "Створіть телефонний справочник"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "Створіть листи нагадування про обіцянку"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "Створіть звіти про членство в групі та діяльність"
 
@@ -9871,10 +9784,6 @@ msgid "View transaction details for a pledge payment"
 msgstr "Переглядайте деталі операції для платежу обіцянки"
 
 #: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "Члени голосування повинні зробити пожертву протягом цього кількох років (0, щоб не вимагати пожертви)"
-
-#: 
 msgid "We could not find the family you were looking for."
 msgstr "Ми не змогли знайти сім'ю, яку ви шукали."
 
@@ -10065,10 +9974,6 @@ msgstr "Примусово переустановити?"
 #: 
 msgid "Full Path"
 msgstr "Повна шлях"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Створіть списки класів, листи присутності та фотокниги"
 
 #: 
 msgid "Installed"
@@ -16021,10 +15926,6 @@ msgid "What this plugin does"
 msgstr "Що робить цей плагін"
 
 #: 
-msgid "for all funds"
-msgstr "для всіх фондів"
-
-#: 
 msgid "for fund"
 msgstr "для фонду"
 
@@ -18607,10 +18508,6 @@ msgstr "Не вдалося скопіювати адресу церкви."
 #: 
 msgid "Could not match the church country."
 msgstr "Не вдалося визначити країну церкви."
-
-#: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Списки класів, аркуші відвідуваності та фотоальбоми"
 
 #: 
 msgid "Group membership lists and Sunday School class reports"

@@ -80,7 +80,7 @@ function initializeSelfRegister() {
         name: f.Name,
         address: formatAddress(f),
         members: f.Members || [],
-        emails: uniqueValues(f.MemberEmails || []),
+        emails: uniqueValues([f.Email].concat(f.MemberEmails || [])),
         phones: uniqueValues([f.HomePhone].concat(f.MemberPhones || [])),
         dateEntered: f.DateEntered,
         needsReview: !!f.NeedsReview,

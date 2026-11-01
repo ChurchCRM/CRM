@@ -931,14 +931,6 @@ msgid "Zero Givers"
 msgstr "జీరో ఇచ్చేవారు"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "వ్యక్తిగత డిపాజిట్ నివేదిక"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "అధునాతన డిపాజిట్ నివేదిక"
-
-#: 
 msgid "Next"
 msgstr "తదుపరి"
 
@@ -960,10 +952,6 @@ msgstr "నివేదిక ముగింపు తేదీ"
 #, fuzzy
 msgid "Apply Report Dates To"
 msgstr "రిపోర్ట్ తేదీలను దీనికి వర్తింపజేయండి"
-
-#: 
-msgid "Deposit Date (Default)"
-msgstr "డిపాజిట్ తేదీ (డిఫాల్ట్)"
 
 #: 
 msgid "Payment Date"
@@ -988,10 +976,6 @@ msgid "Filter by Payment Type"
 msgstr "చెల్లింపు రకం ద్వారా ఫిల్టర్ చేయండి"
 
 #: 
-msgid "All Methods"
-msgstr "అన్ని పద్ధతులు"
-
-#: 
 msgid "Check"
 msgstr "తనిఖీ చేయండి"
 
@@ -1002,10 +986,6 @@ msgstr "నగదు"
 #: 
 msgid "Bank Draft"
 msgstr "బ్యాంక్ డ్రాఫ్ట్"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0-కనీసం లేదు"
 
 #: 
 msgid "Other Settings"
@@ -1266,10 +1246,6 @@ msgstr "డేటా లేబుళ్లను ధృవీకరించు"
 #: 
 msgid "Invalid login or password"
 msgstr "చెల్లని లాగిన్ లేదా పాస్‌వర్డ్"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "చాలా ఎక్కువ విఫలమైన లాగిన్‌లు: మీ ఖాతా లాక్ చేయబడింది. దయచేసి నిర్వాహకుడిని సంప్రదించండి."
 
 #: 
 msgid "Email/Username"
@@ -1647,10 +1623,6 @@ msgstr "తరగతి"
 #: 
 msgid "Properties"
 msgstr "లక్షణాలు"
-
-#: 
-msgid "Pledge Reminder Report"
-msgstr "ప్రతిజ్ఞ రిమైండర్ నివేదిక"
 
 #: 
 msgid "Restore Database"
@@ -2130,24 +2102,12 @@ msgid "Classes"
 msgstr "తరగతులు"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "సండే స్కూల్ నివేదికలు"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "ఆదివారం పాఠశాల తరగతిలో లేని విద్యార్థులు"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "తరగతి జాబితాలు లేదా హాజరు షీట్లను చేయడానికి కనీసం ఒక గ్రూప్‌ను ఎంచుకోవాలి."
-
-#: 
 msgid "Report Details"
 msgstr "నివేదిక వివరాలు"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "అన్ని పాత్రలను జాబితా చేయండి (అన్‌చెక్ చేస్తే ఉపాధ్యాయ/విద్యార్థి పాత్రలను మాత్రమే జాబితా చేస్తుంది)"
 
 #: 
 msgid "First Sunday"
@@ -2168,10 +2128,6 @@ msgstr "అదనపు విద్యార్థులు"
 #: 
 msgid "Extra Teachers"
 msgstr "అదనపు ఉపాధ్యాయులు"
-
-#: 
-msgid "Create Class List"
-msgstr "తరగతి జాబితాను సృష్టించండి"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4578,14 +4534,6 @@ msgid "PhotoBook"
 msgstr "ఫోటో పుస్తకం"
 
 #: 
-msgid "With Photos"
-msgstr "ఫోటోలతో"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "ఫోటో పుస్తకం సృష్టించండి"
-
-#: 
 msgid "SSE"
 msgstr "దక్షిణ-ఆగ్నేయం"
 
@@ -4729,10 +4677,6 @@ msgstr "వార్షికోత్సవాలు"
 #: 
 msgid "View User"
 msgstr "యూజర్‌ను చూడండి"
-
-#: 
-msgid "not found or user without an email"
-msgstr "కనుగొనబడలేదు లేదా ఇమెయిల్ లేని వినియోగదారు"
 
 #: 
 msgid "UserName not set"
@@ -4927,16 +4871,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "కొత్త పాస్‌వర్డ్ పాతదాని నుండి భిన్నంగా ఉండవలసిన కనీస మొత్తం (మార్చబడిన అక్షరాల #)\n"
 "ఈ ఫీచర్‌ను నిలిపివేయడానికి సున్నాకు సెట్ చేయండి"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "వినియోగదారు ఖాతా లాక్ అయ్యే ముందు అనుమతించే విఫల లాగిన్‌ల గరిష్ట సంఖ్య.\n"
-"గరిష్టానికి చేరుకున్న తర్వాత, నిర్వాహకుడు ఖాతాను మళ్ళీ ప్రారంభించాలి.\n"
-"ఈ ఫీచర్ ఆటోమేటెడ్ పాస్‌వర్డ్ అంచనా దాడుల నుండి రక్షించడానికి సహాయపడుతుంది.\n"
-"ఈ ఫీచర్‌ను నిలిపివేయడానికి సున్నాకు సెట్ చేయండి."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -5574,10 +5508,6 @@ msgstr "ఎంచుకున్నవాటిని తొలగించం�
 #: 
 msgid "Funds"
 msgstr "ఫండ్‌లు"
-
-#: 
-msgid "Generate Report"
-msgstr "రిపోర్ట్ జనరేట్ చేయండి"
 
 #: 
 msgid "Payments"
@@ -6273,10 +6203,6 @@ msgid "Current Deposit"
 msgstr "ప్రస్తుత డిపాజిట్"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "తేదీ, నిధి, కుటుంబం మరియు చెల్లింపు పద్ధతి ద్వారా ఫిల్టరింగ్‌తో అనుకూలీకరించదగిన నివేదిక."
-
-#: 
 msgid "Day"
 msgstr "రోజు"
 
@@ -6287,10 +6213,6 @@ msgstr "డిసెంబర్"
 #: 
 msgid "Deposit Statistics"
 msgstr "డిపాజిట్ గణాంకాలు"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "ఒకే డిపాజిట్ స్లిప్ యొక్క వివరణాత్మక విచ్ఛిన్నం."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6391,10 +6313,6 @@ msgstr "జూన్"
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "మీ సిస్టమ్‌ను సెటప్ చేసి, ఉపయోగించడానికి సిద్ధంగా ఉంచుకుందాం"
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "విరాళాల చరిత్ర మరియు సభ్యత్వ ప్రమాణాల ఆధారంగా ఓటు వేయడానికి అర్హత కలిగిన సభ్యులను జాబితా చేయండి."
 
 #: 
 msgid "Location"
@@ -9076,10 +8994,6 @@ msgid "Generate phone directory"
 msgstr "ఫోన్ డైరెక్టరీ రూపొందించండి"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "ప్రతిజ్ఞ స్మారక లేఖలు రూపొందించండి"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "సమూహ సభ్యత్వం మరియు కార్యకలాపాలపై నివేదికలు రూపొందించండి"
 
@@ -9830,10 +9744,6 @@ msgid "View transaction details for a pledge payment"
 msgstr "ప్రతిజ్ఞ చెల్లింపు లావాదేవీ వివరాలు చూడండి"
 
 #: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "ఓటు వేసే సభ్యులు ఈ అనేక సంవత్సరాలలో అర్పణ చేసి ఉండాలి (అర్పణ అవసరం లేకపోతే 0)"
-
-#: 
 msgid "We could not find the family you were looking for."
 msgstr "మీరు వెతుకుతున్న కుటుంబం కనుగొనబడలేదు."
 
@@ -10024,10 +9934,6 @@ msgstr "బలవంతంగా మళ్ళీ వ్యవస్థాపి�
 #: 
 msgid "Full Path"
 msgstr "పూర్తి మార్గం"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "తరగతి జాబితాలు, హాజరు షీట్‌లు మరియు ఫోటో పుస్తకాలు రూపొందించండి"
 
 #: 
 msgid "Installed"
@@ -15972,10 +15878,6 @@ msgid "What this plugin does"
 msgstr "ఈ ప్లగిన్ ఏం చేస్తుంది"
 
 #: 
-msgid "for all funds"
-msgstr "అన్ని నిధుల కోసం"
-
-#: 
 msgid "for fund"
 msgstr "నిధి కోసం"
 
@@ -18552,10 +18454,6 @@ msgstr "చర్చి చిరునామాను కాపీ చేయల
 #: 
 msgid "Could not match the church country."
 msgstr "చర్చి దేశాన్ని సరిపోల్చలేకపోయింది."
-
-#: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "తరగతి జాబితాలు, హాజరు పత్రాలు మరియు ఫోటో పుస్తకాలు"
 
 #: 
 msgid "Group membership lists and Sunday School class reports"

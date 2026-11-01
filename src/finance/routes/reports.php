@@ -1,5 +1,7 @@
 <?php
 
+use ChurchCRM\Utils\PdfResponse;
+use ChurchCRM\Utils\PdfFilename;
 use ChurchCRM\Emails\GivingStatementEmail;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
@@ -8,6 +10,7 @@ use ChurchCRM\Service\FinanceReportOptions;
 use ChurchCRM\Service\MpdfRenderer;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Service\GivingStatementService;
+use ChurchCRM\Service\YearEndGivingService;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\CsvExporter;
@@ -36,6 +39,27 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
         ];
 
         return $renderer->render($response, 'reports.php', $pageArgs);
+    });
+
+    // Year-end giving: the finance team's starting point for a year's statements.
+    $group->get('/year-end', function (Request $request, Response $response): Response {
+        $years = YearEndGivingService::years();
+        $requested = InputUtils::filterInt($request->getQueryParams()['year'] ?? '');
+        $year = in_array($requested, $years, true) ? $requested : $years[0];
+
+        $renderer = new PhpRenderer(__DIR__ . '/../views/');
+
+        return $renderer->render($response, 'reports/year-end.php', [
+            'sRootPath' => SystemURLs::getRootPath(),
+            'sPageTitle' => gettext('Year-End Giving'),
+            'sPageSubtitle' => gettext('Review the year, then print or email giving statements.'),
+            'aBreadcrumbs' => PageHeader::breadcrumbs([
+                [gettext('Financial Reports'), '/finance/reports'],
+                [gettext('Year-End Giving')],
+            ]),
+            'years' => $years,
+            'overview' => YearEndGivingService::overview($year),
+        ]);
     });
 
     // Giving Statements: choose filters, preview the result, then download.
@@ -98,11 +122,7 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
         $pdf = (new MpdfRenderer())->renderToString('tax-report', $document);
 
         $label = GivingStatementService::fileLabel((int) substr($dateEnd, 0, 4), count($families) === 1 ? $families[0]['salutation'] : '');
-        $response->getBody()->write($pdf);
-
-        return $response
-            ->withHeader('Content-Type', 'application/pdf')
-            ->withHeader('Content-Disposition', GivingStatementService::contentDisposition($label));
+        return PdfResponse::create($response, $pdf, $label);
     });
 
     // Email one family's giving statement for a year (Family profile → Finance menu).
@@ -136,7 +156,7 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
         $document = GivingStatementService::document($families, $criteria['dateStart'], $criteria['dateEnd']);
         $pdf = (new MpdfRenderer())->renderToString('tax-report', $document);
 
-        $filename = 'GivingStatement-' . preg_replace('/[^\p{L}\p{N}._-]/u', '_', (string) $family->getName()) . '-' . $year . '.pdf';
+        $filename = PdfFilename::create(GivingStatementService::fileLabel($year, (string) $family->getName()));
         $mail = new GivingStatementEmail($emails, (string) $family->getName(), $year, $pdf, $filename);
 
         if ($mail->send()) {

@@ -30,7 +30,7 @@
  *        └─ staff one ──────────► the qualified volunteer is on it
  *
  *     …and the refusals, which are half the point:
- *        another team's page ──► the PORTAL's 404, never the admin shell's
+ *        another team's page ──► the PORTAL's 403, never the admin shell's
  *        the admin ministry page ► never renders for this login
  *        a member with no scope ► no nav entry and no pages
  *
@@ -497,7 +497,7 @@ describe("Member Portal — #9869 scenario 2, \"a team leader on a member login\
             leaderLogin();
             cy.visit(`${TEAMS_URL}/${teamOther}`, { failOnStatusCode: false });
 
-            // The PORTAL's 404, drawn in the member's theme, never the admin shell's
+            // The PORTAL's 403, drawn in the member's theme, never the admin shell's
             // access-denied page (design P10).
             cy.get(".portal-shell", { timeout: 10000 }).should("exist");
             cy.get("#portal-team").should("not.exist");

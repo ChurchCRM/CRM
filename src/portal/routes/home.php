@@ -1,10 +1,7 @@
 <?php
 
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Person;
-use ChurchCRM\Portal\Auth\PortalContext;
-use ChurchCRM\Portal\Auth\PortalPrincipal;
-use ChurchCRM\Portal\Permissions\CorePortalCapabilities;
-use ChurchCRM\Portal\Permissions\PortalAuthorizationService;
 use ChurchCRM\Portal\PortalCalendarService;
 use ChurchCRM\Portal\PortalNav;
 use ChurchCRM\Portal\PortalSelfService;
@@ -24,7 +21,6 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 $homeHandler = function (Request $request, Response $response): Response {
     $actor = $request->getAttribute(PortalSelfService::ACTOR_ATTRIBUTE);
     $family = $actor instanceof Person ? $actor->getFamily() : null;
-    $showCalendar = portalHomeMay(CorePortalCapabilities::CALENDAR_VIEW);
 
     return PortalTwig::render(
         $response,
@@ -32,9 +28,9 @@ $homeHandler = function (Request $request, Response $response): Response {
         [
             'pageTitle' => gettext('Home'),
             // Whether the volunteering card is a real card or nothing at all.
-            // The nav entry asks the same capability, so the card and the
+            // The nav entry is decided by the same call, so the card and the
             // navigation can never disagree.
-            'showVolunteering' => portalHomeMay(CorePortalCapabilities::VOLUNTEER_USE),
+            'showVolunteering' => PortalNav::isVolunteeringVisible(),
             // The Profile card shows the member's own contact details rather
             // than a sentence describing them, so it reads the same view-model
             // the Profile page renders — never a second copy of the logic.
@@ -43,8 +39,9 @@ $homeHandler = function (Request $request, Response $response): Response {
                 'name' => (string) $family->getName(),
                 'memberCount' => count($family->getPeople()),
             ],
-            'upcomingEvents' => $showCalendar ? portalHomeUpcomingEvents() : [],
-            'hasVisibleCalendars' => $showCalendar && PortalCalendarService::hasVisibleCalendars(),
+            'upcomingEvents' => portalHomeUpcomingEvents(),
+            'hasVisibleCalendars' => SystemConfig::getBooleanValue('bPortalShowCalendar')
+                && PortalCalendarService::hasVisibleCalendars(),
         ],
         PortalNav::HOME
     );
@@ -60,6 +57,10 @@ $homeHandler = function (Request $request, Response $response): Response {
  */
 function portalHomeUpcomingEvents(): array
 {
+    if (!SystemConfig::getBooleanValue('bPortalShowCalendar')) {
+        return [];
+    }
+
     $events = [];
     foreach (PortalCalendarService::upcoming(3) as $event) {
         $events[] = [
@@ -72,14 +73,6 @@ function portalHomeUpcomingEvents(): array
     }
 
     return $events;
-}
-
-function portalHomeMay(string $capability): bool
-{
-    $principal = PortalContext::principal();
-
-    return $principal instanceof PortalPrincipal
-        && (new PortalAuthorizationService())->scopesFor($principal, $capability) !== [];
 }
 
 // Both spellings answer, so a link to `/portal` works as well as `/portal/`.

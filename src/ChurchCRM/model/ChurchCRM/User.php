@@ -28,7 +28,6 @@ class User extends BaseUser
 {
     public const SIGN_IN_BLOCKED_DECEASED = 'deceased';
     public const SIGN_IN_BLOCKED_INACTIVE = 'inactive';
-    public const SIGN_IN_BLOCKED_DISABLED = 'sign_in_disabled';
 
     private $provisional2FAKey;
 
@@ -681,29 +680,28 @@ class User extends BaseUser
     }
 
     /**
-     * Why this account may not sign in (member sign-in design §4, blocks for
-     * everyone): one of the SIGN_IN_BLOCKED_* values, or null when allowed.
-     * The family's status and awaiting review apply to member sign-in only.
-     * Reads the person and sign-in rows fresh so a long-lived session sees
-     * later changes.
+     * Why this account may not sign in, based only on the user's own person
+     * record (never the family): 'deceased', 'inactive', or null when allowed.
+     * Reads the status columns fresh so a long-lived session sees later changes.
      */
     public function getSignInBlockedReason(): ?string
     {
         $status = PersonQuery::create()
             ->filterById($this->getPersonId())
-            ->leftJoinPersonSignin()
-            ->select(['DateDeceased', 'DateDeactivated', 'PersonSignin.SignInDisabled'])
+            ->select(['DateDeceased', 'DateDeactivated'])
             ->findOne();
 
         if (!is_array($status)) {
             return null;
         }
+        if (!empty($status['DateDeceased'])) {
+            return self::SIGN_IN_BLOCKED_DECEASED;
+        }
+        if (!empty($status['DateDeactivated'])) {
+            return self::SIGN_IN_BLOCKED_INACTIVE;
+        }
 
-        return Person::signInBlockedReasonFor(
-            $status['DateDeceased'],
-            $status['DateDeactivated'],
-            (bool) $status['PersonSignin.SignInDisabled'],
-        );
+        return null;
     }
 
     public function getSignInBlockedLabel(): ?string
@@ -711,7 +709,6 @@ class User extends BaseUser
         return match ($this->getSignInBlockedReason()) {
             self::SIGN_IN_BLOCKED_DECEASED => gettext('Deceased — cannot sign in'),
             self::SIGN_IN_BLOCKED_INACTIVE => gettext('Inactive — cannot sign in'),
-            self::SIGN_IN_BLOCKED_DISABLED => gettext('Sign-in disabled'),
             default => null,
         };
     }
@@ -754,12 +751,12 @@ class User extends BaseUser
         return MiscUtils::randomToken();
     }
 
-    public function postInsert(ConnectionInterface $con = null): void
+    public function postInsert(?ConnectionInterface $con = null): void
     {
         $this->createTimeLineNote('created');
     }
 
-    public function postDelete(ConnectionInterface $con = null): void
+    public function postDelete(?ConnectionInterface $con = null): void
     {
         $this->createTimeLineNote('deleted');
     }

@@ -68,7 +68,8 @@ describe("Standard Family", () => {
         cy.get('input[name="Latitude"]').clear();
         cy.get('input[name="Longitude"]').clear();
 
-        cy.get('input[name="Email"]').should("not.exist");
+        // Fill in Contact Information section
+        cy.get('input[name="Email"]').type("mike@example.com");
 
         // Fill in Wedding Date (now in Family Identity section)
         const weddingYear = "2024";
@@ -112,17 +113,19 @@ describe("Standard Family", () => {
         cy.contains("Peter Troy");
         // Address and contact info should be visible
         cy.contains("4222 Clinton Way Los Angeles, CA");
-        cy.get("#family-email-none").should("contain.text", "No head of household or spouse can receive family email.");
+        cy.contains("mike@example.com");
         cy.contains(`${weddingMonth}/${weddingDay}/${weddingYear}`);
 
         // Edit the family — use the toolbar Edit button (FABs removed)
         cy.get('a.btn-ghost-primary').contains('Edit').click();
+        cy.get('input[name="Email"]').clear();
         cy.get("#WeddingDate").clear();
 
         // Click FAB save button (on FamilyEditor page)
         cy.get('button[name="FamilySubmit"]').click();
 
         cy.location("pathname").should("include", "/people/family/");
+        cy.get('body').should('not.contain', 'mike@example.com');
         cy.get('body').should('not.contain', `${weddingMonth}/${weddingDay}/${weddingYear}`);
     });
 });
@@ -139,6 +142,7 @@ describe("Family Wedding Date Edit Workflow", () => {
         cy.get('input[name="Address1"]').type("123 Main Street");
         cy.get('input[name="City"]').clear().type("Springfield");
         cy.get('select[name="State"]').select("IL", { force: true });
+        cy.get('input[name="Email"]').type("test@example.com");
         cy.get('input[name="FirstName1"]').type("John");
         cy.get('select[name="Classification1"]').select("1", { force: true });
 

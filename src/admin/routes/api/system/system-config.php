@@ -3,7 +3,6 @@
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Service\GradePromotionService;
-use ChurchCRM\Service\MemberSignInSettingsService;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Volunteer\Service\VolunteerEventService;
@@ -66,7 +65,7 @@ function getConfigValueByNameAPI(Request $request, Response $response, array $ar
  *     @OA\Response(response=200, description="Setting saved (password settings return an empty value)",
  *         @OA\JsonContent(@OA\Property(property="value", type="string", example="10"))
  *     ),
- *     @OA\Response(response=400, description="A number setting was given a value that is not a number, or a Member Portal sign-in setting failed its check (for example, member sign-in while email is off)"),
+ *     @OA\Response(response=400, description="A number setting was given a value that is not a number"),
  *     @OA\Response(response=401, description="Unauthorized"),
  *     @OA\Response(response=403, description="Admin role required"),
  *     @OA\Response(response=404, description="Configuration item not found")
@@ -92,14 +91,6 @@ function setConfigValueByNameAPI(Request $request, Response $response, array $ar
     $blankAllowed = $value === '' && $configItem->getDefault() === '';
     if ($configItem->getType() === 'number' && !is_numeric($value) && !$blankAllowed) {
         return SlimUtils::renderErrorJSON($response, gettext('This setting must be a number'), [], 400, null, $request);
-    }
-
-    if (MemberSignInSettingsService::owns($configName)) {
-        try {
-            $value = (new MemberSignInSettingsService())->normalize($configName, $value);
-        } catch (\InvalidArgumentException $e) {
-            return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400, null, $request);
-        }
     }
 
     $volunteerV2WasOn = User::isVolunteerV2Enabled();

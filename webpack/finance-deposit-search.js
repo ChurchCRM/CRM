@@ -203,7 +203,9 @@
                 );
               }
               $.each(validDeposits, (_j, depId) => {
-                window.CRM.VerifyThenLoadAPIContent(`${window.CRM.root}/api/deposits/${depId}/pdf`);
+                window.CRM.VerifyThenLoadAPIContent(
+                  `${window.CRM.root}/finance/reports/print-deposit/download?deposit=${depId}`,
+                );
               });
             }
           });

@@ -308,10 +308,6 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
             </div>
         </div>
 
-        <?php if ($portalSignIn !== null) : ?>
-            <?php include __DIR__ . '/partials/portal-signin-card.php'; ?>
-        <?php endif; ?>
-
         <!-- Properties Card (sidebar) -->
         <div class="card">
             <div class="card-header d-flex align-items-center">

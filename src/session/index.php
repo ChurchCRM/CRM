@@ -67,7 +67,9 @@ function processTwoFactorPost(Request $request, Response $response, array $args)
 
 function endSession(Request $request, Response $response, array $args): Response
 {
-    $redirectUrl = AuthenticationManager::signOut();
+    AuthenticationManager::endSession(true);
+    
+    $redirectUrl = SystemURLs::getRootPath() . '/session/begin';
     $response = $response->withHeader('Location', $redirectUrl)->withStatus(302);
     $response->getBody()->write('');
     return $response;

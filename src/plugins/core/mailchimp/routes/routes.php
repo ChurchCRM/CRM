@@ -248,12 +248,11 @@ $app->group('/mailchimp/api', function (RouteCollectorProxy $group) use ($mailch
         }
 
         $emailToLists = [];
-        $familyEmail = $family->getEmailRecipient()?->getEmail();
-        if (!empty($familyEmail)) {
+        if (!empty($family->getEmail())) {
             $emailToLists[] = [
-                'email' => $familyEmail,
-                'emailMD5' => md5(strtolower($familyEmail)),
-                'list' => $mailchimpPlugin->isEmailInMailChimp($familyEmail),
+                'email' => $family->getEmail(),
+                'emailMD5' => md5(strtolower($family->getEmail())),
+                'list' => $mailchimpPlugin->isEmailInMailChimp($family->getEmail()),
             ];
         }
 

@@ -7,7 +7,6 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\FileSystemUtils;
 use ChurchCRM\Service\AppIntegrityService;
-use ChurchCRM\Service\UpgradeService;
 use ChurchCRM\Utils\ExecutionTime;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\VersionUtils;
@@ -607,11 +606,11 @@ class ChurchCRMReleaseManager
             // Only attempt to upgrade the database if the code deploy/move completed successfully
             if ($codeDeploySuccessful) {
                 try {
-                    $logger->info('Attempting automatic database upgrade post code-deploy');
-                    UpgradeService::upgradeDatabaseVersion();
-                    $logger->info('Automatic database upgrade completed successfully');
+                    $_SESSION['dbUpgradePending'] = true;
+                    unset($_SESSION['dbUpgradeError']);
+                    $logger->info('Database upgrade will continue in fresh requests after code deployment');
 
-                    // After successful database upgrade, clean up orphaned files
+                    // Clean up the deployed tree before the database continuation requests.
                     $logger->info('Beginning automatic orphaned file cleanup');
                     $cleanupResult = AppIntegrityService::deleteOrphanedFiles();
                     $logger->info('Orphaned file cleanup completed', [

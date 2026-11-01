@@ -1,0 +1,37 @@
+{% extends "_base.html.twig" %}
+{% block content %}
+  <style>
+    table.roster { width: 100%; border-collapse: collapse; }
+    table.roster td { vertical-align: top; padding: 1.6mm 1.5mm; border-bottom: 0.2pt solid #ddd; font-size: 10pt; }
+    .flag { font-weight: bold; font-size: 9pt; }
+    .staff { font-weight: bold; font-size: 10pt; margin: 0 0 1mm 0; }
+  </style>
+  {% for class in classes %}
+    {% if not loop.first %}{% include "_letter-break.html.twig" %}{% endif %}
+    <h1>{{ class.name }} <span class="muted">{{ fiscal_year }}</span></h1>
+    {% if class.teachers %}<p class="staff">{{ class.teachers|join(', ') }}</p>{% endif %}
+    {% if class.liaisons %}<p class="staff">{{ gettext('Liaison') }}: {{ class.liaisons|join(', ') }}</p>{% endif %}
+    <table class="roster">
+      {% for student in class.students %}
+        <tr>
+          <td style="width: 10mm;">
+            {% include '_person-photo.html.twig' with {'person': student} only %}
+          </td>
+          <td style="width: 45mm;">
+            {{ student.name }}
+            {% if student.properties %}<div class="flag">!!! {{ student.properties|join(', ') }}</div>{% endif %}
+          </td>
+          <td style="width: 24mm; white-space: nowrap;">{{ student.birthday }}</td>
+          <td>
+            {{ student.parents }}
+            {% if student.address %}<div class="muted">{{ student.address }}</div>{% endif %}
+          </td>
+          <td style="width: 30mm; white-space: nowrap;">{{ student.phone }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+    <p class="generated">{{ generated_on }}</p>
+  {% else %}
+    <p class="empty">{{ gettext('No records were returned from the previous report. Please adjust your filters or date range and try again.') }}</p>
+  {% endfor %}
+{% endblock %}

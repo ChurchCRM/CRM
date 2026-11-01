@@ -11,7 +11,7 @@
 
   Its items, in order:
     1. Email History — what the church has emailed this member
-    2. Change Password — a staff session only; members have no password
+    2. Change Password
     3. Admin Console — staff logins only
     4. Sign out
 #}
@@ -24,8 +24,6 @@
             <span class="portal-brand-name">{{ church.name|default('ChurchCRM') }}</span>
         </a>
 
-        {# Signed out (the sign-in pages), there is no member and no menu. #}
-        {% if member.id %}
         <div class="portal-header-actions">
             <button class="portal-nav-toggle" type="button" id="portal-nav-toggle"
                     aria-controls="portal-nav" aria-expanded="false"
@@ -48,12 +46,10 @@
                         <i class="fa-solid fa-envelope-open-text" aria-hidden="true"></i>
                         <span>{{ gettext('Email History') }}</span>
                     </a>
-                    {% if member.signedInWithPassword %}
-                    <a class="portal-account-item" role="menuitem" href="{{ url('/portal/profile/password') }}" id="portalAccountChangePassword">
+                    <a class="portal-account-item" role="menuitem" href="{{ url('/portal/profile/password') }}">
                         <i class="fa-solid fa-key" aria-hidden="true"></i>
                         <span>{{ gettext('Change Password') }}</span>
                     </a>
-                    {% endif %}
                     {# Every staff login — not only an administrator — needs a way
                        back to the admin area it came from. #}
                     {% if member.isStaff %}
@@ -69,6 +65,5 @@
                 </div>
             </div>
         </div>
-        {% endif %}
     </div>
 </header>

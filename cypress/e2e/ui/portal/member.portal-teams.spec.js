@@ -17,7 +17,7 @@
  * The walk is the acceptance criterion of the issue, in order: the nav entry
  * appears, the team opens, a qualification tick saves, a schedule is created,
  * its dates are generated, one of them is staffed — and the two refusals hold:
- * another team's page is the portal's own 404, and `/ministries/{id}`
+ * another team's page is the portal's own 403, and `/ministries/{id}`
  * never renders the admin shell.
  *
  * `limited.user` is the control: a member with no scope at all, who must not see
@@ -507,11 +507,12 @@ describe("Member Portal (MP7, #9868) — My Teams", () => {
         });
 
         describe("Refusals", () => {
-            it("Another team's page is the portal's own 404, not the admin access-denied page", () => {
+            it("Another team's page is the portal's own 403, not the admin access-denied page", () => {
                 login(LEADER_USERNAME, LEADER_PASSWORD);
                 cy.visit(`${TEAMS_URL}/${teamOther}`, { failOnStatusCode: false });
 
-                cy.get(".portal-error-404").should("exist");
+                cy.get(".portal-error-403").should("exist");
+                cy.contains("You cannot open this page").should("exist");
                 cy.url().should("not.include", "/v2/access-denied");
                 cy.get("#sidebar").should("not.exist");
             });
@@ -535,7 +536,7 @@ describe("Member Portal (MP7, #9868) — My Teams", () => {
                 cy.get(".portal-error-403").should("exist");
 
                 cy.visit(`${TEAMS_URL}/${teamLed}`, { failOnStatusCode: false });
-                cy.get(".portal-error-404").should("exist");
+                cy.get(".portal-error-403").should("exist");
             });
         });
     });

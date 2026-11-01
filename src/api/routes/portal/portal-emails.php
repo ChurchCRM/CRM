@@ -1,7 +1,6 @@
 <?php
 
 use ChurchCRM\model\ChurchCRM\Person;
-use ChurchCRM\Portal\Auth\PortalSessionMiddleware;
 use ChurchCRM\Portal\PortalApiMiddleware;
 use ChurchCRM\Portal\PortalSelfService;
 use ChurchCRM\Service\EmailLogService;
@@ -33,10 +32,10 @@ use Slim\Routing\RouteCollectorProxy;
  * delivery status: a queued or sending message has not reached them yet, and a failed
  * or skipped one never did. An unsent row is the same 404 as somebody else's.
  *
- * **Scope decision — mail sent to the whole family is not included.** A row is
- * shown only when `eml_per_ID` is this person. An email sent to a family
- * lands in `email_log_eml` with `eml_per_ID` NULL and `eml_fam_ID` set
- * (see `EmailComposerService::queue()`), and this first
+ * **Scope decision — the family's shared address is not included.** A row is
+ * shown only when `eml_per_ID` is this person. An email addressed to the
+ * family's own address lands in `email_log_eml` with `eml_per_ID` NULL and
+ * `eml_fam_ID` set (see `EmailLogService::resolveAddress()`), and this first
  * version deliberately leaves those out: every adult of a household would
  * otherwise see mail that was not addressed to them by name, which is a
  * privacy call for the product owner rather than an implementation detail.
@@ -135,4 +134,4 @@ $app->group('/portal/me/emails', function (RouteCollectorProxy $group) use ($por
 
         return SlimUtils::renderJSON($response, $service->toMemberArray($row, true));
     });
-})->add(new PortalApiMiddleware())->add(new PortalSessionMiddleware());
+})->add(new PortalApiMiddleware());

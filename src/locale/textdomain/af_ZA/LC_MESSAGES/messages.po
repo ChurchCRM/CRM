@@ -932,14 +932,6 @@ msgid "Zero Givers"
 msgstr "Nul gewers"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Individuele depositoverslag"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Gevorderde depositoverslag"
-
-#: 
 msgid "Next"
 msgstr "Volgende"
 
@@ -961,10 +953,6 @@ msgstr "Einddatum van verslag"
 #, fuzzy
 msgid "Apply Report Dates To"
 msgstr "Pas verslagdatums toe op"
-
-#: 
-msgid "Deposit Date (Default)"
-msgstr "Deposito datum (verstek)"
 
 #: 
 msgid "Payment Date"
@@ -989,10 +977,6 @@ msgid "Filter by Payment Type"
 msgstr "Filtreer volgens betalingstipe"
 
 #: 
-msgid "All Methods"
-msgstr "Alle metodes"
-
-#: 
 msgid "Check"
 msgstr "Tjek"
 
@@ -1003,10 +987,6 @@ msgstr "Kontant"
 #: 
 msgid "Bank Draft"
 msgstr "Bankkonsep"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0 - Geen minimum nie"
 
 #: 
 msgid "Other Settings"
@@ -1272,10 +1252,6 @@ msgstr "Bevestig data-etikette"
 #: 
 msgid "Invalid login or password"
 msgstr "Ongeldige aanmelding of wagwoord"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Te veel mislukte aanmeldings: u rekening is gesluit. Kontak 'n administrateur."
 
 #: 
 msgid "Email/Username"
@@ -1653,10 +1629,6 @@ msgstr "Klas"
 #: 
 msgid "Properties"
 msgstr "Eiendomme"
-
-#: 
-msgid "Pledge Reminder Report"
-msgstr "Verslag oor belofteherinnering"
 
 #: 
 msgid "Restore Database"
@@ -2140,24 +2112,12 @@ msgid "Classes"
 msgstr "Klasse"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Sondagskoolverslae"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Studente wat nie in 'n Sondagskoolklas is nie"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Ten minste een groep moet gekies word om klaslyste of bywoningsblaaie op te stel."
-
-#: 
 msgid "Report Details"
 msgstr "Verslagbesonderhede"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Lys alle rolle (nie gemerk nie, sal slegs onderwyser- / studentrolle bevat)"
 
 #: 
 msgid "First Sunday"
@@ -2178,10 +2138,6 @@ msgstr "Ekstra studente"
 #: 
 msgid "Extra Teachers"
 msgstr "Ekstra onderwysers"
-
-#: 
-msgid "Create Class List"
-msgstr "Skep klaslys"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4595,14 +4551,6 @@ msgid "PhotoBook"
 msgstr "Fotoboek"
 
 #: 
-msgid "With Photos"
-msgstr "Met Foto's"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Skep Fotoboek"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4747,11 +4695,6 @@ msgstr "Herdenkings"
 #: 
 msgid "View User"
 msgstr "Bekyk gebruiker"
-
-#: 
-#, fuzzy
-msgid "not found or user without an email"
-msgstr "geen gevind of gebruiker sonder 'n e-pos nie"
 
 #: 
 msgid "UserName not set"
@@ -4949,16 +4892,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Minimum bedrag wat 'n nuwe wagwoord moet verskil van die ou wagwoord (aantal karakters verander)\n"
 "Stel op nul om hierdie funksie uit te skakel"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Maksimum aantal mislukte aanmeldings om toe te laat voordat 'n gebruikersrekening gesluit word.\n"
-"Sodra die maksimum bereik is, moet 'n administrateur die rekening weer inskakel.\n"
-"Hierdie funksie help om te beskerm teen aanvalle van outomatiese wagwoordraai.\n"
-"Stel op nul om hierdie funksie uit te skakel."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -5597,10 +5530,6 @@ msgstr "Wis Gekies"
 #: 
 msgid "Funds"
 msgstr "Fondse"
-
-#: 
-msgid "Generate Report"
-msgstr "Genereer Verslag"
 
 #: 
 msgid "Payments"
@@ -6296,10 +6225,6 @@ msgid "Current Deposit"
 msgstr "Huidigas Deposito"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Pasmaakbare verslag met filtrering op datum, fonds, familie en betalingsmetode."
-
-#: 
 msgid "Day"
 msgstr "Dag"
 
@@ -6310,10 +6235,6 @@ msgstr "Des"
 #: 
 msgid "Deposit Statistics"
 msgstr "Deposito Statistieke"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Gedetailleerde afbreking van 'n enkele deposito sluipweg."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6414,10 +6335,6 @@ msgstr "Jun"
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "Laat ons jou stelsel oprig en gereed maak vir gebruik"
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "Lys van lede wat stem mag stem op grond van gawingshistoriek en lidmaatskapsкритeria."
 
 #: 
 msgid "Location"
@@ -9099,10 +9016,6 @@ msgid "Generate phone directory"
 msgstr "Genereer telefonadresboek"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "Genereer verbintenis-herinnerings-briewe"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "Genereer verslae oor ministerie-lidmaatskap en aktiwiteite"
 
@@ -9853,10 +9766,6 @@ msgid "View transaction details for a pledge payment"
 msgstr "Kyk transaksie-besonderhede vir 'n verbintenis-betaling"
 
 #: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "Stemmende lede moet 'n donasie binne hierdie baie jare gemaak het (0 om geen donasie te vereis nie)"
-
-#: 
 msgid "We could not find the family you were looking for."
 msgstr "Ons kon nie die familie vind wat u gesoek het nie."
 
@@ -10047,10 +9956,6 @@ msgstr "Dwing Herinstallasie Af?"
 #: 
 msgid "Full Path"
 msgstr "Volledige Pad"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Genereer klaslyste, bywoning-blaaie, en foto-boeke"
 
 #: 
 msgid "Installed"
@@ -15995,10 +15900,6 @@ msgid "What this plugin does"
 msgstr "Wat hierdie inpropmodule doen"
 
 #: 
-msgid "for all funds"
-msgstr "vir alle fondse"
-
-#: 
 msgid "for fund"
 msgstr "vir fonds"
 
@@ -18575,10 +18476,6 @@ msgstr "Kon nie die kerk se adres kopieer nie."
 #: 
 msgid "Could not match the church country."
 msgstr "Kon nie die kerk se land pas nie."
-
-#: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Klaslyste, bywoningsstate en foto-albums"
 
 #: 
 msgid "Group membership lists and Sunday School class reports"

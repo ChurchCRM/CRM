@@ -15,6 +15,7 @@ use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Utils\PdfResponse;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -88,11 +89,7 @@ function generateVerifyReport(Request $request, Response $response, array $args)
         $service = new ConfirmReportService();
         $result = $service->generateDownloadPDF($familyId);
 
-        $disposition = SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline';
-        $response->getBody()->write($result['bytes']);
-        return $response
-            ->withHeader('Content-Type', 'application/pdf')
-            ->withHeader('Content-Disposition', $disposition . '; filename="' . $result['filename'] . '"');
+        return PdfResponse::create($response, $result['bytes'], $result['label']);
     } catch (\Throwable $e) {
         LoggerUtils::getAppLogger()->error('generateVerifyReport error: ' . $e->getMessage(), ['exception' => $e]);
         $response->getBody()->write('An error occurred while generating the PDF. Please check the application logs.');
