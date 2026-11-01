@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-01 11:46+0000\n"
+"POT-Creation-Date: 2026-11-01 13:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1213,9 +1213,6 @@ msgid "Administrator privileges"
 msgstr ""
 
 msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr ""
-
-msgid "Adult/Child"
 msgstr ""
 
 msgid "Adults"
@@ -3330,9 +3327,6 @@ msgid "City is required"
 msgstr ""
 
 msgid "City is required."
-msgstr ""
-
-msgid "City, State, Zip"
 msgstr ""
 
 msgid "Class"
@@ -9578,9 +9572,6 @@ msgid "Meetings of {{name}}"
 msgstr ""
 
 msgid "Member"
-msgstr ""
-
-msgid "Member Name"
 msgstr ""
 
 msgid "Member Portal"
