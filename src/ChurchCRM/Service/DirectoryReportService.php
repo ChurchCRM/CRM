@@ -315,8 +315,8 @@ class DirectoryReportService
     }
 
     /**
-     * A person on their own, or the only matching member of a household. Contact details fall back
-     * to the household's when the person has none of their own.
+     * A person on their own, or the only matching member of a household. Home phone and email fall
+     * back to the household's when the person has none and the matching Family option is on.
      *
      * @return Entry|array{}
      */
@@ -340,14 +340,18 @@ class DirectoryReportService
             if ($person->getResolvedCity() !== '') {
                 $lines[] = ['text' => $person->getResolvedCity() . ', ' . $person->getResolvedState() . ' ' . $person->getResolvedZip(), 'level' => 0];
             }
+            if (Countries::isForeign($person->getResolvedCountry())) {
+                $lines[] = ['text' => Countries::toName($person->getResolvedCountry()), 'level' => 0];
+            }
             if ($family !== null) {
                 $lines = array_merge($lines, $this->mailingLines($family));
             }
         }
 
-        $email = (string) $person->getEmail() !== '' ? (string) $person->getEmail() : (string) $family?->getEmail();
+        $email = (string) $person->getEmail() !== '' || !$this->on('familyEmail') ? (string) $person->getEmail() : (string) $family?->getEmail();
+        $phone = $this->on('familyPhone') ? $person->getResolvedHomePhone() : (string) $person->getHomePhone();
         foreach ([
-            [$this->on('familyPhone') || $this->on('personalPhone'), gettext('Phone'), $person->getResolvedHomePhone()],
+            [$this->on('familyPhone') || $this->on('personalPhone'), gettext('Phone'), $phone],
             [$this->on('familyWork') || $this->on('personalWork'), gettext('Work'), (string) $person->getWorkPhone()],
             [$this->on('familyCell') || $this->on('personalCell'), gettext('Cell'), (string) $person->getCellPhone()],
             [$this->on('familyEmail') || $this->on('personalEmail'), gettext('Email'), $email],
@@ -357,10 +361,13 @@ class DirectoryReportService
                 $lines[] = ['text' => $label . ': ' . $value, 'level' => 1];
             }
         }
+        if ($family !== null) {
+            $lines = array_merge($lines, $this->weddingLines($family));
+        }
         $lines = array_merge($lines, $this->customLines($person, 1));
 
         // An entry with nothing to print is left out; the address option alone keeps the name.
-        if ($lines === [] && !$this->on('address')) {
+        if ($lines === [] && !$this->on('address') && $this->birthday($person) === '' && $this->photo($person) === '') {
             return [];
         }
 
@@ -382,7 +389,7 @@ class DirectoryReportService
         // The first head and the first spouse give the entry its name; every other matching member
         // is listed under them so nobody who passed the filters drops out of the printout.
         $head = $heads[0] ?? null;
-        $spouse = $spouses[0] ?? null;
+        $spouse = array_values(array_filter($spouses, fn (Person $p): bool => $p !== $head))[0] ?? null;
         $namedPeople = array_values(array_filter([$head, $spouse]));
         $others = array_values(array_filter($members, fn (Person $p): bool => !in_array($p, $namedPeople, true)));
         usort($others, fn (Person $a, Person $b): int => [(int) $a->getBirthYear(), $a->getFirstName()] <=> [(int) $b->getBirthYear(), $b->getFirstName()]);
@@ -462,11 +469,20 @@ class DirectoryReportService
         if ($this->on('familyEmail') && (string) $family->getEmail() !== '') {
             $lines[] = ['text' => gettext('Email') . ': ' . $family->getEmail(), 'level' => 1];
         }
+
+        return array_merge($lines, $this->weddingLines($family));
+    }
+
+    /**
+     * @return list<array{text: string, level: int}>
+     */
+    private function weddingLines(Family $family): array
+    {
         $wedding = $family->getWeddingdate();
-        if ($this->on('wedding') && $wedding instanceof \DateTimeInterface && (int) $wedding->format('Y') > 0) {
-            $lines[] = ['text' => gettext('Wedding') . ': ' . $wedding->format(SystemConfig::getValue('sDateFormatLong')), 'level' => 1];
+        if (!$this->on('wedding') || !$wedding instanceof \DateTimeInterface || (int) $wedding->format('Y') <= 0) {
+            return [];
         }
 
-        return $lines;
+        return [['text' => gettext('Wedding') . ': ' . $wedding->format(SystemConfig::getValue('sDateFormatLong')), 'level' => 1]];
     }
 }

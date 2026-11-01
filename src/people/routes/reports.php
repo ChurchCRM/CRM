@@ -8,6 +8,7 @@ use ChurchCRM\Service\PeopleReportService;
 use ChurchCRM\Slim\Middleware\Request\Auth\StaffRoleAuthMiddleware;
 use ChurchCRM\Utils\CsvExporter;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\PdfResponse;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -145,12 +146,7 @@ function postPeopleDirectory(Request $request, Response $response): Response
         ],
     ]);
 
-    $filename = 'Directory-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
-    $response->getBody()->write($pdf);
-
-    return $response
-        ->withHeader('Content-Type', 'application/pdf')
-        ->withHeader('Content-Disposition', (SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline') . '; filename="' . $filename . '"');
+    return PdfResponse::create($response, $pdf, 'Directory-' . date(SystemConfig::getValue('sDateFilenameFormat')));
 }
 
 function peopleDirectoryBadRequest(Response $response): Response
