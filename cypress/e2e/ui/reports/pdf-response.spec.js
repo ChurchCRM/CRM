@@ -107,9 +107,12 @@ describe("Staff download reports with a common church identity", () => {
                 cy.request({
                     method: "POST", url: "/people/report/verify/email", form: true,
                     body: { familyId: 17, csrf_token: token }, followRedirect: false,
-                }).its("status").should("eq", 302);
+                }).then((response) => {
+                    expect(response.status).to.eq(302);
+                    expect(response.headers.location).to.include("/people/family/17?PDFEmailed=1");
+                });
             });
-            newAttachment(knownIds, "Cooper Family Information Review").then((pdf) => {
+            newAttachment(knownIds, "Cooper: Please verify your family's information").then((pdf) => {
                 expect(pdf.FileName).to.match(/^Église-Nord-ConfirmReportEmail-Cooper-\d{4}-\d{2}-\d{2}\.pdf$/);
             });
         });
