@@ -71,6 +71,7 @@
 ### Q3. One place for both directories
 
 - **Requirement:** whatever the answer to Q1 and Q2, the choice lives in **one place** and applies to **both** the printed directory and the portal directory. Nobody should have to opt out twice, or wonder which directory a setting covers.
+- **Where each directory applies it:** the printed directory, beside its classification, deceased, awaiting-review and inactive-family filters (`src/Reports/DirectoryReport.php` today, `DirectoryReportService` once #10981 merges); the portal directory, in `PortalDirectoryService`, which mirrors those filters.
 - **Where it could live:**
   - **For staff:** a *Directory* row on the person's page.
   - **For the member** (if Q2 allows it): a *Directory* setting on their portal profile (Profile → Update your details), next to Language.
@@ -78,7 +79,7 @@
   - **(a)** one choice: *Listed* / *Not listed*;
   - **(b)** per detail: leave out my phone, my email, my address;
   - **(c)** opt in instead of opt out, for churches that want consent first.
-- **The family question:** a family entry shows the household's address and home phone. If one adult opts out, does the family entry drop those, or does it take every adult opting out? A household-level choice may be simpler to understand than a person-level one.
+- **The family question:** a family entry shows the household's address and home phone. If one adult opts out, does the family entry drop those, or does it take every adult opting out? With *every adult*, one adult's opt-out is undone by another adult doing nothing; with *any adult*, the names stay listed and only the address and home phone drop. A household-level choice may be simpler to understand than a person-level one. #10869 records the answer.
 
 ### Q4. Protected households (#10524)
 
@@ -86,11 +87,11 @@ The directory must apply #10524's record policy before it ships. The question is
 
 ## 4. A starting proposal (to accept, change or reject)
 
-1. **The choice:** one per-person setting, *Show me in the church directory*, stored on the person. Default: shown, which matches today's printed directory. Both directories honour it.
+1. **The choice:** one per-person setting, *Show me in the church directory*, stored on the person: granularity (a), *Listed* / *Not listed*. Per detail (b) multiplies entry shapes and admin controls for a first version; opt in (c) would empty every existing printed directory on upgrade. Default: shown, which matches today's printed directory. Both directories honour it. Honouring it in the printed directory changes what a church prints even if it never turns the portal on, so it ships with a release note and a docs update.
 2. **Staff:** can always change it on the person's page.
 3. **Members:** a church setting, *Let members choose whether they are listed*, shows the same choice on their portal profile. Off by default (option B).
 4. **Households:** a family entry leaves out the household address and home phone when every adult in it has opted out; otherwise it shows them.
-5. **Shipping:** the directory ships after #10524, or with its policy applied.
+5. **Shipping:** the directory does not ship until #10524's protected-households policy is applied.
 
 ## 5. Not in scope
 
