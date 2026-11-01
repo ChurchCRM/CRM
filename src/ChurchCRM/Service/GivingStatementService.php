@@ -11,6 +11,7 @@ use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\PaymentMethod;
 
 /**
  * Year-end giving statements: the Finance report and the Member Portal build the same
@@ -141,7 +142,7 @@ class GivingStatementService
                 $gifts[] = [
                     'date' => DateTimeUtils::formatDate($pledge->getDate('Y-m-d')),
                     'fund' => $pledge->getDonationFund()?->getName() ?? gettext('Undesignated'),
-                    'method' => trim($pledge->getMethod() . ($pledge->getCheckNo() ? ' #' . $pledge->getCheckNo() : '')),
+                    'method' => trim(PaymentMethod::label((string) $pledge->getMethod()) . ($pledge->getCheckNo() ? ' #' . $pledge->getCheckNo() : '')),
                     'amount' => CurrencyFormatter::format($pledge->getAmount()),
                 ];
             }

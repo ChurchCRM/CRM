@@ -12,6 +12,7 @@ use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\PaymentMethod;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 /**
@@ -192,7 +193,7 @@ class PledgeReminderService
             'payments' => array_map(static fn ($payment): array => [
                 'date' => DateTimeUtils::formatDate($payment->getDate('Y-m-d')),
                 'check_no' => (string) ($payment->getCheckNo() ?? ''),
-                'method' => self::methodLabel((string) $payment->getMethod()),
+                'method' => PaymentMethod::label((string) $payment->getMethod()),
                 'fund' => $fundName($payment->getFundId()),
                 'memo' => (string) $payment->getComment(),
                 'amount' => CurrencyFormatter::format($payment->getAmount()),
@@ -231,17 +232,6 @@ class PledgeReminderService
         $names = array_map(static fn (int $id): string => $funds[$id], $selectedFunds);
 
         return ' ' . (count($names) === 1 ? gettext('for fund') : gettext('for funds')) . ' ' . implode(', ', $names);
-    }
-
-    private static function methodLabel(string $method): string
-    {
-        return match ($method) {
-            'CHECK' => gettext('Check'),
-            'CASH' => gettext('Cash'),
-            'CREDITCARD' => gettext('Credit Card'),
-            'BANKDRAFT' => gettext('Bank Draft'),
-            default => $method,
-        };
     }
 
     private static function scalar(mixed $value): string

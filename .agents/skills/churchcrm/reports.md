@@ -60,6 +60,8 @@ Every report reads the church's settings, so a report prints correctly for any c
 
 - The service returns display-ready strings: dates, money, translated labels, and sentences with placeholders (`sprintf(gettext('Amount due for %s: %s'), $fund, $amount)`). The template lays them out with loops and conditions and carries only static `gettext()` headings. A date format, currency symbol, number format or English word in a template is a defect.
 - User-visible strings go through `gettext()`. Database codes (`CASH`, `CREDITCARD`) print as their translated labels.
+- A payment method prints through `PaymentMethod::label()`, never as its stored code.
+- Giving statements include every family with payments in the period, active or not, and carry the "no goods or services, other than intangible religious benefits" statement.
 - Money goes through `CurrencyFormatter` (symbol, position and separators come from settings). Sum in integer cents and format once.
 - Display dates go through `DateTimeUtils::formatDate()` (`sDateFormatLong`, month name through `gettext`). A narrow table column may use `DateTimeUtils::formatForDatePicker()`. A month and day only uses `IntlDateFormatter` with the current locale. The renderer supplies `generated_on`. Filenames use `sDateFilenameFormat`. Storage, API and CSV dates stay ISO `Y-m-d`.
 - Fiscal years use `FiscalYearUtils` (`getFiscalYearDatesById`, `formatFiscalYearLabel`, `getCurrentFiscalYearId`) and `iFYMonth`; a report never builds a year label or range itself.
