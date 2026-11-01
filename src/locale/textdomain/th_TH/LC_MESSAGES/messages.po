@@ -1626,10 +1626,6 @@ msgid "Properties"
 msgstr "คุณสมบัติ"
 
 #: 
-msgid "Pledge Reminder Report"
-msgstr "รายงานการเตือนคำมั่นสัญญา"
-
-#: 
 msgid "Restore Database"
 msgstr "กู้คืนฐานข้อมูล"
 
@@ -8990,10 +8986,6 @@ msgid "Generate phone directory"
 msgstr "สร้างสมุดโทรศัพท์"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "สร้างจดหมายเตือนคำปฏิญาณถวาย"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "สร้างรายงานสมาชิกกลุ่มและกิจกรรม"
 
@@ -15872,10 +15864,6 @@ msgstr "ตัวอย่างที่ถูกต้อง"
 #: 
 msgid "What this plugin does"
 msgstr "สิ่งที่ปลั๊กอินนี้ทำ"
-
-#: 
-msgid "for all funds"
-msgstr "สำหรับกองทุนทั้งหมด"
 
 #: 
 msgid "for fund"

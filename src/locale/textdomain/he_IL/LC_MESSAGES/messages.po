@@ -1631,10 +1631,6 @@ msgid "Properties"
 msgstr "מאפיינים"
 
 #: 
-msgid "Pledge Reminder Report"
-msgstr "דוח תזכורת התחייבויות"
-
-#: 
 msgid "Restore Database"
 msgstr "שחזר מסד נתונים"
 
@@ -9018,10 +9014,6 @@ msgid "Generate phone directory"
 msgstr "יצירת מדריך טלפונים"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "יצירת מכתבי תזכורת להתחייבויות כספיות"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "יצירת דוחות על חברות בקבוצות ופעילויות"
 
@@ -15904,10 +15896,6 @@ msgstr "דוגמאות תקניות"
 #: 
 msgid "What this plugin does"
 msgstr "מה תוסף זה עושה"
-
-#: 
-msgid "for all funds"
-msgstr "לכל הקרנות"
 
 #: 
 msgid "for fund"

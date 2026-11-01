@@ -1631,10 +1631,6 @@ msgid "Properties"
 msgstr "Vlastnosti"
 
 #: 
-msgid "Pledge Reminder Report"
-msgstr "Výkaz připomínek příslibů"
-
-#: 
 msgid "Restore Database"
 msgstr "Obnovit databázi"
 
@@ -9018,10 +9014,6 @@ msgid "Generate phone directory"
 msgstr "Generovat telefonní adresář"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "Generovat upomínkové dopisy k závazkům"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "Generovat sestavy o členství ve skupinách a aktivitách"
 
@@ -15908,10 +15900,6 @@ msgstr "Platné příklady"
 #: 
 msgid "What this plugin does"
 msgstr "Co tento plugin dělá"
-
-#: 
-msgid "for all funds"
-msgstr "pro všechny fondy"
 
 #: 
 msgid "for fund"

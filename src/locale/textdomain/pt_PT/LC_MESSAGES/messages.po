@@ -1693,10 +1693,6 @@ msgid "Properties"
 msgstr "Propriedades"
 
 #: 
-msgid "Pledge Reminder Report"
-msgstr "Relatório Lembrete promessa"
-
-#: 
 msgid "Restore Database"
 msgstr "Recuperar Base de Dados"
 
@@ -9136,10 +9132,6 @@ msgid "Generate phone directory"
 msgstr "Gerar diretório telefónico"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "Gerar cartas de lembrete de promessas de doação"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "Gerar relatórios sobre participação em grupos e atividades"
 
@@ -16022,10 +16014,6 @@ msgstr "Exemplos válidos"
 #: 
 msgid "What this plugin does"
 msgstr "O que este plugin faz"
-
-#: 
-msgid "for all funds"
-msgstr "para todos os fundos"
 
 #: 
 msgid "for fund"

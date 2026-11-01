@@ -1614,10 +1614,6 @@ msgid "Properties"
 msgstr "プロパティ"
 
 #: 
-msgid "Pledge Reminder Report"
-msgstr "献金予約リマインダーレポート"
-
-#: 
 msgid "Restore Database"
 msgstr "データベースの復元"
 
@@ -8978,10 +8974,6 @@ msgid "Generate phone directory"
 msgstr "電話帳を生成"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "献金誓約リマインダーレターを生成"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "グループメンバーシップと活動に関するレポートを生成"
 
@@ -15860,10 +15852,6 @@ msgstr "有効な例"
 #: 
 msgid "What this plugin does"
 msgstr "このプラグインの機能"
-
-#: 
-msgid "for all funds"
-msgstr "すべての献金基金"
 
 #: 
 msgid "for fund"
