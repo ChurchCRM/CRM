@@ -44,7 +44,7 @@ Use `PdfResponse` for module, portal and API PDF downloads and `PdfFilename` for
 
 ## Letterhead and language
 
-`MpdfRenderer` supplies church identity to the common `_letterhead.html.twig` partial. Extend `_base` or `_letter` and reuse that header on each new section or letter. Finance documents opt into tax ID with `show_tax_id`; report-specific titles and financial details belong in their document body. `letterhead` is `address`, `graphic`, or `none`. `none` reserves blank space on every page so the letter still aligns.
+`MpdfRenderer` supplies church identity to the common `_letterhead.html.twig` partial. Extend `_base` or `_letter`. A report that prints one letter per family or recipient starts every letter after the first with `{% include "_letter-break.html.twig" %}` (page break plus letterhead), so each recipient's page carries the church header. Finance documents opt into tax ID with `show_tax_id`; report-specific titles and financial details belong in their document body. `letterhead` is `address`, `graphic`, or `none`. `none` reserves blank space on every page so the letter still aligns.
 
 Locale and RTL come from `MpdfRenderer` (`lang`, `text_dir`). mPDF script fonts cover CJK, Thai, Indic, Ethiopic, Hebrew, and Arabic names.
 
@@ -83,7 +83,7 @@ Update all current consumers when consolidating a report helper, then delete sup
 
 ## Tests
 
-Test the persona's complete workflow through its owning module, including filters, PDF/CSV totals, empty/error preservation, supported API calls and denied access. A new report is added to the settings spec (`report-locale-settings.spec.js`), which runs the PDFs with `d.m.Y` dates, a trailing `€` and comma decimals and checks the text. See cypress-testing.md for the current test policy and PDF text helper.
+Test the persona's complete workflow through its owning module, including filters, PDF/CSV totals, empty/error preservation, supported API calls and denied access. A letter report is exercised with two or more recipients, and the spec checks that the church name appears once per letter. A new report is added to the settings spec (`report-locale-settings.spec.js`), which runs the PDFs with `d.m.Y` dates, a trailing `€` and comma decimals and checks the text. See cypress-testing.md for the current test policy and PDF text helper.
 
 Distinguish content/status checks, visual PDF inspection and physical stock alignment. A valid PDF header proves neither layout nor printer alignment. Inspect ordinary and RTL documents; print prepositioned tickets/labels on the intended stock at actual size before claiming alignment.
 

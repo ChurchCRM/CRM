@@ -34,4 +34,24 @@ describe("Pledge Reminder report - Finance access", () => {
             });
         });
     });
+
+    it("every family's letter carries the church letterhead", () => {
+        cy.setupAdminSession();
+        cy.request("/admin/api/system/config/sChurchName").its("body.value").then((churchName) => {
+            cy.request({
+                method: "POST",
+                url: "finance/reports/pledge-reminders/download",
+                form: true,
+                // Fiscal year 22 holds payments for seven families.
+                body: { FYID: "22", pledge_filter: "all", only_owe: "no" },
+                encoding: "binary",
+            })
+                .then((response) => pdfText(response.body))
+                .then((lines) => {
+                    const letters = lines.filter((line) => line.startsWith("Sincerely")).length;
+                    expect(letters).to.be.greaterThan(1);
+                    expect(lines.filter((line) => line.includes(churchName)).length).to.be.at.least(letters);
+                });
+        });
+    });
 });
