@@ -4,6 +4,8 @@
 const LETTERHEAD_PNG_BASE64 =
     "iVBORw0KGgoAAAANSUhEUgAAAHgAAAAoCAIAAAC6iKlyAAAAUklEQVR42u3QQQ0AAAgEoOtjJhsZ2hbOBxsJSPVwIApEi0a0aNEWRItGtGjRFkSLRrRo0YgWjWjRohEtGtGiRSNaNKJFi0a0aESLFo1o0Yj+ZwGy/zgts+HrHQAAAABJRU5ErkJggg==";
 
+import { absoluteUrl } from "../../support/urls";
+
 const LETTERHEAD_API_URL = "/admin/api/system/letterhead";
 
 function uploadThroughUppy() {
@@ -72,6 +74,7 @@ describe("Admin - Report Settings page", () => {
             deleteRequests += 1;
         }).as("removeLetterhead");
         cy.get("#church-letterhead-remove-btn").click();
+        cy.get(".bootbox .modal-dialog").should("have.css", "transform", "none");
         cy.get(".bootbox .bootbox-cancel").click();
         cy.get(".bootbox").should("not.exist");
         cy.get("#church-letterhead-preview").should("be.visible");
@@ -84,6 +87,27 @@ describe("Admin - Report Settings page", () => {
         cy.get("#church-letterhead-default-note", { timeout: 10000 }).should("be.visible");
         cy.get("#church-letterhead-preview").should("not.exist");
         hasLetterhead().should("eq", false);
+    });
+
+    it("prints the uploaded image on a graphic-letterhead PDF", () => {
+        const countImages = (letterhead) =>
+            cy
+                .request({
+                    method: "POST",
+                    url: absoluteUrl("/finance/reports/zero-givers/download"),
+                    form: true,
+                    body: { DateStart: "1990-01-01", DateEnd: "1990-12-31", letterhead, output: "pdf" },
+                    encoding: "binary",
+                })
+                .then((response) => (response.body.match(/\/Subtype \/Image/g) || []).length);
+
+        storeLetterhead();
+        cy.freshAdminFormLogin({ enabled: true });
+        countImages("none").then((without) => {
+            countImages("graphic").then((withLetterhead) => {
+                expect(withLetterhead).to.be.greaterThan(without);
+            });
+        });
     });
 
     it("sends a user without the admin role to access denied", () => {

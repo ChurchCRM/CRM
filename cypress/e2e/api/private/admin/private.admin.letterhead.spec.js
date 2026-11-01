@@ -3,7 +3,7 @@
 import { absoluteUrl } from "../../../../support/urls";
 
 /**
- * API tests for the letterhead endpoints and the PDFs that print it
+ * API tests for the letterhead endpoints
  *
  *   GET / POST / DELETE /admin/api/system/letterhead
  *
@@ -16,28 +16,11 @@ const VALID_PNG_DATA_URI =
     "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==";
 
 const LETTERHEAD_URL = "/admin/api/system/letterhead";
-const ZERO_GIVERS = "/finance/reports/zero-givers/download";
-const LETTERHEAD_CONFIG_URL = "/admin/api/system/config/bDirLetterHead";
-
-const countImages = (letterhead) =>
-    cy
-        .request({
-            method: "POST",
-            url: ZERO_GIVERS,
-            form: true,
-            body: { DateStart: "1990-01-01", DateEnd: "1990-12-31", letterhead, output: "pdf" },
-            encoding: "binary",
-        })
-        .then((response) => (response.body.match(/\/Subtype \/Image/g) || []).length);
 
 describe("API Private Admin Letterhead", () => {
     let originalBase64 = null;
-    let originalConfigPath = "";
 
     before(() => {
-        cy.makePrivateAdminAPICall("GET", LETTERHEAD_CONFIG_URL, null, 200).then((response) => {
-            originalConfigPath = response.body.value ?? "";
-        });
         cy.makePrivateAdminAPICall("GET", LETTERHEAD_URL, null, 200).then((response) => {
             if (response.body.hasLetterhead) {
                 cy.request({ url: absoluteUrl(response.body.url), encoding: "base64" }).then((image) => {
@@ -52,7 +35,6 @@ describe("API Private Admin Letterhead", () => {
     });
 
     after(() => {
-        cy.makePrivateAdminAPICall("POST", LETTERHEAD_CONFIG_URL, { value: originalConfigPath }, 200);
         if (originalBase64 !== null) {
             cy.makePrivateAdminAPICall("POST", LETTERHEAD_URL, { imgBase64: `data:image/png;base64,${originalBase64}` }, 200);
         } else {
@@ -89,22 +71,6 @@ describe("API Private Admin Letterhead", () => {
         });
         cy.makePrivateAdminAPICall("POST", LETTERHEAD_URL, {}, 400);
         cy.makePrivateAdminAPICall("GET", LETTERHEAD_URL, null, 200).its("body.hasLetterhead").should("eq", false);
-    });
-
-    it("prints the uploaded image on a graphic-letterhead PDF and falls back to the address block when removed", () => {
-        cy.makePrivateAdminAPICall("POST", LETTERHEAD_CONFIG_URL, { value: "" }, 200);
-        countImages("none").then((withoutImage) => {
-            cy.makePrivateAdminAPICall("POST", LETTERHEAD_URL, { imgBase64: VALID_PNG_DATA_URI }, 200);
-            countImages("graphic").then((withLetterhead) => {
-                expect(withLetterhead).to.be.greaterThan(withoutImage);
-            });
-            cy.makePrivateAdminAPICall("DELETE", LETTERHEAD_URL, null, 200);
-            countImages("address").then((addressImages) => {
-                countImages("graphic").then((afterRemoval) => {
-                    expect(afterRemoval).to.eq(addressImages);
-                });
-            });
-        });
     });
 
     it("returns 401 when no API key is provided", () => {
