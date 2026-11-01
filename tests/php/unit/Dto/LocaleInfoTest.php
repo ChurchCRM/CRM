@@ -2,34 +2,42 @@
 
 declare(strict_types=1);
 
-use ChurchCRM\Utils\GettextLocale;
+use ChurchCRM\dto\LocaleInfo;
+use ChurchCRM\dto\SystemURLs;
 use Tester\Assert;
 use Tester\Environment;
 
 require dirname(__DIR__, 2) . '/bootstrap.php';
 
-$missing = 'xx_XX';
+SystemURLs::init('', [], APP_ROOT);
+
+$hasEnglish = setlocale(LC_ALL, 'en_US.UTF-8', 'en_US.utf8', 'en_GB.UTF-8', 'en_GB.utf8') !== false;
 
 putenv('LANGUAGE');
-Assert::null(GettextLocale::enableCatalog($missing, true), 'an installed OS locale needs no fallback');
-Assert::same($missing, getenv('LANGUAGE'));
+Assert::same('C', (new LocaleInfo('C', null))->activate(), 'an installed OS locale is returned as set');
+Assert::same('C', getenv('LANGUAGE'));
 
-putenv('LANGUAGE');
-$fallback = GettextLocale::enableCatalog($missing, false);
-Assert::same($missing, getenv('LANGUAGE'));
-Assert::true($fallback === false || (is_string($fallback) && str_starts_with($fallback, 'en_')), 'the fallback is an English locale or false');
+$locale = 'pt_PT';
+if (setlocale(LC_ALL, $locale, $locale . '.UTF-8', $locale . '.utf8') !== false) {
+    Environment::skip("{$locale} is installed on this host, so the missing-locale path cannot run.");
+}
+setlocale(LC_ALL, 'C');
 
-if ($fallback === false) {
+Assert::false((new LocaleInfo($locale, null))->activate(), 'a missing OS locale is reported');
+Assert::same($locale, getenv('LANGUAGE'), 'LANGUAGE names the selected locale');
+
+if (!$hasEnglish) {
     Environment::skip('No en_US or en_GB UTF-8 locale is installed, so the catalog cannot be read.');
 }
+Assert::match('en_%a%', setlocale(LC_MESSAGES, '0'), 'LC_MESSAGES moves to an English locale');
 
-$dir = sys_get_temp_dir() . '/gettext-locale-' . getmypid();
-$catalogDir = $dir . '/' . $missing . '/LC_MESSAGES';
+$dir = sys_get_temp_dir() . '/locale-info-' . getmypid();
+$catalogDir = $dir . '/' . $locale . '/LC_MESSAGES';
 mkdir($catalogDir, 0777, true);
-register_shutdown_function(static function () use ($dir, $catalogDir, $missing): void {
+register_shutdown_function(static function () use ($dir, $catalogDir, $locale): void {
     @unlink($catalogDir . '/messages.mo');
     @rmdir($catalogDir);
-    @rmdir($dir . '/' . $missing);
+    @rmdir($dir . '/' . $locale);
     @rmdir($dir);
 });
 

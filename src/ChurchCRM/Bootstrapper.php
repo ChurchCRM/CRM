@@ -10,7 +10,6 @@ use ChurchCRM\model\ChurchCRM\ConfigQuery;
 use ChurchCRM\model\ChurchCRM\Version;
 use Ramsey\Uuid\Uuid;
 use ChurchCRM\Service\UpgradeService;
-use ChurchCRM\Utils\GettextLocale;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -332,18 +331,9 @@ class Bootstrapper
             $localeInfo = self::getCurrentLocale();
             self::$bootStrapLogger->debug("Setting locale to: " . $localeInfo->getLocale());
             
-            // Set locale with fallback options
-            $localeSet = setlocale(LC_ALL, 
-                $localeInfo->getLocale(), 
-                $localeInfo->getLocale() . '.UTF-8', 
-                $localeInfo->getLocale() . '.utf8'
-            );
-            
-            $messagesLocale = GettextLocale::enableCatalog($localeInfo->getLocale(), $localeSet !== false);
+            $localeSet = $localeInfo->activate();
             if ($localeSet === false) {
-                self::$bootStrapLogger->warning("Failed to set locale: " . $localeInfo->getLocale() . ", using system default", [
-                    'messagesFallback' => $messagesLocale,
-                ]);
+                self::$bootStrapLogger->warning("Failed to set locale: " . $localeInfo->getLocale() . ", using system default");
             }
 
             // Get numeric and monetary locale settings

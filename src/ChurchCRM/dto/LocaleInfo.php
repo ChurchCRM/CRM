@@ -46,6 +46,24 @@ class LocaleInfo
     }
 
     /**
+     * GNU gettext reads the catalog named by LANGUAGE but ignores LANGUAGE while LC_MESSAGES is C/POSIX
+     * (C.UTF-8 included). A host without this OS locale would show every string in English, so LC_MESSAGES
+     * moves to an installed English UTF-8 locale instead.
+     *
+     * @return string|false the OS locale now in effect, or false when this host does not have it
+     */
+    public function activate(): string|false
+    {
+        putenv('LANGUAGE=' . $this->locale);
+        $set = setlocale(LC_ALL, $this->locale, $this->locale . '.UTF-8', $this->locale . '.utf8');
+        if ($set === false) {
+            setlocale(LC_MESSAGES, 'en_US.UTF-8', 'en_US.utf8', 'en_GB.UTF-8', 'en_GB.utf8');
+        }
+
+        return $set;
+    }
+
+    /**
      * @return mixed
      */
     public function getSystemLocale()
