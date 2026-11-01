@@ -361,6 +361,21 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         return $renderer->render($response, 'upgrade.php', $pageArgs);
     });
 
+    // Report Settings page: the letterhead PDF letters print
+    $group->get('/report-settings', function (Request $request, Response $response): Response {
+        $renderer = new PhpRenderer(__DIR__ . '/../views/');
+
+        return $renderer->render($response, 'report-settings.php', [
+            'sRootPath' => SystemURLs::getRootPath(),
+            'sPageTitle' => gettext('Report Settings'),
+            'sPageSubtitle' => gettext('Set the letterhead that PDF letters print'),
+            'aBreadcrumbs' => PageHeader::breadcrumbs([
+                [gettext('Admin'), '/admin/'],
+                [gettext('Report Settings')],
+            ]),
+        ]);
+    });
+
     // Church Information page
     $group->get('/church-info', function (Request $request, Response $response): Response {
         $renderer = new PhpRenderer(__DIR__ . '/../views/');

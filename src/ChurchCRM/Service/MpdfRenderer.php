@@ -103,12 +103,15 @@ class MpdfRenderer
     }
 
     /**
-     * Resolve a custom graphic letterhead path (bDirLetterHead).
-     * Returns the path only when it is readable or an https URL.
-     * Shared by all letter-style mPDF reports.
+     * The graphic letterhead PDF letters print: the uploaded image, else the readable
+     * `bDirLetterHead` path or https URL, else null (the church address block prints).
      */
     public static function graphicLetterhead(): ?string
     {
+        if (LetterheadService::hasUploaded()) {
+            return LetterheadService::getPath();
+        }
+
         $path = trim((string) SystemConfig::getValue('bDirLetterHead'));
         if ($path !== '' && (is_readable($path) || preg_match('#^https://#i', $path))) {
             return $path;
