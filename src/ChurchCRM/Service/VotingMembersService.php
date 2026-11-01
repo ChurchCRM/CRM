@@ -3,7 +3,6 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\dto\Classification;
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Utils\DateTimeUtils;
@@ -120,10 +119,10 @@ class VotingMembersService
                     continue;
                 }
             }
-            $photo = (string) $person->getPhoto()->getPhotoURI();
+            $portrait = ReportPhoto::forPerson($person);
             $rows[] = ['name' => $person->getFullName(), 'family' => $family ? (string) $family->getName() : '',
-                'photo' => is_file($photo) ? $photo : null,
-                'initials' => $person->getInitial(SystemConfig::getIntValue('iPersonInitialStyle'))];
+                'photo' => $portrait['photo'],
+                'initials' => $portrait['initials']];
         }
         $rules = [sprintf(gettext('Classifications: %s'), implode(', ', $criteria['classNames'])),
             sprintf(gettext('As of: %s'), DateTimeUtils::formatDate($asOf->format('Y-m-d'))),

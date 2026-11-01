@@ -10,7 +10,7 @@
     <tbody>
       {% for person in people %}
         <tr>
-          <td>{% if person.photo %}<img src="{{ person.photo }}" alt="" style="width: 8mm; height: 8mm;">{% else %}<div style="width: 8mm; height: 8mm;">{{ person.initials }}</div>{% endif %}</td>
+          <td>{% include '_person-photo.html.twig' with {'person': person} only %}</td>
           <td>{{ person.name }}</td><td>{{ person.family }}</td>
         </tr>
       {% endfor %}

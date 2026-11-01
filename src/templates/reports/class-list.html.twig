@@ -14,7 +14,7 @@
       {% for student in class.students %}
         <tr>
           <td style="width: 10mm;">
-            {% if student.photo %}<img src="{{ student.photo }}" alt="" style="width: 8mm; height: 8mm;">{% else %}<table style="width: 8mm; height: 8mm; background-color: #e9ecef;"><tr><td style="width: 8mm; height: 8mm; padding: 0; border: 0; text-align: center; vertical-align: middle; color: #6c757d; font-size: 9pt;">{{ student.initials }}</td></tr></table>{% endif %}
+            {% include '_person-photo.html.twig' with {'person': student} only %}
           </td>
           <td style="width: 45mm;">
             {{ student.name }}
