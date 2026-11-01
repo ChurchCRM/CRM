@@ -9,6 +9,7 @@ use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Utils\CurrencyFormatter;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -167,15 +168,15 @@ class PledgeReminderService
         }
 
         $fundName = static fn (?int $fundId): string => $funds[(int) $fundId] ?? gettext('Undesignated');
-        $dateFormat = SystemConfig::getValue('sDateFormatLong') ?: 'Y-m-d';
 
         $due = [];
         foreach ($funds as $fundId => $name) {
             if (($pledgedByFund[$fundId] ?? 0) > 0) {
-                $due[] = [
-                    'fund' => $name,
-                    'amount' => CurrencyFormatter::format(max(0, $pledgedByFund[$fundId] - ($paidByFund[$fundId] ?? 0)) / 100),
-                ];
+                $due[] = sprintf(
+                    gettext('Amount due for %s: %s'),
+                    $name,
+                    CurrencyFormatter::format(max(0, $pledgedByFund[$fundId] - ($paidByFund[$fundId] ?? 0)) / 100)
+                );
             }
         }
 
@@ -183,13 +184,13 @@ class PledgeReminderService
             'salutation' => $family->getSalutation(),
             'address' => $family->getMailingAddressLines(),
             'pledges' => array_map(static fn ($pledge): array => [
-                'date' => (string) $pledge->getDate($dateFormat),
+                'date' => DateTimeUtils::formatDate($pledge->getDate('Y-m-d')),
                 'fund' => $fundName($pledge->getFundId()),
                 'amount' => CurrencyFormatter::format($pledge->getAmount()),
             ], $pledges),
             'pledge_total' => count($pledges) > 1 ? CurrencyFormatter::format(array_sum($pledgedByFund) / 100) : '',
             'payments' => array_map(static fn ($payment): array => [
-                'date' => (string) $payment->getDate($dateFormat),
+                'date' => DateTimeUtils::formatDate($payment->getDate('Y-m-d')),
                 'check_no' => (string) ($payment->getCheckNo() ?? ''),
                 'method' => self::methodLabel((string) $payment->getMethod()),
                 'fund' => $fundName($payment->getFundId()),

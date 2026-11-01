@@ -124,6 +124,10 @@ For a large auth PR, run a security-focused sub agent over the diff and verify i
 
 Apply [reports.md](reports.md), including its review-evidence checklist, to changes in report data, routes, rendering, templates, exports and shared PDF helpers. Trace all current merged consumers; record only concrete findings and unverified checks in the review.
 
+- [ ] Dates, money, labels and fiscal years follow the `reports.md` Data rules and are formatted in the service
+- [ ] The template holds no date format, currency symbol, separator or English literal (grep the diff for `$`, `€`, `number_format`, `date(`, `default('`)
+- [ ] A spec runs the report under non-US settings, or the review says the locale check was not run
+
 ### Frontend & UI
 
 Rules live in `frontend-development.md`; check the diff against it.

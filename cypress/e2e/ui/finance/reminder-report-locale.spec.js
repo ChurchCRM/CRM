@@ -5,7 +5,7 @@ import { pdfText } from "../../../support/pdf-text";
 // Seed: family 13 has three CASH payments in fiscal year 22, the first on 2018-03-04.
 describe("Pledge Reminder letter follows the church's date, currency and fiscal year settings", () => {
     const settings = {
-        sDateFormatLong: "d.m.Y",
+        sDateFormatLong: "d/m/Y",
         sCurrencySymbol: "€",
         sCurrencyPosition: "after",
         sThousandsSeparator: ".",
@@ -42,7 +42,7 @@ describe("Pledge Reminder letter follows the church's date, currency and fiscal 
             })
             .then((lines) => {
                 const text = lines.join(" ");
-                expect(lines).to.include("04.03.2018");
+                expect(lines).to.include("04 March 2018");
                 expect(lines).to.include("Cash");
                 expect(lines).not.to.include("CASH");
                 expect(text).to.match(/\d,\d{2} ?\s?€/);

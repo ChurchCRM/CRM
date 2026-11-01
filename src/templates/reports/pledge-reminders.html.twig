@@ -83,7 +83,7 @@
     {% endif %}
 
     {% for line in letter.due %}
-      <p>{{ gettext('Amount due for %s: %s')|format(line.fund, line.amount) }}</p>
+      <p>{{ line }}</p>
     {% endfor %}
 
     <div class="closing">
