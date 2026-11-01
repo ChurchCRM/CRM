@@ -1,7 +1,11 @@
 {% extends "_letter.html.twig" %}
+{% set show_tax_id = true %}
 {% block letter_body %}
   {% for family in families %}
-    {% if not loop.first %}<pagebreak />{% if letterhead == 'none' %}<div class="letterhead-blank"></div>{% endif %}{% endif %}
+    {% if not loop.first %}
+      <pagebreak />
+      {% include "_letterhead.html.twig" %}
+    {% endif %}
 
     <div class="meta">
       <h1>{{ title|default(gettext('Giving Statement')) }}</h1>

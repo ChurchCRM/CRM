@@ -937,14 +937,6 @@ msgid "Zero Givers"
 msgstr "ผู้ให้ศูนย์"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "รายงานการฝากบุคคล"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "รายงานการฝากขั้นสูง"
-
-#: 
 msgid "Next"
 msgstr "ถัดไป"
 
@@ -963,10 +955,6 @@ msgstr "วันที่สิ้นสุดรายงาน"
 #: 
 msgid "Apply Report Dates To"
 msgstr "ใช้วันที่รายงานกับ"
-
-#: 
-msgid "Deposit Date (Default)"
-msgstr "วันที่ฝาก (ค่าเริ่มต้น)"
 
 #: 
 msgid "Payment Date"
@@ -989,10 +977,6 @@ msgid "Filter by Payment Type"
 msgstr "กรองตามประเภทการชำระเงิน"
 
 #: 
-msgid "All Methods"
-msgstr "ทุกวิธี"
-
-#: 
 msgid "Check"
 msgstr "เช็ค"
 
@@ -1003,10 +987,6 @@ msgstr "เงินสด"
 #: 
 msgid "Bank Draft"
 msgstr "ดราฟท์ธนาคาร"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0 - ไม่มีขั้นต่ำ"
 
 #: 
 msgid "Other Settings"
@@ -1267,10 +1247,6 @@ msgstr "ยืนยันป้ายข้อมูล"
 #: 
 msgid "Invalid login or password"
 msgstr "ชื่อเข้าสู่ระบบหรือรหัสผ่านไม่ถูกต้อง"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "เข้าสู่ระบบล้มเหลวมากเกินไป: บัญชีของคุณถูกล็อค กรุณาติดต่อผู้ดูแลระบบ"
 
 #: 
 msgid "Email/Username"
@@ -2131,24 +2107,12 @@ msgid "Classes"
 msgstr "ชั้นเรียน"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "รายงานโรงเรียนวันอาทิตย์"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "นักเรียนที่ไม่อยู่ในชั้นเรียนโรงเรียนวันอาทิตย์"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "ต้องเลือกอย่างน้อยหนึ่งกลุ่มเพื่อสร้างรายชื่อชั้นเรียนหรือใบลงชื่อ"
-
-#: 
 msgid "Report Details"
 msgstr "รายละเอียดรายงาน"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "แสดงบทบาททั้งหมด (ไม่เลือกจะแสดงเฉพาะบทบาทครู/นักเรียน)"
 
 #: 
 msgid "First Sunday"
@@ -2169,10 +2133,6 @@ msgstr "นักเรียนเพิ่มเติม"
 #: 
 msgid "Extra Teachers"
 msgstr "ครูเพิ่มเติม"
-
-#: 
-msgid "Create Class List"
-msgstr "สร้างรายชื่อชั้นเรียน"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4579,14 +4539,6 @@ msgid "PhotoBook"
 msgstr "สมุดรูป"
 
 #: 
-msgid "With Photos"
-msgstr "พร้อมรูปภาพ"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "สร้างสมุดรูป"
-
-#: 
 msgid "SSE"
 msgstr "ตะวันออกเฉียงใต้ใต้"
 
@@ -4730,10 +4682,6 @@ msgstr "วันครบรอบ"
 #: 
 msgid "View User"
 msgstr "ดูผู้ใช้"
-
-#: 
-msgid "not found or user without an email"
-msgstr "ไม่พบหรือผู้ใช้ไม่มีอีเมล"
 
 #: 
 msgid "UserName not set"
@@ -4927,16 +4875,6 @@ msgstr "ความยาวหมดเวลาเซสชันเป็น
 msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
 "Set to zero to disable this feature"
 msgstr "จำนวนขั้นต่ำที่รหัสผ่านใหม่ต้องแตกต่างจากรหัสผ่านเก่า (จำนวนตัวอักษรที่เปลี่ยน)\n"
-"ตั้งเป็นศูนย์เพื่อปิดใช้งานคุณสมบัตินี้"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "จำนวนการเข้าสู่ระบบที่ล้มเหลวสูงสุดที่อนุญาตก่อนที่บัญชีผู้ใช้จะถูกล็อค\n"
-"เมื่อถึงจำนวนสูงสุด ผู้ดูแลระบบต้องเปิดใช้งานบัญชีใหม่\n"
-"คุณสมบัตินี้ช่วยป้องกันการโจมตีเดารหัสผ่านอัตโนมัติ\n"
 "ตั้งเป็นศูนย์เพื่อปิดใช้งานคุณสมบัตินี้"
 
 #: 
@@ -5573,10 +5511,6 @@ msgstr "ลบที่เลือก"
 #: 
 msgid "Funds"
 msgstr "กองทุน"
-
-#: 
-msgid "Generate Report"
-msgstr "สร้างรายงาน"
 
 #: 
 msgid "Payments"
@@ -6270,10 +6204,6 @@ msgid "Current Deposit"
 msgstr "การฝากปัจจุบัน"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "รายงานที่ปรับแต่งได้พร้อมการกรองตามวันที่ กองทุน ครอบครัว และวิธีการชำระเงิน"
-
-#: 
 msgid "Day"
 msgstr "วัน"
 
@@ -6284,10 +6214,6 @@ msgstr "ธ.ค."
 #: 
 msgid "Deposit Statistics"
 msgstr "สถิติการฝาก"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "รายละเอียดของใบนำฝากเดียว"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6388,10 +6314,6 @@ msgstr "มิ.ย."
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "มาตั้งค่าระบบของคุณและพร้อมใช้งาน"
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "รายการสมาชิกที่มีสิทธิ์ลงคะแนนตามประวัติการให้และเกณฑ์สมาชิกภาพ"
 
 #: 
 msgid "Location"
@@ -9822,10 +9744,6 @@ msgid "View transaction details for a pledge payment"
 msgstr "ดูรายละเอียดธุรกรรมสำหรับการถวายตามคำปฏิญาณ"
 
 #: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "สมาชิกผู้มีสิทธิ์ลงคะแนนต้องมีการถวายภายในจำนวนปีนี้ (0 หมายถึงไม่ต้องมีการถวาย)"
-
-#: 
 msgid "We could not find the family you were looking for."
 msgstr "ไม่พบครอบครัวที่คุณค้นหา"
 
@@ -10016,10 +9934,6 @@ msgstr "บังคับติดตั้งใหม่?"
 #: 
 msgid "Full Path"
 msgstr "เส้นทางเต็ม"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "สร้างรายชื่อชั้นเรียน แผ่นลงชื่อเข้าร่วม และสมุดรูปถ่าย"
 
 #: 
 msgid "Installed"
@@ -18539,10 +18453,6 @@ msgid "Could not match the church country."
 msgstr "ไม่สามารถจับคู่ประเทศของคริสตจักรได้"
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "รายชื่อชั้นเรียน ใบเช็คชื่อ และสมุดภาพ"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "รายชื่อสมาชิกกลุ่มและรายงานชั้นเรียนโรงเรียนวันอาทิตย์"
 
@@ -18741,19 +18651,9 @@ msgid_plural "%d default volunteers assigned"
 msgstr[0] "%d อาสาสมัครเริ่มต้นได้รับการมอบหมาย"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "ตำแหน่งนี้ยังต้องการอาสาสมัครเพิ่มเติม %d คน เปิดการเกิดขึ้นเพื่อเติมช่องว่าง"
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d การเกิดขึ้นใหม่"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "ยังต้องการอาสาสมัคร %d คนสำหรับการเกิดขึ้นที่จะมาถึง"
 
 #: 
 msgid "%s Calendar"
@@ -20814,10 +20714,6 @@ msgstr "เปิดพันธกิจ"
 #: 
 msgid "Open the occurrence"
 msgstr "เปิดรอบ"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "เปิดรอบเพื่อมอบหมายคนที่คุณต้องการ"
 
 #: 
 msgid "Open this team"

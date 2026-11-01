@@ -2,31 +2,12 @@
 
 import { pdfText } from "../../../support/pdf-text";
 
-/**
- * Mail is addressed to the family's mailing address (#9743).
- *
- * NewsLetterLabels.php and ConfirmLabels.php build every label from
- * Family::getMailingAddressLines() — the flagged second address when a family has
- * one, the primary address otherwise — and order the run by the ZIP that is
- * actually printed rather than by the primary ZIP. PDFLabel.php, behind the
- * cart's Generate Labels and every People Report's Print Labels, does the same
- * for a person without an address of their own (#10405). Every letter that goes through
- * ChurchInfoReport::startLetterPage() is addressed the same way.
- *
- * The PDFs are fetched with cy.request() (cy.visit() only accepts text/html) and
- * their text is read back with pdfText(), so each test asserts the address
- * that was actually printed, not just that a PDF came back.
- */
-describe("Mailing address on mailed reports (#9743)", () => {
+// Mail goes to the family's mailing address: the flagged second address when there is one.
+describe("Mailing address on mailed reports", () => {
     const createdFamilyIds = [];
 
     const labelQuery =
         "labeltype=Tractor&labelfont=Helvetica&labelfontsize=default&recipientnamingmethod=familyname";
-
-    /**
-     * Direct form login, as in confirm-reports.spec.js: a fresh PHP session
-     * uncontaminated by earlier tests.
-     */
 
     /**
      * Creates a family whose flagged second address is in a different ZIP.
@@ -91,11 +72,11 @@ describe("Mailing address on mailed reports (#9743)", () => {
         expect(lines).to.not.include("742 Evergreen Terrace");
     };
 
-    /** The rows of Reports/PDFLabel.php's CSV output, header dropped. */
+    /** The rows of the /people/labels CSV output, header dropped. */
     const fetchLabelRows = (query) =>
         cy
             .request(
-                `/Reports/PDFLabel.php?${query}&labeltype=5160&labelfont=Helvetica&labelfontsize=10&startrow=1&startcol=1&filetype=CSV`,
+                `/people/labels?${query}&labeltype=5160&labelfont=Helvetica&labelfontsize=10&startrow=1&startcol=1&filetype=CSV`,
             )
             .then((response) => {
                 expect(response.status, "no server error").to.equal(200);
@@ -119,7 +100,6 @@ describe("Mailing address on mailed reports (#9743)", () => {
 
     beforeEach(() => {
         cy.freshAdminFormLogin();
-        cy.visit("/LettersAndLabels.php");
     });
 
     after(() => {
@@ -134,7 +114,7 @@ describe("Mailing address on mailed reports (#9743)", () => {
         const familyName = "MailLabels" + Cypress._.random(0, 1e6);
         createFamilyWithMailingAddress(familyName);
         // New families receive the newsletter by default, so this one gets a label.
-        fetchPdfLines(`/Reports/NewsLetterLabels.php?${labelQuery}`).then((lines) => {
+        fetchPdfLines(`/people/labels/newsletter?${labelQuery}`).then((lines) => {
             expectLabelLines(lines, familyName);
         });
     });
@@ -143,12 +123,12 @@ describe("Mailing address on mailed reports (#9743)", () => {
         const familyName = "MailConfirm" + Cypress._.random(0, 1e6);
         createFamilyWithMailingAddress(familyName);
         // Confirm labels cover every family.
-        fetchPdfLines(`/Reports/ConfirmLabels.php?${labelQuery}`).then((lines) => {
+        fetchPdfLines(`/people/labels/confirm?${labelQuery}`).then((lines) => {
             expectLabelLines(lines, familyName);
         });
     });
 
-    it("prints the second address on labels generated from the cart (#10405)", () => {
+    it("prints the second address on labels generated from the cart", () => {
         const familyName = "MailCart" + Cypress._.random(0, 1e6);
         createFamilyWithMailingAddress(familyName, { members: ["Carta"] }).then((familyId) => {
             cartRequest("DELETE", {});
@@ -159,7 +139,7 @@ describe("Mailing address on mailed reports (#9743)", () => {
         });
     });
 
-    it("prints the second address on People Report labels (#10405)", () => {
+    it("prints the second address on People Report labels", () => {
         const familyName = "MailReport" + Cypress._.random(0, 1e6);
         createFamilyWithMailingAddress(familyName, { members: ["Bday"], birthMonth: "11" });
         fetchLabelRows("report=birthdays&month=11&groupbymode=indiv").then((rows) =>
@@ -191,22 +171,22 @@ describe("Mailing address on mailed reports (#9743)", () => {
 
     it("addresses each giving statement's remittance slip to that statement's family", () => {
         // Seed families 1 and 6 both gave on 2018-03-04; statements run in family order.
-        cy.visit("/FinancialReports.php");
-        cy.get("#FinancialReportTypes").select("Giving Report");
-        cy.get("#FinancialReports").submit();
+        cy.visit("/finance/reports/giving-statements");
         cy.get("#DateStart").clear().type("2018-01-01");
         cy.get("#DateEnd").clear().type("2018-12-31");
         cy.get("#remittanceYes").check();
-        cy.get("#createReport")
-            .closest("form")
-            .then(($form) => {
+        cy.get("#givingReportForm").then(($form) => {
                 const body = new URLSearchParams(new FormData($form[0]));
                 body.append("family[]", "1");
                 body.append("family[]", "6");
                 return cy
                     .request({
                         method: "POST",
-                        url: $form.attr("action"),
+                        // Root-relative path. Cypress resolves it against baseUrl.
+                        // The form action already includes SystemURLs::getRootPath();
+                        // appending /download and handing that to cy.request doubles
+                        // the install path on a subdirectory install.
+                        url: "/finance/reports/giving-statements/download",
                         headers: { "content-type": "application/x-www-form-urlencoded" },
                         body: body.toString(),
                         encoding: "binary",

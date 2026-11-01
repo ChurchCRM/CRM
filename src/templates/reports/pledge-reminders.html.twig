@@ -87,7 +87,7 @@
     {% endfor %}
 
     <div class="closing">
-      <p>{{ sincerely }},</p>
+      {% if sincerely %}<p>{{ sincerely }},</p>{% endif %}
       {% if signer %}<p>{{ signer }}</p>{% endif %}
     </div>
   {% endfor %}

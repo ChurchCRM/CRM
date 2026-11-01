@@ -254,7 +254,9 @@
             window.CRM.notify(i18next.t("No payments on this deposit"), { type: "warning", delay: 5000 });
             return;
           }
-          window.CRM.VerifyThenLoadAPIContent(`${window.CRM.root}/api/deposits/${depositId}/pdf`);
+          window.CRM.VerifyThenLoadAPIContent(
+            `${window.CRM.root}/finance/reports/print-deposit/download?deposit=${depositId}`,
+          );
         })
         .fail((jqXHR) => {
           const message =

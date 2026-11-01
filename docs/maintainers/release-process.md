@@ -48,15 +48,15 @@ Done when `npm run locale:translate:list` on `master` lists no locales (`locale/
 | 1.1 | `Locale: terms` extracts new strings on every merge to `master` touching `src/**` | [`locale-generate-terms.yml`](../../.github/workflows/locale-generate-terms.yml), about 4 min | 🤖 |
 | 1.2 | Merge the `Update locale strings` PR it opens (branch `locale/terms/<version>-<timestamp>`, label `Localization`). No PR means no new strings | Review and merge | ✋ |
 | 1.3 | Upload `locale/messages.po` to POEditor and delete terms that no longer exist | Merging the 1.2 PR changes `locale/messages.po` on `master`, which starts [`locale-sync-poeditor.yml`](../../.github/workflows/locale-sync-poeditor.yml). After a 30 minute settle (a newer merge restarts it), `poeditor-upload-terms.js` imports the terms with `sync_terms=1`, deletes terms missing from the file, verifies POEditor matches it, and refuses a deletion above 2% of the project | 🤖 |
-| 1.4 | Run `Locale: sync` manually so the latest translations land before the release; it opens a `locale: update translations from POEditor - <date>` PR | `workflow_dispatch`, about 8 min | ✋ trigger / 🤖 run |
-| 1.5 | Skim the POEditor PR's file list for unexpected files, then merge | The PR touches only `locale/`, `locale/terms/missing/<locale>/`, `src/locale/`, `src/locale/i18n/*.json` and `src/locale/textdomain/<locale>/LC_MESSAGES/*` | ✋ |
+| 1.4 | Run `Locale: sync` manually so the latest translations land before the release. It squash-merges the `locale: update translations from POEditor - <date>` PR when every JSON file parses and every path is a download file | `workflow_dispatch`, about 8 min | ✋ trigger / 🤖 run and merge |
+| 1.5 | Open the POEditor PR only when the workflow left it open | Invalid JSON, or a file outside `src/locale/i18n/*.json`, `src/locale/textdomain/<locale>/LC_MESSAGES/messages.po|mo`, and `locale/terms/missing/<locale>/*.json` | ✋ only if the PR is still open |
 | 1.6 | Translate every missing term in `locale/terms/missing/<locale>/` with Claude, using church vocabulary | [Locale Translation skill](../../.agents/skills/churchcrm/locale-translation-workflow.md) and [`/locale-translate --all`](../../.claude/commands/locale-translate.md) on a fresh `locale/translate/<version>-<date>-<time>` branch, one commit and push per locale. Runtime scales with terms per locale: about 25 min for ~10 terms, about 3 h for ~155 | 🧑‍💻 |
 | 1.7 | Upload the translated terms to POEditor | Every push to `locale/translate/**` runs [`locale-upload-missing.yml`](../../.github/workflows/locale-upload-missing.yml). Fallback: run that workflow manually (`locales` input), or `node locale/scripts/poeditor-upload-missing.js -y` with `POEDITOR_TOKEN` | 🤖 |
-| 1.8 | `Locale: sync` downloads the new translations; scan and merge its PR (as 1.4 → 1.5) | The upload workflow dispatches the sync itself | 🤖 run / ✋ merge |
+| 1.8 | `Locale: sync` downloads the new translations and squash-merges its PR (as 1.4 → 1.5) | The upload workflow dispatches the sync itself | 🤖 |
 
 Notes:
 
-- Translation pushes use the agent's own credentials; pushes made with the Actions `GITHUB_TOKEN` start no workflows. A PR merged with `GITHUB_TOKEN` fires no `push`, so merge terms and sync PRs as yourself or with a GitHub App.
+- Translation pushes use the agent's own credentials; pushes made with the Actions `GITHUB_TOKEN` start no workflows. A PR merged with `GITHUB_TOKEN` fires no `push`, so merge the terms PR as yourself or with a GitHub App. The download PR is merged by `Locale: sync` with `GITHUB_TOKEN`; that stage starts nothing next.
 - `Locale: sync` runs daily at 00:00 UTC and after every merged terms PR; the manual run in 1.4 only picks up translations made after the last run.
 - `Locale: sync` uploads terms, then downloads; translated batches reach POEditor through `Locale: upload translations` (1.7).
 - Plural handling and the terms upload guard: [locale-pipeline.md](locale-pipeline.md).

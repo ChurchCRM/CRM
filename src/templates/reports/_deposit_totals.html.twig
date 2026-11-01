@@ -1,0 +1,13 @@
+<h2>{{ gettext('Funds') }}</h2>
+<table class="sum">
+  {% for fund in funds %}
+    <tr><td>{{ fund.name }}</td><td class="amount">{{ fund.total }}</td></tr>
+  {% endfor %}
+</table>
+<h2 style="margin-top: 3mm;">{{ gettext('Payment Method') }}</h2>
+<table class="sum">
+  <tr><td>{{ gettext('Checks') }} ({{ checks_count }})</td><td class="amount">{{ checks_total }}</td></tr>
+  <tr><td>{{ gettext('Cash') }}</td><td class="amount">{{ cash_total }}</td></tr>
+  {% if other_total %}<tr><td>{{ gettext('Other') }}</td><td class="amount">{{ other_total }}</td></tr>{% endif %}
+  <tr class="total"><td>{{ gettext('Total') }}</td><td class="amount">{{ total }}</td></tr>
+</table>

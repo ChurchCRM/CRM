@@ -960,14 +960,6 @@ msgid "Zero Givers"
 msgstr "Noll Givers"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Enskilda insättningsrapport"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Avancerad insättningsrapport"
-
-#: 
 msgid "Next"
 msgstr "Nästa"
 
@@ -992,10 +984,6 @@ msgid "Apply Report Dates To"
 msgstr "Använda rapport datumen till"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "Insättningsdatum (Standard)"
-
-#: 
 msgid "Payment Date"
 msgstr "Betalningsdatum"
 
@@ -1018,10 +1006,6 @@ msgid "Filter by Payment Type"
 msgstr "Filtrera enligt betalningstyp"
 
 #: 
-msgid "All Methods"
-msgstr "Alla metoder"
-
-#: 
 msgid "Check"
 msgstr "Krysa"
 
@@ -1032,10 +1016,6 @@ msgstr "Kontant"
 #: 
 msgid "Bank Draft"
 msgstr "Bankcheck"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0 - inga minimum"
 
 #: 
 msgid "Other Settings"
@@ -1315,10 +1295,6 @@ msgstr "Bekräfta informations etikett"
 #: 
 msgid "Invalid login or password"
 msgstr "Ogiltig användernamn eller lösenord"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "För många felaktiga inloggningar:  ditt konto är låst.  Kontaka administratören."
 
 #: 
 msgid "Email/Username"
@@ -2222,25 +2198,12 @@ msgid "Classes"
 msgstr "Klasser"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Söndagskola rapporter"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Elever som inte är i en söndagsskoleklass"
 
 #: 
-#, fuzzy
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Åtminstone en grupp måste väljas för att skapa grupplister eller närvarolister"
-
-#: 
 msgid "Report Details"
 msgstr "Rapportera detaljer"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Lista alla roller (ej markerad kommer bara att lista lärare / studentroller)"
 
 #: 
 #, fuzzy
@@ -2266,10 +2229,6 @@ msgstr "Ytterligare studenter"
 #, fuzzy
 msgid "Extra Teachers"
 msgstr "Ytterligare lärare"
-
-#: 
-msgid "Create Class List"
-msgstr "Skapa klasslista"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4683,14 +4642,6 @@ msgid "PhotoBook"
 msgstr "fotobok"
 
 #: 
-msgid "With Photos"
-msgstr "Med foton"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Skapa PhotoBook"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4835,11 +4786,6 @@ msgstr "årsdagar"
 #: 
 msgid "View User"
 msgstr "Visa användare"
-
-#: 
-#, fuzzy
-msgid "not found or user without an email"
-msgstr "ingen hittad eller användare utan e-post"
 
 #: 
 msgid "UserName not set"
@@ -5037,16 +4983,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Minsta som ett nytt lösenord måste skilja sig från det gamla (antalet tecken har ändrats)\n"
 "Ställ in på noll för att inaktivera den här funktionen"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Maximalt antal misslyckade inloggningar för att tillåta innan ett användarkonto är låst.\n"
-"När det maximala har uppnåtts måste en administratör aktivera kontot igen.\n"
-"Den här funktionen hjälper dig att skydda mot automatiska gissningsangrepp. \n"
-"Ställ in på noll för att inaktivera den här funktionen."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -5685,10 +5621,6 @@ msgstr "Radera markerade"
 #: 
 msgid "Funds"
 msgstr "Fonder"
-
-#: 
-msgid "Generate Report"
-msgstr "Generera rapport"
 
 #: 
 msgid "Payments"
@@ -6384,10 +6316,6 @@ msgid "Current Deposit"
 msgstr "Aktuell insättning"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Anpassningsbar rapport med filtrering efter datum, fond, familj och betalningsmetod."
-
-#: 
 msgid "Day"
 msgstr "Dag"
 
@@ -6398,10 +6326,6 @@ msgstr "Dec"
 #: 
 msgid "Deposit Statistics"
 msgstr "Statistik för insättningar"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Detaljerad sammanställning av ett enskilt insättningskvitto."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6502,10 +6426,6 @@ msgstr "Jun"
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "Låt oss konfigurera ditt system och göra det redo att användas"
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "Lista medlemmar som är röstberättigade baserat på gåvohistorik och medlemskapskriterier."
 
 #: 
 msgid "Location"
@@ -9941,10 +9861,6 @@ msgid "View transaction details for a pledge payment"
 msgstr "Visa transaktionsdetaljer för en givarlöftesbetalning"
 
 #: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "Röstberättigade medlemmar måste ha gjort en gåva inom detta antal år (0 för att inte kräva en gåva)"
-
-#: 
 msgid "We could not find the family you were looking for."
 msgstr "Vi kunde inte hitta familjen du letade efter."
 
@@ -10135,10 +10051,6 @@ msgstr "Tvinga ominstallation?"
 #: 
 msgid "Full Path"
 msgstr "Fullständig sökväg"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Generera klasslistor, närvarolistor och fotoböcker"
 
 #: 
 msgid "Installed"
@@ -18665,10 +18577,6 @@ msgid "Could not match the church country."
 msgstr "Det gick inte att matcha kyrkans land."
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Klasslistor, närvarolistor och fotoalbum"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "Medlemslistor för verksamheter och rapporter för söndagsskoleklasser"
 
@@ -18871,22 +18779,10 @@ msgstr[0] "%d standardvolontär tilldelad"
 msgstr[1] "%d standardvolontärer tilldelade"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Ytterligare %d volontär behövs fortfarande för denna position. Öppna tillfället för att fylla luckan."
-msgstr[1] "Ytterligare %d volontärer behövs fortfarande för denna position. Öppna tillfället för att fylla luckan."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d nytt tillfälle"
 msgstr[1] "%d nya tillfällen"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "%d volontär behövs fortfarande för ett kommande tillfälle."
-msgstr[1] "%d volontärer behövs fortfarande för ett kommande tillfälle."
 
 #: 
 msgid "%s Calendar"
@@ -20951,10 +20847,6 @@ msgstr "Öppna tjänsteområdet"
 #: 
 msgid "Open the occurrence"
 msgstr "Öppna tillfället"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Öppna tillfället för att tilldela de personer du behöver."
 
 #: 
 msgid "Open this team"
@@ -24653,4 +24545,420 @@ msgstr "Endast det e-postmeddelande du skickade visas."
 #: 
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "Upprepade händelser kunde inte skapas. Kontrollera applikationsloggen för detaljer."
+
+#: 
+msgid "Confirm Password"
+msgstr "Bekräfta lösenord"
+
+#: 
+msgid "Your password has been changed. You can now sign in with your new password."
+msgstr "Ditt lösenord har ändrats. Du kan nu logga in med ditt nya lösenord."
+
+#: 
+msgid "1st"
+msgstr "1:a"
+
+#: 
+msgid "2nd"
+msgstr "2:a"
+
+#: 
+msgid "3rd"
+msgstr "3:e"
+
+#: 
+msgid "4th"
+msgstr "4:e"
+
+#: 
+msgid "5th"
+msgstr "5:e"
+
+#: 
+msgid "Can't remove administrator access from the only administrator who can sign in"
+msgstr "Kan inte ta bort administratörsåtkomst från den enda administratören som kan logga in"
+
+#: 
+msgid "Choose the week of the month, from 1st to 5th"
+msgstr "Välj vecka i månaden, från 1:a till 5:e"
+
+#: 
+msgid "Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}"
+msgstr "Skapar {{total}} händelser, på {{week}} {{day}} varje månad från {{first}} till {{last}}"
+
+#: 
+msgid "Invalid day of the week"
+msgstr "Ogiltig veckodag"
+
+#: 
+msgid "Monthly, on a weekday"
+msgstr "Månadsvis, på en vardag"
+
+#: 
+msgid "Months without a 5th one are skipped."
+msgstr "Månader utan en 5:e hoppas över."
+
+#: 
+msgid "RecurWOM must be a whole number from 1 to 5"
+msgstr "RecurWOM måste vara ett heltal från 1 till 5"
+
+#: 
+msgid "Week of the month"
+msgstr "Vecka i månaden"
+
+#: 
+msgid "Week of the month must be from 1 to 5"
+msgstr "Vecka i månaden måste vara från 1 till 5"
+
+#: 
+msgid "%s through %s"
+msgstr "%s till %s"
+
+#: 
+msgid "Church tax ID (EIN) printed on contribution statements"
+msgstr "Kyrkans skatte-ID (EIN) tryckt på bidragsbesked"
+
+#: 
+msgid "Contribution statements are issued to the adults of a household. Please contact the church office if you need one."
+msgstr "Bidragsbesked utfärdas till de vuxna i ett hushåll. Kontakta kyrkans kontor om du behöver ett."
+
+#: 
+msgid "Download statement"
+msgstr "Ladda ner besked"
+
+#: 
+msgid "Generated"
+msgstr "Genererad"
+
+#: 
+msgid "Goods and services"
+msgstr "Varor och tjänster"
+
+#: 
+msgid "My Giving"
+msgstr "Mina gåvor"
+
+#: 
+msgid "No contributions"
+msgstr "Inga bidrag"
+
+#: 
+msgid "No contributions were recorded for this period."
+msgstr "Inga bidrag registrerades för denna period."
+
+#: 
+msgid "No goods or services were provided in exchange for these contributions, other than intangible religious benefits."
+msgstr "Inga varor eller tjänster tillhandahölls i utbyte mot dessa bidrag, förutom immateriella religiösa fördelar."
+
+#: 
+msgid "Optional. Printed on contribution statements."
+msgstr "Valfritt. Tryckt på bidragsbesked."
+
+#: 
+msgid "Tax ID"
+msgstr "Skatte-ID"
+
+#: 
+msgid "Tax ID (EIN)"
+msgstr "Skatte-ID (EIN)"
+
+#: 
+msgid "Tax-deductible amount"
+msgstr "Avdragsgillt belopp"
+
+#: 
+msgid "This is the household statement. It includes gifts for your family."
+msgstr "Detta är hushållsbeskedet. Det inkluderar gåvor för din familj."
+
+#: 
+msgid "Total contributions"
+msgstr "Totala bidrag"
+
+#: 
+msgid "Year-end statement"
+msgstr "Årsslutbesked"
+
+#: 
+msgid "%d giving statement emailed to the family successfully."
+msgstr "%d gåvobesked skickades framgångsrikt via e-post till familjen."
+
+#: 
+msgid "%s Giving Statement"
+msgstr "%s Gåvobesked"
+
+#: 
+msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "Anpassa texten som visas på gåvobesked (sTaxReport1, sTaxReport2 osv.)."
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %s giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Kära familj %s,\n"
+"\n"
+"Bifogat till detta e-postmeddelande hittar du ditt %s gåvobesked från %s.\n"
+"\n"
+"Om du har några frågor, kontakta kyrkans kontor.\n"
+"\n"
+"Tack för din generositet."
+
+#: 
+msgid "Email %s Giving Statement"
+msgstr "E-posta %s Gåvobesked"
+
+#: 
+msgid "Envelope Numbers"
+msgstr "Kuvertnummer"
+
+#: 
+msgid "Generate Giving Statements"
+msgstr "Generera gåvobesked"
+
+#: 
+msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
+msgstr "Generera rapporter för gåvobesked, löftesspårning och finansiell analys."
+
+#: 
+msgid "Giving Reports"
+msgstr "Gåvorapporter"
+
+#: 
+msgid "Giving Statement"
+msgstr "Gåvobesked"
+
+#: 
+msgid "Giving Statements"
+msgstr "Gåvobesked"
+
+#: 
+msgid "Giving statement email failed to send. Please check your email server settings."
+msgstr "E-postmeddelandet med gåvobeskedet kunde inte skickas. Kontrollera dina e-postserverinställningar."
+
+#: 
+msgid "Please mail your next gift to %s"
+msgstr "Skicka din nästa gåva med post till %s"
+
+#: 
+msgid "Print %s Giving Statement"
+msgstr "Skriv ut %s Gåvobesked"
+
+#: 
+msgid "Unable to email giving statement: no payment data found for that year."
+msgstr "Kan inte e-posta gåvobesked: inga betalningsdata hittades för det året."
+
+#: 
+msgid "Unable to email giving statement: this family has no email address on file."
+msgstr "Kan inte e-posta gåvobesked: denna familj har ingen e-postadress registrerad."
+
+#: 
+msgid "Undesignated"
+msgstr "Ej betecknad"
+
+#: 
+msgid "Verify church name, address, and contact info appears on giving statements."
+msgstr "Verifiera att kyrkans namn, adress och kontaktinformation visas på gåvobesked."
+
+#: 
+msgid "The position is now assigned to %s, who has accepted it."
+msgstr "Positionen är nu tilldelad %s, som har accepterat den."
+
+#: 
+msgid "The position is now assigned to %s, who has not yet accepted it."
+msgstr "Positionen är nu tilldelad %s, som ännu inte har accepterat den."
+
+#: 
+msgid "Their reason: %s"
+msgstr "Deras anledning: %s"
+
+#: 
+msgid "View Assignments"
+msgstr "Visa tilldelningar"
+
+#: 
+msgid "Volunteers still needed for this occurrence: %d"
+msgstr "Volontärer behövs fortfarande för denna förekomst: %d"
+
+#: 
+msgid "Volunteers still needed for this position: %d"
+msgstr "Volontärer behövs fortfarande för denna position: %d"
+
+#: 
+msgid "A weekly sign-in grid for each class. Class lists and photo books are on the Sunday School dashboard and each class page."
+msgstr "Ett veckovis inloggningsrutnät för varje klass. Klasslistor och fotoalbum finns på söndagsskolans instrumentpanel och varje klassida."
+
+#: 
+msgid "A weekly sign-in grid for the school year, one column for each Sunday"
+msgstr "Ett veckovis inloggningsrutnät för skolåret, en kolumn för varje söndag"
+
+#: 
+msgid "Age %d"
+msgstr "Ålder %d"
+
+#: 
+msgid "At least one group must be selected to make an attendance sheet."
+msgstr "Minst en grupp måste väljas för att skapa ett närvaroblad."
+
+#: 
+msgid "Attendance Sheet"
+msgstr "Närvaroblad"
+
+#: 
+msgid "Class List"
+msgstr "Klasslista"
+
+#: 
+msgid "Download PDF"
+msgstr "Ladda ner PDF"
+
+#: 
+msgid "Lockout period in minutes\n"
+"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
+msgstr "Låsperiod i minuter\n"
+"Ett låst konto låser upp sig själv efter så många minuter. Misslyckade inloggningar från en IP-adress räknas under samma period."
+
+#: 
+msgid "Maximum number of failed logins from one IP address\n"
+"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
+"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
+msgstr "Maximalt antal misslyckade inloggningar från en IP-adress\n"
+"Misslyckade inloggningar och förfrågningar om lösenordsåterställning från en IP-adress räknas mot denna gräns inom låsperioden. När den nås nekas inloggning från den adressen tills perioden slutar.\n"
+"Ställ in på noll för att inaktivera denna funktion, till exempel när alla når ChurchCRM via en proxyadress."
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "Maximalt antal misslyckade inloggningar som tillåts innan ett användarkonto låses.\n"
+"Ett låst konto låser upp sig själv efter låsperioden, eller tidigare när en administratör återställer dess misslyckade inloggningar.\n"
+"Denna funktion hjälper till att skydda mot automatiserade lösenordsattacker.\n"
+"Ställ in på noll för att inaktivera denna funktion."
+
+#: 
+msgid "Minutes until it unlocks by itself: %d"
+msgstr "Minuter tills det låser upp sig själv: %d"
+
+#: 
+msgid "Sunday School Attendance Sheet"
+msgstr "Söndagsskolans närvaroblad"
+
+#: 
+msgid "Sundays with no class are left off the sheet."
+msgstr "Söndagar utan lektion utelämnas från bladet."
+
+#: 
+msgid "Database Upgrade"
+msgstr "Databasuppgradering"
+
+#: 
+msgid "Your database is being updated. Please keep this page open until the upgrade finishes."
+msgstr "Din databas uppdateras. Håll denna sida öppen tills uppgraderingen är klar."
+
+#: 
+msgid "Family Labels"
+msgstr "Familjeetiketter"
+
+#: 
+msgid "%s – Total"
+msgstr "%s – Totalt"
+
+#: 
+msgid "Bill"
+msgstr "Sedel"
+
+#: 
+msgid "Choose a deposit or enter both report dates."
+msgstr "Välj en insättning eller ange båda rapportdatumen."
+
+#: 
+msgid "Choose one deposit to review its payments or print its bank slip. A selected deposit overrides the date range."
+msgstr "Välj en insättning för att granska dess betalningar eller skriva ut dess bankkvittens. En vald insättning åsidosätter datumintervallet."
+
+#: 
+msgid "Coin"
+msgstr "Mynt"
+
+#: 
+msgid "Deposit Report"
+msgstr "Insättningsrapport"
+
+#: 
+msgid "Download Report"
+msgstr "Ladda ner rapport"
+
+#: 
+msgid "Enter valid report dates."
+msgstr "Ange giltiga rapportdatum."
+
+#: 
+msgid "Invalid report filters."
+msgstr "Ogiltiga rapportfilter."
+
+#: 
+msgid "Invalid report options."
+msgstr "Ogiltiga rapportalternativ."
+
+#: 
+msgid "Leave filters empty to include all payments. These settings apply to the report, not the bank slip."
+msgstr "Lämna filter tomma för att inkludera alla betalningar. Dessa inställningar gäller rapporten, inte bankkvittensen."
+
+#: 
+msgid "No records were returned. Adjust your filters and try again."
+msgstr "Inga poster returnerades. Justera dina filter och försök igen."
+
+#: 
+msgid "Prepare for the Bank"
+msgstr "Förbered för banken"
+
+#: 
+msgid "Preview Totals"
+msgstr "Förhandsgranska totaler"
+
+#: 
+msgid "Print Bank Slip"
+msgstr "Skriv ut bankkvittens"
+
+#: 
+msgid "Print the selected deposit in full, with cash and check totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
+msgstr "Skriv ut den valda insättningen i sin helhet, med kontant- och checktotaler, räkneblad och vittnesrader. Rapportfilter ignoreras. Elektroniska betalningar stannar i sammanfattningen och utesluts från den fysiska bankbiljettens total."
+
+#: 
+msgid "Review Payments"
+msgstr "Granska betalningar"
+
+#: 
+msgid "Review payments for a period, or prepare one deposit for the bank."
+msgstr "Granska betalningar för en period, eller förbered en insättning för banken."
+
+#: 
+msgid "Review payments, download PDF or CSV, or print a bank slip for one deposit."
+msgstr "Granska betalningar, ladda ner PDF eller CSV, eller skriv ut en bankkvittens för en insättning."
+
+#: 
+msgid "Select a valid deposit."
+msgstr "Välj en giltig insättning."
+
+#: 
+msgid "Select one deposit to print a bank slip."
+msgstr "Välj en insättning för att skriva ut en bankkvittens."
+
+#: 
+msgid "The report end date must be on or after the start date."
+msgstr "Rapportens slutdatum måste vara på eller efter startdatumet."
+
+#: 
+msgid "Total Cash"
+msgstr "Total kontant"
+
+#: 
+msgid "Total Coin"
+msgstr "Total mynt"
+
+#: 
+msgid "Witness"
+msgstr "Vittne"
 

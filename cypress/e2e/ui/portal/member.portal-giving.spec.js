@@ -77,7 +77,7 @@ describe("Member chooses a contribution statement year", () => {
     it("names the statement file with the year, the church and the family", () => {
         cy.visit("/portal/giving");
         statementRequest(2018).then((response) => {
-            expect(response.headers["content-disposition"]).to.contain('filename="2018-Main-St-Cathedral-Black.pdf"');
+            expect(response.headers["content-disposition"]).to.match(/filename="[^"]+-GivingStatement-2018-Black\.pdf"/);
         });
     });
 

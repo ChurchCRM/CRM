@@ -73,7 +73,11 @@ describe("API Private Deposit Operations", () => {
                 `/api/deposits/${depositID}/pdf`,
                 null,
                 [200, 404]
-            );
+            ).then((response) => {
+                if (response.status === 200) {
+                    expect(response.headers["content-type"]).to.include("application/pdf");
+                }
+            });
         });
 
         it("Get deposit OFX format", () => {

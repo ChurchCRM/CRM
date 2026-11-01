@@ -40,8 +40,7 @@ describe("Finance Reports Index", () => {
         cy.visit("/finance/reports");
 
         cy.contains("Deposit Reports");
-        cy.contains("Individual Deposit Report");
-        cy.contains("Advanced Deposit Report");
+        cy.get('a[href$="/finance/reports/deposits"]').should("have.length.at.least", 1);
     });
 
     it("should display Membership Reports section", () => {
@@ -63,9 +62,7 @@ describe("Finance Reports Index", () => {
         cy.visit("/finance/reports");
 
         cy.contains("Giving Statements").click();
-        cy.url().should("contain", "FinancialReports.php");
-        cy.url().should("contain", "Giving");
-        cy.contains("Financial Reports");
+        cy.url().should("contain", "/finance/reports/giving-statements");
     });
 
     it("should navigate to Zero Givers from link", () => {
@@ -86,17 +83,15 @@ describe("Finance Reports Index", () => {
     it("should navigate to Advanced Deposit Report from link", () => {
         cy.visit("/finance/reports");
 
-        cy.contains("Advanced Deposit Report").click();
-        cy.url().should("contain", "FinancialReports.php");
-        cy.url().should("contain", "Advanced");
+        cy.get('a[href$="/finance/reports/deposits"]').first().click();
+        cy.url().should("contain", "/finance/reports/deposits");
     });
 
     it("should navigate to Voting Members from link", () => {
         cy.visit("/finance/reports");
 
         cy.contains("Voting Members").click();
-        cy.url().should("contain", "FinancialReports.php");
-        cy.url().should("contain", "Voting");
+        cy.url().should("contain", "/finance/reports/voting-members");
     });
 
     it("should answer the old tax statements URL with Page Not Found and a way back", () => {

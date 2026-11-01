@@ -158,6 +158,7 @@ INSERT INTO `config_cfg` (`cfg_name`, `cfg_value`) VALUES ('bAllowPrereleaseUpgr
 ('bUseScannedChecks',''),
 ('iChurchLatitude','39.1111974'),
 ('iChurchLongitude','-94.5838009'),
+('iMaxFailedLoginsPerIP','1000'),
 ('IncludeDataInNewPersonNotifications',''),
 ('plugin.external-backup.enabled','0'),
 ('plugin.holidays.categories','official,religious'),
@@ -327,6 +328,31 @@ INSERT INTO `fundraiser_fr` (`fr_ID`, `fr_date`, `fr_title`, `fr_description`, `
 (5,'2026-07-15','Summer Harvest Raffle','Ten-day raffle for a handmade quilt, drawn at the summer picnic.',1,'2026-07-15','2026-07-25','Active',1200.00,'Raffle',NULL),
 (6,'2026-10-24','Fall Festival Gala','Formal fall fundraising gala with dinner and dancing.',1,'2026-10-24',NULL,'Planning',15000.00,'Gala',2),
 (7,'2026-12-05','Christmas Bazaar','Two-day holiday bazaar mixing craft sales, a raffle table, and a bake sale.',1,'2026-12-05','2026-12-06','Planning',4000.00,'Mixed',3);
+
+INSERT INTO `donateditem_di` (`di_ID`, `di_item`, `di_FR_ID`, `di_donor_ID`, `di_buyer_ID`, `di_multibuy`, `di_title`, `di_description`, `di_sellprice`, `di_estprice`, `di_minimum`, `di_materialvalue`, `di_EnteredBy`, `di_EnteredDate`, `di_picture`) VALUES
+(1,'A1',3,2,6,0,'Weekend at the church cabin','Two nights at the cabin the church keeps for retreats.',275.00,400.00,150.00,0.00,1,'2026-03-02',NULL),
+(2,'A2',3,4,7,0,'Handmade quilt','A queen quilt stitched by the quilting circle.',180.00,250.00,75.00,80.00,1,'2026-03-02',NULL),
+(3,'B1',3,5,14,0,'Pie assortment','Four pies baked for the auction dinner.',40.00,60.00,20.00,18.00,1,'2026-03-04',NULL),
+(4,'B3',3,5,7,0,'Sunday casserole','A family casserole, delivered the Sunday after the auction.',25.00,30.00,15.00,12.00,1,'2026-03-04',NULL),
+(5,'R1',5,4,0,0,'Harvest quilt','The quilt drawn at the Thanksgiving potluck.',0.00,300.00,0.00,80.00,1,'2026-10-01',NULL),
+(6,'G1',6,5,0,0,'Table centerpiece','A seasonal centerpiece for the gala tables.',0.00,75.00,40.00,25.00,1,'2026-09-20',NULL),
+(7,'G2',6,2,0,0,'Welcome gift basket','Coffee, jam, and a church cookbook.',0.00,50.00,25.00,20.00,1,'2026-09-20',NULL),
+(8,'C1',7,4,0,1,'Handmade ornaments','Boxed glass ornaments from the youth craft sale.',8.00,12.00,5.00,3.00,1,'2026-11-02',NULL),
+(9,'C2',7,5,6,0,'Cocoa mix','A jar of homemade cocoa mix.',12.00,15.00,8.00,4.00,1,'2026-11-02',NULL),
+(10,'D1',7,2,0,0,'Nativity print','A framed print of the church nativity window.',0.00,45.00,20.00,15.00,1,'2026-11-02',NULL);
+
+INSERT INTO `paddlenum_pn` (`pn_ID`, `pn_fr_ID`, `pn_Num`, `pn_per_ID`) VALUES
+(1,3,101,6),
+(2,3,102,7),
+(3,3,103,14),
+(4,3,104,2),
+(5,6,12,6),
+(6,6,18,14),
+(7,7,7,6),
+(8,7,8,7);
+
+INSERT INTO `multibuy_mb` (`mb_ID`, `mb_per_ID`, `mb_item_ID`, `mb_count`) VALUES
+(1,6,8,4);
 
 INSERT INTO `group_grp` (`grp_ID`, `grp_Type`, `grp_RoleListID`, `grp_DefaultRole`, `grp_Name`, `grp_Description`, `grp_hasSpecialProps`, `grp_active`, `grp_include_email_export`, `grp_ministry_id`) VALUES (1,4,13,2,'Angels class',NULL,0,1,1,NULL),
 (2,4,14,2,'Class 1-3',NULL,0,1,1,NULL),
@@ -1735,6 +1761,9 @@ INSERT INTO `propertytype_prt` (`prt_ID`, `prt_Class`, `prt_Name`, `prt_Descript
 (2,'f','General','General Family Properties'),
 (3,'g','General','General Group Properties');
 
+-- locked.user (7) stays locked until 2100: the hash is SHA-256 of '7'.
+INSERT INTO `rate_limit_rlm` (`rlm_ID`, `rlm_Bucket`, `rlm_KeyHash`, `rlm_Hits`, `rlm_ResetAt`) VALUES (1,'signin.lockout','7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451',1,4102444800);
+
 INSERT INTO `record2property_r2p` (`r2p_pro_ID`, `r2p_record_ID`, `r2p_Value`) VALUES (4,7,''),
 (4,8,''),
 (1,59,'N/A'),
@@ -1932,6 +1961,10 @@ INSERT INTO `version_ver` (`ver_ID`, `ver_version`, `ver_update_start`, `ver_upd
 -- Next ids. family_custom and person_custom keep rows past the last family and person, so a
 -- counter left at max+1 hands a new family an id that table already holds.
 ALTER TABLE `calendars` AUTO_INCREMENT = 95;
+ALTER TABLE `donateditem_di` AUTO_INCREMENT = 11;
+ALTER TABLE `fundraiser_fr` AUTO_INCREMENT = 8;
+ALTER TABLE `multibuy_mb` AUTO_INCREMENT = 2;
+ALTER TABLE `paddlenum_pn` AUTO_INCREMENT = 9;
 ALTER TABLE `donationfund_fun` AUTO_INCREMENT = 5;
 ALTER TABLE `eventcountnames_evctnm` AUTO_INCREMENT = 8;
 ALTER TABLE `events_event` AUTO_INCREMENT = 5;

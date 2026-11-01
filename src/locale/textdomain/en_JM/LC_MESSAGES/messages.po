@@ -33,10 +33,6 @@ msgstr "Default Parish - Must be 2-letter abbreviation!"
 msgid "Internationalization (I18n) support"
 msgstr "Internationalisation (I18n) support"
 
-#: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Customisable report with filtering by date, fund, family, and payment method."
-
 #. plugin:google-analytics:section:2:content
 #: 
 msgid "Google Analytics collects anonymized usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy."

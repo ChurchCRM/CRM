@@ -37,11 +37,9 @@ describe("Advanced Deposit Report - Deposit Date Filter (Issue Fix)", () => {
      */
     it("should return data when filtering by Deposit Date with a matching date range", () => {
         cy.visit("/FinancialReports.php");
-        cy.get(".page-title").contains("Financial Reports").should("be.visible");
-
-        cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
-        cy.get("#FinancialReports").submit();
-        cy.contains("Advanced Deposit Report").should("be.visible");
+        cy.visit("/finance/reports/deposits");
+        cy.get("#depositAdvancedSettings > summary").click();
+        cy.contains("Deposit Reports").should("be.visible");
 
         // Broad date range guaranteed to include all demo-data deposits.
         // Use invoke('val') to bypass Bootstrap Datepicker keystroke interception —
@@ -55,7 +53,7 @@ describe("Advanced Deposit Report - Deposit Date Filter (Issue Fix)", () => {
         // Use CSV for reliable response inspection.
         cy.get("input[name='output'][value='csv']").check({ force: true });
 
-        cy.intercept("POST", "**/AdvancedDeposit.php").as("reportRequest");
+        cy.intercept("POST", "**/finance/reports/deposits/download").as("reportRequest");
         cy.get("#createReport").click();
 
         // The fix ensures the report must NOT redirect to "No Data Found"
@@ -91,10 +89,9 @@ describe("Advanced Deposit Report - Deposit Date Filter (Issue Fix)", () => {
      * return "No Data Found". This ensures the fix does not suppress valid empty results.
      */
     it("should return 'No Data Found' when Deposit Date range excludes all deposits", () => {
-        cy.visit("/FinancialReports.php");
-        cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
-        cy.get("#FinancialReports").submit();
-        cy.contains("Advanced Deposit Report").should("be.visible");
+        cy.visit("/finance/reports/deposits");
+        cy.get("#depositAdvancedSettings > summary").click();
+        cy.contains("Deposit Reports").should("be.visible");
 
         // Use invoke('val') to bypass Bootstrap Datepicker keystroke interception.
         cy.get("#DateStart").invoke("val", "1900-01-01");
@@ -105,8 +102,8 @@ describe("Advanced Deposit Report - Deposit Date Filter (Issue Fix)", () => {
         cy.get("#createReport").click();
 
         // Should redirect to "No Data Found" for a date range with no deposits.
-        cy.url().should("include", "ReturnMessage=NoRows");
-        cy.contains("No Data Found").should("be.visible");
+        cy.get("#depositReportError").should("contain", "No records");
+        cy.get("#depositReportError").should("be.visible");
         cy.log("✅ Correct 'No Data Found' response for an out-of-range date");
     });
 
@@ -115,10 +112,9 @@ describe("Advanced Deposit Report - Deposit Date Filter (Issue Fix)", () => {
      * PDF is the default output format — verifies the full render path works end-to-end.
      */
     it("should return a valid PDF when filtering by Deposit Date", () => {
-        cy.visit("/FinancialReports.php");
-        cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
-        cy.get("#FinancialReports").submit();
-        cy.contains("Advanced Deposit Report").should("be.visible");
+        cy.visit("/finance/reports/deposits");
+        cy.get("#depositAdvancedSettings > summary").click();
+        cy.contains("Deposit Reports").should("be.visible");
 
         // Use invoke('val') to bypass Bootstrap Datepicker keystroke interception.
         cy.get("#DateStart").invoke("val", "2018-01-01");
@@ -128,7 +124,7 @@ describe("Advanced Deposit Report - Deposit Date Filter (Issue Fix)", () => {
         // PDF is the default output — select explicitly for clarity.
         cy.get("input[name='output'][value='pdf']").check({ force: true });
 
-        cy.intercept("POST", "**/AdvancedDeposit.php").as("pdfReport");
+        cy.intercept("POST", "**/finance/reports/deposits/download").as("pdfReport");
         cy.get("#createReport").click();
 
         cy.url().should("not.include", "ReturnMessage=NoRows");
@@ -160,10 +156,9 @@ describe("Advanced Deposit Report - Deposit Date Filter (Issue Fix)", () => {
      * This confirms neither the fix nor any regression has broken the existing path.
      */
     it("should return data when filtering by Payment Date with a broad date range", () => {
-        cy.visit("/FinancialReports.php");
-        cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
-        cy.get("#FinancialReports").submit();
-        cy.contains("Advanced Deposit Report").should("be.visible");
+        cy.visit("/finance/reports/deposits");
+        cy.get("#depositAdvancedSettings > summary").click();
+        cy.contains("Deposit Reports").should("be.visible");
 
         // Use invoke('val') to bypass Bootstrap Datepicker keystroke interception.
         cy.get("#DateStart").invoke("val", "2018-01-01");
@@ -172,7 +167,7 @@ describe("Advanced Deposit Report - Deposit Date Filter (Issue Fix)", () => {
         cy.get("input[name='datetype'][value='Payment']").check({ force: true });
         cy.get("input[name='output'][value='csv']").check({ force: true });
 
-        cy.intercept("POST", "**/AdvancedDeposit.php").as("paymentDateReport");
+        cy.intercept("POST", "**/finance/reports/deposits/download").as("paymentDateReport");
         cy.get("#createReport").click();
 
         cy.url().should("not.include", "ReturnMessage=NoRows");

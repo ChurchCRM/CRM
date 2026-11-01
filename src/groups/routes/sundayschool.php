@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Utils\PdfResponse;
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
@@ -11,7 +12,11 @@ use ChurchCRM\model\ChurchCRM\KioskAssignmentQuery;
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
 use ChurchCRM\model\ChurchCRM\UserQuery;
+use ChurchCRM\Service\ClassAttendanceService;
+use ChurchCRM\Service\ClassListService;
 use ChurchCRM\Service\DashboardService;
+use ChurchCRM\Service\FinancialService;
+use ChurchCRM\Service\MpdfRenderer;
 use ChurchCRM\Service\SundaySchoolService;
 use ChurchCRM\Slim\Middleware\Request\Setting\SundaySchoolEnabledMiddleware;
 use ChurchCRM\Utils\FiscalYearUtils;
@@ -33,6 +38,70 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
         return $response
             ->withHeader('Location', SystemURLs::getRootPath() . '/groups/sundayschool/dashboard')
             ->withStatus(302);
+    });
+
+    // Class ids named by ?GroupID=1,2 or, when none is named, every Sunday School class.
+    $classIds = function (Request $request): array {
+        $ids = array_values(array_filter(array_map('intval', explode(',', (string) ($request->getQueryParams()['GroupID'] ?? '')))));
+        if ($ids !== []) {
+            return $ids;
+        }
+
+        return array_map('intval', GroupQuery::create()->filterByType(4)->orderByName()->find()->getPrimaryKeys(false));
+    };
+
+    // Class list: teachers, then students with family contacts, for each class. One click, no form.
+    $group->get('/reports/class-list', function (Request $request, Response $response) use ($classIds) {
+        $pdf = (new MpdfRenderer())->renderToString('class-list', [
+            'classes' => ClassListService::classes($classIds($request)),
+            'fiscal_year' => FinancialService::formatFiscalYear(FiscalYearUtils::getCurrentFiscalYearId()),
+        ]);
+        $fileLabel = trim('ClassList ' . date(SystemConfig::getValue('sDateFilenameFormat')));
+        return PdfResponse::create($response, $pdf, $fileLabel);
+    });
+
+    // Class attendance sheet: students and teachers of each chosen class against the Sundays of the school year.
+    // Needs the group-management role of this app.
+    $group->get('/reports/class-attendance', function (Request $request, Response $response) {
+        $query = $request->getQueryParams();
+        $groupIds = array_slice(array_values(array_filter(array_map('intval', explode(',', (string) ($query['GroupID'] ?? ''))))), 0, 50);
+        $first = InputUtils::filterDate($query['FirstSunday'] ?? '');
+        $last = InputUtils::filterDate($query['LastSunday'] ?? '');
+        if ($first === '' || $last === '' || $first === '1970-01-01' || $last === '1970-01-01' || $last < $first) {
+            return $response
+                ->withHeader('Location', SystemURLs::getRootPath() . '/groups/sundayschool/reports?error=dates')
+                ->withStatus(302);
+        }
+
+        $noSchool = [];
+        for ($i = 1; $i <= 8; $i++) {
+            $date = InputUtils::filterDate($query['NoSchool' . $i] ?? '');
+            if ($date !== '' && $date !== '1970-01-01') {
+                $noSchool[] = $date;
+            }
+        }
+
+        $withPictures = InputUtils::filterInt($query['pictures'] ?? '') === 1;
+        $sundays = ClassAttendanceService::sundays($first, $last, $noSchool);
+        $fiscalYearId = InputUtils::filterInt($query['FYID'] ?? '') ?: FiscalYearUtils::getCurrentFiscalYearId();
+
+        $pdf = (new MpdfRenderer())->renderToString('class-attendance', [
+            'classes' => ClassAttendanceService::classes(
+                $groupIds,
+                InputUtils::filterInt($query['AllRoles'] ?? '') === 1,
+                $withPictures,
+                InputUtils::filterInt($query['ExtraStudents'] ?? ''),
+                InputUtils::filterInt($query['ExtraTeachers'] ?? '')
+            ),
+            'sundays' => $sundays,
+            'months' => ClassAttendanceService::months($sundays),
+            'widths' => ClassAttendanceService::columnWidths(count($sundays), $withPictures),
+            'with_pictures' => $withPictures,
+            'fiscal_year' => FinancialService::formatFiscalYear($fiscalYearId),
+        ], true);
+
+        $fileLabel = 'ClassAttendance ' . date(SystemConfig::getValue('sDateFilenameFormat'));
+        return PdfResponse::create($response, $pdf, $fileLabel);
     });
 
     // Sunday School Dashboard
@@ -263,8 +332,6 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
             ->filterByType(4)
             ->find();
 
-        $iFYID = isset($_SESSION['idefaultFY']) ? (int) $_SESSION['idefaultFY'] : FiscalYearUtils::getCurrentFiscalYearId();
-
         $calDates = [
             'firstSunday' => $userRecord->getCalStart()?->format(SystemConfig::getValue('sDatePickerFormat')) ?? '',
             'lastSunday'  => $userRecord->getCalEnd()?->format(SystemConfig::getValue('sDatePickerFormat')) ?? '',
@@ -278,14 +345,14 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
 
         $pageArgs = [
             'sRootPath'          => SystemURLs::getRootPath(),
-            'sPageTitle'         => gettext('Sunday School Reports'),
-            'sPageSubtitle'      => gettext('Generate class lists, attendance sheets, and photo books'),
+            'sPageTitle'         => gettext('Attendance Sheet'),
+            'sPageSubtitle'      => gettext('A weekly sign-in grid for the school year, one column for each Sunday'),
             'aBreadcrumbs'       => PageHeader::breadcrumbs([
                 [gettext('Group Reports'), '/groups/reports'],
-                [gettext('Sunday School Reports')],
+                [gettext('Attendance Sheet')],
             ]),
             'groups'             => $groups,
-            'iFYID'              => $iFYID,
+            'selectedGroupId'    => (int) ($request->getQueryParams()['GroupID'] ?? 0),
             'calDates'           => $calDates,
             'sDatePickerFormat'  => SystemConfig::getValue('sDatePickerFormat'),
         ];
@@ -298,8 +365,7 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
         $currentUser = AuthenticationManager::getCurrentUser();
         $userRecord = UserQuery::create()->findPk($currentUser->getId());
 
-        $iFYID = InputUtils::filterInt($post['FYID'] ?? '0');
-        $_SESSION['idefaultFY'] = $iFYID;
+        $iFYID = FiscalYearUtils::getCurrentFiscalYearId();
 
         $dFirstSunday = InputUtils::filterDate($post['FirstSunday'] ?? '');
         $dLastSunday = InputUtils::filterDate($post['LastSunday'] ?? '');
@@ -330,38 +396,26 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
                 ->withStatus(302);
         }
 
-        $allroles = $post['allroles'] ?? '';
-        $withPictures = $post['withPictures'] ?? '';
         $iExtraStudents = InputUtils::filterInt($post['ExtraStudents'] ?? '0');
         $iExtraTeachers = InputUtils::filterInt($post['ExtraTeachers'] ?? '0');
 
-        $baseParams = 'GroupID=' . $aGrpID
+        $url = 'groups/sundayschool/reports/class-attendance?GroupID=' . $aGrpID
             . '&FYID=' . $iFYID
             . '&FirstSunday=' . $dFirstSunday
-            . '&LastSunday=' . $dLastSunday
-            . '&AllRoles=' . $allroles
-            . '&pictures=' . $withPictures;
-
-        if (isset($post['SubmitPhotoBook'])) {
-            RedirectUtils::redirect('Reports/PhotoBook.php?' . $baseParams);
-        } elseif (isset($post['SubmitClassList'])) {
-            RedirectUtils::redirect('Reports/ClassList.php?' . $baseParams);
-        } elseif (isset($post['SubmitClassAttendance'])) {
-            $url = 'Reports/ClassAttendance.php?' . $baseParams;
-            for ($i = 1; $i <= 8; $i++) {
-                $val = InputUtils::filterDate($post['NoSchool' . $i] ?? '');
-                if ($val) {
-                    $url .= '&NoSchool' . $i . '=' . $val;
-                }
+            . '&LastSunday=' . $dLastSunday;
+        for ($i = 1; $i <= 8; $i++) {
+            $val = InputUtils::filterDate($post['NoSchool' . $i] ?? '');
+            if ($val) {
+                $url .= '&NoSchool' . $i . '=' . $val;
             }
-            if ($iExtraStudents) {
-                $url .= '&ExtraStudents=' . $iExtraStudents;
-            }
-            if ($iExtraTeachers) {
-                $url .= '&ExtraTeachers=' . $iExtraTeachers;
-            }
-            RedirectUtils::redirect($url);
         }
+        if ($iExtraStudents) {
+            $url .= '&ExtraStudents=' . $iExtraStudents;
+        }
+        if ($iExtraTeachers) {
+            $url .= '&ExtraTeachers=' . $iExtraTeachers;
+        }
+        RedirectUtils::redirect($url);
 
         return $response;
     });

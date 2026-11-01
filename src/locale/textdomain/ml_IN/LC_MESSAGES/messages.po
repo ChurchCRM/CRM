@@ -925,14 +925,6 @@ msgid "Zero Givers"
 msgstr "ദക്ഷിണ നൽകാത്തവർ"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "വ്യക്തിഗത ഡിപ്പോസിറ്റ് റിപ്പോർട്ട്"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "വിപുലമായ ഡിപ്പോസിറ്റ് റിപ്പോർട്ട്"
-
-#: 
 msgid "Next"
 msgstr "അടുത്തത്"
 
@@ -951,10 +943,6 @@ msgstr "റിപ്പോർട്ട് അവസാന തീയതി"
 #: 
 msgid "Apply Report Dates To"
 msgstr "റിപ്പോർട്ട് തീയതികൾ ബാധകമാക്കുക"
-
-#: 
-msgid "Deposit Date (Default)"
-msgstr "ഡിപ്പോസിറ്റ് തീയതി (ഡിഫോൾട്ട്)"
 
 #: 
 msgid "Payment Date"
@@ -977,10 +965,6 @@ msgid "Filter by Payment Type"
 msgstr "പേമെന്റ് തരം അനുസരിച്ച് ഫിൽട്ടർ ചെയ്യുക"
 
 #: 
-msgid "All Methods"
-msgstr "എല്ലാ രീതികളും"
-
-#: 
 msgid "Check"
 msgstr "ചെക്ക്"
 
@@ -991,10 +975,6 @@ msgstr "പണം"
 #: 
 msgid "Bank Draft"
 msgstr "ബാങ്ക് ഡ്രാഫ്റ്റ്"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0 - ഏറ്റവും കുറഞ്ഞ തുകയില്ല"
 
 #: 
 msgid "Other Settings"
@@ -1255,10 +1235,6 @@ msgstr "ഡേറ്റ ലേബലുകൾ സ്ഥിരീകരിക്�
 #: 
 msgid "Invalid login or password"
 msgstr "അസാധുവായ ലോഗിൻ അല്ലെങ്കിൽ പാസ്‌വേഡ്"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "ലോഗിൻ പലതവണ പരാജയപ്പെട്ടു: നിങ്ങളുടെ അക്കൗണ്ട് ലോക്ക് ചെയ്തിരിക്കുന്നു. ദയവായി അഡ്‌മിനിസ്‌ട്രേറ്ററെ ബന്ധപ്പെടുക."
 
 #: 
 msgid "Email/Username"
@@ -2119,24 +2095,12 @@ msgid "Classes"
 msgstr "ക്ലാസ്സുകൾ"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "സൺഡേ സ്‌കൂൾ റിപ്പോർട്ടുകൾ"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "സൺഡേ സ്‌കൂൾ ക്ലാസ്സിൽ ഇല്ലാത്ത വിദ്യാർത്ഥികൾ"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "ക്ലാസ് ലിസ്‌റ്റ് അല്ലെങ്കിൽ ഹാജർ ഷീറ്റ് ഉണ്ടാക്കാൻ കുറഞ്ഞത് ഒരു ഗ്രൂപ്പ് തിരഞ്ഞെടുക്കണം."
-
-#: 
 msgid "Report Details"
 msgstr "റിപ്പോർട്ട് വിശദാംശങ്ങൾ"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "എല്ലാ പങ്കുകളും ലിസ്‌റ്റ് ചെയ്യുക (ടിക്ക് ഇടാതിരുന്നാൽ അദ്ധ്യാപക/വിദ്യാർത്ഥി പങ്കുകൾ മാത്രം)"
 
 #: 
 msgid "First Sunday"
@@ -2157,10 +2121,6 @@ msgstr "അധിക വിദ്യാർത്ഥികൾ"
 #: 
 msgid "Extra Teachers"
 msgstr "അധിക അദ്ധ്യാപകർ"
-
-#: 
-msgid "Create Class List"
-msgstr "ക്ലാസ് ലിസ്‌റ്റ് ഉണ്ടാക്കുക"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4567,14 +4527,6 @@ msgid "PhotoBook"
 msgstr "ഫോട്ടോ ബുക്ക്"
 
 #: 
-msgid "With Photos"
-msgstr "ഫോട്ടോകളോടൊപ്പം"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "ഫോട്ടോ ബുക്ക് ഉണ്ടാക്കുക"
-
-#: 
 msgid "SSE"
 msgstr "ത.ത.കി."
 
@@ -4718,10 +4670,6 @@ msgstr "വാർഷികങ്ങൾ"
 #: 
 msgid "View User"
 msgstr "ഉപയോക്താവ് കാണുക"
-
-#: 
-msgid "not found or user without an email"
-msgstr "കണ്ടെത്തിയില്ല അല്ലെങ്കിൽ ഇമെയിൽ ഇല്ലാത്ത ഉപയോക്താവ്"
 
 #: 
 msgid "UserName not set"
@@ -4916,16 +4864,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "പുതിയ പാസ്‌വേഡ് പഴയതിൽ നിന്ന് വ്യത്യസ്തമാകേണ്ട ഏറ്റവും കുറഞ്ഞ അളവ് (# അക്ഷരങ്ങൾ)\n"
 "ഈ ഫീച്ചർ പ്രവർത്തനരഹിതമാക്കാൻ പൂജ്യം ക്രമീകരിക്കുക"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "അക്കൗണ്ട് ലോക്ക് ചെയ്യുന്നതിന് മുൻപ് അനുവദിക്കേണ്ട പരമാവധി ലോഗിൻ പരാജയങ്ങൾ.\n"
-"ഒരതിരിൽ എത്തിയാൽ അഡ്‌മിൻ വീണ്ടും പ്രവർത്തനക്ഷമമാക്കണം.\n"
-"ഈ ഫീച്ചർ ഓട്ടോ-പാസ്‌വേഡ് ആക്രമണങ്ങളിൽ നിന്ന് സംരക്ഷിക്കുന്നു.\n"
-"പ്രവർത്തനരഹിതമാക്കാൻ പൂജ്യം ക്രമീകരിക്കുക."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -5563,10 +5501,6 @@ msgstr "തിരഞ്ഞെടുത്തത് ഇല്ലാതാക്�
 #: 
 msgid "Funds"
 msgstr "ഫണ്ടുകൾ"
-
-#: 
-msgid "Generate Report"
-msgstr "റിപ്പോർട്ട് ഉണ്ടാക്കുക"
 
 #: 
 msgid "Payments"
@@ -6262,10 +6196,6 @@ msgid "Current Deposit"
 msgstr "നിലവിലെ ഡിപ്പോസിറ്റ്"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "തീയതി, ഫണ്ട്, കുടുംബം, പേമെന്റ് രീതി അനുസരിച്ച് ഫിൽട്ടർ ചെയ്യാൻ കഴിയുന്ന ഇഷ്‌ടാനുസൃത റിപ്പോർട്ട്."
-
-#: 
 msgid "Day"
 msgstr "ദിവസം"
 
@@ -6276,10 +6206,6 @@ msgstr "ഡിസ"
 #: 
 msgid "Deposit Statistics"
 msgstr "ഡിപ്പോസിറ്റ് സ്ഥിതിവിവരം"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "ഒരൊറ്റ ഡിപ്പോസിറ്റ് സ്ലിപ്പിന്റെ വിശദ വിഭജനം."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6380,10 +6306,6 @@ msgstr "ജൂൺ"
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "നിങ്ങളുടെ സിസ്റ്റം ക്രമീകരിക്കാം"
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "ദക്ഷിണ ചരിത്രം, അംഗത്വ മാനദണ്ഡങ്ങൾ അനുസരിച്ച് വോട്ടർ അർഹതയുള്ള അംഗങ്ങൾ ലിസ്‌റ്റ് ചെയ്യൂ."
 
 #: 
 msgid "Location"
@@ -9819,10 +9741,6 @@ msgid "View transaction details for a pledge payment"
 msgstr "ഒരു സാമ്പത്തിക പ്രതിബദ്ധത പേമെന്റിന്റെ ഇടപാട് വിശദാംശങ്ങൾ കാണുക"
 
 #: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "വോട്ടെടുപ്പ് അംഗങ്ങൾ ഈ ഇത്ര വർഷങ്ങൾക്കുള്ളിൽ ഒരു ദാനം ചെയ്തിരിക്കണം (ദാനം ആവശ്യമില്ലാതിരിക്കാൻ 0)"
-
-#: 
 msgid "We could not find the family you were looking for."
 msgstr "നിങ്ങൾ തിരഞ്ഞ കുടുംബം ഞങ്ങൾക്ക് കണ്ടെത്താൻ കഴിഞ്ഞില്ല."
 
@@ -10013,10 +9931,6 @@ msgstr "നിർബന്ധിത പുനഃഇൻസ്റ്റലേഷ�
 #: 
 msgid "Full Path"
 msgstr "പൂർണ്ണ പാത്ത്"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "ക്ലാസ് ലിസ്‌റ്റുകൾ, ഹാജർ ഷീറ്റുകൾ, ഫോട്ടോ ബുക്കുകൾ സൃഷ്ടിക്കുക"
 
 #: 
 msgid "Installed"
@@ -18543,10 +18457,6 @@ msgid "Could not match the church country."
 msgstr "ചർച്ചിന്റെ രാജ്യം പൊരുത്തപ്പെടുത്താൻ കഴിഞ്ഞില്ല."
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "ക്ലാസ് പട്ടികകൾ, ഹാജർ ഷീറ്റുകൾ, ഫോട്ടോ ബുക്കുകൾ"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "ശുശ്രൂഷാ അംഗത്വ പട്ടികകളും സൺഡേ സ്കൂൾ ക്ലാസ് റിപ്പോർട്ടുകളും"
 
@@ -18749,22 +18659,10 @@ msgstr[0] "%d സ്ഥിര സന്നദ്ധസേവകനെ നിയ�
 msgstr[1] "%d സ്ഥിര സന്നദ്ധസേവകനെ നിയോഗിച്ചു"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "ഈ സ്ഥാനത്തിന് ഇനിയും %d സന്നദ്ധസേവകനെ കൂടി ആവശ്യമുണ്ട്. വിടവ് നികത്താൻ തീയതി തുറക്കുക."
-msgstr[1] "ഈ സ്ഥാനത്തിന് ഇനിയും %d സന്നദ്ധസേവകനെ കൂടി ആവശ്യമുണ്ട്. വിടവ് നികത്താൻ തീയതി തുറക്കുക."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d പുതിയ തീയതി"
 msgstr[1] "%d പുതിയ തീയതി"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "വരാനിരിക്കുന്ന ഒരു തീയതിക്ക് ഇനിയും %d സന്നദ്ധസേവകനെ ആവശ്യമുണ്ട്."
-msgstr[1] "വരാനിരിക്കുന്ന ഒരു തീയതിക്ക് ഇനിയും %d സന്നദ്ധസേവകനെ ആവശ്യമുണ്ട്."
 
 #: 
 msgid "%s Calendar"
@@ -20829,10 +20727,6 @@ msgstr "ശുശ്രൂഷ തുറക്കുക"
 #: 
 msgid "Open the occurrence"
 msgstr "തീയതി തുറക്കുക"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "ആവശ്യമുള്ളവരെ നിയോഗിക്കാൻ തീയതി തുറക്കുക."
 
 #: 
 msgid "Open this team"

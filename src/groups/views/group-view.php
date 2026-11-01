@@ -165,9 +165,24 @@ $sManagedTitle = $bIsMinistryPool
                 <i class="fa-solid fa-pen me-1"></i><?= gettext('Edit') ?>
             </a>
             <?php endif; ?>
-            <button type="button" class="btn btn-ghost-secondary" id="printGroup" title="<?= gettext('Print') ?>">
-                <i class="fa-solid fa-print me-1"></i><?= gettext('Print') ?>
-            </button>
+            <?php if ($bCanManageGroups): ?>
+            <div class="dropdown">
+                <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" id="groupReportsDropdownBtn">
+                    <i class="fa-solid fa-print me-1"></i><?= gettext('Reports') ?>
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" id="reportPhotoBook" href="<?= $sRootPath ?>/groups/reports/photo-book?GroupID=<?= (int) $iGroupID ?>" target="_blank" rel="noopener">
+                        <i class="fa-solid fa-book me-2"></i><?= gettext('PhotoBook') ?>
+                    </a>
+                    <form method="POST" action="<?= $sRootPath ?>/groups/reports">
+                        <input type="hidden" name="GroupID" value="<?= (int) $iGroupID ?>">
+                        <button type="submit" class="dropdown-item" id="reportGroupDirectory">
+                            <i class="fa-solid fa-address-book me-2"></i><?= gettext('Group Directory') ?>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <?php endif; ?>
             <div class="dropdown">
                 <button class="btn btn-ghost-success dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static">
                     <i class="fa-solid fa-cart-plus me-1"></i><?= gettext('Cart') ?>

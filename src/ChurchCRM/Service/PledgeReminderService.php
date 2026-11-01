@@ -9,6 +9,7 @@ use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Utils\CurrencyFormatter;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -60,15 +61,23 @@ class PledgeReminderService
             }
         }
 
+        $graphic = MpdfRenderer::graphicLetterhead();
+
         return [
-            'letterhead' => 'address',
-            'opening' => trim(rtrim((string) SystemConfig::getValue('sReminder1')) . ' ' . FinancialService::formatFiscalYear($criteria['fiscalYearId']) . $fundClause . '.'),
+            'letterhead' => $graphic !== null ? 'graphic' : 'address',
+            'letterhead_image' => $graphic,
+            'opening' => trim(rtrim((string) SystemConfig::getValue('sReminder1')) . ' ' . FiscalYearUtils::formatFiscalYearLabel($criteria['fiscalYearId']) . $fundClause . '.'),
             'no_pledge' => trim((string) SystemConfig::getValue('sReminderNoPledge') . ($fundClause !== '' ? ' (' . trim($fundClause) . ')' : '')),
             'no_payments' => (string) SystemConfig::getValue('sReminderNoPayments'),
             'sincerely' => (string) SystemConfig::getValue('sConfirmSincerely'),
             'signer' => (string) SystemConfig::getValue('sReminderSigner'),
             'letters' => $letters,
         ];
+    }
+
+    public static function fileLabel(): string
+    {
+        return 'PledgeReminders-' . date(SystemConfig::getValue('sDateFilenameFormat'));
     }
 
     /**
@@ -174,13 +183,13 @@ class PledgeReminderService
             'salutation' => $family->getSalutation(),
             'address' => $family->getMailingAddressLines(),
             'pledges' => array_map(static fn ($pledge): array => [
-                'date' => $pledge->getDate('Y-m-d'),
+                'date' => DateTimeUtils::formatDate($pledge->getDate('Y-m-d')),
                 'fund' => $fundName($pledge->getFundId()),
                 'amount' => CurrencyFormatter::format($pledge->getAmount()),
             ], $pledges),
             'pledge_total' => count($pledges) > 1 ? CurrencyFormatter::format(array_sum($pledgedByFund) / 100) : '',
             'payments' => array_map(static fn ($payment): array => [
-                'date' => $payment->getDate('Y-m-d'),
+                'date' => DateTimeUtils::formatDate($payment->getDate('Y-m-d')),
                 'check_no' => (string) ($payment->getCheckNo() ?? ''),
                 'method' => (string) $payment->getMethod(),
                 'fund' => $fundName($payment->getFundId()),

@@ -959,14 +959,6 @@ msgid "Zero Givers"
 msgstr "零言官群體"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "個人存款報告"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "預付訂金報告"
-
-#: 
 msgid "Next"
 msgstr "下"
 
@@ -991,10 +983,6 @@ msgid "Apply Report Dates To"
 msgstr "應用報告日期"
 
 #: 
-msgid "Deposit Date (Default)"
-msgstr "存款日期（默認）"
-
-#: 
 msgid "Payment Date"
 msgstr "付款日期"
 
@@ -1017,10 +1005,6 @@ msgid "Filter by Payment Type"
 msgstr "過濾器的付款方式"
 
 #: 
-msgid "All Methods"
-msgstr "所有方法"
-
-#: 
 msgid "Check"
 msgstr "查"
 
@@ -1031,10 +1015,6 @@ msgstr "現金"
 #: 
 msgid "Bank Draft"
 msgstr "銀行匯票"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0  - 不設最低"
 
 #: 
 msgid "Other Settings"
@@ -1308,10 +1288,6 @@ msgstr "確認數據標籤"
 #: 
 msgid "Invalid login or password"
 msgstr "無效的登錄名或密碼"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "太多次登入失敗: 您的帳戶已被鎖定。請與管理員聯繫。"
 
 #: 
 msgid "Email/Username"
@@ -2204,25 +2180,12 @@ msgid "Classes"
 msgstr "科室"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "主日學報告"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "學生不在主日課程"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "必須選擇至少一組類列表或出勤表。"
-
-#: 
 msgid "Report Details"
 msgstr "報告詳情"
-
-#: 
-#, fuzzy
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "列出所有角色（未選中將僅列出教師/學生角色）"
 
 #: 
 #, fuzzy
@@ -2248,10 +2211,6 @@ msgstr "額外的學生"
 #, fuzzy
 msgid "Extra Teachers"
 msgstr "額外的教師"
-
-#: 
-msgid "Create Class List"
-msgstr "創建類列表"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4682,14 +4641,6 @@ msgid "PhotoBook"
 msgstr "相簿"
 
 #: 
-msgid "With Photos"
-msgstr "相片"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "創建相簿"
-
-#: 
 msgid "SSE"
 msgstr "SSE"
 
@@ -4837,11 +4788,6 @@ msgstr "紀念日"
 #: 
 msgid "View User"
 msgstr "查看用戶"
-
-#: 
-#, fuzzy
-msgid "not found or user without an email"
-msgstr "沒有找到或沒有電子郵件的用戶"
 
 #: 
 msgid "UserName not set"
@@ -5049,14 +4995,6 @@ msgstr "通訊超時（以秒為單位）設置為零以禁用通訊超時。"
 msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
 "Set to zero to disable this feature"
 msgstr "新密碼必須與舊密碼不同的最小數量（更改的字符數）設置為零以禁用此功能"
-
-#: 
-#, fuzzy
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "鎖定用戶帳戶之前允許的最大登錄失敗次數。達到最大值後，管理員必須重新啟用該帳戶。此功能有助於防止自動密碼猜測攻擊。設置為零可禁用此功能。"
 
 #: 
 #, fuzzy
@@ -5737,10 +5675,6 @@ msgstr "刪除選中項"
 #: 
 msgid "Funds"
 msgstr "基金"
-
-#: 
-msgid "Generate Report"
-msgstr "生成報告"
 
 #: 
 msgid "Payments"
@@ -6434,10 +6368,6 @@ msgid "Current Deposit"
 msgstr "當前存款"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "可自定義報告，可按日期、基金、家庭和付款方式過濾。"
-
-#: 
 msgid "Day"
 msgstr "日"
 
@@ -6448,10 +6378,6 @@ msgstr "十二月"
 #: 
 msgid "Deposit Statistics"
 msgstr "存款統計"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "單個存款單的詳細明細。"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6552,10 +6478,6 @@ msgstr "六月"
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "讓我們設置好您的系統並準備就緒"
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "根據捐贈歷史和成員標準列出有投票資格的成員。"
 
 #: 
 msgid "Location"
@@ -9986,10 +9908,6 @@ msgid "View transaction details for a pledge payment"
 msgstr "檢視奉獻承諾付款的交易詳情"
 
 #: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "有投票權的會眾必須在近幾年內有過奉獻（0 表示不要求奉獻）"
-
-#: 
 msgid "We could not find the family you were looking for."
 msgstr "我們找不到您要尋找的家庭。"
 
@@ -10180,10 +10098,6 @@ msgstr "強制重新安裝？"
 #: 
 msgid "Full Path"
 msgstr "完整路徑"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "產生班級列表、簽到表和相簿"
 
 #: 
 msgid "Installed"
@@ -18703,10 +18617,6 @@ msgid "Could not match the church country."
 msgstr "無法匹配教會所在國家。"
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "班級名單、點名表和相簿"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "小組成員名單和主日學班級報告"
 
@@ -18905,19 +18815,9 @@ msgid_plural "%d default volunteers assigned"
 msgstr[0] "%d 個預設義工已指派"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "此職位仍需 %d 名義工。開啟發生以填補空缺。"
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d 個新發生"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "即將發生的事件仍需 %d 名義工。"
 
 #: 
 msgid "%s Calendar"
@@ -20978,10 +20878,6 @@ msgstr "開啟事工"
 #: 
 msgid "Open the occurrence"
 msgstr "開啟活動場次"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "請開啟活動場次，分配您所需要的人員。"
 
 #: 
 msgid "Open this team"
@@ -24675,4 +24571,420 @@ msgstr "僅顯示您寄出的電子郵件。"
 #: 
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "無法建立重複活動。請查看應用程式日誌了解詳情。"
+
+#: 
+msgid "Confirm Password"
+msgstr "確認密碼"
+
+#: 
+msgid "Your password has been changed. You can now sign in with your new password."
+msgstr "您的密碼已變更。現在可以使用新密碼登入。"
+
+#: 
+msgid "1st"
+msgstr "第1"
+
+#: 
+msgid "2nd"
+msgstr "第2"
+
+#: 
+msgid "3rd"
+msgstr "第3"
+
+#: 
+msgid "4th"
+msgstr "第4"
+
+#: 
+msgid "5th"
+msgstr "第5"
+
+#: 
+msgid "Can't remove administrator access from the only administrator who can sign in"
+msgstr "無法移除唯一可登入管理員的管理員權限"
+
+#: 
+msgid "Choose the week of the month, from 1st to 5th"
+msgstr "選擇月份中的週，從第1週到第5週"
+
+#: 
+msgid "Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}"
+msgstr "建立 {{total}} 個事件，在每月 {{week}} {{day}}，從 {{first}} 到 {{last}}"
+
+#: 
+msgid "Invalid day of the week"
+msgstr "無效的星期幾"
+
+#: 
+msgid "Monthly, on a weekday"
+msgstr "每月，在平日"
+
+#: 
+msgid "Months without a 5th one are skipped."
+msgstr "沒有第5週的月份將被跳過。"
+
+#: 
+msgid "RecurWOM must be a whole number from 1 to 5"
+msgstr "RecurWOM 必須是 1 到 5 的整數"
+
+#: 
+msgid "Week of the month"
+msgstr "月份中的週"
+
+#: 
+msgid "Week of the month must be from 1 to 5"
+msgstr "月份中的週必須為 1 到 5"
+
+#: 
+msgid "%s through %s"
+msgstr "%s 至 %s"
+
+#: 
+msgid "Church tax ID (EIN) printed on contribution statements"
+msgstr "列印在奉獻報表上的教會稅號 (EIN)"
+
+#: 
+msgid "Contribution statements are issued to the adults of a household. Please contact the church office if you need one."
+msgstr "奉獻報表發給家庭中的成年人。如需一份，請聯絡教會辦公室。"
+
+#: 
+msgid "Download statement"
+msgstr "下載報表"
+
+#: 
+msgid "Generated"
+msgstr "已產生"
+
+#: 
+msgid "Goods and services"
+msgstr "商品與服務"
+
+#: 
+msgid "My Giving"
+msgstr "我的奉獻"
+
+#: 
+msgid "No contributions"
+msgstr "無奉獻"
+
+#: 
+msgid "No contributions were recorded for this period."
+msgstr "此期間未記錄任何奉獻。"
+
+#: 
+msgid "No goods or services were provided in exchange for these contributions, other than intangible religious benefits."
+msgstr "除無形宗教利益外，未為這些奉獻提供任何商品或服務。"
+
+#: 
+msgid "Optional. Printed on contribution statements."
+msgstr "可選。列印在奉獻報表上。"
+
+#: 
+msgid "Tax ID"
+msgstr "稅號"
+
+#: 
+msgid "Tax ID (EIN)"
+msgstr "稅號 (EIN)"
+
+#: 
+msgid "Tax-deductible amount"
+msgstr "可抵稅金額"
+
+#: 
+msgid "This is the household statement. It includes gifts for your family."
+msgstr "這是家庭報表。包含您家庭的奉獻。"
+
+#: 
+msgid "Total contributions"
+msgstr "奉獻總計"
+
+#: 
+msgid "Year-end statement"
+msgstr "年終報表"
+
+#: 
+msgid "%d giving statement emailed to the family successfully."
+msgstr "%d 份奉獻報表已成功透過電子郵件傳送給家庭。"
+
+#: 
+msgid "%s Giving Statement"
+msgstr "%s 奉獻報表"
+
+#: 
+msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "自訂奉獻報表上顯示的文字（sTaxReport1、sTaxReport2 等）。"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %s giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "親愛的 %s 家庭：\n"
+"\n"
+"請查收附件中的 %s 年 %s 奉獻報表。\n"
+"\n"
+"如有任何問題，請聯絡教會辦公室。\n"
+"\n"
+"感謝您的慷慨奉獻。"
+
+#: 
+msgid "Email %s Giving Statement"
+msgstr "透過電子郵件傳送 %s 奉獻報表"
+
+#: 
+msgid "Envelope Numbers"
+msgstr "信封編號"
+
+#: 
+msgid "Generate Giving Statements"
+msgstr "產生奉獻報表"
+
+#: 
+msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
+msgstr "產生奉獻報表、承諾追蹤和財務分析報告。"
+
+#: 
+msgid "Giving Reports"
+msgstr "奉獻報告"
+
+#: 
+msgid "Giving Statement"
+msgstr "奉獻報表"
+
+#: 
+msgid "Giving Statements"
+msgstr "奉獻報表"
+
+#: 
+msgid "Giving statement email failed to send. Please check your email server settings."
+msgstr "奉獻報表電子郵件傳送失敗。請檢查電子郵件伺服器設定。"
+
+#: 
+msgid "Please mail your next gift to %s"
+msgstr "請將下一筆奉獻郵寄至 %s"
+
+#: 
+msgid "Print %s Giving Statement"
+msgstr "列印 %s 奉獻報表"
+
+#: 
+msgid "Unable to email giving statement: no payment data found for that year."
+msgstr "無法透過電子郵件傳送奉獻報表：未找到該年的付款資料。"
+
+#: 
+msgid "Unable to email giving statement: this family has no email address on file."
+msgstr "無法透過電子郵件傳送奉獻報表：此家庭沒有記錄的電子郵件地址。"
+
+#: 
+msgid "Undesignated"
+msgstr "未指定"
+
+#: 
+msgid "Verify church name, address, and contact info appears on giving statements."
+msgstr "驗證教會名稱、地址和聯絡資訊是否出現在奉獻報表上。"
+
+#: 
+msgid "The position is now assigned to %s, who has accepted it."
+msgstr "該職位現已分配給 %s，對方已接受。"
+
+#: 
+msgid "The position is now assigned to %s, who has not yet accepted it."
+msgstr "該職位現已分配給 %s，對方尚未接受。"
+
+#: 
+msgid "Their reason: %s"
+msgstr "他們的理由：%s"
+
+#: 
+msgid "View Assignments"
+msgstr "檢視分配"
+
+#: 
+msgid "Volunteers still needed for this occurrence: %d"
+msgstr "此次活動仍需志工：%d"
+
+#: 
+msgid "Volunteers still needed for this position: %d"
+msgstr "此職位仍需志工：%d"
+
+#: 
+msgid "A weekly sign-in grid for each class. Class lists and photo books are on the Sunday School dashboard and each class page."
+msgstr "每個班級的每週簽到表。班級名單和相簿位於主日學儀表板和每個班級頁面。"
+
+#: 
+msgid "A weekly sign-in grid for the school year, one column for each Sunday"
+msgstr "學年每週簽到表，每個週日一欄"
+
+#: 
+msgid "Age %d"
+msgstr "年齡 %d"
+
+#: 
+msgid "At least one group must be selected to make an attendance sheet."
+msgstr "必須至少選擇一個群組才能製作出勤表。"
+
+#: 
+msgid "Attendance Sheet"
+msgstr "出勤表"
+
+#: 
+msgid "Class List"
+msgstr "班級名單"
+
+#: 
+msgid "Download PDF"
+msgstr "下載 PDF"
+
+#: 
+msgid "Lockout period in minutes\n"
+"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
+msgstr "鎖定時間（分鐘）\n"
+"鎖定的帳戶在此分鐘數後自動解鎖。同一時間段內來自一個 IP 位址的失敗登入會被計數。"
+
+#: 
+msgid "Maximum number of failed logins from one IP address\n"
+"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
+"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
+msgstr "來自一個 IP 位址的最大失敗登入次數\n"
+"在鎖定時間內，來自一個 IP 位址的失敗登入和密碼重設請求計入此限制。達到限制後，該位址的登入將被拒絕，直到時間段結束。\n"
+"設為零以停用此功能，例如當所有人都透過一個代理位址存取 ChurchCRM 時。"
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "在使用者帳戶被鎖定之前允許的最大失敗登入次數。\n"
+"鎖定的帳戶在鎖定時間後自動解鎖，或在管理員重設失敗登入時提前解鎖。\n"
+"此功能有助於防止自動密碼猜測攻擊。\n"
+"設為零以停用此功能。"
+
+#: 
+msgid "Minutes until it unlocks by itself: %d"
+msgstr "自動解鎖前剩餘分鐘數：%d"
+
+#: 
+msgid "Sunday School Attendance Sheet"
+msgstr "主日學出勤表"
+
+#: 
+msgid "Sundays with no class are left off the sheet."
+msgstr "沒有課程的週日將從表格中省略。"
+
+#: 
+msgid "Database Upgrade"
+msgstr "資料庫升級"
+
+#: 
+msgid "Your database is being updated. Please keep this page open until the upgrade finishes."
+msgstr "您的資料庫正在更新。請保持此頁面開啟，直到升級完成。"
+
+#: 
+msgid "Family Labels"
+msgstr "家庭標籤"
+
+#: 
+msgid "%s – Total"
+msgstr "%s – 總計"
+
+#: 
+msgid "Bill"
+msgstr "紙鈔"
+
+#: 
+msgid "Choose a deposit or enter both report dates."
+msgstr "選擇一筆存款或輸入兩個報告日期。"
+
+#: 
+msgid "Choose one deposit to review its payments or print its bank slip. A selected deposit overrides the date range."
+msgstr "選擇一筆存款以審查其付款或列印銀行憑條。選定的存款將覆蓋日期範圍。"
+
+#: 
+msgid "Coin"
+msgstr "硬幣"
+
+#: 
+msgid "Deposit Report"
+msgstr "存款報告"
+
+#: 
+msgid "Download Report"
+msgstr "下載報告"
+
+#: 
+msgid "Enter valid report dates."
+msgstr "輸入有效的報告日期。"
+
+#: 
+msgid "Invalid report filters."
+msgstr "無效的報告篩選器。"
+
+#: 
+msgid "Invalid report options."
+msgstr "無效的報告選項。"
+
+#: 
+msgid "Leave filters empty to include all payments. These settings apply to the report, not the bank slip."
+msgstr "將篩選器留空以包含所有付款。這些設定適用於報告，而非銀行憑條。"
+
+#: 
+msgid "No records were returned. Adjust your filters and try again."
+msgstr "未傳回任何記錄。請調整篩選器後重試。"
+
+#: 
+msgid "Prepare for the Bank"
+msgstr "準備送銀行"
+
+#: 
+msgid "Preview Totals"
+msgstr "預覽總計"
+
+#: 
+msgid "Print Bank Slip"
+msgstr "列印銀行憑條"
+
+#: 
+msgid "Print the selected deposit in full, with cash and check totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
+msgstr "完整列印所選存款，包括現金和支票總計、計數表和證人行。報告篩選器被忽略。電子支付保留在摘要中，並從實體銀行票據總計中排除。"
+
+#: 
+msgid "Review Payments"
+msgstr "審查付款"
+
+#: 
+msgid "Review payments for a period, or prepare one deposit for the bank."
+msgstr "審查一段時間內的付款，或準備一筆存款送銀行。"
+
+#: 
+msgid "Review payments, download PDF or CSV, or print a bank slip for one deposit."
+msgstr "審查付款、下載 PDF 或 CSV，或為一筆存款列印銀行憑條。"
+
+#: 
+msgid "Select a valid deposit."
+msgstr "選擇有效的存款。"
+
+#: 
+msgid "Select one deposit to print a bank slip."
+msgstr "選擇一筆存款以列印銀行憑條。"
+
+#: 
+msgid "The report end date must be on or after the start date."
+msgstr "報告結束日期必須等於或晚於開始日期。"
+
+#: 
+msgid "Total Cash"
+msgstr "現金總計"
+
+#: 
+msgid "Total Coin"
+msgstr "硬幣總計"
+
+#: 
+msgid "Witness"
+msgstr "證人"
 

@@ -82,7 +82,7 @@ $app->group('/api', function (RouteCollectorProxy $group): void {
     $group->post('/allowRegistration', function (Request $request, Response $response): Response {
         $window = new \DateTime();
         $window->add(new \DateInterval('PT2M'));
-        SystemConfig::setValue('sKioskVisibilityTimestamp', $window->format('Y-m-d H:i:s'));
+        SystemConfig::setValue('sKioskVisibilityTimestamp', $window->format(\DateTime::ATOM));
 
         return SlimUtils::renderJSON($response, ['visibleUntil' => $window->format(\DateTime::ATOM)]);
     });

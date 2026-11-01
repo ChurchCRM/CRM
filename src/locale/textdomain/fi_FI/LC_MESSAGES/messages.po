@@ -931,14 +931,6 @@ msgid "Zero Givers"
 msgstr "Ei-lahjoittajat"
 
 #: 
-msgid "Individual Deposit Report"
-msgstr "Yksittäinen talletusraportti"
-
-#: 
-msgid "Advanced Deposit Report"
-msgstr "Tarkennettu talletusraportti"
-
-#: 
 msgid "Next"
 msgstr "Seuraava"
 
@@ -957,10 +949,6 @@ msgstr "Raportin loppupäivä"
 #: 
 msgid "Apply Report Dates To"
 msgstr "Käytä raportin päivämääriä kohteeseen"
-
-#: 
-msgid "Deposit Date (Default)"
-msgstr "Talletuspäivä (oletus)"
 
 #: 
 msgid "Payment Date"
@@ -983,10 +971,6 @@ msgid "Filter by Payment Type"
 msgstr "Suodata maksutavan mukaan"
 
 #: 
-msgid "All Methods"
-msgstr "Kaikki maksutavat"
-
-#: 
 msgid "Check"
 msgstr "Shekki"
 
@@ -997,10 +981,6 @@ msgstr "Käteinen"
 #: 
 msgid "Bank Draft"
 msgstr "Pankkivekseli"
-
-#: 
-msgid "0 - No Minimum"
-msgstr "0 - Ei vähimmäismäärää"
 
 #: 
 msgid "Other Settings"
@@ -1261,10 +1241,6 @@ msgstr "Vahvista tietotarrat"
 #: 
 msgid "Invalid login or password"
 msgstr "Virheellinen käyttäjätunnus tai salasana"
-
-#: 
-msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Liian monta epäonnistunutta kirjautumista: tilisi on lukittu. Ota yhteyttä ylläpitäjään."
 
 #: 
 msgid "Email/Username"
@@ -2125,24 +2101,12 @@ msgid "Classes"
 msgstr "Luokat"
 
 #: 
-msgid "Sunday School Reports"
-msgstr "Pyhäkoulun raportit"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Oppilaat, jotka eivät ole pyhäkoululuokassa"
 
 #: 
-msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr "Vähintään yksi ryhmä on valittava luokkaluetteloiden tai läsnäololistojen luomiseksi."
-
-#: 
 msgid "Report Details"
 msgstr "Raportin tiedot"
-
-#: 
-msgid "List all Roles (unchecked will list Teacher/Student roles only)"
-msgstr "Listaa kaikki roolit (jos valitsematta, listataan vain opettajat/oppilaat)"
 
 #: 
 msgid "First Sunday"
@@ -2163,10 +2127,6 @@ msgstr "Ylimääräiset oppilaat"
 #: 
 msgid "Extra Teachers"
 msgstr "Ylimääräiset opettajat"
-
-#: 
-msgid "Create Class List"
-msgstr "Luo luokkaluettelo"
 
 #: 
 msgid "Create Attendance Sheet"
@@ -4573,14 +4533,6 @@ msgid "PhotoBook"
 msgstr "Kuvakirja"
 
 #: 
-msgid "With Photos"
-msgstr "Kuvilla"
-
-#: 
-msgid "Create PhotoBook"
-msgstr "Luo kuvakirja"
-
-#: 
 msgid "SSE"
 msgstr "EKA"
 
@@ -4724,10 +4676,6 @@ msgstr "Vuosipäivät"
 #: 
 msgid "View User"
 msgstr "Näytä käyttäjä"
-
-#: 
-msgid "not found or user without an email"
-msgstr "ei löytynyt tai käyttäjällä ei ole sähköpostia"
 
 #: 
 msgid "UserName not set"
@@ -4920,13 +4868,6 @@ msgstr "Istunnon aikakatkaisu sekunneissa. Aseta nollaksi poistaaksesi aikakatka
 msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
 "Set to zero to disable this feature"
 msgstr "Vähimmäismäärä merkkejä, joiden verran uuden salasanan on poikettava vanhasta. Aseta nollaksi poistaaksesi ominaisuuden."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\n"
-"Once the maximum has been reached, an administrator must re-enable the account.\n"
-"This feature helps to protect against automated password guessing attacks.\n"
-"Set to zero to disable this feature."
-msgstr "Epäonnistuneiden kirjautumisyritysten enimmäismäärä ennen tilin lukitsemista. Tämän jälkeen ylläpitäjän on avattava tili. Aseta nollaksi poistaaksesi ominaisuuden."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -5564,10 +5505,6 @@ msgstr "Poista valitut"
 #: 
 msgid "Funds"
 msgstr "Rahastot"
-
-#: 
-msgid "Generate Report"
-msgstr "Luo raportti"
 
 #: 
 msgid "Payments"
@@ -6263,10 +6200,6 @@ msgid "Current Deposit"
 msgstr "Nykyinen talletusliuska"
 
 #: 
-msgid "Customizable report with filtering by date, fund, family, and payment method."
-msgstr "Muokattava raportti, jonka voit suodattaa päivämäärän, rahaston, perheen ja maksutavan mukaan."
-
-#: 
 msgid "Day"
 msgstr "Päivä"
 
@@ -6277,10 +6210,6 @@ msgstr "Joulu"
 #: 
 msgid "Deposit Statistics"
 msgstr "Talletusliuskan tilastot"
-
-#: 
-msgid "Detailed breakdown of a single deposit slip."
-msgstr "Yksittäisen talletusliuskan yksityiskohtainen erittely."
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6381,10 +6310,6 @@ msgstr "Kesä"
 #: 
 msgid "Let's get your system set up and ready to use"
 msgstr "Määritetään järjestelmäsi valmiiksi käyttöä varten"
-
-#: 
-msgid "List members eligible to vote based on giving history and membership criteria."
-msgstr "Listaa jäsenet, jotka ovat äänioikeutettuja lahjoitushistorian ja jäsenyyskriteerien perusteella."
 
 #: 
 msgid "Location"
@@ -9820,10 +9745,6 @@ msgid "View transaction details for a pledge payment"
 msgstr "Näytä lupausmaksun tapahtumatiedot"
 
 #: 
-msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
-msgstr "Äänioikeutettujen jäsenten on täytynyt tehdä lahjoitus tämän monen vuoden aikana (0, jos lahjoitusta ei vaadita)"
-
-#: 
 msgid "We could not find the family you were looking for."
 msgstr "Etsimääsi perhettä ei löytynyt."
 
@@ -10014,10 +9935,6 @@ msgstr "Pakota uudelleenasennus?"
 #: 
 msgid "Full Path"
 msgstr "Täysi polku"
-
-#: 
-msgid "Generate class lists, attendance sheets, and photo books"
-msgstr "Luo luokkaluetteloita, läsnäololistoja ja valokuvakirjoja"
 
 #: 
 msgid "Installed"
@@ -18544,10 +18461,6 @@ msgid "Could not match the church country."
 msgstr "Seurakunnan maata ei voitu täsmäyttää."
 
 #: 
-msgid "Class lists, attendance sheets, and photo books"
-msgstr "Luokkaluettelot, osallistumislistat ja valokuvakirjat"
-
-#: 
 msgid "Group membership lists and Sunday School class reports"
 msgstr "Ryhmien jäsenluettelot ja pyhäkoululuokkien raportit"
 
@@ -18750,22 +18663,10 @@ msgstr[0] "%d oletusvapaaehtoinen määrätty"
 msgstr[1] "%d oletusvapaaehtoista määrätty"
 
 #: 
-msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
-msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
-msgstr[0] "Tähän tehtävään tarvitaan vielä %d vapaaehtoinen lisää. Avaa tapahtumakerta täyttääksesi aukon."
-msgstr[1] "Tähän tehtävään tarvitaan vielä %d vapaaehtoista lisää. Avaa tapahtumakerta täyttääksesi aukon."
-
-#: 
 msgid "%d new occurrence"
 msgid_plural "%d new occurrences"
 msgstr[0] "%d uusi tapahtumakerta"
 msgstr[1] "%d uutta tapahtumakertaa"
-
-#: 
-msgid "%d volunteer is still needed for an upcoming occurrence."
-msgid_plural "%d volunteers are still needed for an upcoming occurrence."
-msgstr[0] "Tulevalle tapahtumakerralle tarvitaan vielä %d vapaaehtoinen."
-msgstr[1] "Tuleville tapahtumakerroille tarvitaan vielä %d vapaaehtoista."
 
 #: 
 msgid "%s Calendar"
@@ -20830,10 +20731,6 @@ msgstr "Avaa työala"
 #: 
 msgid "Open the occurrence"
 msgstr "Avaa tapahtumakerta"
-
-#: 
-msgid "Open the occurrence to assign the people you need."
-msgstr "Avaa tapahtumakerta määrittääksesi tarvitsemasi henkilöt."
 
 #: 
 msgid "Open this team"
@@ -24532,4 +24429,420 @@ msgstr "Vain lähettämäsi sähköposti näytetään."
 #: 
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "Toistuvia tapahtumia ei voitu luoda. Tarkista sovelluksen loki lisätietoja varten."
+
+#: 
+msgid "Confirm Password"
+msgstr "Vahvista salasana"
+
+#: 
+msgid "Your password has been changed. You can now sign in with your new password."
+msgstr "Salasanasi on vaihdettu. Voit nyt kirjautua sisään uudella salasanallasi."
+
+#: 
+msgid "1st"
+msgstr "1."
+
+#: 
+msgid "2nd"
+msgstr "2."
+
+#: 
+msgid "3rd"
+msgstr "3."
+
+#: 
+msgid "4th"
+msgstr "4."
+
+#: 
+msgid "5th"
+msgstr "5."
+
+#: 
+msgid "Can't remove administrator access from the only administrator who can sign in"
+msgstr "Järjestelmänvalvojan oikeuksia ei voi poistaa ainoalta järjestelmänvalvojalta, joka voi kirjautua sisään"
+
+#: 
+msgid "Choose the week of the month, from 1st to 5th"
+msgstr "Valitse kuukauden viikko, 1. – 5."
+
+#: 
+msgid "Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}"
+msgstr "Luo {{total}} tapahtumaa, kuukauden {{week}} {{day}} jokaisena kuukautena {{first}} – {{last}}"
+
+#: 
+msgid "Invalid day of the week"
+msgstr "Virheellinen viikonpäivä"
+
+#: 
+msgid "Monthly, on a weekday"
+msgstr "Kuukausittain, arkipäivänä"
+
+#: 
+msgid "Months without a 5th one are skipped."
+msgstr "Kuukaudet, joissa ei ole 5. viikkoa, ohitetaan."
+
+#: 
+msgid "RecurWOM must be a whole number from 1 to 5"
+msgstr "RecurWOM:n on oltava kokonaisluku 1–5"
+
+#: 
+msgid "Week of the month"
+msgstr "Kuukauden viikko"
+
+#: 
+msgid "Week of the month must be from 1 to 5"
+msgstr "Kuukauden viikon on oltava 1–5"
+
+#: 
+msgid "%s through %s"
+msgstr "%s – %s"
+
+#: 
+msgid "Church tax ID (EIN) printed on contribution statements"
+msgstr "Kirkon verotunnus (EIN) tulostettuna lahjoitustiedoissa"
+
+#: 
+msgid "Contribution statements are issued to the adults of a household. Please contact the church office if you need one."
+msgstr "Lahjoitustiedot annetaan talouden aikuisille. Ota yhteyttä kirkon toimistoon, jos tarvitset sellaisen."
+
+#: 
+msgid "Download statement"
+msgstr "Lataa tiedote"
+
+#: 
+msgid "Generated"
+msgstr "Luotu"
+
+#: 
+msgid "Goods and services"
+msgstr "Tavarat ja palvelut"
+
+#: 
+msgid "My Giving"
+msgstr "Omat lahjoitukseni"
+
+#: 
+msgid "No contributions"
+msgstr "Ei lahjoituksia"
+
+#: 
+msgid "No contributions were recorded for this period."
+msgstr "Tälle kaudelle ei kirjattu lahjoituksia."
+
+#: 
+msgid "No goods or services were provided in exchange for these contributions, other than intangible religious benefits."
+msgstr "Näiden lahjoitusten vastineeksi ei tarjottu tavaroita tai palveluita, lukuun ottamatta aineettomia uskonnollisia etuja."
+
+#: 
+msgid "Optional. Printed on contribution statements."
+msgstr "Valinnainen. Tulostetaan lahjoitustiedoissa."
+
+#: 
+msgid "Tax ID"
+msgstr "Verotunnus"
+
+#: 
+msgid "Tax ID (EIN)"
+msgstr "Verotunnus (EIN)"
+
+#: 
+msgid "Tax-deductible amount"
+msgstr "Verovähennyskelpoinen summa"
+
+#: 
+msgid "This is the household statement. It includes gifts for your family."
+msgstr "Tämä on talouden tiedote. Se sisältää lahjat perheellesi."
+
+#: 
+msgid "Total contributions"
+msgstr "Lahjoitukset yhteensä"
+
+#: 
+msgid "Year-end statement"
+msgstr "Vuoden lopun tiedote"
+
+#: 
+msgid "%d giving statement emailed to the family successfully."
+msgstr "%d lahjoitustiedote lähetetty perheelle onnistuneesti sähköpostitse."
+
+#: 
+msgid "%s Giving Statement"
+msgstr "%s Lahjoitustiedote"
+
+#: 
+msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "Mukauta lahjoitustiedoissa näkyvää tekstiä (sTaxReport1, sTaxReport2 jne.)."
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %s giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Hyvä %s-perhe,\n"
+"\n"
+"Liitteenä tähän sähköpostiin löydät %s lahjoitustiedotteen vuodelta %s.\n"
+"\n"
+"Jos sinulla on kysyttävää, ota yhteyttä kirkon toimistoon.\n"
+"\n"
+"Kiitos anteliaisuudestasi."
+
+#: 
+msgid "Email %s Giving Statement"
+msgstr "Lähetä %s Lahjoitustiedote sähköpostitse"
+
+#: 
+msgid "Envelope Numbers"
+msgstr "Kirjekuorien numerot"
+
+#: 
+msgid "Generate Giving Statements"
+msgstr "Luo lahjoitustiedotteet"
+
+#: 
+msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
+msgstr "Luo raportteja lahjoitustiedotteista, lupausten seurannasta ja talousanalyysistä."
+
+#: 
+msgid "Giving Reports"
+msgstr "Lahjoitusraportit"
+
+#: 
+msgid "Giving Statement"
+msgstr "Lahjoitustiedote"
+
+#: 
+msgid "Giving Statements"
+msgstr "Lahjoitustiedotteet"
+
+#: 
+msgid "Giving statement email failed to send. Please check your email server settings."
+msgstr "Lahjoitustiedotteen sähköpostin lähetys epäonnistui. Tarkista sähköpostipalvelimen asetukset."
+
+#: 
+msgid "Please mail your next gift to %s"
+msgstr "Lähetä seuraava lahjasi postitse osoitteeseen %s"
+
+#: 
+msgid "Print %s Giving Statement"
+msgstr "Tulosta %s Lahjoitustiedote"
+
+#: 
+msgid "Unable to email giving statement: no payment data found for that year."
+msgstr "Lahjoitustiedotetta ei voida lähettää sähköpostitse: maksutietoja ei löytynyt kyseiseltä vuodelta."
+
+#: 
+msgid "Unable to email giving statement: this family has no email address on file."
+msgstr "Lahjoitustiedotetta ei voida lähettää sähköpostitse: tällä perheellä ei ole sähköpostiosoitetta rekisteröitynä."
+
+#: 
+msgid "Undesignated"
+msgstr "Määrittelemätön"
+
+#: 
+msgid "Verify church name, address, and contact info appears on giving statements."
+msgstr "Varmista, että kirkon nimi, osoite ja yhteystiedot näkyvät lahjoitustiedoissa."
+
+#: 
+msgid "The position is now assigned to %s, who has accepted it."
+msgstr "Tehtävä on nyt osoitettu henkilölle %s, joka on hyväksynyt sen."
+
+#: 
+msgid "The position is now assigned to %s, who has not yet accepted it."
+msgstr "Tehtävä on nyt osoitettu henkilölle %s, joka ei ole vielä hyväksynyt sitä."
+
+#: 
+msgid "Their reason: %s"
+msgstr "Heidän syynsä: %s"
+
+#: 
+msgid "View Assignments"
+msgstr "Näytä tehtävät"
+
+#: 
+msgid "Volunteers still needed for this occurrence: %d"
+msgstr "Vapaaehtoisia tarvitaan vielä tähän tapahtumaan: %d"
+
+#: 
+msgid "Volunteers still needed for this position: %d"
+msgstr "Vapaaehtoisia tarvitaan vielä tähän tehtävään: %d"
+
+#: 
+msgid "A weekly sign-in grid for each class. Class lists and photo books are on the Sunday School dashboard and each class page."
+msgstr "Viikoittainen kirjautumisruudukko jokaiselle luokalle. Luokkalistat ja valokuva-albumit ovat pyhäkoulun kojelaudalla ja jokaisen luokan sivulla."
+
+#: 
+msgid "A weekly sign-in grid for the school year, one column for each Sunday"
+msgstr "Viikoittainen kirjautumisruudukko kouluvuodelle, yksi sarake jokaiselle sunnuntaille"
+
+#: 
+msgid "Age %d"
+msgstr "Ikä %d"
+
+#: 
+msgid "At least one group must be selected to make an attendance sheet."
+msgstr "Vähintään yksi ryhmä on valittava läsnäololuettelon luomiseksi."
+
+#: 
+msgid "Attendance Sheet"
+msgstr "Läsnäololuettelo"
+
+#: 
+msgid "Class List"
+msgstr "Luokkalista"
+
+#: 
+msgid "Download PDF"
+msgstr "Lataa PDF"
+
+#: 
+msgid "Lockout period in minutes\n"
+"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
+msgstr "Lukitusjakso minuutteina\n"
+"Lukittu tili avautuu itsestään näin monen minuutin jälkeen. Yhden IP-osoitteen epäonnistuneet kirjautumiset lasketaan samalta ajanjaksolta."
+
+#: 
+msgid "Maximum number of failed logins from one IP address\n"
+"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
+"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
+msgstr "Yhden IP-osoitteen epäonnistuneiden kirjautumisten enimmäismäärä\n"
+"Yhden IP-osoitteen epäonnistuneet kirjautumiset ja salasanan nollauspyynnöt lasketaan tähän rajaan lukitusjakson aikana. Kun raja saavutetaan, kirjautuminen kyseisestä osoitteesta hylätään jakson loppuun asti.\n"
+"Aseta nollaksi poistaaksesi tämän ominaisuuden käytöstä, esimerkiksi kun kaikki pääsevät ChurchCRM:ään yhden välityspalvelinosoitteen kautta."
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "Käyttäjätilin lukitsemista edeltävien epäonnistuneiden kirjautumisten enimmäismäärä.\n"
+"Lukittu tili avautuu itsestään lukitusjakson jälkeen tai aikaisemmin, kun järjestelmänvalvoja nollaa sen epäonnistuneet kirjautumiset.\n"
+"Tämä ominaisuus auttaa suojaamaan automaattisilta salasanan arvaushyökkäyksiltä.\n"
+"Aseta nollaksi poistaaksesi tämän ominaisuuden käytöstä."
+
+#: 
+msgid "Minutes until it unlocks by itself: %d"
+msgstr "Minuutteja itsestään avautumiseen: %d"
+
+#: 
+msgid "Sunday School Attendance Sheet"
+msgstr "Pyhäkoulun läsnäololuettelo"
+
+#: 
+msgid "Sundays with no class are left off the sheet."
+msgstr "Sunnuntait ilman opetusta jätetään pois luettelosta."
+
+#: 
+msgid "Database Upgrade"
+msgstr "Tietokannan päivitys"
+
+#: 
+msgid "Your database is being updated. Please keep this page open until the upgrade finishes."
+msgstr "Tietokantaasi päivitetään. Pidä tämä sivu auki, kunnes päivitys on valmis."
+
+#: 
+msgid "Family Labels"
+msgstr "Perhetarrat"
+
+#: 
+msgid "%s – Total"
+msgstr "%s – Yhteensä"
+
+#: 
+msgid "Bill"
+msgstr "Seteli"
+
+#: 
+msgid "Choose a deposit or enter both report dates."
+msgstr "Valitse talletus tai syötä molemmat raporttipäivät."
+
+#: 
+msgid "Choose one deposit to review its payments or print its bank slip. A selected deposit overrides the date range."
+msgstr "Valitse yksi talletus tarkistaaksesi sen maksut tai tulostaaksesi sen pankkitositteen. Valittu talletus ohittaa päivämäärävälin."
+
+#: 
+msgid "Coin"
+msgstr "Kolikko"
+
+#: 
+msgid "Deposit Report"
+msgstr "Talletusraportti"
+
+#: 
+msgid "Download Report"
+msgstr "Lataa raportti"
+
+#: 
+msgid "Enter valid report dates."
+msgstr "Syötä kelvolliset raporttipäivät."
+
+#: 
+msgid "Invalid report filters."
+msgstr "Virheelliset raporttisuodattimet."
+
+#: 
+msgid "Invalid report options."
+msgstr "Virheelliset raporttivaihtoehdot."
+
+#: 
+msgid "Leave filters empty to include all payments. These settings apply to the report, not the bank slip."
+msgstr "Jätä suodattimet tyhjiksi sisällyttääksesi kaikki maksut. Nämä asetukset koskevat raporttia, eivät pankkitositetta."
+
+#: 
+msgid "No records were returned. Adjust your filters and try again."
+msgstr "Tietueita ei palautettu. Säädä suodattimia ja yritä uudelleen."
+
+#: 
+msgid "Prepare for the Bank"
+msgstr "Valmistele pankkia varten"
+
+#: 
+msgid "Preview Totals"
+msgstr "Esikatsele summat"
+
+#: 
+msgid "Print Bank Slip"
+msgstr "Tulosta pankkitosite"
+
+#: 
+msgid "Print the selected deposit in full, with cash and check totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
+msgstr "Tulosta valittu talletus kokonaisuudessaan, käteis- ja sekkitotaleilla, laskentalehdillä ja todistajalinjoilla. Raporttisuodattimet ohitetaan. Sähköiset maksut pysyvät yhteenvedossa ja jätetään pois fyysisen pankkilipun kokonaissummasta."
+
+#: 
+msgid "Review Payments"
+msgstr "Tarkista maksut"
+
+#: 
+msgid "Review payments for a period, or prepare one deposit for the bank."
+msgstr "Tarkista maksut ajanjaksolta tai valmistele yksi talletus pankkia varten."
+
+#: 
+msgid "Review payments, download PDF or CSV, or print a bank slip for one deposit."
+msgstr "Tarkista maksut, lataa PDF tai CSV tai tulosta pankkitosite yhdelle talletukselle."
+
+#: 
+msgid "Select a valid deposit."
+msgstr "Valitse kelvollinen talletus."
+
+#: 
+msgid "Select one deposit to print a bank slip."
+msgstr "Valitse yksi talletus pankkitositteen tulostamiseksi."
+
+#: 
+msgid "The report end date must be on or after the start date."
+msgstr "Raportin päättymispäivän on oltava alkamispäivänä tai sen jälkeen."
+
+#: 
+msgid "Total Cash"
+msgstr "Käteinen yhteensä"
+
+#: 
+msgid "Total Coin"
+msgstr "Kolikot yhteensä"
+
+#: 
+msgid "Witness"
+msgstr "Todistaja"
 

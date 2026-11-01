@@ -1,9 +1,9 @@
 <?php
 
-use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\MpdfRenderer;
 use ChurchCRM\Service\PledgeReminderService;
+use ChurchCRM\Utils\PdfResponse;
+use ChurchCRM\Utils\RedirectUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -16,19 +16,11 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
 
         $document = PledgeReminderService::document($criteria);
         if ($document['letters'] === []) {
-            return $response
-                ->withHeader('Location', SystemURLs::getRootPath() . '/FinancialReports.php?ReturnMessage=NoRows&ReportType=' . rawurlencode('Pledge Reminders'))
-                ->withStatus(302);
+            RedirectUtils::redirect('FinancialReports.php?ReturnMessage=NoRows&ReportType=Pledge%20Reminders');
         }
 
         $pdf = (new MpdfRenderer())->renderToString('pledge-reminders', $document);
 
-        $filename = 'ReminderReport' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
-        $response->getBody()->write($pdf);
-
-        return $response
-            ->withHeader('Content-Type', 'application/pdf')
-            ->withHeader('Content-Length', (string) strlen($pdf))
-            ->withHeader('Content-Disposition', (SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline') . '; filename="' . $filename . '"');
+        return PdfResponse::create($response, $pdf, PledgeReminderService::fileLabel());
     });
 });
