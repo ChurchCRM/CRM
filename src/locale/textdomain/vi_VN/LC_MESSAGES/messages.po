@@ -1642,10 +1642,6 @@ msgid "Properties"
 msgstr "Thuộc tính"
 
 #: 
-msgid "Pledge Reminder Report"
-msgstr "Báo cáo cam kết nhắc nhở"
-
-#: 
 msgid "Restore Database"
 msgstr "Khôi phục dữ liệu"
 
@@ -9018,10 +9014,6 @@ msgid "Generate phone directory"
 msgstr "Tao danh ba dien thoai"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "Tao thu nhac nho cam ket dang hien"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "Tao bao cao ve thanh vien nhom va hoat dong"
 
@@ -15900,10 +15892,6 @@ msgstr "Ví dụ hợp lệ"
 #: 
 msgid "What this plugin does"
 msgstr "Chức năng của plugin này"
-
-#: 
-msgid "for all funds"
-msgstr "cho tất cả các quỹ"
 
 #: 
 msgid "for fund"

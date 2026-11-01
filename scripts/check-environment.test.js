@@ -64,3 +64,8 @@ test('integration fails on a missing service, unhealthy DB, or failed HTTP reque
         assert.equal(results.filter((result) => !result.ok).length, 1, failure);
     }
 });
+
+test('PHP readiness identifies missing test tooling', () => {
+    const results = checkEnvironment(options(['php']), ready, (file) => file !== 'tests/php/vendor/bin/tester');
+    assert.deepEqual(results.filter((result) => !result.ok).map((result) => result.name), ['PHP test runner']);
+});

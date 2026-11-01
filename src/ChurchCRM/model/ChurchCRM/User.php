@@ -751,12 +751,12 @@ class User extends BaseUser
         return MiscUtils::randomToken();
     }
 
-    public function postInsert(ConnectionInterface $con = null): void
+    public function postInsert(?ConnectionInterface $con = null): void
     {
         $this->createTimeLineNote('created');
     }
 
-    public function postDelete(ConnectionInterface $con = null): void
+    public function postDelete(?ConnectionInterface $con = null): void
     {
         $this->createTimeLineNote('deleted');
     }

@@ -1692,10 +1692,6 @@ msgid "Properties"
 msgstr "Egenskaper"
 
 #: 
-msgid "Pledge Reminder Report"
-msgstr "Pledge Påminnelse Rapporter"
-
-#: 
 msgid "Restore Database"
 msgstr "Gjenopprett Database"
 
@@ -9091,10 +9087,6 @@ msgid "Generate phone directory"
 msgstr "Generer telefonkatalog"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "Generer påminnelsesbrev for giverløfter"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "Generer rapporter om gruppemedlemskap og aktiviteter"
 
@@ -15977,10 +15969,6 @@ msgstr "Gyldige eksempler"
 #: 
 msgid "What this plugin does"
 msgstr "Hva denne plugin-modulen gjør"
-
-#: 
-msgid "for all funds"
-msgstr "for alle fond"
 
 #: 
 msgid "for fund"

@@ -7,12 +7,13 @@ use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\ChurchLogoService;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Twig\GettextExtension;
 use Mpdf\Mpdf;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
-class MpdfRenderer implements PdfRendererInterface
+class MpdfRenderer
 {
     private Environment $twig;
 
@@ -58,11 +59,6 @@ class MpdfRenderer implements PdfRendererInterface
         return $this->build($template, $data, $landscape, $mpdfOptions)->Output('', 'S');
     }
 
-    public function render(string $template, array $data, string $filename, string $disposition = 'I'): void
-    {
-        $this->build($template, $data)->Output($filename . '.pdf', $disposition === 'D' ? 'D' : 'I');
-    }
-
     private function build(string $template, array $data, bool $landscape = false, array $mpdfOptions = []): Mpdf
     {
         $data = $this->withChurch($data);
@@ -90,7 +86,7 @@ class MpdfRenderer implements PdfRendererInterface
         $localeCode = str_replace('_', '-', (string) $locale->getLocale());
         $data['lang'] = str_starts_with($localeCode, 'zh') ? $localeCode : substr($localeCode, 0, 2);
         $data['text_dir'] = $locale->isRTL() ? 'rtl' : 'ltr';
-        $data['generated_on'] = date(SystemConfig::getValue('sDateFormatLong') ?: 'Y-m-d');
+        $data['generated_on'] = DateTimeUtils::formatDate(DateTimeUtils::getToday());
         return $data;
     }
 

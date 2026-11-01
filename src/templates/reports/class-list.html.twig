@@ -7,6 +7,7 @@
     .staff { font-weight: bold; font-size: 10pt; margin: 0 0 1mm 0; }
   </style>
   {% for class in classes %}
+    {% if not loop.first %}{% include "_letter-break.html.twig" %}{% endif %}
     <h1>{{ class.name }} <span class="muted">{{ fiscal_year }}</span></h1>
     {% if class.teachers %}<p class="staff">{{ class.teachers|join(', ') }}</p>{% endif %}
     {% if class.liaisons %}<p class="staff">{{ gettext('Liaison') }}: {{ class.liaisons|join(', ') }}</p>{% endif %}
@@ -14,7 +15,7 @@
       {% for student in class.students %}
         <tr>
           <td style="width: 10mm;">
-            {% if student.photo %}<img src="{{ student.photo }}" alt="" style="width: 8mm; height: 8mm;">{% else %}<table style="width: 8mm; height: 8mm; background-color: #e9ecef;"><tr><td style="width: 8mm; height: 8mm; padding: 0; border: 0; text-align: center; vertical-align: middle; color: #6c757d; font-size: 9pt;">{{ student.initials }}</td></tr></table>{% endif %}
+            {% include '_person-photo.html.twig' with {'person': student} only %}
           </td>
           <td style="width: 45mm;">
             {{ student.name }}
@@ -30,7 +31,6 @@
       {% endfor %}
     </table>
     <p class="generated">{{ generated_on }}</p>
-    {% if not loop.last %}<pagebreak />{% endif %}
   {% else %}
     <p class="empty">{{ gettext('No records were returned from the previous report. Please adjust your filters or date range and try again.') }}</p>
   {% endfor %}

@@ -2,9 +2,9 @@
 
 Tracks #11014. MpdfRenderer creates an HTML-escaping environment for every report, including injected loaders. EscapedReportLoader separates compiled template classes from those created by an unsafe injected environment. Injected application extensions, functions, filters, tests and globals are preserved; escaping filters keep Twig's defaults.
 
-Current callers: Finance giving statements and envelopes, Member Portal giving statements, Sunday School class lists/attendance/photo books, label sheets, and deposit reports through DepositReportRenderer. Open report migration PRs inherit this default when rebased; their compatibility still needs review.
+Report construction and review rules live in [reports.md](../../.agents/skills/churchcrm/reports.md). Trace current `MpdfRenderer` consumers and shared templates when auditing a change.
 
-All 14 templates under src/templates/reports were inspected: shared base/letter/letterhead, tax statement, envelope numbers, class list, class attendance, photo book, label sheet, deposit and advanced deposit, and both deposit partials. No raw filter or autoescape-false block exists. Giving addresses use nl2br; Twig escapes their text before adding line breaks. Layout markup remains in the templates, not database strings.
+Templates live under `src/templates/reports/`. Giving addresses use `nl2br`; Twig escapes their text before adding line breaks. Layout markup belongs in templates.
 
 Validation:
 - Run npm run env:check -- php.

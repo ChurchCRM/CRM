@@ -42,6 +42,16 @@ let phpFiles = signatures.files
     .filter((f) => f.endsWith('.php') && !f.includes('/vendor/') && !f.startsWith('vendor/'))
     .map((f) => path.join(srcDir, f.replace(/\//g, path.sep)));
 
+function testFiles(directory) {
+    if (!fs.existsSync(directory)) return [];
+    return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+        const file = path.join(directory, entry.name);
+        if (entry.isDirectory()) return entry.name === 'vendor' ? [] : testFiles(file);
+        return entry.name.endsWith('.php') ? [file] : [];
+    });
+}
+phpFiles.push(...testFiles(path.join(__dirname, '../tests/php')));
+
 // By default, only validate files that actually changed (staged, unstaged, or
 // committed-but-unmerged vs the base branch). Full-repo scans belong in CI
 // (`npm run build:php:validate:all`) — running php -l on 700+ files on every

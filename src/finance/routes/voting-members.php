@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Utils\PdfResponse;
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Classification;
 use ChurchCRM\dto\SystemConfig;
@@ -41,12 +42,8 @@ $app->group('/reports/voting-members', function (RouteCollectorProxy $group): vo
         }
         $pdf = (new MpdfRenderer())->renderToString('voting-members', $report);
         $date = preg_replace('/[^A-Za-z0-9._-]/', '_', date(SystemConfig::getValue('sDateFilenameFormat')));
-        $filename = 'VotingMembers' . $date . '.pdf';
-        $response->getBody()->write($pdf);
-
-        return $response->withHeader('Content-Type', 'application/pdf')
-            ->withHeader('Cache-Control', 'private, no-store')->withHeader('X-Content-Type-Options', 'nosniff')
-            ->withHeader('Content-Disposition', (SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline') . '; filename="' . $filename . '"');
+        $fileLabel = 'VotingMembers-' . $date;
+        return PdfResponse::create($response, $pdf, $fileLabel);
     });
 })->add(function (Request $request, $handler): Response {
     if ($request->getHeaderLine('x-api-key') !== '') {

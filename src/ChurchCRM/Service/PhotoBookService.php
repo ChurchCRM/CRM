@@ -2,7 +2,6 @@
 
 namespace ChurchCRM\Service;
 
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Group;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOption;
@@ -106,8 +105,8 @@ class PhotoBookService
 
     private static function describe(Person $person, bool $isTeacher): array
     {
-        $photo = (string) $person->getPhoto()->getPhotoURI();
-        $photo = is_file($photo) ? $photo : '';
+        $portrait = ReportPhoto::forPerson($person);
+        $photo = $portrait['photo'];
         [$width, $height] = self::fitPhoto($photo);
 
         $details = [];
@@ -144,7 +143,7 @@ class PhotoBookService
             'photo' => $photo,
             'photo_width' => $width,
             'photo_height' => $height,
-            'initials' => $person->getInitial(SystemConfig::getIntValue('iPersonInitialStyle')),
+            'initials' => $portrait['initials'],
             'details' => $details,
         ];
     }

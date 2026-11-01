@@ -1648,10 +1648,6 @@ msgid "Properties"
 msgstr "Tulajdon"
 
 #: 
-msgid "Pledge Reminder Report"
-msgstr "Pledge Emlékeztető Jelentés"
-
-#: 
 msgid "Restore Database"
 msgstr "Adatbázis visszaállítása"
 
@@ -9046,10 +9042,6 @@ msgid "Generate phone directory"
 msgstr "Telefonkönyv készítése"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "Felajánlás-emlékeztető levelek készítése"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "Csoporttagsági és tevékenységi jelentések készítése"
 
@@ -15932,10 +15924,6 @@ msgstr "Érvényes példák"
 #: 
 msgid "What this plugin does"
 msgstr "Mit csinál ez a bővítmény"
-
-#: 
-msgid "for all funds"
-msgstr "minden alaphoz"
 
 #: 
 msgid "for fund"

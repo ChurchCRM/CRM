@@ -1670,10 +1670,6 @@ msgid "Properties"
 msgstr "Свойства"
 
 #: 
-msgid "Pledge Reminder Report"
-msgstr "Залог Напоминание Сообщить"
-
-#: 
 msgid "Restore Database"
 msgstr "Восстановить базу данных"
 
@@ -9091,10 +9087,6 @@ msgid "Generate phone directory"
 msgstr "Создать телефонный справочник"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "Создать письма-напоминания об обязательствах по пожертвованиям"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "Создать отчёты о членстве в группах и деятельности"
 
@@ -15985,10 +15977,6 @@ msgstr "Допустимые примеры"
 #: 
 msgid "What this plugin does"
 msgstr "Что делает этот плагин"
-
-#: 
-msgid "for all funds"
-msgstr "для всех фондов"
 
 #: 
 msgid "for fund"

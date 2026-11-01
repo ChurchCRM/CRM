@@ -1629,10 +1629,6 @@ msgid "Properties"
 msgstr "خواص"
 
 #: 
-msgid "Pledge Reminder Report"
-msgstr "تعهد تقرير تذكير"
-
-#: 
 msgid "Restore Database"
 msgstr "استعادة قاعدة البيانات"
 
@@ -9050,10 +9046,6 @@ msgid "Generate phone directory"
 msgstr "إنشاء دليل الهاتف"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "إنشاء رسائل تذكير التعهد"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "إنشاء تقارير عن عضوية الجماعة والأنشطة"
 
@@ -15952,10 +15944,6 @@ msgstr "أمثلة صالحة"
 #: 
 msgid "What this plugin does"
 msgstr "ما يفعله هذا الملحق"
-
-#: 
-msgid "for all funds"
-msgstr "لجميع الصناديق"
 
 #: 
 msgid "for fund"

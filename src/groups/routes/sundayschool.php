@@ -1,7 +1,7 @@
 <?php
 
+use ChurchCRM\Utils\PdfResponse;
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\EventAttendQuery;
@@ -16,7 +16,6 @@ use ChurchCRM\Service\ClassAttendanceService;
 use ChurchCRM\Service\ClassListService;
 use ChurchCRM\Service\DashboardService;
 use ChurchCRM\Service\FinancialService;
-use ChurchCRM\Service\GivingStatementService;
 use ChurchCRM\Service\MpdfRenderer;
 use ChurchCRM\Service\SundaySchoolService;
 use ChurchCRM\Slim\Middleware\Request\Setting\SundaySchoolEnabledMiddleware;
@@ -57,12 +56,8 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
             'classes' => ClassListService::classes($classIds($request)),
             'fiscal_year' => FinancialService::formatFiscalYear(FiscalYearUtils::getCurrentFiscalYearId()),
         ]);
-        $fileLabel = trim(ChurchMetaData::getChurchName() . ' ClassList ' . date(SystemConfig::getValue('sDateFilenameFormat')));
-        $response->getBody()->write($pdf);
-
-        return $response
-            ->withHeader('Content-Type', 'application/pdf')
-            ->withHeader('Content-Disposition', GivingStatementService::contentDisposition($fileLabel));
+        $fileLabel = trim('ClassList ' . date(SystemConfig::getValue('sDateFilenameFormat')));
+        return PdfResponse::create($response, $pdf, $fileLabel);
     });
 
     // Class attendance sheet: students and teachers of each chosen class against the Sundays of the school year.
@@ -106,11 +101,7 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
         ], true);
 
         $fileLabel = 'ClassAttendance ' . date(SystemConfig::getValue('sDateFilenameFormat'));
-        $response->getBody()->write($pdf);
-
-        return $response
-            ->withHeader('Content-Type', 'application/pdf')
-            ->withHeader('Content-Disposition', GivingStatementService::contentDisposition($fileLabel));
+        return PdfResponse::create($response, $pdf, $fileLabel);
     });
 
     // Sunday School Dashboard

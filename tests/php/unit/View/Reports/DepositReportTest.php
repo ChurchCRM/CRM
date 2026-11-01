@@ -1,12 +1,13 @@
 <?php
 
-require __DIR__ . '/../src/vendor/autoload.php';
+declare(strict_types=1);
 
-use ChurchCRM\Service\AdvancedDepositService;
-use ChurchCRM\Service\DepositReportRenderer;
 use ChurchCRM\Service\MpdfRenderer;
+use Tester\Assert;
 
-$renderer = DepositReportRenderer::create();
+require dirname(__DIR__, 3) . '/bootstrap.php';
+
+$renderer = new MpdfRenderer();
 $twig = (new ReflectionProperty(MpdfRenderer::class, 'twig'))->getValue($renderer);
 $text = '<b>Offering & "Review"</b>';
 $common = [
@@ -31,22 +32,10 @@ $data = [
 ];
 foreach ($data as $template => $document) {
     $html = $twig->render($template . '.html.twig', $document + $common);
-    if (str_contains($html, $text) || !str_contains($html, htmlspecialchars($text, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'))) {
-        throw new RuntimeException('Unescaped plain text in ' . $template);
-    }
+    Assert::notContains($text, $html, $template);
+    Assert::contains(htmlspecialchars($text, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'), $html, $template);
 }
 $ticket = $data['deposit'];
 $ticket['ticket'] = ['items' => [['align' => 'left', 'left' => 1, 'top' => 1, 'text' => $text]], 'title_x' => 1, 'perforation_y' => 1, 'date_x' => 1, 'date' => $text, 'stub_x' => 1, 'stub_y' => 1, 'totals_x' => 1];
 $html = $twig->render('deposit.html.twig', $ticket + $common);
-if (str_contains($html, $text)) {
-    throw new RuntimeException('Unescaped bank ticket');
-}
-foreach ([['DateStart' => '2026-02-30'], ['DateStart' => '2026-01-02', 'DateEnd' => '2026-01-01'], ['deposit' => []], ['funds' => [['1']]]] as $invalid) {
-    if (AdvancedDepositService::validationError($invalid) === '') {
-        throw new RuntimeException('Invalid report input accepted');
-    }
-}
-if (AdvancedDepositService::validationError(['deposit' => '12', 'DateStart' => 'stale-date']) !== '') {
-    throw new RuntimeException('A selected deposit must override the date range');
-}
-echo "Deposit templates escape text, shared letterhead and ticket values; invalid inputs are rejected.\n";
+Assert::notContains($text, $html, 'Bank ticket text is escaped');

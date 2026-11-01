@@ -1,10 +1,13 @@
 <?php
 
-require __DIR__ . '/../src/vendor/autoload.php';
+declare(strict_types=1);
 
 use ChurchCRM\Service\MpdfRenderer;
 use Twig\Environment;
 use Twig\Loader\ArrayLoader;
+use Tester\Assert;
+
+require dirname(__DIR__, 3) . '/bootstrap.php';
 
 $text = '<b>Église & "مريم" 中文</b>';
 $loader = new ArrayLoader(['probe.html.twig' => '{{ name }}|{{ address|nl2br }}']);
@@ -13,21 +16,20 @@ $unsafe->render('probe.html.twig', ['name' => $text, 'address' => $text]);
 $renderer = new MpdfRenderer($unsafe);
 $twig = (new ReflectionProperty(MpdfRenderer::class, 'twig'))->getValue($renderer);
 $html = $twig->render('probe.html.twig', ['name' => $text, 'address' => $text . "\nSecond line"]);
-if (str_contains($html, '<b>') || !str_contains($html, '&lt;b&gt;') || !str_contains($html, '<br') || !str_contains($html, 'مريم')) {
-    throw new RuntimeException('Injected/precompiled environments must escape text and preserve Unicode and line breaks');
-}
+Assert::notContains('<b>', $html);
+Assert::contains('&lt;b&gt;', $html);
+Assert::contains('<br', $html);
+Assert::contains('مريم', $html);
 $default = new MpdfRenderer();
 $twig = (new ReflectionProperty(MpdfRenderer::class, 'twig'))->getValue($default);
 $common = ['church_name' => $text, 'church_address' => $text, 'lang' => 'ar', 'text_dir' => 'rtl'];
 $family = ['salutation' => $text, 'address' => $text . "\nSecond line", 'gifts' => [['date' => $text, 'fund' => $text, 'method' => $text, 'amount' => '10.00']], 'total' => '10.00'];
 $html = $twig->render('tax-report.html.twig', $common + ['families' => [$family, $family], 'opening' => $text, 'closing' => $text, 'remittance' => true]);
-if (str_contains($html, '<b>') || substr_count($html, '&lt;b&gt;') < 8 || !str_contains($html, 'dir="rtl"') || !str_contains($html, '<br')) {
-    throw new RuntimeException('Giving statements, repeated letterheads and remittance slips must escape text');
-}
-foreach (glob(__DIR__ . '/../src/templates/reports/*.twig') as $path) {
+Assert::notContains('<b>', $html);
+Assert::true(substr_count($html, '&lt;b&gt;') >= 8, 'Repeated letterheads and remittance slips escape text');
+Assert::contains('dir="rtl"', $html);
+Assert::contains('<br', $html);
+foreach (glob(APP_ROOT . '/templates/reports/*.twig') as $path) {
     $source = file_get_contents($path);
-    if (preg_match('/\|\s*raw\b|autoescape\s+false/', $source)) {
-        throw new RuntimeException('Review escaping bypass in ' . basename($path));
-    }
+    Assert::same(0, preg_match('/\|\s*raw\b|autoescape\s+false/', $source), basename($path) . ' escapes plain text');
 }
-echo "Report escaping regression checks passed.\n";

@@ -62,8 +62,16 @@ describe("Treasurer: review a deposit and prepare it for the bank", () => {
         });
         cy.request({ url: `/api/deposits/${depositId}/pdf`, encoding: "binary" }).then((response) => {
             expect(response.headers["content-type"]).to.include("application/pdf");
+            expect(response.headers["content-disposition"]).to.include(`-DepositSlip-${depositId}-`);
+            expect(response.headers["cache-control"]).to.include("private").and.include("no-store");
+            expect(response.headers["x-content-type-options"]).to.eq("nosniff");
             return pdfText(response.body).then((lines) => {
                 expect(lines.join(" ")).to.include("42.00").and.include("50.00");
+                cy.request({ method: "HEAD", url: `/api/deposits/${depositId}/pdf` }).then((head) => {
+                    expect(head.status).to.eq(200);
+                    expect(head.body).to.eq("");
+                    expect(head.headers["content-disposition"]).to.eq(response.headers["content-disposition"]);
+                });
             });
         });
     });

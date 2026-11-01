@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Utils\PdfResponse;
 use ChurchCRM\Service\MpdfRenderer;
 use ChurchCRM\Service\ZeroGiversService;
 use ChurchCRM\Utils\CsvExporter;
@@ -25,10 +26,8 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
         }
 
         $document = ZeroGiversService::document($families, $criteria['dateStart'], $criteria['dateEnd'], $criteria['letterhead']);
-        $response->getBody()->write((new MpdfRenderer())->renderToString('zero-givers', $document));
+        $pdf = (new MpdfRenderer())->renderToString('zero-givers', $document);
 
-        return $response
-            ->withHeader('Content-Type', 'application/pdf')
-            ->withHeader('Content-Disposition', ZeroGiversService::contentDisposition());
+        return PdfResponse::create($response, $pdf, ZeroGiversService::fileLabel());
     });
 });
