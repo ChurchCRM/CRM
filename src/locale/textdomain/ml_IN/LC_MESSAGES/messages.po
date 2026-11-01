@@ -1614,10 +1614,6 @@ msgid "Properties"
 msgstr "സ്വഭാവങ്ങൾ"
 
 #: 
-msgid "Pledge Reminder Report"
-msgstr "സംഭാവന പ്രതിജ്ഞ ഓർമ്മിപ്പിക്കൽ റിപ്പോർട്ട്"
-
-#: 
 msgid "Restore Database"
 msgstr "ഡേറ്റാബേസ് പുനഃസ്ഥാപിക്കുക"
 
@@ -1959,20 +1955,8 @@ msgid "Liaison"
 msgstr "ബന്ധം"
 
 #: 
-msgid "City, State, Zip"
-msgstr "നഗരം, സംസ്ഥാനം, പിൻകോഡ്"
-
-#: 
 msgid "Send Newsletter"
 msgstr "ന്യൂസ്‌ലെറ്റർ അയക്കുക"
-
-#: 
-msgid "Member Name"
-msgstr "അംഗ നാമം"
-
-#: 
-msgid "Adult/Child"
-msgstr "മുതിർന്നവർ/കുട്ടി"
 
 #: 
 msgid "Cell Phone"
@@ -8987,10 +8971,6 @@ msgid "Generate phone directory"
 msgstr "ഫോൺ ഡയറക്ടറി സൃഷ്ടിക്കുക"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "സാമ്പത്തിക പ്രതിബദ്ധത ഓർമ്മപ്പെടുത്തൽ കത്തുകൾ സൃഷ്ടിക്കുക"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "ഗ്രൂപ്പ് അംഗത്വത്തെയും പ്രവർത്തനങ്ങളെയും കുറിച്ചുള്ള റിപ്പോർട്ടുകൾ സൃഷ്ടിക്കുക"
 
@@ -15873,10 +15853,6 @@ msgstr "സാധുവായ ഉദാഹരണങ്ങൾ"
 #: 
 msgid "What this plugin does"
 msgstr "ഈ പ്ലഗിൻ എന്ത് ചെയ്യുനു"
-
-#: 
-msgid "for all funds"
-msgstr "എല്ലാ ഫണ്ടുകൾക്കും"
 
 #: 
 msgid "for fund"

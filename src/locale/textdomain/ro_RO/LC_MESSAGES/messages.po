@@ -1672,10 +1672,6 @@ msgid "Properties"
 msgstr "Proprietăți"
 
 #: 
-msgid "Pledge Reminder Report"
-msgstr "Raportul Memento gaj"
-
-#: 
 msgid "Restore Database"
 msgstr "Restaurează bază de date"
 
@@ -2029,20 +2025,8 @@ msgid "Liaison"
 msgstr "Legătură"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Oras, de stat, Zip"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Trimite Newsletter"
-
-#: 
-msgid "Member Name"
-msgstr "Nume membru"
-
-#: 
-msgid "Adult/Child"
-msgstr "Adult / copil"
 
 #: 
 #, fuzzy
@@ -9088,10 +9072,6 @@ msgid "Generate phone directory"
 msgstr "Generați cartea de telefon"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "Generați scrisori de reamintire a angajamentelor"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "Generați rapoarte despre apartenența la grupuri și activități"
 
@@ -15978,10 +15958,6 @@ msgstr "Exemple valide"
 #: 
 msgid "What this plugin does"
 msgstr "Ce face acest modul"
-
-#: 
-msgid "for all funds"
-msgstr "pentru toate fondurile"
 
 #: 
 msgid "for fund"

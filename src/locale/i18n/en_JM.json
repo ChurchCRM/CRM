@@ -1,7 +1,6 @@
 {
   "State": "Parish",
   "Generate Catalog": "Generate Catalogue",
-  "City, State, Zip": "City, Parish, Zip",
   "Localization": "Localisation",
   "Default State - Must be 2-letter abbreviation!": "Default Parish - Must be 2-letter abbreviation!",
   "Internationalization (I18n) support": "Internationalisation (I18n) support",

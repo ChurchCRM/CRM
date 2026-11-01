@@ -1625,10 +1625,6 @@ msgid "Properties"
 msgstr "లక్షణాలు"
 
 #: 
-msgid "Pledge Reminder Report"
-msgstr "ప్రతిజ్ఞ రిమైండర్ నివేదిక"
-
-#: 
 msgid "Restore Database"
 msgstr "డేటాబేస్ పునరుద్ధరించు"
 
@@ -1970,20 +1966,8 @@ msgid "Liaison"
 msgstr "సంపర్కం"
 
 #: 
-msgid "City, State, Zip"
-msgstr "నగరం, రాష్ట్రం, పిన్ కోడ్"
-
-#: 
 msgid "Send Newsletter"
 msgstr "వార్తాలేఖ పంపండి"
-
-#: 
-msgid "Member Name"
-msgstr "సభ్యుని పేరు"
-
-#: 
-msgid "Adult/Child"
-msgstr "వయోజన/పిల్లలు"
 
 #: 
 msgid "Cell Phone"
@@ -8998,10 +8982,6 @@ msgid "Generate phone directory"
 msgstr "ఫోన్ డైరెక్టరీ రూపొందించండి"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "ప్రతిజ్ఞ స్మారక లేఖలు రూపొందించండి"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "సమూహ సభ్యత్వం మరియు కార్యకలాపాలపై నివేదికలు రూపొందించండి"
 
@@ -15884,10 +15864,6 @@ msgstr "చెల్లుబాటు అయ్యే ఉదాహరణలు"
 #: 
 msgid "What this plugin does"
 msgstr "ఈ ప్లగిన్ ఏం చేస్తుంది"
-
-#: 
-msgid "for all funds"
-msgstr "అన్ని నిధుల కోసం"
 
 #: 
 msgid "for fund"

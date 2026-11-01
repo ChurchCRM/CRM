@@ -1631,10 +1631,6 @@ msgid "Properties"
 msgstr "பண்புகள்"
 
 #: 
-msgid "Pledge Reminder Report"
-msgstr "உறுதிமொழி நினைவூட்டல் அறிக்கை"
-
-#: 
 msgid "Restore Database"
 msgstr "தகவல்/தரவுத்தளத்தை மீட்டமை"
 
@@ -1976,20 +1972,8 @@ msgid "Liaison"
 msgstr "தொடர்பு"
 
 #: 
-msgid "City, State, Zip"
-msgstr "நகரம், மாநிலம், ஜிப்"
-
-#: 
 msgid "Send Newsletter"
 msgstr "செய்திமடல் அனுப்பவும்"
-
-#: 
-msgid "Member Name"
-msgstr "உறுப்பினர் பெயர்"
-
-#: 
-msgid "Adult/Child"
-msgstr "பெரியவர்/குழந்தை"
 
 #: 
 msgid "Cell Phone"
@@ -9026,10 +9010,6 @@ msgid "Generate phone directory"
 msgstr "தொலைபேசி அடைவை உருவாக்கு"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "நிதி உறுதிமொழி நினைவூட்டல் கடிதங்களை உருவாக்கவும்"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "குழு உறுப்பினர் மற்றும் நடவடிக்கைகள் பற்றிய அறிக்கைகளை உருவாக்கவும்"
 
@@ -15918,10 +15898,6 @@ msgstr "செல்லுபடியான எடுத்துக்கா�
 #: 
 msgid "What this plugin does"
 msgstr "இந்த செருகுநிரல் என்ன செய்கிறது"
-
-#: 
-msgid "for all funds"
-msgstr "அனைத்து நிதிகளுக்கும்"
 
 #: 
 msgid "for fund"

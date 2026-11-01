@@ -1628,10 +1628,6 @@ msgid "Properties"
 msgstr "Propriétés"
 
 #: 
-msgid "Pledge Reminder Report"
-msgstr "Rappel de rapport de contribution"
-
-#: 
 msgid "Restore Database"
 msgstr "Restaurer la Base de Données"
 
@@ -1973,20 +1969,8 @@ msgid "Liaison"
 msgstr "Liaison"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Ville, État, Code postal"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Envoyer une Lettre de Nouvelles"
-
-#: 
-msgid "Member Name"
-msgstr "Nom du Membre"
-
-#: 
-msgid "Adult/Child"
-msgstr "Adulte / Enfant"
 
 #: 
 msgid "Cell Phone"
@@ -9017,10 +9001,6 @@ msgid "Generate phone directory"
 msgstr "Générer un annuaire téléphonique"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "Générer des lettres de rappel d'engagement financier"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "Générer des rapports sur l'appartenance aux groupes et les activités"
 
@@ -15903,10 +15883,6 @@ msgstr "Exemples valides"
 #: 
 msgid "What this plugin does"
 msgstr "Ce que fait ce plugin"
-
-#: 
-msgid "for all funds"
-msgstr "pour tous les fonds"
 
 #: 
 msgid "for fund"

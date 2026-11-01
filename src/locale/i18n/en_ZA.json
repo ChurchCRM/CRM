@@ -17,7 +17,6 @@
   "Check number not valid for 'CASH' payment": "Cheque number not valid for 'CASH' payment",
   "Fall": "Autumn",
   "Money amount too large. Maximum is $999999999.99": "Money amount too large. Maximum is R 999999999.99",
-  "City, State, Zip": "City, Province, Postcode",
   "Cell Phone": "Cellphone",
   "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM.": "This option requires at least MySQL version 3.22!  Hit browser back button to return to ChurchCRM.",
   "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __": "Paid by (  ) Cash    (  ) Cheque    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __",

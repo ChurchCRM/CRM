@@ -39,24 +39,12 @@ not make that entire historical file idempotent.
 
 ## Verification
 
-On a disposable MySQL or MariaDB server with generated ORM models available:
-
-```sh
-git show master:src/mysql/upgrade/7.8.1.sql > /tmp/original-7.8.1.sql
-git show 7.8.0:src/mysql/install/Install.sql > /tmp/Install-7.8.0.sql
-UPGRADE_TEST_DSN='mysql:host=127.0.0.1;port=3306' \
-UPGRADE_TEST_USER=root UPGRADE_TEST_PASSWORD=test-password \
-UPGRADE_TEST_BASELINE=/tmp/Install-7.8.0.sql \
-UPGRADE_TEST_ORIGINAL=/tmp/original-7.8.1.sql \
-php scripts/test-upgrade-request-batches.php
-```
-
-`scripts/test-upgrade-request-http.php` uses the same connection variables and
-requires a disposable checkout without `src/Include/Config.php`. It temporarily
-writes that configuration and replaces `upgrade.json`, then restores both. It
-starts PHP's development server on port 8097 and verifies root and subdirectory
-continuation through the real Bootstrapper and Slim route. Use a nonempty database
-password because Config.php validation requires one.
+Run the Service and Controller integration packages with the commands in
+[PHP tests](../../tests/php/README.md#integration-tests). The runner creates a
+temporary application copy and the tests create disposable databases. Small test schemas and generated scripts exercise checkpointing, interruption
+and concurrent requests.
+The HTTP test covers root and subdirectory continuation through Bootstrapper and
+the Slim route, using an available local port.
 
 Before considering the approach tested for release, exercise the seeded Cypress
 upgrade wizard, a real release archive upgrade, the ChurchInfo and 6.0.0 restore

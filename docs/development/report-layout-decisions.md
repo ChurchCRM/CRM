@@ -18,8 +18,9 @@ its photo rows remain 10mm high; compact attendance sheets retain 6mm rows.
 | Fundraiser statements | One buyer's purchases and remittance section per statement; keep these with the statement body. |
 | Labels/name tags and bank tickets | Positioned output follows the selected stock. Keep label offsets, deposit perforation/stub coordinates and separate deposit-summary margins. Physical alignment is tracked in #11015. |
 
-Section-level church headers are tracked separately in #11005. The Church
-Directory migration is #10981. Neither is folded into portrait consolidation.
+Section-level church headers are separate from portrait consolidation; preserve
+the upstream `_letter-break` partial when combining these changes. The Church
+Directory migration is #10981.
 
 ## Validation record
 

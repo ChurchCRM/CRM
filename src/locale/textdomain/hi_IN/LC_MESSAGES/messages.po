@@ -1617,10 +1617,6 @@ msgid "Properties"
 msgstr "गुण"
 
 #: 
-msgid "Pledge Reminder Report"
-msgstr "प्रतिज्ञा अनुस्मारक रिपोर्ट"
-
-#: 
 msgid "Restore Database"
 msgstr "डेटाबेस पुनर्स्थापित करें"
 
@@ -1962,20 +1958,8 @@ msgid "Liaison"
 msgstr "संपर्क सूत्र"
 
 #: 
-msgid "City, State, Zip"
-msgstr "शहर, राज्य, ज़िप"
-
-#: 
 msgid "Send Newsletter"
 msgstr "न्यूज़लेटर भेजें"
-
-#: 
-msgid "Member Name"
-msgstr "सदस्य का नाम"
-
-#: 
-msgid "Adult/Child"
-msgstr "वयस्क/बच्चा"
 
 #: 
 msgid "Cell Phone"
@@ -8989,10 +8973,6 @@ msgid "Generate phone directory"
 msgstr "फ़ोन निर्देशिका तैयार करें"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "प्रतिज्ञा अनुस्मारक पत्र तैयार करें"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "समूह सदस्यता और गतिविधियों पर रिपोर्ट तैयार करें"
 
@@ -15875,10 +15855,6 @@ msgstr "वैध उदाहरण"
 #: 
 msgid "What this plugin does"
 msgstr "यह प्लगइन क्या करता है"
-
-#: 
-msgid "for all funds"
-msgstr "सभी निधियों के लिए"
 
 #: 
 msgid "for fund"

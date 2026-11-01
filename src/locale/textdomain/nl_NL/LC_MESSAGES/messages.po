@@ -1614,10 +1614,6 @@ msgid "Properties"
 msgstr "Kenmerken"
 
 #: 
-msgid "Pledge Reminder Report"
-msgstr "Bijdrage herinneering Rapport"
-
-#: 
 msgid "Restore Database"
 msgstr "Herstel de database"
 
@@ -1959,20 +1955,8 @@ msgid "Liaison"
 msgstr "Liaison"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Stad, Provincie, Postcode"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Stuur Nieuwsbrief"
-
-#: 
-msgid "Member Name"
-msgstr "Naam van Lid"
-
-#: 
-msgid "Adult/Child"
-msgstr "Volwassene / kind"
 
 #: 
 msgid "Cell Phone"
@@ -8990,10 +8974,6 @@ msgid "Generate phone directory"
 msgstr "Telefoonlijst genereren"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "Herinneringsbrieven voor toezeggingen genereren"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "Rapporten genereren over groepslidmaatschap en activiteiten"
 
@@ -15876,10 +15856,6 @@ msgstr "Geldige voorbeelden"
 #: 
 msgid "What this plugin does"
 msgstr "Wat deze plug-in doet"
-
-#: 
-msgid "for all funds"
-msgstr "voor alle fondsen"
 
 #: 
 msgid "for fund"

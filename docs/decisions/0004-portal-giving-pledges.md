@@ -128,7 +128,7 @@ Reuse first. The family and fund views exist; they gain person lines and LEFT JO
 |---|---|---|
 | Pledge Dashboard `/finance/pledge/dashboard` and Family Pledge Summary `/finance/pledge/family-summary` | `FamilyPledgeSummaryService::getFamilyPledgesByFiscalYear()`: pledges against payments per family and fund | LEFT JOIN family (GIV-02); a line per credited person under the family (GIV-84) |
 | Fund contributors `/finance/fund/{fundId}/contributors` | `FundContributorsService::getFundContributors()` | the same |
-| Pledge Family Summary PDF (`Reports/FamilyPledgeSummary.php`) and Pledge Reminders (`Reports/ReminderReport.php`) | family-level, by `plg_FYID` | stay family-level; a person's pledge counts in their family; the report help says so |
+| Pledge Family Summary PDF (`finance/reports/family-pledge-summary/download`) and Pledge Reminders (`finance/reports/pledge-reminders/download`) | family-level, by `plg_FYID` | stay family-level; a person's pledge counts in their family; the report help says so |
 | Family view, pledges and payments table | family-level | "Given by" column (GIV-06) |
 | Person view | nothing | Finance-only Giving card with the person's gifts (GIV-06) and pledges with progress (GIV-84) |
 | Pledge detail `/finance/pledge/{groupKey}` | the rows | change history from `faud` (GIV-84) |

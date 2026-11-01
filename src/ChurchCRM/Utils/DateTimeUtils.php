@@ -259,6 +259,9 @@ class DateTimeUtils
         $dateFormat = str_replace("Y", "Y", $dateFormat);
         $dateFormat = str_replace("/", " ", $dateFormat);
         $dateFormat = str_replace("-", " ", $dateFormat);
+        $dateFormat = str_replace(".", " ", $dateFormat);
+        $monthName = preg_replace('/./u', '\\\\$0', gettext($dateObj->format('F')));
+        $dateFormat = str_replace("F", $monthName, $dateFormat);
 
         if ($bWithTime) {
             return $dateObj->format($dateFormat . ' g:i A');

@@ -150,21 +150,23 @@ describe("Mailing address on mailed reports", () => {
     it("addresses the confirmation letter to the second address and lists it on the data sheet", () => {
         const familyName = "MailLetter" + Cypress._.random(0, 1e6);
         createFamilyWithMailingAddress(familyName).then((familyId) => {
-            fetchPdfLines(`/people/report/verify?familyId=${familyId}`).then((lines) => {
+            fetchPdfLines(`/people/report/verify?familyId=${familyId}`).then((rawLines) => {
+                // HTML collapses the label layout's double space before the ZIP.
+                const lines = rawLines.map((line) => line.replace(/\s+/g, " ").trim());
                 // The address block under the letterhead — salutation, then the
                 // mailing address — is what shows through the envelope window.
                 const block = lines.indexOf("PO Box 1204");
                 expect(block, "the mailing address in the letter's address block").to.be.greaterThan(-1);
                 expect(lines[block - 1]).to.include(familyName);
-                expect(lines[block + 1]).to.equal("Othertown, IL  62998");
+                expect(lines[block + 1]).to.equal("Othertown, IL 62998");
                 // The data sheet lists what is on record: the primary address and,
                 // because it differs, the mailing address too.
                 const address = lines.indexOf("Address:");
                 expect(address, "the data sheet's Address line").to.be.greaterThan(-1);
-                expect(lines[address + 1]).to.equal("742 Evergreen Terrace, Springfield, IL  62704");
+                expect(lines[address + 1]).to.equal("742 Evergreen Terrace, Springfield, IL 62704");
                 const mailing = lines.indexOf("Mailing Address:");
                 expect(mailing, "the data sheet's Mailing Address line").to.be.greaterThan(-1);
-                expect(lines[mailing + 1]).to.equal("PO Box 1204, Othertown, IL  62998");
+                expect(lines[mailing + 1]).to.equal("PO Box 1204, Othertown, IL 62998");
             });
         });
     });

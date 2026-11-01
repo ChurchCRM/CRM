@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-31 17:29+0000\n"
+"POT-Creation-Date: 2026-11-01 13:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1215,9 +1215,6 @@ msgstr ""
 msgid "Administrators have full access to all features and data. Individual permissions do not apply."
 msgstr ""
 
-msgid "Adult/Child"
-msgstr ""
-
 msgid "Adults"
 msgstr ""
 
@@ -1511,6 +1508,10 @@ msgid "Amount Max"
 msgstr ""
 
 msgid "Amount Min"
+msgstr ""
+
+#, php-format
+msgid "Amount due for %s: %s"
 msgstr ""
 
 msgid "Amount exceeds maximum allowed (999999.99)"
@@ -3326,9 +3327,6 @@ msgid "City is required"
 msgstr ""
 
 msgid "City is required."
-msgstr ""
-
-msgid "City, State, Zip"
 msgstr ""
 
 msgid "Class"
@@ -7313,9 +7311,6 @@ msgstr ""
 msgid "Generate phone directory"
 msgstr ""
 
-msgid "Generate pledge reminder letters"
-msgstr ""
-
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr ""
 
@@ -9577,9 +9572,6 @@ msgid "Meetings of {{name}}"
 msgstr ""
 
 msgid "Member"
-msgstr ""
-
-msgid "Member Name"
 msgstr ""
 
 msgid "Member Portal"
@@ -12206,9 +12198,6 @@ msgid "Pledge Details"
 msgstr ""
 
 msgid "Pledge Family Summary"
-msgstr ""
-
-msgid "Pledge Reminder Report"
 msgstr ""
 
 msgid "Pledge Reminder Signer"
@@ -18456,9 +18445,6 @@ msgid "fields"
 msgstr ""
 
 msgid "files"
-msgstr ""
-
-msgid "for all funds"
 msgstr ""
 
 msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."

@@ -1632,10 +1632,6 @@ msgid "Properties"
 msgstr "Properti"
 
 #: 
-msgid "Pledge Reminder Report"
-msgstr "Laporan Pengingat Janji"
-
-#: 
 msgid "Restore Database"
 msgstr "Pulihkan Database"
 
@@ -1977,20 +1973,8 @@ msgid "Liaison"
 msgstr "Hubungan"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Kota, Negara Bagian, Zip"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Kirim Newsletter"
-
-#: 
-msgid "Member Name"
-msgstr "Nama anggota"
-
-#: 
-msgid "Adult/Child"
-msgstr "Orang dewasa / anak-anak"
 
 #: 
 msgid "Cell Phone"
@@ -9008,10 +8992,6 @@ msgid "Generate phone directory"
 msgstr "Buat direktori telepon"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "Buat surat pengingat janji persembahan"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "Buat laporan tentang keanggotaan dan kegiatan grup"
 
@@ -15890,10 +15870,6 @@ msgstr "Contoh yang Valid"
 #: 
 msgid "What this plugin does"
 msgstr "Apa yang dilakukan plugin ini"
-
-#: 
-msgid "for all funds"
-msgstr "untuk semua dana"
 
 #: 
 msgid "for fund"
