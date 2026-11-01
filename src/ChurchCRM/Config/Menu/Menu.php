@@ -496,6 +496,7 @@ class Menu
             $adminMenu = new MenuItem(gettext('Admin'), '', $isFinanceEnabled);
             $adminMenu->addSubMenu(new MenuItem(gettext('Envelope Manager'), 'ManageEnvelopes.php', $isFinanceEnabled, 'fa-envelope'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Donation Funds'), 'finance/funds', $isFinanceEnabled, 'fa-piggy-bank'));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Statement Settings'), 'finance/statements/settings', $isFinanceEnabled, 'fa-file-lines'));
 
             $depositsMenu->addSubMenu($adminMenu);
         }
