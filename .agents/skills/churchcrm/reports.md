@@ -62,6 +62,7 @@ Every report reads the church's settings, so a report prints correctly for any c
 - User-visible strings go through `gettext()`. Database codes (`CASH`, `CREDITCARD`) print as their translated labels.
 - Money goes through `CurrencyFormatter` (symbol, position and separators come from settings). Sum in integer cents and format once.
 - Display dates go through `DateTimeUtils::formatDate()` (`sDateFormatLong`, month name through `gettext`). A narrow table column may use `DateTimeUtils::formatForDatePicker()`. A month and day only uses `IntlDateFormatter` with the current locale. The renderer supplies `generated_on`. Filenames use `sDateFilenameFormat`. Storage, API and CSV dates stay ISO `Y-m-d`.
+- A donor-facing year (giving statements, family statement links, the portal, Year-End Giving) uses `TaxYearUtils` (`iTaxYearStartMonth` and `iTaxYearStartDay`), never the fiscal year. Pledges, budgets and church reports use `FiscalYearUtils`.
 - Fiscal years use `FiscalYearUtils` (`getFiscalYearDatesById`, `formatFiscalYearLabel`, `getCurrentFiscalYearId`) and `iFYMonth`; a report never builds a year label or range itself.
 - Keep Unicode end to end; let the shared renderer provide language, direction and script fonts. Exercise non-Latin and RTL content in the complete document, including repeated headers and remittance sections.
 - Mailing address comes from `Family::getMailingAddressParts()` (includes Address2 and the secondary flag) when the letter is mailed.

@@ -7,9 +7,8 @@ use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Portal\PortalNav;
 use ChurchCRM\Portal\PortalSelfService;
 use ChurchCRM\Portal\PortalTwig;
-use ChurchCRM\Service\MpdfRenderer;
 use ChurchCRM\Service\GivingStatementService;
-use ChurchCRM\Utils\FiscalYearUtils;
+use ChurchCRM\Utils\TaxYearUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
@@ -26,25 +25,25 @@ $group->get('/giving', function (Request $request, Response $response) use ($por
     $actor = $portalGivingActor($request);
     $family = $actor?->getFamily();
     $today = date('Y-m-d');
-    $currentYear = FiscalYearUtils::endYearForId(FiscalYearUtils::getCurrentFiscalYearId());
+    $currentYear = TaxYearUtils::currentEndYear();
     $entered = $family?->getDateEntered('Y-m-d') ?: $today;
-    $firstYear = min($currentYear, FiscalYearUtils::getEndYearForDate($entered));
+    $firstYear = min($currentYear, TaxYearUtils::endYearForDate($entered));
     $isHousehold = $family && PortalSelfService::isAdultOf($family, $actor);
     $givingYears = [];
     if ($family && $isHousehold) {
         foreach (PledgeQuery::create()->filterByFamId((int) $family->getId())->filterByPledgeOrPayment('Payment')->find() as $gift) {
-            $givingYears[FiscalYearUtils::getEndYearForDate($gift->getDate('Y-m-d'))] = true;
+            $givingYears[TaxYearUtils::endYearForDate($gift->getDate('Y-m-d'))] = true;
         }
     }
     $years = [];
     for ($year = $currentYear; $year >= $firstYear; --$year) {
         $years[] = [
             'value' => $year,
-            'label' => FiscalYearUtils::getFiscalYearDatesForCalendarYear($year)['label'],
+            'label' => TaxYearUtils::yearLabel($year),
             'hasGiving' => isset($givingYears[$year]),
         ];
     }
-    $year = max($firstYear, FiscalYearUtils::endYearForId(FiscalYearUtils::getCurrentFiscalYearId() - 1));
+    $year = max($firstYear, TaxYearUtils::currentEndYear() - 1);
     return PortalTwig::render(
         $response,
         'giving/index.html.twig',
@@ -74,8 +73,8 @@ $group->get('/giving/statement', function (Request $request, Response $response)
         );
     }
 
-    $currentEndYear = FiscalYearUtils::endYearForId(FiscalYearUtils::getCurrentFiscalYearId());
-    $previousEndYear = FiscalYearUtils::endYearForId(FiscalYearUtils::getCurrentFiscalYearId() - 1);
+    $currentEndYear = TaxYearUtils::currentEndYear();
+    $previousEndYear = TaxYearUtils::currentEndYear() - 1;
     $year = (int) ($request->getQueryParams()['year'] ?? $previousEndYear);
     if ($year < 1990 || $year > $currentEndYear) {
         $year = $previousEndYear;
@@ -93,9 +92,8 @@ $group->get('/giving/statement', function (Request $request, Response $response)
         $statements = [GivingStatementService::emptyStatement($family, $isHousehold ? $family->getName() : $actor->getFullName())];
     }
 
-    $data = GivingStatementService::document($statements, $criteria['dateStart'], $criteria['dateEnd']);
     $fileLabel = GivingStatementService::fileLabel($year, $family->getName());
 
-    $pdf = (new MpdfRenderer())->renderToString('tax-report', $data);
+    $pdf = GivingStatementService::pdf($statements, $criteria['dateStart'], $criteria['dateEnd']);
     return PdfResponse::create($response, $pdf, $fileLabel);
 });

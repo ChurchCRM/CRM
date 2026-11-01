@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\TaxYearUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
@@ -53,6 +54,7 @@ $base = SystemURLs::getRootPath() . '/finance/reports/giving-statements';
     <div class="card mb-3">
         <div class="card-header"><h3 class="card-title"><?= gettext('Filters') ?></h3></div>
         <div class="card-body">
+            <p class="text-body-secondary" id="statementTimeline"><?= InputUtils::escapeHTML(sprintf(gettext('A statement covers the tax year by default. The last tax year, %s, is %s. Change the dates to include any other period.'), TaxYearUtils::datesForEndYear(TaxYearUtils::currentEndYear() - 1)['label'], TaxYearUtils::periodText(TaxYearUtils::currentEndYear() - 1))) ?></p>
             <div class="row g-3 mb-3">
                 <div class="col-md-4">
                     <label class="form-label" for="DateStart"><?= gettext('Report Start Date') ?></label>

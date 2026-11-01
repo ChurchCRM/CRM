@@ -3,7 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\Utils\CSRFUtils;
-use ChurchCRM\Utils\FiscalYearUtils;
+use ChurchCRM\Utils\TaxYearUtils;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\EventQuery;
@@ -171,15 +171,18 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
                     <div class="dropdown-divider"></div>
                     <h6 class="dropdown-header"><i class="fa-solid fa-file-invoice-dollar me-1"></i><?= gettext('Giving Statements') ?></h6>
                     <?php foreach ($taxYears as $taxYear) { ?>
+                    <?php $taxYearLabel = TaxYearUtils::datesForEndYear((int) $taxYear)['label']; $taxYearPeriod = TaxYearUtils::periodText((int) $taxYear); ?>
                     <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/finance/reports/giving-statements/download?familyId=<?= $family->getId() ?>&amp;year=<?= (int)$taxYear ?>" target="_blank">
-                        <i class="fa-solid fa-print me-2"></i><?= sprintf(gettext('Print %s Giving Statement'), FiscalYearUtils::getFiscalYearDatesForCalendarYear((int) $taxYear)['label']) ?>
+                        <i class="fa-solid fa-print me-2"></i><?= sprintf(gettext('Print %s Giving Statement'), $taxYearLabel) ?>
+                        <small class="d-block text-body-secondary ms-4"><?= InputUtils::escapeHTML($taxYearPeriod) ?></small>
                     </a>
                     <form method="post" action="<?= SystemURLs::getRootPath() ?>/finance/reports/giving-statements/email" class="m-0">
                         <input type="hidden" name="familyId" value="<?= $family->getId() ?>">
                         <input type="hidden" name="year" value="<?= (int)$taxYear ?>">
                         <?= CSRFUtils::getTokenInputField('tax_email_' . (int)$taxYear) ?>
                         <button type="submit" class="dropdown-item border-0 bg-transparent w-100 text-start">
-                            <i class="fa-solid fa-envelope me-2"></i><?= sprintf(gettext('Email %s Giving Statement'), FiscalYearUtils::getFiscalYearDatesForCalendarYear((int) $taxYear)['label']) ?>
+                            <i class="fa-solid fa-envelope me-2"></i><?= sprintf(gettext('Email %s Giving Statement'), $taxYearLabel) ?>
+                            <small class="d-block text-body-secondary ms-4"><?= InputUtils::escapeHTML($taxYearPeriod) ?></small>
                         </button>
                     </form>
                     <?php } ?>

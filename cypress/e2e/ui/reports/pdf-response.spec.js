@@ -33,7 +33,7 @@ describe("Staff download reports with a common church identity", () => {
             return cy.request(`${Cypress.mailpitUrl()}/api/v1/message/${message.ID}`).then(({ body: full }) => {
                 const pdf = full.Attachments.find((part) => part.ContentType === "application/pdf");
                 expect(pdf, "PDF attachment").to.exist;
-                return pdf;
+                return { ...pdf, messageText: full.Text };
             });
         }
         expect(attemptsLeft, `new ${subject} email`).to.be.greaterThan(0);
@@ -96,6 +96,7 @@ describe("Staff download reports with a common church identity", () => {
                 });
             newAttachment(knownIds, "Giving Statement").then((pdf) => {
                 expect(pdf.FileName).to.eq("Église-Nord-GivingStatement-2018-Campbell.pdf");
+                expect(pdf.messageText).to.include("Statement period: January 01 2018 through December 31 2018");
             });
         });
     });

@@ -5,6 +5,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\TaxYearUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
@@ -20,6 +21,10 @@ $monthNames = [
 ];
 $fyMonthName = $monthNames[$iFYMonth] ?? '';
 
+$taxYear = TaxYearUtils::datesForEndYear(TaxYearUtils::currentEndYear());
+$taxYearLabel = $taxYear['label'];
+$taxYearPeriod = TaxYearUtils::describePeriod($taxYear['startDate'], $taxYear['endDate']);
+
 ?>
 
 <div class="card mb-3">
@@ -27,6 +32,11 @@ $fyMonthName = $monthNames[$iFYMonth] ?? '';
         <i class="fa-solid fa-calendar-days me-1"></i>
         <?= gettext('Fiscal Year') ?>: <strong><?= InputUtils::escapeHTML($fyLabel) ?></strong>
         <span class="text-secondary ms-2"><?= InputUtils::escapeHTML(sprintf(gettext('Your fiscal year starts in %s.'), $fyMonthName)) ?></span>
+        <div class="mt-2">
+            <i class="fa-solid fa-file-invoice-dollar me-1"></i>
+            <?= gettext('Tax Year') ?>: <strong><?= InputUtils::escapeHTML($taxYearLabel) ?></strong>
+            <span class="text-secondary ms-2"><?= InputUtils::escapeHTML(sprintf(gettext('Giving statements cover the tax year, %s.'), $taxYearPeriod)) ?></span>
+        </div>
     </div>
 </div>
 

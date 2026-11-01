@@ -26,6 +26,13 @@ describe("Giving statements", () => {
         cy.get(`a[href$='${statementsPath}']`).should("exist");
     });
 
+    it("says which period a statement covers by default", () => {
+        cy.visit(statementsPath);
+        cy.get("#statementTimeline")
+            .invoke("text")
+            .should("match", /covers the tax year by default\. The last tax year, \d{4}, is January 01 \d{4} through December 31 \d{4}\./);
+    });
+
     it("treasurer previews the families and total in a popup, then gets the download links", () => {
         cy.visit(statementsPath);
         cy.get("#DateStart").invoke("val", "2018-01-01");

@@ -3,7 +3,7 @@
 namespace ChurchCRM\Emails;
 
 use ChurchCRM\dto\ChurchMetaData;
-use ChurchCRM\Utils\FiscalYearUtils;
+use ChurchCRM\Utils\TaxYearUtils;
 
 class GivingStatementEmail extends BaseEmail
 {
@@ -12,7 +12,7 @@ class GivingStatementEmail extends BaseEmail
         parent::__construct($toAddresses);
 
         $churchName = ChurchMetaData::getChurchName();
-        $yearLabel = FiscalYearUtils::getFiscalYearDatesForCalendarYear($year)['label'];
+        $yearLabel = TaxYearUtils::datesForEndYear($year)['label'];
         $this->mail->Subject = sprintf(gettext('%s Giving Statement'), $yearLabel);
         $this->mail->isHTML(false);
         $this->mail->Body = sprintf(
@@ -20,7 +20,7 @@ class GivingStatementEmail extends BaseEmail
             $familyName,
             $yearLabel,
             $churchName
-        );
+        ) . "\n\n" . sprintf(gettext('Statement period: %s'), TaxYearUtils::periodText($year));
         $this->addStringAttachment($pdf, $filename);
     }
 

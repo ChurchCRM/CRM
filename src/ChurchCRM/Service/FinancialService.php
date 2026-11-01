@@ -20,6 +20,7 @@ use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\FunctionsUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\TaxYearUtils;
 use ChurchCRM\Service\AuthService;
 use ChurchCRM\Service\DonationFundService;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -902,14 +903,14 @@ class FinancialService
     }
 
     /**
-     * Get distinct calendar years with payments for a specific family.
+     * Get the distinct tax years (named by the calendar year they end in) with payments for a family.
      *
      * Returns years in descending order (most recent first), limited to $maxYears.
      * Pass 0 for $maxYears for no limit.
      *
      * @param int $familyId
      * @param int $maxYears Maximum years to return (0 = no limit)
-     * @return int[] Array of 4-digit calendar years
+     * @return int[] Array of 4-digit tax year end years
      */
     public function getFamilyPaymentYears(int $familyId, int $maxYears = 5): array
     {
@@ -923,7 +924,7 @@ class FinancialService
 
         $years = [];
         foreach ($payments as $payment) {
-            $endYear = FiscalYearUtils::getEndYearForDate($payment->getDate('Y-m-d'));
+            $endYear = TaxYearUtils::endYearForDate($payment->getDate('Y-m-d'));
             if ($endYear > 1990) {
                 $years[$endYear] = true;
             }

@@ -7,11 +7,10 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\Service\FinanceReportOptions;
-use ChurchCRM\Service\MpdfRenderer;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Service\GivingStatementService;
 use ChurchCRM\Service\YearEndGivingService;
-use ChurchCRM\Utils\FiscalYearUtils;
+use ChurchCRM\Utils\TaxYearUtils;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\CsvExporter;
 use ChurchCRM\Utils\InputUtils;
@@ -118,8 +117,7 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
 
         [$dateStart, $dateEnd] = GivingStatementService::period($criteria);
         $families = GivingStatementService::families($groups, SystemConfig::getBooleanValue('bUseDonationEnvelopes'));
-        $document = GivingStatementService::document($families, $dateStart, $dateEnd, $criteria['remittance']);
-        $pdf = (new MpdfRenderer())->renderToString('tax-report', $document);
+        $pdf = GivingStatementService::pdf($families, $dateStart, $dateEnd, $criteria['remittance']);
 
         $label = GivingStatementService::fileLabel((int) substr($dateEnd, 0, 4), count($families) === 1 ? $families[0]['salutation'] : '');
         return PdfResponse::create($response, $pdf, $label);
@@ -132,7 +130,7 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
         $year = InputUtils::filterInt($body['year'] ?? '');
         $token = (string) ($body['csrf_token'] ?? '');
 
-        $currentEndYear = FiscalYearUtils::endYearForId(FiscalYearUtils::getCurrentFiscalYearId());
+        $currentEndYear = TaxYearUtils::currentEndYear();
         if ($familyId <= 0 || $year < 1991 || $year > $currentEndYear || !CSRFUtils::validateToken($token, 'tax_email_' . $year, true)) {
             RedirectUtils::redirect('finance/reports');
         }
@@ -153,8 +151,7 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
         }
 
         $families = GivingStatementService::families($groups);
-        $document = GivingStatementService::document($families, $criteria['dateStart'], $criteria['dateEnd']);
-        $pdf = (new MpdfRenderer())->renderToString('tax-report', $document);
+        $pdf = GivingStatementService::pdf($families, $criteria['dateStart'], $criteria['dateEnd']);
 
         $filename = PdfFilename::create(GivingStatementService::fileLabel($year, (string) $family->getName()));
         $mail = new GivingStatementEmail($emails, (string) $family->getName(), $year, $pdf, $filename);

@@ -5,32 +5,32 @@ namespace ChurchCRM\Service;
 use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
-use ChurchCRM\Utils\FiscalYearUtils;
+use ChurchCRM\Utils\TaxYearUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 /**
  * What the finance team needs to see before they print or email a year's giving statements.
- * A chosen year is the fiscal year that ends in that calendar year.
+ * A chosen year is the tax year that ends in that calendar year.
  */
 class YearEndGivingService
 {
     /**
-     * Calendar years that have payments, newest first. The current year is always offered.
+     * Tax years (named by the calendar year they end in) that have payments, newest first. The current tax year is always offered.
      *
      * @return int[]
      */
     public static function years(): array
     {
-        $years = [(int) date('Y')];
-        $rows = PledgeQuery::create()
+        $years = [TaxYearUtils::currentEndYear()];
+        $dates = PledgeQuery::create()
             ->filterByPledgeOrPayment('Payment')
             ->filterByDate(null, Criteria::ISNOTNULL)
-            ->withColumn('YEAR(pledge_plg.plg_date)', 'PaymentYear')
-            ->groupBy('PaymentYear')
-            ->select(['PaymentYear'])
+            ->withColumn('pledge_plg.plg_date', 'PaymentDate')
+            ->select(['PaymentDate'])
+            ->distinct()
             ->find();
-        foreach ($rows as $year) {
-            $years[] = (int) $year;
+        foreach ($dates as $date) {
+            $years[] = TaxYearUtils::endYearForDate($date instanceof \DateTimeInterface ? $date->format('Y-m-d') : (string) $date);
         }
         $years = array_values(array_unique($years));
         rsort($years);
@@ -54,7 +54,7 @@ class YearEndGivingService
      */
     public static function overview(int $year): array
     {
-        $period = FiscalYearUtils::getFiscalYearDatesForCalendarYear($year);
+        $period = TaxYearUtils::datesForEndYear($year);
         $dateStart = $period['startDate'];
         $dateEnd = $period['endDate'];
 

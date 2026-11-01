@@ -9,8 +9,8 @@ use ChurchCRM\model\ChurchCRM\Pledge;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\DateTimeUtils;
-use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\TaxYearUtils;
 
 /**
  * Year-end giving statements: the Finance report and the Member Portal build the same
@@ -27,7 +27,7 @@ class GivingStatementService
      */
     public static function criteriaFromQuery(array $query): array
     {
-        $currentEndYear = FiscalYearUtils::endYearForId(FiscalYearUtils::getCurrentFiscalYearId());
+        $currentEndYear = TaxYearUtils::currentEndYear();
         $year = InputUtils::filterInt(self::scalar($query['year'] ?? ''));
         $familyIds = self::intList($query['family'] ?? []);
         $familyId = InputUtils::filterInt(self::scalar($query['familyId'] ?? ''));
@@ -38,12 +38,12 @@ class GivingStatementService
         $dateStart = self::validDate(self::scalar($query['DateStart'] ?? ''));
         $dateEnd = self::validDate(self::scalar($query['DateEnd'] ?? ''));
         if ($year >= self::FIRST_YEAR && $year <= $currentEndYear) {
-            $fy = FiscalYearUtils::getFiscalYearDatesForCalendarYear($year);
+            $fy = TaxYearUtils::datesForEndYear($year);
             $dateStart = $fy['startDate'];
             $dateEnd = $fy['endDate'];
         }
         if ($dateStart === '' && $dateEnd === '') {
-            $fy = FiscalYearUtils::previousFiscalYearDates();
+            $fy = TaxYearUtils::datesForEndYear($currentEndYear - 1);
             $dateStart = $fy['startDate'];
             $dateEnd = $fy['endDate'];
         }
@@ -179,6 +179,16 @@ class GivingStatementService
     }
 
     /**
+     * The giving-statement PDF: the one document the staff download, the emailed copy and the portal download all send.
+     *
+     * @param array<int, array<string, mixed>> $families as returned by {@see self::families()}
+     */
+    public static function pdf(array $families, string $dateStart, string $dateEnd, bool $remittance = false): string
+    {
+        return (new MpdfRenderer())->renderToString('tax-report', self::document($families, $dateStart, $dateEnd, $remittance));
+    }
+
+    /**
      * The data the giving-statement template renders.
      *
      * @param array<int, array<string, mixed>> $families as returned by {@see self::families()}
@@ -186,15 +196,14 @@ class GivingStatementService
     public static function document(array $families, string $dateStart, string $dateEnd, bool $remittance = false): array
     {
         $graphic = self::graphicLetterhead();
-        $start = DateTimeUtils::formatDate($dateStart);
-        $end = DateTimeUtils::formatDate($dateEnd);
+        $period = TaxYearUtils::describePeriod($dateStart, $dateEnd);
 
         return [
             'letterhead' => $graphic !== null ? 'graphic' : 'address',
             'letterhead_image' => $graphic,
             'title' => gettext('Giving Statement'),
-            'date_range' => $dateStart === $dateEnd ? $start : sprintf(gettext('%s through %s'), $start, $end),
-            'opening' => trim(SystemConfig::getValue('sTaxReport1') . ' ' . ($dateStart === $dateEnd ? $start : sprintf(gettext('%s through %s'), $start, $end)) . '.'),
+            'date_range' => $period,
+            'opening' => trim(SystemConfig::getValue('sTaxReport1') . ' ' . $period . '.'),
             'closing' => SystemConfig::getValue('sTaxReport2'),
             'questions' => SystemConfig::getValue('sTaxReport3'),
             'sincerely' => SystemConfig::getValue('sConfirmSincerely'),

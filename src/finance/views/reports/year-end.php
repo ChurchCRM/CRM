@@ -4,6 +4,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\TaxYearUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
@@ -83,7 +84,7 @@ $icon = ['ok' => 'fa-check', 'warn' => 'fa-exclamation', 'info' => 'fa-info'];
                 </select>
             </div>
             <button type="submit" class="btn btn-primary" id="showYear"><i class="fa-solid fa-calendar-check me-1"></i><?= gettext('Show') ?></button>
-            <span class="text-body-secondary small mb-2"><?= InputUtils::escapeHTML($overview['label']) ?> · <?= InputUtils::escapeHTML($overview['startDate']) ?> – <?= InputUtils::escapeHTML($overview['endDate']) ?></span>
+            <span class="text-body-secondary small mb-2"><?= InputUtils::escapeHTML($overview['label']) ?> · <?= InputUtils::escapeHTML(TaxYearUtils::describePeriod($overview['startDate'], $overview['endDate'])) ?></span>
         </div>
     </form>
 
