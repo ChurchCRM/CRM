@@ -2047,10 +2047,6 @@ msgid "Member/Friend"
 msgstr "會員/朋友"
 
 #: 
-msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
-msgstr "此選項需要至少3.22版本的MySQL！命中瀏覽器的“後退”按鈕返回到ChurchCRM的。"
-
-#: 
 msgid "Work"
 msgstr "工作"
 
