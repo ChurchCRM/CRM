@@ -161,7 +161,7 @@
         "i18next-cli": "^1.80.5",
         "i18next-conv": "^17.0.0",
         "mini-css-extract-plugin": "^2.10.2",
-        "minimatch": "^9.0.7",
+        "minimatch": "^11.0.3",
         "mysql2": "^3.24.6",
         "picomatch": "4.0.7",
         "pngjs": "^7.0.0",
