@@ -38,8 +38,10 @@ describe("Finance Statement Settings", () => {
             cy.get("#statementWording", { timeout: 10000 }).should("exist");
 
             cy.get("#statementWording input[name='sTaxSigner']")
+                .should("not.be.disabled")
                 .clear()
-                .type("Test Signer Name");
+                .type("Test Signer Name")
+                .blur();
 
             cy.wait("@saveSigner").its("response.statusCode").should("eq", 200);
         });
