@@ -1,9 +1,7 @@
 # Shared PDF layout decisions
 
-The response/filename pass (#11044) and shared class/voting/photo-book portraits
-(#11046) are merged. Attendance now uses the same validated photo preparation and
-8mm portrait/initials partial. Its optional portrait column remains 10mm wide and
-its photo rows remain 10mm high; compact attendance sheets retain 6mm rows.
+Attendance uses the shared 8mm portrait/initials partial. Its optional portrait
+column is 10mm wide and photo rows are 10mm high; compact sheets use 6mm rows.
 
 | Layout | Shared contract or retained reason |
 | --- | --- |
@@ -18,24 +16,6 @@ its photo rows remain 10mm high; compact attendance sheets retain 6mm rows.
 | Fundraiser statements | One buyer's purchases and remittance section per statement; keep these with the statement body. |
 | Labels/name tags and bank tickets | Positioned output follows the selected stock. Keep label offsets, deposit perforation/stub coordinates and separate deposit-summary margins. Physical alignment is tracked in #11015. |
 
-Section-level church headers are separate from portrait consolidation; preserve
-the upstream `_letter-break` partial when combining these changes. The Church
-Directory migration is #10981.
-
-## Validation record
-
-Rendered the repository's attendance, class-list, voting and photo-book Twig
-files using mPDF 8.3.1 and Twig 3.30.0 in an isolated PHP 8.3 template harness.
-English and Arabic samples include photos and initials. Attendance exercises both
-portrait and compact modes, two classes and continuation pages; class/voting
-lists span multiple pages. Inspected first and final pages for all ten PDFs.
-The attendance grid, portrait bounds, initials, totals row and RTL direction
-remain legible, and the other three layouts retain their intended differences.
-This is template-level evidence with synthetic data, not an application or
-permission test.
-
-Route-level Cypress coverage lives in
-`cypress/e2e/ui/groups/sundayschool-class-attendance.spec.js`: both configured
-initials styles, uploaded portraits bounded to 8mm, compact output and existing
-permission/date cases. Local execution requires the supported application stack;
-CI execution is recorded in the PR. No physical-stock alignment is claimed.
+Use `_letter-break` for section-level church headers. Rendering and review checks
+live in [Reports](../../.agents/skills/churchcrm/reports.md). Attendance coverage:
+`cypress/e2e/ui/groups/sundayschool-class-attendance.spec.js`.

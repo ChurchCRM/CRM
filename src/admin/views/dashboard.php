@@ -519,6 +519,12 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
     </div>
 </div>
 
+<div class="container-fluid mb-3">
+    <div id="reportingSettings" data-settings="<?= InputUtils::escapeAttribute(json_encode($pdfSettings)) ?>"></div>
+</div>
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>"></script>
+
 <!-- Load admin dashboard JavaScript -->
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/admin-dashboard.min.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/js/importDemoData.js') ?>"></script>

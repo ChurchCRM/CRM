@@ -3,6 +3,7 @@
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Service\GradePromotionService;
+use ChurchCRM\Service\MpdfRenderer;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Volunteer\Service\VolunteerEventService;
@@ -91,6 +92,18 @@ function setConfigValueByNameAPI(Request $request, Response $response, array $ar
     $blankAllowed = $value === '' && $configItem->getDefault() === '';
     if ($configItem->getType() === 'number' && !is_numeric($value) && !$blankAllowed) {
         return SlimUtils::renderErrorJSON($response, gettext('This setting must be a number'), [], 400, null, $request);
+    }
+
+    if ($configName === 'sPDFTempDir') {
+        if (!is_string($value)) {
+            return SlimUtils::renderErrorJSON($response, gettext('The PDF temporary directory must be an absolute directory path.'), [], 400, null, $request);
+        }
+        $value = trim($value);
+        try {
+            MpdfRenderer::temporaryDirectory($value);
+        } catch (RuntimeException $error) {
+            return SlimUtils::renderErrorJSON($response, $error->getMessage(), [], 400, null, $request);
+        }
     }
 
     $volunteerV2WasOn = User::isVolunteerV2Enabled();

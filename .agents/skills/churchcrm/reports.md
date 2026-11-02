@@ -50,7 +50,7 @@ Locale and RTL come from `MpdfRenderer` (`lang`, `text_dir`). mPDF script fonts 
 
 ## Output safety
 
-Use MpdfRenderer for mPDF construction and trace wrappers to the Twig Environment that renders the document. Verify HTML autoescaping for the actual environment, including injected loaders and shared partials. Prove markup in a name, memo or address prints literally; use reviewed template markup and nl2br for formatting. Keep template selection server-controlled.
+Use MpdfRenderer for mPDF construction and trace wrappers to the Twig Environment that renders the document. Verify HTML autoescaping for the actual environment, including injected loaders and shared partials. Prove markup in a name, memo or address prints literally; use reviewed template markup and nl2br for formatting. Keep template selection server-controlled. Validate image paths and URL schemes separately from HTML escaping; escaping does not authorize a filesystem read or remote request. Keep TLS verification enabled and renderer configuration server-controlled.
 
 Keep PDF rendering separate from transport: `renderToString()` supplies bytes to downloads and emails; `PdfResponse` writes download bodies and sets private/no-store, nosniff and output-preference headers. HEAD handlers pass empty bytes and skip rendering. CSV uses the existing formula-safe exporter and private/no-store responses. Authorization stays in the owning module.
 
@@ -86,27 +86,6 @@ Update all current consumers when consolidating a report helper, then delete sup
 Test the persona's complete workflow through its owning module, including filters, PDF/CSV totals, empty/error preservation, supported API calls and denied access. A letter report is exercised with two or more recipients, and the spec checks that the church name appears once per letter. A new report is added to the settings spec (`report-locale-settings.spec.js`), which runs the PDFs with `d.m.Y` dates, a trailing `€` and comma decimals and checks the text. See cypress-testing.md for the current test policy and PDF text helper.
 
 Distinguish content/status checks, visual PDF inspection and physical stock alignment. A valid PDF header proves neither layout nor printer alignment. Inspect ordinary and RTL documents; print prepositioned tickets/labels on the intended stock at actual size before claiming alignment.
-
-## mPDF runtime and upgrades
-
-Use Composer's stable package metadata and tagged source when checking versions;
-the upstream GitHub Releases page can lag published tags. Keep the reviewed
-resolution in `src/composer.lock`; update mPDF and FPDI together only when needed,
-and run `composer validate`, a clean install and `composer audit --locked`.
-FPDI's parser/import path works with mPDF independently of FPDF.
-
-Keep renderer configuration server-controlled. Treat document text as escaped
-text, and validate image paths and URL schemes separately: HTML escaping does
-not authorize a filesystem read or remote request. Accept reviewed template
-HTML/CSS, with explicit image dimensions and layouts supported by mPDF; browser
-rendering alone does not prove PDF layout. Keep TLS verification enabled.
-
-Use one runtime cache policy for the renderer and booklet imposer: an
-application-dedicated writable directory outside vendor and the web root, with
-restricted ownership/permissions. mPDF cleans stale cache files; keep unrelated
-files and persistent PDFs elsewhere. Verify cold-cache fonts/images, concurrent
-requests and read-only vendor deployment. The rollout evidence and remaining
-work are in [mPDF release readiness](../../../docs/development/mpdf-readiness.md).
 
 ## Review evidence
 
