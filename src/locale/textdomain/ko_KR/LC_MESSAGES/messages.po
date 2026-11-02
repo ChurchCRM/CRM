@@ -1984,10 +1984,6 @@ msgid "Member/Friend"
 msgstr "성도/벗"
 
 #: 
-msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
-msgstr "이 옵션을 사용하려면 MySQL 3.22 이상이 필요합니다! 브라우저 뒤로가기로 ChurchCRM으로 돌아가세요."
-
-#: 
 msgid "Work"
 msgstr "직장"
 
