@@ -112,7 +112,7 @@
         "@uppy/core": "^5.2.0",
         "@uppy/dashboard": "^5.1.1",
         "@uppy/image-editor": "^4.2.0",
-        "@uppy/webcam": "^5.1.0",
+        "@uppy/webcam": "^6.0.2",
         "@uppy/xhr-upload": "^5.2.0",
         "apexcharts": "^6.10.0",
         "avatar-initials": "^6.0.0",
