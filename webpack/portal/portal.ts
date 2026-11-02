@@ -32,6 +32,7 @@ interface PortalHomeAssignment {
   teamName: string | null;
   start: string | null;
   occurrenceDate: string | null;
+  occurrenceStatus: string | null;
   status: string;
 }
 
@@ -231,10 +232,12 @@ async function loadVolunteeringCard(): Promise<void> {
   show(loading, false);
 
   // The API returns the member's upcoming commitments soonest first. A slot they
-  // have declined, or that was cancelled or covered by somebody else, is not
-  // something they are "on for next".
-  const live = assignments.filter((row) => row.status === "pending" || row.status === "accepted");
-  const pendingCount = assignments.filter((row) => row.status === "pending").length;
+  // have declined, that was cancelled or covered by somebody else, or whose date
+  // was cancelled, is not something they are "on for next".
+  const live = assignments.filter(
+    (row) => row.occurrenceStatus !== "cancelled" && (row.status === "pending" || row.status === "accepted"),
+  );
+  const pendingCount = live.filter((row) => row.status === "pending").length;
 
   if (live.length === 0) {
     show(empty, true);
