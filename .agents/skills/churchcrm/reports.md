@@ -87,6 +87,27 @@ Test the persona's complete workflow through its owning module, including filter
 
 Distinguish content/status checks, visual PDF inspection and physical stock alignment. A valid PDF header proves neither layout nor printer alignment. Inspect ordinary and RTL documents; print prepositioned tickets/labels on the intended stock at actual size before claiming alignment.
 
+## mPDF runtime and upgrades
+
+Use Composer's stable package metadata and tagged source when checking versions;
+the upstream GitHub Releases page can lag published tags. Keep the reviewed
+resolution in `src/composer.lock`; update mPDF and FPDI together only when needed,
+and run `composer validate`, a clean install and `composer audit --locked`.
+FPDI's parser/import path works with mPDF independently of FPDF.
+
+Keep renderer configuration server-controlled. Treat document text as escaped
+text, and validate image paths and URL schemes separately: HTML escaping does
+not authorize a filesystem read or remote request. Accept reviewed template
+HTML/CSS, with explicit image dimensions and layouts supported by mPDF; browser
+rendering alone does not prove PDF layout. Keep TLS verification enabled.
+
+Use one runtime cache policy for the renderer and booklet imposer: an
+application-dedicated writable directory outside vendor and the web root, with
+restricted ownership/permissions. mPDF cleans stale cache files; keep unrelated
+files and persistent PDFs elsewhere. Verify cold-cache fonts/images, concurrent
+requests and read-only vendor deployment. The rollout evidence and remaining
+work are in [mPDF release readiness](../../../docs/development/mpdf-readiness.md).
+
 ## Review evidence
 
 Keep the consumer inventory in the PR: affected entry points, permissions, naming/header behavior and layout decisions. Verify the safety and test requirements above against the actual renderer and shared partials, and state which checks remain unverified. State the locale check: the dates, money and labels the PDF printed under non-US settings, or that it was not run.

@@ -4,6 +4,8 @@ Tracks #11014. MpdfRenderer creates an HTML-escaping environment for every repor
 
 Report construction and review rules live in [reports.md](../../.agents/skills/churchcrm/reports.md). Trace current `MpdfRenderer` consumers and shared templates when auditing a change.
 
+Runtime, dependency-upgrade and rollout evidence: [mPDF release readiness](mpdf-readiness.md).
+
 Templates live under `src/templates/reports/`. Giving addresses use `nl2br`; Twig escapes their text before adding line breaks. Layout markup belongs in templates.
 
 Validation:
