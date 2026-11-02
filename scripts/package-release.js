@@ -57,6 +57,8 @@ const ignore = [
   'Images/church-logo.png',
   'composer.lock',
   'Include/Config.php',
+  'Include/cache/**',
+  'vendor/mpdf/mpdf/tmp/**',
   'integrityCheck.json',
   'logs/*.log',
   'vendor/endroid/qr-code/assets/fonts/noto_sans.otf',

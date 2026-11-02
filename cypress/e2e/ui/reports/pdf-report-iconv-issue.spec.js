@@ -7,11 +7,8 @@
  * (Church Directory, Name Tags) crashed with a fatal
  * "Call to undefined function ChurchCRM\Reports\iconv()" error.
  *
- * The fix adds a convertToLatin1() helper in ChurchInfoReport that falls
- * back to mb_convert_encoding() when iconv is unavailable.
- *
- * These tests verify that the affected report pages load and generate
- * output without fatal PHP errors.
+ * These tests verify that the report pages load and generate output
+ * without fatal PHP errors through the UTF-8 mPDF renderer.
  */
 describe("PDF Reports - iconv fallback fix", () => {
     beforeEach(() => {

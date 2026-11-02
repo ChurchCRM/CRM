@@ -1972,20 +1972,8 @@ msgid "Liaison"
 msgstr "Skakeling"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Poskode"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Stuur nuusbrief"
-
-#: 
-msgid "Member Name"
-msgstr "Lidnaam"
-
-#: 
-msgid "Adult/Child"
-msgstr "Volwasse / kind"
 
 #: 
 msgid "Cell Phone"
@@ -1994,10 +1982,6 @@ msgstr "Loopfoon"
 #: 
 msgid "Member/Friend"
 msgstr "Lid / vriend"
-
-#: 
-msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
-msgstr "Hierdie opsie vereis ten minste weergawe 3.22 van MySQL! Druk op die terugknoppie van die blaaier om terug te keer na ChurchCRM."
 
 #: 
 msgid "Work"

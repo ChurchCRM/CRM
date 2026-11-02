@@ -2052,20 +2052,8 @@ msgid "Liaison"
 msgstr "Förknippat med"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Stad, län, postkod"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Skicka nyhetsbrev"
-
-#: 
-msgid "Member Name"
-msgstr "Medelmmar namn"
-
-#: 
-msgid "Adult/Child"
-msgstr "Vuxen/barn"
 
 #: 
 #, fuzzy
@@ -2075,10 +2063,6 @@ msgstr "Mobiltelefon"
 #: 
 msgid "Member/Friend"
 msgstr "Medlemmar/vän"
-
-#: 
-msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
-msgstr "Denna val krävs att minst version 3.22 av MySql! Slå på din webbrowsers tillbaka knapp för att återgå till ChurchCRM."
 
 #: 
 msgid "Work"

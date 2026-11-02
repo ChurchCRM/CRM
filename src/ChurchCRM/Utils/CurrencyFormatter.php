@@ -84,7 +84,7 @@ class CurrencyFormatter
      *
      * Use only for amount-only PDF cells. When the amount is concatenated with
      * other UTF-8 text (names, labels), use format() and convert the whole
-     * string once via ChurchInfoReport::convertToLatin1() — converting twice
+     * string to Latin-1 once — converting twice
      * corrupts the bytes.
      */
     public static function formatForPdf(float|string|null $amount, int $decimals = 2): string

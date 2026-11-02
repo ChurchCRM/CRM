@@ -1958,20 +1958,8 @@ msgid "Liaison"
 msgstr "संपर्क सूत्र"
 
 #: 
-msgid "City, State, Zip"
-msgstr "शहर, राज्य, ज़िप"
-
-#: 
 msgid "Send Newsletter"
 msgstr "न्यूज़लेटर भेजें"
-
-#: 
-msgid "Member Name"
-msgstr "सदस्य का नाम"
-
-#: 
-msgid "Adult/Child"
-msgstr "वयस्क/बच्चा"
 
 #: 
 msgid "Cell Phone"
@@ -1980,10 +1968,6 @@ msgstr "सेल फ़ोन"
 #: 
 msgid "Member/Friend"
 msgstr "सदस्य/मित्र"
-
-#: 
-msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
-msgstr "इस विकल्प के लिए MySQL के कम से कम संस्करण 3.22 की आवश्यकता है! ChurchCRM पर लौटने के लिए ब्राउज़र का बैक बटन दबाएं।"
 
 #: 
 msgid "Work"

@@ -1961,20 +1961,8 @@ msgid "Liaison"
 msgstr "Yhteyshenkilö"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Kaupunki, lääni, postinumero"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Lähetä uutiskirje"
-
-#: 
-msgid "Member Name"
-msgstr "Jäsenen nimi"
-
-#: 
-msgid "Adult/Child"
-msgstr "Aikuinen/Lapsi"
 
 #: 
 msgid "Cell Phone"
@@ -1983,10 +1971,6 @@ msgstr "Matkapuhelin"
 #: 
 msgid "Member/Friend"
 msgstr "Jäsen/Ystävä"
-
-#: 
-msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
-msgstr "Tämä toiminto vaatii vähintään MySQL-version 3.22! Palaa ChurchCRM-järjestelmään selaimen Takaisin-painikkeella."
 
 #: 
 msgid "Work"

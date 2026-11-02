@@ -331,13 +331,7 @@ class Bootstrapper
             $localeInfo = self::getCurrentLocale();
             self::$bootStrapLogger->debug("Setting locale to: " . $localeInfo->getLocale());
             
-            // Set locale with fallback options
-            $localeSet = setlocale(LC_ALL, 
-                $localeInfo->getLocale(), 
-                $localeInfo->getLocale() . '.UTF-8', 
-                $localeInfo->getLocale() . '.utf8'
-            );
-            
+            $localeSet = $localeInfo->activate();
             if ($localeSet === false) {
                 self::$bootStrapLogger->warning("Failed to set locale: " . $localeInfo->getLocale() . ", using system default");
             }

@@ -1983,20 +1983,8 @@ msgid "Liaison"
 msgstr "Liên lạc"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Thành phố, Tiểu bang, Zip"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Gửi bản tin"
-
-#: 
-msgid "Member Name"
-msgstr "Tên thành viên"
-
-#: 
-msgid "Adult/Child"
-msgstr "Người lớn / Trẻ em"
 
 #: 
 msgid "Cell Phone"
@@ -2005,10 +1993,6 @@ msgstr "Di động"
 #: 
 msgid "Member/Friend"
 msgstr "Thành viên / Bạn bè"
-
-#: 
-msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
-msgstr "Tùy chọn này yêu cầu ít nhất phiên bản 3.22 của MySQL! Nhấn nút quay lại của trình duyệt để quay lại ChurchCRM."
 
 #: 
 msgid "Work"

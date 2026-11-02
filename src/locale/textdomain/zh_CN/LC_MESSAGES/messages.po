@@ -2030,20 +2030,8 @@ msgid "Liaison"
 msgstr "联络"
 
 #: 
-msgid "City, State, Zip"
-msgstr "市，州，邮政编码"
-
-#: 
 msgid "Send Newsletter"
 msgstr "发送通讯"
-
-#: 
-msgid "Member Name"
-msgstr "会员名称"
-
-#: 
-msgid "Adult/Child"
-msgstr "成人/儿童"
 
 #: 
 #, fuzzy
@@ -2053,10 +2041,6 @@ msgstr "手机"
 #: 
 msgid "Member/Friend"
 msgstr "会员/朋友"
-
-#: 
-msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
-msgstr "此选项需要至少3.22版本的MySQL！命中浏览器的“后退”按钮返回到ChurchCRM的。"
 
 #: 
 msgid "Work"

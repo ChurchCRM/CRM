@@ -1955,20 +1955,8 @@ msgid "Liaison"
 msgstr "連絡係"
 
 #: 
-msgid "City, State, Zip"
-msgstr "市区町村, 都道府県, 郵便番号"
-
-#: 
 msgid "Send Newsletter"
 msgstr "ニュースレターを送信"
-
-#: 
-msgid "Member Name"
-msgstr "メンバー名"
-
-#: 
-msgid "Adult/Child"
-msgstr "大人/子供"
 
 #: 
 msgid "Cell Phone"
@@ -1977,10 +1965,6 @@ msgstr "携帯電話"
 #: 
 msgid "Member/Friend"
 msgstr "会員/友人"
-
-#: 
-msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
-msgstr "このオプションにはMySQL 3.22以上が必要です!ブラウザの戻るボタンを押してChurchCRMに戻ってください。"
 
 #: 
 msgid "Work"

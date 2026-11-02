@@ -1973,20 +1973,8 @@ msgid "Liaison"
 msgstr "Hubungan"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Kota, Negara Bagian, Zip"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Kirim Newsletter"
-
-#: 
-msgid "Member Name"
-msgstr "Nama anggota"
-
-#: 
-msgid "Adult/Child"
-msgstr "Orang dewasa / anak-anak"
 
 #: 
 msgid "Cell Phone"
@@ -1995,10 +1983,6 @@ msgstr "Telepon selular"
 #: 
 msgid "Member/Friend"
 msgstr "Anggota / Teman"
-
-#: 
-msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
-msgstr "Opsi ini membutuhkan setidaknya versi 3.22 dari MySQL! Tekan tombol kembali browser untuk kembali ke ChurchCRM."
 
 #: 
 msgid "Work"

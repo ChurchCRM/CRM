@@ -1,9 +1,9 @@
 # RFC: Member Portal giving pledges
 
 > **BLUF**
-> Members record pledges in the Member Portal: a fund, an amount per gift, a schedule and a start date. They can edit or end a pledge and see it beside what they have given. Each pledge is an ordinary `pledge_plg` row of type `Pledge`, so the pledge pages and reports staff use today show it. No money moves: no gateway, deposit, fee, receipt or tax statement is involved. Per-person credit (#9313) and four shared finance fixes come first and are specified here. Online payments are [RFC 0005](0005-online-payments.md), which builds on this RFC. Five decisions are open for maintainers (below).
+> Members record pledges in the Member Portal: a fund, an amount per gift, a schedule and a start date. They can edit or end a pledge and see it beside what they have given. Each pledge is an ordinary `pledge_plg` row of type `Pledge`, so the pledge pages and reports staff use today show it. No money moves: no gateway, deposit, fee, receipt or tax statement is involved. Per-person credit (#9313) and four shared finance fixes come first and are specified here. Online payments are [RFC 0005](0005-online-payments.md), which builds on this RFC. The maintainer's decisions on the five questions are recorded below (2026-10-30).
 
-**Status:** Proposed, open for review; no release commitment  
+**Status:** Accepted with changes (maintainer decision, 2026-10-30); no release commitment  
 **Date:** 2026-10-17  
 **Owner:** @cwhorton  
 **Proposal issue:** [#10033](https://github.com/ChurchCRM/CRM/issues/10033) · **Related:** [#9313](https://github.com/ChurchCRM/CRM/issues/9313) (per-person gifts), [#8977](https://github.com/ChurchCRM/CRM/issues/8977) (Member Portal), [#10550](https://github.com/ChurchCRM/CRM/issues/10550)  
@@ -11,9 +11,10 @@
 
 ## Summary
 - A **Giving** page in the Member Portal with one view, **Pledges**. A member adds a pledge, edits it, ends it, and sees pledged, given and remaining for each one.
-- A portal pledge is one `pledge_plg` row: one fund, one fiscal year, type `Pledge`. `plg_amount` holds the fiscal-year total, as office pledges do today. One new column, `plg_EndDate`, records an early end.
+- The portal also gains a **Giving History** view, by calendar year, and statement downloads (GIV-30, moved here from RFC 0005 by the maintainer decision, question 5).
+- A portal pledge is a group of `pledge_plg` rows, one per fund, all in one fiscal year, type `Pledge` (maintainer decision, question 3). `plg_amount` holds the fiscal-year total, as office pledges do today. One new column, `plg_EndDate`, records an early end.
 - "Given" is the recorded payments in the same fund and fiscal year that are credited to the pledge's owner. Today they come from office entry. Online gifts from RFC 0005 count the same way.
-- A fund appears in the portal only after staff tick "Offer in the Member Portal" (`fun_OnlineGiving`).
+- Every active fund appears in the portal (maintainer decision, question 2). Inactive funds never show.
 - Who sees what follows D3: the head of household sees the family's pledges; everyone else sees only their own.
 - Staff see progress per family and per fund in the pages they use today, and per person in a new report.
 - Pledges never reach a deposit, a tax statement or a payment report. §6 records what today's code does and the guards this RFC adds.
@@ -26,8 +27,20 @@
 4. May members change pledges the office entered for them (D17)?
 5. The portal Giving History tab and statement downloads need no gateway either. Keep them in RFC 0005 (GIV-30), or move them here?
 
+## Maintainer decision (2026-10-30)
+
+Accepted with changes. The maintainer's answers to the five questions above:
+
+1. **Yes.** The prerequisites GIV-02 to GIV-07 are specified here and, with GIV-43, will be filed as sub-issues of epic #9313 (§8).
+2. **No.** Every active fund is offered in the portal. There is no per-fund opt-in flag: D14, `fun_OnlineGiving` and GIV-80 are removed.
+3. **Changed.** A portal pledge may cover several funds, but only one fiscal year (D13, D19). The portal labels the fiscal year by its actual date range and notes that tax statements run by calendar year, so the totals differ.
+4. **Yes.** Members may change pledges the office entered for them (D17).
+5. **Moved here.** The portal Giving History tab and statement downloads (GIV-30) are part of this RFC, not RFC 0005; RFC 0005 keeps only the online-only history enhancements.
+
+The §5 statement modes and the §9 product defaults are ratified as written. No release commitment. The architecture in this document moves to a separate architecture doc, created and approved after this RFC; this RFC stands as the use case, goals and approved decisions.
+
 **Status**
-- Proposed. No code yet. The child issues in §8 are opened only if this direction is accepted (D12).
+- Accepted with changes (maintainer decision, 2026-10-30). No code yet. The child issues in §8 may now be filed (D12).
 - Builds on the Member Portal on master (`src/portal/`, epic #8977) and on the [member sign-in](https://github.com/ChurchCRM/CRM/blob/feature/member-sign-in/docs/design/member-sign-in.md) design accepted for 7.9.0 (#10464). Members sign in with no user account, and portal pages decide access with its portal permissions model (A41).
 - RFC 0005 depends on this RFC. This RFC does not depend on RFC 0005.
 - Code is cited by symbol on upstream `master` as of 2026-10-17.
@@ -49,7 +62,6 @@
 
 **Non-goals**
 - Moving money: the Give tab, recurring charges, receipts, deposits and refunds are RFC 0005.
-- The portal Giving History tab and statement downloads (RFC 0005, GIV-30; question 5).
 - Pledge reminder emails, campaigns with goals, and pledges that span several fiscal years (D19).
 - Changes to how staff enter pledges, beyond "Given by" (F8).
 
@@ -62,8 +74,8 @@
 | D3 | Anyone who is not HoH, **spouse included**, sees only the pledges and gifts credited to them. The HoH sees the whole family, including pledges and gifts recorded to the family as a whole. |
 | D11 | **Adult child who starts a family:** gifts credited to them while in the parents' family stay in the parents' history; nothing is rewritten. The parents' HoH still sees them, the child sees them through the person credit, and past statements stay consistent. When staff change a person's family they get an optional, audited "Move this year's gifts to the new family" for the current calendar year, which has no statement yet. The same prompt moves the person's own pledges for the current fiscal year. Household pledges stay with the old family. |
 | D12 | This design is posted for feedback only, with one proposal issue. No epic or child issues are filed until the maintainer accepts the direction. |
-| D13 | **A portal pledge is for one fund and one fiscal year.** A member who pledges to two funds adds two pledges. Each owner has at most one pledge per fund and year; the page offers Edit instead of a second one. Reason: each pledge is edited or ended on its own, and every pledge report already groups by fund and fiscal year. |
-| D14 | **Funds are offered one by one.** Staff tick "Offer in the Member Portal" (`fun_OnlineGiving`, off by default) on `/finance/funds`. Inactive funds never show. Why not every active fund: an upgrade would publish every active fund to every member at once, including restricted, pass-through and internal funds. The church chooses, one tick per fund. RFC 0005 uses the same flag for online gifts, so members see one list. |
+| D13 | **A portal pledge covers one fiscal year, and may cover several funds** (maintainer decision, question 3): one `pledge_plg` row per fund, at most one pledge per owner, fund and year; the page offers Edit instead of a second one for the same fund. The portal labels the fiscal year by its actual date range (for example, Jul 1, 2026 – Jun 30, 2027) and notes that tax statements run by calendar year, so given toward a pledge and a tax statement for a named year will differ. Reason: each fund line is edited or ended on its own, and every pledge report already groups by fund and fiscal year. |
+| D14 | **Every active fund is offered** (maintainer decision, question 2). There is no per-fund opt-in flag. Inactive funds never show. RFC 0005 uses the same fund list for online gifts, so members see one list. |
 | D15 | **Schedule:** Once, Weekly, Monthly or Quarterly, the existing `plg_schedule` values (Other stays office-only). The member enters the amount per gift and a start date in the current or the next fiscal year. The page shows a sentence and the year total: "$50 monthly from Mar 1 · $500 this fiscal year". |
 | D16 | **A pledge is the member's editable intent.** Edit changes the amount, schedule, start or end and recomputes the total. **End** sets the end date (today by default): what was given stays, and the total shrinks to the gifts scheduled up to the end. **Delete** is offered only while nothing has been given toward the pledge. Every change is kept in the finance audit log, and staff see it on the pledge. |
 | D17 | **Members may change pledges the office entered for them**, because the pledge is theirs. The audit log shows who changed what. When the office entered several rows for one owner, fund and year, the card shows their total and says "Contact the church office to change this pledge". (Question 4.) |
@@ -98,9 +110,9 @@
 - **Nav:** `PortalNav::GIVING` "Giving", `fa-solid fa-hand-holding-heart`, between My Family and Profile in `PortalNav::build()`. It names `portal.giving.pledges` (A41), so it shows when `bEnabledFinance` and the new `bPortalShowGiving` (Admin → Member Portal, default off) are on.
 - **Route:** `GET /portal/giving`, one view (Pledges), in `src/portal/routes/giving.php`, inside the portal group behind the portal session middleware and `CSRFMiddleware` like the other portal pages, with `RequirePortalCapability` for `portal.giving.pledges`. Template `giving/pledges.html.twig` with partials `pledge-card` and `pledge-form`; overridable like every portal template.
 - **Cards:** one per owner, fund and fiscal year visible under D3, current year first. Each shows the fund, the owner ("You", "Smith household", or a spouse's name, read-only), the schedule sentence, pledged, given, remaining and a progress bar. **Show gifts** lists the payments counted toward it (date, amount, method), office-entered today. Edit, End and Delete (D16) appear only on pledges the actor owns (D18).
-- **Add a pledge:** fund (offered funds only: `fun_Active = 'true' AND fun_OnlineGiving = 1`, in `fun_Order`, with `fun_Description` as help), Pledge as (HoH only), amount per gift, schedule, start date, optional end date, with a live sentence and total. If the owner already has a pledge for that fund and year, the form offers to edit it (D13).
+- **Add a pledge:** fund (active funds only: `fun_Active = 'true'`, in `fun_Order`, with `fun_Description` as help), Pledge as (HoH only), amount per gift, schedule, start date, optional end date, with a live sentence and total. If the owner already has a pledge for that fund and year, the form offers to edit it (D13).
 - **Pledge again** appears in the last month of the fiscal year (D19).
-- **Empty states:** "No pledges yet" with Add. When no fund is offered, the page shows existing pledges and "Contact the church office to make a pledge".
+- **Empty states:** "No pledges yet" with Add. When no fund is active, the page shows existing pledges and "Contact the church office to make a pledge".
 - **Non-HoH note:** "Pledges you make are also visible to your head of household."
 - The Member Portal design (`.agents/skills/churchcrm/member-portal-design.md`, P14) says the nav holds no Giving page until a payment-gateway design exists. GIV-83 rewrites P14 to point at this RFC.
 
@@ -147,7 +159,6 @@ All of them use `PledgeProgressService` (A37). Family totals do not change: the 
 | `pledge_plg` | Data `plg_FamID = 0 → NULL`; anonymous = both ids NULL | `<next>-giving-anonymous-normalize.sql` / GIV-02 |
 | `pledge_plg` | `plg_PerID mediumint(9) unsigned NULL` + index; `idx_plg_GroupKey`. No DB FK (stock style); cleared in code on person delete | `<next>-giving-person-attribution.sql` / GIV-05 |
 | `pledge_plg` | `plg_EndDate date NULL`: last date of a scheduled pledge; NULL = through the FY end. Written on `Pledge` rows only | `<next>-pledge-end-date.sql` / GIV-82 |
-| `donationfund_fun` | `fun_OnlineGiving tinyint(1) NOT NULL DEFAULT 0` (D14) | `<next>-fund-online-giving.sql` / GIV-80 |
 | new `finance_audit_faud` | Append-only, no update or delete API: `faud_ID bigint`, date, `faud_ActorPerId` (signed), `faud_ImpersonatorPerId` (the administrator's person during Login as User, member sign-in §6.5; else NULL), `faud_Action`, entity type and id, `faud_Before`/`faud_After` JSON (secrets excluded). RFC 0005 adds `faud_IpHash` once its HMAC key exists | `<next>-finance-audit.sql` / GIV-03 |
 
 **Why `plg_EndDate`:** without it an ended pledge cannot show "Ended Jun 30", and A39 cannot recover the amount per gift after an end. Nothing else is added. The start date is `plg_date`, the fiscal year is `plg_FYID`, the schedule is `plg_schedule` (no enum change), the amount per gift is derived (A39), and who entered a pledge is in the audit log.
@@ -278,9 +289,9 @@ No money moves, so there is no PCI scope, gateway secret, webhook or fee. What r
 ## 8. Proposed breakdown
 Nothing here is filed yet (D12). One concern and one PR per child; each user-visible child opens a user-manual docs issue. Each issue will carry its own scope and acceptance criteria.
 
-**Filing:** GIV-02 to GIV-07 and GIV-43 are filed as sub-issues of #9313, which is already the epic for per-person giving; #9313 closes when they do. GIV-80 to GIV-84 go under a new epic for portal pledges, which depends on #9313's GIV-04, GIV-05 and GIV-07 (question 1).
+**Filing:** GIV-02 to GIV-07 and GIV-43 are filed as sub-issues of #9313, which is already the epic for per-person giving; #9313 closes when they do. GIV-81 to GIV-84 and GIV-30 go under a new epic for portal pledges, which depends on #9313's GIV-04, GIV-05 and GIV-07 (questions 1 and 5).
 
-**Sequencing:** GIV-81, GIV-02, GIV-03 and GIV-80 can start at once. Office-side work is visible as soon as it merges. The portal page waits for the scope and progress services.
+**Sequencing:** GIV-81, GIV-02 and GIV-03 can start at once. Office-side work is visible as soon as it merges. The portal page waits for the scope and progress services.
 
 | Id | Title | Design | Depends on |
 |---|---|---|---|
@@ -293,10 +304,10 @@ Nothing here is filed yet (D12). One concern and one PR per child; each user-vis
 | GIV-07 | `GivingStatementService`, `GivingScope` (A10), tax-statements route and view, head-list fixes | §5 | 05 |
 | GIV-43 | Per-person reports from #9313: Contributions by Person, Fund Giving by Person, Top Contributors by Fund, Pledge progress by person (#9313's "Building Fund Progress by Member", any fund) | §2.3 | 07, 82 |
 | **P** | **Portal pledges** | | |
-| GIV-80 | Offer a fund in the Member Portal: `fun_OnlineGiving` and its toggle on `/finance/funds` | D14 | – |
 | GIV-81 | Keep pledges off deposits and payment search: refuse a deposit on a pledge, filter deposit queries and search, tests | §6, A35, A36, I12 | – |
 | GIV-82 | `plg_EndDate`; schedule helper (gifts between two dates); `PledgeProgressService`; `PortalPledgeService` | §3, A33, A37, A39, F15–F17 | 04, 05 |
-| GIV-83 | Portal Giving page, Pledges view; portal API; `bPortalShowGiving`; nav entry; Member Portal design P14 | §2.1, §2.2 | 07, 80, 82 |
+| GIV-83 | Portal Giving page, Pledges view; portal API; `bPortalShowGiving`; nav entry; Member Portal design P14 | §2.1, §2.2 | 07, 82 |
+| GIV-30 | Giving History view and statement downloads in the portal (moved here from RFC 0005) | RFC 0005 §5.1, §5 | 07, 83 |
 | GIV-84 | Pledge progress in the staff pages: person lines in the Pledge Dashboard, family summary and fund contributors; person view pledges; change history on pledge detail | §2.3 | 06, 82 |
 | GIV-70 | Docs, E2E, i18n (rolling, shared with RFC 0005) | – | each item after the issue it covers |
 
@@ -328,14 +339,14 @@ The five questions for the maintainer are at the top of this document.
 | R4 | Giving by persons, admin entry | F8, GIV-05/06 | Optional; `bFinanceShowGivenBy` |
 | R5 | Giving by families, admin entry | F8 | Whole household or member |
 | R42 | Admin reports updated similarly | §2.3, §5, GIV-07/43, A32 | #9313 reports |
-| R54 | A member chooses a fund and records a pledge: amount, schedule, start date | D13–D15, F15, §2.1 | One fund per pledge |
+| R54 | A member chooses funds and records a pledge: amount, schedule, start date | D13–D15, F15, §2.1 | Several funds, one fiscal year (question 3) |
 | R55 | The member edits or ends it | D16, D17, F16 | In place, audited |
 | R56 | The member sees it beside what has been given | D21, F17, §2.1 | Office-entered gifts today |
 | R57 | Staff see pledge progress per fund | §2.3 | Fund contributors |
 | R58 | Staff see pledge progress per family | §2.3 | Pledge Dashboard, family summary, reports |
 | R59 | Staff see pledge progress per person | §2.3, GIV-43, GIV-84 | New report, person view |
 | R60 | No money moves | D20, §6, I12 | Guards in GIV-81 |
-| R61 | The church chooses which funds appear | D14, GIV-80 | Off by default |
+| R61 | Every active fund appears in the portal | D14 | Maintainer decision, question 2 |
 | D3 | HoH / non-HoH visibility | A10, A41, §2.1, §5 | |
 | D11 | Moving families | A31, F8, GIV-06 | Pledges move with the person |
 | D12 | Proposal first; issues only after the direction is accepted | Status, §8 | |

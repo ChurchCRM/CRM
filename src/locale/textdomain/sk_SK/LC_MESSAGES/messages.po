@@ -1955,20 +1955,8 @@ msgid "Liaison"
 msgstr "Kontaktná osoba"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Mesto, Kraj, PSČ"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Odoslať newsletter"
-
-#: 
-msgid "Member Name"
-msgstr "Meno člena"
-
-#: 
-msgid "Adult/Child"
-msgstr "Dospelý/Dieťa"
 
 #: 
 msgid "Cell Phone"
@@ -1977,10 +1965,6 @@ msgstr "Mobilný telefón"
 #: 
 msgid "Member/Friend"
 msgstr "Člen/Priateľ"
-
-#: 
-msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
-msgstr "Táto možnosť vyžaduje aspoň verziu MySQL 3.22! Kliknite na tlačidlo Späť v prehliadači."
 
 #: 
 msgid "Work"
