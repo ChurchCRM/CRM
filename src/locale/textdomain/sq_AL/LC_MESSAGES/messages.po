@@ -1632,10 +1632,6 @@ msgid "Properties"
 msgstr "Cilësime"
 
 #: 
-msgid "Pledge Reminder Report"
-msgstr "Zotimi Reminder Raporti"
-
-#: 
 msgid "Restore Database"
 msgstr "Rikthe bazën e të dhënave"
 
@@ -1978,20 +1974,8 @@ msgid "Liaison"
 msgstr "Ndërlidhje"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Qyteti, Shteti, Zip"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Dërgo lajme me email"
-
-#: 
-msgid "Member Name"
-msgstr "Anëtar Emri"
-
-#: 
-msgid "Adult/Child"
-msgstr "Adult / Fëmija"
 
 #: 
 #, fuzzy
@@ -9011,10 +8995,6 @@ msgid "Generate phone directory"
 msgstr "Gjenero drejtori telefoni"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "Gjenero letrat e kujtesës për premtimin"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "Gjenero raporte mbi anëtarësinë dhe aktivitetet e grupmesionit"
 
@@ -15897,10 +15877,6 @@ msgstr "Shembuj të vlefshëm"
 #: 
 msgid "What this plugin does"
 msgstr "Çfarë bën ky shtojcë"
-
-#: 
-msgid "for all funds"
-msgstr "për të gjitha fondet"
 
 #: 
 msgid "for fund"

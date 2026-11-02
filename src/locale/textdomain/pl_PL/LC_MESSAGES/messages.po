@@ -1671,10 +1671,6 @@ msgid "Properties"
 msgstr "Właściwości"
 
 #: 
-msgid "Pledge Reminder Report"
-msgstr "Raport Przypominający o Datkach"
-
-#: 
 msgid "Restore Database"
 msgstr "Przywróć Bazę Danych"
 
@@ -2032,20 +2028,8 @@ msgid "Liaison"
 msgstr "Przewodniczący"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Miasto, Hrabstwo, Kod pocztowy"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Wyśli Newsletter"
-
-#: 
-msgid "Member Name"
-msgstr "Imię Członka"
-
-#: 
-msgid "Adult/Child"
-msgstr "Dorosły/Dziecko"
 
 #: 
 #, fuzzy
@@ -9085,10 +9069,6 @@ msgid "Generate phone directory"
 msgstr "Wygeneruj książkę telefoniczną"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "Wygeneruj listy z przypomnieniami o zobowiązaniach"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "Wygeneruj raporty o członkostwie w grupach i aktywnościach"
 
@@ -15975,10 +15955,6 @@ msgstr "Prawidłowe przykłady"
 #: 
 msgid "What this plugin does"
 msgstr "Co robi ta wtyczka"
-
-#: 
-msgid "for all funds"
-msgstr "dla wszystkich funduszy"
 
 #: 
 msgid "for fund"

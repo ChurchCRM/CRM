@@ -1694,10 +1694,6 @@ msgid "Properties"
 msgstr "Egenskapar"
 
 #: 
-msgid "Pledge Reminder Report"
-msgstr "Bidrag löfte påminnelse rapport"
-
-#: 
 msgid "Restore Database"
 msgstr "Återställ databasen"
 
@@ -2056,20 +2052,8 @@ msgid "Liaison"
 msgstr "Förknippat med"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Stad, län, postkod"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Skicka nyhetsbrev"
-
-#: 
-msgid "Member Name"
-msgstr "Medelmmar namn"
-
-#: 
-msgid "Adult/Child"
-msgstr "Vuxen/barn"
 
 #: 
 #, fuzzy
@@ -9107,10 +9091,6 @@ msgid "Generate phone directory"
 msgstr "Generera telefonkatalog"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "Generera påminnelsebrev för givarlöften"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "Generera rapporter om gruppmedlemskap och aktiviteter"
 
@@ -15993,10 +15973,6 @@ msgstr "Giltiga exempel"
 #: 
 msgid "What this plugin does"
 msgstr "Vad detta plugin gör"
-
-#: 
-msgid "for all funds"
-msgstr "för alla fonder"
 
 #: 
 msgid "for fund"

@@ -82,10 +82,6 @@ msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "Money amount too large. Maximum is R 999999999.99"
 
 #: 
-msgid "City, State, Zip"
-msgstr "City, Province, Postcode"
-
-#: 
 msgid "Cell Phone"
 msgstr "Cellphone"
 

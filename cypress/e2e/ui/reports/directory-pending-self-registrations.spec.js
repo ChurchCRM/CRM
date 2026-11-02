@@ -7,7 +7,7 @@ const directoryText = () =>
     cy
         .request({
             method: "POST",
-            url: "Reports/DirectoryReport.php",
+            url: "people/reports/directory",
             form: true,
             encoding: "binary",
             body: {

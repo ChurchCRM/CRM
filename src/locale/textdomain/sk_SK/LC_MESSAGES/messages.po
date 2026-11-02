@@ -1614,10 +1614,6 @@ msgid "Properties"
 msgstr "Vlastnosti"
 
 #: 
-msgid "Pledge Reminder Report"
-msgstr "Správa o pripomienkach záväzkov"
-
-#: 
 msgid "Restore Database"
 msgstr "Obnoviť databázu"
 
@@ -1959,20 +1955,8 @@ msgid "Liaison"
 msgstr "Kontaktná osoba"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Mesto, Kraj, PSČ"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Odoslať newsletter"
-
-#: 
-msgid "Member Name"
-msgstr "Meno člena"
-
-#: 
-msgid "Adult/Child"
-msgstr "Dospelý/Dieťa"
 
 #: 
 msgid "Cell Phone"
@@ -9006,10 +8990,6 @@ msgid "Generate phone directory"
 msgstr "Generovať telefónny adresár"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "Generovať upomínacie listy o záväzkoch"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "Generovať správy o členstve v skupinách a aktivitách"
 
@@ -15900,10 +15880,6 @@ msgstr "Platné príklady"
 #: 
 msgid "What this plugin does"
 msgstr "Čo tento doplnok robí"
-
-#: 
-msgid "for all funds"
-msgstr "pre všetky fondy"
 
 #: 
 msgid "for fund"

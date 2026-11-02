@@ -1630,10 +1630,6 @@ msgid "Properties"
 msgstr "ንብረት"
 
 #: 
-msgid "Pledge Reminder Report"
-msgstr "የቃል ኪዳን አስታዋሽ ሪፖርት"
-
-#: 
 msgid "Restore Database"
 msgstr "መረጃውን ወደቀደመው መልስ"
 
@@ -1975,20 +1971,8 @@ msgid "Liaison"
 msgstr "አገናኝ"
 
 #: 
-msgid "City, State, Zip"
-msgstr "ከተማ፣ ግዛት፣ ዚፕ"
-
-#: 
 msgid "Send Newsletter"
 msgstr "ጋዜጣ ላክ"
-
-#: 
-msgid "Member Name"
-msgstr "የአባል ስም"
-
-#: 
-msgid "Adult/Child"
-msgstr "አዋቂ/ልጅ"
 
 #: 
 msgid "Cell Phone"
@@ -9026,10 +9010,6 @@ msgid "Generate phone directory"
 msgstr "ስልክ ማውቂያ ስ"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "ተቀባይነት አስታወስ ደብዳቤዎች ስ"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "ቡድን ተመዝገብ እና ተግባራት ላይ ሪፖርቶች ስ"
 
@@ -15913,10 +15893,6 @@ msgstr "ትክክለኛ ምሳሌዎች"
 #: 
 msgid "What this plugin does"
 msgstr "ይህ ተሰካሚ ምን ያደርጋል"
-
-#: 
-msgid "for all funds"
-msgstr "ለሁሉም ፈንዶች"
 
 #: 
 msgid "for fund"

@@ -1631,10 +1631,6 @@ msgid "Properties"
 msgstr "Omadused"
 
 #: 
-msgid "Pledge Reminder Report"
-msgstr "Lubatud annetuste meeldetuletuse aruanne"
-
-#: 
 msgid "Restore Database"
 msgstr "Taasta andmebaas"
 
@@ -1976,20 +1972,8 @@ msgid "Liaison"
 msgstr "Suhe"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Linn, osariik, indeks"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Saada infoleht"
-
-#: 
-msgid "Member Name"
-msgstr "Liikme nimi"
-
-#: 
-msgid "Adult/Child"
-msgstr "Täiskasvanu / laps"
 
 #: 
 msgid "Cell Phone"
@@ -9019,10 +9003,6 @@ msgid "Generate phone directory"
 msgstr "Looge telefonikataloog"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "Looge annetuste lubaduste meeldetuletuskirju"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "Looge aruandeid grupi liikmeskonna ja tegevuste kohta"
 
@@ -15905,10 +15885,6 @@ msgstr "Kehtivad näited"
 #: 
 msgid "What this plugin does"
 msgstr "Mida see pistikprogramm teeb"
-
-#: 
-msgid "for all funds"
-msgstr "kõigi fondide jaoks"
 
 #: 
 msgid "for fund"

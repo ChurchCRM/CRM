@@ -89,10 +89,6 @@ msgid "Generate Catalog"
 msgstr "Generate Catalogue"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Suburb, State, Post Code"
-
-#: 
 msgid "Cell Phone"
 msgstr "Mobile Phone"
 

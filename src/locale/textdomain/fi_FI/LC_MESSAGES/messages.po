@@ -1620,10 +1620,6 @@ msgid "Properties"
 msgstr "Ominaisuudet"
 
 #: 
-msgid "Pledge Reminder Report"
-msgstr "Sitoumusmuistutusraportti"
-
-#: 
 msgid "Restore Database"
 msgstr "Palauta tietokanta"
 
@@ -1965,20 +1961,8 @@ msgid "Liaison"
 msgstr "Yhteyshenkilö"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Kaupunki, lääni, postinumero"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Lähetä uutiskirje"
-
-#: 
-msgid "Member Name"
-msgstr "Jäsenen nimi"
-
-#: 
-msgid "Adult/Child"
-msgstr "Aikuinen/Lapsi"
 
 #: 
 msgid "Cell Phone"
@@ -8991,10 +8975,6 @@ msgid "Generate phone directory"
 msgstr "Luo puhelinluettelo"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "Luo lupausten muistutuskirjeet"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "Luo raportit ryhmäjäsenyydestä ja toiminnasta"
 
@@ -15877,10 +15857,6 @@ msgstr "Kelvolliset esimerkit"
 #: 
 msgid "What this plugin does"
 msgstr "Mitä tämä lisäosa tekee"
-
-#: 
-msgid "for all funds"
-msgstr "kaikille rahastoille"
 
 #: 
 msgid "for fund"

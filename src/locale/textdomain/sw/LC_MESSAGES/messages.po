@@ -1631,10 +1631,6 @@ msgid "Properties"
 msgstr "Mali"
 
 #: 
-msgid "Pledge Reminder Report"
-msgstr "Ripoti ya Kikumbusho cha Ahadi"
-
-#: 
 msgid "Restore Database"
 msgstr "Rejesha Hifadhidata"
 
@@ -1976,20 +1972,8 @@ msgid "Liaison"
 msgstr "Uhusiano"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Jiji, Jimbo, Zip"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Tuma Jarida"
-
-#: 
-msgid "Member Name"
-msgstr "Jina la Mwanachama"
-
-#: 
-msgid "Adult/Child"
-msgstr "Mtu mzima/Mtoto"
 
 #: 
 msgid "Cell Phone"
@@ -9016,10 +9000,6 @@ msgid "Generate phone directory"
 msgstr "Tengeneza saraka ya simu"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "Tengeneza barua za kukumbusha ahadi za sadaka"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "Tengeneza ripoti za uanachama wa kikundi na shughuli"
 
@@ -15902,10 +15882,6 @@ msgstr "Mifano Halali"
 #: 
 msgid "What this plugin does"
 msgstr "Kile ambacho programu-jalizi hii hufanya"
-
-#: 
-msgid "for all funds"
-msgstr "kwa mifuko yote"
 
 #: 
 msgid "for fund"

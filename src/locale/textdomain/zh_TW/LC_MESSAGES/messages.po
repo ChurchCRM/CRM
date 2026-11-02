@@ -1676,10 +1676,6 @@ msgid "Properties"
 msgstr "屬性"
 
 #: 
-msgid "Pledge Reminder Report"
-msgstr "質押提醒報告"
-
-#: 
 #, fuzzy
 msgid "Restore Database"
 msgstr "還原資料庫"
@@ -2038,20 +2034,8 @@ msgid "Liaison"
 msgstr "聯絡"
 
 #: 
-msgid "City, State, Zip"
-msgstr "市，州，郵政編碼"
-
-#: 
 msgid "Send Newsletter"
 msgstr "發送通訊"
-
-#: 
-msgid "Member Name"
-msgstr "會員名稱"
-
-#: 
-msgid "Adult/Child"
-msgstr "成人/兒童"
 
 #: 
 #, fuzzy
@@ -9154,10 +9138,6 @@ msgid "Generate phone directory"
 msgstr "產生電話通訊錄"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "產生奉獻承諾提醒信函"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "產生小組成員和活動報告"
 
@@ -16036,10 +16016,6 @@ msgstr "有效範例"
 #: 
 msgid "What this plugin does"
 msgstr "此外掛程式的功能"
-
-#: 
-msgid "for all funds"
-msgstr "適用於所有基金"
 
 #: 
 msgid "for fund"
