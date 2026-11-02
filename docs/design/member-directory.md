@@ -71,7 +71,7 @@
 ### Q3. One place for both directories
 
 - **Requirement:** whatever the answer to Q1 and Q2, the choice lives in **one place** and applies to **both** the printed directory and the portal directory. Nobody should have to opt out twice, or wonder which directory a setting covers.
-- **Where each directory applies it:** the printed directory, beside its classification, deceased, awaiting-review and inactive-family filters (`src/Reports/DirectoryReport.php` today, `DirectoryReportService` once #10981 merges); the portal directory, in `PortalDirectoryService`, which mirrors those filters.
+- **Where each directory applies it:** the printed directory, beside its classification, deceased, awaiting-review and inactive-family filters (`src/ChurchCRM/Service/DirectoryReportService.php`); the portal directory, in `PortalDirectoryService`, which mirrors those filters.
 - **Where it could live:**
   - **For staff:** a *Directory* row on the person's page.
   - **For the member** (if Q2 allows it): a *Directory* setting on their portal profile (Profile → Update your details), next to Language.
