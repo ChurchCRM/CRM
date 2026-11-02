@@ -520,7 +520,7 @@ class Person extends BasePerson implements PhotoInterface
      * avoid a duplicate generic entry. Mirrors the private pattern used by
      * setImageFromBase64().
      */
-    public function saveWithoutUpdateNote(\Propel\Runtime\Connection\ConnectionInterface $con = null): void
+    public function saveWithoutUpdateNote(?ConnectionInterface $con = null): void
     {
         $this->skipPostUpdateNote = true;
         try {
