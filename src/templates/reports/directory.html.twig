@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body { font-family: serif; font-size: {{ font_pt }}pt; line-height: 1.15; color: #000; }
+    .entry { margin-bottom: {{ entry_gap_mm }}mm; }
+    .name { font-weight: bold; text-decoration: underline; }
+    .photo { margin: 2mm 0; }
+    .photo img { width: 20mm; }
+    .line-1 { padding-left: 3mm; }
+    .letter { background-color: #000; color: #fff; font-weight: bold; text-align: center; margin-bottom: 1mm; }
+    .title-page { text-align: center; }
+    .title-page .church { font-size: 15pt; font-weight: bold; margin-top: 30mm; }
+    .title-page .kind { font-size: 15pt; font-weight: bold; margin: 8mm 0; }
+    .title-page .block { font-size: 12pt; margin-bottom: 8mm; }
+    .title-page .disclaimer { font-size: 10pt; padding: 0 10mm; }
+    .empty { font-style: italic; }
+  </style>
+</head>
+<body>
+  <htmlpageheader name="directoryHeader">
+    <div style="border: 0.3mm solid #000; text-align: center; font-weight: bold; font-size: {{ header_pt }}pt; padding: 2mm 0;">{{ header_title }}</div>
+  </htmlpageheader>
+  <htmlpagefooter name="directoryFooter">
+    <div style="text-align: center; font-style: italic; font-size: 8pt;">{{ gettext('Page') }} {PAGENO}&nbsp;&nbsp;&nbsp;&nbsp;{{ footer_date }}</div>
+  </htmlpagefooter>
+
+  {% if title_page %}
+    <div class="title-page">
+      {% if letterhead %}<img src="{{ letterhead }}" style="width: 100%;" alt="">{% endif %}
+      <div class="church">{{ title.name }}</div>
+      <div class="kind">{{ gettext('Directory') }}</div>
+      <div class="block">{{ title.date }}</div>
+      <div class="block">
+        {{ title.address }}<br>
+        {{ title.city_line }}<br>
+        {{ title.phone }}
+      </div>
+      <div class="disclaimer">{{ title.disclaimer }}</div>
+    </div>
+    <pagebreak resetpagenum="1" />
+  {% endif %}
+
+  <sethtmlpageheader name="directoryHeader" value="on" show-this-page="1" />
+  <sethtmlpagefooter name="directoryFooter" value="on" show-this-page="1" />
+
+  {% if entries %}
+    <columns column-count="{{ columns }}" column-gap="5" />
+    {% for entry in entries %}
+      <div class="entry" style="page-break-inside: avoid;">
+        {% if entry.letter %}<div class="letter">{{ entry.letter }}</div>{% endif %}
+        <div class="name">{{ entry.name }}</div>
+        {% if entry.photo %}<div class="photo"><img src="{{ entry.photo }}" alt=""></div>{% endif %}
+        {% for line in entry.lines %}
+          <div class="line-{{ line.level }}">{{ line.text }}</div>
+        {% endfor %}
+      </div>
+    {% endfor %}
+  {% else %}
+    <p class="empty">{{ gettext('No records were returned from the previous report. Please adjust your filters or date range and try again.') }}</p>
+  {% endif %}
+</body>
+</html>

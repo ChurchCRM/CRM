@@ -1631,10 +1631,6 @@ msgid "Properties"
 msgstr "Властивості"
 
 #: 
-msgid "Pledge Reminder Report"
-msgstr "Звіт про нагадування про заставу"
-
-#: 
 msgid "Restore Database"
 msgstr "Відновити базу даних"
 
@@ -1976,20 +1972,8 @@ msgid "Liaison"
 msgstr "Зв'язок"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Місто, штат, поштовий індекс"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Надіслати бюлетень"
-
-#: 
-msgid "Member Name"
-msgstr "Ім'я учасника"
-
-#: 
-msgid "Adult/Child"
-msgstr "Дорослий / дитина"
 
 #: 
 msgid "Cell Phone"
@@ -1998,10 +1982,6 @@ msgstr "Мобільний телефон"
 #: 
 msgid "Member/Friend"
 msgstr "Член / друг"
-
-#: 
-msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
-msgstr "Для цього варіанту потрібна принаймні версія 3.22 MySQL! Натисніть кнопку повернення браузера, щоб повернутися до ChurchCRM."
 
 #: 
 msgid "Work"
@@ -9038,10 +9018,6 @@ msgid "Generate phone directory"
 msgstr "Створіть телефонний справочник"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "Створіть листи нагадування про обіцянку"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "Створіть звіти про членство в групі та діяльність"
 
@@ -15932,10 +15908,6 @@ msgstr "Дійсні приклади"
 #: 
 msgid "What this plugin does"
 msgstr "Що робить цей плагін"
-
-#: 
-msgid "for all funds"
-msgstr "для всіх фондів"
 
 #: 
 msgid "for fund"
