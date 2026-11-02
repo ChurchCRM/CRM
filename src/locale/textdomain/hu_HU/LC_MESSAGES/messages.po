@@ -2017,10 +2017,6 @@ msgid "Member/Friend"
 msgstr "Tagállamok / Friend"
 
 #: 
-msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
-msgstr "Ez a lehetőség szerint legalább verziója 3,22 MySQL! Hit böngésző Vissza gombot, hogy visszatérjen ChurchCRM."
-
-#: 
 msgid "Work"
 msgstr "Munka"
 

@@ -1967,10 +1967,6 @@ msgid "Member/Friend"
 msgstr "അംഗം/സ്നേഹിതൻ"
 
 #: 
-msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
-msgstr "ഈ ഓപ്ഷൻ MySQL-ന്റെ കുറഞ്ഞത് 3.22 പതിപ്പ് ആവശ്യമാണ്! ChurchCRM-ലേക്ക് മടങ്ങാൻ ബ്രൗസർ ബാക്ക് ബട്ടൺ അമർത്തുക."
-
-#: 
 msgid "Work"
 msgstr "ജോലി"
 
