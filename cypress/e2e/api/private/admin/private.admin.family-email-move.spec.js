@@ -304,7 +304,7 @@ describe("7.8.3 upgrade: family email moves to people", () => {
                 cart("POST", { Family: fam.Both });
                 cy.request({
                     method: "POST",
-                    url: "Reports/DirectoryReport.php",
+                    url: "people/reports/directory",
                     form: true,
                     encoding: "binary",
                     body: {

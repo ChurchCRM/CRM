@@ -276,12 +276,12 @@ final class EmailSignInService
                 : PersonQuery::create()->filterById($candidate->matchedPersonIds, Criteria::IN)->orderById()->find()->getData();
 
             try {
-                $notice = MemberLanguage::inChurchLanguage(
-                    static fn (): MemberSignInNoticeEmail => new MemberSignInNoticeEmail($recipients, $candidate->email, $candidate->refusal ?? SignInReason::NO_MATCH, $matchedPeople, $refusedAt)
-                );
-                if (!$notice->send()) {
-                    LoggerUtils::getAppLogger()->warning('Could not send the Member Portal sign-in notice', ['error' => $notice->getError()]);
-                }
+                MemberLanguage::inChurchLanguage(static function () use ($recipients, $candidate, $matchedPeople, $refusedAt): void {
+                    $notice = new MemberSignInNoticeEmail($recipients, $candidate->email, $candidate->refusal ?? SignInReason::NO_MATCH, $matchedPeople, $refusedAt);
+                    if (!$notice->send()) {
+                        LoggerUtils::getAppLogger()->warning('Could not send the Member Portal sign-in notice', ['error' => $notice->getError()]);
+                    }
+                });
             } catch (Throwable $e) {
                 LoggerUtils::getAppLogger()->error('Could not send the Member Portal sign-in notice', ['exception' => $e->getMessage()]);
             }

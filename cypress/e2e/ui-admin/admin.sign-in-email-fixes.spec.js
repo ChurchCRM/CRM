@@ -159,7 +159,9 @@ describe("Email needs attention: Fix shared emails and Confirm selected", () => 
 
         cy.get('#memberListProblems [data-problem="email_unconfirmed"]').click();
         cy.get("#unconfirmedKindBar").should("be.visible");
+        cy.intercept({ method: "GET", pathname: /\/api\/persons\/sign-in-email\/attention$/, query: { kind: "family_email" } }).as("familyEmailAttention");
         cy.get('#unconfirmedKinds [data-kind="family_email"]').click();
+        cy.wait("@familyEmailAttention");
         cy.get("#memberListTable").should("contain.text", "Sherri Gordon").and("not.contain.text", "Paul Smith");
         cy.contains("#memberListTable tbody tr", "Rafael Dixon")
             .find("[data-cy=attention-select-locked]")

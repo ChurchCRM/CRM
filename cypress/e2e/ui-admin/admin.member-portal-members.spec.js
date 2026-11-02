@@ -247,6 +247,7 @@ describe("Admin → Member Portal members, audit, permissions and the person car
         cy.get("#portal-signin-permissions-count").invoke("text").as("countBefore", { type: "static" });
         cy.get("#portal-grant-add").click();
         cy.get("#portal-grant-modal").should("be.visible");
+        cy.get("#portal-grant-capability").should("have.focus");
         cy.get("#portal-grant-capability").select("volunteer.team.manage");
         cy.get("#portal-grant-scope-label").should("have.text", "Team");
         cy.get("#portal-grant-scope-group .ts-control input").type(PREFIX);
@@ -345,6 +346,7 @@ describe("Admin → Member Portal members, audit, permissions and the person car
         cy.get("#portal-grant-none-left").should("not.exist");
         cy.get("#portal-grant-add").should("be.enabled").click();
         cy.get("#portal-grant-modal").should("be.visible");
+        cy.get("#portal-grant-capability").should("have.focus");
         // Everyone's own, and the one given above, are not offered again.
         ["portal.profile.edit", "portal.calendar.view", "portal.directory.view"].forEach((key) => {
             cy.get(`#portal-grant-capability option[value="${key}"]`).should("not.exist");
@@ -365,6 +367,7 @@ describe("Admin → Member Portal members, audit, permissions and the person car
         cy.get('#portal-signin-permissions [data-source="rule"]').should("contain.text", "Change family details");
         cy.get("#portal-grant-add").click();
         cy.get("#portal-grant-modal").should("be.visible");
+        cy.get("#portal-grant-capability").should("have.focus");
         cy.get('#portal-grant-capability option[value="portal.directory.view"]').should("not.exist");
         cy.get('#portal-grant-capability option[value="portal.family.edit"]').should("have.attr", "data-held-scopes", "1");
         cy.intercept("GET", "/admin/api/member-portal/grant-scopes/family*").as("families");

@@ -68,12 +68,12 @@ describe("Label sheets", () => {
         cart("DELETE");
     });
 
-    it("sends a self-service user back to the portal", () => {
+    it("requires staff sign-in before a member can access labels", () => {
         cy.setupPersonaSession("portal-only");
         [mailing("5160"), NAME_TAGS, familyLabels("newsletter"), familyLabels("confirm")].forEach((url) => {
             cy.request({ url, followRedirect: false, failOnStatusCode: false }).then((response) => {
                 expect(response.status).to.eq(302);
-                expect(response.headers.location).to.include("/portal");
+                expect(response.headers.location).to.match(/\/admin\/$/);
             });
         });
     });
