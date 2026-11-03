@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Exceptions\ImageStorageException;
 use ChurchCRM\Exceptions\PhotoSizeException;
 use ChurchCRM\Service\LetterheadService;
 use ChurchCRM\Service\SystemService;
@@ -102,6 +103,8 @@ $app->group('/api/system/letterhead', function (RouteCollectorProxy $group): voi
             return SlimUtils::renderJSON($response, ['success' => true] + $state());
         } catch (PhotoSizeException $e) {
             return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 413, $e, $request);
+        } catch (ImageStorageException $e) {
+            return SlimUtils::renderErrorJSON($response, gettext('Failed to store the letterhead'), [], 500, $e, $request);
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to upload letterhead'), [], 400, $e, $request);
         }
