@@ -2403,14 +2403,6 @@ msgid "Enable non-deductible payments"
 msgstr "เปิดใช้งานการชำระเงินที่ไม่สามารถหักลดหย่อน"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "ขอบซ้าย (1 = 1/100 นิ้ว)"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "ความหนาของเส้น (1 = 1/100 นิ้ว"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "ข้อความสำหรับบรรทัดบนของรายงานภาษี วันที่จะถูกเพิ่มต่อท้ายบรรทัดนี้"
 
@@ -4856,14 +4848,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "จำนวนขั้นต่ำที่รหัสผ่านใหม่ต้องแตกต่างจากรหัสผ่านเก่า (จำนวนตัวอักษรที่เปลี่ยน)\n"
 "ตั้งเป็นศูนย์เพื่อปิดใช้งานคุณสมบัตินี้"
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr "โหมดการจัดการ PDF\n"
-"1 = กล่องโต้ตอบบันทึกไฟล์\n"
-"2 = เปิดในหน้าต่างเบราว์เซอร์ปัจจุบัน"
 
 #: 
 msgid "Verify People"

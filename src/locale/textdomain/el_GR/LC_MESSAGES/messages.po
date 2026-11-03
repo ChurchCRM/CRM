@@ -2416,14 +2416,6 @@ msgid "Enable non-deductible payments"
 msgstr "Ενεργοποιήστε τις μη εκπιπτόμενες πληρωμές"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "Αριστερό περιθώριο (1 = 1/100η ίντσα)"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "Πάχος γραμμής (1 = 1/100η ίντσα"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "Verbage για την κορυφή της φορολογικής έκθεσης. Οι ημερομηνίες θα προστεθούν στο τέλος αυτής της γραμμής."
 
@@ -4876,14 +4868,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Ελάχιστο ποσό που πρέπει να διαφέρει ένας νέος κωδικός πρόσβασης από τον παλιό (# χαρακτήρες άλλαξαν)\n"
 "Ορίστε στο μηδέν για να απενεργοποιήσετε αυτήν τη δυνατότητα"
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr "Λειτουργία χειρισμού PDF.\n"
-"1 = Διάλογος Αποθήκευση αρχείου\n"
-"2 = Άνοιγμα στο τρέχον παράθυρο του προγράμματος περιήγησης"
 
 #: 
 msgid "Verify People"

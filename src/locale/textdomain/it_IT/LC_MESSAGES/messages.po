@@ -2426,14 +2426,6 @@ msgid "Enable non-deductible payments"
 msgstr "Abilita pagamenti non deducibili"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "Margine sinistro (1 = 1/100 di pollice)"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "Spessore linea (1 = 1 / 100th pollici"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "Verbage per la linea superiore del rapporto fiscale. Le date verranno aggiunte alla fine di questa riga."
 
@@ -4895,14 +4887,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Numero di caratteri differenti che una nuova password deve avere da quella vecchia (# di caratteri modificati)\n"
 "Imposta a zero per disabilitare questa funzione"
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr "Modalità di gestione PDF.\n"
-"1 = Finestra di dialogo Salva File\n"
-"2 = Apri nella finestra del browser corrente"
 
 #: 
 msgid "Verify People"

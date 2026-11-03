@@ -2416,14 +2416,6 @@ msgid "Enable non-deductible payments"
 msgstr "Aktiveer nie-aftrekbare betalings"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "Linkermarge (1 = 1/100 duim)"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "Lyndikte (1 = 1/100 duim"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "Woord vir die boonste lyn van belastingverslag. Datums sal aan die einde van hierdie reël gevoeg word."
 
@@ -4876,14 +4868,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Minimum bedrag wat 'n nuwe wagwoord moet verskil van die ou wagwoord (aantal karakters verander)\n"
 "Stel op nul om hierdie funksie uit te skakel"
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr "PDF-hanteringsmodus.\n"
-"1 = Stoor lêer dialoog\n"
-"2 = Maak oop in die huidige blaaiervenster"
 
 #: 
 msgid "Verify People"

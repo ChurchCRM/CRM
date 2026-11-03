@@ -2415,14 +2415,6 @@ msgid "Enable non-deductible payments"
 msgstr "Mahaarvatavate maksete lubamine"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "Vasak varu (1 = 1/100 tolli)"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "Joone paksus (1 = 1/100 tolli"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "Sõnastus maksuraporti ülemise rea jaoks. Kuupäevad lisatakse selle rea lõppu."
 
@@ -4875,14 +4867,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Minimaalne summa, mis uus parool peab vanast erinema (tähemärkide arvu muudetud)\n"
 "Selle funktsiooni keelamiseks seadke null"
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr "PDF-i käitlemisrežiim.\n"
-"1 = dialoogiboks Salvesta fail\n"
-"2 = Ava praeguses brauseriaknas"
 
 #: 
 msgid "Verify People"
