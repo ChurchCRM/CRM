@@ -21,6 +21,7 @@ import { escapeHtml } from "./utils/escape-html";
  * @property {('1:1'|'free')} [aspectRatio='1:1'] - Crop ratio; 'free' for a banner such as the church logo
  * @property {boolean} [webcam=true] - Offer the webcam tab; false for things that are not a person, such as the church logo
  * @property {string} [title='Upload Photo'] - Heading shown on the Uppy dashboard modal
+ * @property {Record<string,string>} [headers] - Extra request headers, such as a CSRF token
  * @property {Function} [onComplete] - Callback function(result) after successful upload
  */
 
@@ -318,6 +319,7 @@ export function createPhotoUploader(config) {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
+          ...config.headers,
         },
         credentials: "include",
         body: JSON.stringify({ imgBase64 }),

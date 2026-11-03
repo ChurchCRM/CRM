@@ -70,7 +70,11 @@ describe("Member Portal — Profile", () => {
         // from is somebody else's fixture and is only ever read.
         login();
         cy.visit("/portal/profile/edit");
-        cy.get("#portal-photo-input").selectFile("cypress/data/images/people/102.png", { force: true });
+        cy.get("#portal-photo-button").click();
+        cy.get(".uppy-Dashboard--modal", { timeout: 10000 }).should("be.visible");
+        cy.get(".uppy-Dashboard-input").first().selectFile("cypress/data/images/people/102.png", { force: true });
+        cy.get(".uppy-DashboardContent-save", { timeout: 10000 }).should("not.be.disabled").click();
+        cy.get(".uppy-StatusBar-actionBtn--upload", { timeout: 10000 }).click();
 
         cy.get(".portal-flash-success", { timeout: 10000 })
             .should("be.visible")
