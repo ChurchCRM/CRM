@@ -36,7 +36,7 @@ const setAdminLanguage = (value) =>
 const signInAsAdmin = () =>
     cy.env(["admin.username", "admin.password"]).then((env) => {
         cy.clearCookies();
-        cy.request({ method: "POST", url: "/admin/", form: true, body: { User: env["admin.username"], Password: env["admin.password"] } });
+        cy.request({ method: "POST", url: "/session/begin", form: true, body: { User: env["admin.username"], Password: env["admin.password"] } });
     });
 
 const signInWithCode = () => {

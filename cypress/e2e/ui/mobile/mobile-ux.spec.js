@@ -77,7 +77,7 @@ describe("Mobile UX — Family Registration", () => {
     });
 
     it("family register page fits mobile viewport and fields stack", () => {
-        cy.visit("/external/register/");
+        cy.visit("/portal/register");
         cy.get("#registration-stepper").should("be.visible");
         cy.get("#familyName").should("be.visible");
         cy.get("#familyAddress1").should("be.visible");
@@ -85,7 +85,7 @@ describe("Mobile UX — Family Registration", () => {
     });
 
     it("family register form inputs use 16px font (iOS zoom prevention)", () => {
-        cy.visit("/external/register/");
+        cy.visit("/portal/register");
         cy.get("#familyName").then(($el) => {
             const fontSize = parseFloat($el.css("font-size"));
             expect(fontSize, "input font-size").to.be.gte(16);
@@ -93,7 +93,7 @@ describe("Mobile UX — Family Registration", () => {
     });
 
     it("family register step nav buttons take full width on mobile", () => {
-        cy.visit("/external/register/");
+        cy.visit("/portal/register");
         cy.get("#family-info-next").then(($btn) => {
             const btnWidth = $btn.outerWidth();
             const parentWidth = $btn.parent().innerWidth();

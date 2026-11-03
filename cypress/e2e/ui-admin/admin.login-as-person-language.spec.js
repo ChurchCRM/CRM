@@ -11,7 +11,7 @@ const admin = (method, url, body = null, status = 200) => cy.makePrivateAdminAPI
 const signInAsAdmin = () =>
     cy.env(["admin.username", "admin.password"]).then((env) => {
         cy.clearCookies();
-        cy.request({ method: "POST", url: "/admin/", form: true, body: { User: env["admin.username"], Password: env["admin.password"] } });
+        cy.request({ method: "POST", url: "/session/begin", form: true, body: { User: env["admin.username"], Password: env["admin.password"] } });
     });
 
 const startLoginAsPerson = () =>

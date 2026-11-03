@@ -33,6 +33,7 @@ use Propel\Runtime\ActiveQuery\Criteria;
  */
 final class MemberSignInListService
 {
+    public const EVERYONE = 'everyone';
     public const MAY_SIGN_IN = 'may-sign-in';
     public const SIGNED_IN_RECENTLY = 'signed-in-recently';
     public const NEVER_SIGNED_IN = 'never-signed-in';
@@ -41,6 +42,7 @@ final class MemberSignInListService
     public const FAMILY_EMAILS_NOT_MOVED = 'family-emails-not-moved';
 
     public const LISTS = [
+        self::EVERYONE,
         self::MAY_SIGN_IN,
         self::SIGNED_IN_RECENTLY,
         self::NEVER_SIGNED_IN,
@@ -100,6 +102,7 @@ final class MemberSignInListService
 
         return [
             'recentDays' => self::RECENT_DAYS,
+            self::EVERYONE => PersonQuery::create()->count(),
             self::MAY_SIGN_IN => $this->maySignInNowQuery()->count(),
             self::SIGNED_IN_RECENTLY => $this->signedInRecentlyQuery()->count(),
             self::NEVER_SIGNED_IN => $this->neverSignedInQuery()->count(),
@@ -159,6 +162,7 @@ final class MemberSignInListService
         $search = trim($search);
 
         return match ($list) {
+            self::EVERYONE => $this->peoplePage($this->everyoneQuery(), $start, $length, $search, withStatus: true),
             self::MAY_SIGN_IN => $this->peoplePage($this->maySignInNowQuery(), $start, $length, $search),
             self::NEVER_SIGNED_IN => $this->peoplePage($this->neverSignedInQuery(), $start, $length, $search),
             self::SIGNED_IN_RECENTLY => $this->peoplePage($this->signedInRecentlyQuery(), $start, $length, $search, true),
@@ -208,6 +212,14 @@ final class MemberSignInListService
     private function memberRuleQuery(): PersonQuery
     {
         return $this->rule->maySignInQuery()->joinPersonSignin(self::SIGNIN, Criteria::LEFT_JOIN);
+    }
+
+    /** Everyone on file, so the office can look anyone up and see whether and why not they may sign in. */
+    private function everyoneQuery(): PersonQuery
+    {
+        return PersonQuery::create()
+            ->joinPersonSignin(self::SIGNIN, Criteria::LEFT_JOIN)
+            ->joinFamily(null, Criteria::LEFT_JOIN);
     }
 
     private function maySignInNowQuery(): PersonQuery
@@ -316,7 +328,7 @@ final class MemberSignInListService
     /**
      * @return array{total: int, filtered: int, rows: list<array<string, mixed>>}
      */
-    private function peoplePage(PersonQuery $query, int $start, int $length, string $search, bool $newestFirst = false): array
+    private function peoplePage(PersonQuery $query, int $start, int $length, string $search, bool $newestFirst = false, bool $withStatus = false): array
     {
         $total = (clone $query)->count();
         $query = $this->searchPeople($query, $search);
@@ -336,7 +348,13 @@ final class MemberSignInListService
 
         $rows = [];
         foreach ($people as $person) {
-            $rows[] = $this->personRow($person);
+            $row = $this->personRow($person);
+            if ($withStatus) {
+                $reason = $this->rule->statusFor($person);
+                $row['maySignIn'] = $reason === null;
+                $row['reasonLabel'] = $reason?->label();
+            }
+            $rows[] = $row;
         }
 
         return ['total' => $total, 'filtered' => $filtered, 'rows' => $rows];

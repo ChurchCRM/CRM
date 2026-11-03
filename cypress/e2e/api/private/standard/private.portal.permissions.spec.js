@@ -36,7 +36,7 @@ const signIn = ({ username, password, personId }) => {
         cy.signInAsMember(personId);
     } else {
         cy.clearCookies();
-        cy.request({ method: "POST", url: "/admin/", form: true, body: { User: username, Password: password } });
+        cy.request({ method: "POST", url: "/session/begin", form: true, body: { User: username, Password: password } });
     }
     cy.request("/portal/").its("status").should("eq", 200);
 };

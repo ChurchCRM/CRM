@@ -45,7 +45,7 @@ describe("API — Cart to Family", () => {
     function freshStandardLogin() {
         cy.request({
             method: "POST",
-            url: "/admin/",
+            url: "/session/begin",
             form: true,
             body: {
                 User: Cypress.testEnv("standard.username"),

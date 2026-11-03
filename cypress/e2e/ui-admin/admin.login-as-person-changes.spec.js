@@ -15,14 +15,14 @@ const admin = (method, url, body = null, status = 200) => cy.makePrivateAdminAPI
 const setSetting = (name, value) => admin("POST", `admin/api/system/config/${name}`, { value });
 
 // Posts the staff sign-in form rather than typing into it. A staff page left open
-// in the browser answers its own pending requests with a redirect to /admin/ once
+// in the browser answers its own pending requests with a redirect to /session/begin once
 // the session ends, which could reload the form while Cypress typed into it.
 const signInAsAdmin = () =>
     cy.env(["admin.username", "admin.password"]).then((env) => {
         cy.clearCookies();
         cy.request({
             method: "POST",
-            url: "/admin/",
+            url: "/session/begin",
             form: true,
             followRedirect: false,
             body: { User: env["admin.username"], Password: env["admin.password"] },
@@ -209,7 +209,7 @@ describe("Login as Person: changes and endings", () => {
             cy.wait(2500);
             cy.request({ url: "/portal/", followRedirect: false }).then((response) => {
                 expect(response.status).to.eq(302);
-                expect(response.headers.location).to.match(/\/admin\/$/);
+                expect(response.headers.location).to.match(/\/session\/begin$/);
             });
             cy.restoreSystemConfig("iSessionTimeout", saved.iSessionTimeout);
             cy.request({ url: "/v2/dashboard", followRedirect: false }).its("status").should("eq", 302);
@@ -237,7 +237,7 @@ describe("Login as Person: changes and endings", () => {
 
     it("ends with the sign-out reason on Sign out", () => {
         startLoginAsPerson();
-        cy.request({ url: "/session/end", followRedirect: false }).its("headers.location").should("match", /\/admin\/$/);
+        cy.request({ url: "/session/end", followRedirect: false }).its("headers.location").should("match", /\/session\/begin$/);
         signInAsAdmin();
         newestSession().should("contain", "Signed out");
     });

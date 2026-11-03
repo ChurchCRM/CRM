@@ -33,6 +33,8 @@ interface PersonRow {
   lastSignInDisplay: string;
   lastMethodLabel: string | null;
   lastActivityDisplay: string;
+  maySignIn?: boolean;
+  reasonLabel?: string | null;
 }
 
 interface ConfirmationRow {
@@ -67,7 +69,7 @@ type AnyRow = PersonRow | AttentionRow | ConfirmationRow | NotMovedRow;
 
 const TABLE_ID = "memberListTable";
 
-let currentList = "may-sign-in";
+let currentList = "everyone";
 let currentProblem = "";
 let table: DataTablesApi | null = null;
 let attention: AttentionTools | null = null;
@@ -101,6 +103,31 @@ const menuColumn: ServerColumn<PersonRow> = {
 };
 
 const LISTS: Record<string, { description: () => string; columns: () => ServerColumn<AnyRow>[] }> = {
+  everyone: {
+    description: () =>
+      t("Search anyone on file. Each row says whether they may sign in to the Member Portal and, if not, why."),
+    columns: () =>
+      [
+        nameColumn,
+        familyColumn,
+        { title: t("Email"), render: email, priority: 3 },
+        {
+          title: t("Can sign in?"),
+          render: (row: PersonRow) =>
+            row.maySignIn
+              ? `<span class="badge bg-success text-white">${escapeHtml(t("Yes"))}</span>`
+              : `<span class="badge bg-secondary text-white">${escapeHtml(t("No"))}</span>`,
+          priority: 2,
+        },
+        {
+          title: t("Why not"),
+          render: (row: PersonRow) => (row.reasonLabel ? escapeHtml(row.reasonLabel) : muted("—")),
+          priority: 4,
+        },
+        { title: t("Last sign-in"), render: lastSignIn, priority: 5 },
+        menuColumn,
+      ] as ServerColumn<AnyRow>[],
+  },
   "may-sign-in": {
     description: () =>
       t("The sign-in rules let them in, and each has their own email that nobody else who may sign in uses."),

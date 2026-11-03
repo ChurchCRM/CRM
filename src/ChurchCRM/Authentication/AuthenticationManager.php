@@ -408,10 +408,10 @@ class AuthenticationManager
         return false;
     }
 
-    /** The staff sign-in page, the `/admin` root (design §7). `/session/begin` redirects there. */
+    /** The staff sign-in page in the session MVC. */
     public static function getStaffSignInURL(): string
     {
-        return SystemURLs::getRootPath() . '/admin/';
+        return SystemURLs::getRootPath() . '/session/begin';
     }
 
     public static function getPortalLoginURL(): string

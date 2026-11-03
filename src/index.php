@@ -62,7 +62,9 @@ if ($_idx_isWebRoot && !AuthenticationManager::validateUserSessionIsActive(false
     if (PortalSessionStore::has()) {
         RedirectUtils::redirect('portal/');
     }
-    RedirectUtils::redirect(SystemConfig::getBooleanValue('bMemberSignIn') ? 'portal/login' : 'admin/');
+    $portalEntryEnabled = SystemConfig::getBooleanValue('bMemberSignIn')
+        || SystemConfig::getBooleanValue('bEnableSelfRegistration');
+    RedirectUtils::redirect($portalEntryEnabled ? 'portal/login' : AuthenticationManager::getStaffSignInURL());
 }
 
 // Only a real page is remembered for after sign-in.

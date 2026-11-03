@@ -9,7 +9,7 @@
 - **Members sign in with their own email address.** ChurchCRM emails a code and a link. Members have no user account and no password. The web root opens the member sign-in page, `/portal/login`.
 - **Admin → Users lists staff only.** Members never appear there.
 - **Passkeys come in the same release.** After the first email sign-in, a member can choose to add a passkey or to stay signed in on their own device. Email is then only for the first time and for getting back in. Nothing is remembered on a device unless the member asks, because it could be a shared or public computer. Google and Microsoft sign-in come later.
-- **Staff sign in at `/admin`**, with their username, password and two-factor, as today. `/admin` takes over from `/session/begin`.
+- **Staff sign in at `/session/begin`**, with their username, password and two-factor. `/admin/` remains the authenticated admin dashboard.
 - **One shared step.** Every way of signing in ends at the same step: "start a portal session for this verified person". That step checks who may sign in, records the sign-in, and is the only code that creates a member session.
 - **One portal permissions model.** One check decides what each member sees and can do in the portal. Core pages, Volunteer and plugins all use it. Team leaders keep running their teams from the portal.
 - **Email belongs to people.** The family email moves to the head of household or spouse. They can sign in with it only after staff confirm it is theirs, unless they are the family's only living, active member. The printed directory shows each person's email only.
@@ -65,7 +65,7 @@ This document puts those into one design and one delivery plan.
 | D4 | Passkeys are in the first release. Staying signed in is the member's choice, device by device. The box is never ticked for them, and a device stays signed in for 14 days by default. | §6.2, §6.3 |
 | D5 | **Who may sign in:** family roles; classifications, which is where guests are decided; and a minimum age of 13. Deceased and inactive people, and people with Disable sign-in on, can't sign in at all. Members also can't while their family is deactivated or they are awaiting review; those two don't block staff (§4). In the portal, an adult is a head of household or spouse who is 18 or older. | §4 |
 | D6 | The personal email is the sign-in identity. §9 controls who may change it, and when a new address may be used to sign in. | §9 |
-| D7 | The web root goes to `/portal/login` while member sign-in is on, and to `/admin` while it is off. `/admin` is the staff sign-in page, and `/session/begin` redirects to it. | §7 |
+| D7 | The web root goes to `/portal/login` while member sign-in or self-registration is on, and to `/session/begin` when both are off. `/session/begin` is the staff sign-in page; `/admin` remains the authenticated admin dashboard. | §7 |
 | D8 | One portal permissions model serves core, Volunteer and plugins. | §8 |
 | D9 | **Family email:** it moves to the head of household, then the spouse. If neither can take it, it is kept as a note in the family's timeline. A moved address is used to sign in only after staff with Edit Records or an administrator confirm it is that person's own. In a one-person family it is accepted as the address on record (§9). | §10 |
 | D10 | Login as Person returns inside this work, as **Login as {first name}** in the person's Actions menu. #10392 closes in favour of it. | §6.5 |
@@ -86,7 +86,7 @@ This document puts those into one design and one delivery plan.
   - A signed-out visitor to the web root goes to `/session/begin` (`src/index.php:55`, `AuthenticationManager.php:226`).
   - After sign-in, a self-service user lands on `/portal/` (`AuthenticationManager.php:299-307`).
   - There is no portal sign-in page.
-  - `/admin/` is the admin-only Admin Dashboard (`src/admin/index.php:8-12`, `src/admin/routes/dashboard.php:47`). Other staff are sent to an access-denied page. The staff dashboard is `/v2/dashboard`.
+  - `/admin/` is the admin-only Admin Dashboard (`src/admin/index.php:8-12`, `src/admin/routes/dashboard.php:47`). Other staff are sent to their staff dashboard at `/v2/dashboard`. The staff dashboard is `/v2/dashboard`.
   - Signed-out requests for any staff page are sent to `/session/begin`, with the page remembered so the person lands there after signing in (`AuthMiddleware.php:288-305`).
   - `/session/begin` is written into 15 places in `src/`. It is also used by the Cypress login command (`cypress/support/test-env.js:59`) and in about 80 spec files.
 - **Sign-in blocks.** `User::getSignInBlockedReason()` (`User.php:680-698`) refuses deceased and inactive people. It is checked at sign-in, on every session request, for API keys and at password reset.
@@ -137,7 +137,7 @@ A member session belongs to a **person**, not to a user account.
 - **`PortalPrincipal`** is a small value object: the person id, how they signed in, when, and, for Login as Person, the acting administrator. It lives in the PHP session.
   - `PortalAccessMiddleware` and `PortalApiMiddleware` resolve `portalActor` from the principal instead of from `getCurrentUser()`.
   - The remaining portal callers (§2) read the principal too.
-- **The staff side doesn't change.** `User`, `AuthenticationManager` and every staff route keep working as they do now. A request with only a portal principal is not a signed-in user to them, so staff routes send it to `/admin`.
+- **The staff side doesn't change.** `User`, `AuthenticationManager` and every staff route keep working as they do now. A request with only a portal principal is not a signed-in user to them, so staff routes send it to `/session/begin`.
 - **Sign-in data lives in person-keyed tables** (§13): sign-in state and Disable sign-in, sign-in requests, remembered devices, passkeys, portal grants and the audit. A row exists only for people who have signed in or have a setting.
 
 ## 4. Who may sign in
@@ -152,7 +152,7 @@ A person may start a portal session when **all** of these hold. The shared step 
 - the person's family is deactivated;
 - the person is awaiting review (`per_NeedsReview`): public self-registration, kiosk walk-ins, and people a member added in the portal.
 
-**The member rule** is set on a new Admin → Member Portal → Sign-in tab. These settings don't exist today. The rule doesn't apply to staff signing in at `/admin`.
+**The member rule** is set on a new Admin → Member Portal → Sign-in tab. These settings don't exist today. The rule doesn't apply to staff signing in at `/session/begin`.
 - **Family roles:** one checkbox per family role (head of household, spouse, child, other relative…). Head of household and spouse are ticked at first.
 - **Classifications:** one checkbox each (Member, Regular Attender, Guest…), with the number of active people in each.
   - This is where the church decides about guests.
@@ -279,12 +279,12 @@ Requests over a limit get the same answer screen and no email. They are audited 
 
 ### 6.4 Switching between staff and portal
 
-- **Signed in as staff (at `/admin`):**
+- **Signed in as staff:**
   - the staff menu's **Member Portal** link opens the staff member's own portal;
   - the portal header's **Admin Console** link goes straight back.
   - Neither link asks for anything. The portal sees a principal for their own person with method `STAFF`, which gets the blocks for everyone (§4) but not the member-only blocks or the member rule.
 - **Signed in at `/portal/login`** (email or passkey), by someone who also has a staff account:
-  - the portal's **Admin Console** link goes to the `/admin` sign-in page;
+  - the portal's **Admin Console** link goes to the `/session/begin` sign-in page;
   - only a username, password and two-factor sign-in there opens the staff side, and it then replaces the member session.
   - An email link or a passkey never opens the staff side.
 - **The portal's Change Password and two-factor pages** show only in a staff session. Members have neither.
@@ -333,24 +333,22 @@ Login as Person lets an administrator see the Member Portal exactly as a member 
 | Page | Who | Asks for |
 |---|---|---|
 | `/portal/login` | members | email, or a passkey |
-| `/admin` | staff | username, password, then two-factor |
+| `/session/begin` | staff | username, password, then two-factor |
 
 - **Web root.**
-  - Signed out, it goes to `/portal/login` while member sign-in is on, and to `/admin` while it is off.
+  - Signed out, it goes to `/portal/login` while member sign-in or self-registration is on, and to `/session/begin` when both are off.
   - Signed in, it goes to the staff dashboard for a staff session and to the portal for a member session.
-- **`/portal/login`** uses the church's portal theme and is for members only. It has no link to the staff sign-in: staff go to `/admin`, and a staff session reaches the portal and back through the Member Portal and Admin Console links (§6.4). While member sign-in is off, it says *"Member sign-in isn't available yet. Please contact the church office."*
+- **`/portal/login`** uses the church's portal theme and is for members only. When self-registration is enabled it links to `/portal/register`; staff use `/session/begin`. A staff session reaches the portal and back through the Member Portal and Admin Console links (§6.4). While member sign-in is off, it says *"Member sign-in isn't available yet. Please contact the church office."*
 - **Signing out** of a member session goes to `/portal/login`, and so does any portal page asked for while signed out, whatever the setting.
 - **`/admin`**
-  - Signed out, it shows today's staff sign-in: username and password, then the two-factor step, with "Forgot password?".
-  - Every staff page a signed-out visitor asks for redirects to `/admin`, which remembers the page and returns there after sign-in. Today that redirect goes to `/session/begin`.
+  - It remains the authenticated admin dashboard. Signed-out visitors go to `/session/begin`; authenticated staff without the admin role go to `/v2/dashboard`.
+  - Every staff page a signed-out visitor asks for redirects to `/session/begin`, which remembers the page and returns there after sign-in.
   - Signed in:
     - an administrator gets the Admin Dashboard, as today;
-    - other staff go to the staff dashboard (`/v2/dashboard`) instead of the access-denied page they get today;
-    - a member session goes to the staff sign-in, as in §6.4.
-  - Only the `/admin` root changes. Every other `/admin/…` page stays administrator-only.
-- **`/session/begin`** redirects to `/admin`, so bookmarks, the docs and other links keep working.
-  - The 15 places in `src/` that link to it, including the sign-in link in user emails (`BaseUserEmail.php:46`), change to `/admin`.
-  - The Cypress login command moves to `/admin`. The spec files keep working through the redirect.
+    - an administrator gets the Admin Dashboard;
+    - other staff go to the staff dashboard (`/v2/dashboard`).
+  - Every `/admin/…` page is authenticated and admin-only.
+- **`/session/begin`** serves the staff sign-in form and accepts its form posts. Existing login links and forms use this route.
 - The two-factor step, password reset and `/session/end` keep their paths in the first release. `/session/end` signs out either kind of session.
 
 ## 8. Portal permissions model
@@ -619,7 +617,7 @@ The Member Portal page sits at People → People Settings → Member Portal. Its
   | Email history (`eml_usr_ID`) | Left in place. The sender is now named from the person; before, a missing account showed as "Automatic". |
   | The account's own data: API key, two-factor secret and recovery codes, password, per-account settings (`userconfig_ucfg`, `user_settings`), password tokens | Deleted with the account, after the calendar feed, last portal activity and language are copied (above). |
   | Sign-in audit, given grants, Disable sign-in and Login as Person history | New in 7.8.3 and empty at the cutover. Afterwards they name people from `person_per`. |
-  | An open session of a deleted account | It ends on the next request. A portal page goes to `/portal/login`, an API call gets 401, and a staff page goes to `/admin`. |
+  | An open session of a deleted account | It ends on the next request. A portal page goes to `/portal/login`, an API call gets 401, and a staff page goes to `/session/begin`. |
 
   Former self-service members appear as "never signed in" until their first email sign-in, because only the last portal activity is copied.
 - **Rolling back.** ChurchCRM has no downgrade. Once the 7.8.3 files are in place, the database upgrades itself on the first page load. After that, the deleted accounts exist only in a backup taken before the upgrade.
@@ -717,7 +715,7 @@ This work does not wait for #10511's F0, as George said on 10-10. It is built so
 | 3 | Plugin API (§8.5): the manifest's `portal` block, `getPortalRules()`, `getPortalNavItems()`, `portalRoutesFile`, portal templates, and the plugin README and skeleton | 2 |
 | 4 | Blocks and the member rule (§4), the Sign-in tab settings, and the Disable sign-in field | 1 |
 | 5 | `/portal/login`, email code and link, throttles, the office list and notices | 0, 4 |
-| 6 | Sign-in pages (§7): web root, `/admin` as the staff sign-in, the redirect from `/session/begin`, the links in `src/` and the Cypress login command; staff/portal switching (§6.4) | 5 |
+| 6 | Sign-in pages (§7): web root, `/session/begin` as staff sign-in, authenticated `/admin` dashboard, optional portal registration, links in `src/` and the Cypress login command; staff/portal switching (§6.4) | 5 |
 | 7 | Remembered devices and the member's Sign-in and devices page | 5 |
 | 8 | Passkeys | 7 |
 | 9 | Admin lists, audit view, Statistics on the new tables, the Permissions tab, the person-page card and given grants | 2, 4, 5 |
@@ -788,12 +786,12 @@ This work does not wait for #10511's F0, as George said on 10-10. It is built so
   - Disable sign-in removes them all.
   - These use Chrome's virtual authenticator.
 - **Sign-in pages:**
-  - the web root goes to `/portal/login` while member sign-in is on, and to `/admin` while it is off;
+  - the web root goes to `/portal/login` while member sign-in is on, and to `/session/begin` while it is off;
   - the member sign-in pages have no staff sign-in link;
-  - `/session/begin` redirects to `/admin`;
+  - `/session/begin` serves the staff sign-in page;
   - a member session can't open any staff route;
   - a staff session goes to the portal and back without signing in again;
-  - a member session's Admin Console link goes to the `/admin` sign-in.
+  - a member session's Admin Console link goes to the `/session/begin` sign-in.
 - **Portal permissions:**
   - deny for an unknown capability, and for a capability whose plugin is off or whose feature switch is off;
   - a team leader manages only their own team, and gets 404 for another team;
@@ -851,6 +849,6 @@ This work does not wait for #10511's F0, as George said on 10-10. It is built so
 - A mobile app.
 - Passwords for members.
 - A member directory in the portal. It is proposed separately, on top of this work, with its own capability (`portal.directory.view`).
-- Changing how staff sign in, apart from moving the page to `/admin`.
+- Changing the staff authentication method; the staff sign-in remains in the session MVC.
 - An administrator giving a capability to a whole group at once.
 - Portal roles as named bundles (#10511 role templates).

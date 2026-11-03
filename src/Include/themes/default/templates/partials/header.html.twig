@@ -27,7 +27,14 @@
             <span class="portal-brand-name">{{ church.name|default('ChurchCRM') }}</span>
         </a>
 
-        {# Signed out (the sign-in pages), there is no member and no menu. #}
+        {# Signed out (the sign-in pages), there is no member and no menu; a page
+           that sets `guestPage` ('login' or 'register') offers the other one. #}
+        {% if not member.id and guestPage is defined %}
+        <nav class="portal-header-guest" aria-label="{{ gettext('Member Portal') }}">
+            {% if guestPage != 'login' and memberSignInEnabled %}<a class="portal-header-link" href="{{ url('/portal/login') }}">{{ gettext('Sign in') }}</a>{% endif %}
+            {% if guestPage != 'register' and selfRegistrationEnabled %}<a class="portal-header-link" href="{{ url('/portal/register') }}">{{ gettext('Register your family') }}</a>{% endif %}
+        </nav>
+        {% endif %}
         {% if member.id %}
         <div class="portal-header-actions">
             <button class="portal-nav-toggle" type="button" id="portal-nav-toggle"

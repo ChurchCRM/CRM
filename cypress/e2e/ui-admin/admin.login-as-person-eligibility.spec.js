@@ -36,7 +36,7 @@ const signInAsAdmin = () =>
         cy.clearCookies();
         cy.request({
             method: "POST",
-            url: "/admin/",
+            url: "/session/begin",
             form: true,
             followRedirect: false,
             body: { User: env["admin.username"], Password: env["admin.password"] },

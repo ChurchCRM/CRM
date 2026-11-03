@@ -42,7 +42,7 @@ const emailSignIn = (email) => {
 const expectStaffSignInRedirect = (url) =>
     cy.request({ url, followRedirect: false }).then((response) => {
         expect(response.status, url).to.eq(302);
-        expect(response.redirectedToUrl, url).to.match(/\/admin\/$/);
+        expect(response.redirectedToUrl, url).to.match(/\/session\/begin$/);
     });
 
 describe("Sign-in pages", () => {
@@ -50,6 +50,9 @@ describe("Sign-in pages", () => {
 
     before(() => {
         cy.rememberTestEnv(["admin.username", "admin.password"]);
+        cy.getSystemConfig("bEnableSelfRegistration").then((value) => {
+            saved.selfRegistrationEnabled = value;
+        });
         cy.task("mail:available").its("available").should("eq", true);
         lookUpPerson(judith);
         lookUpPerson(constance);
@@ -59,51 +62,65 @@ describe("Sign-in pages", () => {
     beforeEach(() => {
         cy.clearCookies();
         setConfig("bMemberSignIn", "1");
+        setConfig("bEnableSelfRegistration", "0");
         resetEmailSignIn([judith.personId, constance.personId]);
     });
 
     after(() => {
         restoreSettings(saved);
+        cy.restoreSystemConfig("bEnableSelfRegistration", saved.selfRegistrationEnabled);
     });
 
     const admin = () => ({ username: Cypress.testEnv("admin.username"), password: Cypress.testEnv("admin.password") });
 
     describe("signed out", () => {
-        it("sends the web root to /portal/login while member sign-in is on, with no staff sign-in link, and staff sign in at /admin", () => {
+        it("sends the web root to /portal/login while member sign-in is on, with no staff sign-in link, and /admin redirects to the staff sign-in", () => {
             cy.visit("/");
             cy.location("pathname").should("match", /\/portal\/login$/);
             cy.get("#portalSignInEmail").should("be.visible");
             cy.get("#portalStaffSignIn").should("not.exist");
             cy.visit("/admin/");
-            cy.location("pathname").should("match", /\/admin\/$/);
+            cy.location("pathname").should("match", /\/session\/begin$/);
             cy.get("#UserBox").should("be.visible");
             cy.get("#PasswordBox").should("be.visible");
+            cy.request({ url: "/admin/system/users", followRedirect: false }).then((response) => {
+                expect(response.status).to.eq(302);
+                expect(response.redirectedToUrl).to.match(/\/session\/begin$/);
+            });
         });
 
-        it("sends the web root to the staff sign-in at /admin while member sign-in is off, and /portal/login still says why", () => {
+        it("sends the web root and /portal/login to staff sign-in when member sign-in and registration are off", () => {
             setConfig("bMemberSignIn", "0");
+            setConfig("bEnableSelfRegistration", "0");
             cy.visit("/");
-            cy.location("pathname").should("match", /\/admin\/$/);
+            cy.location("pathname").should("match", /\/session\/begin$/);
             cy.get("#UserBox").should("be.visible");
             cy.get("#PasswordBox").should("be.visible");
             cy.visit("/portal/login");
-            cy.contains("Member sign-in isn't available yet");
-            cy.get("#portalStaffSignIn").should("not.exist");
+            cy.location("pathname").should("match", /\/session\/begin$/);
+            cy.get("#UserBox").should("be.visible");
         });
 
-        it("redirects /session/begin to /admin, keeping the query, and re-posts an old form there", () => {
+        it("keeps the portal registration choice at the web root when member sign-in is off", () => {
+            setConfig("bMemberSignIn", "0");
+            setConfig("bEnableSelfRegistration", "1");
+            cy.visit("/");
+            cy.location("pathname").should("match", /\/portal\/login$/);
+            cy.contains("Member sign-in isn't available yet");
+            cy.contains("a", "Register your family").should("have.attr", "href").and("include", "/portal/register");
+        });
+
+        it("serves staff sign-in at /session/begin, keeping the query and accepting form posts", () => {
             cy.request({ url: "/session/begin?username=someone%40example.com", followRedirect: false }).then((response) => {
-                expect(response.status).to.eq(302);
-                expect(response.redirectedToUrl).to.match(/\/admin\/\?username=someone%40example\.com$/);
+                expect(response.status).to.eq(200);
             });
             cy.request({ method: "POST", url: "/session/begin", form: true, body: { User: "x", Password: "y" }, followRedirect: false }).then(
                 (response) => {
-                    expect(response.status).to.eq(307);
-                    expect(response.redirectedToUrl).to.match(/\/admin\/$/);
+                    expect(response.status).to.eq(200);
                 },
             );
             cy.visit("/session/begin?username=someone%40example.com");
-            cy.location("pathname").should("match", /\/admin\/$/);
+            cy.location("pathname").should("match", /\/session\/begin$/);
             cy.get("#UserBox").should("have.value", "someone@example.com");
         });
 
@@ -114,15 +131,15 @@ describe("Sign-in pages", () => {
             cy.request("/api/persons/latest").its("status").should("eq", 200);
         });
 
-        it("sends a signed-out staff page to /admin and back to it after sign-in", () => {
+        it("sends a signed-out staff page to /session/begin and back to it after sign-in", () => {
             cy.visit("/groups/dashboard");
-            cy.location("pathname").should("match", /\/admin\/$/);
+            cy.location("pathname").should("match", /\/session\/begin$/);
             signInAtAdmin(admin());
             cy.location("pathname").should("match", /\/groups\/dashboard$/);
 
             cy.clearCookies();
             cy.visit("/PropertyList.php?Type=p");
-            cy.location("pathname").should("match", /\/admin\/$/);
+            cy.location("pathname").should("match", /\/session\/begin$/);
             signInAtAdmin(admin());
             cy.location("pathname").should("match", /\/PropertyList\.php$/);
             cy.location("search").should("eq", "?Type=p");
@@ -168,7 +185,7 @@ describe("Sign-in pages", () => {
             cy.visit("/portal/");
             cy.get("#portal-account-toggle").click();
             cy.get("#portalAccountSignOut").click();
-            cy.location("pathname").should("match", /\/admin\/$/);
+            cy.location("pathname").should("match", /\/session\/begin$/);
             cy.request({ url: "/portal/", followRedirect: false }).its("redirectedToUrl").should("match", /\/portal\/login$/);
             expectStaffSignInRedirect("/v2/dashboard");
         });
@@ -183,6 +200,7 @@ describe("Sign-in pages", () => {
             cy.request({ url: "/api/persons/latest", failOnStatusCode: false }).its("status").should("eq", 401);
             cy.request({ url: "/admin/api/member-portal/sign-in", failOnStatusCode: false }).its("status").should("eq", 401);
             cy.visit("/admin/");
+            cy.location("pathname").should("match", /\/session\/begin$/);
             cy.get("#UserBox").should("be.visible");
             cy.request("/api/portal/me").its("body.profile.id").should("eq", judith.personId);
         });
@@ -202,13 +220,13 @@ describe("Sign-in pages", () => {
             cy.get("#portalAccountAdminConsole").should("not.exist");
         });
 
-        it("sends Admin Console to the /admin sign-in, where a staff sign-in replaces the member session", () => {
+        it("sends Admin Console to the staff sign-in, where a staff sign-in replaces the member session", () => {
             emailSignIn(judith.email);
             lastAuditId().then((startId) => {
                 cy.visit("/portal/");
                 cy.get("#portal-account-toggle").click();
-                cy.get("#portalAccountAdminConsole").should(($link) => expect($link.attr("href")).to.match(/\/admin\/$/)).click();
-                cy.location("pathname").should("match", /\/admin\/$/);
+                cy.get("#portalAccountAdminConsole").should(($link) => expect($link.attr("href")).to.match(/\/session\/begin$/)).click();
+                cy.location("pathname").should("match", /\/session\/begin$/);
                 signInAtAdmin(judith);
                 cy.location("pathname").should("match", /\/v2\/dashboard$/);
 

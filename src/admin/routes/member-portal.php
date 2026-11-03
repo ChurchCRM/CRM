@@ -104,6 +104,7 @@ $memberPortalHandler = function (Request $request, Response $response): Response
 function memberPortalListChoices(): array
 {
     $lists = [
+        ['id' => MemberSignInListService::EVERYONE, 'label' => gettext('Look up anyone'), 'icon' => 'fa-magnifying-glass'],
         ['id' => MemberSignInListService::MAY_SIGN_IN, 'label' => gettext('May sign in now'), 'icon' => 'fa-user-check'],
         ['id' => MemberSignInListService::SIGNED_IN_RECENTLY, 'label' => gettext('Signed in, last 30 days'), 'icon' => 'fa-right-to-bracket'],
         ['id' => MemberSignInListService::NEVER_SIGNED_IN, 'label' => gettext('Never signed in'), 'icon' => 'fa-user-clock'],

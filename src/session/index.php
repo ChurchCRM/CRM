@@ -3,6 +3,7 @@
 require_once __DIR__ . '/../Include/LoadConfigs.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Authentication\StaffSignInPage;
 use ChurchCRM\Authentication\Requests\LocalTwoFactorTokenRequest;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Portal\Auth\RememberedDeviceCookie;
@@ -32,16 +33,7 @@ $app->add(new VersionMiddleware());
 
 require __DIR__ . '/routes/password-reset.php';
 
-// The staff sign-in moved to /admin (member sign-in design §7). A 307 keeps a
-// POST's method and body, so a sign-in form cached before the move, or posted
-// from a church's own website, still signs in there.
-$app->map(['GET', 'POST'], '/begin', function (Request $request, Response $response): Response {
-    $query = $request->getUri()->getQuery();
-
-    return $response
-        ->withStatus($request->getMethod() === 'POST' ? 307 : 302)
-        ->withHeader('Location', AuthenticationManager::getStaffSignInURL() . ($query !== '' ? '?' . $query : ''));
-});
+$app->map(['GET', 'POST'], '/begin', [StaffSignInPage::class, 'handle']);
 $app->get('/end', 'endSession');
 $app->get('/two-factor', 'processTwoFactorGet');
 $app->post('/two-factor', 'processTwoFactorPost');

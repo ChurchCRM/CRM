@@ -10,33 +10,38 @@
   on the email box. portal-passkeys.min.js shows them when the browser can,
   and posts the passkey's answer in `#portalPasskeyForm`.
 
-  Variables: `pageTitle`, `email`, `emailError`, `loginUrl`, `passkeySignIn`.
+  Variables: `pageTitle`, `email`, `emailError`, `loginUrl`, `passkeySignIn`,
+  `selfRegistrationEnabled`, `guestPage`.
 #}
 
 {% block nav %}{% endblock %}
 
 {% block content %}
 <div class="portal-signin">
-    <form class="portal-card portal-form" id="portalSignInForm" method="post" action="{{ loginUrl }}" novalidate>
-        {{ csrf_field() }}
+    <div class="portal-signin-welcome">
+        <h1 class="portal-signin-title">{{ gettext('Welcome') }}</h1>
+        <p class="portal-signin-lead">{{ gettext('Sign in to see your family, the church calendar and ways to serve. You do not need a password or an account.') }}</p>
+    </div>
 
-        <h1 class="portal-page-title">{{ gettext('Sign in to the Member Portal') }}</h1>
-        <p class="portal-card-text">{{ gettext('Type your email address. We will email you a code and a link to sign in with.') }}</p>
+    <form class="portal-card portal-form" id="portalSignInForm" data-submit-once method="post" action="{{ loginUrl }}" novalidate>
+        {{ csrf_field() }}
 
         <div class="portal-field">
             <label class="portal-field-label" for="portalSignInEmail">{{ gettext('Email Address') }}</label>
             <input class="portal-input{% if emailError %} is-invalid{% endif %}" type="email" name="email" id="portalSignInEmail"
-                   value="{{ email }}" autocomplete="{{ passkeySignIn ? 'username webauthn' : 'email' }}" inputmode="email" maxlength="254" required autofocus>
+                   value="{{ email }}" autocomplete="{{ passkeySignIn ? 'username webauthn' : 'email' }}" inputmode="email" autocapitalize="none" autocorrect="off" spellcheck="false"
+                   placeholder="{{ gettext('name@example.com') }}" aria-describedby="portalSignInHint portalSignInEmailError" maxlength="254" required autofocus>
+            <p class="portal-field-hint" id="portalSignInHint">{{ gettext('We will email you a code and a link to sign in with.') }}</p>
             <p class="portal-field-error" id="portalSignInEmailError" role="alert">{{ emailError }}</p>
         </div>
 
         <div class="portal-form-actions">
-            <button class="portal-button" type="submit" id="portalSignInSubmit">{{ gettext('Email me a code') }}</button>
+            <button class="portal-button" type="submit" id="portalSignInSubmit" data-busy-label="{{ gettext('Sending…') }}">{{ gettext('Email me a code') }}</button>
         </div>
 
         {% if passkeySignIn %}
         <div class="portal-passkey-signin" id="portalPasskeySignIn" data-passkey-sign-in data-options-url="{{ loginUrl }}/passkey/options" hidden>
-            <p class="portal-card-text">{{ gettext('Already added a passkey on this device? Use it instead of an email code.') }}</p>
+            <p class="portal-signin-or" aria-hidden="true"><span>{{ gettext('or') }}</span></p>
             <div class="portal-form-actions">
                 <button class="portal-button portal-button-quiet" type="button" id="portalPasskeySignInButton">
                     <i class="fa-solid fa-key" aria-hidden="true"></i>
@@ -57,6 +62,14 @@
         <input type="hidden" name="signature">
         <input type="hidden" name="userHandle">
     </form>
+    {% endif %}
+
+    {% if church.email or church.phone %}
+    <p class="portal-signin-help">
+        {{ gettext('Not sure which email we have? Contact the church office.') }}
+        {% if church.phone %}<a href="tel:{{ church.phone }}">{{ church.phone }}</a>{% endif %}
+        {% if church.email %}<a href="mailto:{{ church.email }}">{{ church.email|email_wrap }}</a>{% endif %}
+    </p>
     {% endif %}
 </div>
 {% endblock %}

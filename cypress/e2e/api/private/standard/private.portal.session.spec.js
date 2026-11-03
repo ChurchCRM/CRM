@@ -35,7 +35,7 @@ const disableSignIn = () => admin(`/admin/api/person/${staffUser.personId}/sign-
 
 const signIn = ({ username, password }) => {
     cy.clearCookies();
-    cy.request({ method: "POST", url: "/admin/", form: true, body: { User: username, Password: password } });
+    cy.request({ method: "POST", url: "/session/begin", form: true, body: { User: username, Password: password } });
 };
 
 const openPortal = () => cy.request("/portal/").its("status").should("eq", 200);
@@ -122,11 +122,11 @@ describe("Member Portal session (portal principal)", () => {
             .should("eq", 401);
         cy.request({ url: "/v2/dashboard", followRedirect: false }).then((response) => {
             expect(response.status).to.eq(302);
-            expect(response.redirectedToUrl).to.match(/\/admin\/$/);
+            expect(response.redirectedToUrl).to.match(/\/session\/begin$/);
         });
         cy.request({ url: "/PropertyList.php", followRedirect: false }).then((response) => {
             expect(response.status).to.eq(302);
-            expect(response.redirectedToUrl).to.match(/\/admin\/$/);
+            expect(response.redirectedToUrl).to.match(/\/session\/begin$/);
         });
     });
 

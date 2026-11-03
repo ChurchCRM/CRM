@@ -284,7 +284,7 @@ describe("Admin → Member Portal lists, audit and statistics", () => {
     it("reads Statistics from the person sign-in rows, and stops stamping the account", () => {
         stats().then((before) => {
             recordPastSignIn(92, 20, "device");
-            cy.request({ method: "POST", url: "/admin/", form: true, body: { User: "judith.matthews@example.com", Password: "noMoney$" } });
+            cy.request({ method: "POST", url: "/session/begin", form: true, body: { User: "judith.matthews@example.com", Password: "noMoney$" } });
             cy.request("/portal/");
 
             stats().then((after) => {

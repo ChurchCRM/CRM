@@ -85,7 +85,7 @@ const postPasskeyOptions = (url, csrf, status) =>
 /** Saves the person editor as Judith with only the email changed (design §9, staff with Edit Records). */
 const staffChangesEmail = (email) => {
     cy.clearCookies();
-    cy.request({ method: "POST", url: "/admin/", form: true, followRedirect: false, body: { User: JUDITH.username, Password: JUDITH.password } })
+    cy.request({ method: "POST", url: "/session/begin", form: true, followRedirect: false, body: { User: JUDITH.username, Password: JUDITH.password } })
         .its("status")
         .should("eq", 302);
     cy.request(`/PersonEditor.php?PersonID=${member.personId}`).then((page) => {

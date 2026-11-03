@@ -155,6 +155,26 @@ final class PersonSignInService
     }
 
     /**
+     * Whether each person may sign in to the Member Portal with their own email, and the
+     * plain-language reason when not; the family page shows it beside each member.
+     *
+     * @param iterable<Person> $people
+     *
+     * @return array<int, array{maySignIn: bool, reason: ?string}>
+     */
+    public function statusesFor(iterable $people): array
+    {
+        $rule = MemberSignInRule::fromSettings();
+        $statuses = [];
+        foreach ($people as $person) {
+            $reason = $rule->statusFor($person);
+            $statuses[(int) $person->getId()] = ['maySignIn' => $reason === null, 'reason' => $reason?->label()];
+        }
+
+        return $statuses;
+    }
+
+    /**
      * What the person page's Portal sign-in card shows (§11.3). The
      * administrator's reason for Disable sign-in is included only for
      * administrators. Whether the viewer may confirm an unconfirmed email

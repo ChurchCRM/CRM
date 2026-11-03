@@ -9,11 +9,12 @@ const EMAIL_MEMBER = { personId: 57, firstName: "Jon" }; // Jon Olson
 const DEVICE_MEMBER = { personId: 58, firstName: "Sandra", email: "sandra.vasquez@example.com" }; // Sandra Olson
 const STAFF = { username: "tony.wade@example.com", password: "basicjoe", personId: 3 };
 const DEVICE_COOKIE = "CRM-portal-device";
-const UNAVAILABLE = "Member sign-in isn't available yet.";
 
 const admin = (method, url, body = null, status = 200) => cy.makePrivateAdminAPICall(method, url, body, status);
 
 const setMemberSignIn = (on) => admin("POST", "admin/api/system/config/bMemberSignIn", { value: on ? "1" : "0" });
+
+const setSelfRegistration = (on) => admin("POST", "admin/api/system/config/bEnableSelfRegistration", { value: on ? "1" : "0" });
 
 const newestAuditId = (personId) =>
     admin("GET", `admin/api/member-portal/audit?personId=${personId}&length=1`).then(({ body }) => body.rows[0]?.id ?? 0);
@@ -63,6 +64,11 @@ describe("Member sign-in turned off", () => {
 
     beforeEach(() => {
         setMemberSignIn(true);
+        setSelfRegistration(false);
+    });
+
+    after(() => {
+        setSelfRegistration(false);
     });
 
     it("signs out a member signed in by email on their next request, onto the sign-in page", () => {
@@ -78,9 +84,20 @@ describe("Member sign-in turned off", () => {
             ]);
         });
 
+        // Sign-in and self-registration both off: the staff sign-in is the way in.
         cy.visit("/portal/profile");
+        cy.location("pathname").should("match", /\/session\/begin$/);
+    });
+
+    it("offers a Register your family button when only self-registration is on", () => {
+        setMemberSignIn(false);
+        setSelfRegistration(true);
+        cy.clearCookies();
+
+        cy.visit("/portal/login");
         cy.location("pathname").should("match", /\/portal\/login$/);
-        cy.contains(UNAVAILABLE).should("be.visible");
+        cy.get("#portalRegisterFamily").should("be.visible").and("have.attr", "href").and("match", /\/portal\/register$/);
+        cy.get("#portalSignInEmail").should("not.exist");
     });
 
     it("signs out a member on a remembered device, and the device signs in again once sign-in is back on", () => {
@@ -105,7 +122,7 @@ describe("Member sign-in turned off", () => {
 
     it("keeps a portal session opened from a staff sign-in, and the staff side", () => {
         cy.clearCookies();
-        cy.request({ method: "POST", url: "/admin/", form: true, body: { User: STAFF.username, Password: STAFF.password } });
+        cy.request({ method: "POST", url: "/session/begin", form: true, body: { User: STAFF.username, Password: STAFF.password } });
         portal().its("status").should("eq", 200);
 
         setMemberSignIn(false);

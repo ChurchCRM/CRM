@@ -312,6 +312,16 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
                                             </button>
                                             <?php } ?>
                                         <?php } ?>
+                                        <?php $portalStatus = ($portalSignInStatuses ?? [])[(int) $person->getId()] ?? null;
+                                        if ($portalStatus !== null) { ?>
+                                            <div class="small mt-1" data-portal-signin-status="<?= $portalStatus['maySignIn'] ? 'yes' : 'no' ?>">
+                                                <?php if ($portalStatus['maySignIn']) { ?>
+                                                    <span class="text-green"><i class="fa-solid fa-circle-check me-1"></i><?= gettext('Can sign in to the Member Portal') ?></span>
+                                                <?php } else { ?>
+                                                    <a class="text-secondary" href="<?= $person->getViewURI() ?>#portal-signin-card"><i class="fa-solid fa-ban me-1"></i><?= gettext('Cannot sign in') ?>: <?= InputUtils::escapeHTML((string) $portalStatus['reason']) ?></a>
+                                                <?php } ?>
+                                            </div>
+                                        <?php } ?>
                                     </td>
                                     <td><?php renderMemberActions($person); ?></td>
                                 </tr>

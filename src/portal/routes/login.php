@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\ChurchMetaData;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\PersonSigninRequest;
 use ChurchCRM\Portal\Auth\EmailSignInOutcome;
 use ChurchCRM\Portal\Auth\PasskeySignInOutcome;
@@ -26,6 +27,7 @@ $renderLoginPage = static function (Response $response, string $template, array 
         'pageTitle' => gettext('Sign in'),
         'loginUrl' => PortalSignInPages::loginUrl(),
         'offerRememberDevice' => PortalSignInPages::offersRememberDevice(),
+        'memberSignInEnabled' => EmailSignInService::isEnabled(),
     ]);
 };
 
@@ -53,6 +55,8 @@ $loginForm = static function (Request $request, Response $response) use ($render
         'email' => '',
         'emailError' => '',
         'passkeySignIn' => PasskeySite::isAvailable($request),
+        'selfRegistrationEnabled' => SystemConfig::getBooleanValue('bEnableSelfRegistration'),
+        'guestPage' => 'login',
     ]);
 };
 $group->get('', $loginForm);
@@ -65,6 +69,8 @@ $group->post('', function (Request $request, Response $response) use ($renderLog
             'email' => $typed,
             'emailError' => gettext('Enter your email address.'),
             'passkeySignIn' => PasskeySite::isAvailable($request),
+            'selfRegistrationEnabled' => SystemConfig::getBooleanValue('bEnableSelfRegistration'),
+            'guestPage' => 'login',
         ]);
     }
 

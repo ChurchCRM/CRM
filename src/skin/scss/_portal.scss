@@ -125,6 +125,24 @@ html {
     font-weight: 600;
 }
 
+.portal-header-guest {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem 1rem;
+}
+
+.portal-header-link {
+    color: var(--portal-header-text);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.portal-header-link:hover,
+.portal-header-link:focus-visible {
+    text-decoration: underline;
+}
+
 .portal-header-actions {
     display: flex;
     align-items: center;
@@ -558,6 +576,7 @@ html {
     background-color: var(--portal-surface);
     color: var(--portal-text);
     font: inherit;
+    font-size: 1rem;
 }
 
 .portal-input:focus-visible {
@@ -596,6 +615,98 @@ textarea.portal-input {
     margin-block-start: 1rem;
 }
 
+// Member sign-in: a welcome, one friendly card, then a quiet "new here" note.
+// Colours and fonts come from the portal tokens, so a theme restyles it.
+.portal-signin {
+    max-inline-size: 30rem;
+    margin-inline: auto;
+    padding-block: 1rem;
+}
+
+.portal-signin-welcome {
+    margin-block-end: 1rem;
+    text-align: center;
+}
+
+.portal-signin-title {
+    margin: 0 0 0.5rem;
+    font-family: var(--portal-font-heading);
+    font-size: 1.625rem;
+    line-height: 1.2;
+}
+
+.portal-signin-lead {
+    margin: 0;
+    color: var(--portal-muted);
+    font-size: 1.0625rem;
+}
+
+// 16px keeps iOS Safari from zooming the page when the email box is focused.
+.portal-signin .portal-input {
+    font-size: 1rem;
+}
+
+.portal-signin .portal-form-actions .portal-button {
+    flex: 1 1 100%;
+    justify-content: center;
+}
+
+.portal-signin .portal-form-actions {
+    margin-block-start: 0.5rem;
+}
+
+.portal-passkey-signin .portal-form-actions {
+    margin-block-start: 0;
+}
+
+.portal-signin-or {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0.75rem 0;
+    color: var(--portal-muted);
+    font-size: 0.875rem;
+}
+
+.portal-signin-or::before,
+.portal-signin-or::after {
+    content: "";
+    flex: 1;
+    border-block-start: 1px solid var(--portal-border);
+}
+
+.portal-signin-register {
+    text-align: center;
+}
+
+.portal-signin-register .portal-signin-lead {
+    margin-block-end: 1.5rem;
+}
+
+.portal-signin-register .portal-form-actions {
+    justify-content: center;
+    margin-block-end: 1.5rem;
+}
+
+.portal-button-large {
+    min-block-size: 56px;
+    padding: 0.75rem 2rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.portal-signin-help {
+    margin-block: 1.25rem 0;
+    color: var(--portal-muted);
+    font-size: 0.875rem;
+    text-align: center;
+}
+
+.portal-signin-help a {
+    margin-inline-start: 0.5rem;
+}
+
 .portal-choice {
     display: flex;
     align-items: center;
@@ -606,6 +717,235 @@ textarea.portal-input {
 .portal-choice input {
     inline-size: 1.15rem;
     block-size: 1.15rem;
+}
+
+// Family registration --------------------------------------------------------
+// FamilyRegister.js drives the markup; bs-stepper supplies the step behaviour and
+// is recoloured here from the portal tokens.
+
+.portal-register {
+    max-inline-size: 48rem;
+    margin-inline: auto;
+    padding-block: 1rem;
+}
+
+.portal-register-done {
+    text-align: center;
+}
+
+.portal-register-done[hidden] {
+    display: none;
+}
+
+.portal-register-done-icon {
+    margin-block-end: 0.75rem;
+    color: var(--portal-success);
+    font-size: 3rem;
+}
+
+.portal-register-done .portal-signin-lead {
+    margin-block-end: 1.5rem;
+}
+
+.portal-register-done .portal-form-actions {
+    justify-content: center;
+}
+
+.portal-register-card {
+    padding: 0;
+    overflow: hidden;
+}
+
+.portal-stepper .bs-stepper-header {
+    justify-content: center;
+    padding: 1rem 1.25rem;
+    background-color: var(--portal-surface-alt);
+    border-block-end: 1px solid var(--portal-border);
+}
+
+.portal-stepper .step-trigger {
+    padding: 0.25rem 0.5rem;
+    color: var(--portal-muted);
+    font: inherit;
+}
+
+.portal-stepper .step-trigger:hover,
+.portal-stepper .step-trigger:focus-visible {
+    background-color: transparent;
+    color: var(--portal-text);
+}
+
+.portal-stepper .bs-stepper-circle {
+    background-color: var(--portal-border);
+    color: var(--portal-text);
+}
+
+.portal-stepper .active .bs-stepper-circle {
+    background-color: var(--portal-primary);
+    color: var(--portal-primary-contrast);
+}
+
+.portal-stepper .active .step-trigger {
+    color: var(--portal-text);
+    font-weight: 600;
+}
+
+.portal-stepper .bs-stepper-line,
+.portal-stepper .line {
+    background-color: var(--portal-border);
+}
+
+.portal-stepper .bs-stepper-content {
+    padding: 1.25rem;
+}
+
+.portal-stepper .bs-stepper-content .content {
+    padding: 0;
+}
+
+.portal-register-intro {
+    margin-block-end: 1rem;
+}
+
+.portal-required {
+    color: var(--portal-danger);
+}
+
+.portal-register-count {
+    margin-inline-start: 0.5rem;
+    color: var(--portal-muted);
+    font-size: 0.875rem;
+    font-weight: 400;
+}
+
+.portal-register-noformat {
+    min-block-size: 0;
+    margin-block-start: 0.25rem;
+    color: var(--portal-muted);
+    font-size: 0.875rem;
+}
+
+.portal-register-actions {
+    margin-block-start: 1.5rem;
+}
+
+.portal-register-actions .portal-button {
+    flex: 1 1 100%;
+    justify-content: center;
+}
+
+.portal-register-spacer {
+    visibility: hidden;
+}
+
+.portal-button-small {
+    min-block-size: 36px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+}
+
+.portal-reg-member {
+    margin-block-end: 1rem;
+    border: 1px solid var(--portal-border);
+    border-radius: var(--portal-radius);
+    background-color: var(--portal-surface);
+}
+
+.portal-reg-member-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    background-color: var(--portal-surface-alt);
+    border-start-start-radius: var(--portal-radius);
+    border-start-end-radius: var(--portal-radius);
+    cursor: pointer;
+}
+
+.portal-reg-member-toggle {
+    min-inline-size: 44px;
+    min-block-size: 44px;
+    border: 0;
+    background: transparent;
+    color: var(--portal-muted);
+}
+
+.portal-reg-member-name {
+    flex: 1;
+    margin: 0;
+    font-family: var(--portal-font-heading);
+    font-size: 1.05rem;
+}
+
+.portal-reg-member-body {
+    padding: 1rem 1.25rem 0;
+}
+
+.portal-register-summary {
+    margin-block-end: 1.5rem;
+    padding: 1rem 1.25rem;
+    border-radius: var(--portal-radius);
+    background-color: var(--portal-surface-alt);
+}
+
+.portal-register-summary-title {
+    margin: 0 0 0.5rem;
+    font-family: var(--portal-font-heading);
+    font-size: 1.1rem;
+}
+
+.portal-register-summary .portal-card-details {
+    margin: 0;
+}
+
+.portal-register-table {
+    display: none;
+    inline-size: 100%;
+    border-collapse: collapse;
+}
+
+.portal-register-table th,
+.portal-register-table td {
+    padding: 0.5rem;
+    border-block-end: 1px solid var(--portal-border);
+    text-align: start;
+}
+
+.portal-register-table th {
+    color: var(--portal-muted);
+    font-size: 0.8125rem;
+    font-weight: 600;
+}
+
+.portal-register-person {
+    padding: 0.75rem 1rem;
+    margin-block-end: 0.5rem;
+    border: 1px solid var(--portal-border);
+    border-radius: var(--portal-radius);
+}
+
+.portal-register-person p {
+    margin: 0.25rem 0 0;
+    overflow-wrap: anywhere;
+}
+
+.portal-register-person-name {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.portal-register-next {
+    margin-block-start: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .portal-register-table {
+        display: table;
+    }
+
+    .portal-register-cards {
+        display: none;
+    }
 }
 
 // Dialogs --------------------------------------------------------------------

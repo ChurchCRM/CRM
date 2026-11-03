@@ -4,7 +4,6 @@ namespace ChurchCRM\Slim\Middleware;
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\Requests\APITokenAuthenticationRequest;
-use ChurchCRM\Authentication\StaffSignInPage;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Portal\Auth\LoginAsPerson;
@@ -108,6 +107,12 @@ class AuthMiddleware implements MiddlewareInterface
                     return $response->withStatus(403)->withHeader('Content-Type', 'application/json');
                 }
 
+                $adminRoot = SystemURLs::getRootPath() . '/admin';
+                if (($request->getUri()->getPath() === $adminRoot || $request->getUri()->getPath() === $adminRoot . '/')
+                    && !$sessionUser->isAdmin()) {
+                    return (new Response())->withStatus(302)->withHeader('Location', SystemURLs::getRootPath() . '/v2/dashboard');
+                }
+
                 // User with an active browser session is still authenticated.
                 // For browser requests (non-background), enforce any required redirect steps (e.g. forced password change).
                 // Use a PSR-15 response redirect rather than calling ensureAuthentication() which exits via header().
@@ -125,9 +130,6 @@ class AuthMiddleware implements MiddlewareInterface
             } elseif ($this->isPortalPath($request) && RememberedDeviceCookie::isPresent($request)) {
                 // A remembered device (§6.2): PortalSessionMiddleware starts its
                 // session, or sends the visitor to /portal/login.
-            } elseif (StaffSignInPage::isRequestFor($request)) {
-                // The /admin root is the staff sign-in page (member sign-in design §7):
-                // signed out, or a member session, it shows the sign-in form.
             } else {
                 $logger = LoggerUtils::getAppLogger();
                 $logger->warning('No authenticated user or session', [
@@ -162,6 +164,8 @@ class AuthMiddleware implements MiddlewareInterface
      *    request (design §2.2 step 6).
      *  - /portal/login/…   — member sign-in by email (member sign-in design
      *    §6.1), which a signed-out visitor must reach.
+     *  - /portal/register  — optional family registration form, controlled by
+     *    the public registration setting.
      *  - /portal/email/confirm/… — the page an email-change link opens (member
      *    sign-in design §9); the token in the link is what identifies the request.
      *
@@ -173,7 +177,7 @@ class AuthMiddleware implements MiddlewareInterface
         $path = $request->getUri()->getPath();
         $rootPath = SystemURLs::getRootPath();
 
-        foreach (['/api/public', '/portal/theme', '/portal/login', '/portal/email/confirm'] as $publicPrefix) {
+        foreach (['/api/public', '/portal/theme', '/portal/login', '/portal/register', '/portal/email/confirm'] as $publicPrefix) {
             $publicPath = $rootPath . $publicPrefix;
             if ($path === $publicPath || str_starts_with($path, $publicPath . '/')) {
                 return true;

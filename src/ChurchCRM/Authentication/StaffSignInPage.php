@@ -10,20 +10,11 @@ use Psr\Http\Message\ServerRequestInterface;
 use Slim\Views\PhpRenderer;
 
 /**
- * The staff sign-in page, served at the `/admin` root (member sign-in design
- * §7): username and password, then the two-factor step. Members sign in at
- * `/portal/login`. `/session/begin` redirects here.
+ * The staff sign-in page, served by the session MVC. Members sign in at
+ * `/portal/login`.
  */
 final class StaffSignInPage
 {
-    public static function isRequestFor(ServerRequestInterface $request): bool
-    {
-        $path = $request->getUri()->getPath();
-        $adminRoot = SystemURLs::getRootPath() . '/admin';
-
-        return $path === $adminRoot || $path === $adminRoot . '/';
-    }
-
     public static function handle(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
         // An explicit username may be passed in the query (the sign-in link in user emails).

@@ -11,7 +11,7 @@ describe("Family search by envelope number (issue #9502)", () => {
         cy.clearCookies();
         cy.readEnv("admin.username").then((username) =>
             cy.readEnv("admin.password").then((password) =>
-                cy.request({ method: "POST", url: "/admin/", form: true, body: { User: username, Password: password } }),
+                cy.request({ method: "POST", url: "/session/begin", form: true, body: { User: username, Password: password } }),
             ),
         );
         cy.request({
