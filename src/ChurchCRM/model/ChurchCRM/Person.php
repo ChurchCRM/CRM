@@ -98,7 +98,9 @@ class Person extends BasePerson implements PhotoInterface
                 $birthYear = 0;
             }
 
-            return \DateTimeImmutable::createFromFormat('Y-m-d', $birthYear . '-' . $this->getBirthMonth() . '-' . $this->getBirthDay());
+            // '!' keeps the current time of day out, so an age measured from
+            // midnight 'today' counts the birthday itself.
+            return \DateTimeImmutable::createFromFormat('!Y-m-d', $birthYear . '-' . $this->getBirthMonth() . '-' . $this->getBirthDay());
         }
 
         return null;
@@ -488,7 +490,7 @@ class Person extends BasePerson implements PhotoInterface
      * avoid a duplicate generic entry. Mirrors the private pattern used by
      * setImageFromBase64().
      */
-    public function saveWithoutUpdateNote(\Propel\Runtime\Connection\ConnectionInterface $con = null): void
+    public function saveWithoutUpdateNote(?ConnectionInterface $con = null): void
     {
         $this->skipPostUpdateNote = true;
         try {
@@ -918,7 +920,7 @@ class Person extends BasePerson implements PhotoInterface
         if (!$birthDate instanceof \DateTimeImmutable || $this->hideAge()) {
             return false;
         }
-        $now = $date === null ? new \DateTimeImmutable('today') : \DateTimeImmutable::createFromFormat('Y-m-d', $date);
+        $now = $date === null ? new \DateTimeImmutable('today') : \DateTimeImmutable::createFromFormat('!Y-m-d', $date);
 
         if (!$now instanceof \DateTimeImmutable) {
             return false;
