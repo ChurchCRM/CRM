@@ -229,6 +229,7 @@ class TelemetryService
     {
         return [
             '$lib'        => 'churchcrm-php',
+            '$geoip_disable' => true,
             'crm_version' => VersionUtils::getInstalledVersion(),
             'locale'      => SystemConfig::isInitialized() ? (SystemConfig::getValue('sLanguage') ?: 'en_US') : 'en_US',
             'php_version' => PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION,
