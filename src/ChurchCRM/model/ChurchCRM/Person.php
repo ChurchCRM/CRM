@@ -16,6 +16,7 @@ use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Service\CustomFieldService;
 use ChurchCRM\Service\GradeService;
 use ChurchCRM\Service\GroupService;
+use ChurchCRM\Service\PersonDeletionService;
 use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -703,6 +704,15 @@ class Person extends BasePerson implements PhotoInterface
         if ($blockedReason !== null) {
             throw new PersonDeletionBlockedException($blockedReason);
         }
+
+        PersonDeletionService::assertCanDelete($this, $con);
+
+        EventQuery::create()
+            ->filterByPrimaryContactPersonId($this->getId())
+            ->update(['PrimaryContactPersonId' => null], $con);
+        EventQuery::create()
+            ->filterBySecondaryContactPersonId($this->getId())
+            ->update(['SecondaryContactPersonId' => null], $con);
 
         // Snapshot before the cleanup below removes the rows toArray() reads
         // (the photo behind HasPhoto), so PERSON_DELETED listeners see the

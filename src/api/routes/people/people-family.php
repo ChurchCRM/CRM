@@ -4,6 +4,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\Exceptions\PhotoSizeException;
+use ChurchCRM\Exceptions\PersonDeletionBlockedException;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Family;
@@ -15,6 +16,7 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
 use ChurchCRM\Service\FamilyService;
+use ChurchCRM\Service\PersonDeletionService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Slim\Middleware\Request\Auth\DeleteRecordRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
@@ -528,14 +530,20 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
             );
         }
 
+        $membersToDelete = [];
         if ($deleteMembers) {
-            $members = \ChurchCRM\model\ChurchCRM\PersonQuery::create()
+            $membersToDelete = \ChurchCRM\model\ChurchCRM\PersonQuery::create()
                 ->filterByFamId($familyId)
                 ->find();
-            foreach ($members as $member) {
+            foreach ($membersToDelete as $member) {
                 $blockedReason = $member->getLoginDeletionBlockedReason();
                 if ($blockedReason !== null) {
                     return SlimUtils::renderErrorJSON($response, $blockedReason, [], 403);
+                }
+                try {
+                    PersonDeletionService::assertCanDelete($member);
+                } catch (PersonDeletionBlockedException $exception) {
+                    return SlimUtils::renderErrorJSON($response, $exception->getMessage(), [], 403, $exception, $request);
                 }
             }
         }
@@ -557,10 +565,9 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         }
 
         if ($deleteMembers) {
-            \ChurchCRM\model\ChurchCRM\PersonQuery::create()
-                ->filterByFamId($familyId)
-                ->find()
-                ->delete();
+            foreach ($membersToDelete as $member) {
+                $member->delete();
+            }
         } else {
             // Unlink members from the family
             $members = \ChurchCRM\model\ChurchCRM\PersonQuery::create()

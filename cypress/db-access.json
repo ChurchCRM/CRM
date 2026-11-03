@@ -24,6 +24,10 @@
         "cypress/support/password-reset-fixtures.js": {
             "kind": "fixture",
             "reason": "Deterministic password-reset token fixtures (including legacy/expired links) and exact user/token snapshots and restoration for #10201. Password hashes and token uses have no HTTP read surface; the spec exercises GET and POST through HTTP."
+        },
+        "cypress/support/person-deletion-fixtures.js": {
+            "kind": "fixture",
+            "reason": "Deterministic legacy history fixtures and stored relationship snapshots for #10485 where no complete HTTP surface exists. The behavior spec uses HTTP for supported operations and person/family deletion."
         }
     },
     "baseline": {

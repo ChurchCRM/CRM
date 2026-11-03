@@ -4,12 +4,14 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\Exceptions\PhotoSizeException;
+use ChurchCRM\Exceptions\PersonDeletionBlockedException;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Service\SystemService;
+use ChurchCRM\Service\PersonDeletionService;
 use ChurchCRM\Service\UserService;
 use ChurchCRM\Slim\Middleware\Request\Auth\DeleteRecordRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
@@ -251,7 +253,11 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
         // PERSON_DELETED is dispatched from Person::postDelete() so that the
         // family-member cascade in DELETE /family/{id}?deleteMembers=true
         // fires it too. See #9768.
-        $person->delete();
+        try {
+            $person->delete();
+        } catch (PersonDeletionBlockedException $exception) {
+            return SlimUtils::renderErrorJSON($response, $exception->getMessage(), [], 403, $exception, $request);
+        }
 
         return SlimUtils::renderSuccessJSON($response);
     })->add(DeleteRecordRoleAuthMiddleware::class);
