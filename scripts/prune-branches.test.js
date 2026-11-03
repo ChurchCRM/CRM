@@ -8,9 +8,10 @@ const path = require('node:path');
 const skip = process.platform === 'win32' && 'fake shell binaries need a POSIX shell';
 const SCRIPT = path.join(__dirname, 'prune-branches.js');
 const trees = [];
+const cleanEnv = Object.fromEntries(Object.entries(process.env).filter(([key]) => !key.startsWith('GIT_')));
 
 function sh(cwd, cmd, args) {
-    const result = spawnSync(cmd, args, { cwd, encoding: 'utf8' });
+    const result = spawnSync(cmd, args, { cwd, encoding: 'utf8', env: cleanEnv });
     assert.equal(result.status, 0, `${cmd} ${args.join(' ')}: ${result.stderr}`);
     return result.stdout.trim();
 }
@@ -34,7 +35,7 @@ function makeRepo({ open = [], merged = [] } = {}) {
     const gh = path.join(bin, 'gh');
     fs.writeFileSync(gh, '#!/bin/sh\nif echo "$@" | grep -q -- "--state open"; then cat "$OPEN"; else cat "$MERGED"; fi\n');
     fs.chmodSync(gh, 0o755);
-    const env = { PATH: `${bin}:${process.env.PATH}`, OPEN: path.join(root, 'open.json'), MERGED: path.join(root, 'merged.json') };
+    const env = { ...cleanEnv, PATH: `${bin}:${process.env.PATH}`, OPEN: path.join(root, 'open.json'), MERGED: path.join(root, 'merged.json') };
     setPrs({ env }, { open, merged });
     return { work, env, bare };
 }
