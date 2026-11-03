@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-03 14:29+0000\n"
+"POT-Creation-Date: 2026-11-03 15:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3259,6 +3259,9 @@ msgstr ""
 msgid "Church Name"
 msgstr ""
 
+msgid "Church Tax ID (EIN)"
+msgstr ""
+
 msgid "Church calendar"
 msgstr ""
 
@@ -3467,6 +3470,9 @@ msgid "Closest"
 msgstr ""
 
 msgid "Closing"
+msgstr ""
+
+msgid "Closing Line"
 msgstr ""
 
 msgid "Closing line"
@@ -3752,6 +3758,9 @@ msgid "Continue to Dashboard"
 msgstr ""
 
 msgid "Contributing"
+msgstr ""
+
+msgid "Contribution Statement Settings"
 msgstr ""
 
 msgid "Contribution statements are issued to the adults of a household. Please contact the church office if you need one."
@@ -7279,6 +7288,9 @@ msgid "Generate Statements for Selected"
 msgstr ""
 
 msgid "Generate Tax Statements"
+msgstr ""
+
+msgid "Generate a sample statement with the current settings and demo data."
 msgstr ""
 
 msgid "Generate again closer to its first date."
@@ -11278,6 +11290,9 @@ msgstr ""
 msgid "Open in New Tab"
 msgstr ""
 
+msgid "Open in browser window"
+msgstr ""
+
 msgid "Open in calendar app"
 msgstr ""
 
@@ -11328,6 +11343,9 @@ msgstr ""
 
 #. plugin:openlp:summary
 msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
+msgstr ""
+
+msgid "Opening Line"
 msgstr ""
 
 msgid "Opening a calendar to ministries requires Add Events permission"
@@ -11464,7 +11482,16 @@ msgstr ""
 msgid "Owe"
 msgstr ""
 
+msgid "PDF Handling"
+msgstr ""
+
+msgid "PDF Output"
+msgstr ""
+
 msgid "PDF Temporary Directory"
+msgstr ""
+
+msgid "PDF handling mode"
 msgstr ""
 
 msgid ""
@@ -12413,6 +12440,9 @@ msgstr ""
 msgid "Preview"
 msgstr ""
 
+msgid "Preview PDF"
+msgstr ""
+
 msgid "Preview Totals"
 msgstr ""
 
@@ -12618,6 +12648,9 @@ msgid "Quarantined"
 msgstr ""
 
 msgid "Quarterly"
+msgstr ""
+
+msgid "Questions Line"
 msgstr ""
 
 msgid "Queue"
@@ -13477,6 +13510,9 @@ msgstr ""
 msgid "Save Event Type"
 msgstr ""
 
+msgid "Save File dialog"
+msgstr ""
+
 msgid "Save Localization Settings"
 msgstr ""
 
@@ -14326,6 +14362,9 @@ msgstr ""
 msgid "Signed up"
 msgstr ""
 
+msgid "Signer"
+msgstr ""
+
 msgid "Since"
 msgstr ""
 
@@ -14589,6 +14628,12 @@ msgid "State (Other)"
 msgstr ""
 
 msgid "State is required."
+msgstr ""
+
+msgid "Statement Settings"
+msgstr ""
+
+msgid "Statement Wording"
 msgstr ""
 
 msgid "Statistics"
@@ -14931,6 +14976,9 @@ msgid "Tax ID"
 msgstr ""
 
 msgid "Tax ID (EIN)"
+msgstr ""
+
+msgid "Tax Information"
 msgstr ""
 
 msgid "Tax Report Verbiage"
