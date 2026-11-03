@@ -13,7 +13,7 @@ describe("Finance Statement Settings", () => {
 
         it("loads the page with all three setting sections", () => {
             cy.visit("/finance/statements/settings");
-            cy.contains("Contribution Statement Settings");
+            cy.contains("Statement Settings");
 
             cy.get("#statementWording").should("exist");
             cy.contains("Statement Wording");
@@ -33,6 +33,7 @@ describe("Finance Statement Settings", () => {
 
         it("auto-saves a setting when its value changes", () => {
             cy.intercept("POST", "**/finance/api/config/sTaxSigner").as("saveSigner");
+            const signer = `Test Signer ${Date.now()}`;
 
             cy.visit("/finance/statements/settings");
             cy.get("#statementWording", { timeout: 10000 }).should("exist");
@@ -40,23 +41,26 @@ describe("Finance Statement Settings", () => {
             cy.get("#statementWording input[name='sTaxSigner']")
                 .should("not.be.disabled")
                 .clear()
-                .type("Test Signer Name")
+                .type(signer)
                 .blur();
 
             cy.wait("@saveSigner").its("response.statusCode").should("eq", 200);
         });
 
-        it("Preview PDF link points to the giving-statements download route", () => {
+        it("lists each setting on its own row", () => {
             cy.visit("/finance/statements/settings");
-            cy.contains("a", "Preview PDF")
-                .should("have.attr", "href")
-                .and("include", "/finance/reports/giving-statements/download");
+            cy.get("#statementWording textarea[name='sTaxReport1']").then(($first) => {
+                cy.get("#statementWording textarea[name='sTaxReport2']").should(($second) => {
+                    expect($second[0].getBoundingClientRect().top).to.be.greaterThan($first[0].getBoundingClientRect().bottom - 1);
+                });
+            });
         });
 
-        it("Preview PDF link opens in a new tab", () => {
+        it("offers PDF handling as a dropdown", () => {
             cy.visit("/finance/statements/settings");
-            cy.contains("a", "Preview PDF")
-                .should("have.attr", "target", "_blank");
+            cy.get("#statementOutput select[name='iPDFOutputType'] option").should("have.length", 2);
+            cy.get("#statementOutput input[name='iPDFOutputType']").should("not.exist");
+            cy.contains("a", "Preview PDF").should("not.exist");
         });
     });
 
@@ -66,7 +70,7 @@ describe("Finance Statement Settings", () => {
         it("can access the finance statement settings page", () => {
             cy.visit("/finance/statements/settings");
             cy.url().should("include", "/finance/statements/settings");
-            cy.contains("Contribution Statement Settings");
+            cy.contains("Statement Settings");
         });
     });
 

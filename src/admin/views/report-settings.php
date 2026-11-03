@@ -49,6 +49,14 @@ $letterheadUrl = LetterheadService::getUrlPath();
     </div>
 </div>
 
+<div class="row mt-3">
+    <div class="col-12">
+        <div id="letter-settings-panel" data-title="<?= InputUtils::escapeAttribute(gettext('Letter greeting and signature')) ?>" data-settings="<?= InputUtils::escapeAttribute(json_encode($letterSettings, JSON_THROW_ON_ERROR)) ?>"></div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>"></script>
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/photo-uploader.min.css') ?>">
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/photo-uploader.min.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/report-settings.min.js') ?>"></script>

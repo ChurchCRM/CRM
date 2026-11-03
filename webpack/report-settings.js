@@ -1,6 +1,7 @@
 /**
- * Report Settings page: the shared photo uploader for the letterhead. The server
- * renders the letterhead state, so an upload or a removal just reloads the page.
+ * Report Settings page: the shared photo uploader for the letterhead and the auto-saving
+ * letter settings panel. The server renders the letterhead state, so an upload or a removal
+ * just reloads the page.
  */
 import { buildAdminAPIUrl } from "./api-utils";
 
@@ -8,6 +9,19 @@ const LETTERHEAD_API_PATH = "system/letterhead";
 
 document.addEventListener("DOMContentLoaded", () => {
   const t = (key) => (window.i18next ? i18next.t(key) : key);
+
+  const letterPanel = document.getElementById("letter-settings-panel");
+  if (letterPanel && window.CRM.SettingsPanel) {
+    new window.CRM.SettingsPanel().init({
+      container: "#letter-settings-panel",
+      title: letterPanel.dataset.title,
+      icon: "fa-solid fa-signature",
+      settings: JSON.parse(letterPanel.dataset.settings),
+      showAllSettingsLink: false,
+      autoSave: true,
+      columns: 1,
+    });
+  }
 
   document.getElementById("church-letterhead-remove-btn")?.addEventListener("click", () => {
     window.bootbox.confirm({

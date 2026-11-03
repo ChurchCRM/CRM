@@ -51,7 +51,8 @@ $app->get('/statements/settings', function (Request $request, Response $response
 
     $pageArgs = [
         'sRootPath'    => SystemURLs::getRootPath(),
-        'sPageTitle'   => gettext('Contribution Statement Settings'),
+        'sPageTitle'   => gettext('Statement Settings'),
+        'sPageSubtitle' => gettext('Wording, tax ID and PDF handling for giving statements'),
         'aBreadcrumbs' => PageHeader::breadcrumbs([
             [gettext('Finance'), '/finance/'],
             [gettext('Statement Settings')],

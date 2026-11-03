@@ -49,6 +49,32 @@ describe("Admin - Report Settings page", () => {
             .should("have.text", "Reports");
     });
 
+    it("lists Statement Settings under Reports > Admin as well", () => {
+        cy.visit("/admin/system/report-settings");
+        cy.get('#sidebar a[href$="/finance/statements/settings"]').should("have.length", 1);
+    });
+
+    it("auto-saves the letter closing and no longer lists it on System Settings", () => {
+        cy.intercept("POST", "**/admin/api/system/config/sConfirmSincerely").as("saveClosing");
+        cy.visit("/admin/system/report-settings");
+        cy.get("#letter-settings-panel .settings-panel-fields", { timeout: 10000 }).should("not.be.disabled");
+        cy.get("#letter-settings-panel input[name='sDear']").should("exist");
+        cy.get("#letter-settings-panel input[name='sDear']").then(($dear) => {
+            cy.get("#letter-settings-panel input[name='sConfirmSincerely']").should(($closing) => {
+                expect($closing[0].getBoundingClientRect().top).to.be.greaterThan($dear[0].getBoundingClientRect().bottom - 1);
+            });
+        });
+        cy.get("#letter-settings-panel input[name='sConfirmSigner']").should("exist");
+        cy.get("#letter-settings-panel input[name='sConfirmSincerely']").clear().type("Warmly").blur();
+        cy.wait("@saveClosing").its("response.statusCode").should("eq", 200);
+        cy.getSystemConfig("sConfirmSincerely").should("eq", "Warmly");
+        cy.get("#letter-settings-panel input[name='sConfirmSincerely']").clear().type("Sincerely").blur();
+        cy.wait("@saveClosing");
+
+        cy.visit("/SystemSettings.php");
+        cy.get("[name='new_value[sDear]'], [name='new_value[sConfirmSincerely]'], [name='new_value[sConfirmSigner]']").should("not.exist");
+    });
+
     it("shows the letterhead card and opens the shared uploader", () => {
         cy.visit("/admin/system/report-settings");
         cy.contains("Report Settings").should("be.visible");

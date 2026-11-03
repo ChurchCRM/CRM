@@ -167,7 +167,6 @@ class   SystemConfig
             'iMaxFailedLoginsPerIP'                => new ConfigItem('iMaxFailedLoginsPerIP', 'number', '20', gettext("Maximum number of failed logins from one IP address\nFailed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\nSet to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address.")),
             'iPDFOutputType'                       => new ConfigItem('iPDFOutputType', 'choice', '1', gettext('PDF handling mode'), '', json_encode(['Choices' => [gettext('Save File dialog') . ':1', gettext('Open in browser window') . ':2']])),
             'sPDFTempDir'                          => new ConfigItem('sPDFTempDir', 'text', '', gettext('Leave blank to use the system temporary directory. Otherwise, enter an existing writable directory protected from web access.'), '', '', false),
-            'iPDFOutputType'                       => new ConfigItem('iPDFOutputType', 'number', '1', gettext("PDF handling mode.\n1 = Save File dialog\n2 = Open in current browser window")),
             'sDefaultCity'                         => new ConfigItem('sDefaultCity', 'text', '', gettext('Default City')),
             'sDefaultState'                        => new ConfigItem('sDefaultState', 'text', '', gettext('Default State - Must be 2-letter abbreviation!')),
             'sDefaultCountry'                      => new ConfigItem('sDefaultCountry', 'choice', '', '', '', json_encode(['Choices' => Countries::getNames()])),
@@ -370,7 +369,7 @@ class   SystemConfig
             gettext('Quick Search')       => ['bSearchIncludePersons', 'bSearchIncludePersonsMax', 'bSearchIncludeAddresses', 'bSearchIncludeAddressesMax', 'bSearchIncludeFamilies', 'bSearchIncludeFamiliesMax', 'bSearchIncludeFamilyHOH', 'bSearchIncludeFamilyHOHMax', 'bSearchIncludeGroups', 'bSearchIncludeGroupsMax', 'bSearchIncludeDeposits', 'bSearchIncludeDepositsMax', 'bSearchIncludePayments', 'bSearchIncludePaymentsMax', 'bSearchIncludeFamilyCustomProperties', 'bSearchIncludeCalendarEvents', 'bSearchIncludeCalendarEventsMax'],
             gettext('Confession')         => ['iPersonConfessionFatherCustomField', 'iPersonConfessionDateCustomField'],
             gettext('Scheduled Tasks')    => ['iTimerJobsStaleHours', 'iTimerJobsMinIntervalMinutes'],
-            gettext('Report Settings')    => ['sQBDTSettings', 'sReminder1', 'sReminderSigner', 'sReminderNoPledge', 'sReminderNoPayments', 'sConfirm1', 'sConfirm2', 'sConfirm3', 'sConfirm4', 'sConfirm5', 'sConfirm6', 'sDear', 'sConfirmSincerely', 'sConfirmSigner', 'sDirectoryDisclaimer1', 'sDirectoryDisclaimer2', 'sZeroGivers', 'sZeroGivers2', 'sZeroGivers3'],
+            gettext('Report Settings')    => ['sQBDTSettings', 'sReminder1', 'sReminderSigner', 'sReminderNoPledge', 'sReminderNoPayments', 'sConfirm1', 'sConfirm2', 'sConfirm3', 'sConfirm4', 'sConfirm5', 'sConfirm6', 'sDirectoryDisclaimer1', 'sDirectoryDisclaimer2', 'sZeroGivers', 'sZeroGivers2', 'sZeroGivers3'],
         ];
     }
 
