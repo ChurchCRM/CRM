@@ -16154,10 +16154,6 @@ msgid "Anonymous Telemetry"
 msgstr "Anonieme telemetrie"
 
 #: 
-msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
-msgstr "Anoniem telemetrieniveau. Bepaalt hoeveel anonieme diagnostische gegevens worden gedeeld met het ChurchCRM-team. Er worden nooit kerkennamen, ledengegevens of persoonlijke informatie verzonden."
-
-#: 
 msgid "Are you sure you want to permanently delete this payment record?"
 msgstr "Weet u zeker dat u dit betalingsrecord permanent wilt verwijderen?"
 
@@ -16216,10 +16212,6 @@ msgstr "Unieke installaties tellen"
 #: 
 msgid "Data"
 msgstr "Gegevens"
-
-#: 
-msgid "Data is processed by PostHog on EU infrastructure."
-msgstr "Gegevens worden verwerkt door PostHog op EU-infrastructuur."
 
 #: 
 msgid "Date is required"
@@ -16454,10 +16446,6 @@ msgid "Sending to"
 msgstr "Verzenden naar"
 
 #: 
-msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
-msgstr "Deel anonieme gebruiksstatistieken met het ChurchCRM-team, zodat we weten welke functies en talen we moeten prioriteren. Er worden nooit kerkennamen, ledengegevens of persoonlijke informatie verzonden."
-
-#: 
 msgid "Test email sent to"
 msgstr "Test-e-mail verzonden naar"
 
@@ -16502,10 +16490,6 @@ msgid "What is sent"
 msgstr "Wat wordt verzonden"
 
 #: 
-msgid "What we collect"
-msgstr "Wat we verzamelen"
-
-#: 
 msgid "Wishing you a wonderful %d year birthday!"
 msgstr "We wensen u een prachtige %d-jarige verjaardag!"
 
@@ -16528,10 +16512,6 @@ msgstr "alleen volledig"
 #: 
 msgid "is thinking of you today."
 msgstr "denkt vandaag aan u."
-
-#: 
-msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
-msgstr "paginapaden, actieve taal, CRM-versie, PHP-versie, OS-familie en een willekeurig installatie-ID. Niets anders. Gegevens worden opgeslagen in de EU."
 
 #: 
 msgid "% Paid"

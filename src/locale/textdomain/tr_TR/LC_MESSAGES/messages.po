@@ -16184,10 +16184,6 @@ msgid "Anonymous Telemetry"
 msgstr "Anonim Telemetri"
 
 #: 
-msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
-msgstr "Anonim telemetri düzeyi. ChurchCRM ekibiyle ne kadar anonim tanılama verisinin paylaşılacağını denetler. Hiçbir zaman kilise adı, üye verisi veya kişisel bilgi gönderilmez."
-
-#: 
 msgid "Are you sure you want to permanently delete this payment record?"
 msgstr "Bu ödeme kaydını kalıcı olarak silmek istediğinizden emin misiniz?"
 
@@ -16246,10 +16242,6 @@ msgstr "Benzersiz kurulumları say"
 #: 
 msgid "Data"
 msgstr "Veri"
-
-#: 
-msgid "Data is processed by PostHog on EU infrastructure."
-msgstr "Veriler, AB altyapısında PostHog tarafından işlenir."
 
 #: 
 msgid "Date is required"
@@ -16484,10 +16476,6 @@ msgid "Sending to"
 msgstr "Gönderiliyor:"
 
 #: 
-msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
-msgstr "Hangi özellik ve dillere öncelik vereceğimizi bilmemiz için ChurchCRM ekibiyle anonim kullanım istatistiklerini paylaşın. Hiçbir zaman kilise adı, üye verisi veya kişisel bilgi gönderilmez."
-
-#: 
 msgid "Test email sent to"
 msgstr "Test e-postası gönderildi:"
 
@@ -16532,10 +16520,6 @@ msgid "What is sent"
 msgstr "Ne gönderilir"
 
 #: 
-msgid "What we collect"
-msgstr "Ne topluyoruz"
-
-#: 
 msgid "Wishing you a wonderful %d year birthday!"
 msgstr "Sizi %d. yaş gününüzde tebrik ediyoruz!"
 
@@ -16558,10 +16542,6 @@ msgstr "yalnızca tam"
 #: 
 msgid "is thinking of you today."
 msgstr "bugün sizi düşünüyor."
-
-#: 
-msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
-msgstr "sayfa yolları, etkin yerel ayar, CRM sürümü, PHP sürümü, işletim sistemi ailesi ve rastgele bir kurulum kimliği. Bunların dışında hiçbir şey. Veriler AB'de depolanır."
 
 #: 
 msgid "% Paid"

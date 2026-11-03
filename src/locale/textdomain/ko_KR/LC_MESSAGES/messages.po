@@ -16166,10 +16166,6 @@ msgid "Anonymous Telemetry"
 msgstr "익명 원격 측정"
 
 #: 
-msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
-msgstr "익명 원격 측정 수준입니다. ChurchCRM 팀과 공유되는 익명 진단 데이터의 양을 제어합니다. 교회 이름, 교인 데이터 또는 개인 정보는 전송되지 않습니다."
-
-#: 
 msgid "Are you sure you want to permanently delete this payment record?"
 msgstr "이 헌금 기록을 영구적으로 삭제하시겠습니까?"
 
@@ -16228,10 +16224,6 @@ msgstr "고유 설치 수 집계"
 #: 
 msgid "Data"
 msgstr "데이터"
-
-#: 
-msgid "Data is processed by PostHog on EU infrastructure."
-msgstr "데이터는 EU 인프라에서 PostHog에 의해 처리됩니다."
 
 #: 
 msgid "Date is required"
@@ -16466,10 +16458,6 @@ msgid "Sending to"
 msgstr "발송 대상"
 
 #: 
-msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
-msgstr "ChurchCRM 팀과 익명 사용 통계를 공유하여 어떤 기능과 언어를 우선적으로 개선할지 파악할 수 있도록 도와주세요. 교회 이름, 교인 데이터 또는 개인 정보는 전송되지 않습니다."
-
-#: 
 msgid "Test email sent to"
 msgstr "테스트 이메일이 다음으로 발송되었습니다"
 
@@ -16514,10 +16502,6 @@ msgid "What is sent"
 msgstr "전송되는 항목"
 
 #: 
-msgid "What we collect"
-msgstr "수집 항목"
-
-#: 
 msgid "Wishing you a wonderful %d year birthday!"
 msgstr "멋진 %d번째 생일을 축하합니다!"
 
@@ -16540,10 +16524,6 @@ msgstr "전체만"
 #: 
 msgid "is thinking of you today."
 msgstr "오늘 당신을 생각하고 있습니다."
-
-#: 
-msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
-msgstr "페이지 경로, 활성 언어, CRM 버전, PHP 버전, OS 계열 및 임의 설치 ID. 그 외에는 없습니다. 데이터는 EU에 저장됩니다."
 
 #: 
 msgid "% Paid"

@@ -16238,10 +16238,6 @@ msgid "Anonymous Telemetry"
 msgstr "匿名遥测"
 
 #: 
-msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
-msgstr "匿名遥测级别。控制与 ChurchCRM 团队共享的匿名诊断数据量。不会发送任何教会名称、会众数据或个人信息。"
-
-#: 
 msgid "Are you sure you want to permanently delete this payment record?"
 msgstr "您确定要永久删除此奉献记录吗？"
 
@@ -16300,10 +16296,6 @@ msgstr "统计唯一安装数"
 #: 
 msgid "Data"
 msgstr "数据"
-
-#: 
-msgid "Data is processed by PostHog on EU infrastructure."
-msgstr "数据由 PostHog 在欧盟基础设施上处理。"
 
 #: 
 msgid "Date is required"
@@ -16538,10 +16530,6 @@ msgid "Sending to"
 msgstr "正在发送至"
 
 #: 
-msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
-msgstr "与 ChurchCRM 团队共享匿名使用统计数据，以便我们了解应优先改进哪些功能和语言。不会发送任何教会名称、会众数据或个人信息。"
-
-#: 
 msgid "Test email sent to"
 msgstr "测试邮件已发送至"
 
@@ -16586,10 +16574,6 @@ msgid "What is sent"
 msgstr "发送内容"
 
 #: 
-msgid "What we collect"
-msgstr "我们收集的内容"
-
-#: 
 msgid "Wishing you a wonderful %d year birthday!"
 msgstr "祝您%d岁生日快乐！"
 
@@ -16612,10 +16596,6 @@ msgstr "仅完整"
 #: 
 msgid "is thinking of you today."
 msgstr "今天在想念您。"
-
-#: 
-msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
-msgstr "页面路由、当前语言环境、CRM 版本、PHP 版本、操作系统类型及随机安装 ID。仅此而已。数据存储于欧盟。"
 
 #: 
 msgid "% Paid"

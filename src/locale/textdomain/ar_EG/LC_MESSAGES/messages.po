@@ -16230,10 +16230,6 @@ msgid "Anonymous Telemetry"
 msgstr "القياس عن بُعد المجهول"
 
 #: 
-msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
-msgstr "مستوى القياس عن بُعد المجهول. يتحكم في مقدار البيانات التشخيصية المجهولة المشتركة مع فريق ChurchCRM. لا يتم إرسال أسماء الكنائس أو بيانات الأعضاء أو المعلومات الشخصية أبدًا."
-
-#: 
 msgid "Are you sure you want to permanently delete this payment record?"
 msgstr "هل أنت متأكد أنك تريد حذف سجل الدفعة هذا نهائيًا؟"
 
@@ -16292,10 +16288,6 @@ msgstr "احتساب التثبيتات الفريدة"
 #: 
 msgid "Data"
 msgstr "البيانات"
-
-#: 
-msgid "Data is processed by PostHog on EU infrastructure."
-msgstr "تتم معالجة البيانات بواسطة PostHog على البنية التحتية للاتحاد الأوروبي."
 
 #: 
 msgid "Date is required"
@@ -16530,10 +16522,6 @@ msgid "Sending to"
 msgstr "إرسال إلى"
 
 #: 
-msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
-msgstr "شارك إحصائيات الاستخدام المجهولة مع فريق ChurchCRM حتى نعرف الميزات واللغات التي نُعطيها الأولوية. لا يتم إرسال أسماء الكنائس أو بيانات الأعضاء أو المعلومات الشخصية أبدًا."
-
-#: 
 msgid "Test email sent to"
 msgstr "تم إرسال رسالة اختبار إلى"
 
@@ -16578,10 +16566,6 @@ msgid "What is sent"
 msgstr "ما الذي يُرسَل"
 
 #: 
-msgid "What we collect"
-msgstr "ما الذي نجمعه"
-
-#: 
 msgid "Wishing you a wonderful %d year birthday!"
 msgstr "نتمنى لك عيد ميلاد رائع في عامك الـ %d!"
 
@@ -16604,10 +16588,6 @@ msgstr "كامل فقط"
 #: 
 msgid "is thinking of you today."
 msgstr "يفكر فيك اليوم."
-
-#: 
-msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
-msgstr "مسارات الصفحة واللغة النشطة وإصدار CRM وإصدار PHP وعائلة نظام التشغيل ومعرّف تثبيت عشوائي. لا شيء آخر. تُخزَّن البيانات في الاتحاد الأوروبي."
 
 #: 
 msgid "% Paid"

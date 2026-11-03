@@ -16186,10 +16186,6 @@ msgid "Anonymous Telemetry"
 msgstr "Anonymní telemetrie"
 
 #: 
-msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
-msgstr "Úroveň anonymní telemetrie. Určuje, kolik anonymních diagnostických dat se sdílí s týmem ChurchCRM. Nikdy nejsou odesílána jména sborů, data členů ani osobní údaje."
-
-#: 
 msgid "Are you sure you want to permanently delete this payment record?"
 msgstr "Opravdu chcete trvale smazat tento záznam o platbě?"
 
@@ -16248,10 +16244,6 @@ msgstr "Počítat unikátní instalace"
 #: 
 msgid "Data"
 msgstr "Data"
-
-#: 
-msgid "Data is processed by PostHog on EU infrastructure."
-msgstr "Data jsou zpracovávána službou PostHog na infrastruktuře v EU."
 
 #: 
 msgid "Date is required"
@@ -16486,10 +16478,6 @@ msgid "Sending to"
 msgstr "Odesílání na"
 
 #: 
-msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
-msgstr "Sdílejte anonymní statistiky využití s týmem ChurchCRM, abychom věděli, které funkce a jazyky upřednostnit. Nikdy nejsou odesílána jména sborů, data členů ani osobní údaje."
-
-#: 
 msgid "Test email sent to"
 msgstr "Testovací e-mail odeslán na"
 
@@ -16534,10 +16522,6 @@ msgid "What is sent"
 msgstr "Co se odesílá"
 
 #: 
-msgid "What we collect"
-msgstr "Co shromažďujeme"
-
-#: 
 msgid "Wishing you a wonderful %d year birthday!"
 msgstr "Přejeme vám krásné %d. narozeniny!"
 
@@ -16560,10 +16544,6 @@ msgstr "pouze plné"
 #: 
 msgid "is thinking of you today."
 msgstr "na vás dnes myslí."
-
-#: 
-msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
-msgstr "cesty stránek, aktivní jazyk, verze CRM, verze PHP, rodina OS a náhodné ID instalace. Nic jiného. Data jsou uložena v EU."
 
 #: 
 msgid "% Paid"

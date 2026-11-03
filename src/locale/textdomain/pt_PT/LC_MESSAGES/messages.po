@@ -16300,10 +16300,6 @@ msgid "Anonymous Telemetry"
 msgstr "Telemetria Anónima"
 
 #: 
-msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
-msgstr "Nível de telemetria anónima. Controla a quantidade de dados de diagnóstico anónimos partilhados com a equipa do ChurchCRM. Nunca são enviados nomes de igrejas, dados de membros ou informações pessoais."
-
-#: 
 msgid "Are you sure you want to permanently delete this payment record?"
 msgstr "Tem a certeza de que pretende eliminar permanentemente este registo de pagamento?"
 
@@ -16362,10 +16358,6 @@ msgstr "Contar instalações únicas"
 #: 
 msgid "Data"
 msgstr "Dados"
-
-#: 
-msgid "Data is processed by PostHog on EU infrastructure."
-msgstr "Os dados são processados pelo PostHog em infraestrutura da UE."
 
 #: 
 msgid "Date is required"
@@ -16600,10 +16592,6 @@ msgid "Sending to"
 msgstr "A enviar para"
 
 #: 
-msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
-msgstr "Partilhe estatísticas de utilização anónimas com a equipa do ChurchCRM para sabermos quais as funcionalidades e idiomas a priorizar. Nunca são enviados nomes de igrejas, dados de membros ou informações pessoais."
-
-#: 
 msgid "Test email sent to"
 msgstr "E-mail de teste enviado para"
 
@@ -16648,10 +16636,6 @@ msgid "What is sent"
 msgstr "O que é enviado"
 
 #: 
-msgid "What we collect"
-msgstr "O que recolhemos"
-
-#: 
 msgid "Wishing you a wonderful %d year birthday!"
 msgstr "Desejamos-lhe um maravilhoso %d º aniversário!"
 
@@ -16674,10 +16658,6 @@ msgstr "apenas completo"
 #: 
 msgid "is thinking of you today."
 msgstr "está a pensar em si hoje."
-
-#: 
-msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
-msgstr "rotas de página, idioma activo, versão do CRM, versão de PHP, família de SO e um ID de instalação aleatório. Nada mais. Os dados são armazenados na UE."
 
 #: 
 msgid "% Paid"
