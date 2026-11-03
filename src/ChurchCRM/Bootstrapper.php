@@ -344,7 +344,7 @@ class Bootstrapper
             self::$bootStrapLogger->debug("Setting locale to: " . $localeInfo->getLocale());
             
             $localeSet = $localeInfo->activate();
-            if ($localeSet === false) {
+            if ($localeSet === false && self::shouldLogLocaleFailure($localeInfo->getLocale())) {
                 self::$bootStrapLogger->warning("Failed to set locale: " . $localeInfo->getLocale() . ", using system default");
             }
 
@@ -373,6 +373,25 @@ class Bootstrapper
             self::$bootStrapLogger->error("Locale configuration failed: " . $e->getMessage());
             // Continue with default locale settings
         }
+    }
+
+    private static function shouldLogLocaleFailure(string $locale): bool
+    {
+        try {
+            $state = json_decode((string) SystemConfig::getValue('sLocaleFailureLogState'), true);
+            $now = time();
+            if (is_array($state)
+                && ($state['locale'] ?? null) === $locale
+                && isset($state['timestamp'])
+                && is_numeric($state['timestamp'])
+                && date('Y-m-d', (int) $state['timestamp']) === date('Y-m-d', $now)) {
+                return false;
+            }
+            SystemConfig::setValue('sLocaleFailureLogState', json_encode(['locale' => $locale, 'timestamp' => $now]));
+        } catch (\Throwable) {
+            return true;
+        }
+        return true;
     }
 
     /**

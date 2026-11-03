@@ -2,11 +2,14 @@
 
 declare(strict_types=1);
 
+use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\TelemetryService;
 use ChurchCRM\Utils\SQLImportException;
 use ChurchCRM\Utils\VersionUtils;
+use Monolog\Level;
+use Monolog\LogRecord;
 use Tester\Assert;
 
 require dirname(__DIR__, 2) . '/bootstrap.php';
@@ -18,6 +21,11 @@ Assert::false($acknowledgement->invoke(null, 'Invalid', 400));
 Assert::false($acknowledgement->invoke(null, false, 0));
 $errorSanitizer = new ReflectionMethod(TelemetryService::class, 'sanitizeDatabaseError');
 Assert::same("Duplicate entry '[redacted]' for key '[redacted]'", $errorSanitizer->invoke(null, "Duplicate entry 'private-value' for key 'member_email'"));
+$logScrubber = new ReflectionMethod(TelemetryService::class, 'scrubLogMessage');
+Assert::same('Query failed: [database error] Retry later.', $logScrubber->invoke(null, 'Query failed: SQLSTATE[42S02]: Table not found churchcrm_dev.private_table. Retry later.'));
+Assert::same('Contact [email] for help', $logScrubber->invoke(null, 'Contact user@example.com for help'));
+Assert::same('Ordinary warning', $logScrubber->invoke(null, 'Ordinary warning'));
+Assert::same(500, mb_strlen($logScrubber->invoke(null, str_repeat('x', 600))));
 $sqlFailure = new SQLImportException('INSERT INTO private_table VALUES (1)', 'Duplicate entry \'private-value\' for key \'member_email\'');
 Assert::same("Duplicate entry 'private-value' for key 'member_email'", $sqlFailure->getDatabaseError());
 
@@ -60,10 +68,42 @@ $configValue = static fn (string $value) => new class($value) {
 $configs->setValue(null, [
     'sLanguage' => $configValue('en_US'),
     'sTelemetryLevel' => $configValue(TelemetryService::LEVEL_ERRORS),
+    'sTelemetryLogDedupeState' => $configValue(''),
+    'sLocaleFailureLogState' => $configValue(''),
     'sSystemID' => $configValue('install-id'),
     'sTelemetryLifecycleVersion' => $configValue(''),
 ]);
 $currentVersion = VersionUtils::getInstalledVersion();
+$localeThrottle = new ReflectionMethod(Bootstrapper::class, 'shouldLogLocaleFailure');
+Assert::true($localeThrottle->invoke(null, 'en_CA'));
+Assert::false($localeThrottle->invoke(null, 'en_CA'));
+Assert::true($localeThrottle->invoke(null, 'fr_CA'));
+
+$record = new LogRecord(new DateTimeImmutable(), 'test', Level::Error, 'Repeated message');
+$logEvents = [];
+$logSender = static function (string $event, array $properties) use (&$logEvents): bool {
+    $logEvents[] = ['event' => $event, 'properties' => $properties];
+    return true;
+};
+TelemetryService::captureLogEvent($record, $logSender, 10000);
+Assert::same(1, count($logEvents));
+TelemetryService::captureLogEvent($record, $logSender, 11000);
+Assert::same(1, count($logEvents));
+TelemetryService::captureLogEvent($record, $logSender, 13601);
+Assert::same(2, count($logEvents));
+Assert::same(1, $logEvents[1]['properties']['suppressed_count']);
+
+$currentConfigs = $configs->getValue(null);
+$currentConfigs['sTelemetryLogDedupeState'] = new class {
+    public function getValue(): string { return ''; }
+    public function setValue(string $value): void { throw new RuntimeException('state write failed'); }
+    public function getType(): string { return 'text'; }
+    public function shouldSanitizeInput(): bool { return false; }
+};
+$configs->setValue(null, $currentConfigs);
+TelemetryService::captureLogEvent(new LogRecord(new DateTimeImmutable(), 'test', Level::Error, 'Write failure'), $logSender, 20000);
+Assert::same(3, count($logEvents));
+
 $sentEvents = [];
 $sender = static function (string $event, array $properties) use (&$sentEvents): bool {
     $sentEvents[] = ['event' => $event, 'properties' => $properties];

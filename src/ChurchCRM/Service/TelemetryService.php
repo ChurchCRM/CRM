@@ -202,7 +202,7 @@ class TelemetryService
      * Called by PostHogLogHandler — the handler pre-filters by Monolog level;
      * this method does the final level check and sends.
      */
-    public static function captureLogEvent(LogRecord $record): void
+    public static function captureLogEvent(LogRecord $record, ?callable $send = null, ?int $now = null): void
     {
         if (!self::isEnabled()) {
             return;
@@ -212,16 +212,69 @@ class TelemetryService
         $rawUrl = $record->extra['url'] ?? '';
         $route  = $rawUrl !== '' ? explode('?', $rawUrl, 2)[0] : 'unknown';
 
+        $message = self::scrubLogMessage($record->message);
         $properties = array_merge(self::baseProperties(), [
             'level'          => $record->level->name,
-            'message'        => $record->message,
+            'message'        => $message,
             'channel'        => $record->channel,
             'correlation_id' => $record->extra['correlation_id'] ?? null,
             'route'          => $route,
             // remote_ip is intentionally excluded — PII
         ]);
 
-        self::capture('log_error', $properties);
+        $now ??= time();
+        $key = hash('sha256', $record->level->name . '|' . $record->channel . '|' . $message);
+        $stateAvailable = true;
+        try {
+            $stored = json_decode((string) SystemConfig::getValue('sTelemetryLogDedupeState'), true);
+            $state = is_array($stored) ? $stored : [];
+        } catch (\Throwable) {
+            $stateAvailable = false;
+            $state = [];
+        }
+
+        if ($stateAvailable) {
+            $entry = $state[$key] ?? null;
+            if (is_array($entry) && isset($entry['last_sent']) && is_numeric($entry['last_sent'])
+                && $now - (int) $entry['last_sent'] < 3600) {
+                $entry['suppressed_count'] = (int) ($entry['suppressed_count'] ?? 0) + 1;
+                $state[$key] = $entry;
+                try {
+                    self::writeLogDedupeState($state, $now);
+                    return;
+                } catch (\Throwable) {
+                    // A failed write means the event is sent to avoid losing logs.
+                }
+            } else {
+                if (is_array($entry) && (int) ($entry['suppressed_count'] ?? 0) > 0) {
+                    $properties['suppressed_count'] = (int) $entry['suppressed_count'];
+                }
+                $state[$key] = ['last_sent' => $now, 'suppressed_count' => 0];
+                try {
+                    self::writeLogDedupeState($state, $now);
+                } catch (\Throwable) {
+                    // State persistence must not prevent forwarding.
+                }
+            }
+        }
+
+        ($send ?? self::capture(...))('log_error', $properties);
+    }
+
+    private static function writeLogDedupeState(array $state, int $now): void
+    {
+        $state = array_filter($state, static fn ($entry): bool => is_array($entry)
+            && isset($entry['last_sent']) && is_numeric($entry['last_sent'])
+            && (int) $entry['last_sent'] >= $now - 86400);
+        SystemConfig::setValue('sTelemetryLogDedupeState', json_encode($state));
+    }
+
+    private static function scrubLogMessage(string $message): string
+    {
+        $message = preg_replace('/SQLSTATE\[[^\]]*\].*?(?:[.!?](?=\s|$)|$)/is', '[database error]', $message) ?? '';
+        $message = preg_replace('/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i', '[email]', $message) ?? '';
+
+        return mb_substr($message, 0, 500);
     }
 
     /** Properties attached to every server-side PostHog event. */
