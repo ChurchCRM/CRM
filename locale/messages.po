@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-02 13:27+0000\n"
+"POT-Creation-Date: 2026-11-03 14:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1627,9 +1627,6 @@ msgid "Anonymous"
 msgstr ""
 
 msgid "Anonymous Telemetry"
-msgstr ""
-
-msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
 msgstr ""
 
 msgid "Another ministry"
@@ -3766,6 +3763,9 @@ msgstr ""
 msgid "Contributors"
 msgstr ""
 
+msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
+msgstr ""
+
 msgid "Convert All"
 msgstr ""
 
@@ -4264,9 +4264,6 @@ msgid "Data"
 msgstr ""
 
 msgid "Data Quality"
-msgstr ""
-
-msgid "Data is processed by PostHog on EU infrastructure."
 msgstr ""
 
 msgid "Database"
@@ -4837,6 +4834,9 @@ msgid "Details"
 msgstr ""
 
 msgid "Developer mode"
+msgstr ""
+
+msgid "Diagnose failed installs and database upgrades"
 msgstr ""
 
 msgid "Did Not Attend"
@@ -8313,6 +8313,9 @@ msgstr ""
 msgid "Install a TLS/SSL certificate for secure connections"
 msgstr ""
 
+msgid "Install and upgrade failure details"
+msgstr ""
+
 msgid "Install failed"
 msgstr ""
 
@@ -11363,6 +11366,12 @@ msgstr ""
 msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
 msgstr ""
 
+msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
+msgstr ""
+
+msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
+msgstr ""
+
 msgid "Optional · up to {{max}} welcome"
 msgstr ""
 
@@ -14168,9 +14177,6 @@ msgstr ""
 msgid "Share"
 msgstr ""
 
-msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
-msgstr ""
-
 msgid "Share this URL with family members to verify their information"
 msgstr ""
 
@@ -14989,6 +14995,9 @@ msgid "Teams, positions and the people who fill them"
 msgstr ""
 
 msgid "Technical Details"
+msgstr ""
+
+msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
 msgstr ""
 
 msgid "Tell us about your family"
@@ -15870,6 +15879,9 @@ msgid "This assignment is no longer active"
 msgstr ""
 
 msgid "This calendar link is invalid or has been revoked. Ask the church for a current link."
+msgstr ""
+
+msgid "This date was cancelled. Nothing more is needed from you."
 msgstr ""
 
 msgid "This email batch was queued by another user"
@@ -17731,9 +17743,6 @@ msgstr ""
 msgid "What this plugin does"
 msgstr ""
 
-msgid "What we collect"
-msgstr ""
-
 msgid "What went wrong? What did you expect to happen?"
 msgstr ""
 
@@ -18341,6 +18350,9 @@ msgstr ""
 msgid "already staffed by this team"
 msgstr ""
 
+msgid "always sent"
+msgstr ""
+
 msgid "am / pm"
 msgstr ""
 
@@ -18650,9 +18662,6 @@ msgid "our church"
 msgstr ""
 
 msgid "page"
-msgstr ""
-
-msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr ""
 
 msgid "past"
