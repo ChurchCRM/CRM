@@ -3,6 +3,12 @@ const query = (sql, params) => cy.dbQuery(sql, params).then((result) => {
     return result.rows;
 });
 
+// Model a legacy profile/login without the audit rows emitted by today's UI.
+export const resetDeletionFixtureAudit = (personId, type) => {
+    expect(type).to.be.oneOf(["photo", "user"]);
+    return query("DELETE FROM note_nte WHERE nte_per_ID = ? AND nte_Type = ?", [personId, type]);
+};
+
 export const createDeletionProperty = (personId) =>
     query("INSERT INTO property_pro (pro_Class, pro_prt_ID, pro_Name, pro_Description) VALUES ('p', 1, ?, 'deletion history test')", [`Delete history ${personId}`])
         .then(() => query("SELECT pro_ID FROM property_pro WHERE pro_Name = ?", [`Delete history ${personId}`]))

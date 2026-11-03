@@ -2,6 +2,10 @@
 
 `Person::preDelete()` is the central deletion callback. The history check runs there before it removes the photo, memberships, custom fields, login, volunteer opportunities, properties, or notes. Family deletion with member cascading preflights every member with the same service before it deletes family notes or changes membership. `Family::preDelete()` removes only the family photo; its API route owns the cascade and already refuses a family with any pledge or payment.
 
+Family finance checks, member preflight, and all family/member database cleanup share one transaction and connection. A deletion exception rolls back the database changes before the API returns its error. File deletion and external plugin effects are not transactional; the history preflight remains before those effects.
+
+Concurrent family-membership writers do not share a locking contract with deletion. Issue #11112 tracks that existing race separately; the transaction does not prevent a late membership assignment from referencing a deleted family.
+
 ## Protected history
 
 | Relation | Classification | Schema and workflow evidence |
