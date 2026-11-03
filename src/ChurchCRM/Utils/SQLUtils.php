@@ -196,7 +196,7 @@ class SQLUtils
             return;
         }
         if (!$query = $mysqli->query($sql)) {
-            throw new \Exception("Cannot execute request to the database {$sql}: " . $mysqli->error);
+            throw new SQLImportException($sql, (string) $mysqli->error);
         }
     }
 }

@@ -15,6 +15,8 @@ use ChurchCRM\Utils\SQLUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\VersionUtils;
+use ChurchCRM\Utils\SQLImportException;
+use ChurchCRM\Service\TelemetryService;
 use Propel\Runtime\Propel;
 
 class UpgradeService
@@ -113,15 +115,22 @@ class UpgradeService
                         $logger->info('New Version: ' . $version->getVersion());
                         $scriptName = null;
                         foreach ($dbUpdate['scripts'] as $dbScript) {
-                            $progress = $connection->prepare('SELECT status FROM database_upgrade_progress WHERE target_version = ? AND script_path = ?');
+                            $progress = $connection->prepare('SELECT status, started_at FROM database_upgrade_progress WHERE target_version = ? AND script_path = ?');
                             $progress->execute([$dbUpdate['dbVersion'], $dbScript]);
-                            $statuses = $progress->fetchAll(\PDO::FETCH_COLUMN);
-                            $status = $statuses[0] ?? null;
+                            $progressRow = $progress->fetch(\PDO::FETCH_ASSOC);
+                            $status = $progressRow['status'] ?? null;
                             if ($status === 'complete') {
                                 continue;
                             }
                             if ($status !== null) {
-                                throw new \RuntimeException("Upgrade file $dbScript was interrupted. Check the server logs and repair or restore the database before retrying.");
+                                if ($status === 'started') {
+                                    $reported = $connection->prepare('UPDATE database_upgrade_progress SET status = ? WHERE target_version = ? AND script_path = ? AND status = ?');
+                                    $reported->execute(['reported', $dbUpdate['dbVersion'], $dbScript, 'started']);
+                                    $startedAt = new \DateTimeImmutable($progressRow['started_at']);
+                                    $elapsedMs = max(0, (time() - $startedAt->getTimestamp()) * 1000);
+                                    TelemetryService::captureUpgradeInterruption($dbUpdate['dbVersion'], $elapsedMs);
+                                }
+                                throw new \RuntimeException("Upgrade file $dbScript failed or was interrupted. Check the server logs and repair or restore the database before retrying.");
                             }
                             if ($oneScriptPerRequest && $scriptsThisRequest === 1) {
                                 return false;
@@ -131,8 +140,23 @@ class UpgradeService
                             $scriptName = SystemURLs::getDocumentRoot() . $dbScript;
 
                             $logger->info('Upgrade DB - ' . $scriptName);
+                            $sqlDurationMs = null;
                             if (pathinfo($scriptName, PATHINFO_EXTENSION) === 'sql') {
-                                SQLUtils::sqlImport($scriptName, $connection);
+                                $sqlStartedAt = hrtime(true);
+                                try {
+                                    SQLUtils::sqlImport($scriptName, $connection);
+                                    $sqlDurationMs = (int) ((hrtime(true) - $sqlStartedAt) / 1_000_000);
+                                } catch (\Throwable $e) {
+                                    $durationMs = (int) ((hrtime(true) - $sqlStartedAt) / 1_000_000);
+                                    $reported = $connection->prepare('UPDATE database_upgrade_progress SET status = ? WHERE target_version = ? AND script_path = ? AND status = ?');
+                                    $reported->execute(['reported', $dbUpdate['dbVersion'], $dbScript, 'started']);
+                                    if ($e instanceof SQLImportException) {
+                                        TelemetryService::captureUpgradeSqlError($dbUpdate['dbVersion'], $durationMs, $e->getDatabaseError());
+                                    } else {
+                                        TelemetryService::captureUpgradeSqlDuration($dbUpdate['dbVersion'], $durationMs, false);
+                                    }
+                                    throw $e;
+                                }
                             } elseif (pathinfo($scriptName, PATHINFO_EXTENSION) === 'php') {
                                 require $scriptName;
                             } else {
@@ -140,6 +164,9 @@ class UpgradeService
                             }
                             $complete = $connection->prepare('UPDATE database_upgrade_progress SET status = ? WHERE target_version = ? AND script_path = ?');
                             $complete->execute(['complete', $dbUpdate['dbVersion'], $dbScript]);
+                            if ($sqlDurationMs !== null) {
+                                TelemetryService::captureUpgradeSqlDuration($dbUpdate['dbVersion'], $sqlDurationMs, true);
+                            }
                             $scriptsThisRequest++;
                         }
                         $start = $connection->prepare('SELECT MIN(started_at) FROM database_upgrade_progress WHERE target_version = ?');
@@ -197,6 +224,9 @@ class UpgradeService
 
             return true;
         } catch (\Throwable $exc) {
+            if (!$exc instanceof SQLImportException) {
+                TelemetryService::captureUpgradeFailure($installed_version, $exc::class);
+            }
             $logger->error(
                 'Database upgrade failed: ' . $exc->getMessage(),
                 ['exception' => $exc]
