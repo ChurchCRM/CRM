@@ -2415,14 +2415,6 @@ msgid "Enable non-deductible payments"
 msgstr "ተቀናሽ ያልሆኑ ክፍያዎችን አንቃ"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "የግራ ህዳግ (1 = 1/100ኛ ኢንች)"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "የመስመር ውፍረት (1 = 1/100ኛ ኢንች)"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "የግብር ሪፖርት ከፍተኛ መስመር። ቀኖች በዚህ መስመር መጨረሻ ላይ ይታከላሉ።"
 
@@ -4876,14 +4868,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "አዲስ የይለፍ ቃል ከአሮጌው የተለየ መሆን ያለበት ዝቅተኛው መጠን (# ፊደሎች ተለውጠዋል)\n"
 "ይህንን ባህሪ ለማሰናከል ወደ ዜሮ ያቀናብሩ"
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr " የ PDF አያያዝ ሁነታ፡\n"
-"1 = የፋይል ንግግር አስቀምጥ\n"
-"2 = አሁን ባለው የመፈለጊያ መስኮት ክፈት"
 
 #: 
 msgid "Verify People"

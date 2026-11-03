@@ -2415,14 +2415,6 @@ msgid "Enable non-deductible payments"
 msgstr "Aktivizoni pagesat jo të zbritshme"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "Margjina e majtë (1 = 1/100 inç)"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "Trashësia e vijës (1 = 1/100 inç)"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "Teksti për rreshtin e parë të raportit tatimor. Datat do të shtohen në fund të këtij rreshti."
 
@@ -4868,14 +4860,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Shuma minimale që një fjalëkalim i ri duhet të ndryshojë nga i vjetri (# i karaktereve të ndryshuara)\n"
 "Vendos zero për të çaktivizuar këtë veçori"
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr "Mënyra e trajtimit të PDF.\n"
-"1 = Dialogu i ruajtjes së skedarit\n"
-"2 = Hap në dritaren aktuale të shfletuesit"
 
 #: 
 msgid "Verify People"

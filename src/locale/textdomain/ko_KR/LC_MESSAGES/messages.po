@@ -2414,14 +2414,6 @@ msgid "Enable non-deductible payments"
 msgstr "공제 불가 헌금 허용"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "왼쪽 여백(1 = 1/100인치)"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "선 두께(1 = 1/100인치)"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "세금 보고서 상단 문구(끝에 날짜가 붙습니다)"
 
@@ -4872,14 +4864,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "새 비밀번호가 기존 비밀번호와 달라야 하는 최소 문자 수\n"
 "0으로 설정하면 기능을 끕니다."
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr "PDF 처리 방식\n"
-"1 = 파일 저장 대화상자\n"
-"2 = 현재 브라우저에서 열기"
 
 #: 
 msgid "Verify People"

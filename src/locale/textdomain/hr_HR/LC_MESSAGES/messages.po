@@ -2391,14 +2391,6 @@ msgid "Enable non-deductible payments"
 msgstr "Omogući neodbatljiva plaćanja"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "Lijeva margina (1 = 1/100 inča)"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "Debljina linije (1 = 1/100 inča"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "Tekst za gornji redak poreznog izvještaja. Datumi će biti dodani na kraj ovog retka."
 
@@ -4842,14 +4834,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Minimalni iznos u kojem se nova lozinka mora razlikovati od stare (# promijenjenih znakova)\n"
 "Postavite na nulu za onemogućavanje."
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr "Način upravljanja PDF-om.\n"
-"1 = Dijaloški okvir za spremanje datoteke\n"
-"2 = Otvori u trenutnom prozoru preglednika"
 
 #: 
 msgid "Verify People"

@@ -2391,14 +2391,6 @@ msgid "Enable non-deductible payments"
 msgstr "控除不可能な支払いを有効にします"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "左マージン (1 = 1/100インチ)"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "線の太さ (1 = 1/100インチ)"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "税務報告書の最上行の文言。日付はこの行の最後に追加されます。"
 
@@ -4844,14 +4836,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "新しいパスワードが古いパスワードと異なる必要がある最小量（変更された文字数）\n"
 "この機能を無効にするには0に設定"
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr "PDF処理モード。\n"
-"1 = ファイル保存ダイアログ\n"
-"2 = 現在のブラウザウィンドウで開く"
 
 #: 
 msgid "Verify People"
