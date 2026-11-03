@@ -74,7 +74,7 @@ describe("Admin - Report Settings page", () => {
             deleteRequests += 1;
         }).as("removeLetterhead");
         cy.get("#church-letterhead-remove-btn").click();
-        cy.get(".bootbox .modal-dialog").should("have.css", "transform", "none");
+        cy.get(".bootbox.show .modal-dialog").should("have.css", "transform", "none");
         cy.get(".bootbox .bootbox-cancel").click();
         cy.get(".bootbox").should("not.exist");
         cy.get("#church-letterhead-preview").should("be.visible");

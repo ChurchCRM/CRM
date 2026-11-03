@@ -49,6 +49,7 @@ $letterheadUrl = LetterheadService::getUrlPath();
     </div>
 </div>
 
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/photo-uploader.min.css') ?>">
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/photo-uploader.min.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/report-settings.min.js') ?>"></script>
 
