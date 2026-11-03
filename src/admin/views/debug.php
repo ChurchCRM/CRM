@@ -616,10 +616,12 @@ $fmtBytes = static function ($bytes): string {
                                 <tr><td><?= gettext('ChurchCRM version') ?></td><td><?= gettext('Track adoption') ?></td></tr>
                                 <tr><td><?= gettext('Locale') ?></td><td><?= gettext('Prioritise translations') ?></td></tr>
                                 <tr><td><?= gettext('Page route') ?> <span class="badge bg-info-lt text-info ms-1"><?= gettext('full only') ?></span></td><td><?= gettext('Understand feature usage') ?></td></tr>
+                                <tr><td><?= gettext('Church country') ?></td><td><?= gettext('Understand where ChurchCRM is used') ?></td></tr>
                                 <tr><td><?= gettext('PHP version') ?></td><td><?= gettext('Plan runtime support') ?></td></tr>
                                 <tr><td><?= gettext('OS family') ?></td><td><?= gettext('Understand deployments') ?></td></tr>
                                 <tr><td><?= gettext('Log level + message') ?> <span class="badge bg-warning-lt text-warning ms-1"><?= gettext('errors+') ?></span></td><td><?= gettext('Catch recurring errors') ?></td></tr>
                                 <tr><td><?= gettext('JS exceptions') ?> <span class="badge bg-warning-lt text-warning ms-1"><?= gettext('errors+') ?></span></td><td><?= gettext('Catch JS errors') ?></td></tr>
+                                <tr><td><?= gettext('Install and upgrade failure details') ?> <span class="badge bg-danger-lt text-danger ms-1"><?= gettext('always sent') ?></span></td><td><?= gettext('Diagnose failed installs and database upgrades') ?></td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -633,7 +635,7 @@ $fmtBytes = static function ($bytes): string {
                         <li><?= gettext('URLs with query strings (record IDs are stripped)') ?></li>
                     </ul>
                     <p class="small text-secondary mt-2 mb-0">
-                        <?= gettext('Data is processed by PostHog on EU infrastructure.') ?>
+                        <?= gettext('Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled.') ?>
                     </p>
                 </div>
             </div>

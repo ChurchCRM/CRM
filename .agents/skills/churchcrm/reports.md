@@ -50,7 +50,7 @@ Locale and RTL come from `MpdfRenderer` (`lang`, `text_dir`). mPDF script fonts 
 
 ## Output safety
 
-Use MpdfRenderer for mPDF construction and trace wrappers to the Twig Environment that renders the document. Verify HTML autoescaping for the actual environment, including injected loaders and shared partials. Prove markup in a name, memo or address prints literally; use reviewed template markup and nl2br for formatting. Keep template selection server-controlled.
+Use MpdfRenderer for mPDF construction and trace wrappers to the Twig Environment that renders the document. Verify HTML autoescaping for the actual environment, including injected loaders and shared partials. Prove markup in a name, memo or address prints literally; use reviewed template markup and nl2br for formatting. Keep template selection server-controlled. Validate image paths and URL schemes separately from HTML escaping; escaping does not authorize a filesystem read or remote request. Keep TLS verification enabled and renderer configuration server-controlled.
 
 Keep PDF rendering separate from transport: `renderToString()` supplies bytes to downloads and emails; `PdfResponse` writes download bodies and sets private/no-store, nosniff and output-preference headers. HEAD handlers pass empty bytes and skip rendering. CSV uses the existing formula-safe exporter and private/no-store responses. Authorization stays in the owning module.
 

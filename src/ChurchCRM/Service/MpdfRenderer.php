@@ -10,6 +10,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Twig\GettextExtension;
 use Mpdf\Mpdf;
+use RuntimeException;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
@@ -104,12 +105,15 @@ class MpdfRenderer
     }
 
     /**
-     * Resolve a custom graphic letterhead path (bDirLetterHead).
-     * Returns the path only when it is readable or an https URL.
-     * Shared by all letter-style mPDF reports.
+     * The graphic letterhead PDF letters print: the uploaded image, else the readable
+     * `bDirLetterHead` path or https URL, else null (the church address block prints).
      */
     public static function graphicLetterhead(): ?string
     {
+        if (LetterheadService::hasUploaded() && is_readable(LetterheadService::getPath())) {
+            return LetterheadService::getPath();
+        }
+
         $path = trim((string) SystemConfig::getValue('bDirLetterHead'));
         if ($path !== '' && (is_readable($path) || preg_match('#^https://#i', $path))) {
             return $path;
@@ -118,9 +122,43 @@ class MpdfRenderer
         return null;
     }
 
+    public static function createDocument(array $options): Mpdf
+    {
+        return new Mpdf(['tempDir' => self::temporaryDirectory((string) SystemConfig::getValue('sPDFTempDir'))] + $options);
+    }
+
+    public static function temporaryDirectory(string $configured): string
+    {
+        $configured = trim($configured);
+        $root = $configured === '' ? sys_get_temp_dir() : $configured;
+        if (str_contains($root, "\0") || (!str_starts_with($root, '/') && !str_starts_with($root, '\\\\') && !preg_match('~^[A-Za-z]:[\\\\/]~', $root))) {
+            throw new RuntimeException(gettext('The PDF temporary directory must be an absolute directory path.'));
+        }
+        $temporaryRoot = realpath($root);
+        $documentRoot = realpath(__DIR__ . '/../..');
+        if ($temporaryRoot === false || !is_dir($temporaryRoot) || $documentRoot === false) {
+            throw new RuntimeException(gettext('The PDF temporary directory does not exist or is not accessible.'));
+        }
+
+        $account = function_exists('posix_geteuid') ? (string) posix_geteuid() : get_current_user();
+        $directory = $temporaryRoot . '/churchcrm-mpdf-' . substr(hash('sha256', $documentRoot . "\0" . $account), 0, 24);
+        if (is_link($directory)
+            || (!is_dir($directory) && !@mkdir($directory, 0700) && !is_dir($directory))) {
+            throw new RuntimeException(gettext('Cannot create private PDF temporary storage in the selected directory.'));
+        }
+        clearstatcache(true, $directory);
+        if (!is_writable($directory)
+            || (DIRECTORY_SEPARATOR === '/' && (fileperms($directory) & 0077) !== 0)
+            || (function_exists('posix_geteuid') && fileowner($directory) !== posix_geteuid())) {
+            throw new RuntimeException(gettext('PDF temporary storage must be private and writable.'));
+        }
+
+        return $directory;
+    }
+
     private function makeMpdf(bool $landscape = false, array $mpdfOptions = []): Mpdf
     {
-        return new Mpdf($mpdfOptions + [
+        return self::createDocument($mpdfOptions + [
             'mode' => 'utf-8',
             'autoScriptToLang' => true,
             'autoLangToFont' => true,

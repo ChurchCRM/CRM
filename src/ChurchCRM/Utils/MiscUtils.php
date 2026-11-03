@@ -50,6 +50,12 @@ class MiscUtils
         return $word;
     }
 
+    /** Time from a birth date to $asOf, or null when the birth date is after $asOf. */
+    public static function ageOn(\DateTimeInterface $birthDate, \DateTimeInterface $asOf): ?\DateInterval
+    {
+        return $birthDate > $asOf ? null : $birthDate->diff($asOf);
+    }
+
     public static function formatAge(int $Month, int $Day, ?int $Year = null): string
     {
         if (empty($Year) || empty($Month) || empty($Day)) {
@@ -58,8 +64,10 @@ class MiscUtils
 
         $birthDate = MiscUtils::birthDate($Year, $Month, $Day);
 
-        $now = date_create('today');
-        $age = date_diff($now, $birthDate);
+        $age = MiscUtils::ageOn($birthDate, date_create('today'));
+        if ($age === null) {
+            return '';
+        }
 
         if ($age->y < 1) {
             $monthStr = ngettext('%d month old', '%d months old', $age->m);

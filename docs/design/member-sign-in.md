@@ -116,8 +116,8 @@ This document puts those into one design and one delivery plan.
     - `Family::getEmails()` (`Family.php:531`) returns the family email plus every member's email and work email. Family verification and the emailed tax statement use it.
     - Bulk confirmation (`ConfirmReportService.php:425-428`) skips families whose only address is the family email.
   - **Printed directory:**
-    - the "Family Email" option (`bDirFamilyEmail`, on by default) prints it on family records (`PdfDirectory.php:381`);
-    - single-person records fall back to it (`DirectoryReport.php:281`).
+    - the "Family Email" option (`bDirFamilyEmail`, on by default) prints it on family records (`DirectoryReportService::householdLines()`);
+    - single-person records fall back to it when Family Email is enabled (`DirectoryReportService::singleEntry()`).
   - **Elsewhere:**
     - CSV export;
     - CSV import, which copies the first row's email into it (`admin/routes/api/import.php:755`);

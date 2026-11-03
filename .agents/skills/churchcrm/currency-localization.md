@@ -60,7 +60,6 @@ CurrencyFormatter::formatHtml(null);      // ""  null in, empty string out
 CurrencyFormatter::formatHtml("N/A");     // ""  non-numeric string returns '' and logs a warning
 CurrencyFormatter::format(1234.5);        // "$1,234.50" raw string; for APIs, PDFs, string building
 CurrencyFormatter::format(1234.5, 0);     // "$1,235"
-CurrencyFormatter::formatForPdf(1234.5);  // ISO-8859-1; amount-only FPDF cells
 CurrencyFormatter::symbol();              // "$"
 CurrencyFormatter::position();            // "before"
 CurrencyFormatter::toArray();             // symbol, position, separators for JSON
@@ -169,27 +168,10 @@ The raw number keeps sorting and arithmetic type-safe for clients.
 
 ## PDF Reports
 
-TCPDF column widths are fixed, so wider symbols (`CHF`, `CAD $`) can overflow.
-
-- Read symbol, position and separators via `CurrencyFormatter::toArray()` at the top of the report
-- Measure column widths with `GetStringWidth()` on a formatted sample row and widen the column when needed
-- Right-align money columns
-
-### FPDF Latin-1: convert exactly once
-
-FPDF core fonts render ISO-8859-1, so UTF-8 output (the formatter's `\u{00A0}`, `€`, `£`) is transcoded once per string:
-
-```php
-// Amount-only cell: formatForPdf() formats and transcodes
-$pdf->Cell(25, $h, CurrencyFormatter::formatForPdf($total), 0, 0, 'R');
-
-// Amount inside UTF-8 text: plain format(), then convert the whole string once
-$pdf->Cell(176, $h, ChurchInfoReport::convertToLatin1(
-    "$fundName Total:   " . CurrencyFormatter::format($total)), 0, 0, 'R');
-
-// printRightJustified()/writeAt()/writeAtCell() convert internally: pass plain format() output
-$pdf->printRightJustified($x, $y, CurrencyFormatter::format($total));
-```
+Use `CurrencyFormatter::format()` in the report service and pass its UTF-8 output
+to the Twig template. Keep money columns right-aligned and allow space for wider
+symbols such as `CHF` and `CAD $`. Follow [Reports](reports.md) for rendering and
+locale regression checks.
 
 ---
 

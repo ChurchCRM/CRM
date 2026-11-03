@@ -2414,14 +2414,6 @@ msgid "Enable non-deductible payments"
 msgstr "கழிக்கப்படாத கட்டணங்களை இயக்கவும்"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "இடது ஓரம் (1 = 1/100வது அங்குலம்)"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "கோடு தடிமன் (1 = 1/100வது அங்குலம்"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "வரி அறிக்கையின் மேல் வரிக்கான வினைச்சொல். இந்த வரியின் முடிவில் தேதிகள் இணைக்கப்படும்."
 
@@ -4872,14 +4864,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "புதிய கடவுச்சொல் பழையவற்றிலிருந்து வேறுபட வேண்டிய குறைந்தபட்சத் தொகை (# எழுத்துகள் மாற்றப்பட்டுள்ளன)\n"
 "இந்த அம்சத்தை முடக்க பூஜ்ஜியமாக அமைக்கவும்"
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr "PDF கையாளுதல் முறை.\n"
-"1 = கோப்பைச் சேமி உரையாடல்\n"
-"2 = தற்போதைய உலாவி சாளரத்தில் திறக்கவும்"
 
 #: 
 msgid "Verify People"
@@ -16196,10 +16180,6 @@ msgid "Anonymous Telemetry"
 msgstr "அநாமதேய தொலைமிதி"
 
 #: 
-msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
-msgstr "அநாமதேய தொலைமிதி நிலை. ChurchCRM குழுவுடன் எவ்வளவு அநாமதேய கண்டறிதல் தரவு பகிரப்படுகிறது என்பதை கட்டுப்படுத்துகிறது. தேவாலய பெயர்கள், உறுப்பினர் தரவு அல்லது தனிப்பட்ட தகவல்கள் எதுவும் அனுப்பப்படுவதில்லை."
-
-#: 
 msgid "Are you sure you want to permanently delete this payment record?"
 msgstr "இந்த கொடுப்பனவு பதிவை நிரந்தரமாக நீக்க விரும்புகிறீர்களா?"
 
@@ -16258,10 +16238,6 @@ msgstr "தனிப்பட்ட நிறுவல்களை எண்ண�
 #: 
 msgid "Data"
 msgstr "தரவு"
-
-#: 
-msgid "Data is processed by PostHog on EU infrastructure."
-msgstr "தரவு EU உள்கட்டமைப்பில் PostHog மூலம் செயலாக்கப்படுகிறது."
 
 #: 
 msgid "Date is required"
@@ -16496,10 +16472,6 @@ msgid "Sending to"
 msgstr "அனுப்புகிறது"
 
 #: 
-msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
-msgstr "எந்த அம்சங்கள் மற்றும் மொழிகளுக்கு முன்னுரிமை தர வேண்டும் என்று அறிய ChurchCRM குழுவுடன் அநாமதேய பயன்பாட்டு புள்ளிவிவரங்களை பகிரவும். தேவாலய பெயர்கள், உறுப்பினர் தரவு அல்லது தனிப்பட்ட தகவல்கள் எதுவும் அனுப்பப்படுவதில்லை."
-
-#: 
 msgid "Test email sent to"
 msgstr "சோதனை மின்னஞ்சல் அனுப்பப்பட்டது"
 
@@ -16544,10 +16516,6 @@ msgid "What is sent"
 msgstr "என்ன அனுப்பப்படுகிறது"
 
 #: 
-msgid "What we collect"
-msgstr "நாங்கள் என்ன சேகரிக்கிறோம்"
-
-#: 
 msgid "Wishing you a wonderful %d year birthday!"
 msgstr "உங்களுக்கு அற்புதமான %d வது பிறந்தநாள் வாழ்த்துகள்!"
 
@@ -16570,10 +16538,6 @@ msgstr "முழுமை மட்டும்"
 #: 
 msgid "is thinking of you today."
 msgstr "இன்று உங்களை நினைக்கிறார்."
-
-#: 
-msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
-msgstr "பக்க பாதைகள், செயலில் உள்ள மொழி, CRM பதிப்பு, PHP பதிப்பு, இயக்க முறைமை வகை மற்றும் ஒரு சீரற்ற நிறுவல் ID. வேறு எதுவும் இல்லை. தரவு EU-ல் சேமிக்கப்படுகிறது."
 
 #: 
 msgid "% Paid"

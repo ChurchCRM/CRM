@@ -26,16 +26,67 @@ function isBenignResizeObserverLoop(event) {
   });
 }
 
-if (cfg?.key && cfg.level && cfg.level !== "none") {
+function stripUrlDetails(value) {
+  if (typeof value !== "string") {
+    return value;
+  }
+
+  try {
+    const url = new URL(value, window.location.origin);
+    const rootPath = (window.CRM?.root || "").replace(/\/+$/, "");
+    if (rootPath && (url.pathname === rootPath || url.pathname.startsWith(`${rootPath}/`))) {
+      url.pathname = url.pathname.slice(rootPath.length) || "/";
+    }
+    return `${url.origin}${url.pathname}`;
+  } catch {
+    return value.split(/[?#]/, 1)[0];
+  }
+}
+
+function sanitizeEvent(event) {
+  if (isBenignResizeObserverLoop(event)) {
+    return null;
+  }
+
+  const properties = event?.properties;
+  if (!properties) {
+    return event;
+  }
+
+  delete properties.$ip;
+  for (const property of Object.keys(properties)) {
+    if (property.startsWith("$geoip")) {
+      delete properties[property];
+    }
+  }
+  for (const property of ["$current_url", "$session_entry_url", "$referrer"]) {
+    if (property in properties) {
+      properties[property] = stripUrlDetails(properties[property]);
+    }
+  }
+
+  return event;
+}
+
+if (cfg?.key && cfg.level && cfg.level !== "none" && cfg.install_profile !== "test") {
   posthog.init(cfg.key, {
     api_host: cfg.endpoint,
     capture_pageview: false,
+    capture_performance: false,
     autocapture: false,
     capture_heatmaps: false,
     disable_session_recording: true,
     capture_exceptions: true, // active at all levels (errors / warnings / full)
     person_profiles: "never",
     bootstrap: { distinctID: cfg.distinctID || "" },
-    before_send: (event) => (isBenignResizeObserverLoop(event) ? null : event),
+    before_send: sanitizeEvent,
   });
+  const superProperties = {
+    install_profile: cfg.install_profile,
+    install_path_type: window.CRM?.root && window.CRM.root !== "/" ? "subdirectory" : "root",
+  };
+  if (window.CRM?.version) {
+    superProperties.crm_version = window.CRM.version;
+  }
+  posthog.register(superProperties);
 }

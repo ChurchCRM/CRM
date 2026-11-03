@@ -2503,14 +2503,6 @@ msgid "Enable non-deductible payments"
 msgstr "Aktivera icke avdragsgilla betalningar"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "Vänster marginal (1 = 1 / 100th inch)"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "Linjetjocklek (1 = 1 / 100th inch)"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "Verbage för översta raden i skatterapporten. Datum läggs till i slutet av den här raden."
 
@@ -4963,14 +4955,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Minsta som ett nytt lösenord måste skilja sig från det gamla (antalet tecken har ändrats)\n"
 "Ställ in på noll för att inaktivera den här funktionen"
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr "PDF-hanteringsläge.\n"
-"1 = Spara fil-dialog\n"
-"2 = Öppna i det aktuella webbläsarfönstret "
 
 #: 
 msgid "Verify People"
@@ -16271,10 +16255,6 @@ msgid "Anonymous Telemetry"
 msgstr "Anonym telemetri"
 
 #: 
-msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
-msgstr "Anonym telemetrinivå. Styr hur mycket anonym diagnostikdata som delas med ChurchCRM-teamet. Inga kyrkonamn, medlemsdata eller personuppgifter skickas någonsin."
-
-#: 
 msgid "Are you sure you want to permanently delete this payment record?"
 msgstr "Är du säker på att du vill ta bort denna betalningspost permanent?"
 
@@ -16333,10 +16313,6 @@ msgstr "Räkna unika installationer"
 #: 
 msgid "Data"
 msgstr "Data"
-
-#: 
-msgid "Data is processed by PostHog on EU infrastructure."
-msgstr "Data behandlas av PostHog på EU-infrastruktur."
 
 #: 
 msgid "Date is required"
@@ -16571,10 +16547,6 @@ msgid "Sending to"
 msgstr "Skickar till"
 
 #: 
-msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
-msgstr "Dela anonym användningsstatistik med ChurchCRM-teamet så att vi vet vilka funktioner och språk vi ska prioritera. Inga kyrkonamn, medlemsdata eller personuppgifter skickas någonsin."
-
-#: 
 msgid "Test email sent to"
 msgstr "Testmeddelande skickat till"
 
@@ -16619,10 +16591,6 @@ msgid "What is sent"
 msgstr "Vad som skickas"
 
 #: 
-msgid "What we collect"
-msgstr "Vad vi samlar in"
-
-#: 
 msgid "Wishing you a wonderful %d year birthday!"
 msgstr "Vi önskar dig en underbar %d-årsdag!"
 
@@ -16645,10 +16613,6 @@ msgstr "endast fullständigt"
 #: 
 msgid "is thinking of you today."
 msgstr "tänker på dig idag."
-
-#: 
-msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
-msgstr "sidvägar, aktiv språkinställning, CRM-version, PHP-version, OS-familj och ett slumpmässigt installations-ID. Inget annat. Data lagras i EU."
 
 #: 
 msgid "% Paid"

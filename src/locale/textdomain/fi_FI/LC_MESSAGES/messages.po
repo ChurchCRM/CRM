@@ -2397,14 +2397,6 @@ msgid "Enable non-deductible payments"
 msgstr "Ota käyttöön vähennyskelvottomat maksut"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "Vasen marginaali (1 = 1/100 tuumaa)"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "Viivan paksuus (1 = 1/100 tuumaa)"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "Verotusraportin ylärivin teksti. Päivämäärät lisätään rivin loppuun."
 
@@ -4848,14 +4840,6 @@ msgstr "Istunnon aikakatkaisu sekunneissa. Aseta nollaksi poistaaksesi aikakatka
 msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
 "Set to zero to disable this feature"
 msgstr "Vähimmäismäärä merkkejä, joiden verran uuden salasanan on poikettava vanhasta. Aseta nollaksi poistaaksesi ominaisuuden."
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr "PDF-käsittelytila.\n"
-"1 = Tallenna tiedosto -ikkuna\n"
-"2 = Avaa nykyisessä selainikkunassa"
 
 #: 
 msgid "Verify People"
@@ -16155,10 +16139,6 @@ msgid "Anonymous Telemetry"
 msgstr "Anonyymi telemetria"
 
 #: 
-msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
-msgstr "Anonyymi telemetriataso. Määrittää, kuinka paljon anonyymiä diagnostiikkatietoa jaetaan ChurchCRM-tiimille. Seurakunnan nimiä, jäsentietoja tai henkilökohtaisia tietoja ei koskaan lähetetä."
-
-#: 
 msgid "Are you sure you want to permanently delete this payment record?"
 msgstr "Haluatko varmasti poistaa tämän maksutietueen pysyvästi?"
 
@@ -16217,10 +16197,6 @@ msgstr "Laske yksilölliset asennukset"
 #: 
 msgid "Data"
 msgstr "Tiedot"
-
-#: 
-msgid "Data is processed by PostHog on EU infrastructure."
-msgstr "Tiedot käsitellään PostHog:lla EU-infrastruktuurissa."
 
 #: 
 msgid "Date is required"
@@ -16455,10 +16431,6 @@ msgid "Sending to"
 msgstr "Lähetetään kohteelle"
 
 #: 
-msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
-msgstr "Jaa anonyymiä käyttötilastoa ChurchCRM-tiimille, jotta tiedämme, mitä ominaisuuksia ja kieliä priorisoida. Seurakunnan nimiä, jäsentietoja tai henkilökohtaisia tietoja ei koskaan lähetetä."
-
-#: 
 msgid "Test email sent to"
 msgstr "Testisähköposti lähetetty kohteelle"
 
@@ -16503,10 +16475,6 @@ msgid "What is sent"
 msgstr "Mitä lähetetään"
 
 #: 
-msgid "What we collect"
-msgstr "Mitä keräämme"
-
-#: 
 msgid "Wishing you a wonderful %d year birthday!"
 msgstr "Toivotaan sinulle ihanaa %d. syntymäpäivää!"
 
@@ -16529,10 +16497,6 @@ msgstr "vain täysi"
 #: 
 msgid "is thinking of you today."
 msgstr "ajattelee sinua tänään."
-
-#: 
-msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
-msgstr "sivureitit, aktiivinen kieli, CRM-versio, PHP-versio, käyttöjärjestelmäperhe ja satunnainen asennustunnus. Ei mitään muuta. Tiedot tallennetaan EU:hun."
 
 #: 
 msgid "% Paid"

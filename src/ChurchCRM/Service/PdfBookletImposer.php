@@ -2,7 +2,6 @@
 
 namespace ChurchCRM\Service;
 
-use Mpdf\Mpdf;
 use setasign\Fpdi\PdfParser\StreamReader;
 
 /**
@@ -25,7 +24,7 @@ class PdfBookletImposer
      */
     public static function impose(string $pdf, string $sheetFormat, float $pageWidthMm, float $pageHeightMm): string
     {
-        $mpdf = new Mpdf([
+        $mpdf = MpdfRenderer::createDocument([
             'mode' => 'utf-8',
             'format' => $sheetFormat,
             'margin_left' => 0,

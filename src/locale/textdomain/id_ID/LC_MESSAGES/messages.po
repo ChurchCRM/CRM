@@ -2417,14 +2417,6 @@ msgid "Enable non-deductible payments"
 msgstr "Aktifkan pembayaran yang tidak dapat dikurangkan"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "Margin Kiri (1 = 1/100 inci)"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "Ketebalan Garis (1 = 1/100 inci)"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "Verbage untuk baris atas laporan pajak. Tanggal akan ditambahkan ke akhir baris ini."
 
@@ -4875,12 +4867,6 @@ msgstr "Panjang batas waktu sesi dalam detik Ditetapkan ke nol untuk menonaktifk
 msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
 "Set to zero to disable this feature"
 msgstr "Jumlah minimum yang harus berbeda dengan kata sandi baru dari kata sandi lama (# karakter yang diubah) Setel ke nol untuk menonaktifkan fitur ini"
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr "Mode penanganan PDF. 1 = Simpan dialog File 2 = Buka di jendela browser saat ini"
 
 #: 
 msgid "Verify People"
@@ -16168,10 +16154,6 @@ msgid "Anonymous Telemetry"
 msgstr "Telemetri Anonim"
 
 #: 
-msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
-msgstr "Tingkat telemetri anonim. Mengontrol seberapa banyak data diagnostik anonim yang dibagikan kepada tim ChurchCRM. Nama gereja, data jemaat, atau informasi pribadi tidak pernah dikirimkan."
-
-#: 
 msgid "Are you sure you want to permanently delete this payment record?"
 msgstr "Apakah Anda yakin ingin menghapus catatan pembayaran ini secara permanen?"
 
@@ -16230,10 +16212,6 @@ msgstr "Hitung instalasi unik"
 #: 
 msgid "Data"
 msgstr "Data"
-
-#: 
-msgid "Data is processed by PostHog on EU infrastructure."
-msgstr "Data diproses oleh PostHog pada infrastruktur EU."
 
 #: 
 msgid "Date is required"
@@ -16468,10 +16446,6 @@ msgid "Sending to"
 msgstr "Mengirim ke"
 
 #: 
-msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
-msgstr "Bagikan statistik penggunaan anonim dengan tim ChurchCRM agar kami mengetahui fitur dan bahasa mana yang perlu diprioritaskan. Nama gereja, data jemaat, atau informasi pribadi tidak pernah dikirimkan."
-
-#: 
 msgid "Test email sent to"
 msgstr "Email percobaan dikirim ke"
 
@@ -16516,10 +16490,6 @@ msgid "What is sent"
 msgstr "Apa yang dikirimkan"
 
 #: 
-msgid "What we collect"
-msgstr "Apa yang kami kumpulkan"
-
-#: 
 msgid "Wishing you a wonderful %d year birthday!"
 msgstr "Selamat ulang tahun yang ke-%d yang luar biasa!"
 
@@ -16542,10 +16512,6 @@ msgstr "penuh saja"
 #: 
 msgid "is thinking of you today."
 msgstr "sedang memikirkan Anda hari ini."
-
-#: 
-msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
-msgstr "rute halaman, lokal aktif, versi CRM, versi PHP, keluarga OS, dan ID instalasi acak. Tidak ada yang lain. Data disimpan di EU."
 
 #: 
 msgid "% Paid"

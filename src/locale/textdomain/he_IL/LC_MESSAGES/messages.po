@@ -2414,14 +2414,6 @@ msgid "Enable non-deductible payments"
 msgstr "אפשר תשלומים שאינם ניתנים לניכוי"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "שוליים שמאליים (1 = 1/100 אינץ')"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "עובי קו (1 = 1/100 אינץ')"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "טקסט עבור השורה העליונה של דוח המס. תאריכים יתווספו בסוף שורה זו."
 
@@ -4875,14 +4867,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "כמות מינימלית שסיסמה חדשה חייבת להיות שונה מהישנה (# תווים ששונו)\n"
 "הגדר לאפס כדי לבטל תכונה זו"
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr "טיפול בקבצי PDF.\n"
-"1 = שמירת קובץ\n"
-"2 + פתח בחלון הנוכחי"
 
 #: 
 msgid "Verify People"
@@ -16182,10 +16166,6 @@ msgid "Anonymous Telemetry"
 msgstr "טלמטריה אנונימית"
 
 #: 
-msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
-msgstr "רמת טלמטריה אנונימית. קובעת כמה נתוני אבחון אנונימיים משותפים עם צוות ChurchCRM. שמות כנסיות, נתוני חברים או מידע אישי אינם נשלחים לעולם."
-
-#: 
 msgid "Are you sure you want to permanently delete this payment record?"
 msgstr "האם אתה בטוח שברצונך למחוק לצמיתות את רשומת התשלום הזו?"
 
@@ -16244,10 +16224,6 @@ msgstr "ספור התקנות ייחודיות"
 #: 
 msgid "Data"
 msgstr "נתונים"
-
-#: 
-msgid "Data is processed by PostHog on EU infrastructure."
-msgstr "הנתונים מעובדים על ידי PostHog בתשתית האיחוד האירופי."
 
 #: 
 msgid "Date is required"
@@ -16482,10 +16458,6 @@ msgid "Sending to"
 msgstr "שולח אל"
 
 #: 
-msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
-msgstr "שתף סטטיסטיקות שימוש אנונימיות עם צוות ChurchCRM כדי שנדע אילו תכונות ושפות לתעדף. שמות כנסיות, נתוני חברים או מידע אישי אינם נשלחים לעולם."
-
-#: 
 msgid "Test email sent to"
 msgstr "הודעת דוגמה נשלחה אל"
 
@@ -16530,10 +16502,6 @@ msgid "What is sent"
 msgstr "מה נשלח"
 
 #: 
-msgid "What we collect"
-msgstr "מה אנו אוספים"
-
-#: 
 msgid "Wishing you a wonderful %d year birthday!"
 msgstr "מאחלים לך יום הולדת %d נפלא!"
 
@@ -16556,10 +16524,6 @@ msgstr "מלא בלבד"
 #: 
 msgid "is thinking of you today."
 msgstr "חושב עליך היום."
-
-#: 
-msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
-msgstr "נתיבי דפים, לוקאל פעיל, גרסת CRM, גרסת PHP, משפחת מערכת הפעלה ומזהה התקנה אקראי. שום דבר אחר. הנתונים מאוחסנים באיחוד האירופי."
 
 #: 
 msgid "% Paid"

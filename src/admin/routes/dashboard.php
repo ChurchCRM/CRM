@@ -157,6 +157,10 @@ $app->map(['GET', 'POST'], '/', function (Request $request, Response $response) 
             ['label' => gettext('Church Info'), 'url' => '/admin/system/church-info', 'icon' => 'fa-church'],
             ['label' => gettext('Users'), 'url' => '/admin/system/users', 'icon' => 'fa-user-shield'],
         ]),
+        'pdfSettings' => array_map(static function (array $setting): array {
+            $setting['label'] = gettext('PDF Temporary Directory');
+            return $setting;
+        }, SystemConfig::getSettingsConfig(['sPDFTempDir'])),
         'setupChecklist'   => $setupChecklist,
         'completedSteps'   => $completedSteps,
         'totalSteps'       => $totalSteps,

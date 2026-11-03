@@ -125,6 +125,7 @@ class DemoDataService
 
             // Load demo system configuration (if present) before importing data
             $this->importSystemConfig($force);
+            SystemConfig::setValue('sInstallDataProfile', 'demo');
 
             // config.json turns Volunteer v2 on; the config API adds its "Other" event type when that happens.
             if (User::isVolunteerV2Enabled()) {

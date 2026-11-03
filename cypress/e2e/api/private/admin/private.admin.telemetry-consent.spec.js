@@ -6,12 +6,13 @@
  * Covers:
  *   POST /admin/api/system/telemetry-consent
  *
- * Only records the admin's choice in SystemConfig; nothing is sent to PostHog.
- * Both settings it touches are captured up front and put back afterwards.
+ * Records the admin's choice and lifecycle baseline in SystemConfig.
+ * Settings it touches are captured up front and put back afterwards.
  */
 describe("Admin API Telemetry Consent Endpoint", () => {
     let originalLevel;
     let originalAskedVersion;
+    let originalLifecycleVersion;
 
     before(() => {
         cy.getSystemConfig("sTelemetryLevel").then((value) => {
@@ -20,14 +21,19 @@ describe("Admin API Telemetry Consent Endpoint", () => {
         cy.getSystemConfig("sTelemetryAskedVersion").then((value) => {
             originalAskedVersion = value;
         });
+        cy.getSystemConfig("sTelemetryLifecycleVersion").then((value) => {
+            originalLifecycleVersion = value;
+        });
     });
 
     after(() => {
         cy.restoreSystemConfig("sTelemetryLevel", originalLevel);
         cy.restoreSystemConfig("sTelemetryAskedVersion", originalAskedVersion);
+        cy.restoreSystemConfig("sTelemetryLifecycleVersion", originalLifecycleVersion);
     });
 
     it("stores a valid consent level", () => {
+        cy.restoreSystemConfig("sTelemetryLifecycleVersion", "");
         cy.makePrivateAdminAPICall(
             "POST",
             "/admin/api/system/telemetry-consent",
@@ -37,6 +43,20 @@ describe("Admin API Telemetry Consent Endpoint", () => {
             expect(resp.body.status).to.eq("ok");
         });
         cy.getSystemConfig("sTelemetryLevel").should("eq", "errors");
+        cy.getSystemConfig("sTelemetryLifecycleVersion").should("not.be.empty");
+    });
+
+    it("classifies the test stack and suppresses browser telemetry after opt-in", () => {
+        cy.restoreSystemConfig("sTelemetryLevel", "full");
+        cy.setupAdminSession();
+        const requests = [];
+        cy.intercept("https://us.i.posthog.com/**", (request) => {
+            requests.push(request.url);
+            request.reply({ statusCode: 200, body: "Ok" });
+        });
+        cy.visit("/admin/system/debug");
+        cy.window().its("CRM.telemetry.install_profile").should("eq", "test");
+        cy.then(() => expect(requests).to.be.empty);
     });
 
     it("declining records the version the prompt was answered for", () => {

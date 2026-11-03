@@ -9,6 +9,8 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ConfigQuery;
 use ChurchCRM\model\ChurchCRM\Version;
 use ChurchCRM\Portal\MemberLanguage;
+use ChurchCRM\Service\TelemetryService;
+use ChurchCRM\Utils\SQLImportException;
 use Ramsey\Uuid\Uuid;
 use ChurchCRM\Service\UpgradeService;
 use ChurchCRM\Utils\InputUtils;
@@ -116,7 +118,15 @@ class Bootstrapper
         self::initPropel();
 
         if (self::isDatabaseEmpty()) {
-            self::installChurchCRMSchema();
+            try {
+                self::installChurchCRMSchema();
+            } catch (\Throwable $e) {
+                TelemetryService::captureInstallFailure(
+                    $e::class,
+                    $e instanceof SQLImportException ? $e->getDatabaseError() : null
+                );
+                throw $e;
+            }
         }
         self::initSession();
         
@@ -202,6 +212,8 @@ class Bootstrapper
         if (empty(SystemConfig::getValue('sSystemID'))) {
             SystemConfig::setValue('sSystemID', Uuid::uuid4()->toString());
         }
+
+        TelemetryService::syncLifecycle();
 
         LoggerUtils::resetAppLoggerLevel();
 
@@ -360,10 +372,7 @@ class Bootstrapper
             $localeInfo = self::getCurrentLocale();
             self::$bootStrapLogger->debug("Setting locale to: " . $localeInfo->getLocale());
             
-            $localeSet = $localeInfo->activate();
-            if ($localeSet === false) {
-                self::$bootStrapLogger->warning("Failed to set locale: " . $localeInfo->getLocale() . ", using system default");
-            }
+            $localeInfo->activate();
 
             // Get numeric and monetary locale settings
             $aLocaleInfo = $localeInfo->getLocaleInfo();
