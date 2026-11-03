@@ -2,7 +2,7 @@
 title: "PR Review"
 intent: "Fetch a PR, apply maintainer gates, then run the code-standards checklist. Agents never approve or merge."
 tags: ["pr","review","code-quality","standards","workflow"]
-prereqs: ["[[maintainer-review-gates]]","[[code-standards]]","[[git-workflow]]","[[github-interaction]]"]
+prereqs: ["[[maintainer-review-gates]]","[[code-standards]]","[[git-workflow]]","[[github-interaction]]","[[church-review]]"]
 complexity: "intermediate"
 ---
 
@@ -36,6 +36,8 @@ Answer before reading code:
 - Does the goal belong in this milestone? Passing gates still does not mean merge if maintainers disagree with the goal.
 - Does it add a subsystem, table family, auth model, plugin API or cross-cutting middleware, or change a documented design? Find the linked RFC or design (`docs/decisions/`, `docs/design/`, epic, issue) and the maintainer's approval. Report both; missing is a hard block (gates item 12).
 - Does it extend Query View / predefined `query_qry` reports? If yes, Request changes. New reports are MVC + Propel or a plugin.
+
+Run [church-review.md](./church-review.md) on the PR's linked issue and on the change as delivered. A PR can pass every code gate and still miss the user's job through the wrong surface, a duplicated path, or a review-first action made one click. Report the church-review verdict (user, job, ROI) in the draft. A user-facing change with no identifiable user job is a follow-up; a destructive action or member-data exposure flagged by the workflow review is a hard block under Security and RBAC.
 
 Leave the contributor branch as it is: merge `master`, resolve conflicts, or push only when the maintainer asks.
 
@@ -205,7 +207,7 @@ The docs PR stays separate from the feature PR and waits for the release.
 
 ## Phase 6 — Draft the review (do not post yet)
 
-Use the output block in `maintainer-review-gates.md`. The draft always contains the RBAC line and the design-approval line, even when the answer is "no RBAC impact: <why>" or "no architectural change".
+Use the output block in `maintainer-review-gates.md`. The draft always contains the RBAC line, the design-approval line, and a "Church-user impact:" line, even when the answers are "no RBAC impact: <why>", "no architectural change", or "no user-facing change: <why>".
 
 - Hard blocks → `REQUEST_CHANGES`
 - Follow-ups only → `COMMENT`

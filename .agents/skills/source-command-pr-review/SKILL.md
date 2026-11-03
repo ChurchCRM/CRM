@@ -19,10 +19,12 @@ Read in order:
 
 1. `.agents/skills/churchcrm/maintainer-review-gates.md`
 2. `.agents/skills/churchcrm/pr-review.md`
+3. `.agents/skills/churchcrm/church-review.md`
 
 ## Rules
 
 - Draft in chat first. Do not post until a maintainer says to post.
+- Every draft includes the church-user impact line from `pr-review.md` Phase 6.
 - Do not approve. Do not merge.
 - Hard blocks → Request changes. Everything else → Comment.
 - UI changes: require a tablet/mobile manual pass. Ask for screenshots if they exist. Do not block only because shots are missing.
