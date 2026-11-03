@@ -69,11 +69,7 @@ describe("Issue #9886 - EditSelf-only users can manage their own 2FA", () => {
         );
     });
 
-    // The remaining two exempt endpoints cannot return 200 under API-key auth:
-    // get2faqrcode needs an enrolled secret and test2FAEnrollmentCode needs the
-    // provisional key that refresh2fasecret leaves on the SESSION user object.
-    // Assert only what this spec is about — that AuthMiddleware no longer
-    // answers 403 — rather than whitelisting the handler's own status code.
+    // get2faqrcode needs an enrolled secret; this spec only checks its access gate.
     const notBlocked = (method, url, body) => {
         cy.apiRequest({
             method,
@@ -90,13 +86,14 @@ describe("Issue #9886 - EditSelf-only users can manage their own 2FA", () => {
         notBlocked("GET", "/api/user/current/get2faqrcode");
     });
 
-    it("POST /api/user/current/test2FAEnrollmentCode is not blocked by the limited-access gate", () => {
-        // Guards the AUTH_FLOW_EXEMPT_PATHS entry for the TOTP verification step
-        // that completes enrollment. The happy path (200 + "Code is invalid" for a
-        // wrong code) is covered through a real session in
-        // cypress/e2e/ui/security/limited-access.spec.js.
-        notBlocked("POST", "/api/user/current/test2FAEnrollmentCode", {
-            enrollmentCode: "000000",
+    it("POST /api/user/current/test2FAEnrollmentCode rejects an unprovisioned code without throwing", () => {
+        cy.makePrivateEditSelfAPICall(
+            "POST",
+            "/api/user/current/test2FAEnrollmentCode",
+            { enrollmentCode: "000000" },
+            200,
+        ).then((resp) => {
+            expect(resp.body).to.have.property("IsEnrollmentCodeValid", false);
         });
     });
 
