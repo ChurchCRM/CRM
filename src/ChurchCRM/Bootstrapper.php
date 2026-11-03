@@ -8,6 +8,8 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ConfigQuery;
 use ChurchCRM\model\ChurchCRM\Version;
+use ChurchCRM\Service\TelemetryService;
+use ChurchCRM\Utils\SQLImportException;
 use Ramsey\Uuid\Uuid;
 use ChurchCRM\Service\UpgradeService;
 use ChurchCRM\Utils\InputUtils;
@@ -115,7 +117,15 @@ class Bootstrapper
         self::initPropel();
 
         if (self::isDatabaseEmpty()) {
-            self::installChurchCRMSchema();
+            try {
+                self::installChurchCRMSchema();
+            } catch (\Throwable $e) {
+                TelemetryService::captureInstallFailure(
+                    $e::class,
+                    $e instanceof SQLImportException ? $e->getDatabaseError() : null
+                );
+                throw $e;
+            }
         }
         self::initSession();
         
@@ -201,6 +211,8 @@ class Bootstrapper
         if (empty(SystemConfig::getValue('sSystemID'))) {
             SystemConfig::setValue('sSystemID', Uuid::uuid4()->toString());
         }
+
+        TelemetryService::syncLifecycle();
 
         LoggerUtils::resetAppLoggerLevel();
 

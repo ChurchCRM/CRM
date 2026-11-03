@@ -46,6 +46,8 @@ $app->post('/api/system/telemetry-consent', function (Request $request, Response
         // Record the version the admin declined so the prompt is suppressed
         // for the remainder of this release and re-shown after the next upgrade.
         SystemConfig::setValue('sTelemetryAskedVersion', VersionUtils::getInstalledVersion());
+    } else {
+        TelemetryService::syncLifecycle();
     }
 
     return SlimUtils::renderJSON($response, ['status' => 'ok']);
