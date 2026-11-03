@@ -2414,14 +2414,6 @@ msgid "Enable non-deductible payments"
 msgstr "אפשר תשלומים שאינם ניתנים לניכוי"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "שוליים שמאליים (1 = 1/100 אינץ')"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "עובי קו (1 = 1/100 אינץ')"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "טקסט עבור השורה העליונה של דוח המס. תאריכים יתווספו בסוף שורה זו."
 
@@ -4875,14 +4867,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "כמות מינימלית שסיסמה חדשה חייבת להיות שונה מהישנה (# תווים ששונו)\n"
 "הגדר לאפס כדי לבטל תכונה זו"
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr "טיפול בקבצי PDF.\n"
-"1 = שמירת קובץ\n"
-"2 + פתח בחלון הנוכחי"
 
 #: 
 msgid "Verify People"

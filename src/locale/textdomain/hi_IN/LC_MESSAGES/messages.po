@@ -2394,14 +2394,6 @@ msgid "Enable non-deductible payments"
 msgstr "गैर-कटौती योग्य भुगतान सक्षम करें"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "बायां मार्जिन (1 = 1/100 इंच)"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "रेखा की मोटाई (1 = 1/100 इंच)"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "टैक्स रिपोर्ट की शीर्ष पंक्ति के लिए शब्दावली।"
 
@@ -4846,14 +4838,6 @@ msgstr "सेकंड में सत्र टाइमआउट अवध�
 msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
 "Set to zero to disable this feature"
 msgstr "नया पासवर्ड पुराने से कितना अलग होना चाहिए।"
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr "PDF हैंडलिंग मोड।\n"
-"1 = फ़ाइल सहेजें संवाद\n"
-"2 = वर्तमान ब्राउज़र विंडो में खोलें"
 
 #: 
 msgid "Verify People"

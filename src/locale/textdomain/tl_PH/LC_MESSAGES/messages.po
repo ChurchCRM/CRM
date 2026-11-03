@@ -2391,14 +2391,6 @@ msgid "Enable non-deductible payments"
 msgstr "Paganahin ang mga pagbabayad na hindi mababawas"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "Kaliwang Margin (1 = 1/100 pulgada)"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "Kapal ng Linya (1 = 1/100 pulgada"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "Teksto para sa tuktok na linya ng ulat sa buwis. Ang mga petsa ay idadagdag sa dulo ng linyang ito."
 
@@ -4844,14 +4836,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Pinakamaliit na halaga na dapat magkaiba ang bagong password sa luma (# ng mga karakter na binago)\n"
 "Itakda sa zero para huwag paganahin ang tampok na ito"
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr "Mode ng paghawak ng PDF.\n"
-"1 = Dialog ng Pag-save ng File\n"
-"2 = Buksan sa kasalukuyang window ng browser"
 
 #: 
 msgid "Verify People"

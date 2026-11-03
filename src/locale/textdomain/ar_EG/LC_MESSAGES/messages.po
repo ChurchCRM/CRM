@@ -2414,14 +2414,6 @@ msgid "Enable non-deductible payments"
 msgstr "تمكين المدفوعات غير قابلة للخصم"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "الهامش الأيسر (1 = 1 / 100th بوصة)"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "خط سمك (1 = 1 / 100th بوصة"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "Verbage لخط العلوي من تقرير الضريبة. سيتم إلحاق مواعيد لنهاية هذا الخط."
 
@@ -4872,12 +4864,6 @@ msgstr "مدة الجلسة المهلة في ثواني محدد من الصف�
 msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
 "Set to zero to disable this feature"
 msgstr "الحد الأدنى أن كلمة المرور الجديدة يجب أن تختلف من واحدة من العمر (# من الشخصيات تغيرت) مجموعة من الصفر لتعطيل هذه الميزة"
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr "PDF وضع معالجة. 1 = حفظ ملف الحوار 2 = فتح في نافذة المتصفح الحالي"
 
 #: 
 msgid "Verify People"

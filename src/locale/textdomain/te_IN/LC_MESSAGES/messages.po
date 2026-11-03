@@ -2402,14 +2402,6 @@ msgid "Enable non-deductible payments"
 msgstr "నాన్-డిడక్టిబుల్ చెల్లింపులను ప్రారంభించండి"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "ఎడమ మార్జిన్ (1 = 1/100వ అంగుళం)"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "రేఖ మందం (1 = 1/100వ అంగుళం"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "పన్ను నివేదిక యొక్క టాప్ లైన్ కోసం వెర్బేజ్. ఈ పంక్తి చివరలో తేదీలు జోడించబడతాయి."
 
@@ -4855,14 +4847,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "కొత్త పాస్‌వర్డ్ పాతదాని నుండి భిన్నంగా ఉండవలసిన కనీస మొత్తం (మార్చబడిన అక్షరాల #)\n"
 "ఈ ఫీచర్‌ను నిలిపివేయడానికి సున్నాకు సెట్ చేయండి"
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr "PDF హ్యాండ్లింగ్ మోడ్.\n"
-"1 = ఫైల్ సేవ్ డైలాగ్\n"
-"2 = ప్రస్తుత బ్రౌజర్ విండోలో తెరవండి"
 
 #: 
 msgid "Verify People"
