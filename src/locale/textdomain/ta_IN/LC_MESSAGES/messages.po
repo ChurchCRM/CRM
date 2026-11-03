@@ -2414,14 +2414,6 @@ msgid "Enable non-deductible payments"
 msgstr "கழிக்கப்படாத கட்டணங்களை இயக்கவும்"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "இடது ஓரம் (1 = 1/100வது அங்குலம்)"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "கோடு தடிமன் (1 = 1/100வது அங்குலம்"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "வரி அறிக்கையின் மேல் வரிக்கான வினைச்சொல். இந்த வரியின் முடிவில் தேதிகள் இணைக்கப்படும்."
 
@@ -4872,14 +4864,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "புதிய கடவுச்சொல் பழையவற்றிலிருந்து வேறுபட வேண்டிய குறைந்தபட்சத் தொகை (# எழுத்துகள் மாற்றப்பட்டுள்ளன)\n"
 "இந்த அம்சத்தை முடக்க பூஜ்ஜியமாக அமைக்கவும்"
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr "PDF கையாளுதல் முறை.\n"
-"1 = கோப்பைச் சேமி உரையாடல்\n"
-"2 = தற்போதைய உலாவி சாளரத்தில் திறக்கவும்"
 
 #: 
 msgid "Verify People"

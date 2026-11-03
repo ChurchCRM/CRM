@@ -2416,14 +2416,6 @@ msgid "Enable non-deductible payments"
 msgstr "İndirilemez ödemeleri etkinleştirin"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "Sol kenar boşluğu (1 = 1/100. İnç)"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "Çizgi kalınlığı (1 = 1/100. İnç"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "Vergi raporunun üst satırı için söz konusu. Tarihler bu çizginin sonuna eklenecektir."
 
@@ -4876,14 +4868,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Yeni bir şifre eskisinden farklı olması gereken minimum miktar (karakterlerin# değişmesi)\n"
 "Bu özelliği devre dışı bırakmak için sıfıra ayarlayın"
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr "PDF kullanım modu.\n"
-"1 = Dosya Dosyayı Kaydet\n"
-"2 = Geçerli tarayıcı penceresinde açın"
 
 #: 
 msgid "Verify People"

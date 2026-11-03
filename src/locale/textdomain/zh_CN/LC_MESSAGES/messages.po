@@ -2480,14 +2480,6 @@ msgid "Enable non-deductible payments"
 msgstr "启用不可抵扣的付款"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "左边距（1 = 1/100英寸）"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "线厚度（1 = 1/100英寸"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "税收报告第一行的动词。日期将附加到该行的末尾。"
 
@@ -4943,14 +4935,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "新密码必须不同于旧密码的最小数量（已更改的字符数）\n"
 "设置为零以禁用此功能"
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr "PDF处理模式。\n"
-"1 =保存文件对话框\n"
-"2 =在当前浏览器窗口中打开"
 
 #: 
 msgid "Verify People"
