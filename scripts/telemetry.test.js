@@ -6,7 +6,7 @@ const vm = require('node:vm');
 
 const source = fs.readFileSync(path.join(__dirname, '../webpack/telemetry.js'), 'utf8').replace('import posthog from "posthog-js";', '');
 
-for (const profile of ['production', 'demo', 'seed', 'test']) {
+for (const profile of ['production', 'demo', 'test']) {
     test(`browser telemetry ${profile}`, () => {
         const calls = [];
         const properties = [];
@@ -17,7 +17,7 @@ for (const profile of ['production', 'demo', 'seed', 'test']) {
                 register: (value) => properties.push(value),
             },
         });
-        const suppressed = ['seed', 'test'].includes(profile);
+        const suppressed = profile === 'test';
         assert.equal(calls.length, suppressed ? 0 : 1);
         assert.equal(properties.length, suppressed ? 0 : 1);
         if (!suppressed) {

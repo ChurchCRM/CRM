@@ -24,7 +24,7 @@ putenv('CHURCHCRM_DISABLE_POSTHOG_TELEMETRY');
 putenv('PHP_TEST_DISPOSABLE_DB');
 SystemURLs::init('', [], APP_ROOT);
 
-foreach (['' => 'production', 'invalid' => 'production', 'production' => 'production', 'demo' => 'demo', 'test' => 'test', 'test' => 'test'] as $stored => $expected) {
+foreach (['' => 'production', 'invalid' => 'production', 'production' => 'production', 'demo' => 'demo', 'test' => 'test'] as $stored => $expected) {
     Assert::same($expected, TelemetryService::resolveInstallProfile($stored, false));
     Assert::same('test', TelemetryService::resolveInstallProfile($stored, true));
 }

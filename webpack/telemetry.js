@@ -68,7 +68,7 @@ function sanitizeEvent(event) {
   return event;
 }
 
-if (cfg?.key && cfg.level && cfg.level !== "none" && !["seed", "test"].includes(cfg.install_profile)) {
+if (cfg?.key && cfg.level && cfg.level !== "none" && cfg.install_profile !== "test") {
   posthog.init(cfg.key, {
     api_host: cfg.endpoint,
     capture_pageview: false,
