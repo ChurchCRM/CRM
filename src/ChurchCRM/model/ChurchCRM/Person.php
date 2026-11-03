@@ -19,6 +19,7 @@ use ChurchCRM\Service\GroupService;
 use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Utils\MiscUtils;
 use DateTime;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Connection\ConnectionInterface;
@@ -98,7 +99,9 @@ class Person extends BasePerson implements PhotoInterface
                 $birthYear = 0;
             }
 
-            return \DateTimeImmutable::createFromFormat('Y-m-d', $birthYear . '-' . $this->getBirthMonth() . '-' . $this->getBirthDay());
+            // '!' keeps the current time of day out, so an age measured from
+            // midnight 'today' counts the birthday itself.
+            return \DateTimeImmutable::createFromFormat('!Y-m-d', $birthYear . '-' . $this->getBirthMonth() . '-' . $this->getBirthDay());
         }
 
         return null;
@@ -488,7 +491,7 @@ class Person extends BasePerson implements PhotoInterface
      * avoid a duplicate generic entry. Mirrors the private pattern used by
      * setImageFromBase64().
      */
-    public function saveWithoutUpdateNote(\Propel\Runtime\Connection\ConnectionInterface $con = null): void
+    public function saveWithoutUpdateNote(?ConnectionInterface $con = null): void
     {
         $this->skipPostUpdateNote = true;
         try {
@@ -918,13 +921,16 @@ class Person extends BasePerson implements PhotoInterface
         if (!$birthDate instanceof \DateTimeImmutable || $this->hideAge()) {
             return false;
         }
-        $now = $date === null ? new \DateTimeImmutable('today') : \DateTimeImmutable::createFromFormat('Y-m-d', $date);
+        $now = $date === null ? new \DateTimeImmutable('today') : \DateTimeImmutable::createFromFormat('!Y-m-d', $date);
 
         if (!$now instanceof \DateTimeImmutable) {
             return false;
         }
 
-        $age = date_diff($now, $birthDate);
+        $age = MiscUtils::ageOn($birthDate, $now);
+        if ($age === null) {
+            return false;
+        }
 
         if ($age->y < 1) {
             $monthStr = ngettext('%d month old', '%d months old', $age->m);
@@ -945,22 +951,15 @@ class Person extends BasePerson implements PhotoInterface
         }
     }
 
-    public function getNumericAge(): int
+    /** Whole years, 0 under a year, or null for a hidden age, an unknown birth date or a birth date in the future. */
+    public function getNumericAge(): ?int
     {
         $birthDate = $this->getBirthDate();
         if (!$birthDate instanceof \DateTimeImmutable || $this->hideAge()) {
-            return false;
+            return null;
         }
 
-        $now = date_create('today');
-        $age = date_diff($now, $birthDate);
-        if ($age->y < 1) {
-            $ageValue = 0;
-        } else {
-            $ageValue = $age->y;
-        }
-
-        return $ageValue;
+        return MiscUtils::ageOn($birthDate, new \DateTimeImmutable('today'))?->y;
     }
 
     public function getFullNameWithAge(): string
