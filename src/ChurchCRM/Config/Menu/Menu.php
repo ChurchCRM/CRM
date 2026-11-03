@@ -58,7 +58,7 @@ class Menu
             'Ministries'   => self::getMinistriesMenu($currentUser, $isVolunteerCoordinator),
             'Deposits'     => self::getDepositsMenu($isAdmin, $currentUser->isFinanceEnabled()),
             'Fundraiser'   => self::getFundraisersMenu($currentUser->isManageFundraisersEnabled()),
-            'Reports'      => self::getReportsMenu($isAdmin),
+            'Reports'      => self::getReportsMenu($isAdmin, $currentUser->isFinanceEnabled()),
         ];
         
         // Backward compatibility: plugins that declare parent 'Email' still attach to Communication
@@ -496,7 +496,6 @@ class Menu
             $adminMenu = new MenuItem(gettext('Admin'), '', $isFinanceEnabled);
             $adminMenu->addSubMenu(new MenuItem(gettext('Envelope Manager'), 'ManageEnvelopes.php', $isFinanceEnabled, 'fa-envelope'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Donation Funds'), 'finance/funds', $isFinanceEnabled, 'fa-piggy-bank'));
-            $adminMenu->addSubMenu(new MenuItem(gettext('Statement Settings'), 'finance/statements/settings', $isFinanceEnabled, 'fa-file-lines'));
 
             $depositsMenu->addSubMenu($adminMenu);
         }
@@ -523,12 +522,19 @@ class Menu
         return $fundraiserMenu;
     }
 
-    private static function getReportsMenu(bool $isAdmin): MenuItem
+    private static function getReportsMenu(bool $isAdmin, bool $isFinanceEnabled): MenuItem
     {
         $reports = ReportCatalog::forUser(AuthenticationManager::getCurrentUser());
-        $reportsMenu = new MenuItem(gettext('Reports'), '', $reports !== [], 'fa-database');
+        $reportsMenu = new MenuItem(gettext('Reports'), '', $reports !== [] || $isAdmin || $isFinanceEnabled, 'fa-database');
         foreach ($reports as $report) {
             $reportsMenu->addSubMenu(new MenuItem($report['title'], $report['url'], true, $report['icon']));
+        }
+
+        if ($isAdmin || $isFinanceEnabled) {
+            $adminMenu = new MenuItem(gettext('Admin'), '', true);
+            $adminMenu->addSubMenu(new MenuItem(gettext('Report Settings'), 'admin/system/report-settings', $isAdmin, 'fa-file-lines'));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Statement Settings'), 'finance/statements/settings', $isFinanceEnabled, 'fa-file-invoice'));
+            $reportsMenu->addSubMenu($adminMenu);
         }
 
         return $reportsMenu;

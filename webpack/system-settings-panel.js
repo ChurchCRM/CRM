@@ -365,7 +365,7 @@ import "../src/skin/scss/system-settings-panel.scss";
      * @param {Function} options.onSave - Callback after successful save; receives {name: value} of the saved settings
      * @param {boolean} options.showAllSettingsLink - Show link to System Settings page
      * @param {string} options.headerClass - CSS class for header (default: bg-primary-lt)
-     * @param {number} options.columns - Fields per row from the lg breakpoint up: 3 (default) or 2
+     * @param {number} options.columns - Fields per row from the lg breakpoint up: 3 (default), 2, or 1 (one full-width setting per row)
      */
     init(options) {
       this.options = Object.assign(
@@ -679,6 +679,12 @@ import "../src/skin/scss/system-settings-panel.scss";
       this.container.innerHTML = html;
       if (this.options.columns === 2) {
         this.container.querySelectorAll(".col-lg-4").forEach((el) => el.classList.replace("col-lg-4", "col-lg-6"));
+      }
+      if (this.options.columns === 1) {
+        this.container.querySelectorAll(".col-md-6, .col-lg-4, .col-lg-6").forEach((el) => {
+          el.classList.remove("col-md-6", "col-lg-4", "col-lg-6");
+          el.classList.add("col-12");
+        });
       }
     }
 
