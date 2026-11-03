@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\data\Countries;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ConfigQuery;
@@ -260,8 +261,9 @@ class TelemetryService
     /** Properties attached to every server-side PostHog event. */
     private static function baseProperties(): array
     {
-        return [
+        $properties = [
             '$lib'        => 'churchcrm-php',
+            '$geoip_disable' => true,
             'crm_version' => VersionUtils::getInstalledVersion(),
             'install_profile' => self::installProfile(),
             'locale'      => SystemConfig::isInitialized() ? (SystemConfig::getValue('sLanguage') ?: 'en_US') : 'en_US',
@@ -269,6 +271,25 @@ class TelemetryService
             'os_family'   => explode(' ', (string) php_uname('s'), 2)[0],
             'install_path_type' => empty(SystemURLs::getRootPath()) ? 'root' : 'subdirectory',
         ];
+
+        $churchCountry = self::churchCountry();
+        if ($churchCountry !== null) {
+            $properties['church_country'] = $churchCountry;
+        }
+
+        return $properties;
+    }
+
+    /** The church's self-declared country (sChurchCountry only), or null when empty or not a known ISO code. */
+    private static function churchCountry(): ?string
+    {
+        try {
+            $country = SystemConfig::isInitialized() ? Countries::toISO((string) SystemConfig::getValue('sChurchCountry')) : '';
+
+            return array_key_exists($country, Countries::getNames()) ? $country : null;
+        } catch (\Throwable) {
+            return null;
+        }
     }
 
     private static function sanitizeDatabaseError(string $databaseError): string
