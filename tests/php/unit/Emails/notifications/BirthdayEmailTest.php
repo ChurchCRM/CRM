@@ -37,3 +37,5 @@ $hidden->setFlags(1);
 Assert::contains('Wishing you a wonderful birthday!', $bodyFor($hidden), 'a hidden age stays out of the greeting');
 
 Assert::contains('Wishing you a wonderful birthday!', $bodyFor($bornToday(null)), 'without a birth year the greeting has no age');
+
+Assert::contains('Wishing you a wonderful birthday!', $bodyFor($bornToday((int) $today->format('Y') + 4)), 'a birth year in the future keeps the age out of the greeting');

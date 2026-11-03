@@ -39,11 +39,18 @@ Assert::same('35 years old', $adult->getAge('2026-04-30'));
 
 $hidden = $born(1990, 5, 1);
 $hidden->setFlags(1);
-Assert::same(0, $hidden->getNumericAge(), 'a hidden age is not counted');
+Assert::null($hidden->getNumericAge(), 'a hidden age is not counted');
 Assert::same('', $hidden->getAge('2026-05-01'), 'a hidden age is not shown');
 
 $noYear = new Person();
 $noYear->setBirthMonth(5);
 $noYear->setBirthDay(1);
-Assert::same(0, $noYear->getNumericAge(), 'without a birth year there is no age');
+Assert::null($noYear->getNumericAge(), 'without a birth year there is no age');
 Assert::null($noYear->getAge());
+
+$infant = $born((int) $today->format('Y'), 1, 1);
+Assert::same(0, $infant->getNumericAge() ?? -1, 'under a year old counts as 0, not as unknown');
+
+$unborn = $born((int) $today->format('Y') + 4, (int) $today->format('n'), (int) $today->format('j'));
+Assert::null($unborn->getNumericAge(), 'a birth year in the future has no age');
+Assert::same('', $unborn->getAge(), 'a birth year in the future shows no age');

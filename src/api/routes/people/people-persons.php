@@ -11,6 +11,7 @@ use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\EmailRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\DateTimeUtils;
+use ChurchCRM\Utils\MiscUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Collection\Collection;
 use Propel\Runtime\Propel;
@@ -52,8 +53,7 @@ $app->group('/persons', function (RouteCollectorProxy $group): void {
         $result = [];
         foreach ($persons as $person) {
             $family = $person->getFamily();
-            $numericAge = $person->getNumericAge();
-            $age = ($numericAge !== false) ? $numericAge : null;
+            $age = $person->getNumericAge();
             $fmrId = $person->getFmrId();
             $clsId = $person->getClsId();
             $roleName = $roleOptions[$fmrId] ?? 'Unassigned';
@@ -487,11 +487,11 @@ function getPersonsWithBirthdays(Request $request, Response $response, array $ar
         $formattedPerson['Age'] = $person->getAge();
         $birthDateForAge = $person->getBirthDate();
         if ($birthDateForAge instanceof \DateTimeImmutable && !$person->hideAge()) {
-            $ageDiff = (new \DateTimeImmutable('today'))->diff($birthDateForAge);
-            if ($ageDiff->y < 1) {
+            $ageDiff = MiscUtils::ageOn($birthDateForAge, new \DateTimeImmutable('today'));
+            if ($ageDiff !== null && $ageDiff->y < 1) {
                 $formattedPerson['NumericAge'] = $ageDiff->m;
                 $formattedPerson['AgeUnit']    = 'month';
-            } else {
+            } elseif ($ageDiff !== null) {
                 $formattedPerson['NumericAge'] = $ageDiff->y;
                 $formattedPerson['AgeUnit']    = 'year';
             }
