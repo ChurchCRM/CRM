@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-03 15:01+0000\n"
+"POT-Creation-Date: 2026-11-03 15:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3760,9 +3760,6 @@ msgstr ""
 msgid "Contributing"
 msgstr ""
 
-msgid "Contribution Statement Settings"
-msgstr ""
-
 msgid "Contribution statements are issued to the adults of a household. Please contact the church office if you need one."
 msgstr ""
 
@@ -6408,6 +6405,9 @@ msgstr ""
 msgid "Failed to remove group"
 msgstr ""
 
+msgid "Failed to remove letterhead"
+msgstr ""
+
 msgid "Failed to rename category"
 msgstr ""
 
@@ -6465,6 +6465,9 @@ msgstr ""
 msgid "Failed to set default role. Please try again."
 msgstr ""
 
+msgid "Failed to store the letterhead"
+msgstr ""
+
 msgid "Failed to uninstall plugin"
 msgstr ""
 
@@ -6508,6 +6511,9 @@ msgid "Failed to upload church logo"
 msgstr ""
 
 msgid "Failed to upload family photo"
+msgstr ""
+
+msgid "Failed to upload letterhead"
 msgstr ""
 
 msgid "Failed to upload person photo"
@@ -7290,9 +7296,6 @@ msgstr ""
 msgid "Generate Tax Statements"
 msgstr ""
 
-msgid "Generate a sample statement with the current settings and demo data."
-msgstr ""
-
 msgid "Generate again closer to its first date."
 msgstr ""
 
@@ -7604,6 +7607,9 @@ msgid "Greeter Message 1"
 msgstr ""
 
 msgid "Greeter Message 2"
+msgstr ""
+
+msgid "Greeting"
 msgstr ""
 
 #. Context: countries
@@ -8936,9 +8942,6 @@ msgstr ""
 msgid "Lebanon (‫لبنان‬‎)"
 msgstr ""
 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr ""
-
 msgid "Legend"
 msgstr ""
 
@@ -8965,6 +8968,12 @@ msgid "Let's restore your previous ChurchCRM data."
 msgstr ""
 
 msgid "Lets that ministry's coordinators schedule volunteers for this event — and edit the event itself."
+msgstr ""
+
+msgid "Letter greeting and signature"
+msgstr ""
+
+msgid "Letterhead"
 msgstr ""
 
 msgid "Letters"
@@ -8998,9 +9007,6 @@ msgid "Light"
 msgstr ""
 
 msgid "Lime"
-msgstr ""
-
-msgid "Line Thickness (1 = 1/100th inch"
 msgstr ""
 
 msgid "Link"
@@ -11494,12 +11500,6 @@ msgstr ""
 msgid "PDF handling mode"
 msgstr ""
 
-msgid ""
-"PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr ""
-
 #, php-format
 msgid "PDF successfully emailed to %d family."
 msgid_plural "PDFs successfully emailed to %d families."
@@ -11531,6 +11531,9 @@ msgid "PHPMailer SMTP session"
 msgstr ""
 
 msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr ""
+
+msgid "PNG, JPG, GIF or WebP. A wide banner works best, for example 2000x300."
 msgstr ""
 
 msgid "Paddle"
@@ -12440,9 +12443,6 @@ msgstr ""
 msgid "Preview"
 msgstr ""
 
-msgid "Preview PDF"
-msgstr ""
-
 msgid "Preview Totals"
 msgstr ""
 
@@ -12487,6 +12487,9 @@ msgid "Print the selected deposit in full, with cash and check totals, count she
 msgstr ""
 
 msgid "Printable directory of all people, grouped by family"
+msgstr ""
+
+msgid "Printed at the top of PDF letters that use a graphic letterhead, such as giving statements. Without one, letters print the church name and address."
 msgstr ""
 
 msgid "Prioritise translations"
@@ -12990,6 +12993,9 @@ msgid "Remove from Group"
 msgstr ""
 
 msgid "Remove the class from them"
+msgstr ""
+
+msgid "Remove the letterhead? Letters will print the church name and address."
 msgstr ""
 
 msgid "Remove the team leader"
@@ -14132,6 +14138,9 @@ msgid "Set the accent color used for buttons, links, and active elements"
 msgstr ""
 
 msgid "Set the encryption system to use - ssl (deprecated) or tls"
+msgstr ""
+
+msgid "Set the letterhead that PDF letters print"
 msgstr ""
 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
@@ -17123,6 +17132,12 @@ msgstr ""
 msgid "Using default ChurchCRM logo"
 msgstr ""
 
+msgid "Using the church name and address"
+msgstr ""
+
+msgid "Using the letterhead path set in System Settings"
+msgstr ""
+
 #. Context: countries
 msgid "Uzbekistan (Oʻzbekiston)"
 msgstr ""
@@ -17931,6 +17946,9 @@ msgid "Without a scheduler these jobs only run when somebody loads a page, so a 
 msgstr ""
 
 msgid "Witness"
+msgstr ""
+
+msgid "Wording, tax ID and PDF handling for giving statements"
 msgstr ""
 
 msgid "Work"
