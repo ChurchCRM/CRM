@@ -8,6 +8,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ConfigQuery;
 use ChurchCRM\model\ChurchCRM\Version;
+use ChurchCRM\Service\TelemetryService;
 use Ramsey\Uuid\Uuid;
 use ChurchCRM\Service\UpgradeService;
 use ChurchCRM\Utils\InputUtils;
@@ -201,6 +202,8 @@ class Bootstrapper
         if (empty(SystemConfig::getValue('sSystemID'))) {
             SystemConfig::setValue('sSystemID', Uuid::uuid4()->toString());
         }
+
+        TelemetryService::syncLifecycle();
 
         LoggerUtils::resetAppLoggerLevel();
 

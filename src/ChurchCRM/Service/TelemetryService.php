@@ -8,7 +8,7 @@ use Monolog\LogRecord;
 
 class TelemetryService
 {
-    // Hardcoded PostHog EU project credentials — not user-configurable.
+    // Hardcoded PostHog project credentials — not user-configurable.
     public const POSTHOG_KEY      = 'phc_vhMEHZai3exmp3sqqtJGyVY8Dfjn877bV7zQjV99sJZy';
     public const POSTHOG_ENDPOINT = 'https://us.i.posthog.com';
 
@@ -35,6 +35,30 @@ class TelemetryService
     public static function capturesPageViews(): bool
     {
         return self::getLevel() === self::LEVEL_FULL;
+    }
+
+    /** Record lifecycle milestones since telemetry was enabled. */
+    public static function syncLifecycle(?callable $send = null): void
+    {
+        if (!self::isEnabled() || SystemConfig::getValue('sSystemID') === '') {
+            return;
+        }
+
+        $currentVersion = VersionUtils::getInstalledVersion();
+        $coveredVersion = SystemConfig::getValue('sTelemetryLifecycleVersion');
+        if ($coveredVersion === $currentVersion) {
+            return;
+        }
+
+        $event = $coveredVersion === '' ? 'install_observed' : 'upgrade_completed';
+        $properties = self::baseProperties();
+        if ($event === 'upgrade_completed') {
+            $properties['from_version'] = $coveredVersion;
+            $properties['to_version'] = $currentVersion;
+        }
+
+        ($send ?? self::capture(...))($event, $properties);
+        SystemConfig::setValue('sTelemetryLifecycleVersion', $currentVersion);
     }
 
     /**
