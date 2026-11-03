@@ -358,6 +358,7 @@ class   SystemConfig
             'sSystemID'                            => new ConfigItem('sSystemID', 'text', ''),
 
             'sTelemetryLevel'                      => new ConfigItem('sTelemetryLevel', 'choice', 'none', gettext('Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement.'), '', json_encode(self::getTelemetryLevelChoices())),
+            'sInstallDataProfile'                  => new ConfigItem('sInstallDataProfile', 'choice', 'production', '', '', json_encode(['production' => 'production', 'demo' => 'demo', 'test' => 'test'])),
             'sTelemetryAskedVersion'               => new ConfigItem('sTelemetryAskedVersion', 'text', ''),
             'sTelemetryLifecycleVersion'            => new ConfigItem('sTelemetryLifecycleVersion', 'text', ''),
         ];

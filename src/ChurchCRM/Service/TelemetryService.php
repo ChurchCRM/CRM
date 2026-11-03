@@ -23,6 +23,32 @@ class TelemetryService
     public const LEVEL_WARNINGS = 'warnings';  // WARNING+ + JS exceptions
     public const LEVEL_FULL     = 'full';      // warnings + page views + JS exceptions
 
+    private static array $installProfileCache = [];
+
+    public static function resolveInstallProfile(string $storedProfile, bool $testOverride): string
+    {
+        if ($testOverride) {
+            return 'test';
+        }
+
+        return in_array($storedProfile, ['production', 'demo', 'test'], true) ? $storedProfile : 'production';
+    }
+
+    public static function installProfile(): string
+    {
+        $testOverride = getenv('CHURCHCRM_DISABLE_POSTHOG_TELEMETRY') === '1' || getenv('PHP_TEST_DISPOSABLE_DB') === '1';
+        try {
+            $storedProfile = SystemConfig::isInitialized() ? SystemConfig::getValue('sInstallDataProfile') : '';
+        } catch (\Throwable) {
+            $storedProfile = '';
+        }
+        $storedProfile = is_string($storedProfile) ? $storedProfile : '';
+
+        // Config can initialize during setup or change during a demo import in this request.
+        $key = ($testOverride ? 'test:' : 'stored:') . $storedProfile;
+        return self::$installProfileCache[$key] ??= self::resolveInstallProfile($storedProfile, $testOverride);
+    }
+
     public static function getLevel(): string
     {
         $level = SystemConfig::getValue('sTelemetryLevel');
@@ -230,6 +256,7 @@ class TelemetryService
         return [
             '$lib'        => 'churchcrm-php',
             'crm_version' => VersionUtils::getInstalledVersion(),
+            'install_profile' => self::installProfile(),
             'locale'      => SystemConfig::isInitialized() ? (SystemConfig::getValue('sLanguage') ?: 'en_US') : 'en_US',
             'php_version' => PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION,
             'os_family'   => explode(' ', (string) php_uname('s'), 2)[0],
@@ -252,7 +279,7 @@ class TelemetryService
      */
     private static function capture(string $event, array $properties, ?string $distinctId = null): bool
     {
-        if (getenv('CHURCHCRM_DISABLE_POSTHOG_TELEMETRY') === '1' || getenv('PHP_TEST_DISPOSABLE_DB') === '1') {
+        if (in_array(self::installProfile(), ['test'], true)) {
             return true;
         }
 
