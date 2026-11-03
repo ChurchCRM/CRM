@@ -225,7 +225,7 @@ class TelemetryService
 
     public static function scrubLogMessage(string $message): string
     {
-        $message = preg_replace('/SQLSTATE\[[^\]]*\].*?(?:[.!?](?=\s|$)|$)/is', '[database error]', $message) ?? '';
+        $message = preg_replace('/SQLSTATE\[[^\]]*\].*$/s', '[database error]', $message) ?? '';
         $message = preg_replace('/[A-Z0-9.!#$%&\x27*+\/=?^_`{|}~-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i', '[email]', $message) ?? '';
 
         return mb_substr($message, 0, 500);
