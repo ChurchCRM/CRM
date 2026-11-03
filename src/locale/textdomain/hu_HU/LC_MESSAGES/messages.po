@@ -2450,14 +2450,6 @@ msgid "Enable non-deductible payments"
 msgstr "Nem levonható kifizetések engedélyezése"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "Bal margó (1 = 1/100 hüvelyk)"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "Vonalvastagság (1 = 1/100 hüvelyk)"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "Szöveg az adójelentés első sorához. A dátumok a sor végére kerülnek."
 
@@ -4903,14 +4895,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Az az alapösszeg, amely egy új jelszónak eltérnie kell a régitől (megváltozott karakterek száma)\n"
 "Hallgatólagos értékre állítsa, hogy letiltsa ezt a funkciót"
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr "PDF kezelési mód.\n"
-"1 = Fájl mentése párbeszédpanel\n"
-"2 = Megnyitás az aktuális böngészőablakban"
 
 #: 
 msgid "Verify People"

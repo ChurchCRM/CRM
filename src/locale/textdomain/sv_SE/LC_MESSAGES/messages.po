@@ -2503,14 +2503,6 @@ msgid "Enable non-deductible payments"
 msgstr "Aktivera icke avdragsgilla betalningar"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "Vänster marginal (1 = 1 / 100th inch)"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "Linjetjocklek (1 = 1 / 100th inch)"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "Verbage för översta raden i skatterapporten. Datum läggs till i slutet av den här raden."
 
@@ -4963,14 +4955,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Minsta som ett nytt lösenord måste skilja sig från det gamla (antalet tecken har ändrats)\n"
 "Ställ in på noll för att inaktivera den här funktionen"
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr "PDF-hanteringsläge.\n"
-"1 = Spara fil-dialog\n"
-"2 = Öppna i det aktuella webbläsarfönstret "
 
 #: 
 msgid "Verify People"

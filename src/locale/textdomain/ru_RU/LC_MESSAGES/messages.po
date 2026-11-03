@@ -2475,14 +2475,6 @@ msgid "Enable non-deductible payments"
 msgstr "Разрешить невычитаемые платежи"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "Левое поле (1 = 1/100 дюйма)"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "Толщина линии (1 = 1/100 дюйма"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "Вербаж к верхней строке налоговой отчетности. Даты будут добавлены в конец этой строки."
 
@@ -4929,14 +4921,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Минимальное количество символов, на которое новый пароль должен отличаться от старого (Кол-во символов изменено)\n"
 "Чтобы отключить эту функцию установите значение \"ноль\""
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr "Режим обработки PDF.\n"
-"1 = Диалог сохранения файла\n"
-"2 = Открыть в текущем окне браузера"
 
 #: 
 msgid "Verify People"

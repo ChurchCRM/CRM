@@ -2413,14 +2413,6 @@ msgid "Enable non-deductible payments"
 msgstr "Povolit neodečitatelné platby"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "Levý okraj (1 = 1/100 palce)"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "Tloušťka čáry (1 = 1/100 palce)"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "Slovní spojení pro horní řádek daňového hlášení. Na konec tohoto řádku se připojí data."
 
@@ -4866,14 +4858,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Jak moc se musí nové heslo lišit od starého (# změněných znaků).\n"
 "Nastavením na nulu tuto funkci zakážete"
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr "Režim práce s PDF.\n"
-"1 = dialogové okno Uložit soubor\n"
-"2 = Otevřít v aktuálním okně prohlížeče"
 
 #: 
 msgid "Verify People"

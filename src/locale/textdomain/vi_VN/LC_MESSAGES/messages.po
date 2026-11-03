@@ -2427,14 +2427,6 @@ msgid "Enable non-deductible payments"
 msgstr "Cho phép thanh toán không khấu trừ"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "Lề trái (1 = 1/100 inch)"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "Độ dày dòng (1 = 1/100 inch"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "Rác cho dòng trên cùng của báo cáo thuế. Ngày sẽ được thêm vào cuối dòng này."
 
@@ -4885,12 +4877,6 @@ msgstr "Độ dài thời gian chờ của phiên tính bằng giây. Đặt th�
 msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
 "Set to zero to disable this feature"
 msgstr "Số tiền tối thiểu mà mật khẩu mới phải khác mật khẩu cũ (# ký tự đã thay đổi).  Đặt thành 0 để tắt tính năng này"
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr "Thông tin người không có sẵn được kế thừa từ gia đình được chỉ định để hiển thị?"
 
 #: 
 msgid "Verify People"

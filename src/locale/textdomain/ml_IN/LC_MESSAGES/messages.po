@@ -2391,14 +2391,6 @@ msgid "Enable non-deductible payments"
 msgstr "കിഴിവ് ലഭിക്കാത്ത പേമെന്റുകൾ പ്രവർത്തനക്ഷമമാക്കുക"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "ഇടത് മാർജിൻ (1 = 1/100 ഇഞ്ച്)"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "വരി കനം (1 = 1/100 ഇഞ്ച്"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "നികുതി റിപ്പോർട്ടിന്റെ മുകൾ വരിക്കുള്ള വാക്കുകൾ. ഈ വരിയുടെ അവസാനം തീയതി ചേർക്കും."
 
@@ -4844,14 +4836,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "പുതിയ പാസ്‌വേഡ് പഴയതിൽ നിന്ന് വ്യത്യസ്തമാകേണ്ട ഏറ്റവും കുറഞ്ഞ അളവ് (# അക്ഷരങ്ങൾ)\n"
 "ഈ ഫീച്ചർ പ്രവർത്തനരഹിതമാക്കാൻ പൂജ്യം ക്രമീകരിക്കുക"
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr "PDF കൈകാര്യ രീതി.\n"
-"1 = ഫയൽ ഡയലോഗ് സംരക്ഷിക്കുക\n"
-"2 = നിലവിലെ ബ്രൗസർ വിൻഡോയിൽ തുറക്കുക"
 
 #: 
 msgid "Verify People"

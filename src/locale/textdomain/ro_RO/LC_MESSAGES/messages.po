@@ -2475,14 +2475,6 @@ msgid "Enable non-deductible payments"
 msgstr "Permite plățile nedeductibile"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "Margine stânga (1 = 1/100th inchi)"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "Grosime linie (1 = 1/100th inci)"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "Verbalizare pentru prima linie a raportului fiscal. Datele vor fi anexate la sfârșitul acestei linii."
 
@@ -4936,14 +4928,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Suma minimă cu care o nouă parolă trebuie să difere de cea veche (# de caractere schimbate)\n"
 "Setați la zero pentru a dezactiva această funcționalitate"
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr "Mod de gestionare a fișierelor PDF.\n"
-"1 = Dialog pentru Salvare Fișier\n"
-"2 = Deschide în fereastra curentă a browserului"
 
 #: 
 msgid "Verify People"

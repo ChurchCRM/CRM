@@ -2417,14 +2417,6 @@ msgid "Enable non-deductible payments"
 msgstr "Aktifkan pembayaran yang tidak dapat dikurangkan"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "Margin Kiri (1 = 1/100 inci)"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "Ketebalan Garis (1 = 1/100 inci)"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "Verbage untuk baris atas laporan pajak. Tanggal akan ditambahkan ke akhir baris ini."
 
@@ -4875,12 +4867,6 @@ msgstr "Panjang batas waktu sesi dalam detik Ditetapkan ke nol untuk menonaktifk
 msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
 "Set to zero to disable this feature"
 msgstr "Jumlah minimum yang harus berbeda dengan kata sandi baru dari kata sandi lama (# karakter yang diubah) Setel ke nol untuk menonaktifkan fitur ini"
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr "Mode penanganan PDF. 1 = Simpan dialog File 2 = Buka di jendela browser saat ini"
 
 #: 
 msgid "Verify People"
