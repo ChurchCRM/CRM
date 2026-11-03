@@ -3,6 +3,7 @@
 namespace ChurchCRM\Portal\Auth;
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonSignin;
@@ -154,11 +155,19 @@ final class MemberSignInRule
             return SignInCandidate::refused($email, SignInReason::NO_MATCH);
         }
 
-        $matchedIds = array_map(static fn (Person $person): int => (int) $person->getId(), iterator_to_array($people));
-        $states = [];
-        foreach (PersonSigninQuery::create()->filterByPersonId($matchedIds, Criteria::IN)->find() as $state) {
-            $states[(int) $state->getPersonId()] = $state;
-        }
+        $matches = iterator_to_array($people);
+        $matchedIds = array_map(static fn (Person $person): int => (int) $person->getId(), $matches);
+
+        return $this->candidateFromMatches($email, $matches, $this->statesById($matchedIds));
+    }
+
+    /**
+     * @param Person[]                   $people everyone whose personal email is `$email`, in id order
+     * @param array<int, PersonSignin>   $states their sign-in rows, by person id
+     */
+    private function candidateFromMatches(string $email, array $people, array $states): SignInCandidate
+    {
+        $matchedIds = array_map(static fn (Person $person): int => (int) $person->getId(), $people);
 
         $qualifying = [];
         $firstRefusal = null;
@@ -205,6 +214,105 @@ final class MemberSignInRule
         }
 
         return $this->findSignInCandidate($email)->refusal;
+    }
+
+    /**
+     * `statusFor()` for many people with a fixed number of queries: sign-in rows,
+     * families, and the people who share an address are each read once.
+     *
+     * @param Person[] $people
+     *
+     * @return array<int, ?SignInReason> the reason each person may not sign in, by person id; null when they may
+     */
+    public function statusesFor(array $people): array
+    {
+        if ($people === []) {
+            return [];
+        }
+
+        $byEmail = [];
+        $emails = [];
+        foreach ($people as $person) {
+            $email = self::normalizeEmail((string) $person->getEmail());
+            if ($email !== '') {
+                $emails[$email] = $email;
+            }
+        }
+        $everyone = [];
+        foreach ($people as $person) {
+            $everyone[(int) $person->getId()] = $person;
+        }
+        if ($emails !== []) {
+            $sharing = PersonQuery::create()->where('LOWER(TRIM(Person.Email)) IN ?', array_values($emails))->orderById()->find();
+            foreach ($sharing as $person) {
+                $byEmail[self::normalizeEmail((string) $person->getEmail())][] = $person;
+                $everyone[(int) $person->getId()] ??= $person;
+            }
+        }
+
+        $states = $this->statesById(array_keys($everyone));
+        $this->preloadFamilies($everyone);
+
+        $statuses = [];
+        foreach ($people as $person) {
+            $personId = (int) $person->getId();
+            $reason = PortalSignInRules::refusalReason($person, $states[$personId] ?? null, SignInMethod::EMAIL_CODE, $this);
+            if ($reason === null) {
+                $email = self::normalizeEmail((string) $person->getEmail());
+                $reason = $email === ''
+                    ? SignInReason::NO_EMAIL
+                    : $this->candidateFromMatches($email, $byEmail[$email] ?? [$person], $states)->refusal;
+            }
+            $statuses[$personId] = $reason;
+        }
+
+        return $statuses;
+    }
+
+    /**
+     * @param int[] $personIds
+     *
+     * @return array<int, PersonSignin>
+     */
+    private function statesById(array $personIds): array
+    {
+        $states = [];
+        if ($personIds === []) {
+            return $states;
+        }
+        foreach (PersonSigninQuery::create()->filterByPersonId($personIds, Criteria::IN)->find() as $state) {
+            $states[(int) $state->getPersonId()] = $state;
+        }
+
+        return $states;
+    }
+
+    /**
+     * Reads the families of `$people` in one query so the family block does not look each one up.
+     *
+     * @param Person[] $people
+     */
+    private function preloadFamilies(array $people): void
+    {
+        $familyIds = [];
+        foreach ($people as $person) {
+            if ((int) $person->getFamId() > 0) {
+                $familyIds[(int) $person->getFamId()] = (int) $person->getFamId();
+            }
+        }
+        if ($familyIds === []) {
+            return;
+        }
+        $families = [];
+        foreach (FamilyQuery::create()->filterById(array_values($familyIds), Criteria::IN)->find() as $family) {
+            $families[(int) $family->getId()] = $family;
+        }
+        foreach ($people as $person) {
+            $family = $families[(int) $person->getFamId()] ?? null;
+            if ($family !== null) {
+                $person->setFamily($family);
+            }
+        }
     }
 
     private function reachedMinimumAge(int $year, int $month, int $day): bool

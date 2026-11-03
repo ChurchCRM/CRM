@@ -89,6 +89,27 @@ describe("Sign-in pages", () => {
             });
         });
 
+        it("offers Register your family in the top bar of the sign-in page only while registration is on, and Sign in on the registration page", () => {
+            cy.visit("/portal/login");
+            cy.get(".portal-header-guest").should("not.exist");
+
+            setConfig("bEnableSelfRegistration", "1");
+            cy.visit("/portal/login");
+            cy.get(".portal-header-guest a").should("have.length", 1).and("contain", "Register your family").and("have.attr", "href").and("include", "/portal/register");
+
+            cy.visit("/portal/register");
+            cy.get(".portal-header-guest a").should("have.length", 1).and("contain", "Sign in").and("have.attr", "href").and("include", "/portal/login");
+        });
+
+        it("locks the sign-in button while the code is being sent", () => {
+            cy.visit("/portal/login");
+            // Stay on the page after the press, as a slow send does, so the button can be read.
+            cy.get("#portalSignInForm").then(($form) => $form[0].addEventListener("submit", (event) => event.preventDefault()));
+            cy.get("#portalSignInEmail").type("someone@example.com");
+            cy.get("#portalSignInSubmit").click();
+            cy.get("#portalSignInSubmit").should("be.disabled").and("contain", "Sending");
+        });
+
         it("sends the web root and /portal/login to staff sign-in when member sign-in and registration are off", () => {
             setConfig("bMemberSignIn", "0");
             setConfig("bEnableSelfRegistration", "0");

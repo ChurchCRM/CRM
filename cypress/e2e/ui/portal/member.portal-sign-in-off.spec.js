@@ -56,7 +56,12 @@ const signInOnRememberedDevice = ({ email }) => {
 };
 
 describe("Member sign-in turned off", () => {
+    const savedSelfRegistration = {};
+
     before(() => {
+        cy.getSystemConfig("bEnableSelfRegistration").then((value) => {
+            savedSelfRegistration.value = value;
+        });
         cy.task("mail:available").its("available").should("eq", true);
         // Opens the member rule to everyone for this spec; member-session.js puts it back afterwards.
         cy.signInAsMember(EMAIL_MEMBER.personId);
@@ -68,7 +73,7 @@ describe("Member sign-in turned off", () => {
     });
 
     after(() => {
-        setSelfRegistration(false);
+        cy.restoreSystemConfig("bEnableSelfRegistration", savedSelfRegistration.value);
     });
 
     it("signs out a member signed in by email on their next request, onto the sign-in page", () => {

@@ -6,13 +6,13 @@ import { humanClick, humanPause, humanSelect, humanType, settle } from '../suppo
 /**
  * A visitor self-registering their family — no login, no staff involvement.
  * Runs unauthenticated (this 'recordings' project has no storageState), against
- * the public /external/register/ wizard (src/external/routes/register.php,
+ * the public /portal/register wizard (src/portal/routes/register.php,
  * gated behind bEnableSelfRegistration — enabled in the demo config).
  * "Whitfield", matching people-family.spec.ts's people-family-new-family,
  * so a self-registered family is never confused with a seeded demo one.
  */
 test('family-self-register', async ({ page }, testInfo) => {
-  await page.goto('/external/register/');
+  await page.goto('/portal/register');
   await expect(page.locator('#registration-stepper')).toBeVisible({ timeout: 15000 });
   await humanPause(page, 1200);
 
@@ -46,7 +46,7 @@ test('family-self-register', async ({ page }, testInfo) => {
   await humanClick(page.locator('#submit-registration'));
 
   await page.getByText('Welcome to the Family!').first().waitFor({ state: 'visible', timeout: 10000 });
-  // Let the confirmation dialog sit on screen long enough for a viewer to
+  // Let the confirmation sit on screen long enough for a viewer to
   // actually read it before the video ends.
   await settle(page, 2500);
 

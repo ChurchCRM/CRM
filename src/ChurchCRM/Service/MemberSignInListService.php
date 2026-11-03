@@ -346,11 +346,13 @@ final class MemberSignInListService
         }
         $people = $query->orderByLastName()->orderByFirstName()->orderById()->offset($start)->limit($length)->find();
 
+        $reasons = $withStatus ? $this->rule->statusesFor(iterator_to_array($people, false)) : [];
+        $signInOn = EmailSignInService::isEnabled();
         $rows = [];
         foreach ($people as $person) {
             $row = $this->personRow($person);
             if ($withStatus) {
-                $reason = $this->rule->statusFor($person);
+                $reason = $signInOn ? $reasons[(int) $person->getId()] : SignInReason::MEMBER_SIGN_IN_OFF;
                 $row['maySignIn'] = $reason === null;
                 $row['reasonLabel'] = $reason?->label();
             }

@@ -1,6 +1,5 @@
 <?php
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
@@ -48,10 +47,6 @@ $app->get('/get-started', function (Request $request, Response $response) {
 
 // The admin dashboard and all other /admin routes require an authenticated administrator.
 $app->get('/', function (Request $request, Response $response) {
-    if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
-        return $response->withStatus(302)->withHeader('Location', SystemURLs::getRootPath() . '/v2/dashboard');
-    }
-
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
     // Setup progress checklist

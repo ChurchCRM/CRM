@@ -38,7 +38,9 @@
         <p class="portal-signin-lead">{{ gettext("We're so glad your family has joined us! Your registration has been received. Our team will be in touch soon to personally welcome you.") }}</p>
         <div class="portal-form-actions">
             <a class="portal-button portal-button-quiet" href="{{ url('/portal/register') }}">{{ gettext('Register another family') }}</a>
+            {% if memberSignInEnabled %}
             <a class="portal-button" href="{{ url('/portal/login') }}">{{ gettext('Go to sign in') }}</a>
+            {% endif %}
         </div>
     </section>
 

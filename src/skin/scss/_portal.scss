@@ -803,6 +803,81 @@ textarea.portal-input {
     padding: 0;
 }
 
+// The state and country dropdowns (Tom Select) and the birthday picker come from
+// the core bundle; they take the portal tokens so light and dark match the inputs.
+.portal-register .ts-wrapper .ts-control,
+.portal-register .ts-wrapper.single.input-active .ts-control {
+    min-block-size: 44px;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--portal-border);
+    border-radius: var(--portal-radius);
+    background-color: var(--portal-surface);
+    color: var(--portal-text);
+    box-shadow: none;
+}
+
+.portal-register .ts-wrapper .ts-control input,
+.portal-register .ts-wrapper .ts-control .item {
+    color: var(--portal-text);
+}
+
+.portal-register .ts-wrapper.focus .ts-control {
+    outline: 2px solid var(--portal-primary);
+    outline-offset: 1px;
+}
+
+.ts-dropdown {
+    border: 1px solid var(--portal-border);
+    background-color: var(--portal-surface);
+    color: var(--portal-text);
+}
+
+.ts-dropdown .option.active,
+.ts-dropdown .option:hover {
+    background-color: var(--portal-surface-alt);
+    color: var(--portal-text);
+}
+
+.datepicker.dropdown-menu {
+    border: 1px solid var(--portal-border);
+    background-color: var(--portal-surface);
+    color: var(--portal-text);
+}
+
+.datepicker table tr td.old,
+.datepicker table tr td.new,
+.datepicker table tr td.disabled {
+    color: var(--portal-muted);
+}
+
+.datepicker table tr td.day:hover,
+.datepicker table tr td.focused,
+.datepicker .datepicker-switch:hover,
+.datepicker .prev:hover,
+.datepicker .next:hover,
+.datepicker tfoot tr th:hover {
+    background-color: var(--portal-surface-alt);
+    color: var(--portal-text);
+}
+
+.datepicker table tr td.active,
+.datepicker table tr td.active:hover,
+.datepicker table tr td.active.active {
+    background-color: var(--portal-primary);
+    background-image: none;
+    color: var(--portal-primary-contrast);
+}
+
+.datepicker-dropdown.datepicker-orient-top::before,
+.datepicker-dropdown.datepicker-orient-top::after {
+    border-block-start-color: var(--portal-border);
+}
+
+.datepicker-dropdown.datepicker-orient-bottom::before,
+.datepicker-dropdown.datepicker-orient-bottom::after {
+    border-block-end-color: var(--portal-surface);
+}
+
 .portal-register-intro {
     margin-block-end: 1rem;
 }

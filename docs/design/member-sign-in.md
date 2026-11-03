@@ -338,7 +338,7 @@ Login as Person lets an administrator see the Member Portal exactly as a member 
 - **Web root.**
   - Signed out, it goes to `/portal/login` while member sign-in or self-registration is on, and to `/session/begin` when both are off.
   - Signed in, it goes to the staff dashboard for a staff session and to the portal for a member session.
-- **`/portal/login`** uses the church's portal theme and is for members only. When self-registration is enabled it links to `/portal/register`; staff use `/session/begin`. A staff session reaches the portal and back through the Member Portal and Admin Console links (§6.4). While member sign-in is off, it says *"Member sign-in isn't available yet. Please contact the church office."*
+- **`/portal/login`** uses the church's portal theme and is for members only. When self-registration is enabled it links to `/portal/register`; staff use `/session/begin`. A staff session reaches the portal and back through the Member Portal and Admin Console links (§6.4). While member sign-in is off, it offers a **Register your family** button when self-registration is on (with the note *"Member sign-in isn't available yet. Please contact the church office."*), and sends the visitor to `/session/begin` when it is off too.
 - **Signing out** of a member session goes to `/portal/login`, and so does any portal page asked for while signed out, whatever the setting.
 - **`/admin`**
   - It remains the authenticated admin dashboard. Signed-out visitors go to `/session/begin`; authenticated staff without the admin role go to `/v2/dashboard`.

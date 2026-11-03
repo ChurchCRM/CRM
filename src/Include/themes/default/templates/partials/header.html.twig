@@ -29,10 +29,12 @@
 
         {# Signed out (the sign-in pages), there is no member and no menu; a page
            that sets `guestPage` ('login' or 'register') offers the other one. #}
-        {% if not member.id and guestPage is defined %}
+        {% set guestSignIn = guestPage is defined and guestPage != 'login' and memberSignInEnabled|default(false) %}
+        {% set guestRegister = guestPage is defined and guestPage != 'register' and selfRegistrationEnabled|default(false) %}
+        {% if not member.id and (guestSignIn or guestRegister) %}
         <nav class="portal-header-guest" aria-label="{{ gettext('Member Portal') }}">
-            {% if guestPage != 'login' and memberSignInEnabled %}<a class="portal-header-link" href="{{ url('/portal/login') }}">{{ gettext('Sign in') }}</a>{% endif %}
-            {% if guestPage != 'register' and selfRegistrationEnabled %}<a class="portal-header-link" href="{{ url('/portal/register') }}">{{ gettext('Register your family') }}</a>{% endif %}
+            {% if guestSignIn %}<a class="portal-header-link" href="{{ url('/portal/login') }}">{{ gettext('Sign in') }}</a>{% endif %}
+            {% if guestRegister %}<a class="portal-header-link" href="{{ url('/portal/register') }}">{{ gettext('Register your family') }}</a>{% endif %}
         </nav>
         {% endif %}
         {% if member.id %}

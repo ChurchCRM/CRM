@@ -13,6 +13,8 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
 ?>
 
 <?php
+$hasSelfReg = SystemConfig::getBooleanValue('bEnableSelfRegistration');
+
 if (isset($_GET['Timeout'])) {
     $loginPageMsg = gettext('Your previous session timed out. Please login again.');
 }

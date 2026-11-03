@@ -21,6 +21,17 @@ describe("Family Reg", () => {
         cy.url({ timeout: 10000 }).should("include", "church-info");
     });
 
+    it("does not ask for a home phone", () => {
+        cy.visit("portal/register");
+        cy.get("#familyName").type("Nophone");
+        cy.get("#familyAddress1").clear().type("1 Main Street");
+        cy.get("#familyCity").clear().type("Springfield");
+        cy.get("#familyZip").type("99777");
+        cy.get("#familyHomePhone").should("not.have.attr", "required");
+        cy.get("#family-info-next").click();
+        cy.get("#step-members").should("have.class", "active");
+    });
+
     it("Adam Family Registration", () => {
         cy.intercept("POST", "**/api/public/register/family").as("registerFamily");
         cy.visit("portal/register");

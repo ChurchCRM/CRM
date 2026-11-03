@@ -164,11 +164,11 @@ final class PersonSignInService
      */
     public function statusesFor(iterable $people): array
     {
-        $rule = MemberSignInRule::fromSettings();
+        $people = is_array($people) ? $people : iterator_to_array($people, false);
+        $reasons = MemberSignInRule::fromSettings()->statusesFor($people);
         $statuses = [];
-        foreach ($people as $person) {
-            $reason = $rule->statusFor($person);
-            $statuses[(int) $person->getId()] = ['maySignIn' => $reason === null, 'reason' => $reason?->label()];
+        foreach ($reasons as $personId => $reason) {
+            $statuses[$personId] = ['maySignIn' => $reason === null, 'reason' => $reason?->label()];
         }
 
         return $statuses;

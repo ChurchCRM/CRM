@@ -262,8 +262,21 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
             </div>
         <?php }
 
+        // Helper: "can sign in to the Member Portal" line under a member's email
+        function renderPortalSignInStatus($person, array $portalStatuses): void {
+            $status = $portalStatuses[(int) $person->getId()] ?? null;
+            if ($status === null) { return; } ?>
+            <div class="small mt-1" data-portal-signin-status="<?= $status['maySignIn'] ? 'yes' : 'no' ?>">
+                <?php if ($status['maySignIn']) { ?>
+                    <span class="text-green"><i class="fa-solid fa-circle-check me-1"></i><?= gettext('Can sign in to the Member Portal') ?></span>
+                <?php } else { ?>
+                    <a class="text-secondary" href="<?= $person->getViewURI() ?>#portal-signin-card"><i class="fa-solid fa-ban me-1"></i><?= gettext('Cannot sign in') ?>: <?= InputUtils::escapeHTML((string) $status['reason']) ?></a>
+                <?php } ?>
+            </div>
+        <?php }
+
         // Helper: standard member table (Key People / Other)
-        function renderMemberTable(array $members, string $label, string $icon, string $color, bool $canSendEmail = false): void {
+        function renderMemberTable(array $members, string $label, string $icon, string $color, bool $canSendEmail = false, array $portalStatuses = []): void {
             if (empty($members)) { return; } ?>
             <div class="mb-1">
                 <?php renderSectionHeader($label, $icon, $color, count($members)); ?>
@@ -312,16 +325,7 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
                                             </button>
                                             <?php } ?>
                                         <?php } ?>
-                                        <?php $portalStatus = ($portalSignInStatuses ?? [])[(int) $person->getId()] ?? null;
-                                        if ($portalStatus !== null) { ?>
-                                            <div class="small mt-1" data-portal-signin-status="<?= $portalStatus['maySignIn'] ? 'yes' : 'no' ?>">
-                                                <?php if ($portalStatus['maySignIn']) { ?>
-                                                    <span class="text-green"><i class="fa-solid fa-circle-check me-1"></i><?= gettext('Can sign in to the Member Portal') ?></span>
-                                                <?php } else { ?>
-                                                    <a class="text-secondary" href="<?= $person->getViewURI() ?>#portal-signin-card"><i class="fa-solid fa-ban me-1"></i><?= gettext('Cannot sign in') ?>: <?= InputUtils::escapeHTML((string) $portalStatus['reason']) ?></a>
-                                                <?php } ?>
-                                            </div>
-                                        <?php } ?>
+                                        <?php renderPortalSignInStatus($person, $portalStatuses); ?>
                                     </td>
                                     <td><?php renderMemberActions($person); ?></td>
                                 </tr>
@@ -333,7 +337,7 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
         <?php }
 
         // Helper: children table (no Role column, adds Sunday School column if enabled)
-        function renderChildrenTable(array $members, string $label, string $icon, string $color, bool $canSendEmail = false): void {
+        function renderChildrenTable(array $members, string $label, string $icon, string $color, bool $canSendEmail = false, array $portalStatuses = []): void {
             if (empty($members)) { return; }
 
             $ssEnabled = SystemConfig::getBooleanValue('bEnabledSundaySchool');
@@ -418,6 +422,7 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
                                             </button>
                                             <?php } ?>
                                         <?php } ?>
+                                        <?php renderPortalSignInStatus($person, $portalStatuses); ?>
                                     </td>
                                     <td><?php renderMemberActions($person); ?></td>
                                 </tr>
@@ -452,9 +457,9 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
                 <?php } ?>
             </div>
             <div class="card-body">
-                <?php renderMemberTable($keyPeople, gettext("Key People"), 'fa-crown', 'warning', $canSendEmail); ?>
-                <?php renderChildrenTable($childPeople, gettext("Children"), 'fa-children', 'info', $canSendEmail); ?>
-                <?php renderMemberTable($otherPeople, gettext("Other Members"), 'fa-user-group', 'secondary', $canSendEmail); ?>
+                <?php renderMemberTable($keyPeople, gettext("Key People"), 'fa-crown', 'warning', $canSendEmail, $portalSignInStatuses ?? []); ?>
+                <?php renderChildrenTable($childPeople, gettext("Children"), 'fa-children', 'info', $canSendEmail, $portalSignInStatuses ?? []); ?>
+                <?php renderMemberTable($otherPeople, gettext("Other Members"), 'fa-user-group', 'secondary', $canSendEmail, $portalSignInStatuses ?? []); ?>
             </div>
         </div>
 

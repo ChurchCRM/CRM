@@ -215,7 +215,7 @@ export async function rememberedMemberContext(browser: Browser, email: string, n
 }
 
 export async function signInAsStaffAdmin(page: Page): Promise<void> {
-  await page.goto('/admin/');
+  await page.goto('/session/begin');
   await humanType(page.locator('input[name=User]'), ADMIN_USERNAME);
   await humanType(page.locator('input[name=Password]'), ADMIN_WORKING_PASSWORD);
   await page.locator('input[name=Password]').press('Enter');
