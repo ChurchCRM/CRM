@@ -46,6 +46,20 @@ describe("Admin API Telemetry Consent Endpoint", () => {
         cy.getSystemConfig("sTelemetryLifecycleVersion").should("not.be.empty");
     });
 
+    it("classifies the test stack and suppresses browser telemetry after opt-in", () => {
+        cy.restoreSystemConfig("sTelemetryLevel", "full");
+        cy.setupAdminSession();
+        const requests = [];
+        cy.intercept("https://us.i.posthog.com/**", (request) => {
+            requests.push(request.url);
+            request.reply({ statusCode: 200, body: "Ok" });
+        });
+        cy.visit("/admin/system/debug");
+        cy.window().its("CRM.telemetry.install_profile").should("eq", "test");
+        cy.contains("Telemetry includes whether the system is a production, demo, seed, or test install").should("be.visible");
+        cy.then(() => expect(requests).to.be.empty);
+    });
+
     it("declining records the version the prompt was answered for", () => {
         cy.makePrivateAdminAPICall(
             "POST",

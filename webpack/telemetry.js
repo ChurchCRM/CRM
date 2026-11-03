@@ -68,7 +68,7 @@ function sanitizeEvent(event) {
   return event;
 }
 
-if (cfg?.key && cfg.level && cfg.level !== "none") {
+if (cfg?.key && cfg.level && cfg.level !== "none" && !["seed", "test"].includes(cfg.install_profile)) {
   posthog.init(cfg.key, {
     api_host: cfg.endpoint,
     capture_pageview: false,
@@ -82,6 +82,7 @@ if (cfg?.key && cfg.level && cfg.level !== "none") {
     before_send: sanitizeEvent,
   });
   const superProperties = {
+    install_profile: cfg.install_profile,
     install_path_type: window.CRM?.root && window.CRM.root !== "/" ? "subdirectory" : "root",
   };
   if (window.CRM?.version) {

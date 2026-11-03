@@ -635,6 +635,7 @@ $fmtBytes = static function ($bytes): string {
                     </ul>
                     <p class="small text-secondary mt-2 mb-0">
                         <?= gettext('Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled.') ?>
+                        <?= gettext('Telemetry includes whether the system is a production, demo, seed, or test install, so demo and test data can be excluded from usage statistics.') ?>
                     </p>
                 </div>
             </div>

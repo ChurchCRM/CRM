@@ -173,6 +173,7 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                     </p>
                     <p class="text-secondary mb-3 small">
                         <?= gettext('Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States.') ?>
+                        <?= gettext('Telemetry includes whether the system is a production, demo, seed, or test install, so demo and test data can be excluded from usage statistics.') ?>
                     </p>
                     <div class="d-flex gap-2 flex-wrap">
                         <button type="button" class="btn btn-info js-telemetry-consent" data-level="full">
