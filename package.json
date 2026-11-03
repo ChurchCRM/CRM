@@ -70,6 +70,7 @@
         "test:new-system": "npx cypress run --config-file cypress/configs/new-system.config.ts",
         "test:locale": "npx cypress run --config-file cypress/configs/locale.config.ts --headless --browser electron",
         "test:locale:full": "npx cypress run --config-file cypress/configs/locale.config.ts --headless --browser electron --env LOCALE_TIER=full",
+        "benchmark:upgrade:large": "node scripts/benchmark-large-upgrade.js",
         "docker:test:start": "node scripts/docker-config.js docker/Config.php && docker compose -f docker/docker-compose.yaml --profile test up -d",
         "docker:test:stop": "docker compose -f docker/docker-compose.yaml --profile test stop",
         "docker:test:down": "docker compose -f docker/docker-compose.yaml --profile test down -v",
