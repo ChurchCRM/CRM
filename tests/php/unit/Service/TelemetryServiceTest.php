@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\TelemetryService;
 use ChurchCRM\Utils\SQLImportException;
 use ChurchCRM\Utils\VersionUtils;
@@ -29,7 +30,16 @@ $configs->setValue(null, [
 
 $firstSync = TelemetryService::buildLifecycleEvent(TelemetryService::LEVEL_ERRORS, 'install-id', '', '7.8.3');
 Assert::same('install_observed', $firstSync['event']);
-Assert::same(['$lib', 'crm_version', 'locale', 'php_version', 'os_family'], array_keys($firstSync['properties']));
+Assert::same(['$lib', 'crm_version', 'locale', 'php_version', 'os_family', 'install_path_type'], array_keys($firstSync['properties']));
+$normalizeRoute = new ReflectionMethod(TelemetryService::class, 'normalizePageRoute');
+Assert::same('/people/person', $normalizeRoute->invoke(null, '/churchcrm/people/person?personId=42#tab', '/churchcrm'));
+Assert::same('/people/person', $normalizeRoute->invoke(null, '/people/person?personId=42#tab', ''));
+SystemURLs::init('/churchcrm', [], APP_ROOT);
+$subdirectoryEvent = TelemetryService::buildLifecycleEvent(TelemetryService::LEVEL_ERRORS, 'install-id', '', '7.8.3');
+Assert::same('subdirectory', $subdirectoryEvent['properties']['install_path_type']);
+SystemURLs::init('', [], APP_ROOT);
+$rootEvent = TelemetryService::buildLifecycleEvent(TelemetryService::LEVEL_ERRORS, 'install-id', '', '7.8.3');
+Assert::same('root', $rootEvent['properties']['install_path_type']);
 
 Assert::same(null, TelemetryService::buildLifecycleEvent(TelemetryService::LEVEL_WARNINGS, 'install-id', '7.8.3', '7.8.3'));
 Assert::same(null, TelemetryService::buildLifecycleEvent(TelemetryService::LEVEL_NONE, 'install-id', '', '7.8.3'));
@@ -39,7 +49,7 @@ $upgrade = TelemetryService::buildLifecycleEvent(TelemetryService::LEVEL_ERRORS,
 Assert::same('upgrade_completed', $upgrade['event']);
 Assert::same('7.8.2', $upgrade['properties']['from_version']);
 Assert::same('7.8.3', $upgrade['properties']['to_version']);
-Assert::same(['$lib', 'crm_version', 'locale', 'php_version', 'os_family', 'from_version', 'to_version'], array_keys($upgrade['properties']));
+Assert::same(['$lib', 'crm_version', 'locale', 'php_version', 'os_family', 'install_path_type', 'from_version', 'to_version'], array_keys($upgrade['properties']));
 
 $configValue = static fn (string $value) => new class($value) {
     public function __construct(private string $value) {}

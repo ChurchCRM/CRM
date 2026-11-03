@@ -88,13 +88,8 @@ class UpgradeService
                 throw new \RuntimeException('A database upgrade is already running. Try again shortly.', 409);
             }
             // This journal must work before legacy application tables are migrated.
-            $connection->exec("CREATE TABLE IF NOT EXISTS database_upgrade_progress (
-                target_version VARCHAR(50) NOT NULL,
-                script_path VARCHAR(255) NOT NULL,
-                status VARCHAR(10) NOT NULL,
-                started_at DATETIME NOT NULL,
-                PRIMARY KEY (target_version, script_path)
-            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
+            $progressRepository = new UpgradeProgressRepository($connection);
+            $progressRepository->ensureTable();
 
             $dbUpdatesFile = file_get_contents(SystemURLs::getDocumentRoot() . '/mysql/upgrade.json');
             MiscUtils::throwIfFailed($dbUpdatesFile);
@@ -115,28 +110,26 @@ class UpgradeService
                         $logger->info('New Version: ' . $version->getVersion());
                         $scriptName = null;
                         foreach ($dbUpdate['scripts'] as $dbScript) {
-                            $progress = $connection->prepare('SELECT status, started_at FROM database_upgrade_progress WHERE target_version = ? AND script_path = ?');
-                            $progress->execute([$dbUpdate['dbVersion'], $dbScript]);
-                            $progressRow = $progress->fetch(\PDO::FETCH_ASSOC);
+                            $progressRow = $progressRepository->find($dbUpdate['dbVersion'], $dbScript);
                             $status = $progressRow['status'] ?? null;
                             if ($status === 'complete') {
                                 continue;
                             }
                             if ($status !== null) {
                                 if ($status === 'started') {
-                                    $reported = $connection->prepare('UPDATE database_upgrade_progress SET status = ? WHERE target_version = ? AND script_path = ? AND status = ?');
-                                    $reported->execute(['reported', $dbUpdate['dbVersion'], $dbScript, 'started']);
+                                    $wasStarted = $progressRepository->setStatus($dbUpdate['dbVersion'], $dbScript, 'reported', 'started');
                                     $startedAt = new \DateTimeImmutable($progressRow['started_at']);
                                     $elapsedMs = max(0, (time() - $startedAt->getTimestamp()) * 1000);
-                                    TelemetryService::captureUpgradeInterruption($dbUpdate['dbVersion'], $elapsedMs);
+                                    if ($wasStarted) {
+                                        TelemetryService::captureUpgradeInterruption($dbUpdate['dbVersion'], $elapsedMs);
+                                    }
                                 }
                                 throw new \RuntimeException("Upgrade file $dbScript failed or was interrupted. Check the server logs and repair or restore the database before retrying.");
                             }
                             if ($oneScriptPerRequest && $scriptsThisRequest === 1) {
                                 return false;
                             }
-                            $started = $connection->prepare('INSERT INTO database_upgrade_progress (target_version, script_path, status, started_at) VALUES (?, ?, ?, ?)');
-                            $started->execute([$dbUpdate['dbVersion'], $dbScript, 'started', date('Y-m-d H:i:s')]);
+                            $progressRepository->start($dbUpdate['dbVersion'], $dbScript, date('Y-m-d H:i:s'));
                             $scriptName = SystemURLs::getDocumentRoot() . $dbScript;
 
                             $logger->info('Upgrade DB - ' . $scriptName);
@@ -148,8 +141,7 @@ class UpgradeService
                                     $sqlDurationMs = (int) ((hrtime(true) - $sqlStartedAt) / 1_000_000);
                                 } catch (\Throwable $e) {
                                     $durationMs = (int) ((hrtime(true) - $sqlStartedAt) / 1_000_000);
-                                    $reported = $connection->prepare('UPDATE database_upgrade_progress SET status = ? WHERE target_version = ? AND script_path = ? AND status = ?');
-                                    $reported->execute(['reported', $dbUpdate['dbVersion'], $dbScript, 'started']);
+                                    $progressRepository->setStatus($dbUpdate['dbVersion'], $dbScript, 'reported', 'started');
                                     if ($e instanceof SQLImportException) {
                                         TelemetryService::captureUpgradeSqlError($dbUpdate['dbVersion'], $durationMs, $e->getDatabaseError());
                                     } else {
@@ -162,16 +154,13 @@ class UpgradeService
                             } else {
                                 throw new \Exception("Invalid upgrade file specified: $scriptName");
                             }
-                            $complete = $connection->prepare('UPDATE database_upgrade_progress SET status = ? WHERE target_version = ? AND script_path = ?');
-                            $complete->execute(['complete', $dbUpdate['dbVersion'], $dbScript]);
+                            $progressRepository->setStatus($dbUpdate['dbVersion'], $dbScript, 'complete');
                             if ($sqlDurationMs !== null) {
                                 TelemetryService::captureUpgradeSqlDuration($dbUpdate['dbVersion'], $sqlDurationMs, true);
                             }
                             $scriptsThisRequest++;
                         }
-                        $start = $connection->prepare('SELECT MIN(started_at) FROM database_upgrade_progress WHERE target_version = ?');
-                        $start->execute([$dbUpdate['dbVersion']]);
-                        $startedAt = $start->fetchColumn();
+                        $startedAt = $progressRepository->earliestStart($dbUpdate['dbVersion']);
                         if ($startedAt) {
                             $version->setUpdateStart(new \DateTimeImmutable($startedAt));
                         }
@@ -224,7 +213,7 @@ class UpgradeService
 
             return true;
         } catch (\Throwable $exc) {
-            if (!$exc instanceof SQLImportException) {
+            if (!$exc instanceof SQLImportException && $exc->getCode() !== 409) {
                 TelemetryService::captureUpgradeFailure($installed_version, $exc::class);
             }
             $logger->error(

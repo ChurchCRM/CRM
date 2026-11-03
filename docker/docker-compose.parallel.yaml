@@ -154,6 +154,7 @@ services:
     env_file:
       - .env
     environment:
+      - CHURCHCRM_DISABLE_POSTHOG_TELEMETRY=1
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-changeme}
       - MYSQL_DATABASE=${MYSQL_DATABASE:-churchcrm}
       - MYSQL_USER=${MYSQL_USER:-churchcrm}

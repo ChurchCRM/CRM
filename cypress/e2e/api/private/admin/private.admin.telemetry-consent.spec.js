@@ -33,22 +33,17 @@ describe("Admin API Telemetry Consent Endpoint", () => {
     });
 
     it("stores a valid consent level", () => {
-        // Establish the covered version first so enabling telemetry below does
-        // not send an event to the production PostHog project from the test DB.
-        cy.makePrivateAdminAPICall("POST", "/admin/api/system/telemetry-consent", { level: "none" }, 200);
-        cy.getSystemConfig("sTelemetryAskedVersion").then((coveredVersion) => {
-            cy.restoreSystemConfig("sTelemetryLifecycleVersion", coveredVersion);
-            cy.makePrivateAdminAPICall(
-                "POST",
-                "/admin/api/system/telemetry-consent",
-                { level: "errors" },
-                200,
-            ).then((resp) => {
-                expect(resp.body.status).to.eq("ok");
-            });
-            cy.getSystemConfig("sTelemetryLevel").should("eq", "errors");
-            cy.getSystemConfig("sTelemetryLifecycleVersion").should("eq", coveredVersion);
+        cy.restoreSystemConfig("sTelemetryLifecycleVersion", "");
+        cy.makePrivateAdminAPICall(
+            "POST",
+            "/admin/api/system/telemetry-consent",
+            { level: "errors" },
+            200,
+        ).then((resp) => {
+            expect(resp.body.status).to.eq("ok");
         });
+        cy.getSystemConfig("sTelemetryLevel").should("eq", "errors");
+        cy.getSystemConfig("sTelemetryLifecycleVersion").should("not.be.empty");
     });
 
     it("declining records the version the prompt was answered for", () => {

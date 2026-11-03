@@ -3,8 +3,11 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\ConfigQuery;
 use ChurchCRM\Utils\VersionUtils;
 use Monolog\LogRecord;
+use Propel\Runtime\Propel;
 
 class TelemetryService
 {
@@ -52,18 +55,47 @@ class TelemetryService
             return;
         }
 
-        $currentVersion = VersionUtils::getInstalledVersion();
-        $coveredVersion = SystemConfig::getValue('sTelemetryLifecycleVersion');
-        $lifecycleEvent = self::buildLifecycleEvent($level, $systemId, $coveredVersion, $currentVersion);
-        if ($lifecycleEvent === null) {
-            return;
+        $connection = null;
+        if ($send === null) {
+            try {
+                $connection = Propel::getConnection();
+                $lockName = 'churchcrm-telemetry-' . substr(sha1($systemId), 0, 40);
+                $lock = $connection->prepare('SELECT GET_LOCK(?, 0)');
+                $lock->execute([$lockName]);
+                if ((int) $lock->fetchColumn() !== 1) {
+                    return;
+                }
+            } catch (\Throwable $e) {
+                error_log('TelemetryService::syncLifecycle lock failed: ' . $e->getMessage());
+                return;
+            }
         }
 
-        $acknowledged = ($send ?? self::capture(...))($lifecycleEvent['event'], $lifecycleEvent['properties']);
-        if ($acknowledged === false) {
-            return;
+        try {
+            $currentVersion = VersionUtils::getInstalledVersion();
+            $coveredVersion = $send === null
+                ? (ConfigQuery::create()->findOneByName('sTelemetryLifecycleVersion')?->getValue() ?? '')
+                : SystemConfig::getValue('sTelemetryLifecycleVersion');
+            $lifecycleEvent = self::buildLifecycleEvent($level, $systemId, $coveredVersion, $currentVersion);
+            if ($lifecycleEvent === null) {
+                return;
+            }
+
+            $acknowledged = ($send ?? self::capture(...))($lifecycleEvent['event'], $lifecycleEvent['properties']);
+            if ($acknowledged === false) {
+                return;
+            }
+            SystemConfig::setValue('sTelemetryLifecycleVersion', $currentVersion);
+        } finally {
+            if ($connection !== null) {
+                try {
+                    $release = $connection->prepare('SELECT RELEASE_LOCK(?)');
+                    $release->execute([$lockName]);
+                } catch (\Throwable $e) {
+                    error_log('TelemetryService::syncLifecycle lock release failed: ' . $e->getMessage());
+                }
+            }
         }
-        SystemConfig::setValue('sTelemetryLifecycleVersion', $currentVersion);
     }
 
     /** Build a lifecycle event only when an opted-in install has uncovered version state. */
@@ -96,8 +128,21 @@ class TelemetryService
             return;
         }
         self::capture('page_view', array_merge(self::baseProperties(), [
-            'route' => $routePattern,
+            'route' => self::normalizePageRoute($routePattern, SystemURLs::getRootPath()),
         ]));
+    }
+
+    private static function normalizePageRoute(string $route, string $rootPath): string
+    {
+        $path = parse_url($route, PHP_URL_PATH);
+        $route = is_string($path) && $path !== '' ? $path : '/';
+        $rootPath = rtrim($rootPath, '/');
+
+        if ($rootPath !== '' && ($route === $rootPath || str_starts_with($route, $rootPath . '/'))) {
+            $route = substr($route, strlen($rootPath)) ?: '/';
+        }
+
+        return $route;
     }
 
     public static function captureUpgradeSqlDuration(string $version, int $durationMs, bool $completed): void
@@ -188,6 +233,7 @@ class TelemetryService
             'locale'      => SystemConfig::isInitialized() ? (SystemConfig::getValue('sLanguage') ?: 'en_US') : 'en_US',
             'php_version' => PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION,
             'os_family'   => explode(' ', (string) php_uname('s'), 2)[0],
+            'install_path_type' => empty(SystemURLs::getRootPath()) ? 'root' : 'subdirectory',
         ];
     }
 
@@ -207,7 +253,7 @@ class TelemetryService
     private static function capture(string $event, array $properties, ?string $distinctId = null): bool
     {
         if (getenv('CHURCHCRM_DISABLE_POSTHOG_TELEMETRY') === '1' || getenv('PHP_TEST_DISPOSABLE_DB') === '1') {
-            return false;
+            return true;
         }
 
         $distinctId ??= SystemConfig::isInitialized() ? SystemConfig::getValue('sSystemID') : '';
