@@ -24,6 +24,32 @@ class TelemetryService
     public const LEVEL_WARNINGS = 'warnings';  // WARNING+ + JS exceptions
     public const LEVEL_FULL     = 'full';      // warnings + page views + JS exceptions
 
+    private static array $installProfileCache = [];
+
+    public static function resolveInstallProfile(string $storedProfile, bool $testOverride): string
+    {
+        if ($testOverride) {
+            return 'test';
+        }
+
+        return in_array($storedProfile, ['production', 'demo', 'test'], true) ? $storedProfile : 'production';
+    }
+
+    public static function installProfile(): string
+    {
+        $testOverride = getenv('CHURCHCRM_DISABLE_POSTHOG_TELEMETRY') === '1' || getenv('PHP_TEST_DISPOSABLE_DB') === '1';
+        try {
+            $storedProfile = SystemConfig::isInitialized() ? SystemConfig::getValue('sInstallDataProfile') : '';
+        } catch (\Throwable) {
+            $storedProfile = '';
+        }
+        $storedProfile = is_string($storedProfile) ? $storedProfile : '';
+
+        // Config can initialize during setup or change during a demo import in this request.
+        $key = ($testOverride ? 'test:' : 'stored:') . $storedProfile;
+        return self::$installProfileCache[$key] ??= self::resolveInstallProfile($storedProfile, $testOverride);
+    }
+
     public static function getLevel(): string
     {
         $level = SystemConfig::getValue('sTelemetryLevel');
@@ -200,8 +226,7 @@ class TelemetryService
 
     /**
      * Forward a Monolog record as a log_error event.
-     * Called by PostHogLogHandler — the handler pre-filters by Monolog level;
-     * this method does the final level check and sends.
+     * PostHogLogHandler filters by level before message scrubbing.
      */
     public static function captureLogEvent(LogRecord $record): void
     {
@@ -215,7 +240,7 @@ class TelemetryService
 
         $properties = array_merge(self::baseProperties(), [
             'level'          => $record->level->name,
-            'message'        => $record->message,
+            'message'        => self::scrubLogMessage($record->message),
             'channel'        => $record->channel,
             'correlation_id' => $record->extra['correlation_id'] ?? null,
             'route'          => $route,
@@ -225,6 +250,14 @@ class TelemetryService
         self::capture('log_error', $properties);
     }
 
+    public static function scrubLogMessage(string $message): string
+    {
+        $message = preg_replace('/SQLSTATE\[[^\]]*\].*$/s', '[database error]', $message) ?? '';
+        $message = preg_replace('/[A-Z0-9.!#$%&\x27*+\/=?^_`{|}~-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i', '[email]', $message) ?? '';
+
+        return mb_substr($message, 0, 500);
+    }
+
     /** Properties attached to every server-side PostHog event. */
     private static function baseProperties(): array
     {
@@ -232,6 +265,7 @@ class TelemetryService
             '$lib'        => 'churchcrm-php',
             '$geoip_disable' => true,
             'crm_version' => VersionUtils::getInstalledVersion(),
+            'install_profile' => self::installProfile(),
             'locale'      => SystemConfig::isInitialized() ? (SystemConfig::getValue('sLanguage') ?: 'en_US') : 'en_US',
             'php_version' => PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION,
             'os_family'   => explode(' ', (string) php_uname('s'), 2)[0],
@@ -273,7 +307,7 @@ class TelemetryService
      */
     private static function capture(string $event, array $properties, ?string $distinctId = null): bool
     {
-        if (getenv('CHURCHCRM_DISABLE_POSTHOG_TELEMETRY') === '1' || getenv('PHP_TEST_DISPOSABLE_DB') === '1') {
+        if (in_array(self::installProfile(), ['test'], true)) {
             return true;
         }
 
