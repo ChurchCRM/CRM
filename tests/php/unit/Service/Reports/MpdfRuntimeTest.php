@@ -47,7 +47,7 @@ foreach (['Letter-L' => [139.7, 215.9], 'A4-L' => [148.5, 210.0]] as $format => 
     }
 }
 
-$customRoot = sys_get_temp_dir() . '/churchcrm-pdf-test-' . bin2hex(random_bytes(8));
+$customRoot = realpath(sys_get_temp_dir()) . '/churchcrm-pdf-test-' . bin2hex(random_bytes(8));
 mkdir($customRoot, 0700);
 try {
     $custom = MpdfRenderer::temporaryDirectory($customRoot);

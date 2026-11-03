@@ -8,27 +8,10 @@ description: "Review GitHub security advisories in triage/draft status"
 Use this skill when the user asks to run the migrated source command `security-advisory`.
 
 ## Command Template
-
 # Security Advisory Review
 
-Load the security advisory review skill to check and manage triage/draft advisories.
+Work the GitHub security advisory queue as defined in [`.agents/skills/churchcrm/security-advisory-review.md`](../../.agents/skills/churchcrm/security-advisory-review.md).
 
-The skill provides a 4-step workflow:
-1. **Fetch** current advisories via GitHub API
-2. **Analyze** severity and state
-3. **Investigate** code impact
-4. **Categorize** by action (work now / schedule / hold)
+Read that skill file now and follow it in order. Triage each advisory with `.agents/skills/churchcrm/security-report-triage.md` before deciding priority. Review the fix branch with `/pr-review`.
 
-GitHub's recommended approach keeps fixes private until release:
-- Work in a `security/fix-{GHSA_ID}` branch
-- Commit directly (no public PR)
-- Merge to master once tests pass
-- Publish the advisory when the patched version is released
-
-To begin reviewing advisories, invoke the skill:
-
-```
-/security-advisory-review
-```
-
-Or check the skill documentation for specific advisory workflows.
+Pass a GHSA ID to start with one advisory, or none to list the queue.

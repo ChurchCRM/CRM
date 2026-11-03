@@ -96,6 +96,8 @@ Apply only the sections that match the changed files. Hard-block items are also 
 
 ### Security (hard block)
 
+This is the security pass for a PR or a local branch diff. Do not run a separate `/security-review`.
+
 - [ ] `InputUtils::escapeHTML()` / `escapeAttribute()`
 - [ ] Redirects use `RedirectUtils::redirect()`
 - [ ] `SlimUtils::renderErrorJSON()` for API errors
@@ -118,7 +120,7 @@ Applies to any change to a route, API, middleware, permission check, session, ad
 - [ ] Cypress covers the denied user, not only the allowed one
 - [ ] The draft names who can reach each entry point and what changed versus `master`
 
-For a large auth PR, run a security-focused sub agent over the diff and verify its findings against the code before you report them.
+For a PR that changes an entry point or data access, run a security-focused sub agent over the diff and verify its findings against the code before you report them.
 
 ### PDF / mPDF reports
 
