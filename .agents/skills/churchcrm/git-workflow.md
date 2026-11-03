@@ -28,7 +28,9 @@ intent: How agents commit and push on ChurchCRM.
 
 ## Docker checkout
 
-Run Docker from the main repository checkout. Before Docker work, ask whether to switch that checkout to the task branch and wait for the user’s answer.
+For ordinary development and test workflows that use the main repository checkout, run Docker from that checkout. Before switching the main checkout to a task branch, ask for confirmation.
+
+**Exception — marketing screenshot/video captures:** follow [Marketing Visual-Media Pipeline](marketing-visuals-pipeline.md). The capture stack must run from a dedicated PR worktree, never from the main checkout, because its startup can remove `src/Include/Config.php`. Do not switch the main checkout or run the capture stack there.
 
 ## Commit freely, push only on approval
 
