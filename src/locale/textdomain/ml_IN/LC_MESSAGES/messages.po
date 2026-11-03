@@ -2391,14 +2391,6 @@ msgid "Enable non-deductible payments"
 msgstr "കിഴിവ് ലഭിക്കാത്ത പേമെന്റുകൾ പ്രവർത്തനക്ഷമമാക്കുക"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "ഇടത് മാർജിൻ (1 = 1/100 ഇഞ്ച്)"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "വരി കനം (1 = 1/100 ഇഞ്ച്"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "നികുതി റിപ്പോർട്ടിന്റെ മുകൾ വരിക്കുള്ള വാക്കുകൾ. ഈ വരിയുടെ അവസാനം തീയതി ചേർക്കും."
 
@@ -4844,14 +4836,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "പുതിയ പാസ്‌വേഡ് പഴയതിൽ നിന്ന് വ്യത്യസ്തമാകേണ്ട ഏറ്റവും കുറഞ്ഞ അളവ് (# അക്ഷരങ്ങൾ)\n"
 "ഈ ഫീച്ചർ പ്രവർത്തനരഹിതമാക്കാൻ പൂജ്യം ക്രമീകരിക്കുക"
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr "PDF കൈകാര്യ രീതി.\n"
-"1 = ഫയൽ ഡയലോഗ് സംരക്ഷിക്കുക\n"
-"2 = നിലവിലെ ബ്രൗസർ വിൻഡോയിൽ തുറക്കുക"
 
 #: 
 msgid "Verify People"
@@ -16151,10 +16135,6 @@ msgid "Anonymous Telemetry"
 msgstr "അജ്ഞാത ടെലിമെട്രി"
 
 #: 
-msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
-msgstr "അജ്ഞാത ടെലിമെട്രി തലം. ChurchCRM ടീമുമായി എത്രമാത്രം അജ്ഞാത ഡയഗ്‌നോസ്റ്റിക് ഡേറ്റ പങ്കിടുന്നു എന്ന് നിയന്ത്രിക്കുന്നു. സഭയുടെ പേര്, അംഗ ഡേറ്റ, അല്ലെങ്കിൽ വ്യക്തിഗത വിവരങ്ങൾ ഒരിക്കലും അയക്കില്ല."
-
-#: 
 msgid "Are you sure you want to permanently delete this payment record?"
 msgstr "ഈ പേമെന്റ് രേഖ സ്ഥിരമായി ഇല്ലാതാക്കണമെന്ന് നിങ്ങൾക്ക് ഉറപ്പുണ്ടോ?"
 
@@ -16213,10 +16193,6 @@ msgstr "അദ്വിതീയ ഇൻസ്റ്റലേഷനുകൾ എ�
 #: 
 msgid "Data"
 msgstr "ഡേറ്റ"
-
-#: 
-msgid "Data is processed by PostHog on EU infrastructure."
-msgstr "EU ഇൻഫ്രാസ്ട്രക്ചറിൽ PostHog ഡേറ്റ പ്രോസസ്സ് ചെയ്യുന്നു."
 
 #: 
 msgid "Date is required"
@@ -16451,10 +16427,6 @@ msgid "Sending to"
 msgstr "അയക്കുന്നത്"
 
 #: 
-msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
-msgstr "ChurchCRM ടീമുമായി അജ്ഞാത ഉപയോഗ സ്ഥിതിവിവരക്കണക്കുകൾ പങ്കിടുക, അങ്ങനെ ഏതൊക്കെ ഫീച്ചറുകൾക്കും ഭാഷകൾക്കും മുൻഗണന നൽകണമെന്ന് ഞങ്ങൾക്ക് അറിയാം. സഭയുടെ പേര്, അംഗ ഡേറ്റ, അല്ലെങ്കിൽ വ്യക്തിഗത വിവരങ്ങൾ ഒരിക്കലും അയക്കില്ല."
-
-#: 
 msgid "Test email sent to"
 msgstr "ടെസ്റ്റ് ഇമെയിൽ അയച്ചത്"
 
@@ -16499,10 +16471,6 @@ msgid "What is sent"
 msgstr "എന്ത് അയക്കുന്നു"
 
 #: 
-msgid "What we collect"
-msgstr "ഞങ്ങൾ ശേഖരിക്കുന്നത്"
-
-#: 
 msgid "Wishing you a wonderful %d year birthday!"
 msgstr "നിങ്ങൾക്ക് ഒരു അദ്ഭുതകരമായ %d-ാം ജന്മദിനാശംസകൾ!"
 
@@ -16525,10 +16493,6 @@ msgstr "പൂർണ്ണം മാത്രം"
 #: 
 msgid "is thinking of you today."
 msgstr "ഇന്ന് നിങ്ങളെ ഓർക്കുന്നു."
-
-#: 
-msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
-msgstr "പേജ് റൂട്ടുകൾ, സജീവ ലൊക്കേൽ, CRM പതിപ്പ്, PHP പതിപ്പ്, OS കുടുംബം, ഒരു ക്രമരഹിത ഇൻസ്റ്റലേഷൻ ID. മറ്റൊന്നുമില്ല. ഡേറ്റ EU-ൽ സൂക്ഷിക്കുന്നു."
 
 #: 
 msgid "% Paid"

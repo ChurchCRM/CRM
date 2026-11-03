@@ -2450,14 +2450,6 @@ msgid "Enable non-deductible payments"
 msgstr "Nem levonható kifizetések engedélyezése"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "Bal margó (1 = 1/100 hüvelyk)"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "Vonalvastagság (1 = 1/100 hüvelyk)"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "Szöveg az adójelentés első sorához. A dátumok a sor végére kerülnek."
 
@@ -4903,14 +4895,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Az az alapösszeg, amely egy új jelszónak eltérnie kell a régitől (megváltozott karakterek száma)\n"
 "Hallgatólagos értékre állítsa, hogy letiltsa ezt a funkciót"
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr "PDF kezelési mód.\n"
-"1 = Fájl mentése párbeszédpanel\n"
-"2 = Megnyitás az aktuális böngészőablakban"
 
 #: 
 msgid "Verify People"
@@ -16210,10 +16194,6 @@ msgid "Anonymous Telemetry"
 msgstr "Névtelen telemetria"
 
 #: 
-msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
-msgstr "Névtelen telemetria szintje. Meghatározza, hogy mennyi névtelen diagnosztikai adat kerül megosztásra a ChurchCRM csapatával. Egyháznév, tagi adat vagy személyes információ soha nem kerül elküldésre."
-
-#: 
 msgid "Are you sure you want to permanently delete this payment record?"
 msgstr "Biztosan véglegesen törölni szeretné ezt az adomány-rekordot?"
 
@@ -16272,10 +16252,6 @@ msgstr "Egyedi telepítések számlálása"
 #: 
 msgid "Data"
 msgstr "Adat"
-
-#: 
-msgid "Data is processed by PostHog on EU infrastructure."
-msgstr "Az adatokat a PostHog dolgozza fel EU-s infrastruktúrán."
 
 #: 
 msgid "Date is required"
@@ -16510,10 +16486,6 @@ msgid "Sending to"
 msgstr "Küldés ide"
 
 #: 
-msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
-msgstr "Névtelen használati statisztikák megosztása a ChurchCRM csapatával, hogy tudjuk, mely funkciókat és nyelveket priorizáljuk. Egyháznév, tagi adat vagy személyes információ soha nem kerül elküldésre."
-
-#: 
 msgid "Test email sent to"
 msgstr "Teszt e-mail elküldve ide"
 
@@ -16558,10 +16530,6 @@ msgid "What is sent"
 msgstr "Mi kerül elküldésre"
 
 #: 
-msgid "What we collect"
-msgstr "Mit gyűjtünk"
-
-#: 
 msgid "Wishing you a wonderful %d year birthday!"
 msgstr "Boldog %d. születésnapot kívánunk!"
 
@@ -16584,10 +16552,6 @@ msgstr "csak teljes"
 #: 
 msgid "is thinking of you today."
 msgstr "ma rád gondol."
-
-#: 
-msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
-msgstr "oldal útvonalak, aktív területi beállítás, CRM verzió, PHP verzió, operációs rendszer família és egy véletlenszerű telepítési azonosító. Semmi más. Az adatok az EU-ban tárolódnak."
 
 #: 
 msgid "% Paid"

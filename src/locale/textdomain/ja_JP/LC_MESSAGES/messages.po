@@ -2391,14 +2391,6 @@ msgid "Enable non-deductible payments"
 msgstr "控除不可能な支払いを有効にします"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "左マージン (1 = 1/100インチ)"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "線の太さ (1 = 1/100インチ)"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "税務報告書の最上行の文言。日付はこの行の最後に追加されます。"
 
@@ -4844,14 +4836,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "新しいパスワードが古いパスワードと異なる必要がある最小量（変更された文字数）\n"
 "この機能を無効にするには0に設定"
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr "PDF処理モード。\n"
-"1 = ファイル保存ダイアログ\n"
-"2 = 現在のブラウザウィンドウで開く"
 
 #: 
 msgid "Verify People"
@@ -16138,10 +16122,6 @@ msgid "Anonymous Telemetry"
 msgstr "匿名テレメトリー"
 
 #: 
-msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
-msgstr "匿名テレメトリーのレベル。ChurchCRMチームと共有する匿名診断データの量を制御します。教会名、会員データ、個人情報は一切送信されません。"
-
-#: 
 msgid "Are you sure you want to permanently delete this payment record?"
 msgstr "この献金記録を完全に削除してもよろしいですか？"
 
@@ -16200,10 +16180,6 @@ msgstr "ユニークインストール数をカウント"
 #: 
 msgid "Data"
 msgstr "データ"
-
-#: 
-msgid "Data is processed by PostHog on EU infrastructure."
-msgstr "データはEUインフラ上のPostHogによって処理されます。"
 
 #: 
 msgid "Date is required"
@@ -16438,10 +16414,6 @@ msgid "Sending to"
 msgstr "送信先"
 
 #: 
-msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
-msgstr "ChurchCRMチームと匿名の使用統計を共有して、優先すべき機能や言語を把握できるようにしてください。教会名、会員データ、個人情報は一切送信されません。"
-
-#: 
 msgid "Test email sent to"
 msgstr "テストメールの送信先"
 
@@ -16486,10 +16458,6 @@ msgid "What is sent"
 msgstr "送信される内容"
 
 #: 
-msgid "What we collect"
-msgstr "収集する情報"
-
-#: 
 msgid "Wishing you a wonderful %d year birthday!"
 msgstr "素晴らしい%d歳の誕生日をお祝いします！"
 
@@ -16512,10 +16480,6 @@ msgstr "フルのみ"
 #: 
 msgid "is thinking of you today."
 msgstr "今日あなたのことを思っています。"
-
-#: 
-msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
-msgstr "ページルート、有効なロケール、CRMバージョン、PHPバージョン、OSファミリー、およびランダムなインストールID。それ以外は何もありません。データはEUに保存されます。"
 
 #: 
 msgid "% Paid"

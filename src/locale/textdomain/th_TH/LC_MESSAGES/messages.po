@@ -2403,14 +2403,6 @@ msgid "Enable non-deductible payments"
 msgstr "เปิดใช้งานการชำระเงินที่ไม่สามารถหักลดหย่อน"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "ขอบซ้าย (1 = 1/100 นิ้ว)"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "ความหนาของเส้น (1 = 1/100 นิ้ว"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "ข้อความสำหรับบรรทัดบนของรายงานภาษี วันที่จะถูกเพิ่มต่อท้ายบรรทัดนี้"
 
@@ -4856,14 +4848,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "จำนวนขั้นต่ำที่รหัสผ่านใหม่ต้องแตกต่างจากรหัสผ่านเก่า (จำนวนตัวอักษรที่เปลี่ยน)\n"
 "ตั้งเป็นศูนย์เพื่อปิดใช้งานคุณสมบัตินี้"
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr "โหมดการจัดการ PDF\n"
-"1 = กล่องโต้ตอบบันทึกไฟล์\n"
-"2 = เปิดในหน้าต่างเบราว์เซอร์ปัจจุบัน"
 
 #: 
 msgid "Verify People"
@@ -16150,10 +16134,6 @@ msgid "Anonymous Telemetry"
 msgstr "การรวบรวมข้อมูลนิรนาม"
 
 #: 
-msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
-msgstr "ระดับการรวบรวมข้อมูลนิรนาม ควบคุมปริมาณข้อมูลวินิจฉัยนิรนามที่แบ่งปันกับทีม ChurchCRM ไม่มีการส่งชื่อคริสตจักร ข้อมูลสมาชิก หรือข้อมูลส่วนตัวใดๆ"
-
-#: 
 msgid "Are you sure you want to permanently delete this payment record?"
 msgstr "คุณแน่ใจหรือไม่ว่าต้องการลบบันทึกการถวายนี้อย่างถาวร?"
 
@@ -16212,10 +16192,6 @@ msgstr "นับการติดตั้งที่ไม่ซ้ำกั
 #: 
 msgid "Data"
 msgstr "ข้อมูล"
-
-#: 
-msgid "Data is processed by PostHog on EU infrastructure."
-msgstr "ข้อมูลถูกประมวลผลโดย PostHog บนโครงสร้างพื้นฐานในสหภาพยุโรป"
 
 #: 
 msgid "Date is required"
@@ -16450,10 +16426,6 @@ msgid "Sending to"
 msgstr "กำลังส่งถึง"
 
 #: 
-msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
-msgstr "แบ่งปันสถิติการใช้งานนิรนามกับทีม ChurchCRM เพื่อให้เราทราบว่าควรให้ความสำคัญกับฟีเจอร์และภาษาใด ไม่มีการส่งชื่อคริสตจักร ข้อมูลสมาชิก หรือข้อมูลส่วนตัวใดๆ"
-
-#: 
 msgid "Test email sent to"
 msgstr "ส่งอีเมลทดสอบถึง"
 
@@ -16498,10 +16470,6 @@ msgid "What is sent"
 msgstr "สิ่งที่ส่ง"
 
 #: 
-msgid "What we collect"
-msgstr "สิ่งที่เรารวบรวม"
-
-#: 
 msgid "Wishing you a wonderful %d year birthday!"
 msgstr "ขออวยพรให้คุณมีวันเกิดปีที่ %d ที่แสนงดงาม!"
 
@@ -16524,10 +16492,6 @@ msgstr "เต็มรูปแบบเท่านั้น"
 #: 
 msgid "is thinking of you today."
 msgstr "คิดถึงคุณในวันนี้"
-
-#: 
-msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
-msgstr "เส้นทางหน้าเพจ ภาษาที่ใช้งาน เวอร์ชัน CRM เวอร์ชัน PHP ตระกูล OS และรหัสการติดตั้งแบบสุ่ม ไม่มีอะไรอื่น ข้อมูลถูกจัดเก็บในสหภาพยุโรป"
 
 #: 
 msgid "% Paid"

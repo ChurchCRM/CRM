@@ -117,8 +117,9 @@ class PhotoBookService
             }
         } else {
             $facts = [];
-            if (!$person->hideAge() && $person->getNumericAge() >= 0) {
-                $facts[] = sprintf(gettext('Age %d'), $person->getNumericAge());
+            $age = $person->getNumericAge();
+            if ($age !== null) {
+                $facts[] = sprintf(gettext('Age %d'), $age);
             }
             $birthday = self::birthday($person);
             if ($birthday !== '') {

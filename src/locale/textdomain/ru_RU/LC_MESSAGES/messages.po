@@ -2475,14 +2475,6 @@ msgid "Enable non-deductible payments"
 msgstr "Разрешить невычитаемые платежи"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "Левое поле (1 = 1/100 дюйма)"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "Толщина линии (1 = 1/100 дюйма"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "Вербаж к верхней строке налоговой отчетности. Даты будут добавлены в конец этой строки."
 
@@ -4929,14 +4921,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Минимальное количество символов, на которое новый пароль должен отличаться от старого (Кол-во символов изменено)\n"
 "Чтобы отключить эту функцию установите значение \"ноль\""
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr "Режим обработки PDF.\n"
-"1 = Диалог сохранения файла\n"
-"2 = Открыть в текущем окне браузера"
 
 #: 
 msgid "Verify People"
@@ -16263,10 +16247,6 @@ msgid "Anonymous Telemetry"
 msgstr "Анонимная телеметрия"
 
 #: 
-msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
-msgstr "Уровень анонимной телеметрии. Определяет объём анонимных диагностических данных, передаваемых команде ChurchCRM. Названия приходов, данные прихожан и личная информация никогда не передаются."
-
-#: 
 msgid "Are you sure you want to permanently delete this payment record?"
 msgstr "Вы уверены, что хотите безвозвратно удалить эту запись о пожертвовании?"
 
@@ -16325,10 +16305,6 @@ msgstr "Подсчёт уникальных установок"
 #: 
 msgid "Data"
 msgstr "Данные"
-
-#: 
-msgid "Data is processed by PostHog on EU infrastructure."
-msgstr "Данные обрабатываются PostHog на инфраструктуре ЕС."
 
 #: 
 msgid "Date is required"
@@ -16563,10 +16539,6 @@ msgid "Sending to"
 msgstr "Отправляется на"
 
 #: 
-msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
-msgstr "Поделитесь анонимной статистикой использования с командой ChurchCRM, чтобы мы знали, каким функциям и языкам отдать приоритет. Названия приходов, данные прихожан и личная информация никогда не передаются."
-
-#: 
 msgid "Test email sent to"
 msgstr "Тестовое письмо отправлено на"
 
@@ -16611,10 +16583,6 @@ msgid "What is sent"
 msgstr "Что передаётся"
 
 #: 
-msgid "What we collect"
-msgstr "Что мы собираем"
-
-#: 
 msgid "Wishing you a wonderful %d year birthday!"
 msgstr "Поздравляем с замечательным %d-летием!"
 
@@ -16637,10 +16605,6 @@ msgstr "только полный"
 #: 
 msgid "is thinking of you today."
 msgstr "думает о вас сегодня."
-
-#: 
-msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
-msgstr "маршруты страниц, активный язык, версия CRM, версия PHP, семейство ОС и случайный идентификатор установки. Ничего более. Данные хранятся в ЕС."
 
 #: 
 msgid "% Paid"
