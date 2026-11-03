@@ -61,7 +61,7 @@ class Group extends BaseGroup
         AuthService::requireUserGroupMembership('bManageGroups');
     }
 
-    public function preSave(ConnectionInterface $con = null): bool
+    public function preSave(?ConnectionInterface $con = null): bool
     {
         $this->assertGroupWritable();
         parent::preSave($con);
@@ -69,7 +69,7 @@ class Group extends BaseGroup
         return true;
     }
 
-    public function preUpdate(ConnectionInterface $con = null): bool
+    public function preUpdate(?ConnectionInterface $con = null): bool
     {
         $this->assertGroupWritable();
         parent::preUpdate($con);
@@ -86,7 +86,7 @@ class Group extends BaseGroup
      * administrator — is refused here, which is what makes the 409 the `/api/groups`
      * route answers a statement about the model rather than a UI convention.
      */
-    public function preDelete(ConnectionInterface $con = null): bool
+    public function preDelete(?ConnectionInterface $con = null): bool
     {
         if ($this->getMinistryId() !== null && !VolunteerPoolWriter::isManagedWriteOpen()) {
             throw new Exception(
@@ -107,7 +107,7 @@ class Group extends BaseGroup
         parent::postDelete($con);
     }
 
-    public function preInsert(ConnectionInterface $con = null): bool
+    public function preInsert(?ConnectionInterface $con = null): bool
     {
         $this->assertGroupWritable();
         $defaultRole = 1;
@@ -123,7 +123,7 @@ class Group extends BaseGroup
         return true;
     }
 
-    public function postInsert(ConnectionInterface $con = null): void
+    public function postInsert(?ConnectionInterface $con = null): void
     {
         $optionList = ['Member'];
         if ($this->isSundaySchool()) {

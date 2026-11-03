@@ -15,7 +15,7 @@
 # 1. Mount this file to /etc/caddy/Caddyfile in your FrankenPHP container.
 # 2. Update `root` to the path where ChurchCRM's `src/` contents are served from.
 # 3. For subdirectory installs (e.g., http://example.com/churchcrm/), see the
-#    SUBDIRECTORY INSTALLATION section at the bottom of this file.
+#     SUBDIRECTORY INSTALLATION section at the bottom of this file.
 #
 # AUTOMATIC HTTPS
 # ---------------
@@ -75,16 +75,31 @@
     @cli path /cli /cli/*
     respond @cli 404
 
-    @internalPhp path_regexp internalphp ^/(v2/templates|admin/views|finance/views|people/views|groups/views|event/views|fundraiser/views|ministries/views)/.*\.php(/|$)
+    @internalPhp path_regexp internalphp (?i)^/(v2/templates|admin/views|finance/views|people/views|groups/views|event/views|fundraiser/views|ministries/views)/.*\.php(/|$)
     respond @internalPhp 404
 
-    @portalRoutes path_regexp portalroutes ^/portal/routes/.*\.php$
+    @portalRoutes path_regexp portalroutes (?i)^/portal/routes/.*\.php$
     respond @portalRoutes 404
 
     # Block direct HTTP execution of community/core plugin PHP files (GHSA-37mf-vq43-5qp9).
     # Caddy does not honour .htaccess — this explicit rule is required.
-    @pluginPhp path_regexp pluginphp ^/plugins/(community|core)/.+\.(php|phar|phtml|pht|php[3-9])$
+    @pluginPhp path_regexp pluginphp (?i)^/plugins/(community|core)/.+\.(php|phar|phtml|pht|php[3-9])$
     respond @pluginPhp 404
+
+    # Uploaded photos are served only through the authenticated API
+    # (/api/person/{id}/photo, /api/family/{id}/photo). See GHSA-r286-h493-ppwj.
+    @photos path /Images/Person /Images/Person/* /Images/Family /Images/Family/*
+    respond @photos 404
+
+    # Images/ serves only safe image types plus the bundled brand SVGs. Caddy does
+    # not read Images/.htaccess. See GHSA-v5mx-w5g6-fjpc. Keep in sync with
+    # src/Images/.htaccess and docker/examples/nginx/default.conf.
+    @imagesUnsafe {
+        path /Images/*
+        not path_regexp imagesok (?i)\.(jpg|jpeg|png|gif|webp)$
+        not path_regexp brandsvg (?i)^/Images/churchcrm-(logo|symbol)-(ink|paper)-blue\.svg$
+    }
+    respond @imagesUnsafe 403
 
     # ── Slim sub-application routing ──────────────────────────────────────
     #
@@ -198,7 +213,7 @@
 #
 # If ChurchCRM is installed at a subdirectory (e.g., http://example.com/churchcrm/),
 # set $sRootPath = '/churchcrm' in Include/Config.php and replace the server block
-# above with the following (prefix all handle paths with /churchcrm):
+# above (keep the global options block, including `order respond before handle`) with the following (prefix all handle paths with /churchcrm):
 #
 # :80 {
 #     root * /var/www/html
@@ -218,12 +233,20 @@
 #     }
 #     @cli path /churchcrm/cli /churchcrm/cli/*
 #     respond @cli 404
-#     @internalPhp path_regexp internalphp ^/churchcrm/(v2/templates|admin/views|finance/views|people/views|groups/views|event/views|fundraiser/views|ministries/views)/.*\.php(/|$)
+#     @internalPhp path_regexp internalphp (?i)^/churchcrm/(v2/templates|admin/views|finance/views|people/views|groups/views|event/views|fundraiser/views|ministries/views)/.*\.php(/|$)
 #     respond @internalPhp 404
-#     @portalRoutes path_regexp portalroutes ^/churchcrm/portal/routes/.*\.php$
+#     @portalRoutes path_regexp portalroutes (?i)^/churchcrm/portal/routes/.*\.php$
 #     respond @portalRoutes 404
-#     @pluginPhp path_regexp pluginphp ^/churchcrm/plugins/(community|core)/.+\.(php|phar|phtml|pht|php[3-9])$
+#     @pluginPhp path_regexp pluginphp (?i)^/churchcrm/plugins/(community|core)/.+\.(php|phar|phtml|pht|php[3-9])$
 #     respond @pluginPhp 404
+#     @photos path /churchcrm/Images/Person /churchcrm/Images/Person/* /churchcrm/Images/Family /churchcrm/Images/Family/*
+#     respond @photos 404
+#     @imagesUnsafe {
+#         path /churchcrm/Images/*
+#         not path_regexp imagesok (?i)\.(jpg|jpeg|png|gif|webp)$
+#         not path_regexp brandsvg (?i)^/churchcrm/Images/churchcrm-(logo|symbol)-(ink|paper)-blue\.svg$
+#     }
+#     respond @imagesUnsafe 403
 #
 #     handle /churchcrm/session/* {
 #         try_files {path} /churchcrm/session/index.php

@@ -1642,10 +1642,6 @@ msgid "Properties"
 msgstr "Thuộc tính"
 
 #: 
-msgid "Pledge Reminder Report"
-msgstr "Báo cáo cam kết nhắc nhở"
-
-#: 
 msgid "Restore Database"
 msgstr "Khôi phục dữ liệu"
 
@@ -1987,20 +1983,8 @@ msgid "Liaison"
 msgstr "Liên lạc"
 
 #: 
-msgid "City, State, Zip"
-msgstr "Thành phố, Tiểu bang, Zip"
-
-#: 
 msgid "Send Newsletter"
 msgstr "Gửi bản tin"
-
-#: 
-msgid "Member Name"
-msgstr "Tên thành viên"
-
-#: 
-msgid "Adult/Child"
-msgstr "Người lớn / Trẻ em"
 
 #: 
 msgid "Cell Phone"
@@ -2009,10 +1993,6 @@ msgstr "Di động"
 #: 
 msgid "Member/Friend"
 msgstr "Thành viên / Bạn bè"
-
-#: 
-msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
-msgstr "Tùy chọn này yêu cầu ít nhất phiên bản 3.22 của MySQL! Nhấn nút quay lại của trình duyệt để quay lại ChurchCRM."
 
 #: 
 msgid "Work"
@@ -9018,10 +8998,6 @@ msgid "Generate phone directory"
 msgstr "Tao danh ba dien thoai"
 
 #: 
-msgid "Generate pledge reminder letters"
-msgstr "Tao thu nhac nho cam ket dang hien"
-
-#: 
 msgid "Generate reports on group membership and activities"
 msgstr "Tao bao cao ve thanh vien nhom va hoat dong"
 
@@ -15900,10 +15876,6 @@ msgstr "Ví dụ hợp lệ"
 #: 
 msgid "What this plugin does"
 msgstr "Chức năng của plugin này"
-
-#: 
-msgid "for all funds"
-msgstr "cho tất cả các quỹ"
 
 #: 
 msgid "for fund"

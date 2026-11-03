@@ -77,7 +77,9 @@ reviews:
           a Twig or PHP view that renders HTML. Fail if the PR description does not
           state that the changed pages were checked in light and dark themes at
           desktop, tablet (about 820px) and phone width. Pass for PRs that change
-          no UI. Read the description only; do not post this as an inline comment.
+          no UI. Pass when the description states the change has no visible effect
+          and says why (a renamed key, a refactor that renders the same HTML).
+          Read the description only; do not post this as an inline comment.
       - name: Schema upgrade safety
         mode: error
         instructions: |

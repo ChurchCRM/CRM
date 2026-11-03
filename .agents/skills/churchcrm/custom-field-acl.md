@@ -90,7 +90,7 @@ foreach ($customFieldDefinitions as $field) {
 
 `src/CSVExport.php` and `src/PersonEditor.php` show this loop.
 
-Any file touched in a PR is brought onto this pattern (ORM queries plus `isEnabledSecurity()`): `src/PersonCustomFieldsEditor.php`, `src/FamilyCustomFieldsEditor.php`, `src/PersonEditor.php`, `src/FamilyEditor.php`, `src/Reports/DirectoryReport.php`.
+Any file touched in a PR is brought onto this pattern (ORM queries plus `isEnabledSecurity()`): `src/PersonCustomFieldsEditor.php`, `src/FamilyCustomFieldsEditor.php`, `src/PersonEditor.php`, `src/FamilyEditor.php`.
 
 ## Plugins
 

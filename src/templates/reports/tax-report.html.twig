@@ -2,10 +2,7 @@
 {% set show_tax_id = true %}
 {% block letter_body %}
   {% for family in families %}
-    {% if not loop.first %}
-      <pagebreak />
-      {% include "_letterhead.html.twig" %}
-    {% endif %}
+    {% if not loop.first %}{% include "_letter-break.html.twig" %}{% endif %}
 
     <div class="meta">
       <h1>{{ title|default(gettext('Giving Statement')) }}</h1>
@@ -51,7 +48,7 @@
         </tr>
         <tr>
           <td class="label">{{ gettext('Goods and services') }}</td>
-          <td class="amount">{{ family.goods_services|default('$0.00') }}</td>
+          <td class="amount">{{ family.goods_services }}</td>
         </tr>
         <tr class="final">
           <td class="label">{{ gettext('Tax-deductible amount') }}</td>

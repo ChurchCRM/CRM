@@ -28,7 +28,7 @@ const directoryText = () => {
     return cy
         .request({
             method: "POST",
-            url: "Reports/DirectoryReport.php",
+            url: "people/reports/directory",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: body.toString(),
             encoding: "binary",

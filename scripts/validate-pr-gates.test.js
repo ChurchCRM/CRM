@@ -25,6 +25,13 @@ test('warns on a workflow without a script test', () => {
     assert.equal(gates(['.github/workflows/a.yml', 'scripts/a.test.js']).warn.some((m) => m.startsWith('Workflow')), false);
 });
 
+test('recognizes discovered PHP suites as behavior coverage', () => {
+    for (const suite of ['unit', 'integration']) {
+        assert.equal(gates(['src/ChurchCRM/Service/Example.php', `tests/php/${suite}/Service/ExampleTest.php`]).warn.some((message) => message.startsWith('Behavior changed')), false);
+    }
+    assert.equal(gates(['src/ChurchCRM/Service/Example.php', 'tests/php/fixtures/example.php']).warn.some((message) => message.startsWith('Behavior changed')), true);
+});
+
 test('reminds about the UI pass for skin, webpack and template files', () => {
     ['src/skin/scss/_x.scss', 'webpack/a.js', 'src/v2/templates/a.twig'].forEach((file) =>
         assert.equal(gates([file]).warn.some((m) => m.startsWith('UI files')), true, file),

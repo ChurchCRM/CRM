@@ -1,7 +1,7 @@
 {% extends "_letter.html.twig" %}
 {% block letter_body %}
   {% for letter in letters %}
-    {% if not loop.first %}<pagebreak />{% endif %}
+    {% if not loop.first %}{% include "_letter-break.html.twig" %}{% endif %}
 
     <div class="recipient">
       <strong>{{ letter.salutation }}</strong><br>

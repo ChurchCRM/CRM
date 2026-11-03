@@ -4,7 +4,6 @@ namespace ChurchCRM\Service;
 
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
-use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 
 /**
@@ -119,7 +118,7 @@ class ClassAttendanceService
             $liaisons = [];
             foreach ($memberships as $membership) {
                 $person = $membership->getPerson();
-                $row = ['name' => $person->getFullName(), 'photo' => $withPictures ? self::photoFile($person) : ''];
+                $row = ['name' => $person->getFullName()] + ($withPictures ? ReportPhoto::forPerson($person) : ['photo' => '', 'initials' => '']);
                 $everyone[] = $row;
 
                 // Role option names are stored untranslated, so compare them to the stored names, never to gettext().
@@ -151,12 +150,5 @@ class ClassAttendanceService
         }
 
         return $classes;
-    }
-
-    private static function photoFile(Person $person): string
-    {
-        $photo = (string) $person->getPhoto()->getPhotoURI();
-
-        return is_file($photo) ? $photo : '';
     }
 }

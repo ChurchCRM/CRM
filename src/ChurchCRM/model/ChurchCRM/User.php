@@ -751,12 +751,12 @@ class User extends BaseUser
         return MiscUtils::randomToken();
     }
 
-    public function postInsert(ConnectionInterface $con = null): void
+    public function postInsert(?ConnectionInterface $con = null): void
     {
         $this->createTimeLineNote('created');
     }
 
-    public function postDelete(ConnectionInterface $con = null): void
+    public function postDelete(?ConnectionInterface $con = null): void
     {
         $this->createTimeLineNote('deleted');
     }
@@ -949,18 +949,24 @@ class User extends BaseUser
     {
         $google2fa = new Google2FA();
         $key = $google2fa->generateSecretKey();
-        // store the temporary 2FA key in a private variable on this User object
-        // we don't want to update the database with the new key until we've confirmed
-        // that the user is capable of generating valid 2FA codes
-        // encrypt the 2FA key since this object and its properties are serialized into the $_SESSION store
-        // which is generally written to disk.
+        // Persist only the encrypted provisional secret until enrollment is confirmed.
         $this->provisional2FAKey = Crypto::encryptWithPassword($key, KeyManagerUtils::getTwoFASecretKey());
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            $_SESSION['provisional2FAKey'] = $this->provisional2FAKey;
+        }
 
         return $key;
     }
 
     public function confirmProvisional2FACode(string $twoFACode): bool
     {
+        if ($this->provisional2FAKey === null && session_status() === PHP_SESSION_ACTIVE) {
+            $this->provisional2FAKey = $_SESSION['provisional2FAKey'] ?? null;
+        }
+        if ($this->provisional2FAKey === null) {
+            return false;
+        }
+
         $google2fa = new Google2FA();
         $window = 2;
         $pw = Crypto::decryptWithPassword($this->provisional2FAKey, KeyManagerUtils::getTwoFASecretKey());
@@ -970,6 +976,8 @@ class User extends BaseUser
             // Clear grace period start: enrollment completed, fresh window on any future re-enroll
             $this->setTwoFactorAuthGracePeriodStart(null);
             $this->save();
+            unset($_SESSION['provisional2FAKey']);
+            $this->provisional2FAKey = null;
 
             return true;
         }

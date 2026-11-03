@@ -31,7 +31,8 @@ function model(config, prefix) {
   const portal = config.match(/^\s*@portalRoutes\s+path_regexp\s+portalroutes\s+(\S+)/m);
   const plugin = config.match(/^\s*@pluginPhp\s+path_regexp\s+pluginphp\s+(\S+)/m);
   assert.ok(cli && internal && portal && plugin, "missing security matchers");
-  const blocked = [new RegExp(internal[1]), new RegExp(portal[1]), new RegExp(plugin[1])];
+  const caddyRegExp = (source) => new RegExp(source.replace(/^\(\?i\)/, ""), source.startsWith("(?i)") ? "i" : "");
+  const blocked = [internal[1], portal[1], plugin[1]].map(caddyRegExp);
   assert.equal(cli[1], prefix + "/cli");
   assert.equal(cli[2], prefix + "/cli/*");
 
@@ -82,6 +83,8 @@ for (const [name, config, prefix] of [
       "/v2/templates/internal.php",
       "/portal/routes/profile.php",
       "/plugins/community/plugin/secret.php",
+      "/Plugins/community/plugin/secret.PHP",
+      "/Admin/Views/internal.PHP",
     ];
     for (const path of privatePaths) {
       assert.deepEqual(router.resolve(prefix + path), { status: 404 }, "must block " + prefix + path);
