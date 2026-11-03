@@ -15,6 +15,7 @@ Process:
 2. Run the migration on a staging copy and smoke-test the app
 3. Back up the production DB before applying; keep a rollback script and a snapshot
 4. Apply in a maintenance window and watch for errors
+5. For every PR that adds or changes a file under `src/mysql/upgrade/`, report before-and-after per-statement timings on the repeatable large-dataset upgrade benchmark. Include the dataset sizes and database version, and identify lock duration for hot tables.
 
 Backward compatibility: add nullable columns or new tables first, populate them (background job if large), then tighten to non-null in a later step.
 
