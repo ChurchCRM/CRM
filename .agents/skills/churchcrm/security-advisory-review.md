@@ -10,15 +10,16 @@ complexity: "advanced"
 ## Audit and prioritize
 
 1. List advisories at https://github.com/ChurchCRM/CRM/security/advisories (filter by triage, draft, published). Note count and severity.
-2. Sort each by fix size:
+2. Run [security-report-triage.md](./security-report-triage.md) on every `triage` advisory first. Its read (grounded, inflated, not-a-vulnerability) and re-scored severity decide whether and how fast to fix.
+3. Sort each grounded advisory by fix size:
    - **One-line** (output escaping, config validation): fix now
    - **Moderate** (add middleware, rework an endpoint): plan for the next feature release
    - **Large rewrite** (procedural pre-ORM code): open a `modernize: {feature} to use {pattern}` issue that references the GHSA ID, and fix every similar issue in that one PR
-3. Prioritize by risk:
+4. Prioritize by risk:
    - Critical/High (external attacker): fix before the next release
    - Medium (needs user interaction): fix in the current cycle
    - Low (admin-only): batch with the modernization issue
-4. Batch similar fixes (escaping, validation). One batch is one branch, one commit, one PR.
+5. Batch similar fixes (escaping, validation). One batch is one branch, one commit, one PR.
 
 ## Read an unpublished advisory
 
@@ -53,6 +54,8 @@ Branch from `master`: `security/fix-{GHSA_ID}-{VERSION}` (for example `security/
 2. Update `@OA\*` annotations when endpoints change
 3. Write tests for every threat vector: the working path, failure cases with correct status codes, generic error messages (no user or email enumeration), and enforcement of each restriction
 4. Run the test suite and test locally before pushing
+
+Review the fix branch with `/pr-review` before it merges.
 
 Commit subject: `security: fix {GHSA_ID} - {short description}`. The body states the root cause and the fix. Commit and push gates follow `git-workflow.md`.
 
