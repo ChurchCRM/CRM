@@ -54,7 +54,7 @@ class VersionUtils
             return $version;
         }
 
-        LoggerUtils::getAppLogger()->warning('could not determine version from composer autoloader, falling back to legacy composer.json parsing');
+        LoggerUtils::getAppLogger()->debug('Reading installed version from composer.json because Composer metadata has no version');
         $version = self::readVersionFromComposerJson();
         if ($version === null) {
             throw new \RuntimeException('Unable to determine installed version from Composer metadata or composer.json');
