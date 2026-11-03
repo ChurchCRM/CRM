@@ -559,7 +559,7 @@ $sCountry = Countries::toISO($sCountry);
 
 require_once __DIR__ . '/Include/Header.php';
 ?>
-<form method="post" action="FamilyEditor.php?FamilyID=<?php echo $iFamilyID ?>" id="familyEditor">
+<form method="post" action="FamilyEditor.php?FamilyID=<?php echo InputUtils::escapeAttribute($iFamilyID) ?>" id="familyEditor">
     <input type="hidden" name="iFamilyID" value="<?= $iFamilyID ?>">
     <input type="hidden" name="FamCount" value="<?= $iFamilyMemberRows ?>">
     <input type="hidden" id="stateType" name="stateType" value="">
