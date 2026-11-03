@@ -16154,10 +16154,6 @@ msgid "Anonymous Telemetry"
 msgstr "Telemetría Anónima"
 
 #: 
-msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
-msgstr "Nivel de telemetría anónima. Controla cuántos datos de diagnóstico anónimos se comparten con el equipo de ChurchCRM. Nunca se envían nombres de parroquias, datos de feligreses ni información personal."
-
-#: 
 msgid "Are you sure you want to permanently delete this payment record?"
 msgstr "¿Está seguro de que desea eliminar permanentemente este registro de pago?"
 
@@ -16216,10 +16212,6 @@ msgstr "Contar instalaciones únicas"
 #: 
 msgid "Data"
 msgstr "Datos"
-
-#: 
-msgid "Data is processed by PostHog on EU infrastructure."
-msgstr "Los datos son procesados por PostHog en infraestructura de la UE."
 
 #: 
 msgid "Date is required"
@@ -16454,10 +16446,6 @@ msgid "Sending to"
 msgstr "Enviando a"
 
 #: 
-msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
-msgstr "Comparta estadísticas de uso anónimas con el equipo de ChurchCRM para que sepamos qué funciones e idiomas priorizar. Nunca se envían nombres de parroquias, datos de feligreses ni información personal."
-
-#: 
 msgid "Test email sent to"
 msgstr "Correo de prueba enviado a"
 
@@ -16502,10 +16490,6 @@ msgid "What is sent"
 msgstr "Qué se envía"
 
 #: 
-msgid "What we collect"
-msgstr "Qué recopilamos"
-
-#: 
 msgid "Wishing you a wonderful %d year birthday!"
 msgstr "¡Le deseamos un maravilloso cumpleaños número %d!"
 
@@ -16528,10 +16512,6 @@ msgstr "solo completo"
 #: 
 msgid "is thinking of you today."
 msgstr "está pensando en usted hoy."
-
-#: 
-msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
-msgstr "rutas de página, idioma activo, versión del CRM, versión de PHP, familia de SO y un ID de instalación aleatorio. Nada más. Los datos se almacenan en la UE."
 
 #: 
 msgid "% Paid"

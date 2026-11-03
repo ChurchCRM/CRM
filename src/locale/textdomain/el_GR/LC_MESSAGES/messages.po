@@ -16184,10 +16184,6 @@ msgid "Anonymous Telemetry"
 msgstr "Ανώνυμη Τηλεμετρία"
 
 #: 
-msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
-msgstr "Επίπεδο ανώνυμης τηλεμετρίας. Ελέγχει πόσα ανώνυμα διαγνωστικά δεδομένα κοινοποιούνται στην ομάδα ChurchCRM. Δεν αποστέλλονται ποτέ ονόματα εκκλησιών, δεδομένα μελών ή προσωπικές πληροφορίες."
-
-#: 
 msgid "Are you sure you want to permanently delete this payment record?"
 msgstr "Είστε βέβαιοι ότι θέλετε να διαγράψετε οριστικά αυτή την εγγραφή προσφοράς;"
 
@@ -16246,10 +16242,6 @@ msgstr "Καταμέτρηση μοναδικών εγκαταστάσεων"
 #: 
 msgid "Data"
 msgstr "Δεδομένα"
-
-#: 
-msgid "Data is processed by PostHog on EU infrastructure."
-msgstr "Τα δεδομένα επεξεργάζονται από την PostHog σε υποδομή της ΕΕ."
 
 #: 
 msgid "Date is required"
@@ -16484,10 +16476,6 @@ msgid "Sending to"
 msgstr "Αποστολή σε"
 
 #: 
-msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
-msgstr "Κοινοποιήστε ανώνυμα στατιστικά χρήσης με την ομάδα ChurchCRM ώστε να γνωρίζουμε ποιες λειτουργίες και γλώσσες να προτεραιοποιήσουμε. Δεν αποστέλλονται ποτέ ονόματα εκκλησιών, δεδομένα μελών ή προσωπικές πληροφορίες."
-
-#: 
 msgid "Test email sent to"
 msgstr "Δοκιμαστικό email εστάλη σε"
 
@@ -16532,10 +16520,6 @@ msgid "What is sent"
 msgstr "Τι αποστέλλεται"
 
 #: 
-msgid "What we collect"
-msgstr "Τι συλλέγουμε"
-
-#: 
 msgid "Wishing you a wonderful %d year birthday!"
 msgstr "Σας ευχόμαστε χρόνια πολλά για τα %d σας χρόνια!"
 
@@ -16558,10 +16542,6 @@ msgstr "μόνο πλήρης"
 #: 
 msgid "is thinking of you today."
 msgstr "σας σκέφτεται σήμερα."
-
-#: 
-msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
-msgstr "διαδρομές σελίδων, ενεργή γλώσσα, έκδοση CRM, έκδοση PHP, οικογένεια ΛΣ και τυχαίο αναγνωριστικό εγκατάστασης. Τίποτα άλλο. Τα δεδομένα αποθηκεύονται στην ΕΕ."
 
 #: 
 msgid "% Paid"

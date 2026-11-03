@@ -16191,10 +16191,6 @@ msgid "Anonymous Telemetry"
 msgstr "ስም-አልባ ቴሌሜትሪ"
 
 #: 
-msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
-msgstr "ስም-አልባ የቴሌሜትሪ ደረጃ። ምን ያህል ስም-አልባ የምርመራ ዳታ ከChurchCRM ቡድን ጋር እንደሚጋራ ይቆጣጠራል። የቤተ-ክርስቲያን ስሞች፣ የአባላት ዳታ ወይም የግል መረጃ ፈጽሞ አይላክም።"
-
-#: 
 msgid "Are you sure you want to permanently delete this payment record?"
 msgstr "ይህን የክፍያ መዝገብ እስከመጨረሻ ለመሰረዝ እርግጠኛ ነዎት?"
 
@@ -16253,10 +16249,6 @@ msgstr "ልዩ ጭነቶችን ቁጠር"
 #: 
 msgid "Data"
 msgstr "ዳታ"
-
-#: 
-msgid "Data is processed by PostHog on EU infrastructure."
-msgstr "ዳታው በEU መሠረተ-ልማት ላይ በPostHog ይሰናዳል።"
 
 #: 
 msgid "Date is required"
@@ -16491,10 +16483,6 @@ msgid "Sending to"
 msgstr "ወደ እየላከ ነው"
 
 #: 
-msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
-msgstr "የትኞቹን ባህሪያት እና ቋንቋዎች ቅደምተከተል ማስያዝ እንዳለብን ለማወቅ ስም-አልባ የአጠቃቀም ስታቲስቲክስን ከChurchCRM ቡድን ጋር ያጋሩ። የቤተ-ክርስቲያን ስሞች፣ የአባላት ዳታ ወይም የግል መረጃ ፈጽሞ አይላክም።"
-
-#: 
 msgid "Test email sent to"
 msgstr "የሙከራ ኢሜይል ተልኳል ወደ"
 
@@ -16539,10 +16527,6 @@ msgid "What is sent"
 msgstr "ምን እንደሚላክ"
 
 #: 
-msgid "What we collect"
-msgstr "ምን እንሰበስባለን"
-
-#: 
 msgid "Wishing you a wonderful %d year birthday!"
 msgstr "መልካም %d ዓመት የልደት ቀን!"
 
@@ -16565,10 +16549,6 @@ msgstr "ሙሉ ብቻ"
 #: 
 msgid "is thinking of you today."
 msgstr "ዛሬ ስለ እርስዎ እያሰበ ነው።"
-
-#: 
-msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
-msgstr "የገጽ መስመሮች፣ ንቁ ቋንቋ፣ CRM ስሪት፣ PHP ስሪት፣ የOS ቤተሰብ እና የዘፈቀደ የጭነት ID። ሌላ ምንም አይደለም። ዳታ በEU ውስጥ ይቀመጣል።"
 
 #: 
 msgid "% Paid"

@@ -16153,10 +16153,6 @@ msgid "Anonymous Telemetry"
 msgstr "अनाम टेलीमेट्री"
 
 #: 
-msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
-msgstr "अनाम टेलीमेट्री स्तर। यह नियंत्रित करता है कि ChurchCRM टीम के साथ कितना अनाम निदान डेटा साझा किया जाता है। कोई चर्च नाम, सदस्य डेटा या व्यक्तिगत जानकारी कभी नहीं भेजी जाती।"
-
-#: 
 msgid "Are you sure you want to permanently delete this payment record?"
 msgstr "क्या आप वाकई इस भुगतान रिकॉर्ड को स्थायी रूप से हटाना चाहते हैं?"
 
@@ -16215,10 +16211,6 @@ msgstr "अद्वितीय इंस्टॉलेशन गिनें"
 #: 
 msgid "Data"
 msgstr "डेटा"
-
-#: 
-msgid "Data is processed by PostHog on EU infrastructure."
-msgstr "डेटा को EU अवसंरचना पर PostHog द्वारा संसाधित किया जाता है।"
 
 #: 
 msgid "Date is required"
@@ -16453,10 +16445,6 @@ msgid "Sending to"
 msgstr "भेजा जा रहा है"
 
 #: 
-msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
-msgstr "ChurchCRM टीम के साथ अनाम उपयोग सांख्यिकी साझा करें ताकि हम जान सकें कि कौन सी सुविधाओं और भाषाओं को प्राथमिकता दी जाए। कोई चर्च नाम, सदस्य डेटा या व्यक्तिगत जानकारी कभी नहीं भेजी जाती।"
-
-#: 
 msgid "Test email sent to"
 msgstr "परीक्षण ईमेल भेजा गया"
 
@@ -16501,10 +16489,6 @@ msgid "What is sent"
 msgstr "क्या भेजा जाता है"
 
 #: 
-msgid "What we collect"
-msgstr "हम क्या एकत्र करते हैं"
-
-#: 
 msgid "Wishing you a wonderful %d year birthday!"
 msgstr "आपको एक शानदार %d वर्ष के जन्मदिन की शुभकामनाएँ!"
 
@@ -16527,10 +16511,6 @@ msgstr "केवल पूर्ण"
 #: 
 msgid "is thinking of you today."
 msgstr "आज आपके बारे में सोच रहा है।"
-
-#: 
-msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
-msgstr "पृष्ठ मार्ग, सक्रिय लोकेल, CRM संस्करण, PHP संस्करण, OS परिवार और एक यादृच्छिक इंस्टॉलेशन ID। कुछ और नहीं। डेटा EU में संग्रहीत है।"
 
 #: 
 msgid "% Paid"

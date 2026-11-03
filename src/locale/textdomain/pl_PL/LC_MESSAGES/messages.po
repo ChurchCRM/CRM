@@ -16253,10 +16253,6 @@ msgid "Anonymous Telemetry"
 msgstr "Anonimowa telemetria"
 
 #: 
-msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
-msgstr "Poziom anonimowej telemetrii. Kontroluje, ile anonimowych danych diagnostycznych jest udostępnianych zespołowi ChurchCRM. Nigdy nie są wysyłane nazwy parafii, dane wiernych ani informacje osobiste."
-
-#: 
 msgid "Are you sure you want to permanently delete this payment record?"
 msgstr "Czy na pewno chcesz trwale usunąć ten rekord ofiary?"
 
@@ -16315,10 +16311,6 @@ msgstr "Zliczaj unikalne instalacje"
 #: 
 msgid "Data"
 msgstr "Dane"
-
-#: 
-msgid "Data is processed by PostHog on EU infrastructure."
-msgstr "Dane są przetwarzane przez PostHog na infrastrukturze UE."
 
 #: 
 msgid "Date is required"
@@ -16553,10 +16545,6 @@ msgid "Sending to"
 msgstr "Wysyłanie do"
 
 #: 
-msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
-msgstr "Udostępnij anonimowe statystyki użytkowania zespołowi ChurchCRM, abyśmy wiedzieli, którym funkcjom i językom nadać priorytet. Nigdy nie są wysyłane nazwy parafii, dane wiernych ani informacje osobiste."
-
-#: 
 msgid "Test email sent to"
 msgstr "Testowy e-mail wysłany do"
 
@@ -16601,10 +16589,6 @@ msgid "What is sent"
 msgstr "Co jest wysyłane"
 
 #: 
-msgid "What we collect"
-msgstr "Co zbieramy"
-
-#: 
 msgid "Wishing you a wonderful %d year birthday!"
 msgstr "Życzymy wspaniałych %d urodzin!"
 
@@ -16627,10 +16611,6 @@ msgstr "tylko pełny"
 #: 
 msgid "is thinking of you today."
 msgstr "myśli dziś o Tobie."
-
-#: 
-msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
-msgstr "ścieżki stron, aktywna lokalizacja, wersja CRM, wersja PHP, rodzina systemu operacyjnego i losowy identyfikator instalacji. Nic więcej. Dane są przechowywane w UE."
 
 #: 
 msgid "% Paid"
