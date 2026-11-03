@@ -103,6 +103,15 @@ npm run build:php:validate:orm
 
 `scripts/validate-orm-base-classes.js` passes silently when `Base/` is absent, so run `composer install` first.
 
+## How the Upgrader Runs a Script
+
+The web upgrader runs one `.sql` or `.php` file per HTTP request and records it in `database_upgrade_progress` (`started`, then `complete`). The version advances only after every file in the block completes. Details: `docs/development/upgrade-request-batches.md`.
+
+- A file that dies midway stays `started` and stops the run. Its statements already applied stay applied (DDL auto-commits), and the upgrader does not re-run it. An administrator repairs the database and the checkpoint, or restores a backup.
+- Write every file so that re-running it from the start is safe: guard each `ADD COLUMN` / `ALTER` with `information_schema` (below), and use `INSERT IGNORE` and `DROP ... IF EXISTS`. After a crash, an administrator can then reset the file's checkpoint and run it again safely.
+- Keep a file to one concern and list the files in order in `scripts`. A small file limits what a crash can leave half done.
+- `upgrade.json` has no retry metadata, and the upgrader does not retry or skip a `started` file by itself. Do not add either without a stuck-upgrade report on a released script (deferred under #10943). When a report arrives, split only that block's files, and give the split files the exact end state of the original for a fresh database.
+
 ## MySQL-Compatible SQL
 
 Supported databases are the LTS releases in `supported-databases.json`, the one place the versions are written. To change one, edit that file and run `node scripts/sync-supported-databases.js`; `npm run lint` fails when a file is out of date. The docs repo (`requirements.json`) and the website (`data/requirements.json`) mirror the file: update both. CI runs the MariaDB version, and the nightly runs the MySQL version plus `mysql:lts` and `mysql:latest`. Every `.sql` change (upgrade script, `Install.sql`, `seed.sql`) must run on both MariaDB and MySQL. Before you ask to commit, apply it to MariaDB (`docker/docker-compose.yaml`) and to a MySQL 8 container, and run it a second time where it should be idempotent. Syntax that only one server accepts fails on the other; CI finds it only in the nightly matrix.
