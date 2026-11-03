@@ -38,6 +38,17 @@ describe("Admin - Report Settings page", () => {
         removeStoredLetterhead();
     });
 
+    it("lists Report Settings under Reports > Admin in the sidebar", () => {
+        cy.visit("/admin/system/report-settings");
+        cy.get('#sidebar a[href$="/admin/system/report-settings"]').should("have.length", 1);
+        cy.get('#sidebar a[href$="/admin/system/report-settings"]')
+            .parents("li.nav-item")
+            .last()
+            .find(".nav-link-title")
+            .first()
+            .should("have.text", "Reports");
+    });
+
     it("shows the letterhead card and opens the shared uploader", () => {
         cy.visit("/admin/system/report-settings");
         cy.contains("Report Settings").should("be.visible");

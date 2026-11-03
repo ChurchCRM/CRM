@@ -214,8 +214,6 @@ class   SystemConfig
             'sDateFilenameFormat'                  => new ConfigItem('sDateFilenameFormat', 'text', 'Ymd-Gis'),
             'sDatePickerPlaceHolder'               => new ConfigItem('sDatePickerPlaceHolder', 'text', 'yyyy-mm-dd', gettext('For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example.')),
             'sDatePickerFormat'                    => new ConfigItem('sDatePickerFormat', 'text', 'Y-m-d', gettext('For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example.')),
-            'leftX'                                => new ConfigItem('leftX', 'number', '20', gettext('Left Margin (1 = 1/100th inch)')),
-            'incrementY'                           => new ConfigItem('incrementY', 'number', '4', gettext('Line Thickness (1 = 1/100th inch')),
             'sChurchName'                          => new ConfigItem('sChurchName', 'text', '', ''),
             'sChurchAddress'                       => new ConfigItem('sChurchAddress', 'text', '', ''),
             'sChurchCity'                          => new ConfigItem('sChurchCity', 'text', '', ''),
@@ -241,6 +239,7 @@ class   SystemConfig
             'sConfirmSigner'                       => new ConfigItem('sConfirmSigner', 'text', '', gettext('Database information confirmation and correction report signer')),
             'sDirectoryDisclaimer1'                => new ConfigItem('sDirectoryDisclaimer1', 'text', "Every effort was made to ensure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.\n\nThis directory is for the use of the people of", gettext('Verbage for the directory report'), '', '', false),
             'sDirectoryDisclaimer2'                => new ConfigItem('sDirectoryDisclaimer2', 'text', ', and the information contained in it may not be used for business or commercial purposes.', gettext('Verbage for the directory report'), '', '', false),
+            // Legacy path or https URL, read as a fallback when no letterhead is uploaded on Admin -> Report Settings.
             'bDirLetterHead'                       => new ConfigItem('bDirLetterHead', 'text', '', gettext('Church Letterhead path and file')),
             'sZeroGivers'                          => new ConfigItem('sZeroGivers', 'text', 'This letter shows our record of your payments for', gettext('Verbage for top line of tax report. Dates will be appended to the end of this line.')),
             'sZeroGivers2'                         => new ConfigItem('sZeroGivers2', 'text', 'Thank you for your help in making a difference. We greatly appreciate your gift!', gettext('Verbage for bottom line of tax report.')),
@@ -370,7 +369,7 @@ class   SystemConfig
             gettext('Quick Search')       => ['bSearchIncludePersons', 'bSearchIncludePersonsMax', 'bSearchIncludeAddresses', 'bSearchIncludeAddressesMax', 'bSearchIncludeFamilies', 'bSearchIncludeFamiliesMax', 'bSearchIncludeFamilyHOH', 'bSearchIncludeFamilyHOHMax', 'bSearchIncludeGroups', 'bSearchIncludeGroupsMax', 'bSearchIncludeDeposits', 'bSearchIncludeDepositsMax', 'bSearchIncludePayments', 'bSearchIncludePaymentsMax', 'bSearchIncludeFamilyCustomProperties', 'bSearchIncludeCalendarEvents', 'bSearchIncludeCalendarEventsMax'],
             gettext('Confession')         => ['iPersonConfessionFatherCustomField', 'iPersonConfessionDateCustomField'],
             gettext('Scheduled Tasks')    => ['iTimerJobsStaleHours', 'iTimerJobsMinIntervalMinutes'],
-            gettext('Report Settings')    => ['sQBDTSettings', 'leftX', 'incrementY', 'sTaxReport1', 'sTaxReport2', 'sTaxReport3', 'sTaxSigner', 'sReminder1', 'sReminderSigner', 'sReminderNoPledge', 'sReminderNoPayments', 'sConfirm1', 'sConfirm2', 'sConfirm3', 'sConfirm4', 'sConfirm5', 'sConfirm6', 'sDear', 'sConfirmSincerely', 'sConfirmSigner', 'sDirectoryDisclaimer1', 'sDirectoryDisclaimer2', 'bDirLetterHead', 'sZeroGivers', 'sZeroGivers2', 'sZeroGivers3', 'iPDFOutputType'],
+            gettext('Report Settings')    => ['sQBDTSettings', 'sTaxReport1', 'sTaxReport2', 'sTaxReport3', 'sTaxSigner', 'sReminder1', 'sReminderSigner', 'sReminderNoPledge', 'sReminderNoPayments', 'sConfirm1', 'sConfirm2', 'sConfirm3', 'sConfirm4', 'sConfirm5', 'sConfirm6', 'sDear', 'sConfirmSincerely', 'sConfirmSigner', 'sDirectoryDisclaimer1', 'sDirectoryDisclaimer2', 'sZeroGivers', 'sZeroGivers2', 'sZeroGivers3', 'iPDFOutputType'],
         ];
     }
 
