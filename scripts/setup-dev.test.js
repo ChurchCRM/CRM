@@ -68,6 +68,14 @@ test('browser verification failure stops before services start', () => {
     assert.doesNotMatch(result.calls, /npm run docker:test:start/);
 });
 
+test('native setup installs locked PHP test tooling before readiness and lint', () => {
+    const result = simulate([]);
+    assert.equal(result.status, 0, result.stderr);
+    assert.ok(result.calls.indexOf('npm run build') < result.calls.indexOf('npm run test:php:install'));
+    assert.ok(result.calls.indexOf('npm run test:php:install') < result.calls.indexOf('check-environment.js php'));
+    assert.ok(result.calls.indexOf('check-environment.js php') < result.calls.indexOf('npm run lint'));
+});
+
 
 test('container setup uses the existing image and runs shared setup inside it', () => {
     const result = simulate(['--docker'], 'php');

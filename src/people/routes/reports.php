@@ -1,9 +1,14 @@
 <?php
 
+use ChurchCRM\dto\Cart;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\DirectoryReportService;
 use ChurchCRM\Service\PeopleReportService;
 use ChurchCRM\Slim\Middleware\Request\Auth\StaffRoleAuthMiddleware;
 use ChurchCRM\Utils\CsvExporter;
+use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\PdfResponse;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -19,6 +24,7 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
     $group->get('/', 'getPeopleReportsIndex');
     $group->get('/{slug:[a-z-]+}', 'getPeopleReport');
     $group->get('/{slug:[a-z-]+}/csv', 'getPeopleReportCsv');
+    $group->post('/directory', 'postPeopleDirectory');
 })->add(StaffRoleAuthMiddleware::class);
 
 /**
@@ -54,6 +60,100 @@ function getPeopleReportsIndex(Request $request, Response $response, array $args
         'reports' => (new PeopleReportService())->getReports(),
         'links' => peopleReportLinks(),
     ]);
+}
+
+/**
+ * The church directory PDF. The options form is DirectoryReports.php; the group's staff
+ * middleware keeps self-service accounts out.
+ */
+function postPeopleDirectory(Request $request, Response $response): Response
+{
+    $post = (array) $request->getParsedBody();
+    $cartDirectory = array_key_exists('cartdir', $post);
+
+    $classifications = [];
+    foreach ((array) ($post['sDirClassifications'] ?? []) as $classification) {
+        // 'int' filtering turns junk into 0, which would quietly select Unassigned.
+        $valid = is_scalar($classification) && ctype_digit(trim((string) $classification));
+        if (!$valid && !$cartDirectory) {
+            return peopleDirectoryBadRequest($response);
+        }
+        if ($valid) {
+            $classifications[] = InputUtils::filterInt($classification);
+        }
+    }
+    // The browser omits an empty multi-select, and no qualifier would print everyone
+    // (the cart directory is limited by the cart instead).
+    if ($classifications === [] && !$cartDirectory) {
+        return peopleDirectoryBadRequest($response);
+    }
+
+    $ids = fn (string $key): array => array_values(array_map(
+        fn ($value): int => InputUtils::filterInt($value),
+        array_filter((array) ($post[$key] ?? []), 'is_scalar')
+    ));
+    $flag = fn (string $key): bool => isset($post[$key]);
+
+    $show = [
+        'address' => $flag('bDirAddress'),
+        'mailing' => $flag('bDirAddress') && $flag('bDirMailingAddress'),
+        'wedding' => $flag('bDirWedding'),
+        'birthday' => $flag('bDirBirthday'),
+        'familyPhone' => $flag('bDirFamilyPhone'),
+        'familyWork' => $flag('bDirFamilyWork'),
+        'familyCell' => $flag('bDirFamilyCell'),
+        'familyEmail' => $flag('bDirFamilyEmail'),
+        'personalPhone' => $flag('bDirPersonalPhone'),
+        'personalWork' => $flag('bDirPersonalWork'),
+        'personalCell' => $flag('bDirPersonalCell'),
+        'personalEmail' => $flag('bDirPersonalEmail'),
+        'personalWorkEmail' => $flag('bDirPersonalWorkEmail'),
+        'photo' => $flag('bDirPhoto'),
+    ];
+    $customFieldOrders = [];
+    foreach (array_keys($post) as $name) {
+        if (preg_match('/^bCustom(\d+)$/', (string) $name, $match) === 1) {
+            $customFieldOrders[] = (int) $match[1];
+        }
+    }
+
+    $text = fn (string $key, int $length = 255): string => mb_substr(trim((string) preg_replace('/[\x00-\x08\x0B\x0C\x0E-\x1F]/', '', is_scalar($post[$key] ?? null) ? (string) $post[$key] : '')), 0, $length);
+    $paper = $text('PageSize');
+
+    $pdf = (new DirectoryReportService())->pdf([
+        'classifications' => $classifications === [] ? null : $classifications,
+        'groups' => $ids('GroupID'),
+        'cartIds' => $cartDirectory ? array_map('intval', array_filter(explode(',', Cart::getCartIdString()))) : null,
+        'excludeInactive' => $flag('bExcludeInactive'),
+        'headRoles' => $ids('sDirRoleHead'),
+        'spouseRoles' => $ids('sDirRoleSpouse'),
+        'show' => $show,
+        'customFieldOrders' => $customFieldOrders,
+    ], [
+        'paper' => in_array($paper, ['letter', 'a4'], true) ? $paper : 'legal',
+        'booklet' => $text('sDirLayout') === 'booklet',
+        'columns' => InputUtils::filterInt($post['NumCols'] ?? '1') ?: 1,
+        'fontSize' => InputUtils::filterInt($post['FSize'] ?? '8') ?: 8,
+        'titlePage' => $flag('bDirUseTitlePage'),
+        'title' => [
+            'name' => $text('sChurchName'),
+            'address' => $text('sChurchAddress'),
+            'city' => $text('sChurchCity'),
+            'state' => $text('sChurchState'),
+            'zip' => $text('sChurchZip'),
+            'phone' => $text('sChurchPhone'),
+            'disclaimer' => $text('sDirectoryDisclaimer', 2000),
+        ],
+    ]);
+
+    return PdfResponse::create($response, $pdf, 'Directory-' . date(SystemConfig::getValue('sDateFilenameFormat')));
+}
+
+function peopleDirectoryBadRequest(Response $response): Response
+{
+    $response->getBody()->write(gettext('Select at least one classification to include in the directory.'));
+
+    return $response->withStatus(400)->withHeader('Content-Type', 'text/plain; charset=UTF-8');
 }
 
 /**

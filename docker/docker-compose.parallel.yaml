@@ -64,6 +64,7 @@ services:
       - .env
     environment:
       - CHURCHCRM_PLUGIN_FIXTURES=/home/ChurchCRM/cypress/fixtures/plugin-registry
+      - CHURCHCRM_DISABLE_POSTHOG_TELEMETRY=1
     depends_on:
       database-root:
         condition: service_healthy
@@ -98,6 +99,7 @@ services:
       - .env
     environment:
       - CHURCHCRM_PLUGIN_FIXTURES=/home/ChurchCRM/cypress/fixtures/plugin-registry
+      - CHURCHCRM_DISABLE_POSTHOG_TELEMETRY=1
       - CHURCHCRM_SUBDIR=churchcrm
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-changeme}
       - MYSQL_DATABASE=${MYSQL_DATABASE:-churchcrm}
@@ -152,6 +154,7 @@ services:
     env_file:
       - .env
     environment:
+      - CHURCHCRM_DISABLE_POSTHOG_TELEMETRY=1
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-changeme}
       - MYSQL_DATABASE=${MYSQL_DATABASE:-churchcrm}
       - MYSQL_USER=${MYSQL_USER:-churchcrm}

@@ -169,10 +169,10 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                 <div class="flex-grow-1">
                     <h5 class="mb-1"><?= gettext('Help improve ChurchCRM') ?></h5>
                     <p class="text-secondary mb-2">
-                        <?= gettext('Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent.') ?>
+                        <?= gettext('Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement.') ?>
                     </p>
                     <p class="text-secondary mb-3 small">
-                        <?= gettext('What we collect') ?>: <?= gettext('page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU.') ?>
+                        <?= gettext('Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States.') ?>
                     </p>
                     <div class="d-flex gap-2 flex-wrap">
                         <button type="button" class="btn btn-info js-telemetry-consent" data-level="full">
@@ -518,6 +518,12 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
         </div>
     </div>
 </div>
+
+<div class="container-fluid mb-3">
+    <div id="reportingSettings" data-settings="<?= InputUtils::escapeAttribute(json_encode($pdfSettings)) ?>"></div>
+</div>
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>"></script>
 
 <!-- Load admin dashboard JavaScript -->
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/admin-dashboard.min.js') ?>"></script>

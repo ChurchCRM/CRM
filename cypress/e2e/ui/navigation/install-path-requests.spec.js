@@ -60,7 +60,7 @@ describe("Page requests stay inside the install path", () => {
     context("leaving a report page", () => {
         beforeEach(() => cy.setupAdminSession());
 
-        ["/DirectoryReports.php", "/FinancialReports.php", "/LettersAndLabels.php", "/ReminderReport.php"].forEach((page) => {
+        ["/DirectoryReports.php", "/FinancialReports.php", "/LettersAndLabels.php"].forEach((page) => {
             it(`${page} Cancel returns to the dashboard of its own install`, () => {
                 cy.visit(page);
                 cy.contains("a.btn", "Cancel").click();

@@ -15,7 +15,7 @@ describe("Reminder Report with a payment that has no check number - Issue #10183
     it("prints the cash payment with an empty check number cell", () => {
         cy.request({
             method: "POST",
-            url: "/Reports/ReminderReport.php",
+            url: "/finance/reports/pledge-reminders/download",
             form: true,
             encoding: "binary",
             failOnStatusCode: false,
@@ -33,10 +33,11 @@ describe("Reminder Report with a payment that has no check number - Issue #10183
                 return pdfText(response.body);
             })
             .then((lines) => {
-                const firstPayment = lines.indexOf("Amount", lines.indexOf("Chk No.")) + 1;
+                const lower = lines.map((line) => line.toLowerCase());
+                const firstPayment = lower.indexOf("amount", lower.indexOf("check number")) + 1;
                 expect(lines.slice(firstPayment, firstPayment + 3), "date, method, fund").to.deep.equal([
-                    "2018-03-04",
-                    "CASH",
+                    "March 04 2018",
+                    "Cash",
                     "Pledges",
                 ]);
             });

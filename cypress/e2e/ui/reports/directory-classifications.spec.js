@@ -11,7 +11,7 @@ const SELECT = 'select[name="sDirClassifications[]"]';
 // One classification id as a plain string: an array value is form-encoded as a nested array, which PHP rejects.
 const directoryPost = (classification) => ({
     method: "POST",
-    url: "Reports/DirectoryReport.php",
+    url: "people/reports/directory",
     form: true,
     encoding: "binary",
     failOnStatusCode: false,

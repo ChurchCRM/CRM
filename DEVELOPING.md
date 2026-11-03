@@ -24,7 +24,7 @@ host's installed runtimes; it never changes OS repositories or uses sudo to
 replace them. Missing prerequisites stop setup with a diagnostic.
 
 Native setup runs locked `npm ci`, the full build (Composer dependencies, ORM,
-frontend, signatures), PHP readiness checks, and lint. It explicitly defers the
+frontend, signatures), locked PHP test tooling, PHP readiness checks, and lint. It explicitly defers the
 Cypress download to integration setup. Integration setup installs Cypress,
 retries a failed download once with `--force`, verifies the executable/OS
 libraries, builds/pulls the existing test images, starts services, and checks
@@ -59,7 +59,7 @@ npm run env:check -- integration --services
 | Mode | Checks |
 | --- | --- |
 | `static` (default) | Node version, Git, PHP version, Composer, Biome and TypeScript executables |
-| `php` | Static checks plus required extensions, vendor autoloader, actual Composer platform requirements |
+| `php` | Static checks plus required extensions, application autoloader, PHP test runner, both Composer projects' platform requirements |
 | `integration` | PHP checks plus Docker daemon, Compose, Cypress verification, built frontend and signatures |
 | `integration --services` | Also running test services, database health, HTTP login page |
 
@@ -67,8 +67,10 @@ Every failed check prints a remedy and exits nonzero. Passing means these
 prerequisites are available, not that tests pass or dependency caches match a
 changed lockfile. After changing lockfiles, rerun setup online. Use `npm run lint`,
 `npm run build:php:validate`, `npm run test:php`, and focused Cypress specs for
-verification. Standalone PHP tests require the vendor tree but no running stack.
-PHP/Composer are needed even for full lint, which validates the Composer lock.
+verification. Fast PHP tests need both vendor trees and no running stack.
+PHP/Composer are needed for full lint, which validates both Composer locks and runs
+the fast PHP suite. Package layout, focused commands and isolated database/HTTP
+tests are documented in [tests/php/README.md](tests/php/README.md).
 
 For the container path, run the same checks and tests inside the dev image:
 

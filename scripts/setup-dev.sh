@@ -39,6 +39,7 @@ fi
 # Install the browser explicitly below so its download cannot break a native-only setup.
 CYPRESS_INSTALL_BINARY=0 npm ci
 npm run build
+npm run test:php:install
 node scripts/check-environment.js php
 npm run lint
 

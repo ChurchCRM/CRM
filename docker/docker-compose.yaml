@@ -47,6 +47,7 @@ services:
       - .env
     environment:
       CHURCHCRM_PLUGIN_FIXTURES: /home/ChurchCRM/cypress/fixtures/plugin-registry
+      CHURCHCRM_DISABLE_POSTHOG_TELEMETRY: "1"
     depends_on:
       database:
         condition: service_healthy

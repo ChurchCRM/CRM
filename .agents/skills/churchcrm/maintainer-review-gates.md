@@ -69,6 +69,8 @@ Applies when the PR reads, writes, validates, or displays a date, time, number, 
 - Store event DATETIME columns as naive wall-clock in `sTimeZone`.
 - Keep one calendar contract per route (for example, space-separated datetime stays space-separated).
 
+Report and PDF output reads the same settings (`reports.md` Data rules): dates through `DateTimeUtils::formatDate()`, money through `CurrencyFormatter`, labels through `gettext()`, all formatted in the service. A template or service that hardcodes a date format, currency symbol, separator, English word or database code is a hard block.
+
 ISO-only validation on an API field is **correct**. Parsing `23/09/2026` because the church display format is `d/m/Y` is a hard block.
 
 If hard blocks stay open and the author goes quiet, maintainers may close the PR for inactivity.

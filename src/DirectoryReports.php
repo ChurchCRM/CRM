@@ -3,12 +3,21 @@
 require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\GroupQuery;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Service\ClassificationService;
-use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\view\PageHeader;
 use ChurchCRM\Service\CustomFieldService;
+use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
+
+// The directory lists contact details of the whole congregation: staff users only.
+if (AuthenticationManager::getCurrentUser()->isEditSelfExclusive()) {
+    RedirectUtils::securityRedirect('Staff');
+}
 
 $sPageTitle = gettext('Directory reports');
 $sPageSubtitle = gettext('Generate directory listings and printed materials');
@@ -21,32 +30,19 @@ require_once __DIR__ . '/Include/Header.php';
 ?>
 <div class="card">
   <div class="card-body">
-    <form method="POST" action="Reports/DirectoryReport.php">
+    <form method="POST" action="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath() . '/people/reports/directory') ?>">
 <?php
 
-// Get classifications for the selects
-$sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence';
-$rsClassifications = RunQuery($sSQL);
-
-//Get Family Roles for the drop-down
-$sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 2 ORDER BY lst_OptionSequence';
-$rsFamilyRoles = RunQuery($sSQL);
-
-// Get all the Groups
-$sSQL = 'SELECT * FROM group_grp ORDER BY grp_Name';
-$rsGroups = RunQuery($sSQL);
-
-// Get the list of custom person fields
-$sSQL = 'SELECT person_custom_master.* FROM person_custom_master ORDER BY custom_Order';
-$rsCustomFields = RunQuery($sSQL);
-$numCustomFields = mysqli_num_rows($rsCustomFields);
+$classifications = ListOptionQuery::create()->filterById(1)->orderByOptionSequence()->find();
+$familyRoles = ListOptionQuery::create()->filterById(2)->orderByOptionSequence()->find();
+$groups = GroupQuery::create()->orderByName()->find();
+// Only the person custom fields this user may see are offered.
+$customFields = (new CustomFieldService())->getVisiblePersonFields();
 
 $aDefaultClasses = (new ClassificationService())->getDirectoryIds();
 $aDirRoleHead = explode(',', SystemConfig::getValue('sDirRoleHead'));
 $aDirRoleSpouse = explode(',', SystemConfig::getValue('sDirRoleSpouse'));
 $aDirRoleChild = explode(',', SystemConfig::getValue('sDirRoleChild'));
-
-$customFieldService = new CustomFieldService();
 
 ?>
 <?php if (!array_key_exists('cartdir', $_GET)) : ?>
@@ -62,14 +58,9 @@ $customFieldService = new CustomFieldService();
         <small class="text-secondary d-block mb-1"><?= gettext('Use Ctrl Key to select multiple') ?></small>
         <select class="form-select" name="sDirClassifications[]" size="5" multiple required>
           <option value="0"><?= gettext('Unassigned') ?></option>
-          <?php while ($aRow = mysqli_fetch_array($rsClassifications)) {
-              extract($aRow);
-              echo '<option value="' . $lst_OptionID . '"';
-              if (in_array($lst_OptionID, $aDefaultClasses)) {
-                  echo ' selected';
-              }
-              echo '>' . gettext($lst_OptionName) . '</option>';
-          } ?>
+          <?php foreach ($classifications as $classification) : ?>
+            <option value="<?= (int) $classification->getOptionId() ?>"<?= in_array($classification->getOptionId(), $aDefaultClasses) ? ' selected' : '' ?>><?= InputUtils::escapeHTML(gettext($classification->getOptionName())) ?></option>
+          <?php endforeach; ?>
         </select>
       </div>
 
@@ -77,10 +68,9 @@ $customFieldService = new CustomFieldService();
         <label class="form-label"><?= gettext('Group Membership') ?>:</label>
         <small class="text-secondary d-block mb-1"><?= gettext('Use Ctrl Key to select multiple') ?></small>
         <select class="form-select" name="GroupID[]" size="5" multiple>
-          <?php while ($aRow = mysqli_fetch_array($rsGroups)) {
-              extract($aRow);
-              echo '<option value="' . $grp_ID . '">' . $grp_Name . '</option>';
-          } ?>
+          <?php foreach ($groups as $group) : ?>
+            <option value="<?= (int) $group->getId() ?>"><?= InputUtils::escapeHTML($group->getName()) ?></option>
+          <?php endforeach; ?>
         </select>
       </div>
 <?php endif; ?>
@@ -89,14 +79,9 @@ $customFieldService = new CustomFieldService();
         <label class="form-label"><?= gettext('Which role is the head of household?') ?></label>
         <small class="text-secondary d-block mb-1"><?= gettext('Use Ctrl Key to select multiple') ?></small>
         <select class="form-select" name="sDirRoleHead[]" size="5" multiple>
-          <?php while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
-              extract($aRow);
-              echo '<option value="' . $lst_OptionID . '"';
-              if (in_array($lst_OptionID, $aDirRoleHead)) {
-                  echo ' selected';
-              }
-              echo '>' . gettext($lst_OptionName) . '</option>';
-          } ?>
+          <?php foreach ($familyRoles as $role) : ?>
+            <option value="<?= (int) $role->getOptionId() ?>"<?= in_array($role->getOptionId(), $aDirRoleHead) ? ' selected' : '' ?>><?= InputUtils::escapeHTML(gettext($role->getOptionName())) ?></option>
+          <?php endforeach; ?>
         </select>
       </div>
 
@@ -104,16 +89,9 @@ $customFieldService = new CustomFieldService();
         <label class="form-label"><?= gettext('Which role is the spouse?') ?></label>
         <small class="text-secondary d-block mb-1"><?= gettext('Use Ctrl Key to select multiple') ?></small>
         <select class="form-select" name="sDirRoleSpouse[]" size="5" multiple>
-          <?php
-          mysqli_data_seek($rsFamilyRoles, 0);
-          while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
-              extract($aRow);
-              echo '<option value="' . $lst_OptionID . '"';
-              if (in_array($lst_OptionID, $aDirRoleSpouse)) {
-                  echo ' selected';
-              }
-              echo '>' . gettext($lst_OptionName) . '</option>';
-          } ?>
+          <?php foreach ($familyRoles as $role) : ?>
+            <option value="<?= (int) $role->getOptionId() ?>"<?= in_array($role->getOptionId(), $aDirRoleSpouse) ? ' selected' : '' ?>><?= InputUtils::escapeHTML(gettext($role->getOptionName())) ?></option>
+          <?php endforeach; ?>
         </select>
       </div>
 
@@ -121,16 +99,9 @@ $customFieldService = new CustomFieldService();
         <label class="form-label"><?= gettext('Which role is a child?') ?></label>
         <small class="text-secondary d-block mb-1"><?= gettext('Use Ctrl Key to select multiple') ?></small>
         <select class="form-select" name="sDirRoleChild[]" size="5" multiple>
-          <?php
-          mysqli_data_seek($rsFamilyRoles, 0);
-          while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
-              extract($aRow);
-              echo '<option value="' . $lst_OptionID . '"';
-              if (in_array($lst_OptionID, $aDirRoleChild)) {
-                  echo ' selected';
-              }
-              echo '>' . gettext($lst_OptionName) . '</option>';
-          } ?>
+          <?php foreach ($familyRoles as $role) : ?>
+            <option value="<?= (int) $role->getOptionId() ?>"<?= in_array($role->getOptionId(), $aDirRoleChild) ? ' selected' : '' ?>><?= InputUtils::escapeHTML(gettext($role->getOptionName())) ?></option>
+          <?php endforeach; ?>
         </select>
       </div>
 
@@ -165,20 +136,16 @@ $customFieldService = new CustomFieldService();
                 <label class="form-check-label" for="<?= $name ?>"><?= $field['label'] ?></label>
               </div>
             </div>
-          <?php endforeach;
-          if ($numCustomFields > 0) {
-              while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_ASSOC)) {
-                  if ($customFieldService->canView((int) $rowCustomField['custom_FieldSec'])) {
-                      $customName = 'bCustom' . $rowCustomField['custom_Order']; ?>
-                <div class="col">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="<?= $customName ?>" value="1" id="<?= $customName ?>" checked>
-                    <label class="form-check-label" for="<?= $customName ?>"><?= InputUtils::escapeHTML($rowCustomField['custom_Name']) ?></label>
-                  </div>
-                </div>
-              <?php }
-              }
-          } ?>
+          <?php endforeach; ?>
+          <?php foreach ($customFields as $customField) :
+              $customName = 'bCustom' . (int) $customField->getOrder(); ?>
+            <div class="col">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="<?= $customName ?>" value="1" id="<?= $customName ?>" checked>
+                <label class="form-check-label" for="<?= $customName ?>"><?= InputUtils::escapeHTML($customField->getName()) ?></label>
+              </div>
+            </div>
+          <?php endforeach; ?>
         </div>
       </div>
 

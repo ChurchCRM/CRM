@@ -15,12 +15,12 @@ class FamilyVerificationEmail extends BaseEmail
     /**
      * @param string[] $emails
      */
-    public function __construct(array $emails, string $familyName, ?Token $token = null)
+    public function __construct(array $emails, string $familyName, ?Token $token = null, bool $updated = false)
     {
         parent::__construct($emails);
         $this->familyName = $familyName;
         $this->token = $token;
-        $this->mail->Subject = $familyName . ': ' . gettext("Please verify your family's information");
+        $this->mail->Subject = $familyName . ': ' . gettext("Please verify your family's information") . ($updated ? ' ** Updated **' : '');
         $this->mail->isHTML(true);
         $this->mail->msgHTML($this->buildMessage());
     }

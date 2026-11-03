@@ -82,6 +82,7 @@ jobs:
     outputs:
       run: ${{ steps.decide.outputs.run }}
       reason: ${{ steps.decide.outputs.reason }}
+      databases: ${{ steps.databases.outputs.matrix }}
     steps:
     - name: Checkout
       uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -95,6 +96,11 @@ jobs:
         BRANCH: ${{ github.ref_name }}
         REPO: ${{ github.repository }}
       run: node scripts/nightly-needed.js
+
+    - name: PHP integration database matrix
+      id: databases
+      run: >-
+        node -e 'const fs = require("node:fs"); const databases = require("./supported-databases.json"); fs.appendFileSync(process.env.GITHUB_OUTPUT, "matrix=" + JSON.stringify(Object.entries(databases).map(([engine, version]) => ({image: engine + ":" + version, engine}))) + "\n")'
 
   # ═══════════════════════════════════════════════════════════════════════════
   # STAGE 1 — Build
@@ -877,6 +883,58 @@ jobs:
   # STAGE 3 — Nightly summary
   # Runs after all test jobs (always) and writes the job and artifact overview.
   # ═══════════════════════════════════════════════════════════════════════════
+  php-regressions:
+    name: PHP ${{ matrix.php }} regressions (${{ matrix.database.engine }})
+    needs: changes
+    if: needs.changes.outputs.run == 'true'
+    timeout-minutes: 15
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['8.4', '8.5']
+        database: ${{ fromJSON(needs.changes.outputs.databases) }}
+    services:
+      database:
+        image: ${{ matrix.database.image }}
+        env:
+          MYSQL_ROOT_PASSWORD: php-test-password
+          MYSQL_ROOT_HOST: '%'
+          MARIADB_ROOT_PASSWORD: php-test-password
+          MARIADB_ROOT_HOST: '%'
+        ports:
+          - 3306/tcp
+        options: >-
+          --health-cmd="mysqladmin ping -h127.0.0.1 -uroot -pphp-test-password --silent || mariadb-admin ping -h127.0.0.1 -uroot -pphp-test-password --silent"
+          --health-interval=5s
+          --health-timeout=5s
+          --health-retries=30
+    steps:
+    - name: Checkout
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+    - uses: ./.github/actions/checkout-node-npm
+    - uses: ./.github/actions/composer-install
+      with:
+        php-version: ${{ matrix.php }}
+    - name: Install PHP test tooling
+      run: npm run test:php:install
+    - name: Unit regressions
+      run: npm run test:php -- --junit
+    - name: Database and HTTP regressions
+      env:
+        PHP_TEST_DISPOSABLE_DB: '1'
+        UPGRADE_TEST_DSN: mysql:host=127.0.0.1;port=${{ job.services.database.ports[3306] }}
+        UPGRADE_TEST_USER: root
+        UPGRADE_TEST_PASSWORD: php-test-password
+      run: npm run test:php:integration -- --junit
+    - name: Upload PHP test results
+      if: always()
+      uses: ./.github/actions/upload-artifact
+      with:
+        name: php-regressions-${{ matrix.php }}-${{ matrix.database.engine }}-${{ github.run_id }}
+        path: temp/php-tests/*.xml
+        if-no-files-found: ignore
+
   nightly-summary:
     needs:
       - changes
@@ -889,6 +947,7 @@ jobs:
       - test-locale-subdir
       - upgrade-mysql
       - upgrade-mariadb
+      - php-regressions
     if: always()
     runs-on: ubuntu-24.04
     steps:
@@ -916,7 +975,8 @@ jobs:
               "${{ needs.test-locale-root.result }}" != "success" || \
               "${{ needs.test-locale-subdir.result }}" != "success" || \
               "${{ needs.upgrade-mysql.result }}" != "success" || \
-              "${{ needs.upgrade-mariadb.result }}" != "success" ]]; then
+              "${{ needs.upgrade-mariadb.result }}" != "success" || \
+              "${{ needs.php-regressions.result }}" != "success" ]]; then
           echo "**Overall: ❌ FAILED**" >> $GITHUB_STEP_SUMMARY
           echo "One or more test groups failed, were skipped, or were cancelled — check individual job logs above." >> $GITHUB_STEP_SUMMARY
           exit 1

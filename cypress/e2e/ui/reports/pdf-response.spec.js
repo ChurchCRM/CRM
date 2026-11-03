@@ -12,6 +12,7 @@ describe("Staff download reports with a common church identity", () => {
         ["/finance/reports/envelope-numbers", "EnvelopeAssignments"],
         ["/finance/reports/family-pledge-summary/download?FYID=23", "FamilyPledgeSummary"],
         ["/finance/reports/zero-givers/download?DateStart=1990-01-01&DateEnd=1990-12-31", "ZeroGivers"],
+        ["/finance/reports/pledge-reminders/download?FYID=23", "PledgeReminders"],
         ["/fundraiser/3/reports/catalog", "FundraiserCatalog"],
         ["/fundraiser/3/reports/bid-sheets", "FundraiserBidSheets"],
         ["/fundraiser/3/reports/certificates", "FundraiserCertificates"],

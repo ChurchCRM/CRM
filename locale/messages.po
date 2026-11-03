@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-31 17:29+0000\n"
+"POT-Creation-Date: 2026-11-02 13:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1215,9 +1215,6 @@ msgstr ""
 msgid "Administrators have full access to all features and data. Individual permissions do not apply."
 msgstr ""
 
-msgid "Adult/Child"
-msgstr ""
-
 msgid "Adults"
 msgstr ""
 
@@ -1511,6 +1508,10 @@ msgid "Amount Max"
 msgstr ""
 
 msgid "Amount Min"
+msgstr ""
+
+#, php-format
+msgid "Amount due for %s: %s"
 msgstr ""
 
 msgid "Amount exceeds maximum allowed (999999.99)"
@@ -2673,6 +2674,9 @@ msgstr ""
 msgid "Cannot check in to an inactive event. Activate the event first."
 msgstr ""
 
+msgid "Cannot create private PDF temporary storage in the selected directory."
+msgstr ""
+
 msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
 msgstr ""
 
@@ -3326,9 +3330,6 @@ msgid "City is required"
 msgstr ""
 
 msgid "City is required."
-msgstr ""
-
-msgid "City, State, Zip"
 msgstr ""
 
 msgid "Class"
@@ -7313,9 +7314,6 @@ msgstr ""
 msgid "Generate phone directory"
 msgstr ""
 
-msgid "Generate pledge reminder letters"
-msgstr ""
-
 msgid "Generate reminder letters for families with outstanding pledges."
 msgstr ""
 
@@ -8904,6 +8902,9 @@ msgstr ""
 msgid "Leave blank to keep existing password"
 msgstr ""
 
+msgid "Leave blank to use the system temporary directory. Otherwise, enter an existing writable directory protected from web access."
+msgstr ""
+
 msgid "Leave both at 0 to serve exactly when the event happens. Moving the event moves the volunteers too."
 msgstr ""
 
@@ -9577,9 +9578,6 @@ msgid "Meetings of {{name}}"
 msgstr ""
 
 msgid "Member"
-msgstr ""
-
-msgid "Member Name"
 msgstr ""
 
 msgid "Member Portal"
@@ -11457,6 +11455,9 @@ msgstr ""
 msgid "Owe"
 msgstr ""
 
+msgid "PDF Temporary Directory"
+msgstr ""
+
 msgid ""
 "PDF handling mode.\n"
 "1 = Save File dialog\n"
@@ -11470,6 +11471,9 @@ msgstr[0] ""
 msgstr[1] ""
 
 msgid "PDF successfully emailed to family members."
+msgstr ""
+
+msgid "PDF temporary storage must be private and writable."
 msgstr ""
 
 msgid "PHP & Server Requirements"
@@ -12206,9 +12210,6 @@ msgid "Pledge Details"
 msgstr ""
 
 msgid "Pledge Family Summary"
-msgstr ""
-
-msgid "Pledge Reminder Report"
 msgstr ""
 
 msgid "Pledge Reminder Signer"
@@ -13022,6 +13023,9 @@ msgid "Report an issue"
 msgstr ""
 
 msgid "Report not found"
+msgstr ""
+
+msgid "Reporting"
 msgstr ""
 
 msgid "Reports"
@@ -15251,6 +15255,12 @@ msgstr ""
 msgid "The Member Portal theme was changed."
 msgstr ""
 
+msgid "The PDF temporary directory does not exist or is not accessible."
+msgstr ""
+
+msgid "The PDF temporary directory must be an absolute directory path."
+msgstr ""
+
 #, php-format
 msgid "The Teacher role of %1$s cannot be renamed or deleted while its teachers are managed in Ministries → %2$s → %3$s."
 msgstr ""
@@ -16010,9 +16020,6 @@ msgid "This occurrence has been cancelled"
 msgstr ""
 
 msgid "This occurrence has its own staffing needs, set apart from its schedule."
-msgstr ""
-
-msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
 msgstr ""
 
 msgid "This page allows you to permanently erase all data in the ChurchCRM database. This action cannot be undone."
@@ -18456,9 +18463,6 @@ msgid "fields"
 msgstr ""
 
 msgid "files"
-msgstr ""
-
-msgid "for all funds"
 msgstr ""
 
 msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."

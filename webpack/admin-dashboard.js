@@ -6,6 +6,20 @@ import "./admin-dashboard.css";
 import "./telemetry-consent";
 
 document.addEventListener("DOMContentLoaded", () => {
+  const reportingSettings = document.getElementById("reportingSettings");
+  if (reportingSettings) {
+    window.CRM.onLocalesReady(() => {
+      new window.CRM.SettingsPanel().init({
+        container: "#reportingSettings",
+        title: i18next.t("Reporting"),
+        icon: "fa-solid fa-file-pdf",
+        settings: JSON.parse(reportingSettings.dataset.settings),
+        autoSave: true,
+        showAllSettingsLink: false,
+      });
+    });
+  }
+
   // Bootstrap's data API is on window.bootstrap. The page bundle's jQuery
   // does not get $.fn.tooltip.
   window.bootstrap?.Tooltip &&
