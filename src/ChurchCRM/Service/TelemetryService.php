@@ -199,8 +199,7 @@ class TelemetryService
 
     /**
      * Forward a Monolog record as a log_error event.
-     * Called by PostHogLogHandler — the handler pre-filters by Monolog level;
-     * this method does the final level check and sends.
+     * PostHogLogHandler filters by level before message scrubbing.
      */
     public static function captureLogEvent(LogRecord $record): void
     {
@@ -214,7 +213,7 @@ class TelemetryService
 
         $properties = array_merge(self::baseProperties(), [
             'level'          => $record->level->name,
-            'message'        => $record->message,
+            'message'        => self::scrubLogMessage($record->message),
             'channel'        => $record->channel,
             'correlation_id' => $record->extra['correlation_id'] ?? null,
             'route'          => $route,
@@ -222,6 +221,14 @@ class TelemetryService
         ]);
 
         self::capture('log_error', $properties);
+    }
+
+    public static function scrubLogMessage(string $message): string
+    {
+        $message = preg_replace('/SQLSTATE\[[^\]]*\].*?(?:[.!?](?=\s|$)|$)/is', '[database error]', $message) ?? '';
+        $message = preg_replace('/[A-Z0-9.!#$%&\x27*+\/=?^_`{|}~-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i', '[email]', $message) ?? '';
+
+        return mb_substr($message, 0, 500);
     }
 
     /** Properties attached to every server-side PostHog event. */

@@ -324,9 +324,6 @@ class Bootstrapper
         return new LocaleInfo(SystemConfig::getValue('sLanguage'), $userLocale);
     }
 
-    /**
-     * Configure locale settings with proper error handling
-     */
     private static function configureLocale(): void
     {
         global $aLocaleInfo, $localeInfo;
@@ -343,10 +340,7 @@ class Bootstrapper
             $localeInfo = self::getCurrentLocale();
             self::$bootStrapLogger->debug("Setting locale to: " . $localeInfo->getLocale());
             
-            $localeSet = $localeInfo->activate();
-            if ($localeSet === false) {
-                self::$bootStrapLogger->warning("Failed to set locale: " . $localeInfo->getLocale() . ", using system default");
-            }
+            $localeInfo->activate();
 
             // Get numeric and monetary locale settings
             $aLocaleInfo = $localeInfo->getLocaleInfo();
