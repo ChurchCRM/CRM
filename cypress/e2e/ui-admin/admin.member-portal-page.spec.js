@@ -214,6 +214,9 @@ describe("Admin → Member Portal page", () => {
                     expect(document.documentElement.scrollWidth).to.be.at.most(width);
                 });
                 cy.screenshot(screenshotName, { capture: "viewport" });
+                cy.document().then((document) => document.documentElement.setAttribute("data-bs-theme", "dark"));
+                cy.screenshot(`${screenshotName}-dark`, { capture: "viewport" });
+                cy.document().then((document) => document.documentElement.removeAttribute("data-bs-theme"));
             };
 
             checkColumns(2048, 6, "portal-sign-in-metrics-desktop");
